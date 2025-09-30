@@ -1,4 +1,4 @@
-# psyk-podcast
+# psyk-podcast · [RSS feed](https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/podcast/rss.xml)
 
 Automation to build an RSS feed from audio files stored in a single Google Drive folder. A GitHub Actions workflow regenerates `podcast/rss.xml` on a schedule so the feed always reflects the contents of the folder.
 
@@ -36,6 +36,130 @@ The repository ships with `podcast/config.json` and `podcast/episode_metadata.js
 3. (Optional) Commit your custom `podcast/episode_metadata.json`.
 
 To kick off a build manually, go to **Actions → Generate Podcast Feed → Run workflow**. The job also runs every day at 06:00 UTC via cron.
+
+## Drive-triggered rebuilds (Google Apps Script)
+If you want the GitHub workflow to fire whenever fresh audio appears in Drive, add a lightweight Apps Script that polls the folder and calls the `Generate Podcast Feed` workflow via `workflow_dispatch`.
+
+1. Visit [script.google.com](https://script.google.com/), create a new project, and paste the helper script below into `Code.gs`. Update the `CONFIG.github` block if you fork the repository or rename the workflow file.
+2. In **Project Settings → Script properties** add a property whose key matches `CONFIG.github.tokenProperty` (`GITHUB_PAT` by default) and set its value to a GitHub personal access token with the `repo` and `workflow` scopes.
+3. Back in the editor, run `initializeLastProcessed()` once to seed the timestamp, then run `checkDriveAndTrigger()` to accept the Drive + external API scopes and manually confirm a dispatch.
+4. Open the clock icon (**Triggers**) → **Add trigger**, select `checkDriveAndTrigger`, choose a time-driven interval (for example every 15 minutes), and save.
+5. Drop a new audio file into the Drive folder, wait for the next trigger, and confirm the Action appears under **Actions → Generate Podcast Feed**.
+
+### Apps Script helper
+```javascript
+/**
+ * Polls a Drive folder for new audio files and triggers the
+ * ennuiweb/psyk-podcast GitHub Actions workflow via workflow_dispatch.
+ */
+const CONFIG = {
+  drive: {
+    folderId: '1uPt6bHjivcD9z-Tw6Q2xbIld3bmH_WyI',
+    includeSubfolders: true,
+    audioMimePrefix: 'audio/',
+  },
+  github: {
+    owner: 'ennuiweb',
+    repo: 'psyk-podcast',
+    workflowFile: 'generate-feed.yml',
+    ref: 'main',
+    inputs: {},
+    tokenProperty: 'GITHUB_PAT',
+  },
+  stateProperty: 'LAST_PROCESSED_TS',
+};
+
+function checkDriveAndTrigger() {
+  const folderIds = CONFIG.drive.includeSubfolders
+    ? getAllFolderIds(CONFIG.drive.folderId)
+    : [CONFIG.drive.folderId];
+
+  const props = PropertiesService.getScriptProperties();
+  const since = Number(props.getProperty(CONFIG.stateProperty)) || 0;
+  let newest = since;
+  let foundNewFile = false;
+
+  folderIds.forEach((id) => {
+    const folder = DriveApp.getFolderById(id);
+    const files = folder.getFiles();
+    while (files.hasNext()) {
+      const file = files.next();
+      if (!file.getMimeType().startsWith(CONFIG.drive.audioMimePrefix)) continue;
+      const created = file.getDateCreated().getTime();
+      if (created > newest) newest = created;
+      if (created > since) {
+        foundNewFile = true;
+      }
+    }
+  });
+
+  if (!foundNewFile) return;
+
+  triggerGithubWorkflow();
+  props.setProperty(CONFIG.stateProperty, String(newest));
+}
+
+function initializeLastProcessed() {
+  const folder = DriveApp.getFolderById(CONFIG.drive.folderId);
+  const files = folder.getFiles();
+  let latest = 0;
+  while (files.hasNext()) {
+    const file = files.next();
+    if (!file.getMimeType().startsWith(CONFIG.drive.audioMimePrefix)) continue;
+    latest = Math.max(latest, file.getDateCreated().getTime());
+  }
+  PropertiesService.getScriptProperties()
+    .setProperty(CONFIG.stateProperty, String(latest));
+}
+
+function triggerGithubWorkflow() {
+  const token = PropertiesService.getScriptProperties()
+    .getProperty(CONFIG.github.tokenProperty);
+  if (!token) throw new Error('GitHub token missing; add script property.');
+
+  const url = `https://api.github.com/repos/${CONFIG.github.owner}/${CONFIG.github.repo}`
+    + `/actions/workflows/${CONFIG.github.workflowFile}/dispatches`;
+
+  const payload = {
+    ref: CONFIG.github.ref,
+    inputs: CONFIG.github.inputs || {},
+  };
+
+  const response = UrlFetchApp.fetch(url, {
+    method: 'post',
+    headers: {
+      Authorization: `Bearer ${token}`,
+      Accept: 'application/vnd.github+json',
+      'User-Agent': 'AppsScript-GH-Trigger',
+    },
+    muteHttpExceptions: false,
+    contentType: 'application/json',
+    payload: JSON.stringify(payload),
+  });
+
+  if (response.getResponseCode() !== 204) {
+    throw new Error(`GitHub dispatch failed: ${response.getContentText()}`);
+  }
+}
+
+function getAllFolderIds(rootId) {
+  const queue = [rootId];
+  const result = [];
+  while (queue.length) {
+    const id = queue.shift();
+    result.push(id);
+    const folder = DriveApp.getFolderById(id);
+    const subFolders = folder.getFolders();
+    while (subFolders.hasNext()) {
+      queue.push(subFolders.next().getId());
+    }
+  }
+  return result;
+}
+```
+
+Adjust the script if you run the workflow from a different branch or need to pass `workflow_dispatch` inputs—set them inside `CONFIG.github.inputs`.
+
 
 ### Using shared drives
 - If the Google Drive folder lives inside a Shared Drive (formerly Team Drive), set the `shared_drive_id` field in the config to that drive's ID (the portion after `/drives/` in the URL).

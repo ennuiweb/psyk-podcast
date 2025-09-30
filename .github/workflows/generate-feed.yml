@@ -41,10 +41,15 @@ jobs:
 
       - name: Write service account credentials
         run: |
-          mkdir -p podcast
-          cat <<'JSON' > podcast/service_account.json
-          ${SERVICE_ACCOUNT_JSON}
-          JSON
+          python - <<'PY'
+          import os
+          from pathlib import Path
+
+          creds = os.environ["SERVICE_ACCOUNT_JSON"]
+          dest = Path("podcast/service_account.json")
+          dest.parent.mkdir(parents=True, exist_ok=True)
+          dest.write_text(creds)
+          PY
 
       - name: Prepare runtime config
         run: |

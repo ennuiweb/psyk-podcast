@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='utf-8'?>
+<rss xmlns:ns0="http://www.w3.org/2005/Atom" version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">
+  <channel>
+    <title>Social Psychology: Theory &amp; Method (Autumn 2025)</title>
+    <link>https://github.com/ennuiweb/psyk-podcast</link>
+    <description>Lecture recordings, discussions, and seminar highlights from the Autumn 2025 Social Psychology: Theory &amp; Method course.</description>
+    <language>en</language>
+    <generator>gdrive_podcast_feed.py</generator>
+    <lastBuildDate>Tue, 30 Sep 2025 10:00:00 +0200</lastBuildDate>
+    <ttl>60</ttl>
+    <ns0:link href="https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/podcast/rss.xml" rel="self" type="application/rss+xml" />
+    <itunes:author>Thomas Morton and teaching team</itunes:author>
+    <itunes:owner>
+      <itunes:name>Social Psychology Teaching Team</itunes:name>
+      <itunes:email>psyk-podcast@example.com</itunes:email>
+    </itunes:owner>
+    <itunes:category text="Education">
+      <itunes:category text="Social Sciences" />
+    </itunes:category>
+    <item>
+      <title>Week 40 · Making Sense of the Social World</title>
+      <description>We look at attribution and social cognition—how people explain behaviour, encode group information, and challenge stereotypes—drawing on Sutton &amp; Douglas (Chs. 3, 11 &amp; 12), Heider’s naïve analysis, Weiner on motivation, and contemporary prejudice research.</description>
+      <guid isPermaLink="false">11aXuwKJGfzAL-JmlNEivKWjoPnkzeiBC</guid>
+      <link>https://github.com/ennuiweb/psyk-podcast</link>
+      <pubDate>Tue, 30 Sep 2025 10:00:00 +0200</pubDate>
+      <enclosure url="https://drive.google.com/uc?export=download&amp;id=11aXuwKJGfzAL-JmlNEivKWjoPnkzeiBC" length="172987856" type="audio/x-m4a" />
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title>Week 39 · The Social Self and Intergroup Identity</title>
+      <description>This session examines how dynamic self-concepts emerge from group memberships, featuring Sutton &amp; Douglas (Ch. 2) alongside Tajfel &amp; Turner’s social identity theory and seminar work on Activity 1.</description>
+      <guid isPermaLink="false">1e3rTkbH4x-raaxE9PA-ZAmUIwjab7PJm</guid>
+      <link>https://github.com/ennuiweb/psyk-podcast</link>
+      <pubDate>Tue, 23 Sep 2025 10:00:00 +0200</pubDate>
+      <enclosure url="https://drive.google.com/uc?export=download&amp;id=1e3rTkbH4x-raaxE9PA-ZAmUIwjab7PJm" length="156742292" type="audio/x-m4a" />
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title>Week 38 · Conformity, Obedience, and Resistance</title>
+      <description>Classic studies by Asch, Milgram, and Zimbardo anchor a discussion of group processes, power, and resistance, complemented by Haslam &amp; Reicher's reinterpretation of conformity and Sutton &amp; Douglas (Ch. 9).</description>
+      <guid isPermaLink="false">1-hVwKLPocyiyxLeyYZ5HYDBr9t5Ke4j0</guid>
+      <link>https://github.com/ennuiweb/psyk-podcast</link>
+      <pubDate>Tue, 16 Sep 2025 10:00:00 +0200</pubDate>
+      <enclosure url="https://drive.google.com/uc?export=download&amp;id=1-hVwKLPocyiyxLeyYZ5HYDBr9t5Ke4j0" length="46137344" type="audio/x-m4a" />
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title>Week 37 · Connections, Crowds, and the Need to Belong</title>
+      <description>We explore how other people shape individual psychology through crowd processes, depersonalisation, and bystander dynamics, foregrounding Baumeister &amp; Leary on the need to belong, Hopkins et al. on solidarity in crowds, and Sutton &amp; Douglas (Ch. 10).</description>
+      <guid isPermaLink="false">1aSahSd23eSr_D2Wht0nraRq07T0D3Pcb</guid>
+      <link>https://github.com/ennuiweb/psyk-podcast</link>
+      <pubDate>Tue, 09 Sep 2025 10:00:00 +0200</pubDate>
+      <enclosure url="https://drive.google.com/uc?export=download&amp;id=1aSahSd23eSr_D2Wht0nraRq07T0D3Pcb" length="102760448" type="audio/x-m4a" />
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+    <item>
+      <title>Week 36 · Introduction to Social Psychology</title>
+      <description>Thomas Morton opens the Autumn 2025 course with the history, scope, and controversies of social psychology, drawing on Sutton &amp; Douglas (Ch. 1), Doise &amp; Valentim's levels of analysis, Gergen's call to treat the field as history, and the Open Science Collaboration's reproducibility findings.</description>
+      <guid isPermaLink="false">1ljPsF1sreUIUbRlDtJ0nhCSmashcgNom</guid>
+      <link>https://github.com/ennuiweb/psyk-podcast</link>
+      <pubDate>Tue, 02 Sep 2025 10:00:00 +0200</pubDate>
+      <enclosure url="https://drive.google.com/uc?export=download&amp;id=1ljPsF1sreUIUbRlDtJ0nhCSmashcgNom" length="164534198" type="audio/x-m4a" />
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,12 @@
+# Local secrets
+podcast/service_account.json
+podcast/service-account.json
+psyk-podcast-*.json
+*.runtime.json
+
+# Python cache
+__pycache__/
+podcast/__pycache__/
+
+# Python envs
+.venv/

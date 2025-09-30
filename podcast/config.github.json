@@ -1,0 +1,30 @@
+{
+  "service_account_file": "podcast/service_account.json",
+  "drive_folder_id": "1uPt6bHjivcD9z-Tw6Q2xbIld3bmH_WyI",
+  "shared_drive_id": null,
+  "include_items_from_all_drives": false,
+  "include_subfolders": true,
+  "skip_permission_updates": false,
+  "output_feed": "podcast/rss.xml",
+  "public_link_template": "https://drive.google.com/uc?export=download&id={file_id}",
+  "episode_metadata": "podcast/episode_metadata.json",
+  "feed": {
+    "title": "Social Psychology: Theory & Method (Autumn 2025)",
+    "link": "https://github.com/ennuiweb/psyk-podcast",
+    "self_link": "https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/podcast/rss.xml",
+    "description": "Lecture recordings, discussions, and seminar highlights from the Autumn 2025 Social Psychology: Theory & Method course.",
+    "language": "en",
+    "author": "Thomas Morton and teaching team",
+    "default_explicit": false,
+    "image": "",
+    "category": {
+      "name": "Education",
+      "sub": "Social Sciences"
+    },
+    "owner": {
+      "name": "Social Psychology Teaching Team",
+      "email": "psyk-podcast@example.com"
+    },
+    "ttl": 60
+  }
+}

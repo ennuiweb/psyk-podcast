@@ -1,0 +1,85 @@
+name: Generate Podcast Feed
+
+on:
+  schedule:
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      DRIVE_FOLDER_ID: ${{ secrets.DRIVE_FOLDER_ID }}
+      SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+    steps:
+      - name: Check required secrets
+        run: |
+          if [[ -z "${DRIVE_FOLDER_ID}" ]]; then
+            echo "DRIVE_FOLDER_ID secret is missing" >&2
+            exit 1
+          fi
+          if [[ -z "${SERVICE_ACCOUNT_JSON}" ]]; then
+            echo "GOOGLE_SERVICE_ACCOUNT_JSON secret is missing" >&2
+            exit 1
+          fi
+
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Write service account credentials
+        run: |
+          mkdir -p podcast
+          cat <<'JSON' > podcast/service_account.json
+${SERVICE_ACCOUNT_JSON}
+JSON
+
+      - name: Prepare runtime config
+        run: |
+          python <<'PY'
+import json
+import os
+source_path = "podcast/config.github.json"
+output_path = "podcast/config.runtime.json"
+drive_id = os.environ["DRIVE_FOLDER_ID"]
+with open(source_path, "r", encoding="utf-8") as fh:
+    data = json.load(fh)
+if data.get("drive_folder_id") == "__DRIVE_FOLDER_ID__":
+    data["drive_folder_id"] = drive_id
+else:
+    data["drive_folder_id"] = data["drive_folder_id"].replace("__DRIVE_FOLDER_ID__", drive_id)
+data["service_account_file"] = "podcast/service_account.json"
+with open(output_path, "w", encoding="utf-8") as fh:
+    json.dump(data, fh, indent=2)
+PY
+
+      - name: Generate feed
+        run: python podcast/gdrive_podcast_feed.py --config podcast/config.runtime.json
+
+      - name: Commit updated feed
+        run: |
+          if [[ -n "$(git status --porcelain podcast/rss.xml)" ]]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add podcast/rss.xml
+            git commit -m "chore: update podcast feed"
+            git push
+          else
+            echo "No changes to commit"
+          fi
+
+      - name: Cleanup secrets
+        if: always()
+        run: rm -f podcast/service_account.json podcast/config.runtime.json

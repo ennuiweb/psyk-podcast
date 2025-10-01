@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="da">
   <head>
     <meta charset="utf-8" />
@@ -218,6 +217,19 @@
         color: var(--muted);
       }
 
+      .card-icon {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin: -0.25rem 0 0.4rem;
+      }
+
+      .card-icon img {
+        width: 50px;
+        height: 50px;
+        filter: drop-shadow(0 16px 28px rgba(29, 185, 84, 0.32));
+      }
+
       .card a {
         display: inline-flex;
         align-items: center;
@@ -234,18 +246,6 @@
 
       .card a:hover {
         text-decoration: underline;
-      }
-
-      .spotify-icon {
-        display: flex;
-        justify-content: center;
-        margin: clamp(1.5rem, 4vw, 2.75rem) 0;
-      }
-
-      .spotify-icon img {
-        width: min(220px, 52vw);
-        height: auto;
-        filter: drop-shadow(0 22px 40px rgba(29, 185, 84, 0.35));
       }
 
       .timeline {
@@ -370,50 +370,11 @@
     <main>
       <header class="hero">
         <div class="hero-content">
-          <span class="eyebrow">Socialpsykologi Deep Dives</span>
           <h1>Hold 1 – 2025 Podcast Hub</h1>
           <p class="lead">
             Lyt til klassens Deep Dives, upload nye episoder på få minutter, og hold styr på ugens
             materiale ét sted. Siden synker direkte med Spotify og vores RSS-feed.
           </p>
-          <ul class="hero-highlights">
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M5 13l4 4L19 7"
-                  stroke="var(--accent)"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-              Opdateret overblik over alle episoder og feeds.
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M4 7h16M4 12h16M4 17h10"
-                  stroke="var(--accent)"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-              Klar upload-guide med navngivningsstandarder.
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M12 8v8m4-4H8"
-                  stroke="var(--accent)"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-              Delbare links til Google Drive, Spotify og RSS.
-            </li>
-          </ul>
           <div class="cta-group">
             <a class="cta primary" href="https://open.spotify.com/show/08cv2AZyBv2W9S8GiAysVP">Åbn Spotify-serien</a>
             <a class="cta secondary" href="https://drive.google.com/drive/u/7/folders/1uPt6bHjivcD9z-Tw6Q2xbIld3bmH_WyI">Gå til Google Drive</a>
@@ -445,6 +406,13 @@
             </a>
           </article>
           <article class="card">
+            <figure class="card-icon">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg"
+                alt="Spotify ikon"
+                loading="lazy"
+              />
+            </figure>
             <h3>Spotify-serien</h3>
             <p>Lyt hvor som helst. Serien opdateres automatisk, når nye episoder uploades.</p>
             <a href="https://open.spotify.com/show/08cv2AZyBv2W9S8GiAysVP">
@@ -484,15 +452,6 @@
             </a>
           </article>
         </div>
-        <figure class="spotify-icon">
-          <a href="https://open.spotify.com/show/08cv2AZyBv2W9S8GiAysVP">
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg"
-              alt="Spotify ikon"
-              loading="lazy"
-            />
-          </a>
-        </figure>
       </section>
 
       <section>
@@ -512,9 +471,9 @@
           </div>
           <div class="step naming" data-step="3">
             <h3>Navngiv korrekt</h3>
-            <p>Brug vores fælles format, så feedet holder sig organiseret:</p>
+            <p>Brug vores fælles format for titler:</p>
             <ul>
-              <li>Skabelon: <code>W## [Brief] Titel.ext</code></li>
+              <li>Titelskabelon: <code> [Brief] Titel.ext</code></li>
               <li>Brug <code>[Brief]</code> kun til korte sammenfatninger.</li>
               <li><code>Alle kilder</code> dækker hele ugens pensum.</li>
               <li>Eksempler: <code>An integrative theory of intergroup conflict</code>, <code>[Brief] 10. Group behaviour.mp3</code>, <code>Alle kilder.mp3</code></li>
@@ -522,14 +481,10 @@
           </div>
           <div class="step" data-step="4">
             <h3>Upload og vent</h3>
-            <p>Træk filen ind i Drive-mappen. Efter ~20 minutter vises episoden i Spotify og RSS-feedet.</p>
+            <p>Upload filen til Drive. Efter ~20 minutter vises episoden i Spotify og RSS-feedet.</p>
           </div>
         </div>
       </section>
-
-      <footer>
-        Senest opdateret: september 2025 · Spørgsmål? Ping holdet i chatten.
-      </footer>
     </main>
   </body>
 </html>

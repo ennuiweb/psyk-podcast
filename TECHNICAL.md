@@ -26,6 +26,9 @@ Each show config can optionally supply `"allowed_mime_types"` to control which G
 
 The workflow installs `ffmpeg`, downloads each video, transcodes it locally, and uploads the audio back into the original Drive file (updating its name, MIME type, and content). Because the conversion happens in place, no additional storage quota is required and the feed generator only ever sees audio assets.
 
+### Automatic dating from the teaching schedule
+Shows can point `auto_spec` at a JSON file that maps Drive folder labels to calendar weeks. The Social Psychology course ships with `shows/social-psychology/auto_spec.json`, generated from the teaching plan PDF. Each rule ties folder names like `W4 The Self` (anything that contains `w4`) to ISO week 39 of 2025 and sets a Monday 10:00 CET release, spacing additional recordings for that week by 120 minutes. Future recordings dropped into the matching `W*` folders automatically inherit the correct `published_at` timestamp without editing `episode_metadata.json`.
+
 ## One-time Google setup
 1. Enable the Google Drive API in a Google Cloud project.
 2. Create a service account, download the JSON key, and keep it private.

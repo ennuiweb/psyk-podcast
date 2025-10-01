@@ -4,3 +4,4 @@
 
 [RSS feed](https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/social-psychology/feeds/rss.xml)
 
+[Spotify](https://open.spotify.com/show/08cv2AZyBv2W9S8GiAysVP)

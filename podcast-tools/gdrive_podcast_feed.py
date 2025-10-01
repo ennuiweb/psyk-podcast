@@ -250,8 +250,6 @@ class AutoSpec:
                     matches.extend(str(token).lower() for token in tokens if token)
 
             course_week = entry.get("course_week")
-            if course_week:
-                matches.append(str(course_week).lower())
 
             # Helpful default aliases: "week 36" and "w36" for iso week 36.
             matches.extend(

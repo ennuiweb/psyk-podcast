@@ -36,6 +36,9 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: Install ffmpeg
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg
+
       - name: Install dependencies
         run: pip install -r requirements.txt
 
@@ -69,6 +72,9 @@ jobs:
           with open(output_path, "w", encoding="utf-8") as fh:
               json.dump(data, fh, indent=2)
           PY
+
+      - name: Transcode Drive media
+        run: python podcast-tools/transcode_drive_media.py --config shows/social-psychology/config.runtime.json
 
       - name: Generate feed
         run: python podcast-tools/gdrive_podcast_feed.py --config shows/social-psychology/config.runtime.json

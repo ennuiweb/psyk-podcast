@@ -8,6 +8,17 @@
     "audio/",
     "video/mp4"
   ],
+  "transcode": {
+    "enabled": true,
+    "source_mime_types": [
+      "video/mp4"
+    ],
+    "target_extension": "mp3",
+    "target_mime_type": "audio/mpeg",
+    "codec": "libmp3lame",
+    "bitrate": "160k",
+    "delete_source": true
+  },
   "skip_permission_updates": false,
   "output_feed": "shows/social-psychology/feeds/rss.xml",
   "public_link_template": "https://drive.google.com/uc?export=download&id={file_id}",

@@ -46,7 +46,7 @@ jobs:
           from pathlib import Path
 
           creds = os.environ["SERVICE_ACCOUNT_JSON"]
-          dest = Path("podcast/service_account.json")
+          dest = Path("shows/social-psychology/service-account.json")
           dest.parent.mkdir(parents=True, exist_ok=True)
           dest.write_text(creds)
           PY
@@ -56,8 +56,8 @@ jobs:
           python <<'PY'
           import json
           import os
-          source_path = "podcast/config.github.json"
-          output_path = "podcast/config.runtime.json"
+          source_path = "shows/social-psychology/config.github.json"
+          output_path = "shows/social-psychology/config.runtime.json"
           drive_id = os.environ["DRIVE_FOLDER_ID"]
           with open(source_path, "r", encoding="utf-8") as fh:
               data = json.load(fh)
@@ -65,20 +65,20 @@ jobs:
               data["drive_folder_id"] = drive_id
           else:
               data["drive_folder_id"] = data["drive_folder_id"].replace("__DRIVE_FOLDER_ID__", drive_id)
-          data["service_account_file"] = "podcast/service_account.json"
+          data["service_account_file"] = "shows/social-psychology/service-account.json"
           with open(output_path, "w", encoding="utf-8") as fh:
               json.dump(data, fh, indent=2)
           PY
 
       - name: Generate feed
-        run: python podcast/gdrive_podcast_feed.py --config podcast/config.runtime.json
+        run: python podcast-tools/gdrive_podcast_feed.py --config shows/social-psychology/config.runtime.json
 
       - name: Commit updated feed
         run: |
-          if [[ -n "$(git status --porcelain podcast/rss.xml)" ]]; then
+          if [[ -n "$(git status --porcelain shows/social-psychology/feeds/rss.xml)" ]]; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add podcast/rss.xml
+            git add shows/social-psychology/feeds/rss.xml
             git commit -m "chore: update podcast feed"
             git push
           else
@@ -87,4 +87,4 @@ jobs:
 
       - name: Cleanup secrets
         if: always()
-        run: rm -f podcast/service_account.json podcast/config.runtime.json
+        run: rm -f shows/social-psychology/service-account.json shows/social-psychology/config.runtime.json

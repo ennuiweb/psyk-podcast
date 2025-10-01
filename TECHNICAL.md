@@ -1,13 +1,8 @@
-# Psykologi Podcast# psyk-podcast · [RSS feed](https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/social-psychology/feeds/rss.xml)
+# psyk-podcast · [RSS feed](https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/social-psychology/feeds/rss.xml)
 
+Automation to build podcast RSS feeds from audio files stored in Google Drive. The current show (`shows/social-psychology`) regenerates `shows/social-psychology/feeds/rss.xml` automatically via GitHub Actions, and the structure is ready for additional shows later on.
 
-
-Her finder du links til de forskellige podcasts.Automation to build podcast RSS feeds from audio files stored in Google Drive. The current show (`shows/social-psychology`) regenerates `shows/social-psychology/feeds/rss.xml` automatically via GitHub Actions, and the structure is ready for additional shows later on.
-
-
-
-*Denne side bliver opdateret manuelt.*## Repository layout
-
+## Repository layout
 - `podcast-tools/gdrive_podcast_feed.py` – shared generator script used by every show.
 - `shows/` – one directory per podcast. Each show keeps its own config, metadata, docs, and generated feeds (for example `shows/social-psychology/`).
 - `requirements.txt` – Python dependencies needed locally and in CI.

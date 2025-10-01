@@ -1,0 +1,115 @@
+{
+  "year": 2025,
+  "timezone": "Europe/Copenhagen",
+  "default_release": {
+    "weekday": 1,
+    "time": "10:00"
+  },
+  "increment_minutes": 120,
+  "rules": [
+    {
+      "iso_week": 36,
+      "course_week": 1,
+      "aliases": [
+        "w1",
+        "week 1"
+      ]
+    },
+    {
+      "iso_week": 37,
+      "course_week": 2,
+      "aliases": [
+        "w2",
+        "week 2"
+      ]
+    },
+    {
+      "iso_week": 38,
+      "course_week": 3,
+      "aliases": [
+        "w3",
+        "week 3"
+      ]
+    },
+    {
+      "iso_week": 39,
+      "course_week": 4,
+      "aliases": [
+        "w4",
+        "week 4"
+      ]
+    },
+    {
+      "iso_week": 40,
+      "course_week": 5,
+      "aliases": [
+        "w5",
+        "week 5"
+      ]
+    },
+    {
+      "iso_week": 41,
+      "course_week": 6,
+      "aliases": [
+        "w6",
+        "week 6"
+      ]
+    },
+    {
+      "iso_week": 42,
+      "course_week": 7,
+      "aliases": [
+        "w7",
+        "week 7"
+      ]
+    },
+    {
+      "iso_week": 43,
+      "course_week": 8,
+      "aliases": [
+        "w8",
+        "week 8"
+      ]
+    },
+    {
+      "iso_week": 44,
+      "course_week": 9,
+      "aliases": [
+        "w9",
+        "week 9"
+      ]
+    },
+    {
+      "iso_week": 45,
+      "course_week": 10,
+      "aliases": [
+        "w10",
+        "week 10"
+      ]
+    },
+    {
+      "iso_week": 46,
+      "course_week": 11,
+      "aliases": [
+        "w11",
+        "week 11"
+      ]
+    },
+    {
+      "iso_week": 47,
+      "course_week": 12,
+      "aliases": [
+        "w12",
+        "week 12"
+      ]
+    },
+    {
+      "iso_week": 48,
+      "course_week": 13,
+      "aliases": [
+        "w13",
+        "week 13"
+      ]
+    }
+  ]
+}

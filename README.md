@@ -370,20 +370,16 @@
     <main>
       <header class="hero">
         <div class="hero-content">
-          <h1>Hold 1 – 2025 Podcast Hub</h1>
+          <h1>Hold 1s Podcast Hub</h1>
           <p class="lead">
             Lyt til klassens Deep Dives, upload nye episoder på få minutter, og hold styr på ugens
             materiale ét sted. Siden synker direkte med Spotify og vores RSS-feed.
           </p>
-          <div class="cta-group">
-            <a class="cta primary" href="https://open.spotify.com/show/08cv2AZyBv2W9S8GiAysVP">Åbn Spotify-serien</a>
-            <a class="cta secondary" href="https://drive.google.com/drive/u/7/folders/1uPt6bHjivcD9z-Tw6Q2xbIld3bmH_WyI">Gå til Google Drive</a>
-          </div>
         </div>
       </header>
 
       <section>
-        <h2>Lyt med det samme</h2>
+        <h2>Socialpsykologi Deep Dives</h2>
         <p class="section-intro">
           Vælg din favoritplatform. Alle links peger direkte på klassens egen samling af episoder, så du
           kan lytte med det samme – uanset om du bruger Spotify, en RSS-læser eller Google Drive.
@@ -413,7 +409,7 @@
                 loading="lazy"
               />
             </figure>
-            <h3>Spotify-serien</h3>
+            <h3>Spotify</h3>
             <p>Lyt hvor som helst. Serien opdateres automatisk, når nye episoder uploades.</p>
             <a href="https://open.spotify.com/show/08cv2AZyBv2W9S8GiAysVP">
               Lyt på Spotify

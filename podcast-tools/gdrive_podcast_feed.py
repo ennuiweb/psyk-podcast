@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import datetime as dt
 import json
+import re
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Set, Tuple
 from zoneinfo import ZoneInfo
@@ -397,12 +398,22 @@ def build_folder_path(
     return path
 
 
+def week_label_from_folders(folder_names: List[str]) -> Optional[str]:
+    pattern = re.compile(r"^w\s*(\d+)", re.IGNORECASE)
+    for name in folder_names:
+        match = pattern.match(name.strip())
+        if match:
+            return f"Week {int(match.group(1))}"
+    return None
+
+
 def build_episode_entry(
     file_entry: Dict[str, Any],
     feed_config: Dict[str, Any],
     overrides: Dict[str, Any],
     public_link_template: str,
     auto_meta: Optional[Dict[str, Any]] = None,
+    folder_names: Optional[List[str]] = None,
 ) -> Dict[str, Any]:
     meta: Dict[str, Any] = {}
     if auto_meta:
@@ -410,6 +421,10 @@ def build_episode_entry(
     manual_meta = item_metadata(overrides, file_entry) or {}
     meta.update(manual_meta)
     base_title = file_entry["name"].rsplit(".", 1)[0]
+    if not meta.get("title"):
+        week_label = week_label_from_folders(folder_names or [])
+        if week_label and not base_title.lower().startswith("week"):
+            meta["title"] = f"{week_label}: {base_title}"
     pubdate_source = meta.get("published_at") or file_entry.get("modifiedTime")
     published_at = parse_datetime(pubdate_source)
 
@@ -613,6 +628,7 @@ def main() -> None:
                 overrides,
                 public_link_template=public_template,
                 auto_meta=auto_meta,
+                folder_names=folder_names,
             )
         )
 

@@ -27,7 +27,9 @@ Each show config can optionally supply `"allowed_mime_types"` to control which G
 The workflow installs `ffmpeg`, downloads each video, transcodes it locally, and uploads the audio back into the original Drive file (updating its name, MIME type, and content). Because the conversion happens in place, no additional storage quota is required and the feed generator only ever sees audio assets.
 
 ### Automatic dating from the teaching schedule
-Shows can point `auto_spec` at a JSON file that maps Drive folder labels to calendar weeks. The Social Psychology course ships with `shows/social-psychology/auto_spec.json`, generated from the teaching plan PDF. Each rule ties folder names like `W4 The Self` (anything that contains `w4`) to ISO week 39 of 2025 and sets a Monday 10:00 CET release, spacing additional recordings for that week by 120 minutes. Future recordings dropped into the matching `W*` folders automatically inherit the correct `published_at` timestamp without editing `episode_metadata.json`.
+Shows can point `auto_spec` at a JSON file that maps Drive folder labels to calendar weeks. The Socialpsykologi '25 Hold 1 Deep Dives show ships with `shows/social-psychology/auto_spec.json`, generated from the teaching plan PDF. Each rule ties folder names like `W4 The Self` (anything that contains `w4`) to ISO week 39 of 2025 and sets a Monday 10:00 CET release, spacing additional recordings for that week by 120 minutes. Future recordings dropped into the matching `W*` folders automatically inherit the correct `published_at` timestamp without editing `episode_metadata.json`.
+
+When an episode inherits its publish date from the auto spec (or otherwise lacks a manual title override), the feed generator also prepends the week label derived from the folder—`Week 7: …`, `Week 12: …`, etc.—so podcast apps display the curriculum order even when filenames in Drive stay short.
 
 ## One-time Google setup
 1. Enable the Google Drive API in a Google Cloud project.
@@ -46,7 +48,7 @@ python podcast/gdrive_podcast_feed.py --config podcast/config.local.json
 ```
 `podcast/rss.xml` is overwritten on each run.
 
-The repository ships with `podcast/config.json` and `podcast/episode_metadata.json` pre-populated for the Autumn 2025 Social Psychology course—update the titles, artwork, contact email, and descriptions to match your own show before publishing.
+The repository ships with `podcast/config.json` and `podcast/episode_metadata.json` pre-populated for Socialpsykologi '25 Hold 1 Deep Dives—update the titles, artwork, contact email, and descriptions to match your own show before publishing.
 
 ## Configure GitHub Actions
 1. Create two repository secrets:

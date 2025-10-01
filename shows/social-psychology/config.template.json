@@ -5,8 +5,7 @@
   "include_items_from_all_drives": false,
   "include_subfolders": false,
   "allowed_mime_types": [
-    "audio/",
-    "video/mp4"
+    "audio/"
   ],
   "transcode": {
     "enabled": true,
@@ -16,13 +15,13 @@
     "target_extension": "mp3",
     "target_mime_type": "audio/mpeg",
     "codec": "libmp3lame",
-    "bitrate": "160k",
-    "delete_source": true
+    "bitrate": "160k"
   },
   "skip_permission_updates": false,
   "output_feed": "shows/social-psychology/feeds/rss.xml",
   "public_link_template": "https://drive.google.com/uc?export=download&id={file_id}",
   "episode_metadata": "shows/social-psychology/episode_metadata.json",
+  "auto_spec": "shows/social-psychology/auto_spec.json",
   "feed": {
     "title": "Social Psychology: Theory & Method (Autumn 2025)",
     "link": "https://github.com/ennuiweb/psyk-podcast",

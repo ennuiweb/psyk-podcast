@@ -20,12 +20,11 @@ Each show config can optionally supply `"allowed_mime_types"` to control which G
   "target_extension": "mp3",
   "target_mime_type": "audio/mpeg",
   "codec": "libmp3lame",
-  "bitrate": "160k",
-  "delete_source": true
+  "bitrate": "160k"
 }
 ```
 
-The workflow installs `ffmpeg`, downloads each video, transcodes it to the specified format, uploads the audio back to the same folder (with public sharing enabled), and deletes the source video when `delete_source` is true. The feed generator then discovers only the new audio files.
+The workflow installs `ffmpeg`, downloads each video, transcodes it locally, and uploads the audio back into the original Drive file (updating its name, MIME type, and content). Because the conversion happens in place, no additional storage quota is required and the feed generator only ever sees audio assets.
 
 ## One-time Google setup
 1. Enable the Google Drive API in a Google Cloud project.

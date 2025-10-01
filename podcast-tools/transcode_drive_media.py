@@ -18,7 +18,6 @@ from googleapiclient.http import MediaFileUpload, MediaIoBaseDownload
 
 SCOPES = ["https://www.googleapis.com/auth/drive"]
 SOURCE_MARKER = "psyk_video_transcoded"
-AUDIO_SOURCE_PROPERTY = "psyk_source_video_id"
 
 
 def load_json(path: Path) -> Dict[str, Any]:
@@ -31,34 +30,6 @@ def build_drive_service(credentials_path: Path):
         str(credentials_path), scopes=SCOPES
     )
     return build("drive", "v3", credentials=credentials, cache_discovery=False)
-
-
-def ensure_public_permission(
-    service,
-    file_id: str,
-    *,
-    supports_all_drives: bool = False,
-) -> None:
-    params: Dict[str, Any] = {
-        "fileId": file_id,
-        "fields": "permissions(id,type,role)",
-        "pageSize": 50,
-    }
-    if supports_all_drives:
-        params["supportsAllDrives"] = True
-    permissions = service.permissions().list(**params).execute()
-    for permission in permissions.get("permissions", []):
-        if permission.get("type") == "anyone" and permission.get("role") in {"reader", "commenter"}:
-            return
-
-    create_params: Dict[str, Any] = {
-        "fileId": file_id,
-        "body": {"type": "anyone", "role": "reader", "allowFileDiscovery": False},
-        "fields": "id",
-    }
-    if supports_all_drives:
-        create_params["supportsAllDrives"] = True
-    service.permissions().create(**create_params).execute()
 
 
 def _drive_list(
@@ -177,57 +148,9 @@ def download_drive_file(service, file_id: str, destination: Path, *, supports_al
             _, done = downloader.next_chunk()
 
 
-def upload_audio_file(
-    service,
-    source_path: Path,
-    *,
-    name: str,
-    parent_id: str,
-    mime_type: str,
-    supports_all_drives: bool,
-    source_video_id: str,
-) -> str:
-    metadata: Dict[str, Any] = {
-        "name": name,
-        "parents": [parent_id],
-        "mimeType": mime_type,
-        "appProperties": {AUDIO_SOURCE_PROPERTY: source_video_id},
-    }
-    media = MediaFileUpload(str(source_path), mimetype=mime_type, resumable=True)
-    params: Dict[str, Any] = {"body": metadata, "media_body": media, "fields": "id"}
-    if supports_all_drives:
-        params["supportsAllDrives"] = True
-    created = service.files().create(**params).execute()
-    return created["id"]
-
-
 def format_target_name(original: str, extension: str) -> str:
     base = original.rsplit(".", 1)[0]
     return f"{base}.{extension.lstrip('.')}"
-
-
-def existing_audio_for_video(
-    service,
-    *,
-    folder_id: str,
-    video_id: str,
-    drive_id: Optional[str],
-    supports_all_drives: bool,
-) -> Optional[Dict[str, Any]]:
-    escaped = video_id.replace("'", "\\'")
-    query = (
-        f"'{folder_id}' in parents and appProperties has "
-        f"{{ key='{AUDIO_SOURCE_PROPERTY}' and value='{escaped}' }} and trashed = false"
-    )
-    fields = "nextPageToken, files(id,name,mimeType,parents)"
-    matches = _drive_list(
-        service,
-        query=query,
-        fields=fields,
-        drive_id=drive_id,
-        supports_all_drives=supports_all_drives,
-    )
-    return matches[0] if matches else None
 
 
 def run_ffmpeg(
@@ -258,24 +181,6 @@ def run_ffmpeg(
         raise RuntimeError(f"ffmpeg failed with exit code {result.returncode}")
 
 
-def delete_drive_file(service, file_id: str, *, supports_all_drives: bool) -> None:
-    params: Dict[str, Any] = {"fileId": file_id}
-    if supports_all_drives:
-        params["supportsAllDrives"] = True
-    service.files().delete(**params).execute()
-
-
-def update_video_marker(service, file_id: str, *, supports_all_drives: bool) -> None:
-    params: Dict[str, Any] = {
-        "fileId": file_id,
-        "body": {"appProperties": {SOURCE_MARKER: "true"}},
-        "fields": "id",
-    }
-    if supports_all_drives:
-        params["supportsAllDrives"] = True
-    service.files().update(**params).execute()
-
-
 def parse_transcode_config(config: Dict[str, Any]) -> Dict[str, Any]:
     settings = config.get("transcode") or {}
     if not settings or not settings.get("enabled", True):
@@ -286,7 +191,6 @@ def parse_transcode_config(config: Dict[str, Any]) -> Dict[str, Any]:
         "target_mime_type": settings.get("target_mime_type", "audio/mpeg"),
         "codec": settings.get("codec", "libmp3lame"),
         "bitrate": settings.get("bitrate", "160k"),
-        "delete_source": settings.get("delete_source", True),
         "extra_args": settings.get("extra_ffmpeg_args", []),
     }
 
@@ -324,27 +228,10 @@ def main() -> None:
     for video in source_files:
         video_id = video["id"]
         video_name = video["name"]
-        if video.get("appProperties", {}).get(SOURCE_MARKER) == "true":
-            print(f"Skipping {video_name}: already marked transcoded.")
-            continue
 
         parents = video.get("parents") or []
         if not parents:
             print(f"Skipping {video_name}: no parent folder information.")
-            continue
-        parent_id = parents[0]
-
-        existing_audio = existing_audio_for_video(
-            drive_service,
-            folder_id=parent_id,
-            video_id=video_id,
-            drive_id=shared_drive_id,
-            supports_all_drives=supports_all_drives,
-        )
-        if existing_audio:
-            print(f"Audio already exists for {video_name} (file {existing_audio['id']}); removing source video.")
-            if transcode_cfg["delete_source"]:
-                delete_drive_file(drive_service, video_id, supports_all_drives=supports_all_drives)
             continue
 
         target_name = format_target_name(video_name, transcode_cfg["target_extension"])
@@ -372,38 +259,26 @@ def main() -> None:
                     extra_args=transcode_cfg["extra_args"],
                 )
 
-                print(f"Uploading {target_name} to Drive…")
-                audio_id = upload_audio_file(
-                    drive_service,
-                    audio_path,
-                    name=target_name,
-                    parent_id=parent_id,
-                    mime_type=transcode_cfg["target_mime_type"],
-                    supports_all_drives=supports_all_drives,
-                    source_video_id=video_id,
+                print(f"Replacing Drive content with {target_name}…")
+                media = MediaFileUpload(
+                    str(audio_path), mimetype=transcode_cfg["target_mime_type"], resumable=True
                 )
+                update_body: Dict[str, Any] = {
+                    "name": target_name,
+                    "mimeType": transcode_cfg["target_mime_type"],
+                    "appProperties": {SOURCE_MARKER: "true"},
+                }
+                params: Dict[str, Any] = {
+                    "fileId": video_id,
+                    "body": update_body,
+                    "media_body": media,
+                    "fields": "id,mimeType,name",
+                }
+                if supports_all_drives:
+                    params["supportsAllDrives"] = True
+                drive_service.files().update(**params).execute()
 
-                ensure_public_permission(
-                    drive_service,
-                    audio_id,
-                    supports_all_drives=supports_all_drives,
-                )
-
-                update_video_marker(
-                    drive_service,
-                    video_id,
-                    supports_all_drives=supports_all_drives,
-                )
-
-                if transcode_cfg["delete_source"]:
-                    print(f"Deleting original video {video_name}…")
-                    delete_drive_file(
-                        drive_service,
-                        video_id,
-                        supports_all_drives=supports_all_drives,
-                    )
-
-                print(f"Completed {video_name} -> {target_name} (audio id {audio_id}).")
+                print(f"Completed {video_name} -> {target_name} in-place.")
 
             except Exception as exc:  # noqa: BLE001
                 failures += 1

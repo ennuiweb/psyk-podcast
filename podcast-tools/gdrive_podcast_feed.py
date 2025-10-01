@@ -7,7 +7,8 @@ import argparse
 import datetime as dt
 import json
 from pathlib import Path
-from typing import Any, Dict, Iterable, List, Optional, Set
+from typing import Any, Dict, Iterable, List, Optional, Set, Tuple
+from zoneinfo import ZoneInfo
 
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
@@ -104,7 +105,7 @@ def list_audio_files(
     pending: List[str] = [folder_id]
     seen: Set[str] = set()
     audio_fields = (
-        "nextPageToken, files(id,name,mimeType,size,modifiedTime,createdTime," "md5Checksum)"
+        "nextPageToken, files(id,name,mimeType,size,modifiedTime,createdTime,md5Checksum,parents)"
     )
     folder_fields = "nextPageToken, files(id,name)"
 
@@ -202,13 +203,214 @@ def item_metadata(overrides: Dict[str, Any], file_entry: Dict[str, Any]) -> Dict
     )
 
 
+class AutoSpec:
+    """Assign episode metadata based on Drive folder placement."""
+
+    def __init__(self, spec: Dict[str, Any], *, source: Optional[Path] = None) -> None:
+        self.source = source
+        try:
+            self.year = int(spec["year"])
+        except (KeyError, TypeError, ValueError) as exc:  # pragma: no cover - defensive
+            raise ValueError(f"Auto spec missing valid 'year' ({source})") from exc
+
+        tz_name = spec.get("timezone", "UTC")
+        try:
+            self.timezone = ZoneInfo(tz_name)
+        except Exception as exc:  # pragma: no cover - invalid timezone
+            raise ValueError(f"Invalid timezone '{tz_name}' in auto spec ({source})") from exc
+
+        default_release = spec.get("default_release", {}) or {}
+        self.default_weekday = int(default_release.get("weekday", 1))
+        self.default_time = default_release.get("time", "08:00")
+
+        self.rules: List[Dict[str, Any]] = []
+        for index, entry in enumerate(spec.get("rules", [])):
+            try:
+                iso_week = int(entry["iso_week"])
+            except (KeyError, TypeError, ValueError) as exc:
+                raise ValueError(f"Rule #{index} missing valid 'iso_week' ({source})") from exc
+
+            release = entry.get("release", {}) or {}
+            weekday = int(release.get("weekday", self.default_weekday))
+            time_token = release.get("time", self.default_time)
+            hour, minute, second = self._parse_time_token(time_token)
+            base_datetime = (
+                dt.datetime.fromisocalendar(self.year, iso_week, weekday)
+                .replace(hour=hour, minute=minute, second=second, tzinfo=self.timezone)
+            )
+
+            matches: List[str] = []
+            for field in ("match", "folder_labels", "labels", "aliases"):
+                tokens = entry.get(field)
+                if not tokens:
+                    continue
+                if isinstance(tokens, str):
+                    matches.append(tokens.lower())
+                else:
+                    matches.extend(str(token).lower() for token in tokens if token)
+
+            course_week = entry.get("course_week")
+            if course_week:
+                matches.append(str(course_week).lower())
+
+            # Helpful default aliases: "week 36" and "w36" for iso week 36.
+            matches.extend(
+                {
+                    f"w{iso_week}",
+                    f"week {iso_week}",
+                    str(iso_week),
+                }
+            )
+
+            increment = int(entry.get("increment_minutes", spec.get("increment_minutes", 5) or 5))
+
+            self.rules.append(
+                {
+                    "index": index,
+                    "iso_week": iso_week,
+                    "course_week": course_week,
+                    "topic": entry.get("topic"),
+                    "match": [token.strip() for token in matches if token and token.strip()],
+                    "base_datetime": base_datetime,
+                    "increment_minutes": max(increment, 0),
+                }
+            )
+
+        self._allocations: Dict[Tuple[int, Tuple[str, ...]], int] = {}
+
+    @staticmethod
+    def _parse_time_token(token: str) -> Tuple[int, int, int]:
+        parts = token.split(":") if token else []
+        if len(parts) == 1:
+            hour = int(parts[0])
+            return hour, 0, 0
+        if len(parts) == 2:
+            hour, minute = (int(parts[0]), int(parts[1]))
+            return hour, minute, 0
+        if len(parts) >= 3:
+            hour, minute, second = (int(parts[0]), int(parts[1]), int(parts[2]))
+            return hour, minute, second
+        return 8, 0, 0
+
+    @classmethod
+    def from_path(cls, path: Path) -> "AutoSpec":
+        data = load_json(path)
+        return cls(data, source=path)
+
+    def metadata_for(
+        self,
+        file_entry: Dict[str, Any],
+        folder_names: List[str],
+    ) -> Optional[Dict[str, Any]]:
+        if not self.rules:
+            return None
+
+        search_candidates = [name.lower() for name in folder_names]
+        if folder_names:
+            search_candidates.append("/".join(name.lower() for name in folder_names))
+        file_name = (file_entry.get("name") or "").lower()
+        if file_name:
+            search_candidates.append(file_name)
+
+        for rule in self.rules:
+            if not rule["match"]:
+                continue
+            if self._matches(rule["match"], search_candidates):
+                scheduled = self._allocate_datetime(rule, folder_names or [file_entry.get("id", "")])
+                return {"published_at": scheduled.isoformat()}
+        return None
+
+    @staticmethod
+    def _matches(tokens: List[str], candidates: List[str]) -> bool:
+        for token in tokens:
+            if not token:
+                continue
+            lower_token = token.lower()
+            for candidate in candidates:
+                if lower_token in candidate:
+                    return True
+        return False
+
+    def _allocate_datetime(self, rule: Dict[str, Any], folder_names: List[str]) -> dt.datetime:
+        key = (rule["index"], tuple(folder_names))
+        occurrence = self._allocations.get(key, 0)
+        self._allocations[key] = occurrence + 1
+        if occurrence == 0 or rule["increment_minutes"] == 0:
+            return rule["base_datetime"]
+        return rule["base_datetime"] + dt.timedelta(minutes=occurrence * rule["increment_minutes"])
+
+
+def get_folder_metadata(
+    service,
+    folder_id: str,
+    cache: Dict[str, Dict[str, Any]],
+    *,
+    supports_all_drives: bool,
+) -> Dict[str, Any]:
+    if folder_id in cache:
+        return cache[folder_id]
+    params: Dict[str, Any] = {"fileId": folder_id, "fields": "id,name,parents"}
+    if supports_all_drives:
+        params["supportsAllDrives"] = True
+    metadata = service.files().get(**params).execute()
+    cache[folder_id] = metadata
+    return metadata
+
+
+def build_folder_path(
+    service,
+    folder_id: str,
+    cache: Dict[str, Dict[str, Any]],
+    path_cache: Dict[str, List[str]],
+    *,
+    root_folder_id: str,
+    supports_all_drives: bool,
+) -> List[str]:
+    if folder_id == root_folder_id:
+        return []
+    if folder_id in path_cache:
+        return path_cache[folder_id]
+
+    metadata = get_folder_metadata(
+        service,
+        folder_id,
+        cache,
+        supports_all_drives=supports_all_drives,
+    )
+    parents = metadata.get("parents") or []
+    if parents:
+        parent_id = parents[0]
+        if parent_id == root_folder_id:
+            path = [metadata["name"]]
+        else:
+            parent_path = build_folder_path(
+                service,
+                parent_id,
+                cache,
+                path_cache,
+                root_folder_id=root_folder_id,
+                supports_all_drives=supports_all_drives,
+            )
+            path = parent_path + [metadata["name"]]
+    else:
+        path = [metadata["name"]]
+
+    path_cache[folder_id] = path
+    return path
+
+
 def build_episode_entry(
     file_entry: Dict[str, Any],
     feed_config: Dict[str, Any],
     overrides: Dict[str, Any],
     public_link_template: str,
+    auto_meta: Optional[Dict[str, Any]] = None,
 ) -> Dict[str, Any]:
-    meta = item_metadata(overrides, file_entry) or {}
+    meta: Dict[str, Any] = {}
+    if auto_meta:
+        meta.update(auto_meta)
+    manual_meta = item_metadata(overrides, file_entry) or {}
+    meta.update(manual_meta)
     base_title = file_entry["name"].rsplit(".", 1)[0]
     pubdate_source = meta.get("published_at") or file_entry.get("modifiedTime")
     published_at = parse_datetime(pubdate_source)
@@ -358,6 +560,18 @@ def main() -> None:
     if isinstance(allowed_mime_types, str):
         allowed_mime_types = [allowed_mime_types]
 
+    auto_spec: Optional[AutoSpec] = None
+    auto_spec_path_value = config.get("auto_spec")
+    if auto_spec_path_value:
+        auto_spec_path = Path(auto_spec_path_value)
+        if not auto_spec_path.exists():
+            candidate = args.config.parent / auto_spec_path_value
+            if candidate.exists():
+                auto_spec_path = candidate
+        if not auto_spec_path.exists():
+            raise SystemExit(f"Auto spec file not found: {auto_spec_path_value}")
+        auto_spec = AutoSpec.from_path(auto_spec_path)
+
     drive_files = list_audio_files(
         drive_service,
         folder_id,
@@ -368,6 +582,8 @@ def main() -> None:
     )
 
     episodes: List[Dict[str, Any]] = []
+    folder_metadata_cache: Dict[str, Dict[str, Any]] = {}
+    folder_path_cache: Dict[str, List[str]] = {}
     for drive_file in drive_files:
         permission_added = ensure_public_permission(
             drive_service,
@@ -378,12 +594,27 @@ def main() -> None:
         )
         if permission_added:
             print(f"Enabled link sharing for {drive_file['name']} ({drive_file['id']})")
+
+        parents = drive_file.get("parents") or []
+        folder_names: List[str] = []
+        if parents:
+            folder_names = build_folder_path(
+                drive_service,
+                parents[0],
+                folder_metadata_cache,
+                folder_path_cache,
+                root_folder_id=folder_id,
+                supports_all_drives=supports_all_drives,
+            )
+
+        auto_meta = auto_spec.metadata_for(drive_file, folder_names) if auto_spec else None
         episodes.append(
             build_episode_entry(
                 drive_file,
                 feed_cfg,
                 overrides,
                 public_link_template=public_template,
+                auto_meta=auto_meta,
             )
         )
 

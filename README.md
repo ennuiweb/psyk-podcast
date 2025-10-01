@@ -4,18 +4,22 @@ Velkommen til Socialpsykologi Deep Dives - Hold 1 - 2025, vores fælles bibliote
 
 ---
 
-## Lyt med det samme
-- **Google Drive-bibliotek:** https://drive.google.com/drive/u/7/folders/1uPt6bHjivcD9z-Tw6Q2xbIld3bmH_WyI
-- **Spotify-serien:** https://open.spotify.com/show/08cv2AZyBv2W9S8GiAysVP
+## Lyt 
+- **Google Drive:** [Åbn mappen](https://drive.google.com/drive/u/7/folders/1uPt6bHjivcD9z-Tw6Q2xbIld3bmH_WyI)
 
-[![Lyt på Spotify](https://upload.wikimedia.org/wikipedia/commons/2/26/Spotify_logo_with_text.svg)](https://open.spotify.com/show/08cv2AZyBv2W9S8GiAysVP)
-- **RSS-feed (kan sættes ind i enhver podcast-app):** https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/social-psychology/feeds/rss.xml
+- **Spotify:** [Lyt på Spotify](https://open.spotify.com/show/08cv2AZyBv2W9S8GiAysVP)
+
+[![Spotify](https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg)](https://open.spotify.com/show/08cv2AZyBv2W9S8GiAysVP)
+
+- **RSS-feed:** [Hent RSS-feedet](https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/social-psychology/feeds/rss.xml)
 
 ---
 
 ## Sådan fungerer systemet
 1. Hver undervisningsuge har sin egen mappe i Google Drive (for eksempel `W4 The Self`).
+
 2. Du laver en podcast på NotebookLM og henter lydfilen, som du lægger i den mappe, der matcher ugen.
+
 3. Du kan enten lytte direkte i Google Drive eller f.eks. på Spotify eller Apple Podcasts. Det kan tage lidt tid (20 min cirka) før nye filer bliver lavet til podcasts.
 ---
 

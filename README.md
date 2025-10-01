@@ -153,8 +153,8 @@
         position: relative;
         padding: 1.9rem;
         border-radius: 22px;
-        background: var(--card-bg);
-        border: 1px solid var(--card-border);
+        background: linear-gradient(145deg, #edf2ff 0%, #dbe6ff 100%);
+        border: 1px solid rgba(47, 94, 218, 0.18);
         backdrop-filter: blur(14px);
         box-shadow: 0 18px 36px rgba(22, 33, 61, 0.12);
         display: flex;
@@ -169,7 +169,7 @@
         inset: 0;
         border-radius: inherit;
         border: 1px solid transparent;
-        background: linear-gradient(120deg, rgba(47, 94, 218, 0.2), rgba(47, 94, 218, 0.06)) border-box;
+        background: linear-gradient(120deg, rgba(47, 94, 218, 0.25), rgba(47, 94, 218, 0.1)) border-box;
         mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
         mask-composite: exclude;
         pointer-events: none;

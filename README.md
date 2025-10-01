@@ -7,6 +7,8 @@ Velkommen til Socialpsykologi '25 Hold 1 Deep Dives, vores fælles bibliotek med
 ## Lyt med det samme
 - **Google Drive-bibliotek:** https://drive.google.com/drive/u/7/folders/1uPt6bHjivcD9z-Tw6Q2xbIld3bmH_WyI
 - **Spotify-serien:** https://open.spotify.com/show/08cv2AZyBv2W9S8GiAysVP
+
+[![Lyt på Spotify](https://developer.spotify.com/assets/branding-guidelines/Spotify_Logo_RGB_Green.png)](https://open.spotify.com/show/08cv2AZyBv2W9S8GiAysVP)
 - **RSS-feed (kan sættes ind i enhver podcast-app):** https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/social-psychology/feeds/rss.xml
 
 ---

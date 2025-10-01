@@ -143,237 +143,175 @@
         margin-bottom: 2rem;
       }
 
-      .card-grid {
+      .deep-dive-section {
+        margin-bottom: clamp(3.4rem, 7vw, 4.8rem);
+        display: flex;
+        justify-content: center;
+      }
+
+      .deep-dive-card {
+        width: min(100%, 720px);
+        padding: clamp(2.6rem, 6vw, 3.6rem);
+        border-radius: 28px;
+        background: linear-gradient(160deg, rgba(247, 249, 255, 0.98), rgba(231, 237, 255, 0.94));
+        border: 1px solid rgba(47, 94, 218, 0.16);
+        box-shadow: 0 26px 52px rgba(22, 33, 61, 0.14);
         display: grid;
-        gap: 1.6rem;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: clamp(1.6rem, 3vw, 2.2rem);
       }
 
-      .card {
-        position: relative;
-        padding: 1.9rem;
-        border-radius: 22px;
-        background: linear-gradient(145deg, #edf2ff 0%, #dbe6ff 100%);
-        border: 1px solid rgba(47, 94, 218, 0.18);
-        backdrop-filter: blur(14px);
-        box-shadow: 0 18px 36px rgba(22, 33, 61, 0.12);
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
-      }
-
-      .card::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        border-radius: inherit;
-        border: 1px solid transparent;
-        background: linear-gradient(120deg, rgba(47, 94, 218, 0.25), rgba(47, 94, 218, 0.1)) border-box;
-        mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-        mask-composite: exclude;
-        pointer-events: none;
-        opacity: 0;
-        transition: opacity 160ms ease;
-      }
-
-      .card:hover {
-        transform: translateY(-6px);
-        border-color: rgba(47, 94, 218, 0.35);
-        box-shadow: 0 22px 44px rgba(22, 33, 61, 0.16);
-      }
-
-      .card:hover::before {
-        opacity: 1;
-      }
-
-      .card h3 {
-        margin: 0;
-        font-size: 1.2rem;
-      }
-
-      .card p {
-        margin: 0;
-        color: var(--muted);
-      }
-
-      .card-icon {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: -0.6rem 0 0.5rem;
-      }
-
-      .card-icon img {
-        width: 68px;
-        height: 68px;
-        filter: drop-shadow(0 18px 30px rgba(47, 94, 218, 0.18));
-      }
-
-      .show-card {
-        align-items: center;
-        text-align: center;
-        gap: 1.2rem;
-        padding-inline: clamp(1.4rem, 5vw, 2.4rem);
-      }
-
-      .show-card h3 {
-        font-size: 1.45rem;
-      }
-
-      .show-summary {
-        margin: 0;
-        color: var(--muted);
-        max-width: 460px;
-      }
-
-      .show-links {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 0.8rem;
-        margin-top: 0.4rem;
-      }
-
-      .show-link {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0.65rem 1.4rem;
-        border-radius: 999px;
-        font-weight: 600;
-        text-decoration: none;
-        background: var(--subtle);
-        color: var(--fg);
-        transition: transform 150ms ease, background 150ms ease, box-shadow 150ms ease;
-      }
-
-      .show-link svg {
-        width: 18px;
-        height: 18px;
-      }
-
-      .show-link:hover {
-        transform: translateY(-2px);
-        background: rgba(47, 94, 218, 0.12);
-        box-shadow: 0 16px 28px rgba(22, 33, 61, 0.15);
-      }
-
-      .show-link.primary {
-        background: var(--accent);
-        color: var(--accent-contrast);
-        box-shadow: 0 16px 30px rgba(47, 94, 218, 0.25);
-      }
-
-      .show-link.primary:hover {
-        background: var(--accent-strong);
-        box-shadow: 0 20px 36px rgba(47, 94, 218, 0.28);
-      }
-
-      .card a {
+      .card-eyebrow {
         display: inline-flex;
         align-items: center;
         gap: 0.45rem;
+        padding: 0.4rem 1rem;
+        border-radius: 999px;
+        background: rgba(127, 168, 255, 0.18);
         color: var(--accent);
         font-weight: 600;
-        text-decoration: none;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        font-size: 0.78rem;
       }
 
-      .card a svg {
-        width: 18px;
-        height: 18px;
+      .deep-dive-card h2 {
+        margin: 0;
+        font-size: clamp(2rem, 4.2vw, 2.6rem);
       }
 
-      .card a:hover {
-        text-decoration: underline;
+      .card-intro {
+        margin: 0;
+        max-width: 560px;
+        color: var(--muted);
       }
 
-      .upload-card {
+      .drive-feature {
         position: relative;
-        margin-bottom: 2.6rem;
-        padding: clamp(1.8rem, 4vw, 2.6rem);
-        border-radius: 26px;
-        background: linear-gradient(135deg, rgba(47, 94, 218, 0.08), rgba(152, 176, 255, 0.18));
-        border: 1px solid rgba(47, 94, 218, 0.16);
-        box-shadow: 0 22px 40px rgba(22, 33, 61, 0.12);
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        gap: 1.6rem;
+        gap: clamp(1.3rem, 3vw, 2rem);
+        padding: clamp(1.8rem, 3.6vw, 2.4rem);
+        border-radius: 24px;
+        background: linear-gradient(155deg, rgba(47, 94, 218, 0.12), rgba(152, 176, 255, 0.18));
+        border: 1px solid rgba(47, 94, 218, 0.2);
+        box-shadow: 0 22px 40px rgba(22, 33, 61, 0.12);
         overflow: hidden;
       }
 
-      .upload-card::after {
+      .drive-feature::after {
         content: "";
         position: absolute;
-        inset: -45% 55% -35% -25%;
-        background: radial-gradient(circle, rgba(47, 94, 218, 0.12), transparent 60%);
-        opacity: 0.8;
+        inset: -45% 52% -36% -30%;
+        background: radial-gradient(circle, rgba(47, 94, 218, 0.16), transparent 65%);
+        opacity: 0.7;
         pointer-events: none;
       }
 
-      .upload-copy {
+      .drive-copy {
         position: relative;
         z-index: 1;
-        max-width: 540px;
         display: grid;
         gap: 0.9rem;
+        max-width: 460px;
       }
 
-      .upload-tag {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.35rem;
-        padding: 0.3rem 0.85rem;
-        border-radius: 999px;
-        background: rgba(47, 94, 218, 0.1);
-        color: var(--accent);
-        font-size: 0.78rem;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        font-weight: 600;
-      }
-
-      .upload-card h3 {
+      .drive-copy h3 {
         margin: 0;
-        font-size: clamp(1.4rem, 3vw, 1.8rem);
+        font-size: clamp(1.4rem, 3.1vw, 1.85rem);
       }
 
-      .upload-card p {
+      .drive-copy p {
         margin: 0;
         color: var(--muted);
       }
 
-      .upload-actions {
+      .drive-button {
         position: relative;
         z-index: 1;
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-      }
-
-      .upload-link {
         display: inline-flex;
         align-items: center;
-        gap: 0.55rem;
-        padding: 0.75rem 1.6rem;
+        gap: 0.6rem;
+        padding: 0.85rem 1.9rem;
         border-radius: 16px;
         background: var(--accent);
         color: var(--accent-contrast);
         font-weight: 600;
         text-decoration: none;
-        box-shadow: 0 18px 34px rgba(47, 94, 218, 0.22);
-        transition: transform 160ms ease, box-shadow 160ms ease;
+        box-shadow: 0 20px 36px rgba(47, 94, 218, 0.25);
+        transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
       }
 
-      .upload-link:hover {
+      .drive-button:hover {
         transform: translateY(-3px);
-        box-shadow: 0 26px 44px rgba(47, 94, 218, 0.28);
+        background: var(--accent-strong);
+        box-shadow: 0 26px 48px rgba(47, 94, 218, 0.28);
       }
 
-      .upload-link svg {
+      .drive-button svg {
         width: 18px;
         height: 18px;
+      }
+
+      .series-feature {
+        display: flex;
+        align-items: center;
+        gap: clamp(1.2rem, 2.8vw, 1.8rem);
+      }
+
+      .series-icon {
+        width: 64px;
+        height: 64px;
+        border-radius: 18px;
+        background: rgba(30, 215, 96, 0.15);
+        display: grid;
+        place-items: center;
+      }
+
+      .series-icon img {
+        width: 36px;
+        height: 36px;
+      }
+
+      .series-copy h3 {
+        margin: 0 0 0.6rem;
+        font-size: clamp(1.3rem, 2.8vw, 1.7rem);
+      }
+
+      .series-copy p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .series-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+      }
+
+      .series-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.55rem;
+        min-width: 164px;
+        padding: 0.75rem 1.6rem;
+        border-radius: 14px;
+        background: rgba(22, 33, 61, 0.08);
+        color: var(--fg);
+        font-weight: 600;
+        text-decoration: none;
+        transition: transform 160ms ease, background 160ms ease, box-shadow 160ms ease;
+      }
+
+      .series-button svg {
+        width: 18px;
+        height: 18px;
+      }
+
+      .series-button:hover {
+        transform: translateY(-2px);
+        background: rgba(47, 94, 218, 0.12);
+        box-shadow: 0 16px 28px rgba(22, 33, 61, 0.12);
       }
 
       .timeline {
@@ -461,19 +399,37 @@
           justify-content: center;
         }
 
-        .upload-card {
+        .deep-dive-card {
+          padding: 2.2rem;
+        }
+
+        .drive-feature {
           flex-direction: column;
           align-items: flex-start;
           padding: 1.8rem;
         }
 
-        .upload-actions {
-          width: 100%;
-        }
-
-        .upload-link {
+        .drive-button {
           width: 100%;
           justify-content: center;
+        }
+
+        .series-feature {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .series-icon {
+          width: 56px;
+          height: 56px;
+        }
+
+        .series-actions {
+          flex-direction: column;
+        }
+
+        .series-button {
+          width: 100%;
         }
 
         .timeline {
@@ -499,23 +455,24 @@
         </div>
       </header>
 
-      <section>
-        <h2>Socialpsykologi Deep Dives</h2>
-        <p class="section-intro">
-          Vores første show samler holdets Deep Dives uge for uge. Når der kommer flere serier, får de
-          deres egen plads nedenfor, så du tydeligt kan se hvad der er live.
-        </p>
-        <div class="upload-card">
-          <div class="upload-copy">
-            <span class="upload-tag">Nyt show?</span>
-            <h3>Upload direkte til holdets bibliotek</h3>
-            <p>
-              Læg lydfiler og assets i Google Drive for at starte en ny serie. Systemet synker automatisk
-              med Spotify og RSS, så resten af holdet kan lytte med det samme.
-            </p>
-          </div>
-          <div class="upload-actions">
-            <a class="upload-link" href="https://drive.google.com/drive/u/7/folders/1uPt6bHjivcD9z-Tw6Q2xbIld3bmH_WyI">
+      <section class="deep-dive-section">
+        <div class="deep-dive-card">
+          <span class="card-eyebrow">Nyt show?</span>
+          <h2>Socialpsykologi Deep Dives</h2>
+          <p class="card-intro">
+            Vores første show samler holdets Deep Dives uge for uge. Når der kommer flere serier, får de
+            deres egen plads nedenfor, så du tydeligt kan se hvad der er live.
+          </p>
+
+          <div class="drive-feature">
+            <div class="drive-copy">
+              <h3>Upload direkte til holdets bibliotek</h3>
+              <p>
+                Læg lydfiler og assets i Google Drive for at starte en ny serie. Systemet synker automatisk
+                med Spotify og RSS, så resten af holdet kan lytte med det samme.
+              </p>
+            </div>
+            <a class="drive-button" href="https://drive.google.com/drive/u/7/folders/1uPt6bHjivcD9z-Tw6Q2xbIld3bmH_WyI">
               <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M12 5v14m7-7H5"
@@ -528,55 +485,45 @@
               Åbn Google Drive
             </a>
           </div>
-        </div>
-        <div class="card-grid">
-          <article class="card show-card">
-            <figure class="card-icon">
+
+          <div class="series-feature">
+            <figure class="series-icon">
               <img
                 src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg"
                 alt="Spotify ikon"
                 loading="lazy"
               />
             </figure>
-            <h3>Hold 1 – 2025: Socialpsykologi Deep Dives</h3>
-            <p class="show-summary">
-              Dyk ned i ugens pensum, lavet af holdkammeraterne. Vælg mellem fulde episoder eller korte
-              briefs, alle synket til Spotify og dit podcast-feed.
-            </p>
-            <div class="show-links">
-              <a class="show-link primary" href="https://open.spotify.com/show/08cv2AZyBv2W9S8GiAysVP">
-                Lyt på Spotify
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M12 5a7 7 0 100 14 7 7 0 000-14z"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  />
-                  <path
-                    d="M8.5 11.3c2.05-.45 4.38-.2 6.14.55M9 13.7c1.65-.32 3.55-.18 5.08.37M9.4 15.9c1.2-.22 2.5-.13 3.58.26"
-                    stroke="currentColor"
-                    stroke-width="1.6"
-                    stroke-linecap="round"
-                  />
-                </svg>
-              </a>
-              <a class="show-link" href="https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/social-psychology/feeds/rss.xml">
-                RSS-feed
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M5 17a1 1 0 112 0 1 1 0 01-2 0z"
-                    fill="currentColor"
-                  />
-                  <path
-                    d="M5 8a9 9 0 019 9M5 4a13 13 0 0113 13"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                  />
-                </svg>
-              </a>
+            <div class="series-copy">
+              <h3>Hold 1 – 2025: Socialpsykologi Deep Dives</h3>
+              <p>
+                Dyk ned i ugens pensum, lavet af holdkammeraterne. Vælg mellem fulde episoder eller korte
+                briefs, alle synket til Spotify og dit podcast-feed.
+              </p>
             </div>
-          </article>
+          </div>
+
+          <div class="series-actions">
+            <a class="series-button" href="https://open.spotify.com/show/08cv2AZyBv2W9S8GiAysVP">
+              Lyt på Spotify
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 5a7 7 0 100 14 7 7 0 000-14z" stroke="currentColor" stroke-width="2" />
+                <path
+                  d="M8.5 11.3c2.05-.45 4.38-.2 6.14.55M9 13.7c1.65-.32 3.55-.18 5.08.37M9.4 15.9c1.2-.22 2.5-.13 3.58.26"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </a>
+            <a class="series-button" href="https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/social-psychology/feeds/rss.xml">
+              RSS-feed
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 17a1 1 0 112 0 1 1 0 01-2 0z" fill="currentColor" />
+                <path d="M5 8a9 9 0 019 9M5 4a13 13 0 0113 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              </svg>
+            </a>
+          </div>
         </div>
       </section>
 

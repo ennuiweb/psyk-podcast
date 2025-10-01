@@ -1,6 +1,6 @@
-# Socialpsykologi '25 Hold 1 Deep Dives
+# Socialpsykologi Deep Dives - Hold 1 - 2025
 
-Velkommen til Socialpsykologi '25 Hold 1 Deep Dives, vores fælles bibliotek med socialpsykologi-podcasts. Denne guide forklarer, hvordan du lytter, hvordan du uploader nye episoder, og hvad der sker i baggrunden, så alle er på samme side.
+Velkommen til Socialpsykologi Deep Dives - Hold 1 - 2025, vores fælles bibliotek med socialpsykologi-podcasts. Denne guide forklarer, hvordan du lytter, hvordan du uploader nye episoder, og hvad der sker i baggrunden, så alle er på samme side.
 
 ---
 

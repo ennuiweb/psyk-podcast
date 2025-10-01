@@ -4,6 +4,10 @@
   "shared_drive_id": null,
   "include_items_from_all_drives": false,
   "include_subfolders": false,
+  "allowed_mime_types": [
+    "audio/",
+    "video/mp4"
+  ],
   "skip_permission_updates": false,
   "output_feed": "shows/social-psychology/feeds/rss.xml",
   "public_link_template": "https://drive.google.com/uc?export=download&id={file_id}",

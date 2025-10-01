@@ -7,6 +7,9 @@ Automation to build podcast RSS feeds from audio files stored in Google Drive. T
 - `shows/` – one directory per podcast. Each show keeps its own config, metadata, docs, and generated feeds (for example `shows/social-psychology/`).
 - `requirements.txt` – Python dependencies needed locally and in CI.
 
+### MIME type filtering
+Each show config can optionally supply `"allowed_mime_types"` to control which Google Drive items should become feed entries. Values ending with `/` are treated as prefixes (for example `"audio/"`), while exact MIME types (such as `"video/mp4"`) match specific files. The default behaviour includes only audio files, so add types like `"video/mp4"` if you want lecture videos to appear in the feed without manual conversion.
+
 ## One-time Google setup
 1. Enable the Google Drive API in a Google Cloud project.
 2. Create a service account, download the JSON key, and keep it private.

@@ -77,6 +77,20 @@ def _drive_list(
     return entries
 
 
+def _build_mime_query(filters: Optional[Iterable[str]]) -> str:
+    terms = [term for term in (filters or ["audio/"]) if term]
+    clauses: List[str] = []
+    for term in terms:
+        sanitized = term.replace("'", "\\'")
+        if term.endswith("/"):
+            clauses.append(f"mimeType contains '{sanitized}'")
+        else:
+            clauses.append(f"mimeType = '{sanitized}'")
+    if not clauses:
+        clauses.append("mimeType contains 'audio/'")
+    return "(" + " or ".join(clauses) + ")"
+
+
 def list_audio_files(
     service,
     folder_id: str,
@@ -84,6 +98,7 @@ def list_audio_files(
     drive_id: Optional[str] = None,
     supports_all_drives: bool = False,
     include_subfolders: bool = False,
+    mime_type_filters: Optional[Iterable[str]] = None,
 ) -> List[Dict[str, Any]]:
     files: List[Dict[str, Any]] = []
     pending: List[str] = [folder_id]
@@ -93,13 +108,15 @@ def list_audio_files(
     )
     folder_fields = "nextPageToken, files(id,name)"
 
+    mime_filter_clause = _build_mime_query(mime_type_filters)
+
     while pending:
         current_folder = pending.pop(0)
         if current_folder in seen:
             continue
         seen.add(current_folder)
 
-        query = f"'{current_folder}' in parents and mimeType contains 'audio/' and trashed = false"
+        query = f"'{current_folder}' in parents and {mime_filter_clause} and trashed = false"
         files.extend(
             _drive_list(
                 service,
@@ -337,6 +354,9 @@ def main() -> None:
     supports_all_drives = bool(config.get("include_items_from_all_drives", shared_drive_id is not None))
     include_subfolders = bool(config.get("include_subfolders", False))
     skip_permission_updates = bool(config.get("skip_permission_updates", False))
+    allowed_mime_types = config.get("allowed_mime_types")
+    if isinstance(allowed_mime_types, str):
+        allowed_mime_types = [allowed_mime_types]
 
     drive_files = list_audio_files(
         drive_service,
@@ -344,6 +364,7 @@ def main() -> None:
         drive_id=shared_drive_id,
         supports_all_drives=supports_all_drives,
         include_subfolders=include_subfolders,
+        mime_type_filters=allowed_mime_types,
     )
 
     episodes: List[Dict[str, Any]] = []

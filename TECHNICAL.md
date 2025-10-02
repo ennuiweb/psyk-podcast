@@ -195,8 +195,11 @@ The workflow (`.github/workflows/generate-feed.yml`) runs on a daily cron and on
 - install dependencies;
 - write the service-account JSON secret to `podcast/service_account.json` via an inline Python helper;
 - inject the Drive folder ID into a temporary config file;
+- probe Drive for video files, installing `ffmpeg` and running the transcoder only when matches are found;
 - run the generator script;
 - commit an updated `podcast/rss.xml` back to the default branch when it changes.
+
+The probe uses `transcode_drive_media.py --check-only` so the job skips `apt-get install ffmpeg` entirely when the Drive folder already contains audio-only assets.
 
 Ensure the default branch has permissions for GitHub Actions to push (`Repository Settings → Actions → General → Workflow permissions → Read and write`).
 

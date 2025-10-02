@@ -36,9 +36,6 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install ffmpeg
-        run: sudo apt-get update && sudo apt-get install -y ffmpeg
-
       - name: Install dependencies
         run: pip install -r requirements.txt
 
@@ -73,7 +70,20 @@ jobs:
               json.dump(data, fh, indent=2)
           PY
 
+      - name: Check Drive for videos needing transcode
+        id: probe_transcode
+        run: |
+          python podcast-tools/transcode_drive_media.py \
+            --config shows/social-psychology/config.runtime.json \
+            --check-only \
+            --github-output "$GITHUB_OUTPUT"
+
+      - name: Install ffmpeg
+        if: steps.probe_transcode.outputs.needs_transcode == 'true'
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg
+
       - name: Transcode Drive media
+        if: steps.probe_transcode.outputs.needs_transcode == 'true'
         run: python podcast-tools/transcode_drive_media.py --config shows/social-psychology/config.runtime.json
 
       - name: Generate feed

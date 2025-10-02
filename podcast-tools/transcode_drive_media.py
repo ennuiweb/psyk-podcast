@@ -195,13 +195,42 @@ def parse_transcode_config(config: Dict[str, Any]) -> Dict[str, Any]:
     }
 
 
+def write_github_output(path: Optional[Path], needs_transcode: bool) -> None:
+    """Append the probe result to a GitHub Actions output file."""
+
+    if not path:
+        return
+    try:
+        with path.open("a", encoding="utf-8") as handle:
+            handle.write(f"needs_transcode={'true' if needs_transcode else 'false'}\n")
+    except OSError as exc:  # pragma: no cover - logging best effort only
+        print(f"Failed to write GitHub output: {exc}", file=sys.stderr)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--config", required=True, type=Path, help="Path to JSON config file")
+    parser.add_argument(
+        "--check-only",
+        action="store_true",
+        help="Skip transcoding and only report whether matching media exists",
+    )
+    parser.add_argument(
+        "--github-output",
+        type=Path,
+        help="Append needs_transcode flag to the provided GitHub Actions output file",
+    )
     args = parser.parse_args()
 
     config = load_json(args.config)
-    transcode_cfg = parse_transcode_config(config)
+    try:
+        transcode_cfg = parse_transcode_config(config)
+    except SystemExit:
+        if args.check_only:
+            write_github_output(args.github_output, False)
+            print("Transcode settings disabled; skipping Drive scan.")
+            return
+        raise
 
     service_account_path = Path(config["service_account_file"])
     drive_service = build_drive_service(service_account_path)
@@ -220,8 +249,15 @@ def main() -> None:
         mime_type_filters=transcode_cfg["source_mime_types"],
     )
 
-    if not source_files:
+    needs_transcode = bool(source_files)
+    write_github_output(args.github_output, needs_transcode)
+
+    if not needs_transcode:
         print("No matching media found; nothing to transcode.")
+        return
+
+    if args.check_only:
+        print(f"Found {len(source_files)} matching media file(s); transcode required.")
         return
 
     failures = 0

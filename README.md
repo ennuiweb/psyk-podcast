@@ -457,7 +457,6 @@
 
       <section class="deep-dive-section">
         <div class="deep-dive-card">
-          <span class="card-eyebrow">Nyt show?</span>
           <h2>Socialpsykologi Deep Dives</h2>
           <p class="card-intro">
             Vores første show samler holdets Deep Dives uge for uge. Når der kommer flere serier, får de

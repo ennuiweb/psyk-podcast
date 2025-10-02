@@ -63,22 +63,27 @@ To kick off a build manually, go to **Actions → Generate Podcast Feed → Run 
 If you want the GitHub workflow to fire whenever fresh audio appears in Drive, add a lightweight Apps Script that polls the folder and calls the `Generate Podcast Feed` workflow via `workflow_dispatch`.
 
 1. Visit [script.google.com](https://script.google.com/), create a new project, and paste the helper script below into `Code.gs`. Update the `CONFIG.github` block if you fork the repository or rename the workflow file.
-2. In **Project Settings → Script properties** add a property whose key matches `CONFIG.github.tokenProperty` (`GITHUB_PAT` by default) and set its value to a GitHub personal access token with the `repo` and `workflow` scopes.
-3. Back in the editor, run `initializeLastProcessed()` once to seed the timestamp, then run `checkDriveAndTrigger()` to accept the Drive + external API scopes and manually confirm a dispatch.
-4. Open the clock icon (**Triggers**) → **Add trigger**, select `checkDriveAndTrigger`, choose a time-driven interval (for example every 15 minutes), and save.
-5. Drop a new audio file into the Drive folder, wait for the next trigger, and confirm the Action appears under **Actions → Generate Podcast Feed**.
+2. In the left toolbar, open **Services** (puzzle icon) and enable the **Drive API** advanced service. If Apps Script prompts you to enable the API in Google Cloud, follow the link and flip it on there as well.
+3. In **Project Settings → Script properties** add a property whose key matches `CONFIG.github.tokenProperty` (`GITHUB_PAT` by default) and set its value to a GitHub personal access token with the `repo` and `workflow` scopes.
+4. Back in the editor, run `initializeDriveChangeState()` once to capture the current Drive snapshot and seed the change log token.
+5. Run `checkDriveAndTrigger()` manually to accept the Drive + external API scopes and confirm the workflow dispatch.
+6. Open the clock icon (**Triggers**) → **Add trigger**, select `checkDriveAndTrigger`, choose a time-driven interval (for example every 15 minutes), and save.
+
+The repository keeps this helper at `apps-script/drive_change_trigger.gs` so you can copy/paste the latest version straight into Apps Script without hunting through the docs.
 
 ### Apps Script helper
 ```javascript
 /**
- * Polls a Drive folder for new audio files and triggers the
- * ennuiweb/psyk-podcast GitHub Actions workflow via workflow_dispatch.
+ * Polls the Drive change log for the podcast folder and triggers the
+ * ennuiweb/psyk-podcast GitHub Actions workflow via workflow_dispatch
+ * whenever a tracked file is added, removed, renamed, moved, or updated.
  */
 const CONFIG = {
   drive: {
     folderId: '1uPt6bHjivcD9z-Tw6Q2xbIld3bmH_WyI',
     includeSubfolders: true,
-    audioMimePrefix: 'audio/',
+    mimePrefixes: ['audio/'], // Set to [] to react to every file type.
+    sharedDriveId: null,      // Leave null for shared folders in "My Drive".
   },
   github: {
     owner: 'ennuiweb',
@@ -88,50 +93,240 @@ const CONFIG = {
     inputs: {},
     tokenProperty: 'GITHUB_PAT',
   },
-  stateProperty: 'LAST_PROCESSED_TS',
+  state: {
+    pageTokenKey: 'DRIVE_CHANGES_PAGE_TOKEN',
+    fileIdsKey: 'KNOWN_DRIVE_FILE_IDS',
+    folderIdsKey: 'KNOWN_DRIVE_FOLDER_IDS',
+  },
 };
 
 function checkDriveAndTrigger() {
-  const folderIds = CONFIG.drive.includeSubfolders
-    ? getAllFolderIds(CONFIG.drive.folderId)
-    : [CONFIG.drive.folderId];
-
   const props = PropertiesService.getScriptProperties();
-  const since = Number(props.getProperty(CONFIG.stateProperty)) || 0;
-  let newest = since;
-  let foundNewFile = false;
+  const currentToken = props.getProperty(CONFIG.state.pageTokenKey);
+  if (!currentToken) {
+    throw new Error('Run initializeDriveChangeState() before scheduling triggers.');
+  }
 
-  folderIds.forEach((id) => {
-    const folder = DriveApp.getFolderById(id);
-    const files = folder.getFiles();
-    while (files.hasNext()) {
-      const file = files.next();
-      if (!file.getMimeType().startsWith(CONFIG.drive.audioMimePrefix)) continue;
-      const created = file.getDateCreated().getTime();
-      if (created > newest) newest = created;
-      if (created > since) {
-        foundNewFile = true;
+  const knownFileIds = new Set(JSON.parse(props.getProperty(CONFIG.state.fileIdsKey) || '[]'));
+  const knownFolderIds = new Set(JSON.parse(props.getProperty(CONFIG.state.folderIdsKey) || '[]'));
+  knownFolderIds.add(CONFIG.drive.folderId);
+
+  let changesApplied = false;
+  let pageToken = currentToken;
+  let latestStartToken = currentToken;
+  const folderAncestryCache = new Map();
+
+  do {
+    const response = Drive.Changes.list(buildChangeQuery(pageToken));
+    const changes = response.changes || [];
+
+    changes.forEach((change) => {
+      const fileId = change.fileId;
+      const file = change.file;
+      const wasKnown = knownFileIds.has(fileId);
+      const wasFolder = knownFolderIds.has(fileId);
+      const isRemoval = change.removed || (file && file.trashed);
+
+      if (isRemoval) {
+        if (wasKnown) {
+          knownFileIds.delete(fileId);
+          changesApplied = true;
+        }
+        if (wasFolder && fileId !== CONFIG.drive.folderId) {
+          knownFolderIds.delete(fileId);
+          changesApplied = true;
+        }
+        return;
       }
+
+      if (!file) return;
+
+      const isFolder = file.mimeType === 'application/vnd.google-apps.folder';
+      const isInside = isWithinWatchedTree(file.parents || [], knownFolderIds, folderAncestryCache);
+
+      if (isFolder) {
+        if (isInside) {
+          if (!knownFolderIds.has(fileId)) {
+            knownFolderIds.add(fileId);
+            changesApplied = true;
+          }
+        } else if (knownFolderIds.delete(fileId)) {
+          changesApplied = true;
+        }
+        return;
+      }
+
+      if (!matchesMimeType(file.mimeType)) {
+        if (wasKnown) {
+          knownFileIds.delete(fileId);
+          changesApplied = true;
+        }
+        return;
+      }
+
+      if (isInside) {
+        if (!wasKnown) {
+          knownFileIds.add(fileId);
+        }
+        changesApplied = true;
+      } else if (wasKnown) {
+        knownFileIds.delete(fileId);
+        changesApplied = true;
+      }
+    });
+
+    pageToken = response.nextPageToken;
+    if (!pageToken && response.newStartPageToken) {
+      latestStartToken = response.newStartPageToken;
     }
-  });
+  } while (pageToken);
 
-  if (!foundNewFile) return;
+  props.setProperty(CONFIG.state.pageTokenKey, latestStartToken);
+  props.setProperty(CONFIG.state.fileIdsKey, JSON.stringify([...knownFileIds]));
+  props.setProperty(CONFIG.state.folderIdsKey, JSON.stringify([...knownFolderIds]));
 
-  triggerGithubWorkflow();
-  props.setProperty(CONFIG.stateProperty, String(newest));
+  if (changesApplied) {
+    triggerGithubWorkflow();
+  }
 }
 
-function initializeLastProcessed() {
-  const folder = DriveApp.getFolderById(CONFIG.drive.folderId);
-  const files = folder.getFiles();
-  let latest = 0;
-  while (files.hasNext()) {
-    const file = files.next();
-    if (!file.getMimeType().startsWith(CONFIG.drive.audioMimePrefix)) continue;
-    latest = Math.max(latest, file.getDateCreated().getTime());
+function initializeDriveChangeState() {
+  const props = PropertiesService.getScriptProperties();
+  const startToken = Drive.Changes.getStartPageToken(buildStartTokenQuery()).startPageToken;
+  const snapshot = snapshotCurrentTree();
+
+  props.setProperties({
+    [CONFIG.state.pageTokenKey]: startToken,
+    [CONFIG.state.fileIdsKey]: JSON.stringify(snapshot.fileIds),
+    [CONFIG.state.folderIdsKey]: JSON.stringify(snapshot.folderIds),
+  }, true);
+}
+
+function buildChangeQuery(pageToken) {
+  const query = {
+    pageToken,
+    includeRemoved: true,
+    includeItemsFromAllDrives: true,
+    supportsAllDrives: true,
+    spaces: 'drive',
+    pageSize: 100,
+    fields: 'nextPageToken,newStartPageToken,changes(fileId,removed,file(id,name,mimeType,parents,trashed)))',
+  };
+
+  if (CONFIG.drive.sharedDriveId) {
+    query.driveId = CONFIG.drive.sharedDriveId;
+    query.corpora = 'drive';
+  } else {
+    query.restrictToMyDrive = true;
   }
-  PropertiesService.getScriptProperties()
-    .setProperty(CONFIG.stateProperty, String(latest));
+
+  return query;
+}
+
+function buildStartTokenQuery() {
+  const query = { supportsAllDrives: true };
+  if (CONFIG.drive.sharedDriveId) {
+    query.driveId = CONFIG.drive.sharedDriveId;
+  }
+  return query;
+}
+
+function snapshotCurrentTree() {
+  const folderIds = new Set([CONFIG.drive.folderId]);
+  const fileIds = new Set();
+
+  if (CONFIG.drive.includeSubfolders) {
+    const queue = [CONFIG.drive.folderId];
+    while (queue.length) {
+      const head = queue.shift();
+      listChildren(head).forEach((item) => {
+        if (item.mimeType === 'application/vnd.google-apps.folder') {
+          if (!folderIds.has(item.id)) {
+            folderIds.add(item.id);
+            queue.push(item.id);
+          }
+        } else if (matchesMimeType(item.mimeType)) {
+          fileIds.add(item.id);
+        }
+      });
+    }
+  } else {
+    listChildren(CONFIG.drive.folderId).forEach((item) => {
+      if (item.mimeType === 'application/vnd.google-apps.folder') return;
+      if (matchesMimeType(item.mimeType)) fileIds.add(item.id);
+    });
+  }
+
+  return {
+    folderIds: [...folderIds],
+    fileIds: [...fileIds],
+  };
+}
+
+function listChildren(parentId) {
+  const items = [];
+  let pageToken;
+  do {
+    const request = {
+      q: `'${parentId}' in parents and trashed = false`,
+      includeItemsFromAllDrives: true,
+      supportsAllDrives: true,
+      pageSize: 100,
+      fields: 'files(id,mimeType),nextPageToken',
+      pageToken,
+    };
+
+    if (CONFIG.drive.sharedDriveId) {
+      request.driveId = CONFIG.drive.sharedDriveId;
+      request.corpora = 'drive';
+    }
+
+    const response = Drive.Files.list(request);
+    (response.files || []).forEach((item) => items.push(item));
+    pageToken = response.nextPageToken;
+  } while (pageToken);
+
+  return items;
+}
+
+function matchesMimeType(mimeType) {
+  const prefixes = CONFIG.drive.mimePrefixes || [];
+  if (!prefixes.length) return true;
+  return prefixes.some((prefix) => {
+    if (prefix.endsWith('/')) return mimeType.startsWith(prefix);
+    return mimeType === prefix;
+  });
+}
+
+function isWithinWatchedTree(parentIds, knownFolderIds, cache) {
+  for (const parentId of parentIds) {
+    if (parentId === CONFIG.drive.folderId) return true;
+    if (knownFolderIds.has(parentId)) return true;
+    if (cache.has(parentId)) {
+      if (cache.get(parentId)) {
+        knownFolderIds.add(parentId);
+        return true;
+      }
+      continue;
+    }
+
+    const parent = Drive.Files.get(parentId, {
+      fields: 'id,mimeType,parents',
+      supportsAllDrives: true,
+    });
+
+    const isFolder = parent.mimeType === 'application/vnd.google-apps.folder';
+    const result = isFolder && parent.parents
+      ? isWithinWatchedTree(parent.parents, knownFolderIds, cache)
+      : false;
+
+    cache.set(parentId, result);
+    if (result) {
+      knownFolderIds.add(parentId);
+      return true;
+    }
+  }
+  return false;
 }
 
 function triggerGithubWorkflow() {
@@ -163,43 +358,27 @@ function triggerGithubWorkflow() {
     throw new Error(`GitHub dispatch failed: ${response.getContentText()}`);
   }
 }
-
-function getAllFolderIds(rootId) {
-  const queue = [rootId];
-  const result = [];
-  while (queue.length) {
-    const id = queue.shift();
-    result.push(id);
-    const folder = DriveApp.getFolderById(id);
-    const subFolders = folder.getFolders();
-    while (subFolders.hasNext()) {
-      queue.push(subFolders.next().getId());
-    }
-  }
-  return result;
-}
 ```
 
 Adjust the script if you run the workflow from a different branch or need to pass `workflow_dispatch` inputs—set them inside `CONFIG.github.inputs`.
 
+The helper stores its Drive state in script properties (`CONFIG.state.*`) so it can detect renames, moves, deletions, and permission flips as well as new uploads. Re-run `initializeDriveChangeState()` if you swap to a new Drive folder or manually clear the stored properties. Set `CONFIG.drive.mimePrefixes` to `[]` when you want to trigger on every file type instead of only audio.
+
 
 ### Using shared drives
-- If the Google Drive folder lives inside a Shared Drive (formerly Team Drive), set the `shared_drive_id` field in the config to that drive's ID (the portion after `/drives/` in the URL).
-- Keep `include_items_from_all_drives` set to `true` so the Drive API can enumerate the contents.
-- Grant the service account at least Viewer access on the shared drive itself (Sharing → Manage members). It is not enough to share a single folder if the account isn't a member of the drive.
-- Turn on `include_subfolders` when you want the generator to crawl nested folders; the script performs a breadth-first walk and includes every audio file it finds.
-- Set `skip_permission_updates` to `true` if your service account already has publicly shared files or lacks permission to modify sharing settings; the generator will then leave Drive permissions untouched. Turn it back to `false` once the account can manage sharing so new uploads become public automatically.
+- In your show config (`shows/.../config.json`), keep `shared_drive_id` set to the shared drive's ID and leave `include_items_from_all_drives` enabled so the generator can enumerate everything.
+- Update the Apps Script helper by setting `CONFIG.drive.sharedDriveId` to the same ID; the change poller will stay scoped to that drive automatically.
+- Grant the service account at least Viewer access on the shared drive itself (Sharing → Manage members). Sharing only a subfolder is not sufficient.
+- Leave `CONFIG.drive.includeSubfolders` enabled when you expect nested week folders—the helper will walk them and track newly created subfolders.
+- Set `skip_permission_updates` to `true` in the show config if your service account cannot modify sharing; flip it back once access is restored so new uploads become public automatically.
 
 The workflow (`.github/workflows/generate-feed.yml`) runs on a daily cron and on manual trigger (`workflow_dispatch`). It performs these steps:
 - check out the repository;
 - install dependencies;
 - write the service-account JSON secret to `podcast/service_account.json` via an inline Python helper;
 - inject the Drive folder ID into a temporary config file;
-- probe Drive for video files, installing `ffmpeg` and running the transcoder only when matches are found;
 - run the generator script;
 - commit an updated `podcast/rss.xml` back to the default branch when it changes.
-
-The probe uses `transcode_drive_media.py --check-only` so the job skips `apt-get install ffmpeg` entirely when the Drive folder already contains audio-only assets.
 
 Ensure the default branch has permissions for GitHub Actions to push (`Repository Settings → Actions → General → Workflow permissions → Read and write`).
 

@@ -2,7 +2,7 @@
   "service_account_file": "shows/social-psychology/service-account.json",
   "drive_folder_id": "REPLACE_WITH_FOLDER_ID",
   "shared_drive_id": null,
-  "include_items_from_all_drives": false,
+  "include_items_from_all_drives": true,
   "include_subfolders": false,
   "allowed_mime_types": [
     "audio/"

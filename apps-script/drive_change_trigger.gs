@@ -1,14 +1,14 @@
 /**
- * Polls the Drive change log for the podcast folder and triggers the
- * ennuiweb/psyk-podcast GitHub Actions workflow via workflow_dispatch
- * whenever a tracked file is added, removed, renamed, moved, or updated.
+ * Polls Google Drive for changes inside the podcast folder and dispatches
+ * the ennuiweb/psyk-podcast GitHub Actions workflow when files are added,
+ * removed, renamed, moved, or otherwise updated.
  *
  * Before first run:
  * 1. Update CONFIG as needed.
  * 2. In Extensions → Apps Script → Services, enable the Drive API advanced service
- *    (and enable the API in Google Cloud if prompted).
- * 3. In Project Settings → Script properties, add CONFIG.github.tokenProperty
- *    (default: GITHUB_PAT) with a PAT that carries repo + workflow scopes.
+ *    (enable the API in Google Cloud if prompted).
+ * 3. In Project Settings → Script properties, store CONFIG.github.tokenProperty
+ *    (default: GITHUB_PAT) with a PAT that has repo + workflow scopes.
  * 4. Run initializeDriveChangeState() once to capture the current Drive snapshot.
  * 5. Run checkDriveAndTrigger() manually to grant scopes.
  * 6. Create a time-driven trigger for checkDriveAndTrigger().
@@ -29,166 +29,184 @@ const CONFIG = {
     tokenProperty: 'GITHUB_PAT',
   },
   state: {
-    pageTokenKey: 'DRIVE_CHANGES_PAGE_TOKEN',
-    fileIdsKey: 'KNOWN_DRIVE_FILE_IDS',
-    folderIdsKey: 'KNOWN_DRIVE_FOLDER_IDS',
+    snapshotKey: 'DRIVE_TREE_SNAPSHOT',
   },
 };
 
+const FOLDER_MIME = 'application/vnd.google-apps.folder';
+
 function checkDriveAndTrigger() {
   const props = PropertiesService.getScriptProperties();
-  const currentToken = props.getProperty(CONFIG.state.pageTokenKey);
-  if (!currentToken) {
+  const rawSnapshot = props.getProperty(CONFIG.state.snapshotKey);
+  if (!rawSnapshot) {
     throw new Error('Run initializeDriveChangeState() before scheduling triggers.');
   }
 
-  const knownFileIds = new Set(JSON.parse(props.getProperty(CONFIG.state.fileIdsKey) || '[]'));
-  const knownFolderIds = new Set(JSON.parse(props.getProperty(CONFIG.state.folderIdsKey) || '[]'));
-  knownFolderIds.add(CONFIG.drive.folderId);
+  const previousSnapshot = JSON.parse(rawSnapshot);
+  const currentSnapshot = snapshotCurrentTree();
 
-  let pageToken = currentToken;
-  let latestStartToken = currentToken;
-  let changesApplied = false;
-  const folderCache = new Map();
+  const diff = detectChanges(previousSnapshot, currentSnapshot);
 
-  do {
-    const response = Drive.Changes.list(buildChangeQuery(pageToken));
-    const changes = response.changes || [];
+  props.setProperty(CONFIG.state.snapshotKey, JSON.stringify(currentSnapshot));
 
-    changes.forEach((change) => {
-      const fileId = change.fileId;
-      const file = change.file;
-      const wasKnownFile = knownFileIds.has(fileId);
-      const wasKnownFolder = knownFolderIds.has(fileId);
-      const isRemoval = change.removed || (file && file.trashed);
-
-      if (isRemoval) {
-        if (wasKnownFile) {
-          knownFileIds.delete(fileId);
-          changesApplied = true;
-        }
-        if (wasKnownFolder && fileId !== CONFIG.drive.folderId) {
-          knownFolderIds.delete(fileId);
-          changesApplied = true;
-        }
-        return;
-      }
-
-      if (!file) return;
-
-      if (file.mimeType === 'application/vnd.google-apps.folder') {
-        const insideTree = isWithinWatchedTree(file.parents || [], knownFolderIds, folderCache);
-        if (insideTree && !knownFolderIds.has(fileId)) {
-          knownFolderIds.add(fileId);
-          changesApplied = true;
-        } else if (!insideTree && knownFolderIds.delete(fileId)) {
-          changesApplied = true;
-        }
-        return;
-      }
-
-      if (!matchesMimeType(file.mimeType)) {
-        if (wasKnownFile) {
-          knownFileIds.delete(fileId);
-          changesApplied = true;
-        }
-        return;
-      }
-
-      const insideTree = isWithinWatchedTree(file.parents || [], knownFolderIds, folderCache);
-      if (insideTree) {
-        if (!wasKnownFile) knownFileIds.add(fileId);
-        changesApplied = true;
-      } else if (wasKnownFile) {
-        knownFileIds.delete(fileId);
-        changesApplied = true;
-      }
-    });
-
-    pageToken = response.nextPageToken || null;
-    if (!pageToken && response.newStartPageToken) {
-      latestStartToken = response.newStartPageToken;
-    }
-  } while (pageToken);
-
-  props.setProperty(CONFIG.state.pageTokenKey, latestStartToken);
-  props.setProperty(CONFIG.state.fileIdsKey, JSON.stringify([...knownFileIds]));
-  props.setProperty(CONFIG.state.folderIdsKey, JSON.stringify([...knownFolderIds]));
-
-  if (changesApplied) {
+  if (diff.hasChanges) {
+    logDriveDiff(diff);
     triggerGithubWorkflow();
+  } else {
+    console.log('No Drive changes detected; skipping workflow dispatch.');
   }
 }
 
 function initializeDriveChangeState() {
-  const props = PropertiesService.getScriptProperties();
-  const startToken = Drive.Changes.getStartPageToken(buildStartTokenQuery()).startPageToken;
   const snapshot = snapshotCurrentTree();
-
-  props.setProperties({
-    [CONFIG.state.pageTokenKey]: startToken,
-    [CONFIG.state.fileIdsKey]: JSON.stringify(snapshot.fileIds),
-    [CONFIG.state.folderIdsKey]: JSON.stringify(snapshot.folderIds),
-  }, true);
+  PropertiesService.getScriptProperties().setProperty(
+    CONFIG.state.snapshotKey,
+    JSON.stringify(snapshot),
+  );
 }
 
-function buildChangeQuery(pageToken) {
-  const query = {
-    pageToken,
-    includeRemoved: true,
-    includeItemsFromAllDrives: true,
-    supportsAllDrives: true,
-    spaces: 'drive',
-    pageSize: 100,
-    fields: 'nextPageToken,newStartPageToken,changes(fileId,removed,file(id,mimeType,parents,trashed)))',
+function detectChanges(previous, current) {
+  const prevSnapshot = previous || { folders: {}, files: {} };
+  const currSnapshot = current || { folders: {}, files: {} };
+
+  const folderChanges = diffRecordSets(prevSnapshot.folders || {}, currSnapshot.folders || {});
+  const fileChanges = diffRecordSets(prevSnapshot.files || {}, currSnapshot.files || {});
+
+  const hasChanges = hasAnyChanges(folderChanges) || hasAnyChanges(fileChanges);
+
+  return {
+    hasChanges,
+    folders: folderChanges,
+    files: fileChanges,
   };
-
-  if (CONFIG.drive.sharedDriveId) {
-    query.driveId = CONFIG.drive.sharedDriveId;
-    query.corpora = 'drive';
-  }
-
-  return query;
 }
 
-function buildStartTokenQuery() {
-  const query = { supportsAllDrives: true };
-  if (CONFIG.drive.sharedDriveId) {
-    query.driveId = CONFIG.drive.sharedDriveId;
+function metadataEqual(a, b) {
+  if (a.name !== b.name) return false;
+  if (a.mimeType !== b.mimeType) return false;
+  if (a.modifiedTime !== b.modifiedTime) return false;
+  if (a.parents.length !== b.parents.length) return false;
+  for (let i = 0; i < a.parents.length; i++) {
+    if (a.parents[i] !== b.parents[i]) return false;
   }
-  return query;
+  return true;
+}
+
+function diffRecordSets(previous, current) {
+  const added = [];
+  const removed = [];
+  const updated = [];
+
+  Object.keys(current).forEach((id) => {
+    const currMeta = current[id];
+    const prevMeta = previous[id];
+    if (!prevMeta) {
+      added.push(currMeta);
+    } else if (!metadataEqual(prevMeta, currMeta)) {
+      updated.push({ before: prevMeta, after: currMeta });
+    }
+  });
+
+  Object.keys(previous).forEach((id) => {
+    if (!current[id]) {
+      removed.push(previous[id]);
+    }
+  });
+
+  return { added, removed, updated };
+}
+
+function hasAnyChanges(group) {
+  return Boolean(group.added.length || group.removed.length || group.updated.length);
+}
+
+function logDriveDiff(diff) {
+  logChangeGroup('Folder', diff.folders);
+  logChangeGroup('File', diff.files);
+}
+
+function logChangeGroup(label, group) {
+  group.added.forEach((meta) => {
+    console.log(`[${label} Added] ${meta.name} (${meta.id}) parents=${formatParents(meta.parents)}`);
+  });
+
+  group.removed.forEach((meta) => {
+    console.log(`[${label} Removed] ${meta.name} (${meta.id}) parents=${formatParents(meta.parents)}`);
+  });
+
+  group.updated.forEach(({ before, after }) => {
+    const deltas = describeMetadataDelta(before, after);
+    console.log(`[${label} Updated] ${after.name} (${after.id}): ${deltas.join('; ')}`);
+  });
+}
+
+function describeMetadataDelta(before, after) {
+  const changes = [];
+  if (before.name !== after.name) {
+    changes.push(`name '${before.name}' → '${after.name}'`);
+  }
+  if (before.mimeType !== after.mimeType) {
+    changes.push(`mime '${before.mimeType}' → '${after.mimeType}'`);
+  }
+  if (before.modifiedTime !== after.modifiedTime) {
+    changes.push(`modified ${before.modifiedTime} → ${after.modifiedTime}`);
+  }
+  if (!arraysEqual(before.parents, after.parents)) {
+    changes.push(`parents '${formatParents(before.parents)}' → '${formatParents(after.parents)}'`);
+  }
+  return changes.length ? changes : ['metadata changed'];
+}
+
+function arraysEqual(a, b) {
+  if (a.length !== b.length) return false;
+  for (let i = 0; i < a.length; i++) {
+    if (a[i] !== b[i]) return false;
+  }
+  return true;
+}
+
+function formatParents(parents) {
+  const list = Array.isArray(parents) && parents.length ? parents : ['—'];
+  return list.join(', ');
 }
 
 function snapshotCurrentTree() {
-  const folderIds = new Set([CONFIG.drive.folderId]);
-  const fileIds = new Set();
+  const folders = {};
+  const files = {};
+  const seenFolderIds = new Set();
+  const queue = [];
 
-  if (CONFIG.drive.includeSubfolders) {
-    const queue = [CONFIG.drive.folderId];
-    while (queue.length) {
-      const head = queue.shift();
-      listChildren(head).forEach((item) => {
-        if (item.mimeType === 'application/vnd.google-apps.folder') {
-          if (!folderIds.has(item.id)) {
-            folderIds.add(item.id);
+  const rootMeta = getFileMetadata(CONFIG.drive.folderId);
+  folders[rootMeta.id] = rootMeta;
+  seenFolderIds.add(rootMeta.id);
+  queue.push(rootMeta.id);
+
+  while (queue.length) {
+    const parentId = queue.shift();
+    const children = listChildren(parentId);
+
+    children.forEach((item) => {
+      if (item.mimeType === FOLDER_MIME) {
+        if (!seenFolderIds.has(item.id)) {
+          folders[item.id] = item;
+          seenFolderIds.add(item.id);
+          if (CONFIG.drive.includeSubfolders) {
             queue.push(item.id);
           }
-        } else if (matchesMimeType(item.mimeType)) {
-          fileIds.add(item.id);
+        } else if (!metadataEqual(folders[item.id], item)) {
+          folders[item.id] = item;
         }
-      });
-    }
-  } else {
-    listChildren(CONFIG.drive.folderId).forEach((item) => {
-      if (item.mimeType !== 'application/vnd.google-apps.folder' && matchesMimeType(item.mimeType)) {
-        fileIds.add(item.id);
+        return;
       }
+
+      if (!matchesMimeType(item.mimeType)) return;
+      files[item.id] = item;
     });
   }
 
   return {
-    folderIds: [...folderIds],
-    fileIds: [...fileIds],
+    folders,
+    files,
   };
 }
 
@@ -196,26 +214,45 @@ function listChildren(parentId) {
   const items = [];
   let pageToken;
   do {
-    const request = {
+    const params = {
       q: `'${parentId}' in parents and trashed = false`,
-      includeItemsFromAllDrives: true,
-      supportsAllDrives: true,
+      fields: 'files(id,name,mimeType,parents,modifiedTime),nextPageToken',
       pageSize: 100,
-      fields: 'files(id,mimeType),nextPageToken',
       pageToken,
     };
 
     if (CONFIG.drive.sharedDriveId) {
-      request.driveId = CONFIG.drive.sharedDriveId;
-      request.corpora = 'drive';
+      params.includeItemsFromAllDrives = true;
+      params.supportsAllDrives = true;
+      params.driveId = CONFIG.drive.sharedDriveId;
+      params.corpora = 'drive';
     }
 
-    const response = Drive.Files.list(request);
-    (response.files || []).forEach((item) => items.push(item));
+    const response = Drive.Files.list(params);
+    (response.files || []).forEach((item) => {
+      item.parents = normaliseParents(item.parents);
+      items.push(item);
+    });
     pageToken = response.nextPageToken;
   } while (pageToken);
 
   return items;
+}
+
+function getFileMetadata(fileId) {
+  const params = {
+    fields: 'id,name,mimeType,parents,modifiedTime',
+    supportsAllDrives: Boolean(CONFIG.drive.sharedDriveId),
+  };
+  const file = Drive.Files.get(fileId, params);
+  file.parents = normaliseParents(file.parents);
+  return file;
+}
+
+function normaliseParents(parents) {
+  const list = parents ? parents.slice() : [];
+  list.sort();
+  return list;
 }
 
 function matchesMimeType(mimeType) {
@@ -225,38 +262,6 @@ function matchesMimeType(mimeType) {
     if (prefix.endsWith('/')) return mimeType.startsWith(prefix);
     return mimeType === prefix;
   });
-}
-
-function isWithinWatchedTree(parentIds, knownFolderIds, cache) {
-  for (const parentId of parentIds) {
-    if (parentId === CONFIG.drive.folderId || knownFolderIds.has(parentId)) {
-      return true;
-    }
-    if (cache.has(parentId)) {
-      if (cache.get(parentId)) {
-        knownFolderIds.add(parentId);
-        return true;
-      }
-      continue;
-    }
-
-    const parent = Drive.Files.get(parentId, {
-      fields: 'id,mimeType,parents',
-      supportsAllDrives: true,
-    });
-
-    const isFolder = parent.mimeType === 'application/vnd.google-apps.folder';
-    const result = isFolder && parent.parents
-      ? isWithinWatchedTree(parent.parents, knownFolderIds, cache)
-      : false;
-
-    cache.set(parentId, result);
-    if (result) {
-      knownFolderIds.add(parentId);
-      return true;
-    }
-  }
-  return false;
 }
 
 function triggerGithubWorkflow() {

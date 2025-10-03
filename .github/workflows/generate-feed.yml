@@ -11,16 +11,18 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        show: [social-psychology, intro-vt]
     env:
-      DRIVE_FOLDER_ID: ${{ secrets.DRIVE_FOLDER_ID }}
       SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+      DRIVE_FOLDER_ID: ${{ secrets.DRIVE_FOLDER_ID }}
+      DRIVE_FOLDER_ID_SOCIAL_PSYCHOLOGY: ${{ secrets.DRIVE_FOLDER_ID_SOCIAL_PSYCHOLOGY }}
+      DRIVE_FOLDER_ID_INTRO_VT: ${{ secrets.DRIVE_FOLDER_ID_INTRO_VT }}
     steps:
       - name: Check required secrets
         run: |
-          if [[ -z "${DRIVE_FOLDER_ID}" ]]; then
-            echo "DRIVE_FOLDER_ID secret is missing" >&2
-            exit 1
-          fi
           if [[ -z "${SERVICE_ACCOUNT_JSON}" ]]; then
             echo "GOOGLE_SERVICE_ACCOUNT_JSON secret is missing" >&2
             exit 1
@@ -40,41 +42,62 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Write service account credentials
+        env:
+          SHOW: ${{ matrix.show }}
         run: |
           python - <<'PY'
           import os
           from pathlib import Path
 
+          show = os.environ["SHOW"]
           creds = os.environ["SERVICE_ACCOUNT_JSON"]
-          dest = Path("shows/social-psychology/service-account.json")
+          dest = Path(f"shows/{show}/service-account.json")
           dest.parent.mkdir(parents=True, exist_ok=True)
           dest.write_text(creds)
           PY
 
       - name: Prepare runtime config
+        env:
+          SHOW: ${{ matrix.show }}
         run: |
           python <<'PY'
           import json
           import os
-          source_path = "shows/social-psychology/config.github.json"
-          output_path = "shows/social-psychology/config.runtime.json"
-          drive_id = os.environ["DRIVE_FOLDER_ID"]
-          with open(source_path, "r", encoding="utf-8") as fh:
+          from pathlib import Path
+
+          show = os.environ["SHOW"]
+          show_upper = show.upper().replace('-', '_')
+          source_path = Path(f"shows/{show}/config.github.json")
+          output_path = Path(f"shows/{show}/config.runtime.json")
+
+          with source_path.open("r", encoding="utf-8") as fh:
               data = json.load(fh)
-          if data.get("drive_folder_id") == "__DRIVE_FOLDER_ID__":
+
+          secret_key = f"DRIVE_FOLDER_ID_{show_upper}"
+          drive_id = os.environ.get(secret_key) or os.environ.get("DRIVE_FOLDER_ID")
+
+          placeholder = "__DRIVE_FOLDER_ID__"
+          existing_id = str(data.get("drive_folder_id", ""))
+
+          if drive_id:
               data["drive_folder_id"] = drive_id
-          else:
-              data["drive_folder_id"] = data["drive_folder_id"].replace("__DRIVE_FOLDER_ID__", drive_id)
-          data["service_account_file"] = "shows/social-psychology/service-account.json"
-          with open(output_path, "w", encoding="utf-8") as fh:
-              json.dump(data, fh, indent=2)
+          elif placeholder in existing_id:
+              raise RuntimeError(
+                  f"Drive folder ID placeholder found in {source_path}; set secret '{secret_key}' or 'DRIVE_FOLDER_ID'."
+              )
+
+          data["service_account_file"] = f"shows/{show}/service-account.json"
+
+          output_path.write_text(json.dumps(data, indent=2))
           PY
 
       - name: Check Drive for videos needing transcode
         id: probe_transcode
+        env:
+          SHOW: ${{ matrix.show }}
         run: |
           python podcast-tools/transcode_drive_media.py \
-            --config shows/social-psychology/config.runtime.json \
+            --config shows/${SHOW}/config.runtime.json \
             --check-only \
             --github-output "$GITHUB_OUTPUT"
 
@@ -84,23 +107,32 @@ jobs:
 
       - name: Transcode Drive media
         if: steps.probe_transcode.outputs.needs_transcode == 'true'
-        run: python podcast-tools/transcode_drive_media.py --config shows/social-psychology/config.runtime.json
+        env:
+          SHOW: ${{ matrix.show }}
+        run: python podcast-tools/transcode_drive_media.py --config shows/${SHOW}/config.runtime.json
 
       - name: Generate feed
-        run: python podcast-tools/gdrive_podcast_feed.py --config shows/social-psychology/config.runtime.json
+        env:
+          SHOW: ${{ matrix.show }}
+        run: python podcast-tools/gdrive_podcast_feed.py --config shows/${SHOW}/config.runtime.json
 
       - name: Commit updated feed
+        env:
+          SHOW: ${{ matrix.show }}
         run: |
-          if [[ -n "$(git status --porcelain shows/social-psychology/feeds/rss.xml)" ]]; then
+          feed_path="shows/${SHOW}/feeds/rss.xml"
+          if [[ -n "$(git status --porcelain "$feed_path")" ]]; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add shows/social-psychology/feeds/rss.xml
-            git commit -m "chore: update podcast feed"
+            git add "$feed_path"
+            git commit -m "chore: update ${SHOW} podcast feed"
             git push
           else
-            echo "No changes to commit"
+            echo "No changes to commit for ${SHOW}"
           fi
 
       - name: Cleanup secrets
         if: always()
-        run: rm -f shows/social-psychology/service-account.json shows/social-psychology/config.runtime.json
+        env:
+          SHOW: ${{ matrix.show }}
+        run: rm -f shows/${SHOW}/service-account.json shows/${SHOW}/config.runtime.json

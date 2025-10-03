@@ -5,7 +5,7 @@ Automation to build podcast RSS feeds from audio files stored in Google Drive. T
 ## Repository layout
 - `podcast-tools/gdrive_podcast_feed.py` – shared generator script used by every show.
 - `shows/` – one directory per podcast. Each show keeps its own config, metadata, docs, and generated feeds (for example `shows/social-psychology/`).
-  - `shows/intro-vt/` ships as scaffolding for the "Intro + VT" series—copy the templates inside when you are ready to wire the feed up.
+  - `shows/intro-vt/` ships as scaffolding for the "Intro + VT" series—copy the templates inside when you are ready to wire the feed up. GitHub Actions now runs each show via a build matrix, so once a new show directory follows the same structure and is referenced in the workflow matrix, it will publish automatically.
 - `requirements.txt` – Python dependencies needed locally and in CI.
 
 ### MIME type filtering
@@ -61,7 +61,7 @@ The repository ships with `podcast/config.json` and `podcast/episode_metadata.js
 To kick off a build manually, go to **Actions → Generate Podcast Feed → Run workflow**. The job also runs every day at 06:00 UTC via cron.
 
 ## Drive-triggered rebuilds (Google Apps Script)
-If you want the GitHub workflow to fire whenever fresh audio appears in Drive, add a lightweight Apps Script that polls the folder and calls the `Generate Podcast Feed` workflow via `workflow_dispatch`.
+If you want the GitHub workflow to fire whenever fresh audio appears in Drive, add a lightweight Apps Script that polls the folder and calls the `Generate Podcast Feed` workflow via `workflow_dispatch`. The helper now supports multiple Drive roots via `CONFIG.drive.folderIds`, so list every show folder there (and re-run `initializeDriveChangeState()` whenever you add one) to keep all series in sync.
 
 1. Visit [script.google.com](https://script.google.com/), create a new project, and paste the helper script below into `Code.gs`. Update the `CONFIG.github` block if you fork the repository or rename the workflow file.
 2. In the left toolbar, open **Services** (puzzle icon) and enable the **Drive API** advanced service. If Apps Script prompts you to enable the API in Google Cloud, follow the link and flip it on there as well.
@@ -73,305 +73,12 @@ If you want the GitHub workflow to fire whenever fresh audio appears in Drive, a
 The repository keeps this helper at `apps-script/drive_change_trigger.gs` so you can copy/paste the latest version straight into Apps Script without hunting through the docs.
 
 ### Apps Script helper
-```javascript
-/**
- * Polls Google Drive for changes inside the podcast folder and dispatches
- * the ennuiweb/psyk-podcast GitHub Actions workflow when files are added,
- * removed, renamed, moved, or otherwise updated.
- *
- * Before first run:
- * 1. Update CONFIG as needed.
- * 2. In Extensions → Apps Script → Services, enable the Drive API advanced service
- *    (enable the API in Google Cloud if prompted).
- * 3. In Project Settings → Script properties, store CONFIG.github.tokenProperty
- *    (default: GITHUB_PAT) with a PAT that has repo + workflow scopes.
- * 4. Run initializeDriveChangeState() once to capture the current Drive snapshot.
- * 5. Run checkDriveAndTrigger() manually to grant scopes.
- * 6. Create a time-driven trigger for checkDriveAndTrigger().
- */
-const CONFIG = {
-  drive: {
-    folderId: '1uPt6bHjivcD9z-Tw6Q2xbIld3bmH_WyI',
-    includeSubfolders: true,
-    mimePrefixes: ['audio/'], // Set to [] to react to every file type.
-    sharedDriveId: null,      // Leave null for shared folders in "My Drive".
-  },
-  github: {
-    owner: 'ennuiweb',
-    repo: 'psyk-podcast',
-    workflowFile: 'generate-feed.yml',
-    ref: 'main',
-    inputs: {},
-    tokenProperty: 'GITHUB_PAT',
-  },
-  state: {
-    snapshotKey: 'DRIVE_TREE_SNAPSHOT',
-  },
-};
+The canonical automation script lives in `apps-script/drive_change_trigger.gs`. Copy it directly from the repository so you always grab the latest multi-folder logic (`CONFIG.drive.folderIds`, `configuredRootFolderIds()`, etc.). Key bits to double-check before deploying:
+- `CONFIG.drive.folderIds` lists every Drive folder that should trigger a rebuild.
+- `CONFIG.github.*` values still point at your fork/workflow.
+- After updating `folderIds`, re-run `initializeDriveChangeState()` so the stored manifest includes the new structure.
 
-const FOLDER_MIME = 'application/vnd.google-apps.folder';
 
-function checkDriveAndTrigger() {
-  const props = PropertiesService.getScriptProperties();
-  const rawSnapshot = props.getProperty(CONFIG.state.snapshotKey);
-  if (!rawSnapshot) {
-    throw new Error('Run initializeDriveChangeState() before scheduling triggers.');
-  }
-
-  const previousSnapshot = JSON.parse(rawSnapshot);
-  const currentSnapshot = snapshotCurrentTree();
-
-  const diff = detectChanges(previousSnapshot, currentSnapshot);
-
-  props.setProperty(CONFIG.state.snapshotKey, JSON.stringify(currentSnapshot));
-
-  if (diff.hasChanges) {
-    logDriveDiff(diff);
-    triggerGithubWorkflow();
-  } else {
-    console.log('No Drive changes detected; skipping workflow dispatch.');
-  }
-}
-
-function initializeDriveChangeState() {
-  const snapshot = snapshotCurrentTree();
-  PropertiesService.getScriptProperties().setProperty(
-    CONFIG.state.snapshotKey,
-    JSON.stringify(snapshot),
-  );
-}
-
-function detectChanges(previous, current) {
-  const prevSnapshot = previous || { folders: {}, files: {} };
-  const currSnapshot = current || { folders: {}, files: {} };
-
-  const folderChanges = diffRecordSets(prevSnapshot.folders || {}, currSnapshot.folders || {});
-  const fileChanges = diffRecordSets(prevSnapshot.files || {}, currSnapshot.files || {});
-
-  const hasChanges = hasAnyChanges(folderChanges) || hasAnyChanges(fileChanges);
-
-  return {
-    hasChanges,
-    folders: folderChanges,
-    files: fileChanges,
-  };
-}
-
-function metadataEqual(a, b) {
-  if (a.name !== b.name) return false;
-  if (a.mimeType !== b.mimeType) return false;
-  if (a.modifiedTime !== b.modifiedTime) return false;
-  if (a.parents.length !== b.parents.length) return false;
-  for (let i = 0; i < a.parents.length; i++) {
-    if (a.parents[i] !== b.parents[i]) return false;
-  }
-  return true;
-}
-
-function diffRecordSets(previous, current) {
-  const added = [];
-  const removed = [];
-  const updated = [];
-
-  Object.keys(current).forEach((id) => {
-    const currMeta = current[id];
-    const prevMeta = previous[id];
-    if (!prevMeta) {
-      added.push(currMeta);
-    } else if (!metadataEqual(prevMeta, currMeta)) {
-      updated.push({ before: prevMeta, after: currMeta });
-    }
-  });
-
-  Object.keys(previous).forEach((id) => {
-    if (!current[id]) {
-      removed.push(previous[id]);
-    }
-  });
-
-  return { added, removed, updated };
-}
-
-function hasAnyChanges(group) {
-  return Boolean(group.added.length || group.removed.length || group.updated.length);
-}
-
-function logDriveDiff(diff) {
-  logChangeGroup('Folder', diff.folders);
-  logChangeGroup('File', diff.files);
-}
-
-function logChangeGroup(label, group) {
-  group.added.forEach((meta) => {
-    console.log(`[${label} Added] ${meta.name} (${meta.id}) parents=${formatParents(meta.parents)}`);
-  });
-
-  group.removed.forEach((meta) => {
-    console.log(`[${label} Removed] ${meta.name} (${meta.id}) parents=${formatParents(meta.parents)}`);
-  });
-
-  group.updated.forEach(({ before, after }) => {
-    const deltas = describeMetadataDelta(before, after);
-    console.log(`[${label} Updated] ${after.name} (${after.id}): ${deltas.join('; ')}`);
-  });
-}
-
-function describeMetadataDelta(before, after) {
-  const changes = [];
-  if (before.name !== after.name) {
-    changes.push(`name '${before.name}' → '${after.name}'`);
-  }
-  if (before.mimeType !== after.mimeType) {
-    changes.push(`mime '${before.mimeType}' → '${after.mimeType}'`);
-  }
-  if (before.modifiedTime !== after.modifiedTime) {
-    changes.push(`modified ${before.modifiedTime} → ${after.modifiedTime}`);
-  }
-  if (!arraysEqual(before.parents, after.parents)) {
-    changes.push(`parents '${formatParents(before.parents)}' → '${formatParents(after.parents)}'`);
-  }
-  return changes.length ? changes : ['metadata changed'];
-}
-
-function arraysEqual(a, b) {
-  if (a.length !== b.length) return false;
-  for (let i = 0; i < a.length; i++) {
-    if (a[i] !== b[i]) return false;
-  }
-  return true;
-}
-
-function formatParents(parents) {
-  const list = Array.isArray(parents) && parents.length ? parents : ['—'];
-  return list.join(', ');
-}
-
-function snapshotCurrentTree() {
-  const folders = {};
-  const files = {};
-  const seenFolderIds = new Set();
-  const queue = [];
-
-  const rootMeta = getFileMetadata(CONFIG.drive.folderId);
-  folders[rootMeta.id] = rootMeta;
-  seenFolderIds.add(rootMeta.id);
-  queue.push(rootMeta.id);
-
-  while (queue.length) {
-    const parentId = queue.shift();
-    const children = listChildren(parentId);
-
-    children.forEach((item) => {
-      if (item.mimeType === FOLDER_MIME) {
-        if (!seenFolderIds.has(item.id)) {
-          folders[item.id] = item;
-          seenFolderIds.add(item.id);
-          if (CONFIG.drive.includeSubfolders) {
-            queue.push(item.id);
-          }
-        } else if (!metadataEqual(folders[item.id], item)) {
-          folders[item.id] = item;
-        }
-        return;
-      }
-
-      if (!matchesMimeType(item.mimeType)) return;
-      files[item.id] = item;
-    });
-  }
-
-  return {
-    folders,
-    files,
-  };
-}
-
-function listChildren(parentId) {
-  const items = [];
-  let pageToken;
-  do {
-    const params = {
-      q: `'${parentId}' in parents and trashed = false`,
-      fields: 'files(id,name,mimeType,parents,modifiedTime),nextPageToken',
-      pageSize: 100,
-      pageToken,
-    };
-
-    if (CONFIG.drive.sharedDriveId) {
-      params.includeItemsFromAllDrives = true;
-      params.supportsAllDrives = true;
-      params.driveId = CONFIG.drive.sharedDriveId;
-      params.corpora = 'drive';
-    }
-
-    const response = Drive.Files.list(params);
-    (response.files || []).forEach((item) => {
-      item.parents = normaliseParents(item.parents);
-      items.push(item);
-    });
-    pageToken = response.nextPageToken;
-  } while (pageToken);
-
-  return items;
-}
-
-function getFileMetadata(fileId) {
-  const params = {
-    fields: 'id,name,mimeType,parents,modifiedTime',
-    supportsAllDrives: Boolean(CONFIG.drive.sharedDriveId),
-  };
-  const file = Drive.Files.get(fileId, params);
-  file.parents = normaliseParents(file.parents);
-  return file;
-}
-
-function normaliseParents(parents) {
-  const list = parents ? parents.slice() : [];
-  list.sort();
-  return list;
-}
-
-function matchesMimeType(mimeType) {
-  const prefixes = CONFIG.drive.mimePrefixes || [];
-  if (!prefixes.length) return true;
-  return prefixes.some((prefix) => {
-    if (prefix.endsWith('/')) return mimeType.startsWith(prefix);
-    return mimeType === prefix;
-  });
-}
-
-function triggerGithubWorkflow() {
-  const token = PropertiesService.getScriptProperties()
-    .getProperty(CONFIG.github.tokenProperty);
-  if (!token) throw new Error('GitHub token missing; add script property.');
-
-  const url = `https://api.github.com/repos/${CONFIG.github.owner}/${CONFIG.github.repo}`
-    + `/actions/workflows/${CONFIG.github.workflowFile}/dispatches`;
-
-  const payload = {
-    ref: CONFIG.github.ref,
-    inputs: CONFIG.github.inputs || {},
-  };
-
-  const response = UrlFetchApp.fetch(url, {
-    method: 'post',
-    headers: {
-      Authorization: `Bearer ${token}`,
-      Accept: 'application/vnd.github+json',
-      'User-Agent': 'AppsScript-GH-Trigger',
-    },
-    muteHttpExceptions: false,
-    contentType: 'application/json',
-    payload: JSON.stringify(payload),
-  });
-
-  if (response.getResponseCode() !== 204) {
-    throw new Error(`GitHub dispatch failed: ${response.getContentText()}`);
-  }
-}
-```
-
-The helper keeps a manifest (`CONFIG.state.snapshotKey`) of every tracked folder and audio file. Each run re-snapshots the Drive tree, compares metadata (name, parents, MIME type, modified time), logs the diff, and fires the workflow when anything differs—covering moves, renames, deletions, or new uploads. Re-run `initializeDriveChangeState()` if you swap to a new Drive folder or manually clear the stored properties. Set `CONFIG.drive.mimePrefixes` to `[]` when you want every file type to trigger a rebuild instead of only audio.
 ### Using shared drives
 - In your show config (`shows/.../config.json`), keep `shared_drive_id` set to the shared drive's ID and leave `include_items_from_all_drives` enabled so the generator can enumerate everything.
 - Update the Apps Script helper by setting `CONFIG.drive.sharedDriveId` to the same ID; the change poller will stay scoped to that drive automatically.
@@ -379,13 +86,14 @@ The helper keeps a manifest (`CONFIG.state.snapshotKey`) of every tracked folder
 - Leave `CONFIG.drive.includeSubfolders` enabled when you expect nested week folders—the helper will walk them and track newly created subfolders.
 - Set `skip_permission_updates` to `true` in the show config if your service account cannot modify sharing; flip it back once access is restored so new uploads become public automatically.
 
-The workflow (`.github/workflows/generate-feed.yml`) runs on a daily cron and on manual trigger (`workflow_dispatch`). It performs these steps:
-- check out the repository;
-- install dependencies;
-- write the service-account JSON secret to `podcast/service_account.json` via an inline Python helper;
-- inject the Drive folder ID into a temporary config file;
-- run the generator script;
-- commit an updated `podcast/rss.xml` back to the default branch when it changes.
+The workflow (`.github/workflows/generate-feed.yml`) runs on a daily cron and on manual trigger (`workflow_dispatch`). A matrix build runs once per show and performs these steps:
+- check out the repository and install dependencies;
+- write the shared service-account JSON secret to `shows/<show>/service-account.json`;
+- materialise a `config.runtime.json` per show (optionally overriding the Drive folder ID from GitHub Secrets);
+- probe for Drive videos that need transcoding, run `transcode_drive_media.py` when required, and then execute `gdrive_podcast_feed.py` for that show;
+- commit `shows/<show>/feeds/rss.xml` back to the default branch whenever it changes.
+
+You can either bake Drive folder IDs directly into each `config.github.json` or supply encrypted secrets (for example `DRIVE_FOLDER_ID_SOCIAL_PSYCHOLOGY`). The workflow will prefer show-specific secrets, fall back to a shared `DRIVE_FOLDER_ID`, and finally use the value from the config file when no secret is present.
 
 Ensure the default branch has permissions for GitHub Actions to push (`Repository Settings → Actions → General → Workflow permissions → Read and write`).
 

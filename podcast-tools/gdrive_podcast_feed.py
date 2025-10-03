@@ -407,6 +407,16 @@ def week_label_from_folders(folder_names: List[str]) -> Optional[str]:
     return None
 
 
+def format_week_range(published_at: Optional[dt.datetime]) -> Optional[str]:
+    if not published_at:
+        return None
+    if published_at.tzinfo is None:
+        published_at = published_at.replace(tzinfo=dt.timezone.utc)
+    week_start = published_at - dt.timedelta(days=published_at.weekday())
+    week_end = week_start + dt.timedelta(days=6)
+    return f"{week_start.date():%d/%m} - {week_end.date():%d/%m}"
+
+
 def build_episode_entry(
     file_entry: Dict[str, Any],
     feed_config: Dict[str, Any],
@@ -421,12 +431,19 @@ def build_episode_entry(
     manual_meta = item_metadata(overrides, file_entry) or {}
     meta.update(manual_meta)
     base_title = file_entry["name"].rsplit(".", 1)[0]
+    pubdate_source = meta.get("published_at") or file_entry.get("modifiedTime")
+    if not pubdate_source:
+        raise ValueError(
+            f"Missing publish timestamp for Drive file '{file_entry.get('id')}'"
+        )
+    published_at = parse_datetime(pubdate_source)
     if not meta.get("title"):
         week_label = week_label_from_folders(folder_names or [])
         if week_label and not base_title.lower().startswith("week"):
+            week_dates = format_week_range(published_at)
+            if week_dates:
+                week_label = f"{week_label} ({week_dates})"
             meta["title"] = f"{week_label}: {base_title}"
-    pubdate_source = meta.get("published_at") or file_entry.get("modifiedTime")
-    published_at = parse_datetime(pubdate_source)
 
     explicit_default = feed_config.get("default_explicit", False)
     duration = meta.get("duration")

@@ -1,0 +1,165 @@
+{
+  "year": 2025,
+  "timezone": "Europe/Copenhagen",
+  "default_release": {
+    "weekday": 4,
+    "time": "13:00"
+  },
+  "increment_minutes": 120,
+  "rules": [
+    {
+      "iso_week": 36,
+      "course_week": 1,
+      "aliases": [
+        "w1",
+        "week 1",
+        "introduction",
+        "history of concepts"
+      ],
+      "topic": "Introduction to the course and history of psychological concepts"
+    },
+    {
+      "iso_week": 37,
+      "course_week": 2,
+      "aliases": [
+        "w2",
+        "week 2",
+        "emergence",
+        "discipline"
+      ],
+      "topic": "Emergence of psychology as a discipline"
+    },
+    {
+      "iso_week": 38,
+      "course_week": 3,
+      "aliases": [
+        "w3",
+        "week 3",
+        "mind body",
+        "descartes"
+      ],
+      "topic": "Descartes and the mind body problem"
+    },
+    {
+      "iso_week": 39,
+      "course_week": 4,
+      "aliases": [
+        "w4",
+        "week 4",
+        "pragmatism",
+        "american psychology"
+      ],
+      "topic": "Pragmatism and early American psychology"
+    },
+    {
+      "iso_week": 40,
+      "course_week": 5,
+      "aliases": [
+        "w5",
+        "week 5",
+        "gestalt",
+        "berlin leipzig"
+      ],
+      "topic": "Gestalt psychology"
+    },
+    {
+      "iso_week": 41,
+      "course_week": 6,
+      "aliases": [
+        "w6",
+        "week 6",
+        "phenomenology",
+        "hermeneutics"
+      ],
+      "topic": "Phenomenology and hermeneutics"
+    },
+    {
+      "iso_week": 43,
+      "course_week": 7,
+      "aliases": [
+        "w7",
+        "week 7",
+        "psychoanalysis"
+      ],
+      "topic": "Psychoanalysis"
+    },
+    {
+      "iso_week": 44,
+      "course_week": 8,
+      "aliases": [
+        "w8",
+        "week 8",
+        "behaviourism"
+      ],
+      "topic": "Behaviourism"
+    },
+    {
+      "iso_week": 45,
+      "course_week": 9,
+      "aliases": [
+        "w9",
+        "week 9",
+        "cognitive psychology"
+      ],
+      "topic": "Cognitive psychology"
+    },
+    {
+      "iso_week": 46,
+      "course_week": 10,
+      "aliases": [
+        "w10",
+        "week 10",
+        "normal",
+        "abnormal"
+      ],
+      "topic": "The normal and the abnormal"
+    },
+    {
+      "iso_week": 47,
+      "course_week": 11,
+      "aliases": [
+        "w11",
+        "week 11",
+        "demarcation",
+        "popper",
+        "falsificationism"
+      ],
+      "topic": "Demarcation, Popper, and falsificationism"
+    },
+    {
+      "iso_week": 48,
+      "course_week": 12,
+      "aliases": [
+        "w12",
+        "week 12",
+        "kuhn",
+        "relativism",
+        "knowledge progress"
+      ],
+      "topic": "Scientific knowledge, Kuhn, and relativism"
+    },
+    {
+      "iso_week": 49,
+      "course_week": 13,
+      "aliases": [
+        "w13",
+        "week 13",
+        "policy",
+        "values",
+        "science in society"
+      ],
+      "topic": "Science, policy, and values"
+    },
+    {
+      "iso_week": 50,
+      "course_week": 14,
+      "aliases": [
+        "w14",
+        "week 14",
+        "social sciences",
+        "philosophy"
+      ],
+      "topic": "Philosophy of the social sciences"
+    }
+  ]
+}

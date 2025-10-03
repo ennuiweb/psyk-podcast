@@ -15,10 +15,14 @@
  */
 const CONFIG = {
   drive: {
-    folderId: '1uPt6bHjivcD9z-Tw6Q2xbIld3bmH_WyI',
+    folderIds: [
+      '1uPt6bHjivcD9z-Tw6Q2xbIld3bmH_WyI', // Socialpsykologi
+      'REPLACE_WITH_INTRO_VT_FOLDER_ID',   // Intro + VT
+    ],
+    folderId: null,             // Backwards compatibility; leave null when using folderIds.
     includeSubfolders: true,
-    mimePrefixes: ['audio/'], // Set to [] to react to every file type.
-    sharedDriveId: null,      // Leave null for shared folders in "My Drive".
+    mimePrefixes: ['audio/'],   // Set to [] to react to every file type.
+    sharedDriveId: null,        // Leave null for shared folders in "My Drive".
   },
   github: {
     owner: 'ennuiweb',
@@ -34,6 +38,21 @@ const CONFIG = {
 };
 
 const FOLDER_MIME = 'application/vnd.google-apps.folder';
+
+function configuredRootFolderIds() {
+  const list = [];
+  const multi = Array.isArray(CONFIG.drive.folderIds) ? CONFIG.drive.folderIds : [];
+  multi.forEach((id) => {
+    if (id && typeof id === 'string') list.push(id.trim());
+  });
+  const single = CONFIG.drive.folderId;
+  if (single && typeof single === 'string') list.push(single.trim());
+  const unique = Array.from(new Set(list.filter(Boolean)));
+  if (!unique.length) {
+    throw new Error('Set CONFIG.drive.folderIds (or legacy folderId) with at least one Drive folder ID.');
+  }
+  return unique;
+}
 
 function checkDriveAndTrigger() {
   const props = PropertiesService.getScriptProperties();
@@ -176,10 +195,15 @@ function snapshotCurrentTree() {
   const seenFolderIds = new Set();
   const queue = [];
 
-  const rootMeta = getFileMetadata(CONFIG.drive.folderId);
-  folders[rootMeta.id] = rootMeta;
-  seenFolderIds.add(rootMeta.id);
-  queue.push(rootMeta.id);
+  const rootIds = configuredRootFolderIds();
+  rootIds.forEach((rootId) => {
+    const rootMeta = getFileMetadata(rootId);
+    folders[rootMeta.id] = rootMeta;
+    if (!seenFolderIds.has(rootMeta.id)) {
+      seenFolderIds.add(rootMeta.id);
+      queue.push(rootMeta.id);
+    }
+  });
 
   while (queue.length) {
     const parentId = queue.shift();

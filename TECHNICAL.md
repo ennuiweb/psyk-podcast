@@ -5,6 +5,7 @@ Automation to build podcast RSS feeds from audio files stored in Google Drive. T
 ## Repository layout
 - `podcast-tools/gdrive_podcast_feed.py` – shared generator script used by every show.
 - `shows/` – one directory per podcast. Each show keeps its own config, metadata, docs, and generated feeds (for example `shows/social-psychology/`).
+  - `shows/intro-vt/` ships as scaffolding for the "Intro + VT" series—copy the templates inside when you are ready to wire the feed up.
 - `requirements.txt` – Python dependencies needed locally and in CI.
 
 ### MIME type filtering

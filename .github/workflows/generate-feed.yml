@@ -16,15 +16,24 @@ jobs:
       matrix:
         show: [social-psychology, intro-vt]
     env:
-      SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+      SERVICE_ACCOUNT_JSON_DEFAULT: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+      SERVICE_ACCOUNT_JSON_SOCIAL_PSYCHOLOGY: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON_SOCIAL_PSYCHOLOGY }}
+      SERVICE_ACCOUNT_JSON_INTRO_VT: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON_INTRO_VT }}
       DRIVE_FOLDER_ID: ${{ secrets.DRIVE_FOLDER_ID }}
       DRIVE_FOLDER_ID_SOCIAL_PSYCHOLOGY: ${{ secrets.DRIVE_FOLDER_ID_SOCIAL_PSYCHOLOGY }}
       DRIVE_FOLDER_ID_INTRO_VT: ${{ secrets.DRIVE_FOLDER_ID_INTRO_VT }}
     steps:
       - name: Check required secrets
+        env:
+          SHOW: ${{ matrix.show }}
         run: |
-          if [[ -z "${SERVICE_ACCOUNT_JSON}" ]]; then
-            echo "GOOGLE_SERVICE_ACCOUNT_JSON secret is missing" >&2
+          show_upper=${SHOW^^}
+          show_upper=${show_upper//-/_}
+          show_key="SERVICE_ACCOUNT_JSON_${show_upper}"
+          show_secret=${!show_key}
+
+          if [[ -z "${show_secret}" && -z "${SERVICE_ACCOUNT_JSON_DEFAULT}" ]]; then
+            echo "Missing service account secret: set ${show_key} or GOOGLE_SERVICE_ACCOUNT_JSON." >&2
             exit 1
           fi
 
@@ -50,7 +59,13 @@ jobs:
           from pathlib import Path
 
           show = os.environ["SHOW"]
-          creds = os.environ["SERVICE_ACCOUNT_JSON"]
+          show_upper = show.upper().replace('-', '_')
+          secret_key = f"SERVICE_ACCOUNT_JSON_{show_upper}"
+          creds = os.environ.get(secret_key) or os.environ.get("SERVICE_ACCOUNT_JSON_DEFAULT")
+          if not creds:
+              raise SystemExit(
+                  f"Missing service account credentials: define secret '{secret_key}' or 'GOOGLE_SERVICE_ACCOUNT_JSON'."
+              )
           dest = Path(f"shows/{show}/service-account.json")
           dest.parent.mkdir(parents=True, exist_ok=True)
           dest.write_text(creds)
@@ -74,7 +89,8 @@ jobs:
               data = json.load(fh)
 
           secret_key = f"DRIVE_FOLDER_ID_{show_upper}"
-          drive_id = os.environ.get(secret_key) or os.environ.get("DRIVE_FOLDER_ID")
+          drive_id = os.environ.get(secret_key)
+          fallback_drive_id = os.environ.get("DRIVE_FOLDER_ID")
 
           placeholder = "__DRIVE_FOLDER_ID__"
           existing_id = str(data.get("drive_folder_id", ""))
@@ -82,9 +98,15 @@ jobs:
           if drive_id:
               data["drive_folder_id"] = drive_id
           elif placeholder in existing_id:
-              raise RuntimeError(
-                  f"Drive folder ID placeholder found in {source_path}; set secret '{secret_key}' or 'DRIVE_FOLDER_ID'."
-              )
+              if fallback_drive_id:
+                  data["drive_folder_id"] = fallback_drive_id
+              else:
+                  raise RuntimeError(
+                      f"Drive folder ID placeholder found in {source_path}; set secret '{secret_key}' or 'DRIVE_FOLDER_ID'."
+                  )
+          elif fallback_drive_id and existing_id == "":
+              # Allow defining baseline IDs for new shows via shared secret when none is set.
+              data["drive_folder_id"] = fallback_drive_id
 
           data["service_account_file"] = f"shows/{show}/service-account.json"
 

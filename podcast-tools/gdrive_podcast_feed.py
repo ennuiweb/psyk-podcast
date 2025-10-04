@@ -543,7 +543,14 @@ def build_feed_document(
             ET.SubElement(owner_el, "itunes:email").text = owner["email"]
 
     if feed_config.get("image"):
-        ET.SubElement(channel, "itunes:image", attrib={"href": feed_config["image"]})
+        image_url = feed_config["image"]
+        ET.SubElement(channel, "itunes:image", attrib={"href": image_url})
+        standard_image = ET.SubElement(channel, "image")
+        ET.SubElement(standard_image, "url").text = image_url
+        if feed_config.get("title"):
+            ET.SubElement(standard_image, "title").text = feed_config["title"]
+        if feed_config.get("link"):
+            ET.SubElement(standard_image, "link").text = feed_config["link"]
 
     category = feed_config.get("category")
     if isinstance(category, dict):

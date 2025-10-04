@@ -316,7 +316,12 @@ class AutoSpec:
                 continue
             if self._matches(rule["match"], search_candidates):
                 scheduled = self._allocate_datetime(rule, folder_names or [file_entry.get("id", "")])
-                return {"published_at": scheduled.isoformat()}
+                meta: Dict[str, Any] = {"published_at": scheduled.isoformat()}
+                if rule.get("course_week") is not None:
+                    meta["course_week"] = rule["course_week"]
+                if rule.get("topic"):
+                    meta.setdefault("summary", rule["topic"])
+                return meta
         return None
 
     @staticmethod
@@ -399,11 +404,16 @@ def build_folder_path(
 
 
 def week_label_from_folders(folder_names: List[str]) -> Optional[str]:
-    pattern = re.compile(r"^w\s*(\d+)", re.IGNORECASE)
+    patterns = (
+        re.compile(r"^w\s*(\d+)", re.IGNORECASE),
+        re.compile(r"^week\s*(\d+)", re.IGNORECASE),
+    )
     for name in folder_names:
-        match = pattern.match(name.strip())
-        if match:
-            return f"Week {int(match.group(1))}"
+        stripped = name.strip()
+        for pattern in patterns:
+            match = pattern.match(stripped)
+            if match:
+                return f"Week {int(match.group(1))}"
     return None
 
 
@@ -415,6 +425,22 @@ def format_week_range(published_at: Optional[dt.datetime]) -> Optional[str]:
     week_start = published_at - dt.timedelta(days=published_at.weekday())
     week_end = week_start + dt.timedelta(days=6)
     return f"{week_start.date():%d/%m} - {week_end.date():%d/%m}"
+
+
+def derive_week_label(
+    folder_names: List[str],
+    course_week: Optional[Any],
+) -> Optional[str]:
+    label = week_label_from_folders(folder_names)
+    if label:
+        return label
+    if course_week is None:
+        return None
+    try:
+        week_number = int(course_week)
+    except (TypeError, ValueError):
+        return None
+    return f"Week {week_number}"
 
 
 def build_episode_entry(
@@ -438,7 +464,7 @@ def build_episode_entry(
         )
     published_at = parse_datetime(pubdate_source)
     if not meta.get("title"):
-        week_label = week_label_from_folders(folder_names or [])
+        week_label = derive_week_label(folder_names or [], meta.get("course_week"))
         if week_label and not base_title.lower().startswith("week"):
             week_dates = format_week_range(published_at)
             if week_dates:

@@ -9,15 +9,25 @@ import os
 import subprocess
 import sys
 import tempfile
+import time
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional
 
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
+from googleapiclient.errors import HttpError
 from googleapiclient.http import MediaFileUpload, MediaIoBaseDownload
 
 SCOPES = ["https://www.googleapis.com/auth/drive"]
 SOURCE_MARKER = "psyk_video_transcoded"
+# Retry configuration for transient Drive API failures.
+RETRYABLE_STATUS_CODES = {500, 502, 503, 504, 429}
+RETRYABLE_REASONS = {
+    "internalError",
+    "backendError",
+    "rateLimitExceeded",
+    "userRateLimitExceeded",
+}
 
 
 def load_json(path: Path) -> Dict[str, Any]:
@@ -30,6 +40,39 @@ def build_drive_service(credentials_path: Path):
         str(credentials_path), scopes=SCOPES
     )
     return build("drive", "v3", credentials=credentials, cache_discovery=False)
+
+
+def _should_retry_http_error(exc: HttpError) -> bool:
+    status = getattr(exc.resp, "status", None)
+    if status in RETRYABLE_STATUS_CODES:
+        return True
+    try:
+        if isinstance(exc.content, bytes):
+            content = exc.content.decode("utf-8", errors="ignore")
+        else:
+            content = exc.content or ""
+        payload = json.loads(content)
+    except (TypeError, ValueError, UnicodeDecodeError):
+        return False
+
+    details = payload.get("error") or {}
+    if details.get("code") in RETRYABLE_STATUS_CODES:
+        return True
+    for error in details.get("errors", []):
+        if error.get("reason") in RETRYABLE_REASONS:
+            return True
+    return False
+
+
+def _execute_with_retry(request, *, max_attempts: int = 5, base_delay: float = 1.0):
+    for attempt in range(1, max_attempts + 1):
+        try:
+            return request.execute()
+        except HttpError as exc:
+            if attempt == max_attempts or not _should_retry_http_error(exc):
+                raise
+            sleep_for = min(base_delay * (2 ** (attempt - 1)), 30.0)
+            time.sleep(sleep_for)
 
 
 def _drive_list(
@@ -60,7 +103,7 @@ def _drive_list(
             )
         if drive_id:
             params.update({"driveId": drive_id, "corpora": "drive"})
-        response = service.files().list(**params).execute()
+        response = _execute_with_retry(service.files().list(**params))
         entries.extend(response.get("files", []))
         page_token = response.get("nextPageToken")
         if not page_token:

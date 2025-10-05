@@ -1,6 +1,6 @@
-# Intro + VT
+# Intro + VT Deep Dives - Hold 1 - 2025
 
-Scaffolding for the "Intro + VT" feed. Populate the config files below before wiring the show into production:
+Scaffolding for the "Intro + VT Deep Dives - Hold 1 - 2025" feed. Populate the config files below before wiring the show into production:
 
 - `config.local.json` – local test run against a Drive folder.
 - `config.github.json` – checked in for CI once secrets exist.

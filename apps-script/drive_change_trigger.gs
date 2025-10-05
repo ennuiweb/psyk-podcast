@@ -17,7 +17,7 @@ const CONFIG = {
   drive: {
     folderIds: [
       '1uPt6bHjivcD9z-Tw6Q2xbIld3bmH_WyI', // Socialpsykologi
-      'h1Vq_ptrkc9FQXOahsFh4T1xHut-BWxiIX',   // Intro + VT
+      'h1Vq_ptrkc9FQXOahsFh4T1xHut-BWxiIX',   // Intro + VT Deep Dives - Hold 1 - 2025
     ],
     folderId: null,             // Backwards compatibility; leave null when using folderIds.
     includeSubfolders: true,

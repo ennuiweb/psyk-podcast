@@ -321,7 +321,7 @@ class AutoSpec:
                     meta["course_week"] = rule["course_week"]
                 if rule.get("topic"):
                     topic = str(rule["topic"])
-                    meta.setdefault("summary", f"week topic: {topic}")
+                    meta.setdefault("summary", f"Topic of the week: {topic}")
                 return meta
         return None
 

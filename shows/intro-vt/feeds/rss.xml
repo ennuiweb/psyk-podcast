@@ -6,7 +6,7 @@
     <description>Intro til psykologi og videnskabsteori podcast feed.</description>
     <language>da</language>
     <generator>gdrive_podcast_feed.py</generator>
-    <lastBuildDate>Thu, 18 Sep 2025 19:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 09 Oct 2025 13:00:00 +0200</lastBuildDate>
     <ttl>60</ttl>
     <ns0:link href="https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/intro-vt/feeds/rss.xml" rel="self" type="application/rss+xml" />
     <itunes:author>Hold 1 - 2025</itunes:author>
@@ -23,6 +23,16 @@
     <itunes:category text="Education">
       <itunes:category text="Courses" />
     </itunes:category>
+    <item>
+      <title>Week 6 (06/10 - 12/10): TEKST: Dræby</title>
+      <description>Phenomenology and hermeneutics</description>
+      <guid isPermaLink="false">1EpgfoASonZUkcuAGdstNxUxY87s-K9XL</guid>
+      <link>https://github.com/ennuiweb/psyk-podcast</link>
+      <pubDate>Thu, 09 Oct 2025 13:00:00 +0200</pubDate>
+      <enclosure url="https://drive.google.com/uc?export=download&amp;id=1EpgfoASonZUkcuAGdstNxUxY87s-K9XL" length="59117346" type="audio/x-m4a" />
+      <itunes:explicit>false</itunes:explicit>
+      <itunes:image href="https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/intro-vt/assets/cover.png" />
+    </item>
     <item>
       <title>Week 3 (15/09 - 21/09): [Kapitel fra bogen] 8. Psychophysics and physiological psychology</title>
       <description>Descartes and the mind body problem</description>

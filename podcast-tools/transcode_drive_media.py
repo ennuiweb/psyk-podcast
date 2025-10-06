@@ -131,7 +131,6 @@ def list_media_files(
     *,
     drive_id: Optional[str] = None,
     supports_all_drives: bool = False,
-    include_subfolders: bool = False,
     mime_type_filters: Optional[Iterable[str]] = None,
 ) -> List[Dict[str, Any]]:
     files: List[Dict[str, Any]] = []
@@ -159,9 +158,6 @@ def list_media_files(
                 supports_all_drives=supports_all_drives,
             )
         )
-
-        if not include_subfolders:
-            continue
 
         folder_query = (
             f"'{current_folder}' in parents and mimeType = 'application/vnd.google-apps.folder' "
@@ -280,7 +276,6 @@ def main() -> None:
     folder_id = config["drive_folder_id"]
     shared_drive_id = config.get("shared_drive_id") or None
     supports_all_drives = bool(config.get("include_items_from_all_drives", shared_drive_id is not None))
-    include_subfolders = bool(config.get("include_subfolders", False))
 
     print("Scanning Drive for source media…")
     source_files = list_media_files(
@@ -288,7 +283,6 @@ def main() -> None:
         folder_id,
         drive_id=shared_drive_id,
         supports_all_drives=supports_all_drives,
-        include_subfolders=include_subfolders,
         mime_type_filters=transcode_cfg["source_mime_types"],
     )
 

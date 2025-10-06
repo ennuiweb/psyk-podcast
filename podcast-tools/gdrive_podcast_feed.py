@@ -99,7 +99,6 @@ def list_audio_files(
     *,
     drive_id: Optional[str] = None,
     supports_all_drives: bool = False,
-    include_subfolders: bool = False,
     mime_type_filters: Optional[Iterable[str]] = None,
 ) -> List[Dict[str, Any]]:
     files: List[Dict[str, Any]] = []
@@ -128,9 +127,6 @@ def list_audio_files(
                 supports_all_drives=supports_all_drives,
             )
         )
-
-        if not include_subfolders:
-            continue
 
         folder_query = (
             f"'{current_folder}' in parents and mimeType = 'application/vnd.google-apps.folder' "
@@ -321,7 +317,11 @@ class AutoSpec:
                     meta["course_week"] = rule["course_week"]
                 if rule.get("topic"):
                     topic = str(rule["topic"])
-                    meta.setdefault("summary", f"Topic of the week: {topic}")
+                    summary = f"Topic of the week: {topic}"
+                    voice = self._extract_voice(file_entry.get("name"))
+                    if voice:
+                        summary = f"{summary}. Read by {voice}"
+                    meta.setdefault("summary", summary)
                 return meta
         return None
 
@@ -343,6 +343,23 @@ class AutoSpec:
         if occurrence == 0 or rule["increment_minutes"] == 0:
             return rule["base_datetime"]
         return rule["base_datetime"] + dt.timedelta(minutes=occurrence * rule["increment_minutes"])
+
+    @staticmethod
+    def _extract_voice(file_name: Optional[str]) -> Optional[str]:
+        if not file_name:
+            return None
+        stem = file_name.rsplit(".", 1)[0]
+        head, sep, tail = stem.rpartition(" - ")
+        if not sep:
+            return None
+        candidate = tail.strip()
+        if not candidate:
+            return None
+        known_voices = {
+            "helen": "Helen",
+            "george": "George",
+        }
+        return known_voices.get(candidate.lower())
 
 
 def get_folder_metadata(
@@ -618,7 +635,6 @@ def main() -> None:
     )
     shared_drive_id = config.get("shared_drive_id") or None
     supports_all_drives = bool(config.get("include_items_from_all_drives", shared_drive_id is not None))
-    include_subfolders = bool(config.get("include_subfolders", False))
     skip_permission_updates = bool(config.get("skip_permission_updates", False))
     allowed_mime_types = config.get("allowed_mime_types")
     if isinstance(allowed_mime_types, str):
@@ -641,7 +657,6 @@ def main() -> None:
         folder_id,
         drive_id=shared_drive_id,
         supports_all_drives=supports_all_drives,
-        include_subfolders=include_subfolders,
         mime_type_filters=allowed_mime_types,
     )
 

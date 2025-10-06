@@ -84,7 +84,7 @@ The canonical automation script lives in `apps-script/drive_change_trigger.gs`. 
 - In your show config (`shows/.../config.json`), keep `shared_drive_id` set to the shared drive's ID and leave `include_items_from_all_drives` enabled so the generator can enumerate everything.
 - Update the Apps Script helper by setting `CONFIG.drive.sharedDriveId` to the same ID; the change poller will stay scoped to that drive automatically.
 - Grant the service account at least Viewer access on the shared drive itself (Sharing → Manage members). Sharing only a subfolder is not sufficient.
-- Leave `CONFIG.drive.includeSubfolders` enabled when you expect nested week folders—the helper will walk them and track newly created subfolders.
+- The Drive helper always descends into nested folders, so week subdirectories are tracked automatically.
 - Set `skip_permission_updates` to `true` in the show config if your service account cannot modify sharing; flip it back once access is restored so new uploads become public automatically.
 
 The workflow (`.github/workflows/generate-feed.yml`) runs on a daily cron and on manual trigger (`workflow_dispatch`). A matrix build runs once per show and performs these steps:

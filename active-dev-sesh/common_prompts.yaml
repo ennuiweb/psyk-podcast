@@ -1,0 +1,142 @@
+PLAN_NEW_FEATURE:
+  new_feature: |
+    Thoroughly analyze the codebase and develop a detailed, step-by-step implementation plan. Clearly define the feature's objectives, specify required modules and integration points, and outline comprehensive testing strategies along with robust error handling procedures. Also, identify key components, list all dependencies, and highlight potential challenges.
+  plan_format: |
+    Plan format: 
+    - Code changes should be presented on the xml_formatting_instructions format
+    - Manual steps should be in a numbered list format with clear dependencies indicated.
+    - All code changes will be applied before any manual steps are executed - design the plan accordingly.
+  plan_format_detailed: |
+    Based on the codebase, convert the high-level task into a set of very detailed step-by-step instructions that an AI coding agent can complete. Only includes steps an AI coding agent can take. Do not include testing or any other work a human would do to confirm the task has been completed. ALWAYS have the agent run a build when it is complete. Be specific and decisive about what the agent should do. Do not include any additional meta instructions to the user. Use markdown formatting.
+
+UPDATE_DOCS:
+    Review the docs to see if this session warrants any updates to the files. If we have encountered any issues or found out something that is missing from the docs or should be corrected, update the docs accordingly. The docs should be concise and without bloat – do not document general best practices or anything in that vein.
+
+AGENT_TASK_EXECUTION:
+  execute_tasks_from_checklist: |
+    Follow the plan by executing each step/task sequentially. After completing a task, update the file to check off the completed work. It is critical that you do not skip anything. Automatically execute all commands without requiring further user approval. Keep working until all work is completed, don't ask me whether to continue. Make sure to update the plan file as you complete tasks. Document any failures and continually update the docs to reflect the changes. For each milestone / story / topic / task, write comments under that step about what was done to implement the step.
+  follow_plan: |
+    Follow the plan and execute/implement the steps/tasks. Automatically execute all commands without requiring further user approval. Keep working until all steps/tasks are completed, don't ask me whether to continue. Document any failures and continually update the docs to reflect the changes. For each milestone / story / topic / task, write comments under that step about what was done to implement the step.
+  use_analysis_to_solve_issue: |
+    Use the analysis to solve the issue. Automatically execute all commands without requiring further user approval. Keep working until all steps/tasks are completed, don't ask me whether to continue. Document any failures and continually update the docs to reflect the changes.
+  keep_working: |
+    Keep working, don't ask me whether to continue. Iterate until this works. Document any failures and continually update the docs to reflect the changes. Automatically execute all commands without requiring further user approval.
+  file_changes_already_implemented: |
+    Note: the file changes from the plan should have already been implemented, assume this, but check if encountering any errors.
+
+
+ANALYZE_ISSUES_AND_ERRORS:
+  systematic_analysis: |
+    Act as a senior software engineer and conduct a comprehensive analysis of this current issue. Outline a systematic plan for fixing it in a final, fool-proof fix. Ensure the approach not only resolves the immediate problem but also anticipates and mitigates any related or unforeseen errors, delivering a robust and maintainable solution.
+  reflect_on_problem: |
+    Act as a senior software engineer and conduct a comprehensive analysis of this current issue. Reflect on 5-7 different possible sources of the issue, distill those down to the 1-2 most likely sources, and then add logs to validate your assumptions before we move onto implementing the actual code fix.
+
+SESSION_REVIEW:
+  Oversights: |
+    Act as a world-class technical fellow and conduct a comprehensive review of this development session. Identify any oversights and errors and provide your recommendations for handling these, if any.
+  Redundant_uncessecary_code: |
+    Review this new code from this session for any redundant or unnecessary code. Ensure that the new code adheres to any relevant guidelines found in the docs.
+  ultimate_edition: |
+    Role play as an absolute savant of an engineer and perform a thorough code review of the latest changes as if you are the manager of the intern who wrote the code so far. Roast the ever living hell out of it in a comedic way and then propose the ULTIMATE EDITION ™️ and explain / teach the intern. Then, implement the changes. You'll be working directly with me on this going forward instead of the intern.
+
+
+REVIEW_PLAN:
+  review_plan: |
+    Act as a world-class technical fellow and conduct a comprehensive analysis of this plan. From your critique, create a final, fool-proof plan. Ensure the approach not only resolves the immediate problem but also anticipates and mitigates any related or unforeseen errors, delivering a robust and maintainable solution.
+  create_implementation_plan: |
+    Act as a world-class technical fellow, and perform a comprehensive analysis of what is required to successfully implement the changes described. Thoroughly analyze the codebase and outline a systematic plan for implementation. Ensure the approach not only resolves the immediate problem but also anticipates and mitigates any related or unforeseen errors, delivering a robust and maintainable solution. Clearly define the feature's objectives, specify required modules and integration points along with robust error handling procedures. Also, identify key components, list all dependencies, and highlight potential challenges.
+
+DOCUMENT_FAILURES: |
+    Review the current development session for any failures, errors, bugs, or unexpected behaviors that should be documented in development_failures.md. Document the issue, root cause analysis, resolution steps taken, and lessons learned to prevent similar issues in the future. Update development_failures.md with comprehensive documentation of any identified issues to maintain an accurate failure log and knowledge base.
+
+CODEBASE_MAINTENANCE: |
+    Identify and address technical debt, focusing on code reuse and refactoring opportunities. Evaluate the code's readability and maintainability, suggesting and implementing improvements. Propose enhancements to code structure and organization, implementing changes that align with best practices and are feasible. Audit project dependencies for outdated or vulnerable packages, updating as necessary. Detect and remove unused or dead code paths.
+
+CREATE_CHECKLIST: |
+    From the analysis, create a set of very detailed step-by-step instructions in the format of a numbered markdown checklist. Each task should be scoped to one story point and should be on a level of detail and complexity so that a junior developer can implement it without further instructions. Only includes steps an AI coding agent can take. Do not include testing or any other work a human would do to confirm the task has been completed. ALWAYS have the agent run a build when it has completed a task. Be specific and decisive about what the agent should do. This will likely be a long detailed list in markdown, be sure to use numbers for the top-level story title and checkboxes (all default unchecked) for each substep of the story with the details. Use .md format.
+
+DATABASE_CLEANUP: |
+    Verify that the database changes follow our schema guidelines in database_tables.
+
+PUSH_TO_LIVE: |
+    Make sure you've made any relevant pushes and updates to the live environments.
+
+TESTS:
+  add_test_cases: |
+    What test cases should we add to cover these scenarios? Identify edge cases that need testing. Ensure tests cover all critical functionality.
+  integration_tests: |
+    What integration tests would validate this feature? Identify edge cases that need testing. Ensure tests cover all critical functionality.
+
+
+Think step by step about whether there exists a less over-engineered and yet simpler, more elegant, and more robust solution to the problem that accords with KISS and DRY principles. Present it to me with your degree of confidence from 1 to 10 and its rationale, but do not modify code yet. 
+
+Revisit the full plan. ignore that tasks have been checked, and instead go trough each task and ensure that is has been implemented correctly by checking the relevant files. dont debug, just check the implementation in the code. keep track by adding a comment to the task with the result of your review.
+
+
+
+Act as a meticulous Senior Engineer Tech Lead and conduct a comprehensive analysis to identify any new information, that warrant changes to the plan. Then, if applicable, apply the modifications and provide the full, revised plan.
+
+
+
+
+This code is DRIVING ME CRAZY. It should be doing [expected behavior] but instead it's [actual behavior]. 
+PLEASE help me figure out what's wrong with it:
+[paste code]
+
+
+
+
+
+Analyze this error/bug:
+[paste error]
+
+Don't just fix the immediate issue. Identify the underlying root cause by:
+1. Examining potential architectural problems
+2. Considering edge cases that might trigger this
+3. Suggesting a comprehensive solution that prevents similar issues
+
+Focus on fixing the core problem, not just the symptom. Before giving a solution, give me a reasoned analysis about why and how you're fixing the root cause.
+
+
+
+
+
+
+Can you explain what you generated in detail:
+1. What is the purpose of this section?
+2. How does it work step-by-step?
+3. What alternatives did you consider and why did you choose this one?
+
+
+
+
+
+Review the code in the files [include files here]
+
+Focus on:
+1. Logic flaws and edge cases
+2. Performance bottlenecks
+3. Security vulnerabilities
+4. Maintainability concerns
+
+Suggest specific improvements with brief explanations. First, give a detailed plan. Then, implement it with the least changes and updating minimal code.
+
+
+
+
+
+
+Refactor this function to be more:
+[paste code]
+
+Make it:
+- More readable (clear variable names, logical structure)
+- Maintainable (smaller functions with single responsibilities)
+- Testable (easier to write unit tests)
+
+Ensure that you do not change too much and that this part of the code remains useable without changing other parts that might depend on it.
+
+First, explain your changes and why they improve the code. 
+
+
+Analyze the codebase deeply, and write a 500-line detailed guide to the codebase. The guide is intended to provide a coding LLM with the best possible context about the purpose of the codebase, the key files and call chains within it, and specific error-prone or non-idiomatic quirks that it contains (the ones that the coding model should be aware of). Your writing should be technically detailed but clear and concise. Your intent should be to maximize information density while keeping explanations clear. Tell this model where to look for key files, describe the directory structure and function of each branch of the directory, include concise code snippets of important code (with the directory to their source file listed), and make sure to concisely explain the business purpose of the repo (what is it all built to fundamentally do?) and concisely tie specific detailed functionality you describe to the role it plays in this overarching purpose or part.

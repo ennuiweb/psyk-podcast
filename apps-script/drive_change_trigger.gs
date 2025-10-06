@@ -18,6 +18,8 @@ const CONFIG = {
     folderIds: [
       '1uPt6bHjivcD9z-Tw6Q2xbIld3bmH_WyI', // Socialpsykologi
       'h1Vq_ptrkc9FQXOahsFh4T1xHut-BWxiIX',   // Intro + VT Deep Dives - Hold 1 - 2025
+      '1vCVzdgyMlHd4zKmHEdAK08NeFWiLlorq',   // Intro + VT Tekst til tale - 1. sem 2025
+      '1SsiAyLbTNmdLv6kYA9rr0oOxXSXNfRvt',   // Socialpsykologi oplæst - 1. sem 2025
     ],
     folderId: null,             // Backwards compatibility; leave null when using folderIds.
     includeSubfolders: true,

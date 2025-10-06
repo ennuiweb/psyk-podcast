@@ -6,6 +6,7 @@ Automation to build podcast RSS feeds from audio files stored in Google Drive. T
 - `podcast-tools/gdrive_podcast_feed.py` – shared generator script used by every show.
 - `shows/` – one directory per podcast. Each show keeps its own config, metadata, docs, and generated feeds (for example `shows/social-psychology/`).
   - `shows/intro-vt/` ships as scaffolding for the "Intro + VT Deep Dives - Hold 1 - 2025" series—copy the templates inside when you are ready to wire the feed up. GitHub Actions now runs each show via a build matrix, so once a new show directory follows the same structure and is referenced in the workflow matrix, it will publish automatically.
+  - `shows/intro-vt-tss/` and `shows/social-psychology-tts/` provide text-to-speech variants that reuse the deep-dive auto spec and share the same automation flow.
 - `requirements.txt` – Python dependencies needed locally and in CI.
 
 ### MIME type filtering

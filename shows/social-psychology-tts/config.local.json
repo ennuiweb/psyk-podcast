@@ -1,0 +1,44 @@
+{
+  "service_account_file": "shows/social-psychology-tts/service-account.json",
+  "drive_folder_id": "1SsiAyLbTNmdLv6kYA9rr0oOxXSXNfRvt",
+  "shared_drive_id": null,
+  "include_items_from_all_drives": true,
+  "include_subfolders": false,
+  "allowed_mime_types": [
+    "audio/"
+  ],
+  "transcode": {
+    "enabled": true,
+    "source_mime_types": [
+      "video/mp4"
+    ],
+    "target_extension": "mp3",
+    "target_mime_type": "audio/mpeg",
+    "codec": "libmp3lame",
+    "bitrate": "160k"
+  },
+  "skip_permission_updates": false,
+  "output_feed": "shows/social-psychology-tts/feeds/rss.xml",
+  "public_link_template": "https://drive.google.com/uc?export=download&id={file_id}",
+  "episode_metadata": "shows/social-psychology-tts/episode_metadata.json",
+  "auto_spec": "shows/social-psychology-tts/auto_spec.json",
+  "feed": {
+    "title": "Socialpsykologi oplæst - 1. sem 2025",
+    "link": "https://github.com/ennuiweb/psyk-podcast",
+    "self_link": "https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/social-psychology-tts/feeds/rss.xml",
+    "description": "Tekst til tale-versioner af Socialpsykologi for 1. semester 2025.",
+    "language": "da",
+    "author": "Hold 1 - 2025",
+    "default_explicit": false,
+    "image": "https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/social-psychology-tts/assets/cover.png",
+    "category": {
+      "name": "Education",
+      "sub": "Social Sciences"
+    },
+    "owner": {
+      "name": "Social Psychology Teaching Team",
+      "email": "oskar@ennui.dk"
+    },
+    "ttl": 60
+  }
+}

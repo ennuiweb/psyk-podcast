@@ -17,11 +17,12 @@ const CONFIG = {
   drive: {
     folderIds: [
       '1uPt6bHjivcD9z-Tw6Q2xbIld3bmH_WyI', // Socialpsykologi
-      'h1Vq_ptrkc9FQXOahsFh4T1xHut-BWxiIX',   // Intro + VT Deep Dives - Hold 1 - 2025
+      '1Vq_ptrkc9FQXOahsFh4T1xHut-BWxiIX',   // Intro + VT Deep Dives - Hold 1 - 2025
       '1vCVzdgyMlHd4zKmHEdAK08NeFWiLlorq',   // Intro + VT Tekst til tale - 1. sem 2025
       '1SsiAyLbTNmdLv6kYA9rr0oOxXSXNfRvt',   // Socialpsykologi oplæst - 1. sem 2025
     ],
     folderId: null,             // Backwards compatibility; leave null when using folderIds.
+    includeSubfolders: true,
     mimePrefixes: ['audio/'],   // Set to [] to react to every file type.
     sharedDriveId: null,        // Leave null for shared folders in "My Drive".
   },
@@ -215,7 +216,9 @@ function snapshotCurrentTree() {
         if (!seenFolderIds.has(item.id)) {
           folders[item.id] = item;
           seenFolderIds.add(item.id);
-          queue.push(item.id);
+          if (CONFIG.drive.includeSubfolders) {
+            queue.push(item.id);
+          }
         } else if (!metadataEqual(folders[item.id], item)) {
           folders[item.id] = item;
         }

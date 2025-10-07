@@ -16,7 +16,13 @@
     "target_extension": "mp3",
     "target_mime_type": "audio/mpeg",
     "codec": "libmp3lame",
-    "bitrate": "160k"
+    "bitrate": "48k",
+    "extra_ffmpeg_args": [
+      "-ac",
+      "1",
+      "-ar",
+      "22050"
+    ]
   },
   "skip_permission_updates": false,
   "output_feed": "shows/social-psychology-tts/feeds/rss.xml",

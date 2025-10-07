@@ -26,13 +26,14 @@ Each show config can optionally supply `"allowed_mime_types"` to control which G
   "target_extension": "mp3",
   "target_mime_type": "audio/mpeg",
   "codec": "libmp3lame",
-  "bitrate": "160k"
+  "bitrate": "48k",
+  "extra_ffmpeg_args": ["-ac", "1", "-ar", "22050"]
 }
 ```
 
 The workflow installs `ffmpeg`, downloads each video, transcodes it locally, and uploads the audio back into the original Drive file (updating its name, MIME type, and content). Because the conversion happens in place, no additional storage quota is required and the feed generator only ever sees audio assets.
 
-For text-to-speech feeds we transcode large WAV uploads the same way—adding `audio/wav` / `audio/x-wav` (and similar variants) ensures anything exported straight from the TTS tool is compressed to listener-friendly MP3 before the RSS build.
+For text-to-speech feeds we transcode large WAV uploads the same way—adding `audio/wav` / `audio/x-wav` (and similar variants) ensures anything exported straight from the TTS tool is compressed to listener-friendly MP3 before the RSS build. Long-form readings are further down-mixed to mono and 22.05 kHz at 48 kbps so every episode stays under Drive’s 100 MB virus-scan threshold while remaining perfectly intelligible.
 
 ### Automatic dating from the teaching schedule
 Shows can point `auto_spec` at a JSON file that maps Drive folder labels to calendar weeks. The Socialpsykologi Deep Dives - Hold 1 - 2025 show ships with `shows/social-psychology/auto_spec.json`, generated from the teaching plan PDF. Each rule ties folder names like `W4 The Self` (anything that contains `w4`) to ISO week 39 of 2025 and sets a Monday 10:00 CET release, spacing additional recordings for that week by 120 minutes. Future recordings dropped into the matching `W*` folders automatically inherit the correct `published_at` timestamp without editing `episode_metadata.json`.

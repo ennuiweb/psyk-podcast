@@ -6,7 +6,7 @@
     <description>Intro til psykologi og videnskabsteori podcast feed.</description>
     <language>da</language>
     <generator>gdrive_podcast_feed.py</generator>
-    <lastBuildDate>Thu, 23 Oct 2025 13:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 23 Oct 2025 15:00:00 +0200</lastBuildDate>
     <ttl>60</ttl>
     <ns0:link href="https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/intro-vt/feeds/rss.xml" rel="self" type="application/rss+xml" />
     <itunes:author>Hold 1 - 2025</itunes:author>
@@ -24,12 +24,22 @@
       <itunes:category text="Courses" />
     </itunes:category>
     <item>
-      <title>Week 7 (20/10 - 26/10): Det metapsykologiske begrebsapparat</title>
+      <title>Week 7 (20/10 - 26/10): [Tekst] Det metapsykologiske begrebsapparat</title>
       <description>Topic of the week: Psychoanalysis</description>
       <guid isPermaLink="false">1KJSHPZB_fEIIkPQGH1e8crj5HtB6hTeY</guid>
       <link>https://github.com/ennuiweb/psyk-podcast</link>
-      <pubDate>Thu, 23 Oct 2025 13:00:00 +0200</pubDate>
+      <pubDate>Thu, 23 Oct 2025 15:00:00 +0200</pubDate>
       <enclosure url="https://drive.google.com/uc?export=download&amp;id=1KJSHPZB_fEIIkPQGH1e8crj5HtB6hTeY" length="32493839" type="audio/x-m4a" />
+      <itunes:explicit>false</itunes:explicit>
+      <itunes:image href="https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/intro-vt/assets/cover.png" />
+    </item>
+    <item>
+      <title>Week 7 (20/10 - 26/10): [Kapitel fra bogen] 10. Freud and psychoanalysis - Farrell, Martin</title>
+      <description>Topic of the week: Psychoanalysis</description>
+      <guid isPermaLink="false">1TuetB5QtDJPbldfTwBiD2-Ql_bxo3eGt</guid>
+      <link>https://github.com/ennuiweb/psyk-podcast</link>
+      <pubDate>Thu, 23 Oct 2025 13:00:00 +0200</pubDate>
+      <enclosure url="https://drive.google.com/uc?export=download&amp;id=1TuetB5QtDJPbldfTwBiD2-Ql_bxo3eGt" length="27455449" type="audio/x-m4a" />
       <itunes:explicit>false</itunes:explicit>
       <itunes:image href="https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/intro-vt/assets/cover.png" />
     </item>

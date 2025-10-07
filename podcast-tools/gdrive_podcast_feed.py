@@ -331,14 +331,14 @@ class AutoSpec:
             if self._matches(rule["match"], search_candidates):
                 scheduled = self._allocate_datetime(rule, folder_names or [file_entry.get("id", "")])
                 meta: Dict[str, Any] = {"published_at": scheduled.isoformat()}
+                voice = self._extract_voice(file_entry.get("name"))
+                if voice:
+                    meta.setdefault("narrator", voice)
                 if rule.get("course_week") is not None:
                     meta["course_week"] = rule["course_week"]
                 if rule.get("topic"):
                     topic = str(rule["topic"])
                     summary = f"Topic of the week: {topic}"
-                    voice = self._extract_voice(file_entry.get("name"))
-                    if voice:
-                        summary = f"{summary}. Read by {voice}"
                     meta.setdefault("summary", summary)
                 return meta
         if self._should_fallback_to_unassigned(folder_names):
@@ -550,7 +550,16 @@ def build_episode_entry(
     manual_meta = item_metadata(overrides, file_entry) or {}
     meta.update(manual_meta)
     suppress_week_prefix = bool(meta.get("suppress_week_prefix"))
+    narrator = meta.get("narrator")
+    if not narrator:
+        narrator = AutoSpec._extract_voice(file_entry.get("name"))
+        if narrator:
+            meta.setdefault("narrator", narrator)
     base_title = file_entry["name"].rsplit(".", 1)[0]
+    if narrator:
+        suffix = f" - {narrator}"
+        if base_title.lower().endswith(suffix.lower()):
+            base_title = base_title[: -len(suffix)].rstrip()
     pubdate_source = meta.get("published_at") or file_entry.get("modifiedTime")
     if not pubdate_source:
         raise ValueError(
@@ -567,8 +576,27 @@ def build_episode_entry(
                 if week_dates:
                     week_label = f"{week_label} ({week_dates})"
                 meta["title"] = f"{week_label}: {base_title}"
+    title_value = meta.get("title") or base_title
+    if narrator:
+        prefix = narrator.upper()
+        if not title_value.upper().startswith(f"{prefix} "):
+            title_value = f"{prefix} {title_value}"
+    meta["title"] = title_value
     if suppress_week_prefix:
         meta.pop("suppress_week_prefix", None)
+
+    description = meta.get("description")
+    summary = meta.get("summary")
+    if not description:
+        parts = []
+        if narrator:
+            parts.append(f"Narrator: {narrator}")
+        if summary:
+            parts.append(summary)
+        if not parts:
+            parts.append(base_title)
+        description = " ".join(parts)
+        meta["description"] = description
 
     explicit_default = feed_config.get("default_explicit", False)
     duration = meta.get("duration")

@@ -220,7 +220,14 @@ class AutoSpec:
         self.default_weekday = int(default_release.get("weekday", 1))
         self.default_time = default_release.get("time", "08:00")
 
+        try:
+            default_increment_minutes = int(spec.get("increment_minutes", 5) or 5)
+        except (TypeError, ValueError) as exc:  # pragma: no cover - defensive
+            raise ValueError(f"Auto spec has invalid 'increment_minutes' ({source})") from exc
+        self._default_increment_minutes = max(default_increment_minutes, 1)
+
         self.rules: List[Dict[str, Any]] = []
+        self._earliest_rule_datetime: Optional[dt.datetime] = None
         for index, entry in enumerate(spec.get("rules", [])):
             try:
                 iso_week = int(entry["iso_week"])
@@ -257,7 +264,11 @@ class AutoSpec:
                 }
             )
 
-            increment = int(entry.get("increment_minutes", spec.get("increment_minutes", 5) or 5))
+            try:
+                increment_value = entry.get("increment_minutes", self._default_increment_minutes)
+                increment = int(increment_value)
+            except (TypeError, ValueError) as exc:
+                raise ValueError(f"Rule #{index} has invalid 'increment_minutes' ({source})") from exc
 
             self.rules.append(
                 {
@@ -270,8 +281,15 @@ class AutoSpec:
                     "increment_minutes": max(increment, 0),
                 }
             )
+            if self._earliest_rule_datetime is None or base_datetime < self._earliest_rule_datetime:
+                self._earliest_rule_datetime = base_datetime
+
+        if self._earliest_rule_datetime is None:
+            self._earliest_rule_datetime = dt.datetime(self.year, 1, 1, tzinfo=self.timezone)
 
         self._allocations: Dict[Tuple[int, Tuple[str, ...]], int] = {}
+        self._unassigned_allocations: Dict[str, dt.datetime] = {}
+        self._unassigned_counter: int = 0
 
     @staticmethod
     def _parse_time_token(token: str) -> Tuple[int, int, int]:
@@ -323,18 +341,53 @@ class AutoSpec:
                         summary = f"{summary}. Read by {voice}"
                     meta.setdefault("summary", summary)
                 return meta
+        if self._should_fallback_to_unassigned(folder_names):
+            return self._fallback_unassigned_metadata(file_entry)
         return None
 
     @staticmethod
     def _matches(tokens: List[str], candidates: List[str]) -> bool:
+        def contains_bounded(candidate: str, needle: str) -> bool:
+            start = candidate.find(needle)
+            while start != -1:
+                end = start + len(needle)
+                before_char = candidate[start - 1] if start > 0 else ""
+                after_char = candidate[end] if end < len(candidate) else ""
+                before_ok = True
+                after_ok = True
+                if needle and needle[0].isdigit() and before_char.isdigit():
+                    before_ok = False
+                if needle and needle[-1].isdigit() and after_char.isdigit():
+                    after_ok = False
+                if before_ok and before_char and before_char.isalnum() and needle and needle[0].isalpha():
+                    # Avoid matching alphabetic prefixes like 'w1' in 'bw12'
+                    before_ok = False
+                if after_ok and after_char and after_char.isalnum() and needle and needle[-1].isalpha():
+                    after_ok = False
+                if before_ok and after_ok:
+                    return True
+                start = candidate.find(needle, start + 1)
+            return False
+
         for token in tokens:
             if not token:
                 continue
-            lower_token = token.lower()
+            needle = token.lower()
             for candidate in candidates:
-                if lower_token in candidate:
+                if contains_bounded(candidate, needle):
                     return True
         return False
+
+    @staticmethod
+    def _has_week_token(folder_names: List[str]) -> bool:
+        for name in folder_names:
+            lowered = name.lower()
+            if re.search(r"\bw\s*\d+\b", lowered) or re.search(r"\bweek\s*\d+\b", lowered):
+                return True
+        return False
+
+    def _should_fallback_to_unassigned(self, folder_names: List[str]) -> bool:
+        return not self._has_week_token(folder_names or [])
 
     def _allocate_datetime(self, rule: Dict[str, Any], folder_names: List[str]) -> dt.datetime:
         key = (rule["index"], tuple(folder_names))
@@ -343,6 +396,28 @@ class AutoSpec:
         if occurrence == 0 or rule["increment_minutes"] == 0:
             return rule["base_datetime"]
         return rule["base_datetime"] + dt.timedelta(minutes=occurrence * rule["increment_minutes"])
+
+    def _fallback_unassigned_metadata(self, file_entry: Dict[str, Any]) -> Dict[str, Any]:
+        fallback_key = file_entry.get("id") or file_entry.get("name")
+        scheduled = self._unassigned_allocations.get(fallback_key)
+        if scheduled is None:
+            base_datetime = self._earliest_rule_datetime - dt.timedelta(days=7)
+            offset_minutes = self._unassigned_counter * self._default_increment_minutes
+            scheduled = base_datetime - dt.timedelta(minutes=offset_minutes)
+            self._unassigned_counter += 1
+            modified_token = file_entry.get("modifiedTime")
+            if modified_token:
+                try:
+                    candidate = parse_datetime(modified_token)
+                except Exception:  # pragma: no cover - defensive
+                    candidate = None
+                if candidate:
+                    if candidate.tzinfo is None:
+                        candidate = candidate.replace(tzinfo=self.timezone)
+                    if candidate < scheduled:
+                        scheduled = candidate
+            self._unassigned_allocations[fallback_key] = scheduled
+        return {"published_at": scheduled.isoformat(), "suppress_week_prefix": True}
 
     @staticmethod
     def _extract_voice(file_name: Optional[str]) -> Optional[str]:
@@ -474,6 +549,7 @@ def build_episode_entry(
         meta.update(auto_meta)
     manual_meta = item_metadata(overrides, file_entry) or {}
     meta.update(manual_meta)
+    suppress_week_prefix = bool(meta.get("suppress_week_prefix"))
     base_title = file_entry["name"].rsplit(".", 1)[0]
     pubdate_source = meta.get("published_at") or file_entry.get("modifiedTime")
     if not pubdate_source:
@@ -482,12 +558,17 @@ def build_episode_entry(
         )
     published_at = parse_datetime(pubdate_source)
     if not meta.get("title"):
-        week_label = derive_week_label(folder_names or [], meta.get("course_week"))
-        if week_label and not base_title.lower().startswith("week"):
-            week_dates = format_week_range(published_at)
-            if week_dates:
-                week_label = f"{week_label} ({week_dates})"
-            meta["title"] = f"{week_label}: {base_title}"
+        if suppress_week_prefix:
+            meta["title"] = base_title
+        else:
+            week_label = derive_week_label(folder_names or [], meta.get("course_week"))
+            if week_label and not base_title.lower().startswith("week"):
+                week_dates = format_week_range(published_at)
+                if week_dates:
+                    week_label = f"{week_label} ({week_dates})"
+                meta["title"] = f"{week_label}: {base_title}"
+    if suppress_week_prefix:
+        meta.pop("suppress_week_prefix", None)
 
     explicit_default = feed_config.get("default_explicit", False)
     duration = meta.get("duration")

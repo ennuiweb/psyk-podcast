@@ -1,6 +1,6 @@
-# Socialpsykologi oplæst - 1. sem 2025
+# Socialpsykologi Oplæst - 1. sem 2025
 
-Scaffolding for the "Socialpsykologi oplæst - 1. sem 2025" feed. Prepare these files before enabling automation:
+Scaffolding for the "Socialpsykologi Oplæst - 1. sem 2025" feed. Prepare these files before enabling automation:
 
 - `config.local.json` – local test run against the Drive folder that stores oplæste episoder.
 - `config.github.json` – committed config for CI once the Drive secrets are available.

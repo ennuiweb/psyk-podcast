@@ -290,6 +290,9 @@ class AutoSpec:
         self._allocations: Dict[Tuple[int, Tuple[str, ...]], int] = {}
         self._unassigned_allocations: Dict[str, dt.datetime] = {}
         self._unassigned_counter: int = 0
+        self._unassigned_sequence_allocations: Dict[Tuple[int, Optional[str]], dt.datetime] = {}
+        self._unassigned_sequence_counts: Dict[int, int] = {}
+        self._unassigned_sequence_slot_span: int = 4
 
     @staticmethod
     def _parse_time_token(token: str) -> Tuple[int, int, int]:
@@ -402,22 +405,50 @@ class AutoSpec:
         scheduled = self._unassigned_allocations.get(fallback_key)
         if scheduled is None:
             base_datetime = self._earliest_rule_datetime - dt.timedelta(days=7)
-            offset_minutes = self._unassigned_counter * self._default_increment_minutes
-            scheduled = base_datetime - dt.timedelta(minutes=offset_minutes)
-            self._unassigned_counter += 1
-            modified_token = file_entry.get("modifiedTime")
-            if modified_token:
-                try:
-                    candidate = parse_datetime(modified_token)
-                except Exception:  # pragma: no cover - defensive
-                    candidate = None
-                if candidate:
-                    if candidate.tzinfo is None:
-                        candidate = candidate.replace(tzinfo=self.timezone)
-                    if candidate < scheduled:
-                        scheduled = candidate
+            voice = self._extract_voice(file_entry.get("name"))
+            sequence_number = self._extract_sequence_number(file_entry.get("name"))
+            if sequence_number is not None and sequence_number > 0:
+                seq_key = (sequence_number, voice)
+                scheduled = self._unassigned_sequence_allocations.get(seq_key)
+                if scheduled is None:
+                    base_slot = max(sequence_number - 1, 0) * self._unassigned_sequence_slot_span
+                    duplicate_index = self._unassigned_sequence_counts.get(sequence_number, 0)
+                    offset_units = base_slot + duplicate_index
+                    offset_minutes = offset_units * self._default_increment_minutes
+                    scheduled = base_datetime + dt.timedelta(minutes=offset_minutes)
+                    self._unassigned_sequence_counts[sequence_number] = duplicate_index + 1
+                    self._unassigned_sequence_allocations[seq_key] = scheduled
+            if scheduled is None:
+                offset_minutes = self._unassigned_counter * self._default_increment_minutes
+                scheduled = base_datetime - dt.timedelta(minutes=offset_minutes)
+                self._unassigned_counter += 1
+                modified_token = file_entry.get("modifiedTime")
+                if modified_token:
+                    try:
+                        candidate = parse_datetime(modified_token)
+                    except Exception:  # pragma: no cover - defensive
+                        candidate = None
+                    if candidate:
+                        if candidate.tzinfo is None:
+                            candidate = candidate.replace(tzinfo=self.timezone)
+                        if candidate < scheduled:
+                            scheduled = candidate
             self._unassigned_allocations[fallback_key] = scheduled
         return {"published_at": scheduled.isoformat(), "suppress_week_prefix": True}
+
+    @staticmethod
+    def _extract_sequence_number(file_name: Optional[str]) -> Optional[int]:
+        if not file_name:
+            return None
+        stem = file_name.rsplit(".", 1)[0]
+        stem = stem.rsplit(" - ", 1)[0]
+        match = re.match(r"\D*(\d+)", stem.strip())
+        if not match:
+            return None
+        try:
+            return int(match.group(1))
+        except ValueError:  # pragma: no cover - defensive
+            return None
 
     @staticmethod
     def _extract_voice(file_name: Optional[str]) -> Optional[str]:

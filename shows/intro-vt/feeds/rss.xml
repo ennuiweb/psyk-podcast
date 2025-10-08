@@ -6,7 +6,7 @@
     <description>Intro til psykologi og videnskabsteori podcast feed.</description>
     <language>da</language>
     <generator>gdrive_podcast_feed.py</generator>
-    <lastBuildDate>Thu, 30 Oct 2025 13:00:00 +0100</lastBuildDate>
+    <lastBuildDate>Thu, 06 Nov 2025 13:00:00 +0100</lastBuildDate>
     <ttl>60</ttl>
     <ns0:link href="https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/intro-vt/feeds/rss.xml" rel="self" type="application/rss+xml" />
     <itunes:author>Hold 1 - 2025</itunes:author>
@@ -23,6 +23,16 @@
     <itunes:category text="Education">
       <itunes:category text="Courses" />
     </itunes:category>
+    <item>
+      <title>Week 9 (03/11 - 09/11): [Kapitel fra bogen] 17 Cognitive psychology - Farrell, Martin</title>
+      <description>Topic of the week: Cognitive psychology</description>
+      <guid isPermaLink="false">1vES47ZKNx-wGiUHzSvjvvcJGexdXLtBA</guid>
+      <link>https://github.com/ennuiweb/psyk-podcast</link>
+      <pubDate>Thu, 06 Nov 2025 13:00:00 +0100</pubDate>
+      <enclosure url="https://drive.google.com/uc?export=download&amp;id=1vES47ZKNx-wGiUHzSvjvvcJGexdXLtBA" length="35064579" type="audio/x-m4a" />
+      <itunes:explicit>false</itunes:explicit>
+      <itunes:image href="https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/intro-vt/assets/cover.png" />
+    </item>
     <item>
       <title>Week 8 (27/10 - 02/11): [Kapitel fra bogen] 16 Behaviourism - Farrell, Martin</title>
       <description>Topic of the week: Behaviourism</description>

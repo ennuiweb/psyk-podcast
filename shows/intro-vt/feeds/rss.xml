@@ -6,7 +6,7 @@
     <description>Intro til psykologi og videnskabsteori podcast feed.</description>
     <language>da</language>
     <generator>gdrive_podcast_feed.py</generator>
-    <lastBuildDate>Thu, 23 Oct 2025 15:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 30 Oct 2025 13:00:00 +0100</lastBuildDate>
     <ttl>60</ttl>
     <ns0:link href="https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/intro-vt/feeds/rss.xml" rel="self" type="application/rss+xml" />
     <itunes:author>Hold 1 - 2025</itunes:author>
@@ -23,6 +23,16 @@
     <itunes:category text="Education">
       <itunes:category text="Courses" />
     </itunes:category>
+    <item>
+      <title>Week 8 (27/10 - 02/11): [Kapitel fra bogen] 16 Behaviourism - Farrell, Martin</title>
+      <description>Topic of the week: Behaviourism</description>
+      <guid isPermaLink="false">1qRqRyqRi0ZpPvFzqcqoPifNb3ITwPr4_</guid>
+      <link>https://github.com/ennuiweb/psyk-podcast</link>
+      <pubDate>Thu, 30 Oct 2025 13:00:00 +0100</pubDate>
+      <enclosure url="https://drive.google.com/uc?export=download&amp;id=1qRqRyqRi0ZpPvFzqcqoPifNb3ITwPr4_" length="38030619" type="audio/x-m4a" />
+      <itunes:explicit>false</itunes:explicit>
+      <itunes:image href="https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/intro-vt/assets/cover.png" />
+    </item>
     <item>
       <title>Week 7 (20/10 - 26/10): [Tekst] Det metapsykologiske begrebsapparat</title>
       <description>Topic of the week: Psychoanalysis</description>

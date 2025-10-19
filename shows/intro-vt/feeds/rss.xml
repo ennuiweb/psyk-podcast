@@ -6,7 +6,7 @@
     <description>Intro til psykologi og videnskabsteori podcast feed.</description>
     <language>da</language>
     <generator>gdrive_podcast_feed.py</generator>
-    <lastBuildDate>Thu, 21 Nov 2024 15:00:00 +0100</lastBuildDate>
+    <lastBuildDate>Thu, 28 Nov 2024 15:00:00 +0100</lastBuildDate>
     <ttl>60</ttl>
     <ns0:link href="https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/intro-vt/feeds/rss.xml" rel="self" type="application/rss+xml" />
     <itunes:author>Hold 1 - 2025</itunes:author>
@@ -23,6 +23,26 @@
     <itunes:category text="Education">
       <itunes:category text="Courses" />
     </itunes:category>
+    <item>
+      <title>Week 12 (25/11 - 01/12): Farrell</title>
+      <description>Topic of the week: Scientific knowledge, Kuhn, and relativism</description>
+      <guid isPermaLink="false">1QcKsWD5wyhtblj5TG_sZMQxvA8RDmx2V</guid>
+      <link>https://github.com/ennuiweb/psyk-podcast</link>
+      <pubDate>Thu, 28 Nov 2024 15:00:00 +0100</pubDate>
+      <enclosure url="https://drive.google.com/uc?export=download&amp;id=1QcKsWD5wyhtblj5TG_sZMQxvA8RDmx2V" length="57800600" type="audio/x-m4a" />
+      <itunes:explicit>false</itunes:explicit>
+      <itunes:image href="https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/intro-vt/assets/cover.png" />
+    </item>
+    <item>
+      <title>Week 12 (25/11 - 01/12): Baghramian</title>
+      <description>Topic of the week: Scientific knowledge, Kuhn, and relativism</description>
+      <guid isPermaLink="false">17VtpoTL1ushHlygkaMQndMRy495NuPby</guid>
+      <link>https://github.com/ennuiweb/psyk-podcast</link>
+      <pubDate>Thu, 28 Nov 2024 13:00:00 +0100</pubDate>
+      <enclosure url="https://drive.google.com/uc?export=download&amp;id=17VtpoTL1ushHlygkaMQndMRy495NuPby" length="75221196" type="audio/x-m4a" />
+      <itunes:explicit>false</itunes:explicit>
+      <itunes:image href="https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/intro-vt/assets/cover.png" />
+    </item>
     <item>
       <title>Week 11 (18/11 - 24/11): McIntyre</title>
       <description>Topic of the week: Demarcation, Popper, and falsificationism</description>

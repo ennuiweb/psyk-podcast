@@ -6,7 +6,7 @@
     <description>Intro til psykologi og videnskabsteori podcast feed.</description>
     <language>da</language>
     <generator>gdrive_podcast_feed.py</generator>
-    <lastBuildDate>Thu, 14 Nov 2024 13:00:00 +0100</lastBuildDate>
+    <lastBuildDate>Thu, 14 Nov 2024 15:00:00 +0100</lastBuildDate>
     <ttl>60</ttl>
     <ns0:link href="https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/intro-vt/feeds/rss.xml" rel="self" type="application/rss+xml" />
     <itunes:author>Hold 1 - 2025</itunes:author>
@@ -28,8 +28,18 @@
       <description>Topic of the week: The normal and the abnormal</description>
       <guid isPermaLink="false">1okEaYBuDiwvJ0kbgKEjaWhDPrZ6dwK06</guid>
       <link>https://github.com/ennuiweb/psyk-podcast</link>
-      <pubDate>Thu, 14 Nov 2024 13:00:00 +0100</pubDate>
+      <pubDate>Thu, 14 Nov 2024 15:00:00 +0100</pubDate>
       <enclosure url="https://drive.google.com/uc?export=download&amp;id=1okEaYBuDiwvJ0kbgKEjaWhDPrZ6dwK06" length="93918828" type="audio/x-m4a" />
+      <itunes:explicit>false</itunes:explicit>
+      <itunes:image href="https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/intro-vt/assets/cover.png" />
+    </item>
+    <item>
+      <title>Week 10 (11/11 - 17/11): Brinkmann</title>
+      <description>Topic of the week: The normal and the abnormal</description>
+      <guid isPermaLink="false">1SPhtP1eP6UC32ufAJwkQ1gWPgnnE4HNS</guid>
+      <link>https://github.com/ennuiweb/psyk-podcast</link>
+      <pubDate>Thu, 14 Nov 2024 13:00:00 +0100</pubDate>
+      <enclosure url="https://drive.google.com/uc?export=download&amp;id=1SPhtP1eP6UC32ufAJwkQ1gWPgnnE4HNS" length="59264629" type="audio/x-m4a" />
       <itunes:explicit>false</itunes:explicit>
       <itunes:image href="https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/intro-vt/assets/cover.png" />
     </item>

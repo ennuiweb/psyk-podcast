@@ -6,7 +6,7 @@
     <description>Intro til psykologi og videnskabsteori podcast feed.</description>
     <language>da</language>
     <generator>gdrive_podcast_feed.py</generator>
-    <lastBuildDate>Thu, 28 Nov 2024 15:00:00 +0100</lastBuildDate>
+    <lastBuildDate>Thu, 12 Dec 2024 13:00:00 +0100</lastBuildDate>
     <ttl>60</ttl>
     <ns0:link href="https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/intro-vt/feeds/rss.xml" rel="self" type="application/rss+xml" />
     <itunes:author>Hold 1 - 2025</itunes:author>
@@ -23,6 +23,36 @@
     <itunes:category text="Education">
       <itunes:category text="Courses" />
     </itunes:category>
+    <item>
+      <title>Week 14 (09/12 - 15/12): Habermas</title>
+      <description>Topic of the week: Philosophy of the social sciences</description>
+      <guid isPermaLink="false">1MaMMoITMzPLUhCrRjq52tvz1DqV5GgEB</guid>
+      <link>https://github.com/ennuiweb/psyk-podcast</link>
+      <pubDate>Thu, 12 Dec 2024 13:00:00 +0100</pubDate>
+      <enclosure url="https://drive.google.com/uc?export=download&amp;id=1MaMMoITMzPLUhCrRjq52tvz1DqV5GgEB" length="57077235" type="audio/x-m4a" />
+      <itunes:explicit>false</itunes:explicit>
+      <itunes:image href="https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/intro-vt/assets/cover.png" />
+    </item>
+    <item>
+      <title>Week 13 (02/12 - 08/12): Douglas</title>
+      <description>Topic of the week: Science, policy, and values</description>
+      <guid isPermaLink="false">1ca45SoFS8W0BdF6bKcVpE2MHHkzReu-S</guid>
+      <link>https://github.com/ennuiweb/psyk-podcast</link>
+      <pubDate>Thu, 05 Dec 2024 15:00:00 +0100</pubDate>
+      <enclosure url="https://drive.google.com/uc?export=download&amp;id=1ca45SoFS8W0BdF6bKcVpE2MHHkzReu-S" length="75543285" type="audio/x-m4a" />
+      <itunes:explicit>false</itunes:explicit>
+      <itunes:image href="https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/intro-vt/assets/cover.png" />
+    </item>
+    <item>
+      <title>Week 13 (02/12 - 08/12): Kitcher</title>
+      <description>Topic of the week: Science, policy, and values</description>
+      <guid isPermaLink="false">1xwhCJarzc4BDfhpjRrXPMd4qoJaNtrbO</guid>
+      <link>https://github.com/ennuiweb/psyk-podcast</link>
+      <pubDate>Thu, 05 Dec 2024 13:00:00 +0100</pubDate>
+      <enclosure url="https://drive.google.com/uc?export=download&amp;id=1xwhCJarzc4BDfhpjRrXPMd4qoJaNtrbO" length="59774325" type="audio/x-m4a" />
+      <itunes:explicit>false</itunes:explicit>
+      <itunes:image href="https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/intro-vt/assets/cover.png" />
+    </item>
     <item>
       <title>Week 12 (25/11 - 01/12): Farrell</title>
       <description>Topic of the week: Scientific knowledge, Kuhn, and relativism</description>

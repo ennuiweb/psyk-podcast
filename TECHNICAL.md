@@ -40,6 +40,15 @@ Shows can point `auto_spec` at a JSON file that maps Drive folder labels to cale
 
 When an episode inherits its publish date from the auto spec (or otherwise lacks a manual title override), the feed generator also prepends the week label derived from the folder—`Week 7: …`, `Week 12: …`, etc.—so podcast apps display the curriculum order even when filenames in Drive stay short.
 
+### Highlighting important readings
+The Socialpsykologi deep-dive feed uses `[Tekst] …` as the default prefix for readings. When an item is flagged as important the generator swaps that prefix for `[Gul tekst] …`, but only when the filename (or auto-generated title) already starts with the exact `[Tekst]` token. A file counts as “important” if any of these signals are present:
+
+- `episode_metadata.json` (or per-file overrides) sets `important: true`, `highlight: true`, `is_important: true`, or gives `priority`/`importance` a value that contains words such as “high”, “important”, or “gul”.
+- The Drive file is starred, or its `appProperties`/`properties` include keys/values with those same “important” words.
+- The Drive folder name includes markers such as “Gul”, “Important”, “High priority”, etc.
+
+These heuristics are intentionally permissive so that editors can mark priorities either in Drive or alongside the metadata overrides. If none of the signals are present the title is left unchanged, even if it contains `[Tekst]` somewhere later in the string.
+
 ## One-time Google setup
 1. Enable the Google Drive API in a Google Cloud project.
 2. Create a service account, download the JSON key, and keep it private.

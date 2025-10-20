@@ -14,18 +14,16 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        show: [social-psychology, intro-vt, intro-vt-tss, social-psychology-tts]
+        show: [social-psychology, intro-vt]
     env:
       SERVICE_ACCOUNT_JSON_DEFAULT: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
       SERVICE_ACCOUNT_JSON_SOCIAL_PSYCHOLOGY: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON_SOCIAL_PSYCHOLOGY }}
       SERVICE_ACCOUNT_JSON_INTRO_VT: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON_INTRO_VT }}
-      SERVICE_ACCOUNT_JSON_INTRO_VT_TSS: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON_INTRO_VT_TSS }}
-      SERVICE_ACCOUNT_JSON_SOCIAL_PSYCHOLOGY_TTS: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON_SOCIAL_PSYCHOLOGY_TTS }}
+      # TTS feeds temporarily disabled
       DRIVE_FOLDER_ID: ${{ secrets.DRIVE_FOLDER_ID }}
       DRIVE_FOLDER_ID_SOCIAL_PSYCHOLOGY: ${{ secrets.DRIVE_FOLDER_ID_SOCIAL_PSYCHOLOGY }}
       DRIVE_FOLDER_ID_INTRO_VT: ${{ secrets.DRIVE_FOLDER_ID_INTRO_VT }}
-      DRIVE_FOLDER_ID_INTRO_VT_TSS: ${{ secrets.DRIVE_FOLDER_ID_INTRO_VT_TSS }}
-      DRIVE_FOLDER_ID_SOCIAL_PSYCHOLOGY_TTS: ${{ secrets.DRIVE_FOLDER_ID_SOCIAL_PSYCHOLOGY_TTS }}
+      # DRIVE_FOLDER_ID_INTRO_VT_TSS / DRIVE_FOLDER_ID_SOCIAL_PSYCHOLOGY_TTS not required while TTS feeds paused
     steps:
       - name: Check required secrets
         env:

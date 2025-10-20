@@ -5,7 +5,7 @@ Automation to build podcast RSS feeds from audio files stored in Google Drive. T
 ## Repository layout
 - `podcast-tools/gdrive_podcast_feed.py` – shared generator script used by every show.
 - `shows/` – one directory per podcast. Each show keeps its own config, metadata, docs, and generated feeds (for example `shows/social-psychology/`).
-  - `shows/intro-vt/` ships as scaffolding for the "Intro + VT Deep Dives - Hold 1 - 2025" series—copy the templates inside when you are ready to wire the feed up. GitHub Actions now runs each show via a build matrix, so once a new show directory follows the same structure and is referenced in the workflow matrix, it will publish automatically.
+  - `shows/intro-vt/` ships as scaffolding for the "Intro + VT Deep Dives - Hold 1 - 2024" series—copy the templates inside when you are ready to wire the feed up. GitHub Actions now runs each show via a build matrix, so once a new show directory follows the same structure and is referenced in the workflow matrix, it will publish automatically.
   - `shows/intro-vt-tss/` and `shows/social-psychology-tts/` provide text-to-speech variants that reuse the deep-dive auto spec and share the same automation flow.
 - `requirements.txt` – Python dependencies needed locally and in CI.
 
@@ -36,7 +36,7 @@ The workflow installs `ffmpeg`, downloads each video, transcodes it locally, and
 For text-to-speech feeds we transcode large WAV uploads the same way—adding `audio/wav` / `audio/x-wav` (and similar variants) ensures anything exported straight from the TTS tool is compressed to listener-friendly MP3 before the RSS build. Long-form readings are further down-mixed to mono and 22.05 kHz at 48 kbps so every episode stays under Drive’s 100 MB virus-scan threshold while remaining perfectly intelligible.
 
 ### Automatic dating from the teaching schedule
-Shows can point `auto_spec` at a JSON file that maps Drive folder labels to calendar weeks. The Socialpsykologi Deep Dives - Hold 1 - 2025 show ships with `shows/social-psychology/auto_spec.json`, generated from the teaching plan PDF. Each rule ties folder names like `W4 The Self` (anything that contains `w4`) to ISO week 39 of 2025 and sets a Monday 10:00 CET release, spacing additional recordings for that week by 120 minutes. Future recordings dropped into the matching `W*` folders automatically inherit the correct `published_at` timestamp without editing `episode_metadata.json`.
+Shows can point `auto_spec` at a JSON file that maps Drive folder labels to calendar weeks. The Socialpsykologi Deep Dives - Hold 1 - 2024 show ships with `shows/social-psychology/auto_spec.json`, generated from the teaching plan PDF. Each rule ties folder names like `W4 The Self` (anything that contains `w4`) to ISO week 39 of 2024 and sets a Monday 10:00 CET release, spacing additional recordings for that week by 120 minutes. Future recordings dropped into the matching `W*` folders automatically inherit the correct `published_at` timestamp without editing `episode_metadata.json`.
 
 When an episode inherits its publish date from the auto spec (or otherwise lacks a manual title override), the feed generator also prepends the week label derived from the folder—`Week 7: …`, `Week 12: …`, etc.—so podcast apps display the curriculum order even when filenames in Drive stay short.
 
@@ -57,7 +57,7 @@ python podcast/gdrive_podcast_feed.py --config podcast/config.local.json
 ```
 `podcast/rss.xml` is overwritten on each run.
 
-The repository ships with `podcast/config.json` and `podcast/episode_metadata.json` pre-populated for Socialpsykologi Deep Dives - Hold 1 - 2025—update the titles, artwork, contact email, and descriptions to match your own show before publishing.
+The repository ships with `podcast/config.json` and `podcast/episode_metadata.json` pre-populated for Socialpsykologi Deep Dives - Hold 1 - 2024—update the titles, artwork, contact email, and descriptions to match your own show before publishing.
 
 ## Configure GitHub Actions
 1. Create two repository secrets:

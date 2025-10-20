@@ -17,9 +17,9 @@ const CONFIG = {
   drive: {
     folderIds: [
       '1uPt6bHjivcD9z-Tw6Q2xbIld3bmH_WyI', // Socialpsykologi
-      '1Vq_ptrkc9FQXOahsFh4T1xHut-BWxiIX',   // Intro + VT Deep Dives - Hold 1 - 2025
-      '1vCVzdgyMlHd4zKmHEdAK08NeFWiLlorq',   // Intro + VT Tekst til tale - 1. sem 2025
-      '1SsiAyLbTNmdLv6kYA9rr0oOxXSXNfRvt',   // Socialpsykologi Oplæst - 1. sem 2025
+      '1Vq_ptrkc9FQXOahsFh4T1xHut-BWxiIX',   // Intro + VT Deep Dives - Hold 1 - 2024
+      '1vCVzdgyMlHd4zKmHEdAK08NeFWiLlorq',   // Intro + VT Tekst til tale - 1. sem 2024
+      '1SsiAyLbTNmdLv6kYA9rr0oOxXSXNfRvt',   // Socialpsykologi Oplæst - 1. sem 2024
     ],
     folderId: null,             // Backwards compatibility; leave null when using folderIds.
     includeSubfolders: true,

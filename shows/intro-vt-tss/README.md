@@ -1,6 +1,6 @@
-# Intro + VT Tekst til tale - 1. sem 2025
+# Intro + VT Tekst til tale - 1. sem 2024
 
-Scaffolding for the "Intro + VT Tekst til tale - 1. sem 2025" feed. Populate these files before promoting the show:
+Scaffolding for the "Intro + VT Tekst til tale - 1. sem 2024" feed. Populate these files before promoting the show:
 
 - `config.local.json` – local test run against the Drive folder that stores the TTS exports.
 - `config.github.json` – committed config for CI once the Drive secrets exist.

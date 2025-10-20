@@ -1,7 +1,7 @@
 <html lang="da">
   <head>
     <meta charset="utf-8" />
-    <title>Socialpsykologi Deep Dives – Hold 1 – 2025</title>
+    <title>Socialpsykologi Deep Dives – Hold 1 – 2024</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style>
       :root {
@@ -494,7 +494,7 @@
               />
             </figure>
             <div class="series-copy">
-              <h3>Hold 1 – 2025: Socialpsykologi Deep Dives</h3>
+              <h3>Hold 1 – 2024: Socialpsykologi Deep Dives</h3>
               <p>
                 Dyk ned i ugens pensum, lavet af holdkammeraterne. Vælg mellem fulde episoder eller korte
                 briefs, alle synket til Spotify og dit podcast-feed.
@@ -559,7 +559,7 @@
       </section>
 
       <footer>
-        Senest opdateret: september 2025 · Spørgsmål? Ping holdet i chatten.
+        Senest opdateret: september 2024 · Spørgsmål? Ping holdet i chatten.
       </footer>
     </main>
   </body>

@@ -100,7 +100,7 @@ def main() -> None:
             ),
             title="Intro + VT",
             subtitle="Tekst til tale",
-            metadata="1. sem 2025",
+            metadata="1. sem 2024",
         ),
         dict(
             output_path=Path("shows/social-psychology-tts/assets/cover.png"),
@@ -112,7 +112,7 @@ def main() -> None:
             ),
             title="Socialpsykologi",
             subtitle="Tekst til tale",
-            metadata="1. sem 2025",
+            metadata="1. sem 2024",
         ),
     )
 

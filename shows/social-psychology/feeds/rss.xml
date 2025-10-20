@@ -6,7 +6,7 @@
     <description>Socialpsykologi Deep Dives</description>
     <language>en</language>
     <generator>gdrive_podcast_feed.py</generator>
-    <lastBuildDate>Sun, 19 Oct 2025 11:28:45 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 02 Dec 2024 14:00:00 +0100</lastBuildDate>
     <ttl>60</ttl>
     <ns0:link href="https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/social-psychology/feeds/rss.xml" rel="self" type="application/rss+xml" />
     <itunes:author>Hold 1 - 2024</itunes:author>
@@ -23,16 +23,6 @@
     <itunes:category text="Education">
       <itunes:category text="Social Sciences" />
     </itunes:category>
-    <item>
-      <title>Week 14 (13/10 - 19/10): Alle kilder</title>
-      <description>Alle kilder</description>
-      <guid isPermaLink="false">1YV_NrY-4unKAllgRhAiRQXZ3waisKZbO</guid>
-      <link>https://github.com/ennuiweb/psyk-podcast</link>
-      <pubDate>Sun, 19 Oct 2025 11:28:45 +0000</pubDate>
-      <enclosure url="https://drive.google.com/uc?export=download&amp;id=1YV_NrY-4unKAllgRhAiRQXZ3waisKZbO" length="85338199" type="audio/x-m4a" />
-      <itunes:explicit>false</itunes:explicit>
-      <itunes:image href="https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/social-psychology/assets/cover.png" />
-    </item>
     <item>
       <title>Week 13 (02/12 - 08/12): Alle kilder</title>
       <description>Topic of the week: Critical psychology and the production of knowledge</description>
@@ -310,6 +300,16 @@
       <link>https://github.com/ennuiweb/psyk-podcast</link>
       <pubDate>Mon, 21 Oct 2024 10:00:00 +0200</pubDate>
       <enclosure url="https://drive.google.com/uc?export=download&amp;id=1Hh8C-eteGP2Lqs2rmmYCSqAGsL0z-LUk" length="69486334" type="audio/x-m4a" />
+      <itunes:explicit>false</itunes:explicit>
+      <itunes:image href="https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/social-psychology/assets/cover.png" />
+    </item>
+    <item>
+      <title>Week 14 (14/10 - 20/10): Alle kilder</title>
+      <description>Alle kilder</description>
+      <guid isPermaLink="false">1YV_NrY-4unKAllgRhAiRQXZ3waisKZbO</guid>
+      <link>https://github.com/ennuiweb/psyk-podcast</link>
+      <pubDate>Mon, 14 Oct 2024 10:00:00 +0200</pubDate>
+      <enclosure url="https://drive.google.com/uc?export=download&amp;id=1YV_NrY-4unKAllgRhAiRQXZ3waisKZbO" length="85338199" type="audio/x-m4a" />
       <itunes:explicit>false</itunes:explicit>
       <itunes:image href="https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/social-psychology/assets/cover.png" />
     </item>

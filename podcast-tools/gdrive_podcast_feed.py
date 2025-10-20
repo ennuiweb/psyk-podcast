@@ -17,6 +17,60 @@ from googleapiclient.discovery import build
 SCOPES = ["https://www.googleapis.com/auth/drive"]
 ATOM_NS = "http://www.w3.org/2005/Atom"
 ITUNES_NS = "http://www.itunes.com/dtds/podcast-1.0.dtd"
+TEXT_PREFIX = "[Tekst]"
+HIGHLIGHTED_TEXT_PREFIX = "[Gul tekst]"
+IMPORTANT_TRUTHY_STRINGS = {
+    "1",
+    "true",
+    "yes",
+    "y",
+    "ja",
+    "j",
+    "on",
+}
+IMPORTANT_FALSE_STRINGS = {
+    "0",
+    "false",
+    "no",
+    "nej",
+    "off",
+}
+IMPORTANT_MARKER_TOKENS = {
+    "important",
+    "priority",
+    "prioritet",
+    "prioriteret",
+    "highlight",
+    "highlighted",
+    "gul",
+    "gule",
+    "gult",
+    "yellow",
+    "vigtig",
+    "vigtige",
+    "vigtigt",
+    "high",
+    "hoj",
+    "hojt",
+    "hoje",
+}
+LOW_PRIORITY_TOKENS = {
+    "low",
+    "lav",
+    "lavt",
+    "lavere",
+    "medium",
+    "mellem",
+    "sekundaer",
+    "sekundar",
+    "sekundare",
+    "sekundart",
+}
+NEGATION_TOKENS = {
+    "not",
+    "ikke",
+    "ej",
+}
 
 
 def load_json(path: Path) -> Dict[str, Any]:
@@ -105,7 +159,7 @@ def list_audio_files(
     pending: List[str] = [folder_id]
     seen: Set[str] = set()
     audio_fields = (
-        "nextPageToken, files(id,name,mimeType,size,modifiedTime,createdTime,md5Checksum,parents)"
+        "nextPageToken, files(id,name,mimeType,size,modifiedTime,createdTime,md5Checksum,parents,starred,properties,appProperties)"
     )
     folder_fields = "nextPageToken, files(id,name)"
 
@@ -567,6 +621,159 @@ def derive_week_label(
     return f"Week {week_number}"
 
 
+def _tokenize_words(value: str) -> List[str]:
+    if not value:
+        return []
+    return [token for token in re.split(r"[^\w]+", value.casefold()) if token]
+
+
+def _string_signals_importance(value: str) -> bool:
+    if not value:
+        return False
+    lowered = value.strip().casefold()
+    if not lowered:
+        return False
+    if lowered in IMPORTANT_FALSE_STRINGS:
+        return False
+    if lowered in IMPORTANT_TRUTHY_STRINGS:
+        return True
+    tokens = _tokenize_words(lowered)
+    if not tokens:
+        return False
+    if any(token in NEGATION_TOKENS for token in tokens):
+        return False
+    if any(token in LOW_PRIORITY_TOKENS for token in tokens):
+        return False
+    return any(token in IMPORTANT_MARKER_TOKENS for token in tokens)
+
+
+def _value_is_truthy_flag(value: Any) -> bool:
+    if value is None:
+        return False
+    if isinstance(value, bool):
+        return value
+    if isinstance(value, (int, float)):
+        return value != 0
+    if isinstance(value, str):
+        return _string_signals_importance(value)
+    if isinstance(value, (list, tuple, set)):
+        return any(_value_is_truthy_flag(item) for item in value)
+    if isinstance(value, dict):
+        return any(_value_is_truthy_flag(item) for item in value.values())
+    return _string_signals_importance(str(value))
+
+
+def _value_contains_marker(value: Any) -> bool:
+    if value is None:
+        return False
+    if isinstance(value, bool):
+        return False
+    if isinstance(value, (int, float)):
+        return False
+    if isinstance(value, str):
+        return _string_signals_importance(value)
+    if isinstance(value, (list, tuple, set)):
+        return any(_value_contains_marker(item) for item in value)
+    if isinstance(value, dict):
+        for key, sub_value in value.items():
+            if _string_signals_importance(str(key)) and _value_is_truthy_flag(sub_value):
+                return True
+            if _value_contains_marker(sub_value):
+                return True
+        return False
+    return _string_signals_importance(str(value))
+
+
+def _meta_signals_importance(meta: Dict[str, Any]) -> bool:
+    direct_flag_keys = {
+        "important",
+        "is_important",
+        "highlight",
+        "highlighted",
+    }
+    for key in direct_flag_keys:
+        if key in meta and _value_is_truthy_flag(meta[key]):
+            return True
+    for key in {"importance", "priority"}:
+        if key in meta and _value_contains_marker(meta[key]):
+            return True
+    for key in {"labels", "tags", "flags", "markers"}:
+        if key in meta and _value_contains_marker(meta[key]):
+            return True
+    return False
+
+
+def _properties_signal_importance(properties: Any) -> bool:
+    if not isinstance(properties, dict):
+        return False
+    for key, value in properties.items():
+        if _string_signals_importance(str(key)) and _value_is_truthy_flag(value):
+            return True
+        if _value_contains_marker(value):
+            return True
+    return False
+
+
+def _folders_signal_importance(folder_names: Optional[List[str]]) -> bool:
+    if not folder_names:
+        return False
+    for name in folder_names:
+        tokens = _tokenize_words(name)
+        if not tokens:
+            continue
+        if any(token in NEGATION_TOKENS for token in tokens):
+            continue
+        if any(token in LOW_PRIORITY_TOKENS for token in tokens):
+            continue
+        if any(token in IMPORTANT_MARKER_TOKENS for token in tokens):
+            return True
+    return False
+
+
+def is_marked_important(
+    meta: Dict[str, Any],
+    file_entry: Dict[str, Any],
+    folder_names: Optional[List[str]],
+) -> bool:
+    if _meta_signals_importance(meta):
+        return True
+    if _properties_signal_importance(file_entry.get("appProperties")):
+        return True
+    if _properties_signal_importance(file_entry.get("properties")):
+        return True
+    if bool(file_entry.get("starred")):
+        return True
+    if _folders_signal_importance(folder_names):
+        return True
+    return False
+
+
+def _replace_text_prefix(value: str, *, require_start: bool) -> Tuple[str, bool]:
+    if not value:
+        return value, False
+    if require_start:
+        if not value.startswith(TEXT_PREFIX):
+            return value, False
+        if len(value) > len(TEXT_PREFIX) and not value[len(TEXT_PREFIX)].isspace():
+            return value, False
+        return f"{HIGHLIGHTED_TEXT_PREFIX}{value[len(TEXT_PREFIX):]}", True
+
+    index = value.find(TEXT_PREFIX)
+    if index == -1:
+        return value, False
+    if index > 0:
+        before_char = value[index - 1]
+        if not before_char.isspace() and before_char not in {":", "-", "/", "("}:
+            return value, False
+    end_index = index + len(TEXT_PREFIX)
+    if end_index < len(value):
+        after_char = value[end_index]
+        if not after_char.isspace():
+            return value, False
+    updated = f"{value[:index]}{HIGHLIGHTED_TEXT_PREFIX}{value[end_index:]}"
+    return updated, True
+
+
 def build_episode_entry(
     file_entry: Dict[str, Any],
     feed_config: Dict[str, Any],
@@ -591,6 +798,10 @@ def build_episode_entry(
         suffix = f" - {narrator}"
         if base_title.lower().endswith(suffix.lower()):
             base_title = base_title[: -len(suffix)].rstrip()
+    important = is_marked_important(meta, file_entry, folder_names)
+    prefix_replaced = False
+    if important:
+        base_title, prefix_replaced = _replace_text_prefix(base_title, require_start=True)
     pubdate_source = meta.get("published_at") or file_entry.get("modifiedTime")
     if not pubdate_source:
         raise ValueError(
@@ -608,6 +819,10 @@ def build_episode_entry(
                     week_label = f"{week_label} ({week_dates})"
                 meta["title"] = f"{week_label}: {base_title}"
     title_value = meta.get("title") or base_title
+    if important and prefix_replaced:
+        updated_title, title_changed = _replace_text_prefix(title_value, require_start=False)
+        if title_changed:
+            title_value = updated_title
     if narrator:
         prefix = narrator.upper()
         if not title_value.upper().startswith(f"{prefix} "):

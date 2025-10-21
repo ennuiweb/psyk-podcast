@@ -49,7 +49,7 @@
 - Markus & Kitayama (1991) Culture & self → W9 X Markus - Culture and the self - 1991.pdf (source: Readings/W9 Explorations in Cultural Psychology - Past, Present, Future/W9 X Markus - Culture and the self - 1991.pdf)
 - Henrich et al. (2010) WEIRD people → W9 Henrich - The weirdest people in the world - 2010.pdf (source: Readings/W9 Explorations in Cultural Psychology - Past, Present, Future/W9 Henrich - The weirdest people in the world - 2010.pdf)
 - Shweder & Sullivan (1993) Cultural psychology → W9 X Shweder - Cultural psychology - Who needs it? - 1993.pdf (source: Readings/W9 Explorations in Cultural Psychology - Past, Present, Future/W9 X Shweder - Cultural psychology - Who needs it? - 1993.pdf)
-- Ahmadu (2017) Equality, not special protection → W10 X Equality, not special protection - Ahmadu 2017.pdf (source: Readings/W10 Moral Psychology and Cultural Collisions/W10 X Equality, not special protection - Ahmadu 2017.pdf)
+- Ahmadu (2017) Equality, not special protection → W10 X Ahmadu - Equality, not special protection - 2017.pdf (source: Readings/W10 Moral Psychology and Cultural Collisions/W10 X Ahmadu - Equality, not special protection - 2017.pdf)
 
 **W10 Moral Collisions**
 - Shweder (2003) Moral challenge in migration → W10 X Shweder - The moral challenge in cultural migration - 2003.pdf (source: Readings/W10 Moral Psychology and Cultural Collisions/W10 X Shweder - The moral challenge in cultural migration - 2003.pdf)

@@ -47,6 +47,8 @@ The Socialpsykologi deep-dive feed uses `[Tekst] …` as the default prefix for 
 
 If you clear `only_doc_marked_important` (or set `important_text_mode` back to `all_markers`) the broader heuristics return, meaning meta overrides (`important: true`, `priority: "high"`), Drive stars/app properties, and folder names containing words such as “Gul”/“Important” will once again flag a file.
 
+Renaming a Drive file so its title already starts with `[Gul tekst]` acts as a manual override – the generator leaves that prefix untouched and treats the entry as highlighted even when it does not match the `W<week-number> X` pattern.
+
 These controls let each show decide whether highlights should track the curated reading lists, Drive metadata, or both.
 
 ## One-time Google setup

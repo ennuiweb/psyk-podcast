@@ -623,9 +623,14 @@ def format_week_range(published_at: Optional[dt.datetime]) -> Optional[str]:
         return None
     if published_at.tzinfo is None:
         published_at = published_at.replace(tzinfo=dt.timezone.utc)
+    iso_calendar = published_at.isocalendar()
+    if isinstance(iso_calendar, tuple):
+        week_number = iso_calendar[1]
+    else:  # Python 3.11+ returns datetime.IsoCalendarDate
+        week_number = iso_calendar.week
     week_start = published_at - dt.timedelta(days=published_at.weekday())
     week_end = week_start + dt.timedelta(days=6)
-    return f"{week_start.date():%d/%m} - {week_end.date():%d/%m}"
+    return f"Uge {week_number} {week_start.date():%d/%m} - {week_end.date():%d/%m}"
 
 
 def derive_week_label(
@@ -1001,12 +1006,13 @@ def build_episode_entry(
         suffix = f" - {narrator}"
         if base_title.lower().endswith(suffix.lower()):
             base_title = base_title[: -len(suffix)].rstrip()
-    important = is_marked_important(
+    manual_highlight = base_title.casefold().startswith(HIGHLIGHTED_TEXT_PREFIX.casefold())
+    important = manual_highlight or is_marked_important(
         meta,
         file_entry,
         folder_names,
         doc_marked_titles,
-        only_doc_marked=only_doc_marked,
+        only_doc_marked=only_doc_marked and not manual_highlight,
     )
     prefix_replaced = False
     if important:

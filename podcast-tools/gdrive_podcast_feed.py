@@ -93,6 +93,7 @@ DOC_IMPORTANT_INLINE_MARKERS = (
 DOC_CALLOUT_PATTERN = re.compile(
     r"\[!\s*(important|warning|attention|prioritet|priority|vigtig)\b", re.IGNORECASE
 )
+WEEK_X_PREFIX_PATTERN = re.compile(r"^w\d+\s+x\b", re.IGNORECASE)
 
 
 def load_json(path: Path) -> Dict[str, Any]:
@@ -804,6 +805,14 @@ def _candidate_name_signals_importance(candidate: str) -> bool:
     return _string_signals_importance(candidate)
 
 
+def _candidate_is_week_x(candidate: str) -> bool:
+    if not candidate:
+        return False
+    stripped = candidate.strip()
+    stripped = stripped.lstrip("-• ")
+    return bool(WEEK_X_PREFIX_PATTERN.match(stripped))
+
+
 def _extract_doc_candidates(line: str) -> List[str]:
     candidates: List[str] = []
     working = line.strip()
@@ -867,7 +876,9 @@ def _doc_markers_include(slugs: Set[str], value: str) -> bool:
     return False
 
 
-def collect_doc_marked_titles(doc_paths: Iterable[Path]) -> Set[str]:
+def collect_doc_marked_titles(doc_paths: Iterable[Path], *, mode: str = "all_markers") -> Set[str]:
+    if mode not in {"all_markers", "week_x_only"}:
+        mode = "all_markers"
     important_slugs: Set[str] = set()
     for doc_path in doc_paths:
         try:
@@ -884,19 +895,26 @@ def collect_doc_marked_titles(doc_paths: Iterable[Path]) -> Set[str]:
                 continue
             is_block_line = stripped.startswith(">")
             bare_line = stripped.lstrip("> ").strip()
-            if is_block_line and DOC_CALLOUT_PATTERN.search(bare_line):
+            if mode != "week_x_only" and is_block_line and DOC_CALLOUT_PATTERN.search(bare_line):
                 in_callout = True
                 continue
             if not is_block_line:
                 in_callout = False
-            line_marked = in_callout or _line_has_doc_marker(bare_line)
+            line_marked = False
+            if mode == "all_markers":
+                line_marked = in_callout or _line_has_doc_marker(bare_line)
             candidates = _extract_doc_candidates(bare_line)
             if not candidates:
                 continue
             for candidate in candidates:
                 if not candidate:
                     continue
-                candidate_marked = line_marked or _candidate_name_signals_importance(candidate)
+                if mode == "week_x_only":
+                    if not _candidate_is_week_x(candidate):
+                        continue
+                    candidate_marked = True
+                else:
+                    candidate_marked = line_marked or _candidate_name_signals_importance(candidate)
                 if not candidate_marked:
                     continue
                 slug = _normalize_title_for_matching(candidate)
@@ -910,9 +928,13 @@ def is_marked_important(
     file_entry: Dict[str, Any],
     folder_names: Optional[List[str]],
     doc_marked_titles: Optional[Set[str]] = None,
+    *,
+    only_doc_marked: bool = False,
 ) -> bool:
     if doc_marked_titles and _doc_markers_include(doc_marked_titles, file_entry.get("name", "")):
         return True
+    if only_doc_marked:
+        return False
     if _meta_signals_importance(meta):
         return True
     if _properties_signal_importance(file_entry.get("appProperties")):
@@ -960,6 +982,8 @@ def build_episode_entry(
     auto_meta: Optional[Dict[str, Any]] = None,
     folder_names: Optional[List[str]] = None,
     doc_marked_titles: Optional[Set[str]] = None,
+    *,
+    only_doc_marked: bool = False,
 ) -> Dict[str, Any]:
     meta: Dict[str, Any] = {}
     if auto_meta:
@@ -977,7 +1001,13 @@ def build_episode_entry(
         suffix = f" - {narrator}"
         if base_title.lower().endswith(suffix.lower()):
             base_title = base_title[: -len(suffix)].rstrip()
-    important = is_marked_important(meta, file_entry, folder_names, doc_marked_titles)
+    important = is_marked_important(
+        meta,
+        file_entry,
+        folder_names,
+        doc_marked_titles,
+        only_doc_marked=only_doc_marked,
+    )
     prefix_replaced = False
     if important:
         base_title, prefix_replaced = _replace_text_prefix(base_title, require_start=True)
@@ -1186,6 +1216,8 @@ def main() -> None:
             raise SystemExit(f"Auto spec file not found: {auto_spec_path_value}")
         auto_spec = AutoSpec.from_path(auto_spec_path)
 
+    only_doc_marked = bool(config.get("only_doc_marked_important", False))
+    doc_marked_titles_mode = str(config.get("important_text_mode", "all_markers")).lower()
     doc_marked_titles: Set[str] = set()
     doc_sources_config = config.get("important_text_docs")
     if doc_sources_config:
@@ -1211,7 +1243,9 @@ def main() -> None:
                 continue
             resolved_docs.append(found_path)
         if resolved_docs:
-            doc_marked_titles = collect_doc_marked_titles(resolved_docs)
+            doc_marked_titles = collect_doc_marked_titles(
+                resolved_docs, mode=doc_marked_titles_mode
+            )
 
     drive_files = list_audio_files(
         drive_service,
@@ -1257,6 +1291,7 @@ def main() -> None:
                 auto_meta=auto_meta,
                 folder_names=folder_names,
                 doc_marked_titles=doc_marked_titles,
+                only_doc_marked=only_doc_marked,
             )
         )
 

@@ -13,13 +13,15 @@ Automation to build podcast RSS feeds from audio files stored in Google Drive. T
 Each show config can optionally supply `"allowed_mime_types"` to control which Google Drive items should become feed entries. Values ending with `/` are treated as prefixes (for example `"audio/"`), while exact MIME types (such as `"video/mp4"`) match specific files. The default behaviour includes only audio files, so add types like `"video/mp4"` if you want lecture videos to appear in the feed without manual conversion.
 
 ### Automatic Drive transcoding
-`podcast-tools/transcode_drive_media.py` converts matching Drive videos to audio before the feed build runs. Provide a `transcode` block in each show config to opt in:
+`podcast-tools/transcode_drive_media.py` converts matching Drive videos to audio before the feed build runs. Provide a `transcode` block in each show config to opt in and include both the video and audio MIME types that Google Drive reports for `.mp4`/`.m4a` uploads:
 
 ```json
 "transcode": {
   "enabled": true,
   "source_mime_types": [
     "video/mp4",
+    "audio/mp4",
+    "audio/x-m4a",
     "audio/wav",
     "audio/x-wav"
   ],

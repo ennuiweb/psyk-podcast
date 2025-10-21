@@ -9,7 +9,9 @@
   "transcode": {
     "enabled": true,
     "source_mime_types": [
-      "video/mp4"
+      "video/mp4",
+      "audio/mp4",
+      "audio/x-m4a"
     ],
     "target_extension": "mp3",
     "target_mime_type": "audio/mpeg",

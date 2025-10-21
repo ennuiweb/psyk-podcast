@@ -675,89 +675,6 @@ def _string_signals_importance(value: str) -> bool:
     return any(token in IMPORTANT_MARKER_TOKENS for token in tokens)
 
 
-def _value_is_truthy_flag(value: Any) -> bool:
-    if value is None:
-        return False
-    if isinstance(value, bool):
-        return value
-    if isinstance(value, (int, float)):
-        return value != 0
-    if isinstance(value, str):
-        return _string_signals_importance(value)
-    if isinstance(value, (list, tuple, set)):
-        return any(_value_is_truthy_flag(item) for item in value)
-    if isinstance(value, dict):
-        return any(_value_is_truthy_flag(item) for item in value.values())
-    return _string_signals_importance(str(value))
-
-
-def _value_contains_marker(value: Any) -> bool:
-    if value is None:
-        return False
-    if isinstance(value, bool):
-        return False
-    if isinstance(value, (int, float)):
-        return False
-    if isinstance(value, str):
-        return _string_signals_importance(value)
-    if isinstance(value, (list, tuple, set)):
-        return any(_value_contains_marker(item) for item in value)
-    if isinstance(value, dict):
-        for key, sub_value in value.items():
-            if _string_signals_importance(str(key)) and _value_is_truthy_flag(sub_value):
-                return True
-            if _value_contains_marker(sub_value):
-                return True
-        return False
-    return _string_signals_importance(str(value))
-
-
-def _meta_signals_importance(meta: Dict[str, Any]) -> bool:
-    direct_flag_keys = {
-        "important",
-        "is_important",
-        "highlight",
-        "highlighted",
-    }
-    for key in direct_flag_keys:
-        if key in meta and _value_is_truthy_flag(meta[key]):
-            return True
-    for key in {"importance", "priority"}:
-        if key in meta and _value_contains_marker(meta[key]):
-            return True
-    for key in {"labels", "tags", "flags", "markers"}:
-        if key in meta and _value_contains_marker(meta[key]):
-            return True
-    return False
-
-
-def _properties_signal_importance(properties: Any) -> bool:
-    if not isinstance(properties, dict):
-        return False
-    for key, value in properties.items():
-        if _string_signals_importance(str(key)) and _value_is_truthy_flag(value):
-            return True
-        if _value_contains_marker(value):
-            return True
-    return False
-
-
-def _folders_signal_importance(folder_names: Optional[List[str]]) -> bool:
-    if not folder_names:
-        return False
-    for name in folder_names:
-        tokens = _tokenize_words(name)
-        if not tokens:
-            continue
-        if any(token in NEGATION_TOKENS for token in tokens):
-            continue
-        if any(token in LOW_PRIORITY_TOKENS for token in tokens):
-            continue
-        if any(token in IMPORTANT_MARKER_TOKENS for token in tokens):
-            return True
-    return False
-
-
 def _strip_text_prefix(value: str) -> str:
     if not value:
         return ""
@@ -929,26 +846,10 @@ def collect_doc_marked_titles(doc_paths: Iterable[Path], *, mode: str = "all_mar
 
 
 def is_marked_important(
-    meta: Dict[str, Any],
     file_entry: Dict[str, Any],
-    folder_names: Optional[List[str]],
     doc_marked_titles: Optional[Set[str]] = None,
-    *,
-    only_doc_marked: bool = False,
 ) -> bool:
     if doc_marked_titles and _doc_markers_include(doc_marked_titles, file_entry.get("name", "")):
-        return True
-    if only_doc_marked:
-        return False
-    if _meta_signals_importance(meta):
-        return True
-    if _properties_signal_importance(file_entry.get("appProperties")):
-        return True
-    if _properties_signal_importance(file_entry.get("properties")):
-        return True
-    if bool(file_entry.get("starred")):
-        return True
-    if _folders_signal_importance(folder_names):
         return True
     return False
 
@@ -987,8 +888,6 @@ def build_episode_entry(
     auto_meta: Optional[Dict[str, Any]] = None,
     folder_names: Optional[List[str]] = None,
     doc_marked_titles: Optional[Set[str]] = None,
-    *,
-    only_doc_marked: bool = False,
 ) -> Dict[str, Any]:
     meta: Dict[str, Any] = {}
     if auto_meta:
@@ -1006,13 +905,9 @@ def build_episode_entry(
         suffix = f" - {narrator}"
         if base_title.lower().endswith(suffix.lower()):
             base_title = base_title[: -len(suffix)].rstrip()
-    manual_highlight = base_title.casefold().startswith(HIGHLIGHTED_TEXT_PREFIX.casefold())
-    important = manual_highlight or is_marked_important(
-        meta,
+    important = is_marked_important(
         file_entry,
-        folder_names,
         doc_marked_titles,
-        only_doc_marked=only_doc_marked and not manual_highlight,
     )
     prefix_replaced = False
     if important:
@@ -1222,7 +1117,6 @@ def main() -> None:
             raise SystemExit(f"Auto spec file not found: {auto_spec_path_value}")
         auto_spec = AutoSpec.from_path(auto_spec_path)
 
-    only_doc_marked = bool(config.get("only_doc_marked_important", False))
     doc_marked_titles_mode = str(config.get("important_text_mode", "all_markers")).lower()
     doc_marked_titles: Set[str] = set()
     doc_sources_config = config.get("important_text_docs")
@@ -1297,7 +1191,6 @@ def main() -> None:
                 auto_meta=auto_meta,
                 folder_names=folder_names,
                 doc_marked_titles=doc_marked_titles,
-                only_doc_marked=only_doc_marked,
             )
         )
 

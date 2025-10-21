@@ -9,7 +9,9 @@
   "transcode": {
     "enabled": true,
     "source_mime_types": [
-      "video/mp4"
+      "video/mp4",
+      "audio/mp4",
+      "audio/x-m4a"
     ],
     "target_extension": "mp3",
     "target_mime_type": "audio/mpeg",
@@ -21,6 +23,10 @@
   "public_link_template": "https://drive.google.com/uc?export=download&id={file_id}",
   "episode_metadata": "shows/social-psychology/episode_metadata.json",
   "auto_spec": "shows/social-psychology/auto_spec.json",
+  "important_text_docs": [
+    "shows/social-psychology/docs/overblik.md",
+    "shows/social-psychology/docs/reading-file-key.md"
+  ],
   "feed": {
     "title": "Socialpsykologi Deep Dives - Hold 1 - 2024",
     "link": "https://github.com/ennuiweb/psyk-podcast",

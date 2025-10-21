@@ -7,6 +7,7 @@ import argparse
 import datetime as dt
 import json
 import re
+import sys
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Set, Tuple
 from zoneinfo import ZoneInfo
@@ -71,6 +72,27 @@ NEGATION_TOKENS = {
     "ikke",
     "ej",
 }
+DOC_IMPORTANT_SYMBOLS = {"⭐", "🔥", "‼", "❗"}
+DOC_IMPORTANT_PREFIX_MARKERS = (
+    "[!important",
+    "[!warning",
+    "[!attention",
+    "[!prioritet",
+    "[!priority",
+    "[!vigtig",
+)
+DOC_IMPORTANT_INLINE_MARKERS = (
+    "(!",
+    "[important]",
+    "[vigtig]",
+    "[priority]",
+    "(important)",
+    "(vigtig)",
+    "(priority)",
+)
+DOC_CALLOUT_PATTERN = re.compile(
+    r"\[!\s*(important|warning|attention|prioritet|priority|vigtig)\b", re.IGNORECASE
+)
 
 
 def load_json(path: Path) -> Dict[str, Any]:
@@ -730,11 +752,167 @@ def _folders_signal_importance(folder_names: Optional[List[str]]) -> bool:
     return False
 
 
+def _strip_text_prefix(value: str) -> str:
+    if not value:
+        return ""
+    for prefix in (TEXT_PREFIX, HIGHLIGHTED_TEXT_PREFIX):
+        if value.startswith(prefix):
+            return value[len(prefix) :].lstrip()
+    return value
+
+
+def _normalize_title_for_matching(value: str) -> str:
+    if not value:
+        return ""
+    cleaned = _strip_text_prefix(value.strip())
+    cleaned = cleaned.replace("’", "'").replace("“", '"').replace("”", '"')
+    cleaned = cleaned.replace("–", "-").replace("—", "-")
+    cleaned = re.sub(r"\s+", " ", cleaned)
+    cleaned = re.sub(r"\.\s*\([^)]+\)$", "", cleaned)  # remove .(pdf/epub) style suffix
+    cleaned = re.sub(
+        r"\.(mp3|m4a|wav|mp4|pdf|epub|mobi|aac|flac|txt|docx|mkv)$", "", cleaned, flags=re.IGNORECASE
+    )
+    cleaned = cleaned.rstrip(" .-_/")
+    cleaned = re.sub(r"^[\[\](){}<>-]+", "", cleaned)
+    cleaned = cleaned.strip()
+    if not cleaned:
+        return ""
+    return re.sub(r"[^\w]+", "", cleaned.casefold())
+
+
+def _line_has_doc_marker(line: str) -> bool:
+    if not line:
+        return False
+    if any(symbol in line for symbol in DOC_IMPORTANT_SYMBOLS):
+        return True
+    lowered = line.casefold()
+    if any(prefix in lowered for prefix in DOC_IMPORTANT_PREFIX_MARKERS):
+        return True
+    if any(marker in lowered for marker in DOC_IMPORTANT_INLINE_MARKERS):
+        return True
+    return _string_signals_importance(line)
+
+
+def _candidate_name_signals_importance(candidate: str) -> bool:
+    if not candidate:
+        return False
+    if re.search(r"\bX\b", candidate):
+        return True
+    stripped = candidate.strip()
+    if re.fullmatch(r"\d+", stripped):
+        return False
+    return _string_signals_importance(candidate)
+
+
+def _extract_doc_candidates(line: str) -> List[str]:
+    candidates: List[str] = []
+    working = line.strip()
+    if not working:
+        return candidates
+    arrow_variants = ("→", "->", "⇒")
+    for arrow in arrow_variants:
+        if arrow in working:
+            segment = working.split(arrow, 1)[1].strip()
+            if segment:
+                segment = re.split(r"\s+\(source\b", segment, 1, flags=re.IGNORECASE)[0]
+                segment = re.split(r"\s+\[source\b", segment, 1, flags=re.IGNORECASE)[0]
+                segment = re.split(r"\s+-\s*source\b", segment, 1, flags=re.IGNORECASE)[0]
+                segment = segment.strip()
+                if segment:
+                    candidates.append(segment)
+            break
+    if "`" in working:
+        for match in re.findall(r"`([^`]+)`", working):
+            cleaned = match.strip()
+            if cleaned:
+                candidates.append(cleaned)
+    if "[" in working and "]" in working:
+        link_match = re.findall(r"\[([^\]]+)\]\([^)]+\)", working)
+        for match in link_match:
+            cleaned = match.strip()
+            if cleaned:
+                candidates.append(cleaned)
+    # Remove duplicates while preserving order
+    seen: Set[str] = set()
+    unique_candidates: List[str] = []
+    for item in candidates:
+        if item not in seen:
+            seen.add(item)
+            unique_candidates.append(item)
+    return unique_candidates
+
+
+def _slug_matches(candidate_slug: str, reference_slug: str) -> bool:
+    if not candidate_slug or not reference_slug:
+        return False
+    if candidate_slug == reference_slug:
+        return True
+    min_length = 8
+    if len(candidate_slug) >= min_length and candidate_slug in reference_slug:
+        return True
+    if len(reference_slug) >= min_length and reference_slug in candidate_slug:
+        return True
+    return False
+
+
+def _doc_markers_include(slugs: Set[str], value: str) -> bool:
+    normalized = _normalize_title_for_matching(value)
+    if not normalized:
+        return False
+    if normalized in slugs:
+        return True
+    for doc_slug in slugs:
+        if _slug_matches(normalized, doc_slug):
+            return True
+    return False
+
+
+def collect_doc_marked_titles(doc_paths: Iterable[Path]) -> Set[str]:
+    important_slugs: Set[str] = set()
+    for doc_path in doc_paths:
+        try:
+            content = doc_path.read_text(encoding="utf-8")
+        except FileNotFoundError:
+            print(f"Warning: importance doc not found: {doc_path}", file=sys.stderr)
+            continue
+        in_callout = False
+        for raw_line in content.splitlines():
+            stripped = raw_line.strip()
+            if not stripped:
+                if not raw_line.lstrip().startswith(">"):
+                    in_callout = False
+                continue
+            is_block_line = stripped.startswith(">")
+            bare_line = stripped.lstrip("> ").strip()
+            if is_block_line and DOC_CALLOUT_PATTERN.search(bare_line):
+                in_callout = True
+                continue
+            if not is_block_line:
+                in_callout = False
+            line_marked = in_callout or _line_has_doc_marker(bare_line)
+            candidates = _extract_doc_candidates(bare_line)
+            if not candidates:
+                continue
+            for candidate in candidates:
+                if not candidate:
+                    continue
+                candidate_marked = line_marked or _candidate_name_signals_importance(candidate)
+                if not candidate_marked:
+                    continue
+                slug = _normalize_title_for_matching(candidate)
+                if slug:
+                    important_slugs.add(slug)
+    return important_slugs
+
+
 def is_marked_important(
     meta: Dict[str, Any],
     file_entry: Dict[str, Any],
     folder_names: Optional[List[str]],
+    doc_marked_titles: Optional[Set[str]] = None,
 ) -> bool:
+    if doc_marked_titles and _doc_markers_include(doc_marked_titles, file_entry.get("name", "")):
+        return True
     if _meta_signals_importance(meta):
         return True
     if _properties_signal_importance(file_entry.get("appProperties")):
@@ -781,6 +959,7 @@ def build_episode_entry(
     public_link_template: str,
     auto_meta: Optional[Dict[str, Any]] = None,
     folder_names: Optional[List[str]] = None,
+    doc_marked_titles: Optional[Set[str]] = None,
 ) -> Dict[str, Any]:
     meta: Dict[str, Any] = {}
     if auto_meta:
@@ -798,7 +977,7 @@ def build_episode_entry(
         suffix = f" - {narrator}"
         if base_title.lower().endswith(suffix.lower()):
             base_title = base_title[: -len(suffix)].rstrip()
-    important = is_marked_important(meta, file_entry, folder_names)
+    important = is_marked_important(meta, file_entry, folder_names, doc_marked_titles)
     prefix_replaced = False
     if important:
         base_title, prefix_replaced = _replace_text_prefix(base_title, require_start=True)
@@ -1007,6 +1186,33 @@ def main() -> None:
             raise SystemExit(f"Auto spec file not found: {auto_spec_path_value}")
         auto_spec = AutoSpec.from_path(auto_spec_path)
 
+    doc_marked_titles: Set[str] = set()
+    doc_sources_config = config.get("important_text_docs")
+    if doc_sources_config:
+        if isinstance(doc_sources_config, (str, Path)):
+            doc_sources_iterable = [doc_sources_config]
+        else:
+            doc_sources_iterable = list(doc_sources_config)
+        resolved_docs: List[Path] = []
+        for entry in doc_sources_iterable:
+            if not entry:
+                continue
+            entry_path = Path(str(entry))
+            search_candidates = [entry_path]
+            if not entry_path.is_absolute():
+                search_candidates.insert(0, args.config.parent / entry_path)
+            found_path: Optional[Path] = None
+            for candidate in search_candidates:
+                if candidate.exists():
+                    found_path = candidate
+                    break
+            if not found_path:
+                print(f"Warning: importance doc not found: {entry_path}", file=sys.stderr)
+                continue
+            resolved_docs.append(found_path)
+        if resolved_docs:
+            doc_marked_titles = collect_doc_marked_titles(resolved_docs)
+
     drive_files = list_audio_files(
         drive_service,
         folder_id,
@@ -1050,6 +1256,7 @@ def main() -> None:
                 public_link_template=public_template,
                 auto_meta=auto_meta,
                 folder_names=folder_names,
+                doc_marked_titles=doc_marked_titles,
             )
         )
 

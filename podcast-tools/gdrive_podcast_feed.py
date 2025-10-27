@@ -287,6 +287,14 @@ class AutoSpec:
         except (KeyError, TypeError, ValueError) as exc:  # pragma: no cover - defensive
             raise ValueError(f"Auto spec missing valid 'year' ({source})") from exc
 
+        try:
+            week_year = spec.get("week_reference_year", self.year)
+            self.week_reference_year = int(week_year)
+        except (TypeError, ValueError) as exc:  # pragma: no cover - defensive
+            raise ValueError(
+                f"Auto spec has invalid 'week_reference_year' ({source})"
+            ) from exc
+
         tz_name = spec.get("timezone", "UTC")
         try:
             self.timezone = ZoneInfo(tz_name)
@@ -410,7 +418,10 @@ class AutoSpec:
                 continue
             if self._matches(rule["match"], search_candidates):
                 scheduled = self._allocate_datetime(rule, folder_names or [file_entry.get("id", "")])
-                meta: Dict[str, Any] = {"published_at": scheduled.isoformat()}
+                meta: Dict[str, Any] = {
+                    "published_at": scheduled.isoformat(),
+                    "week_reference_year": self.week_reference_year,
+                }
                 voice = self._extract_voice(file_entry.get("name"))
                 if voice:
                     meta.setdefault("narrator", voice)
@@ -511,7 +522,11 @@ class AutoSpec:
                         if candidate < scheduled:
                             scheduled = candidate
             self._unassigned_allocations[fallback_key] = scheduled
-        return {"published_at": scheduled.isoformat(), "suppress_week_prefix": True}
+        return {
+            "published_at": scheduled.isoformat(),
+            "suppress_week_prefix": True,
+            "week_reference_year": self.week_reference_year,
+        }
 
     @staticmethod
     def _extract_sequence_number(file_name: Optional[str]) -> Optional[int]:
@@ -618,19 +633,28 @@ def week_label_from_folders(folder_names: List[str]) -> Optional[str]:
     return None
 
 
-def format_week_range(published_at: Optional[dt.datetime]) -> Optional[str]:
+def format_week_range(
+    published_at: Optional[dt.datetime],
+    week_reference_year: Optional[int] = None,
+) -> Optional[str]:
     if not published_at:
         return None
     if published_at.tzinfo is None:
         published_at = published_at.replace(tzinfo=dt.timezone.utc)
     iso_calendar = published_at.isocalendar()
     if isinstance(iso_calendar, tuple):
-        week_number = iso_calendar[1]
+        iso_year, week_number, _ = iso_calendar
     else:  # Python 3.11+ returns datetime.IsoCalendarDate
+        iso_year = iso_calendar.year
         week_number = iso_calendar.week
-    week_start = published_at - dt.timedelta(days=published_at.weekday())
-    week_end = week_start + dt.timedelta(days=6)
-    return f"Uge {week_number} {week_start.date():%d/%m} - {week_end.date():%d/%m}"
+    reference_year = week_reference_year or iso_year
+    try:
+        week_start_date = dt.date.fromisocalendar(reference_year, week_number, 1)
+    except ValueError:
+        week_start_dt = published_at - dt.timedelta(days=published_at.weekday())
+        week_start_date = week_start_dt.date()
+    week_end_date = week_start_date + dt.timedelta(days=6)
+    return f"Uge {week_number} {week_start_date:%d/%m} - {week_end_date:%d/%m}"
 
 
 def derive_week_label(
@@ -924,7 +948,12 @@ def build_episode_entry(
         else:
             week_label = derive_week_label(folder_names or [], meta.get("course_week"))
             if week_label and not base_title.lower().startswith("week"):
-                week_dates = format_week_range(published_at)
+                week_year_token = meta.get("week_reference_year")
+                try:
+                    week_year = int(week_year_token) if week_year_token is not None else None
+                except (TypeError, ValueError):
+                    week_year = None
+                week_dates = format_week_range(published_at, week_year)
                 if week_dates:
                     week_label = f"{week_label} ({week_dates})"
                 meta["title"] = f"{week_label}: {base_title}"

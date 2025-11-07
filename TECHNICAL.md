@@ -7,7 +7,7 @@ Automation to build podcast RSS feeds from audio files stored in Google Drive. T
 - `shows/` – one directory per podcast. Each show keeps its own config, metadata, docs, and generated feeds (for example `shows/social-psychology/`).
   - `shows/intro-vt/` ships as scaffolding for the "Intro + VT Deep Dives - Hold 1 - 2024" series—copy the templates inside when you are ready to wire the feed up. GitHub Actions now runs each show via a build matrix, so once a new show directory follows the same structure and is referenced in the workflow matrix, it will publish automatically.
   - `shows/intro-vt-tss/` and `shows/social-psychology-tts/` provide text-to-speech variants that reuse the deep-dive auto spec and share the same automation flow.
-- `notebooklm_app/` – CLI + helpers that talk to the NotebookLM Enterprise API to generate, download, and Drive-sync AI narrated podcasts per show.
+- `notebooklm_app/` – standalone CLI + helpers that talk to the NotebookLM Enterprise API to generate and download AI narrated podcasts locally (no coupling to the RSS tooling).
 - `requirements.txt` – Python dependencies needed locally and in CI.
 
 ### MIME type filtering
@@ -81,14 +81,14 @@ The repository ships with `podcast/config.json` and `podcast/episode_metadata.js
 To kick off a build manually, go to **Actions → Generate Podcast Feed → Run workflow**. The job also runs every day at 06:00 UTC via cron.
 
 ## NotebookLM automation
-`notebooklm_app/` contains a standalone CLI (`python -m notebooklm_app.cli`) that streamlines NotebookLM Enterprise podcast generation:
+`notebooklm_app/` contains a standalone CLI (`python -m notebooklm_app.cli`) that targets the NotebookLM **Podcast API** (no notebooks required) and never touches the Drive/RSS automation:
 
-1. Copy `notebooklm_app/config.example.yaml` to `notebooklm_app/config.yaml`, set the project number, Notebook IDs, drive folders, and service-account file per show (values can also be overridden via `NOTEBOOKLM_*` environment variables).
-2. Run `python -m notebooklm_app.cli create --show social-psychology` to queue a new audio overview. The command stores a timestamped run log under `shows/<show>/notebooklm/runs/` and optionally waits for completion.
-3. Use `python -m notebooklm_app.cli download --show social-psychology` once the overview reports `READY`; the MP3 is saved to `shows/<show>/notebooklm/downloads/`.
-4. Mirror the MP3 back to Drive with `python -m notebooklm_app.cli sync-drive --show social-psychology`, which uploads via the same service account that powers the RSS builder so the existing automation can ingest the file on the next run.
+1. Copy `notebooklm_app/config.example.yaml` to `notebooklm_app/config.yaml`, set the project ID, default language/length, workspace root, and service-account file for the Google Cloud project (env vars `NOTEBOOKLM_*` can override any of these values).
+2. Define one or more `profiles`, each with optional title/description/focus overrides and a list of `contexts` (inline text, text files, or binary blobs). Context paths are resolved relative to the config file, so the profile fully describes its source material.
+3. Run `python -m notebooklm_app.cli create --profile social-psychology` to queue a new podcast. Each run stores a timestamped log plus the operation name under `notebooklm_app/workspace/<profile>/notebooklm/runs/`.
+4. Use `python -m notebooklm_app.cli status` or `download --wait` to monitor the long-running operation and pull the final MP3 into `.../notebooklm/downloads/` (or a custom directory via `--output`).
 
-The CLI surfaces `status` for quick checks, wraps Google auth using the per-show service accounts, retries transient API failures, and keeps all run artifacts alongside each show for auditing.
+The CLI handles auth via the per-project service account, retries transient API failures, lets you append extra context via `--context-text/--context-file`, and keeps all artifacts local so it remains fully decoupled from the publishing pipeline.
 
 ## Drive-triggered rebuilds (Google Apps Script)
 If you want the GitHub workflow to fire whenever fresh audio appears in Drive, add a lightweight Apps Script that polls the folder and calls the `Generate Podcast Feed` workflow via `workflow_dispatch`. The helper now supports multiple Drive roots via `CONFIG.drive.folderIds`, so list every show folder there (and re-run `initializeDriveChangeState()` whenever you add one) to keep all series in sync.

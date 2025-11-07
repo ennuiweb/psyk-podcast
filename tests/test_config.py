@@ -20,38 +20,39 @@ class ConfigTests(unittest.TestCase):
     def write_config(self, body: str) -> None:
         self.config_path.write_text(textwrap.dedent(body), encoding="utf-8")
 
-    def test_loads_show_and_resolves_defaults(self) -> None:
+    def test_loads_profile_and_resolves_defaults(self) -> None:
         self.write_config(
             f"""
-            project_number: "123"
+            project_id: "proj-123"
             location: "global"
-            endpoint_prefix: "us-"
-            podcast_parent: "projects/123/locations/global"
-            default_notebook_id: "demo"
             language_code: "en-US"
-            drive_upload_root: "drive-default"
+            default_length: "SHORT"
             service_account_file: "{self.service_account}"
-            shows:
+            workspace_root: "{self.tmpdir.name}/workspace"
+            profiles:
               social-psychology:
-                episode_focus: "Focus"
+                focus: "Focus"
+                contexts:
+                  - type: "text"
+                    value: "Inline"
             """
         )
         config = load_config(self.config_path)
-        resolved = config.resolve_show("social-psychology")
-        self.assertEqual(resolved.notebook_id, "demo")
-        self.assertEqual(resolved.drive_folder_id, "drive-default")
-        self.assertEqual(resolved.episode_focus, "Focus")
-        self.assertEqual(resolved.endpoint_prefix, "us-")
+        resolved = config.resolve_profile("social-psychology")
+        self.assertEqual(resolved.focus, "Focus")
+        self.assertEqual(resolved.length, "SHORT")
+        self.assertEqual(resolved.project_id, "proj-123")
+        self.assertEqual(resolved.endpoint, "https://discoveryengine.googleapis.com")
+        self.assertEqual(len(resolved.contexts), 1)
+        self.assertIn("workspace", str(resolved.workspace_dir))
 
     def test_env_override_applies(self) -> None:
         self.write_config(
             f"""
-            project_number: "123"
+            project_id: "proj-123"
             location: "global"
-            default_notebook_id: "demo"
-            drive_upload_root: "drive-default"
             service_account_file: "{self.service_account}"
-            shows:
+            profiles:
               intro-vt: {{}}
             """
         )
@@ -60,26 +61,23 @@ class ConfigTests(unittest.TestCase):
             config = load_config(self.config_path)
         finally:
             os.environ.pop("NOTEBOOKLM_LANGUAGE", None)
-        resolved = config.resolve_show("intro-vt")
+        resolved = config.resolve_profile("intro-vt")
         self.assertEqual(resolved.language_code, "da-DK")
 
-    def test_missing_show_raises(self) -> None:
+    def test_missing_profile_raises(self) -> None:
         self.write_config(
             f"""
-            project_number: "123"
+            project_id: "proj-123"
             location: "global"
-            default_notebook_id: "demo"
-            drive_upload_root: "drive-default"
             service_account_file: "{self.service_account}"
-            shows:
+            profiles:
               intro-vt: {{}}
             """
         )
         config = load_config(self.config_path)
         with self.assertRaises(ConfigError):
-            config.resolve_show("unknown")
+            config.resolve_profile("unknown")
 
 
 if __name__ == "__main__":
     unittest.main()
-

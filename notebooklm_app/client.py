@@ -1,16 +1,17 @@
-"""NotebookLM API client."""
+"""NotebookLM Podcast API client."""
 
 from __future__ import annotations
 
 import logging
 import time
 from dataclasses import dataclass, field
-from typing import Any, Dict, Iterable, Mapping, Optional
+from pathlib import Path
+from typing import Any, Dict, Sequence
 
 from google.auth.transport.requests import AuthorizedSession
 
 from .auth import build_session
-from .config import ResolvedShowConfig
+from .config import ContextConfig, ResolvedProfileConfig, render_context_payload
 from .http import HttpError, request_json
 
 logger = logging.getLogger(__name__)
@@ -20,89 +21,86 @@ class NotebookLMError(RuntimeError):
     """Base error raised for NotebookLM client failures."""
 
 
-READY_STATUSES = {
-    "AUDIO_OVERVIEW_STATUS_READY",
-}
-FAILED_STATUSES = {
-    "AUDIO_OVERVIEW_STATUS_FAILED",
-    "AUDIO_OVERVIEW_STATUS_ERROR",
-}
-
 @dataclass(slots=True)
 class NotebookLMClient:
-    config: ResolvedShowConfig
+    config: ResolvedProfileConfig
     session: AuthorizedSession = field(init=False)
 
     def __post_init__(self) -> None:
         self.session = build_session(self.config.service_account_file)
 
     # URLs -----------------------------------------------------------------
-    def _overview_collection_url(self) -> str:
-        return f"{self.config.endpoint}/v1alpha/{self.config.notebooks_base}/{self.config.notebook_id}/audioOverviews"
+    def _podcast_collection_url(self) -> str:
+        return f"{self.config.endpoint}/v1/{self.config.podcast_collection}"
 
-    def _overview_resource_url(self, overview_id: str = "default") -> str:
-        return f"{self._overview_collection_url()}/{overview_id}"
+    def _operation_url(self, operation_name: str) -> str:
+        return f"{self.config.endpoint}/v1/{operation_name}"
 
-    # Operations -----------------------------------------------------------
-    def create_audio_overview(
+    def _operation_download_url(self, operation_name: str) -> str:
+        return f"{self._operation_url(operation_name)}:download?alt=media"
+
+    # API calls ------------------------------------------------------------
+    def create_podcast(
         self,
         *,
-        source_ids: Optional[Iterable[str]] = None,
-        episode_focus: Optional[str] = None,
-        language_code: Optional[str] = None,
+        focus: str | None,
+        length: str,
+        language_code: str,
+        title: str | None,
+        description: str | None,
+        contexts: Sequence[ContextConfig],
     ) -> Dict[str, Any]:
-        payload: Dict[str, Any] = {}
-        if source_ids:
-            payload["sourceIds"] = [{"id": sid} for sid in source_ids]
-        if episode_focus:
-            payload["episodeFocus"] = episode_focus
-        payload["languageCode"] = language_code or self.config.language_code
-        url = self._overview_collection_url()
-        logger.info("Creating audio overview for %s", self.config.name)
+        payload: Dict[str, Any] = {
+            "podcastConfig": {
+                "focus": focus or "",
+                "length": length,
+                "languageCode": language_code,
+            },
+            "contexts": [render_context_payload(ctx) for ctx in contexts],
+        }
+        if title:
+            payload["title"] = title
+        if description:
+            payload["description"] = description
+        url = self._podcast_collection_url()
+        logger.info("Creating podcast for profile %s", self.config.name)
         return self._request("POST", url, json=payload)
 
-    def get_audio_overview(self, overview_id: str = "default") -> Dict[str, Any]:
-        url = self._overview_resource_url(overview_id)
-        return self._request("GET", url)
+    def get_operation(self, operation_name: str) -> Dict[str, Any]:
+        return self._request("GET", self._operation_url(operation_name))
 
-    def delete_audio_overview(self, overview_id: str = "default") -> Dict[str, Any]:
-        url = self._overview_resource_url(overview_id)
-        return self._request("DELETE", url, expected_status={200, 204})
-
-    def wait_for_ready(
+    def wait_for_operation(
         self,
+        operation_name: str,
         *,
-        overview_id: str = "default",
         poll_interval: int = 30,
         timeout: int = 900,
     ) -> Dict[str, Any]:
         start = time.monotonic()
         while True:
-            payload = self.get_audio_overview(overview_id)
-            status = (
-                payload.get("audioOverview", {})
-                .get("status")
-                or payload.get("status")
-            )
-            name = payload.get("audioOverview", {}).get("audioOverviewId") or overview_id
-            logger.info("Audio overview %s status: %s", name, status)
-            if status in READY_STATUSES:
-                return payload
-            if status in FAILED_STATUSES or (isinstance(status, str) and "FAILED" in status):
-                raise NotebookLMError(f"Audio overview failed with status '{status}': {payload}")
+            op = self.get_operation(operation_name)
+            if op.get("done"):
+                if "error" in op:
+                    raise NotebookLMError(f"Podcast generation failed: {op['error']}")
+                return op
             if time.monotonic() - start > timeout:
-                raise NotebookLMError(f"Timed out waiting for audio overview '{name}' to be ready.")
+                raise NotebookLMError(f"Timed out waiting for operation '{operation_name}'.")
+            logger.info("Operation %s still running; waiting %ss", operation_name, poll_interval)
             time.sleep(poll_interval)
 
-    @staticmethod
-    def extract_audio_uri(payload: Mapping[str, Any]) -> Optional[str]:
-        overview = payload.get("audioOverview")
-        if isinstance(overview, Mapping):
-            return overview.get("audioUri") or overview.get("downloadUri")
-        return None
+    def download_operation_media(self, operation_name: str, destination: Path, chunk_size: int = 1024 * 1024) -> None:
+        url = self._operation_download_url(operation_name)
+        response = self.session.get(url, stream=True)
+        if response.status_code != 200:
+            raise NotebookLMError(f"Failed to download podcast ({response.status_code}): {response.text}")
+        with destination.open("wb") as handle:
+            for chunk in response.iter_content(chunk_size=chunk_size):
+                if chunk:
+                    handle.write(chunk)
 
     def _request(self, method: str, url: str, **kwargs: Any) -> Dict[str, Any]:
         try:
             return request_json(self.session, method, url, **kwargs)
         except HttpError as exc:
             raise NotebookLMError(str(exc)) from exc
+

@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 
+import base64
 import os
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Dict, Mapping, MutableMapping, Optional
+from typing import Dict, Iterable, Mapping, MutableMapping, Optional, Sequence
 
 import yaml
 
@@ -15,114 +16,92 @@ class ConfigError(RuntimeError):
 
 
 @dataclass(slots=True, frozen=True)
-class ShowSettings:
-    name: str
-    notebook_id: Optional[str] = None
-    drive_folder_id: Optional[str] = None
-    episode_focus: Optional[str] = None
-    language_code: Optional[str] = None
+class ContextConfig:
+    kind: str  # text | text_file | blob_file
+    value: Optional[str] = None
+    path: Optional[Path] = None
+    mime_type: Optional[str] = None
 
 
 @dataclass(slots=True, frozen=True)
-class ResolvedShowConfig:
+class ProfileSettings:
     name: str
-    project_number: str
+    title: Optional[str] = None
+    description: Optional[str] = None
+    focus: Optional[str] = None
+    length: Optional[str] = None
+    language_code: Optional[str] = None
+    contexts: Sequence[ContextConfig] = ()
+
+
+@dataclass(slots=True, frozen=True)
+class ResolvedProfileConfig:
+    name: str
+    project_id: str
     location: str
-    endpoint_prefix: str
-    podcast_parent: str
-    notebook_id: str
+    endpoint: str
+    project_path: str
+    title: Optional[str]
+    description: Optional[str]
+    focus: Optional[str]
+    length: str
     language_code: str
-    episode_focus: Optional[str]
-    drive_folder_id: str
-    drive_upload_root: str
     service_account_file: Path
+    workspace_dir: Path
+    contexts: Sequence[ContextConfig]
 
     @property
-    def endpoint(self) -> str:
-        prefix = self.endpoint_prefix or ""
-        if prefix and not prefix.endswith("-"):
-            prefix = f"{prefix}-"
-        return f"https://{prefix}discoveryengine.googleapis.com"
-
-    @property
-    def podcast_base(self) -> str:
-        return self.podcast_parent.rstrip("/")
-
-    @property
-    def notebooks_base(self) -> str:
-        return f"{self.podcast_base}/notebooks"
+    def podcast_collection(self) -> str:
+        return f"{self.project_path}/podcasts"
 
 
 @dataclass(slots=True, frozen=True)
 class AppConfig:
-    project_number: str
+    project_id: str
     location: str
-    endpoint_prefix: str
-    podcast_parent: str
-    default_notebook_id: str
+    endpoint: str
     language_code: str
-    drive_upload_root: str
+    default_length: str
     service_account_file: Path
-    shows: Dict[str, ShowSettings]
+    workspace_root: Path
+    profiles: Dict[str, ProfileSettings]
 
-    def resolve_show(self, show_name: str) -> ResolvedShowConfig:
-        if show_name not in self.shows:
-            raise ConfigError(f"Show '{show_name}' not present in config (available: {', '.join(self.shows)})")
-        show = self.shows[show_name]
-        notebook_id = show.notebook_id or self.default_notebook_id
-        if not notebook_id:
-            raise ConfigError(f"Show '{show_name}' is missing notebook_id and no default is configured.")
-        drive_folder_id = show.drive_folder_id or self.drive_upload_root
-        if not drive_folder_id:
-            raise ConfigError(f"Show '{show_name}' is missing drive_folder_id and no drive_upload_root fallback is set.")
+    def resolve_profile(self, profile_name: str) -> ResolvedProfileConfig:
+        if profile_name not in self.profiles:
+            raise ConfigError(f"Profile '{profile_name}' not present in config (available: {', '.join(self.profiles)})")
+        profile = self.profiles[profile_name]
         service_file = self.service_account_file.expanduser().resolve()
-        return ResolvedShowConfig(
-            name=show_name,
-            project_number=self.project_number,
+        workspace_dir = (self.workspace_root / profile_name).expanduser().resolve()
+        length = profile.length or self.default_length
+        if length not in {"SHORT", "STANDARD"}:
+            raise ConfigError(f"Profile '{profile_name}' length must be SHORT or STANDARD (got '{length}').")
+        project_path = f"projects/{self.project_id}/locations/{self.location}"
+        return ResolvedProfileConfig(
+            name=profile_name,
+            project_id=self.project_id,
             location=self.location,
-            endpoint_prefix=self.endpoint_prefix,
-            podcast_parent=self.podcast_parent,
-            notebook_id=notebook_id,
-            language_code=show.language_code or self.language_code,
-            episode_focus=show.episode_focus,
-            drive_folder_id=drive_folder_id,
-            drive_upload_root=self.drive_upload_root,
+            endpoint=self.endpoint,
+            project_path=project_path,
+            title=profile.title,
+            description=profile.description,
+            focus=profile.focus,
+            length=length,
+            language_code=profile.language_code or self.language_code,
             service_account_file=service_file,
+            workspace_dir=workspace_dir,
+            contexts=profile.contexts,
         )
 
 
 ENV_OVERRIDES = {
-    "project_number": "NOTEBOOKLM_PROJECT_NUMBER",
+    "project_id": "NOTEBOOKLM_PROJECT_ID",
     "location": "NOTEBOOKLM_LOCATION",
-    "endpoint_prefix": "NOTEBOOKLM_ENDPOINT_PREFIX",
-    "podcast_parent": "NOTEBOOKLM_PODCAST_PARENT",
-    "default_notebook_id": "NOTEBOOKLM_DEFAULT_NOTEBOOK",
     "language_code": "NOTEBOOKLM_LANGUAGE",
-    "drive_upload_root": "NOTEBOOKLM_DRIVE_UPLOAD_ROOT",
+    "default_length": "NOTEBOOKLM_DEFAULT_LENGTH",
+    "endpoint": "NOTEBOOKLM_ENDPOINT",
     "service_account_file": "NOTEBOOKLM_SERVICE_ACCOUNT",
+    "workspace_root": "NOTEBOOKLM_WORKSPACE_ROOT",
 }
-
-
-def _apply_env_overrides(raw: MutableMapping[str, object]) -> None:
-    for key, env_name in ENV_OVERRIDES.items():
-        value = os.environ.get(env_name)
-        if value:
-            raw[key] = value
-
-
-def _parse_shows(data: Mapping[str, object]) -> Dict[str, ShowSettings]:
-    shows: Dict[str, ShowSettings] = {}
-    for name, payload in data.items():
-        if not isinstance(payload, Mapping):
-            raise ConfigError(f"Show '{name}' must be a mapping.")
-        shows[name] = ShowSettings(
-            name=name,
-            notebook_id=payload.get("notebook_id"),
-            drive_folder_id=payload.get("drive_folder_id"),
-            episode_focus=payload.get("episode_focus"),
-            language_code=payload.get("language_code"),
-        )
-    return shows
 
 
 def load_config(path: Path) -> AppConfig:
@@ -134,21 +113,105 @@ def load_config(path: Path) -> AppConfig:
         raise ConfigError("Config root must be a mapping.")
     _apply_env_overrides(raw)
     try:
-        shows_raw = raw.pop("shows")
+        profiles_raw = raw.pop("profiles")
     except KeyError as exc:
-        raise ConfigError("Config missing 'shows' section.") from exc
-    shows = _parse_shows(shows_raw)
-    podcast_parent = raw.get("podcast_parent") or f"projects/{raw.get('project_number')}/locations/{raw.get('location')}"
-    service_account_file = Path(raw["service_account_file"])
+        raise ConfigError("Config missing 'profiles' section.") from exc
+    base_dir = path.parent
+    profiles = _parse_profiles(profiles_raw, base_dir=base_dir)
+    service_account_file = _resolve_path(base_dir, Path(raw["service_account_file"]))
+    workspace_root = _resolve_path(base_dir, Path(raw.get("workspace_root", "notebooklm_app/workspace")))
+    endpoint = raw.get("endpoint") or "https://discoveryengine.googleapis.com"
     return AppConfig(
-        project_number=str(raw["project_number"]),
+        project_id=str(raw["project_id"]),
         location=str(raw["location"]),
-        endpoint_prefix=str(raw.get("endpoint_prefix", "")),
-        podcast_parent=podcast_parent,
-        default_notebook_id=str(raw.get("default_notebook_id", "")),
+        endpoint=str(endpoint),
         language_code=str(raw.get("language_code", "en-US")),
-        drive_upload_root=str(raw.get("drive_upload_root", "")),
+        default_length=str(raw.get("default_length", "STANDARD")),
         service_account_file=service_account_file,
-        shows=shows,
+        workspace_root=workspace_root,
+        profiles=profiles,
     )
+
+
+def _apply_env_overrides(raw: MutableMapping[str, object]) -> None:
+    for key, env_name in ENV_OVERRIDES.items():
+        value = os.environ.get(env_name)
+        if value:
+            raw[key] = value
+
+
+def _parse_profiles(data: Mapping[str, object], *, base_dir: Path) -> Dict[str, ProfileSettings]:
+    profiles: Dict[str, ProfileSettings] = {}
+    for name, payload in data.items():
+        if not isinstance(payload, Mapping):
+            raise ConfigError(f"Profile '{name}' must be a mapping.")
+        contexts = _parse_contexts(payload.get("contexts", []) or [], base_dir=base_dir)
+        profiles[name] = ProfileSettings(
+            name=name,
+            title=payload.get("title"),
+            description=payload.get("description"),
+            focus=payload.get("focus"),
+            length=payload.get("length"),
+            language_code=payload.get("language_code"),
+            contexts=contexts,
+        )
+    return profiles
+
+
+def _parse_contexts(raw_contexts: Iterable[object], *, base_dir: Path) -> Sequence[ContextConfig]:
+    contexts: list[ContextConfig] = []
+    for entry in raw_contexts:
+        if not isinstance(entry, Mapping):
+            raise ConfigError("Each context must be a mapping.")
+        kind = entry.get("type")
+        if kind not in {"text", "text_file", "blob_file"}:
+            raise ConfigError(f"Unsupported context type '{kind}'.")
+        if kind == "text":
+            value = entry.get("value")
+            if not isinstance(value, str):
+                raise ConfigError("text context requires 'value'.")
+            contexts.append(ContextConfig(kind="text", value=value))
+        elif kind == "text_file":
+            path_value = entry.get("path")
+            if not isinstance(path_value, str):
+                raise ConfigError("text_file context requires 'path'.")
+            contexts.append(ContextConfig(kind="text_file", path=_resolve_path(base_dir, Path(path_value))))
+        else:
+            path_value = entry.get("path")
+            if not isinstance(path_value, str):
+                raise ConfigError("blob_file context requires 'path'.")
+            contexts.append(
+                ContextConfig(
+                    kind="blob_file",
+                    path=_resolve_path(base_dir, Path(path_value)),
+                    mime_type=entry.get("mime_type"),
+                )
+            )
+    return tuple(contexts)
+
+
+def _resolve_path(base_dir: Path, path: Path) -> Path:
+    if path.is_absolute():
+        return path
+    return (base_dir / path).resolve()
+
+
+def render_context_payload(context: ContextConfig) -> Dict[str, str]:
+    if context.kind == "text":
+        return {"text": context.value or ""}
+    if context.kind == "text_file":
+        if not context.path:
+            raise ConfigError("text_file context missing path.")
+        text = context.path.read_text(encoding="utf-8")
+        return {"text": text}
+    if context.kind == "blob_file":
+        if not context.path:
+            raise ConfigError("blob_file context missing path.")
+        data = context.path.read_bytes()
+        encoded = base64.b64encode(data).decode("ascii")
+        payload = {"blob": encoded}
+        if context.mime_type:
+            payload["mimeType"] = context.mime_type
+        return payload
+    raise ConfigError(f"Unknown context kind '{context.kind}'.")
 

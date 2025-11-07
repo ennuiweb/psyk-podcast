@@ -13,12 +13,12 @@ RUNS_SUBDIR = BASE_SUBDIR / "runs"
 DOWNLOADS_SUBDIR = BASE_SUBDIR / "downloads"
 
 
-def ensure_run_dir(show_root: Path) -> Path:
-    return _ensure_dir(show_root, RUNS_SUBDIR)
+def ensure_run_dir(profile_root: Path) -> Path:
+    return _ensure_dir(profile_root, RUNS_SUBDIR)
 
 
-def ensure_download_dir(show_root: Path) -> Path:
-    return _ensure_dir(show_root, DOWNLOADS_SUBDIR)
+def ensure_download_dir(profile_root: Path) -> Path:
+    return _ensure_dir(profile_root, DOWNLOADS_SUBDIR)
 
 
 def _ensure_dir(root: Path, suffix: Path) -> Path:
@@ -31,26 +31,26 @@ def timestamp_slug() -> str:
     return datetime.now(tz=timezone.utc).strftime("%Y%m%dT%H%M%SZ")
 
 
-def save_run(show_root: Path, run_payload: Dict[str, Any], slug: Optional[str] = None) -> Path:
+def save_run(profile_root: Path, run_payload: Dict[str, Any], slug: Optional[str] = None) -> Path:
     slug = slug or timestamp_slug()
-    run_dir = ensure_run_dir(show_root)
+    run_dir = ensure_run_dir(profile_root)
     path = run_dir / f"{slug}.json"
     path.write_text(json.dumps(run_payload, indent=2, sort_keys=True), encoding="utf-8")
     return path
 
 
-def list_runs(show_root: Path) -> List[Path]:
-    run_dir = ensure_run_dir(show_root)
+def list_runs(profile_root: Path) -> List[Path]:
+    run_dir = ensure_run_dir(profile_root)
     return sorted(run_dir.glob("*.json"))
 
 
-def load_run(show_root: Path, slug: Optional[str] = None) -> Optional[Dict[str, Any]]:
-    run_dir = ensure_run_dir(show_root)
+def load_run(profile_root: Path, slug: Optional[str] = None) -> Optional[Dict[str, Any]]:
+    run_dir = ensure_run_dir(profile_root)
     target: Optional[Path]
     if slug:
         target = run_dir / f"{slug}.json"
     else:
-        files = list_runs(show_root)
+        files = list_runs(profile_root)
         target = files[-1] if files else None
     if not target or not target.exists():
         return None

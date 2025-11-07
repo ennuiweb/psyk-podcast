@@ -1,19 +1,26 @@
-project_number: "1234567890"
+project_id: "my-gcp-project"
 location: "global"
-endpoint_prefix: "us-"  # us-, eu-, or global-
-podcast_parent: "projects/1234567890/locations/global"
-default_notebook_id: "demo-notebook"
 language_code: "en-US"
-drive_upload_root: "1uPt6bHjivcD9z-Tw6Q2xbIld3bmH_WyI"
-service_account_file: "shows/social-psychology/service-account.json"
+default_length: "STANDARD"  # or SHORT
+endpoint: "https://discoveryengine.googleapis.com"
+service_account_file: "notebooklm_app/credentials/service-account.json"
+workspace_root: "notebooklm_app/workspace"
 
-shows:
+profiles:
   social-psychology:
-    notebook_id: "social-psychology"
-    drive_folder_id: "1uPt6bHjivcD9z-Tw6Q2xbIld3bmH_WyI"
-    episode_focus: "Week overview and key readings"
+    title: "Socialpsykologi – Weekly Primer"
+    description: "Short conversational recap of this week's key readings."
+    focus: "Highlight the core theories and give concrete study tips."
+    length: "SHORT"
     language_code: "da-DK"
+    contexts:
+      - type: text_file
+        path: "sources/social/week-01-summary.txt"
+      - type: text
+        value: "Remember to emphasize classic experiments and modern applications."
   intro-vt:
-    notebook_id: "intro-vt"
-    drive_folder_id: "1Vq_ptrkc9FQXOahsFh4T1xHut-BWxiIX"
-    language_code: "da-DK"
+    title: "Intro + VT – Deep Dive"
+    description: "Long-form overview pulling from lecture notes."
+    contexts:
+      - type: text_file
+        path: "sources/intro/outline.md"

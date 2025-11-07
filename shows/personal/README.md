@@ -2,8 +2,8 @@
 
 This show is a private catch-all feed for any audio dropped into the Drive folder
 `1GrwLcua1UN_tCX0ec9NmDU6ynLkuM_0G`. There is no auto-spec; publish dates come
-directly from each file’s Drive `modifiedTime`, so avoid re-uploading or editing
-files once they appear in podcast apps.
+directly from each file’s Drive `createdTime` (the upload moment), so avoid
+re-uploading or editing files once they appear in podcast apps.
 
 ## Key files
 - `config.local.json` – real folder ID for local runs.

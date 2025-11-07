@@ -936,7 +936,11 @@ def build_episode_entry(
     prefix_replaced = False
     if important:
         base_title, prefix_replaced = _replace_text_prefix(base_title, require_start=True)
-    pubdate_source = meta.get("published_at") or file_entry.get("modifiedTime")
+    pubdate_source = (
+        meta.get("published_at")
+        or file_entry.get("createdTime")
+        or file_entry.get("modifiedTime")
+    )
     if not pubdate_source:
         raise ValueError(
             f"Missing publish timestamp for Drive file '{file_entry.get('id')}'"

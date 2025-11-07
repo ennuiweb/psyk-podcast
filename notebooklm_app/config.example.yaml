@@ -1,0 +1,19 @@
+project_number: "1234567890"
+location: "global"
+endpoint_prefix: "us-"  # us-, eu-, or global-
+podcast_parent: "projects/1234567890/locations/global"
+default_notebook_id: "demo-notebook"
+language_code: "en-US"
+drive_upload_root: "1uPt6bHjivcD9z-Tw6Q2xbIld3bmH_WyI"
+service_account_file: "shows/social-psychology/service-account.json"
+
+shows:
+  social-psychology:
+    notebook_id: "social-psychology"
+    drive_folder_id: "1uPt6bHjivcD9z-Tw6Q2xbIld3bmH_WyI"
+    episode_focus: "Week overview and key readings"
+    language_code: "da-DK"
+  intro-vt:
+    notebook_id: "intro-vt"
+    drive_folder_id: "1Vq_ptrkc9FQXOahsFh4T1xHut-BWxiIX"
+    language_code: "da-DK"

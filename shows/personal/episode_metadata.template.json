@@ -1,0 +1,11 @@
+{
+  "example-file.mp3": {
+    "title": "Personal Listening Feed – Sample",
+    "description": "Optional description override (defaults to file name).",
+    "published_at": "2024-01-01T10:00:00+01:00",
+    "duration": "1800",
+    "link": "https://example.com/personal/sample",
+    "explicit": false,
+    "image": "https://example.com/personal/sample.jpg"
+  }
+}

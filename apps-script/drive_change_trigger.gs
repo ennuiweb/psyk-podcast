@@ -20,6 +20,7 @@ const CONFIG = {
       '1Vq_ptrkc9FQXOahsFh4T1xHut-BWxiIX',   // Intro + VT Deep Dives - Hold 1 - 2024
       '1vCVzdgyMlHd4zKmHEdAK08NeFWiLlorq',   // Intro + VT Tekst til tale - 1. sem 2024
       '1SsiAyLbTNmdLv6kYA9rr0oOxXSXNfRvt',   // Socialpsykologi Oplæst - 1. sem 2024
+      '1GrwLcua1UN_tCX0ec9NmDU6ynLkuM_0G',   // Personal listening feed
     ],
     folderId: null,             // Backwards compatibility; leave null when using folderIds.
     includeSubfolders: true,

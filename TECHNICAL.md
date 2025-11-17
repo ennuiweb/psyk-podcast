@@ -81,14 +81,14 @@ The repository ships with `podcast/config.json` and `podcast/episode_metadata.js
 To kick off a build manually, go to **Actions → Generate Podcast Feed → Run workflow**. The job also runs every day at 06:00 UTC via cron.
 
 ## NotebookLM automation
-`notebooklm_app/` contains a standalone CLI (`python -m notebooklm_app.cli`) that targets the NotebookLM **Podcast API** (no notebooks required) and never touches the Drive/RSS automation:
+`notebooklm_app/` now ships an nlm-based workflow (`notebooklm_app/scripts/notebooklm_batch.sh`) that shells out to the [tmc/nlm](https://github.com/tmc/nlm) CLI for everything:
 
-1. Copy `notebooklm_app/config.example.yaml` to `notebooklm_app/config.yaml`, set the project ID, default language/length, workspace root, and service-account file for the Google Cloud project (env vars `NOTEBOOKLM_*` can override any of these values).
-2. Define one or more `profiles`, each with optional title/description/focus overrides and a list of `contexts` (inline text, text files, or binary blobs). Context paths are resolved relative to the config file, so the profile fully describes its source material.
-3. Run `python -m notebooklm_app.cli create --profile social-psychology` to queue a new podcast. Each run stores a timestamped log plus the operation name under `notebooklm_app/workspace/<profile>/notebooklm/runs/`.
-4. Use `python -m notebooklm_app.cli status` or `download --wait` to monitor the long-running operation and pull the final MP3 into `.../notebooklm/downloads/` (or a custom directory via `--output`).
+1. Install `nlm` (`go install github.com/tmc/nlm/cmd/nlm@latest`) and authenticate once by piping a DevTools cURL command into `nlm auth` (`pbpaste | nlm auth`).
+2. Copy `notebooklm_app/nlm.env.example` to `notebooklm_app/nlm.env` and adjust episode focus, language, directories, poll intervals, and concurrency as needed.
+3. Drop the documents you want narrated into `notebooklm_app/sources/`.
+4. Run `notebooklm_app/scripts/notebooklm_batch.sh`. For each file the script uses `nlm create`, `nlm add`, `nlm audio-create`, and repeated `nlm --direct-rpc audio-download` calls to produce the `.wav`, converts it to MP3 via `ffmpeg` (unless `OUTPUT_AUDIO_FORMAT=wav`), then tears everything down via `nlm rm-source`, `nlm audio-rm`, and `nlm rm`.
 
-The CLI handles auth via the per-project service account, retries transient API failures, lets you append extra context via `--context-text/--context-file`, and keeps all artifacts local so it remains fully decoupled from the publishing pipeline.
+The legacy Python CLI and Discovery Engine REST calls were removed; nlm is now the single integration point.
 
 ## Drive-triggered rebuilds (Google Apps Script)
 If you want the GitHub workflow to fire whenever fresh audio appears in Drive, add a lightweight Apps Script that polls the folder and calls the `Generate Podcast Feed` workflow via `workflow_dispatch`. The helper now supports multiple Drive roots via `CONFIG.drive.folderIds`, so list every show folder there (and re-run `initializeDriveChangeState()` whenever you add one) to keep all series in sync.

@@ -698,8 +698,8 @@ process_file() {
   return 0
 }
 
-ensure_nlm
-require_nlm_auth
+ensure_python
+ensure_gcloud_prereqs
 mkdir -p "$OUTPUT_DIR"
 shopt -s nullglob
 files=("$SOURCES_DIR"/*)

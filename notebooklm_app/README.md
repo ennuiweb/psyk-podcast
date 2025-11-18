@@ -36,7 +36,7 @@ Notebook provisioning, source uploads, audio overview creation, and cleanup now 
 - For each source the script executes the following pipeline:
   1. `POST https://${GCLOUD_ENDPOINT_LOCATION}-discoveryengine.googleapis.com/${GCLOUD_DISCOVERY_API_VERSION}/projects/${GCLOUD_PROJECT_NUMBER}/locations/${GCLOUD_LOCATION}/notebooks` (per the [Create notebooks API](https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/api-notebooks)) → capture the returned `notebookId`.
   2. `POST https://${GCLOUD_ENDPOINT_LOCATION}-discoveryengine.googleapis.com/upload/${GCLOUD_DISCOVERY_API_VERSION}/projects/${GCLOUD_PROJECT_NUMBER}/locations/${GCLOUD_LOCATION}/notebooks/<id>/sources:uploadFile` (with `--data-binary @file`) → upload the local markdown/text file and record the `sourceId`.
-  3. `POST https://${GCLOUD_ENDPOINT_LOCATION}-discoveryengine.googleapis.com/${GCLOUD_DISCOVERY_API_VERSION}/projects/${GCLOUD_PROJECT_NUMBER}/locations/${GCLOUD_LOCATION}/notebooks/<id>/audioOverviews` with the selected `sourceIds`, episode focus, and language → kick off the audio overview job.
+  3. `POST https://${GCLOUD_ENDPOINT_LOCATION}-discoveryengine.googleapis.com/${GCLOUD_DISCOVERY_API_VERSION}/projects/${GCLOUD_PROJECT_NUMBER}/locations/${GCLOUD_LOCATION}/notebooks/<id>/audioOverviews` with `generationOptions` (source IDs + episode focus + language) → kick off the audio overview job.
   4. Generate a UI URL of the form `https://notebooklm.cloud.google.com/<location>/notebook/<id>?project=<project>` and append it to `notebooklm_app/outputs/notebook_urls.log` so you can open each overview manually once NotebookLM finishes rendering the audio.
   5. Optionally `DELETE` the default audio, uploaded sources, and notebook if you set `AUTO_CLEANUP=1`; by default, notebooks remain available for manual review.
 - Google hasn't exposed an audio download endpoint yet, so the log file is the hand-off: click through each entry to preview or export the audio within the NotebookLM UI.
@@ -71,3 +71,25 @@ Notebook provisioning, source uploads, audio overview creation, and cleanup now 
 - If you rely on Application Default Credentials elsewhere, `gcloud auth application-default login --enable-gdrive-access` keeps ADC in sync with the same account.
 - `notebooklm_app/nlm.env` (or `NOTEBOOKLM_ENV`) should define `GCLOUD_PROJECT_NUMBER`, `GCLOUD_LOCATION`, and optionally `GCLOUD_ENDPOINT_LOCATION` so the script can build the proper Discovery Engine URLs.
 - Every API call shells out to `gcloud auth print-access-token` (or your custom `GCLOUD_ACCESS_TOKEN_CMD`), so keep the CLI session fresh if you see HTTP 401/403 responses.
+
+## Debugging and curl sanity checks
+
+- When diagnosing failures, first run the same Notebook + upload API calls via `curl` to confirm the backend is healthy. This isolates environment/auth issues from bash bugs.
+- Notebook creation check:
+  ```bash
+  TOKEN="$(gcloud auth print-access-token)"
+  curl -sS -X POST "https://${GCLOUD_ENDPOINT_LOCATION}discoveryengine.googleapis.com/${GCLOUD_DISCOVERY_API_VERSION}/projects/${GCLOUD_PROJECT_NUMBER}/locations/${GCLOUD_LOCATION}/notebooks" \
+    -H "Authorization: Bearer ${TOKEN}" \
+    -H "Content-Type: application/json" \
+    -d '{"title":"debug notebook"}'
+  ```
+- Source upload check (replace `NOTEBOOK_ID` with the ID returned above):
+  ```bash
+  curl -sS -X POST --data-binary @path/to/file.md \
+    -H "Authorization: Bearer ${TOKEN}" \
+    -H "X-Goog-Upload-File-Name: file.md" \
+    -H "X-Goog-Upload-Protocol: raw" \
+    -H "Content-Type: text/markdown" \
+    "https://${GCLOUD_ENDPOINT_LOCATION}discoveryengine.googleapis.com/upload/${GCLOUD_DISCOVERY_API_VERSION}/projects/${GCLOUD_PROJECT_NUMBER}/locations/${GCLOUD_LOCATION}/notebooks/${NOTEBOOK_ID}/sources:uploadFile"
+  ```
+- `notebooklm_batch.sh` echoes the HTTP status and a 400-character snippet from the API body whenever an API call fails or returns malformed JSON, so your terminal output now mirrors whatever `curl` showed.

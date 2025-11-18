@@ -2,9 +2,11 @@
 set -euo pipefail
 
 ENV_FILE="${NOTEBOOKLM_ENV:-notebooklm_app/nlm.env}"
+ENV_FILE_LOADED=0
 if [[ -f "$ENV_FILE" ]]; then
   # shellcheck disable=SC1090
   source "$ENV_FILE"
+  ENV_FILE_LOADED=1
 fi
 
 SOURCES_DIR=${SOURCES_DIR:-notebooklm_app/sources}
@@ -12,32 +14,44 @@ OUTPUT_DIR=${OUTPUT_DIR:-notebooklm_app/outputs}
 NOTEBOOK_TITLE_PREFIX=${NOTEBOOK_TITLE_PREFIX:-NotebookLM Batch}
 EPISODE_FOCUS=${EPISODE_FOCUS:-}
 LANGUAGE_CODE=${LANGUAGE_CODE:-en-US}
-POLL_INTERVAL=${POLL_INTERVAL:-30}
-POLL_TIMEOUT=${POLL_TIMEOUT:-900}
 MAX_CONCURRENCY=${MAX_CONCURRENCY:-2}
+AUTO_CLEANUP=${AUTO_CLEANUP:-0}
 UPLOAD_MIME_OVERRIDE=${UPLOAD_MIME_OVERRIDE:-}
-OUTPUT_AUDIO_FORMAT=${OUTPUT_AUDIO_FORMAT:-mp3}
-MP3_BITRATE=${MP3_BITRATE:-128k}
-KEEP_WAV=${KEEP_WAV:-0}
 AUDIO_CREATE_MAX_RETRIES=${AUDIO_CREATE_MAX_RETRIES:-4}
 AUDIO_CREATE_RETRY_DELAY=${AUDIO_CREATE_RETRY_DELAY:-5}
 AUDIO_CREATE_RETRY_BACKOFF=${AUDIO_CREATE_RETRY_BACKOFF:-2}
-LAST_AUDIO_PATH=""
+NOTEBOOK_CREATE_MAX_RETRIES=${NOTEBOOK_CREATE_MAX_RETRIES:-4}
+NOTEBOOK_CREATE_RETRY_DELAY=${NOTEBOOK_CREATE_RETRY_DELAY:-5}
+NOTEBOOK_CREATE_RETRY_BACKOFF=${NOTEBOOK_CREATE_RETRY_BACKOFF:-2}
+SOURCE_UPLOAD_MAX_RETRIES=${SOURCE_UPLOAD_MAX_RETRIES:-4}
+SOURCE_UPLOAD_RETRY_DELAY=${SOURCE_UPLOAD_RETRY_DELAY:-5}
+SOURCE_UPLOAD_RETRY_BACKOFF=${SOURCE_UPLOAD_RETRY_BACKOFF:-2}
+NOTEBOOK_URL_LOG=${NOTEBOOK_URL_LOG:-notebooklm_app/outputs/notebook_urls.log}
 GCLOUD_PROJECT_NUMBER=${GCLOUD_PROJECT_NUMBER:-}
 GCLOUD_PROJECT_ID=${GCLOUD_PROJECT_ID:-}
 GCLOUD_LOCATION=${GCLOUD_LOCATION:-}
 GCLOUD_ENDPOINT_LOCATION=${GCLOUD_ENDPOINT_LOCATION:-$GCLOUD_LOCATION}
 GCLOUD_DISCOVERY_API_VERSION=${GCLOUD_DISCOVERY_API_VERSION:-v1alpha}
 GCLOUD_ACCESS_TOKEN_CMD=${GCLOUD_ACCESS_TOKEN_CMD:-gcloud auth print-access-token}
+GCLOUD_AUTHUSER=${GCLOUD_AUTHUSER:-}
 PYTHON_BIN=${PYTHON_BIN:-python3}
+API_RESPONSE_STATUS=""
+API_RESPONSE_BODY=""
+API_RESPONSE_ERROR=""
 
 log() {
   local prefix=""
   if [[ -n ${JOB_PREFIX:-} ]]; then
     prefix="[$JOB_PREFIX] "
   fi
-  printf '[%s] %s%s\n' "$(date '+%Y-%m-%d %H:%M:%S')" "$prefix" "$*"
+  printf '[%s] %s%s\n' "$(date '+%Y-%m-%d %H:%M:%S')" "$prefix" "$*" >&2
 }
+
+if (( ENV_FILE_LOADED )); then
+  log "Loaded NotebookLM env config from $ENV_FILE"
+else
+  log "NotebookLM env file $ENV_FILE not found; relying on caller-provided environment"
+fi
 
 ensure_python() {
   if command -v "$PYTHON_BIN" >/dev/null 2>&1; then
@@ -109,8 +123,13 @@ json_api_request() {
   local payload=${3:-}
   local send_payload=${4:-0}
   local log_context=${5:-"API request"}
+  local emit_body=${6:-1}
+  API_RESPONSE_STATUS=""
+  API_RESPONSE_BODY=""
+  API_RESPONSE_ERROR=""
   local token
   if ! token=$(get_gcloud_access_token); then
+    API_RESPONSE_ERROR="failed-to-fetch-token"
     return 1
   fi
   local tmp_response tmp_err
@@ -129,51 +148,35 @@ json_api_request() {
     curl_stderr=$(cat "$tmp_err")
   fi
   rm -f "$tmp_err"
-      http_status=$(printf '%s' "$http_status" | tr -d '\r\n')
+  http_status=$(printf '%s' "$http_status" | tr -d '
+')
   local response_body=""
   if [[ -s $tmp_response ]]; then
     response_body=$(cat "$tmp_response")
   fi
   rm -f "$tmp_response"
-  if (( curl_exit == 0 )) && [[ $http_status =~ ^[0-9]+$ ]] && (( http_status >= 200 && http_status < 300 )); then
-    printf '%s' "$response_body"
+  API_RESPONSE_STATUS="$http_status"
+  API_RESPONSE_BODY="$response_body"
+  API_RESPONSE_ERROR="${curl_stderr:-$response_body}"
+  if (( curl_exit == 0 )) && [[ $http_status =~ ^[0-9]+$ ]] && (( $http_status >= 200 && $http_status < 300 )); then
+    API_RESPONSE_ERROR="$curl_stderr"
+    if (( emit_body )); then
+      printf '%s' "$response_body"
+    fi
     return 0
   fi
   if (( curl_exit != 0 )) && [[ -z $http_status || $http_status == 000 ]]; then
-    log "${log_context} failed: curl exited $curl_exit${curl_stderr:+ - $curl_stderr}"
+    log "${log_context} failed (${method} ${url}): curl exited $curl_exit${curl_stderr:+ - $curl_stderr}"
   else
-    log "${log_context} failed: HTTP ${http_status:-unknown}${curl_stderr:+ - $curl_stderr}${response_body:+ - $response_body}"
+    local snippet
+    if [[ -n $response_body ]]; then
+      snippet=$(printf '%s' "$response_body" | head -c 400 | tr '
+' ' ')
+    else
+      snippet=$curl_stderr
+    fi
+    log "${log_context} failed (${method} ${url}): HTTP ${http_status:-unknown}${snippet:+ - $snippet}"
   fi
-  return 1
-}
-
-download_with_optional_auth() {
-  local url=$1
-  local destination=$2
-  local tmp_file
-  tmp_file=$(mktemp "${TMPDIR:-/tmp}/audio_download.XXXXXX")
-  local http_status
-  http_status=$(curl -sS -L -o "$tmp_file" -w '%{http_code}' "$url")
-  local curl_exit=$?
-  http_status=$(printf '%s' "$http_status" | tr -d '\r\n')
-  if (( curl_exit == 0 )) && [[ $http_status =~ ^[0-9]+$ ]] && (( http_status >= 200 && http_status < 300 )); then
-    mv "$tmp_file" "$destination"
-    return 0
-  fi
-  local token
-  if ! token=$(get_gcloud_access_token); then
-    rm -f "$tmp_file"
-    return 1
-  fi
-  http_status=$(curl -sS -L -H "Authorization:Bearer ${token}" -o "$tmp_file" -w '%{http_code}' "$url")
-  curl_exit=$?
-  http_status=$(printf '%s' "$http_status" | tr -d '\r\n')
-  if (( curl_exit == 0 )) && [[ $http_status =~ ^[0-9]+$ ]] && (( http_status >= 200 && http_status < 300 )); then
-    mv "$tmp_file" "$destination"
-    return 0
-  fi
-  rm -f "$tmp_file"
-  log "Audio download failed: HTTP ${http_status:-unknown} (url: $url)"
   return 1
 }
 
@@ -194,12 +197,14 @@ detect_mime_type() {
   printf 'application/octet-stream'
 }
 
-ensure_ffmpeg() {
-  if command -v ffmpeg >/dev/null 2>&1; then
-    return
+body_starts_with_json() {
+  local body=$1
+  local first_char
+  first_char=$(printf '%s' "$body" | sed -e 's/^[[:space:]]*//' | head -c1)
+  if [[ $first_char == "{" || $first_char == "[" ]]; then
+    return 0
   fi
-  log "ffmpeg is required to convert WAV to MP3. Install it (e.g., 'brew install ffmpeg') or set OUTPUT_AUDIO_FORMAT=wav."
-  exit 1
+  return 1
 }
 
 create_notebook() {
@@ -218,30 +223,134 @@ PY
   fi
   local url
   url="$(api_base)/projects/${GCLOUD_PROJECT_NUMBER}/locations/${GCLOUD_LOCATION}/notebooks"
-  local response
-  if ! response=$(json_api_request POST "$url" "$payload" 1 "create notebook"); then
-    return 1
+  local attempt=1
+  local max_attempts=$NOTEBOOK_CREATE_MAX_RETRIES
+  local delay=$NOTEBOOK_CREATE_RETRY_DELAY
+  local backoff=$NOTEBOOK_CREATE_RETRY_BACKOFF
+  if (( max_attempts < 1 )); then
+    max_attempts=1
   fi
-  local notebook_id
-  if ! notebook_id=$(printf '%s' "$response" | "$PYTHON_BIN" - <<'PY'
+  if (( delay < 1 )); then
+    delay=1
+  fi
+  if (( backoff < 1 )); then
+    backoff=1
+  fi
+  local wait=$delay
+  while (( attempt <= max_attempts )); do
+    if (( attempt == 1 )); then
+      log "create_notebook request -> ${url} (project=${GCLOUD_PROJECT_NUMBER}, location=${GCLOUD_LOCATION})"
+    fi
+    local response=""
+    local snippet=""
+    if json_api_request POST "$url" "$payload" 1 "create notebook" 0; then
+      response="$API_RESPONSE_BODY"
+      snippet=$(printf '%s' "$response" | head -c 400 | tr '\n' ' ')
+      if [[ -n $response ]] && body_starts_with_json "$response"; then
+        local tmp_parse_err
+        tmp_parse_err=$(mktemp "${TMPDIR:-/tmp}/notebook_parse_err.XXXXXX")
+        local notebook_id
+        if notebook_id=$("$PYTHON_BIN" -c '
 import json
 import sys
 
 data = json.load(sys.stdin)
 notebook_id = data.get("notebookId") or ""
+if not notebook_id:
+    name = data.get("name") or ""
+    if name and "/" in name:
+        notebook_id = name.rsplit("/", 1)[-1]
 if notebook_id:
     print(notebook_id.strip())
+' 2>"$tmp_parse_err" <<<"$response"); then
+          rm -f "$tmp_parse_err"
+          notebook_id=$(printf '%s' "$notebook_id" | tr -d '\r\n[:space:]')
+          if [[ -n $notebook_id ]]; then
+            printf '%s' "$notebook_id"
+            return 0
+          fi
+          log "Notebook creation response missing notebookId${snippet:+ - $snippet}"
+        else
+          local parse_err=$(cat "$tmp_parse_err" 2>/dev/null)
+          rm -f "$tmp_parse_err"
+          log "Failed to parse notebook id from API response${snippet:+ - $snippet}${parse_err:+ - $parse_err}"
+        fi
+      else
+        log "Notebook creation response was not JSON${snippet:+ - $snippet}"
+      fi
+    else
+      response="$API_RESPONSE_BODY"
+      snippet=$(printf '%s' "$response" | head -c 400 | tr '\n' ' ')
+    fi
+    local status=${API_RESPONSE_STATUS:-unknown}
+    local message=${API_RESPONSE_ERROR:-}
+    local message_snippet=$(printf '%s' "$message" | head -c 400 | tr '\n' ' ')
+    log "create notebook failed (attempt ${attempt}/${max_attempts}): HTTP ${status} ${message_snippet}${snippet:+ | body: $snippet}"
+    if (( attempt >= max_attempts )) || ! should_retry_api_error "$status" "$message"; then
+      return 1
+    fi
+    log "Retrying notebook creation in ${wait}s"
+    sleep "$wait"
+    wait=$((wait * backoff))
+    ((attempt++))
+  done
+  return 1
+}
+
+
+build_notebook_url() {
+  local notebook_id=$1
+  local ui_location=${GCLOUD_LOCATION:-global}
+  local project_ref=${GCLOUD_PROJECT_NUMBER:-$GCLOUD_PROJECT_ID}
+  if [[ -z $project_ref ]]; then
+    log "Set GCLOUD_PROJECT_NUMBER (or GCLOUD_PROJECT_ID) to build notebook URLs"
+    return 1
+  fi
+  local url
+  url=$(printf 'https://notebooklm.cloud.google.com/%s/notebook/%s?project=%s' "$ui_location" "$notebook_id" "$project_ref")
+  local authuser=""
+  if [[ -n $GCLOUD_AUTHUSER ]]; then
+    authuser=$GCLOUD_AUTHUSER
+  elif [[ -n ${ENTERPRISE_PROJECT_URL:-} && ${ENTERPRISE_PROJECT_URL} == *authuser=* ]]; then
+    authuser=${ENTERPRISE_PROJECT_URL#*authuser=}
+    authuser=${authuser%%&*}
+  fi
+  if [[ -n $authuser ]]; then
+    url="${url}&authuser=${authuser}"
+  fi
+  printf '%s' "$url"
+}
+
+record_notebook_url() {
+  local notebook_id=$1
+  local base_name=$2
+  local timestamp=$(date '+%Y-%m-%d %H:%M:%S')
+  local notebook_url
+  if ! notebook_url=$(build_notebook_url "$notebook_id"); then
+    return 1
+  fi
+  local entry="[$timestamp] ${base_name} -> ${notebook_url}"
+  local log_path=$NOTEBOOK_URL_LOG
+  mkdir -p "$(dirname "$log_path")"
+  if ! "$PYTHON_BIN" - "$log_path" "$entry" <<'PY'
+import fcntl
+import os
+import sys
+
+path = sys.argv[1]
+line = sys.argv[2] + "\n"
+directory = os.path.dirname(path) or "."
+os.makedirs(directory, exist_ok=True)
+with open(path, "a", encoding="utf-8") as fh:
+    fcntl.flock(fh.fileno(), fcntl.LOCK_EX)
+    fh.write(line)
 PY
-  ); then
-    log "Failed to parse notebook id from API response"
+  then
+    log "Failed to append notebook URL to $log_path"
     return 1
   fi
-  notebook_id=$(printf '%s' "$notebook_id" | tr -d '\r\n[:space:]')
-  if [[ -z $notebook_id ]]; then
-    log "Notebook creation response did not include notebookId"
-    return 1
-  fi
-  printf '%s' "$notebook_id"
+  log "Notebook ready for review: $notebook_url"
+  return 0
 }
 
 upload_source() {
@@ -251,42 +360,83 @@ upload_source() {
   mime_type=$(detect_mime_type "$path")
   local display_name
   display_name=$(basename "$path")
-  local token
-  if ! token=$(get_gcloud_access_token); then
-    return 1
-  fi
   local url
   url="$(upload_api_base)/projects/${GCLOUD_PROJECT_NUMBER}/locations/${GCLOUD_LOCATION}/notebooks/${notebook_id}/sources:uploadFile"
-  local tmp_response tmp_err
-  tmp_response=$(mktemp "${TMPDIR:-/tmp}/source_upload_resp.XXXXXX")
-  tmp_err=$(mktemp "${TMPDIR:-/tmp}/source_upload_err.XXXXXX")
-  local http_status
-  http_status=$(curl -sS -X POST --data-binary @"$path" \
-    -H "Authorization:Bearer ${token}" \
-    -H "X-Goog-Upload-File-Name: ${display_name}" \
-    -H "X-Goog-Upload-Protocol: raw" \
-    -H "Content-Type: ${mime_type}" \
-    -o "$tmp_response" \
-    -w '%{http_code}' \
-    "$url" 2>"$tmp_err")
-  local curl_exit=$?
-  local curl_stderr=""
-  if [[ -s $tmp_err ]]; then
-    curl_stderr=$(cat "$tmp_err")
+  local attempt=1
+  local max_attempts=$SOURCE_UPLOAD_MAX_RETRIES
+  local delay=$SOURCE_UPLOAD_RETRY_DELAY
+  local backoff=$SOURCE_UPLOAD_RETRY_BACKOFF
+  if (( max_attempts < 1 )); then
+    max_attempts=1
   fi
-  rm -f "$tmp_err"
-  http_status=$(printf '%s' "$http_status" | tr -d '\r\n')
-  local response_body=""
-  if [[ -s $tmp_response ]]; then
-    response_body=$(cat "$tmp_response")
+  if (( delay < 1 )); then
+    delay=1
   fi
-  rm -f "$tmp_response"
-  if ! (( curl_exit == 0 )) || [[ ! $http_status =~ ^[0-9]+$ ]] || (( http_status < 200 || http_status >= 300 )); then
-    log "Source upload failed (HTTP ${http_status:-unknown})${curl_stderr:+ - $curl_stderr}${response_body:+ - $response_body}"
-    return 1
+  if (( backoff < 1 )); then
+    backoff=1
   fi
-  local source_id
-  if ! source_id=$(printf '%s' "$response_body" | "$PYTHON_BIN" - <<'PY'
+  local wait=$delay
+  while (( attempt <= max_attempts )); do
+    local token
+    if ! token=$(get_gcloud_access_token); then
+      log "Source upload failed (attempt ${attempt}/${max_attempts}): could not obtain gcloud token"
+      API_RESPONSE_STATUS=""
+      API_RESPONSE_BODY=""
+      API_RESPONSE_ERROR="failed-to-fetch-token"
+      if (( attempt >= max_attempts )); then
+        return 1
+      fi
+      sleep "$wait"
+      wait=$((wait * backoff))
+      ((attempt++))
+      continue
+    fi
+    local tmp_response tmp_err
+    tmp_response=$(mktemp "${TMPDIR:-/tmp}/source_upload_resp.XXXXXX")
+    tmp_err=$(mktemp "${TMPDIR:-/tmp}/source_upload_err.XXXXXX")
+    local http_status
+    http_status=$(curl -sS -X POST --data-binary @"$path" \
+      -H "Authorization:Bearer ${token}" \
+      -H "X-Goog-Upload-File-Name: ${display_name}" \
+      -H "X-Goog-Upload-Protocol: raw" \
+      -H "Content-Type: ${mime_type}" \
+      -o "$tmp_response" \
+      -w '%{http_code}' \
+      "$url" 2>"$tmp_err")
+    local curl_exit=$?
+    local curl_stderr=""
+    if [[ -s $tmp_err ]]; then
+      curl_stderr=$(cat "$tmp_err")
+    fi
+    rm -f "$tmp_err"
+    http_status=$(printf '%s' "$http_status" | tr -d '\r\n')
+    local response_body=""
+    if [[ -s $tmp_response ]]; then
+      response_body=$(cat "$tmp_response")
+    fi
+    rm -f "$tmp_response"
+    API_RESPONSE_STATUS="$http_status"
+    API_RESPONSE_BODY="$response_body"
+    API_RESPONSE_ERROR="${curl_stderr:-$response_body}"
+    if (( curl_exit == 0 )) && [[ $http_status =~ ^[0-9]+$ ]] && (( $http_status >= 200 && $http_status < 300 )); then
+      if [[ -z $response_body ]] || ! body_starts_with_json "$response_body"; then
+        local snippet
+        snippet=$(printf '%s' "$response_body" | head -c 400 | tr '\n' ' ')
+        log "Source upload returned non-JSON payload${snippet:+ - $snippet}"
+        if (( attempt >= max_attempts )); then
+          return 1
+        fi
+        log "Retrying source upload in ${wait}s"
+        sleep "$wait"
+        wait=$((wait * backoff))
+        ((attempt++))
+        continue
+      fi
+      API_RESPONSE_ERROR="$curl_stderr"
+      local source_id
+      local tmp_source_parse_err
+      tmp_source_parse_err=$(mktemp "${TMPDIR:-/tmp}/source_parse_err.XXXXXX")
+      if ! source_id=$("$PYTHON_BIN" -c '
 import json
 import sys
 
@@ -306,18 +456,36 @@ if not sid:
             sid = inner.get("id", "")
 if sid:
     print(sid.strip())
-PY
-  ); then
-    log "Failed to parse source id from upload response"
-    return 1
-  fi
-  source_id=$(printf '%s' "$source_id" | tr -d '\r\n[:space:]')
-  if [[ -z $source_id ]]; then
-    log "Upload response did not include a source id"
-    return 1
-  fi
-  printf '%s' "$source_id"
+' 2>"$tmp_source_parse_err" <<<"$response_body"); then
+        local parse_err=$(cat "$tmp_source_parse_err" 2>/dev/null)
+        rm -f "$tmp_source_parse_err"
+        log "Failed to parse source id from upload response${parse_err:+ - $parse_err}"
+        return 1
+      fi
+      rm -f "$tmp_source_parse_err"
+      source_id=$(printf '%s' "$source_id" | tr -d '\r\n[:space:]')
+      if [[ -z $source_id ]]; then
+        log "Upload response did not include a source id"
+        return 1
+      fi
+      printf '%s' "$source_id"
+      return 0
+    fi
+    local message=${API_RESPONSE_ERROR:-}
+    local message_snippet=$(printf '%s' "$message" | head -c 400 | tr '\n' ' ')
+    local body_snippet=$(printf '%s' "$response_body" | head -c 400 | tr '\n' ' ')
+    log "Source upload failed (attempt ${attempt}/${max_attempts}): HTTP ${http_status:-unknown} ${message_snippet}${body_snippet:+ | body: $body_snippet}"
+    if (( attempt >= max_attempts )) || ! should_retry_api_error "$http_status" "$message"; then
+      return 1
+    fi
+    log "Retrying source upload in ${wait}s"
+    sleep "$wait"
+    wait=$((wait * backoff))
+    ((attempt++))
+  done
+  return 1
 }
+
 
 request_audio_overview() {
   local notebook_id=$1
@@ -358,18 +526,18 @@ source_ids = sys.argv[1:]
 if not source_ids:
     raise SystemExit("at least one source id is required")
 
-payload = {
+generation_options = {
     "sourceIds": [{"id": sid} for sid in source_ids],
 }
 if focus:
-    payload["episodeFocus"] = focus
+    generation_options["episodeFocus"] = focus
 if language:
-    payload["languageCode"] = language
+    generation_options["languageCode"] = language
 
-print(json.dumps(payload, separators=(",", ":")))
+print(json.dumps({"generationOptions": generation_options}, separators=(",", ":")))
 PY
-); then
-    local err_msg="$(cat "$tmp_payload_err" 2>/dev/null)"
+  ); then
+    local err_msg=$(cat "$tmp_payload_err" 2>/dev/null)
     rm -f "$tmp_payload_err"
     log "Failed to build audio overview payload${err_msg:+: $err_msg}"
     return 1
@@ -377,61 +545,37 @@ PY
   rm -f "$tmp_payload_err"
 
   local api_url="$(api_base)/projects/${GCLOUD_PROJECT_NUMBER}/locations/${GCLOUD_LOCATION}/notebooks/${notebook_id}/audioOverviews"
-
   local wait=$delay
   while (( attempt <= max_attempts )); do
-    local output=""
-    local access_token
-    if ! access_token=$(get_gcloud_access_token); then
-      output="Failed to obtain gcloud access token"
-    else
-      local tmp_response tmp_err
-      tmp_response=$(mktemp "${TMPDIR:-/tmp}/audio_overview_response.XXXXXX")
-      tmp_err=$(mktemp "${TMPDIR:-/tmp}/audio_overview_err.XXXXXX")
-      local http_status
-      http_status=$(curl -sS -X POST \
-        -H "Authorization:Bearer ${access_token}" \
-        -H "Content-Type: application/json" \
-        -o "$tmp_response" \
-        -w '%{http_code}' \
-        "$api_url" \
-        -d "$payload" 2>"$tmp_err")
-      local curl_exit=$?
-      local curl_stderr=""
-      if [[ -s $tmp_err ]]; then
-        curl_stderr=$(cat "$tmp_err")
-      fi
-      rm -f "$tmp_err"
-      http_status=$(printf '%s' "$http_status" | tr -d '\r\n')
-      local response_body=""
-      if [[ -s $tmp_response ]]; then
-        response_body=$(cat "$tmp_response")
-      fi
-      rm -f "$tmp_response"
-      if (( curl_exit == 0 )) && [[ $http_status =~ ^[0-9]+$ ]] && (( $http_status >= 200 && $http_status < 300 )); then
-        return 0
-      fi
-      if (( curl_exit != 0 )) && [[ -z $http_status || $http_status == 000 ]]; then
-        output="curl exited $curl_exit: ${curl_stderr:-$response_body}"
-      else
-        output="HTTP ${http_status:-unknown}: ${response_body:-$curl_stderr}"
-      fi
+    if json_api_request POST "$api_url" "$payload" 1 "request audio overview" 0; then
+      return 0
     fi
-    log "Audio overview API request failed (attempt ${attempt}/${max_attempts})"
-    log "$output"
-    if (( attempt >= max_attempts )) || ! should_retry_audio_create "$output"; then
+    local status=${API_RESPONSE_STATUS:-unknown}
+    local message=${API_RESPONSE_ERROR:-}
+    local message_snippet=$(printf '%s' "$message" | head -c 400 | tr '\n' ' ')
+    local body_snippet=$(printf '%s' "${API_RESPONSE_BODY:-}" | head -c 400 | tr '\n' ' ')
+    log "Audio overview API request failed (attempt ${attempt}/${max_attempts}): HTTP ${status} ${message_snippet}${body_snippet:+ | body: $body_snippet}"
+    if (( attempt >= max_attempts )) || ! should_retry_api_error "$status" "$message"; then
       return 1
     fi
     log "Retrying audio overview request in ${wait}s"
     sleep "$wait"
-    ((attempt++))
     wait=$((wait * backoff))
+    ((attempt++))
   done
   return 1
 }
 
-should_retry_audio_create() {
-  local message=$1
+
+should_retry_api_error() {
+  local status=${1:-}
+  local message=${2:-}
+  if [[ -z $status ]]; then
+    status=0
+  fi
+  if [[ $status =~ ^(401|403|408|425|429|500|502|503|504)$ ]]; then
+    return 0
+  fi
   if grep -qiE 'unavailable|temporar|timeout|try again|deadline|rate limit|429|bad gateway|502|503|internal error' <<<"$message"; then
     return 0
   fi
@@ -452,7 +596,7 @@ build_instructions() {
 cleanup_audio() {
   local notebook_id=$1
   local url="$(api_base)/projects/${GCLOUD_PROJECT_NUMBER}/locations/${GCLOUD_LOCATION}/notebooks/${notebook_id}/audioOverviews/default"
-  json_api_request DELETE "$url" "" 0 "delete audio overview" >/dev/null 2>&1 || true
+  json_api_request DELETE "$url" "" 0 "delete audio overview" 0 >/dev/null 2>&1 || true
 }
 
 cleanup_source() {
@@ -462,179 +606,15 @@ cleanup_source() {
     return
   fi
   local url="$(api_base)/projects/${GCLOUD_PROJECT_NUMBER}/locations/${GCLOUD_LOCATION}/notebooks/${notebook_id}/sources/${source_id}"
-  json_api_request DELETE "$url" "" 0 "delete source" >/dev/null 2>&1 || true
+  json_api_request DELETE "$url" "" 0 "delete source" 0 >/dev/null 2>&1 || true
 }
 
 cleanup_notebook() {
   local notebook_id=$1
   local url="$(api_base)/projects/${GCLOUD_PROJECT_NUMBER}/locations/${GCLOUD_LOCATION}/notebooks/${notebook_id}"
-  json_api_request DELETE "$url" "" 0 "delete notebook" >/dev/null 2>&1 || true
+  json_api_request DELETE "$url" "" 0 "delete notebook" 0 >/dev/null 2>&1 || true
 }
 
-download_audio_with_api() {
-  local notebook_id=$1
-  local base=$2
-  local start=$(date +%s)
-  local timeout=${POLL_TIMEOUT:-0}
-  local interval=${POLL_INTERVAL:-30}
-  local status_url="$(api_base)/projects/${GCLOUD_PROJECT_NUMBER}/locations/${GCLOUD_LOCATION}/notebooks/${notebook_id}/audioOverviews/default"
-  while true; do
-    local status_file
-    status_file=$(mktemp "${TMPDIR:-/tmp}/audio_overview_status.XXXXXX.json")
-    if ! json_api_request GET "$status_url" "" 0 "fetch audio overview status" >"$status_file"; then
-      rm -f "$status_file"
-      return 1
-    fi
-    local tmp_audio
-    tmp_audio=$(mktemp "${TMPDIR:-/tmp}/audio_overview_file.XXXXXX")
-    local python_output
-    if ! python_output=$("$PYTHON_BIN" - "$status_file" "$tmp_audio" <<'PY'
-import base64
-import json
-import re
-import sys
-
-status_path = sys.argv[1]
-output_path = sys.argv[2]
-with open(status_path, "r", encoding="utf-8") as fh:
-    data = json.load(fh)
-
-state = ""
-url = ""
-mime = ""
-error = ""
-encoded = ""
-
-def consider_string(key_path, value):
-    global state, url, mime, error, encoded
-    kl = key_path.lower()
-    if not state and ("state" in kl or "status" in kl):
-        state = value
-    if not mime and "mime" in kl:
-        mime = value
-    if not url and ("url" in kl or "uri" in kl) and ("audio" in kl or "download" in kl or "signed" in kl):
-        url = value
-    if not encoded and "content" in kl and len(value) > 512 and re.fullmatch(r"[A-Za-z0-9+/=\s]+", value):
-        encoded = value
-    if not error and "error" in kl:
-        error = value
-
-def walk(obj, path=""):
-    if isinstance(obj, dict):
-        err = obj.get("error")
-        if isinstance(err, dict) and not error:
-            msg = err.get("message") or err.get("code") or ""
-            if msg:
-                nonlocal_error[0] = msg
-        for key, value in obj.items():
-            child_path = f"{path}.{key}" if path else key
-            if isinstance(value, str):
-                consider_string(child_path, value)
-            elif isinstance(value, (dict, list)):
-                walk(value, child_path)
-    elif isinstance(obj, list):
-        for idx, item in enumerate(obj):
-            walk(item, f"{path}[{idx}]")
-
-nonlocal_error = [""]
-walk(data)
-if nonlocal_error[0] and not error:
-    error = nonlocal_error[0]
-
-wrote = False
-if encoded:
-    try:
-        decoded = base64.b64decode(encoded)
-    except Exception:
-        encoded = ""
-    else:
-        with open(output_path, "wb") as fh:
-            fh.write(decoded)
-        wrote = True
-
-def clean(value):
-    return (value or "").replace("\n", " ").strip()
-
-print(clean(state))
-print(clean(url))
-print(clean(mime))
-print(clean(error))
-print("true" if wrote else "false")
-PY
-    ); then
-      rm -f "$status_file" "$tmp_audio"
-      log "Failed to parse audio overview status"
-      return 1
-    fi
-    rm -f "$status_file"
-    local state download_url mime_type err_msg wrote
-    IFS=$'\n' read -r state download_url mime_type err_msg wrote <<<"$python_output"
-    if [[ -n $err_msg ]]; then
-      rm -f "$tmp_audio"
-      log "Audio overview status error: $err_msg"
-      return 1
-    fi
-    local extension="wav"
-    if [[ -n $mime_type ]]; then
-      case ${mime_type,,} in
-        audio/mpeg|audio/mp3) extension="mp3" ;;
-        audio/flac) extension="flac" ;;
-        audio/wav|audio/x-wav|audio/wave) extension="wav" ;;
-      esac
-    fi
-    local output_path="$OUTPUT_DIR/${base}.${extension}"
-    if [[ $wrote == "true" ]]; then
-      mkdir -p "$(dirname "$output_path")"
-      mv "$tmp_audio" "$output_path"
-      LAST_AUDIO_PATH="$output_path"
-      log "Saved $output_path (embedded audio payload)"
-      return 0
-    fi
-    rm -f "$tmp_audio"
-    if [[ -n $download_url ]]; then
-      mkdir -p "$(dirname "$output_path")"
-      if download_with_optional_auth "$download_url" "$output_path"; then
-        LAST_AUDIO_PATH="$output_path"
-        log "Saved $output_path (download URL)"
-        return 0
-      fi
-      log "Downloading audio overview from API-provided URL failed"
-      return 1
-    fi
-    local now=$(date +%s)
-    if (( timeout > 0 && now - start > timeout )); then
-      log "Timed out waiting for audio overview after $((now - start))s${state:+ (last state: $state)}"
-      return 1
-    fi
-    if [[ -n $state ]]; then
-      log "Audio overview still processing (state: $state)"
-    else
-      log "Audio overview still processing"
-    fi
-    rm -f "$tmp_audio"
-    sleep "$interval"
-  done
-}
-
-post_process_audio() {
-  local source_path=$1
-  local format=$(printf '%s' "$OUTPUT_AUDIO_FORMAT" | tr '[:upper:]' '[:lower:]')
-  if [[ $format != "mp3" ]]; then
-    return 0
-  fi
-  ensure_ffmpeg
-  local target_path="${source_path%.wav}.mp3"
-  if ! ffmpeg -y -loglevel error -i "$source_path" -codec:a libmp3lame -b:a "$MP3_BITRATE" "$target_path"; then
-    log "ffmpeg conversion failed for $source_path"
-    return 1
-  fi
-  log "Converted to $target_path (ffmpeg, bitrate $MP3_BITRATE)"
-  if [[ ${KEEP_WAV:-0} -eq 0 ]]; then
-    rm -f "$source_path"
-    log "Deleted intermediate WAV $source_path"
-  fi
-  return 0
-}
 
 process_file() {
   local path=$1
@@ -646,6 +626,9 @@ process_file() {
   local notebook_id=""
   local source_id=""
   cleanup_on_exit() {
+    if [[ ${AUTO_CLEANUP:-0} -ne 1 ]]; then
+      return
+    fi
     if [[ -n $source_id && -n $notebook_id ]]; then
       cleanup_source "$notebook_id" "$source_id"
       source_id=""
@@ -660,13 +643,19 @@ process_file() {
 
   local notebook_title="${NOTEBOOK_TITLE_PREFIX} ${base}"
   if ! notebook_id=$(create_notebook "$notebook_title"); then
-    log "Notebook creation failed"
+    local status=${API_RESPONSE_STATUS:-unknown}
+    local message=${API_RESPONSE_ERROR:-}
+    local snippet=$(printf '%s' "$message" | head -c 400 | tr '\n' ' ')
+    log "Notebook creation failed (HTTP ${status}): ${snippet}"
     return 1
   fi
   log "Created notebook $notebook_id"
 
   if ! source_id=$(upload_source "$notebook_id" "$path"); then
-    log "Source upload failed"
+    local status=${API_RESPONSE_STATUS:-unknown}
+    local message=${API_RESPONSE_ERROR:-}
+    local snippet=$(printf '%s' "$message" | head -c 400 | tr '\n' ' ')
+    log "Source upload failed (HTTP ${status}): ${snippet}"
     return 1
   fi
   log "Uploaded source id $source_id"
@@ -681,14 +670,9 @@ process_file() {
   fi
   log "Requested audio overview"
 
-  if ! download_audio_with_api "$notebook_id" "$base"; then
+  if ! record_notebook_url "$notebook_id" "$base"; then
+    log "Failed to log notebook URL"
     return 1
-  fi
-  if [[ -n $LAST_AUDIO_PATH ]]; then
-    if ! post_process_audio "$LAST_AUDIO_PATH"; then
-      return 1
-    fi
-    LAST_AUDIO_PATH=""
   fi
 
   return 0
@@ -696,6 +680,8 @@ process_file() {
 
 ensure_python
 ensure_gcloud_prereqs
+log "Using NotebookLM API base: $(api_base) (project=${GCLOUD_PROJECT_NUMBER}, location=${GCLOUD_LOCATION}, endpoint_host=${GCLOUD_ENDPOINT_LOCATION})"
+log "Using upload API base: $(upload_api_base)"
 mkdir -p "$OUTPUT_DIR"
 shopt -s nullglob
 files=("$SOURCES_DIR"/*)

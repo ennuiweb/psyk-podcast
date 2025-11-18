@@ -1,64 +1,46 @@
-# NotebookLM automation (nlm-first)
+# NotebookLM automation (gcloud API)
 
-[tmc/nlm](https://github.com/tmc/nlm) still powers notebook + source management (create, upload, download, cleanup), but audio overview creation now flows through Google’s NotebookLM Enterprise Discovery Engine API via `gcloud`. You need valid nlm cookies _and_ a configured Google Cloud project/region so the script can trade your `gcloud auth print-access-token` output for audio overviews.
+Notebook provisioning, source uploads, audio overview creation, and cleanup now run entirely through the NotebookLM Enterprise Discovery Engine REST API using `gcloud` access tokens. All you need is a configured Google Cloud project with NotebookLM Enterprise enabled plus local text/markdown sources—the bash script handles every notebook/source/audio lifecycle call in one pass.
 
 ## Quick start
 
-1. **Install nlm**
+1. **Install and authenticate gcloud**
    ```bash
-   go install github.com/tmc/nlm/cmd/nlm@latest
+   brew install --cask google-cloud-sdk   # or download from cloud.google.com/sdk
+   gcloud components install beta alpha  # optional but keeps CLI tooling complete
+   gcloud auth login --enable-gdrive-access
    ```
-2. **Authenticate via DevTools cURL**
-   - In Chrome, open NotebookLM → DevTools → Network, filter for `_batch`, right-click a signed-in request, and choose **Copy → Copy as cURL (bash)**.
-   - Paste that command into the helper script (which normalises `Cookie:` casing automatically) and feed it into nlm:
-     ```bash
-     pbpaste | notebooklm_app/scripts/nlm_auth_from_curl.sh
-     ```
-     (You can always re-run this when cookies expire.)
-   - If you rely on nlm’s browser automation instead, export your preferred Chrome profile once so every `nlm auth` invocation picks it up automatically:
-     ```bash
-     # ~/.zshrc
-     export NLM_BROWSER_PROFILE="${NLM_BROWSER_PROFILE:-Profile 1}"
-     ```
-     Replace `"Profile 1"` with whichever profile actually has NotebookLM cookies.
-   - Prefer Chrome Canary? Point nlm at its binary so the launcher uses the right app bundle:
-     ```bash
-     export NLM_BROWSER_PATH="${NLM_BROWSER_PATH:-/Applications/Google Chrome Canary.app/Contents/MacOS/Google Chrome Canary}"
-     ```
-   - Signed into NotebookLM as a non-primary Google account? Set the desired account index (0, 1, 2, …) so every RPC/cookie exchange lines up:
-     ```bash
-     export NLM_AUTHUSER="${NLM_AUTHUSER:-2}"
-     ```
-3. **Create an env file**
-   - Copy `notebooklm_app/nlm.env.example` to `notebooklm_app/nlm.env` and adjust paths, episode focus, poll intervals, etc.
-4. **Drop sources**
-   - Place `.md`, `.txt`, or other documents under `notebooklm_app/sources/`.
-5. **Run the batch script**
+   Use the same Google account that has NotebookLM Enterprise access. `--enable-gdrive-access` is required if you plan to upload Google Docs/Slides later via `sources:batchCreate`.
+2. **Create an env file**
+   - Copy `notebooklm_app/nlm.env.example` to `notebooklm_app/nlm.env` (or export `NOTEBOOKLM_ENV`).
+   - Fill in `GCLOUD_PROJECT_NUMBER`, `GCLOUD_LOCATION`, optional `GCLOUD_ENDPOINT_LOCATION`, and tune episode focus, poll intervals, concurrency, etc.
+3. **Load sources**
+   - Drop `.md`, `.txt`, or any supported document into `notebooklm_app/sources/`.
+4. **Run the batch script**
    ```bash
    notebooklm_app/scripts/notebooklm_batch.sh
    ```
-   The script spins up temporary notebooks via nlm, adds your sources, creates audio overviews, downloads `.wav` files, converts them to `.mp3` (unless you opt out), and then removes every source/notebook it created.
+   The script POSTs to the NotebookLM Enterprise API to create notebooks, uploads each local file via `notebooks.sources.uploadFile`, requests an audio overview, polls the default audio resource until it supplies a download URL/embedded payload, and tears everything down when finished.
 
 ## Requirements
 
-- [`nlm`](https://github.com/tmc/nlm) available on your `PATH` (or point `NLM_BIN` at it).
-- `bash`, `file`, and `awk` on macOS/Linux (all part of the default developer toolchain).
-- [`gcloud`](https://cloud.google.com/sdk/docs/install) authenticated against the Google Cloud project that hosts NotebookLM Enterprise. Export `GCLOUD_PROJECT_NUMBER`, `GCLOUD_LOCATION`, and (optionally) `GCLOUD_ENDPOINT_LOCATION` in `nlm.env` so the script can hit the right Discovery Engine endpoint.
-- `python3` (or `python`) for the tiny helper that renders the Discovery Engine JSON payload.
-- [`ffmpeg`](https://ffmpeg.org/) for the automatic WAV→MP3 conversion (install via `brew install ffmpeg`). Set `OUTPUT_AUDIO_FORMAT=wav` if you want to skip conversion.
-- Optional: `UPLOAD_MIME_OVERRIDE` in `nlm.env` if you need to force a MIME type when uploading from unusual extensions.
+- [`gcloud`](https://cloud.google.com/sdk/docs/install) authenticated against the Google Cloud project that hosts NotebookLM Enterprise (run `gcloud auth login --enable-gdrive-access`).
+- `bash`, `curl`, `file`, and `awk` on macOS/Linux (part of the stock developer toolchain).
+- `python3` (or `python`) for building JSON payloads and parsing status responses.
+- [`ffmpeg`](https://ffmpeg.org/) for the optional WAV→MP3 conversion (set `OUTPUT_AUDIO_FORMAT=wav` to skip).
+- Optional: `UPLOAD_MIME_OVERRIDE` in `nlm.env` if you need to force a MIME type when uploading unusual extensions.
 
 ## Script internals
 
 - For each source the script executes the following pipeline:
-  1. `nlm create "<title>"` → capture the notebook id.
-  2. `nlm add <id> <file>` → upload the local markdown/text file and record the returned source id.
-  3. `curl -X POST "https://${GCLOUD_ENDPOINT_LOCATION}-discoveryengine.googleapis.com/${GCLOUD_DISCOVERY_API_VERSION}/projects/${GCLOUD_PROJECT_NUMBER}/locations/${GCLOUD_LOCATION}/notebooks/<id>/audioOverviews" -H "Authorization:Bearer $(gcloud auth print-access-token)" -d '{"sourceIds":[{"id":"<source>"}],"episodeFocus":"…","languageCode":"…"}'` → ask the NotebookLM Enterprise API for an audio overview.
-  4. Poll `nlm --direct-rpc audio-download <id> <temp.wav>` until audio is ready, move the file to `outputs/<filename>.wav`, and optionally convert it to MP3 via `ffmpeg` (controlled by `OUTPUT_AUDIO_FORMAT`, `MP3_BITRATE`, and `KEEP_WAV`).
-  5. `nlm rm-source`, `nlm audio-rm`, and `nlm rm` (piped a “y” answer) clean up every resource before the notebook id is forgotten.
+  1. `POST https://${GCLOUD_ENDPOINT_LOCATION}-discoveryengine.googleapis.com/${GCLOUD_DISCOVERY_API_VERSION}/projects/${GCLOUD_PROJECT_NUMBER}/locations/${GCLOUD_LOCATION}/notebooks` → capture the returned `notebookId`.
+  2. `POST https://${GCLOUD_ENDPOINT_LOCATION}-discoveryengine.googleapis.com/upload/${GCLOUD_DISCOVERY_API_VERSION}/projects/${GCLOUD_PROJECT_NUMBER}/locations/${GCLOUD_LOCATION}/notebooks/<id>/sources:uploadFile` (with `--data-binary @file`) → upload the local markdown/text file and record the `sourceId`.
+  3. `POST https://${GCLOUD_ENDPOINT_LOCATION}-discoveryengine.googleapis.com/${GCLOUD_DISCOVERY_API_VERSION}/projects/${GCLOUD_PROJECT_NUMBER}/locations/${GCLOUD_LOCATION}/notebooks/<id>/audioOverviews` with the selected `sourceIds`, episode focus, and language → kick off the audio overview job.
+  4. Poll `GET https://${GCLOUD_ENDPOINT_LOCATION}-discoveryengine.googleapis.com/${GCLOUD_DISCOVERY_API_VERSION}/projects/${GCLOUD_PROJECT_NUMBER}/locations/${GCLOUD_LOCATION}/notebooks/<id>/audioOverviews/default` until it exposes a download URL or embedded audio payload, fetch the audio file into `outputs/<filename>.wav`, and optionally convert it to MP3 via `ffmpeg` (controlled by `OUTPUT_AUDIO_FORMAT`, `MP3_BITRATE`, and `KEEP_WAV`).
+  5. `DELETE` the default audio, uploaded sources, and notebook so each run leaves the environment clean.
 - Jobs run through a bounded worker pool (`MAX_CONCURRENCY`, default `2`). Each worker prefixes log lines with `<filename>|worker-N`, which keeps interleaved output readable.
-- `POLL_INTERVAL` and `POLL_TIMEOUT` control how frequently we retry `nlm audio-download`. Set `POLL_TIMEOUT=0` to wait indefinitely for very long generations.
-- All nlm stderr/stdout is captured: authentication failures bubble up immediately with instructions to rerun the DevTools cURL flow.
+- `POLL_INTERVAL` and `POLL_TIMEOUT` control how frequently we retry `GET .../audioOverviews/default`. Set `POLL_TIMEOUT=0` to wait indefinitely for very long generations.
+- Every API call includes `gcloud auth print-access-token` output inline; if auth fails, the logs explain which `gcloud auth` command to rerun.
 
 ## Configuration knobs (`nlm.env`)
 
@@ -70,43 +52,17 @@
 | `GCLOUD_PROJECT_NUMBER` / `GCLOUD_LOCATION` | _required_ | NotebookLM Enterprise project + region used for audio requests |
 | `GCLOUD_ENDPOINT_LOCATION` | inherits `GCLOUD_LOCATION` | Hostname prefix for `*-discoveryengine.googleapis.com` (override if the endpoint differs from the region) |
 | `GCLOUD_DISCOVERY_API_VERSION` | `v1alpha` | Discovery Engine API version path segment |
+| `GCLOUD_ACCESS_TOKEN_CMD` | `gcloud auth print-access-token` | Override if you need a custom token minting command |
 | `MAX_CONCURRENCY` | `2` | Number of notebooks processed in parallel |
 | `OUTPUT_AUDIO_FORMAT` | `mp3` | Use `wav` to skip ffmpeg conversion |
 | `MP3_BITRATE` | `128k` | Bitrate for MP3 exports |
 | `KEEP_WAV` | `0` | Set to `1` to retain the original WAV |
-| `UPLOAD_MIME_OVERRIDE` | empty | Force a MIME type when calling `nlm add` |
-| `NLM_BIN` | `nlm` | Override if the binary lives outside `PATH` |
+| `UPLOAD_MIME_OVERRIDE` | empty | Force a MIME type when calling `notebooks.sources.uploadFile` |
 | `PYTHON_BIN` | `python3` | Override if `python3` lives elsewhere or under a different name |
 
-## Authentication tip (fastest path)
+## Authentication notes
 
-Instead of letting nlm drive a browser, always copy a signed-in NotebookLM request as cURL and pipe it into the helper script:
-
-```bash
-pbpaste | notebooklm_app/scripts/nlm_auth_from_curl.sh
-```
-
-The helper lowercases the `Cookie:` header automatically and pipes the result to `nlm auth`, which writes `~/.nlm/env`. Re-auth takes seconds whenever cookies expire.
-
-Separately, run `gcloud auth login` (or `gcloud auth application-default login`) against the Google Cloud project that hosts NotebookLM Enterprise, then export `GCLOUD_PROJECT_NUMBER`, `GCLOUD_LOCATION`, and (if needed) `GCLOUD_ENDPOINT_LOCATION` in `notebooklm_app/nlm.env`. The script shells out to `gcloud auth print-access-token` for every audio overview request, so the CLI must already be authenticated.
-
-## Rebuilding the patched nlm binary
-
-We currently rely on a custom `tmc/nlm` build that reads `NLM_AUTHUSER` so multi-account Google sessions work. Pulling upstream with `go install github.com/tmc/nlm/cmd/nlm@latest` will overwrite that binary. To rebuild the patched version:
-
-1. Copy the module source out of Go’s module cache so you can edit it locally.
-   ```bash
-   NLM_SRC=~/src/nlm-authuser
-   rm -rf "$NLM_SRC"
-   mkdir -p "$(dirname "$NLM_SRC")"
-   cp -R "$(go env GOPATH)/pkg/mod/github.com/tmc/nlm@"* "$NLM_SRC"
-   ```
-2. Apply the `NLM_AUTHUSER` patches (already in this repo under `notebooklm_app/scripts` if you need to diff) or re-run your preferred patch command.
-3. Rebuild and install.
-   ```bash
-   cd "$NLM_SRC"
-   go install ./cmd/nlm
-   ```
-4. Verify with `which nlm` or `nlm --help`; the binary in `~/go/bin/nlm` should now honor `NLM_AUTHUSER`.
-
-Whenever you reinstall from upstream, repeat the steps above to bring back the multi-account support.
+- Run `gcloud auth login --enable-gdrive-access` with the Google identity that owns the NotebookLM Enterprise project. This authorises both the Discovery Engine API and optional Drive-backed content.
+- If you rely on Application Default Credentials elsewhere, `gcloud auth application-default login --enable-gdrive-access` keeps ADC in sync with the same account.
+- `notebooklm_app/nlm.env` (or `NOTEBOOKLM_ENV`) should define `GCLOUD_PROJECT_NUMBER`, `GCLOUD_LOCATION`, and optionally `GCLOUD_ENDPOINT_LOCATION` so the script can build the proper Discovery Engine URLs.
+- Every API call shells out to `gcloud auth print-access-token` (or your custom `GCLOUD_ACCESS_TOKEN_CMD`), so keep the CLI session fresh if you see HTTP 401/403 responses.

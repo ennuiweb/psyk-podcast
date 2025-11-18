@@ -1,6 +1,6 @@
 # NotebookLM Automation App
 
-Notebook + source management still flows through the [tmc/nlm](https://github.com/tmc/nlm) CLI, while audio overview creation now uses the NotebookLM Enterprise Discovery Engine API via `gcloud`. The repo keeps the bash wrapper thin, but you need both nlm cookies and a gcloud access token tied to your project/region.
+The batch script now speaks directly to the NotebookLM Enterprise Discovery Engine API via `gcloud`. It creates notebooks, uploads local files, requests/monitors audio overviews, downloads the resulting audio, and removes every resource afterwards—no `nlm` DevTools cookies required.
 
 ## High-level goals
 
@@ -8,28 +8,27 @@ Notebook + source management still flows through the [tmc/nlm](https://github.co
 - Upload local sources from `notebooklm_app/sources/`, request audio overviews, download the `.wav`, and tear everything down so the next run starts from a clean slate.
 - Keep the tooling local and independent from the RSS/Drive pipelines.
 
-## nlm workflow (`notebooklm_app/scripts/notebooklm_batch.sh`)
+## API workflow (`notebooklm_app/scripts/notebooklm_batch.sh`)
 
-1. **Auth once**: copy an authenticated NotebookLM request as cURL from Chrome DevTools and run `pbpaste | notebooklm_app/scripts/nlm_auth_from_curl.sh`. This normalises the `Cookie:` header, calls `nlm auth`, and writes `~/.nlm/env` with the cookies/token the script needs.
-2. **Config**: copy `notebooklm_app/nlm.env.example` → `nlm.env` and tweak source/output directories, episode focus, language, concurrency, etc.
+1. **Auth once**: run `gcloud auth login --enable-gdrive-access` with the Google identity tied to your NotebookLM Enterprise project. (Optionally run `gcloud auth application-default login --enable-gdrive-access` if you use ADC elsewhere.)
+2. **Config**: copy `notebooklm_app/nlm.env.example` → `nlm.env` and set `GCLOUD_PROJECT_NUMBER`, `GCLOUD_LOCATION`, episode focus, language, concurrency, etc.
 3. **Sources**: drop `.md`, `.txt`, or other supported documents into `notebooklm_app/sources/`.
 4. **Run**: execute `notebooklm_app/scripts/notebooklm_batch.sh`. For each file the script:
-   - calls `nlm create` to obtain a fresh notebook id;
-   - runs `nlm add <id> <file>` and records the returned source id;
-   - POSTs to `https://<endpoint>-discoveryengine.googleapis.com/v1alpha/projects/<project>/locations/<region>/notebooks/<id>/audioOverviews` with a `Bearer $(gcloud auth print-access-token)` header plus the selected source ids/episode focus/language;
-   - polls `nlm --direct-rpc audio-download` until the WAV is ready, moves it into `notebooklm_app/outputs/`, and (by default) converts it to MP3 via `ffmpeg`;
-   - feeds `y` into `nlm rm-source`, `nlm audio-rm`, and `nlm rm` so sources/audio/notebooks disappear.
+   - `POST`s to `.../notebooks` to obtain a fresh `notebookId`;
+   - uploads the file via `.../notebooks/<id>/sources:uploadFile` and records the returned `sourceId`;
+   - `POST`s to `.../notebooks/<id>/audioOverviews` with your episode focus/language and source ids;
+   - polls `GET .../audioOverviews/default` until it exposes a download URL or embedded audio payload, saves the audio under `notebooklm_app/outputs/`, and (by default) converts it to MP3 via `ffmpeg`;
+   - `DELETE`s the audio overview, uploaded source, and notebook so every run starts fresh.
 
 `MAX_CONCURRENCY` bounds how many of those jobs run in parallel (default `2`). The log prefix `filename|worker-N` keeps interleaved output readable, and the final summary reports how many jobs succeeded or failed.
 
 ## Authentication reminders
 
-- The DevTools cURL → `nlm auth` flow is still the most reliable way to refresh cookies for NotebookLM RPCs.
-- Google Cloud auth is required as well: run `gcloud auth login` (or `gcloud auth application-default login`), set `GCLOUD_PROJECT_NUMBER`, `GCLOUD_LOCATION`, and optionally `GCLOUD_ENDPOINT_LOCATION` inside `nlm.env`, and make sure the project has NotebookLM Enterprise enabled so `gcloud auth print-access-token` succeeds.
-- If `nlm` ever prints “authentication required”, redo the cURL piping step and rerun the script.
-- If the audio request fails with HTTP 401/403, refresh your `gcloud` login or confirm you’re pointing at the right project/location.
+- Keep `gcloud auth login --enable-gdrive-access` fresh—the script shells out to `gcloud auth print-access-token` for each API call.
+- Set `GCLOUD_PROJECT_NUMBER`, `GCLOUD_LOCATION`, and optionally `GCLOUD_ENDPOINT_LOCATION` in `notebooklm_app/nlm.env` so the script hits the right Discovery Engine host.
+- HTTP 401/403 responses usually mean the CLI session expired or you pointed at the wrong project/location; rerun the `gcloud auth` command above and try again.
 
 ## Known gaps
 
-- The Discovery Engine API is still `v1alpha`. We rely on exponential backoff, but you may still hit throttling or transient 5xx responses during peak hours.
-- `nlm rm-source`, `nlm audio-rm`, and `nlm rm` prompt for confirmation. The script pipes `y` automatically—if nlm changes the prompt text we’ll need to update the helper.
+- The Discovery Engine API is still `v1alpha`; throttling and transient 5xx responses happen, so the script leans on exponential backoff but can still fail.
+- `notebooks.sources.uploadFile` can only ingest one file at a time—batch sources (Docs/Slides/web/video) still require `sources:batchCreate`, which we haven’t automated yet.

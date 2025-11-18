@@ -1,5 +1,7 @@
 # NotebookLM automation (gcloud API)
 
+https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/api-notebooks-sources
+
 Notebook provisioning, source uploads, audio overview creation, and cleanup now run entirely through the NotebookLM Enterprise Discovery Engine REST API using `gcloud` access tokens. All you need is a configured Google Cloud project with NotebookLM Enterprise enabled plus local text/markdown sources—the bash script handles every notebook/source/audio lifecycle call in one pass.
 
 ## Quick start
@@ -20,26 +22,26 @@ Notebook provisioning, source uploads, audio overview creation, and cleanup now 
    ```bash
    notebooklm_app/scripts/notebooklm_batch.sh
    ```
-   The script POSTs to the NotebookLM Enterprise API to create notebooks, uploads each local file via `notebooks.sources.uploadFile`, requests an audio overview, polls the default audio resource until it supplies a download URL/embedded payload, and tears everything down when finished.
+   The script POSTs to the NotebookLM Enterprise API to create notebooks, uploads each local file via `notebooks.sources.uploadFile`, requests an audio overview, and logs a clickable NotebookLM URL for each job inside `notebooklm_app/outputs/notebook_urls.log` so you can open the generated overviews manually.
 
 ## Requirements
 
 - [`gcloud`](https://cloud.google.com/sdk/docs/install) authenticated against the Google Cloud project that hosts NotebookLM Enterprise (run `gcloud auth login --enable-gdrive-access`).
 - `bash`, `curl`, `file`, and `awk` on macOS/Linux (part of the stock developer toolchain).
-- `python3` (or `python`) for building JSON payloads and parsing status responses.
-- [`ffmpeg`](https://ffmpeg.org/) for the optional WAV→MP3 conversion (set `OUTPUT_AUDIO_FORMAT=wav` to skip).
+- `python3` (or `python`) for building JSON payloads, parsing status responses, and writing the notebook URL log.
 - Optional: `UPLOAD_MIME_OVERRIDE` in `nlm.env` if you need to force a MIME type when uploading unusual extensions.
 
 ## Script internals
 
 - For each source the script executes the following pipeline:
-  1. `POST https://${GCLOUD_ENDPOINT_LOCATION}-discoveryengine.googleapis.com/${GCLOUD_DISCOVERY_API_VERSION}/projects/${GCLOUD_PROJECT_NUMBER}/locations/${GCLOUD_LOCATION}/notebooks` → capture the returned `notebookId`.
+  1. `POST https://${GCLOUD_ENDPOINT_LOCATION}-discoveryengine.googleapis.com/${GCLOUD_DISCOVERY_API_VERSION}/projects/${GCLOUD_PROJECT_NUMBER}/locations/${GCLOUD_LOCATION}/notebooks` (per the [Create notebooks API](https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/api-notebooks)) → capture the returned `notebookId`.
   2. `POST https://${GCLOUD_ENDPOINT_LOCATION}-discoveryengine.googleapis.com/upload/${GCLOUD_DISCOVERY_API_VERSION}/projects/${GCLOUD_PROJECT_NUMBER}/locations/${GCLOUD_LOCATION}/notebooks/<id>/sources:uploadFile` (with `--data-binary @file`) → upload the local markdown/text file and record the `sourceId`.
   3. `POST https://${GCLOUD_ENDPOINT_LOCATION}-discoveryengine.googleapis.com/${GCLOUD_DISCOVERY_API_VERSION}/projects/${GCLOUD_PROJECT_NUMBER}/locations/${GCLOUD_LOCATION}/notebooks/<id>/audioOverviews` with the selected `sourceIds`, episode focus, and language → kick off the audio overview job.
-  4. Poll `GET https://${GCLOUD_ENDPOINT_LOCATION}-discoveryengine.googleapis.com/${GCLOUD_DISCOVERY_API_VERSION}/projects/${GCLOUD_PROJECT_NUMBER}/locations/${GCLOUD_LOCATION}/notebooks/<id>/audioOverviews/default` until it exposes a download URL or embedded audio payload, fetch the audio file into `outputs/<filename>.wav`, and optionally convert it to MP3 via `ffmpeg` (controlled by `OUTPUT_AUDIO_FORMAT`, `MP3_BITRATE`, and `KEEP_WAV`).
-  5. `DELETE` the default audio, uploaded sources, and notebook so each run leaves the environment clean.
+  4. Generate a UI URL of the form `https://notebooklm.cloud.google.com/<location>/notebook/<id>?project=<project>` and append it to `notebooklm_app/outputs/notebook_urls.log` so you can open each overview manually once NotebookLM finishes rendering the audio.
+  5. Optionally `DELETE` the default audio, uploaded sources, and notebook if you set `AUTO_CLEANUP=1`; by default, notebooks remain available for manual review.
+- Google hasn't exposed an audio download endpoint yet, so the log file is the hand-off: click through each entry to preview or export the audio within the NotebookLM UI.
 - Jobs run through a bounded worker pool (`MAX_CONCURRENCY`, default `2`). Each worker prefixes log lines with `<filename>|worker-N`, which keeps interleaved output readable.
-- `POLL_INTERVAL` and `POLL_TIMEOUT` control how frequently we retry `GET .../audioOverviews/default`. Set `POLL_TIMEOUT=0` to wait indefinitely for very long generations.
+- Notebook creation, source uploads, and audio overview requests all include exponential backoff and response-snippet logging so transient `401/429/50x` errors are retried automatically before surfacing as failures.
 - Every API call includes `gcloud auth print-access-token` output inline; if auth fails, the logs explain which `gcloud auth` command to rerun.
 
 ## Configuration knobs (`nlm.env`)
@@ -53,10 +55,13 @@ Notebook provisioning, source uploads, audio overview creation, and cleanup now 
 | `GCLOUD_ENDPOINT_LOCATION` | inherits `GCLOUD_LOCATION` | Hostname prefix for `*-discoveryengine.googleapis.com` (override if the endpoint differs from the region) |
 | `GCLOUD_DISCOVERY_API_VERSION` | `v1alpha` | Discovery Engine API version path segment |
 | `GCLOUD_ACCESS_TOKEN_CMD` | `gcloud auth print-access-token` | Override if you need a custom token minting command |
+| `GCLOUD_AUTHUSER` | empty | Optional `authuser` query parameter appended to NotebookLM URLs |
 | `MAX_CONCURRENCY` | `2` | Number of notebooks processed in parallel |
-| `OUTPUT_AUDIO_FORMAT` | `mp3` | Use `wav` to skip ffmpeg conversion |
-| `MP3_BITRATE` | `128k` | Bitrate for MP3 exports |
-| `KEEP_WAV` | `0` | Set to `1` to retain the original WAV |
+| `NOTEBOOK_URL_LOG` | `notebooklm_app/outputs/notebook_urls.log` | File that receives the clickable NotebookLM links |
+| `AUTO_CLEANUP` | `0` | Set to `1` to delete notebooks/sources/audio after logging |
+| `NOTEBOOK_CREATE_MAX_RETRIES` / `NOTEBOOK_CREATE_RETRY_DELAY` / `NOTEBOOK_CREATE_RETRY_BACKOFF` | `4 / 5 / 2` | Exponential backoff settings for the notebook creation API |
+| `SOURCE_UPLOAD_MAX_RETRIES` / `SOURCE_UPLOAD_RETRY_DELAY` / `SOURCE_UPLOAD_RETRY_BACKOFF` | `4 / 5 / 2` | Exponential backoff settings for file uploads |
+| `AUDIO_CREATE_MAX_RETRIES` / `AUDIO_CREATE_RETRY_DELAY` / `AUDIO_CREATE_RETRY_BACKOFF` | `4 / 5 / 2` | Controls retries when calling the audio overview API |
 | `UPLOAD_MIME_OVERRIDE` | empty | Force a MIME type when calling `notebooks.sources.uploadFile` |
 | `PYTHON_BIN` | `python3` | Override if `python3` lives elsewhere or under a different name |
 

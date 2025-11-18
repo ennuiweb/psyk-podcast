@@ -1,0 +1,9 @@
+project_number: "743883644627"
+location: "global"
+endpoint_prefix: "global-"
+language_code: "en-US"
+episode_focus: "Summarize the key ideas for listeners."
+service_account_file: "credentials/podcast-generation-477500-c3da148b630f.json"
+workspace_root: "notebooklm_app/workspace"
+auto_notebook_count: 5
+notebook_title_prefix: "Models Batch"

@@ -202,10 +202,6 @@ ensure_ffmpeg() {
   exit 1
 }
 
-trim_last_non_empty_line() {
-  awk 'NF{last=$0} END{print last}'
-}
-
 create_notebook() {
   local title=$1
   local payload

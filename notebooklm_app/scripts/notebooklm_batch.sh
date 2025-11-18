@@ -556,10 +556,13 @@ if encoded:
             fh.write(decoded)
         wrote = True
 
-print(state or "")
-print(url or "")
-print(mime or "")
-print(error or "")
+def clean(value):
+    return (value or "").replace("\n", " ").strip()
+
+print(clean(state))
+print(clean(url))
+print(clean(mime))
+print(clean(error))
 print("true" if wrote else "false")
 PY
     ); then

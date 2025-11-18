@@ -685,7 +685,7 @@ process_file() {
   fi
   log "Requested audio overview"
 
-  if ! download_audio_with_nlm "$notebook_id" "$base"; then
+  if ! download_audio_with_api "$notebook_id" "$base"; then
     return 1
   fi
   if [[ -n $LAST_AUDIO_PATH ]]; then

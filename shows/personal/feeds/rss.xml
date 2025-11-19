@@ -6,7 +6,7 @@
     <description>Private feed for whatever audio I drop into Drive. Dates follow the upload day.</description>
     <language>en</language>
     <generator>gdrive_podcast_feed.py</generator>
-    <lastBuildDate>Tue, 18 Nov 2025 13:45:20 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 19 Nov 2025 12:04:28 +0000</lastBuildDate>
     <ttl>60</ttl>
     <ns0:link href="https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/personal/feeds/rss.xml" rel="self" type="application/rss+xml" />
     <itunes:author>Oskar</itunes:author>
@@ -23,6 +23,16 @@
     <itunes:category text="Personal Journals">
       <itunes:category text="Self-Improvement" />
     </itunes:category>
+    <item>
+      <title>Saulis Guide Deep Dive Long</title>
+      <description>Saulis Guide Deep Dive Long</description>
+      <guid isPermaLink="false">1aLJxSg3Mu7FbmRFlBH_XaAu-w3vcK0Ae</guid>
+      <link>https://github.com/ennuiweb/psyk-podcast</link>
+      <pubDate>Wed, 19 Nov 2025 12:04:28 +0000</pubDate>
+      <enclosure url="https://drive.google.com/uc?export=download&amp;id=1aLJxSg3Mu7FbmRFlBH_XaAu-w3vcK0Ae" length="43349297" type="audio/mpeg" />
+      <itunes:explicit>false</itunes:explicit>
+      <itunes:image href="https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/personal/assets/cover.png?v=darkmode-smiley" />
+    </item>
     <item>
       <title>Uden Angst Deep Dive Long</title>
       <description>Uden Angst Deep Dive Long</description>
@@ -194,22 +204,12 @@
       <itunes:image href="https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/personal/assets/cover.png?v=darkmode-smiley" />
     </item>
     <item>
-      <title>NotebookLM Batch Saulis Inner Game Course 1 of 15 - Boundaries!_txt</title>
-      <description>NotebookLM Batch Saulis Inner Game Course 1 of 15 - Boundaries!_txt</description>
+      <title>Saulis Course Overview 1 of 15 - Boundaries! </title>
+      <description>Saulis Course Overview 1 of 15 - Boundaries! </description>
       <guid isPermaLink="false">1fksSvuRRdH-sZ27AAEGPnsHcdS1Sawmu</guid>
       <link>https://github.com/ennuiweb/psyk-podcast</link>
       <pubDate>Tue, 18 Nov 2025 12:33:20 +0000</pubDate>
       <enclosure url="https://drive.google.com/uc?export=download&amp;id=1fksSvuRRdH-sZ27AAEGPnsHcdS1Sawmu" length="45267884" type="audio/x-wav" />
-      <itunes:explicit>false</itunes:explicit>
-      <itunes:image href="https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/personal/assets/cover.png?v=darkmode-smiley" />
-    </item>
-    <item>
-      <title>Saulis Guide Extended Deep Dive</title>
-      <description>Saulis Guide Extended Deep Dive</description>
-      <guid isPermaLink="false">1xXHjioxaZeVtxq2zF-Ctt-9GWNfSS0J6</guid>
-      <link>https://github.com/ennuiweb/psyk-podcast</link>
-      <pubDate>Mon, 17 Nov 2025 12:41:48 +0000</pubDate>
-      <enclosure url="https://drive.google.com/uc?export=download&amp;id=1xXHjioxaZeVtxq2zF-Ctt-9GWNfSS0J6" length="38994162" type="audio/mpeg" />
       <itunes:explicit>false</itunes:explicit>
       <itunes:image href="https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/personal/assets/cover.png?v=darkmode-smiley" />
     </item>

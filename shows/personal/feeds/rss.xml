@@ -6,7 +6,7 @@
     <description>Private feed for whatever audio I drop into Drive. Dates follow the upload day.</description>
     <language>en</language>
     <generator>gdrive_podcast_feed.py</generator>
-    <lastBuildDate>Wed, 19 Nov 2025 22:56:15 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 25 Nov 2025 16:04:42 +0000</lastBuildDate>
     <ttl>60</ttl>
     <ns0:link href="https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/personal/feeds/rss.xml" rel="self" type="application/rss+xml" />
     <itunes:author>Oskar</itunes:author>
@@ -23,6 +23,16 @@
     <itunes:category text="Personal Journals">
       <itunes:category text="Self-Improvement" />
     </itunes:category>
+    <item>
+      <title>responspapir 2 sigrid</title>
+      <description>responspapir 2 sigrid</description>
+      <guid isPermaLink="false">1NKt3nwxLuS127LWi9X3kvq35eoTx_H8b</guid>
+      <link>https://github.com/ennuiweb/psyk-podcast</link>
+      <pubDate>Tue, 25 Nov 2025 16:04:42 +0000</pubDate>
+      <enclosure url="https://drive.google.com/uc?export=download&amp;id=1NKt3nwxLuS127LWi9X3kvq35eoTx_H8b" length="15126603" type="audio/mpeg" />
+      <itunes:explicit>false</itunes:explicit>
+      <itunes:image href="https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/personal/assets/cover.png?v=darkmode-smiley" />
+    </item>
     <item>
       <title>bernstein 2</title>
       <description>bernstein 2</description>

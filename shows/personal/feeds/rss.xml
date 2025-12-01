@@ -6,7 +6,7 @@
     <description>Private feed for whatever audio I drop into Drive. Dates follow the upload day.</description>
     <language>en</language>
     <generator>gdrive_podcast_feed.py</generator>
-    <lastBuildDate>Tue, 25 Nov 2025 16:04:42 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 30 Nov 2025 21:17:15 +0000</lastBuildDate>
     <ttl>60</ttl>
     <ns0:link href="https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/personal/feeds/rss.xml" rel="self" type="application/rss+xml" />
     <itunes:author>Oskar</itunes:author>
@@ -23,6 +23,26 @@
     <itunes:category text="Personal Journals">
       <itunes:category text="Self-Improvement" />
     </itunes:category>
+    <item>
+      <title>Structural Dissociation</title>
+      <description>Structural Dissociation</description>
+      <guid isPermaLink="false">1n1zdJV51r8BaOZj47p-0GFxTUYQGtefP</guid>
+      <link>https://github.com/ennuiweb/psyk-podcast</link>
+      <pubDate>Sun, 30 Nov 2025 21:17:15 +0000</pubDate>
+      <enclosure url="https://drive.google.com/uc?export=download&amp;id=1n1zdJV51r8BaOZj47p-0GFxTUYQGtefP" length="18876219" type="audio/mpeg" />
+      <itunes:explicit>false</itunes:explicit>
+      <itunes:image href="https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/personal/assets/cover.png?v=darkmode-smiley" />
+    </item>
+    <item>
+      <title>Trauma Splitting, Structural Dissociation and HSPs</title>
+      <description>Trauma Splitting, Structural Dissociation and HSPs</description>
+      <guid isPermaLink="false">1B0yl_6vHHlD7THgtu8KSCNi3eNGL-6w5</guid>
+      <link>https://github.com/ennuiweb/psyk-podcast</link>
+      <pubDate>Sun, 30 Nov 2025 21:10:47 +0000</pubDate>
+      <enclosure url="https://drive.google.com/uc?export=download&amp;id=1B0yl_6vHHlD7THgtu8KSCNi3eNGL-6w5" length="18677689" type="audio/mpeg" />
+      <itunes:explicit>false</itunes:explicit>
+      <itunes:image href="https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/personal/assets/cover.png?v=darkmode-smiley" />
+    </item>
     <item>
       <title>responspapir 2 sigrid</title>
       <description>responspapir 2 sigrid</description>

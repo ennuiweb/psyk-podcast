@@ -6,7 +6,7 @@
     <description>Private feed for whatever audio I drop into Drive. Dates follow the upload day.</description>
     <language>en</language>
     <generator>gdrive_podcast_feed.py</generator>
-    <lastBuildDate>Sun, 30 Nov 2025 21:17:15 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 17 Dec 2025 16:44:26 +0000</lastBuildDate>
     <ttl>60</ttl>
     <ns0:link href="https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/personal/feeds/rss.xml" rel="self" type="application/rss+xml" />
     <itunes:author>Oskar</itunes:author>
@@ -23,6 +23,36 @@
     <itunes:category text="Personal Journals">
       <itunes:category text="Self-Improvement" />
     </itunes:category>
+    <item>
+      <title>chri-newanalysis-3-4sources</title>
+      <description>chri-newanalysis-3-4sources</description>
+      <guid isPermaLink="false">1nmsnSFfH_tC3tCuP8avHOG0c0b-ZRrgc</guid>
+      <link>https://github.com/ennuiweb/psyk-podcast</link>
+      <pubDate>Wed, 17 Dec 2025 16:44:26 +0000</pubDate>
+      <enclosure url="https://drive.google.com/uc?export=download&amp;id=1nmsnSFfH_tC3tCuP8avHOG0c0b-ZRrgc" length="40799223" type="audio/mpeg" />
+      <itunes:explicit>false</itunes:explicit>
+      <itunes:image href="https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/personal/assets/cover.png?v=darkmode-smiley" />
+    </item>
+    <item>
+      <title>chri-newanalysis-2sources</title>
+      <description>chri-newanalysis-2sources</description>
+      <guid isPermaLink="false">1Ok3u4uKtrqF0btNNEVgSklgoe8UHbP3X</guid>
+      <link>https://github.com/ennuiweb/psyk-podcast</link>
+      <pubDate>Wed, 17 Dec 2025 16:43:29 +0000</pubDate>
+      <enclosure url="https://drive.google.com/uc?export=download&amp;id=1Ok3u4uKtrqF0btNNEVgSklgoe8UHbP3X" length="17611893" type="audio/mpeg" />
+      <itunes:explicit>false</itunes:explicit>
+      <itunes:image href="https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/personal/assets/cover.png?v=darkmode-smiley" />
+    </item>
+    <item>
+      <title>chr-newanalysis-1-4sources</title>
+      <description>chr-newanalysis-1-4sources</description>
+      <guid isPermaLink="false">1DFaj1RhRiKJk6rzvb1t9Pvu8WBZ4u81J</guid>
+      <link>https://github.com/ennuiweb/psyk-podcast</link>
+      <pubDate>Wed, 17 Dec 2025 16:39:27 +0000</pubDate>
+      <enclosure url="https://drive.google.com/uc?export=download&amp;id=1DFaj1RhRiKJk6rzvb1t9Pvu8WBZ4u81J" length="15759811" type="audio/mpeg" />
+      <itunes:explicit>false</itunes:explicit>
+      <itunes:image href="https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/personal/assets/cover.png?v=darkmode-smiley" />
+    </item>
     <item>
       <title>Structural Dissociation</title>
       <description>Structural Dissociation</description>

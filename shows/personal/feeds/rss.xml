@@ -6,7 +6,7 @@
     <description>Private feed for whatever audio I drop into Drive. Dates follow the upload day.</description>
     <language>en</language>
     <generator>gdrive_podcast_feed.py</generator>
-    <lastBuildDate>Wed, 17 Dec 2025 17:41:11 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 18 Dec 2025 18:25:41 +0000</lastBuildDate>
     <ttl>60</ttl>
     <ns0:link href="https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/personal/feeds/rss.xml" rel="self" type="application/rss+xml" />
     <itunes:author>Oskar</itunes:author>
@@ -23,6 +23,26 @@
     <itunes:category text="Personal Journals">
       <itunes:category text="Self-Improvement" />
     </itunes:category>
+    <item>
+      <title>Lighthouse_Stance_and_the_Backwards_Relationship</title>
+      <description>Lighthouse_Stance_and_the_Backwards_Relationship</description>
+      <guid isPermaLink="false">1MjTKbOL9cTMi3W7xWpbf7VI2DXU9RPnI</guid>
+      <link>https://github.com/ennuiweb/psyk-podcast</link>
+      <pubDate>Thu, 18 Dec 2025 18:25:41 +0000</pubDate>
+      <enclosure url="https://drive.google.com/uc?export=download&amp;id=1MjTKbOL9cTMi3W7xWpbf7VI2DXU9RPnI" length="39668121" type="audio/mpeg" />
+      <itunes:explicit>false</itunes:explicit>
+      <itunes:image href="https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/personal/assets/cover.png?v=darkmode-smiley" />
+    </item>
+    <item>
+      <title>Fearful_Avoidant_Repair_The_Lighthouse_Stance</title>
+      <description>Fearful_Avoidant_Repair_The_Lighthouse_Stance</description>
+      <guid isPermaLink="false">1jJwIBWNA_oRJxpyg2r3sIrqPgJMr7Ya3</guid>
+      <link>https://github.com/ennuiweb/psyk-podcast</link>
+      <pubDate>Thu, 18 Dec 2025 18:25:33 +0000</pubDate>
+      <enclosure url="https://drive.google.com/uc?export=download&amp;id=1jJwIBWNA_oRJxpyg2r3sIrqPgJMr7Ya3" length="36284219" type="audio/mpeg" />
+      <itunes:explicit>false</itunes:explicit>
+      <itunes:image href="https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/personal/assets/cover.png?v=darkmode-smiley" />
+    </item>
     <item>
       <title>chri-newanalysis-4sources-long</title>
       <description>chri-newanalysis-4sources-long</description>

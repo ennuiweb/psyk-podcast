@@ -224,6 +224,137 @@ def list_audio_files(
     return files
 
 
+def _listify(value: Any) -> List[str]:
+    if value is None:
+        return []
+    if isinstance(value, (list, tuple, set)):
+        return [str(item) for item in value if item is not None]
+    return [str(value)]
+
+
+def _compile_regex_list(values: Any) -> List[re.Pattern]:
+    patterns = _listify(values)
+    compiled: List[re.Pattern] = []
+    for pattern in patterns:
+        try:
+            compiled.append(re.compile(pattern, re.IGNORECASE))
+        except re.error:
+            print(f"Warning: invalid regex in filters: {pattern}", file=sys.stderr)
+    return compiled
+
+
+def _normalize_filter_rules(raw_rules: Any) -> List[Dict[str, Any]]:
+    if not raw_rules:
+        return []
+    if isinstance(raw_rules, dict):
+        candidates = [raw_rules]
+    elif isinstance(raw_rules, list):
+        candidates = raw_rules
+    else:
+        return []
+
+    normalized: List[Dict[str, Any]] = []
+    for entry in candidates:
+        if not isinstance(entry, dict):
+            continue
+        rule = {
+            "name_contains": _listify(entry.get("name_contains")),
+            "name_regex": _compile_regex_list(entry.get("name_regex")),
+            "folder_contains": _listify(entry.get("folder_contains")),
+            "folder_regex": _compile_regex_list(entry.get("folder_regex")),
+        }
+        if any(rule.values()):
+            normalized.append(rule)
+    return normalized
+
+
+def parse_filters(raw_filters: Any) -> Dict[str, List[Dict[str, Any]]]:
+    if not raw_filters or not isinstance(raw_filters, dict):
+        return {"include": [], "exclude": []}
+    return {
+        "include": _normalize_filter_rules(raw_filters.get("include")),
+        "exclude": _normalize_filter_rules(raw_filters.get("exclude")),
+    }
+
+
+def _rule_matches(
+    rule: Dict[str, Any],
+    *,
+    file_name: str,
+    folder_names: List[str],
+    folder_path: str,
+) -> bool:
+    name_lower = file_name.casefold()
+    folder_lower = [name.casefold() for name in folder_names]
+
+    name_contains = rule.get("name_contains") or []
+    if name_contains and not any(token.casefold() in name_lower for token in name_contains):
+        return False
+
+    name_regex = rule.get("name_regex") or []
+    if name_regex and not any(pattern.search(file_name) for pattern in name_regex):
+        return False
+
+    folder_contains = rule.get("folder_contains") or []
+    if folder_contains:
+        if not folder_lower:
+            return False
+        if not any(
+            token.casefold() in folder
+            for token in folder_contains
+            for folder in folder_lower
+        ):
+            return False
+
+    folder_regex = rule.get("folder_regex") or []
+    if folder_regex:
+        if not folder_path:
+            return False
+        if not any(pattern.search(folder_path) for pattern in folder_regex):
+            return False
+
+    return True
+
+
+def matches_filters(
+    file_entry: Dict[str, Any],
+    folder_names: List[str],
+    filters: Dict[str, List[Dict[str, Any]]],
+) -> bool:
+    if not filters:
+        return True
+    file_name = file_entry.get("name") or ""
+    folder_path = "/".join(folder_names or [])
+
+    include_rules = filters.get("include") or []
+    exclude_rules = filters.get("exclude") or []
+
+    if include_rules:
+        if not any(
+            _rule_matches(
+                rule,
+                file_name=file_name,
+                folder_names=folder_names,
+                folder_path=folder_path,
+            )
+            for rule in include_rules
+        ):
+            return False
+
+    if any(
+        _rule_matches(
+            rule,
+            file_name=file_name,
+            folder_names=folder_names,
+            folder_path=folder_path,
+        )
+        for rule in exclude_rules
+    ):
+        return False
+
+    return True
+
+
 def ensure_public_permission(
     service,
     file_id: str,
@@ -1137,6 +1268,7 @@ def main() -> None:
     allowed_mime_types = config.get("allowed_mime_types")
     if isinstance(allowed_mime_types, str):
         allowed_mime_types = [allowed_mime_types]
+    filters = parse_filters(config.get("filters"))
 
     auto_spec: Optional[AutoSpec] = None
     auto_spec_path_value = config.get("auto_spec")
@@ -1192,16 +1324,6 @@ def main() -> None:
     folder_metadata_cache: Dict[str, Dict[str, Any]] = {}
     folder_path_cache: Dict[str, List[str]] = {}
     for drive_file in drive_files:
-        permission_added = ensure_public_permission(
-            drive_service,
-            drive_file["id"],
-            dry_run=args.dry_run,
-            supports_all_drives=supports_all_drives,
-            skip_permission_updates=skip_permission_updates,
-        )
-        if permission_added:
-            print(f"Enabled link sharing for {drive_file['name']} ({drive_file['id']})")
-
         parents = drive_file.get("parents") or []
         folder_names: List[str] = []
         if parents:
@@ -1213,6 +1335,18 @@ def main() -> None:
                 root_folder_id=folder_id,
                 supports_all_drives=supports_all_drives,
             )
+        if not matches_filters(drive_file, folder_names, filters):
+            continue
+
+        permission_added = ensure_public_permission(
+            drive_service,
+            drive_file["id"],
+            dry_run=args.dry_run,
+            supports_all_drives=supports_all_drives,
+            skip_permission_updates=skip_permission_updates,
+        )
+        if permission_added:
+            print(f"Enabled link sharing for {drive_file['name']} ({drive_file['id']})")
 
         auto_meta = auto_spec.metadata_for(drive_file, folder_names) if auto_spec else None
         episodes.append(

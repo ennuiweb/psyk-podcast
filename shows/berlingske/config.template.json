@@ -1,0 +1,32 @@
+{
+  "service_account_file": "shows/berlingske/service-account.json",
+  "drive_folder_id": "__DRIVE_FOLDER_ID__",
+  "shared_drive_id": null,
+  "include_items_from_all_drives": true,
+  "allowed_mime_types": [
+    "audio/"
+  ],
+  "skip_permission_updates": false,
+  "output_feed": "shows/berlingske/feeds/rss.xml",
+  "public_link_template": "https://drive.google.com/uc?export=download&id={file_id}",
+  "episode_metadata": "shows/berlingske/episode_metadata.json",
+  "feed": {
+    "title": "Berlingske Narrated Articles",
+    "link": "https://www.berlingske.dk",
+    "self_link": "https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/berlingske/feeds/rss.xml",
+    "description": "Narrated articles from Berlingske.",
+    "language": "da",
+    "author": "Berlingske",
+    "default_explicit": false,
+    "image": "https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/berlingske/assets/cover.png",
+    "category": {
+      "name": "News",
+      "sub": "Daily News"
+    },
+    "owner": {
+      "name": "Your Name",
+      "email": "you@example.com"
+    },
+    "ttl": 60
+  }
+}

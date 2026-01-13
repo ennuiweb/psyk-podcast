@@ -13,6 +13,32 @@ Automation to build podcast RSS feeds from audio files stored in Google Drive. T
 ### MIME type filtering
 Each show config can optionally supply `"allowed_mime_types"` to control which Google Drive items should become feed entries. Values ending with `/` are treated as prefixes (for example `"audio/"`), while exact MIME types (such as `"video/mp4"`) match specific files. The default behaviour includes only audio files, so add types like `"video/mp4"` if you want lecture videos to appear in the feed without manual conversion.
 
+### Rule-based splits from a single Drive folder
+Each show config can include a `filters` block to include/exclude files by name or folder path. This lets multiple feeds share one Drive folder without duplicating audio.
+
+Example:
+```json
+"filters": {
+  "include": [
+    {"folder_regex": "^Politics/"},
+    {"name_contains": ["[Politics]"]}
+  ],
+  "exclude": [
+    {"name_regex": "\\\\b(Teaser|Trailer)\\\\b"}
+  ]
+}
+```
+
+Rules:
+- `name_contains`: substring match (case-insensitive) against the filename.
+- `name_regex`: regex match against the filename.
+- `folder_contains`: substring match (case-insensitive) against any folder segment under the root folder.
+- `folder_regex`: regex match against the full folder path (segments joined by `/`).
+
+Matching logic:
+- If any include rule matches, the file is kept. If no include rules are set, all files are included.
+- Any exclude rule match removes the file.
+
 ### Automatic Drive transcoding
 `podcast-tools/transcode_drive_media.py` converts matching Drive videos to audio before the feed build runs. Provide a `transcode` block in each show config to opt in and include both the video and audio MIME types that Google Drive reports for `.mp4`/`.m4a` uploads:
 
@@ -58,6 +84,22 @@ These controls let each show decide whether highlights should track the curated 
 3. Share the target Google Drive folder (Viewer) with the service-account email so it can list files.
 4. Turn on link sharing for existing audio files or let the script do it automatically.
 
+## Ingesting downloader manifests
+If you already have audio downloaded locally (for example from the Berlingske
+downloader), use the ingestion helper to upload to Drive and generate
+`episode_metadata.json` with publication dates from the manifest:
+
+```bash
+python podcast-tools/ingest_manifest_to_drive.py \
+  --manifest /Users/oskar/repo/avisartikler-dl/downloads/manifest.tsv \
+  --downloads-dir /Users/oskar/repo/avisartikler-dl/downloads \
+  --config shows/berlingske/config.local.json
+```
+
+The script dedupes by a hash of the audio source URL, uploads missing files,
+and records metadata keyed by Drive file ID (or file name with
+`--metadata-by-name`).
+
 ## Local testing
 ```bash
 python -m venv .venv
@@ -101,6 +143,20 @@ If you want the GitHub workflow to fire whenever fresh audio appears in Drive, a
 6. Open the clock icon (**Triggers**) → **Add trigger**, select `checkDriveAndTrigger`, choose a time-driven interval (for example every 15 minutes), and save.
 
 The repository keeps this helper at `apps-script/drive_change_trigger.gs` so you can copy/paste the latest version straight into Apps Script without hunting through the docs.
+
+### Automating Apps Script updates (clasp)
+If you want the Apps Script file to update without manual pasting, use the `clasp` CLI to push changes from this repo:
+1. Install `clasp` (`npm install -g @google/clasp`) and run `clasp login`. If the global install fails with permissions (EACCES), use `npx @google/clasp` or set a user-level npm prefix.
+2. Create or locate your Apps Script project and grab its Script ID (Apps Script → Project Settings).
+3. Copy `apps-script/.clasp.json.example` to `apps-script/.clasp.json` and replace `scriptId`.
+4. Run `apps-script/push_drive_trigger.sh` to push once, or `apps-script/push_drive_trigger.sh --watch` to auto-push while editing.
+5. Keep `apps-script/appsscript.json` in the repo so clasp can push and the Drive API advanced service stays enabled.
+
+### Auto-push on git push
+To push the Apps Script file whenever you run `git push`, install the repository git hook:
+1. Run `scripts/install_git_hooks.sh`.
+2. Push as usual; the hook runs `apps-script/push_drive_trigger.sh` each time.
+3. Set `APPS_SCRIPT_PUSH_ON_PUSH=0` in your environment to skip the hook on demand.
 
 ### Apps Script helper
 The canonical automation script lives in `apps-script/drive_change_trigger.gs`. Copy it directly from the repository so you always grab the latest multi-folder logic (`CONFIG.drive.folderIds`, `configuredRootFolderIds()`, etc.). Key bits to double-check before deploying:

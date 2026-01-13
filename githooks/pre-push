@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+repo_root="$(git rev-parse --show-toplevel)"
+
+if [[ "${APPS_SCRIPT_PUSH_ON_PUSH:-1}" == "0" ]]; then
+  exit 0
+fi
+
+"${repo_root}/apps-script/push_drive_trigger.sh"

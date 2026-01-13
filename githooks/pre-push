@@ -2,9 +2,16 @@
 set -euo pipefail
 
 repo_root="$(git rev-parse --show-toplevel)"
+log_file="${repo_root}/githooks/pre-push.log"
 
 if [[ "${APPS_SCRIPT_PUSH_ON_PUSH:-1}" == "0" ]]; then
   exit 0
 fi
 
+printf '%s %s\n' "$(date +'%Y-%m-%d %H:%M:%S')" \
+  "pre-push: running apps-script push" >> "${log_file}"
+
 "${repo_root}/apps-script/push_drive_trigger.sh"
+
+printf '%s %s\n' "$(date +'%Y-%m-%d %H:%M:%S')" \
+  "pre-push: apps-script push completed" >> "${log_file}"

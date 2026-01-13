@@ -3,7 +3,6 @@
   * 
  * the ennuiweb/psyk-podcast GitHub Actions workflow when files are added,
  * removed, renamed, moved, or otherwise updated.
- *
  * Before first run:
  * 1. Update CONFIG as needed.
  * 2. In Extensions → Apps Script → Services, enable the Drive API advanced service

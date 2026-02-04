@@ -7,6 +7,7 @@ import re
 import subprocess
 import sys
 from pathlib import Path
+import shlex
 
 
 def read_json(path: Path) -> dict:
@@ -50,10 +51,44 @@ def week_has_missing(reading_key: Path, week: str) -> bool:
     return False
 
 
-def ensure_prompt(label: str, value: str) -> str:
-    if not value.strip():
-        raise SystemExit(f"Prompt for {label} is empty. Fill it in prompt_config.json.")
+def ensure_prompt(_: str, value: str) -> str:
     return value.strip()
+
+
+def build_language_variants(config: dict) -> list[dict]:
+    variants: list[dict] = []
+    raw = config.get("languages")
+    if isinstance(raw, list):
+        for entry in raw:
+            if isinstance(entry, str):
+                code = entry.strip()
+                if code:
+                    variants.append({"code": code, "suffix": "", "title_suffix": ""})
+                continue
+            if not isinstance(entry, dict):
+                continue
+            code = (entry.get("code") or "").strip()
+            if not code:
+                continue
+            suffix = (entry.get("suffix") or "").strip()
+            title_suffix = (entry.get("title_suffix") or suffix).strip()
+            variants.append({"code": code, "suffix": suffix, "title_suffix": title_suffix})
+
+    if not variants:
+        code = (config.get("language") or "").strip()
+        variants.append({"code": code or None, "suffix": "", "title_suffix": ""})
+
+    return variants
+
+
+def apply_suffix(name: str, suffix: str) -> str:
+    return f"{name} {suffix}".strip() if suffix else name
+
+
+def apply_path_suffix(path: Path, suffix: str) -> Path:
+    if not suffix:
+        return path
+    return path.with_name(f"{path.stem} {suffix}{path.suffix}")
 
 
 def run_generate(
@@ -107,7 +142,11 @@ def run_generate(
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Generate all episodes for a given week.")
-    parser.add_argument("--week", required=True, help="Week label, e.g. W04")
+    parser.add_argument("--week", help="Single week label, e.g. W04")
+    parser.add_argument(
+        "--weeks",
+        help="Comma-separated week labels, e.g. W01,W02",
+    )
     parser.add_argument(
         "--sources-root",
         default="shows/personlighedspsykologi/sources",
@@ -149,7 +188,23 @@ def main() -> int:
         action="store_true",
         help="Print planned outputs and exit without generating audio.",
     )
+    parser.add_argument(
+        "--print-downloads",
+        action="store_true",
+        help="Print commands to wait and download audio for this run (non-blocking only).",
+    )
     args = parser.parse_args()
+
+    if not args.week and not args.weeks:
+        raise SystemExit("Provide --week or --weeks.")
+
+    week_inputs: list[str] = []
+    if args.week:
+        week_inputs.append(args.week)
+    if args.weeks:
+        week_inputs.extend(part.strip() for part in args.weeks.split(",") if part.strip())
+    if not week_inputs:
+        raise SystemExit("No valid weeks provided.")
 
     repo_root = Path(__file__).resolve().parents[3]
     sources_root = repo_root / args.sources_root
@@ -157,107 +212,170 @@ def main() -> int:
     prompt_config = repo_root / args.prompt_config
     output_root = repo_root / args.output_root
     generator_script = repo_root / "notebooklm-podcast-auto" / "generate_podcast.py"
+    notebooklm_cli = repo_root / "notebooklm-podcast-auto" / ".venv" / "bin" / "notebooklm"
 
     config = read_json(prompt_config)
-    language = (config.get("language") or "").strip() or None
+    language_variants = build_language_variants(config)
     weekly_cfg = config.get("weekly_overview", {})
     per_cfg = config.get("per_reading", {})
     brief_cfg = config.get("brief", {})
 
-    week_dir = find_week_dir(sources_root, args.week)
-    week_label = week_dir.name.split(" ", 1)[0].upper()
-    week_topic = week_dir.name[len(week_label):].strip()
+    request_logs: list[Path] = []
 
-    week_output_dir = output_root / week_label
-    week_output_dir.mkdir(parents=True, exist_ok=True)
+    for week_input in week_inputs:
+        week_dir = find_week_dir(sources_root, week_input)
+        week_label = week_dir.name.split(" ", 1)[0].upper()
 
-    sources = list_source_files(week_dir)
-    if not sources:
-        raise SystemExit(f"No source files found in {week_dir}")
+        week_output_dir = output_root / week_label
+        week_output_dir.mkdir(parents=True, exist_ok=True)
 
-    missing = week_has_missing(reading_key, week_label)
+        sources = list_source_files(week_dir)
+        if not sources:
+            raise SystemExit(f"No source files found in {week_dir}")
 
-    planned_lines: list[str] = []
-    weekly_output = week_output_dir / f"{week_label} - Alle kilder.mp3"
-    if not missing:
-        planned_lines.append(f"WEEKLY: {weekly_output}")
-    else:
-        planned_lines.append(f"SKIP WEEKLY (missing readings): {weekly_output}")
+        missing = week_has_missing(reading_key, week_label)
 
-    for source in sources:
-        base_name = source.stem
-        per_output = week_output_dir / f"{week_label} - {base_name}.mp3"
-        planned_lines.append(f"READING: {per_output}")
-        if "Grundbog kapitel" in source.name:
-            title_prefix = brief_cfg.get("title_prefix", "[Brief]")
-            brief_name = f"{title_prefix} {week_label} - {base_name}.mp3"
-            planned_lines.append(f"BRIEF: {week_output_dir / brief_name}")
+        planned_lines: list[str] = []
+        weekly_output = week_output_dir / f"{week_label} - Alle kilder.mp3"
+        if not missing:
+            for variant in language_variants:
+                planned_lines.append(
+                    f"WEEKLY ({variant['code'] or 'default'}): "
+                    f"{apply_path_suffix(weekly_output, variant['suffix'])}"
+                )
+        else:
+            planned_lines.append(f"SKIP WEEKLY (missing readings): {weekly_output}")
 
-    if args.dry_run:
-        for line in planned_lines:
-            print(line)
-        return 0
+        for source in sources:
+            base_name = source.stem
+            per_output = week_output_dir / f"{week_label} - {base_name}.mp3"
+            for variant in language_variants:
+                planned_lines.append(
+                    f"READING ({variant['code'] or 'default'}): "
+                    f"{apply_path_suffix(per_output, variant['suffix'])}"
+                )
+            if "Grundbog kapitel" in source.name:
+                title_prefix = brief_cfg.get("title_prefix", "[Brief]")
+                brief_name = f"{title_prefix} {week_label} - {base_name}.mp3"
+                for variant in language_variants:
+                    planned_lines.append(
+                        f"BRIEF ({variant['code'] or 'default'}): "
+                        f"{apply_path_suffix(week_output_dir / brief_name, variant['suffix'])}"
+                    )
 
-    if not missing:
-        weekly_sources_file = week_output_dir / "sources_week.txt"
-        weekly_sources_file.write_text("\n".join(str(p) for p in sources) + "\n", encoding="utf-8")
-        run_generate(
-            Path(sys.executable),
-            generator_script,
-            sources_file=weekly_sources_file,
-            source_path=None,
-            notebook_title=f"Personlighedspsykologi {week_label} Alle kilder",
-            instructions=ensure_prompt("weekly_overview", weekly_cfg.get("prompt", "")),
-            audio_format=weekly_cfg.get("format", "deep-dive"),
-            audio_length=weekly_cfg.get("length", "long"),
-            language=language,
-            output_path=weekly_output,
-            wait=args.wait,
-            skip_existing=args.skip_existing,
-            source_timeout=args.source_timeout,
-            generation_timeout=args.generation_timeout,
-        )
-    else:
-        print(f"Skipping weekly overview for {week_label} (missing readings).")
+        if args.dry_run:
+            print(f"## {week_label}")
+            for line in planned_lines:
+                print(line)
+            continue
 
-    for source in sources:
-        base_name = source.stem
-        run_generate(
-            Path(sys.executable),
-            generator_script,
-            sources_file=None,
-            source_path=source,
-            notebook_title=f"Personlighedspsykologi {week_label} {base_name}",
-            instructions=ensure_prompt("per_reading", per_cfg.get("prompt", "")),
-            audio_format=per_cfg.get("format", "deep-dive"),
-            audio_length=per_cfg.get("length", "default"),
-            language=language,
-            output_path=week_output_dir / f"{week_label} - {base_name}.mp3",
-            wait=args.wait,
-            skip_existing=args.skip_existing,
-            source_timeout=args.source_timeout,
-            generation_timeout=args.generation_timeout,
-        )
+        if not missing:
+            weekly_sources_file = week_output_dir / "sources_week.txt"
+            weekly_sources_file.write_text("\n".join(str(p) for p in sources) + "\n", encoding="utf-8")
+            for variant in language_variants:
+                output_path = apply_path_suffix(weekly_output, variant["suffix"])
+                run_generate(
+                    Path(sys.executable),
+                    generator_script,
+                    sources_file=weekly_sources_file,
+                    source_path=None,
+                    notebook_title=apply_suffix(
+                        f"Personlighedspsykologi {week_label} Alle kilder",
+                        variant["title_suffix"],
+                    ),
+                    instructions=ensure_prompt("weekly_overview", weekly_cfg.get("prompt", "")),
+                    audio_format=weekly_cfg.get("format", "deep-dive"),
+                    audio_length=weekly_cfg.get("length", "long"),
+                    language=variant["code"],
+                    output_path=output_path,
+                    wait=args.wait,
+                    skip_existing=args.skip_existing,
+                    source_timeout=args.source_timeout,
+                    generation_timeout=args.generation_timeout,
+                )
+                request_logs.append(output_path.with_suffix(output_path.suffix + ".request.json"))
+        else:
+            print(f"Skipping weekly overview for {week_label} (missing readings).")
 
-        if "Grundbog kapitel" in source.name:
-            title_prefix = brief_cfg.get("title_prefix", "[Brief]")
-            brief_name = f"{title_prefix} {week_label} - {base_name}.mp3"
-            run_generate(
-                Path(sys.executable),
-                generator_script,
-                sources_file=None,
-                source_path=source,
-                notebook_title=f"Personlighedspsykologi {week_label} [Brief] {base_name}",
-                instructions=ensure_prompt("brief", brief_cfg.get("prompt", "")),
-                audio_format=brief_cfg.get("format", "brief"),
-                audio_length=None,
-                language=language,
-                output_path=week_output_dir / brief_name,
-                wait=args.wait,
-                skip_existing=args.skip_existing,
-                source_timeout=args.source_timeout,
-                generation_timeout=args.generation_timeout,
+        for source in sources:
+            base_name = source.stem
+            per_output = week_output_dir / f"{week_label} - {base_name}.mp3"
+            for variant in language_variants:
+                output_path = apply_path_suffix(per_output, variant["suffix"])
+                run_generate(
+                    Path(sys.executable),
+                    generator_script,
+                    sources_file=None,
+                    source_path=source,
+                    notebook_title=apply_suffix(
+                        f"Personlighedspsykologi {week_label} {base_name}",
+                        variant["title_suffix"],
+                    ),
+                    instructions=ensure_prompt("per_reading", per_cfg.get("prompt", "")),
+                    audio_format=per_cfg.get("format", "deep-dive"),
+                    audio_length=per_cfg.get("length", "default"),
+                    language=variant["code"],
+                    output_path=output_path,
+                    wait=args.wait,
+                    skip_existing=args.skip_existing,
+                    source_timeout=args.source_timeout,
+                    generation_timeout=args.generation_timeout,
+                )
+                request_logs.append(output_path.with_suffix(output_path.suffix + ".request.json"))
+
+            if "Grundbog kapitel" in source.name:
+                title_prefix = brief_cfg.get("title_prefix", "[Brief]")
+                brief_name = f"{title_prefix} {week_label} - {base_name}.mp3"
+                brief_output = week_output_dir / brief_name
+                for variant in language_variants:
+                    output_path = apply_path_suffix(brief_output, variant["suffix"])
+                    run_generate(
+                        Path(sys.executable),
+                        generator_script,
+                        sources_file=None,
+                        source_path=source,
+                        notebook_title=apply_suffix(
+                            f"Personlighedspsykologi {week_label} [Brief] {base_name}",
+                            variant["title_suffix"],
+                        ),
+                        instructions=ensure_prompt("brief", brief_cfg.get("prompt", "")),
+                        audio_format=brief_cfg.get("format", "brief"),
+                        audio_length=None,
+                        language=variant["code"],
+                        output_path=output_path,
+                        wait=args.wait,
+                        skip_existing=args.skip_existing,
+                        source_timeout=args.source_timeout,
+                        generation_timeout=args.generation_timeout,
+                    )
+                    request_logs.append(output_path.with_suffix(output_path.suffix + ".request.json"))
+
+    if args.print_downloads:
+        commands: list[str] = []
+        for log_path in request_logs:
+            if not log_path.exists():
+                continue
+            payload = json.loads(log_path.read_text(encoding="utf-8"))
+            notebook_id = payload.get("notebook_id")
+            artifact_id = payload.get("artifact_id")
+            output_path = payload.get("output_path")
+            if not (notebook_id and artifact_id and output_path):
+                continue
+            cli = shlex.quote(str(notebooklm_cli))
+            out = shlex.quote(str(output_path))
+            commands.append(
+                f"{cli} artifact wait {artifact_id} -n {notebook_id}"
             )
+            commands.append(
+                f"{cli} download audio {out} -a {artifact_id} -n {notebook_id}"
+            )
+
+        if commands:
+            print("\n# Wait + download commands")
+            for cmd in commands:
+                print(cmd)
+        else:
+            print("\nNo request logs found. Run without --wait to generate them.")
 
     return 0
 

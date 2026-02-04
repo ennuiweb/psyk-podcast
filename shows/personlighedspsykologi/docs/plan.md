@@ -24,6 +24,9 @@
   - Prompt: from `shows/personlighedspsykologi/prompt_config.json`
   - Language: from `shows/personlighedspsykologi/prompt_config.json`
   - Name prefix: `[Brief]`
+ - Language variants: generate **Danish + English** for all episodes.
+   - Config: `shows/personlighedspsykologi/prompt_config.json` → `languages`
+   - English naming: adds suffix ` [EN]` to file names and notebook titles.
 
 ## Automation scope (decisions)
 - **Per-episode notebooks only.** We are **not** using single-notebook + source-ID selection for now.
@@ -75,7 +78,13 @@ Weekly overview skips:
 Command (non-blocking by default, add `--wait` to block):
 
 ```bash
-.venv/bin/python shows/personlighedspsykologi/scripts/generate_week.py --week W04
+./notebooklm-podcast-auto/.venv/bin/python shows/personlighedspsykologi/scripts/generate_week.py --week W04
+```
+
+Multiple weeks in one command:
+
+```bash
+./notebooklm-podcast-auto/.venv/bin/python shows/personlighedspsykologi/scripts/generate_week.py --weeks W01,W02,W03
 ```
 
 This command:
@@ -83,17 +92,37 @@ This command:
 - Skips weekly “Alle kilder” when missing readings are listed for that week.
 - Emits MP3s to `shows/personlighedspsykologi/output/W##/`.
 - Writes a request log per non-blocking episode: `*.mp3.request.json`.
+- Empty prompts are allowed (no validation).
 
 Optional flags:
 - `--skip-existing` to skip outputs that already exist.
 - `--source-timeout SECONDS` / `--generation-timeout SECONDS` to override timeouts.
 - `--dry-run` to print planned outputs and exit without generating audio.
+- `--print-downloads` to print `artifact wait` + `download audio` commands for this run (requires non-blocking mode).
 
 ## Output placement
 - Weekly overview: `shows/personlighedspsykologi/output/W##/W## - Alle kilder.mp3`
 - Per-reading: `shows/personlighedspsykologi/output/W##/W## - <reading>.mp3`
 - Brief (Grundbog): `shows/personlighedspsykologi/output/W##/[Brief] W## - <reading>.mp3`
+- English variants add ` [EN]` before `.mp3`.
 - Non-blocking request log: `shows/personlighedspsykologi/output/W##/*.mp3.request.json`
+
+## Await + download (per week)
+Use request logs to wait for completion and download MP3s, skipping already-downloaded files:
+
+```bash
+./notebooklm-podcast-auto/.venv/bin/python shows/personlighedspsykologi/scripts/download_week.py --week W01
+```
+
+Multiple weeks:
+
+```bash
+./notebooklm-podcast-auto/.venv/bin/python shows/personlighedspsykologi/scripts/download_week.py --weeks W01,W02
+```
+
+Optional flags:
+- `--timeout SECONDS` / `--interval SECONDS` for wait polling.
+- `--dry-run` to print what would run.
 
 ## Test log
 - 2026-02-04: Ran `generate_week.py` with a temporary test week (W99) and three PDFs.

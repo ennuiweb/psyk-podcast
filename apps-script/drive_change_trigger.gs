@@ -238,13 +238,27 @@ function snapshotCurrentTree() {
   };
 }
 
+function normaliseDriveItem(item) {
+  if (!item) return item;
+  if (item.title && !item.name) item.name = item.title;
+  if (item.modifiedDate && !item.modifiedTime) item.modifiedTime = item.modifiedDate;
+  if (Array.isArray(item.parents)) {
+    item.parents = item.parents
+      .map((parent) => (typeof parent === 'string' ? parent : parent && parent.id))
+      .filter(Boolean);
+  } else if (!item.parents) {
+    item.parents = [];
+  }
+  return item;
+}
+
 function listChildren(parentId) {
   const items = [];
   let pageToken;
   do {
     const params = {
       q: `'${parentId}' in parents and trashed = false`,
-      fields: 'files(id,name,mimeType,parents,modifiedTime),nextPageToken',
+      fields: 'items(id,title,mimeType,parents/id,modifiedDate),nextPageToken',
       pageSize: 100,
       pageToken,
     };
@@ -257,7 +271,8 @@ function listChildren(parentId) {
     }
 
     const response = Drive.Files.list(params);
-    (response.files || []).forEach((item) => {
+    (response.items || []).forEach((item) => {
+      normaliseDriveItem(item);
       item.parents = normaliseParents(item.parents);
       items.push(item);
     });
@@ -269,10 +284,10 @@ function listChildren(parentId) {
 
 function getFileMetadata(fileId) {
   const params = {
-    fields: 'id,name,mimeType,parents,modifiedTime',
+    fields: 'id,title,mimeType,parents/id,modifiedDate',
     supportsAllDrives: Boolean(CONFIG.drive.sharedDriveId),
   };
-  const file = Drive.Files.get(fileId, params);
+  const file = normaliseDriveItem(Drive.Files.get(fileId, params));
   file.parents = normaliseParents(file.parents);
   return file;
 }

@@ -93,10 +93,15 @@ This command:
 - Emits MP3s to `shows/personlighedspsykologi/output/W##/`.
 - Writes a request log per non-blocking episode: `*.mp3.request.json`.
 - Empty prompts are allowed (no validation).
+- Continues on per-episode failures and prints a failure summary at the end (non-zero exit).
 
 Optional flags:
-- `--skip-existing` to skip outputs that already exist.
+- `--skip-existing` (default) to skip outputs that already exist.
+- `--no-skip-existing` to force re-generation.
+- `--print-downloads` (default) to print wait/download commands.
+- `--no-print-downloads` to disable printing.
 - `--source-timeout SECONDS` / `--generation-timeout SECONDS` to override timeouts.
+- `--artifact-retries N` / `--artifact-retry-backoff SECONDS` to retry artifact creation (default retries: 2).
 - `--dry-run` to print planned outputs and exit without generating audio.
 - `--print-downloads` to print `artifact wait` + `download audio` commands for this run (requires non-blocking mode).
 
@@ -106,6 +111,7 @@ Optional flags:
 - Brief (Grundbog): `shows/personlighedspsykologi/output/W##/[Brief] W## - <reading>.mp3`
 - English variants add ` [EN]` before `.mp3`.
 - Non-blocking request log: `shows/personlighedspsykologi/output/W##/*.mp3.request.json`
+- Failed generation error log: `shows/personlighedspsykologi/output/W##/*.mp3.request.error.json`
 
 ## Await + download (per week)
 Use request logs to wait for completion and download MP3s, skipping already-downloaded files:

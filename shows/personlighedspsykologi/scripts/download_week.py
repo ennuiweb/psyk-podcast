@@ -106,8 +106,14 @@ def main() -> int:
     for week_input in week_inputs:
         week_dir = find_week_dir(output_root, week_input)
         request_logs = sorted(week_dir.glob("*.request.json"))
+        error_logs = sorted(week_dir.glob("*.request.error.json"))
         if not request_logs:
-            print(f"No request logs found in {week_dir}")
+            if error_logs:
+                print(f"No request logs found in {week_dir} (found error logs).")
+                for log_path in error_logs:
+                    print(f"- {log_path.name}")
+            else:
+                print(f"No request logs found in {week_dir}")
             continue
 
         print(f"## {week_dir.name}")

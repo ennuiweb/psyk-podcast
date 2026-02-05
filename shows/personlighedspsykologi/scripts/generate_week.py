@@ -107,6 +107,8 @@ def run_generate(
     skip_existing: bool,
     source_timeout: float | None,
     generation_timeout: float | None,
+    artifact_retries: int | None,
+    artifact_retry_backoff: float | None,
 ) -> None:
     cmd = [
         str(python),
@@ -137,7 +139,13 @@ def run_generate(
         cmd.extend(["--source-timeout", str(source_timeout)])
     if generation_timeout is not None:
         cmd.extend(["--generation-timeout", str(generation_timeout)])
-    subprocess.run(cmd, check=True)
+    if artifact_retries is not None:
+        cmd.extend(["--artifact-retries", str(artifact_retries)])
+    if artifact_retry_backoff is not None:
+        cmd.extend(["--artifact-retry-backoff", str(artifact_retry_backoff)])
+    result = subprocess.run(cmd, check=False)
+    if result.returncode != 0:
+        raise RuntimeError(f"Generator failed with exit code {result.returncode}")
 
 
 def main() -> int:
@@ -170,8 +178,16 @@ def main() -> int:
     parser.add_argument("--wait", action="store_true", help="Wait for generation to finish.")
     parser.add_argument(
         "--skip-existing",
+        dest="skip_existing",
         action="store_true",
-        help="Skip generation when output file already exists.",
+        default=True,
+        help="Skip generation when output file already exists (default).",
+    )
+    parser.add_argument(
+        "--no-skip-existing",
+        dest="skip_existing",
+        action="store_false",
+        help="Force re-generation even if output file already exists.",
     )
     parser.add_argument(
         "--source-timeout",
@@ -184,14 +200,34 @@ def main() -> int:
         help="Seconds to wait for generation (passed through).",
     )
     parser.add_argument(
+        "--artifact-retries",
+        type=int,
+        default=2,
+        help="Retry artifact generation (passed through, default: 2).",
+    )
+    parser.add_argument(
+        "--artifact-retry-backoff",
+        type=float,
+        default=5.0,
+        help="Base backoff for artifact retries (passed through).",
+    )
+    parser.add_argument(
         "--dry-run",
         action="store_true",
         help="Print planned outputs and exit without generating audio.",
     )
     parser.add_argument(
         "--print-downloads",
+        dest="print_downloads",
         action="store_true",
-        help="Print commands to wait and download audio for this run (non-blocking only).",
+        default=True,
+        help="Print commands to wait and download audio for this run (default; non-blocking only).",
+    )
+    parser.add_argument(
+        "--no-print-downloads",
+        dest="print_downloads",
+        action="store_false",
+        help="Disable printing wait/download commands.",
     )
     args = parser.parse_args()
 
@@ -221,6 +257,7 @@ def main() -> int:
     brief_cfg = config.get("brief", {})
 
     request_logs: list[Path] = []
+    failures: list[str] = []
 
     for week_input in week_inputs:
         week_dir = find_week_dir(sources_root, week_input)
@@ -274,25 +311,31 @@ def main() -> int:
             weekly_sources_file.write_text("\n".join(str(p) for p in sources) + "\n", encoding="utf-8")
             for variant in language_variants:
                 output_path = apply_path_suffix(weekly_output, variant["suffix"])
-                run_generate(
-                    Path(sys.executable),
-                    generator_script,
-                    sources_file=weekly_sources_file,
-                    source_path=None,
-                    notebook_title=apply_suffix(
-                        f"Personlighedspsykologi {week_label} Alle kilder",
-                        variant["title_suffix"],
-                    ),
-                    instructions=ensure_prompt("weekly_overview", weekly_cfg.get("prompt", "")),
-                    audio_format=weekly_cfg.get("format", "deep-dive"),
-                    audio_length=weekly_cfg.get("length", "long"),
-                    language=variant["code"],
-                    output_path=output_path,
-                    wait=args.wait,
-                    skip_existing=args.skip_existing,
-                    source_timeout=args.source_timeout,
-                    generation_timeout=args.generation_timeout,
-                )
+                try:
+                    run_generate(
+                        Path(sys.executable),
+                        generator_script,
+                        sources_file=weekly_sources_file,
+                        source_path=None,
+                        notebook_title=apply_suffix(
+                            f"Personlighedspsykologi {week_label} Alle kilder",
+                            variant["title_suffix"],
+                        ),
+                        instructions=ensure_prompt("weekly_overview", weekly_cfg.get("prompt", "")),
+                        audio_format=weekly_cfg.get("format", "deep-dive"),
+                        audio_length=weekly_cfg.get("length", "long"),
+                        language=variant["code"],
+                        output_path=output_path,
+                        wait=args.wait,
+                        skip_existing=args.skip_existing,
+                        source_timeout=args.source_timeout,
+                        generation_timeout=args.generation_timeout,
+                        artifact_retries=args.artifact_retries,
+                        artifact_retry_backoff=args.artifact_retry_backoff,
+                    )
+                except Exception as exc:
+                    failures.append(f"{output_path}: {exc}")
+                    continue
                 request_logs.append(output_path.with_suffix(output_path.suffix + ".request.json"))
         else:
             print(f"Skipping weekly overview for {week_label} (missing readings).")
@@ -302,25 +345,31 @@ def main() -> int:
             per_output = week_output_dir / f"{week_label} - {base_name}.mp3"
             for variant in language_variants:
                 output_path = apply_path_suffix(per_output, variant["suffix"])
-                run_generate(
-                    Path(sys.executable),
-                    generator_script,
-                    sources_file=None,
-                    source_path=source,
-                    notebook_title=apply_suffix(
-                        f"Personlighedspsykologi {week_label} {base_name}",
-                        variant["title_suffix"],
-                    ),
-                    instructions=ensure_prompt("per_reading", per_cfg.get("prompt", "")),
-                    audio_format=per_cfg.get("format", "deep-dive"),
-                    audio_length=per_cfg.get("length", "default"),
-                    language=variant["code"],
-                    output_path=output_path,
-                    wait=args.wait,
-                    skip_existing=args.skip_existing,
-                    source_timeout=args.source_timeout,
-                    generation_timeout=args.generation_timeout,
-                )
+                try:
+                    run_generate(
+                        Path(sys.executable),
+                        generator_script,
+                        sources_file=None,
+                        source_path=source,
+                        notebook_title=apply_suffix(
+                            f"Personlighedspsykologi {week_label} {base_name}",
+                            variant["title_suffix"],
+                        ),
+                        instructions=ensure_prompt("per_reading", per_cfg.get("prompt", "")),
+                        audio_format=per_cfg.get("format", "deep-dive"),
+                        audio_length=per_cfg.get("length", "default"),
+                        language=variant["code"],
+                        output_path=output_path,
+                        wait=args.wait,
+                        skip_existing=args.skip_existing,
+                        source_timeout=args.source_timeout,
+                        generation_timeout=args.generation_timeout,
+                        artifact_retries=args.artifact_retries,
+                        artifact_retry_backoff=args.artifact_retry_backoff,
+                    )
+                except Exception as exc:
+                    failures.append(f"{output_path}: {exc}")
+                    continue
                 request_logs.append(output_path.with_suffix(output_path.suffix + ".request.json"))
 
             if "Grundbog kapitel" in source.name:
@@ -329,25 +378,31 @@ def main() -> int:
                 brief_output = week_output_dir / brief_name
                 for variant in language_variants:
                     output_path = apply_path_suffix(brief_output, variant["suffix"])
-                    run_generate(
-                        Path(sys.executable),
-                        generator_script,
-                        sources_file=None,
-                        source_path=source,
-                        notebook_title=apply_suffix(
-                            f"Personlighedspsykologi {week_label} [Brief] {base_name}",
-                            variant["title_suffix"],
-                        ),
-                        instructions=ensure_prompt("brief", brief_cfg.get("prompt", "")),
-                        audio_format=brief_cfg.get("format", "brief"),
-                        audio_length=None,
-                        language=variant["code"],
-                        output_path=output_path,
-                        wait=args.wait,
-                        skip_existing=args.skip_existing,
-                        source_timeout=args.source_timeout,
-                        generation_timeout=args.generation_timeout,
-                    )
+                    try:
+                        run_generate(
+                            Path(sys.executable),
+                            generator_script,
+                            sources_file=None,
+                            source_path=source,
+                            notebook_title=apply_suffix(
+                                f"Personlighedspsykologi {week_label} [Brief] {base_name}",
+                                variant["title_suffix"],
+                            ),
+                            instructions=ensure_prompt("brief", brief_cfg.get("prompt", "")),
+                            audio_format=brief_cfg.get("format", "brief"),
+                            audio_length=None,
+                            language=variant["code"],
+                            output_path=output_path,
+                            wait=args.wait,
+                            skip_existing=args.skip_existing,
+                            source_timeout=args.source_timeout,
+                            generation_timeout=args.generation_timeout,
+                            artifact_retries=args.artifact_retries,
+                            artifact_retry_backoff=args.artifact_retry_backoff,
+                        )
+                    except Exception as exc:
+                        failures.append(f"{output_path}: {exc}")
+                        continue
                     request_logs.append(output_path.with_suffix(output_path.suffix + ".request.json"))
 
     if args.print_downloads:
@@ -376,6 +431,12 @@ def main() -> int:
                 print(cmd)
         else:
             print("\nNo request logs found. Run without --wait to generate them.")
+
+    if failures:
+        print("\nFailures:")
+        for item in failures:
+            print(f"- {item}")
+        return 2
 
     return 0
 

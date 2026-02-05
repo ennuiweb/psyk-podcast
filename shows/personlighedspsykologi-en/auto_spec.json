@@ -1,0 +1,272 @@
+{
+  "year": 2026,
+  "week_reference_year": 2026,
+  "timezone": "Europe/Copenhagen",
+  "default_release": {
+    "weekday": 1,
+    "time": "08:00"
+  },
+  "increment_minutes": 120,
+  "rules": [
+    {
+      "iso_week": 6,
+      "course_week": 1,
+      "aliases": [
+        "w01",
+        "w1",
+        "week 1",
+        "week 01"
+      ],
+      "topic": "Introforelæsning og nøglebegreber i personlighedspsykologien"
+    },
+    {
+      "iso_week": 6,
+      "course_week": 2,
+      "aliases": [
+        "w02",
+        "w2",
+        "week 2",
+        "week 02"
+      ],
+      "topic": "Personality assessment",
+      "release": {
+        "weekday": 2,
+        "time": "10:00"
+      }
+    },
+    {
+      "iso_week": 7,
+      "course_week": 3,
+      "aliases": [
+        "w03",
+        "w3",
+        "week 3",
+        "week 03"
+      ],
+      "topic": "Personality traits, personality states, and personality dimensions"
+    },
+    {
+      "iso_week": 7,
+      "course_week": 4,
+      "aliases": [
+        "w04",
+        "w4",
+        "week 4",
+        "week 04"
+      ],
+      "topic": "Person-situation interplay - stability and change of individual differences",
+      "release": {
+        "weekday": 2,
+        "time": "10:00"
+      }
+    },
+    {
+      "iso_week": 8,
+      "course_week": 5,
+      "aliases": [
+        "w05",
+        "w5",
+        "week 5",
+        "week 05"
+      ],
+      "topic": "Culture, evolution, genetics, and personality"
+    },
+    {
+      "iso_week": 8,
+      "course_week": 6,
+      "aliases": [
+        "w06",
+        "w6",
+        "week 6",
+        "week 06"
+      ],
+      "topic": "Personlighedsfunktion og forstyrrelse",
+      "release": {
+        "weekday": 2,
+        "time": "10:00"
+      }
+    },
+    {
+      "iso_week": 9,
+      "course_week": 7,
+      "aliases": [
+        "w07",
+        "w7",
+        "week 7",
+        "week 07"
+      ],
+      "topic": "Psykoanalysens personlighedsbegreb"
+    },
+    {
+      "iso_week": 9,
+      "course_week": 8,
+      "aliases": [
+        "w08",
+        "w8",
+        "week 8",
+        "week 08"
+      ],
+      "topic": "Psykoanalytisk personlighedsstruktur",
+      "release": {
+        "weekday": 2,
+        "time": "10:00"
+      }
+    },
+    {
+      "iso_week": 10,
+      "course_week": 9,
+      "aliases": [
+        "w09",
+        "w9",
+        "week 9",
+        "week 09"
+      ],
+      "topic": "Empiri og metode i psykoanalysen"
+    },
+    {
+      "iso_week": 10,
+      "course_week": 10,
+      "aliases": [
+        "w10",
+        "week 10"
+      ],
+      "topic": "Psykoanalysens konstituering",
+      "release": {
+        "weekday": 2,
+        "time": "10:00"
+      }
+    },
+    {
+      "iso_week": 11,
+      "course_week": 11,
+      "aliases": [
+        "w11",
+        "week 11"
+      ],
+      "topic": "Fænomenologi"
+    },
+    {
+      "iso_week": 11,
+      "course_week": 12,
+      "aliases": [
+        "w12",
+        "week 12"
+      ],
+      "topic": "Eksistentiel personlighedspsykologi I (Funch)",
+      "release": {
+        "weekday": 2,
+        "time": "10:00"
+      }
+    },
+    {
+      "iso_week": 12,
+      "course_week": 13,
+      "aliases": [
+        "w13",
+        "week 13"
+      ],
+      "topic": "Eksistentiel personlighedspsykologi II (Bjerregaard-Nielsen)"
+    },
+    {
+      "iso_week": 12,
+      "course_week": 14,
+      "aliases": [
+        "w14",
+        "week 14"
+      ],
+      "topic": "Humanistisk psykologi",
+      "release": {
+        "weekday": 2,
+        "time": "10:00"
+      }
+    },
+    {
+      "iso_week": 13,
+      "course_week": 15,
+      "aliases": [
+        "w15",
+        "week 15"
+      ],
+      "topic": "Critical personalism"
+    },
+    {
+      "iso_week": 13,
+      "course_week": 16,
+      "aliases": [
+        "w16",
+        "week 16"
+      ],
+      "topic": "Critical psychology",
+      "release": {
+        "weekday": 2,
+        "time": "10:00"
+      }
+    },
+    {
+      "iso_week": 15,
+      "course_week": 17,
+      "aliases": [
+        "w17",
+        "week 17"
+      ],
+      "topic": "Kritisk psykologi",
+      "release": {
+        "weekday": 2,
+        "time": "10:00"
+      }
+    },
+    {
+      "iso_week": 16,
+      "course_week": 18,
+      "aliases": [
+        "w18",
+        "week 18"
+      ],
+      "topic": "Køn"
+    },
+    {
+      "iso_week": 16,
+      "course_week": 19,
+      "aliases": [
+        "w19",
+        "week 19"
+      ],
+      "topic": "Sociokulturelle teorier - socialkonstruktionisme og poststrukturalisme",
+      "release": {
+        "weekday": 2,
+        "time": "10:00"
+      }
+    },
+    {
+      "iso_week": 17,
+      "course_week": 20,
+      "aliases": [
+        "w20",
+        "week 20"
+      ],
+      "topic": "Poststrukturalisme, diskursiv psykologi og feministisk teori"
+    },
+    {
+      "iso_week": 17,
+      "course_week": 21,
+      "aliases": [
+        "w21",
+        "week 21"
+      ],
+      "topic": "Narrativitet, kultur og mening",
+      "release": {
+        "weekday": 2,
+        "time": "10:00"
+      }
+    },
+    {
+      "iso_week": 18,
+      "course_week": 22,
+      "aliases": [
+        "w22",
+        "week 22"
+      ],
+      "topic": "Sammenligning af teorier og subjektets historie og eksamen"
+    }
+  ]
+}

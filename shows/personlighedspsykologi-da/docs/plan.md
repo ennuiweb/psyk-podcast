@@ -102,6 +102,7 @@ Optional flags:
 - `--no-print-downloads` to disable printing.
 - `--source-timeout SECONDS` / `--generation-timeout SECONDS` to override timeouts.
 - `--artifact-retries N` / `--artifact-retry-backoff SECONDS` to retry artifact creation (default retries: 2).
+- `--sleep-between SECONDS` to pause between generation requests (default: 2).
 - `--dry-run` to print planned outputs and exit without generating audio.
 - `--print-downloads` to print `artifact wait` + `download audio` commands for this run (requires non-blocking mode).
 - `--output-profile-subdir` to nest outputs under a profile-based subdirectory (profile name or storage file stem).
@@ -109,7 +110,8 @@ Optional flags:
   - `--profile NAME` (uses `profiles.json` from `notebooklm-podcast-auto/` or `--profiles-file`)
   - `--profiles-file PATH` (custom profile map)
   - `--storage PATH` (explicit storage file; cannot be combined with `--profile`)
-- Auto-selection: if no profile is provided, `default` (or the only profile) from `profiles.json` is used automatically.
+- Auto-selection: if no profile is provided, `default` (or the only profile) from `profiles.json` is used automatically. If multiple profiles exist and no default is set, the first profile (or one matching the default storage path) is selected with a warning.
+- Rate-limit/auth rotation: by default, generation retries with the next available profile on rate-limit/auth errors. Disable with `--no-rotate-on-rate-limit`.
 
 ## Output placement
 - Weekly overview: `notebooklm-podcast-auto/personlighedspsykologi/output/W##/W## - Alle kilder.mp3`
@@ -135,13 +137,15 @@ Multiple weeks:
 ```
 
 Optional flags:
-- `--timeout SECONDS` / `--interval SECONDS` for wait polling.
+- `--timeout SECONDS` / `--interval SECONDS` for wait polling (defaults: 1800 / 15).
+- The downloader now checks artifact status before waiting, and will skip artifacts already marked failed.
 - `--dry-run` to print what would run.
 - `--output-profile-subdir` to read outputs from a profile-based subdirectory (requires `--profile` or `--storage`).
 - Auth resolution:
   - Uses per-log `auth.storage_path` when present.
   - Overrides: `--storage PATH` or `--profile NAME` (with `--profiles-file`).
   - If auth is missing or fails, automatically tries all profiles in `profiles.json`, then falls back to default `~/.notebooklm/storage_state.json`.
+  - If no request logs are found under the chosen output root, automatically searches legacy output roots.
 
 ## Validation checklist
 - Generate a single week with `--profile` and confirm `*.request.json` includes `auth.storage_path`.

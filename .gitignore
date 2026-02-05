@@ -18,6 +18,7 @@ podcast/__pycache__/
 
 # podcast artifacts
 rss.xml
+!shows/**/feeds/rss.xml
 
 # Apps Script local config
 apps-script/.clasp.json

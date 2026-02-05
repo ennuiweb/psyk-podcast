@@ -98,12 +98,18 @@ def _load_profiles(path: Path) -> dict[str, str]:
         )
 
     profiles: dict[str, str] = {}
+    base_dir = path.parent
     for name, value in raw.items():
         if not isinstance(name, str):
             continue
         if value is None:
             continue
-        profiles[name] = str(Path(str(value)).expanduser())
+        raw_path = Path(str(value)).expanduser()
+        if not raw_path.is_absolute():
+            raw_path = (base_dir / raw_path).resolve()
+        else:
+            raw_path = raw_path.resolve()
+        profiles[name] = str(raw_path)
 
     if not profiles:
         raise ValueError("Profiles file did not contain any valid profile entries.")
@@ -119,13 +125,34 @@ def _select_auto_profile(args: argparse.Namespace) -> tuple[str | None, Path | N
         profiles_path = _find_profiles_path()
         if not profiles_path:
             return None, None, None
-    profiles = _load_profiles(profiles_path)
+    try:
+        profiles = _load_profiles(profiles_path)
+    except ValueError as exc:
+        print(f"Warning: {exc}. Falling back to default storage.")
+        return None, None, None
     if "default" in profiles:
         return "default", profiles_path, profiles
     if len(profiles) == 1:
         name = next(iter(profiles))
         return name, profiles_path, profiles
-    return None, profiles_path, profiles
+
+    default_storage = get_storage_path().resolve()
+    matches = [name for name, path in profiles.items() if Path(path).resolve() == default_storage]
+    if len(matches) == 1:
+        print(
+            "Warning: multiple profiles found; "
+            f"auto-selecting '{matches[0]}' (matches default storage path)."
+        )
+        return matches[0], profiles_path, profiles
+
+    if profiles:
+        name = sorted(profiles)[0]
+        print(
+            "Warning: multiple profiles found and no default set; "
+            f"auto-selecting '{name}'. Consider adding a 'default' entry to profiles.json."
+        )
+        return name, profiles_path, profiles
+    return None, None, None
 
 
 def _resolve_auth(args: argparse.Namespace) -> tuple[str | None, dict]:
@@ -169,6 +196,140 @@ def _resolve_auth(args: argparse.Namespace) -> tuple[str | None, dict]:
     auth_meta["storage_path"] = str(get_storage_path())
     auth_meta["source"] = "default"
     return auth_meta["storage_path"], auth_meta
+
+
+def _is_rate_limit_error(exc: Exception) -> bool:
+    message = str(exc).lower()
+    return any(
+        token in message
+        for token in (
+            "rate limit",
+            "quota exceeded",
+            "resource_exhausted",
+            "429",
+        )
+    )
+
+
+def _is_auth_error(exc: Exception) -> bool:
+    message = str(exc).lower()
+    return any(
+        token in message
+        for token in (
+            "authentication expired",
+            "auth expired",
+            "auth invalid",
+            "invalid authentication",
+            "not logged in",
+            "run 'notebooklm login'",
+            "redirected to",
+        )
+    )
+
+
+def _order_profile_names(profiles: dict[str, str], preferred: str | None) -> list[str]:
+    ordered: list[str] = []
+    if preferred and preferred in profiles:
+        ordered.append(preferred)
+    if not preferred and "default" in profiles:
+        ordered.append("default")
+    for name in sorted(profiles):
+        if name not in ordered:
+            ordered.append(name)
+    return ordered
+
+
+def _build_auth_candidates(args: argparse.Namespace) -> list[tuple[str | None, dict]]:
+    if args.storage and args.profile:
+        raise ValueError("Use either --storage or --profile, not both.")
+
+    if args.storage:
+        storage_path = str(Path(args.storage).expanduser().resolve())
+        return [
+            (
+                storage_path,
+                {
+                    "profile": None,
+                    "profiles_file": None,
+                    "storage_path": storage_path,
+                    "source": "storage_arg",
+                },
+            )
+        ]
+
+    profiles_path: Path | None = None
+    profiles: dict[str, str] | None = None
+    preferred: str | None = None
+
+    if args.profile:
+        profiles_path = _resolve_profiles_path(args)
+        profiles = _load_profiles(profiles_path)
+        if args.profile not in profiles:
+            raise ValueError(
+                f"Profile '{args.profile}' not found in {profiles_path}. "
+                f"Available: {', '.join(sorted(profiles))}"
+            )
+        preferred = args.profile
+    else:
+        auto_profile, auto_profiles_path, auto_profiles = _select_auto_profile(args)
+        if auto_profiles_path and auto_profiles:
+            profiles_path = auto_profiles_path
+            profiles = auto_profiles
+            preferred = auto_profile
+
+    if not profiles:
+        if os.environ.get("NOTEBOOKLM_AUTH_JSON"):
+            return [
+                (
+                    None,
+                    {
+                        "profile": None,
+                        "profiles_file": None,
+                        "storage_path": None,
+                        "source": "env",
+                    },
+                )
+            ]
+        storage_path = str(get_storage_path())
+        return [
+            (
+                storage_path,
+                {
+                    "profile": None,
+                    "profiles_file": None,
+                    "storage_path": storage_path,
+                    "source": "default",
+                },
+            )
+        ]
+
+    if args.rotate_on_rate_limit:
+        names = _order_profile_names(profiles, preferred)
+    else:
+        if preferred:
+            names = [preferred]
+        else:
+            names = [sorted(profiles)[0]]
+
+    candidates: list[tuple[str | None, dict]] = []
+    for idx, name in enumerate(names):
+        storage_path = str(Path(profiles[name]).expanduser().resolve())
+        if args.profile:
+            source = "profile" if idx == 0 else "profile-rotation"
+        else:
+            source = "auto-profile" if idx == 0 else "profile-rotation"
+        candidates.append(
+            (
+                storage_path,
+                {
+                    "profile": name,
+                    "profiles_file": str(profiles_path) if profiles_path else None,
+                    "storage_path": storage_path,
+                    "source": source,
+                },
+            )
+        )
+    return candidates
 
 
 def _auth_label_from_meta(auth_meta: dict | None) -> str | None:
@@ -222,6 +383,33 @@ def _ensure_unique_output_path(output_path: Path, auth_meta: dict) -> Path:
         if _auth_label_from_meta(_load_request_auth(candidate)) == label:
             return candidate
         counter += 1
+
+
+def _build_request_payload(
+    *,
+    created_at: str,
+    notebook_id: str,
+    notebook_title: str,
+    artifact_id: str | None,
+    output_path: Path,
+    args: argparse.Namespace,
+    sources: list[dict],
+    auth_meta: dict,
+) -> dict:
+    return {
+        "created_at": created_at,
+        "notebook_id": notebook_id,
+        "notebook_title": notebook_title,
+        "artifact_id": artifact_id,
+        "output_path": str(output_path),
+        "instructions": args.instructions,
+        "audio_format": args.audio_format,
+        "audio_length": args.audio_length,
+        "language": args.language,
+        "sources": sources,
+        "sources_file": args.sources_file,
+        "auth": auth_meta,
+    }
 
 
 def _print_profiles(args: argparse.Namespace) -> None:
@@ -464,19 +652,12 @@ async def _generate_audio_with_retry(
 
 
 async def _generate_podcast(args: argparse.Namespace) -> int:
-    output_path = Path(args.output).expanduser()
-    storage_path, auth_meta = _resolve_auth(args)
-    output_path = _ensure_unique_output_path(output_path, auth_meta)
-    if args.skip_existing and output_path.exists() and output_path.stat().st_size > 0:
-        print(f"Skipping existing output: {output_path}")
-        return 0
-
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-
+    base_output_path = Path(args.output).expanduser()
     sources = _load_sources(args.source, args.sources_file)
     if not sources:
         raise ValueError("Provide at least one source via --source or --sources-file")
 
+<<<<<<< HEAD
     async with await NotebookLMClient.from_storage(storage_path) as client:
         nb = await _resolve_notebook(client, args.notebook_title, args.reuse_notebook)
                 await _add_sources(
@@ -495,38 +676,91 @@ async def _generate_podcast(args: argparse.Namespace) -> int:
                     )
 
                 print("Generating audio overview...")
+=======
+    candidates = _build_auth_candidates(args)
+    rotation_attempts: list[dict] = []
+    last_exc: Exception | None = None
+    last_output_path: Path | None = None
+    last_auth_meta: dict | None = None
+
+    for idx, (storage_path, auth_meta) in enumerate(candidates, start=1):
+        output_path = _ensure_unique_output_path(base_output_path, auth_meta)
+        last_output_path = output_path
+        last_auth_meta = auth_meta
+        if args.skip_existing and output_path.exists() and output_path.stat().st_size > 0:
+            print(f"Skipping existing output: {output_path}")
+            return 0
+
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+
+        label = _auth_label_from_meta(auth_meta)
+        if len(candidates) > 1:
+            prefix = f"[{idx}/{len(candidates)}]"
+            if label:
+                print(f"{prefix} Using profile: {label}")
+            else:
+                print(f"{prefix} Using auth source: {auth_meta.get('source')}")
+
+>>>>>>> c8a3668 (updates)
         try:
-            status = await _generate_audio_with_retry(
-                client,
-                nb.id,
-                instructions=args.instructions,
-                audio_format=_audio_format(args.audio_format),
-                audio_length=_audio_length(args.audio_length),
-                language=args.language,
-                retries=args.artifact_retries,
-                backoff=args.artifact_retry_backoff,
-            )
-        except Exception as exc:
-            error_log = output_path.with_suffix(output_path.suffix + ".request.error.json")
-            error_log.write_text(
-                json.dumps(
-                    {
-                        "created_at": datetime.now(timezone.utc).isoformat(),
-                        "notebook_id": nb.id,
-                        "notebook_title": nb.title,
-                        "output_path": str(output_path),
-                        "error": str(exc),
-                        "instructions": args.instructions,
-                        "audio_format": args.audio_format,
-                        "audio_length": args.audio_length,
-                        "language": args.language,
-                        "sources": sources,
-                        "sources_file": args.sources_file,
-                        "auth": auth_meta,
-                    },
-                    indent=2,
+            async with await NotebookLMClient.from_storage(storage_path) as client:
+                nb = await _resolve_notebook(client, args.notebook_title, args.reuse_notebook)
+                await _add_sources(
+                    client,
+                    nb.id,
+                    sources,
+                    args.source_timeout,
+                    skip_existing=args.reuse_notebook,
                 )
-                + "\n",
+
+                print("Generating audio overview...")
+                status = await _generate_audio_with_retry(
+                    client,
+                    nb.id,
+                    instructions=args.instructions,
+                    audio_format=_audio_format(args.audio_format),
+                    audio_length=_audio_length(args.audio_length),
+                    language=args.language,
+                    retries=args.artifact_retries,
+                    backoff=args.artifact_retry_backoff,
+                )
+        except Exception as exc:
+            last_exc = exc
+            retryable = args.rotate_on_rate_limit and (
+                _is_rate_limit_error(exc) or _is_auth_error(exc)
+            )
+            if retryable and idx < len(candidates):
+                rotation_attempts.append(
+                    {
+                        "profile": auth_meta.get("profile"),
+                        "storage_path": auth_meta.get("storage_path"),
+                        "source": auth_meta.get("source"),
+                        "error": str(exc),
+                    }
+                )
+                reason = "rate limit" if _is_rate_limit_error(exc) else "auth"
+                print(
+                    f"Generation failed due to {reason} on "
+                    f"{label or auth_meta.get('source')}; trying next profile."
+                )
+                continue
+
+            error_log = output_path.with_suffix(output_path.suffix + ".request.error.json")
+            payload = _build_request_payload(
+                created_at=datetime.now(timezone.utc).isoformat(),
+                notebook_id=nb.id if "nb" in locals() else "",
+                notebook_title=nb.title if "nb" in locals() else "",
+                artifact_id=None,
+                output_path=output_path,
+                args=args,
+                sources=sources,
+                auth_meta=auth_meta,
+            )
+            if rotation_attempts:
+                payload["rotation_attempts"] = rotation_attempts
+            payload["error"] = str(exc)
+            error_log.write_text(
+                json.dumps(payload, indent=2) + "\n",
                 encoding="utf-8",
             )
             print(f"Generation failed: {exc}")
@@ -547,20 +781,16 @@ async def _generate_podcast(args: argparse.Namespace) -> int:
             request_log = output_path.with_suffix(output_path.suffix + ".request.json")
             request_log.write_text(
                 json.dumps(
-                    {
-                        "created_at": datetime.now(timezone.utc).isoformat(),
-                        "notebook_id": nb.id,
-                        "notebook_title": nb.title,
-                        "artifact_id": status.task_id,
-                        "output_path": str(output_path),
-                        "instructions": args.instructions,
-                        "audio_format": args.audio_format,
-                        "audio_length": args.audio_length,
-                        "language": args.language,
-                        "sources": sources,
-                        "sources_file": args.sources_file,
-                        "auth": auth_meta,
-                    },
+                    _build_request_payload(
+                        created_at=datetime.now(timezone.utc).isoformat(),
+                        notebook_id=nb.id,
+                        notebook_title=nb.title,
+                        artifact_id=status.task_id,
+                        output_path=output_path,
+                        args=args,
+                        sources=sources,
+                        auth_meta=auth_meta,
+                    ),
                     indent=2,
                 )
                 + "\n",
@@ -585,8 +815,54 @@ async def _generate_podcast(args: argparse.Namespace) -> int:
             artifact_id=final.task_id,
         )
 
-    print(f"Podcast saved to: {output_path}")
-    return 0
+        request_log = output_path.with_suffix(output_path.suffix + ".request.json")
+        request_log.write_text(
+            json.dumps(
+                _build_request_payload(
+                    created_at=datetime.now(timezone.utc).isoformat(),
+                    notebook_id=nb.id,
+                    notebook_title=nb.title,
+                    artifact_id=final.task_id,
+                    output_path=output_path,
+                    args=args,
+                    sources=sources,
+                    auth_meta=auth_meta,
+                ),
+                indent=2,
+            )
+            + "\n",
+            encoding="utf-8",
+        )
+
+        print(f"Podcast saved to: {output_path}")
+        return 0
+
+    if last_exc and last_output_path and last_auth_meta:
+        error_log = last_output_path.with_suffix(
+            last_output_path.suffix + ".request.error.json"
+        )
+        payload = _build_request_payload(
+            created_at=datetime.now(timezone.utc).isoformat(),
+            notebook_id="",
+            notebook_title="",
+            artifact_id=None,
+            output_path=last_output_path,
+            args=args,
+            sources=sources,
+            auth_meta=last_auth_meta,
+        )
+        if rotation_attempts:
+            payload["rotation_attempts"] = rotation_attempts
+        payload["error"] = str(last_exc)
+        error_log.write_text(
+            json.dumps(payload, indent=2) + "\n",
+            encoding="utf-8",
+        )
+        print(f"Generation failed: {last_exc}")
+        print(f"Wrote error log: {error_log}")
+        return 2
+
+    return 2
 
 
 def main() -> int:
@@ -660,6 +936,13 @@ def main() -> int:
         "--profiles-file",
         help="Path to profiles.json (default: ./profiles.json or script directory).",
     )
+    parser.add_argument(
+        "--no-rotate-on-rate-limit",
+        dest="rotate_on_rate_limit",
+        action="store_false",
+        help="Disable rotating profiles on rate-limit/auth errors.",
+    )
+    parser.set_defaults(rotate_on_rate_limit=True)
     parser.add_argument(
         "--list-profiles",
         action="store_true",

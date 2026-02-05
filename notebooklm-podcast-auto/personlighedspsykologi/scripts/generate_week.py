@@ -3,9 +3,11 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 import subprocess
 import sys
+import time
 from pathlib import Path
 import shlex
 
@@ -106,6 +108,11 @@ def apply_profile_subdir(output_root: Path, slug: str | None, enabled: bool) -> 
     return output_root / (safe_slug or slug)
 
 
+def maybe_sleep(seconds: float | None) -> None:
+    if seconds and seconds > 0:
+        time.sleep(seconds)
+
+
 def find_profiles_path(repo_root: Path, profiles_file: str | None) -> Path | None:
     if profiles_file:
         path = Path(profiles_file).expanduser()
@@ -120,6 +127,13 @@ def find_profiles_path(repo_root: Path, profiles_file: str | None) -> Path | Non
     return None
 
 
+def default_storage_path() -> Path:
+    home_override = os.environ.get("NOTEBOOKLM_HOME")
+    if home_override:
+        return (Path(home_override).expanduser() / "storage_state.json").resolve()
+    return (Path.home() / ".notebooklm" / "storage_state.json").resolve()
+
+
 def load_profiles(path: Path) -> dict[str, str]:
     raw = read_json(path)
     if isinstance(raw, dict) and isinstance(raw.get("profiles"), dict):
@@ -127,12 +141,18 @@ def load_profiles(path: Path) -> dict[str, str]:
     if not isinstance(raw, dict):
         return {}
     profiles: dict[str, str] = {}
+    base_dir = path.parent
     for name, value in raw.items():
         if not isinstance(name, str):
             continue
         if value is None:
             continue
-        profiles[name] = str(Path(str(value)).expanduser())
+        raw_path = Path(str(value)).expanduser()
+        if not raw_path.is_absolute():
+            raw_path = (base_dir / raw_path).resolve()
+        else:
+            raw_path = raw_path.resolve()
+        profiles[name] = str(raw_path)
     return profiles
 
 
@@ -151,7 +171,20 @@ def auto_profile_from_profiles(
         return "default", profiles_path
     if len(profiles) == 1:
         return next(iter(profiles)), profiles_path
-    return None, profiles_path
+    default_path = default_storage_path()
+    matches = [name for name, path in profiles.items() if Path(path).resolve() == default_path]
+    if len(matches) == 1:
+        print(
+            "Warning: multiple profiles found; "
+            f"auto-selecting '{matches[0]}' (matches default storage path)."
+        )
+        return matches[0], profiles_path
+    name = sorted(profiles)[0]
+    print(
+        "Warning: multiple profiles found and no default set; "
+        f"auto-selecting '{name}'. Consider adding a 'default' entry to profiles.json."
+    )
+    return name, profiles_path
 
 def load_request_auth(output_path: Path) -> dict | None:
     log_path = output_path.with_suffix(output_path.suffix + ".request.json")
@@ -225,7 +258,10 @@ def run_generate(
     profile: str | None,
     profiles_file: str | None,
     rotate_on_rate_limit: bool,
+<<<<<<< HEAD
     ensure_sources_ready: bool,
+=======
+>>>>>>> c8a3668 (updates)
 ) -> None:
     cmd = [
         str(python),
@@ -268,8 +304,11 @@ def run_generate(
         cmd.extend(["--profiles-file", profiles_file])
     if not rotate_on_rate_limit:
         cmd.append("--no-rotate-on-rate-limit")
+<<<<<<< HEAD
     if not ensure_sources_ready:
         cmd.append("--no-ensure-sources-ready")
+=======
+>>>>>>> c8a3668 (updates)
     result = subprocess.run(cmd, check=False)
     if result.returncode != 0:
         raise RuntimeError(f"Generator failed with exit code {result.returncode}")
@@ -358,6 +397,13 @@ def main() -> int:
         help="Path to profiles.json (passed through).",
     )
     parser.add_argument(
+        "--no-rotate-on-rate-limit",
+        dest="rotate_on_rate_limit",
+        action="store_false",
+        help="Disable rotating profiles on rate-limit/auth errors.",
+    )
+    parser.set_defaults(rotate_on_rate_limit=True)
+    parser.add_argument(
         "--artifact-retries",
         type=int,
         default=2,
@@ -368,6 +414,12 @@ def main() -> int:
         type=float,
         default=5.0,
         help="Base backoff for artifact retries (passed through).",
+    )
+    parser.add_argument(
+        "--sleep-between",
+        type=float,
+        default=2.0,
+        help="Seconds to sleep between generation requests (default: 2).",
     )
     parser.add_argument(
         "--dry-run",
@@ -511,10 +563,14 @@ def main() -> int:
                         storage=args.storage,
                         profile=profile_for_run,
                         profiles_file=profiles_file_for_run,
+                        rotate_on_rate_limit=args.rotate_on_rate_limit,
+                        ensure_sources_ready=args.ensure_sources_ready,
                     )
                 except Exception as exc:
                     failures.append(f"{output_path}: {exc}")
                     continue
+                finally:
+                    maybe_sleep(args.sleep_between)
                 request_logs.append(output_path.with_suffix(output_path.suffix + ".request.json"))
         else:
             print(f"Skipping weekly overview for {week_label} (missing readings).")
@@ -551,10 +607,14 @@ def main() -> int:
                         storage=args.storage,
                         profile=profile_for_run,
                         profiles_file=profiles_file_for_run,
+                        rotate_on_rate_limit=args.rotate_on_rate_limit,
+                        ensure_sources_ready=args.ensure_sources_ready,
                     )
                 except Exception as exc:
                     failures.append(f"{output_path}: {exc}")
                     continue
+                finally:
+                    maybe_sleep(args.sleep_between)
                 request_logs.append(output_path.with_suffix(output_path.suffix + ".request.json"))
 
             if "Grundbog kapitel" in source.name:
@@ -590,10 +650,14 @@ def main() -> int:
                             storage=args.storage,
                             profile=profile_for_run,
                             profiles_file=profiles_file_for_run,
+                            rotate_on_rate_limit=args.rotate_on_rate_limit,
+                            ensure_sources_ready=args.ensure_sources_ready,
                         )
                     except Exception as exc:
                         failures.append(f"{output_path}: {exc}")
                         continue
+                    finally:
+                        maybe_sleep(args.sleep_between)
                     request_logs.append(output_path.with_suffix(output_path.suffix + ".request.json"))
 
     if args.print_downloads:

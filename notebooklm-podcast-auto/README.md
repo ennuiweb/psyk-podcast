@@ -69,7 +69,9 @@ python3 generate_podcast.py \
 ## Notes
 
 - Auth data is stored under `~/.notebooklm/` unless you pass `--storage`.
-- If generation fails due to rate limits, wait a few minutes and re-run.
+- By default, generation rotates across profiles on rate-limit/auth errors. Disable with `--no-rotate-on-rate-limit`.
+- If all profiles are rate-limited, wait a few minutes and re-run.
+- Generation waits for sources to appear and become ready before starting. Disable with `--no-ensure-sources-ready`.
 
 ## Profiles
 
@@ -78,6 +80,7 @@ Create a `profiles.json` that maps profile names to storage files (a starter is 
 By default, the script looks for `profiles.json` in the current directory, then next to `generate_podcast.py`.
 Use `--profiles-file` to point to a custom location.
 If the `profiles.json` contains `default` (or only one profile), it will be auto-selected when no profile is passed.
+If multiple profiles exist and no default is set, the first profile (or one matching the default storage path) is selected with a warning.
 
 Example `profiles.json` (see `profiles.json.example`):
 
@@ -104,6 +107,7 @@ python3 generate_podcast.py --profiles-file /path/to/profiles.json --list-profil
 
 Notes:
 - `--storage` takes precedence and cannot be combined with `--profile`.
+- Rotation runs through available profiles (default first). Use `--no-rotate-on-rate-limit` to keep a single profile.
 
 ## Non-Blocking Flow
 
@@ -122,7 +126,7 @@ Polling options:
 - `--initial-interval SECONDS` (preferred)
 - `--poll-interval` is deprecated (kept for compatibility)
 
-The non-blocking run writes a request log next to the output:
+Each run writes a request log next to the output:
 `output/podcast.mp3.request.json` with `notebook_id`, `artifact_id`, and resolved auth metadata (`auth`).
 Failed runs write `output/podcast.mp3.request.error.json`.
 

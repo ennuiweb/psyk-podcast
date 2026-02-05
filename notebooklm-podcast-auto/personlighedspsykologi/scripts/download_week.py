@@ -22,12 +22,21 @@ def parse_weeks(week: str | None, weeks: str | None) -> list[str]:
     return items
 
 
-def find_week_dir(root: Path, week: str) -> Path:
-    week = week.upper()
-    candidates = [p for p in root.iterdir() if p.is_dir() and p.name.upper() == week]
-    if not candidates:
-        raise SystemExit(f"No output folder found for {week} under {root}")
-    return candidates[0]
+def find_week_dirs(root: Path, week: str) -> list[Path]:
+    week_upper = week.upper()
+    if not root.exists():
+        return []
+    candidates: list[Path] = []
+    for entry in root.iterdir():
+        if not entry.is_dir():
+            continue
+        if entry.name.upper() == week_upper:
+            candidates.append(entry)
+            continue
+        for child in entry.iterdir():
+            if child.is_dir() and child.name.upper() == week_upper:
+                candidates.append(child)
+    return candidates
 
 
 def default_profiles_paths(repo_root: Path) -> list[Path]:
@@ -51,7 +60,11 @@ def resolve_profiles_path(repo_root: Path, profiles_file: str | None) -> Path | 
 
 
 def load_profiles(path: Path) -> dict[str, str]:
-    raw = json.loads(path.read_text(encoding="utf-8"))
+    try:
+        raw = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        print(f"Warning: invalid profiles file {path}: {exc}")
+        return {}
     if isinstance(raw, dict) and isinstance(raw.get("profiles"), dict):
         raw = raw["profiles"]
     if not isinstance(raw, dict):
@@ -61,12 +74,18 @@ def load_profiles(path: Path) -> dict[str, str]:
         )
 
     profiles: dict[str, str] = {}
+    base_dir = path.parent
     for name, value in raw.items():
         if not isinstance(name, str):
             continue
         if value is None:
             continue
-        profiles[name] = str(Path(str(value)).expanduser())
+        raw_path = Path(str(value)).expanduser()
+        if not raw_path.is_absolute():
+            raw_path = (base_dir / raw_path).resolve()
+        else:
+            raw_path = raw_path.resolve()
+        profiles[name] = str(raw_path)
 
     if not profiles:
         raise SystemExit("Profiles file did not contain any valid profile entries.")
@@ -211,7 +230,49 @@ def build_cli_cmd(notebooklm: Path, storage_path: str | None, args: list[str]) -
 
 def is_auth_error(output: str) -> bool:
     lowered = output.lower()
-    return "received html instead of media file" in lowered or "authentication may have expired" in lowered
+    return "authentication expired" in lowered or "received html instead of media file" in lowered
+
+
+def is_timeout_error(output: str) -> bool:
+    lowered = output.lower()
+    return "timeout" in lowered or "timed out" in lowered
+
+
+def parse_artifact_list(output: str) -> dict[str, dict]:
+    try:
+        payload = json.loads(output)
+    except json.JSONDecodeError:
+        return {}
+    items = payload.get("artifacts") if isinstance(payload, dict) else None
+    if not isinstance(items, list):
+        return {}
+    by_id: dict[str, dict] = {}
+    for item in items:
+        if isinstance(item, dict) and item.get("id"):
+            by_id[str(item["id"])] = item
+    return by_id
+
+
+def fetch_artifact_status(
+    notebooklm: Path,
+    storage_path: str | None,
+    notebook_id: str,
+    artifact_id: str,
+) -> tuple[bool, str | None]:
+    cmd = build_cli_cmd(
+        notebooklm,
+        storage_path,
+        ["artifact", "list", "-n", notebook_id, "--json"],
+    )
+    ok, output = run_cmd(cmd)
+    if not ok:
+        return False, None
+    artifacts = parse_artifact_list(output)
+    item = artifacts.get(artifact_id)
+    if not item:
+        return True, None
+    status = item.get("status") or item.get("state")
+    return True, str(status) if status is not None else None
 
 
 def wait_and_download(
@@ -302,8 +363,18 @@ def main() -> int:
         "--profiles-file",
         help="Path to profiles.json (used with --profile).",
     )
-    parser.add_argument("--timeout", type=int, help="Seconds to wait for completion.")
-    parser.add_argument("--interval", type=int, help="Polling interval in seconds.")
+    parser.add_argument(
+        "--timeout",
+        type=int,
+        default=1800,
+        help="Seconds to wait for completion (default: 1800).",
+    )
+    parser.add_argument(
+        "--interval",
+        type=int,
+        default=15,
+        help="Polling interval in seconds (default: 15).",
+    )
     parser.add_argument(
         "--dry-run",
         action="store_true",
@@ -321,21 +392,43 @@ def main() -> int:
     notebooklm = repo_root / args.notebooklm
 
     week_inputs = parse_weeks(args.week, args.weeks)
+    extra_roots = [
+        repo_root / "notebooklm-podcast-auto" / "personlighedspsykologi" / "output",
+        repo_root / "shows" / "personlighedspsykologi" / "output",
+    ]
+    roots = []
+    seen_roots: set[Path] = set()
+    for root in [output_root, *extra_roots]:
+        if root not in seen_roots:
+            seen_roots.add(root)
+            roots.append(root)
 
     for week_input in week_inputs:
-        week_dir = find_week_dir(output_root, week_input)
-        request_logs = sorted(week_dir.glob("*.request.json"))
-        error_logs = sorted(week_dir.glob("*.request.error.json"))
-        if not request_logs:
-            if error_logs:
-                print(f"No request logs found in {week_dir} (found error logs).")
-                for log_path in error_logs:
-                    print(f"- {log_path.name}")
-            else:
-                print(f"No request logs found in {week_dir}")
+        week_dirs: list[Path] = []
+        for root in roots:
+            week_dirs.extend(find_week_dirs(root, week_input))
+        if not week_dirs:
+            print(f"No output folder found for {week_input} under: {', '.join(str(r) for r in roots)}")
             continue
 
-        print(f"## {week_dir.name}")
+        request_logs_set: set[Path] = set()
+        error_logs_set: set[Path] = set()
+        for week_dir in week_dirs:
+            request_logs_set.update(week_dir.glob("*.request.json"))
+            error_logs_set.update(week_dir.glob("*.request.error.json"))
+        request_logs = sorted(request_logs_set)
+        error_logs = sorted(error_logs_set)
+
+        if not request_logs:
+            if error_logs:
+                print(f"No request logs found for {week_input} (found error logs).")
+                for log_path in error_logs:
+                    print(f"- {log_path}")
+            else:
+                print(f"No request logs found for {week_input}")
+            continue
+
+        print(f"## {week_input.upper()}")
         for log_path in request_logs:
             payload = json.loads(log_path.read_text(encoding="utf-8"))
             notebook_id = payload.get("notebook_id")
@@ -369,6 +462,24 @@ def main() -> int:
                 if storage_path and not Path(storage_path).expanduser().exists():
                     print(f"Warning: storage file not found: {storage_path}")
                     continue
+                print(
+                    f"Waiting for {artifact_id} (notebook {notebook_id}) "
+                    f"using {auth_source}..."
+                )
+                status_ok, status = fetch_artifact_status(
+                    notebooklm,
+                    storage_path,
+                    notebook_id,
+                    artifact_id,
+                )
+                if status_ok and status is None:
+                    print("Warning: artifact not found in list; proceeding to wait anyway.")
+                if status_ok and status is not None:
+                    print(f"Artifact status before wait: {status}")
+                    if status.upper() in {"FAILED", "ERROR"}:
+                        print("Artifact already failed; skipping download.")
+                        success = True
+                        break
                 ok, reason = wait_and_download(
                     notebooklm,
                     artifact_id,
@@ -380,6 +491,9 @@ def main() -> int:
                 )
                 if ok:
                     success = True
+                    break
+                if reason == "wait":
+                    print("Wait failed; skipping remaining auth candidates for this artifact.")
                     break
                 if reason != "auth":
                     break

@@ -111,8 +111,9 @@ Optional flags:
   - `--profiles-file PATH` (custom profile map)
   - `--storage PATH` (explicit storage file; cannot be combined with `--profile`)
 - Auto-selection: if no profile is provided, `default` (or the only profile) from `profiles.json` is used automatically. If multiple profiles exist and no default is set, the first profile (or one matching the default storage path) is selected with a warning.
-- Rate-limit/auth rotation: by default, generation retries with the next available profile on rate-limit/auth errors. Disable with `--no-rotate-on-rate-limit`.
+- Rate-limit/auth rotation: by default, generation retries with the next available profile on rate-limit/auth errors (auto-profile only). Disable with `--no-rotate-on-rate-limit`.
 - Source readiness: generation waits for sources to appear and become ready before creating artifacts. Disable with `--no-ensure-sources-ready`.
+- Notebook titles: when rotating, profile labels are appended to notebook titles. Disable with `--no-append-profile-to-notebook-title`.
 
 ## Output placement
 - Weekly overview: `notebooklm-podcast-auto/personlighedspsykologi/output/W##/W## - Alle kilder.mp3`

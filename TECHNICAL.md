@@ -179,6 +179,8 @@ The workflow (`.github/workflows/generate-feed.yml`) runs on a daily cron and on
 - probe for Drive videos that need transcoding, run `transcode_drive_media.py` when required, and then execute `gdrive_podcast_feed.py` for that show;
 - commit `shows/<show>/feeds/rss.xml` back to the default branch whenever it changes.
 
+The repository ignores stray `rss.xml` files, but `shows/**/feeds/rss.xml` are explicitly tracked so new shows can publish their feeds.
+
 You can either bake Drive folder IDs directly into each `config.github.json` or supply encrypted secrets (for example `DRIVE_FOLDER_ID_SOCIAL_PSYCHOLOGY`). The workflow will prefer show-specific secrets, fall back to a shared `DRIVE_FOLDER_ID`, and finally use the value from the config file when no secret is present.
 
 Ensure the default branch has permissions for GitHub Actions to push (`Repository Settings → Actions → General → Workflow permissions → Read and write`).

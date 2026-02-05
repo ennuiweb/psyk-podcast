@@ -152,6 +152,46 @@ async def _add_sources(
             raise ValueError(f"Unknown source kind: {kind}")
 
 
+async def _generate_audio_with_retry(
+    client: NotebookLMClient,
+    notebook_id: str,
+    *,
+    instructions: str,
+    audio_format: AudioFormat,
+    audio_length: AudioLength,
+    language: str,
+    retries: int,
+    backoff: float,
+):
+    last_exc: Exception | None = None
+    for attempt in range(retries + 1):
+        try:
+            status = await client.artifacts.generate_audio(
+                notebook_id,
+                instructions=instructions,
+                audio_format=audio_format,
+                audio_length=audio_length,
+                language=language,
+            )
+            if not status.task_id:
+                if getattr(status, "error", None):
+                    raise RuntimeError(status.error)
+                raise RuntimeError("No artifact id returned from generate_audio")
+            return status
+        except Exception as exc:
+            last_exc = exc
+            if attempt >= retries:
+                break
+            delay = backoff * (2**attempt)
+            print(
+                f"Generate audio failed (attempt {attempt + 1}/{retries + 1}): {exc}. "
+                f"Retrying in {delay:.1f}s"
+            )
+            await asyncio.sleep(delay)
+
+    raise last_exc or RuntimeError("generate_audio failed")
+
+
 async def _generate_podcast(args: argparse.Namespace) -> int:
     output_path = Path(args.output).expanduser()
     if args.skip_existing and output_path.exists() and output_path.stat().st_size > 0:
@@ -175,13 +215,42 @@ async def _generate_podcast(args: argparse.Namespace) -> int:
         )
 
         print("Generating audio overview...")
-        status = await client.artifacts.generate_audio(
-            nb.id,
-            instructions=args.instructions,
-            audio_format=_audio_format(args.audio_format),
-            audio_length=_audio_length(args.audio_length),
-            language=args.language,
-        )
+        try:
+            status = await _generate_audio_with_retry(
+                client,
+                nb.id,
+                instructions=args.instructions,
+                audio_format=_audio_format(args.audio_format),
+                audio_length=_audio_length(args.audio_length),
+                language=args.language,
+                retries=args.artifact_retries,
+                backoff=args.artifact_retry_backoff,
+            )
+        except Exception as exc:
+            error_log = output_path.with_suffix(output_path.suffix + ".request.error.json")
+            error_log.write_text(
+                json.dumps(
+                    {
+                        "created_at": datetime.now(timezone.utc).isoformat(),
+                        "notebook_id": nb.id,
+                        "notebook_title": nb.title,
+                        "output_path": str(output_path),
+                        "error": str(exc),
+                        "instructions": args.instructions,
+                        "audio_format": args.audio_format,
+                        "audio_length": args.audio_length,
+                        "language": args.language,
+                        "sources": sources,
+                        "sources_file": args.sources_file,
+                    },
+                    indent=2,
+                )
+                + "\n",
+                encoding="utf-8",
+            )
+            print(f"Generation failed: {exc}")
+            print(f"Wrote error log: {error_log}")
+            return 2
 
         if not args.wait:
             print(
@@ -221,7 +290,7 @@ async def _generate_podcast(args: argparse.Namespace) -> int:
             nb.id,
             status.task_id,
             timeout=args.generation_timeout,
-            poll_interval=args.poll_interval,
+            initial_interval=args.initial_interval,
         )
 
         if not final.is_complete:
@@ -314,10 +383,28 @@ def main() -> int:
         help="Seconds to wait for podcast generation.",
     )
     parser.add_argument(
-        "--poll-interval",
+        "--artifact-retries",
+        type=int,
+        default=0,
+        help="Number of retries for artifact generation (default: 0).",
+    )
+    parser.add_argument(
+        "--artifact-retry-backoff",
+        type=float,
+        default=5.0,
+        help="Base backoff in seconds between artifact retries.",
+    )
+    parser.add_argument(
+        "--initial-interval",
         type=float,
         default=5,
-        help="Polling interval in seconds during generation.",
+        help="Initial polling interval in seconds during generation.",
+    )
+    parser.add_argument(
+        "--poll-interval",
+        dest="initial_interval",
+        type=float,
+        help="Deprecated (use --initial-interval).",
     )
 
     args = parser.parse_args()

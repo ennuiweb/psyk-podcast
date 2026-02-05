@@ -30,6 +30,7 @@ Provide sources by URL or file path. Use `sources.txt` for batches.
 By default, the script starts generation and exits (non-blocking). Use `--wait` to block and download the MP3.
 Use `--skip-existing` to avoid re-generating an MP3 if the output file already exists.
 When `--reuse-notebook` is used, the script skips re-uploading sources that already exist in the notebook.
+If artifact generation fails, a `.request.error.json` is written next to the output (no request log is created).
 
 ```bash
 python3 generate_podcast.py --sources-file sources.txt --notebook-title "Auto Podcast" --output output/podcast.mp3 --wait
@@ -76,9 +77,15 @@ notebooklm artifact wait <task_id> -n <notebook_id>
 notebooklm download audio output/podcast.mp3 -a <task_id> -n <notebook_id>
 ```
 
+Polling options:
+- `--initial-interval SECONDS` (preferred)
+- `--poll-interval` is deprecated (kept for compatibility)
+
 The non-blocking run writes a request log next to the output:
 `output/podcast.mp3.request.json` with `notebook_id` and `artifact_id`.
+Failed runs write `output/podcast.mp3.request.error.json`.
 
 ## Troubleshooting
 
 - `Storage file not found: ~/.notebooklm/storage_state.json` means you need to run `notebooklm login` or pass `--storage` to a valid file.
+- If audio generation fails with `No artifact id returned`, rerun with `NOTEBOOKLM_LOG_LEVEL=DEBUG` to see the underlying RPC error or quota/rate-limit message.

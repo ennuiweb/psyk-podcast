@@ -24,6 +24,13 @@ playwright install chromium
 notebooklm login
 ```
 
+If you need multiple accounts, save separate storage files:
+
+```bash
+notebooklm login --storage ~/.notebooklm/work_storage_state.json
+notebooklm login --storage ~/.notebooklm/personal_storage_state.json
+```
+
 ## Run
 
 Provide sources by URL or file path. Use `sources.txt` for batches.
@@ -64,6 +71,40 @@ python3 generate_podcast.py \
 - Auth data is stored under `~/.notebooklm/` unless you pass `--storage`.
 - If generation fails due to rate limits, wait a few minutes and re-run.
 
+## Profiles
+
+You can use named auth profiles instead of passing `--storage` every time.
+Create a `profiles.json` that maps profile names to storage files (a starter is in `profiles.json`).
+By default, the script looks for `profiles.json` in the current directory, then next to `generate_podcast.py`.
+Use `--profiles-file` to point to a custom location.
+If the `profiles.json` contains `default` (or only one profile), it will be auto-selected when no profile is passed.
+
+Example `profiles.json` (see `profiles.json.example`):
+
+```json
+{
+  "work": "/Users/you/.notebooklm/work_storage_state.json",
+  "personal": "/Users/you/.notebooklm/personal_storage_state.json"
+}
+```
+
+Usage:
+
+```bash
+python3 generate_podcast.py --profile work --sources-file sources.txt --output output/work.mp3 --wait
+python3 generate_podcast.py --profiles-file /path/to/profiles.json --profile personal --output output/personal.mp3 --wait
+```
+
+List profiles:
+
+```bash
+python3 generate_podcast.py --list-profiles
+python3 generate_podcast.py --profiles-file /path/to/profiles.json --list-profiles
+```
+
+Notes:
+- `--storage` takes precedence and cannot be combined with `--profile`.
+
 ## Non-Blocking Flow
 
 Default behavior returns immediately with a `task_id` (artifact ID). Use the CLI to wait and download later:
@@ -82,7 +123,7 @@ Polling options:
 - `--poll-interval` is deprecated (kept for compatibility)
 
 The non-blocking run writes a request log next to the output:
-`output/podcast.mp3.request.json` with `notebook_id` and `artifact_id`.
+`output/podcast.mp3.request.json` with `notebook_id`, `artifact_id`, and resolved auth metadata (`auth`).
 Failed runs write `output/podcast.mp3.request.error.json`.
 
 ## Troubleshooting

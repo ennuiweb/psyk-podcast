@@ -1,0 +1,636 @@
+#!/usr/bin/env python3
+from __future__ import annotations
+
+import argparse
+import json
+import re
+import subprocess
+import sys
+from pathlib import Path
+import shlex
+
+
+def read_json(path: Path) -> dict:
+    with path.open("r", encoding="utf-8") as handle:
+        return json.load(handle)
+
+
+def find_week_dir(root: Path, week: str) -> Path:
+    week = week.upper()
+    candidates = [p for p in root.iterdir() if p.is_dir() and p.name.upper().startswith(week)]
+    if not candidates:
+        raise SystemExit(f"No week folder found for {week} under {root}")
+    if len(candidates) > 1:
+        names = ", ".join(p.name for p in candidates)
+        raise SystemExit(f"Multiple week folders match {week}: {names}")
+    return candidates[0]
+
+
+def list_source_files(week_dir: Path) -> list[Path]:
+    files = []
+    for entry in sorted(week_dir.iterdir()):
+        if entry.name.startswith("."):
+            continue
+        if entry.is_file():
+            files.append(entry)
+    return files
+
+
+def week_has_missing(reading_key: Path, week: str) -> bool:
+    week = week.upper()
+    header = re.compile(rf"^\\*\\*{re.escape(week)}\\b")
+    in_section = False
+    for line in reading_key.read_text(encoding="utf-8").splitlines():
+        if header.match(line.strip()):
+            in_section = True
+            continue
+        if in_section and line.startswith("**W"):
+            break
+        if in_section and "MISSING:" in line:
+            return True
+    return False
+
+
+def ensure_prompt(_: str, value: str) -> str:
+    return value.strip()
+
+
+def build_language_variants(config: dict) -> list[dict]:
+    variants: list[dict] = []
+    raw = config.get("languages")
+    if isinstance(raw, list):
+        for entry in raw:
+            if isinstance(entry, str):
+                code = entry.strip()
+                if code:
+                    variants.append({"code": code, "suffix": "", "title_suffix": ""})
+                continue
+            if not isinstance(entry, dict):
+                continue
+            code = (entry.get("code") or "").strip()
+            if not code:
+                continue
+            suffix = (entry.get("suffix") or "").strip()
+            title_suffix = (entry.get("title_suffix") or suffix).strip()
+            variants.append({"code": code, "suffix": suffix, "title_suffix": title_suffix})
+
+    if not variants:
+        code = (config.get("language") or "").strip()
+        variants.append({"code": code or None, "suffix": "", "title_suffix": ""})
+
+    return variants
+
+
+def apply_suffix(name: str, suffix: str) -> str:
+    return f"{name} {suffix}".strip() if suffix else name
+
+
+def apply_path_suffix(path: Path, suffix: str) -> Path:
+    if not suffix:
+        return path
+    return path.with_name(f"{path.stem} {suffix}{path.suffix}")
+
+
+def resolve_profile_slug(profile: str | None, storage: str | None) -> str | None:
+    if profile:
+        return profile
+    if storage:
+        return Path(storage).stem
+    return None
+
+
+def apply_profile_subdir(output_root: Path, slug: str | None, enabled: bool) -> Path:
+    if not enabled or not slug:
+        return output_root
+    safe_slug = re.sub(r"[^A-Za-z0-9._-]+", "_", slug).strip("_")
+    return output_root / (safe_slug or slug)
+
+
+def find_profiles_path(repo_root: Path, profiles_file: str | None) -> Path | None:
+    if profiles_file:
+        path = Path(profiles_file).expanduser()
+        return path if path.exists() else None
+    candidates = [
+        Path.cwd() / "profiles.json",
+        repo_root / "notebooklm-podcast-auto" / "profiles.json",
+    ]
+    for candidate in candidates:
+        if candidate.exists():
+            return candidate
+    return None
+
+
+def load_profiles(path: Path) -> dict[str, str]:
+    raw = read_json(path)
+    if isinstance(raw, dict) and isinstance(raw.get("profiles"), dict):
+        raw = raw["profiles"]
+    if not isinstance(raw, dict):
+        return {}
+    profiles: dict[str, str] = {}
+    for name, value in raw.items():
+        if not isinstance(name, str):
+            continue
+        if value is None:
+            continue
+        profiles[name] = str(Path(str(value)).expanduser())
+    return profiles
+
+
+def auto_profile_from_profiles(
+    repo_root: Path, args: argparse.Namespace
+) -> tuple[str | None, Path | None]:
+    if args.profile or args.storage:
+        return None, None
+    profiles_path = find_profiles_path(repo_root, args.profiles_file)
+    if not profiles_path:
+        return None, None
+    profiles = load_profiles(profiles_path)
+    if not profiles:
+        return None, None
+    if "default" in profiles:
+        return "default", profiles_path
+    if len(profiles) == 1:
+        return next(iter(profiles)), profiles_path
+    return None, profiles_path
+
+def load_request_auth(output_path: Path) -> dict | None:
+    log_path = output_path.with_suffix(output_path.suffix + ".request.json")
+    if not log_path.exists():
+        return None
+    try:
+        payload = json.loads(log_path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return None
+    auth = payload.get("auth")
+    return auth if isinstance(auth, dict) else None
+
+
+def auth_label_from_meta(auth: dict | None) -> str | None:
+    if not auth:
+        return None
+    profile = auth.get("profile")
+    if profile:
+        return str(profile)
+    storage_path = auth.get("storage_path")
+    if storage_path:
+        return Path(str(storage_path)).stem
+    return None
+
+
+def ensure_unique_output_path(output_path: Path, label: str | None) -> Path:
+    if not output_path.exists() or not label:
+        return output_path
+
+    existing_label = auth_label_from_meta(load_request_auth(output_path))
+    if existing_label == label:
+        return output_path
+
+    candidate = output_path.with_name(f"{output_path.stem} [{label}]{output_path.suffix}")
+    if not candidate.exists():
+        return candidate
+    if auth_label_from_meta(load_request_auth(candidate)) == label:
+        return candidate
+
+    counter = 2
+    while True:
+        candidate = output_path.with_name(
+            f"{output_path.stem} [{label}-{counter}]{output_path.suffix}"
+        )
+        if not candidate.exists():
+            return candidate
+        if auth_label_from_meta(load_request_auth(candidate)) == label:
+            return candidate
+        counter += 1
+
+
+def run_generate(
+    python: Path,
+    script: Path,
+    *,
+    sources_file: Path | None,
+    source_path: Path | None,
+    notebook_title: str,
+    instructions: str,
+    audio_format: str,
+    audio_length: str | None,
+    language: str | None,
+    output_path: Path,
+    wait: bool,
+    skip_existing: bool,
+    source_timeout: float | None,
+    generation_timeout: float | None,
+    artifact_retries: int | None,
+    artifact_retry_backoff: float | None,
+    storage: str | None,
+    profile: str | None,
+    profiles_file: str | None,
+    rotate_on_rate_limit: bool,
+    ensure_sources_ready: bool,
+) -> None:
+    cmd = [
+        str(python),
+        str(script),
+        "--notebook-title",
+        notebook_title,
+        "--reuse-notebook",
+        "--instructions",
+        instructions,
+        "--audio-format",
+        audio_format,
+        "--output",
+        str(output_path),
+    ]
+    if audio_length:
+        cmd.extend(["--audio-length", audio_length])
+    if language:
+        cmd.extend(["--language", language])
+    if sources_file:
+        cmd.extend(["--sources-file", str(sources_file)])
+    if source_path:
+        cmd.extend(["--source", str(source_path)])
+    if wait:
+        cmd.append("--wait")
+    if skip_existing:
+        cmd.append("--skip-existing")
+    if source_timeout is not None:
+        cmd.extend(["--source-timeout", str(source_timeout)])
+    if generation_timeout is not None:
+        cmd.extend(["--generation-timeout", str(generation_timeout)])
+    if artifact_retries is not None:
+        cmd.extend(["--artifact-retries", str(artifact_retries)])
+    if artifact_retry_backoff is not None:
+        cmd.extend(["--artifact-retry-backoff", str(artifact_retry_backoff)])
+    if storage:
+        cmd.extend(["--storage", storage])
+    if profile:
+        cmd.extend(["--profile", profile])
+    if profiles_file:
+        cmd.extend(["--profiles-file", profiles_file])
+    if not rotate_on_rate_limit:
+        cmd.append("--no-rotate-on-rate-limit")
+    if not ensure_sources_ready:
+        cmd.append("--no-ensure-sources-ready")
+    result = subprocess.run(cmd, check=False)
+    if result.returncode != 0:
+        raise RuntimeError(f"Generator failed with exit code {result.returncode}")
+
+
+def find_repo_root(start: Path) -> Path:
+    for candidate in [start] + list(start.parents):
+        if (candidate / "requirements.txt").exists() and (candidate / "shows").exists():
+            return candidate
+    return start
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description="Generate all episodes for a given week.")
+    parser.add_argument("--week", help="Single week label, e.g. W04")
+    parser.add_argument(
+        "--weeks",
+        help="Comma-separated week labels, e.g. W01,W02",
+    )
+    parser.add_argument(
+        "--sources-root",
+        default="notebooklm-podcast-auto/personlighedspsykologi/sources",
+        help="Root folder containing week source folders.",
+    )
+    parser.add_argument(
+        "--reading-key",
+        default="notebooklm-podcast-auto/personlighedspsykologi/docs/reading-file-key.md",
+        help="Reading key file (for missing checks).",
+    )
+    parser.add_argument(
+        "--prompt-config",
+        default="notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json",
+        help="Prompt configuration JSON.",
+    )
+    parser.add_argument(
+        "--output-root",
+        default="notebooklm-podcast-auto/personlighedspsykologi/output",
+        help="Where to place generated MP3s.",
+    )
+    parser.add_argument(
+        "--output-profile-subdir",
+        action="store_true",
+        help="If set, nest output under a profile-based subdirectory.",
+    )
+    parser.add_argument("--wait", action="store_true", help="Wait for generation to finish.")
+    parser.add_argument(
+        "--skip-existing",
+        dest="skip_existing",
+        action="store_true",
+        default=True,
+        help="Skip generation when output file already exists (default).",
+    )
+    parser.add_argument(
+        "--no-skip-existing",
+        dest="skip_existing",
+        action="store_false",
+        help="Force re-generation even if output file already exists.",
+    )
+    parser.add_argument(
+        "--source-timeout",
+        type=float,
+        help="Seconds to wait for each source (passed through).",
+    )
+    parser.add_argument(
+        "--no-ensure-sources-ready",
+        dest="ensure_sources_ready",
+        action="store_false",
+        help="Disable waiting for sources to appear and become ready before generation.",
+    )
+    parser.set_defaults(ensure_sources_ready=True)
+    parser.add_argument(
+        "--generation-timeout",
+        type=float,
+        help="Seconds to wait for generation (passed through).",
+    )
+    parser.add_argument(
+        "--storage",
+        help="Path to storage_state.json (passed through).",
+    )
+    parser.add_argument(
+        "--profile",
+        help="Profile name from profiles.json (passed through).",
+    )
+    parser.add_argument(
+        "--profiles-file",
+        help="Path to profiles.json (passed through).",
+    )
+    parser.add_argument(
+        "--artifact-retries",
+        type=int,
+        default=2,
+        help="Retry artifact generation (passed through, default: 2).",
+    )
+    parser.add_argument(
+        "--artifact-retry-backoff",
+        type=float,
+        default=5.0,
+        help="Base backoff for artifact retries (passed through).",
+    )
+    parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Print planned outputs and exit without generating audio.",
+    )
+    parser.add_argument(
+        "--print-downloads",
+        dest="print_downloads",
+        action="store_true",
+        default=True,
+        help="Print commands to wait and download audio for this run (default; non-blocking only).",
+    )
+    parser.add_argument(
+        "--no-print-downloads",
+        dest="print_downloads",
+        action="store_false",
+        help="Disable printing wait/download commands.",
+    )
+    args = parser.parse_args()
+
+    if not args.week and not args.weeks:
+        raise SystemExit("Provide --week or --weeks.")
+
+    week_inputs: list[str] = []
+    if args.week:
+        week_inputs.append(args.week)
+    if args.weeks:
+        week_inputs.extend(part.strip() for part in args.weeks.split(",") if part.strip())
+    if not week_inputs:
+        raise SystemExit("No valid weeks provided.")
+
+    repo_root = find_repo_root(Path(__file__).resolve())
+    sources_root = repo_root / args.sources_root
+    reading_key = repo_root / args.reading_key
+    prompt_config = repo_root / args.prompt_config
+    output_root = repo_root / args.output_root
+    auto_profile, auto_profiles_path = auto_profile_from_profiles(repo_root, args)
+    profile_for_run = args.profile or auto_profile
+    profiles_file_for_run = args.profiles_file or (str(auto_profiles_path) if auto_profiles_path else None)
+    profile_slug = resolve_profile_slug(profile_for_run, args.storage)
+    output_root = apply_profile_subdir(output_root, profile_slug, args.output_profile_subdir)
+    auth_label = profile_slug
+    generator_script = repo_root / "notebooklm-podcast-auto" / "generate_podcast.py"
+    notebooklm_cli = repo_root / "notebooklm-podcast-auto" / ".venv" / "bin" / "notebooklm"
+
+    config = read_json(prompt_config)
+    language_variants = build_language_variants(config)
+    weekly_cfg = config.get("weekly_overview", {})
+    per_cfg = config.get("per_reading", {})
+    brief_cfg = config.get("brief", {})
+
+    request_logs: list[Path] = []
+    failures: list[str] = []
+
+    for week_input in week_inputs:
+        week_dir = find_week_dir(sources_root, week_input)
+        week_label = week_dir.name.split(" ", 1)[0].upper()
+
+        week_output_dir = output_root / week_label
+        week_output_dir.mkdir(parents=True, exist_ok=True)
+
+        sources = list_source_files(week_dir)
+        if not sources:
+            raise SystemExit(f"No source files found in {week_dir}")
+
+        missing = week_has_missing(reading_key, week_label)
+
+        planned_lines: list[str] = []
+        weekly_output = week_output_dir / f"{week_label} - Alle kilder.mp3"
+        if not missing:
+            for variant in language_variants:
+                planned_path = ensure_unique_output_path(
+                    apply_path_suffix(weekly_output, variant["suffix"]),
+                    auth_label,
+                )
+                planned_lines.append(
+                    f"WEEKLY ({variant['code'] or 'default'}): {planned_path}"
+                )
+        else:
+            planned_lines.append(f"SKIP WEEKLY (missing readings): {weekly_output}")
+
+        for source in sources:
+            base_name = source.stem
+            per_output = week_output_dir / f"{week_label} - {base_name}.mp3"
+            for variant in language_variants:
+                planned_path = ensure_unique_output_path(
+                    apply_path_suffix(per_output, variant["suffix"]),
+                    auth_label,
+                )
+                planned_lines.append(
+                    f"READING ({variant['code'] or 'default'}): {planned_path}"
+                )
+            if "Grundbog kapitel" in source.name:
+                title_prefix = brief_cfg.get("title_prefix", "[Brief]")
+                brief_name = f"{title_prefix} {week_label} - {base_name}.mp3"
+                for variant in language_variants:
+                    planned_path = ensure_unique_output_path(
+                        apply_path_suffix(week_output_dir / brief_name, variant["suffix"]),
+                        auth_label,
+                    )
+                    planned_lines.append(
+                        f"BRIEF ({variant['code'] or 'default'}): {planned_path}"
+                    )
+
+        if args.dry_run:
+            print(f"## {week_label}")
+            for line in planned_lines:
+                print(line)
+            continue
+
+        if not missing:
+            weekly_sources_file = week_output_dir / "sources_week.txt"
+            weekly_sources_file.write_text("\n".join(str(p) for p in sources) + "\n", encoding="utf-8")
+            for variant in language_variants:
+                output_path = ensure_unique_output_path(
+                    apply_path_suffix(weekly_output, variant["suffix"]),
+                    auth_label,
+                )
+                try:
+                    run_generate(
+                        Path(sys.executable),
+                        generator_script,
+                        sources_file=weekly_sources_file,
+                        source_path=None,
+                        notebook_title=apply_suffix(
+                            f"Personlighedspsykologi {week_label} Alle kilder",
+                            variant["title_suffix"],
+                        ),
+                        instructions=ensure_prompt("weekly_overview", weekly_cfg.get("prompt", "")),
+                        audio_format=weekly_cfg.get("format", "deep-dive"),
+                        audio_length=weekly_cfg.get("length", "long"),
+                        language=variant["code"],
+                        output_path=output_path,
+                        wait=args.wait,
+                        skip_existing=args.skip_existing,
+                        source_timeout=args.source_timeout,
+                        generation_timeout=args.generation_timeout,
+                        artifact_retries=args.artifact_retries,
+                        artifact_retry_backoff=args.artifact_retry_backoff,
+                        storage=args.storage,
+                        profile=profile_for_run,
+                        profiles_file=profiles_file_for_run,
+                    )
+                except Exception as exc:
+                    failures.append(f"{output_path}: {exc}")
+                    continue
+                request_logs.append(output_path.with_suffix(output_path.suffix + ".request.json"))
+        else:
+            print(f"Skipping weekly overview for {week_label} (missing readings).")
+
+        for source in sources:
+            base_name = source.stem
+            per_output = week_output_dir / f"{week_label} - {base_name}.mp3"
+            for variant in language_variants:
+                output_path = ensure_unique_output_path(
+                    apply_path_suffix(per_output, variant["suffix"]),
+                    auth_label,
+                )
+                try:
+                    run_generate(
+                        Path(sys.executable),
+                        generator_script,
+                        sources_file=None,
+                        source_path=source,
+                        notebook_title=apply_suffix(
+                            f"Personlighedspsykologi {week_label} {base_name}",
+                            variant["title_suffix"],
+                        ),
+                        instructions=ensure_prompt("per_reading", per_cfg.get("prompt", "")),
+                        audio_format=per_cfg.get("format", "deep-dive"),
+                        audio_length=per_cfg.get("length", "default"),
+                        language=variant["code"],
+                        output_path=output_path,
+                        wait=args.wait,
+                        skip_existing=args.skip_existing,
+                        source_timeout=args.source_timeout,
+                        generation_timeout=args.generation_timeout,
+                        artifact_retries=args.artifact_retries,
+                        artifact_retry_backoff=args.artifact_retry_backoff,
+                        storage=args.storage,
+                        profile=profile_for_run,
+                        profiles_file=profiles_file_for_run,
+                    )
+                except Exception as exc:
+                    failures.append(f"{output_path}: {exc}")
+                    continue
+                request_logs.append(output_path.with_suffix(output_path.suffix + ".request.json"))
+
+            if "Grundbog kapitel" in source.name:
+                title_prefix = brief_cfg.get("title_prefix", "[Brief]")
+                brief_name = f"{title_prefix} {week_label} - {base_name}.mp3"
+                brief_output = week_output_dir / brief_name
+                for variant in language_variants:
+                    output_path = ensure_unique_output_path(
+                        apply_path_suffix(brief_output, variant["suffix"]),
+                        auth_label,
+                    )
+                    try:
+                        run_generate(
+                            Path(sys.executable),
+                            generator_script,
+                            sources_file=None,
+                            source_path=source,
+                            notebook_title=apply_suffix(
+                                f"Personlighedspsykologi {week_label} [Brief] {base_name}",
+                                variant["title_suffix"],
+                            ),
+                            instructions=ensure_prompt("brief", brief_cfg.get("prompt", "")),
+                            audio_format=brief_cfg.get("format", "brief"),
+                            audio_length=None,
+                            language=variant["code"],
+                            output_path=output_path,
+                            wait=args.wait,
+                            skip_existing=args.skip_existing,
+                            source_timeout=args.source_timeout,
+                            generation_timeout=args.generation_timeout,
+                            artifact_retries=args.artifact_retries,
+                            artifact_retry_backoff=args.artifact_retry_backoff,
+                            storage=args.storage,
+                            profile=profile_for_run,
+                            profiles_file=profiles_file_for_run,
+                        )
+                    except Exception as exc:
+                        failures.append(f"{output_path}: {exc}")
+                        continue
+                    request_logs.append(output_path.with_suffix(output_path.suffix + ".request.json"))
+
+    if args.print_downloads:
+        commands: list[str] = []
+        for log_path in request_logs:
+            if not log_path.exists():
+                continue
+            payload = json.loads(log_path.read_text(encoding="utf-8"))
+            notebook_id = payload.get("notebook_id")
+            artifact_id = payload.get("artifact_id")
+            output_path = payload.get("output_path")
+            if not (notebook_id and artifact_id and output_path):
+                continue
+            cli = shlex.quote(str(notebooklm_cli))
+            out = shlex.quote(str(output_path))
+            commands.append(
+                f"{cli} artifact wait {artifact_id} -n {notebook_id}"
+            )
+            commands.append(
+                f"{cli} download audio {out} -a {artifact_id} -n {notebook_id}"
+            )
+
+        if commands:
+            print("\n# Wait + download commands")
+            for cmd in commands:
+                print(cmd)
+        else:
+            print("\nNo request logs found. Run without --wait to generate them.")
+
+    if failures:
+        print("\nFailures:")
+        for item in failures:
+            print(f"- {item}")
+        return 2
+
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

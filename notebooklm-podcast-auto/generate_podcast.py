@@ -1,12 +1,15 @@
 #!/usr/bin/env python3
 import argparse
 import asyncio
+from time import monotonic
 import json
+import os
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Iterable
 
 from notebooklm import NotebookLMClient
+from notebooklm.paths import get_storage_path
 from notebooklm.rpc.types import AudioFormat, AudioLength
 
 
@@ -48,6 +51,185 @@ def _load_sources(entries: Iterable[str], sources_file: str | None) -> list[dict
                 sources.append(parsed)
 
     return sources
+
+
+def _default_profiles_paths() -> list[Path]:
+    return [
+        Path.cwd() / "profiles.json",
+        Path(__file__).resolve().parent / "profiles.json",
+    ]
+
+
+def _find_profiles_path() -> Path | None:
+    for candidate in _default_profiles_paths():
+        if candidate.exists():
+            return candidate
+    return None
+
+
+def _resolve_profiles_path(args: argparse.Namespace) -> Path:
+    if args.profiles_file:
+        profiles_path = Path(args.profiles_file).expanduser()
+        if not profiles_path.exists():
+            raise ValueError(f"Profiles file not found: {profiles_path}")
+        return profiles_path
+
+    profiles_path = next(
+        (candidate for candidate in _default_profiles_paths() if candidate.exists()),
+        None,
+    )
+    if profiles_path is None:
+        checked = ", ".join(str(path) for path in _default_profiles_paths())
+        raise ValueError(
+            "Profiles file not found. Provide --profiles-file or create profiles.json "
+            f"in one of: {checked}"
+        )
+    return profiles_path
+
+
+def _load_profiles(path: Path) -> dict[str, str]:
+    raw = json.loads(path.read_text(encoding="utf-8"))
+    if isinstance(raw, dict) and isinstance(raw.get("profiles"), dict):
+        raw = raw["profiles"]
+    if not isinstance(raw, dict):
+        raise ValueError(
+            "Profiles file must be a JSON object of {profile_name: storage_path} "
+            "or {\"profiles\": {...}}"
+        )
+
+    profiles: dict[str, str] = {}
+    for name, value in raw.items():
+        if not isinstance(name, str):
+            continue
+        if value is None:
+            continue
+        profiles[name] = str(Path(str(value)).expanduser())
+
+    if not profiles:
+        raise ValueError("Profiles file did not contain any valid profile entries.")
+    return profiles
+
+
+def _select_auto_profile(args: argparse.Namespace) -> tuple[str | None, Path | None, dict[str, str] | None]:
+    if args.storage or args.profile:
+        return None, None, None
+    if args.profiles_file:
+        profiles_path = _resolve_profiles_path(args)
+    else:
+        profiles_path = _find_profiles_path()
+        if not profiles_path:
+            return None, None, None
+    profiles = _load_profiles(profiles_path)
+    if "default" in profiles:
+        return "default", profiles_path, profiles
+    if len(profiles) == 1:
+        name = next(iter(profiles))
+        return name, profiles_path, profiles
+    return None, profiles_path, profiles
+
+
+def _resolve_auth(args: argparse.Namespace) -> tuple[str | None, dict]:
+    if args.storage and args.profile:
+        raise ValueError("Use either --storage or --profile, not both.")
+
+    auth_meta: dict[str, str | None] = {
+        "profile": args.profile,
+        "profiles_file": None,
+        "storage_path": None,
+        "source": None,
+    }
+
+    if args.storage:
+        storage_path = str(Path(args.storage).expanduser().resolve())
+        auth_meta["storage_path"] = storage_path
+        auth_meta["source"] = "storage_arg"
+        return storage_path, auth_meta
+
+    auto_profile, auto_profiles_path, auto_profiles = _select_auto_profile(args)
+    if args.profile or auto_profile:
+        profile_name = args.profile or auto_profile
+        profiles_path = _resolve_profiles_path(args) if args.profile else auto_profiles_path
+        profiles = _load_profiles(profiles_path) if args.profile else auto_profiles
+        if profile_name not in profiles:
+            raise ValueError(
+                f"Profile '{profile_name}' not found in {profiles_path}. "
+                f"Available: {', '.join(sorted(profiles))}"
+            )
+        storage_path = str(Path(profiles[profile_name]).expanduser().resolve())
+        auth_meta["profile"] = profile_name
+        auth_meta["profiles_file"] = str(profiles_path)
+        auth_meta["storage_path"] = storage_path
+        auth_meta["source"] = "profile" if args.profile else "auto-profile"
+        return storage_path, auth_meta
+
+    if os.environ.get("NOTEBOOKLM_AUTH_JSON"):
+        auth_meta["source"] = "env"
+        return None, auth_meta
+
+    auth_meta["storage_path"] = str(get_storage_path())
+    auth_meta["source"] = "default"
+    return auth_meta["storage_path"], auth_meta
+
+
+def _auth_label_from_meta(auth_meta: dict | None) -> str | None:
+    if not auth_meta:
+        return None
+    profile = auth_meta.get("profile")
+    if profile:
+        return str(profile)
+    storage_path = auth_meta.get("storage_path")
+    if storage_path:
+        return Path(str(storage_path)).stem
+    return None
+
+
+def _load_request_auth(output_path: Path) -> dict | None:
+    log_path = output_path.with_suffix(output_path.suffix + ".request.json")
+    if not log_path.exists():
+        return None
+    try:
+        payload = json.loads(log_path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return None
+    auth = payload.get("auth")
+    return auth if isinstance(auth, dict) else None
+
+
+def _ensure_unique_output_path(output_path: Path, auth_meta: dict) -> Path:
+    label = _auth_label_from_meta(auth_meta)
+    if not output_path.exists() or not label:
+        return output_path
+
+    existing_label = _auth_label_from_meta(_load_request_auth(output_path))
+    if existing_label == label:
+        return output_path
+
+    candidate = output_path.with_name(f"{output_path.stem} [{label}]{output_path.suffix}")
+    if not candidate.exists():
+        print(f"Output collision detected, using: {candidate}")
+        return candidate
+    if _auth_label_from_meta(_load_request_auth(candidate)) == label:
+        return candidate
+
+    counter = 2
+    while True:
+        candidate = output_path.with_name(
+            f"{output_path.stem} [{label}-{counter}]{output_path.suffix}"
+        )
+        if not candidate.exists():
+            print(f"Output collision detected, using: {candidate}")
+            return candidate
+        if _auth_label_from_meta(_load_request_auth(candidate)) == label:
+            return candidate
+        counter += 1
+
+
+def _print_profiles(args: argparse.Namespace) -> None:
+    profiles_path = _resolve_profiles_path(args)
+    profiles = _load_profiles(profiles_path)
+    print(f"Profiles file: {profiles_path}")
+    for name in sorted(profiles):
+        print(f"{name}: {profiles[name]}")
 
 
 def _audio_format(value: str) -> AudioFormat:
@@ -106,6 +288,95 @@ async def _existing_source_keys(client: NotebookLMClient, notebook_id: str) -> s
         if src.url:
             keys.add(("url", src.url.strip()))
     return keys
+
+
+async def _source_index(
+    client: NotebookLMClient, notebook_id: str
+) -> dict[tuple[str, str], Source]:
+    index: dict[tuple[str, str], Source] = {}
+    for src in await client.sources.list(notebook_id):
+        if src.title:
+            index[("title", src.title.strip().lower())] = src
+        if src.url:
+            index[("url", src.url.strip())] = src
+    return index
+
+
+async def _ensure_sources_ready(
+    client: NotebookLMClient,
+    notebook_id: str,
+    sources: list[dict],
+    *,
+    timeout: float,
+    poll_interval: float = 5.0,
+) -> None:
+    expected_keys = {key for source in sources if (key := _source_key(source)) is not None}
+    if not expected_keys:
+        return
+
+    start = monotonic()
+    while True:
+        index = await _source_index(client, notebook_id)
+        missing = expected_keys - set(index.keys())
+        not_ready = [
+            src for key, src in index.items() if key in expected_keys and not src.is_ready
+        ]
+        if not missing and not not_ready:
+            return
+
+        elapsed = monotonic() - start
+        if elapsed >= timeout:
+            break
+
+        if missing:
+            missing_labels = ", ".join(sorted(key[1] for key in missing))
+            print(f"Waiting for missing sources: {missing_labels}")
+        if not_ready:
+            pending_labels = ", ".join(
+                sorted(
+                    src.title or src.url or src.id
+                    for src in not_ready
+                )
+            )
+            print(f"Waiting for sources to be ready: {pending_labels}")
+
+        await asyncio.sleep(poll_interval)
+
+    if missing:
+        print("Re-adding missing sources before generation.")
+        for source in sources:
+            key = _source_key(source)
+            if not key or key not in missing:
+                continue
+            kind = source["kind"]
+            if kind == "url":
+                url = source["value"]
+                print(f"Re-adding URL: {url}")
+                await client.sources.add_url(notebook_id, url, wait=True, wait_timeout=timeout)
+            elif kind == "file":
+                file_path = Path(source["value"]).expanduser().resolve()
+                print(f"Re-adding file: {file_path}")
+                await client.sources.add_file(notebook_id, file_path, wait=True, wait_timeout=timeout)
+            elif kind == "text":
+                title = source["title"]
+                content = source["content"]
+                print(f"Re-adding text: {title}")
+                await client.sources.add_text(
+                    notebook_id, title, content, wait=True, wait_timeout=timeout
+                )
+
+    index = await _source_index(client, notebook_id)
+    missing = expected_keys - set(index.keys())
+    not_ready = [
+        src for key, src in index.items() if key in expected_keys and not src.is_ready
+    ]
+    if missing or not_ready:
+        missing_labels = ", ".join(sorted(key[1] for key in missing)) if missing else "none"
+        raise RuntimeError(
+            "Sources not ready after waiting. "
+            f"Missing: {missing_labels}. "
+            f"Not ready: {len(not_ready)}"
+        )
 
 
 async def _add_sources(
@@ -194,6 +465,8 @@ async def _generate_audio_with_retry(
 
 async def _generate_podcast(args: argparse.Namespace) -> int:
     output_path = Path(args.output).expanduser()
+    storage_path, auth_meta = _resolve_auth(args)
+    output_path = _ensure_unique_output_path(output_path, auth_meta)
     if args.skip_existing and output_path.exists() and output_path.stat().st_size > 0:
         print(f"Skipping existing output: {output_path}")
         return 0
@@ -204,17 +477,24 @@ async def _generate_podcast(args: argparse.Namespace) -> int:
     if not sources:
         raise ValueError("Provide at least one source via --source or --sources-file")
 
-    async with await NotebookLMClient.from_storage(args.storage) as client:
+    async with await NotebookLMClient.from_storage(storage_path) as client:
         nb = await _resolve_notebook(client, args.notebook_title, args.reuse_notebook)
-        await _add_sources(
-            client,
-            nb.id,
-            sources,
-            args.source_timeout,
-            skip_existing=args.reuse_notebook,
-        )
+                await _add_sources(
+                    client,
+                    nb.id,
+                    sources,
+                    args.source_timeout,
+                    skip_existing=args.reuse_notebook,
+                )
+                if args.ensure_sources_ready:
+                    await _ensure_sources_ready(
+                        client,
+                        nb.id,
+                        sources,
+                        timeout=args.source_timeout,
+                    )
 
-        print("Generating audio overview...")
+                print("Generating audio overview...")
         try:
             status = await _generate_audio_with_retry(
                 client,
@@ -242,6 +522,7 @@ async def _generate_podcast(args: argparse.Namespace) -> int:
                         "language": args.language,
                         "sources": sources,
                         "sources_file": args.sources_file,
+                        "auth": auth_meta,
                     },
                     indent=2,
                 )
@@ -278,6 +559,7 @@ async def _generate_podcast(args: argparse.Namespace) -> int:
                         "language": args.language,
                         "sources": sources,
                         "sources_file": args.sources_file,
+                        "auth": auth_meta,
                     },
                     indent=2,
                 )
@@ -371,11 +653,31 @@ def main() -> int:
         help="Path to storage_state.json. Defaults to NotebookLM config path.",
     )
     parser.add_argument(
+        "--profile",
+        help="Profile name from profiles.json (use instead of --storage).",
+    )
+    parser.add_argument(
+        "--profiles-file",
+        help="Path to profiles.json (default: ./profiles.json or script directory).",
+    )
+    parser.add_argument(
+        "--list-profiles",
+        action="store_true",
+        help="List available profiles and exit.",
+    )
+    parser.add_argument(
         "--source-timeout",
         type=float,
         default=300,
         help="Seconds to wait for each source to finish processing.",
     )
+    parser.add_argument(
+        "--no-ensure-sources-ready",
+        dest="ensure_sources_ready",
+        action="store_false",
+        help="Disable waiting for sources to appear and become ready before generation.",
+    )
+    parser.set_defaults(ensure_sources_ready=True)
     parser.add_argument(
         "--generation-timeout",
         type=float,
@@ -409,6 +711,9 @@ def main() -> int:
 
     args = parser.parse_args()
     try:
+        if args.list_profiles:
+            _print_profiles(args)
+            return 0
         return asyncio.run(_generate_podcast(args))
     except Exception as exc:
         print(f"Error: {exc}")

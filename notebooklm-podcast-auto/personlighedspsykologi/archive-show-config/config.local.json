@@ -1,0 +1,51 @@
+{
+  "service_account_file": "shows/personlighedspsykologi/service-account.json",
+  "drive_folder_id": "1UppgfEwy6Z6rmoQy0ujaBEK_edAzDqy7",
+  "shared_drive_id": null,
+  "include_items_from_all_drives": true,
+  "allowed_mime_types": [
+    "audio/"
+  ],
+  "transcode": {
+    "enabled": true,
+    "source_mime_types": [
+      "video/mp4",
+      "audio/mp4",
+      "audio/x-m4a"
+    ],
+    "target_extension": "mp3",
+    "target_mime_type": "audio/mpeg",
+    "codec": "libmp3lame",
+    "bitrate": "160k"
+  },
+  "skip_permission_updates": false,
+  "output_feed": "shows/personlighedspsykologi/feeds/rss.xml",
+  "public_link_template": "https://drive.google.com/uc?export=download&id={file_id}",
+  "episode_metadata": "shows/personlighedspsykologi/episode_metadata.json",
+  "auto_spec": "shows/personlighedspsykologi/auto_spec.json",
+  "important_text_docs": [
+    "shows/personlighedspsykologi/docs/overblik.md",
+    "shows/personlighedspsykologi/docs/reading-file-key.md"
+  ],
+  "important_text_mode": "week_x_only",
+  "only_doc_marked_important": true,
+  "feed": {
+    "title": "Personlighedspsykologi",
+    "link": "https://github.com/ennuiweb/psyk-podcast",
+    "self_link": "https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/personlighedspsykologi/feeds/rss.xml",
+    "description": "Forelæsningsrække og læseplan for Personlighedspsykologi (F26).",
+    "language": "da",
+    "author": "Personlighedspsykologi F26",
+    "default_explicit": false,
+    "image": "https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/personlighedspsykologi/assets/cover.png",
+    "category": {
+      "name": "Education",
+      "sub": "Social Sciences"
+    },
+    "owner": {
+      "name": "Personlighedspsykologi F26",
+      "email": "psykku2025@gmail.com"
+    },
+    "ttl": 60
+  }
+}

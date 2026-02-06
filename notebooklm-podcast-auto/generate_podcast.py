@@ -243,6 +243,8 @@ def _build_auth_candidates(args: argparse.Namespace) -> list[tuple[str | None, d
     if args.storage and args.profile:
         raise ValueError("Use either --storage or --profile, not both.")
 
+    rotate_allowed = args.rotate_on_rate_limit and not args.storage and not args.profile
+
     if args.storage:
         storage_path = str(Path(args.storage).expanduser().resolve())
         return [
@@ -303,7 +305,7 @@ def _build_auth_candidates(args: argparse.Namespace) -> list[tuple[str | None, d
             )
         ]
 
-    if args.rotate_on_rate_limit:
+    if rotate_allowed:
         names = _order_profile_names(profiles, preferred)
     else:
         if preferred:
@@ -503,8 +505,11 @@ async def _ensure_sources_ready(
         return
 
     start = monotonic()
+    saw_any_source = False
     while True:
         index = await _source_index(client, notebook_id)
+        if index:
+            saw_any_source = True
         missing = expected_keys - set(index.keys())
         not_ready = [
             src for key, src in index.items() if key in expected_keys and not src.is_ready
@@ -530,7 +535,7 @@ async def _ensure_sources_ready(
 
         await asyncio.sleep(poll_interval)
 
-    if missing:
+    if missing and saw_any_source:
         print("Re-adding missing sources before generation.")
         for source in sources:
             key = _source_key(source)
@@ -560,6 +565,11 @@ async def _ensure_sources_ready(
     ]
     if missing or not_ready:
         missing_labels = ", ".join(sorted(key[1] for key in missing)) if missing else "none"
+        if missing and not saw_any_source:
+            raise RuntimeError(
+                "Source listing returned empty while waiting for uploads. "
+                "Unable to verify readiness; retry later."
+            )
         raise RuntimeError(
             "Sources not ready after waiting. "
             f"Missing: {missing_labels}. "
@@ -657,26 +667,6 @@ async def _generate_podcast(args: argparse.Namespace) -> int:
     if not sources:
         raise ValueError("Provide at least one source via --source or --sources-file")
 
-<<<<<<< HEAD
-    async with await NotebookLMClient.from_storage(storage_path) as client:
-        nb = await _resolve_notebook(client, args.notebook_title, args.reuse_notebook)
-                await _add_sources(
-                    client,
-                    nb.id,
-                    sources,
-                    args.source_timeout,
-                    skip_existing=args.reuse_notebook,
-                )
-                if args.ensure_sources_ready:
-                    await _ensure_sources_ready(
-                        client,
-                        nb.id,
-                        sources,
-                        timeout=args.source_timeout,
-                    )
-
-                print("Generating audio overview...")
-=======
     candidates = _build_auth_candidates(args)
     rotation_attempts: list[dict] = []
     last_exc: Exception | None = None
@@ -701,10 +691,18 @@ async def _generate_podcast(args: argparse.Namespace) -> int:
             else:
                 print(f"{prefix} Using auth source: {auth_meta.get('source')}")
 
->>>>>>> c8a3668 (updates)
         try:
             async with await NotebookLMClient.from_storage(storage_path) as client:
-                nb = await _resolve_notebook(client, args.notebook_title, args.reuse_notebook)
+                notebook_title = args.notebook_title
+                if (
+                    args.append_profile_to_notebook_title
+                    and len(candidates) > 1
+                    and label
+                    and f"[{label}]" not in notebook_title
+                ):
+                    notebook_title = f"{notebook_title} [{label}]"
+
+                nb = await _resolve_notebook(client, notebook_title, args.reuse_notebook)
                 await _add_sources(
                     client,
                     nb.id,
@@ -712,6 +710,13 @@ async def _generate_podcast(args: argparse.Namespace) -> int:
                     args.source_timeout,
                     skip_existing=args.reuse_notebook,
                 )
+                if args.ensure_sources_ready:
+                    await _ensure_sources_ready(
+                        client,
+                        nb.id,
+                        sources,
+                        timeout=args.source_timeout,
+                    )
 
                 print("Generating audio overview...")
                 status = await _generate_audio_with_retry(
@@ -863,8 +868,6 @@ async def _generate_podcast(args: argparse.Namespace) -> int:
         return 2
 
     return 2
-
-
 def main() -> int:
     parser = argparse.ArgumentParser(description="Generate a NotebookLM podcast from sources.")
     parser.add_argument(
@@ -943,6 +946,13 @@ def main() -> int:
         help="Disable rotating profiles on rate-limit/auth errors.",
     )
     parser.set_defaults(rotate_on_rate_limit=True)
+    parser.add_argument(
+        "--no-append-profile-to-notebook-title",
+        dest="append_profile_to_notebook_title",
+        action="store_false",
+        help="Disable appending the profile label to notebook titles when rotating.",
+    )
+    parser.set_defaults(append_profile_to_notebook_title=True)
     parser.add_argument(
         "--list-profiles",
         action="store_true",

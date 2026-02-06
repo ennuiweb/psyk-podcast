@@ -114,6 +114,7 @@ Optional flags:
 - Rate-limit/auth rotation: by default, generation retries with the next available profile on rate-limit/auth errors (auto-profile only). Disable with `--no-rotate-on-rate-limit`.
 - Source readiness: generation waits for sources to appear and become ready before creating artifacts. Disable with `--no-ensure-sources-ready`.
 - Notebook titles: when rotating, profile labels are appended to notebook titles. Disable with `--no-append-profile-to-notebook-title`.
+- Request logs: when `--skip-existing` is enabled (default), generation also skips outputs that already have a `.request.json` with an `artifact_id` and no error log.
 
 ## Output placement
 - Weekly overview: `notebooklm-podcast-auto/personlighedspsykologi/output/W##/W## - Alle kilder.mp3`

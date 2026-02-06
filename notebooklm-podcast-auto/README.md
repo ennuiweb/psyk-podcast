@@ -69,7 +69,7 @@ python3 generate_podcast.py \
 ## Notes
 
 - Auth data is stored under `~/.notebooklm/` unless you pass `--storage`.
-- By default, generation rotates across profiles on rate-limit/auth errors. Disable with `--no-rotate-on-rate-limit`.
+- By default, generation rotates across profiles on rate-limit/auth errors when no explicit `--profile`/`--storage` is provided. Disable with `--no-rotate-on-rate-limit`.
 - If all profiles are rate-limited, wait a few minutes and re-run.
 - Generation waits for sources to appear and become ready before starting. Disable with `--no-ensure-sources-ready`.
 
@@ -107,7 +107,8 @@ python3 generate_podcast.py --profiles-file /path/to/profiles.json --list-profil
 
 Notes:
 - `--storage` takes precedence and cannot be combined with `--profile`.
-- Rotation runs through available profiles (default first). Use `--no-rotate-on-rate-limit` to keep a single profile.
+- Rotation runs through available profiles (default first) only for auto-profile selection.
+- When rotating, notebook titles include the profile label by default; disable with `--no-append-profile-to-notebook-title`.
 
 ## Non-Blocking Flow
 
@@ -134,3 +135,4 @@ Failed runs write `output/podcast.mp3.request.error.json`.
 
 - `Storage file not found: ~/.notebooklm/storage_state.json` means you need to run `notebooklm login` or pass `--storage` to a valid file.
 - If audio generation fails with `No artifact id returned`, rerun with `NOTEBOOKLM_LOG_LEVEL=DEBUG` to see the underlying RPC error or quota/rate-limit message.
+- If downloads fail with `403 Forbidden`, rerun with `NOTEBOOKLM_LOG_LEVEL=DEBUG` to confirm which storage path and cookie domains are being used for download auth.

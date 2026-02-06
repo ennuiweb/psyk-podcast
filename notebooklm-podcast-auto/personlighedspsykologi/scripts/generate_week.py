@@ -198,6 +198,34 @@ def load_request_auth(output_path: Path) -> dict | None:
     return auth if isinstance(auth, dict) else None
 
 
+def load_request_payload(output_path: Path) -> dict | None:
+    log_path = output_path.with_suffix(output_path.suffix + ".request.json")
+    if not log_path.exists():
+        return None
+    try:
+        payload = json.loads(log_path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return None
+    return payload if isinstance(payload, dict) else None
+
+
+def should_skip_generation(output_path: Path, skip_existing: bool) -> tuple[bool, str | None]:
+    if output_path.exists() and output_path.stat().st_size > 0:
+        return True, "output exists"
+    if not skip_existing:
+        return False, None
+    error_log = output_path.with_suffix(output_path.suffix + ".request.error.json")
+    if error_log.exists():
+        return False, None
+    payload = load_request_payload(output_path)
+    if not payload:
+        return False, None
+    artifact_id = payload.get("artifact_id")
+    if artifact_id:
+        return True, "request log exists"
+    return False, None
+
+
 def auth_label_from_meta(auth: dict | None) -> str | None:
     if not auth:
         return None
@@ -258,10 +286,8 @@ def run_generate(
     profile: str | None,
     profiles_file: str | None,
     rotate_on_rate_limit: bool,
-<<<<<<< HEAD
     ensure_sources_ready: bool,
-=======
->>>>>>> c8a3668 (updates)
+    append_profile_to_notebook_title: bool,
 ) -> None:
     cmd = [
         str(python),
@@ -304,16 +330,13 @@ def run_generate(
         cmd.extend(["--profiles-file", profiles_file])
     if not rotate_on_rate_limit:
         cmd.append("--no-rotate-on-rate-limit")
-<<<<<<< HEAD
     if not ensure_sources_ready:
         cmd.append("--no-ensure-sources-ready")
-=======
->>>>>>> c8a3668 (updates)
+    if not append_profile_to_notebook_title:
+        cmd.append("--no-append-profile-to-notebook-title")
     result = subprocess.run(cmd, check=False)
     if result.returncode != 0:
         raise RuntimeError(f"Generator failed with exit code {result.returncode}")
-
-
 def find_repo_root(start: Path) -> Path:
     for candidate in [start] + list(start.parents):
         if (candidate / "requirements.txt").exists() and (candidate / "shows").exists():
@@ -404,6 +427,13 @@ def main() -> int:
     )
     parser.set_defaults(rotate_on_rate_limit=True)
     parser.add_argument(
+        "--no-append-profile-to-notebook-title",
+        dest="append_profile_to_notebook_title",
+        action="store_false",
+        help="Disable appending the profile label to notebook titles when rotating.",
+    )
+    parser.set_defaults(append_profile_to_notebook_title=True)
+    parser.add_argument(
         "--artifact-retries",
         type=int,
         default=2,
@@ -457,12 +487,13 @@ def main() -> int:
     reading_key = repo_root / args.reading_key
     prompt_config = repo_root / args.prompt_config
     output_root = repo_root / args.output_root
+    rotation_enabled = args.rotate_on_rate_limit and not args.profile and not args.storage
     auto_profile, auto_profiles_path = auto_profile_from_profiles(repo_root, args)
-    profile_for_run = args.profile or auto_profile
+    profile_for_run = None if rotation_enabled else (args.profile or auto_profile)
     profiles_file_for_run = args.profiles_file or (str(auto_profiles_path) if auto_profiles_path else None)
     profile_slug = resolve_profile_slug(profile_for_run, args.storage)
     output_root = apply_profile_subdir(output_root, profile_slug, args.output_profile_subdir)
-    auth_label = profile_slug
+    auth_label = profile_slug if not rotation_enabled else None
     generator_script = repo_root / "notebooklm-podcast-auto" / "generate_podcast.py"
     notebooklm_cli = repo_root / "notebooklm-podcast-auto" / ".venv" / "bin" / "notebooklm"
 
@@ -539,6 +570,10 @@ def main() -> int:
                     apply_path_suffix(weekly_output, variant["suffix"]),
                     auth_label,
                 )
+                skip, reason = should_skip_generation(output_path, args.skip_existing)
+                if skip:
+                    print(f"Skipping generation ({reason}): {output_path}")
+                    continue
                 try:
                     run_generate(
                         Path(sys.executable),
@@ -565,6 +600,7 @@ def main() -> int:
                         profiles_file=profiles_file_for_run,
                         rotate_on_rate_limit=args.rotate_on_rate_limit,
                         ensure_sources_ready=args.ensure_sources_ready,
+                        append_profile_to_notebook_title=args.append_profile_to_notebook_title,
                     )
                 except Exception as exc:
                     failures.append(f"{output_path}: {exc}")
@@ -583,6 +619,10 @@ def main() -> int:
                     apply_path_suffix(per_output, variant["suffix"]),
                     auth_label,
                 )
+                skip, reason = should_skip_generation(output_path, args.skip_existing)
+                if skip:
+                    print(f"Skipping generation ({reason}): {output_path}")
+                    continue
                 try:
                     run_generate(
                         Path(sys.executable),
@@ -609,6 +649,7 @@ def main() -> int:
                         profiles_file=profiles_file_for_run,
                         rotate_on_rate_limit=args.rotate_on_rate_limit,
                         ensure_sources_ready=args.ensure_sources_ready,
+                        append_profile_to_notebook_title=args.append_profile_to_notebook_title,
                     )
                 except Exception as exc:
                     failures.append(f"{output_path}: {exc}")
@@ -626,6 +667,10 @@ def main() -> int:
                         apply_path_suffix(brief_output, variant["suffix"]),
                         auth_label,
                     )
+                    skip, reason = should_skip_generation(output_path, args.skip_existing)
+                    if skip:
+                        print(f"Skipping generation ({reason}): {output_path}")
+                        continue
                     try:
                         run_generate(
                             Path(sys.executable),
@@ -652,6 +697,7 @@ def main() -> int:
                             profiles_file=profiles_file_for_run,
                             rotate_on_rate_limit=args.rotate_on_rate_limit,
                             ensure_sources_ready=args.ensure_sources_ready,
+                            append_profile_to_notebook_title=args.append_profile_to_notebook_title,
                         )
                     except Exception as exc:
                         failures.append(f"{output_path}: {exc}")

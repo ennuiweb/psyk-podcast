@@ -109,6 +109,7 @@ Notes:
 - `--storage` takes precedence and cannot be combined with `--profile`.
 - Rotation runs through available profiles (default first) only for auto-profile selection.
 - When rotating, notebook titles include the profile label by default; disable with `--no-append-profile-to-notebook-title`.
+- Use `--exclude-profiles` (comma-separated) to skip profiles during rotation (useful for cooldowns in orchestrators).
 
 ## Non-Blocking Flow
 

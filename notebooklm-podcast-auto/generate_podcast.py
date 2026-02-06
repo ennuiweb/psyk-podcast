@@ -239,6 +239,12 @@ def _order_profile_names(profiles: dict[str, str], preferred: str | None) -> lis
     return ordered
 
 
+def _parse_profile_list(value: str | None) -> set[str]:
+    if not value:
+        return set()
+    return {item.strip() for item in value.split(",") if item.strip()}
+
+
 def _build_auth_candidates(args: argparse.Namespace) -> list[tuple[str | None, dict]]:
     if args.storage and args.profile:
         raise ValueError("Use either --storage or --profile, not both.")
@@ -304,6 +310,16 @@ def _build_auth_candidates(args: argparse.Namespace) -> list[tuple[str | None, d
                 },
             )
         ]
+
+    exclude_profiles = _parse_profile_list(getattr(args, "exclude_profiles", None))
+    if exclude_profiles:
+        filtered = {name: path for name, path in profiles.items() if name not in exclude_profiles}
+        if filtered:
+            profiles = filtered
+            if preferred in exclude_profiles:
+                preferred = None
+        else:
+            print("Warning: all profiles excluded; ignoring --exclude-profiles.")
 
     if rotate_allowed:
         names = _order_profile_names(profiles, preferred)
@@ -938,6 +954,10 @@ def main() -> int:
     parser.add_argument(
         "--profiles-file",
         help="Path to profiles.json (default: ./profiles.json or script directory).",
+    )
+    parser.add_argument(
+        "--exclude-profiles",
+        help="Comma-separated profile names to skip when rotating.",
     )
     parser.add_argument(
         "--no-rotate-on-rate-limit",

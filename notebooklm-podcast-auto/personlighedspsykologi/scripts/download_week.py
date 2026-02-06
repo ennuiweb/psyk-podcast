@@ -228,6 +228,19 @@ def build_cli_cmd(notebooklm: Path, storage_path: str | None, args: list[str]) -
     return cmd
 
 
+def archive_request_log(log_path: Path) -> None:
+    name = log_path.name
+    if name.endswith(".request.json"):
+        archived = log_path.with_name(name[: -len(".request.json")] + ".request.done.json")
+    else:
+        archived = log_path.with_suffix(log_path.suffix + ".done")
+    if archived.exists():
+        print(f"Archive already exists, leaving log in place: {archived}")
+        return
+    log_path.rename(archived)
+    print(f"Archived request log: {archived}")
+
+
 def is_auth_error(output: str) -> bool:
     lowered = output.lower()
     return "authentication expired" in lowered or "received html instead of media file" in lowered
@@ -380,6 +393,19 @@ def main() -> int:
         action="store_true",
         help="Print what would run without waiting/downloading.",
     )
+    parser.add_argument(
+        "--archive-requests",
+        dest="archive_requests",
+        action="store_true",
+        default=True,
+        help="Archive request logs after successful download (default).",
+    )
+    parser.add_argument(
+        "--no-archive-requests",
+        dest="archive_requests",
+        action="store_false",
+        help="Keep request logs after successful download.",
+    )
     args = parser.parse_args()
 
     repo_root = find_repo_root(Path(__file__).resolve())
@@ -458,6 +484,7 @@ def main() -> int:
                 continue
 
             success = False
+            archive_ok = False
             for storage_path, auth_source in candidates:
                 if storage_path and not Path(storage_path).expanduser().exists():
                     print(f"Warning: storage file not found: {storage_path}")
@@ -479,6 +506,7 @@ def main() -> int:
                     if status.upper() in {"FAILED", "ERROR"}:
                         print("Artifact already failed; skipping download.")
                         success = True
+                        archive_ok = False
                         break
                 ok, reason = wait_and_download(
                     notebooklm,
@@ -491,6 +519,7 @@ def main() -> int:
                 )
                 if ok:
                     success = True
+                    archive_ok = reason in {"ok", "skipped"}
                     break
                 if reason == "wait":
                     print("Wait failed; skipping remaining auth candidates for this artifact.")
@@ -501,6 +530,8 @@ def main() -> int:
 
             if not success:
                 print(f"Failed to download after trying {len(candidates)} auth option(s).")
+            elif args.archive_requests and archive_ok:
+                archive_request_log(log_path)
 
     return 0
 

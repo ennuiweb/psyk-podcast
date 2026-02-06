@@ -143,6 +143,7 @@ Optional flags:
 - `--timeout SECONDS` / `--interval SECONDS` for wait polling (defaults: 1800 / 15).
 - The downloader now checks artifact status before waiting, and will skip artifacts already marked failed.
 - `--dry-run` to print what would run.
+- Request logs are archived to `*.request.done.json` after a successful download (or when the target file already exists); use `--no-archive-requests` to keep them in place.
 - `--output-profile-subdir` to read outputs from a profile-based subdirectory (requires `--profile` or `--storage`).
 - Auth resolution:
   - Uses per-log `auth.storage_path` when present.

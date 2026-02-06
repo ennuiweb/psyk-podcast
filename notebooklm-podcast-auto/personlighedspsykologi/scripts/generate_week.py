@@ -108,6 +108,48 @@ def apply_profile_subdir(output_root: Path, slug: str | None, enabled: bool) -> 
     return output_root / (safe_slug or slug)
 
 
+def is_rate_limit_error(message: str) -> bool:
+    lowered = message.lower()
+    return "rate limit" in lowered or "quota exceeded" in lowered
+
+
+def update_profile_cooldowns(
+    output_path: Path,
+    cooldowns: dict[str, float],
+    cooldown_seconds: float,
+) -> None:
+    now = time.time()
+    log_paths = [
+        output_path.with_suffix(output_path.suffix + ".request.json"),
+        output_path.with_suffix(output_path.suffix + ".request.error.json"),
+    ]
+    for log_path in log_paths:
+        if not log_path.exists():
+            continue
+        payload = json.loads(log_path.read_text(encoding="utf-8"))
+        rotation_attempts = payload.get("rotation_attempts")
+        if isinstance(rotation_attempts, list):
+            for attempt in rotation_attempts:
+                if not isinstance(attempt, dict):
+                    continue
+                profile = attempt.get("profile")
+                error = str(attempt.get("error", ""))
+                if profile and is_rate_limit_error(error):
+                    cooldowns[profile] = max(cooldowns.get(profile, 0), now + cooldown_seconds)
+
+        error = str(payload.get("error", ""))
+        auth = payload.get("auth") if isinstance(payload.get("auth"), dict) else {}
+        profile = auth.get("profile") if isinstance(auth, dict) else None
+        if profile and is_rate_limit_error(error):
+            cooldowns[profile] = max(cooldowns.get(profile, 0), now + cooldown_seconds)
+        break
+
+
+def active_cooldowns(cooldowns: dict[str, float]) -> list[str]:
+    now = time.time()
+    return sorted([profile for profile, until in cooldowns.items() if until > now])
+
+
 def maybe_sleep(seconds: float | None) -> None:
     if seconds and seconds > 0:
         time.sleep(seconds)
@@ -285,6 +327,7 @@ def run_generate(
     storage: str | None,
     profile: str | None,
     profiles_file: str | None,
+    exclude_profiles: list[str] | None,
     rotate_on_rate_limit: bool,
     ensure_sources_ready: bool,
     append_profile_to_notebook_title: bool,
@@ -328,6 +371,8 @@ def run_generate(
         cmd.extend(["--profile", profile])
     if profiles_file:
         cmd.extend(["--profiles-file", profiles_file])
+    if exclude_profiles:
+        cmd.extend(["--exclude-profiles", ",".join(exclude_profiles)])
     if not rotate_on_rate_limit:
         cmd.append("--no-rotate-on-rate-limit")
     if not ensure_sources_ready:
@@ -436,8 +481,8 @@ def main() -> int:
     parser.add_argument(
         "--artifact-retries",
         type=int,
-        default=2,
-        help="Retry artifact generation (passed through, default: 2).",
+        default=1,
+        help="Retry artifact generation (passed through, default: 1).",
     )
     parser.add_argument(
         "--artifact-retry-backoff",
@@ -450,6 +495,12 @@ def main() -> int:
         type=float,
         default=2.0,
         help="Seconds to sleep between generation requests (default: 2).",
+    )
+    parser.add_argument(
+        "--profile-cooldown",
+        type=float,
+        default=300.0,
+        help="Seconds to avoid reusing rate-limited profiles within this run (default: 300).",
     )
     parser.add_argument(
         "--dry-run",
@@ -505,6 +556,8 @@ def main() -> int:
 
     request_logs: list[Path] = []
     failures: list[str] = []
+    profile_cooldowns: dict[str, float] = {}
+    last_excluded: list[str] = []
 
     for week_input in week_inputs:
         week_dir = find_week_dir(sources_root, week_input)
@@ -574,6 +627,14 @@ def main() -> int:
                 if skip:
                     print(f"Skipping generation ({reason}): {output_path}")
                     continue
+                exclude_profiles = (
+                    active_cooldowns(profile_cooldowns)
+                    if rotation_enabled and args.profile_cooldown > 0
+                    else []
+                )
+                if exclude_profiles and exclude_profiles != last_excluded:
+                    print(f"Cooling profiles this run: {', '.join(exclude_profiles)}")
+                    last_excluded = exclude_profiles
                 try:
                     run_generate(
                         Path(sys.executable),
@@ -598,6 +659,7 @@ def main() -> int:
                         storage=args.storage,
                         profile=profile_for_run,
                         profiles_file=profiles_file_for_run,
+                        exclude_profiles=exclude_profiles or None,
                         rotate_on_rate_limit=args.rotate_on_rate_limit,
                         ensure_sources_ready=args.ensure_sources_ready,
                         append_profile_to_notebook_title=args.append_profile_to_notebook_title,
@@ -606,6 +668,10 @@ def main() -> int:
                     failures.append(f"{output_path}: {exc}")
                     continue
                 finally:
+                    if rotation_enabled and args.profile_cooldown > 0:
+                        update_profile_cooldowns(
+                            output_path, profile_cooldowns, args.profile_cooldown
+                        )
                     maybe_sleep(args.sleep_between)
                 request_logs.append(output_path.with_suffix(output_path.suffix + ".request.json"))
         else:
@@ -623,6 +689,14 @@ def main() -> int:
                 if skip:
                     print(f"Skipping generation ({reason}): {output_path}")
                     continue
+                exclude_profiles = (
+                    active_cooldowns(profile_cooldowns)
+                    if rotation_enabled and args.profile_cooldown > 0
+                    else []
+                )
+                if exclude_profiles and exclude_profiles != last_excluded:
+                    print(f"Cooling profiles this run: {', '.join(exclude_profiles)}")
+                    last_excluded = exclude_profiles
                 try:
                     run_generate(
                         Path(sys.executable),
@@ -647,6 +721,7 @@ def main() -> int:
                         storage=args.storage,
                         profile=profile_for_run,
                         profiles_file=profiles_file_for_run,
+                        exclude_profiles=exclude_profiles or None,
                         rotate_on_rate_limit=args.rotate_on_rate_limit,
                         ensure_sources_ready=args.ensure_sources_ready,
                         append_profile_to_notebook_title=args.append_profile_to_notebook_title,
@@ -655,6 +730,10 @@ def main() -> int:
                     failures.append(f"{output_path}: {exc}")
                     continue
                 finally:
+                    if rotation_enabled and args.profile_cooldown > 0:
+                        update_profile_cooldowns(
+                            output_path, profile_cooldowns, args.profile_cooldown
+                        )
                     maybe_sleep(args.sleep_between)
                 request_logs.append(output_path.with_suffix(output_path.suffix + ".request.json"))
 
@@ -671,6 +750,14 @@ def main() -> int:
                     if skip:
                         print(f"Skipping generation ({reason}): {output_path}")
                         continue
+                    exclude_profiles = (
+                        active_cooldowns(profile_cooldowns)
+                        if rotation_enabled and args.profile_cooldown > 0
+                        else []
+                    )
+                    if exclude_profiles and exclude_profiles != last_excluded:
+                        print(f"Cooling profiles this run: {', '.join(exclude_profiles)}")
+                        last_excluded = exclude_profiles
                     try:
                         run_generate(
                             Path(sys.executable),
@@ -695,6 +782,7 @@ def main() -> int:
                             storage=args.storage,
                             profile=profile_for_run,
                             profiles_file=profiles_file_for_run,
+                            exclude_profiles=exclude_profiles or None,
                             rotate_on_rate_limit=args.rotate_on_rate_limit,
                             ensure_sources_ready=args.ensure_sources_ready,
                             append_profile_to_notebook_title=args.append_profile_to_notebook_title,
@@ -703,6 +791,10 @@ def main() -> int:
                         failures.append(f"{output_path}: {exc}")
                         continue
                     finally:
+                        if rotation_enabled and args.profile_cooldown > 0:
+                            update_profile_cooldowns(
+                                output_path, profile_cooldowns, args.profile_cooldown
+                            )
                         maybe_sleep(args.sleep_between)
                     request_logs.append(output_path.with_suffix(output_path.suffix + ".request.json"))
 

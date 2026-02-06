@@ -8,6 +8,7 @@ Automation to build podcast RSS feeds from audio files stored in Google Drive. T
   - `shows/intro-vt/` ships as scaffolding for the "Intro + VT Deep Dives - Hold 1 - 2024" series—copy the templates inside when you are ready to wire the feed up. GitHub Actions now runs each show via a build matrix, so once a new show directory follows the same structure and is referenced in the workflow matrix, it will publish automatically.
   - `shows/intro-vt-tss/` and `shows/social-psychology-tts/` provide text-to-speech variants that reuse the deep-dive auto spec and share the same automation flow.
 - `notebooklm_app/` – standalone CLI + helpers that talk to the NotebookLM Enterprise API to generate and download AI narrated podcasts locally (no coupling to the RSS tooling).
+- `notebooklm-podcast-auto/` – automation tooling for NotebookLM, with `notebooklm-py` tracked as a git submodule.
 - `requirements.txt` – Python dependencies needed locally and in CI.
 
 ### MIME type filtering

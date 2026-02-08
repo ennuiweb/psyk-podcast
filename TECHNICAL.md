@@ -162,6 +162,7 @@ To push the Apps Script file whenever you run `git push`, install the repository
 1. Run `scripts/install_git_hooks.sh`.
 2. Push as usual; the hook runs `apps-script/push_drive_trigger.sh` each time.
 3. Set `APPS_SCRIPT_PUSH_ON_PUSH=0` in your environment to skip the hook on demand.
+4. (Optional) Set `PRE_PUSH_LOG_FILE=/path/to/pre-push.log` to enable logging; by default no log file is written.
 
 ### Apps Script helper
 The canonical automation script lives in `apps-script/drive_change_trigger.gs`. Copy it directly from the repository so you always grab the latest multi-folder logic (`CONFIG.drive.folderIds`, `configuredRootFolderIds()`, etc.). Key bits to double-check before deploying:

@@ -24,9 +24,10 @@
   - Prompt: from `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json`
   - Language: from `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json`
   - Name prefix: `[Brief]`
- - Language variants: generate **Danish + English** for all episodes.
+- Language variants: generate **Danish + English** for all episodes.
    - Config: `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json` → `languages`
    - English naming: adds suffix ` [EN]` to file names and notebook titles.
+- Week labels follow semester weeks using `feed.semester_week_start_date` (2026-02-02), so forelæsning 1+2 are both Week 1.
 
 ## Automation scope (decisions)
 - **Per-episode notebooks only.** We are **not** using single-notebook + source-ID selection for now.

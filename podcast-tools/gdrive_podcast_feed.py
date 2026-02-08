@@ -788,6 +788,28 @@ def format_week_range(
     return f"Uge {week_number} {week_start_date:%d/%m} - {week_end_date:%d/%m}"
 
 
+def format_semester_week_range(
+    published_at: Optional[dt.datetime],
+    semester_start: Optional[str],
+) -> Optional[str]:
+    if not published_at or not semester_start:
+        return None
+    try:
+        start_date = dt.date.fromisoformat(semester_start)
+    except ValueError:
+        return None
+    if published_at.tzinfo is None:
+        published_at = published_at.replace(tzinfo=dt.timezone.utc)
+    published_date = published_at.astimezone(published_at.tzinfo).date()
+    delta_days = (published_date - start_date).days
+    if delta_days < 0:
+        return None
+    week_number = delta_days // 7 + 1
+    week_start_date = start_date + dt.timedelta(days=(week_number - 1) * 7)
+    week_end_date = week_start_date + dt.timedelta(days=6)
+    return f"Uge {week_number} {week_start_date:%d/%m} - {week_end_date:%d/%m}"
+
+
 def derive_semester_week_label(
     published_at: Optional[dt.datetime],
     semester_start: Optional[str],
@@ -1111,7 +1133,10 @@ def build_episode_entry(
                     week_year = int(week_year_token) if week_year_token is not None else None
                 except (TypeError, ValueError):
                     week_year = None
-                week_dates = format_week_range(published_at, week_year)
+                if semester_start:
+                    week_dates = format_semester_week_range(published_at, semester_start)
+                else:
+                    week_dates = format_week_range(published_at, week_year)
                 if week_dates:
                     week_label = f"{week_label} ({week_dates})"
                 meta["title"] = f"{week_label}: {base_title}"

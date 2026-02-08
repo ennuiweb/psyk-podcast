@@ -32,107 +32,107 @@ Sources used for this mapping:
 - Kilder der mangler.pdf
 - OneDrive readings folder (current file inventory)
 
-**W01 Introforelæsning og nøglebegreber i personlighedspsykologien**
+**W01 Introforelæsning og nøglebegreber i personlighedspsykologien (Forelæsning 1, 2026-02-02)**
 - Grundbog kapitel 01 - Introduktion til personlighedspsykologi → Grundbog kapitel 01 - Introduktion til personlighedspsykologi.pdf (brief + full)
 - Lewis (1999) → Lewis (1999).pdf
 
-**W02 Personality assessment**
+**W02 Personality assessment (Forelæsning 2, 2026-02-03)**
 - Mayer & Bryan (2024) → Mayer & Bryan (2024).pdf
 - Koutsoumpis (2025) → Koutsoumpis (2025).pdf
 - Phan et al. (2024) → Phan et al. (2024).pdf
 
-**W03 Personality traits, personality states, and personality dimensions**
+**W03 Personality traits, personality states, and personality dimensions (Forelæsning 3, 2026-02-09)**
 - Exercise text → W03 X Zettler et al. (2020).pdf
 - Columbus & Strandsbjerg (2025) → Columbus & Strandsbjerg (2025).pdf
 
-**W04 Person-situation interplay - stability and change of individual differences**
+**W04 Person-situation interplay - stability and change of individual differences (Forelæsning 4, 2026-02-10)**
 - Bleidorn et al. (2022) → Bleidorn et al. (2022).pdf
 - Li & Wilt (2025) → Li & Wilt (2025).pdf
 
-**W05 Culture, evolution, genetics, and personality**
+**W05 Culture, evolution, genetics, and personality (Forelæsning 5, 2026-02-16)**
 - Kandler & Instinske (2025) → Kandler & Instinske (2025).pdf
 - Lu, Benet-Martínez & Wang (2023) → Lu, Benet-Martínez & Wang (2023).pdf
 - Volk & Puchalski (2025) → Volk & Puchalski (2025).pdf
 - Zettler et al. (2025) → Zettler et al. (2025).pdf
 
-**W06 Personlighedsfunktion og forstyrrelse**
+**W06 Personlighedsfunktion og forstyrrelse (Forelæsning 6, 2026-02-17)**
 - Bach & Simonsen (2023) → Bach & Simonsen (2023) .docx
 - Sharp & Wall (2021) → Sharp & Wall (2021).pdf
 
-**W07 Psykoanalysens personlighedsbegreb**
+**W07 Psykoanalysens personlighedsbegreb (Forelæsning 7, 2026-02-23)**
 - Freud (1973/1933) → Freud (1973_1933).pdf
 - Gammelgaard (2007) → Gammelgaard (2007).pdf
 
-**W08 Psykoanalytisk personlighedsstruktur**
+**W08 Psykoanalytisk personlighedsstruktur (Forelæsning 8, 2026-02-24)**
 - Lacan (1966) → Lacan (1966).pdf
 - Laplanche (1970) → Laplanche (1970).pdf
 
-**W09 Empiri og metode i psykoanalysen**
+**W09 Empiri og metode i psykoanalysen (Forelæsning 9, 2026-03-02)**
 - Exercise text → W09 X Freud, S. (1984/1905). Brudstykke af en hysteri-analyse.pdf
 - Exercise text → W09 X Gammelgaard (2010).docx
 - Ricoeur (1981) → Ricoeur (1981).pdf
 
-**W10 Psykoanalysens konstituering**
+**W10 Psykoanalysens konstituering (Forelæsning 10, 2026-03-03)**
 - Andkjær Olsen & Køppe (1991a + 1991b) → Andkjær Olsen & Køppe (1991a og b) .docx
 - Køppe (1992) → Køppe (1992) .pdf
 - Zeuthen & Køppe (2014) → Zeuthen & Køppe (2014).docx
 
-**W11 Fænomenologi**
+**W11 Fænomenologi (Forelæsning 11, 2026-03-09)**
 - Exercise text → W11 X Spinelli (2005).pdf
 - Exercise text → W11 X Moeskær Hansen & Roald (2022) .pdf
 - Grundbog kapitel 04 - Fænomenologisk personlighedspsykologi → Grundbog kapitel 04 - Fænomenologisk personlighedspsykologi.pdf (brief + full)
 - MISSING: Funch & Roald (2014) chapter
 
-**W12 Eksistentiel personlighedspsykologi I (Funch)**
+**W12 Eksistentiel personlighedspsykologi I (Funch) (Forelæsning 12, 2026-03-10)**
 - Boss (1963) → Boss (1963) .pdf
 - May (1966) → May (1966).pdf
 
-**W13 Eksistentiel personlighedspsykologi II (Bjerregaard-Nielsen)**
+**W13 Eksistentiel personlighedspsykologi II (Bjerregaard-Nielsen) (Forelæsning 13, 2026-03-16)**
 - Cooper (2003) → Cooper (2003) .pdf
 - Jacobsen (2021) → Jacobsen (2021).pdf
 
-**W14 Humanistisk psykologi**
+**W14 Humanistisk psykologi (Forelæsning 14, 2026-03-17)**
 - Evans (1975) → Evans (1975) .pdf
 - Giorgi (2005) → Giorgi (2005) .pdf
 - Maslow (1968) → Maslow (1968).pdf
 
-**W15 Critical personalism**
+**W15 Critical personalism (Forelæsning 15, 2026-03-23)**
 - Lamiell (2021) → Lamiell (2021).pdf
 - Laux et al (2010) → Laux et al (2010).pdf
 
-**W16 Critical psychology**
+**W16 Critical psychology (Forelæsning 16, 2026-03-24)**
 - Holzkamp (1982) → Holzkamp (1982).pdf
 - Tolman (2009) → Tolman (2009).pdf
 
-**W17 Kritisk psykologi**
+**W17 Kritisk psykologi (Forelæsning 17, 2026-04-07)**
 - Exercise text → W17 X Mørch & Hansen (2015).pdf
 - Dreier (1999) → Dreier (1999).pdf
 - Holzkamp (2013) → Holzkamp (2013).pdf
 - Grundbog kapitel 10 - Kritisk psykologi → Grundbog kapitel 10 - Kritisk psykologi.pdf (brief + full)
 - MISSING: Jensen (2014)
 
-**W18 Køn**
+**W18 Køn (Forelæsning 18, 2026-04-13)**
 - Bjerrum Nielsen & Rudberg (2006) → Bjerrum Nielsen & Rudberg (2006) .pdf
 - Mitchell (2015) → Mitchell (2015).pdf
 
-**W19 Sociokulturelle teorier - socialkonstruktionisme og poststrukturalisme**
+**W19 Sociokulturelle teorier - socialkonstruktionisme og poststrukturalisme (Forelæsning 19, 2026-04-14)**
 - Exercise text → W19 X Davies (1990).pdf
 - Foucault (1997) → Foucault (1997) .pdf
 
-**W20 Poststrukturalisme, diskursiv psykologi og feministisk teori**
+**W20 Poststrukturalisme, diskursiv psykologi og feministisk teori (Forelæsning 20, 2026-04-20)**
 - Gergen (1999) → Gergen (1999) .pdf
 - Hacking (2007) → Hacking (2007) .pdf
 - Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori → Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori.pdf (brief + full)
 - MISSING: Staunæs & Juelskjær (2014)
 
-**W21 Narrativitet, kultur og mening**
+**W21 Narrativitet, kultur og mening (Forelæsning 21, 2026-04-21)**
 - Exercise text → W21 X Raggatt (2002).pdf
 - Bruner (1999) → Bruner (1999) .pdf
 - McAdams & Pals (2006) → McAdams & Pals (2006) .pdf
 - Grundbog kapitel 09 - Narrative teorier → Grundbog kapitel 09 - Narrative teorier.pdf (brief + full)
 - MISSING: Bank (2014)
 
-**W22 Sammenligning af teorier og subjektets historie og eksamen**
+**W22 Sammenligning af teorier og subjektets historie og eksamen (Forelæsning 22, 2026-04-27)**
 - Elias (2000) → Elias (2000) .pdf
 - Grundbog kapitel 08 - Personlighed, subjektivitet og historicitet → Grundbog kapitel 08 - Personlighed, subjektivitet og historicitet.pdf (brief + full)
 - Grundbog kapitel 14 - Perspektiver på personlighedspsykologi → Grundbog kapitel 14 - Perspektiver på personlighedspsykologi.pdf (brief + full)

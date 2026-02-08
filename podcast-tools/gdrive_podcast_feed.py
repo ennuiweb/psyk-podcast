@@ -788,6 +788,26 @@ def format_week_range(
     return f"Uge {week_number} {week_start_date:%d/%m} - {week_end_date:%d/%m}"
 
 
+def derive_semester_week_label(
+    published_at: Optional[dt.datetime],
+    semester_start: Optional[str],
+) -> Optional[str]:
+    if not published_at or not semester_start:
+        return None
+    try:
+        start_date = dt.date.fromisoformat(semester_start)
+    except ValueError:
+        return None
+    if published_at.tzinfo is None:
+        published_at = published_at.replace(tzinfo=dt.timezone.utc)
+    published_date = published_at.astimezone(published_at.tzinfo).date()
+    delta_days = (published_date - start_date).days
+    if delta_days < 0:
+        return None
+    week_number = delta_days // 7 + 1
+    return f"Week {week_number}"
+
+
 def derive_week_label(
     folder_names: List[str],
     course_week: Optional[Any],
@@ -1081,7 +1101,10 @@ def build_episode_entry(
         if suppress_week_prefix:
             meta["title"] = base_title
         else:
-            week_label = derive_week_label(folder_names or [], meta.get("course_week"))
+            semester_start = feed_config.get("semester_week_start_date")
+            week_label = derive_semester_week_label(published_at, semester_start)
+            if not week_label:
+                week_label = derive_week_label(folder_names or [], meta.get("course_week"))
             if week_label and not base_title.lower().startswith("week"):
                 week_year_token = meta.get("week_reference_year")
                 try:

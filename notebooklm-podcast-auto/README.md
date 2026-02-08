@@ -70,6 +70,8 @@ python3 generate_podcast.py \
 
 - Auth data is stored under `~/.notebooklm/` unless you pass `--storage`.
 - By default, generation rotates across profiles on rate-limit/auth errors when no explicit `--profile`/`--storage` is provided. Disable with `--no-rotate-on-rate-limit`.
+- Use `--preferred-profile NAME` to try a specific profile first while still allowing rotation.
+- Rate-limit errors are not retried; rotation (if enabled) happens immediately.
 - If all profiles are rate-limited, wait a few minutes and re-run.
 - Generation waits for sources to appear and become ready before starting. Disable with `--no-ensure-sources-ready`.
 

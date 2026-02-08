@@ -36,6 +36,7 @@
 - `important_text_mode` is `week_x_only`.
 - Only file names starting with `W## X` will be highlighted as `[Gul tekst]`.
 - Reading map uses `W## X` prefixes; rename files to match when ready.
+- Important readings currently prefixed with `X` in OneDrive are overridden in `shows/personlighedspsykologi-da/episode_metadata.json` to add an `X` to titles and append an "Important reading" note.
 
 ## Missing-file skip policy
 - Skip audio generation for any episode whose source file is missing.

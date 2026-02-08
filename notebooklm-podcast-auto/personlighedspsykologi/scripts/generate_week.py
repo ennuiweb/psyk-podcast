@@ -240,6 +240,16 @@ def load_request_auth(output_path: Path) -> dict | None:
     return auth if isinstance(auth, dict) else None
 
 
+def update_preferred_profile(output_path: Path, current: str | None) -> str | None:
+    auth = load_request_auth(output_path)
+    if not auth:
+        return current
+    profile = auth.get("profile")
+    if profile:
+        return str(profile)
+    return current
+
+
 def load_request_payload(output_path: Path) -> dict | None:
     log_path = output_path.with_suffix(output_path.suffix + ".request.json")
     if not log_path.exists():
@@ -326,6 +336,7 @@ def run_generate(
     artifact_retry_backoff: float | None,
     storage: str | None,
     profile: str | None,
+    preferred_profile: str | None,
     profiles_file: str | None,
     exclude_profiles: list[str] | None,
     rotate_on_rate_limit: bool,
@@ -369,6 +380,8 @@ def run_generate(
         cmd.extend(["--storage", storage])
     if profile:
         cmd.extend(["--profile", profile])
+    if preferred_profile:
+        cmd.extend(["--preferred-profile", preferred_profile])
     if profiles_file:
         cmd.extend(["--profiles-file", profiles_file])
     if exclude_profiles:
@@ -558,6 +571,7 @@ def main() -> int:
     failures: list[str] = []
     profile_cooldowns: dict[str, float] = {}
     last_excluded: list[str] = []
+    preferred_profile: str | None = None
 
     for week_input in week_inputs:
         week_dir = find_week_dir(sources_root, week_input)
@@ -658,6 +672,7 @@ def main() -> int:
                         artifact_retry_backoff=args.artifact_retry_backoff,
                         storage=args.storage,
                         profile=profile_for_run,
+                        preferred_profile=preferred_profile,
                         profiles_file=profiles_file_for_run,
                         exclude_profiles=exclude_profiles or None,
                         rotate_on_rate_limit=args.rotate_on_rate_limit,
@@ -667,6 +682,9 @@ def main() -> int:
                 except Exception as exc:
                     failures.append(f"{output_path}: {exc}")
                     continue
+                else:
+                    if rotation_enabled:
+                        preferred_profile = update_preferred_profile(output_path, preferred_profile)
                 finally:
                     if rotation_enabled and args.profile_cooldown > 0:
                         update_profile_cooldowns(
@@ -720,6 +738,7 @@ def main() -> int:
                         artifact_retry_backoff=args.artifact_retry_backoff,
                         storage=args.storage,
                         profile=profile_for_run,
+                        preferred_profile=preferred_profile,
                         profiles_file=profiles_file_for_run,
                         exclude_profiles=exclude_profiles or None,
                         rotate_on_rate_limit=args.rotate_on_rate_limit,
@@ -729,6 +748,9 @@ def main() -> int:
                 except Exception as exc:
                     failures.append(f"{output_path}: {exc}")
                     continue
+                else:
+                    if rotation_enabled:
+                        preferred_profile = update_preferred_profile(output_path, preferred_profile)
                 finally:
                     if rotation_enabled and args.profile_cooldown > 0:
                         update_profile_cooldowns(
@@ -781,6 +803,7 @@ def main() -> int:
                             artifact_retry_backoff=args.artifact_retry_backoff,
                             storage=args.storage,
                             profile=profile_for_run,
+                            preferred_profile=preferred_profile,
                             profiles_file=profiles_file_for_run,
                             exclude_profiles=exclude_profiles or None,
                             rotate_on_rate_limit=args.rotate_on_rate_limit,
@@ -790,6 +813,9 @@ def main() -> int:
                     except Exception as exc:
                         failures.append(f"{output_path}: {exc}")
                         continue
+                    else:
+                        if rotation_enabled:
+                            preferred_profile = update_preferred_profile(output_path, preferred_profile)
                     finally:
                         if rotation_enabled and args.profile_cooldown > 0:
                             update_profile_cooldowns(

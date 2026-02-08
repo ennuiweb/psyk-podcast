@@ -311,6 +311,13 @@ def _build_auth_candidates(args: argparse.Namespace) -> list[tuple[str | None, d
             )
         ]
 
+    if not args.profile:
+        preferred_override = getattr(args, "preferred_profile", None)
+        if preferred_override and preferred_override in profiles:
+            preferred = preferred_override
+        elif preferred_override:
+            print(f"Warning: preferred profile '{preferred_override}' not found; ignoring.")
+
     exclude_profiles = _parse_profile_list(getattr(args, "exclude_profiles", None))
     if exclude_profiles:
         filtered = {name: path for name, path in profiles.items() if name not in exclude_profiles}
@@ -665,6 +672,8 @@ async def _generate_audio_with_retry(
             return status
         except Exception as exc:
             last_exc = exc
+            if _is_rate_limit_error(exc):
+                break
             if attempt >= retries:
                 break
             delay = backoff * (2**attempt)
@@ -950,6 +959,10 @@ def main() -> int:
     parser.add_argument(
         "--profile",
         help="Profile name from profiles.json (use instead of --storage).",
+    )
+    parser.add_argument(
+        "--preferred-profile",
+        help="Profile name to try first when rotating across profiles.",
     )
     parser.add_argument(
         "--profiles-file",

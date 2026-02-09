@@ -172,6 +172,7 @@ To push the Apps Script file whenever you run `git push`, install the repository
 
 ### Apps Script helper
 The canonical automation script lives in `apps-script/drive_change_trigger.gs`. Copy it directly from the repository so you always grab the latest multi-folder logic (`CONFIG.drive.folderIds`, `configuredRootFolderIds()`, etc.). Key bits to double-check before deploying:
+- `CONFIG.drive.mimePrefixes` controls which file types trigger a rebuild (add `image/` to react to PNG uploads, or set `[]` for everything).
 - `CONFIG.drive.folderIds` lists every Drive folder that should trigger a rebuild.
 - `CONFIG.github.*` values still point at your fork/workflow.
 - After updating `folderIds`, re-run `initializeDriveChangeState()` so the stored manifest includes the new structure.

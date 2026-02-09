@@ -17,15 +17,23 @@ def read_json(path: Path) -> dict:
         return json.load(handle)
 
 
-def find_week_dir(root: Path, week: str) -> Path:
-    week = week.upper()
-    candidates = [p for p in root.iterdir() if p.is_dir() and p.name.upper().startswith(week)]
-    if not candidates:
-        raise SystemExit(f"No week folder found for {week} under {root}")
-    if len(candidates) > 1:
-        names = ", ".join(p.name for p in candidates)
-        raise SystemExit(f"Multiple week folders match {week}: {names}")
-    return candidates[0]
+def find_week_dirs(root: Path, week: str) -> list[Path]:
+    week_upper = week.upper()
+    if not root.exists():
+        return []
+    exact: list[Path] = []
+    prefix: list[Path] = []
+    for entry in root.iterdir():
+        if not entry.is_dir():
+            continue
+        name_upper = entry.name.upper()
+        if name_upper == week_upper:
+            exact.append(entry)
+        elif name_upper.startswith(week_upper):
+            prefix.append(entry)
+    if exact:
+        return exact
+    return sorted(prefix, key=lambda path: path.name)
 
 
 def list_source_files(week_dir: Path) -> list[Path]:
@@ -404,7 +412,10 @@ def find_repo_root(start: Path) -> Path:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Generate all episodes for a given week.")
-    parser.add_argument("--week", help="Single week label, e.g. W04")
+    parser.add_argument(
+        "--week",
+        help="Single week label, e.g. W01L1 (or W01 to include all W01L* folders).",
+    )
     parser.add_argument(
         "--weeks",
         help="Comma-separated week labels, e.g. W01,W02",
@@ -573,74 +584,87 @@ def main() -> int:
     last_excluded: list[str] = []
     preferred_profile: str | None = None
 
+    processed_dirs: set[Path] = set()
     for week_input in week_inputs:
-        week_dir = find_week_dir(sources_root, week_input)
-        week_label = week_dir.name.split(" ", 1)[0].upper()
+        week_dirs = find_week_dirs(sources_root, week_input)
+        if not week_dirs:
+            raise SystemExit(f"No week folder found for {week_input} under {sources_root}")
+        if len(week_dirs) > 1 and not re.fullmatch(r"W\\d{2}", week_input.upper()):
+            names = ", ".join(path.name for path in week_dirs)
+            raise SystemExit(f"Multiple week folders match {week_input}: {names}")
+        for week_dir in week_dirs:
+            if week_dir in processed_dirs:
+                continue
+            processed_dirs.add(week_dir)
+            week_label = week_dir.name.split(" ", 1)[0].upper()
 
-        week_output_dir = output_root / week_label
-        week_output_dir.mkdir(parents=True, exist_ok=True)
+            week_output_dir = output_root / week_label
+            week_output_dir.mkdir(parents=True, exist_ok=True)
 
-        sources = list_source_files(week_dir)
-        if not sources:
-            raise SystemExit(f"No source files found in {week_dir}")
+            sources = list_source_files(week_dir)
+            if not sources:
+                raise SystemExit(f"No source files found in {week_dir}")
 
-        missing = week_has_missing(reading_key, week_label)
+            missing = week_has_missing(reading_key, week_label)
 
-        planned_lines: list[str] = []
-        weekly_output = week_output_dir / f"{week_label} - Alle kilder.mp3"
-        if not missing:
-            for variant in language_variants:
-                planned_path = ensure_unique_output_path(
-                    apply_path_suffix(weekly_output, variant["suffix"]),
-                    auth_label,
-                )
-                planned_lines.append(
-                    f"WEEKLY ({variant['code'] or 'default'}): {planned_path}"
-                )
-        else:
-            planned_lines.append(f"SKIP WEEKLY (missing readings): {weekly_output}")
-
-        for source in sources:
-            base_name = source.stem
-            per_output = week_output_dir / f"{week_label} - {base_name}.mp3"
-            for variant in language_variants:
-                planned_path = ensure_unique_output_path(
-                    apply_path_suffix(per_output, variant["suffix"]),
-                    auth_label,
-                )
-                planned_lines.append(
-                    f"READING ({variant['code'] or 'default'}): {planned_path}"
-                )
-            if "Grundbog kapitel" in source.name:
-                title_prefix = brief_cfg.get("title_prefix", "[Brief]")
-                brief_name = f"{title_prefix} {week_label} - {base_name}.mp3"
+            planned_lines: list[str] = []
+            weekly_output = week_output_dir / f"{week_label} - Alle kilder.mp3"
+            if not missing:
                 for variant in language_variants:
                     planned_path = ensure_unique_output_path(
-                        apply_path_suffix(week_output_dir / brief_name, variant["suffix"]),
+                        apply_path_suffix(weekly_output, variant["suffix"]),
                         auth_label,
                     )
                     planned_lines.append(
-                        f"BRIEF ({variant['code'] or 'default'}): {planned_path}"
+                        f"WEEKLY ({variant['code'] or 'default'}): {planned_path}"
                     )
+            else:
+                planned_lines.append(f"SKIP WEEKLY (missing readings): {weekly_output}")
 
-        if args.dry_run:
-            print(f"## {week_label}")
-            for line in planned_lines:
-                print(line)
-            continue
+            for source in sources:
+                base_name = source.stem
+                per_output = week_output_dir / f"{week_label} - {base_name}.mp3"
+                for variant in language_variants:
+                    planned_path = ensure_unique_output_path(
+                        apply_path_suffix(per_output, variant["suffix"]),
+                        auth_label,
+                    )
+                    planned_lines.append(
+                        f"READING ({variant['code'] or 'default'}): {planned_path}"
+                    )
+                if "Grundbog kapitel" in source.name:
+                    title_prefix = brief_cfg.get("title_prefix", "[Brief]")
+                    brief_name = f"{title_prefix} {week_label} - {base_name}.mp3"
+                    for variant in language_variants:
+                        planned_path = ensure_unique_output_path(
+                            apply_path_suffix(week_output_dir / brief_name, variant["suffix"]),
+                            auth_label,
+                        )
+                        planned_lines.append(
+                            f"BRIEF ({variant['code'] or 'default'}): {planned_path}"
+                        )
 
-        if not missing:
-            weekly_sources_file = week_output_dir / "sources_week.txt"
-            weekly_sources_file.write_text("\n".join(str(p) for p in sources) + "\n", encoding="utf-8")
-            for variant in language_variants:
-                output_path = ensure_unique_output_path(
-                    apply_path_suffix(weekly_output, variant["suffix"]),
-                    auth_label,
+            if args.dry_run:
+                print(f"## {week_label}")
+                for line in planned_lines:
+                    print(line)
+                continue
+
+            if not missing:
+                weekly_sources_file = week_output_dir / "sources_week.txt"
+                weekly_sources_file.write_text(
+                    "\n".join(str(p) for p in sources) + "\n",
+                    encoding="utf-8",
                 )
-                skip, reason = should_skip_generation(output_path, args.skip_existing)
-                if skip:
-                    print(f"Skipping generation ({reason}): {output_path}")
-                    continue
+                for variant in language_variants:
+                    output_path = ensure_unique_output_path(
+                        apply_path_suffix(weekly_output, variant["suffix"]),
+                        auth_label,
+                    )
+                    skip, reason = should_skip_generation(output_path, args.skip_existing)
+                    if skip:
+                        print(f"Skipping generation ({reason}): {output_path}")
+                        continue
                 exclude_profiles = (
                     active_cooldowns(profile_cooldowns)
                     if rotation_enabled and args.profile_cooldown > 0

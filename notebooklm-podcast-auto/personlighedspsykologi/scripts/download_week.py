@@ -26,17 +26,22 @@ def find_week_dirs(root: Path, week: str) -> list[Path]:
     week_upper = week.upper()
     if not root.exists():
         return []
-    candidates: list[Path] = []
+    exact: list[Path] = []
+    prefix: list[Path] = []
     for entry in root.iterdir():
         if not entry.is_dir():
             continue
         if entry.name.upper() == week_upper:
-            candidates.append(entry)
+            exact.append(entry)
             continue
+        if entry.name.upper().startswith(week_upper):
+            prefix.append(entry)
         for child in entry.iterdir():
             if child.is_dir() and child.name.upper() == week_upper:
-                candidates.append(child)
-    return candidates
+                exact.append(child)
+    if exact:
+        return exact
+    return sorted(prefix, key=lambda path: path.name)
 
 
 def default_profiles_paths(repo_root: Path) -> list[Path]:
@@ -347,8 +352,14 @@ def main() -> int:
     parser = argparse.ArgumentParser(
         description="Wait and download all podcasts for a week from request logs."
     )
-    parser.add_argument("--week", help="Single week label, e.g. W01")
-    parser.add_argument("--weeks", help="Comma-separated week labels, e.g. W01,W02")
+    parser.add_argument(
+        "--week",
+        help="Single week label, e.g. W01L1 (or W01 to include all W01L* folders).",
+    )
+    parser.add_argument(
+        "--weeks",
+        help="Comma-separated week labels, e.g. W01,W02 (expands to W01L*, W02L*).",
+    )
     parser.add_argument(
         "--output-root",
         default="notebooklm-podcast-auto/personlighedspsykologi/output",

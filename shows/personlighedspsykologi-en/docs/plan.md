@@ -80,22 +80,24 @@ Weekly overview skips:
 Command (non-blocking by default, add `--wait` to block):
 
 ```bash
-./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_week.py --week W04
+./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_week.py --week W02L2
 ```
 
 Multiple weeks in one command:
 
 ```bash
-./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_week.py --weeks W01,W02,W03
+./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_week.py --weeks W01,W02
 ```
 
 This command:
 - Uses `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json` for prompts/lengths.
 - Skips weekly “Alle kilder” when missing readings are listed for that week.
-- Emits MP3s to `notebooklm-podcast-auto/personlighedspsykologi/output/W##/`.
+- Emits MP3s to `notebooklm-podcast-auto/personlighedspsykologi/output/W##L#/`.
 - Writes a request log per non-blocking episode: `*.mp3.request.json`.
 - Empty prompts are allowed (no validation).
 - Continues on per-episode failures and prints a failure summary at the end (non-zero exit).
+ 
+Note: passing `--week W01` (or `--weeks W01,W02`) expands to all matching `W01L#` folders.
 
 Optional flags:
 - `--skip-existing` (default) to skip outputs that already exist.
@@ -132,7 +134,7 @@ Optional flags:
 Use request logs to wait for completion and download MP3s, skipping already-downloaded files:
 
 ```bash
-./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/download_week.py --week W01
+./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/download_week.py --week W01L1
 ```
 
 Multiple weeks:

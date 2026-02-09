@@ -165,3 +165,6 @@ Optional flags:
   - Output folder created at `tmp/personlighedspsykologi-test/output/W99/` with `sources_week.txt`.
 - 2026-02-04: Downloaded W99 test audio artifacts into `tmp/personlighedspsykologi-test/output/W99/`.
   - First `download audio` for `W99 - Alle kilder.mp3` reported a temp rename error, but the file was created successfully.
+- 2026-02-09: Re-ran `generate_week.py` + `download_week.py` for `W03L1` after missing sources were added.
+  - NotebookLM CLI emitted repeated warnings: `Sources data ... is not a list` (API structure may have changed).
+  - EN outputs confirmed present in `notebooklm-podcast-auto/personlighedspsykologi/output/W03L1/`.

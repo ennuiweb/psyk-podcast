@@ -68,11 +68,15 @@ For text-to-speech feeds we transcode large WAV uploads the same way—adding `a
 ### Automatic dating from the teaching schedule
 Shows can point `auto_spec` at a JSON file that maps Drive folder labels to calendar weeks. The Socialpsykologi Deep Dives - Hold 1 - 2024 show ships with `shows/social-psychology/auto_spec.json`, generated from the teaching plan PDF. Each rule ties folder names like `W4 The Self` (anything that contains `w4`) to ISO week 39 of 2024 and sets a Monday 10:00 CET release, spacing additional recordings for that week by 120 minutes. Future recordings dropped into the matching `W*` folders automatically inherit the correct `published_at` timestamp without editing `episode_metadata.json`.
 
-When an episode inherits its publish date from the auto spec (or otherwise lacks a manual title override), the feed generator also prepends the week label derived from the folder—`Week 7: …`, `Week 12: …`, etc.—so podcast apps display the curriculum order even when filenames in Drive stay short.
+When an episode inherits its publish date from the auto spec (or otherwise lacks a manual title override), the feed generator now formats titles as:
+`L{lecture} · {Type} · (Uge {n} dd/mm - dd/mm)`.
 
-If you want those week labels to follow the *semester* calendar instead of ISO weeks, set
-`feed.semester_week_start_date` (YYYY-MM-DD). When present, `Week N` and the `Uge N dd/mm - dd/mm`
-range are computed from that start date so two lectures in the same real week share the same label.
+If you want those week ranges to follow the *semester* calendar instead of ISO weeks, set
+`feed.semester_week_start_date` (YYYY-MM-DD). When present, `Uge N dd/mm - dd/mm`
+is computed from that start date so two lectures in the same real week share the same label.
+
+Default descriptions (when no manual override exists) now follow this order, joined with ` · `:
+`VIGTIG TEXT` (only if important), `Format: …`, `Text: …`, `Type: …`, `Topic: …`, `Lecture …`, `Semester week …`.
 
 ### Highlighting important readings
 The Socialpsykologi deep-dive feed uses `[Tekst] …` as the default prefix for readings. For this show we set `important_text_docs`, `important_text_mode: "week_x_only"`, and `only_doc_marked_important: true`, so **only** entries in `docs/reading-file-key.md` that use the `W7L1 X …` naming convention become highlighted – the generator simply looks for `W<week-number>L<lecture-number> X` (or `W<week-number> X`) at the start of the Drive filename and swaps `[Tekst]` for `[Gul tekst]`.

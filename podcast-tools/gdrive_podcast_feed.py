@@ -1182,29 +1182,25 @@ def build_episode_entry(
         )
     published_at = parse_datetime(pubdate_source)
 
-    language = str(feed_config.get("language", "")).lower()
-    is_english = language.startswith("en")
-    en_suffix = " [EN]" if is_english else ""
-    has_en_suffix = "[en]" in base_title.casefold()
     _, lecture_number = extract_week_lecture(folder_names, file_entry.get("name"))
     semester_start = feed_config.get("semester_week_start_date")
     semester_info = semester_week_info(published_at, semester_start)
-    week_label = None
     week_number = None
+    week_range_label = None
     if semester_info:
         week_number, week_start, week_end = semester_info
-        week_label = f"Week {week_number} (Uge {week_number} {week_start:%d/%m} - {week_end:%d/%m})"
-    if not week_label:
-        week_label = derive_week_label(folder_names or [], meta.get("course_week"))
-        if week_label:
-            week_year_token = meta.get("week_reference_year")
-            try:
-                week_year = int(week_year_token) if week_year_token is not None else None
-            except (TypeError, ValueError):
-                week_year = None
-            week_dates = format_week_range(published_at, week_year)
-            if week_dates:
-                week_label = f"{week_label} ({week_dates})"
+        week_range_label = f"Uge {week_number} {week_start:%d/%m} - {week_end:%d/%m}"
+    if not week_range_label:
+        week_year_token = meta.get("week_reference_year")
+        try:
+            week_year = int(week_year_token) if week_year_token is not None else None
+        except (TypeError, ValueError):
+            week_year = None
+        week_range_label = format_week_range(published_at, week_year)
+        if week_range_label and week_number is None:
+            match = re.search(r"Uge\s+(\d+)", week_range_label)
+            if match:
+                week_number = int(match.group(1))
 
     raw_title = base_title
     raw_lower = raw_title.casefold()
@@ -1230,31 +1226,20 @@ def build_episode_entry(
     if is_brief:
         type_label = "Brief"
     elif is_weekly_overview:
-        type_label = "All sources" if is_english else "Alle kilder"
+        type_label = "All sources"
     else:
-        type_label = "Reading" if is_english else "Læsning"
-
-    important_label = "IMPORTANT" if is_english else "VIGTIG"
-    important_tag = f" · {important_label}" if important else ""
+        type_label = "Reading"
 
     if not meta.get("title"):
-        if suppress_week_prefix:
-            meta["title"] = display_subject or raw_title
-        else:
-            segments = []
-            if week_label:
-                segments.append(week_label)
-            if lecture_number:
-                segments.append(f"L{lecture_number}")
+        segments = []
+        if lecture_number:
+            segments.append(f"L{lecture_number}")
+        if type_label:
             segments.append(type_label)
-            if display_subject:
-                segments.append(display_subject)
-            title_value = " · ".join(segment for segment in segments if segment)
-            if important:
-                title_value = f"{title_value}{important_tag}"
-            if is_english and not has_en_suffix and not title_value.endswith(en_suffix):
-                title_value = f"{title_value}{en_suffix}"
-            meta["title"] = title_value
+        if week_range_label:
+            segments.append(f"({week_range_label})")
+        title_value = " · ".join(segment for segment in segments if segment)
+        meta["title"] = title_value or (display_subject or raw_title)
     title_value = meta.get("title") or base_title
     if important and prefix_replaced:
         updated_title, title_changed = _replace_text_prefix(title_value, require_start=False)
@@ -1272,40 +1257,20 @@ def build_episode_entry(
     summary = meta.get("summary")
     if not description:
         format_label = "brief" if is_brief else "deep-dive"
-        language_label = "EN" if is_english else "DA"
         text_label = (type_label if is_weekly_overview else (display_subject or cleaned_title or raw_title))
-        if is_english:
-            parts = []
-            if week_number:
-                parts.append(f"Semester week {week_number}")
-            if lecture_number:
-                parts.append(f"Lecture {lecture_number}")
-            if narrator:
-                parts.append(f"Narrator: {narrator}")
-            if topic:
-                parts.append(f"Topic: {topic}")
-            parts.append(f"Type: {type_label}")
-            if text_label:
-                parts.append(f"Text: {text_label}")
-            parts.append(f"Important: {'yes' if important else 'no'}")
-            parts.append(f"Format: {format_label}")
-            parts.append(f"Language: {language_label}")
-        else:
-            parts = []
-            if week_number:
-                parts.append(f"Semesteruge {week_number}")
-            if lecture_number:
-                parts.append(f"Forelæsning {lecture_number}")
-            if narrator:
-                parts.append(f"Narrator: {narrator}")
-            if topic:
-                parts.append(f"Emne: {topic}")
-            parts.append(f"Type: {type_label}")
-            if text_label:
-                parts.append(f"Tekst: {text_label}")
-            parts.append(f"Vigtigt: {'ja' if important else 'nej'}")
-            parts.append(f"Format: {format_label}")
-            parts.append(f"Sprog: {language_label}")
+        parts = []
+        if important:
+            parts.append("VIGTIG TEXT")
+        parts.append(f"Format: {format_label}")
+        if text_label:
+            parts.append(f"Text: {text_label}")
+        parts.append(f"Type: {type_label}")
+        if topic:
+            parts.append(f"Topic: {topic}")
+        if lecture_number:
+            parts.append(f"Lecture {lecture_number}")
+        if week_number:
+            parts.append(f"Semester week {week_number}")
         description = " · ".join(part for part in parts if part)
         meta["description"] = description
 

@@ -86,6 +86,16 @@ def strip_week_prefix_from_title(title: str, week_label: str) -> str:
     return stripped or title
 
 
+def normalize_episode_title(title: str, week_label: str) -> str:
+    if not title:
+        return title
+    normalized = strip_week_prefix_from_title(title, week_label)
+    normalized = strip_week_prefix_from_title(normalized, week_label)
+    normalized = re.sub(r"\\.{2,}", ".", normalized)
+    normalized = re.sub(r"\\s+", " ", normalized).strip()
+    return normalized or title
+
+
 def ensure_prompt(_: str, value: str) -> str:
     return value.strip()
 
@@ -807,7 +817,7 @@ def main() -> int:
                     )
 
             for source in sources:
-                base_name = strip_week_prefix_from_title(source.stem, week_label)
+                base_name = normalize_episode_title(source.stem, week_label)
                 per_base = f"{week_label} - {base_name}"
                 for content_type in content_types:
                     per_output = week_output_dir / f"{per_base}{output_extension(content_type, quiz_format=quiz_format)}"
@@ -956,7 +966,7 @@ def main() -> int:
             print(f"Skipping weekly overview for {week_label} (missing readings).")
 
         for source in sources:
-            base_name = strip_week_prefix_from_title(source.stem, week_label)
+            base_name = normalize_episode_title(source.stem, week_label)
             per_base = f"{week_label} - {base_name}"
             for content_type in content_types:
                 per_output = week_output_dir / f"{per_base}{output_extension(content_type, quiz_format=quiz_format)}"

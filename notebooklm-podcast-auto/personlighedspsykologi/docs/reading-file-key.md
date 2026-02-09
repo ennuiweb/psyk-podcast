@@ -7,6 +7,8 @@
 - Per-reading episodes: deep-dive, default length.
 - Brief versions: any `Grundbog kapitel` gets an extra `[Brief]` version (brief, no length toggle).
 - Prompts are configured in `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json`.
+- Filename hygiene: keep week tokens zero-padded (`W##L#`). If outputs contain unpadded tokens (e.g. `W6L1`), normalize via:
+  - `python3 scripts/rename_personlighedspsykologi_outputs.py --root notebooklm-podcast-auto/personlighedspsykologi/output --apply --rewrite-request-json`
 
 ## Missing files → skip list (until readings are found)
 Rule: skip audio generation for any episode whose source file is missing, and skip the **weekly “Alle kilder”** episode if that week has any missing readings.

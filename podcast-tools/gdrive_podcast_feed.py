@@ -12,8 +12,12 @@ from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Sequence, Set, Tuple
 from zoneinfo import ZoneInfo
 
-from google.oauth2 import service_account
-from googleapiclient.discovery import build
+try:
+    from google.oauth2 import service_account
+    from googleapiclient.discovery import build
+except ModuleNotFoundError:  # pragma: no cover - optional for pure-metadata/unit tests
+    service_account = None  # type: ignore[assignment]
+    build = None  # type: ignore[assignment]
 
 SCOPES = ["https://www.googleapis.com/auth/drive"]
 ATOM_NS = "http://www.w3.org/2005/Atom"
@@ -114,6 +118,11 @@ def save_feed(root, destination: Path) -> None:
 
 
 def build_drive_service(credentials_path: Path):
+    if service_account is None or build is None:
+        raise SystemExit(
+            "Missing Google API dependencies. Install requirements (google-auth, google-api-python-client) "
+            "or run in an environment that has them available."
+        )
     credentials = service_account.Credentials.from_service_account_file(
         str(credentials_path), scopes=SCOPES
     )
@@ -249,9 +258,37 @@ def _listify(value: Any) -> List[str]:
         return [str(item) for item in value if item is not None]
     return [str(value)]
 
+WEEK_PREFIX_PATTERN = re.compile(r"^(W0*(\d{1,2})L0*(\d{1,2}))\\b[\\s._-]*", re.IGNORECASE)
+
 
 def _normalize_stem(name: str) -> str:
     return Path(name).stem.casefold().strip()
+
+
+def _canonicalize_episode_stem(name: str) -> str:
+    stem = Path(name).stem
+    if not stem:
+        return ""
+    stem = stem.replace("–", "-").replace("—", "-")
+    stem = re.sub(r"\\.{2,}", ".", stem)
+    stem = re.sub(r"\\s+", " ", stem).strip()
+    match = WEEK_PREFIX_PATTERN.match(stem)
+    if not match:
+        return stem.casefold()
+    week = int(match.group(2))
+    lesson = int(match.group(3))
+    remainder = stem[match.end() :].strip()
+    if remainder:
+        dup = WEEK_PREFIX_PATTERN.match(remainder)
+        if dup and int(dup.group(2)) == week and int(dup.group(3)) == lesson:
+            remainder = remainder[dup.end() :].strip()
+    canonical_week = f"W{week}L{lesson}"
+    if remainder:
+        stem = f"{canonical_week} - {remainder}"
+    else:
+        stem = canonical_week
+    stem = re.sub(r"\\s+", " ", stem).strip()
+    return stem.casefold()
 
 
 def _folder_key(folder_names: List[str]) -> Tuple[str, ...]:
@@ -304,6 +341,40 @@ def _select_unique_best_candidate(
     if ties == 1:
         return best["file"] if best else None
     return None
+
+
+def _resolve_image_for_stem(
+    *,
+    lookup: Dict[Tuple[Tuple[str, ...], str], Dict[str, Any]],
+    candidates_by_stem: Dict[str, List[Dict[str, Any]]],
+    folder_key: Tuple[str, ...],
+    stem: str,
+    preferred_exts: Sequence[str],
+) -> Tuple[Optional[Dict[str, Any]], str]:
+    if not stem:
+        return None, "missing"
+    image_file = lookup.get((folder_key, stem))
+    if image_file:
+        return image_file, "exact"
+    candidates = candidates_by_stem.get(stem, [])
+    if not candidates:
+        return None, "missing"
+    filtered: List[Dict[str, Any]] = []
+    if folder_key:
+        filtered = [
+            candidate
+            for candidate in candidates
+            if _is_folder_prefix(folder_key, candidate["folder_key"])
+            or _is_folder_prefix(candidate["folder_key"], folder_key)
+        ]
+    if filtered:
+        selected = _select_unique_best_candidate(filtered, preferred_exts)
+        if selected:
+            return selected, "exact"
+        return None, "ambiguous"
+    if not folder_key and len(candidates) == 1:
+        return candidates[0]["file"], "fallback"
+    return None, "ambiguous"
 
 
 def _compile_regex_list(values: Any) -> List[re.Pattern]:
@@ -546,11 +617,15 @@ class AutoSpec:
             course_week = entry.get("course_week")
 
             # Helpful default aliases: "week 36" and "w36" for iso week 36.
+            # Include a zero-padded variant ("w06") since folder naming often uses padding.
             matches.extend(
                 {
                     f"w{iso_week}",
+                    f"w{iso_week:02d}",
                     f"week {iso_week}",
+                    f"week {iso_week:02d}",
                     str(iso_week),
+                    f"{iso_week:02d}",
                 }
             )
 
@@ -650,26 +725,39 @@ class AutoSpec:
                 end = start + len(needle)
                 before_char = candidate[start - 1] if start > 0 else ""
                 after_char = candidate[end] if end < len(candidate) else ""
-                before_ok = True
-                after_ok = True
-                if needle and needle[0].isdigit() and before_char.isdigit():
-                    before_ok = False
-                if needle and needle[-1].isdigit() and after_char.isdigit():
-                    after_ok = False
-                if before_ok and before_char and before_char.isalnum() and needle and needle[0].isalpha():
-                    # Avoid matching alphabetic prefixes like 'w1' in 'bw12'
-                    before_ok = False
-                if after_ok and after_char and after_char.isalnum() and needle and needle[-1].isalpha():
-                    after_ok = False
-                if before_ok and after_ok:
+                # Treat tokens as "word-like": require non-word boundaries around them.
+                # This avoids matching week-only tokens like "w6" inside lecture tokens
+                # like "w6l1", and avoids matching "6" inside "2026".
+                before_is_word = bool(before_char) and (before_char.isalnum() or before_char == "_")
+                after_is_word = bool(after_char) and (after_char.isalnum() or after_char == "_")
+                if not before_is_word and not after_is_word:
                     return True
                 start = candidate.find(needle, start + 1)
             return False
+
+        def is_week_only_token(token: str) -> bool:
+            token = token.strip().casefold()
+            if not token:
+                return False
+            return bool(
+                re.fullmatch(r"w\s*\d+", token)
+                or re.fullmatch(r"week\s*\d+", token)
+                or re.fullmatch(r"\d+", token)
+            )
+
+        has_lecture_token = any(
+            bool(re.search(r"\bw\s*\d+\s*l\s*\d+\b", candidate, flags=re.IGNORECASE))
+            for candidate in candidates
+        )
 
         for token in tokens:
             if not token:
                 continue
             needle = token.lower()
+            if has_lecture_token and is_week_only_token(needle):
+                # When a lecture token is present (e.g. "W06L1"), ignore ambiguous
+                # week-only tokens ("w6", "week 6", "6") that can misclassify.
+                continue
             for candidate in candidates:
                 if contains_bounded(candidate, needle):
                     return True
@@ -1562,9 +1650,12 @@ def main() -> None:
     folder_metadata_cache: Dict[str, Dict[str, Any]] = {}
     folder_path_cache: Dict[str, List[str]] = {}
 
+    artwork_enabled = bool(config.get("episode_image_from_infographics", False))
     image_lookup: Dict[Tuple[Tuple[str, ...], str], Dict[str, Any]] = {}
+    image_lookup_canonical: Dict[Tuple[Tuple[str, ...], str], Dict[str, Any]] = {}
     image_candidates_by_stem: Dict[str, List[Dict[str, Any]]] = {}
-    if bool(config.get("episode_image_from_infographics", False)):
+    image_candidates_by_canonical: Dict[str, List[Dict[str, Any]]] = {}
+    if artwork_enabled:
         image_mime_types = config.get("episode_image_mime_types") or ["image/png"]
         if isinstance(image_mime_types, str):
             image_mime_types = [image_mime_types]
@@ -1594,17 +1685,27 @@ def main() -> None:
                     root_folder_id=folder_id,
                     supports_all_drives=supports_all_drives,
                 )
-            stem = _normalize_stem(image_file.get("name", ""))
-            if not stem:
+            raw_stem = _normalize_stem(image_file.get("name", ""))
+            canonical_stem = _canonicalize_episode_stem(image_file.get("name", ""))
+            if not raw_stem and not canonical_stem:
                 continue
             folder_key = _folder_key(folder_names)
-            key = (folder_key, stem)
-            image_lookup[key] = _select_preferred_image(
-                image_lookup.get(key), image_file, preferred_exts
-            )
-            image_candidates_by_stem.setdefault(stem, []).append(
-                {"file": image_file, "folder_key": folder_key}
-            )
+            if raw_stem:
+                key = (folder_key, raw_stem)
+                image_lookup[key] = _select_preferred_image(
+                    image_lookup.get(key), image_file, preferred_exts
+                )
+                image_candidates_by_stem.setdefault(raw_stem, []).append(
+                    {"file": image_file, "folder_key": folder_key}
+                )
+            if canonical_stem:
+                key = (folder_key, canonical_stem)
+                image_lookup_canonical[key] = _select_preferred_image(
+                    image_lookup_canonical.get(key), image_file, preferred_exts
+                )
+                image_candidates_by_canonical.setdefault(canonical_stem, []).append(
+                    {"file": image_file, "folder_key": folder_key}
+                )
 
     drive_files = list_audio_files(
         drive_service,
@@ -1613,6 +1714,10 @@ def main() -> None:
         supports_all_drives=supports_all_drives,
         mime_type_filters=allowed_mime_types,
     )
+
+    artwork_stats = {"matched": 0, "missing": 0, "ambiguous": 0}
+    artwork_unmatched: List[str] = []
+    artwork_ambiguous: List[str] = []
 
     episodes: List[Dict[str, Any]] = []
     for drive_file in drive_files:
@@ -1641,26 +1746,28 @@ def main() -> None:
             print(f"Enabled link sharing for {drive_file['name']} ({drive_file['id']})")
 
         episode_image_url: Optional[str] = None
-        if image_lookup:
-            image_key = (_folder_key(folder_names), _normalize_stem(drive_file.get("name", "")))
-            image_file = image_lookup.get(image_key)
-            if not image_file and image_candidates_by_stem:
-                stem = image_key[1]
-                candidates = image_candidates_by_stem.get(stem, [])
-                if candidates:
-                    folder_key = image_key[0]
-                    filtered: List[Dict[str, Any]] = []
-                    if folder_key:
-                        filtered = [
-                            candidate
-                            for candidate in candidates
-                            if _is_folder_prefix(folder_key, candidate["folder_key"])
-                            or _is_folder_prefix(candidate["folder_key"], folder_key)
-                        ]
-                    if filtered:
-                        image_file = _select_unique_best_candidate(filtered, preferred_exts)
-                    elif not folder_key and len(candidates) == 1:
-                        image_file = candidates[0]["file"]
+        if artwork_enabled:
+            folder_key = _folder_key(folder_names)
+            raw_stem = _normalize_stem(drive_file.get("name", ""))
+            canonical_stem = _canonicalize_episode_stem(drive_file.get("name", ""))
+            image_file: Optional[Dict[str, Any]] = None
+            status = "missing"
+            if image_lookup or image_candidates_by_stem:
+                image_file, status = _resolve_image_for_stem(
+                    lookup=image_lookup,
+                    candidates_by_stem=image_candidates_by_stem,
+                    folder_key=folder_key,
+                    stem=raw_stem,
+                    preferred_exts=preferred_exts,
+                )
+            if not image_file and canonical_stem and canonical_stem != raw_stem:
+                image_file, status = _resolve_image_for_stem(
+                    lookup=image_lookup_canonical,
+                    candidates_by_stem=image_candidates_by_canonical,
+                    folder_key=folder_key,
+                    stem=canonical_stem,
+                    preferred_exts=preferred_exts,
+                )
             if image_file:
                 artwork_permission_added = ensure_public_permission(
                     drive_service,
@@ -1677,6 +1784,19 @@ def main() -> None:
                 episode_image_url = public_template.format(
                     file_id=image_file["id"], file_name=image_file["name"]
                 )
+                artwork_stats["matched"] += 1
+            else:
+                folder_path = "/".join(folder_names) if folder_names else "—"
+                if status == "ambiguous":
+                    artwork_stats["ambiguous"] += 1
+                    artwork_ambiguous.append(
+                        f"{drive_file.get('name', '')} (folder: {folder_path})"
+                    )
+                else:
+                    artwork_stats["missing"] += 1
+                    artwork_unmatched.append(
+                        f"{drive_file.get('name', '')} (folder: {folder_path})"
+                    )
 
         auto_meta = auto_spec.metadata_for(drive_file, folder_names) if auto_spec else None
         episodes.append(
@@ -1691,6 +1811,34 @@ def main() -> None:
                 episode_image_url=episode_image_url,
             )
         )
+
+    if artwork_enabled:
+        if not (image_lookup or image_lookup_canonical):
+            print(
+                "Warning: episode_image_from_infographics enabled but no image files found.",
+                file=sys.stderr,
+            )
+        if artwork_stats["missing"] or artwork_stats["ambiguous"]:
+            print(
+                "Artwork summary: matched "
+                f"{artwork_stats['matched']}, missing {artwork_stats['missing']}, "
+                f"ambiguous {artwork_stats['ambiguous']}.",
+                file=sys.stderr,
+            )
+            if artwork_unmatched:
+                print("Missing artwork for:", file=sys.stderr)
+                for entry in artwork_unmatched[:20]:
+                    print(f"  - {entry}", file=sys.stderr)
+                if len(artwork_unmatched) > 20:
+                    remaining = len(artwork_unmatched) - 20
+                    print(f"  ... and {remaining} more", file=sys.stderr)
+            if artwork_ambiguous:
+                print("Ambiguous artwork matches for:", file=sys.stderr)
+                for entry in artwork_ambiguous[:20]:
+                    print(f"  - {entry}", file=sys.stderr)
+                if len(artwork_ambiguous) > 20:
+                    remaining = len(artwork_ambiguous) - 20
+                    print(f"  ... and {remaining} more", file=sys.stderr)
 
     if not episodes:
         raise SystemExit("No audio files found in the configured Google Drive folder.")

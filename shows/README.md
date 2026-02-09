@@ -9,7 +9,7 @@ Each subdirectory contains config and assets for a single podcast feed. The CI w
 - `intro-vt-tss` – Intro + VT Tekst til tale - 1. sem 2024 TTS feed scaffolding (CI currently paused).
 - `social-psychology-tts` – Socialpsykologi Oplæst - 1. sem 2024 TTS feed scaffolding (CI currently paused).
 - `personal` – Private “drop any audio” feed that reads directly from Drive folder `1GrwLcua1UN_tCX0ec9NmDU6ynLkuM_0G` without auto spec.
-- `berlingske` – Berlingske narrated articles feed sourced from the downloader manifest.
+- `berlingske` – Berlingske narrated articles feed sourced from the downloader manifest (CI paused).
 
 Add new shows by creating a sibling directory that mirrors this structure, then add the folder name to the matrix in `.github/workflows/generate-feed.yml` and to the Apps Script `CONFIG.drive.folderIds` list.
 

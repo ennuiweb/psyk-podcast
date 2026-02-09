@@ -61,6 +61,31 @@ def week_has_missing(reading_key: Path, week: str) -> bool:
     return False
 
 
+WEEK_PREFIX_PATTERN = re.compile(r"^(W0*(\d{1,2})L0*(\d{1,2}))\\b[\\s._-]*", re.IGNORECASE)
+
+
+def parse_week_label(week_label: str) -> tuple[int, int] | None:
+    match = WEEK_PREFIX_PATTERN.match(week_label.strip())
+    if not match:
+        return None
+    return int(match.group(2)), int(match.group(3))
+
+
+def strip_week_prefix_from_title(title: str, week_label: str) -> str:
+    if not title:
+        return title
+    match = WEEK_PREFIX_PATTERN.match(title.strip())
+    if not match:
+        return title
+    week_parts = parse_week_label(week_label)
+    if not week_parts:
+        return title
+    if (int(match.group(2)), int(match.group(3))) != week_parts:
+        return title
+    stripped = title[match.end() :].strip()
+    return stripped or title
+
+
 def ensure_prompt(_: str, value: str) -> str:
     return value.strip()
 
@@ -782,7 +807,7 @@ def main() -> int:
                     )
 
             for source in sources:
-                base_name = source.stem
+                base_name = strip_week_prefix_from_title(source.stem, week_label)
                 per_base = f"{week_label} - {base_name}"
                 for content_type in content_types:
                     per_output = week_output_dir / f"{per_base}{output_extension(content_type, quiz_format=quiz_format)}"
@@ -931,7 +956,7 @@ def main() -> int:
             print(f"Skipping weekly overview for {week_label} (missing readings).")
 
         for source in sources:
-            base_name = source.stem
+            base_name = strip_week_prefix_from_title(source.stem, week_label)
             per_base = f"{week_label} - {base_name}"
             for content_type in content_types:
                 per_output = week_output_dir / f"{per_base}{output_extension(content_type, quiz_format=quiz_format)}"

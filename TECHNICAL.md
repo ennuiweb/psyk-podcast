@@ -70,6 +70,8 @@ Shows can point `auto_spec` at a JSON file that maps Drive folder labels to cale
 
 When an episode inherits its publish date from the auto spec (or otherwise lacks a manual title override), the feed generator now formats titles as:
 `Week {n}, Lecture {lecture} · {Type} · (Uge {n} dd/mm - dd/mm)`.
+Reading episodes and textbook chapters are a special case: `{Type}` becomes the cleaned reading file title, so the pattern becomes
+`Week {n}, Lecture {lecture} · {Reading title} · (Uge {n} dd/mm - dd/mm)`.
 
 If you want those week ranges to follow the *semester* calendar instead of ISO weeks, set
 `feed.semester_week_start_date` (YYYY-MM-DD). When present, `Uge N dd/mm - dd/mm`

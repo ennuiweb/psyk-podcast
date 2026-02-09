@@ -1289,8 +1289,15 @@ def build_episode_entry(
             segments.append(f"Lecture {lecture_number}")
         elif week_number:
             segments.append(f"Week {week_number}")
-        if type_label:
-            segments.append(type_label)
+        if is_weekly_overview:
+            if type_label:
+                segments.append(type_label)
+        else:
+            subject = display_subject or cleaned_title or raw_title
+            if subject:
+                segments.append(subject)
+            elif type_label:
+                segments.append(type_label)
         if week_range_label:
             segments.append(f"({week_range_label})")
         title_value = " · ".join(segment for segment in segments if segment)

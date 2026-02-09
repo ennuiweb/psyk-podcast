@@ -1,6 +1,6 @@
 # NotebookLM Auto Podcast
 
-This folder automates podcast generation using `notebooklm-py` and a small wrapper script.
+This folder automates NotebookLM artifact generation (audio + infographic) using `notebooklm-py` and a small wrapper script.
 
 ## Setup
 
@@ -34,7 +34,8 @@ notebooklm login --storage ~/.notebooklm/personal_storage_state.json
 ## Run
 
 Provide sources by URL or file path. Use `sources.txt` for batches.
-By default, the script starts generation and exits (non-blocking). Use `--wait` to block and download the MP3.
+By default, the script starts generation and exits (non-blocking). Use `--wait` to block and download the artifact.
+Use `--artifact-type` to switch between `audio` (default) and `infographic`.
 Use `--skip-existing` to avoid re-generating an MP3 if the output file already exists.
 When `--reuse-notebook` is used, the script skips re-uploading sources that already exist in the notebook.
 If artifact generation fails, a `.request.error.json` is written next to the output (no request log is created).
@@ -60,9 +61,22 @@ Valid forms:
 python3 generate_podcast.py \
   --source https://en.wikipedia.org/wiki/Artificial_intelligence \
   --instructions "make it engaging" \
+  --artifact-type audio \
   --audio-format deep-dive \
   --audio-length default \
   --output output/ai-podcast.mp3 \
+  --wait
+```
+
+Infographic example:
+
+```bash
+python3 generate_podcast.py \
+  --source https://en.wikipedia.org/wiki/Artificial_intelligence \
+  --artifact-type infographic \
+  --infographic-orientation portrait \
+  --infographic-detail standard \
+  --output output/ai-infographic.png \
   --wait
 ```
 
@@ -112,6 +126,8 @@ Notes:
 - Rotation runs through available profiles (default first) only for auto-profile selection.
 - When rotating, notebook titles include the profile label by default; disable with `--no-append-profile-to-notebook-title`.
 - Use `--exclude-profiles` (comma-separated) to skip profiles during rotation (useful for cooldowns in orchestrators).
+- Use `--profile-priority` (comma-separated) to control rotation order before LRU fallback.
+- Profile usage is persisted to `~/.notebooklm/profile_state.json` to improve rotation fairness and cooldown handling.
 
 ## Non-Blocking Flow
 
@@ -124,6 +140,8 @@ python3 generate_podcast.py --sources-file sources.txt --notebook-title "Auto Po
 # Wait for completion and download
 notebooklm artifact wait <task_id> -n <notebook_id>
 notebooklm download audio output/podcast.mp3 -a <task_id> -n <notebook_id>
+# For infographics, use:
+# notebooklm download infographic output/infographic.png -a <task_id> -n <notebook_id>
 ```
 
 Polling options:

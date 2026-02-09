@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import argparse
 import asyncio
+import time
 from time import monotonic
 import json
 import os
@@ -10,7 +11,32 @@ from typing import Iterable
 
 from notebooklm import NotebookLMClient
 from notebooklm.paths import get_storage_path
-from notebooklm.rpc.types import AudioFormat, AudioLength
+from notebooklm.rpc.types import (
+    AudioFormat,
+    AudioLength,
+    InfographicDetail,
+    InfographicOrientation,
+)
+
+RATE_LIMIT_TOKENS = (
+    "rate limit",
+    "quota exceeded",
+    "resource_exhausted",
+    "429",
+    "too many requests",
+)
+AUTH_TOKENS = (
+    "authentication expired",
+    "auth expired",
+    "auth invalid",
+    "invalid authentication",
+    "not logged in",
+    "run 'notebooklm login'",
+    "redirected to",
+    "403",
+)
+RATE_LIMIT_COOLDOWN_SECONDS = 300
+AUTH_COOLDOWN_SECONDS = 3600
 
 
 def _parse_source_entry(entry: str) -> dict | None:
@@ -200,31 +226,12 @@ def _resolve_auth(args: argparse.Namespace) -> tuple[str | None, dict]:
 
 def _is_rate_limit_error(exc: Exception) -> bool:
     message = str(exc).lower()
-    return any(
-        token in message
-        for token in (
-            "rate limit",
-            "quota exceeded",
-            "resource_exhausted",
-            "429",
-        )
-    )
+    return any(token in message for token in RATE_LIMIT_TOKENS)
 
 
 def _is_auth_error(exc: Exception) -> bool:
     message = str(exc).lower()
-    return any(
-        token in message
-        for token in (
-            "authentication expired",
-            "auth expired",
-            "auth invalid",
-            "invalid authentication",
-            "not logged in",
-            "run 'notebooklm login'",
-            "redirected to",
-        )
-    )
+    return any(token in message for token in AUTH_TOKENS)
 
 
 def _order_profile_names(profiles: dict[str, str], preferred: str | None) -> list[str]:
@@ -237,6 +244,95 @@ def _order_profile_names(profiles: dict[str, str], preferred: str | None) -> lis
         if name not in ordered:
             ordered.append(name)
     return ordered
+
+
+def _parse_priority_list(value: str | None) -> list[str]:
+    if not value:
+        return []
+    items: list[str] = []
+    for raw in value.split(","):
+        item = raw.strip()
+        if item and item not in items:
+            items.append(item)
+    return items
+
+
+def _profile_state_path() -> Path:
+    home_override = os.environ.get("NOTEBOOKLM_HOME")
+    if home_override:
+        return Path(home_override).expanduser() / "profile_state.json"
+    return Path.home() / ".notebooklm" / "profile_state.json"
+
+
+def _load_profile_state(path: Path) -> dict:
+    if not path.exists():
+        return {"profiles": {}}
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        print(f"Warning: invalid profile state file {path}; ignoring.")
+        return {"profiles": {}}
+    if not isinstance(payload, dict):
+        return {"profiles": {}}
+    profiles = payload.get("profiles")
+    if not isinstance(profiles, dict):
+        payload["profiles"] = {}
+    return payload
+
+
+def _save_profile_state(path: Path, state: dict) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    tmp = path.with_suffix(path.suffix + ".tmp")
+    tmp.write_text(json.dumps(state, indent=2) + "\n", encoding="utf-8")
+    tmp.replace(path)
+
+
+def _profile_state_entry(state: dict, profile: str) -> dict:
+    profiles = state.setdefault("profiles", {})
+    entry = profiles.get(profile)
+    if not isinstance(entry, dict):
+        entry = {}
+        profiles[profile] = entry
+    return entry
+
+
+def _profile_last_used(state: dict, profile: str) -> float:
+    entry = _profile_state_entry(state, profile)
+    try:
+        return float(entry.get("last_used", 0))
+    except (TypeError, ValueError):
+        return 0.0
+
+
+def _record_profile_result(
+    state: dict,
+    profile: str,
+    *,
+    success: bool,
+    error_type: str | None,
+    cooldown_seconds: int | None,
+) -> None:
+    entry = _profile_state_entry(state, profile)
+    now = time.time()
+    entry["last_used"] = now
+    if success:
+        entry["success_count"] = int(entry.get("success_count", 0)) + 1
+        entry["last_error"] = None
+        entry["cooldown_until"] = 0
+    else:
+        entry["failure_count"] = int(entry.get("failure_count", 0)) + 1
+        entry["last_error"] = error_type
+        if cooldown_seconds:
+            until = now + cooldown_seconds
+            entry["cooldown_until"] = max(float(entry.get("cooldown_until", 0)), until)
+
+
+def _classify_error(exc: Exception) -> str:
+    if _is_rate_limit_error(exc):
+        return "rate_limit"
+    if _is_auth_error(exc):
+        return "auth"
+    return "other"
 
 
 def _parse_profile_list(value: str | None) -> set[str]:
@@ -268,6 +364,9 @@ def _build_auth_candidates(args: argparse.Namespace) -> list[tuple[str | None, d
     profiles_path: Path | None = None
     profiles: dict[str, str] | None = None
     preferred: str | None = None
+    priority_list = _parse_priority_list(getattr(args, "profile_priority", None))
+    state_path = _profile_state_path()
+    profile_state = _load_profile_state(state_path)
 
     if args.profile:
         profiles_path = _resolve_profiles_path(args)
@@ -318,6 +417,18 @@ def _build_auth_candidates(args: argparse.Namespace) -> list[tuple[str | None, d
         elif preferred_override:
             print(f"Warning: preferred profile '{preferred_override}' not found; ignoring.")
 
+    missing_profiles = [
+        name for name, path in profiles.items() if not Path(path).expanduser().exists()
+    ]
+    if missing_profiles:
+        print(
+            "Warning: storage file not found for profiles: "
+            f"{', '.join(sorted(missing_profiles))}. Skipping."
+        )
+        profiles = {name: path for name, path in profiles.items() if name not in missing_profiles}
+        if args.profile and args.profile in missing_profiles:
+            raise ValueError(f"Profile '{args.profile}' storage file is missing.")
+
     exclude_profiles = _parse_profile_list(getattr(args, "exclude_profiles", None))
     if exclude_profiles:
         filtered = {name: path for name, path in profiles.items() if name not in exclude_profiles}
@@ -328,10 +439,45 @@ def _build_auth_candidates(args: argparse.Namespace) -> list[tuple[str | None, d
         else:
             print("Warning: all profiles excluded; ignoring --exclude-profiles.")
 
+    now = time.time()
+    cooldown_profiles = [
+        name
+        for name in profiles
+        if float(_profile_state_entry(profile_state, name).get("cooldown_until", 0)) > now
+    ]
+    if cooldown_profiles:
+        print(
+            "Skipping profiles on cooldown: "
+            f"{', '.join(sorted(cooldown_profiles))}"
+        )
+        profiles = {name: path for name, path in profiles.items() if name not in cooldown_profiles}
+        if args.profile and args.profile in cooldown_profiles:
+            raise ValueError(f"Profile '{args.profile}' is on cooldown.")
+
+    if not profiles:
+        raise ValueError("No usable profiles found after filtering missing/cooldown entries.")
+
     if rotate_allowed:
-        names = _order_profile_names(profiles, preferred)
+        ordered: list[str] = []
+        for name in priority_list:
+            if name in profiles and name not in ordered:
+                ordered.append(name)
+        if preferred and preferred in profiles and preferred not in ordered:
+            ordered.append(preferred)
+        remaining = [name for name in profiles if name not in ordered]
+        remaining.sort(key=lambda name: (_profile_last_used(profile_state, name), name))
+        ordered.extend(remaining)
+        names = ordered
     else:
-        if preferred:
+        if priority_list:
+            name = next((item for item in priority_list if item in profiles), None)
+            if name:
+                names = [name]
+            elif preferred:
+                names = [preferred]
+            else:
+                names = [sorted(profiles)[0]]
+        elif preferred:
             names = [preferred]
         else:
             names = [sorted(profiles)[0]]
@@ -421,20 +567,26 @@ def _build_request_payload(
     sources: list[dict],
     auth_meta: dict,
 ) -> dict:
-    return {
+    payload = {
         "created_at": created_at,
         "notebook_id": notebook_id,
         "notebook_title": notebook_title,
         "artifact_id": artifact_id,
         "output_path": str(output_path),
+        "artifact_type": args.artifact_type,
         "instructions": args.instructions,
-        "audio_format": args.audio_format,
-        "audio_length": args.audio_length,
         "language": args.language,
         "sources": sources,
         "sources_file": args.sources_file,
         "auth": auth_meta,
     }
+    if args.artifact_type == "audio":
+        payload["audio_format"] = args.audio_format
+        payload["audio_length"] = args.audio_length
+    if args.artifact_type == "infographic":
+        payload["infographic_orientation"] = args.infographic_orientation
+        payload["infographic_detail"] = args.infographic_detail
+    return payload
 
 
 def _print_profiles(args: argparse.Namespace) -> None:
@@ -460,6 +612,28 @@ def _audio_length(value: str) -> AudioLength:
         "short": AudioLength.SHORT,
         "default": AudioLength.DEFAULT,
         "long": AudioLength.LONG,
+    }
+    return mapping[value]
+
+
+def _infographic_orientation(value: str | None) -> InfographicOrientation | None:
+    if not value:
+        return None
+    mapping = {
+        "landscape": InfographicOrientation.LANDSCAPE,
+        "portrait": InfographicOrientation.PORTRAIT,
+        "square": InfographicOrientation.SQUARE,
+    }
+    return mapping[value]
+
+
+def _infographic_detail(value: str | None) -> InfographicDetail | None:
+    if not value:
+        return None
+    mapping = {
+        "concise": InfographicDetail.CONCISE,
+        "standard": InfographicDetail.STANDARD,
+        "detailed": InfographicDetail.DETAILED,
     }
     return mapping[value]
 
@@ -686,6 +860,48 @@ async def _generate_audio_with_retry(
     raise last_exc or RuntimeError("generate_audio failed")
 
 
+async def _generate_infographic_with_retry(
+    client: NotebookLMClient,
+    notebook_id: str,
+    *,
+    instructions: str,
+    language: str,
+    orientation: InfographicOrientation | None,
+    detail_level: InfographicDetail | None,
+    retries: int,
+    backoff: float,
+):
+    last_exc: Exception | None = None
+    for attempt in range(retries + 1):
+        try:
+            status = await client.artifacts.generate_infographic(
+                notebook_id,
+                instructions=instructions,
+                orientation=orientation,
+                detail_level=detail_level,
+                language=language,
+            )
+            if not status.task_id:
+                if getattr(status, "error", None):
+                    raise RuntimeError(status.error)
+                raise RuntimeError("No artifact id returned from generate_infographic")
+            return status
+        except Exception as exc:
+            last_exc = exc
+            if _is_rate_limit_error(exc):
+                break
+            if attempt >= retries:
+                break
+            delay = backoff * (2**attempt)
+            print(
+                f"Generate infographic failed (attempt {attempt + 1}/{retries + 1}): {exc}. "
+                f"Retrying in {delay:.1f}s"
+            )
+            await asyncio.sleep(delay)
+
+    raise last_exc or RuntimeError("generate_infographic failed")
+
+
 async def _generate_podcast(args: argparse.Namespace) -> int:
     base_output_path = Path(args.output).expanduser()
     sources = _load_sources(args.source, args.sources_file)
@@ -693,10 +909,13 @@ async def _generate_podcast(args: argparse.Namespace) -> int:
         raise ValueError("Provide at least one source via --source or --sources-file")
 
     candidates = _build_auth_candidates(args)
+    state_path = _profile_state_path()
+    profile_state = _load_profile_state(state_path)
     rotation_attempts: list[dict] = []
     last_exc: Exception | None = None
     last_output_path: Path | None = None
     last_auth_meta: dict | None = None
+    last_used_profile: str | None = None
 
     for idx, (storage_path, auth_meta) in enumerate(candidates, start=1):
         output_path = _ensure_unique_output_path(base_output_path, auth_meta)
@@ -743,19 +962,50 @@ async def _generate_podcast(args: argparse.Namespace) -> int:
                         timeout=args.source_timeout,
                     )
 
-                print("Generating audio overview...")
-                status = await _generate_audio_with_retry(
-                    client,
-                    nb.id,
-                    instructions=args.instructions,
-                    audio_format=_audio_format(args.audio_format),
-                    audio_length=_audio_length(args.audio_length),
-                    language=args.language,
-                    retries=args.artifact_retries,
-                    backoff=args.artifact_retry_backoff,
-                )
+                print(f"Generating {args.artifact_type}...")
+                if args.artifact_type == "audio":
+                    status = await _generate_audio_with_retry(
+                        client,
+                        nb.id,
+                        instructions=args.instructions,
+                        audio_format=_audio_format(args.audio_format),
+                        audio_length=_audio_length(args.audio_length),
+                        language=args.language,
+                        retries=args.artifact_retries,
+                        backoff=args.artifact_retry_backoff,
+                    )
+                elif args.artifact_type == "infographic":
+                    status = await _generate_infographic_with_retry(
+                        client,
+                        nb.id,
+                        instructions=args.instructions,
+                        language=args.language,
+                        orientation=_infographic_orientation(args.infographic_orientation),
+                        detail_level=_infographic_detail(args.infographic_detail),
+                        retries=args.artifact_retries,
+                        backoff=args.artifact_retry_backoff,
+                    )
+                else:
+                    raise RuntimeError(f"Unsupported artifact type: {args.artifact_type}")
         except Exception as exc:
             last_exc = exc
+            last_used_profile = auth_meta.get("profile")
+            error_type = _classify_error(exc)
+            cooldown = (
+                RATE_LIMIT_COOLDOWN_SECONDS
+                if error_type == "rate_limit"
+                else AUTH_COOLDOWN_SECONDS
+                if error_type == "auth"
+                else None
+            )
+            if last_used_profile:
+                _record_profile_result(
+                    profile_state,
+                    last_used_profile,
+                    success=False,
+                    error_type=error_type,
+                    cooldown_seconds=cooldown,
+                )
             retryable = args.rotate_on_rate_limit and (
                 _is_rate_limit_error(exc) or _is_auth_error(exc)
             )
@@ -766,6 +1016,7 @@ async def _generate_podcast(args: argparse.Namespace) -> int:
                         "storage_path": auth_meta.get("storage_path"),
                         "source": auth_meta.get("source"),
                         "error": str(exc),
+                        "error_type": error_type,
                     }
                 )
                 reason = "rate limit" if _is_rate_limit_error(exc) else "auth"
@@ -795,6 +1046,7 @@ async def _generate_podcast(args: argparse.Namespace) -> int:
             )
             print(f"Generation failed: {exc}")
             print(f"Wrote error log: {error_log}")
+            _save_profile_state(state_path, profile_state)
             return 2
 
         if not args.wait:
@@ -805,27 +1057,35 @@ async def _generate_podcast(args: argparse.Namespace) -> int:
             print(
                 "To wait later:\n"
                 f"  notebooklm artifact wait {status.task_id} -n {nb.id}\n"
-                f"  notebooklm download audio {output_path} -a {status.task_id} -n {nb.id}"
+                f"  notebooklm download {args.artifact_type} {output_path} -a {status.task_id} -n {nb.id}"
             )
 
             request_log = output_path.with_suffix(output_path.suffix + ".request.json")
-            request_log.write_text(
-                json.dumps(
-                    _build_request_payload(
-                        created_at=datetime.now(timezone.utc).isoformat(),
-                        notebook_id=nb.id,
-                        notebook_title=nb.title,
-                        artifact_id=status.task_id,
-                        output_path=output_path,
-                        args=args,
-                        sources=sources,
-                        auth_meta=auth_meta,
-                    ),
-                    indent=2,
+            if auth_meta.get("profile"):
+                _record_profile_result(
+                    profile_state,
+                    auth_meta["profile"],
+                    success=True,
+                    error_type=None,
+                    cooldown_seconds=None,
                 )
-                + "\n",
+            payload = _build_request_payload(
+                created_at=datetime.now(timezone.utc).isoformat(),
+                notebook_id=nb.id,
+                notebook_title=nb.title,
+                artifact_id=status.task_id,
+                output_path=output_path,
+                args=args,
+                sources=sources,
+                auth_meta=auth_meta,
+            )
+            if rotation_attempts:
+                payload["rotation_attempts"] = rotation_attempts
+            request_log.write_text(
+                json.dumps(payload, indent=2) + "\n",
                 encoding="utf-8",
             )
+            _save_profile_state(state_path, profile_state)
             return 0
 
         final = await client.artifacts.wait_for_completion(
@@ -837,34 +1097,52 @@ async def _generate_podcast(args: argparse.Namespace) -> int:
 
         if not final.is_complete:
             print(f"Generation failed: status={final.status} error={final.error}")
+            _save_profile_state(state_path, profile_state)
             return 2
 
-        await client.artifacts.download_audio(
-            nb.id,
-            str(output_path),
-            artifact_id=final.task_id,
-        )
+        if args.artifact_type == "audio":
+            await client.artifacts.download_audio(
+                nb.id,
+                str(output_path),
+                artifact_id=final.task_id,
+            )
+        elif args.artifact_type == "infographic":
+            await client.artifacts.download_infographic(
+                nb.id,
+                str(output_path),
+                artifact_id=final.task_id,
+            )
+        else:
+            raise RuntimeError(f"Unsupported artifact type: {args.artifact_type}")
 
         request_log = output_path.with_suffix(output_path.suffix + ".request.json")
-        request_log.write_text(
-            json.dumps(
-                _build_request_payload(
-                    created_at=datetime.now(timezone.utc).isoformat(),
-                    notebook_id=nb.id,
-                    notebook_title=nb.title,
-                    artifact_id=final.task_id,
-                    output_path=output_path,
-                    args=args,
-                    sources=sources,
-                    auth_meta=auth_meta,
-                ),
-                indent=2,
+        if auth_meta.get("profile"):
+            _record_profile_result(
+                profile_state,
+                auth_meta["profile"],
+                success=True,
+                error_type=None,
+                cooldown_seconds=None,
             )
-            + "\n",
+        payload = _build_request_payload(
+            created_at=datetime.now(timezone.utc).isoformat(),
+            notebook_id=nb.id,
+            notebook_title=nb.title,
+            artifact_id=final.task_id,
+            output_path=output_path,
+            args=args,
+            sources=sources,
+            auth_meta=auth_meta,
+        )
+        if rotation_attempts:
+            payload["rotation_attempts"] = rotation_attempts
+        request_log.write_text(
+            json.dumps(payload, indent=2) + "\n",
             encoding="utf-8",
         )
 
-        print(f"Podcast saved to: {output_path}")
+        print(f"Artifact saved to: {output_path}")
+        _save_profile_state(state_path, profile_state)
         return 0
 
     if last_exc and last_output_path and last_auth_meta:
@@ -890,11 +1168,14 @@ async def _generate_podcast(args: argparse.Namespace) -> int:
         )
         print(f"Generation failed: {last_exc}")
         print(f"Wrote error log: {error_log}")
+        _save_profile_state(state_path, profile_state)
         return 2
 
     return 2
+
+
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Generate a NotebookLM podcast from sources.")
+    parser = argparse.ArgumentParser(description="Generate a NotebookLM artifact from sources.")
     parser.add_argument(
         "--source",
         action="append",
@@ -921,6 +1202,12 @@ def main() -> int:
         help="Generation instructions passed to NotebookLM.",
     )
     parser.add_argument(
+        "--artifact-type",
+        choices=["audio", "infographic"],
+        default="audio",
+        help="Artifact type to generate.",
+    )
+    parser.add_argument(
         "--audio-format",
         choices=["deep-dive", "brief", "critique", "debate"],
         default="deep-dive",
@@ -933,6 +1220,16 @@ def main() -> int:
         help="Audio overview length.",
     )
     parser.add_argument(
+        "--infographic-orientation",
+        choices=["landscape", "portrait", "square"],
+        help="Infographic orientation.",
+    )
+    parser.add_argument(
+        "--infographic-detail",
+        choices=["concise", "standard", "detailed"],
+        help="Infographic detail level.",
+    )
+    parser.add_argument(
         "--language",
         default="en",
         help="Output language code.",
@@ -940,7 +1237,7 @@ def main() -> int:
     parser.add_argument(
         "--output",
         default="output/podcast.mp3",
-        help="Output path for the MP3 file.",
+        help="Output path for the artifact file.",
     )
     parser.add_argument(
         "--skip-existing",
@@ -950,7 +1247,7 @@ def main() -> int:
     parser.add_argument(
         "--wait",
         action="store_true",
-        help="Wait for generation to complete and download the audio.",
+        help="Wait for generation to complete and download the artifact.",
     )
     parser.add_argument(
         "--storage",
@@ -963,6 +1260,10 @@ def main() -> int:
     parser.add_argument(
         "--preferred-profile",
         help="Profile name to try first when rotating across profiles.",
+    )
+    parser.add_argument(
+        "--profile-priority",
+        help="Comma-separated profile names to try first (takes precedence over preferred).",
     )
     parser.add_argument(
         "--profiles-file",
@@ -1008,7 +1309,7 @@ def main() -> int:
         "--generation-timeout",
         type=float,
         default=900,
-        help="Seconds to wait for podcast generation.",
+        help="Seconds to wait for artifact generation.",
     )
     parser.add_argument(
         "--artifact-retries",

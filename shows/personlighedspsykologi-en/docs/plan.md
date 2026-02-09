@@ -35,8 +35,8 @@
 
 ## Highlighting / important readings
 - `important_text_mode` is `week_x_only`.
-- Only file names starting with `W## X` will be highlighted as `[Gul tekst]`.
-- Reading map uses `W## X` prefixes; rename files to match when ready.
+- Only file names starting with `W##L# X` will be highlighted as `[Gul tekst]`.
+- Reading map uses `W##L# X` prefixes; rename files to match when ready.
 - Important readings currently prefixed with `X` in OneDrive are overridden in `shows/personlighedspsykologi-en/episode_metadata.json` to add an `X` to titles and append an "Important reading" note.
 
 ## Missing-file skip policy
@@ -70,7 +70,7 @@ Weekly overview skips:
 
 ## Next execution steps (pending)
 1. Sync OneDrive readings into `notebooklm-podcast-auto/personlighedspsykologi/sources/W## …`.
-2. Apply filename renames for `W## X` highlights and `[Brief]` variants.
+2. Apply filename renames for `W##L# X` highlights and `[Brief]` variants.
 3. Generate audio via NotebookLM (non-blocking) and record `artifact_id`s.
 4. Download completed MP3s.
 5. Upload MP3s to Drive week folders.

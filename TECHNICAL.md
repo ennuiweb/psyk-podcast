@@ -75,7 +75,7 @@ If you want those week labels to follow the *semester* calendar instead of ISO w
 range are computed from that start date so two lectures in the same real week share the same label.
 
 ### Highlighting important readings
-The Socialpsykologi deep-dive feed uses `[Tekst] …` as the default prefix for readings. For this show we set `important_text_docs`, `important_text_mode: "week_x_only"`, and `only_doc_marked_important: true`, so **only** entries in `docs/reading-file-key.md` that use the `W7 X …` naming convention become highlighted – the generator simply looks for `W<week-number> X` at the start of the Drive filename and swaps `[Tekst]` for `[Gul tekst]`.
+The Socialpsykologi deep-dive feed uses `[Tekst] …` as the default prefix for readings. For this show we set `important_text_docs`, `important_text_mode: "week_x_only"`, and `only_doc_marked_important: true`, so **only** entries in `docs/reading-file-key.md` that use the `W7L1 X …` naming convention become highlighted – the generator simply looks for `W<week-number>L<lecture-number> X` (or `W<week-number> X`) at the start of the Drive filename and swaps `[Tekst]` for `[Gul tekst]`.
 
 If you clear `only_doc_marked_important` (or set `important_text_mode` back to `all_markers`) the broader heuristics return, meaning meta overrides (`important: true`, `priority: "high"`), Drive stars/app properties, and folder names containing words such as “Gul”/“Important” will once again flag a file.
 

@@ -93,7 +93,7 @@ DOC_IMPORTANT_INLINE_MARKERS = (
 DOC_CALLOUT_PATTERN = re.compile(
     r"\[!\s*(important|warning|attention|prioritet|priority|vigtig)\b", re.IGNORECASE
 )
-WEEK_X_PREFIX_PATTERN = re.compile(r"^w\d+\s+x\b", re.IGNORECASE)
+WEEK_X_PREFIX_PATTERN = re.compile(r"^w\d+(?:l\d+)?\s+x\b", re.IGNORECASE)
 
 
 def load_json(path: Path) -> Dict[str, Any]:
@@ -560,6 +560,7 @@ class AutoSpec:
                     meta["course_week"] = rule["course_week"]
                 if rule.get("topic"):
                     topic = str(rule["topic"])
+                    meta.setdefault("topic", topic)
                     summary = f"Topic of the week: {topic}"
                     meta.setdefault("summary", summary)
                 return meta
@@ -810,10 +811,10 @@ def format_semester_week_range(
     return f"Uge {week_number} {week_start_date:%d/%m} - {week_end_date:%d/%m}"
 
 
-def derive_semester_week_label(
+def semester_week_info(
     published_at: Optional[dt.datetime],
     semester_start: Optional[str],
-) -> Optional[str]:
+) -> Optional[Tuple[int, dt.date, dt.date]]:
     if not published_at or not semester_start:
         return None
     try:
@@ -827,6 +828,19 @@ def derive_semester_week_label(
     if delta_days < 0:
         return None
     week_number = delta_days // 7 + 1
+    week_start_date = start_date + dt.timedelta(days=(week_number - 1) * 7)
+    week_end_date = week_start_date + dt.timedelta(days=6)
+    return week_number, week_start_date, week_end_date
+
+
+def derive_semester_week_label(
+    published_at: Optional[dt.datetime],
+    semester_start: Optional[str],
+) -> Optional[str]:
+    info = semester_week_info(published_at, semester_start)
+    if not info:
+        return None
+    week_number, _, _ = info
     return f"Week {week_number}"
 
 
@@ -1077,6 +1091,54 @@ def _replace_text_prefix(value: str, *, require_start: bool) -> Tuple[str, bool]
     return updated, True
 
 
+WEEK_LECTURE_PATTERN = re.compile(r"\bw(\d{2})l(\d+)\b", re.IGNORECASE)
+BRIEF_PREFIX_PATTERN = re.compile(r"^\[brief\]\s*", re.IGNORECASE)
+WEEK_PREFIX_PATTERN = re.compile(r"^w\d{2}l\d+\s*[-–:]\s*", re.IGNORECASE)
+WEEK_ONLY_PREFIX_PATTERN = re.compile(r"^w\d{2}\s*[-–:]\s*", re.IGNORECASE)
+
+
+def extract_week_lecture(
+    folder_names: Optional[List[str]],
+    file_name: Optional[str],
+) -> Tuple[Optional[int], Optional[int]]:
+    candidates = []
+    if folder_names:
+        candidates.extend(folder_names)
+    if file_name:
+        candidates.append(file_name)
+    for candidate in candidates:
+        match = WEEK_LECTURE_PATTERN.search(candidate)
+        if match:
+            return int(match.group(1)), int(match.group(2))
+    return None, None
+
+
+def strip_week_prefix(value: str) -> str:
+    if not value:
+        return value
+    cleaned = WEEK_PREFIX_PATTERN.sub("", value)
+    cleaned = WEEK_ONLY_PREFIX_PATTERN.sub("", cleaned)
+    return cleaned.strip()
+
+
+def strip_brief_prefix(value: str) -> str:
+    if not value:
+        return value
+    return BRIEF_PREFIX_PATTERN.sub("", value).strip()
+
+
+def extract_topic(meta: Dict[str, Any]) -> Optional[str]:
+    topic = meta.get("topic")
+    if isinstance(topic, str) and topic.strip():
+        return topic.strip()
+    summary = meta.get("summary")
+    if isinstance(summary, str):
+        lowered = summary.lower()
+        if lowered.startswith("topic of the week:"):
+            return summary.split(":", 1)[1].strip()
+    return None
+
+
 def build_episode_entry(
     file_entry: Dict[str, Any],
     feed_config: Dict[str, Any],
@@ -1119,27 +1181,80 @@ def build_episode_entry(
             f"Missing publish timestamp for Drive file '{file_entry.get('id')}'"
         )
     published_at = parse_datetime(pubdate_source)
+
+    language = str(feed_config.get("language", "")).lower()
+    is_english = language.startswith("en")
+    en_suffix = " [EN]" if is_english else ""
+    has_en_suffix = "[en]" in base_title.casefold()
+    _, lecture_number = extract_week_lecture(folder_names, file_entry.get("name"))
+    semester_start = feed_config.get("semester_week_start_date")
+    semester_info = semester_week_info(published_at, semester_start)
+    week_label = None
+    week_number = None
+    if semester_info:
+        week_number, week_start, week_end = semester_info
+        week_label = f"Week {week_number} (Uge {week_number} {week_start:%d/%m} - {week_end:%d/%m})"
+    if not week_label:
+        week_label = derive_week_label(folder_names or [], meta.get("course_week"))
+        if week_label:
+            week_year_token = meta.get("week_reference_year")
+            try:
+                week_year = int(week_year_token) if week_year_token is not None else None
+            except (TypeError, ValueError):
+                week_year = None
+            week_dates = format_week_range(published_at, week_year)
+            if week_dates:
+                week_label = f"{week_label} ({week_dates})"
+
+    raw_title = base_title
+    raw_lower = raw_title.casefold()
+    is_brief = "[brief]" in raw_lower
+    is_weekly_overview = "alle kilder" in raw_lower or "all sources" in raw_lower
+    cleaned_title = _strip_text_prefix(raw_title)
+    cleaned_title = strip_brief_prefix(cleaned_title)
+    cleaned_title = strip_week_prefix(cleaned_title)
+    cleaned_title = cleaned_title.strip()
+
+    if is_weekly_overview:
+        cleaned_subject = re.sub(r"\b(alle kilder|all sources)\b", "", cleaned_title, flags=re.IGNORECASE)
+        cleaned_subject = cleaned_subject.strip(" -–:")
+    else:
+        cleaned_subject = cleaned_title
+
+    topic = extract_topic(meta)
+    if is_weekly_overview:
+        display_subject = topic or cleaned_subject or cleaned_title or raw_title
+    else:
+        display_subject = cleaned_subject or cleaned_title or raw_title
+
+    if is_brief:
+        type_label = "Brief"
+    elif is_weekly_overview:
+        type_label = "All sources" if is_english else "Alle kilder"
+    else:
+        type_label = "Reading" if is_english else "Læsning"
+
+    important_label = "IMPORTANT" if is_english else "VIGTIG"
+    important_tag = f" · {important_label}" if important else ""
+
     if not meta.get("title"):
         if suppress_week_prefix:
-            meta["title"] = base_title
+            meta["title"] = display_subject or raw_title
         else:
-            semester_start = feed_config.get("semester_week_start_date")
-            week_label = derive_semester_week_label(published_at, semester_start)
-            if not week_label:
-                week_label = derive_week_label(folder_names or [], meta.get("course_week"))
-            if week_label and not base_title.lower().startswith("week"):
-                week_year_token = meta.get("week_reference_year")
-                try:
-                    week_year = int(week_year_token) if week_year_token is not None else None
-                except (TypeError, ValueError):
-                    week_year = None
-                if semester_start:
-                    week_dates = format_semester_week_range(published_at, semester_start)
-                else:
-                    week_dates = format_week_range(published_at, week_year)
-                if week_dates:
-                    week_label = f"{week_label} ({week_dates})"
-                meta["title"] = f"{week_label}: {base_title}"
+            segments = []
+            if week_label:
+                segments.append(week_label)
+            if lecture_number:
+                segments.append(f"L{lecture_number}")
+            segments.append(type_label)
+            if display_subject:
+                segments.append(display_subject)
+            title_value = " · ".join(segment for segment in segments if segment)
+            if important:
+                title_value = f"{title_value}{important_tag}"
+            if is_english and not has_en_suffix and not title_value.endswith(en_suffix):
+                title_value = f"{title_value}{en_suffix}"
+            meta["title"] = title_value
     title_value = meta.get("title") or base_title
     if important and prefix_replaced:
         updated_title, title_changed = _replace_text_prefix(title_value, require_start=False)
@@ -1156,14 +1271,42 @@ def build_episode_entry(
     description = meta.get("description")
     summary = meta.get("summary")
     if not description:
-        parts = []
-        if narrator:
-            parts.append(f"Narrator: {narrator}")
-        if summary:
-            parts.append(summary)
-        if not parts:
-            parts.append(base_title)
-        description = " ".join(parts)
+        format_label = "brief" if is_brief else "deep-dive"
+        language_label = "EN" if is_english else "DA"
+        text_label = (type_label if is_weekly_overview else (display_subject or cleaned_title or raw_title))
+        if is_english:
+            parts = []
+            if week_number:
+                parts.append(f"Semester week {week_number}")
+            if lecture_number:
+                parts.append(f"Lecture {lecture_number}")
+            if narrator:
+                parts.append(f"Narrator: {narrator}")
+            if topic:
+                parts.append(f"Topic: {topic}")
+            parts.append(f"Type: {type_label}")
+            if text_label:
+                parts.append(f"Text: {text_label}")
+            parts.append(f"Important: {'yes' if important else 'no'}")
+            parts.append(f"Format: {format_label}")
+            parts.append(f"Language: {language_label}")
+        else:
+            parts = []
+            if week_number:
+                parts.append(f"Semesteruge {week_number}")
+            if lecture_number:
+                parts.append(f"Forelæsning {lecture_number}")
+            if narrator:
+                parts.append(f"Narrator: {narrator}")
+            if topic:
+                parts.append(f"Emne: {topic}")
+            parts.append(f"Type: {type_label}")
+            if text_label:
+                parts.append(f"Tekst: {text_label}")
+            parts.append(f"Vigtigt: {'ja' if important else 'nej'}")
+            parts.append(f"Format: {format_label}")
+            parts.append(f"Sprog: {language_label}")
+        description = " · ".join(part for part in parts if part)
         meta["description"] = description
 
     explicit_default = feed_config.get("default_explicit", False)

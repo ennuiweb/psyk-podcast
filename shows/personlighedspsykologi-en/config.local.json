@@ -6,6 +6,13 @@
   "allowed_mime_types": [
     "audio/"
   ],
+  "episode_image_from_infographics": true,
+  "episode_image_mime_types": [
+    "image/png"
+  ],
+  "episode_image_prefer_exts": [
+    ".png"
+  ],
   "transcode": {
     "enabled": true,
     "source_mime_types": [

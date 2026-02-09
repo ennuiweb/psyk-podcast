@@ -9,7 +9,7 @@ import json
 import re
 import sys
 from pathlib import Path
-from typing import Any, Dict, Iterable, List, Optional, Set, Tuple
+from typing import Any, Dict, Iterable, List, Optional, Sequence, Set, Tuple
 from zoneinfo import ZoneInfo
 
 from google.oauth2 import service_account
@@ -170,18 +170,19 @@ def _build_mime_query(filters: Optional[Iterable[str]]) -> str:
     return "(" + " or ".join(clauses) + ")"
 
 
-def list_audio_files(
+def list_drive_files(
     service,
     folder_id: str,
     *,
     drive_id: Optional[str] = None,
     supports_all_drives: bool = False,
     mime_type_filters: Optional[Iterable[str]] = None,
+    fields: Optional[str] = None,
 ) -> List[Dict[str, Any]]:
     files: List[Dict[str, Any]] = []
     pending: List[str] = [folder_id]
     seen: Set[str] = set()
-    audio_fields = (
+    file_fields = fields or (
         "nextPageToken, files(id,name,mimeType,size,modifiedTime,createdTime,md5Checksum,parents,starred,properties,appProperties)"
     )
     folder_fields = "nextPageToken, files(id,name)"
@@ -199,7 +200,7 @@ def list_audio_files(
             _drive_list(
                 service,
                 query=query,
-                fields=audio_fields,
+                fields=file_fields,
                 drive_id=drive_id,
                 supports_all_drives=supports_all_drives,
             )
@@ -224,12 +225,59 @@ def list_audio_files(
     return files
 
 
+def list_audio_files(
+    service,
+    folder_id: str,
+    *,
+    drive_id: Optional[str] = None,
+    supports_all_drives: bool = False,
+    mime_type_filters: Optional[Iterable[str]] = None,
+) -> List[Dict[str, Any]]:
+    return list_drive_files(
+        service,
+        folder_id,
+        drive_id=drive_id,
+        supports_all_drives=supports_all_drives,
+        mime_type_filters=mime_type_filters,
+    )
+
+
 def _listify(value: Any) -> List[str]:
     if value is None:
         return []
     if isinstance(value, (list, tuple, set)):
         return [str(item) for item in value if item is not None]
     return [str(value)]
+
+
+def _normalize_stem(name: str) -> str:
+    return Path(name).stem.casefold().strip()
+
+
+def _folder_key(folder_names: List[str]) -> Tuple[str, ...]:
+    return tuple(part.casefold() for part in folder_names if part is not None)
+
+
+def _extension_rank(name: str, preferred_exts: Sequence[str]) -> int:
+    ext = Path(name).suffix.casefold()
+    for index, preferred in enumerate(preferred_exts):
+        if ext == preferred:
+            return index
+    return len(preferred_exts)
+
+
+def _select_preferred_image(
+    current: Optional[Dict[str, Any]],
+    candidate: Dict[str, Any],
+    preferred_exts: Sequence[str],
+) -> Dict[str, Any]:
+    if current is None:
+        return candidate
+    if _extension_rank(candidate.get("name", ""), preferred_exts) < _extension_rank(
+        current.get("name", ""), preferred_exts
+    ):
+        return candidate
+    return current
 
 
 def _compile_regex_list(values: Any) -> List[re.Pattern]:
@@ -1147,12 +1195,15 @@ def build_episode_entry(
     auto_meta: Optional[Dict[str, Any]] = None,
     folder_names: Optional[List[str]] = None,
     doc_marked_titles: Optional[Set[str]] = None,
+    episode_image_url: Optional[str] = None,
 ) -> Dict[str, Any]:
     meta: Dict[str, Any] = {}
     if auto_meta:
         meta.update(auto_meta)
     manual_meta = item_metadata(overrides, file_entry) or {}
     meta.update(manual_meta)
+    if episode_image_url and not meta.get("image"):
+        meta["image"] = episode_image_url
     suppress_week_prefix = bool(meta.get("suppress_week_prefix"))
     narrator = meta.get("narrator")
     if not narrator:
@@ -1475,6 +1526,48 @@ def main() -> None:
                 resolved_docs, mode=doc_marked_titles_mode
             )
 
+    folder_metadata_cache: Dict[str, Dict[str, Any]] = {}
+    folder_path_cache: Dict[str, List[str]] = {}
+
+    image_lookup: Dict[Tuple[Tuple[str, ...], str], Dict[str, Any]] = {}
+    if bool(config.get("episode_image_from_infographics", False)):
+        image_mime_types = config.get("episode_image_mime_types") or ["image/png"]
+        if isinstance(image_mime_types, str):
+            image_mime_types = [image_mime_types]
+        preferred_exts = config.get("episode_image_prefer_exts") or [".png"]
+        if isinstance(preferred_exts, str):
+            preferred_exts = [preferred_exts]
+        preferred_exts = [
+            ext if ext.startswith(".") else f".{ext}"
+            for ext in (str(ext).lower() for ext in preferred_exts)
+        ]
+        image_files = list_drive_files(
+            drive_service,
+            folder_id,
+            drive_id=shared_drive_id,
+            supports_all_drives=supports_all_drives,
+            mime_type_filters=image_mime_types,
+        )
+        for image_file in image_files:
+            parents = image_file.get("parents") or []
+            folder_names: List[str] = []
+            if parents:
+                folder_names = build_folder_path(
+                    drive_service,
+                    parents[0],
+                    folder_metadata_cache,
+                    folder_path_cache,
+                    root_folder_id=folder_id,
+                    supports_all_drives=supports_all_drives,
+                )
+            stem = _normalize_stem(image_file.get("name", ""))
+            if not stem:
+                continue
+            key = (_folder_key(folder_names), stem)
+            image_lookup[key] = _select_preferred_image(
+                image_lookup.get(key), image_file, preferred_exts
+            )
+
     drive_files = list_audio_files(
         drive_service,
         folder_id,
@@ -1484,8 +1577,6 @@ def main() -> None:
     )
 
     episodes: List[Dict[str, Any]] = []
-    folder_metadata_cache: Dict[str, Dict[str, Any]] = {}
-    folder_path_cache: Dict[str, List[str]] = {}
     for drive_file in drive_files:
         parents = drive_file.get("parents") or []
         folder_names: List[str] = []
@@ -1511,6 +1602,27 @@ def main() -> None:
         if permission_added:
             print(f"Enabled link sharing for {drive_file['name']} ({drive_file['id']})")
 
+        episode_image_url: Optional[str] = None
+        if image_lookup:
+            image_key = (_folder_key(folder_names), _normalize_stem(drive_file.get("name", "")))
+            image_file = image_lookup.get(image_key)
+            if image_file:
+                artwork_permission_added = ensure_public_permission(
+                    drive_service,
+                    image_file["id"],
+                    dry_run=args.dry_run,
+                    supports_all_drives=supports_all_drives,
+                    skip_permission_updates=skip_permission_updates,
+                )
+                if artwork_permission_added:
+                    print(
+                        "Enabled link sharing for artwork "
+                        f"{image_file['name']} ({image_file['id']})"
+                    )
+                episode_image_url = public_template.format(
+                    file_id=image_file["id"], file_name=image_file["name"]
+                )
+
         auto_meta = auto_spec.metadata_for(drive_file, folder_names) if auto_spec else None
         episodes.append(
             build_episode_entry(
@@ -1521,6 +1633,7 @@ def main() -> None:
                 auto_meta=auto_meta,
                 folder_names=folder_names,
                 doc_marked_titles=doc_marked_titles,
+                episode_image_url=episode_image_url,
             )
         )
 

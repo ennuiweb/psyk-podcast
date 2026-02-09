@@ -258,7 +258,10 @@ def _listify(value: Any) -> List[str]:
         return [str(item) for item in value if item is not None]
     return [str(value)]
 
-WEEK_PREFIX_PATTERN = re.compile(r"^(W0*(\d{1,2})L0*(\d{1,2}))\\b[\\s._-]*", re.IGNORECASE)
+CANONICAL_WEEK_LECTURE_PREFIX_PATTERN = re.compile(
+    r"^(?P<full>w0*(?P<week>\d{1,2})l0*(?P<lecture>\d+))\b[\s._-]*",
+    re.IGNORECASE,
+)
 
 
 def _normalize_stem(name: str) -> str:
@@ -270,24 +273,24 @@ def _canonicalize_episode_stem(name: str) -> str:
     if not stem:
         return ""
     stem = stem.replace("–", "-").replace("—", "-")
-    stem = re.sub(r"\\.{2,}", ".", stem)
-    stem = re.sub(r"\\s+", " ", stem).strip()
-    match = WEEK_PREFIX_PATTERN.match(stem)
+    stem = re.sub(r"\.{2,}", ".", stem)
+    stem = re.sub(r"\s+", " ", stem).strip()
+    match = CANONICAL_WEEK_LECTURE_PREFIX_PATTERN.match(stem)
     if not match:
         return stem.casefold()
-    week = int(match.group(2))
-    lesson = int(match.group(3))
+    week = int(match.group("week"))
+    lesson = int(match.group("lecture"))
     remainder = stem[match.end() :].strip()
     if remainder:
-        dup = WEEK_PREFIX_PATTERN.match(remainder)
-        if dup and int(dup.group(2)) == week and int(dup.group(3)) == lesson:
+        dup = CANONICAL_WEEK_LECTURE_PREFIX_PATTERN.match(remainder)
+        if dup and int(dup.group("week")) == week and int(dup.group("lecture")) == lesson:
             remainder = remainder[dup.end() :].strip()
-    canonical_week = f"W{week}L{lesson}"
+    canonical_week = f"W{week:02d}L{lesson}"
     if remainder:
         stem = f"{canonical_week} - {remainder}"
     else:
         stem = canonical_week
-    stem = re.sub(r"\\s+", " ", stem).strip()
+    stem = re.sub(r"\s+", " ", stem).strip()
     return stem.casefold()
 
 
@@ -622,8 +625,12 @@ class AutoSpec:
                 {
                     f"w{iso_week}",
                     f"w{iso_week:02d}",
+                    f"w {iso_week}",
+                    f"w {iso_week:02d}",
                     f"week {iso_week}",
                     f"week {iso_week:02d}",
+                    f"week{iso_week}",
+                    f"week{iso_week:02d}",
                     str(iso_week),
                     f"{iso_week:02d}",
                 }

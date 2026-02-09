@@ -52,7 +52,12 @@ class AutoSpecMatchingTests(unittest.TestCase):
         self.assertIsNotNone(meta)
         self.assertEqual(meta.get("course_week"), 6)
 
+    def test_canonicalize_episode_stem_strips_duplicate_week_tokens(self):
+        mod = _load_feed_module()
+        value = "W01L2 - W1L2 Phan et al..... (2024) [EN].png"
+        # Canonical form keeps a single padded week token and collapses repeated dots.
+        self.assertEqual(mod._canonicalize_episode_stem(value), "w01l2 - phan et al. (2024) [en]")
+
 
 if __name__ == "__main__":
     unittest.main()
-

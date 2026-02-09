@@ -1257,7 +1257,7 @@ def build_episode_entry(
     summary = meta.get("summary")
     if not description:
         format_label = "brief" if is_brief else "deep-dive"
-        text_label = (type_label if is_weekly_overview else (display_subject or cleaned_title or raw_title))
+        text_label = display_subject or cleaned_title or raw_title
         parts = []
         if important:
             parts.append("VIGTIG TEXT")

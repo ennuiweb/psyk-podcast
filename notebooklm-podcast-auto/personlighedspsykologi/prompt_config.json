@@ -21,23 +21,29 @@
     "prompt": "",
     "title_prefix": "[Brief]"
   },
+  "quiz": {
+    "difficulty": "medium",
+    "quantity": "standard",
+    "format": "html",
+    "prompt": ""
+  },
   "infographic": {
-    "orientation": "portrait",
+    "orientation": "square",
     "detail": "detailed",
     "prompt": ""
   },
   "weekly_infographic": {
-    "orientation": "portrait",
+    "orientation": "square",
     "detail": "detailed",
     "prompt": ""
   },
   "per_reading_infographic": {
-    "orientation": "portrait",
+    "orientation": "square",
     "detail": "detailed",
     "prompt": ""
   },
   "brief_infographic": {
-    "orientation": "portrait",
+    "orientation": "square",
     "detail": "Concise",
     "prompt": ""
   }

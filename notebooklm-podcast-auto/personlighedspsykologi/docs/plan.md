@@ -26,6 +26,8 @@
   - Name prefix: `[Brief]`
 - Infographics: generated when `--content-types` includes `infographic`.
   - Orientation/detail/prompt: from `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json` (`infographic`, `weekly_infographic`, `per_reading_infographic`, `brief_infographic`).
+- Quizzes: generated when `--content-types` includes `quiz`.
+  - Difficulty/quantity/format/prompt: from `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json` (`quiz`).
  - Language variants: generate **Danish + English** for all episodes.
    - Config: `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json` → `languages`
    - English naming: adds suffix ` [EN]` to file names and notebook titles.
@@ -135,6 +137,7 @@ Optional flags:
 - Per-reading: `notebooklm-podcast-auto/personlighedspsykologi/output/W##/W## - <reading>.mp3`
 - Brief (Grundbog): `notebooklm-podcast-auto/personlighedspsykologi/output/W##/[Brief] W## - <reading>.mp3`
 - Infographics use the same base names with `.png`.
+- Quizzes use the same base names with `.json` (or `.md` / `.html` based on `quiz.format`).
 - English variants add ` [EN]` before the extension.
 - Non-blocking request log: `notebooklm-podcast-auto/personlighedspsykologi/output/W##/*.mp3.request.json` / `*.png.request.json`
 - Failed generation error log: `notebooklm-podcast-auto/personlighedspsykologi/output/W##/*.mp3.request.error.json` / `*.png.request.error.json`

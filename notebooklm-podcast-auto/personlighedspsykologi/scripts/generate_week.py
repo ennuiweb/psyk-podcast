@@ -207,7 +207,7 @@ def ensure_dict(value: object | None) -> dict:
 def parse_content_types(value: str | None) -> list[str]:
     if not value:
         return ["audio"]
-    allowed = {"audio", "infographic"}
+    allowed = {"audio", "infographic", "quiz"}
     items: list[str] = []
     for raw in value.split(","):
         item = raw.strip().lower()
@@ -224,7 +224,50 @@ def parse_content_types(value: str | None) -> list[str]:
     return items
 
 
-def output_extension(content_type: str) -> str:
+def normalize_quiz_quantity(value: str | None) -> str | None:
+    if not value:
+        return None
+    normalized = value.strip().lower()
+    allowed = {"fewer", "standard", "more"}
+    if normalized not in allowed:
+        raise SystemExit(
+            f"Unknown quiz quantity '{value}'. Allowed: {', '.join(sorted(allowed))}."
+        )
+    return normalized
+
+
+def normalize_quiz_difficulty(value: str | None) -> str | None:
+    if not value:
+        return None
+    normalized = value.strip().lower()
+    allowed = {"easy", "medium", "hard"}
+    if normalized not in allowed:
+        raise SystemExit(
+            f"Unknown quiz difficulty '{value}'. Allowed: {', '.join(sorted(allowed))}."
+        )
+    return normalized
+
+
+def normalize_quiz_format(value: str | None) -> str:
+    if not value:
+        return "json"
+    normalized = value.strip().lower()
+    allowed = {"json", "markdown", "html"}
+    if normalized not in allowed:
+        raise SystemExit(
+            f"Unknown quiz format '{value}'. Allowed: {', '.join(sorted(allowed))}."
+        )
+    return normalized
+
+
+def output_extension(content_type: str, *, quiz_format: str | None = None) -> str:
+    if content_type == "quiz":
+        mapping = {
+            "json": ".json",
+            "markdown": ".md",
+            "html": ".html",
+        }
+        return mapping[normalize_quiz_format(quiz_format)]
     mapping = {
         "audio": ".mp3",
         "infographic": ".png",
@@ -407,6 +450,9 @@ def run_generate(
     infographic_orientation: str | None,
     infographic_detail: str | None,
     language: str | None,
+    quiz_quantity: str | None,
+    quiz_difficulty: str | None,
+    quiz_format: str | None,
     output_path: Path,
     wait: bool,
     skip_existing: bool,
@@ -447,6 +493,13 @@ def run_generate(
             cmd.extend(["--infographic-orientation", infographic_orientation])
         if infographic_detail:
             cmd.extend(["--infographic-detail", infographic_detail])
+    elif artifact_type == "quiz":
+        if quiz_quantity:
+            cmd.extend(["--quiz-quantity", quiz_quantity])
+        if quiz_difficulty:
+            cmd.extend(["--quiz-difficulty", quiz_difficulty])
+        if quiz_format:
+            cmd.extend(["--quiz-format", quiz_format])
     if language:
         cmd.extend(["--language", language])
     if sources_file:
@@ -520,7 +573,7 @@ def main() -> int:
     )
     parser.add_argument(
         "--content-types",
-        help="Comma-separated content types to generate (audio, infographic). Default: audio.",
+        help="Comma-separated content types to generate (audio, infographic, quiz). Default: audio.",
     )
     parser.add_argument(
         "--output-root",
@@ -673,6 +726,10 @@ def main() -> int:
     weekly_infographic_cfg = ensure_dict(config.get("weekly_infographic", infographic_defaults))
     per_infographic_cfg = ensure_dict(config.get("per_reading_infographic", infographic_defaults))
     brief_infographic_cfg = ensure_dict(config.get("brief_infographic", infographic_defaults))
+    quiz_cfg = ensure_dict(config.get("quiz"))
+    quiz_quantity = normalize_quiz_quantity(quiz_cfg.get("quantity"))
+    quiz_difficulty = normalize_quiz_difficulty(quiz_cfg.get("difficulty"))
+    quiz_format = normalize_quiz_format(quiz_cfg.get("format"))
 
     request_logs: list[Path] = []
     failures: list[str] = []
@@ -708,7 +765,7 @@ def main() -> int:
             weekly_base = f"{week_label} - Alle kilder"
             if not missing:
                 for content_type in content_types:
-                    weekly_output = week_output_dir / f"{weekly_base}{output_extension(content_type)}"
+                    weekly_output = week_output_dir / f"{weekly_base}{output_extension(content_type, quiz_format=quiz_format)}"
                     for variant in language_variants:
                         planned_path = ensure_unique_output_path(
                             apply_path_suffix(weekly_output, variant["suffix"]),
@@ -719,7 +776,7 @@ def main() -> int:
                         )
             else:
                 for content_type in content_types:
-                    weekly_output = week_output_dir / f"{weekly_base}{output_extension(content_type)}"
+                    weekly_output = week_output_dir / f"{weekly_base}{output_extension(content_type, quiz_format=quiz_format)}"
                     planned_lines.append(
                         f"SKIP WEEKLY {content_type.upper()} (missing readings): {weekly_output}"
                     )
@@ -728,7 +785,7 @@ def main() -> int:
                 base_name = source.stem
                 per_base = f"{week_label} - {base_name}"
                 for content_type in content_types:
-                    per_output = week_output_dir / f"{per_base}{output_extension(content_type)}"
+                    per_output = week_output_dir / f"{per_base}{output_extension(content_type, quiz_format=quiz_format)}"
                     for variant in language_variants:
                         planned_path = ensure_unique_output_path(
                             apply_path_suffix(per_output, variant["suffix"]),
@@ -741,7 +798,7 @@ def main() -> int:
                     title_prefix = brief_cfg.get("title_prefix", "[Brief]")
                     brief_base = f"{title_prefix} {week_label} - {base_name}"
                     for content_type in content_types:
-                        brief_output = week_output_dir / f"{brief_base}{output_extension(content_type)}"
+                        brief_output = week_output_dir / f"{brief_base}{output_extension(content_type, quiz_format=quiz_format)}"
                         for variant in language_variants:
                             planned_path = ensure_unique_output_path(
                                 apply_path_suffix(brief_output, variant["suffix"]),
@@ -764,7 +821,7 @@ def main() -> int:
                     encoding="utf-8",
                 )
                 for content_type in content_types:
-                    weekly_output = week_output_dir / f"{weekly_base}{output_extension(content_type)}"
+                    weekly_output = week_output_dir / f"{weekly_base}{output_extension(content_type, quiz_format=quiz_format)}"
                     for variant in language_variants:
                         output_path = ensure_unique_output_path(
                             apply_path_suffix(weekly_output, variant["suffix"]),
@@ -790,7 +847,10 @@ def main() -> int:
                             audio_length = weekly_cfg.get("length", "long")
                             infographic_orientation = None
                             infographic_detail = None
-                        else:
+                            quiz_quantity_arg = None
+                            quiz_difficulty_arg = None
+                            quiz_format_arg = None
+                        elif content_type == "infographic":
                             instructions = ensure_prompt(
                                 "weekly_infographic", weekly_infographic_cfg.get("prompt", "")
                             )
@@ -798,6 +858,18 @@ def main() -> int:
                             audio_length = None
                             infographic_orientation = weekly_infographic_cfg.get("orientation")
                             infographic_detail = weekly_infographic_cfg.get("detail")
+                            quiz_quantity_arg = None
+                            quiz_difficulty_arg = None
+                            quiz_format_arg = None
+                        else:
+                            instructions = ensure_prompt("quiz", quiz_cfg.get("prompt", ""))
+                            audio_format = None
+                            audio_length = None
+                            infographic_orientation = None
+                            infographic_detail = None
+                            quiz_quantity_arg = quiz_quantity
+                            quiz_difficulty_arg = quiz_difficulty
+                            quiz_format_arg = quiz_format
                         try:
                             run_generate(
                                 Path(sys.executable),
@@ -814,6 +886,9 @@ def main() -> int:
                                 audio_length=audio_length,
                                 infographic_orientation=infographic_orientation,
                                 infographic_detail=infographic_detail,
+                                quiz_quantity=quiz_quantity_arg,
+                                quiz_difficulty=quiz_difficulty_arg,
+                                quiz_format=quiz_format_arg,
                                 language=variant["code"],
                                 output_path=output_path,
                                 wait=args.wait,
@@ -859,7 +934,7 @@ def main() -> int:
             base_name = source.stem
             per_base = f"{week_label} - {base_name}"
             for content_type in content_types:
-                per_output = week_output_dir / f"{per_base}{output_extension(content_type)}"
+                per_output = week_output_dir / f"{per_base}{output_extension(content_type, quiz_format=quiz_format)}"
                 for variant in language_variants:
                     output_path = ensure_unique_output_path(
                         apply_path_suffix(per_output, variant["suffix"]),
@@ -883,7 +958,10 @@ def main() -> int:
                         audio_length = per_cfg.get("length", "default")
                         infographic_orientation = None
                         infographic_detail = None
-                    else:
+                        quiz_quantity_arg = None
+                        quiz_difficulty_arg = None
+                        quiz_format_arg = None
+                    elif content_type == "infographic":
                         instructions = ensure_prompt(
                             "per_reading_infographic", per_infographic_cfg.get("prompt", "")
                         )
@@ -891,6 +969,18 @@ def main() -> int:
                         audio_length = None
                         infographic_orientation = per_infographic_cfg.get("orientation")
                         infographic_detail = per_infographic_cfg.get("detail")
+                        quiz_quantity_arg = None
+                        quiz_difficulty_arg = None
+                        quiz_format_arg = None
+                    else:
+                        instructions = ensure_prompt("quiz", quiz_cfg.get("prompt", ""))
+                        audio_format = None
+                        audio_length = None
+                        infographic_orientation = None
+                        infographic_detail = None
+                        quiz_quantity_arg = quiz_quantity
+                        quiz_difficulty_arg = quiz_difficulty
+                        quiz_format_arg = quiz_format
                     try:
                         run_generate(
                             Path(sys.executable),
@@ -907,6 +997,9 @@ def main() -> int:
                             audio_length=audio_length,
                             infographic_orientation=infographic_orientation,
                             infographic_detail=infographic_detail,
+                            quiz_quantity=quiz_quantity_arg,
+                            quiz_difficulty=quiz_difficulty_arg,
+                            quiz_format=quiz_format_arg,
                             language=variant["code"],
                             output_path=output_path,
                             wait=args.wait,
@@ -948,7 +1041,7 @@ def main() -> int:
                 title_prefix = brief_cfg.get("title_prefix", "[Brief]")
                 brief_base = f"{title_prefix} {week_label} - {base_name}"
                 for content_type in content_types:
-                    brief_output = week_output_dir / f"{brief_base}{output_extension(content_type)}"
+                    brief_output = week_output_dir / f"{brief_base}{output_extension(content_type, quiz_format=quiz_format)}"
                     for variant in language_variants:
                         output_path = ensure_unique_output_path(
                             apply_path_suffix(brief_output, variant["suffix"]),
@@ -972,7 +1065,10 @@ def main() -> int:
                             audio_length = None
                             infographic_orientation = None
                             infographic_detail = None
-                        else:
+                            quiz_quantity_arg = None
+                            quiz_difficulty_arg = None
+                            quiz_format_arg = None
+                        elif content_type == "infographic":
                             instructions = ensure_prompt(
                                 "brief_infographic", brief_infographic_cfg.get("prompt", "")
                             )
@@ -980,6 +1076,18 @@ def main() -> int:
                             audio_length = None
                             infographic_orientation = brief_infographic_cfg.get("orientation")
                             infographic_detail = brief_infographic_cfg.get("detail")
+                            quiz_quantity_arg = None
+                            quiz_difficulty_arg = None
+                            quiz_format_arg = None
+                        else:
+                            instructions = ensure_prompt("quiz", quiz_cfg.get("prompt", ""))
+                            audio_format = None
+                            audio_length = None
+                            infographic_orientation = None
+                            infographic_detail = None
+                            quiz_quantity_arg = quiz_quantity
+                            quiz_difficulty_arg = quiz_difficulty
+                            quiz_format_arg = quiz_format
                         try:
                             run_generate(
                                 Path(sys.executable),
@@ -996,6 +1104,9 @@ def main() -> int:
                                 audio_length=audio_length,
                                 infographic_orientation=infographic_orientation,
                                 infographic_detail=infographic_detail,
+                                quiz_quantity=quiz_quantity_arg,
+                                quiz_difficulty=quiz_difficulty_arg,
+                                quiz_format=quiz_format_arg,
                                 language=variant["code"],
                                 output_path=output_path,
                                 wait=args.wait,
@@ -1047,16 +1158,18 @@ def main() -> int:
             artifact_type = payload.get("artifact_type") or "audio"
             if not (notebook_id and artifact_id and output_path):
                 continue
-            if artifact_type not in {"audio", "infographic"}:
+            if artifact_type not in {"audio", "infographic", "quiz"}:
                 continue
             cli = shlex.quote(str(notebooklm_cli))
             out = shlex.quote(str(output_path))
+            quiz_format = payload.get("quiz_format")
             commands.append(
                 f"{cli} artifact wait {artifact_id} -n {notebook_id}"
             )
-            commands.append(
-                f"{cli} download {artifact_type} {out} -a {artifact_id} -n {notebook_id}"
-            )
+            download_cmd = f"{cli} download {artifact_type} {out} -a {artifact_id} -n {notebook_id}"
+            if artifact_type == "quiz" and quiz_format:
+                download_cmd = f"{download_cmd} --format {quiz_format}"
+            commands.append(download_cmd)
 
         if commands:
             print("\n# Wait + download commands")

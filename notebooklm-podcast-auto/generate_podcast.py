@@ -16,6 +16,8 @@ from notebooklm.rpc.types import (
     AudioLength,
     InfographicDetail,
     InfographicOrientation,
+    QuizDifficulty,
+    QuizQuantity,
 )
 
 RATE_LIMIT_TOKENS = (
@@ -586,6 +588,10 @@ def _build_request_payload(
     if args.artifact_type == "infographic":
         payload["infographic_orientation"] = args.infographic_orientation
         payload["infographic_detail"] = args.infographic_detail
+    if args.artifact_type == "quiz":
+        payload["quiz_quantity"] = args.quiz_quantity
+        payload["quiz_difficulty"] = args.quiz_difficulty
+        payload["quiz_format"] = args.quiz_format
     return payload
 
 
@@ -634,6 +640,28 @@ def _infographic_detail(value: str | None) -> InfographicDetail | None:
         "concise": InfographicDetail.CONCISE,
         "standard": InfographicDetail.STANDARD,
         "detailed": InfographicDetail.DETAILED,
+    }
+    return mapping[value]
+
+
+def _quiz_quantity(value: str | None) -> QuizQuantity | None:
+    if not value:
+        return None
+    mapping = {
+        "fewer": QuizQuantity.FEWER,
+        "standard": QuizQuantity.STANDARD,
+        "more": QuizQuantity.MORE,
+    }
+    return mapping[value]
+
+
+def _quiz_difficulty(value: str | None) -> QuizDifficulty | None:
+    if not value:
+        return None
+    mapping = {
+        "easy": QuizDifficulty.EASY,
+        "medium": QuizDifficulty.MEDIUM,
+        "hard": QuizDifficulty.HARD,
     }
     return mapping[value]
 
@@ -902,6 +930,46 @@ async def _generate_infographic_with_retry(
     raise last_exc or RuntimeError("generate_infographic failed")
 
 
+async def _generate_quiz_with_retry(
+    client: NotebookLMClient,
+    notebook_id: str,
+    *,
+    instructions: str,
+    quantity: QuizQuantity | None,
+    difficulty: QuizDifficulty | None,
+    retries: int,
+    backoff: float,
+):
+    last_exc: Exception | None = None
+    for attempt in range(retries + 1):
+        try:
+            status = await client.artifacts.generate_quiz(
+                notebook_id,
+                instructions=instructions or None,
+                quantity=quantity,
+                difficulty=difficulty,
+            )
+            if not status.task_id:
+                if getattr(status, "error", None):
+                    raise RuntimeError(status.error)
+                raise RuntimeError("No artifact id returned from generate_quiz")
+            return status
+        except Exception as exc:
+            last_exc = exc
+            if _is_rate_limit_error(exc):
+                break
+            if attempt >= retries:
+                break
+            delay = backoff * (2**attempt)
+            print(
+                f"Generate quiz failed (attempt {attempt + 1}/{retries + 1}): {exc}. "
+                f"Retrying in {delay:.1f}s"
+            )
+            await asyncio.sleep(delay)
+
+    raise last_exc or RuntimeError("generate_quiz failed")
+
+
 async def _generate_podcast(args: argparse.Namespace) -> int:
     base_output_path = Path(args.output).expanduser()
     sources = _load_sources(args.source, args.sources_file)
@@ -985,6 +1053,16 @@ async def _generate_podcast(args: argparse.Namespace) -> int:
                         retries=args.artifact_retries,
                         backoff=args.artifact_retry_backoff,
                     )
+                elif args.artifact_type == "quiz":
+                    status = await _generate_quiz_with_retry(
+                        client,
+                        nb.id,
+                        instructions=args.instructions,
+                        quantity=_quiz_quantity(args.quiz_quantity),
+                        difficulty=_quiz_difficulty(args.quiz_difficulty),
+                        retries=args.artifact_retries,
+                        backoff=args.artifact_retry_backoff,
+                    )
                 else:
                     raise RuntimeError(f"Unsupported artifact type: {args.artifact_type}")
         except Exception as exc:
@@ -1054,10 +1132,16 @@ async def _generate_podcast(args: argparse.Namespace) -> int:
                 "Generation started (non-blocking). "
                 f"notebook_id={nb.id} artifact_id={status.task_id}"
             )
+            download_cmd = (
+                f"  notebooklm download {args.artifact_type} {output_path} "
+                f"-a {status.task_id} -n {nb.id}"
+            )
+            if args.artifact_type == "quiz" and args.quiz_format:
+                download_cmd = f"{download_cmd} --format {args.quiz_format}"
             print(
                 "To wait later:\n"
                 f"  notebooklm artifact wait {status.task_id} -n {nb.id}\n"
-                f"  notebooklm download {args.artifact_type} {output_path} -a {status.task_id} -n {nb.id}"
+                f"{download_cmd}"
             )
 
             request_log = output_path.with_suffix(output_path.suffix + ".request.json")
@@ -1111,6 +1195,13 @@ async def _generate_podcast(args: argparse.Namespace) -> int:
                 nb.id,
                 str(output_path),
                 artifact_id=final.task_id,
+            )
+        elif args.artifact_type == "quiz":
+            await client.artifacts.download_quiz(
+                nb.id,
+                str(output_path),
+                artifact_id=final.task_id,
+                output_format=args.quiz_format,
             )
         else:
             raise RuntimeError(f"Unsupported artifact type: {args.artifact_type}")
@@ -1203,7 +1294,7 @@ def main() -> int:
     )
     parser.add_argument(
         "--artifact-type",
-        choices=["audio", "infographic"],
+        choices=["audio", "infographic", "quiz"],
         default="audio",
         help="Artifact type to generate.",
     )
@@ -1228,6 +1319,22 @@ def main() -> int:
         "--infographic-detail",
         choices=["concise", "standard", "detailed"],
         help="Infographic detail level.",
+    )
+    parser.add_argument(
+        "--quiz-quantity",
+        choices=["fewer", "standard", "more"],
+        help="Quiz question quantity.",
+    )
+    parser.add_argument(
+        "--quiz-difficulty",
+        choices=["easy", "medium", "hard"],
+        help="Quiz difficulty.",
+    )
+    parser.add_argument(
+        "--quiz-format",
+        choices=["json", "markdown", "html"],
+        default="json",
+        help="Quiz download format (json, markdown, html).",
     )
     parser.add_argument(
         "--language",

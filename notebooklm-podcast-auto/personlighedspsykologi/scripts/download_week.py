@@ -25,7 +25,7 @@ def parse_weeks(week: str | None, weeks: str | None) -> list[str]:
 def parse_content_types(value: str | None) -> list[str]:
     if not value:
         return ["audio"]
-    allowed = {"audio", "infographic"}
+    allowed = {"audio", "infographic", "quiz"}
     items: list[str] = []
     for raw in value.split(","):
         item = raw.strip().lower()
@@ -40,6 +40,20 @@ def parse_content_types(value: str | None) -> list[str]:
     if not items:
         raise SystemExit("No valid content types provided.")
     return items
+
+
+def normalize_quiz_format(value: str | None) -> str | None:
+    if not value:
+        return None
+    normalized = str(value).strip().lower()
+    allowed = {"json", "markdown", "html"}
+    if normalized not in allowed:
+        print(
+            f"Warning: unknown quiz format '{value}'. "
+            f"Expected one of: {', '.join(sorted(allowed))}. Defaulting to json."
+        )
+        return "json"
+    return normalized
 
 
 def find_week_dirs(root: Path, week: str) -> list[Path]:
@@ -325,6 +339,7 @@ def wait_and_download(
     timeout: int | None,
     interval: int | None,
     storage_path: str | None,
+    output_format: str | None,
 ) -> tuple[bool, str]:
     if output_path.exists() and output_path.stat().st_size > 0:
         print(f"Skipping existing: {output_path}")
@@ -357,6 +372,8 @@ def wait_and_download(
             notebook_id,
         ],
     )
+    if artifact_type == "quiz" and output_format:
+        download_cmd.extend(["--format", output_format])
     ok, output = run_cmd(download_cmd)
     if not ok:
         if is_auth_error(output):
@@ -386,7 +403,14 @@ def main() -> int:
     )
     parser.add_argument(
         "--content-types",
-        help="Comma-separated content types to download (audio, infographic). Default: audio.",
+        help="Comma-separated content types to download (audio, infographic, quiz). Default: audio.",
+    )
+    parser.add_argument(
+        "--quiz-format",
+        "--format",
+        dest="quiz_format",
+        choices=["json", "markdown", "html"],
+        help="Override quiz output format (json, markdown, html).",
     )
     parser.add_argument(
         "--output-root",
@@ -502,12 +526,13 @@ def main() -> int:
             output_path = payload.get("output_path")
             artifact_type = payload.get("artifact_type") or "audio"
             log_auth = payload.get("auth") if isinstance(payload.get("auth"), dict) else None
+            quiz_format = normalize_quiz_format(args.quiz_format or payload.get("quiz_format"))
             if not (notebook_id and artifact_id and output_path):
                 print(f"Skipping malformed log: {log_path}")
                 continue
             if artifact_type not in content_types:
                 continue
-            if artifact_type not in {"audio", "infographic"}:
+            if artifact_type not in {"audio", "infographic", "quiz"}:
                 print(f"Skipping unsupported artifact type '{artifact_type}' in {log_path}")
                 continue
 
@@ -525,6 +550,8 @@ def main() -> int:
             if args.dry_run:
                 print(f"WAIT: {artifact_id} (notebook {notebook_id})")
                 print(f"DOWNLOAD ({artifact_type}): {output_file}")
+                if artifact_type == "quiz" and quiz_format:
+                    print(f"FORMAT (quiz): {quiz_format}")
                 for storage_path, auth_source in candidates:
                     print(f"AUTH: {auth_source} -> {storage_path or 'default'}")
                 continue
@@ -563,6 +590,7 @@ def main() -> int:
                     args.timeout,
                     args.interval,
                     storage_path,
+                    quiz_format if artifact_type == "quiz" else None,
                 )
                 if ok:
                     success = True

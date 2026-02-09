@@ -69,7 +69,7 @@ For text-to-speech feeds we transcode large WAV uploads the same way—adding `a
 Shows can point `auto_spec` at a JSON file that maps Drive folder labels to calendar weeks. The Socialpsykologi Deep Dives - Hold 1 - 2024 show ships with `shows/social-psychology/auto_spec.json`, generated from the teaching plan PDF. Each rule ties folder names like `W4 The Self` (anything that contains `w4`) to ISO week 39 of 2024 and sets a Monday 10:00 CET release, spacing additional recordings for that week by 120 minutes. Future recordings dropped into the matching `W*` folders automatically inherit the correct `published_at` timestamp without editing `episode_metadata.json`.
 
 When an episode inherits its publish date from the auto spec (or otherwise lacks a manual title override), the feed generator now formats titles as:
-`L{lecture} · {Type} · (Uge {n} dd/mm - dd/mm)`.
+`Week {n}, Lecture {lecture} · {Type} · (Uge {n} dd/mm - dd/mm)`.
 
 If you want those week ranges to follow the *semester* calendar instead of ISO weeks, set
 `feed.semester_week_start_date` (YYYY-MM-DD). When present, `Uge N dd/mm - dd/mm`

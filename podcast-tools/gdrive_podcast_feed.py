@@ -1232,8 +1232,12 @@ def build_episode_entry(
 
     if not meta.get("title"):
         segments = []
-        if lecture_number:
-            segments.append(f"L{lecture_number}")
+        if week_number and lecture_number:
+            segments.append(f"Week {week_number}, Lecture {lecture_number}")
+        elif lecture_number:
+            segments.append(f"Lecture {lecture_number}")
+        elif week_number:
+            segments.append(f"Week {week_number}")
         if type_label:
             segments.append(type_label)
         if week_range_label:

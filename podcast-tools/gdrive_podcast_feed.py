@@ -1260,15 +1260,18 @@ def build_episode_entry(
     description = meta.get("description")
     summary = meta.get("summary")
     if not description:
-        format_label = "brief" if is_brief else "deep-dive"
         text_label = display_subject or cleaned_title or raw_title
+        if is_brief:
+            descriptor = "Textbook Chapter"
+        elif is_weekly_overview:
+            descriptor = "All sources"
+        else:
+            descriptor = "Reading"
         parts = []
-        if important:
-            parts.append("VIGTIG TEXT")
-        parts.append(f"Format: {format_label}")
         if text_label:
-            parts.append(f"Text: {text_label}")
-        parts.append(f"Type: {type_label}")
+            parts.append(f"{descriptor}: {text_label}")
+        else:
+            parts.append(descriptor)
         if topic:
             parts.append(f"Topic: {topic}")
         if lecture_number:

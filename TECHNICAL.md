@@ -76,7 +76,7 @@ If you want those week ranges to follow the *semester* calendar instead of ISO w
 is computed from that start date so two lectures in the same real week share the same label.
 
 Default descriptions (when no manual override exists) now follow this order, joined with ` · `:
-`VIGTIG TEXT` (only if important), `Format: …`, `Text: …`, `Type: …`, `Topic: …`, `Lecture …`, `Semester week …`.
+`Reading/Textbook Chapter/All sources: …`, `Topic: …`, `Lecture …`, `Semester week …`.
 
 ### Highlighting important readings
 The Socialpsykologi deep-dive feed uses `[Tekst] …` as the default prefix for readings. For this show we set `important_text_docs`, `important_text_mode: "week_x_only"`, and `only_doc_marked_important: true`, so **only** entries in `docs/reading-file-key.md` that use the `W7L1 X …` naming convention become highlighted – the generator simply looks for `W<week-number>L<lecture-number> X` (or `W<week-number> X`) at the start of the Drive filename and swaps `[Tekst]` for `[Gul tekst]`.

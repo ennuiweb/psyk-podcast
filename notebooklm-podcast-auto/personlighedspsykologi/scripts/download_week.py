@@ -22,6 +22,26 @@ def parse_weeks(week: str | None, weeks: str | None) -> list[str]:
     return items
 
 
+def parse_content_types(value: str | None) -> list[str]:
+    if not value:
+        return ["audio"]
+    allowed = {"audio", "infographic"}
+    items: list[str] = []
+    for raw in value.split(","):
+        item = raw.strip().lower()
+        if not item:
+            continue
+        if item not in allowed:
+            raise SystemExit(
+                f"Unknown content type '{item}'. Allowed: {', '.join(sorted(allowed))}."
+            )
+        if item not in items:
+            items.append(item)
+    if not items:
+        raise SystemExit("No valid content types provided.")
+    return items
+
+
 def find_week_dirs(root: Path, week: str) -> list[Path]:
     week_upper = week.upper()
     if not root.exists():
@@ -175,6 +195,8 @@ def collect_storage_candidates(
     def add(path: str | None, source: str) -> None:
         if path in seen:
             return
+        if path and not Path(path).expanduser().exists():
+            return
         seen.add(path)
         candidates.append((path, source))
 
@@ -240,10 +262,11 @@ def archive_request_log(log_path: Path) -> None:
     else:
         archived = log_path.with_suffix(log_path.suffix + ".done")
     if archived.exists():
-        print(f"Archive already exists, leaving log in place: {archived}")
-        return
-    log_path.rename(archived)
-    print(f"Archived request log: {archived}")
+        archived.unlink()
+        print(f"Deleted existing archive: {archived}")
+    if log_path.exists():
+        log_path.unlink()
+        print(f"Deleted request log: {log_path}")
 
 
 def is_auth_error(output: str) -> bool:
@@ -297,6 +320,7 @@ def wait_and_download(
     notebooklm: Path,
     artifact_id: str,
     notebook_id: str,
+    artifact_type: str,
     output_path: Path,
     timeout: int | None,
     interval: int | None,
@@ -325,7 +349,7 @@ def wait_and_download(
         storage_path,
         [
             "download",
-            "audio",
+            artifact_type,
             str(output_path),
             "-a",
             artifact_id,
@@ -350,7 +374,7 @@ def find_repo_root(start: Path) -> Path:
 
 def main() -> int:
     parser = argparse.ArgumentParser(
-        description="Wait and download all podcasts for a week from request logs."
+        description="Wait and download NotebookLM artifacts for a week from request logs."
     )
     parser.add_argument(
         "--week",
@@ -359,6 +383,10 @@ def main() -> int:
     parser.add_argument(
         "--weeks",
         help="Comma-separated week labels, e.g. W01,W02 (expands to W01L*, W02L*).",
+    )
+    parser.add_argument(
+        "--content-types",
+        help="Comma-separated content types to download (audio, infographic). Default: audio.",
     )
     parser.add_argument(
         "--output-root",
@@ -409,7 +437,7 @@ def main() -> int:
         dest="archive_requests",
         action="store_true",
         default=True,
-        help="Archive request logs after successful download (default).",
+        help="Delete request logs after successful download (default).",
     )
     parser.add_argument(
         "--no-archive-requests",
@@ -418,6 +446,7 @@ def main() -> int:
         help="Keep request logs after successful download.",
     )
     args = parser.parse_args()
+    content_types = parse_content_types(args.content_types)
 
     repo_root = find_repo_root(Path(__file__).resolve())
     output_root = repo_root / args.output_root
@@ -471,9 +500,15 @@ def main() -> int:
             notebook_id = payload.get("notebook_id")
             artifact_id = payload.get("artifact_id")
             output_path = payload.get("output_path")
+            artifact_type = payload.get("artifact_type") or "audio"
             log_auth = payload.get("auth") if isinstance(payload.get("auth"), dict) else None
             if not (notebook_id and artifact_id and output_path):
                 print(f"Skipping malformed log: {log_path}")
+                continue
+            if artifact_type not in content_types:
+                continue
+            if artifact_type not in {"audio", "infographic"}:
+                print(f"Skipping unsupported artifact type '{artifact_type}' in {log_path}")
                 continue
 
             output_file = Path(output_path)
@@ -489,7 +524,7 @@ def main() -> int:
                 continue
             if args.dry_run:
                 print(f"WAIT: {artifact_id} (notebook {notebook_id})")
-                print(f"DOWNLOAD: {output_file}")
+                print(f"DOWNLOAD ({artifact_type}): {output_file}")
                 for storage_path, auth_source in candidates:
                     print(f"AUTH: {auth_source} -> {storage_path or 'default'}")
                 continue
@@ -523,6 +558,7 @@ def main() -> int:
                     notebooklm,
                     artifact_id,
                     notebook_id,
+                    artifact_type,
                     output_file,
                     args.timeout,
                     args.interval,

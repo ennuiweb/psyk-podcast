@@ -24,6 +24,8 @@
   - Prompt: from `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json`
   - Language: from `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json`
   - Name prefix: `[Brief]`
+- Infographics: generated when `--content-types` includes `infographic`.
+  - Orientation/detail/prompt: from `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json` (`infographic`, `weekly_infographic`, `per_reading_infographic`, `brief_infographic`).
  - Language variants: generate **Danish + English** for all episodes.
    - Config: `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json` → `languages`
    - English naming: adds suffix ` [EN]` to file names and notebook titles.
@@ -69,9 +71,9 @@ Weekly overview skips:
 ## Next execution steps (pending)
 1. Sync OneDrive readings into `notebooklm-podcast-auto/personlighedspsykologi/sources/W## …`.
 2. Apply filename renames for `W##L# X` highlights and `[Brief]` variants.
-3. Generate audio via NotebookLM (non-blocking) and record `artifact_id`s.
-4. Download completed MP3s.
-5. Upload MP3s to Drive week folders.
+3. Generate artifacts (audio/infographic) via NotebookLM (non-blocking) and record `artifact_id`s.
+4. Download completed artifacts (MP3/PNG).
+5. Upload MP3s/PNGs to Drive week folders.
 6. Run local feed build for validation.
 
 ## Week generation command
@@ -87,11 +89,17 @@ Multiple weeks in one command:
 ./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_week.py --weeks W01,W02 --profile default
 ```
 
+Generate audio + infographics:
+
+```bash
+./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_week.py --weeks W01,W02 --profile default --content-types audio,infographic
+```
+
 This command:
 - Uses `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json` for prompts/lengths.
 - Skips weekly “Alle kilder” when missing readings are listed for that week.
-- Emits MP3s to `notebooklm-podcast-auto/personlighedspsykologi/output/W##L#/`.
-- Writes a request log per non-blocking episode: `*.mp3.request.json`.
+- Emits MP3s/PNGs to `notebooklm-podcast-auto/personlighedspsykologi/output/W##L#/`.
+- Writes a request log per non-blocking artifact: `*.mp3.request.json` / `*.png.request.json`.
 - Empty prompts are allowed (no validation).
 - Continues on per-episode failures and prints a failure summary at the end (non-zero exit).
  
@@ -100,20 +108,24 @@ Note: passing `--week W01` (or `--weeks W01,W02`) expands to all matching `W01L#
 Optional flags:
 - `--skip-existing` (default) to skip outputs that already exist.
 - `--no-skip-existing` to force re-generation.
+- `--content-types audio,infographic` to control which artifacts are generated (default: audio).
 - `--print-downloads` (default) to print wait/download commands.
 - `--no-print-downloads` to disable printing.
 - `--source-timeout SECONDS` / `--generation-timeout SECONDS` to override timeouts.
 - `--artifact-retries N` / `--artifact-retry-backoff SECONDS` to retry artifact creation (default retries: 2).
 - `--sleep-between SECONDS` to pause between generation requests (default: 2).
-- `--dry-run` to print planned outputs and exit without generating audio.
-- `--print-downloads` to print `artifact wait` + `download audio` commands for this run (requires non-blocking mode).
+- `--dry-run` to print planned outputs and exit without generating artifacts.
+- `--print-downloads` to print `artifact wait` + `download <type>` commands for this run (requires non-blocking mode).
 - `--output-profile-subdir` to nest outputs under a profile-based subdirectory (profile name or storage file stem).
+- Auth failures are quarantined for 60 minutes within a run; rate-limit cooldown uses `--profile-cooldown`.
 - Auth pass-through:
   - `--profile NAME` (uses `profiles.json` from `notebooklm-podcast-auto/` or `--profiles-file`)
   - `--profiles-file PATH` (custom profile map)
   - `--storage PATH` (explicit storage file; cannot be combined with `--profile`)
+- `--profile-priority a,b,c` to control rotation order before LRU fallback.
 - Auto-selection: if no profile is provided, `default` (or the only profile) from `profiles.json` is used automatically. If multiple profiles exist and no default is set, the first profile (or one matching the default storage path) is selected with a warning.
 - Rate-limit/auth rotation: by default, generation retries with the next available profile on rate-limit/auth errors (auto-profile only). Disable with `--no-rotate-on-rate-limit`.
+- Profile usage state is persisted to `~/.notebooklm/profile_state.json` (LRU ordering + cooldowns).
 - Source readiness: generation waits for sources to appear and become ready before creating artifacts. Disable with `--no-ensure-sources-ready`.
 - Notebook titles: when rotating, profile labels are appended to notebook titles. Disable with `--no-append-profile-to-notebook-title`.
 - Request logs: when `--skip-existing` is enabled (default), generation also skips outputs that already have a `.request.json` with an `artifact_id` and no error log.
@@ -122,14 +134,15 @@ Optional flags:
 - Weekly overview: `notebooklm-podcast-auto/personlighedspsykologi/output/W##/W## - Alle kilder.mp3`
 - Per-reading: `notebooklm-podcast-auto/personlighedspsykologi/output/W##/W## - <reading>.mp3`
 - Brief (Grundbog): `notebooklm-podcast-auto/personlighedspsykologi/output/W##/[Brief] W## - <reading>.mp3`
-- English variants add ` [EN]` before `.mp3`.
-- Non-blocking request log: `notebooklm-podcast-auto/personlighedspsykologi/output/W##/*.mp3.request.json`
-- Failed generation error log: `notebooklm-podcast-auto/personlighedspsykologi/output/W##/*.mp3.request.error.json`
+- Infographics use the same base names with `.png`.
+- English variants add ` [EN]` before the extension.
+- Non-blocking request log: `notebooklm-podcast-auto/personlighedspsykologi/output/W##/*.mp3.request.json` / `*.png.request.json`
+- Failed generation error log: `notebooklm-podcast-auto/personlighedspsykologi/output/W##/*.mp3.request.error.json` / `*.png.request.error.json`
 - With `--output-profile-subdir`, outputs are nested under `.../output/<profile>/W##/`.
 - Collision handling: if an output file exists and appears tied to a different auth, a ` [<profile>]` suffix is added automatically to avoid overwrites.
 
 ## Await + download (per week)
-Use request logs to wait for completion and download MP3s, skipping already-downloaded files:
+Use request logs to wait for completion and download artifacts, skipping already-downloaded files:
 
 ```bash
 ./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/download_week.py --week W01L1
@@ -145,7 +158,8 @@ Optional flags:
 - `--timeout SECONDS` / `--interval SECONDS` for wait polling (defaults: 1800 / 15).
 - The downloader now checks artifact status before waiting, and will skip artifacts already marked failed.
 - `--dry-run` to print what would run.
-- Request logs are archived to `*.request.done.json` after a successful download (or when the target file already exists); use `--no-archive-requests` to keep them in place.
+- `--content-types audio,infographic` to control which artifacts are downloaded (default: audio).
+- Request logs are deleted after a successful download (or when the target file already exists); use `--no-archive-requests` to keep them in place.
 - `--output-profile-subdir` to read outputs from a profile-based subdirectory (requires `--profile` or `--storage`).
 - Auth resolution:
   - Uses per-log `auth.storage_path` when present.

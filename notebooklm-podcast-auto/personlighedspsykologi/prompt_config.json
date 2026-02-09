@@ -20,5 +20,25 @@
     "format": "brief",
     "prompt": "",
     "title_prefix": "[Brief]"
+  },
+  "infographic": {
+    "orientation": "portrait",
+    "detail": "detailed",
+    "prompt": ""
+  },
+  "weekly_infographic": {
+    "orientation": "portrait",
+    "detail": "detailed",
+    "prompt": ""
+  },
+  "per_reading_infographic": {
+    "orientation": "portrait",
+    "detail": "detailed",
+    "prompt": ""
+  },
+  "brief_infographic": {
+    "orientation": "portrait",
+    "detail": "Concise",
+    "prompt": ""
   }
 }

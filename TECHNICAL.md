@@ -210,7 +210,7 @@ Wherever you host the feed (GitHub Pages, S3, Netlify, etc.), publish `podcast/r
 - Put per-episode overrides in `podcast/episode_metadata.json` (copy the sample and extend it). Keys can be the file name, or nest under `"by_name"` / `"by_id"` to mix strategies.
 - Add `duration` (seconds or `HH:MM:SS`) so players show runtime.
 - Supply episode-specific `image` URLs for chapters/artwork if desired.
-- To auto-apply infographics as episode artwork, set `episode_image_from_infographics: true` in the show config. The feed builder will look for image files (default: `image/png`) with the same base name in the same Drive folder and use them when no per-episode `image` is set. Optional: `episode_image_mime_types`, `episode_image_prefer_exts`.
+- To auto-apply infographics as episode artwork, set `episode_image_from_infographics: true` in the show config. The feed builder looks for image files (default: `image/png`) with the same base name in the same Drive folder and uses them when no per-episode `image` is set. If no exact folder match exists, it will also consider files with the same base name in ancestor/descendant folders and fall back to a unique match; ambiguous matches are skipped. Optional: `episode_image_mime_types`, `episode_image_prefer_exts`.
 
 ## Troubleshooting
 - The script prints whenever it enables public sharing on a file. Run with `--dry-run` to preview without modifying permissions.

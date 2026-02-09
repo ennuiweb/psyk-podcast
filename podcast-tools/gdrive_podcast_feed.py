@@ -280,6 +280,32 @@ def _select_preferred_image(
     return current
 
 
+def _is_folder_prefix(prefix: Tuple[str, ...], value: Tuple[str, ...]) -> bool:
+    if len(prefix) > len(value):
+        return False
+    return value[: len(prefix)] == prefix
+
+
+def _select_unique_best_candidate(
+    candidates: Sequence[Dict[str, Any]],
+    preferred_exts: Sequence[str],
+) -> Optional[Dict[str, Any]]:
+    best: Optional[Dict[str, Any]] = None
+    best_rank: Optional[int] = None
+    ties = 0
+    for candidate in candidates:
+        rank = _extension_rank(candidate["file"].get("name", ""), preferred_exts)
+        if best_rank is None or rank < best_rank:
+            best_rank = rank
+            best = candidate
+            ties = 1
+        elif rank == best_rank:
+            ties += 1
+    if ties == 1:
+        return best["file"] if best else None
+    return None
+
+
 def _compile_regex_list(values: Any) -> List[re.Pattern]:
     patterns = _listify(values)
     compiled: List[re.Pattern] = []
@@ -1537,6 +1563,7 @@ def main() -> None:
     folder_path_cache: Dict[str, List[str]] = {}
 
     image_lookup: Dict[Tuple[Tuple[str, ...], str], Dict[str, Any]] = {}
+    image_candidates_by_stem: Dict[str, List[Dict[str, Any]]] = {}
     if bool(config.get("episode_image_from_infographics", False)):
         image_mime_types = config.get("episode_image_mime_types") or ["image/png"]
         if isinstance(image_mime_types, str):
@@ -1570,9 +1597,13 @@ def main() -> None:
             stem = _normalize_stem(image_file.get("name", ""))
             if not stem:
                 continue
-            key = (_folder_key(folder_names), stem)
+            folder_key = _folder_key(folder_names)
+            key = (folder_key, stem)
             image_lookup[key] = _select_preferred_image(
                 image_lookup.get(key), image_file, preferred_exts
+            )
+            image_candidates_by_stem.setdefault(stem, []).append(
+                {"file": image_file, "folder_key": folder_key}
             )
 
     drive_files = list_audio_files(
@@ -1613,6 +1644,23 @@ def main() -> None:
         if image_lookup:
             image_key = (_folder_key(folder_names), _normalize_stem(drive_file.get("name", "")))
             image_file = image_lookup.get(image_key)
+            if not image_file and image_candidates_by_stem:
+                stem = image_key[1]
+                candidates = image_candidates_by_stem.get(stem, [])
+                if candidates:
+                    folder_key = image_key[0]
+                    filtered: List[Dict[str, Any]] = []
+                    if folder_key:
+                        filtered = [
+                            candidate
+                            for candidate in candidates
+                            if _is_folder_prefix(folder_key, candidate["folder_key"])
+                            or _is_folder_prefix(candidate["folder_key"], folder_key)
+                        ]
+                    if filtered:
+                        image_file = _select_unique_best_candidate(filtered, preferred_exts)
+                    elif not folder_key and len(candidates) == 1:
+                        image_file = candidates[0]["file"]
             if image_file:
                 artwork_permission_added = ensure_public_permission(
                     drive_service,

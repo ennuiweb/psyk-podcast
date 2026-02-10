@@ -1469,6 +1469,10 @@ def build_episode_entry(
             parts.append(f"Semester week {week_number}")
         description = " · ".join(part for part in parts if part)
         meta["description"] = description
+    if summary:
+        meta["summary"] = _strip_language_tags(summary)
+    if meta.get("description"):
+        meta["description"] = _strip_language_tags(meta["description"])
 
     explicit_default = feed_config.get("default_explicit", False)
     duration = meta.get("duration")

@@ -61,6 +61,10 @@ class AutoSpecMatchingTests(unittest.TestCase):
     def test_strip_language_tags_removes_en(self):
         mod = _load_feed_module()
         self.assertEqual(mod._strip_language_tags("W01L1 Foo [EN]"), "W01L1 Foo")
+        self.assertEqual(
+            mod._strip_language_tags("Reading: Foo [EN] · Topic: Bar [EN]"),
+            "Reading: Foo · Topic: Bar",
+        )
 
 
 if __name__ == "__main__":

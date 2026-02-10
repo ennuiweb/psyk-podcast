@@ -137,6 +137,13 @@ jobs:
           SHOW: ${{ matrix.show }}
         run: python podcast-tools/transcode_drive_media.py --config shows/${SHOW}/config.runtime.json
 
+      - name: Trust droplet host key
+        if: matrix.show == 'personlighedspsykologi-en'
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -H 64.226.79.109 >> ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/known_hosts
+
       - name: Sync quiz links
         if: matrix.show == 'personlighedspsykologi-en'
         env:

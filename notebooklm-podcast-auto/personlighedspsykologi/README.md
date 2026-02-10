@@ -36,3 +36,18 @@ Current generation is configured for English-only outputs (see `prompt_config.js
 ```bash
 ./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/download_week.py --week W01 --content-types quiz --format html
 ```
+
+## Quiz hosting (droplet)
+Quiz HTML exports are hosted on the droplet under:
+`http://64.226.79.109/quizzes/personlighedspsykologi-en/<Week>/<Filename>.html`
+
+Use the sync script to upload quizzes and update the mapping used by the feed:
+
+```bash
+python3 scripts/sync_quiz_links.py --dry-run
+python3 scripts/sync_quiz_links.py
+```
+
+The mapping file lives at `shows/personlighedspsykologi-en/quiz_links.json` and is
+used by the feed generator to append quiz links to episode descriptions when
+available.

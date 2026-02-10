@@ -78,6 +78,20 @@ Weekly overview skips:
 4. Download completed MP3s.
 5. Upload MP3s to Drive week folders.
 6. Run local feed build for validation.
+7. Sync quiz HTML exports to the droplet and update quiz links.
+
+## Quiz links (IP-first)
+- Quiz HTMLs are hosted at:
+  `http://64.226.79.109/quizzes/personlighedspsykologi-en/<Week>/<Filename>.html`
+- Use the sync script to upload and update the mapping:
+
+```bash
+python3 scripts/sync_quiz_links.py --dry-run
+python3 scripts/sync_quiz_links.py
+```
+
+- The mapping file is `shows/personlighedspsykologi-en/quiz_links.json`.
+- Feed descriptions append `Quiz: <url>` when a mapping entry exists.
 
 ## Week generation command
 Command (non-blocking by default, add `--wait` to block):

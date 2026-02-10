@@ -36,6 +36,12 @@
   ],
   "important_text_mode": "week_x_only",
   "only_doc_marked_important": true,
+  "quiz": {
+    "links_file": "shows/personlighedspsykologi-en/quiz_links.json",
+    "base_url": "http://64.226.79.109/quizzes/personlighedspsykologi-en/",
+    "link_label": "Quiz",
+    "link_separator": " · "
+  },
   "feed": {
     "title": "Personlighedspsykologi (EN)",
     "link": "https://github.com/ennuiweb/psyk-podcast",

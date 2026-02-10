@@ -10,6 +10,7 @@ import re
 import sys
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Sequence, Set, Tuple
+from urllib.parse import quote
 from zoneinfo import ZoneInfo
 
 try:
@@ -1326,6 +1327,8 @@ def build_episode_entry(
     folder_names: Optional[List[str]] = None,
     doc_marked_titles: Optional[Set[str]] = None,
     episode_image_url: Optional[str] = None,
+    quiz_cfg: Optional[Dict[str, Any]] = None,
+    quiz_links: Optional[Dict[str, Any]] = None,
 ) -> Dict[str, Any]:
     meta: Dict[str, Any] = {}
     if auto_meta:
@@ -1469,6 +1472,33 @@ def build_episode_entry(
             parts.append(f"Semester week {week_number}")
         description = " · ".join(part for part in parts if part)
         meta["description"] = description
+
+    quiz_url = None
+    if quiz_cfg and quiz_links and file_entry.get("name"):
+        base_url = quiz_cfg.get("base_url")
+        links_map = quiz_links.get("by_name") if isinstance(quiz_links, dict) else None
+        if isinstance(links_map, dict):
+            entry = links_map.get(file_entry["name"])
+            if isinstance(entry, dict):
+                rel_path = entry.get("relative_path")
+                if base_url and rel_path:
+                    base = str(base_url)
+                    if not base.endswith("/"):
+                        base += "/"
+                    relative = str(rel_path).lstrip("/")
+                    quiz_url = base + quote(relative, safe="/")
+
+    if quiz_url:
+        label = quiz_cfg.get("link_label") if quiz_cfg else None
+        if not label:
+            label = "Quiz"
+        separator = quiz_cfg.get("link_separator") if quiz_cfg else None
+        if separator is None or separator == "":
+            separator = " · "
+        description = meta.get("description") or meta.get("summary") or base_title
+        if quiz_url not in description:
+            description = f"{description}{separator}{label}: {quiz_url}"
+            meta["description"] = description
     if summary:
         meta["summary"] = _strip_language_tags(summary)
     if meta.get("description"):
@@ -1514,7 +1544,8 @@ def build_feed_document(
         if value:
             ET.SubElement(channel, name).text = value
 
-    _set("title", feed_config.get("title"))
+    feed_title = _strip_language_tags(feed_config.get("title"))
+    _set("title", feed_title)
     _set("link", feed_config.get("link"))
     _set("description", feed_config.get("description"))
     _set("language", feed_config.get("language"))
@@ -1550,8 +1581,8 @@ def build_feed_document(
         ET.SubElement(channel, "itunes:image", attrib={"href": image_url})
         standard_image = ET.SubElement(channel, "image")
         ET.SubElement(standard_image, "url").text = image_url
-        if feed_config.get("title"):
-            ET.SubElement(standard_image, "title").text = feed_config["title"]
+        if feed_title:
+            ET.SubElement(standard_image, "title").text = feed_title
         if feed_config.get("link"):
             ET.SubElement(standard_image, "link").text = feed_config["link"]
 
@@ -1611,6 +1642,27 @@ def main() -> None:
     feed_cfg = config.get("feed", {})
     overrides_path = args.metadata or (Path(config.get("episode_metadata", "")) if config.get("episode_metadata") else None)
     overrides = load_json(overrides_path) if overrides_path and overrides_path.exists() else {}
+    quiz_cfg = config.get("quiz") if isinstance(config.get("quiz"), dict) else None
+    quiz_links: Optional[Dict[str, Any]] = None
+    if quiz_cfg:
+        links_file = quiz_cfg.get("links_file")
+        if links_file:
+            links_path = Path(str(links_file))
+            if not links_path.is_absolute():
+                links_path = (args.config.parent / links_path).resolve()
+            if links_path.exists():
+                try:
+                    quiz_links = load_json(links_path)
+                except Exception as exc:
+                    print(
+                        f"Warning: failed to load quiz links from {links_path}: {exc}",
+                        file=sys.stderr,
+                    )
+            else:
+                print(
+                    f"Warning: quiz links file not found: {links_path}",
+                    file=sys.stderr,
+                )
 
     service_account_path = Path(config["service_account_file"])
     drive_service = build_drive_service(service_account_path)
@@ -1830,6 +1882,8 @@ def main() -> None:
                 folder_names=folder_names,
                 doc_marked_titles=doc_marked_titles,
                 episode_image_url=episode_image_url,
+                quiz_cfg=quiz_cfg,
+                quiz_links=quiz_links,
             )
         )
 

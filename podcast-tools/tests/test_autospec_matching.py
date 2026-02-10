@@ -66,6 +66,24 @@ class AutoSpecMatchingTests(unittest.TestCase):
             "Reading: Foo · Topic: Bar",
         )
 
+    def test_feed_title_strips_language_tag(self):
+        mod = _load_feed_module()
+        feed = mod.build_feed_document(
+            episodes=[],
+            feed_config={
+                "title": "Personlighedspsykologi [EN]",
+                "link": "https://example.com",
+                "description": "Test feed",
+                "language": "en",
+            },
+            last_build=mod.parse_datetime("2026-02-10T00:00:00+00:00"),
+        )
+        from xml.etree import ElementTree as ET
+
+        xml = ET.tostring(feed, encoding="unicode")
+        self.assertIn("<title>Personlighedspsykologi</title>", xml)
+        self.assertNotIn("[EN]", xml)
+
 
 if __name__ == "__main__":
     unittest.main()

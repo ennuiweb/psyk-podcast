@@ -24,6 +24,7 @@ ATOM_NS = "http://www.w3.org/2005/Atom"
 ITUNES_NS = "http://www.itunes.com/dtds/podcast-1.0.dtd"
 TEXT_PREFIX = "[Tekst]"
 HIGHLIGHTED_TEXT_PREFIX = "[Gul tekst]"
+LANGUAGE_TAG_PATTERN = re.compile(r"\[\s*en\s*\]", re.IGNORECASE)
 IMPORTANT_TRUTHY_STRINGS = {
     "1",
     "true",
@@ -1064,6 +1065,14 @@ def _strip_text_prefix(value: str) -> str:
     return value
 
 
+def _strip_language_tags(value: str) -> str:
+    if not value:
+        return value
+    cleaned = LANGUAGE_TAG_PATTERN.sub("", value)
+    cleaned = re.sub(r"\s+", " ", cleaned).strip()
+    return cleaned.strip(" -–:")
+
+
 def _normalize_title_for_matching(value: str) -> str:
     if not value:
         return ""
@@ -1432,6 +1441,7 @@ def build_episode_entry(
         prefix = narrator.upper()
         if not title_value.upper().startswith(f"{prefix} "):
             title_value = f"{prefix} {title_value}"
+    title_value = _strip_language_tags(title_value)
     meta["title"] = title_value
     if suppress_week_prefix:
         meta.pop("suppress_week_prefix", None)

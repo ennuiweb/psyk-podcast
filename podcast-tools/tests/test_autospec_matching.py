@@ -58,6 +58,10 @@ class AutoSpecMatchingTests(unittest.TestCase):
         # Canonical form keeps a single padded week token and collapses repeated dots.
         self.assertEqual(mod._canonicalize_episode_stem(value), "w01l2 - phan et al. (2024) [en]")
 
+    def test_strip_language_tags_removes_en(self):
+        mod = _load_feed_module()
+        self.assertEqual(mod._strip_language_tags("W01L1 Foo [EN]"), "W01L1 Foo")
+
 
 if __name__ == "__main__":
     unittest.main()

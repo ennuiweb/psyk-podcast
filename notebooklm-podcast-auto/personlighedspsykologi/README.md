@@ -41,7 +41,12 @@ Current generation is configured for English-only outputs (see `prompt_config.js
 Quiz HTML exports are hosted on the droplet under:
 `http://64.226.79.109/quizzes/personlighedspsykologi-en/<Week>/<Filename>.html`
 
-Use the sync script to upload quizzes and update the mapping used by the feed:
+The mapping and upload can run automatically in GitHub Actions (when quiz HTML
+files are uploaded to Drive) via `podcast-tools/sync_drive_quiz_links.py`, as
+long as the repository has the secret `DIGITALOCEAN_SSH_KEY` set. The Apps Script
+Drive trigger must include `text/` in `mimePrefixes` to detect quiz HTML changes.
+
+Use the sync script locally to upload quizzes and update the mapping used by the feed:
 
 ```bash
 python3 scripts/sync_quiz_links.py --dry-run

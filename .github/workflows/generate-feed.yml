@@ -137,6 +137,31 @@ jobs:
           SHOW: ${{ matrix.show }}
         run: python podcast-tools/transcode_drive_media.py --config shows/${SHOW}/config.runtime.json
 
+      - name: Sync quiz links
+        if: matrix.show == 'personlighedspsykologi-en'
+        env:
+          SHOW: ${{ matrix.show }}
+          DROPLET_SSH_KEY: ${{ secrets.DIGITALOCEAN_SSH_KEY }}
+        run: |
+          download_root="${RUNNER_TEMP}/drive-quizzes"
+          if [[ -n "${DROPLET_SSH_KEY}" ]]; then
+            key_path="${RUNNER_TEMP}/droplet_key"
+            echo "${DROPLET_SSH_KEY}" > "${key_path}"
+            chmod 600 "${key_path}"
+            python podcast-tools/sync_drive_quiz_links.py \
+              --config shows/${SHOW}/config.runtime.json \
+              --download-root "${download_root}" \
+              --language-tag "[EN]" \
+              --upload \
+              --ssh-key "${key_path}"
+          else
+            echo "Warning: DIGITALOCEAN_SSH_KEY not set; skipping quiz upload." >&2
+            python podcast-tools/sync_drive_quiz_links.py \
+              --config shows/${SHOW}/config.runtime.json \
+              --download-root "${download_root}" \
+              --language-tag "[EN]"
+          fi
+
       - name: Generate feed
         env:
           SHOW: ${{ matrix.show }}
@@ -147,10 +172,18 @@ jobs:
           SHOW: ${{ matrix.show }}
         run: |
           feed_path="shows/${SHOW}/feeds/rss.xml"
+          quiz_path="shows/${SHOW}/quiz_links.json"
+          files=()
           if [[ -n "$(git status --porcelain "$feed_path")" ]]; then
+            files+=("$feed_path")
+          fi
+          if [[ -f "$quiz_path" && -n "$(git status --porcelain "$quiz_path")" ]]; then
+            files+=("$quiz_path")
+          fi
+          if [[ ${#files[@]} -gt 0 ]]; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add "$feed_path"
+            git add "${files[@]}"
             git commit -m "chore: update ${SHOW} podcast feed"
             branch="${GITHUB_REF#refs/heads/}"
             git pull --rebase origin "$branch"

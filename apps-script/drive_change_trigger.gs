@@ -24,7 +24,7 @@ const CONFIG = {
     ],
     folderId: null,             // Backwards compatibility; leave null when using folderIds.
     includeSubfolders: true,
-    mimePrefixes: ['audio/', 'image/'],   // Set to [] to react to every file type.
+    mimePrefixes: ['audio/', 'image/', 'text/'],   // Set to [] to react to every file type.
     sharedDriveId: null,        // Leave null for shared folders in "My Drive".
   },
   github: {

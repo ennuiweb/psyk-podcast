@@ -50,6 +50,37 @@ def canonical_key(stem: str) -> str:
     return f"{prefix}{week}".strip()
 
 
+def derive_mp3_name_from_html(stem: str) -> str:
+    name = stem.replace("–", "-").replace("—", "-")
+    name = normalize_week_tokens(name)
+    name = re.sub(r"\s+", " ", name).strip()
+    name = re.sub(r"\.{2,}", ".", name)
+    prefix = ""
+    if name.lower().startswith("[brief]"):
+        prefix = "[Brief] "
+        name = name[len("[brief]") :].lstrip()
+    match = re.match(r"^(W\d{2}L\d+)\s*-\s*(.*)$", name, re.IGNORECASE)
+    if not match:
+        return f"{prefix}{name}.mp3".strip()
+    week = match.group(1).upper()
+    rest = match.group(2).strip()
+    if rest:
+        rest = re.sub(
+            rf"^{re.escape(week)}\b\s*-?\s*",
+            "",
+            rest,
+            flags=re.IGNORECASE,
+        ).strip()
+    if rest:
+        if rest.startswith("X "):
+            base = f"{prefix}{week} {rest}"
+        else:
+            base = f"{prefix}{week} - {rest}"
+    else:
+        base = f"{prefix}{week}"
+    return f"{base}.mp3".strip()
+
+
 def resolve_path(path_str: str, repo_root: Path) -> Path:
     path = Path(path_str).expanduser()
     if not path.is_absolute():
@@ -145,6 +176,11 @@ def main() -> int:
         help="Only consider files containing this tag in the filename.",
     )
     parser.add_argument(
+        "--derive-mp3-names",
+        action="store_true",
+        help="Derive MP3 names directly from HTML filenames (no MP3 scan).",
+    )
+    parser.add_argument(
         "--remote-root",
         default="/var/www/quizzes/personlighedspsykologi-en",
         help="Remote quiz root directory.",
@@ -186,31 +222,33 @@ def main() -> int:
     html_files = [p for p in find_files(output_root, ".html") if language_tag in p.stem]
     if not html_files:
         raise SystemExit(f"No quiz HTML files found under {output_root}")
-    mp3_files = [p for p in find_files(output_root, ".mp3") if language_tag in p.stem]
-    if not mp3_files:
-        raise SystemExit(f"No MP3 files found under {output_root}")
-
-    mp3_index = build_mp3_index(mp3_files, language_tag)
     mapping: Dict[str, Dict[str, str]] = {}
     unmatched: List[Path] = []
     ambiguous: List[Path] = []
     duplicate_targets: List[Path] = []
 
     for html_file in html_files:
-        key = canonical_key(html_file.stem)
-        candidates = mp3_index.get(key, [])
-        if len(candidates) == 0:
-            unmatched.append(html_file)
-            continue
-        if len(candidates) > 1:
-            ambiguous.append(html_file)
-            continue
-        mp3 = candidates[0]
-        if mp3.name in mapping:
-            duplicate_targets.append(html_file)
-            continue
+        if args.derive_mp3_names:
+            mp3_name = derive_mp3_name_from_html(html_file.stem)
+            if mp3_name in mapping:
+                duplicate_targets.append(html_file)
+                continue
+        else:
+            mp3_files = [p for p in find_files(output_root, ".mp3") if language_tag in p.stem]
+            if not mp3_files:
+                raise SystemExit(f"No MP3 files found under {output_root}")
+            mp3_index = build_mp3_index(mp3_files, language_tag)
+            key = canonical_key(html_file.stem)
+            candidates = mp3_index.get(key, [])
+            if len(candidates) == 0:
+                unmatched.append(html_file)
+                continue
+            if len(candidates) > 1:
+                ambiguous.append(html_file)
+                continue
+            mp3_name = candidates[0].name
         relative_path = html_file.relative_to(output_root).as_posix()
-        mapping[mp3.name] = {
+        mapping[mp3_name] = {
             "relative_path": relative_path,
             "format": "html",
         }

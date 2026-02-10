@@ -84,7 +84,11 @@ Weekly overview skips:
 ## Quiz links (IP-first)
 - Quiz HTMLs are hosted at:
   `http://64.226.79.109/quizzes/personlighedspsykologi-en/<Week>/<Filename>.html`
-- Use the sync script to upload and update the mapping:
+- GitHub Actions now generates quiz links from Drive HTML files (and uploads to the
+  droplet if `DIGITALOCEAN_SSH_KEY` is configured). The Apps Script trigger must
+  include `text/` in `mimePrefixes` to detect quiz HTML changes.
+
+- Use the sync script locally to upload and update the mapping:
 
 ```bash
 python3 scripts/sync_quiz_links.py --dry-run

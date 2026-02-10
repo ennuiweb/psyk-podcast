@@ -719,7 +719,7 @@ class AutoSpec:
                 if rule.get("topic"):
                     topic = str(rule["topic"])
                     meta.setdefault("topic", topic)
-                    summary = f"Topic of the week: {topic}"
+                    summary = f"Emne for ugen: {topic}"
                     meta.setdefault("summary", summary)
                 return meta
         if self._should_fallback_to_unassigned(folder_names):
@@ -1315,6 +1315,10 @@ def extract_topic(meta: Dict[str, Any]) -> Optional[str]:
         lowered = summary.lower()
         if lowered.startswith("topic of the week:"):
             return summary.split(":", 1)[1].strip()
+        if lowered.startswith("emne for ugen:"):
+            return summary.split(":", 1)[1].strip()
+        if lowered.startswith("ugens emne:"):
+            return summary.split(":", 1)[1].strip()
     return None
 
 
@@ -1424,9 +1428,9 @@ def build_episode_entry(
     if not meta.get("title"):
         segments = []
         if week_number and lecture_number:
-            segments.append(f"{semester_week_label} {week_number}, Lecture {lecture_number}")
+            segments.append(f"{semester_week_label} {week_number}, Forelæsning {lecture_number}")
         elif lecture_number:
-            segments.append(f"Lecture {lecture_number}")
+            segments.append(f"Forelæsning {lecture_number}")
         elif week_number:
             segments.append(f"{semester_week_label} {week_number}")
         if is_weekly_overview:
@@ -1472,9 +1476,9 @@ def build_episode_entry(
         else:
             parts.append(descriptor)
         if topic:
-            parts.append(f"Topic: {topic}")
+            parts.append(f"Emne: {topic}")
         if lecture_number:
-            parts.append(f"Lecture {lecture_number}")
+            parts.append(f"Forelæsning {lecture_number}")
         if week_number:
             parts.append(f"{semester_week_description_label} {week_number}")
         description = " · ".join(part for part in parts if part)

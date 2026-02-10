@@ -62,8 +62,8 @@ class AutoSpecMatchingTests(unittest.TestCase):
         mod = _load_feed_module()
         self.assertEqual(mod._strip_language_tags("W01L1 Foo [EN]"), "W01L1 Foo")
         self.assertEqual(
-            mod._strip_language_tags("Reading: Foo [EN] · Topic: Bar [EN]"),
-            "Reading: Foo · Topic: Bar",
+            mod._strip_language_tags("Reading: Foo [EN] · Emne: Bar [EN]"),
+            "Reading: Foo · Emne: Bar",
         )
 
     def test_feed_title_strips_language_tag(self):

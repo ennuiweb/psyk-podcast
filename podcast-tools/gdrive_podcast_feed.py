@@ -1421,7 +1421,7 @@ def build_episode_entry(
     if is_brief:
         type_label = "Brief"
     elif is_weekly_overview:
-        type_label = "All sources"
+        type_label = "Alle kilder"
     else:
         type_label = "Reading"
 
@@ -1465,9 +1465,9 @@ def build_episode_entry(
     if not description:
         text_label = display_subject or cleaned_title or raw_title
         if is_brief:
-            descriptor = "Textbook Chapter"
+            descriptor = "Kapitel i grundbogen"
         elif is_weekly_overview:
-            descriptor = "All sources"
+            descriptor = "Alle kilder"
         else:
             descriptor = "Reading"
         parts = []

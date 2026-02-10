@@ -1500,19 +1500,10 @@ def build_episode_entry(
                     quiz_url = base + quote(relative, safe="/")
 
     if quiz_url:
-        label = quiz_cfg.get("link_label") if quiz_cfg else None
-        if not label:
-            label = "Quiz"
-        separator = quiz_cfg.get("link_separator") if quiz_cfg else None
-        if separator is None or separator == "":
-            separator = " · "
         description = meta.get("description") or meta.get("summary") or base_title
-        include_url = bool(quiz_cfg.get("include_url_in_description")) if quiz_cfg else False
-        if label not in description:
-            description = f"{description}{separator}{label}"
-        if include_url and quiz_url not in description:
+        if quiz_url not in description:
             description = f"{description}\n\nQuiz:\n{quiz_url}"
-        meta["description"] = description
+            meta["description"] = description
         if not meta.get("link"):
             meta["link"] = quiz_url
     if summary:

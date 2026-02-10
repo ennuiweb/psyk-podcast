@@ -1507,9 +1507,16 @@ def build_episode_entry(
         if separator is None or separator == "":
             separator = " · "
         description = meta.get("description") or meta.get("summary") or base_title
-        if quiz_url not in description:
-            description = f"{description}{separator}{label}: {quiz_url}"
+        include_url = bool(quiz_cfg.get("include_url_in_description")) if quiz_cfg else False
+        if include_url:
+            snippet = f"{label}: {quiz_url}"
+        else:
+            snippet = label
+        if snippet not in description:
+            description = f"{description}{separator}{snippet}"
             meta["description"] = description
+        if not meta.get("link"):
+            meta["link"] = quiz_url
     if summary:
         meta["summary"] = _strip_language_tags(summary)
     if meta.get("description"):

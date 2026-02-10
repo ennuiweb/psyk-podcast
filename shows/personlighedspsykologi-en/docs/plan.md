@@ -6,6 +6,7 @@
   - Weekly overview episodes (e.g., "Alle kilder")
   - Per-reading episodes
   - Short "[Brief]" variants for some readings
+- Local feed build requires `shows/personlighedspsykologi-en/service-account.json`; missing credentials cause `gdrive_podcast_feed.py` to fail before RSS generation.
 
 ## Output policy (decisions)
 - Weekly overview: **"Alle kilder"** episode per week.

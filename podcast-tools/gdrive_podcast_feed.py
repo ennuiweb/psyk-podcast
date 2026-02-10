@@ -1370,21 +1370,28 @@ def build_episode_entry(
     semester_start = feed_config.get("semester_week_start_date")
     semester_info = semester_week_info(published_at, semester_start)
     week_number = None
-    week_range_label = None
     if semester_info:
-        week_number, week_start, week_end = semester_info
-        week_range_label = f"Uge {week_number} {week_start:%d/%m} - {week_end:%d/%m}"
-    if not week_range_label:
-        week_year_token = meta.get("week_reference_year")
-        try:
-            week_year = int(week_year_token) if week_year_token is not None else None
-        except (TypeError, ValueError):
-            week_year = None
-        week_range_label = format_week_range(published_at, week_year)
-        if week_range_label and week_number is None:
-            match = re.search(r"Uge\s+(\d+)", week_range_label)
-            if match:
-                week_number = int(match.group(1))
+        week_number, _, _ = semester_info
+    week_year_token = meta.get("week_reference_year")
+    try:
+        week_year = int(week_year_token) if week_year_token is not None else None
+    except (TypeError, ValueError):
+        week_year = None
+    week_range_label = format_week_range(published_at, week_year)
+    if week_range_label and week_number is None:
+        match = re.search(r"Uge\s+(\d+)", week_range_label)
+        if match:
+            week_number = int(match.group(1))
+
+    semester_week_label = feed_config.get("semester_week_label")
+    if not isinstance(semester_week_label, str) or not semester_week_label.strip():
+        semester_week_label = "Week"
+    semester_week_description_label = feed_config.get("semester_week_description_label")
+    if (
+        not isinstance(semester_week_description_label, str)
+        or not semester_week_description_label.strip()
+    ):
+        semester_week_description_label = "Semester week"
 
     raw_title = base_title
     raw_lower = raw_title.casefold()
@@ -1417,11 +1424,11 @@ def build_episode_entry(
     if not meta.get("title"):
         segments = []
         if week_number and lecture_number:
-            segments.append(f"Week {week_number}, Lecture {lecture_number}")
+            segments.append(f"{semester_week_label} {week_number}, Lecture {lecture_number}")
         elif lecture_number:
             segments.append(f"Lecture {lecture_number}")
         elif week_number:
-            segments.append(f"Week {week_number}")
+            segments.append(f"{semester_week_label} {week_number}")
         if is_weekly_overview:
             if type_label:
                 segments.append(type_label)
@@ -1469,7 +1476,7 @@ def build_episode_entry(
         if lecture_number:
             parts.append(f"Lecture {lecture_number}")
         if week_number:
-            parts.append(f"Semester week {week_number}")
+            parts.append(f"{semester_week_description_label} {week_number}")
         description = " · ".join(part for part in parts if part)
         meta["description"] = description
 

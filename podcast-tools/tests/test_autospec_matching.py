@@ -84,6 +84,34 @@ class AutoSpecMatchingTests(unittest.TestCase):
         self.assertIn("<title>Personlighedspsykologi</title>", xml)
         self.assertNotIn("[EN]", xml)
 
+    def test_semester_week_label_uses_calendar_week_range(self):
+        mod = _load_feed_module()
+        file_entry = {
+            "id": "file1",
+            "name": "W06L1 - Something [EN].mp3",
+            "createdTime": "2026-03-09T08:00:00+00:00",
+        }
+        feed_config = {
+            "title": "Personlighedspsykologi (EN)",
+            "link": "https://example.com",
+            "description": "Test feed",
+            "language": "en",
+            "semester_week_start_date": "2026-02-02",
+            "semester_week_label": "Semesteruge",
+            "semester_week_description_label": "Semesteruge",
+        }
+        episode = mod.build_episode_entry(
+            file_entry=file_entry,
+            feed_config=feed_config,
+            overrides={},
+            public_link_template="https://example.com/{file_id}",
+            auto_meta={"week_reference_year": 2026},
+            folder_names=["W06L1"],
+        )
+        self.assertIn("Semesteruge 6", episode["title"])
+        self.assertIn("(Uge 11 09/03 - 15/03)", episode["title"])
+        self.assertIn("Semesteruge 6", episode["description"])
+
 
 if __name__ == "__main__":
     unittest.main()

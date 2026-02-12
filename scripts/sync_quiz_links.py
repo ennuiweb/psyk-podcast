@@ -182,7 +182,7 @@ def main() -> int:
     )
     parser.add_argument(
         "--remote-root",
-        default="/var/www/quizzes/personlighedspsykologi-en",
+        default="/var/www/quizzes/personlighedspsykologi",
         help="Remote quiz root directory.",
     )
     parser.add_argument(

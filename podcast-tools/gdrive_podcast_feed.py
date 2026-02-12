@@ -25,7 +25,7 @@ ATOM_NS = "http://www.w3.org/2005/Atom"
 ITUNES_NS = "http://www.itunes.com/dtds/podcast-1.0.dtd"
 TEXT_PREFIX = "[Tekst]"
 HIGHLIGHTED_TEXT_PREFIX = "[Gul tekst]"
-LANGUAGE_TAG_PATTERN = re.compile(r"\[\s*en\s*\]", re.IGNORECASE)
+LANGUAGE_TAG_PATTERN = re.compile(r"(?:\[\s*en\s*\]|\(\s*en\s*\))", re.IGNORECASE)
 IMPORTANT_TRUTHY_STRINGS = {
     "1",
     "true",
@@ -1270,10 +1270,10 @@ def _replace_text_prefix(value: str, *, require_start: bool) -> Tuple[str, bool]
     return updated, True
 
 
-WEEK_LECTURE_PATTERN = re.compile(r"\bw(\d{2})l(\d+)\b", re.IGNORECASE)
+WEEK_LECTURE_PATTERN = re.compile(r"\bw\s*(\d{1,2})\s*l\s*(\d+)\b", re.IGNORECASE)
 BRIEF_PREFIX_PATTERN = re.compile(r"^\[brief\]\s*", re.IGNORECASE)
-WEEK_PREFIX_PATTERN = re.compile(r"^w\d{2}l\d+\s*[-–:]\s*", re.IGNORECASE)
-WEEK_ONLY_PREFIX_PATTERN = re.compile(r"^w\d{2}\s*[-–:]\s*", re.IGNORECASE)
+WEEK_PREFIX_TOKEN_PATTERN = re.compile(r"^w\s*\d{1,2}(?:\s*l\s*\d+)?\b", re.IGNORECASE)
+WEEK_PREFIX_SEPARATOR_PATTERN = re.compile(r"^[\s._\-–:]+")
 
 
 def extract_week_lecture(
@@ -1295,8 +1295,13 @@ def extract_week_lecture(
 def strip_week_prefix(value: str) -> str:
     if not value:
         return value
-    cleaned = WEEK_PREFIX_PATTERN.sub("", value)
-    cleaned = WEEK_ONLY_PREFIX_PATTERN.sub("", cleaned)
+    cleaned = value.strip()
+    while cleaned:
+        token_match = WEEK_PREFIX_TOKEN_PATTERN.match(cleaned)
+        if not token_match:
+            break
+        cleaned = cleaned[token_match.end() :]
+        cleaned = WEEK_PREFIX_SEPARATOR_PATTERN.sub("", cleaned)
     return cleaned.strip()
 
 
@@ -1654,9 +1659,17 @@ def main() -> None:
     if quiz_cfg:
         links_file = quiz_cfg.get("links_file")
         if links_file:
-            links_path = Path(str(links_file))
+            links_path = Path(str(links_file)).expanduser()
             if not links_path.is_absolute():
-                links_path = (args.config.parent / links_path).resolve()
+                candidates = [links_path, args.config.parent / links_path]
+                resolved = next((path for path in candidates if path.exists()), None)
+                if resolved is not None:
+                    links_path = resolved.resolve()
+                elif str(links_path).startswith("shows/"):
+                    # Most show configs store repo-root-prefixed paths (e.g. shows/<slug>/quiz_links.json).
+                    links_path = links_path.resolve()
+                else:
+                    links_path = (args.config.parent / links_path).resolve()
             if links_path.exists():
                 try:
                     quiz_links = load_json(links_path)

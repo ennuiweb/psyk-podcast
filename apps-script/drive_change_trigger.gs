@@ -19,8 +19,7 @@ const CONFIG = {
       '1GrwLcua1UN_tCX0ec9NmDU6ynLkuM_0G',   // Personal listening feed
       '1uPt6bHjivcD9z-Tw6Q2xbIld3bmH_WyI', // Socialpsykologi
       '1Vq_ptrkc9FQXOahsFh4T1xHut-BWxiIX',   // Intro + VT Deep Dives - Hold 1 - 2024
-      '1UppgfEwy6Z6rmoQy0ujaBEK_edAzDqy7',   // Personlighedspsykologi DA
-      '1lJD1TPU_Re7feq99Wj98RnWKbDjsi3qm',   // Personlighedspsykologi EN
+      '1lJD1TPU_Re7feq99Wj98RnWKbDjsi3qm',   // Personlighedspsykologi
     ],
     folderId: null,             // Backwards compatibility; leave null when using folderIds.
     includeSubfolders: true,

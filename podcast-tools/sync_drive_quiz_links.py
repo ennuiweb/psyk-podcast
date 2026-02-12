@@ -344,14 +344,28 @@ def run_rsync(
 def resolve_links_path(config_path: Path, quiz_cfg: Dict[str, Any], override: Optional[str]) -> Path:
     if override:
         override_path = Path(override).expanduser()
-        return override_path if override_path.is_absolute() else (config_path.parent / override_path)
+        if override_path.is_absolute():
+            return override_path
+        candidates = [override_path, config_path.parent / override_path]
+        resolved = next((path for path in candidates if path.exists()), None)
+        if resolved is not None:
+            return resolved.resolve()
+        if str(override_path).startswith("shows/"):
+            return override_path.resolve()
+        return (config_path.parent / override_path).resolve()
     links_file = quiz_cfg.get("links_file")
     if not links_file:
         raise SystemExit("quiz.links_file is missing in the show config.")
-    links_path = Path(str(links_file))
-    if not links_path.is_absolute():
-        links_path = (config_path.parent / links_path).resolve()
-    return links_path
+    links_path = Path(str(links_file)).expanduser()
+    if links_path.is_absolute():
+        return links_path
+    candidates = [links_path, config_path.parent / links_path]
+    resolved = next((path for path in candidates if path.exists()), None)
+    if resolved is not None:
+        return resolved.resolve()
+    if str(links_path).startswith("shows/"):
+        return links_path.resolve()
+    return (config_path.parent / links_path).resolve()
 
 
 def main() -> int:
@@ -392,7 +406,7 @@ def main() -> int:
     )
     parser.add_argument(
         "--remote-root",
-        default="/var/www/quizzes/personlighedspsykologi-en",
+        default="/var/www/quizzes/personlighedspsykologi",
         help="Droplet directory for quizzes.",
     )
     parser.add_argument(

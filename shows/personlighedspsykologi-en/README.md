@@ -1,6 +1,6 @@
-# Personlighedspsykologi (EN)
+# Personlighedspsykologi
 
-Scaffolding for the "Personlighedspsykologi (EN)" feed (split from Personlighedspsykologi F26).
+Scaffolding for the "Personlighedspsykologi" feed.
 
 - `config.local.json` - local test run against a Drive folder.
 - `config.github.json` - committed config for CI once secrets exist.

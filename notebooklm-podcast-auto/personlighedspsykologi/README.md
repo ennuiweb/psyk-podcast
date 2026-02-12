@@ -1,9 +1,8 @@
 # Personlighedspsykologi (NotebookLM Generation)
 
 This folder contains the generation pipeline assets for Personlighedspsykologi audio + infographic + quiz production.
-It is **not** a podcast feed. Feeds now live in:
+It is **not** a podcast feed. Feed config now lives in:
 
-- `shows/personlighedspsykologi-da`
 - `shows/personlighedspsykologi-en`
 
 ## Key paths
@@ -39,7 +38,8 @@ Current generation is configured for English-only outputs (see `prompt_config.js
 
 ## Quiz hosting (droplet)
 Quiz HTML exports are hosted on the droplet under:
-`http://64.226.79.109/quizzes/personlighedspsykologi-en/<Week>/<Filename>.html`
+`http://64.226.79.109/quizzes/personlighedspsykologi/<Week>/<Filename>.html`
+Keep a compatibility alias from `/quizzes/personlighedspsykologi-en/` while old links are still in circulation.
 
 The mapping and upload can run automatically in GitHub Actions (when quiz HTML
 files are uploaded to Drive) via `podcast-tools/sync_drive_quiz_links.py`, as

@@ -1,6 +1,6 @@
 {
   "service_account_file": "shows/personlighedspsykologi-en/service-account.json",
-  "drive_folder_id": "1UppgfEwy6Z6rmoQy0ujaBEK_edAzDqy7",
+  "drive_folder_id": "1lJD1TPU_Re7feq99Wj98RnWKbDjsi3qm",
   "shared_drive_id": null,
   "include_items_from_all_drives": true,
   "allowed_mime_types": [
@@ -38,13 +38,13 @@
   "only_doc_marked_important": true,
   "quiz": {
     "links_file": "shows/personlighedspsykologi-en/quiz_links.json",
-    "base_url": "http://64.226.79.109/quizzes/personlighedspsykologi-en/"
+    "base_url": "http://64.226.79.109/quizzes/personlighedspsykologi/"
   },
   "feed": {
-    "title": "Personlighedspsykologi (EN)",
+    "title": "Personlighedspsykologi",
     "link": "https://github.com/ennuiweb/psyk-podcast",
     "self_link": "https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/personlighedspsykologi-en/feeds/rss.xml",
-    "description": "Personlighedspsykologi (F26) - English feed.",
+    "description": "Personlighedspsykologi (F26) podcast feed.",
     "semester_week_start_date": "2026-02-02",
     "semester_week_label": "Semesteruge",
     "semester_week_description_label": "Semesteruge",

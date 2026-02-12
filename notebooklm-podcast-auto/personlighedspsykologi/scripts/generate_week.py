@@ -17,10 +17,50 @@ def read_json(path: Path) -> dict:
         return json.load(handle)
 
 
+WEEK_SELECTOR_PATTERN = re.compile(r"^W0*(\d{1,2})(?:L0*(\d{1,2}))?$", re.IGNORECASE)
+WEEK_DIR_PATTERN = re.compile(r"^W0*(\d{1,2})(?:L0*(\d{1,2}))?\b", re.IGNORECASE)
+
+
+def parse_week_selector(value: str) -> tuple[int, int | None] | None:
+    match = WEEK_SELECTOR_PATTERN.fullmatch(value.strip())
+    if not match:
+        return None
+    week_num = int(match.group(1))
+    lesson_num = int(match.group(2)) if match.group(2) else None
+    return week_num, lesson_num
+
+
+def parse_week_dir_label(value: str) -> tuple[int, int | None] | None:
+    match = WEEK_DIR_PATTERN.match(value.strip())
+    if not match:
+        return None
+    week_num = int(match.group(1))
+    lesson_num = int(match.group(2)) if match.group(2) else None
+    return week_num, lesson_num
+
+
 def find_week_dirs(root: Path, week: str) -> list[Path]:
-    week_upper = week.upper()
     if not root.exists():
         return []
+    selector = parse_week_selector(week)
+    if selector:
+        requested_week, requested_lesson = selector
+        matches: list[Path] = []
+        for entry in root.iterdir():
+            if not entry.is_dir():
+                continue
+            label = parse_week_dir_label(entry.name)
+            if not label:
+                continue
+            week_num, lesson_num = label
+            if week_num != requested_week:
+                continue
+            if requested_lesson is not None and lesson_num != requested_lesson:
+                continue
+            matches.append(entry)
+        return sorted(matches, key=lambda path: path.name)
+
+    week_upper = week.upper()
     exact: list[Path] = []
     prefix: list[Path] = []
     for entry in root.iterdir():
@@ -778,7 +818,7 @@ def main() -> int:
         week_dirs = find_week_dirs(sources_root, week_input)
         if not week_dirs:
             raise SystemExit(f"No week folder found for {week_input} under {sources_root}")
-        if len(week_dirs) > 1 and not re.fullmatch(r"W\d{2}", week_input.upper()):
+        if len(week_dirs) > 1 and not re.fullmatch(r"W0*\d{1,2}", week_input.upper()):
             names = ", ".join(path.name for path in week_dirs)
             raise SystemExit(f"Multiple week folders match {week_input}: {names}")
         for week_dir in week_dirs:

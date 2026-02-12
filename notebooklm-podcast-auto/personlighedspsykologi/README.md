@@ -21,13 +21,13 @@ Current generation is configured for English-only outputs (see `prompt_config.js
 - Generate quizzes for a week:
 
 ```bash
-./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_week.py --week W01 --content-types quiz --profile default
+./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_week.py --week W1 --content-types quiz --profile default
 ```
 
 - Download quiz exports from request logs:
 
 ```bash
-./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/download_week.py --week W01 --content-types quiz
+./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/download_week.py --week W1 --content-types quiz
 ```
 
 - Override quiz download format (html/markdown/json):

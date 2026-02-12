@@ -86,6 +86,12 @@ class AutoSpecMatchingTests(unittest.TestCase):
             mod._strip_language_tags("Reading: Foo [EN] · Emne: Bar [EN]"),
             "Reading: Foo · Emne: Bar",
         )
+        self.assertEqual(
+            mod._strip_language_tags(
+                "Reading: Lewis (1999) {type=audio lang=en format=deep-dive length=long hash=fa9adbcf} · Emne: Intro"
+            ),
+            "Reading: Lewis (1999) · Emne: Intro",
+        )
 
     def test_feed_title_strips_language_tag(self):
         mod = _load_feed_module()
@@ -161,6 +167,45 @@ class AutoSpecMatchingTests(unittest.TestCase):
         self.assertIn("Zettler et al... (2025)", episode["title"])
         self.assertNotRegex(episode["title"], re.compile(r"\bW\d{1,2}L\d+\b"))
         self.assertNotRegex(episode["description"], re.compile(r"\bW\d{1,2}L\d+\b"))
+
+    def test_generated_entry_strips_cfg_tag_from_subject(self):
+        mod = _load_feed_module()
+        file_entry = {
+            "id": "file1",
+            "name": (
+                "W1L1 - Lewis (1999) [EN] "
+                "{type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+            ),
+            "createdTime": "2026-02-02T08:00:00+00:00",
+        }
+        feed_config = {
+            "title": "Personlighedspsykologi (EN)",
+            "link": "https://example.com",
+            "description": "Test feed",
+            "language": "en",
+            "semester_week_start_date": "2026-02-02",
+            "semester_week_label": "Semesteruge",
+            "semester_week_description_label": "Semesteruge",
+        }
+        episode = mod.build_episode_entry(
+            file_entry=file_entry,
+            feed_config=feed_config,
+            overrides={},
+            public_link_template="https://example.com/{file_id}",
+            auto_meta={"topic": "Introforelæsning og nøglebegreber i personlighedspsykologien"},
+            folder_names=["W01L1"],
+            quiz_cfg={"base_url": "http://64.226.79.109/quizzes/personlighedspsykologi/"},
+            quiz_links={
+                "by_name": {
+                    "W1L1 - Lewis (1999) [EN].mp3": {
+                        "relative_path": "W01L1/W01L1 - W1L1 Lewis (1999) [EN].html",
+                        "format": "html",
+                    }
+                }
+            },
+        )
+        self.assertNotIn("{type=", episode["title"])
+        self.assertNotIn("{type=", episode["description"])
 
     def test_manual_title_and_description_keep_week_tokens(self):
         mod = _load_feed_module()
@@ -315,6 +360,45 @@ class AutoSpecMatchingTests(unittest.TestCase):
                 }
             },
         )
+        self.assertTrue(
+            episode["link"].startswith("http://64.226.79.109/quizzes/personlighedspsykologi/")
+        )
+
+    def test_topic_only_reading_description_mode_uses_topic_only(self):
+        mod = _load_feed_module()
+        file_entry = {
+            "id": "file1",
+            "name": "W01L1 - W1L1 Lewis (1999) [EN].mp3",
+            "createdTime": "2026-02-02T08:00:00+00:00",
+        }
+        feed_config = {
+            "title": "Personlighedspsykologi (EN)",
+            "link": "https://example.com",
+            "description": "Test feed",
+            "language": "en",
+            "reading_description_mode": "topic_only",
+        }
+        topic = "Introforelæsning og nøglebegreber i personlighedspsykologien"
+        episode = mod.build_episode_entry(
+            file_entry=file_entry,
+            feed_config=feed_config,
+            overrides={},
+            public_link_template="https://example.com/{file_id}",
+            auto_meta={"week_reference_year": 2026, "topic": topic},
+            folder_names=["W01L1"],
+            quiz_cfg={"base_url": "http://64.226.79.109/quizzes/personlighedspsykologi/"},
+            quiz_links={
+                "by_name": {
+                    "W01L1 - W1L1 Lewis (1999) [EN].mp3": {
+                        "relative_path": "W01L1/W01L1 - W1L1 Lewis (1999) [EN].html",
+                        "format": "html",
+                    }
+                }
+            },
+        )
+
+        self.assertEqual(episode["description"], f"Emne: {topic}")
+        self.assertNotIn("Quiz:", episode["description"])
         self.assertTrue(
             episode["link"].startswith("http://64.226.79.109/quizzes/personlighedspsykologi/")
         )

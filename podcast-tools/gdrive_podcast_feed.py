@@ -31,6 +31,11 @@ CFG_TAG_PATTERN = re.compile(
     r"(?:\s+\[[^\[\]]+\])?$",
     re.IGNORECASE,
 )
+CFG_TAG_ANYWHERE_PATTERN = re.compile(
+    r"\s+\{[a-z0-9._:+-]+=[^{}\s]+(?:\s+[a-z0-9._:+-]+=[^{}\s]+)*\}"
+    r"(?:\s+\[[^\[\]]+\])?",
+    re.IGNORECASE,
+)
 IMPORTANT_TRUTHY_STRINGS = {
     "1",
     "true",
@@ -270,6 +275,12 @@ def _strip_cfg_tag_suffix(value: str) -> str:
     if not value:
         return value
     return CFG_TAG_PATTERN.sub("", value).strip()
+
+
+def _strip_cfg_tags(value: str) -> str:
+    if not value:
+        return value
+    return CFG_TAG_ANYWHERE_PATTERN.sub("", value).strip()
 
 
 def _strip_cfg_tag_from_filename(name: str) -> str:
@@ -1113,7 +1124,7 @@ def _strip_text_prefix(value: str) -> str:
 def _strip_language_tags(value: str) -> str:
     if not value:
         return value
-    cleaned = _strip_cfg_tag_suffix(value)
+    cleaned = _strip_cfg_tags(value)
     cleaned = LANGUAGE_TAG_PATTERN.sub("", cleaned)
     cleaned = re.sub(r"\s+", " ", cleaned).strip()
     return cleaned.strip(" -–:")
@@ -1123,7 +1134,7 @@ def _normalize_title_for_matching(value: str) -> str:
     if not value:
         return ""
     cleaned = _strip_text_prefix(value.strip())
-    cleaned = _strip_cfg_tag_suffix(cleaned)
+    cleaned = _strip_cfg_tags(cleaned)
     cleaned = cleaned.replace("’", "'").replace("“", '"').replace("”", '"')
     cleaned = cleaned.replace("–", "-").replace("—", "-")
     cleaned = re.sub(r"\s+", " ", cleaned)
@@ -1447,8 +1458,12 @@ def build_episode_entry(
         or not semester_week_description_label.strip()
     ):
         semester_week_description_label = "Semester week"
+    reading_description_mode = feed_config.get("reading_description_mode")
+    if not isinstance(reading_description_mode, str):
+        reading_description_mode = ""
+    reading_description_topic_only = reading_description_mode.strip().lower() == "topic_only"
 
-    raw_title = base_title
+    raw_title = _strip_cfg_tags(base_title)
     raw_lower = raw_title.casefold()
     is_brief = "[brief]" in raw_lower
     is_weekly_overview = "alle kilder" in raw_lower or "all sources" in raw_lower
@@ -1513,26 +1528,36 @@ def build_episode_entry(
 
     description = meta.get("description")
     summary = meta.get("summary")
+    topic_only_description_applied = False
     if not description:
-        text_label = display_subject or cleaned_title or raw_title
-        if is_brief:
-            descriptor = "Kapitel i grundbogen"
-        elif is_weekly_overview:
-            descriptor = "Alle kilder"
+        if (
+            reading_description_topic_only
+            and not is_brief
+            and not is_weekly_overview
+            and topic
+        ):
+            description = f"Emne: {topic}"
+            topic_only_description_applied = True
         else:
-            descriptor = "Reading"
-        parts = []
-        if text_label:
-            parts.append(f"{descriptor}: {text_label}")
-        else:
-            parts.append(descriptor)
-        if topic:
-            parts.append(f"Emne: {topic}")
-        if lecture_number:
-            parts.append(f"Forelæsning {lecture_number}")
-        if week_number:
-            parts.append(f"{semester_week_description_label} {week_number}")
-        description = " · ".join(part for part in parts if part)
+            text_label = display_subject or cleaned_title or raw_title
+            if is_brief:
+                descriptor = "Kapitel i grundbogen"
+            elif is_weekly_overview:
+                descriptor = "Alle kilder"
+            else:
+                descriptor = "Reading"
+            parts = []
+            if text_label:
+                parts.append(f"{descriptor}: {text_label}")
+            else:
+                parts.append(descriptor)
+            if topic:
+                parts.append(f"Emne: {topic}")
+            if lecture_number:
+                parts.append(f"Forelæsning {lecture_number}")
+            if week_number:
+                parts.append(f"{semester_week_description_label} {week_number}")
+            description = " · ".join(part for part in parts if part)
         meta["description"] = description
 
     quiz_url = None
@@ -1551,10 +1576,11 @@ def build_episode_entry(
                     quiz_url = base + quote(relative, safe="/")
 
     if quiz_url:
-        description = meta.get("description") or meta.get("summary") or base_title
-        if quiz_url not in description:
-            description = f"{description}\n\nQuiz:\n{quiz_url}"
-            meta["description"] = description
+        if not topic_only_description_applied:
+            description = meta.get("description") or meta.get("summary") or base_title
+            if quiz_url not in description:
+                description = f"{description}\n\nQuiz:\n{quiz_url}"
+                meta["description"] = description
         if not meta.get("link"):
             meta["link"] = quiz_url
     if summary:

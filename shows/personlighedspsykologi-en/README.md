@@ -9,4 +9,6 @@ Scaffolding for the "Personlighedspsykologi" feed.
 - `assets/cover.png` - square artwork (min. 1400x1400) referenced by the feed.
 - `docs/` - planning material and any "important text" docs.
 
+Feed note: `feed.reading_description_mode` is set to `topic_only` so per-reading episode descriptions are emitted as `Emne: <topic>`.
+
 Update the Drive folder ID, owner email, and upload the service account credentials before enabling automation.

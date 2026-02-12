@@ -77,6 +77,12 @@ class AutoSpecMatchingTests(unittest.TestCase):
         self.assertEqual(mod._strip_language_tags("W01L1 Foo [EN]"), "W01L1 Foo")
         self.assertEqual(mod._strip_language_tags("W01L1 Foo (EN)"), "W01L1 Foo")
         self.assertEqual(
+            mod._strip_language_tags(
+                "W01L1 Foo [EN] {type=audio lang=en format=deep-dive length=long prompt=deadbeef}"
+            ),
+            "W01L1 Foo",
+        )
+        self.assertEqual(
             mod._strip_language_tags("Reading: Foo [EN] · Emne: Bar [EN]"),
             "Reading: Foo · Emne: Bar",
         )
@@ -186,11 +192,73 @@ class AutoSpecMatchingTests(unittest.TestCase):
         self.assertEqual(episode["title"], "W3L1 Manual Title")
         self.assertEqual(episode["description"], "W3L1 Manual Description")
 
+    def test_manual_metadata_fallback_matches_cfg_tagged_name(self):
+        mod = _load_feed_module()
+        file_entry = {
+            "id": "file1",
+            "name": "W3L1 Manual [EN] {type=audio lang=en format=deep-dive length=default prompt=deadbeef}.mp3",
+            "createdTime": "2026-02-16T08:00:00+00:00",
+        }
+        overrides = {
+            "by_name": {
+                "W3L1 Manual [EN].mp3": {
+                    "title": "W3L1 Manual Title [EN]",
+                    "description": "W3L1 Manual Description [EN]",
+                }
+            }
+        }
+        feed_config = {
+            "title": "Personlighedspsykologi (EN)",
+            "link": "https://example.com",
+            "description": "Test feed",
+            "language": "en",
+        }
+        episode = mod.build_episode_entry(
+            file_entry=file_entry,
+            feed_config=feed_config,
+            overrides=overrides,
+            public_link_template="https://example.com/{file_id}",
+        )
+        self.assertEqual(episode["title"], "W3L1 Manual Title")
+        self.assertEqual(episode["description"], "W3L1 Manual Description")
+
     def test_quiz_link_uses_configured_base_url(self):
         mod = _load_feed_module()
         file_entry = {
             "id": "file1",
             "name": "W01L1 - Foo [EN].mp3",
+            "createdTime": "2026-02-02T08:00:00+00:00",
+        }
+        feed_config = {
+            "title": "Personlighedspsykologi (EN)",
+            "link": "https://example.com",
+            "description": "Test feed",
+            "language": "en",
+        }
+        episode = mod.build_episode_entry(
+            file_entry=file_entry,
+            feed_config=feed_config,
+            overrides={},
+            public_link_template="https://example.com/{file_id}",
+            quiz_cfg={"base_url": "http://64.226.79.109/quizzes/personlighedspsykologi/"},
+            quiz_links={
+                "by_name": {
+                    "W01L1 - Foo [EN].mp3": {
+                        "relative_path": "W01L1/W01L1 - Foo [EN].html",
+                        "format": "html",
+                    }
+                }
+            },
+        )
+        self.assertTrue(
+            episode["link"].startswith("http://64.226.79.109/quizzes/personlighedspsykologi/")
+        )
+
+    def test_quiz_link_fallback_matches_untagged_key_for_tagged_audio_name(self):
+        mod = _load_feed_module()
+        file_entry = {
+            "id": "file1",
+            "name": "W01L1 - Foo [EN] {type=audio lang=en format=deep-dive length=default prompt=deadbeef}.mp3",
             "createdTime": "2026-02-02T08:00:00+00:00",
         }
         feed_config = {

@@ -16,6 +16,22 @@ Archived show configs are stored in `archive-show-config/` for reference.
 
 Current generation is configured for English-only outputs (see `prompt_config.json`).
 
+## Weekly "Alle kilder" behavior
+- Weekly `Alle kilder` generation uses a fresh NotebookLM notebook on every run (no notebook reuse).
+- This guarantees the run re-uploads the full weekly source list instead of relying on existing notebook sources.
+
+## Output filename config tags
+- `generate_week.py` appends a human-readable config tag before the extension: ` {...}`.
+- The tag includes artifact output options (type/language + API settings) and a prompt hash.
+- Weekly `Alle kilder` audio outputs additionally include `sources=<n>` (number of uploaded sources in the weekly notebook).
+- Example: `W11L2 - W11L2 X Raggatt (2006) [EN] {type=audio lang=en format=deep-dive length=long prompt=7f1bf8c4}.mp3`
+- Tag regex contract (case-insensitive in parsers):
+  - `\s\{[a-z0-9._:+-]+=[^{}\s]+(?:\s+[a-z0-9._:+-]+=[^{}\s]+)*\}`
+- Controls:
+  - `--config-tagging` (default on)
+  - `--no-config-tagging`
+  - `--config-tag-len N` (default: 8)
+
 ## Quiz generation
 - Configure quiz settings in `prompt_config.json` under `quiz` (difficulty, quantity, format, prompt).
 - Generate quizzes for a week:

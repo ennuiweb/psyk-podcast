@@ -26,6 +26,10 @@ RETRYABLE_REASONS = {
     "userRateLimitExceeded",
 }
 WEEK_TOKEN_RE = re.compile(r"\bW(?P<week>\d{1,2})L(?P<lecture>\d+)\b", re.IGNORECASE)
+CFG_TAG_RE = re.compile(
+    r"(?:\s+\{[a-z0-9._:+-]+=[^{}\s]+(?:\s+[a-z0-9._:+-]+=[^{}\s]+)*\})+$",
+    re.IGNORECASE,
+)
 
 
 def load_json(path: Path) -> Dict[str, Any]:
@@ -254,8 +258,13 @@ def normalize_week_tokens(text: str) -> str:
     return WEEK_TOKEN_RE.sub(repl, text)
 
 
+def strip_cfg_tag_suffix(text: str) -> str:
+    return CFG_TAG_RE.sub("", text).strip()
+
+
 def canonical_key(stem: str) -> str:
     name = stem.replace("–", "-").replace("—", "-")
+    name = strip_cfg_tag_suffix(name)
     name = normalize_week_tokens(name)
     name = re.sub(r"\s+", " ", name).strip()
     name = re.sub(r"\.{2,}", ".", name)

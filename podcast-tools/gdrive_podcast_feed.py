@@ -26,6 +26,10 @@ ITUNES_NS = "http://www.itunes.com/dtds/podcast-1.0.dtd"
 TEXT_PREFIX = "[Tekst]"
 HIGHLIGHTED_TEXT_PREFIX = "[Gul tekst]"
 LANGUAGE_TAG_PATTERN = re.compile(r"(?:\[\s*en\s*\]|\(\s*en\s*\))", re.IGNORECASE)
+CFG_TAG_PATTERN = re.compile(
+    r"(?:\s+\{[a-z0-9._:+-]+=[^{}\s]+(?:\s+[a-z0-9._:+-]+=[^{}\s]+)*\})+$",
+    re.IGNORECASE,
+)
 IMPORTANT_TRUTHY_STRINGS = {
     "1",
     "true",
@@ -260,6 +264,33 @@ def _listify(value: Any) -> List[str]:
         return [str(item) for item in value if item is not None]
     return [str(value)]
 
+
+def _strip_cfg_tag_suffix(value: str) -> str:
+    if not value:
+        return value
+    return CFG_TAG_PATTERN.sub("", value).strip()
+
+
+def _strip_cfg_tag_from_filename(name: str) -> str:
+    if not name:
+        return name
+    path = Path(name)
+    suffix = "".join(path.suffixes)
+    stem = name[: -len(suffix)] if suffix else name
+    return f"{_strip_cfg_tag_suffix(stem)}{suffix}"
+
+
+def _lookup_by_name_with_cfg_fallback(mapping: Dict[str, Any], name: str) -> Any:
+    if name in mapping:
+        return mapping[name]
+    stripped = _strip_cfg_tag_from_filename(name)
+    if stripped in mapping:
+        return mapping[stripped]
+    for key, value in mapping.items():
+        if isinstance(key, str) and _strip_cfg_tag_from_filename(key) == stripped:
+            return value
+    return None
+
 CANONICAL_WEEK_LECTURE_PREFIX_PATTERN = re.compile(
     r"^(?P<full>w0*(?P<week>\d{1,2})l0*(?P<lecture>\d+))\b[\s._-]*",
     re.IGNORECASE,
@@ -267,11 +298,11 @@ CANONICAL_WEEK_LECTURE_PREFIX_PATTERN = re.compile(
 
 
 def _normalize_stem(name: str) -> str:
-    return Path(name).stem.casefold().strip()
+    return _strip_cfg_tag_suffix(Path(name).stem).casefold().strip()
 
 
 def _canonicalize_episode_stem(name: str) -> str:
-    stem = Path(name).stem
+    stem = _strip_cfg_tag_suffix(Path(name).stem)
     if not stem:
         return ""
     stem = stem.replace("–", "-").replace("—", "-")
@@ -552,10 +583,22 @@ def format_rfc2822(value: dt.datetime) -> str:
 
 
 def item_metadata(overrides: Dict[str, Any], file_entry: Dict[str, Any]) -> Dict[str, Any]:
-    return overrides.get("by_id", {}).get(
-        file_entry["id"],
-        overrides.get("by_name", {}).get(file_entry["name"], overrides.get(file_entry["name"], {})),
-    )
+    by_id = overrides.get("by_id", {})
+    if isinstance(by_id, dict):
+        by_id_match = by_id.get(file_entry["id"])
+        if isinstance(by_id_match, dict):
+            return by_id_match
+
+    by_name = overrides.get("by_name", {})
+    if isinstance(by_name, dict):
+        by_name_match = _lookup_by_name_with_cfg_fallback(by_name, file_entry["name"])
+        if isinstance(by_name_match, dict):
+            return by_name_match
+
+    top_level_match = _lookup_by_name_with_cfg_fallback(overrides, file_entry["name"])
+    if isinstance(top_level_match, dict):
+        return top_level_match
+    return {}
 
 
 class AutoSpec:
@@ -1069,7 +1112,8 @@ def _strip_text_prefix(value: str) -> str:
 def _strip_language_tags(value: str) -> str:
     if not value:
         return value
-    cleaned = LANGUAGE_TAG_PATTERN.sub("", value)
+    cleaned = _strip_cfg_tag_suffix(value)
+    cleaned = LANGUAGE_TAG_PATTERN.sub("", cleaned)
     cleaned = re.sub(r"\s+", " ", cleaned).strip()
     return cleaned.strip(" -–:")
 
@@ -1078,6 +1122,7 @@ def _normalize_title_for_matching(value: str) -> str:
     if not value:
         return ""
     cleaned = _strip_text_prefix(value.strip())
+    cleaned = _strip_cfg_tag_suffix(cleaned)
     cleaned = cleaned.replace("’", "'").replace("“", '"').replace("”", '"')
     cleaned = cleaned.replace("–", "-").replace("—", "-")
     cleaned = re.sub(r"\s+", " ", cleaned)
@@ -1494,7 +1539,7 @@ def build_episode_entry(
         base_url = quiz_cfg.get("base_url")
         links_map = quiz_links.get("by_name") if isinstance(quiz_links, dict) else None
         if isinstance(links_map, dict):
-            entry = links_map.get(file_entry["name"])
+            entry = _lookup_by_name_with_cfg_fallback(links_map, file_entry["name"])
             if isinstance(entry, dict):
                 rel_path = entry.get("relative_path")
                 if base_url and rel_path:

@@ -319,8 +319,8 @@ def archive_request_log(log_path: Path) -> None:
         archived.unlink()
         print(f"Deleted existing archive: {archived}")
     if log_path.exists():
-        log_path.unlink()
-        print(f"Deleted request log: {log_path}")
+        log_path.replace(archived)
+        print(f"Archived request log: {archived}")
 
 
 def is_auth_error(output: str) -> bool:
@@ -501,13 +501,13 @@ def main() -> int:
         dest="archive_requests",
         action="store_true",
         default=True,
-        help="Delete request logs after successful download (default).",
+        help="Archive request logs as *.request.done.json after successful download (default).",
     )
     parser.add_argument(
         "--no-archive-requests",
         dest="archive_requests",
         action="store_false",
-        help="Keep request logs after successful download.",
+        help="Keep request logs in place after successful download.",
     )
     args = parser.parse_args()
     content_types = parse_content_types(args.content_types)

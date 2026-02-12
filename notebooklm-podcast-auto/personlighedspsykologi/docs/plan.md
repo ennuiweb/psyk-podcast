@@ -101,6 +101,7 @@ This command:
 - Uses `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json` for prompts/lengths.
 - Skips weekly “Alle kilder” when missing readings are listed for that week.
 - Emits MP3s/PNGs to `notebooklm-podcast-auto/personlighedspsykologi/output/W##L#/`.
+- Appends human-readable config tags to artifact filenames: ` {...}` before extension.
 - Writes a request log per non-blocking artifact: `*.mp3.request.json` / `*.png.request.json`.
 - Empty prompts are allowed (no validation).
 - Continues on per-episode failures and prints a failure summary at the end (non-zero exit).
@@ -118,6 +119,8 @@ Optional flags:
 - `--sleep-between SECONDS` to pause between generation requests (default: 2).
 - `--dry-run` to print planned outputs and exit without generating artifacts.
 - `--print-downloads` to print `artifact wait` + `download <type>` commands for this run (requires non-blocking mode).
+- `--config-tagging` (default) / `--no-config-tagging` to enable or disable config tags in output filenames.
+- `--config-tag-len N` to control prompt hash length inside output tags (default: 8).
 - `--output-profile-subdir` to nest outputs under a profile-based subdirectory (profile name or storage file stem).
 - Auth failures are quarantined for 60 minutes within a run; rate-limit cooldown uses `--profile-cooldown`.
 - Auth pass-through:
@@ -133,12 +136,13 @@ Optional flags:
 - Request logs: when `--skip-existing` is enabled (default), generation also skips outputs that already have a `.request.json` with an `artifact_id` and no error log.
 
 ## Output placement
-- Weekly overview: `notebooklm-podcast-auto/personlighedspsykologi/output/W##/W## - Alle kilder.mp3`
-- Per-reading: `notebooklm-podcast-auto/personlighedspsykologi/output/W##/W## - <reading>.mp3`
-- Brief (Grundbog): `notebooklm-podcast-auto/personlighedspsykologi/output/W##/[Brief] W## - <reading>.mp3`
+- Weekly overview: `notebooklm-podcast-auto/personlighedspsykologi/output/W##/W## - Alle kilder {type=audio lang=en format=deep-dive length=long sources=NN prompt=xxxxxxxx}.mp3`
+- Per-reading: `notebooklm-podcast-auto/personlighedspsykologi/output/W##/W## - <reading> {type=audio lang=en format=deep-dive length=default prompt=xxxxxxxx}.mp3`
+- Brief (Grundbog): `notebooklm-podcast-auto/personlighedspsykologi/output/W##/[Brief] W## - <reading> {type=audio lang=en format=brief length=default prompt=xxxxxxxx}.mp3`
 - Infographics use the same base names with `.png`.
 - Quizzes use the same base names with `.json` (or `.md` / `.html` based on `quiz.format`).
 - English variants add ` [EN]` before the extension.
+- Config tag regex contract (parsers strip as non-semantic metadata): `\s\{[a-z0-9._:+-]+=[^{}\s]+(?:\s+[a-z0-9._:+-]+=[^{}\s]+)*\}` (case-insensitive accepted).
 - Non-blocking request log: `notebooklm-podcast-auto/personlighedspsykologi/output/W##/*.mp3.request.json` / `*.png.request.json`
 - Failed generation error log: `notebooklm-podcast-auto/personlighedspsykologi/output/W##/*.mp3.request.error.json` / `*.png.request.error.json`
 - With `--output-profile-subdir`, outputs are nested under `.../output/<profile>/W##/`.
@@ -162,7 +166,7 @@ Optional flags:
 - The downloader now checks artifact status before waiting, and will skip artifacts already marked failed.
 - `--dry-run` to print what would run.
 - `--content-types audio,infographic` to control which artifacts are downloaded (default: audio).
-- Request logs are deleted after a successful download (or when the target file already exists); use `--no-archive-requests` to keep them in place.
+- Request logs are archived as `*.request.done.json` after a successful download (or when the target file already exists); use `--no-archive-requests` to keep `*.request.json` in place.
 - `--output-profile-subdir` to read outputs from a profile-based subdirectory (requires `--profile` or `--storage`).
 - Auth resolution:
   - Uses per-log `auth.storage_path` when present.
@@ -172,6 +176,8 @@ Optional flags:
 
 ## Validation checklist
 - Generate a single week with `--profile` and confirm `*.request.json` includes `auth.storage_path`.
+- Confirm generated filenames include ` {...}` and that re-running with unchanged options keeps the same tag.
+- Modify `prompt_config.json`, run again, and confirm the tag changes.
 - Run `download_week.py --dry-run` and verify the `AUTH:` line points at the expected storage file.
 - If using `--output-profile-subdir`, confirm outputs land under `.../output/<profile>/W##/`.
 

@@ -14,7 +14,8 @@ from typing import Dict, List
 
 WEEK_TOKEN_RE = re.compile(r"\bW(?P<week>\d{1,2})L(?P<lecture>\d+)\b", re.IGNORECASE)
 CFG_TAG_RE = re.compile(
-    r"(?:\s+\{[a-z0-9._:+-]+=[^{}\s]+(?:\s+[a-z0-9._:+-]+=[^{}\s]+)*\})+$",
+    r"(?:\s+\{[a-z0-9._:+-]+=[^{}\s]+(?:\s+[a-z0-9._:+-]+=[^{}\s]+)*\})+"
+    r"(?:\s+\[[^\[\]]+\])?$",
     re.IGNORECASE,
 )
 

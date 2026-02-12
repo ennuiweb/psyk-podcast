@@ -530,32 +530,8 @@ def _load_request_auth(output_path: Path) -> dict | None:
 
 
 def _ensure_unique_output_path(output_path: Path, auth_meta: dict) -> Path:
-    label = _auth_label_from_meta(auth_meta)
-    if not output_path.exists() or not label:
-        return output_path
-
-    existing_label = _auth_label_from_meta(_load_request_auth(output_path))
-    if existing_label == label:
-        return output_path
-
-    candidate = output_path.with_name(f"{output_path.stem} [{label}]{output_path.suffix}")
-    if not candidate.exists():
-        print(f"Output collision detected, using: {candidate}")
-        return candidate
-    if _auth_label_from_meta(_load_request_auth(candidate)) == label:
-        return candidate
-
-    counter = 2
-    while True:
-        candidate = output_path.with_name(
-            f"{output_path.stem} [{label}-{counter}]{output_path.suffix}"
-        )
-        if not candidate.exists():
-            print(f"Output collision detected, using: {candidate}")
-            return candidate
-        if _auth_label_from_meta(_load_request_auth(candidate)) == label:
-            return candidate
-        counter += 1
+    _ = auth_meta
+    return output_path
 
 
 def _build_request_payload(

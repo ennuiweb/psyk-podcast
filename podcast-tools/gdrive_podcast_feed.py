@@ -27,7 +27,8 @@ TEXT_PREFIX = "[Tekst]"
 HIGHLIGHTED_TEXT_PREFIX = "[Gul tekst]"
 LANGUAGE_TAG_PATTERN = re.compile(r"(?:\[\s*en\s*\]|\(\s*en\s*\))", re.IGNORECASE)
 CFG_TAG_PATTERN = re.compile(
-    r"(?:\s+\{[a-z0-9._:+-]+=[^{}\s]+(?:\s+[a-z0-9._:+-]+=[^{}\s]+)*\})+$",
+    r"(?:\s+\{[a-z0-9._:+-]+=[^{}\s]+(?:\s+[a-z0-9._:+-]+=[^{}\s]+)*\})+"
+    r"(?:\s+\[[^\[\]]+\])?$",
     re.IGNORECASE,
 )
 IMPORTANT_TRUTHY_STRINGS = {

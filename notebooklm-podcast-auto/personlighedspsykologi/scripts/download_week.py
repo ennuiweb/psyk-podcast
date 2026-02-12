@@ -24,7 +24,7 @@ def parse_weeks(week: str | None, weeks: str | None) -> list[str]:
 
 def parse_content_types(value: str | None) -> list[str]:
     if not value:
-        return ["audio"]
+        return ["audio", "infographic", "quiz"]
     allowed = {"audio", "infographic", "quiz"}
     items: list[str] = []
     for raw in value.split(","):
@@ -443,7 +443,10 @@ def main() -> int:
     )
     parser.add_argument(
         "--content-types",
-        help="Comma-separated content types to download (audio, infographic, quiz). Default: audio.",
+        help=(
+            "Comma-separated content types to download "
+            "(audio, infographic, quiz). Default: audio,infographic,quiz."
+        ),
     )
     parser.add_argument(
         "--quiz-format",

@@ -21,7 +21,8 @@ def read_json(path: Path) -> dict:
 WEEK_SELECTOR_PATTERN = re.compile(r"^W0*(\d{1,2})(?:L0*(\d{1,2}))?$", re.IGNORECASE)
 WEEK_DIR_PATTERN = re.compile(r"^W0*(\d{1,2})(?:L0*(\d{1,2}))?\b", re.IGNORECASE)
 CFG_TAG_PATTERN = re.compile(
-    r"(?:\s+\{[a-z0-9._:+-]+=[^{}\s]+(?:\s+[a-z0-9._:+-]+=[^{}\s]+)*\})+$",
+    r"(?:\s+\{[a-z0-9._:+-]+=[^{}\s]+(?:\s+[a-z0-9._:+-]+=[^{}\s]+)*\})+"
+    r"(?:\s+\[[^\[\]]+\])?$",
     re.IGNORECASE,
 )
 MAX_FILENAME_BYTES = 255
@@ -234,29 +235,53 @@ def build_output_cfg_tag_token(
     source_count: int | None,
     hash_len: int,
 ) -> str:
+    normalized_content_type = _normalize_tag_value(content_type)
+    normalized_language = _normalize_tag_value(language, default="default")
+    normalized_audio_format = _normalize_tag_value(audio_format, default="deep-dive")
+    normalized_audio_length = _normalize_tag_value(audio_length, default="default")
+    normalized_infographic_orientation = _normalize_tag_value(
+        infographic_orientation, default="default"
+    )
+    normalized_infographic_detail = _normalize_tag_value(infographic_detail, default="default")
+    normalized_quiz_quantity = _normalize_tag_value(quiz_quantity, default="default")
+    normalized_quiz_difficulty = _normalize_tag_value(quiz_difficulty, default="default")
+    normalized_quiz_format = _normalize_tag_value(quiz_format, default="json")
+
     parts = [
-        f"type={_normalize_tag_value(content_type)}",
-        f"lang={_normalize_tag_value(language, default='default')}",
+        f"type={normalized_content_type}",
+        f"lang={normalized_language}",
     ]
+    hash_payload: dict[str, str | int | None] = {
+        "schema_version": 1,
+        "content_type": normalized_content_type,
+        "language": normalized_language,
+        "instructions": instructions or "",
+    }
     if content_type == "audio":
-        parts.append(f"format={_normalize_tag_value(audio_format, default='deep-dive')}")
-        parts.append(f"length={_normalize_tag_value(audio_length, default='default')}")
+        parts.append(f"format={normalized_audio_format}")
+        parts.append(f"length={normalized_audio_length}")
+        hash_payload["audio_format"] = normalized_audio_format
+        hash_payload["audio_length"] = normalized_audio_length
         if source_count is not None:
             if source_count < 0:
                 raise ValueError("source_count must be >= 0")
             parts.append(f"sources={source_count}")
+            hash_payload["source_count"] = source_count
     elif content_type == "infographic":
-        parts.append(
-            f"orientation={_normalize_tag_value(infographic_orientation, default='default')}"
-        )
-        parts.append(f"detail={_normalize_tag_value(infographic_detail, default='default')}")
+        parts.append(f"orientation={normalized_infographic_orientation}")
+        parts.append(f"detail={normalized_infographic_detail}")
+        hash_payload["infographic_orientation"] = normalized_infographic_orientation
+        hash_payload["infographic_detail"] = normalized_infographic_detail
     elif content_type == "quiz":
-        parts.append(f"quantity={_normalize_tag_value(quiz_quantity, default='default')}")
-        parts.append(f"difficulty={_normalize_tag_value(quiz_difficulty, default='default')}")
-        parts.append(f"download={_normalize_tag_value(quiz_format, default='json')}")
+        parts.append(f"quantity={normalized_quiz_quantity}")
+        parts.append(f"difficulty={normalized_quiz_difficulty}")
+        parts.append(f"download={normalized_quiz_format}")
+        hash_payload["quiz_quantity"] = normalized_quiz_quantity
+        hash_payload["quiz_difficulty"] = normalized_quiz_difficulty
+        hash_payload["quiz_download_format"] = normalized_quiz_format
 
-    prompt_hash = hashlib.sha256((instructions or "").encode("utf-8")).hexdigest()[:hash_len]
-    parts.append(f"prompt={prompt_hash}")
+    effective_hash = compute_config_tag(hash_payload, hash_len)
+    parts.append(f"hash={effective_hash}")
     return " {" + " ".join(parts) + "}"
 
 
@@ -619,29 +644,8 @@ def auth_label_from_meta(auth: dict | None) -> str | None:
 
 
 def ensure_unique_output_path(output_path: Path, label: str | None) -> Path:
-    if not output_path.exists() or not label:
-        return output_path
-
-    existing_label = auth_label_from_meta(load_request_auth(output_path))
-    if existing_label == label:
-        return output_path
-
-    candidate = output_path.with_name(f"{output_path.stem} [{label}]{output_path.suffix}")
-    if not candidate.exists():
-        return candidate
-    if auth_label_from_meta(load_request_auth(candidate)) == label:
-        return candidate
-
-    counter = 2
-    while True:
-        candidate = output_path.with_name(
-            f"{output_path.stem} [{label}-{counter}]{output_path.suffix}"
-        )
-        if not candidate.exists():
-            return candidate
-        if auth_label_from_meta(load_request_auth(candidate)) == label:
-            return candidate
-        counter += 1
+    _ = label
+    return output_path
 
 
 def run_generate(

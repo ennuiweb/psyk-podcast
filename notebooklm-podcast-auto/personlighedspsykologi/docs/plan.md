@@ -120,7 +120,7 @@ Optional flags:
 - `--dry-run` to print planned outputs and exit without generating artifacts.
 - `--print-downloads` to print `artifact wait` + `download <type>` commands for this run (requires non-blocking mode).
 - `--config-tagging` (default) / `--no-config-tagging` to enable or disable config tags in output filenames.
-- `--config-tag-len N` to control prompt hash length inside output tags (default: 8).
+- `--config-tag-len N` to control effective-config hash length inside output tags (default: 8).
 - `--output-profile-subdir` to nest outputs under a profile-based subdirectory (profile name or storage file stem).
 - Auth failures are quarantined for 60 minutes within a run; rate-limit cooldown uses `--profile-cooldown`.
 - Auth pass-through:
@@ -136,9 +136,9 @@ Optional flags:
 - Request logs: when `--skip-existing` is enabled (default), generation also skips outputs that already have a `.request.json` with an `artifact_id` and no error log.
 
 ## Output placement
-- Weekly overview: `notebooklm-podcast-auto/personlighedspsykologi/output/W##/W## - Alle kilder {type=audio lang=en format=deep-dive length=long sources=NN prompt=xxxxxxxx}.mp3`
-- Per-reading: `notebooklm-podcast-auto/personlighedspsykologi/output/W##/W## - <reading> {type=audio lang=en format=deep-dive length=default prompt=xxxxxxxx}.mp3`
-- Brief (Grundbog): `notebooklm-podcast-auto/personlighedspsykologi/output/W##/[Brief] W## - <reading> {type=audio lang=en format=brief length=default prompt=xxxxxxxx}.mp3`
+- Weekly overview: `notebooklm-podcast-auto/personlighedspsykologi/output/W##/W## - Alle kilder {type=audio lang=en format=deep-dive length=long sources=NN hash=xxxxxxxx}.mp3`
+- Per-reading: `notebooklm-podcast-auto/personlighedspsykologi/output/W##/W## - <reading> {type=audio lang=en format=deep-dive length=default hash=xxxxxxxx}.mp3`
+- Brief (Grundbog): `notebooklm-podcast-auto/personlighedspsykologi/output/W##/[Brief] W## - <reading> {type=audio lang=en format=brief length=default hash=xxxxxxxx}.mp3`
 - Infographics use the same base names with `.png`.
 - Quizzes use the same base names with `.json` (or `.md` / `.html` based on `quiz.format`).
 - English variants add ` [EN]` before the extension.
@@ -146,7 +146,7 @@ Optional flags:
 - Non-blocking request log: `notebooklm-podcast-auto/personlighedspsykologi/output/W##/*.mp3.request.json` / `*.png.request.json`
 - Failed generation error log: `notebooklm-podcast-auto/personlighedspsykologi/output/W##/*.mp3.request.error.json` / `*.png.request.error.json`
 - With `--output-profile-subdir`, outputs are nested under `.../output/<profile>/W##/`.
-- Collision handling: if an output file exists and appears tied to a different auth, a ` [<profile>]` suffix is added automatically to avoid overwrites.
+- Collision handling: profile suffixes are never appended; the canonical output path is always used.
 
 ## Await + download (per week)
 Use request logs to wait for completion and download artifacts, skipping already-downloaded files:

@@ -156,7 +156,7 @@ Optional flags:
 - Collision handling: if an output file exists and appears tied to a different auth, a ` [<profile>]` suffix is added automatically to avoid overwrites.
 
 ## Await + download (per week)
-Use request logs to wait for completion and download MP3s, skipping already-downloaded files:
+Use request logs to wait for completion and download artifacts (audio + infographic + quiz by default), skipping already-downloaded files:
 
 ```bash
 ./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/download_week.py --week W01L1
@@ -169,6 +169,7 @@ Multiple weeks:
 ```
 
 Optional flags:
+- `--content-types audio|infographic|quiz[,..]` to limit downloads to specific artifact types.
 - `--timeout SECONDS` / `--interval SECONDS` for wait polling (defaults: 1800 / 15).
 - The downloader now checks artifact status before waiting, and will skip artifacts already marked failed.
 - `--dry-run` to print what would run.

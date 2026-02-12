@@ -22,9 +22,10 @@ Current generation is configured for English-only outputs (see `prompt_config.js
 
 ## Output filename config tags
 - `generate_week.py` appends a human-readable config tag before the extension: ` {...}`.
-- The tag includes artifact output options (type/language + API settings) and a prompt hash.
+- The tag includes artifact output options (type/language + API settings) and a full effective generation config hash.
 - Weekly `Alle kilder` audio outputs additionally include `sources=<n>` (number of uploaded sources in the weekly notebook).
-- Example: `W11L2 - W11L2 X Raggatt (2006) [EN] {type=audio lang=en format=deep-dive length=long prompt=7f1bf8c4}.mp3`
+- Output filenames never append profile collision suffixes like `[default]` or `[default-2]`; canonical paths are always used.
+- Example: `W11L2 - W11L2 X Raggatt (2006) [EN] {type=audio lang=en format=deep-dive length=long hash=7f1bf8c4}.mp3`
 - Tag regex contract (case-insensitive in parsers):
   - `\s\{[a-z0-9._:+-]+=[^{}\s]+(?:\s+[a-z0-9._:+-]+=[^{}\s]+)*\}`
 - Controls:
@@ -44,6 +45,13 @@ Current generation is configured for English-only outputs (see `prompt_config.js
 
 ```bash
 ./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/download_week.py --week W1 --content-types quiz
+```
+
+- Download all output types (audio + infographic + quiz) for a full week or a specific lecture:
+
+```bash
+./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/download_week.py --weeks W2
+./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/download_week.py --weeks W2L1
 ```
 
 - Override quiz download format (html/markdown/json):

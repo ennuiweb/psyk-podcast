@@ -1,4 +1,5 @@
 import importlib.util
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -35,29 +36,46 @@ class CfgTagFilenameHelpersTests(unittest.TestCase):
             / "generate_week.py",
             "generate_week",
         )
+        cls.generate_podcast = None
+        try:
+            cls.generate_podcast = _load_module(
+                root / "notebooklm-podcast-auto" / "generate_podcast.py",
+                "generate_podcast",
+            )
+        except ModuleNotFoundError:
+            cls.generate_podcast = None
 
     def test_local_canonical_key_ignores_cfg_tag(self):
         mod = self.local_sync
-        tagged = "W01L1 - W1L1 Foo [EN] {type=audio lang=en format=deep-dive length=long prompt=deadbeef}"
+        tagged = "W01L1 - W1L1 Foo [EN] {type=audio lang=en format=deep-dive length=long hash=deadbeef}"
         plain = "W01L1 - W1L1 Foo [EN]"
         self.assertEqual(mod.canonical_key(tagged), mod.canonical_key(plain))
 
     def test_local_derive_mp3_name_ignores_cfg_tag(self):
         mod = self.local_sync
-        stem = "W01L1 - W1L1 Foo [EN] {type=audio lang=en format=deep-dive length=long prompt=deadbeef}"
+        stem = "W01L1 - W1L1 Foo [EN] {type=audio lang=en format=deep-dive length=long hash=deadbeef}"
         self.assertEqual(mod.derive_mp3_name_from_html(stem), "W01L1 - Foo [EN].mp3")
+
+    def test_local_canonical_key_ignores_cfg_tag_with_profile_suffix(self):
+        mod = self.local_sync
+        tagged = (
+            "W01L1 - W1L1 Foo [EN] "
+            "{type=audio lang=en format=deep-dive length=long hash=deadbeef} [default-2]"
+        )
+        plain = "W01L1 - W1L1 Foo [EN]"
+        self.assertEqual(mod.canonical_key(tagged), mod.canonical_key(plain))
 
     def test_drive_canonical_key_ignores_cfg_tag(self):
         if self.drive_sync is None:
             self.skipTest("google-api dependencies unavailable for sync_drive_quiz_links import")
         mod = self.drive_sync
-        tagged = "W01L1 - W1L1 Foo [EN] {type=audio lang=en format=deep-dive length=long prompt=deadbeef}"
+        tagged = "W01L1 - W1L1 Foo [EN] {type=audio lang=en format=deep-dive length=long hash=deadbeef}"
         plain = "W01L1 - W1L1 Foo [EN]"
         self.assertEqual(mod.canonical_key(tagged), mod.canonical_key(plain))
 
     def test_cfg_tag_suffix_strip_removes_repeated_tags(self):
         local = self.local_sync
-        value = "W01L1 - Foo {type=quiz lang=en quantity=more difficulty=hard download=html prompt=beef1234}"
+        value = "W01L1 - Foo {type=quiz lang=en quantity=more difficulty=hard download=html hash=beef1234}"
         self.assertEqual(local.strip_cfg_tag_suffix(value), "W01L1 - Foo")
         if self.drive_sync is not None:
             self.assertEqual(self.drive_sync.strip_cfg_tag_suffix(value), "W01L1 - Foo")
@@ -74,24 +92,60 @@ class CfgTagFilenameHelpersTests(unittest.TestCase):
 
     def test_generate_week_apply_config_tag_replaces_existing(self):
         mod = self.generate_week
-        original = Path("W01L1 - Foo [EN] {type=audio lang=en format=brief length=default prompt=a1b2c3d4}.mp3")
-        new_tag = " {type=audio lang=en format=deep-dive length=long prompt=deadbeef}"
+        original = Path("W01L1 - Foo [EN] {type=audio lang=en format=brief length=default hash=a1b2c3d4}.mp3")
+        new_tag = " {type=audio lang=en format=deep-dive length=long hash=deadbeef}"
         tagged = mod.apply_config_tag(original, new_tag)
         self.assertEqual(
             tagged.name,
-            "W01L1 - Foo [EN] {type=audio lang=en format=deep-dive length=long prompt=deadbeef}.mp3",
+            "W01L1 - Foo [EN] {type=audio lang=en format=deep-dive length=long hash=deadbeef}.mp3",
         )
         tagged_again = mod.apply_config_tag(tagged, new_tag)
         self.assertEqual(tagged_again.name, tagged.name)
+
+    def test_generate_week_apply_config_tag_replaces_existing_with_profile_suffix(self):
+        mod = self.generate_week
+        original = Path(
+            "W01L1 - Foo [EN] {type=audio lang=en format=brief length=default hash=a1b2c3d4} [default].mp3"
+        )
+        new_tag = " {type=audio lang=en format=deep-dive length=long hash=deadbeef}"
+        tagged = mod.apply_config_tag(original, new_tag)
+        self.assertEqual(
+            tagged.name,
+            "W01L1 - Foo [EN] {type=audio lang=en format=deep-dive length=long hash=deadbeef}.mp3",
+        )
 
     def test_generate_week_apply_config_tag_truncates_long_filename(self):
         mod = self.generate_week
         long_stem = "W01L1 - " + ("x" * 400)
         path = Path(f"{long_stem}.mp3")
-        tag = " {type=audio lang=en format=deep-dive length=long prompt=deadbeef}"
+        tag = " {type=audio lang=en format=deep-dive length=long hash=deadbeef}"
         tagged = mod.apply_config_tag(path, tag)
         self.assertTrue(tagged.name.endswith(f"{tag}.mp3"))
         self.assertLessEqual(len(tagged.name.encode("utf-8")), mod.MAX_FILENAME_BYTES)
+
+    def test_generate_week_ensure_unique_output_path_never_appends_profile_suffix(self):
+        mod = self.generate_week
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            output_path = Path(tmp_dir) / "W01L1 - Foo.mp3"
+            output_path.write_bytes(b"x")
+            resolved = mod.ensure_unique_output_path(output_path, "default")
+            self.assertEqual(resolved, output_path)
+
+    def test_generate_podcast_ensure_unique_output_path_never_appends_profile_suffix(self):
+        if self.generate_podcast is None:
+            self.skipTest("notebooklm dependencies unavailable for generate_podcast import")
+        mod = self.generate_podcast
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            output_path = Path(tmp_dir) / "W01L1 - Foo.mp3"
+            output_path.write_bytes(b"x")
+            resolved = mod._ensure_unique_output_path(
+                output_path,
+                {
+                    "profile": "default",
+                    "storage_path": "/tmp/default_storage_state.json",
+                },
+            )
+            self.assertEqual(resolved, output_path)
 
     def test_generate_week_build_output_cfg_tag_token_includes_all_audio_options(self):
         mod = self.generate_week
@@ -113,7 +167,7 @@ class CfgTagFilenameHelpersTests(unittest.TestCase):
         self.assertIn("lang=en", token)
         self.assertIn("format=deep-dive", token)
         self.assertIn("length=long", token)
-        self.assertRegex(token, r"prompt=[0-9a-f]{8}")
+        self.assertRegex(token, r"hash=[0-9a-f]{8}")
 
     def test_generate_week_build_output_cfg_tag_token_includes_all_quiz_options(self):
         mod = self.generate_week
@@ -136,7 +190,7 @@ class CfgTagFilenameHelpersTests(unittest.TestCase):
         self.assertIn("quantity=more", token)
         self.assertIn("difficulty=hard", token)
         self.assertIn("download=html", token)
-        self.assertRegex(token, r"prompt=[0-9a-f]{8}")
+        self.assertRegex(token, r"hash=[0-9a-f]{8}")
 
     def test_generate_week_build_output_cfg_tag_token_includes_source_count_for_weekly_audio(self):
         mod = self.generate_week
@@ -155,6 +209,70 @@ class CfgTagFilenameHelpersTests(unittest.TestCase):
             hash_len=8,
         )
         self.assertIn("sources=7", token)
+
+    def test_generate_week_build_output_cfg_tag_token_hash_is_deterministic(self):
+        mod = self.generate_week
+        token_a = mod.build_output_cfg_tag_token(
+            content_type="quiz",
+            language="en",
+            instructions="weekly prompt",
+            audio_format=None,
+            audio_length=None,
+            infographic_orientation=None,
+            infographic_detail=None,
+            quiz_quantity="more",
+            quiz_difficulty="hard",
+            quiz_format="html",
+            source_count=None,
+            hash_len=8,
+        )
+        token_b = mod.build_output_cfg_tag_token(
+            content_type="quiz",
+            language="en",
+            instructions="weekly prompt",
+            audio_format=None,
+            audio_length=None,
+            infographic_orientation=None,
+            infographic_detail=None,
+            quiz_quantity="more",
+            quiz_difficulty="hard",
+            quiz_format="html",
+            source_count=None,
+            hash_len=8,
+        )
+        self.assertEqual(token_a, token_b)
+
+    def test_generate_week_build_output_cfg_tag_token_hash_changes_with_effective_config(self):
+        mod = self.generate_week
+        token_a = mod.build_output_cfg_tag_token(
+            content_type="audio",
+            language="en",
+            instructions="weekly prompt",
+            audio_format="deep-dive",
+            audio_length="long",
+            infographic_orientation=None,
+            infographic_detail=None,
+            quiz_quantity=None,
+            quiz_difficulty=None,
+            quiz_format=None,
+            source_count=5,
+            hash_len=8,
+        )
+        token_b = mod.build_output_cfg_tag_token(
+            content_type="audio",
+            language="en",
+            instructions="weekly prompt",
+            audio_format="deep-dive",
+            audio_length="short",
+            infographic_orientation=None,
+            infographic_detail=None,
+            quiz_quantity=None,
+            quiz_difficulty=None,
+            quiz_format=None,
+            source_count=5,
+            hash_len=8,
+        )
+        self.assertNotEqual(token_a, token_b)
 
 
 if __name__ == "__main__":

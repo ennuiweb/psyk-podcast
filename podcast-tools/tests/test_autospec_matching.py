@@ -364,7 +364,7 @@ class AutoSpecMatchingTests(unittest.TestCase):
             episode["link"].startswith("http://64.226.79.109/quizzes/personlighedspsykologi/")
         )
 
-    def test_topic_only_reading_description_mode_uses_topic_only(self):
+    def test_description_blocks_by_kind_can_produce_topic_only_reading(self):
         mod = _load_feed_module()
         file_entry = {
             "id": "file1",
@@ -376,7 +376,9 @@ class AutoSpecMatchingTests(unittest.TestCase):
             "link": "https://example.com",
             "description": "Test feed",
             "language": "en",
-            "reading_description_mode": "topic_only",
+            "description_blocks_by_kind": {
+                "reading": ["topic"],
+            },
         }
         topic = "Introforelæsning og nøglebegreber i personlighedspsykologien"
         episode = mod.build_episode_entry(
@@ -398,10 +400,140 @@ class AutoSpecMatchingTests(unittest.TestCase):
         )
 
         self.assertEqual(episode["description"], f"Emne: {topic}")
-        self.assertNotIn("Quiz:", episode["description"])
         self.assertTrue(
             episode["link"].startswith("http://64.226.79.109/quizzes/personlighedspsykologi/")
         )
+
+    def test_description_quiz_block_preserves_newline_format(self):
+        mod = _load_feed_module()
+        file_entry = {
+            "id": "file1",
+            "name": "W01L1 - Foo [EN].mp3",
+            "createdTime": "2026-02-02T08:00:00+00:00",
+        }
+        quiz_url = "http://64.226.79.109/quizzes/personlighedspsykologi/W01L1/W01L1%20-%20Foo%20%5BEN%5D.html"
+        episode = mod.build_episode_entry(
+            file_entry=file_entry,
+            feed_config={
+                "title": "Personlighedspsykologi (EN)",
+                "link": "https://example.com",
+                "description": "Test feed",
+                "language": "en",
+            },
+            overrides={},
+            public_link_template="https://example.com/{file_id}",
+            quiz_cfg={"base_url": "http://64.226.79.109/quizzes/personlighedspsykologi/"},
+            quiz_links={
+                "by_name": {
+                    "W01L1 - Foo [EN].mp3": {
+                        "relative_path": "W01L1/W01L1 - Foo [EN].html",
+                        "format": "html",
+                    }
+                }
+            },
+        )
+        self.assertIn("\n\nQuiz:\n", episode["description"])
+        self.assertIn(quiz_url, episode["description"])
+
+    def test_description_quiz_url_block_renders_inline(self):
+        mod = _load_feed_module()
+        file_entry = {
+            "id": "file1",
+            "name": "W01L1 - Foo [EN].mp3",
+            "createdTime": "2026-02-02T08:00:00+00:00",
+        }
+        episode = mod.build_episode_entry(
+            file_entry=file_entry,
+            feed_config={
+                "title": "Personlighedspsykologi (EN)",
+                "link": "https://example.com",
+                "description": "Test feed",
+                "language": "en",
+                "description_blocks": ["descriptor_subject", "quiz_url"],
+            },
+            overrides={},
+            public_link_template="https://example.com/{file_id}",
+            quiz_cfg={"base_url": "http://64.226.79.109/quizzes/personlighedspsykologi/"},
+            quiz_links={
+                "by_name": {
+                    "W01L1 - Foo [EN].mp3": {
+                        "relative_path": "W01L1/W01L1 - Foo [EN].html",
+                        "format": "html",
+                    }
+                }
+            },
+        )
+        self.assertIn(" · http://64.226.79.109/quizzes/personlighedspsykologi/", episode["description"])
+        self.assertNotIn("\n\nQuiz:\n", episode["description"])
+
+    def test_per_kind_block_overrides_global_blocks(self):
+        mod = _load_feed_module()
+        file_entry = {
+            "id": "file1",
+            "name": "W01L1 - Foo [EN].mp3",
+            "createdTime": "2026-02-02T08:00:00+00:00",
+        }
+        episode = mod.build_episode_entry(
+            file_entry=file_entry,
+            feed_config={
+                "title": "Personlighedspsykologi (EN)",
+                "link": "https://example.com",
+                "description": "Test feed",
+                "language": "en",
+                "title_blocks": ["type_label"],
+                "title_blocks_by_kind": {"reading": ["subject"]},
+            },
+            overrides={},
+            public_link_template="https://example.com/{file_id}",
+        )
+        self.assertEqual(episode["title"], "Foo")
+
+    def test_missing_topic_with_topic_only_block_falls_back_to_descriptor_subject(self):
+        mod = _load_feed_module()
+        file_entry = {
+            "id": "file1",
+            "name": "W01L1 - Foo [EN].mp3",
+            "createdTime": "2026-02-02T08:00:00+00:00",
+        }
+        episode = mod.build_episode_entry(
+            file_entry=file_entry,
+            feed_config={
+                "title": "Personlighedspsykologi (EN)",
+                "link": "https://example.com",
+                "description": "Test feed",
+                "language": "en",
+                "description_blocks_by_kind": {"reading": ["topic"]},
+            },
+            overrides={},
+            public_link_template="https://example.com/{file_id}",
+        )
+        self.assertEqual(episode["description"], "Reading: Foo")
+
+    def test_validate_feed_block_config_rejects_unknown_description_block(self):
+        mod = _load_feed_module()
+        with self.assertRaisesRegex(
+            ValueError, r"feed\.description_blocks\[0\].*unknown block 'does_not_exist'"
+        ):
+            mod.validate_feed_block_config({"description_blocks": ["does_not_exist"]})
+
+    def test_validate_feed_block_config_rejects_unknown_kind(self):
+        mod = _load_feed_module()
+        with self.assertRaisesRegex(
+            ValueError, r"feed\.title_blocks_by_kind has unknown kind 'unknown_kind'"
+        ):
+            mod.validate_feed_block_config(
+                {"title_blocks_by_kind": {"unknown_kind": ["subject"]}}
+            )
+
+    def test_validate_feed_block_config_rejects_deprecated_reading_description_mode(self):
+        mod = _load_feed_module()
+        with self.assertRaisesRegex(ValueError, r"feed\.reading_description_mode is deprecated"):
+            mod.validate_feed_block_config({"reading_description_mode": "topic_only"})
+
+    def test_validate_feed_block_config_rejects_empty_block_list(self):
+        mod = _load_feed_module()
+        with self.assertRaisesRegex(ValueError, r"feed\.title_blocks must be a non-empty list"):
+            mod.validate_feed_block_config({"title_blocks": []})
 
 
 if __name__ == "__main__":

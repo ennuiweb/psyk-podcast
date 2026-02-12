@@ -1121,12 +1121,17 @@ def _strip_text_prefix(value: str) -> str:
     return value
 
 
-def _strip_language_tags(value: str) -> str:
+def _strip_language_tags(value: str, *, preserve_newlines: bool = False) -> str:
     if not value:
         return value
     cleaned = _strip_cfg_tags(value)
     cleaned = LANGUAGE_TAG_PATTERN.sub("", cleaned)
-    cleaned = re.sub(r"\s+", " ", cleaned).strip()
+    if preserve_newlines:
+        cleaned = re.sub(r"[ \t]+", " ", cleaned)
+        cleaned = re.sub(r" *\n *", "\n", cleaned)
+        cleaned = re.sub(r"\n{3,}", "\n\n", cleaned).strip()
+    else:
+        cleaned = re.sub(r"\s+", " ", cleaned).strip()
     return cleaned.strip(" -–:")
 
 
@@ -1331,6 +1336,28 @@ WEEK_LECTURE_PATTERN = re.compile(r"\bw\s*(\d{1,2})\s*l\s*(\d+)\b", re.IGNORECAS
 BRIEF_PREFIX_PATTERN = re.compile(r"^\[brief\]\s*", re.IGNORECASE)
 WEEK_PREFIX_TOKEN_PATTERN = re.compile(r"^w\s*\d{1,2}(?:\s*l\s*\d+)?\b", re.IGNORECASE)
 WEEK_PREFIX_SEPARATOR_PATTERN = re.compile(r"^[\s._\-–:]+")
+EPISODE_KINDS = {"reading", "brief", "weekly_overview"}
+TITLE_BLOCKS_ALLOWED = {
+    "semester_week_lecture",
+    "semester_week",
+    "lecture",
+    "subject",
+    "type_label",
+    "subject_or_type",
+    "week_range",
+}
+DESCRIPTION_BLOCKS_ALLOWED = {
+    "descriptor_subject",
+    "descriptor",
+    "subject",
+    "topic",
+    "lecture",
+    "semester_week",
+    "quiz",
+    "quiz_url",
+}
+DEFAULT_TITLE_BLOCKS = ["semester_week_lecture", "subject_or_type", "week_range"]
+DEFAULT_DESCRIPTION_BLOCKS = ["descriptor_subject", "topic", "lecture", "semester_week", "quiz"]
 
 
 def extract_week_lecture(
@@ -1382,6 +1409,125 @@ def extract_topic(meta: Dict[str, Any]) -> Optional[str]:
         if lowered.startswith("ugens emne:"):
             return summary.split(":", 1)[1].strip()
     return None
+
+
+def _validate_block_list(
+    value: Any,
+    *,
+    path: str,
+    allowed_blocks: Set[str],
+) -> List[str]:
+    if not isinstance(value, list) or not value:
+        raise ValueError(f"{path} must be a non-empty list of block names.")
+    blocks: List[str] = []
+    for idx, token in enumerate(value):
+        if not isinstance(token, str) or not token.strip():
+            raise ValueError(f"{path}[{idx}] must be a non-empty string.")
+        block = token.strip()
+        if block not in allowed_blocks:
+            allowed = ", ".join(sorted(allowed_blocks))
+            raise ValueError(f"{path}[{idx}] has unknown block '{block}'. Allowed: {allowed}")
+        blocks.append(block)
+    return blocks
+
+
+def validate_feed_block_config(feed_config: Dict[str, Any]) -> None:
+    if not isinstance(feed_config, dict):
+        raise ValueError("feed must be a JSON object.")
+    if "reading_description_mode" in feed_config:
+        raise ValueError(
+            "feed.reading_description_mode is deprecated. "
+            "Remove it and use feed.description_blocks or feed.description_blocks_by_kind.reading."
+        )
+
+    if "title_blocks" in feed_config:
+        _validate_block_list(
+            feed_config.get("title_blocks"),
+            path="feed.title_blocks",
+            allowed_blocks=TITLE_BLOCKS_ALLOWED,
+        )
+    if "description_blocks" in feed_config:
+        _validate_block_list(
+            feed_config.get("description_blocks"),
+            path="feed.description_blocks",
+            allowed_blocks=DESCRIPTION_BLOCKS_ALLOWED,
+        )
+
+    mapping_specs = (
+        ("title_blocks_by_kind", TITLE_BLOCKS_ALLOWED),
+        ("description_blocks_by_kind", DESCRIPTION_BLOCKS_ALLOWED),
+    )
+    for key, allowed_blocks in mapping_specs:
+        raw_mapping = feed_config.get(key)
+        if raw_mapping is None:
+            continue
+        if not isinstance(raw_mapping, dict):
+            raise ValueError(f"feed.{key} must be an object keyed by episode kind.")
+        if not raw_mapping:
+            raise ValueError(f"feed.{key} must not be empty when provided.")
+        for kind, blocks_value in raw_mapping.items():
+            if kind not in EPISODE_KINDS:
+                allowed_kinds = ", ".join(sorted(EPISODE_KINDS))
+                raise ValueError(
+                    f"feed.{key} has unknown kind '{kind}'. Allowed kinds: {allowed_kinds}"
+                )
+            _validate_block_list(
+                blocks_value,
+                path=f"feed.{key}.{kind}",
+                allowed_blocks=allowed_blocks,
+            )
+
+
+def _resolve_blocks_for_kind(
+    feed_config: Dict[str, Any],
+    *,
+    global_key: str,
+    by_kind_key: str,
+    kind: str,
+    defaults: Sequence[str],
+    allowed_blocks: Set[str],
+) -> List[str]:
+    if kind not in EPISODE_KINDS:
+        allowed_kinds = ", ".join(sorted(EPISODE_KINDS))
+        raise ValueError(f"Unknown episode kind '{kind}'. Allowed kinds: {allowed_kinds}")
+
+    by_kind = feed_config.get(by_kind_key)
+    if isinstance(by_kind, dict) and kind in by_kind:
+        return _validate_block_list(
+            by_kind.get(kind),
+            path=f"feed.{by_kind_key}.{kind}",
+            allowed_blocks=allowed_blocks,
+        )
+
+    global_blocks = feed_config.get(global_key)
+    if global_blocks is not None:
+        return _validate_block_list(
+            global_blocks,
+            path=f"feed.{global_key}",
+            allowed_blocks=allowed_blocks,
+        )
+    return list(defaults)
+
+
+def _render_blocks(
+    blocks: Sequence[str],
+    block_values: Dict[str, Optional[str]],
+    *,
+    separator: str,
+) -> str:
+    rendered = ""
+    for block in blocks:
+        value = block_values.get(block)
+        if not value:
+            continue
+        if value.startswith("\n"):
+            if rendered:
+                rendered = f"{rendered}{value}"
+            else:
+                rendered = value.lstrip("\n")
+            continue
+        rendered = f"{rendered}{separator}{value}" if rendered else value
+    return rendered
 
 
 def build_episode_entry(
@@ -1458,10 +1604,6 @@ def build_episode_entry(
         or not semester_week_description_label.strip()
     ):
         semester_week_description_label = "Semester week"
-    reading_description_mode = feed_config.get("reading_description_mode")
-    if not isinstance(reading_description_mode, str):
-        reading_description_mode = ""
-    reading_description_topic_only = reading_description_mode.strip().lower() == "topic_only"
 
     raw_title = _strip_cfg_tags(base_title)
     raw_lower = raw_title.casefold()
@@ -1490,27 +1632,56 @@ def build_episode_entry(
         type_label = "Alle kilder"
     else:
         type_label = "Reading"
+    episode_kind = "brief" if is_brief else ("weekly_overview" if is_weekly_overview else "reading")
+
+    quiz_url = None
+    if quiz_cfg and quiz_links and file_entry.get("name"):
+        base_url = quiz_cfg.get("base_url")
+        links_map = quiz_links.get("by_name") if isinstance(quiz_links, dict) else None
+        if isinstance(links_map, dict):
+            entry = _lookup_by_name_with_cfg_fallback(links_map, file_entry["name"])
+            if isinstance(entry, dict):
+                rel_path = entry.get("relative_path")
+                if base_url and rel_path:
+                    base = str(base_url)
+                    if not base.endswith("/"):
+                        base += "/"
+                    relative = str(rel_path).lstrip("/")
+                    quiz_url = base + quote(relative, safe="/")
 
     if not meta.get("title"):
-        segments = []
+        semester_week_lecture = None
         if week_number and lecture_number:
-            segments.append(f"{semester_week_label} {week_number}, Forelæsning {lecture_number}")
+            semester_week_lecture = f"{semester_week_label} {week_number}, Forelæsning {lecture_number}"
         elif lecture_number:
-            segments.append(f"Forelæsning {lecture_number}")
+            semester_week_lecture = f"Forelæsning {lecture_number}"
         elif week_number:
-            segments.append(f"{semester_week_label} {week_number}")
-        if is_weekly_overview:
-            if type_label:
-                segments.append(type_label)
+            semester_week_lecture = f"{semester_week_label} {week_number}"
+
+        subject = display_subject or cleaned_title or raw_title
+        if is_weekly_overview and type_label:
+            subject_or_type = type_label
         else:
-            subject = display_subject or cleaned_title or raw_title
-            if subject:
-                segments.append(subject)
-            elif type_label:
-                segments.append(type_label)
-        if week_range_label:
-            segments.append(f"({week_range_label})")
-        title_value = " · ".join(segment for segment in segments if segment)
+            subject_or_type = subject or type_label
+
+        title_block_values = {
+            "semester_week_lecture": semester_week_lecture,
+            "semester_week": f"{semester_week_label} {week_number}" if week_number else None,
+            "lecture": f"Forelæsning {lecture_number}" if lecture_number else None,
+            "subject": subject,
+            "type_label": type_label,
+            "subject_or_type": subject_or_type,
+            "week_range": f"({week_range_label})" if week_range_label else None,
+        }
+        title_blocks = _resolve_blocks_for_kind(
+            feed_config,
+            global_key="title_blocks",
+            by_kind_key="title_blocks_by_kind",
+            kind=episode_kind,
+            defaults=DEFAULT_TITLE_BLOCKS,
+            allowed_blocks=TITLE_BLOCKS_ALLOWED,
+        )
+        title_value = _render_blocks(title_blocks, title_block_values, separator=" · ")
         meta["title"] = title_value or (display_subject or raw_title)
     title_value = meta.get("title") or base_title
     if important and prefix_replaced:
@@ -1528,65 +1699,51 @@ def build_episode_entry(
 
     description = meta.get("description")
     summary = meta.get("summary")
-    topic_only_description_applied = False
     if not description:
-        if (
-            reading_description_topic_only
-            and not is_brief
-            and not is_weekly_overview
-            and topic
-        ):
-            description = f"Emne: {topic}"
-            topic_only_description_applied = True
+        text_label = display_subject or cleaned_title or raw_title
+        if is_brief:
+            descriptor = "Kapitel i grundbogen"
+        elif is_weekly_overview:
+            descriptor = "Alle kilder"
         else:
-            text_label = display_subject or cleaned_title or raw_title
-            if is_brief:
-                descriptor = "Kapitel i grundbogen"
-            elif is_weekly_overview:
-                descriptor = "Alle kilder"
-            else:
-                descriptor = "Reading"
-            parts = []
-            if text_label:
-                parts.append(f"{descriptor}: {text_label}")
-            else:
-                parts.append(descriptor)
-            if topic:
-                parts.append(f"Emne: {topic}")
-            if lecture_number:
-                parts.append(f"Forelæsning {lecture_number}")
-            if week_number:
-                parts.append(f"{semester_week_description_label} {week_number}")
-            description = " · ".join(part for part in parts if part)
+            descriptor = "Reading"
+        descriptor_subject = f"{descriptor}: {text_label}" if text_label else descriptor
+        description_block_values = {
+            "descriptor_subject": descriptor_subject,
+            "descriptor": descriptor,
+            "subject": text_label,
+            "topic": f"Emne: {topic}" if topic else None,
+            "lecture": f"Forelæsning {lecture_number}" if lecture_number else None,
+            "semester_week": (
+                f"{semester_week_description_label} {week_number}" if week_number else None
+            ),
+            "quiz": f"\n\nQuiz:\n{quiz_url}" if quiz_url else None,
+            "quiz_url": quiz_url,
+        }
+        description_blocks = _resolve_blocks_for_kind(
+            feed_config,
+            global_key="description_blocks",
+            by_kind_key="description_blocks_by_kind",
+            kind=episode_kind,
+            defaults=DEFAULT_DESCRIPTION_BLOCKS,
+            allowed_blocks=DESCRIPTION_BLOCKS_ALLOWED,
+        )
+        description = _render_blocks(
+            description_blocks,
+            description_block_values,
+            separator=" · ",
+        )
+        if not description:
+            description = descriptor_subject or summary or base_title
         meta["description"] = description
 
-    quiz_url = None
-    if quiz_cfg and quiz_links and file_entry.get("name"):
-        base_url = quiz_cfg.get("base_url")
-        links_map = quiz_links.get("by_name") if isinstance(quiz_links, dict) else None
-        if isinstance(links_map, dict):
-            entry = _lookup_by_name_with_cfg_fallback(links_map, file_entry["name"])
-            if isinstance(entry, dict):
-                rel_path = entry.get("relative_path")
-                if base_url and rel_path:
-                    base = str(base_url)
-                    if not base.endswith("/"):
-                        base += "/"
-                    relative = str(rel_path).lstrip("/")
-                    quiz_url = base + quote(relative, safe="/")
-
     if quiz_url:
-        if not topic_only_description_applied:
-            description = meta.get("description") or meta.get("summary") or base_title
-            if quiz_url not in description:
-                description = f"{description}\n\nQuiz:\n{quiz_url}"
-                meta["description"] = description
         if not meta.get("link"):
             meta["link"] = quiz_url
     if summary:
         meta["summary"] = _strip_language_tags(summary)
     if meta.get("description"):
-        meta["description"] = _strip_language_tags(meta["description"])
+        meta["description"] = _strip_language_tags(meta["description"], preserve_newlines=True)
 
     explicit_default = feed_config.get("default_explicit", False)
     duration = meta.get("duration")
@@ -1724,6 +1881,10 @@ def main() -> None:
 
     config = load_json(args.config)
     feed_cfg = config.get("feed", {})
+    try:
+        validate_feed_block_config(feed_cfg)
+    except ValueError as exc:
+        raise SystemExit(f"Invalid feed block config: {exc}") from exc
     overrides_path = args.metadata or (Path(config.get("episode_metadata", "")) if config.get("episode_metadata") else None)
     overrides = load_json(overrides_path) if overrides_path and overrides_path.exists() else {}
     quiz_cfg = config.get("quiz") if isinstance(config.get("quiz"), dict) else None

@@ -72,13 +72,27 @@ class AutoSpecMatchingTests(unittest.TestCase):
             self.assertEqual(mod.strip_week_prefix(value), expected)
         self.assertEqual(mod.strip_week_prefix("Reading W3L1 methods"), "Reading W3L1 methods")
 
-    def test_strip_language_tags_removes_en(self):
+    def test_strip_language_tags_removes_en_tts_and_optionally_brief(self):
         mod = _load_feed_module()
         self.assertEqual(mod._strip_language_tags("W01L1 Foo [EN]"), "W01L1 Foo")
         self.assertEqual(mod._strip_language_tags("W01L1 Foo (EN)"), "W01L1 Foo")
+        self.assertEqual(mod._strip_language_tags("W01L1 Foo [TTS]"), "W01L1 Foo")
+        self.assertEqual(mod._strip_language_tags("W01L1 Foo (tts)"), "W01L1 Foo")
+        self.assertEqual(mod._strip_language_tags("W01L1 Foo [Brief]"), "W01L1 Foo")
+        self.assertEqual(mod._strip_language_tags("W01L1 Foo [ brief ]"), "W01L1 Foo")
+        self.assertEqual(
+            mod._strip_language_tags("W01L1 Foo [Brief]", strip_brief=False),
+            "W01L1 Foo [Brief]",
+        )
         self.assertEqual(
             mod._strip_language_tags(
                 "W01L1 Foo [EN] {type=audio lang=en format=deep-dive length=long hash=deadbeef}"
+            ),
+            "W01L1 Foo",
+        )
+        self.assertEqual(
+            mod._strip_language_tags(
+                "W01L1 Foo [TTS] {type=tts voice=da-DK__chirp3_hd__da-DK-Chirp3-HD-Algenib date=2026-02-14}"
             ),
             "W01L1 Foo",
         )
@@ -167,6 +181,70 @@ class AutoSpecMatchingTests(unittest.TestCase):
         self.assertIn("Zettler et al... (2025)", episode["title"])
         self.assertNotRegex(episode["title"], re.compile(r"\bW\d{1,2}L\d+\b"))
         self.assertNotRegex(episode["description"], re.compile(r"\bW\d{1,2}L\d+\b"))
+
+    def test_generated_entry_maps_tts_tag_to_oplaest_before_week_token(self):
+        mod = _load_feed_module()
+        file_entry = {
+            "id": "file1",
+            "name": (
+                "[TTS] W1L1 - Grundbog kapitel 01 - Introduktion til personlighedspsykologi "
+                "{type=tts voice=da-DK__chirp3_hd__da-DK-Chirp3-HD-Algenib date=2026-02-14}.wav"
+            ),
+            "createdTime": "2026-02-02T08:00:00+00:00",
+        }
+        feed_config = {
+            "title": "Personlighedspsykologi (EN)",
+            "link": "https://example.com",
+            "description": "Test feed",
+            "language": "en",
+            "semester_week_start_date": "2026-02-02",
+            "semester_week_label": "Semesteruge",
+            "semester_week_description_label": "Semesteruge",
+        }
+        episode = mod.build_episode_entry(
+            file_entry=file_entry,
+            feed_config=feed_config,
+            overrides={},
+            public_link_template="https://example.com/{file_id}",
+            auto_meta={"week_reference_year": 2026},
+            folder_names=["W01L1"],
+        )
+        self.assertIn("Oplæst", episode["title"])
+        self.assertIn("Grundbog kapitel 01", episode["title"])
+        self.assertNotIn("[TTS]", episode["title"])
+        self.assertIn("Oplæst", episode["description"])
+        self.assertNotRegex(episode["title"], re.compile(r"\bW\d{1,2}L\d+\b"))
+        self.assertNotRegex(episode["description"], re.compile(r"\bW\d{1,2}L\d+\b"))
+
+    def test_generated_entry_keeps_brief_tag_in_title(self):
+        mod = _load_feed_module()
+        file_entry = {
+            "id": "file1",
+            "name": "[ brief ] W1L1 - Grundbog kapitel 01 [EN].mp3",
+            "createdTime": "2026-02-02T08:00:00+00:00",
+        }
+        feed_config = {
+            "title": "Personlighedspsykologi (EN)",
+            "link": "https://example.com",
+            "description": "Test feed",
+            "language": "en",
+            "semester_week_start_date": "2026-02-02",
+            "semester_week_label": "Semesteruge",
+            "semester_week_description_label": "Semesteruge",
+        }
+        episode = mod.build_episode_entry(
+            file_entry=file_entry,
+            feed_config=feed_config,
+            overrides={},
+            public_link_template="https://example.com/{file_id}",
+            auto_meta={"week_reference_year": 2026},
+            folder_names=["W01L1"],
+        )
+        self.assertIn("[Brief]", episode["title"])
+        self.assertIn("Grundbog kapitel 01", episode["title"])
+        self.assertNotIn("[ brief ]", episode["title"])
+        self.assertNotRegex(episode["title"], re.compile(r"\bW\d{1,2}L\d+\b"))
+        self.assertIn("Kapitel i grundbogen", episode["description"])
 
     def test_generated_entry_strips_cfg_tag_from_subject(self):
         mod = _load_feed_module()

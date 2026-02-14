@@ -25,7 +25,9 @@ Current generation is configured for English-only outputs (see `prompt_config.js
 - The tag includes artifact output options (type/language + API settings) and a full effective generation config hash.
 - Weekly `Alle kilder` audio outputs additionally include `sources=<n>` (number of uploaded sources in the weekly notebook).
 - Output filenames never append profile collision suffixes like `[default]` or `[default-2]`; canonical paths are always used.
-- Example: `W11L2 - W11L2 X Raggatt (2006) [EN] {type=audio lang=en format=deep-dive length=long hash=7f1bf8c4}.mp3`
+- Reading filenames are normalized to a single leading week token (`W#L# - ...`) even when source PDFs include repeated week labels.
+- Legacy files generated before this normalization fix are not auto-renamed; you can keep them as-is or run a one-time cleanup.
+- Example: `W11L2 - X Raggatt (2006) [EN] {type=audio lang=en format=deep-dive length=long hash=7f1bf8c4}.mp3`
 - Tag regex contract (case-insensitive in parsers):
   - `\s\{[a-z0-9._:+-]+=[^{}\s]+(?:\s+[a-z0-9._:+-]+=[^{}\s]+)*\}`
 - Controls:
@@ -63,6 +65,8 @@ Current generation is configured for English-only outputs (see `prompt_config.js
 ## Troubleshooting
 - If you interrupt `download_week.py` while waiting, rerun the same command. Already-downloaded outputs are skipped.
 - To avoid long waits for in-progress artifacts, set `--timeout` and rerun later.
+- To list legacy double-prefix files (`W1L1 - W1L1 ...`), run:
+  `find notebooklm-podcast-auto/personlighedspsykologi/output -type f | rg '/W[0-9]+L[0-9]+/W[0-9]+L[0-9]+ - W[0-9]+L[0-9]+'`
 
 ## Quiz hosting (droplet)
 Quiz HTML exports are hosted on the droplet under:

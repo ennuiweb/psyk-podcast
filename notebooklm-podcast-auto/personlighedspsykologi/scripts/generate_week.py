@@ -93,7 +93,8 @@ def list_source_files(week_dir: Path) -> list[Path]:
     return files
 
 
-WEEK_PREFIX_PATTERN = re.compile(r"^(W0*(\d{1,2})L0*(\d{1,2}))\\b[\\s._-]*", re.IGNORECASE)
+# Keep this as a raw regex with single escapes (\b, \s) so week-prefix stripping works.
+WEEK_PREFIX_PATTERN = re.compile(r"^(W0*(\d{1,2})L0*(\d{1,2}))\b[\s._-]*", re.IGNORECASE)
 
 
 def parse_week_label(week_label: str) -> tuple[int, int] | None:
@@ -123,8 +124,8 @@ def normalize_episode_title(title: str, week_label: str) -> str:
         return title
     normalized = strip_week_prefix_from_title(title, week_label)
     normalized = strip_week_prefix_from_title(normalized, week_label)
-    normalized = re.sub(r"\\.{2,}", ".", normalized)
-    normalized = re.sub(r"\\s+", " ", normalized).strip()
+    normalized = re.sub(r"\.{2,}", ".", normalized)
+    normalized = re.sub(r"\s+", " ", normalized).strip()
     return normalized or title
 
 

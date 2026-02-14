@@ -28,9 +28,10 @@
   - Orientation/detail/prompt: from `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json` (`infographic`, `weekly_infographic`, `per_reading_infographic`, `brief_infographic`).
 - Quizzes: generated when `--content-types` includes `quiz`.
   - Difficulty/quantity/format/prompt: from `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json` (`quiz`).
- - Language variants: generate **Danish + English** for all episodes.
-   - Config: `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json` → `languages`
-   - English naming: adds suffix ` [EN]` to file names and notebook titles.
+- Language variants: generate **Danish + English** for all episodes.
+  - Config: `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json` → `languages`
+  - English naming: adds suffix ` [EN]` to file names and notebook titles.
+- Feed output: `gdrive_podcast_feed.py` strips `[EN]`, maps `[TTS]` to `Oplæst` in title/description, and keeps `[Brief]` in episode titles.
 
 ## Automation scope (decisions)
 - **Per-episode notebooks only.** We are **not** using single-notebook + source-ID selection for now.

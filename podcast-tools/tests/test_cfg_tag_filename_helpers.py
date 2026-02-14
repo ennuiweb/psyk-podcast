@@ -102,6 +102,31 @@ class CfgTagFilenameHelpersTests(unittest.TestCase):
         tagged_again = mod.apply_config_tag(tagged, new_tag)
         self.assertEqual(tagged_again.name, tagged.name)
 
+    def test_generate_week_strip_week_prefix_from_title_matches_week_numbers(self):
+        mod = self.generate_week
+        self.assertEqual(
+            mod.strip_week_prefix_from_title("W1L1 Lewis (1999)", "W01L1"),
+            "Lewis (1999)",
+        )
+        self.assertEqual(
+            mod.strip_week_prefix_from_title("W1L2 Lewis (1999)", "W01L1"),
+            "W1L2 Lewis (1999)",
+        )
+
+    def test_generate_week_normalize_episode_title_strips_duplicate_week_tokens(self):
+        mod = self.generate_week
+        self.assertEqual(
+            mod.normalize_episode_title("W1L1 - W1L1 Lewis (1999)", "W01L1"),
+            "Lewis (1999)",
+        )
+
+    def test_generate_week_normalize_episode_title_collapses_dots_and_whitespace(self):
+        mod = self.generate_week
+        self.assertEqual(
+            mod.normalize_episode_title("W1L2   Phan et al.....   (2024)", "W01L2"),
+            "Phan et al. (2024)",
+        )
+
     def test_generate_week_apply_config_tag_replaces_existing_with_profile_suffix(self):
         mod = self.generate_week
         original = Path(

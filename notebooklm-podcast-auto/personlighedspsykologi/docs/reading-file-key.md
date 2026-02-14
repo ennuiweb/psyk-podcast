@@ -10,6 +10,20 @@
 - Filename hygiene: keep week tokens zero-padded (`W##L#`). If outputs contain unpadded tokens (e.g. `W6L1`), normalize via:
   - `python3 scripts/rename_personlighedspsykologi_outputs.py --root notebooklm-podcast-auto/personlighedspsykologi/output --apply --rewrite-request-json`
 
+## Manual TTS imports
+- Voice: `da-DK__chirp3_hd__da-DK-Chirp3-HD-Algenib`.
+- Date: `Feb 14th 2026`.
+- 2026-02-14: `output/grundbog-tts/[TTS] W1L1 - Grundbog kapitel 01 - Introduktion til personlighedspsykologi {type=tts voice=da-DK__chirp3_hd__da-DK-Chirp3-HD-Algenib date=2026-02-14}.wav` copied to `output/W1L1/[TTS] W1L1 - Grundbog kapitel 01 - Introduktion til personlighedspsykologi {type=tts voice=da-DK__chirp3_hd__da-DK-Chirp3-HD-Algenib date=2026-02-14}.wav`.
+- 2026-02-14: `output/grundbog-tts/[TTS] W6L1 - Grundbog kapitel 04 - Fænomenologisk personlighedspsykologi {type=tts voice=da-DK__chirp3_hd__da-DK-Chirp3-HD-Algenib date=2026-02-14}.wav` copied to `output/W6L1/[TTS] W6L1 - Grundbog kapitel 04 - Fænomenologisk personlighedspsykologi {type=tts voice=da-DK__chirp3_hd__da-DK-Chirp3-HD-Algenib date=2026-02-14}.wav`.
+- 2026-02-14: `output/grundbog-tts/[TTS] Grundbog forord og resumé {type=tts voice=da-DK__chirp3_hd__da-DK-Chirp3-HD-Algenib date=2026-02-14}.wav` tagged.
+- 2026-02-14: `output/grundbog-tts/[TTS] Grundbog kapitel 02 - Trækpsykologi {type=tts voice=da-DK__chirp3_hd__da-DK-Chirp3-HD-Algenib date=2026-02-14}.wav` tagged.
+- 2026-02-14: `output/grundbog-tts/[TTS] Grundbog kapitel 03 - Adfærdspsykologiske og kognitive teorier om personligheden {type=tts voice=da-DK__chirp3_hd__da-DK-Chirp3-HD-Algenib date=2026-02-14}.wav` tagged.
+- 2026-02-14: `output/grundbog-tts/[TTS] Grundbog kapitel 05 - Humanistiske og eksistentielle teorier om personligheden {type=tts voice=da-DK__chirp3_hd__da-DK-Chirp3-HD-Algenib date=2026-02-14}.wav` tagged.
+- 2026-02-14: `output/grundbog-tts/[TTS] Grundbog kapitel 06 - Klassisk psykoanalyse, ego-psykologi og selv-psykologi {type=tts voice=da-DK__chirp3_hd__da-DK-Chirp3-HD-Algenib date=2026-02-14}.wav` tagged.
+- 2026-02-14: `output/grundbog-tts/[TTS] Grundbog kapitel 07 - Nyere psykoanalytiske teorier {type=tts voice=da-DK__chirp3_hd__da-DK-Chirp3-HD-Algenib date=2026-02-14}.wav` tagged.
+- 2026-02-14: `output/grundbog-tts/[TTS] W11L2 - Grundbog kapitel 09 - Narrative teorier {type=tts voice=da-DK__chirp3_hd__da-DK-Chirp3-HD-Algenib date=2026-02-14}.wav` tagged and copied to `output/W11L2/[TTS] W11L2 - Grundbog kapitel 09 - Narrative teorier {type=tts voice=da-DK__chirp3_hd__da-DK-Chirp3-HD-Algenib date=2026-02-14}.wav`.
+- 2026-02-14: `output/grundbog-tts/[TTS] W12L1 - Grundbog kapitel 08 - Personlighed, subjektivitet og historicitet {type=tts voice=da-DK__chirp3_hd__da-DK-Chirp3-HD-Algenib date=2026-02-14}.wav` tagged and copied to `output/W12L1/[TTS] W12L1 - Grundbog kapitel 08 - Personlighed, subjektivitet og historicitet {type=tts voice=da-DK__chirp3_hd__da-DK-Chirp3-HD-Algenib date=2026-02-14}.wav`.
+
 ## Missing files → skip list (until readings are found)
 Rule: skip audio generation for any episode whose source file is missing, and skip the **weekly “Alle kilder”** episode if that week has any missing readings.
 

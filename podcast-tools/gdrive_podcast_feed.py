@@ -25,7 +25,12 @@ ATOM_NS = "http://www.w3.org/2005/Atom"
 ITUNES_NS = "http://www.itunes.com/dtds/podcast-1.0.dtd"
 TEXT_PREFIX = "[Tekst]"
 HIGHLIGHTED_TEXT_PREFIX = "[Gul tekst]"
-LANGUAGE_TAG_PATTERN = re.compile(r"(?:\[\s*en\s*\]|\(\s*en\s*\))", re.IGNORECASE)
+LANGUAGE_TAG_PATTERN = re.compile(
+    r"(?:\[\s*(?:en|tts)\s*\]|\(\s*(?:en|tts)\s*\))",
+    re.IGNORECASE,
+)
+TTS_TAG_PATTERN = re.compile(r"(?:\[\s*tts\s*\]|\(\s*tts\s*\))", re.IGNORECASE)
+BRIEF_TAG_PATTERN = re.compile(r"\[\s*brief\s*\]", re.IGNORECASE)
 CFG_TAG_PATTERN = re.compile(
     r"(?:\s+\{[a-z0-9._:+-]+=[^{}\s]+(?:\s+[a-z0-9._:+-]+=[^{}\s]+)*\})+"
     r"(?:\s+\[[^\[\]]+\])?$",
@@ -1121,11 +1126,18 @@ def _strip_text_prefix(value: str) -> str:
     return value
 
 
-def _strip_language_tags(value: str, *, preserve_newlines: bool = False) -> str:
+def _strip_language_tags(
+    value: str,
+    *,
+    preserve_newlines: bool = False,
+    strip_brief: bool = True,
+) -> str:
     if not value:
         return value
     cleaned = _strip_cfg_tags(value)
     cleaned = LANGUAGE_TAG_PATTERN.sub("", cleaned)
+    if strip_brief:
+        cleaned = BRIEF_TAG_PATTERN.sub("", cleaned)
     if preserve_newlines:
         cleaned = re.sub(r"[ \t]+", " ", cleaned)
         cleaned = re.sub(r" *\n *", "\n", cleaned)
@@ -1333,7 +1345,7 @@ def _replace_text_prefix(value: str, *, require_start: bool) -> Tuple[str, bool]
 
 
 WEEK_LECTURE_PATTERN = re.compile(r"\bw\s*(\d{1,2})\s*l\s*(\d+)\b", re.IGNORECASE)
-BRIEF_PREFIX_PATTERN = re.compile(r"^\[brief\]\s*", re.IGNORECASE)
+BRIEF_PREFIX_PATTERN = re.compile(r"^\[\s*brief\s*\]\s*", re.IGNORECASE)
 WEEK_PREFIX_TOKEN_PATTERN = re.compile(r"^w\s*\d{1,2}(?:\s*l\s*\d+)?\b", re.IGNORECASE)
 WEEK_PREFIX_SEPARATOR_PATTERN = re.compile(r"^[\s._\-–:]+")
 EPISODE_KINDS = {"reading", "brief", "weekly_overview"}
@@ -1605,12 +1617,15 @@ def build_episode_entry(
     ):
         semester_week_description_label = "Semester week"
 
-    raw_title = _strip_cfg_tags(base_title)
+    raw_title_with_tags = _strip_cfg_tags(base_title)
+    is_tts = bool(TTS_TAG_PATTERN.search(raw_title_with_tags))
+    raw_title = re.sub(r"\s+", " ", LANGUAGE_TAG_PATTERN.sub("", raw_title_with_tags)).strip()
     raw_lower = raw_title.casefold()
-    is_brief = "[brief]" in raw_lower
+    is_brief = bool(BRIEF_TAG_PATTERN.search(raw_title))
     is_weekly_overview = "alle kilder" in raw_lower or "all sources" in raw_lower
     cleaned_title = _strip_text_prefix(raw_title)
     cleaned_title = strip_brief_prefix(cleaned_title)
+    cleaned_title = BRIEF_TAG_PATTERN.sub("", cleaned_title).strip()
     cleaned_title = strip_week_prefix(cleaned_title)
     cleaned_title = cleaned_title.strip()
 
@@ -1659,10 +1674,14 @@ def build_episode_entry(
             semester_week_lecture = f"{semester_week_label} {week_number}"
 
         subject = display_subject or cleaned_title or raw_title
+        if is_tts and subject and "oplæst" not in subject.casefold():
+            subject = f"Oplæst {subject}"
         if is_weekly_overview and type_label:
             subject_or_type = type_label
         else:
             subject_or_type = subject or type_label
+        if is_tts and subject_or_type and "oplæst" not in subject_or_type.casefold():
+            subject_or_type = f"Oplæst {subject_or_type}"
 
         title_block_values = {
             "semester_week_lecture": semester_week_lecture,
@@ -1692,7 +1711,11 @@ def build_episode_entry(
         prefix = narrator.upper()
         if not title_value.upper().startswith(f"{prefix} "):
             title_value = f"{prefix} {title_value}"
-    title_value = _strip_language_tags(title_value)
+    if is_tts and "oplæst" not in title_value.casefold():
+        title_value = f"Oplæst {title_value}"
+    if is_brief and not BRIEF_TAG_PATTERN.search(title_value):
+        title_value = f"[Brief] {title_value}"
+    title_value = _strip_language_tags(title_value, strip_brief=not is_brief)
     meta["title"] = title_value
     if suppress_week_prefix:
         meta.pop("suppress_week_prefix", None)
@@ -1707,6 +1730,8 @@ def build_episode_entry(
             descriptor = "Alle kilder"
         else:
             descriptor = "Reading"
+        if is_tts and "oplæst" not in descriptor.casefold():
+            descriptor = f"Oplæst {descriptor}"
         descriptor_subject = f"{descriptor}: {text_label}" if text_label else descriptor
         description_block_values = {
             "descriptor_subject": descriptor_subject,
@@ -1740,6 +1765,12 @@ def build_episode_entry(
     if quiz_url:
         if not meta.get("link"):
             meta["link"] = quiz_url
+    if is_tts and meta.get("description"):
+        desc_value = str(meta["description"]).strip()
+        if desc_value and "oplæst" not in desc_value.casefold():
+            meta["description"] = f"Oplæst · {desc_value}"
+        elif not desc_value:
+            meta["description"] = "Oplæst"
     if summary:
         meta["summary"] = _strip_language_tags(summary)
     if meta.get("description"):

@@ -66,7 +66,7 @@
     "include": [
       {
         "name_regex": [
-          "\\[EN\\]"
+          "\\[(?:EN|TTS|BRIEF)\\]"
         ]
       }
     ]

@@ -61,8 +61,6 @@ Weekly overview skips:
 - W22
 
 ## Reading map
-- The authoritative per-week reading list is in:
-  - `notebooklm-podcast-auto/personlighedspsykologi/docs/reading-file-key.md`
 - Source inventory currently lives in:
   - OneDrive: `/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings`
 
@@ -185,9 +183,11 @@ Optional flags:
 - 2026-02-04: Ran `generate_week.py` with a temporary test week (W99) and three PDFs.
   - Weekly overview + per-reading + brief generation requests were successfully created (non-blocking).
   - One run timed out at 120s; rerun with 300s completed.
-  - Output folder created at `tmp/personlighedspsykologi-test/output/W99/` with `sources_week.txt`.
+  - Output folder created at `tmp/personlighedspsykologi-test/output/W99/` with generated request logs and artifacts.
 - 2026-02-04: Downloaded W99 test audio artifacts into `tmp/personlighedspsykologi-test/output/W99/`.
   - First `download audio` for `W99 - Alle kilder.mp3` reported a temp rename error, but the file was created successfully.
 - 2026-02-09: Re-ran `generate_week.py` + `download_week.py` for `W03L1` after missing sources were added.
   - NotebookLM CLI emitted repeated warnings: `Sources data ... is not a list` (API structure may have changed).
   - EN outputs confirmed present in `notebooklm-podcast-auto/personlighedspsykologi/output/W03L1/`.
+- 2026-02-14: Updated `generate_week.py` to stop writing `sources_week.txt` in `output/WxxLx/` directories.
+- 2026-02-14: Removed 15 existing `sources_week.txt` files from `notebooklm-podcast-auto/personlighedspsykologi/output/WxxLx/`.

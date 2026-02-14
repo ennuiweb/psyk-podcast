@@ -10,7 +10,7 @@ It is **not** a podcast feed. Feed config now lives in:
 - `prompt_config.json` - prompts + language variants for NotebookLM (audio + infographic + quiz defaults)
 - `sources/` - W## source folders (PDFs, readings)
 - `output/` - generated MP3s/PNGs/quiz exports + request logs
-- `docs/` - planning notes and reading keys
+- `docs/` - planning notes
 
 Archived show configs are stored in `archive-show-config/` for reference.
 
@@ -59,6 +59,10 @@ Current generation is configured for English-only outputs (see `prompt_config.js
 ```bash
 ./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/download_week.py --week W01 --content-types quiz --format html
 ```
+
+## Troubleshooting
+- If you interrupt `download_week.py` while waiting, rerun the same command. Already-downloaded outputs are skipped.
+- To avoid long waits for in-progress artifacts, set `--timeout` and rerun later.
 
 ## Quiz hosting (droplet)
 Quiz HTML exports are hosted on the droplet under:

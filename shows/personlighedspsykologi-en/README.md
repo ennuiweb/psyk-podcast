@@ -27,6 +27,7 @@ Reading-summary workflow:
   - preserves existing filled entries and only adds missing placeholders in `reading_summaries.json`.
   - run scaffold/update before validation when checking a fresh cache (`--validate-only` reads current file contents only).
   - manual fill targets are `2-4` summary lines and `3-5` key points per entry.
+  - language rule: when the source text is Danish, write both `summary_lines` and `key_points` in Danish (otherwise keep English).
   - `shows/personlighedspsykologi-en/reading_summaries.json` is the combined file to edit and commit.
 
 Feed build prerequisites: install `google-auth` + `google-api-python-client`, then provide `shows/personlighedspsykologi-en/service-account.json`.

@@ -45,6 +45,7 @@
 - Local inventory includes reading/brief/TTS audio files (`.mp3` + `.wav`) and excludes weekly overview files matching `Alle kilder` / `All sources`.
 - Workflow order is scaffold/update first, then `--validate-only`; coverage validation is warn-only for missing/incomplete entries.
 - Target fill levels are 2-4 `summary_lines` and 3-5 `key_points` per episode.
+- Language rule: if a source text is Danish, keep both `summary_lines` and `key_points` in Danish (otherwise keep English).
 
 ## Highlighting / important readings
 - `important_text_mode` is `week_x_only`.

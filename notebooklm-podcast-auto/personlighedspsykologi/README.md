@@ -91,6 +91,7 @@ python3 podcast-tools/gdrive_podcast_feed.py --config shows/personlighedspsykolo
   - Run scaffold/update before validation when checking a fresh cache (`--validate-only` reads current file state only).
   - Writes cache to `shows/personlighedspsykologi-en/reading_summaries.json`.
   - Manual fill targets are `2-4` summary lines and `3-5` key points per entry.
+  - Language rule: if the source text is Danish, write `summary_lines` and `key_points` in Danish (otherwise keep English).
   - Feed build requires Google dependencies (`google-auth`, `google-api-python-client`) and `shows/personlighedspsykologi-en/service-account.json`.
 
 ## Troubleshooting

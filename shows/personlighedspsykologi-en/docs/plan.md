@@ -6,7 +6,7 @@
   - Weekly overview episodes (e.g., "Alle kilder")
   - Per-reading episodes
   - Short "[Brief]" variants for some readings
-- Local feed build requires `shows/personlighedspsykologi-en/service-account.json`; missing credentials cause `gdrive_podcast_feed.py` to fail before RSS generation.
+- Local feed build requires `shows/personlighedspsykologi-en/service-account.json` plus Google dependencies (`google-auth`, `google-api-python-client`); run with `python3 podcast-tools/gdrive_podcast_feed.py --config shows/personlighedspsykologi-en/config.local.json`.
 
 ## Output policy (decisions)
 - Weekly overview: **"Alle kilder"** episode per week.
@@ -38,6 +38,13 @@
 ## Automation scope (decisions)
 - **Per-episode notebooks only.** We are **not** using single-notebook + source-ID selection for now.
 - **Source de-duplication on reuse.** When reusing a notebook, already-uploaded sources are skipped to avoid duplicates.
+
+## Reading summaries (decisions)
+- Source of truth is manual `shows/personlighedspsykologi-en/reading_summaries.json` (`by_name` map keyed by filename).
+- Summary maintenance is local-only via `notebooklm-podcast-auto/personlighedspsykologi/scripts/sync_reading_summaries.py` (no request-log/NotebookLM summary generation path).
+- Local inventory includes reading/brief/TTS audio files (`.mp3` + `.wav`) and excludes weekly overview files matching `Alle kilder` / `All sources`.
+- Workflow order is scaffold/update first, then `--validate-only`; coverage validation is warn-only for missing/incomplete entries.
+- Target fill levels are 2-4 `summary_lines` and 3-5 `key_points` per episode.
 
 ## Highlighting / important readings
 - `important_text_mode` is `week_x_only`.

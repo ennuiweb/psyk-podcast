@@ -64,24 +64,34 @@ Current generation is configured for English-only outputs (see `prompt_config.js
 ```
 
 ## Reading summaries cache (for feed descriptions)
-- Sync summary + key points from request logs (dry-run first):
+- Scaffold missing summary entries from local episode files (dry-run first):
 
 ```bash
-./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/sync_reading_summaries.py --week W1 --profile default --dry-run
-./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/sync_reading_summaries.py --week W1 --profile default
+./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/sync_reading_summaries.py --dry-run
+./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/sync_reading_summaries.py
+```
+
+- Validate coverage (warn-only, no writes):
+
+```bash
+./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/sync_reading_summaries.py --validate-only
 ```
 
 - Rebuild the feed after syncing summaries:
 
 ```bash
-python podcast-tools/gdrive_podcast_feed.py --config shows/personlighedspsykologi-en/config.local.json
+python3 podcast-tools/gdrive_podcast_feed.py --config shows/personlighedspsykologi-en/config.local.json
 ```
 
 - Sync behavior:
-  - Attempts a strict JSON `notebooklm ask` extraction first.
-  - Falls back to `notebooklm source guide` when ask output cannot be parsed.
-  - Keeps existing entries unless `--refresh` is passed.
+  - Uses local audio files under `output/` as inventory (`reading`, `brief`, and `TTS` variants).
+  - Excludes weekly overview files (`Alle kilder` / `All sources`) from the summary inventory.
+  - Adds missing `by_name` placeholders with empty `summary_lines` + `key_points`.
+  - `--validate-only` reports missing/incomplete entries and always exits non-blocking for coverage gaps.
+  - Run scaffold/update before validation when checking a fresh cache (`--validate-only` reads current file state only).
   - Writes cache to `shows/personlighedspsykologi-en/reading_summaries.json`.
+  - Manual fill targets are `2-4` summary lines and `3-5` key points per entry.
+  - Feed build requires Google dependencies (`google-auth`, `google-api-python-client`) and `shows/personlighedspsykologi-en/service-account.json`.
 
 ## Troubleshooting
 - If you interrupt `download_week.py` while waiting, rerun the same command. Already-downloaded outputs are skipped.

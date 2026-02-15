@@ -60,7 +60,27 @@
       "name": "Personlighedspsykologi F26",
       "email": "psykku2025@gmail.com"
     },
-    "ttl": 60
+    "ttl": 60,
+    "sort_mode": "wxlx_kind_priority",
+    "description_blocks_by_kind": {
+      "reading": [
+        "reading_summary",
+        "reading_key_points",
+        "quiz"
+      ],
+      "brief": [
+        "reading_summary",
+        "reading_key_points",
+        "quiz"
+      ],
+      "weekly_overview": [
+        "descriptor_subject",
+        "topic",
+        "lecture",
+        "semester_week",
+        "quiz"
+      ]
+    }
   },
   "filters": {
     "include": [
@@ -69,6 +89,14 @@
           "\\[(?:EN|TTS|BRIEF)\\]"
         ]
       }
+    ]
+  },
+  "reading_summaries": {
+    "file": "shows/personlighedspsykologi-en/reading_summaries.json",
+    "key_points_label": "Key points",
+    "enabled_kinds": [
+      "reading",
+      "brief"
     ]
   }
 }

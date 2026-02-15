@@ -98,13 +98,13 @@ class AutoSpecMatchingTests(unittest.TestCase):
         )
         self.assertEqual(
             mod._strip_language_tags("Reading: Foo [EN] · Emne: Bar [EN]"),
-            "Reading: Foo · Emne: Bar",
+            "Foo · Emne: Bar",
         )
         self.assertEqual(
             mod._strip_language_tags(
                 "Reading: Lewis (1999) {type=audio lang=en format=deep-dive length=long hash=fa9adbcf} · Emne: Intro"
             ),
-            "Reading: Lewis (1999) · Emne: Intro",
+            "Lewis (1999) · Emne: Intro",
         )
 
     def test_feed_title_strips_language_tag(self):
@@ -125,6 +125,251 @@ class AutoSpecMatchingTests(unittest.TestCase):
         self.assertIn("<title>Personlighedspsykologi</title>", xml)
         self.assertNotIn("(EN)", xml)
         self.assertNotIn("[EN]", xml)
+
+    def test_build_feed_document_defaults_to_published_at_desc_sort(self):
+        mod = _load_feed_module()
+
+        def make_episode(
+            *,
+            guid: str,
+            title: str,
+            published_at: str,
+            episode_kind: str,
+            is_tts: bool,
+            sort_week: int,
+            sort_lecture: int,
+        ):
+            published_dt = mod.parse_datetime(published_at)
+            return {
+                "guid": guid,
+                "title": title,
+                "description": title,
+                "link": "https://example.com",
+                "published_at": published_dt,
+                "pubDate": mod.format_rfc2822(published_dt),
+                "mimeType": "audio/mpeg",
+                "size": 123,
+                "duration": None,
+                "explicit": "false",
+                "image": None,
+                "episode_kind": episode_kind,
+                "is_tts": is_tts,
+                "sort_week": sort_week,
+                "sort_lecture": sort_lecture,
+                "audio_url": f"https://example.com/{guid}.mp3",
+            }
+
+        episodes = [
+            make_episode(
+                guid="reading-latest",
+                title="Reading latest",
+                published_at="2026-02-02T10:00:00+00:00",
+                episode_kind="reading",
+                is_tts=False,
+                sort_week=1,
+                sort_lecture=1,
+            ),
+            make_episode(
+                guid="brief-earlier",
+                title="Brief earlier",
+                published_at="2026-02-02T09:00:00+00:00",
+                episode_kind="brief",
+                is_tts=False,
+                sort_week=1,
+                sort_lecture=1,
+            ),
+        ]
+        feed = mod.build_feed_document(
+            episodes=episodes,
+            feed_config={
+                "title": "Personlighedspsykologi",
+                "link": "https://example.com",
+                "description": "Test feed",
+                "language": "en",
+            },
+            last_build=mod.parse_datetime("2026-02-10T00:00:00+00:00"),
+        )
+        from xml.etree import ElementTree as ET
+
+        root = ET.fromstring(ET.tostring(feed, encoding="unicode"))
+        titles = [el.text for el in root.findall("./channel/item/title")]
+        self.assertEqual(titles, ["Reading latest", "Brief earlier"])
+
+    def test_build_feed_document_wxlx_sort_brief_then_alle_then_tts_then_reading(self):
+        mod = _load_feed_module()
+
+        def make_episode(
+            *,
+            guid: str,
+            title: str,
+            published_at: str,
+            episode_kind: str,
+            is_tts: bool,
+            sort_week: int,
+            sort_lecture: int,
+        ):
+            published_dt = mod.parse_datetime(published_at)
+            return {
+                "guid": guid,
+                "title": title,
+                "description": title,
+                "link": "https://example.com",
+                "published_at": published_dt,
+                "pubDate": mod.format_rfc2822(published_dt),
+                "mimeType": "audio/mpeg",
+                "size": 123,
+                "duration": None,
+                "explicit": "false",
+                "image": None,
+                "episode_kind": episode_kind,
+                "is_tts": is_tts,
+                "sort_week": sort_week,
+                "sort_lecture": sort_lecture,
+                "audio_url": f"https://example.com/{guid}.mp3",
+            }
+
+        episodes = [
+            make_episode(
+                guid="reading-latest",
+                title="Reading latest",
+                published_at="2026-02-02T14:00:00+00:00",
+                episode_kind="reading",
+                is_tts=False,
+                sort_week=1,
+                sort_lecture=1,
+            ),
+            make_episode(
+                guid="tts",
+                title="TTS",
+                published_at="2026-02-02T13:00:00+00:00",
+                episode_kind="reading",
+                is_tts=True,
+                sort_week=1,
+                sort_lecture=1,
+            ),
+            make_episode(
+                guid="brief",
+                title="Brief",
+                published_at="2026-02-02T12:00:00+00:00",
+                episode_kind="brief",
+                is_tts=False,
+                sort_week=1,
+                sort_lecture=1,
+            ),
+            make_episode(
+                guid="alle",
+                title="Alle kilder",
+                published_at="2026-02-02T11:00:00+00:00",
+                episode_kind="weekly_overview",
+                is_tts=False,
+                sort_week=1,
+                sort_lecture=1,
+            ),
+        ]
+        feed = mod.build_feed_document(
+            episodes=episodes,
+            feed_config={
+                "title": "Personlighedspsykologi",
+                "link": "https://example.com",
+                "description": "Test feed",
+                "language": "en",
+                "sort_mode": "wxlx_kind_priority",
+            },
+            last_build=mod.parse_datetime("2026-02-10T00:00:00+00:00"),
+        )
+        from xml.etree import ElementTree as ET
+
+        root = ET.fromstring(ET.tostring(feed, encoding="unicode"))
+        titles = [el.text for el in root.findall("./channel/item/title")]
+        self.assertEqual(titles, ["Brief", "Alle kilder", "TTS", "Reading latest"])
+
+    def test_build_feed_document_wxlx_sort_uses_group_recency(self):
+        mod = _load_feed_module()
+
+        def make_episode(
+            *,
+            guid: str,
+            title: str,
+            published_at: str,
+            episode_kind: str,
+            is_tts: bool,
+            sort_week: int,
+            sort_lecture: int,
+        ):
+            published_dt = mod.parse_datetime(published_at)
+            return {
+                "guid": guid,
+                "title": title,
+                "description": title,
+                "link": "https://example.com",
+                "published_at": published_dt,
+                "pubDate": mod.format_rfc2822(published_dt),
+                "mimeType": "audio/mpeg",
+                "size": 123,
+                "duration": None,
+                "explicit": "false",
+                "image": None,
+                "episode_kind": episode_kind,
+                "is_tts": is_tts,
+                "sort_week": sort_week,
+                "sort_lecture": sort_lecture,
+                "audio_url": f"https://example.com/{guid}.mp3",
+            }
+
+        episodes = [
+            make_episode(
+                guid="w1-brief",
+                title="W1 brief",
+                published_at="2026-02-01T10:00:00+00:00",
+                episode_kind="brief",
+                is_tts=False,
+                sort_week=1,
+                sort_lecture=1,
+            ),
+            make_episode(
+                guid="w1-alle",
+                title="W1 alle",
+                published_at="2026-02-01T09:00:00+00:00",
+                episode_kind="weekly_overview",
+                is_tts=False,
+                sort_week=1,
+                sort_lecture=1,
+            ),
+            make_episode(
+                guid="w2-reading",
+                title="W2 reading",
+                published_at="2026-02-02T08:00:00+00:00",
+                episode_kind="reading",
+                is_tts=False,
+                sort_week=2,
+                sort_lecture=1,
+            ),
+            make_episode(
+                guid="w2-alle",
+                title="W2 alle",
+                published_at="2026-02-02T07:00:00+00:00",
+                episode_kind="weekly_overview",
+                is_tts=False,
+                sort_week=2,
+                sort_lecture=1,
+            ),
+        ]
+        feed = mod.build_feed_document(
+            episodes=episodes,
+            feed_config={
+                "title": "Personlighedspsykologi",
+                "link": "https://example.com",
+                "description": "Test feed",
+                "language": "en",
+                "sort_mode": "wxlx_kind_priority",
+            },
+            last_build=mod.parse_datetime("2026-02-10T00:00:00+00:00"),
+        )
+        from xml.etree import ElementTree as ET
+
+        root = ET.fromstring(ET.tostring(feed, encoding="unicode"))
+        titles = [el.text for el in root.findall("./channel/item/title")]
+        self.assertEqual(titles, ["W2 alle", "W2 reading", "W1 brief", "W1 alle"])
 
     def test_semester_week_label_uses_calendar_week_range(self):
         mod = _load_feed_module()
@@ -152,7 +397,11 @@ class AutoSpecMatchingTests(unittest.TestCase):
         )
         self.assertIn("Semesteruge 6", episode["title"])
         self.assertIn("(Uge 11 09/03 - 15/03)", episode["title"])
-        self.assertIn("Semesteruge 6", episode["description"])
+        self.assertNotIn("Semesteruge 6", episode["description"])
+        self.assertNotRegex(
+            episode["description"],
+            re.compile(r"Forelæsning\s+\d+\s*·\s*Semesteruge\s+\d+", re.IGNORECASE),
+        )
 
     def test_generated_entry_strips_unpadded_week_token_from_subject(self):
         mod = _load_feed_module()
@@ -182,7 +431,7 @@ class AutoSpecMatchingTests(unittest.TestCase):
         self.assertNotRegex(episode["title"], re.compile(r"\bW\d{1,2}L\d+\b"))
         self.assertNotRegex(episode["description"], re.compile(r"\bW\d{1,2}L\d+\b"))
 
-    def test_generated_entry_maps_tts_tag_to_oplaest_before_week_token(self):
+    def test_generated_entry_maps_tts_tag_to_lydbog_prefix(self):
         mod = _load_feed_module()
         file_entry = {
             "id": "file1",
@@ -209,14 +458,14 @@ class AutoSpecMatchingTests(unittest.TestCase):
             auto_meta={"week_reference_year": 2026},
             folder_names=["W01L1"],
         )
-        self.assertIn("Oplæst", episode["title"])
+        self.assertIn("[Lydbog]", episode["title"])
         self.assertIn("Grundbog kapitel 01", episode["title"])
         self.assertNotIn("[TTS]", episode["title"])
-        self.assertIn("Oplæst", episode["description"])
+        self.assertNotIn("Oplæst", episode["description"])
         self.assertNotRegex(episode["title"], re.compile(r"\bW\d{1,2}L\d+\b"))
         self.assertNotRegex(episode["description"], re.compile(r"\bW\d{1,2}L\d+\b"))
 
-    def test_generated_entry_keeps_brief_tag_in_title(self):
+    def test_generated_entry_maps_brief_to_kort_podcast_prefix(self):
         mod = _load_feed_module()
         file_entry = {
             "id": "file1",
@@ -240,11 +489,44 @@ class AutoSpecMatchingTests(unittest.TestCase):
             auto_meta={"week_reference_year": 2026},
             folder_names=["W01L1"],
         )
-        self.assertIn("[Brief]", episode["title"])
+        self.assertIn("[Kort podcast]", episode["title"])
         self.assertIn("Grundbog kapitel 01", episode["title"])
+        self.assertNotIn("[Brief]", episode["title"])
         self.assertNotIn("[ brief ]", episode["title"])
         self.assertNotRegex(episode["title"], re.compile(r"\bW\d{1,2}L\d+\b"))
         self.assertIn("Kapitel i grundbogen", episode["description"])
+
+    def test_generated_entry_maps_deep_dive_to_podcast_prefix(self):
+        mod = _load_feed_module()
+        file_entry = {
+            "id": "file1",
+            "name": (
+                "W1L1 - Lewis (1999) [EN] "
+                "{type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+            ),
+            "createdTime": "2026-02-02T08:00:00+00:00",
+        }
+        feed_config = {
+            "title": "Personlighedspsykologi (EN)",
+            "link": "https://example.com",
+            "description": "Test feed",
+            "language": "en",
+            "semester_week_start_date": "2026-02-02",
+            "semester_week_label": "Semesteruge",
+            "semester_week_description_label": "Semesteruge",
+        }
+        episode = mod.build_episode_entry(
+            file_entry=file_entry,
+            feed_config=feed_config,
+            overrides={},
+            public_link_template="https://example.com/{file_id}",
+            auto_meta={"week_reference_year": 2026},
+            folder_names=["W01L1"],
+        )
+        self.assertIn("[Podcast]", episode["title"])
+        self.assertNotIn("[deep-dive]", episode["title"])
+        self.assertNotIn("{type=", episode["title"])
+        self.assertNotRegex(episode["title"], re.compile(r"\bW\d{1,2}L\d+\b"))
 
     def test_generated_entry_strips_cfg_tag_from_subject(self):
         mod = _load_feed_module()
@@ -312,7 +594,7 @@ class AutoSpecMatchingTests(unittest.TestCase):
             overrides=overrides,
             public_link_template="https://example.com/{file_id}",
         )
-        self.assertEqual(episode["title"], "W3L1 Manual Title")
+        self.assertEqual(episode["title"], "[Podcast] W3L1 Manual Title")
         self.assertEqual(episode["description"], "W3L1 Manual Description")
 
     def test_manual_metadata_fallback_matches_cfg_tagged_name(self):
@@ -325,6 +607,37 @@ class AutoSpecMatchingTests(unittest.TestCase):
         overrides = {
             "by_name": {
                 "W3L1 Manual [EN].mp3": {
+                    "title": "W3L1 Manual Title [EN]",
+                    "description": "W3L1 Manual Description [EN]",
+                }
+            }
+        }
+        feed_config = {
+            "title": "Personlighedspsykologi (EN)",
+            "link": "https://example.com",
+            "description": "Test feed",
+            "language": "en",
+        }
+        episode = mod.build_episode_entry(
+            file_entry=file_entry,
+            feed_config=feed_config,
+            overrides=overrides,
+            public_link_template="https://example.com/{file_id}",
+        )
+        self.assertEqual(episode["title"], "[Podcast] W3L1 Manual Title")
+        self.assertEqual(episode["description"], "W3L1 Manual Description")
+
+    def test_non_audio_episode_does_not_get_category_prefix(self):
+        mod = _load_feed_module()
+        file_entry = {
+            "id": "file1",
+            "name": "W3L1 Manual [EN].pdf",
+            "mimeType": "application/pdf",
+            "createdTime": "2026-02-16T08:00:00+00:00",
+        }
+        overrides = {
+            "by_name": {
+                "W3L1 Manual [EN].pdf": {
                     "title": "W3L1 Manual Title [EN]",
                     "description": "W3L1 Manual Description [EN]",
                 }
@@ -375,7 +688,7 @@ class AutoSpecMatchingTests(unittest.TestCase):
             overrides=overrides,
             public_link_template="https://example.com/{file_id}",
         )
-        self.assertEqual(episode["title"], "W3L1 Manual Title")
+        self.assertEqual(episode["title"], "[Podcast] W3L1 Manual Title")
         self.assertEqual(episode["description"], "W3L1 Manual Description")
 
     def test_quiz_link_uses_configured_base_url(self):
@@ -564,7 +877,7 @@ class AutoSpecMatchingTests(unittest.TestCase):
             overrides={},
             public_link_template="https://example.com/{file_id}",
         )
-        self.assertEqual(episode["title"], "Foo")
+        self.assertEqual(episode["title"], "[Podcast] Foo")
 
     def test_missing_topic_with_topic_only_block_falls_back_to_descriptor_subject(self):
         mod = _load_feed_module()
@@ -585,7 +898,280 @@ class AutoSpecMatchingTests(unittest.TestCase):
             overrides={},
             public_link_template="https://example.com/{file_id}",
         )
-        self.assertEqual(episode["description"], "Reading: Foo")
+        self.assertEqual(episode["description"], "Foo")
+
+    def test_title_and_description_strip_lecture_semester_pair(self):
+        mod = _load_feed_module()
+        file_entry = {
+            "id": "file1",
+            "name": "W01L1 - Foo [EN].mp3",
+            "createdTime": "2026-02-02T08:00:00+00:00",
+        }
+        episode = mod.build_episode_entry(
+            file_entry=file_entry,
+            feed_config={
+                "title": "Personlighedspsykologi (EN)",
+                "link": "https://example.com",
+                "description": "Test feed",
+                "language": "en",
+                "semester_week_start_date": "2026-02-02",
+                "semester_week_label": "Semesteruge",
+                "semester_week_description_label": "Semesteruge",
+                "title_blocks": ["lecture", "semester_week", "subject"],
+                "description_blocks": ["lecture", "semester_week", "subject"],
+            },
+            overrides={},
+            public_link_template="https://example.com/{file_id}",
+            folder_names=["W01L1"],
+        )
+        self.assertEqual(episode["title"], "[Podcast] Foo")
+        self.assertEqual(episode["description"], "Foo")
+
+    def test_reading_summary_and_key_points_render_for_reading(self):
+        mod = _load_feed_module()
+        file_entry = {
+            "id": "file1",
+            "name": "W01L1 - Foo [EN].mp3",
+            "createdTime": "2026-02-02T08:00:00+00:00",
+        }
+        episode = mod.build_episode_entry(
+            file_entry=file_entry,
+            feed_config={
+                "title": "Personlighedspsykologi (EN)",
+                "link": "https://example.com",
+                "description": "Test feed",
+                "language": "en",
+                "description_blocks_by_kind": {
+                    "reading": ["reading_summary", "reading_key_points"],
+                },
+            },
+            overrides={},
+            public_link_template="https://example.com/{file_id}",
+            reading_summaries_cfg={"enabled_kinds": {"reading", "brief"}, "key_points_label": "Key points"},
+            reading_summaries={
+                "by_name": {
+                    "W01L1 - Foo [EN].mp3": {
+                        "summary_lines": ["Summary line 1", "Summary line 2"],
+                        "key_points": ["Point A", "Point B", "Point C"],
+                    }
+                }
+            },
+        )
+        self.assertIn("Summary line 1\nSummary line 2", episode["description"])
+        self.assertIn("\n\nKey points:\n- Point A\n- Point B\n- Point C", episode["description"])
+
+    def test_reading_summary_and_key_points_render_for_brief(self):
+        mod = _load_feed_module()
+        file_entry = {
+            "id": "file1",
+            "name": "[Brief] W01L1 - Foo [EN].mp3",
+            "createdTime": "2026-02-02T08:00:00+00:00",
+        }
+        episode = mod.build_episode_entry(
+            file_entry=file_entry,
+            feed_config={
+                "title": "Personlighedspsykologi (EN)",
+                "link": "https://example.com",
+                "description": "Test feed",
+                "language": "en",
+                "description_blocks_by_kind": {
+                    "brief": ["reading_summary", "reading_key_points"],
+                },
+            },
+            overrides={},
+            public_link_template="https://example.com/{file_id}",
+            reading_summaries_cfg={"enabled_kinds": {"reading", "brief"}, "key_points_label": "Key points"},
+            reading_summaries={
+                "by_name": {
+                    "[Brief] W01L1 - Foo [EN].mp3": {
+                        "summary_lines": ["Brief summary 1", "Brief summary 2"],
+                        "key_points": ["Brief A", "Brief B", "Brief C"],
+                    }
+                }
+            },
+        )
+        self.assertIn("Brief summary 1\nBrief summary 2", episode["description"])
+        self.assertIn("\n\nKey points:\n- Brief A\n- Brief B\n- Brief C", episode["description"])
+
+    def test_tts_reading_uses_lydbog_title_prefix_with_summary_blocks(self):
+        mod = _load_feed_module()
+        file_entry = {
+            "id": "file1",
+            "name": "[TTS] W01L1 - Foo [EN].mp3",
+            "createdTime": "2026-02-02T08:00:00+00:00",
+        }
+        episode = mod.build_episode_entry(
+            file_entry=file_entry,
+            feed_config={
+                "title": "Personlighedspsykologi (EN)",
+                "link": "https://example.com",
+                "description": "Test feed",
+                "language": "en",
+                "description_blocks_by_kind": {
+                    "reading": ["reading_summary", "reading_key_points"],
+                },
+            },
+            overrides={},
+            public_link_template="https://example.com/{file_id}",
+            reading_summaries_cfg={"enabled_kinds": {"reading", "brief"}, "key_points_label": "Key points"},
+            reading_summaries={
+                "by_name": {
+                    "[TTS] W01L1 - Foo [EN].mp3": {
+                        "summary_lines": ["TTS summary 1", "TTS summary 2"],
+                        "key_points": ["TTS A", "TTS B", "TTS C"],
+                    }
+                }
+            },
+        )
+        self.assertFalse(episode["description"].startswith("Oplæst"))
+        self.assertIn("[Lydbog]", episode["title"])
+        self.assertIn("\n\nKey points:\n- TTS A\n- TTS B\n- TTS C", episode["description"])
+
+    def test_weekly_overview_ignores_reading_summary_blocks(self):
+        mod = _load_feed_module()
+        file_entry = {
+            "id": "file1",
+            "name": "W01L1 - Alle kilder [EN].mp3",
+            "createdTime": "2026-02-02T08:00:00+00:00",
+        }
+        episode = mod.build_episode_entry(
+            file_entry=file_entry,
+            feed_config={
+                "title": "Personlighedspsykologi (EN)",
+                "link": "https://example.com",
+                "description": "Test feed",
+                "language": "en",
+                "description_blocks_by_kind": {
+                    "weekly_overview": ["reading_summary", "descriptor_subject"],
+                },
+            },
+            overrides={},
+            public_link_template="https://example.com/{file_id}",
+            reading_summaries_cfg={"enabled_kinds": {"reading", "brief"}, "key_points_label": "Key points"},
+            reading_summaries={
+                "by_name": {
+                    "W01L1 - Alle kilder [EN].mp3": {
+                        "summary_lines": ["Injected summary that must be ignored"],
+                        "key_points": ["Injected point"],
+                    }
+                }
+            },
+        )
+        self.assertNotIn("Injected summary that must be ignored", episode["description"])
+
+    def test_missing_reading_summary_falls_back_to_descriptor_subject(self):
+        mod = _load_feed_module()
+        file_entry = {
+            "id": "file1",
+            "name": "W01L1 - Foo [EN].mp3",
+            "createdTime": "2026-02-02T08:00:00+00:00",
+        }
+        episode = mod.build_episode_entry(
+            file_entry=file_entry,
+            feed_config={
+                "title": "Personlighedspsykologi (EN)",
+                "link": "https://example.com",
+                "description": "Test feed",
+                "language": "en",
+                "description_blocks_by_kind": {
+                    "reading": ["reading_summary"],
+                },
+            },
+            overrides={},
+            public_link_template="https://example.com/{file_id}",
+            reading_summaries_cfg={"enabled_kinds": {"reading", "brief"}, "key_points_label": "Key points"},
+            reading_summaries={"by_name": {}},
+        )
+        self.assertEqual(episode["description"], "Foo")
+
+    def test_reading_summary_lookup_matches_cfg_tagged_audio_name(self):
+        mod = _load_feed_module()
+        file_entry = {
+            "id": "file1",
+            "name": (
+                "W01L1 - Foo [EN] "
+                "{type=audio lang=en format=deep-dive length=default hash=deadbeef}.mp3"
+            ),
+            "createdTime": "2026-02-02T08:00:00+00:00",
+        }
+        episode = mod.build_episode_entry(
+            file_entry=file_entry,
+            feed_config={
+                "title": "Personlighedspsykologi (EN)",
+                "link": "https://example.com",
+                "description": "Test feed",
+                "language": "en",
+                "description_blocks_by_kind": {
+                    "reading": ["reading_summary", "reading_key_points"],
+                },
+            },
+            overrides={},
+            public_link_template="https://example.com/{file_id}",
+            reading_summaries_cfg={"enabled_kinds": {"reading", "brief"}, "key_points_label": "Key points"},
+            reading_summaries={
+                "by_name": {
+                    "W01L1 - Foo [EN].mp3": {
+                        "summary_lines": ["Cfg fallback summary"],
+                        "key_points": ["Cfg fallback point"],
+                    }
+                }
+            },
+        )
+        self.assertIn("Cfg fallback summary", episode["description"])
+        self.assertIn("Cfg fallback point", episode["description"])
+
+    def test_manual_description_override_wins_over_reading_summaries(self):
+        mod = _load_feed_module()
+        file_entry = {
+            "id": "file1",
+            "name": "W01L1 - Foo [EN].mp3",
+            "createdTime": "2026-02-02T08:00:00+00:00",
+        }
+        episode = mod.build_episode_entry(
+            file_entry=file_entry,
+            feed_config={
+                "title": "Personlighedspsykologi (EN)",
+                "link": "https://example.com",
+                "description": "Test feed",
+                "language": "en",
+                "description_blocks_by_kind": {
+                    "reading": ["reading_summary", "reading_key_points"],
+                },
+            },
+            overrides={
+                "by_name": {
+                    "W01L1 - Foo [EN].mp3": {
+                        "description": "Manual description [EN]",
+                    }
+                }
+            },
+            public_link_template="https://example.com/{file_id}",
+            reading_summaries_cfg={"enabled_kinds": {"reading", "brief"}, "key_points_label": "Key points"},
+            reading_summaries={
+                "by_name": {
+                    "W01L1 - Foo [EN].mp3": {
+                        "summary_lines": ["Summary that should not render"],
+                        "key_points": ["Point that should not render"],
+                    }
+                }
+            },
+        )
+        self.assertEqual(episode["description"], "Manual description")
+
+    def test_validate_feed_block_config_accepts_reading_summary_blocks(self):
+        mod = _load_feed_module()
+        mod.validate_feed_block_config(
+            {
+                "description_blocks": ["reading_summary", "reading_key_points"],
+            }
+        )
+
+    def test_validate_feed_block_config_rejects_unknown_sort_mode(self):
+        mod = _load_feed_module()
+        with self.assertRaisesRegex(
+            ValueError, r"feed\.sort_mode has unknown mode 'not_a_mode'"
+        ):
+            mod.validate_feed_block_config({"sort_mode": "not_a_mode"})
 
     def test_validate_feed_block_config_rejects_unknown_description_block(self):
         mod = _load_feed_module()

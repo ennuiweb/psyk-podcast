@@ -24,12 +24,14 @@
   - Length: not set (UI does not expose length for brief; config value is ignored)
   - Prompt: from `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json`
   - Language: from `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json`
-  - Name prefix: `[Brief]`
+  - Source filename marker: `[Brief]`
 - Language variants: generate **Danish + English** for all episodes.
    - Config: `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json` → `languages`
    - English naming: adds suffix ` [EN]` to file names and notebook titles.
-- Feed output: `gdrive_podcast_feed.py` strips `[EN]`, maps `[TTS]` to `Oplæst` in title/description, and keeps `[Brief]` in episode titles.
-- Semesteruge labels follow semester weeks using `feed.semester_week_start_date` (2026-02-02), so lectures 1+2 are both Semesteruge 1. `Uge` labels reflect calendar weeks.
+- Feed output (audio only): `gdrive_podcast_feed.py` strips `[EN]`, prepends `[Lydbog]` for TTS, prepends `[Kort podcast]` for brief, prepends `[Podcast]` for deep-dive, and falls back to `[Podcast]` for any other audio episode.
+- Feed copy cleanup removes `Reading:` and `Forelæsning x · Semesteruge x` patterns from episode titles/descriptions.
+- Feed ordering uses `feed.sort_mode: "wxlx_kind_priority"` and applies per-`W#L#` priority: `Brief -> Alle kilder -> Oplæst/TTS readings -> other readings` (block order remains recency-based).
+- Semester week alignment still follows `feed.semester_week_start_date` (2026-02-02), so lectures 1+2 are both Semesteruge 1. `Uge` labels reflect calendar weeks.
 - Filename hygiene: always keep week tokens zero-padded (`W##L#`). If outputs contain unpadded tokens (e.g. `W6L1`), normalize via:
   - `python3 scripts/rename_personlighedspsykologi_outputs.py --root notebooklm-podcast-auto/personlighedspsykologi/output --apply --rewrite-request-json`
 

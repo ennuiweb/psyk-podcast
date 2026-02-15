@@ -31,6 +31,32 @@ LANGUAGE_TAG_PATTERN = re.compile(
 )
 TTS_TAG_PATTERN = re.compile(r"(?:\[\s*tts\s*\]|\(\s*tts\s*\))", re.IGNORECASE)
 BRIEF_TAG_PATTERN = re.compile(r"\[\s*brief\s*\]", re.IGNORECASE)
+DEEP_DIVE_TAG_PATTERN = re.compile(r"\[\s*deep-dive\s*\]", re.IGNORECASE)
+CFG_TTS_TYPE_PATTERN = re.compile(r"\{[^{}]*\btype=tts\b[^{}]*\}", re.IGNORECASE)
+CFG_AUDIO_TYPE_PATTERN = re.compile(r"\{[^{}]*\btype=audio\b[^{}]*\}", re.IGNORECASE)
+CFG_AUDIO_BRIEF_PATTERN = re.compile(
+    r"\{[^{}]*\btype=audio\b[^{}]*\bformat=brief\b[^{}]*\}",
+    re.IGNORECASE,
+)
+CFG_AUDIO_DEEP_DIVE_PATTERN = re.compile(
+    r"\{[^{}]*\btype=audio\b[^{}]*\bformat=deep-dive\b[^{}]*\}",
+    re.IGNORECASE,
+)
+AUDIO_FILE_EXTENSIONS = {".mp3", ".m4a", ".wav", ".aac", ".flac"}
+AUDIO_CATEGORY_PREFIXES = {
+    "lydbog": "[Lydbog]",
+    "kort_podcast": "[Kort podcast]",
+    "podcast": "[Podcast]",
+}
+CATEGORY_PREFIX_HEAD_PATTERN = re.compile(
+    r"^\s*(?:Oplæst\b|\[\s*brief\s*\]|\[\s*deep-dive\s*\]|\[\s*podcast\s*\]|\[\s*lydbog\s*\]|\[\s*kort\s+podcast\s*\])\s*(?:[·:\-]\s*)?",
+    re.IGNORECASE,
+)
+READING_PREFIX_PATTERN = re.compile(r"(^|[·\n]\s*)reading:\s*", re.IGNORECASE)
+LECTURE_SEMESTER_PAIR_PATTERN = re.compile(
+    r"\b(?:forelæsning\s+\d+\s*·\s*semesteruge\s+\d+|semesteruge\s+\d+\s*·\s*forelæsning\s+\d+)\b",
+    re.IGNORECASE,
+)
 CFG_TAG_PATTERN = re.compile(
     r"(?:\s+\{[a-z0-9._:+-]+=[^{}\s]+(?:\s+[a-z0-9._:+-]+=[^{}\s]+)*\})+"
     r"(?:\s+\[[^\[\]]+\])?$",
@@ -1138,6 +1164,12 @@ def _strip_language_tags(
     cleaned = LANGUAGE_TAG_PATTERN.sub("", cleaned)
     if strip_brief:
         cleaned = BRIEF_TAG_PATTERN.sub("", cleaned)
+    cleaned = READING_PREFIX_PATTERN.sub(r"\1", cleaned)
+    cleaned = LECTURE_SEMESTER_PAIR_PATTERN.sub("", cleaned)
+    cleaned = re.sub(r"\s*·\s*", " · ", cleaned)
+    cleaned = re.sub(r"(?:\s*·\s*){2,}", " · ", cleaned)
+    cleaned = re.sub(r"(^|\n)\s*·\s*", r"\1", cleaned)
+    cleaned = re.sub(r"\s*·\s*($|\n)", r"\1", cleaned)
     if preserve_newlines:
         cleaned = re.sub(r"[ \t]+", " ", cleaned)
         cleaned = re.sub(r" *\n *", "\n", cleaned)
@@ -1367,9 +1399,13 @@ DESCRIPTION_BLOCKS_ALLOWED = {
     "semester_week",
     "quiz",
     "quiz_url",
+    "reading_summary",
+    "reading_key_points",
 }
 DEFAULT_TITLE_BLOCKS = ["semester_week_lecture", "subject_or_type", "week_range"]
 DEFAULT_DESCRIPTION_BLOCKS = ["descriptor_subject", "topic", "lecture", "semester_week", "quiz"]
+FEED_SORT_MODES = {"published_at_desc", "wxlx_kind_priority"}
+DEFAULT_FEED_SORT_MODE = "published_at_desc"
 
 
 def extract_week_lecture(
@@ -1405,6 +1441,49 @@ def strip_brief_prefix(value: str) -> str:
     if not value:
         return value
     return BRIEF_PREFIX_PATTERN.sub("", value).strip()
+
+
+def _classify_audio_category(file_entry: Dict[str, Any], source_title: str) -> Optional[str]:
+    source_value = source_title if isinstance(source_title, str) else ""
+    file_name = file_entry.get("name", "")
+    if not isinstance(file_name, str):
+        file_name = str(file_name)
+
+    has_tts_cfg = bool(CFG_TTS_TYPE_PATTERN.search(source_value))
+    has_audio_cfg = bool(CFG_AUDIO_TYPE_PATTERN.search(source_value))
+    has_tts_marker = bool(TTS_TAG_PATTERN.search(source_value))
+    has_brief_cfg = bool(CFG_AUDIO_BRIEF_PATTERN.search(source_value))
+    has_brief_marker = bool(BRIEF_TAG_PATTERN.search(source_value))
+    has_deep_dive_cfg = bool(CFG_AUDIO_DEEP_DIVE_PATTERN.search(source_value))
+    has_deep_dive_marker = bool(DEEP_DIVE_TAG_PATTERN.search(source_value))
+
+    is_audio = has_audio_cfg or has_tts_cfg
+    if not is_audio:
+        mime_type = file_entry.get("mimeType")
+        if isinstance(mime_type, str) and mime_type.casefold().startswith("audio/"):
+            is_audio = True
+    if not is_audio and Path(file_name).suffix.casefold() in AUDIO_FILE_EXTENSIONS:
+        is_audio = True
+    if not is_audio:
+        return None
+
+    if has_tts_cfg or has_tts_marker:
+        return "lydbog"
+    if has_brief_cfg or has_brief_marker:
+        return "kort_podcast"
+    if has_deep_dive_cfg or has_deep_dive_marker:
+        return "podcast"
+    return "podcast"
+
+
+def _normalize_category_prefix(title_value: str) -> str:
+    normalized = title_value.strip() if isinstance(title_value, str) else ""
+    while normalized:
+        updated = CATEGORY_PREFIX_HEAD_PATTERN.sub("", normalized, count=1).strip()
+        if updated == normalized:
+            break
+        normalized = updated
+    return normalized
 
 
 def extract_topic(meta: Dict[str, Any]) -> Optional[str]:
@@ -1450,6 +1529,15 @@ def validate_feed_block_config(feed_config: Dict[str, Any]) -> None:
         raise ValueError(
             "feed.reading_description_mode is deprecated. "
             "Remove it and use feed.description_blocks or feed.description_blocks_by_kind.reading."
+        )
+    raw_sort_mode = feed_config.get("sort_mode", DEFAULT_FEED_SORT_MODE)
+    if not isinstance(raw_sort_mode, str) or not raw_sort_mode.strip():
+        raise ValueError("feed.sort_mode must be a non-empty string.")
+    sort_mode = raw_sort_mode.strip().lower()
+    if sort_mode not in FEED_SORT_MODES:
+        allowed_modes = ", ".join(sorted(FEED_SORT_MODES))
+        raise ValueError(
+            f"feed.sort_mode has unknown mode '{raw_sort_mode}'. Allowed modes: {allowed_modes}"
         )
 
     if "title_blocks" in feed_config:
@@ -1542,6 +1630,144 @@ def _render_blocks(
     return rendered
 
 
+def _resolve_feed_sort_mode(feed_config: Dict[str, Any]) -> str:
+    raw_sort_mode = feed_config.get("sort_mode", DEFAULT_FEED_SORT_MODE)
+    if not isinstance(raw_sort_mode, str):
+        return DEFAULT_FEED_SORT_MODE
+    normalized = raw_sort_mode.strip().lower()
+    if not normalized:
+        return DEFAULT_FEED_SORT_MODE
+    if normalized in FEED_SORT_MODES:
+        return normalized
+    return DEFAULT_FEED_SORT_MODE
+
+
+def _published_sort_value(item: Dict[str, Any]) -> float:
+    published = item.get("published_at")
+    if not isinstance(published, dt.datetime):
+        return float("-inf")
+    if published.tzinfo is None:
+        published = published.replace(tzinfo=dt.timezone.utc)
+    return published.timestamp()
+
+
+def _wxlx_kind_priority(item: Dict[str, Any]) -> int:
+    kind = str(item.get("episode_kind") or "").strip()
+    is_tts = bool(item.get("is_tts"))
+    if kind == "brief":
+        return 0
+    if kind == "weekly_overview":
+        return 1
+    if kind == "reading" and is_tts:
+        return 2
+    return 3
+
+
+def _sort_feed_episodes(
+    episodes: Iterable[Dict[str, Any]],
+    feed_config: Dict[str, Any],
+) -> List[Dict[str, Any]]:
+    items = list(episodes)
+    sort_mode = _resolve_feed_sort_mode(feed_config)
+    if sort_mode == DEFAULT_FEED_SORT_MODE:
+        return sorted(items, key=lambda item: item["published_at"], reverse=True)
+
+    grouped: Dict[Tuple[Any, ...], List[Tuple[int, Dict[str, Any]]]] = {}
+    for index, item in enumerate(items):
+        sort_week = item.get("sort_week")
+        sort_lecture = item.get("sort_lecture")
+        if (
+            isinstance(sort_week, int)
+            and sort_week > 0
+            and isinstance(sort_lecture, int)
+            and sort_lecture > 0
+        ):
+            group_key: Tuple[Any, ...] = ("block", sort_week, sort_lecture)
+        else:
+            group_key = ("single", index)
+        grouped.setdefault(group_key, []).append((index, item))
+
+    grouped_entries: List[Tuple[float, int, Tuple[Any, ...], List[Tuple[int, Dict[str, Any]]]]] = []
+    for group_key, values in grouped.items():
+        anchor = max(_published_sort_value(item) for _, item in values)
+        first_seen_index = min(index for index, _ in values)
+        grouped_entries.append((anchor, first_seen_index, group_key, values))
+    grouped_entries.sort(key=lambda entry: (-entry[0], entry[1]))
+
+    ordered: List[Dict[str, Any]] = []
+    for _, _, group_key, values in grouped_entries:
+        if group_key[0] == "block":
+            values.sort(
+                key=lambda pair: (
+                    _wxlx_kind_priority(pair[1]),
+                    -_published_sort_value(pair[1]),
+                    pair[0],
+                )
+            )
+        else:
+            values.sort(key=lambda pair: (-_published_sort_value(pair[1]), pair[0]))
+        ordered.extend(item for _, item in values)
+    return ordered
+
+
+def load_reading_summaries(path: Path) -> Dict[str, Any]:
+    payload = load_json(path)
+    if not isinstance(payload, dict):
+        raise ValueError("reading_summaries file must be a JSON object.")
+
+    raw_by_name = payload.get("by_name")
+    if raw_by_name is None:
+        return {"by_name": {}}
+    if not isinstance(raw_by_name, dict):
+        raise ValueError("reading_summaries.by_name must be an object.")
+
+    normalized: Dict[str, Dict[str, Any]] = {}
+    for raw_name, raw_entry in raw_by_name.items():
+        if not isinstance(raw_name, str) or not raw_name.strip():
+            print("Warning: skipping invalid reading_summaries.by_name key.", file=sys.stderr)
+            continue
+        if not isinstance(raw_entry, dict):
+            print(
+                f"Warning: reading_summaries entry for '{raw_name}' must be an object; skipping.",
+                file=sys.stderr,
+            )
+            continue
+
+        summary_lines: List[str] = []
+        raw_summary_lines = raw_entry.get("summary_lines")
+        if isinstance(raw_summary_lines, list):
+            for value in raw_summary_lines:
+                if not isinstance(value, str):
+                    continue
+                cleaned = value.strip()
+                if cleaned:
+                    summary_lines.append(cleaned)
+
+        key_points: List[str] = []
+        raw_key_points = raw_entry.get("key_points")
+        if isinstance(raw_key_points, list):
+            for value in raw_key_points:
+                if not isinstance(value, str):
+                    continue
+                cleaned = value.strip()
+                if cleaned:
+                    key_points.append(cleaned)
+
+        normalized_entry: Dict[str, Any] = {}
+        if summary_lines:
+            normalized_entry["summary_lines"] = summary_lines
+        if key_points:
+            normalized_entry["key_points"] = key_points
+        meta = raw_entry.get("meta")
+        if isinstance(meta, dict):
+            normalized_entry["meta"] = meta
+
+        if normalized_entry:
+            normalized[raw_name.strip()] = normalized_entry
+
+    return {"by_name": normalized}
+
+
 def build_episode_entry(
     file_entry: Dict[str, Any],
     feed_config: Dict[str, Any],
@@ -1553,6 +1779,8 @@ def build_episode_entry(
     episode_image_url: Optional[str] = None,
     quiz_cfg: Optional[Dict[str, Any]] = None,
     quiz_links: Optional[Dict[str, Any]] = None,
+    reading_summaries_cfg: Optional[Dict[str, Any]] = None,
+    reading_summaries: Optional[Dict[str, Any]] = None,
 ) -> Dict[str, Any]:
     meta: Dict[str, Any] = {}
     if auto_meta:
@@ -1567,7 +1795,9 @@ def build_episode_entry(
         narrator = AutoSpec._extract_voice(file_entry.get("name"))
         if narrator:
             meta.setdefault("narrator", narrator)
-    base_title = file_entry["name"].rsplit(".", 1)[0]
+    source_title = file_entry["name"].rsplit(".", 1)[0]
+    audio_category = _classify_audio_category(file_entry, source_title)
+    base_title = source_title
     if narrator:
         suffix = f" - {narrator}"
         if base_title.lower().endswith(suffix.lower()):
@@ -1590,7 +1820,7 @@ def build_episode_entry(
         )
     published_at = parse_datetime(pubdate_source)
 
-    _, lecture_number = extract_week_lecture(folder_names, file_entry.get("name"))
+    sort_week_number, lecture_number = extract_week_lecture(folder_names, file_entry.get("name"))
     semester_start = feed_config.get("semester_week_start_date")
     semester_info = semester_week_info(published_at, semester_start)
     week_number = None
@@ -1618,14 +1848,14 @@ def build_episode_entry(
         semester_week_description_label = "Semester week"
 
     raw_title_with_tags = _strip_cfg_tags(base_title)
-    is_tts = bool(TTS_TAG_PATTERN.search(raw_title_with_tags))
     raw_title = re.sub(r"\s+", " ", LANGUAGE_TAG_PATTERN.sub("", raw_title_with_tags)).strip()
     raw_lower = raw_title.casefold()
-    is_brief = bool(BRIEF_TAG_PATTERN.search(raw_title))
+    is_brief = bool(BRIEF_TAG_PATTERN.search(raw_title) or CFG_AUDIO_BRIEF_PATTERN.search(source_title))
     is_weekly_overview = "alle kilder" in raw_lower or "all sources" in raw_lower
     cleaned_title = _strip_text_prefix(raw_title)
     cleaned_title = strip_brief_prefix(cleaned_title)
     cleaned_title = BRIEF_TAG_PATTERN.sub("", cleaned_title).strip()
+    cleaned_title = DEEP_DIVE_TAG_PATTERN.sub("", cleaned_title).strip()
     cleaned_title = strip_week_prefix(cleaned_title)
     cleaned_title = cleaned_title.strip()
 
@@ -1674,14 +1904,10 @@ def build_episode_entry(
             semester_week_lecture = f"{semester_week_label} {week_number}"
 
         subject = display_subject or cleaned_title or raw_title
-        if is_tts and subject and "oplæst" not in subject.casefold():
-            subject = f"Oplæst {subject}"
         if is_weekly_overview and type_label:
             subject_or_type = type_label
         else:
             subject_or_type = subject or type_label
-        if is_tts and subject_or_type and "oplæst" not in subject_or_type.casefold():
-            subject_or_type = f"Oplæst {subject_or_type}"
 
         title_block_values = {
             "semester_week_lecture": semester_week_lecture,
@@ -1711,11 +1937,14 @@ def build_episode_entry(
         prefix = narrator.upper()
         if not title_value.upper().startswith(f"{prefix} "):
             title_value = f"{prefix} {title_value}"
-    if is_tts and "oplæst" not in title_value.casefold():
-        title_value = f"Oplæst {title_value}"
-    if is_brief and not BRIEF_TAG_PATTERN.search(title_value):
-        title_value = f"[Brief] {title_value}"
     title_value = _strip_language_tags(title_value, strip_brief=not is_brief)
+    if audio_category:
+        normalized_title = _normalize_category_prefix(title_value)
+        title_prefix = AUDIO_CATEGORY_PREFIXES.get(audio_category)
+        if title_prefix:
+            title_value = f"{title_prefix} {normalized_title}".strip()
+        else:
+            title_value = normalized_title
     meta["title"] = title_value
     if suppress_week_prefix:
         meta.pop("suppress_week_prefix", None)
@@ -1730,9 +1959,41 @@ def build_episode_entry(
             descriptor = "Alle kilder"
         else:
             descriptor = "Reading"
-        if is_tts and "oplæst" not in descriptor.casefold():
-            descriptor = f"Oplæst {descriptor}"
         descriptor_subject = f"{descriptor}: {text_label}" if text_label else descriptor
+        enabled_kinds_raw = (
+            reading_summaries_cfg.get("enabled_kinds")
+            if isinstance(reading_summaries_cfg, dict)
+            else None
+        )
+        enabled_kinds = (
+            enabled_kinds_raw
+            if isinstance(enabled_kinds_raw, set)
+            else {"reading", "brief"}
+        )
+        summaries_enabled_for_kind = episode_kind in enabled_kinds
+        reading_summary_value: Optional[str] = None
+        reading_key_points_value: Optional[str] = None
+        if summaries_enabled_for_kind and isinstance(reading_summaries, dict) and file_entry.get("name"):
+            by_name = reading_summaries.get("by_name")
+            if isinstance(by_name, dict):
+                entry = _lookup_by_name_with_cfg_fallback(by_name, file_entry["name"])
+                if isinstance(entry, dict):
+                    summary_lines = entry.get("summary_lines")
+                    if isinstance(summary_lines, list):
+                        lines = [line.strip() for line in summary_lines if isinstance(line, str) and line.strip()]
+                        if lines:
+                            reading_summary_value = "\n".join(lines)
+                    key_points = entry.get("key_points")
+                    if isinstance(key_points, list):
+                        points = [point.strip() for point in key_points if isinstance(point, str) and point.strip()]
+                        if points:
+                            key_points_label = "Key points"
+                            if isinstance(reading_summaries_cfg, dict):
+                                raw_label = reading_summaries_cfg.get("key_points_label")
+                                if isinstance(raw_label, str) and raw_label.strip():
+                                    key_points_label = raw_label.strip()
+                            bullets = "\n".join(f"- {point}" for point in points)
+                            reading_key_points_value = f"\n\n{key_points_label}:\n{bullets}"
         description_block_values = {
             "descriptor_subject": descriptor_subject,
             "descriptor": descriptor,
@@ -1744,6 +2005,12 @@ def build_episode_entry(
             ),
             "quiz": f"\n\nQuiz:\n{quiz_url}" if quiz_url else None,
             "quiz_url": quiz_url,
+            "reading_summary": (
+                reading_summary_value or descriptor_subject
+                if summaries_enabled_for_kind
+                else None
+            ),
+            "reading_key_points": reading_key_points_value if summaries_enabled_for_kind else None,
         }
         description_blocks = _resolve_blocks_for_kind(
             feed_config,
@@ -1765,12 +2032,6 @@ def build_episode_entry(
     if quiz_url:
         if not meta.get("link"):
             meta["link"] = quiz_url
-    if is_tts and meta.get("description"):
-        desc_value = str(meta["description"]).strip()
-        if desc_value and "oplæst" not in desc_value.casefold():
-            meta["description"] = f"Oplæst · {desc_value}"
-        elif not desc_value:
-            meta["description"] = "Oplæst"
     if summary:
         meta["summary"] = _strip_language_tags(summary)
     if meta.get("description"):
@@ -1791,6 +2052,10 @@ def build_episode_entry(
         "duration": duration,
         "explicit": str(meta.get("explicit", explicit_default)).lower(),
         "image": meta.get("image") or feed_config.get("image"),
+        "episode_kind": episode_kind,
+        "is_tts": audio_category == "lydbog",
+        "sort_week": sort_week_number,
+        "sort_lecture": lecture_number,
         "audio_url": public_link_template.format(file_id=file_entry["id"], file_name=file_entry["name"]),
     }
 
@@ -1869,7 +2134,7 @@ def build_feed_document(
     elif category:
         ET.SubElement(channel, "itunes:category", attrib={"text": category})
 
-    new_items = list(sorted(episodes, key=lambda item: item["published_at"], reverse=True))
+    new_items = _sort_feed_episodes(episodes, feed_config)
     for item in new_items:
         entry = ET.SubElement(channel, "item")
         for tag, key in ("title", "title"), ("description", "description"), ("guid", "guid"), ("link", "link"), ("pubDate", "pubDate"):
@@ -1918,6 +2183,75 @@ def main() -> None:
         raise SystemExit(f"Invalid feed block config: {exc}") from exc
     overrides_path = args.metadata or (Path(config.get("episode_metadata", "")) if config.get("episode_metadata") else None)
     overrides = load_json(overrides_path) if overrides_path and overrides_path.exists() else {}
+    reading_summaries_cfg_raw = config.get("reading_summaries")
+    reading_summaries_cfg: Dict[str, Any] = {}
+    reading_summaries: Optional[Dict[str, Any]] = None
+    if reading_summaries_cfg_raw is not None and not isinstance(reading_summaries_cfg_raw, dict):
+        print("Warning: reading_summaries must be a JSON object; ignoring.", file=sys.stderr)
+    elif isinstance(reading_summaries_cfg_raw, dict):
+        key_points_label = reading_summaries_cfg_raw.get("key_points_label")
+        if not isinstance(key_points_label, str) or not key_points_label.strip():
+            key_points_label = "Key points"
+
+        enabled_kinds_raw = reading_summaries_cfg_raw.get("enabled_kinds")
+        enabled_kinds: Set[str] = {"reading", "brief"}
+        if isinstance(enabled_kinds_raw, list):
+            parsed_enabled = {
+                str(kind).strip()
+                for kind in enabled_kinds_raw
+                if str(kind).strip() in EPISODE_KINDS
+            }
+            if parsed_enabled:
+                enabled_kinds = parsed_enabled
+            else:
+                print(
+                    "Warning: reading_summaries.enabled_kinds had no valid kinds; "
+                    "defaulting to reading+brief.",
+                    file=sys.stderr,
+                )
+        elif enabled_kinds_raw is not None:
+            print(
+                "Warning: reading_summaries.enabled_kinds must be a list; "
+                "defaulting to reading+brief.",
+                file=sys.stderr,
+            )
+
+        reading_summaries_cfg = {
+            "key_points_label": key_points_label.strip(),
+            "enabled_kinds": enabled_kinds,
+        }
+
+        summaries_file = reading_summaries_cfg_raw.get("file")
+        if summaries_file:
+            summaries_path = Path(str(summaries_file)).expanduser()
+            if not summaries_path.is_absolute():
+                candidates = [summaries_path, args.config.parent / summaries_path]
+                resolved = next((path for path in candidates if path.exists()), None)
+                if resolved is not None:
+                    summaries_path = resolved.resolve()
+                elif str(summaries_path).startswith("shows/"):
+                    summaries_path = summaries_path.resolve()
+                else:
+                    summaries_path = (args.config.parent / summaries_path).resolve()
+            if summaries_path.exists():
+                try:
+                    reading_summaries = load_reading_summaries(summaries_path)
+                except Exception as exc:
+                    print(
+                        f"Warning: failed to load reading summaries from {summaries_path}: {exc}",
+                        file=sys.stderr,
+                    )
+            else:
+                print(
+                    f"Warning: reading summaries file not found: {summaries_path}",
+                    file=sys.stderr,
+                )
+        else:
+            print(
+                "Warning: reading_summaries.file not configured; summary injection disabled.",
+                file=sys.stderr,
+            )
+
     quiz_cfg = config.get("quiz") if isinstance(config.get("quiz"), dict) else None
     quiz_links: Optional[Dict[str, Any]] = None
     if quiz_cfg:
@@ -2168,6 +2502,8 @@ def main() -> None:
                 episode_image_url=episode_image_url,
                 quiz_cfg=quiz_cfg,
                 quiz_links=quiz_links,
+                reading_summaries_cfg=reading_summaries_cfg,
+                reading_summaries=reading_summaries,
             )
         )
 

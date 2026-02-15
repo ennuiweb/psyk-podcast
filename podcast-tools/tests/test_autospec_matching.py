@@ -528,6 +528,83 @@ class AutoSpecMatchingTests(unittest.TestCase):
         self.assertNotIn("{type=", episode["title"])
         self.assertNotRegex(episode["title"], re.compile(r"\bW\d{1,2}L\d+\b"))
 
+    def test_audio_category_prefix_position_after_first_block_for_all_audio_kinds(self):
+        mod = _load_feed_module()
+        feed_config = {
+            "title": "Personlighedspsykologi (EN)",
+            "link": "https://example.com",
+            "description": "Test feed",
+            "language": "en",
+            "semester_week_start_date": "2026-02-02",
+            "semester_week_label": "Semesteruge",
+            "semester_week_description_label": "Semesteruge",
+            "audio_category_prefix_position": "after_first_block",
+        }
+        cases = [
+            (
+                "W1L1 - Lewis (1999) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
+                "[Podcast]",
+                "Lewis (1999)",
+            ),
+            (
+                "W1L1 - Alle kilder [EN].mp3",
+                "[Podcast]",
+                "Alle kilder",
+            ),
+            (
+                "[Brief] W1L1 - Grundbog kapitel 01 [EN].mp3",
+                "[Kort podcast]",
+                "Grundbog kapitel 01",
+            ),
+            (
+                "[TTS] W1L1 - Grundbog kapitel 01 [EN].mp3",
+                "[Lydbog]",
+                "Grundbog kapitel 01",
+            ),
+        ]
+        for file_name, expected_prefix, expected_subject in cases:
+            with self.subTest(file_name=file_name):
+                episode = mod.build_episode_entry(
+                    file_entry={
+                        "id": "file1",
+                        "name": file_name,
+                        "createdTime": "2026-02-02T08:00:00+00:00",
+                    },
+                    feed_config=feed_config,
+                    overrides={},
+                    public_link_template="https://example.com/{file_id}",
+                    auto_meta={"week_reference_year": 2026},
+                    folder_names=["W01L1"],
+                )
+                self.assertIn(
+                    f"Semesteruge 1, Forelæsning 1 · {expected_prefix} · ",
+                    episode["title"],
+                )
+                self.assertIn(expected_subject, episode["title"])
+                self.assertFalse(episode["title"].startswith(expected_prefix))
+
+    def test_audio_category_prefix_after_first_block_falls_back_to_leading_with_single_title_block(self):
+        mod = _load_feed_module()
+        file_entry = {
+            "id": "file1",
+            "name": "W01L1 - Foo [EN].mp3",
+            "createdTime": "2026-02-02T08:00:00+00:00",
+        }
+        episode = mod.build_episode_entry(
+            file_entry=file_entry,
+            feed_config={
+                "title": "Personlighedspsykologi (EN)",
+                "link": "https://example.com",
+                "description": "Test feed",
+                "language": "en",
+                "title_blocks": ["subject"],
+                "audio_category_prefix_position": "after_first_block",
+            },
+            overrides={},
+            public_link_template="https://example.com/{file_id}",
+        )
+        self.assertEqual(episode["title"], "[Podcast] Foo")
+
     def test_generated_entry_strips_cfg_tag_from_subject(self):
         mod = _load_feed_module()
         file_entry = {
@@ -1172,6 +1249,14 @@ class AutoSpecMatchingTests(unittest.TestCase):
             ValueError, r"feed\.sort_mode has unknown mode 'not_a_mode'"
         ):
             mod.validate_feed_block_config({"sort_mode": "not_a_mode"})
+
+    def test_validate_feed_block_config_rejects_unknown_audio_prefix_position(self):
+        mod = _load_feed_module()
+        with self.assertRaisesRegex(
+            ValueError,
+            r"feed\.audio_category_prefix_position has unknown value 'middle'",
+        ):
+            mod.validate_feed_block_config({"audio_category_prefix_position": "middle"})
 
     def test_validate_feed_block_config_rejects_unknown_description_block(self):
         mod = _load_feed_module()

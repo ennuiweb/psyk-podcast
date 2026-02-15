@@ -48,6 +48,9 @@ AUDIO_CATEGORY_PREFIXES = {
     "kort_podcast": "[Kort podcast]",
     "podcast": "[Podcast]",
 }
+AUDIO_CATEGORY_PREFIX_POSITIONS = {"leading", "after_first_block"}
+DEFAULT_AUDIO_CATEGORY_PREFIX_POSITION = "leading"
+TITLE_BLOCK_SEPARATOR = " · "
 CATEGORY_PREFIX_HEAD_PATTERN = re.compile(
     r"^\s*(?:Oplæst\b|\[\s*brief\s*\]|\[\s*deep-dive\s*\]|\[\s*podcast\s*\]|\[\s*lydbog\s*\]|\[\s*kort\s+podcast\s*\])\s*(?:[·:\-]\s*)?",
     re.IGNORECASE,
@@ -1486,6 +1489,40 @@ def _normalize_category_prefix(title_value: str) -> str:
     return normalized
 
 
+def _resolve_audio_category_prefix_position(feed_config: Dict[str, Any]) -> str:
+    raw_value = feed_config.get(
+        "audio_category_prefix_position", DEFAULT_AUDIO_CATEGORY_PREFIX_POSITION
+    )
+    if not isinstance(raw_value, str) or not raw_value.strip():
+        return DEFAULT_AUDIO_CATEGORY_PREFIX_POSITION
+    value = raw_value.strip().lower()
+    if value not in AUDIO_CATEGORY_PREFIX_POSITIONS:
+        allowed = ", ".join(sorted(AUDIO_CATEGORY_PREFIX_POSITIONS))
+        raise ValueError(
+            "feed.audio_category_prefix_position has unknown value "
+            f"'{raw_value}'. Allowed values: {allowed}"
+        )
+    return value
+
+
+def _apply_audio_category_prefix(
+    title_value: str,
+    title_prefix: str,
+    *,
+    position: str,
+) -> str:
+    normalized = _normalize_category_prefix(title_value)
+    if not title_prefix:
+        return normalized
+    if position == "after_first_block" and TITLE_BLOCK_SEPARATOR in normalized:
+        first, rest = normalized.split(TITLE_BLOCK_SEPARATOR, 1)
+        first = first.strip()
+        rest = rest.strip()
+        if first and rest:
+            return f"{first}{TITLE_BLOCK_SEPARATOR}{title_prefix}{TITLE_BLOCK_SEPARATOR}{rest}"
+    return f"{title_prefix} {normalized}".strip()
+
+
 def extract_topic(meta: Dict[str, Any]) -> Optional[str]:
     topic = meta.get("topic")
     if isinstance(topic, str) and topic.strip():
@@ -1525,6 +1562,7 @@ def _validate_block_list(
 def validate_feed_block_config(feed_config: Dict[str, Any]) -> None:
     if not isinstance(feed_config, dict):
         raise ValueError("feed must be a JSON object.")
+    _resolve_audio_category_prefix_position(feed_config)
     if "reading_description_mode" in feed_config:
         raise ValueError(
             "feed.reading_description_mode is deprecated. "
@@ -1938,13 +1976,17 @@ def build_episode_entry(
         if not title_value.upper().startswith(f"{prefix} "):
             title_value = f"{prefix} {title_value}"
     title_value = _strip_language_tags(title_value, strip_brief=not is_brief)
+    audio_category_prefix_position = _resolve_audio_category_prefix_position(feed_config)
     if audio_category:
-        normalized_title = _normalize_category_prefix(title_value)
         title_prefix = AUDIO_CATEGORY_PREFIXES.get(audio_category)
         if title_prefix:
-            title_value = f"{title_prefix} {normalized_title}".strip()
+            title_value = _apply_audio_category_prefix(
+                title_value,
+                title_prefix,
+                position=audio_category_prefix_position,
+            )
         else:
-            title_value = normalized_title
+            title_value = _normalize_category_prefix(title_value)
     meta["title"] = title_value
     if suppress_week_prefix:
         meta.pop("suppress_week_prefix", None)

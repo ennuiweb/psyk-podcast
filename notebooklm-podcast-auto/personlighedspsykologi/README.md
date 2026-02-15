@@ -4,9 +4,10 @@ This folder contains the generation pipeline assets for Personlighedspsykologi a
 It is **not** a podcast feed. Feed config now lives in:
 
 - `shows/personlighedspsykologi-en`
+- Feed ordering preference is configured there via `feed.sort_mode: "wxlx_kind_priority"` (`Brief -> Alle kilder -> Oplæst/TTS readings -> other readings` within each `W#L#` block).
 
 ## Key paths
-- `scripts/` - generation helpers (`generate_week.py`, `download_week.py`)
+- `scripts/` - generation helpers (`generate_week.py`, `download_week.py`, `sync_reading_summaries.py`)
 - `prompt_config.json` - prompts + language variants for NotebookLM (audio + infographic + quiz defaults)
 - `sources/` - W## source folders (PDFs, readings)
 - `output/` - generated MP3s/PNGs/quiz exports + request logs
@@ -61,6 +62,26 @@ Current generation is configured for English-only outputs (see `prompt_config.js
 ```bash
 ./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/download_week.py --week W01 --content-types quiz --format html
 ```
+
+## Reading summaries cache (for feed descriptions)
+- Sync summary + key points from request logs (dry-run first):
+
+```bash
+./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/sync_reading_summaries.py --week W1 --profile default --dry-run
+./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/sync_reading_summaries.py --week W1 --profile default
+```
+
+- Rebuild the feed after syncing summaries:
+
+```bash
+python podcast-tools/gdrive_podcast_feed.py --config shows/personlighedspsykologi-en/config.local.json
+```
+
+- Sync behavior:
+  - Attempts a strict JSON `notebooklm ask` extraction first.
+  - Falls back to `notebooklm source guide` when ask output cannot be parsed.
+  - Keeps existing entries unless `--refresh` is passed.
+  - Writes cache to `shows/personlighedspsykologi-en/reading_summaries.json`.
 
 ## Troubleshooting
 - If you interrupt `download_week.py` while waiting, rerun the same command. Already-downloaded outputs are skipped.

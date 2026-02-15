@@ -23,7 +23,7 @@
   - Length: not set (UI does not expose length for brief; config value is ignored)
   - Prompt: from `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json`
   - Language: from `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json`
-  - Name prefix: `[Brief]`
+  - Source filename marker: `[Brief]`
 - Infographics: generated when `--content-types` includes `infographic`.
   - Orientation/detail/prompt: from `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json` (`infographic`, `weekly_infographic`, `per_reading_infographic`, `brief_infographic`).
 - Quizzes: generated when `--content-types` includes `quiz`.
@@ -31,7 +31,9 @@
 - Language variants: generate **Danish + English** for all episodes.
   - Config: `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json` → `languages`
   - English naming: adds suffix ` [EN]` to file names and notebook titles.
-- Feed output: `gdrive_podcast_feed.py` strips `[EN]`, maps `[TTS]` to `Oplæst` in title/description, and keeps `[Brief]` in episode titles.
+- Feed output (audio only): `gdrive_podcast_feed.py` strips `[EN]`, prepends `[Lydbog]` for TTS, prepends `[Kort podcast]` for brief, prepends `[Podcast]` for deep-dive, and falls back to `[Podcast]` for any other audio episode.
+- Feed copy cleanup removes `Reading:` and `Forelæsning x · Semesteruge x` patterns from episode titles/descriptions.
+- Feed ordering is show-configured with `feed.sort_mode: "wxlx_kind_priority"` and per-`W#L#` priority: `Brief -> Alle kilder -> Oplæst/TTS readings -> other readings` (block order remains recency-based).
 
 ## Automation scope (decisions)
 - **Per-episode notebooks only.** We are **not** using single-notebook + source-ID selection for now.

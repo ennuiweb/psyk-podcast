@@ -28,6 +28,7 @@
 - 2026-02-14: `output/grundbog-tts/[TTS] Grundbog kapitel 12 - Evolutionspsykologi {type=tts voice=da-DK__chirp3_hd__da-DK-Chirp3-HD-Algenib date=2026-02-14}.wav` tagged.
 - 2026-02-14: `output/grundbog-tts/[TTS] Grundbog kapitel 13 - Positiv psykologi {type=tts voice=da-DK__chirp3_hd__da-DK-Chirp3-HD-Algenib date=2026-02-14}.wav` tagged.
 - 2026-02-14: `output/grundbog-tts/[TTS] W12L1 - Grundbog kapitel 14 - Perspektiver på personlighedspsykologi {type=tts voice=da-DK__chirp3_hd__da-DK-Chirp3-HD-Algenib date=2026-02-14}.wav` tagged and copied to `output/W12L1/[TTS] W12L1 - Grundbog kapitel 14 - Perspektiver på personlighedspsykologi {type=tts voice=da-DK__chirp3_hd__da-DK-Chirp3-HD-Algenib date=2026-02-14}.wav`.
+- 2026-02-16: Unassigned `grundbog-tts` chapters (forord + kapitel `02,03,05,06,07,12,13`) were copied to Drive folder `Personlighedspsykologi-en/grundbog-tts` and now publish as tail episodes after all `W##L#` blocks in the RSS feed.
 
 ## Missing files → skip list (until readings are found)
 Rule: skip audio generation for any episode whose source file is missing, and skip the **weekly “Alle kilder”** episode if that week has any missing readings.

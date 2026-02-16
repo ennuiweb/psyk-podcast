@@ -3,13 +3,13 @@
 ## Status summary
 - Show scaffolding already exists (`config.*`, `auto_spec.json`, `episode_metadata.json`).
 - Socialpsykologi feed review confirms a mixed output pattern:
-  - Weekly overview episodes (e.g., "Alle kilder")
+  - Lecture-overview episodes (kind: `weekly_overview`, e.g., "Alle kilder")
   - Per-reading episodes
   - Short "[Brief]" variants for some readings
 - Local feed build requires `shows/personlighedspsykologi-en/service-account.json` plus Google dependencies (`google-auth`, `google-api-python-client`); run with `python3 podcast-tools/gdrive_podcast_feed.py --config shows/personlighedspsykologi-en/config.local.json`.
 
 ## Output policy (decisions)
-- Weekly overview: **"Alle kilder"** episode per week.
+- Weekly overview kind: **"Alle kilder"** episode per lecture (`W#L#`; two lectures per week).
   - Format: `deep-dive`
   - Length: `long`
   - Prompt: from `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json`
@@ -46,6 +46,9 @@
 - Workflow order is scaffold/update first, then `--validate-only`; coverage validation is warn-only for missing/incomplete entries.
 - Target fill levels are 2-4 `summary_lines` and 3-5 `key_points` per episode.
 - Language rule: if a source text is Danish, keep both `summary_lines` and `key_points` in Danish (otherwise keep English).
+- `Alle kilder` source of truth is manual `shows/personlighedspsykologi-en/weekly_overview_summaries.json` (one entry per lecture, `W#L#`).
+- `Alle kilder` summaries are scaffolded from all source summaries for the same lecture via `--sync-weekly-overview`, then manually finalized in Danish.
+- `--validate-weekly` is warn-only and reports missing entries, incomplete fields, non-Danish content, and source coverage gaps.
 
 ## Highlighting / important readings
 - `important_text_mode` is `week_x_only`.
@@ -55,7 +58,7 @@
 
 ## Missing-file skip policy
 - Skip audio generation for any episode whose source file is missing.
-- Skip the **weekly "Alle kilder"** episode if any reading in that week is missing.
+- Skip the **lecture-level "Alle kilder"** episode if any reading in that lecture is missing.
 
 Single-file skips:
 - W11: Funch & Roald (2014)
@@ -65,7 +68,7 @@ Single-file skips:
 - W22: Køppe (2014)
 - W22: Køppe & Dammeyer (2014b)
 
-Weekly overview skips:
+Lecture-level "Alle kilder" skips:
 - W11
 - W17
 - W20
@@ -126,7 +129,7 @@ Multiple weeks in one command:
 
 This command:
 - Uses `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json` for prompts/lengths.
-- Skips weekly “Alle kilder” when missing readings are listed for that week.
+- Skips lecture-level “Alle kilder” for lecture keys with missing readings.
 - Emits MP3s to `notebooklm-podcast-auto/personlighedspsykologi/output/W##L#/`.
 - Writes a request log per non-blocking episode: `*.mp3.request.json`.
 - Empty prompts are allowed (no validation).
@@ -156,16 +159,16 @@ Optional flags:
 - Request logs: when `--skip-existing` is enabled (default), generation also skips outputs that already have a `.request.json` with an `artifact_id` and no error log.
 
 ## Output placement
-- Weekly overview: `notebooklm-podcast-auto/personlighedspsykologi/output/W##/W## - Alle kilder.mp3`
-- Per-reading: `notebooklm-podcast-auto/personlighedspsykologi/output/W##/W## - <reading>.mp3`
-- Brief (Grundbog): `notebooklm-podcast-auto/personlighedspsykologi/output/W##/[Brief] W## - <reading>.mp3`
+- Weekly overview kind (lecture-level): `notebooklm-podcast-auto/personlighedspsykologi/output/W##L#/W##L# - Alle kilder.mp3`
+- Per-reading: `notebooklm-podcast-auto/personlighedspsykologi/output/W##L#/W##L# - <reading>.mp3`
+- Brief (Grundbog): `notebooklm-podcast-auto/personlighedspsykologi/output/W##L#/[Brief] W##L# - <reading>.mp3`
 - English variants add ` [EN]` before `.mp3`.
-- Non-blocking request log: `notebooklm-podcast-auto/personlighedspsykologi/output/W##/*.mp3.request.json`
-- Failed generation error log: `notebooklm-podcast-auto/personlighedspsykologi/output/W##/*.mp3.request.error.json`
-- With `--output-profile-subdir`, outputs are nested under `.../output/<profile>/W##/`.
+- Non-blocking request log: `notebooklm-podcast-auto/personlighedspsykologi/output/W##L#/*.mp3.request.json`
+- Failed generation error log: `notebooklm-podcast-auto/personlighedspsykologi/output/W##L#/*.mp3.request.error.json`
+- With `--output-profile-subdir`, outputs are nested under `.../output/<profile>/W##L#/`.
 - Collision handling: if an output file exists and appears tied to a different auth, a ` [<profile>]` suffix is added automatically to avoid overwrites.
 
-## Await + download (per week)
+## Await + download (week or lecture selectors)
 Use request logs to wait for completion and download artifacts (audio + infographic + quiz by default), skipping already-downloaded files:
 
 ```bash
@@ -194,11 +197,11 @@ Optional flags:
 ## Validation checklist
 - Generate a single week with `--profile` and confirm `*.request.json` includes `auth.storage_path`.
 - Run `download_week.py --dry-run` and verify the `AUTH:` line points at the expected storage file.
-- If using `--output-profile-subdir`, confirm outputs land under `.../output/<profile>/W##/`.
+- If using `--output-profile-subdir`, confirm outputs land under `.../output/<profile>/W##L#/`.
 
 ## Test log
 - 2026-02-04: Ran `generate_week.py` with a temporary test week (W99) and three PDFs.
-  - Weekly overview + per-reading + brief generation requests were successfully created (non-blocking).
+  - Lecture-level Alle kilder + per-reading + brief generation requests were successfully created (non-blocking).
   - One run timed out at 120s; rerun with 300s completed.
   - Output folder created at `tmp/personlighedspsykologi-test/output/W99/` with `sources_week.txt`.
 - 2026-02-04: Downloaded W99 test audio artifacts into `tmp/personlighedspsykologi-test/output/W99/`.

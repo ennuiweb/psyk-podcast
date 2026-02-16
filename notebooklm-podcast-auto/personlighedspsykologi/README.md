@@ -17,14 +17,14 @@ Archived show configs are stored in `archive-show-config/` for reference.
 
 Current generation is configured for English-only outputs (see `prompt_config.json`).
 
-## Weekly "Alle kilder" behavior
-- Weekly `Alle kilder` generation uses a fresh NotebookLM notebook on every run (no notebook reuse).
-- This guarantees the run re-uploads the full weekly source list instead of relying on existing notebook sources.
+## "Alle kilder" notebook behavior (lecture-level episodes)
+- `Alle kilder` generation runs per lecture (`W#L#`) and uses a fresh NotebookLM notebook on every run (no notebook reuse).
+- This guarantees the run re-uploads the full lecture source list instead of relying on existing notebook sources.
 
 ## Output filename config tags
 - `generate_week.py` appends a human-readable config tag before the extension: ` {...}`.
 - The tag includes artifact output options (type/language + API settings) and a full effective generation config hash.
-- Weekly `Alle kilder` audio outputs additionally include `sources=<n>` (number of uploaded sources in the weekly notebook).
+- `Alle kilder` audio outputs additionally include `sources=<n>` (number of uploaded sources in the lecture notebook).
 - Output filenames never append profile collision suffixes like `[default]` or `[default-2]`; canonical paths are always used.
 - Reading filenames are normalized to a single leading week token (`W#L# - ...`) even when source PDFs include repeated week labels.
 - Legacy files generated before this normalization fix are not auto-renamed; you can keep them as-is or run a one-time cleanup.
@@ -71,10 +71,18 @@ Current generation is configured for English-only outputs (see `prompt_config.js
 ./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/sync_reading_summaries.py
 ```
 
+- Scaffold/update per-lecture `Alle kilder` cache from all source summaries:
+
+```bash
+./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/sync_reading_summaries.py --sync-weekly-overview --dry-run
+./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/sync_reading_summaries.py --sync-weekly-overview
+```
+
 - Validate coverage (warn-only, no writes):
 
 ```bash
 ./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/sync_reading_summaries.py --validate-only
+./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/sync_reading_summaries.py --validate-only --validate-weekly
 ```
 
 - Rebuild the feed after syncing summaries:
@@ -85,11 +93,14 @@ python3 podcast-tools/gdrive_podcast_feed.py --config shows/personlighedspsykolo
 
 - Sync behavior:
   - Uses local audio files under `output/` as inventory (`reading`, `brief`, and `TTS` variants).
-  - Excludes weekly overview files (`Alle kilder` / `All sources`) from the summary inventory.
+  - Excludes `Alle kilder` / `All sources` files from the reading summary inventory.
   - Adds missing `by_name` placeholders with empty `summary_lines` + `key_points`.
   - `--validate-only` reports missing/incomplete entries and always exits non-blocking for coverage gaps.
   - Run scaffold/update before validation when checking a fresh cache (`--validate-only` reads current file state only).
   - Writes cache to `shows/personlighedspsykologi-en/reading_summaries.json`.
+  - `Alle kilder` cache path is `shows/personlighedspsykologi-en/weekly_overview_summaries.json`; it stores Danish manual lecture-level summaries plus source-coverage metadata and draft aggregate text.
+  - `--sync-weekly-overview` updates lecture-level `Alle kilder` coverage metadata and draft fields, while preserving manual `summary_lines` / `key_points`.
+  - `--validate-weekly` adds warn-only lecture-level checks (`weekly_missing_entry`, `weekly_incomplete_summary`, `weekly_incomplete_key_points`, `weekly_non_danish`, `weekly_source_coverage_gap`).
   - Manual fill targets are `2-4` summary lines and `3-5` key points per entry.
   - Language rule: if the source text is Danish, write `summary_lines` and `key_points` in Danish (otherwise keep English).
   - Feed build requires Google dependencies (`google-auth`, `google-api-python-client`) and `shows/personlighedspsykologi-en/service-account.json`.

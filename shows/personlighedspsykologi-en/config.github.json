@@ -79,10 +79,8 @@
         "quiz"
       ],
       "weekly_overview": [
-        "descriptor_subject",
-        "topic",
-        "lecture",
-        "semester_week",
+        "weekly_overview_summary",
+        "weekly_overview_key_points",
         "quiz"
       ]
     }
@@ -103,5 +101,11 @@
       "reading",
       "brief"
     ]
+  },
+  "weekly_overview_summaries": {
+    "file": "shows/personlighedspsykologi-en/weekly_overview_summaries.json",
+    "language": "da",
+    "mode": "manual_cache_from_reading_summaries",
+    "warn_on_incomplete_sources": true
   }
 }

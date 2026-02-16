@@ -3,13 +3,13 @@
 **Important:** `important_text_mode` is set to `week_x_only`. Priority items must have filenames that start with `W##L# X` to be highlighted in the feed. The list below uses the intended `W##L# X` prefixes; rename the files to match when you want the highlights to appear.
 
 ## Episode output policy
-- Weekly overview: `Alle kilder` (deep-dive, long).
+- Weekly overview kind (`W#L#` lecture-level): `Alle kilder` (deep-dive, long).
 - Per-reading episodes: deep-dive, default length.
 - Brief versions: any `Grundbog kapitel` gets an extra `[Brief]` version (brief, no length toggle).
 - Prompts are configured in `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json`.
 
 ## Missing files → skip list (until readings are found)
-Rule: skip audio generation for any episode whose source file is missing, and skip the **weekly “Alle kilder”** episode if that week has any missing readings.
+Rule: skip audio generation for any episode whose source file is missing, and skip the **lecture-level “Alle kilder”** episode if that lecture has any missing readings.
 
 Single-file skips:
 - W06L1: Funch & Roald (2014) chapter

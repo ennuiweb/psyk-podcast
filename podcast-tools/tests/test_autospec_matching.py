@@ -1,6 +1,8 @@
 import importlib.util
+import io
 import re
 import unittest
+from contextlib import redirect_stderr
 from pathlib import Path
 
 
@@ -377,6 +379,82 @@ class AutoSpecMatchingTests(unittest.TestCase):
         titles = [el.text for el in root.findall("./channel/item/title")]
         self.assertEqual(titles, ["W2 alle", "W2 reading", "W1 brief", "W1 alle"])
 
+    def test_build_feed_document_wxlx_tail_items_always_sort_last(self):
+        mod = _load_feed_module()
+
+        def make_episode(
+            *,
+            guid: str,
+            title: str,
+            published_at: str,
+            episode_kind: str,
+            sort_week: int | None = None,
+            sort_lecture: int | None = None,
+            sort_tail: bool = False,
+        ):
+            published_dt = mod.parse_datetime(published_at)
+            return {
+                "guid": guid,
+                "title": title,
+                "description": title,
+                "link": "https://example.com",
+                "published_at": published_dt,
+                "pubDate": mod.format_rfc2822(published_dt),
+                "mimeType": "audio/mpeg",
+                "size": 123,
+                "duration": None,
+                "explicit": "false",
+                "image": None,
+                "episode_kind": episode_kind,
+                "is_tts": False,
+                "sort_week": sort_week,
+                "sort_lecture": sort_lecture,
+                "sort_tail": sort_tail,
+                "audio_url": f"https://example.com/{guid}.mp3",
+            }
+
+        episodes = [
+            make_episode(
+                guid="w1-reading",
+                title="W1 reading",
+                published_at="2026-02-02T08:00:00+00:00",
+                episode_kind="reading",
+                sort_week=1,
+                sort_lecture=1,
+            ),
+            make_episode(
+                guid="tail-newer",
+                title="Tail newer",
+                published_at="2026-03-01T08:00:00+00:00",
+                episode_kind="reading",
+                sort_tail=True,
+            ),
+            make_episode(
+                guid="w2-reading",
+                title="W2 reading",
+                published_at="2026-02-09T08:00:00+00:00",
+                episode_kind="reading",
+                sort_week=2,
+                sort_lecture=1,
+            ),
+        ]
+        feed = mod.build_feed_document(
+            episodes=episodes,
+            feed_config={
+                "title": "Personlighedspsykologi",
+                "link": "https://example.com",
+                "description": "Test feed",
+                "language": "en",
+                "sort_mode": "wxlx_kind_priority",
+            },
+            last_build=mod.parse_datetime("2026-03-01T00:00:00+00:00"),
+        )
+        from xml.etree import ElementTree as ET
+
+        root = ET.fromstring(ET.tostring(feed, encoding="unicode"))
+        titles = [el.text for el in root.findall("./channel/item/title")]
+        self.assertEqual(titles, ["W2 reading", "W1 reading", "Tail newer"])
+
     def test_semester_week_label_uses_calendar_week_range(self):
         mod = _load_feed_module()
         file_entry = {
@@ -541,6 +619,34 @@ class AutoSpecMatchingTests(unittest.TestCase):
         self.assertNotIn("Oplæst", episode["description"])
         self.assertNotRegex(episode["title"], re.compile(r"\bW\d{1,2}L\d+\b"))
         self.assertNotRegex(episode["description"], re.compile(r"\bW\d{1,2}L\d+\b"))
+
+    def test_generated_entry_unassigned_tail_omits_semester_week_and_range(self):
+        mod = _load_feed_module()
+        file_entry = {
+            "id": "file1",
+            "name": "[TTS] Grundbog kapitel 13 - Positiv psykologi.wav",
+            "createdTime": "2026-01-22T08:00:00+00:00",
+        }
+        feed_config = {
+            "title": "Personlighedspsykologi (EN)",
+            "link": "https://example.com",
+            "description": "Test feed",
+            "language": "en",
+            "semester_week_start_date": "2026-02-02",
+            "semester_week_label": "Semesteruge",
+            "semester_week_description_label": "Semesteruge",
+            "audio_category_prefix_position": "after_first_block",
+        }
+        episode = mod.build_episode_entry(
+            file_entry=file_entry,
+            feed_config=feed_config,
+            overrides={},
+            public_link_template="https://example.com/{file_id}",
+            auto_meta={"week_reference_year": 2026, "unassigned_tail": True},
+            folder_names=["grundbog-tts"],
+        )
+        self.assertTrue(episode.get("sort_tail"))
+        self.assertEqual(episode["title"], "[Lydbog] · Grundbog kapitel 13 - Positiv psykologi")
 
     def test_extract_sequence_number_prefers_chapter_and_ignores_cfg_digits(self):
         mod = _load_feed_module()
@@ -1309,6 +1415,101 @@ class AutoSpecMatchingTests(unittest.TestCase):
         )
         self.assertNotIn("Injected summary that must be ignored", episode["description"])
 
+    def test_weekly_overview_summary_and_key_points_render_from_weekly_cache(self):
+        mod = _load_feed_module()
+        file_entry = {
+            "id": "file1",
+            "name": "W01L1 - Alle kilder [EN].mp3",
+            "createdTime": "2026-02-02T08:00:00+00:00",
+        }
+        episode = mod.build_episode_entry(
+            file_entry=file_entry,
+            feed_config={
+                "title": "Personlighedspsykologi (EN)",
+                "link": "https://example.com",
+                "description": "Test feed",
+                "language": "en",
+                "description_blocks_by_kind": {
+                    "weekly_overview": ["weekly_overview_summary", "weekly_overview_key_points"],
+                },
+            },
+            overrides={},
+            public_link_template="https://example.com/{file_id}",
+            weekly_overview_summaries_cfg={"warn_on_incomplete_sources": True},
+            weekly_overview_summaries={
+                "by_name": {
+                    "W01L1 - Alle kilder [EN].mp3": {
+                        "summary_lines": ["Ugesamling linje 1", "Ugesamling linje 2"],
+                        "key_points": ["Punkt A", "Punkt B", "Punkt C"],
+                    }
+                }
+            },
+        )
+        self.assertIn("Ugesamling linje 1\nUgesamling linje 2", episode["description"])
+        self.assertIn("\n\nKey points:\n- Punkt A\n- Punkt B\n- Punkt C", episode["description"])
+
+    def test_weekly_overview_missing_summary_falls_back_to_descriptor_subject(self):
+        mod = _load_feed_module()
+        file_entry = {
+            "id": "file1",
+            "name": "W01L1 - Alle kilder [EN].mp3",
+            "createdTime": "2026-02-02T08:00:00+00:00",
+        }
+        episode = mod.build_episode_entry(
+            file_entry=file_entry,
+            feed_config={
+                "title": "Personlighedspsykologi (EN)",
+                "link": "https://example.com",
+                "description": "Test feed",
+                "language": "en",
+                "description_blocks_by_kind": {
+                    "weekly_overview": ["weekly_overview_summary"],
+                },
+            },
+            overrides={},
+            public_link_template="https://example.com/{file_id}",
+            weekly_overview_summaries_cfg={"warn_on_incomplete_sources": True},
+            weekly_overview_summaries={"by_name": {}},
+        )
+        self.assertTrue(episode["description"].startswith("Alle kilder"))
+
+    def test_weekly_overview_warns_when_source_coverage_is_incomplete(self):
+        mod = _load_feed_module()
+        file_entry = {
+            "id": "file1",
+            "name": "W01L1 - Alle kilder [EN].mp3",
+            "createdTime": "2026-02-02T08:00:00+00:00",
+        }
+        stderr = io.StringIO()
+        with redirect_stderr(stderr):
+            mod.build_episode_entry(
+                file_entry=file_entry,
+                feed_config={
+                    "title": "Personlighedspsykologi (EN)",
+                    "link": "https://example.com",
+                    "description": "Test feed",
+                    "language": "en",
+                    "description_blocks_by_kind": {
+                        "weekly_overview": ["weekly_overview_summary"],
+                    },
+                },
+                overrides={},
+                public_link_template="https://example.com/{file_id}",
+                weekly_overview_summaries_cfg={"warn_on_incomplete_sources": True},
+                weekly_overview_summaries={
+                    "by_name": {
+                        "W01L1 - Alle kilder [EN].mp3": {
+                            "summary_lines": ["Ugesamling linje"],
+                            "meta": {
+                                "source_count_expected": 5,
+                                "source_count_covered": 3,
+                            },
+                        }
+                    }
+                },
+            )
+        self.assertIn("coverage gap", stderr.getvalue())
+
     def test_missing_reading_summary_falls_back_to_descriptor_subject(self):
         mod = _load_feed_module()
         file_entry = {
@@ -1412,7 +1613,12 @@ class AutoSpecMatchingTests(unittest.TestCase):
         mod = _load_feed_module()
         mod.validate_feed_block_config(
             {
-                "description_blocks": ["reading_summary", "reading_key_points"],
+                "description_blocks": [
+                    "reading_summary",
+                    "reading_key_points",
+                    "weekly_overview_summary",
+                    "weekly_overview_key_points",
+                ],
             }
         )
 

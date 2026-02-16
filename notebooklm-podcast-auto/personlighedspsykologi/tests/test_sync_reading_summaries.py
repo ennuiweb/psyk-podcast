@@ -273,6 +273,157 @@ class SyncReadingSummariesTests(unittest.TestCase):
             self.assertEqual(rc, 0)
             self.assertIn("No local reading/brief/tts episode files found", buffer.getvalue())
 
+    def test_discover_weekly_overview_keys_includes_only_alle_kilder_audio(self):
+        mod = _load_module()
+        with tempfile.TemporaryDirectory() as tmpdir:
+            output_root = Path(tmpdir) / "output"
+            week_dir = output_root / "W01L1"
+            _touch(week_dir / "W01L1 - Foo [EN].mp3")
+            _touch(week_dir / "W01L1 - Alle kilder [EN] {type=audio hash=1234}.mp3")
+            _touch(week_dir / "W01L1 - All sources [EN].wav")
+
+            keys, duplicates = mod.discover_weekly_overview_keys(output_root, ["W1"])
+            self.assertEqual(duplicates, [])
+            self.assertEqual(
+                set(keys),
+                {
+                    "W01L1 - Alle kilder [EN].mp3",
+                    "W01L1 - All sources [EN].wav",
+                },
+            )
+
+    def test_sync_weekly_overview_cache_preserves_manual_text_and_refreshes_meta(self):
+        mod = _load_module()
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            sources_root = root / "sources"
+            source_dir = sources_root / "W01L1 Topic"
+            source_dir.mkdir(parents=True)
+            (source_dir / "A.pdf").write_text("a", encoding="utf-8")
+            (source_dir / "B.pdf").write_text("b", encoding="utf-8")
+
+            reading_by_name = {
+                "W01L1 - Reading A [EN].mp3": {
+                    "summary_lines": ["Reading summary A"],
+                    "key_points": ["Reading point A"],
+                    "meta": {"source_file": str(source_dir / "A.pdf")},
+                },
+                "[Brief] W01L1 - Reading A [EN].mp3": {
+                    "summary_lines": ["Brief summary A should lose"],
+                    "key_points": ["Brief point A should lose"],
+                    "meta": {"source_file": str(source_dir / "A.pdf")},
+                },
+                "[TTS] W01L1 - Reading B.wav": {
+                    "summary_lines": ["Reading summary B"],
+                    "key_points": ["Reading point B"],
+                    "meta": {"source_file": str(source_dir / "B.pdf")},
+                },
+            }
+            weekly_by_name = {
+                "W01L1 - Alle kilder [EN].mp3": {
+                    "summary_lines": ["Manuel dansk linje"],
+                    "key_points": ["Manuelt punkt"],
+                    "meta": {"status": "manual_da"},
+                }
+            }
+
+            added, updated, missing = mod.sync_weekly_overview_cache(
+                weekly_by_name,
+                ["W01L1 - Alle kilder [EN].mp3"],
+                reading_by_name,
+                sources_root=sources_root,
+                summary_lines_max=4,
+                key_points_max=5,
+                repo_root=root,
+            )
+            self.assertEqual(added, [])
+            self.assertEqual(updated, ["W01L1 - Alle kilder [EN].mp3"])
+            self.assertEqual(missing, [])
+            entry = weekly_by_name["W01L1 - Alle kilder [EN].mp3"]
+            self.assertEqual(entry["summary_lines"], ["Manuel dansk linje"])
+            self.assertEqual(entry["key_points"], ["Manuelt punkt"])
+            self.assertEqual(entry["meta"]["source_count_expected"], 2)
+            self.assertEqual(entry["meta"]["source_count_covered"], 2)
+            self.assertEqual(
+                entry["meta"]["draft_from_reading_summaries"]["summary_lines"],
+                ["Reading summary A", "Reading summary B"],
+            )
+            self.assertEqual(
+                entry["meta"]["draft_from_reading_summaries"]["key_points"],
+                ["Reading point A", "Reading point B"],
+            )
+
+    def test_weekly_validation_report_includes_expected_warning_categories(self):
+        mod = _load_module()
+        weekly_keys = [
+            "W01L1 - Alle kilder [EN].mp3",
+            "W01L2 - Alle kilder [EN].mp3",
+            "W01L3 - Alle kilder [EN].mp3",
+        ]
+        weekly_by_name = {
+            "W01L2 - Alle kilder [EN].mp3": {
+                "summary_lines": ["Only one line"],
+                "key_points": ["A", "B", "C"],
+                "meta": {"source_count_expected": 4, "source_count_covered": 2},
+            },
+            "W01L3 - Alle kilder [EN].mp3": {
+                "summary_lines": ["This weekly summary is still in English."],
+                "key_points": ["This point is English", "Another English point", "Third English point"],
+                "meta": {"source_count_expected": 2, "source_count_covered": 2},
+            },
+        }
+        report = mod._build_weekly_validation_report(
+            weekly_by_name,
+            weekly_keys,
+            summary_lines_min=2,
+            key_points_min=3,
+        )
+        self.assertEqual(report["weekly_missing_entry"], ["W01L1 - Alle kilder [EN].mp3"])
+        self.assertIn("W01L2 - Alle kilder [EN].mp3", report["weekly_incomplete_summary"])
+        self.assertIn("W01L2 - Alle kilder [EN].mp3 (2/4)", report["weekly_source_coverage_gap"])
+        self.assertIn("W01L3 - Alle kilder [EN].mp3", report["weekly_non_danish"])
+
+    def test_sync_weekly_overview_dry_run_does_not_write_weekly_cache(self):
+        mod = _load_module()
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            output_root = root / "output"
+            week_dir = output_root / "W01L1"
+            _touch(week_dir / "W01L1 - Alle kilder [EN].mp3")
+
+            summaries_file = root / "reading_summaries.json"
+            summaries_file.write_text(
+                json.dumps({"by_name": {}}),
+                encoding="utf-8",
+            )
+            weekly_summaries_file = root / "weekly_overview_summaries.json"
+            sources_root = root / "sources"
+            (sources_root / "W01L1 Topic").mkdir(parents=True)
+
+            with mock.patch.object(
+                sys,
+                "argv",
+                [
+                    "sync_reading_summaries.py",
+                    "--week",
+                    "W01L1",
+                    "--output-root",
+                    str(output_root),
+                    "--summaries-file",
+                    str(summaries_file),
+                    "--weekly-summaries-file",
+                    str(weekly_summaries_file),
+                    "--sources-root",
+                    str(sources_root),
+                    "--sync-weekly-overview",
+                    "--dry-run",
+                ],
+            ):
+                rc = mod.main()
+
+            self.assertEqual(rc, 0)
+            self.assertFalse(weekly_summaries_file.exists())
+
 
 if __name__ == "__main__":
     unittest.main()

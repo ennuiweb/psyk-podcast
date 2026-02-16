@@ -926,6 +926,7 @@ class AutoSpec:
         return {
             "published_at": scheduled.isoformat(),
             "suppress_week_prefix": True,
+            "unassigned_tail": True,
             "week_reference_year": self.week_reference_year,
         }
 
@@ -1419,6 +1420,8 @@ DESCRIPTION_BLOCKS_ALLOWED = {
     "quiz_url",
     "reading_summary",
     "reading_key_points",
+    "weekly_overview_summary",
+    "weekly_overview_key_points",
 }
 DEFAULT_TITLE_BLOCKS = ["semester_week_lecture", "subject_or_type", "week_range"]
 DEFAULT_DESCRIPTION_BLOCKS = ["descriptor_subject", "topic", "lecture", "semester_week", "quiz"]
@@ -1759,6 +1762,10 @@ def _sort_feed_episodes(
 
     grouped: Dict[Tuple[Any, ...], List[Tuple[int, Dict[str, Any]]]] = {}
     for index, item in enumerate(items):
+        if bool(item.get("sort_tail")):
+            group_key = ("tail",)
+            grouped.setdefault(group_key, []).append((index, item))
+            continue
         sort_week = item.get("sort_week")
         sort_lecture = item.get("sort_lecture")
         if (
@@ -1772,15 +1779,18 @@ def _sort_feed_episodes(
             group_key = ("single", index)
         grouped.setdefault(group_key, []).append((index, item))
 
-    grouped_entries: List[Tuple[float, int, Tuple[Any, ...], List[Tuple[int, Dict[str, Any]]]]] = []
+    grouped_entries: List[
+        Tuple[int, float, int, Tuple[Any, ...], List[Tuple[int, Dict[str, Any]]]]
+    ] = []
     for group_key, values in grouped.items():
         anchor = max(_published_sort_value(item) for _, item in values)
         first_seen_index = min(index for index, _ in values)
-        grouped_entries.append((anchor, first_seen_index, group_key, values))
-    grouped_entries.sort(key=lambda entry: (-entry[0], entry[1]))
+        group_rank = 1 if group_key[0] == "tail" else 0
+        grouped_entries.append((group_rank, anchor, first_seen_index, group_key, values))
+    grouped_entries.sort(key=lambda entry: (entry[0], -entry[1], entry[2]))
 
     ordered: List[Dict[str, Any]] = []
-    for _, _, group_key, values in grouped_entries:
+    for _, _, _, group_key, values in grouped_entries:
         if group_key[0] == "block":
             values.sort(
                 key=lambda pair: (
@@ -1853,6 +1863,64 @@ def load_reading_summaries(path: Path) -> Dict[str, Any]:
     return {"by_name": normalized}
 
 
+def load_weekly_overview_summaries(path: Path) -> Dict[str, Any]:
+    payload = load_json(path)
+    if not isinstance(payload, dict):
+        raise ValueError("weekly_overview_summaries file must be a JSON object.")
+
+    raw_by_name = payload.get("by_name")
+    if raw_by_name is None:
+        return {"by_name": {}}
+    if not isinstance(raw_by_name, dict):
+        raise ValueError("weekly_overview_summaries.by_name must be an object.")
+
+    normalized: Dict[str, Dict[str, Any]] = {}
+    for raw_name, raw_entry in raw_by_name.items():
+        if not isinstance(raw_name, str) or not raw_name.strip():
+            print("Warning: skipping invalid weekly_overview_summaries.by_name key.", file=sys.stderr)
+            continue
+        if not isinstance(raw_entry, dict):
+            print(
+                f"Warning: weekly_overview_summaries entry for '{raw_name}' must be an object; skipping.",
+                file=sys.stderr,
+            )
+            continue
+
+        summary_lines: List[str] = []
+        raw_summary_lines = raw_entry.get("summary_lines")
+        if isinstance(raw_summary_lines, list):
+            for value in raw_summary_lines:
+                if not isinstance(value, str):
+                    continue
+                cleaned = value.strip()
+                if cleaned:
+                    summary_lines.append(cleaned)
+
+        key_points: List[str] = []
+        raw_key_points = raw_entry.get("key_points")
+        if isinstance(raw_key_points, list):
+            for value in raw_key_points:
+                if not isinstance(value, str):
+                    continue
+                cleaned = value.strip()
+                if cleaned:
+                    key_points.append(cleaned)
+
+        normalized_entry: Dict[str, Any] = {}
+        if summary_lines:
+            normalized_entry["summary_lines"] = summary_lines
+        if key_points:
+            normalized_entry["key_points"] = key_points
+        meta = raw_entry.get("meta")
+        if isinstance(meta, dict):
+            normalized_entry["meta"] = meta
+
+        if normalized_entry:
+            normalized[raw_name.strip()] = normalized_entry
+
+    return {"by_name": normalized}
+
+
 def build_episode_entry(
     file_entry: Dict[str, Any],
     feed_config: Dict[str, Any],
@@ -1866,6 +1934,8 @@ def build_episode_entry(
     quiz_links: Optional[Dict[str, Any]] = None,
     reading_summaries_cfg: Optional[Dict[str, Any]] = None,
     reading_summaries: Optional[Dict[str, Any]] = None,
+    weekly_overview_summaries_cfg: Optional[Dict[str, Any]] = None,
+    weekly_overview_summaries: Optional[Dict[str, Any]] = None,
 ) -> Dict[str, Any]:
     meta: Dict[str, Any] = {}
     if auto_meta:
@@ -1921,6 +1991,10 @@ def build_episode_entry(
         match = re.search(r"Uge\s+(\d+)", week_range_label)
         if match:
             week_number = int(match.group(1))
+    is_unassigned_tail = bool(meta.get("unassigned_tail"))
+    if is_unassigned_tail:
+        week_number = None
+        week_range_label = None
 
     semester_week_label = feed_config.get("semester_week_label")
     if not isinstance(semester_week_label, str) or not semester_week_label.strip():
@@ -1963,6 +2037,7 @@ def build_episode_entry(
     else:
         type_label = "Reading"
     episode_kind = "brief" if is_brief else ("weekly_overview" if is_weekly_overview else "reading")
+    skip_audio_category_prefix = False
 
     quiz_url = None
     if quiz_cfg and quiz_links and file_entry.get("name"):
@@ -1978,6 +2053,18 @@ def build_episode_entry(
                         base += "/"
                     relative = str(rel_path).lstrip("/")
                     quiz_url = base + quote(relative, safe="/")
+
+    if is_unassigned_tail and not meta.get("title"):
+        subject = (display_subject or cleaned_title or raw_title).strip()
+        title_prefix = AUDIO_CATEGORY_PREFIXES.get(audio_category) if audio_category else None
+        if title_prefix and subject:
+            meta["title"] = f"{title_prefix} · {subject}"
+            skip_audio_category_prefix = True
+        elif title_prefix:
+            meta["title"] = title_prefix
+            skip_audio_category_prefix = True
+        else:
+            meta["title"] = subject or raw_title
 
     if not meta.get("title"):
         semester_week_lecture = None
@@ -2024,7 +2111,7 @@ def build_episode_entry(
             title_value = f"{prefix} {title_value}"
     title_value = _strip_language_tags(title_value, strip_brief=not is_brief)
     audio_category_prefix_position = _resolve_audio_category_prefix_position(feed_config)
-    if audio_category:
+    if audio_category and not skip_audio_category_prefix:
         title_prefix = AUDIO_CATEGORY_PREFIXES.get(audio_category)
         if title_prefix:
             title_value = _apply_audio_category_prefix(
@@ -2062,6 +2149,8 @@ def build_episode_entry(
         summaries_enabled_for_kind = episode_kind in enabled_kinds
         reading_summary_value: Optional[str] = None
         reading_key_points_value: Optional[str] = None
+        weekly_overview_summary_value: Optional[str] = None
+        weekly_overview_key_points_value: Optional[str] = None
         if summaries_enabled_for_kind and isinstance(reading_summaries, dict) and file_entry.get("name"):
             by_name = reading_summaries.get("by_name")
             if isinstance(by_name, dict):
@@ -2083,6 +2172,45 @@ def build_episode_entry(
                                     key_points_label = raw_label.strip()
                             bullets = "\n".join(f"- {point}" for point in points)
                             reading_key_points_value = f"\n\n{key_points_label}:\n{bullets}"
+        if episode_kind == "weekly_overview" and isinstance(weekly_overview_summaries, dict) and file_entry.get("name"):
+            by_name = weekly_overview_summaries.get("by_name")
+            if isinstance(by_name, dict):
+                entry = _lookup_by_name_with_cfg_fallback(by_name, file_entry["name"])
+                if isinstance(entry, dict):
+                    summary_lines = entry.get("summary_lines")
+                    if isinstance(summary_lines, list):
+                        lines = [line.strip() for line in summary_lines if isinstance(line, str) and line.strip()]
+                        if lines:
+                            weekly_overview_summary_value = "\n".join(lines)
+                    key_points = entry.get("key_points")
+                    if isinstance(key_points, list):
+                        points = [point.strip() for point in key_points if isinstance(point, str) and point.strip()]
+                        if points:
+                            key_points_label = "Key points"
+                            if isinstance(reading_summaries_cfg, dict):
+                                raw_label = reading_summaries_cfg.get("key_points_label")
+                                if isinstance(raw_label, str) and raw_label.strip():
+                                    key_points_label = raw_label.strip()
+                            bullets = "\n".join(f"- {point}" for point in points)
+                            weekly_overview_key_points_value = f"\n\n{key_points_label}:\n{bullets}"
+                    if isinstance(weekly_overview_summaries_cfg, dict) and weekly_overview_summaries_cfg.get(
+                        "warn_on_incomplete_sources", True
+                    ):
+                        meta_block = entry.get("meta")
+                        if isinstance(meta_block, dict):
+                            expected = meta_block.get("source_count_expected")
+                            covered = meta_block.get("source_count_covered")
+                            if (
+                                isinstance(expected, int)
+                                and isinstance(covered, int)
+                                and expected > 0
+                                and covered < expected
+                            ):
+                                print(
+                                    f"Warning: weekly_overview_summaries coverage gap for "
+                                    f"'{file_entry.get('name', '')}': covered {covered}/{expected}.",
+                                    file=sys.stderr,
+                                )
         description_block_values = {
             "descriptor_subject": descriptor_subject,
             "descriptor": descriptor,
@@ -2100,6 +2228,14 @@ def build_episode_entry(
                 else None
             ),
             "reading_key_points": reading_key_points_value if summaries_enabled_for_kind else None,
+            "weekly_overview_summary": (
+                weekly_overview_summary_value or descriptor_subject
+                if episode_kind == "weekly_overview"
+                else None
+            ),
+            "weekly_overview_key_points": (
+                weekly_overview_key_points_value if episode_kind == "weekly_overview" else None
+            ),
         }
         description_blocks = _resolve_blocks_for_kind(
             feed_config,
@@ -2149,6 +2285,7 @@ def build_episode_entry(
         "is_tts": audio_category == "lydbog",
         "sort_week": sort_week_number,
         "sort_lecture": lecture_number,
+        "sort_tail": is_unassigned_tail,
         "audio_url": public_link_template.format(file_id=file_entry["id"], file_name=file_entry["name"]),
     }
 
@@ -2342,6 +2479,63 @@ def main() -> None:
         else:
             print(
                 "Warning: reading_summaries.file not configured; summary injection disabled.",
+                file=sys.stderr,
+            )
+
+    weekly_overview_summaries_cfg_raw = config.get("weekly_overview_summaries")
+    weekly_overview_summaries_cfg: Dict[str, Any] = {}
+    weekly_overview_summaries: Optional[Dict[str, Any]] = None
+    if weekly_overview_summaries_cfg_raw is not None and not isinstance(
+        weekly_overview_summaries_cfg_raw, dict
+    ):
+        print("Warning: weekly_overview_summaries must be a JSON object; ignoring.", file=sys.stderr)
+    elif isinstance(weekly_overview_summaries_cfg_raw, dict):
+        warn_on_incomplete_sources_raw = weekly_overview_summaries_cfg_raw.get("warn_on_incomplete_sources", True)
+        warn_on_incomplete_sources = (
+            warn_on_incomplete_sources_raw
+            if isinstance(warn_on_incomplete_sources_raw, bool)
+            else True
+        )
+        language = weekly_overview_summaries_cfg_raw.get("language")
+        if not isinstance(language, str) or not language.strip():
+            language = "da"
+        mode = weekly_overview_summaries_cfg_raw.get("mode")
+        if not isinstance(mode, str) or not mode.strip():
+            mode = "manual_cache_from_reading_summaries"
+        weekly_overview_summaries_cfg = {
+            "warn_on_incomplete_sources": warn_on_incomplete_sources,
+            "language": language.strip(),
+            "mode": mode.strip(),
+        }
+
+        weekly_summaries_file = weekly_overview_summaries_cfg_raw.get("file")
+        if weekly_summaries_file:
+            weekly_summaries_path = Path(str(weekly_summaries_file)).expanduser()
+            if not weekly_summaries_path.is_absolute():
+                candidates = [weekly_summaries_path, args.config.parent / weekly_summaries_path]
+                resolved = next((path for path in candidates if path.exists()), None)
+                if resolved is not None:
+                    weekly_summaries_path = resolved.resolve()
+                elif str(weekly_summaries_path).startswith("shows/"):
+                    weekly_summaries_path = weekly_summaries_path.resolve()
+                else:
+                    weekly_summaries_path = (args.config.parent / weekly_summaries_path).resolve()
+            if weekly_summaries_path.exists():
+                try:
+                    weekly_overview_summaries = load_weekly_overview_summaries(weekly_summaries_path)
+                except Exception as exc:
+                    print(
+                        f"Warning: failed to load weekly overview summaries from {weekly_summaries_path}: {exc}",
+                        file=sys.stderr,
+                    )
+            else:
+                print(
+                    f"Warning: weekly overview summaries file not found: {weekly_summaries_path}",
+                    file=sys.stderr,
+                )
+        else:
+            print(
+                "Warning: weekly_overview_summaries.file not configured; weekly summary injection disabled.",
                 file=sys.stderr,
             )
 
@@ -2597,6 +2791,8 @@ def main() -> None:
                 quiz_links=quiz_links,
                 reading_summaries_cfg=reading_summaries_cfg,
                 reading_summaries=reading_summaries,
+                weekly_overview_summaries_cfg=weekly_overview_summaries_cfg,
+                weekly_overview_summaries=weekly_overview_summaries,
             )
         )
 

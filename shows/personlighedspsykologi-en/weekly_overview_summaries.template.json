@@ -1,0 +1,39 @@
+{
+  "by_name": {
+    "W11L2 - Alle kilder [EN].mp3": {
+      "summary_lines": [
+        "Dansk linje 1",
+        "Dansk linje 2",
+        "Dansk linje 3"
+      ],
+      "key_points": [
+        "Dansk punkt 1",
+        "Dansk punkt 2",
+        "Dansk punkt 3",
+        "Dansk punkt 4"
+      ],
+      "meta": {
+        "status": "manual_da",
+        "lecture_key": "W11L2",
+        "source_count_expected": 5,
+        "source_count_covered": 5,
+        "source_files_expected": [
+          "notebooklm-podcast-auto/personlighedspsykologi/sources/W11L2 Narrativitet, kultur og mening/source-a.pdf"
+        ],
+        "source_files_covered": [
+          "notebooklm-podcast-auto/personlighedspsykologi/sources/W11L2 Narrativitet, kultur og mening/source-a.pdf"
+        ],
+        "missing_source_files": [],
+        "draft_from_reading_summaries": {
+          "summary_lines": [
+            "Draft line 1"
+          ],
+          "key_points": [
+            "Draft point 1"
+          ]
+        },
+        "method": "aggregate_reading_then_manual_da_v1"
+      }
+    }
+  }
+}

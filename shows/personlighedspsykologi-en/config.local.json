@@ -45,6 +45,10 @@
     "link": "https://github.com/ennuiweb/psyk-podcast",
     "self_link": "https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/personlighedspsykologi-en/feeds/rss.xml",
     "description": "Personlighedspsykologi (F26) podcast feed.",
+    "pubdate_year_rewrite": {
+      "from": 2026,
+      "to": 2025
+    },
     "semester_week_start_date": "2026-02-02",
     "semester_week_label": "Semesteruge",
     "semester_week_description_label": "Semesteruge",

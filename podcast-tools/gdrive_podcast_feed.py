@@ -847,16 +847,23 @@ class AutoSpec:
             bool(re.search(r"\bw\s*\d+\s*l\s*\d+\b", candidate, flags=re.IGNORECASE))
             for candidate in candidates
         )
+        week_context_pattern = re.compile(r"\bw\s*\d+\b|\bweek\s*\d+\b", re.IGNORECASE)
 
         for token in tokens:
             if not token:
                 continue
             needle = token.lower()
+            week_only = is_week_only_token(needle)
             if has_lecture_token and is_week_only_token(needle):
                 # When a lecture token is present (e.g. "W06L1"), ignore ambiguous
                 # week-only tokens ("w6", "week 6", "6") that can misclassify.
                 continue
             for candidate in candidates:
+                if week_only:
+                    candidate_compact = re.sub(r"\s+", " ", candidate.strip().casefold())
+                    has_week_context = bool(week_context_pattern.search(candidate))
+                    if candidate_compact != needle and not has_week_context:
+                        continue
                 if contains_bounded(candidate, needle):
                     return True
         return False
@@ -895,7 +902,9 @@ class AutoSpec:
                     duplicate_index = self._unassigned_sequence_counts.get(sequence_number, 0)
                     offset_units = base_slot + duplicate_index
                     offset_minutes = offset_units * self._default_increment_minutes
-                    scheduled = base_datetime + dt.timedelta(minutes=offset_minutes)
+                    # Keep all unassigned sequence items before the first scheduled course week.
+                    # This guarantees they stay at the tail of feeds sorted by recency.
+                    scheduled = base_datetime - dt.timedelta(minutes=offset_minutes)
                     self._unassigned_sequence_counts[sequence_number] = duplicate_index + 1
                     self._unassigned_sequence_allocations[seq_key] = scheduled
             if scheduled is None:
@@ -924,11 +933,17 @@ class AutoSpec:
     def _extract_sequence_number(file_name: Optional[str]) -> Optional[int]:
         if not file_name:
             return None
-        stem = file_name.rsplit(".", 1)[0]
-        stem = stem.rsplit(" - ", 1)[0]
-        match = re.match(r"\D*(\d+)", stem.strip())
-        if not match:
+        stem = _strip_cfg_tags(file_name.rsplit(".", 1)[0]).strip()
+        if not stem:
             return None
+        chapter_match = re.search(r"\b(?:kapitel|chapter)\s*0*(\d{1,3})\b", stem, re.IGNORECASE)
+        if chapter_match:
+            match = chapter_match
+        else:
+            # Generic fallback for files that lead with an ordering token like "01 Foo".
+            match = re.match(r"^\D*?(\d{1,3})\b", stem)
+            if not match:
+                return None
         try:
             return int(match.group(1))
         except ValueError:  # pragma: no cover - defensive
@@ -1559,10 +1574,42 @@ def _validate_block_list(
     return blocks
 
 
+def _resolve_pubdate_year_rewrite(feed_config: Dict[str, Any]) -> Optional[Tuple[int, int]]:
+    raw_value = feed_config.get("pubdate_year_rewrite")
+    if raw_value is None:
+        return None
+    if not isinstance(raw_value, dict):
+        raise ValueError(
+            "feed.pubdate_year_rewrite must be an object with integer 'from' and 'to' fields."
+        )
+    try:
+        from_year = int(raw_value["from"])
+        to_year = int(raw_value["to"])
+    except KeyError as exc:
+        raise ValueError(
+            "feed.pubdate_year_rewrite must include both 'from' and 'to' fields."
+        ) from exc
+    except (TypeError, ValueError) as exc:
+        raise ValueError(
+            "feed.pubdate_year_rewrite 'from' and 'to' must be integers."
+        ) from exc
+    if from_year < 1 or to_year < 1:
+        raise ValueError("feed.pubdate_year_rewrite values must be positive integers.")
+    return from_year, to_year
+
+
+def _rewrite_pubdate_year(pubdate_value: str, rewrite: Optional[Tuple[int, int]]) -> str:
+    if not rewrite:
+        return pubdate_value
+    from_year, to_year = rewrite
+    return re.sub(rf"\b{from_year}\b", str(to_year), pubdate_value, count=1)
+
+
 def validate_feed_block_config(feed_config: Dict[str, Any]) -> None:
     if not isinstance(feed_config, dict):
         raise ValueError("feed must be a JSON object.")
     _resolve_audio_category_prefix_position(feed_config)
+    _resolve_pubdate_year_rewrite(feed_config)
     if "reading_description_mode" in feed_config:
         raise ValueError(
             "feed.reading_description_mode is deprecated. "
@@ -2081,6 +2128,10 @@ def build_episode_entry(
 
     explicit_default = feed_config.get("default_explicit", False)
     duration = meta.get("duration")
+    pubdate_value = _rewrite_pubdate_year(
+        format_rfc2822(published_at),
+        _resolve_pubdate_year_rewrite(feed_config),
+    )
 
     return {
         "guid": meta.get("guid") or file_entry["id"],
@@ -2088,7 +2139,7 @@ def build_episode_entry(
         "description": meta.get("description") or meta.get("summary") or base_title,
         "link": meta.get("link") or feed_config.get("link"),
         "published_at": published_at,
-        "pubDate": format_rfc2822(published_at),
+        "pubDate": pubdate_value,
         "mimeType": file_entry.get("mimeType", "audio/mpeg"),
         "size": file_entry.get("size"),
         "duration": duration,

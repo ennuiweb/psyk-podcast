@@ -21,6 +21,12 @@ class AutoSpecMatchingTests(unittest.TestCase):
         self.assertFalse(mod.AutoSpec._matches(["week 6"], ["week 6l1"]))
         self.assertFalse(mod.AutoSpec._matches(["6"], ["w6l1"]))
 
+    def test_week_only_token_requires_week_context(self):
+        mod = _load_feed_module()
+        self.assertFalse(mod.AutoSpec._matches(["12"], ["Grundbog kapitel 12"]))
+        self.assertTrue(mod.AutoSpec._matches(["12"], ["week 12"]))
+        self.assertTrue(mod.AutoSpec._matches(["12"], ["12"]))
+
     def test_lecture_token_prefers_specific_rule(self):
         mod = _load_feed_module()
         spec = {
@@ -403,6 +409,77 @@ class AutoSpecMatchingTests(unittest.TestCase):
             re.compile(r"Forelæsning\s+\d+\s*·\s*Semesteruge\s+\d+", re.IGNORECASE),
         )
 
+    def test_build_episode_entry_rewrites_pubdate_year_when_configured(self):
+        mod = _load_feed_module()
+        file_entry = {
+            "id": "file1",
+            "name": "W01L1 - Foo [EN].mp3",
+            "createdTime": "2026-02-02T08:00:00+01:00",
+        }
+        feed_config = {
+            "title": "Personlighedspsykologi (EN)",
+            "link": "https://example.com",
+            "description": "Test feed",
+            "language": "en",
+            "pubdate_year_rewrite": {
+                "from": 2026,
+                "to": 2025,
+            },
+        }
+        episode = mod.build_episode_entry(
+            file_entry=file_entry,
+            feed_config=feed_config,
+            overrides={},
+            public_link_template="https://example.com/{file_id}",
+        )
+        self.assertIn(" 2025 ", episode["pubDate"])
+        self.assertNotIn(" 2026 ", episode["pubDate"])
+        self.assertEqual(episode["published_at"].year, 2026)
+
+    def test_build_feed_document_does_not_rewrite_last_build_date(self):
+        mod = _load_feed_module()
+        published_dt = mod.parse_datetime("2026-02-02T08:00:00+00:00")
+        episode = {
+            "guid": "episode-1",
+            "title": "Episode",
+            "description": "Episode",
+            "link": "https://example.com",
+            "published_at": published_dt,
+            "pubDate": "Mon, 02 Feb 2025 08:00:00 +0000",
+            "mimeType": "audio/mpeg",
+            "size": 123,
+            "duration": None,
+            "explicit": "false",
+            "image": None,
+            "episode_kind": "reading",
+            "is_tts": False,
+            "sort_week": 1,
+            "sort_lecture": 1,
+            "audio_url": "https://example.com/episode-1.mp3",
+        }
+        feed = mod.build_feed_document(
+            episodes=[episode],
+            feed_config={
+                "title": "Personlighedspsykologi",
+                "link": "https://example.com",
+                "description": "Test feed",
+                "language": "en",
+                "pubdate_year_rewrite": {"from": 2026, "to": 2025},
+            },
+            last_build=published_dt,
+        )
+        from xml.etree import ElementTree as ET
+
+        root = ET.fromstring(ET.tostring(feed, encoding="unicode"))
+        self.assertEqual(
+            root.findtext("./channel/lastBuildDate"),
+            mod.format_rfc2822(published_dt),
+        )
+        self.assertEqual(
+            root.findtext("./channel/item/pubDate"),
+            "Mon, 02 Feb 2025 08:00:00 +0000",
+        )
+
     def test_generated_entry_strips_unpadded_week_token_from_subject(self):
         mod = _load_feed_module()
         file_entry = {
@@ -464,6 +541,102 @@ class AutoSpecMatchingTests(unittest.TestCase):
         self.assertNotIn("Oplæst", episode["description"])
         self.assertNotRegex(episode["title"], re.compile(r"\bW\d{1,2}L\d+\b"))
         self.assertNotRegex(episode["description"], re.compile(r"\bW\d{1,2}L\d+\b"))
+
+    def test_extract_sequence_number_prefers_chapter_and_ignores_cfg_digits(self):
+        mod = _load_feed_module()
+        chapter_file = (
+            "[TTS] Grundbog kapitel 13 - Positiv psykologi "
+            "{type=tts voice=da-DK__chirp3_hd__da-DK-Chirp3-HD-Algenib date=2026-02-14}.wav"
+        )
+        forord_file = (
+            "[TTS] Grundbog forord og resumé "
+            "{type=tts voice=da-DK__chirp3_hd__da-DK-Chirp3-HD-Algenib date=2026-02-14}.wav"
+        )
+        self.assertEqual(mod.AutoSpec._extract_sequence_number(chapter_file), 13)
+        self.assertIsNone(mod.AutoSpec._extract_sequence_number(forord_file))
+
+    def test_unassigned_sequence_items_stay_before_first_course_week(self):
+        mod = _load_feed_module()
+        spec = {
+            "year": 2026,
+            "week_reference_year": 2026,
+            "timezone": "Europe/Copenhagen",
+            "default_release": {"weekday": 1, "time": "08:00"},
+            "increment_minutes": 120,
+            "rules": [
+                {
+                    "iso_week": 6,
+                    "course_week": 1,
+                    "aliases": ["w01l1"],
+                    "topic": "Week 1 topic",
+                }
+            ],
+        }
+        autospec = mod.AutoSpec(spec)
+
+        chapter_02_meta = autospec.metadata_for(
+            {
+                "id": "u2",
+                "name": (
+                    "[TTS] Grundbog kapitel 02 - Trækpsykologi "
+                    "{type=tts voice=da-DK__chirp3_hd__da-DK-Chirp3-HD-Algenib date=2026-02-14}.wav"
+                ),
+            },
+            ["grundbog-tts"],
+        )
+        chapter_13_meta = autospec.metadata_for(
+            {
+                "id": "u13",
+                "name": (
+                    "[TTS] Grundbog kapitel 13 - Positiv psykologi "
+                    "{type=tts voice=da-DK__chirp3_hd__da-DK-Chirp3-HD-Algenib date=2026-02-14}.wav"
+                ),
+            },
+            ["grundbog-tts"],
+        )
+
+        self.assertIsNotNone(chapter_02_meta)
+        self.assertIsNotNone(chapter_13_meta)
+
+        chapter_02_date = mod.parse_datetime(chapter_02_meta["published_at"])
+        chapter_13_date = mod.parse_datetime(chapter_13_meta["published_at"])
+
+        self.assertLess(chapter_02_date, autospec._earliest_rule_datetime)
+        self.assertLess(chapter_13_date, autospec._earliest_rule_datetime)
+        self.assertGreater(chapter_02_date, chapter_13_date)
+
+    def test_unassigned_chapter_number_does_not_match_iso_week_rule(self):
+        mod = _load_feed_module()
+        spec = {
+            "year": 2026,
+            "week_reference_year": 2026,
+            "timezone": "Europe/Copenhagen",
+            "default_release": {"weekday": 1, "time": "08:00"},
+            "increment_minutes": 120,
+            "rules": [
+                {
+                    "iso_week": 12,
+                    "course_week": 7,
+                    "aliases": ["w07l1"],
+                    "topic": "Week 7 topic",
+                }
+            ],
+        }
+        autospec = mod.AutoSpec(spec)
+        meta = autospec.metadata_for(
+            {
+                "id": "u12",
+                "name": (
+                    "[TTS] Grundbog kapitel 12 - Evolutionspsykologi "
+                    "{type=tts voice=da-DK__chirp3_hd__da-DK-Chirp3-HD-Algenib date=2026-02-14}.wav"
+                ),
+            },
+            ["grundbog-tts"],
+        )
+        self.assertIsNotNone(meta)
+        self.assertNotIn("course_week", meta)
+        self.assertNotIn("topic", meta)
+        self.assertLess(mod.parse_datetime(meta["published_at"]), autospec._earliest_rule_datetime)
 
     def test_generated_entry_maps_brief_to_kort_podcast_prefix(self):
         mod = _load_feed_module()
@@ -1257,6 +1430,16 @@ class AutoSpecMatchingTests(unittest.TestCase):
             r"feed\.audio_category_prefix_position has unknown value 'middle'",
         ):
             mod.validate_feed_block_config({"audio_category_prefix_position": "middle"})
+
+    def test_validate_feed_block_config_rejects_invalid_pubdate_year_rewrite(self):
+        mod = _load_feed_module()
+        with self.assertRaisesRegex(
+            ValueError,
+            r"feed\.pubdate_year_rewrite",
+        ):
+            mod.validate_feed_block_config(
+                {"pubdate_year_rewrite": {"from": "abc", "to": 2025}}
+            )
 
     def test_validate_feed_block_config_rejects_unknown_description_block(self):
         mod = _load_feed_module()

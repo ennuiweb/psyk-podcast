@@ -661,7 +661,7 @@ class AutoSpecMatchingTests(unittest.TestCase):
         self.assertEqual(mod.AutoSpec._extract_sequence_number(chapter_file), 13)
         self.assertIsNone(mod.AutoSpec._extract_sequence_number(forord_file))
 
-    def test_unassigned_sequence_items_stay_before_first_course_week(self):
+    def test_unassigned_sequence_items_stay_after_semester_weeks(self):
         mod = _load_feed_module()
         spec = {
             "year": 2026,
@@ -707,9 +707,11 @@ class AutoSpecMatchingTests(unittest.TestCase):
         chapter_02_date = mod.parse_datetime(chapter_02_meta["published_at"])
         chapter_13_date = mod.parse_datetime(chapter_13_meta["published_at"])
 
-        self.assertLess(chapter_02_date, autospec._earliest_rule_datetime)
-        self.assertLess(chapter_13_date, autospec._earliest_rule_datetime)
+        self.assertGreater(chapter_02_date, autospec._earliest_rule_datetime)
+        self.assertGreater(chapter_13_date, autospec._earliest_rule_datetime)
         self.assertGreater(chapter_02_date, chapter_13_date)
+        self.assertIn(chapter_02_date.month, {7, 8})
+        self.assertIn(chapter_13_date.month, {7, 8})
 
     def test_unassigned_chapter_number_does_not_match_iso_week_rule(self):
         mod = _load_feed_module()
@@ -742,7 +744,9 @@ class AutoSpecMatchingTests(unittest.TestCase):
         self.assertIsNotNone(meta)
         self.assertNotIn("course_week", meta)
         self.assertNotIn("topic", meta)
-        self.assertLess(mod.parse_datetime(meta["published_at"]), autospec._earliest_rule_datetime)
+        derived = mod.parse_datetime(meta["published_at"])
+        self.assertGreater(derived, autospec._earliest_rule_datetime)
+        self.assertIn(derived.month, {7, 8})
 
     def test_generated_entry_maps_brief_to_kort_podcast_prefix(self):
         mod = _load_feed_module()

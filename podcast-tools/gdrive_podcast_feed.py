@@ -756,6 +756,11 @@ class AutoSpec:
         self._unassigned_sequence_allocations: Dict[Tuple[int, Optional[str]], dt.datetime] = {}
         self._unassigned_sequence_counts: Dict[int, int] = {}
         self._unassigned_sequence_slot_span: int = 4
+        # Place unassigned tail episodes in late summer so they sort after semester weeks
+        # in clients that rely on pubDate chronology.
+        self._unassigned_tail_anchor_datetime = dt.datetime(
+            self.year, 8, 1, 8, 0, 0, tzinfo=self.timezone
+        )
 
     @staticmethod
     def _parse_time_token(token: str) -> Tuple[int, int, int]:
@@ -891,7 +896,7 @@ class AutoSpec:
         fallback_key = file_entry.get("id") or file_entry.get("name")
         scheduled = self._unassigned_allocations.get(fallback_key)
         if scheduled is None:
-            base_datetime = self._earliest_rule_datetime - dt.timedelta(days=7)
+            base_datetime = self._unassigned_tail_anchor_datetime
             voice = self._extract_voice(file_entry.get("name"))
             sequence_number = self._extract_sequence_number(file_entry.get("name"))
             if sequence_number is not None and sequence_number > 0:
@@ -909,19 +914,8 @@ class AutoSpec:
                     self._unassigned_sequence_allocations[seq_key] = scheduled
             if scheduled is None:
                 offset_minutes = self._unassigned_counter * self._default_increment_minutes
-                scheduled = base_datetime - dt.timedelta(minutes=offset_minutes)
+                scheduled = base_datetime + dt.timedelta(minutes=offset_minutes)
                 self._unassigned_counter += 1
-                modified_token = file_entry.get("modifiedTime")
-                if modified_token:
-                    try:
-                        candidate = parse_datetime(modified_token)
-                    except Exception:  # pragma: no cover - defensive
-                        candidate = None
-                    if candidate:
-                        if candidate.tzinfo is None:
-                            candidate = candidate.replace(tzinfo=self.timezone)
-                        if candidate < scheduled:
-                            scheduled = candidate
             self._unassigned_allocations[fallback_key] = scheduled
         return {
             "published_at": scheduled.isoformat(),

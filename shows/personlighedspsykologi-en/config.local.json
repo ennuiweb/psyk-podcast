@@ -67,6 +67,12 @@
     "ttl": 60,
     "sort_mode": "wxlx_kind_priority",
     "audio_category_prefix_position": "after_first_block",
+    "tail_grundbog_lydbog": {
+      "enabled": true,
+      "include_forord": true,
+      "chapter_start": 1,
+      "chapter_end": 14
+    },
     "description_blocks_by_kind": {
       "reading": [
         "reading_summary",

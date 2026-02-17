@@ -1421,6 +1421,15 @@ DEFAULT_TITLE_BLOCKS = ["semester_week_lecture", "subject_or_type", "week_range"
 DEFAULT_DESCRIPTION_BLOCKS = ["descriptor_subject", "topic", "lecture", "semester_week", "quiz"]
 FEED_SORT_MODES = {"published_at_desc", "wxlx_kind_priority"}
 DEFAULT_FEED_SORT_MODE = "published_at_desc"
+TAIL_GRUNDBOG_GUID_PREFIX = "#tail-grundbog-"
+GRUNDBOG_PATTERN = re.compile(r"\bgrundbog\b", re.IGNORECASE)
+GRUNDBOG_FORORD_PATTERN = re.compile(r"\bforord\b", re.IGNORECASE)
+GRUNDBOG_CHAPTER_PATTERN = re.compile(r"\b(?:kapitel|chapter)\s*0*(\d{1,3})\b", re.IGNORECASE)
+GRUNDBOG_SUBJECT_PATTERN = re.compile(r"\bgrundbog\b.*", re.IGNORECASE)
+TRAILING_WEEK_RANGE_PATTERN = re.compile(
+    r"(?:\s*·\s*)?\((?:uge|week)\s+[^)]*\)\s*$",
+    re.IGNORECASE,
+)
 
 
 def extract_week_lecture(
@@ -1602,11 +1611,60 @@ def _rewrite_pubdate_year(pubdate_value: str, rewrite: Optional[Tuple[int, int]]
     return re.sub(rf"\b{from_year}\b", str(to_year), pubdate_value, count=1)
 
 
+def _resolve_tail_grundbog_lydbog_config(feed_config: Dict[str, Any]) -> Dict[str, Any]:
+    defaults = {
+        "enabled": False,
+        "include_forord": True,
+        "chapter_start": 1,
+        "chapter_end": 14,
+    }
+    raw_value = feed_config.get("tail_grundbog_lydbog")
+    if raw_value is None:
+        return dict(defaults)
+    if not isinstance(raw_value, dict):
+        raise ValueError(
+            "feed.tail_grundbog_lydbog must be an object with "
+            "'enabled', 'include_forord', 'chapter_start', and 'chapter_end'."
+        )
+
+    resolved = dict(defaults)
+    bool_fields = ("enabled", "include_forord")
+    for key in bool_fields:
+        if key not in raw_value:
+            continue
+        value = raw_value.get(key)
+        if not isinstance(value, bool):
+            raise ValueError(f"feed.tail_grundbog_lydbog.{key} must be a boolean.")
+        resolved[key] = value
+
+    int_fields = ("chapter_start", "chapter_end")
+    for key in int_fields:
+        if key not in raw_value:
+            continue
+        value = raw_value.get(key)
+        if isinstance(value, bool) or not isinstance(value, int):
+            raise ValueError(f"feed.tail_grundbog_lydbog.{key} must be an integer.")
+        resolved[key] = value
+
+    chapter_start = resolved["chapter_start"]
+    chapter_end = resolved["chapter_end"]
+    if chapter_start < 1 or chapter_end < 1:
+        raise ValueError(
+            "feed.tail_grundbog_lydbog.chapter_start and chapter_end must be positive integers."
+        )
+    if chapter_start > chapter_end:
+        raise ValueError(
+            "feed.tail_grundbog_lydbog.chapter_start must be less than or equal to chapter_end."
+        )
+    return resolved
+
+
 def validate_feed_block_config(feed_config: Dict[str, Any]) -> None:
     if not isinstance(feed_config, dict):
         raise ValueError("feed must be a JSON object.")
     _resolve_audio_category_prefix_position(feed_config)
     _resolve_pubdate_year_rewrite(feed_config)
+    _resolve_tail_grundbog_lydbog_config(feed_config)
     if "reading_description_mode" in feed_config:
         raise ValueError(
             "feed.reading_description_mode is deprecated. "
@@ -1745,6 +1803,165 @@ def _wxlx_kind_priority(item: Dict[str, Any]) -> int:
     return 3
 
 
+def _extract_grundbog_subject_from_text(value: Any) -> Optional[str]:
+    if not isinstance(value, str) or not value.strip():
+        return None
+    cleaned = _strip_language_tags(value)
+    if not cleaned:
+        return None
+    cleaned = re.sub(r"\s+", " ", cleaned).strip()
+    match = GRUNDBOG_SUBJECT_PATTERN.search(cleaned)
+    if not match:
+        return None
+    subject = match.group(0).strip()
+    subject = TRAILING_WEEK_RANGE_PATTERN.sub("", subject).strip()
+    subject = subject.strip(" -–:·")
+    if not subject:
+        return None
+    subject = re.sub(r"\s+", " ", subject).strip()
+    return re.sub(r"(?i)^grundbog\b", "Grundbog", subject)
+
+
+def _extract_tail_grundbog_lydbog_key(item: Dict[str, Any]) -> Optional[str]:
+    if not bool(item.get("is_tts")):
+        return None
+    for key in ("title", "description"):
+        subject = _extract_grundbog_subject_from_text(item.get(key))
+        if not subject:
+            continue
+        if not GRUNDBOG_PATTERN.search(subject):
+            continue
+        if GRUNDBOG_FORORD_PATTERN.search(subject):
+            return "forord"
+        chapter_match = GRUNDBOG_CHAPTER_PATTERN.search(subject)
+        if not chapter_match:
+            continue
+        try:
+            chapter_number = int(chapter_match.group(1))
+        except ValueError:  # pragma: no cover - defensive
+            continue
+        if chapter_number > 0:
+            return f"chapter:{chapter_number}"
+    return None
+
+
+def _tail_grundbog_guid(base_guid: Any, key: str) -> str:
+    key_suffix = key.replace(":", "-")
+    guid = str(base_guid or "").strip()
+    if TAIL_GRUNDBOG_GUID_PREFIX in guid:
+        guid = guid.split(TAIL_GRUNDBOG_GUID_PREFIX, 1)[0]
+    if not guid:
+        guid = f"tail-grundbog-{key_suffix}"
+    return f"{guid}{TAIL_GRUNDBOG_GUID_PREFIX}{key_suffix}"
+
+
+def _tail_grundbog_subject(item: Dict[str, Any], key: str) -> str:
+    for field in ("title", "description"):
+        subject = _extract_grundbog_subject_from_text(item.get(field))
+        if subject:
+            return subject
+    if key == "forord":
+        return "Grundbog forord og resumé"
+    chapter_match = re.fullmatch(r"chapter:(\d+)", key)
+    if chapter_match:
+        return f"Grundbog kapitel {int(chapter_match.group(1)):02d}"
+    return "Grundbog"
+
+
+def _build_tail_grundbog_episode(
+    source_item: Dict[str, Any],
+    *,
+    key: str,
+    tail_index: int,
+) -> Dict[str, Any]:
+    subject = _tail_grundbog_subject(source_item, key)
+    generated = dict(source_item)
+    generated["guid"] = _tail_grundbog_guid(source_item.get("guid"), key)
+    generated["title"] = f"[Lydbog] · {subject}"
+    generated["description"] = subject
+    generated["sort_tail"] = True
+    generated["sort_tail_index"] = tail_index
+    generated["sort_week"] = None
+    generated["sort_lecture"] = None
+    generated["is_tts"] = True
+    return generated
+
+
+def _synthesize_tail_grundbog_lydbog_block(
+    episodes: Iterable[Dict[str, Any]],
+    feed_config: Dict[str, Any],
+) -> List[Dict[str, Any]]:
+    items = list(episodes)
+    tail_cfg = _resolve_tail_grundbog_lydbog_config(feed_config)
+    if not tail_cfg.get("enabled"):
+        return items
+
+    required_keys: List[str] = []
+    if tail_cfg.get("include_forord"):
+        required_keys.append("forord")
+    required_keys.extend(
+        f"chapter:{chapter_number}"
+        for chapter_number in range(
+            int(tail_cfg["chapter_start"]),
+            int(tail_cfg["chapter_end"]) + 1,
+        )
+    )
+
+    candidates_by_key: Dict[str, Dict[str, List[Tuple[int, Dict[str, Any]]]]] = {}
+    passthrough_items: List[Dict[str, Any]] = []
+
+    for index, item in enumerate(items):
+        key = _extract_tail_grundbog_lydbog_key(item)
+        if key:
+            bucket = candidates_by_key.setdefault(key, {"tail": [], "other": []})
+            source_bucket = "tail" if bool(item.get("sort_tail")) else "other"
+            bucket[source_bucket].append((index, item))
+        if bool(item.get("sort_tail")) and key:
+            # Replace all existing Grundbog tail items with a canonical rebuilt block.
+            continue
+        passthrough_items.append(item)
+
+    tail_block: List[Dict[str, Any]] = []
+    missing_keys: List[str] = []
+    for tail_index, key in enumerate(required_keys):
+        buckets = candidates_by_key.get(key) or {"tail": [], "other": []}
+        tail_candidates = buckets.get("tail") or []
+        other_candidates = buckets.get("other") or []
+        preferred_candidates = tail_candidates if tail_candidates else other_candidates
+
+        if not preferred_candidates:
+            missing_keys.append(key)
+            continue
+
+        if len(tail_candidates) + len(other_candidates) > 1:
+            choice_label = "existing tail source" if tail_candidates else "newest non-tail source"
+            print(
+                f"Warning: multiple Grundbog lydbog sources for '{key}'; using {choice_label}.",
+                file=sys.stderr,
+            )
+
+        _, source_item = max(
+            preferred_candidates,
+            key=lambda pair: (_published_sort_value(pair[1]), -pair[0]),
+        )
+        tail_block.append(_build_tail_grundbog_episode(source_item, key=key, tail_index=tail_index))
+
+    if missing_keys:
+        print(
+            "Warning: missing Grundbog lydbog tail source(s): " + ", ".join(missing_keys),
+            file=sys.stderr,
+        )
+
+    return passthrough_items + tail_block
+
+
+def _tail_sort_index_value(item: Dict[str, Any]) -> int:
+    sort_tail_index = item.get("sort_tail_index")
+    if isinstance(sort_tail_index, bool) or not isinstance(sort_tail_index, int):
+        return sys.maxsize
+    return sort_tail_index
+
+
 def _sort_feed_episodes(
     episodes: Iterable[Dict[str, Any]],
     feed_config: Dict[str, Any],
@@ -1789,6 +2006,14 @@ def _sort_feed_episodes(
             values.sort(
                 key=lambda pair: (
                     _wxlx_kind_priority(pair[1]),
+                    -_published_sort_value(pair[1]),
+                    pair[0],
+                )
+            )
+        elif group_key[0] == "tail":
+            values.sort(
+                key=lambda pair: (
+                    _tail_sort_index_value(pair[1]),
                     -_published_sort_value(pair[1]),
                     pair[0],
                 )
@@ -2817,6 +3042,8 @@ def main() -> None:
                 if len(artwork_ambiguous) > 20:
                     remaining = len(artwork_ambiguous) - 20
                     print(f"  ... and {remaining} more", file=sys.stderr)
+
+    episodes = _synthesize_tail_grundbog_lydbog_block(episodes, feed_cfg)
 
     if not episodes:
         raise SystemExit("No audio files found in the configured Google Drive folder.")

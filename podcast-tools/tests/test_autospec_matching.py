@@ -455,6 +455,79 @@ class AutoSpecMatchingTests(unittest.TestCase):
         titles = [el.text for el in root.findall("./channel/item/title")]
         self.assertEqual(titles, ["W2 reading", "W1 reading", "Tail newer"])
 
+    def test_build_feed_document_wxlx_tail_items_use_sort_tail_index(self):
+        mod = _load_feed_module()
+
+        def make_episode(
+            *,
+            guid: str,
+            title: str,
+            published_at: str,
+            sort_tail: bool = False,
+            sort_tail_index: int | None = None,
+        ):
+            published_dt = mod.parse_datetime(published_at)
+            payload = {
+                "guid": guid,
+                "title": title,
+                "description": title,
+                "link": "https://example.com",
+                "published_at": published_dt,
+                "pubDate": mod.format_rfc2822(published_dt),
+                "mimeType": "audio/mpeg",
+                "size": 123,
+                "duration": None,
+                "explicit": "false",
+                "image": None,
+                "episode_kind": "reading",
+                "is_tts": True,
+                "sort_week": None,
+                "sort_lecture": None,
+                "sort_tail": sort_tail,
+                "audio_url": f"https://example.com/{guid}.mp3",
+            }
+            if sort_tail_index is not None:
+                payload["sort_tail_index"] = sort_tail_index
+            return payload
+
+        episodes = [
+            make_episode(
+                guid="week-item",
+                title="Week item",
+                published_at="2026-03-01T08:00:00+00:00",
+            ),
+            make_episode(
+                guid="tail-ch-2",
+                title="Tail chapter 2",
+                published_at="2026-03-15T08:00:00+00:00",
+                sort_tail=True,
+                sort_tail_index=2,
+            ),
+            make_episode(
+                guid="tail-ch-1",
+                title="Tail chapter 1",
+                published_at="2026-03-10T08:00:00+00:00",
+                sort_tail=True,
+                sort_tail_index=1,
+            ),
+        ]
+        feed = mod.build_feed_document(
+            episodes=episodes,
+            feed_config={
+                "title": "Personlighedspsykologi",
+                "link": "https://example.com",
+                "description": "Test feed",
+                "language": "en",
+                "sort_mode": "wxlx_kind_priority",
+            },
+            last_build=mod.parse_datetime("2026-03-16T00:00:00+00:00"),
+        )
+        from xml.etree import ElementTree as ET
+
+        root = ET.fromstring(ET.tostring(feed, encoding="unicode"))
+        titles = [el.text for el in root.findall("./channel/item/title")]
+        self.assertEqual(titles, ["Week item", "Tail chapter 1", "Tail chapter 2"])
+
     def test_semester_week_label_uses_calendar_week_range(self):
         mod = _load_feed_module()
         file_entry = {
@@ -647,6 +720,165 @@ class AutoSpecMatchingTests(unittest.TestCase):
         )
         self.assertTrue(episode.get("sort_tail"))
         self.assertEqual(episode["title"], "[Lydbog] · Grundbog kapitel 13 - Positiv psykologi")
+
+    def test_extract_tail_grundbog_lydbog_key_detects_forord_and_chapters(self):
+        mod = _load_feed_module()
+        self.assertEqual(
+            mod._extract_tail_grundbog_lydbog_key(
+                {
+                    "title": "[Lydbog] · Grundbog forord og resumé",
+                    "description": "Grundbog forord og resumé",
+                    "is_tts": True,
+                }
+            ),
+            "forord",
+        )
+        self.assertEqual(
+            mod._extract_tail_grundbog_lydbog_key(
+                {
+                    "title": "Semesteruge 4 · [Lydbog] · Grundbog kapitel 01 - Intro · (Uge 4 19/01 - 25/01)",
+                    "description": "Grundbog kapitel 01 - Intro",
+                    "is_tts": True,
+                }
+            ),
+            "chapter:1",
+        )
+        self.assertEqual(
+            mod._extract_tail_grundbog_lydbog_key(
+                {
+                    "title": "[Lydbog] · Grundbog kapitel 14 - Bonus",
+                    "description": "Grundbog kapitel 14 - Bonus",
+                    "is_tts": True,
+                }
+            ),
+            "chapter:14",
+        )
+        self.assertIsNone(
+            mod._extract_tail_grundbog_lydbog_key(
+                {
+                    "title": "[Podcast] · Kapitel 02 - Ikke grundbog",
+                    "description": "Kapitel 02 - Ikke grundbog",
+                    "is_tts": True,
+                }
+            )
+        )
+        self.assertIsNone(
+            mod._extract_tail_grundbog_lydbog_key(
+                {
+                    "title": "[Lydbog] · Grundbog appendiks",
+                    "description": "Grundbog appendiks",
+                    "is_tts": True,
+                }
+            )
+        )
+
+    def test_synthesize_tail_grundbog_lydbog_block_produces_forord_plus_1_to_14(self):
+        mod = _load_feed_module()
+
+        def make_episode(
+            *,
+            guid: str,
+            title: str,
+            description: str,
+            published_at: str,
+            sort_tail: bool,
+        ):
+            published_dt = mod.parse_datetime(published_at)
+            return {
+                "guid": guid,
+                "title": title,
+                "description": description,
+                "link": "https://example.com",
+                "published_at": published_dt,
+                "pubDate": mod.format_rfc2822(published_dt),
+                "mimeType": "audio/x-wav",
+                "size": 123,
+                "duration": None,
+                "explicit": "false",
+                "image": None,
+                "episode_kind": "reading",
+                "is_tts": True,
+                "sort_week": None if sort_tail else 1,
+                "sort_lecture": None if sort_tail else 1,
+                "sort_tail": sort_tail,
+                "audio_url": f"https://example.com/{guid}.wav",
+            }
+
+        def chapter_subject(chapter: int) -> str:
+            return f"Grundbog kapitel {chapter:02d} - Kapitel {chapter}"
+
+        episodes = [
+            make_episode(
+                guid="tail-forord",
+                title="[Lydbog] · Grundbog forord og resumé",
+                description="Grundbog forord og resumé",
+                published_at="2026-07-01T08:00:00+00:00",
+                sort_tail=True,
+            )
+        ]
+
+        for chapter in [2, 3, 5, 6, 7, 12, 13]:
+            subject = chapter_subject(chapter)
+            episodes.append(
+                make_episode(
+                    guid=f"tail-{chapter}",
+                    title=f"[Lydbog] · {subject}",
+                    description=subject,
+                    published_at=f"2026-07-{chapter + 1:02d}T08:00:00+00:00",
+                    sort_tail=True,
+                )
+            )
+
+        for chapter in [1, 4, 8, 9, 10, 11, 14]:
+            subject = chapter_subject(chapter)
+            episodes.append(
+                make_episode(
+                    guid=f"week-{chapter}",
+                    title=(
+                        f"Semesteruge {chapter} · [Lydbog] · {subject} "
+                        f"· (Uge {chapter} 01/01 - 07/01)"
+                    ),
+                    description=subject,
+                    published_at=f"2026-02-{chapter + 1:02d}T08:00:00+00:00",
+                    sort_tail=False,
+                )
+            )
+
+        result = mod._synthesize_tail_grundbog_lydbog_block(
+            episodes,
+            {
+                "tail_grundbog_lydbog": {
+                    "enabled": True,
+                    "include_forord": True,
+                    "chapter_start": 1,
+                    "chapter_end": 14,
+                }
+            },
+        )
+
+        tail_items = [item for item in result if item.get("sort_tail")]
+        expected_keys = ["forord"] + [f"chapter:{chapter}" for chapter in range(1, 15)]
+        self.assertEqual(
+            [mod._extract_tail_grundbog_lydbog_key(item) for item in tail_items],
+            expected_keys,
+        )
+        self.assertEqual(
+            [item.get("sort_tail_index") for item in tail_items],
+            list(range(15)),
+        )
+        for item in tail_items:
+            self.assertTrue(item["title"].startswith("[Lydbog] · Grundbog"))
+            self.assertNotIn("Semesteruge", item["title"])
+            self.assertNotIn("(Uge ", item["title"])
+            self.assertIn("#tail-grundbog-", item["guid"])
+
+        guids = [item.get("guid") for item in result]
+        self.assertEqual(len(guids), len(set(guids)))
+        self.assertIn("week-1", guids)
+        chapter_1_tail = next(
+            item for item in tail_items if mod._extract_tail_grundbog_lydbog_key(item) == "chapter:1"
+        )
+        self.assertEqual(chapter_1_tail["guid"], "week-1#tail-grundbog-chapter-1")
 
     def test_extract_sequence_number_prefers_chapter_and_ignores_cfg_digits(self):
         mod = _load_feed_module()
@@ -1625,6 +1857,51 @@ class AutoSpecMatchingTests(unittest.TestCase):
                 ],
             }
         )
+
+    def test_validate_feed_block_config_accepts_tail_grundbog_lydbog(self):
+        mod = _load_feed_module()
+        mod.validate_feed_block_config(
+            {
+                "tail_grundbog_lydbog": {
+                    "enabled": True,
+                    "include_forord": True,
+                    "chapter_start": 1,
+                    "chapter_end": 14,
+                }
+            }
+        )
+
+    def test_validate_feed_block_config_rejects_invalid_tail_grundbog_range(self):
+        mod = _load_feed_module()
+        with self.assertRaisesRegex(
+            ValueError,
+            r"feed\.tail_grundbog_lydbog\.chapter_start must be less than or equal to chapter_end",
+        ):
+            mod.validate_feed_block_config(
+                {
+                    "tail_grundbog_lydbog": {
+                        "enabled": True,
+                        "chapter_start": 15,
+                        "chapter_end": 14,
+                    }
+                }
+            )
+
+    def test_validate_feed_block_config_rejects_non_integer_tail_grundbog_chapter(self):
+        mod = _load_feed_module()
+        with self.assertRaisesRegex(
+            ValueError,
+            r"feed\.tail_grundbog_lydbog\.chapter_start must be an integer",
+        ):
+            mod.validate_feed_block_config(
+                {
+                    "tail_grundbog_lydbog": {
+                        "enabled": True,
+                        "chapter_start": "1",
+                        "chapter_end": 14,
+                    }
+                }
+            )
 
     def test_validate_feed_block_config_rejects_unknown_sort_mode(self):
         mod = _load_feed_module()

@@ -24,7 +24,10 @@ rss.xml
 # Apps Script local config
 apps-script/.clasp.json
 
-output
+**/output/**/*.mp3
+**/outputs/**/*.mp3
+**/output/**/*.wav
+**/outputs/**/*.wav
 sources
 
 githooks/*.log

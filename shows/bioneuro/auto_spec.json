@@ -1,0 +1,142 @@
+{
+  "year": 2026,
+  "week_reference_year": 2026,
+  "timezone": "Europe/Copenhagen",
+  "default_release": {
+    "weekday": 5,
+    "time": "08:00"
+  },
+  "increment_minutes": 120,
+  "rules": [
+    {
+      "iso_week": 19,
+      "course_week": 13,
+      "aliases": [
+        "w13",
+        "week 13",
+        "week13",
+        "w 13"
+      ]
+    },
+    {
+      "iso_week": 18,
+      "course_week": 12,
+      "aliases": [
+        "w12",
+        "week 12",
+        "week12",
+        "w 12"
+      ]
+    },
+    {
+      "iso_week": 17,
+      "course_week": 11,
+      "aliases": [
+        "w11",
+        "week 11",
+        "week11",
+        "w 11"
+      ]
+    },
+    {
+      "iso_week": 16,
+      "course_week": 10,
+      "aliases": [
+        "w10",
+        "week 10",
+        "week10",
+        "w 10"
+      ]
+    },
+    {
+      "iso_week": 15,
+      "course_week": 9,
+      "aliases": [
+        "w9",
+        "week 9",
+        "week9",
+        "w 9"
+      ]
+    },
+    {
+      "iso_week": 13,
+      "course_week": 8,
+      "aliases": [
+        "w8",
+        "week 8",
+        "week8",
+        "w 8"
+      ]
+    },
+    {
+      "iso_week": 12,
+      "course_week": 7,
+      "aliases": [
+        "w7",
+        "week 7",
+        "week7",
+        "w 7"
+      ]
+    },
+    {
+      "iso_week": 11,
+      "course_week": 6,
+      "aliases": [
+        "w6",
+        "week 6",
+        "week6",
+        "w 6"
+      ]
+    },
+    {
+      "iso_week": 10,
+      "course_week": 5,
+      "aliases": [
+        "w5",
+        "week 5",
+        "week5",
+        "w 5"
+      ]
+    },
+    {
+      "iso_week": 9,
+      "course_week": 4,
+      "aliases": [
+        "w4",
+        "week 4",
+        "week4",
+        "w 4"
+      ]
+    },
+    {
+      "iso_week": 8,
+      "course_week": 3,
+      "aliases": [
+        "w3",
+        "week 3",
+        "week3",
+        "w 3"
+      ]
+    },
+    {
+      "iso_week": 7,
+      "course_week": 2,
+      "aliases": [
+        "w2",
+        "week 2",
+        "week2",
+        "w 2"
+      ]
+    },
+    {
+      "iso_week": 6,
+      "course_week": 1,
+      "aliases": [
+        "w1",
+        "week 1",
+        "week1",
+        "w 1"
+      ]
+    }
+  ]
+}

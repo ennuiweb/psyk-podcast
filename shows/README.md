@@ -4,6 +4,7 @@ Each subdirectory contains config and assets for a single podcast feed. The CI w
 
 - `social-psychology` – live show wired to Google Drive and GitHub Actions.
 - `personlighedspsykologi-en` - Personlighedspsykologi (F26) feed.
+- `bioneuro` - Bio / Neuropsychology feed.
 - `intro-vt` – Intro + VT Deep Dives - Hold 1 - 2024 series; keep the Drive folder ID current and the workflow will publish automatically.
 - `intro-vt-tss` – Intro + VT Tekst til tale - 1. sem 2024 TTS feed scaffolding (CI currently paused).
 - `social-psychology-tts` – Socialpsykologi Oplæst - 1. sem 2024 TTS feed scaffolding (CI currently paused).

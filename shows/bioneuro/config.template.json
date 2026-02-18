@@ -1,0 +1,53 @@
+{
+  "service_account_file": "shows/bioneuro/service-account.json",
+  "drive_folder_id": "14Gg0qQSi9izrb7JejYov027msg0kz1te",
+  "shared_drive_id": null,
+  "include_items_from_all_drives": true,
+  "allowed_mime_types": [
+    "audio/"
+  ],
+  "transcode": {
+    "enabled": true,
+    "source_mime_types": [
+      "video/mp4",
+      "audio/mp4",
+      "audio/x-m4a"
+    ],
+    "target_extension": "mp3",
+    "target_mime_type": "audio/mpeg",
+    "codec": "libmp3lame",
+    "bitrate": "160k"
+  },
+  "skip_permission_updates": false,
+  "output_feed": "shows/bioneuro/feeds/rss.xml",
+  "public_link_template": "https://drive.google.com/uc?export=download&id={file_id}",
+  "episode_metadata": "shows/bioneuro/episode_metadata.json",
+  "auto_spec": "shows/bioneuro/auto_spec.json",
+  "feed": {
+    "title": "Bio / Neuropsychology",
+    "link": "https://github.com/ennuiweb/psyk-podcast",
+    "self_link": "https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/bioneuro/feeds/rss.xml",
+    "description": "Bio / Neuropsychology podcast feed.",
+    "language": "en",
+    "author": "Bio / Neuropsychology",
+    "default_explicit": false,
+    "image": "https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/bioneuro/assets/cover.png",
+    "category": {
+      "name": "Education",
+      "sub": "Social Sciences"
+    },
+    "owner": {
+      "name": "Bio / Neuropsychology",
+      "email": "psykku2025@gmail.com"
+    },
+    "ttl": 60
+  },
+  "reading_summaries": {
+    "file": "shows/bioneuro/reading_summaries.json",
+    "key_points_label": "Nøglepointer",
+    "enabled_kinds": [
+      "reading",
+      "brief"
+    ]
+  }
+}

@@ -14,7 +14,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        show: [social-psychology, intro-vt, personal, personlighedspsykologi-en]
+        show: [social-psychology, intro-vt, personal, personlighedspsykologi-en, bioneuro]
     env:
       SERVICE_ACCOUNT_JSON_DEFAULT: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
       SERVICE_ACCOUNT_JSON_SOCIAL_PSYCHOLOGY: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON_SOCIAL_PSYCHOLOGY }}

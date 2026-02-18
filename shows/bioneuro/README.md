@@ -18,6 +18,15 @@ python3 podcast-tools/gdrive_podcast_feed.py --config shows/bioneuro/config.loca
 python3 podcast-tools/gdrive_podcast_feed.py --config shows/bioneuro/config.local.json
 ```
 
+Audio mirroring (OneDrive -> Google Drive mount):
+
+```bash
+python3 scripts/mirror_bioneuro_audio.py --dry-run
+python3 scripts/mirror_bioneuro_audio.py
+```
+
+If git hooks are installed (`scripts/install_git_hooks.sh`), the mirror runs automatically on each `git push` before the Apps Script sync step.
+
 Setup notes:
 - `drive_folder_id` is intentionally left as `__DRIVE_FOLDER_ID__` in all config variants.
 - Current matching expectation is plain `W#` tokens in Drive folder/file names (for example `W1`, `W2`, ...).

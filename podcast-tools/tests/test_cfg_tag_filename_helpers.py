@@ -80,6 +80,40 @@ class CfgTagFilenameHelpersTests(unittest.TestCase):
         if self.drive_sync is not None:
             self.assertEqual(self.drive_sync.strip_cfg_tag_suffix(value), "W01L1 - Foo")
 
+    def test_local_matches_quiz_difficulty_from_cfg_tag(self):
+        mod = self.local_sync
+        stem = (
+            "W01L1 - Foo [EN] "
+            "{type=quiz lang=en quantity=standard difficulty=easy download=html hash=beef1234}"
+        )
+        self.assertTrue(mod.matches_quiz_difficulty(stem, "easy"))
+        self.assertFalse(mod.matches_quiz_difficulty(stem, "medium"))
+
+    def test_local_matches_quiz_difficulty_treats_untagged_as_medium(self):
+        mod = self.local_sync
+        stem = "W01L1 - Foo [EN]"
+        self.assertTrue(mod.matches_quiz_difficulty(stem, "medium"))
+        self.assertFalse(mod.matches_quiz_difficulty(stem, "hard"))
+
+    def test_drive_matches_quiz_difficulty_from_cfg_tag(self):
+        if self.drive_sync is None:
+            self.skipTest("google-api dependencies unavailable for sync_drive_quiz_links import")
+        mod = self.drive_sync
+        stem = (
+            "W01L1 - Foo [EN] "
+            "{type=quiz lang=en quantity=standard difficulty=hard download=html hash=beef1234}"
+        )
+        self.assertTrue(mod.matches_quiz_difficulty(stem, "hard"))
+        self.assertFalse(mod.matches_quiz_difficulty(stem, "easy"))
+
+    def test_drive_matches_quiz_difficulty_treats_untagged_as_medium(self):
+        if self.drive_sync is None:
+            self.skipTest("google-api dependencies unavailable for sync_drive_quiz_links import")
+        mod = self.drive_sync
+        stem = "W01L1 - Foo [EN]"
+        self.assertTrue(mod.matches_quiz_difficulty(stem, "medium"))
+        self.assertFalse(mod.matches_quiz_difficulty(stem, "easy"))
+
     def test_generate_week_config_tag_is_deterministic_and_changes(self):
         mod = self.generate_week
         cfg_a = {"language": "en", "weekly_overview": {"format": "deep-dive"}}

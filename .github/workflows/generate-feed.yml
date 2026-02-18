@@ -159,6 +159,7 @@ jobs:
               --config shows/${SHOW}/config.runtime.json \
               --download-root "${download_root}" \
               --language-tag "[EN]" \
+              --quiz-difficulty medium \
               --upload \
               --ssh-key "${key_path}"
           else
@@ -166,7 +167,8 @@ jobs:
             python podcast-tools/sync_drive_quiz_links.py \
               --config shows/${SHOW}/config.runtime.json \
               --download-root "${download_root}" \
-              --language-tag "[EN]"
+              --language-tag "[EN]" \
+              --quiz-difficulty medium
           fi
 
       - name: Generate feed

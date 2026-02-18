@@ -107,8 +107,8 @@ Lecture-level "Alle kilder" skips:
 - Use the sync script locally to upload and update the mapping:
 
 ```bash
-python3 scripts/sync_quiz_links.py --dry-run
-python3 scripts/sync_quiz_links.py
+python3 scripts/sync_quiz_links.py --quiz-difficulty medium --dry-run
+python3 scripts/sync_quiz_links.py --quiz-difficulty medium
 ```
 
 - The mapping file is `shows/personlighedspsykologi-en/quiz_links.json`.

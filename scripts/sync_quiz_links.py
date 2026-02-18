@@ -18,6 +18,10 @@ CFG_TAG_RE = re.compile(
     r"(?:\s+\[[^\[\]]+\])?$",
     re.IGNORECASE,
 )
+QUIZ_DIFFICULTY_RE = re.compile(
+    r"\{[^{}]*\btype=quiz\b[^{}]*\bdifficulty=(?P<difficulty>[a-z0-9._:+-]+)\b[^{}]*\}",
+    re.IGNORECASE,
+)
 
 
 def normalize_week_tokens(text: str) -> str:
@@ -31,6 +35,24 @@ def normalize_week_tokens(text: str) -> str:
 
 def strip_cfg_tag_suffix(text: str) -> str:
     return CFG_TAG_RE.sub("", text).strip()
+
+
+def extract_quiz_difficulty(value: str) -> str | None:
+    match = QUIZ_DIFFICULTY_RE.search(value)
+    if not match:
+        return None
+    difficulty = match.group("difficulty").strip().lower()
+    return difficulty or None
+
+
+def matches_quiz_difficulty(value: str, expected: str | None) -> bool:
+    if not expected:
+        return True
+    actual = extract_quiz_difficulty(value)
+    if actual is None:
+        # Backward-compatibility: historical quiz exports were implicitly medium.
+        return expected == "medium"
+    return actual == expected
 
 
 def canonical_key(stem: str) -> str:
@@ -187,6 +209,15 @@ def main() -> int:
         help="Only consider files containing this tag in the filename.",
     )
     parser.add_argument(
+        "--quiz-difficulty",
+        default="medium",
+        choices=("easy", "medium", "hard", "any"),
+        help=(
+            "Only map quiz HTML files for this difficulty. "
+            "Use 'any' to include all difficulties. Default: medium."
+        ),
+    )
+    parser.add_argument(
         "--derive-mp3-names",
         action="store_true",
         help="Derive MP3 names directly from HTML filenames (no MP3 scan).",
@@ -226,17 +257,32 @@ def main() -> int:
     output_root = resolve_path(args.output_root, repo_root)
     links_file = resolve_path(args.links_file, repo_root)
     language_tag = args.language_tag
+    quiz_difficulty = None if args.quiz_difficulty == "any" else args.quiz_difficulty
 
     if not output_root.exists():
         raise SystemExit(f"Output root does not exist: {output_root}")
 
-    html_files = [p for p in find_files(output_root, ".html") if language_tag in p.stem]
+    html_files = [
+        p
+        for p in find_files(output_root, ".html")
+        if language_tag in p.stem and matches_quiz_difficulty(p.stem, quiz_difficulty)
+    ]
     if not html_files:
-        raise SystemExit(f"No quiz HTML files found under {output_root}")
+        raise SystemExit(
+            f"No quiz HTML files found under {output_root} "
+            f"for difficulty={quiz_difficulty or 'any'}"
+        )
     mapping: Dict[str, Dict[str, str]] = {}
     unmatched: List[Path] = []
     ambiguous: List[Path] = []
     duplicate_targets: List[Path] = []
+    mp3_index: Dict[str, List[Path]] = {}
+
+    if not args.derive_mp3_names:
+        mp3_files = [p for p in find_files(output_root, ".mp3") if language_tag in p.stem]
+        if not mp3_files:
+            raise SystemExit(f"No MP3 files found under {output_root}")
+        mp3_index = build_mp3_index(mp3_files, language_tag)
 
     for html_file in html_files:
         if args.derive_mp3_names:
@@ -245,10 +291,6 @@ def main() -> int:
                 duplicate_targets.append(html_file)
                 continue
         else:
-            mp3_files = [p for p in find_files(output_root, ".mp3") if language_tag in p.stem]
-            if not mp3_files:
-                raise SystemExit(f"No MP3 files found under {output_root}")
-            mp3_index = build_mp3_index(mp3_files, language_tag)
             key = canonical_key(html_file.stem)
             candidates = mp3_index.get(key, [])
             if len(candidates) == 0:
@@ -267,6 +309,7 @@ def main() -> int:
     sorted_mapping = {key: mapping[key] for key in sorted(mapping)}
     write_mapping(links_file, sorted_mapping, args.dry_run)
 
+    print(f"Quiz difficulty filter: {quiz_difficulty or 'any'}")
     print(f"Quiz HTML files: {len(html_files)}")
     print(f"Mapped quizzes: {len(sorted_mapping)}")
     if unmatched:

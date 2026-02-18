@@ -4,6 +4,20 @@ set -euo pipefail
 repo_root="$(git rev-parse --show-toplevel)"
 log_file="${PRE_PUSH_LOG_FILE:-}"
 
+if [[ "${BIONEURO_MIRROR_ON_PUSH:-1}" != "0" ]]; then
+  mirror_cmd=(python3 "${repo_root}/scripts/mirror_bioneuro_audio.py")
+  if [[ -n "${BIONEURO_MIRROR_SRC:-}" ]]; then
+    mirror_cmd+=(--source "${BIONEURO_MIRROR_SRC}")
+  fi
+  if [[ -n "${BIONEURO_MIRROR_DST:-}" ]]; then
+    mirror_cmd+=(--dest "${BIONEURO_MIRROR_DST}")
+  fi
+  echo "pre-push: running bioneuro audio mirror"
+  if ! "${mirror_cmd[@]}"; then
+    echo "pre-push: warning: bioneuro audio mirror failed; continuing push" >&2
+  fi
+fi
+
 if [[ "${APPS_SCRIPT_PUSH_ON_PUSH:-1}" == "0" ]]; then
   exit 0
 fi

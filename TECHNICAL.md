@@ -170,6 +170,34 @@ To push the Apps Script file whenever you run `git push`, install the repository
 3. Set `APPS_SCRIPT_PUSH_ON_PUSH=0` in your environment to skip the hook on demand.
 4. (Optional) Set `PRE_PUSH_LOG_FILE=/path/to/pre-push.log` to enable logging; by default no log file is written.
 
+### Bioneuro audio mirror on push
+The same `pre-push` hook can mirror local Bioneuro audio files from OneDrive into the Google Drive mounted destination used by the `bioneuro` show:
+
+```bash
+python3 scripts/mirror_bioneuro_audio.py --dry-run
+python3 scripts/mirror_bioneuro_audio.py
+```
+
+Default source:
+- `/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Bioneuro/Readings`
+
+Default destination:
+- `/Users/oskar/Library/CloudStorage/GoogleDrive-nopeeeh@gmail.com/My Drive/podcasts/bioneuro`
+
+Behavior:
+- mirrors only files under top-level `W*` folders;
+- includes `.mp3,.m4a,.wav,.aac,.flac`;
+- flattens `.../W*/audio/<file>` to `.../podcasts/bioneuro/W*/<file>`;
+- add/update only (no destination deletions);
+- fails the mirror step on path collisions (two sources mapping to the same destination file).
+
+Pre-push environment controls:
+- `BIONEURO_MIRROR_ON_PUSH=0` to disable mirror on push.
+- `BIONEURO_MIRROR_SRC=/custom/source/path` to override source.
+- `BIONEURO_MIRROR_DST=/custom/destination/path` to override destination.
+
+Mirror failures currently print a warning and do not block `git push`.
+
 ### Apps Script helper
 The canonical automation script lives in `apps-script/drive_change_trigger.gs`. Copy it directly from the repository so you always grab the latest multi-folder logic (`CONFIG.drive.folderIds`, `configuredRootFolderIds()`, etc.). Key bits to double-check before deploying:
 - `CONFIG.drive.mimePrefixes` controls which file types trigger a rebuild (add `image/` to react to PNG uploads, or set `[]` for everything).

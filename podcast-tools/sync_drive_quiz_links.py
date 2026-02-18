@@ -31,6 +31,10 @@ CFG_TAG_RE = re.compile(
     r"(?:\s+\[[^\[\]]+\])?$",
     re.IGNORECASE,
 )
+QUIZ_DIFFICULTY_RE = re.compile(
+    r"\{[^{}]*\btype=quiz\b[^{}]*\bdifficulty=(?P<difficulty>[a-z0-9._:+-]+)\b[^{}]*\}",
+    re.IGNORECASE,
+)
 
 
 def load_json(path: Path) -> Dict[str, Any]:
@@ -263,6 +267,24 @@ def strip_cfg_tag_suffix(text: str) -> str:
     return CFG_TAG_RE.sub("", text).strip()
 
 
+def extract_quiz_difficulty(value: str) -> str | None:
+    match = QUIZ_DIFFICULTY_RE.search(value)
+    if not match:
+        return None
+    difficulty = match.group("difficulty").strip().lower()
+    return difficulty or None
+
+
+def matches_quiz_difficulty(value: str, expected: str | None) -> bool:
+    if not expected:
+        return True
+    actual = extract_quiz_difficulty(value)
+    if actual is None:
+        # Backward-compatibility: historical quiz exports were implicitly medium.
+        return expected == "medium"
+    return actual == expected
+
+
 def canonical_key(stem: str) -> str:
     name = stem.replace("–", "-").replace("—", "-")
     name = strip_cfg_tag_suffix(name)
@@ -396,6 +418,15 @@ def main() -> int:
         help="Only include files containing this tag (set empty to include all).",
     )
     parser.add_argument(
+        "--quiz-difficulty",
+        default="medium",
+        choices=("easy", "medium", "hard", "any"),
+        help=(
+            "Only map quiz HTML files for this difficulty. "
+            "Use 'any' to include all difficulties. Default: medium."
+        ),
+    )
+    parser.add_argument(
         "--upload",
         action="store_true",
         help="Upload downloaded quizzes to the droplet.",
@@ -435,6 +466,7 @@ def main() -> int:
     links_path = resolve_links_path(config_path, quiz_cfg, args.links_file)
 
     language_tag = args.language_tag or None
+    quiz_difficulty = None if args.quiz_difficulty == "any" else args.quiz_difficulty
     service_account_path = Path(config["service_account_file"])
     drive_service = build_drive_service(service_account_path)
     folder_id = config["drive_folder_id"]
@@ -462,10 +494,14 @@ def main() -> int:
         if item.get("name")
         and str(item["name"]).lower().endswith(".html")
         and matches_language(str(item["name"]), language_tag)
+        and matches_quiz_difficulty(str(item["name"]), quiz_difficulty)
     ]
 
     if not html_files:
-        print("No quiz HTML files found in Drive; skipping quiz sync.")
+        print(
+            "No quiz HTML files found in Drive; skipping quiz sync "
+            f"(difficulty={quiz_difficulty or 'any'})."
+        )
         return 0
     if not audio_files:
         print("No audio files found in Drive; skipping quiz mapping.")
@@ -534,6 +570,7 @@ def main() -> int:
     sorted_mapping = {key: mapping[key] for key in sorted(mapping)}
     write_mapping(links_path, sorted_mapping)
 
+    print(f"Quiz difficulty filter: {quiz_difficulty or 'any'}")
     print(f"Quiz HTML files: {len(html_files)}")
     print(f"Mapped quizzes: {len(sorted_mapping)}")
     if unmatched:

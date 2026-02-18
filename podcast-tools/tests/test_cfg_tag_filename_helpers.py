@@ -333,6 +333,36 @@ class CfgTagFilenameHelpersTests(unittest.TestCase):
         )
         self.assertNotEqual(token_a, token_b)
 
+    def test_generate_week_normalize_quiz_difficulty_accepts_all(self):
+        mod = self.generate_week
+        self.assertEqual(mod.normalize_quiz_difficulty("all"), "all")
+
+    def test_generate_week_quiz_difficulty_values_expands_all(self):
+        mod = self.generate_week
+        self.assertEqual(mod.quiz_difficulty_values("quiz", "all"), ["easy", "medium", "hard"])
+        self.assertEqual(mod.quiz_difficulty_values("audio", "all"), [None])
+
+    def test_generate_podcast_output_path_for_quiz_difficulty_rewrites_cfg_tag(self):
+        if self.generate_podcast is None:
+            self.skipTest("notebooklm dependencies unavailable for generate_podcast import")
+        mod = self.generate_podcast
+        output = Path(
+            "W01L1 - Foo [EN] {type=quiz lang=en quantity=standard difficulty=all download=html hash=deadbeef}.html"
+        )
+        rewritten = mod._output_path_for_quiz_difficulty(output, "hard")
+        self.assertEqual(
+            rewritten.name,
+            "W01L1 - Foo [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=deadbeef}.html",
+        )
+
+    def test_generate_podcast_output_path_for_quiz_difficulty_fallback_suffix(self):
+        if self.generate_podcast is None:
+            self.skipTest("notebooklm dependencies unavailable for generate_podcast import")
+        mod = self.generate_podcast
+        output = Path("quiz.html")
+        rewritten = mod._output_path_for_quiz_difficulty(output, "easy")
+        self.assertEqual(rewritten.name, "quiz [difficulty=easy].html")
+
 
 if __name__ == "__main__":
     unittest.main()

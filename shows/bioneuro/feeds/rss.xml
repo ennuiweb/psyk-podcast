@@ -1,14 +1,77 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<rss
-  version="2.0"
-  xmlns:atom="http://www.w3.org/2005/Atom"
-  xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
->
+<?xml version='1.0' encoding='utf-8'?>
+<rss xmlns:ns0="http://www.w3.org/2005/Atom" version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">
   <channel>
     <title>Bio / Neuropsychology</title>
     <link>https://github.com/ennuiweb/psyk-podcast</link>
     <description>Bio / Neuropsychology podcast feed.</description>
     <language>en</language>
-    <lastBuildDate>Wed, 18 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <generator>gdrive_podcast_feed.py</generator>
+    <lastBuildDate>Sat, 01 Aug 2026 08:00:00 +0200</lastBuildDate>
+    <ttl>60</ttl>
+    <ns0:link href="https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/bioneuro/feeds/rss.xml" rel="self" type="application/rss+xml" />
+    <itunes:author>Bio / Neuropsychology</itunes:author>
+    <itunes:owner>
+      <itunes:name>Bio / Neuropsychology</itunes:name>
+      <itunes:email>psykku2025@gmail.com</itunes:email>
+    </itunes:owner>
+    <itunes:image href="https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/bioneuro/assets/cover.png" />
+    <image>
+      <url>https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/bioneuro/assets/cover.png</url>
+      <title>Bio / Neuropsychology</title>
+      <link>https://github.com/ennuiweb/psyk-podcast</link>
+    </image>
+    <itunes:category text="Education">
+      <itunes:category text="Social Sciences" />
+    </itunes:category>
+    <item>
+      <title>[Podcast] · Grundbog Kapitel 1</title>
+      <description>Grundbog Kapitel 1 · Forelæsning 1</description>
+      <guid isPermaLink="false">17JDA4pHscCDlpq_slk4VyrR_e3YFPNkb</guid>
+      <link>https://github.com/ennuiweb/psyk-podcast</link>
+      <pubDate>Sat, 01 Aug 2026 08:00:00 +0200</pubDate>
+      <enclosure url="https://drive.google.com/uc?export=download&amp;id=17JDA4pHscCDlpq_slk4VyrR_e3YFPNkb" length="72132525" type="audio/mpeg" />
+      <itunes:explicit>false</itunes:explicit>
+      <itunes:image href="https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/bioneuro/assets/cover.png" />
+    </item>
+    <item>
+      <title>[Podcast] · Grundbog Kapitel 2</title>
+      <description>Grundbog Kapitel 2 · Forelæsning 1</description>
+      <guid isPermaLink="false">1mTx73kOe2-z5XOYXCVH_kjIydEZfnczQ</guid>
+      <link>https://github.com/ennuiweb/psyk-podcast</link>
+      <pubDate>Sat, 01 Aug 2026 00:00:00 +0200</pubDate>
+      <enclosure url="https://drive.google.com/uc?export=download&amp;id=1mTx73kOe2-z5XOYXCVH_kjIydEZfnczQ" length="79024151" type="audio/mpeg" />
+      <itunes:explicit>false</itunes:explicit>
+      <itunes:image href="https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/bioneuro/assets/cover.png" />
+    </item>
+    <item>
+      <title>[Podcast] · Grundbog Kapitel 3</title>
+      <description>Grundbog Kapitel 3 · Forelæsning 1</description>
+      <guid isPermaLink="false">1xe3Fjs1OosGlpIT2hfY8k8V-7TQLAY7h</guid>
+      <link>https://github.com/ennuiweb/psyk-podcast</link>
+      <pubDate>Fri, 31 Jul 2026 16:00:00 +0200</pubDate>
+      <enclosure url="https://drive.google.com/uc?export=download&amp;id=1xe3Fjs1OosGlpIT2hfY8k8V-7TQLAY7h" length="74789922" type="audio/mpeg" />
+      <itunes:explicit>false</itunes:explicit>
+      <itunes:image href="https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/bioneuro/assets/cover.png" />
+    </item>
+    <item>
+      <title>[Podcast] · Grundbog Kapitel 4</title>
+      <description>Grundbog Kapitel 4 · Forelæsning 1</description>
+      <guid isPermaLink="false">1aBLzehaafdpbHIuzgXEZaPegiCcsLQCl</guid>
+      <link>https://github.com/ennuiweb/psyk-podcast</link>
+      <pubDate>Fri, 31 Jul 2026 08:00:00 +0200</pubDate>
+      <enclosure url="https://drive.google.com/uc?export=download&amp;id=1aBLzehaafdpbHIuzgXEZaPegiCcsLQCl" length="85831477" type="audio/mpeg" />
+      <itunes:explicit>false</itunes:explicit>
+      <itunes:image href="https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/bioneuro/assets/cover.png" />
+    </item>
+    <item>
+      <title>[Podcast] · Grundbog Kapitel 5</title>
+      <description>Grundbog Kapitel 5 · Forelæsning 1</description>
+      <guid isPermaLink="false">1wY06kIxUd_5Pv5dPc0rJmkiO40aCOFf7</guid>
+      <link>https://github.com/ennuiweb/psyk-podcast</link>
+      <pubDate>Fri, 31 Jul 2026 00:00:00 +0200</pubDate>
+      <enclosure url="https://drive.google.com/uc?export=download&amp;id=1wY06kIxUd_5Pv5dPc0rJmkiO40aCOFf7" length="85143853" type="audio/mpeg" />
+      <itunes:explicit>false</itunes:explicit>
+      <itunes:image href="https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/bioneuro/assets/cover.png" />
+    </item>
   </channel>
 </rss>

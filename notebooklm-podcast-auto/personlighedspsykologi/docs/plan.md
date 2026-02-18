@@ -28,6 +28,8 @@
   - Orientation/detail/prompt: from `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json` (`infographic`, `weekly_infographic`, `per_reading_infographic`, `brief_infographic`).
 - Quizzes: generated when `--content-types` includes `quiz`.
   - Difficulty/quantity/format/prompt: from `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json` (`quiz`).
+  - `quiz.difficulty` supports `easy|medium|hard|all`; `all` fans out to all three difficulties per episode in a single `generate_week.py` run.
+  - Multi-difficulty generation requires config-tagged filenames (`--config-tagging`, default on) to avoid filename collisions.
 - Language variants: generate **Danish + English** for all episodes.
   - Config: `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json` → `languages`
   - English naming: adds suffix ` [EN]` to file names and notebook titles.

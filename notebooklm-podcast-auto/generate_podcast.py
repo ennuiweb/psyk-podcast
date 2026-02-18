@@ -5,6 +5,7 @@ import time
 from time import monotonic
 import json
 import os
+import re
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Iterable
@@ -39,6 +40,11 @@ AUTH_TOKENS = (
 )
 RATE_LIMIT_COOLDOWN_SECONDS = 300
 AUTH_COOLDOWN_SECONDS = 3600
+QUIZ_DIFFICULTIES = ("easy", "medium", "hard")
+QUIZ_CFG_DIFFICULTY_PATTERN = re.compile(
+    r"(\{[^{}]*\btype=quiz\b[^{}]*\bdifficulty=)([a-z0-9._:+-]+)",
+    re.IGNORECASE,
+)
 
 
 def _parse_source_entry(entry: str) -> dict | None:
@@ -1241,6 +1247,35 @@ async def _generate_podcast(args: argparse.Namespace) -> int:
     return 2
 
 
+def _output_path_for_quiz_difficulty(output_path: Path, difficulty: str) -> Path:
+    stem = output_path.stem
+    replaced_stem, count = QUIZ_CFG_DIFFICULTY_PATTERN.subn(
+        lambda match: f"{match.group(1)}{difficulty}",
+        stem,
+        count=1,
+    )
+    if count:
+        return output_path.with_name(f"{replaced_stem}{output_path.suffix}")
+    return output_path.with_name(f"{stem} [difficulty={difficulty}]{output_path.suffix}")
+
+
+def _run_all_quiz_difficulties(args: argparse.Namespace) -> int:
+    if args.artifact_type != "quiz":
+        raise ValueError("--quiz-difficulty all is only valid with --artifact-type quiz")
+
+    base_output = Path(args.output).expanduser()
+    final_exit_code = 0
+    for difficulty in QUIZ_DIFFICULTIES:
+        run_args = argparse.Namespace(**vars(args))
+        run_args.quiz_difficulty = difficulty
+        run_args.output = str(_output_path_for_quiz_difficulty(base_output, difficulty))
+        print(f"Generating quiz difficulty '{difficulty}' -> {run_args.output}")
+        code = asyncio.run(_generate_podcast(run_args))
+        if code != 0:
+            final_exit_code = code
+    return final_exit_code
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Generate a NotebookLM artifact from sources.")
     parser.add_argument(
@@ -1303,8 +1338,8 @@ def main() -> int:
     )
     parser.add_argument(
         "--quiz-difficulty",
-        choices=["easy", "medium", "hard"],
-        help="Quiz difficulty.",
+        choices=["easy", "medium", "hard", "all"],
+        help="Quiz difficulty. Use 'all' to generate easy+medium+hard in one run.",
     )
     parser.add_argument(
         "--quiz-format",
@@ -1424,6 +1459,8 @@ def main() -> int:
         if args.list_profiles:
             _print_profiles(args)
             return 0
+        if args.quiz_difficulty == "all":
+            return _run_all_quiz_difficulties(args)
         return asyncio.run(_generate_podcast(args))
     except Exception as exc:
         print(f"Error: {exc}")

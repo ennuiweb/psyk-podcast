@@ -38,10 +38,18 @@ Current generation is configured for English-only outputs (see `prompt_config.js
 
 ## Quiz generation
 - Configure quiz settings in `prompt_config.json` under `quiz` (difficulty, quantity, format, prompt).
+  - `quiz.difficulty` supports `easy`, `medium`, `hard`, and `all`.
+  - Use `all` to fan out quiz generation across all three difficulties for every episode in one `generate_week.py` run.
 - Generate quizzes for a week:
 
 ```bash
 ./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_week.py --week W1 --content-types quiz --profile default
+```
+
+- Generate all quiz difficulties for a single `generate_podcast.py` invocation:
+
+```bash
+./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/generate_podcast.py --artifact-type quiz --quiz-difficulty all --quiz-format html --sources-file <sources.txt> --notebook-title "<title>" --output "<output>.html" --profile default
 ```
 
 - Download quiz exports from request logs:

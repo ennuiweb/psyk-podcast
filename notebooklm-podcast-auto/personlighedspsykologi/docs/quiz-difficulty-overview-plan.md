@@ -19,8 +19,8 @@ Generate `easy`, `medium`, and `hard` quiz HTML files for all English audio epis
   - Replacing current single-link `quiz_links.json` schema.
 
 ## Plan
-1. Create dedicated prompt configs per difficulty.
-2. Generate quiz requests for every `W#L#` folder for each difficulty.
+1. Set `quiz.difficulty` to `all` in prompt config.
+2. Generate quiz requests for every `W#L#` folder in one pass.
 3. Download all quiz HTML artifacts.
 4. Validate coverage (`audio count == quiz count`) per difficulty.
 5. Keep feed mapping stable on `medium` (same behavior as today).
@@ -29,25 +29,9 @@ Generate `easy`, `medium`, and `hard` quiz HTML files for all English audio epis
 ## Execution commands
 Run from repo root.
 
-### 1) Create difficulty prompt configs
-```bash
-python3 - <<'PY'
-import json
-from pathlib import Path
-
-base = Path("notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json")
-cfg = json.loads(base.read_text(encoding="utf-8"))
-
-for level in ("easy", "medium", "hard"):
-    data = dict(cfg)
-    quiz = dict(cfg.get("quiz") or {})
-    quiz["difficulty"] = level
-    data["quiz"] = quiz
-    out = base.with_name(f"prompt_config.quiz-{level}.json")
-    out.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    print(out)
-PY
-```
+### 1) Set multi-difficulty generation
+In `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json`:
+- `quiz.difficulty: "all"`
 
 ### 2) Resolve lecture list from current output
 ```bash
@@ -57,13 +41,10 @@ echo "$LECTURES"
 
 ### 3) Generate quiz artifacts for all difficulties
 ```bash
-for level in easy medium hard; do
-  ./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_week.py \
-    --weeks "$LECTURES" \
-    --content-types quiz \
-    --prompt-config "notebooklm-podcast-auto/personlighedspsykologi/prompt_config.quiz-${level}.json" \
-    --profile default
-done
+./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_week.py \
+  --weeks "$LECTURES" \
+  --content-types quiz \
+  --profile default
 ```
 
 ### 4) Download quiz HTML files

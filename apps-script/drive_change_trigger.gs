@@ -20,7 +20,7 @@ const CONFIG = {
       '1uPt6bHjivcD9z-Tw6Q2xbIld3bmH_WyI', // Socialpsykologi
       '1Vq_ptrkc9FQXOahsFh4T1xHut-BWxiIX',   // Intro + VT Deep Dives - Hold 1 - 2024
       '1lJD1TPU_Re7feq99Wj98RnWKbDjsi3qm',   // Personlighedspsykologi
-      '14Gg0qQSi9izrb7JejYov027msg0kz1te',   // Bio / Neuropsychology
+      '1hZDV24e4V4ygo_Ye30zzRwInkgIyfgzi',   // Bio / Neuropsychology
     ],
     folderId: null,             // Backwards compatibility; leave null when using folderIds.
     includeSubfolders: true,

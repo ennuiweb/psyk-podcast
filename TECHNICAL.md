@@ -173,6 +173,7 @@ python3 manage.py test
 Language choice:
 - portal default is Danish (`LANGUAGE_CODE=da`)
 - only Danish is enabled right now (`LANGUAGES=[("da", "Dansk")]`)
+- locale middleware is enabled now, so future language rollout is just adding languages + translations
 - English UI is intentionally not exposed in phase 1
 
 ### Reverse proxy routes (Caddy/nginx)

@@ -5,6 +5,7 @@ import json
 import tempfile
 from pathlib import Path
 
+from django.conf import settings
 from django.contrib.auth.models import User
 from django.test import Client, TestCase, override_settings
 from django.urls import reverse
@@ -359,3 +360,7 @@ class QuizPortalTests(TestCase):
 
         response = csrf_client.post(state_url, data=json.dumps(payload), content_type="application/json")
         self.assertEqual(response.status_code, 403)
+
+    def test_language_configuration_is_danish_only(self) -> None:
+        self.assertEqual(settings.LANGUAGE_CODE, "da")
+        self.assertEqual(settings.LANGUAGES, [("da", "Dansk")])

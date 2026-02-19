@@ -1,0 +1,188 @@
+{% extends "base.html" %}
+{% block title %}Quiz · {{ quiz_title }}{% endblock %}
+{% block content %}
+<div class="card" style="padding: 0.8rem 0.8rem 1rem">
+  <form style="display: none">{% csrf_token %}</form>
+  <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 0.8rem; flex-wrap: wrap">
+    <div>
+      <h1 style="margin: 0">{{ quiz_title }}</h1>
+      <p class="muted" style="margin: 0.15rem 0 0">Difficulty: {{ quiz_difficulty|title }} · ID: {{ quiz_id }}</p>
+    </div>
+    <a href="{% url 'progress' %}">Back to progress</a>
+  </div>
+
+  <div style="margin-top: 0.8rem; border: 1px solid var(--border); border-radius: 12px; overflow: hidden">
+    <iframe
+      id="quiz-frame"
+      title="Quiz {{ quiz_id }}"
+      src="{{ raw_quiz_url }}"
+      style="width: 100%; height: 82vh; border: 0"
+      referrerpolicy="same-origin"
+    ></iframe>
+  </div>
+</div>
+
+<script>
+  (function () {
+    "use strict";
+
+    const iframe = document.getElementById("quiz-frame");
+    const apiStateUrl = "{{ state_api_url }}";
+    const rawStateUrl = "{{ raw_state_api_url }}";
+    const origin = window.location.origin;
+
+    function getCsrfToken() {
+      const cookies = document.cookie ? document.cookie.split(";") : [];
+      for (const cookie of cookies) {
+        const entry = cookie.trim();
+        if (entry.startsWith("csrftoken=")) {
+          return decodeURIComponent(entry.slice("csrftoken=".length));
+        }
+      }
+      return "";
+    }
+
+    async function fetchRawState() {
+      const response = await fetch(rawStateUrl, { credentials: "same-origin" });
+      if (!response.ok) {
+        throw new Error("Failed to fetch raw quiz state");
+      }
+      return response.json();
+    }
+
+    async function saveRawState(payload) {
+      const body = typeof payload === "string" ? payload : JSON.stringify(payload ?? null);
+      const response = await fetch(rawStateUrl, {
+        method: "POST",
+        credentials: "same-origin",
+        headers: {
+          "Content-Type": "application/json",
+          "X-CSRFToken": getCsrfToken(),
+        },
+        body,
+      });
+      if (!response.ok) {
+        throw new Error("Failed to save raw quiz state");
+      }
+    }
+
+    async function saveStructuredState(state) {
+      const response = await fetch(apiStateUrl, {
+        method: "POST",
+        credentials: "same-origin",
+        headers: {
+          "Content-Type": "application/json",
+          "X-CSRFToken": getCsrfToken(),
+        },
+        body: JSON.stringify(state),
+      });
+      if (!response.ok) {
+        throw new Error("Failed to save structured quiz state");
+      }
+    }
+
+    async function handleBridgeMessage(event) {
+      if (event.source !== iframe.contentWindow || event.origin !== origin) {
+        return;
+      }
+
+      const message = event.data || {};
+      const action = message.action;
+
+      try {
+        if (action === "GetAppState") {
+          const rawPayload = await fetchRawState();
+          iframe.contentWindow.postMessage(
+            {
+              action: "GetAppStateResponse",
+              payload: rawPayload,
+            },
+            origin
+          );
+          return;
+        }
+
+        if (action === "SetAppState") {
+          await saveRawState(message.payload);
+          return;
+        }
+
+        if (action === "GetTheme") {
+          iframe.contentWindow.postMessage(
+            {
+              action: "ThemeChange",
+              payload: "light",
+            },
+            origin
+          );
+          return;
+        }
+
+        if (action === "DispatchLogEvent" || action === "TriggerFileDownload" || action === "AskQuestion") {
+          return;
+        }
+
+        console.warn("Ignored unknown quiz iframe action", action);
+      } catch (error) {
+        console.error("Quiz bridge error", error);
+      }
+    }
+
+    window.addEventListener("message", handleBridgeMessage);
+
+    function tryPatchNotebookApi() {
+      const frameWindow = iframe.contentWindow;
+      if (!frameWindow || !frameWindow.notebookAppApi) {
+        return false;
+      }
+
+      const api = frameWindow.notebookAppApi;
+      if (api.__quizPortalPatched) {
+        return true;
+      }
+
+      const originalSetAppState =
+        typeof api.setAppState === "function" ? api.setAppState.bind(api) : null;
+
+      api.setAppState = async function setAppStatePatched(state) {
+        try {
+          await saveStructuredState(state);
+        } catch (error) {
+          console.error("Structured state save failed", error);
+        }
+
+        if (originalSetAppState) {
+          try {
+            return await originalSetAppState(state);
+          } catch (error) {
+            console.warn("Original setAppState call failed", error);
+          }
+        }
+
+        return undefined;
+      };
+
+      api.__quizPortalPatched = true;
+      return true;
+    }
+
+    const patchTimer = window.setInterval(function () {
+      try {
+        if (tryPatchNotebookApi()) {
+          window.clearInterval(patchTimer);
+        }
+      } catch (error) {
+        console.error("Notebook API patch failed", error);
+      }
+    }, 200);
+
+    iframe.addEventListener("load", function () {
+      try {
+        tryPatchNotebookApi();
+      } catch (error) {
+        console.error("Notebook API patch-on-load failed", error);
+      }
+    });
+  })();
+</script>
+{% endblock %}

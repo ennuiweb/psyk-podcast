@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% block title %}Quiz Portal{% endblock %}</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f6f8fc;
+        --surface: #ffffff;
+        --ink: #17223a;
+        --muted: #5f6c8a;
+        --accent: #1f4fda;
+        --accent-soft: #e9efff;
+        --danger: #b42318;
+        --border: #d6dcea;
+      }
+
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: "Segoe UI", Tahoma, sans-serif;
+        background: var(--bg);
+        color: var(--ink);
+      }
+
+      header {
+        border-bottom: 1px solid var(--border);
+        background: var(--surface);
+      }
+
+      .header-inner {
+        max-width: 980px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.8rem 1rem;
+      }
+
+      .brand {
+        font-weight: 700;
+        color: var(--ink);
+        text-decoration: none;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 0.6rem;
+        align-items: center;
+      }
+
+      .nav-links a,
+      .nav-links button {
+        border: 1px solid var(--border);
+        background: #fff;
+        color: var(--ink);
+        border-radius: 10px;
+        padding: 0.35rem 0.7rem;
+        text-decoration: none;
+        font-size: 0.9rem;
+        cursor: pointer;
+      }
+
+      .nav-links button:hover,
+      .nav-links a:hover {
+        background: var(--accent-soft);
+      }
+
+      main {
+        max-width: 980px;
+        margin: 1.4rem auto;
+        padding: 0 1rem 2rem;
+      }
+
+      .card {
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        background: var(--surface);
+        padding: 1rem;
+      }
+
+      .messages {
+        margin-bottom: 1rem;
+        display: grid;
+        gap: 0.4rem;
+      }
+
+      .message {
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 0.5rem 0.7rem;
+        background: #fff;
+      }
+
+      .message.error { border-color: #f2c7c3; color: var(--danger); }
+      .message.success { border-color: #c8e9cd; }
+
+      .btn-primary {
+        border: none;
+        border-radius: 10px;
+        background: var(--accent);
+        color: #fff;
+        padding: 0.55rem 0.9rem;
+        cursor: pointer;
+      }
+
+      .btn-primary:hover {
+        background: #1942ba;
+      }
+
+      .insecure-banner {
+        margin-bottom: 1rem;
+        border: 1px solid #f5c777;
+        border-radius: 10px;
+        padding: 0.7rem;
+        background: #fff7e6;
+        color: #7f4b00;
+      }
+
+      .muted { color: var(--muted); }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="header-inner">
+        <a class="brand" href="{% url 'progress' %}">Quiz Portal</a>
+        <div class="nav-links">
+          {% if request.user.is_authenticated %}
+          <a href="{% url 'progress' %}">Progress</a>
+          <form method="post" action="{% url 'logout' %}" style="margin: 0">
+            {% csrf_token %}
+            <button type="submit">Logout</button>
+          </form>
+          {% else %}
+          <a href="{% url 'login' %}">Login</a>
+          <a href="{% url 'signup' %}">Sign up</a>
+          {% endif %}
+        </div>
+      </div>
+    </header>
+    <main>
+      {% if messages %}
+      <div class="messages">
+        {% for message in messages %}
+        <div class="message {{ message.tags|default:'' }}">{{ message }}</div>
+        {% endfor %}
+      </div>
+      {% endif %}
+      {% block content %}{% endblock %}
+    </main>
+  </body>
+</html>

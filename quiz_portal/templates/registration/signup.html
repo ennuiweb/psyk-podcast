@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}Sign Up · Quiz Portal{% endblock %}
+{% block content %}
+<div class="card" style="max-width: 520px; margin: 0 auto">
+  {% if insecure_http %}
+  <div class="insecure-banner">
+    Account creation over HTTP is insecure. Prioritize HTTPS before broad rollout.
+  </div>
+  {% endif %}
+
+  <h1 style="margin-top: 0">Create Account</h1>
+  <p class="muted">Open signup is enabled for this deployment.</p>
+
+  <form method="post">
+    {% csrf_token %}
+    {% if next_value %}
+    <input type="hidden" name="next" value="{{ next_value }}" />
+    {% endif %}
+    {{ form.non_field_errors }}
+    <p>
+      <label for="id_username">Username</label><br />
+      {{ form.username }}
+      {{ form.username.errors }}
+    </p>
+    <p>
+      <label for="id_email">Email (optional)</label><br />
+      {{ form.email }}
+      {{ form.email.errors }}
+    </p>
+    <p>
+      <label for="id_password1">Password</label><br />
+      {{ form.password1 }}
+      {{ form.password1.errors }}
+    </p>
+    <p>
+      <label for="id_password2">Confirm password</label><br />
+      {{ form.password2 }}
+      {{ form.password2.errors }}
+    </p>
+    <button class="btn-primary" type="submit">Create account</button>
+  </form>
+
+  <p class="muted" style="margin-top: 1rem">
+    Already have an account? <a href="{% url 'login' %}">Login</a>.
+  </p>
+</div>
+{% endblock %}

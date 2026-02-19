@@ -124,6 +124,72 @@ python podcast/gdrive_podcast_feed.py --config podcast/config.local.json
 
 The repository ships with `podcast/config.json` and `podcast/episode_metadata.json` pre-populated for Socialpsykologi Deep Dives - Hold 1 - 2024—update the titles, artwork, contact email, and descriptions to match your own show before publishing.
 
+## Quiz portal (login + completion tracking)
+The repository now includes a separate Django portal in `quiz_portal/` for user login and per-user quiz progress tracking, without changing NotebookLM-generated quiz HTML internals.
+
+### What it serves
+- `GET/POST /accounts/signup`
+- `GET/POST /accounts/login`
+- `POST /accounts/logout`
+- `GET /q/<quiz_id>.html` (login-required wrapper around iframe quiz)
+- `GET /q/raw/<quiz_id>.html` (login-required raw quiz HTML)
+- `GET/POST /api/quiz-state/<quiz_id>` (structured progress state)
+- `GET/POST /api/quiz-state/<quiz_id>/raw` (raw postMessage-compatible state payload)
+- `GET /progress` (dashboard with in-progress/completed rows)
+
+### Data model
+- Django app: `quiz_portal/quizzes`
+- Model: `QuizProgress`
+- Unique key: `(user, quiz_id)`
+- Completion rule (phase 1): `currentView == "summary"` and `answers_count == question_count`
+
+### Local setup
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+cd quiz_portal
+python3 manage.py migrate
+python3 manage.py createsuperuser  # optional
+python3 manage.py runserver 0.0.0.0:8000
+```
+
+### Test command
+```bash
+cd quiz_portal
+python3 manage.py test
+```
+
+### Runtime configuration
+- `QUIZ_PORTAL_SECRET_KEY`
+- `QUIZ_PORTAL_DEBUG`
+- `QUIZ_PORTAL_ALLOWED_HOSTS` (comma-separated)
+- `QUIZ_FILES_ROOT` (default: `/var/www/quizzes/personlighedspsykologi`)
+- `QUIZ_LINKS_JSON_PATH` (default: `shows/personlighedspsykologi-en/quiz_links.json`)
+- `QUIZ_SIGNUP_RATE_LIMIT`
+- `QUIZ_LOGIN_RATE_LIMIT`
+- `QUIZ_RATE_LIMIT_WINDOW_SECONDS`
+
+### Reverse proxy routes (Caddy/nginx)
+Proxy these routes to the Django service (Gunicorn/Uvicorn):
+- `/accounts/*`
+- `/q/*`
+- `/api/*`
+- `/progress`
+
+Existing quiz generation/sync scripts remain unchanged.
+
+### Security controls in phase 1
+- Django session auth + CSRF middleware
+- Login required on wrapper/raw/state/progress endpoints
+- Strict quiz ID regex (`^[0-9a-f]{8}$`) plus existence checks
+- IP-based login/signup rate limiting
+- HTTP warning banners on auth pages (until HTTPS rollout)
+- Unknown iframe actions ignored safely
+
+### Operational note
+The current deployment is HTTP on IP. Credentials are therefore vulnerable on untrusted networks. HTTPS with a domain should be prioritized as the next rollout step.
+
 ## Configure GitHub Actions
 1. Create two repository secrets:
    - `GOOGLE_SERVICE_ACCOUNT_JSON` – paste the entire JSON key exactly as downloaded (no extra quoting or base64).
@@ -166,9 +232,10 @@ If you want the Apps Script file to update without manual pasting, use the `clas
 ### Auto-push on git push
 To push the Apps Script file whenever you run `git push`, install the repository git hook:
 1. Run `scripts/install_git_hooks.sh`.
-2. Push as usual; the hook runs `apps-script/push_drive_trigger.sh` each time.
-3. Set `APPS_SCRIPT_PUSH_ON_PUSH=0` in your environment to skip the hook on demand.
-4. (Optional) Set `PRE_PUSH_LOG_FILE=/path/to/pre-push.log` to enable logging; by default no log file is written.
+2. Push as usual; the hook first runs quiz extraction (`extract_quiz_html_to_json.py`) and then runs `apps-script/push_drive_trigger.sh`.
+3. Set `QUIZ_JSON_EXTRACT_ON_PUSH=0` in your environment to skip quiz extraction on demand.
+4. Set `APPS_SCRIPT_PUSH_ON_PUSH=0` in your environment to skip the Apps Script push step on demand.
+5. (Optional) Set `PRE_PUSH_LOG_FILE=/path/to/pre-push.log` to enable logging; by default no log file is written.
 
 ### Bioneuro audio mirror on push
 The same `pre-push` hook can mirror local Bioneuro audio files from OneDrive into the Google Drive mounted destination used by the `bioneuro` show:

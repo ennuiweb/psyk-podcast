@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Progress · Quiz Portal{% endblock %}
+{% block content %}
+<div class="card">
+  <h1 style="margin-top: 0">Your Quiz Progress</h1>
+  <p class="muted">Tracking is per quiz ID and therefore per difficulty variant.</p>
+
+  {% if rows %}
+  <div style="overflow-x: auto">
+    <table style="width: 100%; border-collapse: collapse">
+      <thead>
+        <tr>
+          <th style="text-align: left; border-bottom: 1px solid var(--border); padding: 0.5rem">Quiz</th>
+          <th style="text-align: left; border-bottom: 1px solid var(--border); padding: 0.5rem">Difficulty</th>
+          <th style="text-align: left; border-bottom: 1px solid var(--border); padding: 0.5rem">Status</th>
+          <th style="text-align: left; border-bottom: 1px solid var(--border); padding: 0.5rem">Answers</th>
+          <th style="text-align: left; border-bottom: 1px solid var(--border); padding: 0.5rem">Updated</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in rows %}
+        <tr>
+          <td style="padding: 0.55rem; border-bottom: 1px solid var(--border)">
+            <a href="{{ row.quiz_url }}">{{ row.title }}</a>
+            <div class="muted" style="font-size: 0.8rem">{{ row.quiz_id }}</div>
+          </td>
+          <td style="padding: 0.55rem; border-bottom: 1px solid var(--border)">{{ row.difficulty }}</td>
+          <td style="padding: 0.55rem; border-bottom: 1px solid var(--border)">{{ row.status }}</td>
+          <td style="padding: 0.55rem; border-bottom: 1px solid var(--border)">
+            {{ row.answers_count }} / {{ row.question_count }}
+          </td>
+          <td style="padding: 0.55rem; border-bottom: 1px solid var(--border)">{{ row.updated_at }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% else %}
+  <p class="muted">No saved quiz progress yet.</p>
+  {% endif %}
+</div>
+{% endblock %}

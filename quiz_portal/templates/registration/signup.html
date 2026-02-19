@@ -1,15 +1,15 @@
 {% extends "base.html" %}
-{% block title %}Sign Up · Quiz Portal{% endblock %}
+{% block title %}Opret konto · Quizportal{% endblock %}
 {% block content %}
 <div class="card auth-shell">
   {% if insecure_http %}
   <div class="insecure-banner">
-    Account creation over HTTP is insecure. Prioritize HTTPS before broad rollout.
+    Oprettelse af konto over HTTP er usikkert. Prioritér HTTPS før bred udrulning.
   </div>
   {% endif %}
 
-  <h1 class="auth-title">Create Account</h1>
-  <p class="muted auth-subtitle">Open signup is enabled for this deployment.</p>
+  <h1 class="auth-title">Opret konto</h1>
+  <p class="muted auth-subtitle">Åben tilmelding er aktiveret i denne installation.</p>
 
   <form method="post" class="form-stack">
     {% csrf_token %}
@@ -18,30 +18,30 @@
     {% endif %}
     {{ form.non_field_errors }}
     <p>
-      <label for="id_username">Username</label>
+      <label for="id_username">Brugernavn</label>
       {{ form.username }}
       {{ form.username.errors }}
     </p>
     <p>
-      <label for="id_email">Email (optional)</label>
+      <label for="id_email">E-mail (valgfri)</label>
       {{ form.email }}
       {{ form.email.errors }}
     </p>
     <p>
-      <label for="id_password1">Password</label>
+      <label for="id_password1">Adgangskode</label>
       {{ form.password1 }}
       {{ form.password1.errors }}
     </p>
     <p>
-      <label for="id_password2">Confirm password</label>
+      <label for="id_password2">Bekræft adgangskode</label>
       {{ form.password2 }}
       {{ form.password2.errors }}
     </p>
-    <button class="btn-primary" type="submit">Create account</button>
+    <button class="btn-primary" type="submit">Opret konto</button>
   </form>
 
   <p class="muted auth-footer">
-    Already have an account? <a href="{% url 'login' %}">Login</a>.
+    Har du allerede en konto? <a href="{% url 'login' %}">Log ind</a>.
   </p>
 </div>
 {% endblock %}

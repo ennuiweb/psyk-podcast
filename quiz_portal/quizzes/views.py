@@ -33,6 +33,12 @@ from .services import (
 
 logger = logging.getLogger(__name__)
 MAX_STATE_BYTES = 5_000_000
+DIFFICULTY_LABELS_DA = {
+    "easy": "Let",
+    "medium": "Mellem",
+    "hard": "Svær",
+    "unknown": "Ukendt",
+}
 
 
 def _is_http_insecure(request: HttpRequest) -> bool:
@@ -55,6 +61,11 @@ def _safe_next_redirect(request: HttpRequest) -> str | None:
     ):
         return None
     return candidate
+
+
+def _difficulty_label(value: str | None) -> str:
+    difficulty = (value or "unknown").strip().lower() or "unknown"
+    return DIFFICULTY_LABELS_DA.get(difficulty, difficulty.capitalize())
 
 
 def _rate_limit_exceeded(
@@ -85,7 +96,7 @@ def signup_view(request: HttpRequest) -> HttpResponse:
         )
         form = SignupForm(request.POST)
         if blocked:
-            form.add_error(None, f"Too many signup attempts. Try again in {retry_after} seconds.")
+            form.add_error(None, f"For mange forsøg på oprettelse. Prøv igen om {retry_after} sekunder.")
             return render(
                 request,
                 "registration/signup.html",
@@ -127,7 +138,7 @@ def login_view(request: HttpRequest) -> HttpResponse:
         )
         form = AuthenticationForm(request, data=request.POST)
         if blocked:
-            form.add_error(None, f"Too many login attempts. Try again in {retry_after} seconds.")
+            form.add_error(None, f"For mange loginforsøg. Prøv igen om {retry_after} sekunder.")
             return render(
                 request,
                 "registration/login.html",
@@ -159,19 +170,19 @@ def login_view(request: HttpRequest) -> HttpResponse:
 @login_required
 def logout_view(request: HttpRequest) -> HttpResponse:
     logout(request)
-    messages.info(request, "You have been logged out.")
+    messages.info(request, "Du er nu logget ud.")
     return redirect("login")
 
 
 def _ensure_quiz_id_or_404(quiz_id: str) -> str:
     if not QUIZ_ID_RE.match(quiz_id):
-        raise Http404("Quiz not found")
+        raise Http404("Quiz ikke fundet")
     return quiz_id
 
 
 def _ensure_quiz_exists_or_404(quiz_id: str) -> None:
     if not quiz_exists(quiz_id):
-        raise Http404("Quiz not found")
+        raise Http404("Quiz ikke fundet")
 
 
 @login_required
@@ -184,7 +195,7 @@ def quiz_wrapper_view(request: HttpRequest, quiz_id: str) -> HttpResponse:
     context = {
         "quiz_id": quiz_id,
         "quiz_title": label.episode_title if label else quiz_id,
-        "quiz_difficulty": label.difficulty if label else "unknown",
+        "quiz_difficulty_label": _difficulty_label(label.difficulty if label else "unknown"),
         "raw_quiz_url": reverse("quiz-raw", kwargs={"quiz_id": quiz_id}),
         "state_api_url": reverse("quiz-state", kwargs={"quiz_id": quiz_id}),
         "raw_state_api_url": reverse("quiz-state-raw", kwargs={"quiz_id": quiz_id}),
@@ -214,12 +225,12 @@ def quiz_state_view(request: HttpRequest, quiz_id: str) -> HttpResponse:
         return JsonResponse(progress.state_json, safe=False)
 
     if len(request.body) > MAX_STATE_BYTES:
-        return HttpResponseBadRequest("State payload is too large.")
+        return HttpResponseBadRequest("State-payload er for stor.")
 
     try:
         payload = json.loads(request.body.decode("utf-8"))
     except (UnicodeDecodeError, json.JSONDecodeError):
-        return HttpResponseBadRequest("Invalid JSON body.")
+        return HttpResponseBadRequest("Ugyldig JSON-body.")
 
     try:
         state_payload = normalize_state_payload(payload)
@@ -271,18 +282,18 @@ def quiz_state_raw_view(request: HttpRequest, quiz_id: str) -> HttpResponse:
     try:
         payload_text = request.body.decode("utf-8").strip()
     except UnicodeDecodeError:
-        return HttpResponseBadRequest("Payload must be UTF-8.")
+        return HttpResponseBadRequest("Payload skal være UTF-8.")
 
     if not payload_text:
-        return HttpResponseBadRequest("Payload cannot be empty.")
+        return HttpResponseBadRequest("Payload må ikke være tom.")
 
     try:
         json.loads(payload_text)
     except json.JSONDecodeError:
-        return HttpResponseBadRequest("Raw payload must be valid JSON.")
+        return HttpResponseBadRequest("Raw payload skal være gyldig JSON.")
 
     if len(payload_text) > 5_000_000:
-        return HttpResponseBadRequest("Payload is too large.")
+        return HttpResponseBadRequest("Payload er for stor.")
 
     progress.raw_state_payload = payload_text
     progress.save(update_fields=["raw_state_payload", "updated_at"])
@@ -302,8 +313,9 @@ def progress_view(request: HttpRequest) -> HttpResponse:
             {
                 "quiz_id": row.quiz_id,
                 "title": label.episode_title if label else row.quiz_id,
-                "difficulty": (label.difficulty if label else "unknown").title(),
+                "difficulty_label": _difficulty_label(label.difficulty if label else "unknown"),
                 "status": row.status,
+                "status_label": row.get_status_display(),
                 "answers_count": row.answers_count,
                 "question_count": row.question_count,
                 "updated_at": row.updated_at,

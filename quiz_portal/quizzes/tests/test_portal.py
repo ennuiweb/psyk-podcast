@@ -104,7 +104,7 @@ class QuizPortalTests(TestCase):
             },
         )
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "A user with that username already exists")
+        self.assertIn("username", response.context["form"].errors)
 
     def test_login_bad_password(self) -> None:
         self._create_user(username="alice", password="Secret123!!")
@@ -116,7 +116,7 @@ class QuizPortalTests(TestCase):
             },
         )
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "Please enter a correct username and password")
+        self.assertTrue(response.context["form"].non_field_errors())
 
     def test_login_rejects_external_next_redirect(self) -> None:
         self._create_user(username="alice", password="Secret123!!")
@@ -342,7 +342,7 @@ class QuizPortalTests(TestCase):
         response = self.client.get(reverse("progress"))
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "W1L1 - Episode")
-        self.assertContains(response, "Medium")
+        self.assertContains(response, "Mellem")
 
     def test_state_post_requires_csrf(self) -> None:
         user = self._create_user()

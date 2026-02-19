@@ -82,45 +82,45 @@ def quiz_question_count(quiz_id: str) -> int:
 
 def normalize_state_payload(raw_payload: Any) -> dict[str, Any]:
     if not isinstance(raw_payload, dict):
-        raise StatePayloadError("State payload must be a JSON object.")
+        raise StatePayloadError("State-payload skal være et JSON-objekt.")
 
     required_keys = ("userAnswers", "currentQuestionIndex", "hiddenQuestionIndices", "currentView")
     missing = [key for key in required_keys if key not in raw_payload]
     if missing:
         missing_str = ", ".join(missing)
-        raise StatePayloadError(f"State payload is missing required keys: {missing_str}.")
+        raise StatePayloadError(f"State-payload mangler obligatoriske nøgler: {missing_str}.")
 
     raw_user_answers = raw_payload.get("userAnswers", {})
     if not isinstance(raw_user_answers, dict):
-        raise StatePayloadError("userAnswers must be an object.")
+        raise StatePayloadError("userAnswers skal være et objekt.")
 
     user_answers: dict[str, Any] = {}
     for key, value in raw_user_answers.items():
         key_str = str(key)
         if len(key_str) > 64:
-            raise StatePayloadError("userAnswers contains an oversized key.")
+            raise StatePayloadError("userAnswers indeholder en for lang nøgle.")
         user_answers[key_str] = value
 
     current_question_index = raw_payload.get("currentQuestionIndex", 0)
     if isinstance(current_question_index, bool) or not isinstance(current_question_index, int):
-        raise StatePayloadError("currentQuestionIndex must be an integer.")
+        raise StatePayloadError("currentQuestionIndex skal være et heltal.")
 
     hidden_indices_raw = raw_payload.get("hiddenQuestionIndices", [])
     if not isinstance(hidden_indices_raw, list):
-        raise StatePayloadError("hiddenQuestionIndices must be an array.")
+        raise StatePayloadError("hiddenQuestionIndices skal være en liste.")
 
     hidden_indices: list[int] = []
     for item in hidden_indices_raw:
         if isinstance(item, bool) or not isinstance(item, int):
-            raise StatePayloadError("hiddenQuestionIndices entries must be integers.")
+            raise StatePayloadError("hiddenQuestionIndices-elementer skal være heltal.")
         hidden_indices.append(item)
 
     current_view = raw_payload.get("currentView", "question")
     if not isinstance(current_view, str):
-        raise StatePayloadError("currentView must be a string.")
+        raise StatePayloadError("currentView skal være en streng.")
     current_view = current_view.strip() or "question"
     if len(current_view) > 32:
-        raise StatePayloadError("currentView is too long.")
+        raise StatePayloadError("currentView er for lang.")
 
     return {
         "userAnswers": user_answers,

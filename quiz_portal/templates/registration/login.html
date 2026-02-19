@@ -1,15 +1,15 @@
 {% extends "base.html" %}
-{% block title %}Login · Quiz Portal{% endblock %}
+{% block title %}Log ind · Quizportal{% endblock %}
 {% block content %}
 <div class="card auth-shell">
   {% if insecure_http %}
   <div class="insecure-banner">
-    HTTP login is insecure on public networks. Move to HTTPS as soon as possible.
+    Login over HTTP er usikkert på offentlige netværk. Skift til HTTPS hurtigst muligt.
   </div>
   {% endif %}
 
-  <h1 class="auth-title">Welcome Back</h1>
-  <p class="muted auth-subtitle">Use your account to open quizzes and keep progress synced.</p>
+  <h1 class="auth-title">Velkommen tilbage</h1>
+  <p class="muted auth-subtitle">Log ind for at åbne quizzer og gemme dit fremskridt.</p>
 
   <form method="post" class="form-stack">
     {% csrf_token %}
@@ -18,20 +18,20 @@
     {% endif %}
     {{ form.non_field_errors }}
     <p>
-      <label for="id_username">Username</label>
+      <label for="id_username">Brugernavn</label>
       {{ form.username }}
       {{ form.username.errors }}
     </p>
     <p>
-      <label for="id_password">Password</label>
+      <label for="id_password">Adgangskode</label>
       {{ form.password }}
       {{ form.password.errors }}
     </p>
-    <button class="btn-primary" type="submit">Login</button>
+    <button class="btn-primary" type="submit">Log ind</button>
   </form>
 
   <p class="muted auth-footer">
-    No account yet? <a href="{% url 'signup' %}">Create one</a>.
+    Har du ikke en konto endnu? <a href="{% url 'signup' %}">Opret en</a>.
   </p>
 </div>
 {% endblock %}

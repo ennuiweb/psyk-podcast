@@ -1,9 +1,9 @@
 {% extends "base.html" %}
-{% block title %}Progress · Quiz Portal{% endblock %}
+{% block title %}Fremskridt · Quizportal{% endblock %}
 {% block content %}
 <div class="card">
-  <h1 class="quiz-title">Your Quiz Progress</h1>
-  <p class="muted">Tracking is per quiz ID and therefore per difficulty variant.</p>
+  <h1 class="quiz-title">Dine quizfremskridt</h1>
+  <p class="muted">Fremskridt spores pr. quiz-id og dermed pr. sværhedsgrad.</p>
 
   {% if rows %}
   <div class="table-wrap">
@@ -11,10 +11,10 @@
       <thead>
         <tr>
           <th>Quiz</th>
-          <th>Difficulty</th>
+          <th>Sværhedsgrad</th>
           <th>Status</th>
-          <th>Answers</th>
-          <th>Updated</th>
+          <th>Svar</th>
+          <th>Opdateret</th>
         </tr>
       </thead>
       <tbody>
@@ -24,10 +24,10 @@
             <a href="{{ row.quiz_url }}">{{ row.title }}</a>
             <div class="muted">{{ row.quiz_id }}</div>
           </td>
-          <td>{{ row.difficulty }}</td>
+          <td>{{ row.difficulty_label }}</td>
           <td>
             <span class="status-pill {% if row.status == 'completed' %}is-complete{% else %}is-progress{% endif %}">
-              {{ row.status|title }}
+              {{ row.status_label }}
             </span>
           </td>
           <td>
@@ -40,7 +40,7 @@
     </table>
   </div>
   {% else %}
-  <p class="muted">No saved quiz progress yet.</p>
+  <p class="muted">Der er endnu ikke gemt fremskridt for nogen quizzer.</p>
   {% endif %}
 </div>
 {% endblock %}

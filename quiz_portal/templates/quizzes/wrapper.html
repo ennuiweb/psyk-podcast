@@ -6,9 +6,9 @@
   <div class="quiz-head">
     <div>
       <h1 class="quiz-title">{{ quiz_title }}</h1>
-      <p class="muted">Difficulty: {{ quiz_difficulty|title }} · ID: {{ quiz_id }}</p>
+      <p class="muted">Sværhedsgrad: {{ quiz_difficulty_label }} · ID: {{ quiz_id }}</p>
     </div>
-    <a class="ghost-link" href="{% url 'progress' %}">Back to progress</a>
+    <a class="ghost-link" href="{% url 'progress' %}">Tilbage til fremskridt</a>
   </div>
 
   <div class="quiz-frame-wrap">

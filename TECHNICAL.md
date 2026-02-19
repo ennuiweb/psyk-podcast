@@ -170,6 +170,11 @@ python3 manage.py test
 - `QUIZ_LOGIN_RATE_LIMIT`
 - `QUIZ_RATE_LIMIT_WINDOW_SECONDS`
 
+Language choice:
+- portal default is Danish (`LANGUAGE_CODE=da`)
+- only Danish is enabled right now (`LANGUAGES=[("da", "Dansk")]`)
+- English UI is intentionally not exposed in phase 1
+
 ### Reverse proxy routes (Caddy/nginx)
 Proxy these routes to the Django service (Gunicorn/Uvicorn):
 - `/accounts/*`

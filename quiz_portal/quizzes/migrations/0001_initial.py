@@ -24,7 +24,7 @@ class Migration(migrations.Migration):
                 (
                     "status",
                     models.CharField(
-                        choices=[("in_progress", "In progress"), ("completed", "Completed")],
+                        choices=[("in_progress", "I gang"), ("completed", "Fuldført")],
                         default="in_progress",
                         max_length=16,
                     ),

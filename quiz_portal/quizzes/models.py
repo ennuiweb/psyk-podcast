@@ -8,8 +8,8 @@ from django.db import models
 
 class QuizProgress(models.Model):
     class Status(models.TextChoices):
-        IN_PROGRESS = "in_progress", "In progress"
-        COMPLETED = "completed", "Completed"
+        IN_PROGRESS = "in_progress", "I gang"
+        COMPLETED = "completed", "Fuldført"
 
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     quiz_id = models.CharField(max_length=8)

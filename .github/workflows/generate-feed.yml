@@ -159,7 +159,7 @@ jobs:
               --config shows/${SHOW}/config.runtime.json \
               --download-root "${download_root}" \
               --language-tag "[EN]" \
-              --quiz-difficulty medium \
+              --quiz-difficulty any \
               --upload \
               --ssh-key "${key_path}"
           else
@@ -168,7 +168,7 @@ jobs:
               --config shows/${SHOW}/config.runtime.json \
               --download-root "${download_root}" \
               --language-tag "[EN]" \
-              --quiz-difficulty medium
+              --quiz-difficulty any
           fi
 
       - name: Generate feed

@@ -107,12 +107,13 @@ Lecture-level "Alle kilder" skips:
 - Use the sync script locally to upload and update the mapping:
 
 ```bash
-python3 scripts/sync_quiz_links.py --quiz-difficulty medium --dry-run
-python3 scripts/sync_quiz_links.py --quiz-difficulty medium
+python3 scripts/sync_quiz_links.py --quiz-difficulty any --dry-run
+python3 scripts/sync_quiz_links.py --quiz-difficulty any
 ```
 
 - The mapping file is `shows/personlighedspsykologi-en/quiz_links.json`.
-- Feed descriptions append `Quiz: <url>` when a mapping entry exists.
+- Feed descriptions append all available quiz links per episode (`easy`, `medium`, `hard`) when mapping entries exist.
+- Feed item `<link>` still prefers the `medium` quiz URL when available.
 
 ## Week generation command
 Command (non-blocking by default, add `--wait` to block):

@@ -1418,6 +1418,60 @@ class AutoSpecMatchingTests(unittest.TestCase):
         self.assertIn("\n\nQuiz:\n", episode["description"])
         self.assertIn(quiz_url, episode["description"])
 
+    def test_description_quiz_block_renders_all_difficulties(self):
+        mod = _load_feed_module()
+        file_entry = {
+            "id": "file1",
+            "name": "W01L1 - Foo [EN].mp3",
+            "createdTime": "2026-02-02T08:00:00+00:00",
+        }
+        episode = mod.build_episode_entry(
+            file_entry=file_entry,
+            feed_config={
+                "title": "Personlighedspsykologi (EN)",
+                "link": "https://example.com",
+                "description": "Test feed",
+                "language": "en",
+            },
+            overrides={},
+            public_link_template="https://example.com/{file_id}",
+            quiz_cfg={"base_url": "http://64.226.79.109/quizzes/personlighedspsykologi/"},
+            quiz_links={
+                "by_name": {
+                    "W01L1 - Foo [EN].mp3": {
+                        "relative_path": "W01L1/W01L1 - Foo-medium.html",
+                        "format": "html",
+                        "difficulty": "medium",
+                        "links": [
+                            {
+                                "relative_path": "W01L1/W01L1 - Foo-easy.html",
+                                "format": "html",
+                                "difficulty": "easy",
+                            },
+                            {
+                                "relative_path": "W01L1/W01L1 - Foo-medium.html",
+                                "format": "html",
+                                "difficulty": "medium",
+                            },
+                            {
+                                "relative_path": "W01L1/W01L1 - Foo-hard.html",
+                                "format": "html",
+                                "difficulty": "hard",
+                            },
+                        ],
+                    }
+                }
+            },
+        )
+        self.assertIn("\n\nQuizzes:\n", episode["description"])
+        self.assertIn("- Easy: http://64.226.79.109/quizzes/personlighedspsykologi/", episode["description"])
+        self.assertIn("- Medium: http://64.226.79.109/quizzes/personlighedspsykologi/", episode["description"])
+        self.assertIn("- Hard: http://64.226.79.109/quizzes/personlighedspsykologi/", episode["description"])
+        self.assertIn("Foo-easy.html", episode["description"])
+        self.assertIn("Foo-medium.html", episode["description"])
+        self.assertIn("Foo-hard.html", episode["description"])
+        self.assertTrue(episode["link"].endswith("W01L1/W01L1%20-%20Foo-medium.html"))
+
     def test_description_quiz_url_block_renders_inline(self):
         mod = _load_feed_module()
         file_entry = {

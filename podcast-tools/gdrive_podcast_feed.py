@@ -70,6 +70,13 @@ CFG_TAG_ANYWHERE_PATTERN = re.compile(
     r"(?:\s+\[[^\[\]]+\])?",
     re.IGNORECASE,
 )
+QUIZ_DIFFICULTY_RE = re.compile(
+    r"\{[^{}]*\bdifficulty=(?P<difficulty>[a-z0-9._:+-]+)\b[^{}]*\}",
+    re.IGNORECASE,
+)
+QUIZ_DIFFICULTY_SORT_ORDER = {"easy": 0, "medium": 1, "hard": 2}
+QUIZ_PRIMARY_DIFFICULTY_SORT_ORDER = {"medium": 0, "easy": 1, "hard": 2}
+QUIZ_DIFFICULTY_LABELS = {"easy": "Easy", "medium": "Medium", "hard": "Hard"}
 IMPORTANT_TRUTHY_STRINGS = {
     "1",
     "true",
@@ -336,6 +343,118 @@ def _lookup_by_name_with_cfg_fallback(mapping: Dict[str, Any], name: str) -> Any
         if isinstance(key, str) and _strip_cfg_tag_from_filename(key) == stripped:
             return value
     return None
+
+
+def _normalize_quiz_difficulty(value: Any, *, relative_path: Optional[str] = None) -> str:
+    if isinstance(value, str) and value.strip():
+        return value.strip().lower()
+    if isinstance(relative_path, str) and relative_path.strip():
+        match = QUIZ_DIFFICULTY_RE.search(relative_path)
+        if match:
+            difficulty = match.group("difficulty").strip().lower()
+            if difficulty:
+                return difficulty
+    return "medium"
+
+
+def _quiz_link_sort_key(link: Dict[str, str]) -> Tuple[int, str, str]:
+    difficulty = _normalize_quiz_difficulty(link.get("difficulty"), relative_path=link.get("relative_path"))
+    rel_path = str(link.get("relative_path") or "")
+    return (QUIZ_DIFFICULTY_SORT_ORDER.get(difficulty, 99), difficulty, rel_path)
+
+
+def _quiz_primary_sort_key(link: Dict[str, str]) -> Tuple[int, Tuple[int, str, str]]:
+    difficulty = _normalize_quiz_difficulty(link.get("difficulty"), relative_path=link.get("relative_path"))
+    return (QUIZ_PRIMARY_DIFFICULTY_SORT_ORDER.get(difficulty, 99), _quiz_link_sort_key(link))
+
+
+def _normalize_quiz_link_entry(raw_entry: Any) -> Optional[Dict[str, str]]:
+    if not isinstance(raw_entry, dict):
+        return None
+    relative_path = raw_entry.get("relative_path")
+    if not isinstance(relative_path, str) or not relative_path.strip():
+        return None
+    normalized_path = relative_path.strip()
+    difficulty = _normalize_quiz_difficulty(
+        raw_entry.get("difficulty"),
+        relative_path=normalized_path,
+    )
+    return {
+        "relative_path": normalized_path,
+        "format": str(raw_entry.get("format") or "html"),
+        "difficulty": difficulty,
+    }
+
+
+def _extract_quiz_links(raw_entry: Any) -> List[Dict[str, str]]:
+    candidates: List[Dict[str, str]] = []
+    if isinstance(raw_entry, dict):
+        direct = _normalize_quiz_link_entry(raw_entry)
+        if direct:
+            candidates.append(direct)
+        nested = raw_entry.get("links")
+        if isinstance(nested, list):
+            for item in nested:
+                normalized = _normalize_quiz_link_entry(item)
+                if normalized:
+                    candidates.append(normalized)
+    elif isinstance(raw_entry, list):
+        for item in raw_entry:
+            normalized = _normalize_quiz_link_entry(item)
+            if normalized:
+                candidates.append(normalized)
+    if not candidates:
+        return []
+    deduped: Dict[str, Dict[str, str]] = {}
+    for candidate in sorted(candidates, key=_quiz_link_sort_key):
+        difficulty = candidate["difficulty"]
+        if difficulty in deduped:
+            continue
+        deduped[difficulty] = candidate
+    return list(deduped.values())
+
+
+def _build_quiz_url(base_url: Any, relative_path: str) -> Optional[str]:
+    if not isinstance(base_url, str) or not base_url.strip():
+        return None
+    base = base_url
+    if not base.endswith("/"):
+        base += "/"
+    return base + quote(relative_path.lstrip("/"), safe="/")
+
+
+def _resolve_quiz_link_payloads(base_url: Any, raw_entry: Any) -> List[Dict[str, str]]:
+    links = _extract_quiz_links(raw_entry)
+    if not links:
+        return []
+    resolved: List[Dict[str, str]] = []
+    for link in links:
+        url = _build_quiz_url(base_url, link["relative_path"])
+        if not url:
+            continue
+        resolved.append(
+            {
+                "url": url,
+                "difficulty": _normalize_quiz_difficulty(
+                    link.get("difficulty"),
+                    relative_path=link.get("relative_path"),
+                ),
+            }
+        )
+    return resolved
+
+
+def _render_quiz_block(quiz_links: Sequence[Dict[str, str]]) -> Optional[str]:
+    if not quiz_links:
+        return None
+    if len(quiz_links) == 1:
+        return f"\n\nQuiz:\n{quiz_links[0]['url']}"
+    lines = ["\n\nQuizzes:"]
+    for link in quiz_links:
+        difficulty = _normalize_quiz_difficulty(link.get("difficulty"))
+        label = QUIZ_DIFFICULTY_LABELS.get(difficulty, difficulty.capitalize())
+        lines.append(f"- {label}: {link['url']}")
+    return "\n".join(lines)
 
 CANONICAL_WEEK_LECTURE_PREFIX_PATTERN = re.compile(
     r"^(?P<full>w0*(?P<week>\d{1,2})l0*(?P<lecture>\d+))\b[\s._-]*",
@@ -2258,20 +2377,17 @@ def build_episode_entry(
     episode_kind = "brief" if is_brief else ("weekly_overview" if is_weekly_overview else "reading")
     skip_audio_category_prefix = False
 
+    quiz_link_payloads: List[Dict[str, str]] = []
     quiz_url = None
     if quiz_cfg and quiz_links and file_entry.get("name"):
         base_url = quiz_cfg.get("base_url")
         links_map = quiz_links.get("by_name") if isinstance(quiz_links, dict) else None
         if isinstance(links_map, dict):
             entry = _lookup_by_name_with_cfg_fallback(links_map, file_entry["name"])
-            if isinstance(entry, dict):
-                rel_path = entry.get("relative_path")
-                if base_url and rel_path:
-                    base = str(base_url)
-                    if not base.endswith("/"):
-                        base += "/"
-                    relative = str(rel_path).lstrip("/")
-                    quiz_url = base + quote(relative, safe="/")
+            if entry is not None:
+                quiz_link_payloads = _resolve_quiz_link_payloads(base_url, entry)
+                if quiz_link_payloads:
+                    quiz_url = sorted(quiz_link_payloads, key=_quiz_primary_sort_key)[0]["url"]
 
     if is_unassigned_tail and not meta.get("title"):
         subject = (display_subject or cleaned_title or raw_title).strip()
@@ -2439,7 +2555,7 @@ def build_episode_entry(
             "semester_week": (
                 f"{semester_week_description_label} {week_number}" if week_number else None
             ),
-            "quiz": f"\n\nQuiz:\n{quiz_url}" if quiz_url else None,
+            "quiz": _render_quiz_block(quiz_link_payloads),
             "quiz_url": quiz_url,
             "reading_summary": (
                 reading_summary_value or descriptor_subject

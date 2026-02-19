@@ -73,6 +73,44 @@ class CfgTagFilenameHelpersTests(unittest.TestCase):
         plain = "W01L1 - W1L1 Foo [EN]"
         self.assertEqual(mod.canonical_key(tagged), mod.canonical_key(plain))
 
+    def test_local_select_audio_candidate_prefers_non_double_prefixed_week_name(self):
+        mod = self.local_sync
+        candidates = [
+            Path("W8L1 - W8L1 Foo [EN] {type=audio lang=en format=deep-dive length=long hash=aaaa1111}.mp3"),
+            Path("W8L1 - Foo [EN] {type=audio lang=en format=deep-dive length=long hash=bbbb2222}.mp3"),
+        ]
+        selected = mod.select_audio_candidate(candidates)
+        self.assertIsNotNone(selected)
+        self.assertEqual(
+            selected.name,
+            "W8L1 - Foo [EN] {type=audio lang=en format=deep-dive length=long hash=bbbb2222}.mp3",
+        )
+
+    def test_local_select_audio_candidate_returns_none_when_tied(self):
+        mod = self.local_sync
+        candidates = [
+            Path("W8L1 - Foo [EN] {type=audio lang=en format=deep-dive length=long hash=aaaa1111}.mp3"),
+            Path("W8L1 - Foo [EN] {type=audio lang=en format=deep-dive length=long hash=bbbb2222}.mp3"),
+        ]
+        self.assertIsNone(mod.select_audio_candidate(candidates))
+
+    def test_local_build_mapping_entry_prefers_medium_primary_and_keeps_all_links(self):
+        mod = self.local_sync
+        entry = mod.build_mapping_entry(
+            [
+                {"relative_path": "W1L1/foo-hard.html", "format": "html", "difficulty": "hard"},
+                {"relative_path": "W1L1/foo-medium.html", "format": "html", "difficulty": "medium"},
+                {"relative_path": "W1L1/foo-easy.html", "format": "html", "difficulty": "easy"},
+            ]
+        )
+        self.assertIsNotNone(entry)
+        self.assertEqual(entry["relative_path"], "W1L1/foo-medium.html")
+        self.assertEqual(entry["difficulty"], "medium")
+        self.assertEqual(
+            [item["difficulty"] for item in entry["links"]],
+            ["easy", "medium", "hard"],
+        )
+
     def test_cfg_tag_suffix_strip_removes_repeated_tags(self):
         local = self.local_sync
         value = "W01L1 - Foo {type=quiz lang=en quantity=more difficulty=hard download=html hash=beef1234}"
@@ -113,6 +151,39 @@ class CfgTagFilenameHelpersTests(unittest.TestCase):
         stem = "W01L1 - Foo [EN]"
         self.assertTrue(mod.matches_quiz_difficulty(stem, "medium"))
         self.assertFalse(mod.matches_quiz_difficulty(stem, "easy"))
+
+    def test_drive_select_audio_candidate_prefers_non_double_prefixed_week_name(self):
+        if self.drive_sync is None:
+            self.skipTest("google-api dependencies unavailable for sync_drive_quiz_links import")
+        mod = self.drive_sync
+        candidates = [
+            "W8L1 - W8L1 Foo [EN] {type=audio lang=en format=deep-dive length=long hash=aaaa1111}.mp3",
+            "W8L1 - Foo [EN] {type=audio lang=en format=deep-dive length=long hash=bbbb2222}.mp3",
+        ]
+        selected = mod.select_audio_candidate(candidates)
+        self.assertEqual(
+            selected,
+            "W8L1 - Foo [EN] {type=audio lang=en format=deep-dive length=long hash=bbbb2222}.mp3",
+        )
+
+    def test_drive_build_mapping_entry_prefers_medium_primary_and_keeps_all_links(self):
+        if self.drive_sync is None:
+            self.skipTest("google-api dependencies unavailable for sync_drive_quiz_links import")
+        mod = self.drive_sync
+        entry = mod.build_mapping_entry(
+            [
+                {"relative_path": "W1L1/foo-hard.html", "format": "html", "difficulty": "hard"},
+                {"relative_path": "W1L1/foo-medium.html", "format": "html", "difficulty": "medium"},
+                {"relative_path": "W1L1/foo-easy.html", "format": "html", "difficulty": "easy"},
+            ]
+        )
+        self.assertIsNotNone(entry)
+        self.assertEqual(entry["relative_path"], "W1L1/foo-medium.html")
+        self.assertEqual(entry["difficulty"], "medium")
+        self.assertEqual(
+            [item["difficulty"] for item in entry["links"]],
+            ["easy", "medium", "hard"],
+        )
 
     def test_generate_week_config_tag_is_deterministic_and_changes(self):
         mod = self.generate_week

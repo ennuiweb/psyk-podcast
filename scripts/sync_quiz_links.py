@@ -9,7 +9,7 @@ import re
 import subprocess
 import sys
 from pathlib import Path
-from typing import Dict, List
+from typing import Any, Dict, List
 
 
 WEEK_TOKEN_RE = re.compile(r"\bW(?P<week>\d{1,2})L(?P<lecture>\d+)\b", re.IGNORECASE)
@@ -22,6 +22,10 @@ QUIZ_DIFFICULTY_RE = re.compile(
     r"\{[^{}]*\btype=quiz\b[^{}]*\bdifficulty=(?P<difficulty>[a-z0-9._:+-]+)\b[^{}]*\}",
     re.IGNORECASE,
 )
+DUPLICATE_WEEK_PREFIX_RE = re.compile(r"^(W\d{2}L\d+)\s*-\s*\1\b", re.IGNORECASE)
+MISSING_TOKEN_RE = re.compile(r"\bMISSING\b", re.IGNORECASE)
+QUIZ_DIFFICULTY_SORT_ORDER = {"easy": 0, "medium": 1, "hard": 2}
+QUIZ_PRIMARY_DIFFICULTY_SORT_ORDER = {"medium": 0, "easy": 1, "hard": 2}
 
 
 def normalize_week_tokens(text: str) -> str:
@@ -80,6 +84,95 @@ def canonical_key(stem: str) -> str:
     if rest:
         return f"{prefix}{week} - {rest}".strip()
     return f"{prefix}{week}".strip()
+
+
+def audio_candidate_rank(stem: str) -> tuple[int, int, int, str]:
+    name = stem.replace("–", "-").replace("—", "-")
+    name = strip_cfg_tag_suffix(name)
+    name = normalize_week_tokens(name)
+    name = re.sub(r"\s+", " ", name).strip()
+    name = re.sub(r"\.{2,}", ".", name)
+    if name.lower().startswith("[brief]"):
+        name = name[len("[brief]") :].lstrip()
+    duplicate_week_prefix = 1 if DUPLICATE_WEEK_PREFIX_RE.match(name) else 0
+    has_missing_token = 1 if MISSING_TOKEN_RE.search(name) else 0
+    return (duplicate_week_prefix, has_missing_token, len(name), name.casefold())
+
+
+def select_audio_candidate(candidates: List[Path]) -> Path | None:
+    if not candidates:
+        return None
+    if len(candidates) == 1:
+        return candidates[0]
+    ranked = [(audio_candidate_rank(candidate.stem), candidate) for candidate in candidates]
+    ranked.sort(key=lambda item: (item[0], item[1].name.casefold()))
+    best_rank = ranked[0][0]
+    best = [candidate for rank, candidate in ranked if rank == best_rank]
+    if len(best) == 1:
+        return best[0]
+    return None
+
+
+def normalize_quiz_difficulty(value: str | None) -> str:
+    difficulty = (value or "").strip().lower()
+    return difficulty or "medium"
+
+
+def quiz_link_sort_key(link: Dict[str, str]) -> tuple[int, str, str]:
+    difficulty = normalize_quiz_difficulty(link.get("difficulty"))
+    rel_path = str(link.get("relative_path") or "")
+    return (QUIZ_DIFFICULTY_SORT_ORDER.get(difficulty, 99), difficulty, rel_path)
+
+
+def select_primary_quiz_link(links: List[Dict[str, str]]) -> Dict[str, str] | None:
+    if not links:
+        return None
+    ranked = sorted(
+        links,
+        key=lambda link: (
+            QUIZ_PRIMARY_DIFFICULTY_SORT_ORDER.get(
+                normalize_quiz_difficulty(link.get("difficulty")),
+                99,
+            ),
+            quiz_link_sort_key(link),
+        ),
+    )
+    return ranked[0] if ranked else None
+
+
+def build_mapping_entry(links: List[Dict[str, str]]) -> Dict[str, Any] | None:
+    if not links:
+        return None
+    normalized_links: List[Dict[str, str]] = []
+    seen_difficulties: set[str] = set()
+    for raw_link in sorted(links, key=quiz_link_sort_key):
+        rel_path = str(raw_link.get("relative_path") or "").strip()
+        if not rel_path:
+            continue
+        difficulty = normalize_quiz_difficulty(raw_link.get("difficulty"))
+        if difficulty in seen_difficulties:
+            continue
+        seen_difficulties.add(difficulty)
+        normalized_links.append(
+            {
+                "relative_path": rel_path,
+                "format": str(raw_link.get("format") or "html"),
+                "difficulty": difficulty,
+            }
+        )
+    if not normalized_links:
+        return None
+    primary = select_primary_quiz_link(normalized_links)
+    if not primary:
+        return None
+    mapping_entry: Dict[str, Any] = {
+        "relative_path": primary["relative_path"],
+        "format": primary["format"],
+        "difficulty": primary["difficulty"],
+    }
+    if len(normalized_links) > 1:
+        mapping_entry["links"] = normalized_links
+    return mapping_entry
 
 
 def derive_mp3_name_from_html(stem: str) -> str:
@@ -143,7 +236,7 @@ def build_mp3_index(mp3_files: List[Path], language_tag: str) -> Dict[str, List[
     return index
 
 
-def write_mapping(path: Path, mapping: Dict[str, Dict[str, str]], dry_run: bool) -> None:
+def write_mapping(path: Path, mapping: Dict[str, Dict[str, Any]], dry_run: bool) -> None:
     payload = {"by_name": mapping}
     if dry_run:
         print(f"Dry run: skipping write to {path}")
@@ -210,11 +303,11 @@ def main() -> int:
     )
     parser.add_argument(
         "--quiz-difficulty",
-        default="medium",
+        default="any",
         choices=("easy", "medium", "hard", "any"),
         help=(
             "Only map quiz HTML files for this difficulty. "
-            "Use 'any' to include all difficulties. Default: medium."
+            "Use 'any' to include all difficulties. Default: any."
         ),
     )
     parser.add_argument(
@@ -272,7 +365,7 @@ def main() -> int:
             f"No quiz HTML files found under {output_root} "
             f"for difficulty={quiz_difficulty or 'any'}"
         )
-    mapping: Dict[str, Dict[str, str]] = {}
+    mapping_links: Dict[str, List[Dict[str, str]]] = {}
     unmatched: List[Path] = []
     ambiguous: List[Path] = []
     duplicate_targets: List[Path] = []
@@ -285,33 +378,51 @@ def main() -> int:
         mp3_index = build_mp3_index(mp3_files, language_tag)
 
     for html_file in html_files:
+        difficulty = normalize_quiz_difficulty(extract_quiz_difficulty(html_file.stem))
         if args.derive_mp3_names:
             mp3_name = derive_mp3_name_from_html(html_file.stem)
-            if mp3_name in mapping:
-                duplicate_targets.append(html_file)
-                continue
         else:
             key = canonical_key(html_file.stem)
             candidates = mp3_index.get(key, [])
             if len(candidates) == 0:
                 unmatched.append(html_file)
                 continue
-            if len(candidates) > 1:
+            selected_candidate = select_audio_candidate(candidates)
+            if selected_candidate is None:
                 ambiguous.append(html_file)
                 continue
-            mp3_name = candidates[0].name
+            mp3_name = selected_candidate.name
         relative_path = html_file.relative_to(output_root).as_posix()
-        mapping[mp3_name] = {
-            "relative_path": relative_path,
-            "format": "html",
-        }
+        links = mapping_links.setdefault(mp3_name, [])
+        if any(normalize_quiz_difficulty(link.get("difficulty")) == difficulty for link in links):
+            duplicate_targets.append(html_file)
+            continue
+        links.append(
+            {
+                "relative_path": relative_path,
+                "format": "html",
+                "difficulty": difficulty,
+            }
+        )
 
-    sorted_mapping = {key: mapping[key] for key in sorted(mapping)}
+    sorted_mapping: Dict[str, Dict[str, Any]] = {}
+    mapped_quiz_links = 0
+    for key in sorted(mapping_links):
+        mapping_entry = build_mapping_entry(mapping_links[key])
+        if not mapping_entry:
+            continue
+        sorted_mapping[key] = mapping_entry
+        links = mapping_entry.get("links")
+        if isinstance(links, list):
+            mapped_quiz_links += len(links)
+        else:
+            mapped_quiz_links += 1
     write_mapping(links_file, sorted_mapping, args.dry_run)
 
     print(f"Quiz difficulty filter: {quiz_difficulty or 'any'}")
     print(f"Quiz HTML files: {len(html_files)}")
-    print(f"Mapped quizzes: {len(sorted_mapping)}")
+    print(f"Mapped episode quizzes: {len(sorted_mapping)}")
+    print(f"Mapped quiz links: {mapped_quiz_links}")
     if unmatched:
         print(f"Unmatched quizzes: {len(unmatched)}")
         for path in unmatched[:20]:
@@ -325,7 +436,7 @@ def main() -> int:
         if len(ambiguous) > 20:
             print(f"... and {len(ambiguous) - 20} more")
     if duplicate_targets:
-        print(f"Duplicate mappings: {len(duplicate_targets)}")
+        print(f"Duplicate quiz difficulty mappings: {len(duplicate_targets)}")
         for path in duplicate_targets[:20]:
             print(f"- {path}")
         if len(duplicate_targets) > 20:

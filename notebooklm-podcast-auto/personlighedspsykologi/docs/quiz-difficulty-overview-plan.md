@@ -14,17 +14,16 @@ Generate `easy`, `medium`, and `hard` quiz HTML files for all English audio epis
   - Add missing quiz outputs for all existing audio episodes.
   - Use the same generation/download/sync workflow already used for `shows/personlighedspsykologi-en`.
   - Keep filename config tags (`difficulty=easy|medium|hard`) for traceability.
-- Out of scope (v1):
-  - Changing feed descriptions to show 3 quiz URLs per episode.
-  - Replacing current single-link `quiz_links.json` schema.
+  - Update feed descriptions to show all available quiz difficulties per episode.
+  - Extend `quiz_links.json` entries so one audio file can map to multiple quiz links.
 
 ## Plan
 1. Set `quiz.difficulty` to `all` in prompt config.
 2. Generate quiz requests for every `W#L#` folder in one pass.
 3. Download all quiz HTML artifacts.
 4. Validate coverage (`audio count == quiz count`) per difficulty.
-5. Keep feed mapping stable on `medium` (same behavior as today).
-6. Optionally add easy/hard mappings in separate files as a follow-up.
+5. Sync quiz links with `--quiz-difficulty any` so each episode mapping includes all available difficulties.
+6. Generate the feed and verify episode descriptions render multi-difficulty quiz links.
 
 ## Execution commands
 Run from repo root.
@@ -70,16 +69,16 @@ PY
 ```
 
 ## Mapping and feed compatibility (same as `shows/personlighedspsykologi-en`)
-- Current `quiz_links.json` supports one quiz URL per audio file.
-- Keep that file on `medium` in v1 to avoid feed behavior changes.
-- Use difficulty filtering when syncing links (implemented):
-  - `python3 scripts/sync_quiz_links.py --quiz-difficulty medium --dry-run`
-  - `python3 scripts/sync_quiz_links.py --quiz-difficulty medium`
-- Optional follow-up: generate `quiz_links_easy.json` and `quiz_links_hard.json` for external UI usage.
+- `quiz_links.json` now supports multiple quiz links per audio file (with per-link difficulty metadata).
+- Use all-difficulty sync when updating the mapping:
+  - `python3 scripts/sync_quiz_links.py --quiz-difficulty any --dry-run`
+  - `python3 scripts/sync_quiz_links.py --quiz-difficulty any`
+- Feed descriptions render all available difficulties (`easy`, `medium`, `hard`) for each matched episode.
+- Feed item `<link>` keeps a stable primary quiz URL and prefers `medium` when available.
 
 ## Done criteria
 - `easy`, `medium`, and `hard` HTML quiz files exist for every English `type=audio` episode.
 - Coverage check reports equal counts per difficulty.
-- `shows/personlighedspsykologi-en/quiz_links.json` remains stable and medium-based.
+- `shows/personlighedspsykologi-en/quiz_links.json` contains multi-difficulty mappings where available.
 - Existing feed generation command still works unchanged:
   - `python3 podcast-tools/gdrive_podcast_feed.py --config shows/personlighedspsykologi-en/config.local.json`

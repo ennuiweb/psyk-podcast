@@ -2,34 +2,38 @@
 {% block title %}Progress · Quiz Portal{% endblock %}
 {% block content %}
 <div class="card">
-  <h1 style="margin-top: 0">Your Quiz Progress</h1>
+  <h1 class="quiz-title">Your Quiz Progress</h1>
   <p class="muted">Tracking is per quiz ID and therefore per difficulty variant.</p>
 
   {% if rows %}
-  <div style="overflow-x: auto">
-    <table style="width: 100%; border-collapse: collapse">
+  <div class="table-wrap">
+    <table>
       <thead>
         <tr>
-          <th style="text-align: left; border-bottom: 1px solid var(--border); padding: 0.5rem">Quiz</th>
-          <th style="text-align: left; border-bottom: 1px solid var(--border); padding: 0.5rem">Difficulty</th>
-          <th style="text-align: left; border-bottom: 1px solid var(--border); padding: 0.5rem">Status</th>
-          <th style="text-align: left; border-bottom: 1px solid var(--border); padding: 0.5rem">Answers</th>
-          <th style="text-align: left; border-bottom: 1px solid var(--border); padding: 0.5rem">Updated</th>
+          <th>Quiz</th>
+          <th>Difficulty</th>
+          <th>Status</th>
+          <th>Answers</th>
+          <th>Updated</th>
         </tr>
       </thead>
       <tbody>
         {% for row in rows %}
         <tr>
-          <td style="padding: 0.55rem; border-bottom: 1px solid var(--border)">
+          <td>
             <a href="{{ row.quiz_url }}">{{ row.title }}</a>
-            <div class="muted" style="font-size: 0.8rem">{{ row.quiz_id }}</div>
+            <div class="muted">{{ row.quiz_id }}</div>
           </td>
-          <td style="padding: 0.55rem; border-bottom: 1px solid var(--border)">{{ row.difficulty }}</td>
-          <td style="padding: 0.55rem; border-bottom: 1px solid var(--border)">{{ row.status }}</td>
-          <td style="padding: 0.55rem; border-bottom: 1px solid var(--border)">
+          <td>{{ row.difficulty }}</td>
+          <td>
+            <span class="status-pill {% if row.status == 'completed' %}is-complete{% else %}is-progress{% endif %}">
+              {{ row.status|title }}
+            </span>
+          </td>
+          <td>
             {{ row.answers_count }} / {{ row.question_count }}
           </td>
-          <td style="padding: 0.55rem; border-bottom: 1px solid var(--border)">{{ row.updated_at }}</td>
+          <td>{{ row.updated_at }}</td>
         </tr>
         {% endfor %}
       </tbody>

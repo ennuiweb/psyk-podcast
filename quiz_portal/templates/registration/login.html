@@ -1,36 +1,36 @@
 {% extends "base.html" %}
 {% block title %}Login · Quiz Portal{% endblock %}
 {% block content %}
-<div class="card" style="max-width: 460px; margin: 0 auto">
+<div class="card auth-shell">
   {% if insecure_http %}
   <div class="insecure-banner">
     HTTP login is insecure on public networks. Move to HTTPS as soon as possible.
   </div>
   {% endif %}
 
-  <h1 style="margin-top: 0">Login</h1>
-  <p class="muted">Use your portal account to open quizzes and sync progress.</p>
+  <h1 class="auth-title">Welcome Back</h1>
+  <p class="muted auth-subtitle">Use your account to open quizzes and keep progress synced.</p>
 
-  <form method="post">
+  <form method="post" class="form-stack">
     {% csrf_token %}
     {% if next_value %}
     <input type="hidden" name="next" value="{{ next_value }}" />
     {% endif %}
     {{ form.non_field_errors }}
     <p>
-      <label for="id_username">Username</label><br />
+      <label for="id_username">Username</label>
       {{ form.username }}
       {{ form.username.errors }}
     </p>
     <p>
-      <label for="id_password">Password</label><br />
+      <label for="id_password">Password</label>
       {{ form.password }}
       {{ form.password.errors }}
     </p>
     <button class="btn-primary" type="submit">Login</button>
   </form>
 
-  <p class="muted" style="margin-top: 1rem">
+  <p class="muted auth-footer">
     No account yet? <a href="{% url 'signup' %}">Create one</a>.
   </p>
 </div>

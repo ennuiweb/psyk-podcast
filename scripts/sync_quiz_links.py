@@ -4,10 +4,13 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import re
+import shutil
 import subprocess
 import sys
+import tempfile
 from pathlib import Path
 from typing import Any, Dict, List
 
@@ -116,6 +119,37 @@ def select_audio_candidate(candidates: List[Path]) -> Path | None:
 def normalize_quiz_difficulty(value: str | None) -> str:
     difficulty = (value or "").strip().lower()
     return difficulty or "medium"
+
+
+def build_flat_quiz_relative_path(
+    audio_name: str,
+    difficulty: str | None,
+    flat_id_len: int,
+) -> tuple[str, str]:
+    if flat_id_len < 1:
+        raise ValueError("--flat-id-len must be >= 1.")
+    normalized_difficulty = normalize_quiz_difficulty(difficulty)
+    seed = f"{canonical_key(Path(audio_name).stem)}|{normalized_difficulty}"
+    digest = hashlib.sha1(seed.encode("utf-8")).hexdigest()
+    return f"{digest[:flat_id_len]}.html", seed
+
+
+def ensure_unique_flat_quiz_relative_path(
+    registry: Dict[str, str],
+    relative_path: str,
+    seed: str,
+    *,
+    context: str,
+) -> None:
+    existing = registry.get(relative_path)
+    if existing is None:
+        registry[relative_path] = seed
+        return
+    if existing != seed:
+        raise ValueError(
+            f"Short quiz ID collision for '{relative_path}' while mapping '{context}'. "
+            "Increase --flat-id-len."
+        )
 
 
 def quiz_link_sort_key(link: Dict[str, str]) -> tuple[int, str, str]:
@@ -311,6 +345,21 @@ def main() -> int:
         ),
     )
     parser.add_argument(
+        "--quiz-path-mode",
+        default="flat-id",
+        choices=("legacy", "flat-id"),
+        help=(
+            "Quiz relative path mode. "
+            "'legacy' keeps folder/filename paths; 'flat-id' maps to deterministic IDs."
+        ),
+    )
+    parser.add_argument(
+        "--flat-id-len",
+        type=int,
+        default=8,
+        help="Hex length for deterministic flat quiz IDs in flat-id mode (default: 8).",
+    )
+    parser.add_argument(
         "--derive-mp3-names",
         action="store_true",
         help="Derive MP3 names directly from HTML filenames (no MP3 scan).",
@@ -351,6 +400,8 @@ def main() -> int:
     links_file = resolve_path(args.links_file, repo_root)
     language_tag = args.language_tag
     quiz_difficulty = None if args.quiz_difficulty == "any" else args.quiz_difficulty
+    if args.flat_id_len < 1:
+        raise SystemExit("--flat-id-len must be >= 1.")
 
     if not output_root.exists():
         raise SystemExit(f"Output root does not exist: {output_root}")
@@ -370,6 +421,8 @@ def main() -> int:
     ambiguous: List[Path] = []
     duplicate_targets: List[Path] = []
     mp3_index: Dict[str, List[Path]] = {}
+    flat_id_registry: Dict[str, str] = {}
+    upload_sources: Dict[str, Path] = {}
 
     if not args.derive_mp3_names:
         mp3_files = [p for p in find_files(output_root, ".mp3") if language_tag in p.stem]
@@ -392,7 +445,23 @@ def main() -> int:
                 ambiguous.append(html_file)
                 continue
             mp3_name = selected_candidate.name
-        relative_path = html_file.relative_to(output_root).as_posix()
+        if args.quiz_path_mode == "flat-id":
+            try:
+                relative_path, flat_seed = build_flat_quiz_relative_path(
+                    mp3_name,
+                    difficulty,
+                    args.flat_id_len,
+                )
+                ensure_unique_flat_quiz_relative_path(
+                    flat_id_registry,
+                    relative_path,
+                    flat_seed,
+                    context=str(html_file),
+                )
+            except ValueError as exc:
+                raise SystemExit(str(exc))
+        else:
+            relative_path = html_file.relative_to(output_root).as_posix()
         links = mapping_links.setdefault(mp3_name, [])
         if any(normalize_quiz_difficulty(link.get("difficulty")) == difficulty for link in links):
             duplicate_targets.append(html_file)
@@ -404,6 +473,13 @@ def main() -> int:
                 "difficulty": difficulty,
             }
         )
+        existing_source = upload_sources.get(relative_path)
+        if existing_source is not None and existing_source != html_file:
+            raise SystemExit(
+                f"Multiple source files map to '{relative_path}' "
+                f"({existing_source} vs {html_file})."
+            )
+        upload_sources[relative_path] = html_file
 
     sorted_mapping: Dict[str, Dict[str, Any]] = {}
     mapped_quiz_links = 0
@@ -442,20 +518,38 @@ def main() -> int:
         if len(duplicate_targets) > 20:
             print(f"... and {len(duplicate_targets) - 20} more")
 
-    if not args.no_upload:
-        ssh_key = args.ssh_key
-        if ssh_key:
-            ssh_key = str(Path(ssh_key).expanduser())
-        run_rsync(
-            output_root=output_root,
-            remote_root=args.remote_root,
-            host=args.host,
-            user=args.user,
-            ssh_key=ssh_key,
-            dry_run=args.dry_run,
-        )
-    else:
-        print("Upload skipped (--no-upload).")
+    staging_dir = None
+    try:
+        if not args.no_upload:
+            upload_root = output_root
+            if args.quiz_path_mode == "flat-id":
+                if not upload_sources:
+                    raise SystemExit(
+                        "No mapped quiz files to upload in flat-id mode; aborting upload to avoid deleting remote content."
+                    )
+                staging_dir = tempfile.TemporaryDirectory(prefix="quiz-flat-id-")
+                upload_root = Path(staging_dir.name)
+                for relative_path in sorted(upload_sources):
+                    source_path = upload_sources[relative_path]
+                    destination = upload_root / relative_path
+                    destination.parent.mkdir(parents=True, exist_ok=True)
+                    shutil.copy2(source_path, destination)
+            ssh_key = args.ssh_key
+            if ssh_key:
+                ssh_key = str(Path(ssh_key).expanduser())
+            run_rsync(
+                output_root=upload_root,
+                remote_root=args.remote_root,
+                host=args.host,
+                user=args.user,
+                ssh_key=ssh_key,
+                dry_run=args.dry_run,
+            )
+        else:
+            print("Upload skipped (--no-upload).")
+    finally:
+        if staging_dir is not None:
+            staging_dir.cleanup()
 
     return 0
 

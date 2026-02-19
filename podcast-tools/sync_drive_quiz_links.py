@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import re
 import sys
@@ -351,6 +352,37 @@ def normalize_quiz_difficulty(value: str | None) -> str:
     return difficulty or "medium"
 
 
+def build_flat_quiz_relative_path(
+    audio_name: str,
+    difficulty: str | None,
+    flat_id_len: int,
+) -> tuple[str, str]:
+    if flat_id_len < 1:
+        raise ValueError("--flat-id-len must be >= 1.")
+    normalized_difficulty = normalize_quiz_difficulty(difficulty)
+    seed = f"{canonical_key(Path(audio_name).stem)}|{normalized_difficulty}"
+    digest = hashlib.sha1(seed.encode("utf-8")).hexdigest()
+    return f"{digest[:flat_id_len]}.html", seed
+
+
+def ensure_unique_flat_quiz_relative_path(
+    registry: Dict[str, str],
+    relative_path: str,
+    seed: str,
+    *,
+    context: str,
+) -> None:
+    existing = registry.get(relative_path)
+    if existing is None:
+        registry[relative_path] = seed
+        return
+    if existing != seed:
+        raise ValueError(
+            f"Short quiz ID collision for '{relative_path}' while mapping '{context}'. "
+            "Increase --flat-id-len."
+        )
+
+
 def quiz_link_sort_key(link: Dict[str, str]) -> tuple[int, str, str]:
     difficulty = normalize_quiz_difficulty(link.get("difficulty"))
     rel_path = str(link.get("relative_path") or "")
@@ -523,6 +555,21 @@ def main() -> int:
         ),
     )
     parser.add_argument(
+        "--quiz-path-mode",
+        default="flat-id",
+        choices=("legacy", "flat-id"),
+        help=(
+            "Quiz relative path mode. "
+            "'legacy' keeps folder/filename paths; 'flat-id' maps to deterministic IDs."
+        ),
+    )
+    parser.add_argument(
+        "--flat-id-len",
+        type=int,
+        default=8,
+        help="Hex length for deterministic flat quiz IDs in flat-id mode (default: 8).",
+    )
+    parser.add_argument(
         "--upload",
         action="store_true",
         help="Upload downloaded quizzes to the droplet.",
@@ -563,6 +610,8 @@ def main() -> int:
 
     language_tag = args.language_tag or None
     quiz_difficulty = None if args.quiz_difficulty == "any" else args.quiz_difficulty
+    if args.flat_id_len < 1:
+        raise SystemExit("--flat-id-len must be >= 1.")
     service_account_path = Path(config["service_account_file"])
     drive_service = build_drive_service(service_account_path)
     folder_id = config["drive_folder_id"]
@@ -608,33 +657,11 @@ def main() -> int:
     unmatched: List[str] = []
     ambiguous: List[str] = []
     duplicate_targets: List[str] = []
+    flat_id_registry: Dict[str, str] = {}
+    download_jobs: Dict[str, str] = {}
 
     folder_metadata_cache: Dict[str, Dict[str, Any]] = {}
     folder_path_cache: Dict[str, List[str]] = {}
-
-    if args.download_root:
-        for item in html_files:
-            name = str(item["name"])
-            parents = item.get("parents") or []
-            folder_names: List[str] = []
-            if parents:
-                folder_names = build_folder_path(
-                    drive_service,
-                    parents[0],
-                    folder_metadata_cache,
-                    folder_path_cache,
-                    root_folder_id=folder_id,
-                    supports_all_drives=supports_all_drives,
-                )
-            relative_parts = [*folder_names, name]
-            relative_path = "/".join(relative_parts)
-            destination = args.download_root / relative_path
-            download_drive_file(
-                drive_service,
-                item["id"],
-                destination,
-                supports_all_drives=supports_all_drives,
-            )
 
     for item in html_files:
         name = str(item["name"])
@@ -649,17 +676,33 @@ def main() -> int:
             ambiguous.append(name)
             continue
         audio_name = selected_candidate
-        parents = item.get("parents") or []
-        folder_names = build_folder_path(
-            drive_service,
-            parents[0],
-            folder_metadata_cache,
-            folder_path_cache,
-            root_folder_id=folder_id,
-            supports_all_drives=supports_all_drives,
-        ) if parents else []
-        relative_parts = [*folder_names, name]
-        relative_path = "/".join(relative_parts)
+        if args.quiz_path_mode == "flat-id":
+            try:
+                relative_path, flat_seed = build_flat_quiz_relative_path(
+                    audio_name,
+                    difficulty,
+                    args.flat_id_len,
+                )
+                ensure_unique_flat_quiz_relative_path(
+                    flat_id_registry,
+                    relative_path,
+                    flat_seed,
+                    context=name,
+                )
+            except ValueError as exc:
+                raise SystemExit(str(exc))
+        else:
+            parents = item.get("parents") or []
+            folder_names = build_folder_path(
+                drive_service,
+                parents[0],
+                folder_metadata_cache,
+                folder_path_cache,
+                root_folder_id=folder_id,
+                supports_all_drives=supports_all_drives,
+            ) if parents else []
+            relative_parts = [*folder_names, name]
+            relative_path = "/".join(relative_parts)
         links = mapping_links.setdefault(audio_name, [])
         if any(normalize_quiz_difficulty(link.get("difficulty")) == difficulty for link in links):
             duplicate_targets.append(name)
@@ -671,6 +714,15 @@ def main() -> int:
                 "difficulty": difficulty,
             }
         )
+        if args.download_root:
+            file_id = str(item["id"])
+            existing_file_id = download_jobs.get(relative_path)
+            if existing_file_id is not None and existing_file_id != file_id:
+                raise SystemExit(
+                    f"Multiple Drive files map to '{relative_path}' "
+                    f"({existing_file_id} vs {file_id})."
+                )
+            download_jobs[relative_path] = file_id
 
     sorted_mapping: Dict[str, Dict[str, Any]] = {}
     mapped_quiz_links = 0
@@ -685,6 +737,16 @@ def main() -> int:
         else:
             mapped_quiz_links += 1
     write_mapping(links_path, sorted_mapping)
+
+    if args.download_root:
+        for relative_path in sorted(download_jobs):
+            destination = args.download_root / relative_path
+            download_drive_file(
+                drive_service,
+                download_jobs[relative_path],
+                destination,
+                supports_all_drives=supports_all_drives,
+            )
 
     print(f"Quiz difficulty filter: {quiz_difficulty or 'any'}")
     print(f"Quiz HTML files: {len(html_files)}")

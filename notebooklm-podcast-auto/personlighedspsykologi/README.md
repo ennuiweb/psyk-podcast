@@ -121,8 +121,8 @@ python3 podcast-tools/gdrive_podcast_feed.py --config shows/personlighedspsykolo
 
 ## Quiz hosting (droplet)
 Quiz HTML exports are hosted on the droplet under:
-`http://64.226.79.109/quizzes/personlighedspsykologi/<Week>/<Filename>.html`
-Keep a compatibility alias from `/quizzes/personlighedspsykologi-en/` while old links are still in circulation.
+`http://64.226.79.109/q/<id>.html`
+where `<id>` is a deterministic flat hex ID (default length: 8).
 
 The mapping and upload can run automatically in GitHub Actions (when quiz HTML
 files are uploaded to Drive) via `podcast-tools/sync_drive_quiz_links.py`, as
@@ -132,8 +132,8 @@ Drive trigger must include `text/` in `mimePrefixes` to detect quiz HTML changes
 Use the sync script locally to upload quizzes and update the mapping used by the feed:
 
 ```bash
-python3 scripts/sync_quiz_links.py --quiz-difficulty any --dry-run
-python3 scripts/sync_quiz_links.py --quiz-difficulty any
+python3 scripts/sync_quiz_links.py --quiz-difficulty any --quiz-path-mode flat-id --flat-id-len 8 --dry-run
+python3 scripts/sync_quiz_links.py --quiz-difficulty any --quiz-path-mode flat-id --flat-id-len 8
 ```
 
 The mapping file lives at `shows/personlighedspsykologi-en/quiz_links.json` and is

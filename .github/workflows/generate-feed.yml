@@ -159,6 +159,8 @@ jobs:
               --config shows/${SHOW}/config.runtime.json \
               --download-root "${download_root}" \
               --language-tag "[EN]" \
+              --quiz-path-mode flat-id \
+              --flat-id-len 8 \
               --quiz-difficulty any \
               --upload \
               --ssh-key "${key_path}"
@@ -168,6 +170,8 @@ jobs:
               --config shows/${SHOW}/config.runtime.json \
               --download-root "${download_root}" \
               --language-tag "[EN]" \
+              --quiz-path-mode flat-id \
+              --flat-id-len 8 \
               --quiz-difficulty any
           fi
 

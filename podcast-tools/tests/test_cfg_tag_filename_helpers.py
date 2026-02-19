@@ -111,6 +111,37 @@ class CfgTagFilenameHelpersTests(unittest.TestCase):
             ["easy", "medium", "hard"],
         )
 
+    def test_local_build_flat_quiz_relative_path_is_deterministic(self):
+        mod = self.local_sync
+        rel_a, seed_a = mod.build_flat_quiz_relative_path("W01L1 - Foo [EN].mp3", "medium", 8)
+        rel_b, seed_b = mod.build_flat_quiz_relative_path("W01L1 - Foo [EN].mp3", "medium", 8)
+        self.assertEqual(rel_a, rel_b)
+        self.assertEqual(seed_a, seed_b)
+        self.assertRegex(rel_a, r"^[0-9a-f]{8}\.html$")
+
+    def test_local_build_flat_quiz_relative_path_changes_with_difficulty(self):
+        mod = self.local_sync
+        rel_easy, _ = mod.build_flat_quiz_relative_path("W01L1 - Foo [EN].mp3", "easy", 8)
+        rel_medium, _ = mod.build_flat_quiz_relative_path("W01L1 - Foo [EN].mp3", "medium", 8)
+        self.assertNotEqual(rel_easy, rel_medium)
+
+    def test_local_ensure_unique_flat_quiz_relative_path_detects_collisions(self):
+        mod = self.local_sync
+        registry = {}
+        mod.ensure_unique_flat_quiz_relative_path(
+            registry,
+            "abcd1234.html",
+            "w01l1 - foo|medium",
+            context="first.html",
+        )
+        with self.assertRaises(ValueError):
+            mod.ensure_unique_flat_quiz_relative_path(
+                registry,
+                "abcd1234.html",
+                "w01l1 - bar|medium",
+                context="second.html",
+            )
+
     def test_cfg_tag_suffix_strip_removes_repeated_tags(self):
         local = self.local_sync
         value = "W01L1 - Foo {type=quiz lang=en quantity=more difficulty=hard download=html hash=beef1234}"
@@ -184,6 +215,22 @@ class CfgTagFilenameHelpersTests(unittest.TestCase):
             [item["difficulty"] for item in entry["links"]],
             ["easy", "medium", "hard"],
         )
+
+    def test_flat_quiz_relative_path_matches_between_local_and_drive_sync(self):
+        if self.drive_sync is None:
+            self.skipTest("google-api dependencies unavailable for sync_drive_quiz_links import")
+        local_rel, local_seed = self.local_sync.build_flat_quiz_relative_path(
+            "W01L1 - Foo [EN].mp3",
+            "hard",
+            8,
+        )
+        drive_rel, drive_seed = self.drive_sync.build_flat_quiz_relative_path(
+            "W01L1 - Foo [EN].mp3",
+            "hard",
+            8,
+        )
+        self.assertEqual(local_rel, drive_rel)
+        self.assertEqual(local_seed, drive_seed)
 
     def test_generate_week_config_tag_is_deterministic_and_changes(self):
         mod = self.generate_week

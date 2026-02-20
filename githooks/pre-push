@@ -3,6 +3,35 @@ set -euo pipefail
 
 repo_root="$(git rev-parse --show-toplevel)"
 log_file="${PRE_PUSH_LOG_FILE:-}"
+quiz_extract_on_push="${QUIZ_JSON_EXTRACT_ON_PUSH:-1}"
+quiz_extract_script="${repo_root}/notebooklm-podcast-auto/personlighedspsykologi/scripts/extract_quiz_html_to_json.py"
+quiz_extract_python="python3"
+
+if [[ -x "${repo_root}/notebooklm-podcast-auto/.venv/bin/python" ]]; then
+  quiz_extract_python="${repo_root}/notebooklm-podcast-auto/.venv/bin/python"
+elif [[ -x "${repo_root}/.venv/bin/python" ]]; then
+  quiz_extract_python="${repo_root}/.venv/bin/python"
+fi
+
+if [[ "${quiz_extract_on_push}" != "0" ]]; then
+  echo "pre-push: extracting quiz html to json"
+  if [[ -n "${log_file}" ]]; then
+    printf '%s %s\n' "$(date +'%Y-%m-%d %H:%M:%S')" \
+      "pre-push: extracting quiz html to json" >> "${log_file}"
+  fi
+
+  if [[ ! -f "${quiz_extract_script}" ]]; then
+    echo "pre-push: quiz extractor script not found: ${quiz_extract_script}" >&2
+    exit 1
+  fi
+
+  "${quiz_extract_python}" "${quiz_extract_script}"
+
+  if [[ -n "${log_file}" ]]; then
+    printf '%s %s\n' "$(date +'%Y-%m-%d %H:%M:%S')" \
+      "pre-push: quiz html to json extraction completed" >> "${log_file}"
+  fi
+fi
 
 if [[ "${BIONEURO_MIRROR_ON_PUSH:-1}" != "0" ]]; then
   mirror_cmd=(python3 "${repo_root}/scripts/mirror_bioneuro_audio.py")

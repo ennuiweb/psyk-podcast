@@ -71,6 +71,22 @@ Current generation is configured for English-only outputs (see `prompt_config.js
 ./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/download_week.py --week W01 --content-types quiz --format html
 ```
 
+- Extract all existing quiz HTML exports to sibling JSON files (for HTML rebuild workflows):
+
+```bash
+./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/extract_quiz_html_to_json.py
+```
+
+  - Output schema matches `notebooklmjsonformat.json`: top-level `title` + `questions`.
+
+- Preview extraction without writing files:
+
+```bash
+./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/extract_quiz_html_to_json.py --dry-run
+```
+
+- If repo git hooks are installed (`scripts/install_git_hooks.sh`), this extraction also runs automatically on `git push` (disable with `QUIZ_JSON_EXTRACT_ON_PUSH=0`).
+
 ## Reading summaries cache (for feed descriptions)
 - Scaffold missing summary entries from local episode files (dry-run first):
 

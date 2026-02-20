@@ -6,6 +6,8 @@ Django portal for authentication + per-user quiz progress on top of existing sta
 - Auth: Django session auth with open signup (`/accounts/signup`).
 - UI language: Danish only (`da`) for now; English is intentionally disabled.
 - Multi-language readiness: internal IDs/status codes remain language-neutral (`quiz_id`, `in_progress`, `completed`) so additional UI languages can be added later without data migration.
+- Runtime naming: service/env/config namespace is `freudd` (`freudd-portal.service`, `/etc/freudd-portal.env`, `FREUDD_PORTAL_*`).
+- Rollout compatibility: old `QUIZ_PORTAL_*` env names are still accepted temporarily.
 - Locale stack is active (`LocaleMiddleware` + `LOCALE_PATHS`) but currently constrained to Danish in `LANGUAGES`.
 - Quiz access: `/q/<id>.html` is public and renders a JSON-driven quiz UI (NotebookLM-like flow).
 - Raw quiz HTML: served publicly via `/q/raw/<id>.html`.
@@ -69,5 +71,6 @@ sudo systemctl restart freudd-portal
 
 ## Operational notes
 - Health checks: use `GET` endpoints. `HEAD` on auth endpoints may return `405` because views allow `GET/POST`.
+- If upgrading from pre-rename deployments, move `/opt/podcasts/quiz_portal/db.sqlite3` to `/opt/podcasts/freudd_portal/db.sqlite3` and ensure `/opt/podcasts/freudd_portal` is writable by `www-data`.
 - If uploading quiz files manually, verify `/var/www/quizzes/personlighedspsykologi` has execute/read for `www-data` (for example mode `755` on directories, `644` on files), otherwise content endpoints can fail with permission errors.
 - If `/q/*` should be public static again, switch Caddy `/q/*` back to file serving from `/var/www/quizzes/personlighedspsykologi` and reload Caddy.

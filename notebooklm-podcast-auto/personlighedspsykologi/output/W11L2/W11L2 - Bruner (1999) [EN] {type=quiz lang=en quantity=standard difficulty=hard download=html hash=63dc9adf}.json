@@ -1,0 +1,265 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "According to Bruner, what is the primary function of \"folk psychology\" in human interaction?",
+      "answerOptions": [
+        {
+          "text": "To frame idiosyncratic deviations from the \"normal\" condition in a lifelike fashion that promotes negotiation.",
+          "isCorrect": true,
+          "rationale": "Folk psychology provides a background of canonicality against which narrative meaning is given to breaches and deviations, helping to avoid social disruption."
+        },
+        {
+          "text": "To establish a rigid set of syntactical rules that govern how individuals must communicate within a culture.",
+          "isCorrect": false,
+          "rationale": "Bruner contrasts folk psychology with purely formal systems, emphasizing its role in meaning-making rather than just rule-following."
+        },
+        {
+          "text": "To provide a biological blueprint for the development of higher-order cognitive processing in primates.",
+          "isCorrect": false,
+          "rationale": "While folk psychology has phylogenetic roots, Bruner describes it primarily as a cultural system for interpreting human action."
+        },
+        {
+          "text": "To minimize the importance of narrative by focusing solely on sense and reference in linguistic communication.",
+          "isCorrect": false,
+          "rationale": "Bruner explicitly states that cultural meaning-making is concerned with more than just sense and reference; it involves narrative interpretation."
+        }
+      ],
+      "hint": "Consider how humans use stories to explain why someone behaved in an unusual or unexpected way."
+    },
+    {
+      "question": "How does Bruner differentiate his view of language acquisition from Noam Chomsky's \"language acquisition device\" (LAD)?",
+      "answerOptions": [
+        {
+          "text": "He argues that language is acquired through active use in social practice rather than just exposure to linguistic evidence.",
+          "isCorrect": true,
+          "rationale": "Bruner emphasizes that learning a language is learning \"how to do things with words\" in the context of interaction, rather than just grasping deep structures."
+        },
+        {
+          "text": "He claims that children are innate \"spectators\" of language who internalize rules without caregiver assistance.",
+          "isCorrect": false,
+          "rationale": "Bruner posits the opposite, asserting that children require significant interaction and assistance from caregivers to acquire language."
+        },
+        {
+          "text": "He asserts that the mastery of formal syntax must precede any understanding of communicative intent.",
+          "isCorrect": false,
+          "rationale": "The source material argues that communicative functions and intentions are well in place before the child masters formal linguistic expression."
+        },
+        {
+          "text": "He believes that the syntactical rules of language are biologically determined and non-arbitrary.",
+          "isCorrect": false,
+          "rationale": "Bruner views grammatical rules as arbitrary instruments used to fulfill communicative needs that are established prior to formal speech."
+        }
+      ],
+      "hint": "Think about whether a child learns language more like a scientist observing data or an apprentice practicing a craft."
+    },
+    {
+      "question": "What is the role of the \"interpretant\" in C. S. Peirce's semiotic system as described by Bruner?",
+      "answerOptions": [
+        {
+          "text": "It is a representation of the world that mediates the relationship between a sign and its referent.",
+          "isCorrect": true,
+          "rationale": "Meaning depends not just on the sign and the object it points to, but on the mental representation that links the two."
+        },
+        {
+          "text": "It is the physical object in the environment that a specific linguistic sign points toward.",
+          "isCorrect": false,
+          "rationale": "This describes the 'referent,' not the interpretant."
+        },
+        {
+          "text": "It is the rule-governed system of signs that defines the arbitrary nature of symbols.",
+          "isCorrect": false,
+          "rationale": "This describes the broader language system rather than the specific mediating representation."
+        },
+        {
+          "text": "It is the innate biological trigger that allows a child to recognize a mother's voice.",
+          "isCorrect": false,
+          "rationale": "The interpretant is a semiotic concept related to how meanings are mediated, not a specific biological reflex."
+        }
+      ],
+      "hint": "Focus on the necessary third element that connects a word to the thing it stands for."
+    },
+    {
+      "question": "In the research conducted by Joan Lucariello, what was the significance of the children's responses to the \"noncanonical\" birthday story?",
+      "answerOptions": [
+        {
+          "text": "The violation of cultural norms in the story triggered a massive increase in narrative invention and explanation.",
+          "isCorrect": true,
+          "rationale": "Children produced ten times as many elaborations for the unusual story as they did for the standard one, attempting to make sense of the deviation."
+        },
+        {
+          "text": "The children were unable to remember the details of the story because it did not fit their internal scripts.",
+          "isCorrect": false,
+          "rationale": "The children remembered it well enough to invent elaborate reasons for the character's unusual behavior."
+        },
+        {
+          "text": "The children preferred the standard story because it aligned with their Piagetian logical structures.",
+          "isCorrect": false,
+          "rationale": "The experiment showed that children were actually captivated by the unusual and more likely to talk about it."
+        },
+        {
+          "text": "The results proved that four-year-olds lack any understanding of cultural canonicality.",
+          "isCorrect": false,
+          "rationale": "The children's ability to identify and explain the violations actually proved they had a strong sense of what is canonical."
+        }
+      ],
+      "hint": "Recall how infants and children react to the 'offbeat' or 'unusual' compared to the 'ordinary'."
+    },
+    {
+      "question": "Bruner identifies four crucial constituents of narrative. Which of the following describes \"agentivity\"?",
+      "answerOptions": [
+        {
+          "text": "Action directed toward goals controlled by agents.",
+          "isCorrect": true,
+          "rationale": "Agentivity focuses on the human element of narrative where characters act with intention toward specific ends."
+        },
+        {
+          "text": "The sequential ordering of events and states in a standard way.",
+          "isCorrect": false,
+          "rationale": "This describes 'linearity' rather than agentivity."
+        },
+        {
+          "text": "A sensitivity to what is ordinary versus what violates expectations.",
+          "isCorrect": false,
+          "rationale": "This describes 'canonicality' and 'exceptionality.'"
+        },
+        {
+          "text": "The use of a specific voice or perspective, such as a narrator's point of view.",
+          "isCorrect": false,
+          "rationale": "This describes the 'perspective' or 'voice' requirement of narrative."
+        }
+      ],
+      "hint": "Think about the role of the 'actor' or 'doer' in a story."
+    },
+    {
+      "question": "What is the \"constitutive function\" of narrative observed in the monologues of the child named Emily?",
+      "answerOptions": [
+        {
+          "text": "Using narrative to find an integral structure that encompasses her actions, feelings, and beliefs.",
+          "isCorrect": true,
+          "rationale": "Emily used her soliloquies to make sense of her everyday life, seeking to harmonize what she did with what she felt and believed."
+        },
+        {
+          "text": "Practicing complex syntactic structures to satisfy an innate, autonomous \"bioprogram.\"",
+          "isCorrect": false,
+          "rationale": "Bruner argues against the idea that language acquisition is purely autonomous, suggesting Emily was searching for meaning, not just syntax."
+        },
+        {
+          "text": "Memorizing and repeating favorite books to improve her phonological mastery.",
+          "isCorrect": false,
+          "rationale": "While she did recite books, the constitutive function refers to her effort to construct an identity and sense of order through her own narrative accounts."
+        },
+        {
+          "text": "Developing a \"theory of mind\" solely by observing the behavior of her younger brother.",
+          "isCorrect": false,
+          "rationale": "The focus of the soliloquies was on her own internal processing and making sense of her world, rather than just observing others."
+        }
+      ],
+      "hint": "Consider how a child uses self-talk to organize their internal world and experiences."
+    },
+    {
+      "question": "How does Bruner apply Halliday's concept of \"mathetic\" discourse to early child language?",
+      "answerOptions": [
+        {
+          "text": "It refers to using language to make clear one's thoughts about the world.",
+          "isCorrect": true,
+          "rationale": "Mathetic functions are representational and focused on understanding, whereas pragmatic functions are instrumental."
+        },
+        {
+          "text": "It involves getting others to act on one's behalf to satisfy immediate needs.",
+          "isCorrect": false,
+          "rationale": "This describes the 'pragmatic' function of discourse."
+        },
+        {
+          "text": "It is the mastery of the phonetic building blocks required to form lexemes.",
+          "isCorrect": false,
+          "rationale": "The mathetic function is a level of discourse meaning, not a phonological unit."
+        },
+        {
+          "text": "It is the innate capacity to recognize the desires and beliefs of conspecifics.",
+          "isCorrect": false,
+          "rationale": "This refers to 'theory of mind,' which is a cognitive capacity rather than a specific discourse function."
+        }
+      ],
+      "hint": "Distinguish between language used as a tool for action and language used as a tool for thought."
+    },
+    {
+      "question": "According to the research by Judy Dunn, how does a child's \"rhetorical\" use of narrative serve them in a family setting?",
+      "answerOptions": [
+        {
+          "text": "It allows the child to justify their actions by framing them within culturally acceptable versions of events.",
+          "isCorrect": true,
+          "rationale": "Narrative becomes an instrument for negotiation, helping children reconcile their desires with family obligations and mitigate conflict."
+        },
+        {
+          "text": "It helps the child learn to avoid all social conflict by remaining silent during disputes.",
+          "isCorrect": false,
+          "rationale": "Dunn's research shows that children are quite active and vocal, using narrative to take a stance in family dramas."
+        },
+        {
+          "text": "It serves as a method for the child to learn the dictionary definitions of words through exposure.",
+          "isCorrect": false,
+          "rationale": "Dunn's work emphasizes the social and emotional context of language use rather than simple vocabulary acquisition."
+        },
+        {
+          "text": "It proves that children are unable to understand the feelings of others until age four.",
+          "isCorrect": false,
+          "rationale": "Dunn's findings suggest that even very young children are highly sensitive to the feelings and intentions of family members."
+        }
+      ],
+      "hint": "Think about how a child might use a story to explain why they hit a sibling or broke a rule."
+    },
+    {
+      "question": "What does Bruner mean by the \"biology of meaning\"?",
+      "answerOptions": [
+        {
+          "text": "An innate gift for language that includes prelinguistic readiness for specific classes of meaning.",
+          "isCorrect": true,
+          "rationale": "Bruner proposes that humans are innately tuned to certain social meanings and actively search for them before mastering formal language."
+        },
+        {
+          "text": "The genetic mapping of the brain's areas responsible for the processing of syntax.",
+          "isCorrect": false,
+          "rationale": "This refers to neurobiology, whereas Bruner's concept is about a cognitive and social readiness for meaning-making."
+        },
+        {
+          "text": "A biological requirement that children be exposed to a minimum number of words per day.",
+          "isCorrect": false,
+          "rationale": "Bruner focuses on the quality of social interaction and the search for meaning, not just the quantity of linguistic input."
+        },
+        {
+          "text": "The evolutionary process that replaced narrative thought with logical-mathematical calculus.",
+          "isCorrect": false,
+          "rationale": "Bruner argues that narrative is a fundamental, enduring achievement of human development, not something that was replaced."
+        }
+      ],
+      "hint": "Consider the idea of a 'readiness' or 'tunedness' that exists before actual speech begins."
+    },
+    {
+      "question": "In Bruner's view, what is the relationship between *logos* (the word) and *praxis* (action)?",
+      "answerOptions": [
+        {
+          "text": "They are culturally inseparable, as a child's social actions force them into the role of a narrator.",
+          "isCorrect": true,
+          "rationale": "The cultural setting and the requirements of social interaction compel children to use narrative to explain and justify their actions."
+        },
+        {
+          "text": "Action (*praxis*) is a primary biological reflex that is eventually replaced by symbolic thought (*logos*).",
+          "isCorrect": false,
+          "rationale": "Bruner sees them as integrated throughout development, with action providing the context for narrative meaning."
+        },
+        {
+          "text": "Children must master the logic of *logos* before they can engage in the social *praxis* of their community.",
+          "isCorrect": false,
+          "rationale": "The text suggests that children are engaged in social practice (*praxis*) long before they master formal linguistic logic."
+        },
+        {
+          "text": "There is no formal continuity between the two, making it impossible to study them together.",
+          "isCorrect": false,
+          "rationale": "While Bruner notes the difficulty of establishing formal continuity, his entire argument is based on how they function together in life."
+        }
+      ],
+      "hint": "Look for the statement that emphasizes how culture binds speech and behavior together."
+    }
+  ]
+}

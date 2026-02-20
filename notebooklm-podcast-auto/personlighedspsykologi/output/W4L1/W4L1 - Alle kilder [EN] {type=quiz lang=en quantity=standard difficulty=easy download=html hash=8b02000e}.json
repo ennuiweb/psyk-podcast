@@ -1,0 +1,317 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "According to Freud, which part of the mind is described as 'internal foreign territory'?",
+      "answerOptions": [
+        {
+          "text": "The repressed",
+          "isCorrect": true,
+          "rationale": "Freud uses this metaphor to describe the unconscious parts of the mind that remain hidden and alien to the conscious ego."
+        },
+        {
+          "text": "External reality",
+          "isCorrect": false,
+          "rationale": "Freud explicitly labels external reality as 'external foreign territory' to distinguish it from internal mental processes."
+        },
+        {
+          "text": "The ego ideal",
+          "isCorrect": false,
+          "rationale": "The ego ideal is a component of the super-ego that the ego consciously strives to emulate, rather than being a foreign territory."
+        },
+        {
+          "text": "The motor system",
+          "isCorrect": false,
+          "rationale": "While the motor system carries out actions, Freud's topography focuses on the psychological split between conscious and unconscious contents."
+        }
+      ],
+      "hint": "Consider the mental contents that the ego initially finds most foreign and disconnected from its own identity."
+    },
+    {
+      "question": "What analogy does Freud use to explain how mental illness reveals the structure of the mind?",
+      "answerOptions": [
+        {
+          "text": "A thrown crystal breaking along its lines of cleavage",
+          "isCorrect": true,
+          "rationale": "This analogy suggests that when the mind 'breaks' in pathology, it reveals underlying structures that were already present but invisible."
+        },
+        {
+          "text": "A mirror reflecting a distorted image",
+          "isCorrect": false,
+          "rationale": "While mirrors are common in psychology, Freud's specific analogy in this text emphasizes structural fragments rather than simple distortion."
+        },
+        {
+          "text": "A machine losing its power source",
+          "isCorrect": false,
+          "rationale": "This describes a loss of energy or function but does not capture the idea of pre-existing structural boundaries revealed by a break."
+        },
+        {
+          "text": "An iceberg mostly submerged under water",
+          "isCorrect": false,
+          "rationale": "Although a famous Freudian metaphor for the unconscious, it is not the analogy used in Lecture XXXI to explain how pathology reveals normal structure."
+        }
+      ],
+      "hint": "Think of an object that separates into specific, predetermined fragments when shattered."
+    },
+    {
+      "question": "What is the primary difference between 'identification' and 'object-choice' in Freudian theory?",
+      "answerOptions": [
+        {
+          "text": "Identification is wanting to be like someone, while object-choice is wanting to have someone.",
+          "isCorrect": true,
+          "rationale": "Identification alters the ego based on a model, whereas object-choice involves a desire for possession without necessarily changing one's own nature."
+        },
+        {
+          "text": "Identification is purely physical, while object-choice is purely emotional.",
+          "isCorrect": false,
+          "rationale": "Both processes are deeply psychological and emotional, involving internal attachments and mental representations."
+        },
+        {
+          "text": "Identification happens only with parents, while object-choice happens only with peers.",
+          "isCorrect": false,
+          "rationale": "Both processes can involve parents or others; for example, a child makes a parental object-choice during the Oedipus complex."
+        },
+        {
+          "text": "Identification is a conscious process, while object-choice is always unconscious.",
+          "isCorrect": false,
+          "rationale": "Both processes involve complex layers of conscious and unconscious dynamics within the psychical personality."
+        }
+      ],
+      "hint": "Focus on the distinction between emulating a person's traits versus desiring that person as a partner."
+    },
+    {
+      "question": "Which clinical condition does Freud use to illustrate the cruelty of the super-ego?",
+      "answerOptions": [
+        {
+          "text": "Melancholia",
+          "isCorrect": true,
+          "rationale": "In melancholic attacks, the super-ego becomes excessively severe, humiliating and ill-treating the ego with reproaches and threats."
+        },
+        {
+          "text": "Hysteria",
+          "isCorrect": false,
+          "rationale": "While hysteria involves conflict, Freud specifically points to the punishing nature of the super-ego in the context of melancholia."
+        },
+        {
+          "text": "Agoraphobia",
+          "isCorrect": false,
+          "rationale": "Phobias involve displaced anxiety onto external objects, rather than the internal moral 'ill-treatment' seen in melancholia."
+        },
+        {
+          "text": "Obsessive-compulsive disorder",
+          "isCorrect": false,
+          "rationale": "OCD involves rituals to manage anxiety, but Freud highlights the 'periodic' and 'cruel' judgement of the super-ego most clearly in melancholia."
+        }
+      ],
+      "hint": "Think of a state where an individual's conscience becomes their own worst enemy through extreme self-criticism."
+    },
+    {
+      "question": "According to the source material, the 'super-ego' is considered the heir to which childhood development?",
+      "answerOptions": [
+        {
+          "text": "The Oedipus complex",
+          "isCorrect": true,
+          "rationale": "The abandonment of Oedipal object-cathexes leads to an intensification of identifications, forming the foundation of the super-ego."
+        },
+        {
+          "text": "The development of motor skills",
+          "isCorrect": false,
+          "rationale": "The super-ego is a structural agency of the personality, not a developmental milestone related to physical coordination."
+        },
+        {
+          "text": "The achievement of weaning",
+          "isCorrect": false,
+          "rationale": "While early oral stages are important, Freud specifically links the super-ego's strength and origin to the resolution of the Oedipal phase."
+        },
+        {
+          "text": "The first experience of school",
+          "isCorrect": false,
+          "rationale": "Teachers and educators influence the super-ego later, but its primary origin is rooted in earlier parental identifications."
+        }
+      ],
+      "hint": "Look for the term describing a child's early emotional attachment and conflict regarding their parents."
+    },
+    {
+      "question": "How does Freud define the 'ego ideal'?",
+      "answerOptions": [
+        {
+          "text": "The vehicle by which the ego measures itself and strives for perfection",
+          "isCorrect": true,
+          "rationale": "The ego ideal is a precipitate of the child's early admiration for the perceived perfection of their parents."
+        },
+        {
+          "text": "The part of the mind that directly interacts with the external world",
+          "isCorrect": false,
+          "rationale": "This describes the general function of the ego, whereas the ego ideal is a specific internal standard held by the super-ego."
+        },
+        {
+          "text": "The biological instinct for self-preservation",
+          "isCorrect": false,
+          "rationale": "The ego ideal is a psychological structure based on identification, not a primary biological instinct."
+        },
+        {
+          "text": "The memory of a traumatic event that causes neurosis",
+          "isCorrect": false,
+          "rationale": "Traumatic memories are related to the repressed, while the ego ideal is a positive standard for emulation."
+        }
+      ],
+      "hint": "This concept represents the standard of excellence the individual attempts to reach."
+    },
+    {
+      "question": "In young children, what is the precursor to the 'moral anxiety' of the super-ego?",
+      "answerOptions": [
+        {
+          "text": "Realistic anxiety regarding the loss of parental love",
+          "isCorrect": true,
+          "rationale": "Before the super-ego is internalized, children fear external punishment and the loss of love from their parents."
+        },
+        {
+          "text": "The innate sense of right and wrong",
+          "isCorrect": false,
+          "rationale": "Freud argues that children are initially 'amoral' and do not have internal inhibitions; morality is internalized later."
+        },
+        {
+          "text": "The fear of supernatural powers",
+          "isCorrect": false,
+          "rationale": "While children may have such fears, the specific developmental precursor to conscience is the realistic fear of parental authority."
+        },
+        {
+          "text": "Biological guilt inherited from ancestors",
+          "isCorrect": false,
+          "rationale": "Freud emphasizes the role of individual childhood development and identification over inherited biological guilt in these lectures."
+        }
+      ],
+      "hint": "It involves a very practical fear regarding the people who take care of the child."
+    },
+    {
+      "question": "What is the concept of 'Anlehnung' (anaclitic) as described in Gammelgaard's text?",
+      "answerOptions": [
+        {
+          "text": "The sexual drive attaching itself to self-preservative functions like feeding",
+          "isCorrect": true,
+          "rationale": "Early infantile sexuality arises by 'leaning' on biological needs before becoming an independent drive."
+        },
+        {
+          "text": "The tendency of the child to ignore parental instructions",
+          "isCorrect": false,
+          "rationale": "Anlehnung refers to the relationship between different types of drives, not a behavioral pattern of disobedience."
+        },
+        {
+          "text": "The psychological state of being obsessed with one's own reflection",
+          "isCorrect": false,
+          "rationale": "This describes narcissism, which is a different concept from the anaclitic attachment of drives."
+        },
+        {
+          "text": "The total repression of all sexual thoughts during adulthood",
+          "isCorrect": false,
+          "rationale": "Anlehnung describes the early developmental origin of drives, not a mechanism of total repression in later life."
+        }
+      ],
+      "hint": "This term refers to how a 'higher' drive initially depends on a 'lower' biological need."
+    },
+    {
+      "question": "According to Gammelgaard, what does 'Nachträglichkeit' (deferred action) imply for trauma?",
+      "answerOptions": [
+        {
+          "text": "A past event may only acquire traumatic meaning through a later experience or memory",
+          "isCorrect": true,
+          "rationale": "This concept highlights that the psyche does not develop linearly; memories can be retroactively transformed and given new significance."
+        },
+        {
+          "text": "Trauma is always forgotten immediately after it occurs",
+          "isCorrect": false,
+          "rationale": "Nachträglichkeit focuses on the delayed assignment of meaning, not the immediate total loss of memory."
+        },
+        {
+          "text": "All trauma is physically visible as organic damage in the brain",
+          "isCorrect": false,
+          "rationale": "This is a neurological view that neglects the psychological and temporal aspects of 'deferred action' mentioned by Freud."
+        },
+        {
+          "text": "The ego is completely destroyed the moment a traumatic event happens",
+          "isCorrect": false,
+          "rationale": "Trauma involves a structural disturbance, but the theory of deferred action suggests a more complex, multi-phased temporal process."
+        }
+      ],
+      "hint": "Consider the idea that the effect of an event might be 'delayed' until it is reinterpreted later."
+    },
+    {
+      "question": "Freud mentions that 'delusions of being observed' are closely related to which psychological function?",
+      "answerOptions": [
+        {
+          "text": "Self-observation for the purpose of conscience",
+          "isCorrect": true,
+          "rationale": "Freud suggests that these delusions are a pathological displacement of the normal ego-function of watching one's own actions."
+        },
+        {
+          "text": "The ability to recognize faces",
+          "isCorrect": false,
+          "rationale": "The pathology involves a split in the ego's structure regarding judgment, not a failure of sensory perception or facial recognition."
+        },
+        {
+          "text": "The desire to be famous or popular",
+          "isCorrect": false,
+          "rationale": "The 'observation' in these delusions is felt as a distressing intrusion or threat of punishment, not a wish for positive attention."
+        },
+        {
+          "text": "The biological instinct for hunting",
+          "isCorrect": false,
+          "rationale": "This is an evolutionary biological interpretation that is unrelated to Freud's structural theory of the psychical personality."
+        }
+      ],
+      "hint": "This function involves one part of the ego setting itself apart to look at the rest of the ego."
+    },
+    {
+      "question": "What is the Freudian view on the 'inferiority complex'?",
+      "answerOptions": [
+        {
+          "text": "It is not a simple concept but an expression of tension between the ego and super-ego with erotic roots",
+          "isCorrect": true,
+          "rationale": "Freud critiques the popular use of the term and connects it to the sense of guilt and the child's feeling of not being loved."
+        },
+        {
+          "text": "It is purely the result of having an actual physical disability or organic defect",
+          "isCorrect": false,
+          "rationale": "Freud explicitly rejects this 'Individual Psychology' view as a 'short-sighted error' that misses the erotic and structural components."
+        },
+        {
+          "text": "It is the main cause of all psychological illnesses",
+          "isCorrect": false,
+          "rationale": "While popular, Freud notes the term is 'scarcely used in psycho-analysis' as an elementary or central cause."
+        },
+        {
+          "text": "It only occurs in people who have no conscience",
+          "isCorrect": false,
+          "rationale": "On the contrary, Freud links the sense of inferiority closely to the sense of guilt, which requires the presence of a super-ego."
+        }
+      ],
+      "hint": "Freud looks past the physical or 'popular' meaning to find the underlying structural and emotional causes."
+    },
+    {
+      "question": "In the context of melancholic attacks, what occurs during the 'contrary' or manic phase?",
+      "answerOptions": [
+        {
+          "text": "The ego celebrates a triumph as if the super-ego has lost its strength",
+          "isCorrect": true,
+          "rationale": "During mania, the tension between ego and super-ego vanishes, allowing the ego to satisfy its appetites without inhibition."
+        },
+        {
+          "text": "The individual becomes completely paralyzed and unable to move",
+          "isCorrect": false,
+          "rationale": "Paralysis is more characteristic of the depressive/melancholic phase; the manic phase is characterized by 'blissful intoxication' and activity."
+        },
+        {
+          "text": "The person forgets their own identity entirely",
+          "isCorrect": false,
+          "rationale": "The manic phase involves an 'uninhibited satisfaction' of the existing ego's appetites, not a loss of the sense of self."
+        },
+        {
+          "text": "The super-ego becomes even stricter and more punitive",
+          "isCorrect": false,
+          "rationale": "This describes the melancholic phase; the manic phase is defined by the temporary absence or 'melting' of the super-ego's authority."
+        }
+      ],
+      "hint": "Imagine a situation where all internal rules and self-criticisms suddenly disappear."
+    }
+  ]
+}

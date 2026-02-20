@@ -1,0 +1,317 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "According to existential philosophy, what is the primary distinction between 'existence' and 'essence'?",
+      "answerOptions": [
+        {
+          "text": "Essence refers to the concrete, unique reality of a being, while existence refers to universal laws.",
+          "isCorrect": false,
+          "rationale": "This reverses the definitions, as essence traditionally represents abstract, universal characteristics."
+        },
+        {
+          "text": "Existence refers to the fact that a particular entity is, while essence refers to the universal characteristics of what it is.",
+          "isCorrect": true,
+          "rationale": "Existence focuses on the concrete 'that it is' of a specific entity, whereas essence defines the 'what' through general traits."
+        },
+        {
+          "text": "Existence is the biological component of a human, while essence is the spiritual component.",
+          "isCorrect": false,
+          "rationale": "Existentialism views existence as the lived-totality of being, not merely a biological state."
+        },
+        {
+          "text": "Existence and essence are considered identical terms in the phenomenological method.",
+          "isCorrect": false,
+          "rationale": "The two terms are used as a contrast to highlight the difference between concrete reality and abstract categories."
+        }
+      ],
+      "hint": "Consider which term relates to specific, individual reality versus general, shared categories."
+    },
+    {
+      "question": "In the context of Husserl's phenomenological method, what does the rule of 'epoché' require a person to do?",
+      "answerOptions": [
+        {
+          "text": "Develop a scientific hypothesis to explain the causes of an experience.",
+          "isCorrect": false,
+          "rationale": "Phenomenology explicitly moves away from producing explanatory hypotheses in favor of pure description."
+        },
+        {
+          "text": "Rank different experiences in order of their moral or social significance.",
+          "isCorrect": false,
+          "rationale": "This would violate the rule of horizontalization, which treats all experiences as initially having equal value."
+        },
+        {
+          "text": "Bracket or set aside initial biases, assumptions, and the 'natural attitude' regarding an object.",
+          "isCorrect": true,
+          "rationale": "Epoché involves suspending judgment and expectations to focus purely on the immediate data of experience."
+        },
+        {
+          "text": "Analyze the historical development of a concept before experiencing it.",
+          "isCorrect": false,
+          "rationale": "Focusing on historical development is a form of intellectualizing that the phenomenological method seeks to bypass."
+        }
+      ],
+      "hint": "This step involves creating a 'bracket' around our preconceived notions."
+    },
+    {
+      "question": "Which term did Martin Heidegger use to describe the specifically human form of 'being-there'?",
+      "answerOptions": [
+        {
+          "text": "$Übermensch$",
+          "isCorrect": false,
+          "rationale": "This is Nietzsche's term for the autonomous 'superman' who creates their own values."
+        },
+        {
+          "text": "Dasein",
+          "isCorrect": true,
+          "rationale": "Dasein literally translates to 'being-there' and signifies the indissoluble unity of the person and their world."
+        },
+        {
+          "text": "Cogito",
+          "isCorrect": false,
+          "rationale": "This refers to the Cartesian 'I think,' which existentialists often critique for separating the mind from the world."
+        },
+        {
+          "text": "Sisyphus",
+          "isCorrect": false,
+          "rationale": "Sisyphus is a mythological figure used by Camus to represent the absurdity of human struggle."
+        }
+      ],
+      "hint": "It is a German word that emphasizes our situatedness in the world."
+    },
+    {
+      "question": "Jean-Paul Sartre's famous phrase 'Existence precedes essence' implies that:",
+      "answerOptions": [
+        {
+          "text": "Human beings are born with a pre-determined purpose they must discover.",
+          "isCorrect": false,
+          "rationale": "This implies an essence exists before existence, which is the opposite of Sartre's claim."
+        },
+        {
+          "text": "Biology is the most important factor in determining human personality.",
+          "isCorrect": false,
+          "rationale": "Existentialists generally argue against biological or environmental determinism in favor of radical freedom."
+        },
+        {
+          "text": "Humans first exist as a 'nothingness' and only define who they are through their choices.",
+          "isCorrect": true,
+          "rationale": "Sartre argues that man is first of all a being who hurls himself toward a future and makes himself what he is."
+        },
+        {
+          "text": "The soul is an essential component that exists before physical birth.",
+          "isCorrect": false,
+          "rationale": "This reflects a theological essentialism that Sartre, an atheist, rejected."
+        }
+      ],
+      "hint": "Think about whether our identity is a 'given' or something we create as we live."
+    },
+    {
+      "question": "In Martin Buber's philosophy, what characterizes the 'I-Thou' mode of relating?",
+      "answerOptions": [
+        {
+          "text": "Treating the other as a thing-like object to be analyzed and systematized.",
+          "isCorrect": false,
+          "rationale": "This describes the 'I-It' attitude, where the other is a categorized object."
+        },
+        {
+          "text": "Meeting the other as a unique, unclassifiable totality in the present moment.",
+          "isCorrect": true,
+          "rationale": "An 'I-Thou' relationship involves direct, mutual encounter and confirmation of the other's unique being."
+        },
+        {
+          "text": "Communicating solely through abstract concepts and social roles.",
+          "isCorrect": false,
+          "rationale": "Buber argues that 'I-Thou' requires entering the encounter with one's whole being, beyond mere roles."
+        },
+        {
+          "text": "The attempt to possess or control the love of the other person.",
+          "isCorrect": false,
+          "rationale": "This reflects a Sartrean view of conflict rather than Buber's relational confirmation."
+        }
+      ],
+      "hint": "Focus on the difference between seeing a person as a 'category' versus seeing them as a unique 'being.'"
+    },
+    {
+      "question": "Heidegger describes 'thrownness' as a factical aspect of existence. What does this concept refer to?",
+      "answerOptions": [
+        {
+          "text": "The intentional choice to move to a new country.",
+          "isCorrect": false,
+          "rationale": "Thrownness refers to circumstances we did not choose, rather than active decisions."
+        },
+        {
+          "text": "The fact that humans are born into a specific context and history not of their making.",
+          "isCorrect": true,
+          "rationale": "Thrownness signifies that we find ourselves 'thrown' into a world with pre-existing parents, cultures, and situations."
+        },
+        {
+          "text": "The ability of a person to completely overcome their past through willpower.",
+          "isCorrect": false,
+          "rationale": "While freedom allows us to take up our past, thrownness emphasizes the inescapable limiting 'givens' of our start."
+        },
+        {
+          "text": "A psychiatric state of disorientation and confusion.",
+          "isCorrect": false,
+          "rationale": "In existentialism, thrownness is an ontological condition of all humans, not a specific clinical pathology."
+        }
+      ],
+      "hint": "Think about the aspects of your life—like your birthplace or parents—that you had no say in."
+    },
+    {
+      "question": "According to Søren Kierkegaard, as described in Jacobsen (2021), how is the human self defined?",
+      "answerOptions": [
+        {
+          "text": "The self is a static substance located within the brain.",
+          "isCorrect": false,
+          "rationale": "Kierkegaard rejects noun-like, static definitions of the self in favor of a dynamic process."
+        },
+        {
+          "text": "The self is a relation that relates itself to itself.",
+          "isCorrect": true,
+          "rationale": "This signifies that the self is not a thing, but a constant process of self-relating and synthesis."
+        },
+        {
+          "text": "The self is a collection of social roles imposed by the 'herd'.",
+          "isCorrect": false,
+          "rationale": "Kierkegaard distinguishes between the authentic individual self and the conforming crowd."
+        },
+        {
+          "text": "The self is an illusion created by language and discourse.",
+          "isCorrect": false,
+          "rationale": "This reflects a postmodern critique rather than Kierkegaard's view of the self as a serious, existing task."
+        }
+      ],
+      "hint": "Focus on the idea of the self being a dynamic 'relationship' rather than a fixed 'object'."
+    },
+    {
+      "question": "In existential thought, why is anxiety (or angst) often viewed as a positive or necessary experience?",
+      "answerOptions": [
+        {
+          "text": "It is a sign that the individual has successfully reached a state of inner peace.",
+          "isCorrect": false,
+          "rationale": "Anxiety is more often associated with the 'unsettledness' of realizing one's freedom and groundlessness."
+        },
+        {
+          "text": "It indicates a biological chemical imbalance that needs correction.",
+          "isCorrect": false,
+          "rationale": "Existentialists view angst as an ontological condition of freedom, not merely a medical symptom."
+        },
+        {
+          "text": "It acts as a teacher that 'jerks' the individual out of inauthentic comfort and toward their true freedom.",
+          "isCorrect": true,
+          "rationale": "Anxiety alerts the individual to their possibilities and the weight of their choices, serving as a guide to authenticity."
+        },
+        {
+          "text": "It is the final stage of grief when facing the death of a loved one.",
+          "isCorrect": false,
+          "rationale": "While relevant to grief, existential anxiety is broader, relating to the fundamental 'dizziness' of human choice."
+        }
+      ],
+      "hint": "Consider the role of anxiety as a 'summons' or a wake-up call."
+    },
+    {
+      "question": "What does Jean-Paul Sartre mean by the term 'bad faith' ($mauvaise$ $foi$)?",
+      "answerOptions": [
+        {
+          "text": "Participating in a religion one does not actually believe in.",
+          "isCorrect": false,
+          "rationale": "While related to insincerity, 'bad faith' in Sartre's sense specifically refers to the denial of one's fundamental freedom."
+        },
+        {
+          "text": "A form of self-deception where one pretends their choices are determined by external factors.",
+          "isCorrect": true,
+          "rationale": "Bad faith is the attempt to evade the anxiety of freedom by treating oneself as a fixed, determined 'thing'."
+        },
+        {
+          "text": "The inability to trust other people in social relationships.",
+          "isCorrect": false,
+          "rationale": "Sartre's term refers to a self-relational stance regarding freedom, not interpersonal trust issues."
+        },
+        {
+          "text": "A refusal to follow the ethical laws of a society.",
+          "isCorrect": false,
+          "rationale": "Bad faith is a failure of authenticity toward oneself, not necessarily a violation of social law."
+        }
+      ],
+      "hint": "Think about how people might try to avoid responsibility by saying, 'I had no choice'."
+    },
+    {
+      "question": "Heidegger's distinction between 'leaping in' and 'leaping ahead' relates to how we help others. What is 'leaping ahead'?",
+      "answerOptions": [
+        {
+          "text": "Taking over the other person's task and finishing it for them.",
+          "isCorrect": false,
+          "rationale": "This describes 'leaping in,' which can make the other person dependent or dominated."
+        },
+        {
+          "text": "Ignoring the other person's problems so they learn to be tough.",
+          "isCorrect": false,
+          "rationale": "Heidegger's concept involves a form of care and presence, not total abandonment or neglect."
+        },
+        {
+          "text": "Helping the other person to address their own concerns and possibilities for themselves.",
+          "isCorrect": true,
+          "rationale": "Leaping ahead supports the other's autonomy, allowing them to become transparent to themselves in their own care."
+        },
+        {
+          "text": "Predicting the other person's future mistakes so they can avoid them.",
+          "isCorrect": false,
+          "rationale": "This would be an 'I-It' analysis rather than an existential support of the other's free project."
+        }
+      ],
+      "hint": "Consider which method empowers the other person to take their own action."
+    },
+    {
+      "question": "Kierkegaard's metaphor of '70,000 fathoms of water' represents:",
+      "answerOptions": [
+        {
+          "text": "The scientific depth of human psychological research.",
+          "isCorrect": false,
+          "rationale": "Jacobsen notes that existence cannot be studied under a microscope or reduced to scientific 'depth'."
+        },
+        {
+          "text": "The overwhelming amount of social information in the modern world.",
+          "isCorrect": false,
+          "rationale": "The metaphor is about the personal stance of faith/commitment, not the volume of information."
+        },
+        {
+          "text": "The risky, groundless leap into faith or commitment despite objective uncertainty.",
+          "isCorrect": true,
+          "rationale": "It captures the existential 'swimming' in uncertainty where one must sustain oneself through a passionate choice for God or meaning."
+        },
+        {
+          "text": "A specific biological fear of drowning found in all humans.",
+          "isCorrect": false,
+          "rationale": "The term is used philosophically to describe the 'dread' and 'leap' of faith, not a literal phobia."
+        }
+      ],
+      "hint": "Think about the courage needed to commit to something when there is no 'solid ground' beneath you."
+    },
+    {
+      "question": "How does Heidegger's concept of 'the One' (or 'the They') contribute to inauthenticity?",
+      "answerOptions": [
+        {
+          "text": "It refers to a secret society that controls individual thoughts.",
+          "isCorrect": false,
+          "rationale": "The 'One' is a pervasive, public social order, not a specific conspiratorial group."
+        },
+        {
+          "text": "It encourages people to develop their unique, individual potentials.",
+          "isCorrect": false,
+          "rationale": "The 'One' actually tends to 'level down' unique possibilities into a bland, uniform averageness."
+        },
+        {
+          "text": "It provides a set of pre-packaged, public meanings that allow individuals to avoid the anxiety of choosing for themselves.",
+          "isCorrect": true,
+          "rationale": "By falling in with 'what one does,' the individual escapes personal responsibility and the dread of groundlessness."
+        },
+        {
+          "text": "It is the highest stage of spiritual enlightenment in Heidegger's later work.",
+          "isCorrect": false,
+          "rationale": "Inauthenticity is characterized by being lost in 'the One'; enlightenment would involve 'releasement' or resolve."
+        }
+      ],
+      "hint": "Think about the phrase 'That's just what one does' as a way to avoid thinking for oneself."
+    }
+  ]
+}

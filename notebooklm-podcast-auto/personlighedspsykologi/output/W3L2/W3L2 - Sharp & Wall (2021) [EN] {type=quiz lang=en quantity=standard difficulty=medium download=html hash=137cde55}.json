@@ -1,0 +1,265 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "In the Alternative Model for Personality Disorders (AMPD), what does Criterion A primarily represent?",
+      "answerOptions": [
+        {
+          "text": "A dimensional general severity criterion representing maladaptive self and interpersonal functioning.",
+          "isCorrect": true,
+          "rationale": "This criterion focuses on the core functional impairments in identity, self-direction, empathy, and intimacy that are common to all personality disorders."
+        },
+        {
+          "text": "A set of five pathological trait domains used to describe individual differences in personality expression.",
+          "isCorrect": false,
+          "rationale": "This description refers to Criterion B, which provides the descriptive 'flavor' or nuance to the personality pathology rather than the general severity."
+        },
+        {
+          "text": "A categorical checklist used to determine if a patient fits one of the traditional ten personality disorder types.",
+          "isCorrect": false,
+          "rationale": "The AMPD is a hybrid model, but Criterion A itself is defined as a dimensional severity continuum rather than a categorical checklist of types."
+        },
+        {
+          "text": "An assessment of global psychosocial disability and occupational role performance.",
+          "isCorrect": false,
+          "rationale": "While related, the authors distinguish Level of Personality Functioning from general disability, viewing it instead as the intrapsychic source of such impairments."
+        }
+      ],
+      "hint": "Consider the 'core' entry requirement that determines if a personality disorder is present at all."
+    },
+    {
+      "question": "Which four domains are assessed using the Level of Personality Functioning Scale (LPFS)?",
+      "answerOptions": [
+        {
+          "text": "Identity, self-direction, empathy, and intimacy.",
+          "isCorrect": true,
+          "rationale": "These four domains capture the intrapsychic and interpersonal systems necessary for fulfilling adult life tasks according to the AMPD."
+        },
+        {
+          "text": "Negative affectivity, detachment, antagonism, and disinhibition.",
+          "isCorrect": false,
+          "rationale": "These are the trait domains found in Criterion B, which describe the specific manifestations of personality rather than the level of functioning."
+        },
+        {
+          "text": "Self-esteem, goal-setting, social communication, and self-care.",
+          "isCorrect": false,
+          "rationale": "While these concepts are related to LPF, they do not match the specific four-domain structure defined in the DSM-5 Section III."
+        },
+        {
+          "text": "Internalizing, externalizing, psychoticism, and antagonism.",
+          "isCorrect": false,
+          "rationale": "These terms are associated with the Hierarchical Taxonomy of Psychopathology (HiTOP) rather than the specific domains of Criterion A."
+        }
+      ],
+      "hint": "Focus on the two broad categories of 'Self' and 'Interpersonal' functioning."
+    },
+    {
+      "question": "According to the text, how does the ICD-11's approach to personality disorder traits differ from the DSM-5 AMPD?",
+      "answerOptions": [
+        {
+          "text": "The evaluation of trait domains in ICD-11 is optional, whereas Criterion B is required for specific PD diagnoses in the AMPD.",
+          "isCorrect": true,
+          "rationale": "ICD-11 prioritizes a general severity criterion for diagnosis, making the use of trait domain qualifiers an optional step for clinicians."
+        },
+        {
+          "text": "ICD-11 excludes the domain of negative affectivity because it overlaps with mood disorders.",
+          "isCorrect": false,
+          "rationale": "ICD-11 includes negative affectivity; it is psychoticism that is omitted in the ICD-11 trait model compared to the DSM-5."
+        },
+        {
+          "text": "ICD-11 maintains all ten traditional categorical types while the DSM-5 AMPD reduces them to six.",
+          "isCorrect": false,
+          "rationale": "ICD-11 actually departs more radically by removing provision for categorically defined personality disorders, except for a borderline pattern qualifier."
+        },
+        {
+          "text": "ICD-11 defines trait domains as categorical 'all-or-nothing' markers of pathology.",
+          "isCorrect": false,
+          "rationale": "Like the AMPD, the ICD-11 views trait domains as qualifiers that provide descriptive information on a spectrum."
+        }
+      ],
+      "hint": "Think about whether assessing specific traits is mandatory or supplementary in the international system."
+    },
+    {
+      "question": "The Level of Personality Functioning Scale (LPFS) utilizes a continuum of impairment ranging from:",
+      "answerOptions": [
+        {
+          "text": "$0$ (little or no impairment) to $4$ (extreme impairment).",
+          "isCorrect": true,
+          "rationale": "The LPFS is a five-point severity continuum designed to capture the full range from healthy functioning to the most severe pathology."
+        },
+        {
+          "text": "$1$ (mild impairment) to $10$ (severe impairment).",
+          "isCorrect": false,
+          "rationale": "The DSM-5 scale uses a $5$-point rating system ($0$-$4$), not a $10$-point system."
+        },
+        {
+          "text": "$-2$ (adaptive) to $+2$ (maladaptive).",
+          "isCorrect": false,
+          "rationale": "The scale is unipolar, starting at zero to indicate the absence of impairment."
+        },
+        {
+          "text": "$0$ (absent) to $100$ (total disability).",
+          "isCorrect": false,
+          "rationale": "A $0$-$100$ range is characteristic of the Global Assessment of Functioning (GAF) from DSM-IV, not the LPFS."
+        }
+      ],
+      "hint": "The scale includes five distinct levels of severity starting from a baseline of no impairment."
+    },
+    {
+      "question": "Which of McAdams's three developmental layers of personality is the last to emerge and provides a sense of meaning and purpose through storytelling?",
+      "answerOptions": [
+        {
+          "text": "Person-as-author.",
+          "isCorrect": true,
+          "rationale": "This layer emerges in adolescence and allows individuals to construct an integrated narrative identity or life story."
+        },
+        {
+          "text": "Person-as-actor.",
+          "isCorrect": false,
+          "rationale": "This is the first layer, involving temperamental traits observable from birth and early childhood."
+        },
+        {
+          "text": "Person-as-agent.",
+          "isCorrect": false,
+          "rationale": "This second layer emerges around age $5$ to $7$ and focuses on goals, motivations, and purposeful actions."
+        },
+        {
+          "text": "Person-as-observer.",
+          "isCorrect": false,
+          "rationale": "This is not one of the three layers described in McAdams's developmental theory as cited in the text."
+        }
+      ],
+      "hint": "Think about the role an individual takes when they begin to create a 'narrative identity'."
+    },
+    {
+      "question": "What empirical finding regarding Borderline Personality Disorder (BPD) supports its link to Criterion A?",
+      "answerOptions": [
+        {
+          "text": "BPD items load most strongly on the general factor ($g-PD$) of personality pathology and often fail to emerge as a separate specific factor.",
+          "isCorrect": true,
+          "rationale": "Research suggests BPD criteria are highly representative of the core severity common to all personality disorders, acting as a proxy for LPF."
+        },
+        {
+          "text": "BPD is the only personality disorder that can be reliably diagnosed using only trait-based measures (Criterion B).",
+          "isCorrect": false,
+          "rationale": "The text argues that BPD criteria rely heavily on internal subjective experiences of self, making them distinct from purely behavioral trait descriptions."
+        },
+        {
+          "text": "BPD shows no overlap with the internalizing or externalizing spectra of psychopathology.",
+          "isCorrect": false,
+          "rationale": "BPD is actually situated on the severity continuum between neurotic (internalizing/externalizing) and psychotic disorders according to the text."
+        },
+        {
+          "text": "BPD is the only disorder in the AMPD that does not require an assessment of Criterion A.",
+          "isCorrect": false,
+          "rationale": "Criterion A is the 'entry criterion' and is required for the diagnosis of all personality disorders in the AMPD, including BPD."
+        }
+      ],
+      "hint": "Look for the relationship between BPD symptoms and the 'general factor' of personality pathology."
+    },
+    {
+      "question": "How do the authors distinguish 'disease' from 'disability' in the context of personality disorders?",
+      "answerOptions": [
+        {
+          "text": "The disease is the internal personality dysfunction, while disability is the resulting social or occupational consequence.",
+          "isCorrect": true,
+          "rationale": "The authors argue that Criterion A should capture the intrapsychic source (the disease) rather than just the outcomes (disability), which are ubiquitous across many disorders."
+        },
+        {
+          "text": "Disease refers to biological traits (Criterion B), while disability refers to self-functioning (Criterion A).",
+          "isCorrect": false,
+          "rationale": "In this context, both Criterion A and B are components of the 'disease' model, whereas disability is viewed as a separate outcome of those dysfunctions."
+        },
+        {
+          "text": "The two terms are synonymous and should both be used to define the entry criterion for personality disorders.",
+          "isCorrect": false,
+          "rationale": "The text explicitly critiques using general disability as a primary definition for personality disorder, noting it lacks specificity."
+        },
+        {
+          "text": "Disease refers to childhood temperament, while disability refers to adult personality types.",
+          "isCorrect": false,
+          "rationale": "This distinction does not align with the clinical definitions of disease and disability discussed in psychiatric nosology."
+        }
+      ],
+      "hint": "Consider which is the 'cause' and which is the 'effect' in a clinical diagnosis."
+    },
+    {
+      "question": "According to the text, why does personality disorder typically have its onset in adolescence rather than earlier childhood?",
+      "answerOptions": [
+        {
+          "text": "Qualitative shifts in cognitive and neural maturation allow for the emergence of integrated self and identity function.",
+          "isCorrect": true,
+          "rationale": "It is only when the 'person-as-author' layer develops that the potential for the integrated self to become disordered emerges."
+        },
+        {
+          "text": "Pathological traits (Criterion B) do not exist or cannot be observed in preadolescents.",
+          "isCorrect": false,
+          "rationale": "The text notes that maladaptive trait function is readily observable in preadolescents, but it is the 'binding' of personality that occurs later."
+        },
+        {
+          "text": "Hormonal changes in puberty are the sole biological cause of self-direction impairments.",
+          "isCorrect": false,
+          "rationale": "While biological changes occur, the authors emphasize the developmental progression of the intrapsychic system and identity construction."
+        },
+        {
+          "text": "Social roles in childhood are too simple to allow for interpersonal dysfunction to manifest.",
+          "isCorrect": false,
+          "rationale": "Children exhibit social behaviors, but the specific qualitative potential for PD arises from the complex maturation of the self-system in adolescence."
+        }
+      ],
+      "hint": "Focus on the 'binding' of personality and the development of narrative identity."
+    },
+    {
+      "question": "When comparing the components of Criterion A, which has been found to be a stronger predictor of general psychological distress and psychosocial impairment?",
+      "answerOptions": [
+        {
+          "text": "The self-functioning component (identity and self-direction).",
+          "isCorrect": true,
+          "rationale": "Multiple studies cited in the review indicate that self-functioning is the 'nexus' or primary driver of the general severity of personality pathology."
+        },
+        {
+          "text": "The interpersonal component (empathy and intimacy).",
+          "isCorrect": false,
+          "rationale": "While important, interpersonal problems are often seen as consequences driven by the underlying self-pathology."
+        },
+        {
+          "text": "The trait component (negative affectivity).",
+          "isCorrect": false,
+          "rationale": "Negative affectivity is part of Criterion B, not Criterion A, though it is highly correlated with general distress."
+        },
+        {
+          "text": "The psychoticism domain.",
+          "isCorrect": false,
+          "rationale": "Psychoticism is a trait domain in Criterion B and is generally the least related to the core functional severity of personality disorders."
+        }
+      ],
+      "hint": "Consider which part of the LPF is described as the 'nexus' of personality pathology."
+    },
+    {
+      "question": "Which developmental capacity is identified as a central precondition for the 'person-as-agent' layer, allowing individuals to understand the intentions behind behaviors?",
+      "answerOptions": [
+        {
+          "text": "Mentalizing.",
+          "isCorrect": true,
+          "rationale": "Mentalizing, or the ability to reflect on inner experiences and intentions, is what enables a child to move from a social actor to a motivated agent."
+        },
+        {
+          "text": "Temperamental inhibition.",
+          "isCorrect": false,
+          "rationale": "Temperament is the foundation of the 'actor' layer, whereas mentalizing is the cognitive leap required for agency."
+        },
+        {
+          "text": "Sexual maturity.",
+          "isCorrect": false,
+          "rationale": "Sexual maturity is associated with the later 'author' layer and the capacity for adult intimacy rather than the early childhood 'agent' layer."
+        },
+        {
+          "text": "Object permanence.",
+          "isCorrect": false,
+          "rationale": "Object permanence is a much earlier developmental milestone and is not the focus of the layers described by McAdams in this context."
+        }
+      ],
+      "hint": "The term refers to the capacity to 'read' the minds of oneself and others."
+    }
+  ]
+}

@@ -1,0 +1,307 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "What does the 'maturity principle' of personality development describe?",
+      "answerOptions": [
+        {
+          "text": "The tendency for people to become more extraverted and open to new experiences as they age.",
+          "isCorrect": false,
+          "rationale": "While some change occurs in these traits, the maturity principle specifically refers to traits associated with psychological and social stability."
+        },
+        {
+          "text": "The observation that personality traits become completely fixed and unchangeable by the time an individual reaches middle age.",
+          "isCorrect": false,
+          "rationale": "Research indicates that personality remains open to change throughout the entire lifespan, even into old age."
+        },
+        {
+          "text": "The average increase in levels of Agreeableness, Conscientiousness, and Emotional Stability over the lifespan.",
+          "isCorrect": true,
+          "rationale": "This principle highlights the normative trend where individuals generally grow more responsible, cooperative, and emotionally steady as they move into adulthood."
+        },
+        {
+          "text": "The decline in cognitive functioning and its impact on personality consistency in late adulthood.",
+          "isCorrect": false,
+          "rationale": "This describes aging-related decline rather than the psychological growth patterns defined by the maturity principle."
+        }
+      ],
+      "hint": "Think about the specific Big Five traits that represent becoming a more stable and responsible member of society."
+    },
+    {
+      "question": "According to the meta-analysis, at what approximate age does the rank-order stability of personality traits reach a plateau?",
+      "answerOptions": [
+        {
+          "text": "Age 12",
+          "isCorrect": false,
+          "rationale": "Stability increases rapidly during childhood and adolescence rather than reaching its peak at this early stage."
+        },
+        {
+          "text": "Age 25",
+          "isCorrect": true,
+          "rationale": "The findings suggest that trait differences crystallize and reach a high level of stability during the transition to young adulthood."
+        },
+        {
+          "text": "Age 50",
+          "isCorrect": false,
+          "rationale": "While older meta-analyses suggested stability peaks here, newer data shows that the significant increases occur much earlier."
+        },
+        {
+          "text": "Age 80",
+          "isCorrect": false,
+          "rationale": "Stability levels tend to remain high or even slightly decrease in old age rather than continuing to climb until this point."
+        }
+      ],
+      "hint": "This age marks the transition from emerging adulthood to more established adult roles."
+    },
+    {
+      "question": "How does increasing the time lag between personality assessments generally affect the rank-order stability coefficient ($r$)?",
+      "answerOptions": [
+        {
+          "text": "The coefficient ($r$) increases because personality becomes more set in stone over time.",
+          "isCorrect": false,
+          "rationale": "Longer periods of time allow for more life experiences and environmental factors to shift an individual's relative standing on traits."
+        },
+        {
+          "text": "The coefficient ($r$) remains exactly the same regardless of the time interval.",
+          "isCorrect": false,
+          "rationale": "Time is a significant factor in personality development, and stability is not static over decades."
+        },
+        {
+          "text": "The coefficient ($r$) decreases as the time interval increases, eventually reaching a modest asymptote.",
+          "isCorrect": true,
+          "rationale": "As time passes, rank-order stability tends to decay quickly at first and then level off, suggesting a 'core' personality that persists over decades."
+        },
+        {
+          "text": "The coefficient ($r$) drops to zero immediately after a ten-year interval.",
+          "isCorrect": false,
+          "rationale": "Even over very long periods, like 50 years, research shows that personality traits still maintain a significant degree of stability."
+        }
+      ],
+      "hint": "Consider the effect of 'time-based decay' mentioned in the study."
+    },
+    {
+      "question": "Which personality trait was found to increase consistently and more substantially across the lifespan than previously estimated?",
+      "answerOptions": [
+        {
+          "text": "Extraversion",
+          "isCorrect": false,
+          "rationale": "Extraversion trajectories are more complex and often show little cumulative change or slight declines in later life."
+        },
+        {
+          "text": "Openness to Experience",
+          "isCorrect": false,
+          "rationale": "Openness often shows increases in young adulthood followed by declines in older age."
+        },
+        {
+          "text": "Emotional Stability",
+          "isCorrect": true,
+          "rationale": "Unlike other traits that may plateau or decline, Emotional Stability shows a monotonically increasing trend throughout the adult lifespan."
+        },
+        {
+          "text": "Conscientiousness",
+          "isCorrect": false,
+          "rationale": "Although it increases significantly in midlife, it may show decreases in very late adulthood."
+        }
+      ],
+      "hint": "This trait is associated with the 'paradox of aging' where older adults report better emotional well-being."
+    },
+    {
+      "question": "True or False: Maladaptive trait measures (indicative of personality problems) tend to be more stable than normal-range trait measures.",
+      "answerOptions": [
+        {
+          "text": "True",
+          "isCorrect": false,
+          "rationale": "The meta-analysis actually found that maladaptive traits are less stable than healthy, normal-range traits."
+        },
+        {
+          "text": "False",
+          "isCorrect": true,
+          "rationale": "Evidence suggests that traits associated with personality disorders or behavioral problems are more prone to change than broader, adaptive traits."
+        }
+      ],
+      "hint": "The study compared adaptive and maladaptive measures to see which maintained more consistent individual differences."
+    },
+    {
+      "question": "What is the typical average rank-order stability ($r$) for personality traits found in this large-scale meta-analysis?",
+      "answerOptions": [
+        {
+          "text": "$r \\approx .20$",
+          "isCorrect": false,
+          "rationale": "This value is closer to the long-term stability found over 50 years, rather than the average across all studies."
+        },
+        {
+          "text": "$r \\approx .60$",
+          "isCorrect": true,
+          "rationale": "This coefficient indicates that personality differences are fairly stable among adults over moderate time periods."
+        },
+        {
+          "text": "$r \\approx .95$",
+          "isCorrect": false,
+          "rationale": "Personality never reaches perfect stability, and such a high value would suggest that traits are essentially unchangeable."
+        },
+        {
+          "text": "$r \\approx .00$",
+          "isCorrect": false,
+          "rationale": "A correlation of zero would mean there is no relationship between personality at one time and personality at another, which contradicts all major findings."
+        }
+      ],
+      "hint": "This value represents a moderate-to-strong positive correlation between test and retest scores."
+    },
+    {
+      "question": "During which life stage are mean-level changes ($d$) in personality traits most pronounced?",
+      "answerOptions": [
+        {
+          "text": "Infancy",
+          "isCorrect": false,
+          "rationale": "While early childhood shows development, the most significant shifts in Big Five traits occur later during social role transitions."
+        },
+        {
+          "text": "Young Adulthood",
+          "isCorrect": true,
+          "rationale": "The period between Ages 18 and 40 is when people experience major life events that drive significant changes in trait levels."
+        },
+        {
+          "text": "Middle Age",
+          "isCorrect": false,
+          "rationale": "Middle adulthood is often characterized as a period of stability and maintenance rather than rapid change."
+        },
+        {
+          "text": "Old Age",
+          "isCorrect": false,
+          "rationale": "While changes occur in late life, they are generally less pronounced than the developmental shifts seen in early adulthood."
+        }
+      ],
+      "hint": "This is the same period where the 'maturity principle' is most visible as people enter the workforce and start families."
+    },
+    {
+      "question": "How do narrow facet-level measures of personality compare to broad domain measures in terms of rank-order stability?",
+      "answerOptions": [
+        {
+          "text": "Narrow facets are significantly more stable because they are more specific.",
+          "isCorrect": false,
+          "rationale": "Specific nuances can be more sensitive to environmental changes than broad, aggregated domains."
+        },
+        {
+          "text": "Broad domain measures tend to be more stable than narrow facet-level measures.",
+          "isCorrect": true,
+          "rationale": "Aggregating multiple facets into a broad domain typically reduces measurement error and captures more enduring personality patterns."
+        },
+        {
+          "text": "There is no difference in stability between facets and domains.",
+          "isCorrect": false,
+          "rationale": "The meta-analysis identified measurement breadth as a statistically significant moderator of stability."
+        },
+        {
+          "text": "Facets are only stable in childhood, while domains are only stable in adulthood.",
+          "isCorrect": false,
+          "rationale": "Both are measured across the lifespan, but broad domains generally maintain higher stability coefficients."
+        }
+      ],
+      "hint": "Aggregating information (like in a domain) often leads to more reliable and stable measurement."
+    },
+    {
+      "question": "According to the findings, what is the impact of gender on the stability and change of personality traits?",
+      "answerOptions": [
+        {
+          "text": "Women's personalities are significantly more stable than men's.",
+          "isCorrect": false,
+          "rationale": "Research indicates that the developmental patterns of stability are remarkably similar across genders."
+        },
+        {
+          "text": "Men show much higher rates of mean-level change in Conscientiousness.",
+          "isCorrect": false,
+          "rationale": "Normative maturation trends, such as increases in Conscientiousness, generally apply to both men and women."
+        },
+        {
+          "text": "There is little to no evidence for significant gender differences in personality stability or change.",
+          "isCorrect": true,
+          "rationale": "The meta-analysis found that patterns of development hold across gender, suggesting universal developmental processes."
+        },
+        {
+          "text": "Gender only moderates personality in childhood, but not in adulthood.",
+          "isCorrect": false,
+          "rationale": "Studies show consistency in development patterns across the entire lifespan for both genders."
+        }
+      ],
+      "hint": "Consider whether the study found personality development to be a generally universal or highly gender-specific process."
+    },
+    {
+      "question": "What did the meta-analysis conclude about the 'cumulative continuity principle' in middle and late adulthood?",
+      "answerOptions": [
+        {
+          "text": "Personality stability continues to increase linearly until the very end of life.",
+          "isCorrect": false,
+          "rationale": "The data showed that stability does not continue to climb indefinitely after young adulthood."
+        },
+        {
+          "text": "Rank-order stability plateaus after Age 25 and does not show significant increases in middle age.",
+          "isCorrect": true,
+          "rationale": "Contrary to some earlier theories, the newest data suggests that the 'first law of personality development' (increasing stability) mostly applies to early life."
+        },
+        {
+          "text": "Stability actually drops to zero as soon as an individual reaches retirement age.",
+          "isCorrect": false,
+          "rationale": "Personality remains fairly stable in older adults, though it may experience some slight declines in very late life."
+        },
+        {
+          "text": "Middle-aged adults are less stable than adolescents.",
+          "isCorrect": false,
+          "rationale": "Adolescents have significantly lower rank-order stability than middle-aged adults, whose traits have already crystallized."
+        }
+      ],
+      "hint": "Look for the finding that challenged the idea of stability continuing to peak in the 50s."
+    },
+    {
+      "question": "What methodological shift has occurred in personality science over the last two decades, as noted in the study?",
+      "answerOptions": [
+        {
+          "text": "A total abandonment of self-report measures in favor of brain imaging.",
+          "isCorrect": false,
+          "rationale": "Self-report remains a primary method, though it is now often used in larger, more diverse datasets."
+        },
+        {
+          "text": "A shift toward using small, specialized 'boutique' samples from single universities.",
+          "isCorrect": false,
+          "rationale": "The field has actually moved away from relying solely on these small, convenient samples."
+        },
+        {
+          "text": "An increased reliance on large-scale, nationally representative panel studies.",
+          "isCorrect": true,
+          "rationale": "Studies like the GSOEP and HILDA provide massive datasets that allow for more precise estimates across the lifespan."
+        },
+        {
+          "text": "A decrease in the use of the Big Five taxonomy.",
+          "isCorrect": false,
+          "rationale": "The Big Five has actually become the dominant paradigmatic model for organizing personality research."
+        }
+      ],
+      "hint": "These types of studies often involve thousands of participants from across an entire country."
+    },
+    {
+      "question": "What is the importance of 'measurement invariance' in longitudinal personality research?",
+      "answerOptions": [
+        {
+          "text": "It ensures that the personality test is only taken by the same person once.",
+          "isCorrect": false,
+          "rationale": "Longitudinal research requires multiple assessments of the same person; the concern is the quality of the measurement across those times."
+        },
+        {
+          "text": "It is a necessary condition to ensure that the same construct is being measured in the same way over time.",
+          "isCorrect": true,
+          "rationale": "Without invariance, it is impossible to know if changes in scores reflect real personality development or just changes in how people interpret the questions."
+        },
+        {
+          "text": "It guarantees that no person in the study will ever change their personality.",
+          "isCorrect": false,
+          "rationale": "Measurement invariance refers to the tool being used, not the stability of the trait itself."
+        },
+        {
+          "text": "It is a statistical trick used to hide missing data in large studies.",
+          "isCorrect": false,
+          "rationale": "It is a rigorous psychometric requirement for validly comparing scores across different assessment waves."
+        }
+      ],
+      "hint": "Think about why we need to be sure that 'Extraversion' at Age 20 means the same thing as 'Extraversion' at Age 40."
+    }
+  ]
+}

@@ -1,0 +1,318 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "Klaus Holzkamp described the end product of his theoretical work as 'Subjektwissenschaft'. What does this term translate to in English?",
+      "answerOptions": [
+        {
+          "text": "Subject science",
+          "isCorrect": true,
+          "rationale": "This term encapsulates Holzkamp's goal of creating a scientific psychology specifically from the standpoint of the human subject."
+        },
+        {
+          "text": "Social science",
+          "isCorrect": false,
+          "rationale": "While social context is critical to his work, the term specifically targets the scientific study of the subject's standpoint."
+        },
+        {
+          "text": "Subjective knowledge",
+          "isCorrect": false,
+          "rationale": "The term refers to the systematic scientific discipline (science) rather than just the state of having knowledge."
+        },
+        {
+          "text": "Objective psychology",
+          "isCorrect": false,
+          "rationale": "Holzkamp sought to move beyond the limitations of traditional 'objective' psychologies like behaviorism."
+        }
+      ],
+      "hint": "Consider the German word 'Wissenschaft' which refers to a systematic branch of study or science."
+    },
+    {
+      "question": "What was a primary criticism that Critical Psychology leveled against behaviorism in the 20th century?",
+      "answerOptions": [
+        {
+          "text": "It treated the subjective side of experience as epiphenomenal.",
+          "isCorrect": true,
+          "rationale": "Behaviorism reduced psychological phenomena to stimulus-response chains, viewing any remaining subjectivity as irrelevant to science."
+        },
+        {
+          "text": "It was not experimental or quantitative enough.",
+          "isCorrect": false,
+          "rationale": "The text acknowledges that behaviorism was highly experimental and quantitative, which contributed to its perceived success as a science."
+        },
+        {
+          "text": "It lacked universal laws across species.",
+          "isCorrect": false,
+          "rationale": "Behaviorism actually claimed its laws were universal across species, which Critical Psychology criticized for obscuring specifically human traits."
+        },
+        {
+          "text": "It focused too heavily on individual reasons for action.",
+          "isCorrect": false,
+          "rationale": "Behaviorism explicitly avoided individual reasons, focusing instead on external environmental determinants."
+        }
+      ],
+      "hint": "Look for a term that describes a secondary phenomenon that occurs alongside a primary one but is thought to have no causal influence."
+    },
+    {
+      "question": "According to the 'left' wing of the Psychology Institute in the 1967 debate, how should scientific knowledge be viewed?",
+      "text": "Knowledge is essentially neutral and its use is a matter of individual conscience.",
+      "answerOptions": [
+        {
+          "text": "Knowledge is inherently partial and serves specific societal interests.",
+          "isCorrect": true,
+          "rationale": "They argued that philosophy, science, and ideology are interconnected and currently serve those with power, such as the state and capitalists."
+        },
+        {
+          "text": "Knowledge is essentially neutral and its use is a matter of individual conscience.",
+          "isCorrect": false,
+          "rationale": "This was the 'liberal' wing's position, which the 'left' wing opposed by arguing that all knowledge originates under specific interests."
+        },
+        {
+          "text": "Knowledge is only relevant if it can be used for psychological warfare.",
+          "isCorrect": false,
+          "rationale": "While they listed military research as an example of current partiality, they did not believe knowledge *should* be restricted to such uses."
+        },
+        {
+          "text": "Knowledge is independent of the societal formations in which it is produced.",
+          "isCorrect": false,
+          "rationale": "The left wing maintained there is a 'seamless web' connecting science to the social and ideological structures of society."
+        }
+      ],
+      "hint": "Consider whether the researchers believed science could exist in a vacuum separate from politics and power."
+    },
+    {
+      "question": "In Holzkamp's framework, what is the distinction between 'technical' and 'emancipatory' relevance?",
+      "answerOptions": [
+        {
+          "text": "Technical relevance concerns control over others, while emancipatory relevance serves the subject's self-improvement.",
+          "isCorrect": true,
+          "rationale": "Holzkamp argued that while traditional psychology helps control people, a critical psychology should help individuals improve the quality of their own lives."
+        },
+        {
+          "text": "Technical relevance refers to laboratory research, while emancipatory relevance refers to field work.",
+          "isCorrect": false,
+          "rationale": "The distinction is based on whose interests the knowledge serves (control vs. liberation) rather than the setting of the research."
+        },
+        {
+          "text": "Technical relevance is based on qualitative data, whereas emancipatory relevance uses quantitative data.",
+          "isCorrect": false,
+          "rationale": "The method of data collection does not define the relevance; rather, the societal application and intent of the knowledge do."
+        },
+        {
+          "text": "Technical relevance is neutral, while emancipatory relevance is biased toward the state.",
+          "isCorrect": false,
+          "rationale": "Holzkamp argued that 'neutral' technical relevance actually serves those who wish to control, whereas emancipatory relevance serves the controlled."
+        }
+      ],
+      "hint": "Think about the difference between managing a population and freeing an individual."
+    },
+    {
+      "question": "What cognitive shift was identified as a significant implication of early humans keeping tools for future use?",
+      "answerOptions": [
+        {
+          "text": "The ability to represent objects and think independently of immediate circumstances.",
+          "isCorrect": true,
+          "rationale": "Making tools in the absence of the intended object required the ancestor to mentally represent that object and plan accordingly."
+        },
+        {
+          "text": "The development of instinctual responses to environmental triggers.",
+          "isCorrect": false,
+          "rationale": "Tool-making represented a shift *away* from immediate instinctual responses toward intentional, mediated action."
+        },
+        {
+          "text": "A reduction in the need for social communication and division of labor.",
+          "isCorrect": false,
+          "rationale": "The inversion of means and ends in tool use actually increased the need for communication and allowed for the division of labor."
+        },
+        {
+          "text": "The transition from verbal language to gestural communication.",
+          "isCorrect": false,
+          "rationale": "The text suggests language became verbal because the hands were occupied by tools, indicating a shift *toward* verbal communication."
+        }
+      ],
+      "hint": "Consider what is required to build something for a problem that is not currently visible."
+    },
+    {
+      "question": "Holzkamp uses the term 'Handlungsfähigkeit'. What is the most common English translation for this concept in the context of Critical Psychology?",
+      "answerOptions": [
+        {
+          "text": "Agency",
+          "isCorrect": true,
+          "rationale": "While sometimes rendered as 'action potence', 'agency' captures the subject's power to utilize and create possibilities within society."
+        },
+        {
+          "text": "Behavioral conditioning",
+          "isCorrect": false,
+          "rationale": "Handlungsfähigkeit emphasizes the subject's active power and choices, which is the opposite of passive conditioning."
+        },
+        {
+          "text": "Social conformity",
+          "isCorrect": false,
+          "rationale": "The concept refers to the capacity to master one's life, which often involves resisting oppressive social conformity."
+        },
+        {
+          "text": "Biological drive",
+          "isCorrect": false,
+          "rationale": "Holzkamp’s analysis suggests that specifically human agency is mediated by societal meanings rather than just biological drives."
+        }
+      ],
+      "hint": "This term relates to an individual's capacity to act intentionally and exert power over their life circumstances."
+    },
+    {
+      "question": "How does Critical Psychology view the relationship between the subject and the world compared to traditional psychology?",
+      "answerOptions": [
+        {
+          "text": "The world presents possibilities for action rather than causal determinants.",
+          "isCorrect": true,
+          "rationale": "Instead of being 'triggered' by stimuli, the subject chooses from possibilities offered by the world based on societal meanings."
+        },
+        {
+          "text": "The subject is a passive recipient of environmental reinforcements.",
+          "isCorrect": false,
+          "rationale": "This view is characteristic of behaviorism, which Critical Psychology explicitly critiques for ignoring the subject's active choice."
+        },
+        {
+          "text": "The subject is entirely independent of societal meaning structures.",
+          "isCorrect": false,
+          "rationale": "Critical Psychology asserts that individuality is attained only *in* society and that all actions are mediated by societal meanings."
+        },
+        {
+          "text": "Human biology remains the primary governing process of individual action.",
+          "isCorrect": false,
+          "rationale": "The text states that the societal mode of existence has come to dominate the biological, moving history ahead of evolution."
+        }
+      ],
+      "hint": "Think about the difference between a 'cause' that must be followed and an 'opportunity' that can be chosen."
+    },
+    {
+      "question": "What is Holzkamp's 'sole material a priori' regarding human intersubjectivity?",
+      "answerOptions": [
+        {
+          "text": "No one acts contrary to their own interests as they understand them.",
+          "isCorrect": true,
+          "rationale": "This axiom suggests that human action is always grounded in what the subject believes will contribute to the quality of their life."
+        },
+        {
+          "text": "All human behavior is determined by unconscious sexual drives.",
+          "isCorrect": false,
+          "rationale": "This is a tenet of traditional psychoanalysis, which Holzkamp distinguishes from Critical Psychology's historical-societal focus."
+        },
+        {
+          "text": "Individuals always prioritize common interests over their own.",
+          "isCorrect": false,
+          "rationale": "While there is ultimately no contradiction between individual and common interests, the 'a priori' focuses on the subject's own understanding of their interests."
+        },
+        {
+          "text": "Human actions are fundamentally random and lack objective grounds.",
+          "isCorrect": false,
+          "rationale": "Critical Psychology argues that actions are grounded in objective premises provided by the societal-historical context."
+        }
+      ],
+      "hint": "This principle assumes that people are rational actors based on their own perspective and goals."
+    },
+    {
+      "question": "Holzkamp proposed a 'test' to distinguish between causal connections and reasoned actions. What does this test involve?",
+      "answerOptions": [
+        {
+          "text": "Inserting the phrase 'it is reasonable' between the if-component and the then-component.",
+          "isCorrect": true,
+          "rationale": "If the statement remains sensible, it suggests the behavior is a reasoned action; if it sounds absurd (like a knee jerk), it is likely a causal connection."
+        },
+        {
+          "text": "Measuring the reaction time of a subject following a stimulus.",
+          "isCorrect": false,
+          "rationale": "Reaction time is a traditional quantitative metric that does not address the underlying logic or reasons for an action."
+        },
+        {
+          "text": "Analyzing the statistical variance of a population's responses.",
+          "isCorrect": false,
+          "rationale": "Statistical analysis of variables is the method of traditional psychology that Holzkamp argues often mistakes reasons for causes."
+        },
+        {
+          "text": "Applying a 'reinforcement' and seeing if the frequency of the behavior increases.",
+          "isCorrect": false,
+          "rationale": "This is a behaviorist method which Critical Psychology critiques for failing to identify the specific nature of the human subject."
+        }
+      ],
+      "hint": "The test looks for linguistic, implicative structures rather than contingent empirical ones."
+    },
+    {
+      "question": "In the methodology of Critical Psychology, how are the individuals participating in research projects viewed?",
+      "answerOptions": [
+        {
+          "text": "As co-researchers on an equal footing with the psychologist.",
+          "isCorrect": true,
+          "rationale": "Research is seen as a cooperative enterprise where the psychologist shares theoretical knowledge in exchange for the subject's life experience."
+        },
+        {
+          "text": "As objects whose variables are to be manipulated and controlled.",
+          "isCorrect": false,
+          "rationale": "Treating subjects as objects is the 'causal methodology' of traditional psychology that Critical Psychology seeks to replace."
+        },
+        {
+          "text": "As passive sources of data who should remain blind to the study's purpose.",
+          "isCorrect": false,
+          "rationale": "Holzkamp argues that the psychologist should overcome differences by sharing knowledge and that the problem investigated must be the subject's problem."
+        },
+        {
+          "text": "As representatives of universal biological drives common to all organisms.",
+          "isCorrect": false,
+          "rationale": "Critical Psychology focuses on the specifically human, societal-historical characteristics of the subject rather than just biological commonalities."
+        }
+      ],
+      "hint": "This approach turns research into a shared dialogue rather than a one-sided observation."
+    },
+    {
+      "question": "What is the 'external criterion' for the validity of a theory in Critical Psychology?",
+      "answerOptions": [
+        {
+          "text": "The real development of an individual's ability to master their own life.",
+          "isCorrect": true,
+          "rationale": "The goal of 'Subjektwissenschaft' is to enhance human agency; therefore, the effectiveness of the theory is measured by its practical emancipatory value."
+        },
+        {
+          "text": "The statistical significance of experimental results in a lab setting.",
+          "isCorrect": false,
+          "rationale": "Critical Psychology views many such experiments as 'pseudo-empirical' because they often just demonstrate 'good reasons' rather than proving causal laws."
+        },
+        {
+          "text": "The ability of the theory to be translated into the language of stimulus and response.",
+          "isCorrect": false,
+          "rationale": "Translation into behaviorist language was seen as a failure of other oppositional psychologies to maintain a distinct critique."
+        },
+        {
+          "text": "The approval and funding of the research by state and capitalist institutions.",
+          "isCorrect": false,
+          "rationale": "Critical Psychology originated in a critique of how such institutions use psychology for control rather than for the subject's benefit."
+        }
+      ],
+      "hint": "Consider the ultimate goal of 'emancipatory relevance' mentioned in the text."
+    },
+    {
+      "question": "Which of the following describes 'epistemic distance' as mentioned in the text?",
+      "answerOptions": [
+        {
+          "text": "A gap created by meaning and language that allows a subject to relate to the world as a set of possibilities.",
+          "isCorrect": true,
+          "rationale": "This distance means that humans are not immediately triggered by the world but can reflect and choose their actions through mediated meanings."
+        },
+        {
+          "text": "The physical distance between a researcher and their subject during an experiment.",
+          "isCorrect": false,
+          "rationale": "This is a literal interpretation of 'distance' rather than the cognitive and philosophical concept used by Holzkamp."
+        },
+        {
+          "text": "The lack of relevance between university curricula and real-world societal problems.",
+          "isCorrect": false,
+          "rationale": "While students protested a lack of relevance, 'epistemic distance' specifically refers to the subject's relation to the world through language."
+        },
+        {
+          "text": "The failure of behaviorists to recognize the internal experiences of subjects.",
+          "isCorrect": false,
+          "rationale": "While behaviorists did fail in this, 'epistemic distance' is the *product* of human societal existence that makes free choice possible."
+        }
+      ],
+      "hint": "Think about how language allows us to step back from an immediate situation to consider various options."
+    }
+  ]
+}

@@ -1,0 +1,395 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "According to Mads Bank (2014), what is the 'fabric' that our personality, experiences, and social world are woven together by?",
+      "answerOptions": [
+        {
+          "text": "Narratives",
+          "isCorrect": true,
+          "rationale": "The author explicitly states that narratives are not just stories about personality, but the actual fabric from which personality and the social world are constructed."
+        },
+        {
+          "text": "Biological traits",
+          "isCorrect": false,
+          "rationale": "While biology is relevant in some psychological models, narrative psychology shifts focus to the meaning created through stories rather than fixed biological substances."
+        },
+        {
+          "text": "Unconscious drives",
+          "isCorrect": false,
+          "rationale": "This reflects a classical psychoanalytic perspective rather than the primary focus of narrative theories on conscious and semi-conscious meaning-making."
+        },
+        {
+          "text": "Cognitive schemas",
+          "isCorrect": false,
+          "rationale": "Though related, narrative psychologists often prefer the concept of the 'self' and narrative processes over the more mechanical and structural idea of schemas."
+        }
+      ],
+      "hint": "Consider how narrative psychology translates the term 'narrative' into everyday life terms like 'stories'."
+    },
+    {
+      "question": "Jerome Bruner critiqued mainstream cognitive psychology for using which primary metaphor to understand the mind?",
+      "answerOptions": [
+        {
+          "text": "The computer",
+          "isCorrect": true,
+          "rationale": "Bruner argued that technology-driven enthusiasm led researchers to view the mind as a passive information processor rather than an active creator of meaning."
+        },
+        {
+          "text": "The social network",
+          "isCorrect": false,
+          "rationale": "The social network is a more modern metaphor that emphasizes relationality, which is actually closer to Bruner's later cultural interests."
+        },
+        {
+          "text": "The mirror",
+          "isCorrect": false,
+          "rationale": "The mirror metaphor relates to the idea of representation, which Bruner and other linguistically oriented thinkers actually moved away from."
+        },
+        {
+          "text": "The library",
+          "isCorrect": false,
+          "rationale": "While a library implies storage of information, the specific critique mentioned in the text focuses on the mechanical processing nature of computing."
+        }
+      ],
+      "hint": "Think of a machine that processes information linearly and algorithmically."
+    },
+    {
+      "question": "In the work of Donald E. Polkinghorne, what is the term for the connection between individual events that makes a life story meaningful?",
+      "answerOptions": [
+        {
+          "text": "Plot",
+          "isCorrect": true,
+          "rationale": "Polkinghorne uses the concept of the 'plot' to describe the narrative configuration that integrates diverse elements into a meaningful whole."
+        },
+        {
+          "text": "Schema",
+          "isCorrect": false,
+          "rationale": "Schemas are associated with cognitive structures, whereas Polkinghorne emphasizes the poetic and dynamic nature of narrative organization."
+        },
+        {
+          "text": "Disposition",
+          "isCorrect": false,
+          "rationale": "Dispositions refer to stable personality traits, whereas Polkinghorne defines the self as meaning rather than a fixed substance or thing."
+        },
+        {
+          "text": "Externalization",
+          "isCorrect": false,
+          "rationale": "Externalization is a therapeutic technique used by Michael White, not Polkinghorne's term for the structural organization of experience."
+        }
+      ],
+      "hint": "This term is borrowed from literary theory to describe how a series of events is linked to create a story."
+    },
+    {
+      "question": "According to the 'New Big Five' principles by McAdams and Pals (2006), what serves as the first level for analyzing personality?",
+      "answerOptions": [
+        {
+          "text": "Evolution and Human Nature",
+          "isCorrect": true,
+          "rationale": "Principle 1 states that an integrative framework must begin with the general evolutionary design that explains how every person is like all other persons."
+        },
+        {
+          "text": "Dispositional Traits",
+          "isCorrect": false,
+          "rationale": "Dispositional traits represent Principle 2, which focuses on individual differences in common characteristics rather than species-typical universals."
+        },
+        {
+          "text": "Life Narratives",
+          "isCorrect": false,
+          "rationale": "Life narratives are Principle 4, representing the most specific and culturally anchored level of the whole person's identity."
+        },
+        {
+          "text": "Culture and Social Context",
+          "isCorrect": false,
+          "rationale": "Culture is Principle 5, acting as a proximal context that influences the other levels rather than being the foundational biological design."
+        }
+      ],
+      "hint": "Consider the biological foundations that make humans similar to one another before looking at differences."
+    },
+    {
+      "question": "McAdams and Pals refer to Level 1 (Dispositional Traits) as the 'psychology of the stranger' because traits are:",
+      "answerOptions": [
+        {
+          "text": "Broadly recognizable even upon a first meeting",
+          "isCorrect": true,
+          "rationale": "Traits provide a rough sketch or signature of a person's style that can be assessed relatively quickly without knowing their life history."
+        },
+        {
+          "text": "Unrelated to social interaction",
+          "isCorrect": false,
+          "rationale": "On the contrary, the Big Five address critical social questions humans evolved to ask about strangers to ensure group safety and cooperation."
+        },
+        {
+          "text": "Completely resistant to cultural influence",
+          "isCorrect": false,
+          "rationale": "The text notes that culture provides display rules and demand characteristics for the expression of traits, even if it doesn't change their strength."
+        },
+        {
+          "text": "Only visible in laboratory settings",
+          "isCorrect": false,
+          "rationale": "Traits are intended to account for consistency and continuity in behavior across various real-world situations and time."
+        }
+      ],
+      "hint": "Think about what kind of information you can gather about someone's personality without hearing their life story."
+    },
+    {
+      "question": "Which level of personality includes situated goals, values, coping strategies, and developmental tasks?",
+      "answerOptions": [
+        {
+          "text": "Characteristic Adaptations",
+          "isCorrect": true,
+          "rationale": "Level 3 (Principle 3) covers motivational and social-cognitive variables that are contextualized in time, place, and social roles."
+        },
+        {
+          "text": "Dispositional Traits",
+          "isCorrect": false,
+          "rationale": "Traits are decontextualized and broad, whereas adaptations are specifically linked to everyday personality processes and situational dynamics."
+        },
+        {
+          "text": "Evolutionary Design",
+          "isCorrect": false,
+          "rationale": "Evolutionary design refers to species-typical universals, whereas adaptations fill in the details of an individual's specific social ecology."
+        },
+        {
+          "text": "Life Stories",
+          "isCorrect": false,
+          "rationale": "Life stories focus on the integration of past and future to provide unity and purpose, rather than specific goal-directed strategies."
+        }
+      ],
+      "hint": "This level is described as the 'doing' side of personality, connecting traits to specific environmental demands."
+    },
+    {
+      "question": "According to Principle 5 (The Differential Role of Culture), which aspect of personality is most profoundly influenced by culture?",
+      "answerOptions": [
+        {
+          "text": "Integrative Life Narratives",
+          "isCorrect": true,
+          "rationale": "Culture provides the 'menu' of themes and plots that individuals use to construct their narrative identity, showing its deepest influence at this level."
+        },
+        {
+          "text": "Dispositional Traits",
+          "isCorrect": false,
+          "rationale": "Culture's effect on traits is considered modest, mostly influencing how they are expressed behaviorally rather than their underlying strength."
+        },
+        {
+          "text": "Genetic Heritability",
+          "isCorrect": false,
+          "rationale": "Heritability, estimated at approximately $50\\%$, is a biological factor that exists largely independently of cultural meaning systems."
+        },
+        {
+          "text": "Evolutionary Modules",
+          "isCorrect": false,
+          "rationale": "Evolutionary modules are species-typical design features that are universal across human nature, preceding cultural variations."
+        }
+      ],
+      "hint": "Think about which part of our identity relies most on the 'menu' of stories and myths shared by a society."
+    },
+    {
+      "question": "Kenneth Gergen argues that if identity is performative and relational, the experience of a 'stable, core personality' is actually:",
+      "answerOptions": [
+        {
+          "text": "A social achievement and result of narrative conventions",
+          "isCorrect": true,
+          "rationale": "Gergen suggests that we project stability because social relations often require us to appear consistent so that others can trust and understand us."
+        },
+        {
+          "text": "A biological necessity for mental health",
+          "isCorrect": false,
+          "rationale": "Gergen's constructionist view critiques the idea of an essential internal core, seeing it more as a social 'straightjacket' than a biological requirement."
+        },
+        {
+          "text": "An illusion that prevents us from acting",
+          "isCorrect": false,
+          "rationale": "While he views it as a construction, he acknowledges it has functional use in social dialogue rather than just being a paralyzing illusion."
+        },
+        {
+          "text": "A fixed byproduct of the Big Five traits",
+          "isCorrect": false,
+          "rationale": "Gergen's perspective focuses on language and performance, often critiquing trait-based essentialism for being a social constraint."
+        }
+      ],
+      "hint": "Consider why it might be useful for a person to present themselves as the same person across different times in a society."
+    },
+    {
+      "question": "In Michael White's narrative therapy, the phrase 'the person is not the problem; the problem is the problem' refers to which concept?",
+      "answerOptions": [
+        {
+          "text": "Externalization",
+          "isCorrect": true,
+          "rationale": "Externalization involves speaking about problems as separate from the individual's identity, allowing them to take a new relationship to the issue."
+        },
+        {
+          "text": "Deconstruction",
+          "isCorrect": false,
+          "rationale": "While related to deconstruction, the specific practice of separating the identity from the problem is known as externalization."
+        },
+        {
+          "text": "Narrative configuration",
+          "isCorrect": false,
+          "rationale": "This term from Polkinghorne refers to how meaning is organized, not specifically the therapeutic separation of person and problem."
+        },
+        {
+          "text": "Problem-saturated story",
+          "isCorrect": false,
+          "rationale": "A problem-saturated story is what the client often brings to therapy, which externalization seeks to address by creating a new perspective."
+        }
+      ],
+      "hint": "This technique changes the language from 'I am a depressive person' to 'Depression is influencing my life'."
+    },
+    {
+      "question": "Peter Raggatt's approach to personality emphasizes a 'multiplicity' of narrative voices. Why can this be problematic for an individual?",
+      "answerOptions": [
+        {
+          "text": "One voice may become too dominant and suppress others",
+          "isCorrect": true,
+          "rationale": "Raggatt notes that while having multiple voices is normal, trouble arises when a single voice (like 'the addict') dominates one's self-understanding."
+        },
+        {
+          "text": "It indicates a lack of cognitive development",
+          "isCorrect": false,
+          "rationale": "Raggatt views the multiplicity of voices as a standard feature of the complex, dialogical self rather than a developmental deficit."
+        },
+        {
+          "text": "It prevents the individual from forming any memories",
+          "isCorrect": false,
+          "rationale": "Voices actually help organize meaning and memory based on different attachments to people or events in one's life."
+        },
+        {
+          "text": "It forces the person to only live in the future",
+          "isCorrect": false,
+          "rationale": "Narrative voices typically connect the past and present to the future, rather than limiting the person to a single temporal dimension."
+        }
+      ],
+      "hint": "Think about what happens in a conversation when one person refuses to let anyone else speak."
+    },
+    {
+      "question": "How does Roy Schafer's psychoanalytic narrative approach differ from more traditional psychoanalysis?",
+      "answerOptions": [
+        {
+          "text": "He views the self as multiple narrative versions rather than a dynamic unit",
+          "isCorrect": true,
+          "rationale": "Schafer critiqued the 'overloaded' concept of the self as a single unit, preferring to work with various narrative self-versions."
+        },
+        {
+          "text": "He completely rejects the idea of the unconscious",
+          "isCorrect": false,
+          "rationale": "Schafer still utilizes the concept of the unconscious, noting that the narrative plots structuring our lives can be unconscious."
+        },
+        {
+          "text": "He focuses solely on biological traits like the Big Five",
+          "isCorrect": false,
+          "rationale": "His work remains focused on the interpretive and dialogic work of psychoanalysis rather than trait psychology."
+        },
+        {
+          "text": "He believes the therapist should tell the client their story",
+          "isCorrect": false,
+          "rationale": "Schafer views the therapeutic situation as a dialogical and interpretive collaboration between the therapist and the client."
+        }
+      ],
+      "hint": "Look for a shift from a unified 'psychic apparatus' to a more linguistic and pluralistic understanding."
+    },
+    {
+      "question": "McAdams identifies a specific constellation of narrative themes common in high-scoring American generative adults called:",
+      "answerOptions": [
+        {
+          "text": "The redemptive self",
+          "isCorrect": true,
+          "rationale": "The redemptive self is a life story that portrays a gifted protagonist delivered from suffering to a better state, common in prosocial adults."
+        },
+        {
+          "text": "The contamination script",
+          "isCorrect": false,
+          "rationale": "A contamination script is a negative narrative theme where a good event turns bad, often associated with lower well-being."
+        },
+        {
+          "text": "The autonomous agent",
+          "isCorrect": false,
+          "rationale": "While agency is a theme, 'the redemptive self' is the specific title for the integrated constellation of themes McAdams describes."
+        },
+        {
+          "text": "The tragic hero",
+          "isCorrect": false,
+          "rationale": "The tragic hero narrative focuses on a downfall, whereas the generative adults McAdams studied focused on growth and overcoming adversity."
+        }
+      ],
+      "hint": "This term relates to a journey from a difficult situation to a state of salvation or enhancement."
+    },
+    {
+      "question": "What is the primary function of Principle 4 (Life Narratives) in the model by McAdams and Pals?",
+      "answerOptions": [
+        {
+          "text": "To provide the life with unity, purpose, and meaning",
+          "isCorrect": true,
+          "rationale": "Life stories help individuals integrate their past and imagined future into a coherent whole that explains who they are in the modern world."
+        },
+        {
+          "text": "To regulate physiological needs like nutrition and sleep",
+          "isCorrect": false,
+          "rationale": "Physiological needs are part of Level 1 (Evolutionary Design), while narratives are higher-level psychosocial constructions."
+        },
+        {
+          "text": "To classify others into in-groups and out-groups",
+          "isCorrect": false,
+          "rationale": "Classification and decoding social cues are evolved cognitive mechanisms associated with Principle 1."
+        },
+        {
+          "text": "To measure rank-order consistency in personality",
+          "isCorrect": false,
+          "rationale": "Rank-order consistency is primarily studied through Dispositional Traits (Principle 2) rather than unique life stories."
+        }
+      ],
+      "hint": "Consider the challenge of modern identity—how we answer the question 'Who am I?' over time."
+    },
+    {
+      "question": "Bruner suggests that small children acquire culture primarily through:",
+      "answerOptions": [
+        {
+          "text": "Daily narrative explanations of events",
+          "isCorrect": true,
+          "rationale": "Parents use continuous narrativization of daily activities (e.g., 'Now we eat breakfast, then we go to daycare') to help children master cultural context."
+        },
+        {
+          "text": "Rote memorization of logical laws",
+          "isCorrect": false,
+          "rationale": "Bruner argues that narrative organization precedes and differs from the mathematical-logical thinking used in other cognitive processes."
+        },
+        {
+          "text": "Passive observation of biological signals",
+          "isCorrect": false,
+          "rationale": "Bruner emphasizes that perception and cognition are active, meaning-making processes, not passive reactions to biology."
+        },
+        {
+          "text": "Formal schooling starting at birth",
+          "isCorrect": false,
+          "rationale": "Culture is acquired through informal social interaction and 'narrative resources' found in stories told by caregivers long before formal education."
+        }
+      ],
+      "hint": "Think about how parents talk through a child's morning routine to provide structure."
+    },
+    {
+      "question": "In the 'Baltimore violence' example cited by Bruner, how do narrative resources influence the children's behavior?",
+      "answerOptions": [
+        {
+          "text": "They provide models for conflict handling based on mothers' stories",
+          "isCorrect": true,
+          "rationale": "Mothers told stories of being strong and confrontational, giving children a 'cultural model' for aggression as a way to handle conflict."
+        },
+        {
+          "text": "They eliminate the effects of poverty and bad schools",
+          "isCorrect": false,
+          "rationale": "Bruner acknowledges that material conditions like poverty still work as limitations alongside narrative resources."
+        },
+        {
+          "text": "They are irrelevant because violence is purely biological",
+          "isCorrect": false,
+          "rationale": "Bruner's cultural psychology argues that while biology exists, culture 'gives the action meaning' and shapes its expression."
+        },
+        {
+          "text": "They allow children to ignore their social environment",
+          "isCorrect": false,
+          "rationale": "Narrative resources are what connect the child *to* their environment by providing interpretations of how to survive in it."
+        }
+      ],
+      "hint": "Focus on how stories about being 'strong' or 'not taking anything from anyone' act as social instructions."
+    }
+  ]
+}

@@ -1,0 +1,317 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "According to the framework proposed by Phan et al. (2024), which research approach aims to establish laws that apply to each and every individual within a population through a case-by-case analysis?",
+      "answerOptions": [
+        {
+          "text": "Cross-person generalizations (Wundtian approach)",
+          "isCorrect": true,
+          "rationale": "This approach examines individuals separately to identify patterns common to all persons, effectively establishing general laws at the individual level."
+        },
+        {
+          "text": "Population-specific generalizations (Galtonian approach)",
+          "isCorrect": false,
+          "rationale": "This approach focuses on aggregate parameters like means and variances rather than ensuring the law holds for every specific individual."
+        },
+        {
+          "text": "Person-specific generalizations",
+          "isCorrect": false,
+          "rationale": "While this approach seeks laws, it focuses on regularities within a single particular person rather than generalizing across multiple persons."
+        },
+        {
+          "text": "Entity-specific portrayals",
+          "isCorrect": false,
+          "rationale": "This category is defined by a lack of generalization intent, focusing instead on the detailed description of a unique case."
+        }
+      ],
+      "hint": "Think about the historical approach named after the founder of experimental psychology who emphasized person-to-person comparisons."
+    },
+    {
+      "question": "The 'Ergodic Theorem' outlines strict conditions under which population-level results can be applied to individuals. Which condition is violated if a psychological process changes its nature or validity over the course of a person's life?",
+      "answerOptions": [
+        {
+          "text": "Stationarity",
+          "isCorrect": true,
+          "rationale": "Stationarity requires that a model's validity remains time-invariant, which is often violated by the dynamic and developmental nature of human psychology."
+        },
+        {
+          "text": "Homogeneity",
+          "isCorrect": false,
+          "rationale": "Homogeneity refers to the interchangeability of different members within a population rather than the stability of a process over time."
+        },
+        {
+          "text": "Nomotheticity",
+          "isCorrect": false,
+          "rationale": "This is a general term for the search for laws, not a specific statistical condition required for ergodicity."
+        },
+        {
+          "text": "Abstraction",
+          "isCorrect": false,
+          "rationale": "While abstraction is necessary to find general laws, it is not one of the two formal pillars of the ergodic theorem."
+        }
+      ],
+      "hint": "Consider the term used to describe a system that does not change its statistical properties over time."
+    },
+    {
+      "question": "In the proposed $2 \\times 3$ matrix of research approaches, where would a study that utilizes a sample of persons to describe the personality structure of the 'average person' in a specific culture be categorized?",
+      "answerOptions": [
+        {
+          "text": "Population-specific generalizations",
+          "isCorrect": true,
+          "rationale": "This approach uses sample-to-population generalizations to characterize a population as an aggregated whole or a hypothetical average entity."
+        },
+        {
+          "text": "Cross-population generalizations",
+          "isCorrect": false,
+          "rationale": "This would require comparing the structures across multiple different populations to find universalities, not just describing one culture."
+        },
+        {
+          "text": "Person-specific generalizations",
+          "isCorrect": false,
+          "rationale": "This approach focuses on the individual's within-person patterns over time, not on aggregating different people to find a cultural average."
+        },
+        {
+          "text": "Cross-person generalizations",
+          "isCorrect": false,
+          "rationale": "This requires confirming the effect holds for each individual separately, which is distinct from calculating a single aggregate average."
+        }
+      ],
+      "hint": "Focus on whether the focal entity is the individual or the collective group, and the type of generalization being made."
+    },
+    {
+      "question": "How does the paper distinguish between 'individuality' and 'uniqueness' in the context of personality psychology?",
+      "answerOptions": [
+        {
+          "text": "Individuality is defined without reference to others, while uniqueness is established through comparison with others.",
+          "isCorrect": true,
+          "rationale": "Based on Lamiell's conceptualization, individuality is intrinsic to the person, whereas uniqueness identifies what is exclusive to them relative to a group."
+        },
+        {
+          "text": "Individuality is a population-level construct, while uniqueness is a person-level construct.",
+          "isCorrect": false,
+          "rationale": "Both terms refer to the person level, but they differ in whether the frame of reference includes other people."
+        },
+        {
+          "text": "Individuality refers to stable traits, while uniqueness refers to dynamic processes.",
+          "isCorrect": false,
+          "rationale": "Both traits and processes can contribute to either individuality or uniqueness depending on the comparison used."
+        },
+        {
+          "text": "Individuality is the focus of nomothetic research, while uniqueness is the focus of idiographic research.",
+          "isCorrect": false,
+          "rationale": "The paper argues these terms are often confounded and that both can be studied through various generalization intents."
+        }
+      ],
+      "hint": "Think about whether a comparison group is necessary to define the concept."
+    },
+    {
+      "question": "Phan et al. (2024) argue that the (Neo-)Galtonian approach, while often called 'nomothetic' in psychology, is actually ironically 'idiographic' in a Windelbandian sense. Why?",
+      "answerOptions": [
+        {
+          "text": "It produces knowledge about a specific population with no generalization to other populations or individuals within it.",
+          "isCorrect": true,
+          "rationale": "Windelband defined idiographics as the study of the particular; studying a specific population as a unique entity fits this definition if cross-entity generalization is absent."
+        },
+        {
+          "text": "It relies on qualitative data which is the hallmark of Windelband's idiographic science.",
+          "isCorrect": false,
+          "rationale": "The Galtonian approach is strictly quantitative; Windelband's distinction was based on inferential goals, not data types."
+        },
+        {
+          "text": "It focuses on $N=1$ designs which Allport associated with idiographic research.",
+          "isCorrect": false,
+          "rationale": "The Galtonian approach is based on large samples and aggregation, the opposite of $N=1$ designs."
+        },
+        {
+          "text": "It ignores general laws of nature in favor of studying historically determined occurrences.",
+          "isCorrect": false,
+          "rationale": "While it may fail to find person-level laws, it still seeks regularities, though they are limited to the aggregate level."
+        }
+      ],
+      "hint": "Consider Windelband's original definition of idiographics as the study of a unique or particular phenomenon."
+    },
+    {
+      "question": "When establishing 'person-specific generalizations' using intensive longitudinal data, what is the primary type of generalization being performed?",
+      "answerOptions": [
+        {
+          "text": "Generalizing from a sample of occasions to a population of occasions within a person's life.",
+          "isCorrect": true,
+          "rationale": "The focus is on finding lawful regularities within the person across time and contexts, treating the person's life as the 'population' of events."
+        },
+        {
+          "text": "Generalizing from the specific individual to the general human population.",
+          "isCorrect": false,
+          "rationale": "This describes cross-person generalization, whereas person-specific generalization stays within the boundaries of one focal entity."
+        },
+        {
+          "text": "Generalizing from a between-person correlation to a within-person mechanism.",
+          "isCorrect": false,
+          "rationale": "This is a common error (the ergodic fallacy) rather than a valid form of person-specific generalization."
+        },
+        {
+          "text": "Generalizing from a single trait to a holistic personality profile.",
+          "isCorrect": false,
+          "rationale": "This refers to the scope of description rather than the inferential step of generalization across instances."
+        }
+      ],
+      "hint": "Think about what constitutes the 'sample' and the 'target' when you only observe one person over many time points."
+    },
+    {
+      "question": "According to the 'Polytomies' framework, which step of the research process involves deciding whether to use an 'etic' or 'emic' approach to measurement?",
+      "answerOptions": [
+        {
+          "text": "Research Input",
+          "isCorrect": true,
+          "rationale": "This step encompasses methodology, including whether to impose standardized content (etic) or generate content specific to the entity (emic)."
+        },
+        {
+          "text": "Research Question",
+          "isCorrect": false,
+          "rationale": "While the question guides the choice, the actual decision on 'imposing content' is a methodological one categorized under research input."
+        },
+        {
+          "text": "Analyses",
+          "isCorrect": false,
+          "rationale": "Analyses concern how data is processed after it has been collected using etic or emic methods."
+        },
+        {
+          "text": "Research Output",
+          "isCorrect": false,
+          "rationale": "Output refers to the resulting parameters and how they are reported, which occurs after measurement decisions."
+        }
+      ],
+      "hint": "This decision relates to how data is generated and what research design is chosen."
+    },
+    {
+      "question": "Which of the following best describes 'Einstein's constructive theories' as mentioned in the paper's discussion of psychological laws?",
+      "answerOptions": [
+        {
+          "text": "Theories that provide detailed and mechanistic accounts to explain and modify phenomena.",
+          "isCorrect": true,
+          "rationale": "Unlike theories of principle which are purely descriptive generalizations, constructive theories build a mechanistic model to explain how a phenomenon works."
+        },
+        {
+          "text": "Theories based strictly on generalizations from observation identified through induction.",
+          "isCorrect": false,
+          "rationale": "Einstein referred to these as 'theories of principle,' which provide the constraints for constructive theories."
+        },
+        {
+          "text": "Theories that are idiographic and do not allow for any form of generalization.",
+          "isCorrect": false,
+          "rationale": "Constructive theories are aimed at explanation and modification, which typically involve applying general mechanisms to various cases."
+        },
+        {
+          "text": "Theories that focus exclusively on population-level parameters.",
+          "isCorrect": false,
+          "rationale": "Mechanistic accounts are often most useful at the level where the process unfolds, which in psychology is typically the individual."
+        }
+      ],
+      "hint": "Contrast these with 'theories of principle,' which are purely descriptive generalizations."
+    },
+    {
+      "question": "What is the primary risk of the 'population-to-individual problem' in psychological research conclusions?",
+      "answerOptions": [
+        {
+          "text": "It can lead to the interpretation of sample-level statistics as describing individual psychological functioning.",
+          "isCorrect": true,
+          "rationale": "The problem occurs when researchers assume that what is true 'on average' for a group necessarily describes the mechanisms within any specific person."
+        },
+        {
+          "text": "It prevents the discovery of universal laws that apply to all humans.",
+          "isCorrect": false,
+          "rationale": "Universal laws are actually the goal; the problem is using the wrong level of analysis (population) to claim to have found them."
+        },
+        {
+          "text": "It requires overly large sample sizes that are not feasible for most researchers.",
+          "isCorrect": false,
+          "rationale": "The issue is qualitative/inferential in nature, not related to the quantity of data collected."
+        },
+        {
+          "text": "It forces researchers to use qualitative case studies instead of rigorous statistics.",
+          "isCorrect": false,
+          "rationale": "The paper suggests that quantitative person-specific models are a solution, not that researchers must abandon statistics."
+        }
+      ],
+      "hint": "Think about the 'Ergodic Fallacy' and the translation of 'the average person' to real people."
+    },
+    {
+      "question": "Under the 'Polytomies' framework, a 'Differential' operating perspective is most closely aligned with which focal entity and level of aggregation?",
+      "answerOptions": [
+        {
+          "text": "Population entity; Between-person level",
+          "isCorrect": true,
+          "rationale": "A differential perspective examines individual differences, which are properties of a population characterized by variation between its members."
+        },
+        {
+          "text": "Individual entity; Within-person level",
+          "isCorrect": false,
+          "rationale": "This would correspond to a 'Unique' or 'General' perspective (if seeking within-person laws) rather than a differential one."
+        },
+        {
+          "text": "All persons entity; Across-person level",
+          "isCorrect": false,
+          "rationale": "This describes a 'General' operating perspective aimed at universal laws common to every individual."
+        },
+        {
+          "text": "Variable entity; Occasion-level",
+          "isCorrect": false,
+          "rationale": "Operating perspectives refer to how we view the people/populations studied, not just the units of measurement."
+        }
+      ],
+      "hint": "Consider what kind of entity possesses 'individual differences'—is it a single person or a group?"
+    },
+    {
+      "question": "Why is 'total population sampling' rarely used in the (Neo-)Galtonian approach, and what is used instead?",
+      "answerOptions": [
+        {
+          "text": "It is rarely feasible, so generalizations are made from a representative sample to the target population.",
+          "isCorrect": true,
+          "rationale": "Since researchers can seldom measure every member of a population, they use inferential statistics to generalize from a subset."
+        },
+        {
+          "text": "It is scientifically invalid, so researchers must use $N=1$ designs instead.",
+          "isCorrect": false,
+          "rationale": "Measuring a total population is the gold standard for population-specific knowledge; it's simply a matter of practicality, not validity."
+        },
+        {
+          "text": "It is only useful for idiographic portrayals, so nomothetic research uses convenience sampling.",
+          "isCorrect": false,
+          "rationale": "Nomothetic research aims for broad truths; convenience sampling is a limitation, not a preferred alternative to total sampling."
+        },
+        {
+          "text": "It ignores the variability of individuals, so researchers use intensive longitudinal sampling.",
+          "isCorrect": false,
+          "rationale": "Intensive longitudinal sampling is a within-person technique, not a way to solve the between-person population sampling problem."
+        }
+      ],
+      "hint": "Think about the relationship between a 'sample' and the 'theoretically defined group' it comes from."
+    },
+    {
+      "question": "Which specific goal of psychology, as listed in the Polytomies, involves arriving at a 'holistic, integrative, and non-reductionist' perspective of an entity?",
+      "answerOptions": [
+        {
+          "text": "Understand",
+          "isCorrect": true,
+          "rationale": "Understanding is distinguished from explanation or description by its focus on the meaningful integration of various parts into a whole."
+        },
+        {
+          "text": "Explain",
+          "isCorrect": false,
+          "rationale": "Explanation focuses on identifying specific causal relationships and mechanisms, which can often be reductionist."
+        },
+        {
+          "text": "Describe",
+          "isCorrect": false,
+          "rationale": "Description focuses on the exhaustive exploration of associations without necessarily integrating them into a holistic understanding."
+        },
+        {
+          "text": "Predict",
+          "isCorrect": false,
+          "rationale": "Prediction focuses on maximizing out-of-sample accuracy, which can be achieved without any holistic insight into the entity."
+        }
+      ],
+      "hint": "This goal is often associated with the German term 'Verstehen' and is a core aim of detailed entity portrayals."
+    }
+  ]
+}

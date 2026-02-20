@@ -1,0 +1,265 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "In Holzkamp's reconstruction of the human subject, what signifies the critical 'inversion of means and ends' during the evolutionary transition to tool manufacture?",
+      "answerOptions": [
+        {
+          "text": "The creation of tools in the absence of the intended object for future use.",
+          "isCorrect": true,
+          "rationale": "This stage represents the emergence of cognition that is independent of immediate situational triggers, allowing the tool to become an end in its own right."
+        },
+        {
+          "text": "The use of found objects to achieve an immediate biological goal.",
+          "isCorrect": false,
+          "rationale": "This describes tool use seen in primates and early hominids, which is still tied to immediate ends rather than representing an inversion."
+        },
+        {
+          "text": "The biological evolution of the opposable thumb to better grip tools.",
+          "isCorrect": false,
+          "rationale": "While a biological prerequisite, this is a physical adaptation rather than a qualitative shift in the structure of activity and cognition."
+        },
+        {
+          "text": "The development of individual survival instincts over collective hunting strategies.",
+          "isCorrect": false,
+          "rationale": "The source material emphasizes that human development moved toward conscious social organization and the division of labor, not isolated instinct."
+        }
+      ],
+      "hint": "Consider the cognitive requirements of preparing for a need that is not currently present."
+    },
+    {
+      "question": "According to Holzkamp, why can psychological hypotheses formulated as reasoned actions not be experimentally refuted in the same way as causal physical connections?",
+      "answerOptions": [
+        {
+          "text": "They are based on an implicative linguistic logic where the action is already contained within the premises.",
+          "isCorrect": true,
+          "rationale": "If a behavior is deemed 'reasonable' given certain premises, observing the behavior merely confirms the premise-action link rather than testing a contingent causal law."
+        },
+        {
+          "text": "The subjective nature of reasons makes them too variable to be captured by any statistical model.",
+          "isCorrect": false,
+          "rationale": "This is a common misconception; Critical Psychology argues the issue is the logical structure of the connection, not the 'variability' of the subject."
+        },
+        {
+          "text": "Experimental settings are inherently too artificial to allow subjects to act on genuine reasons.",
+          "isCorrect": false,
+          "rationale": "While Holzkamp critiques the 'standard situation,' his primary methodological point here is the logical confusion between causes and reasons."
+        },
+        {
+          "text": "Reasons are epiphenomenal and do not actually influence the observable $if \\rightarrow then$ connections.",
+          "isCorrect": false,
+          "rationale": "This is the behaviorist position that Critical Psychology explicitly rejects in favor of treating the subject as an active agent."
+        }
+      ],
+      "hint": "Think about the 'it is reasonable' test applied to if-then statements."
+    },
+    {
+      "question": "In the context of 'Everyday Conduct of Life' (livsførelse), what does Holzkamp mean by the term 'depublicized' (af-offentliggjort)?",
+      "answerOptions": [
+        {
+          "text": "The coordination of various life spheres is treated as a private, individual matter rather than a topic of social discourse.",
+          "isCorrect": true,
+          "rationale": "The 'conduct of life' involves complex integration of work, family, and self, yet it is often ignored by both traditional psychology and public policy."
+        },
+        {
+          "text": "Individuals are increasingly withdrawing from the public sphere due to digital technology.",
+          "isCorrect": false,
+          "rationale": "This reflects a contemporary sociological concern but is not the specific meaning Holzkamp attaches to the concept of life conduct."
+        },
+        {
+          "text": "The state has ceased to provide support for the private lives of its citizens.",
+          "isCorrect": false,
+          "rationale": "While related to political economy, Holzkamp's focus is on how the 'discipline' of psychology overlooks the active coordination individuals perform."
+        },
+        {
+          "text": "Scientific data about human behavior is being hidden from the general public.",
+          "isCorrect": false,
+          "rationale": "Holzkamp's critique is about the theoretical invisibility of the subject's conduct, not the secrecy of scientific data."
+        }
+      ],
+      "hint": "Consider how the integration of different areas of life is perceived by the discipline of psychology."
+    },
+    {
+      "question": "What is the 'material a priori' or fundamental axiom of human intersubjectivity identified by Holzkamp?",
+      "answerOptions": [
+        {
+          "text": "No one acts contrary to their own interests as they understand them.",
+          "isCorrect": true,
+          "rationale": "This principle asserts that all human action is grounded in subjective reasons aimed at maintaining or improving the quality of life."
+        },
+        {
+          "text": "All human behavior is a response to environmental reinforcements.",
+          "isCorrect": false,
+          "rationale": "This is a behaviorist axiom that denies the subjective agency central to Holzkamp's Critical Psychology."
+        },
+        {
+          "text": "Individual interests are naturally in conflict with the interests of society.",
+          "isCorrect": false,
+          "rationale": "Holzkamp argues that specifically human capacity arises from common societal life, suggesting a potential unity of interests."
+        },
+        {
+          "text": "The human psyche is entirely determined by biological drives and instincts.",
+          "isCorrect": false,
+          "rationale": "This view ignores the historical-societal mediation of human life that Holzkamp considers defining for the human subject."
+        }
+      ],
+      "hint": "Reflect on the subjective logic that guides an individual's choices among possibilities."
+    },
+    {
+      "question": "How does the 'Standpoint of the Subject' redefine the relationship between the researcher and the 'subject' of study?",
+      "answerOptions": [
+        {
+          "text": "The subject is viewed as a co-researcher whose experience is exchanged for the researcher's theoretical knowledge.",
+          "isCorrect": true,
+          "rationale": "This approach replaces the 'observer' model with a cooperative enterprise where both parties work to enhance their understanding of the subject's life."
+        },
+        {
+          "text": "The researcher must remain completely detached to avoid influencing the subject's natural responses.",
+          "isCorrect": false,
+          "rationale": "This describes the traditional 'objective' standpoint that Holzkamp argues obscures the subject's agency."
+        },
+        {
+          "text": "The researcher's primary role is to interpret the subject's unconscious drives which the subject cannot see.",
+          "isCorrect": false,
+          "rationale": "This aligns more with traditional psychoanalysis, which Holzkamp critiques for potentially 'privileging' the researcher's view over the subject's."
+        },
+        {
+          "text": "The subject is treated as a source of raw data to be processed by the researcher's statistical models.",
+          "isCorrect": false,
+          "rationale": "This is the 'statistical-experimental' model that Critical Psychology seeks to overcome by recognizing the subject's reasons."
+        }
+      ],
+      "hint": "Think about the move away from the psychologist as a 'privileged' observer."
+    },
+    {
+      "question": "Which concept describes the power of an individual to utilize societal possibilities to improve their quality of life?",
+      "answerOptions": [
+        {
+          "text": "Handlungsfähigkeit (Agency/Action Potence)",
+          "isCorrect": true,
+          "rationale": "This term refers to the subject's capacity to act upon reasons to influence their own life conditions within a societal context."
+        },
+        {
+          "text": "Self-actualization",
+          "isCorrect": false,
+          "rationale": "While similar in tone, this is a humanistic psychology term that lacks the specific historical-societal grounding of Holzkamp's framework."
+        },
+        {
+          "text": "Operant conditioning",
+          "isCorrect": false,
+          "rationale": "This refers to the external control of behavior through rewards, which is the opposite of self-determined agency."
+        },
+        {
+          "text": "Libidinal energy",
+          "isCorrect": false,
+          "rationale": "This is a psychoanalytic concept focused on internal drives rather than the subject's relation to societal possibilities."
+        }
+      ],
+      "hint": "Look for the term that connects individual power with the mastery of life conditions."
+    },
+    {
+      "question": "In Holzkamp's critique of traditional psychology, what is the primary danger of the 'statistical-experimental standard model'?",
+      "answerOptions": [
+        {
+          "text": "It constructs a 'privatized' reality that is blind to the subject's actual everyday conduct of life.",
+          "isCorrect": true,
+          "rationale": "The model isolates variables in 'standard situations,' creating a gap between experimental findings and the subject's real-world integration of activities."
+        },
+        {
+          "text": "It relies too heavily on qualitative data which lacks scientific rigor.",
+          "isCorrect": false,
+          "rationale": "Traditional psychology is actually criticized by Holzkamp for its over-reliance on quantitative methods that ignore subjectivity."
+        },
+        {
+          "text": "It is too expensive and time-consuming for modern university research.",
+          "isCorrect": false,
+          "rationale": "This is a pragmatic concern that does not touch upon the theoretical and methodological critique leveled by Critical Psychology."
+        },
+        {
+          "text": "It fails to account for the biological differences between human and animal subjects.",
+          "isCorrect": false,
+          "rationale": "Holzkamp's critique is that it ignores the *specifically human* societal-historical nature by seeking abstract universal laws."
+        }
+      ],
+      "hint": "Consider the impact of 'isolating' the subject from their daily life context for the sake of science."
+    },
+    {
+      "question": "What role do 'routines' play in the everyday conduct of life according to the Munich group's perspective?",
+      "answerOptions": [
+        {
+          "text": "They provide a necessary relief from constant coordination but risk replacing the 'actual' life with empty repetition.",
+          "isCorrect": true,
+          "rationale": "Routines are 'life-necessary' for stability, yet they contain a contradiction between functional necessity and the loss of conscious agency."
+        },
+        {
+          "text": "They are purely negative habits that suppress an individual's creative potential.",
+          "isCorrect": false,
+          "rationale": "The source material acknowledges that routines are necessary for stabilizing the conduct of life and 'letting life go on.'"
+        },
+        {
+          "text": "They are the primary means by which society exerts direct control over the individual.",
+          "isCorrect": false,
+          "rationale": "While routines have social dimensions, Holzkamp views them more as a subjective way to manage the 'economy' of daily life."
+        },
+        {
+          "text": "They have no theoretical significance in a science of the subject.",
+          "isCorrect": false,
+          "rationale": "Routines are central to the concept of 'livsførelse' as they represent the 'selvfølgelige' (taken-for-granted) aspects of daily existence."
+        }
+      ],
+      "hint": "Think about the balance between the need for stability and the desire for a meaningful existence."
+    },
+    {
+      "question": "Holzkamp distinguishes between 'technical' and 'emancipatory' relevance in research. How is 'emancipatory relevance' defined?",
+      "answerOptions": [
+        {
+          "text": "Knowledge that serves individuals in their efforts to master their own life conditions.",
+          "isCorrect": true,
+          "rationale": "Emancipatory relevance focuses on enhancing the subject's agency rather than providing tools for external parties to control them."
+        },
+        {
+          "text": "The ability to replicate experimental results across different cultural settings.",
+          "isCorrect": false,
+          "rationale": "This refers to 'generality' or 'reliability,' which are standard scientific goals but not specifically 'emancipatory.'"
+        },
+        {
+          "text": "The development of highly efficient psychological tests for industrial selection.",
+          "isCorrect": false,
+          "rationale": "This is an example of 'technical relevance' in the service of ruling interests, the opposite of emancipatory relevance."
+        },
+        {
+          "text": "The alignment of psychological theory with established biological laws.",
+          "isCorrect": false,
+          "rationale": "Holzkamp's project seeks to move beyond biological reductionism toward a historical-societal understanding of the subject."
+        }
+      ],
+      "hint": "Focus on whose interests the knowledge is intended to serve."
+    },
+    {
+      "question": "In 'social self-understanding' (social selvforståelse), why might an individual exhibit 'defensive resistance' to changes in their life conduct?",
+      "answerOptions": [
+        {
+          "text": "To maintain current stability in the face of perceived threats to their existing life structure.",
+          "isCorrect": true,
+          "rationale": "Individuals often prioritize the security of current conditions even if those conditions are restrictive, to avoid the risk of total instability."
+        },
+        {
+          "text": "Because they lack the biological intelligence to understand the benefits of change.",
+          "isCorrect": false,
+          "rationale": "Critical Psychology rejects deficit-based explanations in favor of analyzing the subject's reasons within their specific life conditions."
+        },
+        {
+          "text": "As a result of unconscious childhood traumas that dictate adult behavior.",
+          "isCorrect": false,
+          "rationale": "While Holzkamp engages with psychoanalysis, his focus here is on the conscious, reasoned choices regarding 'Handlungsfähigkeit' and societal premises."
+        },
+        {
+          "text": "Because society provides no possibilities for expanding one's power of action.",
+          "isCorrect": false,
+          "rationale": "The theory argues that possibilities usually exist, but the subject faces a conflict between expanding their power and the defensive need for security."
+        }
+      ],
+      "hint": "Consider the tension between expanding one's life quality and protecting one's current safety."
+    }
+  ]
+}

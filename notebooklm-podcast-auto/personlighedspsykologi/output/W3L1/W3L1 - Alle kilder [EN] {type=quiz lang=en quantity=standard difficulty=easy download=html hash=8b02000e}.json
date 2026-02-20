@@ -1,0 +1,255 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "Based on the meta-analysis of twin studies by Kandler and Instinske, what is the approximate overall heritability ($h^2$) for personality traits?",
+      "answerOptions": [
+        {
+          "text": "13%",
+          "isCorrect": false,
+          "rationale": "This value more closely represents the average SNP-heritability found in studies of unrelated individuals rather than the total heritability from twin studies."
+        },
+        {
+          "text": "47%",
+          "isCorrect": true,
+          "rationale": "Twin research suggests that nearly half of the variance in personality differences is due to genetic factors."
+        },
+        {
+          "text": "90%",
+          "isCorrect": false,
+          "rationale": "While some traits are highly heritable, personality traits generally show a significant portion of variance coming from environmental sources."
+        },
+        {
+          "text": "22%",
+          "isCorrect": false,
+          "rationale": "This figure is closer to heritability estimates found in non-twin family and adoption studies, which often miss nonadditive genetic effects."
+        }
+      ],
+      "hint": "Consider the proportion of personality variance attributed to genetics in genetically identical versus fraternal twins."
+    },
+    {
+      "question": "Which type of environmental influence is considered the primary driver for individual uniqueness within families?",
+      "answerOptions": [
+        {
+          "text": "Shared environmental influences",
+          "isCorrect": false,
+          "rationale": "Shared environments, such as growing up in the same home, actually contribute more to similarities within families than to individual uniqueness."
+        },
+        {
+          "text": "Individual-specific (non-shared) environmental influences",
+          "isCorrect": true,
+          "rationale": "Environmental factors not shared by siblings are the main contributors to the reinforcement of personality differences and uniqueness."
+        },
+        {
+          "text": "Cultural systems of symbols",
+          "isCorrect": false,
+          "rationale": "While culture influences personality, the specific source of individual uniqueness within a family unit is tied to idiosyncratic experiences."
+        },
+        {
+          "text": "Socioecological macro conditions",
+          "isCorrect": false,
+          "rationale": "Macro conditions like climate typically affect whole populations or groups similarly rather than creating uniqueness between siblings."
+        }
+      ],
+      "hint": "Think about experiences that one sibling has but another does not."
+    },
+    {
+      "question": "In the Socioecological-Genetic Framework, how are culture and personality described in relation to one another?",
+      "answerOptions": [
+        {
+          "text": "Mutually constitutive",
+          "isCorrect": true,
+          "rationale": "Culture shapes individuals' personalities, while individuals' personalities collectively aggregate to shape and reproduce culture."
+        },
+        {
+          "text": "Genetically identical",
+          "isCorrect": false,
+          "rationale": "Culture is a collective meaning system, whereas personality is an individual system; they are distinct constructs that interact."
+        },
+        {
+          "text": "Mutually exclusive",
+          "isCorrect": false,
+          "rationale": "The framework specifically argues that these two fields have been separated for too long and are actually deeply interdependent."
+        },
+        {
+          "text": "Entirely deterministic",
+          "isCorrect": false,
+          "rationale": "Cultural influences are described as probabilistic, meaning they incline people toward certain traits but do not strictly dictate them."
+        }
+      ],
+      "hint": "Consider a cycle where individuals influence their environment and the environment influences the individuals."
+    },
+    {
+      "question": "According to 'Subsistence Style Theory,' which type of farming is associated with higher levels of collectivism?",
+      "answerOptions": [
+        {
+          "text": "Wheat farming",
+          "isCorrect": false,
+          "rationale": "Wheat farming is generally associated with more independent labor and less social coordination compared to other staple crops."
+        },
+        {
+          "text": "Rice farming",
+          "isCorrect": true,
+          "rationale": "Rice farming requires high levels of social coordination and irrigation management, which fosters interdependent social norms."
+        },
+        {
+          "text": "Self-run cattle herding",
+          "isCorrect": false,
+          "rationale": "Herding is often associated with mobility and social independence, typically fostering more individualistic cultures."
+        },
+        {
+          "text": "Industrial coal mining",
+          "isCorrect": false,
+          "rationale": "Mining is a socioeconomic condition linked more closely to traits like neuroticism in specific historical contexts rather than the agricultural roots of collectivism."
+        }
+      ],
+      "hint": "Focus on the crop that requires the most labor-intensive social cooperation for irrigation."
+    },
+    {
+      "question": "What does the 'Dark Factor of Personality' ($D$) specifically measure?",
+      "answerOptions": [
+        {
+          "text": "The lack of any genetic influence on behavior",
+          "isCorrect": false,
+          "rationale": "Personality traits, including aversive ones, are understood to have both genetic and environmental roots."
+        },
+        {
+          "text": "The tendency to maximize individual utility at the cost of others",
+          "isCorrect": true,
+          "rationale": "D is defined as the general core underlying aversive traits where one pursues self-interest despite or because of the harm it causes others."
+        },
+        {
+          "text": "The specific traits of only Machiavellianism and Sadism",
+          "isCorrect": false,
+          "rationale": "D represents the common core of *all* aversive traits, not just a subset of specific manifestations."
+        },
+        {
+          "text": "The environmental impact of climate on aggression",
+          "isCorrect": false,
+          "rationale": "While climate can influence personality, D is an internal dispositional essence rather than a measure of external impact."
+        }
+      ],
+      "hint": "Think about the 'aversive essence' that drives various selfish or malevolent behaviors."
+    },
+    {
+      "question": "Which socioecological variable is theorized to decrease levels of Extraversion and Openness to experience because its manifestations could accelerate disease transmission?",
+      "answerOptions": [
+        {
+          "text": "Ambient temperature",
+          "isCorrect": false,
+          "rationale": "Temperature is linked more to socialization opportunities and emotional stability rather than the restriction of behavior due to health risks."
+        },
+        {
+          "text": "Pathogen prevalence",
+          "isCorrect": true,
+          "rationale": "High disease risk encourages behavioral conformity and limits social interaction with strangers to prevent the spread of illness."
+        },
+        {
+          "text": "Population density",
+          "isCorrect": false,
+          "rationale": "Density is often linked to future orientation or 'slow life' strategies rather than the specific deterrence of Openness due to biological threats."
+        },
+        {
+          "text": "Frontier settlement",
+          "isCorrect": false,
+          "rationale": "Frontiers are associated with *increased* independence and individualistic tendencies, which often relate to higher openness."
+        }
+      ],
+      "hint": "Consider the ecological pressure created by the historical presence of infectious diseases."
+    },
+    {
+      "question": "How do Zettler et al. (2025) define Aversive Societal Conditions (ASC)?",
+      "answerOptions": [
+        {
+          "text": "Strict legal systems and high religious adherence",
+          "isCorrect": false,
+          "rationale": "While related to social norms, these are not the primary factors used to construct the index of aversive conditions."
+        },
+        {
+          "text": "Corruption, inequality, poverty, and violence",
+          "isCorrect": true,
+          "rationale": "These four variables jointly reflect environments where self-serving behavior may be perceived as adaptive or justifiable."
+        },
+        {
+          "text": "Low population density and extreme temperatures",
+          "isCorrect": false,
+          "rationale": "These are ecological variables, but the study specifically focuses on societal 'darkness' or adversity indicators."
+        },
+        {
+          "text": "High levels of urbanization and technological access",
+          "isCorrect": false,
+          "rationale": "Urbanization is a modernization variable and does not inherently imply the aversive conditions studied in the context of dark traits."
+        }
+      ],
+      "hint": "Look for factors that make selfish or antisocial behavior seem like a 'survival' norm."
+    },
+    {
+      "question": "What is the 'missing heritability' problem in personality research?",
+      "answerOptions": [
+        {
+          "text": "The fact that personality traits show zero heritability in GWAS",
+          "isCorrect": false,
+          "rationale": "GWAS does find heritability (9-18%), just not at the high levels seen in twin studies."
+        },
+        {
+          "text": "The gap between SNP-heritability and estimates from twin studies",
+          "isCorrect": true,
+          "rationale": "SNP-based studies often yield lower heritability estimates than twin studies, likely due to rare variants or nonadditive effects."
+        },
+        {
+          "text": "The loss of genetic data in archaeological samples",
+          "isCorrect": false,
+          "rationale": "Missing heritability refers to a statistical gap in current genomic findings, not the physical loss of historical samples."
+        },
+        {
+          "text": "The failure of parents to pass on traits to their children",
+          "isCorrect": false,
+          "rationale": "Personality is demonstrably heritable; the problem is identifying which specific genetic units account for the known variance."
+        }
+      ],
+      "hint": "Think about the difference between what we see in family patterns versus what we can find in DNA molecules."
+    },
+    {
+      "question": "True or False: According to the 'Niche Diversity Hypothesis,' complex societies with many different social roles lead to a greater variety of personality profiles.",
+      "answerOptions": [
+        {
+          "text": "True",
+          "isCorrect": true,
+          "rationale": "A diversity of occupational and social niches creates demands for different personality patterns, resulting in more unique personality factors."
+        },
+        {
+          "text": "False",
+          "isCorrect": false,
+          "rationale": "Evidence suggests that less complex societies, like forager-horticulturalists, actually show fewer distinct personality factors."
+        }
+      ],
+      "hint": "Recall if societal complexity is thought to expand or restrict the 'space' for different personality traits."
+    },
+    {
+      "question": "In the study of gene expression, what does 'epigenetics' refer to?",
+      "answerOptions": [
+        {
+          "text": "The mutation of DNA sequences caused by radiation",
+          "isCorrect": false,
+          "rationale": "Epigenetics involves changes in how genes are expressed *without* altering the underlying DNA sequence."
+        },
+        {
+          "text": "Environmental influences on gene expression",
+          "isCorrect": true,
+          "rationale": "This field studies how continuous engagement with the environment can turn certain genes on or off over time."
+        },
+        {
+          "text": "The process of selecting a mate based on genetic similarity",
+          "isCorrect": false,
+          "rationale": "This refers to assortative mating, which is a behavioral outcome rather than a molecular expression process."
+        },
+        {
+          "text": "The belief that all personality is 100% determined by DNA",
+          "isCorrect": false,
+          "rationale": "Epigenetics actually provides a mechanism for how 'nurture' (environment) can influence 'nature' (biological expression)."
+        }
+      ],
+      "hint": "Focus on the study of 'above the gene' changes that don't rewrite the genetic code itself."
+    }
+  ]
+}

@@ -1,0 +1,385 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "Which of the following best describes why existential therapy is referred to as a 'rich tapestry' rather than a single, unified approach?",
+      "answerOptions": [
+        {
+          "text": "It lacks a single authoritative founder and has emerged spontaneously from diverse philosophical and geographical roots.",
+          "isCorrect": true,
+          "rationale": "Unlike psychoanalysis or person-centred therapy, existential therapy evolved from various independent thinkers and diverse philosophical traditions rather than one individual."
+        },
+        {
+          "text": "It is a highly manualised form of therapy that requires strict adherence to a specific set of clinical protocols.",
+          "isCorrect": false,
+          "rationale": "The text explicitly states that most existential therapists find the idea of manualisation or systematisation anathema to the principles of the approach."
+        },
+        {
+          "text": "It is strictly based on the teachings of Sigmund Freud but adapted for modern philosophical contexts.",
+          "isCorrect": false,
+          "rationale": "Existential therapy often emerged as a reaction against the deterministic models of traditional psychoanalysis rather than being a branch of it."
+        },
+        {
+          "text": "The field is unified by a single core textbook that outlines all necessary therapeutic interventions.",
+          "isCorrect": false,
+          "rationale": "There is no single authoritative source; practitioners draw from a wide range of complex and sometimes contradictory philosophical writings."
+        }
+      ],
+      "hint": "Consider the historical origins and the lack of a central figure like Freud or Rogers."
+    },
+    {
+      "question": "In the context of the phenomenological method, which rule requires the researcher to treat every item of description as having equal value or significance?",
+      "answerOptions": [
+        {
+          "text": "The rule of epoché",
+          "isCorrect": false,
+          "rationale": "This rule focuses on bracketing or suspending one's biases and assumptions rather than the internal hierarchy of the data."
+        },
+        {
+          "text": "The rule of horizontalisation",
+          "isCorrect": true,
+          "rationale": "This rule specifically urges the avoidance of placing initial hierarchies of importance on described items, treating them all as equally valid."
+        },
+        {
+          "text": "The rule of description",
+          "isCorrect": false,
+          "rationale": "This rule emphasizes describing the experience as it is rather than seeking underlying explanations or theories."
+        },
+        {
+          "text": "The rule of intentionality",
+          "isCorrect": false,
+          "rationale": "Intentionality refers to the concept that consciousness is always directed toward an object, which is a foundational principle rather than a step in the method."
+        }
+      ],
+      "hint": "Think of a term that implies placing all items on the same level or 'horizon'."
+    },
+    {
+      "question": "What is the primary implication of Jean-Paul Sartre's famous assertion that 'existence precedes essence'?",
+      "answerOptions": [
+        {
+          "text": "Human beings are born with a predetermined purpose that they must discover through therapy.",
+          "isCorrect": false,
+          "rationale": "This reflects an essentialist view where a 'true' self or purpose exists before the individual's actual life choices."
+        },
+        {
+          "text": "A person's biological and genetic makeup entirely determines their future personality.",
+          "isCorrect": false,
+          "rationale": "This is a deterministic view that existentialism rejects in favour of radical freedom and choice."
+        },
+        {
+          "text": "Human beings have no fixed identity at birth and create who they are through their ongoing choices.",
+          "isCorrect": true,
+          "rationale": "Sartre argues that we are first a 'no-thing-ness' or a surge of existence, and our characteristics (essence) only follow our actions and decisions."
+        },
+        {
+          "text": "The physical world must exist before any consciousness can emerge to perceive it.",
+          "isCorrect": false,
+          "rationale": "While true in a physical sense, Sartre's quote specifically refers to the human condition and the lack of an inherent 'blueprint' for being."
+        }
+      ],
+      "hint": "Reflect on whether humans are born with a 'blueprint' or if they write their own 'script' through action."
+    },
+    {
+      "question": "According to Martin Heidegger, what is the fundamental temporal orientation of human existence ($Dasein$)?",
+      "answerOptions": [
+        {
+          "text": "It is primarily rooted in the past, as our early experiences cause our current state.",
+          "isCorrect": false,
+          "rationale": "This deterministic view of time is more characteristic of traditional psychoanalysis than Heidegger's philosophy."
+        },
+        {
+          "text": "It is oriented towards the future, as we are always projecting ourselves towards goals and possibilities.",
+          "isCorrect": true,
+          "rationale": "Heidegger claims 'Everything begins with the future,' suggesting we pull ourselves from ahead rather than being pushed by the past."
+        },
+        {
+          "text": "It is a series of disconnected 'presents' with no inherent link to what was or what will be.",
+          "isCorrect": false,
+          "rationale": "Heidegger sees existence as 'taking up' its past to act towards a future, rather than existing as an isolated island in the now."
+        },
+        {
+          "text": "It is a cyclical process where the future eventually returns to the origins of the past.",
+          "isCorrect": false,
+          "rationale": "Heidegger's view of time is linear in terms of its 'being-towards-death,' rather than a recurring cycle."
+        }
+      ],
+      "hint": "Think about the concept of 'projects' and 'hurling' oneself forward."
+    },
+    {
+      "question": "Martin Buber distinguishes between two primary modes of relating. Which of the following characterises the 'I-Thou' relationship?",
+      "answerOptions": [
+        {
+          "text": "The other is experienced as a thing-like, determined object to be analysed.",
+          "isCorrect": false,
+          "rationale": "This describes the 'I-It' attitude, where the other is systematised and broken down into universal parts."
+        },
+        {
+          "text": "The 'I' remains safely detached and objective while observing the other.",
+          "isCorrect": false,
+          "rationale": "Buber argues that 'I-Thou' requires the 'I' to take the risk of entering fully and vulnerably into the encounter."
+        },
+        {
+          "text": "The other is beheld and confirmed as a unique, unclassifiable totality in the present moment.",
+          "isCorrect": true,
+          "rationale": "An 'I-Thou' meeting involves an open, non-calculative confirmation of the other's actual otherness without stereotypes."
+        },
+        {
+          "text": "The 'I' and the 'Thou' merge into a single identity where no difference remains.",
+          "isCorrect": false,
+          "rationale": "Buber specifically notes that this is not a merging; one cannot encounter what they already are or what they have absorbed."
+        }
+      ],
+      "hint": "Focus on the quality of meeting the other as a whole person rather than an object of study."
+    },
+    {
+      "question": "In existential philosophy, what term is used to describe the unmovable, given facts of our lives that we did not choose, such as our place of birth or our mortality?",
+      "answerOptions": [
+        {
+          "text": "Intentionality",
+          "isCorrect": false,
+          "rationale": "Intentionality refers to the structure of consciousness always being directed toward an object."
+        },
+        {
+          "text": "Facticity",
+          "isCorrect": true,
+          "rationale": "Facticity (or thrownness) refers to the given restrictions and situations into which existence finds itself 'thrown' without choice."
+        },
+        {
+          "text": "Authenticity",
+          "isCorrect": false,
+          "rationale": "Authenticity is the mode of facing these 'givens' with resolve, not the 'givens' themselves."
+        },
+        {
+          "text": "Bad Faith",
+          "isCorrect": false,
+          "rationale": "Bad Faith is the act of lying to oneself about one's freedom or situation, often by pretending facticity is total."
+        }
+      ],
+      "hint": "This term relates to the 'factual' or 'given' aspects of our condition."
+    },
+    {
+      "question": "How do existential thinkers like Kierkegaard and Heidegger generally conceptualise the role of 'anxiety' in human life?",
+      "answerOptions": [
+        {
+          "text": "As a pathological symptom that should be eliminated through clinical intervention.",
+          "isCorrect": false,
+          "rationale": "Existentialists see anxiety as an ontological given rather than a medical pathology to be 'cured'."
+        },
+        {
+          "text": "As a useful guide that 'jerks' the individual out of social conformity and towards their own freedom.",
+          "isCorrect": true,
+          "rationale": "Anxiety reveals the truth of our freedom and the groundlessness of our world, serving as a teacher on the path to authenticity."
+        },
+        {
+          "text": "As a result of repressed childhood traumas that must be uncovered in therapy.",
+          "isCorrect": false,
+          "rationale": "This is a psychoanalytic view; existentialists focus on the present reality of freedom as the source of angst."
+        },
+        {
+          "text": "As a sign of a lack of willpower and a failure to adapt to societal norms.",
+          "isCorrect": false,
+          "rationale": "On the contrary, existentialists suggest that those who are most aware of their freedom are likely to experience the most anxiety."
+        }
+      ],
+      "hint": "Think about anxiety not as a 'sickness' but as a 'revelation' of one's potential."
+    },
+    {
+      "question": "Jean-Paul Sartre suggests that individuals often engage in 'Bad Faith' ($mauvaise$ $foi$). Which of the following is an example of this?",
+      "answerOptions": [
+        {
+          "text": "Acknowledging that one's career choice was a mistake and resigning immediately.",
+          "isCorrect": false,
+          "rationale": "This is an act of taking responsibility and choosing, which is the opposite of Bad Faith."
+        },
+        {
+          "text": "Pretending one has no choice but to act in a certain way because 'that is just the way I am'.",
+          "isCorrect": true,
+          "rationale": "Bad Faith involves turning oneself into an object or 'thing' to deny the anxiety-evoking reality of one's freedom and responsibility."
+        },
+        {
+          "text": "Facing the inevitability of death with a sense of courage and resolve.",
+          "isCorrect": false,
+          "rationale": "This is described as an authentic stance toward mortality, not self-deception."
+        },
+        {
+          "text": "Accepting that external circumstances can limit one's physical movements.",
+          "isCorrect": false,
+          "rationale": "This is an acknowledgement of facticity, which Sartre distinguishes from the denial of choice within those limits."
+        }
+      ],
+      "hint": "Look for a scenario where someone avoids responsibility by claiming they are 'fixed' like an object."
+    },
+    {
+      "question": "Which existential philosopher is most associated with the concept of 'Gelassenheit'—a stance of 'releasement' or 'letting-be' towards the world?",
+      "answerOptions": [
+        {
+          "text": "Friedrich Nietzsche",
+          "isCorrect": false,
+          "rationale": "Nietzsche is more associated with the 'will to power' and active aspiration than with 'letting-be'."
+        },
+        {
+          "text": "Martin Heidegger",
+          "isCorrect": true,
+          "rationale": "In his later work, Heidegger shifted from 'resolve' towards 'Gelassenheit,' a non-manipulative openness to the Being of things."
+        },
+        {
+          "text": "Albert Camus",
+          "isCorrect": false,
+          "rationale": "Camus focused more on the 'struggle' against the absurd, as exemplified by Sisyphus."
+        },
+        {
+          "text": "Søren Kierkegaard",
+          "isCorrect": false,
+          "rationale": "Kierkegaard emphasized the passionate 'leap of faith' and individual inwardness rather than this specific meditative releasement."
+        }
+      ],
+      "hint": "This term appears in the later writings of the philosopher who wrote 'Being and Time'."
+    },
+    {
+      "question": "In Heideggerian terms, what is the 'call of conscience' intended to do?",
+      "answerOptions": [
+        {
+          "text": "Remind the individual of the moral laws they have broken in their community.",
+          "isCorrect": false,
+          "rationale": "Heidegger's 'conscience' is ontological, not a social or moralistic judgement of right and wrong."
+        },
+        {
+          "text": "Encourage the individual to follow the advice and opinions of the 'They' ($das$ $Man$).",
+          "isCorrect": false,
+          "rationale": "The call is actually a summons *out* of the lostness in the public world of 'the They'."
+        },
+        {
+          "text": "Summon the individual back to themselves and their unfulfilled potentiality for being.",
+          "isCorrect": true,
+          "rationale": "Existential guilt is seen as a 'debt' to oneself for not actualising one's potential, and conscience is the silent call to address this."
+        },
+        {
+          "text": "Inform the person that they are destined for a specific, predetermined fate.",
+          "isCorrect": false,
+          "rationale": "Existentialism rejects 'fate' or 'destiny' in favour of freedom; the call is to choose, not to submit to a script."
+        }
+      ],
+      "hint": "Consider the idea of a 'debt' one owes to their own unique existence."
+    },
+    {
+      "question": "Why does Sartre argue that interpersonal relationships are often characterised by conflict and 'the look'?",
+      "answerOptions": [
+        {
+          "text": "Because humans are naturally aggressive and competitive animals.",
+          "isCorrect": false,
+          "rationale": "Sartre's analysis is based on the structure of consciousness and freedom, not on biological or evolutionary psychology."
+        },
+        {
+          "text": "Because the gaze of another person threatens to turn the 'I' into a fixed object, stripping away its freedom.",
+          "isCorrect": true,
+          "rationale": "Sartre suggests that when someone looks at us, we become an object in their world, leading to a battle of 'objectify-or-be-objectified'."
+        },
+        {
+          "text": "Because most people are incapable of experiencing empathy or genuine love.",
+          "isCorrect": false,
+          "rationale": "Sartre acknowledges the desire for love but argues it is frustrated by the paradox of wanting to possess someone's freedom."
+        },
+        {
+          "text": "Because social norms force people to hide their true feelings from each other.",
+          "isCorrect": false,
+          "rationale": "While social norms exist, the 'conflict' Sartre describes is deeper: an ontological struggle between two freedoms."
+        }
+      ],
+      "hint": "Think about how it feels to be 'watched' and judged as if you were a mere thing."
+    },
+    {
+      "question": "Which philosopher emphasized the embodied nature of existence, arguing that we *are* our bodies rather than just 'having' them?",
+      "answerOptions": [
+        {
+          "text": "Maurice Merleau-Ponty",
+          "isCorrect": true,
+          "rationale": "Merleau-Ponty is the key existential philosopher noted for his focus on the fundamentally embodied nature of human perception and existence."
+        },
+        {
+          "text": "Gabriel Marcel",
+          "isCorrect": false,
+          "rationale": "While Marcel wrote about 'being' vs 'having,' the primary emphasis on the 'phenomenology of perception' and the body belongs to Merleau-Ponty."
+        },
+        {
+          "text": "Karl Jaspers",
+          "isCorrect": false,
+          "rationale": "Jaspers is better known for 'limit-situations' and 'boundary situations' than for a specific philosophy of embodiment."
+        },
+        {
+          "text": "Viktor Frankl",
+          "isCorrect": false,
+          "rationale": "Frankl's logotherapy focuses on the 'will to meaning' rather than the philosophical analysis of the body."
+        }
+      ],
+      "hint": "This French philosopher wrote 'Phenomenology of Perception'."
+    },
+    {
+      "question": "What is a common criticism levelled against existential philosophy regarding its ethical stance?",
+      "answerOptions": [
+        {
+          "text": "It is overly rigid and moralistic, leaving no room for individual expression.",
+          "isCorrect": false,
+          "rationale": "Existentialism is generally criticised for the opposite: a lack of absolute moral guidelines."
+        },
+        {
+          "text": "It is seen as essentially amoral because it emphasizes the self-creation of values and lacks absolute truths.",
+          "isCorrect": true,
+          "rationale": "Because it rejects universal laws in favour of radical freedom, critics argue it can lead to a 'anything goes' mentality."
+        },
+        {
+          "text": "It places too much emphasis on biological determinism, ignoring the role of choice.",
+          "isCorrect": false,
+          "rationale": "The core of existentialism is the rejection of determinism, so this criticism would be factually incorrect regarding the philosophy."
+        },
+        {
+          "text": "It is viewed as too optimistic, ignoring the tragic side of human life.",
+          "isCorrect": false,
+          "rationale": "Existentialism is frequently criticised for being too morbid or focused on death and suffering, not for being too optimistic."
+        }
+      ],
+      "hint": "Think about the consequences of saying 'nothing justifies me in adopting this or that value'."
+    },
+    {
+      "question": "In the 'rich tapestry' of existential therapies, which approach is specifically associated with the work of Viktor Frankl and the search for meaning?",
+      "answerOptions": [
+        {
+          "text": "Daseinsanalysis",
+          "isCorrect": false,
+          "rationale": "Daseinsanalysis is rooted in the work of Binswanger, Boss, and Heidegger, focusing on 'Being-in-the-world'."
+        },
+        {
+          "text": "Existential-Humanistic approach",
+          "isCorrect": false,
+          "rationale": "This is the dominant American brand associated with Rollo May and Irvin Yalom."
+        },
+        {
+          "text": "Logotherapy",
+          "isCorrect": true,
+          "rationale": "Logotherapy, founded by Viktor Frankl, specifically focuses on helping clients discover meaning in their lives."
+        },
+        {
+          "text": "British school of existential analysis",
+          "isCorrect": false,
+          "rationale": "This school, associated with Emmy van Deurzen, focuses on the four dimensions of worldly being."
+        }
+      ],
+      "hint": "The name of this therapy comes from the Greek word for 'meaning' or 'word'."
+    },
+    {
+      "question": "True or False: According to the text, existential therapists generally agree that the therapeutic approach can and should be manualised for efficiency.",
+      "answerOptions": [
+        {
+          "text": "True",
+          "isCorrect": false,
+          "rationale": "The text states that manualisation is 'anathema to the very principles of the approach'."
+        },
+        {
+          "text": "False",
+          "isCorrect": true,
+          "rationale": "The text highlights that existential therapy prizes individual, autonomous practice over grand, all-encompassing systems or manuals."
+        }
+      ],
+      "hint": "Consider the existential preference for 'individual and autonomous practices' over 'grand systems'."
+    }
+  ]
+}

@@ -1,0 +1,317 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "According to Bruner, what is the primary function of 'folk psychology' in human interaction?",
+      "answerOptions": [
+        {
+          "text": "To provide a set of narrative meanings to interpret deviations from 'normal' states.",
+          "isCorrect": true,
+          "rationale": "The author argues that folk psychology helps humans interpret breaches in the canonical background of life through narrative."
+        },
+        {
+          "text": "To establish a purely biological basis for the acquisition of complex syntactic structures.",
+          "isCorrect": false,
+          "rationale": "Bruner actually critiques purely biological or syntactic views, favoring a cultural and functional approach."
+        },
+        {
+          "text": "To eliminate idiosyncratic behavior in favor of strict social conformity.",
+          "isCorrect": false,
+          "rationale": "The text suggests folk psychology frames the idiosyncratic to make it 'lifelike' and manageable, not to eliminate it."
+        },
+        {
+          "text": "To focus solely on the reference and sense of linguistic symbols.",
+          "isCorrect": false,
+          "rationale": "Bruner states that cultural meaning-making is concerned with 'felicity conditions' rather than just sense and reference."
+        }
+      ],
+      "hint": "Consider how we make sense of behavior that doesn't fit the expected 'ordinary' background."
+    },
+    {
+      "question": "In the context of C. S. Peirce's semiotics, which term describes the representation of the world that mediates the relationship between a sign and its referent?",
+      "answerOptions": [
+        {
+          "text": "Interpretant",
+          "isCorrect": true,
+          "rationale": "Peirce defined the interpretant as the mental representation that mediates the sign-referent relationship."
+        },
+        {
+          "text": "Index",
+          "isCorrect": false,
+          "rationale": "An index is a specific type of sign that has a contingent relationship to its referent, such as smoke to fire."
+        },
+        {
+          "text": "Symbol",
+          "isCorrect": false,
+          "rationale": "A symbol is a sign governed by arbitrary rules within a system, but it is not the mediating representation itself."
+        },
+        {
+          "text": "Icon",
+          "isCorrect": false,
+          "rationale": "An icon is a sign that bears a resemblance to its referent, like a picture, rather than being the mediator."
+        }
+      ],
+      "hint": "Look for the term that represents the human capacity to internalize a language system as a mediator."
+    },
+    {
+      "question": "What is Bruner's main critique of Noam Chomsky's 'language acquisition device' (LAD)?",
+      "answerOptions": [
+        {
+          "text": "It focuses almost exclusively on syntax and ignores the actual use and meaning of language.",
+          "isCorrect": true,
+          "rationale": "Bruner argues that Chomsky's LAD is a purely linguistic competence that disregards how language is used as a social practice."
+        },
+        {
+          "text": "It overestimates the amount of assistance a child needs from caregivers to learn grammar.",
+          "isCorrect": false,
+          "rationale": "Actually, Bruner argues that children need *more* assistance and interaction than Chomsky's model suggested."
+        },
+        {
+          "text": "It wrongly assumes that language is acquired through 'doing' rather than just 'exposure'.",
+          "isCorrect": false,
+          "rationale": "This is Bruner's own view; Chomsky focused on exposure to linguistic evidence rather than social practice."
+        },
+        {
+          "text": "It claims that linguistic evidence in the environment is too rich and sufficient for the child.",
+          "isCorrect": false,
+          "rationale": "Chomsky actually claimed the environment was 'degenerate' or insufficient, requiring an innate device to fill the gaps."
+        }
+      ],
+      "hint": "Think about the difference between knowing the rules of a sentence and knowing how to use it in conversation."
+    },
+    {
+      "question": "Bruner highlights that communicative functions like 'labeling' and 'requesting' are usually present in a child's development at what stage?",
+      "answerOptions": [
+        {
+          "text": "Well before the child has mastered formal linguistic expression.",
+          "isCorrect": true,
+          "rationale": "The text states that these communicative intentions are in place and motivated before formal language begins."
+        },
+        {
+          "text": "Only after the child has acquired a basic syntactic 'bioprogram'.",
+          "isCorrect": false,
+          "rationale": "Bruner argues that these functions emerge first and actually guide the search for formal linguistic mastery."
+        },
+        {
+          "text": "Simultaneously with the mastery of phonemes and lexemes.",
+          "isCorrect": false,
+          "rationale": "The author suggests that communicative needs reflect a higher-level requirement that precedes the mastery of building blocks."
+        },
+        {
+          "text": "Exclusively through the process of imitation after eighteen months.",
+          "isCorrect": false,
+          "rationale": "The text emphasizes innate predispositions and early prelinguistic 'readiness' rather than mere imitation."
+        }
+      ],
+      "hint": "Consider whether a child's desire to point things out or ask for things happens before or after they speak full sentences."
+    },
+    {
+      "question": "Which constituent of narrative involves human action directed toward goals and controlled by actors?",
+      "answerOptions": [
+        {
+          "text": "Agentivity",
+          "isCorrect": true,
+          "rationale": "Agentivity is defined as action directed toward goals by agents, which is a crucial grammatical and narrative requirement."
+        },
+        {
+          "text": "Linearization",
+          "isCorrect": false,
+          "rationale": "Linearization refers to the sequential ordering of events and states in a standard way."
+        },
+        {
+          "text": "Canonicality",
+          "isCorrect": false,
+          "rationale": "Canonicality involves distinguishing between what is ordinary and what violates expectations in human interaction."
+        },
+        {
+          "text": "Perspective",
+          "isCorrect": false,
+          "rationale": "Perspective refers to the narrator's voice or evaluation, rather than the goal-directed action itself."
+        }
+      ],
+      "hint": "Think of the term related to being an 'agent' or an actor in a story."
+    },
+    {
+      "question": "How does the 'SVO' (subject-verb-object) order in many languages facilitate a child's narrative development?",
+      "answerOptions": [
+        {
+          "text": "It preserves the phenomenological order of events, making linearization easier.",
+          "isCorrect": true,
+          "rationale": "Bruner notes that $SVO$ allows the child to recount sequences in the order they occur, aiding the 'linearizing' task."
+        },
+        {
+          "text": "It allows children to ignore the perspective of the narrator entirely.",
+          "isCorrect": false,
+          "rationale": "Perspective is a separate narrative requirement; $SVO$ primarily addresses sequence and agentivity."
+        },
+        {
+          "text": "It provides a purely arbitrary set of rules that have no functional purpose.",
+          "isCorrect": false,
+          "rationale": "Bruner argues that such forms are mastered because they fulfill the communicative needs of narration."
+        },
+        {
+          "text": "It ensures that children focus on objects before they focus on human actions.",
+          "isCorrect": false,
+          "rationale": "The text indicates that human action and its outcomes are actually the child's primary linguistic interest."
+        }
+      ],
+      "hint": "Consider how the structure of a sentence like 'Somebody does something' matches the way events happen in time."
+    },
+    {
+      "question": "In the Lucariello experiment involving children's birthday party stories, what was the primary finding regarding 'noncanonical' versions of the story?",
+      "answerOptions": [
+        {
+          "text": "Children produced ten times more narrative elaborations for unusual events than for standard ones.",
+          "isCorrect": true,
+          "rationale": "The study showed that breaches in canonicality triggered a surge in narrative invention to make sense of the unusual."
+        },
+        {
+          "text": "Children were unable to recall any details of the unusual birthday events.",
+          "isCorrect": false,
+          "rationale": "On the contrary, the unusual events captivated the children and stimulated their narrative activity."
+        },
+        {
+          "text": "Children preferred the ordinary stories because they provided 'social stability'.",
+          "isCorrect": false,
+          "rationale": "While social stability is a goal of narrative, the experiment showed that the unusual is what 'trips off' narrative activity."
+        },
+        {
+          "text": "Children only used simple, repetitive sentences when describing the 'unhappy birthday girl'.",
+          "isCorrect": false,
+          "rationale": "The children actually used complex 'intentional state' explanations to account for the girl's unhappiness."
+        }
+      ],
+      "hint": "Recall which type of story version stimulated the most creative explanation and talk from the subjects."
+    },
+    {
+      "question": "What did Michael Chandler and colleagues demonstrate about children's 'Theory of Mind' in their hide-and-seek experiment?",
+      "answerOptions": [
+        {
+          "text": "Children as young as two or three can engage in deceptive behavior like creating misleading footprints.",
+          "isCorrect": true,
+          "rationale": "This evidence suggests that even very young children have a 'protolinguistic' grasp of others' beliefs and desires."
+        },
+        {
+          "text": "Children are completely unable to grasp false beliefs until they reach the age of four.",
+          "isCorrect": false,
+          "rationale": "This was the 'standard' view that Chandler's research challenged by using more naturalistic, self-interested tasks."
+        },
+        {
+          "text": "Theory of Mind is a purely linguistic achievement that cannot exist without formal grammar.",
+          "isCorrect": false,
+          "rationale": "The text argues that it is a 'feature of praxis' and exists in a prelinguistic form before it is expressed in language."
+        },
+        {
+          "text": "Young children only cooperate with searchers and never attempt to hide information.",
+          "isCorrect": false,
+          "rationale": "The experiment showed that children actively withheld information and provided false clues to protect their self-interests."
+        }
+      ],
+      "hint": "Think about the age at which children were shown to be capable of 'humanly' interacting with others' thoughts in practice."
+    },
+    {
+      "question": "Halliday's distinction between 'pragmatic' and 'mathetic' discourse units refers to which two functions of language?",
+      "answerOptions": [
+        {
+          "text": "Getting others to act on one's behalf versus making one's thoughts about the world clear.",
+          "isCorrect": true,
+          "rationale": "Pragmatic functions involve getting things done through others, while mathetic functions involve clarifying thoughts about the world."
+        },
+        {
+          "text": "Mastering syntactic rules versus expanding vocabulary size.",
+          "isCorrect": false,
+          "rationale": "These are components of formal language mastery, not the functional discourse units Halliday described."
+        },
+        {
+          "text": "Interacting with caregivers versus talking to oneself in soliloquies.",
+          "isCorrect": false,
+          "rationale": "While these are modes of speech, the pragmatic/mathetic distinction refers to the intent of the communication."
+        },
+        {
+          "text": "Describing canonical events versus describing noncanonical breaches.",
+          "isCorrect": false,
+          "rationale": "This is a narrative distinction (ordinary vs. unusual) rather than the pragmatic/mathetic functional distinction."
+        }
+      ],
+      "hint": "One function is about 'doing' things with others, while the other is about 'thinking' or representing the world."
+    },
+    {
+      "question": "Based on the study of 'Emily's' soliloquies, why was her speech to herself often more grammatically complex than her conversational speech?",
+      "answerOptions": [
+        {
+          "text": "She did not have to fit her speech into the interruptions of a conversational partner.",
+          "isCorrect": true,
+          "rationale": "Bruner notes that, following Vygotskian principles, monologic speech can be more extended because it lacks an interlocutor's remarks."
+        },
+        {
+          "text": "She was reciting memorized poems that were more advanced than her own level.",
+          "isCorrect": false,
+          "rationale": "While she did recite songs and books, the increased complexity was primarily found in her own autobiographical accounts."
+        },
+        {
+          "text": "Her parents only used complex grammar when she was alone in her crib.",
+          "isCorrect": false,
+          "rationale": "There is no evidence for this; the text attributes the complexity to her own cognitive push to make sense of her world."
+        },
+        {
+          "text": "She was following a rigid biological 'bioprogram' that only activated at night.",
+          "isCorrect": false,
+          "rationale": "The author contrasts the 'bioprogram' view with the functional, narrative 'meaning readiness' that Emily exhibited."
+        }
+      ],
+      "hint": "Consider what is missing in a soliloquy that usually forces a child to keep their sentences shorter and simpler."
+    },
+    {
+      "question": "How does Bruner view the relationship between narrative and 'reality' in a culture?",
+      "answerOptions": [
+        {
+          "text": "Narrative serves to explicate breaches in the ordinary rather than to necessarily reconcile them.",
+          "isCorrect": true,
+          "rationale": "The goal of narrative is to make a deviation comprehensible within a background of ordinariness, not necessarily to forgive it."
+        },
+        {
+          "text": "Narrative is a tool to ensure that every member of a community shares the exact same beliefs.",
+          "isCorrect": false,
+          "rationale": "The text states that a culture can be a 'set of connecting stories' even if they do not represent a total consensus."
+        },
+        {
+          "text": "Narrative is used to silence divergent interpretations of reality through strict canonical rules.",
+          "isCorrect": false,
+          "rationale": "Bruner argues that narrative provides a way to resolve differences in meaning by invoking mitigating circumstances."
+        },
+        {
+          "text": "Narrative is a purely individual psychological process with no relation to cultural obligations.",
+          "isCorrect": false,
+          "rationale": "Bruner emphasizes that narrative is a social practice that helps align interpretations with moral and institutional obligations."
+        }
+      ],
+      "hint": "Think about whether a story about a 'breach' is meant to make everyone agree, or just to make the breach 'understandable'."
+    },
+    {
+      "question": "What 'narratogenic' condition did Vladimir Propp suggest often triggers the beginning of folktales, which also appeared in Emily's life?",
+      "answerOptions": [
+        {
+          "text": "Lack and displacement",
+          "isCorrect": true,
+          "rationale": "Propp identified lack and displacement as starting points for stories, mirrored by Emily's displacement by her new brother."
+        },
+        {
+          "text": "Abundance and prosperity",
+          "isCorrect": false,
+          "rationale": "While these could be themes, they are not the specific 'narratogenic' (story-generating) triggers mentioned in the text."
+        },
+        {
+          "text": "Total social consensus",
+          "isCorrect": false,
+          "rationale": "Consensus provides the 'canonical' background, but it is the breach or lack that generates the need for a narrative."
+        },
+        {
+          "text": "The discovery of a shared symbol system",
+          "isCorrect": false,
+          "rationale": "A symbol system is a prerequisite for narrative, but Propp's specific trigger is a situational imbalance like 'lack'."
+        }
+      ],
+      "hint": "Look for the terms that describe a sense of something missing or being moved out of one's normal place."
+    }
+  ]
+}

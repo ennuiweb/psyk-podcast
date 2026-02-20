@@ -1,0 +1,265 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "According to the structural model of personality, which component represents the primitive and instinctual part of the mind?",
+      "answerOptions": [
+        {
+          "text": "Id",
+          "isCorrect": true,
+          "rationale": "The Id is the primitive part of the personality that contains basic biological drives and operates on the pleasure principle."
+        },
+        {
+          "text": "Ego",
+          "isCorrect": false,
+          "rationale": "While a major component, this part focuses on reality and mediation rather than primitive instincts."
+        },
+        {
+          "text": "Superego",
+          "isCorrect": false,
+          "rationale": "This component represents internalized moral standards rather than raw instinctual drives."
+        },
+        {
+          "text": "Preconscious",
+          "isCorrect": false,
+          "rationale": "The preconscious refers to a level of awareness, not a structural component of personality drives."
+        }
+      ],
+      "hint": "This component is present from birth and seeks immediate gratification."
+    },
+    {
+      "question": "Which part of the psyche operates based on the reality principle to mediate between internal desires and the external world?",
+      "answerOptions": [
+        {
+          "text": "Ego",
+          "isCorrect": true,
+          "rationale": "The Ego functions as the rational mediator that balances the Id's demands with the constraints of reality."
+        },
+        {
+          "text": "Id",
+          "isCorrect": false,
+          "rationale": "The Id is governed by the pleasure principle and does not account for external reality."
+        },
+        {
+          "text": "Superego",
+          "isCorrect": false,
+          "rationale": "The Superego is governed by moral ideals rather than the practicalities of the reality principle."
+        },
+        {
+          "text": "Libido",
+          "isCorrect": false,
+          "rationale": "Libido refers to psychic energy or sex drive, not the structural component that mediates reality."
+        }
+      ],
+      "hint": "It acts as a decision-making bridge between instinctual needs and social constraints."
+    },
+    {
+      "question": "What is the name of the moral component of personality that incorporates societal standards and values?",
+      "answerOptions": [
+        {
+          "text": "Superego",
+          "isCorrect": true,
+          "rationale": "The Superego acts as the internal moral authority or conscience, striving for perfection."
+        },
+        {
+          "text": "Ego",
+          "isCorrect": false,
+          "rationale": "The Ego is primarily concerned with logic and reality rather than idealistic moral standards."
+        },
+        {
+          "text": "Id",
+          "isCorrect": false,
+          "rationale": "The Id is purely instinctual and lacks any sense of morality or social rules."
+        },
+        {
+          "text": "Unconscious",
+          "isCorrect": false,
+          "rationale": "The unconscious is a level of the mind where thoughts are hidden, not specifically the moral component itself."
+        }
+      ],
+      "hint": "This component develops as a child internalizes rules and values from parents and society."
+    },
+    {
+      "question": "Sigmund Freud is primarily associated with the development of which psychological perspective?",
+      "answerOptions": [
+        {
+          "text": "Psychoanalysis",
+          "isCorrect": true,
+          "rationale": "Freud founded psychoanalysis, a theory and method focused on the unconscious mind and childhood development."
+        },
+        {
+          "text": "Behaviorism",
+          "isCorrect": false,
+          "rationale": "Behaviorism focuses on observable behaviors and external stimuli, which contrasts with Freud's focus on the internal unconscious."
+        },
+        {
+          "text": "Humanism",
+          "isCorrect": false,
+          "rationale": "Humanism emphasizes free will and self-actualization, whereas Freud emphasized deterministic unconscious drives."
+        },
+        {
+          "text": "Functionalism",
+          "isCorrect": false,
+          "rationale": "Functionalism is an early school of psychology focused on the purpose of consciousness, distinct from Freud's structural model."
+        }
+      ],
+      "hint": "This perspective emphasizes the role of hidden conflicts and the 'talking cure'."
+    },
+    {
+      "question": "In Freud's structural model, how many distinct parts comprise the human personality?",
+      "answerOptions": [
+        {
+          "text": "Three",
+          "isCorrect": true,
+          "rationale": "The personality is divided into three interacting systems: the Id, the Ego, and the Superego."
+        },
+        {
+          "text": "Two",
+          "isCorrect": false,
+          "rationale": "Freud's earlier models focused on conscious and unconscious, but the structural model includes a third component."
+        },
+        {
+          "text": "Five",
+          "isCorrect": false,
+          "rationale": "While Freud proposed five stages of psychosexual development, the structural components of personality are fewer."
+        },
+        {
+          "text": "Seven",
+          "isCorrect": false,
+          "rationale": "There is no major Freudian model that categorizes personality into seven structural parts."
+        }
+      ],
+      "hint": "Think of the trio that includes the Id, the Ego, and one other part."
+    },
+    {
+      "question": "Which component of the personality is most concerned with moral ideals and striving for perfection?",
+      "answerOptions": [
+        {
+          "text": "Superego",
+          "isCorrect": true,
+          "rationale": "The Superego internalizes social standards and seeks to suppress the Id's impulses in favor of moral goals."
+        },
+        {
+          "text": "Id",
+          "isCorrect": false,
+          "rationale": "The Id seeks immediate gratification and does not consider ideals or perfection."
+        },
+        {
+          "text": "Ego",
+          "isCorrect": false,
+          "rationale": "The Ego seeks practical solutions to satisfy needs rather than striving for idealistic perfection."
+        },
+        {
+          "text": "Subconscious",
+          "isCorrect": false,
+          "rationale": "The subconscious is a general term for mental processes outside of awareness, not a specific structural ideal."
+        }
+      ],
+      "hint": "It often acts as a 'conscience' that punishes the individual with guilt."
+    },
+    {
+      "question": "In Freud's theory, the level of the mind containing thoughts that are not currently conscious but can be easily recalled is called the:",
+      "answerOptions": [
+        {
+          "text": "Preconscious",
+          "isCorrect": true,
+          "rationale": "The preconscious contains information that is not currently being thought about but can be brought into awareness at any time."
+        },
+        {
+          "text": "Conscious",
+          "isCorrect": false,
+          "rationale": "The conscious mind contains only the information the person is currently thinking about or perceiving."
+        },
+        {
+          "text": "Unconscious",
+          "isCorrect": false,
+          "rationale": "The unconscious contains deeply buried memories and drives that are generally inaccessible to direct recall."
+        },
+        {
+          "text": "Superego",
+          "isCorrect": false,
+          "rationale": "The Superego is a structure of personality, not a specific level of conscious awareness."
+        }
+      ],
+      "hint": "It acts as a temporary storage or 'waiting room' for accessible memories."
+    },
+    {
+      "question": "Which principle drives the Id to seek immediate satisfaction of all needs and urges?",
+      "answerOptions": [
+        {
+          "text": "Pleasure principle",
+          "isCorrect": true,
+          "rationale": "The pleasure principle guides the Id to seek immediate gratification and avoid all forms of pain or tension."
+        },
+        {
+          "text": "Reality principle",
+          "isCorrect": false,
+          "rationale": "The reality principle is the guiding force for the Ego, which seeks to delay gratification until an appropriate time."
+        },
+        {
+          "text": "Moral principle",
+          "isCorrect": false,
+          "rationale": "The moral principle guides the Superego's evaluation of right and wrong."
+        },
+        {
+          "text": "Death drive",
+          "isCorrect": false,
+          "rationale": "The death drive (Thanatos) is a specific instinctual force, not the general principle of immediate gratification."
+        }
+      ],
+      "hint": "This principle demands the fulfillment of desires without regard for consequences."
+    },
+    {
+      "question": "According to Freud, what is the primary state the Ego experiences when it cannot satisfy the conflicting demands of the Id and the Superego?",
+      "answerOptions": [
+        {
+          "text": "Anxiety",
+          "isCorrect": true,
+          "rationale": "Anxiety is the resulting state of tension when the Ego is overwhelmed by the Id's impulses or the Superego's judgments."
+        },
+        {
+          "text": "Catharsis",
+          "isCorrect": false,
+          "rationale": "Catharsis is the release of emotional tension, often a goal of therapy rather than a result of conflict."
+        },
+        {
+          "text": "Self-actualization",
+          "isCorrect": false,
+          "rationale": "Self-actualization is a humanistic concept that involves reaching one's full potential, which Freud did not focus on."
+        },
+        {
+          "text": "Fixation",
+          "isCorrect": false,
+          "rationale": "Fixation refers to being stuck in a psychosexual stage, rather than the immediate feeling of structural conflict."
+        }
+      ],
+      "hint": "It is a feeling of dread or unease that signals a threat to the balance of the personality."
+    },
+    {
+      "question": "Which of the three structural components is entirely unconscious and present from the moment of birth?",
+      "answerOptions": [
+        {
+          "text": "Id",
+          "isCorrect": true,
+          "rationale": "The Id is the only component present at birth and remains entirely hidden from conscious awareness."
+        },
+        {
+          "text": "Ego",
+          "isCorrect": false,
+          "rationale": "The Ego develops out of the Id after birth as the individual begins to interact with the external world."
+        },
+        {
+          "text": "Superego",
+          "isCorrect": false,
+          "rationale": "The Superego develops last, usually around age 5, as the child internalizes social and parental values."
+        },
+        {
+          "text": "Conscious",
+          "isCorrect": false,
+          "rationale": "The conscious mind is a level of awareness that develops as cognitive functions mature."
+        }
+      ],
+      "hint": "This part of the psyche contains the inherited biological components of personality."
+    }
+  ]
+}

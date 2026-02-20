@@ -1,0 +1,318 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "According to Mayer and Bryan, what is the primary distinction between the two fundamental groups of personality data?",
+      "answerOptions": [
+        {
+          "text": "Whether the data is digital or physical in nature.",
+          "isCorrect": false,
+          "rationale": "The classification focuses on the origin of the information rather than the medium used to store or record it."
+        },
+        {
+          "text": "Whether the data arises from the target person's own reports or from the areas surrounding them.",
+          "isCorrect": true,
+          "rationale": "This aligns with the 'inner-outer' dimension, distinguishing personal-source data from external-source data."
+        },
+        {
+          "text": "Whether the data is collected by a computer or a human researcher.",
+          "isCorrect": false,
+          "rationale": "Both personal and external data can be collected through either human or electronic means, such as personality sensing devices."
+        },
+        {
+          "text": "Whether the data describes an adult or a child.",
+          "isCorrect": false,
+          "rationale": "While age is part of the time dimension, the primary classification is based on the source of the data."
+        }
+      ],
+      "hint": "Think about the location of the data source relative to the individual's psychological system."
+    },
+    {
+      "question": "Which type of data involves participants telling stories in response to ambiguous pictures like those in the Thematic Apperception Test?",
+      "answerOptions": [
+        {
+          "text": "Self-judgment data",
+          "isCorrect": false,
+          "rationale": "Self-judgment involves direct assessment of one's own traits, not the creation of narratives based on external stimuli."
+        },
+        {
+          "text": "Mental ability data",
+          "isCorrect": false,
+          "rationale": "Mental ability data is based on solving problems with objective criteria for correctness."
+        },
+        {
+          "text": "Thematic-report data",
+          "isCorrect": true,
+          "rationale": "This category refers to mental responses and themes generated from ambiguous stimuli such as inkblots or pictures."
+        },
+        {
+          "text": "Physiological data",
+          "isCorrect": false,
+          "rationale": "Physiological data tracks biological markers like heart rate or brain activity, not cognitive storytelling."
+        }
+      ],
+      "hint": "This data type captures perceptual-cognitive constructions and underlying mental themes."
+    },
+    {
+      "text": "In the 'biopsychosocial' or molecular-molar dimension, where is personality located?",
+      "question": "In the 'biopsychosocial' or molecular-molar dimension, where is personality located?",
+      "answerOptions": [
+        {
+          "text": "At the biological level of brain and nervous systems.",
+          "isCorrect": false,
+          "rationale": "Brain and nervous systems represent the molecular level, which is considered lower than the level of personality."
+        },
+        {
+          "text": "At the psychological level of function.",
+          "isCorrect": true,
+          "rationale": "Personality operates at a psychological level, situated between lower biological processes and higher social processes."
+        },
+        {
+          "text": "At the social level of community and intergroup relations.",
+          "isCorrect": false,
+          "rationale": "Social systems represent a higher molar level that contains the individual personality."
+        },
+        {
+          "text": "At the sensory-motor boundary.",
+          "isCorrect": false,
+          "rationale": "The sensory-motor boundary is part of the inner-outer dimension, not the molecular-molar level of analysis."
+        }
+      ],
+      "hint": "Consider the level of functional complexity compared to the brain or a family unit."
+    },
+    {
+      "question": "Campbell and Fiske (1959) found that the average cross-method correlation for measuring the same attribute was approximately how much?",
+      "answerOptions": [
+        {
+          "text": "$r = .57$",
+          "isCorrect": false,
+          "rationale": "This value was the theoretical expectation for convergence, but not what was actually found in their empirical data."
+        },
+        {
+          "text": "$r = .95$",
+          "isCorrect": false,
+          "rationale": "Such a high correlation would suggest nearly identical measurement across methods, which is rarely achieved in personality psychology."
+        },
+        {
+          "text": "$r = .34$",
+          "isCorrect": true,
+          "rationale": "Their empirical findings yielded a correlation much lower than their ideal expectation, highlighting the impact of method-specific factors."
+        },
+        {
+          "text": "$r = .05$",
+          "isCorrect": false,
+          "rationale": "This would indicate almost no relationship between measures, whereas Campbell and Fiske did find some degree of convergence."
+        }
+      ],
+      "hint": "The actual empirical result was significantly lower than the expected ideal correlation of over $.50$."
+    },
+    {
+      "question": "Why might self-estimated intelligence and ability-measured intelligence show low convergence ($r \\approx .29$)?",
+      "answerOptions": [
+        {
+          "text": "Intelligence is impossible to measure accurately.",
+          "isCorrect": false,
+          "rationale": "The field considers mental ability scales to be a gold-standard for measuring actual capacity."
+        },
+        {
+          "text": "They draw upon different mental response processes.",
+          "isCorrect": true,
+          "rationale": "Self-estimates rely on semantic memory and self-concept, while ability measures require active problem-solving."
+        },
+        {
+          "text": "Participants are usually being deliberately dishonest.",
+          "isCorrect": false,
+          "rationale": "While dishonesty can occur, the divergence is primarily attributed to limited self-awareness and different psychological mechanisms."
+        },
+        {
+          "text": "One is personal-source and the other is external-source.",
+          "isCorrect": false,
+          "rationale": "Both are actually personal-source data, but they differ in the specific mental task they require of the individual."
+        }
+      ],
+      "hint": "Think about the psychological mechanisms used to retrieve a self-rating versus solving a logic problem."
+    },
+    {
+      "question": "Which of the following is categorized as external-source 'setting data'?",
+      "answerOptions": [
+        {
+          "text": "A student's school transcript.",
+          "isCorrect": false,
+          "rationale": "Transcripts are considered group or institutional data rather than information about physical locations or surroundings."
+        },
+        {
+          "text": "Zip codes and property records.",
+          "isCorrect": true,
+          "rationale": "Setting data pertains to the physical and demographic attributes of where a person lives, works, or travels."
+        },
+        {
+          "text": "Self-reports of one's own mood.",
+          "isCorrect": false,
+          "rationale": "Mood reports originate from the person's inner experience, making them personal-source data."
+        },
+        {
+          "text": "Heart rate monitored by a smartwatch.",
+          "isCorrect": false,
+          "rationale": "This is physiological data, which monitors biological health markers rather than environmental settings."
+        }
+      ],
+      "hint": "Look for records concerning the physical environment or geography surrounding an individual."
+    },
+    {
+      "question": "Which personality trait typically shows the highest agreement ($r \\approx .40$ to $.70$) between self-ratings and observer ratings?",
+      "answerOptions": [
+        {
+          "text": "Agreeableness",
+          "isCorrect": false,
+          "rationale": "This trait often has the lowest self-other agreement because it is evaluative and can be biased by self-concept."
+        },
+        {
+          "text": "Extraversion",
+          "isCorrect": true,
+          "rationale": "Being highly observable and relatively neutral, both the target and the observer are likely to witness the same social behaviors."
+        },
+        {
+          "text": "Neuroticism",
+          "isCorrect": false,
+          "rationale": "Emotional stability involves inner feelings that may be hidden from external observers, leading to lower convergence."
+        },
+        {
+          "text": "Openness",
+          "isCorrect": false,
+          "rationale": "Internal cognitive styles are less visible than social behavior, making external observation more difficult than for extraversion."
+        }
+      ],
+      "hint": "Consider which trait is most visible through outward social behavior."
+    },
+    {
+      "question": "What is a major weakness of using self-judgment data to assess internal psychological attributes?",
+      "answerOptions": [
+        {
+          "text": "It is much more expensive than other methods.",
+          "isCorrect": false,
+          "rationale": "Self-judgments are actually regarded as one of the least expensive and easiest methods to use."
+        },
+        {
+          "text": "People's conscious awareness is not always 'wired up' to the attribute being measured.",
+          "isCorrect": true,
+          "rationale": "Limited self-awareness is a key constraint, as many psychological processes are not accessible to introspection."
+        },
+        {
+          "text": "The data is too objective and lacks personal perspective.",
+          "isCorrect": false,
+          "rationale": "Self-judgments are inherently subjective, which is often why they are criticized for being prone to bias."
+        },
+        {
+          "text": "It only works for people living in the Northeast United States.",
+          "isCorrect": false,
+          "rationale": "While research generalizations have limits, self-report is used globally, though cultural factors may influence the responses."
+        }
+      ],
+      "hint": "Recall the limitations regarding what the human mind can consciously notice about its own functions."
+    },
+    {
+      "question": "If an employer wants to accurately assess an applicant's social skills, which measurement approach does the text recommend?",
+      "answerOptions": [
+        {
+          "text": "Direct self-judgment",
+          "isCorrect": false,
+          "rationale": "Self-estimates of skills are often inaccurate and may reflect 'intellectual self-esteem' rather than actual capacity."
+        },
+        {
+          "text": "Mental ability scales or observer-judgments",
+          "isCorrect": true,
+          "rationale": "Situational judgment tests and informant reports provide a more accurate assessment of behavioral quality and judgment in social encounters."
+        },
+        {
+          "text": "Physiological sensor data",
+          "isCorrect": false,
+          "rationale": "Biological markers like heart rate do not provide information about the nuance or effectiveness of social negotiations."
+        },
+        {
+          "text": "Thematic inkblot responses",
+          "isCorrect": false,
+          "rationale": "Thematic measures are better suited for assessing inner themes or defenses rather than outward behavioral skills."
+        }
+      ],
+      "hint": "Focus on methods that involve problem-solving tasks or the perspectives of people who interact with the target."
+    },
+    {
+      "question": "What does 'lifespace data' primarily describe?",
+      "answerOptions": [
+        {
+          "text": "A person's inner dreams and aspirations.",
+          "isCorrect": false,
+          "rationale": "Dreams are part of inner conscious experience, whereas lifespace data focus on external, verifiable events."
+        },
+        {
+          "text": "Objectively verifiable behaviors, life history, and activities.",
+          "isCorrect": true,
+          "rationale": "This includes biodata such as resume entries and 'act frequency' counts of how many times certain activities occurred."
+        },
+        {
+          "text": "Brain functions measured by fMRI scans.",
+          "isCorrect": false,
+          "rationale": "Brain imaging is categorized as physiological or biomedical data, not lifespace data."
+        },
+        {
+          "text": "Speeded associations between the self and specific traits.",
+          "isCorrect": false,
+          "rationale": "This describes implicit attitude data, which targets non-conscious schematic representations."
+        }
+      ],
+      "hint": "Think of data that could, in principle, be checked against a record or a resume."
+    },
+    {
+      "question": "Which term replaced 'projective test' to better reflect that a person responds to stimuli with percepts and themes?",
+      "answerOptions": [
+        {
+          "text": "Personality sensing test",
+          "isCorrect": false,
+          "rationale": "Personality sensing refers to modern electronic tracking via smartphones and wearables."
+        },
+        {
+          "text": "Thematic test",
+          "isCorrect": true,
+          "rationale": "The term 'thematic' better describes how individuals understand the world through the stories and percepts they construct."
+        },
+        {
+          "text": "Objective test",
+          "isCorrect": false,
+          "rationale": "Objective tests usually refer to ability measures or standardized questionnaires, not responses to ambiguous stimuli."
+        },
+        {
+          "text": "Lexical test",
+          "isCorrect": false,
+          "rationale": "Lexical data refers to studies of language and personality descriptors found in the dictionary."
+        }
+      ],
+      "hint": "This term relates to the 'narrative' or 'story' aspects of the responses."
+    },
+    {
+      "question": "What is a potential weakness of external-source 'group data' like social media 'likes'?",
+      "answerOptions": [
+        {
+          "text": "The data is always too small to be meaningful.",
+          "isCorrect": false,
+          "rationale": "This type of data is actually known as 'big data' because it is voluminous and complex."
+        },
+        {
+          "text": "It may reflect extraneous factors like the user's age rather than just personality.",
+          "isCorrect": true,
+          "rationale": "Research found that 'likes' for certain items were more strongly related to the age of the user than to traits like Conscientiousness."
+        },
+        {
+          "text": "It is impossible for researchers to access online records.",
+          "isCorrect": false,
+          "rationale": "Psychologists have begun to draw extensively on big data from social media for personality research."
+        },
+        {
+          "text": "It only measures inner mental states.",
+          "isCorrect": false,
+          "rationale": "Group data is an external source and often records interactions or preferences in the environment, not direct inner states."
+        }
+      ],
+      "hint": "Consider why an 'intuitive' link between a social media post and a trait might be misleading."
+    }
+  ]
+}

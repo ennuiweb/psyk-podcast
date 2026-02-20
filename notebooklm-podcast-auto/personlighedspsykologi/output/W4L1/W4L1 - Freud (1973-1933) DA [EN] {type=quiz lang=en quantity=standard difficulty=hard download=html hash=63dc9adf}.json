@@ -1,0 +1,265 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "In the structural model of the personality, which component operates primarily based on the 'Reality Principle' to mediate between instinctual desires and social constraints?",
+      "answerOptions": [
+        {
+          "text": "The Ego",
+          "isCorrect": true,
+          "rationale": "This structure functions as the decision-making component of personality, working to satisfy the Id's urges in ways that are realistic and socially appropriate."
+        },
+        {
+          "text": "The Id",
+          "isCorrect": false,
+          "rationale": "This component is governed by the pleasure principle and seeks immediate gratification without regard for external reality."
+        },
+        {
+          "text": "The Superego",
+          "isCorrect": false,
+          "rationale": "While this structure influences behavior, it focuses on moral perfection and internalized ideals rather than pragmatic mediation with reality."
+        },
+        {
+          "text": "The Preconscious",
+          "isCorrect": false,
+          "rationale": "This refers to a layer of the topographical model containing memories that can be easily retrieved, not a structural component that mediates drives."
+        }
+      ],
+      "hint": "Consider which 'executive' part of the mind must balance biological needs with the rules of the environment."
+    },
+    {
+      "question": "The fragment 'moralisk' suggests a focus on the ethical dimensions of the psyche. According to Freudian theory, which structure is responsible for the internalization of societal values and the creation of the 'Ego Ideal'?",
+      "answerOptions": [
+        {
+          "text": "The Superego",
+          "isCorrect": true,
+          "rationale": "This structure incorporates the values and morals of society, which are learned from parents and others, serving to civilize our behavior."
+        },
+        {
+          "text": "The Conscious Mind",
+          "isCorrect": false,
+          "rationale": "The conscious mind is simply what we are aware of at the moment, whereas the source of moral standards is a deeper structural development."
+        },
+        {
+          "text": "The Ego",
+          "isCorrect": false,
+          "rationale": "Although this structure interacts with morality, its primary function is navigating reality rather than acting as the source of moral imperatives."
+        },
+        {
+          "text": "The Libido",
+          "isCorrect": false,
+          "rationale": "This represents the psychic energy derived from biological drives and is generally in conflict with societal moral standards."
+        }
+      ],
+      "hint": "Focus on the psychic component that acts as a moral compass or 'conscience'."
+    },
+    {
+      "question": "Which operating principle characterizes the 'Id', driving it to seek immediate tension reduction and the discharge of psychic energy?",
+      "answerOptions": [
+        {
+          "text": "The Pleasure Principle",
+          "isCorrect": true,
+          "rationale": "This principle demands that all needs be met immediately, regardless of the consequences or the requirements of reality."
+        },
+        {
+          "text": "The Reality Principle",
+          "isCorrect": false,
+          "rationale": "This principle is the domain of the Ego, which seeks to delay gratification until a suitable object or environment is found."
+        },
+        {
+          "text": "The Morality Principle",
+          "isCorrect": false,
+          "rationale": "This is often associated with the Superego's push for idealistic behavior rather than the Id's drive for gratification."
+        },
+        {
+          "text": "The Constancy Principle",
+          "isCorrect": false,
+          "rationale": "While related to the overall nervous system's desire to keep excitation low, it is not the specific psychological drive for immediate pleasure."
+        }
+      ],
+      "hint": "Think of the drive that a newborn infant exhibits when they cry for food the moment they feel hunger."
+    },
+    {
+      "question": "The text fragments 're-' and 'eg' likely refer to defense mechanisms. Which process involves the Ego forcing threatening or disturbing thoughts out of conscious awareness and into the unconscious?",
+      "answerOptions": [
+        {
+          "text": "Repression",
+          "isCorrect": true,
+          "rationale": "This is the primary defense mechanism where the Ego excludes unacceptable desires or traumatic memories from the conscious mind to avoid anxiety."
+        },
+        {
+          "text": "Projection",
+          "isCorrect": false,
+          "rationale": "This mechanism involves attributing one's own unacceptable impulses to others rather than simply hiding them in the unconscious."
+        },
+        {
+          "text": "Sublimation",
+          "isCorrect": false,
+          "rationale": "This is a productive mechanism that channels socially unacceptable impulses into culturally admired activities."
+        },
+        {
+          "text": "Rationalization",
+          "isCorrect": false,
+          "rationale": "This involves creating logical explanations to justify behavior motivated by unconscious impulses, rather than forgetting the impulses themselves."
+        }
+      ],
+      "hint": "This mechanism is often considered the foundation upon which all other psychic defenses are built."
+    },
+    {
+      "question": "In the topographical model of the mind, what term describes the region containing thoughts and memories that are not currently in awareness but can be easily brought into consciousness?",
+      "answerOptions": [
+        {
+          "text": "The Preconscious",
+          "isCorrect": true,
+          "rationale": "This area acts as a 'waiting room' for thoughts that can be accessed with a simple shift in attention or recall."
+        },
+        {
+          "text": "The Unconscious",
+          "isCorrect": false,
+          "rationale": "This region contains contents that are actively kept out of awareness and are usually inaccessible without specific techniques like psychoanalysis."
+        },
+        {
+          "text": "The Conscious",
+          "isCorrect": false,
+          "rationale": "This only represents the very small part of the mind consisting of thoughts we are actively processing at any given second."
+        },
+        {
+          "text": "The Collective Unconscious",
+          "isCorrect": false,
+          "rationale": "This is a Jungian concept involving inherited universal archetypes, not a layer of the individual mind defined by accessibility."
+        }
+      ],
+      "hint": "Recall the layer of the mind that holds your home address or your favorite childhood teacher's name."
+    },
+    {
+      "question": "The fragment 'psy' refers to psychoanalysis. What is the fundamental goal of this therapeutic method according to the structural theory?",
+      "answerOptions": [
+        {
+          "text": "Strengthening the Ego to make it more independent of the Superego and Id",
+          "isCorrect": true,
+          "rationale": "The goal is to expand the domain of the Ego, effectively reclaiming psychic territory from the unconscious impulses and rigid moralisms."
+        },
+        {
+          "text": "Total elimination of the Id's influence",
+          "isCorrect": false,
+          "rationale": "It is impossible and undesirable to eliminate the Id, as it is the source of all vital psychic energy and biological drives."
+        },
+        {
+          "text": "Strict adherence to the Superego's moral standards",
+          "isCorrect": false,
+          "rationale": "An overly dominant Superego leads to excessive guilt and neurosis; therapy seeks balance, not complete submission."
+        },
+        {
+          "text": "Repressing all instinctual drives to ensure social harmony",
+          "isCorrect": false,
+          "rationale": "Repression is often a source of symptoms; the goal is to bring these drives to awareness and manage them rationally."
+        }
+      ],
+      "hint": "Consider the famous phrase: 'Where Id was, there shall Ego be'."
+    },
+    {
+      "question": "Based on the concept of 'pers' (personality) development, how does Freud describe the relationship between early childhood experiences and adult neurotic symptoms?",
+      "answerOptions": [
+        {
+          "text": "Adult symptoms are often symbolic repetitions of unresolved childhood conflicts",
+          "isCorrect": true,
+          "rationale": "The theory posits that early developmental frustrations or fixations create patterns that reappear later in life under stress."
+        },
+        {
+          "text": "Childhood has little impact once the Ego reaches maturity in adolescence",
+          "isCorrect": false,
+          "rationale": "Freudian theory is deterministic, suggesting that the foundations of personality are almost entirely laid in the first few years of life."
+        },
+        {
+          "text": "Symptoms are caused solely by genetic predispositions identified at birth",
+          "isCorrect": false,
+          "rationale": "While constitutional factors exist, the focus is on the psychodynamic interaction between the child and their early environment."
+        },
+        {
+          "text": "Neurotic symptoms are random occurrences unrelated to specific memories",
+          "isCorrect": false,
+          "rationale": "The principle of psychic determinism suggests that no mental event or symptom is accidental; they all have underlying causes."
+        }
+      ],
+      "hint": "Think about the role of 'fixation' at specific developmental stages."
+    },
+    {
+      "question": "Which type of anxiety occurs when the Ego feels it is losing control over the impulses of the Id, fearing an eruption into socially unacceptable behavior?",
+      "answerOptions": [
+        {
+          "text": "Neurotic Anxiety",
+          "isCorrect": true,
+          "rationale": "This specific fear stems from the unconscious apprehension that the Id's instincts will overpower the Ego's defenses."
+        },
+        {
+          "text": "Moral Anxiety",
+          "isCorrect": false,
+          "rationale": "This is the fear of being punished by the Superego, manifesting as guilt or shame rather than fear of the Id."
+        },
+        {
+          "text": "Objective Anxiety",
+          "isCorrect": false,
+          "rationale": "Also known as reality anxiety, this is a response to actual, external dangers in the physical world."
+        },
+        {
+          "text": "Signal Anxiety",
+          "isCorrect": false,
+          "rationale": "While this is a general function the Ego uses to deploy defenses, it is not the specific category of anxiety regarding Id-control."
+        }
+      ],
+      "hint": "Distinguish between the fear of a real tiger (external) and the fear of your own 'inner beast' breaking loose."
+    },
+    {
+      "question": "What happens to psychic energy (libido) when it is blocked from direct expression by the Ego's defense mechanisms?",
+      "answerOptions": [
+        {
+          "text": "It is diverted into alternative channels or neurotic symptoms",
+          "isCorrect": true,
+          "rationale": "Psychic energy cannot be destroyed; if blocked, it seeks discharge through dreams, slips of the tongue, or physical symptoms."
+        },
+        {
+          "text": "It is permanently deleted from the psychic system",
+          "isCorrect": false,
+          "rationale": "Energy in the Freudian system is finite and conserved; it must go somewhere even if it is repressed."
+        },
+        {
+          "text": "It is converted into physical mass within the brain",
+          "isCorrect": false,
+          "rationale": "Libido is a psychological construct of energy, not a literal biological transformation into physical brain tissue."
+        },
+        {
+          "text": "It returns to the Superego to be recycled into moral energy",
+          "isCorrect": false,
+          "rationale": "While energy can be used by different structures, it doesn't automatically become 'moral' simply because it was blocked."
+        }
+      ],
+      "hint": "Think about what happens to water in a dammed river when it cannot follow its natural path."
+    },
+    {
+      "question": "The fragment 'grun' likely relates to 'grundig' (thorough) analysis. In psychoanalytic technique, what term describes the phenomenon where a patient begins to treat the therapist like a significant figure from their past?",
+      "answerOptions": [
+        {
+          "text": "Transference",
+          "isCorrect": true,
+          "rationale": "This is a critical part of therapy where the patient displaces feelings for parents or others onto the analyst, allowing for deep emotional processing."
+        },
+        {
+          "text": "Counter-transference",
+          "isCorrect": false,
+          "rationale": "This refers to the therapist's emotional reaction to the patient, which must be managed to maintain professional objectivity."
+        },
+        {
+          "text": "Catharsis",
+          "isCorrect": false,
+          "rationale": "This is the emotional release that follows the expression of repressed material, rather than the act of displacing feelings onto a person."
+        },
+        {
+          "text": "Resistance",
+          "isCorrect": false,
+          "rationale": "This describes the patient's unconscious attempts to block the progress of therapy to avoid the pain of uncovering repressed thoughts."
+        }
+      ],
+      "hint": "Imagine someone getting angry at their doctor not for the doctor's actions, but because the doctor reminds them of their controlling father."
+    }
+  ]
+}

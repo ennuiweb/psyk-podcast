@@ -1,0 +1,265 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "In the context of post-psychological theory, what does the prefix 'post' signify regarding its relationship with traditional psychology?",
+      "answerOptions": [
+        {
+          "text": "A total rejection and replacement of psychological science with sociological frameworks.",
+          "isCorrect": false,
+          "rationale": "While it draws on sociology, the text explicitly states that post-psychology is not a 'farewell' to psychology but a rethinking of it."
+        },
+        {
+          "text": "An inclusion, confrontation, and transcendence of the psychological within a complex contemporary context.",
+          "isCorrect": true,
+          "rationale": "The authors define the prefix as simultaneously including, settling accounts with, and moving beyond traditional psychological boundaries."
+        },
+        {
+          "text": "A chronological designation indicating theories developed strictly after the year 2000.",
+          "isCorrect": false,
+          "rationale": "The text traces post-psychological 'bubbles' back to the 19th century and the 1970s, making it a conceptual rather than purely chronological marker."
+        },
+        {
+          "text": "A return to pre-modern philosophical roots that ignore the 'linguistic turn'.",
+          "isCorrect": false,
+          "rationale": "Post-psychology is deeply rooted in post-structuralism and the linguistic turn, rather than a regression to pre-modernity."
+        }
+      ],
+      "hint": "Consider how the text describes the 'version 2.0' metaphor as an evolution rather than a simple deletion."
+    },
+    {
+      "question": "How does William James's concept of 'streams of consciousness' align with post-psychological thought?",
+      "answerOptions": [
+        {
+          "text": "By defining the self as a closed, self-contained system of cognitive processes.",
+          "isCorrect": false,
+          "rationale": "James's metaphor actually challenges the idea of a closed system by suggesting boundaries are permeable."
+        },
+        {
+          "text": "By arguing that personality is a biological essence determined at birth.",
+          "isCorrect": false,
+          "rationale": "James's focus on 'streams' suggests a process-oriented view rather than a static biological essentialism."
+        },
+        {
+          "text": "By presenting subjectivity as a permeable 'canal' for thoughts and feelings between people.",
+          "isCorrect": true,
+          "rationale": "The text highlights James's view of human subjects as channels where thoughts and self-understandings flow and are shared."
+        },
+        {
+          "text": "By establishing a clear, unbreakable causal link between internal states and outward behavior.",
+          "isCorrect": false,
+          "rationale": "Post-psychology, drawing on James, seeks to problematize the causal 'Personality A makes person do A-thing' model."
+        }
+      ],
+      "hint": "Think about the metaphor of fluid movement and the lack of rigid boundaries between the individual and the environment."
+    },
+    {
+      "question": "According to the text, what is the 'genealogical maneuver' as a methodological approach?",
+      "answerOptions": [
+        {
+          "text": "A linear historical analysis that seeks to find the 'essence' and 'naturalness' of personality.",
+          "isCorrect": false,
+          "rationale": "This describes traditional history-writing, whereas genealogy specifically works 'backwards' to deconstruct such essences."
+        },
+        {
+          "text": "Tracing the biological lineage of psychological traits through multiple generations.",
+          "isCorrect": false,
+          "rationale": "Genealogy in this context refers to Foucault's philosophical method regarding ideas, not biological inheritance."
+        },
+        {
+          "text": "Identifying the historical conditions of possibility that allowed specific concepts of the self to emerge.",
+          "isCorrect": true,
+          "rationale": "Following Foucault, genealogy investigates how dispersed 'threads' weave together over time to create current understandings of subjectivity."
+        },
+        {
+          "text": "Predicting future psychological trends based on current statistical data sets.",
+          "isCorrect": false,
+          "rationale": "Genealogy is a retrospective analysis of how current concepts were 'invented' rather than a predictive statistical tool."
+        }
+      ],
+      "hint": "Focus on the shift from seeking a 'core truth' to looking at the historical 'how' and 'why' a concept came to be."
+    },
+    {
+      "question": "Judith Butler's theory of subjectification involves a 'double movement.' What are the two paradoxical components of this movement?",
+      "answerOptions": [
+        {
+          "text": "Biological determinism and environmental influence.",
+          "isCorrect": false,
+          "rationale": "These are traditional psychological categories, whereas Butler's theory focuses on power and agency."
+        },
+        {
+          "text": "Subjection to conditions and the mastery of agency.",
+          "isCorrect": true,
+          "rationale": "Subjectification means being both 'subjected' to external norms/orders and becoming a 'subject' with the ability to act."
+        },
+        {
+          "text": "Internal introspection and external social performance.",
+          "isCorrect": false,
+          "rationale": "While performance is relevant, the paradox lies specifically in the simultaneous nature of subjection and agency."
+        },
+        {
+          "text": "Cognitive dissonance and behavioral reinforcement.",
+          "isCorrect": false,
+          "rationale": "These terms belong to mainstream behavioral and cognitive psychology, which post-psychology aims to transcend."
+        }
+      ],
+      "hint": "Reflect on the two different meanings of the word 'subject' in a political and philosophical sense."
+    },
+    {
+      "question": "How does the concept of 'abjection' function in post-psychological analysis, such as in the example of the schoolboy Wahid?",
+      "answerOptions": [
+        {
+          "text": "It refers to the process of being diagnosed with a clinically recognized personality disorder.",
+          "isCorrect": false,
+          "rationale": "Abjection is a socio-cultural process of exclusion, not a clinical diagnosis, though it may relate to how 'disorders' are framed."
+        },
+        {
+          "text": "It describes the healthy process of setting personal boundaries within a social group.",
+          "isCorrect": false,
+          "rationale": "Abjection is presented as a more violent or exclusionary process where someone is rendered 'unthinkable' or illegitimate."
+        },
+        {
+          "text": "It is the process where a subject is rendered 'unthinkable' and excluded from the normatively accepted categories.",
+          "isCorrect": true,
+          "rationale": "As shown in the text, certain markers (like Wahid's cultural performance) can lead to a subject being treated as 'abject' or outside the realm of the recognizable 'norm'."
+        },
+        {
+          "text": "It identifies the moment a person successfully internalizes their culture's core values.",
+          "isCorrect": false,
+          "rationale": "Abjection is the failure or refusal of a culture to recognize a subject, rather than the subject's successful integration."
+        }
+      ],
+      "hint": "Think about the social consequences for individuals who do not fit into dominant, 'legitimate' categories."
+    },
+    {
+      "question": "In post-psychology, what is the relationship between 'discourse' and the individual subject?",
+      "answerOptions": [
+        {
+          "text": "The subject uses discourse merely as a neutral tool to express their pre-existing personality.",
+          "isCorrect": false,
+          "rationale": "Post-psychology argues that discourse is not neutral and actually helps create the subject's possibilities for being."
+        },
+        {
+          "text": "Discourse is a deterministic force that completely eliminates individual free will.",
+          "isCorrect": false,
+          "rationale": "The text clarifies that it is not a deterministic perspective; individuals are actively engaged and can 'pick up' or negotiate discourses."
+        },
+        {
+          "text": "Discourse regulates what can be thought and said, thereby creating the positions from which a subject can exist.",
+          "isCorrect": true,
+          "rationale": "Discourses provide 이해 (understanding) and 'subject positions' that allow individuals to act and understand themselves in specific ways."
+        },
+        {
+          "text": "Discourse is only relevant to language-based interactions and does not affect physical or material reality.",
+          "isCorrect": false,
+          "rationale": "The text emphasizes that discourses are 'discursive practices' that interweave with materiality and bodies."
+        }
+      ],
+      "hint": "Consider if discourse is a mirror of the self or a framework that shapes the self."
+    },
+    {
+      "question": "What does Karen Barad's concept of 'intra-action' imply about the nature of human subjectivity?",
+      "answerOptions": [
+        {
+          "text": "Subjects and objects exist independently and occasionally interact with each other.",
+          "isCorrect": false,
+          "rationale": "This is the definition of 'interaction'; Barad's 'intra-action' argues that they are never truly independent to begin with."
+        },
+        {
+          "text": "Subjectivity emerges from the mutual and inseparable entanglement of human and non-human components.",
+          "isCorrect": true,
+          "rationale": "Intra-action suggests that agency and existence are not properties of individuals but effects of the relationships within a specific 'assembly'."
+        },
+        {
+          "text": "The material world is a passive stage upon which human subjects perform their internal psychology.",
+          "isCorrect": false,
+          "rationale": "Barad's theory gives agency to the material world, seeing it as an active 'co-producer' of reality."
+        },
+        {
+          "text": "Human behavior is determined solely by the firing of neurons within the brain.",
+          "isCorrect": false,
+          "rationale": "While neuroscience is mentioned as a neighbor, the text critiques 'cherry-picking' biological data and emphasizes social-material entanglement."
+        }
+      ],
+      "hint": "Think about the difference between two separate things bumping into each other versus a single phenomenon where they are woven together."
+    },
+    {
+      "question": "How is 'affectivity' distinguished from traditional concepts of 'emotion' in post-psychological theory?",
+      "answerOptions": [
+        {
+          "text": "Affectivity refers to internal psychological traits, while emotion refers to temporary social expressions.",
+          "isCorrect": false,
+          "rationale": "The text views affectivity as something that crosses the boundary between the internal and external, rather than being a 'trait'."
+        },
+        {
+          "text": "Affectivity is seen as a social construction, whereas emotions are purely biological responses.",
+          "isCorrect": false,
+          "rationale": "Affectivity specifically tries to bridge the gap between the discursive (social) and the intensity (biological/material)."
+        },
+        {
+          "text": "Affectivity is understood as intensities and energies that flow between bodies and environments, rather than just internal states.",
+          "isCorrect": true,
+          "rationale": "The text describes affectivity as intensities, tensions, and 'charges' that can be recruited into specific emotions but exist as relational flows."
+        },
+        {
+          "text": "Affectivity is a synonym for personality type 'A' in the revised Personality 2.0 framework.",
+          "isCorrect": false,
+          "rationale": "Affectivity is part of the critique of 'types' and 'personality,' focusing on fluid processes instead."
+        }
+      ],
+      "hint": "Consider the movement of energy and 'atmosphere' in a room compared to a person's private feeling."
+    },
+    {
+      "question": "The text discusses 'capacitation' (kapacitering) in schools through the use of 'psy-techniques.' What does this process aim to do?",
+      "answerOptions": [
+        {
+          "text": "Strictly discipline students to ensure they remain silent and stationary.",
+          "isCorrect": false,
+          "rationale": "While it involves management, the goal is 'cultivating potential' and 'learning capacity' rather than just repression."
+        },
+        {
+          "text": "Cultivate and optimize human potential by managing the environment, affects, and learning channels.",
+          "isCorrect": true,
+          "rationale": "Capacitation is about forming and transforming learning bodies and subjectivities to increase their ability to grow and produce."
+        },
+        {
+          "text": "Replace teachers with automated technologies and AI-driven personality tests.",
+          "isCorrect": false,
+          "rationale": "The text focuses on how teachers and leaders use these techniques as part of their professional practice, not their replacement."
+        },
+        {
+          "text": "Identify students with 'Personality Disorders' and remove them from the general classroom.",
+          "isCorrect": false,
+          "rationale": "The focus of the school examples (like the ball-cushion) is on including and 'managing' diverse needs within the classroom through material means."
+        }
+      ],
+      "hint": "Think about the furniture and techniques as tools to 'tune' or 'maximize' a student's ability to participate."
+    },
+    {
+      "question": "When post-psychology analyzes socio-cultural categories like gender or race, it employs a 'performativity' lens. What does this imply?",
+      "answerOptions": [
+        {
+          "text": "These categories are theatrical roles that individuals choose to play voluntarily.",
+          "isCorrect": false,
+          "rationale": "Performativity is not about 'choice' in a simple sense; it is about the forced repetition of norms."
+        },
+        {
+          "text": "These categories are effects of repeated practices and citations rather than innate biological truths.",
+          "isCorrect": true,
+          "rationale": "The text explains that socio-cultural categories are 'done' or 'made' through the repetition of signs and practices on the body."
+        },
+        {
+          "text": "These categories are irrelevant 'background variables' that do not affect the core self.",
+          "isCorrect": false,
+          "rationale": "Post-psychology treats these categories as 'constitutive markers' that define who someone 'is' in a given context."
+        },
+        {
+          "text": "These categories are genetically determined but can be modified through behavioral therapy.",
+          "isCorrect": false,
+          "rationale": "The theory explicitly challenges the idea that these categories have an 'essential' genetic core that exists before social interaction."
+        }
+      ],
+      "hint": "Consider if a category like 'gender' is something we 'are' or something we 'do' through repeated actions."
+    }
+  ]
+}

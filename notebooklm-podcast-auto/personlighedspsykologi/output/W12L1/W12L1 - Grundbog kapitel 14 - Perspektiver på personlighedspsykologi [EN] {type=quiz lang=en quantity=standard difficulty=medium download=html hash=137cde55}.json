@@ -1,0 +1,265 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "How is the 'Anglo-Saxon' tradition in personality psychology often caricatured by its critics?",
+      "answerOptions": [
+        {
+          "text": "It defines science exclusively as quantitative, evidence-based research that reduces the subject matter.",
+          "isCorrect": true,
+          "rationale": "This reflects the criticism that the tradition prioritizes measurable data over the philosophical depth or the complexity of the person."
+        },
+        {
+          "text": "It focuses primarily on qualitative narratives and subjective life stories.",
+          "isCorrect": false,
+          "rationale": "Narrative and qualitative approaches are generally associated with continental or post-modern traditions rather than the quantitative Anglo-Saxon caricature."
+        },
+        {
+          "text": "It relies heavily on philosophical speculation without an empirical basis.",
+          "isCorrect": false,
+          "rationale": "The critique of the Anglo-Saxon tradition is usually the opposite; that it is too empirical and lacks sufficient theoretical or philosophical grounding."
+        },
+        {
+          "text": "It views personality as a purely social construct with no biological basis.",
+          "isCorrect": false,
+          "rationale": "Social constructionism is often a critique of traditional personality psychology rather than a defining trait of the Anglo-Saxon quantitative model."
+        }
+      ],
+      "hint": "Consider the common critique regarding how scientists in this tradition treat things that can be 'measured and weighed'."
+    },
+    {
+      "question": "According to the text, what is a unique historical characteristic of phenomenology in Danish psychology?",
+      "answerOptions": [
+        {
+          "text": "It has often been pursued with an empirical foundation rather than a purely philosophical one.",
+          "isCorrect": true,
+          "rationale": "Danish psychology has a long tradition of 'non-philosophical' phenomenology focused on studying phenomena like perception and motivation empirically."
+        },
+        {
+          "text": "It has been entirely rejected in favor of American behaviorism since the 1920s.",
+          "isCorrect": false,
+          "rationale": "The text explicitly states that phenomenology has had a special place in Denmark for a very long period."
+        },
+        {
+          "text": "It is treated exclusively as a sub-discipline of existential therapy.",
+          "isCorrect": false,
+          "rationale": "While related, the text mentions that the Danish tradition applied it to a wide range of psychological phenomena beyond just therapy."
+        },
+        {
+          "text": "It is the dominant perspective in international textbooks.",
+          "isCorrect": false,
+          "rationale": "The text notes that phenomenology is typically not understood as a central part of personality psychology internationally."
+        }
+      ],
+      "hint": "Think about whether Danish researchers approached this topic as abstract philosophers or as practical investigators."
+    },
+    {
+      "question": "In the context of biological perspectives, how does the text describe the 'gene pool' (genpulje)?",
+      "answerOptions": [
+        {
+          "text": "A collective phenomenon that ties the individual organism to the rest of the species.",
+          "isCorrect": true,
+          "rationale": "Biology is presented not just as an individual trait but as a collective resource that facilitates development across the species."
+        },
+        {
+          "text": "A fixed blueprint that determines 100% of an individual's agency.",
+          "isCorrect": false,
+          "rationale": "The text argues against strict biological determinism, suggesting that biology provides a framework for variations rather than a totalizing fate."
+        },
+        {
+          "text": "A social construct used to justify cultural differences.",
+          "isCorrect": false,
+          "rationale": "The 'genpulje' is discussed as a biological and evolutionary reality, not merely a linguistic or social invention."
+        },
+        {
+          "text": "A phenomenon that is irrelevant to the study of personality development.",
+          "isCorrect": false,
+          "rationale": "The text includes biology as one of the essential components that must be explained in a complete theory of personality."
+        }
+      ],
+      "hint": "Look for a description that moves biology from the scale of the single person to the scale of the group."
+    },
+    {
+      "question": "According to Maurice Merleau-Ponty's perspective mentioned in the text, what is the role of the body?",
+      "answerOptions": [
+        {
+          "text": "It possesses psychic qualities and is central to establishing intersubjectivity.",
+          "isCorrect": true,
+          "rationale": "This view sees the body as more than just a physiological machine; it is an active participant in consciousness and social interaction."
+        },
+        {
+          "text": "It is a purely physiological vessel that the 'self' inhabits.",
+          "isCorrect": false,
+          "rationale": "This describes a dualistic or purely biological view, whereas Merleau-Ponty argues for the body's psychological importance."
+        },
+        {
+          "text": "It is a secondary element that is mostly irrelevant to personality formation.",
+          "isCorrect": false,
+          "rationale": "The text highlights the body as a key component of personality that phenomenologists believe cannot be ignored."
+        },
+        {
+          "text": "It is a collection of fictions created by the brain's decision-making processes.",
+          "isCorrect": false,
+          "rationale": "This reflects a reductionist biological logic mentioned earlier in the text, which the phenomenological view opposes."
+        }
+      ],
+      "hint": "Consider how the body might be involved in how we experience and relate to others."
+    },
+    {
+      "question": "Which theme in personality psychology focuses on the subject's ability to act freely and make intentional choices?",
+      "answerOptions": [
+        {
+          "text": "Agency",
+          "isCorrect": true,
+          "rationale": "Agency refers specifically to the capacity for self-reflection, intentionality, and the power to initiate action."
+        },
+        {
+          "text": "Determination",
+          "isCorrect": false,
+          "rationale": "Determination focuses on the factors (biological or environmental) that limit or cause behavior, which is often the opposite of free agency."
+        },
+        {
+          "text": "Historicity",
+          "isCorrect": false,
+          "rationale": "Historicity deals with the person's development over time and their location in a specific historical context."
+        },
+        {
+          "text": "Essence",
+          "isCorrect": false,
+          "rationale": "Essence deals with the core qualities or 'what' a person is, rather than their capacity for action."
+        }
+      ],
+      "hint": "This term is often contrasted with 'determination' in the debate over free will."
+    },
+    {
+      "question": "How does Existential Psychology view the relationship between consciousness and action?",
+      "answerOptions": [
+        {
+          "text": "The subject is transparent to their own consciousness, making every action a free choice.",
+          "isCorrect": true,
+          "rationale": "Existential psychology posits that humans are inherently aware and responsible for their actions, minimizing the role of an unconscious 'determination'."
+        },
+        {
+          "text": "Consciousness is a byproduct of biological urges that the subject cannot control.",
+          "isCorrect": false,
+          "rationale": "This reflects a deterministic biological view, which existentialism explicitly rejects to uphold human freedom."
+        },
+        {
+          "text": "Actions are primary, and consciousness is a retrospective story we tell ourselves.",
+          "isCorrect": false,
+          "rationale": "This view is closer to some narrative or social-cognitive theories rather than the core tenets of existential psychology."
+        },
+        {
+          "text": "The subject's consciousness is mostly hidden from themselves by defense mechanisms.",
+          "isCorrect": false,
+          "rationale": "This is a psychoanalytic view; existential psychology generally emphasizes the transparency and availability of consciousness."
+        }
+      ],
+      "hint": "Think about the level of awareness and responsibility existentialism assigns to the individual."
+    },
+    {
+      "question": "In Socio-cultural theories, what is the primary medium through which the 'self' is constructed?",
+      "answerOptions": [
+        {
+          "text": "Language and collective sign systems like narratives.",
+          "isCorrect": true,
+          "rationale": "The text emphasizes that personality is constructed through discourses and meanings that exist in the social world before the individual."
+        },
+        {
+          "text": "Innate cognitive structures that organize sensory data.",
+          "isCorrect": false,
+          "rationale": "This describes a more cognitivist or Kantian approach, whereas socio-cultural theory looks at external social influences."
+        },
+        {
+          "text": "The physical interaction between neurons in the brain.",
+          "isCorrect": false,
+          "rationale": "Biological processes are deprioritized in socio-cultural perspectives in favor of relational and linguistic factors."
+        },
+        {
+          "text": "The resolution of childhood psychosexual conflicts.",
+          "isCorrect": false,
+          "rationale": "This is a core concept of traditional psychoanalysis, not socio-cultural or constructionist theory."
+        }
+      ],
+      "hint": "Consider the role of stories and communication in defining who a person is."
+    },
+    {
+      "question": "What concept does Critical Psychology use to integrate a person's life history with their social conditions?",
+      "answerOptions": [
+        {
+          "text": "The Life Path (livsbane)",
+          "isCorrect": true,
+          "rationale": "The 'livsbane' concept allows researchers to look at how an individual navigates and develops within specific social and material limitations."
+        },
+        {
+          "text": "The Big Five traits",
+          "isCorrect": false,
+          "rationale": "Trait psychology is part of the Anglo-Saxon tradition and is often criticized by critical psychologists for being too reductive."
+        },
+        {
+          "text": "The Collective Unconscious",
+          "isCorrect": false,
+          "rationale": "This is a Jungian concept and does not align with the materialist/social focus of critical psychology."
+        },
+        {
+          "text": "The Ego-Ideal",
+          "isCorrect": false,
+          "rationale": "This is a psychoanalytic term related to internal standards rather than the socio-material integration found in critical psychology."
+        }
+      ],
+      "hint": "It is a Danish term that literally refers to the 'course of a life'."
+    },
+    {
+      "question": "What is one mentioned reason why a complete 'biological' theory of personality is currently impossible?",
+      "answerOptions": [
+        {
+          "text": "Most traits are determined by a complex interplay of many genes and environmental factors.",
+          "isCorrect": true,
+          "rationale": "The text notes that we are far from mapping the neural and genetic correlates of personality because they are so multifaceted and involve large-scale interactions."
+        },
+        {
+          "text": "There is no physical link between the brain and personality traits.",
+          "isCorrect": false,
+          "rationale": "The text acknowledges that such links exist (neural correlates); the problem is the complexity of mapping them, not their non-existence."
+        },
+        {
+          "text": "Scientists have decided that biological research is no longer ethically viable.",
+          "isCorrect": false,
+          "rationale": "The text states that research interest in biogenetics and neuropsychology is actually growing, not ending."
+        },
+        {
+          "text": "Personality is entirely spiritual and has no material basis.",
+          "isCorrect": false,
+          "rationale": "This dualistic view is not supported by the scientific perspectives discussed in the book."
+        }
+      ],
+      "hint": "Consider the sheer amount of variables involved when moving from a single gene to a complex behavior."
+    },
+    {
+      "question": "Which emerging trend is mentioned as a future direction for personality psychology research?",
+      "answerOptions": [
+        {
+          "text": "The integration of Asian philosophies like mindfulness and meditation.",
+          "isCorrect": true,
+          "rationale": "The text notes that these practices are providing new inspiration for scientific personality psychology, often linking with positive psychology."
+        },
+        {
+          "text": "A total return to 19th-century phrenology.",
+          "isCorrect": false,
+          "rationale": "Phrenology is an obsolete pseudoscience; the text discusses modern neuropsychology instead."
+        },
+        {
+          "text": "The complete removal of 'theory' from all psychological textbooks.",
+          "isCorrect": false,
+          "rationale": "The authors argue that theory and philosophy remain necessary to understand the complex phenomenon of personality."
+        },
+        {
+          "text": "A shift toward studying only animal personalities.",
+          "isCorrect": false,
+          "rationale": "While evolutionary psychology is mentioned, the focus remains on the breadth of human personality perspectives."
+        }
+      ],
+      "hint": "Think about non-Western practices that have recently gained scientific popularity."
+    }
+  ]
+}

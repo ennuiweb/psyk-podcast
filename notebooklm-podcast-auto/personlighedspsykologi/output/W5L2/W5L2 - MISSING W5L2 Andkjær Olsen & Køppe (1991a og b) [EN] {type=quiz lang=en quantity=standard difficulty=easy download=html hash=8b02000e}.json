@@ -1,0 +1,255 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "According to the provided source citations, who are the authors of the book 'Freuds psykoanalyse'?",
+      "answerOptions": [
+        {
+          "text": "Sigmund Freud and Carl Jung",
+          "isCorrect": false,
+          "rationale": "While these figures are central to the history of psychoanalysis, they are the subjects of study rather than the authors of this specific 1991 text."
+        },
+        {
+          "text": "O. Andkjær Olsen and S. Køppe",
+          "isCorrect": true,
+          "rationale": "The citations explicitly list Andkjær Olsen and Køppe as the authors of the chapters and the book 'Freuds psykoanalyse'."
+        },
+        {
+          "text": "Thorium and Gyldendal",
+          "isCorrect": false,
+          "rationale": "One of these is the publisher and the other is a platform or reference mentioned in the text, not the authors."
+        },
+        {
+          "text": "Dammeyer and Olsen",
+          "isCorrect": false,
+          "rationale": "While Dammeyer is mentioned in the introductory note, the primary authors of the referenced book chapters are Olsen and Køppe."
+        }
+      ],
+      "hint": "Look at the names listed before the year 1991 in the bibliographic entries."
+    },
+    {
+      "question": "In what year were the cited works by Andkjær Olsen and Køppe published?",
+      "answerOptions": [
+        {
+          "text": "$1939$",
+          "isCorrect": false,
+          "rationale": "This date is closer to the end of Freud's life, whereas the source material specifically lists a publication date from the late 20th century."
+        },
+        {
+          "text": "$1991$",
+          "isCorrect": true,
+          "rationale": "The citations consistently list the year $1991$ for both the (a) and (b) excerpts from 'Freuds psykoanalyse'."
+        },
+        {
+          "text": "$1920$",
+          "isCorrect": false,
+          "rationale": "This represents an earlier era of psychoanalytic development, not the publication year of the modern commentary cited."
+        },
+        {
+          "text": "$2026$",
+          "isCorrect": false,
+          "rationale": "This date refers to the current simulated time, not the historical publication date of the source material."
+        }
+      ],
+      "hint": "The year is provided in parentheses immediately after the authors' names."
+    },
+    {
+      "question": "The chapter 'Den økonomiske synsvinkel' translates to which concept in Freudian psychoanalysis?",
+      "answerOptions": [
+        {
+          "text": "The Economic Point of View",
+          "isCorrect": true,
+          "rationale": "In psychoanalysis, 'den økonomiske synsvinkel' refers to the distribution and movement of psychic energy, known as the economic perspective."
+        },
+        {
+          "text": "The Financial Perspective",
+          "isCorrect": false,
+          "rationale": "While 'økonomisk' can mean financial, in this psychological context it refers to the management of energy within the mind."
+        },
+        {
+          "text": "The Social Hierarchy",
+          "isCorrect": false,
+          "rationale": "This term relates to sociology, whereas the source focuses on the internal mechanics of Freud's psychological theories."
+        },
+        {
+          "text": "The Developmental Stage",
+          "isCorrect": false,
+          "rationale": "This refers to the genetic point of view in psychoanalysis, rather than the 'economic' distribution of libido."
+        }
+      ],
+      "hint": "Think about a term that describes the distribution and quantities of mental energy."
+    },
+    {
+      "question": "Which publisher is responsible for the book 'Freuds psykoanalyse' mentioned in the excerpts?",
+      "answerOptions": [
+        {
+          "text": "København Press",
+          "isCorrect": false,
+          "rationale": "While København is the city of publication, it is not the name of the publishing house."
+        },
+        {
+          "text": "Gyldendal",
+          "isCorrect": true,
+          "rationale": "The citations list Gyldendal as the publisher located in København."
+        },
+        {
+          "text": "Thorium",
+          "isCorrect": false,
+          "rationale": "The source suggests reading the material 'on Thorium,' but Thorium is a platform rather than the book's publisher."
+        },
+        {
+          "text": "Olsen & Køppe",
+          "isCorrect": false,
+          "rationale": "These individuals are the authors of the work, not the company that published it."
+        }
+      ],
+      "hint": "This is a well-known Danish publishing house mentioned at the end of the citations."
+    },
+    {
+      "question": "The chapter 'Psykoanalysens konstituering' (1991b) covers which page range in the book?",
+      "answerOptions": [
+        {
+          "text": "$328-342$",
+          "isCorrect": false,
+          "rationale": "This range belongs to the first excerpt (1991a), which focuses on the economic point of view."
+        },
+        {
+          "text": "$120-139$",
+          "isCorrect": true,
+          "rationale": "According to the 1991b citation, this specific chapter is located between pages $120$ and $139$."
+        },
+        {
+          "text": "$1-100$",
+          "isCorrect": false,
+          "rationale": "This range is not mentioned in the source material provided."
+        },
+        {
+          "text": "$91-120$",
+          "isCorrect": false,
+          "rationale": "This range ends where the actual chapter starts, but does not represent the full span cited."
+        }
+      ],
+      "hint": "Look for the page numbers associated with the chapter title regarding 'the constitution' of psychoanalysis."
+    },
+    {
+      "question": "What is the primary subject of the book from which these excerpts are taken?",
+      "answerOptions": [
+        {
+          "text": "Modern Economics",
+          "isCorrect": false,
+          "rationale": "Although one chapter mentions an 'economic' viewpoint, the book's title indicates it is about a specific psychological theory."
+        },
+        {
+          "text": "Freud's Psychoanalysis",
+          "isCorrect": true,
+          "rationale": "The title 'Freuds psykoanalyse' explicitly identifies the subject as the theories and systems developed by Sigmund Freud."
+        },
+        {
+          "text": "Danish Literature",
+          "isCorrect": false,
+          "rationale": "While the book is written in Danish, the subject matter is the specialized field of psychoanalysis."
+        },
+        {
+          "text": "Clinical Pharmacy",
+          "isCorrect": false,
+          "rationale": "This topic is unrelated to the authors' focus on Freudian theory and the history of the mind."
+        }
+      ],
+      "hint": "The title of the book is clearly stated in the bibliographic references."
+    },
+    {
+      "question": "In the context of the title 'Psykoanalysens konstituering,' what does 'konstituering' most likely refer to?",
+      "answerOptions": [
+        {
+          "text": "The medical treatment of Freud",
+          "isCorrect": false,
+          "rationale": "This refers to clinical practice rather than the theoretical establishment or founding of the discipline."
+        },
+        {
+          "text": "The establishment or formation of the field",
+          "isCorrect": true,
+          "rationale": "In a historical or theoretical context, 'konstituering' refers to how a discipline or theory is founded and structured."
+        },
+        {
+          "text": "The financial cost of therapy",
+          "isCorrect": false,
+          "rationale": "While 'economic' is a theme in another chapter, this specific term refers to the structural setup of the theory."
+        },
+        {
+          "text": "The criticism of psychoanalysis",
+          "isCorrect": false,
+          "rationale": "This would likely be described as 'kritik,' whereas 'konstituering' implies the building or starting of the field."
+        }
+      ],
+      "hint": "Think of a word that means the 'founding' or 'setting up' of a scientific discipline."
+    },
+    {
+      "question": "Where was the book 'Freuds psykoanalyse' published?",
+      "answerOptions": [
+        {
+          "text": "Berlin",
+          "isCorrect": false,
+          "rationale": "While significant for Freud's history, this city is not listed as the publication location in the provided citation."
+        },
+        {
+          "text": "København",
+          "isCorrect": true,
+          "rationale": "The citations list København (Copenhagen) as the city of publication for both chapters."
+        },
+        {
+          "text": "London",
+          "isCorrect": false,
+          "rationale": "This was Freud's final home, but the cited book by Olsen and Køppe was published in Denmark."
+        },
+        {
+          "text": "Vienna",
+          "isCorrect": false,
+          "rationale": "Vienna is where psychoanalysis originated, but this specific text was published in København."
+        }
+      ],
+      "hint": "Look for the Danish name of the city listed before the publisher 'Gyldendal'."
+    },
+    {
+      "question": "Which chapter appears later in the book 'Freuds psykoanalyse' according to the page numbers?",
+      "answerOptions": [
+        {
+          "text": "Den økonomiske synsvinkel",
+          "isCorrect": true,
+          "rationale": "This chapter is found on pages $328-342$, which are further into the book than the other excerpt."
+        },
+        {
+          "text": "Psykoanalysens konstituering",
+          "isCorrect": false,
+          "rationale": "This chapter is found on pages $120-139$, which occurs earlier in the book sequence."
+        }
+      ],
+      "hint": "Compare the page numbers $328-342$ and $120-139$."
+    },
+    {
+      "question": "What does the 'economic' perspective in Freud's theory (as discussed in 1991a) primarily attempt to quantify?",
+      "answerOptions": [
+        {
+          "text": "The number of patients in treatment",
+          "isCorrect": false,
+          "rationale": "This is a matter of clinical statistics, not a core theoretical component of the economic point of view."
+        },
+        {
+          "text": "The amount and flow of psychic energy",
+          "isCorrect": true,
+          "rationale": "The economic point of view is defined by the hypothesis that mental processes consist of the circulation and distribution of energy (libido)."
+        },
+        {
+          "text": "The cost of psychoanalytic education",
+          "isCorrect": false,
+          "rationale": "This refers to literal economics, whereas Freud's 'economic' view is a metaphor for mental energy."
+        },
+        {
+          "text": "The frequency of dream cycles",
+          "isCorrect": false,
+          "rationale": "While dreams are part of psychoanalysis, the 'economic' label specifically targets the energetic dynamics of the psyche."
+        }
+      ],
+      "hint": "Consider the movement of 'cathexis' or mental 'charge' within the Freudian system."
+    }
+  ]
+}

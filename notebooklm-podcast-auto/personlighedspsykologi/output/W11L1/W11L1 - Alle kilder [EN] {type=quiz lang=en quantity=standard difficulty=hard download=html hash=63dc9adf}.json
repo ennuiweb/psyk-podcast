@@ -1,0 +1,318 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "According to Ian Hacking, what distinguishes the 'looping effect' from the process of 'making up people'?",
+      "answerOptions": [
+        {
+          "text": "The looping effect describes the interaction between the classification and the individuals who adjust their behavior in response to it.",
+          "isCorrect": true,
+          "rationale": "This concept highlights the dynamic feedback loop where people classified under a category react to the label, thereby changing the nature of the category itself."
+        },
+        {
+          "text": "The looping effect refers specifically to the moment a new scientific classification is first coined by experts.",
+          "isCorrect": false,
+          "rationale": "This describes the initial act of 'making up people' rather than the subsequent interaction and change in the target's behavior."
+        },
+        {
+          "text": "The looping effect occurs when institutions successfully suppress a specific kind of person through taxation and recruitment.",
+          "isCorrect": false,
+          "rationale": "While institutions are part of Hacking's framework, the looping effect is specifically about the cognitive and behavioral shifts in the classified individuals."
+        },
+        {
+          "text": "The looping effect is a static nominalist view that suggests names have no influence on the essence of the thing named.",
+          "isCorrect": false,
+          "rationale": "Hacking's theory is a form of dynamic nominalism, which argues the exact opposite: that names and things interact and change over time."
+        }
+      ],
+      "hint": "Consider which term emphasizes the ongoing, reciprocal interaction between a label and the person's self-experience."
+    },
+    {
+      "question": "In post-psychological theory, how is the concept of 'subjectivity' fundamentally different from the traditional psychological concept of 'personality'?",
+      "answerOptions": [
+        {
+          "text": "Subjectivity is viewed as a fixed internal core that remains stable across different social contexts.",
+          "isCorrect": false,
+          "rationale": "This perspective aligns more with modern/humanistic psychology's definition of personality as a stable, cross-situational trait."
+        },
+        {
+          "text": "Subjectivity is understood as a continuous process of becoming that is produced through social, linguistic, and material relations.",
+          "isCorrect": true,
+          "rationale": "Post-psychology rejects the idea of a fixed core, instead viewing the subject as something constantly 'made' within specific discursive and material settings."
+        },
+        {
+          "text": "Subjectivity refers only to the neurological impulses that determine individual behavior independent of social influence.",
+          "isCorrect": false,
+          "rationale": "While post-psychology engages with neuropsychology, it primarily focuses on the decentralization of the subject through social and discursive processes."
+        },
+        {
+          "text": "Subjectivity is used to describe the deviant or pathological aspects of an individual's character that require clinical intervention.",
+          "isCorrect": false,
+          "rationale": "Post-psychology uses subjectivity as a general term for human existence, rather than a category for pathology or deviance."
+        }
+      ],
+      "hint": "Think about whether the subject is seen as an 'effect' or a 'cause' of social processes."
+    },
+    {
+      "question": "Hacking outlines a five-part framework for analyzing 'making up people.' Which element involves the presumptions, myths, and theories disseminated within the context of the institutions?",
+      "answerOptions": [
+        {
+          "text": "Experts",
+          "isCorrect": false,
+          "rationale": "Experts are the professionals who generate or legitimate the information, but they are not the information itself."
+        },
+        {
+          "text": "Classification",
+          "isCorrect": false,
+          "rationale": "Classification refers to the specific label or category (such as 'autism' or 'multiple personality') used to group people."
+        },
+        {
+          "text": "Institutions",
+          "isCorrect": false,
+          "rationale": "Institutions are the organized entities, like clinics or media outlets, where the interactions and knowledge-building take place."
+        },
+        {
+          "text": "Knowledge",
+          "isCorrect": true,
+          "rationale": "This element encompasses both expert and popular information, including basic assumptions that interact with the people being classified."
+        }
+      ],
+      "hint": "This component relates to what is taught and believed to be true about a specific kind of person."
+    },
+    {
+      "question": "What does the term 'subjectification' (subjektivering) signify in the context of post-psychological theory, particularly according to Butler?",
+      "answerOptions": [
+        {
+          "text": "The process of achieving total autonomy and freedom from any external social constraints.",
+          "isCorrect": false,
+          "rationale": "Post-psychology argues that the subject is never fully autonomous but is always entangled in social and discursive conditions."
+        },
+        {
+          "text": "The paradoxical process of becoming a subject through both subjection to power and the capacity for agency.",
+          "isCorrect": true,
+          "rationale": "This captures the dual meaning of being 'subjected' to conditions while simultaneously becoming a 'subject' capable of action within those conditions."
+        },
+        {
+          "text": "The psychological development of a child into a fully functioning adult with a coherent self-image.",
+          "isCorrect": false,
+          "rationale": "This is a more traditional developmental psychology perspective, which post-psychology seeks to deconstruct as a historical fiction."
+        },
+        {
+          "text": "The act of isolating an individual from their cultural background to study their true cognitive functions.",
+          "isCorrect": false,
+          "rationale": "Post-psychology emphasizes that an individual cannot be understood apart from their context or cultural background."
+        }
+      ],
+      "hint": "Look for the dual nature of being both 'under control' and 'having the power to act.'"
+    },
+    {
+      "question": "In the post-2000s 'material turn' of post-psychology, what concept does Karen Barad introduce to emphasize the mutual constitution of human and non-human entities?",
+      "answerOptions": [
+        {
+          "text": "Intra-action",
+          "isCorrect": true,
+          "rationale": "This term suggests that entities do not exist before their interaction but are instead emergently formed through their relationship."
+        },
+        {
+          "text": "Inter-subjectivity",
+          "isCorrect": false,
+          "rationale": "This refers to the shared understanding between two human subjects, whereas Barad focuses on the entanglement of the human and material."
+        },
+        {
+          "text": "Environmentalism",
+          "isCorrect": false,
+          "rationale": "While Hacking mentions environmentality in relation to Foucault, Barad's specific focus is on the radicalization of interaction through matter."
+        },
+        {
+          "text": "Social Constructionism",
+          "isCorrect": false,
+          "rationale": "The material turn seeks to move beyond traditional social constructionism by acknowledging the active agency of materiality itself."
+        }
+      ],
+      "hint": "This term replaces the traditional 'inter-action' to suggest a deeper level of mutual formation."
+    },
+    {
+      "question": "What is the function of 'abjection' (abjektgørelse) as illustrated by the case of the student Wahid?",
+      "isCorrect": true,
+      "answerOptions": [
+        {
+          "text": "It is the process by which certain individuals are pushed outside the boundaries of the recognizable and legitimate subject.",
+          "isCorrect": true,
+          "rationale": "Abjection occurs when a person is made 'unthinkable' or 'disgusting' because they fail to fit within prevailing cultural and social norms."
+        },
+        {
+          "text": "It is a therapeutic technique used to help students integrate more effectively into their peer groups.",
+          "isCorrect": false,
+          "rationale": "Abjection is a exclusionary social process rather than a supportive therapeutic intervention."
+        },
+        {
+          "text": "It refers to the internal emotional state of a person who chooses to distance themselves from society.",
+          "isCorrect": false,
+          "rationale": "Abjection is described as a discursive process imposed by others and the environment, not a personal choice of isolation."
+        },
+        {
+          "text": "It is the successful outcome of subjectification where a person achieves a unique and celebrated identity.",
+          "isCorrect": false,
+          "rationale": "Abjection is the 'failed' or excluded side of subjectification, leading to a loss of legitimacy as a subject."
+        }
+      ],
+      "hint": "Consider what happens to someone who is labeled as 'wrong' or 'unfit' within a community's standards."
+    },
+    {
+      "question": "Hacking uses the example of autism to contrast 'Sentence A' and 'Sentence B.' What is the significance of 'Sentence B' in his theory?",
+      "answerOptions": [
+        {
+          "text": "It focuses on the historical accuracy of clinical diagnoses throughout the $20^{th}$ century.",
+          "isCorrect": false,
+          "rationale": "Hacking's Sentence B is not about the validity of a diagnosis, but about the social and experiential reality of being a certain kind of person."
+        },
+        {
+          "text": "It asserts that people have always experienced themselves in the same way, regardless of how they were labeled.",
+          "isCorrect": false,
+          "rationale": "Sentence B argues that ways of experiencing oneself are historically specific and change with new classifications."
+        },
+        {
+          "text": "It states that a specific 'way to be a person' and self-experience emerged in a particular historical and social context.",
+          "isCorrect": true,
+          "rationale": "This sentence allows both skeptics and believers to agree that a new mode of social existence and identity has been formed."
+        },
+        {
+          "text": "It identifies the biological origin of a disorder as the only relevant factor for classification.",
+          "isCorrect": false,
+          "rationale": "Sentence B specifically moves away from biological essentialism to look at social interaction and self-conception."
+        }
+      ],
+      "hint": "Think about the phrase 'way to be a person' and how it relates to historical timing."
+    },
+    {
+      "question": "In post-psychology, 'discursive practices' are defined as:",
+      "answerOptions": [
+        {
+          "text": "The study of linguistic patterns in written texts to determine their grammatical correctness.",
+          "isCorrect": false,
+          "rationale": "Post-psychology is interested in discourse as a producer of social reality, not as a branch of linguistics or grammar."
+        },
+        {
+          "text": "The active daily practices where people take up, ignore, or confirm discourses to form their own subjectivity.",
+          "isCorrect": true,
+          "rationale": "This emphasizes that humans are not just passive recipients of culture but actively engage with discourses to 'become' themselves."
+        },
+        {
+          "text": "Institutional rules that strictly dictate how people must speak and act at all times.",
+          "isCorrect": false,
+          "rationale": "While discourses set boundaries, discursive practices allow for agency and are not strictly deterministic."
+        },
+        {
+          "text": "The inner dialogue of an individual that remains hidden from the social world.",
+          "isCorrect": false,
+          "rationale": "Discursive practices are viewed as inherently social and relational, occurring within the interactions of daily life."
+        }
+      ],
+      "hint": "Focus on the 'active' and 'relational' nature of how people engage with language and norms."
+    },
+    {
+      "question": "Which concept from the source material refers to the 'intensities, energies, and sensations' that circulate between bodies and impact subjectivity?",
+      "answerOptions": [
+        {
+          "text": "Materiality",
+          "isCorrect": false,
+          "rationale": "Materiality focuses on the intra-action with physical objects and technologies, whereas these terms specifically describe 'affectivity'."
+        },
+        {
+          "text": "Affectivity",
+          "isCorrect": true,
+          "rationale": "Affectivity involves the pre-conscious currents of feeling and energy that move between bodies and influence social situations."
+        },
+        {
+          "text": "Performativity",
+          "isCorrect": false,
+          "rationale": "Performativity refers to the way repeated actions and citations of norms create the illusion of a stable self."
+        },
+        {
+          "text": "Psy-techniques",
+          "isCorrect": false,
+          "rationale": "Psy-techniques are specific administrative or clinical tools used to manage and optimize human potential."
+        }
+      ],
+      "hint": "This term relates to the 'vibe' or emotional energy present in a room before it is even named."
+    },
+    {
+      "question": "Nikolas Rose uses the term 'psy-techniques' to describe how psychology, psychiatry, and pedagogy manage human potential. What is a key function of these techniques?",
+      "answerOptions": [
+        {
+          "text": "To dismantle all social hierarchies and create a perfectly equal society.",
+          "isCorrect": false,
+          "rationale": "Psy-techniques are often tools of management and governance within existing systems, not revolutionary tools for total equality."
+        },
+        {
+          "text": "To identify the single, true personality type of every child for lifelong placement.",
+          "isCorrect": false,
+          "rationale": "These techniques are more concerned with optimizing and 'capacitating' people rather than finding a static 'truth'."
+        },
+        {
+          "text": "To organize and steer people's capacities, learning channels, and self-conceptions within institutions.",
+          "isCorrect": true,
+          "rationale": "Psy-techniques connect the governance of organizations with the 'making' of individual subjectivities through specific practices."
+        },
+        {
+          "text": "To replace all human experts with automated biological measuring devices.",
+          "isCorrect": false,
+          "rationale": "Psy-techniques rely heavily on human experts like teachers and psychologists to apply knowledge and manage subjects."
+        }
+      ],
+      "hint": "Consider how schools use testing and individual plans to guide student behavior and progress."
+    },
+    {
+      "question": "What does Hacking mean by 'Dynamic Nominalism'?",
+      "answerOptions": [
+        {
+          "text": "The belief that names are merely arbitrary labels that have no effect on the physical world.",
+          "isCorrect": false,
+          "rationale": "This reflects static nominalism, which Hacking explicitly differentiates from his dynamic approach."
+        },
+        {
+          "text": "The theory that names interact with people to create new kinds of 'things' or ways of being.",
+          "isCorrect": true,
+          "rationale": "Following Nietzsche, Hacking argues that naming a category of people actually changes how those people exist and experience themselves."
+        },
+        {
+          "text": "The study of how historical names for chemicals have remained the same despite scientific progress.",
+          "isCorrect": false,
+          "rationale": "Hacking's dynamic nominalism is applied to 'human kinds' or 'kinds of people,' not 'indifferent' natural objects like chemicals."
+        },
+        {
+          "text": "The psychological process where a person forgets their original name due to a dissociative state.",
+          "isCorrect": false,
+          "rationale": "While Hacking studies dissociation, 'dynamic nominalism' is his philosophical position on classification, not a clinical symptom."
+        }
+      ],
+      "hint": "Think about the relationship between the 'name' and the 'named' as an active, changing process."
+    },
+    {
+      "question": "According to the post-psychological analysis of 'inclusion interiors' in schools, why might a 'ball-cushion' (kuglepude) be considered an agent of subjectivity?",
+      "answerOptions": [
+        {
+          "text": "It acts as a neutral physical tool that has no impact on the student's sense of self.",
+          "isCorrect": false,
+          "rationale": "Post-psychology rejects neutrality, viewing all material objects in the learning environment as contributors to subjectification."
+        },
+        {
+          "text": "It physically forces the student to comply with rules against their will through pain.",
+          "isCorrect": false,
+          "rationale": "The cushion is a 'technology of comfort' that works through intensities and affects, not through brute physical force."
+        },
+        {
+          "text": "It participates in 'intra-action' to produce a 'calm' and 'learning' subject by affecting bodily energies.",
+          "isCorrect": true,
+          "rationale": "The cushion, the student's body, and the classroom norms work together to create a specific version of a 'good' student."
+        },
+        {
+          "text": "It provides a purely biological cure for neurological restlessness in children.",
+          "isCorrect": false,
+          "rationale": "The theory views the effect as a complex socio-material production rather than a simple biological 'cure'."
+        }
+      ],
+      "hint": "Think about how the object, the body, and the teacher's goals work together to shape a student's behavior."
+    }
+  ]
+}

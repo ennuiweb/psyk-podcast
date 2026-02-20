@@ -1,0 +1,255 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "In the context of machine learning-based personality assessment (ML-PA), which of the following acts as the independent variable?",
+      "answerOptions": [
+        {
+          "text": "Behavioral features",
+          "isCorrect": true,
+          "rationale": "In ML-PA, automated behavioral data like text or voice are used as inputs to predict traits, reversing the traditional research direction."
+        },
+        {
+          "text": "Personality traits",
+          "isCorrect": false,
+          "rationale": "While traits are independent variables in traditional research, they are the dependent variables that the machine learning model attempts to predict."
+        },
+        {
+          "text": "Self-report questionnaire items",
+          "isCorrect": false,
+          "rationale": "Questionnaire items typically serve as the 'ground truth' or dependent variable in the training of ML-PA models."
+        },
+        {
+          "text": "Outcome variables such as job performance",
+          "isCorrect": false,
+          "rationale": "Job performance is generally a downstream outcome that predicted personality scores aim to forecast, rather than a model input."
+        }
+      ],
+      "hint": "Consider what data the computer model 'sees' first before it makes a prediction about an individual's personality."
+    },
+    {
+      "question": "According to the source material, what is the average sample size weighted accuracy ($r$) for ML-PA based on self-reports?",
+      "answerOptions": [
+        {
+          "text": "$r = 0.30$",
+          "isCorrect": true,
+          "rationale": "Meta-analytic summaries found that the correlation between predicted scores and self-reported ground truth averaged around this value."
+        },
+        {
+          "text": "$r = 0.55$",
+          "isCorrect": false,
+          "rationale": "This higher correlation coefficient actually represents the average accuracy for observer reports, not self-reports."
+        },
+        {
+          "text": "$r = 0.88$",
+          "isCorrect": false,
+          "rationale": "This value is closer to the average Cronbach's alpha mentioned for internal consistency rather than predictive accuracy."
+        },
+        {
+          "text": "$r = 0.17$",
+          "isCorrect": false,
+          "rationale": "While this was the specific accuracy for the trait of Honesty-Humility in one study, it is significantly lower than the overall average."
+        }
+      ],
+      "hint": "This value represents a moderate correlation and is lower than the accuracy observed when comparing ML-PA to observer ratings."
+    },
+    {
+      "question": "Which model explains that observers may have more accuracy in ML-PA because they have better access to visible behaviors than the individuals themselves?",
+      "answerOptions": [
+        {
+          "text": "The SOKA model",
+          "isCorrect": true,
+          "rationale": "The Self-Other Knowledge Asymmetry model posits that others are better at judging visible, evaluative traits while individuals are better at judging internal thoughts."
+        },
+        {
+          "text": "Trait Activation Theory",
+          "isCorrect": false,
+          "rationale": "This theory focuses on how specific situations draw out certain traits, rather than the informational difference between self and others."
+        },
+        {
+          "text": "The Big Five Model",
+          "isCorrect": false,
+          "rationale": "The Big Five is a taxonomy used to categorize personality traits rather than a model explaining measurement asymmetries between raters."
+        },
+        {
+          "text": "The Nomological Network",
+          "isCorrect": false,
+          "rationale": "This term refers to the representation of concepts and their interrelationships in validity testing, not specific rater asymmetries."
+        }
+      ],
+      "hint": "Look for an acronym that highlights the difference in 'knowledge' between the person being assessed and an outside observer."
+    },
+    {
+      "question": "Based on research into sample sizes, at what point does the accuracy of text-based ML-PA for self-reports generally reach an asymptote (stop increasing significantly)?",
+      "answerOptions": [
+        {
+          "text": "$n = 5000$",
+          "isCorrect": true,
+          "rationale": "Studies show that for self-reports, accuracy increases until it levels off at approximately this number of observations."
+        },
+        {
+          "text": "$n = 500$",
+          "isCorrect": false,
+          "rationale": "While accuracy for observer reports reaches an asymptote around this size, self-reports require significantly more data to stabilize."
+        },
+        {
+          "text": "$n = 100$",
+          "isCorrect": false,
+          "rationale": "Small sample sizes like this generally lead to unstable models and do not reach the performance peak mentioned in the text."
+        },
+        {
+          "text": "$n = 65,896$",
+          "isCorrect": false,
+          "rationale": "This was the total sample size used in a major study, but the plateau in accuracy occurred much earlier in the data collection process."
+        }
+      ],
+      "hint": "This number represents a large-scale data requirement, often ten times higher than what is needed for observer-based models."
+    },
+    {
+      "question": "Which of the following is considered a source of 'algorithmic bias' in the machine learning process?",
+      "answerOptions": [
+        {
+          "text": "Bias in the ground truth scores",
+          "isCorrect": true,
+          "rationale": "If the original human-provided ratings used to train the model are biased, the machine learning algorithm will likely learn and reproduce those biases."
+        },
+        {
+          "text": "The use of Large Language Models",
+          "isCorrect": false,
+          "rationale": "LLMs are a specific tool or method for assessment, and while they can be biased, they are not themselves a 'source' of bias in the training framework."
+        },
+        {
+          "text": "Increased computational power",
+          "isCorrect": false,
+          "rationale": "Higher processing power is a technological advancement that enables ML-PA but does not inherently introduce systematic bias."
+        },
+        {
+          "text": "The Pearson $r$ correlation coefficient",
+          "isCorrect": false,
+          "rationale": "This is a statistical metric used to measure validity and accuracy, rather than a factor that creates unfairness in model results."
+        }
+      ],
+      "hint": "Think about the data that is used to 'teach' the model before any automated decisions are made."
+    },
+    {
+      "question": "According to Trait Activation Theory (TAT), what is necessary to maximize the accuracy of personality measurement in a behavioral task?",
+      "answerOptions": [
+        {
+          "text": "The task must allow for the behavioral expression of the specific trait being measured.",
+          "isCorrect": true,
+          "rationale": "TAT suggests that traits must be 'activated' by a relevant situation or task to be observable and predictable by an algorithm."
+        },
+        {
+          "text": "The task must be identical for every participant regardless of the trait measured.",
+          "isCorrect": false,
+          "rationale": "Consistency is important for standardization, but accuracy specifically depends on the relevance of the task to the trait in question."
+        },
+        {
+          "text": "The task should rely solely on digital footprints like Facebook 'Likes'.",
+          "isCorrect": false,
+          "rationale": "Digital footprints are one type of input data, but TAT applies to any behavioral task where traits are expressed, such as interviews."
+        },
+        {
+          "text": "The task must be kept short to avoid participant fatigue.",
+          "isCorrect": false,
+          "rationale": "While text length can impact accuracy, TAT is specifically concerned with the situational 'alignment' of the task and the trait."
+        }
+      ],
+      "hint": "This theory suggests that you cannot measure a person's sociability if they are placed in a task that requires complete silence."
+    },
+    {
+      "question": "Which reliability index is highlighted as the preferred measure of generalizability across different datasets?",
+      "answerOptions": [
+        {
+          "text": "Generalized coefficient of equivalence and stability (GCES)",
+          "isCorrect": true,
+          "rationale": "The GCES is used to determine if an algorithm trained on one specific group of people will still work accurately on an entirely different group."
+        },
+        {
+          "text": "Cronbach's alpha",
+          "isCorrect": false,
+          "rationale": "This index measures internal consistency within a single test or occasion rather than generalizability across different datasets."
+        },
+        {
+          "text": "Split-half reliability",
+          "isCorrect": false,
+          "rationale": "This method checks for consistency by comparing two halves of the same test, but it does not account for dataset generalizability."
+        },
+        {
+          "text": "Pearson $r$ accuracy",
+          "isCorrect": false,
+          "rationale": "Pearson $r$ is typically used in the source as a measure of validity or accuracy, whereas GCES is a specific reliability and generalizability metric."
+        }
+      ],
+      "hint": "This index specifically evaluates how well a model moves from its training environment to a new, unseen data environment."
+    },
+    {
+      "question": "When considering the future of personality assessment, what is one major focus alongside increasing predictive accuracy?",
+      "answerOptions": [
+        {
+          "text": "Explainability of the computational methods",
+          "isCorrect": true,
+          "rationale": "The source notes that measurement will benefit if new techniques focus on why a model makes certain predictions, rather than just how accurate they are."
+        },
+        {
+          "text": "Decreasing the sample size required for training",
+          "isCorrect": false,
+          "rationale": "The text suggests that larger sample sizes actually improve accuracy, rather than stating a goal to decrease them."
+        },
+        {
+          "text": "Eliminating the use of observer reports entirely",
+          "isCorrect": false,
+          "rationale": "Observer reports currently show higher accuracy than self-reports, so they remain a valuable part of personality research."
+        },
+        {
+          "text": "Returning to traditional paper-based questionnaires",
+          "isCorrect": false,
+          "rationale": "The manuscript focuses on moving beyond traditional methods toward more advanced computational assessments."
+        }
+      ],
+      "hint": "This concept involves making the 'black box' of machine learning more transparent to researchers and users."
+    },
+    {
+      "question": "Which personality trait is generally found to be the most 'visible' and accurately predicted by observer-based ML-PA models?",
+      "answerOptions": [
+        {
+          "text": "Extraversion",
+          "isCorrect": true,
+          "rationale": "Extraversion involves social and verbal behaviors that are easily captured by audio-visual sensors, leading to higher observer-agreement and ML-PA accuracy."
+        },
+        {
+          "text": "Honesty-Humility",
+          "isCorrect": false,
+          "rationale": "This trait is often less visible in brief behavioral tasks and showed lower accuracy in the studies cited."
+        },
+        {
+          "text": "Emotionality",
+          "isCorrect": false,
+          "rationale": "While Emotionality can be predicted, it often involves internal states that are less 'visible' to models than social outgoingness."
+        },
+        {
+          "text": "Agreeableness",
+          "isCorrect": false,
+          "rationale": "Agreeableness typically shows lower accuracy scores in observer reports ($r = 0.41$) compared to the high visibility of Extraversion."
+        }
+      ],
+      "hint": "Consider the trait that would be most obvious when watching a person interact in a short video clip or interview."
+    },
+    {
+      "question": "True or False: There is typically a trade-off where applying bias mitigation techniques can reduce the overall performance of an ML-PA model.",
+      "answerOptions": [
+        {
+          "text": "True",
+          "isCorrect": true,
+          "rationale": "Bias mitigation often places constraints on a model that can lead to a decrease in its sheer predictive accuracy or performance."
+        },
+        {
+          "text": "False",
+          "isCorrect": false,
+          "rationale": "The source explicitly states that researchers face a trade-off between maximizing performance and ensuring the fairness of the algorithm."
+        }
+      ],
+      "hint": "Think about whether 'fixing' one aspect of a model (fairness) might negatively impact another aspect (how well it predicts)."
+    }
+  ]
+}

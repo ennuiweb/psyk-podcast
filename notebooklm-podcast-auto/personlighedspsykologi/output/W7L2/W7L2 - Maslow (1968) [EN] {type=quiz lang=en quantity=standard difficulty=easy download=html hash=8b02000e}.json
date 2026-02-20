@@ -1,0 +1,265 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "According to Maslow's theory, which of the following is a defining characteristic of a 'basic' or 'deficiency' need?",
+      "answerOptions": [
+        {
+          "text": "Its absence breeds illness and its presence prevents illness.",
+          "isCorrect": true,
+          "rationale": "Maslow defines basic needs in medical terms, stating that their lack results in 'deficiency diseases' or neuroses, much like vitamins or minerals."
+        },
+        {
+          "text": "It is completely absent in children and only appears in adults.",
+          "isCorrect": false,
+          "rationale": "Maslow argues these needs are fundamental species-wide requirements present throughout the human life cycle."
+        },
+        {
+          "text": "It can be satisfied entirely through solitary meditation.",
+          "isCorrect": false,
+          "rationale": "The text explicitly states that deficiency needs must be filled 'from without' by people other than the subject."
+        },
+        {
+          "text": "Its gratification results in an immediate and permanent loss of motivation.",
+          "isCorrect": false,
+          "rationale": "While gratification removes the specific deficit, it usually allows a 'higher' need to emerge rather than ending all motivation."
+        }
+      ],
+      "hint": "Think about the comparison Maslow makes between psychological needs and biological requirements like vitamin C or iodine."
+    },
+    {
+      "question": "How does Maslow distinguish 'B-love' (Being-love) from 'D-love' (Deficiency-love)?",
+      "answerOptions": [
+        {
+          "text": "B-love is a 'hole' that must be filled by the partner's attention.",
+          "isCorrect": false,
+          "rationale": "This description refers to D-love, which is characterized by a 'love-hunger' and a need to receive love to satisfy a deficit."
+        },
+        {
+          "text": "B-love is non-possessive and centers on the intrinsic nature of the other person.",
+          "isCorrect": true,
+          "rationale": "B-love is described as unneeding, unselfish love that admires the 'Being' of the other without seeking to use them for personal satisfaction."
+        },
+        {
+          "text": "D-love is only found in self-actualizing, healthy individuals.",
+          "isCorrect": false,
+          "rationale": "D-love is the more common, deficiency-based love found in most people; B-love is more characteristic of high-level health."
+        },
+        {
+          "text": "B-love eventually leads to anxiety and hostility due to its intensity.",
+          "isCorrect": false,
+          "rationale": "The text states that B-love contains a minimum of anxiety-hostility and is practically always pleasure-giving."
+        }
+      ],
+      "hint": "Consider which type of love is described as 'unneeding' and 'unselfish' versus 'selfish' or 'needing'."
+    },
+    {
+      "question": "In the context of 'Growth vs. Safety,' what is the primary reason a child might choose safety over growth?",
+      "answerOptions": [
+        {
+          "text": "The child is naturally lazy and avoids new skills.",
+          "isCorrect": false,
+          "rationale": "Maslow posits that healthy children are eager to grow, but this eagerness is suppressed by fear when safety is not assured."
+        },
+        {
+          "text": "Safety needs are prepotent over growth needs.",
+          "isCorrect": true,
+          "rationale": "Maslow argues that because safety is a more basic necessity, a person will prioritize it over the 'higher' risk-taking required for growth."
+        },
+        {
+          "text": "Growth is inherently painful and lacks any subjective delight.",
+          "isCorrect": false,
+          "rationale": "Growth is described as 'subjectively more delightful' and exciting, provided the individual feels safe enough to pursue it."
+        },
+        {
+          "text": "The child has already achieved full self-actualization.",
+          "isCorrect": false,
+          "rationale": "Self-actualization is typically seen in older people and is an ongoing process of 'Becoming,' not a state reached in childhood."
+        }
+      ],
+      "hint": "Recall the hierarchy where 'lower' vital necessities must be satisfied before 'higher' impulses can emerge."
+    },
+    {
+      "question": "What does Maslow mean when he describes 'B-cognition' in peak-experiences?",
+      "answerOptions": [
+        {
+          "text": "Perceiving objects only in terms of their immediate usefulness to the observer.",
+          "isCorrect": false,
+          "rationale": "This describes D-cognition, where the world is seen through the lens of need-gratification and expediency."
+        },
+        {
+          "text": "Perceiving the experience or object as a whole and detached from relations or purpose.",
+          "isCorrect": true,
+          "rationale": "B-cognition involves 'total attention' where the object is seen as if it were the whole of Being, independent of its utility."
+        },
+        {
+          "text": "The automatic process of classifying a person into a specific 'rubric' or category.",
+          "isCorrect": false,
+          "rationale": "Maslow calls this 'rubricizing' or 'taxonomy,' which is the opposite of the concrete, unique perception found in B-cognition."
+        },
+        {
+          "text": "A state of high anxiety that forces the individual to ignore their surroundings.",
+          "isCorrect": false,
+          "rationale": "B-cognition is associated with highest happiness and fulfillment, not anxiety-driven states."
+        }
+      ],
+      "hint": "Think about the difference between looking at a person as a 'tool' versus looking at them as a unique, complete individual."
+    },
+    {
+      "question": "Which of the following is an example of 'Fear of Knowledge' as described by Maslow?",
+      "answerOptions": [
+        {
+          "text": "Seeking new information to reduce anxiety and feel more secure.",
+          "isCorrect": false,
+          "rationale": "While knowledge can be used for anxiety-reduction, the 'fear' of it involves actively avoiding truth to protect one's self-image."
+        },
+        {
+          "text": "The struggle against one's own greatness or highest potentialities.",
+          "isCorrect": true,
+          "rationale": "Maslow notes that we often evade personal growth because it brings the burden of responsibility and the fear of being 'god-like'."
+        },
+        {
+          "text": "An animal's inability to give subjective reports to a psychologist.",
+          "isCorrect": false,
+          "rationale": "This is a limitation of behavioral data mentioned in the text, not a psychological defense mechanism against self-knowledge."
+        },
+        {
+          "text": "The desire to master a new skill like playing the violin.",
+          "isCorrect": false,
+          "rationale": "Acquiring skills is an expression of growth and the impulse toward self-actualization, not an evasion of knowledge."
+        }
+      ],
+      "hint": "Focus on why an individual might 'resist' discovering their own talents or seeing 'unpleasant truths' about themselves."
+    },
+    {
+      "question": "Maslow criticizes traditional 'homeostasis' theories because they cannot account for which phenomenon?",
+      "answerOptions": [
+        {
+          "text": "The tendency of the body to maintain a constant temperature.",
+          "isCorrect": false,
+          "rationale": "Maslow acknowledges homeostasis in physiological needs; his critique is that it doesn't explain long-term psychological development."
+        },
+        {
+          "text": "The process of development, movement, and zest in living over a lifetime.",
+          "isCorrect": true,
+          "rationale": "He argues that if motivation were only about reducing tension to reach 'zero,' there would be no reason for people to improve or grow wiser."
+        },
+        {
+          "text": "The occurrence of 'deficiency diseases' when basic needs are unmet.",
+          "isCorrect": false,
+          "rationale": "Deficiency diseases fit well into 'reduction' theories; it is the 'growth' aspect that these theories fail to capture."
+        },
+        {
+          "text": "The behavior of animals in laboratory settings.",
+          "isCorrect": false,
+          "rationale": "Maslow suggests these theories are actually quite useful for animal psychology and behaviorism, but inadequate for healthy humans."
+        }
+      ],
+      "hint": "Think about whether a theory of 'rest' or 'tension-reduction' explains why someone would want to learn more after they are already comfortable."
+    },
+    {
+      "question": "What is the relationship between 'gratification' and 'growth motivation' (metamotivation)?",
+      "answerOptions": [
+        {
+          "text": "Gratification of growth needs leads to a decrease in motivation and a state of rest.",
+          "isCorrect": false,
+          "rationale": "This is true for deficiency needs; in growth motivation, gratification 'whets the appetite' and increases the desire for more."
+        },
+        {
+          "text": "Gratification breeds increased excitement and heightened appetite for growth.",
+          "isCorrect": true,
+          "rationale": "For self-actualizing people, achieving a goal like 'increased understanding' makes them want to learn even more, rather than stopping."
+        },
+        {
+          "text": "Growth motivation can only occur if basic needs are partially frustrated.",
+          "isCorrect": false,
+          "rationale": "The text states that basic needs must be 'sufficiently gratified' as a prerequisite for the emergence of growth trends."
+        },
+        {
+          "text": "There is no relationship, as growth is an unplanned accident of biology.",
+          "isCorrect": false,
+          "rationale": "Maslow views growth as a dynamic process that follows a hierarchical order of need gratification."
+        }
+      ],
+      "hint": "Consider if a 'good doctor' becomes less motivated to be a doctor the better they get at their profession."
+    },
+    {
+      "question": "Maslow identifies which of the following as a clinical characteristic of self-actualizing people?",
+      "answerOptions": [
+        {
+          "text": "An increased dependence on the environment for approval.",
+          "isCorrect": false,
+          "rationale": "Self-actualizers are described as far more autonomous and independent of the environment's whims or rules."
+        },
+        {
+          "text": "Superior perception of reality and increased spontaneity.",
+          "isCorrect": true,
+          "rationale": "These are the first few items in Maslow's list of clinically observed characteristics of healthy, mature individuals."
+        },
+        {
+          "text": "A constant state of Aristotelian logic where opposites never meet.",
+          "isCorrect": false,
+          "rationale": "The text states that self-actualizers can perceive that 'A and not-A interpenetrate and are one,' transcending simple dichotomies."
+        },
+        {
+          "text": "The total absence of any subjective desires or impulses.",
+          "isCorrect": false,
+          "rationale": "Healthy people still have desires, but they are 'metamotives' or growth impulses that they welcome and enjoy."
+        }
+      ],
+      "hint": "Look for traits that suggest a clearer, more effective way of interacting with the world and oneself."
+    },
+    {
+      "question": "How does Maslow view the role of the therapist or teacher in facilitating growth?",
+      "answerOptions": [
+        {
+          "text": "They must force the child to choose 'higher' delights through strict discipline.",
+          "isCorrect": false,
+          "rationale": "Maslow explicitly warns that 'forcing' choice enfeebles the child and cuts off their trust in their own subjective delight."
+        },
+        {
+          "text": "They should provide a 'helpful let-be' that respects both safety and growth needs.",
+          "isCorrect": true,
+          "rationale": "This 'loving Taoism' involves making growth attractive while respecting the child's need to retreat to safety when frightened."
+        },
+        {
+          "text": "They are irrelevant, as growth is entirely determined by inner biological laws.",
+          "isCorrect": false,
+          "rationale": "While growth comes 'from within,' the environment (helpers) is crucial for gratifying basic needs and providing safe 'home ports'."
+        },
+        {
+          "text": "Their primary job is to provide 'replacement therapy' for the rest of the person's life.",
+          "isCorrect": false,
+          "rationale": "Replacement therapy is for curing deficiency diseases; the goal for healthy people is 'psychogogy' or self-directed growth."
+        }
+      ],
+      "hint": "Recall the term Maslow used to describe a 'loving' and 'respecting' form of non-interference."
+    },
+    {
+      "question": "What paradox exists regarding the 'ego' in self-actualized individuals?",
+      "answerOptions": [
+        {
+          "text": "They have the weakest egos because they are always helping others.",
+          "isCorrect": false,
+          "rationale": "Self-actualizers are described as having 'ego-strength at its height,' meaning they are very secure in themselves."
+        },
+        {
+          "text": "Those with the strongest egos are best able to forget or transcend the ego.",
+          "isCorrect": true,
+          "rationale": "Because their basic needs (including self-esteem) are gratified, they can become problem-centered and self-forgetful in their work or creation."
+        },
+        {
+          "text": "They are the most egocentric people because they only focus on their own growth.",
+          "isCorrect": false,
+          "rationale": "Growth-motivated people are able to be more 'disinterested' and objective, leaving egocentricity behind."
+        },
+        {
+          "text": "The ego disappears entirely and is replaced by animal instincts.",
+          "isCorrect": false,
+          "rationale": "Maslow distinguishes 'human becoming' from 'animal becoming' specifically through the presence of growth motives and self-actualization."
+        }
+      ],
+      "hint": "Think about who is more likely to be 'self-conscious': someone with an ungratified need for respect, or someone who is already secure."
+    }
+  ]
+}

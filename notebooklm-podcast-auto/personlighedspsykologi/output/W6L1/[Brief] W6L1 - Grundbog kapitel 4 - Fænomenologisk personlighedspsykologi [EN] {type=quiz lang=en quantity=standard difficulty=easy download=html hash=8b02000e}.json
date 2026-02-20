@@ -1,0 +1,265 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "Hvad betyder det græske ord 'phainómenon', som begrebet fænomen stammer fra?",
+      "answerOptions": [
+        {
+          "text": "Det der viser sig",
+          "isCorrect": true,
+          "rationale": "Ordet fænomen refererer etymologisk til det, der kommer til syne eller træder frem i bevidstheden."
+        },
+        {
+          "text": "Den skjulte sandhed",
+          "isCorrect": false,
+          "rationale": "Fænomenologien fokuserer netop på det umiddelbare og tilgængelige frem for en bagvedliggende skjult kerne."
+        },
+        {
+          "text": "Objektiv virkelighed",
+          "isCorrect": false,
+          "rationale": "Fænomenologi beskæftiger sig med subjektive oplevelser frem for en rent objektiv, uafhængig verden."
+        },
+        {
+          "text": "Logisk slutning",
+          "isCorrect": false,
+          "rationale": "Begrebet knytter sig til sanseindtryk og erfaring, ikke til logiske deduktionsprocesser."
+        }
+      ],
+      "hint": "Tænk på, hvordan noget bliver synligt eller manifesterer sig for os."
+    },
+    {
+      "question": "Hvilket dilemma opstår der ifølge teksten, når man forsøger at studere sin egen bevidsthed?",
+      "answerOptions": [
+        {
+          "text": "Den observerende bevidsthed er identisk med den, der skal observeres",
+          "isCorrect": true,
+          "rationale": "Det er umuligt at splitte bevidstheden op i en del, der handler, og en anden del, der samtidig observerer neutralt."
+        },
+        {
+          "text": "Hukommelsen sletter indtrykkene med det samme",
+          "isCorrect": false,
+          "rationale": "Dilemmaet handler om selve observationsakten i nuet, ikke om hukommelsens begrænsninger."
+        },
+        {
+          "text": "Sproget mangler ord til at beskrive indre processer",
+          "isCorrect": false,
+          "rationale": "Selvom sprog er en udfordring, er det primære fænomenologiske dilemma det ontologiske sammenfald mellem subjekt og objekt."
+        },
+        {
+          "text": "Man bliver for følelsesmæssigt påvirket af observationen",
+          "isCorrect": false,
+          "rationale": "Problemet er strukturelt i bevidstheden, snarere end et spørgsmål om følelsesmæssig kontrol."
+        }
+      ],
+      "hint": "Overvej rollen af den, der kigger, i forhold til det, der bliver kigget på."
+    },
+    {
+      "question": "Hvad var Wilhelm Wundts primære mål med at bruge introspektion i sit psykologiske laboratorium?",
+      "answerOptions": [
+        {
+          "text": "At uddifferentiere oplevelsen i elementære komponenter af sansning og følelser",
+          "isCorrect": true,
+          "rationale": "Wundt søgte at finde de grundlæggende elementer i bevidstheden, der svarede til fysiske påvirkninger."
+        },
+        {
+          "text": "At forstå menneskets eksistentielle valg",
+          "isCorrect": false,
+          "rationale": "Wundts tilgang var eksperimentel og fokuseret på bevidsthedens struktur, ikke eksistentielle temaer."
+        },
+        {
+          "text": "At bevise at bevidstheden er en udelelig strøm",
+          "isCorrect": false,
+          "rationale": "Dette var William James' synspunkt, som stod i modsætning til Wundts elementpsykologi."
+        },
+        {
+          "text": "At studere det ubevidste sjæleliv",
+          "isCorrect": false,
+          "rationale": "Introspektion fokuserer pr. definition på det bevidste indhold, som personen kan rapportere om."
+        }
+      ],
+      "hint": "Tænk på en kemisk tilgang, hvor man forsøger at finde de mindste 'byggesten' i en oplevelse."
+    },
+    {
+      "question": "Hvad karakteriserer ifølge Edgar Rubin 'figuren' i forhold til 'grunden' i en visuel perception?",
+      "answerOptions": [
+        {
+          "text": "Figuren har en form og karakter af en ting, mens grunden virker formløs",
+          "isCorrect": true,
+          "rationale": "Rubin påviste, at det felt, der opleves som figur, får en tingsagtig karakter og fremtræder mere markant."
+        },
+        {
+          "text": "Grunden er altid lysere end figuren",
+          "isCorrect": false,
+          "rationale": "Figur-grund-adskillelsen afhænger af perceptionens struktur, ikke nødvendigvis af farveintensitet eller lysstyrke."
+        },
+        {
+          "text": "Figuren opleves som værende bagved grunden",
+          "isCorrect": false,
+          "rationale": "Det er modsat: figuren opleves typisk som værende foran eller hvilende på grunden."
+        },
+        {
+          "text": "Man kan se både figur og grund som tydelige former samtidig",
+          "isCorrect": false,
+          "rationale": "Rubins forsøg viste, at bevidstheden skifter mellem dem, og at det er svært at fastholde begge som form samtidig."
+        }
+      ],
+      "hint": "Overvej hvilken del af synsindtrykket der virker mest 'håndgribeligt' eller defineret."
+    },
+    {
+      "question": "Hvad illustrerer eksemplet med patellarrefleksen (knærefleksen) i Torsten Ingemann Nielsens forskning?",
+      "answerOptions": [
+        {
+          "text": "Forskellen mellem voluntære og involuntære handlinger",
+          "isCorrect": true,
+          "rationale": "Selvom bevægelsen ser ens ud udefra, er oplevelsen af en tvungen refleks fundamental forskellig fra en selvvalgt handling."
+        },
+        {
+          "text": "At alle menneskelige handlinger er biologisk bestemte",
+          "isCorrect": false,
+          "rationale": "Nielsens pointe er netop at vise nuancerne i viljeslivet, ikke at reducere alt til biologi."
+        },
+        {
+          "text": "Hvor hurtigt nervesystemet reagerer på stimuli",
+          "isCorrect": false,
+          "rationale": "Dette er et fysiologisk spørgsmål, mens Nielsen er optaget af den fænomenologiske oplevelse af kontrol."
+        },
+        {
+          "text": "At smerte er en nødvendig forudsætning for læring",
+          "isCorrect": false,
+          "rationale": "Refleks-eksemplet bruges til at analysere vilje og handlekraft, ikke smerte eller læringsprocesser."
+        }
+      ],
+      "hint": "Fokuser på om personen føler sig som 'herre' over bevægelsen eller ej."
+    },
+    {
+      "question": "Hvordan definerer Franz From rollen af 'intention' i perceptionen af andre menneskers adfærd?",
+      "answerOptions": [
+        {
+          "text": "Vi oplever adfærd som styret af en mening eller hensigt",
+          "isCorrect": true,
+          "rationale": "From argumenterer for, at vi ikke bare ser fysiske bevægelser, men ser dem som udtryk for en underliggende intention."
+        },
+        {
+          "text": "Intentioner kan kun erkendes gennem logisk analyse",
+          "isCorrect": false,
+          "rationale": "From mener, at opfattelsen af intention sker umiddelbart i den fænomenologiske oplevelse."
+        },
+        {
+          "text": "Man kan aldrig vide noget om andre menneskers intentioner",
+          "isCorrect": false,
+          "rationale": "Hans teori forklarer netop, hvordan vi rent faktisk danner os indtryk af andres hensigter gennem deres fremtræden."
+        },
+        {
+          "text": "Intention er det samme som en refleksmæssig reaktion",
+          "isCorrect": false,
+          "rationale": "Intention indebærer en psykisk komponent og mening, hvilket adskiller det fra rene fysiologiske reflekser."
+        }
+      ],
+      "hint": "Tænk på om vi ser en arm der bevæger sig, eller en person der rækker ud efter noget."
+    },
+    {
+      "question": "Hvad forstår Edmund Husserl ved begrebet 'livsverden' ($livsverden$)?",
+      "answerOptions": [
+        {
+          "text": "Den umiddelbare, før-videnskabelige erfaringsverden",
+          "isCorrect": true,
+          "rationale": "Livsverdenen er den verden, vi lever i og tager for givet, før vi begynder at teoretisere eller måle den videnskabeligt."
+        },
+        {
+          "text": "Den biologiske verden af celler og organismer",
+          "isCorrect": false,
+          "rationale": "Dette ville høre under den videnskabelige indstilling, som Husserl kontrasterer med livsverdenen."
+        },
+        {
+          "text": "En verden skabt udelukkende af fantasi og drømme",
+          "isCorrect": false,
+          "rationale": "Livsverdenen er den konkrete, virkelige hverdag, vi befinder os i, ikke en fiktiv verden."
+        },
+        {
+          "text": "Det matematiske univers af præcise former",
+          "isCorrect": false,
+          "rationale": "Husserl kalder de præcise former for 'ideale essenser', som er abstraktioner fra livsverdenen."
+        }
+      ],
+      "hint": "Det handler om den verden, vi oplever hver dag, før vi begynder at tænke på den som atomer eller data."
+    },
+    {
+      "question": "Hvilket begreb bruger William James som metafor for bevidsthedens karakter?",
+      "answerOptions": [
+        {
+          "text": "En strøm eller vandløb",
+          "isCorrect": true,
+          "rationale": "James beskriver bevidstheden som en kontinuerlig bevægelse (stream of consciousness), der aldrig stopper eller deles op."
+        },
+        {
+          "text": "Et bibliotek af minder",
+          "isCorrect": false,
+          "rationale": "James fokuserer på den dynamiske proces i nuet frem for en statisk lagring af information."
+        },
+        {
+          "text": "Et spejl af virkeligheden",
+          "isCorrect": false,
+          "rationale": "James understreger bevidsthedens aktive og personlige karakter frem for en passiv afspejling."
+        },
+        {
+          "text": "En række isolerede kasser",
+          "isCorrect": false,
+          "rationale": "James kritiserede netop ideen om, at bevidstheden består af adskilte 'elementer' eller bidder."
+        }
+      ],
+      "hint": "Tænk på noget, der flyder konstant og ikke kan deles op i faste stykker."
+    },
+    {
+      "question": "Hvad betyder det fænomenologiske begreb 'intentionalitet'?",
+      "answerOptions": [
+        {
+          "text": "At bevidstheden altid er rettet mod noget",
+          "isCorrect": true,
+          "rationale": "Begrebet (introduceret af Brentano) beskriver bevidsthedens grundlæggende struktur som værende 'bevidsthed OM noget'."
+        },
+        {
+          "text": "At man har en plan med sine handlinger",
+          "isCorrect": false,
+          "rationale": "I denne sammenhæng er det en teknisk term for bevidsthedens rettethed, ikke dagligdags betydning af 'hensigt'."
+        },
+        {
+          "text": "At bevidstheden fungerer uafhængigt af verden",
+          "isCorrect": false,
+          "rationale": "Intentionalitet betyder tværtimod, at bevidsthed og objekt altid er forbundet i en relation."
+        },
+        {
+          "text": "At alle oplevelser er tilfældige",
+          "isCorrect": false,
+          "rationale": "Intentionalitet indebærer en struktur og rettethed, hvilket er det modsatte af ren tilfældighed."
+        }
+      ],
+      "hint": "Tænk på en pil, der altid peger på et mål."
+    },
+    {
+      "question": "Hvad er formålet med 'epoché' i den fænomenologiske metode?",
+      "answerOptions": [
+        {
+          "text": "At sætte sine forudindtagelser og den naturlige indstilling i parentes",
+          "isCorrect": true,
+          "rationale": "Epoché bruges til at suspendere dommen om verdens eksistens for at kunne fokusere rent på selve oplevelsen."
+        },
+        {
+          "text": "At måle reaktionstiden på sanseindtryk",
+          "isCorrect": false,
+          "rationale": "Dette er en eksperimentel psykologisk metode, ikke et fænomenologisk greb."
+        },
+        {
+          "text": "At analysere de kemiske processer i hjernen",
+          "isCorrect": false,
+          "rationale": "Fænomenologien beskæftiger sig med oplevelsesverdenen, ikke den underliggende fysiologi."
+        },
+        {
+          "text": "At overbevise andre om rigtigheden af ens oplevelse",
+          "isCorrect": false,
+          "rationale": "Epoché er et redskab for forskeren til at opnå en renere beskrivelse, ikke et retorisk middel."
+        }
+      ],
+      "hint": "Det handler om at 'nulstille' sine vanemæssige antagelser om verden."
+    }
+  ]
+}

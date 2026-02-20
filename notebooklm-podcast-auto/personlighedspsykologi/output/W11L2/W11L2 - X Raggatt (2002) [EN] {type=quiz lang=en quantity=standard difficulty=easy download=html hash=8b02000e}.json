@@ -1,0 +1,307 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "According to Raggatt, what term describes a personality comprised of multiple, often conflicting, narrative voices?",
+      "answerOptions": [
+        {
+          "text": "Ego-integration",
+          "isCorrect": false,
+          "rationale": "This Eriksonian concept refers to a singular, coherent identity, which is the model Raggatt is challenging."
+        },
+        {
+          "text": "Polypsychism",
+          "isCorrect": true,
+          "rationale": "This term refers to the theory that the self is made of a plurality or multiplicity of voices rather than a single core."
+        },
+        {
+          "text": "Rationalism",
+          "isCorrect": false,
+          "rationale": "This is an Enlightenment ideal that promotes the idea of a stable, rational ego rather than a multi-voiced self."
+        },
+        {
+          "text": "Monologism",
+          "isCorrect": false,
+          "rationale": "This refers to a single-voiced account of a life, which is the opposite of the pluralistic approach described."
+        }
+      ],
+      "hint": "Consider the prefix meaning 'many' and the suffix related to the mind or psyche."
+    },
+    {
+      "question": "Which historical movement promoted the 'self-contained individualism' model that modern psychologists are now questioning?",
+      "answerOptions": [
+        {
+          "text": "The Enlightenment",
+          "isCorrect": true,
+          "rationale": "The Enlightenment era emphasized rationalism, individual liberty, and a coherent, integrated ego."
+        },
+        {
+          "text": "Postmodernism",
+          "isCorrect": false,
+          "rationale": "Postmodernism is actually the movement that seeks to deconstruct the self as a locus of agency."
+        },
+        {
+          "text": "Social Constructionism",
+          "isCorrect": false,
+          "rationale": "This perspective emerged recently to argue that personality is constituted by language and relationships 'out there'."
+        },
+        {
+          "text": "Structuralism",
+          "isCorrect": false,
+          "rationale": "This is a different theoretical framework and is not cited as the origin of the 'self-contained individualism' ideology."
+        }
+      ],
+      "hint": "Think of the 18th-century movement known for its focus on reason and progress."
+    },
+    {
+      "question": "In the Personality Web protocol, what is the function of 'attachments'?",
+      "answerOptions": [
+        {
+          "text": "They act as clinical diagnoses for addiction.",
+          "isCorrect": false,
+          "rationale": "The protocol is a research and assessment tool for mapping the self, not a diagnostic manual for medical conditions."
+        },
+        {
+          "text": "They are symbolic signposts like people, events, and objects.",
+          "isCorrect": true,
+          "rationale": "Attachments are the psychologically significant constituents of an individual's life-world that help map their narrative landscape."
+        },
+        {
+          "text": "They represent biological traits that predict behavior.",
+          "isCorrect": false,
+          "rationale": "The text explicitly moves away from fixed trait-based models of personality in favor of narrative-based ones."
+        },
+        {
+          "text": "They are the 'consistency' markers of a stable core.",
+          "isCorrect": false,
+          "rationale": "The plurality model assumes there is no stable core, and attachments are used to reveal competing voices instead."
+        }
+      ],
+      "hint": "Consider these as the 'stuff' of our lives that we interpret to understand ourselves."
+    },
+    {
+      "question": "What four categories of attachments are elicited in the first interview of the Personality Web protocol?",
+      "answerOptions": [
+        {
+          "text": "Traits, motives, schemas, and behaviors",
+          "isCorrect": false,
+          "rationale": "These are the traditional attributes of 'personality' that the author argues are outdated Enlightenment models."
+        },
+        {
+          "text": "People, events, objects-in-the-world, and body orientations",
+          "isCorrect": true,
+          "rationale": "These four categories allow the researcher to sample an individual's narrative landscape across social, temporal, physical, and embodied domains."
+        },
+        {
+          "text": "Family, work, hobbies, and finances",
+          "isCorrect": false,
+          "rationale": "While these are life domains, they do not reflect the specific theoretical taxonomy used in the Personality Web."
+        },
+        {
+          "text": "Childhood, adolescence, adulthood, and old age",
+          "isCorrect": false,
+          "rationale": "While life events are sampled across these stages, they only represent the 'temporal' domain, not the whole protocol."
+        }
+      ],
+      "hint": "The categories cover social associates, historical moments, physical possessions, and the physical self."
+    },
+    {
+      "question": "In the context of the dialogical self, what does 'positioning' involve?",
+      "answerOptions": [
+        {
+          "text": "Assigning individuals to social classes based on income.",
+          "isCorrect": false,
+          "rationale": "Positioning in this context is a psychological and discursive concept, not a socio-economic classification."
+        },
+        {
+          "text": "Determining the physical location of a person during an interview.",
+          "isCorrect": false,
+          "rationale": "The term is used metaphorically to describe internal and social roles rather than literal spatial coordinates."
+        },
+        {
+          "text": "The discursive construction of stories that define moral and personal attributes.",
+          "isCorrect": true,
+          "rationale": "Positioning refers to how personal stories locate a person within a matrix of moral relationships, such as being 'strong' or 'troublesome'."
+        },
+        {
+          "text": "The use of GPS data to track the movements of research subjects.",
+          "isCorrect": false,
+          "rationale": "This is a literal interpretation of 'positioning' that is irrelevant to narrative psychology."
+        }
+      ],
+      "hint": "Think about how we 'place' ourselves in relation to others through the stories we tell."
+    },
+    {
+      "question": "Which statistical tool is used in the Personality Web protocol to map the proximity between life attachments?",
+      "answerOptions": [
+        {
+          "text": "Chi-square analysis",
+          "isCorrect": false,
+          "rationale": "Chi-square is used for categorical data frequencies, not for mapping distances in a multidimensional space."
+        },
+        {
+          "text": "Multidimensional scaling ($MDS$)",
+          "isCorrect": true,
+          "rationale": "MDS is used to organize pairwise proximity ratings into a spatial representation to identify clusters of attachments."
+        },
+        {
+          "text": "Linear regression",
+          "isCorrect": false,
+          "rationale": "Regression is used to predict the value of one variable based on others, not to identify semantic clusters."
+        },
+        {
+          "text": "Standard deviation",
+          "isCorrect": false,
+          "rationale": "This is a measure of data spread, not a mapping technique for identifying narrative structures."
+        }
+      ],
+      "hint": "This method represents 'distances' between items in a geometric space."
+    },
+    {
+      "question": "In the case study of Sean, which narrative voice is associated with his identity as an elite athlete and his humility?",
+      "answerOptions": [
+        {
+          "text": "The Magician",
+          "isCorrect": false,
+          "rationale": "The Magician is Sean's 'spiritual self' focused on salvation and rescue from addiction."
+        },
+        {
+          "text": "The Lost Boy",
+          "isCorrect": false,
+          "rationale": "The Lost Boy is the oldest voice, associated with childhood abandonment and trauma."
+        },
+        {
+          "text": "The Good Guy",
+          "isCorrect": true,
+          "rationale": "The 'Good Guy' voice encompasses his sporting achievements and his desire to be liked and nurturing toward others."
+        },
+        {
+          "text": "The Addict",
+          "isCorrect": false,
+          "rationale": "The Addict is a coping response to emotional pain and is associated with his descent into isolation and 'abjection'."
+        }
+      ],
+      "hint": "Consider the name of the voice that suggests moral uprightness and success."
+    },
+    {
+      "question": "Sean's 'Lost Boy' voice is primarily rooted in which early life experiences?",
+      "answerOptions": [
+        {
+          "text": "Success in elite-level cricket matches.",
+          "isCorrect": false,
+          "rationale": "Sporting success is part of his 'Good Guy' narrative, not the 'Lost Boy'."
+        },
+        {
+          "text": "Episodes of childhood abandonment and trauma.",
+          "isCorrect": true,
+          "rationale": "The Lost Boy dates back to infancy, his father's violence, and his sister's sudden emigration from Ireland."
+        },
+        {
+          "text": "Working in children's theatre as a puppeteer.",
+          "isCorrect": false,
+          "rationale": "His work in theatre and magic is part of his 'Magician' voice."
+        },
+        {
+          "text": "The recovery process within Alcoholics Anonymous.",
+          "isCorrect": false,
+          "rationale": "AA and the concept of 'higher power' are central to his 'Magician' voice."
+        }
+      ],
+      "hint": "This voice is linked to his earliest memories in Ireland and the absence of his sister."
+    },
+    {
+      "question": "How does Sean describe the 'higher power' he encountered through Alcoholics Anonymous?",
+      "answerOptions": [
+        {
+          "text": "A traditional religious deity or God.",
+          "isCorrect": false,
+          "rationale": "Sean explicitly states that the higher power is not attributed to a God or the Church."
+        },
+        {
+          "text": "An internal act of pure individual willpower.",
+          "isCorrect": false,
+          "rationale": "Sean views his salvation as something 'brought to me by others' rather than a solo act of will."
+        },
+        {
+          "text": "An energy released by the collective struggle of the group.",
+          "isCorrect": true,
+          "rationale": "He defines the higher power as his 'consciousness expressed by other human beings' in their shared struggle against addiction."
+        },
+        {
+          "text": "The chemical effect of heroin on his emotional pain.",
+          "isCorrect": false,
+          "rationale": "Drugs served as an 'anaesthetic' during his 'Addict' phase, which is the opposite of the AA 'higher power'."
+        }
+      ],
+      "hint": "Focus on how the presence of other people in the group influenced his recovery."
+    },
+    {
+      "question": "Which body part does Sean associate with his 'Magician' voice?",
+      "answerOptions": [
+        {
+          "text": "His stomach",
+          "isCorrect": false,
+          "rationale": "He identifies his 'washboard flat' stomach with the 'Good Guy' voice."
+        },
+        {
+          "text": "His rotting teeth",
+          "isCorrect": false,
+          "rationale": "His teeth are a powerful symbol for the 'Addict' as an outcast or pariah."
+        },
+        {
+          "text": "His long, curled fingers",
+          "isCorrect": true,
+          "rationale": "He associates his fingers with mystical powers and his work in creating illusion as a puppeteer."
+        },
+        {
+          "text": "His conjoined eyebrows",
+          "isCorrect": false,
+          "rationale": "Sean feels his eyebrows make him look like a 'psychopath', which he links to the 'Addict' voice."
+        }
+      ],
+      "hint": "Think of the body part used for puppetry and 'magic touches' in the kitchen."
+    },
+    {
+      "question": "According to the study, what is a 'nadir experience'?",
+      "answerOptions": [
+        {
+          "text": "The highest peak or wonderful time in a person's life.",
+          "isCorrect": false,
+          "rationale": "A 'peak experience' is the term for a high point; a nadir is its opposite."
+        },
+        {
+          "text": "A neutral event that had no lasting impact.",
+          "isCorrect": false,
+          "rationale": "Nadir experiences are significant low points that help define narrative voices."
+        },
+        {
+          "text": "A low point or bad time in a person's life.",
+          "isCorrect": true,
+          "rationale": "The protocol uses McAdams' definition of a nadir as a significant negative life event."
+        },
+        {
+          "text": "A spiritual awakening involving a higher power.",
+          "isCorrect": false,
+          "rationale": "While a nadir like the 'Pariah' episode led to a spiritual shift, the term itself simply means a low point."
+        }
+      ],
+      "hint": "In astronomy or geography, this term refers to the lowest point."
+    },
+    {
+      "question": "True or False: The Personality Web interview protocol is intended to be used only as a statistical research tool and has no potential for clinical therapy.",
+      "answerOptions": [
+        {
+          "text": "True",
+          "isCorrect": false,
+          "rationale": "The text explicitly states that the protocol has potential as a clinical tool to help individuals explore identity issues."
+        },
+        {
+          "text": "False",
+          "isCorrect": true,
+          "rationale": "The author suggests the method could contribute to narrative therapies by helping people map and reorganize their narrative voices."
+        }
+      ],
+      "hint": "Consider whether 'mapping' narrative voices could be useful for a therapist and a client."
+    }
+  ]
+}

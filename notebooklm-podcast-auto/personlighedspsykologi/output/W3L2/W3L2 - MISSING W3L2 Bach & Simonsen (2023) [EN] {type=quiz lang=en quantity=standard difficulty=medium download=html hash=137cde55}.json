@@ -1,0 +1,265 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "What is the most fundamental shift in the ICD-11's approach to diagnosing personality disorders as described by Bach & Simonsen?",
+      "answerOptions": [
+        {
+          "text": "A shift from a categorical system to a dimensional system.",
+          "isCorrect": true,
+          "rationale": "ICD-11 replaces specific personality disorder types with a global diagnosis of personality disorder defined by severity and trait qualifiers."
+        },
+        {
+          "text": "The introduction of strictly biological markers for diagnosis.",
+          "isCorrect": false,
+          "rationale": "While biological factors are relevant, the ICD-11 remains a clinical-descriptive system based on functioning and traits."
+        },
+        {
+          "text": "A transition to diagnosing personality based primarily on IQ scores.",
+          "isCorrect": false,
+          "rationale": "Cognitive ability is a separate assessment and not the defining feature of the ICD-11 personality disorder model."
+        },
+        {
+          "text": "The removal of the 'Personality Disorder' diagnosis entirely.",
+          "isCorrect": false,
+          "rationale": "The diagnosis still exists but has been restructured to better reflect clinical reality and reduce diagnostic overlap."
+        }
+      ],
+      "hint": "Consider how the classification moves from 'types' (like Borderline or Narcissistic) to a spectrum of severity."
+    },
+    {
+      "question": "In the ICD-11 framework, which two components are essential for evaluating the severity of a personality disorder?",
+      "answerOptions": [
+        {
+          "text": "Self-functioning and interpersonal functioning.",
+          "isCorrect": true,
+          "rationale": "The core of personality dysfunction in ICD-11 is identified through disturbances in how one views oneself and how one relates to others."
+        },
+        {
+          "text": "Genetic predisposition and childhood trauma.",
+          "isCorrect": false,
+          "rationale": "These are etiological factors rather than the functional criteria used to determine the current severity of the disorder."
+        },
+        {
+          "text": "Frequency of hospitalizations and medication dosage.",
+          "isCorrect": false,
+          "rationale": "These are markers of healthcare utilization rather than the intrinsic psychological functioning required for diagnosis."
+        },
+        {
+          "text": "Verbal fluency and physical coordination.",
+          "isCorrect": false,
+          "rationale": "These represent neurological or cognitive skills rather than the personality-driven aspects of self and social interaction."
+        }
+      ],
+      "hint": "Think about the internal experience of the individual and their external social interactions."
+    },
+    {
+      "question": "Which trait domain is characterized by a tendency to experience a broad range of negative emotions with a frequency and intensity out of proportion to the situation?",
+      "answerOptions": [
+        {
+          "text": "Negative Affectivity",
+          "isCorrect": true,
+          "rationale": "This domain encompasses emotional lability, anxiety, and low self-esteem, forming the 'emotional' dimension of the trait model."
+        },
+        {
+          "text": "Anankastia",
+          "isCorrect": false,
+          "rationale": "This domain is more focused on rigid control and perfectionism rather than the general experience of negative emotions."
+        },
+        {
+          "text": "Dissociality",
+          "isCorrect": false,
+          "rationale": "This domain focuses on a lack of empathy and disregard for others, which is distinct from internal emotional distress."
+        },
+        {
+          "text": "Detachment",
+          "isCorrect": false,
+          "rationale": "Detachment involves social and emotional withdrawal, which often results in a lack of emotional expression rather than heightened negative affect."
+        }
+      ],
+      "hint": "This domain is often associated with high neuroticism in other psychological models."
+    },
+    {
+      "question": "How does the ICD-11 categorize a patient who meets the general criteria for a personality disorder but shows only occasional, minor functional impairment?",
+      "answerOptions": [
+        {
+          "text": "Mild Personality Disorder",
+          "isCorrect": true,
+          "rationale": "The 'Mild' level is used when there is clear evidence of personality dysfunction but impairment is limited to specific areas or is not consistently severe."
+        },
+        {
+          "text": "Personality Difficulty",
+          "isCorrect": false,
+          "rationale": "While 'Personality Difficulty' exists in the ICD-11, it is a Z-code for sub-threshold issues that do not fully meet the diagnostic criteria for a disorder."
+        },
+        {
+          "text": "Moderate Personality Disorder",
+          "isCorrect": false,
+          "rationale": "Moderate severity implies more widespread and marked impairment in multiple areas of life compared to the 'Mild' level."
+        },
+        {
+          "text": "Borderline Personality Disorder",
+          "isCorrect": false,
+          "rationale": "In ICD-11, 'Borderline' is a pattern specifier, not a basic level of severity."
+        }
+      ],
+      "hint": "This is the lowest level of formal diagnosis on the severity scale."
+    },
+    {
+      "question": "The trait domain 'Anankastia' in ICD-11 is most closely related to which formerly specific personality disorder type?",
+      "answerOptions": [
+        {
+          "text": "Obsessive-Compulsive Personality Disorder",
+          "isCorrect": true,
+          "rationale": "Anankastia covers the traits of perfectionism, rigidity, and the need for control that were central to the OCPD diagnosis."
+        },
+        {
+          "text": "Antisocial Personality Disorder",
+          "isCorrect": false,
+          "rationale": "Antisocial traits are primarily captured by the 'Dissociality' and 'Disinhibition' domains in the new system."
+        },
+        {
+          "text": "Avoidant Personality Disorder",
+          "isCorrect": false,
+          "rationale": "Avoidant traits are better represented by the 'Detachment' domain and aspects of 'Negative Affectivity'."
+        },
+        {
+          "text": "Schizotypal Personality Disorder",
+          "isCorrect": false,
+          "rationale": "Schizotypal traits are largely classified under 'Schizophrenia or other primary psychotic disorders' in ICD-11, though trait domains may still apply."
+        }
+      ],
+      "hint": "Think of the Greek word meaning 'compulsion' or 'necessity' and its link to rigid order."
+    },
+    {
+      "question": "Which trait domain describes a tendency to act impulsively in response to immediate stimuli without consideration of long-term consequences?",
+      "answerOptions": [
+        {
+          "text": "Disinhibition",
+          "isCorrect": true,
+          "rationale": "Disinhibition reflects a lack of planfulness and an inability to restrain immediate impulses or urges."
+        },
+        {
+          "text": "Negative Affectivity",
+          "isCorrect": false,
+          "rationale": "While emotions may drive behavior, this domain specifically refers to the emotional experience itself, not the lack of behavioral control."
+        },
+        {
+          "text": "Dissociality",
+          "isCorrect": false,
+          "rationale": "Though impulsivity can occur in dissocial individuals, Dissociality specifically refers to interpersonal coldness and lack of empathy."
+        },
+        {
+          "text": "Anankastia",
+          "isCorrect": false,
+          "rationale": "Anankastia is actually the opposite of this domain, representing extreme over-control and rigidity."
+        }
+      ],
+      "hint": "This domain is the polar opposite of conscientiousness and high self-control."
+    },
+    {
+      "question": "Why is the 'Borderline pattern' specifier included in the ICD-11 despite the move toward a dimensional model?",
+      "answerOptions": [
+        {
+          "text": "To facilitate clinical continuity and bridge the gap from previous diagnostic systems.",
+          "isCorrect": true,
+          "rationale": "Due to the high volume of research and clinical practice centered on 'Borderline' PD, the specifier was kept to maintain clinical utility."
+        },
+        {
+          "text": "Because it is the only personality disorder that cannot be measured dimensionally.",
+          "isCorrect": false,
+          "rationale": "Borderline features can be measured dimensionally, but the specifier serves a practical purpose for clinicians used to the old system."
+        },
+        {
+          "text": "To indicate that the patient has a primary psychotic disorder.",
+          "isCorrect": false,
+          "rationale": "Borderline pattern is a personality specifier and is distinct from primary psychotic disorders."
+        },
+        {
+          "text": "Because the trait domains fail to capture any aspects of borderline personality.",
+          "isCorrect": false,
+          "rationale": "The trait domains (especially Negative Affectivity and Disinhibition) capture much of the borderline profile, but the specifier adds specific diagnostic clarity."
+        }
+      ],
+      "hint": "Think about the transition for clinicians who have used the ICD-10 or DSM-5 for decades."
+    },
+    {
+      "question": "In evaluating 'interpersonal functioning' for an ICD-11 diagnosis, which of the following is a key area of assessment?",
+      "answerOptions": [
+        {
+          "text": "The ability to understand others' perspectives and maintain mutually rewarding relationships.",
+          "isCorrect": true,
+          "rationale": "Interpersonal functioning involves empathy, the capacity for intimacy, and the ability to manage conflict effectively."
+        },
+        {
+          "text": "The physical proximity a person maintains in a crowded room.",
+          "isCorrect": false,
+          "rationale": "While social, this is a behavioral observation rather than a core psychological component of personality functioning."
+        },
+        {
+          "text": "The number of social media followers or online contacts a person has.",
+          "isCorrect": false,
+          "rationale": "Quantity of contacts does not reflect the qualitative depth and health of interpersonal functioning required for diagnosis."
+        },
+        {
+          "text": "The individual's ability to perform complex mathematical calculations in a group.",
+          "isCorrect": false,
+          "rationale": "This measures cognitive performance in a social setting rather than the personality-driven capacity for relationship-building."
+        }
+      ],
+      "hint": "Focus on the qualitative aspects of empathy and the depth of connections with others."
+    },
+    {
+      "question": "What is the minimum duration typically required for personality disturbances to be diagnosed as a Personality Disorder in ICD-11?",
+      "answerOptions": [
+        {
+          "text": "2 years",
+          "isCorrect": true,
+          "rationale": "ICD-11 specifies that the pattern of maladaptive personality must be present for at least 2 years to ensure it is a stable trait rather than a transient state."
+        },
+        {
+          "text": "6 months",
+          "isCorrect": false,
+          "rationale": "Six months is often used for mood or anxiety disorders, but personality disorders require a longer period to demonstrate stability."
+        },
+        {
+          "text": "10 years",
+          "isCorrect": false,
+          "rationale": "While personality is long-standing, requiring 10 years would be an unnecessarily restrictive barrier to diagnosis and treatment."
+        },
+        {
+          "text": "1 month",
+          "isCorrect": false,
+          "rationale": "A one-month duration is far too short to distinguish a personality disorder from an acute reaction to stress or a temporary mental state."
+        }
+      ],
+      "hint": "The timeframe must be long enough to show the pattern is persistent and not just a reaction to a specific life event."
+    },
+    {
+      "question": "Which ICD-11 trait domain is characterized by a lack of empathy, a sense of entitlement, and a tendency to be exploitative or deceptive toward others?",
+      "answerOptions": [
+        {
+          "text": "Dissociality",
+          "isCorrect": true,
+          "rationale": "Dissociality is the core domain for traits involving a lack of concern for others and a disregard for social norms."
+        },
+        {
+          "text": "Detachment",
+          "isCorrect": false,
+          "rationale": "Detachment involves social withdrawal, but not necessarily the active exploitation or lack of empathy found in Dissociality."
+        },
+        {
+          "text": "Disinhibition",
+          "isCorrect": false,
+          "rationale": "Disinhibition focuses on impulsivity, whereas Dissociality focuses on the interpersonal and moral aspects of behavior."
+        },
+        {
+          "text": "Anankastia",
+          "isCorrect": false,
+          "rationale": "Anankastia involves self-discipline and rigid adherence to rules, which is often the opposite of dissocial behavior."
+        }
+      ],
+      "hint": "This domain covers the interpersonal features often associated with psychopathy or antisocial behavior."
+    }
+  ]
+}

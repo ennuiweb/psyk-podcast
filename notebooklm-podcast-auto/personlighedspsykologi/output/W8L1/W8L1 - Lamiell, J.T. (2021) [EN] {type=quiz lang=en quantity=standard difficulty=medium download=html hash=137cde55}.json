@@ -1,0 +1,395 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "To which American university did William Stern and his wife Clara flee in 1934 to escape Nazi Germany?",
+      "answerOptions": [
+        {
+          "text": "Harvard University",
+          "isCorrect": false,
+          "rationale": "While Gordon Allport was a professor here and knew Stern, this was not the institution where Stern took up his faculty position."
+        },
+        {
+          "text": "Duke University",
+          "isCorrect": true,
+          "rationale": "Stern joined the Psychology Department at Duke University after leaving Germany, where he worked until his death in 1938."
+        },
+        {
+          "text": "Clark University",
+          "isCorrect": false,
+          "rationale": "Although Clark University published some of Stern's work later, it was not his academic home in the United States."
+        },
+        {
+          "text": "University of North Carolina",
+          "isCorrect": false,
+          "rationale": "While located in the same state as his eventual home, this university is distinct from the private institution that offered him a position."
+        }
+      ],
+      "hint": "Consider the university located in Durham, North Carolina, that is historically associated with the tobacco industry."
+    },
+    {
+      "question": "Which psychologist forecast in 1938 that Stern’s personalistic orientation would 'yet have its day' despite running counter to American trends?",
+      "answerOptions": [
+        {
+          "text": "Wilhelm Wundt",
+          "isCorrect": false,
+          "rationale": "Wundt was a senior contemporary of Stern and the founder of experimental psychology, but he passed away in 1920, long before this forecast."
+        },
+        {
+          "text": "Hermann Ebbinghaus",
+          "isCorrect": false,
+          "rationale": "Ebbinghaus was Stern's mentor whose mechanistic views Stern actually opposed, and he died in 1909."
+        },
+        {
+          "text": "Gordon W. Allport",
+          "isCorrect": true,
+          "rationale": "Allport, a Harvard professor who knew Stern personally, made this optimistic prediction in the immediate aftermath of Stern's passing."
+        },
+        {
+          "text": "Max Wertheimer",
+          "isCorrect": false,
+          "rationale": "Wertheimer was a contemporary known for Gestalt psychology, but the text specifically attributes the forecast to a Harvard professor."
+        }
+      ],
+      "hint": "This individual was a prominent American psychologist known for his work on personality traits."
+    },
+    {
+      "question": "Stern’s personalistic perspective was primarily characterized by its opposition to which prevailing scientific trend of his time?",
+      "answerOptions": [
+        {
+          "text": "Experimental observation",
+          "isCorrect": false,
+          "rationale": "Stern actually valued the experimental approach as a counterweight to his own philosophical proclivities."
+        },
+        {
+          "text": "Mechanistic impersonalism",
+          "isCorrect": true,
+          "rationale": "Stern fought against the view that humans are merely aggregates of atoms or consciousness contents governed by blind causal laws."
+        },
+        {
+          "text": "Gestalt holism",
+          "isCorrect": false,
+          "rationale": "Stern generally found Gestalt psychology compatible with his views, though he cautioned against treating Gestalts as new types of 'elements'."
+        },
+        {
+          "text": "Human sciences (Geisteswissenschaften)",
+          "isCorrect": false,
+          "rationale": "Stern's views were actually aligned with this approach, which seeks to understand human actions holistically."
+        }
+      ],
+      "hint": "Think about the perspective that treats mental processes just as one would treat material bodies or mathematical points."
+    },
+    {
+      "question": "According to Stern's definition in 'Person and Thing' (1906), what is the fundamental characteristic of a 'person'?",
+      "answerOptions": [
+        {
+          "text": "An aggregate of consciousness contents",
+          "isCorrect": false,
+          "rationale": "This describes the impersonal, mechanistic view of humanity that Stern explicitly rejected."
+        },
+        {
+          "text": "A passive entity shaped by spatial constellations",
+          "isCorrect": false,
+          "rationale": "Stern used this as a description of how a mechanistic scientist might view a person, rather than his own definition."
+        },
+        {
+          "text": "A unique, self-activated, and goal-oriented unity",
+          "isCorrect": true,
+          "rationale": "Stern defined a person as an entity that forms a valuable unity over and above its parts and functions with purpose."
+        },
+        {
+          "text": "A biological tool for the survival of the collective",
+          "isCorrect": false,
+          "rationale": "This ignores the 'autotelic' nature of the person that Stern emphasized as primary."
+        }
+      ],
+      "hint": "Focus on the concepts of unity and self-directed purpose."
+    },
+    {
+      "question": "Why did Stern eventually prefer the term 'moments' ($Momente$) over 'parts' ($Teile$) when describing the components of a person?",
+      "answerOptions": [
+        {
+          "text": "To suggest that human features are temporary and fleeting",
+          "isCorrect": false,
+          "rationale": "The term 'moments' refers to facets of a whole, not necessarily to the duration of those features in time."
+        },
+        {
+          "text": "To avoid implying that parts exist independently prior to the whole person",
+          "isCorrect": true,
+          "rationale": "Stern argued that the whole person is ontologically prior to their facets, much like a jewel is prior to its facets."
+        },
+        {
+          "text": "To align his terminology with the physics of energy quanta",
+          "isCorrect": false,
+          "rationale": "Stern was critical of the 'natural science perspective' that reduced humans to energy quanta."
+        },
+        {
+          "text": "To emphasize that a person is merely a sequence of psychological contents",
+          "isCorrect": false,
+          "rationale": "Stern believed these contents converge on a unitary life course, rather than being a mere sequence."
+        }
+      ],
+      "hint": "Consider the relationship between the whole and its facets, and which one is considered 'primary' in Stern's thought."
+    },
+    {
+      "question": "What is the core idea behind Stern’s thesis of 'psychophysical neutrality'?",
+      "answerOptions": [
+        {
+          "text": "The mind and the body are two separate substances that do not interact",
+          "isCorrect": false,
+          "rationale": "This describes mind-body dualism, which Stern termed 'na\\\"ive personalism' and rejected."
+        },
+        {
+          "text": "The whole person is the primary fact, with 'mental' and 'physical' being secondary facets",
+          "isCorrect": true,
+          "rationale": "Stern argued that we do not have 'the physical' and 'the psychological' separately, but rather real persons who function as a unity."
+        },
+        {
+          "text": "Mental processes are nothing more than the mechanical coupling of physical atoms",
+          "isCorrect": false,
+          "rationale": "This is the reductive mechanistic view that Stern sought to overcome through his personalistic perspective."
+        },
+        {
+          "text": "Psychological health is achieved by balancing physical and mental energy equally",
+          "isCorrect": false,
+          "rationale": "While balanced development is good, it does not define the ontological status of the person as 'neutral'."
+        }
+      ],
+      "hint": "Think about which is the 'primary fact of the world' according to Stern: the parts or the whole person."
+    },
+    {
+      "question": "Which Aristotelian concept did Stern adopt to express the 'unitary, goal-striving causality' of the person?",
+      "answerOptions": [
+        {
+          "text": "Material cause",
+          "isCorrect": false,
+          "rationale": "The material cause refers to the physical matter of an entity, which Stern viewed as secondary to goal-striving."
+        },
+        {
+          "text": "Entelechy",
+          "isCorrect": true,
+          "rationale": "Stern explicitly used this concept to refer to the personal causality through which a person coordinates their 'moments' according to goals."
+        },
+        {
+          "text": "Efficient cause",
+          "isCorrect": false,
+          "rationale": "While efficient causes play a role, Stern believed they were insufficient for understanding personal doings without a teleological component."
+        },
+        {
+          "text": "Syllogism",
+          "isCorrect": false,
+          "rationale": "This is a logical structure of argument and is not related to Stern's theory of causality and goal-striving."
+        }
+      ],
+      "hint": "This term relates to a 'scientifically defensible teleology' and the notion of final cause."
+    },
+    {
+      "question": "In the context of Stern’s goal systems, what is the difference between 'autotelic' and 'heterotelic' goals?",
+      "answerOptions": [
+        {
+          "text": "Autotelic goals are biological, while heterotelic goals are purely social",
+          "isCorrect": false,
+          "rationale": "Both types of goals involve the person's psychological and social existence, and autotelic includes self-development."
+        },
+        {
+          "text": "Autotelic goals involve self-maintenance, while heterotelic goals are situated in external entities",
+          "isCorrect": true,
+          "rationale": "Autotelic goals are the person's own ($Selbstzwecke$), while heterotelic goals ($Fremdzwecke$) belong to other persons, collectives, or ideals."
+        },
+        {
+          "text": "Autotelic goals are conscious, whereas heterotelic goals are unconscious",
+          "isCorrect": false,
+          "rationale": "Stern's framework does not divide these goals primarily along the lines of conscious awareness."
+        },
+        {
+          "text": "Heterotelic goals always override autotelic goals in a healthy personality",
+          "isCorrect": false,
+          "rationale": "Stern believed in 'introception,' where the heterotelic is appropriated into the autotelic, rather than being overridden."
+        }
+      ],
+      "hint": "The prefix 'auto-' implies 'self,' while 'hetero-' implies 'other' or 'external'."
+    },
+    {
+      "question": "Stern used the term 'introception' ($Introzeption$) to describe which process?",
+      "answerOptions": [
+        {
+          "text": "The subconscious repression of external social demands",
+          "isCorrect": false,
+          "rationale": "Introception is an active and purposive process of appropriation, not a mechanism of repression."
+        },
+        {
+          "text": "The mechanical reaction to physical stimuli in the environment",
+          "isCorrect": false,
+          "rationale": "This would be an impersonal mechanistic view, which is the opposite of the active process Stern described."
+        },
+        {
+          "text": "The active appropriation of external goals into one's own self-system",
+          "isCorrect": true,
+          "rationale": "Introception allows a personality to embody outer goals without being degraded to a mere tool or thing."
+        },
+        {
+          "text": "The projection of one's own values onto passive objects in the world",
+          "isCorrect": false,
+          "rationale": "While Stern discussed the projection of values, he used different terminology for that 'exuding' process."
+        }
+      ],
+      "hint": "Think about how a person takes up 'the heterotelic into the autotelic' to become a 'micro-cosmos'."
+    },
+    {
+      "question": "How did Clara and William Stern define a 'pseudo-lie' in their 1909 study of child development?",
+      "answerOptions": [
+        {
+          "text": "A false statement made with the explicit intention to cause harm",
+          "isCorrect": false,
+          "rationale": "This would likely fall under a 'genuine lie' if the intent to deceive is present."
+        },
+        {
+          "text": "A statement known to be false but made without the intention to deceive",
+          "isCorrect": true,
+          "rationale": "Examples include playful fantasies or 'defense against unpleasantness' where the child tries to avoid disappointing an adult."
+        },
+        {
+          "text": "An accidental misstatement caused by a faulty memory",
+          "isCorrect": false,
+          "rationale": "If the awareness of falsehood is absent entirely, the Sterns argued one cannot speak of a lie at all."
+        },
+        {
+          "text": "A lie told by an adult that a child is recruited to repeat",
+          "isCorrect": false,
+          "rationale": "This is a social influence that leads to habitual lying, but the specific category of 'pseudo-lie' refers to the child's own motive."
+        }
+      ],
+      "hint": "Consider situations like playful fantasies where there is an awareness of untruth but no desire to trick someone."
+    },
+    {
+      "question": "Stern’s concept of 'convergence' ($Konvergenz$) refers to the interaction between which two factors?",
+      "answerOptions": [
+        {
+          "text": "The conscious mind and the unconscious 'id'",
+          "isCorrect": false,
+          "rationale": "This is a psychoanalytic distinction that is not central to Stern's personalistic theory of convergence."
+        },
+        {
+          "text": "Inner dispositions (potentialities) and outer influences",
+          "isCorrect": true,
+          "rationale": "Stern argued that psychological functions result from how a person's inner tendencies meet the affords and demands of the world."
+        },
+        {
+          "text": "Mathematical points and physical lines of force",
+          "isCorrect": false,
+          "rationale": "This reflects the mechanistic view of Ebbinghaus that Stern was writing against."
+        },
+        {
+          "text": "The goals of the individual and the survival of the species",
+          "isCorrect": false,
+          "rationale": "While related to autotelic/heterotelic concepts, convergence specifically addresses the developmental interplay of internal and external factors."
+        }
+      ],
+      "hint": "Think about how the 'propensities present in a child' meet the 'totality of outer influences'."
+    },
+    {
+      "question": "Which statement best summarizes Stern's view on values in 'Philosophy of Value' (1924)?",
+      "answerOptions": [
+        {
+          "text": "Values are social constructs with no inherent reality within the person",
+          "isCorrect": false,
+          "rationale": "Stern believed value inheres within persons because they are 'value-able' by nature."
+        },
+        {
+          "text": "'I evaluate, therefore I am value'",
+          "isCorrect": true,
+          "rationale": "Stern argued that because persons project and exude values, value must in some sense inhere within them from the beginning."
+        },
+        {
+          "text": "Things have more objective value than persons because they are constant",
+          "isCorrect": false,
+          "rationale": "Stern argued that things can only be evaluated passively and are not 'inherently valuable' like persons."
+        },
+        {
+          "text": "Value is an illusion created by the mechanical coupling of atoms",
+          "isCorrect": false,
+          "rationale": "Stern raised rhetorical questions to mock this mechanistic view, asserting that 'should' cannot exist in such a system."
+        }
+      ],
+      "hint": "This phrase is a personalistic play on Descartes' famous 'Cogito, ergo sum'."
+    },
+    {
+      "question": "Why did Stern emphasize that 'personalism is not individualism'?",
+      "answerOptions": [
+        {
+          "text": "Because he believed the individual should always be sacrificed for the state",
+          "isCorrect": false,
+          "rationale": "Stern was equally distant from a 'socialism' where individual freedom is choked by supra-personal demands."
+        },
+        {
+          "text": "Because he rejected the idea that the individual is a unique entity",
+          "isCorrect": false,
+          "rationale": "A primary tenet of personalism is that the person is a unique unity; his rejection was of 'one-sided individualism'."
+        },
+        {
+          "text": "Because personalism recognizes social duties and the person's embedding in a collective",
+          "isCorrect": true,
+          "rationale": "Stern argued that a person who pursues only narrow individual goals would be 'an extension-less point in emptiness'."
+        },
+        {
+          "text": "Because he believed that scientific psychology should only study group averages",
+          "isCorrect": false,
+          "rationale": "Stern was actually a champion of understanding phenomena at the level of the individual."
+        }
+      ],
+      "hint": "Think about the 'ethics of ability' and the idea that talent is a duty to society, not just a private privilege."
+    },
+    {
+      "question": "Stern’s 'ethics of ability' suggested that gifted individuals should view their talents as:",
+      "answerOptions": [
+        {
+          "text": "A private privilege to be enjoyed for personal happiness",
+          "isCorrect": false,
+          "rationale": "Stern explicitly stated that gifted individuals should not see their ability as a private privilege."
+        },
+        {
+          "text": "A special duty to themselves and to the entire society",
+          "isCorrect": true,
+          "rationale": "He believed the advancement of capable youth was a 'socio-ethical task of the first order'."
+        },
+        {
+          "text": "A biological accident that warrants no special treatment",
+          "isCorrect": false,
+          "rationale": "On the contrary, he believed it was a duty of the 'people at large' to recognize and advance these talents."
+        },
+        {
+          "text": "A strictly psychological trait with no ethical or social facets",
+          "isCorrect": false,
+          "rationale": "Stern wrote to Jonas Cohn that these questions must be considered in terms of their ethical, socio-political, and pedagogical facets."
+        }
+      ],
+      "hint": "Think about the balance between individual uniqueness and 'supra-personal demands'."
+    },
+    {
+      "question": "Stern agreed with Wilhelm Wundt’s concern that a psychology divorced from philosophy would:",
+      "answerOptions": [
+        {
+          "text": "Become more objective and scientifically rigorous",
+          "isCorrect": false,
+          "rationale": "Both Wundt and Stern believed that the quality of psychology would actually degrade without philosophical discourse."
+        },
+        {
+          "text": "Suffer from an immature and latent metaphysical perspective",
+          "isCorrect": true,
+          "rationale": "Wundt argued that philosophical considerations remain latent in psychology anyway, and ignoring them leads to deficiency and poor formulation."
+        },
+        {
+          "text": "Finally be able to establish laws as precise as those in physics",
+          "isCorrect": false,
+          "rationale": "This was the goal of Ebbinghaus and the mechanists, which Wundt and Stern viewed with skepticism."
+        },
+        {
+          "text": "Thrive by focusing exclusively on empirical data collection",
+          "isCorrect": false,
+          "rationale": "Stern believed that the need for a personalistic perspective would be revealed by 'conceptual analysis,' not empirical work alone."
+        }
+      ],
+      "hint": "Consider the metaphor of a 'struggle for existence' and the idea that philosophical thoughts will be 'latent' even if ignored."
+    }
+  ]
+}

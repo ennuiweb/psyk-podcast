@@ -1,0 +1,265 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "According to Lacan, what distinguishes the human child's reaction to their mirror image from that of a chimpanzee?",
+      "answerOptions": [
+        {
+          "text": "The child recognizes the image as a mere empty reflection and loses interest quickly.",
+          "isCorrect": false,
+          "rationale": "Lacan notes that while the monkey finds the image empty once mastered, the child's interest is sustained and leads to further exploration."
+        },
+        {
+          "text": "The child displays a series of gestures to experience the relationship between the image and reality.",
+          "isCorrect": true,
+          "rationale": "Lacan describes the child's reaction as a series of gestures exploring the relation between reflected movements and the environment."
+        },
+        {
+          "text": "The chimpanzee shows greater 'Aha-Erlebnis' (recognition) than the human infant.",
+          "isCorrect": false,
+          "rationale": "The human infant shows the 'Aha-Erlebnis' more significantly, characterized by jubilant mimicry that the monkey lacks."
+        },
+        {
+          "text": "The human child is unable to recognize their own image until they can walk.",
+          "isCorrect": false,
+          "rationale": "The text states that the mirror stage begins around six months, while the infant is still unable to walk or stand."
+        }
+      ],
+      "hint": "Think about the persistence of the behavior and the active testing of the reflection's movements."
+    },
+    {
+      "question": "What term does Lacan use to describe the primordial form of the ego before it is objectified in language?",
+      "answerOptions": [
+        {
+          "text": "The Social-$I$",
+          "isCorrect": false,
+          "rationale": "The social-$I$ is a later development where the subject is linked to socially elaborated situations."
+        },
+        {
+          "text": "The Ideal-$I$",
+          "isCorrect": true,
+          "rationale": "The Ideal-$I$ is the term for the primordial form of the ego established through identification with the mirror image."
+        },
+        {
+          "text": "The Superego",
+          "isCorrect": false,
+          "rationale": "The Superego is a different psychical agency and is not the primary term Lacan uses for the initial mirror-stage identification."
+        },
+        {
+          "text": "The fragmented body",
+          "isCorrect": false,
+          "rationale": "The fragmented body represents the state of the subject before the mirror stage provides a sense of totality."
+        }
+      ],
+      "hint": "This term includes a prefix suggesting an aspirational or prototypical version of the self."
+    },
+    {
+      "question": "At what age range does Lacan primarily place the activity of the mirror stage?",
+      "answerOptions": [
+        {
+          "text": "Birth to six months",
+          "isCorrect": false,
+          "rationale": "Lacan suggests the mirror stage begins from the age of six months, rather than being completed by then."
+        },
+        {
+          "text": "Six months to eighteen months",
+          "isCorrect": true,
+          "rationale": "Lacan identifies this period as when the child assumes the specular image and experiences the transformation of the subject."
+        },
+        {
+          "text": "Two years to five years",
+          "isCorrect": false,
+          "rationale": "This period typically follows the mirror stage and involves more complex social and linguistic development."
+        },
+        {
+          "text": "Adolescence",
+          "isCorrect": false,
+          "rationale": "The mirror stage is a foundational event in early infancy, well before the onset of adolescence."
+        }
+      ],
+      "hint": "The period begins when the infant is still motorically uncoordinated and ends before the typical peak of the Oedipus complex."
+    },
+    {
+      "question": "Lacan uses the example of a female pigeon to demonstrate which principle?",
+      "answerOptions": [
+        {
+          "text": "Biological maturation can depend on the visual perception of a member of the same species.",
+          "isCorrect": true,
+          "rationale": "The maturation of the pigeon's gonad is triggered by seeing another member of its species or its own reflection."
+        },
+        {
+          "text": "Animals are incapable of identifying with images in a mirror.",
+          "isCorrect": false,
+          "rationale": "The example actually shows that animals can be biologically affected by a mirror reflection."
+        },
+        {
+          "text": "Gonadal maturation is strictly a result of internal hormone cycles.",
+          "isCorrect": false,
+          "rationale": "Lacan cites this to show that external 'Gestalt' factors are necessary for these internal biological processes."
+        },
+        {
+          "text": "Pigeons exhibit a higher level of instrumental intelligence than humans.",
+          "isCorrect": false,
+          "rationale": "The text compares human intelligence to chimpanzees, not pigeons, and focuses on formative effects in birds."
+        }
+      ],
+      "hint": "Consider how the presence of another (even as a reflection) affects internal physical development."
+    },
+    {
+      "question": "The image of the 'fragmented body' is most notably reflected in the paintings of which artist, according to Lacan?",
+      "answerOptions": [
+        {
+          "text": "Leonardo da Vinci",
+          "isCorrect": false,
+          "rationale": "While a master of anatomy, da Vinci is not the artist Lacan identifies with the 'intestinal persecutions' of the fragmented body."
+        },
+        {
+          "text": "Salvador Dalí",
+          "isCorrect": false,
+          "rationale": "Dalí is a Surrealist, but Lacan specifically credits a much earlier painter with fixing these fantasies for all time."
+        },
+        {
+          "text": "Hieronymus Bosch",
+          "isCorrect": true,
+          "rationale": "Lacan explicitly references Bosch's paintings from the fifteenth century as representative of the fragmented body-image."
+        },
+        {
+          "text": "Claude Lévi-Strauss",
+          "isCorrect": false,
+          "rationale": "Lévi-Strauss was an anthropologist mentioned in the footnotes, not a painter of fragmented bodies."
+        }
+      ],
+      "hint": "This artist is known for detailed, often grotesque fifteenth-century depictions of hell and disjointed figures."
+    },
+    {
+      "question": "What does Lacan mean by the term 'méconnaissance' in relation to the ego?",
+      "answerOptions": [
+        {
+          "text": "The ego's ability to accurately perceive its own biological needs.",
+          "isCorrect": false,
+          "rationale": "This would be the opposite of méconnaissance, which implies a failure of accurate perception or misrecognition."
+        },
+        {
+          "text": "An essential misrecognition or illusion of autonomy that defines the ego's structure.",
+          "isCorrect": true,
+          "rationale": "Lacan argues that the ego is constituted by an illusion of self-sufficiency and autonomy that hides its true origins."
+        },
+        {
+          "text": "The process by which a child learns to recognize their mother in the mirror.",
+          "isCorrect": false,
+          "rationale": "Méconnaissance refers to the subject's relationship with their own ego-image, not specifically the recognition of others."
+        },
+        {
+          "text": "A type of amnesia occurring after a traumatic psychical event.",
+          "isCorrect": false,
+          "rationale": "In this context, the term refers to a structural misrecognition rather than a loss of memory."
+        }
+      ],
+      "hint": "This French term refers to a fundamental misunderstanding or misidentification built into the self."
+    },
+    {
+      "question": "According to Lacan, what biological condition in humans makes the mirror stage necessary?",
+      "answerOptions": [
+        {
+          "text": "The specific prematurity of birth in the human species.",
+          "isCorrect": true,
+          "rationale": "Lacan points to the lack of motor coordination and anatomical incompleteness at birth as the basis for this psychical development."
+        },
+        {
+          "text": "The development of a complex cortex earlier than other primates.",
+          "isCorrect": false,
+          "rationale": "While the cortex is mentioned, Lacan emphasizes the 'organic insufficiency' and prematurity rather than advanced development."
+        },
+        {
+          "text": "The inherent aggressive nature of the human organism.",
+          "isCorrect": false,
+          "rationale": "Aggressivity is an effect of the mirror stage and the formation of the $I$, not the biological cause of it."
+        },
+        {
+          "text": "The early onset of linguistic abilities in infants.",
+          "isCorrect": false,
+          "rationale": "The mirror stage occurs *before* language restores the function of the subject in the universal."
+        }
+      ],
+      "hint": "Focus on the infant's physical state of helplessness and lack of coordination at birth."
+    },
+    {
+      "question": "Lacan describes the mirror stage as a transition from 'insufficiency' to what state?",
+      "answerOptions": [
+        {
+          "text": "Social integration",
+          "isCorrect": false,
+          "rationale": "Social integration is a later stage that follows the completion of the mirror stage."
+        },
+        {
+          "text": "Anticipation",
+          "isCorrect": true,
+          "rationale": "The mirror stage is a drama where the subject anticipates the maturation of their power through a mirage of totality."
+        },
+        {
+          "text": "Absolute autonomy",
+          "isCorrect": false,
+          "rationale": "Autonomy in the ego is described as an illusion or 'flight of fancy' rather than a true state reached."
+        },
+        {
+          "text": "The Symbolic order",
+          "isCorrect": false,
+          "rationale": "While related, the text focuses on the transition within the Imaginary identification with the 'Gestalt'."
+        }
+      ],
+      "hint": "The infant sees a 'mirage' of their own future power and physical wholeness."
+    },
+    {
+      "question": "In the context of the mirror stage, what is the significance of the 'Gestalt'?",
+      "answerOptions": [
+        {
+          "text": "It is a internal feeling of bodily harmony experienced by the infant.",
+          "isCorrect": false,
+          "rationale": "The Gestalt is given in an 'exteriority,' meaning it is something seen outside oneself, not just felt internally."
+        },
+        {
+          "text": "It is the total form of the body that appears to the subject as an external mirage.",
+          "isCorrect": true,
+          "rationale": "The subject identifies with this external total form, which symbolizes the mental permanence of the $I$."
+        },
+        {
+          "text": "It refers to the maternal support that holds the infant in front of the mirror.",
+          "isCorrect": false,
+          "rationale": "While supports exist, the 'Gestalt' specifically refers to the visual form of the body in the mirror."
+        },
+        {
+          "text": "It is a mathematical formula for calculating psychical causality.",
+          "isCorrect": false,
+          "rationale": "Lacan uses 'Gestalt' as a psychological and biological term for a formative total shape."
+        }
+      ],
+      "hint": "Think of it as a 'total form' or 'integrated whole' that is perceived visually."
+    },
+    {
+      "question": "How does Lacan characterize the 'function of the mirror-stage' in relation to the organism's reality?",
+      "answerOptions": [
+        {
+          "text": "It establishes a relation between the $Innenwelt$ and the $Umwelt$.",
+          "isCorrect": true,
+          "rationale": "Lacan states the function is to establish a relation between the organism and its reality, or its inner and outer worlds."
+        },
+        {
+          "text": "It separates the conscious mind from the unconscious mind.",
+          "isCorrect": false,
+          "rationale": "While the mirror stage influences mental development, Lacan focuses here on the organism's relation to its environment."
+        },
+        {
+          "text": "It allows the subject to bypass the need for social dialectic.",
+          "isCorrect": false,
+          "rationale": "The mirror stage actually prepares the subject for entry into the social dialectic."
+        },
+        {
+          "text": "It provides a realistic and accurate assessment of the child's physical power.",
+          "isCorrect": false,
+          "rationale": "Lacan calls it a 'mirage' and an 'orthopaedic' form, suggesting it is an idealization rather than a realistic assessment."
+        }
+      ],
+      "hint": "This involves two German terms for the internal and external environments."
+    }
+  ]
+}

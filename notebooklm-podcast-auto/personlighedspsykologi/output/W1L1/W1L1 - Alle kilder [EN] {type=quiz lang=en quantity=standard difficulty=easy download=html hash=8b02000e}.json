@@ -1,0 +1,265 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "Based on the etymology provided in the text, what was the original meaning of the word 'person'?",
+      "answerOptions": [
+        {
+          "text": "A mask or social role",
+          "isCorrect": true,
+          "rationale": "The term originates from the Etruscan or Greek 'persona', which referred to the outer performance or character presented by an actor."
+        },
+        {
+          "text": "An individual's inner soul",
+          "isCorrect": false,
+          "rationale": "The text explicitly contrasts the original external meaning of 'persona' with later internal psychological interpretations."
+        },
+        {
+          "text": "A biological organism",
+          "isCorrect": false,
+          "rationale": "While biology is a factor in personality, the etymological root focuses on the social and theatrical performance rather than physiology."
+        },
+        {
+          "text": "A legal entity",
+          "isCorrect": false,
+          "rationale": "This is a modern legal definition that does not align with the theatrical origins described in the psychological text."
+        }
+      ],
+      "hint": "Think about the role an actor plays on stage and what they might wear to signify a character."
+    },
+    {
+      "question": "Which psychological approach is primarily concerned with the 'unconscious' and the dynamic processes between different parts of the psyche?",
+      "answerOptions": [
+        {
+          "text": "Psychoanalysis",
+          "isCorrect": true,
+          "rationale": "This field, founded by Sigmund Freud, posits that the psyche is decentralized and influenced by unconscious elements like the id."
+        },
+        {
+          "text": "Phenomenology",
+          "isCorrect": false,
+          "rationale": "This approach focuses on conscious experience and the 'lived world' rather than the hidden unconscious drives."
+        },
+        {
+          "text": "Trait theory",
+          "isCorrect": false,
+          "rationale": "This perspective focuses on measuring stable, observable characteristics rather than internal dynamic psychic processes."
+        },
+        {
+          "text": "Behaviorism",
+          "isCorrect": false,
+          "rationale": "This school of thought emphasizes learned patterns from the environment rather than the internal structure of the unconscious."
+        }
+      ],
+      "hint": "Consider the theory that involves the ego, superego, and id."
+    },
+    {
+      "question": "In the context of personality psychology, what does the term 'agency' refer to?",
+      "answerOptions": [
+        {
+          "text": "The active, steering element of the individual",
+          "isCorrect": true,
+          "rationale": "Agency describes the individual as an active center that directs actions and makes conscious choices."
+        },
+        {
+          "text": "The biological influence of genetics",
+          "isCorrect": false,
+          "rationale": "Biological influences are typically categorized under 'determination' rather than the active steering of the self."
+        },
+        {
+          "text": "The social institutions that shape a person",
+          "isCorrect": false,
+          "rationale": "Social structures relate more to the 'context' or 'sociocultural' aspects of personality development."
+        },
+        {
+          "text": "The stability of personality over time",
+          "isCorrect": false,
+          "rationale": "Stability is a question of consistency or 'historicity' rather than the capacity for active self-direction."
+        }
+      ],
+      "hint": "Focus on the concept of an individual being the 'driver' of their own life."
+    },
+    {
+      "question": "According to Michael Lewis, what is a major difficulty when measuring childhood depression using different observers?",
+      "answerOptions": [
+        {
+          "text": "Raters such as parents, teachers, and children often disagree",
+          "isCorrect": true,
+          "rationale": "Studies show low levels of agreement between different informants, suggesting that behavior may be situationally specific."
+        },
+        {
+          "text": "Children are unable to perceive their own internal states",
+          "isCorrect": false,
+          "rationale": "The text mentions that children focus on internal feelings, while parents focus more on overt behavior."
+        },
+        {
+          "text": "Clinical interviews are always more reliable than questionnaires",
+          "isCorrect": false,
+          "rationale": "The source suggests that even with external raters like clinicians, patterns of agreement are inconsistent."
+        },
+        {
+          "text": "Depression cannot be measured in children under age nine",
+          "isCorrect": false,
+          "rationale": "The text discusses measuring depression in children as young as infants and nine-year-olds; the issue is reliability, not possibility."
+        }
+      ],
+      "hint": "Reflect on how a child might act differently at home versus at school."
+    },
+    {
+      "question": "Which developmental model assumes that earlier forms of behavior are completely replaced by newer, irreversible structures?",
+      "answerOptions": [
+        {
+          "text": "Transformational model",
+          "isCorrect": true,
+          "rationale": "Often likened to a caterpillar becoming a butterfly, this model posits that the previous stage ceases to exist once the new form emerges."
+        },
+        {
+          "text": "Accretional model",
+          "isCorrect": false,
+          "rationale": "This model suggests that development involves an increase in the amount of an existing structure rather than a change in type."
+        },
+        {
+          "text": "Additive model",
+          "isCorrect": false,
+          "rationale": "The additive model allows for the coexistence of earlier and later abilities, enabling reversibility or regression."
+        },
+        {
+          "text": "Contextual model",
+          "isCorrect": false,
+          "rationale": "This model emphasizes adaptation to current circumstances rather than a fixed sequence of internal transformations."
+        }
+      ],
+      "hint": "This model is frequently associated with Piaget's stages of cognitive development."
+    },
+    {
+      "question": "What did the longitudinal study on attachment conducted by Michael Lewis reveal about the stability of attachment from age 1 to age 18?",
+      "answerOptions": [
+        {
+          "text": "Attachment at age 1 did not significantly predict attachment at age 18",
+          "isCorrect": true,
+          "rationale": "The study found that 18-year-old attachment was more related to concurrent factors, like family divorce, than infant attachment status."
+        },
+        {
+          "text": "Secure attachment in infancy acts as a permanent 'inoculation' against later problems",
+          "isCorrect": false,
+          "rationale": "The text explicitly critiques the 'inoculation' theory, noting that secure 1-year-olds could still be insecure at 18."
+        },
+        {
+          "text": "Insecure infants are nearly 90% likely to remain insecure as adults",
+          "isCorrect": false,
+          "rationale": "The study data showed that only 38% of insecure 1-year-olds remained insecure by age 18."
+        },
+        {
+          "text": "Attachment is a fixed trait determined by DNA",
+          "isCorrect": false,
+          "rationale": "The findings support a contextual view where attachment representations change based on the environment."
+        }
+      ],
+      "hint": "Consider the impact of significant life events, such as family changes, compared to early infant experiences."
+    },
+    {
+      "question": "In the contextual model of development, how is the 'past' or 'history' generally viewed?",
+      "answerOptions": [
+        {
+          "text": "As a construction created in the present to provide meaning",
+          "isCorrect": true,
+          "rationale": "The contextual view suggests that our current needs and goals lead us to selectively reconstruct our memories of the past."
+        },
+        {
+          "text": "As a fixed, objective series of events that determine the future",
+          "isCorrect": false,
+          "rationale": "This view is characteristic of the organismic model, which the contextual model challenges."
+        },
+        {
+          "text": "As an accurate 'photograph' stored in the brain's long-term memory",
+          "isCorrect": false,
+          "rationale": "The text rejects the 'memory-as-photograph' model in favor of memory as a fluid, current construction."
+        },
+        {
+          "text": "As a collection of biological traits that cannot be altered",
+          "isCorrect": false,
+          "rationale": "The model emphasizes social and psychological adaptation over unchangeable biological determinism."
+        }
+      ],
+      "hint": "Think about how we might tell a story about our childhood to explain why we are the way we are today."
+    },
+    {
+      "question": "Which research method uses ambiguous stimuli like inkblots or pictures to uncover unconscious motives?",
+      "answerOptions": [
+        {
+          "text": "Projective tests",
+          "isCorrect": true,
+          "rationale": "These methods, like the TAT or Rorschach, assume that individuals project their own unconscious feelings onto neutral images."
+        },
+        {
+          "text": "Questionnaires",
+          "isCorrect": false,
+          "rationale": "Questionnaires rely on self-reporting and direct questions about conscious traits and behaviors."
+        },
+        {
+          "text": "Case studies",
+          "isCorrect": false,
+          "rationale": "While case studies can look at unconscious material, they primarily involve long, qualitative descriptions of a person's history."
+        },
+        {
+          "text": "Diary methods",
+          "isCorrect": false,
+          "rationale": "Diary methods involve recording daily life in specific contexts to understand personality in social situations."
+        }
+      ],
+      "hint": "These tests are often used in psychodynamic traditions to see 'hidden' parts of the mind."
+    },
+    {
+      "question": "What is the 'simplex pattern' often found in longitudinal personality studies?",
+      "answerOptions": [
+        {
+          "text": "The correlation between events decreases as the time between them increases",
+          "isCorrect": true,
+          "rationale": "The text explains that while we can predict short-term behavior, our power to predict decreases significantly over longer spans."
+        },
+        {
+          "text": "Personality traits become simpler and more consolidated as people age",
+          "isCorrect": false,
+          "rationale": "The simplex pattern refers to statistical correlations over time, not the complexity of personality structures."
+        },
+        {
+          "text": "Different raters eventually converge on a single view of an individual",
+          "isCorrect": false,
+          "rationale": "The text argues the opposite: that rater disagreement is a persistent problem in measurement."
+        },
+        {
+          "text": "Biological traits are easier to measure than social traits",
+          "isCorrect": false,
+          "rationale": "The term specifically describes the decay of predictive power in longitudinal data regardless of the trait type."
+        }
+      ],
+      "hint": "Think about how much easier it is to predict where you will be in five minutes versus five years."
+    },
+    {
+      "question": "Which orientation point in personality psychology deals with whether the person is determined by biological, psychic, or social factors?",
+      "answerOptions": [
+        {
+          "text": "Determination",
+          "isCorrect": true,
+          "rationale": "This concept explores the underlying 'causes' or forces—such as genes or social environments—that build personality."
+        },
+        {
+          "text": "Historicity",
+          "isCorrect": false,
+          "rationale": "Historicity focuses on the time-dimension, including the development of the species or the individual's life history."
+        },
+        {
+          "text": "Essence vs. Context",
+          "isCorrect": false,
+          "rationale": "This orientation focuses on whether personality is 'inside' the body or exists 'between' people in social interactions."
+        },
+        {
+          "text": "Agency",
+          "isCorrect": false,
+          "rationale": "Agency is about the individual's capacity to steer themselves, whereas determination looks at what 'drives' them from the outside or inside."
+        }
+      ],
+      "hint": "This term relates to finding the 'pre-set' conditions that shape an individual."
+    }
+  ]
+}

@@ -1,0 +1,265 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "Approximately what percentage of the variance in individual personality scores is attributed to heritable influences?",
+      "answerOptions": [
+        {
+          "text": "$10\\%$",
+          "isCorrect": false,
+          "rationale": "While genetic influence is present, this value significantly underestimates the heritability found in behavioral genetic meta-analyses."
+        },
+        {
+          "text": "$40\\%$",
+          "isCorrect": true,
+          "rationale": "Research indicates that nearly half of personality variance is due to heritable factors, necessitating an evolutionary understanding of genes."
+        },
+        {
+          "text": "$75\\%$",
+          "isCorrect": false,
+          "rationale": "This value overstates the role of genetics, as environmental influences play a substantial role in shaping personality alongside heritability."
+        },
+        {
+          "text": "$95\\%$",
+          "isCorrect": false,
+          "rationale": "This suggests personality is almost entirely determined by genes at birth, which contradicts the known importance of environmental calibration."
+        }
+      ],
+      "hint": "Consider the common statistical estimate for heritability cited in modern behavioral genetic studies."
+    },
+    {
+      "question": "Which approach to personality research is characterized as 'bottom-up' and 'atheoretical' because it relies on factor-analytical analyses of adjectives?",
+      "answerOptions": [
+        {
+          "text": "The adaptationist approach",
+          "isCorrect": false,
+          "rationale": "The adaptationist approach is a top-down, theoretical method that uses evolutionary logic to predict personality patterns."
+        },
+        {
+          "text": "The lexical approach",
+          "isCorrect": true,
+          "rationale": "This approach assumes important traits are encoded in language and uses data-driven reductions like the Big Five without a prior theoretical framework."
+        },
+        {
+          "text": "The developmental calibration approach",
+          "isCorrect": false,
+          "rationale": "Calibration is a specific hypothesis within evolutionary theory focusing on how traits adjust to environmental demands."
+        },
+        {
+          "text": "The cognitive-behavioral approach",
+          "isCorrect": false,
+          "rationale": "This refers to clinical and behavioral frameworks rather than the descriptive, dictionary-based categorization of traits."
+        }
+      ],
+      "hint": "Think of the method that uses vocabulary as the primary source for identifying personality factors."
+    },
+    {
+      "question": "According to the authors' three-hypothesis model, what is the primary function of identifying 'Past Adaptive Problems'?",
+      "answerOptions": [
+        {
+          "text": "To determine what personality traits are present",
+          "isCorrect": true,
+          "rationale": "Understanding the consistent pressures ancestors faced helps explain why specific behavioral adaptations (traits) evolved in the first place."
+        },
+        {
+          "text": "To explain why trait levels vary across a population",
+          "isCorrect": false,
+          "rationale": "Explaining population variation is the focus of the second hypothesis regarding adaptive trade-offs and balancing selection."
+        },
+        {
+          "text": "To predict how traits will change in old age",
+          "isCorrect": false,
+          "rationale": "Changes across the lifespan are addressed by the third hypothesis concerning developmental calibration."
+        },
+        {
+          "text": "To prove that environment has no influence on personality",
+          "isCorrect": false,
+          "rationale": "Evolutionary theory explicitly integrates environmental influence through the concept of adaptive calibration to specific contexts."
+        }
+      ],
+      "hint": "The first step in the causal chain focuses on the origins and categories of behavioral motivations."
+    },
+    {
+      "question": "Which biological concept is HEXACO Emotionality most directly linked to, according to evolutionary personality theory?",
+      "answerOptions": [
+        {
+          "text": "Reciprocal altruism",
+          "isCorrect": false,
+          "rationale": "Reciprocal altruism is typically linked to Honesty-Humility and Agreeableness, which govern cooperation with non-relatives."
+        },
+        {
+          "text": "Kin selection",
+          "isCorrect": true,
+          "rationale": "Emotionality relates to the investment in and protection of individuals who share copies of one's genes."
+        },
+        {
+          "text": "Balancing selection",
+          "isCorrect": false,
+          "rationale": "This is a genetic mechanism that maintains trait variation in a population rather than a specific biological process like investing in relatives."
+        },
+        {
+          "text": "Somatic effort",
+          "isCorrect": false,
+          "rationale": "While related to survival, somatic effort is a broader category, whereas Emotionality specifically tracks the costs and benefits of social investment in kin."
+        }
+      ],
+      "hint": "Recall which trait involves the capacity for extended social behavior centered on genetic relatives."
+    },
+    {
+      "question": "What does the hypothesis of 'Adaptive Trade-offs' suggest about the different levels of personality traits observed in humans?",
+      "answerOptions": [
+        {
+          "text": "Varying levels are simply random genetic noise with no function",
+          "isCorrect": false,
+          "rationale": "The source argues that while some view variation as noise, the trade-off hypothesis suggests these variations are functional responses to different environments."
+        },
+        {
+          "text": "There is a single optimal level for every personality trait",
+          "isCorrect": false,
+          "rationale": "Trade-offs imply that different levels of a trait provide different costs and benefits, allowing multiple 'best' solutions to exist."
+        },
+        {
+          "text": "Variation exists because different environments favor different trait levels",
+          "isCorrect": true,
+          "rationale": "Balancing selection maintains a range of levels because what is adaptive in one context (e.g., high anger for the strong) may be maladaptive in another."
+        },
+        {
+          "text": "Trait variation is a byproduct of modern industrialization",
+          "isCorrect": false,
+          "rationale": "Variation is considered a result of ancient evolutionary pressures and trade-offs, though modern complexity can further encourage diversity."
+        }
+      ],
+      "hint": "Consider why evolution might preserve a spectrum of behaviors rather than selecting for one perfect average."
+    },
+    {
+      "question": "According to the principle of adaptive calibration, why do adolescents and young adults often score higher in selfish traits?",
+      "answerOptions": [
+        {
+          "text": "They have not yet developed the cognitive capacity for altruism",
+          "isCorrect": false,
+          "rationale": "Selfishness in this context is viewed as a functional adaptation to life transitions rather than a cognitive deficit."
+        },
+        {
+          "text": "To prioritize status-seeking while starting their own family",
+          "isCorrect": true,
+          "rationale": "Higher selfishness can help individuals secure resources and status as they transition from their nuclear family to independence."
+        },
+        {
+          "text": "Because they are reacting to negative parenting in modern society",
+          "isCorrect": false,
+          "rationale": "While environment matters, the source describes these shifts as predictable life-history transitions that occur even in healthy development."
+        },
+        {
+          "text": "To avoid the costs of kin selection",
+          "isCorrect": false,
+          "rationale": "Selfish traits during youth are more about self-advancement in competitive social and mating markets than avoiding kin investment."
+        }
+      ],
+      "hint": "Think about the specific adaptive goals associated with leaving one's childhood home and entering adulthood."
+    },
+    {
+      "question": "How does environmental complexity influence personality differences across various nations?",
+      "answerOptions": [
+        {
+          "text": "Complexity reduces personality variation to promote group harmony",
+          "isCorrect": false,
+          "rationale": "More complex environments actually tend to widen the range of niches available, leading to more diverse personality profiles."
+        },
+        {
+          "text": "There is no correlation between social complexity and personality",
+          "isCorrect": false,
+          "rationale": "The source specifically notes that larger personality differences emerge in more complex societies."
+        },
+        {
+          "text": "More complex societies encourage larger personality differences",
+          "isCorrect": true,
+          "rationale": "Diverse environmental and cultural challenges provide more 'niches,' allowing for a wider variety of behavioral solutions to emerge."
+        },
+        {
+          "text": "Complex societies lead to a universal 'modern' personality type",
+          "isCorrect": false,
+          "rationale": "Research suggests complexity fosters differentiation rather than homogenization of personality traits."
+        }
+      ],
+      "hint": "Think about how a greater number of social roles or niches might affect the diversity of behavioral strategies."
+    },
+    {
+      "question": "In the context of the HEXACO model and reciprocal altruism, which trait involves the willingness to forgive versus punish exploitation?",
+      "answerOptions": [
+        {
+          "text": "Honesty-Humility",
+          "isCorrect": false,
+          "rationale": "Honesty-Humility is associated with the tendency to initiate cooperation or exploitation, rather than the reaction to it."
+        },
+        {
+          "text": "Agreeableness",
+          "isCorrect": true,
+          "rationale": "In the HEXACO model, Agreeableness specifically tracks the individual's response to being exploited by others."
+        },
+        {
+          "text": "Emotionality",
+          "isCorrect": false,
+          "rationale": "Emotionality is linked to kin selection and self-preservation, not the dynamics of reciprocal altruism with non-kin."
+        },
+        {
+          "text": "Conscientiousness",
+          "isCorrect": false,
+          "rationale": "Conscientiousness relates to effort, planning, and task-oriented behavior rather than interpersonal cooperation strategies."
+        }
+      ],
+      "hint": "Recall that this trait is one half of the reciprocal altruism dyad, focusing on the reaction to others' behavior."
+    },
+    {
+      "question": "Which type of gene-environment interaction occurs when a child's personality triggers a specific response from their environment?",
+      "answerOptions": [
+        {
+          "text": "Passive interaction",
+          "isCorrect": false,
+          "rationale": "Passive interaction occurs when parents pass on both genes and the environment, such as a musical parent providing instruments."
+        },
+        {
+          "text": "Evocative interaction",
+          "isCorrect": true,
+          "rationale": "This happens when an individual's traits 'evoke' reactions from others that then further reinforce or alter that trait's expression."
+        },
+        {
+          "text": "Active interaction",
+          "isCorrect": false,
+          "rationale": "Active interaction involves the individual specifically seeking out environments that match their personality."
+        },
+        {
+          "text": "Static interaction",
+          "isCorrect": false,
+          "rationale": "This is not a recognized category of gene-environment interaction in the evolutionary developmental framework provided."
+        }
+      ],
+      "hint": "Look for the term that describes the environment 'responding' to the child's presence or actions."
+    },
+    {
+      "question": "From an evolutionary perspective, what evidence suggests that psychopathy may be an adaptation rather than a biological deficit?",
+      "answerOptions": [
+        {
+          "text": "Psychopaths typically have higher IQs than the general population",
+          "isCorrect": false,
+          "rationale": "While they lack the 'low IQ' deficits often found in general criminality, they do not necessarily have superior intelligence."
+        },
+        {
+          "text": "They achieve significant reproductive outputs and avoid targeting kin",
+          "isCorrect": true,
+          "rationale": "The strategic use of exploitation, high reproduction, and the preservation of kin suggests a calibrated, functional strategy."
+        },
+        {
+          "text": "Psychopathy is found to be unstable and changes randomly over time",
+          "isCorrect": false,
+          "rationale": "Adaptations are generally reliable patterns; psychopathy is shown to be a responsive but proficient strategy for exploitation."
+        },
+        {
+          "text": "Psychopaths are unable to recognize vulnerability in others",
+          "isCorrect": false,
+          "rationale": "Actually, research shows they are proficient at recognizing vulnerability, which is a hallmark of a functional exploitative adaptation."
+        }
+      ],
+      "hint": "Look for hallmarks of biological success and strategic behavioral patterns that favor the survival of one's own genes."
+    }
+  ]
+}

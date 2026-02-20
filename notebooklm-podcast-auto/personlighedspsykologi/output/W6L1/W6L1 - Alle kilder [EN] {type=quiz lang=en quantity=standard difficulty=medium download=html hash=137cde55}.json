@@ -1,0 +1,307 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "According to the source material, what is the fundamental 'dilemma' encountered when attempting to study one's own consciousness through observation?",
+      "answerOptions": [
+        {
+          "text": "The consciousness being observed is identical to the consciousness doing the observing.",
+          "isCorrect": true,
+          "rationale": "Phenomenology acknowledges that a subject cannot split itself into a completely detached observer and an independent object of study."
+        },
+        {
+          "text": "The speed of thought exceeds the capacity of sensory organs to record data.",
+          "isCorrect": false,
+          "rationale": "This focuses on physiological limitations rather than the ontological problem of subject-object identity."
+        },
+        {
+          "text": "External stimuli always contaminate the purity of internal reflection.",
+          "isCorrect": false,
+          "rationale": "While external factors exist, the core dilemma described is the lack of separation between the observer and the observed."
+        },
+        {
+          "text": "Language is too imprecise to capture the nuance of the immediate experience.",
+          "isCorrect": false,
+          "rationale": "Though the text mentions linguistic difficulty, the primary 'dilemma' refers to the structural impossibility of self-observation."
+        }
+      ],
+      "hint": "Consider the relationship between the 'subject' who looks and the 'object' being looked at in this context."
+    },
+    {
+      "question": "In the context of psychological phenomenology, what does the term 'phenomenon' (derived from the Greek $phainomenon$) literally mean?",
+      "answerOptions": [
+        {
+          "text": "A hidden truth to be uncovered.",
+          "isCorrect": false,
+          "rationale": "Phenomenology focuses on what is apparent rather than searching for a hidden 'noumenal' essence behind appearances."
+        },
+        {
+          "text": "That which shows itself.",
+          "isCorrect": true,
+          "rationale": "The term refers to everything that appears in our consciousness, such as impressions, thoughts, and feelings."
+        },
+        {
+          "text": "An objective fact independent of the mind.",
+          "isCorrect": false,
+          "rationale": "This aligns with 'objective reality' theories, whereas a phenomenon is specifically linked to conscious appearance."
+        },
+        {
+          "text": "A sensory distortion of reality.",
+          "isCorrect": false,
+          "rationale": "Phenomenology treats the appearance as the primary data of experience rather than a distortion."
+        }
+      ],
+      "hint": "Think about the most basic definition of something becoming present to your awareness."
+    },
+    {
+      "question": "Based on Edgar Rubin's work on the 'figure-ground' phenomenon, which of the following is true regarding how we perceive the 'figure' compared to the 'ground'?",
+      "answerOptions": [
+        {
+          "text": "The figure is perceived as having more 'thing-like' character and is remembered better.",
+          "isCorrect": true,
+          "rationale": "Rubin demonstrated that the figure takes on a solid form and dominant quality, whereas the ground appears formless."
+        },
+        {
+          "text": "The ground and figure are processed with equal intensity and detail simultaneously.",
+          "isCorrect": false,
+          "rationale": "The text explains that consciousness typically prioritizes one over the other, giving them different qualities."
+        },
+        {
+          "text": "The ground is usually perceived as being in front of the figure.",
+          "isCorrect": false,
+          "rationale": "Rubin found that the ground is typically experienced as a surface lying behind the figure."
+        },
+        {
+          "text": "The color of the ground appears more constant than the color of the figure.",
+          "isCorrect": false,
+          "rationale": "Rubin noted that colors on a 'thing' (the figure) remain more constant than colors perceived as 'ground'."
+        }
+      ],
+      "hint": "Consider which part of an image seems more substantial and dominant in your memory."
+    },
+    {
+      "question": "In the theory of aesthetic empathy proposed by Theodor Lipps, what distinguishes 'positive empathy' from 'negative empathy'?",
+      "answerOptions": [
+        {
+          "text": "Positive empathy involves an experience of harmony where the object's 'demand' agrees with the subject's dispositions.",
+          "isCorrect": true,
+          "rationale": "Positive empathy leads to a free-flowing reproduction of the object's expressive content as one's own feeling."
+        },
+        {
+          "text": "Negative empathy is the total absence of any emotional connection to the work of art.",
+          "isCorrect": false,
+          "rationale": "Negative empathy still involves an interaction, but it is one of disagreement or lack of harmony."
+        },
+        {
+          "text": "Positive empathy refers only to art that depicts traditionally 'happy' or 'beautiful' subjects.",
+          "isCorrect": false,
+          "rationale": "Positive empathy relates to the structural agreement between the subject and object, not necessarily the 'positivity' of the theme."
+        },
+        {
+          "text": "Negative empathy occurs only when a viewer is distracted by external noise in a museum.",
+          "isCorrect": false,
+          "rationale": "The distinction is based on the inner 'demand' of the object and the subject's dispositional response."
+        }
+      ],
+      "hint": "Focus on the 'agreement' or 'resonance' between the viewer's inner state and the artwork."
+    },
+    {
+      "question": "Franz Brentano introduced the concept of 'intentionality' as a hallmark of consciousness. What is the core definition of this concept?",
+      "answerOptions": [
+        {
+          "text": "Consciousness is always directed toward something (an object or content).",
+          "isCorrect": true,
+          "rationale": "Intentionality signifies that every mental act has a target, whether that target is real or imaginary."
+        },
+        {
+          "text": "Consciousness is the result of planned, voluntary neurological firings.",
+          "isCorrect": false,
+          "rationale": "This is a physiological explanation that ignores the 'directed' nature of experience emphasized by Brentano."
+        },
+        {
+          "text": "The mind has a specific goal of reaching a state of total enlightenment.",
+          "isCorrect": false,
+          "rationale": "Intentionality refers to the structure of 'aboutness' in awareness, not a teleological life goal."
+        },
+        {
+          "text": "Intentionality means that all human behavior is consciously willed.",
+          "isCorrect": false,
+          "rationale": "The text clarifies that consciousness can be directed toward involuntary sensations as well."
+        }
+      ],
+      "hint": "Think about the phrase: 'Consciousness is always consciousness *of* something'."
+    },
+    {
+      "question": "How did Maurice Merleau-Ponty re-conceptualize the subject in his phenomenological psychology?",
+      "answerOptions": [
+        {
+          "text": "He viewed the subject as a 'pre-reflective body-subject' engaged in the world.",
+          "isCorrect": true,
+          "rationale": "He emphasized that our primary existence is through a 'body-subject' that perceives and acts before we reflect on it."
+        },
+        {
+          "text": "He defined the subject as a purely rational 'ego' detached from physical sensations.",
+          "isCorrect": false,
+          "rationale": "This is a Cartesian view that Merleau-Ponty explicitly moved away from by focusing on the 'lived body'."
+        },
+        {
+          "text": "He argued the subject is merely a collection of social roles and cultural expectations.",
+          "isCorrect": false,
+          "rationale": "While he noted socialization, his primary focus was the ontological structure of the body's relation to the world."
+        },
+        {
+          "text": "He claimed the subject is an illusion created by the 'stream of consciousness'.",
+          "isCorrect": false,
+          "rationale": "William James used the 'stream' metaphor, whereas Merleau-Ponty focused on the body-subject as the anchor of experience."
+        }
+      ],
+      "hint": "Consider the role of the physical body as an active participant rather than just a machine."
+    },
+    {
+      "question": "In the study on 'Aesthetic Empathy' by Hansen and Roald, what does the constituent 'Interiorisation' refer to?",
+      "answerOptions": [
+        {
+          "text": "The process where an artwork's expressive features obtain a bodily felt existence within the spectator.",
+          "isCorrect": true,
+          "rationale": "It describes how the painting is absorbed or incorporated, becoming a sensuous presence rather than a distant image."
+        },
+        {
+          "text": "The act of memorizing the technical details of a painting's composition.",
+          "isCorrect": false,
+          "rationale": "This is an intellectual or cognitive task, whereas interiorisation is described as an affective and bodily process."
+        },
+        {
+          "text": "The spectator's attempts to ignore their own feelings to focus on the artist's intent.",
+          "isCorrect": false,
+          "rationale": "The findings suggest that the viewer's own affective life is 'annexed' by the painting during interiorisation."
+        },
+        {
+          "text": "A psychological defense mechanism used to avoid intense emotions in art.",
+          "isCorrect": false,
+          "rationale": "Interiorisation is presented as a facilitating act for intense experience, not a mechanism for avoidance."
+        }
+      ],
+      "hint": "Think about how an external image might 'move into' and change your internal bodily state."
+    },
+    {
+      "question": "According to the source 'Spinelli (2005)', what was the 'disturbing conclusion' reached by various scientific fields regarding 'true reality'?",
+      "answerOptions": [
+        {
+          "text": "True reality is, and will forever remain, unknown and unknowable to us.",
+          "isCorrect": true,
+          "rationale": "Phenomenology posits that we only know things as they appear to us (phenomena), not as they are in themselves (noumena)."
+        },
+        {
+          "text": "Objective reality can only be discovered through the use of advanced quantum physics.",
+          "isCorrect": false,
+          "rationale": "The text argues that reality is inextricably linked to mental processes, making 'true' objective reality inaccessible."
+        },
+        {
+          "text": "The brain creates reality entirely from random electrical signals without external input.",
+          "isCorrect": false,
+          "rationale": "While the brain constructs meaning, the text emphasizes the 'link' between reality and mental processes, not total isolation."
+        },
+        {
+          "text": "Reality is a shared social construct with no physical basis.",
+          "isCorrect": false,
+          "rationale": "Phenomenology acknowledges the appearance of objects; the issue is our lack of direct access to the 'thing-in-itself'."
+        }
+      ],
+      "hint": "Think about the distinction Immanuel Kant made between things as they appear and things as they are."
+    },
+    {
+      "question": "Husserl described the 'Lifeworld' ($livsverden$) as a 'pre-scientific' world. What characterizes this world?",
+      "answerOptions": [
+        {
+          "text": "It is the concrete, sensuous world we live in before we apply abstract theories or concepts.",
+          "isCorrect": true,
+          "rationale": "The lifeworld is the immediate, relative world of daily experience that forms the foundation for all science."
+        },
+        {
+          "text": "It is a primitive stage of human development prior to the invention of logic.",
+          "isCorrect": false,
+          "rationale": "The 'lifeworld' is a persistent layer of human experience, not a historical era or evolutionary stage."
+        },
+        {
+          "text": "It is a purely subjective fantasy world unique to individuals with high creativity.",
+          "isCorrect": false,
+          "rationale": "Husserl argues the lifeworld is 'for us'—a shared intersubjective ground, even if perspectives vary."
+        },
+        {
+          "text": "It is the mathematical structure that underlies the physical universe.",
+          "isCorrect": false,
+          "rationale": "Husserl criticized the idea that mathematical abstractions are more 'real' than the lived experience of the lifeworld."
+        }
+      ],
+      "hint": "Consider the difference between how you experience a 'chair' sitting in it versus a scientist describing its atomic structure."
+    },
+    {
+      "question": "In the context of the phenomenological method, what is the purpose of $Epoché$?",
+      "answerOptions": [
+        {
+          "text": "To suspend our 'natural attitude' and eliminate pre-conceived biases about reality.",
+          "isCorrect": true,
+          "rationale": "It involves 'bracketing' our assumptions to return to the 'things themselves' as they immediately appear."
+        },
+        {
+          "text": "To increase the duration of an emotional state through focused meditation.",
+          "isCorrect": false,
+          "rationale": "While it requires focus, the goal is methodological suspension of judgment, not emotional regulation."
+        },
+        {
+          "text": "To find the specific neurological cause of a specific thought or memory.",
+          "isCorrect": false,
+          "rationale": "Phenomenology is a study of consciousness from within, not a search for external biological causes."
+        },
+        {
+          "text": "To verify if a person's subjective account matches an objective recording of events.",
+          "isCorrect": false,
+          "rationale": "The method is about describing the experience as it is given, not verifying it against an external 'truth'."
+        }
+      ],
+      "hint": "The term means 'suspension' or 'holding back' in Greek."
+    },
+    {
+      "question": "True or False: William James described the 'stream of consciousness' as a series of chopped-up parts and discrete pieces of information joined together.",
+      "answerOptions": [
+        {
+          "text": "False",
+          "isCorrect": true,
+          "rationale": "James explicitly rejected the 'bits and pieces' view, using the metaphors of a 'stream' or 'flow' to describe the continuous nature of consciousness."
+        },
+        {
+          "text": "True",
+          "isCorrect": false,
+          "rationale": "James argued that consciousness does not appear to itself as chopped up in bits; it is continuous."
+        }
+      ],
+      "hint": "Think about the water in a river; does it move in separate blocks?"
+    },
+    {
+      "question": "How does 'Phenomenological Hermeneutics' differ from pure descriptive phenomenology?",
+      "answerOptions": [
+        {
+          "text": "It argues that description is always colored by interpretation, tradition, and historical context.",
+          "isCorrect": true,
+          "rationale": "Hermeneutic phenomenologists like Heidegger and Gadamer believe we cannot achieve a 'pure' description without interpretation."
+        },
+        {
+          "text": "It focuses solely on the interpretation of ancient religious texts rather than psychology.",
+          "isCorrect": false,
+          "rationale": "While hermeneutics has roots in text interpretation, in this context, it is a method for understanding lived experience."
+        },
+        {
+          "text": "It uses mathematical algorithms to interpret the frequency of certain words in interviews.",
+          "isCorrect": false,
+          "rationale": "This is a quantitative approach, whereas phenomenological hermeneutics is a qualitative, meaning-focused philosophy."
+        },
+        {
+          "text": "It claims that humans are unable to interpret their own experiences at all.",
+          "isCorrect": false,
+          "rationale": "It claims interpretation is unavoidable, not that it is impossible."
+        }
+      ],
+      "hint": "Consider the role of the 'observer's background' in the process of understanding."
+    }
+  ]
+}

@@ -1,0 +1,265 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "Hvad forstås ved begrebet \"umiddelbar eller rene oplevelse\" inden for fænomenologien?",
+      "answerOptions": [
+        {
+          "text": "En tilstand hvor der ikke skelnes mellem det indre og det ydre, og hvor alle bevidsthedsindtryk indgår i en helhed.",
+          "isCorrect": true,
+          "rationale": "I den spontane oplevelse flyder indtryk, tanker og følelser sammen uden en bevidst opdeling mellem subjektet og den ydre verden."
+        },
+        {
+          "text": "En videnskabelig observation af bevidstheden, der er renset for alle subjektive følelser og fordomme.",
+          "isCorrect": false,
+          "rationale": "Dette beskriver snarere et ideal for objektiv observation frem for den spontane, præ-refleksive oplevelse, som fænomenologien fokuserer på."
+        },
+        {
+          "text": "Den proces, hvor man gennem selviagttagelse identificerer de enkelte elementære komponenter i en sanseoplevelse.",
+          "isCorrect": false,
+          "rationale": "Denne definition læner sig op ad Wundts introspektion, som fænomenologien netop kritiserer for at splitte helhedsoplevelsen ad."
+        },
+        {
+          "text": "En bevidsthedstilstand, der opstår, når man mediterer og tømmer sindet for alle ydre sanseindtryk.",
+          "isCorrect": false,
+          "rationale": "Selvom meditation kan ændre bevidstheden, refererer 'ren oplevelse' i teksten til den naturlige, direkte måde vi er i verden på før refleksion."
+        }
+      ],
+      "hint": "Overvej hvordan bevidstheden fungerer i det øjeblik, man er opslugt af en aktivitet uden at tænke over sig selv."
+    },
+    {
+      "question": "Hvorfor mente Auguste Comte og Edmund Husserl, at den klassiske introspektive metode var videnskabeligt problematisk?",
+      "answerOptions": [
+        {
+          "text": "Fordi den observerende bevidsthed er identisk med den bevidsthed, der observeres, hvilket skaber et uopløseligt dilemma.",
+          "isCorrect": true,
+          "rationale": "Kritikken går på, at man ikke kan dele bevidstheden i to samtidige dele, hvor den ene iagttager den anden uden at ændre objektet for observationen."
+        },
+        {
+          "text": "Fordi introspektion kun fokuserer på de fysiologiske reaktioner og ignorerer de psykiske fænomener.",
+          "isCorrect": false,
+          "rationale": "Introspektion fokuserede netop på de indre psykiske oplevelser; kritikken var metodisk frem for tematisk."
+        },
+        {
+          "text": "Fordi metoden var for hurtig til at drage konklusioner baseret på matematiske modeller frem for beskrivelser.",
+          "isCorrect": false,
+          "rationale": "Problemet var ikke matematik, men bevidsthedens subjektive og flygtige natur, der unddrager sig direkte observation i øjeblikket."
+        },
+        {
+          "text": "Fordi forsøgspersonerne i Wundts laboratorier ikke var trænede nok til at rapportere deres sanseindtryk nøjagtigt.",
+          "isCorrect": false,
+          "rationale": "Wundt benyttede faktisk højt trænede personer; kritikken fra Comte og Husserl var principiel og rettet mod selve muligheden for selviagttagelse."
+        }
+      ],
+      "hint": "Tænk på det logiske problem i at være både den, der ser, og det, der bliver set, på samme tid."
+    },
+    {
+      "question": "Ifølge Edgar Rubins undersøgelser af figur-grund-fænomenet, hvad kendetegner da det felt, der opleves som \"figur\"?",
+      "answerOptions": [
+        {
+          "text": "Det har karakter af en ting, virker mere dominerende og huskes bedre end baggrunden.",
+          "isCorrect": true,
+          "rationale": "Rubin påviste, at figuren får en form-kvalitet og en 'ting-karakter', mens baggrunden opleves som formløst stof."
+        },
+        {
+          "text": "Det opleves som en flade, der ligger bagved det andet felt og har en mere konstant farve.",
+          "isCorrect": false,
+          "rationale": "Dette beskriver karakteristika ved baggrunden, ikke figuren, ifølge Rubins fænomenologiske analyser."
+        },
+        {
+          "text": "Det er det felt, der altid har den lyseste farve og de mest uklare konturer.",
+          "isCorrect": false,
+          "rationale": "Figuren defineres ikke af lysstyrke alene, men af dens lukkede konturer og evne til at træde frem som et selvstændigt objekt."
+        },
+        {
+          "text": "Det har karakter af luft eller vand, som figuren kan bevæge sig frit i.",
+          "isCorrect": false,
+          "rationale": "Rubin beskriver netop baggrunden som havende en 'stofkarakter' ligesom luft eller vand, i modsætning til figurens faste form."
+        }
+      ],
+      "hint": "Forestil dig en vase mod en sort baggrund; hvad gør vasen til det primære fokus?"
+    },
+    {
+      "question": "Hvordan adskiller frivillige handlinger sig oplevelsesmæssigt fra ufrivillige handlinger ifølge Edgar Tranekjær Rasmussen?",
+      "answerOptions": [
+        {
+          "text": "Ved at den enkelte person oplever sig selv som ophavsmand og centrum for handlingen i de frivillige bevægelser.",
+          "isCorrect": true,
+          "rationale": "Selvom bevægelserne fysisk kan ligne hinanden, er den fænomenologiske forskel, at subjektet bevidst 'beslutter' den frivillige handling."
+        },
+        {
+          "text": "Ved at de frivillige handlinger altid udføres hurtigere og med større præcision end reflekser.",
+          "isCorrect": false,
+          "rationale": "Præcision og hastighed er fysiske mål; Tranekjær Rasmussen fokuserer på den subjektive oplevelse af agens."
+        },
+        {
+          "text": "Der er ingen oplevelsesmæssig forskel, da bevidstheden først registrerer handlingen, efter den har fundet sted.",
+          "isCorrect": false,
+          "rationale": "Dette ville være et behavioristisk eller neuropsykologisk synspunkt, som strider imod den fænomenologiske beskrivelse af viljeslivet."
+        },
+        {
+          "text": "Frivillige handlinger er udelukkende styret af ydre stimuli, mens ufrivillige er styret af indre behov.",
+          "isCorrect": false,
+          "rationale": "Det forholder sig snarere omvendt i traditionel psykologi, men fænomenologisk set er viljeshandlingen knyttet til subjektets valg."
+        }
+      ],
+      "hint": "Tænk på forskellen mellem at få et slag på knæet (refleks) og selv at beslutte at sparke med benet."
+    },
+    {
+      "question": "Hvad dækker begrebet \"livsverden\" ($\\textit{lebenswelt}$) over i Husserls filosofi?",
+      "answerOptions": [
+        {
+          "text": "Den umiddelbare, før-videnskabelige erfaringsverden, som vi lever i til daglig.",
+          "isCorrect": true,
+          "rationale": "Livsverdenen er den konkrete, sanselige verden, der danner grundlag for al videnskab, men som videnskaben ofte forsøger at transcendere."
+        },
+        {
+          "text": "Det samlede netværk af biologiske processer, der opretholder menneskets fysiske eksistens.",
+          "isCorrect": false,
+          "rationale": "Livsverden refererer til den oplevede verden, ikke til de objektive biologiske eller fysiologiske strukturer."
+        },
+        {
+          "text": "En teoretisk model over, hvordan samfundet bør indrettes for at maksimere individets lykke.",
+          "isCorrect": false,
+          "rationale": "Begrebet er deskriptivt og fænomenologisk, ikke normativt eller sociologisk."
+        },
+        {
+          "text": "Den del af bevidstheden, der kun er tilgængelig gennem dybdepsykologisk analyse af drømme.",
+          "isCorrect": false,
+          "rationale": "Livsverdenen er netop den verden, der er umiddelbart tilgængelig og nærværende for os i vores vågne liv."
+        }
+      ],
+      "hint": "Overvej den verden du befinder dig i, før du begynder at tænke over fysikkens love eller matematiske formler."
+    },
+    {
+      "question": "Hvilken kritik rejser Henri Bergson mod sprogets evne til at beskrive bevidsthedslivet?",
+      "answerOptions": [
+        {
+          "text": "Sproget rumliggør bevidsthedstilstande og opstiller skarpe grænser, hvilket ødelægger den indre tidsløb ($\\textit{la durée}$).",
+          "isCorrect": true,
+          "rationale": "Bergson mente, at sproget tvinger os til at se tanker som adskilte objekter i et rum, frem for en flydende, sammenhængende strøm."
+        },
+        {
+          "text": "Sproget er for komplekst og indeholder for mange nuancer til at indfange de simple grundfølelser.",
+          "isCorrect": false,
+          "rationale": "Bergsons kritik er den modsatte: sproget er for groft og skematisk til at indfange bevidsthedens rige nuancer."
+        },
+        {
+          "text": "Sproget er udelukkende baseret på intuition og mangler derfor logisk stringens.",
+          "isCorrect": false,
+          "rationale": "Han anså netop sproget for at være et redskab for den logiske og praktiske forstand, som står i modsætning til intuitionen."
+        },
+        {
+          "text": "Sproget kan kun beskrive ydre objekter og er ude af stand til at referere til noget som helst subjektivt.",
+          "isCorrect": false,
+          "rationale": "Sproget kan godt referere til det subjektive, men ifølge Bergson forvrænger det oplevelsens natur ved at gøre den statisk."
+        }
+      ],
+      "hint": "Tænk på hvordan ord som 'vrede' eller 'glæde' gør flydende følelser til faste kategorier."
+    },
+    {
+      "question": "Hvad indebærer Franz Brentanos begreb om \"intentionalitet\"?",
+      "answerOptions": [
+        {
+          "text": "At bevidstheden altid er rettet mod noget; enhver psykisk akt indeholder et objekt i sig selv.",
+          "isCorrect": true,
+          "rationale": "Brentano definerede det psykiske ved dets 'rettethed' – man tænker altid PÅ noget, elsker nogen eller ser noget."
+        },
+        {
+          "text": "At menneskets handlinger altid er styret af bevidste hensigter og målrettet planlægning.",
+          "isCorrect": false,
+          "rationale": "Selvom ordene minder om hinanden, refererer intentionalitet her til bevidsthedens struktur, ikke nødvendigvis til viljesmæssige hensigter."
+        },
+        {
+          "text": "At bevidstheden fungerer som en lukket beholder, der gemmer på indtryk fra omverdenen.",
+          "isCorrect": false,
+          "rationale": "Fænomenologien afviser netop 'beholder-modellen' til fordel for en relationel forståelse af bevidstheden."
+        },
+        {
+          "text": "At alle fysiske fænomener har en iboende mening, som bevidstheden passivt modtager.",
+          "isCorrect": false,
+          "rationale": "Intentionalitet er en aktiv egenskab ved bevidstheden, og fysiske fænomener mangler ifølge Brentano denne rettethed."
+        }
+      ],
+      "hint": "Kan man forestille sig at være bevidst uden at være bevidst OM noget?"
+    },
+    {
+      "question": "Hvordan forstår Merleau-Ponty det \"præ-refleksive kropssubjekt\"?",
+      "answerOptions": [
+        {
+          "text": "Som en kropslig måde at være i verden på, hvor intentionalitet primært er motorisk (\"jeg kan\") frem for intellektuel.",
+          "isCorrect": true,
+          "rationale": "Kroppen er vores primære adgang til verden, og vi forholder os til ting gennem vores kropslige formåen, før vi tænker over dem."
+        },
+        {
+          "text": "Som den rent biologiske krop, der fungerer uafhængigt af bevidsthedens fortolkninger.",
+          "isCorrect": false,
+          "rationale": "Merleau-Ponty skelner netop mellem den objektive, biologiske krop og den levede, fænomenologiske krop."
+        },
+        {
+          "text": "Som en samling af reflekser, der overtager styringen, når den reflekterende bevidsthed er træt.",
+          "isCorrect": false,
+          "rationale": "Det præ-refleksive er en grundlæggende struktur i al erfaring, ikke blot en nødmekanisme ved træthed."
+        },
+        {
+          "text": "Som et stadie i barnets udvikling, der forsvinder helt, når sproget og logikken tilegnes.",
+          "isCorrect": false,
+          "rationale": "Selvom det findes ontogenetisk tidligt, forbliver det præ-refleksive fundamentet for det voksne menneskes væren-i-verden."
+        }
+      ],
+      "hint": "Tænk på hvordan din krop 'ved' hvordan man griber en bold, før du har analyseret dens bane."
+    },
+    {
+      "question": "Hvad er formålet med den \"eidetiske variation\" i Husserls fænomenologiske metode?",
+      "answerOptions": [
+        {
+          "text": "At finde frem til et fænomenets væsen ved i fantasien at variere dets træk for at se, hvad der er uundværligt.",
+          "isCorrect": true,
+          "rationale": "Ved at fjerne eller ændre egenskaber ved et objekt (f.eks. en bog) finder man ind til de træk, der gør objektet til det, det er (essensen)."
+        },
+        {
+          "text": "At statistisk beregne gennemsnittet af mange menneskers oplevelser af det samme objekt.",
+          "isCorrect": false,
+          "rationale": "Metoden er kvalitativ og baseret på intuition og fantasi, ikke på kvantitativ databehandling."
+        },
+        {
+          "text": "At beskrive hvordan et fænomen ændrer sig historisk gennem forskellige kulturer.",
+          "isCorrect": false,
+          "rationale": "Eidetisk variation søger efter tidløse essenser frem for historiske eller kulturelle forandringer."
+        },
+        {
+          "text": "At træne forsøgspersoner i at skelne mellem visuelle og auditive stimuli med ekstrem præcision.",
+          "isCorrect": false,
+          "rationale": "Dette lyder som eksperimentel psykofysik, mens eidetisk variation er en filosofisk/psykologisk metode til at forstå betydningsstrukturer."
+        }
+      ],
+      "hint": "Hvis du ændrer farven på en bog, er det stadig en bog; men hvad hvis du fjerner siderne?"
+    },
+    {
+      "question": "Hvor placerer Jean-Paul Sartre \"Egoet\" (selvet) i sin fænomenologiske analyse?",
+      "answerOptions": [
+        {
+          "text": "Uden for bevidstheden, som et objekt i verden på linje med andre menneskers Ego.",
+          "isCorrect": true,
+          "rationale": "Sartre argumenterer for, at den ureflekterede bevidsthed er 'tom', og at selvet først opstår som et objekt, når vi reflekterer over os selv."
+        },
+        {
+          "text": "I centrum af den umiddelbare oplevelse som den styrende instans.",
+          "isCorrect": false,
+          "rationale": "Sartre mener netop, at der intet 'jeg' er i den umiddelbare, ureflekterede strøm af bevidsthed."
+        },
+        {
+          "text": "Som en biologisk kerne i hjernen, der koordinerer alle sanseindtryk.",
+          "isCorrect": false,
+          "rationale": "Sartres analyse er eksistens-fænomenologisk og afviser at reducere Egoet til biologiske processer."
+        },
+        {
+          "text": "Som en illusion skabt af sproget, der slet ikke har nogen realitet.",
+          "isCorrect": false,
+          "rationale": "Egoet har realitet som et objekt for refleksionen, men det er ikke en iboende del af bevidsthedens struktur."
+        }
+      ],
+      "hint": "Overvej om du tænker på dig selv som et 'jeg', mens du løber efter en bus, eller om du bare 'er' løbet."
+    }
+  ]
+}

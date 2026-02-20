@@ -1,0 +1,265 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "According to Dreier, what is a primary limitation of using concepts like \"action,\" \"activity,\" and \"discourse\" to ground psychological theories?",
+      "answerOptions": [
+        {
+          "text": "They focus too heavily on the physical biological processes of the individual.",
+          "isCorrect": false,
+          "rationale": "The text focuses on the social grounding of subjectivity rather than biological reductionism."
+        },
+        {
+          "text": "They fail to sufficiently ground the person in the concrete local contexts of social practice.",
+          "isCorrect": true,
+          "rationale": "The author argues that these concepts often treat the local practice as a free-floating interchange rather than a grounded social structure."
+        },
+        {
+          "text": "They are exclusively associated with Cartesian psychology and cannot be adapted.",
+          "isCorrect": false,
+          "rationale": "The author mentions these as candidates for a non-Cartesian psychology, though he finds them insufficient on their own."
+        },
+        {
+          "text": "They assume that the individual is always in conflict with the social environment.",
+          "isCorrect": false,
+          "rationale": "The text suggests these concepts leave the location of the individual ambiguous, not necessarily that they assume constant conflict."
+        }
+      ],
+      "hint": "Consider how these concepts relate the person to their specific, real-world surroundings."
+    },
+    {
+      "question": "What does it mean for a subject to be \"always already involved\" in social practice as described in the first argument?",
+      "answerOptions": [
+        {
+          "text": "Individuals are born with a pre-programmed set of social behaviors.",
+          "isCorrect": false,
+          "rationale": "This suggests a biological determinism that the text's focus on social participation does not support."
+        },
+        {
+          "text": "Subjectivity is based on the potentiality to realize action possibilities within existing social contexts.",
+          "isCorrect": true,
+          "rationale": "Drawing on Holzkamp (1983), the author argues that individuals encounter and realize possibilities within social contexts of action."
+        },
+        {
+          "text": "A person must consciously choose to enter social structures to become a subject.",
+          "isCorrect": false,
+          "rationale": "The phrase \"always already\" implies that participation is not an optional choice but an inherent state of being a subject."
+        },
+        {
+          "text": "Individual subjectivity exists independently before it is influenced by social practice.",
+          "isCorrect": false,
+          "rationale": "The text argues against the idea of a subject located \"nowhere\" or mediation occurring above social practice."
+        }
+      ],
+      "hint": "Think about the relationship between individual potential and the social world they inhabit."
+    },
+    {
+      "question": "Why does Dreier characterize individual participation in a social practice as \"partial\"?",
+      "answerOptions": [
+        {
+          "text": "Individuals lack the cognitive capacity to engage in more than one social practice.",
+          "isCorrect": false,
+          "rationale": "The text argues that people participate in multiple contexts, such as family and work, rather than just one."
+        },
+        {
+          "text": "Social practices are too fragmented for any individual to find them meaningful.",
+          "isCorrect": false,
+          "rationale": "The author asserts that human activity is meaningful specifically because it is part of a common social practice."
+        },
+        {
+          "text": "No single subject is an omnipotent agent who covers or controls the entire practice.",
+          "isCorrect": true,
+          "rationale": "The third argument states that individual subjectivity is a partial personal aspect of a social practice with limited grip and influence."
+        },
+        {
+          "text": "Participation is only authentic when an individual is fully committed to a single role.",
+          "isCorrect": false,
+          "rationale": "The text highlights that participants play different parts from different positions and concerns."
+        }
+      ],
+      "hint": "Consider the limitations of an individual's power and reach within a complex system."
+    },
+    {
+      "question": "According to the \"fourth argument,\" what constitutes the fundamental duality of modes of participation?",
+      "answerOptions": [
+        {
+          "text": "Participating in the reproduction of the current state versus contributing to change.",
+          "isCorrect": true,
+          "rationale": "The author describes this duality as a way for participants to extend their disposal over social practice."
+        },
+        {
+          "text": "The conflict between personal emotional needs and professional social obligations.",
+          "isCorrect": false,
+          "rationale": "While emotions and obligations are mentioned, the core duality focuses on the stability or transformation of the practice."
+        },
+        {
+          "text": "Acting as a passive observer versus acting as an active leader.",
+          "isCorrect": false,
+          "rationale": "The text treats all subjects as active participants, focusing instead on whether they maintain or alter the practice."
+        },
+        {
+          "text": "Balancing the requirements of family life with those of the workplace.",
+          "isCorrect": false,
+          "rationale": "These are examples of different contexts, but the duality refers to the mode of engagement within those contexts."
+        }
+      ],
+      "hint": "Think about whether a participant's actions keep things the same or move them forward."
+    },
+    {
+      "question": "How does Dreier redefine \"social structure\" to move away from the \"container\" model of society?",
+      "answerOptions": [
+        {
+          "text": "As a rigid set of rules that uniformly influences all members of a society.",
+          "isCorrect": false,
+          "rationale": "This describes the \"container\" model which the author explicitly rejects as being too uniform."
+        },
+        {
+          "text": "As a set of interrelated and diverse local contexts of action.",
+          "isCorrect": true,
+          "rationale": "The author proposes that social practice is non-homogenous and consists of various practices linked together."
+        },
+        {
+          "text": "As a singular, bounded realm where all people are essentially the same.",
+          "isCorrect": false,
+          "rationale": "The text critiques nationalist-influenced social theory for adopting this bounded, uniform view."
+        },
+        {
+          "text": "As a purely discursive field where subjects exist only within language.",
+          "isCorrect": false,
+          "rationale": "Dreier argues for a theory of practice that includes concrete locations like homes and workplaces, not just discourse."
+        }
+      ],
+      "hint": "Contrast the idea of a single uniform 'box' with a network of specific, different 'places'."
+    },
+    {
+      "question": "What is the status of a critic who attempts to stand \"outside\" a social practice according to the text?",
+      "answerOptions": [
+        {
+          "text": "The critic achieves a state of objectivity by removing themselves from social relations.",
+          "isCorrect": false,
+          "rationale": "The text argues that it is impossible to stand outside all social practice while remaining a subject."
+        },
+        {
+          "text": "The critic is located in particular relations of isolation and powerlessness within a social practice.",
+          "isCorrect": true,
+          "rationale": "Even an \"isolated critic\" is defined by their specific relation to the practice they are critiquing or avoiding."
+        },
+        {
+          "text": "The critic becomes a \"free-floating agent\" who is no longer part of any structure.",
+          "isCorrect": false,
+          "rationale": "The author rejects the idea of free-floating agents, insisting subjects are always situated."
+        },
+        {
+          "text": "A critic must belong to a different society to offer a valid perspective.",
+          "isCorrect": false,
+          "rationale": "The text emphasizes that critique happens from within or in relation to specific practices, not from an external void."
+        }
+      ],
+      "hint": "Consider whether it is possible for a human being to truly exist in a social vacuum."
+    },
+    {
+      "question": "In the \"first argument,\" why is it necessary for subjects to \"think beyond themselves\"?",
+      "answerOptions": [
+        {
+          "text": "To achieve a higher level of spiritual or ideological enlightenment.",
+          "isCorrect": false,
+          "rationale": "The text's focus is on practical action and social structure, not spiritual development."
+        },
+        {
+          "text": "To direct their activities into the structures of social practice they are part of.",
+          "isCorrect": true,
+          "rationale": "The author argues that to act effectively, subjects must understand and orient themselves within the larger social structure."
+        },
+        {
+          "text": "To escape the local context and become a universal member of society.",
+          "isCorrect": false,
+          "rationale": "The goal is to understand how one takes part in local contexts, not to escape them."
+        },
+        {
+          "text": "To prioritize the needs of the community over their own personal feelings.",
+          "isCorrect": false,
+          "rationale": "While communality is mentioned, the emphasis is on the practical direction of activity rather than moral altruism."
+        }
+      ],
+      "hint": "Think about what is required for an individual to coordinate their actions with a larger system."
+    },
+    {
+      "question": "According to the text, what makes human activity \"meaningful\"?",
+      "answerOptions": [
+        {
+          "text": "It is driven by the unique, internal psychological properties of the individual.",
+          "isCorrect": false,
+          "rationale": "The text argues against conceptualizing human action solely through individual properties."
+        },
+        {
+          "text": "It is observed and validated by an external scientific authority.",
+          "isCorrect": false,
+          "rationale": "The source of meaning is social participation, not scientific observation."
+        },
+        {
+          "text": "It presupposes a common social practice of which it is a part.",
+          "isCorrect": true,
+          "rationale": "Following Taylor (1995a), the author states that activity gains meaning through its relationship to a shared social context."
+        },
+        {
+          "text": "It is documented through dialogue and discourse between subjects.",
+          "isCorrect": false,
+          "rationale": "While dialogue occurs, meaning is grounded in the participatory dimension of social practice itself."
+        }
+      ],
+      "hint": "Consider the role of shared understanding and common frameworks in human action."
+    },
+    {
+      "question": "How does Dreier describe the \"individual participants\" within a social practice?",
+      "answerOptions": [
+        {
+          "text": "They are uniform members who represent a homogeneous culture.",
+          "isCorrect": false,
+          "rationale": "The author argues against the idea of uniform individuals inhabiting a single uniform culture."
+        },
+        {
+          "text": "They are diverse members who configure participation in partial and personal ways.",
+          "isCorrect": true,
+          "rationale": "The third argument emphasizes that participants are particular and diverse, with different scopes of possibility."
+        },
+        {
+          "text": "They are passive recipients of the institutionalized power relations of the practice.",
+          "isCorrect": false,
+          "rationale": "While power relations are mentioned, subjects are described as active participants who can reproduce or change the practice."
+        },
+        {
+          "text": "They are autonomous units whose participation is secondary to their internal identity.",
+          "isCorrect": false,
+          "rationale": "The author argues that subjectivity should be developed on the basis of participation, not as something prior to it."
+        }
+      ],
+      "hint": "Reflect on whether members of a group are viewed as identical or as having unique roles."
+    },
+    {
+      "question": "What does the concept of \"personal trajectory\" refer to in Dreier's theoretical framework?",
+      "answerOptions": [
+        {
+          "text": "The biological aging process from birth to death.",
+          "isCorrect": false,
+          "rationale": "The framework is psychological and social, focusing on participation rather than just biology."
+        },
+        {
+          "text": "The sequence of an individual's participation across various social contexts over time.",
+          "isCorrect": true,
+          "rationale": "The title and summary refer to trajectories \"across contexts,\" such as family, work, and school."
+        },
+        {
+          "text": "The internal psychological growth that occurs during a single therapy session.",
+          "isCorrect": false,
+          "rationale": "While therapy is a context, the trajectory spans across multiple different social contexts."
+        },
+        {
+          "text": "The historical development of social practices within a specific culture.",
+          "isCorrect": false,
+          "rationale": "The focus of a \"personal trajectory\" is the individual's movement, not the history of the practice itself."
+        }
+      ],
+      "hint": "Think about the path a person takes as they move through different areas of their life."
+    }
+  ]
+}

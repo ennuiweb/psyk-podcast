@@ -1,0 +1,395 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "Hvad betyder det oprindelige græske ord $phainomenon$, som begrebet fænomen stammer fra?",
+      "answerOptions": [
+        {
+          "text": "Det der viser sig",
+          "isCorrect": true,
+          "rationale": "Begrebet fænomen refererer i fænomenologien til alt det, der kan optræde i vores bevidsthed som det, der umiddelbart præsenterer sig."
+        },
+        {
+          "text": "Den skjulte sandhed",
+          "isCorrect": false,
+          "rationale": "Fænomenologien fokuserer på det umiddelbare og det, der er til stede i bevidstheden, fremfor skjulte eller bagvedliggende årsager."
+        },
+        {
+          "text": "Fysisk materie",
+          "isCorrect": false,
+          "rationale": "Selvom fysiske ting kan optræde som fænomener, dækker ordet over selve tilsyneladelsen i bevidstheden, ikke kun den fysiske substans."
+        },
+        {
+          "text": "En logisk slutning",
+          "isCorrect": false,
+          "rationale": "Fænomener er genstand for direkte oplevelse snarere end resultatet af en intellektuel logisk ræsonneren."
+        }
+      ],
+      "hint": "Tænk på hvordan noget præsenterer sig eller bliver synligt for bevidstheden."
+    },
+    {
+      "question": "Ifølge Maurice Merleau-Ponty, hvordan har vi fået alt, hvad vi ved om verden?",
+      "answerOptions": [
+        {
+          "text": "Gennem egne indtryk eller erfaringer med verden",
+          "isCorrect": true,
+          "rationale": "Merleau-Ponty betoner, at al viden, selv videnskabelig viden, stammer fra vores personlige og direkte sanselige møde med verden."
+        },
+        {
+          "text": "Udelukkende gennem logiske matematiske beviser",
+          "isCorrect": false,
+          "rationale": "Han argumenterer for, at videnskabens symboler intet ville betyde uden den forudgående sanselige erfaring."
+        },
+        {
+          "text": "Via nedarvede instinkter og reflekser",
+          "isCorrect": false,
+          "rationale": "Selvom biologien spiller en rolle, lægger Merleau-Ponty vægt på den aktive oplevelse og perception af verden her og nu."
+        },
+        {
+          "text": "Gennem rent objektive observationer uden subjektivitet",
+          "isCorrect": false,
+          "rationale": "Fænomenologien hævder netop, at den rene objektivitet er en abstraktion, der hviler på et fundament af subjektiv erfaring."
+        }
+      ],
+      "hint": "Det handler om den direkte kontakt og sansning af omgivelserne."
+    },
+    {
+      "question": "Hvorfor er det ifølge teksten problematisk at studere sin egen bevidsthed gennem direkte observation?",
+      "answerOptions": [
+        {
+          "text": "Fordi den observerende bevidsthed er identisk med den bevidsthed, der observeres",
+          "isCorrect": true,
+          "rationale": "Dilemmaet opstår, fordi man ikke kan adskille subjektet (observatøren) fra objektet (det observerede) i sin egen bevidsthed."
+        },
+        {
+          "text": "Fordi bevidstheden bevæger sig for hurtigt til at blive fanget",
+          "isCorrect": false,
+          "rationale": "Selvom bevidstheden er dynamisk, er det primære filosofiske problem identiteten mellem observatør og objekt."
+        },
+        {
+          "text": "Fordi bevidstheden er usynlig og ikke har fysisk form",
+          "isCorrect": false,
+          "rationale": "Det er ikke manglen på fysisk form, men snarere den logiske umulighed i at opdele bevidstheden i to uafhængige dele."
+        },
+        {
+          "text": "Fordi man altid glemmer, hvad man tænkte et øjeblik før",
+          "isCorrect": false,
+          "rationale": "Dette refererer til hukommelsen, men teksten fokuserer på den samtidige og aktive observation af nuet."
+        }
+      ],
+      "hint": "Overvej forholdet mellem den, der kigger, og det, der bliver kigget på."
+    },
+    {
+      "question": "Hvilken kendt figur-grund-tegning brugte Edgar Rubin til at illustrere, hvordan vi organiserer vores perception?",
+      "answerOptions": [
+        {
+          "text": "En tegning der kan ses som enten en vase eller to ansigter",
+          "isCorrect": true,
+          "rationale": "Dette klassiske eksempel viser, hvordan bevidstheden skifter mellem hvad der opleves som figur og hvad der opleves som baggrund."
+        },
+        {
+          "text": "En tegning af en trappe der går både op og ned",
+          "isCorrect": false,
+          "rationale": "Dette er en anden type optisk illusion, der ofte forbindes med Escher, snarere end Rubins specifikke figur-grund-forskning."
+        },
+        {
+          "text": "En prik der ser ud til at bevæge sig på en hvid flade",
+          "isCorrect": false,
+          "rationale": "Dette relaterer sig mere til autokinetiske effekter end til opdelingen mellem figur og grund."
+        },
+        {
+          "text": "Et billede af en gammel kone og en ung kvinde",
+          "isCorrect": false,
+          "rationale": "Selvom dette er en flertydig figur, er vasen/ansigterne det primære eksempel, Rubin er kendt for i teksten."
+        }
+      ],
+      "hint": "Tænk på et objekt man ofte sætter blomster i."
+    },
+    {
+      "question": "Hvad kalder William James bevidsthedens karakteristiske flydende forløb?",
+      "answerOptions": [
+        {
+          "text": "Bevidsthedsstrømmen ($stream \\ of \\ consciousness$)",
+          "isCorrect": true,
+          "rationale": "James brugte denne metafor for at understrege, at bevidstheden ikke består af isolerede led, men er en kontinuerlig proces."
+        },
+        {
+          "text": "Idé-kæden",
+          "isCorrect": false,
+          "rationale": "James argumenterede imod opfattelsen af bevidstheden som en række adskilte 'led' eller statiske idéer."
+        },
+        {
+          "text": "Tankernes bibliotek",
+          "isCorrect": false,
+          "rationale": "Et bibliotek antyder en statisk lagring, hvilket er modsat James' fokus på bevidsthedens konstante bevægelse."
+        },
+        {
+          "text": "Den logiske rækkefølge",
+          "isCorrect": false,
+          "rationale": "Bevidsthedsstrømmen inkluderer også følelser, indtryk og associationer, som ikke nødvendigvis følger en streng logik."
+        }
+      ],
+      "hint": "Tænk på et billede af rindende vand."
+    },
+    {
+      "question": "Hvad refererer begrebet 'intentionalitet' til i fænomenologisk psykologi?",
+      "answerOptions": [
+        {
+          "text": "At bevidstheden altid er rettet mod noget",
+          "isCorrect": true,
+          "rationale": "Intentionalitet betyder, at enhver bevidsthedsakt har et indhold eller et objekt, som den forholder sig til."
+        },
+        {
+          "text": "At man har en bevidst plan for fremtiden",
+          "isCorrect": false,
+          "rationale": "I fænomenologien er intentionalitet en grundlæggende struktur i bevidstheden, ikke blot det at have en hensigt eller vilje."
+        },
+        {
+          "text": "At man gør noget med vilje",
+          "isCorrect": false,
+          "rationale": "Selvom ordet lyder som 'intention', beskriver det her bevidsthedens rettethed mod objekter, ikke moralsk ansvar eller viljeshandlinger."
+        },
+        {
+          "text": "At bevidstheden er lukket om sig selv",
+          "isCorrect": false,
+          "rationale": "Intentionalitet peger netop på, at bevidstheden rækker ud over sig selv mod verden og dens objekter."
+        }
+      ],
+      "hint": "Tænk på det latinske ord $intendere$, der betyder 'at strække sig mod'."
+    },
+    {
+      "question": "Hvad er ifølge Husserl 'livsverdenen' ($livsverden$)?",
+      "answerOptions": [
+        {
+          "text": "Den umiddelbare verden vi lever i før videnskabelig teori",
+          "isCorrect": true,
+          "rationale": "Livsverdenen er den før-videnskabelige erfaringsverden, som er konkret, sanselig og danner grundlag for al vores praksis."
+        },
+        {
+          "text": "En verden skabt udelukkende af biologiske processer",
+          "isCorrect": false,
+          "rationale": "Husserls livsverden er en fænomenologisk beskrivelse af oplevet virkelighed, ikke en biologisk eller materialistisk forklaring."
+        },
+        {
+          "text": "Den ideelle verden af matematiske former",
+          "isCorrect": false,
+          "rationale": "Husserl kontrasterer netop de præcise, matematiske videnskaber med den mere 'vage' og relative livsverden."
+        },
+        {
+          "text": "En drømmeverden uden forbindelse til virkeligheden",
+          "isCorrect": false,
+          "rationale": "Livsverdenen er den mest virkelige verden for os i vores daglige gøremål og eksistens."
+        }
+      ],
+      "hint": "Det er den verden, du befinder dig i, lige før du begynder at analysere den videnskabeligt."
+    },
+    {
+      "question": "Hvilken rolle spiller 'epoché' i den fænomenologiske metode?",
+      "answerOptions": [
+        {
+          "text": "At sætte forudindtagelser og den naturlige indstilling i parentes",
+          "isCorrect": true,
+          "rationale": "Formålet er at suspendere dommen over verdens eksistens for at kunne beskrive fænomenerne så rent som muligt."
+        },
+        {
+          "text": "At måle hjernens aktivitet under perception",
+          "isCorrect": false,
+          "rationale": "Epoché er en filosofisk og metodisk refleksion, ikke en fysiologisk måling."
+        },
+        {
+          "text": "At analysere de historiske årsager til en følelse",
+          "isCorrect": false,
+          "rationale": "Epoché fokuserer på at beskrive det, der viser sig her og nu, fremfor at søge bagvedliggende årsager."
+        },
+        {
+          "text": "At sammenligne forskellige personers meninger",
+          "isCorrect": false,
+          "rationale": "Selvom intersubjektivitet er vigtig, er epoché specifikt rettet mod den individuelle forskers suspension af egne antagelser."
+        }
+      ],
+      "hint": "Ordet betyder suspension eller at holde tilbage."
+    },
+    {
+      "question": "Hvad refererer 'noesis' til i Husserls beskrivelse af intentionalitet?",
+      "answerOptions": [
+        {
+          "text": "Måden eller akten hvorigennem noget opleves",
+          "isCorrect": true,
+          "rationale": "Noesis er det noetiske korrelat, der beskriver selve oplevelsesmåden (f.eks. at mindes, at sanse eller at hade)."
+        },
+        {
+          "text": "Selve genstanden eller objektet for oplevelsen",
+          "isCorrect": false,
+          "rationale": "Genstanden eller 'hvad'-elementet i oplevelsen kaldes noema, ikke noesis."
+        },
+        {
+          "text": "Den rent fysiske stimulering af sanserne",
+          "isCorrect": false,
+          "rationale": "Fænomenologien skelner mellem den fysiske påvirkning og den psykiske akt, som noesis refererer til."
+        },
+        {
+          "text": "En tilstand af fuldstændig bevidstløshed",
+          "isCorrect": false,
+          "rationale": "Noesis er en aktiv del af den bevidste intentionalitet og forudsætter bevidsthed."
+        }
+      ],
+      "hint": "Tænk på 'hvordan' man oplever noget, fremfor 'hvad' man oplever."
+    },
+    {
+      "question": "Inden for æstetisk empati, hvad kendetegner 'positiv empati' ifølge Theodor Lipps?",
+      "answerOptions": [
+        {
+          "text": "At den krævede aktivitet fra objektet harmonerer med personens egne anlæg",
+          "isCorrect": true,
+          "rationale": "Positiv empati opstår, når beskueren frit og lystfyldt kan indleve sig i kunstværkets udtryk."
+        },
+        {
+          "text": "At man altid føler glæde, uanset hvad kunstværket forestiller",
+          "isCorrect": false,
+          "rationale": "Det handler om overensstemmelse (harmoni) mellem objektets krav og subjektets formåen, ikke nødvendigvis om overfladisk glæde."
+        },
+        {
+          "text": "At man kan lide farverne i et maleri",
+          "isCorrect": false,
+          "rationale": "Lipps' teori går dybere og handler om den indre aktivitet og selv-objektivering, ikke blot sanselig præference."
+        },
+        {
+          "text": "At man har købt kunstværket til en god pris",
+          "isCorrect": false,
+          "rationale": "Dette er en praktisk eller økonomisk interesse, som Lipps mener man netop træder væk fra i den æstetiske nydelse."
+        }
+      ],
+      "hint": "Det handler om en følelse af fri flow og overensstemmelse mellem beskuer og værk."
+    },
+    {
+      "question": "Hvilket begreb bruger Henri Bergson om den ubrudte tidsoplevelse i bevidstheden?",
+      "answerOptions": [
+        {
+          "text": "Varen ($la \\ durée$)",
+          "isCorrect": true,
+          "rationale": "Bergson beskriver varen som bevidsthedens sande tidsløb, der er kvalitativt og flydende i modsætning til urets rumlige tid."
+        },
+        {
+          "text": "Den objektive nu-tid",
+          "isCorrect": false,
+          "rationale": "Bergson kritiserer netop forsøget på at opdele tiden i objektive, målbare punkter."
+        },
+        {
+          "text": "Den kronologiske rækkefølge",
+          "isCorrect": false,
+          "rationale": "Varen er kendetegnet ved, at fortid og nutid smelter sammen i en flydende helhed snarere end en række afgrænsede punkter."
+        },
+        {
+          "text": "Det evige øjeblik",
+          "isCorrect": false,
+          "rationale": "Selvom varen opleves i nuet, understreger Bergson kontinuiteten og bevægelsen over tid."
+        }
+      ],
+      "hint": "Det franske ord refererer til varighed eller forløb."
+    },
+    {
+      "question": "Hvad er det 'præ-refleksive kropssubjekt' i Merleau-Pontys psykologi?",
+      "answerOptions": [
+        {
+          "text": "Vores kropslige og umiddelbare måde at være i verden på før vi tænker over det",
+          "isCorrect": true,
+          "rationale": "Det refererer til, at vores krop allerede 'forstår' og agerer i verden, før vi gør den til genstand for refleksion."
+        },
+        {
+          "text": "En bevidstløs krop styret af rene reflekser",
+          "isCorrect": false,
+          "rationale": "Kropssubjektet er stadig en form for bevidsthed ('jeg kan'), selvom det ikke er en tænkende, intellektuel bevidsthed."
+        },
+        {
+          "text": "Den fysiske krop som den ser ud i et anatomiatlas",
+          "isCorrect": false,
+          "rationale": "Merleau-Ponty skelner mellem den objektive krop (som anatomi) og den oplevede krop (subjektet)."
+        },
+        {
+          "text": "En social rolle man påtager sig overfor andre",
+          "isCorrect": false,
+          "rationale": "Kropssubjektet er mere fundamentalt end sociale roller og vedrører selve fundamentet for al erfaring."
+        }
+      ],
+      "hint": "Tænk på den viden, din krop har, når du f.eks. griber en bold uden at tænke."
+    },
+    {
+      "question": "Inden for fænomenologisk metode, hvad er formålet med 'eidetisk variation'?",
+      "answerOptions": [
+        {
+          "text": "At finde de væsentlige og uforanderlige træk ved et fænomen",
+          "isCorrect": true,
+          "rationale": "Ved at variere træk i fantasien kan man afgøre, hvilke egenskaber der er nødvendige for, at noget er det, det er (fænomenets essens)."
+        },
+        {
+          "text": "At måle hvor meget en person kan huske",
+          "isCorrect": false,
+          "rationale": "Eidetisk variation er en tankeproces rettet mod essenser, ikke en kvantitativ hukommelsestest."
+        },
+        {
+          "text": "At ændre på virkeligheden så den bliver bedre",
+          "isCorrect": false,
+          "rationale": "Metoden bruges til at forstå virkeligheden bedre gennem beskrivelse, ikke til at ændre den fysisk."
+        },
+        {
+          "text": "At finde ud af hvilke farver folk bedst kan lide",
+          "isCorrect": false,
+          "rationale": "Selvom farver kan varieres i tanken, er målet at finde det almene ved fænomenet 'farve' eller 'perception'."
+        }
+      ],
+      "hint": "Det handler om at bruge fantasien til at rense et fænomen for tilfældige egenskaber."
+    },
+    {
+      "question": "Hvad betyder det ifølge Spinelli, at mennesket ikke kan tolerere meningsløshed?",
+      "answerOptions": [
+        {
+          "text": "At vi altid forsøger at påføre vores oplevelser en form for mening",
+          "isCorrect": true,
+          "rationale": "Meningsløshed opleves som et ubehageligt stimulus, som vi forsøger at reducere ved at skabe forklaringer eller tolkninger."
+        },
+        {
+          "text": "At vi altid forstår alting helt korrekt med det samme",
+          "isCorrect": false,
+          "rationale": "Pointen er, at vi skaber en mening, der er 'god nok' for os, ikke nødvendigvis en der er objektivt 'korrekt'."
+        },
+        {
+          "text": "At vi kun er interesserede i logiske og videnskabelige fakta",
+          "isCorrect": false,
+          "rationale": "Mening kan også være personlig, emotionel eller ligefrem fantasifuld, så længe den fjerner forstyrrelsen ved meningsløshed."
+        },
+        {
+          "text": "At vi aldrig bliver forvirrede eller bange",
+          "isCorrect": false,
+          "rationale": "Tværtimod er forvirring netop resultatet af meningsløshed, som vi aktivt forsøger at overvinde."
+        }
+      ],
+      "hint": "Tænk på din reaktion, når du ser et meget mærkeligt og uforståeligt kunstværk."
+    },
+    {
+      "question": "Hvad var Franz Brentanos vigtigste bidrag til fænomenologien?",
+      "answerOptions": [
+        {
+          "text": "Genindførelsen af begrebet intentionalitet som bevidsthedens kendetegn",
+          "isCorrect": true,
+          "rationale": "Brentano fastslog, at psykiske fænomener altid er rettet mod et objekt, hvilket adskiller dem fra fysiske fænomener."
+        },
+        {
+          "text": "Opfindelsen af det moderne hjernekirurgi",
+          "isCorrect": false,
+          "rationale": "Brentano var filosof og psykolog, og hans arbejde var teoretisk og beskrivende, ikke kirurgisk."
+        },
+        {
+          "text": "Udviklingen af den behavioristiske læringsteori",
+          "isCorrect": false,
+          "rationale": "Fænomenologien (Brentano) er netop en modvægt til behaviorismen, da den fokuserer på den indre oplevelse."
+        },
+        {
+          "text": "Beviset for at bevidstheden kun er en kemisk proces",
+          "isCorrect": false,
+          "rationale": "Brentano argumenterede for, at psykiske fænomener har en unik karakter (intentionalitet), som fysiske/kemiske ting ikke har."
+        }
+      ],
+      "hint": "Det handler om, hvordan bevidstheden altid har et indhold."
+    }
+  ]
+}

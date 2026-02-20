@@ -1,0 +1,317 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "Ian Hacking's 'dynamic nominalism' is heavily influenced by which philosopher's assertion that 'creating new names and assessments and apparent truths is enough to create new things'?",
+      "answerOptions": [
+        {
+          "text": "Friedrich Nietzsche",
+          "isCorrect": true,
+          "rationale": "The author identifies this philosopher as the first dynamic nominalist, citing his aphorism in The Gay Science regarding the creative power of naming."
+        },
+        {
+          "text": "John Stuart Mill",
+          "isCorrect": false,
+          "rationale": "While he provided the groundwork for natural kind theory, his nominalism is described as static rather than dynamic."
+        },
+        {
+          "text": "Michel Foucault",
+          "isCorrect": false,
+          "rationale": "He is credited with practicing 'historical nominalism,' but the specific quote about creating things through names is attributed to an earlier thinker."
+        },
+        {
+          "text": "William of Ockham",
+          "isCorrect": false,
+          "rationale": "He belongs to the tradition of British nominalism which Hacking characterizes as lacking the interactive, dynamic element he seeks."
+        }
+      ],
+      "hint": "Consider the thinker who emphasized the 'misty mantle of illusion' and the role of the creator in 'The Gay Science'."
+    },
+    {
+      "question": "In the five-part framework for 'making up people', how is the component of 'knowledge' (d) distinguished from the traditional analytic philosophical definition?",
+      "answerOptions": [
+        {
+          "text": "It encompasses presumptions and 'conjectural knowledge' applied within institutions regardless of ultimate truth.",
+          "isCorrect": true,
+          "rationale": "Hacking adopts a sense closer to Popper, where beliefs are disseminated and refined within specific institutional contexts even if they are later deemed errors."
+        },
+        {
+          "text": "It is restricted solely to 'justified true belief' validated by the scientific method.",
+          "isCorrect": false,
+          "rationale": "The author explicitly rejects the requirement of truth, noting that 'ghastly mistakes' interact with people just as effectively as stable facts."
+        },
+        {
+          "text": "It refers exclusively to the lived experience of the people being classified.",
+          "isCorrect": false,
+          "rationale": "The framework includes both expert and popular knowledge, rather than being limited to the subjective experience of the individual."
+        },
+        {
+          "text": "It is defined as the 'thought style' of a specific collective, replacing the need for experts.",
+          "isCorrect": false,
+          "rationale": "While the author mentions this as a possible alternative view, he maintains 'knowledge' and 'experts' as distinct components in his own positivist list."
+        }
+      ],
+      "hint": "Think about how Hacking views the impact of both 'facts' and 'ghastly mistakes' on the classification process."
+    },
+    {
+      "question": "What led Hacking to abandon the term 'human kinds' in favor of his current framework?",
+      "answerOptions": [
+        {
+          "text": "The conceptual collapse of the overarching idea of 'natural kinds'.",
+          "isCorrect": true,
+          "rationale": "He argues that since the concept of a 'natural kind' is no longer viable, the derivative concept of a 'human kind' is also logically unsustainable."
+        },
+        {
+          "text": "A critique by Rachel Cooper arguing that human and natural kinds are fundamentally identical.",
+          "isCorrect": false,
+          "rationale": "The author actually disagrees with Cooper, stating that the categories themselves are too poorly defined to be called distinct or identical."
+        },
+        {
+          "text": "The term was co-opted by anthropologists like Lawrence Hirschfeld to describe racial categories.",
+          "isCorrect": false,
+          "rationale": "Hacking expresses approval of the term's use by others to analyze 'Us-and-Them' epithets, even though he personally jettisoned it."
+        },
+        {
+          "text": "The realization that 'interactive kinds' were actually 'indifferent kinds'.",
+          "isCorrect": false,
+          "rationale": "The author previously distinguished these two, but later concluded that defining a specific class of 'interactive kinds' was not useful."
+        }
+      ],
+      "hint": "Reflect on the philosophical relationship between the sub-category of people and the broader category of nature."
+    },
+    {
+      "question": "Regarding the history of autism, what is the primary distinction between 'Statement A' and 'Statement B' as proposed by Hacking?",
+      "answerOptions": [
+        {
+          "text": "Statement A concerns the biological existence of the condition, while Statement B concerns the social experience and identity.",
+          "isCorrect": true,
+          "rationale": "Statement A (existence) is considered false because the biological reality likely predated the diagnosis, whereas Statement B (the way to be a person) is plausible only after the category was created."
+        },
+        {
+          "text": "Statement A represents the viewpoint of the experts, while Statement B represents the viewpoint of the classified people.",
+          "isCorrect": false,
+          "rationale": "Both statements are analytical tools used by Hacking to distinguish between temporal diagnosis and the socio-historical reality of a 'way of being'."
+        },
+        {
+          "text": "Statement A is a claim about 'transient mental illness,' whereas Statement B applies to permanent disabilities.",
+          "isCorrect": false,
+          "rationale": "These statements are used to analyze both transient and permanent conditions to show how targets move regardless of the condition's longevity."
+        },
+        {
+          "text": "Statement A refers to 'low-functioning' autism, while Statement B refers to 'high-functioning' autism.",
+          "isCorrect": false,
+          "rationale": "The distinction applies to the concept of autism as a whole, specifically addressing the timing of when it became a recognizable 'way to be a person'."
+        }
+      ],
+      "hint": "One statement focuses on whether the biological reality existed, while the other focuses on the possibility of self-identification."
+    },
+    {
+      "question": "How did the 'avalanche of printed numbers' in the post-Napoleonic era contribute to the 'making up' of new kinds of people?",
+      "answerOptions": [
+        {
+          "text": "By inaugurating counting and tabulation that forced new forms of self-consciousness among the enumerated.",
+          "isCorrect": true,
+          "rationale": "When the census and tabulations begin enumerating new characteristics or categories, it creates a group identity that may not have existed before the counting began."
+        },
+        {
+          "text": "By providing the first genetic markers for social deviations like suicide.",
+          "isCorrect": false,
+          "rationale": "Geneticization is described as the seventh and most recent engine, occurring much later than the early 19th-century statistical surge."
+        },
+        {
+          "text": "By shifting the focus of administration from the 'satrapies' of Darius to the 'satrapies' of the mind.",
+          "isCorrect": false,
+          "rationale": "The example of Darius is used to illustrate imperial classification long before the modern era of numerical sociology."
+        },
+        {
+          "text": "By allowing individuals to reject bureaucratic labels through 'resistance' (Engine 10).",
+          "isCorrect": false,
+          "rationale": "Resistance is a reactive engine that occurs after the classification has been established, not the initial result of the statistical avalanche."
+        }
+      ],
+      "hint": "Think about the psychological effect of being categorized and counted by a centralized state authority."
+    },
+    {
+      "question": "In the case of obesity, Hacking notes that the World Health Organization only officially defined 'overweight' as a $BMI$ of over $25$ and 'obesity' as a $BMI$ of over $30$ in which year?",
+      "answerOptions": [
+        {
+          "text": "$1998$",
+          "isCorrect": true,
+          "rationale": "The author uses an exclamation mark to highlight how recently these specific quantitative thresholds were established by international bodies."
+        },
+        {
+          "text": "$1903$",
+          "isCorrect": false,
+          "rationale": "This was the year the Society of Actuaries defined overweight based on insurance averages, but not the specific $BMI$ thresholds mentioned."
+        },
+        {
+          "text": "$1970$",
+          "isCorrect": false,
+          "rationale": "The $BMI$ as a metric began to take hold during the 1970s, but the WHO definition of the thresholds came later."
+        },
+        {
+          "text": "$1870$",
+          "isCorrect": false,
+          "rationale": "This year is associated with the birth of the engine of 'correlation' by Francis Galton, not the medical standardization of obesity."
+        }
+      ],
+      "hint": "The author expresses surprise at how recently this 'quantification' engine was standardized by the World Health Organization."
+    },
+    {
+      "question": "Using John Stuart Mill’s logic, why might 'autism' be considered a 'real Kind' while 'overweight' is likely a 'merely finite kind'?",
+      "answerOptions": [
+        {
+          "text": "Autistic people share an inexhaustible range of common properties beyond the label, whereas overweight people share only the superficial trait of weight.",
+          "isCorrect": true,
+          "rationale": "Mill's distinction relies on whether the members of a class share 'innumerable' characteristics or if the classification is based on a singular, finite attribute."
+        },
+        {
+          "text": "Autism is a congenital neurological deficit, while overweight is a lifestyle choice.",
+          "isCorrect": false,
+          "rationale": "While true in some contexts, Mill's philosophical distinction is based on the clustering of properties, not the etiology or moral status of the condition."
+        },
+        {
+          "text": "The category of 'overweight' is subject to the 'looping effect,' while 'autism' is a fixed target.",
+          "isCorrect": false,
+          "rationale": "Hacking argues that both are moving targets; the Mill distinction concerns the density of shared traits within the category."
+        },
+        {
+          "text": "The term 'autism' was invented by an expert, while 'overweight' was invented by insurance companies.",
+          "isCorrect": false,
+          "rationale": "The origin of the terms does not determine if they are 'real Kinds'; it is the discovery of associated characteristics through scientific inquiry that matters."
+        }
+      ],
+      "hint": "Think of Mill's analogy comparing 'horse' and 'phosphorus' to 'white things'."
+    },
+    {
+      "question": "Hacking suggests that Francis Galton's 'Hereditary Genius' paradoxically 'expelled' genius from our culture. What was the mechanism of this expulsion?",
+      "answerOptions": [
+        {
+          "text": "By forcing genius onto a statistical linear scale which measures intelligence rather than the unmeasurable 'nature' of genius.",
+          "isCorrect": true,
+          "rationale": "True genius, according to the author, abhors measures, and Galton’s transition to statistical IQ tests turned it into a numerical score, losing its Romantic allure."
+        },
+        {
+          "text": "By proving that genius was a product of child abuse rather than heredity.",
+          "isCorrect": false,
+          "rationale": "This was the etiologic theory for Multiple Personality Disorder, not Galton's theory of genius."
+        },
+        {
+          "text": "By adjusting IQ tests to make them harder for women to ensure a mean of $100$.",
+          "isCorrect": false,
+          "rationale": "While this happened, it was a side effect of normalizing the test, not the primary reason genius as a concept was 'expelled' from high culture."
+        },
+        {
+          "text": "By creating 'MacArthur prizes' which reward social good instead of raw intellect.",
+          "isCorrect": false,
+          "rationale": "The MacArthur prizes are a modern consequence of the loss of the genius concept, not the mechanism by which Galton initially changed the field."
+        }
+      ],
+      "hint": "Genius historically was seen as an unquantifiable gift, whereas Galton introduced the engine of 'Quantity' and 'Norms'."
+    },
+    {
+      "question": "Why does the author argue that we have 'great difficulty thinking about the suicide weapon' (suicide bombers) in the modern West?",
+      "answerOptions": [
+        {
+          "text": "Our modern scientific knowledge has inextricably tied suicide to clinical depression and a 'cry for help'.",
+          "isCorrect": true,
+          "rationale": "Because our experts have medicalized suicide as a symptom of individual pathology since $1825$, we struggle to comprehend it as a calculated, indifferent weapon of war."
+        },
+        {
+          "text": "There is a lack of statistical correlation between suicide rates and political hegemony.",
+          "isCorrect": false,
+          "rationale": "The problem is not a lack of statistics, but that our existing 'knowledge' frame makes the statistics of political suicide appear culturally 'confused'."
+        },
+        {
+          "text": "The 'looping effect' has caused suicide bombers to self-identify as 'depressed' patients.",
+          "isCorrect": false,
+          "rationale": "The author argues the opposite—that the Western meaning of suicide is not a human universal and doesn't apply to these actors."
+        },
+        {
+          "text": "The engine of 'Biologizing' has proven that the suicide weapon is a genetic trait.",
+          "isCorrect": false,
+          "rationale": "There is no claim that the suicide weapon is genetic; rather, the difficulty is conceptual and stems from our historical medicalization of the act."
+        }
+      ],
+      "hint": "Consider how the scientific engine of 'Medicalizing' has restricted our definition of what suicide 'means'."
+    },
+    {
+      "question": "Which engine of discovery is described as the 'fundamental engine of the social sciences' and is linked to the deviance-based philosophy of Francis Galton?",
+      "answerOptions": [
+        {
+          "text": "Correlate",
+          "isCorrect": true,
+          "rationale": "Galton devised the correlation coefficient in $1870$ specifically to study how characteristics deviated from the mean, forming the core of modern social research."
+        },
+        {
+          "text": "Quantify",
+          "isCorrect": false,
+          "rationale": "While quantifying is necessary for social science, 'correlation' is the specific tool used to relate variables like risk factors to categories of people."
+        },
+        {
+          "text": "Medicalise",
+          "isCorrect": false,
+          "rationale": "Medicalization is an engine used to bring deviance into the province of doctors, but it is not the foundational mathematical engine of social science."
+        },
+        {
+          "text": "Geneticise",
+          "isCorrect": false,
+          "rationale": "Genetics is the seventh and most recent engine, whereas Galton's fundamental contribution to social science occurred in the late $19$th century."
+        }
+      ],
+      "hint": "This engine allows researchers to connect 'risk factors' to specific classifications, such as $BMI$ and health outcomes."
+    },
+    {
+      "question": "Hacking defines 'transient mental illnesses' as those that:",
+      "answerOptions": [
+        {
+          "text": "Exist only at a specific time and place within certain 'ecological niches'.",
+          "isCorrect": true,
+          "rationale": "Using examples like dissociative fugue and $MPD$, Hacking argues some illnesses appear and thrive only when specific social and institutional conditions are met."
+        },
+        {
+          "text": "Affect a single individual for a brief period before permanent recovery.",
+          "isCorrect": false,
+          "rationale": "The author explicitly clarifies that 'transience' refers to the historical and geographical prevalence of the diagnosis, not the duration of the illness in a patient."
+        },
+        {
+          "text": "Are identified by experts but rejected by the people classified.",
+          "isCorrect": false,
+          "rationale": "This would be an example of resistance (Engine $10$), but it doesn't define the 'transient' nature of the illness itself."
+        },
+        {
+          "text": "Lack any biological or neurological foundation.",
+          "isCorrect": false,
+          "rationale": "The author notes that their transience makes outsiders 'suspect' they aren't real, but he focuses on their historical specificity rather than a total lack of biology."
+        }
+      ],
+      "hint": "Think about the concept of 'Mad Travelers' and illnesses that seem to appear in 'epidemics' then vanish."
+    },
+    {
+      "question": "The 'tenth engine' (Resistance) is best exemplified in the text by which historical shift?",
+      "answerOptions": [
+        {
+          "text": "The reclaiming of identity by homosexuals to take control of classifications back from medical and legal experts.",
+          "isCorrect": true,
+          "rationale": "Hacking cites 'Gay Pride' as a primary example of a group reclaiming the power of classification from the doctors who medicalized it."
+        },
+        {
+          "text": "The transition from 'Multiple Personality Disorder' to 'Dissociative Identity Disorder'.",
+          "isCorrect": false,
+          "rationale": "This is described as 'diagnostic house-cleaning' by experts, rather than a grassroots resistance by the classified people."
+        },
+        {
+          "text": "The use of 'behavioral therapies' to normalize autistic children.",
+          "isCorrect": false,
+          "rationale": "This represents the engine of 'Normalizing' (Engine $8$), which is typically directed by experts at the subjects, not vice versa."
+        },
+        {
+          "text": "The decision by Hacking to stop using the term 'human kinds'.",
+          "isCorrect": false,
+          "rationale": "This was a philosophical decision based on the collapse of 'natural kinds,' not a social movement of self-identification."
+        }
+      ],
+      "hint": "Look for an example where the people being studied 'pushed back' against the medical definitions imposed upon them."
+    }
+  ]
+}

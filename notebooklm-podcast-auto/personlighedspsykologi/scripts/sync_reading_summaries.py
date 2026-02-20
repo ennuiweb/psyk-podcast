@@ -19,6 +19,10 @@ WEEKLY_OVERVIEW_PATTERN = re.compile(r"\b(alle kilder|all sources)\b", re.IGNORE
 BRIEF_PATTERN = re.compile(r"^\[\s*brief\s*\]\s*", re.IGNORECASE)
 TTS_PATTERN = re.compile(r"^\[\s*tts\s*\]\s*|\boplæst\b", re.IGNORECASE)
 AUDIO_EXTENSIONS = {".mp3", ".wav"}
+DEFAULT_SOURCES_ROOT = (
+    "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/"
+    "Mine dokumenter \U0001F4BE/psykologi/Personlighedspsykologi/Readings"
+)
 
 
 def parse_weeks(week: str | None, weeks: str | None) -> list[str]:
@@ -699,7 +703,7 @@ def main() -> int:
     )
     parser.add_argument(
         "--sources-root",
-        default="notebooklm-podcast-auto/personlighedspsykologi/sources",
+        default=DEFAULT_SOURCES_ROOT,
         help="Root folder containing lecture source PDFs.",
     )
     parser.add_argument("--dry-run", action="store_true", help="Preview updates without writing.")
@@ -798,7 +802,7 @@ def main() -> int:
     missing_weekly_lecture_key: list[str] = []
     if args.sync_weekly_overview and weekly_keys:
         if not sources_root.exists():
-            print(f"Warning: sources root not found: {sources_root}")
+            raise SystemExit(f"Sources root not found: {sources_root}")
         added_weekly, updated_weekly, missing_weekly_lecture_key = sync_weekly_overview_cache(
             weekly_by_name,
             weekly_keys,

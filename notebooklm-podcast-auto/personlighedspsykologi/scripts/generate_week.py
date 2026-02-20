@@ -26,6 +26,10 @@ CFG_TAG_PATTERN = re.compile(
     re.IGNORECASE,
 )
 MAX_FILENAME_BYTES = 255
+DEFAULT_SOURCES_ROOT = (
+    "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/"
+    "Mine dokumenter \U0001F4BE/psykologi/Personlighedspsykologi/Readings"
+)
 
 
 def parse_week_selector(value: str) -> tuple[int, int | None] | None:
@@ -765,7 +769,7 @@ def main() -> int:
     )
     parser.add_argument(
         "--sources-root",
-        default="notebooklm-podcast-auto/personlighedspsykologi/sources",
+        default=DEFAULT_SOURCES_ROOT,
         help="Root folder containing week source folders.",
     )
     parser.add_argument(

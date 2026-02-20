@@ -307,6 +307,10 @@ python3 scripts/sync_personlighedspsykologi_reading_file_key.py --apply
 python3 scripts/sync_personlighedspsykologi_reading_file_key.py --bootstrap-source-from-repo --apply
 ```
 
+Default sync targets:
+- `shows/personlighedspsykologi-en/docs/reading-file-key.md` (feed config target)
+- `notebooklm-podcast-auto/personlighedspsykologi/docs/reading-file-key.md` (NotebookLM docs mirror)
+
 ### Apps Script helper
 The canonical automation script lives in `apps-script/drive_change_trigger.gs`. Copy it directly from the repository so you always grab the latest multi-folder logic (`CONFIG.drive.folderIds`, `configuredRootFolderIds()`, etc.). Key bits to double-check before deploying:
 - `CONFIG.drive.mimePrefixes` controls which file types trigger a rebuild (add `image/` to react to PNG uploads, or set `[]` for everything).

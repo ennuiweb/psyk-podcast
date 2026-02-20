@@ -1,7 +1,11 @@
 import importlib.util
+import json
+import subprocess
+import sys
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 
 def _load_module(module_path: Path, name: str):
@@ -164,6 +168,53 @@ class CfgTagFilenameHelpersTests(unittest.TestCase):
         self.assertTrue(mod.matches_quiz_difficulty(stem, "medium"))
         self.assertFalse(mod.matches_quiz_difficulty(stem, "hard"))
 
+    def test_local_excludes_non_quiz_json_artifacts(self):
+        mod = self.local_sync
+        self.assertTrue(mod.is_excluded_quiz_json_name("quiz_json_manifest.json"))
+        self.assertTrue(mod.is_excluded_quiz_json_name("foo.html.request.json"))
+        self.assertTrue(mod.is_excluded_quiz_json_name("foo.html.request.done.json"))
+        self.assertFalse(
+            mod.is_excluded_quiz_json_name(
+                "W01L1 - Foo [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=beef1234}.json"
+            )
+        )
+
+    def test_local_quiz_json_payload_validation_accepts_supported_shapes(self):
+        mod = self.local_sync
+        self.assertTrue(mod.is_valid_quiz_payload([{"question": "Q1"}]))
+        self.assertTrue(mod.is_valid_quiz_payload({"questions": []}))
+        self.assertTrue(mod.is_valid_quiz_payload({"quiz": []}))
+        self.assertFalse(mod.is_valid_quiz_payload({"foo": "bar"}))
+
+    def test_local_quiz_path_conversion_keeps_public_html_and_json_upload_source(self):
+        mod = self.local_sync
+        self.assertEqual(
+            mod.to_public_quiz_relative_path("W01L1/quiz-file.json"),
+            "W01L1/quiz-file.html",
+        )
+        self.assertEqual(
+            mod.to_source_quiz_json_relative_path("W01L1/quiz-file.html"),
+            "W01L1/quiz-file.json",
+        )
+
+    def test_local_sync_fails_when_no_valid_quiz_json_files_exist(self):
+        script_path = _repo_root() / "scripts" / "sync_quiz_links.py"
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            result = subprocess.run(
+                [
+                    sys.executable,
+                    str(script_path),
+                    "--output-root",
+                    tmp_dir,
+                    "--dry-run",
+                    "--no-upload",
+                ],
+                text=True,
+                capture_output=True,
+            )
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("No valid quiz JSON files found", result.stderr + result.stdout)
+
     def test_drive_matches_quiz_difficulty_from_cfg_tag(self):
         if self.drive_sync is None:
             self.skipTest("google-api dependencies unavailable for sync_drive_quiz_links import")
@@ -182,6 +233,61 @@ class CfgTagFilenameHelpersTests(unittest.TestCase):
         stem = "W01L1 - Foo [EN]"
         self.assertTrue(mod.matches_quiz_difficulty(stem, "medium"))
         self.assertFalse(mod.matches_quiz_difficulty(stem, "easy"))
+
+    def test_drive_excludes_non_quiz_json_artifacts(self):
+        if self.drive_sync is None:
+            self.skipTest("google-api dependencies unavailable for sync_drive_quiz_links import")
+        mod = self.drive_sync
+        self.assertTrue(mod.is_excluded_quiz_json_name("quiz_json_manifest.json"))
+        self.assertTrue(mod.is_excluded_quiz_json_name("foo.html.request.json"))
+        self.assertTrue(mod.is_excluded_quiz_json_name("foo.html.request.done.json"))
+        self.assertFalse(
+            mod.is_excluded_quiz_json_name(
+                "W01L1 - Foo [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=beef1234}.json"
+            )
+        )
+
+    def test_drive_quiz_path_conversion_keeps_public_html_and_json_download_source(self):
+        if self.drive_sync is None:
+            self.skipTest("google-api dependencies unavailable for sync_drive_quiz_links import")
+        mod = self.drive_sync
+        self.assertEqual(
+            mod.to_public_quiz_relative_path("W01L1/quiz-file.json"),
+            "W01L1/quiz-file.html",
+        )
+        self.assertEqual(
+            mod.to_source_quiz_json_relative_path("W01L1/quiz-file.html"),
+            "W01L1/quiz-file.json",
+        )
+
+    def test_drive_sync_fails_when_no_valid_quiz_json_files_exist(self):
+        if self.drive_sync is None:
+            self.skipTest("google-api dependencies unavailable for sync_drive_quiz_links import")
+        mod = self.drive_sync
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            config_path = Path(tmp_dir) / "config.json"
+            config_path.write_text(
+                json.dumps(
+                    {
+                        "service_account_file": str(Path(tmp_dir) / "service-account.json"),
+                        "drive_folder_id": "folder-123",
+                        "quiz": {
+                            "links_file": str(Path(tmp_dir) / "quiz_links.json"),
+                        },
+                    }
+                ),
+                encoding="utf-8",
+            )
+            with mock.patch.object(mod, "build_drive_service", return_value=object()):
+                with mock.patch.object(mod, "list_drive_files", return_value=[]):
+                    with mock.patch.object(
+                        sys,
+                        "argv",
+                        ["sync_drive_quiz_links.py", "--config", str(config_path)],
+                    ):
+                        with self.assertRaises(SystemExit) as exc_info:
+                            mod.main()
+        self.assertIn("No valid quiz JSON files found", str(exc_info.exception))
 
     def test_drive_select_audio_candidate_prefers_non_double_prefixed_week_name(self):
         if self.drive_sync is None:

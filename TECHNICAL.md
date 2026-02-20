@@ -131,11 +131,12 @@ The repository now includes a separate Django portal in `freudd_portal/` for use
 - `GET/POST /accounts/signup`
 - `GET/POST /accounts/login`
 - `POST /accounts/logout`
-- `GET /q/<quiz_id>.html` (login-required wrapper around iframe quiz)
-- `GET /q/raw/<quiz_id>.html` (login-required raw quiz HTML)
-- `GET/POST /api/quiz-state/<quiz_id>` (structured progress state)
-- `GET/POST /api/quiz-state/<quiz_id>/raw` (raw postMessage-compatible state payload)
-- `GET /progress` (dashboard with in-progress/completed rows)
+- `GET /q/<quiz_id>.html` (public JSON-driven quiz wrapper)
+- `GET /q/raw/<quiz_id>.html` (public raw quiz HTML)
+- `GET /api/quiz-content/<quiz_id>` (public normalized quiz JSON for wrapper UI)
+- `GET/POST /api/quiz-state/<quiz_id>` (login-required structured progress state)
+- `GET/POST /api/quiz-state/<quiz_id>/raw` (login-required legacy raw state payload)
+- `GET /progress` (login-required dashboard with in-progress/completed rows)
 
 ### Data model
 - Django app: `freudd_portal/quizzes`
@@ -164,6 +165,7 @@ python3 manage.py test
 - `FREUDD_PORTAL_SECRET_KEY`
 - `FREUDD_PORTAL_DEBUG`
 - `FREUDD_PORTAL_ALLOWED_HOSTS` (comma-separated)
+- Temporary fallback: old `QUIZ_PORTAL_SECRET_KEY`, `QUIZ_PORTAL_DEBUG`, and `QUIZ_PORTAL_ALLOWED_HOSTS` are still accepted during rollout.
 - `QUIZ_FILES_ROOT` (default: `/var/www/quizzes/personlighedspsykologi`)
 - `QUIZ_LINKS_JSON_PATH` (default: `shows/personlighedspsykologi-en/quiz_links.json`)
 - `QUIZ_SIGNUP_RATE_LIMIT`
@@ -183,7 +185,10 @@ Proxy these routes to the Django service (Gunicorn/Uvicorn):
 - `/api/*`
 - `/progress`
 
-Existing quiz generation/sync scripts remain unchanged.
+Quiz sync behavior (current):
+- `scripts/sync_quiz_links.py` and `podcast-tools/sync_drive_quiz_links.py` discover quizzes from JSON exports only.
+- Both scripts keep emitting `.html` `relative_path` entries in `quiz_links.json` so feed/portal links stay `/q/<id>.html`.
+- Non-quiz JSON artifacts (for example `*.html.request.json`, manifest JSON files) are ignored; zero valid quiz JSON files is treated as an error.
 
 ### Security controls in phase 1
 - Django session auth + CSRF middleware
@@ -194,7 +199,10 @@ Existing quiz generation/sync scripts remain unchanged.
 - Strict quiz ID regex (`^[0-9a-f]{8}$`) plus existence checks
 - IP-based login/signup rate limiting
 - HTTP warning banners on auth pages (until HTTPS rollout)
-- Unknown iframe actions ignored safely
+
+### Deployment notes (current)
+- Runtime names are now `freudd-portal.service` and `/etc/freudd-portal.env`.
+- Upgrades from pre-rename deployments must move the SQLite file to `/opt/podcasts/freudd_portal/db.sqlite3` and ensure `www-data` can write in `/opt/podcasts/freudd_portal`.
 
 ### Operational note
 The current deployment is HTTP on IP. Credentials are therefore vulnerable on untrusted networks. HTTPS with a domain should be prioritized as the next rollout step.
@@ -273,6 +281,31 @@ Pre-push environment controls:
 - `BIONEURO_MIRROR_DST=/custom/destination/path` to override destination.
 
 Mirror failures currently print a warning and do not block `git push`.
+
+### Personlighedspsykologi OneDrive source lock
+Personlighedspsykologi source resolution is now hard-locked to the absolute OneDrive Readings root:
+`/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings`
+
+Operational commands:
+```bash
+python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/migrate_onedrive_sources.py
+python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/migrate_onedrive_sources.py --apply
+# after archiving repo-local sources/, use:
+python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/migrate_onedrive_sources.py --canonical-root notebooklm-podcast-auto/personlighedspsykologi/sources.archive-<timestamp>
+```
+
+Validation commands:
+```bash
+./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/sync_reading_summaries.py --validate-only --validate-weekly
+./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_week.py --week W1L2 --content-types quiz --dry-run
+```
+
+Reading key sync (OneDrive -> repo mirror used by feed config):
+```bash
+python3 scripts/sync_personlighedspsykologi_reading_file_key.py
+python3 scripts/sync_personlighedspsykologi_reading_file_key.py --apply
+python3 scripts/sync_personlighedspsykologi_reading_file_key.py --bootstrap-source-from-repo --apply
+```
 
 ### Apps Script helper
 The canonical automation script lives in `apps-script/drive_change_trigger.gs`. Copy it directly from the repository so you always grab the latest multi-folder logic (`CONFIG.drive.folderIds`, `configuredRootFolderIds()`, etc.). Key bits to double-check before deploying:

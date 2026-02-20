@@ -41,3 +41,15 @@ Reading-summary workflow:
 
 Feed build prerequisites: install `google-auth` + `google-api-python-client`, then provide `shows/personlighedspsykologi-en/service-account.json`.
 Update the Drive folder ID, owner email, and upload service account credentials before enabling automation.
+
+Quiz link sync note:
+- `scripts/sync_quiz_links.py` and `podcast-tools/sync_drive_quiz_links.py` use quiz JSON exports as the source of truth.
+- `shows/personlighedspsykologi-en/quiz_links.json` intentionally keeps `.html` relative paths so public links remain `/q/<id>.html`.
+
+Reading key sync note:
+- Source of truth file: `/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/.ai/reading-file-key.md`
+- Repo mirror used by feed config: `shows/personlighedspsykologi-en/docs/reading-file-key.md`
+- Sync commands:
+  - Dry-run: `python3 scripts/sync_personlighedspsykologi_reading_file_key.py`
+  - Apply: `python3 scripts/sync_personlighedspsykologi_reading_file_key.py --apply`
+  - One-time bootstrap source from current repo file: `python3 scripts/sync_personlighedspsykologi_reading_file_key.py --bootstrap-source-from-repo --apply`

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Sync quiz HTML exports from Google Drive and update quiz_links.json."""
+"""Sync quiz JSON exports from Google Drive and update quiz_links.json."""
 
 from __future__ import annotations
 
@@ -36,6 +36,7 @@ QUIZ_DIFFICULTY_RE = re.compile(
     r"\{[^{}]*\btype=quiz\b[^{}]*\bdifficulty=(?P<difficulty>[a-z0-9._:+-]+)\b[^{}]*\}",
     re.IGNORECASE,
 )
+QUIZ_TYPE_RE = re.compile(r"\{[^{}]*\btype=quiz\b[^{}]*\}", re.IGNORECASE)
 DUPLICATE_WEEK_PREFIX_RE = re.compile(r"^(W\d{2}L\d+)\s*-\s*\1\b", re.IGNORECASE)
 MISSING_TOKEN_RE = re.compile(r"\bMISSING\b", re.IGNORECASE)
 QUIZ_DIFFICULTY_SORT_ORDER = {"easy": 0, "medium": 1, "hard": 2}
@@ -290,6 +291,27 @@ def matches_quiz_difficulty(value: str, expected: str | None) -> bool:
     return actual == expected
 
 
+def has_quiz_cfg_tag(value: str) -> bool:
+    return QUIZ_TYPE_RE.search(value) is not None
+
+
+def is_excluded_quiz_json_name(name: str) -> bool:
+    normalized = name.strip().lower()
+    if ".html.request" in normalized and normalized.endswith(".json"):
+        return True
+    if normalized == "quiz_json_manifest.json":
+        return True
+    return normalized.endswith(("-manifest.json", "_manifest.json"))
+
+
+def to_public_quiz_relative_path(source_relative_path: str) -> str:
+    return str(Path(source_relative_path).with_suffix(".html")).replace("\\", "/")
+
+
+def to_source_quiz_json_relative_path(public_relative_path: str) -> str:
+    return str(Path(public_relative_path).with_suffix(".json")).replace("\\", "/")
+
+
 def canonical_key(stem: str) -> str:
     name = stem.replace("–", "-").replace("—", "-")
     name = strip_cfg_tag_suffix(name)
@@ -489,6 +511,8 @@ def run_rsync(
         "*/",
         "--include",
         "*.html",
+        "--include",
+        "*.json",
         "--exclude",
         "*",
     ]
@@ -534,7 +558,7 @@ def main() -> int:
     parser.add_argument(
         "--download-root",
         type=Path,
-        help="Local folder to download quiz HTML files into.",
+        help="Local folder to download quiz JSON files into.",
     )
     parser.add_argument(
         "--links-file",
@@ -550,7 +574,7 @@ def main() -> int:
         default="any",
         choices=("easy", "medium", "hard", "any"),
         help=(
-            "Only map quiz HTML files for this difficulty. "
+            "Only map quiz JSON files for this difficulty. "
             "Use 'any' to include all difficulties. Default: any."
         ),
     )
@@ -594,10 +618,10 @@ def main() -> int:
         help="Droplet directory for quizzes.",
     )
     parser.add_argument(
-        "--html-mime-prefix",
+        "--json-mime-prefix",
         action="append",
-        default=["text/"],
-        help="Drive mime prefix to scan for quiz HTML files (default: text/).",
+        default=["application/json"],
+        help="Drive mime type or prefix to scan for quiz JSON files (default: application/json).",
     )
     args = parser.parse_args()
 
@@ -625,29 +649,30 @@ def main() -> int:
         supports_all_drives=supports_all_drives,
         mime_type_filters=["audio/"],
     )
-    html_files = list_drive_files(
+    json_files = list_drive_files(
         drive_service,
         folder_id,
         drive_id=drive_id,
         supports_all_drives=supports_all_drives,
-        mime_type_filters=args.html_mime_prefix,
+        mime_type_filters=args.json_mime_prefix,
     )
 
-    html_files = [
+    json_files = [
         item
-        for item in html_files
+        for item in json_files
         if item.get("name")
-        and str(item["name"]).lower().endswith(".html")
+        and str(item["name"]).lower().endswith(".json")
+        and not is_excluded_quiz_json_name(str(item["name"]))
+        and has_quiz_cfg_tag(Path(str(item["name"])).stem)
         and matches_language(str(item["name"]), language_tag)
         and matches_quiz_difficulty(str(item["name"]), quiz_difficulty)
     ]
 
-    if not html_files:
-        print(
-            "No quiz HTML files found in Drive; skipping quiz sync "
+    if not json_files:
+        raise SystemExit(
+            "No valid quiz JSON files found in Drive "
             f"(difficulty={quiz_difficulty or 'any'})."
         )
-        return 0
     if not audio_files:
         print("No audio files found in Drive; skipping quiz mapping.")
         return 0
@@ -663,7 +688,7 @@ def main() -> int:
     folder_metadata_cache: Dict[str, Dict[str, Any]] = {}
     folder_path_cache: Dict[str, List[str]] = {}
 
-    for item in html_files:
+    for item in json_files:
         name = str(item["name"])
         difficulty = normalize_quiz_difficulty(extract_quiz_difficulty(name))
         key = canonical_key(Path(name).stem)
@@ -701,8 +726,9 @@ def main() -> int:
                 root_folder_id=folder_id,
                 supports_all_drives=supports_all_drives,
             ) if parents else []
-            relative_parts = [*folder_names, name]
-            relative_path = "/".join(relative_parts)
+            source_relative_parts = [*folder_names, name]
+            source_relative_path = "/".join(source_relative_parts)
+            relative_path = to_public_quiz_relative_path(source_relative_path)
         links = mapping_links.setdefault(audio_name, [])
         if any(normalize_quiz_difficulty(link.get("difficulty")) == difficulty for link in links):
             duplicate_targets.append(name)
@@ -716,13 +742,14 @@ def main() -> int:
         )
         if args.download_root:
             file_id = str(item["id"])
-            existing_file_id = download_jobs.get(relative_path)
+            source_relative_path = to_source_quiz_json_relative_path(relative_path)
+            existing_file_id = download_jobs.get(source_relative_path)
             if existing_file_id is not None and existing_file_id != file_id:
                 raise SystemExit(
-                    f"Multiple Drive files map to '{relative_path}' "
+                    f"Multiple Drive files map to '{source_relative_path}' "
                     f"({existing_file_id} vs {file_id})."
                 )
-            download_jobs[relative_path] = file_id
+            download_jobs[source_relative_path] = file_id
 
     sorted_mapping: Dict[str, Dict[str, Any]] = {}
     mapped_quiz_links = 0
@@ -749,7 +776,7 @@ def main() -> int:
             )
 
     print(f"Quiz difficulty filter: {quiz_difficulty or 'any'}")
-    print(f"Quiz HTML files: {len(html_files)}")
+    print(f"Quiz JSON files: {len(json_files)}")
     print(f"Mapped episode quizzes: {len(sorted_mapping)}")
     print(f"Mapped quiz links: {mapped_quiz_links}")
     if unmatched:

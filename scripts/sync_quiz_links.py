@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Sync quiz HTML/JSON exports to the droplet and update quiz_links.json."""
+"""Sync quiz JSON exports to the droplet and update quiz_links.json."""
 
 from __future__ import annotations
 
@@ -26,6 +26,7 @@ QUIZ_DIFFICULTY_RE = re.compile(
     r"\{[^{}]*\btype=quiz\b[^{}]*\bdifficulty=(?P<difficulty>[a-z0-9._:+-]+)\b[^{}]*\}",
     re.IGNORECASE,
 )
+QUIZ_TYPE_RE = re.compile(r"\{[^{}]*\btype=quiz\b[^{}]*\}", re.IGNORECASE)
 DUPLICATE_WEEK_PREFIX_RE = re.compile(r"^(W\d{2}L\d+)\s*-\s*\1\b", re.IGNORECASE)
 MISSING_TOKEN_RE = re.compile(r"\bMISSING\b", re.IGNORECASE)
 QUIZ_DIFFICULTY_SORT_ORDER = {"easy": 0, "medium": 1, "hard": 2}
@@ -61,6 +62,47 @@ def matches_quiz_difficulty(value: str, expected: str | None) -> bool:
         # Backward-compatibility: historical quiz exports were implicitly medium.
         return expected == "medium"
     return actual == expected
+
+
+def has_quiz_cfg_tag(value: str) -> bool:
+    return QUIZ_TYPE_RE.search(value) is not None
+
+
+def is_excluded_quiz_json_name(name: str) -> bool:
+    normalized = name.strip().lower()
+    if ".html.request" in normalized and normalized.endswith(".json"):
+        return True
+    if normalized == "quiz_json_manifest.json":
+        return True
+    return normalized.endswith(("-manifest.json", "_manifest.json"))
+
+
+def is_valid_quiz_payload(payload: Any) -> bool:
+    if isinstance(payload, list):
+        return True
+    if not isinstance(payload, dict):
+        return False
+    questions = payload.get("questions")
+    if isinstance(questions, list):
+        return True
+    quiz = payload.get("quiz")
+    return isinstance(quiz, list)
+
+
+def load_quiz_json_payload(path: Path) -> Any | None:
+    try:
+        with path.open("r", encoding="utf-8") as handle:
+            return json.load(handle)
+    except (OSError, json.JSONDecodeError):
+        return None
+
+
+def to_public_quiz_relative_path(source_relative_path: str) -> str:
+    return str(Path(source_relative_path).with_suffix(".html")).replace("\\", "/")
+
+
+def to_source_quiz_json_relative_path(public_relative_path: str) -> str:
+    return str(Path(public_relative_path).with_suffix(".json")).replace("\\", "/")
 
 
 def canonical_key(stem: str) -> str:
@@ -346,7 +388,7 @@ def main() -> int:
     parser.add_argument(
         "--output-root",
         default="notebooklm-podcast-auto/personlighedspsykologi/output",
-        help="Root folder containing quiz HTML outputs.",
+        help="Root folder containing quiz JSON outputs.",
     )
     parser.add_argument(
         "--links-file",
@@ -363,7 +405,7 @@ def main() -> int:
         default="any",
         choices=("easy", "medium", "hard", "any"),
         help=(
-            "Only map quiz HTML files for this difficulty. "
+            "Only map quiz JSON files for this difficulty. "
             "Use 'any' to include all difficulties. Default: any."
         ),
     )
@@ -385,7 +427,7 @@ def main() -> int:
     parser.add_argument(
         "--derive-mp3-names",
         action="store_true",
-        help="Derive MP3 names directly from HTML filenames (no MP3 scan).",
+        help="Derive MP3 names directly from quiz JSON filenames (no MP3 scan).",
     )
     parser.add_argument(
         "--remote-root",
@@ -429,14 +471,31 @@ def main() -> int:
     if not output_root.exists():
         raise SystemExit(f"Output root does not exist: {output_root}")
 
-    html_files = [
-        p
-        for p in find_files(output_root, ".html")
-        if language_tag in p.stem and matches_quiz_difficulty(p.stem, quiz_difficulty)
-    ]
-    if not html_files:
+    all_json_files = find_files(output_root, ".json")
+    candidate_json_files: List[Path] = []
+    invalid_json_files: List[Path] = []
+    invalid_payload_files: List[Path] = []
+    for path in all_json_files:
+        if is_excluded_quiz_json_name(path.name):
+            continue
+        if language_tag and language_tag not in path.stem:
+            continue
+        if not has_quiz_cfg_tag(path.stem):
+            continue
+        if not matches_quiz_difficulty(path.stem, quiz_difficulty):
+            continue
+        payload = load_quiz_json_payload(path)
+        if payload is None:
+            invalid_json_files.append(path)
+            continue
+        if not is_valid_quiz_payload(payload):
+            invalid_payload_files.append(path)
+            continue
+        candidate_json_files.append(path)
+
+    if not candidate_json_files:
         raise SystemExit(
-            f"No quiz HTML files found under {output_root} "
+            f"No valid quiz JSON files found under {output_root} "
             f"for difficulty={quiz_difficulty or 'any'}"
         )
     mapping_links: Dict[str, List[Dict[str, str]]] = {}
@@ -446,7 +505,7 @@ def main() -> int:
     mp3_index: Dict[str, List[Path]] = {}
     flat_id_registry: Dict[str, str] = {}
     upload_sources: Dict[str, Path] = {}
-    mapped_json_files = 0
+    mapped_source_json_files = 0
 
     if not args.derive_mp3_names:
         mp3_files = [p for p in find_files(output_root, ".mp3") if language_tag in p.stem]
@@ -454,19 +513,19 @@ def main() -> int:
             raise SystemExit(f"No MP3 files found under {output_root}")
         mp3_index = build_mp3_index(mp3_files, language_tag)
 
-    for html_file in html_files:
-        difficulty = normalize_quiz_difficulty(extract_quiz_difficulty(html_file.stem))
+    for json_file in candidate_json_files:
+        difficulty = normalize_quiz_difficulty(extract_quiz_difficulty(json_file.stem))
         if args.derive_mp3_names:
-            mp3_name = derive_mp3_name_from_html(html_file.stem)
+            mp3_name = derive_mp3_name_from_html(json_file.stem)
         else:
-            key = canonical_key(html_file.stem)
+            key = canonical_key(json_file.stem)
             candidates = mp3_index.get(key, [])
             if len(candidates) == 0:
-                unmatched.append(html_file)
+                unmatched.append(json_file)
                 continue
             selected_candidate = select_audio_candidate(candidates)
             if selected_candidate is None:
-                ambiguous.append(html_file)
+                ambiguous.append(json_file)
                 continue
             mp3_name = selected_candidate.name
         if args.quiz_path_mode == "flat-id":
@@ -480,15 +539,16 @@ def main() -> int:
                     flat_id_registry,
                     relative_path,
                     flat_seed,
-                    context=str(html_file),
+                    context=str(json_file),
                 )
             except ValueError as exc:
                 raise SystemExit(str(exc))
         else:
-            relative_path = html_file.relative_to(output_root).as_posix()
+            source_relative_path = json_file.relative_to(output_root).as_posix()
+            relative_path = to_public_quiz_relative_path(source_relative_path)
         links = mapping_links.setdefault(mp3_name, [])
         if any(normalize_quiz_difficulty(link.get("difficulty")) == difficulty for link in links):
-            duplicate_targets.append(html_file)
+            duplicate_targets.append(json_file)
             continue
         links.append(
             {
@@ -497,25 +557,15 @@ def main() -> int:
                 "difficulty": difficulty,
             }
         )
-        existing_source = upload_sources.get(relative_path)
-        if existing_source is not None and existing_source != html_file:
+        upload_relative_path = to_source_quiz_json_relative_path(relative_path)
+        existing_source = upload_sources.get(upload_relative_path)
+        if existing_source is not None and existing_source != json_file:
             raise SystemExit(
-                f"Multiple source files map to '{relative_path}' "
-                f"({existing_source} vs {html_file})."
+                f"Multiple source files map to '{upload_relative_path}' "
+                f"({existing_source} vs {json_file})."
             )
-        upload_sources[relative_path] = html_file
-
-        json_file = html_file.with_suffix(".json")
-        if json_file.is_file():
-            json_relative_path = str(Path(relative_path).with_suffix(".json")).replace("\\", "/")
-            existing_json_source = upload_sources.get(json_relative_path)
-            if existing_json_source is not None and existing_json_source != json_file:
-                raise SystemExit(
-                    f"Multiple source files map to '{json_relative_path}' "
-                    f"({existing_json_source} vs {json_file})."
-                )
-            upload_sources[json_relative_path] = json_file
-            mapped_json_files += 1
+        upload_sources[upload_relative_path] = json_file
+        mapped_source_json_files += 1
 
     sorted_mapping: Dict[str, Dict[str, Any]] = {}
     mapped_quiz_links = 0
@@ -532,10 +582,22 @@ def main() -> int:
     write_mapping(links_file, sorted_mapping, args.dry_run)
 
     print(f"Quiz difficulty filter: {quiz_difficulty or 'any'}")
-    print(f"Quiz HTML files: {len(html_files)}")
-    print(f"Mapped quiz JSON files: {mapped_json_files}")
+    print(f"Quiz JSON files: {len(candidate_json_files)}")
+    print(f"Mapped source quiz JSON files: {mapped_source_json_files}")
     print(f"Mapped episode quizzes: {len(sorted_mapping)}")
     print(f"Mapped quiz links: {mapped_quiz_links}")
+    if invalid_json_files:
+        print(f"Unreadable quiz JSON files: {len(invalid_json_files)}")
+        for path in invalid_json_files[:20]:
+            print(f"- {path}")
+        if len(invalid_json_files) > 20:
+            print(f"... and {len(invalid_json_files) - 20} more")
+    if invalid_payload_files:
+        print(f"Invalid quiz JSON payload files: {len(invalid_payload_files)}")
+        for path in invalid_payload_files[:20]:
+            print(f"- {path}")
+        if len(invalid_payload_files) > 20:
+            print(f"... and {len(invalid_payload_files) - 20} more")
     if unmatched:
         print(f"Unmatched quizzes: {len(unmatched)}")
         for path in unmatched[:20]:

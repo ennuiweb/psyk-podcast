@@ -54,7 +54,6 @@ Single-file skips:
 - W11: Funch & Roald (2014)
 - W17: Jensen (2014)
 - W20: Staunæs & Juelskjær (2014)
-- W21: Bank (2014)
 - W22: Køppe (2014)
 - W22: Køppe & Dammeyer (2014b)
 
@@ -62,7 +61,6 @@ Weekly overview skips:
 - W11
 - W17
 - W20
-- W21
 - W22
 
 ## Reading map
@@ -74,7 +72,7 @@ Weekly overview skips:
 - Feed file: `shows/social-psychology/feeds/rss.xml` (shows mixed per-week + per-reading + brief pattern).
 
 ## Next execution steps (pending)
-1. Sync OneDrive readings into `notebooklm-podcast-auto/personlighedspsykologi/sources/W## …`.
+1. Sync OneDrive readings into `/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W## …`.
 2. Apply filename renames for `W##L# X` highlights and `[Brief]` variants.
 3. Generate artifacts (audio/infographic) via NotebookLM (non-blocking) and record `artifact_id`s.
 4. Download completed artifacts (MP3/PNG).

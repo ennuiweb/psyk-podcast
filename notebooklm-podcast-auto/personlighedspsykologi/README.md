@@ -9,13 +9,35 @@ It is **not** a podcast feed. Feed config now lives in:
 ## Key paths
 - `scripts/` - generation helpers (`generate_week.py`, `download_week.py`, `sync_reading_summaries.py`)
 - `prompt_config.json` - prompts + language variants for NotebookLM (audio + infographic + quiz defaults)
-- `sources/` - W## source folders (PDFs, readings)
+- OneDrive Readings root (authoritative source dirs):
+  - `/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings`
 - `output/` - generated MP3s/PNGs/quiz exports + request logs
 - `docs/` - planning notes
 
 Archived show configs are stored in `archive-show-config/` for reference.
 
 Current generation is configured for English-only outputs (see `prompt_config.json`).
+
+## Authoritative source root
+- `generate_week.py` and `sync_reading_summaries.py` now default `--sources-root` to the OneDrive Readings path above.
+- Source fallback to repo-local `sources/` is intentionally disabled for weekly sync metadata updates.
+- Migration utility:
+
+```bash
+python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/migrate_onedrive_sources.py
+python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/migrate_onedrive_sources.py --apply
+# after archiving repo-local sources/, use:
+python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/migrate_onedrive_sources.py --canonical-root notebooklm-podcast-auto/personlighedspsykologi/sources.archive-<timestamp>
+```
+
+- Post-migration validations:
+
+```bash
+python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/sync_reading_summaries.py --validate-only --validate-weekly
+python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_week.py --week W1L2 --dry-run
+python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_week.py --week W8L1 --dry-run
+python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_week.py --week W10L2 --dry-run
+```
 
 ## "Alle kilder" notebook behavior (lecture-level episodes)
 - `Alle kilder` generation runs per lecture (`W#L#`) and uses a fresh NotebookLM notebook on every run (no notebook reuse).
@@ -136,14 +158,14 @@ python3 podcast-tools/gdrive_podcast_feed.py --config shows/personlighedspsykolo
   `find notebooklm-podcast-auto/personlighedspsykologi/output -type f | rg '/W[0-9]+L[0-9]+/W[0-9]+L[0-9]+ - W[0-9]+L[0-9]+'`
 
 ## Quiz hosting (droplet)
-Quiz HTML exports are hosted on the droplet under:
+Quiz links are hosted on the droplet under:
 `http://64.226.79.109/q/<id>.html`
 where `<id>` is a deterministic flat hex ID (default length: 8).
 
-The mapping and upload can run automatically in GitHub Actions (when quiz HTML
+The mapping and upload can run automatically in GitHub Actions (when quiz JSON
 files are uploaded to Drive) via `podcast-tools/sync_drive_quiz_links.py`, as
 long as the repository has the secret `DIGITALOCEAN_SSH_KEY` set. The Apps Script
-Drive trigger must include `text/` in `mimePrefixes` to detect quiz HTML changes.
+Drive trigger must include `application/json` in `mimePrefixes` to detect quiz changes.
 
 Use the sync script locally to upload quizzes and update the mapping used by the feed:
 
@@ -157,4 +179,6 @@ used by the feed generator to append quiz links to episode descriptions when
 available. With `--quiz-difficulty any`, episode descriptions include all
 available quiz difficulties (`easy`, `medium`, `hard`) for the matching audio
 episode.
+Source-of-truth is quiz JSON exports; mapping intentionally keeps `.html` relative paths
+to preserve public `/q/<id>.html` URLs.
 The feed item `<link>` still prefers the `medium` quiz URL when available.

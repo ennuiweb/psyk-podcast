@@ -35,6 +35,7 @@ class QuizPortalTests(TestCase):
 
         self.quiz_id = "29ebcecd"
         self._write_quiz_file(self.quiz_id, question_count=2)
+        self._write_quiz_json_file(self.quiz_id, question_count=2)
         self._write_links_file(
             {
                 self.quiz_id: {
@@ -55,6 +56,26 @@ class QuizPortalTests(TestCase):
 </html>
 """
         (self.quiz_root / f"{quiz_id}.html").write_text(content, encoding="utf-8")
+
+    def _write_quiz_json_file(self, quiz_id: str, *, question_count: int) -> None:
+        payload = {
+            "title": "Personality Quiz",
+            "questions": [
+                {
+                    "question": f"Q{i + 1}",
+                    "answerOptions": [
+                        {"text": "A", "isCorrect": i % 2 == 0, "rationale": "Forklaring A"},
+                        {"text": "B", "isCorrect": i % 2 == 1, "rationale": "Forklaring B"},
+                    ],
+                    "hint": f"Hint {i + 1}",
+                }
+                for i in range(question_count)
+            ],
+        }
+        (self.quiz_root / f"{quiz_id}.json").write_text(
+            json.dumps(payload, ensure_ascii=False),
+            encoding="utf-8",
+        )
 
     def _write_links_file(self, entries: dict[str, dict[str, str]]) -> None:
         by_name: dict[str, dict[str, object]] = {}
@@ -173,6 +194,21 @@ class QuizPortalTests(TestCase):
         content = b"".join(response.streaming_content).decode("utf-8")
         self.assertIn("<app-root", content)
 
+    def test_quiz_content_api_is_public_and_returns_questions(self) -> None:
+        response = self.client.get(reverse("quiz-content", kwargs={"quiz_id": self.quiz_id}))
+        self.assertEqual(response.status_code, 200)
+        payload = response.json()
+        self.assertEqual(payload["title"], "Personality Quiz")
+        self.assertEqual(len(payload["questions"]), 2)
+
+    def test_quiz_content_api_falls_back_to_html_when_json_missing(self) -> None:
+        (self.quiz_root / f"{self.quiz_id}.json").unlink()
+        response = self.client.get(reverse("quiz-content", kwargs={"quiz_id": self.quiz_id}))
+        self.assertEqual(response.status_code, 200)
+        payload = response.json()
+        self.assertEqual(payload["title"], "Quiz")
+        self.assertEqual(len(payload["questions"]), 2)
+
     def test_state_apis_redirect_when_anonymous(self) -> None:
         state_url = reverse("quiz-state", kwargs={"quiz_id": self.quiz_id})
         raw_state_url = reverse("quiz-state-raw", kwargs={"quiz_id": self.quiz_id})
@@ -198,6 +234,8 @@ class QuizPortalTests(TestCase):
         self._login()
         response = self.client.get("/q/nothexid.html")
         self.assertEqual(response.status_code, 404)
+        response = self.client.get("/api/quiz-content/nothexid")
+        self.assertEqual(response.status_code, 404)
         response = self.client.get("/api/quiz-state/nothexid")
         self.assertEqual(response.status_code, 404)
 
@@ -210,6 +248,9 @@ class QuizPortalTests(TestCase):
         self.assertEqual(response.status_code, 404)
 
         response = self.client.get(reverse("quiz-raw", kwargs={"quiz_id": unknown_id}))
+        self.assertEqual(response.status_code, 404)
+
+        response = self.client.get(reverse("quiz-content", kwargs={"quiz_id": unknown_id}))
         self.assertEqual(response.status_code, 404)
 
         response = self.client.get(reverse("quiz-state", kwargs={"quiz_id": unknown_id}))

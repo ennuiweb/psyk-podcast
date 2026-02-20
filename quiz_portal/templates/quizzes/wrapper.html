@@ -19,6 +19,142 @@
   .quiz-login-note-links {
     display: inline-flex;
     gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .quiz-alert {
+    margin-top: 0.9rem;
+    border: 1px solid rgba(255, 159, 160, 0.45);
+    border-radius: 12px;
+    padding: 0.65rem 0.8rem;
+    background: rgba(42, 17, 21, 0.55);
+    color: #ffb3b7;
+  }
+
+  .quiz-loading {
+    margin-top: 1rem;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 0.85rem;
+    color: var(--muted);
+    background: rgba(12, 18, 30, 0.7);
+  }
+
+  .quiz-stage {
+    margin-top: 0.95rem;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: rgba(8, 13, 22, 0.86);
+    padding: 0.95rem;
+  }
+
+  .quiz-counter {
+    margin: 0 0 0.35rem;
+  }
+
+  .quiz-question {
+    margin: 0 0 0.9rem;
+    font-size: clamp(1.08rem, 2.5vw, 1.42rem);
+    line-height: 1.36;
+  }
+
+  .quiz-options {
+    display: grid;
+    gap: 0.62rem;
+    margin-bottom: 0.9rem;
+  }
+
+  .quiz-option {
+    text-align: left;
+    width: 100%;
+    border: 1px solid var(--border-strong);
+    border-radius: 12px;
+    background: rgba(14, 22, 35, 0.8);
+    color: var(--ink);
+    padding: 0.72rem 0.8rem;
+    cursor: pointer;
+    transition: border-color 140ms ease, background 140ms ease, transform 140ms ease;
+  }
+
+  .quiz-option:hover {
+    border-color: rgba(39, 211, 223, 0.45);
+    transform: translateY(-1px);
+  }
+
+  .quiz-option.is-selected {
+    border-color: rgba(39, 211, 223, 0.7);
+    background: rgba(28, 62, 79, 0.45);
+  }
+
+  .quiz-option.is-correct {
+    border-color: rgba(155, 243, 196, 0.58);
+    background: rgba(24, 58, 45, 0.5);
+  }
+
+  .quiz-option.is-wrong {
+    border-color: rgba(255, 159, 160, 0.5);
+    background: rgba(61, 24, 29, 0.5);
+  }
+
+  .quiz-hint,
+  .quiz-rationale {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 0.65rem 0.75rem;
+    margin: 0 0 0.75rem;
+  }
+
+  .quiz-hint {
+    color: #d6e7ff;
+    background: rgba(24, 38, 58, 0.55);
+  }
+
+  .quiz-rationale {
+    color: #caebff;
+    background: rgba(18, 47, 59, 0.48);
+  }
+
+  .quiz-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .ghost-button {
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: rgba(14, 22, 34, 0.75);
+    color: #d5e2fa;
+    padding: 0.56rem 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .ghost-button[disabled] {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.6rem;
+    margin: 0.9rem 0;
+  }
+
+  .summary-card {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 0.65rem;
+    background: rgba(14, 21, 32, 0.78);
+  }
+
+  .summary-card strong {
+    display: block;
+    font-size: 1.28rem;
+    margin-bottom: 0.1rem;
   }
 
   .quiz-login-prompt {
@@ -32,6 +168,12 @@
 
   .quiz-login-prompt p {
     margin: 0 0 0.55rem;
+  }
+
+  @media (max-width: 640px) {
+    .summary-grid {
+      grid-template-columns: 1fr;
+    }
   }
 </style>
 <div class="card quiz-shell">
@@ -57,15 +199,49 @@
     {% endif %}
   </div>
 
-  <div class="quiz-frame-wrap">
-    <iframe
-      id="quiz-frame"
-      title="Quiz {{ quiz_id }}"
-      src="{{ raw_quiz_url }}"
-      class="quiz-frame"
-      referrerpolicy="same-origin"
-    ></iframe>
-  </div>
+  <div id="quiz-error" class="quiz-alert is-hidden"></div>
+  <div id="quiz-loading" class="quiz-loading">Indlæser quiz…</div>
+
+  <section id="quiz-question-view" class="quiz-stage is-hidden">
+    <p class="muted quiz-counter" id="quiz-counter"></p>
+    <h2 class="quiz-question" id="quiz-question"></h2>
+    <div id="quiz-hint" class="quiz-hint is-hidden"></div>
+    <div id="quiz-options" class="quiz-options"></div>
+    <div id="quiz-rationale" class="quiz-rationale is-hidden"></div>
+    <div class="quiz-actions">
+      <button id="quiz-back" class="ghost-button" type="button">Forrige</button>
+      <button id="quiz-hint-btn" class="ghost-button" type="button">Vis hint</button>
+      <button id="quiz-next" class="btn-primary" type="button">Næste</button>
+    </div>
+  </section>
+
+  <section id="quiz-summary-view" class="quiz-stage is-hidden">
+    <h2 class="quiz-question">Opsummering</h2>
+    <p class="muted" id="quiz-summary-line"></p>
+    <div class="summary-grid">
+      <div class="summary-card">
+        <strong id="summary-correct">0</strong>
+        Korrekte svar
+      </div>
+      <div class="summary-card">
+        <strong id="summary-wrong">0</strong>
+        Forkerte svar
+      </div>
+      <div class="summary-card">
+        <strong id="summary-skipped">0</strong>
+        Ubesvarede
+      </div>
+      <div class="summary-card">
+        <strong id="summary-answered">0 / 0</strong>
+        Besvaret
+      </div>
+    </div>
+    <div class="quiz-actions">
+      <button id="quiz-review" class="ghost-button" type="button">Gennemgå svar</button>
+      <button id="quiz-reset" class="ghost-button" type="button">Tag quiz igen</button>
+    </div>
+  </section>
+
   {% if not user_is_authenticated %}
   <div id="login-end-prompt" class="quiz-login-prompt is-hidden">
     <p>Quizzen er færdig. Log ind nu for at gemme dit resultat og følge dit fremskridt.</p>
@@ -81,13 +257,43 @@
   (function () {
     "use strict";
 
-    const iframe = document.getElementById("quiz-frame");
-    const apiStateUrl = "{{ state_api_url }}";
-    const rawStateUrl = "{{ raw_state_api_url }}";
+    const quizContentUrl = "{{ quiz_content_url }}";
+    const stateApiUrl = "{{ state_api_url }}";
     const isAuthenticated = {{ user_is_authenticated|yesno:"true,false" }};
+    const localStateKey = "quiz-local-state:{{ quiz_id }}";
     const loginEndPrompt = document.getElementById("login-end-prompt");
-    const localStateKey = "quiz-local-raw-state:{{ quiz_id }}";
-    const origin = window.location.origin;
+
+    const loadingNode = document.getElementById("quiz-loading");
+    const errorNode = document.getElementById("quiz-error");
+    const questionViewNode = document.getElementById("quiz-question-view");
+    const summaryViewNode = document.getElementById("quiz-summary-view");
+
+    const counterNode = document.getElementById("quiz-counter");
+    const questionNode = document.getElementById("quiz-question");
+    const hintNode = document.getElementById("quiz-hint");
+    const hintBtnNode = document.getElementById("quiz-hint-btn");
+    const optionsNode = document.getElementById("quiz-options");
+    const rationaleNode = document.getElementById("quiz-rationale");
+
+    const backBtnNode = document.getElementById("quiz-back");
+    const nextBtnNode = document.getElementById("quiz-next");
+    const reviewBtnNode = document.getElementById("quiz-review");
+    const resetBtnNode = document.getElementById("quiz-reset");
+
+    const summaryLineNode = document.getElementById("quiz-summary-line");
+    const summaryCorrectNode = document.getElementById("summary-correct");
+    const summaryWrongNode = document.getElementById("summary-wrong");
+    const summarySkippedNode = document.getElementById("summary-skipped");
+    const summaryAnsweredNode = document.getElementById("summary-answered");
+
+    let quiz = null;
+    let state = {
+      userAnswers: {},
+      currentQuestionIndex: 0,
+      hiddenQuestionIndices: [],
+      currentView: "question",
+      showHintForCurrent: false,
+    };
 
     function getCsrfToken() {
       const cookies = document.cookie ? document.cookie.split(";") : [];
@@ -100,241 +306,398 @@
       return "";
     }
 
-    function parseStatePayload(payload) {
-      if (!payload) {
+    function showError(message) {
+      errorNode.textContent = message;
+      errorNode.classList.remove("is-hidden");
+    }
+
+    function hideError() {
+      errorNode.textContent = "";
+      errorNode.classList.add("is-hidden");
+    }
+
+    function hideLoading() {
+      loadingNode.classList.add("is-hidden");
+    }
+
+    function parseStoredState(rawValue) {
+      if (!rawValue) {
         return null;
       }
-      if (typeof payload === "object") {
-        return payload;
+      if (typeof rawValue === "object") {
+        return rawValue;
       }
-      if (typeof payload !== "string") {
+      if (typeof rawValue !== "string") {
         return null;
       }
       try {
-        return JSON.parse(payload);
+        return JSON.parse(rawValue);
       } catch (error) {
         return null;
       }
     }
 
-    function showEndPromptIfSummary(payload) {
-      if (isAuthenticated || !loginEndPrompt) {
-        return;
-      }
-      const state = parseStatePayload(payload);
-      if (!state) {
-        return;
-      }
-      if (String(state.currentView || "").toLowerCase() === "summary") {
-        loginEndPrompt.classList.remove("is-hidden");
-      }
-    }
-
-    function readLocalRawState() {
+    function loadLocalState() {
       try {
-        const payload = window.localStorage.getItem(localStateKey);
-        if (!payload) {
-          return null;
-        }
-        JSON.parse(payload);
-        return payload;
+        return parseStoredState(window.localStorage.getItem(localStateKey));
       } catch (error) {
         return null;
       }
     }
 
-    function writeLocalRawState(payload) {
-      const body = typeof payload === "string" ? payload : JSON.stringify(payload ?? null);
+    function saveLocalState(payload) {
       try {
-        JSON.parse(body);
-        window.localStorage.setItem(localStateKey, body);
+        window.localStorage.setItem(localStateKey, JSON.stringify(payload));
       } catch (error) {
-        // Ignore localStorage and parse failures; server state still applies for logged-in users.
-      }
-      return body;
-    }
-
-    async function fetchRawState() {
-      if (!isAuthenticated) {
-        return readLocalRawState();
-      }
-
-      const response = await fetch(rawStateUrl, { credentials: "same-origin" });
-      if (!response.ok) {
-        throw new Error("Failed to fetch raw quiz state");
-      }
-      const payload = await response.json();
-      if (payload !== null) {
-        return payload;
-      }
-      return readLocalRawState();
-    }
-
-    async function saveRawState(payload) {
-      const body = writeLocalRawState(payload);
-      showEndPromptIfSummary(body);
-
-      if (!isAuthenticated) {
-        return;
-      }
-
-      const response = await fetch(rawStateUrl, {
-        method: "POST",
-        credentials: "same-origin",
-        headers: {
-          "Content-Type": "application/json",
-          "X-CSRFToken": getCsrfToken(),
-        },
-        body,
-      });
-      if (!response.ok) {
-        throw new Error("Failed to save raw quiz state");
+        // Local storage can fail in restricted browser modes.
       }
     }
 
-    async function saveStructuredState(state) {
-      if (!isAuthenticated) {
-        return;
-      }
-      const response = await fetch(apiStateUrl, {
-        method: "POST",
-        credentials: "same-origin",
-        headers: {
-          "Content-Type": "application/json",
-          "X-CSRFToken": getCsrfToken(),
-        },
-        body: JSON.stringify(state),
-      });
-      if (!response.ok) {
-        throw new Error("Failed to save structured quiz state");
-      }
-    }
-
-    async function syncLocalStateToAccount() {
-      if (!isAuthenticated) {
-        return;
-      }
-      const localPayload = readLocalRawState();
-      if (!localPayload) {
-        return;
-      }
+    function clearLocalState() {
       try {
-        await saveRawState(localPayload);
-        const parsed = parseStatePayload(localPayload);
-        if (parsed) {
-          await saveStructuredState(parsed);
-        }
         window.localStorage.removeItem(localStateKey);
       } catch (error) {
-        console.warn("Failed to sync local quiz state to account", error);
+        // Ignore local storage failures.
       }
     }
 
-    syncLocalStateToAccount();
+    function normalizeQuizPayload(payload) {
+      if (!payload || typeof payload !== "object") {
+        return null;
+      }
+      const questions = Array.isArray(payload.questions) ? payload.questions : [];
+      if (!questions.length) {
+        return null;
+      }
+      return {
+        title: typeof payload.title === "string" && payload.title.trim() ? payload.title.trim() : "Quiz",
+        questions,
+      };
+    }
 
-    async function handleBridgeMessage(event) {
-      if (event.source !== iframe.contentWindow || event.origin !== origin) {
+    function normalizeStatePayload(rawState) {
+      const questionCount = quiz.questions.length;
+      const normalized = {
+        userAnswers: {},
+        currentQuestionIndex: 0,
+        hiddenQuestionIndices: [],
+        currentView: "question",
+        showHintForCurrent: false,
+      };
+
+      if (!rawState || typeof rawState !== "object") {
+        return normalized;
+      }
+
+      if (rawState.userAnswers && typeof rawState.userAnswers === "object") {
+        for (const [rawKey, rawValue] of Object.entries(rawState.userAnswers)) {
+          const index = Number.parseInt(String(rawKey), 10);
+          if (!Number.isInteger(index) || index < 0 || index >= questionCount) {
+            continue;
+          }
+          if (rawValue === null) {
+            normalized.userAnswers[String(index)] = null;
+            continue;
+          }
+          if (!Number.isInteger(rawValue)) {
+            continue;
+          }
+          const options = quiz.questions[index]?.answerOptions;
+          if (!Array.isArray(options) || rawValue < 0 || rawValue >= options.length) {
+            continue;
+          }
+          normalized.userAnswers[String(index)] = rawValue;
+        }
+      }
+
+      const indexValue = Number.parseInt(String(rawState.currentQuestionIndex ?? 0), 10);
+      if (Number.isInteger(indexValue) && indexValue >= 0 && indexValue < questionCount) {
+        normalized.currentQuestionIndex = indexValue;
+      }
+
+      if (Array.isArray(rawState.hiddenQuestionIndices)) {
+        normalized.hiddenQuestionIndices = rawState.hiddenQuestionIndices
+          .map((entry) => Number.parseInt(String(entry), 10))
+          .filter((entry) => Number.isInteger(entry) && entry >= 0 && entry < questionCount);
+      }
+
+      if (String(rawState.currentView || "").toLowerCase() === "summary") {
+        normalized.currentView = "summary";
+      }
+
+      return normalized;
+    }
+
+    function answeredCount() {
+      return Object.values(state.userAnswers).filter((value) => value !== null && value !== undefined).length;
+    }
+
+    function summaryStats() {
+      let correct = 0;
+      let wrong = 0;
+      let skipped = 0;
+      quiz.questions.forEach((question, index) => {
+        const selected = state.userAnswers[String(index)];
+        if (selected === null || selected === undefined) {
+          skipped += 1;
+          return;
+        }
+        const option = Array.isArray(question.answerOptions) ? question.answerOptions[selected] : null;
+        if (option && option.isCorrect === true) {
+          correct += 1;
+        } else {
+          wrong += 1;
+        }
+      });
+      return { correct, wrong, skipped };
+    }
+
+    function showEndPromptIfNeeded() {
+      if (!loginEndPrompt || isAuthenticated) {
+        return;
+      }
+      if (state.currentView === "summary") {
+        loginEndPrompt.classList.remove("is-hidden");
+      } else {
+        loginEndPrompt.classList.add("is-hidden");
+      }
+    }
+
+    async function fetchQuiz() {
+      const response = await fetch(quizContentUrl, { credentials: "same-origin" });
+      if (!response.ok) {
+        throw new Error("Kunne ikke hente quiz-indhold.");
+      }
+      const payload = await response.json();
+      const normalized = normalizeQuizPayload(payload);
+      if (!normalized) {
+        throw new Error("Quiz-indholdet er ugyldigt eller tomt.");
+      }
+      return normalized;
+    }
+
+    async function fetchAccountState() {
+      if (!isAuthenticated) {
+        return null;
+      }
+      const response = await fetch(stateApiUrl, { credentials: "same-origin" });
+      if (!response.ok) {
+        throw new Error("Kunne ikke hente gemt quiz-state.");
+      }
+      return response.json();
+    }
+
+    function currentQuestion() {
+      return quiz.questions[state.currentQuestionIndex];
+    }
+
+    function renderQuestionView() {
+      const question = currentQuestion();
+      const options = Array.isArray(question.answerOptions) ? question.answerOptions : [];
+      const selectedOption = state.userAnswers[String(state.currentQuestionIndex)];
+      const hasAnswered = selectedOption !== null && selectedOption !== undefined;
+
+      counterNode.textContent = `Spørgsmål ${state.currentQuestionIndex + 1} af ${quiz.questions.length}`;
+      questionNode.textContent = String(question.question || "");
+
+      optionsNode.innerHTML = "";
+      options.forEach((option, optionIndex) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "quiz-option";
+        button.textContent = String(option?.text || "");
+        if (selectedOption === optionIndex) {
+          button.classList.add("is-selected");
+          if (option?.isCorrect === true) {
+            button.classList.add("is-correct");
+          } else {
+            button.classList.add("is-wrong");
+          }
+        } else if (hasAnswered && option?.isCorrect === true) {
+          button.classList.add("is-correct");
+        }
+        button.addEventListener("click", function () {
+          state.userAnswers[String(state.currentQuestionIndex)] = optionIndex;
+          state.showHintForCurrent = false;
+          saveState().catch((error) => {
+            showError("Kunne ikke gemme state. Prøv igen.");
+          });
+          render();
+        });
+        optionsNode.appendChild(button);
+      });
+
+      const hintText = String(question.hint || "").trim();
+      if (hintText) {
+        hintBtnNode.disabled = false;
+        hintBtnNode.textContent = state.showHintForCurrent ? "Skjul hint" : "Vis hint";
+        if (state.showHintForCurrent) {
+          hintNode.textContent = hintText;
+          hintNode.classList.remove("is-hidden");
+        } else {
+          hintNode.textContent = "";
+          hintNode.classList.add("is-hidden");
+        }
+      } else {
+        hintBtnNode.disabled = true;
+        hintBtnNode.textContent = "Ingen hint";
+        hintNode.textContent = "";
+        hintNode.classList.add("is-hidden");
+      }
+
+      if (hasAnswered) {
+        const selected = options[selectedOption];
+        const rationale = String(selected?.rationale || "").trim();
+        if (rationale) {
+          rationaleNode.textContent = rationale;
+          rationaleNode.classList.remove("is-hidden");
+        } else {
+          rationaleNode.textContent = "";
+          rationaleNode.classList.add("is-hidden");
+        }
+      } else {
+        rationaleNode.textContent = "";
+        rationaleNode.classList.add("is-hidden");
+      }
+
+      backBtnNode.disabled = state.currentQuestionIndex === 0;
+      nextBtnNode.textContent =
+        state.currentQuestionIndex >= quiz.questions.length - 1 ? "Se opsummering" : "Næste";
+    }
+
+    function renderSummaryView() {
+      const stats = summaryStats();
+      const total = quiz.questions.length;
+      summaryLineNode.textContent = `Du svarede ${stats.correct} korrekt ud af ${total}.`;
+      summaryCorrectNode.textContent = String(stats.correct);
+      summaryWrongNode.textContent = String(stats.wrong);
+      summarySkippedNode.textContent = String(stats.skipped);
+      summaryAnsweredNode.textContent = `${answeredCount()} / ${total}`;
+    }
+
+    function render() {
+      hideError();
+      hideLoading();
+
+      if (state.currentView === "summary") {
+        questionViewNode.classList.add("is-hidden");
+        summaryViewNode.classList.remove("is-hidden");
+        renderSummaryView();
+      } else {
+        summaryViewNode.classList.add("is-hidden");
+        questionViewNode.classList.remove("is-hidden");
+        renderQuestionView();
+      }
+      showEndPromptIfNeeded();
+    }
+
+    async function saveState() {
+      const payload = {
+        userAnswers: state.userAnswers,
+        currentQuestionIndex: state.currentQuestionIndex,
+        hiddenQuestionIndices: state.hiddenQuestionIndices,
+        currentView: state.currentView,
+      };
+
+      saveLocalState(payload);
+
+      if (!isAuthenticated) {
         return;
       }
 
-      const message = event.data || {};
-      const action = message.action;
-
-      try {
-        if (action === "GetAppState") {
-          const rawPayload = await fetchRawState();
-          iframe.contentWindow.postMessage(
-            {
-              action: "GetAppStateResponse",
-              payload: rawPayload,
-            },
-            origin
-          );
-          return;
-        }
-
-        if (action === "SetAppState") {
-          await saveRawState(message.payload);
-          return;
-        }
-
-        if (action === "GetTheme") {
-          iframe.contentWindow.postMessage(
-            {
-              action: "ThemeChange",
-              payload: "dark",
-            },
-            origin
-          );
-          return;
-        }
-
-        if (action === "DispatchLogEvent" || action === "TriggerFileDownload" || action === "AskQuestion") {
-          return;
-        }
-
-        console.warn("Ignored unknown quiz iframe action", action);
-      } catch (error) {
-        console.error("Quiz bridge error", error);
+      const response = await fetch(stateApiUrl, {
+        method: "POST",
+        credentials: "same-origin",
+        headers: {
+          "Content-Type": "application/json",
+          "X-CSRFToken": getCsrfToken(),
+        },
+        body: JSON.stringify(payload),
+      });
+      if (!response.ok) {
+        throw new Error("Failed to save state");
       }
     }
 
-    window.addEventListener("message", handleBridgeMessage);
-
-    function tryPatchNotebookApi() {
-      const frameWindow = iframe.contentWindow;
-      if (!frameWindow || !frameWindow.notebookAppApi) {
-        return false;
+    async function init() {
+      try {
+        quiz = await fetchQuiz();
+      } catch (error) {
+        hideLoading();
+        showError("Quizzen kunne ikke indlæses.");
+        return;
       }
 
-      const api = frameWindow.notebookAppApi;
-      if (api.__quizPortalPatched) {
-        return true;
+      const localState = loadLocalState();
+      try {
+        const accountState = await fetchAccountState();
+        state = normalizeStatePayload(accountState || localState);
+        render();
+
+        if (isAuthenticated && localState && !accountState) {
+          await saveState();
+          clearLocalState();
+        }
+      } catch (error) {
+        state = normalizeStatePayload(localState);
+        render();
+        if (isAuthenticated) {
+          showError("Kunne ikke hente kontostate. Viser lokal state i stedet.");
+        }
       }
-
-      const originalSetAppState =
-        typeof api.setAppState === "function" ? api.setAppState.bind(api) : null;
-
-      api.setAppState = async function setAppStatePatched(state) {
-        try {
-          await saveStructuredState(state);
-          showEndPromptIfSummary(state);
-        } catch (error) {
-          console.error("Structured state save failed", error);
-        }
-
-        if (originalSetAppState) {
-          try {
-            return await originalSetAppState(state);
-          } catch (error) {
-            console.warn("Original setAppState call failed", error);
-          }
-        }
-
-        return undefined;
-      };
-
-      api.__quizPortalPatched = true;
-      return true;
     }
 
-    const patchTimer = window.setInterval(function () {
-      try {
-        if (tryPatchNotebookApi()) {
-          window.clearInterval(patchTimer);
-        }
-      } catch (error) {
-        console.error("Notebook API patch failed", error);
-      }
-    }, 200);
-
-    iframe.addEventListener("load", function () {
-      try {
-        tryPatchNotebookApi();
-      } catch (error) {
-        console.error("Notebook API patch-on-load failed", error);
-      }
+    hintBtnNode.addEventListener("click", function () {
+      state.showHintForCurrent = !state.showHintForCurrent;
+      render();
     });
+
+    backBtnNode.addEventListener("click", function () {
+      if (state.currentView === "summary") {
+        state.currentView = "question";
+        state.currentQuestionIndex = Math.max(quiz.questions.length - 1, 0);
+      } else if (state.currentQuestionIndex > 0) {
+        state.currentQuestionIndex -= 1;
+      }
+      state.showHintForCurrent = false;
+      saveState().catch(() => {
+        showError("Kunne ikke gemme state. Prøv igen.");
+      });
+      render();
+    });
+
+    nextBtnNode.addEventListener("click", function () {
+      if (state.currentQuestionIndex >= quiz.questions.length - 1) {
+        state.currentView = "summary";
+      } else {
+        state.currentQuestionIndex += 1;
+      }
+      state.showHintForCurrent = false;
+      saveState().catch(() => {
+        showError("Kunne ikke gemme state. Prøv igen.");
+      });
+      render();
+    });
+
+    reviewBtnNode.addEventListener("click", function () {
+      state.currentView = "question";
+      state.currentQuestionIndex = 0;
+      state.showHintForCurrent = false;
+      saveState().catch(() => {
+        showError("Kunne ikke gemme state. Prøv igen.");
+      });
+      render();
+    });
+
+    resetBtnNode.addEventListener("click", function () {
+      state = normalizeStatePayload(null);
+      saveState().catch(() => {
+        showError("Kunne ikke nulstille state. Prøv igen.");
+      });
+      render();
+    });
+
+    init();
   })();
 </script>
 {% endblock %}

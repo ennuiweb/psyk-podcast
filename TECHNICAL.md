@@ -188,6 +188,7 @@ Existing quiz generation/sync scripts remain unchanged.
 ### Security controls in phase 1
 - Django session auth + CSRF middleware
 - Wrapper/raw quiz endpoints are public (`/q/*`, `/q/raw/*`) for anonymous play
+- Public quiz content API (`/api/quiz-content/<id>`) serves normalized quiz JSON to the portal UI
 - Login required on progress and state persistence APIs (`/progress`, `/api/quiz-state/*`)
 - Anonymous users are prompted to log in when they reach quiz summary/completion
 - Strict quiz ID regex (`^[0-9a-f]{8}$`) plus existence checks

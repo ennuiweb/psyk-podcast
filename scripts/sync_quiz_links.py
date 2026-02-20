@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Sync quiz HTML exports to the droplet and update quiz_links.json."""
+"""Sync quiz HTML/JSON exports to the droplet and update quiz_links.json."""
 
 from __future__ import annotations
 
@@ -303,6 +303,8 @@ def run_rsync(
         "*/",
         "--include",
         "*.html",
+        "--include",
+        "*.json",
         "--exclude",
         "*",
     ]
@@ -423,6 +425,7 @@ def main() -> int:
     mp3_index: Dict[str, List[Path]] = {}
     flat_id_registry: Dict[str, str] = {}
     upload_sources: Dict[str, Path] = {}
+    mapped_json_files = 0
 
     if not args.derive_mp3_names:
         mp3_files = [p for p in find_files(output_root, ".mp3") if language_tag in p.stem]
@@ -481,6 +484,18 @@ def main() -> int:
             )
         upload_sources[relative_path] = html_file
 
+        json_file = html_file.with_suffix(".json")
+        if json_file.is_file():
+            json_relative_path = str(Path(relative_path).with_suffix(".json")).replace("\\", "/")
+            existing_json_source = upload_sources.get(json_relative_path)
+            if existing_json_source is not None and existing_json_source != json_file:
+                raise SystemExit(
+                    f"Multiple source files map to '{json_relative_path}' "
+                    f"({existing_json_source} vs {json_file})."
+                )
+            upload_sources[json_relative_path] = json_file
+            mapped_json_files += 1
+
     sorted_mapping: Dict[str, Dict[str, Any]] = {}
     mapped_quiz_links = 0
     for key in sorted(mapping_links):
@@ -497,6 +512,7 @@ def main() -> int:
 
     print(f"Quiz difficulty filter: {quiz_difficulty or 'any'}")
     print(f"Quiz HTML files: {len(html_files)}")
+    print(f"Mapped quiz JSON files: {mapped_json_files}")
     print(f"Mapped episode quizzes: {len(sorted_mapping)}")
     print(f"Mapped quiz links: {mapped_quiz_links}")
     if unmatched:

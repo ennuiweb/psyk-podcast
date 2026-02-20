@@ -24,6 +24,7 @@ from .services import (
     QUIZ_ID_RE,
     StatePayloadError,
     compute_progress,
+    load_quiz_content,
     load_quiz_label_mapping,
     normalize_state_payload,
     quiz_exists,
@@ -201,9 +202,8 @@ def quiz_wrapper_view(request: HttpRequest, quiz_id: str) -> HttpResponse:
         "quiz_id": quiz_id,
         "quiz_title": label.episode_title if label else quiz_id,
         "quiz_difficulty_label": _difficulty_label(label.difficulty if label else "unknown"),
-        "raw_quiz_url": reverse("quiz-raw", kwargs={"quiz_id": quiz_id}),
+        "quiz_content_url": reverse("quiz-content", kwargs={"quiz_id": quiz_id}),
         "state_api_url": reverse("quiz-state", kwargs={"quiz_id": quiz_id}),
-        "raw_state_api_url": reverse("quiz-state-raw", kwargs={"quiz_id": quiz_id}),
         "user_is_authenticated": request.user.is_authenticated,
         "login_next_url": _auth_url_with_next("login", quiz_path),
         "signup_next_url": _auth_url_with_next("signup", quiz_path),
@@ -216,7 +216,20 @@ def quiz_raw_view(request: HttpRequest, quiz_id: str) -> HttpResponse:
     quiz_id = _ensure_quiz_id_or_404(quiz_id)
     _ensure_quiz_exists_or_404(quiz_id)
     path = quiz_file_path(quiz_id)
+    if not path.is_file():
+        raise Http404("Quiz ikke fundet")
     return FileResponse(path.open("rb"), content_type="text/html; charset=utf-8")
+
+
+@require_GET
+def quiz_content_view(request: HttpRequest, quiz_id: str) -> HttpResponse:
+    quiz_id = _ensure_quiz_id_or_404(quiz_id)
+    _ensure_quiz_exists_or_404(quiz_id)
+
+    payload = load_quiz_content(quiz_id)
+    if payload is None:
+        raise Http404("Quiz ikke fundet")
+    return JsonResponse(payload)
 
 
 @login_required

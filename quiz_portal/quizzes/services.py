@@ -42,16 +42,38 @@ class ProgressComputation:
 _METADATA_CACHE: dict[str, Any] = {"mtime": None, "data": {}}
 
 
-def quiz_file_path(quiz_id: str) -> Path:
+def quiz_html_file_path(quiz_id: str) -> Path:
     return Path(settings.QUIZ_FILES_ROOT) / f"{quiz_id}.html"
 
 
+def quiz_json_file_path(quiz_id: str) -> Path:
+    return Path(settings.QUIZ_FILES_ROOT) / f"{quiz_id}.json"
+
+
+def quiz_file_path(quiz_id: str) -> Path:
+    """Backward-compatible alias used by legacy raw HTML route."""
+    return quiz_html_file_path(quiz_id)
+
+
 def quiz_exists(quiz_id: str) -> bool:
-    return quiz_file_path(quiz_id).is_file()
+    return quiz_json_file_path(quiz_id).is_file() or quiz_html_file_path(quiz_id).is_file()
 
 
 def read_quiz_bytes(quiz_id: str) -> bytes:
-    return quiz_file_path(quiz_id).read_bytes()
+    return quiz_html_file_path(quiz_id).read_bytes()
+
+
+def _extract_question_entries(payload: Any) -> list[Any]:
+    if isinstance(payload, dict):
+        questions = payload.get("questions")
+        if isinstance(questions, list):
+            return questions
+        quiz_entries = payload.get("quiz")
+        if isinstance(quiz_entries, list):
+            return quiz_entries
+    if isinstance(payload, list):
+        return payload
+    return []
 
 
 def parse_question_count_from_quiz_bytes(quiz_bytes: bytes) -> int:
@@ -65,18 +87,74 @@ def parse_question_count_from_quiz_bytes(quiz_bytes: bytes) -> int:
     except json.JSONDecodeError:
         logger.warning("Failed to decode data-app-data payload", exc_info=True)
         return 0
-    quiz_entries = decoded.get("quiz") if isinstance(decoded, dict) else None
-    return len(quiz_entries) if isinstance(quiz_entries, list) else 0
+    return len(_extract_question_entries(decoded))
+
+
+def parse_question_count_from_quiz_json(payload: Any) -> int:
+    return len(_extract_question_entries(payload))
+
+
+def load_quiz_content(quiz_id: str) -> dict[str, Any] | None:
+    json_path = quiz_json_file_path(quiz_id)
+    if json_path.is_file():
+        try:
+            payload = json.loads(json_path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            logger.warning("Unable to parse quiz JSON file: %s", json_path, exc_info=True)
+        else:
+            questions = _extract_question_entries(payload)
+            if questions:
+                title = "Quiz"
+                if isinstance(payload, dict):
+                    raw_title = payload.get("title")
+                    if isinstance(raw_title, str) and raw_title.strip():
+                        title = raw_title.strip()
+                return {"title": title, "questions": questions}
+
+    html_path = quiz_html_file_path(quiz_id)
+    if not html_path.is_file():
+        return None
+    try:
+        html_bytes = html_path.read_bytes()
+    except OSError:
+        logger.warning("Unable to read quiz HTML file: %s", html_path, exc_info=True)
+        return None
+
+    text = html_bytes.decode("utf-8", errors="replace")
+    match = APP_DATA_RE.search(text)
+    if not match:
+        return None
+
+    raw_payload = html.unescape(match.group("data"))
+    try:
+        decoded_payload = json.loads(raw_payload)
+    except json.JSONDecodeError:
+        logger.warning("Failed to decode data-app-data payload for quiz: %s", quiz_id, exc_info=True)
+        return None
+
+    questions = _extract_question_entries(decoded_payload)
+    if not questions:
+        return None
+    return {"title": "Quiz", "questions": questions}
 
 
 def quiz_question_count(quiz_id: str) -> int:
-    path = quiz_file_path(quiz_id)
-    if not path.is_file():
+    json_path = quiz_json_file_path(quiz_id)
+    if json_path.is_file():
+        try:
+            json_payload = json.loads(json_path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            logger.warning("Unable to parse quiz JSON for question count: %s", json_path, exc_info=True)
+        else:
+            return parse_question_count_from_quiz_json(json_payload)
+
+    html_path = quiz_html_file_path(quiz_id)
+    if not html_path.is_file():
         return 0
     try:
-        return parse_question_count_from_quiz_bytes(path.read_bytes())
+        return parse_question_count_from_quiz_bytes(html_path.read_bytes())
     except OSError:
-        logger.warning("Unable to read quiz file for question count: %s", path, exc_info=True)
+        logger.warning("Unable to read quiz file for question count: %s", html_path, exc_info=True)
         return 0
 
 

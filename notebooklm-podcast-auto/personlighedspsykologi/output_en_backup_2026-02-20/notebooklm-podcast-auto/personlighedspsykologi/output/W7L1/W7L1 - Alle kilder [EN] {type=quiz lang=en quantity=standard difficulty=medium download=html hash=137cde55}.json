@@ -1,0 +1,395 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "According to existential philosophy, what is the primary distinction between 'existence' and 'essence'?",
+      "answerOptions": [
+        {
+          "text": "Existence refers to the concrete 'that' of an entity, while essence refers to the abstract 'what' of an entity.",
+          "isCorrect": true,
+          "rationale": "Existentialists argue that the actual, concrete reality of a being precedes any universal, abstract definitions or labels applied to it."
+        },
+        {
+          "text": "Existence is a collection of unchanging biological traits, while essence is the social role one plays.",
+          "isCorrect": false,
+          "rationale": "This view incorrectly reduces existence to fixed biological components, which existentialists typically reject as 'essentialist' thinking."
+        },
+        {
+          "text": "Essence is the unique way an individual encounters the world, while existence is a shared biological category.",
+          "isCorrect": false,
+          "rationale": "This swaps the terms; existentialists believe it is the individual's unique being (existence) that is primary over generic categories (essence)."
+        },
+        {
+          "text": "Existence and essence are identical concepts used to describe the internal drives of the human psyche.",
+          "isCorrect": false,
+          "rationale": "These terms are distinct in this tradition; identifying them as internal drives aligns more with psychoanalysis than existentialism."
+        }
+      ],
+      "hint": "Consider which term relates to the specific, 'here-and-now' reality versus the general, 'dictionary-definition' characteristics."
+    },
+    {
+      "question": "In the phenomenological method, what is the purpose of the 'rule of epoché'?",
+      "answerOptions": [
+        {
+          "text": "To bracket or suspend one's initial biases and assumptions to focus on the primary data of experience.",
+          "isCorrect": true,
+          "rationale": "Suspending our natural attitude allows us to witness phenomena as they actually appear rather than through the lens of our preconceptions."
+        },
+        {
+          "text": "To categorize experiences into a hierarchical list based on their psychological importance.",
+          "isCorrect": false,
+          "rationale": "Categorizing into a hierarchy is actually the opposite of the 'rule of horizontalization,' which treats all data as initially equal."
+        },
+        {
+          "text": "To find a scientific explanation for why a specific emotion is being felt in the moment.",
+          "isCorrect": false,
+          "rationale": "The phenomenological method emphasizes description over explanation, seeking to understand the 'how' rather than the causal 'why.'"
+        },
+        {
+          "text": "To ignore the subjective experience entirely in favor of observing external, objective facts.",
+          "isCorrect": false,
+          "rationale": "Husserl’s method is centered on conscious experience; ignoring the subjective would contradict the core goal of phenomenology."
+        }
+      ],
+      "hint": "Think about the metaphorical 'parenthesizing' of our pre-existing beliefs."
+    },
+    {
+      "question": "What does Jean-Paul Sartre mean by the phrase 'Existence precedes essence'?",
+      "answerOptions": [
+        {
+          "text": "Human beings are born without a pre-defined purpose and must create their own identity through choices.",
+          "isCorrect": true,
+          "rationale": "This highlights the radical freedom of the human condition, where there is no pre-set blueprint or 'nature' determining who a person is."
+        },
+        {
+          "text": "Our biological makeup determines our future destiny before we are even born.",
+          "isCorrect": false,
+          "rationale": "This is a deterministic, essentialist view that Sartre's philosophy explicitly aims to dismantle."
+        },
+        {
+          "text": "Society provides us with a soul at birth which directs our later actions.",
+          "isCorrect": false,
+          "rationale": "Existentialism emphasizes that humans emerge as 'nothingness' or a blank slate of possibility rather than having a pre-provided essence."
+        },
+        {
+          "text": "Abstract philosophical truths are more important than the physical reality of a person's life.",
+          "isCorrect": false,
+          "rationale": "Sartre prioritizes the concrete, lived reality (existence) over abstract theories and universal definitions (essence)."
+        }
+      ],
+      "hint": "Focus on whether a human is born with a fixed 'blueprint' or if they must 'draw' it as they live."
+    },
+    {
+      "question": "How does Martin Heidegger describe the concept of 'Thrownness' ($Geworfenheit$)?",
+      "answerOptions": [
+        {
+          "text": "The fact that human existence finds itself in a specific situation not of its own making, such as a particular time or culture.",
+          "isCorrect": true,
+          "rationale": "Thrownness refers to our 'facticity'—the arbitrary circumstances we are born into without our consent."
+        },
+        {
+          "text": "The deliberate choice to abandon one's family to pursue a higher spiritual calling.",
+          "isCorrect": false,
+          "rationale": "Thrownness is an 'ontological given' that happens to us, not a volitional choice we make later in life."
+        },
+        {
+          "text": "A psychological state of feeling physically discarded by social groups.",
+          "isCorrect": false,
+          "rationale": "While it can feel isolating, Heidegger uses the term as a structural description of the human condition, not just a specific social feeling."
+        },
+        {
+          "text": "The scientific process of removing variables to find the core of a person's personality.",
+          "isCorrect": false,
+          "rationale": "This describes a reductionist scientific approach, which is the 'natural attitude' Heidegger seeks to move beyond."
+        }
+      ],
+      "hint": "Think about the aspects of your life that were already 'there' before you had the power to choose them."
+    },
+    {
+      "question": "Martin Buber's 'I-Thou' relationship is characterized by which of the following?",
+      "answerOptions": [
+        {
+          "text": "Meeting the other person as a unique, unclassifiable totality in the present moment.",
+          "isCorrect": true,
+          "rationale": "In the I-Thou mode, the other is not an object to be analyzed or used, but a whole being encountered with 'confirmation.'"
+        },
+        {
+          "text": "Analyzing the other person's psychological history to understand their current symptoms.",
+          "isCorrect": false,
+          "rationale": "Analyzing a person as a set of symptoms or historical data is characteristic of the 'I-It' mode of relating."
+        },
+        {
+          "text": "Using the other person as a means to achieve one's own personal growth goals.",
+          "isCorrect": false,
+          "rationale": "Buber considers treating a person as a tool or a 'means to an end' as an 'I-It' orientation."
+        },
+        {
+          "text": "Observing the other person objectively from a distance to ensure clinical neutrality.",
+          "isCorrect": false,
+          "rationale": "The I-Thou relationship requires full presence and mutual dialogue, which contrasts with the detached observation of clinical neutrality."
+        }
+      ],
+      "hint": "Distinguish between treating someone as a 'person' versus treating them as an 'object' or 'category.'"
+    },
+    {
+      "question": "In existential thought, why is anxiety often described as the 'dizziness of freedom'?",
+      "answerOptions": [
+        {
+          "text": "Because realizing one has no ground beneath their choices and must choose anyway is overwhelming.",
+          "isCorrect": true,
+          "rationale": "Kierkegaard suggests that the vast possibility of choice creates a sense of dread because there are no absolute guides to ensure a 'right' path."
+        },
+        {
+          "text": "Because freedom is a biological malfunction that causes a physical sensation of vertigo.",
+          "isCorrect": false,
+          "rationale": "Existentialists view anxiety as a meaningful 'attunement' or response to our ontological condition, not a medical error."
+        },
+        {
+          "text": "Because too many choices in a consumer society lead to a lack of focus.",
+          "isCorrect": false,
+          "rationale": "While social context matters, this is a modern sociological critique rather than the deeper philosophical point about the nature of being."
+        },
+        {
+          "text": "Because the human brain is unable to process more than two options at a time without distress.",
+          "isCorrect": false,
+          "rationale": "This is a cognitive/neuroscientific explanation, which focuses on mechanisms rather than the lived meaning of existence."
+        }
+      ],
+      "hint": "Consider the feeling of standing on a ledge where you *could* jump, even if you don't want to."
+    },
+    {
+      "question": "According to Heidegger, what is the 'world of the One' (or 'the They')?",
+      "answerOptions": [
+        {
+          "text": "A mode of inauthentic existence where an individual blindly adopts the socially agreed-upon ways of being and thinking.",
+          "isCorrect": true,
+          "rationale": "Falling into 'the One' allows a person to avoid the anxiety of their own freedom by simply doing what 'one does' in their culture."
+        },
+        {
+          "text": "A mystical state of oneness where all individuals are spiritually connected to God.",
+          "isCorrect": false,
+          "rationale": "Heidegger’s 'the One' ($Das$ $Man$) is a critique of average, everyday conformity, not a description of spiritual union."
+        },
+        {
+          "text": "A political system designed to ensure total equality among all citizens.",
+          "isCorrect": false,
+          "rationale": "Heidegger is discussing an ontological way of existing, not a specific governmental structure or policy."
+        },
+        {
+          "text": "The unique personal world that an individual creates for themselves through creativity.",
+          "isCorrect": false,
+          "rationale": "This describes 'authenticity' or 'ownness,' which is the opposite of the public, generic world of 'the One.'"
+        }
+      ],
+      "hint": "Think about the phrase 'That's just what people do' and how it influences behavior."
+    },
+    {
+      "question": "Which existential philosopher emphasized the 'embodied' nature of existence, arguing that we *are* our bodies?",
+      "answerOptions": [
+        {
+          "text": "Maurice Merleau-Ponty",
+          "isCorrect": true,
+          "rationale": "Merleau-Ponty challenged the Cartesian split of mind and body, asserting that our perception and existence are fundamentally anchored in our physical being."
+        },
+        {
+          "text": "Søren Kierkegaard",
+          "isCorrect": false,
+          "rationale": "While he valued the individual, Kierkegaard was primarily focused on the subjective spirit and its relationship to the divine."
+        },
+        {
+          "text": "Jean-Paul Sartre",
+          "isCorrect": false,
+          "rationale": "Sartre focused heavily on consciousness as 'nothingness,' which can sometimes seem detached from the thick materiality Merleau-Ponty described."
+        },
+        {
+          "text": "Friedrich Nietzsche",
+          "isCorrect": false,
+          "rationale": "Nietzsche praised the body's wisdom, but it was Merleau-Ponty who systematically developed phenomenology around 'embodiment' as a core thesis."
+        }
+      ],
+      "hint": "This thinker is most closely associated with the 'Phenomenology of Perception.'"
+    },
+    {
+      "question": "What is 'Bad Faith' ($mauvaise$ $foi$) in the Sartrean sense?",
+      "answerOptions": [
+        {
+          "text": "The act of lying to oneself to escape the reality of one's own freedom and responsibility.",
+          "isCorrect": true,
+          "rationale": "Bad faith involves treating oneself as a fixed object (essence) to avoid the 'condemnation' of having to choose (existence)."
+        },
+        {
+          "text": "A failure to believe in the existence of a higher power or God.",
+          "isCorrect": false,
+          "rationale": "Sartre was an atheist, but 'bad faith' is a concept about self-deception regarding freedom, not religious belief."
+        },
+        {
+          "text": "Engaging in immoral acts that harm the social community.",
+          "isCorrect": false,
+          "rationale": "While it may have ethical consequences, 'bad faith' is primarily a structural description of how one relates to their own being."
+        },
+        {
+          "text": "The experience of feeling disconnected from one's past memories.",
+          "isCorrect": false,
+          "rationale": "Existentialists see the past as part of 'facticity,' but bad faith specifically refers to the denial of freedom in the present/future."
+        }
+      ],
+      "hint": "Consider when a person says, 'I have no choice, that's just the way I am.'"
+    },
+    {
+      "question": "Søren Kierkegaard defines the 'self' not as a fixed thing, but as a 'relation'. What does this imply?",
+      "answerOptions": [
+        {
+          "text": "The self is a continuous process of the human being relating to its own existence and its possibilities.",
+          "isCorrect": true,
+          "rationale": "Jacobsen and Cooper both note that for Kierkegaard, selfhood is a task of relating oneself to oneself and to the power that established the relation."
+        },
+        {
+          "text": "The self is merely the sum total of all the interpersonal relationships one has with others.",
+          "isCorrect": false,
+          "rationale": "While relationships are important, Kierkegaard's 'relation' is specifically about the internal dynamic of the self's own being."
+        },
+        {
+          "text": "The self is a static ratio between the number of good deeds and bad deeds performed.",
+          "isCorrect": false,
+          "rationale": "This view is too quantitative and static; Kierkegaard views the self as a dynamic, qualitative 'becoming.'"
+        },
+        {
+          "text": "The self does not actually exist and is only a linguistic illusion created by thought.",
+          "isCorrect": false,
+          "rationale": "Kierkegaard argues that existence is very real and problematic, even if it is difficult to grasp through abstract thought."
+        }
+      ],
+      "hint": "Think about the self as a 'verb' rather than a 'noun.'"
+    },
+    {
+      "question": "In the work of Albert Camus, what is the 'Absurd'?",
+      "answerOptions": [
+        {
+          "text": "The conflict between the human longing for order and meaning and the silent, chaotic universe.",
+          "isCorrect": true,
+          "rationale": "The absurd is born from the confrontation between human needs for rationality and the world’s irrational lack of it."
+        },
+        {
+          "text": "A type of comedy used to deflect from the pain of existential guilt.",
+          "isCorrect": false,
+          "rationale": "Though 'absurd' can mean funny in common parlance, in existentialism it refers to a tragic, metaphysical condition."
+        },
+        {
+          "text": "The realization that most people are unintelligent and act without thinking.",
+          "isCorrect": false,
+          "rationale": "The absurd is a condition of existence itself, not a judgment on the intellectual capacity of others."
+        },
+        {
+          "text": "The scientific proof that life began by total accident with no purpose.",
+          "isCorrect": false,
+          "rationale": "Camus focuses on the *feeling* and *tension* of this lack of purpose, rather than providing a biological or physical explanation."
+        }
+      ],
+      "hint": "Think of Sisyphus pushing his rock: he wants to finish, but the world ensures he never will."
+    },
+    {
+      "question": "Heidegger distinguishes between two modes of caring for others: 'leaping in' and 'leaping ahead'. Which is considered more authentic in therapy?",
+      "answerOptions": [
+        {
+          "text": "'Leaping ahead', because it helps the other person become transparent to themselves and ready for their own freedom.",
+          "isCorrect": true,
+          "rationale": "Leaping ahead supports the other's autonomy, whereas 'leaping in' takes away their burden and makes them dependent."
+        },
+        {
+          "text": "'Leaping in', because it involves taking over the client's problems to provide immediate relief.",
+          "isCorrect": false,
+          "rationale": "Taking over someone's tasks, according to Heidegger, can lead to domination and dependency, even if done with good intentions."
+        },
+        {
+          "text": "Neither, as both are considered 'interfering' with the natural course of a person's fate.",
+          "isCorrect": false,
+          "rationale": "Heidegger acknowledges that 'being-with' others is unavoidable; the question is the *quality* of that care, not its absence."
+        },
+        {
+          "text": "'Leaping in', because it demonstrates the therapist's expertise and superior knowledge.",
+          "isCorrect": false,
+          "rationale": "Existential therapy generally avoids the 'expert' stance in favor of a shared human encounter that fosters client responsibility."
+        }
+      ],
+      "hint": "One mode 'robs' the person of their choice, while the other 'returns' it to them."
+    },
+    {
+      "question": "Why did Kierkegaard often use pseudonyms and 'indirect communication' in his writings?",
+      "answerOptions": [
+        {
+          "text": "To force the reader to take a personal stand and find their own truth rather than following a specific authority.",
+          "isCorrect": true,
+          "rationale": "Jacobsen notes that pseudonyms prevent the reader from being distracted by the author's personality and encourage subjective reflection."
+        },
+        {
+          "text": "Because he was afraid of being arrested by the Danish government for his religious views.",
+          "isCorrect": false,
+          "rationale": "While he was controversial, his primary motive for pseudonyms was pedagogical and philosophical, not legal evasion."
+        },
+        {
+          "text": "To hide the fact that he was actually multiple different people writing under one name.",
+          "isCorrect": false,
+          "rationale": "It is well-known that Kierkegaard was the sole author; the different 'voices' represented different life-views ($spheres$ $of$ $existence$)."
+        },
+        {
+          "text": "Because he did not believe his ideas were valuable enough to be associated with his real name.",
+          "isCorrect": false,
+          "rationale": "On the contrary, he believed his mission was of vital importance, but that truth must be discovered subjectively by the 'Single Individual.'"
+        }
+      ],
+      "hint": "Consider how an author might avoid being an 'expert' so the reader has to think for themselves."
+    },
+    {
+      "question": "In the context of 'thrownness' and 'freedom', how do existentialists view human limitations?",
+      "answerOptions": [
+        {
+          "text": "Limitations (facticity) provide the necessary framework or stage within which freedom can actually be exercised.",
+          "isCorrect": true,
+          "rationale": "Freedom is not the ability to do anything, but the power to take a stand toward the specific, finite conditions of one's life."
+        },
+        {
+          "text": "Limitations are obstacles that must be completely removed to achieve total spiritual enlightenment.",
+          "isCorrect": false,
+          "rationale": "Existentialists argue that being 'finite' is a permanent given of the human condition that cannot be transcended."
+        },
+        {
+          "text": "Limitations prove that human beings have no real freedom and are entirely determined by biology.",
+          "isCorrect": false,
+          "rationale": "The tension of existentialism is that we are *both* limited and free; one does not negate the other."
+        },
+        {
+          "text": "Limitations are social constructs that only exist because we choose to believe in them.",
+          "isCorrect": false,
+          "rationale": "While some limits are social, others—like death and having a physical body—are seen as 'ontological' or inescapable facts of being."
+        }
+      ],
+      "hint": "Think of a game: you can't play without rules, but the rules don't tell you exactly which move to make."
+    },
+    {
+      "question": "How does existential philosophy describe 'Ontological Guilt'?",
+      "answerOptions": [
+        {
+          "text": "A sense of regret arising from the unavoidable fact that choosing one possibility means leaving others unfulfilled.",
+          "isCorrect": true,
+          "rationale": "Because we are finite, we 'owe' it to ourselves to fulfill our potential, yet we can never fulfill *all* possibilities at once."
+        },
+        {
+          "text": "The feeling of shame experienced after violating a specific social or legal law.",
+          "isCorrect": false,
+          "rationale": "This describes 'moral' or 'legal' guilt, whereas ontological guilt is a deeper, structural part of being alive and making choices."
+        },
+        {
+          "text": "A religious concept involving original sin that can only be cured by divine grace.",
+          "isCorrect": false,
+          "rationale": "While Kierkegaard has religious ties, modern existentialists often treat this as a secular feature of choosing and finitude."
+        },
+        {
+          "text": "The realization that one has accidentally harmed another person's feelings.",
+          "isCorrect": false,
+          "rationale": "This is a situational, interpersonal guilt, whereas ontological guilt refers to the 'debt' one has to their own unlived life."
+        }
+      ],
+      "hint": "Think about the 'road not taken' and why that might cause a form of internal debt."
+    }
+  ]
+}

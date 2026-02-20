@@ -1,0 +1,318 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "In the context of narrative psychology, how is 'personality' or 'the self' fundamentally defined in its most radical form?",
+      "answerOptions": [
+        {
+          "text": "As the sum of the stories an individual constructs about themselves.",
+          "isCorrect": true,
+          "rationale": "Narrative psychology posits that personality is not a fixed substance but is actually woven from the stories we use to create meaning over time."
+        },
+        {
+          "text": "As an underlying biological core that determines behavioral patterns.",
+          "isCorrect": false,
+          "rationale": "This view aligns more with trait theory or biological psychology, which narrative theorists explicitly critique for being reductionist."
+        },
+        {
+          "text": "As a stable set of cognitive schemas that process environmental information.",
+          "isCorrect": false,
+          "rationale": "While related to cognition, this 'computer metaphor' is exactly what theorists like Bruner moved away from in favor of active meaning-making."
+        },
+        {
+          "text": "As a collection of unconscious drives that are narratively expressed.",
+          "isCorrect": false,
+          "rationale": "Though some narrative theorists incorporate psychoanalysis, the radical narrative view prioritizes the construction of stories over pre-existing drives."
+        }
+      ],
+      "hint": "Consider the relationship between 'storytelling' and 'the substance' of our identity mentioned in the text."
+    },
+    {
+      "question": "William James is cited as a precursor to narrative psychology. Which elements did he identify as being part of the continuous creation of the self?",
+      "answerOptions": [
+        {
+          "text": "Material objects, social factors, and self-reflexive understanding.",
+          "isCorrect": true,
+          "rationale": "James understood the self as a process in constant becoming, involving our bodies/homes, social norms, and how we reflexively view ourselves."
+        },
+        {
+          "text": "Innate temperaments and environmental reinforcements.",
+          "isCorrect": false,
+          "rationale": "This combination reflects behaviorist and early trait theories rather than James's processual and relational view."
+        },
+        {
+          "text": "The id, the ego, and the superego in conflict.",
+          "isCorrect": false,
+          "rationale": "These are Freudian concepts, whereas James focused on the self as a composite of material, social, and reflexive elements."
+        },
+        {
+          "text": "A fixed psychological core that remains unchanged by social interaction.",
+          "isCorrect": false,
+          "rationale": "James explicitly moved away from viewing personality as a substance with fixed properties."
+        }
+      ],
+      "hint": "Think about the broad range of physical, social, and internal components James included in his processual self."
+    },
+    {
+      "question": "According to George Herbert Mead's symbolic interactionism, how does a person learn about themselves?",
+      "answerOptions": [
+        {
+          "text": "Through the internalized reactions of the 'generalized other'.",
+          "isCorrect": true,
+          "rationale": "Mead argues the self is created intersubjectively by internalizing how the surrounding culture and society react to us."
+        },
+        {
+          "text": "By observing their own behaviors in isolation from others.",
+          "isCorrect": false,
+          "rationale": "Mead's theory is social; he believes the self cannot be understood apart from interaction and language."
+        },
+        {
+          "text": "Through the natural maturation of the biological 'I'.",
+          "isCorrect": false,
+          "rationale": "While the 'I' is a part of Mead's model, the focus is on the social creation of the self through interaction, not just biological growth."
+        },
+        {
+          "text": "By deciphering fixed archetypes found in cultural myths.",
+          "isCorrect": false,
+          "rationale": "Mead focuses on active social interaction and symbols rather than the static archetypes associated with Jungian psychology."
+        }
+      ],
+      "hint": "Focus on the term Mead uses to describe the collective perspective of society that we internalize."
+    },
+    {
+      "question": "What was Jerome Bruner's primary critique of the 'cognitive revolution' and the resulting computer metaphor for the mind?",
+      "instruction": "Select the most accurate critique based on the text.",
+      "answerOptions": [
+        {
+          "text": "It treated the mind as a passive processor of information rather than an active creator of meaning.",
+          "isCorrect": true,
+          "rationale": "Bruner argued that psychology should focus on how people actively construct meaning in a cultural context, not just how they process data."
+        },
+        {
+          "text": "It focused too much on social interaction and ignored internal mental structures.",
+          "isCorrect": false,
+          "rationale": "Bruner actually felt cognitive psychology was too focused on internal 'mechanisms' and ignored the social/cultural context of meaning."
+        },
+        {
+          "text": "It relied too heavily on narrative storytelling rather than empirical data.",
+          "isCorrect": false,
+          "rationale": "Bruner was a proponent of narrative; he critiqued the cognitive revolution for losing its original focus on meaning."
+        },
+        {
+          "text": "It failed to acknowledge the biological determinants of cognitive schemas.",
+          "isCorrect": false,
+          "rationale": "Bruner emphasized culture over biology, arguing that culture shapes the human soul and mental life."
+        }
+      ],
+      "hint": "Think about the difference between 'processing data' and 'constructing meaning'."
+    },
+    {
+      "question": "In Bruner’s cultural psychology, how is the relationship between 'meaning' and 'action' described?",
+      "answerOptions": [
+        {
+          "text": "They are two sides of the same coin, intertwined with broader cultural meanings.",
+          "isCorrect": true,
+          "rationale": "Bruner posits that to understand an action, one must understand its meaning, which is always situated within cultural narratives."
+        },
+        {
+          "text": "Meaning is an internal reflection that occurs after a biological action is completed.",
+          "isCorrect": false,
+          "rationale": "Bruner views meaning as primary and constitutive of the action itself, not a secondary afterthought."
+        },
+        {
+          "text": "Actions are determined by biology, while meaning is a subjective illusion.",
+          "isCorrect": false,
+          "rationale": "This view is rejected by Bruner, who argues that culture, not biology, is the primary shaper of human life."
+        },
+        {
+          "text": "Meaning is a fixed logical property that exists independently of human action.",
+          "isCorrect": false,
+          "rationale": "Bruner describes meaning-making as a poetic and dynamic process rather than a static or purely logical one."
+        }
+      ],
+      "hint": "Consider whether Bruner views meaning as something 'inside the head' or something embedded in cultural participation."
+    },
+    {
+      "question": "Donald Polkinghorne uses the term 'plot' to describe how the self is organized. What is the function of this 'plot'?",
+      "answerOptions": [
+        {
+          "text": "To integrate diverse elements like the body, motives, and social relations into a meaningful whole.",
+          "isCorrect": true,
+          "rationale": "The plot creates a 'narrative configuration' that provides continuity by linking the past, present, and future."
+        },
+        {
+          "text": "To ensure that logical-mathematical thinking dominates our self-perception.",
+          "isCorrect": false,
+          "rationale": "Polkinghorne distinguishes narrative organizing from logical-mathematical thinking, comparing the former to art or literature."
+        },
+        {
+          "text": "To act as a subconscious barrier against traumatic cultural influences.",
+          "isCorrect": false,
+          "rationale": "While plots can be changed in therapy, their primary function is the active, meaningful structuring of experience, not just defense."
+        },
+        {
+          "text": "To provide a rigid, unchanging structure for the personality throughout life.",
+          "isCorrect": false,
+          "rationale": "Polkinghorne views the self-as-plot as dynamic and flexible, constantly open to reinterpretation as life unfolds."
+        }
+      ],
+      "hint": "Think about how separate events are turned into a unified, coherent story."
+    },
+    {
+      "question": "How does Dan McAdams's integrative model differ from the more radical narrative approaches like that of Kenneth Gergen?",
+      "answerOptions": [
+        {
+          "text": "McAdams treats the narrative as a separate layer on top of stable traits and cognitive functions.",
+          "isCorrect": true,
+          "rationale": "McAdams integrates traits and cognitive adaptations, whereas radical theorists view the narrative as the very 'fabric' of the self."
+        },
+        {
+          "text": "McAdams argues that there is no such thing as a stable personality outside of dialogue.",
+          "isCorrect": false,
+          "rationale": "This is actually Gergen's position; McAdams maintains a more traditional view of stable underlying traits."
+        },
+        {
+          "text": "McAdams believes that biology plays no role in the development of the self.",
+          "isCorrect": false,
+          "rationale": "McAdams includes traits (often linked to biology) in his three-level model, making him less 'radical' than social constructionists."
+        },
+        {
+          "text": "McAdams views narratives as performative tools used solely for social manipulation.",
+          "isCorrect": false,
+          "rationale": "Gergen emphasizes the performative and relational nature of narratives, while McAdams sees them more as tools for internal coherence."
+        }
+      ],
+      "hint": "Consider how McAdams 'stacks' different psychological concepts compared to theorists who say it's 'all' stories."
+    },
+    {
+      "question": "Kenneth Gergen suggests that being a 'stable' person is a 'social achievement'. What does he mean by this?",
+      "answerOptions": [
+        {
+          "text": "Consistency is a result of following social conventions to remain trustworthy in dialogues.",
+          "isCorrect": true,
+          "rationale": "Gergen argues that we perform stability because others expect it for social coordination, rather than because we have a fixed internal core."
+        },
+        {
+          "text": "Stability is the highest form of cognitive health a human can reach independently.",
+          "isCorrect": false,
+          "rationale": "Gergen critiques the idea of an 'independent' stable core, viewing identity as distributed and relational instead."
+        },
+        {
+          "text": "Achieving stability is a sign that one has successfully suppressed their narrative voices.",
+          "isCorrect": false,
+          "rationale": "Gergen focuses on the performative use of multiple self-narratives rather than the suppression of voices."
+        },
+        {
+          "text": "Society rewards those whose biological traits match their cultural environment.",
+          "isCorrect": false,
+          "rationale": "Gergen is a constructionist who prioritizes language and relations over biological trait matching."
+        }
+      ],
+      "hint": "Think about why we might 'act' consistent when talking to other people."
+    },
+    {
+      "question": "In Peter Raggatt's poststructuralist mapping of the self, what can occur if one 'narrative voice' becomes too dominant?",
+      "answerOptions": [
+        {
+          "text": "It can subdue other voices, leading to a restricted self-understanding and limited actions.",
+          "isCorrect": true,
+          "rationale": "Raggatt notes that when one voice (like 'the addict') dominates, the person may only understand and act through that single lens."
+        },
+        {
+          "text": "It creates a perfectly coherent personality that is immune to social conflict.",
+          "isCorrect": false,
+          "rationale": "Raggatt views the self as a plurality; total dominance of one voice is usually problematic and restricts the person's 'repertoire'."
+        },
+        {
+          "text": "It triggers a biological response that resets the person's personality traits.",
+          "isCorrect": false,
+          "rationale": "Raggatt's theory is narrative and symbolic, focusing on cognitive and emotional attachments, not biological resets."
+        },
+        {
+          "text": "It forces the 'generalized other' to change its reaction to the individual.",
+          "isCorrect": false,
+          "rationale": "While social relations are involved, Raggatt is describing an intra-psychic dynamic where voices organize internal meaning."
+        }
+      ],
+      "hint": "Consider the case of 'Sean' and how his identity as 'the addict' affected his life."
+    },
+    {
+      "question": "Michael White's 'externalization' technique in narrative therapy is based on which theoretical premise?",
+      "answerOptions": [
+        {
+          "text": "The problem is a separate entity from the person's identity.",
+          "isCorrect": true,
+          "rationale": "The core mantra of externalization is 'the person is not the problem, the problem is the problem,' separating the self from the diagnosis."
+        },
+        {
+          "text": "The problem must be integrated into the person's core self to be solved.",
+          "isCorrect": false,
+          "rationale": "Externalization does the opposite; it seeks to create space between the person and the problem."
+        },
+        {
+          "text": "Problems are caused by fixed traits that cannot be changed through talk.",
+          "isCorrect": false,
+          "rationale": "White's therapy is built on the idea that re-authoring stories *can* change lives and how people relate to problems."
+        },
+        {
+          "text": "Mental health issues are strictly biological and should be externalized as 'viruses'.",
+          "isCorrect": false,
+          "rationale": "White critiques the pathologizing and medicalizing of problems, focusing on social and historical constructions instead."
+        }
+      ],
+      "hint": "What is the specific mantra narrative therapists use to describe the relationship between a person and their symptoms?"
+    },
+    {
+      "question": "In narrative therapy, why is the exploration of 'alternative stories' considered 'deconstructing'?",
+      "answerOptions": [
+        {
+          "text": "Because it reveals that dominant problem-stories are historically developed and not fixed truths.",
+          "isCorrect": true,
+          "rationale": "Deconstruction shows that 'problem-saturated' identities are contingent and can be challenged by highlighting moments of agency."
+        },
+        {
+          "text": "Because it destroys the person's previous identity to build a new one from scratch.",
+          "isCorrect": false,
+          "rationale": "It doesn't 'destroy' identity but seeks to unfold parallel, preferred stories that were previously overshadowed."
+        },
+        {
+          "text": "Because it reduces complex human emotions to simple linguistic units.",
+          "isCorrect": false,
+          "rationale": "Narrative therapy aims to increase complexity and 'multi-voicedness' rather than reducing experience."
+        },
+        {
+          "text": "Because it proves that all narratives are false and only objective facts matter.",
+          "isCorrect": false,
+          "rationale": "The focus is on finding 'more helpful' and 'preferred' meanings rather than objective, absolute truths."
+        }
+      ],
+      "hint": "Think about what it means to show that a 'truth' is actually just a 'story' that has been built over time."
+    },
+    {
+      "question": "Narrative theorists often describe cultural narratives as 'disposing' rather than 'determining'. What is the significance of this distinction?",
+      "answerOptions": [
+        {
+          "text": "Culture makes certain actions more likely but leaves room for reflection and change.",
+          "isCorrect": true,
+          "rationale": "This circular agency implies that while culture limits us, we also create and can change the narratives that influence us."
+        },
+        {
+          "text": "Culture is a suggestion that has no actual power over individual behavior.",
+          "isCorrect": false,
+          "rationale": "The text states that narratives *do* create limitations and possibilities, acting as a 'social straitjacket' in some cases."
+        },
+        {
+          "text": "Biology determines our path, while culture only 'disposes' our aesthetic tastes.",
+          "isCorrect": false,
+          "rationale": "Narrative psychology argues that culture shapes the very soul and soul-life, often prioritizing it over biological determination."
+        },
+        {
+          "text": "Individuals are completely free and are not influenced by cultural models.",
+          "isCorrect": false,
+          "rationale": "The theorists acknowledge that the cultural 'symbol system' is very powerful and that agency is linked to the resources available in that culture."
+        }
+      ],
+      "hint": "Consider the balance between being 'caught' in a culture and being able to 're-author' your life."
+    }
+  ]
+}

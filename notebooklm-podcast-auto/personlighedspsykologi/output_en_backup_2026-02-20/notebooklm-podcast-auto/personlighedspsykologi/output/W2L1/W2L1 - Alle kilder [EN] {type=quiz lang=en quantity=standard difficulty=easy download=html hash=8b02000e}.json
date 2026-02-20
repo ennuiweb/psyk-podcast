@@ -1,0 +1,317 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "According to the Columbus & Strandsbjerg (2025) review, what do personality states specifically refer to?",
+      "answerOptions": [
+        {
+          "text": "Enduring and stable patterns of behavior that remain unchanged across the lifespan.",
+          "isCorrect": false,
+          "rationale": "This describes the traditional definition of personality traits rather than short-term states."
+        },
+        {
+          "text": "An individual's feelings, thoughts, behaviors, and goals at a particular time.",
+          "isCorrect": true,
+          "rationale": "Personality states are defined as momentary manifestations of personality that vary depending on the situation and time."
+        },
+        {
+          "text": "The genetic predispositions that determine how a person will react to social stimuli.",
+          "isCorrect": false,
+          "rationale": "States focus on current manifestations in a situation, whereas genetic predispositions are biological foundations of traits."
+        },
+        {
+          "text": "Social roles and masks that individuals adopt to meet the expectations of others.",
+          "isCorrect": false,
+          "rationale": "While social roles influence states, the definition of personality states focuses on the actual content of thoughts and behaviors at a specific moment."
+        }
+      ],
+      "hint": "Consider the difference between a long-term 'average' and a moment-to-moment experience."
+    },
+    {
+      "question": "Which theoretical framework posits that personality traits correspond to distributions of personality states over time?",
+      "answerOptions": [
+        {
+          "text": "Trait Activation Theory (TAT)",
+          "isCorrect": false,
+          "rationale": "TAT focuses on how specific situations activate trait-relevant behaviors rather than the density distribution of states."
+        },
+        {
+          "text": "Cognitive-Affective Personality System (CAPS)",
+          "isCorrect": false,
+          "rationale": "CAPS emphasizes 'if... then' contingencies and the internal organization of cognitive-affective units."
+        },
+        {
+          "text": "Whole Trait Theory (WTT)",
+          "isCorrect": true,
+          "rationale": "WTT's descriptive model defines a person's trait level as the central tendency and dispersion of their momentary state distribution."
+        },
+        {
+          "text": "Latent State-Trait Theory (LST-R)",
+          "isCorrect": false,
+          "rationale": "LST-R focuses on decomposing state variance into trait-like, situation-specific, and error components."
+        }
+      ],
+      "hint": "Think of a theory that views a trait as a summary of all the 'states' someone experiences."
+    },
+    {
+      "question": "The CAPS model describes individual differences in cross-situational variability using which specific concept?",
+      "answerOptions": [
+        {
+          "text": "Density distributions",
+          "isCorrect": false,
+          "rationale": "Density distributions are the core descriptive mechanism of Whole Trait Theory."
+        },
+        {
+          "text": "'If... then' contingencies",
+          "isCorrect": true,
+          "rationale": "CAPS proposes that personality is best understood through stable patterns of situational variation, such as 'if in situation A, then do X'."
+        },
+        {
+          "text": "The TESSERA sequence",
+          "isCorrect": false,
+          "rationale": "TESSERA is a framework used to explain long-term development through repeated short-term processes."
+        },
+        {
+          "text": "Trait activation cues",
+          "isCorrect": false,
+          "rationale": "Cues are a component of Trait Activation Theory, which focuses primarily on the workplace environment."
+        }
+      ],
+      "hint": "This concept relates to the specific conditions under which a behavior occurs."
+    },
+    {
+      "question": "According to meta-analytic research mentioned by Columbus & Strandsbjerg, what is the typical correlation range between average self-reported states and trait scores?",
+      "answerOptions": [
+        {
+          "text": "Perfectly correlated ($r = 1.00$)",
+          "isCorrect": false,
+          "rationale": "States and traits are distinct, and moment-to-moment fluctuations mean the average does not perfectly match the global trait rating."
+        },
+        {
+          "text": "Moderately correlated ($r = 0.42$ to $r = 0.62$)",
+          "isCorrect": true,
+          "rationale": "Studies consistently show that while average states and traits converge, the correlation is only moderate to high, not perfect."
+        },
+        {
+          "text": "Not correlated at all ($r = 0.00$)",
+          "isCorrect": false,
+          "rationale": "WTT and other theories assume a meaningful relationship between how one generally is and how one acts in specific moments."
+        },
+        {
+          "text": "Negatively correlated ($r = -0.50$)",
+          "isCorrect": false,
+          "rationale": "A negative correlation would suggest that acting a certain way momentarily contradicts one's general personality, which is not the standard finding."
+        }
+      ],
+      "hint": "Research shows these values are positive and significant but far from being identical."
+    },
+    {
+      "question": "In the meta-analysis by Zettler et al. (2020), which outcome domain is specifically linked to the HEXACO dimension of Honesty-Humility?",
+      "answerOptions": [
+        {
+          "text": "Insecurity",
+          "isCorrect": false,
+          "rationale": "Insecurity is the outcome domain primarily associated with the Emotionality dimension."
+        },
+        {
+          "text": "Exploitation",
+          "isCorrect": true,
+          "rationale": "Honesty-Humility describes the tendency to be fair and sincere, mapping directly onto the avoidance of exploiting others for personal gain."
+        },
+        {
+          "text": "Obstruction",
+          "isCorrect": false,
+          "rationale": "Obstruction is the outcome domain theoretically linked to the Agreeableness versus Anger dimension."
+        },
+        {
+          "text": "Duty",
+          "isCorrect": false,
+          "rationale": "Duty is the outcome domain mapped onto the Conscientiousness dimension."
+        }
+      ],
+      "hint": "This domain involves criteria like immoral behavior, dark traits, and active cooperation."
+    },
+    {
+      "question": "The HEXACO dimension of Emotionality maps onto which outcome domain characterized by anxiety, risk aversion, and stressors?",
+      "answerOptions": [
+        {
+          "text": "Sociality",
+          "isCorrect": false,
+          "rationale": "Sociality maps onto Extraversion, focusing on group activities and social attention."
+        },
+        {
+          "text": "Exploration",
+          "isCorrect": false,
+          "rationale": "Exploration maps onto Openness to Experience, involving creativity and curiosity."
+        },
+        {
+          "text": "Insecurity",
+          "isCorrect": true,
+          "rationale": "Emotionality involves tendencies related to fearfulness and vulnerability, which correspond to the domain of insecurity."
+        },
+        {
+          "text": "Duty",
+          "isCorrect": false,
+          "rationale": "Duty corresponds to Conscientiousness and focuses on achievement and self-control."
+        }
+      ],
+      "hint": "Think of the domain that captures an individual's reaction to threats or uncertain environments."
+    },
+    {
+      "question": "Which outcome domain is defined by engagement in social endeavors like socializing, leading, or entertaining?",
+      "answerOptions": [
+        {
+          "text": "Sociality",
+          "isCorrect": true,
+          "rationale": "Sociality captures thoughts and behaviors related to group activities and social withdrawal, mapping onto HEXACO Extraversion."
+        },
+        {
+          "text": "Exploitation",
+          "isCorrect": false,
+          "rationale": "Exploitation relates to fairness and cooperation, which is the domain of Honesty-Humility."
+        },
+        {
+          "text": "Exploration",
+          "isCorrect": false,
+          "rationale": "Exploration relates to idea-related endeavors, mapping onto Openness to Experience."
+        },
+        {
+          "text": "Obstruction",
+          "isCorrect": false,
+          "rationale": "Obstruction relates to lenience and forgiveness versus retaliation, mapping onto Agreeableness."
+        }
+      ],
+      "hint": "This domain includes criterion classes such as social network, leadership, and positivity."
+    },
+    {
+      "question": "What is the primary focus of the TESSERA framework in personality psychology?",
+      "answerOptions": [
+        {
+          "text": "Distinguishing between trait-like and situation-specific variance in a person-in-a-situation.",
+          "isCorrect": false,
+          "rationale": "This is the primary goal of the Latent State-Trait Theory (LST-R)."
+        },
+        {
+          "text": "Grounding long-term personality development in a sequence of short-term personality processes.",
+          "isCorrect": true,
+          "rationale": "TESSERA proposes that repeated sequences of situations, expectations, states, and reactions lead to trait change."
+        },
+        {
+          "text": "Measuring the density distribution of states to define a fixed personality trait level.",
+          "isCorrect": false,
+          "rationale": "This focus on density distribution is characteristic of Whole Trait Theory."
+        },
+        {
+          "text": "Mapping the six HEXACO dimensions onto broad outcome criteria in behavioral economics.",
+          "isCorrect": false,
+          "rationale": "This mapping is the focus of the Zettler et al. meta-analysis, not the TESSERA framework."
+        }
+      ],
+      "hint": "This framework suggests that how we act daily eventually changes who we are permanently."
+    },
+    {
+      "question": "Research on 'situation-state contingencies' has found that individual differences in these contingencies are:",
+      "answerOptions": [
+        {
+          "text": "Strongly and consistently related to self-rated personality traits.",
+          "isCorrect": false,
+          "rationale": "Contrary to theoretical predictions, studies have found only weak links between contingencies and traits."
+        },
+        {
+          "text": "Non-existent, as all people react to situations in the same way.",
+          "isCorrect": false,
+          "rationale": "There are sizeable and replicable individual differences in how people react to situational cues."
+        },
+        {
+          "text": "Only weakly and inconsistently related to personality traits.",
+          "isCorrect": true,
+          "rationale": "While people differ in their contingencies, these patterns do not clearly correspond to their standing on broad trait dimensions."
+        },
+        {
+          "text": "Determined entirely by hormone levels during the menstrual cycle.",
+          "isCorrect": false,
+          "rationale": "While hormones may influence states, they are not the sole determinant of situation-state contingencies."
+        }
+      ],
+      "hint": "This finding poses a challenge to the explanatory model of Whole Trait Theory."
+    },
+    {
+      "question": "Which HEXACO dimension is theorized to map onto the domain of Duty, including criteria like academic performance and self-control?",
+      "answerOptions": [
+        {
+          "text": "Agreeableness",
+          "isCorrect": false,
+          "rationale": "Agreeableness relates to forgiveness and tolerance in the face of exploitation."
+        },
+        {
+          "text": "Openness to Experience",
+          "isCorrect": false,
+          "rationale": "Openness relates to discovering and exploring new ideas."
+        },
+        {
+          "text": "Extraversion",
+          "isCorrect": false,
+          "rationale": "Extraversion relates to social attention and group engagement."
+        },
+        {
+          "text": "Conscientiousness",
+          "isCorrect": true,
+          "rationale": "Conscientiousness involves engagement in task-related endeavors, which logically aligns with the domain of duty."
+        }
+      ],
+      "hint": "This dimension focuses on being organized, diligent, and disciplined."
+    },
+    {
+      "question": "According to Zettler et al. (2020), the 'nomological net' of a construct consists of:",
+      "answerOptions": [
+        {
+          "text": "The genetic sequence that encodes for a specific personality trait.",
+          "isCorrect": false,
+          "rationale": "This refers to the biological basis, while the nomological net refers to psychological interrelations."
+        },
+        {
+          "text": "The entire distribution of states measured through experience sampling.",
+          "isCorrect": false,
+          "rationale": "This describes the descriptive component of Whole Trait Theory."
+        },
+        {
+          "text": "All evidence on how a construct is linked to any outcome criterion or other constructs.",
+          "isCorrect": true,
+          "rationale": "The nomological net defines a construct's meaning through its relationships with theoretically relevant criteria."
+        },
+        {
+          "text": "The specific 'if... then' rules that govern momentary behavior.",
+          "isCorrect": false,
+          "rationale": "This is the focus of the CAPS model, not the definition of a nomological net."
+        }
+      ],
+      "hint": "Think of it as a 'web' of relationships that establishes construct validity."
+    },
+    {
+      "question": "In the twelve-week personality change intervention study (Olaru et al., 2025), what was a key finding regarding state deviations?",
+      "answerOptions": [
+        {
+          "text": "Daily states changed exactly as much as the self-reported traits.",
+          "isCorrect": false,
+          "rationale": "The intervention was successful in changing trait levels but did not affect average state levels."
+        },
+        {
+          "text": "State deviations from the initial trait level were correlated with the degree of trait change.",
+          "isCorrect": true,
+          "rationale": "Individuals who successfully implemented state changes that differed from their trait standing experienced greater sustained trait change."
+        },
+        {
+          "text": "Daily states remained identical to trait levels throughout the study.",
+          "isCorrect": false,
+          "rationale": "States fluctuate and can deviate significantly from trait levels, especially when pursuing change goals."
+        },
+        {
+          "text": "Observer-reported traits changed significantly more than self-reported traits.",
+          "isCorrect": false,
+          "rationale": "Self-reported trait change was actually much larger ($d = 0.31$) than observer-reported change ($d = 0.07$)."
+        }
+      ],
+      "hint": "Consider the relationship between acting differently in the moment and actually becoming a different person over time."
+    }
+  ]
+}

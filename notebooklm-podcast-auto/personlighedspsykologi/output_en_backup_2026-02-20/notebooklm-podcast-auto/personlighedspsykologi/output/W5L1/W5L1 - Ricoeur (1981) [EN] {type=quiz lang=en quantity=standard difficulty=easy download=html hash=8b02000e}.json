@@ -1,0 +1,265 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "According to Ricoeur, what is the first criterion for determining what counts as a 'fact' in psychoanalysis?",
+      "answerOptions": [
+        {
+          "text": "The fact must be an observable behavior in a controlled environment.",
+          "isCorrect": false,
+          "rationale": "Ricoeur explicitly argues that psychoanalytic facts are not observable behaviors but are instead based on speech and reports."
+        },
+        {
+          "text": "The fact must be capable of being said or brought into language.",
+          "isCorrect": true,
+          "rationale": "The 'talk-cure' nature of psychoanalysis restricts its field to experience that can be verbalized and deciphered as meaning."
+        },
+        {
+          "text": "The fact must be a physiological instinctual response.",
+          "isCorrect": false,
+          "rationale": "Ricoeur states that the object of psychoanalysis is not instinct as a physiological phenomenon, but desire as a meaning."
+        },
+        {
+          "text": "The fact must be a verifiable event from the subject's material history.",
+          "isCorrect": false,
+          "rationale": "The text notes that whether infantile scenes are historically true or false is often clinically irrelevant compared to psychical reality."
+        }
+      ],
+      "hint": "Consider the common nickname for psychoanalysis as the 'talk-cure'."
+    },
+    {
+      "question": "How does Freud characterize the 'intermediate region' created by transference in the analytic situation?",
+      "answerOptions": [
+        {
+          "text": "As a laboratory for biological testing.",
+          "isCorrect": false,
+          "rationale": "This suggests a natural science approach, whereas Freud emphasizes the intersubjective and symbolic nature of the experience."
+        },
+        {
+          "text": "As a playground where compulsions can expand in freedom.",
+          "isCorrect": true,
+          "rationale": "Freud uses the analogy of a 'playground' to describe how transference allows patients to act out and eventually remember traumatic events."
+        },
+        {
+          "text": "As a courtroom for judging the patient's past actions.",
+          "isCorrect": false,
+          "rationale": "The goal of transference is remembering and working through, rather than a moral or legal judgment of the patient."
+        },
+        {
+          "text": "As a vacuum where external reality is completely erased.",
+          "isCorrect": false,
+          "rationale": "While it is an intermediate region, it serves as a transition between illness and real life, not a total void."
+        }
+      ],
+      "hint": "Think of a space associated with freedom and the acting out of roles or scenarios."
+    },
+    {
+      "question": "What is the primary difference between 'psychical reality' and 'material reality' in psychoanalytic theory?",
+      "answerOptions": [
+        {
+          "text": "Psychical reality is only valid if it corresponds to real movements in space and time.",
+          "isCorrect": false,
+          "rationale": "This definition aligns more with academic psychology or natural sciences than with psychoanalysis."
+        },
+        {
+          "text": "Psychical reality is measured by its coherence and resistance rather than physical observation.",
+          "isCorrect": true,
+          "rationale": "Psychoanalysis deals with fantasies and structured scenarios that present a resistance comparable to material objects."
+        },
+        {
+          "text": "Psychical reality refers only to memories that are 100% historically accurate.",
+          "isCorrect": false,
+          "rationale": "Freud admitted that infantile scenes are often fantasies, yet they remain clinically relevant as psychical reality."
+        },
+        {
+          "text": "Psychical reality is a secondary, less important form of evidence than material facts.",
+          "isCorrect": false,
+          "rationale": "Ricoeur emphasizes that in the world of neuroses, psychical reality is the 'decisive kind' of reality."
+        }
+      ],
+      "hint": "Focus on how a fantasy can feel just as 'solid' and 'structured' as a physical object."
+    },
+    {
+      "question": "The concept of $Nachträglichkeit$ (after-the-event) suggests that a subject's history is NOT governed by which of the following?",
+      "answerOptions": [
+        {
+          "text": "Linear determinism.",
+          "isCorrect": true,
+          "rationale": "The phenomenon shows that past events are recast and given new meaning by later experiences, breaking a straight cause-and-effect timeline."
+        },
+        {
+          "text": "Meaningful sequences.",
+          "isCorrect": false,
+          "rationale": "The goal of remembering is actually to form meaningful sequences and ordered connections from fragments."
+        },
+        {
+          "text": "Recasting of mnesic traces.",
+          "isCorrect": false,
+          "rationale": "This is exactly what the concept describes: the subsequent reworking of earlier events based on new stages of development."
+        },
+        {
+          "text": "Narrative structure.",
+          "isCorrect": false,
+          "rationale": "Narrative structure is the overarching framework that Ricoeur argues constitutes the subject's existence."
+        }
+      ],
+      "hint": "Consider whether the past strictly dictates the present in a single, unchangeable direction."
+    },
+    {
+      "question": "Ricoeur argues that Freud's 'investigatory procedure' has a strong affinity with which type of discipline?",
+      "answerOptions": [
+        {
+          "text": "Quantitative sociology.",
+          "isCorrect": false,
+          "rationale": "Psychoanalysis focuses on individual meaning and textual interpretation rather than statistical data on groups."
+        },
+        {
+          "text": "Textual interpretation and philology.",
+          "isCorrect": true,
+          "rationale": "Freud often compared interpreting dreams and symptoms to translating languages or solving a rebus."
+        },
+        {
+          "text": "Experimental pharmacology.",
+          "isCorrect": false,
+          "rationale": "While Freud speculated about future biology, his actual investigatory method was based on deciphering meanings."
+        },
+        {
+          "text": "Behavioral observation.",
+          "isCorrect": false,
+          "rationale": "Ricoeur explicitly states that facts in psychoanalysis are not facts of observable behavior but are reports."
+        }
+      ],
+      "hint": "Think about the act of deciphering a hidden meaning in a written work or a puzzle."
+    },
+    {
+      "question": "Why does Ricoeur believe psychoanalysis cannot be reduced to a 'pure hermeneutics' of symbols?",
+      "answerOptions": [
+        {
+          "text": "Because it lacks a theoretical framework for interpreting dreams.",
+          "isCorrect": false,
+          "rationale": "Psychoanalysis is built on interpreting dreams; the issue is that interpretation alone is insufficient."
+        },
+        {
+          "text": "Because it must also account for forces, resistances, and 'economic' energy.",
+          "isCorrect": true,
+          "rationale": "The method of treatment involves a struggle against resistances, requiring a model that includes both meaning and force."
+        },
+        {
+          "text": "Because symbols are too subjective to be studied scientifically.",
+          "isCorrect": false,
+          "rationale": "The text argues psychoanalysis is a science of these meanings, but one that must integrate explanatory causes."
+        },
+        {
+          "text": "Because it relies exclusively on observable physical movements.",
+          "isCorrect": false,
+          "rationale": "The text clarifies that psychoanalysis specifically avoids being a science of observable physical movements."
+        }
+      ],
+      "hint": "Recall that Ricoeur discusses the need to think of 'meaning' and 'force' together."
+    },
+    {
+      "question": "How does Freud's theory handle the distinction between 'motive' and 'cause' according to the text?",
+      "answerOptions": [
+        {
+          "text": "He strictly separates them to keep psychoanalysis a human science.",
+          "isCorrect": false,
+          "rationale": "Ricoeur notes that many modern analysts try to do this, but Freud himself did not maintain this dichotomy."
+        },
+        {
+          "text": "He ignores the distinction, treating motives as causally relevant factors.",
+          "isCorrect": true,
+          "rationale": "In psychoanalysis, a motive (like a feeling) is inserted as a cause to explain 'incongruities' in behavior."
+        },
+        {
+          "text": "He uses causes for physical symptoms and motives for dreams.",
+          "isCorrect": false,
+          "rationale": "Freud views dream-formation and symptom-formation as homogeneous and subject to the same explanatory modes."
+        },
+        {
+          "text": "He argues that causes do not exist in the mental realm.",
+          "isCorrect": false,
+          "rationale": "On the contrary, Freud's metapsychology is heavily invested in a causal, almost mechanical, model of the mind."
+        }
+      ],
+      "hint": "Look for a perspective that blends psychological 'reasons' with scientific 'explanations'."
+    },
+    {
+      "question": "Ricoeur describes the truth claim of psychoanalysis as a 'saying-true' ($veracité$). Which Greek concept does he use to illustrate this?",
+      "answerOptions": [
+        {
+          "text": "$\\textit{Eudaimonia}$ (happiness/flourishing).",
+          "isCorrect": false,
+          "rationale": "While related to well-being, the text specifically focuses on the truth found through the process of discovery and suffering."
+        },
+        {
+          "text": "$\\textit{Pathei-mathos}$ (learning through suffering).",
+          "isCorrect": true,
+          "rationale": "Ricoeur connects analytic truth to the recognition found in Greek tragedy, where truth is reached through internal struggle and acknowledgment."
+        },
+        {
+          "text": "$\\textit{Catharsis}$ (purification).",
+          "isCorrect": false,
+          "rationale": "Though relevant to the 'cure,' Ricoeur focuses on the 'truth' aspect found in the movement from misunderstanding to recognition."
+        },
+        {
+          "text": "$\\textit{Logos}$ (rational discourse).",
+          "isCorrect": false,
+          "rationale": "Ricoeur distinguishes analytic truth from simple logical or modern physical truth, focusing instead on the subject's self-recognition."
+        }
+      ],
+      "hint": "Think of a phrase that describes gaining wisdom or knowledge as a result of enduring pain or experience."
+    },
+    {
+      "question": "According to the fourth criterion of validation, a 'good' psychoanalytic explanation must make a case history...",
+      "answerOptions": [
+        {
+          "text": "Statistically probable compared to a large population.",
+          "isCorrect": false,
+          "rationale": "Psychoanalysis focuses on individual narrative intelligibility rather than statistical norms."
+        },
+        {
+          "text": "'Followable' and narratively intelligible, like a coherent story.",
+          "isCorrect": true,
+          "rationale": "A successful analysis allows the patient to recover the ability to recount their own history in a meaningful way."
+        },
+        {
+          "text": "Entirely devoid of any fictional or symbolic elements.",
+          "isCorrect": false,
+          "rationale": "Ricoeur suggests that truth and fiction (narrative construction) are reconciled in the form of the story."
+        },
+        {
+          "text": "Brief enough to be summarized in a single theoretical law.",
+          "isCorrect": false,
+          "rationale": "Ricoeur argues that the explanation must be an 'extended explanation' of an individual's entire case history."
+        }
+      ],
+      "hint": "Consider what quality makes a biography or a novel satisfying and understandable to a reader."
+    },
+    {
+      "question": "What does Ricoeur identify as the 'vicious circle' objection to psychoanalytic proof?",
+      "answerOptions": [
+        {
+          "text": "The patient's refusal to speak makes the theory impossible to verify.",
+          "isCorrect": false,
+          "rationale": "While resistance is a factor, the circularity objection focuses on the relationship between theory and confirmation."
+        },
+        {
+          "text": "The theory is verified only because the analyst suggests it to the patient.",
+          "isCorrect": true,
+          "rationale": "The objection claims that psychoanalysis is self-confirming because the patient eventually accepts the analyst's interpretation."
+        },
+        {
+          "text": "The costs of treatment prevent the collection of enough data.",
+          "isCorrect": false,
+          "rationale": "This is a practical or economic issue, not an epistemological objection about the structure of proof."
+        },
+        {
+          "text": "The use of energy metaphors contradicts the use of textual metaphors.",
+          "isCorrect": false,
+          "rationale": "Ricoeur sees this as a tension within the theory that must be integrated, not as the primary 'circularity' objection."
+        }
+      ],
+      "hint": "Think about how an analyst might influence a patient's 'discovery' of the truth."
+    }
+  ]
+}

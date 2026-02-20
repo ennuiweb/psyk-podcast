@@ -1,0 +1,395 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "What was the original title of the manuscript for Freud's 'Fragment of an Analysis of a Case of Hysteria'?",
+      "answerOptions": [
+        {
+          "text": "Dreams and Hysteria",
+          "isCorrect": true,
+          "rationale": "Freud initially intended to group the explanations around two dreams, viewing the work as a continuation of his earlier study on dream interpretation."
+        },
+        {
+          "text": "The Case of Dora",
+          "isCorrect": false,
+          "rationale": "While 'Dora' is the pseudonym used for the patient, this was not the title Freud used for the initial draft of the manuscript."
+        },
+        {
+          "text": "Studies on Hysteria",
+          "isCorrect": false,
+          "rationale": "This was the title of a collaborative work published earlier in 1895 by Breuer and Freud."
+        },
+        {
+          "text": "Aetiology of Hysteria",
+          "isCorrect": false,
+          "rationale": "This title refers to a specific paper Freud published in 1896 regarding the origins of hysterical symptoms, not this specific case history."
+        }
+      ],
+      "hint": "Freud considered this work a direct sequel or continuation of his major 1900 book."
+    },
+    {
+      "question": "Freud describes the concept of 'somatic compliance' as a necessary factor for which of the following?",
+      "answerOptions": [
+        {
+          "text": "The formation of a hysterical symptom",
+          "isCorrect": true,
+          "rationale": "Hysteria requires both a psychological meaning and a physical process in an organ to provide the 'compliance' needed to manifest a symptom."
+        },
+        {
+          "text": "The resolution of the transference",
+          "isCorrect": false,
+          "rationale": "Transference is a psychological phenomenon occurring during treatment, whereas somatic compliance refers to the physical outlet for unconscious processes."
+        },
+        {
+          "text": "The development of a housewife's psychosis",
+          "isCorrect": false,
+          "rationale": "While the mother's condition involved obsessional cleaning, Freud specifically uses 'somatic compliance' to explain the conversion into physical symptoms like Dora's cough."
+        },
+        {
+          "text": "The successful interpretation of dreams",
+          "isCorrect": false,
+          "rationale": "Dream interpretation is a cognitive and analytical process, not a requirement for an organ to exhibit compliance."
+        }
+      ],
+      "hint": "It involves the cooperation between the mental and the physical sides of a disorder."
+    },
+    {
+      "question": "According to the analysis, why did Dora's aphonia (loss of voice) primarily occur during Herr K.'s absences?",
+      "answerOptions": [
+        {
+          "text": "Because speech had lost its value since she could not talk to him",
+          "isCorrect": true,
+          "rationale": "Freud interpreted the aphonia symbolically, where the absence of the loved object rendered speech useless, shifting the importance to writing."
+        },
+        {
+          "text": "Due to a direct physical infection contracted during his travels",
+          "isCorrect": false,
+          "rationale": "While a catarrh may have provided the organic basis, the timing of the symptom was tied to psychological factors rather than contagion."
+        },
+        {
+          "text": "As a way to avoid her mother's domestic demands",
+          "isCorrect": false,
+          "rationale": "While Dora was on bad terms with her mother, her specific symptoms like aphonia were linked to her secret affection for Herr K."
+        },
+        {
+          "text": "Because she was practicing a vow of silence until his return",
+          "isCorrect": false,
+          "rationale": "The symptom was an unconscious hysterical manifestation, not a conscious or deliberate vow."
+        }
+      ],
+      "hint": "Consider the symbolic value of communication when the intended recipient is away."
+    },
+    {
+      "question": "Freud notes a significant change in his psycho-analytic technique since the publication of 'Studies on Hysteria'. What is this change?",
+      "answerOptions": [
+        {
+          "text": "He allows the patient to choose the subject of the day's work",
+          "isCorrect": true,
+          "rationale": "Freud moved away from attacking symptoms directly, instead following the surface of the unconscious presented by the patient's associations."
+        },
+        {
+          "text": "He now uses hypnosis to quickly uncover amnesias",
+          "isCorrect": false,
+          "rationale": "Freud explicitly moved away from hypnosis in favor of the 'indirect method' of dream interpretation and free association."
+        },
+        {
+          "text": "He focuses exclusively on hereditary factors rather than childhood trauma",
+          "isCorrect": false,
+          "rationale": "While he recognizes heredity, he emphasizes that the analytic method is required to uncover the accidental psychological determinants."
+        },
+        {
+          "text": "He records sessions phonographically for absolute accuracy",
+          "isCorrect": false,
+          "rationale": "Freud notes he cannot take notes during sessions and relies on memory and recording dreams immediately after."
+        }
+      ],
+      "hint": "Think about who takes the lead in selecting the discussion topics during a session."
+    },
+    {
+      "question": "What is the symbolic meaning assigned to the 'jewel-case' ($Schmuckk\\ddot{a}stchen$) in the interpretation of Dora's first dream?",
+      "answerOptions": [
+        {
+          "text": "The female genitals",
+          "isCorrect": true,
+          "rationale": "In the context of the dream and Dora's symptomatic acts, the jewel-case represents her sexual integrity and anatomy."
+        },
+        {
+          "text": "Her father's financial inheritance",
+          "isCorrect": false,
+          "rationale": "While the father was a 'man of means,' the 'jewel-case' specifically relates to the sexual threats Dora felt from Herr K."
+        },
+        {
+          "text": "The memory of her deceased aunt",
+          "isCorrect": false,
+          "rationale": "The aunt is mentioned in the history, but the jewel-case is interpreted as a symbol for a specific part of the body in the dream-work."
+        },
+        {
+          "text": "Dora's intellectual gifts and education",
+          "isCorrect": false,
+          "rationale": "Freud acknowledges her intelligence, but symbols in dreams typically represent repressed sexual ideas rather than intellectual ones."
+        }
+      ],
+      "hint": "Freud compares this symbol to other common containers like a reticule or a box."
+    },
+    {
+      "question": "In the analysis of the first dream, Freud identifies an antithesis between 'fire' and another element to uncover a childhood memory. What is that element?",
+      "answerOptions": [
+        {
+          "text": "Water",
+          "isCorrect": true,
+          "rationale": "The antithesis between fire and water is used to link the dream's fire to a childhood history of bed-wetting (enuresis)."
+        },
+        {
+          "text": "Ice",
+          "isCorrect": false,
+          "rationale": "While coldness is mentioned regarding Dora's feelings toward her cousin, it is not the symbolic counterpart to fire used in the bed-wetting analysis."
+        },
+        {
+          "text": "Smoke",
+          "isCorrect": false,
+          "rationale": "Smoke is an addendum to the dream representing a kiss, but it is not the symbolic opposite used to find the childhood physical need."
+        },
+        {
+          "text": "Earth",
+          "isCorrect": false,
+          "rationale": "The material does not associate fire with earth as a primary symbolic pair for explaining the dream's origin."
+        }
+      ],
+      "hint": "Think about how fire is traditionally extinguished in children's folklore or warnings."
+    },
+    {
+      "question": "Which term does Freud use to describe the condition of Dora's mother, who was preoccupied with cleaning to the point of making the home unusable?",
+      "answerOptions": [
+        {
+          "text": "Housewife's psychosis",
+          "isCorrect": true,
+          "rationale": "Freud uses this term to describe her lack of insight into her obsessional cleanliness, which resembled an obsessional neurosis."
+        },
+        {
+          "text": "Tussis nervosa",
+          "isCorrect": false,
+          "rationale": "This refers to the nervous cough suffered by Dora and her father, not the mother's cleaning obsession."
+        },
+        {
+          "text": "Aphonia",
+          "isCorrect": false,
+          "rationale": "Aphonia is the loss of voice, which was one of Dora's symptoms, not her mother's."
+        },
+        {
+          "text": "Tabes",
+          "isCorrect": false,
+          "rationale": "Tabes is a physical condition related to syphilis, which Freud suspected in the father's side of the family."
+        }
+      ],
+      "hint": "It describes a pathological focus on domestic duties."
+    },
+    {
+      "question": "What 'symptomatic act' did Dora perform with her reticule (handbag) during a session that led Freud to discuss her masturbation?",
+      "answerOptions": [
+        {
+          "text": "Opening it and putting a finger into it repeatedly",
+          "isCorrect": true,
+          "rationale": "Freud interpreted this as a pantomimic announcement of her habit of masturbation, representing the genitals via the reticule."
+        },
+        {
+          "text": "Throwing it across the room in a fit of rage",
+          "isCorrect": false,
+          "rationale": "While she was irritable, the specific act with the reticule was a quiet, automatic movement during her narrative."
+        },
+        {
+          "text": "Hiding a secret letter inside it from her grandmother",
+          "isCorrect": false,
+          "rationale": "She did hide a letter as a symptomatic act, but that happened at the start of the session, separate from the reticule play."
+        },
+        {
+          "text": "Using it to muffle her cough",
+          "isCorrect": false,
+          "rationale": "Dora's cough was a separate symptom, and the reticule was used for a symbolic pantomime, not a functional purpose."
+        }
+      ],
+      "hint": "It involved an automatic manipulation of the bag's opening."
+    },
+    {
+      "question": "Freud argues that psychoneuroses are the 'negative' of which of the following?",
+      "answerOptions": [
+        {
+          "text": "Perversions",
+          "isCorrect": true,
+          "rationale": "Freud posits that neurotics repress the same perverse tendencies that perverts act out; the neurosis is the result of that repression."
+        },
+        {
+          "text": "Normalcy",
+          "isCorrect": false,
+          "rationale": "While neuroses deviate from normality, Freud's specific theoretical 'dictum' relates them to perversions."
+        },
+        {
+          "text": "Dreams",
+          "isCorrect": false,
+          "rationale": "Dreams are a means of representing wishes, whereas the neurosis is the pathological structure formed from repressed impulses."
+        },
+        {
+          "text": "Heredity",
+          "isCorrect": false,
+          "rationale": "Heredity provides the predisposition, but it is not the 'opposite' or 'negative' of the neurosis itself."
+        }
+      ],
+      "hint": "This concept involves the relationship between repressed tendencies and manifest sexual aberrations."
+    },
+    {
+      "question": "What was the significance of the 'smell of smoke' that Dora added to her account of the first dream?",
+      "answerOptions": [
+        {
+          "text": "It represented the longing for a kiss from a smoker",
+          "isCorrect": true,
+          "rationale": "Freud linked the smell to both Herr K. and the father, as well as a transference toward himself, all of whom were smokers."
+        },
+        {
+          "text": "It was a sensory hallucination of her father's factory burning",
+          "isCorrect": false,
+          "rationale": "Dora explicitly stated there had never been a real fire, and the smell was interpreted sexually rather than as a literal memory."
+        },
+        {
+          "text": "It was a reaction to her mother's cleaning chemicals",
+          "isCorrect": false,
+          "rationale": "The analysis focused on the men in her life who smoked, rather than the mother's domestic activities."
+        },
+        {
+          "text": "It proved that a real fire had occurred at the lake hotel",
+          "isCorrect": false,
+          "rationale": "Freud and Dora agreed that the fire in the dream was not based on a real event."
+        }
+      ],
+      "hint": "The interpretation involves a physical act shared with the men in her life who utilized tobacco."
+    },
+    {
+      "question": "Freud uses an analogy of a bricklayer to explain which of the following concepts in the economy of a neurosis?",
+      "answerOptions": [
+        {
+          "text": "The secondary gain from illness",
+          "isCorrect": true,
+          "rationale": "The crippled bricklayer lives by his disablement (charity), showing how a patient might cling to an illness for its practical advantages."
+        },
+        {
+          "text": "The difficulty of dream synthesis",
+          "isCorrect": false,
+          "rationale": "The bricklayer analogy specifically illustrates the motive for being ill, not the construction of dream imagery."
+        },
+        {
+          "text": "The role of trauma in childhood",
+          "isCorrect": false,
+          "rationale": "Trauma is the initial 'accident,' but the bricklayer analogy focuses on why the person remains 'crippled' later on."
+        },
+        {
+          "text": "The structural stability of the ego",
+          "isCorrect": false,
+          "rationale": "This analogy is used to discuss the resistance to recovery caused by the benefits the illness provides."
+        }
+      ],
+      "hint": "It explains why a patient might be resistant to being 'cured' of a condition they find useful."
+    },
+    {
+      "question": "In the interpretation of Dora's cough, Freud suggests she is picturing a sexual scene between her father and Frau K. What specific type of gratification does he imply?",
+      "answerOptions": [
+        {
+          "text": "Sexual gratification per os",
+          "isCorrect": true,
+          "rationale": "Dora's throat irritation and her knowledge of 'other ways' of obtaining gratification led Freud to interpret the cough as a fantasy of oral sex."
+        },
+        {
+          "text": "Normal conjugal intercourse",
+          "isCorrect": false,
+          "rationale": "Freud argues that since she believed her father was 'unverm\\ddot{o}gend' (impotent), the fantasy had to involve non-genital methods."
+        },
+        {
+          "text": "The exchange of valuable jewelry",
+          "isCorrect": false,
+          "rationale": "Jewelry was a screen for the sexual thoughts, not the actual mode of gratification she was picturing."
+        },
+        {
+          "text": "A suicide pact in the woods",
+          "isCorrect": false,
+          "rationale": "While her father told a 'fairy tale' about suicide, Dora's symptoms were linked to the sexual reality she suspected."
+        }
+      ],
+      "hint": "It involves the 'throat and the oral cavity' as the imagined sites of irritation."
+    },
+    {
+      "question": "What does Freud mean by 'switch-words' ($Schaltw\\ddot{o}rter$) in the context of dream interpretation?",
+      "answerOptions": [
+        {
+          "text": "Ambiguous words that act like points at a junction to link different trains of thought",
+          "isCorrect": true,
+          "rationale": "These words allow the dream-work to transition between the manifest content and hidden, often repressed, unconscious thoughts."
+        },
+        {
+          "text": "Words that the patient uses to avoid talking about Herr K.",
+          "isCorrect": false,
+          "rationale": "While Dora did use defenses, switch-words are specific linguistic bridges used by the dream mechanism itself."
+        },
+        {
+          "text": "Technical medical terms used to confuse the patient",
+          "isCorrect": false,
+          "rationale": "Freud advocates using direct and technical names ('calling a cat a cat') rather than using words to confuse."
+        },
+        {
+          "text": "The literal translations of German words into English",
+          "isCorrect": false,
+          "rationale": "Switch-words refers to a psychological/linguistic mechanism in the dreamer's mind, not the act of translation between languages."
+        }
+      ],
+      "hint": "They function like a railway junction for ideas."
+    },
+    {
+      "question": "Freud refers to the Greek word for 'box' as a substitute for the female genitals. Using LaTeX, identify the Greek word mentioned in the text.",
+      "answerOptions": [
+        {
+          "text": "$\\pi\\acute{\\upsilon}\\xi\\iota\\varsigma$",
+          "isCorrect": true,
+          "rationale": "Freud notes that terms like 'Dose' (box) or 'Schmuckk\\ddot{a}stchen' (jewel-case) are linguistic substitutes for the anatomy."
+        },
+        {
+          "text": "$\\psi\\upsilon\\chi\\acute{\\eta}$",
+          "isCorrect": false,
+          "rationale": "This Greek word means 'soul' or 'mind' and is the root for psychology, but it is not the word Freud uses to describe a 'box'."
+        },
+        {
+          "text": "$\\lambda\\acute{o}\\gamma\\omicron\\varsigma$",
+          "isCorrect": false,
+          "rationale": "This word refers to 'word' or 'reason' and is not the container-metaphor discussed in the case."
+        },
+        {
+          "text": "$\\acute{\\epsilon}\\rho\\omega\\varsigma$",
+          "isCorrect": false,
+          "rationale": "While relevant to the themes of the paper, this word means 'love' or 'desire' and does not mean 'box'."
+        }
+      ],
+      "hint": "It is the root of the word 'pyxis' and follows the German word 'Dose' in the text."
+    },
+    {
+      "question": "Dora's father initially brought her to Freud after finding what distressing item?",
+      "answerOptions": [
+        {
+          "text": "A draft of a farewell/suicide letter",
+          "isCorrect": true,
+          "rationale": "The discovery of this letter, combined with a fainting fit and amnesia, prompted her father to insist on psychiatric treatment."
+        },
+        {
+          "text": "A hidden stash of erotic books by Mantegazza",
+          "isCorrect": false,
+          "rationale": "Herr K. accused her of reading such books, but it was the suicide letter that directly alarmed her parents."
+        },
+        {
+          "text": "An expensive jewel-case from Herr K.",
+          "isCorrect": false,
+          "rationale": "The jewel-case was a gift she acknowledged, but it was not the precipitating cause for the referral to Freud."
+        },
+        {
+          "text": "Evidence of her mother's 'housewife's psychosis'",
+          "isCorrect": false,
+          "rationale": "The father used the mother's behavior as an excuse, but Dora's own suicidal gesture was the catalyst for treatment."
+        }
+      ],
+      "hint": "It was a written expression of her inability to 'endure her life'."
+    }
+  ]
+}

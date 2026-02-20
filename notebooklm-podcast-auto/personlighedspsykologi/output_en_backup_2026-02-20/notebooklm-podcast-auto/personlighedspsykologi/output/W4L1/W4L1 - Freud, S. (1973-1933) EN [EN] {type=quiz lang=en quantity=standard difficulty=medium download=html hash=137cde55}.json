@@ -1,0 +1,265 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "According to Freud's lecture, why did psycho-analysis originally focus on symptoms rather than the ego?",
+      "answerOptions": [
+        {
+          "text": "Symptoms are the most foreign mental contents to the ego.",
+          "isCorrect": true,
+          "rationale": "Freud notes that it was not a matter of indifference that work began on symptoms, which represent the repressed and are 'internal foreign territory' to the ego."
+        },
+        {
+          "text": "The ego was already well understood by popular psychology at the time.",
+          "isCorrect": false,
+          "rationale": "While it coincided with popular psychology, Freud states the ego only seemed self-evident and he expected to find unprepared-for complexities within it."
+        },
+        {
+          "text": "Early psycho-analysis lacked the scientific tools to study the repressing forces.",
+          "isCorrect": false,
+          "rationale": "Freud attributes the delay to the laborious nature of scientific progress and the inability to study every field simultaneously, not a lack of specific tools."
+        },
+        {
+          "text": "Symptoms were considered more socially acceptable to discuss than the ego.",
+          "isCorrect": false,
+          "rationale": "The text suggests the opposite; psycho-analysis faced objections because it dealt with sexuality and instincts rather than 'nobler' impulses."
+        }
+      ],
+      "hint": "Consider Freud's description of symptoms as 'internal foreign territory' derived from the repressed."
+    },
+    {
+      "question": "What is the primary significance of the 'thrown crystal' analogy in the context of mental illness?",
+      "answerOptions": [
+        {
+          "text": "Mental patients break along predetermined lines of cleavage that exist in normal structures.",
+          "isCorrect": true,
+          "rationale": "Freud uses the analogy to show that pathology reveals 'invisible' boundaries and structures that are present even in a normal, unbroken state."
+        },
+        {
+          "text": "The mind is inherently fragile and easily shattered by external reality.",
+          "isCorrect": false,
+          "rationale": "While the crystal breaks, the emphasis is on the pattern of the fragments revealing internal structure, not the fragility of the mind itself."
+        },
+        {
+          "text": "Psychological trauma causes haphazard and unpredictable damage to the personality.",
+          "isCorrect": false,
+          "rationale": "Freud explicitly states the crystal does not break into 'haphazard pieces' but along predetermined lines."
+        },
+        {
+          "text": "The ego can never be repaired once a 'breach or rent' has occurred.",
+          "isCorrect": false,
+          "rationale": "The text focuses on using these breaks to understand normal psychological articulation, not the impossibility of recovery."
+        }
+      ],
+      "hint": "Think about whether the fragments of a broken object are random or follow a specific internal pattern."
+    },
+    {
+      "question": "Freud identifies three main functions of the super-ego. Which of the following is one of them?",
+      "answerOptions": [
+        {
+          "text": "Self-observation",
+          "isCorrect": true,
+          "rationale": "Freud categorizes self-observation as an essential preliminary function of the super-ego, alongside conscience and the holding of the ideal."
+        },
+        {
+          "text": "Reality-testing",
+          "isCorrect": false,
+          "rationale": "Reality-testing is explicitly defined as a function of the ego in its relation to the external world."
+        },
+        {
+          "text": "Synthesis of mental processes",
+          "isCorrect": false,
+          "rationale": "The tendency toward combination and unification is a characteristic that distinguishes the ego from the id."
+        },
+        {
+          "text": "Discharge of instinctual energy",
+          "isCorrect": false,
+          "rationale": "The striving for discharge of instinctual needs is a primary characteristic of the id, governed by the pleasure principle."
+        }
+      ],
+      "hint": "Consider the agency that acts as an 'internal observer' or 'judge' within the mind."
+    },
+    {
+      "question": "How does Freud explain the development of the super-ego in children?",
+      "answerOptions": [
+        {
+          "text": "It is the result of the child internalizing parental authority and restrictions.",
+          "isCorrect": true,
+          "rationale": "Freud explains that external parental restraint is internalized, with the super-ego taking over the role of observing and threatening the ego."
+        },
+        {
+          "text": "It is an innate biological mechanism present from the moment of birth.",
+          "isCorrect": false,
+          "rationale": "Freud contrasts the super-ego with sexual life, stating that while sexuality is there from the start, the super-ego is a later addition."
+        },
+        {
+          "text": "It develops through the child’s early observations of social laws and ethics.",
+          "isCorrect": false,
+          "rationale": "The origin is specifically linked to parental influence and the Oedipus complex rather than general social observation."
+        },
+        {
+          "text": "It arises purely from the ego's need to organize instinctual impulses.",
+          "isCorrect": false,
+          "rationale": "The super-ego is formed through identification with external figures, particularly the parents, rather than just internal organization."
+        }
+      ],
+      "hint": "Focus on the transition from an external power to an internal agency during childhood."
+    },
+    {
+      "question": "According to the text, what is the crucial difference between 'identification' and 'object-choice'?",
+      "answerOptions": [
+        {
+          "text": "Identification is wanting to be like someone; object-choice is wanting to have someone.",
+          "isCorrect": true,
+          "rationale": "Freud distinguishes the two by noting that identification alters the ego on a model, while object-choice seeks possession without necessarily altering the ego."
+        },
+        {
+          "text": "Identification is a conscious process, whereas object-choice is always unconscious.",
+          "isCorrect": false,
+          "rationale": "The text does not categorize them by levels of consciousness, but rather by the nature of the attachment (to be like vs. to have)."
+        },
+        {
+          "text": "Identification occurs in adulthood, while object-choice is a childhood phenomenon.",
+          "isCorrect": false,
+          "rationale": "Freud notes that both can be observed in children and adults alike."
+        },
+        {
+          "text": "Object-choice is more permanent than identification.",
+          "isCorrect": false,
+          "rationale": "The text suggests that if an object is lost, the ego may regress to identification to compensate, implying identification can be very durable."
+        }
+      ],
+      "hint": "Think about the difference between modeling oneself after a person versus desiring to possess that person."
+    },
+    {
+      "question": "Whose super-ego serves as the model for the child's own super-ego?",
+      "answerOptions": [
+        {
+          "text": "The parents' super-ego",
+          "isCorrect": true,
+          "rationale": "Freud clarifies that the child's super-ego is constructed on the model of the parents' super-ego, facilitating the transmission of tradition across generations."
+        },
+        {
+          "text": "The parents' ego",
+          "isCorrect": false,
+          "rationale": "Freud explicitly states the child's super-ego is not modeled on the parents' ego but their super-ego."
+        },
+        {
+          "text": "The child's own idealized id",
+          "isCorrect": false,
+          "rationale": "The super-ego is a 'precipitate' of identification with external parental figures, not a projection of the id."
+        },
+        {
+          "text": "The collective unconscious of the community",
+          "isCorrect": false,
+          "rationale": "While it explains social behavior, Freud traces the mechanism specifically through the parental lineage of super-egos."
+        }
+      ],
+      "hint": "Tradition and values are propagated from one generation to the next through this specific internal agency."
+    },
+    {
+      "question": "Which characteristic best describes the 'Id' as presented by Freud?",
+      "answerOptions": [
+        {
+          "text": "It lacks the law of contradiction and has no recognition of time.",
+          "isCorrect": true,
+          "rationale": "Freud describes the id as a place where contrary impulses exist side by side and where mental processes are virtually immortal and unaltered by time."
+        },
+        {
+          "text": "It acts as the sense-organ of the entire mental apparatus.",
+          "isCorrect": false,
+          "rationale": "The perceptual system (Pcpt.-Cs.), which is part of the ego, is described as the sense-organ of the apparatus."
+        },
+        {
+          "text": "It operates according to the reality principle to ensure success.",
+          "isCorrect": false,
+          "rationale": "The id is dominated by the pleasure principle; the reality principle is a hallmark of the ego."
+        },
+        {
+          "text": "It is the primary source of moral restrictions and judgment.",
+          "isCorrect": false,
+          "rationale": "Moral restrictions and judgments are the domain of the super-ego, which is often in conflict with the id."
+        }
+      ],
+      "hint": "Think about the 'chaos' and 'cauldron' analogy where logic and sequence do not apply."
+    },
+    {
+      "question": "In the 'rider and horse' analogy, what does the horse represent?",
+      "answerOptions": [
+        {
+          "text": "The Id",
+          "isCorrect": true,
+          "rationale": "Freud compares the id to a horse providing locomotive energy, while the ego is the rider attempting to guide that power."
+        },
+        {
+          "text": "The Super-ego",
+          "isCorrect": false,
+          "rationale": "The super-ego is the judge or observer, not the source of raw locomotive energy described in this specific analogy."
+        },
+        {
+          "text": "External Reality",
+          "isCorrect": false,
+          "rationale": "External reality is one of the 'masters' the rider must account for, but the horse itself is the internal drive."
+        },
+        {
+          "text": "The Perceptual System",
+          "isCorrect": false,
+          "rationale": "The perceptual system helps the rider (ego) see the path, but it does not provide the instinctual energy of the horse."
+        }
+      ],
+      "hint": "Consider which province of the mind provides the raw 'locomotive energy' of the instincts."
+    },
+    {
+      "question": "Which 'three severe masters' does the ego struggle to serve simultaneously?",
+      "answerOptions": [
+        {
+          "text": "The external world, the super-ego, and the id.",
+          "isCorrect": true,
+          "rationale": "Freud states the ego is hemmed in on three sides, threatened by the demands of reality, the severity of the super-ego, and the passions of the id."
+        },
+        {
+          "text": "Consciousness, the preconscious, and the unconscious.",
+          "isCorrect": false,
+          "rationale": "These are the three 'qualities' of mental life, but they are not the 'masters' that the ego must diplomatically manage."
+        },
+        {
+          "text": "Parents, teachers, and social traditions.",
+          "isCorrect": false,
+          "rationale": "While these are external influences on the super-ego, they do not constitute the tripartite structural 'masters' Freud defines."
+        },
+        {
+          "text": "The pleasure principle, the reality principle, and the nirvana principle.",
+          "isCorrect": false,
+          "rationale": "These principles govern different systems, but they are not described as the three tyrannical masters the ego serves."
+        }
+      ],
+      "hint": "Identify the internal and external forces that generate realistic, moral, and neurotic anxiety."
+    },
+    {
+      "question": "What is the ultimate therapeutic intention of psycho-analysis, according to the final section of the lecture?",
+      "answerOptions": [
+        {
+          "text": "To strengthen the ego so it can appropriate fresh portions of the id.",
+          "isCorrect": true,
+          "rationale": "Freud concludes by stating that psycho-analysis aims to widen the ego's field of perception and enlarge its organization ('Where id was, there ego shall be')."
+        },
+        {
+          "text": "To eliminate the super-ego and liberate the id.",
+          "isCorrect": false,
+          "rationale": "Psycho-analysis seeks to make the ego more independent of the super-ego, not to eliminate it entirely."
+        },
+        {
+          "text": "To suppress all instinctual needs through moral fortitude.",
+          "isCorrect": false,
+          "rationale": "The goal is understanding and integration (culture), not the simple suppression of instincts."
+        },
+        {
+          "text": "To ensure that the unconscious becomes entirely conscious.",
+          "isCorrect": false,
+          "rationale": "While making the unconscious conscious is part of the work, Freud specifically defines the goal as the strengthening and expansion of the ego's domain."
+        }
+      ],
+      "hint": "Recall the famous phrase: 'Where id was, there [it] shall be.'"
+    }
+  ]
+}

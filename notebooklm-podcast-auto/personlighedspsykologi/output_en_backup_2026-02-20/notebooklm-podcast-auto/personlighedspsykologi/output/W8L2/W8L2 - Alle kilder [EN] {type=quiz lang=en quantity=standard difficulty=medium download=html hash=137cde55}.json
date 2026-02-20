@@ -1,0 +1,255 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "According to Klaus Holzkamp, what is the central 'basic concept' for a science of the human subject?",
+      "answerOptions": [
+        {
+          "text": "Everyday conduct of life",
+          "isCorrect": true,
+          "rationale": "Holzkamp argues that the way individuals coordinate different areas of their existence into a routine-yet-active whole is the fundamental unit of analysis for Critical Psychology."
+        },
+        {
+          "text": "Cognitive dissonance",
+          "isCorrect": false,
+          "rationale": "While a psychological concept, this refers to internal mental states rather than the overarching coordination of life activities that Holzkamp prioritizes."
+        },
+        {
+          "text": "The stimulus-response arc",
+          "isCorrect": false,
+          "rationale": "This is a cornerstone of behaviorism, which Holzkamp critiqued for treating subjects as objects rather than active agents."
+        },
+        {
+          "text": "Biological determinism",
+          "isCorrect": false,
+          "rationale": "Holzkamp explicitly moved beyond biological explanations to focus on the historical and societal mediation of human existence."
+        }
+      ],
+      "hint": "Consider the term used to describe the coordination and routine of various areas of an individual's daily existence."
+    },
+    {
+      "question": "What does the term 'Handlungsfähigkeit' (translated as action potence or agency) signify in Critical Psychology?",
+      "answerOptions": [
+        {
+          "text": "The power of an individual to utilize and expand their possibilities for action",
+          "isCorrect": true,
+          "rationale": "This concept describes the subject's ability to influence their life conditions and master their own existence within societal structures."
+        },
+        {
+          "text": "The unconscious drive to maintain homeostasis",
+          "isCorrect": false,
+          "rationale": "This reflects a psychoanalytic or biological perspective rather than Holzkamp's focus on intentional, societally-mediated action."
+        },
+        {
+          "text": "A measure of physical dexterity in tool-use",
+          "isCorrect": false,
+          "rationale": "While tool-use is part of the historical development of agency, 'Handlungsfähigkeit' refers to the broader capacity for intentionality and choice."
+        },
+        {
+          "text": "The automatic response to environmental reinforcement",
+          "isCorrect": false,
+          "rationale": "This describes a reactive state associated with behaviorism, which the concept of agency is intended to replace."
+        }
+      ],
+      "hint": "Think about a person's capacity to act on reasons to improve the quality of their life."
+    },
+    {
+      "question": "How does Critical Psychology distinguish between 'technical relevance' and 'emancipatory relevance' in research?",
+      "answerOptions": [
+        {
+          "text": "Technical relevance serves to control others, while emancipatory relevance serves individuals' efforts to improve their own lives.",
+          "isCorrect": true,
+          "rationale": "Holzkamp differentiated between knowledge that aids ruling interests (control) and knowledge that empowers the subject (emancipation)."
+        },
+        {
+          "text": "Technical relevance refers to laboratory equipment, while emancipatory relevance refers to field work.",
+          "isCorrect": false,
+          "rationale": "The distinction is based on the interest served by the knowledge, not the physical setting or tools of the research."
+        },
+        {
+          "text": "Technical relevance is for psychologists, while emancipatory relevance is for sociologists.",
+          "isCorrect": false,
+          "rationale": "Both terms apply to psychological research and define the societal function of the findings."
+        },
+        {
+          "text": "Technical relevance focuses on quantitative data, while emancipatory relevance focuses on qualitative data.",
+          "isCorrect": false,
+          "rationale": "While methodology is related, the core distinction is the political and social interest the research promotes."
+        }
+      ],
+      "hint": "Reflect on whether the knowledge is used to exert power over someone or to help them gain power over their own circumstances."
+    },
+    {
+      "question": "In Holzkamp's analysis, what was the primary cognitive shift triggered by the early hominid manufacture of tools?",
+      "answerOptions": [
+        {
+          "text": "The tool became an end in itself, made in the absence of the intended object.",
+          "isCorrect": true,
+          "rationale": "This 'inversion of means and ends' required the toolmaker to mentally represent both the tool and the future object, leading to independent thought."
+        },
+        {
+          "text": "The discovery of fire as a catalyst for social bonding.",
+          "isCorrect": false,
+          "rationale": "While fire was important, the source material focuses specifically on the manufacture of tools as the driver for representing objects mentally."
+        },
+        {
+          "text": "The development of a reflexive knee-jerk response to environmental stimuli.",
+          "isCorrect": false,
+          "rationale": "Holzkamp used the knee-jerk reflex as an example of a purely causal, non-intentional action, which is the opposite of tool-mediated thought."
+        },
+        {
+          "text": "The reduction of social cooperation in favor of individual craftsmanship.",
+          "isCorrect": false,
+          "rationale": "Toolmaking actually increased the need for social organization and communication because the maker and user could be different people."
+        }
+      ],
+      "hint": "Consider what happens when a tool is prepared for a future use rather than an immediate need."
+    },
+    {
+      "question": "What is the 'sole material a priori' of human intersubjectivity according to Critical Psychology?",
+      "answerOptions": [
+        {
+          "text": "No one acts contrary to their own interests as they understand them.",
+          "isCorrect": true,
+          "rationale": "This fundamental axiom asserts that human action is always guided by what the subject perceives will improve their quality of life."
+        },
+        {
+          "text": "Every human action is determined by early childhood trauma.",
+          "isCorrect": false,
+          "rationale": "This is a core tenet of classical psychoanalysis, which Holzkamp sought to reinterpret through a more societal lens."
+        },
+        {
+          "text": "Humans are naturally inclined to obey authoritative figures.",
+          "isCorrect": false,
+          "rationale": "Holzkamp's theory emphasizes the subject's agency and their potential for resistance rather than an inherent drive to obey."
+        },
+        {
+          "text": "Social behavior is a direct result of genetic selection for altruism.",
+          "isCorrect": false,
+          "rationale": "Critical Psychology argues that human behavior is mediated by history and meaning, not just biological evolution."
+        }
+      ],
+      "hint": "Think about the underlying subjective logic behind why any person chooses one action over another."
+    },
+    {
+      "question": "What methodology does Holzkamp suggest to distinguish between a 'reason' and a 'cause' in psychological research?",
+      "answerOptions": [
+        {
+          "text": "Inserting the phrase 'it is reasonable' into an $if-then$ hypothesis statement.",
+          "isCorrect": true,
+          "rationale": "If the hypothesis still makes sense after adding 'it is reasonable,' it describes a reasoned action rather than a simple causal reflex."
+        },
+        {
+          "text": "Using double-blind placebo-controlled trials to eliminate bias.",
+          "isCorrect": false,
+          "rationale": "This is a standard 'object-science' method that Holzkamp critiqued for ignoring the subject's standpoint."
+        },
+        {
+          "text": "Measuring the electrical conductivity of the skin during an interview.",
+          "isCorrect": false,
+          "rationale": "This focuses on physiological responses (causes) rather than the subjective meanings (reasons) behind an action."
+        },
+        {
+          "text": "Correlating intelligence scores with socioeconomic status.",
+          "isCorrect": false,
+          "rationale": "Critical Psychology challenges the use of statistical variables as a substitute for understanding the subject's grounded premises for acting."
+        }
+      ],
+      "hint": "Consider a linguistic test that checks if an action can be justified as sensible rather than just a mechanical reaction."
+    },
+    {
+      "question": "In a 'Science of the Subject,' what is the ideal relationship between the researcher and the study participant?",
+      "answerOptions": [
+        {
+          "text": "They are co-researchers engaged in a cooperative enterprise.",
+          "isCorrect": true,
+          "rationale": "Because the subject acts on reasons, the researcher must treat them as an equal partner to understand their subjective perspective."
+        },
+        {
+          "text": "The researcher is an objective observer, and the participant is an experimental subject.",
+          "isCorrect": false,
+          "rationale": "This is the 'Archimedean' or traditional view that Critical Psychology attempts to overcome."
+        },
+        {
+          "text": "The researcher acts as a clinical authority who interprets the participant's resistance.",
+          "isCorrect": false,
+          "rationale": "While related to psychoanalysis, Holzkamp emphasizes equality and the sharing of theoretical knowledge rather than one-sided interpretation."
+        },
+        {
+          "text": "The participant is a blank slate (tabula rasa) for environmental conditioning.",
+          "isCorrect": false,
+          "rationale": "This reflects behaviorist assumptions that ignore the subject's active role in constructing their conduct of life."
+        }
+      ],
+      "hint": "Think about an arrangement that eliminates the hierarchy between the scientist and the person being studied."
+    },
+    {
+      "question": "How does the concept of 'routines' function in the conduct of life according to the source material?",
+      "answerOptions": [
+        {
+          "text": "They relieve the burden of daily choices but can obscure contradictions in one's life.",
+          "isCorrect": true,
+          "rationale": "Routines provide necessary stability for 'life to go on,' yet they may also perpetuate defensive patterns that prevent improving one's life quality."
+        },
+        {
+          "text": "They are purely biological cycles like the circadian rhythm.",
+          "isCorrect": false,
+          "rationale": "While influenced by biology, Holzkamp views routines as societally-mediated and active co-ordinations of different life spheres."
+        },
+        {
+          "text": "They are signs of a lack of creativity and agency.",
+          "isCorrect": false,
+          "rationale": "The text suggests that routines are a basic necessity for any conduct of life, though their specific form can be problematic."
+        },
+        {
+          "text": "They represent the complete and final integration of individual and societal interests.",
+          "isCorrect": false,
+          "rationale": "Routines often contain tensions and 'defensive resistance' rather than a perfect harmony between the self and society."
+        }
+      ],
+      "hint": "Consider both the stabilizing benefit and the potential 'blindness' that habits can create."
+    },
+    {
+      "question": "True or False: In Critical Psychology, human individuality is seen as something set off against society.",
+      "answerOptions": [
+        {
+          "text": "False",
+          "isCorrect": true,
+          "rationale": "Holzkamp argues that individuality is only attained within and through participation in societal meaning structures and social practices."
+        },
+        {
+          "text": "True",
+          "isCorrect": false,
+          "rationale": "This view reflects a dualistic 'individual vs. society' perspective that Holzkamp explicitly rejected."
+        }
+      ],
+      "hint": "Consider whether Holzkamp believes a person can be truly 'human' or 'individual' outside of social relations."
+    },
+    {
+      "question": "What does Holzkamp mean by the 'Archimedean perspective' in traditional psychology?",
+      "answerOptions": [
+        {
+          "text": "A viewpoint that stands outside and above the subjects' actual lives to observe them as objects.",
+          "isCorrect": true,
+          "rationale": "This perspective detaches the subject from their everyday conduct of life, treating their actions as variables to be controlled by a professional."
+        },
+        {
+          "text": "A method for calculating the lever-like influence of social groups on the individual.",
+          "isCorrect": false,
+          "rationale": "The term is used metaphorically to describe a detached, objective-science standpoint rather than a literal physical calculation."
+        },
+        {
+          "text": "The belief that psychological laws are fixed and immovable like a 'point' in space.",
+          "isCorrect": false,
+          "rationale": "While it relates to fixed laws, the focus is on the researcher's position of 'privilege' and distance from the subject's reality."
+        },
+        {
+          "text": "The historical derivation of psychology from Ancient Greek philosophy.",
+          "isCorrect": false,
+          "rationale": "Holzkamp uses this term to critique contemporary scientific detachment, not to discuss the origins of the discipline in antiquity."
+        }
+      ],
+      "hint": "Reflect on a researcher trying to find a 'point outside' the world to observe it objectively."
+    }
+  ]
+}

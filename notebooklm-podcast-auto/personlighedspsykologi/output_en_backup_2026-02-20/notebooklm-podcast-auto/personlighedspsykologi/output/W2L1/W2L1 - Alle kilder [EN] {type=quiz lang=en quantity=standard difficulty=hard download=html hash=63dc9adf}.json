@@ -1,0 +1,395 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "According to Whole Trait Theory (WTT), how is the descriptive relationship between personality traits and states defined?",
+      "answerOptions": [
+        {
+          "text": "Traits correspond to the density distributions of personality states over time.",
+          "isCorrect": true,
+          "rationale": "WTT posits that a trait is best represented as the entire distribution of an individual's states rather than a single fixed point."
+        },
+        {
+          "text": "Traits are defined solely by the 'if...then' contingencies between situations and behaviors.",
+          "isCorrect": false,
+          "rationale": "This description aligns more closely with the Cognitive-Affective Personality System (CAPS) model rather than the descriptive part of WTT."
+        },
+        {
+          "text": "Traits are manifestations of biological triggers that are independent of state fluctuations.",
+          "isCorrect": false,
+          "rationale": "WTT specifically links traits to state fluctuations, viewing the former as a summary of the latter's distribution."
+        },
+        {
+          "text": "Traits are the average of affective states while ignoring cognitive and goal-oriented content.",
+          "isCorrect": false,
+          "rationale": "The source defines personality states as including feelings, thoughts, behaviors, and goals, all of which contribute to the trait distribution."
+        }
+      ],
+      "hint": "Consider how a collection of momentary points can form a larger statistical shape."
+    },
+    {
+      "question": "Recent research (e.g., Breil et al., 2022) indicates that the correlation between average self-reported states and observer-rated traits is often weaker than self-other agreement on traits. What is a significant finding regarding the incremental validity of average states in this context?",
+      "answerOptions": [
+        {
+          "text": "Average states provide no incremental validity over self-reported traits for predicting observer ratings.",
+          "isCorrect": true,
+          "rationale": "Studies by Breil et al. and Finnigan & Vazire show that once global self-reports are accounted for, average states do not add significant predictive power."
+        },
+        {
+          "text": "Average states correlate nearly perfectly ($r > 0.90$) with observer-rated traits across all Big Five dimensions.",
+          "isCorrect": false,
+          "rationale": "The source mentions that these correlations are actually weaker, with some estimates ranging from `$r = -0.02$` to `$0.55$`."
+        },
+        {
+          "text": "Average states are only valid when measured through mobile sensing rather than experience sampling.",
+          "isCorrect": false,
+          "rationale": "The research highlights that even when measured through experience sampling, average states lack incremental validity over global reports."
+        },
+        {
+          "text": "Average states show higher validity for Neuroticism than for Extraversion in observer-rated models.",
+          "isCorrect": false,
+          "rationale": "The findings on incremental validity are generally discussed as a broad limitation across dimensions rather than a Neuroticism-specific advantage."
+        }
+      ],
+      "hint": "Think about whether a summary of daily reports adds information that a general self-description hasn't already captured."
+    },
+    {
+      "question": "In the TESSERA framework, what sequence of events is proposed to lead to long-term personality development?",
+      "answerOptions": [
+        {
+          "text": "Triggering situations $\\rightarrow$ expectancies $\\rightarrow$ personality states $\\rightarrow$ reactions.",
+          "isCorrect": true,
+          "rationale": "This specific sequence describes the short-term processes that, when repeated, accumulate into long-term trait change."
+        },
+        {
+          "text": "Trait activation $\\rightarrow$ cognitive units $\\rightarrow$ situational affordances $\\rightarrow$ trait change.",
+          "isCorrect": false,
+          "rationale": "This combines elements from Trait Activation Theory and CAPS rather than the specific TESSERA sequence."
+        },
+        {
+          "text": "Affective states $\\rightarrow$ homeostatic forces $\\rightarrow$ density distributions $\\rightarrow$ trait change.",
+          "isCorrect": false,
+          "rationale": "While these concepts are related to personality dynamics, they do not reflect the specific structural sequence of the TESSERA framework."
+        },
+        {
+          "text": "Social environment $\\rightarrow$ random error $\\rightarrow$ state-trait fit $\\rightarrow$ reactions.",
+          "isCorrect": false,
+          "rationale": "TESSERA focuses on psychological components like expectancies and reactions following a trigger rather than random error decomposition."
+        }
+      ],
+      "hint": "The process starts with an external event and moves through internal cognitive and behavioral steps."
+    },
+    {
+      "question": "A 12-week intervention study (Olaru et al., 2025) found that while traits changed in line with goals, average state levels remained stable. What specific state-related metric was actually correlated with the degree of trait change?",
+      "answerOptions": [
+        {
+          "text": "State deviations from the initial trait level.",
+          "isCorrect": true,
+          "rationale": "The study found that individuals who successfully implemented daily states that differed from their traits experienced greater sustained trait change."
+        },
+        {
+          "text": "The absolute frequency of Extraversion states.",
+          "isCorrect": false,
+          "rationale": "Absolute state levels did not change, but the discrepancy between states and the baseline trait was the key predictor."
+        },
+        {
+          "text": "The consistency of the state network edge weights.",
+          "isCorrect": false,
+          "rationale": "Network consistency refers to the structure of item associations, which is distinct from the goal-driven state deviations studied in the intervention."
+        },
+        {
+          "text": "The relative variability index of Neuroticism.",
+          "isCorrect": false,
+          "rationale": "While variability is a metric for states, it was the deviation from the trait level (implementation of goals) that predicted change in this specific study."
+        }
+      ],
+      "hint": "Consider the distance between how a person usually acts and how they tried to act during the intervention."
+    },
+    {
+      "question": "In the meta-analysis by Zettler et al. (2020), which outcome domain was uniquely and primarily mapped to the HEXACO Agreeableness dimension?",
+      "answerOptions": [
+        {
+          "text": "Obstruction",
+          "isCorrect": true,
+          "rationale": "Agreeableness versus anger specifically maps onto the domain of obstruction, which includes forgiving and tolerant reactions to being treated poorly."
+        },
+        {
+          "text": "Exploitation",
+          "isCorrect": false,
+          "rationale": "Exploitation is the primary domain for Honesty-Humility, although Agreeableness shows a secondary link."
+        },
+        {
+          "text": "Insecurity",
+          "isCorrect": false,
+          "rationale": "Insecurity is the primary domain for Emotionality, capturing fearfulness and anxiety."
+        },
+        {
+          "text": "Duty",
+          "isCorrect": false,
+          "rationale": "Duty is the primary domain for Conscientiousness, involving task-related endeavors."
+        }
+      ],
+      "hint": "This domain relates to how one reacts when their cooperation is met with a lack of reciprocity from others."
+    },
+    {
+      "question": "What finding from Kuper et al. (2022) poses a significant challenge to the integration of Whole Trait Theory and the CAPS model?",
+      "answerOptions": [
+        {
+          "text": "Individual differences in situation-state contingencies do not correspond to stable differences in self-rated traits.",
+          "isCorrect": true,
+          "rationale": "The lack of link between 'if...then' contingencies and global traits contradicts WTT's explanatory model, which uses CAPS-like mechanisms to explain traits."
+        },
+        {
+          "text": "Situation-state contingencies are highly unstable and show no replicable individual differences.",
+          "isCorrect": false,
+          "rationale": "The study actually found that individual differences in these contingencies are replicable, they just don't align with self-rated traits."
+        },
+        {
+          "text": "The correlation between situation characteristics and states is entirely explained by general affect.",
+          "isCorrect": false,
+          "rationale": "While affect can confound these measurements, the core challenge identified by Kuper et al. is the mismatch between contingencies and traits."
+        },
+        {
+          "text": "Only Extraversion shows stable situation-state contingencies across work and social contexts.",
+          "isCorrect": false,
+          "rationale": "The findings regarding the disconnect between contingencies and traits were observed across dimensions, not just for Extraversion."
+        }
+      ],
+      "hint": "Consider the relationship (or lack thereof) between behavioral patterns in specific situations and general trait scores."
+    },
+    {
+      "question": "In the meta-analysis of the HEXACO model, which criterion class within the 'Exploration' domain was most strongly predicted by Openness to Experience ($\\hat{\\rho} = 0.48$)?",
+      "answerOptions": [
+        {
+          "text": "Creativity",
+          "isCorrect": true,
+          "rationale": "Openness is defined by engagement in idea-related endeavors, making creativity its strongest specific criterion class link."
+        },
+        {
+          "text": "Curiosity",
+          "isCorrect": false,
+          "rationale": "While Openness is linked to Curiosity, the meta-analysis found a slightly lower correlation ($0.30$) compared to Creativity ($0.48$)."
+        },
+        {
+          "text": "Environmental Behavior",
+          "isCorrect": false,
+          "rationale": "Although Openness was a strong predictor of environmental behavior, that class was categorized under Exploitation in the study's framework."
+        },
+        {
+          "text": "Conservatism",
+          "isCorrect": false,
+          "rationale": "Openness is negatively linked to Conservatism ($\\hat{\\rho} = -0.34$), which is a strong link but lower in magnitude than Creativity."
+        }
+      ],
+      "hint": "Focus on the criterion class that represents the generation of novel or unconventional ideas."
+    },
+    {
+      "question": "How did Zettler et al. (2020) differentiate the HEXACO dimensions of Honesty-Humility and Agreeableness in terms of reciprocal altruism?",
+      "answerOptions": [
+        {
+          "text": "Honesty-Humility refers to active cooperation (nonexploitation), while Agreeableness refers to reactive cooperation (nonretaliation).",
+          "isCorrect": true,
+          "rationale": "Honesty-Humility involves not exploiting others even when possible, whereas Agreeableness involves how one responds to being exploited by others."
+        },
+        {
+          "text": "Honesty-Humility refers to kin altruism, while Agreeableness refers to reciprocal altruism with strangers.",
+          "isCorrect": false,
+          "rationale": "Kin altruism is the theoretical basis for Emotionality, not Honesty-Humility."
+        },
+        {
+          "text": "Honesty-Humility is related to social-attention-holding power, while Agreeableness is related to resource-holding potential.",
+          "isCorrect": false,
+          "rationale": "Social-attention-holding power is linked to Extraversion in the HEXACO framework."
+        },
+        {
+          "text": "Honesty-Humility captures temper-related aspects, while Agreeableness captures sentimentality.",
+          "isCorrect": false,
+          "rationale": "In the HEXACO model, sentimentality is part of Emotionality, while temper-related aspects (e.g., lack of anger) move to Agreeableness."
+        }
+      ],
+      "hint": "Consider the distinction between initiating a fair interaction versus responding to an unfair one."
+    },
+    {
+      "question": "When examining the 'Insecurity' domain, the Zettler et al. meta-analysis found that Emotionality was the primary predictor ($\\hat{\\rho} = 0.27$). Which other dimension showed a nearly equal secondary relationship ($\\hat{\\rho} = -0.25$) with this domain?",
+      "answerOptions": [
+        {
+          "text": "Extraversion",
+          "isCorrect": true,
+          "rationale": "The meta-analysis showed that Extraversion had a substantial negative correlation with Insecurity, nearly as large as Emotionality's positive correlation."
+        },
+        {
+          "text": "Conscientiousness",
+          "isCorrect": false,
+          "rationale": "Conscientiousness showed a much smaller link to the overall Insecurity domain compared to Extraversion."
+        },
+        {
+          "text": "Honesty-Humility",
+          "isCorrect": false,
+          "rationale": "Honesty-Humility was primarily linked to the Exploitation domain and had a negligible primary link to Insecurity."
+        },
+        {
+          "text": "Openness to Experience",
+          "isCorrect": false,
+          "rationale": "Openness was linked to Exploration; its relationship with Insecurity was relatively small and negative."
+        }
+      ],
+      "hint": "Think about the dimension associated with social boldness and high energy, which might act as a buffer against feelings of threat."
+    },
+    {
+      "question": "Based on the Revised Latent State-Trait Theory (LST-R), which component of a personality state measure captures reliability due to occasion-specific influences?",
+      "answerOptions": [
+        {
+          "text": "Specificity",
+          "isCorrect": true,
+          "rationale": "Bader et al. (2025) distinguish between consistency (trait-like influence) and specificity (occasion-specific or situational influence)."
+        },
+        {
+          "text": "Consistency",
+          "isCorrect": false,
+          "rationale": "Consistency in LST-R refers to the portion of the state variance that is determined by the underlying stable trait."
+        },
+        {
+          "text": "Random error",
+          "isCorrect": false,
+          "rationale": "While random error is a source of variance, it is explicitly separated from the systematic occasion-specific influence (specificity)."
+        },
+        {
+          "text": "Density distribution",
+          "isCorrect": false,
+          "rationale": "Density distribution is a concept from Whole Trait Theory, not a specific variance component of the LST-R measurement model."
+        }
+      ],
+      "hint": "This term refers to how much a state measure responds to the unique characteristics of a particular moment."
+    },
+    {
+      "question": "What anomalous finding regarding 'Environmental Behavior' was noted in the HEXACO meta-analysis by Zettler et al.?",
+      "answerOptions": [
+        {
+          "text": "Openness to Experience was a much stronger predictor than Honesty-Humility.",
+          "isCorrect": true,
+          "rationale": "Despite being conceptualized as cooperative (Honesty-Humility), environmental behavior correlated more strongly with Openness ($0.54$) than Honesty-Humility ($0.23$)."
+        },
+        {
+          "text": "Conscientiousness had a negative correlation with pro-environmental attitudes.",
+          "isCorrect": false,
+          "rationale": "The study found small positive links for Conscientiousness ($0.12$), not a negative one."
+        },
+        {
+          "text": "No HEXACO dimension was able to predict environmental behavior significantly.",
+          "isCorrect": false,
+          "rationale": "The study actually found several significant links, particularly for Openness and Honesty-Humility."
+        },
+        {
+          "text": "Environmental behavior was the only criterion where observer reports and self-reports perfectly converged.",
+          "isCorrect": false,
+          "rationale": "The source does not claim perfect convergence and generally notes that non-self-report correlations tend to be lower."
+        }
+      ],
+      "hint": "Consider which dimension, besides the 'cooperative' one, might drive an interest in unconventional or global-social changes."
+    },
+    {
+      "question": "According to the review by Columbus & Strandsbjerg (2025), what happens to the consistency of personality states as you increase the level of aggregation?",
+      "answerOptions": [
+        {
+          "text": "Consistency increases when moving from individual items to personality dimensions and entire profiles.",
+          "isCorrect": true,
+          "rationale": "Rank-order correlations increased from `$r = 0.46 - 0.74$` for items to `$0.68 - 0.79$` for dimensions and `$0.97$` for full profiles."
+        },
+        {
+          "text": "Consistency decreases because aggregating across situations introduces more random noise.",
+          "isCorrect": false,
+          "rationale": "The opposite is true; aggregation typically reduces measurement error and situation-specific 'noise' to reveal stable patterns."
+        },
+        {
+          "text": "Consistency remains stable at approximately `$r = 0.10$` regardless of the aggregation level.",
+          "isCorrect": false,
+          "rationale": "The value of `$0.10$` refers specifically to individual network edge weights, which are far less stable than aggregated scores."
+        },
+        {
+          "text": "Consistency only increases for Neuroticism, while it decreases for Agreeableness and Openness.",
+          "isCorrect": false,
+          "rationale": "The increase in consistency via aggregation is a general psychometric trend observed across all five dimensions studied."
+        }
+      ],
+      "hint": "Think about the statistical principle where combining multiple related measurements tends to reduce the impact of unsystematic errors."
+    },
+    {
+      "question": "Zettler et al. (2020) conducted moderation analyses on the assessment mode of criteria (Self-Report vs. Non-Self-Report). What was the general effect on the correlation magnitude for 'Counterpart' dimensions when using Non-Self-Report (NSR) data?",
+      "answerOptions": [
+        {
+          "text": "Correlations were smaller for NSR criteria in three of the four cases studied.",
+          "isCorrect": true,
+          "rationale": "Correlations dropped significantly for Honesty-Humility with immoral behavior and active cooperation, and for Agreeableness with reactive cooperation."
+        },
+        {
+          "text": "Correlations increased significantly for NSR criteria due to the elimination of self-enhancement bias.",
+          "isCorrect": false,
+          "rationale": "While self-enhancement is a factor, NSR correlations were generally lower, likely due to a lack of shared method variance."
+        },
+        {
+          "text": "The correlation between Conscientiousness and achievement/performance dropped to near zero in NSR models.",
+          "isCorrect": false,
+          "rationale": "This was the exception; the correlation for Conscientiousness remained stable ($0.25$ for SR vs. $0.24$ for NSR)."
+        },
+        {
+          "text": "NSR data completely eliminated the mapping between dimensions and their counterpart domains.",
+          "isCorrect": false,
+          "rationale": "The mapping remained theoretically consistent, but the absolute magnitude of the effects was reduced."
+        }
+      ],
+      "hint": "Consider the impact of shared method variance when both the predictor and the outcome are measured using the same source."
+    },
+    {
+      "question": "Which of the following is a primary distinction between the HEXACO model and the Big Five regarding the trait of 'Agreeableness'?",
+      "answerOptions": [
+        {
+          "text": "HEXACO Agreeableness includes temper-related aspects like patience, while Big Five Agreeableness includes sentimentality.",
+          "isCorrect": true,
+          "rationale": "The source notes that sentimentality moves to Emotionality in HEXACO, whereas temper-related aspects move from Neuroticism to Agreeableness."
+        },
+        {
+          "text": "HEXACO Agreeableness is defined by its relationship to Kin Altruism, unlike the Big Five.",
+          "isCorrect": false,
+          "rationale": "Kin Altruism is the basis for Emotionality in the HEXACO model, not Agreeableness (which is linked to Reciprocal Altruism)."
+        },
+        {
+          "text": "The HEXACO model removes the 'Honesty' facet from Agreeableness to create a sixth dimension.",
+          "isCorrect": false,
+          "rationale": "The sixth dimension (Honesty-Humility) captures content that was often entirely omitted from earlier lexical analyses, though some was in Big Five Agreeableness."
+        },
+        {
+          "text": "Big Five Agreeableness is more strongly linked to 'Duty' than HEXACO Agreeableness.",
+          "isCorrect": false,
+          "rationale": "Duty is the domain of Conscientiousness; the source focuses on the shift of sentimentality and temper between the models."
+        }
+      ],
+      "hint": "Think about where 'patience' and 'empathy/sentimentality' are located in each model."
+    },
+    {
+      "question": "In the context of 'Sociality,' which HEXACO dimension was found to have the strongest relationship with the specific criterion of 'Leadership' ($\\hat{\\rho} = 0.31$)?",
+      "answerOptions": [
+        {
+          "text": "Conscientiousness",
+          "isCorrect": true,
+          "rationale": "Surprisingly, for the leadership criterion class, Conscientiousness was the strongest predictor, outperforming Extraversion ($0.26$)."
+        },
+        {
+          "text": "Extraversion",
+          "isCorrect": false,
+          "rationale": "While Extraversion is the primary dimension for the Sociality domain, its correlation with Leadership was slightly lower than that of Conscientiousness."
+        },
+        {
+          "text": "Honesty-Humility",
+          "isCorrect": false,
+          "rationale": "Honesty-Humility had a very small and non-significant relationship with the leadership criterion class ($0.08$)."
+        },
+        {
+          "text": "Emotionality",
+          "isCorrect": false,
+          "rationale": "Emotionality showed a negative relationship with leadership criteria, consistent with its link to insecurity and help-seeking."
+        }
+      ],
+      "hint": "Although Extraversion is the primary dimension for social engagement, another dimension involving planning and discipline was the best predictor for this specific role."
+    }
+  ]
+}

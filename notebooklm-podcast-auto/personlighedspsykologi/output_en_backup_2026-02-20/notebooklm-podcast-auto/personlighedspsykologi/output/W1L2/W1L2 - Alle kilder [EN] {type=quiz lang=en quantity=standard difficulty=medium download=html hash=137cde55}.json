@@ -1,0 +1,265 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "According to Mayer and Bryan (2024), what is the foremost 'natural joint' used to classify personality data?",
+      "answerOptions": [
+        {
+          "text": "Whether the data is quantitative or qualitative.",
+          "isCorrect": false,
+          "rationale": "While this is a common distinction in research, the authors argue that the primary distinction is based on the source of the information relative to the individual."
+        },
+        {
+          "text": "Whether the data is produced by the person or sourced from around the person.",
+          "isCorrect": true,
+          "rationale": "The authors define the primary division as personal-source data versus external-source data based on the model of personality's position inside the person."
+        },
+        {
+          "text": "Whether the data measures a static trait or a dynamic process.",
+          "isCorrect": false,
+          "rationale": "This distinction relates to the 'focal phenomenon' discussed in Phan et al. (2024) rather than the primary data source classification in Mayer and Bryan."
+        },
+        {
+          "text": "Whether the data is collected in a laboratory or a natural setting.",
+          "isCorrect": false,
+          "rationale": "This concerns the setting of data collection, which is a sub-attribute of external data but not the fundamental classifying joint."
+        }
+      ],
+      "hint": "Consider the spatial relationship between the producer of the information and the target's internal mental system."
+    },
+    {
+      "question": "Mayer and Bryan (2024) identify a 'poor convergence' between different methods of measuring the same trait. What do they identify as the chief explanation for this?",
+      "answerOptions": [
+        {
+          "text": "High levels of measurement error in psychological testing.",
+          "isCorrect": false,
+          "rationale": "While measurement error exists, the authors argue that even reliable measures fail to converge due to deeper psychological reasons."
+        },
+        {
+          "text": "Inherent dishonesty in self-report participants.",
+          "isCorrect": false,
+          "rationale": "Dishonesty is a specific weakness of some data, but it is not the universal reason why different valid methods yield different results."
+        },
+        {
+          "text": "The use of different mental response processes by the respondent.",
+          "isCorrect": true,
+          "rationale": "Different measurement tasks (e.g., self-judgment vs. solving a problem) elicit distinct psychological mechanisms, effectively measuring different manifestations of a target."
+        },
+        {
+          "text": "The polyexpressive nature of personality traits.",
+          "isCorrect": false,
+          "rationale": "Polyexpressivity is mentioned as a contributing factor, but the 'chief explanation' provided for personal-source data non-convergence is the response process."
+        }
+      ],
+      "hint": "Think about the internal psychological mechanisms triggered when a person interacts with a specific type of test."
+    },
+    {
+      "question": "Based on the research mentioned by Mayer and Bryan, how does self-estimated intelligence typically relate to ability-measured intelligence?",
+      "answerOptions": [
+        {
+          "text": "They correlate strongly at approximately $r = .70$.",
+          "isCorrect": false,
+          "rationale": "Strong correlations are rarely found between these two; self-estimates usually reflect different constructs than actual capacity."
+        },
+        {
+          "text": "Self-estimated intelligence correlates more with personality traits than with actual capacity.",
+          "isCorrect": true,
+          "rationale": "Research indicates self-estimated intelligence correlates around $r = .29$ with actual ability but $R > .60$ with Big Five traits like Extraversion and Openness."
+        },
+        {
+          "text": "They are functionally equivalent and can be used interchangeably in research.",
+          "isCorrect": false,
+          "rationale": "The source material explicitly states that only ability measures assess actual intelligence or problem-solving capacity."
+        },
+        {
+          "text": "Self-estimated intelligence is a more accurate predictor of job performance than ability scales.",
+          "isCorrect": false,
+          "rationale": "The text suggests that self-judgments are often inaccurate for actual ability and ability scales remain the gold standard for performance prediction."
+        }
+      ],
+      "hint": "Consider the difference between 'intellectual self-esteem' and actual problem-solving capacity."
+    },
+    {
+      "question": "Which type of data involves perceptual-cognitive constructions cued by ambiguous stimuli like inkblots?",
+      "answerOptions": [
+        {
+          "text": "Implicit attitude data.",
+          "isCorrect": false,
+          "rationale": "Implicit data measures the speed of associations in memory, not the construction of stories or percepts from ambiguous images."
+        },
+        {
+          "text": "Process-report data.",
+          "isCorrect": false,
+          "rationale": "Process-report data involves 'thinking aloud' to record a stream of internal states during a task."
+        },
+        {
+          "text": "Thematic-report data.",
+          "isCorrect": true,
+          "rationale": "Also known as projective data, this involves responding to ambiguous stimuli with themes or percepts that reflect inner psychological processes."
+        },
+        {
+          "text": "Personal construct data.",
+          "isCorrect": false,
+          "rationale": "Personal construct data refers to mental representations of the self, like 'possible selves' or relationship scripts."
+        }
+      ],
+      "hint": "Think of the term originally used to describe the 'projection' of the mind onto a blank screen or picture."
+    },
+    {
+      "question": "Phan et al. (2024) propose a categorization of research approaches using a $2 \\times 3$ matrix. What are the two focal entities in this model?",
+      "answerOptions": [
+        {
+          "text": "The sample and the target population.",
+          "isCorrect": false,
+          "rationale": "These are levels within a population-specific approach, but not the two primary focal entities of the entire matrix."
+        },
+        {
+          "text": "The individual person and the population.",
+          "isCorrect": true,
+          "rationale": "The model distinguishes between research where the focal entity is the person(s) versus research where it is the population(s)."
+        },
+        {
+          "text": "Variable-centered and person-centered approaches.",
+          "isCorrect": false,
+          "rationale": "These are common synonyms for nomothetic/idiographic confounded concepts, but the matrix uses persons/populations as entities."
+        },
+        {
+          "text": "Static structures and dynamic processes.",
+          "isCorrect": false,
+          "rationale": "These represent different types of 'focal phenomena' rather than the entities themselves."
+        }
+      ],
+      "hint": "Consider whether the knowledge sought applies to a single unit of psychological functioning or an aggregated whole."
+    },
+    {
+      "question": "In the context of Phan et al.'s (2024) matrix, what is a 'Person-specific generalization'?",
+      "answerOptions": [
+        {
+          "text": "A generalization made from one person to all other people in a group.",
+          "isCorrect": false,
+          "rationale": "Generalizing from person to person is defined as the 'Wundtian' or cross-person approach."
+        },
+        {
+          "text": "A lawful regularity within an individual generalized from a sample of their own occasions.",
+          "isCorrect": true,
+          "rationale": "This involves identifying patterns across time or contexts for a specific individual and generalizing to that person's psychological system."
+        },
+        {
+          "text": "A detailed portrayal of a person with no intention to establish any laws.",
+          "isCorrect": false,
+          "rationale": "This describes an 'entity-specific portrayal,' which is distinct from a generalization because it doesn't seek to establish laws."
+        },
+        {
+          "text": "The average effect of an experimental manipulation across a sample of persons.",
+          "isCorrect": false,
+          "rationale": "This refers to the (Neo-)Galtonian approach, which produces population-specific generalizations."
+        }
+      ],
+      "hint": "Think about generalizing across a person's life events rather than across different people."
+    },
+    {
+      "question": "What is the 'Ergodic Fallacy' as described by Phan et al. (2024)?",
+      "answerOptions": [
+        {
+          "text": "The belief that sample sizes must be extremely large to yield valid personality data.",
+          "isCorrect": false,
+          "rationale": "This is a common methodological concern but not related to the specific concept of ergodicity."
+        },
+        {
+          "text": "The assumption that population-level averages can be directly applied to understand individual psychological functioning.",
+          "isCorrect": true,
+          "rationale": "Non-ergodicity means that between-person patterns do not necessarily reflect within-person processes unless strict conditions of homogeneity and stationarity are met."
+        },
+        {
+          "text": "The error of relying on observer judgments when self-reports are more accurate.",
+          "isCorrect": false,
+          "rationale": "This is a measurement choice issue discussed in Mayer and Bryan, not a fallacy of statistical generalization."
+        },
+        {
+          "text": "The failure to use $N = 1$ designs when studying rare psychological disorders.",
+          "isCorrect": false,
+          "rationale": "While related to the study of individuals, ergodicity specifically concerns the translation of group data to individual cases."
+        }
+      ],
+      "hint": "Consider why the 'average person' might not represent any single actual person in a study."
+    },
+    {
+      "question": "According to Mayer and Bryan (2024), which measurement approach is most recommended for assessing the trait of Agreeableness?",
+      "answerOptions": [
+        {
+          "text": "Self-judgment, as individuals know their own kindness best.",
+          "isCorrect": false,
+          "rationale": "Agreeableness typically shows the lowest self-other agreement, as disagreeable people may not realize how they are perceived."
+        },
+        {
+          "text": "Thematic-report data, to uncover hidden hostile motives.",
+          "isCorrect": false,
+          "rationale": "While useful for motives, the specific recommendation for the Big Five trait of Agreeableness emphasizes social perception."
+        },
+        {
+          "text": "Observer-judgments, because Agreeableness is socially evaluative.",
+          "isCorrect": true,
+          "rationale": "Observers may provide more accurate information because self-concepts are often filtered through self-enhancement, especially for evaluative traits."
+        },
+        {
+          "text": "Mental ability scales, to test social reasoning capacity.",
+          "isCorrect": false,
+          "rationale": "Ability scales are recommended for 'Social Skills' but Agreeableness is typically treated as an observable behavioral trait."
+        }
+      ],
+      "hint": "Think about whether a person's own self-concept or the impressions they leave on others is more accurate for this specific Big Five trait."
+    },
+    {
+      "question": "In Phan et al.'s framework, the 'Wundtian approach' is characterized by which of the following?",
+      "answerOptions": [
+        {
+          "text": "Analyzing a population as an aggregated whole using means and variances.",
+          "isCorrect": false,
+          "rationale": "This is the 'Galtonian' approach, focusing on population-level parameters."
+        },
+        {
+          "text": "Studying individuals case-by-case to see if the same effect holds for every person.",
+          "isCorrect": true,
+          "rationale": "Wundtian research seeks cross-person generalizations by confirming that a phenomenon is common to all individuals studied separately."
+        },
+        {
+          "text": "Using big data to track behavior without any interaction with the subjects.",
+          "isCorrect": false,
+          "rationale": "This describes modern sensing methods, not the historical Wundtian inferential goal of establishing general laws through individual consistency."
+        },
+        {
+          "text": "Focusing purely on unique, non-generalizable descriptions of one person's life.",
+          "isCorrect": false,
+          "rationale": "This describes an 'entity-specific portrayal' or the 'Windelbandian idiographic' approach with no generalization intent."
+        }
+      ],
+      "hint": "Think of a method that looks for a 'general law' by verifying it one person at a time."
+    },
+    {
+      "question": "Lifespace data, as categorized by Mayer and Bryan, is unique because it:",
+      "answerOptions": [
+        {
+          "text": "Provides insight into non-conscious 'scripts' and possible selves.",
+          "isCorrect": false,
+          "rationale": "This describes 'personal construct data,' which is about inner mental models."
+        },
+        {
+          "text": "Consists of reports on behaviors and history that are objectively verifiable.",
+          "isCorrect": true,
+          "rationale": "Lifespace data includes biodata, act frequencies, and group memberships that exist in the external world and can be checked for accuracy."
+        },
+        {
+          "text": "Uses brain imaging (fMRI) to detect physiological correlates of personality.",
+          "isCorrect": false,
+          "rationale": "Physiological data is a class of external-source data, whereas lifespace data is usually personal-source reports about the environment."
+        },
+        {
+          "text": "Is the most reliable way to measure subjective emotional states.",
+          "isCorrect": false,
+          "rationale": "The authors recommend self-judgment or experience sampling for subjective conscious experience, not lifespace data."
+        }
+      ],
+      "hint": "Focus on the types of information you might find on a resume or a public record."
+    }
+  ]
+}

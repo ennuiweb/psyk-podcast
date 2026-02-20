@@ -1,0 +1,265 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "According to the source material, how does narrative psychology primarily view the relationship between personality and stories?",
+      "answerOptions": [
+        {
+          "text": "Personality is a biological structure that determines which stories we tell.",
+          "isCorrect": false,
+          "rationale": "This reflects a biological determinism that narrative psychology explicitly moves away from in favor of social and cultural construction."
+        },
+        {
+          "text": "Personality is the 'fabric' woven from stories about ourselves, others, and society.",
+          "isCorrect": true,
+          "rationale": "Narrative psychology suggests that stories are not just about personality but are the very substance that creates our sense of self and social world."
+        },
+        {
+          "text": "Stories are merely a secondary way to describe a pre-existing, fixed personality.",
+          "isCorrect": false,
+          "rationale": "Narrative theorists argue that the self is created through the narrative process rather than being a static object that exists before the story."
+        },
+        {
+          "text": "Personality is an illusion, and only the social interactions (the stories) are real.",
+          "isCorrect": false,
+          "rationale": "While social interaction is central, the theories still recognize 'personality' or 'self' as a meaningful, albeit narratively constructed, reality."
+        }
+      ],
+      "hint": "Consider if the theory treats stories as a description of a person or as the actual building blocks of the person."
+    },
+    {
+      "question": "Which early psychologist described the self as a process involving material, social, and reflexive elements?",
+      "answerOptions": [
+        {
+          "text": "William James",
+          "isCorrect": true,
+          "rationale": "He was among the first to understand personality as processual and relational, influenced by our bodies, homes, and how others perceive us."
+        },
+        {
+          "text": "George Herbert Mead",
+          "isCorrect": false,
+          "rationale": "While Mead built on these ideas, he is more specifically known for symbolic interactionism and the concepts of the 'I' and the 'Me'."
+        },
+        {
+          "text": "Jerome Bruner",
+          "isCorrect": false,
+          "rationale": "He is a key figure in the later 'cognitive revolution' and the cultural shift in narrative psychology starting in the $1980$s."
+        },
+        {
+          "text": "Donald Polkinghorne",
+          "isCorrect": false,
+          "rationale": "Polkinghorne is a modern narrative theorist who focused on the concept of the 'plot' much later than the early North American psychologists."
+        }
+      ],
+      "hint": "Think of the thinker who lived from $1842$ to $1910$ and viewed the self as a constant state of 'becoming'."
+    },
+    {
+      "question": "What does Jerome Bruner's concept of 'Agency' imply about human beings?",
+      "answerOptions": [
+        {
+          "text": "Humans are passive processors of information similar to computers.",
+          "isCorrect": false,
+          "rationale": "This view is associated with the 'information processing' model of cognitive psychology which Bruner criticized for being too mechanical."
+        },
+        {
+          "text": "Humans are fundamentally biological organisms driven by instinctual reflexes.",
+          "isCorrect": false,
+          "rationale": "Bruner argued that culture, not just biology, is what shapes human life and gives meaning to our actions."
+        },
+        {
+          "text": "Humans are active, meaning-making beings who act based on their interpretations.",
+          "isCorrect": true,
+          "rationale": "Agency refers to the idea that people are intentional actors who structure their experiences and actions through narrative meaning."
+        },
+        {
+          "text": "Humans are entirely determined by the social discourses they are born into.",
+          "isCorrect": false,
+          "rationale": "While social context is important, the concept of agency emphasizes the individual's active role in creating meaning rather than being a total victim of circumstances."
+        }
+      ],
+      "hint": "Consider whether the theory views people as active participants or passive recipients of their environment."
+    },
+    {
+      "question": "In Donald Polkinghorne's theory, what is the primary function of a 'narrative plot'?",
+      "answerOptions": [
+        {
+          "text": "To categorize personality into fixed types such as 'introvert' or 'extrovert'.",
+          "isCorrect": false,
+          "rationale": "Categorizing into fixed types is a characteristic of trait theory, which narrative psychology seeks to provide an alternative to."
+        },
+        {
+          "text": "To provide a sense of continuity and meaning by linking past, present, and future events.",
+          "isCorrect": true,
+          "rationale": "The plot serves as a configuration that integrates diverse life elements into a coherent whole over time."
+        },
+        {
+          "text": "To serve as a literal script that individuals must follow without change.",
+          "isCorrect": false,
+          "rationale": "Narrative plots are flexible and subject to constant revision and reinterpretation as new events occur."
+        },
+        {
+          "text": "To separate the physical body from the psychological self.",
+          "isCorrect": false,
+          "rationale": "Polkinghorne's 'plot' actually aims to integrate the body and material conditions into the overall narrative of the self."
+        }
+      ],
+      "hint": "Think about how a story connects different points in time to make sense of a life."
+    },
+    {
+      "question": "What is a central goal of 'externalization' in Michael White's narrative therapy?",
+      "answerOptions": [
+        {
+          "text": "To identify the internal personality flaws that cause a patient's problems.",
+          "isCorrect": false,
+          "rationale": "Externalization specifically avoids 'pathologizing' the person by refusing to see the problem as an internal trait."
+        },
+        {
+          "text": "To encourage the patient to ignore their problems and focus only on the positive.",
+          "isCorrect": false,
+          "rationale": "The goal is to address the problem directly, but as an external entity rather than a definition of the person's identity."
+        },
+        {
+          "text": "To separate the problem from the person's identity, making the problem the problem.",
+          "isCorrect": true,
+          "rationale": "By treating a problem (like anorexia) as an external influence, the person gains 'agency' to take a stand against it."
+        },
+        {
+          "text": "To explain the patient's behavior through biological or chemical imbalances.",
+          "isCorrect": false,
+          "rationale": "Narrative therapy focuses on the stories and meanings involved in the problem rather than biological reductionism."
+        }
+      ],
+      "hint": "Recall the phrase: 'The person is not the problem; the problem is the problem'."
+    },
+    {
+      "question": "According to Kenneth Gergen and social constructionism, how should we understand the 'self'?",
+      "answerOptions": [
+        {
+          "text": "As a stable, core essence that remains unchanged across different social situations.",
+          "isCorrect": false,
+          "rationale": "Gergen critiques the idea of a stable core, suggesting instead that the self is fluid and context-dependent."
+        },
+        {
+          "text": "As a performative and relational process that shifts depending on the social context.",
+          "isCorrect": true,
+          "rationale": "In this view, we 'perform' different versions of ourselves in different relationships and social settings to achieve meaning."
+        },
+        {
+          "text": "As a purely biological entity that can be fully explained by brain chemistry.",
+          "isCorrect": false,
+          "rationale": "Gergen emphasizes language and culture over biology as the primary tools for constructing the self."
+        },
+        {
+          "text": "As a private, internal experience that cannot be shared with others.",
+          "isCorrect": false,
+          "rationale": "Constructionism views the self as fundamentally social and created through interaction rather than something hidden deep inside."
+        }
+      ],
+      "hint": "Think about whether this view favors a single 'true' self or many 'performed' selves."
+    },
+    {
+      "question": "How did Jerome Bruner's experiments with 'meaningful' objects (like coins or playing cards) challenge early cognitive psychology?",
+      "answerOptions": [
+        {
+          "text": "They proved that human reaction time is consistent regardless of the object's value.",
+          "isCorrect": false,
+          "rationale": "His findings actually showed that the meaning or value of an object significantly changed how people perceived and identified it."
+        },
+        {
+          "text": "They showed that perception is not passive but is an active, meaning-making process influenced by culture.",
+          "isCorrect": true,
+          "rationale": "Participants were faster and more accurate at identifying culturally familiar or meaningful objects, showing that 'mind' is not a neutral machine."
+        },
+        {
+          "text": "They demonstrated that humans are slower at identifying objects if they are not familiar with their physical properties.",
+          "isCorrect": false,
+          "rationale": "While true in a sense, the specific point was about cultural meaning and value, not just physical familiarity."
+        },
+        {
+          "text": "They confirmed that the brain processes symbols using mechanical 'schemata' that are the same for everyone.",
+          "isCorrect": false,
+          "rationale": "Bruner criticized the mechanical 'schemata' idea, arguing instead for a more dynamic and culturally situated view of the mind."
+        }
+      ],
+      "hint": "Consider if the experiments focused on the physical shape of the objects or what those objects represent to people."
+    },
+    {
+      "question": "What does the 'linguistic turn' (den sproglige vending) imply about the role of language in psychology?",
+      "answerOptions": [
+        {
+          "text": "Language is a neutral tool used to describe the objective world exactly as it is.",
+          "isCorrect": false,
+          "rationale": "This is the 'representational' view that the linguistic turn explicitly rejects."
+        },
+        {
+          "text": "Language is a biological trait that evolved to help humans survive.",
+          "isCorrect": false,
+          "rationale": "While true biologically, the linguistic turn focuses on how language creates social meaning and reality rather than its evolutionary roots."
+        },
+        {
+          "text": "Language does not just describe reality; it actively creates and shapes our social world and sense of self.",
+          "isCorrect": true,
+          "rationale": "This shift suggests that our psychological realities are built through the meanings we establish in communication and discourse."
+        },
+        {
+          "text": "Language is a barrier that prevents us from understanding our true, non-verbal emotions.",
+          "isCorrect": false,
+          "rationale": "Narrative psychology views language as the essential tool for creating meaning, not a hindrance to it."
+        }
+      ],
+      "hint": "Think about whether words are like mirrors reflecting the world or like tools building the world."
+    },
+    {
+      "question": "In the context of Peter Raggatt's post-structuralist view, how is the self represented?",
+      "answerOptions": [
+        {
+          "text": "As a single, dominant voice that controls all thoughts and actions.",
+          "isCorrect": false,
+          "rationale": "Post-structuralism moves away from the 'unified' self toward a 'multiplicity' of perspectives."
+        },
+        {
+          "text": "As a collection of different 'narrative voices' or positions that may even conflict with each other.",
+          "isCorrect": true,
+          "rationale": "Identity is seen as a dialogue between various parts of ourselves (e.g., 'the athlete', 'the addict') that emerge in different contexts."
+        },
+        {
+          "text": "As a series of logical steps that the brain takes to solve problems.",
+          "isCorrect": false,
+          "rationale": "This sounds more like traditional cognitive psychology focusing on information processing rather than narrative identity."
+        },
+        {
+          "text": "As a reflection of one's genetic heritage and biological temperament.",
+          "isCorrect": false,
+          "rationale": "Raggatt's focus is on the discursive and narrative construction of positions, not on innate biological traits."
+        }
+      ],
+      "hint": "Consider the idea of a 'dialogue' happening within a single person's identity."
+    },
+    {
+      "question": "What is meant by 'problem-saturated stories' in narrative therapy?",
+      "answerOptions": [
+        {
+          "text": "Stories that are so complex and long that they become difficult for a therapist to follow.",
+          "isCorrect": false,
+          "rationale": "The term 'saturated' refers to the story being overwhelmed by a specific negative theme, not its length or complexity."
+        },
+        {
+          "text": "The dominant, negative narratives people tell about themselves that leave no room for alternative interpretations.",
+          "isCorrect": true,
+          "rationale": "These stories often make a person feel powerless and define them solely by their failures or struggles."
+        },
+        {
+          "text": "Fictional stories that people invent to avoid talking about their real-life issues.",
+          "isCorrect": false,
+          "rationale": "These are 'real' lived experiences that have been interpreted in a way that highlights only the problematic aspects of a person's life."
+        },
+        {
+          "text": "A collection of biological data that proves a person has a mental disorder.",
+          "isCorrect": false,
+          "rationale": "Narrative therapy prioritizes the person's own meaning-making and stories over medicalized data."
+        }
+      ],
+      "hint": "Think of a story that is so filled with a single negative theme that it 'colors' everything else."
+    }
+  ]
+}

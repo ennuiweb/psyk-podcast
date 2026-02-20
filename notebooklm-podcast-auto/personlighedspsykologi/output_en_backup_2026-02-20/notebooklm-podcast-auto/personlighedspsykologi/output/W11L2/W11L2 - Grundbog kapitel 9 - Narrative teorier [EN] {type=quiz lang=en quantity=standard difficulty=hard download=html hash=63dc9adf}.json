@@ -1,0 +1,395 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "In the context of William James's early North American psychology, which element of the self is responsible for creating a sense of personal continuity and the experience of a 'self-reflective level'?",
+      "answerOptions": [
+        {
+          "text": "Reflexive elements",
+          "isCorrect": true,
+          "rationale": "James posits that the self-reflective level is what allows us to experience personal coherence and continuity over time, even as we evolve."
+        },
+        {
+          "text": "Material elements",
+          "isCorrect": false,
+          "rationale": "While significant, these refer to physical objects like the body, clothing, and home rather than the internal sense of continuity."
+        },
+        {
+          "text": "Social elements",
+          "isCorrect": false,
+          "rationale": "This aspect focuses on how others perceive us and the shared norms we hold, rather than the internal reflexive process of self-understanding."
+        },
+        {
+          "text": "Substantial elements",
+          "isCorrect": false,
+          "rationale": "James explicitly rejects the idea of the self as a fixed substance, viewing it instead as processual and relational."
+        }
+      ],
+      "hint": "Consider the aspect of the self that looks back upon its own experiences to forge a sense of 'oneness'."
+    },
+    {
+      "question": "George Herbert Mead’s theory of symbolic interactionism describes the self as being created through the internalization of the 'generalized other.' What does this 'generalized other' represent?",
+      "answerOptions": [
+        {
+          "text": "The collective reactions and norms of the social environment",
+          "isCorrect": true,
+          "rationale": "The generalized other is the internal representation of the community's standards and reactions, which helps shape the 'Me' aspect of the self."
+        },
+        {
+          "text": "The primary caregiver's specific expectations of the child",
+          "isCorrect": false,
+          "rationale": "This is too narrow; the concept refers to the broader social and cultural context rather than a single individual."
+        },
+        {
+          "text": "The biological drives that manifest as individual 'I' responses",
+          "isCorrect": false,
+          "rationale": "Mead distinguishes the 'I' as the spontaneous, acting subject, while the 'generalized other' relates to the socialized 'Me'."
+        },
+        {
+          "text": "A specific significant peer who acts as a mirror for the self",
+          "isCorrect": false,
+          "rationale": "The term refers to an abstract, collective social perspective rather than one specific person."
+        }
+      ],
+      "hint": "Think about how we represent the 'voice' of society within our own minds."
+    },
+    {
+      "question": "According to Martin Heidegger’s concept of 'Da-sein,' why is it impossible to understand a person as an isolated entity 'inside the head'?",
+      "answerOptions": [
+        {
+          "text": "Because humans are fundamentally 'already-in-the-world-being'",
+          "isCorrect": true,
+          "rationale": "Heidegger argues that we are situated in a pre-existing web of linguistic and cultural meanings that define our existence from the start."
+        },
+        {
+          "text": "Because the self is merely a projection of biological neurological processes",
+          "isCorrect": false,
+          "rationale": "Heidegger criticizes the reduction of the psyche to a 'thing' or biological object, focusing instead on relational existence."
+        },
+        {
+          "text": "Because social interactions are the only way to measure personality traits",
+          "isCorrect": false,
+          "rationale": "This reflects a trait-theory perspective, whereas Heidegger focuses on the ontological state of being situated in a world of meaning."
+        },
+        {
+          "text": "Because linguistic representation is always an accurate mirror of reality",
+          "isCorrect": false,
+          "rationale": "Heidegger and the subsequent linguistic turn argue that language creates meaning rather than simply mirroring an objective reality."
+        }
+      ],
+      "hint": "Consider the term used to describe our 'thrownness' into a world that already has established meanings."
+    },
+    {
+      "question": "What was the central shift in the 'Linguistic Turn' that influenced narrative psychology?",
+      "answerOptions": [
+        {
+          "text": "Language shifted from being a neutral representation of the world to a social constructor of it",
+          "isCorrect": true,
+          "rationale": "The linguistic turn challenged the idea that words just point to things, suggesting instead that language actively shapes our reality and self-perception."
+        },
+        {
+          "text": "Psychologists began using linguistic analysis to prove biological determinism",
+          "isCorrect": false,
+          "rationale": "The linguistic turn generally moved away from biological determinism toward social constructionism."
+        },
+        {
+          "text": "The focus moved from spoken narratives to the study of universal grammar",
+          "isCorrect": false,
+          "rationale": "While linguistics studies grammar, the 'turn' in psychology focused on how specific discourses and stories create meaning."
+        },
+        {
+          "text": "Language was identified as a secondary tool that reflects pre-existing mental states",
+          "isCorrect": false,
+          "rationale": "This reflects the view that the linguistic turn opposed; it argued that language is primary and constitutive, not secondary."
+        }
+      ],
+      "hint": "Think about whether words are 'windows' to a fixed reality or 'tools' that build a social one."
+    },
+    {
+      "question": "Jerome Bruner's 'cultural psychology' suggests that the human mind is formed primarily by which of the following?",
+      "answerOptions": [
+        {
+          "text": "Participation in shared symbolic systems and cultural meanings",
+          "isCorrect": true,
+          "rationale": "Bruner argues that culture, rather than biology, shapes mental life by providing the interpretive systems we use to make sense of action."
+        },
+        {
+          "text": "The mechanical processing of information via mental 'schemata'",
+          "isCorrect": false,
+          "rationale": "Bruner critiqued this view (found in early cognitive psychology) for being too passive and individualistic."
+        },
+        {
+          "text": "The evolutionary development of specialized brain regions",
+          "isCorrect": false,
+          "rationale": "Bruner acknowledges biology but insists it is culture that gives the 'backstory' and meaning to human behavior."
+        },
+        {
+          "text": "The objective identification and categorization of physical objects",
+          "isCorrect": false,
+          "rationale": "Bruner’s experiments showed that even categorization is an active, meaning-making process influenced by cultural familiarity."
+        }
+      ],
+      "hint": "Look for the factor that moves focus away from 'brain-as-computer' toward 'person-in-society'."
+    },
+    {
+      "question": "How does Bruner’s understanding of 'agency' differ from traditional cognitive psychology?",
+      "answerOptions": [
+        {
+          "text": "It views persons as active, meaning-making beings rather than passive information processors",
+          "isCorrect": true,
+          "rationale": "Agency in narrative psychology refers to the person's capacity to act intentionally and create meaning within their cultural context."
+        },
+        {
+          "text": "It defines agency as the ability of the brain to automatically update schemata",
+          "isCorrect": false,
+          "rationale": "This maintains the 'mechanical' view of the mind that Bruner sought to move beyond."
+        },
+        {
+          "text": "It suggests that agency is an illusion created by biological impulses",
+          "isCorrect": false,
+          "rationale": "This would be a deterministic view, whereas Bruner emphasizes the active role of the individual in cultural meaning-making."
+        },
+        {
+          "text": "It focuses on agency as a fixed personality trait measured by questionnaires",
+          "isCorrect": false,
+          "rationale": "Bruner views personality as a social and narrative process, not a collection of static, measurable traits."
+        }
+      ],
+      "hint": "Focus on the distinction between 'active creation' and 'passive reception'."
+    },
+    {
+      "question": "In the study of violence in Baltimore cited by the text, what was the primary reason children in impoverished areas used aggressive narrative resources?",
+      "answerOptions": [
+        {
+          "text": "They lacked access to a diverse range of alternative narrative models for conflict resolution",
+          "isCorrect": true,
+          "rationale": "The study suggests that culture 'disposes' individuals toward certain actions by providing specific stories and models for how to handle conflicts."
+        },
+        {
+          "text": "They were biologically predisposed to higher levels of adrenaline and aggression",
+          "isCorrect": false,
+          "rationale": "Narrative psychology focuses on the cultural and contextual resources available to the person rather than biological determinism."
+        },
+        {
+          "text": "The children had not yet reached the appropriate cognitive developmental stage",
+          "isCorrect": false,
+          "rationale": "The focus of the study was on the 'narrative resources' provided by the environment, not internal developmental milestones."
+        },
+        {
+          "text": "Aggression was a purely random behavior with no narrative meaning for the children",
+          "isCorrect": false,
+          "rationale": "The researchers found that the behaviors were very meaningful and rooted in stories about strength and confrontation told by their mothers."
+        }
+      ],
+      "hint": "Think about the 'tools' available in their cultural 'toolbox' for solving problems."
+    },
+    {
+      "question": "Donald Polkinghorne uses the term 'plot' (narrative configuration) to describe how we organize our lives. What is the key function of this 'plot'?",
+      "answerOptions": [
+        {
+          "text": "To integrate diverse elements like motives, events, and relationships into a meaningful whole",
+          "isCorrect": true,
+          "rationale": "A plot serves as the 'narrative configuration' that binds together past, present, and future into a cohesive identity."
+        },
+        {
+          "text": "To provide a chronological list of every event that has ever occurred to us",
+          "isCorrect": false,
+          "rationale": "A plot is not just a list; it is a selective organization that creates meaning through the relationship between events."
+        },
+        {
+          "text": "To act as a static blueprint that prevents personality from changing",
+          "isCorrect": false,
+          "rationale": "Polkinghorne views the self-as-plot as a dynamic and moving organization that can be revised as new events occur."
+        },
+        {
+          "text": "To differentiate the 'inner' true self from 'outer' social performances",
+          "isCorrect": false,
+          "rationale": "Polkinghorne sees the plot as integrating the social and the personal, rather than separating them into 'true' and 'false'."
+        }
+      ],
+      "hint": "Focus on the 'glue' that holds a story's beginning, middle, and end together."
+    },
+    {
+      "question": "Dan McAdams' integrative model of personality includes three levels. Which level is specifically responsible for providing a person with a sense of unity and purpose in life?",
+      "answerOptions": [
+        {
+          "text": "The narrative function (life stories)",
+          "isCorrect": true,
+          "rationale": "McAdams argues that while traits and adaptations describe 'what' a person is, it is the narrative level that explains 'who' they are by providing unity."
+        },
+        {
+          "text": "The five big traits",
+          "isCorrect": false,
+          "rationale": "Traits provide a broad outline of characteristics but do not offer the temporal continuity or personal purpose found in stories."
+        },
+        {
+          "text": "Characteristic adaptations",
+          "isCorrect": false,
+          "rationale": "These involve specific responses to environments (motives, goals), but they lack the overarching life-unifying power of the narrative."
+        },
+        {
+          "text": "The biological substrate",
+          "isCorrect": false,
+          "rationale": "McAdams' model is psychological; the narrative level sits 'on top' of traits and adaptations to give them a cohesive life-meaning."
+        }
+      ],
+      "hint": "Identify the level that deals with the 'story' we tell about ourselves."
+    },
+    {
+      "question": "Kenneth Gergen’s social constructionist view of the self is considered 'performative.' What does this imply about personality?",
+      "answerOptions": [
+        {
+          "text": "The self is a continuous 'becoming' that varies according to different social contexts",
+          "isCorrect": true,
+          "rationale": "Gergen rejects the 'stable core' idea, suggesting we have multiple 'self-narratives' that we deploy depending on our relational needs."
+        },
+        {
+          "text": "Personality is a role we play to hide our fixed, underlying essence",
+          "isCorrect": false,
+          "rationale": "Gergen goes further by suggesting there is no 'underlying essence' at all—the performance *is* the self."
+        },
+        {
+          "text": "A person's behavior is dictated entirely by theatrical scripts found in literature",
+          "isCorrect": false,
+          "rationale": "While we use cultural models, Gergen focuses on the relational and social creation of the self in real-time interaction."
+        },
+        {
+          "text": "We have one true 'performance' that defines our permanent identity",
+          "isCorrect": false,
+          "rationale": "Gergen advocates for a 'distributed' self, meaning we have many different ways of being ourselves in different relationships."
+        }
+      ],
+      "hint": "Consider the difference between a 'statue' (fixed) and a 'dance' (moving/relational)."
+    },
+    {
+      "question": "In Peter Raggatt’s casestudy of 'Sean,' what is the potential danger when one 'narrative voice' (such as 'the addict') becomes too dominant?",
+      "answerOptions": [
+        {
+          "text": "It can suppress other voices and become 'the' single truth that dictates all actions",
+          "isCorrect": true,
+          "rationale": "Raggatt notes that while we have multiple voices, if one dominates, it limits our agency and ability to see ourselves in other ways."
+        },
+        {
+          "text": "It leads to a biological breakdown of the brain's executive functions",
+          "isCorrect": false,
+          "rationale": "Raggatt's theory is narrative and dialogical, focusing on the organization of meaning rather than biological failure."
+        },
+        {
+          "text": "It causes the person to lose all ability to use language effectively",
+          "isCorrect": false,
+          "rationale": "The person can still speak, but their internal 'dialogue' is silenced by the weight of one specific self-story."
+        },
+        {
+          "text": "It results in the person developing multiple personality disorder",
+          "isCorrect": false,
+          "rationale": "Raggatt views a 'plurality of selves' as normal; the problem is the *loss* of this plurality when one voice takes over."
+        }
+      ],
+      "hint": "Think about what happens in a conversation when one person refuses to let anyone else speak."
+    },
+    {
+      "question": "In Michael White’s narrative therapy, what is the primary goal of 'externalization'?",
+      "answerOptions": [
+        {
+          "text": "To separate the person's identity from the problem they are experiencing",
+          "isCorrect": true,
+          "rationale": "Externalization is summarized by the phrase 'the person is not the problem; the problem is the problem,' allowing for new ways to relate to it."
+        },
+        {
+          "text": "To find the internal childhood trauma that caused the current behavior",
+          "isCorrect": false,
+          "rationale": "This is a more traditional psychoanalytic approach; narrative therapy focuses on shifting current meanings and stories."
+        },
+        {
+          "text": "To encourage the patient to project their feelings onto the therapist",
+          "isCorrect": false,
+          "rationale": "This describes 'transference,' which is a concept from psychoanalysis, not the externalization technique of narrative therapy."
+        },
+        {
+          "text": "To categorize the problem into a standard psychiatric diagnosis",
+          "isCorrect": false,
+          "rationale": "Narrative therapy is often critical of traditional diagnoses, as they tend to 'internalize' the problem within the person's identity."
+        }
+      ],
+      "hint": "Recall the slogan: 'The person is not the problem...'"
+    },
+    {
+      "question": "What does narrative psychology refer to when it discusses the 'circular relationship' between agency and disposition ('disponering')?",
+      "answerOptions": [
+        {
+          "text": "Having more narrative resources increases one's power to influence their own situation",
+          "isCorrect": true,
+          "rationale": "The text explains that agency and disposition are circular: the more ways one can narrate their life, the more influence they have, which in turn creates more resources."
+        },
+        {
+          "text": "Biology determines narrative, and narrative then changes biological structure",
+          "isCorrect": false,
+          "rationale": "While biology is part of the context, the 'circularity' specifically discussed relates to cultural resources and the capacity for action."
+        },
+        {
+          "text": "The more we talk about a problem, the more 'disposed' we are to keep it",
+          "isCorrect": false,
+          "rationale": "Narrative therapy aims to break this 'problem story' cycle by introducing 'alternative stories,' not just continuing the same talk."
+        },
+        {
+          "text": "Individuals are born with a set level of agency that culture cannot change",
+          "isCorrect": false,
+          "rationale": "The narrative view is that agency is developed through participation in cultural meaning-making and is not a fixed innate quality."
+        }
+      ],
+      "hint": "Think about how having 'more tools' (stories) helps you build 'more things' (actions)."
+    },
+    {
+      "question": "The text mentions the 1968 Olympics and the Black Power salute as an example of what narrative principle?",
+      "answerOptions": [
+        {
+          "text": "How symbols and new narratives can change cultural meaning and social possibilities",
+          "isCorrect": true,
+          "rationale": "The use of the raised fist and the story of 'Black and Proud' were new narrative tools that challenged existing racist discourses and created new identities."
+        },
+        {
+          "text": "The biological instinct for dominance in high-stress athletic environments",
+          "isCorrect": false,
+          "rationale": "The text uses this as a social and symbolic example, not a biological one."
+        },
+        {
+          "text": "The way in which athletes are uniquely disposed to have stable personalities",
+          "isCorrect": false,
+          "rationale": "The example highlights political and social change through symbols, not the stability of individual athlete personalities."
+        },
+        {
+          "text": "That personal narratives are entirely separate from political movements",
+          "isCorrect": false,
+          "rationale": "The text argues the opposite: that personal identity ('being black and proud') is woven into broader cultural and political stories."
+        }
+      ],
+      "hint": "Consider how a single gesture can tell a 'new story' for an entire group of people."
+    },
+    {
+      "question": "According to the final summary of the chapter, what is the 'stoff' (material/substance) that personality, experiences, and the social world are 'woven' from?",
+      "answerOptions": [
+        {
+          "text": "Narratives",
+          "isCorrect": true,
+          "rationale": "The chapter concludes that narratives are not just stories *about* life, but the very fabric through which we experience and create our reality."
+        },
+        {
+          "text": "Neuro-transmitters",
+          "isCorrect": false,
+          "rationale": "While neurotransmitters are biological facts, the narrative perspective views the *meaning* of life as being woven from stories."
+        },
+        {
+          "text": "Objective truths",
+          "isCorrect": false,
+          "rationale": "Narrative theory emphasizes subjective and social meaning-making over 'objective' or 'universal' truths."
+        },
+        {
+          "text": "Individual genes",
+          "isCorrect": false,
+          "rationale": "The narrative approach is a critique of the idea that genes or biology are the primary substance of the 'self'."
+        }
+      ],
+      "hint": "Recall the very first and last paragraphs of the provided text."
+    }
+  ]
+}

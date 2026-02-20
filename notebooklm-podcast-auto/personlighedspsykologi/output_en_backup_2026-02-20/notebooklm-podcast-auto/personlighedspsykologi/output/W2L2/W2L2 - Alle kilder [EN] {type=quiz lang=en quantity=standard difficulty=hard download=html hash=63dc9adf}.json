@@ -1,0 +1,265 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "According to the meta-analysis by Bleidorn et al. (2022), at what approximate age does the rank-order stability of personality traits reach a plateau, challenging earlier findings of continued increases through middle age?",
+      "answerOptions": [
+        {
+          "text": "Age 25",
+          "isCorrect": true,
+          "rationale": "The study found that increases in stability coincide with early maturity but reach a peak and plateau around this age, with little evidence for further increases thereafter."
+        },
+        {
+          "text": "Age 50",
+          "isCorrect": false,
+          "rationale": "While earlier meta-analyses suggested peak stability levels around this age, the current findings indicate the plateau occurs much earlier."
+        },
+        {
+          "text": "Age 30",
+          "isCorrect": false,
+          "rationale": "This age was previously cited in the 'cumulative continuity principle' as a key point of stabilization, but the new data suggests a plateau by the mid-twenties."
+        },
+        {
+          "text": "Age 65",
+          "isCorrect": false,
+          "rationale": "This age marks the transition to late adulthood, where some models actually suggest a potential decrease in stability rather than a peak."
+        }
+      ],
+      "hint": "Consider the transition point into young adulthood where personality differences typically crystallize."
+    },
+    {
+      "question": "Which specific Big Five trait was found to increase more substantially and consistently across the entire life span than suggested by previous meta-analytic estimates?",
+      "answerOptions": [
+        {
+          "text": "Emotional Stability",
+          "isCorrect": true,
+          "rationale": "The synthesis revealed that this trait increases monotonically and more significantly across the life span than previously estimated, amounting to nearly $1.50$ standard deviations."
+        },
+        {
+          "text": "Conscientiousness",
+          "isCorrect": false,
+          "rationale": "Although this trait increases significantly during young adulthood, its trajectory actually shows declines in late adulthood."
+        },
+        {
+          "text": "Agreeableness",
+          "isCorrect": false,
+          "rationale": "Increases in this trait were found to be less pronounced past Age 20 compared to the continuous growth seen in other maturity-related traits."
+        },
+        {
+          "text": "Openness to Experience",
+          "isCorrect": false,
+          "rationale": "This trait typically shows a curvilinear pattern, with gains in early life followed by decreases in older age."
+        }
+      ],
+      "hint": "This trait is often associated with the 'paradox of aging' and improved well-being in later life."
+    },
+    {
+      "question": "The meta-analysis evaluated moderators of rank-order stability. How did the stability of maladaptive traits compare to normal-range adaptive traits in nonclinical samples?",
+      "answerOptions": [
+        {
+          "text": "Maladaptive traits were significantly less stable.",
+          "isCorrect": true,
+          "rationale": "The moderator analysis indicated a negative coefficient ($b = -0.101$), confirming that traits indicative of personality problems are more prone to rank-order change."
+        },
+        {
+          "text": "Maladaptive traits were significantly more stable.",
+          "isCorrect": false,
+          "rationale": "Clinical research and the present meta-analysis suggest that personality problems are generally less enduring than healthy trait profiles."
+        },
+        {
+          "text": "There was no significant difference in stability.",
+          "isCorrect": false,
+          "rationale": "The study identified maladaptive measurement as one of the few significant moderators that statistically accounted for between-study heterogeneity."
+        },
+        {
+          "text": "Maladaptive traits only showed lower stability in children.",
+          "isCorrect": false,
+          "rationale": "The findings regarding maladaptive traits generalized across the meta-analytic database, which included adult samples."
+        }
+      ],
+      "hint": "Think about whether personality 'problems' or 'dysfunctions' tend to be more or less volatile than standard traits."
+    },
+    {
+      "question": "In the context of the 'maturity principle,' which trait demonstrated a 'u-shaped' rate of change where it decreased in early adolescence, peaked around Age 20, and returned to adolescent levels by Age 80?",
+      "answerOptions": [
+        {
+          "text": "Conscientiousness",
+          "isCorrect": true,
+          "rationale": "The model-implied rate of change for this trait shows a dip in adolescence, a significant spike at Age 20, and a return to negative rates of change in late life."
+        },
+        {
+          "text": "Extraversion",
+          "isCorrect": false,
+          "rationale": "This trait displays relatively little cumulative change early on and follows a slow decline in midlife and old age."
+        },
+        {
+          "text": "Openness to Experience",
+          "isCorrect": false,
+          "rationale": "While it increases in early adulthood, its overall life span trajectory is marked by a steady decrease of about $0.50$ standard deviations through adulthood."
+        },
+        {
+          "text": "Emotional Stability",
+          "isCorrect": false,
+          "rationale": "This trait follows a relatively linear, monotonically increasing trend rather than a fluctuating U-shaped trajectory."
+        }
+      ],
+      "hint": "Consider the trait most closely tied to impulse control and social role investment."
+    },
+    {
+      "question": "What proportion of between-study heterogeneity in mean-level change was accounted for by the best-fitting spline model including age and time lag?",
+      "answerOptions": [
+        {
+          "text": "$5.73\\%$",
+          "isCorrect": true,
+          "rationale": "In contrast to rank-order stability, age and time lag accounted for a very small amount of variance in mean-level change studies."
+        },
+        {
+          "text": "$41.67\\%$",
+          "isCorrect": false,
+          "rationale": "This higher percentage refers to the amount of heterogeneity accounted for in the rank-order stability models."
+        },
+        {
+          "text": "$25.76\\%$",
+          "isCorrect": false,
+          "rationale": "This value represents the variance explained by the simple linear model of age and time lag for rank-order stability."
+        },
+        {
+          "text": "$10.19\\%$",
+          "isCorrect": false,
+          "rationale": "This figure represents the heterogeneity accounted for when trait-specific age trends were included in the mean-level change model."
+        }
+      ],
+      "hint": "Recall the authors' discussion on how much we still do not know about the causes of average population shifts in personality."
+    },
+    {
+      "question": "Based on the exponential modeling of time-related decay, what is the expected decrease in rank-order stability for a study tracking participants across a $50$-year interval?",
+      "answerOptions": [
+        {
+          "text": "$0.319$ correlation units",
+          "isCorrect": true,
+          "rationale": "The exponential model implies that by $50$ years, $99.8\\%$ of the total possible decay in stability has occurred."
+        },
+        {
+          "text": "$0.036$ correlation units",
+          "isCorrect": false,
+          "rationale": "This value represents the expected decrease for a very short $1$-year time interval."
+        },
+        {
+          "text": "$0.225$ correlation units",
+          "isCorrect": false,
+          "rationale": "This figure represents the decay expected over a $10$-year period, representing about $70\\%$ of the total potential decrease."
+        },
+        {
+          "text": "$0.608$ correlation units",
+          "isCorrect": false,
+          "rationale": "This is the mean effect size for stability across all studies, not the amount of decay over time."
+        }
+      ],
+      "hint": "This value represents the maximum asymptotic decay identified in the long-term longitudinal models."
+    },
+    {
+      "question": "Which measurement property was associated with significantly *higher* estimates of test–retest stability in the moderator analyses?",
+      "answerOptions": [
+        {
+          "text": "Big Five taxonomy measures",
+          "isCorrect": true,
+          "rationale": "Inventory scales specifically designed in the tradition of the Big Five/Five-Factor Model were found to be more stable ($b = 0.055$) than other measures."
+        },
+        {
+          "text": "Narrow facet-level measures",
+          "isCorrect": false,
+          "rationale": "Facet-level measures tended to be less stable than broader domain-level measures in this meta-analysis."
+        },
+        {
+          "text": "Other-report instruments",
+          "isCorrect": false,
+          "rationale": "While other-reports were high in early life, they did not emerge as a moderator of higher stability across the full adult database."
+        },
+        {
+          "text": "Representative panel samples",
+          "isCorrect": false,
+          "rationale": "Representative studies actually appeared slightly less stable, though the confidence interval included zero."
+        }
+      ],
+      "hint": "Consider the impact of using standardized, contemporary trait models compared to older or 'boutique' measures."
+    },
+    {
+      "question": "In the context of structural equation modeling for longitudinal data, which form of measurement invariance is described as a 'necessary condition' for the meaningful interpretation of mean-level change?",
+      "answerOptions": [
+        {
+          "text": "Scalar invariance",
+          "isCorrect": true,
+          "rationale": "Scalar invariance, which involves the invariance of item intercepts, is required to ensure that shifts in means reflect true psychological change rather than measurement artifacts."
+        },
+        {
+          "text": "Metric invariance",
+          "isCorrect": false,
+          "rationale": "Metric invariance (invariance of factor loadings) is the necessary condition for interpreting rank-order stability coefficients, not mean-level change."
+        },
+        {
+          "text": "Configural invariance",
+          "isCorrect": false,
+          "rationale": "Configural invariance is the most basic form and is insufficient on its own to allow for the comparison of latent means over time."
+        },
+        {
+          "text": "Residual invariance",
+          "isCorrect": false,
+          "rationale": "Residual invariance refers to the equality of item error variances, which is a stricter requirement usually not necessary for mean comparisons."
+        }
+      ],
+      "hint": "This type of invariance ensures that the zero-point or 'intercept' of the scale remains constant across assessment waves."
+    },
+    {
+      "question": "How did the findings of Bleidorn et al. (2022) regarding Agreeableness in middle adulthood differ from the standard 'maturity principle' expectations?",
+      "answerOptions": [
+        {
+          "text": "Agreeableness did not show continued increases past Age 20.",
+          "isCorrect": true,
+          "rationale": "While Emotional Stability and Conscientiousness continued to rise, Agreeableness plateaued early, requiring a revision of the principle's uniformity."
+        },
+        {
+          "text": "Agreeableness increased more rapidly in late life than in young adulthood.",
+          "isCorrect": false,
+          "rationale": "The cumulative change plot for Agreeableness shows it increases primarily in early adulthood and actually decreases slightly after Age 60."
+        },
+        {
+          "text": "Agreeableness was found to be the most rank-order stable trait.",
+          "isCorrect": false,
+          "rationale": "Extraversion and Openness were actually found to be the most stable trait domains in the meta-regression."
+        },
+        {
+          "text": "Agreeableness showed zero mean-level change across the entire life span.",
+          "isCorrect": false,
+          "rationale": "Agreeableness does show a cumulative increase of about $0.50$ standard deviations, but these gains are concentrated in early life."
+        }
+      ],
+      "hint": "Look for a deviation from the idea that all 'mature' traits increase steadily throughout midlife."
+    },
+    {
+      "question": "What was the observed relationship between time lag and mean-level change, and what does this suggest about the nature of personality shifts?",
+      "answerOptions": [
+        {
+          "text": "Longer lags are associated with more change, speaking against strict set-point models.",
+          "isCorrect": true,
+          "rationale": "The positive association ($b = 0.008$) suggests that changes are lasting and cumulative rather than temporary fluctuations around a biological set-point."
+        },
+        {
+          "text": "Longer lags are associated with less change, suggesting a return to biological baselines.",
+          "isCorrect": false,
+          "rationale": "If traits were strict set-points, we would expect change to disappear over time as people drift back to predisposed levels, which was not the case."
+        },
+        {
+          "text": "Time lag had no impact on mean-level change, indicating practice effects are the primary driver.",
+          "isCorrect": false,
+          "rationale": "The significant role of time lag suggests that observed differences are due to true trait development rather than just the effects of re-testing."
+        },
+        {
+          "text": "Time lag only increased change for adolescents, not adults.",
+          "isCorrect": false,
+          "rationale": "The positive association between time and mean-level change was a general finding across the database."
+        }
+      ],
+      "hint": "Consider whether personality is more like a 'metabolic set point' or a 'dynamic characteristic' that accumulates shifts over time."
+    }
+  ]
+}

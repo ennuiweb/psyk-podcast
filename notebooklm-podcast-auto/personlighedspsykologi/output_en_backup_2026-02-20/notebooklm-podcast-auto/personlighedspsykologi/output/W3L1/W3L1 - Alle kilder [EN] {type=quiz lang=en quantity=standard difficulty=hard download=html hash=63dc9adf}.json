@@ -1,0 +1,265 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "According to the review by Kandler and Instinske (2025), what primary factor accounts for the 'missing heritability' gap between SNP-based estimates ($h^2_{SNP} \\approx 13\\%$) and classical twin study estimates ($h^2_{Twin} \\approx 47\\%$)?",
+      "answerOptions": [
+        {
+          "text": "The inclusion of nonadditive genetic effects and rare genetic variants in family-based designs.",
+          "isCorrect": true,
+          "rationale": "Twin and family studies capture nonadditive effects ($na^2$) and rare variants ($< 1\\%$ frequency) that standard SNP-heritability analyses typically omit."
+        },
+        {
+          "text": "The systematic underestimation of random measurement error in genome-wide association studies.",
+          "isCorrect": false,
+          "rationale": "While measurement error affects all studies, it does not specifically explain the structural gap between molecular and biometric heritability estimates."
+        },
+        {
+          "text": "A violation of the equal environment assumption that artificially inflates SNP-heritability.",
+          "isCorrect": false,
+          "rationale": "Violations of this assumption would typically lead to an overestimation of twin heritability, not an inflation of SNP-heritability."
+        },
+        {
+          "text": "The transition from polygenic models to omnigenic models of trait inheritance.",
+          "isCorrect": false,
+          "rationale": "While the omnigenic model provides a broader view of inheritance, the missing heritability specifically refers to the variance captured by measured SNPs versus total genetic variance."
+        }
+      ],
+      "hint": "Consider the differences between common genetic units measured in GWAS and the total genetic overlap between close relatives."
+    },
+    {
+      "question": "Based on Figure 2 and the accompanying text in Kandler and Instinske (2025), how does the genetic contribution to personality variance typically shift across the human lifespan?",
+      "answerOptions": [
+        {
+          "text": "It remains stable from childhood through late adulthood as a baseline trait characteristic.",
+          "isCorrect": false,
+          "rationale": "Empirical evidence suggests that the relative proportions of variance sources are dynamic rather than static across development."
+        },
+        {
+          "text": "It increases from childhood to young adulthood, reaches a plateau, and then decreases during adulthood.",
+          "isCorrect": true,
+          "rationale": "Active gene-environment transactions increase heritability through adolescence, while unique environmental experiences increasingly individualize people in later life."
+        },
+        {
+          "text": "It is highest in childhood due to parental influence and linearly declines until death.",
+          "isCorrect": false,
+          "rationale": "Childhood variance is actually more influenced by shared environments, with genetic expression expanding as individuals gain autonomy."
+        },
+        {
+          "text": "It follows a non-linear U-shaped curve, being lowest in middle adulthood due to occupational stability.",
+          "isCorrect": false,
+          "rationale": "Research shows a peak or plateau in young adulthood rather than a dip during the middle years."
+        }
+      ],
+      "hint": "Think about the relationship between increasing individual independence and the active selection of environments that match one's predispositions."
+    },
+    {
+      "question": "In the evolutionary framework provided by Volk and Puchalski (2025), the 'adaptive calibration' of personality traits is best exemplified by which of the following?",
+      "answerOptions": [
+        {
+          "text": "The use of factor-analytical analyses to reduce language adjectives into five independent dimensions.",
+          "isCorrect": false,
+          "rationale": "This describes the bottom-up lexical approach, which the authors contrast with top-down evolutionary theories."
+        },
+        {
+          "text": "The development of higher trait anger in individuals with greater physical formidability.",
+          "isCorrect": true,
+          "rationale": "Adaptive calibration suggests that traits like anger adjust based on individual costs and benefits, such as the ability to successfully win conflicts."
+        },
+        {
+          "text": "The maintenance of trait variation through random mutations that are ignored by natural selection.",
+          "isCorrect": false,
+          "rationale": "Calibration refers to the active or passive adjustment of trait expression to the environment, not just the existence of genetic noise."
+        },
+        {
+          "text": "The universal preference for high levels of Extraversion across all historical hunter-gatherer societies.",
+          "isCorrect": false,
+          "rationale": "Evolutionary theory emphasizes trade-offs where different levels are beneficial depending on context, rather than a single universal optimum."
+        }
+      ],
+      "hint": "Focus on the mechanism by which an individual's specific physical or environmental circumstances dictate their behavioral strategies."
+    },
+    {
+      "question": "Volk and Puchalski (2025) argue that the HEXACO model possesses better 'evolutionary theory validity' than the Big Five because its traits are directly linked to which biological theories?",
+      "answerOptions": [
+        {
+          "text": "The dual-inheritance theory of gene-culture coevolution.",
+          "isCorrect": false,
+          "rationale": "While relevant to personality, this theory is not the primary justification given for the HEXACO's specific factor structure."
+        },
+        {
+          "text": "Kin selection and reciprocal altruism.",
+          "isCorrect": true,
+          "rationale": "HEXACO Emotionality is linked to kin selection, while Honesty-Humility and Agreeableness are linked to the mechanisms of cooperation and exploitation."
+        },
+        {
+          "text": "Somatic effort and the 'selfish gene' hypothesis of mortality.",
+          "isCorrect": false,
+          "rationale": "Though somatic effort is mentioned in broader life history contexts, the core structural advantage cited is the link to specific cooperative strategies."
+        },
+        {
+          "text": "The Red Queen hypothesis and frequency-dependent selection.",
+          "isCorrect": false,
+          "rationale": "These concepts explain why variation exists, but the HEXACO's specific categories are mapped to the biological roots of social behavior."
+        }
+      ],
+      "hint": "Consider the biological mechanisms that allow for altruistic behavior toward relatives versus unrelated individuals."
+    },
+    {
+      "question": "Zettler et al. (2025) proposed that aversive societal conditions (ASC) increase the Dark Factor of Personality (D) because higher levels of D serve as:",
+      "answerOptions": [
+        {
+          "text": "A maladaptive byproduct of cognitive deficits commonly found in impoverished regions.",
+          "isCorrect": false,
+          "rationale": "The authors argue that high D is often an adaptive strategy rather than a sign of impairment or deficit."
+        },
+        {
+          "text": "An adaptive response to situational demands to avoid being exploited by others.",
+          "isCorrect": true,
+          "rationale": "In aversive environments where exploitation is common, selfish and distrusting tendencies help individuals protect their own utility."
+        },
+        {
+          "text": "A genetic mutation triggered by the physiological stress of living in high-violence states.",
+          "isCorrect": false,
+          "rationale": "The study focuses on socioecological shaping and phenotypic plasticity, not the emergence of new genetic mutations."
+        },
+        {
+          "text": "A social learning outcome where individuals replicate the altruistic behaviors of the ruling elite.",
+          "isCorrect": false,
+          "rationale": "ASC environments are characterized by corruption and rule violations, which would lead to the learning of aversive rather than altruistic norms."
+        }
+      ],
+      "hint": "Look for a reasoning based on behavioral ecology and the necessity of self-protection in unpredictable social environments."
+    },
+    {
+      "question": "In the study by Zettler et al. (2025), why did the researchers use an ASC index assessed 20 years prior to the measurement of the Dark Factor (D)?",
+      "answerOptions": [
+        {
+          "text": "To align the data with the average generation time of the human reproductive cycle.",
+          "isCorrect": false,
+          "rationale": "While interesting, the lag was chosen for methodological control over the direction of influence rather than biological cycles."
+        },
+        {
+          "text": "To ensure that the observed societal conditions could have shaped the participants' personality during development while excluding reverse causality.",
+          "isCorrect": true,
+          "rationale": "A 20-year lag makes it unlikely that the participants' current personality levels were the cause of the historical societal conditions."
+        },
+        {
+          "text": "To maximize the likelihood of finding significant results, as personality effects dissipate over shorter durations.",
+          "isCorrect": false,
+          "rationale": "The logic was about causality and developmental timing, as societal effects on traits are expected to be enduring once established."
+        },
+        {
+          "text": "Because historical data on corruption and inequality are more 'objective' than real-time assessments.",
+          "isCorrect": false,
+          "rationale": "Objective data can be collected in real-time; the lag serves specifically to clarify the direction of the longitudinal relationship."
+        }
+      ],
+      "hint": "Think about the 'chicken and egg' problem in cross-sectional research and how a time gap might solve it."
+    },
+    {
+      "question": "Regarding the environmental sources of personality, what does the term 'poly-environmental' signify in the context of Kandler and Instinske's (2025) review?",
+      "answerOptions": [
+        {
+          "text": "That environmental effects are only relevant when they occur across multiple distinct cultural settings.",
+          "isCorrect": false,
+          "rationale": "Poly-environmental refers to the number and size of influences within a person's life, not the number of cultures."
+        },
+        {
+          "text": "That personality differences are driven by an aggregate of numerous specific experiences, each having a very small individual effect.",
+          "isCorrect": true,
+          "rationale": "Similar to polygenicity, single life events rarely explain much variance, but the sum of many small experiences accounts for the environmental component."
+        },
+        {
+          "text": "That humans have evolved to ignore the environment to maintain trait stability across different ecological niches.",
+          "isCorrect": false,
+          "rationale": "The review emphasizes that environments are a major source of individual uniqueness rather than something humans ignore."
+        },
+        {
+          "text": "That shared family environments are the primary drivers of individualization in twins.",
+          "isCorrect": false,
+          "rationale": "Nonshared (individually unique) environments are actually identified as the primary source of environmental variance."
+        }
+      ],
+      "hint": "Consider the parallel between 'polygenic' (many genes with small effects) and this environmental concept."
+    },
+    {
+      "question": "Which finding from multi-rater studies (e.g., self-report plus informant-report) mentioned in the source materials contradicts typical single-method personality findings?",
+      "answerOptions": [
+        {
+          "text": "Heritability estimates tend to decrease when multiple perspectives are combined.",
+          "isCorrect": false,
+          "rationale": "The sources state that multi-rater scores often yield higher heritability estimates by reducing rater bias and measurement error."
+        },
+        {
+          "text": "Family similarities are often lower in informant-ratings compared to self-reports.",
+          "isCorrect": true,
+          "rationale": "Self-reports contain heritable rater-specific variance that can inflate similarities between related individuals who view themselves similarly."
+        },
+        {
+          "text": "Shared environmental influences ($se^2$) vanish entirely when observer ratings are used.",
+          "isCorrect": false,
+          "rationale": "While shared environment is often small, multi-rater designs focus primarily on improving the accuracy of genetic and nonshared environmental estimates."
+        },
+        {
+          "text": "Informant-reports are significantly less accurate at predicting behaviors than self-reports.",
+          "isCorrect": false,
+          "rationale": "Multi-rater approaches are advocated specifically because informant-reports provide unique and valid information that self-reports miss."
+        }
+      ],
+      "hint": "Think about the impact of 'rater-specific' influences on the calculation of heritability."
+    },
+    {
+      "question": "Volk and Puchalski (2025) cite several 'hallmarks' to argue that psychopathy may be an adaptive strategy rather than a simple disorder. Which of the following is NOT one of those hallmarks?",
+      "answerOptions": [
+        {
+          "text": "Proficiency at recognizing vulnerability in others and exploiting them.",
+          "isCorrect": false,
+          "rationale": "This is listed as a functional skill that supports the adaptive nature of the psychopathic phenotype."
+        },
+        {
+          "text": "Achievement of significant reproductive outputs.",
+          "isCorrect": false,
+          "rationale": "High reproductive success is a key indicator of evolutionary fitness."
+        },
+        {
+          "text": "A general presence of cognitive deficits such as low $IQ$ and brain damage.",
+          "isCorrect": true,
+          "rationale": "The authors state that psychopaths lack these general deficits, distinguishing them from other 'disordered' criminal populations."
+        },
+        {
+          "text": "Responsiveness to hostile developmental environments.",
+          "isCorrect": false,
+          "rationale": "Being calibrated by the environment suggests a functional, conditional strategy rather than a broken mechanism."
+        }
+      ],
+      "hint": "Identify which of these options describes a biological 'defect' versus a 'functional adaptation'."
+    },
+    {
+      "question": "According to the ETFS results in Kandler and Instinske (2025), shared environmental influences ($se^2$) on Neuroticism were primarily observed in which group?",
+      "answerOptions": [
+        {
+          "text": "Genetically identical twins living in different households.",
+          "isCorrect": false,
+          "rationale": "Shared environment refers to influences that make individuals living together more similar; if they live apart, these effects are not 'shared' in the traditional sense."
+        },
+        {
+          "text": "Individuals aged 18 years or younger who still live with their parents.",
+          "isCorrect": true,
+          "rationale": "Shared household effects are most prominent when siblings are still under the same roof and same-age transitions occur."
+        },
+        {
+          "text": "Older adults who have established long-term romantic partnerships.",
+          "isCorrect": false,
+          "rationale": "In older adults, individualizing unique environmental influences tend to dominate the variance profile."
+        },
+        {
+          "text": "Genetically unrelated individuals who share similar occupational backgrounds.",
+          "isCorrect": false,
+          "rationale": "The study specifically highlights family/twin shared environments in early development rather than professional similarities."
+        }
+      ],
+      "hint": "Focus on the developmental stage where 'common household' factors are most influential."
+    }
+  ]
+}

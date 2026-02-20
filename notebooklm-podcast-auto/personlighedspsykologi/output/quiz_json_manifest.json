@@ -1,9 +1,9 @@
 {
   "root": "/Users/oskar/repo/podcasts/notebooklm-podcast-auto/personlighedspsykologi/output",
-  "total_quiz_html": 264,
+  "total_quiz_html": 267,
   "writes": 0,
   "planned_writes": 0,
-  "skipped_existing": 264,
+  "skipped_existing": 267,
   "failures": 0,
   "files": [
     {
@@ -121,6 +121,30 @@
     {
       "source_html": "W10L2/W10L2 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.html",
       "output_json": "W10L2/W10L2 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json",
+      "status": "skipped-existing",
+      "week_token": "W10L2",
+      "difficulty": "medium",
+      "question_count": 10
+    },
+    {
+      "source_html": "W10L2/W10L2 - Foucault, M. (1997). s. 281-301 [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.html",
+      "output_json": "W10L2/W10L2 - Foucault, M. (1997). s. 281-301 [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json",
+      "status": "skipped-existing",
+      "week_token": "W10L2",
+      "difficulty": "easy",
+      "question_count": 10
+    },
+    {
+      "source_html": "W10L2/W10L2 - Foucault, M. (1997). s. 281-301 [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.html",
+      "output_json": "W10L2/W10L2 - Foucault, M. (1997). s. 281-301 [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json",
+      "status": "skipped-existing",
+      "week_token": "W10L2",
+      "difficulty": "hard",
+      "question_count": 12
+    },
+    {
+      "source_html": "W10L2/W10L2 - Foucault, M. (1997). s. 281-301 [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.html",
+      "output_json": "W10L2/W10L2 - Foucault, M. (1997). s. 281-301 [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json",
       "status": "skipped-existing",
       "week_token": "W10L2",
       "difficulty": "medium",

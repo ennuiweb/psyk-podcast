@@ -1,0 +1,265 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "According to the Bleidorn et al. (2022) meta-analysis, at what approximate age does the rank-order stability of personality traits typically reach a plateau?",
+      "answerOptions": [
+        {
+          "text": "Age 18",
+          "isCorrect": false,
+          "rationale": "While adolescence is a period of significant development, stability continues to increase into early adulthood."
+        },
+        {
+          "text": "Age 25",
+          "isCorrect": true,
+          "rationale": "The meta-analysis found little evidence for significant increases in rank-order stability after this age, contrary to some older findings suggesting increases until age 50."
+        },
+        {
+          "text": "Age 50",
+          "isCorrect": false,
+          "rationale": "Previous research suggested peak stability at this age, but newer data indicates the plateau occurs much earlier."
+        },
+        {
+          "text": "Age 65",
+          "isCorrect": false,
+          "rationale": "This age marks the transition to late adulthood, where some data actually suggests stability might begin to decrease slightly."
+        }
+      ],
+      "hint": "Consider the transition period between emerging adulthood and full adult roles."
+    },
+    {
+      "question": "What is the general effect of increasing the time interval between personality assessments on rank-order stability coefficients ($r$)?",
+      "answerOptions": [
+        {
+          "text": "Stability coefficients increase over time.",
+          "isCorrect": false,
+          "rationale": "Longer durations allow for more life experiences that can alter an individual's relative standing compared to others."
+        },
+        {
+          "text": "Stability coefficients remain constant regardless of the interval.",
+          "isCorrect": false,
+          "rationale": "Personality is dynamic, and the degree of consistency is sensitive to the length of time between measurements."
+        },
+        {
+          "text": "Stability coefficients decrease as the interval increases.",
+          "isCorrect": true,
+          "rationale": "Rank-order correlations tend to decline as time passes, though they typically plateau at a modest value rather than reaching zero."
+        },
+        {
+          "text": "Stability coefficients only decrease for participants under age 30.",
+          "isCorrect": false,
+          "rationale": "The decay of stability over time is observed across all age groups, though the starting baseline stability varies by age."
+        }
+      ],
+      "hint": "Think about how life events over 20 years might change a person more than events over 1 year."
+    },
+    {
+      "question": "The 'maturity principle' of personality development suggests that as people age, they tend to increase in which specific trait domains?",
+      "answerOptions": [
+        {
+          "text": "Extraversion and Openness to Experience",
+          "isCorrect": false,
+          "rationale": "These traits show more complex, sometimes curvilinear, or decreasing trajectories across the lifespan."
+        },
+        {
+          "text": "Emotional Stability, Agreeableness, and Conscientiousness",
+          "isCorrect": true,
+          "rationale": "These domains are associated with psychological maturity and typically show mean-level increases throughout adulthood."
+        },
+        {
+          "text": "Only Conscientiousness",
+          "isCorrect": false,
+          "rationale": "While this trait is a key component, the maturity principle encompasses a broader shift across multiple 'mature' domains."
+        },
+        {
+          "text": "Neuroticism and Social Vitality",
+          "isCorrect": false,
+          "rationale": "Increases in Neuroticism (low Emotional Stability) would represent the opposite of psychological maturity."
+        }
+      ],
+      "hint": "Focus on the traits that reflect becoming a more responsible and emotionally balanced member of society."
+    },
+    {
+      "question": "How do maladaptive trait measures compare to normal-range (adaptive) trait measures in terms of rank-order stability?",
+      "answerOptions": [
+        {
+          "text": "Maladaptive traits are significantly more stable.",
+          "isCorrect": false,
+          "rationale": "Clinical research and this meta-analysis suggest that personality problems may be more prone to fluctuation or change than healthy traits."
+        },
+        {
+          "text": "There is no difference in stability between the two.",
+          "isCorrect": false,
+          "rationale": "Moderator analyses identified trait type as a factor that statistically influences stability estimates."
+        },
+        {
+          "text": "Maladaptive traits tend to be less stable than adaptive traits.",
+          "isCorrect": true,
+          "rationale": "The findings indicated that measures of personality problems or maladaptive behaviors show lower test-retest correlations over time."
+        },
+        {
+          "text": "Maladaptive traits only show stability in clinical samples.",
+          "isCorrect": false,
+          "rationale": "The study found these patterns even when measuring maladaptive traits within non-clinical, general population samples."
+        }
+      ],
+      "hint": "Consider if personality 'problems' are as enduring as 'normal' personality traits."
+    },
+    {
+      "question": "Which of the following is true regarding mean-level changes in Emotional Stability during late adulthood (after Age 60)?",
+      "answerOptions": [
+        {
+          "text": "It decreases significantly due to the 'paradox of aging'.",
+          "isCorrect": false,
+          "rationale": "The 'paradox of aging' actually refers to the maintenance or increase of well-being despite physical decline."
+        },
+        {
+          "text": "It continues to increase substantially throughout the lifespan.",
+          "isCorrect": true,
+          "rationale": "Unlike other traits that may decline in old age, Emotional Stability shows a consistent, monotonically increasing trend."
+        },
+        {
+          "text": "It reaches a peak at Age 25 and then stays flat.",
+          "isCorrect": false,
+          "rationale": "While stability (rank-order) plateaus, the actual level (mean-level) of the trait continues to rise."
+        },
+        {
+          "text": "It only increases for individuals in Northern Europe.",
+          "isCorrect": false,
+          "rationale": "While Western samples were overrepresented, the study found these patterns generally held across various regions."
+        }
+      ],
+      "hint": "Recall which trait seems to be the exception to late-life declines in maturity-related domains."
+    },
+    {
+      "question": "In the context of the meta-analysis, what is the significance of establishing 'scalar' measurement invariance?",
+      "answerOptions": [
+        {
+          "text": "It is necessary to interpret rank-order stability coefficients.",
+          "isCorrect": false,
+          "rationale": "Metric invariance is the minimum requirement for rank-order stability; scalar invariance is more stringent."
+        },
+        {
+          "text": "It is required to meaningfully interpret mean-level changes over time.",
+          "isCorrect": true,
+          "rationale": "Scalar invariance ensures that item intercepts are consistent, meaning changes in scores reflect true changes in the construct level."
+        },
+        {
+          "text": "It proves that the sample is nationally representative.",
+          "isCorrect": false,
+          "rationale": "Measurement invariance relates to the properties of the assessment tool, not the demographic nature of the participants."
+        },
+        {
+          "text": "It is only relevant for cross-sectional studies.",
+          "isCorrect": false,
+          "rationale": "It is a critical requirement for longitudinal research to ensure the same 'scale' is being used at different time points."
+        }
+      ],
+      "hint": "This type of invariance is about the equality of item intercepts across assessment waves."
+    },
+    {
+      "question": "According to the moderator analyses, how does the generality of a trait measure (broad domain vs. narrow facet) affect its rank-order stability?",
+      "answerOptions": [
+        {
+          "text": "Narrow facet-level measures are more stable than broad domains.",
+          "isCorrect": false,
+          "rationale": "Broader measures typically benefit from the principle of aggregation, reducing the impact of specific measurement error."
+        },
+        {
+          "text": "Broad domain measures tend to be more stable than narrow facets.",
+          "isCorrect": true,
+          "rationale": "The meta-analysis found that narrow and maladaptive traits were less stable than broader, adaptive trait measures."
+        },
+        {
+          "text": "There is no difference in stability based on measure breadth.",
+          "isCorrect": false,
+          "rationale": "The study found a small but statistically significant difference between these levels of the personality hierarchy."
+        },
+        {
+          "text": "Stability depends solely on the number of items, not the breadth.",
+          "isCorrect": false,
+          "rationale": "While item count affects reliability, the conceptual level of the trait itself was found to be a moderator."
+        }
+      ],
+      "hint": "Think about whether a general trait like 'Conscientiousness' is more consistent than a specific one like 'Orderliness'."
+    },
+    {
+      "question": "What percentage of the between-study heterogeneity for mean-level change ($d$) was accounted for by the best-fitting model including age and time lag?",
+      "answerOptions": [
+        {
+          "text": "Approximately $5.7\\%$",
+          "isCorrect": true,
+          "rationale": "Age and time lag explained a surprisingly small amount of the variance in mean-level change results across studies."
+        },
+        {
+          "text": "Approximately $41.7\\%$",
+          "isCorrect": false,
+          "rationale": "This higher value corresponds to the variance explained for rank-order stability, not mean-level change."
+        },
+        {
+          "text": "Over $90\\%$",
+          "isCorrect": false,
+          "rationale": "Most of the reasons why different studies find different amounts of change remain unexplained by standard moderators."
+        },
+        {
+          "text": "Nearly $0\\%$",
+          "isCorrect": false,
+          "rationale": "While low, these factors did contribute some statistically significant explanatory power to the model."
+        }
+      ],
+      "hint": "The study noted that mean-level change was much harder to predict than rank-order stability."
+    },
+    {
+      "question": "Which developmental period shows the most rapid increase in the rank-order stability of personality traits?",
+      "answerOptions": [
+        {
+          "text": "From birth to Age 10",
+          "isCorrect": false,
+          "rationale": "Stability is quite low and changes are less predictable in the very first decade of life."
+        },
+        {
+          "text": "From Age 10 to Age 20",
+          "isCorrect": true,
+          "rationale": "The best-fitting spline model indicated that stability increases most sharply during the transition from childhood through adolescence."
+        },
+        {
+          "text": "From Age 40 to Age 50",
+          "isCorrect": false,
+          "rationale": "By this stage of life, rank-order stability has already reached a high plateau."
+        },
+        {
+          "text": "During the transition to retirement (Age 60-70)",
+          "isCorrect": false,
+          "rationale": "Stability tends to remain constant or even slightly decline during the transition into late adulthood."
+        }
+      ],
+      "hint": "Identify the life stage where individual differences in 'who you are' begin to solidify most quickly."
+    },
+    {
+      "question": "How did measurement reliability (as indicated by Cronbach's $\\alpha$) relate to the findings for rank-order stability and mean-level change?",
+      "answerOptions": [
+        {
+          "text": "Higher reliability was associated with larger estimates of both stability and change.",
+          "isCorrect": true,
+          "rationale": "Measures with less measurement error (higher $\\alpha$) more accurately capture the underlying signals of both consistency and developmental shifts."
+        },
+        {
+          "text": "Higher reliability only affected mean-level change estimates.",
+          "isCorrect": false,
+          "rationale": "Reliability also positively moderated rank-order stability estimates ($b = .366$)."
+        },
+        {
+          "text": "Lower reliability led to higher stability estimates due to error variance.",
+          "isCorrect": false,
+          "rationale": "Unreliability adds 'noise' which typically attenuates (lowers) correlation coefficients like test-retest stability."
+        },
+        {
+          "text": "Reliability had no statistically significant effect in the meta-regression.",
+          "isCorrect": false,
+          "rationale": "The study included reliability as a moderator and found it influenced the magnitude of the observed effect sizes."
+        }
+      ],
+      "hint": "Consider the impact of 'noise' versus 'signal' in psychological measurement."
+    }
+  ]
+}

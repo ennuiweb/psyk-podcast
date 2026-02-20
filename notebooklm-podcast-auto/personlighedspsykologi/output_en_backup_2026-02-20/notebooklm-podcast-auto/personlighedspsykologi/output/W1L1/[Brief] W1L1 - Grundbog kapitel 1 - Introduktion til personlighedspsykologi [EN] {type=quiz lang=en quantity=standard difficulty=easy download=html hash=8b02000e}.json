@@ -1,0 +1,265 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "Based on the etymology of the word 'person,' what was the original focus of the term in ancient times?",
+      "answerOptions": [
+        {
+          "text": "The inner, hidden essence of a human being.",
+          "isCorrect": false,
+          "rationale": "This represents the 'inner' personality revealed when the mask is removed, which is the opposite of the term's etymological origin."
+        },
+        {
+          "text": "The outward presentation of a social role or character.",
+          "isCorrect": true,
+          "rationale": "The word stems from the term 'persona,' which referred to the masks worn by actors to portray specific characters to an audience."
+        },
+        {
+          "text": "The biological makeup of a human organism.",
+          "isCorrect": false,
+          "rationale": "While biology is a theme in personality psychology, the etymology of 'person' specifically relates to social theater rather than physiology."
+        },
+        {
+          "text": "The private thoughts and reflections of a solitary individual.",
+          "isCorrect": false,
+          "rationale": "The text notes there is no reason to 'play a role' alone in the woods, suggesting the term 'person' was inherently tied to social interaction."
+        }
+      ],
+      "hint": "Think about the literal meaning of 'persona' in the context of ancient Greek or Etruscan theater."
+    },
+    {
+      "question": "Why did personality psychology become a major focus at the beginning of the 20th century, rather than during the 19th century?",
+      "answerOptions": [
+        {
+          "text": "19th-century psychology was primarily focused on simple, isolated experimental functions.",
+          "isCorrect": true,
+          "rationale": "Early psychology used natural science methods to study specific functions like memory and sensation rather than complex, integrated wholes like personality."
+        },
+        {
+          "text": "The concept of the 'unconscious' had not been invented until the 20th century.",
+          "isCorrect": false,
+          "rationale": "While the unconscious became central in the 20th century, the shift was driven by the methodological need to study complex human totalities."
+        },
+        {
+          "text": "Philosophers refused to discuss personality concepts before the 1900s.",
+          "isCorrect": false,
+          "rationale": "The text states that many concepts used in personality psychology were actually discussed and used in philosophy long before the field became scientific."
+        },
+        {
+          "text": "There was no interest in medicine or natural science in the 1800s.",
+          "isCorrect": false,
+          "rationale": "On the contrary, 19th-century psychology was founded by medical doctors and natural scientists who applied their methods to the mind."
+        }
+      ],
+      "hint": "Consider the difference between studying a single sense (like sight) and studying a whole human being."
+    },
+    {
+      "question": "In the context of Freud's psychoanalysis, which part of the personality is described as being entirely unconscious?",
+      "answerOptions": [
+        {
+          "text": "The Ego (Jeg'et)",
+          "isCorrect": false,
+          "rationale": "The Ego is the seat of consciousness and has access to memory and cognitive functions."
+        },
+        {
+          "text": "The Id (Det'et)",
+          "isCorrect": true,
+          "rationale": "The Id contains unconscious drives and impulses that exist from birth and exert influence on behavior without the person's awareness."
+        },
+        {
+          "text": "The Super-ego (Over-jeg'et)",
+          "isCorrect": false,
+          "rationale": "The Super-ego consists of ideals and norms, and while it can be partly unconscious, the text identifies the Id as the part that is 'all in all' unconscious."
+        },
+        {
+          "text": "The Persona",
+          "isCorrect": false,
+          "rationale": "The Persona is a term for the social mask or outward character, which is distinct from Freud's structural model of the psyche."
+        }
+      ],
+      "hint": "This component is associated with primal drives and is described as the source of our biological impulses."
+    },
+    {
+      "question": "What is the 'fundamental assumption' of the phenomenological approach to personality?",
+      "answerOptions": [
+        {
+          "text": "Personality is a collection of genetically determined traits.",
+          "isCorrect": false,
+          "rationale": "This assumption belongs to trait theory, whereas phenomenology focuses on subjective experience."
+        },
+        {
+          "text": "Personality is constructed through social and linguistic interactions.",
+          "isCorrect": false,
+          "rationale": "This view is held by social constructionists, while phenomenology emphasizes individual consciousness."
+        },
+        {
+          "text": "Personality unfolds through consciousness and the individual's lived experience of the world.",
+          "isCorrect": true,
+          "rationale": "Phenomenology prioritizes how the subject experiences their own 'life-world' and the inherent potential within that experience."
+        },
+        {
+          "text": "Personality is a compromise between the Ego and the Super-ego.",
+          "isCorrect": false,
+          "rationale": "This is a key concept in psychoanalytic theory rather than phenomenological theory."
+        }
+      ],
+      "hint": "Focus on the importance of the 'lived world' and how we perceive our own existence."
+    },
+    {
+      "question": "Humanistic theories and Positive Psychology are often seen as being in opposition to which aspect of earlier psychological theories?",
+      "answerOptions": [
+        {
+          "text": "The focus on biological traits and genetics.",
+          "isCorrect": false,
+          "rationale": "While they differ, their primary opposition mentioned in the text is against the focus on conflict and pathology."
+        },
+        {
+          "text": "The focus on illness, conflict, and observable behavior (behaviorism).",
+          "isCorrect": true,
+          "rationale": "These schools advocate for a client-centered approach that emphasizes human potential, health, and well-being rather than mental dysfunction."
+        },
+        {
+          "text": "The use of questionnaires and statistical data.",
+          "isCorrect": false,
+          "rationale": "Positive psychology actually builds on classic empirical studies and scientific data to understand thriving and flow."
+        },
+        {
+          "text": "The belief that personality can change throughout life.",
+          "isCorrect": false,
+          "rationale": "Humanistic theories strongly support the idea that humans can develop and change, so they would not oppose this view."
+        }
+      ],
+      "hint": "Consider whether these theories focus more on what is 'wrong' with a person or what can go 'right' for them."
+    },
+    {
+      "question": "According to trait theory, how should personality ideally be studied and understood?",
+      "answerOptions": [
+        {
+          "text": "As a dynamic process shaped by childhood trauma.",
+          "isCorrect": false,
+          "rationale": "This describes the psychoanalytic perspective rather than the trait-based approach."
+        },
+        {
+          "text": "By analyzing a person's unique life story and historical context.",
+          "isCorrect": false,
+          "rationale": "Trait theories generally look for broad, stable characteristics rather than individual historical narratives."
+        },
+        {
+          "text": "By measuring a set of stable, delimited characteristics or functions.",
+          "isCorrect": true,
+          "rationale": "Trait theory views personality as a combination of distinct attributes, such as those found in the Big Five model, that can be measured scientifically."
+        },
+        {
+          "text": "Through the interpretation of dreams and unconscious fantasies.",
+          "isCorrect": false,
+          "rationale": "Projective methods for the unconscious are used in psychodynamics, whereas trait theory uses objective measures like questionnaires."
+        }
+      ],
+      "hint": "This approach looks for specific 'units' or 'factors' of personality that vary among individuals."
+    },
+    {
+      "question": "Which concept was introduced by Albert Bandura to describe a person's belief in their own ability to handle developmental challenges?",
+      "answerOptions": [
+        {
+          "text": "Reciprocal determinism",
+          "isCorrect": false,
+          "rationale": "This concept refers to the mutual influence between the person, their behavior, and the environment, rather than a specific belief in one's own ability."
+        },
+        {
+          "text": "Self-efficacy",
+          "isCorrect": true,
+          "rationale": "Self-efficacy is the core cognitive component regarding an individual's confidence in their ability to execute actions needed to manage situations."
+        },
+        {
+          "text": "Neuroticism",
+          "isCorrect": false,
+          "rationale": "Neuroticism is one of the Big Five personality traits, not a concept specifically introduced by Bandura for self-regulation."
+        },
+        {
+          "text": "The Generalized Other",
+          "isCorrect": false,
+          "rationale": "The 'Generalized Other' is a concept from George Herbert Mead's symbolic interactionism, not Bandura's social-cognitive theory."
+        }
+      ],
+      "hint": "The term relates to one's perception of their own competence."
+    },
+    {
+      "question": "How does George Herbert Mead's symbolic interactionism define the 'self'?",
+      "answerOptions": [
+        {
+          "text": "As a biological drive for survival.",
+          "isCorrect": false,
+          "rationale": "Mead's focus is on social interaction and symbols rather than biological evolutionary drives."
+        },
+        {
+          "text": "As a combination of the 'I', the 'Me', and the 'generalized other'.",
+          "isCorrect": true,
+          "rationale": "Mead posits that the self is formed through the interaction of these three instances within a social context."
+        },
+        {
+          "text": "As a fixed inner point that exists before any social contact.",
+          "isCorrect": false,
+          "rationale": "Mead argued that the self is directly constituted by our relations with others and how we observe their reactions to us."
+        },
+        {
+          "text": "As a set of five stable factors that are genetically inherited.",
+          "isCorrect": false,
+          "rationale": "This refers to the Big Five trait model, which is distinct from the sociocultural perspective of symbolic interactionism."
+        }
+      ],
+      "hint": "This theory views the self as a social construct developed through looking at ourselves through the eyes of others."
+    },
+    {
+      "question": "In the 'orienting points' provided in the text, what does the term 'Agency' refer to?",
+      "answerOptions": [
+        {
+          "text": "The biological determination of personality through genes.",
+          "isCorrect": false,
+          "rationale": "Biology is part of 'Determination,' whereas Agency focuses on the individual's capacity for action."
+        },
+        {
+          "text": "The active, steering element within the individual.",
+          "isCorrect": true,
+          "rationale": "Agency describes the extent to which a person is a center of consciousness and an active participant who directs their own behavior."
+        },
+        {
+          "text": "The social norms that dictate how a person should act.",
+          "isCorrect": false,
+          "rationale": "Social norms are part of the 'Context' or 'Determination' themes, not the internal capacity for self-direction."
+        },
+        {
+          "text": "The chronological history of the human species.",
+          "isCorrect": false,
+          "rationale": "This refers to 'Historicity' (specifically phylogenetic history) rather than individual agency."
+        }
+      ],
+      "hint": "Think about whether a person is 'driven' by forces or if they are the 'driver' of their own life."
+    },
+    {
+      "question": "If a psychologist is interested in 'ontogenetic' historicity, what are they primarily studying?",
+      "answerOptions": [
+        {
+          "text": "The evolutionary history of the entire human species.",
+          "isCorrect": false,
+          "rationale": "The evolutionary history of the species is called 'phylogenetic' historicity."
+        },
+        {
+          "text": "The way a specific society changes over centuries.",
+          "isCorrect": false,
+          "rationale": "Societal changes over history are referred to as 'sociogenetic' historicity."
+        },
+        {
+          "text": "The life history and development of a single individual.",
+          "isCorrect": true,
+          "rationale": "Ontogenetic historicity focuses on how a person's unique past experiences, especially in childhood, shape their adult personality."
+        },
+        {
+          "text": "The genetic similarities between different animal species.",
+          "isCorrect": false,
+          "rationale": "This is a biological or evolutionary focus rather than the study of an individual's life course development."
+        }
+      ],
+      "hint": "The prefix 'onto-' often relates to the development of an individual organism."
+    }
+  ]
+}

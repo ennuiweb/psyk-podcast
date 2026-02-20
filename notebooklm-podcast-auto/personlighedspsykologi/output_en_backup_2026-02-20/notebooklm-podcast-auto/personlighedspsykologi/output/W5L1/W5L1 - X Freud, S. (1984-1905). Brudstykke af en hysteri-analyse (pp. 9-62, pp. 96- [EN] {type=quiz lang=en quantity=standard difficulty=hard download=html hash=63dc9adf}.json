@@ -1,0 +1,395 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "Freud posits that a hysterical symptom cannot occur without a certain degree of 'somatic compliance'. Based on the case of Dora, which of the following best describes this concept?",
+      "answerOptions": [
+        {
+          "text": "A purely psychological decision to manifest a symptom in a specific organ to gain attention.",
+          "isCorrect": false,
+          "rationale": "This suggests a conscious choice or malingering, whereas Freud argues the process is unconscious and requires a physical basis."
+        },
+        {
+          "text": "A pre-existing organic or constitutional factor in a bodily organ that provides a physical outlet for unconscious mental processes.",
+          "isCorrect": true,
+          "rationale": "Freud defines somatic compliance as the physical requirement—often a slight organic irritation or erotogenic zone—that allows a psychical excitation to find a physical discharge."
+        },
+        {
+          "text": "The patient's conscious agreement to follow a physician's treatment plan for physical ailments.",
+          "isCorrect": false,
+          "rationale": "Compliance in this context refers to the organ's 'willingness' to represent a symptom, not the patient's behavioral compliance with a doctor."
+        },
+        {
+          "text": "A state of physical exhaustion that weakens the ego and allows repressed thoughts to surface.",
+          "isCorrect": false,
+          "rationale": "While exhaustion might weaken defenses, it does not define the specific somatic link required for the formation of a conversion symptom."
+        }
+      ],
+      "hint": "Consider the relationship between a physical irritation (the 'grain of sand') and the psychological 'pearl' built around it."
+    },
+    {
+      "question": "Freud suggests that Dora's $tussis$ $nervosa$ and aphonia were symbolically linked to her childhood habit of thumb-sucking. What is the theoretical basis for this connection?",
+      "answerOptions": [
+        {
+          "text": "The irritation of the oral zone during thumb-sucking created a lasting somatic compliance for future hysterical symptoms.",
+          "isCorrect": true,
+          "rationale": "Freud argues that early over-indulgence of the oral erotogenic zone through sucking made that area susceptible to being used later to express sexual phantasies."
+        },
+        {
+          "text": "The thumb-sucking was a form of self-punishment that later manifested as a restrictive throat symptom.",
+          "isCorrect": false,
+          "rationale": "While symptoms can represent self-punishment, Freud specifically links the throat symptoms to the erotogenic nature of the mouth and lips."
+        },
+        {
+          "text": "Dora was attempting to mimic her brother's ear-tugging habit to win her father's affection.",
+          "isCorrect": false,
+          "rationale": "Dora did tug her brother's ear while sucking her thumb, but the primary link to her symptoms is the stimulation of her own oral zone."
+        },
+        {
+          "text": "The act of sucking inhibited the development of her vocal cords, leading to organic aphonia.",
+          "isCorrect": false,
+          "rationale": "Freud explicitly classifies the aphonia as nervous (psychical) rather than resulting from organic damage to the vocal apparatus."
+        }
+      ],
+      "hint": "Focus on the concept of 'erotogenic zones' and how childhood behaviors influence adult symptom location."
+    },
+    {
+      "question": "In analyzing the 'First Dream', Freud interprets the 'jewel-case' ($Schmuckk\\u00e4stchen$) as a symbol for which of the following?",
+      "answerOptions": [
+        {
+          "text": "Dora's literal desire for expensive gifts from Herr K. to replace her father's affection.",
+          "isCorrect": false,
+          "rationale": "While Dora did receive a jewel-case, Freud views the dream element as a symbolic representation rather than a literal one."
+        },
+        {
+          "text": "The female genitals and the threat to Dora's virginity.",
+          "isCorrect": true,
+          "rationale": "Freud explains that 'jewel-case' is a common metaphorical expression for the female genitals, and its rescue in the dream symbolizes the protection of her purity."
+        },
+        {
+          "text": "The repressed memory of her mother's physical abuse during her childhood.",
+          "isCorrect": false,
+          "rationale": "The source material does not mention physical abuse; the jewel-case is linked to themes of sexuality and jealousy."
+        },
+        {
+          "text": "The safety of the family's financial assets during her father's illness.",
+          "isCorrect": false,
+          "rationale": "This distracter ignores the psychosexual focus of Freud's interpretation in favor of a literal, materialist reading of the dream."
+        }
+      ],
+      "hint": "Think about common linguistic metaphors Freud identifies for anatomical parts in the context of sexual threats."
+    },
+    {
+      "question": "Freud introduces the concept of 'reactive reinforcement' to explain Dora's obsessive preoccupation with her father's affair. How does this process function?",
+      "answerOptions": [
+        {
+          "text": "By increasing the intensity of a conscious thought to keep its direct contrary repressed in the unconscious.",
+          "isCorrect": true,
+          "rationale": "Reactive reinforcement involves the excessive conscious presentation of a thought (like jealousy) to prevent its opposite (like unconscious love) from surfacing."
+        },
+        {
+          "text": "By reinforcing the patient's ego to allow them to confront traumatic memories directly.",
+          "isCorrect": false,
+          "rationale": "This describes a therapeutic goal, whereas reactive reinforcement is a defensive mechanism that obscures the truth."
+        },
+        {
+          "text": "By using somatic symptoms to physically reinforce a mental delusion.",
+          "isCorrect": false,
+          "rationale": "While somatic symptoms are involved in hysteria, 'reactive reinforcement' specifically refers to the dynamics between conscious and unconscious thoughts."
+        },
+        {
+          "text": "By reinforcing the doctor's authority to overcome the patient's resistance.",
+          "isCorrect": false,
+          "rationale": "This misinterprets 'reinforcement' as an external social pressure rather than an internal psychological process."
+        }
+      ],
+      "hint": "Recall the analogy of the astatic galvanometer where one needle's intensity 'damps' the other."
+    },
+    {
+      "question": "During the analysis, Dora plays with a reticule (a small handbag) at her waist. How does Freud categorize this behavior?",
+      "answerOptions": [
+        {
+          "text": "As a sign of her interest in modern fashion and social status.",
+          "isCorrect": false,
+          "rationale": "Dora uses fashion as a conscious pretext, but Freud looks for an underlying unconscious motivation."
+        },
+        {
+          "text": "As a 'symptomatic act' that pantomimically expresses an impulse to masturbate.",
+          "isCorrect": true,
+          "rationale": "Freud interprets these automatic, unconscious actions as manifestations of repressed thoughts—in this case, using the reticule as a genital surrogate."
+        },
+        {
+          "text": "As a defense mechanism meant to distract the physician from her verbal testimony.",
+          "isCorrect": false,
+          "rationale": "While it may be a distraction, Freud views it more specifically as a 'betrayal' of the unconscious through physical movement."
+        },
+        {
+          "text": "As a manifestation of 'housewife's psychosis' inherited from her mother.",
+          "isCorrect": false,
+          "rationale": "This confuses Dora's behavioral act with her mother's cleaning obsession, which Freud describes separately."
+        }
+      ],
+      "hint": "Think about Freud's phrase: 'He that has eyes to see and ears to hear may convince himself that no mortal can keep a secret.'."
+    },
+    {
+      "question": "Which of the following describes the 'displacement' Dora experienced during the scene of the kiss with Herr K.?",
+      "answerOptions": [
+        {
+          "text": "She displaced her anger at her father onto Herr K., leading to a physical assault.",
+          "isCorrect": false,
+          "rationale": "While Dora was angry at her father, the specific displacement Freud analyzes is a shift in bodily sensation, not just interpersonal anger."
+        },
+        {
+          "text": "She displaced the pressure of the man's erect member against her body to a sensation of pressure on her thorax (chest).",
+          "isCorrect": true,
+          "rationale": "Freud argues that the genital sensation was repressed and replaced by the 'innocent' but intense sensation of pressure on the upper part of the body."
+        },
+        {
+          "text": "She displaced her affection for Frau K. onto the K. children.",
+          "isCorrect": false,
+          "rationale": "This is an interpersonal displacement, but Freud's primary explanation for her physical symptoms involves a somatic displacement from the lower to the upper body."
+        },
+        {
+          "text": "She displaced her own desire for Herr K. onto her governess.",
+          "isCorrect": false,
+          "rationale": "Dora actually accused the governess of loving her father, reversing the direction of the displacement Freud describes for her own physical symptoms."
+        }
+      ],
+      "hint": "Look for a sensory shift from the lower part of the body to the upper part."
+    },
+    {
+      "question": "What does Freud mean when he states that psychoneuroses are the 'negative' of perversions?",
+      "answerOptions": [
+        {
+          "text": "Neurotics and perverts have opposite brain structures that lead to different behaviors.",
+          "isCorrect": false,
+          "rationale": "Freud's theory is psychological and developmental rather than based on gross brain anatomy."
+        },
+        {
+          "text": "The same perverse impulses exist in both, but in neurotics, they are repressed and manifest as symptoms rather than actions.",
+          "isCorrect": true,
+          "rationale": "Freud posits that neurotics harbor the same 'germs' of perversion as others, but their symptoms are the resulting products of the repression of these impulses."
+        },
+        {
+          "text": "Neurosis is a milder form of perversion that can be cured, while perversion is permanent.",
+          "isCorrect": false,
+          "rationale": "This suggests a difference in degree and prognosis, but Freud's 'negative' refers specifically to the presence or absence of repression."
+        },
+        {
+          "text": "A pervert's actions are consciously planned, while a neurotic's symptoms are entirely organic.",
+          "isCorrect": false,
+          "rationale": "Freud argues that both are rooted in psychosexual development, not that one is purely organic."
+        }
+      ],
+      "hint": "Consider the relationship between acting out an impulse and repressing it into a physical symptom."
+    },
+    {
+      "question": "How did Freud symbolically interpret the periodicity of Dora's aphonia (loss of voice) in relation to Herr K.?",
+      "answerOptions": [
+        {
+          "text": "Dora lost her voice whenever Herr K. was present to avoid speaking to him.",
+          "isCorrect": false,
+          "rationale": "Actually, Freud noted the opposite: the symptoms often corresponded to his absences."
+        },
+        {
+          "text": "Dora gave up speaking when the man she loved was away, as speech had lost its value since she could not speak to him.",
+          "isCorrect": true,
+          "rationale": "Freud interpreted her aphonia as a symbolic expression of her love: writing (easier for her during aphonia) was her means of communication with the absent Herr K."
+        },
+        {
+          "text": "Dora's loss of voice was a reaction to the 'smell of smoke' she associated with Herr K.'s presence.",
+          "isCorrect": false,
+          "rationale": "While smoke is an addendum to the dream, Freud specifically linked the *absence* of the man to the *absence* of her voice."
+        },
+        {
+          "text": "Dora's aphonia was a mimicry of Frau K.'s inability to walk, showing identification with a fellow sufferer.",
+          "isCorrect": false,
+          "rationale": "Identification with Frau K. is a factor in her cough, but Freud explains the aphonia specifically through Herr K.'s travels."
+        }
+      ],
+      "hint": "Think about the utility of writing versus speaking when a loved one is traveling."
+    },
+    {
+      "question": "According to the text, why did Freud wait four years after the conclusion of Dora's treatment before publishing the case history?",
+      "answerOptions": [
+        {
+          "text": "He was waiting for Dora's symptoms to return to prove the failure of the initial treatment.",
+          "isCorrect": false,
+          "rationale": "Freud actually hoped the treatment had been successful, but publication was delayed for professional and ethical reasons."
+        },
+        {
+          "text": "He wanted to wait for a change in Dora's life that would make her personal interest in the psychological events grow faint.",
+          "isCorrect": true,
+          "rationale": "Freud states that he waited until a change occurred in her life (likely her marriage) to ensure medical discretion and reduce personal injury."
+        },
+        {
+          "text": "The editor of the $Monatsschrift$ $f\\u00fcr$ $Psychiatrie$ $und$ $Neurologie$ had originally rejected it as too scandalous.",
+          "isCorrect": false,
+          "rationale": "The text mentions Ziehen accepted it early on; a different editor, Brodmann, was the one who allegedly declined it later on grounds of discretion."
+        },
+        {
+          "text": "Freud needed four years to develop the theory of 'transference' which was missing from the original draft.",
+          "isCorrect": false,
+          "rationale": "Transference is mentioned at the end of the case history and was already part of his technical understanding, not a reason for the four-year delay."
+        }
+      ],
+      "hint": "Consider the ethical duties of medical discretion mentioned in the 'Prefatory Remarks'."
+    },
+    {
+      "question": "In the synthesis of the 'First Dream', what is the role of the antithesis between 'fire' and 'water'?",
+      "answerOptions": [
+        {
+          "text": "It represents the conflict between Dora's father (fire) and Herr K. (water).",
+          "isCorrect": false,
+          "rationale": "The elements do not represent specific people but rather specific physical and symbolic states."
+        },
+        {
+          "text": "It links the danger of fire (the dream's manifest content) to the childhood memory of bed-wetting (the latent content).",
+          "isCorrect": true,
+          "rationale": "Freud argues that fire is the symbolic contrary of water; the dream uses fire to represent love/threat while masking the infantile 'wetting' memory."
+        },
+        {
+          "text": "It symbolizes the 'housewife's psychosis' where fire is the cleaning process and water is the dirt.",
+          "isCorrect": false,
+          "rationale": "This distractor incorrectly applies the mother's cleaning obsession to the dream elements."
+        },
+        {
+          "text": "It is a purely physiological reaction to the temperature of Dora's bedroom during the night.",
+          "isCorrect": false,
+          "rationale": "While Freud acknowledges somatic stimuli, he insists that they are only used if they can represent an unconscious wish."
+        }
+      ],
+      "hint": "Think about the folk-belief regarding children who 'play with matches' and its nocturnal consequences."
+    },
+    {
+      "question": "Freud identifies a 'switch-word' that allows Dora to connect her father's venereal infection with her own symptoms. What is this word?",
+      "answerOptions": [
+        {
+          "text": "Venereal",
+          "isCorrect": false,
+          "rationale": "Dora used a more general term for her mother's and her own symptoms to facilitate the association."
+        },
+        {
+          "text": "Catarrh",
+          "isCorrect": true,
+          "rationale": "Freud explains that 'catarrh' acted as a switch-word, connecting her vaginal discharge (leucorrhoea) to her throat symptoms and her mother's abdominal illness."
+        },
+        {
+          "text": "Impotent",
+          "isCorrect": false,
+          "rationale": "While Dora argues her father is 'unverm\\u00f6gend' (without means/impotent), 'catarrh' is the term specifically linked to the infectious/somatic overlap."
+        },
+        {
+          "text": "Smoke",
+          "isCorrect": false,
+          "rationale": "Smoke is an addendum to the dream but does not serve as the primary lexical bridge for her father's infectious history."
+        }
+      ],
+      "hint": "It is a medical term for a discharge that can apply to both respiratory and genital systems."
+    },
+    {
+      "question": "According to Freud, why did Dora feel disgust during the scene of the kiss, rather than sexual excitement?",
+      "answerOptions": [
+        {
+          "text": "She was repulsed by the smell of smoke on Herr K.'s breath.",
+          "isCorrect": false,
+          "rationale": "While she noticed he was a smoker, Freud looks for a deeper developmental cause for the reversal of affect."
+        },
+        {
+          "text": "It was a 'reversal of affect' caused by the repression of her oral erotogenic zone and the association of genitals with excrement.",
+          "isCorrect": true,
+          "rationale": "Freud argues that disgust is a reaction to the smell/sight of excrement, which the genitals can remind one of, especially when oral zones are involved."
+        },
+        {
+          "text": "She was consciously adhering to the moral instructions given by her mother.",
+          "isCorrect": false,
+          "rationale": "Freud posits that her reaction was an unconscious hysterical reversal of affect, not a conscious moral decision."
+        },
+        {
+          "text": "She was suffering from a migraine at the moment of the encounter.",
+          "isCorrect": false,
+          "rationale": "Migraines were part of her clinical picture, but Freud does not use them to explain the specific emotional reaction to the kiss."
+        }
+      ],
+      "hint": "Recall the Latin phrase 'inter urinas et faeces nascimur' and its role in Freud's theory of sexuality."
+    },
+    {
+      "question": "What 'theoretical aim' does Freud define as coincident with the practical goal of removing symptoms in psychoanalysis?",
+      "answerOptions": [
+        {
+          "text": "To convince the patient of the doctor's superior intellect.",
+          "isCorrect": false,
+          "rationale": "Freud explicitly warns against an attitude of superiority or contempt toward the patient."
+        },
+        {
+          "text": "To repair all the damages to the patient's memory by filling in amnesias and paramnesias.",
+          "isCorrect": true,
+          "rationale": "Freud states that the practical goal (removing symptoms) and the theoretical goal (completing the case history/memory) are reached via the same path."
+        },
+        {
+          "text": "To ensure the patient never experiences a 'flight into illness' again.",
+          "isCorrect": false,
+          "rationale": "While desirable, Freud admits that the three-month treatment was unable to protect Dora from subsequent illnesses."
+        },
+        {
+          "text": "To eliminate the factor of 'transference' entirely during the first few weeks.",
+          "isCorrect": false,
+          "rationale": "Transference is an essential part of the process that occurs naturally; it cannot and should not be 'eliminated' but rather understood."
+        }
+      ],
+      "hint": "Think about the gaps in a patient's story that the analyst tries to fill."
+    },
+    {
+      "question": "Freud concludes that behind Dora's preoccupation with her father's relationship with Frau K., there was a deeper unconscious 'gynaecophilic' current. What does this refer to?",
+      "answerOptions": [
+        {
+          "text": "Dora's identification with her mother's role as a housewife.",
+          "isCorrect": false,
+          "rationale": "Dora actually looked down on her mother; gynaecophilic refers to an affection for her own sex."
+        },
+        {
+          "text": "An unconscious love for Frau K.",
+          "isCorrect": true,
+          "rationale": "Freud suggests that Dora's jealousy was not just about her father, but also about her own intense, romantic affection for Frau K."
+        },
+        {
+          "text": "A fear of all men based on her father's illness.",
+          "isCorrect": false,
+          "rationale": "While she had reasons to distrust men, the term gynaecophilic specifically describes an attraction to women."
+        },
+        {
+          "text": "An obsession with cleaning and domesticity as a way to win her father's favor.",
+          "isCorrect": false,
+          "rationale": "This distractor describes her mother's 'housewife's psychosis' rather than Dora's unconscious erotic life."
+        }
+      ],
+      "hint": "Consider the Greek roots of the word 'gynaecophilic' and who Dora was 'enthusiastically devoted' to for years."
+    },
+    {
+      "question": "Dora's father's illness in 1894, which led him to visit Freud, was characterized by a confusional attack and paralysis. What was Freud's diagnosis at that time?",
+      "answerOptions": [
+        {
+          "text": "Taboparalysis resulting from an old syphilitic infection.",
+          "isCorrect": false,
+          "rationale": "Freud *hesitated* as to whether it was taboparalysis but ultimately decided on a different diagnosis."
+        },
+        {
+          "text": "A diffuse vascular affection, which he treated with anti-luetic measures.",
+          "isCorrect": true,
+          "rationale": "Freud diagnosed a diffuse vascular affection and, because the father admitted to a prior infection, prescribed anti-luetic treatment which was successful."
+        },
+        {
+          "text": "Hysterical dyspnoea caused by family disputes.",
+          "isCorrect": false,
+          "rationale": "Dyspnoea was Dora's symptom, not her father's, and Freud diagnosed his condition as having an organic basis (syphilis)."
+        },
+        {
+          "text": "A detached retina caused by over-exertion in the mountains.",
+          "isCorrect": false,
+          "rationale": "The detached retina occurred two years before the confusional attack and was a separate misfortune."
+        }
+      ],
+      "hint": "Consider the treatment (anti-luetic) Freud prescribed after the patient admitted to an infection before marriage."
+    }
+  ]
+}

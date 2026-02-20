@@ -1,0 +1,265 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "According to the cyclical model of personality expression, which phase involves the subjective interpretation of situational cues and the integration of self-perceptions in relation to the environment?",
+      "answerOptions": [
+        {
+          "text": "Situation selection",
+          "isCorrect": false,
+          "rationale": "This phase occurs before entering the environment, where individuals proactively choose to enter or avoid specific contexts."
+        },
+        {
+          "text": "Situation experience",
+          "isCorrect": true,
+          "rationale": "This phase focuses on how individuals internalize and interpret cues such as affordances and constraints once they are in a situation."
+        },
+        {
+          "text": "Behavioral state expression",
+          "isCorrect": false,
+          "rationale": "This phase refers to the actual translation of traits into patterns of affect, behavior, cognition, and desire."
+        },
+        {
+          "text": "Outcome activation",
+          "isCorrect": false,
+          "rationale": "This phase describes the consequences of behavioral expression and how they feed back into future cycles."
+        }
+      ],
+      "hint": "Focus on the phase that involves cognitive-affective mapping of the current context."
+    },
+    {
+      "question": "Kurt Lewin's influential interactionist formula is represented as which of the following?",
+      "answerOptions": [
+        {
+          "text": "$B = f(P, S)$",
+          "isCorrect": true,
+          "rationale": "This formula encapsulates the idea that behavior is a function of both the person and the situation."
+        },
+        {
+          "text": "$P = f(B, S)$",
+          "isCorrect": false,
+          "rationale": "This incorrectly suggests that personality is a function of behavior and situation, rather than the other way around."
+        },
+        {
+          "text": "$S = f(P, B)$",
+          "isCorrect": false,
+          "rationale": "This suggests that the situation is a result of the person and their behavior, which is not the core of Lewin's original formula."
+        },
+        {
+          "text": "$f(B) = P \\times S$",
+          "isCorrect": false,
+          "rationale": "This representation implies a mathematical product that does not accurately reflect Lewin's functional notation."
+        }
+      ],
+      "hint": "Identify which variable is typically viewed as the outcome or dependent variable in psychological research."
+    },
+    {
+      "question": "Empirical work by Li et al. (2024) demonstrated that behavioral variability was notably lower in strong situations compared to weak ones. What was the specific percentage decrease observed?",
+      "answerOptions": [
+        {
+          "text": "$10 \\%$",
+          "isCorrect": false,
+          "rationale": "This value underestimates the impact found in the social dilemma games experimental study."
+        },
+        {
+          "text": "$23 \\%$",
+          "isCorrect": true,
+          "rationale": "The study found that the coefficient of variation, measuring behavioral variability, was significantly lower by this specific amount."
+        },
+        {
+          "text": "$48 \\%$",
+          "isCorrect": false,
+          "rationale": "This number is associated with a specific trait-behavior correlation in the text, not behavioral variance reduction."
+        },
+        {
+          "text": "$60 \\%$",
+          "isCorrect": false,
+          "rationale": "This percentage relates to the frequency of significant trait activation effects across various empirical studies."
+        }
+      ],
+      "hint": "Consider the statistic cited specifically in relation to the situational strength hypothesis and experimental games."
+    },
+    {
+      "question": "Which situational framework is characterized as an inductive taxonomy derived from factor analyses of descriptions gathered via the Riverside Situational Q-sort (RSQ)?",
+      "answerOptions": [
+        {
+          "text": "HEXACO-DSSA",
+          "isCorrect": false,
+          "rationale": "This is a deductive framework theorized to align with specific personality dimensions rather than an inductive factor-analytic model."
+        },
+        {
+          "text": "DIAMONDS",
+          "isCorrect": true,
+          "rationale": "The Eight DIAMONDS model was developed through inductive methods to identify major dimensions of situation characteristics."
+        },
+        {
+          "text": "STOA",
+          "isCorrect": false,
+          "rationale": "This refers to the Situation-Trait-Outcome Activation framework, which is a conceptual process model, not a taxonomy of descriptors."
+        },
+        {
+          "text": "Cues-Tendency-Action (CTA)",
+          "isCorrect": false,
+          "rationale": "This model focuses on temporal dynamics and the interaction between traits, states, and motivations over time."
+        }
+      ],
+      "hint": "This taxonomy is often abbreviated as a common precious gemstone name."
+    },
+    {
+      "question": "In the context of the HEXACO model, Zettler et al. (2020) reported a correlation of $\\rho = -0.48$ between Honesty-Humility and which specific behavioral domain?",
+      "answerOptions": [
+        {
+          "text": "Duty",
+          "isCorrect": false,
+          "rationale": "Duty is more closely theoretically linked to Conscientiousness within affordance frameworks."
+        },
+        {
+          "text": "Social interaction",
+          "isCorrect": false,
+          "rationale": "This domain is typically the primary affordance and outcome for Extraversion."
+        },
+        {
+          "text": "Exploitation",
+          "isCorrect": true,
+          "rationale": "Honesty-Humility has a strong negative association with taking advantage of others, highlighting its relevance to this affordance."
+        },
+        {
+          "text": "Exploration",
+          "isCorrect": false,
+          "rationale": "Exploration is theoretically linked to Openness to Experience rather than Honesty-Humility."
+        }
+      ],
+      "hint": "Think about the behavior that involves taking unfair advantage of others for personal gain."
+    },
+    {
+      "question": "What is the primary function of 'Situation Characteristic – State Contingencies' (SCSC) in personality research?",
+      "answerOptions": [
+        {
+          "text": "To measure the objective, consensually agreed-upon features of a context.",
+          "isCorrect": false,
+          "rationale": "This describes situational contact rather than the contingency between traits and situational perceptions."
+        },
+        {
+          "text": "To capture personalized sensitivity and how individuals' states shift in response to situational cues.",
+          "isCorrect": true,
+          "rationale": "SCSCs focus on individual differences in the 'if-then' signatures of how people react to perceived environments."
+        },
+        {
+          "text": "To identify the evolutionary origins of trait-relevant affordances.",
+          "isCorrect": false,
+          "rationale": "SCSCs are empirical measurements of current behavioral patterns, not evolutionary theorizing."
+        },
+        {
+          "text": "To determine the absolute consistency of a person's behavior across all possible situations.",
+          "isCorrect": false,
+          "rationale": "The framework specifically focuses on structured variability rather than cross-situational consistency."
+        }
+      ],
+      "hint": "Consider why different people might become more or less conscientious in the same 'structured' situation."
+    },
+    {
+      "question": "In the ABCD framework of behavioral states, what does the letter 'D' represent?",
+      "answerOptions": [
+        {
+          "text": "Disposition",
+          "isCorrect": false,
+          "rationale": "While related to personality, this is a broad term for traits rather than a specific component of a momentary behavioral state."
+        },
+        {
+          "text": "Desire",
+          "isCorrect": true,
+          "rationale": "Desire refers to the motivational or goal-oriented component that shapes a behavioral state in context."
+        },
+        {
+          "text": "Dissonance",
+          "isCorrect": false,
+          "rationale": "Cognitive dissonance is a mechanism that might explain reactions to situational strength, but it is not one of the four ABCD components."
+        },
+        {
+          "text": "Decision",
+          "isCorrect": false,
+          "rationale": "While decisions occur within situations, the framework specifically highlights the psychological manifestations of affect, behavior, cognition, and desire."
+        }
+      ],
+      "hint": "This term relates to what an individual wants or is motivated to achieve in a specific moment."
+    },
+    {
+      "question": "Which theoretical perspective argues that traits are only expressed when situations provide relevant cues or opportunities for those specific traits?",
+      "answerOptions": [
+        {
+          "text": "Situationism",
+          "isCorrect": false,
+          "rationale": "This perspective historically argued that behavior is primarily driven by the situation itself, often downplaying the role of traits."
+        },
+        {
+          "text": "Trait Activation Theory",
+          "isCorrect": true,
+          "rationale": "This theory posits that behavioral expression depends on the presence of trait-relevant affordances within the context."
+        },
+        {
+          "text": "Classical Trait Theory",
+          "isCorrect": false,
+          "rationale": "Classical theories tended to emphasize the consistency of traits across situations rather than their situational activation."
+        },
+        {
+          "text": "Cognitive Dissonance Theory",
+          "isCorrect": false,
+          "rationale": "This theory explains internal discomfort from inconsistent beliefs or actions, not the situational triggering of personality traits."
+        }
+      ],
+      "hint": "The name of this theory reflects the idea that traits must be 'triggered' to be observable."
+    },
+    {
+      "question": "According to the review, what role does 'Situation Selection' play in the overall expression of personality?",
+      "answerOptions": [
+        {
+          "text": "It is a passive response to external environments that are forced upon the individual.",
+          "isCorrect": false,
+          "rationale": "The text explicitly defines selection as an active process where individuals curate their situational landscapes."
+        },
+        {
+          "text": "It is a form of personality expression in its own right, where individuals proactively curate their environments.",
+          "isCorrect": true,
+          "rationale": "By choosing environments that align with their traits, individuals express their dispositions before behavior is even enacted."
+        },
+        {
+          "text": "It is an irrelevant precursor that has no impact on the subsequent 'Situation Experience' phase.",
+          "isCorrect": false,
+          "rationale": "Selection sets the stage for experience and behavior, making it a critical first phase in the cyclical model."
+        },
+        {
+          "text": "It is a random process driven entirely by situational strength factors.",
+          "isCorrect": false,
+          "rationale": "Selection is described as non-random and synergistically guided by motives, goals, and self-concept."
+        }
+      ],
+      "hint": "Think about whether choosing where to go is itself a reflection of who a person is."
+    },
+    {
+      "question": "Kritzler et al. (2024) reached a specific conclusion regarding 'state-trait fit' and 'state-situation fit' in their longitudinal study. What was their finding?",
+      "answerOptions": [
+        {
+          "text": "These fits are the primary predictors of long-term personality development.",
+          "isCorrect": false,
+          "rationale": "The study focused on momentary affect rather than long-term developmental trajectories."
+        },
+        {
+          "text": "These fits may be largely irrelevant for predicting fluctuations in momentary affect.",
+          "isCorrect": true,
+          "rationale": "The researchers found no significant relationship between these types of fit and changes in immediate mood or affect."
+        },
+        {
+          "text": "Strong state-situation fit always leads to a decrease in situational strength.",
+          "isCorrect": false,
+          "rationale": "State-situation fit and situational strength are distinct constructs; the study did not suggest such a causal link."
+        },
+        {
+          "text": "Trait-situation fit is the only significant predictor of behavioral state expression.",
+          "isCorrect": false,
+          "rationale": "The study's conclusions were more restrictive, questioning the relevance of fit for affective experiences specifically."
+        }
+      ],
+      "hint": "Focus on the study's conclusion regarding the relationship between fit and momentary positive affect."
+    }
+  ]
+}

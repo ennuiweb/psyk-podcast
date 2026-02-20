@@ -1,0 +1,266 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "According to the bibliographic source, who are the individuals credited with writing the specific chapter on newer psychoanalytic theories?",
+      "answerOptions": [
+        {
+          "text": "Zeuthen and Køppe",
+          "isCorrect": true,
+          "rationale": "The citation lists these two individuals immediately preceding the chapter title, indicating their primary authorship of that section."
+        },
+        {
+          "text": "Køppe and Dammeyer",
+          "isCorrect": false,
+          "rationale": "While these individuals are involved in the publication, they are identified as the editors of the entire volume rather than the authors of this specific chapter."
+        },
+        {
+          "text": "Thorium and Zeuthen",
+          "isCorrect": false,
+          "rationale": "One of these terms refers to the digital reading platform mentioned in the instructions rather than a contributing author."
+        },
+        {
+          "text": "Hans Reitzel",
+          "isCorrect": false,
+          "rationale": "This name refers to the publishing house responsible for the book's distribution, not the academic writers of the content."
+        }
+      ],
+      "hint": "Identify the names that appear at the very beginning of the reference string."
+    },
+    {
+      "question": "In what year was the textbook containing the chapter on modern psychoanalysis published?",
+      "answerOptions": [
+        {
+          "text": "$2014$",
+          "isCorrect": true,
+          "rationale": "This date is explicitly provided in parentheses following the authors' names, marking the official publication year."
+        },
+        {
+          "text": "$2026$",
+          "isCorrect": false,
+          "rationale": "This date reflects the current system time rather than the historical publication data found in the source material."
+        },
+        {
+          "text": "$2007$",
+          "isCorrect": false,
+          "rationale": "This might be confused with the chapter number $7$ mentioned later in the citation."
+        },
+        {
+          "text": "$1994$",
+          "isCorrect": false,
+          "rationale": "This represents an earlier era of psychological literature not supported by the specific bibliographic entry provided."
+        }
+      ],
+      "hint": "Look for the four-digit number enclosed in parentheses after the authors' initials."
+    },
+    {
+      "question": "The source material identifies the text as a 'grundbog'. What does this term imply about the intended use of the book?",
+      "answer": "It is intended as a basic or foundational textbook for students and practitioners.",
+      "answerOptions": [
+        {
+          "text": "It is a foundational or introductory textbook.",
+          "isCorrect": true,
+          "rationale": "The Danish term 'grundbog' literally translates to 'ground book,' signifying its role as a basic or core educational resource."
+        },
+        {
+          "text": "It is a private clinical journal.",
+          "isCorrect": false,
+          "rationale": "The mention of editors and a publishing house suggests a public academic work rather than a private record."
+        },
+        {
+          "text": "It is a specialized collection of raw data.",
+          "isCorrect": false,
+          "rationale": "The subtitle focusing on 'personality and subjectivity' suggests a theoretical and conceptual framework rather than a simple data set."
+        },
+        {
+          "text": "It is an unedited manuscript.",
+          "isCorrect": false,
+          "rationale": "The inclusion of specific editors and a formal publisher indicates a finalized and professionally reviewed academic product."
+        }
+      ],
+      "hint": "Consider the meaning of the prefix 'grund' in the context of academic literature."
+    },
+    {
+      "question": "Which specific chapter of the volume 'Personlighedspsykologi' focuses on newer psychoanalytic theories?",
+      "answerOptions": [
+        {
+          "text": "Chapter $7$",
+          "isCorrect": true,
+          "rationale": "The citation explicitly includes the notation 'Kap $7$' immediately following the title of the book."
+        },
+        {
+          "text": "Chapter $2$",
+          "isCorrect": false,
+          "rationale": "This number does not appear in the source material and likely represents a different, unrelated section of the book."
+        },
+        {
+          "text": "Chapter $14$",
+          "isCorrect": false,
+          "rationale": "This value may be a misinterpretation of the publication year $2014$ mentioned earlier in the reference."
+        },
+        {
+          "text": "The entire book is about this topic.",
+          "isCorrect": false,
+          "rationale": "While the book covers personality, the citation specifically narrows this topic down to a single designated chapter."
+        }
+      ],
+      "hint": "Locate the abbreviation for 'Kapitel' followed by a single digit in the text."
+    },
+    {
+      "question": "Based on the title 'Nyere psykoanalytiske teorier', what is the primary focus of the chapter's content?",
+      "answerOptions": [
+        {
+          "text": "Contemporary developments in psychoanalysis.",
+          "isCorrect": true,
+          "rationale": "The term 'nyere' (newer) suggests a focus on theoretical shifts and advancements that post-date classical Freudian concepts."
+        },
+        {
+          "text": "A history of early $19^{th}$-century psychiatry.",
+          "isCorrect": false,
+          "rationale": "The focus is explicitly on 'newer' psychoanalytic perspectives rather than the historical origins of general psychiatry."
+        },
+        {
+          "text": "Biological foundations of neuroscience.",
+          "isCorrect": false,
+          "rationale": "While related, the title specifically emphasizes 'psykoanalytiske' (psychoanalytic) theories rather than biological ones."
+        },
+        {
+          "text": "The abandonment of subjectivity in psychology.",
+          "isCorrect": false,
+          "rationale": "The book's subtitle actually highlights 'subjektivitet' (subjectivity) as a core theme of the work."
+        }
+      ],
+      "hint": "Focus on the meaning of the Danish word 'Nyere' in a theoretical context."
+    },
+    {
+      "question": "Who served as the editors for the textbook in which this psychoanalytic chapter appears?",
+      "answerOptions": [
+        {
+          "text": "S. Køppe and J. Dammeyer",
+          "isCorrect": true,
+          "rationale": "The citation lists these two names following the abbreviation 'Red.', which stands for 'redaktører' (editors) in Danish."
+        },
+        {
+          "text": "K. E. Zeuthen and S. Køppe",
+          "isCorrect": false,
+          "rationale": "These individuals are the authors of the specific chapter, but they are not listed as the overall editors of the entire volume."
+        },
+        {
+          "text": "Hans Reitzel and J. Dammeyer",
+          "isCorrect": false,
+          "rationale": "This combines the name of the publisher with an editor, which misrepresents the distinct roles in the publishing process."
+        },
+        {
+          "text": "S. Køppe and Thorium",
+          "isCorrect": false,
+          "rationale": "This incorrectly identifies the digital reading tool as a co-editor of the academic text."
+        }
+      ],
+      "hint": "Check the names associated with the abbreviation 'Red.'."
+    },
+    {
+      "question": "In which city was the publishing house Hans Reitzel located for this $2014$ edition?",
+      "answerOptions": [
+        {
+          "text": "København",
+          "isCorrect": true,
+          "rationale": "The bibliographic entry lists 'København' (Copenhagen) as the location of publication preceding the name of the publisher."
+        },
+        {
+          "text": "Aarhus",
+          "isCorrect": false,
+          "rationale": "While a major Danish city, it is not the location specified in this particular bibliographic citation."
+        },
+        {
+          "text": "Stockholm",
+          "isCorrect": false,
+          "rationale": "The source is written in Danish and published in Denmark, making a Swedish location unlikely."
+        },
+        {
+          "text": "Oslo",
+          "isCorrect": false,
+          "rationale": "The text identifies a Danish capital, not the capital of Norway, as the place of origin."
+        }
+      ],
+      "hint": "Look at the geographic name listed just before the colon at the end of the citation."
+    },
+    {
+      "question": "What are the two central concepts discussed in the textbook's subtitle?",
+      "answerOptions": [
+        {
+          "text": "Personality and subjectivity",
+          "isCorrect": true,
+          "rationale": "The subtitle 'en grundbog om personlighed og subjektivitet' explicitly mentions these two terms as the book's primary focus."
+        },
+        {
+          "text": "Psychoanalysis and behaviorism",
+          "isCorrect": false,
+          "rationale": "While psychoanalysis is the chapter's topic, the overall book's subtitle identifies subjectivity rather than behaviorism as the second core theme."
+        },
+        {
+          "text": "Cognition and development",
+          "isCorrect": false,
+          "rationale": "These are common psychological themes but are not the specific terms used in the title of this source."
+        },
+        {
+          "text": "Subjectivity and objectivity",
+          "isCorrect": false,
+          "rationale": "The title pairs subjectivity with personality, not with its logical opposite, objectivity."
+        }
+      ],
+      "hint": "Examine the Danish words 'personlighed' and 'subjektivitet' following the em-dash."
+    },
+    {
+      "question": "According to the source, the chapter 'Nyere psykoanalytiske teorier' is contained within a larger work titled what?",
+      "answerOptions": [
+        {
+          "text": "Personlighedspsykologi",
+          "isCorrect": true,
+          "rationale": "The source identifies this as the title of the 'grundbog' (basic book) that houses the psychoanalytic chapter."
+        },
+        {
+          "text": "Thorium Reader",
+          "isCorrect": false,
+          "rationale": "This refers to the software used to access the text rather than the academic title of the work itself."
+        },
+        {
+          "text": "Modern Psychoanalysis",
+          "isCorrect": false,
+          "rationale": "This is an English translation of the chapter's subject matter but is not the actual title of the book in the citation."
+        },
+        {
+          "text": "The Copenhagen Series",
+          "isCorrect": false,
+          "rationale": "This incorrectly interprets the city of publication as part of the book's formal title."
+        }
+      ],
+      "hint": "Look for the title that follows the letter 'I' (Danish for 'In') in the citation."
+    },
+    {
+      "question": "Which of the following describes the relationship between S. Køppe and the provided source material?",
+      "answerOptions": [
+        {
+          "text": "He is both a co-author of the chapter and a co-editor of the book.",
+          "isCorrect": true,
+          "rationale": "S. Køppe appears in the author list for the chapter with Zeuthen and is also listed as an editor with Dammeyer."
+        },
+        {
+          "text": "He is solely the publisher of the text.",
+          "isCorrect": false,
+          "rationale": "The publisher is identified as Hans Reitzel, while Køppe is listed as a contributor and editor."
+        },
+        {
+          "text": "He is only mentioned as the person who translated the work.",
+          "isCorrect": false,
+          "rationale": "The source suggests he is an original author/editor in Danish, with no mention of a translation role."
+        },
+        {
+          "text": "He is the author of the 'Thorium' software mentioned.",
+          "isCorrect": false,
+          "rationale": "Thorium is a reading application and is unrelated to the academic authorship of Køppe."
+        }
+      ],
+      "hint": "Notice that the name 'Køppe' appears twice in different roles within the same citation."
+    }
+  ]
+}

@@ -1,0 +1,317 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "According to the descriptive model of Whole Trait Theory (WTT), how should personality traits be conceptualized in relation to personality states?",
+      "answerOptions": [
+        {
+          "text": "As the absolute ceiling of potential state expressions within a specific situational context.",
+          "isCorrect": false,
+          "rationale": "WTT does not view traits as limits or ceilings, but rather as the collective pattern of expressions over time."
+        },
+        {
+          "text": "As density distributions of states that describe the frequency and range of an individual's expressions.",
+          "isCorrect": true,
+          "rationale": "WTT posits that a trait is best represented by the entire distribution of an individual's states rather than a single fixed point."
+        },
+        {
+          "text": "As the mathematical sum of cognitive-affective units triggered by 'if... then' contingencies.",
+          "isCorrect": false,
+          "rationale": "This description more closely aligns with the Cognitive-Affective Personality System (CAPS) model rather than the descriptive part of WTT."
+        },
+        {
+          "text": "As stable internal anchors that remain unaffected by short-term fluctuations in states.",
+          "isCorrect": false,
+          "rationale": "While traits are stable, WTT specifically links them to the fluctuations (states) themselves as the constituent parts of the trait."
+        }
+      ],
+      "hint": "Consider the visual representation in the source material where individual differences are shown as overlapping curves."
+    },
+    {
+      "question": "Recent empirical evidence regarding the relationship between situation-state contingencies and self-rated personality traits has posed a challenge to which theoretical integration?",
+      "answerOptions": [
+        {
+          "text": "The integration of Trait Activation Theory (TAT) with the Big Five factor model.",
+          "isCorrect": false,
+          "rationale": "TAT primarily focuses on how situations constrain trait expression in performance, which is not the specific challenge identified regarding contingencies."
+        },
+        {
+          "text": "The integration of latent state-trait models with the HEXACO-PSI measurement framework.",
+          "isCorrect": false,
+          "rationale": "The HEXACO-PSI was actually developed using these models, so they are considered compatible rather than challenged."
+        },
+        {
+          "text": "The integration of trait psychological models with interactionist models like the Cognitive-Affective Personality System (CAPS).",
+          "isCorrect": true,
+          "rationale": "Findings show that individual differences in 'if... then' contingencies do not correspond to stable self-rated traits, contradicting the idea that traits are defined by these contingencies."
+        },
+        {
+          "text": "The TESSERA framework's sequence of triggering situations and long-term trait development.",
+          "isCorrect": false,
+          "rationale": "While TESSERA effect sizes are small, the challenge regarding situational contingencies specifically concerns the definition of traits as 'if... then' patterns."
+        }
+      ],
+      "hint": "Focus on the discrepancy between how individuals respond to specific situations and their global self-perceptions."
+    },
+    {
+      "question": "In the twelve-week personality change intervention study by Olaru et al. (2025), what was the primary finding regarding the relationship between states and trait change?",
+      "answerOptions": [
+        {
+          "text": "A significant increase in average state levels was the primary driver of self-reported trait change.",
+          "isCorrect": false,
+          "rationale": "The study surprisingly found that average state levels remained stable even when trait levels changed."
+        },
+        {
+          "text": "Trait change was only observed in participants whose initial states were perfectly aligned with their goals.",
+          "isCorrect": false,
+          "rationale": "Change was actually associated with movement away from the baseline, not initial alignment."
+        },
+        {
+          "text": "State deviations from the trait level, rather than absolute state levels, correlated with the degree of trait change.",
+          "isCorrect": true,
+          "rationale": "Those who successfully implemented state-level behaviors that differed from their trait baseline experienced greater sustained trait change ($r = 0.31$)."
+        },
+        {
+          "text": "The intervention failed to produce any significant change in either self-reported or observer-rated traits.",
+          "isCorrect": false,
+          "rationale": "The intervention was successful, yielding a Cohen's $d = 0.31$ for self-rated traits and $d = 0.07$ for observer ratings."
+        }
+      ],
+      "hint": "Distinguish between the average of all states and the specific instances where one 'acts out of character'."
+    },
+    {
+      "question": "Which component of personality state networks was found to be the least consistent when measured two years apart in the study by Beck and Jackson (2020)?",
+      "answerOptions": [
+        {
+          "text": "The rank-order correlation of individual 'edge weights' between items.",
+          "isCorrect": true,
+          "rationale": "Individual associations between items varied significantly over time, with an average correlation of only $r = 0.10$."
+        },
+        {
+          "text": "The profile correlation for the entire multidimensional personality network.",
+          "isCorrect": false,
+          "rationale": "The overall network structure was actually found to be medium to high in consistency ($r = 0.62$)."
+        },
+        {
+          "text": "The rank-order correlation of the five broad personality dimensions.",
+          "isCorrect": false,
+          "rationale": "Aggregated personality dimensions showed high stability over time, ranging from $r = 0.68$ to $r = 0.79$."
+        },
+        {
+          "text": "The consistency of personality state networks during environmental shifts like the COVID-19 pandemic.",
+          "isCorrect": false,
+          "rationale": "While consistency dropped during the pandemic, the question refers to the specific finding regarding edge weights in the 2020 study."
+        }
+      ],
+      "hint": "Think about the stability of individual connections between specific thoughts/feelings versus the stability of the big picture."
+    },
+    {
+      "question": "Based on the research of Horstmann et al. (2021), why might correlations between situation characteristics and personality states appear 'diffuse' unless affect is controlled?",
+      "answerOptions": [
+        {
+          "text": "Because personality states are essentially identical to affective states in short-term measurement.",
+          "isCorrect": false,
+          "rationale": "The review defines states as manifestations of traits having cognitive and behavioral content, distinguishing them from purely affective states."
+        },
+        {
+          "text": "Because general affect or valence can confound the measurement of both situations and states.",
+          "isCorrect": true,
+          "rationale": "Controlling for affect reveals theoretically plausible links, such as Conscientiousness and Duty ($r = 0.27$), which might otherwise be obscured by shared variance in valence."
+        },
+        {
+          "text": "Because individuals with high Neuroticism are unable to distinguish between their internal states and external cues.",
+          "isCorrect": false,
+          "rationale": "While Neuroticism is linked to affect, the issue identified by Horstmann is a general measurement confound, not an individual deficit."
+        },
+        {
+          "text": "Because the DIAMONDS taxonomy only measures objective situation characteristics that are unrelated to subjective states.",
+          "isCorrect": false,
+          "rationale": "The DIAMONDS taxonomy measures subjective perceptions of situations, which is exactly why they might be confounded by the observer's mood."
+        }
+      ],
+      "hint": "Consider how a person's general 'good' or 'bad' mood might color their perception of both themselves and their environment."
+    },
+    {
+      "question": "The TESSERA framework suggests that personality change occurs through which of the following processes?",
+      "answerOptions": [
+        {
+          "text": "The immediate transformation of cognitive-affective units following a single traumatic event.",
+          "isCorrect": false,
+          "rationale": "TESSERA emphasizes the accumulation of repeated short-term sequences over time, not single events."
+        },
+        {
+          "text": "The accumulation of repeated short-term state sequences into trait change through associative and reflective processes.",
+          "isCorrect": true,
+          "rationale": "Long-term development is grounded in cycles of situations, expectations, states, and reactions that repeat and solidify."
+        },
+        {
+          "text": "The alignment of individual 'if... then' contingencies with the broader social norms of one's environment.",
+          "isCorrect": false,
+          "rationale": "This relates to socialization, but TESSERA specifically focuses on the internal sequence from states to reactions to trait change."
+        },
+        {
+          "text": "The decomposition of state variance into trait-like and situation-specific influences to identify errors.",
+          "isCorrect": false,
+          "rationale": "This describes the measurement approach of Latent State-Trait Theory (LST-R) rather than the developmental framework of TESSERA."
+        }
+      ],
+      "hint": "Recall the acronym components: Triggering Situations, Expectancies, States, and Reactions."
+    },
+    {
+      "question": "What significant discrepancy was found regarding the link between personality states and job performance in studies of student teachers?",
+      "answerOptions": [
+        {
+          "text": "States were predictive of performance only when measured by supervisors, not the teachers themselves.",
+          "isCorrect": false,
+          "rationale": "The opposite was true; supervisors' ratings did not align with the teachers' state-performance correlations."
+        },
+        {
+          "text": "Personality states only influenced performance during high-stress situations like final exams.",
+          "isCorrect": false,
+          "rationale": "The studies examined a general two-week placement, not just specific high-stress events."
+        },
+        {
+          "text": "States correlated with self-rated performance but showed almost no association with performance rated by pupils or supervisors.",
+          "isCorrect": true,
+          "rationale": "This finding highlights a potential bias or lack of visibility in how internal states translate to external evaluations of performance."
+        },
+        {
+          "text": "Extraversion states were negatively correlated with pupils' perceptions of teaching quality.",
+          "isCorrect": false,
+          "rationale": "The source material indicates that associations 'all but vanished' for external raters, rather than showing specific negative correlations."
+        }
+      ],
+      "hint": "Think about who is doing the rating and whether they can see the 'state' the person claims to be in."
+    },
+    {
+      "question": "In the context of the Revised Latent State-Trait Theory (LST-R), what does the concept of 'specificity' refer to?",
+      "answerOptions": [
+        {
+          "text": "The degree to which a measurement is free from random measurement error.",
+          "isCorrect": false,
+          "rationale": "Freedom from error is general reliability; specificity is a specific component of that reliability related to the situation."
+        },
+        {
+          "text": "The reliability of a state measure that is due to stable, trait-like influences over time.",
+          "isCorrect": false,
+          "rationale": "Reliability due to trait-like influences is defined as 'consistency' in the LST-R framework."
+        },
+        {
+          "text": "The portion of reliability in a state measure that is responsive to occasion-specific or situational influences.",
+          "isCorrect": true,
+          "rationale": "Specificity distinguishes between what is stable (trait) and what is truly changing due to the 'person-in-a-situation' ($LST-R$)."
+        },
+        {
+          "text": "The ability of a scale to distinguish between lower-order nuances like specific affective states.",
+          "isCorrect": false,
+          "rationale": "Specificity in this context is a psychometric property of variance decomposition, not a level of categorical detail."
+        }
+      ],
+      "hint": "Consider the difference between a measure that shows you are always the same and one that shows how you react to a specific moment."
+    },
+    {
+      "question": "Which personality dimension's state was found to be most significantly affected by physical locations, such as the gym or a vehicle, in Matz and Harari's (2021) study?",
+      "answerOptions": [
+        {
+          "text": "Neuroticism",
+          "isCorrect": false,
+          "rationale": "Neuroticism states were actually found to be the least affected by the places participants were in."
+        },
+        {
+          "text": "Extraversion",
+          "isCorrect": true,
+          "rationale": "Extraversion states showed the strongest associations with specific environmental locations."
+        },
+        {
+          "text": "Agreeableness",
+          "isCorrect": false,
+          "rationale": "While social environment affects Agreeableness, Extraversion was specifically highlighted as being most affected by physical places."
+        },
+        {
+          "text": "Conscientiousness",
+          "isCorrect": false,
+          "rationale": "Conscientiousness showed some associations (e.g., at school), but it was not the most affected dimension according to the study results."
+        }
+      ],
+      "hint": "Think about which trait is most naturally tied to social stimulation and activity found in diverse public settings."
+    },
+    {
+      "question": "One challenge in studying personality states is the 'confound' between mean and variance. How have recent studies addressed the issue that individuals at the extremes of a scale have less range for state variability?",
+      "answerOptions": [
+        {
+          "text": "By excluding participants who score in the top or bottom 10% of trait measures.",
+          "isCorrect": false,
+          "rationale": "Excluding data would introduce bias; researchers instead use better statistical indices."
+        },
+        {
+          "text": "By using the relative variability index to adjust for the available range of movement.",
+          "isCorrect": true,
+          "rationale": "This index allows researchers to look at fluctuations relative to the constraints of the scale's endpoints."
+        },
+        {
+          "text": "By switching from 5-point Likert scales to open-ended behavioral descriptions.",
+          "isCorrect": false,
+          "rationale": "The review focuses on validated experience sampling scales (like HEXACO-PSI), which are still quantitative."
+        },
+        {
+          "text": "By assuming that state variance is purely random error and focusing only on central tendency.",
+          "isCorrect": false,
+          "rationale": "This is incorrect; LST-R and WTT specifically view variance as meaningful rather than just error."
+        }
+      ],
+      "hint": "Look for a specific statistical tool mentioned that helps separate 'how much you move' from 'where you are on the scale'."
+    },
+    {
+      "question": "According to the framework by Kandler and Rauthmann (2022), what is the primary conceptual difference between a 'situation' and an 'environment'?",
+      "answerOptions": [
+        {
+          "text": "A situation is objective, while an environment is purely subjective perception.",
+          "isCorrect": false,
+          "rationale": "Both can be perceived subjectively; the difference lies in their temporal and contextual scope."
+        },
+        {
+          "text": "A situation is temporally bounded and specific (e.g., a conversation), while an environment may cut across multiple situations (e.g., being at work).",
+          "isCorrect": true,
+          "rationale": "The environment acts as a broader context that contains and influences multiple distinct situational episodes."
+        },
+        {
+          "text": "Situations are caused by internal states, whereas environments are caused by external physical geography.",
+          "isCorrect": false,
+          "rationale": "Environments include social contexts, not just geography, and situations are defined by external inputs as well."
+        },
+        {
+          "text": "There is no functional difference; the terms are used interchangeably in LST-R theory.",
+          "isCorrect": false,
+          "rationale": "Kandler and Rauthmann explicitly introduced this distinction to add a new layer of influence to the study of states."
+        }
+      ],
+      "hint": "Think about the hierarchy of scale: which one is a brief moment and which one is the place where that moment happens?"
+    },
+    {
+      "question": "What is the typical range of correlations reported in recent meta-analyses between average self-reported states and trait scores?",
+      "answerOptions": [
+        {
+          "text": "Perfect or near-perfect correlations ($r > 0.90$).",
+          "isCorrect": false,
+          "rationale": "If states and traits were identical, $r$ would be near 1.0, but research shows they are distinct."
+        },
+        {
+          "text": "Negligible or non-existent correlations ($r < 0.10$).",
+          "isCorrect": false,
+          "rationale": "There is a clear relationship between the two, just not a perfect one."
+        },
+        {
+          "text": "Moderate correlations typically ranging from $r = 0.42$ to $r = 0.62$.",
+          "isCorrect": true,
+          "rationale": "These 'imperfect' correlations suggest that while states and traits are related, they represent different levels of analysis."
+        },
+        {
+          "text": "Strong negative correlations indicating that people act opposite to their traits in daily life.",
+          "isCorrect": false,
+          "rationale": "Correlations are positive, meaning high-trait individuals generally manifest high-state behaviors."
+        }
+      ],
+      "hint": "Identify the 'medium' range of statistical association mentioned in the text."
+    }
+  ]
+}

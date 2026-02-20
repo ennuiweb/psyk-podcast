@@ -1,0 +1,265 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "Which psychologist is considered the founder of German Critical Psychology, originating in Berlin during the 1970s?",
+      "answerOptions": [
+        {
+          "text": "Klaus Holzkamp",
+          "isCorrect": true,
+          "rationale": "He is explicitly identified in the text as the central figure who developed critical psychology in Berlin to challenge traditional psychological categories."
+        },
+        {
+          "text": "Ole Dreier",
+          "isCorrect": false,
+          "rationale": "While he is a significant figure in Danish critical psychology, he is cited as having expanded on the work of the original founder."
+        },
+        {
+          "text": "Lev Vygotsky",
+          "isCorrect": false,
+          "rationale": "He was an influence from the earlier Soviet cultural-historical tradition rather than the founder of the 1970s Berlin school."
+        },
+        {
+          "text": "Ute Osterkamp",
+          "isCorrect": false,
+          "rationale": "She was part of the research network at the Free University of Berlin but is not credited as the primary founder."
+        }
+      ],
+      "hint": "Think of the individual who transitioned from experimental learning studies to a Marxist-inspired critique of the field."
+    },
+    {
+      "question": "According to the text, what is the 'immediacy postulate' ($umiddelbarhedspostulatet$) in traditional psychology?",
+      "answerOptions": [
+        {
+          "text": "The assumption that human behavior is a direct reaction to immediate circumstances or internal processes.",
+          "isCorrect": true,
+          "rationale": "This postulate critiques the view that humans are merely subjects to their immediate environment rather than active agents capable of transcending limitations."
+        },
+        {
+          "text": "The belief that psychological research should only focus on the present moment of an individual's life.",
+          "isCorrect": false,
+          "rationale": "The critique is about the causal link between conditions and reactions, not just a temporal focus on the present."
+        },
+        {
+          "text": "The theory that people always act in their own immediate self-interest regardless of social conditions.",
+          "isCorrect": false,
+          "rationale": "This describes a form of egoism or individualism, whereas the postulate refers to the perceived mechanistic nature of psychological reactions."
+        },
+        {
+          "text": "The methodological requirement that researchers must observe subjects in their immediate natural habitat.",
+          "isCorrect": false,
+          "rationale": "The postulate refers to a theoretical assumption about the nature of the psyche, not a specific data collection method."
+        }
+      ],
+      "hint": "Consider how traditional psychology often explains behavior as a simple response to a stimulus or a feeling."
+    },
+    {
+      "question": "In the context of 'Agency' ($handleevne$), what distinguishes 'expansive agency' from 'restrictive agency'?",
+      "answerOptions": [
+        {
+          "text": "Expansive agency involves acting in ways that widen one's possibilities and align with the interests of others.",
+          "isCorrect": true,
+          "rationale": "This form of agency looks beyond immediate constraints to increase future possibilities for action through cooperation and systemic change."
+        },
+        {
+          "text": "Restrictive agency is the ability to ignore social rules, while expansive agency follows them strictly.",
+          "isCorrect": false,
+          "rationale": "Critical psychology views agency in relation to possibilities and interests, not just rule-following."
+        },
+        {
+          "text": "Expansive agency refers to physical movement, whereas restrictive agency refers to mental processes.",
+          "isCorrect": false,
+          "rationale": "Both terms refer to the quality of human action and its relationship to the environment and future possibilities."
+        },
+        {
+          "text": "Restrictive agency is used by children, while expansive agency is exclusive to adults.",
+          "isCorrect": false,
+          "rationale": "These concepts describe types of relationship to life conditions that can apply to any individual regardless of age."
+        }
+      ],
+      "hint": "One type focuses on immediate survival within given limits, while the other seeks to broaden those limits."
+    },
+    {
+      "question": "How does Critical Psychology define 'Everyday Conduct of Life' ($daglig\\ livsf\\phi relse$)?",
+      "answerOptions": [
+        {
+          "text": "The integration and organization of various activities, tasks, and relationships into a coherent whole.",
+          "isCorrect": true,
+          "rationale": "This concept describes how an individual manages the complex 'arrangement' of their life spheres, such as work, family, and leisure."
+        },
+        {
+          "text": "A list of habitual routines that a person performs automatically every morning.",
+          "isCorrect": false,
+          "rationale": "While routines are part of it, the concept emphasizes the active 'conduct' and integration of all life domains."
+        },
+        {
+          "text": "The genetic predisposition that determines how a person reacts to daily stressors.",
+          "isCorrect": false,
+          "rationale": "Critical psychology focuses on societal conditions and personal agency rather than biological determinism."
+        },
+        {
+          "text": "A clinical term for the ability to perform basic self-care tasks independently.",
+          "isCorrect": false,
+          "rationale": "The concept is a philosophical and psychological framework for understanding subjectivity in everyday life, not just functional independence."
+        }
+      ],
+      "hint": "Think about how an individual weaves together different parts of their life like work and family."
+    },
+    {
+      "question": "In Critical Psychology, what is the difference between a 'position' and a 'standpoint' ($standpunkt$)?",
+      "answerOptions": [
+        {
+          "text": "A position is a social role or function, while a standpoint is an individual's personal perspective and understanding of a practice.",
+          "isCorrect": true,
+          "rationale": "A position is the objective social placement (e.g., student), whereas a standpoint reflects the subject's active engagement and interpretation of that context."
+        },
+        {
+          "text": "A standpoint is physically where someone stands, while a position is their political opinion.",
+          "isCorrect": false,
+          "rationale": "Standpoint in this context is a psychological and relational concept regarding participation in social practices."
+        },
+        {
+          "text": "Positions are permanent life stages, whereas standpoints change every day.",
+          "isCorrect": false,
+          "rationale": "Both can change, but the distinction lies in the social role versus the personal subjective orientation."
+        },
+        {
+          "text": "A position is chosen by the individual, while a standpoint is forced upon them by society.",
+          "isCorrect": false,
+          "rationale": "Generally, positions (roles) are socially structured 'arrangements,' while standpoints are developed by the individual as they participate."
+        }
+      ],
+      "hint": "Consider the difference between having the job title of 'teacher' and having a personal philosophy on how to teach."
+    },
+    {
+      "question": "Critical Psychology describes personality as a 'composition.' What does this term imply?",
+      "answerOptions": [
+        {
+          "text": "Personality is a dynamic arrangement of various standpoints developed across different social practices.",
+          "isCorrect": true,
+          "rationale": "This view rejects the idea of a stable, internal core and instead sees personality as the way an individual connects their participations in various life spheres."
+        },
+        {
+          "text": "Personality is composed of fixed biological traits that remain stable throughout a lifetime.",
+          "isCorrect": false,
+          "rationale": "This represents the traditional psychological view that Critical Psychology seeks to challenge."
+        },
+        {
+          "text": "A person's character is built from a collection of memories stored in the unconscious.",
+          "isCorrect": false,
+          "rationale": "While memories matter, the focus here is on the active composition of standpoints in social practice."
+        },
+        {
+          "text": "The personality is a literal musical score that dictates how a person will behave.",
+          "isCorrect": false,
+          "rationale": "The term 'composition' is used as a metaphor for the arrangement of life experiences and perspectives, not as a deterministic script."
+        }
+      ],
+      "hint": "Think of personality as a 'map' or an 'arrangement' rather than a single, unchanging 'thing' inside the person."
+    },
+    {
+      "question": "Why does Critical Psychology prioritize a 'first-person perspective' in its research methodology?",
+      "answerOptions": [
+        {
+          "text": "To understand the subjective meanings and reasons behind an individual's actions within their social context.",
+          "isCorrect": true,
+          "rationale": "Critical psychology aims to be a 'subject-science' that captures the world as it is experienced and acted upon by the person."
+        },
+        {
+          "text": "To prove that objective reality does not exist and everything is an illusion.",
+          "isCorrect": false,
+          "rationale": "The text states that objective conditions do exist, but they must be understood through how the subject relates to them."
+        },
+        {
+          "text": "Because it is the only way to gather statistically significant data for large populations.",
+          "isCorrect": false,
+          "rationale": "First-person perspectives are typically associated with qualitative research, which focuses on depth rather than statistical breadth."
+        },
+        {
+          "text": "To allow researchers to ignore the societal conditions that affect the person.",
+          "isCorrect": false,
+          "rationale": "On the contrary, the first-person perspective is used specifically to see how individuals navigate and relate to those societal conditions."
+        }
+      ],
+      "hint": "Focus on the goal of understanding the subject's 'why' and their personal logic for acting."
+    },
+    {
+      "question": "Which philosophical tradition provides the 'dialectical materialism' foundation for Critical Psychology?",
+      "answerOptions": [
+        {
+          "text": "Marxist philosophy",
+          "isCorrect": true,
+          "rationale": "Holzkamp was heavily inspired by the Marxist idea that humans both create their history and are shaped by existing material conditions."
+        },
+        {
+          "text": "Existentialism",
+          "isCorrect": false,
+          "rationale": "While there is a focus on the individual's life, the systemic critique of capitalism points to a different philosophical root."
+        },
+        {
+          "text": "Logical Positivism",
+          "isCorrect": false,
+          "rationale": "Critical Psychology actually critiques the positivist insistence on 'objectivity' and 'neutrality' found in traditional psychology."
+        },
+        {
+          "text": "Stoicism",
+          "isCorrect": false,
+          "rationale": "Stoicism focuses on internal control, whereas Critical Psychology emphasizes changing external social practices and agency."
+        }
+      ],
+      "hint": "This tradition emphasizes the relationship between the material world, social structures, and human activity."
+    },
+    {
+      "question": "What does the term 'categorianalyse' ($kategorianalyse$) refer to in the work of Holzkamp?",
+      "answerOptions": [
+        {
+          "text": "Analyzing the underlying assumptions and ideological biases embedded in psychological concepts.",
+          "isCorrect": true,
+          "rationale": "Holzkamp argued that categories like 'learning' or 'perception' are often defined in ways that ignore the social reality of the individual."
+        },
+        {
+          "text": "The process of sorting patients into different diagnostic groups.",
+          "isCorrect": false,
+          "rationale": "This would be a traditional clinical application, which Critical Psychology often views as reductive."
+        },
+        {
+          "text": "A mathematical method for calculating the correlation between different personality traits.",
+          "isCorrect": false,
+          "rationale": "Critical Psychology focuses on qualitative theoretical critique rather than quantitative trait analysis."
+        },
+        {
+          "text": "The study of how people categorize objects in their physical environment.",
+          "isCorrect": false,
+          "rationale": "This refers to cognitive psychology, whereas Holzkamp's term refers to the critique of the field's own theoretical tools."
+        }
+      ],
+      "hint": "Think of it as a 'critique of the tools' that psychologists use to describe the human mind."
+    },
+    {
+      "question": "In the structural model of practice presented in the text (Figure 1), what role do 'arrangements' ($arrang\\phi rer$) play?",
+      "answerOptions": [
+        {
+          "text": "They define the conditions and rules of a practice, connecting it to other social structures.",
+          "isCorrect": true,
+          "rationale": "Arrangements like school schedules or workplace hierarchies set the stage for how individuals can participate in a given practice."
+        },
+        {
+          "text": "They are the physical objects found within a room where a practice takes place.",
+          "isCorrect": false,
+          "rationale": "While physical objects can be part of it, the term refers more broadly to the institutional and social organization of the practice."
+        },
+        {
+          "text": "They represent the internal motivations that drive a person to act.",
+          "isCorrect": false,
+          "rationale": "The model distinguishes between the 'participant' (internal/subjective) and the 'arrangers' (external/structural)."
+        },
+        {
+          "text": "They are the specific individuals who manage a person's social media accounts.",
+          "isCorrect": false,
+          "rationale": "This is a literal, narrow interpretation of the word that misses the broader sociological meaning in the text."
+        }
+      ],
+      "hint": "Consider the organizational structures that dictate when a school bell rings or how a meeting is run."
+    }
+  ]
+}

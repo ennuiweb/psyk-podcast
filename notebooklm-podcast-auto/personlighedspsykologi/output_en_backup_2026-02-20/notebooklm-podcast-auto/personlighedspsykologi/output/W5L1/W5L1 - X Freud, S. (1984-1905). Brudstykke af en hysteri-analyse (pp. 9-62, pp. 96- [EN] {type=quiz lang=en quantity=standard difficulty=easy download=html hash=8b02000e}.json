@@ -1,0 +1,265 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "What was the original title Freud had planned for this case study before its publication in $1905$?",
+      "answerOptions": [
+        {
+          "text": "Studies on Hysteria",
+          "isCorrect": false,
+          "rationale": "This was the title of a previous work co-authored with Breuer in $1895$, rather than the specific draft title for the Dora case."
+        },
+        {
+          "text": "The Interpretation of Dreams",
+          "isCorrect": false,
+          "rationale": "While the case is a continuation of the theories in that book, it is a separate work published years later."
+        },
+        {
+          "text": "Dreams and Hysteria",
+          "isCorrect": true,
+          "rationale": "Freud's letters to Fliess confirm that the first draft, completed in January $1901$, was titled 'Traum und Hysterie'."
+        },
+        {
+          "text": "The Psychopathology of Everyday Life",
+          "isCorrect": false,
+          "rationale": "Freud was working on this book simultaneously with the Dora case, but they are distinct publications."
+        }
+      ],
+      "hint": "The title highlights the two main psychological components Freud was trying to link in the paper."
+    },
+    {
+      "question": "According to the chronological summary, how old was Dora when the 'scene of the kiss' with Herr K. occurred?",
+      "answerOptions": [
+        {
+          "text": "$12$ years old",
+          "isCorrect": false,
+          "rationale": "At age $12$, Dora began suffering from migraines and her father experienced a confusional attack, but the kiss happened later."
+        },
+        {
+          "text": "$14$ years old",
+          "isCorrect": true,
+          "rationale": "The chronology lists the 'Scene of the kiss' as occurring in $1896$, when Dora was $14$ years old."
+        },
+        {
+          "text": "$16$ years old",
+          "isCorrect": false,
+          "rationale": "At age $16$, Dora experienced the 'scene by the lake' and the death of her aunt, which happened after the kiss."
+        },
+        {
+          "text": "$18$ years old",
+          "isCorrect": false,
+          "rationale": "This was the age at which Dora actually began her three-month treatment with Freud in Vienna."
+        }
+      ],
+      "hint": "This event took place two years before her first visit to Freud and four years before her formal treatment."
+    },
+    {
+      "question": "Freud describes a change in his psycho-analytic technique where he no longer starts by clearing up individual symptoms. What does he do instead?",
+      "answerOptions": [
+        {
+          "text": "He follows a strict chronological order of the patient's life.",
+          "isCorrect": false,
+          "rationale": "The text notes that patients are often incapable of giving an ordered history, making a chronological approach difficult."
+        },
+        {
+          "text": "He lets the patient choose the subject of the day's work.",
+          "isCorrect": true,
+          "rationale": "Freud explains that he now starts from whatever surface the patient's unconscious happens to be presenting at the moment."
+        },
+        {
+          "text": "He uses hypnosis to bypass the patient's conscious resistance.",
+          "isCorrect": false,
+          "rationale": "By the time of the Dora case, Freud had moved away from the 'compelling power of hypnosis' toward free association and dream interpretation."
+        },
+        {
+          "text": "He interviews the patient's family members first to get a clear picture.",
+          "isCorrect": false,
+          "rationale": "While he receives reports from relatives, Freud finds them indistinct and prefers the material produced during analysis."
+        }
+      ],
+      "hint": "Consider how the patient's current thoughts guide the direction of the session."
+    },
+    {
+      "question": "Which term does Freud use to describe the physical factor that allows a mental process to find a physical outlet in hysteria?",
+      "answerOptions": [
+        {
+          "text": "Psychical trauma",
+          "isCorrect": false,
+          "rationale": "This refers to the triggering event of the illness rather than the physical capacity of an organ to express a symptom."
+        },
+        {
+          "text": "Hypnoid state",
+          "isCorrect": false,
+          "rationale": "Freud explicitly states in a footnote that he has abandoned this term, which was originally proposed by Breuer."
+        },
+        {
+          "text": "Somatic compliance",
+          "isCorrect": true,
+          "rationale": "Freud uses this term to explain how a normal or pathological bodily process provides the 'compliance' needed for a hysterical symptom to form."
+        },
+        {
+          "text": "Reactive reinforcement",
+          "isCorrect": false,
+          "rationale": "This describes the mental process of strengthening a contrary thought to keep an objectionable one repressed."
+        }
+      ],
+      "hint": "It involves a 'cooperation' between the mind and a specific bodily organ."
+    },
+    {
+      "question": "In Freud's interpretation of Dora's first dream, what is the symbolic meaning of the 'jewel-case' ($\\textit{Schmuckk\\\"{a}stchen}$)?",
+      "answerOptions": [
+        {
+          "text": "Dora's financial inheritance",
+          "isCorrect": false,
+          "rationale": "While the family was wealthy, the interpretation focuses on psychosexual symbolism rather than literal monetary value."
+        },
+        {
+          "text": "Dora's relationship with her mother",
+          "isCorrect": false,
+          "rationale": "The mother appears in the dream as a rival, but the case itself is a symbol for something more intimate."
+        },
+        {
+          "text": "The female genitals",
+          "isCorrect": true,
+          "rationale": "Freud asserts that 'jewel-case' is a common expression for the female genitals, linking the dream to Dora's fear of sexual advances."
+        },
+        {
+          "text": "Dora's repressed memories of childhood",
+          "isCorrect": false,
+          "rationale": "The dream as a whole helps uncover memories, but the specific object has a more direct sexual anatomical meaning."
+        }
+      ],
+      "hint": "Freud links this object to an anatomical part through a common 'favorite expression'."
+    },
+    {
+      "question": "What symptom did Dora develop that Freud interpreted as an imitation of her father and a representation of 'sexual intercourse per os'?",
+      "answerOptions": [
+        {
+          "text": "Migraine",
+          "isCorrect": false,
+          "rationale": "Dora suffered from migraines, but they disappeared by age $16$ and were not linked to this specific sexual phantasy."
+        },
+        {
+          "text": "Nervous coughing",
+          "isCorrect": true,
+          "rationale": "Freud interpreted the cough as being related to the throat and oral cavity, symbolizing a phantasy of sexual gratification involving those areas."
+        },
+        {
+          "text": "Appendicitis",
+          "isCorrect": false,
+          "rationale": "This was a feverish disorder Dora had in Vienna, but it was not the primary focus of the oral-sexual interpretation."
+        },
+        {
+          "text": "Gastric pains",
+          "isCorrect": false,
+          "rationale": "Freud linked her gastric pains to an identification with her cousin and a history of masturbation, rather than this specific oral phantasy."
+        }
+      ],
+      "hint": "The symptom involved irritation in the 'throat and oral cavity'."
+    },
+    {
+      "question": "Freud notes that Dora was a 'thumb-sucker' in her childhood until her $4^{th}$ or $5^{th}$ year. What importance does he give to this habit?",
+      "answerOptions": [
+        {
+          "text": "It was a sign of intellectual precocity.",
+          "isCorrect": false,
+          "rationale": "While Dora was intelligent, Freud views thumb-sucking as a sign of early erotogenic development rather than IQ."
+        },
+        {
+          "text": "It indicated a lack of maternal affection.",
+          "isCorrect": false,
+          "rationale": "Freud focuses on the sensual satisfaction derived from the act itself rather than purely as a reaction to the mother."
+        },
+        {
+          "text": "It established the mouth as a primary erotogenic zone.",
+          "isCorrect": true,
+          "rationale": "Freud argues that early intense activity in this zone creates 'somatic compliance' for later hysterical symptoms like coughing."
+        },
+        {
+          "text": "It was the direct cause of her later bed-wetting.",
+          "isCorrect": false,
+          "rationale": "Freud links bed-wetting to masturbation rather than thumb-sucking, though both are forms of early sexual activity."
+        }
+      ],
+      "hint": "Think about how early oral habits might prepare the body for later symptoms in the same area."
+    },
+    {
+      "question": "What does Freud call the phenomenon where a patient's thoughts are so intense that they cannot be dissipated by voluntary effort?",
+      "answerOptions": [
+        {
+          "text": "Obsessive fixation",
+          "isCorrect": false,
+          "rationale": "While similar in meaning, Freud uses a specific term borrowed from Wernicke to describe this pathological intensity."
+        },
+        {
+          "text": "Supervalent ($\\textit{\\ddot{u}berwertig}$) thoughts",
+          "isCorrect": true,
+          "rationale": "Freud adopts Wernicke's term to describe thoughts that show their pathological character through their excessive and unyielding reinforcement."
+        },
+        {
+          "text": "Secondary gain",
+          "isCorrect": false,
+          "rationale": "Secondary gain refers to the 'motives for being ill' that appear after a symptom is formed, not the intensity of a thought."
+        },
+        {
+          "text": "Transference",
+          "isCorrect": false,
+          "rationale": "Transference refers to feelings the patient redirects toward the physician, not necessarily the intensity of a train of thought."
+        }
+      ],
+      "hint": "The term suggests that the thought is 'valued' or 'weighted' beyond its reasonable content."
+    },
+    {
+      "question": "Freud identifies two 'aims' of the treatment that are coincident. One is the removal of symptoms; what is the other?",
+      "answerOptions": [
+        {
+          "text": "The patient's reconciliation with their family.",
+          "isCorrect": false,
+          "rationale": "While often desirable, Freud's theoretical aim is specifically focused on the patient's internal mental structure."
+        },
+        {
+          "text": "The discovery of a physical cure for the neurosis.",
+          "isCorrect": false,
+          "rationale": "Freud's method is psychological, aimed at uncovering mental determinants rather than a physical medicine."
+        },
+        {
+          "text": "The repair of all damages to the patient's memory.",
+          "isCorrect": true,
+          "rationale": "Freud states that replacing symptoms with conscious thoughts is equivalent to filling in amnesias and repairing memory gaps."
+        },
+        {
+          "text": "The elimination of all sexual desires.",
+          "isCorrect": false,
+          "rationale": "The goal is to bring repressed desires to consciousness, not to eliminate natural biological drives."
+        }
+      ],
+      "hint": "Consider the relationship between what is 'forgotten' (repressed) and the symptoms themselves."
+    },
+    {
+      "question": "According to the text, what happened to Dora's voice (aphonia) during the periods when Herr K. was away on business?",
+      "answerOptions": [
+        {
+          "text": "Her voice returned to normal.",
+          "isCorrect": false,
+          "rationale": "Dora was actually ill when he was away, using the illness to express her longing."
+        },
+        {
+          "text": "She would completely lose her voice.",
+          "isCorrect": true,
+          "rationale": "Freud observed that Dora's attacks of aphonia coincided with Herr K.'s absences, acting as a symbolic demonstration of her love."
+        },
+        {
+          "text": "She would develop a violent fever.",
+          "isCorrect": false,
+          "rationale": "Dora had a fever diagnosed as appendicitis once, but her periodic absences of voice were the specific focus of this correlation."
+        },
+        {
+          "text": "She would become unusually talkative.",
+          "isCorrect": false,
+          "rationale": "The text explains that speech lost its value since she could not speak to him, so she stopped speaking rather than becoming more talkative."
+        }
+      ],
+      "hint": "Freud links the duration of these attacks (three to six weeks) to the length of Herr K.'s travels."
+    }
+  ]
+}

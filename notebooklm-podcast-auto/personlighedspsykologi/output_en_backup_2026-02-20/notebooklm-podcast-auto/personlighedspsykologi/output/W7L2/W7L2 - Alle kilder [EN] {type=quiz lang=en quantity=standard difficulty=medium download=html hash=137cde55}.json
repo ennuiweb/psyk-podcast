@@ -1,0 +1,317 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "According to Carl Rogers, why does he disagree with the homeostatic model of motivation taken from biology?",
+      "answerOptions": [
+        {
+          "text": "He believes organisms seek out more enriching and complicated stimuli rather than just trying to achieve stasis.",
+          "isCorrect": true,
+          "rationale": "Rogers argues that the organism is not merely trying to reduce tension but is actively looking for more complicated stimuli to enhance itself."
+        },
+        {
+          "text": "He argues that humans are purely driven by the need to satisfy physiological deficiencies before any other growth can occur.",
+          "isCorrect": false,
+          "rationale": "This reflects Maslow's hierarchy of needs rather than Rogers' specific critique of the homeostatic model."
+        },
+        {
+          "text": "He posits that human behaviour is entirely determined by unconscious irrational forces that ignore equilibrium.",
+          "isCorrect": false,
+          "rationale": "This view is more aligned with strict Freudian psychoanalysis, which Rogers explicitly moves away from."
+        },
+        {
+          "text": "He suggests that the primary goal of the organism is to maintain a constant internal environment at any cost.",
+          "isCorrect": false,
+          "rationale": "Maintaining a constant internal environment is the definition of homeostasis, which Rogers is arguing against."
+        }
+      ],
+      "hint": "Consider the difference between a state of complete rest and a process of seeking enrichment."
+    },
+    {
+      "question": "Maslow defines a 'basic need' or 'instinctoid need' using several criteria. Which of the following is one of those criteria?",
+      "answerOptions": [
+        {
+          "text": "Its absence breeds illness.",
+          "isCorrect": true,
+          "rationale": "Maslow defines basic needs as deficiencies that, like vitamins, cause illness when missing from the organism's experience."
+        },
+        {
+          "text": "It is found to be highly active in the psychologically healthy person.",
+          "isCorrect": false,
+          "rationale": "Maslow states that basic needs are actually found to be inactive or functionally absent in healthy people who have already gratified them."
+        },
+        {
+          "text": "It is an idiosyncratic requirement that differs for every member of the species.",
+          "isCorrect": false,
+          "rationale": "Maslow identifies basic needs as species-wide requirements, whereas self-actualisation is considered idiosyncratic."
+        },
+        {
+          "text": "Its presence is a primary cause of neurosis and psychological instability.",
+          "isCorrect": false,
+          "rationale": "Maslow argues that the *frustration* or absence of these needs causes neurosis, not their presence."
+        }
+      ],
+      "hint": "Think about how Maslow compares these psychological needs to physical nutrients like iodine or Vitamin C."
+    },
+    {
+      "question": "Amedeo Giorgi identifies a specific reason why Humanistic Psychology remains a minority within the American Psychological Association. What is this primary challenge?",
+      "answerOptions": [
+        {
+          "text": "It has not fully freed itself from the methods and strategies inherited from natural scientific psychology.",
+          "isCorrect": true,
+          "rationale": "Giorgi argues that humanistic psychology is good with humans but has struggled to change the underlying concept of science it employs."
+        },
+        {
+          "text": "The movement lacks any grounding in philosophical anthropology or phenomenological theory.",
+          "isCorrect": false,
+          "rationale": "Giorgi actually notes that humanistic psychology fits comfortably with phenomenology, though it needs more rigorous application."
+        },
+        {
+          "text": "Humanistic values are fundamentally incompatible with any form of academic or scholarly research.",
+          "isCorrect": false,
+          "rationale": "Giorgi believes rigor and significance are compatible and that sound research methods for human science can be developed."
+        },
+        {
+          "text": "Leading humanistic psychologists have never been elected to significant leadership positions in the field.",
+          "isCorrect": false,
+          "rationale": "The text mentions that leading humanistic psychologists have indeed been elected presidents of the APA."
+        }
+      ],
+      "hint": "Look for the tension Giorgi describes between 'being human' and 'being scientific'."
+    },
+    {
+      "question": "In Maslow's comparison of B-love and D-love, which characteristic distinguishes B-love (Love for the Being of another person)?",
+      "answerOptions": [
+        {
+          "text": "It is non-possessive and admired for the intrinsic qualities of the other person.",
+          "isCorrect": true,
+          "rationale": "B-love is described as 'unneeding love' that respects the individuality and 'Being' of the partner."
+        },
+        {
+          "text": "It is episodic and reaches a peak that results in a rapid fall in desire.",
+          "isCorrect": false,
+          "rationale": "This describes the climactic and episodic nature of deficiency-need gratification, not B-love."
+        },
+        {
+          "text": "It is primarily a selfish need that uses the partner as a tool for gratification.",
+          "isCorrect": false,
+          "rationale": "This is a characteristic of D-love (Deficiency-love), where the partner is seen in terms of their usefulness."
+        },
+        {
+          "text": "It disappears once the need for affection is sufficiently satisfied.",
+          "isCorrect": false,
+          "rationale": "Maslow states that B-love can never be sated and usually grows greater rather than disappearing."
+        }
+      ],
+      "hint": "Reflect on the difference between 'unneeding love' and love that seeks to fill a hole or deficiency."
+    },
+    {
+      "question": "How does Carl Rogers conceptualise the 'unconscious' compared to traditional Freudian models?",
+      "answerOptions": [
+        {
+          "text": "He views it as a continuum of phenomena that can be brought into 'figure' or 'focus' from the 'background' of awareness.",
+          "isCorrect": true,
+          "rationale": "Rogers prefers to conceptualise consciousness as material that is in sharp focus versus that which is dimly connected in the background."
+        },
+        {
+          "text": "He defines it as a collection of irrational drives that determine the majority of human behaviour.",
+          "isCorrect": false,
+          "rationale": "Rogers critiques the Freudian view of man as primarily irrational and unconsciously determined."
+        },
+        {
+          "text": "He suggests the unconscious is an artificial construct that has no place in a rational psychological system.",
+          "isCorrect": false,
+          "rationale": "Rogers does not dismiss the construct but rather redefines it in a way that feels more congenial to his phenomenological approach."
+        },
+        {
+          "text": "He treats it as a 'black box' that should be ignored in favour of observable stimulus-response patterns.",
+          "isCorrect": false,
+          "rationale": "This describes the behaviourist approach, which Rogers opposes in favour of inner experiential processes."
+        }
+      ],
+      "hint": "Consider Rogers' use of the Gestalt analogy of focus and background."
+    },
+    {
+      "question": "According to Maslow's schema of growth, what is the relationship between 'Safety' and 'Growth'?",
+      "answerOptions": [
+        {
+          "text": "Safety needs are prepotent over growth needs.",
+          "isCorrect": true,
+          "rationale": "Maslow argues that only a person who feels safe dares to choose growth, as the need for safety will win out if threatened."
+        },
+        {
+          "text": "Growth can only occur when the delights of safety are entirely eliminated.",
+          "isCorrect": false,
+          "rationale": "Growth happens when the delights of growth outweigh the delights of safety, not when safety is destroyed."
+        },
+        {
+          "text": "Safety and growth are mutually exclusive and cannot exist within the same person simultaneously.",
+          "isCorrect": false,
+          "rationale": "Maslow explicitly states that every human being has both sets of forces within them at all times."
+        },
+        {
+          "text": "Individuals will always choose progression forward regardless of their current state of security.",
+          "isCorrect": false,
+          "rationale": "The text notes that choosing safety is 'wise' and common when the pain of growth is more than the person can bear."
+        }
+      ],
+      "hint": "Think about which need the organism prioritises when it feels threatened or abandoned."
+    },
+    {
+      "question": "Giorgi suggests that to develop a truly 'human' science, psychology must adopt certain phenomenological practices. What is one of these practices?",
+      "answerOptions": [
+        {
+          "text": "The use of 'bracketing' to set aside established natural science biases.",
+          "isCorrect": true,
+          "rationale": "Giorgi suggests that we must bracket the hold that natural sciences have on us to invent a science that investigates human problems freshly."
+        },
+        {
+          "text": "Prioritising quantitative analysis to ensure magnitude and frequency are the primary metrics.",
+          "isCorrect": false,
+          "rationale": "Giorgi argues that qualitative analysis is needed to throw light on meanings and values, whereas quantitative is secondary."
+        },
+        {
+          "text": "Strict adherence to the medical model's focus on anatomy and neurology.",
+          "isCorrect": false,
+          "rationale": "The medical model is cited as part of the background that humanistic psychology protested against."
+        },
+        {
+          "text": "Restricting research participants to animals to maintain objective distance.",
+          "isCorrect": false,
+          "rationale": "Giorgi critiques the use of animals as subjects as a dominant academic paradigm that humanistic psychology sought to replace."
+        }
+      ],
+      "hint": "This term refers to the process of suspending prior judgements or existing scientific frameworks."
+    },
+    {
+      "question": "In 'Peak-Experiences', Maslow describes 'B-cognition' as having which characteristic?",
+      "answerOptions": [
+        {
+          "text": "The object is seen as a whole, detached from relations, usefulness, or purpose.",
+          "isCorrect": true,
+          "rationale": "In B-cognition, the percept is exclusively attended to as if it were all of 'Being', synonymous with the universe."
+        },
+        {
+          "text": "The perception is primarily focused on placing the object on a continuum of 'better than' or 'worse than'.",
+          "isCorrect": false,
+          "rationale": "Maslow defines B-cognition as non-evaluating and non-judging, unlike normal comparative perception."
+        },
+        {
+          "text": "The experience is organized around how the object can satisfy a current deficiency need.",
+          "isCorrect": false,
+          "rationale": "This is the definition of D-cognition (deficiency-cognition), where objects are seen in terms of their utility."
+        },
+        {
+          "text": "It involves 'rubricising' the object into a taxonomy or larger category.",
+          "isCorrect": false,
+          "rationale": "Rubricising is characteristic of normal perception, whereas B-cognition sees the object uniquely and idiosyncratically."
+        }
+      ],
+      "hint": "Consider how an artist or a person in love might view an object without considering its practical value."
+    },
+    {
+      "question": "Carl Rogers discusses the 'I-Thou' relationship in therapy, a concept he shares with Martin Buber. How does he describe this relationship?",
+      "answerOptions": [
+        {
+          "text": "A deep sense of communication and unity where there is no sense of distance between the two people.",
+          "isCorrect": true,
+          "rationale": "Rogers describes the I-Thou relationship as a 'real trendless immediacy' where unity exists between the therapist and the client."
+        },
+        {
+          "text": "A diagnostic approach where the therapist views the client as a complex machine to be fixed.",
+          "isCorrect": false,
+          "rationale": "Rogers explicitly contrasts the I-Thou relationship with the diagnostic 'I-It' relationship."
+        },
+        {
+          "text": "A strictly professional boundary where the therapist provides expert advice to direct the client's life.",
+          "isCorrect": false,
+          "rationale": "Rogers' whole approach is non-directive, and he argues that the client, not the therapist, is in charge of their own life."
+        },
+        {
+          "text": "A manipulative strategy designed to trick the client into achieving a specific treatment plan.",
+          "isCorrect": false,
+          "rationale": "The text mentions that Rogers moved away from 'manipulative approaches' that dominated his early career."
+        }
+      ],
+      "hint": "Think about a type of relating that emphasizes shared presence and mutual humanity over clinical distance."
+    },
+    {
+      "question": "According to Maslow, what is the 'fear of Hubris' or the 'struggle against our own greatness'?",
+      "answerOptions": [
+        {
+          "text": "A form of resistance where we evade personal growth because it brings feelings of inadequacy and responsibility.",
+          "isCorrect": true,
+          "rationale": "Maslow notes that we tend to evade our talents and finest impulses because of the 'lonely moment of creation' and the burden of being a leader."
+        },
+        {
+          "text": "The fear that seeking knowledge will result in a loss of social status and peer approval.",
+          "isCorrect": false,
+          "rationale": "While related, Maslow identifies this specific fear as being about the 'god-like' in ourselves rather than social conformity."
+        },
+        {
+          "text": "A physiological reaction to the stress of achieving a peak experience.",
+          "isCorrect": false,
+          "rationale": "The fear of Hubris is described as a psychological and existential struggle, not a purely physiological response."
+        },
+        {
+          "text": "The belief that all ultimate knowledge is reserved for the gods and is dangerous for humans to touch.",
+          "isCorrect": false,
+          "rationale": "While the Adam and Eve myth is a parallel, Maslow uses 'Hubris' to describe the internal struggle against one's own highest potentialities."
+        }
+      ],
+      "hint": "Consider why some people might feel terrified by their own creative potential or 'god-like' qualities."
+    },
+    {
+      "question": "Giorgi notes that in the clinical realm prior to the $1960$s, departing from a strict interpretation of the medical model meant moving into which alternative arena?",
+      "answerOptions": [
+        {
+          "text": "Psychoanalysis and its pathology-laden interpretation of humans.",
+          "isCorrect": true,
+          "rationale": "The text states that clinicians either used tests and quantified measures or moved into the arena of psychoanalysis."
+        },
+        {
+          "text": "Experimental behaviourism focused on animal subjects.",
+          "isCorrect": false,
+          "rationale": "Behaviourism and animal subjects were dominant in academia, whereas psychoanalysis was the primary clinical alternative to the medical model."
+        },
+        {
+          "text": "Cognitive psychology based on computer-mediated models of the mind.",
+          "isCorrect": false,
+          "rationale": "Cognitive psychology is mentioned as a contemporary rival, but it was not the primary clinical alternative in the pre-$1960$s era Giorgi describes."
+        },
+        {
+          "text": "Phenomenological methodology used to study the lifeworld.",
+          "isCorrect": false,
+          "rationale": "Phenomenology is the 'alternative' Giorgi himself turned to later to correct the flaws he found in the earlier systems."
+        }
+      ],
+      "hint": "This clinical arena was famously focused on the unconscious and early childhood development."
+    },
+    {
+      "question": "What does Maslow mean by 'pseudo-growth by bypassing the ungratified need'?",
+      "answerOptions": [
+        {
+          "text": "Convinced oneself that an ungratified basic need is satisfied, leading to a shaky foundation for higher levels.",
+          "isCorrect": true,
+          "rationale": "Maslow explains that through denial or reaction-formation, a person may permit growth to higher levels that are fundamentally unstable."
+        },
+        {
+          "text": "Achieving self-actualisation without first satisfying the need for safety or belongingness.",
+          "isCorrect": false,
+          "rationale": "Maslow argues this is impossible; true growth requires the gratification of basic needs as a $sine \\, qua \\, non$."
+        },
+        {
+          "text": "A temporary state of exhilaration that occurs after a peak experience.",
+          "isCorrect": false,
+          "rationale": "Pseudo-growth refers to a long-term character structure issue, not a temporary state of mood."
+        },
+        {
+          "text": "The rapid acquisition of habits from the environment without changing the total personality.",
+          "isCorrect": false,
+          "rationale": "Maslow defines this as 'associative learning', which he contrasts with the personality change seen in true growth."
+        }
+      ],
+      "hint": "Think about the consequence of repressing or denying a basic deficiency while trying to 'move up' the hierarchy."
+    }
+  ]
+}

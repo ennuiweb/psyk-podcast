@@ -1,0 +1,395 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "According to Columbus and Strandsbjerg (2025), how are personality states formally defined in contemporary personality psychology?",
+      "answerOptions": [
+        {
+          "text": "Relatively enduring patterns of thoughts, feelings, and behaviors that reflect a tendency to respond in specific ways.",
+          "isCorrect": false,
+          "rationale": "This describes personality traits rather than states, which are characterized by their ephemeral nature."
+        },
+        {
+          "text": "The quantitative level of coherent behaviors, thoughts, and feelings at a particular point in time.",
+          "isCorrect": true,
+          "rationale": "States are defined as short-term manifestations that capture an individual's psychological experience at a specific moment."
+        },
+        {
+          "text": "The cross-situational consistency of an individual's behavior across their entire lifespan.",
+          "isCorrect": false,
+          "rationale": "Personality states focus on moment-to-moment fluctuations rather than long-term stability across the lifespan."
+        },
+        {
+          "text": "Internal biological drives that remain constant regardless of environmental triggers or situational inputs.",
+          "isCorrect": false,
+          "rationale": "States are often viewed as products of cognitive-affective processes interacting with situational inputs."
+        }
+      ],
+      "hint": "Consider the temporal duration mentioned in the definition of states versus traits."
+    },
+    {
+      "question": "In the context of Whole Trait Theory (WTT), what does a personality trait primarily correspond to?",
+      "answerOptions": [
+        {
+          "text": "A fixed point representing the maximum intensity of a specific behavior.",
+          "isCorrect": false,
+          "rationale": "A trait is not a single point of maximum intensity but a pattern of variation over time."
+        },
+        {
+          "text": "A sequence of 'if... then' contingencies between situations and outputs.",
+          "isCorrect": false,
+          "rationale": "While related, 'if... then' contingencies are more specifically the focus of the Cognitive-Affective Personality System (CAPS)."
+        },
+        {
+          "text": "The density distribution of personality states over a period of time.",
+          "isCorrect": true,
+          "rationale": "WTT posits that traits are best understood as the aggregate distribution (mean, variance, shape) of moment-to-moment states."
+        },
+        {
+          "text": "A latent variable that remains entirely uninfluenced by situational characteristics.",
+          "isCorrect": false,
+          "rationale": "WTT incorporates situational inputs through social-cognitive mechanisms that process environmental data to generate states."
+        }
+      ],
+      "hint": "Think about how a single trait score might summarize many different state observations."
+    },
+    {
+      "question": "Which theory specifically attempts to explain long-term personality development as a sequence of short-term processes involving triggering situations and reactions?",
+      "answerOptions": [
+        {
+          "text": "Trait Activation Theory (TAT)",
+          "isCorrect": false,
+          "rationale": "TAT focuses on how traits are expressed in specific situations, particularly in organizational contexts, rather than developmental sequences."
+        },
+        {
+          "text": "TESSERA",
+          "isCorrect": true,
+          "rationale": "This framework suggests that repeated sequences of situations, states, and reactions accumulate into long-term trait changes."
+        },
+        {
+          "text": "Latent State-Trait Theory (LST-R)",
+          "isCorrect": false,
+          "rationale": "LST-R is primarily a measurement model designed to decompose variance into trait and situational components."
+        },
+        {
+          "text": "Cognitive-Affective Personality System (CAPS)",
+          "isCorrect": false,
+          "rationale": "CAPS explains behavioral consistency and variability through cognitive-affective units but does not focus on long-term developmental sequences."
+        }
+      ],
+      "hint": "This framework views personality development as the accumulation of short-term situational cycles."
+    },
+    {
+      "question": "According to the meta-analysis by Zettler et al. (2020), which HEXACO dimension maps most strongly onto the outcome domain of 'Exploitation'?",
+      "answerOptions": [
+        {
+          "text": "Agreeableness",
+          "isCorrect": false,
+          "rationale": "While it has a secondary relation to exploitation, it primarily maps onto the domain of obstruction."
+        },
+        {
+          "text": "Emotionality",
+          "isCorrect": false,
+          "rationale": "Emotionality is theoretically linked to kin altruism and insecurity, not the tendency to exploit others for gain."
+        },
+        {
+          "text": "Honesty-Humility",
+          "isCorrect": true,
+          "rationale": "This dimension captures the tendency to be fair and genuine, and is the strongest predictor of immoral behavior and dark traits."
+        },
+        {
+          "text": "Conscientiousness",
+          "isCorrect": false,
+          "rationale": "Conscientiousness relates to task-related endeavors and duty, though it shows some secondary correlation with exploitation."
+        }
+      ],
+      "hint": "This dimension is the primary addition to the six-factor model and concerns ethics and modesty."
+    },
+    {
+      "question": "Zettler et al. (2020) found that the mapping between a HEXACO dimension and its counterpart domain was least distinct for which of the following pairs?",
+      "answerOptions": [
+        {
+          "text": "Extraversion and Sociality",
+          "isCorrect": false,
+          "rationale": "This pair showed a very strong and distinct mapping with a large discrepancy from secondary correlations."
+        },
+        {
+          "text": "Emotionality and Insecurity",
+          "isCorrect": true,
+          "rationale": "The correlation for this pair was only slightly higher than the secondary relation between Extraversion and Insecurity."
+        },
+        {
+          "text": "Conscientiousness and Duty",
+          "isCorrect": false,
+          "rationale": "Conscientiousness showed a clear and substantial primary mapping to the duty domain."
+        },
+        {
+          "text": "Openness to Experience and Exploration",
+          "isCorrect": false,
+          "rationale": "This pair yielded a distinct mapping, particularly with criteria like creativity and prejudice."
+        }
+      ],
+      "hint": "Look for the pair where the primary correlation was barely higher than the next highest secondary correlation."
+    },
+    {
+      "question": "In the evolutionary conceptualization of the HEXACO model, Honesty-Humility and Agreeableness are both linked to reciprocal altruism. How do they differ in their specific roles?",
+      "answerOptions": [
+        {
+          "text": "Honesty-Humility reflects reactive cooperation, while Agreeableness reflects active cooperation.",
+          "isCorrect": false,
+          "rationale": "It is actually the other way around: Honesty-Humility is active, while Agreeableness is reactive."
+        },
+        {
+          "text": "Honesty-Humility involves non-exploitation (active), while Agreeableness involves non-retaliation (reactive).",
+          "isCorrect": true,
+          "rationale": "Honesty-Humility governs the tendency to not exploit others, whereas Agreeableness governs the response to being exploited."
+        },
+        {
+          "text": "Honesty-Humility is related to kin altruism, while Agreeableness is related to social-attention-holding power.",
+          "isCorrect": false,
+          "rationale": "Kin altruism is linked to Emotionality, and social-attention-holding power is linked to Extraversion."
+        },
+        {
+          "text": "Honesty-Humility determines task-related efforts, while Agreeableness determines idea-related endeavors.",
+          "isCorrect": false,
+          "rationale": "Task efforts relate to Conscientiousness, and idea endeavors relate to Openness to Experience."
+        }
+      ],
+      "hint": "Think about who initiates the cooperation and who responds to exploitation."
+    },
+    {
+      "question": "When Zettler et al. (2020) analyzed the effects of assessment source, which finding emerged regarding the link between Conscientiousness and Achievement/Performance?",
+      "answerOptions": [
+        {
+          "text": "The correlation dropped significantly when moving from self-report to non-self-report criteria.",
+          "isCorrect": false,
+          "rationale": "Unlike Honesty-Humility or Agreeableness, the link for Conscientiousness remained remarkably stable across assessment modes."
+        },
+        {
+          "text": "The correlation was actually stronger for non-self-report criteria than for self-reports.",
+          "isCorrect": false,
+          "rationale": "While stable, the correlation did not increase; it remained nearly identical ($ \\rho = 0.25 $ vs. $ \\rho = 0.24 $)."
+        },
+        {
+          "text": "The correlation remained stable regardless of whether the criteria were self-reported or non-self-reported.",
+          "isCorrect": true,
+          "rationale": "Conscientiousness was the only dimension whose primary mapping didn't show substantial inflation from shared method variance."
+        },
+        {
+          "text": "A significant correlation only existed when both traits and outcomes were measured via observer reports.",
+          "isCorrect": false,
+          "rationale": "Significant correlations were found in both self-report and non-self-report modes."
+        }
+      ],
+      "hint": "This dimension was an exception to the trend of 'method variance' inflating self-report correlations."
+    },
+    {
+      "question": "In the meta-analysis, 'Environmental Behavior' showed a higher correlation with which trait, despite being theoretically placed in the domain of 'Exploitation'?",
+      "answerOptions": [
+        {
+          "text": "Honesty-Humility",
+          "isCorrect": false,
+          "rationale": "Although theoretically linked to cooperation, it showed a lower correlation ($ \\rho = 0.23 $) than Openness to Experience."
+        },
+        {
+          "text": "Openness to Experience",
+          "isCorrect": true,
+          "rationale": "Openness yielded a large effect ($ \\rho = 0.54 $), likely because environmentalism is often tied to socio-political attitudes and exploration."
+        },
+        {
+          "text": "Extraversion",
+          "isCorrect": false,
+          "rationale": "Extraversion showed a relatively small link to environmental behavior compared to Openness."
+        },
+        {
+          "text": "Conscientiousness",
+          "isCorrect": false,
+          "rationale": "Conscientiousness had a much weaker link to environmental behavior than Openness."
+        }
+      ],
+      "hint": "This trait is associated with unconventionality and idea-related endeavors."
+    },
+    {
+      "question": "What is a primary challenge to the explanatory model of Whole Trait Theory (WTT) mentioned in the recent review by Columbus and Strandsbjerg (2025)?",
+      "answerOptions": [
+        {
+          "text": "Average states and traits do not correlate at all in empirical studies.",
+          "isCorrect": false,
+          "rationale": "Studies actually find moderate to high correlations between average states and traits."
+        },
+        {
+          "text": "Individual differences in situation-state contingencies do not correspond strongly to stable self-rated traits.",
+          "isCorrect": true,
+          "rationale": "This finding contradicts WTT's explanatory model, which expects these contingencies to be manifestations of traits."
+        },
+        {
+          "text": "State fluctuations have been proven to have no impact on long-term trait development.",
+          "isCorrect": false,
+          "rationale": "Initial evidence actually suggests that state fluctuations do play a role in long-term trait change."
+        },
+        {
+          "text": "Experience sampling methods are unable to capture short-term moment-to-moment fluctuations.",
+          "isCorrect": false,
+          "rationale": "Experience sampling is specifically highlighted as the primary method for capturing these fluctuations."
+        }
+      ],
+      "hint": "The challenge relates to whether 'if... then' patterns actually align with trait scores."
+    },
+    {
+      "question": "Which criterion class within the domain of 'Duty' yielded a non-significant relation with Conscientiousness in the Zettler et al. (2020) meta-analysis?",
+      "answerOptions": [
+        {
+          "text": "Achievement/Performance",
+          "isCorrect": false,
+          "rationale": "Conscientiousness showed a significant and strong mapping to achievement and performance."
+        },
+        {
+          "text": "Perfectionism",
+          "isCorrect": false,
+          "rationale": "Conscientiousness was substantially and significantly linked to perfectionism ($ \\rho = 0.46 $)."
+        },
+        {
+          "text": "Self-control",
+          "isCorrect": false,
+          "rationale": "The link between Conscientiousness and self-control was very strong ($ \\rho = 0.75 $)."
+        },
+        {
+          "text": "Exercising",
+          "isCorrect": true,
+          "rationale": "Surprisingly, the correlation was non-significant ($ \\rho = 0.09 $), though the authors note the small number of samples for this class."
+        }
+      ],
+      "hint": "This class involves physical activity and showed the weakest link to Conscientiousness in the results."
+    },
+    {
+      "question": "According to the STOA framework, the dimension of Extraversion relates to which evolutionary concept?",
+      "answerOptions": [
+        {
+          "text": "Reciprocal Altruism",
+          "isCorrect": false,
+          "rationale": "Reciprocal Altruism is the theoretical basis for Honesty-Humility and Agreeableness."
+        },
+        {
+          "text": "Social-Attention-Holding Power",
+          "isCorrect": true,
+          "rationale": "This concept explains how engaging in social endeavors can lead to positive attention and support from others."
+        },
+        {
+          "text": "Kin Altruism",
+          "isCorrect": false,
+          "rationale": "Kin Altruism is the evolutionary concept associated with Emotionality."
+        },
+        {
+          "text": "Cultural Learning",
+          "isCorrect": false,
+          "rationale": "Openness to Experience is the dimension associated with learning and discovery."
+        }
+      ],
+      "hint": "Consider the benefit of directing positive attention to oneself within a group."
+    },
+    {
+      "question": "Latent State-Trait Theory - Revised (LST-R) defines a 'person-in-a-situation' state as being composed of which three factors?",
+      "answerOptions": [
+        {
+          "text": "Biological drive, social pressure, and cognitive ability.",
+          "isCorrect": false,
+          "rationale": "LST-R is a measurement model that focuses on statistical variance components, not specific psychological drivers."
+        },
+        {
+          "text": "Trait-like influences, situation-specific influences, and random error.",
+          "isCorrect": true,
+          "rationale": "The theory is formulated as a model to decompose state variance into cross-situational, situation-specific, and error components."
+        },
+        {
+          "text": "Incentives, expectations, and previous behaviors.",
+          "isCorrect": false,
+          "rationale": "These are closer to the components of the TESSERA framework or CAPS."
+        },
+        {
+          "text": "Introversion, extraversion, and situational intensity.",
+          "isCorrect": false,
+          "rationale": "LST-R applies to all traits and decomposes the measurement of states, rather than focusing on specific personality factors."
+        }
+      ],
+      "hint": "This theory functions as a measurement model for variance decomposition."
+    },
+    {
+      "question": "In the HEXACO model, which outcome domain captures individuals' inclination between choosing social group activities versus social withdrawal?",
+      "answerOptions": [
+        {
+          "text": "Exploration",
+          "isCorrect": false,
+          "rationale": "Exploration focuses on discovery and idea-related endeavors (Openness)."
+        },
+        {
+          "text": "Sociality",
+          "isCorrect": true,
+          "rationale": "Sociality is the domain mapped to Extraversion, covering social networks, leadership, and positivity."
+        },
+        {
+          "text": "Obstruction",
+          "isCorrect": false,
+          "rationale": "Obstruction focuses on reactions to being exploited (Agreeableness)."
+        },
+        {
+          "text": "Insecurity",
+          "isCorrect": false,
+          "rationale": "Insecurity focuses on harm avoidance and help-seeking (Emotionality)."
+        }
+      ],
+      "hint": "This domain is the primary counterpart to the Extraversion dimension."
+    },
+    {
+      "question": "Research on personality states typically finds that the average correlation between self-reported states and self-reported traits (mean true-score) falls into which range?",
+      "answerOptions": [
+        {
+          "text": "$ 0.05 $ to $ 0.15 $",
+          "isCorrect": false,
+          "rationale": "This range is far too low; state-trait correlations are generally moderate to strong."
+        },
+        {
+          "text": "$ 0.42 $ to $ 0.62 $",
+          "isCorrect": true,
+          "rationale": "Both early meta-analyses and recent studies consistently report correlations in this moderate-to-high range."
+        },
+        {
+          "text": "$ 0.85 $ to $ 0.95 $",
+          "isCorrect": false,
+          "rationale": "This range would imply that states and traits are nearly identical, ignoring situational variability."
+        },
+        {
+          "text": "$ -0.30 $ to $ 0.30 $",
+          "isCorrect": false,
+          "rationale": "Correlations are almost always positive and generally exceed $ 0.40 $ for the corresponding traits."
+        }
+      ],
+      "hint": "Think of a moderate-to-strong positive correlation found in experience sampling studies."
+    },
+    {
+      "question": "The HEXACO dimension of Openness to Experience maps onto the domain of Exploration. Which of the following is a criterion class used to operationalize this domain?",
+      "answerOptions": [
+        {
+          "text": "Self-control",
+          "isCorrect": false,
+          "rationale": "Self-control is a criterion class for the domain of Duty (Conscientiousness)."
+        },
+        {
+          "text": "Prejudice",
+          "isCorrect": true,
+          "rationale": "Prejudice and conservatism are included in exploration as they represent a lack of openness to new people and ideas."
+        },
+        {
+          "text": "Risk Aversion",
+          "isCorrect": false,
+          "rationale": "Risk aversion is a criterion class for the domain of Insecurity (Emotionality)."
+        },
+        {
+          "text": "Active Cooperation",
+          "isCorrect": false,
+          "rationale": "Active cooperation is a criterion class for the domain of Exploitation (Honesty-Humility)."
+        }
+      ],
+      "hint": "This class involves negative attitudes toward contact with 'outgroups'."
+    }
+  ]
+}

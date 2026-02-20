@@ -1,0 +1,265 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "Based on the conceptualization provided by Moshagen et al. (2018), which of the following best defines the Dark Factor of Personality ($D$)?",
+      "answerOptions": [
+        {
+          "text": "The general tendency to maximize individual utility at the cost of others, accompanied by justifying beliefs.",
+          "isCorrect": true,
+          "rationale": "The research defines $D$ as the underlying disposition to prioritize self-gain while disregarding or provoking harm to others, supported by cognitive justifications."
+        },
+        {
+          "text": "A clinical lack of empathy and remorse specifically associated with antisocial personality disorder.",
+          "isCorrect": false,
+          "rationale": "While empathy is related, $D$ is a broader reflective construct underlying all aversive traits rather than a specific clinical diagnosis."
+        },
+        {
+          "text": "The manifestation of high Machiavellianism and Narcissism in the absence of Psychopathy.",
+          "isCorrect": false,
+          "rationale": "Individual dark traits are specific manifestations or 'blends' of the core $D$ factor, not its definition."
+        },
+        {
+          "text": "An impulsive reaction to environmental stressors characterized by the inability to regulate aggression.",
+          "isCorrect": false,
+          "rationale": "Personality traits are defined as relatively enduring patterns of thoughts and behaviors, not merely temporary impulsive reactions."
+        }
+      ],
+      "hint": "Consider the relationship between individual utility, the impact on others, and the cognitive rationalizations used."
+    },
+    {
+      "question": "Which four variables were utilized by the authors to construct the Aversive Societal Conditions Index (ASCI)?",
+      "answerOptions": [
+        {
+          "text": "Corruption, inequality, poverty, and violence.",
+          "isCorrect": true,
+          "rationale": "The study jointly assessed these four conditions to reflect environments where self-serving behavior might be perceived as adaptive or justifiable."
+        },
+        {
+          "text": "GDP per capita, literacy rates, health care access, and political stability.",
+          "isCorrect": false,
+          "rationale": "These factors describe general development rather than the specific 'aversiveness' of societal conditions defined in this study."
+        },
+        {
+          "text": "Religious density, ethnic diversity, urban population, and unemployment.",
+          "isCorrect": false,
+          "rationale": "The authors focused on conditions that specifically foster exploitation, normlessness, and the perceived need for aversive behavior."
+        },
+        {
+          "text": "Individualism-collectivism, power distance, uncertainty avoidance, and masculinity.",
+          "isCorrect": false,
+          "rationale": "These are Hofstede's cultural dimensions, which differ from the objective measures of societal aversiveness used here."
+        }
+      ],
+      "hint": "Focus on indicators that represent a lack of rule of law, economic hardship, and physical danger."
+    },
+    {
+      "question": "What was the primary methodological reason for using ASC data from approximately 20 years before the assessment of personality traits?",
+      "answerOptions": [
+        {
+          "text": "To minimize the possibility of reversed causality where participants' personality levels influenced societal conditions.",
+          "isCorrect": true,
+          "rationale": "Using a time lag ensures that the environment preceded the current personality state of the participants, supporting a causal direction from ASC to $D$."
+        },
+        {
+          "text": "Because historical records of corruption and poverty are more accurate than modern real-time data.",
+          "isCorrect": false,
+          "rationale": "The issue is not the accuracy of the data, but the temporal order required to suggest influence over personality development."
+        },
+        {
+          "text": "To account for the high mortality rate of individuals with high levels of $D$ in aversive societies.",
+          "isCorrect": false,
+          "rationale": "There is no evidence in the text suggesting mortality rates were the reason for the 20-year time lag."
+        },
+        {
+          "text": "To align with the biological maturation cycle of the prefrontal cortex in the participants.",
+          "isCorrect": false,
+          "rationale": "While development is key, the text specifically emphasizes the logic of excluding reversed causality."
+        }
+      ],
+      "hint": "Think about the temporal requirements for establishing that one factor influences another without the latter influencing the former."
+    },
+    {
+      "question": "Which theory suggests that societal variation in traits like $D$ arises because individuals adapt their phenotypes to enhance success and survival in specific environments?",
+      "answerOptions": [
+        {
+          "text": "Adaptive phenotypic plasticity.",
+          "isCorrect": true,
+          "rationale": "This perspective from behavioral ecology posits that traits develop in response to environments to maximize fitness in those specific contexts."
+        },
+        {
+          "text": "Social dominance theory.",
+          "isCorrect": false,
+          "rationale": "While related to hierarchy, the text specifically cites adaptive phenotypic plasticity as the broad behavioral ecology perspective."
+        },
+        {
+          "text": "Genetic determinism.",
+          "isCorrect": false,
+          "rationale": "The study focuses on socioecological factors coshaping traits, whereas genetic determinism minimizes environmental influence."
+        },
+        {
+          "text": "The $5$ factor model of personality.",
+          "isCorrect": false,
+          "rationale": "The Big Five model is a structural taxonomy of personality, not a theory explaining the ecological development of traits."
+        }
+      ],
+      "hint": "Look for a term that describes how organisms change their observable characteristics in response to environmental demands."
+    },
+    {
+      "question": "In the country-wise analysis ($n_{countries} = 183$), what was the reported standardized beta ($\\beta_{standardized}$) for the relationship between ASC and $D$?",
+      "answerOptions": [
+        {
+          "text": "$\\beta_{standardized} = 0.09$",
+          "isCorrect": true,
+          "rationale": "The results for the worldwide analysis yielded a small but statistically significant coefficient of $0.09$."
+        },
+        {
+          "text": "$\\beta_{standardized} = 0.45$",
+          "isCorrect": false,
+          "rationale": "This would represent a large effect; the authors noted that the observed relations were small in absolute magnitude."
+        },
+        {
+          "text": "$\\beta_{standardized} = 0.04$",
+          "isCorrect": false,
+          "rationale": "This coefficient was actually the result found for the US state-wise analysis, not the worldwide country-wise analysis."
+        },
+        {
+          "text": "$\\beta_{standardized} = -0.09$",
+          "isCorrect": false,
+          "rationale": "The relation was positive, meaning higher aversive conditions were associated with higher levels of dark personality."
+        }
+      ],
+      "hint": "The value for countries was higher than the value found for US states."
+    },
+    {
+      "question": "According to the tenets of social dilemma research mentioned in the report, why might higher levels of $D$ be adaptive in aversive societies?",
+      "answerOptions": [
+        {
+          "text": "Selfish tendencies serve as a protective mechanism against being exploited by others in high-risk environments.",
+          "isCorrect": true,
+          "rationale": "In societies where exploitation is common, non-cooperative tendencies help individuals avoid the costs of being a 'victim'."
+        },
+        {
+          "text": "High levels of $D$ lead to better physical health outcomes in areas with poor medical infrastructure.",
+          "isCorrect": false,
+          "rationale": "The text does not link $D$ to physical health, but rather to social interaction and adaptive survival strategies."
+        },
+        {
+          "text": "Dark traits are universally preferred by sexual partners in societies characterized by violence.",
+          "isCorrect": false,
+          "rationale": "The 'Sexy Son' hypothesis or sexual selection is not the mechanism discussed in the provided excerpts."
+        },
+        {
+          "text": "Individuals with high $D$ are more likely to immigrate to societies with lower ASC levels.",
+          "isCorrect": false,
+          "rationale": "The paper focuses on how conditions shape the residents' personality, rather than migration patterns based on $D$."
+        }
+      ],
+      "hint": "Consider how a person might behave if they expect everyone around them to be untrustworthy."
+    },
+    {
+      "question": "The authors compare the Dark Factor of Personality ($D$) to the '$g$ factor' in which other field of psychology?",
+      "answerOptions": [
+        {
+          "text": "Intelligence research.",
+          "isCorrect": true,
+          "rationale": "Just as the $g$ factor represents the common core of cognitive abilities, $D$ represents the common aversive essence underlying specific dark traits."
+        },
+        {
+          "text": "Abnormal psychology.",
+          "isCorrect": false,
+          "rationale": "While $D$ is related to antisocial behavior, the 'g factor' analogy is specifically drawn from the structure of intelligence."
+        },
+        {
+          "text": "Emotional regulation studies.",
+          "isCorrect": false,
+          "rationale": "The analogy serves to explain the statistical and conceptual structure of a disposition, not the regulation of emotions."
+        },
+        {
+          "text": "Developmental psychology.",
+          "isCorrect": false,
+          "rationale": "Though $D$ develops over time, the $g$ factor comparison specifically refers to the psychometric concept of a single underlying disposition."
+        }
+      ],
+      "hint": "Think about the most famous 'general factor' used to describe human cognitive capacity."
+    },
+    {
+      "question": "When controlling for age and gender in the US state-wise analysis ($n = 141,139$), how did the relationship between ASC and $D$ change?",
+      "answerOptions": [
+        {
+          "text": "It remained qualitatively similar with a $\\beta_{standardized}$ of $0.03$.",
+          "isCorrect": true,
+          "rationale": "The study found that the results held even after accounting for demographic variables, showing a robust association."
+        },
+        {
+          "text": "The relationship was no longer statistically significant ($p > 0.05$).",
+          "isCorrect": false,
+          "rationale": "The results remained statistically significant ($p < 0.001$) after controls were applied."
+        },
+        {
+          "text": "The direction of the correlation reversed, showing ASC was associated with lower $D$.",
+          "isCorrect": false,
+          "rationale": "The association stayed positive; controlling for age and gender did not flip the relationship."
+        },
+        {
+          "text": "The effect size tripled, indicating that age and gender were major suppressors.",
+          "isCorrect": false,
+          "rationale": "The effect size actually decreased slightly (from $0.04$ to $0.03$) or remained similar, rather than increasing."
+        }
+      ],
+      "hint": "Consider whether the primary finding was negated or supported by the inclusion of demographic controls."
+    },
+    {
+      "question": "Which of the following describes a key limitation of the study acknowledged by the authors?",
+      "answerOptions": [
+        {
+          "text": "The reliance on online convenience samples which may involve self-selection effects.",
+          "isCorrect": true,
+          "rationale": "The authors noted that participants chose to take the test online, which might not perfectly represent the general population."
+        },
+        {
+          "text": "The use of a small sample size that lacked statistical power.",
+          "isCorrect": false,
+          "rationale": "With over $1.7$ million participants, the study had exceptionally high statistical power."
+        },
+        {
+          "text": "The failure to use objective measures for societal conditions.",
+          "isCorrect": false,
+          "rationale": "The authors explicitly stated that a strength of the study was the 'objective' assessment of ASC through indices like corruption and violence."
+        },
+        {
+          "text": "The focus only on US states without any cross-cultural or international data.",
+          "isCorrect": false,
+          "rationale": "The study included data from $183$ countries, making it extensively cross-cultural."
+        }
+      ],
+      "hint": "Think about the potential biases introduced by how the data was gathered via the website 'qst.darkfactor.org'."
+    },
+    {
+      "question": "According to social norms research cited in the paper, how do aversive societal conditions foster the development of $D$?",
+      "answerOptions": [
+        {
+          "text": "ASC foster the adoption of competitive and normless beliefs that serve as justifications for aversive behavior.",
+          "isCorrect": true,
+          "rationale": "In environments where rule-breaking is widespread, individuals learn that aversive behavior is 'common, functional, and justifiable'."
+        },
+        {
+          "text": "Aversive conditions trigger genetic mutations that increase the baseline level of $D$ in a population.",
+          "isCorrect": false,
+          "rationale": "Social norms research focuses on learned beliefs and cultural practices, not genetic mutations."
+        },
+        {
+          "text": "Societies with high ASC levels provide better rewards for cooperative behavior than stable societies.",
+          "isCorrect": false,
+          "rationale": "The paper argues the opposite: that in aversive conditions, aversive behavior is often non-sanctioned or tolerated."
+        },
+        {
+          "text": "ASC prevent individuals from forming any social bonds, leading to higher levels of $D$.",
+          "isCorrect": false,
+          "rationale": "The text focuses on the *nature* of the beliefs and the perception of social norms, not the total absence of social bonds."
+        }
+      ],
+      "hint": "Consider what an individual learns about 'acceptable' behavior when they observe widespread corruption or violence."
+    }
+  ]
+}

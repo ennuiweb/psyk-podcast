@@ -1,0 +1,265 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "What does Michael Lewis suggest regarding the consistency of personality characteristics over time and context?",
+      "answerOptions": [
+        {
+          "text": "While correlations may be significant, they account for relatively little variance, indicating low consistency.",
+          "isCorrect": true,
+          "rationale": "The author argues that despite statistical significance, the actual amount of variance explained is small, which challenges the idea of stable, enduring personality traits."
+        },
+        {
+          "text": "Consistency is high in childhood but diminishes significantly as individuals reach adulthood.",
+          "isCorrect": false,
+          "rationale": "The source material actually suggests that the nature of adult personality remains unclear and that data on children shows little consistency."
+        },
+        {
+          "text": "Personality is highly consistent within specific situations but varies wildly between different types of tasks.",
+          "isCorrect": false,
+          "rationale": "While Mischel suggested consistency within situations, Lewis argues that even this doesn't provide enough confidence for a simple structure of personality."
+        },
+        {
+          "text": "Low consistency is primarily a result of poor measurement tools rather than a flaw in the concept of personality.",
+          "isCorrect": false,
+          "rationale": "The text explores the possibility that the traditional concept of personality itself may be flawed or that a situational analysis is required, rather than just blaming measurement error."
+        }
+      ],
+      "hint": "Consider the statistical power of the correlations mentioned in the text."
+    },
+    {
+      "question": "According to the study on depression in 9-year-olds, which factor best predicted a mother's rating of her child's depression?",
+      "answerOptions": [
+        {
+          "text": "The mother's own self-reported level of depression.",
+          "isCorrect": true,
+          "rationale": "Path analysis revealed that maternal ratings of child depression were most strongly predicted by the mother's own depressive state."
+        },
+        {
+          "text": "The child's history of infant-parent attachment security.",
+          "isCorrect": false,
+          "rationale": "The data indicated that attachment was not a significant predictor for the maternal rating of the child's depression at age 9."
+        },
+        {
+          "text": "The child's own self-rating of their internal feelings and expectancies.",
+          "isCorrect": false,
+          "rationale": "The text notes that there was little agreement between children's self-ratings and their mothers' ratings, with no variables significantly predicting the child's rating."
+        },
+        {
+          "text": "The amount of stressful life events the child had experienced.",
+          "isCorrect": false,
+          "rationale": "Stressful events were studied as a potential precursor but did not emerge as the best predictor for the maternal outcome rating."
+        }
+      ],
+      "hint": "Think about how the rater's own psychological state might influence their perception."
+    },
+    {
+      "question": "In the context of the Path Analysis (Figure 1), what was the unique predictor for teacher ratings of child depression?",
+      "answerOptions": [
+        {
+          "text": "The size of the child's peer network when they were younger.",
+          "isCorrect": true,
+          "rationale": "The study found that children from smaller peer networks were reported as more depressed by their teachers than those from larger networks."
+        },
+        {
+          "text": "The level of conflict within the home environment.",
+          "isCorrect": false,
+          "rationale": "While home environment is important, the path analysis specifically highlighted the social network as the predictor for teacher-perceived depression."
+        },
+        {
+          "text": "The child's academic performance and classroom compliance.",
+          "isCorrect": false,
+          "rationale": "Academic performance was not listed as one of the three early childhood variables (attachment, stress, social network) in the study's model."
+        },
+        {
+          "text": "The mother's report of maternal depression.",
+          "isCorrect": false,
+          "rationale": "Maternal depression predicted the mother's rating of the child, but the correlation for the teacher's rating was low and non-significant ($0.06$)."
+        }
+      ],
+      "hint": "Look for a variable that relates to the child's social environment outside the home."
+    },
+    {
+      "question": "Which of the following is a core assumption of the 'organismic model' of development?",
+      "answerOptions": [
+        {
+          "text": "Events occurring in the first few years of life produce the most long-lasting and powerful effects.",
+          "isCorrect": true,
+          "rationale": "The organismic model emphasizes primacy, suggesting that early childhood events establish traits or dispositions that survive for a lifetime."
+        },
+        {
+          "text": "Development is a series of unordered facts that are not necessarily related to one another.",
+          "isCorrect": false,
+          "rationale": "This view describes James's contextualism, which rejects the linear, causal sequential relations found in organismic models."
+        },
+        {
+          "text": "The present status of an individual is what reconstructs and gives meaning to their past.",
+          "isCorrect": false,
+          "rationale": "This is a feature of the contextual model, where current behavior is influenced by what we think our histories were, rather than the real past."
+        },
+        {
+          "text": "Developmental change is primarily driven by the active self's current goals and desires.",
+          "isCorrect": false,
+          "rationale": "The organismic model tends to view development as located within the person as traits or biological structures, rather than as a teleological process driven by current context."
+        }
+      ],
+      "hint": "Think about the importance placed on early experiences in traditional psychological theories."
+    },
+    {
+      "question": "How does the 'additive model' of development differ from the 'transformational model' regarding earlier stages of behavior?",
+      "answerOptions": [
+        {
+          "text": "In the additive model, earlier abilities are maintained and can coexist with newer skills.",
+          "isCorrect": true,
+          "rationale": "Unlike the transformational model where $A$ becomes $B$ and ceases to exist, the additive model allows for multiple levels of capacity to remain available for selective use."
+        },
+        {
+          "text": "The additive model suggests that earlier behaviors are completely replaced by more advanced ones.",
+          "isCorrect": false,
+          "rationale": "This describes the transformational model, which relies on the idea of metamorphosis where prior forms are irreducible to later ones."
+        },
+        {
+          "text": "The additive model rejects the idea of directionality in developmental progress.",
+          "isCorrect": false,
+          "rationale": "Both models possess directionality, but the additive model suggests new skills are added as a consequence of environmental interaction rather than transformation."
+        },
+        {
+          "text": "Regression to earlier levels of behavior is only possible within the transformational model.",
+          "isCorrect": false,
+          "rationale": "Regression is problematic for transformational models because earlier levels cease to exist; it is actually the additive model that logically allows for regression."
+        }
+      ],
+      "hint": "Consider whether a child who can walk still possesses the ability to crawl."
+    },
+    {
+      "question": "What was the main finding of the longitudinal study comparing attachment at 1 year and 18 years of age?",
+      "answerOptions": [
+        {
+          "text": "There was no significant relation between attachment classification in infancy and attachment representations in late adolescence.",
+          "isCorrect": true,
+          "rationale": "The study found that $1$-year attachment was not related to $18$-year attachment, contradicting the organismic 'inoculation' theory."
+        },
+        {
+          "text": "Secure attachment at 1 year acted as a buffer against developing insecure attachment if parents later divorced.",
+          "isCorrect": false,
+          "rationale": "The findings showed no interactional effects; early secure attachment did not protect children from insecurity if their family context changed (e.g., divorce)."
+        },
+        {
+          "text": "Infant attachment status predicted adult attachment only for individuals from intact families.",
+          "isCorrect": false,
+          "rationale": "The text states that $1$-year attachment was not related to $18$-year attachment, regardless of the individual trajectories or divorce status."
+        },
+        {
+          "text": "Insecure attachment in infancy was a highly stable trait that persisted into adulthood in $85\\%$ of cases.",
+          "isCorrect": false,
+          "rationale": "The data showed that only $38\\%$ of insecure $1$-year-olds remained insecure at $18$, indicating significant change over time."
+        }
+      ],
+      "hint": "Check the percentage of insecure infants who remained insecure as adolescents."
+    },
+    {
+      "question": "According to the contextual model, what is the most significant factor in determining an adolescent's attachment representation?",
+      "answerOptions": [
+        {
+          "text": "The current caregiving environment, such as whether the parents are currently divorced.",
+          "isCorrect": true,
+          "rationale": "At $18$ years, attachment classification was significantly related to concurrent family divorce status, supporting a model focused on concurrent adaptation."
+        },
+        {
+          "text": "The internal working model formed through early interactions with the mother.",
+          "isCorrect": false,
+          "rationale": "While Bowlby proposed this, Lewis's data suggests that the 'real' past in infancy does not predict later representations as well as the concurrent context does."
+        },
+        {
+          "text": "The biological temperament traits that have remained stable since the age of three.",
+          "isCorrect": false,
+          "rationale": "The author notes that temperament ratings show only modest relations over time and that variance accounted for remains low, favoring context over stable traits."
+        },
+        {
+          "text": "The resolution of specific developmental crises during the 'sensitive period' of childhood.",
+          "isCorrect": false,
+          "rationale": "The text argues that the evidence for sensitive or critical periods is limited and that the contextual model does not rely on these time-bound intervals."
+        }
+      ],
+      "hint": "Look for what was found to be 'concurrently' related to attachment at age 18."
+    },
+    {
+      "question": "How did Yarrow, Campbell, and Burton's (1970) research describe the nature of maternal and child recollections of the past?",
+      "answerOptions": [
+        {
+          "text": "Recollections of the past were shifted to conform to the warmth or coolness of the current relationship.",
+          "isCorrect": true,
+          "rationale": "The study found that if the current relationship was rated as 'warm,' recollections of the past were increased in felicity, regardless of actual baseline data."
+        },
+        {
+          "text": "Mothers provided accurate 'photographic' memories of their child's preschool personality.",
+          "isCorrect": false,
+          "rationale": "The research showed little overall relation between recollections and actual data collected years prior; memory was a construction."
+        },
+        {
+          "text": "Children were significantly more accurate than their mothers at remembering early social interactions.",
+          "isCorrect": false,
+          "rationale": "The study found that both mother and child recall depended on the current relationship status rather than one being more accurate than the other."
+        },
+        {
+          "text": "The recall of early shyness was stable over time and unaffected by the child's current personality status.",
+          "isCorrect": false,
+          "rationale": "Mothers tended to recall children as shyer in early childhood if they were currently seen as shy, showing that memory was structured to match the present."
+        }
+      ],
+      "hint": "Think about how our current feelings about someone might color our memories of them."
+    },
+    {
+      "question": "What does the 'simplex pattern' in longitudinal studies suggest about the ability to predict personality?",
+      "answerOptions": [
+        {
+          "text": "The power to predict behavior decreases as the time between measured events increases.",
+          "isCorrect": true,
+          "rationale": "Lewis notes that as time passes, the relationship between variables decreases, making long-term prediction extremely difficult."
+        },
+        {
+          "text": "Prediction is most accurate when using a single, high-quality measurement tool over many years.",
+          "isCorrect": false,
+          "rationale": "The text suggests that even with multiple measures, coherence over time remains low, and the simplex pattern describes a decline in predictability."
+        },
+        {
+          "text": "Early events have a cumulative effect that makes later behavior more predictable as time goes on.",
+          "isCorrect": false,
+          "rationale": "The simplex pattern describes the opposite: predictability is highest for the immediate future and falls off over longer intervals."
+        },
+        {
+          "text": "Adult personality is more easily predicted from adolescent traits than from childhood traits.",
+          "isCorrect": false,
+          "rationale": "While perhaps true, the 'simplex pattern' specifically refers to the weakening of correlations as the time gap between any two measurements increases."
+        }
+      ],
+      "hint": "Consider the relationship between the time interval and the strength of the correlation."
+    },
+    {
+      "question": "In the study of suggestibility by Goodman and Clarke-Stewart (1991), what caused children to change their testimony about an event?",
+      "answerOptions": [
+        {
+          "text": "Repeated direct questioning by different experimenters over a short period of time.",
+          "isCorrect": true,
+          "rationale": "The study showed that children who initially answered correctly would change their report to 'yes' as more experimenters asked the same leading question."
+        },
+        {
+          "text": "A genuine 'critical period' during which memories of traumatic events are permanently altered.",
+          "isCorrect": false,
+          "rationale": "The study was an experimental demonstration of suggestibility and memory construction in the moment, not a test of critical periods."
+        },
+        {
+          "text": "The inability to distinguish between the dusting of a doll and a kiss due to poor perceptual capacity.",
+          "isCorrect": false,
+          "rationale": "Initially, the children had no difficulty responding correctly; the change in testimony was due to the social context of the questioning."
+        },
+        {
+          "text": "Stress-induced regression that made them use lower-level cognitive processing.",
+          "isCorrect": false,
+          "rationale": "The change in report was attributed to the influence of external suggestion and current context rather than internal developmental regression."
+        }
+      ],
+      "hint": "Recall the effect of being asked the same leading question multiple times by different people."
+    }
+  ]
+}

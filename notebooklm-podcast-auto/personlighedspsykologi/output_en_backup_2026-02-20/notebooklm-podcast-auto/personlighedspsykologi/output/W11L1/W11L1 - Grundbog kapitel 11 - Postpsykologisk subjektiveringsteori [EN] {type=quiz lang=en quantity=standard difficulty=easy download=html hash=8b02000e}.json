@@ -1,0 +1,308 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "According to the text, what does the prefix 'post' in 'post-psychology' signify regarding its relationship with traditional psychology?",
+      "answerOptions": [
+        {
+          "text": "It indicates a complete abandonment and rejection of psychological science.",
+          "isCorrect": false,
+          "rationale": "The text explicitly states that post-psychology is not a farewell to psychology but a rethinking of it."
+        },
+        {
+          "text": "It suggests that the theories only deal with biological and neurological data.",
+          "isCorrect": false,
+          "rationale": "While it touches on neuropsychology, it primarily focuses on how humans experience, think, and feel through social processes."
+        },
+        {
+          "text": "It means the theory includes, challenges, and transcends the psychological.",
+          "isCorrect": true,
+          "rationale": "The authors explain that 'post' simultaneously includes, settles accounts with, and goes beyond the traditional psychological framework."
+        },
+        {
+          "text": "It refers to a period of history where psychology no longer exists.",
+          "isCorrect": false,
+          "rationale": "Post-psychology is presented as a contemporary way of understanding subjects in today's complex world, not a historical end-point."
+        }
+      ],
+      "hint": "Consider if the term suggests a total ending or an evolution of the field."
+    },
+    {
+      "question": "What is meant by 'Personality Version 2.0' as discussed in the source material?",
+      "answerOptions": [
+        {
+          "text": "A modern software used for psychological testing in schools.",
+          "isCorrect": false,
+          "rationale": "The term is a humorous metaphor for a theoretical shift, not a literal computer program."
+        },
+        {
+          "text": "A problematization of personality as a fixed, internal essence.",
+          "isCorrect": true,
+          "rationale": "The chapter uses this label to describe theories that see personality as a processual capacity rather than a static internal trait."
+        },
+        {
+          "text": "A new diagnostic manual for identifying personality disorders.",
+          "isCorrect": false,
+          "rationale": "Post-psychology challenges the traditional clinical categories found in diagnostic manuals rather than creating new versions of them."
+        },
+        {
+          "text": "The idea that personality is determined solely by genetic evolution.",
+          "isCorrect": false,
+          "rationale": "This view is more aligned with evolutionary psychology, whereas the text focuses on social and discursive construction."
+        }
+      ],
+      "hint": "Think about whether the '2.0' label refers to a static product or a changing perspective."
+    },
+    {
+      "question": "Which historical figure is cited as an early 'bubbling' predecessor to post-psychological thought due to his ideas on the 'stream of consciousness'?",
+      "answerOptions": [
+        {
+          "text": "Sigmund Freud",
+          "isCorrect": false,
+          "rationale": "While Freud is mentioned regarding the 'psy-technique' of the sofa, it is another thinker credited with the 'stream' concept."
+        },
+        {
+          "text": "Michel Foucault",
+          "isCorrect": false,
+          "rationale": "Foucault is a primary influence on the genealogical method, but the 'stream of consciousness' idea comes from an earlier psychologist."
+        },
+        {
+          "text": "William James",
+          "isCorrect": true,
+          "rationale": "The text points to William James' work from 1890 as an early example of problematizing fixed personality through his 'stream' metaphor."
+        },
+        {
+          "text": "Judith Butler",
+          "isCorrect": false,
+          "rationale": "Butler is a contemporary theorist focused on performativity and subjectification, not the 19th-century 'stream of consciousness'."
+        }
+      ],
+      "hint": "This American psychologist wrote 'Principles of Psychology' in 1890."
+    },
+    {
+      "question": "How does the 'genealogical' method differ from a traditional linear history?",
+      "answerOptions": [
+        {
+          "text": "It focuses exclusively on the genetic ancestry of the individuals being studied.",
+          "isCorrect": false,
+          "rationale": "Genealogy in this context refers to a philosophical method of history, not biological genetics."
+        },
+        {
+          "text": "It looks backward to uncover the conditions that made current ways of thinking possible.",
+          "isCorrect": true,
+          "rationale": "Based on Foucault, the genealogical gaze looks back into the theoretical landscape to see how current concepts emerged as 'possibilities'."
+        },
+        {
+          "text": "It creates a straight line of progress from 'primitive' to 'modern' psychology.",
+          "isCorrect": false,
+          "rationale": "The text explicitly states it avoids 'linear, progressive narratives' in favor of uncovering diverse roots."
+        },
+        {
+          "text": "It predicts future psychological trends based on current statistical data.",
+          "isCorrect": false,
+          "rationale": "Genealogy is a historical maneuver used to understand the present, not a predictive tool for the future."
+        }
+      ],
+      "hint": "Think about looking at the past to find 'possibility' rather than 'inevitability'."
+    },
+    {
+      "question": "In post-psychology, what is the primary distinction between 'personality' and 'subjectivity'?",
+      "isCorrect": false,
+      "answerOptions": [
+        {
+          "text": "Personality is seen as a fixed core, while subjectivity is seen as a constant process of becoming.",
+          "isCorrect": true,
+          "rationale": "Post-psychology prefers 'subjectivity' because it captures the idea of the subject being formed through ongoing social and discursive processes."
+        },
+        {
+          "text": "Personality is considered more scientific, while subjectivity is seen as purely emotional.",
+          "isCorrect": false,
+          "rationale": "Both are theoretical constructs; post-psychology simply views the 'subject' as more dynamic and decentralized."
+        },
+        {
+          "text": "Subjectivity refers only to biological reflexes, while personality refers to culture.",
+          "isCorrect": false,
+          "rationale": "Subjectivity in this context is heavily focused on cultural, social, and linguistic influences."
+        },
+        {
+          "text": "There is no distinction; post-psychology uses the terms interchangeably.",
+          "isCorrect": false,
+          "rationale": "The text highlights that 'subjectivity' is the preferred word because it avoids the baggage of a 'fixed core' associated with 'personality'."
+        }
+      ],
+      "hint": "One term implies a stable 'thing,' while the other implies an ongoing 'process'."
+    },
+    {
+      "question": "What is the 'paradox of subjectification' mentioned in the text?",
+      "answerOptions": [
+        {
+          "text": "A person becomes a subject by being both subjected to conditions and gaining the ability to act within them.",
+          "isCorrect": true,
+          "rationale": "Drawing on Butler, the text explains that mastery (agency) and subjection (being under power) occur simultaneously."
+        },
+        {
+          "text": "The more a person learns about psychology, the less they understand themselves.",
+          "isCorrect": false,
+          "rationale": "This might be an observation, but it is not the theoretical paradox of subjectification described by the authors."
+        },
+        {
+          "text": "Individuals are born with a personality but lose it as they grow older.",
+          "isCorrect": false,
+          "rationale": "Post-psychology argues that subjectivity is produced over time, not lost."
+        },
+        {
+          "text": "Subjects can only be free if they completely ignore all social rules and language.",
+          "isCorrect": false,
+          "rationale": "The theory suggests that we only become subjects *through* social rules and language, not by ignoring them."
+        }
+      ],
+      "hint": "Think about the double meaning of being a 'subject'—as in 'subject of a king' and 'acting subject'."
+    },
+    {
+      "question": "How are 'discursive practices' described in relation to the individual?",
+      "answerOptions": [
+        {
+          "text": "They are internal biological processes that determine how we speak.",
+          "isCorrect": false,
+          "rationale": "Discourse refers to social systems of meaning and communication, not internal biology."
+        },
+        {
+          "text": "They are patterns of meaning that set the conditions for how we can think, speak, and act.",
+          "isCorrect": true,
+          "rationale": "Discourses organize what is possible to perceive and do, and individuals 'pick up' these discourses to become themselves."
+        },
+        {
+          "text": "They are strictly written rules found in official government documents.",
+          "isCorrect": false,
+          "rationale": "While documents are part of discourse, it also includes everyday conversations, social norms, and non-verbal actions."
+        },
+        {
+          "text": "They are irrelevant in post-psychology because only physical actions matter.",
+          "isCorrect": false,
+          "rationale": "Discourse is central to post-psychology, though later 'turns' also emphasize materiality and affect."
+        }
+      ],
+      "hint": "Think about the 'scripts' or 'frameworks' society provides for understanding our lives."
+    },
+    {
+      "question": "In the context of 'subject positions,' what does the text suggest happens when a discourse offers a 'position'?",
+      "answerOptions": [
+        {
+          "text": "The individual is physically moved to a different location.",
+          "isCorrect": false,
+          "rationale": "Subject positions refer to conceptual 'slots' in a conversation or social structure, not physical movement."
+        },
+        {
+          "text": "The individual is given a fixed, unchangeable identity for life.",
+          "isCorrect": false,
+          "rationale": "The text emphasizes that subjectification is processual and positions can be uncomfortable or shifted."
+        },
+        {
+          "text": "The individual is provided a 'slot' from which they can speak and be recognized as a certain kind of person.",
+          "isCorrect": true,
+          "rationale": "Discourses deliver positions (like 'student' or 'leader') that allow individuals to act and be perceived within that context."
+        },
+        {
+          "text": "The discourse is ignored because individuals have a core self that never changes.",
+          "isCorrect": false,
+          "rationale": "Post-psychology rejects the idea of an unchanging core self unaffected by discursive positions."
+        }
+      ],
+      "hint": "Think of this as a 'role' or a 'perspective' that a specific way of talking makes available."
+    },
+    {
+      "question": "What is the process of 'abjection' as illustrated by the example of the schoolboy Wahid?",
+      "answerOptions": [
+        {
+          "text": "The process of helping a student integrate perfectly into a new culture.",
+          "isCorrect": false,
+          "rationale": "Abjection is a process of exclusion and making someone 'other,' not successful integration."
+        },
+        {
+          "text": "The process where someone is made 'unthinkable' or excluded as a legitimate subject.",
+          "isCorrect": true,
+          "rationale": "Abjection makes a person an 'abject'—someone who falls outside the norms of what is considered acceptable or 'normal'."
+        },
+        {
+          "text": "The biological study of how children develop social skills.",
+          "isCorrect": false,
+          "rationale": "The text treats this as a discursive and social process of 'making' a person abject, not a biological development."
+        },
+        {
+          "text": "A formal psychological test used to measure empathy.",
+          "isCorrect": false,
+          "rationale": "Abjection is a theoretical concept describing social exclusion, not a standardized test."
+        }
+      ],
+      "hint": "This involves making someone feel like they don't belong or aren't even 'human' in the eyes of others."
+    },
+    {
+      "question": "The 'material turn' in post-psychology suggests that:",
+      "answerOptions": [
+        {
+          "text": "Only human thoughts and language affect personality.",
+          "isCorrect": false,
+          "rationale": "This view is limited to the 'discursive turn'; the material turn adds that non-human elements matter too."
+        },
+        {
+          "text": "Physical objects and technologies (like a sofa or a cushion) co-produce subjectivity.",
+          "isCorrect": true,
+          "rationale": "The text uses Freud's sofa and ball-cushions as examples of how material objects interact with bodies to shape experiences."
+        },
+        {
+          "text": "Psychologists should focus on how much wealth (material goods) patients possess.",
+          "isCorrect": false,
+          "rationale": "Materiality refers to the physical world and bodies, not socio-economic 'materialism'."
+        },
+        {
+          "text": "The brain is the only material object that influences behavior.",
+          "isCorrect": false,
+          "rationale": "Post-psychology looks at 'assemblages' of many objects, bodies, and spaces, not just the brain."
+        }
+      ],
+      "hint": "Consider the role of 'non-human' actors in shaping who we are."
+    },
+    {
+      "question": "How does 'affectivity' differ from traditional psychological emotions in this theory?",
+      "answerOptions": [
+        {
+          "text": "It is exactly the same as the internal feelings studied in 19th-century psychology.",
+          "isCorrect": false,
+          "rationale": "Traditional psychology sees emotions as internal and individual; affectivity is seen as relational and trans-personal."
+        },
+        {
+          "text": "It refers to energies and intensities that circulate between bodies and objects.",
+          "isCorrect": true,
+          "rationale": "Affectivity is described as intensities that pass through us, rather than being private properties of a single person."
+        },
+        {
+          "text": "It is a term used only for romantic attraction between subjects.",
+          "isCorrect": false,
+          "rationale": "Affectivity covers a wide range of sensations, moods, and energies (like shame or unrest), not just romance."
+        },
+        {
+          "text": "It is considered a distraction that psychologists should help people eliminate.",
+          "isCorrect": false,
+          "rationale": "Post-psychology views affectivity as a fundamental part of how subjectivity is formed, not a distraction."
+        }
+      ],
+      "hint": "Think of it as 'atmospheres' or 'currents' rather than just 'private feelings'."
+    },
+    {
+      "question": "True or False: Post-psychological research focuses on uncovering the 'true' hidden meaning behind what people say in interviews.",
+      "answerOptions": [
+        {
+          "text": "True",
+          "isCorrect": false,
+          "rationale": "Post-psychological analysis avoids searching for a 'hidden truth' and instead looks at how meanings are constructed."
+        },
+        {
+          "text": "False",
+          "isCorrect": true,
+          "rationale": "The text states that researchers do not look for what a meaning 'really is,' but rather use theory to 'plug into' the material and rethink it."
+        }
+      ],
+      "hint": "Does this theory believe in a stable, 'hidden' truth or in the active 'construction' of reality?"
+    }
+  ]
+}

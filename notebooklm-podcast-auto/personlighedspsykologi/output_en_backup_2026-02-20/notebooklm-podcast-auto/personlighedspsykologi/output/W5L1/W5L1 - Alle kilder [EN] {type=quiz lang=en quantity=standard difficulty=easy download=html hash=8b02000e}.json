@@ -1,0 +1,265 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "According to Paul Ricoeur, what is the first criterion for an experience to be considered a 'fact' in the field of psychoanalysis?",
+      "answerOptions": [
+        {
+          "text": "Observable outward behavior",
+          "isCorrect": false,
+          "rationale": "While academic psychology relies on observable behavior, Ricoeur argues psychoanalysis focuses on what is verbalized."
+        },
+        {
+          "text": "Physiological instinct as energy",
+          "isCorrect": false,
+          "rationale": "Ricoeur clarifies that the object of psychoanalytic science is not instinct as energy, but desire as a meaning."
+        },
+        {
+          "text": "That which is capable of being said",
+          "isCorrect": true,
+          "rationale": "The analytic situation filters experience through speech, meaning only that which is sayable becomes a 'fact' for investigation."
+        },
+        {
+          "text": "The patient's brain activity",
+          "isCorrect": false,
+          "rationale": "Biological or neurological data are outside the scope of the 'talk-cure' facts defined by Ricoeur."
+        }
+      ],
+      "hint": "Think about the 'talk-cure' nature of the analytic process."
+    },
+    {
+      "question": "What term does Freud use to describe the physical prerequisite or organic factor that allows a psychological conflict to manifest as a specific bodily symptom?",
+      "answerOptions": [
+        {
+          "text": "Psychical reality",
+          "isCorrect": false,
+          "rationale": "Psychical reality refers to the inner world of fantasies and coherence, not specifically the physical link to symptoms."
+        },
+        {
+          "text": "Somatic compliance",
+          "isCorrect": true,
+          "rationale": "Somatic compliance is the organic basis provided by a bodily process that allows the 'conversion' of mental thoughts into physical symptoms."
+        },
+        {
+          "text": "Malingering",
+          "isCorrect": false,
+          "rationale": "Malingering implies a conscious intent to fake illness, whereas Freud distinguishes hysterical symptoms as unconscious."
+        },
+        {
+          "text": "Conversion discharge",
+          "isCorrect": false,
+          "rationale": "While conversion is the process of manifesting a symptom, it is somatic compliance that provides the physical outlet."
+        }
+      ],
+      "hint": "It relates to the way a physical organ 'complies' with a mental demand."
+    },
+    {
+      "question": "In Ricoeur's discussion of the second criterion, what is the 'playground' or 'intermediate region' created by transference?",
+      "answerOptions": [
+        {
+          "text": "A bridge between illness and real life",
+          "isCorrect": true,
+          "rationale": "Freud describes transference as a region where the compulsion to repeat is allowed to expand freely to become a motive for remembering."
+        },
+        {
+          "text": "The physical clinic room",
+          "isCorrect": false,
+          "rationale": "The term refers to an intersubjective psychological space, not the literal physical environment."
+        },
+        {
+          "text": "The barrier between the id and ego",
+          "isCorrect": false,
+          "rationale": "This region is specifically about the patient's relationship with the analyst rather than internal psychic partitions."
+        },
+        {
+          "text": "A state of deep hypnotic sleep",
+          "isCorrect": false,
+          "rationale": "By the time of the Dora case, Freud had moved away from using hypnosis in favor of the talk-cure and transference."
+        }
+      ],
+      "hint": "Freud uses this analogy to explain how transition from sickness to recovery occurs."
+    },
+    {
+      "question": "According to Freud, what was the 'innocent' early childhood origin of Dora's later 'repulsive' oral fantasies and throat symptoms?",
+      "answerOptions": [
+        {
+          "text": "A chronic cough from catarrh",
+          "isCorrect": false,
+          "rationale": "While a common catarrh may have triggered the cough, Freud argues it would not repeat without an underlying meaning."
+        },
+        {
+          "text": "Thumb-sucking ($per\\ os$)",
+          "isCorrect": true,
+          "rationale": "Freud traces oral symptoms back to the erotogenic zone of the lips and mouth, which was over-indulged by Dora's childhood thumb-sucking habit."
+        },
+        {
+          "text": "Her father's tuberculosis",
+          "isCorrect": false,
+          "rationale": "Although her father's illness was significant, the specific oral nature of her symptom is linked to her own developmental history."
+        },
+        {
+          "text": "Reading forbidden books",
+          "isCorrect": false,
+          "rationale": "Freud argues that even without external knowledge, the child's own developmental 'germs' can lead to such fantasies."
+        }
+      ],
+      "hint": "This refers to a common childhood habit involving the mouth."
+    },
+    {
+      "question": "Ricoeur identifies a phenomenon called $\\text{Nachträglichkeit}$ in his fourth criterion. What does this concept entail?",
+      "answerOptions": [
+        {
+          "text": "The direct recall of a trauma exactly as it happened",
+          "isCorrect": false,
+          "rationale": "This ignores the recasting and reshaping of memory that occurs later in development."
+        },
+        {
+          "text": "A total loss of memory following a physical shock",
+          "isCorrect": false,
+          "rationale": "This describes amnesia rather than the reshaping and delayed effectiveness of memory traces."
+        },
+        {
+          "text": "The recasting of past memory traces in light of new experience",
+          "isCorrect": true,
+          "rationale": "$\\text{Nachträglichkeit}$ (after-the-event) means that mnesic traces assume new meaning and efficiency later when new experiences arise."
+        },
+        {
+          "text": "The physical sensation of pressure on the chest",
+          "isCorrect": false,
+          "rationale": "This relates to displacement and symptom formation rather than the temporal recasting of life stories."
+        }
+      ],
+      "hint": "It translates roughly to 'after-the-event' or 'deferred action' in history."
+    },
+    {
+      "question": "In the case of Dora, what is a 'supervalent' (or excessively intense) thought?",
+      "answerOptions": [
+        {
+          "text": "A logical conclusion based solely on evidence",
+          "isCorrect": false,
+          "rationale": "A supervalent thought is characterized by its obsessive nature and resistance to voluntary dismissal, regardless of its logic."
+        },
+        {
+          "text": "A thought that cannot be removed by voluntary effort because of its unconscious roots",
+          "isCorrect": true,
+          "rationale": "Supervalent thoughts assertion themselves with excessive intensity because they are reinforced by repressed, unconscious material."
+        },
+        {
+          "text": "A fleeting idea that is easily forgotten",
+          "isCorrect": false,
+          "rationale": "The definition is precisely the opposite, focusing on persistence and excessive intensity."
+        },
+        {
+          "text": "A thought that has no emotional significance",
+          "isCorrect": false,
+          "rationale": "These thoughts are deeply tied to the patient's emotional conflicts and underlying affects."
+        }
+      ],
+      "hint": "Think about why a patient might say 'I can think of nothing else.'"
+    },
+    {
+      "question": "In Freud's interpretation of Dora's first dream, what did the 'jewel-case' ($Schmuckkästchen$) represent symbolically?",
+      "answerOptions": [
+        {
+          "text": "Her father's manufacturing business",
+          "isCorrect": false,
+          "rationale": "While her father was a manufacturer, this literal interpretation ignores the sexual symbolism central to dream analysis."
+        },
+        {
+          "text": "Her mother's house-cleaning psychosis",
+          "isCorrect": false,
+          "rationale": "Though her mother's cleaning was an issue, the 'case' in the dream carries a specific anatomical reference."
+        },
+        {
+          "text": "The female genitals",
+          "isCorrect": true,
+          "rationale": "Freud notes that 'jewel-case' is a common symbolic expression for the female genitals in the context of sexual threats."
+        },
+        {
+          "text": "Dora's literal desire for expensive gifts",
+          "isCorrect": false,
+          "rationale": "Freud moves past the literal preference for jewellery to uncover the underlying sexual conflict involving Herr K."
+        }
+      ],
+      "hint": "Freud looks for a hidden anatomical meaning in common domestic objects."
+    },
+    {
+      "question": "What does Freud refer to as 'primary gain' from illness?",
+      "answerOptions": [
+        {
+          "text": "Financial compensation for being sick",
+          "isCorrect": false,
+          "rationale": "Financial benefits are external factors usually associated with secondary gain."
+        },
+        {
+          "text": "A flight into illness as an economically convenient solution to mental conflict",
+          "isCorrect": true,
+          "rationale": "Primary gain involves the internal psychological saving of effort by resolving a conflict through a symptom."
+        },
+        {
+          "text": "The attention received from family members",
+          "isCorrect": false,
+          "rationale": "Eliciting concern or care from others is considered an external or secondary motive for remaining ill."
+        },
+        {
+          "text": "The recovery of lost memories",
+          "isCorrect": false,
+          "rationale": "Memory recovery is a goal of treatment, not a 'gain' obtained by staying in a state of illness."
+        }
+      ],
+      "hint": "It is the immediate internal psychological advantage of falling ill."
+    },
+    {
+      "question": "Ricoeur notes that truth in psychoanalysis is closer to 'recognition' in Greek tragedy than to modern physics. He calls this:",
+      "answerOptions": [
+        {
+          "text": "Being-true",
+          "isCorrect": false,
+          "rationale": "Being-true suggests a static, objective correspondence which Ricoeur argues is not the focus of the talk-cure."
+        },
+        {
+          "text": "Saying-true",
+          "isCorrect": true,
+          "rationale": "Truth in analysis is a process of 'saying-true' where a subject moves from self-misunderstanding to recognition."
+        },
+        {
+          "text": "Statistical-true",
+          "isCorrect": false,
+          "rationale": "Analytic truth is individual and narrative, rather than based on the averages of external observations."
+        },
+        {
+          "text": "Biological-true",
+          "isCorrect": false,
+          "rationale": "Truth in this context resides in meaning and intersubjectivity, not in physiological markers."
+        }
+      ],
+      "hint": "It focuses on the subject's verbalized acknowledgment of their history."
+    },
+    {
+      "question": "What did Freud conclude about the relationship between Dora's aphonia (loss of voice) and Herr K's travels?",
+      "answerOptions": [
+        {
+          "text": "She lost her voice only when he was present",
+          "isCorrect": false,
+          "rationale": "The text suggests her symptoms acted as a demonstration of love during his absence."
+        },
+        {
+          "text": "She lost her voice when he was absent and spoke through writing",
+          "isCorrect": true,
+          "rationale": "Dora's loss of voice during Herr K's absences symbolized that speech was useless if not directed to him, making writing her primary contact."
+        },
+        {
+          "text": "There was no correlation between his travels and her voice",
+          "isCorrect": false,
+          "rationale": "Freud identified a clear coincidence where her attacks lasted the same duration as his three to six-week absences."
+        },
+        {
+          "text": "Her voice was lost due to a physical reaction to his return",
+          "isCorrect": false,
+          "rationale": "Freud interpreted her wellness during his presence as a demonstration of her joy in his return."
+        }
+      ],
+      "hint": "Consider the symbolic value of speech versus writing when a loved one is away."
+    }
+  ]
+}

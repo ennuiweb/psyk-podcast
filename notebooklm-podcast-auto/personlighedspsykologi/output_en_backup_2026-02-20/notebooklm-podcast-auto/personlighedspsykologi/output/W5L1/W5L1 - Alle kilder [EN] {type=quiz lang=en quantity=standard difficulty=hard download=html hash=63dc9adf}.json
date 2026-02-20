@@ -1,0 +1,396 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "According to Ricoeur, why are psychoanalytic facts distinct from the 'observables' of logical empiricism?",
+      "answerOptions": [
+        {
+          "text": "They consist of verbal reports and meanings rather than observable behaviors or physiological responses.",
+          "isCorrect": true,
+          "rationale": "Ricoeur's first criterion states that the analytic situation filters experience through speech, rendering desire as a decipherable meaning rather than a physiological instinct."
+        },
+        {
+          "text": "They are validated exclusively through the material truth of the patient's infantile history.",
+          "isCorrect": false,
+          "rationale": "Ricocur actually argues that the material truth is often irrelevant compared to 'psychical reality' and the coherence of the report."
+        },
+        {
+          "text": "They rely on the predictive power of energy-distribution models common in natural sciences.",
+          "isCorrect": false,
+          "rationale": "Ricoeur critiques the reliance on natural science epistemology, suggesting psychoanalysis deals with the 'semantic dimension' of desire."
+        },
+        {
+          "text": "They are based on the direct observation of instinctual tension and release during the session.",
+          "isCorrect": false,
+          "rationale": "The text explicitly states that facts in psychoanalysis are not observable behavior but 'reports' of things like dreams and symptoms."
+        }
+      ],
+      "hint": "Consider the 'talk-cure' aspect and the restriction of the analytic field to language."
+    },
+    {
+      "question": "In the context of the second criterion for analytic facts, how does Ricoeur characterize the 'playground' of transference?",
+      "text": "How does the 'playground' of transference impact the epistemological status of psychoanalytic facts?",
+      "answerOptions": [
+        {
+          "text": "It creates an intermediate region where the intersubjective dimension of desire is revealed as an address to another.",
+          "isCorrect": true,
+          "rationale": "Ricoeur identifies transference as a 'playground' where the patient's compulsion to repeat is transformed into a motive for remembering through a relationship with another desire."
+        },
+        {
+          "text": "It serves as a controlled laboratory environment where linear causal laws of behavior are tested.",
+          "isCorrect": false,
+          "rationale": "Ricoeur argues against a linear determinism and laboratory-style observation, focusing instead on the intersubjective drama."
+        },
+        {
+          "text": "It functions as a technical tool for the removal of resistance without altering the theory of desire.",
+          "isCorrect": false,
+          "rationale": "Ricoeur argues that transference has deep epistemological implications, not just technical ones, for how desire is constituted."
+        },
+        {
+          "text": "It is a metaphorical space used to isolate the patient's desires from any external social influence.",
+          "isCorrect": false,
+          "rationale": "The text states that the playground transposes the drama involving several actors, specifically including the mediation of the other."
+        }
+      ],
+      "hint": "Think about the transition from 'illness' to 'real life' and the role of the 'other desire'."
+    },
+    {
+      "question": "What is the epistemological implication of Freud's concept of 'psychical reality' ($psychical\\ reality$), specifically regarding infantile scenes?",
+      "answerOptions": [
+        {
+          "text": "The clinical relevance of a memory is determined by its coherence and resistance rather than its material truth.",
+          "isCorrect": true,
+          "rationale": "Freud's shift away from the seduction theory highlights that 'psychical reality' presents a structured organization that functions as 'real' regardless of external fact."
+        },
+        {
+          "text": "It proves that neuroses are always rooted in actual traumatic events that took place in material reality.",
+          "isCorrect": false,
+          "rationale": "Freud discovered that even if the scenes are 'not always true,' they are decisive for the world of the neuroses."
+        },
+        {
+          "text": "It suggests that the imaginary and the real are indistinguishable in academic psychology.",
+          "isCorrect": false,
+          "rationale": "Ricoeur explicitly contrasts academic psychology, which requires observable facts, with psychoanalysis, which deals with psychical reality."
+        },
+        {
+          "text": "It allows the analyst to disregard the patient's fantasies in favor of observable environmental variables.",
+          "isCorrect": false,
+          "rationale": "Psychical reality is precisely the opposite; it requires focusing on what the subject makes of their fantasies."
+        }
+      ],
+      "hint": "Recall Freud's admission regarding his initial hypothesis about the father's seduction of the child."
+    },
+    {
+      "question": "How does the phenomenon of $Nachtr\\ddot{a}glichkeit$ (after-the-event) challenge linear determinism in case histories?",
+      "answerOptions": [
+        {
+          "text": "It implies that mnesic traces are recast and acquire meaning only through subsequent experiences and new stages of development.",
+          "isCorrect": true,
+          "rationale": "The fourth criterion emphasizes that the subject's history is not linear; earlier traumas may only become effective 'after the event' through a later reworking."
+        },
+        {
+          "text": "It confirms that the present is entirely governed by a univocal past through a sequence of isolated events.",
+          "isCorrect": false,
+          "rationale": "Ricoeur argues that $Nachtr\\ddot{a}glichkeit$ shows the past is not a firm, univocal grasp on the present but a complex structuralization."
+        },
+        {
+          "text": "It reduces the work of memory to a simple reproduction of real historical events in their original chronological order.",
+          "isCorrect": false,
+          "rationale": "The text states that analysis is far removed from memory reproducing real events, functioning instead as a 'working through' of narrative structure."
+        },
+        {
+          "text": "It demonstrates that traumatic memories have an immediate and fixed effectiveness from the moment they occur.",
+          "isCorrect": false,
+          "rationale": "The text explains that traumatic events often cannot be integrated until the arrival of new events precipitates a reworking."
+        }
+      ],
+      "hint": "Consider the relationship between a first sexually significant scene and a second one in the 'Wolf Man' case."
+    },
+    {
+      "question": "Ricoeur identifies a tension between the 'investigatory procedure' and the 'method of treatment.' How does theory integrate these two?",
+      "answerOptions": [
+        {
+          "text": "Theory must think of the psyche as both a text to be interpreted and a system of forces to be manipulated.",
+          "isCorrect": true,
+          "rationale": "Ricoeur argues that the investigation focuses on meaning (textual), while treatment focuses on force (resistance/economics), and theory must integrate meaning and force."
+        },
+        {
+          "text": "Theory prioritizes textual interpretation, dismissing the mechanical metaphors of energy and cathexis as obsolete.",
+          "isCorrect": false,
+          "rationale": "Ricoeur warns that excluding 'force' or the 'economic model' results in a misunderstanding of the actual facts of analytic experience."
+        },
+        {
+          "text": "Theory reduces all mental productions to quantifiable energy discharge to align with natural sciences.",
+          "isCorrect": false,
+          "rationale": "Ricoeur criticizes the 'self-misunderstanding' of psychoanalysis as a natural science when it ignores the symbolic dimension."
+        },
+        {
+          "text": "Theory separates interpretation from praxis to maintain scientific objectivity and eliminate suggestion.",
+          "isCorrect": false,
+          "rationale": "Ricoeur argues that analytic praxis—the coordination of interpretation and handling resistances—is what requires the theory."
+        }
+      ],
+      "hint": "Focus on the coordination between 'deciphering' and 'struggling against resistances'."
+    },
+    {
+      "question": "In Freud's 'Dora' case, how does he describe the shift in his psychoanalytic technique from his earlier work in 'Studies on Hysteria'?",
+      "answerOptions": [
+        {
+          "text": "He abandoned starting with specific symptoms in favor of following the patient's own associations and daily surface material.",
+          "isCorrect": true,
+          "rationale": "In the Prefatory Remarks, Freud explains that the old technique was 'totally inadequate' for the finer structure of neurosis, leading him to let the patient choose the subject."
+        },
+        {
+          "text": "He transitioned from free association back to hypnotic states to ensure a more direct path to the trauma.",
+          "isCorrect": false,
+          "rationale": "Freud explicitly credits Breuer with the initiative for 'hypnoid states' and states he moved away from that focus to allow for a continuous psychological process."
+        },
+        {
+          "text": "He began prioritizing the physiological examination of cutaneous sensibility over the interpretation of dreams.",
+          "isCorrect": false,
+          "rationale": "Freud notes that his report contains nothing on cutaneous sensibility or visual fields, focusing instead on the interpretation of dreams."
+        },
+        {
+          "text": "He focused exclusively on recovering the 'material truth' of childhood events through external evidence.",
+          "isCorrect": false,
+          "rationale": "Freud acknowledges the difficulty in material truth and focuses on the 'fragmentary' emergence of unconscious material through narrative."
+        }
+      ],
+      "hint": "Think about how the patient's choices during the session influence the 'piecemeal' emergence of material."
+    },
+    {
+      "question": "What does Freud define as 'somatic compliance' ($somatic\\ compliance$) in the production of hysterical symptoms?",
+      "answerOptions": [
+        {
+          "text": "The availability of an organic process that provides a physical outlet for the expression of unconscious mental content.",
+          "isCorrect": true,
+          "rationale": "Freud states that symptoms require both a psychic meaning and a somatic compliance—an organic basis that allows the psychic excitation to be 'converted'."
+        },
+        {
+          "text": "The patient's conscious willingness to follow the doctor's instructions to recover from their physical illness.",
+          "isCorrect": false,
+          "rationale": "Freud contrasts somatic compliance with 'willing,' noting that symptoms often exist despite the patient's conscious desire to get well."
+        },
+        {
+          "text": "The physiological instinct that naturally causes symptoms like a cough when a common catarrh is present.",
+          "isCorrect": false,
+          "rationale": "While a catarrh might start a cough, Freud argues it becomes a hysterical symptom only when it is 'soldered' to a psychical meaning."
+        },
+        {
+          "text": "The strict adherence of the nervous system to the laws of physics and chemical stimulation.",
+          "isCorrect": false,
+          "rationale": "Freud argues that 'somatic compliance' moves the problem away from purely molecular instability toward the intersection of mind and body."
+        }
+      ],
+      "hint": "Consider the relationship between the 'organic factor' and the 'psychical significance' of Dora's aphonia."
+    },
+    {
+      "question": "Regarding the 'Kiss' scene in the Dora case, how does Freud explain the 'reversal of affect' resulting in Dora's feeling of disgust?",
+      "answerOptions": [
+        {
+          "text": "It is a displacement from the lower part of the body to the upper, replacing genital excitement with oral disgust.",
+          "isCorrect": true,
+          "rationale": "Freud argues that Dora's disgust was a symptom of repression in the erotogenic oral zone, likely triggered by the pressure of Herr K.'s erect member against her body."
+        },
+        {
+          "text": "It is a logical reaction to Herr K.'s unattractive appearance and offensive manner during the scene.",
+          "isCorrect": false,
+          "rationale": "Freud notes that Herr K. was 'still quite young and of prepossessing appearance,' and that the reaction was specifically 'hysterical'."
+        },
+        {
+          "text": "It stems from a moral indignation taught to Dora by her governess regarding sexual advances.",
+          "isCorrect": false,
+          "rationale": "Freud interprets the disgust as a somatic and erotogenic reaction related to infancy (thumb-sucking), not just social morality."
+        },
+        {
+          "text": "It is an accidental byproduct of a common catarrh that occurred simultaneously with the kiss.",
+          "isCorrect": false,
+          "rationale": "The catarrh explains the 'somatic compliance' for the cough, but the disgust is specifically linked to the 'reversal of affect' in a sexual situation."
+        }
+      ],
+      "hint": "Recall the significance of erotogenic zones and the 'pressure' Dora felt on her thorax."
+    },
+    {
+      "question": "In his 1923 footnote, how does Freud revise his earlier view on the 'motives for being ill'?",
+      "answerOptions": [
+        {
+          "text": "He introduces a distinction between 'primary gain' (the flight into illness) and 'secondary gain' (attaining an external aim).",
+          "isCorrect": true,
+          "rationale": "Freud corrected himself by stating that motives are not just secondary; falling ill offers an 'internal' primary gain by saving psychical effort during conflict."
+        },
+        {
+          "text": "He argues that all motives for illness are conscious and intended to manipulate the family members.",
+          "isCorrect": false,
+          "rationale": "Freud maintains that the intention to be ill remains largely unconscious, though it serves a function in the patient's economy."
+        },
+        {
+          "text": "He concludes that motives for illness are irrelevant once the organic trauma has been identified.",
+          "isCorrect": false,
+          "rationale": "The correction emphasizes that every neurotic illness involves a primary gain that is a constant element of the disorder."
+        },
+        {
+          "text": "He asserts that primary gain is solely determined by external factors such as a woman's subjugation by her husband.",
+          "isCorrect": false,
+          "rationale": "While external factors can contribute to primary gain, Freud describes the psychological saving of effort as the 'internal' and 'constant' element."
+        }
+      ],
+      "hint": "Look for the distinction between 'epinosic' and 'paranosic' gains mentioned in the edited notes."
+    },
+    {
+      "question": "What is meant by a 'supervalent thought' ($supervalent\\ thought$) in Freud's analysis of Dora's obsession with her father's affair?",
+      "answerOptions": [
+        {
+          "text": "An intense conscious train of thought that derives its reinforcement from a repressed, unconscious contrary thought.",
+          "isCorrect": true,
+          "rationale": "Freud argues that Dora's obsession with her father's infidelity was a 'reactive reinforcement' used to suppress her own love for Herr K. and Frau K."
+        },
+        {
+          "text": "A logical and reasonable concern that is shared by all members of the family to an equal degree.",
+          "isCorrect": false,
+          "rationale": "Freud notes the pathological character of the thought: Dora could not dissipate it by effort, whereas her brother viewed the situation more calmly."
+        },
+        {
+          "text": "A thought that is 'supervalent' because it is based on undeniable material evidence and social facts.",
+          "isCorrect": false,
+          "rationale": "While the facts were likely true, Freud argues the thought's obsessive nature was due to its unconscious 'lining' or 'backing'."
+        },
+        {
+          "text": "A conscious self-reproach that completely aligns with the patient's moral standards.",
+          "isCorrect": false,
+          "rationale": "Supervalent thoughts often act as 'switch-words' or shields against self-reproaches that the patient is trying to evade."
+        }
+      ],
+      "hint": "Think about the 'astatic galvanometer' analogy Freud uses to describe paired thoughts."
+    },
+    {
+      "question": "Ricoeur compares the 'truth claim' of psychoanalysis to the 'veracity threshold' of Greek tragedy. What is the primary focus of this truth?",
+      "answerOptions": [
+        {
+          "text": "A 'saying-true' involving the subject's movement from self-misunderstanding to recognition.",
+          "isCorrect": true,
+          "rationale": "Ricoeur argues that psychoanalytic truth is a 'saying-true' (recognition) rather than a 'being-true' (empirical fact), similar to Oedipus's self-recognition."
+        },
+        {
+          "text": "The quantitative exactitude of predicting future behavioral responses to environmental stimuli.",
+          "isCorrect": false,
+          "rationale": "Ricoeur explicitly contrasts psychoanalysis with the predictive criteria of the natural sciences."
+        },
+        {
+          "text": "The objective verification of historical events to ensure a perfect match between memory and reality.",
+          "isCorrect": false,
+          "rationale": "The text states that material truth is often clinicaly irrelevant compared to the coherence of psychical reality."
+        },
+        {
+          "text": "The patient's ability to 'adjust' to the objective conditions of their existing social milieu.",
+          "isCorrect": false,
+          "rationale": "Ricoeur warns against viewing recognition as 'adjustment,' as this risks placing symbolic communication under a system of control."
+        }
+      ],
+      "hint": "Recall the reference to 'Pathei-mathos' (learn through suffering) from Aeschylus."
+    },
+    {
+      "question": "According to Ricoeur, what makes a 'good' psychoanalytic explanation 'satisfactory in economic terms'?",
+      "answerOptions": [
+        {
+          "text": "It must be capable of being integrated into the analysand's 'working through' to change their balance of energies.",
+          "isCorrect": true,
+          "rationale": "The third criterion of validation requires that an interpretation must be therapeutically effective, altering the 'handling' of resistances and energy patterns."
+        },
+        {
+          "text": "It must be cost-effective and result in a rapid reduction of medical expenses for the patient.",
+          "isCorrect": false,
+          "rationale": "This distractor uses a literal/monetary sense of 'economic' which is not the psychoanalytic meaning of libidinal energy."
+        },
+        {
+          "text": "It must achieve a purely intellectual understanding of symptoms without affecting the patient's affect.",
+          "isCorrect": false,
+          "rationale": "Ricoeur states that an interpretation that is only intellectually grasped remains 'ineffective' and potentially 'harmful'."
+        },
+        {
+          "text": "It must rely exclusively on the analyst's ability to suggest the correct theory to the patient.",
+          "isCorrect": false,
+          "rationale": "Freud and Ricoeur both prioritize the 'analysand's own work' and the recovery of 'Selbstreflexion' over simple suggestion."
+        }
+      ],
+      "hint": "Consider the role of 'resistance' and why intellectual deciphering is insufficient."
+    },
+    {
+      "question": "In the analysis of Dora's first dream, what is the 'switch-word' or 'point' that connects the dream to both physiological needs and the fear of fire?",
+      "answerOptions": [
+        {
+          "text": "The phrase 'something might happen in the night so that it might be necessary to leave the room.'",
+          "isCorrect": true,
+          "rationale": "Freud identifies these words as a 'switch-word' ($switch-word$) that links the fear of fire to certain physical needs (micturition) and the 'jewel-case' (genitals)."
+        },
+        {
+          "text": "The word 'jewel-case,' which refers specifically to the mother's desire for ear-drops.",
+          "isCorrect": false,
+          "rationale": "While 'jewel-case' is symbolic, the specific phrase about 'leaving the room' is the point that Freud identifies as the junction for the physical/fire rails."
+        },
+        {
+          "text": "The image of the father standing by the bed, which only represents the 'material truth' of her father's concern.",
+          "isCorrect": false,
+          "rationale": "The image of the father is a reversal of the real event where Herr K. stood by the bed, which the switch-word helps to uncover."
+        },
+        {
+          "text": "The mention of 'lightning-conductors' in the small wooden house at L___.",
+          "isCorrect": false,
+          "rationale": "The lack of lightning-conductors is part of the 'day-residue' explaining her father's anxiety, but not the 'switch-word' for the internal conflict."
+        }
+      ],
+      "hint": "Freud mentions that 'ambiguous words' act like points at a junction in interpretation."
+    },
+    {
+      "question": "Why does Ricoeur argue that Freud was correct in ignoring the distinction between 'motive' and 'cause'?",
+      "answerOptions": [
+        {
+          "text": "Because psychoanalytic explanation reveals 'motives which are causes' that function autonomously due to self-alienation.",
+          "isCorrect": true,
+          "rationale": "Ricoeur explains that once a motive is repressed and 'delinguisticised,' it functions like a natural cause, necessitating a detour through causal explanation."
+        },
+        {
+          "text": "Because ordinary language analysis proves that motives and causes are synonyms in the context of human interaction.",
+          "isCorrect": false,
+          "rationale": "Actually, Ricoeur acknowledges that analysts influenced by Wittgenstein usually maintain a strict dichotomy between motive (reason) and cause (antecedent)."
+        },
+        {
+          "text": "Because it simplifies the validation process by allowing analysts to treat patients as purely mechanical systems.",
+          "isCorrect": false,
+          "rationale": "Ricoeur warns against treating the unconscious *literally* as a thing, but notes that mental functioning *simulates* a natural process when objectified."
+        },
+        {
+          "text": "Because rationalization proves that a person's alleged reason for an action is always the true cause.",
+          "isCorrect": false,
+          "rationale": "Ricoeur notes that Freud's concept of 'rationalization' is exactly why we *cannot* accept alleged reasons as true causes without investigation."
+        }
+      ],
+      "hint": "Think about how a motive becomes 'reified' or 'objectified' through repression."
+    },
+    {
+      "question": "Which of Ricoeur's criteria for facts is most directly challenged by the 'narrative structure' of psychoanalytic case histories?",
+      "answerOptions": [
+        {
+          "text": "The criterion that facts are 'observables' in the sense of logical empiricism.",
+          "isCorrect": true,
+          "rationale": "Ricoeur argues that 'case histories' as histories are primary texts, and their narrative intelligibility is unlike anything found in observational sciences."
+        },
+        {
+          "text": "The requirement that a patient must be able to say everything that is on their mind.",
+          "isCorrect": false,
+          "rationale": "The 'sayability' criterion is actually the *first* criterion and is what makes the narrative structure possible in the first place."
+        },
+        {
+          "text": "The necessity of relating the subject's desire to the intersubjective playground of transference.",
+          "isCorrect": false,
+          "rationale": "The narrative structure and transference are complementary, as the life story is often reconstructed within the transference relationship."
+        },
+        {
+          "text": "The importance of 'psychical reality' in understanding structured fantasies.",
+          "isCorrect": false,
+          "rationale": "Narrative intelligibility helps integrate the structured fantasies (psychical reality) into a meaningful life story."
+        }
+      ],
+      "hint": "Consider why an observational science speaks of 'cases' but not 'case histories'."
+    }
+  ]
+}

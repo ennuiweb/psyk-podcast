@@ -1,0 +1,255 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "Which of the following best explains the 'missing heritability' gap between SNP-heritability ($h^2_{SNP}$) and family-based heritability ($h^2_{Family}$) estimates in personality research?",
+      "answerOptions": [
+        {
+          "text": "The exclusion of rare genetic variants with a frequency $< 1\\%$ in common SNP-based estimations.",
+          "isCorrect": true,
+          "rationale": "Research suggests that rare variants account for additional variance, bridge the gap between unrelated-individual SNP estimates and those derived from family studies."
+        },
+        {
+          "text": "The presence of non-additive genetic effects such as dominance and gene-gene interactions.",
+          "isCorrect": false,
+          "rationale": "Non-additive effects primarily explain the gap between twin studies and family studies, rather than the specific gap between SNP-based and family-based additive estimates."
+        },
+        {
+          "text": "Violations of the equal environment assumption in classical twin models.",
+          "isCorrect": false,
+          "rationale": "While environmental violations can bias heritability estimates, they do not conceptually account for the mathematical discrepancy between molecular SNP data and familial correlation data."
+        },
+        {
+          "text": "The overestimation of additive genetic variance ($a^2$) in large-scale genome-wide association studies.",
+          "isCorrect": false,
+          "rationale": "SNP-heritability is generally considered a lower-bound estimate of heritability, meaning it typically underestimates rather than overestimates the additive genetic contribution."
+        }
+      ],
+      "hint": "Consider the frequency threshold differences between common polymorphisms and variants typically captured in pedigree-based analyses."
+    },
+    {
+      "question": "According to the review, what is the primary role of environmental factors in the development of personality differences?",
+      "answerOptions": [
+        {
+          "text": "Reinforcing individual uniqueness through unique environmental influences ($nse^2$).",
+          "isCorrect": true,
+          "rationale": "Environment is identified as the most important driver for individual uniqueness, primarily through non-shared experiences that differentiate family members."
+        },
+        {
+          "text": "Establishing core similarities between siblings through shared household experiences ($se^2$).",
+          "isCorrect": false,
+          "rationale": "Shared environmental influences are generally found to be negligible or very small, especially as individuals move into adulthood."
+        },
+        {
+          "text": "Determining the stable rank-order of personality traits across the entire lifespan.",
+          "isCorrect": false,
+          "rationale": "While the environment contributes to change and uniqueness, stability is often more strongly associated with genetic factors, as shown in twin studies."
+        },
+        {
+          "text": "Counteracting genetic predispositions to ensure population-level trait uniformity.",
+          "isCorrect": false,
+          "rationale": "Environmental factors tend to increase variance and individualization within and between families rather than imposing uniformity."
+        }
+      ],
+      "hint": "Think about whether environmental influences act to make siblings more similar or more different."
+    },
+    {
+      "question": "How does the use of multi-rater designs (e.g., combining self and informant reports) typically affect estimates of trait heritability?",
+      "answerOptions": [
+        {
+          "text": "It increases heritability estimates by reducing random measurement error and rater-specific bias.",
+          "isCorrect": true,
+          "rationale": "Latent common trait scores from multiple raters provide more accurate reflections of true differences, resulting in higher heritability estimates compared to single-method studies."
+        },
+        {
+          "text": "It decreases heritability estimates by uncovering significant shared environmental influences between raters.",
+          "isCorrect": false,
+          "rationale": "Shared environmental influences remain small even in multi-rater designs; the primary change is the reduction of individual rater-specific noise."
+        },
+        {
+          "text": "It reveals that self-ratings are entirely driven by non-shared environmental factors ($nse^2$).",
+          "isCorrect": false,
+          "rationale": "Self-ratings are partially heritable, and while they contain individual environmental components, they are not solely driven by them."
+        },
+        {
+          "text": "It has no significant impact because rater biases are generally random and cancel each other out in large samples.",
+          "isCorrect": false,
+          "rationale": "Rater specificity is often systematic and can be genetically influenced, meaning it does not simply cancel out without a latent trait approach."
+        }
+      ],
+      "hint": "Focus on how 'latent trait scores' improve the accuracy of variance decomposition."
+    },
+    {
+      "question": "Based on Figure 2 and the provided text, what trajectory does genetic variance typically follow throughout the human lifespan?",
+      "answerOptions": [
+        {
+          "text": "It peaks in young adulthood and then decreases during subsequent adult stages.",
+          "isCorrect": true,
+          "rationale": "Current empirical knowledge suggests that the genetic contribution reaches a plateau in young adulthood before declining as environmental individualization increases."
+        },
+        {
+          "text": "It remains static from adolescence through late adulthood due to stable DNA sequences.",
+          "isCorrect": false,
+          "rationale": "While the DNA sequence is stable, its contribution to trait variance changes due to active gene-environment transactions and epigenetic factors."
+        },
+        {
+          "text": "It increases linearly across the lifespan as individuals select environments that match their genotypes.",
+          "isCorrect": false,
+          "rationale": "Genetic variance does not increase indefinitely; it eventually declines in late adulthood as non-shared environmental influences accumulate."
+        },
+        {
+          "text": "It is highest in childhood and decreases steadily as environmental experiences accumulate.",
+          "isCorrect": false,
+          "rationale": "Genetic variance actually tends to increase from childhood to adolescence as individuals gain independence and engage in active gene-environment correlations."
+        }
+      ],
+      "hint": "Review the graph showing the shift from 'active and dynamic transactions' to the accumulation of 'individualizing contextual circumstances'."
+    },
+    {
+      "question": "Which component of personality variance is most likely to be confounded with genetic estimates if gene-environment interactions are not directly modeled in childhood?",
+      "answerOptions": [
+        {
+          "text": "Interactions between heritable traits and environmental influences shared by siblings.",
+          "isCorrect": true,
+          "rationale": "Interplays between genetic differences and shared household factors are often confounded with genetic estimates in early development if not separately accounted for."
+        },
+        {
+          "text": "Random measurement error inherent in parent-report questionnaires.",
+          "isCorrect": false,
+          "rationale": "Random error is a distinct variance component ($e^2$) and is conceptually separate from the systematic interplay between genes and environment."
+        },
+        {
+          "text": "The additive effects of single nucleotide polymorphisms ($h^2_{SNP}$).",
+          "isCorrect": false,
+          "rationale": "SNP-heritability is a molecular estimate of additive effects and is less susceptible to the developmental confounding seen in traditional twin modeling."
+        },
+        {
+          "text": "Non-additive genetic effects due to allelic dominance deviation ($na^2$).",
+          "isCorrect": false,
+          "rationale": "Non-additive effects are genetic in origin; they are not an interplay with the environment, though they contribute to the heritability gap."
+        }
+      ],
+      "hint": "Consider what happens during the first developmental years when siblings are raised in the same household."
+    },
+    {
+      "question": "True or False: Research on 'poly-environmental' personality suggests that single major life events, such as winning the lottery, account for the majority of non-shared environmental variance.",
+      "answerOptions": [
+        {
+          "text": "False",
+          "isCorrect": true,
+          "rationale": "The review states that single life events do not account for substantial variance; instead, aggregates of numerous specific experiences each have small effects."
+        },
+        {
+          "text": "True",
+          "isCorrect": false,
+          "rationale": "Substantial evidence from large-scale studies shows that major life events fail to explain a large portion of environmental personality differences."
+        }
+      ],
+      "hint": "Think about the parallelism between 'polygenic' and 'poly-environmental' models."
+    },
+    {
+      "question": "Which of the following ranges represents the estimated variance in personality self-reports attributable to non-additive genetic effects ($na^2$)?",
+      "answerOptions": [
+        {
+          "text": "$0-32\\%$",
+          "isCorrect": true,
+          "rationale": "According to Figure 1, genetic variance due to dominance effects and gene-gene interactions ranges from $0\\%$ to $32\\%$."
+        },
+        {
+          "text": "$9-18\\%$",
+          "isCorrect": false,
+          "rationale": "This range specifically refers to the additive effects of single nucleotide polymorphisms (SNPs)."
+        },
+        {
+          "text": "$10-20\\%$",
+          "isCorrect": false,
+          "rationale": "This range represents the variance attributed to random measurement error."
+        },
+        {
+          "text": "$38-63\\%$",
+          "isCorrect": false,
+          "rationale": "This range describes the primary environmental source of personality variance (non-shared environment) after error correction in certain studies."
+        }
+      ],
+      "hint": "Look for the specific segment in the 'Variance in Personality Self-Reports' graphic describing dominance and gene-gene interactions."
+    },
+    {
+      "question": "What is a significant limitation of classical twin models (CTM) compared to extended twin family studies (ETFS)?",
+      "answerOptions": [
+        {
+          "text": "CTM cannot simultaneously estimate non-additive genetic effects and shared environmental influences.",
+          "isCorrect": true,
+          "rationale": "If both are relevant, the classical model must ignore one, leading to the potential underestimation of specific sources and overestimation of additive heritability."
+        },
+        {
+          "text": "CTM requires the use of molecular DNA sequencing while ETFS relies only on phenotypic correlations.",
+          "isCorrect": false,
+          "rationale": "Both CTM and ETFS can be conducted using only phenotypic data; molecular data is used in GWAS/SNP studies."
+        },
+        {
+          "text": "CTM consistently yields lower heritability estimates than family and adoption studies.",
+          "isCorrect": false,
+          "rationale": "Actually, twin studies usually yield higher heritability estimates ($0.47$) compared to family studies ($0.22$) because they include non-additive genetic variance."
+        },
+        {
+          "text": "CTM is unable to account for random measurement error, whereas ETFS removes it automatically.",
+          "isCorrect": false,
+          "rationale": "Both models must include an error term, though multi-rater approaches (which can be used with either design) are better at separating error from unique environment."
+        }
+      ],
+      "hint": "Think about the modeling constraints when both $na^2$ and $se^2$ are present."
+    },
+    {
+      "question": "Regarding the HEXACO and Big Five models, how do specificity levels (e.g., nuances and facets) compare to broad trait dimensions in terms of genetic and environmental contributions?",
+      "answerOptions": [
+        {
+          "text": "Aggregating specific nuances into broad dimensions may mask important genetic and environmental differences.",
+          "isCorrect": true,
+          "rationale": "The review notes that important differences occur at specific levels, which broad trait dimensions might obscure."
+        },
+        {
+          "text": "Broad dimensions are significantly more heritable than specific nuances and facets.",
+          "isCorrect": false,
+          "rationale": "Aggregated dimensions are not necessarily more heritable; specific facets often show distinct genetic and environmental architectures."
+        },
+        {
+          "text": "Environmental influences only act on broad dimensions, while genes only act on nuances.",
+          "isCorrect": false,
+          "rationale": "Both genetic and environmental factors operate across all levels of the personality hierarchy, from nuances to broad factors."
+        },
+        {
+          "text": "Nuances show no evidence of heritability, being entirely shaped by unique environmental events.",
+          "isCorrect": false,
+          "rationale": "Studies of nuances (e.g., Mõttus et al., 2019) confirm that personality characteristics below the facet level still show significant heritability."
+        }
+      ],
+      "hint": "Consider the trade-off between bandwidth (broad traits) and fidelity (specific nuances)."
+    },
+    {
+      "question": "Which statement best summarizes the impact of 'shared environmental influences' ($se^2$) on personality traits in adults according to recent ETFS data?",
+      "answerOptions": [
+        {
+          "text": "They are negligible or non-significant in older individuals, reflecting the decline of shared household effects.",
+          "isCorrect": true,
+          "rationale": "Boomsma et al. (2018) found shared environmental influences explained variance in individuals aged 18 or younger, but not in older ones."
+        },
+        {
+          "text": "They account for approximately $50\\%$ of the variance in Extraversion across the lifespan.",
+          "isCorrect": false,
+          "rationale": "Shared environment rarely accounts for more than a very small percentage of variance in personality; heritability is the larger contributor."
+        },
+        {
+          "text": "They represent the most important driver for individual uniqueness between twins.",
+          "isCorrect": false,
+          "rationale": "Non-shared environmental influences ($nse^2$), not shared ones ($se^2$), are the primary drivers of individual uniqueness."
+        },
+        {
+          "text": "They are higher in dizygotic twins than in monozygotic twins due to closer social bonding.",
+          "isCorrect": false,
+          "rationale": "Shared environment is assumed to be equal for both types of twins in classical models, and there is no evidence it is higher for DZ twins."
+        }
+      ],
+      "hint": "Look at the age-related findings in the Boomsma et al. (2018) study mentioned in the text."
+    }
+  ]
+}

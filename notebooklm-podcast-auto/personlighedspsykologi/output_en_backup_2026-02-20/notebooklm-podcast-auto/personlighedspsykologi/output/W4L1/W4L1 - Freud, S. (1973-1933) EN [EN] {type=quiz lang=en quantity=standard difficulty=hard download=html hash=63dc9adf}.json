@@ -1,0 +1,317 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "Freud describes the repressed as 'internal foreign territory.' By what analogy does he describe the 'external foreign territory'?",
+      "answerOptions": [
+        {
+          "text": "The id",
+          "isCorrect": false,
+          "rationale": "The id is described as the dark, inaccessible part of the personality's interior, not the external world."
+        },
+        {
+          "text": "Reality",
+          "isCorrect": true,
+          "rationale": "Freud explicitly equates reality with external foreign territory, contrasting it with the internal foreign territory of the repressed."
+        },
+        {
+          "text": "The super-ego",
+          "isCorrect": false,
+          "rationale": "The super-ego is an internal agency derived from the internalization of external parental authority."
+        },
+        {
+          "text": "The perceptual system",
+          "isCorrect": false,
+          "rationale": "The perceptual system is the medium through which the ego observes the external world, not the territory itself."
+        }
+      ],
+      "hint": "Consider the binary Freud establishes between the ego's internal and external surroundings."
+    },
+    {
+      "question": "Using the analogy of a thrown crystal, how does Freud justify the study of 'broken' mental structures in pathology?",
+      "answerOptions": [
+        {
+          "text": "It demonstrates that mental illness is a result of haphazard external trauma.",
+          "isCorrect": false,
+          "rationale": "Freud argues that the break is not haphazard but follows predetermined lines of cleavage."
+        },
+        {
+          "text": "It proves that the ego can never be fully repaired once a split occurs.",
+          "isCorrect": false,
+          "rationale": "The analogy focuses on structural revelation during a break, not the permanence of the damage."
+        },
+        {
+          "text": "It suggests that pathology reveals invisible structural boundaries present in normal conditions.",
+          "isCorrect": true,
+          "rationale": "The crystal breaks along predetermined lines of cleavage, making the normally invisible structure apparent."
+        },
+        {
+          "text": "It indicates that the id is the 'floor' upon which the ego eventually shatters.",
+          "isCorrect": false,
+          "rationale": "This misinterprets the analogy, which is about the structural integrity and decomposition of the mind."
+        }
+      ],
+      "hint": "Think about what a 'fragment' reveals about the original whole object."
+    },
+    {
+      "question": "What clinical phenomenon led Freud to propose the existence of an 'observing agency' within the ego?",
+      "answerOptions": [
+        {
+          "text": "Hysterical conversion symptoms",
+          "isCorrect": false,
+          "rationale": "Conversion symptoms were the starting point of psycho-analysis but did not specifically reveal the observing agency."
+        },
+        {
+          "text": "Delusions of being observed",
+          "isCorrect": true,
+          "rationale": "Freud notes that in these patients, the observing agency has become sharply divided from the ego and displaced into external reality."
+        },
+        {
+          "text": "The failure of associations in analysis",
+          "isCorrect": false,
+          "rationale": "This is a sign of resistance, which is an action of the ego/super-ego, not the initial clinical picture described."
+        },
+        {
+          "text": "Manic intoxication",
+          "isCorrect": false,
+          "rationale": "Mania is described as a state where the super-ego has lost strength, rather than the primary evidence for its existence."
+        }
+      ],
+      "hint": "Consider the specific pathology where patients feel unknown powers are reporting their actions."
+    },
+    {
+      "question": "How does Freud distinguish 'identification' from 'object-choice' in the context of the Oedipus complex?",
+      "answerOptions": [
+        {
+          "text": "Identification is wanting to possess; object-choice is wanting to be like.",
+          "isCorrect": false,
+          "rationale": "This is the inverse of Freud's definitions."
+        },
+        {
+          "text": "Identification is an adult function; object-choice is a childhood function.",
+          "isCorrect": false,
+          "rationale": "Both occur in childhood and adults, specifically regarding the parents during the Oedipus complex."
+        },
+        {
+          "text": "Identification is wanting to be like; object-choice is wanting to have.",
+          "isCorrect": true,
+          "rationale": "Freud defines identification as altering the ego on a model, while object-choice is a desire for possession."
+        },
+        {
+          "text": "Identification involves the id; object-choice involves only the super-ego.",
+          "isCorrect": false,
+          "rationale": "Object-choices spring from the instinctual demands of the id, but identification is an ego-altering process."
+        }
+      ],
+      "hint": "Think about the difference between 'becoming' a model and 'acquiring' an object."
+    },
+    {
+      "question": "According to Freud, whose super-ego serves as the primary model for the child's own super-ego?",
+      "answerOptions": [
+        {
+          "text": "The parents' actual behaviors and personalities",
+          "isCorrect": false,
+          "rationale": "Freud states the super-ego is not constructed on the model of the parents themselves, but something else."
+        },
+        {
+          "text": "The parents' super-ego",
+          "isCorrect": true,
+          "rationale": "The child's super-ego is built on the model of the parents' super-ego, ensuring the propagation of tradition."
+        },
+        {
+          "text": "The child's own nascent ego",
+          "isCorrect": false,
+          "rationale": "The super-ego is an agency that sets itself over against the ego based on external influences."
+        },
+        {
+          "text": "The biological instincts of the id",
+          "isCorrect": false,
+          "rationale": "The super-ego represents moral restrictions, which is the opposite of the id's instinctual strivings."
+        }
+      ],
+      "hint": "Consider how tradition and values are transmitted across generations."
+    },
+    {
+      "question": "Which characteristic is attributed to the 'id' in Freud's structural model?",
+      "answerOptions": [
+        {
+          "text": "A high degree of organization and collective will",
+          "isCorrect": false,
+          "rationale": "Freud explicitly states the id has no organization and produces no collective will."
+        },
+        {
+          "text": "The application of the law of contradiction",
+          "isCorrect": false,
+          "rationale": "The logical laws of thought, including the law of contradiction, do not apply in the id."
+        },
+        {
+          "text": "A dominance by the 'reality principle'",
+          "isCorrect": false,
+          "rationale": "The id is dominated by the pleasure principle; the ego introduces the reality principle."
+        },
+        {
+          "text": "The unalterability of its processes by time",
+          "isCorrect": true,
+          "rationale": "Impressions in the id behave as though they just occurred, even after decades, because there is no idea of time."
+        }
+      ],
+      "hint": "Think about the philosophical concept of time and space in relation to unconscious impulses."
+    },
+    {
+      "question": "Freud uses the analogy of a rider and a horse to describe the relationship between which two agencies?",
+      "answerOptions": [
+        {
+          "text": "The ego and the super-ego",
+          "isCorrect": false,
+          "rationale": "The super-ego is an observer/judge of the ego, not a source of locomotive energy."
+        },
+        {
+          "text": "The ego and the id",
+          "isCorrect": true,
+          "rationale": "The ego (rider) guides and decides the goal, while the id (horse) provides the locomotive energy."
+        },
+        {
+          "text": "The super-ego and the id",
+          "isCorrect": false,
+          "rationale": "The id and super-ego are both 'masters' of the ego, but the guidance/energy analogy specifically targets the ego-id dynamic."
+        },
+        {
+          "text": "The ego and external reality",
+          "isCorrect": false,
+          "rationale": "While the ego deals with reality, the rider/horse analogy describes the internal struggle for control of energy."
+        }
+      ],
+      "hint": "One provides the energy for movement, while the other attempts to direct it toward a goal."
+    },
+    {
+      "question": "The 'poor ego' is described as serving 'three severe masters.' Which of the following is NOT one of these masters?",
+      "answerOptions": [
+        {
+          "text": "The external world",
+          "isCorrect": false,
+          "rationale": "The external world is one of the three masters that the ego must harmonize with."
+        },
+        {
+          "text": "The super-ego",
+          "isCorrect": false,
+          "rationale": "The super-ego is a master that punishes the ego with feelings of guilt."
+        },
+        {
+          "text": "The id",
+          "isCorrect": false,
+          "rationale": "The id is the master that drives the ego with instinctual demands."
+        },
+        {
+          "text": "The repressed",
+          "isCorrect": true,
+          "rationale": "The repressed is 'foreign territory' to the ego, but Freud identifies the three masters as the External World, Super-Ego, and Id."
+        }
+      ],
+      "hint": "Identify the three sources of danger that can cause the ego to break out in anxiety."
+    },
+    {
+      "question": "What is the primary therapeutic intention of psycho-analysis as stated in the text?",
+      "answerOptions": [
+        {
+          "text": "To eliminate the super-ego entirely",
+          "isCorrect": false,
+          "rationale": "The goal is to make the ego more independent of the super-ego, not to destroy the moral agency."
+        },
+        {
+          "text": "To strengthen the ego and widen its field of perception",
+          "isCorrect": true,
+          "rationale": "Psycho-analysis aims to enlarge the ego's organization so it can appropriate fresh portions of the id."
+        },
+        {
+          "text": "To allow the id to dominate the ego-ideal",
+          "isCorrect": false,
+          "rationale": "This would be the opposite of the 'work of culture' Freud describes."
+        },
+        {
+          "text": "To return the personality to a state of pre-Oedipal identification",
+          "isCorrect": false,
+          "rationale": "The goal is maturation and strengthening of the ego's control, not regression."
+        }
+      ],
+      "hint": "Recall the aphorism regarding the relationship between the id and the ego."
+    },
+    {
+      "question": "Why does Freud reject the 'Individual Psychologists' theory of the inferiority complex?",
+      "answerOptions": [
+        {
+          "text": "He believes the complex is entirely non-existent in healthy individuals.",
+          "isCorrect": false,
+          "rationale": "Freud acknowledges the sense of inferiority but disputes its simple origins."
+        },
+        {
+          "text": "He argues it derives primarily from the ego's relation to the super-ego, not just organic defects.",
+          "isCorrect": true,
+          "rationale": "Freud views the sense of inferiority as an expression of tension between the ego and super-ego, with strong erotic roots."
+        },
+        {
+          "text": "He claims that mothers always compensate for their child's defects with extra love.",
+          "isCorrect": false,
+          "rationale": "Freud gives an example where a mother withdrew love, but this was to correct a biographer's theory, not to claim it is a universal rule."
+        },
+        {
+          "text": "He states that the term is too popular in belles lettres to be scientific.",
+          "isCorrect": false,
+          "rationale": "While he mentions its popularity, his rejection is based on its psychological depth and origin."
+        }
+      ],
+      "hint": "Look for the structural tension Freud associates with both guilt and inferiority."
+    },
+    {
+      "question": "In Freud's diagram of the mental personality, which system is in direct contact with the external world?",
+      "answerOptions": [
+        {
+          "text": "The id",
+          "isCorrect": false,
+          "rationale": "The id has intercourse with the external world only through the medium of the ego."
+        },
+        {
+          "text": "The super-ego",
+          "isCorrect": false,
+          "rationale": "The super-ego is more remote than the ego from the perceptual system."
+        },
+        {
+          "text": "The system $Pcpt.-Cs.$",
+          "isCorrect": true,
+          "rationale": "The perception-consciousness system is the outermost superficial portion turned toward the external world."
+        },
+        {
+          "text": "The preconscious",
+          "isCorrect": false,
+          "rationale": "While related to the ego, the specific sense-organ for reality is the $Pcpt.-Cs.$ system."
+        }
+      ],
+      "hint": "Think of the acronym for the 'sense-organ of the entire apparatus' found in the ego."
+    },
+    {
+      "question": "What occurs during a 'manic' phase in some forms of melancholia?",
+      "answerOptions": [
+        {
+          "text": "The super-ego becomes even more severe and punitive.",
+          "isCorrect": false,
+          "rationale": "This describes the melancholic attack, not the manic interval."
+        },
+        {
+          "text": "The ego identifies with the external world to escape the id.",
+          "isCorrect": false,
+          "rationale": "Mania is described as a triumph over the super-ego, not an escape to reality."
+        },
+        {
+          "text": "The super-ego's strength vanishes or melts into the ego.",
+          "isCorrect": true,
+          "rationale": "In mania, the ego feels liberated and permits uninhibited satisfaction of appetites because the super-ego's criticism is silent."
+        },
+        {
+          "text": "The id is completely repressed by the ego-ideal.",
+          "isCorrect": false,
+          "rationale": "In mania, the id's appetites are satisfied, indicating a lack of repression."
+        }
+      ],
+      "hint": "Consider the state of 'blissful intoxication' where the ego celebrates a triumph."
+    }
+  ]
+}

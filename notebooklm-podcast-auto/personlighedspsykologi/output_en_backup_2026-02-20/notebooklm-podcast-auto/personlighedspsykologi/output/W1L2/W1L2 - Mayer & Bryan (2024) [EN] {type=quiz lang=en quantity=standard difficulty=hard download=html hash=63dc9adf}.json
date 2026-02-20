@@ -1,0 +1,265 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "According to the integrative theory of data classification, what is considered the primary 'natural joint' for carving up personality data?",
+      "answerOptions": [
+        {
+          "text": "Whether the data is sourced from within the person or from the environment surrounding the person.",
+          "isCorrect": true,
+          "rationale": "The model identifies the inner-outer dimension as the foremost distinction, separating personal-source data from external-source data."
+        },
+        {
+          "text": "Whether the data represents a molecular physiological process or a molar social interaction.",
+          "isCorrect": false,
+          "rationale": "While the molecular-molar dimension is used to locate personality levels, it is secondary to the distinction between the person and their surroundings."
+        },
+        {
+          "text": "The distinction between conscious self-reports and non-conscious implicit associations.",
+          "isCorrect": false,
+          "rationale": "This distinction exists within the personal-source data category rather than serving as the fundamental division for all personality data."
+        },
+        {
+          "text": "The temporal difference between a person's current state and their historical development.",
+          "isCorrect": false,
+          "rationale": "Time is the third dimension in the model, used to locate a specific point of development rather than to categorize the data source itself."
+        }
+      ],
+      "hint": "Consider the spatial boundary described as the 'inner-outer' dimension."
+    },
+    {
+      "question": "In the context of the 'molecular-molar' dimension, where is the personality system specifically located?",
+      "answerOptions": [
+        {
+          "text": "At the psychological level of function, situated between biological systems and social systems.",
+          "isCorrect": true,
+          "rationale": "The personality system is defined as operating at a psychological level, distinct from lower-level biological scales and higher-level social/family scales."
+        },
+        {
+          "text": "Exclusively within the neurological and brain systems that generate mental states.",
+          "isCorrect": false,
+          "rationale": "The brain and nervous systems are considered lower-level or 'molecular' neighbors to the psychological level of personality."
+        },
+        {
+          "text": "In the higher-level interactions of community and intergroup relations.",
+          "isCorrect": false,
+          "rationale": "These components represent the 'molar' end of the continuum, which contains but is not the same as the personality system itself."
+        },
+        {
+          "text": "At the sensory-motor boundary where inner thoughts are translated into outer actions.",
+          "isCorrect": false,
+          "rationale": "This describes the boundary of the inner-outer dimension rather than the level of function in the biopsychosocial hierarchy."
+        }
+      ],
+      "hint": "Think about the biopsychosocial continuum and which level corresponds to psychological functioning."
+    },
+    {
+      "question": "What did Campbell and Fiske (1959) observe regarding the convergence of different measurement methods targeting the same personality attribute?",
+      "answerOptions": [
+        {
+          "text": "The empirical median correlation was approximately $r = .32$, significantly lower than the expected $r = .57$.",
+          "isCorrect": true,
+          "rationale": "Their research found that shared method variance was much lower than theoretical expectations, suggesting that measurement methods are not easily interchangeable."
+        },
+        {
+          "text": "The cross-method correlations were negligible, often falling below $r = .10$ for most traits.",
+          "isCorrect": false,
+          "rationale": "The correlations were generally in the low $.30$s, which is statistically significant but lower than what is required to claim equivalence."
+        },
+        {
+          "text": "Methods converged highly ($r > .70$) only when the attributes were observable behaviors like sociality.",
+          "isCorrect": false,
+          "rationale": "While observability increases convergence, Campbell and Fiske found a much lower median correlation across their general multitrait-multimethod matrix."
+        },
+        {
+          "text": "The convergence was almost perfect once corrections for unreliability were applied to the data.",
+          "isCorrect": false,
+          "rationale": "Even with reliable measures, the source material notes that different methods elicit different response processes, preventing high convergence."
+        }
+      ],
+      "hint": "Recall the discrepancy between their theoretical expectation and their actual empirical median."
+    },
+    {
+      "question": "How does the 'response process' explain the poor convergence between self-judgments and thematic-report measures of achievement motivation?",
+      "answerOptions": [
+        {
+          "text": "Self-judgments draw on stable semantic memory, while thematic reports engage active storytelling and percept construction.",
+          "isCorrect": true,
+          "rationale": "Because these tasks activate different psychological mechanisms, they measure distinct manifestations of motivation, such as 'valuation' vs. 'need'."
+        },
+        {
+          "text": "Thematic reports are inherently unreliable because they rely on ambiguous stimuli that confuse the respondent.",
+          "isCorrect": false,
+          "rationale": "Reliability is not the primary issue; the divergence stems from the different mental mechanisms used to respond to the tasks."
+        },
+        {
+          "text": "Self-judgments are contaminated by social desirability, whereas thematic reports are purely objective observations of behavior.",
+          "isCorrect": false,
+          "rationale": "Both are subjective personal-source data, but they differ in the specific mental faculties they utilize to generate a response."
+        },
+        {
+          "text": "Thematic reports require high verbal intelligence, causing them to correlate more with cognitive ability than with motivation.",
+          "isCorrect": false,
+          "rationale": "The source material emphasizes the 'storytelling' vs. 'semantic memory retrieval' processes rather than a confound with intelligence."
+        }
+      ],
+      "hint": "Consider the different ways the brain retrieves stored knowledge versus creating a narrative."
+    },
+    {
+      "question": "Which of the following is a key finding regarding the relationship between self-estimated intelligence and ability-measured intelligence?",
+      "answerOptions": [
+        {
+          "text": "Self-estimated intelligence is more strongly influenced by Big Five traits like Extraversion and Emotional Stability than by actual cognitive capacity.",
+          "isCorrect": true,
+          "rationale": "Self-judgments of intelligence often reflect 'intellectual self-esteem' or personality styles rather than actual problem-solving ability, leading to a low correlation of $r \\approx .29$."
+        },
+        {
+          "text": "The two measures correlate at $r > .60$ because people have accurate metacognitive awareness of their cognitive limits.",
+          "isCorrect": false,
+          "rationale": "Meta-analyses show much lower correlations ($r \\approx .29$), indicating that people are often overconfident or inaccurate in estimating their own ability."
+        },
+        {
+          "text": "Self-estimates are the preferred method for assessing intelligence because they are easier and less expensive to administer.",
+          "isCorrect": false,
+          "rationale": "While easy to use, ability-based performance scales are considered the 'gold-standard' because self-estimates do not measure actual capacity."
+        },
+        {
+          "text": "Discrepancies between the two are primarily due to the 'polyexpressive' nature of cognitive traits.",
+          "isCorrect": false,
+          "rationale": "The discrepancy is attributed to different response processes—self-concept retrieval vs. actual problem-solving—rather than trait expression variety."
+        }
+      ],
+      "hint": "Think about whether self-judgments reflect 'who I am' (personality) or 'what I can do' (performance)."
+    },
+    {
+      "question": "Why is 'Agreeableness' specifically recommended for assessment via observer-judgment rather than self-judgment?",
+      "answerOptions": [
+        {
+          "text": "Disagreeable individuals often lack the self-awareness to recognize how their behavior is perceived by others.",
+          "isCorrect": true,
+          "rationale": "Self and observer ratings diverge most for Agreeableness, suggesting that observers provide a more accurate account of the social impact of the trait."
+        },
+        {
+          "text": "It is a highly evaluative and neutral trait that everyone judges with perfect accuracy.",
+          "isCorrect": false,
+          "rationale": "The source states that traits that are 'not too evaluative' and 'observable' (like Extraversion) yield higher agreement, whereas Agreeableness shows more divergence."
+        },
+        {
+          "text": "Agreeableness is strictly a 'molar' trait that does not exist within the 'inner' personality system.",
+          "isCorrect": false,
+          "rationale": "Agreeableness is part of the personality system, but its external social manifestation is often more accurately captured by others."
+        },
+        {
+          "text": "Self-judgments of Agreeableness are always dishonest due to high-stakes employment testing.",
+          "isCorrect": false,
+          "rationale": "While dishonesty is possible, the primary rationale is the inherent limit of self-awareness regarding one's own disagreeableness."
+        }
+      ],
+      "hint": "Consider the lack of insight people may have regarding their own social friction."
+    },
+    {
+      "question": "In the classification system, how is 'Lifespace data' (e.g., act-frequency data) categorized?",
+      "answerOptions": [
+        {
+          "text": "Personal-source data that targets the person's actions in the external environment.",
+          "isCorrect": true,
+          "rationale": "Lifespace data consists of the person's own reports of their life history and behaviors, which are in principle objectively verifiable."
+        },
+        {
+          "text": "External-source data that uses electronic sensors to monitor daily movement.",
+          "isCorrect": false,
+          "rationale": "Electronic monitoring falls under 'Situation data' or 'Personality sensing data' within the External-source category."
+        },
+        {
+          "text": "Personal-source data that focuses on the person's inner psychological states and feelings.",
+          "isCorrect": false,
+          "rationale": "Data targeting inner states is categorized as 'Self-judgment' or 'Process-report' data."
+        },
+        {
+          "text": "External-source data provided by institutional records like school transcripts.",
+          "isCorrect": false,
+          "rationale": "Institutional records are classified as 'Group data' within the External-source category."
+        }
+      ],
+      "hint": "Think about who is providing the report and whether the information is about inner thoughts or outer life facts."
+    },
+    {
+      "question": "What potential weakness of external-source data is illustrated by the 'Hello Kitty' finding in Facebook big data research?",
+      "answerOptions": [
+        {
+          "text": "Construct irrelevance, where the data is influenced by extraneous factors like the target's age.",
+          "isCorrect": true,
+          "rationale": "While the 'like' seemed to reflect personality, it was actually a proxy for being younger, demonstrating how non-obvious relations can be misleading."
+        },
+        {
+          "text": "Construct underrepresentation, because the data only looked at one social media platform.",
+          "isCorrect": false,
+          "rationale": "While underrepresentation is a weakness of big data, the 'Hello Kitty' example specifically highlights how irrelevant variables (age) contaminate the intended construct."
+        },
+        {
+          "text": "Data accuracy, as many Facebook accounts are bots rather than real people.",
+          "isCorrect": false,
+          "rationale": "While accuracy is a general issue, the finding focused on the misinterpretation of a 'like' rather than the validity of the account itself."
+        },
+        {
+          "text": "Response distortion, because users 'like' things to manage their social reputation.",
+          "isCorrect": false,
+          "rationale": "This describes a weakness of personal expression, whereas the example emphasizes the researcher's misattribution of the data's meaning."
+        }
+      ],
+      "hint": "Consider when a piece of information seems to measure personality but actually measures a demographic variable."
+    },
+    {
+      "question": "Which measurement approach is recommended for assessing 'Self-schemas' and mental models, according to the provided guidelines?",
+      "answerOptions": [
+        {
+          "text": "Personal construct data, such as listing qualities of possible or feared selves.",
+          "isCorrect": true,
+          "rationale": "These techniques prompt individuals to reveal their mental models and schematic associations through tasks like card-sorting or trait listing."
+        },
+        {
+          "text": "Mental ability scales, which test the accuracy of the person's self-knowledge.",
+          "isCorrect": false,
+          "rationale": "Mental ability scales measure capacity to solve objective problems, whereas self-schemas are subjective mental models."
+        },
+        {
+          "text": "Observer-judgments, because others can see our mental scripts more clearly than we can.",
+          "isCorrect": false,
+          "rationale": "Self-schemas are internal mental models; while others see the behavior resulting from them, the models themselves are best accessed through personal-source techniques."
+        },
+        {
+          "text": "Physiological data, to map the neural networks where schemas are stored.",
+          "isCorrect": false,
+          "rationale": "Physiological data is currently used to track health or brain function but is not the recommended way to assess the specific content of a self-schema."
+        }
+      ],
+      "hint": "Think about techniques that involve 'constructing' a list or sorting personal attributes."
+    },
+    {
+      "question": "The term 'polyexpressive' (or 'poly-symptomaticity') is used to explain why measures may not converge. What does this term imply?",
+      "answerOptions": [
+        {
+          "text": "The same underlying trait can manifest in many different outward behaviors across different individuals.",
+          "isCorrect": true,
+          "rationale": "Because a trait like 'hostility' might be expressed verbally by one person and physically by another, different measures of the same trait may yield different results."
+        },
+        {
+          "text": "A person has multiple personalities that they express depending on the social situation.",
+          "isCorrect": false,
+          "rationale": "This refers to behavioral variability or 'playing roles' rather than the structural principle that a single trait has diverse manifestations."
+        },
+        {
+          "text": "One measurement method can be used to assess many different traits simultaneously.",
+          "isCorrect": false,
+          "rationale": "This would be 'multitarget' measurement, whereas 'polyexpressive' refers to the diverse expressions of a single target trait."
+        },
+        {
+          "text": "A person expresses their traits more frequently in personal reports than in observed behavior.",
+          "isCorrect": false,
+          "rationale": "The term does not prioritize one source over another; it simply notes that the expressions themselves are varied."
+        }
+      ],
+      "hint": "Think about how one emotion, like anger, can look very different from person to person."
+    }
+  ]
+}

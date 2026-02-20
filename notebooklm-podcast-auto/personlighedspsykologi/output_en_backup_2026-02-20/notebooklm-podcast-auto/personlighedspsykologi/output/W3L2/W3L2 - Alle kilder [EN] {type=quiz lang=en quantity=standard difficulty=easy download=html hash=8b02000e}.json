@@ -1,0 +1,317 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "In the DSM-5 Alternative Model for Personality Disorders (AMPD), what does Criterion A represent?",
+      "answerOptions": [
+        {
+          "text": "The level of personality functioning, focusing on self and interpersonal domains.",
+          "isCorrect": true,
+          "rationale": "Criterion A serves as the dimensional severity criterion that evaluates how an individual manages their sense of self and their relationships with others."
+        },
+        {
+          "text": "A list of five pathological trait domains used for descriptive nuance.",
+          "isCorrect": false,
+          "rationale": "This description refers to Criterion B, which focuses on specific maladaptive traits rather than general severity of functioning."
+        },
+        {
+          "text": "A categorical checklist of ten specific personality disorder types.",
+          "isCorrect": false,
+          "rationale": "Categorical checklists are part of the traditional DSM-5 Section II approach, which the AMPD seeks to move beyond."
+        },
+        {
+          "text": "A measure of global psychosocial disability and occupational success.",
+          "isCorrect": false,
+          "rationale": "While related, Criterion A is designed to capture internal personality processes rather than the external consequences or disabilities resulting from them."
+        }
+      ],
+      "hint": "Consider the entry criterion that defines the 'core' of personality pathology."
+    },
+    {
+      "question": "Which of the following are the two main components of 'Self' functioning in the Level of Personality Functioning Scale (LPFS)?",
+      "answerOptions": [
+        {
+          "text": "Identity and Self-direction",
+          "isCorrect": true,
+          "rationale": "Identity involves the experience of a unique self, while self-direction involves the pursuit of meaningful short-term and life goals."
+        },
+        {
+          "text": "Empathy and Intimacy",
+          "isCorrect": false,
+          "rationale": "These two components represent the interpersonal domain of personality functioning rather than the self domain."
+        },
+        {
+          "text": "Negative Affectivity and Detachment",
+          "isCorrect": false,
+          "rationale": "These are maladaptive trait domains found in Criterion B, not domains of the Level of Personality Functioning Scale."
+        },
+        {
+          "text": "Agency and Autonomy",
+          "isCorrect": false,
+          "rationale": "While these are aspects of a healthy self, they are not the two formal sub-domains listed under the 'Self' category in the LPFS."
+        }
+      ],
+      "hint": "Focus on the internal aspects of how a person perceives and guides their own life."
+    },
+    {
+      "question": "According to the ICD-11, which trait domain is included that is NOT present in the DSM-5 AMPD trait model?",
+      "answerOptions": [
+        {
+          "text": "Anankastia",
+          "isCorrect": true,
+          "rationale": "ICD-11 includes anankastia to represent rigid perfectionism, whereas the DSM-5 trait model includes psychoticism, which ICD-11 omits."
+        },
+        {
+          "text": "Psychoticism",
+          "isCorrect": false,
+          "rationale": "Psychoticism is included in the DSM-5 AMPD but was omitted from the ICD-11 personality disorder section."
+        },
+        {
+          "text": "Negative Affectivity",
+          "isCorrect": false,
+          "rationale": "Negative affectivity is a common trait domain found in both the ICD-11 and the DSM-5 AMPD models."
+        },
+        {
+          "text": "Dissociality",
+          "isCorrect": false,
+          "rationale": "Dissociality is the ICD-11 equivalent of the Antagonism domain in the DSM-5, meaning both systems cover this concept."
+        }
+      ],
+      "hint": "Think of the term used for traits related to rigid orderliness and perfectionism."
+    },
+    {
+      "question": "In McAdams' developmental theory of personality, which layer is characterized by dispositional traits where the person is seen as a 'social actor'?",
+      "answerOptions": [
+        {
+          "text": "The first layer",
+          "isCorrect": true,
+          "rationale": "The first layer involves observable temperamental traits that appear in early childhood, defining the person as an actor on a social stage."
+        },
+        {
+          "text": "The second layer",
+          "isCorrect": false,
+          "rationale": "The second layer involves the person-as-agent, focusing on goals, motivations, and future-oriented planning starting around age $5$ to $7$."
+        },
+        {
+          "text": "The third layer",
+          "isCorrect": false,
+          "rationale": "The third layer involves the person-as-author, where adolescents begin to construct a narrative identity and a coherent life story."
+        },
+        {
+          "text": "The fourth layer",
+          "isCorrect": false,
+          "rationale": "McAdams' model specifically describes three layers of personality development, not four."
+        }
+      ],
+      "hint": "This layer appears earliest in development and focuses on how one presents to others."
+    },
+    {
+      "question": "According to Sharp and Wall (2021), why is personality disorder (PD) typically not diagnosed until adolescence?",
+      "answerOptions": [
+        {
+          "text": "Because the integration of self and identity function only emerges normatively during adolescence.",
+          "isCorrect": true,
+          "rationale": "The qualitative shifts in the social brain and identity consolidation required for adult personality functioning do not coalesce until this developmental stage."
+        },
+        {
+          "text": "Because maladaptive traits like antagonism are impossible to observe in young children.",
+          "isCorrect": false,
+          "rationale": "The source material states that maladaptive traits are readily observable in preadolescents, but they don't yet signify a personality disorder."
+        },
+        {
+          "text": "Because legal regulations prevent the diagnosis of personality disorders in anyone under $18$.",
+          "isCorrect": false,
+          "rationale": "While historical practices avoided early diagnosis, the current research supports the validity of these diagnoses in adolescents."
+        },
+        {
+          "text": "Because children do not experience interpersonal conflict until they enter secondary school.",
+          "isCorrect": false,
+          "rationale": "Children certainly experience interpersonal conflict, but the specific intrapsychic failure defining PD is linked to adolescent identity development."
+        }
+      ],
+      "hint": "Consider the timing of when a person begins to ask 'Who am I?' and construct a life narrative."
+    },
+    {
+      "question": "What is the primary role of Criterion B in the Alternative Model for Personality Disorders?",
+      "answerOptions": [
+        {
+          "text": "To provide descriptive 'flavor' and nuance to the manifestation of personality pathology.",
+          "isCorrect": true,
+          "rationale": "Criterion B uses pathological traits to describe the specific way a person's personality dysfunction is expressed."
+        },
+        {
+          "text": "To determine if a person has a mental disorder or is simply eccentric.",
+          "isCorrect": false,
+          "rationale": "Criterion A is the primary determination for whether a personality disorder exists; Criterion B describes the style of that disorder."
+        },
+        {
+          "text": "To measure the patient's level of intelligence and cognitive processing speed.",
+          "isCorrect": false,
+          "rationale": "Criterion B focuses on emotional and behavioral traits (like detachment or antagonism) rather than cognitive ability."
+        },
+        {
+          "text": "To serve as the sole necessary and sufficient requirement for a PD diagnosis.",
+          "isCorrect": false,
+          "rationale": "In the AMPD, Criterion A is considered the 'core' and is conditional for the diagnosis, while Criterion B provides the specific trait profile."
+        }
+      ],
+      "hint": "Think about how traits complement the general severity of the disorder."
+    },
+    {
+      "question": "Which term describes the capacity to reflect on and attribute inner experiences, such as thoughts and feelings, to oneself and others?",
+      "answerOptions": [
+        {
+          "text": "Mentalizing",
+          "isCorrect": true,
+          "rationale": "Mentalizing is the metacognitive process essential for the 'person-as-agent' and 'person-as-author' layers of personality."
+        },
+        {
+          "text": "Anankastia",
+          "isCorrect": false,
+          "rationale": "Anankastia is a trait domain characterized by perfectionism and control, not the capacity for self-reflection."
+        },
+        {
+          "text": "Social Potency",
+          "isCorrect": false,
+          "rationale": "Social potency refers to the ability to influence others, which is distinct from the intrapsychic process of reflecting on mental states."
+        },
+        {
+          "text": "Dispositional Tracking",
+          "isCorrect": false,
+          "rationale": "This is not a standard term used in the source material to describe the attribution of mental states."
+        }
+      ],
+      "hint": "This concept is a central precondition for the second layer of personality functioning."
+    },
+    {
+      "question": "On the Level of Personality Functioning Scale (LPFS), what does a score of $0$ indicate?",
+      "answerOptions": [
+        {
+          "text": "Little or no impairment in personality functioning.",
+          "isCorrect": true,
+          "rationale": "The LPFS is a 5-point scale where $0$ represents healthy functioning and $4$ represents extreme impairment."
+        },
+        {
+          "text": "A total lack of empathy and a complete absence of identity.",
+          "isCorrect": false,
+          "rationale": "A score of $0$ indicates a healthy, self-regulated personality; the description provided fits a score of $4$."
+        },
+        {
+          "text": "A moderate level of impairment requiring immediate clinical intervention.",
+          "isCorrect": false,
+          "rationale": "Moderate impairment is typically represented by a score of $2$ on the LPFS."
+        },
+        {
+          "text": "That the patient has not yet been evaluated by a clinician.",
+          "isCorrect": false,
+          "rationale": "A score of $0$ is an actual rating of high-level functioning, not an indicator of missing data."
+        }
+      ],
+      "hint": "Look at the lowest end of the five-point severity continuum."
+    },
+    {
+      "question": "Which specific personality disorder's criteria are noted as loading most strongly on the general factor of personality pathology ($g$-PD)?",
+      "answerOptions": [
+        {
+          "text": "Borderline Personality Disorder",
+          "isCorrect": true,
+          "rationale": "BPD criteria, such as identity disturbance and relationship problems, are seen as the best indicators of general personality dysfunction severity."
+        },
+        {
+          "text": "Obsessive-Compulsive Personality Disorder",
+          "isCorrect": false,
+          "rationale": "OCPD criteria often emerge as a specific trait-like factor rather than defining the general severity shared by all PDs."
+        },
+        {
+          "text": "Schizotypal Personality Disorder",
+          "isCorrect": false,
+          "rationale": "While a valid diagnosis, its criteria are more closely related to the psychoticism spectrum than to the general core of all personality disorders."
+        },
+        {
+          "text": "Antisocial Personality Disorder",
+          "isCorrect": false,
+          "rationale": "Antisocial traits load onto an antagonistic externalizing factor rather than primarily defining the common general severity factor."
+        }
+      ],
+      "hint": "This disorder's criteria focus heavily on subjective internal experiences of self and instability."
+    },
+    {
+      "question": "How does the ICD-11's approach to personality disorder differ significantly from the DSM-5 Section II categorical system?",
+      "answerOptions": [
+        {
+          "text": "It provides no provision for traditionally defined categorical PDs, except for a borderline pattern qualifier.",
+          "isCorrect": true,
+          "rationale": "ICD-11 departs radically from tradition by using a dimensional severity model instead of the 10 categorical types found in DSM-5 Section II."
+        },
+        {
+          "text": "It requires the presence of at least three specific personality types for a diagnosis.",
+          "isCorrect": false,
+          "rationale": "The ICD-11 system focuses on a general severity rating rather than requiring a specific number of categories."
+        },
+        {
+          "text": "It excludes the concept of 'self' functioning to focus only on social behavior.",
+          "isCorrect": false,
+          "rationale": "ICD-11 was actually revised to include self-functioning, mirroring the AMPD's emphasis on identity and self-worth."
+        },
+        {
+          "text": "It uses a binary 'healthy' or 'disordered' system with no levels of severity.",
+          "isCorrect": false,
+          "rationale": "ICD-11 explicitly uses a dimensional approach to determine the severity of the personality disorder."
+        }
+      ],
+      "hint": "Think about whether the model uses the 10 traditional categories like 'Narcissistic' or 'Avoidant'."
+    },
+    {
+      "question": "According to research on the LPFS, which component is often a better predictor of general psychosocial impairment and psychological distress?",
+      "answerOptions": [
+        {
+          "text": "The Self component",
+          "isCorrect": true,
+          "rationale": "Studies have shown that aspects like identity and self-direction often have stronger relationships with general distress and functional outcomes."
+        },
+        {
+          "text": "The Interpersonal component",
+          "isCorrect": false,
+          "rationale": "While important, the interpersonal component (empathy/intimacy) often shows lower predictive power for general distress than the self component."
+        },
+        {
+          "text": "The trait of Psychoticism",
+          "isCorrect": false,
+          "rationale": "Psychoticism is a specific trait domain in Criterion B, not a component of the Criterion A Level of Personality Functioning Scale."
+        },
+        {
+          "text": "The age of the clinician performing the rating",
+          "isCorrect": false,
+          "rationale": "The source material focuses on the constructs of the model rather than the demographic characteristics of the clinicians."
+        }
+      ],
+      "hint": "Consider which of the two primary LPF domains is viewed as the 'nexus' or driver of dysfunction."
+    },
+    {
+      "question": "Which of McAdams' layers of personality is the most recent to develop, becoming active during adolescence?",
+      "answerOptions": [
+        {
+          "text": "Person-as-author",
+          "isCorrect": true,
+          "rationale": "This layer involves constructing a narrative identity to provide life with meaning and purpose, which requires the cognitive maturity of adolescence."
+        },
+        {
+          "text": "Person-as-actor",
+          "isCorrect": false,
+          "rationale": "This is the earliest layer, appearing in infancy and toddlerhood through basic temperamental traits."
+        },
+        {
+          "text": "Person-as-agent",
+          "isCorrect": false,
+          "rationale": "This layer begins maturing around age $5$ to $7$ as children become more goal-oriented and purposeful."
+        },
+        {
+          "text": "Person-as-observer",
+          "isCorrect": false,
+          "rationale": "This is not one of the three layers described in McAdams' developmental theory of personality."
+        }
+      ],
+      "hint": "This layer is responsible for creating a 'story' of one's life."
+    }
+  ]
+}

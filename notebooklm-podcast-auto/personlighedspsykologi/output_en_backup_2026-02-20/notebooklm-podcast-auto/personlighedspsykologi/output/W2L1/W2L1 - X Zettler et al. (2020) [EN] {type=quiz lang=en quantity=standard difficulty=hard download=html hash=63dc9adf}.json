@@ -1,0 +1,265 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "In the context of establishing construct validity for the HEXACO model, what constitutes the 'nomological net' of a personality dimension?",
+      "answerOptions": [
+        {
+          "text": "The comprehensive set of evidence describing how a construct is inter-related with other related constructs and specific outcome criteria.",
+          "isCorrect": true,
+          "rationale": "Construct validity is fundamentally established by mapping the relations between the operationalized construct and diverse, theoretically relevant outcomes."
+        },
+        {
+          "text": "The internal factor structure derived from lexical studies using personality-descriptive adjectives.",
+          "isCorrect": false,
+          "rationale": "This describes the structural derivation of the model rather than its external relations with outcome criteria."
+        },
+        {
+          "text": "The degree of self-observer agreement regarding the level of a specific trait within an individual.",
+          "isCorrect": false,
+          "rationale": "While related to validity, consensus between raters is a specific psychometric property rather than the full network of construct-outcome relations."
+        },
+        {
+          "text": "The evolutionary framework used to explain why certain traits became prevalent in human populations.",
+          "isCorrect": false,
+          "rationale": "The evolutionary basis provides a theoretical foundation but does not constitute the empirical 'net' of inter-relations and outcomes."
+        }
+      ],
+      "hint": "Consider the relationship between a theoretical concept and its external empirical manifestations."
+    },
+    {
+      "question": "According to the theoretical distinction between Honesty-Humility and Agreeableness in the HEXACO model, which trait specifically governs 'reactive' cooperation?",
+      "answerOptions": [
+        {
+          "text": "Agreeableness",
+          "isCorrect": true,
+          "rationale": "Agreeableness represents the tendency to remain cooperative even when facing exploitation, focusing on non-retaliation and forgiveness."
+        },
+        {
+          "text": "Honesty-Humility",
+          "isCorrect": false,
+          "rationale": "This trait governs 'active' cooperation, specifically the tendency not to exploit others even when one could do so without retaliation."
+        },
+        {
+          "text": "Conscientiousness",
+          "isCorrect": false,
+          "rationale": "This trait is associated with task-related endeavors and duty rather than the dynamics of interpersonal cooperation in reciprocal altruism."
+        },
+        {
+          "text": "Extraversion",
+          "isCorrect": false,
+          "rationale": "Extraversion relates to sociality and attention-seeking rather than the cooperative response to exploitation."
+        }
+      ],
+      "hint": "Focus on the difference between initiating cooperation and responding to a breach of cooperation."
+    },
+    {
+      "question": "The HEXACO dimension of Emotionality is theoretically linked to which evolutionary concept?",
+      "answerOptions": [
+        {
+          "text": "Kin altruism",
+          "isCorrect": true,
+          "rationale": "Emotionality encompasses harm-avoidant and help-seeking behaviors that facilitate investment in and protection of genetic relatives."
+        },
+        {
+          "text": "Reciprocal altruism",
+          "isCorrect": false,
+          "rationale": "Reciprocal altruism is the theoretical foundation for Honesty-Humility and Agreeableness, not Emotionality."
+        },
+        {
+          "text": "Social-attention-holding power",
+          "isCorrect": false,
+          "rationale": "This concept explains Extraversion as a means to gain positive attention and social resources."
+        },
+        {
+          "text": "Cultural learning",
+          "isCorrect": false,
+          "rationale": "The discovery of resources through learning and exploration is the evolutionary basis for Openness to Experience."
+        }
+      ],
+      "hint": "Think about behaviors intended to protect those who share one's genes."
+    },
+    {
+      "question": "Which finding regarding 'environmental behavior' was identified as a noteworthy departure from the primary hypothesized mappings?",
+      "answerOptions": [
+        {
+          "text": "Openness to Experience showed a significantly stronger correlation with environmental behavior than Honesty-Humility.",
+          "isCorrect": true,
+          "rationale": "While conceptualized as non-exploitation (H-H), environmentalism correlated more strongly with Exploration traits (Openness, $\\hat{\\rho} = .54$)."
+        },
+        {
+          "text": "Conscientiousness was the only significant predictor of pro-environmental training and activity.",
+          "isCorrect": false,
+          "rationale": "Conscientiousness showed a weak link to environmental behavior compared to Openness and Honesty-Humility."
+        },
+        {
+          "text": "Extraversion showed a strong negative correlation with environmental behavior due to social consumption habits.",
+          "isCorrect": false,
+          "rationale": "The study found Extraversion had a small positive link to environmental behavior ($\\hat{\\rho} = .16$)."
+        },
+        {
+          "text": "Emotionality was unrelated to environmental behavior because it only involves kin-based protection.",
+          "isCorrect": false,
+          "rationale": "While Emotionality's link was small, the key finding was the unexpected strength of Openness in this domain."
+        }
+      ],
+      "hint": "One dimension traditionally linked to values and socio-political attitudes outperformed the expected 'fairness' dimension."
+    },
+    {
+      "question": "When comparing assessment modes, how did the use of non-self-report (NSR) criteria affect the observed correlation between Agreeableness and reactive cooperation?",
+      "answerOptions": [
+        {
+          "text": "The correlation decreased substantially from $\\hat{\\rho} = .37$ in self-reports to $\\hat{\\rho} = .10$ in NSR data.",
+          "isCorrect": true,
+          "rationale": "Shared method variance in self-reports likely inflates effect sizes, which drop when objective or observer data are used."
+        },
+        {
+          "text": "The correlation remained stable because Agreeableness is a highly visible trait to observers.",
+          "isCorrect": false,
+          "rationale": "The study noted significant drops for H-H and Agreeableness, unlike Conscientiousness which remained stable."
+        },
+        {
+          "text": "The correlation increased because observers are better at detecting subtle signs of forgiveness than the self.",
+          "isCorrect": false,
+          "rationale": "Empirical results showed a decrease in effect size when moving away from self-report criteria."
+        },
+        {
+          "text": "The correlation became non-significant because reactive cooperation is an internal feeling rather than a behavior.",
+          "isCorrect": false,
+          "rationale": "The link remained but was markedly weaker, highlighting the impact of assessment source on the nomological net."
+        }
+      ],
+      "hint": "Consider the potential for inflation when both the predictor and the outcome are reported by the same person."
+    },
+    {
+      "question": "In the meta-analysis of the 'Insecurity' domain, which trait unexpectedly showed a primary relation nearly as strong as Emotionality?",
+      "answerOptions": [
+        {
+          "text": "Extraversion (negative correlation)",
+          "isCorrect": true,
+          "rationale": "Extraversion correlated negatively with insecurity ($\\hat{\\rho} = -.25$), nearly matching Emotionality's positive correlation ($\\hat{\\rho} = .27$)."
+        },
+        {
+          "text": "Honesty-Humility (positive correlation)",
+          "isCorrect": false,
+          "rationale": "Honesty-Humility showed a very small relation to the insecurity domain ($\\hat{\\rho} = .06$)."
+        },
+        {
+          "text": "Conscientiousness (negative correlation)",
+          "isCorrect": false,
+          "rationale": "Conscientiousness showed almost no relation to the overall insecurity domain ($\\hat{\\rho} = -.02$)."
+        },
+        {
+          "text": "Agreeableness (positive correlation)",
+          "isCorrect": false,
+          "rationale": "The relation between Agreeableness and insecurity was found to be non-existent ($\\hat{\\rho} = .00$)."
+        }
+      ],
+      "hint": "Consider a dimension that involves social boldness and its opposite, social withdrawal."
+    },
+    {
+      "question": "Which of the following describes a key structural difference between the HEXACO model and five-factor/Big Five models regarding the placement of specific traits?",
+      "answerOptions": [
+        {
+          "text": "Sentimentality is moved from Big Five Agreeableness to HEXACO Emotionality, while anger-related traits move from Big Five Neuroticism to HEXACO Agreeableness.",
+          "isCorrect": true,
+          "rationale": "The HEXACO model re-organizes the variance of Neuroticism and Agreeableness to better reflect the evolutionary foundations of kin and reciprocal altruism."
+        },
+        {
+          "text": "Extraversion and Conscientiousness are conceptualized with entirely different evolutionary bases, leading to zero correlation between the models.",
+          "isCorrect": false,
+          "rationale": "These dimensions are conceptualized similarly across models, with correlations typically between $r = .70$ and $r = .80$."
+        },
+        {
+          "text": "Intellect is categorized as a facet of Conscientiousness in the HEXACO model but remains in Openness in the Big Five.",
+          "isCorrect": false,
+          "rationale": "Intellect/Openness remains a distinct dimension in both, though facet structures differ slightly."
+        },
+        {
+          "text": "Honesty-Humility is derived by splitting the Big Five Conscientiousness factor into two distinct dimensions.",
+          "isCorrect": false,
+          "rationale": "Honesty-Humility is a sixth dimension containing content omitted from early lexical studies, primarily related to ethics and modesty."
+        }
+      ],
+      "hint": "Look for a redistribution of 'temper' and 'sensitivity' across the two models."
+    },
+    {
+      "question": "What happened to most 'secondary relations' between HEXACO dimensions and outcome domains when partial correlations ($\\hat{\\rho}_{xy.z}$) were calculated to control for trait intercorrelations?",
+      "answerOptions": [
+        {
+          "text": "The majority of secondary relations diminished to $\\hat{\\rho}_{xy.z} \\le .11$.",
+          "isCorrect": true,
+          "rationale": "Controlling for the inter-relations between HEXACO dimensions showed that secondary links are largely due to the overlap between the predictors themselves."
+        },
+        {
+          "text": "Secondary relations became stronger, revealing hidden interactions between personality dimensions.",
+          "isCorrect": false,
+          "rationale": "Partialing out shared variance generally reduces the magnitude of secondary correlations, clarifying the unique mapping."
+        },
+        {
+          "text": "The primary mapping of Emotionality onto Insecurity was lost, falling below secondary relations.",
+          "isCorrect": false,
+          "rationale": "The primary mappings remained the strongest for each dimension, even after partialing."
+        },
+        {
+          "text": "Secondary relations were unaffected, suggesting that each HEXACO dimension influences every outcome domain independently.",
+          "isCorrect": false,
+          "rationale": "The reduction in secondary relations provided evidence for a more distinct one-to-one mapping than zero-order correlations suggested."
+        }
+      ],
+      "hint": "Think about how removing shared variance among the six traits affects the uniqueness of their associations."
+    },
+    {
+      "question": "According to the study's results, which specific criterion class within the 'Duty' domain failed to show a substantial correlation with its counterpart dimension, Conscientiousness?",
+      "answerOptions": [
+        {
+          "text": "Exercising",
+          "isCorrect": true,
+          "rationale": "Unlike academic performance or self-control, exercising did not correlate significantly with Conscientiousness in this specific data set ($\\hat{\\rho} = .09$)."
+        },
+        {
+          "text": "Perfectionism",
+          "isCorrect": false,
+          "rationale": "Perfectionism showed a substantial positive correlation with Conscientiousness ($\\hat{\\rho} = .46$)."
+        },
+        {
+          "text": "Academic/job performance",
+          "isCorrect": false,
+          "rationale": "These performance criteria were significantly linked to Conscientiousness ($\\hat{\\rho} = .28$)."
+        },
+        {
+          "text": "Self-control",
+          "isCorrect": false,
+          "rationale": "Self-control showed the strongest correlation with Conscientiousness within the Duty domain ($\\hat{\\rho} = .72$)."
+        }
+      ],
+      "hint": "This specific behavior is often linked to Conscientiousness in other models, but results here were smaller and non-significant."
+    },
+    {
+      "question": "What does the $I^2$ value represent in the context of the 426 single meta-analyses conducted in this investigation?",
+      "answerOptions": [
+        {
+          "text": "The percentage of observed variance in effect sizes that is due to true heterogeneity rather than sampling error.",
+          "isCorrect": true,
+          "rationale": "High $I^2$ values indicate that the variance in results across studies likely stems from actual differences in populations or settings."
+        },
+        {
+          "text": "The probability that the observed effect size is due to random chance (the $p$-value).",
+          "isCorrect": false,
+          "rationale": "This is a misinterpretation of $I^2$, which measures heterogeneity, not statistical significance."
+        },
+        {
+          "text": "The total number of participants across all independent samples in a specific criterion class.",
+          "isCorrect": false,
+          "rationale": "The total number of participants is denoted by $N$, while $k$ represents the number of samples."
+        },
+        {
+          "text": "The correction factor used to adjust for attenuation due to measurement unreliability.",
+          "isCorrect": false,
+          "rationale": "The correction for attenuation is based on reliability estimates like Cronbach's $\\alpha$, not $I^2$."
+        }
+      ],
+      "hint": "This statistic helps researchers understand if 'true' differences exist across various studies in a meta-analysis."
+    }
+  ]
+}

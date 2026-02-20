@@ -1,0 +1,395 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "According to Maslow's criteria for a basic or 'instinctoid' need, which of the following describes the behavior of such a need in a healthy person?",
+      "answerOptions": [
+        {
+          "text": "It is found to be inactive, at a low ebb, or functionally absent.",
+          "isCorrect": true,
+          "rationale": "Maslow explicitly defines instinctoid needs as those that appear functionally absent or inactive in a psychologically healthy individual who has already achieved gratification."
+        },
+        {
+          "text": "It remains a constant, driving force that intensifies with age regardless of gratification.",
+          "isCorrect": false,
+          "rationale": "This describes growth needs rather than deficiency needs; deficiency needs tend to disappear from consciousness upon satisfaction."
+        },
+        {
+          "text": "It becomes a purely physiological drive that no longer requires interpersonal mediation.",
+          "isCorrect": false,
+          "rationale": "While physiological needs are basic, most basic needs like safety and love specifically require mediation from others to be satisfied."
+        },
+        {
+          "text": "It is preferred over growth-motivated activities in all free-choice situations.",
+          "isCorrect": false,
+          "rationale": "Maslow states that while the deprived person prefers the need, the healthy person is primarily motivated by growth, not basic needs."
+        }
+      ],
+      "hint": "Consider the fifth characteristic Maslow lists regarding the presence of these needs in healthy individuals."
+    },
+    {
+      "question": "How does Maslow differentiate between 'D-love' and 'B-love' regarding the concept of interchangeability?",
+      "answerOptions": [
+        {
+          "text": "In D-love, the love-supplier is largely interchangeable because the focus is on satisfying the deficit itself.",
+          "isCorrect": true,
+          "rationale": "Because D-love is based on the need for admiration or safety, the specific person providing it is less important than the fulfillment of the need."
+        },
+        {
+          "text": "In B-love, partners are seen as interchangeable because they both occupy the realm of Being.",
+          "isCorrect": false,
+          "rationale": "B-love focuses on the unique, idiosyncratic qualities of the individual, making them entirely non-interchangeable."
+        },
+        {
+          "text": "Neither form of love allows for interchangeability because all human relations are unique.",
+          "isCorrect": false,
+          "rationale": "Maslow argues that deficiency-motivated people abstract others into 'tools,' which facilitates interchangeability based on utility."
+        },
+        {
+          "text": "Interchangeability is only a feature of physiological needs and does not apply to psychological love needs.",
+          "isCorrect": false,
+          "rationale": "The text explicitly states that for the adolescent or child needing admiration or safety, one supplier is often as good as another."
+        }
+      ],
+      "hint": "Think about whether a 'hungry' perceiver focuses on the whole person or just the person's ability to provide a specific resource."
+    },
+    {
+      "question": "In the context of growth and safety, why might a child choose safety even if it means sacrificing growth?",
+      "answerOptions": [
+        {
+          "text": "Safety needs are prepotent over growth needs and must be satisfied to allow for bold exploration.",
+          "isCorrect": true,
+          "rationale": "Maslow's hierarchy dictates that when forced to choose between a lower vital necessity and a higher one, the lower (safety) usually wins out."
+        },
+        {
+          "text": "The child lacks the 'hedonic factor' required to perceive the delight of growth.",
+          "isCorrect": false,
+          "rationale": "The hedonic factor is present in all organisms; the issue is that fear can overwhelm the ability to choose based on delight."
+        },
+        {
+          "text": "Growth is inherently painful and lacks any 'subjective delight' for the immature organism.",
+          "isCorrect": false,
+          "rationale": "Maslow asserts that growth is inherently rewarding and exciting, but anxieties can overshadow this delight."
+        },
+        {
+          "text": "Safety represents an 'active' state while growth is a 'passive' state that the child must be kicked into.",
+          "isCorrect": false,
+          "rationale": "Maslow argues against the Freudian idea that children must be 'kicked upstairs,' suggesting instead that they grow spontaneously when safe."
+        }
+      ],
+      "hint": "Recall the paradigm of the toddler venturing away from the mother's knee."
+    },
+    {
+      "question": "Which statement best describes the 'Aristotelian' style of perception compared to the perception of self-actualizing people?",
+      "answerOptions": [
+        {
+          "text": "Aristotelian perception views categories as mutually exclusive, whereas self-actualizers see $A$ and $not-A$ as interpenetrating.",
+          "isCorrect": true,
+          "rationale": "Self-actualizing people transcend dichotomies like good/bad or male/female, recognizing that individuals contain both simultaneously."
+        },
+        {
+          "text": "Aristotelian perception is 'choiceless awareness,' while self-actualizers use a system of rubrics.",
+          "isCorrect": false,
+          "rationale": "It is actually the self-actualizer who attains 'choiceless awareness,' whereas others rely on rubrics and taxonomies."
+        },
+        {
+          "text": "Self-actualizers use the law of contradiction ($A \\ne \\text{not } A$) to define their inner nature.",
+          "isCorrect": false,
+          "rationale": "Self-actualizers move beyond the law of contradiction in their perception of complex, whole individuals."
+        },
+        {
+          "text": "Aristotelian logic is more concrete, while self-actualizers perceive only abstractions.",
+          "isCorrect": false,
+          "rationale": "Maslow characterizes need-disinterested perception as more concrete and holistic, and Aristotelian logic as more abstracted."
+        }
+      ],
+      "hint": "Consider how self-actualizers view polarities and dichotomies such as 'kind-cruel' or 'male-female'."
+    },
+    {
+      "question": "Maslow criticizes traditional 'learning theory' for its over-reliance on which concept?",
+      "answerOptions": [
+        {
+          "text": "Goal objects that are external to the organism for satisfying motivational deficiencies.",
+          "isCorrect": true,
+          "rationale": "Most learning theory focuses on instrumental learning (how to get what we lack), which Maslow sees as limited compared to total personality change."
+        },
+        {
+          "text": "The increase of insight and understanding through 'canalization' of innate talents.",
+          "isCorrect": false,
+          "rationale": "This describes growth learning, which Maslow advocates for, rather than the deficit-based theory he criticizes."
+        },
+        {
+          "text": "The use of 'subjective reports' from human subjects rather than objective animal data.",
+          "isCorrect": false,
+          "rationale": "Maslow actually criticizes the exclusive demand for behavioral, externally observable criteria in learning research."
+        },
+        {
+          "text": "The belief that character change occurs through 'radioactive' emissions of behavior.",
+          "isCorrect": false,
+          "rationale": "This is Maslow's own metaphor for how self-actualizers emit behavior rather than repeating acquired habits."
+        }
+      ],
+      "hint": "Focus on the difference between 'acquiring habits' and 'total change of the total person'."
+    },
+    {
+      "question": "How does 'B-cognition' in peak-experiences differ from ordinary 'D-cognition' regarding 'total attention'?",
+      "answerOptions": [
+        {
+          "text": "In B-cognition, the object is seen as the whole of Being, and the 'ground' essentially disappears.",
+          "isCorrect": true,
+          "rationale": "Peak experiences involve complete absorption where the percept becomes isolated from all else and is seen as a complete unit."
+        },
+        {
+          "text": "B-cognition involves 'rubricizing' the object to see its relationship to the rest of the world.",
+          "isCorrect": false,
+          "rationale": "Rubricizing is a feature of D-cognition, where objects are classified into categories and judged relative to other things."
+        },
+        {
+          "text": "Total attention in B-cognition requires the perceiver to compare the object against a continuum of values.",
+          "isCorrect": false,
+          "rationale": "Maslow defines B-cognition as non-comparing and non-evaluating; comparison is a hallmark of ordinary D-cognition."
+        },
+        {
+          "text": "B-cognition is purely behavioral and focuses on the 'demand-character' of the environment.",
+          "isCorrect": false,
+          "rationale": "B-cognition is a subjective, internal state of fascination that is often detached from the external 'demand-character'."
+        }
+      ],
+      "hint": "Think about the relationship between 'figure' and 'ground' in intense moments of rapture or fascination."
+    },
+    {
+      "question": "According to Maslow's 'Growth through Delight' schema, what is the primary role of the environment in fostering growth?",
+      "answerOptions": [
+        {
+          "text": "To make the growth choice attractive and safe while making the regressive choice less attractive.",
+          "isCorrect": true,
+          "rationale": "The environment (parents, teachers) helps by gratifying basic needs to ensure safety, which then allows the child to dare to choose growth."
+        },
+        {
+          "text": "To impose 'interiorized standards' that guide the child's choices toward socially acceptable goals.",
+          "isCorrect": false,
+          "rationale": "Maslow warns that interiorized standards of others often cause the child to lose their Self and their own 'delight-criterion'."
+        },
+        {
+          "text": "To force the child to endure frustration and delay gratification to build 'character strength'.",
+          "isCorrect": false,
+          "rationale": "While Maslow admits frustration is necessary, he argues the 'sine qua non' for growth is the sufficient gratification of basic needs."
+        },
+        {
+          "text": "To provide 'replacement therapy' as a continuous, proactive intervention for all children.",
+          "isCorrect": false,
+          "rationale": "Replacement therapy is a specific clinical tool for curing 'deficiency diseases' (neuroses), not a general theory of growth for healthy children."
+        }
+      ],
+      "hint": "Maslow calls this approach a 'loving and respecting Taoism' or 'helpful let-be'."
+    },
+    {
+      "question": "What does Maslow suggest is the 'perfect paradox' involved in the loss of the Self during childhood?",
+      "answerOptions": [
+        {
+          "text": "The child appears normal and obeys out of a 'pseudo-self' designed for survival, but has lost their vital 'yes-feeling'.",
+          "isCorrect": true,
+          "rationale": "Maslow notes that a child may appear well-adjusted while actually being 'self-less,' having traded their own delight for others' approval."
+        },
+        {
+          "text": "The more a child is loved, the more they must reject their own spontaneous wishes to remain safe.",
+          "isCorrect": false,
+          "rationale": "Love that is pure and B-oriented actually creates the partner/child by giving them self-acceptance, not by forcing rejection."
+        },
+        {
+          "text": "A child who is 'kicked upstairs' into growth becomes more integrated than a child who grows through delight.",
+          "isCorrect": false,
+          "rationale": "Maslow argues that 'pseudo-growth' occurs when needs are bypassed or forced, resulting in a shaky foundation for the personality."
+        },
+        {
+          "text": "The loss of Self is inevitable because safety and self-actualization are mutually exclusive physiological states.",
+          "isCorrect": false,
+          "rationale": "They are not mutually exclusive; one is a prerequisite for the other. They only conflict when the environment forces a choice."
+        }
+      ],
+      "hint": "Think about the child who creates a 'self without wishes' to avoid the terror of rejection."
+    },
+    {
+      "question": "What is the 'fear of hubris' as described in Part II, Section 5?",
+      "answerOptions": [
+        {
+          "text": "The resistance against one's own greatness and the evasion of one's highest potentialities.",
+          "isCorrect": true,
+          "rationale": "Maslow explains that we often fear the responsibilities, duties, and 'god-like' aspects of our own creative talents."
+        },
+        {
+          "text": "The physiological anxiety produced when curiosity is prioritized over safety needs.",
+          "isCorrect": false,
+          "rationale": "While curiosity and safety can conflict, the fear of hubris specifically refers to the struggle against our own 'best side' or talents."
+        },
+        {
+          "text": "A defensive reaction where the individual identifies intelligence with femininity to avoid competition.",
+          "isCorrect": false,
+          "rationale": "Maslow cites this as a common common clinical problem for women, but 'hubris' refers to the broader fear of being 'god-like'."
+        },
+        {
+          "text": "The belief that all knowledge must be reserved for scientific 'overlords' or teachers.",
+          "isCorrect": false,
+          "rationale": "This relates to the exploitation of knowledge, whereas hubris is an internal ambivalent fascination and fear of one's own greatness."
+        }
+      ],
+      "hint": "This relates to the 'basic human predicament' that we are simultaneously 'worms and gods'."
+    },
+    {
+      "question": "In Maslow's analysis of knowledge, how does he contrast 'anxiety-reduction' knowledge with 'growth' knowledge?",
+      "answerOptions": [
+        {
+          "text": "Anxiety-reduction knowledge renders the unexpected familiar to lower tension, while growth knowledge is an expression of inherent nature.",
+          "isCorrect": true,
+          "rationale": "Maslow distinguishes the 'sigh of relief' in finding a noise is harmless from the 'exhilaration' of a student understanding a symphony."
+        },
+        {
+          "text": "Growth knowledge is achieved only when the person feels unsafe, as a way to gain mastery.",
+          "isCorrect": false,
+          "rationale": "The text states that curiosity and growth-oriented cognitive needs show themselves most clearly in safe and non-anxious situations."
+        },
+        {
+          "text": "Anxiety-reduction knowledge is 'meta-motivated,' while growth knowledge is 'homeostatic'.",
+          "isCorrect": false,
+          "rationale": "It is the opposite: anxiety-reduction is homeostatic (restoring equilibrium), while growth is meta-motivated (beyond striving)."
+        },
+        {
+          "text": "There is no functional difference in the behavior; the distinction is purely a 'theology of evil'.",
+          "isCorrect": false,
+          "rationale": "The behavior may look similar, but Maslow argues the motivations and subjective consequences (exhilaration vs. relief) are very different."
+        }
+      ],
+      "hint": "Think about the difference between a householder checking a noise at night and a scientist looking through a microscope."
+    },
+    {
+      "question": "Maslow describes 'Psychogogy' as a process that:",
+      "answerOptions": [
+        {
+          "text": "Takes over after therapy to help 'not-sick' people achieve higher levels of health.",
+          "isCorrect": true,
+          "rationale": "Borrowed from Oswald Schwarz, this term refers to the improvement of an already well person, moving them toward self-actualization."
+        },
+        {
+          "text": "Uses 'interpersonal' techniques to supply missing basic needs to neurotic patients.",
+          "isCorrect": false,
+          "rationale": "This is the definition of standard 'interpersonal psychotherapy' for deficiency diseases, not psychogogy."
+        },
+        {
+          "text": "Focuses exclusively on 'instrumental learning' and 'habit acquisition'.",
+          "isCorrect": false,
+          "rationale": "Psychogogy is concerned with growth and self-actualization, which Maslow contrasts with simple habit acquisition."
+        },
+        {
+          "text": "Is a form of 'replacement therapy' for those suffering from salt hunger or avitaminoses.",
+          "isCorrect": false,
+          "rationale": "Maslow uses physiological deficiencies as an analogy for love-hunger, but psychogogy is for those beyond such deficits."
+        }
+      ],
+      "hint": "Recall the question Maslow asks about lifting a person from the 50th to the 75th percentile of maturity."
+    },
+    {
+      "question": "Which of the following is a characteristic of 'B-love' as described by Maslow?",
+      "answerOptions": [
+        {
+          "text": "It is unneeding, unselfish, and typically grows greater rather than disappearing with time.",
+          "isCorrect": true,
+          "rationale": "B-love (love for the Being of another) is non-possessive and endures because it is centered on admiration-worthiness."
+        },
+        {
+          "text": "It is a 'hole that has to be filled' and is essentially a deficiency disease.",
+          "isCorrect": false,
+          "rationale": "This describes 'D-love' (deficiency-love) or love-hunger, not B-love."
+        },
+        {
+          "text": "It is characterized by a high degree of anxiety-hostility and possessiveness.",
+          "isCorrect": false,
+          "rationale": "Maslow states that B-love has a minimum of anxiety-hostility and is non-possessive, unlike D-love."
+        },
+        {
+          "text": "It creates a state of 'Stoic apathy' once the partner's needs are satiated.",
+          "isCorrect": false,
+          "rationale": "B-love leads to 'ecstasy' and 'serenity,' not apathy; satiety in the B-realm whets the appetite for more growth."
+        }
+      ],
+      "hint": "Think about the difference between loving someone because they are 'love-worthy' versus loving them because they provide admiration."
+    },
+    {
+      "question": "According to Maslow, why is the 'fear of knowing' often synonymous with the 'fear of doing'?",
+      "answerOptions": [
+        {
+          "text": "Knowledge often brings dangerous responsibilities that require the person to take action.",
+          "isCorrect": true,
+          "rationale": "Knowing the truth (e.g., about social injustice or a failing relationship) creates a pressure to act that the person may wish to avoid."
+        },
+        {
+          "text": "The 'omnipotence of thought' makes it impossible for an adult to differentiate between ideas and deeds.",
+          "isCorrect": false,
+          "rationale": "Maslow says this is a 'childish' identity; therapy's goal is to 'defuse' this so the adult doesn't fear their own thoughts."
+        },
+        {
+          "text": "All cognitive needs are inherently aggressive and designed to dominate the environment.",
+          "isCorrect": false,
+          "rationale": "Maslow argues that while 'knowing' can be intrusive/masculine, it is also a 'delight' and a 'flowering' of human potential."
+        },
+        {
+          "text": "Doing is a 'lower' physiological need that always inhibits the 'higher' need to know.",
+          "isCorrect": false,
+          "rationale": "There is no such hierarchical claim; rather, knowing and doing are often 'Socratic' and occur automatically when knowledge is full."
+        }
+      ],
+      "hint": "Consider the example given of Germans living near Dachau during WWII."
+    },
+    {
+      "question": "How does Maslow view the relationship between 'homeostasis' and 'self-actualization'?",
+      "answerOptions": [
+        {
+          "text": "Homeostasis explains the reduction of deficiency tensions, but fails to account for the 'directional tendency' of life-long growth.",
+          "isCorrect": true,
+          "rationale": "Maslow argues that while homeostasis seeks an optimum level or equilibrium, it cannot explain why people improve or seek long-term goals."
+        },
+        {
+          "text": "They are synonymous, as self-actualization is the ultimate homeostatic balance of the organism.",
+          "isCorrect": false,
+          "rationale": "Maslow explicitly contrasts growth with homeostasis, noting that growth is tension-maintaining rather than just tension-reducing."
+        },
+        {
+          "text": "Homeostasis only applies to animals, whereas self-actualization is the only motivator for humans.",
+          "isCorrect": false,
+          "rationale": "Maslow acknowledges that human deficiency needs (safety, love) do call for tension reduction and equilibrium."
+        },
+        {
+          "text": "Self-actualization is a state of 'zero tension' or 'rest' that occurs after all homeostatic needs are met.",
+          "isCorrect": false,
+          "rationale": "Maslow critiques the 'theory of rest' (zero tension), noting that growth involves 'pleasurable tensions' and increased activity."
+        }
+      ],
+      "hint": "Recall Charlotte Buhler's distinction between the theory of homeostasis and the theory of 'rest'."
+    },
+    {
+      "question": "Which of the following describes 'B-cognition's' approach to the 'intrinsic nature' of an object?",
+      "answerOptions": [
+        {
+          "text": "It is more receptive than active, fitting itself passively to the nature of things like water soaking into crevices.",
+          "isCorrect": true,
+          "rationale": "Maslow describes this as a 'Taoist' or 'detached' perception that does not shape or exploit the object based on the perceiver's needs."
+        },
+        {
+          "text": "It uses 'scoptophilia' to dominate the object through a penetrating, intrusive gaze.",
+          "isCorrect": false,
+          "rationale": "This describes a 'need-motivated' or 'masculine' kind of knowing that Maslow contrasts with the gentle, non-interfering B-cognition."
+        },
+        {
+          "text": "It abstracts the object's 'useful' qualities to better integrate it into the perceiver's system of rubrics.",
+          "isCorrect": false,
+          "rationale": "B-cognition is 'need-disinterested' and avoids abstraction or seeing the object as a tool."
+        },
+        {
+          "text": "It is a 'blustering, over-riding' fashion of perception that mimics the way a butcher chops a carcass.",
+          "isCorrect": false,
+          "rationale": "Maslow uses the 'butcher' metaphor to describe the *opposite*—the 'need-motivated' kind of perception."
+        }
+      ],
+      "hint": "Think about the terms 'non-interfering,' 'gentle,' and 'choiceless awareness'."
+    }
+  ]
+}

@@ -1,0 +1,265 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "Which philosopher originally introduced the distinction between nomothetic sciences, which seek general laws, and idiographic sciences, which seek to understand the particular?",
+      "answerOptions": [
+        {
+          "text": "Wilhelm Windelband",
+          "isCorrect": true,
+          "rationale": "This 19th-century German philosopher coined the terms to describe the principal inferential goals of different scientific disciplines."
+        },
+        {
+          "text": "William Stern",
+          "isCorrect": false,
+          "rationale": "While this individual adapted the concepts into personality psychology, he was not the original creator of the terms themselves."
+        },
+        {
+          "text": "Gordon Allport",
+          "isCorrect": false,
+          "rationale": "This researcher popularized the terms in Anglo-American literature but inherited the conceptual framework from earlier German scholars."
+        },
+        {
+          "text": "Wilhelm Wundt",
+          "isCorrect": false,
+          "rationale": "This figure is known as the founder of experimental psychology and a proponent of person-to-person comparisons rather than the original coiner of these specific terms."
+        }
+      ],
+      "hint": "Consider the German philosopher cited for his 1894 work on history and natural science."
+    },
+    {
+      "question": "In the proposed $2 \\times 3$ matrix of research approaches, which classification describes research that seeks to establish laws applying to all individuals on a case-by-case basis?",
+      "answerOptions": [
+        {
+          "text": "Cross-person generalizations",
+          "isCorrect": true,
+          "rationale": "This approach, also known as the Wundtian approach, considers a phenomenon generalizable only if the same effect is found for every individual analyzed separately."
+        },
+        {
+          "text": "Population-specific generalizations",
+          "isCorrect": false,
+          "rationale": "This approach focuses on the population as an aggregated whole or a hypothetical average person rather than verifying the effect for each specific individual."
+        },
+        {
+          "text": "Person-specific generalizations",
+          "isCorrect": false,
+          "rationale": "This strategy aims to find lawful regularities within a single individual across different occasions rather than generalizing from one person to another."
+        },
+        {
+          "text": "Cross-population generalizations",
+          "isCorrect": false,
+          "rationale": "This level of analysis involves comparing aggregated patterns across different cultural or social groups rather than focusing on individuals."
+        }
+      ],
+      "hint": "Think about the approach that requires a phenomenon to hold true for 'everyone' to be considered a general law."
+    },
+    {
+      "question": "What common error occurs when researchers apply findings from a sample-level analysis (the aggregate) to characterize the psychological functioning of a specific individual?",
+      "answerOptions": [
+        {
+          "text": "Ergodic fallacy",
+          "isCorrect": true,
+          "rationale": "This fallacy involves the assumption that group-level statistics automatically apply to individuals, which is only mathematically valid under strict conditions of homogeneity and stationarity."
+        },
+        {
+          "text": "Jingle fallacy",
+          "isCorrect": false,
+          "rationale": "This error refers to the assumption that two different concepts are the same because they share the same name, rather than the misapplication of aggregate data to individuals."
+        },
+        {
+          "text": "Jangle fallacy",
+          "isCorrect": false,
+          "rationale": "This term describes the error of believing two identical concepts are different because they have different labels."
+        },
+        {
+          "text": "Nomothetic paradox",
+          "isCorrect": false,
+          "rationale": "While related to the tension between group and individual data, this is not the technical term for the statistical mismatch described in the source."
+        }
+      ],
+      "hint": "This term is related to a theorem that requires a population to be perfectly homogeneous and time-invariant."
+    },
+    {
+      "question": "According to the source's definitions, how does 'individuality' differ from 'uniqueness'?",
+      "answerOptions": [
+        {
+          "text": "Individuality is defined without reference to others, while uniqueness is established through comparison.",
+          "isCorrect": true,
+          "rationale": "Individuality focuses on the internal properties of the person, whereas uniqueness identifies what is exclusive to a person by contrasting them with a group."
+        },
+        {
+          "text": "Uniqueness is defined without reference to others, while individuality is established through comparison.",
+          "isCorrect": false,
+          "rationale": "This reverses the definitions; comparison is inherently necessary to determine if a trait is 'unique' relative to a population."
+        },
+        {
+          "text": "Individuality refers to between-person traits, while uniqueness refers to within-person states.",
+          "isCorrect": false,
+          "rationale": "These concepts are levels of aggregation, whereas the distinction between individuality and uniqueness concerns the frame of reference for the person's identity."
+        },
+        {
+          "text": "There is no conceptual difference; the terms are used synonymously in personality science.",
+          "isCorrect": false,
+          "rationale": "The author specifically adopts Lamiell's conceptualization to disentangle these often-confused terms."
+        }
+      ],
+      "hint": "Consider which term implies a 'one-of-a-kind' status that requires knowing about the 'other kinds' first."
+    },
+    {
+      "question": "Which research approach is characterized by the use of statistical methods that characterize populations as aggregated wholes, such as means and between-person correlations?",
+      "answerOptions": [
+        {
+          "text": "Galtonian approach",
+          "isCorrect": true,
+          "rationale": "Named after Francis Galton, this approach uses interindividual differences observed in a sample to make generalizations about a larger population."
+        },
+        {
+          "text": "Wundtian approach",
+          "isCorrect": false,
+          "rationale": "This approach is based on case-by-case comparisons to find universal patterns rather than aggregating data into a single population mean."
+        },
+        {
+          "text": "Morphogenic approach",
+          "isCorrect": false,
+          "rationale": "Allport used this term to describe the study of the dynamic organization within a single individual, which is the opposite of population aggregation."
+        },
+        {
+          "text": "Idiothetic approach",
+          "isCorrect": false,
+          "rationale": "This approach involves descriptively studying the development of single individuals over time before comparing trajectories."
+        }
+      ],
+      "hint": "This approach is the standard quantitative method in mainstream psychology and focuses on 'the average person'."
+    },
+    {
+      "question": "Under the 'Polytomies' framework, which step of the research process involves deciding whether a phenomenon is static (time-independent) or dynamic (time-dependent)?",
+      "answerOptions": [
+        {
+          "text": "Research Question",
+          "isCorrect": true,
+          "rationale": "Determining the focal phenomenon and the relevance of timescales is part of defining the intended knowledge and conceptual framework before data is collected."
+        },
+        {
+          "text": "Research Input",
+          "isCorrect": false,
+          "rationale": "This stage concerns the practical generation of data and study design rather than the foundational conceptualization of the phenomenon's nature."
+        },
+        {
+          "text": "Analyses",
+          "isCorrect": false,
+          "rationale": "While the choice of analysis depends on whether time is a factor, the actual decision about the phenomenon's temporal nature occurs earlier in the research question phase."
+        },
+        {
+          "text": "Research Output",
+          "isCorrect": false,
+          "rationale": "This stage is the result of previous decisions and involves how findings are reported, not the initial decision about the phenomenon's structure."
+        }
+      ],
+      "hint": "This decision relates to defining the 'focal phenomenon' and its associated 'timescales'."
+    },
+    {
+      "question": "What are the two strict conditions that must be fulfilled for a population-level association to be validly applied to an individual member of that population?",
+      "answerOptions": [
+        {
+          "text": "Homogeneity and stationarity",
+          "isCorrect": true,
+          "rationale": "Homogeneity requires every member to follow the same model, and stationarity requires the model's validity to remain constant over time."
+        },
+        {
+          "text": "Validity and reliability",
+          "isCorrect": false,
+          "rationale": "These are general psychometric properties of measurement but do not specifically address the mathematical requirements for ergodicity."
+        },
+        {
+          "text": "Nomothetics and idiographics",
+          "isCorrect": false,
+          "rationale": "These are the broad research goals being discussed, not the specific technical conditions for group-to-individual particularization."
+        },
+        {
+          "text": "Randomization and representation",
+          "isCorrect": false,
+          "rationale": "These are sampling strategies used to ensure a sample reflects a population, but they do not guarantee that the population's average reflects any single individual."
+        }
+      ],
+      "hint": "One condition concerns the interchangeability of people, and the other concerns time-invariance."
+    },
+    {
+      "question": "In the context of the paper, why is a 'person-specific generalization' considered different from a 'person-specific portrayal'?",
+      "answerOptions": [
+        {
+          "text": "A generalization seeks lawful regularities (laws), while a portrayal aims for a detailed, holistic description without the intent to generalize.",
+          "isCorrect": true,
+          "rationale": "Generalizations look for patterns across occasions within a person, whereas portrayals focus on the unique content and exhaustive portrayal of the individual."
+        },
+        {
+          "text": "A generalization uses qualitative data, while a portrayal uses quantitative data.",
+          "isCorrect": false,
+          "rationale": "Both can use either type of data; the distinction lies in the inferential goal (law-seeking vs. descriptive portrayal)."
+        },
+        {
+          "text": "A generalization is always between-person, while a portrayal is always within-person.",
+          "isCorrect": false,
+          "rationale": "Person-specific generalizations are actually within-person (sampling occasions); the terms differ in their intent regarding lawfulness."
+        },
+        {
+          "text": "There is no difference; Phan et al. (2024) use the terms interchangeably in their matrix.",
+          "isCorrect": false,
+          "rationale": "The authors specifically separate 'entity-specific generalizations' from 'entity-specific portrayals' based on generalization intent."
+        }
+      ],
+      "hint": "The difference lies in whether the researcher is trying to find an 'if-then' law or simply provide an 'in-depth' characterization."
+    },
+    {
+      "question": "According to the source, what is the 'focal entity' in (Neo-)Galtonian research?",
+      "answerOptions": [
+        {
+          "text": "A population",
+          "isCorrect": true,
+          "rationale": "Galtonian methodology aggregates across individuals to test hypotheses about the population as a whole or a hypothetical average person."
+        },
+        {
+          "text": "An individual person",
+          "isCorrect": false,
+          "rationale": "Focusing on the individual is the hallmark of person-specific or idiographic approaches, which Galtonian methods fail to address directly."
+        },
+        {
+          "text": "A single occasion",
+          "isCorrect": false,
+          "rationale": "An occasion is a unit across which data might be sampled (e.g., in longitudinal work), but the entity about which knowledge is sought in this approach is the group."
+        },
+        {
+          "text": "A specific biological variable",
+          "isCorrect": false,
+          "rationale": "While variables are analyzed, the 'focal entity' refers to the subject (person or group) that the knowledge describes."
+        }
+      ],
+      "hint": "Think about the level at which parameters like 'sample means' and 'variances' are calculated."
+    },
+    {
+      "question": "Which of the following is identified as a major reason the nomothetic–idiographic distinction has remained 'muddled' in psychological literature?",
+      "answerOptions": [
+        {
+          "text": "The terms are often confounded with other concepts like 'quantitative vs. qualitative' or 'between-person vs. within-person'.",
+          "isCorrect": true,
+          "rationale": "The authors argue that multiple distinct meanings (jingle fallacies) and the mixing of focal entities with generalization goals have obscured the true nature of inferences."
+        },
+        {
+          "text": "The original definitions by Windelband were lost until recently discovered by Phan et al. (2024).",
+          "isCorrect": false,
+          "rationale": "Windelband's definitions have been known and cited (e.g., by Allport), but they have been inconsistently applied and misinterpreted over time."
+        },
+        {
+          "text": "The distinction only applies to physics and chemistry, making it irrelevant for psychology.",
+          "isCorrect": false,
+          "rationale": "The distinction was explicitly created to differentiate between history/humanities and natural sciences, and it has been central to personality psychology since its inception."
+        },
+        {
+          "text": "Psychologists have completely stopped using the terms since 1962.",
+          "isCorrect": false,
+          "rationale": "The article states that the debate surrounding these terms has been brought up repeatedly and is still persistently used today."
+        }
+      ],
+      "hint": "Consider the 'plurality of meaning' and 'jingle fallacies' mentioned in the text."
+    }
+  ]
+}

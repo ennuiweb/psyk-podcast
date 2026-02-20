@@ -1,0 +1,266 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "According to McAdams and Pals, what are the three primary levels of personality that provide an integrative framework for the whole person?",
+      "answerOptions": [
+        {
+          "text": "Dispositional traits, characteristic adaptations, and life narratives",
+          "isCorrect": true,
+          "rationale": "These three levels capture the breadth from broad behavioral outlines to contextualized goals and personal meaning-making."
+        },
+        {
+          "text": "Evolutionary design, cultural context, and biological temperament",
+          "isCorrect": false,
+          "rationale": "While evolution and culture are principles of the framework, they are considered contexts for the three levels of individuality rather than the levels themselves."
+        },
+        {
+          "text": "Extraversion, neuroticism, and the cognitive-affective processing system",
+          "isCorrect": false,
+          "rationale": "These are specific components or theories within the field, rather than the broad levels proposed for an integrative science."
+        },
+        {
+          "text": "The id, the ego, and the superego",
+          "isCorrect": false,
+          "rationale": "This represents a specific psychoanalytic theory rather than the new integrative framework proposed to move beyond individual grand theories."
+        }
+      ],
+      "hint": "Consider the structural components that move from broad sketches to specific details and finally to meaning-making."
+    },
+    {
+      "question": "Which principle suggests that personality psychology should begin with human nature as a product of natural selection?",
+      "text": "Principle 1: Evolution and Human Nature",
+      "answerOptions": [
+        {
+          "text": "Principle 1: Evolution and Human Nature",
+          "isCorrect": true,
+          "rationale": "The authors argue that human nature is best understood as a product of human evolution, providing the general design for psychological individuality."
+        },
+        {
+          "text": "Principle 2: The Dispositional Signature",
+          "isCorrect": false,
+          "rationale": "This principle focuses specifically on traits as salient variations on the general design, rather than the evolutionary design itself."
+        },
+        {
+          "text": "Principle 5: The Differential Role of Culture",
+          "isCorrect": false,
+          "rationale": "Culture is viewed as a proximal context, whereas evolution is considered the distal, ultimate context for human design."
+        },
+        {
+          "text": "Principle 3: Characteristic Adaptations",
+          "isCorrect": false,
+          "rationale": "This principle addresses more specific motivational and developmental units that are shaped by everyday demands rather than the universal human design."
+        }
+      ],
+      "hint": "Think about the distal biological origins of the species-typical characteristics that all humans share."
+    },
+    {
+      "question": "How do dispositional traits differ from characteristic adaptations?",
+      "answerOptions": [
+        {
+          "text": "Traits are decontextualized and broad, while adaptations are situated in time and social roles",
+          "isCorrect": true,
+          "rationale": "Traits provide a nonconditional 'first cut' of personality, whereas adaptations address 'doing' personality within specific contexts."
+        },
+        {
+          "text": "Traits are easily changed through therapy, while adaptations are 'set like plaster'",
+          "isCorrect": false,
+          "rationale": "The text suggests traits are more stable and heritable, while adaptations are more amenable to environmental influence and change."
+        },
+        {
+          "text": "Traits describe what a person wants, while adaptations describe how a person acts",
+          "isCorrect": false,
+          "rationale": "Motivation (what a person wants) is typically categorized under characteristic adaptations, while traits describe broad styles of acting and feeling."
+        },
+        {
+          "text": "Traits are primarily cultural constructs, while adaptations are purely biological",
+          "isCorrect": false,
+          "rationale": "Traits have significant biological underpinnings ($50\\%$ heritability), whereas adaptations are more heavily contoured by social class and culture."
+        }
+      ],
+      "hint": "Consider which level provides a 'sketch' of a person versus which level 'fills in the details' of everyday life."
+    },
+    {
+      "question": "What concept does McAdams use to describe the 'Big Five' when they are used to size up people upon a first meeting?",
+      "answerOptions": [
+        {
+          "text": "A psychology of the stranger",
+          "isCorrect": true,
+          "rationale": "Dispositional traits provide the most salient and recognizable information that human beings evolved to notice when meeting someone new."
+        },
+        {
+          "text": "The narrative identity",
+          "isCorrect": false,
+          "rationale": "Narrative identity involves deep, internalized meaning-making that goes far beyond the surface-level observation of traits."
+        },
+        {
+          "text": "A sociocultural practice",
+          "isCorrect": false,
+          "rationale": "While trait labels exist in culture, the Big Five are considered universal dispositional variations rather than specific cultural practices."
+        },
+        {
+          "text": "An epigenetic variation",
+          "isCorrect": false,
+          "rationale": "The text discusses heritability and biological bases but uses a different specific term to describe the social utility of trait perception."
+        }
+      ],
+      "hint": "Reflect on how much (or how little) you actually know about a person's inner life when you only know their broad traits."
+    },
+    {
+      "question": "According to Principle 4, what is the primary function of life narratives in modern identity?",
+      "answerOptions": [
+        {
+          "text": "To provide a person's life with unity, purpose, and meaning",
+          "isCorrect": true,
+          "rationale": "Narrative identity is an internalized, evolving story that integrates the reconstructed past and imagined future."
+        },
+        {
+          "text": "To regulate the behavioral approach system in the brain",
+          "isCorrect": false,
+          "rationale": "Biological regulation of approach and avoidance is associated with dispositional traits like extraversion and neuroticism."
+        },
+        {
+          "text": "To predict occupational success and longevity through statistical aggregation",
+          "isCorrect": false,
+          "rationale": "Statistical prediction of broad life outcomes is a hallmark of research at the level of dispositional traits."
+        },
+        {
+          "text": "To classify individuals into collectivist or individualist categories",
+          "isCorrect": false,
+          "rationale": "While culture influences stories, the primary function of the story is for the individual to make sense of their own unique life over time."
+        }
+      ],
+      "hint": "Think about why a person needs to construct a coherent story out of their diverse life experiences."
+    },
+    {
+      "question": "Research on twins suggests that the heritability quotients for most personality traits are approximately what percentage?",
+      "answerOptions": [
+        {
+          "text": "$50\\%$",
+          "isCorrect": true,
+          "rationale": "Studies of twins have consistently shown that about half of the variability in trait scores is due to genetic differences."
+        },
+        {
+          "text": "$10\\%$",
+          "isCorrect": false,
+          "rationale": "A $10\\%$ quotient would suggest that traits are almost entirely determined by the environment, which contradicts current behavioral genetics research."
+        },
+        {
+          "text": "$90\\%$",
+          "isCorrect": false,
+          "rationale": "While heritability is significant, traits are not almost entirely genetic; about half the variance is attributed to non-genetic factors."
+        },
+        {
+          "text": "$100\\%$",
+          "isCorrect": false,
+          "rationale": "No personality trait is purely determined by genetics; environmental factors always play a role in developmental elaboration."
+        }
+      ],
+      "hint": "The text mentions that about half the variability in scores is a result of genetic differences."
+    },
+    {
+      "question": "At which level of personality does culture exert its deepest and most profound influence?",
+      "answerOptions": [
+        {
+          "text": "Integrative life narratives",
+          "isCorrect": true,
+          "rationale": "Culture provides a 'menu' of stories and plots that individuals use to construct their narrative identity."
+        },
+        {
+          "text": "Dispositional traits",
+          "isCorrect": false,
+          "rationale": "Culture's influence on traits is considered modest, affecting phenotypic expression and display rules rather than trait magnitude."
+        },
+        {
+          "text": "Basic biological needs",
+          "isCorrect": false,
+          "rationale": "Biological needs are species-typical universals that are shared across all cultures as part of the general human design."
+        },
+        {
+          "text": "Evolutionary adaptations",
+          "isCorrect": false,
+          "rationale": "Evolutionary adaptations are products of natural selection across the species, occurring long before the development of specific modern cultures."
+        }
+      ],
+      "hint": "Identify which component is described as a 'psychosocial construction' that draws from a society's anthology of myths."
+    },
+    {
+      "question": "According to the socioanalytic approach, which two prime dimensions organize human social life both in the modern world and the ancestral environment?",
+      "answerOptions": [
+        {
+          "text": "Getting along and getting ahead",
+          "isCorrect": true,
+          "rationale": "Social acceptance (getting along) and status (getting ahead) are key dimensions for survival and reproduction in group living."
+        },
+        {
+          "text": "Nature and nurture",
+          "isCorrect": false,
+          "rationale": "These are broad categories of influence on personality development, not the specific dimensions around which social life is organized."
+        },
+        {
+          "text": "Introversion and extraversion",
+          "isCorrect": false,
+          "rationale": "These are specific trait ends on a single factor, rather than the overarching social goals described by socioanalytic theory."
+        },
+        {
+          "text": "Conscious and unconscious motives",
+          "isCorrect": false,
+          "rationale": "These represent different levels of awareness in psychoanalytic theory rather than the specific social exchange dimensions mentioned."
+        }
+      ],
+      "hint": "These terms refer to social acceptance and the pursuit of status within a group."
+    },
+    {
+      "question": "Which level of personality is most likely to be measured by 'Personal Action Constructs' (PACs) such as goals, plans, and strivings?",
+      "answerOptions": [
+        {
+          "text": "Characteristic adaptations",
+          "isCorrect": true,
+          "rationale": "PACs are 'middle-level' units that address the motivational and social-cognitive aspects of human individuality."
+        },
+        {
+          "text": "Dispositional traits",
+          "isCorrect": false,
+          "rationale": "Traits are decontextualized descriptors of 'having' personality, whereas PACs are contingent and relate to 'doing'."
+        },
+        {
+          "text": "The evolved general design",
+          "isCorrect": false,
+          "rationale": "The general design refers to species-typical universals, whereas goals and plans are variations that define a specific individual's adaptation."
+        },
+        {
+          "text": "Life narratives",
+          "isCorrect": false,
+          "rationale": "While goals can be parts of a story, 'narratives' specifically refer to the higher-order integrative identity that provides overall meaning."
+        }
+      ],
+      "hint": "Consider the level that bridges the gap between general traits and specific, everyday behavior."
+    },
+    {
+      "question": "The 'redemptive self' is a common theme identified in the life stories of which specific group of people?",
+      "answerOptions": [
+        {
+          "text": "Midlife American adults scoring high in generativity",
+          "isCorrect": true,
+          "rationale": "This narrative theme portrays a protagonist delivered from suffering to a better state, reinforcing a caring and productive approach to life."
+        },
+        {
+          "text": "Children who have high heritability for extraversion",
+          "isCorrect": false,
+          "rationale": "Life stories do not emerge until later in development (adolescence/adulthood) and are not purely determined by trait heritability."
+        },
+        {
+          "text": "Career criminals who show no remorse",
+          "isCorrect": false,
+          "rationale": "The text notes that criminologists study narratives to explain desistance from crime, which would typically involve different story themes than the prosocial redemptive self."
+        },
+        {
+          "text": "Individuals who identify strongly with collectivist values",
+          "isCorrect": false,
+          "rationale": "The redemptive self is specifically noted as prevalent among highly generative American adults, suggesting a cultural anchorage in the U.S."
+        }
+      ],
+      "hint": "Look for a demographic that is characterized by high levels of caring, productivity, and prosocial concern for the next generation."
+    }
+  ]
+}

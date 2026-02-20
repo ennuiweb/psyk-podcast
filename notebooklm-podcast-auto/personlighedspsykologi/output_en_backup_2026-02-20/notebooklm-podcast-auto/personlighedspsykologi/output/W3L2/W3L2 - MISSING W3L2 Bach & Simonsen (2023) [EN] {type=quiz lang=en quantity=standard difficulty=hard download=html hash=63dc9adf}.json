@@ -1,0 +1,265 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "In the ICD-11 framework for Personality Disorders, as discussed by Bach & Simonsen (2023), what is the primary prerequisite for diagnosing a personality disorder before considering specific trait qualifiers?",
+      "answerOptions": [
+        {
+          "text": "The presence of at least five specific maladaptive behavioral traits.",
+          "isCorrect": false,
+          "rationale": "This reflects the older polythetic categorical approach of ICD-10 or DSM-IV rather than the new dimensional model focusing on global functioning."
+        },
+        {
+          "text": "A formal assessment of the 'Borderline Pattern' qualifier.",
+          "isCorrect": false,
+          "rationale": "The Borderline Pattern is an optional qualifier and not the foundational requirement for the initial diagnosis of a personality disorder."
+        },
+        {
+          "text": "Moderate to severe impairment in self and interpersonal functioning.",
+          "isCorrect": true,
+          "rationale": "The core of the ICD-11 diagnosis is the level of severity determined by disturbances in the functioning of the self and interpersonal relationships."
+        },
+        {
+          "text": "The exclusion of all co-occurring Mood or Anxiety disorders.",
+          "isCorrect": false,
+          "rationale": "While differential diagnosis is important, comorbidity is common and does not inherently preclude a personality disorder diagnosis."
+        }
+      ],
+      "hint": "Consider the shift from 'what' symptoms a person has to 'how well' the person functions in their identity and relationships."
+    },
+    {
+      "question": "Which trait domain in ICD-11 is characterized by a tendency to maintain interpersonal distance (social detachment) and emotional distance (emotional detachment)?",
+      "answerOptions": [
+        {
+          "text": "Dissociality",
+          "isCorrect": false,
+          "rationale": "Dissociality focuses on a lack of empathy and disregard for the rights of others rather than social or emotional withdrawal."
+        },
+        {
+          "text": "Detachment",
+          "isCorrect": true,
+          "rationale": "The Detachment domain specifically covers the avoidance of social interactions and the lack of emotional expression or intimacy."
+        },
+        {
+          "text": "Negative Affectivity",
+          "isCorrect": false,
+          "rationale": "Negative Affectivity involves the frequent experience of a wide range of negative emotions, not necessarily withdrawal from social contact."
+        },
+        {
+          "text": "Anankastia",
+          "isCorrect": false,
+          "rationale": "Anankastia relates to perfectionism and control, which may affect social life but is not defined by social withdrawal itself."
+        }
+      ],
+      "hint": "Focus on the domain that describes a lack of interest in social or emotional engagement with others."
+    },
+    {
+      "question": "According to the ICD-11 model, the 'Anankastia' trait domain is most closely associated with which characteristic that was previously a standalone categorical diagnosis?",
+      "answerOptions": [
+        {
+          "text": "Antisocial behavior and lack of remorse.",
+          "isCorrect": false,
+          "rationale": "These features are captured by the Dissociality and Disinhibition domains in the new system."
+        },
+        {
+          "text": "Excessive perfectionism and preoccupation with orderliness and control.",
+          "isCorrect": true,
+          "rationale": "Anankastia represents the narrow focus on rigid standards, control, and perfectionism, similar to the former Obsessive-Compulsive PD."
+        },
+        {
+          "text": "Intense instability of self-image and affect.",
+          "isCorrect": false,
+          "rationale": "These features are specifically addressed by the Borderline Pattern qualifier."
+        },
+        {
+          "text": "The persistent need to be the center of attention.",
+          "isCorrect": false,
+          "rationale": "The ICD-11 model does not have a direct trait equivalent for the former Histrionic PD, though it may be captured by other domain combinations."
+        }
+      ],
+      "hint": "Think about the domain that replaces the former 'Obsessive-Compulsive' (Anankastic) personality disorder."
+    },
+    {
+      "question": "In the context of ICD-11 severity levels, how is 'Mild Personality Disorder' distinguished from 'Personality Difficulty'?",
+      "answerOptions": [
+        {
+          "text": "Personality Difficulty requires trait qualifiers, while Mild Personality Disorder does not.",
+          "isCorrect": false,
+          "rationale": "Trait qualifiers are used for Personality Disorders, not typically for the sub-threshold 'Difficulty' category."
+        },
+        {
+          "text": "Mild Personality Disorder involves impairment in multiple areas of functioning, whereas Personality Difficulty involves lower-level problems that do not meet the full diagnostic threshold.",
+          "isCorrect": true,
+          "rationale": "Personality Difficulty (Z73.0) is a category for traits that cause problems but do not reach the threshold of severity or pervasiveness required for a disorder diagnosis."
+        },
+        {
+          "text": "Mild Personality Disorder is only diagnosed if the 'Borderline Pattern' is present.",
+          "isCorrect": false,
+          "rationale": "The Borderline Pattern can be applied to any level of severity (Mild, Moderate, or Severe) and is not a requirement for the Mild level."
+        },
+        {
+          "text": "There is no clinical distinction; they are two names for the same level of impairment.",
+          "isCorrect": false,
+          "rationale": "They are distinct clinical classifications; one is a disorder (Mild PD) and the other is a sub-clinical 'difficulty'."
+        }
+      ],
+      "hint": "Consider which term represents a 'sub-threshold' manifestation of personality traits that causes some distress but lacks full diagnostic criteria."
+    },
+    {
+      "question": "Which of the following describes the 'Disinhibition' domain in the ICD-11 personality model?",
+      "answerOptions": [
+        {
+          "text": "A tendency to act impulsively in response to immediate internal or external stimuli without consideration of consequences.",
+          "isCorrect": true,
+          "rationale": "Disinhibition is defined by impulsivity, distractibility, and a lack of planning or consideration for long-term outcomes."
+        },
+        {
+          "text": "A rigid adherence to rules and a high degree of self-control.",
+          "isCorrect": false,
+          "rationale": "This describes Anankastia, which is conceptually the opposite pole of Disinhibition."
+        },
+        {
+          "text": "A pervasive pattern of social inhibition and feelings of inadequacy.",
+          "isCorrect": false,
+          "rationale": "This describes features of Detachment or Negative Affectivity, whereas Disinhibition involves a lack of restraint."
+        },
+        {
+          "text": "Deliberate and planned exploitation of others for personal gain.",
+          "isCorrect": false,
+          "rationale": "This behavior is more central to the Dissociality domain than to Disinhibition alone."
+        }
+      ],
+      "hint": "Focus on the lack of restraint and the preference for immediate gratification."
+    },
+    {
+      "question": "The 'Negative Affectivity' domain in ICD-11 corresponds most closely to which dimension in the Five-Factor Model (FFM) of personality?",
+      "answerOptions": [
+        {
+          "text": "Low Extraversion",
+          "isCorrect": false,
+          "rationale": "Low Extraversion is more closely aligned with the Detachment domain."
+        },
+        {
+          "text": "High Neuroticism",
+          "isCorrect": true,
+          "rationale": "Negative Affectivity captures the tendency to experience negative emotions like anxiety, anger, and depression, which maps to Neuroticism."
+        },
+        {
+          "text": "Low Agreeableness",
+          "isCorrect": false,
+          "rationale": "Low Agreeableness is the FFM counterpart to the Dissociality domain."
+        },
+        {
+          "text": "Low Conscientiousness",
+          "isCorrect": false,
+          "rationale": "Low Conscientiousness corresponds to the Disinhibition domain."
+        }
+      ],
+      "hint": "Identify the trait associated with emotional instability and the frequent experience of distress."
+    },
+    {
+      "question": "Why did the ICD-11 retain a 'Borderline Pattern' qualifier despite moving to a fully dimensional trait-based system?",
+      "answerOptions": [
+        {
+          "text": "Because it was the only category with sufficient empirical evidence to remain a standalone diagnosis.",
+          "isCorrect": false,
+          "rationale": "All categories were replaced by the dimensional model; the qualifier exists for clinical utility and continuity rather than being the 'only' evidenced category."
+        },
+        {
+          "text": "To satisfy clinicians who argued that the trait domains did not fully capture the specific instability and risk profiles of these patients.",
+          "isCorrect": true,
+          "rationale": "The qualifier was preserved because the specific combination of symptoms in 'Borderline' patients has significant treatment and research implications that traits alone might obscure."
+        },
+        {
+          "text": "Because 'Borderline' is considered a level of severity rather than a trait constellation.",
+          "isCorrect": false,
+          "rationale": "In ICD-11, 'Severe' is a level of severity, whereas 'Borderline' is a pattern qualifier applied regardless of the severity level."
+        },
+        {
+          "text": "To ensure that the ICD-11 remained identical to the DSM-5 Alternative Model for Personality Disorders.",
+          "isCorrect": false,
+          "rationale": "The DSM-5 Alternative Model includes six specific categories, not just a Borderline qualifier, making them structurally different."
+        }
+      ],
+      "hint": "Think about the practical needs of clinicians who treat patients with high-risk, unstable presentations."
+    },
+    {
+      "question": "When assessing the 'Severity' of a personality disorder in ICD-11, which aspect of 'Self-functioning' refers to the ability to maintain a stable and integrated sense of who one is?",
+      "answerOptions": [
+        {
+          "text": "Self-direction",
+          "isCorrect": false,
+          "rationale": "Self-direction refers to the ability to pursue meaningful goals and follow internal standards of behavior."
+        },
+        {
+          "text": "Identity",
+          "isCorrect": true,
+          "rationale": "Identity involves the stability and consistency of the sense of self, including self-worth and the accuracy of self-appraisal."
+        },
+        {
+          "text": "Empathy",
+          "isCorrect": false,
+          "rationale": "Empathy is an aspect of interpersonal functioning, not self-functioning."
+        },
+        {
+          "text": "Intimacy",
+          "isCorrect": false,
+          "rationale": "Intimacy relates to the capacity for close relationships and is a facet of interpersonal functioning."
+        }
+      ],
+      "hint": "Look for the term that relates to the 'Who am I?' component of personality."
+    },
+    {
+      "question": "A patient exhibits a lack of empathy, a sense of entitlement, and frequently exploits others for personal gain. Which ICD-11 trait domain best captures these characteristics?",
+      "answerOptions": [
+        {
+          "text": "Negative Affectivity",
+          "isCorrect": false,
+          "rationale": "This domain focuses on internal emotional distress rather than external interpersonal exploitation."
+        },
+        {
+          "text": "Dissociality",
+          "isCorrect": true,
+          "rationale": "Dissociality is defined by self-centeredness, lack of empathy, and disregard for the rights and feelings of others."
+        },
+        {
+          "text": "Disinhibition",
+          "isCorrect": false,
+          "rationale": "While exploitation can be impulsive, the core of the behavior described (entitlement and lack of empathy) is dissocial."
+        },
+        {
+          "text": "Anankastia",
+          "isCorrect": false,
+          "rationale": "Anankastia involves high standards and control, often leading to being overly critical, but not necessarily exploitative or lacking empathy."
+        }
+      ],
+      "hint": "Consider the domain that covers 'antisocial' or 'narcissistic' interpersonal styles."
+    },
+    {
+      "question": "In the ICD-11 classification, how many trait domains must be specified if a clinician determines they are relevant to the patient's presentation?",
+      "answerOptions": [
+        {
+          "text": "Exactly one, representing the primary personality type.",
+          "isCorrect": false,
+          "rationale": "The system is dimensional, allowing for multiple traits to be coded to provide a comprehensive profile."
+        },
+        {
+          "text": "All five domains must be rated on a scale of $0$ to $3$.",
+          "isCorrect": false,
+          "rationale": "Clinicians specify as many as are prominently present; they are not required to rate every single one if they are not relevant."
+        },
+        {
+          "text": "As many as are prominent and descriptive of the individual's personality functioning.",
+          "isCorrect": true,
+          "rationale": "The clinician can select any number of qualifiers (from zero to all five) to accurately describe the maladaptive trait profile."
+        },
+        {
+          "text": "Only the domain that corresponds to the patient's previous ICD-10 diagnosis.",
+          "isCorrect": false,
+          "rationale": "The ICD-11 encourages a fresh assessment of current traits rather than simply mapping old categories."
+        }
+      ],
+      "hint": "The dimensional approach allows for flexibility in capturing the unique 'flavor' of a patient's personality."
+    }
+  ]
+}

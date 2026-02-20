@@ -1,0 +1,265 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "Which psychologist is credited with founding Critical Psychology in Berlin during the 1970s?",
+      "answerOptions": [
+        {
+          "text": "Klaus Holzkamp",
+          "isCorrect": true,
+          "rationale": "He is explicitly identified as the central figure who moved from experimental studies to developing Critical Psychology inspired by Marxist philosophy."
+        },
+        {
+          "text": "Lev Vygotsky",
+          "isCorrect": false,
+          "rationale": "While his work in cultural-historical psychology influenced the field, he was a Russian psychologist from an earlier era."
+        },
+        {
+          "text": "Ole Dreier",
+          "isCorrect": false,
+          "rationale": "He is a significant Danish contributor to the field, particularly regarding personality and participation, but he was not the founder in 1970s Berlin."
+        },
+        {
+          "text": "Ute Osterkamp",
+          "isCorrect": false,
+          "rationale": "She was a key member of the research network at the Free University in Berlin, specifically focusing on motivation, but was not the primary founder."
+        }
+      ],
+      "hint": "Think of the individual who transitioned from laboratory experiments to a Marxist-inspired critique of traditional psychology."
+    },
+    {
+      "question": "What is the primary critique addressed by the 'Postulate of Immediacy' in Critical Psychology?",
+      "answerOptions": [
+        {
+          "text": "Psychology assumes human actions are direct reactions to immediate circumstances.",
+          "isCorrect": true,
+          "rationale": "This postulate highlights the flaw in traditional psychology where behavior is seen solely as a response to current external stimuli, ignoring the subject's ability to transcend limitations."
+        },
+        {
+          "text": "Psychological research lacks immediate practical application in clinical settings.",
+          "isCorrect": false,
+          "rationale": "While Critical Psychology values practice, the 'postulate of immediacy' specifically refers to the theoretical error of viewing humans as passive responders to environments."
+        },
+        {
+          "text": "Individuals are incapable of perceiving their immediate reality without bias.",
+          "isCorrect": false,
+          "rationale": "This sounds like a cognitive bias theory, whereas the postulate specifically critiques the reduction of human agency to simple situational reactions."
+        },
+        {
+          "text": "Social structures change too immediately for psychological theories to keep up.",
+          "isCorrect": false,
+          "rationale": "The focus of this concept is on the internal logic of psychological models regarding stimulus and response, not the speed of societal change."
+        }
+      ],
+      "hint": "Consider how traditional psychology often links behavior directly to current environment or conditions."
+    },
+    {
+      "question": "In the context of Critical Psychology, what does 'Category Analysis' (kategorianalyse) involve?",
+      "answerOptions": [
+        {
+          "text": "Examining the underlying assumptions and ideologies behind psychological concepts.",
+          "isCorrect": true,
+          "rationale": "It is a method used to uncover the societal conditions and ideologies, such as individualism, that are embedded in standard psychological terms like 'learning' or 'perception'."
+        },
+        {
+          "text": "Statistically sorting participants into demographic categories for study.",
+          "isCorrect": false,
+          "rationale": "Critical Psychology generally moves away from traditional quantitative sorting and focuses more on the philosophical foundations of concepts."
+        },
+        {
+          "text": "Analyzing the hierarchy of needs to categorize human motivations.",
+          "isCorrect": false,
+          "rationale": "This refers more to Maslow's humanistic psychology rather than the critical deconstruction of the field's fundamental concepts."
+        },
+        {
+          "text": "Developing a diagnostic manual to categorize mental health disorders.",
+          "isCorrect": false,
+          "rationale": "The 'categories' being analyzed are the theoretical building blocks of the science itself, not the classification of patients."
+        }
+      ],
+      "hint": "This process is about looking 'behind' established scientific terms to see what societal values they might be hiding."
+    },
+    {
+      "question": "How is 'Expansive Agency' (ekspansiv handleevne) distinguished from 'Restrictive Agency' (restriktiv handleevne)?",
+      "answerOptions": [
+        {
+          "text": "Expansive agency involves acting in ways that increase one's possibilities and align with others' interests.",
+          "isCorrect": true,
+          "rationale": "Expansive agency refers to actions that broaden the individual's influence over their life conditions through cooperation and long-term planning."
+        },
+        {
+          "text": "Restrictive agency refers to the total lack of choice an individual has in a capitalist society.",
+          "isCorrect": false,
+          "rationale": "Even restrictive agency implies a choice, specifically the choice to focus on short-term self-preservation within existing constraints."
+        },
+        {
+          "text": "Expansive agency is the innate ability to ignore all social constraints and laws.",
+          "isCorrect": false,
+          "rationale": "Agency is always situated within societal conditions; it is not a 'superpower' to exist outside of them."
+        },
+        {
+          "text": "Restrictive agency is only found in individuals with clinical psychological disorders.",
+          "isCorrect": false,
+          "rationale": "These terms describe ways of relating to life conditions that any individual might experience depending on their situation."
+        }
+      ],
+      "hint": "One form focuses on short-term survival within limits, while the other seeks to broaden those limits."
+    },
+    {
+      "question": "Ole Dreier identifies three aspects of participation: Locality, Position, and Standpoint. Which of these represents the individual's personal perspective and understanding of their own life?",
+      "answerOptions": [
+        {
+          "text": "Standpoint",
+          "isCorrect": true,
+          "rationale": "A 'Standpoint' (standpunkt) refers to how an individual understands and relates to the rules and conditions of the practices they participate in across their life."
+        },
+        {
+          "text": "Locality",
+          "isCorrect": false,
+          "rationale": "Locality refers simply to the specific place and time where an individual is situated at any given moment."
+        },
+        {
+          "text": "Position",
+          "isCorrect": false,
+          "rationale": "Position refers to the social role or function an individual occupies within a practice, such as being a teacher, student, or client."
+        },
+        {
+          "text": "Nexus",
+          "isCorrect": false,
+          "rationale": "While nexus is a related term for the connection of actions, it is not one of the three specific aspects of participation defined by Dreier in this context."
+        }
+      ],
+      "hint": "This term captures the 'personal' element that varies even when two people share the same social role."
+    },
+    {
+      "question": "In Critical Psychology, how is 'Personality' primarily defined?",
+      "answerOptions": [
+        {
+          "text": "As a composition of standpoints developed through participation in social practices.",
+          "isCorrect": true,
+          "rationale": "Personality is viewed not as a stable set of traits, but as an ongoing process of coordinating different perspectives and commitments across various life contexts."
+        },
+        {
+          "text": "As a fixed set of biological traits that remain consistent over a lifetime.",
+          "isCorrect": false,
+          "rationale": "Critical Psychology rejects the idea of a 'static' personality, focusing instead on its development within societal conditions."
+        },
+        {
+          "text": "As a collection of defense mechanisms used to handle immediate stress.",
+          "isCorrect": false,
+          "rationale": "While people do handle stress, this definition is more aligned with psychoanalysis rather than the practice-centered view of Critical Psychology."
+        },
+        {
+          "text": "As the sum of an individual's unconscious desires and childhood traumas.",
+          "isCorrect": false,
+          "rationale": "Critical Psychology focuses more on conscious agency and participation in current social practices rather than unconscious drives."
+        }
+      ],
+      "hint": "Think of personality as a 'composition' of the various ways an individual understands and engages with their world."
+    },
+    {
+      "question": "What does the concept of 'Everyday Conduct of Life' (daglig livsførelse) aim to integrate?",
+      "answerOptions": [
+        {
+          "text": "The coordination of diverse activities, relationships, and routines across different life spheres.",
+          "isCorrect": true,
+          "rationale": "It refers to the 'ordering' of one's life, integrating domains like work, family, and leisure into a cohesive whole despite limited time and resources."
+        },
+        {
+          "text": "The physical exercises and nutritional habits required for mental health.",
+          "isCorrect": false,
+          "rationale": "The term is used sociologically and psychologically to describe the management of life contexts, not just biological health."
+        },
+        {
+          "text": "The balance between subconscious dreams and waking consciousness.",
+          "isCorrect": false,
+          "rationale": "The focus is on the practical, material 'conducting' of life in a social world, rather than a focus on the subconscious."
+        },
+        {
+          "text": "The strict adherence to a professional schedule to maximize productivity.",
+          "isCorrect": false,
+          "rationale": "While work is a part of it, the concept is about how the individual personally 'arranges' all aspects of life, including resisting or adapting to such schedules."
+        }
+      ],
+      "hint": "Consider how one manages to 'fit' different parts of their life—like work, family, and hobbies—together."
+    },
+    {
+      "question": "Which philosophical concept, derived from Marx, emphasizes that the world is created through human sensory activity and social interaction?",
+      "answerOptions": [
+        {
+          "text": "Praxis",
+          "isCorrect": true,
+          "rationale": "Praxis highlights that people are both products and creators of their societal conditions, emphasizing active engagement with the world."
+        },
+        {
+          "text": "Individualism",
+          "isCorrect": false,
+          "rationale": "Individualism is actually a target of critique in Critical Psychology, as it ignores the societal and collective nature of human life."
+        },
+        {
+          "text": "Determinism",
+          "isCorrect": false,
+          "rationale": "Critical Psychology opposes strict determinism by arguing for human 'handleevne' (agency) to change or transcend given conditions."
+        },
+        {
+          "text": "Reductionism",
+          "isCorrect": false,
+          "rationale": "Reductionism is a scientific approach that simplifies complex systems, whereas praxis emphasizes the complex, holistic relationship between person and society."
+        }
+      ],
+      "hint": "This term refers to the 'nexus' of human action that both maintains and transforms social reality."
+    },
+    {
+      "question": "In the structure of practice described by Critical Psychology, what is the role of 'Arrangers' (arrangører)?",
+      "answerOptions": [
+        {
+          "text": "They represent the institutional, cultural, and structural conditions that set the framework for a practice.",
+          "isCorrect": true,
+          "rationale": "Arrangers are the structures—like school rules, work schedules, or laws—that define the relations and possibilities for participants within a practice."
+        },
+        {
+          "text": "They are psychologists who organize therapy sessions for their clients.",
+          "isCorrect": false,
+          "rationale": "While a therapist might arrange a session, 'arranger' in this theoretical framework refers to the broader structural forces of society."
+        },
+        {
+          "text": "They are innate biological impulses that organize a person's behavior.",
+          "isCorrect": false,
+          "rationale": "Critical Psychology views the organization of behavior as social and historical, not primarily biological."
+        },
+        {
+          "text": "They are researchers who analyze the data collected from experiments.",
+          "isCorrect": false,
+          "rationale": "This is a literal interpretation of 'arranging' data, but in this context, it refers to the structures of social practice itself."
+        }
+      ],
+      "hint": "Think of the social 'rules' or 'layouts' that dictate how people can participate in places like schools or workplaces."
+    },
+    {
+      "question": "Critical Psychology research often utilizes qualitative methods to capture 'subjectivity.' What is a key goal of this approach?",
+      "answerOptions": [
+        {
+          "text": "To understand the person's life from a first-person perspective through dialogue and participation.",
+          "isCorrect": true,
+          "rationale": "The focus is on understanding the subject's own reasons for action and how they navigate their concrete life conditions, often using ethnographic methods."
+        },
+        {
+          "text": "To identify universal personality traits that apply to all humans regardless of culture.",
+          "isCorrect": false,
+          "rationale": "Critical Psychology emphasizes that people are deeply situated in specific cultural and social contexts, making 'universal' traits less relevant."
+        },
+        {
+          "text": "To measure biological responses to environmental stressors in a controlled setting.",
+          "isCorrect": false,
+          "rationale": "This describes the experimental psychology that Critical Psychology was specifically designed to critique."
+        },
+        {
+          "text": "To generalize specific case studies to the entire global population.",
+          "isCorrect": false,
+          "rationale": "The goal is not generalization in the traditional statistical sense, but rather 'almengørelse'—understanding the general through the specific individual's life."
+        }
+      ],
+      "hint": "It involves a deep, conversational understanding of how an individual views their own world."
+    }
+  ]
+}

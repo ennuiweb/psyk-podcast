@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gamified SRS Path</title>
+  <style>
+    body {
+      font-family: "Nunito", "Avenir Next", "Trebuchet MS", sans-serif;
+      margin: 0;
+      padding: 20px 12px 60px;
+      display: flex;
+      justify-content: center;
+      background: radial-gradient(circle at 30% 10%, #f8fff1 0%, #f6f8fb 45%, #f4f5f7 100%);
+      color: #2f2f2f;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 420px;
+      text-align: center;
+    }
+
+    .topbar {
+      margin-top: 10px;
+      margin-bottom: 20px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: #ffffff;
+      border: 1px solid #e8e8e8;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+    }
+
+    .topbar .line {
+      margin: 2px 0;
+      font-size: 13px;
+      color: #666666;
+    }
+
+    .path-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 25px;
+      margin-top: 30px;
+      width: 100%;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .unit-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+    }
+
+    .node {
+      width: 75px;
+      height: 75px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 32px;
+      position: relative;
+      cursor: pointer;
+      user-select: none;
+      transition: transform 120ms ease;
+    }
+
+    .node:hover {
+      transform: translateY(-1px);
+    }
+
+    .locked {
+      background-color: #e5e5e5;
+      box-shadow: 0 8px 0 #cccccc;
+      color: #a1a1a1;
+    }
+
+    .active {
+      background-color: #58cc02;
+      box-shadow: 0 8px 0 #58a700;
+      color: #ffffff;
+    }
+
+    .completed {
+      background-color: #58cc02;
+      box-shadow: 0 8px 0 #58a700;
+      color: #ffffff;
+    }
+
+    .unit-wrap:nth-child(8n+1) .node { transform: translateX(0px); }
+    .unit-wrap:nth-child(8n+2) .node { transform: translateX(45px); }
+    .unit-wrap:nth-child(8n+3) .node { transform: translateX(75px); }
+    .unit-wrap:nth-child(8n+4) .node { transform: translateX(45px); }
+    .unit-wrap:nth-child(8n+5) .node { transform: translateX(0px); }
+    .unit-wrap:nth-child(8n+6) .node { transform: translateX(-45px); }
+    .unit-wrap:nth-child(8n+7) .node { transform: translateX(-75px); }
+    .unit-wrap:nth-child(8n+8) .node { transform: translateX(-45px); }
+
+    .tooltip {
+      position: absolute;
+      top: -55px;
+      background: #ffffff;
+      border: 2px solid #e5e5e5;
+      padding: 10px 15px;
+      border-radius: 12px;
+      color: #58cc02;
+      font-weight: 800;
+      font-size: 14px;
+      letter-spacing: 1px;
+      white-space: nowrap;
+      text-transform: uppercase;
+    }
+
+    .tooltip::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -8px;
+      border-width: 8px;
+      border-style: solid;
+      border-color: #e5e5e5 transparent transparent transparent;
+    }
+
+    .chest {
+      border-radius: 15px;
+      width: 85px;
+      height: 65px;
+    }
+
+    .unit-label {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 800;
+      color: #444444;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+
+    .unit-meta {
+      margin: 0;
+      font-size: 12px;
+      color: #7a7a7a;
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="topbar">
+      <p class="line"><strong>Level:</strong> 1</p>
+      <p class="line"><strong>Reviews:</strong> 0 / 0</p>
+      <p class="line"><strong>Last sync:</strong> 2026-02-19T21:22:12Z</p>
+    </section>
+
+    <div class="path-container">
+      
+      <article class="unit-wrap">
+        <div class="node active">
+          
+          <div class="tooltip">JUMP HERE?</div>
+          
+          ▶
+        </div>
+        <p class="unit-label">Unit 1</p>
+        <p class="unit-meta">0/0 · 0.0%</p>
+      </article>
+      
+      <article class="unit-wrap">
+        <div class="node locked">
+          
+          🔒
+        </div>
+        <p class="unit-label">Unit 2</p>
+        <p class="unit-meta">0/0 · 0.0%</p>
+      </article>
+      
+      <article class="unit-wrap">
+        <div class="node locked">
+          
+          🔒
+        </div>
+        <p class="unit-label">Unit 3</p>
+        <p class="unit-meta">0/0 · 0.0%</p>
+      </article>
+      
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,60 @@
+{
+  "anki": {
+    "endpoint": "http://localhost:8765",
+    "deck_name": "Psychology",
+    "note_model": "Basic",
+    "front_field": "Front",
+    "back_field": "Back",
+    "default_tags": ["GamifiedSRS"]
+  },
+  "habitica": {
+    "api_base": "https://habitica.com/api/v3",
+    "task_id": "REPLACE_WITH_TASK_ID",
+    "user_id_env": "HABITICA_USER_ID",
+    "api_token_env": "HABITICA_API_TOKEN",
+    "xp_per_review": 0.2,
+    "gold_per_review": 0.05,
+    "damage_per_missing_review": 0.3,
+    "max_damage": 15,
+    "reviews_per_score_up": 20,
+    "missing_reviews_per_score_down": 5
+  },
+  "sync": {
+    "min_daily_reviews": 20,
+    "state_file": "semester_state.json",
+    "timezone": "America/New_York",
+    "deck_name": "Psychology",
+    "mastery_interval_days": 7,
+    "mastery_ratio_threshold": 0.8,
+    "units": [
+      {
+        "id": "Unit_1",
+        "label": "Unit 1",
+        "anki_tag": "Unit_1"
+      },
+      {
+        "id": "Unit_2",
+        "label": "Unit 2",
+        "anki_tag": "Unit_2"
+      },
+      {
+        "id": "Unit_3",
+        "label": "Unit 3",
+        "anki_tag": "Unit_3"
+      }
+    ]
+  },
+  "render": {
+    "mode": "html",
+    "html_template": "templates/path.html.j2",
+    "html_output": "index.html",
+    "canvas_file": "course_map.canvas"
+  },
+  "ingest": {
+    "provider": "openai",
+    "model": "gpt-4.1-mini",
+    "api_key_env": "OPENAI_API_KEY",
+    "max_cards": 10,
+    "default_unit_tag": "Unit_1"
+  }
+}

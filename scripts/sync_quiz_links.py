@@ -7,6 +7,7 @@ import argparse
 import hashlib
 import json
 import re
+import shlex
 import shutil
 import subprocess
 import sys
@@ -292,12 +293,32 @@ def run_rsync(
     ssh_key: str | None,
     dry_run: bool,
 ) -> None:
+    remote_root_clean = remote_root.rstrip("/") or "/"
+    remote_prepare_cmd = [
+        "ssh",
+    ]
+    if ssh_key:
+        remote_prepare_cmd.extend(["-i", ssh_key])
+    remote_prepare_cmd.extend(
+        [
+            f"{user}@{host}",
+            f"mkdir -p {shlex.quote(remote_root_clean)} && chmod 755 {shlex.quote(remote_root_clean)}",
+        ]
+    )
+    print("Running:", " ".join(remote_prepare_cmd))
+    if not dry_run:
+        prepare_result = subprocess.run(remote_prepare_cmd, text=True)
+        if prepare_result.returncode != 0:
+            raise SystemExit(f"remote directory prep failed with exit code {prepare_result.returncode}")
+
     src = str(output_root) + "/"
-    dest = f"{user}@{host}:{remote_root.rstrip('/')}/"
+    dest = f"{user}@{host}:{remote_root_clean}/"
     cmd = [
         "rsync",
         "-av",
         "--delete",
+        "--no-owner",
+        "--no-group",
         "--chmod=Du=rwx,Dgo=rx,Fu=rw,Fgo=r",
         "--include",
         "*/",

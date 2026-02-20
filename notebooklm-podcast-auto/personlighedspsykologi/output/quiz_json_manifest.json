@@ -1,9 +1,9 @@
 {
   "root": "/Users/oskar/repo/podcasts/notebooklm-podcast-auto/personlighedspsykologi/output",
   "total_quiz_html": 264,
-  "writes": 1,
+  "writes": 0,
   "planned_writes": 0,
-  "skipped_existing": 263,
+  "skipped_existing": 264,
   "failures": 0,
   "files": [
     {
@@ -441,7 +441,7 @@
     {
       "source_html": "W12L1/W12L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.html",
       "output_json": "W12L1/W12L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json",
-      "status": "written",
+      "status": "skipped-existing",
       "week_token": "W12L1",
       "difficulty": "easy",
       "question_count": 10

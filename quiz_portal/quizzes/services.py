@@ -55,8 +55,16 @@ def quiz_file_path(quiz_id: str) -> Path:
     return quiz_html_file_path(quiz_id)
 
 
+def _path_is_file(path: Path) -> bool:
+    try:
+        return path.is_file()
+    except OSError:
+        logger.warning("Unable to stat quiz file: %s", path, exc_info=True)
+        return False
+
+
 def quiz_exists(quiz_id: str) -> bool:
-    return quiz_json_file_path(quiz_id).is_file() or quiz_html_file_path(quiz_id).is_file()
+    return _path_is_file(quiz_json_file_path(quiz_id)) or _path_is_file(quiz_html_file_path(quiz_id))
 
 
 def read_quiz_bytes(quiz_id: str) -> bytes:
@@ -96,10 +104,10 @@ def parse_question_count_from_quiz_json(payload: Any) -> int:
 
 def load_quiz_content(quiz_id: str) -> dict[str, Any] | None:
     json_path = quiz_json_file_path(quiz_id)
-    if json_path.is_file():
+    if _path_is_file(json_path):
         try:
             payload = json.loads(json_path.read_text(encoding="utf-8"))
-        except (OSError, json.JSONDecodeError):
+        except (OSError, UnicodeDecodeError, json.JSONDecodeError):
             logger.warning("Unable to parse quiz JSON file: %s", json_path, exc_info=True)
         else:
             questions = _extract_question_entries(payload)
@@ -112,7 +120,7 @@ def load_quiz_content(quiz_id: str) -> dict[str, Any] | None:
                 return {"title": title, "questions": questions}
 
     html_path = quiz_html_file_path(quiz_id)
-    if not html_path.is_file():
+    if not _path_is_file(html_path):
         return None
     try:
         html_bytes = html_path.read_bytes()
@@ -140,16 +148,16 @@ def load_quiz_content(quiz_id: str) -> dict[str, Any] | None:
 
 def quiz_question_count(quiz_id: str) -> int:
     json_path = quiz_json_file_path(quiz_id)
-    if json_path.is_file():
+    if _path_is_file(json_path):
         try:
             json_payload = json.loads(json_path.read_text(encoding="utf-8"))
-        except (OSError, json.JSONDecodeError):
+        except (OSError, UnicodeDecodeError, json.JSONDecodeError):
             logger.warning("Unable to parse quiz JSON for question count: %s", json_path, exc_info=True)
         else:
             return parse_question_count_from_quiz_json(json_payload)
 
     html_path = quiz_html_file_path(quiz_id)
-    if not html_path.is_file():
+    if not _path_is_file(html_path):
         return 0
     try:
         return parse_question_count_from_quiz_bytes(html_path.read_bytes())

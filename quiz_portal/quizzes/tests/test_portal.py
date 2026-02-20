@@ -4,6 +4,7 @@ import html
 import json
 import tempfile
 from pathlib import Path
+from unittest.mock import patch
 from urllib.parse import urlencode
 
 from django.conf import settings
@@ -208,6 +209,11 @@ class QuizPortalTests(TestCase):
         payload = response.json()
         self.assertEqual(payload["title"], "Quiz")
         self.assertEqual(len(payload["questions"]), 2)
+
+    def test_quiz_content_api_returns_404_when_quiz_files_are_unreadable(self) -> None:
+        with patch("quizzes.services.Path.is_file", side_effect=PermissionError("denied")):
+            response = self.client.get(reverse("quiz-content", kwargs={"quiz_id": self.quiz_id}))
+        self.assertEqual(response.status_code, 404)
 
     def test_state_apis_redirect_when_anonymous(self) -> None:
         state_url = reverse("quiz-state", kwargs={"quiz_id": self.quiz_id})

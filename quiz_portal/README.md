@@ -12,6 +12,7 @@ Django portal for authentication + per-user quiz progress on top of existing sta
 - Quiz data source: portal reads `<id>.json` when available and falls back to parsing `<id>.html`.
 - Anonymous quiz state is kept locally in browser storage; logged-in users persist state in DB via state API.
 - Anonymous users are prompted to log in when they reach quiz summary/completion.
+- Quiz files directory must be readable by `www-data`; sync uploads now avoid owner/group preservation and enforce root dir mode `755`.
 - Public static quiz files still exist at `/quizzes/personlighedspsykologi/<id>.html` (Caddy static route).
 - Progress key: per `(user, quiz_id)`.
 - Completion rule: `currentView == "summary"` and `answers_count == question_count`.
@@ -68,4 +69,5 @@ sudo systemctl restart quiz-portal
 
 ## Operational notes
 - Health checks: use `GET` endpoints. `HEAD` on auth endpoints may return `405` because views allow `GET/POST`.
+- If uploading quiz files manually, verify `/var/www/quizzes/personlighedspsykologi` has execute/read for `www-data` (for example mode `755` on directories, `644` on files), otherwise content endpoints can fail with permission errors.
 - If `/q/*` should be public static again, switch Caddy `/q/*` back to file serving from `/var/www/quizzes/personlighedspsykologi` and reload Caddy.

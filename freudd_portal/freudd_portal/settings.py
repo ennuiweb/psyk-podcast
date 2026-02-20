@@ -1,4 +1,4 @@
-"""Settings for the quiz login/progress portal."""
+"""Settings for freudd auth and quiz progress."""
 
 from __future__ import annotations
 
@@ -7,11 +7,21 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = os.environ.get("QUIZ_PORTAL_SECRET_KEY", "dev-insecure-secret-change-me")
+# QUIZ_PORTAL_* fallback is temporary for rollout compatibility.
+SECRET_KEY = os.environ.get("FREUDD_PORTAL_SECRET_KEY") or os.environ.get(
+    "QUIZ_PORTAL_SECRET_KEY",
+    "dev-insecure-secret-change-me",
+)
 
-DEBUG = os.environ.get("QUIZ_PORTAL_DEBUG", "false").lower() in {"1", "true", "yes", "on"}
+DEBUG = (
+    os.environ.get("FREUDD_PORTAL_DEBUG")
+    or os.environ.get("QUIZ_PORTAL_DEBUG", "false")
+).lower() in {"1", "true", "yes", "on"}
 
-allowed_hosts = os.environ.get("QUIZ_PORTAL_ALLOWED_HOSTS", "")
+allowed_hosts = os.environ.get("FREUDD_PORTAL_ALLOWED_HOSTS") or os.environ.get(
+    "QUIZ_PORTAL_ALLOWED_HOSTS",
+    "",
+)
 ALLOWED_HOSTS = [host.strip() for host in allowed_hosts.split(",") if host.strip()] or [
     "127.0.0.1",
     "localhost",
@@ -38,7 +48,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "portal.urls"
+ROOT_URLCONF = "freudd_portal.urls"
 
 TEMPLATES = [
     {
@@ -55,8 +65,8 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "portal.wsgi.application"
-ASGI_APPLICATION = "portal.asgi.application"
+WSGI_APPLICATION = "freudd_portal.wsgi.application"
+ASGI_APPLICATION = "freudd_portal.asgi.application"
 
 DATABASES = {
     "default": {
@@ -111,6 +121,6 @@ QUIZ_RATE_LIMIT_WINDOW_SECONDS = int(os.environ.get("QUIZ_RATE_LIMIT_WINDOW_SECO
 CACHES = {
     "default": {
         "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
-        "LOCATION": "quiz-portal-cache",
+        "LOCATION": "freudd-portal-cache",
     }
 }

@@ -1,4 +1,4 @@
-# Quiz Portal
+# freudd
 
 Django portal for authentication + per-user quiz progress on top of existing static NotebookLM quiz exports.
 
@@ -36,7 +36,7 @@ Django portal for authentication + per-user quiz progress on top of existing sta
 cd /Users/oskar/repo/podcasts
 source .venv/bin/activate
 pip install -r requirements.txt
-cd quiz_portal
+cd freudd_portal
 python3 manage.py migrate
 python3 manage.py test
 python3 manage.py runserver 0.0.0.0:8000
@@ -44,16 +44,16 @@ python3 manage.py runserver 0.0.0.0:8000
 
 ## Production (current droplet setup)
 - Code path: `/opt/podcasts`
-- Service: `quiz-portal.service`
+- Service: `freudd-portal.service`
 - Gunicorn bind: `127.0.0.1:8001`
-- Env file: `/etc/quiz-portal.env`
+- Env file: `/etc/freudd-portal.env`
 - Caddy routes to portal: `/accounts/*`, `/api/*`, `/progress*`, `/q/*`
 
 Service commands:
 ```bash
-sudo systemctl status quiz-portal
-sudo systemctl restart quiz-portal
-sudo journalctl -u quiz-portal -n 100 --no-pager
+sudo systemctl status freudd-portal
+sudo systemctl restart freudd-portal
+sudo journalctl -u freudd-portal -n 100 --no-pager
 ```
 
 Deploy update:
@@ -63,8 +63,8 @@ git fetch origin main
 git checkout main
 git pull --ff-only origin main
 /opt/podcasts/.venv/bin/pip install -r /opt/podcasts/requirements.txt
-sudo -u www-data /opt/podcasts/.venv/bin/python /opt/podcasts/quiz_portal/manage.py migrate
-sudo systemctl restart quiz-portal
+sudo -u www-data /opt/podcasts/.venv/bin/python /opt/podcasts/freudd_portal/manage.py migrate
+sudo systemctl restart freudd-portal
 ```
 
 ## Operational notes

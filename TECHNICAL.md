@@ -124,8 +124,8 @@ python podcast/gdrive_podcast_feed.py --config podcast/config.local.json
 
 The repository ships with `podcast/config.json` and `podcast/episode_metadata.json` pre-populated for Socialpsykologi Deep Dives - Hold 1 - 2024—update the titles, artwork, contact email, and descriptions to match your own show before publishing.
 
-## Quiz portal (login + completion tracking)
-The repository now includes a separate Django portal in `quiz_portal/` for user login and per-user quiz progress tracking, without changing NotebookLM-generated quiz HTML internals.
+## freudd (login + completion tracking)
+The repository now includes a separate Django portal in `freudd_portal/` for user login and per-user quiz progress tracking, without changing NotebookLM-generated quiz HTML internals.
 
 ### What it serves
 - `GET/POST /accounts/signup`
@@ -138,7 +138,7 @@ The repository now includes a separate Django portal in `quiz_portal/` for user 
 - `GET /progress` (dashboard with in-progress/completed rows)
 
 ### Data model
-- Django app: `quiz_portal/quizzes`
+- Django app: `freudd_portal/quizzes`
 - Model: `QuizProgress`
 - Unique key: `(user, quiz_id)`
 - Completion rule (phase 1): `currentView == "summary"` and `answers_count == question_count`
@@ -148,7 +148,7 @@ The repository now includes a separate Django portal in `quiz_portal/` for user 
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
-cd quiz_portal
+cd freudd_portal
 python3 manage.py migrate
 python3 manage.py createsuperuser  # optional
 python3 manage.py runserver 0.0.0.0:8000
@@ -156,14 +156,14 @@ python3 manage.py runserver 0.0.0.0:8000
 
 ### Test command
 ```bash
-cd quiz_portal
+cd freudd_portal
 python3 manage.py test
 ```
 
 ### Runtime configuration
-- `QUIZ_PORTAL_SECRET_KEY`
-- `QUIZ_PORTAL_DEBUG`
-- `QUIZ_PORTAL_ALLOWED_HOSTS` (comma-separated)
+- `FREUDD_PORTAL_SECRET_KEY`
+- `FREUDD_PORTAL_DEBUG`
+- `FREUDD_PORTAL_ALLOWED_HOSTS` (comma-separated)
 - `QUIZ_FILES_ROOT` (default: `/var/www/quizzes/personlighedspsykologi`)
 - `QUIZ_LINKS_JSON_PATH` (default: `shows/personlighedspsykologi-en/quiz_links.json`)
 - `QUIZ_SIGNUP_RATE_LIMIT`

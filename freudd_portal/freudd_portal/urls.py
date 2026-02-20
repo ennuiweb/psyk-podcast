@@ -1,4 +1,4 @@
-"""Top-level URL routing for the quiz portal."""
+"""Top-level URL routing for freudd."""
 
 from django.contrib import admin
 from django.urls import include, path

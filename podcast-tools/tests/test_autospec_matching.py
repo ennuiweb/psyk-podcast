@@ -1120,6 +1120,69 @@ class AutoSpecMatchingTests(unittest.TestCase):
         )
         self.assertEqual(episode["title"], "[Podcast] Foo")
 
+    def test_custom_title_blocks_render_compact_course_week_and_date_range(self):
+        mod = _load_feed_module()
+        file_entry = {
+            "id": "file1",
+            "name": (
+                "[Brief] W12L1 - Grundbog kapitel 14 - Perspektiver på personlighedspsykologi "
+                "[EN].mp3"
+            ),
+            "createdTime": "2026-04-27T08:00:00+00:00",
+        }
+        episode = mod.build_episode_entry(
+            file_entry=file_entry,
+            feed_config={
+                "title": "Personlighedspsykologi (EN)",
+                "link": "https://example.com",
+                "description": "Test feed",
+                "language": "en",
+                "semester_week_start_date": "2026-02-02",
+                "semester_week_label": "Semesteruge",
+                "semester_week_description_label": "Semesteruge",
+                "title_blocks": ["course_week_lecture", "subject_or_type", "week_date_range"],
+                "audio_category_prefix_position": "after_first_block",
+            },
+            overrides={},
+            public_link_template="https://example.com/{file_id}",
+            auto_meta={"week_reference_year": 2026},
+            folder_names=["W12L1"],
+        )
+        self.assertEqual(
+            episode["title"],
+            (
+                "U12F1 · [Kort podcast] · Grundbog kapitel 14 - Perspektiver på personlighedspsykologi "
+                "· 27/04 - 03/05"
+            ),
+        )
+
+    def test_description_prepend_semester_week_lecture_prefixes_first_line(self):
+        mod = _load_feed_module()
+        file_entry = {
+            "id": "file1",
+            "name": "W12L1 - Elias (2000) [EN].mp3",
+            "createdTime": "2026-04-27T08:00:00+00:00",
+        }
+        episode = mod.build_episode_entry(
+            file_entry=file_entry,
+            feed_config={
+                "title": "Personlighedspsykologi (EN)",
+                "link": "https://example.com",
+                "description": "Test feed",
+                "language": "en",
+                "semester_week_start_date": "2026-02-02",
+                "semester_week_label": "Semesteruge",
+                "semester_week_description_label": "Semesteruge",
+                "description_prepend_semester_week_lecture": True,
+            },
+            overrides={},
+            public_link_template="https://example.com/{file_id}",
+            auto_meta={"week_reference_year": 2026},
+            folder_names=["W12L1"],
+        )
+        self.assertTrue(episode["description"].startswith("Semesteruge 13, Forelæsning 1\n"))
+        self.assertIn("Elias (2000)", episode["description"])
+
     def test_generated_entry_strips_cfg_tag_from_subject(self):
         mod = _load_feed_module()
         file_entry = {
@@ -1993,6 +2056,15 @@ class AutoSpecMatchingTests(unittest.TestCase):
             }
         )
 
+    def test_validate_feed_block_config_accepts_compact_week_title_blocks(self):
+        mod = _load_feed_module()
+        mod.validate_feed_block_config(
+            {
+                "title_blocks": ["course_week_lecture", "subject_or_type", "week_date_range"],
+                "description_prepend_semester_week_lecture": True,
+            }
+        )
+
     def test_validate_feed_block_config_accepts_tail_grundbog_lydbog(self):
         mod = _load_feed_module()
         mod.validate_feed_block_config(
@@ -2069,6 +2141,13 @@ class AutoSpecMatchingTests(unittest.TestCase):
             ValueError, r"feed\.description_blocks\[0\].*unknown block 'does_not_exist'"
         ):
             mod.validate_feed_block_config({"description_blocks": ["does_not_exist"]})
+
+    def test_validate_feed_block_config_rejects_non_boolean_description_prepend(self):
+        mod = _load_feed_module()
+        with self.assertRaisesRegex(
+            ValueError, r"feed\.description_prepend_semester_week_lecture must be a boolean"
+        ):
+            mod.validate_feed_block_config({"description_prepend_semester_week_lecture": "yes"})
 
     def test_validate_feed_block_config_rejects_unknown_kind(self):
         mod = _load_feed_module()

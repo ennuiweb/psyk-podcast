@@ -187,7 +187,9 @@ Existing quiz generation/sync scripts remain unchanged.
 
 ### Security controls in phase 1
 - Django session auth + CSRF middleware
-- Login required on wrapper/raw/state/progress endpoints
+- Wrapper/raw quiz endpoints are public (`/q/*`, `/q/raw/*`) for anonymous play
+- Login required on progress and state persistence APIs (`/progress`, `/api/quiz-state/*`)
+- Anonymous users are prompted to log in when they reach quiz summary/completion
 - Strict quiz ID regex (`^[0-9a-f]{8}$`) plus existence checks
 - IP-based login/signup rate limiting
 - HTTP warning banners on auth pages (until HTTPS rollout)

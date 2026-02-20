@@ -1,14 +1,60 @@
 {% extends "base.html" %}
 {% block title %}Quiz · {{ quiz_title }}{% endblock %}
 {% block content %}
+<style>
+  .quiz-login-note {
+    margin-bottom: 1rem;
+    border: 1px solid rgba(39, 211, 223, 0.35);
+    border-radius: 14px;
+    padding: 0.75rem 0.9rem;
+    background: rgba(20, 68, 82, 0.18);
+    color: #c9f5fb;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem 0.75rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .quiz-login-note-links {
+    display: inline-flex;
+    gap: 0.5rem;
+  }
+
+  .quiz-login-prompt {
+    margin-top: 1rem;
+    border: 1px solid rgba(232, 171, 91, 0.55);
+    border-radius: 14px;
+    padding: 0.8rem 0.9rem;
+    background: rgba(159, 103, 33, 0.18);
+    color: #ffd9a7;
+  }
+
+  .quiz-login-prompt p {
+    margin: 0 0 0.55rem;
+  }
+</style>
 <div class="card quiz-shell">
   <form class="inline-form is-hidden">{% csrf_token %}</form>
+  {% if not user_is_authenticated %}
+  <div class="quiz-login-note">
+    <span>Tag quizzen anonymt. Log ind for at gemme dit fremskridt permanent.</span>
+    <span class="quiz-login-note-links">
+      <a class="nav-action" href="{{ login_next_url }}">Log ind</a>
+      <a class="nav-action" href="{{ signup_next_url }}">Opret konto</a>
+    </span>
+  </div>
+  {% endif %}
   <div class="quiz-head">
     <div>
       <h1 class="quiz-title">{{ quiz_title }}</h1>
       <p class="muted">Sværhedsgrad: {{ quiz_difficulty_label }} · ID: {{ quiz_id }}</p>
     </div>
+    {% if user_is_authenticated %}
     <a class="ghost-link" href="{% url 'progress' %}">Tilbage til fremskridt</a>
+    {% else %}
+    <a class="ghost-link" href="{{ login_next_url }}">Log ind for fremskridt</a>
+    {% endif %}
   </div>
 
   <div class="quiz-frame-wrap">
@@ -20,6 +66,15 @@
       referrerpolicy="same-origin"
     ></iframe>
   </div>
+  {% if not user_is_authenticated %}
+  <div id="login-end-prompt" class="quiz-login-prompt is-hidden">
+    <p>Quizzen er færdig. Log ind nu for at gemme dit resultat og følge dit fremskridt.</p>
+    <span class="quiz-login-note-links">
+      <a class="nav-action" href="{{ login_next_url }}">Log ind</a>
+      <a class="nav-action" href="{{ signup_next_url }}">Opret konto</a>
+    </span>
+  </div>
+  {% endif %}
 </div>
 
 <script>
@@ -29,6 +84,9 @@
     const iframe = document.getElementById("quiz-frame");
     const apiStateUrl = "{{ state_api_url }}";
     const rawStateUrl = "{{ raw_state_api_url }}";
+    const isAuthenticated = {{ user_is_authenticated|yesno:"true,false" }};
+    const loginEndPrompt = document.getElementById("login-end-prompt");
+    const localStateKey = "quiz-local-raw-state:{{ quiz_id }}";
     const origin = window.location.origin;
 
     function getCsrfToken() {
@@ -42,16 +100,84 @@
       return "";
     }
 
+    function parseStatePayload(payload) {
+      if (!payload) {
+        return null;
+      }
+      if (typeof payload === "object") {
+        return payload;
+      }
+      if (typeof payload !== "string") {
+        return null;
+      }
+      try {
+        return JSON.parse(payload);
+      } catch (error) {
+        return null;
+      }
+    }
+
+    function showEndPromptIfSummary(payload) {
+      if (isAuthenticated || !loginEndPrompt) {
+        return;
+      }
+      const state = parseStatePayload(payload);
+      if (!state) {
+        return;
+      }
+      if (String(state.currentView || "").toLowerCase() === "summary") {
+        loginEndPrompt.classList.remove("is-hidden");
+      }
+    }
+
+    function readLocalRawState() {
+      try {
+        const payload = window.localStorage.getItem(localStateKey);
+        if (!payload) {
+          return null;
+        }
+        JSON.parse(payload);
+        return payload;
+      } catch (error) {
+        return null;
+      }
+    }
+
+    function writeLocalRawState(payload) {
+      const body = typeof payload === "string" ? payload : JSON.stringify(payload ?? null);
+      try {
+        JSON.parse(body);
+        window.localStorage.setItem(localStateKey, body);
+      } catch (error) {
+        // Ignore localStorage and parse failures; server state still applies for logged-in users.
+      }
+      return body;
+    }
+
     async function fetchRawState() {
+      if (!isAuthenticated) {
+        return readLocalRawState();
+      }
+
       const response = await fetch(rawStateUrl, { credentials: "same-origin" });
       if (!response.ok) {
         throw new Error("Failed to fetch raw quiz state");
       }
-      return response.json();
+      const payload = await response.json();
+      if (payload !== null) {
+        return payload;
+      }
+      return readLocalRawState();
     }
 
     async function saveRawState(payload) {
-      const body = typeof payload === "string" ? payload : JSON.stringify(payload ?? null);
+      const body = writeLocalRawState(payload);
+      showEndPromptIfSummary(body);
+
+      if (!isAuthenticated) {
+        return;
+      }
+
       const response = await fetch(rawStateUrl, {
         method: "POST",
         credentials: "same-origin",
@@ -67,6 +193,9 @@
     }
 
     async function saveStructuredState(state) {
+      if (!isAuthenticated) {
+        return;
+      }
       const response = await fetch(apiStateUrl, {
         method: "POST",
         credentials: "same-origin",
@@ -80,6 +209,28 @@
         throw new Error("Failed to save structured quiz state");
       }
     }
+
+    async function syncLocalStateToAccount() {
+      if (!isAuthenticated) {
+        return;
+      }
+      const localPayload = readLocalRawState();
+      if (!localPayload) {
+        return;
+      }
+      try {
+        await saveRawState(localPayload);
+        const parsed = parseStatePayload(localPayload);
+        if (parsed) {
+          await saveStructuredState(parsed);
+        }
+        window.localStorage.removeItem(localStateKey);
+      } catch (error) {
+        console.warn("Failed to sync local quiz state to account", error);
+      }
+    }
+
+    syncLocalStateToAccount();
 
     async function handleBridgeMessage(event) {
       if (event.source !== iframe.contentWindow || event.origin !== origin) {
@@ -147,6 +298,7 @@
       api.setAppState = async function setAppStatePatched(state) {
         try {
           await saveStructuredState(state);
+          showEndPromptIfSummary(state);
         } catch (error) {
           console.error("Structured state save failed", error);
         }

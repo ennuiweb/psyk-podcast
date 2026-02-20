@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import logging
+from urllib.parse import urlencode
 
 from django.conf import settings
 from django.contrib import messages
@@ -66,6 +67,10 @@ def _safe_next_redirect(request: HttpRequest) -> str | None:
 def _difficulty_label(value: str | None) -> str:
     difficulty = (value or "unknown").strip().lower() or "unknown"
     return DIFFICULTY_LABELS_DA.get(difficulty, difficulty.capitalize())
+
+
+def _auth_url_with_next(route_name: str, next_path: str) -> str:
+    return f"{reverse(route_name)}?{urlencode({'next': next_path})}"
 
 
 def _rate_limit_exceeded(
@@ -185,13 +190,13 @@ def _ensure_quiz_exists_or_404(quiz_id: str) -> None:
         raise Http404("Quiz ikke fundet")
 
 
-@login_required
 @require_GET
 def quiz_wrapper_view(request: HttpRequest, quiz_id: str) -> HttpResponse:
     quiz_id = _ensure_quiz_id_or_404(quiz_id)
     _ensure_quiz_exists_or_404(quiz_id)
 
     label = load_quiz_label_mapping().get(quiz_id)
+    quiz_path = reverse("quiz-wrapper", kwargs={"quiz_id": quiz_id})
     context = {
         "quiz_id": quiz_id,
         "quiz_title": label.episode_title if label else quiz_id,
@@ -199,11 +204,13 @@ def quiz_wrapper_view(request: HttpRequest, quiz_id: str) -> HttpResponse:
         "raw_quiz_url": reverse("quiz-raw", kwargs={"quiz_id": quiz_id}),
         "state_api_url": reverse("quiz-state", kwargs={"quiz_id": quiz_id}),
         "raw_state_api_url": reverse("quiz-state-raw", kwargs={"quiz_id": quiz_id}),
+        "user_is_authenticated": request.user.is_authenticated,
+        "login_next_url": _auth_url_with_next("login", quiz_path),
+        "signup_next_url": _auth_url_with_next("signup", quiz_path),
     }
     return render(request, "quizzes/wrapper.html", context)
 
 
-@login_required
 @require_GET
 def quiz_raw_view(request: HttpRequest, quiz_id: str) -> HttpResponse:
     quiz_id = _ensure_quiz_id_or_404(quiz_id)

@@ -4,6 +4,7 @@ import html
 import json
 import tempfile
 from pathlib import Path
+from urllib.parse import urlencode
 
 from django.conf import settings
 from django.contrib.auth.models import User
@@ -151,19 +152,46 @@ class QuizPortalTests(TestCase):
         self.assertEqual(response.url, reverse("login"))
         self.assertNotIn("_auth_user_id", self.client.session)
 
-    def test_quiz_wrapper_redirects_when_anonymous(self) -> None:
-        response = self.client.get(reverse("quiz-wrapper", kwargs={"quiz_id": self.quiz_id}))
-        self.assertEqual(response.status_code, 302)
-        self.assertTrue(response.url.startswith(f"{reverse('login')}?next="))
+    def test_quiz_wrapper_allows_anonymous_and_shows_login_cta(self) -> None:
+        quiz_url = reverse("quiz-wrapper", kwargs={"quiz_id": self.quiz_id})
+        response = self.client.get(quiz_url)
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Tag quizzen anonymt.")
+        self.assertContains(response, f"{reverse('login')}?{urlencode({'next': quiz_url})}")
+        self.assertContains(response, f"{reverse('signup')}?{urlencode({'next': quiz_url})}")
 
-    def test_quiz_raw_requires_auth_and_serves_html(self) -> None:
+    def test_quiz_wrapper_hides_anonymous_notice_for_logged_in_user(self) -> None:
         self._create_user()
         self._login()
+        response = self.client.get(reverse("quiz-wrapper", kwargs={"quiz_id": self.quiz_id}))
+        self.assertEqual(response.status_code, 200)
+        self.assertNotContains(response, "Tag quizzen anonymt.")
 
+    def test_quiz_raw_is_public_and_serves_html(self) -> None:
         response = self.client.get(reverse("quiz-raw", kwargs={"quiz_id": self.quiz_id}))
         self.assertEqual(response.status_code, 200)
         content = b"".join(response.streaming_content).decode("utf-8")
         self.assertIn("<app-root", content)
+
+    def test_state_apis_redirect_when_anonymous(self) -> None:
+        state_url = reverse("quiz-state", kwargs={"quiz_id": self.quiz_id})
+        raw_state_url = reverse("quiz-state-raw", kwargs={"quiz_id": self.quiz_id})
+
+        response = self.client.get(state_url)
+        self.assertEqual(response.status_code, 302)
+        self.assertTrue(response.url.startswith(f"{reverse('login')}?next="))
+
+        response = self.client.post(state_url, data=json.dumps({}), content_type="application/json")
+        self.assertEqual(response.status_code, 302)
+        self.assertTrue(response.url.startswith(f"{reverse('login')}?next="))
+
+        response = self.client.get(raw_state_url)
+        self.assertEqual(response.status_code, 302)
+        self.assertTrue(response.url.startswith(f"{reverse('login')}?next="))
+
+        response = self.client.post(raw_state_url, data="{}", content_type="application/json")
+        self.assertEqual(response.status_code, 302)
+        self.assertTrue(response.url.startswith(f"{reverse('login')}?next="))
 
     def test_invalid_quiz_id_is_rejected(self) -> None:
         self._create_user()

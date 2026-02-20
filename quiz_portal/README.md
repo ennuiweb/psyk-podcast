@@ -7,8 +7,10 @@ Django portal for authentication + per-user quiz progress on top of existing sta
 - UI language: Danish only (`da`) for now; English is intentionally disabled.
 - Multi-language readiness: internal IDs/status codes remain language-neutral (`quiz_id`, `in_progress`, `completed`) so additional UI languages can be added later without data migration.
 - Locale stack is active (`LocaleMiddleware` + `LOCALE_PATHS`) but currently constrained to Danish in `LANGUAGES`.
-- Quiz access: `/q/<id>.html` is login-protected and renders a wrapper page.
-- Raw quiz HTML: served via login-protected `/q/raw/<id>.html`.
+- Quiz access: `/q/<id>.html` is public and renders a wrapper page.
+- Raw quiz HTML: served publicly via `/q/raw/<id>.html`.
+- Anonymous quiz state is kept locally in browser storage; logged-in users persist state in DB via API.
+- Anonymous users are prompted to log in when they reach quiz summary/completion.
 - Public static quiz files still exist at `/quizzes/personlighedspsykologi/<id>.html` (Caddy static route).
 - Progress key: per `(user, quiz_id)`.
 - Completion rule: `currentView == "summary"` and `answers_count == question_count`.

@@ -77,6 +77,7 @@ Lecture-level "Alle kilder" skips:
 - The authoritative per-week reading list is in:
   - OneDrive source: `/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/.ai/reading-file-key.md`
   - Repo mirror for feed automation: `shows/personlighedspsykologi-en/docs/reading-file-key.md`
+  - Repo mirror for NotebookLM docs: `notebooklm-podcast-auto/personlighedspsykologi/docs/reading-file-key.md`
 - Source inventory currently lives in:
   - OneDrive: `/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings`
 

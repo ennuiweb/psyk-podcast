@@ -48,7 +48,8 @@ Quiz link sync note:
 
 Reading key sync note:
 - Source of truth file: `/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/.ai/reading-file-key.md`
-- Repo mirror used by feed config: `shows/personlighedspsykologi-en/docs/reading-file-key.md`
+- Primary repo mirror used by feed config: `shows/personlighedspsykologi-en/docs/reading-file-key.md`
+- Secondary repo mirror (NotebookLM docs): `notebooklm-podcast-auto/personlighedspsykologi/docs/reading-file-key.md`
 - Sync commands:
   - Dry-run: `python3 scripts/sync_personlighedspsykologi_reading_file_key.py`
   - Apply: `python3 scripts/sync_personlighedspsykologi_reading_file_key.py --apply`

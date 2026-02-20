@@ -66,7 +66,13 @@
     },
     "ttl": 60,
     "sort_mode": "wxlx_kind_priority",
+    "title_blocks": [
+      "course_week_lecture",
+      "subject_or_type",
+      "week_date_range"
+    ],
     "audio_category_prefix_position": "after_first_block",
+    "description_prepend_semester_week_lecture": true,
     "tail_grundbog_lydbog": {
       "enabled": true,
       "include_forord": true,

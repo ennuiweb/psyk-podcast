@@ -1178,6 +1178,30 @@ def format_week_range(
     return f"Uge {week_number} {week_start_date:%d/%m} - {week_end_date:%d/%m}"
 
 
+def format_week_date_range(
+    published_at: Optional[dt.datetime],
+    week_reference_year: Optional[int] = None,
+) -> Optional[str]:
+    if not published_at:
+        return None
+    if published_at.tzinfo is None:
+        published_at = published_at.replace(tzinfo=dt.timezone.utc)
+    iso_calendar = published_at.isocalendar()
+    if isinstance(iso_calendar, tuple):
+        iso_year, week_number, _ = iso_calendar
+    else:  # Python 3.11+ returns datetime.IsoCalendarDate
+        iso_year = iso_calendar.year
+        week_number = iso_calendar.week
+    reference_year = week_reference_year or iso_year
+    try:
+        week_start_date = dt.date.fromisocalendar(reference_year, week_number, 1)
+    except ValueError:
+        week_start_dt = published_at - dt.timedelta(days=published_at.weekday())
+        week_start_date = week_start_dt.date()
+    week_end_date = week_start_date + dt.timedelta(days=6)
+    return f"{week_start_date:%d/%m} - {week_end_date:%d/%m}"
+
+
 def format_semester_week_range(
     published_at: Optional[dt.datetime],
     semester_start: Optional[str],
@@ -1515,12 +1539,14 @@ WEEK_PREFIX_SEPARATOR_PATTERN = re.compile(r"^[\s._\-–:]+")
 EPISODE_KINDS = {"reading", "brief", "weekly_overview"}
 TITLE_BLOCKS_ALLOWED = {
     "semester_week_lecture",
+    "course_week_lecture",
     "semester_week",
     "lecture",
     "subject",
     "type_label",
     "subject_or_type",
     "week_range",
+    "week_date_range",
 }
 DESCRIPTION_BLOCKS_ALLOWED = {
     "descriptor_subject",
@@ -1811,6 +1837,11 @@ def validate_feed_block_config(feed_config: Dict[str, Any]) -> None:
             path="feed.description_blocks",
             allowed_blocks=DESCRIPTION_BLOCKS_ALLOWED,
         )
+    if "description_prepend_semester_week_lecture" in feed_config and not isinstance(
+        feed_config.get("description_prepend_semester_week_lecture"),
+        bool,
+    ):
+        raise ValueError("feed.description_prepend_semester_week_lecture must be a boolean.")
 
     mapping_specs = (
         ("title_blocks_by_kind", TITLE_BLOCKS_ALLOWED),
@@ -2325,6 +2356,7 @@ def build_episode_entry(
     except (TypeError, ValueError):
         week_year = None
     week_range_label = format_week_range(published_at, week_year)
+    week_date_range = format_week_date_range(published_at, week_year)
     if week_range_label and week_number is None:
         match = re.search(r"Uge\s+(\d+)", week_range_label)
         if match:
@@ -2333,6 +2365,7 @@ def build_episode_entry(
     if is_unassigned_tail:
         week_number = None
         week_range_label = None
+        week_date_range = None
 
     semester_week_label = feed_config.get("semester_week_label")
     if not isinstance(semester_week_label, str) or not semester_week_label.strip():
@@ -2343,6 +2376,28 @@ def build_episode_entry(
         or not semester_week_description_label.strip()
     ):
         semester_week_description_label = "Semester week"
+    raw_description_prepend = feed_config.get("description_prepend_semester_week_lecture", False)
+    description_prepend_semester_week_lecture = (
+        raw_description_prepend if isinstance(raw_description_prepend, bool) else False
+    )
+
+    semester_week_lecture = None
+    if week_number and lecture_number:
+        semester_week_lecture = f"{semester_week_label} {week_number}, Forelæsning {lecture_number}"
+    elif lecture_number:
+        semester_week_lecture = f"Forelæsning {lecture_number}"
+    elif week_number:
+        semester_week_lecture = f"{semester_week_label} {week_number}"
+
+    compact_week_number = sort_week_number if sort_week_number else week_number
+    compact_lecture_number = lecture_number
+    course_week_lecture = None
+    if compact_week_number and compact_lecture_number:
+        course_week_lecture = f"U{compact_week_number}F{compact_lecture_number}"
+    elif compact_week_number:
+        course_week_lecture = f"U{compact_week_number}"
+    elif compact_lecture_number:
+        course_week_lecture = f"F{compact_lecture_number}"
 
     raw_title_with_tags = _strip_cfg_tags(base_title)
     raw_title = re.sub(r"\s+", " ", LANGUAGE_TAG_PATTERN.sub("", raw_title_with_tags)).strip()
@@ -2402,14 +2457,6 @@ def build_episode_entry(
             meta["title"] = subject or raw_title
 
     if not meta.get("title"):
-        semester_week_lecture = None
-        if week_number and lecture_number:
-            semester_week_lecture = f"{semester_week_label} {week_number}, Forelæsning {lecture_number}"
-        elif lecture_number:
-            semester_week_lecture = f"Forelæsning {lecture_number}"
-        elif week_number:
-            semester_week_lecture = f"{semester_week_label} {week_number}"
-
         subject = display_subject or cleaned_title or raw_title
         if is_weekly_overview and type_label:
             subject_or_type = type_label
@@ -2418,12 +2465,14 @@ def build_episode_entry(
 
         title_block_values = {
             "semester_week_lecture": semester_week_lecture,
+            "course_week_lecture": course_week_lecture,
             "semester_week": f"{semester_week_label} {week_number}" if week_number else None,
             "lecture": f"Forelæsning {lecture_number}" if lecture_number else None,
             "subject": subject,
             "type_label": type_label,
             "subject_or_type": subject_or_type,
             "week_range": f"({week_range_label})" if week_range_label else None,
+            "week_date_range": week_date_range,
         }
         title_blocks = _resolve_blocks_for_kind(
             feed_config,
@@ -2588,6 +2637,15 @@ def build_episode_entry(
         if not description:
             description = descriptor_subject or summary or base_title
         meta["description"] = description
+
+    if (
+        description_prepend_semester_week_lecture
+        and semester_week_lecture
+        and isinstance(meta.get("description"), str)
+    ):
+        prefix = f"{semester_week_lecture}\n"
+        if not meta["description"].startswith(prefix):
+            meta["description"] = f"{semester_week_lecture}\n{meta['description']}"
 
     if quiz_url:
         if not meta.get("link"):

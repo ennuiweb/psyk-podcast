@@ -11,6 +11,7 @@ Scaffolding for the "Personlighedspsykologi" feed.
 - `docs/` - planning material and any "important text" docs.
 
 Feed note: generated episode `title` and `description` are block-composed. Use `feed.title_blocks` / `feed.description_blocks` (and optional `*_by_kind`) for formatting control.
+Block note: `course_week_lecture` renders compact `U#F#` (from `W#L#`), `week_date_range` renders `dd/mm - dd/mm`, and `feed.description_prepend_semester_week_lecture: true` prepends `Semesteruge X, Forelæsning Y` on line 1 of descriptions.
 Feed ordering note: `feed.sort_mode: "wxlx_kind_priority"` groups by `W#L#` and orders each block as `Brief -> Alle kilder -> Oplæst/TTS readings -> other readings`; blocks are still ordered by newest publish timestamp.
 Unassigned TTS note: audio files without week tokens (for example in Drive folder `grundbog-tts/`) are auto-scheduled before week 1 and therefore render at the end of the feed.
 Feed pubDate note: `feed.pubdate_year_rewrite` rewrites only item `<pubDate>` year tokens during generation (for this show: `2026 -> 2025`) and does not change channel `<lastBuildDate>`.

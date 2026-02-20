@@ -15,7 +15,6 @@ Single-file skips:
 - W06L1: Funch & Roald (2014) chapter
 - W09L1: Jensen (2014)
 - W11L1: Staunæs & Juelskjær (2014)
-- W11L2: Bank (2014)
 - W12L1: Køppe (2014)
 - W12L1: Køppe og Dammeyer (2014b)
 
@@ -23,7 +22,6 @@ Weekly overview skips:
 - W06L1 (missing Funch & Roald 2014)
 - W09L1 (missing Jensen 2014)
 - W11L1 (missing Staunæs & Juelskjær 2014)
-- W11L2 (missing Bank 2014)
 - W12L1 (missing Køppe 2014; Køppe og Dammeyer 2014b)
 
 Sources used for this mapping:
@@ -127,10 +125,10 @@ Sources used for this mapping:
 
 **W11L2 Narrativitet, kultur og mening (Forelæsning 21, 2026-04-21)**
 - Exercise text → W11L2 X Raggatt (2002).pdf
+- Bank (2014) → Bank, M. (2014). Narrative psykologier. I Køppe, S. & Dammeyer, J. (Red.).pdf
 - Bruner (1999) → Bruner (1999) .pdf
 - McAdams & Pals (2006) → McAdams & Pals (2006) .pdf
 - Grundbog kapitel 09 - Narrative teorier → Grundbog kapitel 09 - Narrative teorier.pdf (brief + full)
-- MISSING: Bank (2014)
 
 **W12L1 Sammenligning af teorier og subjektets historie og eksamen (Forelæsning 22, 2026-04-27)**
 - Elias (2000) → Elias (2000) .pdf

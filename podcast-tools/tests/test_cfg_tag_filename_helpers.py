@@ -148,7 +148,7 @@ class CfgTagFilenameHelpersTests(unittest.TestCase):
 
     def test_cfg_tag_suffix_strip_removes_repeated_tags(self):
         local = self.local_sync
-        value = "W01L1 - Foo {type=quiz lang=en quantity=more difficulty=hard download=html hash=beef1234}"
+        value = "W01L1 - Foo {type=quiz lang=en quantity=more difficulty=hard hash=beef1234}"
         self.assertEqual(local.strip_cfg_tag_suffix(value), "W01L1 - Foo")
         if self.drive_sync is not None:
             self.assertEqual(self.drive_sync.strip_cfg_tag_suffix(value), "W01L1 - Foo")
@@ -157,7 +157,7 @@ class CfgTagFilenameHelpersTests(unittest.TestCase):
         mod = self.local_sync
         stem = (
             "W01L1 - Foo [EN] "
-            "{type=quiz lang=en quantity=standard difficulty=easy download=html hash=beef1234}"
+            "{type=quiz lang=en quantity=standard difficulty=easy hash=beef1234}"
         )
         self.assertTrue(mod.matches_quiz_difficulty(stem, "easy"))
         self.assertFalse(mod.matches_quiz_difficulty(stem, "medium"))
@@ -175,7 +175,7 @@ class CfgTagFilenameHelpersTests(unittest.TestCase):
         self.assertTrue(mod.is_excluded_quiz_json_name("foo.html.request.done.json"))
         self.assertFalse(
             mod.is_excluded_quiz_json_name(
-                "W01L1 - Foo [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=beef1234}.json"
+                "W01L1 - Foo [EN] {type=quiz lang=en quantity=standard difficulty=easy hash=beef1234}.json"
             )
         )
 
@@ -221,7 +221,7 @@ class CfgTagFilenameHelpersTests(unittest.TestCase):
         mod = self.drive_sync
         stem = (
             "W01L1 - Foo [EN] "
-            "{type=quiz lang=en quantity=standard difficulty=hard download=html hash=beef1234}"
+            "{type=quiz lang=en quantity=standard difficulty=hard hash=beef1234}"
         )
         self.assertTrue(mod.matches_quiz_difficulty(stem, "hard"))
         self.assertFalse(mod.matches_quiz_difficulty(stem, "easy"))
@@ -243,7 +243,7 @@ class CfgTagFilenameHelpersTests(unittest.TestCase):
         self.assertTrue(mod.is_excluded_quiz_json_name("foo.html.request.done.json"))
         self.assertFalse(
             mod.is_excluded_quiz_json_name(
-                "W01L1 - Foo [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=beef1234}.json"
+                "W01L1 - Foo [EN] {type=quiz lang=en quantity=standard difficulty=hard hash=beef1234}.json"
             )
         )
 
@@ -464,7 +464,7 @@ class CfgTagFilenameHelpersTests(unittest.TestCase):
             infographic_detail=None,
             quiz_quantity="more",
             quiz_difficulty="hard",
-            quiz_format="html",
+            quiz_format="json",
             source_count=None,
             hash_len=8,
         )
@@ -472,8 +472,26 @@ class CfgTagFilenameHelpersTests(unittest.TestCase):
         self.assertIn("lang=en", token)
         self.assertIn("quantity=more", token)
         self.assertIn("difficulty=hard", token)
-        self.assertIn("download=html", token)
+        self.assertIn("download=json", token)
         self.assertRegex(token, r"hash=[0-9a-f]{8}")
+
+    def test_generate_week_build_output_cfg_tag_token_omits_html_download_field(self):
+        mod = self.generate_week
+        token = mod.build_output_cfg_tag_token(
+            content_type="quiz",
+            language="en",
+            instructions="quiz prompt",
+            audio_format=None,
+            audio_length=None,
+            infographic_orientation=None,
+            infographic_detail=None,
+            quiz_quantity="standard",
+            quiz_difficulty="medium",
+            quiz_format="html",
+            source_count=None,
+            hash_len=8,
+        )
+        self.assertNotIn("download=", token)
 
     def test_generate_week_build_output_cfg_tag_token_includes_source_count_for_weekly_audio(self):
         mod = self.generate_week
@@ -571,12 +589,12 @@ class CfgTagFilenameHelpersTests(unittest.TestCase):
             self.skipTest("notebooklm dependencies unavailable for generate_podcast import")
         mod = self.generate_podcast
         output = Path(
-            "W01L1 - Foo [EN] {type=quiz lang=en quantity=standard difficulty=all download=html hash=deadbeef}.html"
+            "W01L1 - Foo [EN] {type=quiz lang=en quantity=standard difficulty=all hash=deadbeef}.html"
         )
         rewritten = mod._output_path_for_quiz_difficulty(output, "hard")
         self.assertEqual(
             rewritten.name,
-            "W01L1 - Foo [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=deadbeef}.html",
+            "W01L1 - Foo [EN] {type=quiz lang=en quantity=standard difficulty=hard hash=deadbeef}.html",
         )
 
     def test_generate_podcast_output_path_for_quiz_difficulty_fallback_suffix(self):

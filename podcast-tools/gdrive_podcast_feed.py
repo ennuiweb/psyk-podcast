@@ -444,15 +444,55 @@ def _resolve_quiz_link_payloads(base_url: Any, raw_entry: Any) -> List[Dict[str,
     return resolved
 
 
-def _render_quiz_block(quiz_links: Sequence[Dict[str, str]]) -> Optional[str]:
+def _resolve_quiz_display_labels(
+    quiz_cfg: Optional[Dict[str, Any]],
+) -> Tuple[str, str, Dict[str, str]]:
+    singular_label = "Quiz"
+    plural_label = "Quizzes"
+    difficulty_labels = dict(QUIZ_DIFFICULTY_LABELS)
+    if not isinstance(quiz_cfg, dict):
+        return singular_label, plural_label, difficulty_labels
+
+    labels = quiz_cfg.get("labels")
+    if not isinstance(labels, dict):
+        return singular_label, plural_label, difficulty_labels
+
+    single_raw = labels.get("single")
+    if isinstance(single_raw, str) and single_raw.strip():
+        singular_label = single_raw.strip()
+
+    multiple_raw = labels.get("multiple")
+    if isinstance(multiple_raw, str) and multiple_raw.strip():
+        plural_label = multiple_raw.strip()
+
+    difficulty_raw = labels.get("difficulty")
+    if isinstance(difficulty_raw, dict):
+        for key, value in difficulty_raw.items():
+            if not isinstance(key, str):
+                continue
+            if not isinstance(value, str) or not value.strip():
+                continue
+            difficulty_labels[key.strip().lower()] = value.strip()
+
+    return singular_label, plural_label, difficulty_labels
+
+
+def _render_quiz_block(
+    quiz_links: Sequence[Dict[str, str]],
+    *,
+    singular_label: str = "Quiz",
+    plural_label: str = "Quizzes",
+    difficulty_labels: Optional[Dict[str, str]] = None,
+) -> Optional[str]:
     if not quiz_links:
         return None
+    labels = difficulty_labels or QUIZ_DIFFICULTY_LABELS
     if len(quiz_links) == 1:
-        return f"\n\nQuiz:\n{quiz_links[0]['url']}"
-    lines = ["\n\nQuizzes:"]
+        return f"\n\n{singular_label}:\n{quiz_links[0]['url']}"
+    lines = [f"\n\n{plural_label}:"]
     for link in quiz_links:
         difficulty = _normalize_quiz_difficulty(link.get("difficulty"))
-        label = QUIZ_DIFFICULTY_LABELS.get(difficulty, difficulty.capitalize())
+        label = labels.get(difficulty, difficulty.capitalize())
         lines.append(f"- {label}: {link['url']}")
     return "\n".join(lines)
 
@@ -2434,6 +2474,9 @@ def build_episode_entry(
 
     quiz_link_payloads: List[Dict[str, str]] = []
     quiz_url = None
+    quiz_singular_label, quiz_plural_label, quiz_difficulty_labels = _resolve_quiz_display_labels(
+        quiz_cfg
+    )
     if quiz_cfg and quiz_links and file_entry.get("name"):
         base_url = quiz_cfg.get("base_url")
         links_map = quiz_links.get("by_name") if isinstance(quiz_links, dict) else None
@@ -2604,7 +2647,12 @@ def build_episode_entry(
             "semester_week": (
                 f"{semester_week_description_label} {week_number}" if week_number else None
             ),
-            "quiz": _render_quiz_block(quiz_link_payloads),
+            "quiz": _render_quiz_block(
+                quiz_link_payloads,
+                singular_label=quiz_singular_label,
+                plural_label=quiz_plural_label,
+                difficulty_labels=quiz_difficulty_labels,
+            ),
             "quiz_url": quiz_url,
             "reading_summary": (
                 reading_summary_value or descriptor_subject

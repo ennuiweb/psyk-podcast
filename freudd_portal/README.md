@@ -1,6 +1,6 @@
 # freudd
 
-Django portal for authentication + per-user quiz progress on top of existing static NotebookLM quiz exports.
+Django portal for authentication + per-user quiz score overview on top of existing static NotebookLM quiz exports.
 
 ## Current decisions
 - Auth: Django session auth with open signup (`/accounts/signup`).
@@ -16,7 +16,7 @@ Django portal for authentication + per-user quiz progress on top of existing sta
 - Anonymous users are prompted to log in when they reach quiz summary/completion.
 - Quiz files directory must be readable by `www-data`; sync uploads now avoid owner/group preservation and enforce root dir mode `755`.
 - Public static quiz files still exist at `/quizzes/personlighedspsykologi/<id>.html` (Caddy static route).
-- Progress key: per `(user, quiz_id)`.
+- Score key: per `(user, quiz_id)`.
 - Semester is stored globally per user (`UserPreference.semester`), and rendered as a fixed dropdown sourced from `subjects.json`.
 - Subjects are loaded from `freudd_portal/subjects.json`; first active subject is `personlighedspsykologi`.
 - Subject enrollment is per `(user, subject_slug)` in `SubjectEnrollment`.
@@ -42,7 +42,7 @@ Django portal for authentication + per-user quiz progress on top of existing sta
 `quiz_id` format is strict 8-char hex (`^[0-9a-f]{8}$`).
 
 ## Data model
-- `QuizProgress` (existing): per-user quiz completion/progress state.
+- `QuizProgress` (existing): per-user quiz completion/score state.
 - `UserPreference`: one-to-one with user (`semester`, `updated_at`).
 - `SubjectEnrollment`: per-user subject enrollment keyed by `(user, subject_slug)`.
 

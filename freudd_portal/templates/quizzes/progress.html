@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}Fremskridt · freudd{% endblock %}
+{% block title %}Min side · freudd{% endblock %}
 {% block content %}
 <style>
   .section-title {
@@ -85,8 +85,8 @@
   }
 </style>
 <div class="card">
-  <h1 class="quiz-title">Dine fremskridt</h1>
-  <p class="muted">Vælg semester, tilmeld fag, og følg dine quizresultater.</p>
+  <h1 class="quiz-title">Min side</h1>
+  <p class="muted">Vælg semester, tilmeld fag, og få overblik over dine quizscore.</p>
 
   <section class="dashboard-section">
     <h2 class="section-title">Semester</h2>
@@ -146,7 +146,7 @@
   </section>
 
   <section class="dashboard-section">
-    <h2 class="section-title">Quizfremskridt</h2>
+    <h2 class="section-title">Mine quizscore</h2>
     {% if rows %}
     <div class="table-wrap">
       <table>
@@ -182,7 +182,7 @@
       </table>
     </div>
     {% else %}
-    <p class="muted">Der er endnu ikke gemt fremskridt for nogen quizzer.</p>
+    <p class="muted">Der er endnu ikke gemte quizscore.</p>
     {% endif %}
   </section>
 </div>

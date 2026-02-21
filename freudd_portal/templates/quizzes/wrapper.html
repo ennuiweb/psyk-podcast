@@ -2,20 +2,6 @@
 {% block title %}Quiz · {{ quiz_title }}{% endblock %}
 {% block content %}
 <style>
-  .quiz-login-note {
-    margin-bottom: 1rem;
-    border: 1px solid rgba(39, 211, 223, 0.35);
-    border-radius: 14px;
-    padding: 0.75rem 0.9rem;
-    background: rgba(20, 68, 82, 0.18);
-    color: #c9f5fb;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.45rem 0.75rem;
-    align-items: center;
-    justify-content: space-between;
-  }
-
   .quiz-login-note-links {
     display: inline-flex;
     gap: 0.5rem;
@@ -178,24 +164,13 @@
 </style>
 <div class="card quiz-shell">
   <form class="inline-form is-hidden">{% csrf_token %}</form>
-  {% if not user_is_authenticated %}
-  <div class="quiz-login-note">
-    <span>Tag quizzen anonymt. Log ind for at gemme dit fremskridt permanent.</span>
-    <span class="quiz-login-note-links">
-      <a class="nav-action" href="{{ login_next_url }}">Log ind</a>
-      <a class="nav-action" href="{{ signup_next_url }}">Opret konto</a>
-    </span>
-  </div>
-  {% endif %}
   <div class="quiz-head">
     <div>
       <h1 class="quiz-title">{{ quiz_title }}</h1>
       <p class="muted">Sværhedsgrad: {{ quiz_difficulty_label }} · ID: {{ quiz_id }}</p>
     </div>
     {% if user_is_authenticated %}
-    <a class="ghost-link" href="{% url 'progress' %}">Tilbage til fremskridt</a>
-    {% else %}
-    <a class="ghost-link" href="{{ login_next_url }}">Log ind for fremskridt</a>
+    <a class="ghost-link" href="{% url 'progress' %}">Tilbage til min side</a>
     {% endif %}
   </div>
 
@@ -244,7 +219,7 @@
 
   {% if not user_is_authenticated %}
   <div id="login-end-prompt" class="quiz-login-prompt is-hidden">
-    <p>Quizzen er færdig. Log ind nu for at gemme dit resultat og følge dit fremskridt.</p>
+    <p>Quizzen er færdig. Log ind nu for at gemme din score og se din samlede score.</p>
     <span class="quiz-login-note-links">
       <a class="nav-action" href="{{ login_next_url }}">Log ind</a>
       <a class="nav-action" href="{{ signup_next_url }}">Opret konto</a>

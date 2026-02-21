@@ -125,7 +125,7 @@ python podcast/gdrive_podcast_feed.py --config podcast/config.local.json
 The repository ships with `podcast/config.json` and `podcast/episode_metadata.json` pre-populated for Socialpsykologi Deep Dives - Hold 1 - 2024—update the titles, artwork, contact email, and descriptions to match your own show before publishing.
 
 ## freudd (login + learning dashboard)
-The repository now includes a separate Django portal in `freudd_portal/` for user login, per-user quiz progress tracking, subject enrollment, semester preferences, and subject reading overviews without changing NotebookLM-generated quiz HTML internals.
+The repository now includes a separate Django portal in `freudd_portal/` for user login, per-user quiz score tracking, subject enrollment, semester preferences, and subject reading overviews without changing NotebookLM-generated quiz HTML internals.
 
 ### What it serves
 - `GET/POST /accounts/signup`
@@ -134,9 +134,9 @@ The repository now includes a separate Django portal in `freudd_portal/` for use
 - `GET /q/<quiz_id>.html` (public JSON-driven quiz wrapper)
 - `GET /q/raw/<quiz_id>.html` (public raw quiz HTML)
 - `GET /api/quiz-content/<quiz_id>` (public normalized quiz JSON for wrapper UI)
-- `GET/POST /api/quiz-state/<quiz_id>` (login-required structured progress state)
+- `GET/POST /api/quiz-state/<quiz_id>` (login-required structured quiz state)
 - `GET/POST /api/quiz-state/<quiz_id>/raw` (login-required legacy raw state payload)
-- `GET /progress` (login-required dashboard with semester selector, subject cards, and quiz progress rows)
+- `GET /progress` (login-required dashboard with semester selector, subject cards, and quiz score rows)
 - `POST /preferences/semester` (login-required semester update)
 - `GET /subjects/<subject_slug>` (login-required subject detail + readings)
 - `POST /subjects/<subject_slug>/enroll` (login-required)

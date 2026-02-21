@@ -218,20 +218,22 @@ class QuizPortalTests(TestCase):
         self.assertEqual(response.url, reverse("login"))
         self.assertNotIn("_auth_user_id", self.client.session)
 
-    def test_quiz_wrapper_allows_anonymous_and_shows_login_cta(self) -> None:
+    def test_quiz_wrapper_allows_anonymous_without_pre_summary_login_prompts(self) -> None:
         quiz_url = reverse("quiz-wrapper", kwargs={"quiz_id": self.quiz_id})
         response = self.client.get(quiz_url)
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "Tag quizzen anonymt.")
+        self.assertNotContains(response, "Tag quizzen anonymt.")
+        self.assertNotContains(response, "Log ind for ")
+        self.assertContains(response, "Quizzen er færdig. Log ind nu for at gemme din score og se din samlede score.")
         self.assertContains(response, f"{reverse('login')}?{urlencode({'next': quiz_url})}")
         self.assertContains(response, f"{reverse('signup')}?{urlencode({'next': quiz_url})}")
 
-    def test_quiz_wrapper_hides_anonymous_notice_for_logged_in_user(self) -> None:
+    def test_quiz_wrapper_hides_anonymous_end_prompt_for_logged_in_user(self) -> None:
         self._create_user()
         self._login()
         response = self.client.get(reverse("quiz-wrapper", kwargs={"quiz_id": self.quiz_id}))
         self.assertEqual(response.status_code, 200)
-        self.assertNotContains(response, "Tag quizzen anonymt.")
+        self.assertNotContains(response, "Quizzen er færdig. Log ind nu for at gemme din score og se din samlede score.")
 
     def test_quiz_raw_is_public_and_serves_html(self) -> None:
         response = self.client.get(reverse("quiz-raw", kwargs={"quiz_id": self.quiz_id}))

@@ -258,7 +258,8 @@ def build_output_cfg_tag_token(
     elif content_type == "quiz":
         parts.append(f"quantity={normalized_quiz_quantity}")
         parts.append(f"difficulty={normalized_quiz_difficulty}")
-        parts.append(f"download={normalized_quiz_format}")
+        if normalized_quiz_format != "html":
+            parts.append(f"download={normalized_quiz_format}")
         hash_payload["quiz_quantity"] = normalized_quiz_quantity
         hash_payload["quiz_difficulty"] = normalized_quiz_difficulty
         hash_payload["quiz_download_format"] = normalized_quiz_format

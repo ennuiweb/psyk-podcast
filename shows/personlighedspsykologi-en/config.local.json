@@ -38,7 +38,16 @@
   "only_doc_marked_important": true,
   "quiz": {
     "links_file": "shows/personlighedspsykologi-en/quiz_links.json",
-    "base_url": "http://64.226.79.109/q/"
+    "base_url": "http://64.226.79.109/q/",
+    "labels": {
+      "single": "Quiz",
+      "multiple": "Quizzer",
+      "difficulty": {
+        "easy": "Let",
+        "medium": "Mellem",
+        "hard": "Svær"
+      }
+    }
   },
   "feed": {
     "title": "Personlighedspsykologi",
@@ -81,19 +90,19 @@
     },
     "description_blocks_by_kind": {
       "reading": [
+        "quiz",
         "reading_summary",
-        "reading_key_points",
-        "quiz"
+        "reading_key_points"
       ],
       "brief": [
+        "quiz",
         "reading_summary",
-        "reading_key_points",
-        "quiz"
+        "reading_key_points"
       ],
       "weekly_overview": [
+        "quiz",
         "weekly_overview_summary",
-        "weekly_overview_key_points",
-        "quiz"
+        "weekly_overview_key_points"
       ]
     }
   },

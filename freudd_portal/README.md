@@ -17,6 +17,10 @@ Django portal for authentication + per-user quiz progress on top of existing sta
 - Quiz files directory must be readable by `www-data`; sync uploads now avoid owner/group preservation and enforce root dir mode `755`.
 - Public static quiz files still exist at `/quizzes/personlighedspsykologi/<id>.html` (Caddy static route).
 - Progress key: per `(user, quiz_id)`.
+- Semester is stored globally per user (`UserPreference.semester`), and rendered as a fixed dropdown sourced from `subjects.json`.
+- Subjects are loaded from `freudd_portal/subjects.json`; first active subject is `personlighedspsykologi`.
+- Subject enrollment is per `(user, subject_slug)` in `SubjectEnrollment`.
+- Subject reading lists are parsed live from the master key markdown file path (`FREUDD_READING_MASTER_KEY_PATH`) with mtime-based cache.
 - Completion rule: `currentView == "summary"` and `answers_count == question_count`.
 - Theme direction: dark mode UI (Space Grotesk + Manrope); wrapper responds `ThemeChange: "dark"`.
 
@@ -30,8 +34,37 @@ Django portal for authentication + per-user quiz progress on top of existing sta
 - `GET/POST /api/quiz-state/<quiz_id>`
 - `GET/POST /api/quiz-state/<quiz_id>/raw`
 - `GET /progress`
+- `POST /preferences/semester`
+- `GET /subjects/<subject_slug>`
+- `POST /subjects/<subject_slug>/enroll`
+- `POST /subjects/<subject_slug>/unenroll`
 
 `quiz_id` format is strict 8-char hex (`^[0-9a-f]{8}$`).
+
+## Data model
+- `QuizProgress` (existing): per-user quiz completion/progress state.
+- `UserPreference`: one-to-one with user (`semester`, `updated_at`).
+- `SubjectEnrollment`: per-user subject enrollment keyed by `(user, subject_slug)`.
+
+## Subject catalog (`subjects.json`)
+```json
+{
+  "version": 1,
+  "semester_choices": ["F26"],
+  "subjects": [
+    {
+      "slug": "personlighedspsykologi",
+      "title": "Personlighedspsykologi",
+      "description": "Personlighedspsykologi F26",
+      "active": true
+    }
+  ]
+}
+```
+
+## New env configuration
+- `FREUDD_SUBJECTS_JSON_PATH` (default: `freudd_portal/subjects.json`)
+- `FREUDD_READING_MASTER_KEY_PATH` (default: `/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/.ai/reading-file-key.md`)
 
 ## Local run
 ```bash
@@ -49,7 +82,7 @@ python3 manage.py runserver 0.0.0.0:8000
 - Service: `freudd-portal.service`
 - Gunicorn bind: `127.0.0.1:8001`
 - Env file: `/etc/freudd-portal.env`
-- Caddy routes to portal: `/accounts/*`, `/api/*`, `/progress*`, `/q/*`
+- Caddy routes to portal: `/accounts/*`, `/api/*`, `/progress*`, `/q/*`, `/subjects/*`, `/preferences/*`
 
 Service commands:
 ```bash

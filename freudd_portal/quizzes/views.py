@@ -1,4 +1,4 @@
-"""Views for auth, quiz wrapper/raw access, and state/progress APIs."""
+"""Views for auth, quiz wrapper/raw access, subject dashboards, and state/progress APIs."""
 
 from __future__ import annotations
 
@@ -18,7 +18,7 @@ from django.urls import reverse
 from django.views.decorators.http import require_GET, require_http_methods, require_POST
 
 from .forms import SignupForm
-from .models import QuizProgress
+from .models import QuizProgress, SubjectEnrollment, UserPreference
 from .rate_limit import evaluate_rate_limit
 from .services import (
     QUIZ_ID_RE,
@@ -32,6 +32,7 @@ from .services import (
     quiz_question_count,
     upsert_progress_from_state,
 )
+from .subject_services import SubjectCatalog, load_subject_catalog, parse_master_readings
 
 logger = logging.getLogger(__name__)
 MAX_STATE_BYTES = 5_000_000
@@ -68,6 +69,17 @@ def _safe_next_redirect(request: HttpRequest) -> str | None:
 def _difficulty_label(value: str | None) -> str:
     difficulty = (value or "unknown").strip().lower() or "unknown"
     return DIFFICULTY_LABELS_DA.get(difficulty, difficulty.capitalize())
+
+
+def _default_semester_choice(catalog: SubjectCatalog) -> str:
+    return catalog.semester_choices[0] if catalog.semester_choices else "F26"
+
+
+def _subject_or_404(catalog: SubjectCatalog, subject_slug: str):
+    subject = catalog.active_subject_by_slug(subject_slug)
+    if subject is None:
+        raise Http404("Fag ikke fundet")
+    return subject
 
 
 def _auth_url_with_next(route_name: str, next_path: str) -> str:
@@ -323,6 +335,34 @@ def quiz_state_raw_view(request: HttpRequest, quiz_id: str) -> HttpResponse:
 @login_required
 @require_GET
 def progress_view(request: HttpRequest) -> HttpResponse:
+    catalog = load_subject_catalog()
+    preference, _ = UserPreference.objects.get_or_create(
+        user=request.user,
+        defaults={"semester": _default_semester_choice(catalog)},
+    )
+
+    semester_choices = catalog.semester_choices or (_default_semester_choice(catalog),)
+    selected_semester = preference.semester
+    if selected_semester not in semester_choices:
+        selected_semester = _default_semester_choice(catalog)
+
+    enrolled_slugs = set(
+        SubjectEnrollment.objects.filter(user=request.user).values_list("subject_slug", flat=True)
+    )
+    subject_cards: list[dict[str, object]] = []
+    for subject in catalog.active_subjects:
+        subject_cards.append(
+            {
+                "slug": subject.slug,
+                "title": subject.title,
+                "description": subject.description,
+                "is_enrolled": subject.slug in enrolled_slugs,
+                "detail_url": reverse("subject-detail", kwargs={"subject_slug": subject.slug}),
+                "enroll_url": reverse("subject-enroll", kwargs={"subject_slug": subject.slug}),
+                "unenroll_url": reverse("subject-unenroll", kwargs={"subject_slug": subject.slug}),
+            }
+        )
+
     label_mapping = load_quiz_label_mapping()
     progress_rows = QuizProgress.objects.filter(user=request.user).order_by("-updated_at")
 
@@ -344,4 +384,85 @@ def progress_view(request: HttpRequest) -> HttpResponse:
             }
         )
 
-    return render(request, "quizzes/progress.html", {"rows": rows})
+    return render(
+        request,
+        "quizzes/progress.html",
+        {
+            "rows": rows,
+            "semester_choices": semester_choices,
+            "selected_semester": selected_semester,
+            "subject_cards": subject_cards,
+            "subjects_error": catalog.error,
+        },
+    )
+
+
+@login_required
+@require_POST
+def semester_update_view(request: HttpRequest) -> HttpResponse:
+    catalog = load_subject_catalog()
+    semester = request.POST.get("semester", "").strip()
+    if semester not in catalog.semester_choices:
+        messages.error(request, "Ugyldigt semester valgt.")
+        return redirect("progress")
+
+    preference, _ = UserPreference.objects.get_or_create(
+        user=request.user,
+        defaults={"semester": _default_semester_choice(catalog)},
+    )
+    if preference.semester != semester:
+        preference.semester = semester
+        preference.save(update_fields=["semester", "updated_at"])
+        messages.success(request, "Semester er opdateret.")
+    return redirect("progress")
+
+
+@login_required
+@require_POST
+def subject_enroll_view(request: HttpRequest, subject_slug: str) -> HttpResponse:
+    catalog = load_subject_catalog()
+    subject = _subject_or_404(catalog, subject_slug)
+    SubjectEnrollment.objects.get_or_create(
+        user=request.user,
+        subject_slug=subject.slug,
+    )
+    messages.success(request, f"Du er nu tilmeldt {subject.title}.")
+    return redirect(_safe_next_redirect(request) or reverse("subject-detail", kwargs={"subject_slug": subject.slug}))
+
+
+@login_required
+@require_POST
+def subject_unenroll_view(request: HttpRequest, subject_slug: str) -> HttpResponse:
+    catalog = load_subject_catalog()
+    subject = _subject_or_404(catalog, subject_slug)
+    SubjectEnrollment.objects.filter(
+        user=request.user,
+        subject_slug=subject.slug,
+    ).delete()
+    messages.info(request, f"Du er afmeldt {subject.title}.")
+    return redirect(_safe_next_redirect(request) or reverse("subject-detail", kwargs={"subject_slug": subject.slug}))
+
+
+@login_required
+@require_GET
+def subject_detail_view(request: HttpRequest, subject_slug: str) -> HttpResponse:
+    catalog = load_subject_catalog()
+    subject = _subject_or_404(catalog, subject_slug)
+    is_enrolled = SubjectEnrollment.objects.filter(
+        user=request.user,
+        subject_slug=subject.slug,
+    ).exists()
+    readings = parse_master_readings(settings.FREUDD_READING_MASTER_KEY_PATH)
+
+    return render(
+        request,
+        "quizzes/subject_detail.html",
+        {
+            "subject": subject,
+            "is_enrolled": is_enrolled,
+            "lectures": readings.lectures,
+            "readings_error": readings.error,
+            "enroll_url": reverse("subject-enroll", kwargs={"subject_slug": subject.slug}),
+            "unenroll_url": reverse("subject-unenroll", kwargs={"subject_slug": subject.slug}),
+        },
+    )

@@ -34,3 +34,31 @@ class QuizProgress(models.Model):
 
     def __str__(self) -> str:
         return f"{self.user_id}:{self.quiz_id}:{self.status}"
+
+
+class UserPreference(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    semester = models.CharField(max_length=16, default="F26")
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self) -> str:
+        return f"{self.user_id}:{self.semester}"
+
+
+class SubjectEnrollment(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    subject_slug = models.CharField(max_length=64)
+    enrolled_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=["user", "subject_slug"], name="uq_user_subject_enrollment"),
+        ]
+        indexes = [
+            models.Index(fields=["user", "subject_slug"], name="subj_enroll_user_slug_idx"),
+            models.Index(fields=["subject_slug"], name="subj_enroll_slug_idx"),
+        ]
+
+    def __str__(self) -> str:
+        return f"{self.user_id}:{self.subject_slug}"

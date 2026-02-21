@@ -114,6 +114,20 @@ QUIZ_LINKS_JSON_PATH = Path(
     )
 )
 
+FREUDD_SUBJECTS_JSON_PATH = Path(
+    os.environ.get(
+        "FREUDD_SUBJECTS_JSON_PATH",
+        BASE_DIR / "subjects.json",
+    )
+)
+FREUDD_READING_MASTER_KEY_PATH = Path(
+    os.environ.get(
+        "FREUDD_READING_MASTER_KEY_PATH",
+        "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/"
+        "Mine dokumenter \U0001F4BE/psykologi/Personlighedspsykologi/.ai/reading-file-key.md",
+    )
+)
+
 QUIZ_SIGNUP_RATE_LIMIT = int(os.environ.get("QUIZ_SIGNUP_RATE_LIMIT", "20"))
 QUIZ_LOGIN_RATE_LIMIT = int(os.environ.get("QUIZ_LOGIN_RATE_LIMIT", "40"))
 QUIZ_RATE_LIMIT_WINDOW_SECONDS = int(os.environ.get("QUIZ_RATE_LIMIT_WINDOW_SECONDS", "3600"))

@@ -1,46 +1,189 @@
 {% extends "base.html" %}
 {% block title %}Fremskridt · freudd{% endblock %}
 {% block content %}
-<div class="card">
-  <h1 class="quiz-title">Dine quizfremskridt</h1>
-  <p class="muted">Fremskridt spores pr. quiz-id og dermed pr. sværhedsgrad.</p>
+<style>
+  .section-title {
+    margin: 0 0 0.6rem;
+    font-size: clamp(1.15rem, 2vw, 1.35rem);
+  }
 
-  {% if rows %}
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th>Quiz</th>
-          <th>Sværhedsgrad</th>
-          <th>Status</th>
-          <th>Svar</th>
-          <th>Opdateret</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for row in rows %}
-        <tr>
-          <td>
-            <a href="{{ row.quiz_url }}">{{ row.title }}</a>
-            <div class="muted">{{ row.quiz_id }}</div>
-          </td>
-          <td>{{ row.difficulty_label }}</td>
-          <td>
-            <span class="status-pill {% if row.status == 'completed' %}is-complete{% else %}is-progress{% endif %}">
-              {{ row.status_label }}
-            </span>
-          </td>
-          <td>
-            {{ row.answers_count }} / {{ row.question_count }}
-          </td>
-          <td>{{ row.updated_at }}</td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </div>
-  {% else %}
-  <p class="muted">Der er endnu ikke gemt fremskridt for nogen quizzer.</p>
-  {% endif %}
+  .dashboard-section + .dashboard-section {
+    margin-top: 1.3rem;
+  }
+
+  .semester-form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    gap: 0.65rem;
+  }
+
+  .semester-form label {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin-bottom: 0.35rem;
+  }
+
+  .semester-form select {
+    min-width: 140px;
+    border: 1px solid var(--border-strong);
+    border-radius: 12px;
+    background: rgba(12, 19, 29, 0.9);
+    color: var(--ink);
+    padding: 0.58rem 0.7rem;
+    font: inherit;
+  }
+
+  .subject-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .subject-card {
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: rgba(11, 18, 30, 0.74);
+    padding: 0.78rem;
+    display: grid;
+    gap: 0.6rem;
+  }
+
+  .subject-card h3 {
+    margin: 0;
+    font-size: 1.1rem;
+  }
+
+  .subject-status {
+    margin: 0;
+    font-size: 0.9rem;
+  }
+
+  .subject-status.is-enrolled {
+    color: var(--success);
+  }
+
+  .subject-status.is-not-enrolled {
+    color: var(--muted);
+  }
+
+  .subject-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+  }
+
+  .ghost-button {
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: rgba(14, 22, 34, 0.75);
+    color: #d5e2fa;
+    padding: 0.56rem 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+</style>
+<div class="card">
+  <h1 class="quiz-title">Dine fremskridt</h1>
+  <p class="muted">Vælg semester, tilmeld fag, og følg dine quizresultater.</p>
+
+  <section class="dashboard-section">
+    <h2 class="section-title">Semester</h2>
+    <form method="post" action="{% url 'semester-update' %}" class="semester-form">
+      {% csrf_token %}
+      <div>
+        <label for="semester-select">Aktivt semester</label>
+        <select id="semester-select" name="semester">
+          {% for choice in semester_choices %}
+          <option value="{{ choice }}" {% if choice == selected_semester %}selected{% endif %}>{{ choice }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <button class="btn-primary" type="submit">Gem semester</button>
+    </form>
+  </section>
+
+  <section class="dashboard-section">
+    <h2 class="section-title">Fag</h2>
+    {% if subjects_error %}
+    <p class="muted">{{ subjects_error }}</p>
+    {% endif %}
+
+    {% if subject_cards %}
+    <div class="subject-grid">
+      {% for subject in subject_cards %}
+      <article class="subject-card">
+        <div>
+          <h3>{{ subject.title }}</h3>
+          <p class="muted">{{ subject.description }}</p>
+        </div>
+        <p class="subject-status {% if subject.is_enrolled %}is-enrolled{% else %}is-not-enrolled{% endif %}">
+          {% if subject.is_enrolled %}Tilmeldt{% else %}Ikke tilmeldt{% endif %}
+        </p>
+        <div class="subject-actions">
+          <a class="nav-action" href="{{ subject.detail_url }}">Åbn fag</a>
+          {% if subject.is_enrolled %}
+          <form method="post" action="{{ subject.unenroll_url }}">
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{% url 'progress' %}" />
+            <button class="ghost-button" type="submit">Afmeld</button>
+          </form>
+          {% else %}
+          <form method="post" action="{{ subject.enroll_url }}">
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{% url 'progress' %}" />
+            <button class="ghost-button" type="submit">Tilmeld</button>
+          </form>
+          {% endif %}
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+    {% else %}
+    <p class="muted">Ingen fag er tilgængelige endnu.</p>
+    {% endif %}
+  </section>
+
+  <section class="dashboard-section">
+    <h2 class="section-title">Quizfremskridt</h2>
+    {% if rows %}
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Quiz</th>
+            <th>Sværhedsgrad</th>
+            <th>Status</th>
+            <th>Svar</th>
+            <th>Opdateret</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in rows %}
+          <tr>
+            <td>
+              <a href="{{ row.quiz_url }}">{{ row.title }}</a>
+              <div class="muted">{{ row.quiz_id }}</div>
+            </td>
+            <td>{{ row.difficulty_label }}</td>
+            <td>
+              <span class="status-pill {% if row.status == 'completed' %}is-complete{% else %}is-progress{% endif %}">
+                {{ row.status_label }}
+              </span>
+            </td>
+            <td>
+              {{ row.answers_count }} / {{ row.question_count }}
+            </td>
+            <td>{{ row.updated_at }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% else %}
+    <p class="muted">Der er endnu ikke gemt fremskridt for nogen quizzer.</p>
+    {% endif %}
+  </section>
 </div>
 {% endblock %}

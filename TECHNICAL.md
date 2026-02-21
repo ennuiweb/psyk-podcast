@@ -124,8 +124,8 @@ python podcast/gdrive_podcast_feed.py --config podcast/config.local.json
 
 The repository ships with `podcast/config.json` and `podcast/episode_metadata.json` pre-populated for Socialpsykologi Deep Dives - Hold 1 - 2024—update the titles, artwork, contact email, and descriptions to match your own show before publishing.
 
-## freudd (login + completion tracking)
-The repository now includes a separate Django portal in `freudd_portal/` for user login and per-user quiz progress tracking, without changing NotebookLM-generated quiz HTML internals.
+## freudd (login + learning dashboard)
+The repository now includes a separate Django portal in `freudd_portal/` for user login, per-user quiz progress tracking, subject enrollment, semester preferences, and subject reading overviews without changing NotebookLM-generated quiz HTML internals.
 
 ### What it serves
 - `GET/POST /accounts/signup`
@@ -136,13 +136,26 @@ The repository now includes a separate Django portal in `freudd_portal/` for use
 - `GET /api/quiz-content/<quiz_id>` (public normalized quiz JSON for wrapper UI)
 - `GET/POST /api/quiz-state/<quiz_id>` (login-required structured progress state)
 - `GET/POST /api/quiz-state/<quiz_id>/raw` (login-required legacy raw state payload)
-- `GET /progress` (login-required dashboard with in-progress/completed rows)
+- `GET /progress` (login-required dashboard with semester selector, subject cards, and quiz progress rows)
+- `POST /preferences/semester` (login-required semester update)
+- `GET /subjects/<subject_slug>` (login-required subject detail + readings)
+- `POST /subjects/<subject_slug>/enroll` (login-required)
+- `POST /subjects/<subject_slug>/unenroll` (login-required)
 
 ### Data model
 - Django app: `freudd_portal/quizzes`
 - Model: `QuizProgress`
-- Unique key: `(user, quiz_id)`
+- Model: `UserPreference` (`OneToOne(user)`, global `semester`)
+- Model: `SubjectEnrollment` (`ForeignKey(user)`, `subject_slug`)
+- Unique key: `(user, quiz_id)` for quiz state
+- Unique key: `(user, subject_slug)` for subject enrollment
 - Completion rule (phase 1): `currentView == "summary"` and `answers_count == question_count`
+
+### Subject catalog + readings
+- Subject catalog is JSON-driven via `freudd_portal/subjects.json` (`version`, `semester_choices`, `subjects[]`).
+- First subject in the catalog: `personlighedspsykologi`.
+- Reading lists are parsed live from the configured master markdown key path and grouped by `W##L#` lecture headings.
+- `MISSING:` reading lines are rendered explicitly as missing entries on subject detail pages.
 
 ### Local setup
 ```bash
@@ -171,6 +184,8 @@ python3 manage.py test
 - `QUIZ_SIGNUP_RATE_LIMIT`
 - `QUIZ_LOGIN_RATE_LIMIT`
 - `QUIZ_RATE_LIMIT_WINDOW_SECONDS`
+- `FREUDD_SUBJECTS_JSON_PATH` (default: `freudd_portal/subjects.json`)
+- `FREUDD_READING_MASTER_KEY_PATH` (default: `/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/.ai/reading-file-key.md`)
 
 Language choice:
 - portal default is Danish (`LANGUAGE_CODE=da`)
@@ -184,6 +199,8 @@ Proxy these routes to the Django service (Gunicorn/Uvicorn):
 - `/q/*`
 - `/api/*`
 - `/progress`
+- `/subjects/*`
+- `/preferences/*`
 
 Quiz sync behavior (current):
 - `scripts/sync_quiz_links.py` and `podcast-tools/sync_drive_quiz_links.py` discover quizzes from JSON exports only.
@@ -194,7 +211,7 @@ Quiz sync behavior (current):
 - Django session auth + CSRF middleware
 - Wrapper/raw quiz endpoints are public (`/q/*`, `/q/raw/*`) for anonymous play
 - Public quiz content API (`/api/quiz-content/<id>`) serves normalized quiz JSON to the portal UI
-- Login required on progress and state persistence APIs (`/progress`, `/api/quiz-state/*`)
+- Login required on dashboard + state persistence + subject preference APIs (`/progress`, `/api/quiz-state/*`, `/subjects/*`, `/preferences/*`)
 - Anonymous users are prompted to log in when they reach quiz summary/completion
 - Strict quiz ID regex (`^[0-9a-f]{8}$`) plus existence checks
 - IP-based login/signup rate limiting

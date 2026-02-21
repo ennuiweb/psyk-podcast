@@ -12,7 +12,8 @@ from django.contrib.auth.models import User
 from django.test import Client, TestCase, override_settings
 from django.urls import reverse
 
-from quizzes.models import QuizProgress
+from quizzes.models import QuizProgress, SubjectEnrollment, UserPreference
+from quizzes.subject_services import clear_subject_service_caches
 
 
 class QuizPortalTests(TestCase):
@@ -24,15 +25,21 @@ class QuizPortalTests(TestCase):
         self.quiz_root = root / "quizzes"
         self.quiz_root.mkdir(parents=True, exist_ok=True)
         self.links_file = root / "quiz_links.json"
+        self.subjects_file = root / "subjects.json"
+        self.reading_master_file = root / "reading-file-key.md"
 
         self.override = override_settings(
             QUIZ_FILES_ROOT=self.quiz_root,
             QUIZ_LINKS_JSON_PATH=self.links_file,
+            FREUDD_SUBJECTS_JSON_PATH=self.subjects_file,
+            FREUDD_READING_MASTER_KEY_PATH=self.reading_master_file,
             QUIZ_SIGNUP_RATE_LIMIT=1000,
             QUIZ_LOGIN_RATE_LIMIT=1000,
         )
         self.override.enable()
         self.addCleanup(self.override.disable)
+        clear_subject_service_caches()
+        self.addCleanup(clear_subject_service_caches)
 
         self.quiz_id = "29ebcecd"
         self._write_quiz_file(self.quiz_id, question_count=2)
@@ -45,6 +52,8 @@ class QuizPortalTests(TestCase):
                 }
             }
         )
+        self._write_subjects_file()
+        self._write_reading_master_file()
 
     def _write_quiz_file(self, quiz_id: str, *, question_count: int) -> None:
         payload = {"quiz": [{"question": f"Q{i + 1}"} for i in range(question_count)]}
@@ -95,6 +104,41 @@ class QuizPortalTests(TestCase):
             }
 
         self.links_file.write_text(json.dumps({"by_name": by_name}), encoding="utf-8")
+
+    def _write_subjects_file(self, *, include_subject: bool = True) -> None:
+        payload: dict[str, object] = {
+            "version": 1,
+            "semester_choices": ["F26"],
+            "subjects": [],
+        }
+        if include_subject:
+            payload["subjects"] = [
+                {
+                    "slug": "personlighedspsykologi",
+                    "title": "Personlighedspsykologi",
+                    "description": "Personlighedspsykologi F26",
+                    "active": True,
+                }
+            ]
+        self.subjects_file.write_text(json.dumps(payload), encoding="utf-8")
+
+    def _write_reading_master_file(self) -> None:
+        self.reading_master_file.write_text(
+            "\n".join(
+                [
+                    "# Reading File Key",
+                    "",
+                    "**W01L1 Introforelaesning (Forelaesning 1, 2026-02-02)**",
+                    "- Grundbog kapitel 01 - Introduktion til personlighedspsykologi \u2192 Grundbog kapitel 01 - Introduktion.pdf",
+                    "- Lewis (1999) \u2192 Lewis (1999).pdf",
+                    "",
+                    "**W01L2 Personality assessment (Forelaesning 2, 2026-02-03)**",
+                    "- Mayer & Bryan (2024) \u2192 Mayer & Bryan (2024).pdf",
+                    "- MISSING: Koutsoumpis (2025)",
+                ]
+            ),
+            encoding="utf-8",
+        )
 
     def _create_user(self, username: str = "alice", password: str = "Secret123!!") -> User:
         return User.objects.create_user(username=username, password=password)
@@ -420,6 +464,140 @@ class QuizPortalTests(TestCase):
         self.assertContains(response, "W1L1 - Episode")
         self.assertContains(response, "Mellem")
 
+    def test_progress_page_shows_semester_and_subject_cards(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+
+        response = self.client.get(reverse("progress"))
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Aktivt semester")
+        self.assertContains(response, "F26")
+        self.assertContains(response, "Personlighedspsykologi")
+        self.assertContains(response, "Tilmeld")
+
+        preference = UserPreference.objects.get(user=user)
+        self.assertEqual(preference.semester, "F26")
+
+    def test_semester_update_accepts_valid_and_rejects_invalid_value(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+
+        update_url = reverse("semester-update")
+        response = self.client.post(update_url, {"semester": "F26"})
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.url, reverse("progress"))
+
+        preference = UserPreference.objects.get(user=user)
+        self.assertEqual(preference.semester, "F26")
+
+        response = self.client.post(update_url, {"semester": "INVALID"})
+        self.assertEqual(response.status_code, 302)
+        preference.refresh_from_db()
+        self.assertEqual(preference.semester, "F26")
+
+    def test_subject_enroll_and_unenroll_are_idempotent(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+
+        enroll_url = reverse("subject-enroll", kwargs={"subject_slug": "personlighedspsykologi"})
+        unenroll_url = reverse("subject-unenroll", kwargs={"subject_slug": "personlighedspsykologi"})
+
+        response = self.client.post(enroll_url, {"next": reverse("progress")})
+        self.assertEqual(response.status_code, 302)
+        response = self.client.post(enroll_url, {"next": reverse("progress")})
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(
+            SubjectEnrollment.objects.filter(user=user, subject_slug="personlighedspsykologi").count(),
+            1,
+        )
+
+        response = self.client.post(unenroll_url, {"next": reverse("progress")})
+        self.assertEqual(response.status_code, 302)
+        response = self.client.post(unenroll_url, {"next": reverse("progress")})
+        self.assertEqual(response.status_code, 302)
+        self.assertFalse(
+            SubjectEnrollment.objects.filter(user=user, subject_slug="personlighedspsykologi").exists()
+        )
+
+    def test_subject_detail_is_accessible_without_enrollment_and_lists_readings(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+
+        detail_url = reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"})
+        response = self.client.get(detail_url)
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Ikke tilmeldt")
+        self.assertContains(response, "W01L1 Introforelaesning")
+        self.assertContains(response, "Grundbog kapitel 01 - Introduktion til personlighedspsykologi")
+        self.assertContains(response, "MISSING")
+        self.assertContains(response, "Koutsoumpis (2025)")
+
+    def test_subject_detail_shows_enrolled_status_for_enrolled_user(self) -> None:
+        user = self._create_user()
+        SubjectEnrollment.objects.create(user=user, subject_slug="personlighedspsykologi")
+        self.client.force_login(user)
+
+        detail_url = reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"})
+        response = self.client.get(detail_url)
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Tilmeldt")
+
+    def test_unknown_subject_slug_returns_404_for_all_subject_endpoints(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+
+        detail_url = reverse("subject-detail", kwargs={"subject_slug": "unknown-subject"})
+        enroll_url = reverse("subject-enroll", kwargs={"subject_slug": "unknown-subject"})
+        unenroll_url = reverse("subject-unenroll", kwargs={"subject_slug": "unknown-subject"})
+
+        response = self.client.get(detail_url)
+        self.assertEqual(response.status_code, 404)
+        response = self.client.post(enroll_url)
+        self.assertEqual(response.status_code, 404)
+        response = self.client.post(unenroll_url)
+        self.assertEqual(response.status_code, 404)
+
+    def test_progress_hides_stale_subject_enrollments_not_in_catalog(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+        SubjectEnrollment.objects.create(user=user, subject_slug="legacy-subject")
+
+        response = self.client.get(reverse("progress"))
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Personlighedspsykologi")
+        self.assertNotContains(response, "legacy-subject")
+
+    def test_progress_handles_missing_subject_catalog_file(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+        self.subjects_file.unlink()
+        clear_subject_service_caches()
+
+        response = self.client.get(reverse("progress"))
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Fagkataloget kunne ikke indlæses.")
+
+    def test_progress_handles_invalid_subject_catalog_payload(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+        self.subjects_file.write_text("{not-json", encoding="utf-8")
+        clear_subject_service_caches()
+
+        response = self.client.get(reverse("progress"))
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Fagkataloget kunne ikke indlæses.")
+
+    def test_subject_detail_handles_missing_master_reading_key(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+        self.reading_master_file.unlink()
+        clear_subject_service_caches()
+
+        response = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Reading-nøglen kunne ikke indlæses.")
+        self.assertContains(response, "Ingen readings fundet for dette fag.")
+
     def test_state_post_requires_csrf(self) -> None:
         user = self._create_user()
         csrf_client = Client(enforce_csrf_checks=True)
@@ -434,6 +612,26 @@ class QuizPortalTests(TestCase):
         }
 
         response = csrf_client.post(state_url, data=json.dumps(payload), content_type="application/json")
+        self.assertEqual(response.status_code, 403)
+
+    def test_subject_and_semester_posts_require_csrf(self) -> None:
+        user = self._create_user()
+        csrf_client = Client(enforce_csrf_checks=True)
+        csrf_client.force_login(user)
+
+        response = csrf_client.post(reverse("semester-update"), {"semester": "F26"})
+        self.assertEqual(response.status_code, 403)
+
+        response = csrf_client.post(
+            reverse("subject-enroll", kwargs={"subject_slug": "personlighedspsykologi"}),
+            {"next": reverse("progress")},
+        )
+        self.assertEqual(response.status_code, 403)
+
+        response = csrf_client.post(
+            reverse("subject-unenroll", kwargs={"subject_slug": "personlighedspsykologi"}),
+            {"next": reverse("progress")},
+        )
         self.assertEqual(response.status_code, 403)
 
     def test_language_configuration_is_danish_only(self) -> None:

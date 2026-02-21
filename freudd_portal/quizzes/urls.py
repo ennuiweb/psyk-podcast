@@ -14,5 +14,17 @@ urlpatterns = [
         views.quiz_state_raw_view,
         name="quiz-state-raw",
     ),
+    re_path(r"^subjects/(?P<subject_slug>[a-z0-9-]+)$", views.subject_detail_view, name="subject-detail"),
+    re_path(
+        r"^subjects/(?P<subject_slug>[a-z0-9-]+)/enroll$",
+        views.subject_enroll_view,
+        name="subject-enroll",
+    ),
+    re_path(
+        r"^subjects/(?P<subject_slug>[a-z0-9-]+)/unenroll$",
+        views.subject_unenroll_view,
+        name="subject-unenroll",
+    ),
+    re_path(r"^preferences/semester$", views.semester_update_view, name="semester-update"),
     re_path(r"^progress$", views.progress_view, name="progress"),
 ]

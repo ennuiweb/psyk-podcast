@@ -17,6 +17,10 @@ APP_DATA_ATTR_RE = re.compile(
 QUIZ_TAG_RE = re.compile(r"\{[^{}]*\btype=quiz\b[^{}]*\}", re.IGNORECASE)
 CFG_BLOCK_RE = re.compile(r"\{([^{}]+)\}")
 CFG_PAIR_RE = re.compile(r"([a-z0-9._:+-]+)=([^{}\s]+)", re.IGNORECASE)
+QUIZ_DIFFICULTY_HASH_RE = re.compile(
+    r"difficulty=(easy|medium|hard)\s+download=html\s+hash=([0-9a-f]{8})",
+    re.IGNORECASE,
+)
 WEEK_TOKEN_RE = re.compile(r"\bW(?P<week>\d{1,2})L(?P<lecture>\d+)\b", re.IGNORECASE)
 LANG_SUFFIX_RE = re.compile(r"\[(?P<language>[^\[\]]+)\]\s*$")
 TRAILING_CFG_BLOCKS_RE = re.compile(
@@ -24,6 +28,11 @@ TRAILING_CFG_BLOCKS_RE = re.compile(
     re.IGNORECASE,
 )
 DEFAULT_QUIZ_TITLE = "Personality Quiz"
+QUIZ_HASH_REWRITE_MAP = {
+    ("easy", "8b02000e"): "0aa8e6f0",
+    ("medium", "137cde55"): "05f7d73e",
+    ("hard", "63dc9adf"): "f06c6752",
+}
 
 
 def parse_args() -> argparse.Namespace:
@@ -104,6 +113,22 @@ def find_quiz_html_files(root: Path) -> list[Path]:
             continue
         files.append(path)
     return sorted(files)
+
+
+def normalize_quiz_json_output_path(path: Path) -> Path:
+    name = path.name
+    match = QUIZ_DIFFICULTY_HASH_RE.search(name)
+    if match:
+        difficulty = match.group(1).lower()
+        old_hash = match.group(2).lower()
+        new_hash = QUIZ_HASH_REWRITE_MAP.get((difficulty, old_hash), old_hash)
+        replacement = f"difficulty={difficulty} download=json hash={new_hash}"
+        rewritten = QUIZ_DIFFICULTY_HASH_RE.sub(replacement, name, count=1)
+        if rewritten != name:
+            return path.with_name(rewritten)
+    if "download=html" in name:
+        return path.with_name(name.replace("download=html", "download=json"))
+    return path
 
 
 def extract_payload_from_html(path: Path) -> Any:
@@ -206,7 +231,7 @@ def main() -> int:
     manifest_rows: list[dict[str, Any]] = []
 
     for html_path in html_files:
-        output_json = html_path.with_suffix(".json")
+        output_json = normalize_quiz_json_output_path(html_path.with_suffix(".json"))
         relative_html = html_path.relative_to(root).as_posix()
         relative_json = output_json.relative_to(root).as_posix()
         try:

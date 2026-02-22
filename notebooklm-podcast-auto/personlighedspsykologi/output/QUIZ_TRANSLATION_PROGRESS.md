@@ -14,270 +14,270 @@
 - `[!]` Failed
 
 ## Quiz Files
-- [x] `W10L1/W10L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [x] `W10L1/W10L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [x] `W10L1/W10L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [x] `W10L1/W10L1 - Bjerrum Nielsen & Rudberg (2006) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [x] `W10L1/W10L1 - Bjerrum Nielsen & Rudberg (2006) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [x] `W10L1/W10L1 - Bjerrum Nielsen & Rudberg (2006) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [x] `W10L1/W10L1 - Bjerrum Nielsen, H. & Rudberg, M. (2006). Ytre og indre kjønn i forandring. I Moderne jenter. 117-149. Oslo [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [x] `W10L1/W10L1 - Bjerrum Nielsen, H. & Rudberg, M. (2006). Ytre og indre kjønn i forandring. I Moderne jenter. 117-149. Oslo [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [x] `W10L1/W10L1 - Bjerrum Nielsen, H. & Rudberg, M. (2006). Ytre og indre kjønn i forandring. I Moderne jenter. 117-149. Oslo [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [x] `W10L1/W10L1 - Mitchell (2015) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [x] `W10L1/W10L1 - Mitchell (2015) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W10L1/W10L1 - Mitchell (2015) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W10L2/W10L2 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W10L2/W10L2 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W10L2/W10L2 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W10L2/W10L2 - Foucault, M. (1997). s. 281-301 [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W10L2/W10L2 - Foucault, M. (1997). s. 281-301 [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W10L2/W10L2 - Foucault, M. (1997). s. 281-301 [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W10L2/W10L2 - X Davies (1990) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W10L2/W10L2 - X Davies (1990) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W10L2/W10L2 - X Davies (1990) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W11L1/W11L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W11L1/W11L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W11L1/W11L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W11L1/W11L1 - Gergen (1999) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W11L1/W11L1 - Gergen (1999) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W11L1/W11L1 - Gergen (1999) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W11L1/W11L1 - Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W11L1/W11L1 - Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W11L1/W11L1 - Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W11L1/W11L1 - Hacking (2007) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W11L1/W11L1 - Hacking (2007) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W11L1/W11L1 - Hacking (2007) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W11L1/[Brief] W11L1 - Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W11L1/[Brief] W11L1 - Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W11L1/[Brief] W11L1 - Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W11L2/W11L2 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W11L2/W11L2 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W11L2/W11L2 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W11L2/W11L2 - Bank, M. (2014). Narrative psykologier. I Køppe, S. & Dammeyer, J. (Red.) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W11L2/W11L2 - Bank, M. (2014). Narrative psykologier. I Køppe, S. & Dammeyer, J. (Red.) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W11L2/W11L2 - Bank, M. (2014). Narrative psykologier. I Køppe, S. & Dammeyer, J. (Red.) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W11L2/W11L2 - Bruner (1999) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W11L2/W11L2 - Bruner (1999) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W11L2/W11L2 - Bruner (1999) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W11L2/W11L2 - Grundbog kapitel 9 - Narrative teorier [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W11L2/W11L2 - Grundbog kapitel 9 - Narrative teorier [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W11L2/W11L2 - Grundbog kapitel 9 - Narrative teorier [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W11L2/W11L2 - McAdams & Pals (2006) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W11L2/W11L2 - McAdams & Pals (2006) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W11L2/W11L2 - McAdams & Pals (2006) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W11L2/W11L2 - X Raggatt (2002) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W11L2/W11L2 - X Raggatt (2002) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W11L2/W11L2 - X Raggatt (2002) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W11L2/[Brief] W11L2 - Grundbog kapitel 9 - Narrative teorier [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W11L2/[Brief] W11L2 - Grundbog kapitel 9 - Narrative teorier [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W11L2/[Brief] W11L2 - Grundbog kapitel 9 - Narrative teorier [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W12L1/W12L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W12L1/W12L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W12L1/W12L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W12L1/W12L1 - Elias (2000) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W12L1/W12L1 - Elias (2000) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W12L1/W12L1 - Elias (2000) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W12L1/W12L1 - Grundbog kapitel 14 - Perspektiver på personlighedspsykologi [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W12L1/W12L1 - Grundbog kapitel 14 - Perspektiver på personlighedspsykologi [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W12L1/W12L1 - Grundbog kapitel 14 - Perspektiver på personlighedspsykologi [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W12L1/W12L1 - Grundbog kapitel 8 - Personlighed, subjektivitet og historicitet [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W12L1/W12L1 - Grundbog kapitel 8 - Personlighed, subjektivitet og historicitet [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W12L1/W12L1 - Grundbog kapitel 8 - Personlighed, subjektivitet og historicitet [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W12L1/[Brief] W12L1 - Grundbog kapitel 14 - Perspektiver på personlighedspsykologi [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W12L1/[Brief] W12L1 - Grundbog kapitel 14 - Perspektiver på personlighedspsykologi [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W12L1/[Brief] W12L1 - Grundbog kapitel 14 - Perspektiver på personlighedspsykologi [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W12L1/[Brief] W12L1 - Grundbog kapitel 8 - Personlighed, subjektivitet og historicitet [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W12L1/[Brief] W12L1 - Grundbog kapitel 8 - Personlighed, subjektivitet og historicitet [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W12L1/[Brief] W12L1 - Grundbog kapitel 8 - Personlighed, subjektivitet og historicitet [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W1L1/W1L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W1L1/W1L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W1L1/W1L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W1L1/W1L1 - Grundbog kapitel 1 - Introduktion til personlighedspsykologi [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W1L1/W1L1 - Grundbog kapitel 1 - Introduktion til personlighedspsykologi [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W1L1/W1L1 - Grundbog kapitel 1 - Introduktion til personlighedspsykologi [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W1L1/W1L1 - Lewis (1999) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W1L1/W1L1 - Lewis (1999) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W1L1/W1L1 - Lewis (1999) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W1L1/[Brief] W1L1 - Grundbog kapitel 1 - Introduktion til personlighedspsykologi [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W1L1/[Brief] W1L1 - Grundbog kapitel 1 - Introduktion til personlighedspsykologi [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W1L1/[Brief] W1L1 - Grundbog kapitel 1 - Introduktion til personlighedspsykologi [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W1L2/W1L2 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W1L2/W1L2 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W1L2/W1L2 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W1L2/W1L2 - Koutsoumpis (2025) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W1L2/W1L2 - Koutsoumpis (2025) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W1L2/W1L2 - Koutsoumpis (2025) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W1L2/W1L2 - Mayer & Bryan (2024) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W1L2/W1L2 - Mayer & Bryan (2024) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W1L2/W1L2 - Mayer & Bryan (2024) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W1L2/W1L2 - Phan et al. (2024) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W1L2/W1L2 - Phan et al. (2024) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W1L2/W1L2 - Phan et al. (2024) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W2L1/W2L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W2L1/W2L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W2L1/W2L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W2L1/W2L1 - Columbus & Strandsbjerg (2025) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W2L1/W2L1 - Columbus & Strandsbjerg (2025) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W2L1/W2L1 - Columbus & Strandsbjerg (2025) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W2L1/W2L1 - X Zettler et al. (2020) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W2L1/W2L1 - X Zettler et al. (2020) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W2L1/W2L1 - X Zettler et al. (2020) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W2L2/W2L2 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W2L2/W2L2 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W2L2/W2L2 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W2L2/W2L2 - Bleidorn et al. (2022) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W2L2/W2L2 - Bleidorn et al. (2022) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W2L2/W2L2 - Bleidorn et al. (2022) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W2L2/W2L2 - Li & Wilt (2025) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W2L2/W2L2 - Li & Wilt (2025) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W2L2/W2L2 - Li & Wilt (2025) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W3L1/W3L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W3L1/W3L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W3L1/W3L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W3L1/W3L1 - Kandler & Instinske (2025) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W3L1/W3L1 - Kandler & Instinske (2025) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W3L1/W3L1 - Kandler & Instinske (2025) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W3L1/W3L1 - Lu, Benet-Martínez & Wang (2023) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W3L1/W3L1 - Lu, Benet-Martínez & Wang (2023) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W3L1/W3L1 - Lu, Benet-Martínez & Wang (2023) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W3L1/W3L1 - Volk & Puchalski (2025) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W3L1/W3L1 - Volk & Puchalski (2025) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W3L1/W3L1 - Volk & Puchalski (2025) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W3L1/W3L1 - Zettler et al. (2025) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W3L1/W3L1 - Zettler et al. (2025) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W3L1/W3L1 - Zettler et al. (2025) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W3L2/W3L2 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W3L2/W3L2 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W3L2/W3L2 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W3L2/W3L2 - MISSING W3L2 Bach & Simonsen (2023) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W3L2/W3L2 - MISSING W3L2 Bach & Simonsen (2023) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W3L2/W3L2 - MISSING W3L2 Bach & Simonsen (2023) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W3L2/W3L2 - Sharp & Wall (2021) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W3L2/W3L2 - Sharp & Wall (2021) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W3L2/W3L2 - Sharp & Wall (2021) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W4L1/W4L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W4L1/W4L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W4L1/W4L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W4L1/W4L1 - Freud (1973-1933) DA [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W4L1/W4L1 - Freud (1973-1933) DA [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W4L1/W4L1 - Freud (1973-1933) DA [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W4L1/W4L1 - Freud, S. (1973-1933) EN [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W4L1/W4L1 - Freud, S. (1973-1933) EN [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W4L1/W4L1 - Freud, S. (1973-1933) EN [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W4L1/W4L1 - Gammelgaard (2007) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W4L1/W4L1 - Gammelgaard (2007) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W4L1/W4L1 - Gammelgaard (2007) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W4L2/W4L2 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W4L2/W4L2 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W4L2/W4L2 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W4L2/W4L2 - Lacan (1966) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W4L2/W4L2 - Lacan (1966) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W4L2/W4L2 - Lacan (1966) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W4L2/W4L2 - Laplanche, J. (1970). Liv og død i psykoanalysen (pp. 18‐38) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W4L2/W4L2 - Laplanche, J. (1970). Liv og død i psykoanalysen (pp. 18‐38) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W4L2/W4L2 - Laplanche, J. (1970). Liv og død i psykoanalysen (pp. 18‐38) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W5L1/W5L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W5L1/W5L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W5L1/W5L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W5L1/W5L1 - MISSING W5L1 X Gammelgaard (2010) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W5L1/W5L1 - MISSING W5L1 X Gammelgaard (2010) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W5L1/W5L1 - MISSING W5L1 X Gammelgaard (2010) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W5L1/W5L1 - Ricoeur (1981) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W5L1/W5L1 - Ricoeur (1981) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W5L1/W5L1 - Ricoeur (1981) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W5L1/W5L1 - X Freud, S. (1984-1905). Brudstykke af en hysteri-analyse (pp. 9-62, pp. 96- [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W5L1/W5L1 - X Freud, S. (1984-1905). Brudstykke af en hysteri-analyse (pp. 9-62, pp. 96- [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W5L1/W5L1 - X Freud, S. (1984-1905). Brudstykke af en hysteri-analyse (pp. 9-62, pp. 96- [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W5L2/W5L2 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W5L2/W5L2 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W5L2/W5L2 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W5L2/W5L2 - Køppe (1992) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W5L2/W5L2 - Køppe (1992) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W5L2/W5L2 - Køppe (1992) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W5L2/W5L2 - MISSING W5L2 Andkjær Olsen & Køppe (1991a og b) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W5L2/W5L2 - MISSING W5L2 Andkjær Olsen & Køppe (1991a og b) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W5L2/W5L2 - MISSING W5L2 Andkjær Olsen & Køppe (1991a og b) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W5L2/W5L2 - MISSING W5L2 Zeuthen & Køppe (2014) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W5L2/W5L2 - MISSING W5L2 Zeuthen & Køppe (2014) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W5L2/W5L2 - MISSING W5L2 Zeuthen & Køppe (2014) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W6L1/W6L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W6L1/W6L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W6L1/W6L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W6L1/W6L1 - Grundbog kapitel 4 - Fænomenologisk personlighedspsykologi [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W6L1/W6L1 - Grundbog kapitel 4 - Fænomenologisk personlighedspsykologi [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W6L1/W6L1 - Grundbog kapitel 4 - Fænomenologisk personlighedspsykologi [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W6L1/W6L1 - X Moeskær Hansen & Roald (2022) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W6L1/W6L1 - X Moeskær Hansen & Roald (2022) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W6L1/W6L1 - X Moeskær Hansen & Roald (2022) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W6L1/W6L1 - X Spinelli (2005) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W6L1/W6L1 - X Spinelli (2005) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W6L1/W6L1 - X Spinelli (2005) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W6L1/[Brief] W6L1 - Grundbog kapitel 4 - Fænomenologisk personlighedspsykologi [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W6L1/[Brief] W6L1 - Grundbog kapitel 4 - Fænomenologisk personlighedspsykologi [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W6L1/[Brief] W6L1 - Grundbog kapitel 4 - Fænomenologisk personlighedspsykologi [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W6L2/W6L2 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W6L2/W6L2 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W6L2/W6L2 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W6L2/W6L2 - Boss (1963) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W6L2/W6L2 - Boss (1963) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W6L2/W6L2 - Boss (1963) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W6L2/W6L2 - May (1966) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W6L2/W6L2 - May (1966) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W6L2/W6L2 - May (1966) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W7L1/W7L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W7L1/W7L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W7L1/W7L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W7L1/W7L1 - Cooper (2003) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W7L1/W7L1 - Cooper (2003) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W7L1/W7L1 - Cooper (2003) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W7L1/W7L1 - Jacobsen (2021) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W7L1/W7L1 - Jacobsen (2021) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W7L1/W7L1 - Jacobsen (2021) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W7L2/W7L2 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W7L2/W7L2 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W7L2/W7L2 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W7L2/W7L2 - Evans (1975) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W7L2/W7L2 - Evans (1975) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W7L2/W7L2 - Evans (1975) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W7L2/W7L2 - Giorgi (2005) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W7L2/W7L2 - Giorgi (2005) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W7L2/W7L2 - Giorgi (2005) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W7L2/W7L2 - Maslow (1968) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W7L2/W7L2 - Maslow (1968) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W7L2/W7L2 - Maslow (1968) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W8L1/W8L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W8L1/W8L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W8L1/W8L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W8L1/W8L1 - Lamiell, J.T. (2021) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W8L1/W8L1 - Lamiell, J.T. (2021) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W8L1/W8L1 - Lamiell, J.T. (2021) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W8L1/W8L1 - Laux et al. (2010) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W8L1/W8L1 - Laux et al. (2010) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W8L1/W8L1 - Laux et al. (2010) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W8L2/W8L2 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W8L2/W8L2 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W8L2/W8L2 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W8L2/W8L2 - Holzkamp (1982) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W8L2/W8L2 - Holzkamp (1982) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W8L2/W8L2 - Holzkamp (1982) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W8L2/W8L2 - Tolman (2009) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W8L2/W8L2 - Tolman (2009) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W8L2/W8L2 - Tolman (2009) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W9L1/W9L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W9L1/W9L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W9L1/W9L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W9L1/W9L1 - Dreier (1999) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W9L1/W9L1 - Dreier (1999) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W9L1/W9L1 - Dreier (1999) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W9L1/W9L1 - Grundbog kapitel 10 - Kritisk psykologi [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W9L1/W9L1 - Grundbog kapitel 10 - Kritisk psykologi [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W9L1/W9L1 - Grundbog kapitel 10 - Kritisk psykologi [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W9L1/W9L1 - Holzkamp (2013) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W9L1/W9L1 - Holzkamp (2013) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W9L1/W9L1 - Holzkamp (2013) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W9L1/W9L1 - X Mørch & Hansen (2015) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W9L1/W9L1 - X Mørch & Hansen (2015) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W9L1/W9L1 - X Mørch & Hansen (2015) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
-- [ ] `W9L1/[Brief] W9L1 - Grundbog kapitel 10 - Kritisk psykologi [EN] {type=quiz lang=en quantity=standard difficulty=easy download=html hash=8b02000e}.json`
-- [ ] `W9L1/[Brief] W9L1 - Grundbog kapitel 10 - Kritisk psykologi [EN] {type=quiz lang=en quantity=standard difficulty=hard download=html hash=63dc9adf}.json`
-- [ ] `W9L1/[Brief] W9L1 - Grundbog kapitel 10 - Kritisk psykologi [EN] {type=quiz lang=en quantity=standard difficulty=medium download=html hash=137cde55}.json`
+- [x] `W10L1/W10L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [x] `W10L1/W10L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [x] `W10L1/W10L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [x] `W10L1/W10L1 - Bjerrum Nielsen & Rudberg (2006) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [x] `W10L1/W10L1 - Bjerrum Nielsen & Rudberg (2006) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [x] `W10L1/W10L1 - Bjerrum Nielsen & Rudberg (2006) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [x] `W10L1/W10L1 - Bjerrum Nielsen, H. & Rudberg, M. (2006). Ytre og indre kjønn i forandring. I Moderne jenter. 117-149. Oslo [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [x] `W10L1/W10L1 - Bjerrum Nielsen, H. & Rudberg, M. (2006). Ytre og indre kjønn i forandring. I Moderne jenter. 117-149. Oslo [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [x] `W10L1/W10L1 - Bjerrum Nielsen, H. & Rudberg, M. (2006). Ytre og indre kjønn i forandring. I Moderne jenter. 117-149. Oslo [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [x] `W10L1/W10L1 - Mitchell (2015) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [x] `W10L1/W10L1 - Mitchell (2015) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W10L1/W10L1 - Mitchell (2015) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W10L2/W10L2 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W10L2/W10L2 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W10L2/W10L2 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W10L2/W10L2 - Foucault, M. (1997). s. 281-301 [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W10L2/W10L2 - Foucault, M. (1997). s. 281-301 [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W10L2/W10L2 - Foucault, M. (1997). s. 281-301 [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W10L2/W10L2 - X Davies (1990) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W10L2/W10L2 - X Davies (1990) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W10L2/W10L2 - X Davies (1990) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W11L1/W11L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W11L1/W11L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W11L1/W11L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W11L1/W11L1 - Gergen (1999) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W11L1/W11L1 - Gergen (1999) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W11L1/W11L1 - Gergen (1999) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W11L1/W11L1 - Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W11L1/W11L1 - Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W11L1/W11L1 - Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W11L1/W11L1 - Hacking (2007) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W11L1/W11L1 - Hacking (2007) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W11L1/W11L1 - Hacking (2007) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W11L1/[Brief] W11L1 - Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W11L1/[Brief] W11L1 - Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W11L1/[Brief] W11L1 - Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W11L2/W11L2 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W11L2/W11L2 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W11L2/W11L2 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W11L2/W11L2 - Bank, M. (2014). Narrative psykologier. I Køppe, S. & Dammeyer, J. (Red.) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W11L2/W11L2 - Bank, M. (2014). Narrative psykologier. I Køppe, S. & Dammeyer, J. (Red.) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W11L2/W11L2 - Bank, M. (2014). Narrative psykologier. I Køppe, S. & Dammeyer, J. (Red.) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W11L2/W11L2 - Bruner (1999) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W11L2/W11L2 - Bruner (1999) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W11L2/W11L2 - Bruner (1999) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W11L2/W11L2 - Grundbog kapitel 9 - Narrative teorier [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W11L2/W11L2 - Grundbog kapitel 9 - Narrative teorier [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W11L2/W11L2 - Grundbog kapitel 9 - Narrative teorier [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W11L2/W11L2 - McAdams & Pals (2006) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W11L2/W11L2 - McAdams & Pals (2006) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W11L2/W11L2 - McAdams & Pals (2006) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W11L2/W11L2 - X Raggatt (2002) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W11L2/W11L2 - X Raggatt (2002) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W11L2/W11L2 - X Raggatt (2002) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W11L2/[Brief] W11L2 - Grundbog kapitel 9 - Narrative teorier [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W11L2/[Brief] W11L2 - Grundbog kapitel 9 - Narrative teorier [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W11L2/[Brief] W11L2 - Grundbog kapitel 9 - Narrative teorier [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W12L1/W12L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W12L1/W12L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W12L1/W12L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W12L1/W12L1 - Elias (2000) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W12L1/W12L1 - Elias (2000) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W12L1/W12L1 - Elias (2000) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W12L1/W12L1 - Grundbog kapitel 14 - Perspektiver på personlighedspsykologi [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W12L1/W12L1 - Grundbog kapitel 14 - Perspektiver på personlighedspsykologi [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W12L1/W12L1 - Grundbog kapitel 14 - Perspektiver på personlighedspsykologi [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W12L1/W12L1 - Grundbog kapitel 8 - Personlighed, subjektivitet og historicitet [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W12L1/W12L1 - Grundbog kapitel 8 - Personlighed, subjektivitet og historicitet [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W12L1/W12L1 - Grundbog kapitel 8 - Personlighed, subjektivitet og historicitet [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W12L1/[Brief] W12L1 - Grundbog kapitel 14 - Perspektiver på personlighedspsykologi [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W12L1/[Brief] W12L1 - Grundbog kapitel 14 - Perspektiver på personlighedspsykologi [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W12L1/[Brief] W12L1 - Grundbog kapitel 14 - Perspektiver på personlighedspsykologi [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W12L1/[Brief] W12L1 - Grundbog kapitel 8 - Personlighed, subjektivitet og historicitet [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W12L1/[Brief] W12L1 - Grundbog kapitel 8 - Personlighed, subjektivitet og historicitet [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W12L1/[Brief] W12L1 - Grundbog kapitel 8 - Personlighed, subjektivitet og historicitet [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W1L1/W1L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W1L1/W1L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W1L1/W1L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W1L1/W1L1 - Grundbog kapitel 1 - Introduktion til personlighedspsykologi [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W1L1/W1L1 - Grundbog kapitel 1 - Introduktion til personlighedspsykologi [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W1L1/W1L1 - Grundbog kapitel 1 - Introduktion til personlighedspsykologi [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W1L1/W1L1 - Lewis (1999) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W1L1/W1L1 - Lewis (1999) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W1L1/W1L1 - Lewis (1999) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W1L1/[Brief] W1L1 - Grundbog kapitel 1 - Introduktion til personlighedspsykologi [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W1L1/[Brief] W1L1 - Grundbog kapitel 1 - Introduktion til personlighedspsykologi [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W1L1/[Brief] W1L1 - Grundbog kapitel 1 - Introduktion til personlighedspsykologi [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W1L2/W1L2 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W1L2/W1L2 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W1L2/W1L2 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W1L2/W1L2 - Koutsoumpis (2025) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W1L2/W1L2 - Koutsoumpis (2025) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W1L2/W1L2 - Koutsoumpis (2025) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W1L2/W1L2 - Mayer & Bryan (2024) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W1L2/W1L2 - Mayer & Bryan (2024) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W1L2/W1L2 - Mayer & Bryan (2024) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W1L2/W1L2 - Phan et al. (2024) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W1L2/W1L2 - Phan et al. (2024) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W1L2/W1L2 - Phan et al. (2024) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W2L1/W2L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W2L1/W2L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W2L1/W2L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W2L1/W2L1 - Columbus & Strandsbjerg (2025) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W2L1/W2L1 - Columbus & Strandsbjerg (2025) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W2L1/W2L1 - Columbus & Strandsbjerg (2025) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W2L1/W2L1 - X Zettler et al. (2020) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W2L1/W2L1 - X Zettler et al. (2020) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W2L1/W2L1 - X Zettler et al. (2020) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W2L2/W2L2 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W2L2/W2L2 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W2L2/W2L2 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W2L2/W2L2 - Bleidorn et al. (2022) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W2L2/W2L2 - Bleidorn et al. (2022) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W2L2/W2L2 - Bleidorn et al. (2022) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W2L2/W2L2 - Li & Wilt (2025) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W2L2/W2L2 - Li & Wilt (2025) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W2L2/W2L2 - Li & Wilt (2025) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W3L1/W3L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W3L1/W3L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W3L1/W3L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W3L1/W3L1 - Kandler & Instinske (2025) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W3L1/W3L1 - Kandler & Instinske (2025) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W3L1/W3L1 - Kandler & Instinske (2025) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W3L1/W3L1 - Lu, Benet-Martínez & Wang (2023) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W3L1/W3L1 - Lu, Benet-Martínez & Wang (2023) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W3L1/W3L1 - Lu, Benet-Martínez & Wang (2023) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W3L1/W3L1 - Volk & Puchalski (2025) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W3L1/W3L1 - Volk & Puchalski (2025) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W3L1/W3L1 - Volk & Puchalski (2025) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W3L1/W3L1 - Zettler et al. (2025) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W3L1/W3L1 - Zettler et al. (2025) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W3L1/W3L1 - Zettler et al. (2025) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W3L2/W3L2 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W3L2/W3L2 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W3L2/W3L2 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W3L2/W3L2 - MISSING W3L2 Bach & Simonsen (2023) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W3L2/W3L2 - MISSING W3L2 Bach & Simonsen (2023) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W3L2/W3L2 - MISSING W3L2 Bach & Simonsen (2023) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W3L2/W3L2 - Sharp & Wall (2021) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W3L2/W3L2 - Sharp & Wall (2021) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W3L2/W3L2 - Sharp & Wall (2021) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W4L1/W4L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W4L1/W4L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W4L1/W4L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W4L1/W4L1 - Freud (1973-1933) DA [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W4L1/W4L1 - Freud (1973-1933) DA [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W4L1/W4L1 - Freud (1973-1933) DA [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W4L1/W4L1 - Freud, S. (1973-1933) EN [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W4L1/W4L1 - Freud, S. (1973-1933) EN [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W4L1/W4L1 - Freud, S. (1973-1933) EN [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W4L1/W4L1 - Gammelgaard (2007) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W4L1/W4L1 - Gammelgaard (2007) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W4L1/W4L1 - Gammelgaard (2007) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W4L2/W4L2 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W4L2/W4L2 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W4L2/W4L2 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W4L2/W4L2 - Lacan (1966) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W4L2/W4L2 - Lacan (1966) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W4L2/W4L2 - Lacan (1966) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W4L2/W4L2 - Laplanche, J. (1970). Liv og død i psykoanalysen (pp. 18‐38) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W4L2/W4L2 - Laplanche, J. (1970). Liv og død i psykoanalysen (pp. 18‐38) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W4L2/W4L2 - Laplanche, J. (1970). Liv og død i psykoanalysen (pp. 18‐38) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W5L1/W5L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W5L1/W5L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W5L1/W5L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W5L1/W5L1 - MISSING W5L1 X Gammelgaard (2010) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W5L1/W5L1 - MISSING W5L1 X Gammelgaard (2010) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W5L1/W5L1 - MISSING W5L1 X Gammelgaard (2010) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W5L1/W5L1 - Ricoeur (1981) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W5L1/W5L1 - Ricoeur (1981) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W5L1/W5L1 - Ricoeur (1981) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W5L1/W5L1 - X Freud, S. (1984-1905). Brudstykke af en hysteri-analyse (pp. 9-62, pp. 96- [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W5L1/W5L1 - X Freud, S. (1984-1905). Brudstykke af en hysteri-analyse (pp. 9-62, pp. 96- [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W5L1/W5L1 - X Freud, S. (1984-1905). Brudstykke af en hysteri-analyse (pp. 9-62, pp. 96- [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W5L2/W5L2 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W5L2/W5L2 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W5L2/W5L2 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W5L2/W5L2 - Køppe (1992) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W5L2/W5L2 - Køppe (1992) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W5L2/W5L2 - Køppe (1992) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W5L2/W5L2 - MISSING W5L2 Andkjær Olsen & Køppe (1991a og b) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W5L2/W5L2 - MISSING W5L2 Andkjær Olsen & Køppe (1991a og b) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W5L2/W5L2 - MISSING W5L2 Andkjær Olsen & Køppe (1991a og b) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W5L2/W5L2 - MISSING W5L2 Zeuthen & Køppe (2014) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W5L2/W5L2 - MISSING W5L2 Zeuthen & Køppe (2014) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W5L2/W5L2 - MISSING W5L2 Zeuthen & Køppe (2014) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W6L1/W6L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W6L1/W6L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W6L1/W6L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W6L1/W6L1 - Grundbog kapitel 4 - Fænomenologisk personlighedspsykologi [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W6L1/W6L1 - Grundbog kapitel 4 - Fænomenologisk personlighedspsykologi [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W6L1/W6L1 - Grundbog kapitel 4 - Fænomenologisk personlighedspsykologi [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W6L1/W6L1 - X Moeskær Hansen & Roald (2022) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W6L1/W6L1 - X Moeskær Hansen & Roald (2022) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W6L1/W6L1 - X Moeskær Hansen & Roald (2022) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W6L1/W6L1 - X Spinelli (2005) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W6L1/W6L1 - X Spinelli (2005) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W6L1/W6L1 - X Spinelli (2005) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W6L1/[Brief] W6L1 - Grundbog kapitel 4 - Fænomenologisk personlighedspsykologi [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W6L1/[Brief] W6L1 - Grundbog kapitel 4 - Fænomenologisk personlighedspsykologi [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W6L1/[Brief] W6L1 - Grundbog kapitel 4 - Fænomenologisk personlighedspsykologi [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W6L2/W6L2 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W6L2/W6L2 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W6L2/W6L2 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W6L2/W6L2 - Boss (1963) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W6L2/W6L2 - Boss (1963) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W6L2/W6L2 - Boss (1963) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W6L2/W6L2 - May (1966) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W6L2/W6L2 - May (1966) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W6L2/W6L2 - May (1966) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W7L1/W7L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W7L1/W7L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W7L1/W7L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W7L1/W7L1 - Cooper (2003) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W7L1/W7L1 - Cooper (2003) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W7L1/W7L1 - Cooper (2003) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W7L1/W7L1 - Jacobsen (2021) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W7L1/W7L1 - Jacobsen (2021) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W7L1/W7L1 - Jacobsen (2021) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W7L2/W7L2 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W7L2/W7L2 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W7L2/W7L2 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W7L2/W7L2 - Evans (1975) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W7L2/W7L2 - Evans (1975) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W7L2/W7L2 - Evans (1975) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W7L2/W7L2 - Giorgi (2005) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W7L2/W7L2 - Giorgi (2005) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W7L2/W7L2 - Giorgi (2005) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W7L2/W7L2 - Maslow (1968) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W7L2/W7L2 - Maslow (1968) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W7L2/W7L2 - Maslow (1968) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W8L1/W8L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W8L1/W8L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W8L1/W8L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W8L1/W8L1 - Lamiell, J.T. (2021) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W8L1/W8L1 - Lamiell, J.T. (2021) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W8L1/W8L1 - Lamiell, J.T. (2021) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W8L1/W8L1 - Laux et al. (2010) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W8L1/W8L1 - Laux et al. (2010) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W8L1/W8L1 - Laux et al. (2010) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W8L2/W8L2 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W8L2/W8L2 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W8L2/W8L2 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W8L2/W8L2 - Holzkamp (1982) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W8L2/W8L2 - Holzkamp (1982) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W8L2/W8L2 - Holzkamp (1982) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W8L2/W8L2 - Tolman (2009) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W8L2/W8L2 - Tolman (2009) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W8L2/W8L2 - Tolman (2009) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W9L1/W9L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W9L1/W9L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W9L1/W9L1 - Alle kilder [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W9L1/W9L1 - Dreier (1999) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W9L1/W9L1 - Dreier (1999) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W9L1/W9L1 - Dreier (1999) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W9L1/W9L1 - Grundbog kapitel 10 - Kritisk psykologi [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W9L1/W9L1 - Grundbog kapitel 10 - Kritisk psykologi [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W9L1/W9L1 - Grundbog kapitel 10 - Kritisk psykologi [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W9L1/W9L1 - Holzkamp (2013) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W9L1/W9L1 - Holzkamp (2013) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W9L1/W9L1 - Holzkamp (2013) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W9L1/W9L1 - X Mørch & Hansen (2015) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W9L1/W9L1 - X Mørch & Hansen (2015) [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W9L1/W9L1 - X Mørch & Hansen (2015) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`
+- [ ] `W9L1/[Brief] W9L1 - Grundbog kapitel 10 - Kritisk psykologi [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json`
+- [ ] `W9L1/[Brief] W9L1 - Grundbog kapitel 10 - Kritisk psykologi [EN] {type=quiz lang=en quantity=standard difficulty=hard download=json hash=f06c6752}.json`
+- [ ] `W9L1/[Brief] W9L1 - Grundbog kapitel 10 - Kritisk psykologi [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json`

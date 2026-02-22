@@ -106,6 +106,72 @@ class UserUnitProgress(models.Model):
         return f"{self.user_id}:{self.subject_slug}:{self.unit_key}:{self.status}"
 
 
+class UserLectureProgress(models.Model):
+    class Status(models.TextChoices):
+        LOCKED = "locked", "Låst"
+        ACTIVE = "active", "Aktiv"
+        COMPLETED = "completed", "Fuldført"
+
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    subject_slug = models.CharField(max_length=64)
+    lecture_key = models.CharField(max_length=32)
+    lecture_title = models.CharField(max_length=255)
+    sequence_index = models.PositiveIntegerField(default=0)
+    status = models.CharField(max_length=16, choices=Status.choices, default=Status.LOCKED)
+    completed_quizzes = models.PositiveIntegerField(default=0)
+    total_quizzes = models.PositiveIntegerField(default=0)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["user", "subject_slug", "lecture_key"],
+                name="uq_user_subject_lecture",
+            ),
+        ]
+        indexes = [
+            models.Index(fields=["user", "subject_slug"], name="lecture_prog_user_subject_idx"),
+            models.Index(fields=["user", "status"], name="lecture_prog_user_status_idx"),
+        ]
+
+    def __str__(self) -> str:
+        return f"{self.user_id}:{self.subject_slug}:{self.lecture_key}:{self.status}"
+
+
+class UserReadingProgress(models.Model):
+    class Status(models.TextChoices):
+        LOCKED = "locked", "Låst"
+        ACTIVE = "active", "Aktiv"
+        COMPLETED = "completed", "Fuldført"
+        NO_QUIZ = "no_quiz", "Ingen quiz"
+
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    subject_slug = models.CharField(max_length=64)
+    lecture_key = models.CharField(max_length=32)
+    reading_key = models.CharField(max_length=96)
+    reading_title = models.CharField(max_length=255)
+    sequence_index = models.PositiveIntegerField(default=0)
+    status = models.CharField(max_length=16, choices=Status.choices, default=Status.LOCKED)
+    completed_quizzes = models.PositiveIntegerField(default=0)
+    total_quizzes = models.PositiveIntegerField(default=0)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["user", "subject_slug", "lecture_key", "reading_key"],
+                name="uq_user_subject_lecture_reading",
+            ),
+        ]
+        indexes = [
+            models.Index(fields=["user", "subject_slug", "lecture_key"], name="reading_prog_user_lecture_idx"),
+            models.Index(fields=["user", "status"], name="reading_prog_user_status_idx"),
+        ]
+
+    def __str__(self) -> str:
+        return f"{self.user_id}:{self.subject_slug}:{self.lecture_key}:{self.reading_key}:{self.status}"
+
+
 class UserExtensionAccess(models.Model):
     class Extension(models.TextChoices):
         HABITICA = "habitica", "Habitica"

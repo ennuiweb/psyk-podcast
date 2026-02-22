@@ -16,6 +16,7 @@ from django.test import Client, TestCase, override_settings
 from django.urls import reverse
 
 from quizzes import services as quiz_services
+from quizzes.content_services import clear_content_service_caches
 from quizzes.models import (
     DailyGamificationStat,
     ExtensionSyncLedger,
@@ -24,7 +25,9 @@ from quizzes.models import (
     UserExtensionAccess,
     UserExtensionCredential,
     UserGamificationProfile,
+    UserLectureProgress,
     UserPreference,
+    UserReadingProgress,
     UserUnitProgress,
 )
 from quizzes.services import load_quiz_label_mapping
@@ -42,12 +45,18 @@ class QuizPortalTests(TestCase):
         self.links_file = root / "quiz_links.json"
         self.subjects_file = root / "subjects.json"
         self.reading_master_file = root / "reading-file-key.md"
+        self.reading_fallback_file = root / "reading-file-key-fallback.md"
+        self.rss_file = root / "rss.xml"
+        self.content_manifest_file = root / "content_manifest.json"
 
         self.override = override_settings(
             QUIZ_FILES_ROOT=self.quiz_root,
             QUIZ_LINKS_JSON_PATH=self.links_file,
             FREUDD_SUBJECTS_JSON_PATH=self.subjects_file,
             FREUDD_READING_MASTER_KEY_PATH=self.reading_master_file,
+            FREUDD_READING_MASTER_KEY_FALLBACK_PATH=self.reading_fallback_file,
+            FREUDD_SUBJECT_FEED_RSS_PATH=self.rss_file,
+            FREUDD_SUBJECT_CONTENT_MANIFEST_PATH=self.content_manifest_file,
             FREUDD_CREDENTIALS_MASTER_KEY="MDEyMzQ1Njc4OWFiY2RlZjAxMjM0NTY3ODlhYmNkZWY=",
             FREUDD_CREDENTIALS_KEY_VERSION=1,
             FREUDD_EXT_SYNC_TIMEOUT_SECONDS=2,
@@ -58,6 +67,8 @@ class QuizPortalTests(TestCase):
         self.addCleanup(self.override.disable)
         clear_subject_service_caches()
         self.addCleanup(clear_subject_service_caches)
+        clear_content_service_caches()
+        self.addCleanup(clear_content_service_caches)
         quiz_services._METADATA_CACHE["mtime"] = None
         quiz_services._METADATA_CACHE["data"] = {}
 
@@ -74,6 +85,8 @@ class QuizPortalTests(TestCase):
         )
         self._write_subjects_file()
         self._write_reading_master_file()
+        self.reading_fallback_file.write_text(self.reading_master_file.read_text(encoding="utf-8"), encoding="utf-8")
+        self._write_rss_file()
 
     def _write_quiz_file(self, quiz_id: str, *, question_count: int) -> None:
         payload = {"quiz": [{"question": f"Q{i + 1}"} for i in range(question_count)]}
@@ -158,6 +171,30 @@ class QuizPortalTests(TestCase):
                     "**W01L2 Personality assessment (Forelaesning 2, 2026-02-03)**",
                     "- Mayer & Bryan (2024) \u2192 Mayer & Bryan (2024).pdf",
                     "- MISSING: Koutsoumpis (2025)",
+                ]
+            ),
+            encoding="utf-8",
+        )
+
+    def _write_rss_file(self) -> None:
+        self.rss_file.write_text(
+            "\n".join(
+                [
+                    '<?xml version="1.0" encoding="UTF-8"?>',
+                    "<rss version=\"2.0\">",
+                    "<channel>",
+                    "<item>",
+                    "<title>U1F1 · [Podcast] · Alle kilder · 02/02 - 08/02</title>",
+                    "<pubDate>Mon, 02 Feb 2026 08:00:00 +0100</pubDate>",
+                    '<enclosure url="https://example.test/podcast/w01l1-alle-kilder.mp3" length="1" type="audio/mpeg" />',
+                    "</item>",
+                    "<item>",
+                    "<title>U1F1 · [Podcast] · Grundbog kapitel 01 - Introduktion til personlighedspsykologi · 02/02 - 08/02</title>",
+                    "<pubDate>Mon, 02 Feb 2026 10:00:00 +0100</pubDate>",
+                    '<enclosure url="https://example.test/podcast/w01l1-intro.mp3" length="1" type="audio/mpeg" />',
+                    "</item>",
+                    "</channel>",
+                    "</rss>",
                 ]
             ),
             encoding="utf-8",
@@ -546,6 +583,7 @@ class QuizPortalTests(TestCase):
         self.assertContains(response, "Aktivt semester")
         self.assertContains(response, "F26")
         self.assertContains(response, "Personlighedspsykologi")
+        self.assertContains(response, "Indstillinger")
         self.assertContains(response, "Tilmeld")
 
         preference = UserPreference.objects.get(user=user)
@@ -602,10 +640,13 @@ class QuizPortalTests(TestCase):
         self.assertContains(response, "Ikke tilmeldt")
         self.assertContains(response, "Læringssti")
         self.assertContains(response, "Næste fokus")
-        self.assertContains(response, "W01L1 Introforelaesning")
+        self.assertContains(response, "W01L1")
+        self.assertContains(response, "Lecture-quizzer")
         self.assertContains(response, "Grundbog kapitel 01 - Introduktion til personlighedspsykologi")
         self.assertContains(response, "MISSING")
         self.assertContains(response, "Koutsoumpis (2025)")
+        self.assertNotContains(response, "Tilmeld fag")
+        self.assertNotContains(response, "Afmeld fag")
 
     def test_subject_detail_shows_enrolled_status_for_enrolled_user(self) -> None:
         user = self._create_user()
@@ -617,8 +658,9 @@ class QuizPortalTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Tilmeldt")
         self.assertContains(response, "Læringssti")
+        self.assertNotContains(response, "Afmeld fag")
 
-    def test_subject_detail_shows_path_hint_when_active_unit_exists(self) -> None:
+    def test_subject_detail_shows_path_hint_when_active_lecture_exists(self) -> None:
         user = self._create_user()
         self.client.force_login(user)
 
@@ -636,8 +678,9 @@ class QuizPortalTests(TestCase):
         response = self.client.get(detail_url)
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Næste fokus")
+        self.assertContains(response, "W01L2")
 
-    def test_subject_detail_hides_path_when_subject_slug_missing_in_mapping(self) -> None:
+    def test_subject_detail_keeps_path_even_when_quiz_subject_slug_missing(self) -> None:
         user = self._create_user()
         self.client.force_login(user)
 
@@ -664,7 +707,8 @@ class QuizPortalTests(TestCase):
         detail_url = reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"})
         response = self.client.get(detail_url)
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "Ingen læringssti endnu for dette fag.")
+        self.assertContains(response, "Læringssti")
+        self.assertContains(response, "Ingen quiz")
 
     def test_unknown_subject_slug_returns_404_for_all_subject_endpoints(self) -> None:
         user = self._create_user()
@@ -711,16 +755,30 @@ class QuizPortalTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Fagkataloget kunne ikke indlæses.")
 
-    def test_subject_detail_handles_missing_master_reading_key(self) -> None:
+    def test_subject_detail_uses_fallback_when_primary_master_key_missing(self) -> None:
         user = self._create_user()
         self.client.force_login(user)
         self.reading_master_file.unlink()
         clear_subject_service_caches()
+        clear_content_service_caches()
+
+        response = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
+        self.assertEqual(response.status_code, 200)
+        self.assertNotContains(response, "Reading-nøglen kunne ikke indlæses.")
+        self.assertContains(response, "W01L1")
+
+    def test_subject_detail_shows_error_when_both_master_and_fallback_missing(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+        self.reading_master_file.unlink()
+        self.reading_fallback_file.unlink()
+        clear_subject_service_caches()
+        clear_content_service_caches()
 
         response = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Reading-nøglen kunne ikke indlæses.")
-        self.assertContains(response, "Ingen readings fundet for dette fag.")
+        self.assertContains(response, "Ingen læringssti endnu for dette fag.")
 
     def test_state_post_requires_csrf(self) -> None:
         user = self._create_user()
@@ -797,6 +855,24 @@ class QuizPortalTests(TestCase):
         self.assertEqual(len(units), 1)
         self.assertEqual(units[0].unit_key, "W01")
         self.assertEqual(units[0].status, UserUnitProgress.Status.COMPLETED)
+
+        lectures = list(UserLectureProgress.objects.filter(user=user).order_by("sequence_index"))
+        self.assertEqual(len(lectures), 2)
+        self.assertEqual(lectures[0].lecture_key, "W01L1")
+        self.assertEqual(lectures[0].status, UserLectureProgress.Status.COMPLETED)
+        self.assertEqual(lectures[1].lecture_key, "W01L2")
+        self.assertEqual(lectures[1].status, UserLectureProgress.Status.ACTIVE)
+
+        readings = list(
+            UserReadingProgress.objects.filter(
+                user=user,
+                subject_slug="personlighedspsykologi",
+                lecture_key="W01L1",
+            ).order_by("sequence_index")
+        )
+        self.assertEqual(len(readings), 2)
+        self.assertEqual(readings[0].status, UserReadingProgress.Status.NO_QUIZ)
+        self.assertEqual(readings[1].status, UserReadingProgress.Status.NO_QUIZ)
 
     def test_progress_page_hides_learning_path_section(self) -> None:
         user = self._create_user()
@@ -1058,6 +1134,33 @@ class QuizPortalTests(TestCase):
         self.assertFalse(
             ExtensionSyncLedger.objects.filter(user=user, extension="habitica").exists()
         )
+
+    def test_rebuild_content_manifest_command_writes_manifest(self) -> None:
+        output = io.StringIO()
+        call_command(
+            "rebuild_content_manifest",
+            "--subject",
+            "personlighedspsykologi",
+            stdout=output,
+        )
+        self.assertTrue(self.content_manifest_file.exists())
+        payload = json.loads(self.content_manifest_file.read_text(encoding="utf-8"))
+        self.assertEqual(payload["subject_slug"], "personlighedspsykologi")
+        self.assertEqual(len(payload["lectures"]), 2)
+        summary = json.loads(output.getvalue().strip())
+        self.assertEqual(summary["lectures"], 2)
+        self.assertGreaterEqual(summary["quiz_assets"], 1)
+
+    def test_rebuild_content_manifest_strict_fails_on_warnings(self) -> None:
+        self.rss_file.unlink()
+        with self.assertRaises(CommandError):
+            call_command(
+                "rebuild_content_manifest",
+                "--subject",
+                "personlighedspsykologi",
+                "--strict",
+                stdout=io.StringIO(),
+            )
 
     def test_gamification_recompute_command_runs_for_single_user(self) -> None:
         user = self._create_user()

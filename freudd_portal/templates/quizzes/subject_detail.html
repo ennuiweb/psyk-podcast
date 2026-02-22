@@ -30,18 +30,12 @@
     color: var(--muted);
   }
 
-  .subject-actions {
-    margin-top: 0.85rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.55rem;
-  }
-
   .subject-path {
     margin-top: 1rem;
   }
 
-  .subject-path h2 {
+  .subject-path h2,
+  .lecture-readings-title {
     margin: 0 0 0.55rem;
     font-size: clamp(1.02rem, 2vw, 1.2rem);
   }
@@ -155,17 +149,12 @@
     }
   }
 
-  .reading-lecture {
-    margin-top: 1rem;
+  .lecture-readings {
+    margin-top: 0.8rem;
     border: 1px solid var(--border);
     border-radius: 14px;
     background: rgba(10, 17, 28, 0.75);
     padding: 0.8rem;
-  }
-
-  .reading-lecture h2 {
-    margin: 0 0 0.65rem;
-    font-size: clamp(1.02rem, 2vw, 1.2rem);
   }
 
   .reading-list {
@@ -180,16 +169,22 @@
     border: 1px solid var(--border);
     border-radius: 10px;
     background: rgba(12, 21, 34, 0.8);
-    padding: 0.52rem 0.62rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.55rem;
+    padding: 0.6rem 0.7rem;
+    display: grid;
+    gap: 0.4rem;
   }
 
   .reading-item.is-missing {
     border-color: rgba(255, 159, 160, 0.5);
     background: rgba(46, 18, 22, 0.72);
+  }
+
+  .reading-item.is-active {
+    border-color: rgba(39, 211, 223, 0.5);
+  }
+
+  .reading-item.is-completed {
+    border-color: rgba(155, 243, 196, 0.5);
   }
 
   .missing-badge {
@@ -203,15 +198,86 @@
     white-space: nowrap;
   }
 
-  .ghost-button {
+  .status-badge {
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    padding: 0.13rem 0.45rem;
+    font-size: 0.74rem;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  .status-badge.is-active {
+    border-color: rgba(39, 211, 223, 0.6);
+    color: #8de8ef;
+  }
+
+  .status-badge.is-completed {
+    border-color: rgba(155, 243, 196, 0.6);
+    color: #9bf3c4;
+  }
+
+  .status-badge.is-locked {
+    color: var(--muted);
+  }
+
+  .status-badge.is-no-quiz {
+    border-color: rgba(126, 153, 190, 0.45);
+  }
+
+  .reading-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.55rem;
+    flex-wrap: wrap;
+  }
+
+  .reading-meta {
+    margin-top: 0.2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  .asset-block {
+    margin-top: 0.35rem;
+  }
+
+  .asset-title {
+    margin: 0;
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+
+  .asset-links {
+    margin-top: 0.28rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+
+  .asset-link {
     border: 1px solid var(--border);
     border-radius: 999px;
-    background: rgba(14, 22, 34, 0.75);
+    padding: 0.22rem 0.5rem;
+    font-size: 0.78rem;
     color: #d5e2fa;
-    padding: 0.56rem 0.95rem;
-    font-weight: 600;
-    cursor: pointer;
+    text-decoration: none;
   }
+
+  .lecture-assets {
+    margin-top: 0.62rem;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: rgba(12, 21, 34, 0.68);
+    padding: 0.58rem 0.66rem;
+    display: grid;
+    gap: 0.36rem;
+  }
+
 </style>
 
 <div class="card">
@@ -226,43 +292,98 @@
     <a class="ghost-link" href="{% url 'progress' %}">Tilbage til min side</a>
   </div>
 
-  <div class="subject-actions">
-    {% if is_enrolled %}
-    <form method="post" action="{{ unenroll_url }}">
-      {% csrf_token %}
-      <input type="hidden" name="next" value="{{ request.path }}" />
-      <button class="ghost-button" type="submit">Afmeld fag</button>
-    </form>
-    {% else %}
-    <form method="post" action="{{ enroll_url }}">
-      {% csrf_token %}
-      <input type="hidden" name="next" value="{{ request.path }}" />
-      <button class="btn-primary" type="submit">Tilmeld fag</button>
-    </form>
-    {% endif %}
-  </div>
-
   <section class="subject-path">
     <h2>Læringssti</h2>
-    {% if subject_path_units %}
-    {% if subject_path_active_unit %}
+    {% if subject_path_active_lecture %}
     <div class="path-hint">
-      Næste fokus: <strong>{{ subject_path_active_unit.unit_label }}</strong> ({{ subject_path_active_unit.completed_quizzes }} / {{ subject_path_active_unit.total_quizzes }} quizzer).
+      Næste fokus: <strong>{{ subject_path_active_lecture.lecture_key }} · {{ subject_path_active_lecture.lecture_title }}</strong> ({{ subject_path_active_lecture.completed_quizzes }} / {{ subject_path_active_lecture.total_quizzes }} quizzer).
     </div>
     {% endif %}
+    {% if subject_path_lectures %}
     <div class="path-track">
-      {% for unit in subject_path_units %}
+      {% for lecture in subject_path_lectures %}
       <article class="path-step {% if forloop.counter0|divisibleby:2 %}is-left{% else %}is-right{% endif %}">
-        <div class="path-link {% if unit.status == 'completed' %}is-completed{% elif unit.status == 'active' %}is-active{% else %}is-locked{% endif %}">
-          <div class="path-node-icon">{% if unit.status == 'completed' %}✓{% elif unit.status == 'active' %}▶{% else %}🔒{% endif %}</div>
+        <div class="path-link {% if lecture.status == 'completed' %}is-completed{% elif lecture.status == 'active' %}is-active{% else %}is-locked{% endif %}">
+          <div class="path-node-icon">{% if lecture.status == 'completed' %}✓{% elif lecture.status == 'active' %}▶{% else %}🔒{% endif %}</div>
           <div>
-            <p class="path-node-title">{{ unit.unit_label }}</p>
+            <p class="path-node-title">{{ lecture.lecture_key }} · {{ lecture.lecture_title }}</p>
             <p class="path-node-meta">
-              {{ unit.completed_quizzes }} / {{ unit.total_quizzes }} quizzer ·
-              {% if unit.status == 'completed' %}Fuldført{% elif unit.status == 'active' %}Aktiv{% else %}Låst{% endif %}
+              {{ lecture.completed_quizzes }} / {{ lecture.total_quizzes }} quizzer ·
+              {% if lecture.status == 'completed' %}Fuldført{% elif lecture.status == 'active' %}Aktiv{% else %}Låst{% endif %}
             </p>
           </div>
         </div>
+        {% if lecture.lecture_assets.quizzes or lecture.lecture_assets.podcasts %}
+        <section class="lecture-assets">
+          {% if lecture.lecture_assets.quizzes %}
+          <div class="asset-block">
+            <p class="asset-title">Lecture-quizzer (fx Alle kilder)</p>
+            <div class="asset-links">
+              {% for quiz in lecture.lecture_assets.quizzes %}
+              <a class="asset-link" href="{{ quiz.quiz_url }}">{{ quiz.difficulty|capfirst }} quiz</a>
+              {% endfor %}
+            </div>
+          </div>
+          {% endif %}
+          {% if lecture.lecture_assets.podcasts %}
+          <div class="asset-block">
+            <p class="asset-title">Lecture-podcasts</p>
+            <div class="asset-links">
+              {% for podcast in lecture.lecture_assets.podcasts %}
+              <a class="asset-link" href="{{ podcast.url }}" target="_blank" rel="noopener">{{ podcast.kind }}</a>
+              {% endfor %}
+            </div>
+          </div>
+          {% endif %}
+        </section>
+        {% endif %}
+        <section class="lecture-readings">
+          <h3 class="lecture-readings-title">Readings</h3>
+          {% if lecture.readings %}
+          <ul class="reading-list">
+            {% for reading in lecture.readings %}
+            <li class="reading-item {% if reading.is_missing %}is-missing{% endif %} {% if reading.status == 'active' %}is-active{% elif reading.status == 'completed' %}is-completed{% endif %}">
+              <div class="reading-head">
+                <strong>{{ reading.reading_title }}</strong>
+                <div style="display:flex;gap:0.35rem;align-items:center;flex-wrap:wrap;">
+                  {% if reading.is_missing %}
+                  <span class="missing-badge">MISSING</span>
+                  {% endif %}
+                  <span class="status-badge {% if reading.status == 'active' %}is-active{% elif reading.status == 'completed' %}is-completed{% elif reading.status == 'no_quiz' %}is-no-quiz{% else %}is-locked{% endif %}">
+                    {% if reading.status == 'active' %}Aktiv{% elif reading.status == 'completed' %}Fuldført{% elif reading.status == 'no_quiz' %}Ingen quiz{% else %}Låst{% endif %}
+                  </span>
+                </div>
+              </div>
+              <div class="reading-meta">
+                <span>{{ reading.completed_quizzes }} / {{ reading.total_quizzes }} quizzer</span>
+              </div>
+              {% if reading.assets.quizzes %}
+              <div class="asset-block">
+                <p class="asset-title">Quizzer</p>
+                <div class="asset-links">
+                  {% for quiz in reading.assets.quizzes %}
+                  <a class="asset-link" href="{{ quiz.quiz_url }}">{{ quiz.difficulty|capfirst }}</a>
+                  {% endfor %}
+                </div>
+              </div>
+              {% endif %}
+              {% if reading.assets.podcasts %}
+              <div class="asset-block">
+                <p class="asset-title">Podcasts</p>
+                <div class="asset-links">
+                  {% for podcast in reading.assets.podcasts %}
+                  <a class="asset-link" href="{{ podcast.url }}" target="_blank" rel="noopener">{{ podcast.kind }}</a>
+                  {% endfor %}
+                </div>
+              </div>
+              {% endif %}
+            </li>
+            {% endfor %}
+          </ul>
+          {% else %}
+          <p class="muted">Ingen readings registreret i denne forelæsning.</p>
+          {% endif %}
+        </section>
         {% if not forloop.last %}
         <div class="path-connector" aria-hidden="true"></div>
         {% endif %}
@@ -276,30 +397,6 @@
 
   {% if readings_error %}
   <div class="message error" style="margin-top: 0.9rem;">{{ readings_error }}</div>
-  {% endif %}
-
-  {% if lectures %}
-    {% for lecture in lectures %}
-    <section class="reading-lecture">
-      <h2>{{ lecture.heading }}</h2>
-      {% if lecture.readings %}
-      <ul class="reading-list">
-        {% for reading in lecture.readings %}
-        <li class="reading-item {% if reading.is_missing %}is-missing{% endif %}">
-          <span>{{ reading.title }}</span>
-          {% if reading.is_missing %}
-          <span class="missing-badge">MISSING</span>
-          {% endif %}
-        </li>
-        {% endfor %}
-      </ul>
-      {% else %}
-      <p class="muted">Ingen readings registreret i denne forelæsning.</p>
-      {% endif %}
-    </section>
-    {% endfor %}
-  {% else %}
-  <p class="muted" style="margin-top: 1rem;">Ingen readings fundet for dette fag.</p>
   {% endif %}
 </div>
 {% endblock %}

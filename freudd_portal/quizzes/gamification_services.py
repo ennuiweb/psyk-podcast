@@ -23,8 +23,11 @@ from .models import (
     UserExtensionAccess,
     UserExtensionCredential,
     UserGamificationProfile,
+    UserLectureProgress,
+    UserReadingProgress,
     UserUnitProgress,
 )
+from .content_services import load_subject_content_manifest
 from .services import load_quiz_label_mapping
 from .subject_services import load_subject_catalog
 
@@ -200,6 +203,156 @@ def _recompute_unit_progress(user) -> tuple[int, list[UserUnitProgress]]:
     return current_level, rows
 
 
+def _quiz_ids_from_assets(assets: dict[str, Any]) -> set[str]:
+    quiz_ids: set[str] = set()
+    quizzes = assets.get("quizzes")
+    if not isinstance(quizzes, list):
+        return quiz_ids
+    for quiz in quizzes:
+        if not isinstance(quiz, dict):
+            continue
+        quiz_id = str(quiz.get("quiz_id") or "").strip().lower()
+        if quiz_id:
+            quiz_ids.add(quiz_id)
+    return quiz_ids
+
+
+def recompute_subject_progress(user, subject_slug: str) -> dict[str, Any]:
+    slug = (subject_slug or "").strip().lower()
+    if not slug:
+        return {"lectures": 0, "readings": 0}
+
+    manifest = load_subject_content_manifest(slug)
+    lectures = manifest.get("lectures")
+    if not isinstance(lectures, list):
+        UserLectureProgress.objects.filter(user=user, subject_slug=slug).delete()
+        UserReadingProgress.objects.filter(user=user, subject_slug=slug).delete()
+        return {"lectures": 0, "readings": 0}
+
+    completed_ids = set(
+        QuizProgress.objects.filter(user=user, status=QuizProgress.Status.COMPLETED).values_list(
+            "quiz_id", flat=True
+        )
+    )
+
+    active_lecture_keys: set[str] = set()
+    active_reading_keys: set[str] = set()
+    blocked_by_active = False
+    lecture_row_count = 0
+    reading_row_count = 0
+
+    for sequence_index, lecture in enumerate(lectures, start=1):
+        if not isinstance(lecture, dict):
+            continue
+        lecture_key = str(lecture.get("lecture_key") or "").strip().upper()
+        if not lecture_key:
+            continue
+
+        lecture_title = str(lecture.get("lecture_title") or lecture_key).strip() or lecture_key
+        lecture_assets = lecture.get("lecture_assets") if isinstance(lecture.get("lecture_assets"), dict) else {}
+        lecture_quiz_ids = _quiz_ids_from_assets(lecture_assets)
+        readings = lecture.get("readings") if isinstance(lecture.get("readings"), list) else []
+        for reading in readings:
+            if not isinstance(reading, dict):
+                continue
+            reading_assets = reading.get("assets") if isinstance(reading.get("assets"), dict) else {}
+            lecture_quiz_ids.update(_quiz_ids_from_assets(reading_assets))
+
+        total_quizzes = len(lecture_quiz_ids)
+        completed_quizzes = len(lecture_quiz_ids.intersection(completed_ids))
+        if blocked_by_active:
+            lecture_status = UserLectureProgress.Status.LOCKED
+        else:
+            if total_quizzes == 0:
+                lecture_status = UserLectureProgress.Status.ACTIVE
+                blocked_by_active = True
+            elif completed_quizzes == total_quizzes:
+                lecture_status = UserLectureProgress.Status.COMPLETED
+            else:
+                lecture_status = UserLectureProgress.Status.ACTIVE
+                blocked_by_active = True
+
+        UserLectureProgress.objects.update_or_create(
+            user=user,
+            subject_slug=slug,
+            lecture_key=lecture_key,
+            defaults={
+                "lecture_title": lecture_title,
+                "sequence_index": sequence_index,
+                "status": lecture_status,
+                "completed_quizzes": completed_quizzes,
+                "total_quizzes": total_quizzes,
+            },
+        )
+        lecture_row_count += 1
+        active_lecture_keys.add(lecture_key)
+
+        reading_active_assigned = False
+        for reading_position, reading in enumerate(readings, start=1):
+            if not isinstance(reading, dict):
+                continue
+            reading_key = str(reading.get("reading_key") or "").strip()
+            if not reading_key:
+                continue
+            reading_title = str(reading.get("reading_title") or reading_key).strip() or reading_key
+            assets = reading.get("assets") if isinstance(reading.get("assets"), dict) else {}
+            reading_quiz_ids = _quiz_ids_from_assets(assets)
+            reading_total = len(reading_quiz_ids)
+            reading_completed = len(reading_quiz_ids.intersection(completed_ids))
+
+            if reading_total == 0:
+                reading_status = UserReadingProgress.Status.NO_QUIZ
+            elif lecture_status == UserLectureProgress.Status.LOCKED:
+                reading_status = UserReadingProgress.Status.LOCKED
+            elif reading_completed == reading_total:
+                reading_status = UserReadingProgress.Status.COMPLETED
+            elif lecture_status == UserLectureProgress.Status.ACTIVE and not reading_active_assigned:
+                reading_status = UserReadingProgress.Status.ACTIVE
+                reading_active_assigned = True
+            else:
+                reading_status = UserReadingProgress.Status.LOCKED
+
+            UserReadingProgress.objects.update_or_create(
+                user=user,
+                subject_slug=slug,
+                lecture_key=lecture_key,
+                reading_key=reading_key,
+                defaults={
+                    "reading_title": reading_title,
+                    "sequence_index": reading_position,
+                    "status": reading_status,
+                    "completed_quizzes": reading_completed,
+                    "total_quizzes": reading_total,
+                },
+            )
+            reading_row_count += 1
+            active_reading_keys.add(f"{lecture_key}:{reading_key}")
+
+    if not active_lecture_keys:
+        UserLectureProgress.objects.filter(user=user, subject_slug=slug).delete()
+    else:
+        UserLectureProgress.objects.filter(user=user, subject_slug=slug).exclude(
+            lecture_key__in=active_lecture_keys
+        ).delete()
+
+    if not active_reading_keys:
+        UserReadingProgress.objects.filter(user=user, subject_slug=slug).delete()
+    else:
+        existing_rows = UserReadingProgress.objects.filter(user=user, subject_slug=slug)
+        stale_ids = [
+            row.id
+            for row in existing_rows.only("id", "lecture_key", "reading_key")
+            if f"{row.lecture_key}:{row.reading_key}" not in active_reading_keys
+        ]
+        if stale_ids:
+            UserReadingProgress.objects.filter(id__in=stale_ids).delete()
+
+    return {
+        "lectures": lecture_row_count,
+        "readings": reading_row_count,
+    }
+
+
 def _recompute_streak(stats: list[DailyGamificationStat], today: date) -> int:
     met_dates = {item.date for item in stats if item.goal_met}
     streak = 0
@@ -234,6 +387,16 @@ def recompute_user_gamification(user) -> UserGamificationProfile:
     current_level_from_xp = max(1, (xp_total // _xp_per_level()) + 1)
     current_level_from_units, _ = _recompute_unit_progress(user)
     current_level = max(current_level_from_xp, current_level_from_units)
+    catalog = load_subject_catalog()
+    subject_slugs = [subject.slug for subject in catalog.active_subjects]
+    for subject_slug in subject_slugs:
+        recompute_subject_progress(user, subject_slug)
+    if subject_slugs:
+        UserLectureProgress.objects.filter(user=user).exclude(subject_slug__in=subject_slugs).delete()
+        UserReadingProgress.objects.filter(user=user).exclude(subject_slug__in=subject_slugs).delete()
+    else:
+        UserLectureProgress.objects.filter(user=user).delete()
+        UserReadingProgress.objects.filter(user=user).delete()
 
     last_activity_date: date | None = None
     for item in reversed(stats):
@@ -353,26 +516,82 @@ def get_gamification_snapshot(user) -> dict[str, Any]:
 def get_subject_learning_path_snapshot(user, subject_slug: str) -> dict[str, Any]:
     recompute_user_gamification(user)
     slug = (subject_slug or "").strip().lower()
-    units = list(
-        UserUnitProgress.objects.filter(user=user, subject_slug=slug).order_by("sequence_index", "unit_key")
+    manifest = load_subject_content_manifest(slug)
+    lecture_rows = {
+        row.lecture_key: row
+        for row in UserLectureProgress.objects.filter(user=user, subject_slug=slug).order_by(
+            "sequence_index", "lecture_key"
+        )
+    }
+    reading_rows = {
+        f"{row.lecture_key}:{row.reading_key}": row
+        for row in UserReadingProgress.objects.filter(user=user, subject_slug=slug).order_by(
+            "lecture_key", "sequence_index", "reading_key"
+        )
+    }
+    lecture_payload: list[dict[str, Any]] = []
+    for lecture in manifest.get("lectures") or []:
+        if not isinstance(lecture, dict):
+            continue
+        lecture_key = str(lecture.get("lecture_key") or "").strip().upper()
+        if not lecture_key:
+            continue
+        lecture_row = lecture_rows.get(lecture_key)
+        lecture_assets = lecture.get("lecture_assets") if isinstance(lecture.get("lecture_assets"), dict) else {}
+        readings_payload: list[dict[str, Any]] = []
+        for reading in lecture.get("readings") or []:
+            if not isinstance(reading, dict):
+                continue
+            reading_key = str(reading.get("reading_key") or "").strip()
+            if not reading_key:
+                continue
+            reading_assets = reading.get("assets") if isinstance(reading.get("assets"), dict) else {}
+            reading_row = reading_rows.get(f"{lecture_key}:{reading_key}")
+            default_status = (
+                UserReadingProgress.Status.NO_QUIZ
+                if len(_quiz_ids_from_assets(reading_assets)) == 0
+                else UserReadingProgress.Status.LOCKED
+            )
+            readings_payload.append(
+                {
+                    "reading_key": reading_key,
+                    "reading_title": str(reading.get("reading_title") or reading_key),
+                    "is_missing": bool(reading.get("is_missing", False)),
+                    "sequence_index": int(reading.get("sequence_index") or 0),
+                    "status": reading_row.status if reading_row else default_status,
+                    "completed_quizzes": int(reading_row.completed_quizzes) if reading_row else 0,
+                    "total_quizzes": int(reading_row.total_quizzes) if reading_row else len(_quiz_ids_from_assets(reading_assets)),
+                    "assets": {
+                        "quizzes": list(reading_assets.get("quizzes") or []),
+                        "podcasts": list(reading_assets.get("podcasts") or []),
+                    },
+                }
+            )
+        lecture_payload.append(
+            {
+                "lecture_key": lecture_key,
+                "lecture_title": str(lecture.get("lecture_title") or lecture_key),
+                "sequence_index": int(lecture.get("sequence_index") or 0),
+                "status": lecture_row.status if lecture_row else UserLectureProgress.Status.LOCKED,
+                "completed_quizzes": int(lecture_row.completed_quizzes) if lecture_row else 0,
+                "total_quizzes": int(lecture_row.total_quizzes) if lecture_row else len(_quiz_ids_from_assets(lecture_assets)),
+                "warnings": list(lecture.get("warnings") or []),
+                "readings": readings_payload,
+                "lecture_assets": {
+                    "quizzes": list(lecture_assets.get("quizzes") or []),
+                    "podcasts": list(lecture_assets.get("podcasts") or []),
+                },
+            }
+        )
+    active_lecture = next(
+        (lecture for lecture in lecture_payload if lecture["status"] == UserLectureProgress.Status.ACTIVE),
+        None,
     )
-    unit_payload = [
-        {
-            "subject_slug": unit.subject_slug,
-            "unit_key": unit.unit_key,
-            "unit_label": unit.unit_label,
-            "sequence_index": unit.sequence_index,
-            "status": unit.status,
-            "completed_quizzes": unit.completed_quizzes,
-            "total_quizzes": unit.total_quizzes,
-            "mastery_ratio": float(unit.mastery_ratio),
-        }
-        for unit in units
-    ]
-    active_unit = next((unit for unit in unit_payload if unit["status"] == UserUnitProgress.Status.ACTIVE), None)
     return {
-        "units": unit_payload,
-        "active_unit": active_unit,
+        "lectures": lecture_payload,
+        "active_lecture": active_lecture,
+        "warnings": list(manifest.get("warnings") or []),
+        "source_meta": dict(manifest.get("source_meta") or {}),
     }
 
 

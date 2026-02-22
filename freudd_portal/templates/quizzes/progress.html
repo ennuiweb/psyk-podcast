@@ -123,19 +123,6 @@
         </p>
         <div class="subject-actions">
           <a class="nav-action" href="{{ subject.detail_url }}">Åbn fag</a>
-          {% if subject.is_enrolled %}
-          <form method="post" action="{{ subject.unenroll_url }}">
-            {% csrf_token %}
-            <input type="hidden" name="next" value="{% url 'progress' %}" />
-            <button class="ghost-button" type="submit">Afmeld</button>
-          </form>
-          {% else %}
-          <form method="post" action="{{ subject.enroll_url }}">
-            {% csrf_token %}
-            <input type="hidden" name="next" value="{% url 'progress' %}" />
-            <button class="ghost-button" type="submit">Tilmeld</button>
-          </form>
-          {% endif %}
         </div>
       </article>
       {% endfor %}
@@ -183,6 +170,42 @@
     </div>
     {% else %}
     <p class="muted">Der er endnu ikke gemte quizscore.</p>
+    {% endif %}
+  </section>
+
+  <section class="dashboard-section">
+    <h2 class="section-title">Indstillinger</h2>
+    <p class="muted">Tilmeld eller afmeld fag her.</p>
+    {% if subject_cards %}
+    <div class="subject-grid">
+      {% for subject in subject_cards %}
+      <article class="subject-card">
+        <div>
+          <h3>{{ subject.title }}</h3>
+          <p class="subject-status {% if subject.is_enrolled %}is-enrolled{% else %}is-not-enrolled{% endif %}">
+            {% if subject.is_enrolled %}Tilmeldt{% else %}Ikke tilmeldt{% endif %}
+          </p>
+        </div>
+        <div class="subject-actions">
+          {% if subject.is_enrolled %}
+          <form method="post" action="{{ subject.unenroll_url }}">
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{% url 'progress' %}" />
+            <button class="ghost-button" type="submit">Afmeld</button>
+          </form>
+          {% else %}
+          <form method="post" action="{{ subject.enroll_url }}">
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{% url 'progress' %}" />
+            <button class="ghost-button" type="submit">Tilmeld</button>
+          </form>
+          {% endif %}
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+    {% else %}
+    <p class="muted">Ingen fag er tilgængelige endnu.</p>
     {% endif %}
   </section>
 </div>

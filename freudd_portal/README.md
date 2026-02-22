@@ -20,10 +20,11 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Semester is stored globally per user (`UserPreference.semester`), and rendered as a fixed dropdown sourced from `subjects.json`.
 - Subjects are loaded from `freudd_portal/subjects.json`; first active subject is `personlighedspsykologi`.
 - Subject enrollment is per `(user, subject_slug)` in `SubjectEnrollment`.
-- Subject reading lists are parsed live from the master key markdown file path (`FREUDD_READING_MASTER_KEY_PATH`) with mtime-based cache.
+- Subject learning path is lecture-first: each lecture node contains readings, plus lecture-level assets (for example `Alle kilder`).
+- Subject content is compiled from reading master key + quiz links + local RSS into `content_manifest.json`.
 - Completion rule: `currentView == "summary"` and `answers_count == question_count`.
 - Gamification core is quiz-driven and always available for authenticated users (`/progress`, `/api/gamification/me`).
-- Learning path uses a Duolingo-style zig-zag node layout with `locked/active/completed` unit states on each subject page (`/subjects/<subject_slug>`), not on `Min side`.
+- Learning path on subject pages (`/subjects/<subject_slug>`) is lecture-first with nested reading status (`locked|active|completed|no_quiz`) and quiz/podcast navigation.
 - `quiz_links.json` entries must include `subject_slug` so unit progression can be computed per subject.
 - Optional extensions (`habitica`, `anki`) are disabled by default and must be enabled per account via management command.
 - Extension sync is server-driven (`manage.py sync_extensions`) and runs only for enabled users with stored per-user credentials.
@@ -47,6 +48,8 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - `POST /subjects/<subject_slug>/enroll`
 - `POST /subjects/<subject_slug>/unenroll`
 
+Enrollment UX rule: enroll/unenroll actions are only shown on the bottom `Indstillinger` section of `GET /progress`; subject detail is read-only for enrollment state.
+
 `quiz_id` format is strict 8-char hex (`^[0-9a-f]{8}$`).
 
 ## Data model
@@ -56,9 +59,12 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - `UserGamificationProfile`: per-user XP/streak/level aggregates.
 - `UserUnitProgress`: per-user learning path unit status (`locked`, `active`, `completed`).
 - `DailyGamificationStat`: per-user daily answer/completion deltas + goal state.
+- `UserLectureProgress`: per-user lecture status (`locked|active|completed`) and quiz totals.
+- `UserReadingProgress`: per-user reading status (`locked|active|completed|no_quiz`) and quiz totals.
 - `UserExtensionAccess`: per-user enablement and last sync status for optional extensions.
 - `UserExtensionCredential`: per-user encrypted extension credentials (`habitica` now, `anki` deferred).
 - `ExtensionSyncLedger`: per-user/per-extension/per-day idempotent sync log (`ok|error|skipped`).
+- `UserUnitProgress`: legacy/compat path model kept temporarily for API compatibility.
 
 ## Subject catalog (`subjects.json`)
 ```json
@@ -80,9 +86,19 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - `by_name.<episode>.subject_slug` is required for learning path calculations.
 - `links[].subject_slug` is optional fallback; entry-level `subject_slug` is canonical.
 
+## Subject content manifest contract (`content_manifest.json`)
+- `subject_slug`: canonical slug for the subject manifest.
+- `source_meta`: source paths + generation metadata (`reading master`, `rss`, `quiz_links`).
+- `lectures[]`: lecture-first tree with `lecture_key`, `lecture_title`, `sequence_index`, `readings[]`, `lecture_assets`, `warnings[]`.
+- `readings[]`: each reading has stable `reading_key`, `reading_title`, `is_missing`, and `assets` (`quizzes[]`, `podcasts[]`).
+- `lecture_assets`: lecture-level assets for items like `Alle kilder`.
+
 ## New env configuration
 - `FREUDD_SUBJECTS_JSON_PATH` (default: `freudd_portal/subjects.json`)
 - `FREUDD_READING_MASTER_KEY_PATH` (default: `/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/.ai/reading-file-key.md`)
+- `FREUDD_READING_MASTER_KEY_FALLBACK_PATH` (default: `shows/personlighedspsykologi-en/docs/reading-file-key.md`)
+- `FREUDD_SUBJECT_FEED_RSS_PATH` (default: `shows/personlighedspsykologi-en/feeds/rss.xml`)
+- `FREUDD_SUBJECT_CONTENT_MANIFEST_PATH` (default: `shows/personlighedspsykologi-en/content_manifest.json`)
 - `FREUDD_GAMIFICATION_DAILY_GOAL` (default: `20`)
 - `FREUDD_GAMIFICATION_XP_PER_ANSWER` (default: `5`)
 - `FREUDD_GAMIFICATION_XP_PER_COMPLETION` (default: `50`)
@@ -106,6 +122,8 @@ cd /Users/oskar/repo/podcasts/freudd_portal
 ../.venv/bin/python manage.py sync_extensions --extension all --dry-run
 ../.venv/bin/python manage.py gamification_recompute --user <username>
 ../.venv/bin/python manage.py gamification_recompute --all
+../.venv/bin/python manage.py rebuild_content_manifest --subject personlighedspsykologi
+../.venv/bin/python manage.py rebuild_content_manifest --subject personlighedspsykologi --strict
 ```
 
 Cron example:

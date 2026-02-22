@@ -44,7 +44,7 @@ from .services import (
     quiz_question_count,
     upsert_progress_from_state,
 )
-from .subject_services import SubjectCatalog, load_subject_catalog, parse_master_readings
+from .subject_services import SubjectCatalog, load_subject_catalog
 
 logger = logging.getLogger(__name__)
 MAX_STATE_BYTES = 5_000_000
@@ -480,8 +480,9 @@ def subject_detail_view(request: HttpRequest, subject_slug: str) -> HttpResponse
         user=request.user,
         subject_slug=subject.slug,
     ).exists()
-    readings = parse_master_readings(settings.FREUDD_READING_MASTER_KEY_PATH)
     subject_path = get_subject_learning_path_snapshot(request.user, subject.slug)
+    source_meta = subject_path.get("source_meta") if isinstance(subject_path.get("source_meta"), dict) else {}
+    readings_error = str(source_meta.get("reading_error") or "").strip() or None
 
     return render(
         request,
@@ -489,11 +490,8 @@ def subject_detail_view(request: HttpRequest, subject_slug: str) -> HttpResponse
         {
             "subject": subject,
             "is_enrolled": is_enrolled,
-            "lectures": readings.lectures,
-            "readings_error": readings.error,
-            "subject_path_units": subject_path["units"],
-            "subject_path_active_unit": subject_path["active_unit"],
-            "enroll_url": reverse("subject-enroll", kwargs={"subject_slug": subject.slug}),
-            "unenroll_url": reverse("subject-unenroll", kwargs={"subject_slug": subject.slug}),
+            "readings_error": readings_error,
+            "subject_path_lectures": subject_path.get("lectures", []),
+            "subject_path_active_lecture": subject_path.get("active_lecture"),
         },
     )

@@ -127,6 +127,24 @@ FREUDD_READING_MASTER_KEY_PATH = Path(
         "Mine dokumenter \U0001F4BE/psykologi/Personlighedspsykologi/.ai/reading-file-key.md",
     )
 )
+FREUDD_READING_MASTER_KEY_FALLBACK_PATH = Path(
+    os.environ.get(
+        "FREUDD_READING_MASTER_KEY_FALLBACK_PATH",
+        BASE_DIR.parent / "shows" / "personlighedspsykologi-en" / "docs" / "reading-file-key.md",
+    )
+)
+FREUDD_SUBJECT_FEED_RSS_PATH = Path(
+    os.environ.get(
+        "FREUDD_SUBJECT_FEED_RSS_PATH",
+        BASE_DIR.parent / "shows" / "personlighedspsykologi-en" / "feeds" / "rss.xml",
+    )
+)
+FREUDD_SUBJECT_CONTENT_MANIFEST_PATH = Path(
+    os.environ.get(
+        "FREUDD_SUBJECT_CONTENT_MANIFEST_PATH",
+        BASE_DIR.parent / "shows" / "personlighedspsykologi-en" / "content_manifest.json",
+    )
+)
 
 QUIZ_SIGNUP_RATE_LIMIT = int(os.environ.get("QUIZ_SIGNUP_RATE_LIMIT", "20"))
 QUIZ_LOGIN_RATE_LIMIT = int(os.environ.get("QUIZ_LOGIN_RATE_LIMIT", "40"))

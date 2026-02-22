@@ -700,6 +700,7 @@ class QuizPortalTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Læringssti")
         self.assertContains(response, "Dagens mål")
+        self.assertContains(response, "Næste fokus")
         self.assertNotContains(response, "Extensions")
 
     def test_gamification_api_requires_login_and_returns_snapshot(self) -> None:

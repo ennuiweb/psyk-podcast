@@ -154,6 +154,7 @@ The repository includes a Django portal in `freudd_portal/` for user login, quiz
 - Model: `UserExtensionAccess` (`ForeignKey(user)`, per-extension enablement + last sync status)
 - Model: `UserExtensionCredential` (`ForeignKey(user)`, encrypted per-user credentials, unique `(user, extension)`)
 - Model: `ExtensionSyncLedger` (`ForeignKey(user)`, idempotent per-day sync rows for each extension)
+- UI: progress page renders a Duolingo-style zig-zag learning path from `UserUnitProgress`.
 - Unique key: `(user, quiz_id)` for quiz state
 - Unique key: `(user, subject_slug)` for subject enrollment
 - Completion rule (phase 1): `currentView == "summary"` and `answers_count == question_count`

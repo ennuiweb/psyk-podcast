@@ -23,6 +23,7 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Subject reading lists are parsed live from the master key markdown file path (`FREUDD_READING_MASTER_KEY_PATH`) with mtime-based cache.
 - Completion rule: `currentView == "summary"` and `answers_count == question_count`.
 - Gamification core is quiz-driven and always available for authenticated users (`/progress`, `/api/gamification/me`).
+- Learning path uses a Duolingo-style zig-zag node layout with `locked/active/completed` unit states.
 - Optional extensions (`habitica`, `anki`) are disabled by default and must be enabled per account via management command.
 - Extension sync is server-driven (`manage.py sync_extensions`) and runs only for enabled users with stored per-user credentials.
 - Credentials are encrypted at rest with Fernet via `FREUDD_CREDENTIALS_MASTER_KEY`.

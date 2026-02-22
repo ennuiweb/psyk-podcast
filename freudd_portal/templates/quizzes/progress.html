@@ -40,31 +40,85 @@
     color: var(--muted);
   }
 
-  .path-wrap {
-    margin-top: 0.8rem;
-    display: flex;
-    flex-wrap: wrap;
+  .path-track {
+    margin-top: 0.86rem;
+    display: grid;
+    gap: 0.66rem;
+  }
+
+  .path-hint {
+    margin-top: 0.6rem;
+    border: 1px solid rgba(39, 211, 223, 0.4);
+    border-radius: 12px;
+    background: rgba(15, 28, 38, 0.82);
+    padding: 0.6rem 0.72rem;
+    font-size: 0.9rem;
+  }
+
+  .path-step {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .path-step.is-right {
+    justify-items: end;
+  }
+
+  .path-step.is-left {
+    justify-items: start;
+  }
+
+  .path-link {
+    width: min(100%, 360px);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: rgba(11, 18, 30, 0.78);
+    padding: 0.58rem 0.74rem;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
     gap: 0.62rem;
   }
 
-  .path-node {
+  .path-link.is-completed {
+    border-color: rgba(155, 243, 196, 0.5);
+  }
+
+  .path-link.is-active {
+    border-color: rgba(39, 211, 223, 0.6);
+    box-shadow: 0 0 0 1px rgba(39, 211, 223, 0.24);
+  }
+
+  .path-link.is-locked {
+    opacity: 0.74;
+  }
+
+  .path-node-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-family: "Space Grotesk", "Manrope", sans-serif;
+    background: rgba(25, 36, 52, 0.92);
     border: 1px solid var(--border);
-    border-radius: 12px;
-    background: rgba(11, 18, 30, 0.74);
-    padding: 0.55rem 0.62rem;
-    min-width: 160px;
   }
 
-  .path-node.is-completed {
-    border-color: rgba(155, 243, 196, 0.44);
+  .path-link.is-completed .path-node-icon {
+    border-color: rgba(155, 243, 196, 0.65);
+    color: #9bf3c4;
   }
 
-  .path-node.is-active {
-    border-color: rgba(39, 211, 223, 0.5);
+  .path-link.is-active .path-node-icon {
+    border-color: rgba(39, 211, 223, 0.8);
+    color: #8de8ef;
   }
 
-  .path-node.is-locked {
-    opacity: 0.78;
+  .path-link.is-locked .path-node-icon {
+    color: var(--muted);
   }
 
   .path-node-title {
@@ -73,9 +127,26 @@
   }
 
   .path-node-meta {
-    margin: 0.24rem 0 0;
-    font-size: 0.86rem;
+    margin: 0.2rem 0 0;
+    font-size: 0.84rem;
     color: var(--muted);
+  }
+
+  .path-connector {
+    margin: 0.18rem 22px 0.16rem;
+    height: 18px;
+    border-left: 2px dashed rgba(126, 153, 190, 0.44);
+  }
+
+  @media (max-width: 700px) {
+    .path-step.is-right,
+    .path-step.is-left {
+      justify-items: stretch;
+    }
+
+    .path-link {
+      width: 100%;
+    }
   }
 
   .extension-grid {
@@ -203,11 +274,27 @@
       </article>
     </div>
     {% if gamification.units %}
-    <div class="path-wrap">
+    {% if active_unit %}
+    <div class="path-hint">
+      Næste fokus: <strong>{{ active_unit.unit_label }}</strong> ({{ active_unit.completed_quizzes }} / {{ active_unit.total_quizzes }} quizzer).
+    </div>
+    {% endif %}
+    <div class="path-track">
       {% for unit in gamification.units %}
-      <article class="path-node {% if unit.status == 'completed' %}is-completed{% elif unit.status == 'active' %}is-active{% else %}is-locked{% endif %}">
-        <p class="path-node-title">{{ unit.unit_label }}</p>
-        <p class="path-node-meta">{{ unit.completed_quizzes }} / {{ unit.total_quizzes }} quizzer · {{ unit.status }}</p>
+      <article class="path-step {% if forloop.counter0|divisibleby:2 %}is-left{% else %}is-right{% endif %}">
+        <div class="path-link {% if unit.status == 'completed' %}is-completed{% elif unit.status == 'active' %}is-active{% else %}is-locked{% endif %}">
+          <div class="path-node-icon">{% if unit.status == 'completed' %}✓{% elif unit.status == 'active' %}▶{% else %}🔒{% endif %}</div>
+          <div>
+            <p class="path-node-title">{{ unit.unit_label }}</p>
+            <p class="path-node-meta">
+              {{ unit.completed_quizzes }} / {{ unit.total_quizzes }} quizzer ·
+              {% if unit.status == 'completed' %}Fuldført{% elif unit.status == 'active' %}Aktiv{% else %}Låst{% endif %}
+            </p>
+          </div>
+        </div>
+        {% if not forloop.last %}
+        <div class="path-connector" aria-hidden="true"></div>
+        {% endif %}
       </article>
       {% endfor %}
     </div>

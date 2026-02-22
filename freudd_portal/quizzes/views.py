@@ -412,6 +412,10 @@ def progress_view(request: HttpRequest) -> HttpResponse:
         )
 
     gamification = get_gamification_snapshot(request.user)
+    active_unit = next(
+        (unit for unit in gamification.get("units", []) if unit.get("status") == "active"),
+        None,
+    )
 
     return render(
         request,
@@ -423,6 +427,7 @@ def progress_view(request: HttpRequest) -> HttpResponse:
             "subject_cards": subject_cards,
             "subjects_error": catalog.error,
             "gamification": gamification,
+            "active_unit": active_unit,
             "extensions_enabled": bool(gamification.get("extensions")),
         },
     )

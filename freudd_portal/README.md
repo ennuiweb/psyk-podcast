@@ -24,7 +24,9 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Completion rule: `currentView == "summary"` and `answers_count == question_count`.
 - Gamification core is quiz-driven and always available for authenticated users (`/progress`, `/api/gamification/me`).
 - Optional extensions (`habitica`, `anki`) are disabled by default and must be enabled per account via management command.
-- Extension sync is token-based (`POST /api/extensions/sync`) and intended for local agents.
+- Extension sync is server-driven (`manage.py sync_extensions`) and runs only for enabled users with stored per-user credentials.
+- Credentials are encrypted at rest with Fernet via `FREUDD_CREDENTIALS_MASTER_KEY`.
+- Habitica server sync is active; Anki remains gated but server sync is deferred.
 - Theme direction: dark mode UI (Space Grotesk + Manrope); wrapper responds `ThemeChange: "dark"`.
 
 ## Routes
@@ -37,7 +39,6 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - `GET/POST /api/quiz-state/<quiz_id>`
 - `GET/POST /api/quiz-state/<quiz_id>/raw`
 - `GET /api/gamification/me`
-- `POST /api/extensions/sync`
 - `GET /progress`
 - `POST /preferences/semester`
 - `GET /subjects/<subject_slug>`
@@ -54,7 +55,8 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - `UserUnitProgress`: per-user learning path unit status (`locked`, `active`, `completed`).
 - `DailyGamificationStat`: per-user daily answer/completion deltas + goal state.
 - `UserExtensionAccess`: per-user enablement and last sync status for optional extensions.
-- `UserExtensionToken`: per-user revokable bearer token for `/api/extensions/sync`.
+- `UserExtensionCredential`: per-user encrypted extension credentials (`habitica` now, `anki` deferred).
+- `ExtensionSyncLedger`: per-user/per-extension/per-day idempotent sync log (`ok|error|skipped`).
 
 ## Subject catalog (`subjects.json`)
 ```json
@@ -79,6 +81,9 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - `FREUDD_GAMIFICATION_XP_PER_ANSWER` (default: `5`)
 - `FREUDD_GAMIFICATION_XP_PER_COMPLETION` (default: `50`)
 - `FREUDD_GAMIFICATION_XP_PER_LEVEL` (default: `500`)
+- `FREUDD_CREDENTIALS_MASTER_KEY` (required for credential encrypt/decrypt)
+- `FREUDD_CREDENTIALS_KEY_VERSION` (default: `1`)
+- `FREUDD_EXT_SYNC_TIMEOUT_SECONDS` (default: `20`)
 
 ## Management commands (no admin panel required)
 Prerequisite: der skal eksistere en brugerkonto (via signup eller `createsuperuser`) før per-user extension-commands kan køres.
@@ -87,11 +92,25 @@ Prerequisite: der skal eksistere en brugerkonto (via signup eller `createsuperus
 cd /Users/oskar/repo/podcasts/freudd_portal
 ../.venv/bin/python manage.py extension_access --user <username> --extension <habitica|anki> --enable
 ../.venv/bin/python manage.py extension_access --user <username> --extension <habitica|anki> --disable
-../.venv/bin/python manage.py extension_token --user <username> --rotate
-../.venv/bin/python manage.py extension_token --user <username> --revoke
+../.venv/bin/python manage.py extension_credentials --user <username> --extension habitica --set --habitica-user-id <id> --habitica-api-token <token> --habitica-task-id <task_id>
+../.venv/bin/python manage.py extension_credentials --user <username> --extension habitica --show-meta
+../.venv/bin/python manage.py extension_credentials --user <username> --extension habitica --rotate-key-version
+../.venv/bin/python manage.py extension_credentials --user <username> --extension habitica --clear
+../.venv/bin/python manage.py sync_extensions --extension habitica
+../.venv/bin/python manage.py sync_extensions --extension all --dry-run
 ../.venv/bin/python manage.py gamification_recompute --user <username>
 ../.venv/bin/python manage.py gamification_recompute --all
 ```
+
+Cron example:
+```bash
+0 2 * * * cd /opt/podcasts && /opt/podcasts/.venv/bin/python /opt/podcasts/freudd_portal/manage.py sync_extensions --extension habitica
+```
+
+Detailed operations runbook (systemd timer + cron + failure playbook):
+- `freudd_portal/docs/extension-sync-operations.md`
+- Ready-to-copy unit files: `freudd_portal/deploy/systemd/freudd-extension-sync.service` and `freudd_portal/deploy/systemd/freudd-extension-sync.timer`
+- Ready-to-copy cron line: `freudd_portal/deploy/cron/freudd-extension-sync.cron`
 
 ## Local run
 ```bash

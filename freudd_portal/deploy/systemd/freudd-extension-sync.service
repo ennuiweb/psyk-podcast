@@ -1,0 +1,12 @@
+[Unit]
+Description=Run freudd extension sync
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=www-data
+Group=www-data
+WorkingDirectory=/opt/podcasts
+EnvironmentFile=/etc/freudd-portal.env
+ExecStart=/opt/podcasts/.venv/bin/python /opt/podcasts/freudd_portal/manage.py sync_extensions --extension habitica

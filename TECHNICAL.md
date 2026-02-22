@@ -137,7 +137,6 @@ The repository includes a Django portal in `freudd_portal/` for user login, quiz
 - `GET/POST /api/quiz-state/<quiz_id>` (login-required structured quiz state)
 - `GET/POST /api/quiz-state/<quiz_id>/raw` (login-required legacy raw state payload)
 - `GET /api/gamification/me` (login-required gamification snapshot)
-- `POST /api/extensions/sync` (token-auth optional extension sync endpoint for local agents)
 - `GET /progress` (login-required dashboard with semester selector, subject cards, and quiz score rows)
 - `POST /preferences/semester` (login-required semester update)
 - `GET /subjects/<subject_slug>` (login-required subject detail + readings)
@@ -153,7 +152,8 @@ The repository includes a Django portal in `freudd_portal/` for user login, quiz
 - Model: `UserUnitProgress` (`ForeignKey(user)`, per subject/unit path status + mastery)
 - Model: `DailyGamificationStat` (`ForeignKey(user)`, per-day answer/completion deltas + goal state)
 - Model: `UserExtensionAccess` (`ForeignKey(user)`, per-extension enablement + last sync status)
-- Model: `UserExtensionToken` (`ForeignKey(user)`, revokable bearer token for extension sync)
+- Model: `UserExtensionCredential` (`ForeignKey(user)`, encrypted per-user credentials, unique `(user, extension)`)
+- Model: `ExtensionSyncLedger` (`ForeignKey(user)`, idempotent per-day sync rows for each extension)
 - Unique key: `(user, quiz_id)` for quiz state
 - Unique key: `(user, subject_slug)` for subject enrollment
 - Completion rule (phase 1): `currentView == "summary"` and `answers_count == question_count`
@@ -197,9 +197,15 @@ python3 manage.py test
 - `FREUDD_GAMIFICATION_XP_PER_ANSWER` (default: `5`)
 - `FREUDD_GAMIFICATION_XP_PER_COMPLETION` (default: `50`)
 - `FREUDD_GAMIFICATION_XP_PER_LEVEL` (default: `500`)
+- `FREUDD_CREDENTIALS_MASTER_KEY` (Fernet key for extension credential encryption)
+- `FREUDD_CREDENTIALS_KEY_VERSION` (default: `1`)
+- `FREUDD_EXT_SYNC_TIMEOUT_SECONDS` (default: `20`)
 
 Operational prerequisite:
-- Per-user extension commands/tokens require that the target user already exists (created via signup flow or `manage.py createsuperuser`).
+- Per-user extension commands require that the target user already exists (created via signup flow or `manage.py createsuperuser`).
+- `habitica` server sync is active via `manage.py sync_extensions`; `anki` remains extension-gated but server sync is deferred.
+- Production scheduler runbook (systemd timer + cron + failure playbook): `freudd_portal/docs/extension-sync-operations.md`.
+- Deploy artifacts: `freudd_portal/deploy/systemd/freudd-extension-sync.service`, `freudd_portal/deploy/systemd/freudd-extension-sync.timer`, `freudd_portal/deploy/cron/freudd-extension-sync.cron`.
 
 Language choice:
 - portal default is Danish (`LANGUAGE_CODE=da`)
@@ -231,7 +237,7 @@ Quiz sync behavior (current):
 - Strict quiz ID regex (`^[0-9a-f]{8}$`) plus existence checks
 - IP-based login/signup rate limiting
 - HTTP warning banners on auth pages (until HTTPS rollout)
-- `POST /api/extensions/sync` is CSRF-exempt and requires a valid active bearer token tied to a user.
+- Extension sync runs server-side from management commands/cron, with per-user credentials encrypted in DB.
 
 ### Deployment notes (current)
 - Runtime names are now `freudd-portal.service` and `/etc/freudd-portal.env`.

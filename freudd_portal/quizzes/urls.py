@@ -9,7 +9,6 @@ urlpatterns = [
     re_path(r"^q/raw/(?P<quiz_id>[0-9a-f]{8})\.html$", views.quiz_raw_view, name="quiz-raw"),
     re_path(r"^api/quiz-content/(?P<quiz_id>[0-9a-f]{8})$", views.quiz_content_view, name="quiz-content"),
     re_path(r"^api/gamification/me$", views.gamification_me_view, name="gamification-me"),
-    re_path(r"^api/extensions/sync$", views.extension_sync_view, name="extensions-sync"),
     re_path(r"^api/quiz-state/(?P<quiz_id>[0-9a-f]{8})$", views.quiz_state_view, name="quiz-state"),
     re_path(
         r"^api/quiz-state/(?P<quiz_id>[0-9a-f]{8})/raw$",

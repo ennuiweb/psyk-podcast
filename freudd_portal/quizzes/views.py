@@ -17,23 +17,17 @@ from django.http import (
     HttpRequest,
     HttpResponse,
     HttpResponseBadRequest,
-    HttpResponseForbidden,
     JsonResponse,
 )
 from django.shortcuts import redirect, render
 from django.utils.http import url_has_allowed_host_and_scheme
 from django.urls import reverse
-from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_GET, require_http_methods, require_POST
 
 from .forms import SignupForm
 from .gamification_services import (
-    extension_sync_payload_valid,
-    extract_bearer_token,
     get_gamification_snapshot,
-    record_extension_sync,
     record_quiz_progress_delta,
-    validate_extension_token,
 )
 from .models import QuizProgress, SubjectEnrollment, UserPreference
 from .rate_limit import evaluate_rate_limit
@@ -363,50 +357,6 @@ def quiz_state_raw_view(request: HttpRequest, quiz_id: str) -> HttpResponse:
 @require_GET
 def gamification_me_view(request: HttpRequest) -> HttpResponse:
     return JsonResponse(get_gamification_snapshot(request.user))
-
-
-@csrf_exempt
-@require_POST
-def extension_sync_view(request: HttpRequest) -> HttpResponse:
-    token = extract_bearer_token(request.headers.get("Authorization", ""))
-    token_record = validate_extension_token(token)
-    if token_record is None:
-        return JsonResponse({"error": "Unauthorized token"}, status=401)
-
-    if len(request.body) > MAX_STATE_BYTES:
-        return HttpResponseBadRequest("Payload er for stor.")
-
-    try:
-        payload = json.loads(request.body.decode("utf-8"))
-    except (UnicodeDecodeError, json.JSONDecodeError):
-        return HttpResponseBadRequest("Ugyldig JSON-body.")
-
-    try:
-        extension, status, normalized_payload, error_message = extension_sync_payload_valid(payload)
-    except ValueError as exc:
-        return HttpResponseBadRequest(str(exc))
-
-    try:
-        access = record_extension_sync(
-            user=token_record.user,
-            extension=extension,
-            status=status,
-            payload=normalized_payload,
-            error=error_message,
-        )
-    except PermissionError:
-        return HttpResponseForbidden("Extension er ikke aktiveret for bruger.")
-    except ValueError as exc:
-        return HttpResponseBadRequest(str(exc))
-
-    return JsonResponse(
-        {
-            "ok": True,
-            "extension": access.extension,
-            "last_sync_status": access.last_sync_status,
-            "last_sync_at": access.last_sync_at.isoformat() if access.last_sync_at else None,
-        }
-    )
 
 
 @login_required

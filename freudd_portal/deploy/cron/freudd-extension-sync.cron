@@ -1,0 +1,1 @@
+0 2 * * * cd /opt/podcasts && /usr/bin/flock -n /tmp/freudd-extension-sync.lock /opt/podcasts/.venv/bin/python /opt/podcasts/freudd_portal/manage.py sync_extensions --extension habitica >> /var/log/freudd-extension-sync.log 2>&1

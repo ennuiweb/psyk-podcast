@@ -2,13 +2,15 @@
 
 from __future__ import annotations
 
-import hashlib
-import secrets
+import json
+import math
 from dataclasses import dataclass
 from datetime import date, timedelta
 from decimal import Decimal
 from typing import Any
 
+import requests
+from cryptography.fernet import Fernet, InvalidToken
 from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.db import transaction
@@ -16,9 +18,10 @@ from django.utils import timezone
 
 from .models import (
     DailyGamificationStat,
+    ExtensionSyncLedger,
     QuizProgress,
     UserExtensionAccess,
-    UserExtensionToken,
+    UserExtensionCredential,
     UserGamificationProfile,
     UserUnitProgress,
 )
@@ -29,6 +32,7 @@ WEEK_UNIT_PREFIX = "W"
 UNKNOWN_UNIT_KEY = "W00"
 UNKNOWN_UNIT_LABEL = "Ukendt"
 UNIT_RE = r"^(W\d{1,2})L\d+"
+HABITICA_API_BASE = "https://habitica.com/api/v3"
 
 
 @dataclass(frozen=True)
@@ -36,6 +40,14 @@ class UnitDefinition:
     key: str
     label: str
     quiz_ids: frozenset[str]
+
+
+class ExtensionCredentialError(RuntimeError):
+    """Raised when extension credentials cannot be loaded or decrypted."""
+
+
+class ExtensionSyncError(RuntimeError):
+    """Raised when extension sync fails."""
 
 
 def _subject_slug_default() -> str:
@@ -332,40 +344,6 @@ def get_gamification_snapshot(user) -> dict[str, Any]:
     }
 
 
-def create_extension_token(*, user, created_by: str) -> str:
-    token_raw = secrets.token_urlsafe(32)
-    token_hash = hashlib.sha256(token_raw.encode("utf-8")).hexdigest()
-    now = timezone.now()
-    UserExtensionToken.objects.filter(user=user, revoked_at__isnull=True).update(revoked_at=now)
-    UserExtensionToken.objects.create(
-        user=user,
-        token_hash=token_hash,
-        token_prefix=token_raw[:12],
-        created_by=(created_by or "").strip(),
-    )
-    return token_raw
-
-
-def revoke_extension_tokens(*, user) -> int:
-    now = timezone.now()
-    updated = UserExtensionToken.objects.filter(user=user, revoked_at__isnull=True).update(
-        revoked_at=now
-    )
-    return int(updated)
-
-
-def validate_extension_token(raw_token: str):
-    token_value = (raw_token or "").strip()
-    if not token_value:
-        return None
-    token_hash = hashlib.sha256(token_value.encode("utf-8")).hexdigest()
-    return (
-        UserExtensionToken.objects.select_related("user")
-        .filter(token_hash=token_hash, revoked_at__isnull=True)
-        .first()
-    )
-
-
 def set_extension_access(*, user, extension: str, enabled: bool, enabled_by: str) -> UserExtensionAccess:
     extension_key = (extension or "").strip().lower()
     if extension_key not in {
@@ -402,6 +380,135 @@ def set_extension_access(*, user, extension: str, enabled: bool, enabled_by: str
         ]
     )
     return access
+
+
+def _credential_key_version() -> int:
+    return max(1, int(getattr(settings, "FREUDD_CREDENTIALS_KEY_VERSION", 1)))
+
+
+def _credential_fernet() -> Fernet:
+    raw_key = str(getattr(settings, "FREUDD_CREDENTIALS_MASTER_KEY", "") or "").strip()
+    if not raw_key:
+        raise ExtensionCredentialError("Missing FREUDD_CREDENTIALS_MASTER_KEY.")
+    try:
+        return Fernet(raw_key.encode("utf-8"))
+    except Exception as exc:
+        raise ExtensionCredentialError("Invalid FREUDD_CREDENTIALS_MASTER_KEY.") from exc
+
+
+def _encrypted_payload_from_dict(payload: dict[str, Any]) -> str:
+    plaintext = json.dumps(payload, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode(
+        "utf-8"
+    )
+    return _credential_fernet().encrypt(plaintext).decode("utf-8")
+
+
+def _decrypted_payload_to_dict(ciphertext: str) -> dict[str, Any]:
+    try:
+        plaintext = _credential_fernet().decrypt((ciphertext or "").encode("utf-8"))
+    except InvalidToken as exc:
+        raise ExtensionCredentialError("Credential decrypt failed for active master key.") from exc
+    except Exception as exc:
+        raise ExtensionCredentialError("Credential decrypt failed.") from exc
+
+    try:
+        payload = json.loads(plaintext.decode("utf-8"))
+    except (UnicodeDecodeError, json.JSONDecodeError) as exc:
+        raise ExtensionCredentialError("Credential payload is not valid JSON.") from exc
+    if not isinstance(payload, dict):
+        raise ExtensionCredentialError("Credential payload must be a JSON object.")
+    return payload
+
+
+def _validate_habitica_credential_payload(payload: dict[str, Any]) -> dict[str, str]:
+    user_id = str(payload.get("habitica_user_id", "")).strip()
+    api_token = str(payload.get("habitica_api_token", "")).strip()
+    task_id = str(payload.get("habitica_task_id", "")).strip()
+    if not user_id:
+        raise ExtensionCredentialError("Missing habitica_user_id.")
+    if not api_token:
+        raise ExtensionCredentialError("Missing habitica_api_token.")
+    if not task_id:
+        raise ExtensionCredentialError("Missing habitica_task_id.")
+    return {
+        "habitica_user_id": user_id,
+        "habitica_api_token": api_token,
+        "habitica_task_id": task_id,
+    }
+
+
+def set_extension_credential(*, user, extension: str, payload: dict[str, Any]) -> UserExtensionCredential:
+    extension_key = (extension or "").strip().lower()
+    if extension_key != UserExtensionAccess.Extension.HABITICA:
+        raise ExtensionCredentialError("Only habitica credentials are supported in this phase.")
+
+    normalized_payload = _validate_habitica_credential_payload(payload)
+    encrypted_payload = _encrypted_payload_from_dict(normalized_payload)
+    now = timezone.now()
+    credential, created = UserExtensionCredential.objects.get_or_create(
+        user=user,
+        extension=extension_key,
+        defaults={
+            "encrypted_payload": encrypted_payload,
+            "key_version": _credential_key_version(),
+        },
+    )
+    if created:
+        return credential
+
+    credential.encrypted_payload = encrypted_payload
+    credential.key_version = _credential_key_version()
+    credential.rotated_at = now
+    credential.save(update_fields=["encrypted_payload", "key_version", "rotated_at", "updated_at"])
+    return credential
+
+
+def clear_extension_credential(*, user, extension: str) -> int:
+    extension_key = (extension or "").strip().lower()
+    deleted_count, _ = UserExtensionCredential.objects.filter(
+        user=user,
+        extension=extension_key,
+    ).delete()
+    return int(deleted_count)
+
+
+def extension_credential_meta(*, user, extension: str) -> dict[str, Any] | None:
+    extension_key = (extension or "").strip().lower()
+    row = UserExtensionCredential.objects.filter(user=user, extension=extension_key).first()
+    if row is None:
+        return None
+    return {
+        "user": user.username,
+        "extension": row.extension,
+        "key_version": row.key_version,
+        "created_at": row.created_at.isoformat() if row.created_at else None,
+        "updated_at": row.updated_at.isoformat() if row.updated_at else None,
+        "rotated_at": row.rotated_at.isoformat() if row.rotated_at else None,
+    }
+
+
+def rotate_extension_credential_key(*, user, extension: str) -> UserExtensionCredential:
+    extension_key = (extension or "").strip().lower()
+    row = UserExtensionCredential.objects.filter(user=user, extension=extension_key).first()
+    if row is None:
+        raise ExtensionCredentialError("No extension credential found for user/extension.")
+    payload = _decrypted_payload_to_dict(row.encrypted_payload)
+    row.encrypted_payload = _encrypted_payload_from_dict(payload)
+    row.key_version = _credential_key_version()
+    row.rotated_at = timezone.now()
+    row.save(update_fields=["encrypted_payload", "key_version", "rotated_at", "updated_at"])
+    return row
+
+
+def load_extension_credential_payload(*, user, extension: str) -> dict[str, str]:
+    extension_key = (extension or "").strip().lower()
+    row = UserExtensionCredential.objects.filter(user=user, extension=extension_key).first()
+    if row is None:
+        raise ExtensionCredentialError("Missing extension credentials for user.")
+    payload = _decrypted_payload_to_dict(row.encrypted_payload)
+    if extension_key == UserExtensionAccess.Extension.HABITICA:
+        return _validate_habitica_credential_payload(payload)
+    raise ExtensionCredentialError("Unsupported extension credential payload.")
 
 
 def record_extension_sync(
@@ -449,6 +556,220 @@ def record_extension_sync(
     return access
 
 
+def _habitica_sync_timeout_seconds() -> int:
+    return max(1, int(getattr(settings, "FREUDD_EXT_SYNC_TIMEOUT_SECONDS", 20)))
+
+
+def _daily_outcome_for_stat(*, daily_stat: DailyGamificationStat) -> dict[str, Any]:
+    goal_target = max(1, int(daily_stat.goal_target or _daily_goal_target()))
+    answered_delta = max(0, int(daily_stat.answered_delta or 0))
+    completed_delta = max(0, int(daily_stat.completed_delta or 0))
+    goal_met = answered_delta >= goal_target
+    missing_answers = max(0, goal_target - answered_delta)
+    score_direction = "up" if goal_met else "down"
+    score_events = 1 if goal_target > 0 else max(1, math.ceil(missing_answers / 5))
+    return {
+        "goal_target": goal_target,
+        "answered_delta": answered_delta,
+        "completed_delta": completed_delta,
+        "goal_met": goal_met,
+        "missing_answers": missing_answers,
+        "score_direction": score_direction,
+        "score_events": score_events,
+    }
+
+
+def _habitica_score_task(*, credential_payload: dict[str, str], direction: str, score_events: int) -> int:
+    headers = {
+        "x-api-user": credential_payload["habitica_user_id"],
+        "x-api-key": credential_payload["habitica_api_token"],
+        "Content-Type": "application/json",
+    }
+    task_id = credential_payload["habitica_task_id"]
+    normalized_direction = direction.strip().lower()
+    if normalized_direction not in {"up", "down"}:
+        raise ExtensionSyncError("Habitica score direction must be 'up' or 'down'.")
+
+    applied_events = 0
+    timeout_seconds = _habitica_sync_timeout_seconds()
+    endpoint = f"{HABITICA_API_BASE}/tasks/{task_id}/score/{normalized_direction}"
+    for _ in range(max(1, score_events)):
+        try:
+            response = requests.post(endpoint, headers=headers, timeout=timeout_seconds)
+        except requests.RequestException as exc:
+            raise ExtensionSyncError(f"Habitica request failed: {exc}") from exc
+
+        try:
+            payload = response.json()
+        except ValueError:
+            payload = {}
+        if response.status_code >= 400:
+            error_message = ""
+            if isinstance(payload, dict):
+                error_message = str(payload.get("message", "")).strip()
+            if not error_message:
+                error_message = f"Habitica status code: {response.status_code}"
+            raise ExtensionSyncError(error_message)
+        if isinstance(payload, dict) and payload.get("success") is False:
+            error_message = str(payload.get("message", "")).strip() or "Habitica returned success=false."
+            raise ExtensionSyncError(error_message)
+        applied_events += 1
+    return applied_events
+
+
+def _sync_habitica_access(
+    *,
+    access: UserExtensionAccess,
+    sync_date: date,
+    dry_run: bool,
+) -> tuple[str, dict[str, Any], str]:
+    goal_target = _daily_goal_target()
+    daily_stat, _ = DailyGamificationStat.objects.get_or_create(
+        user=access.user,
+        date=sync_date,
+        defaults={"goal_target": goal_target, "goal_met": False},
+    )
+    if daily_stat.goal_target != goal_target:
+        daily_stat.goal_target = goal_target
+        if not dry_run:
+            daily_stat.save(update_fields=["goal_target", "updated_at"])
+
+    outcome = _daily_outcome_for_stat(daily_stat=daily_stat)
+    details: dict[str, Any] = {
+        "mode": "dry_run" if dry_run else "live",
+        "sync_date": sync_date.isoformat(),
+        **outcome,
+    }
+    try:
+        credential_payload = load_extension_credential_payload(
+            user=access.user,
+            extension=access.extension,
+        )
+    except ExtensionCredentialError as exc:
+        return ExtensionSyncLedger.Status.ERROR, details, str(exc)
+
+    if dry_run:
+        details["applied_events"] = outcome["score_events"]
+        return ExtensionSyncLedger.Status.OK, details, ""
+
+    try:
+        applied_events = _habitica_score_task(
+            credential_payload=credential_payload,
+            direction=str(outcome["score_direction"]),
+            score_events=int(outcome["score_events"]),
+        )
+    except ExtensionSyncError as exc:
+        return ExtensionSyncLedger.Status.ERROR, details, str(exc)
+
+    details["applied_events"] = applied_events
+    return ExtensionSyncLedger.Status.OK, details, ""
+
+
+def sync_extensions_batch(
+    *,
+    extension: str,
+    username: str | None = None,
+    sync_date: date | None = None,
+    dry_run: bool = False,
+) -> dict[str, Any]:
+    extension_key = (extension or "").strip().lower()
+    if extension_key not in {"habitica", "all"}:
+        raise ValueError("extension must be 'habitica' or 'all'")
+
+    sync_day = sync_date or timezone.localdate()
+    enabled_extensions = [UserExtensionAccess.Extension.HABITICA]
+    if extension_key == "all":
+        enabled_extensions.append(UserExtensionAccess.Extension.ANKI)
+
+    accesses = UserExtensionAccess.objects.filter(
+        enabled=True,
+        extension__in=enabled_extensions,
+    ).select_related("user")
+    if username:
+        accesses = accesses.filter(user__username=username.strip())
+    accesses = accesses.order_by("user__username", "extension")
+
+    summary: dict[str, Any] = {
+        "sync_date": sync_day.isoformat(),
+        "dry_run": bool(dry_run),
+        "requested_extension": extension_key,
+        "processed": 0,
+        "ok": 0,
+        "error": 0,
+        "skipped": 0,
+        "results": [],
+    }
+
+    for access in accesses.iterator():
+        row_key = {
+            "user": access.user.username,
+            "extension": access.extension,
+            "sync_date": sync_day.isoformat(),
+        }
+        existing_ledger = ExtensionSyncLedger.objects.filter(
+            user=access.user,
+            extension=access.extension,
+            sync_date=sync_day,
+        ).first()
+        if existing_ledger is not None:
+            summary["processed"] += 1
+            summary["skipped"] += 1
+            summary["results"].append(
+                {
+                    **row_key,
+                    "status": ExtensionSyncLedger.Status.SKIPPED,
+                    "details": {"reason": "ledger_exists"},
+                }
+            )
+            continue
+
+        if access.extension == UserExtensionAccess.Extension.ANKI:
+            status = ExtensionSyncLedger.Status.SKIPPED
+            details = {"reason": "anki_server_sync_deferred"}
+            error_message = ""
+        else:
+            status, details, error_message = _sync_habitica_access(
+                access=access,
+                sync_date=sync_day,
+                dry_run=dry_run,
+            )
+
+        summary["processed"] += 1
+        if status == ExtensionSyncLedger.Status.OK:
+            summary["ok"] += 1
+        elif status == ExtensionSyncLedger.Status.ERROR:
+            summary["error"] += 1
+        else:
+            summary["skipped"] += 1
+
+        if not dry_run:
+            if status in {ExtensionSyncLedger.Status.OK, ExtensionSyncLedger.Status.ERROR}:
+                record_extension_sync(
+                    user=access.user,
+                    extension=access.extension,
+                    status=status,
+                    payload=details,
+                    error=error_message,
+                )
+            ExtensionSyncLedger.objects.create(
+                user=access.user,
+                extension=access.extension,
+                sync_date=sync_day,
+                status=status,
+                details_json={**details, "error": error_message} if error_message else details,
+            )
+
+        summary["results"].append(
+            {
+                **row_key,
+                "status": status,
+                "error": error_message,
+                "details": details,
+            }
+        )
+    return summary
+
+
 def recompute_many(*, usernames: list[str] | None = None) -> int:
     user_model = get_user_model()
     queryset = user_model.objects.all()
@@ -459,39 +780,3 @@ def recompute_many(*, usernames: list[str] | None = None) -> int:
         recompute_user_gamification(user)
         processed += 1
     return processed
-
-
-def extension_sync_payload_valid(raw_payload: Any) -> tuple[str, str, dict[str, Any], str]:
-    if not isinstance(raw_payload, dict):
-        raise ValueError("Payload must be a JSON object")
-
-    extension = str(raw_payload.get("extension", "")).strip().lower()
-    status = str(raw_payload.get("status", "")).strip().lower()
-    payload = raw_payload.get("payload", {})
-    error = str(raw_payload.get("error", "")).strip()
-
-    if extension not in {
-        UserExtensionAccess.Extension.HABITICA,
-        UserExtensionAccess.Extension.ANKI,
-    }:
-        raise ValueError("extension must be 'habitica' or 'anki'")
-    if status not in {
-        UserExtensionAccess.SyncStatus.OK,
-        UserExtensionAccess.SyncStatus.ERROR,
-    }:
-        raise ValueError("status must be 'ok' or 'error'")
-    if not isinstance(payload, dict):
-        raise ValueError("payload must be an object")
-    return extension, status, payload, error
-
-
-def extract_bearer_token(authorization_header: str) -> str:
-    header = (authorization_header or "").strip()
-    if not header:
-        return ""
-    parts = header.split(" ", 1)
-    if len(parts) != 2:
-        return ""
-    if parts[0].lower() != "bearer":
-        return ""
-    return parts[1].strip()

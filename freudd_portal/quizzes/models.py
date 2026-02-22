@@ -141,23 +141,53 @@ class UserExtensionAccess(models.Model):
         return f"{self.user_id}:{self.extension}:{state}"
 
 
-class UserExtensionToken(models.Model):
+class UserExtensionCredential(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    token_hash = models.CharField(max_length=64, unique=True)
-    token_prefix = models.CharField(max_length=16)
+    extension = models.CharField(max_length=16, choices=UserExtensionAccess.Extension.choices)
+    encrypted_payload = models.TextField()
+    key_version = models.PositiveIntegerField(default=1)
     created_at = models.DateTimeField(auto_now_add=True)
-    revoked_at = models.DateTimeField(blank=True, null=True)
-    created_by = models.CharField(max_length=150, blank=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    rotated_at = models.DateTimeField(blank=True, null=True)
 
     class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=["user", "extension"], name="uq_user_extension_credential"),
+        ]
         indexes = [
-            models.Index(fields=["user", "revoked_at"], name="ext_token_user_revoked_idx"),
-            models.Index(fields=["token_prefix"], name="ext_token_prefix_idx"),
+            models.Index(fields=["user", "extension"], name="ext_cred_user_ext_idx"),
         ]
 
     def __str__(self) -> str:
-        state = "revoked" if self.revoked_at else "active"
-        return f"{self.user_id}:{self.token_prefix}:{state}"
+        return f"{self.user_id}:{self.extension}:v{self.key_version}"
+
+
+class ExtensionSyncLedger(models.Model):
+    class Status(models.TextChoices):
+        OK = "ok", "OK"
+        ERROR = "error", "Error"
+        SKIPPED = "skipped", "Skipped"
+
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    extension = models.CharField(max_length=16, choices=UserExtensionAccess.Extension.choices)
+    sync_date = models.DateField()
+    status = models.CharField(max_length=16, choices=Status.choices)
+    details_json = models.JSONField(default=dict, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["user", "extension", "sync_date"],
+                name="uq_user_extension_sync_date",
+            ),
+        ]
+        indexes = [
+            models.Index(fields=["extension", "sync_date"], name="ext_ledger_ext_date_idx"),
+        ]
+
+    def __str__(self) -> str:
+        return f"{self.user_id}:{self.extension}:{self.sync_date}:{self.status}"
 
 
 class DailyGamificationStat(models.Model):

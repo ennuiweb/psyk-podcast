@@ -11,14 +11,17 @@ from urllib.parse import urlencode
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.core.management import call_command
+from django.core.management.base import CommandError
 from django.test import Client, TestCase, override_settings
 from django.urls import reverse
 
 from quizzes.models import (
     DailyGamificationStat,
+    ExtensionSyncLedger,
     QuizProgress,
     SubjectEnrollment,
     UserExtensionAccess,
+    UserExtensionCredential,
     UserGamificationProfile,
     UserPreference,
     UserUnitProgress,
@@ -43,6 +46,9 @@ class QuizPortalTests(TestCase):
             QUIZ_LINKS_JSON_PATH=self.links_file,
             FREUDD_SUBJECTS_JSON_PATH=self.subjects_file,
             FREUDD_READING_MASTER_KEY_PATH=self.reading_master_file,
+            FREUDD_CREDENTIALS_MASTER_KEY="MDEyMzQ1Njc4OWFiY2RlZjAxMjM0NTY3ODlhYmNkZWY=",
+            FREUDD_CREDENTIALS_KEY_VERSION=1,
+            FREUDD_EXT_SYNC_TIMEOUT_SECONDS=2,
             QUIZ_SIGNUP_RATE_LIMIT=1000,
             QUIZ_LOGIN_RATE_LIMIT=1000,
         )
@@ -711,51 +717,9 @@ class QuizPortalTests(TestCase):
         self.assertIn("units", payload)
         self.assertIn("extensions", payload)
 
-    def test_extension_sync_endpoint_enforces_token_and_access(self) -> None:
-        user = self._create_user()
-        self.client.force_login(user)
-        url = reverse("extensions-sync")
-
-        response = self.client.post(url, data=json.dumps({}), content_type="application/json")
-        self.assertEqual(response.status_code, 401)
-
-        output = io.StringIO()
-        call_command("extension_token", "--user", user.username, "--rotate", stdout=output)
-        token = output.getvalue().strip().splitlines()[-1]
-
-        payload = {
-            "extension": "habitica",
-            "status": "ok",
-            "payload": {"reviews_today": 12},
-            "error": "",
-        }
-        response = self.client.post(
-            url,
-            data=json.dumps(payload),
-            content_type="application/json",
-            HTTP_AUTHORIZATION=f"Bearer {token}",
-        )
-        self.assertEqual(response.status_code, 403)
-
-        call_command(
-            "extension_access",
-            "--user",
-            user.username,
-            "--extension",
-            "habitica",
-            "--enable",
-            stdout=io.StringIO(),
-        )
-        response = self.client.post(
-            url,
-            data=json.dumps(payload),
-            content_type="application/json",
-            HTTP_AUTHORIZATION=f"Bearer {token}",
-        )
-        self.assertEqual(response.status_code, 200)
-        access = UserExtensionAccess.objects.get(user=user, extension="habitica")
-        self.assertTrue(access.enabled)
-        self.assertEqual(access.last_sync_status, "ok")
+    def test_extension_sync_endpoint_is_removed(self) -> None:
+        response = self.client.post("/api/extensions/sync", data=json.dumps({}), content_type="application/json")
+        self.assertEqual(response.status_code, 404)
 
     def test_extension_commands_are_idempotent(self) -> None:
         user = self._create_user()
@@ -796,16 +760,197 @@ class QuizPortalTests(TestCase):
             UserExtensionAccess.objects.get(user=user, extension="anki").enabled
         )
 
-        out1 = io.StringIO()
-        call_command("extension_token", "--user", user.username, "--rotate", stdout=out1)
-        token1 = out1.getvalue().strip().splitlines()[-1]
-        out2 = io.StringIO()
-        call_command("extension_token", "--user", user.username, "--rotate", stdout=out2)
-        token2 = out2.getvalue().strip().splitlines()[-1]
-        self.assertNotEqual(token1, token2)
+    def test_extension_credentials_commands_store_encrypted_payload(self) -> None:
+        user = self._create_user()
+
+        call_command(
+            "extension_credentials",
+            "--user",
+            user.username,
+            "--extension",
+            "habitica",
+            "--set",
+            "--habitica-user-id",
+            "habitica-user",
+            "--habitica-api-token",
+            "secret-token",
+            "--habitica-task-id",
+            "task-123",
+            stdout=io.StringIO(),
+        )
+        credential = UserExtensionCredential.objects.get(user=user, extension="habitica")
+        self.assertNotIn("secret-token", credential.encrypted_payload)
+
+        show_out = io.StringIO()
+        call_command(
+            "extension_credentials",
+            "--user",
+            user.username,
+            "--extension",
+            "habitica",
+            "--show-meta",
+            stdout=show_out,
+        )
+        metadata_payload = json.loads(show_out.getvalue().strip())
+        self.assertTrue(metadata_payload["exists"])
+        self.assertEqual(metadata_payload["meta"]["extension"], "habitica")
+        self.assertNotIn("secret-token", show_out.getvalue())
+
+        call_command(
+            "extension_credentials",
+            "--user",
+            user.username,
+            "--extension",
+            "habitica",
+            "--rotate-key-version",
+            stdout=io.StringIO(),
+        )
+        credential.refresh_from_db()
+        self.assertIsNotNone(credential.rotated_at)
+
+        call_command(
+            "extension_credentials",
+            "--user",
+            user.username,
+            "--extension",
+            "habitica",
+            "--clear",
+            stdout=io.StringIO(),
+        )
+        self.assertFalse(
+            UserExtensionCredential.objects.filter(user=user, extension="habitica").exists()
+        )
+
+    @patch("quizzes.gamification_services.requests.post")
+    def test_sync_extensions_updates_access_and_ledger_and_is_idempotent(self, mock_post) -> None:
+        class _Response:
+            status_code = 200
+
+            @staticmethod
+            def json() -> dict[str, object]:
+                return {"success": True}
+
+        mock_post.return_value = _Response()
+
+        user = self._create_user()
+        call_command(
+            "extension_access",
+            "--user",
+            user.username,
+            "--extension",
+            "habitica",
+            "--enable",
+            stdout=io.StringIO(),
+        )
+        call_command(
+            "extension_credentials",
+            "--user",
+            user.username,
+            "--extension",
+            "habitica",
+            "--set",
+            "--habitica-user-id",
+            "habitica-user",
+            "--habitica-api-token",
+            "secret-token",
+            "--habitica-task-id",
+            "task-123",
+            stdout=io.StringIO(),
+        )
+
+        call_command("sync_extensions", "--extension", "habitica", stdout=io.StringIO())
+        access = UserExtensionAccess.objects.get(user=user, extension="habitica")
+        self.assertEqual(access.last_sync_status, UserExtensionAccess.SyncStatus.OK)
+        self.assertIsNotNone(access.last_sync_at)
         self.assertEqual(
-            user.userextensiontoken_set.filter(revoked_at__isnull=True).count(),
+            ExtensionSyncLedger.objects.filter(user=user, extension="habitica").count(),
             1,
+        )
+
+        call_command("sync_extensions", "--extension", "habitica", stdout=io.StringIO())
+        self.assertEqual(
+            ExtensionSyncLedger.objects.filter(user=user, extension="habitica").count(),
+            1,
+        )
+
+    @patch("quizzes.gamification_services.requests.post")
+    def test_sync_extensions_handles_missing_credentials_and_continues_batch(self, mock_post) -> None:
+        class _Response:
+            status_code = 200
+
+            @staticmethod
+            def json() -> dict[str, object]:
+                return {"success": True}
+
+        mock_post.return_value = _Response()
+
+        good_user = self._create_user(username="good-user")
+        bad_user = self._create_user(username="bad-user")
+
+        for target_user in (good_user, bad_user):
+            call_command(
+                "extension_access",
+                "--user",
+                target_user.username,
+                "--extension",
+                "habitica",
+                "--enable",
+                stdout=io.StringIO(),
+            )
+
+        call_command(
+            "extension_credentials",
+            "--user",
+            good_user.username,
+            "--extension",
+            "habitica",
+            "--set",
+            "--habitica-user-id",
+            "habitica-user",
+            "--habitica-api-token",
+            "secret-token",
+            "--habitica-task-id",
+            "task-123",
+            stdout=io.StringIO(),
+        )
+
+        with self.assertRaises(CommandError):
+            call_command("sync_extensions", "--extension", "habitica", stdout=io.StringIO())
+
+        good_access = UserExtensionAccess.objects.get(user=good_user, extension="habitica")
+        bad_access = UserExtensionAccess.objects.get(user=bad_user, extension="habitica")
+        self.assertEqual(good_access.last_sync_status, UserExtensionAccess.SyncStatus.OK)
+        self.assertEqual(bad_access.last_sync_status, UserExtensionAccess.SyncStatus.ERROR)
+        self.assertIn("Missing extension credentials", bad_access.last_sync_error)
+
+        self.assertEqual(
+            ExtensionSyncLedger.objects.filter(user=good_user, extension="habitica").count(),
+            1,
+        )
+        self.assertEqual(
+            ExtensionSyncLedger.objects.filter(user=bad_user, extension="habitica").count(),
+            1,
+        )
+
+    def test_sync_extensions_dry_run_does_not_write(self) -> None:
+        user = self._create_user()
+        call_command(
+            "extension_access",
+            "--user",
+            user.username,
+            "--extension",
+            "habitica",
+            "--enable",
+            stdout=io.StringIO(),
+        )
+
+        with self.assertRaises(CommandError):
+            call_command("sync_extensions", "--extension", "habitica", "--dry-run", stdout=io.StringIO())
+
+        access = UserExtensionAccess.objects.get(user=user, extension="habitica")
+        self.assertEqual(access.last_sync_status, UserExtensionAccess.SyncStatus.IDLE)
+        self.assertFalse(
+            ExtensionSyncLedger.objects.filter(user=user, extension="habitica").exists()
         )
 
     def test_gamification_recompute_command_runs_for_single_user(self) -> None:

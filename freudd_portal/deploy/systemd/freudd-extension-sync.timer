@@ -1,0 +1,11 @@
+[Unit]
+Description=Daily freudd extension sync
+
+[Timer]
+OnCalendar=*-*-* 02:00:00
+Persistent=true
+RandomizedDelaySec=300
+Unit=freudd-extension-sync.service
+
+[Install]
+WantedBy=timers.target

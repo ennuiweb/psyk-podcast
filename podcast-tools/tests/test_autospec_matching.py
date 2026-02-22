@@ -1180,7 +1180,7 @@ class AutoSpecMatchingTests(unittest.TestCase):
             auto_meta={"week_reference_year": 2026},
             folder_names=["W12L1"],
         )
-        self.assertTrue(episode["description"].startswith("Semesteruge 13, Forelæsning 1\n"))
+        self.assertTrue(episode["description"].startswith("Semesteruge 13, Forelæsning 1\n\n"))
         self.assertIn("Elias (2000)", episode["description"])
 
     def test_generated_entry_strips_cfg_tag_from_subject(self):
@@ -1564,6 +1564,71 @@ class AutoSpecMatchingTests(unittest.TestCase):
         self.assertIn("Foo-medium.html", episode["description"])
         self.assertIn("Foo-hard.html", episode["description"])
         self.assertTrue(episode["link"].endswith("W01L1/W01L1%20-%20Foo-medium.html"))
+
+    def test_description_quiz_block_and_summary_are_separated_by_blank_line(self):
+        mod = _load_feed_module()
+        file_entry = {
+            "id": "file1",
+            "name": "W01L1 - Foo [EN].mp3",
+            "createdTime": "2026-02-02T08:00:00+00:00",
+        }
+        episode = mod.build_episode_entry(
+            file_entry=file_entry,
+            feed_config={
+                "title": "Personlighedspsykologi (EN)",
+                "link": "https://example.com",
+                "description": "Test feed",
+                "language": "en",
+                "semester_week_start_date": "2026-02-02",
+                "semester_week_label": "Semesteruge",
+                "semester_week_description_label": "Semesteruge",
+                "description_prepend_semester_week_lecture": True,
+                "description_blocks_by_kind": {
+                    "reading": ["quiz", "reading_summary"],
+                },
+            },
+            overrides={},
+            public_link_template="https://example.com/{file_id}",
+            quiz_cfg={
+                "base_url": "http://64.226.79.109/q/",
+                "labels": {
+                    "multiple": "Quizzer",
+                    "difficulty": {
+                        "easy": "Let",
+                        "medium": "Mellem",
+                        "hard": "Svær",
+                    },
+                },
+            },
+            quiz_links={
+                "by_name": {
+                    "W01L1 - Foo [EN].mp3": {
+                        "relative_path": "a3b2075d.html",
+                        "difficulty": "medium",
+                        "links": [
+                            {"relative_path": "70129442.html", "difficulty": "easy"},
+                            {"relative_path": "a3b2075d.html", "difficulty": "medium"},
+                            {"relative_path": "bfd24968.html", "difficulty": "hard"},
+                        ],
+                    }
+                }
+            },
+            reading_summaries_cfg={"enabled_kinds": {"reading", "brief"}, "key_points_label": "Key points"},
+            reading_summaries={
+                "by_name": {
+                    "W01L1 - Foo [EN].mp3": {
+                        "summary_lines": ["Bank introducerer narrative psykologier."],
+                    }
+                }
+            },
+            folder_names=["W01L1"],
+        )
+        self.assertIn("Semesteruge 1, Forelæsning 1\n\nQuizzer:", episode["description"])
+        self.assertIn(
+            "- Svær: http://64.226.79.109/q/bfd24968.html\n\nBank introducerer narrative psykologier.",
+            episode["description"],
+        )
+        self.assertNotIn(" · Bank introducerer narrative psykologier.", episode["description"])
 
     def test_description_quiz_block_renders_all_difficulties_with_short_ids(self):
         mod = _load_feed_module()

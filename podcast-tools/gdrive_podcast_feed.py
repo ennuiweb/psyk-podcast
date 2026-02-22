@@ -1956,7 +1956,13 @@ def _render_blocks(
             else:
                 rendered = value.lstrip("\n")
             continue
-        rendered = f"{rendered}{separator}{value}" if rendered else value
+        if not rendered:
+            rendered = value
+            continue
+        joiner = separator
+        if separator == " · " and ("\n" in rendered or "\n" in value):
+            joiner = "\n\n"
+        rendered = f"{rendered}{joiner}{value}"
     return rendered
 
 
@@ -2691,9 +2697,15 @@ def build_episode_entry(
         and semester_week_lecture
         and isinstance(meta.get("description"), str)
     ):
-        prefix = f"{semester_week_lecture}\n"
-        if not meta["description"].startswith(prefix):
-            meta["description"] = f"{semester_week_lecture}\n{meta['description']}"
+        prefix_single = f"{semester_week_lecture}\n"
+        prefix_double = f"{semester_week_lecture}\n\n"
+        if meta["description"].startswith(prefix_double):
+            pass
+        elif meta["description"].startswith(prefix_single):
+            tail = meta["description"][len(prefix_single) :]
+            meta["description"] = f"{prefix_double}{tail}"
+        else:
+            meta["description"] = f"{prefix_double}{meta['description']}"
 
     if quiz_url:
         if not meta.get("link"):

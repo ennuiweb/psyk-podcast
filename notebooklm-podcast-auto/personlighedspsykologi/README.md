@@ -100,6 +100,7 @@ python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_week.py 
 ```
 
   - Output schema matches `notebooklmjsonformat.json`: top-level `title` + `questions`.
+  - JSON quiz filenames are normalized to canonical config tags (`download=json` + matching hash per difficulty).
 
 - Preview extraction without writing files:
 
@@ -154,6 +155,11 @@ python3 podcast-tools/gdrive_podcast_feed.py --config shows/personlighedspsykolo
 ## Troubleshooting
 - If you interrupt `download_week.py` while waiting, rerun the same command. Already-downloaded outputs are skipped.
 - To avoid long waits for in-progress artifacts, set `--timeout` and rerun later.
+- If `generate_week.py` starts creating notebooks even though quiz `.json` files exist, verify tag parity first.
+  - Canonical quiz JSON outputs should be tagged `download=json` with matching config hash.
+  - Legacy `download=html`-tagged quiz JSON names (from older extraction runs) should be renamed or re-extracted to avoid duplicate generation.
+  - Quick check: `./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_week.py --week W1 --content-types quiz --dry-run`
+  - Keep `quiz.format` in `prompt_config.json` aligned with expected filenames (`json` for canonical JSON outputs).
 - To list legacy double-prefix files (`W1L1 - W1L1 ...`), run:
   `find notebooklm-podcast-auto/personlighedspsykologi/output -type f | rg '/W[0-9]+L[0-9]+/W[0-9]+L[0-9]+ - W[0-9]+L[0-9]+'`
 

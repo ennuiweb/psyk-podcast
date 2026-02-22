@@ -2,6 +2,95 @@
 {% block title %}Min side · freudd{% endblock %}
 {% block content %}
 <style>
+  .gamification-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.6rem;
+  }
+
+  .gamification-card {
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: rgba(11, 18, 30, 0.74);
+    padding: 0.72rem;
+  }
+
+  .gamification-card h3 {
+    margin: 0;
+    font-size: 0.92rem;
+    color: var(--muted);
+  }
+
+  .gamification-value {
+    margin: 0.35rem 0 0;
+    font-size: clamp(1.2rem, 2vw, 1.55rem);
+    font-family: "Space Grotesk", "Manrope", sans-serif;
+  }
+
+  .goal-status {
+    margin: 0.4rem 0 0;
+    font-size: 0.9rem;
+  }
+
+  .goal-status.is-met {
+    color: var(--success);
+  }
+
+  .goal-status.is-missing {
+    color: var(--muted);
+  }
+
+  .path-wrap {
+    margin-top: 0.8rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.62rem;
+  }
+
+  .path-node {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: rgba(11, 18, 30, 0.74);
+    padding: 0.55rem 0.62rem;
+    min-width: 160px;
+  }
+
+  .path-node.is-completed {
+    border-color: rgba(155, 243, 196, 0.44);
+  }
+
+  .path-node.is-active {
+    border-color: rgba(39, 211, 223, 0.5);
+  }
+
+  .path-node.is-locked {
+    opacity: 0.78;
+  }
+
+  .path-node-title {
+    margin: 0;
+    font-weight: 700;
+  }
+
+  .path-node-meta {
+    margin: 0.24rem 0 0;
+    font-size: 0.86rem;
+    color: var(--muted);
+  }
+
+  .extension-grid {
+    margin-top: 0.72rem;
+    display: grid;
+    gap: 0.56rem;
+  }
+
+  .extension-item {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: rgba(11, 18, 30, 0.74);
+    padding: 0.6rem 0.72rem;
+  }
+
   .section-title {
     margin: 0 0 0.6rem;
     font-size: clamp(1.15rem, 2vw, 1.35rem);
@@ -87,6 +176,65 @@
 <div class="card">
   <h1 class="quiz-title">Min side</h1>
   <p class="muted">Vælg semester, tilmeld fag, og få overblik over dine quizscore.</p>
+
+  <section class="dashboard-section">
+    <h2 class="section-title">Læringssti</h2>
+    <div class="gamification-grid">
+      <article class="gamification-card">
+        <h3>Level</h3>
+        <p class="gamification-value">{{ gamification.profile.current_level }}</p>
+      </article>
+      <article class="gamification-card">
+        <h3>XP</h3>
+        <p class="gamification-value">{{ gamification.profile.xp_total }}</p>
+      </article>
+      <article class="gamification-card">
+        <h3>Streak</h3>
+        <p class="gamification-value">{{ gamification.profile.streak_days }} dage</p>
+      </article>
+      <article class="gamification-card">
+        <h3>Dagens mål</h3>
+        <p class="gamification-value">{{ gamification.daily.answered_delta }} / {{ gamification.daily.goal_target }}</p>
+        {% if gamification.daily.goal_met %}
+        <p class="goal-status is-met">Mål nået i dag.</p>
+        {% else %}
+        <p class="goal-status is-missing">Mangler {{ gamification.daily.missing_answers }} svar for at nå målet.</p>
+        {% endif %}
+      </article>
+    </div>
+    {% if gamification.units %}
+    <div class="path-wrap">
+      {% for unit in gamification.units %}
+      <article class="path-node {% if unit.status == 'completed' %}is-completed{% elif unit.status == 'active' %}is-active{% else %}is-locked{% endif %}">
+        <p class="path-node-title">{{ unit.unit_label }}</p>
+        <p class="path-node-meta">{{ unit.completed_quizzes }} / {{ unit.total_quizzes }} quizzer · {{ unit.status }}</p>
+      </article>
+      {% endfor %}
+    </div>
+    {% else %}
+    <p class="muted">Læringsstien bliver synlig, når der findes quizdata med uge/lektion metadata.</p>
+    {% endif %}
+  </section>
+
+  {% if extensions_enabled %}
+  <section class="dashboard-section">
+    <h2 class="section-title">Extensions</h2>
+    <div class="extension-grid">
+      {% for extension in gamification.extensions %}
+      <article class="extension-item">
+        <strong>{{ extension.extension|upper }}</strong>
+        <div class="muted">Status: {{ extension.last_sync_status }}</div>
+        {% if extension.last_sync_at %}
+        <div class="muted">Seneste sync: {{ extension.last_sync_at }}</div>
+        {% endif %}
+        {% if extension.last_sync_error %}
+        <div class="muted">Fejl: {{ extension.last_sync_error }}</div>
+        {% endif %}
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
 
   <section class="dashboard-section">
     <h2 class="section-title">Semester</h2>

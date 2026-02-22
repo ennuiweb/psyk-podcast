@@ -1,6 +1,6 @@
 # freudd
 
-Django portal for authentication + per-user quiz score overview on top of existing static NotebookLM quiz exports.
+Django portal for authentication, quiz state, and quiz-driven gamification on top of static NotebookLM quiz exports.
 
 ## Current decisions
 - Auth: Django session auth with open signup (`/accounts/signup`).
@@ -22,6 +22,9 @@ Django portal for authentication + per-user quiz score overview on top of existi
 - Subject enrollment is per `(user, subject_slug)` in `SubjectEnrollment`.
 - Subject reading lists are parsed live from the master key markdown file path (`FREUDD_READING_MASTER_KEY_PATH`) with mtime-based cache.
 - Completion rule: `currentView == "summary"` and `answers_count == question_count`.
+- Gamification core is quiz-driven and always available for authenticated users (`/progress`, `/api/gamification/me`).
+- Optional extensions (`habitica`, `anki`) are disabled by default and must be enabled per account via management command.
+- Extension sync is token-based (`POST /api/extensions/sync`) and intended for local agents.
 - Theme direction: dark mode UI (Space Grotesk + Manrope); wrapper responds `ThemeChange: "dark"`.
 
 ## Routes
@@ -33,6 +36,8 @@ Django portal for authentication + per-user quiz score overview on top of existi
 - `GET /api/quiz-content/<quiz_id>`
 - `GET/POST /api/quiz-state/<quiz_id>`
 - `GET/POST /api/quiz-state/<quiz_id>/raw`
+- `GET /api/gamification/me`
+- `POST /api/extensions/sync`
 - `GET /progress`
 - `POST /preferences/semester`
 - `GET /subjects/<subject_slug>`
@@ -45,6 +50,11 @@ Django portal for authentication + per-user quiz score overview on top of existi
 - `QuizProgress` (existing): per-user quiz completion/score state.
 - `UserPreference`: one-to-one with user (`semester`, `updated_at`).
 - `SubjectEnrollment`: per-user subject enrollment keyed by `(user, subject_slug)`.
+- `UserGamificationProfile`: per-user XP/streak/level aggregates.
+- `UserUnitProgress`: per-user learning path unit status (`locked`, `active`, `completed`).
+- `DailyGamificationStat`: per-user daily answer/completion deltas + goal state.
+- `UserExtensionAccess`: per-user enablement and last sync status for optional extensions.
+- `UserExtensionToken`: per-user revokable bearer token for `/api/extensions/sync`.
 
 ## Subject catalog (`subjects.json`)
 ```json
@@ -65,6 +75,23 @@ Django portal for authentication + per-user quiz score overview on top of existi
 ## New env configuration
 - `FREUDD_SUBJECTS_JSON_PATH` (default: `freudd_portal/subjects.json`)
 - `FREUDD_READING_MASTER_KEY_PATH` (default: `/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/.ai/reading-file-key.md`)
+- `FREUDD_GAMIFICATION_DAILY_GOAL` (default: `20`)
+- `FREUDD_GAMIFICATION_XP_PER_ANSWER` (default: `5`)
+- `FREUDD_GAMIFICATION_XP_PER_COMPLETION` (default: `50`)
+- `FREUDD_GAMIFICATION_XP_PER_LEVEL` (default: `500`)
+
+## Management commands (no admin panel required)
+Prerequisite: der skal eksistere en brugerkonto (via signup eller `createsuperuser`) før per-user extension-commands kan køres.
+
+```bash
+cd /Users/oskar/repo/podcasts/freudd_portal
+../.venv/bin/python manage.py extension_access --user <username> --extension <habitica|anki> --enable
+../.venv/bin/python manage.py extension_access --user <username> --extension <habitica|anki> --disable
+../.venv/bin/python manage.py extension_token --user <username> --rotate
+../.venv/bin/python manage.py extension_token --user <username> --revoke
+../.venv/bin/python manage.py gamification_recompute --user <username>
+../.venv/bin/python manage.py gamification_recompute --all
+```
 
 ## Local run
 ```bash

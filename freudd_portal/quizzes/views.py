@@ -11,13 +11,30 @@ from django.contrib import messages
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
-from django.http import FileResponse, Http404, HttpRequest, HttpResponse, HttpResponseBadRequest, JsonResponse
+from django.http import (
+    FileResponse,
+    Http404,
+    HttpRequest,
+    HttpResponse,
+    HttpResponseBadRequest,
+    HttpResponseForbidden,
+    JsonResponse,
+)
 from django.shortcuts import redirect, render
 from django.utils.http import url_has_allowed_host_and_scheme
 from django.urls import reverse
+from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_GET, require_http_methods, require_POST
 
 from .forms import SignupForm
+from .gamification_services import (
+    extension_sync_payload_valid,
+    extract_bearer_token,
+    get_gamification_snapshot,
+    record_extension_sync,
+    record_quiz_progress_delta,
+    validate_extension_token,
+)
 from .models import QuizProgress, SubjectEnrollment, UserPreference
 from .rate_limit import evaluate_rate_limit
 from .services import (
@@ -274,10 +291,20 @@ def quiz_state_view(request: HttpRequest, quiz_id: str) -> HttpResponse:
         quiz_id=quiz_id,
         defaults={"state_json": {}, "raw_state_payload": None},
     )
+    previous_answers_count = int(progress.answers_count or 0)
+    previous_status = str(progress.status or QuizProgress.Status.IN_PROGRESS)
 
     question_count = quiz_question_count(quiz_id) or progress.question_count
     computation = compute_progress(state_payload, question_count)
     upsert_progress_from_state(progress=progress, state_payload=state_payload, computation=computation)
+    try:
+        record_quiz_progress_delta(
+            progress=progress,
+            previous_answers_count=previous_answers_count,
+            previous_status=previous_status,
+        )
+    except Exception:
+        logger.warning("Gamification update failed for quiz-state write", exc_info=True)
 
     return JsonResponse(
         {
@@ -334,6 +361,56 @@ def quiz_state_raw_view(request: HttpRequest, quiz_id: str) -> HttpResponse:
 
 @login_required
 @require_GET
+def gamification_me_view(request: HttpRequest) -> HttpResponse:
+    return JsonResponse(get_gamification_snapshot(request.user))
+
+
+@csrf_exempt
+@require_POST
+def extension_sync_view(request: HttpRequest) -> HttpResponse:
+    token = extract_bearer_token(request.headers.get("Authorization", ""))
+    token_record = validate_extension_token(token)
+    if token_record is None:
+        return JsonResponse({"error": "Unauthorized token"}, status=401)
+
+    if len(request.body) > MAX_STATE_BYTES:
+        return HttpResponseBadRequest("Payload er for stor.")
+
+    try:
+        payload = json.loads(request.body.decode("utf-8"))
+    except (UnicodeDecodeError, json.JSONDecodeError):
+        return HttpResponseBadRequest("Ugyldig JSON-body.")
+
+    try:
+        extension, status, normalized_payload, error_message = extension_sync_payload_valid(payload)
+    except ValueError as exc:
+        return HttpResponseBadRequest(str(exc))
+
+    try:
+        access = record_extension_sync(
+            user=token_record.user,
+            extension=extension,
+            status=status,
+            payload=normalized_payload,
+            error=error_message,
+        )
+    except PermissionError:
+        return HttpResponseForbidden("Extension er ikke aktiveret for bruger.")
+    except ValueError as exc:
+        return HttpResponseBadRequest(str(exc))
+
+    return JsonResponse(
+        {
+            "ok": True,
+            "extension": access.extension,
+            "last_sync_status": access.last_sync_status,
+            "last_sync_at": access.last_sync_at.isoformat() if access.last_sync_at else None,
+        }
+    )
+
+
+@login_required
+@require_GET
 def progress_view(request: HttpRequest) -> HttpResponse:
     catalog = load_subject_catalog()
     preference, _ = UserPreference.objects.get_or_create(
@@ -384,6 +461,8 @@ def progress_view(request: HttpRequest) -> HttpResponse:
             }
         )
 
+    gamification = get_gamification_snapshot(request.user)
+
     return render(
         request,
         "quizzes/progress.html",
@@ -393,6 +472,8 @@ def progress_view(request: HttpRequest) -> HttpResponse:
             "selected_semester": selected_semester,
             "subject_cards": subject_cards,
             "subjects_error": catalog.error,
+            "gamification": gamification,
+            "extensions_enabled": bool(gamification.get("extensions")),
         },
     )
 

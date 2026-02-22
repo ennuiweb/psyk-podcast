@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import html
+import io
 import json
 import tempfile
 from pathlib import Path
@@ -9,10 +10,19 @@ from urllib.parse import urlencode
 
 from django.conf import settings
 from django.contrib.auth.models import User
+from django.core.management import call_command
 from django.test import Client, TestCase, override_settings
 from django.urls import reverse
 
-from quizzes.models import QuizProgress, SubjectEnrollment, UserPreference
+from quizzes.models import (
+    DailyGamificationStat,
+    QuizProgress,
+    SubjectEnrollment,
+    UserExtensionAccess,
+    UserGamificationProfile,
+    UserPreference,
+    UserUnitProgress,
+)
 from quizzes.subject_services import clear_subject_service_caches
 
 
@@ -635,6 +645,174 @@ class QuizPortalTests(TestCase):
             {"next": reverse("progress")},
         )
         self.assertEqual(response.status_code, 403)
+
+    def test_quiz_state_updates_gamification_models(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+        state_url = reverse("quiz-state", kwargs={"quiz_id": self.quiz_id})
+
+        first_payload = {
+            "userAnswers": {"0": 1},
+            "currentQuestionIndex": 0,
+            "hiddenQuestionIndices": [],
+            "currentView": "question",
+        }
+        response = self.client.post(state_url, data=json.dumps(first_payload), content_type="application/json")
+        self.assertEqual(response.status_code, 200)
+
+        completed_payload = {
+            "userAnswers": {"0": 1, "1": 2},
+            "currentQuestionIndex": 1,
+            "hiddenQuestionIndices": [],
+            "currentView": "summary",
+        }
+        response = self.client.post(
+            state_url,
+            data=json.dumps(completed_payload),
+            content_type="application/json",
+        )
+        self.assertEqual(response.status_code, 200)
+
+        profile = UserGamificationProfile.objects.get(user=user)
+        self.assertEqual(profile.xp_total, 60)
+        self.assertGreaterEqual(profile.current_level, 1)
+
+        daily = DailyGamificationStat.objects.get(user=user)
+        self.assertEqual(daily.answered_delta, 2)
+        self.assertEqual(daily.completed_delta, 1)
+
+        units = list(UserUnitProgress.objects.filter(user=user))
+        self.assertEqual(len(units), 1)
+        self.assertEqual(units[0].unit_key, "W01")
+        self.assertEqual(units[0].status, UserUnitProgress.Status.COMPLETED)
+
+    def test_progress_page_shows_gamification_sections(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+
+        response = self.client.get(reverse("progress"))
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Læringssti")
+        self.assertContains(response, "Dagens mål")
+        self.assertNotContains(response, "Extensions")
+
+    def test_gamification_api_requires_login_and_returns_snapshot(self) -> None:
+        url = reverse("gamification-me")
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 302)
+
+        user = self._create_user()
+        self.client.force_login(user)
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+        payload = response.json()
+        self.assertIn("profile", payload)
+        self.assertIn("daily", payload)
+        self.assertIn("units", payload)
+        self.assertIn("extensions", payload)
+
+    def test_extension_sync_endpoint_enforces_token_and_access(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+        url = reverse("extensions-sync")
+
+        response = self.client.post(url, data=json.dumps({}), content_type="application/json")
+        self.assertEqual(response.status_code, 401)
+
+        output = io.StringIO()
+        call_command("extension_token", "--user", user.username, "--rotate", stdout=output)
+        token = output.getvalue().strip().splitlines()[-1]
+
+        payload = {
+            "extension": "habitica",
+            "status": "ok",
+            "payload": {"reviews_today": 12},
+            "error": "",
+        }
+        response = self.client.post(
+            url,
+            data=json.dumps(payload),
+            content_type="application/json",
+            HTTP_AUTHORIZATION=f"Bearer {token}",
+        )
+        self.assertEqual(response.status_code, 403)
+
+        call_command(
+            "extension_access",
+            "--user",
+            user.username,
+            "--extension",
+            "habitica",
+            "--enable",
+            stdout=io.StringIO(),
+        )
+        response = self.client.post(
+            url,
+            data=json.dumps(payload),
+            content_type="application/json",
+            HTTP_AUTHORIZATION=f"Bearer {token}",
+        )
+        self.assertEqual(response.status_code, 200)
+        access = UserExtensionAccess.objects.get(user=user, extension="habitica")
+        self.assertTrue(access.enabled)
+        self.assertEqual(access.last_sync_status, "ok")
+
+    def test_extension_commands_are_idempotent(self) -> None:
+        user = self._create_user()
+
+        call_command(
+            "extension_access",
+            "--user",
+            user.username,
+            "--extension",
+            "anki",
+            "--enable",
+            stdout=io.StringIO(),
+        )
+        call_command(
+            "extension_access",
+            "--user",
+            user.username,
+            "--extension",
+            "anki",
+            "--enable",
+            stdout=io.StringIO(),
+        )
+        self.assertEqual(
+            UserExtensionAccess.objects.filter(user=user, extension="anki", enabled=True).count(),
+            1,
+        )
+
+        call_command(
+            "extension_access",
+            "--user",
+            user.username,
+            "--extension",
+            "anki",
+            "--disable",
+            stdout=io.StringIO(),
+        )
+        self.assertFalse(
+            UserExtensionAccess.objects.get(user=user, extension="anki").enabled
+        )
+
+        out1 = io.StringIO()
+        call_command("extension_token", "--user", user.username, "--rotate", stdout=out1)
+        token1 = out1.getvalue().strip().splitlines()[-1]
+        out2 = io.StringIO()
+        call_command("extension_token", "--user", user.username, "--rotate", stdout=out2)
+        token2 = out2.getvalue().strip().splitlines()[-1]
+        self.assertNotEqual(token1, token2)
+        self.assertEqual(
+            user.userextensiontoken_set.filter(revoked_at__isnull=True).count(),
+            1,
+        )
+
+    def test_gamification_recompute_command_runs_for_single_user(self) -> None:
+        user = self._create_user()
+        output = io.StringIO()
+        call_command("gamification_recompute", "--user", user.username, stdout=output)
+        self.assertIn("Recomputed gamification", output.getvalue())
 
     def test_language_configuration_is_danish_only(self) -> None:
         self.assertEqual(settings.LANGUAGE_CODE, "da")

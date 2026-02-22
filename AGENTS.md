@@ -1,3 +1,7 @@
+## Deployment Policy
+
+- Når ændringer i `freudd_portal` er færdigimplementerede, skal der altid deployes til freudd-portal-miljøet som sidste trin.
+
 ## README Command Inventory (checked 2026-02-12)
 
 ### Selected explicit runnable commands
@@ -13,5 +17,5 @@
 - `./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_week.py --week W1 --content-types quiz --profile default`
 - `./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/download_week.py --week W1 --content-types quiz`
 - `./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/download_week.py --week W01 --content-types quiz --format html`
-- `python3 scripts/sync_quiz_links.py --dry-run`
-- `python3 scripts/sync_quiz_links.py`
+- `python3 scripts/sync_quiz_links.py --subject-slug personlighedspsykologi --dry-run`
+- `python3 scripts/sync_quiz_links.py --subject-slug personlighedspsykologi`

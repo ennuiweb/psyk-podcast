@@ -125,7 +125,7 @@ python podcast/gdrive_podcast_feed.py --config podcast/config.local.json
 The repository ships with `podcast/config.json` and `podcast/episode_metadata.json` pre-populated for Socialpsykologi Deep Dives - Hold 1 - 2024—update the titles, artwork, contact email, and descriptions to match your own show before publishing.
 
 ## freudd (login + learning dashboard)
-The repository now includes a separate Django portal in `freudd_portal/` for user login, per-user quiz score tracking, subject enrollment, semester preferences, and subject reading overviews without changing NotebookLM-generated quiz HTML internals.
+The repository includes a Django portal in `freudd_portal/` for user login, quiz state persistence, quiz-driven gamification, subject enrollment, semester preferences, and subject reading overviews without changing NotebookLM-generated quiz HTML internals.
 
 ### What it serves
 - `GET/POST /accounts/signup`
@@ -136,6 +136,8 @@ The repository now includes a separate Django portal in `freudd_portal/` for use
 - `GET /api/quiz-content/<quiz_id>` (public normalized quiz JSON for wrapper UI)
 - `GET/POST /api/quiz-state/<quiz_id>` (login-required structured quiz state)
 - `GET/POST /api/quiz-state/<quiz_id>/raw` (login-required legacy raw state payload)
+- `GET /api/gamification/me` (login-required gamification snapshot)
+- `POST /api/extensions/sync` (token-auth optional extension sync endpoint for local agents)
 - `GET /progress` (login-required dashboard with semester selector, subject cards, and quiz score rows)
 - `POST /preferences/semester` (login-required semester update)
 - `GET /subjects/<subject_slug>` (login-required subject detail + readings)
@@ -147,6 +149,11 @@ The repository now includes a separate Django portal in `freudd_portal/` for use
 - Model: `QuizProgress`
 - Model: `UserPreference` (`OneToOne(user)`, global `semester`)
 - Model: `SubjectEnrollment` (`ForeignKey(user)`, `subject_slug`)
+- Model: `UserGamificationProfile` (`OneToOne(user)`, `xp_total`, `streak_days`, `current_level`)
+- Model: `UserUnitProgress` (`ForeignKey(user)`, per subject/unit path status + mastery)
+- Model: `DailyGamificationStat` (`ForeignKey(user)`, per-day answer/completion deltas + goal state)
+- Model: `UserExtensionAccess` (`ForeignKey(user)`, per-extension enablement + last sync status)
+- Model: `UserExtensionToken` (`ForeignKey(user)`, revokable bearer token for extension sync)
 - Unique key: `(user, quiz_id)` for quiz state
 - Unique key: `(user, subject_slug)` for subject enrollment
 - Completion rule (phase 1): `currentView == "summary"` and `answers_count == question_count`
@@ -186,6 +193,13 @@ python3 manage.py test
 - `QUIZ_RATE_LIMIT_WINDOW_SECONDS`
 - `FREUDD_SUBJECTS_JSON_PATH` (default: `freudd_portal/subjects.json`)
 - `FREUDD_READING_MASTER_KEY_PATH` (default: `/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/.ai/reading-file-key.md`)
+- `FREUDD_GAMIFICATION_DAILY_GOAL` (default: `20`)
+- `FREUDD_GAMIFICATION_XP_PER_ANSWER` (default: `5`)
+- `FREUDD_GAMIFICATION_XP_PER_COMPLETION` (default: `50`)
+- `FREUDD_GAMIFICATION_XP_PER_LEVEL` (default: `500`)
+
+Operational prerequisite:
+- Per-user extension commands/tokens require that the target user already exists (created via signup flow or `manage.py createsuperuser`).
 
 Language choice:
 - portal default is Danish (`LANGUAGE_CODE=da`)
@@ -212,10 +226,12 @@ Quiz sync behavior (current):
 - Wrapper/raw quiz endpoints are public (`/q/*`, `/q/raw/*`) for anonymous play
 - Public quiz content API (`/api/quiz-content/<id>`) serves normalized quiz JSON to the portal UI
 - Login required on dashboard + state persistence + subject preference APIs (`/progress`, `/api/quiz-state/*`, `/subjects/*`, `/preferences/*`)
+- Login required on `/api/gamification/me`
 - Anonymous users are prompted to log in when they reach quiz summary/completion
 - Strict quiz ID regex (`^[0-9a-f]{8}$`) plus existence checks
 - IP-based login/signup rate limiting
 - HTTP warning banners on auth pages (until HTTPS rollout)
+- `POST /api/extensions/sync` is CSRF-exempt and requires a valid active bearer token tied to a user.
 
 ### Deployment notes (current)
 - Runtime names are now `freudd-portal.service` and `/etc/freudd-portal.env`.

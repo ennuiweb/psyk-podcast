@@ -29,6 +29,7 @@ QUIZ_DIFFICULTY_RE = re.compile(
 QUIZ_TYPE_RE = re.compile(r"\{[^{}]*\btype=quiz\b[^{}]*\}", re.IGNORECASE)
 DUPLICATE_WEEK_PREFIX_RE = re.compile(r"^(W\d{2}L\d+)\s*-\s*\1\b", re.IGNORECASE)
 MISSING_TOKEN_RE = re.compile(r"\bMISSING\b", re.IGNORECASE)
+SUBJECT_SLUG_RE = re.compile(r"^[a-z0-9-]+$")
 QUIZ_DIFFICULTY_SORT_ORDER = {"easy": 0, "medium": 1, "hard": 2}
 QUIZ_PRIMARY_DIFFICULTY_SORT_ORDER = {"medium": 0, "easy": 1, "hard": 2}
 
@@ -217,7 +218,7 @@ def select_primary_quiz_link(links: List[Dict[str, str]]) -> Dict[str, str] | No
     return ranked[0] if ranked else None
 
 
-def build_mapping_entry(links: List[Dict[str, str]]) -> Dict[str, Any] | None:
+def build_mapping_entry(links: List[Dict[str, str]], subject_slug: str) -> Dict[str, Any] | None:
     if not links:
         return None
     normalized_links: List[Dict[str, str]] = []
@@ -235,6 +236,7 @@ def build_mapping_entry(links: List[Dict[str, str]]) -> Dict[str, Any] | None:
                 "relative_path": rel_path,
                 "format": str(raw_link.get("format") or "html"),
                 "difficulty": difficulty,
+                "subject_slug": subject_slug,
             }
         )
     if not normalized_links:
@@ -246,6 +248,7 @@ def build_mapping_entry(links: List[Dict[str, str]]) -> Dict[str, Any] | None:
         "relative_path": primary["relative_path"],
         "format": primary["format"],
         "difficulty": primary["difficulty"],
+        "subject_slug": subject_slug,
     }
     if len(normalized_links) > 1:
         mapping_entry["links"] = normalized_links
@@ -396,6 +399,11 @@ def main() -> int:
         help="Path to quiz_links.json to update.",
     )
     parser.add_argument(
+        "--subject-slug",
+        required=True,
+        help="Subject slug to assign on every quiz mapping entry.",
+    )
+    parser.add_argument(
         "--language-tag",
         default="[EN]",
         help="Only consider files containing this tag in the filename.",
@@ -465,6 +473,9 @@ def main() -> int:
     links_file = resolve_path(args.links_file, repo_root)
     language_tag = args.language_tag
     quiz_difficulty = None if args.quiz_difficulty == "any" else args.quiz_difficulty
+    subject_slug = str(args.subject_slug).strip().lower()
+    if not SUBJECT_SLUG_RE.match(subject_slug):
+        raise SystemExit("--subject-slug must match ^[a-z0-9-]+$")
     if args.flat_id_len < 1:
         raise SystemExit("--flat-id-len must be >= 1.")
 
@@ -570,7 +581,7 @@ def main() -> int:
     sorted_mapping: Dict[str, Dict[str, Any]] = {}
     mapped_quiz_links = 0
     for key in sorted(mapping_links):
-        mapping_entry = build_mapping_entry(mapping_links[key])
+        mapping_entry = build_mapping_entry(mapping_links[key], subject_slug)
         if not mapping_entry:
             continue
         sorted_mapping[key] = mapping_entry

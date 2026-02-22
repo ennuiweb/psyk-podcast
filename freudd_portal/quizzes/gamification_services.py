@@ -37,6 +37,7 @@ HABITICA_API_BASE = "https://habitica.com/api/v3"
 
 @dataclass(frozen=True)
 class UnitDefinition:
+    subject_slug: str
     key: str
     label: str
     quiz_ids: frozenset[str]
@@ -48,13 +49,6 @@ class ExtensionCredentialError(RuntimeError):
 
 class ExtensionSyncError(RuntimeError):
     """Raised when extension sync fails."""
-
-
-def _subject_slug_default() -> str:
-    catalog = load_subject_catalog()
-    if catalog.active_subjects:
-        return catalog.active_subjects[0].slug
-    return "general"
 
 
 def _unit_key_from_title(title: str) -> tuple[str, str]:
@@ -99,49 +93,53 @@ def _xp_per_level() -> int:
     return max(1, value)
 
 
-def _build_unit_definitions_for_user(user) -> list[UnitDefinition]:
+def _build_unit_definitions_for_user(user) -> dict[str, list[UnitDefinition]]:
     labels = load_quiz_label_mapping()
-    grouped: dict[str, dict[str, Any]] = {}
+    grouped: dict[str, dict[str, dict[str, Any]]] = {}
 
-    if labels:
-        for quiz_id, label in labels.items():
-            unit_key, unit_label = _unit_key_from_title(label.episode_title)
-            bucket = grouped.setdefault(
-                unit_key,
-                {
-                    "label": unit_label,
-                    "quiz_ids": set(),
-                },
-            )
-            bucket["quiz_ids"].add(quiz_id)
-    else:
-        user_quiz_ids = set(
-            QuizProgress.objects.filter(user=user).values_list("quiz_id", flat=True)
-        )
-        if user_quiz_ids:
-            grouped[UNKNOWN_UNIT_KEY] = {
-                "label": UNKNOWN_UNIT_LABEL,
-                "quiz_ids": user_quiz_ids,
-            }
-
-    units: list[UnitDefinition] = []
-    for key, payload in grouped.items():
-        quiz_ids = frozenset(payload["quiz_ids"])
-        if not quiz_ids:
+    for quiz_id, label in labels.items():
+        if not label.subject_slug:
             continue
-        units.append(
-            UnitDefinition(
-                key=key,
-                label=str(payload["label"]),
-                quiz_ids=quiz_ids,
-            )
+        unit_key, unit_label = _unit_key_from_title(label.episode_title)
+        subject_bucket = grouped.setdefault(label.subject_slug, {})
+        unit_bucket = subject_bucket.setdefault(
+            unit_key,
+            {
+                "label": unit_label,
+                "quiz_ids": set(),
+            },
         )
-    return sorted(units, key=lambda item: _unit_sort_key(item.key))
+        unit_bucket["quiz_ids"].add(quiz_id)
+
+    catalog = load_subject_catalog()
+    ordered_subjects = [subject.slug for subject in catalog.active_subjects]
+    for subject_slug in sorted(grouped):
+        if subject_slug not in ordered_subjects:
+            ordered_subjects.append(subject_slug)
+
+    units_by_subject: dict[str, list[UnitDefinition]] = {}
+    for subject_slug in ordered_subjects:
+        subject_units = grouped.get(subject_slug, {})
+        units: list[UnitDefinition] = []
+        for key, payload in subject_units.items():
+            quiz_ids = frozenset(payload["quiz_ids"])
+            if not quiz_ids:
+                continue
+            units.append(
+                UnitDefinition(
+                    subject_slug=subject_slug,
+                    key=key,
+                    label=str(payload["label"]),
+                    quiz_ids=quiz_ids,
+                )
+            )
+        if units:
+            units_by_subject[subject_slug] = sorted(units, key=lambda item: _unit_sort_key(item.key))
+    return units_by_subject
 
 
 def _recompute_unit_progress(user) -> tuple[int, list[UserUnitProgress]]:
-    subject_slug = _subject_slug_default()
-    units = _build_unit_definitions_for_user(user)
+    units_by_subject = _build_unit_definitions_for_user(user)
     completed_ids = set(
         QuizProgress.objects.filter(user=user, status=QuizProgress.Status.COMPLETED).values_list(
             "quiz_id", flat=True
@@ -149,48 +147,56 @@ def _recompute_unit_progress(user) -> tuple[int, list[UserUnitProgress]]:
     )
 
     rows: list[UserUnitProgress] = []
-    first_active_index: int | None = None
-    sequence = 0
-    for definition in units:
-        sequence += 1
-        total_quizzes = len(definition.quiz_ids)
-        completed_quizzes = len(definition.quiz_ids.intersection(completed_ids))
-        ratio = Decimal("0")
-        if total_quizzes > 0:
-            ratio = Decimal(completed_quizzes) / Decimal(total_quizzes)
+    active_keys_by_subject: dict[str, set[str]] = {}
+    completed_units_total = 0
+    for subject_slug, units in units_by_subject.items():
+        first_active_index: int | None = None
+        sequence = 0
+        for definition in units:
+            sequence += 1
+            total_quizzes = len(definition.quiz_ids)
+            completed_quizzes = len(definition.quiz_ids.intersection(completed_ids))
+            ratio = Decimal("0")
+            if total_quizzes > 0:
+                ratio = Decimal(completed_quizzes) / Decimal(total_quizzes)
 
-        if total_quizzes > 0 and completed_quizzes == total_quizzes:
-            status = UserUnitProgress.Status.COMPLETED
-        elif first_active_index is None:
-            status = UserUnitProgress.Status.ACTIVE
-            first_active_index = sequence
-        else:
-            status = UserUnitProgress.Status.LOCKED
+            if total_quizzes > 0 and completed_quizzes == total_quizzes:
+                status = UserUnitProgress.Status.COMPLETED
+                completed_units_total += 1
+            elif first_active_index is None:
+                status = UserUnitProgress.Status.ACTIVE
+                first_active_index = sequence
+            else:
+                status = UserUnitProgress.Status.LOCKED
 
-        row, _ = UserUnitProgress.objects.update_or_create(
-            user=user,
-            subject_slug=subject_slug,
-            unit_key=definition.key,
-            defaults={
-                "unit_label": definition.label,
-                "sequence_index": sequence,
-                "status": status,
-                "completed_quizzes": completed_quizzes,
-                "total_quizzes": total_quizzes,
-                "mastery_ratio": ratio.quantize(Decimal("0.0001")),
-            },
-        )
-        rows.append(row)
+            row, _ = UserUnitProgress.objects.update_or_create(
+                user=user,
+                subject_slug=subject_slug,
+                unit_key=definition.key,
+                defaults={
+                    "unit_label": definition.label,
+                    "sequence_index": sequence,
+                    "status": status,
+                    "completed_quizzes": completed_quizzes,
+                    "total_quizzes": total_quizzes,
+                    "mastery_ratio": ratio.quantize(Decimal("0.0001")),
+                },
+            )
+            rows.append(row)
+            active_keys_by_subject.setdefault(subject_slug, set()).add(definition.key)
 
-    active_keys = {row.unit_key for row in rows}
-    UserUnitProgress.objects.filter(user=user, subject_slug=subject_slug).exclude(
-        unit_key__in=active_keys
-    ).delete()
-
-    if first_active_index is None:
-        current_level = max(1, len(rows))
+    if not active_keys_by_subject:
+        UserUnitProgress.objects.filter(user=user).delete()
     else:
-        current_level = first_active_index
+        for subject_slug, unit_keys in active_keys_by_subject.items():
+            UserUnitProgress.objects.filter(user=user, subject_slug=subject_slug).exclude(
+                unit_key__in=unit_keys
+            ).delete()
+        UserUnitProgress.objects.filter(user=user).exclude(
+            subject_slug__in=active_keys_by_subject.keys()
+        ).delete()
+
+    current_level = max(1, completed_units_total + 1)
     return current_level, rows
 
 
@@ -341,6 +347,32 @@ def get_gamification_snapshot(user) -> dict[str, Any]:
             }
             for item in enabled_extensions
         ],
+    }
+
+
+def get_subject_learning_path_snapshot(user, subject_slug: str) -> dict[str, Any]:
+    recompute_user_gamification(user)
+    slug = (subject_slug or "").strip().lower()
+    units = list(
+        UserUnitProgress.objects.filter(user=user, subject_slug=slug).order_by("sequence_index", "unit_key")
+    )
+    unit_payload = [
+        {
+            "subject_slug": unit.subject_slug,
+            "unit_key": unit.unit_key,
+            "unit_label": unit.unit_label,
+            "sequence_index": unit.sequence_index,
+            "status": unit.status,
+            "completed_quizzes": unit.completed_quizzes,
+            "total_quizzes": unit.total_quizzes,
+            "mastery_ratio": float(unit.mastery_ratio),
+        }
+        for unit in units
+    ]
+    active_unit = next((unit for unit in unit_payload if unit["status"] == UserUnitProgress.Status.ACTIVE), None)
+    return {
+        "units": unit_payload,
+        "active_unit": active_unit,
     }
 
 

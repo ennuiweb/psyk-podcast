@@ -15,6 +15,7 @@ from django.core.management.base import CommandError
 from django.test import Client, TestCase, override_settings
 from django.urls import reverse
 
+from quizzes import services as quiz_services
 from quizzes.models import (
     DailyGamificationStat,
     ExtensionSyncLedger,
@@ -26,6 +27,7 @@ from quizzes.models import (
     UserPreference,
     UserUnitProgress,
 )
+from quizzes.services import load_quiz_label_mapping
 from quizzes.subject_services import clear_subject_service_caches
 
 
@@ -56,6 +58,8 @@ class QuizPortalTests(TestCase):
         self.addCleanup(self.override.disable)
         clear_subject_service_caches()
         self.addCleanup(clear_subject_service_caches)
+        quiz_services._METADATA_CACHE["mtime"] = None
+        quiz_services._METADATA_CACHE["data"] = {}
 
         self.quiz_id = "29ebcecd"
         self._write_quiz_file(self.quiz_id, question_count=2)
@@ -107,14 +111,17 @@ class QuizPortalTests(TestCase):
         by_name: dict[str, dict[str, object]] = {}
         for quiz_id, meta in entries.items():
             title = meta["title"]
+            subject_slug = meta.get("subject_slug", "personlighedspsykologi")
             by_name[title] = {
                 "relative_path": f"{quiz_id}.html",
                 "difficulty": meta.get("difficulty", "medium"),
+                "subject_slug": subject_slug,
                 "links": [
                     {
                         "relative_path": f"{quiz_id}.html",
                         "difficulty": meta.get("difficulty", "medium"),
                         "format": "html",
+                        "subject_slug": subject_slug,
                     }
                 ],
             }
@@ -482,6 +489,54 @@ class QuizPortalTests(TestCase):
         self.assertContains(response, "W1L1 - Episode")
         self.assertContains(response, "Mellem")
 
+    def test_load_quiz_label_mapping_reads_subject_slug(self) -> None:
+        labels = load_quiz_label_mapping()
+        label = labels[self.quiz_id]
+        self.assertEqual(label.subject_slug, "personlighedspsykologi")
+
+    def test_load_quiz_label_mapping_fallbacks_to_link_subject_slug(self) -> None:
+        self.links_file.write_text(
+            json.dumps(
+                {
+                    "by_name": {
+                        "W1L1 - Episode": {
+                            "relative_path": f"{self.quiz_id}.html",
+                            "difficulty": "medium",
+                            "links": [
+                                {
+                                    "relative_path": f"{self.quiz_id}.html",
+                                    "difficulty": "medium",
+                                    "format": "html",
+                                    "subject_slug": "personlighedspsykologi",
+                                }
+                            ],
+                        }
+                    }
+                }
+            ),
+            encoding="utf-8",
+        )
+        labels = load_quiz_label_mapping()
+        self.assertEqual(labels[self.quiz_id].subject_slug, "personlighedspsykologi")
+
+    def test_load_quiz_label_mapping_invalid_subject_slug_becomes_none(self) -> None:
+        self.links_file.write_text(
+            json.dumps(
+                {
+                    "by_name": {
+                        "W1L1 - Episode": {
+                            "relative_path": f"{self.quiz_id}.html",
+                            "difficulty": "medium",
+                            "subject_slug": "bad slug",
+                        }
+                    }
+                }
+            ),
+            encoding="utf-8",
+        )
+        labels = load_quiz_label_mapping()
+        self.assertIsNone(labels[self.quiz_id].subject_slug)
+
     def test_progress_page_shows_semester_and_subject_cards(self) -> None:
         user = self._create_user()
         self.client.force_login(user)
@@ -545,6 +600,8 @@ class QuizPortalTests(TestCase):
         response = self.client.get(detail_url)
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Ikke tilmeldt")
+        self.assertContains(response, "Læringssti")
+        self.assertContains(response, "Næste fokus")
         self.assertContains(response, "W01L1 Introforelaesning")
         self.assertContains(response, "Grundbog kapitel 01 - Introduktion til personlighedspsykologi")
         self.assertContains(response, "MISSING")
@@ -559,6 +616,55 @@ class QuizPortalTests(TestCase):
         response = self.client.get(detail_url)
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Tilmeldt")
+        self.assertContains(response, "Læringssti")
+
+    def test_subject_detail_shows_path_hint_when_active_unit_exists(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+
+        state_url = reverse("quiz-state", kwargs={"quiz_id": self.quiz_id})
+        payload = {
+            "userAnswers": {"0": 1},
+            "currentQuestionIndex": 0,
+            "hiddenQuestionIndices": [],
+            "currentView": "question",
+        }
+        response = self.client.post(state_url, data=json.dumps(payload), content_type="application/json")
+        self.assertEqual(response.status_code, 200)
+
+        detail_url = reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"})
+        response = self.client.get(detail_url)
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Næste fokus")
+
+    def test_subject_detail_hides_path_when_subject_slug_missing_in_mapping(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+
+        self.links_file.write_text(
+            json.dumps(
+                {
+                    "by_name": {
+                        "W1L1 - Episode": {
+                            "relative_path": f"{self.quiz_id}.html",
+                            "difficulty": "medium",
+                            "links": [
+                                {
+                                    "relative_path": f"{self.quiz_id}.html",
+                                    "difficulty": "medium",
+                                    "format": "html",
+                                }
+                            ],
+                        }
+                    }
+                }
+            ),
+            encoding="utf-8",
+        )
+        detail_url = reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"})
+        response = self.client.get(detail_url)
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Ingen læringssti endnu for dette fag.")
 
     def test_unknown_subject_slug_returns_404_for_all_subject_endpoints(self) -> None:
         user = self._create_user()
@@ -692,15 +798,14 @@ class QuizPortalTests(TestCase):
         self.assertEqual(units[0].unit_key, "W01")
         self.assertEqual(units[0].status, UserUnitProgress.Status.COMPLETED)
 
-    def test_progress_page_shows_gamification_sections(self) -> None:
+    def test_progress_page_hides_learning_path_section(self) -> None:
         user = self._create_user()
         self.client.force_login(user)
 
         response = self.client.get(reverse("progress"))
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "Læringssti")
-        self.assertContains(response, "Dagens mål")
-        self.assertContains(response, "Næste fokus")
+        self.assertNotContains(response, "Læringssti")
+        self.assertNotContains(response, "Næste fokus")
         self.assertNotContains(response, "Extensions")
 
     def test_gamification_api_requires_login_and_returns_snapshot(self) -> None:

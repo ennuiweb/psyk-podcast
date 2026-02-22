@@ -26,6 +26,7 @@ from django.views.decorators.http import require_GET, require_http_methods, requ
 
 from .forms import SignupForm
 from .gamification_services import (
+    get_subject_learning_path_snapshot,
     get_gamification_snapshot,
     record_quiz_progress_delta,
 )
@@ -411,12 +412,6 @@ def progress_view(request: HttpRequest) -> HttpResponse:
             }
         )
 
-    gamification = get_gamification_snapshot(request.user)
-    active_unit = next(
-        (unit for unit in gamification.get("units", []) if unit.get("status") == "active"),
-        None,
-    )
-
     return render(
         request,
         "quizzes/progress.html",
@@ -426,9 +421,6 @@ def progress_view(request: HttpRequest) -> HttpResponse:
             "selected_semester": selected_semester,
             "subject_cards": subject_cards,
             "subjects_error": catalog.error,
-            "gamification": gamification,
-            "active_unit": active_unit,
-            "extensions_enabled": bool(gamification.get("extensions")),
         },
     )
 
@@ -489,6 +481,7 @@ def subject_detail_view(request: HttpRequest, subject_slug: str) -> HttpResponse
         subject_slug=subject.slug,
     ).exists()
     readings = parse_master_readings(settings.FREUDD_READING_MASTER_KEY_PATH)
+    subject_path = get_subject_learning_path_snapshot(request.user, subject.slug)
 
     return render(
         request,
@@ -498,6 +491,8 @@ def subject_detail_view(request: HttpRequest, subject_slug: str) -> HttpResponse
             "is_enrolled": is_enrolled,
             "lectures": readings.lectures,
             "readings_error": readings.error,
+            "subject_path_units": subject_path["units"],
+            "subject_path_active_unit": subject_path["active_unit"],
             "enroll_url": reverse("subject-enroll", kwargs={"subject_slug": subject.slug}),
             "unenroll_url": reverse("subject-unenroll", kwargs={"subject_slug": subject.slug}),
         },

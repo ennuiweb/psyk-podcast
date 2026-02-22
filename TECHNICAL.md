@@ -154,7 +154,7 @@ The repository includes a Django portal in `freudd_portal/` for user login, quiz
 - Model: `UserExtensionAccess` (`ForeignKey(user)`, per-extension enablement + last sync status)
 - Model: `UserExtensionCredential` (`ForeignKey(user)`, encrypted per-user credentials, unique `(user, extension)`)
 - Model: `ExtensionSyncLedger` (`ForeignKey(user)`, idempotent per-day sync rows for each extension)
-- UI: progress page renders a Duolingo-style zig-zag learning path from `UserUnitProgress`.
+- UI: subject detail page renders a Duolingo-style zig-zag learning path from `UserUnitProgress` per `subject_slug`.
 - Unique key: `(user, quiz_id)` for quiz state
 - Unique key: `(user, subject_slug)` for subject enrollment
 - Completion rule (phase 1): `currentView == "summary"` and `answers_count == question_count`
@@ -226,6 +226,7 @@ Proxy these routes to the Django service (Gunicorn/Uvicorn):
 Quiz sync behavior (current):
 - `scripts/sync_quiz_links.py` and `podcast-tools/sync_drive_quiz_links.py` discover quizzes from JSON exports only.
 - Both scripts keep emitting `.html` `relative_path` entries in `quiz_links.json` so feed/portal links stay `/q/<id>.html`.
+- `scripts/sync_quiz_links.py` now requires `--subject-slug` and writes `subject_slug` into each `quiz_links.json` entry.
 - Non-quiz JSON artifacts (for example `*.html.request.json`, manifest JSON files) are ignored; zero valid quiz JSON files is treated as an error.
 
 ### Security controls in phase 1

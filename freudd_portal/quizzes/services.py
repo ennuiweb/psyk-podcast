@@ -20,6 +20,7 @@ logger = logging.getLogger(__name__)
 QUIZ_ID_RE = re.compile(r"^[0-9a-f]{8}$")
 APP_DATA_RE = re.compile(r"<app-root[^>]*data-app-data=\"(?P<data>.*?)\"", re.IGNORECASE | re.DOTALL)
 QUIZ_PATH_RE = re.compile(r"(?P<id>[0-9a-f]{8})\.html$", re.IGNORECASE)
+SUBJECT_SLUG_RE = re.compile(r"^[a-z0-9-]+$")
 
 
 class StatePayloadError(ValueError):
@@ -30,6 +31,7 @@ class StatePayloadError(ValueError):
 class QuizLabel:
     episode_title: str
     difficulty: str
+    subject_slug: str | None
 
 
 @dataclass(frozen=True)
@@ -247,6 +249,17 @@ def _normalize_difficulty(value: Any) -> str:
     return value.strip().lower()
 
 
+def _normalize_subject_slug(value: Any) -> str | None:
+    if not isinstance(value, str):
+        return None
+    slug = value.strip().lower()
+    if not slug:
+        return None
+    if not SUBJECT_SLUG_RE.match(slug):
+        return None
+    return slug
+
+
 def load_quiz_label_mapping() -> dict[str, QuizLabel]:
     path = Path(settings.QUIZ_LINKS_JSON_PATH)
     if not path.exists():
@@ -273,25 +286,45 @@ def load_quiz_label_mapping() -> dict[str, QuizLabel]:
         for episode_title, entry in by_name.items():
             if not isinstance(entry, dict):
                 continue
+            subject_slug = _normalize_subject_slug(entry.get("subject_slug"))
+            if entry.get("subject_slug") is not None and subject_slug is None:
+                logger.warning("Invalid subject_slug in quiz links for entry: %s", episode_title)
 
             primary_id = _quiz_id_from_relative_path(entry.get("relative_path"))
             if primary_id:
                 labels[primary_id] = QuizLabel(
                     episode_title=str(episode_title),
                     difficulty=_normalize_difficulty(entry.get("difficulty")),
+                    subject_slug=subject_slug,
                 )
 
             links = entry.get("links")
             if isinstance(links, list):
+                fallback_subject_slug: str | None = None
                 for link in links:
                     if not isinstance(link, dict):
                         continue
+                    link_subject_slug = _normalize_subject_slug(link.get("subject_slug"))
+                    if link_subject_slug and fallback_subject_slug is None:
+                        fallback_subject_slug = link_subject_slug
                     quiz_id = _quiz_id_from_relative_path(link.get("relative_path"))
                     if quiz_id:
                         labels[quiz_id] = QuizLabel(
                             episode_title=str(episode_title),
                             difficulty=_normalize_difficulty(link.get("difficulty")),
+                            subject_slug=subject_slug or link_subject_slug,
                         )
+                if subject_slug is None and fallback_subject_slug is not None:
+                    if primary_id and primary_id in labels:
+                        labels[primary_id] = QuizLabel(
+                            episode_title=labels[primary_id].episode_title,
+                            difficulty=labels[primary_id].difficulty,
+                            subject_slug=fallback_subject_slug,
+                        )
+                if subject_slug is None and fallback_subject_slug is None:
+                    logger.warning("Missing subject_slug in quiz links for entry: %s", episode_title)
+            elif subject_slug is None:
+                logger.warning("Missing subject_slug in quiz links for entry: %s", episode_title)
 
     _METADATA_CACHE["mtime"] = mtime
     _METADATA_CACHE["data"] = labels

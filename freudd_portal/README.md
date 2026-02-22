@@ -23,7 +23,8 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Subject reading lists are parsed live from the master key markdown file path (`FREUDD_READING_MASTER_KEY_PATH`) with mtime-based cache.
 - Completion rule: `currentView == "summary"` and `answers_count == question_count`.
 - Gamification core is quiz-driven and always available for authenticated users (`/progress`, `/api/gamification/me`).
-- Learning path uses a Duolingo-style zig-zag node layout with `locked/active/completed` unit states.
+- Learning path uses a Duolingo-style zig-zag node layout with `locked/active/completed` unit states on each subject page (`/subjects/<subject_slug>`), not on `Min side`.
+- `quiz_links.json` entries must include `subject_slug` so unit progression can be computed per subject.
 - Optional extensions (`habitica`, `anki`) are disabled by default and must be enabled per account via management command.
 - Extension sync is server-driven (`manage.py sync_extensions`) and runs only for enabled users with stored per-user credentials.
 - Credentials are encrypted at rest with Fernet via `FREUDD_CREDENTIALS_MASTER_KEY`.
@@ -74,6 +75,10 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
   ]
 }
 ```
+
+## Quiz links contract (`quiz_links.json`)
+- `by_name.<episode>.subject_slug` is required for learning path calculations.
+- `links[].subject_slug` is optional fallback; entry-level `subject_slug` is canonical.
 
 ## New env configuration
 - `FREUDD_SUBJECTS_JSON_PATH` (default: `freudd_portal/subjects.json`)

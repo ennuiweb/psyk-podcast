@@ -42,6 +42,8 @@ Reading-summary workflow:
   - weekly validation is warn-only for missing entries, incomplete fields, non-Danish content, and source coverage gaps.
 
 Feed build prerequisites: install `google-auth` + `google-api-python-client`, then provide `shows/personlighedspsykologi-en/service-account.json`.
+Troubleshooting: if system Python shows `Missing Google API dependencies`, run with `./notebooklm-podcast-auto/.venv/bin/python` or install deps via `pip install -r requirements.txt`.
+Troubleshooting: warning `missing Grundbog lydbog tail source(s)` means one or more expected tail chapters are absent in Drive; feed generation still completes, but those tail entries are skipped.
 Update the Drive folder ID, owner email, and upload service account credentials before enabling automation.
 
 Quiz link sync note:

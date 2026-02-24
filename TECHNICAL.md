@@ -137,9 +137,9 @@ The repository includes a Django portal in `freudd_portal/` for user login, quiz
 - `GET/POST /api/quiz-state/<quiz_id>` (login-required structured quiz state)
 - `GET/POST /api/quiz-state/<quiz_id>/raw` (login-required legacy raw state payload)
 - `GET /api/gamification/me` (login-required gamification snapshot)
-- `GET /progress` (login-required dashboard with semester selector, subject cards, and quiz score rows)
+- `GET /progress` (login-required dashboard with semester selector, subject cards, quiz score rows, and bottom `Indstillinger` section for enroll/unenroll)
 - `POST /preferences/semester` (login-required semester update)
-- `GET /subjects/<subject_slug>` (login-required subject detail + readings)
+- `GET /subjects/<subject_slug>` (login-required subject detail with lecture-first path + nested readings/assets)
 - `POST /subjects/<subject_slug>/enroll` (login-required)
 - `POST /subjects/<subject_slug>/unenroll` (login-required)
 
@@ -149,12 +149,17 @@ The repository includes a Django portal in `freudd_portal/` for user login, quiz
 - Model: `UserPreference` (`OneToOne(user)`, global `semester`)
 - Model: `SubjectEnrollment` (`ForeignKey(user)`, `subject_slug`)
 - Model: `UserGamificationProfile` (`OneToOne(user)`, `xp_total`, `streak_days`, `current_level`)
-- Model: `UserUnitProgress` (`ForeignKey(user)`, per subject/unit path status + mastery)
+- Model: `UserLectureProgress` (`ForeignKey(user)`, per subject/lecture path status + quiz totals)
+- Model: `UserReadingProgress` (`ForeignKey(user)`, per subject/lecture/reading status + quiz totals)
+- Model: `UserUnitProgress` (legacy compat model kept for `GET /api/gamification/me`)
 - Model: `DailyGamificationStat` (`ForeignKey(user)`, per-day answer/completion deltas + goal state)
 - Model: `UserExtensionAccess` (`ForeignKey(user)`, per-extension enablement + last sync status)
 - Model: `UserExtensionCredential` (`ForeignKey(user)`, encrypted per-user credentials, unique `(user, extension)`)
 - Model: `ExtensionSyncLedger` (`ForeignKey(user)`, idempotent per-day sync rows for each extension)
-- UI: subject detail page renders a Duolingo-style zig-zag learning path from `UserUnitProgress` per `subject_slug`.
+- UI: subject detail page renders a Duolingo-style zig-zag lecture path with nested reading cards and direct quiz/podcast navigation.
+- UI: subject detail page shows enrollment status only; enroll/unenroll actions live only on `/progress` under `Indstillinger`.
+- UI layout contract: each lecture renders as `path-node-row` (zig-zag node alignment) + full-width `path-details` (lecture assets/readings) to avoid mixed alignment and mobile overflow.
+- Subject detail now degrades gracefully: if snapshot computation fails, route still returns 200 with a user-facing retry message instead of 500.
 - Unique key: `(user, quiz_id)` for quiz state
 - Unique key: `(user, subject_slug)` for subject enrollment
 - Completion rule (phase 1): `currentView == "summary"` and `answers_count == question_count`
@@ -162,8 +167,9 @@ The repository includes a Django portal in `freudd_portal/` for user login, quiz
 ### Subject catalog + readings
 - Subject catalog is JSON-driven via `freudd_portal/subjects.json` (`version`, `semester_choices`, `subjects[]`).
 - First subject in the catalog: `personlighedspsykologi`.
-- Reading lists are parsed live from the configured master markdown key path and grouped by `W##L#` lecture headings.
-- `MISSING:` reading lines are rendered explicitly as missing entries on subject detail pages.
+- Lecture/readings source of truth is the master markdown key path (`FREUDD_READING_MASTER_KEY_PATH`) with fallback to repo mirror (`FREUDD_READING_MASTER_KEY_FALLBACK_PATH`).
+- Subject content is compiled into a lecture-first `content_manifest.json` that merges reading key + `quiz_links.json` + local RSS.
+- `MISSING:` reading lines are preserved and rendered as missing reading cards in subject detail.
 
 ### Local setup
 ```bash
@@ -194,6 +200,9 @@ python3 manage.py test
 - `QUIZ_RATE_LIMIT_WINDOW_SECONDS`
 - `FREUDD_SUBJECTS_JSON_PATH` (default: `freudd_portal/subjects.json`)
 - `FREUDD_READING_MASTER_KEY_PATH` (default: `/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/.ai/reading-file-key.md`)
+- `FREUDD_READING_MASTER_KEY_FALLBACK_PATH` (default: `shows/personlighedspsykologi-en/docs/reading-file-key.md`)
+- `FREUDD_SUBJECT_FEED_RSS_PATH` (default: `shows/personlighedspsykologi-en/feeds/rss.xml`)
+- `FREUDD_SUBJECT_CONTENT_MANIFEST_PATH` (default: `shows/personlighedspsykologi-en/content_manifest.json`)
 - `FREUDD_GAMIFICATION_DAILY_GOAL` (default: `20`)
 - `FREUDD_GAMIFICATION_XP_PER_ANSWER` (default: `5`)
 - `FREUDD_GAMIFICATION_XP_PER_COMPLETION` (default: `50`)
@@ -228,6 +237,7 @@ Quiz sync behavior (current):
 - Both scripts keep emitting `.html` `relative_path` entries in `quiz_links.json` so feed/portal links stay `/q/<id>.html`.
 - `scripts/sync_quiz_links.py` now requires `--subject-slug` and writes `subject_slug` into each `quiz_links.json` entry.
 - Non-quiz JSON artifacts (for example `*.html.request.json`, manifest JSON files) are ignored; zero valid quiz JSON files is treated as an error.
+- `manage.py rebuild_content_manifest --subject <slug>` regenerates lecture-first manifest and validates source merges.
 
 ### Security controls in phase 1
 - Django session auth + CSRF middleware

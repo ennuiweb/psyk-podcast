@@ -60,6 +60,7 @@
     },
     "semester_week_start_date": "2026-02-02",
     "semester_week_label": "Semesteruge",
+    "semester_week_title_label": "Uge",
     "semester_week_description_label": "Semesteruge",
     "language": "en",
     "author": "Personlighedspsykologi F26",
@@ -76,12 +77,23 @@
     "ttl": 60,
     "sort_mode": "wxlx_kind_priority",
     "title_blocks": [
-      "course_week_lecture",
-      "subject_or_type",
-      "week_date_range"
+      "course_week_lecture_long",
+      "subject"
     ],
+    "title_blocks_by_kind": {
+      "weekly_overview": [
+        "course_week_lecture_long",
+        "type_label"
+      ]
+    },
+    "audio_category_prefixes": {
+      "lydbog": "Lydbog",
+      "kort_podcast": "Kort podcast",
+      "podcast": "Podcast"
+    },
     "audio_category_prefix_position": "after_first_block",
     "description_prepend_semester_week_lecture": true,
+    "description_blank_line_marker": "·",
     "tail_grundbog_lydbog": {
       "enabled": true,
       "include_forord": true,

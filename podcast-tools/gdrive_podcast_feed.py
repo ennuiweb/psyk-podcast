@@ -1580,6 +1580,7 @@ EPISODE_KINDS = {"reading", "brief", "weekly_overview"}
 TITLE_BLOCKS_ALLOWED = {
     "semester_week_lecture",
     "course_week_lecture",
+    "course_week_lecture_long",
     "semester_week",
     "lecture",
     "subject",
@@ -1709,6 +1710,30 @@ def _resolve_audio_category_prefix_position(feed_config: Dict[str, Any]) -> str:
             f"'{raw_value}'. Allowed values: {allowed}"
         )
     return value
+
+
+def _resolve_audio_category_prefixes(feed_config: Dict[str, Any]) -> Dict[str, str]:
+    defaults = dict(AUDIO_CATEGORY_PREFIXES)
+    raw_value = feed_config.get("audio_category_prefixes")
+    if raw_value is None:
+        return defaults
+    if not isinstance(raw_value, dict):
+        raise ValueError(
+            "feed.audio_category_prefixes must be an object with keys "
+            "'lydbog', 'kort_podcast', and 'podcast'."
+        )
+
+    resolved = dict(defaults)
+    for key, value in raw_value.items():
+        if key not in AUDIO_CATEGORY_PREFIXES:
+            allowed = ", ".join(sorted(AUDIO_CATEGORY_PREFIXES))
+            raise ValueError(
+                f"feed.audio_category_prefixes has unknown key '{key}'. Allowed keys: {allowed}"
+            )
+        if not isinstance(value, str) or not value.strip():
+            raise ValueError(f"feed.audio_category_prefixes.{key} must be a non-empty string.")
+        resolved[key] = value.strip()
+    return resolved
 
 
 def _apply_audio_category_prefix(
@@ -1848,6 +1873,7 @@ def validate_feed_block_config(feed_config: Dict[str, Any]) -> None:
     if not isinstance(feed_config, dict):
         raise ValueError("feed must be a JSON object.")
     _resolve_audio_category_prefix_position(feed_config)
+    _resolve_audio_category_prefixes(feed_config)
     _resolve_pubdate_year_rewrite(feed_config)
     _resolve_tail_grundbog_lydbog_config(feed_config)
     if "reading_description_mode" in feed_config:
@@ -1882,6 +1908,12 @@ def validate_feed_block_config(feed_config: Dict[str, Any]) -> None:
         bool,
     ):
         raise ValueError("feed.description_prepend_semester_week_lecture must be a boolean.")
+    if "description_blank_line_marker" in feed_config:
+        raw_blank_line_marker = feed_config.get("description_blank_line_marker")
+        if not isinstance(raw_blank_line_marker, str) or not raw_blank_line_marker.strip():
+            raise ValueError("feed.description_blank_line_marker must be a non-empty string.")
+        if "\n" in raw_blank_line_marker or "\r" in raw_blank_line_marker:
+            raise ValueError("feed.description_blank_line_marker must be a single-line string.")
 
     mapping_specs = (
         ("title_blocks_by_kind", TITLE_BLOCKS_ALLOWED),
@@ -1964,6 +1996,15 @@ def _render_blocks(
             joiner = "\n\n"
         rendered = f"{rendered}{joiner}{value}"
     return rendered
+
+
+def _apply_description_blank_line_marker(text: str, marker: str) -> str:
+    if not marker:
+        return text
+    resolved_marker = marker.strip()
+    if not resolved_marker:
+        return text
+    return re.sub(r"\n[ \t]*\n+", f"\n{resolved_marker}\n", text)
 
 
 def _resolve_feed_sort_mode(feed_config: Dict[str, Any]) -> str:
@@ -2416,6 +2457,9 @@ def build_episode_entry(
     semester_week_label = feed_config.get("semester_week_label")
     if not isinstance(semester_week_label, str) or not semester_week_label.strip():
         semester_week_label = "Week"
+    semester_week_title_label = feed_config.get("semester_week_title_label")
+    if not isinstance(semester_week_title_label, str) or not semester_week_title_label.strip():
+        semester_week_title_label = semester_week_label
     semester_week_description_label = feed_config.get("semester_week_description_label")
     if (
         not isinstance(semester_week_description_label, str)
@@ -2426,14 +2470,34 @@ def build_episode_entry(
     description_prepend_semester_week_lecture = (
         raw_description_prepend if isinstance(raw_description_prepend, bool) else False
     )
+    raw_description_blank_line_marker = feed_config.get("description_blank_line_marker")
+    description_blank_line_marker = (
+        raw_description_blank_line_marker.strip()
+        if isinstance(raw_description_blank_line_marker, str)
+        and raw_description_blank_line_marker.strip()
+        else None
+    )
+    audio_category_prefixes = _resolve_audio_category_prefixes(feed_config)
 
-    semester_week_lecture = None
+    semester_week_lecture_title = None
     if week_number and lecture_number:
-        semester_week_lecture = f"{semester_week_label} {week_number}, Forelæsning {lecture_number}"
+        semester_week_lecture_title = (
+            f"{semester_week_title_label} {week_number}, Forelæsning {lecture_number}"
+        )
     elif lecture_number:
-        semester_week_lecture = f"Forelæsning {lecture_number}"
+        semester_week_lecture_title = f"Forelæsning {lecture_number}"
     elif week_number:
-        semester_week_lecture = f"{semester_week_label} {week_number}"
+        semester_week_lecture_title = f"{semester_week_title_label} {week_number}"
+
+    semester_week_lecture_description = None
+    if week_number and lecture_number:
+        semester_week_lecture_description = (
+            f"{semester_week_description_label} {week_number}, Forelæsning {lecture_number}"
+        )
+    elif lecture_number:
+        semester_week_lecture_description = f"Forelæsning {lecture_number}"
+    elif week_number:
+        semester_week_lecture_description = f"{semester_week_description_label} {week_number}"
 
     compact_week_number = sort_week_number if sort_week_number else week_number
     compact_lecture_number = lecture_number
@@ -2495,7 +2559,7 @@ def build_episode_entry(
 
     if is_unassigned_tail and not meta.get("title"):
         subject = (display_subject or cleaned_title or raw_title).strip()
-        title_prefix = AUDIO_CATEGORY_PREFIXES.get(audio_category) if audio_category else None
+        title_prefix = audio_category_prefixes.get(audio_category) if audio_category else None
         if title_prefix and subject:
             meta["title"] = f"{title_prefix} · {subject}"
             skip_audio_category_prefix = True
@@ -2513,9 +2577,24 @@ def build_episode_entry(
             subject_or_type = subject or type_label
 
         title_block_values = {
-            "semester_week_lecture": semester_week_lecture,
+            "semester_week_lecture": semester_week_lecture_title,
             "course_week_lecture": course_week_lecture,
-            "semester_week": f"{semester_week_label} {week_number}" if week_number else None,
+            "course_week_lecture_long": (
+                f"{semester_week_title_label} {compact_week_number}, Forelæsning {compact_lecture_number}"
+                if compact_week_number and compact_lecture_number
+                else (
+                    f"{semester_week_title_label} {compact_week_number}"
+                    if compact_week_number
+                    else (
+                        f"Forelæsning {compact_lecture_number}"
+                        if compact_lecture_number
+                        else None
+                    )
+                )
+            ),
+            "semester_week": (
+                f"{semester_week_title_label} {week_number}" if week_number else None
+            ),
             "lecture": f"Forelæsning {lecture_number}" if lecture_number else None,
             "subject": subject,
             "type_label": type_label,
@@ -2545,7 +2624,7 @@ def build_episode_entry(
     title_value = _strip_language_tags(title_value, strip_brief=not is_brief)
     audio_category_prefix_position = _resolve_audio_category_prefix_position(feed_config)
     if audio_category and not skip_audio_category_prefix:
-        title_prefix = AUDIO_CATEGORY_PREFIXES.get(audio_category)
+        title_prefix = audio_category_prefixes.get(audio_category)
         if title_prefix:
             title_value = _apply_audio_category_prefix(
                 title_value,
@@ -2694,11 +2773,11 @@ def build_episode_entry(
 
     if (
         description_prepend_semester_week_lecture
-        and semester_week_lecture
+        and semester_week_lecture_description
         and isinstance(meta.get("description"), str)
     ):
-        prefix_single = f"{semester_week_lecture}\n"
-        prefix_double = f"{semester_week_lecture}\n\n"
+        prefix_single = f"{semester_week_lecture_description}\n"
+        prefix_double = f"{semester_week_lecture_description}\n\n"
         if meta["description"].startswith(prefix_double):
             pass
         elif meta["description"].startswith(prefix_single):
@@ -2714,6 +2793,11 @@ def build_episode_entry(
         meta["summary"] = _strip_language_tags(summary)
     if meta.get("description"):
         meta["description"] = _strip_language_tags(meta["description"], preserve_newlines=True)
+        if description_blank_line_marker:
+            meta["description"] = _apply_description_blank_line_marker(
+                meta["description"],
+                description_blank_line_marker,
+            )
 
     explicit_default = feed_config.get("default_explicit", False)
     duration = meta.get("duration")

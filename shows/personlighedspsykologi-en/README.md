@@ -11,7 +11,8 @@ Scaffolding for the "Personlighedspsykologi" feed.
 - `docs/` - planning material and any "important text" docs.
 
 Feed note: generated episode `title` and `description` are block-composed. Use `feed.title_blocks` / `feed.description_blocks` (and optional `*_by_kind`) for formatting control.
-Block note: `course_week_lecture` renders compact `U#F#` (from `W#L#`), `week_date_range` renders `dd/mm - dd/mm`, and `feed.description_prepend_semester_week_lecture: true` prepends `Semesteruge X, Forelæsning Y` as a heading with a blank line before the next description block.
+Block note: this show uses long title form `Uge X, Forelæsning Y · <kategori> · <emne>` via `course_week_lecture_long` + `audio_category_prefix_position: after_first_block`; `feed.description_prepend_semester_week_lecture: true` prepends `Semesteruge X, Forelæsning Y` as a heading with a blank line before the next description block.
+Spotify note: `feed.description_blank_line_marker: "·"` converts blank lines in descriptions to a visible separator line (`·`) for apps that collapse empty lines.
 Description order note: for `reading`, `brief`, and `weekly_overview`, `feed.description_blocks_by_kind` is set to `quiz -> summary -> key points`; when no quiz link exists, the summary/key-points blocks render without the quiz block.
 Quiz localization note: `quiz.labels` controls heading and difficulty labels in descriptions (currently `Quizzer` with `Let/Mellem/Svær`).
 Feed ordering note: `feed.sort_mode: "wxlx_kind_priority"` groups by `W#L#` and orders each block as `Brief -> Alle kilder -> Oplæst/TTS readings -> other readings`; blocks are still ordered by newest publish timestamp.

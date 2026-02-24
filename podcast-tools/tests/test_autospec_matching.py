@@ -1156,6 +1156,47 @@ class AutoSpecMatchingTests(unittest.TestCase):
             ),
         )
 
+    def test_custom_title_blocks_render_long_week_and_unbracketed_audio_category(self):
+        mod = _load_feed_module()
+        file_entry = {
+            "id": "file1",
+            "name": (
+                "[Brief] W12L1 - Grundbog kapitel 14 - Perspektiver på personlighedspsykologi "
+                "[EN].mp3"
+            ),
+            "createdTime": "2026-04-27T08:00:00+00:00",
+        }
+        episode = mod.build_episode_entry(
+            file_entry=file_entry,
+            feed_config={
+                "title": "Personlighedspsykologi (EN)",
+                "link": "https://example.com",
+                "description": "Test feed",
+                "language": "en",
+                "semester_week_start_date": "2026-02-02",
+                "semester_week_label": "Semesteruge",
+                "semester_week_title_label": "Uge",
+                "semester_week_description_label": "Semesteruge",
+                "title_blocks": ["course_week_lecture_long", "subject"],
+                "audio_category_prefix_position": "after_first_block",
+                "audio_category_prefixes": {
+                    "lydbog": "Lydbog",
+                    "kort_podcast": "Kort podcast",
+                    "podcast": "Podcast",
+                },
+                "description_prepend_semester_week_lecture": True,
+            },
+            overrides={},
+            public_link_template="https://example.com/{file_id}",
+            auto_meta={"week_reference_year": 2026},
+            folder_names=["W12L1"],
+        )
+        self.assertEqual(
+            episode["title"],
+            "Uge 12, Forelæsning 1 · Kort podcast · Grundbog kapitel 14 - Perspektiver på personlighedspsykologi",
+        )
+        self.assertTrue(episode["description"].startswith("Semesteruge 13, Forelæsning 1\n\n"))
+
     def test_description_prepend_semester_week_lecture_prefixes_first_line(self):
         mod = _load_feed_module()
         file_entry = {
@@ -1629,6 +1670,74 @@ class AutoSpecMatchingTests(unittest.TestCase):
             episode["description"],
         )
         self.assertNotIn(" · Bank introducerer narrative psykologier.", episode["description"])
+
+    def test_description_blank_line_marker_renders_visible_separator(self):
+        mod = _load_feed_module()
+        file_entry = {
+            "id": "file1",
+            "name": "W01L1 - Foo [EN].mp3",
+            "createdTime": "2026-02-02T08:00:00+00:00",
+        }
+        episode = mod.build_episode_entry(
+            file_entry=file_entry,
+            feed_config={
+                "title": "Personlighedspsykologi (EN)",
+                "link": "https://example.com",
+                "description": "Test feed",
+                "language": "en",
+                "semester_week_start_date": "2026-02-02",
+                "semester_week_label": "Semesteruge",
+                "semester_week_description_label": "Semesteruge",
+                "description_prepend_semester_week_lecture": True,
+                "description_blank_line_marker": "·",
+                "description_blocks_by_kind": {
+                    "reading": ["quiz", "reading_summary", "reading_key_points"],
+                },
+            },
+            overrides={},
+            public_link_template="https://example.com/{file_id}",
+            quiz_cfg={
+                "base_url": "http://64.226.79.109/q/",
+                "labels": {
+                    "multiple": "Quizzer",
+                    "difficulty": {
+                        "easy": "Let",
+                        "medium": "Mellem",
+                        "hard": "Svær",
+                    },
+                },
+            },
+            quiz_links={
+                "by_name": {
+                    "W01L1 - Foo [EN].mp3": {
+                        "relative_path": "a3b2075d.html",
+                        "difficulty": "medium",
+                        "links": [
+                            {"relative_path": "70129442.html", "difficulty": "easy"},
+                            {"relative_path": "a3b2075d.html", "difficulty": "medium"},
+                            {"relative_path": "bfd24968.html", "difficulty": "hard"},
+                        ],
+                    }
+                }
+            },
+            reading_summaries_cfg={"enabled_kinds": {"reading", "brief"}, "key_points_label": "Key points"},
+            reading_summaries={
+                "by_name": {
+                    "W01L1 - Foo [EN].mp3": {
+                        "summary_lines": ["Bank introducerer narrative psykologier."],
+                        "key_points": ["Point A", "Point B"],
+                    }
+                }
+            },
+            folder_names=["W01L1"],
+        )
+        self.assertIn("Semesteruge 1, Forelæsning 1\n·\nQuizzer:", episode["description"])
+        self.assertIn(
+            "- Svær: http://64.226.79.109/q/bfd24968.html\n·\nBank introducerer narrative psykologier.",
+            episode["description"],
+        )
+        self.assertIn("Bank introducerer narrative psykologier.\n·\nKey points:", episode["description"])
+        self.assertNotIn("\n\n", episode["description"])
 
     def test_description_quiz_block_renders_all_difficulties_with_short_ids(self):
         mod = _load_feed_module()
@@ -2213,6 +2322,22 @@ class AutoSpecMatchingTests(unittest.TestCase):
             ValueError, r"feed\.description_prepend_semester_week_lecture must be a boolean"
         ):
             mod.validate_feed_block_config({"description_prepend_semester_week_lecture": "yes"})
+
+    def test_validate_feed_block_config_rejects_invalid_blank_line_marker(self):
+        mod = _load_feed_module()
+        with self.assertRaisesRegex(
+            ValueError, r"feed\.description_blank_line_marker must be a non-empty string"
+        ):
+            mod.validate_feed_block_config({"description_blank_line_marker": ""})
+
+    def test_validate_feed_block_config_rejects_invalid_audio_category_prefixes(self):
+        mod = _load_feed_module()
+        with self.assertRaisesRegex(
+            ValueError, r"feed\.audio_category_prefixes has unknown key 'unknown'"
+        ):
+            mod.validate_feed_block_config(
+                {"audio_category_prefixes": {"unknown": "Custom"}}
+            )
 
     def test_validate_feed_block_config_rejects_unknown_kind(self):
         mod = _load_feed_module()

@@ -480,9 +480,21 @@ def subject_detail_view(request: HttpRequest, subject_slug: str) -> HttpResponse
         user=request.user,
         subject_slug=subject.slug,
     ).exists()
-    subject_path = get_subject_learning_path_snapshot(request.user, subject.slug)
-    source_meta = subject_path.get("source_meta") if isinstance(subject_path.get("source_meta"), dict) else {}
-    readings_error = str(source_meta.get("reading_error") or "").strip() or None
+    try:
+        subject_path = get_subject_learning_path_snapshot(request.user, subject.slug)
+    except Exception:
+        logger.exception(
+            "Failed to build subject learning path snapshot",
+            extra={
+                "user_id": request.user.id,
+                "subject_slug": subject.slug,
+            },
+        )
+        subject_path = {"lectures": [], "active_lecture": None, "source_meta": {}}
+        readings_error = "Læringsstien kunne ikke indlæses lige nu. Prøv igen om et øjeblik."
+    else:
+        source_meta = subject_path.get("source_meta") if isinstance(subject_path.get("source_meta"), dict) else {}
+        readings_error = str(source_meta.get("reading_error") or "").strip() or None
 
     return render(
         request,

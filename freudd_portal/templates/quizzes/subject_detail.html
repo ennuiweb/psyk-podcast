@@ -52,25 +52,30 @@
   .path-track {
     margin-top: 0.72rem;
     display: grid;
-    gap: 0.66rem;
+    gap: 0.75rem;
   }
 
   .path-step {
-    position: relative;
     display: grid;
     grid-template-columns: 1fr;
+    gap: 0.56rem;
   }
 
-  .path-step.is-right {
+  .path-node-row {
+    display: grid;
+    width: 100%;
+  }
+
+  .path-node-row.is-right {
     justify-items: end;
   }
 
-  .path-step.is-left {
+  .path-node-row.is-left {
     justify-items: start;
   }
 
   .path-link {
-    width: min(100%, 360px);
+    width: min(100%, 420px);
     border: 1px solid var(--border);
     border-radius: 16px;
     background: rgba(11, 18, 30, 0.78);
@@ -124,23 +129,30 @@
   .path-node-title {
     margin: 0;
     font-weight: 700;
+    overflow-wrap: anywhere;
   }
 
   .path-node-meta {
     margin: 0.2rem 0 0;
     font-size: 0.84rem;
     color: var(--muted);
+    overflow-wrap: anywhere;
+  }
+
+  .path-details {
+    width: min(100%, 940px);
+    justify-self: stretch;
   }
 
   .path-connector {
-    margin: 0.18rem 22px 0.16rem;
+    margin: 0.12rem auto 0.06rem;
     height: 18px;
     border-left: 2px dashed rgba(126, 153, 190, 0.44);
   }
 
   @media (max-width: 700px) {
-    .path-step.is-right,
-    .path-step.is-left {
+    .path-node-row.is-right,
+    .path-node-row.is-left {
       justify-items: stretch;
     }
 
@@ -150,7 +162,6 @@
   }
 
   .lecture-readings {
-    margin-top: 0.8rem;
     border: 1px solid var(--border);
     border-radius: 14px;
     background: rgba(10, 17, 28, 0.75);
@@ -269,13 +280,16 @@
   }
 
   .lecture-assets {
-    margin-top: 0.62rem;
     border: 1px solid var(--border);
     border-radius: 12px;
     background: rgba(12, 21, 34, 0.68);
     padding: 0.58rem 0.66rem;
     display: grid;
     gap: 0.36rem;
+  }
+
+  .path-details > * + * {
+    margin-top: 0.62rem;
   }
 
 </style>
@@ -302,88 +316,92 @@
     {% if subject_path_lectures %}
     <div class="path-track">
       {% for lecture in subject_path_lectures %}
-      <article class="path-step {% if forloop.counter0|divisibleby:2 %}is-left{% else %}is-right{% endif %}">
-        <div class="path-link {% if lecture.status == 'completed' %}is-completed{% elif lecture.status == 'active' %}is-active{% else %}is-locked{% endif %}">
-          <div class="path-node-icon">{% if lecture.status == 'completed' %}✓{% elif lecture.status == 'active' %}▶{% else %}🔒{% endif %}</div>
-          <div>
-            <p class="path-node-title">{{ lecture.lecture_key }} · {{ lecture.lecture_title }}</p>
-            <p class="path-node-meta">
-              {{ lecture.completed_quizzes }} / {{ lecture.total_quizzes }} quizzer ·
-              {% if lecture.status == 'completed' %}Fuldført{% elif lecture.status == 'active' %}Aktiv{% else %}Låst{% endif %}
-            </p>
+      <article class="path-step">
+        <div class="path-node-row {% if forloop.counter0|divisibleby:2 %}is-left{% else %}is-right{% endif %}">
+          <div class="path-link {% if lecture.status == 'completed' %}is-completed{% elif lecture.status == 'active' %}is-active{% else %}is-locked{% endif %}">
+            <div class="path-node-icon">{% if lecture.status == 'completed' %}✓{% elif lecture.status == 'active' %}▶{% else %}🔒{% endif %}</div>
+            <div>
+              <p class="path-node-title">{{ lecture.lecture_key }} · {{ lecture.lecture_title }}</p>
+              <p class="path-node-meta">
+                {{ lecture.completed_quizzes }} / {{ lecture.total_quizzes }} quizzer ·
+                {% if lecture.status == 'completed' %}Fuldført{% elif lecture.status == 'active' %}Aktiv{% else %}Låst{% endif %}
+              </p>
+            </div>
           </div>
         </div>
-        {% if lecture.lecture_assets.quizzes or lecture.lecture_assets.podcasts %}
-        <section class="lecture-assets">
-          {% if lecture.lecture_assets.quizzes %}
-          <div class="asset-block">
-            <p class="asset-title">Lecture-quizzer (fx Alle kilder)</p>
-            <div class="asset-links">
-              {% for quiz in lecture.lecture_assets.quizzes %}
-              <a class="asset-link" href="{{ quiz.quiz_url }}">{{ quiz.difficulty|capfirst }} quiz</a>
-              {% endfor %}
+        <div class="path-details">
+          {% if lecture.lecture_assets.quizzes or lecture.lecture_assets.podcasts %}
+          <section class="lecture-assets">
+            {% if lecture.lecture_assets.quizzes %}
+            <div class="asset-block">
+              <p class="asset-title">Lecture-quizzer (fx Alle kilder)</p>
+              <div class="asset-links">
+                {% for quiz in lecture.lecture_assets.quizzes %}
+                <a class="asset-link" href="{{ quiz.quiz_url }}">{{ quiz.difficulty|capfirst }} quiz</a>
+                {% endfor %}
+              </div>
             </div>
-          </div>
-          {% endif %}
-          {% if lecture.lecture_assets.podcasts %}
-          <div class="asset-block">
-            <p class="asset-title">Lecture-podcasts</p>
-            <div class="asset-links">
-              {% for podcast in lecture.lecture_assets.podcasts %}
-              <a class="asset-link" href="{{ podcast.url }}" target="_blank" rel="noopener">{{ podcast.kind }}</a>
-              {% endfor %}
+            {% endif %}
+            {% if lecture.lecture_assets.podcasts %}
+            <div class="asset-block">
+              <p class="asset-title">Lecture-podcasts</p>
+              <div class="asset-links">
+                {% for podcast in lecture.lecture_assets.podcasts %}
+                <a class="asset-link" href="{{ podcast.url }}" target="_blank" rel="noopener">{{ podcast.kind }}</a>
+                {% endfor %}
+              </div>
             </div>
-          </div>
+            {% endif %}
+          </section>
           {% endif %}
-        </section>
-        {% endif %}
-        <section class="lecture-readings">
-          <h3 class="lecture-readings-title">Readings</h3>
-          {% if lecture.readings %}
-          <ul class="reading-list">
-            {% for reading in lecture.readings %}
-            <li class="reading-item {% if reading.is_missing %}is-missing{% endif %} {% if reading.status == 'active' %}is-active{% elif reading.status == 'completed' %}is-completed{% endif %}">
-              <div class="reading-head">
-                <strong>{{ reading.reading_title }}</strong>
-                <div style="display:flex;gap:0.35rem;align-items:center;flex-wrap:wrap;">
-                  {% if reading.is_missing %}
-                  <span class="missing-badge">MISSING</span>
-                  {% endif %}
-                  <span class="status-badge {% if reading.status == 'active' %}is-active{% elif reading.status == 'completed' %}is-completed{% elif reading.status == 'no_quiz' %}is-no-quiz{% else %}is-locked{% endif %}">
-                    {% if reading.status == 'active' %}Aktiv{% elif reading.status == 'completed' %}Fuldført{% elif reading.status == 'no_quiz' %}Ingen quiz{% else %}Låst{% endif %}
-                  </span>
+          <section class="lecture-readings">
+            <h3 class="lecture-readings-title">Readings</h3>
+            {% if lecture.readings %}
+            <ul class="reading-list">
+              {% for reading in lecture.readings %}
+              <li class="reading-item {% if reading.is_missing %}is-missing{% endif %} {% if reading.status == 'active' %}is-active{% elif reading.status == 'completed' %}is-completed{% endif %}">
+                <div class="reading-head">
+                  <strong>{{ reading.reading_title }}</strong>
+                  <div style="display:flex;gap:0.35rem;align-items:center;flex-wrap:wrap;">
+                    {% if reading.is_missing %}
+                    <span class="missing-badge">MISSING</span>
+                    {% endif %}
+                    <span class="status-badge {% if reading.status == 'active' %}is-active{% elif reading.status == 'completed' %}is-completed{% elif reading.status == 'no_quiz' %}is-no-quiz{% else %}is-locked{% endif %}">
+                      {% if reading.status == 'active' %}Aktiv{% elif reading.status == 'completed' %}Fuldført{% elif reading.status == 'no_quiz' %}Ingen quiz{% else %}Låst{% endif %}
+                    </span>
+                  </div>
                 </div>
-              </div>
-              <div class="reading-meta">
-                <span>{{ reading.completed_quizzes }} / {{ reading.total_quizzes }} quizzer</span>
-              </div>
-              {% if reading.assets.quizzes %}
-              <div class="asset-block">
-                <p class="asset-title">Quizzer</p>
-                <div class="asset-links">
-                  {% for quiz in reading.assets.quizzes %}
-                  <a class="asset-link" href="{{ quiz.quiz_url }}">{{ quiz.difficulty|capfirst }}</a>
-                  {% endfor %}
+                <div class="reading-meta">
+                  <span>{{ reading.completed_quizzes }} / {{ reading.total_quizzes }} quizzer</span>
                 </div>
-              </div>
-              {% endif %}
-              {% if reading.assets.podcasts %}
-              <div class="asset-block">
-                <p class="asset-title">Podcasts</p>
-                <div class="asset-links">
-                  {% for podcast in reading.assets.podcasts %}
-                  <a class="asset-link" href="{{ podcast.url }}" target="_blank" rel="noopener">{{ podcast.kind }}</a>
-                  {% endfor %}
+                {% if reading.assets.quizzes %}
+                <div class="asset-block">
+                  <p class="asset-title">Quizzer</p>
+                  <div class="asset-links">
+                    {% for quiz in reading.assets.quizzes %}
+                    <a class="asset-link" href="{{ quiz.quiz_url }}">{{ quiz.difficulty|capfirst }}</a>
+                    {% endfor %}
+                  </div>
                 </div>
-              </div>
-              {% endif %}
-            </li>
-            {% endfor %}
-          </ul>
-          {% else %}
-          <p class="muted">Ingen readings registreret i denne forelæsning.</p>
-          {% endif %}
-        </section>
+                {% endif %}
+                {% if reading.assets.podcasts %}
+                <div class="asset-block">
+                  <p class="asset-title">Podcasts</p>
+                  <div class="asset-links">
+                    {% for podcast in reading.assets.podcasts %}
+                    <a class="asset-link" href="{{ podcast.url }}" target="_blank" rel="noopener">{{ podcast.kind }}</a>
+                    {% endfor %}
+                  </div>
+                </div>
+                {% endif %}
+              </li>
+              {% endfor %}
+            </ul>
+            {% else %}
+            <p class="muted">Ingen readings registreret i denne forelæsning.</p>
+            {% endif %}
+          </section>
+        </div>
         {% if not forloop.last %}
         <div class="path-connector" aria-hidden="true"></div>
         {% endif %}

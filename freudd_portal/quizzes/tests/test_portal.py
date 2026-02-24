@@ -641,6 +641,8 @@ class QuizPortalTests(TestCase):
         self.assertContains(response, "Læringssti")
         self.assertContains(response, "Næste fokus")
         self.assertContains(response, "W01L1")
+        self.assertContains(response, "path-node-row")
+        self.assertContains(response, "path-details")
         self.assertContains(response, "Lecture-quizzer")
         self.assertContains(response, "Grundbog kapitel 01 - Introduktion til personlighedspsykologi")
         self.assertContains(response, "MISSING")
@@ -659,6 +661,17 @@ class QuizPortalTests(TestCase):
         self.assertContains(response, "Tilmeldt")
         self.assertContains(response, "Læringssti")
         self.assertNotContains(response, "Afmeld fag")
+
+    def test_subject_detail_handles_snapshot_failure_without_500(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+
+        with patch("quizzes.views.get_subject_learning_path_snapshot", side_effect=RuntimeError("boom")):
+            response = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Læringsstien kunne ikke indlæses lige nu")
+        self.assertContains(response, "Ingen læringssti endnu for dette fag.")
 
     def test_subject_detail_shows_path_hint_when_active_lecture_exists(self) -> None:
         user = self._create_user()

@@ -19,3 +19,4 @@
 - `./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/download_week.py --week W01 --content-types quiz --format html`
 - `python3 scripts/sync_quiz_links.py --subject-slug personlighedspsykologi --dry-run`
 - `python3 scripts/sync_quiz_links.py --subject-slug personlighedspsykologi`
+- `cd freudd_portal && ../.venv/bin/python manage.py rebuild_content_manifest --subject personlighedspsykologi`

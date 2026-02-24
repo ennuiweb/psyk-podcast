@@ -175,5 +175,13 @@ sudo systemctl restart freudd-portal
 ## Operational notes
 - Health checks: use `GET` endpoints. `HEAD` on auth endpoints may return `405` because views allow `GET/POST`.
 - If upgrading from pre-rename deployments, move `/opt/podcasts/quiz_portal/db.sqlite3` to `/opt/podcasts/freudd_portal/db.sqlite3` and ensure `/opt/podcasts/freudd_portal` is writable by `www-data`.
+- If deploying via `rsync`, avoid preserving foreign UID/GID ownership from another machine (`--no-owner --no-group`), otherwise Django writes can fail with `sqlite3.OperationalError: attempt to write a readonly database`. Recovery:
+  ```bash
+  sudo chown -R www-data:www-data /opt/podcasts/freudd_portal
+  sudo find /opt/podcasts/freudd_portal -type d -exec chmod 755 {} +
+  sudo find /opt/podcasts/freudd_portal -type f -exec chmod 644 {} +
+  sudo chmod 664 /opt/podcasts/freudd_portal/db.sqlite3
+  sudo systemctl restart freudd-portal
+  ```
 - If uploading quiz files manually, verify `/var/www/quizzes/personlighedspsykologi` has execute/read for `www-data` (for example mode `755` on directories, `644` on files), otherwise content endpoints can fail with permission errors.
 - If `/q/*` should be public static again, switch Caddy `/q/*` back to file serving from `/var/www/quizzes/personlighedspsykologi` and reload Caddy.

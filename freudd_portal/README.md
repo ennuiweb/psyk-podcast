@@ -22,6 +22,7 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Subject enrollment is per `(user, subject_slug)` in `SubjectEnrollment`.
 - Subject learning path is lecture-first: each lecture node contains readings, plus lecture-level assets (for example `Alle kilder`).
 - Subject content is compiled from reading master key + quiz links + local RSS into `content_manifest.json`.
+- Podcast links on subject pages are Spotify-only (`spotify_map.json` matched by RSS title); unmapped podcast items are hidden.
 - Completion rule: `currentView == "summary"` and `answers_count == question_count`.
 - Gamification core is quiz-driven and always available for authenticated users (`/progress`, `/api/gamification/me`).
 - Learning path on subject pages (`/subjects/<subject_slug>`) is lecture-first with nested reading status (`locked|active|completed|no_quiz`) and quiz/podcast navigation.
@@ -92,12 +93,34 @@ Enrollment UX rule: enroll/unenroll actions are only shown on the bottom `Indsti
 - `lectures[]`: lecture-first tree with `lecture_key`, `lecture_title`, `sequence_index`, `readings[]`, `lecture_assets`, `warnings[]`.
 - `readings[]`: each reading has stable `reading_key`, `reading_title`, `is_missing`, and `assets` (`quizzes[]`, `podcasts[]`).
 - `lecture_assets`: lecture-level assets for items like `Alle kilder`.
+- `podcasts[]`: Spotify-resolved assets with `url` (Spotify episode), `platform="spotify"`, and `source_audio_url` (original RSS enclosure/link).
+
+## Spotify map contract (`spotify_map.json`)
+- Path default: `shows/personlighedspsykologi-en/spotify_map.json`
+- Lookup key: exact RSS `<item><title>` after trim + whitespace normalization.
+- Value: full Spotify episode URL (`https://open.spotify.com/episode/...`).
+
+```json
+{
+  "version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "by_rss_title": {
+    "Uge 12, Forelæsning 1 · Podcast · Alle kilder": "https://open.spotify.com/episode/..."
+  }
+}
+```
+
+Operational behavior:
+- Mapped RSS titles render Spotify links on `/subjects/<subject_slug>`.
+- Unmapped RSS titles are omitted from UI and emitted as manifest warnings (non-fatal).
+- Keep `spotify_map.json` updated when new RSS episodes are published, then rebuild manifest.
 
 ## New env configuration
 - `FREUDD_SUBJECTS_JSON_PATH` (default: `freudd_portal/subjects.json`)
 - `FREUDD_READING_MASTER_KEY_PATH` (default: `/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/.ai/reading-file-key.md`)
 - `FREUDD_READING_MASTER_KEY_FALLBACK_PATH` (default: `shows/personlighedspsykologi-en/docs/reading-file-key.md`)
 - `FREUDD_SUBJECT_FEED_RSS_PATH` (default: `shows/personlighedspsykologi-en/feeds/rss.xml`)
+- `FREUDD_SUBJECT_SPOTIFY_MAP_PATH` (default: `shows/personlighedspsykologi-en/spotify_map.json`)
 - `FREUDD_SUBJECT_CONTENT_MANIFEST_PATH` (default: `shows/personlighedspsykologi-en/content_manifest.json`)
 - `FREUDD_GAMIFICATION_DAILY_GOAL` (default: `20`)
 - `FREUDD_GAMIFICATION_XP_PER_ANSWER` (default: `5`)

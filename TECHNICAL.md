@@ -159,6 +159,7 @@ The repository includes a Django portal in `freudd_portal/` for user login, quiz
 - UI: subject detail page renders a Duolingo-style zig-zag lecture path with nested reading cards and direct quiz/podcast navigation.
 - UI: subject detail page shows enrollment status only; enroll/unenroll actions live only on `/progress` under `Indstillinger`.
 - UI layout contract: each lecture renders as `path-node-row` (zig-zag node alignment) + full-width `path-details` (lecture assets/readings) to avoid mixed alignment and mobile overflow.
+- Podcast link policy: subject detail renders Spotify-only podcast links from `spotify_map.json`; unmapped RSS podcasts are hidden from UI.
 - Subject detail now degrades gracefully: if snapshot computation fails, route still returns 200 with a user-facing retry message instead of 500.
 - Unique key: `(user, quiz_id)` for quiz state
 - Unique key: `(user, subject_slug)` for subject enrollment
@@ -169,6 +170,7 @@ The repository includes a Django portal in `freudd_portal/` for user login, quiz
 - First subject in the catalog: `personlighedspsykologi`.
 - Lecture/readings source of truth is the master markdown key path (`FREUDD_READING_MASTER_KEY_PATH`) with fallback to repo mirror (`FREUDD_READING_MASTER_KEY_FALLBACK_PATH`).
 - Subject content is compiled into a lecture-first `content_manifest.json` that merges reading key + `quiz_links.json` + local RSS.
+- Spotify mapping source is `spotify_map.json` keyed by RSS item title; mapped entries become canonical podcast URLs in manifest (`platform=spotify`, `source_audio_url` preserved for traceability).
 - `MISSING:` reading lines are preserved and rendered as missing reading cards in subject detail.
 
 ### Local setup
@@ -202,6 +204,7 @@ python3 manage.py test
 - `FREUDD_READING_MASTER_KEY_PATH` (default: `/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/.ai/reading-file-key.md`)
 - `FREUDD_READING_MASTER_KEY_FALLBACK_PATH` (default: `shows/personlighedspsykologi-en/docs/reading-file-key.md`)
 - `FREUDD_SUBJECT_FEED_RSS_PATH` (default: `shows/personlighedspsykologi-en/feeds/rss.xml`)
+- `FREUDD_SUBJECT_SPOTIFY_MAP_PATH` (default: `shows/personlighedspsykologi-en/spotify_map.json`)
 - `FREUDD_SUBJECT_CONTENT_MANIFEST_PATH` (default: `shows/personlighedspsykologi-en/content_manifest.json`)
 - `FREUDD_GAMIFICATION_DAILY_GOAL` (default: `20`)
 - `FREUDD_GAMIFICATION_XP_PER_ANSWER` (default: `5`)
@@ -238,6 +241,7 @@ Quiz sync behavior (current):
 - `scripts/sync_quiz_links.py` now requires `--subject-slug` and writes `subject_slug` into each `quiz_links.json` entry.
 - Non-quiz JSON artifacts (for example `*.html.request.json`, manifest JSON files) are ignored; zero valid quiz JSON files is treated as an error.
 - `manage.py rebuild_content_manifest --subject <slug>` regenerates lecture-first manifest and validates source merges.
+- After publishing Spotify episodes, update `shows/personlighedspsykologi-en/spotify_map.json` (RSS title → Spotify episode URL) and rerun `manage.py rebuild_content_manifest --subject <slug>`.
 
 ### Security controls in phase 1
 - Django session auth + CSRF middleware

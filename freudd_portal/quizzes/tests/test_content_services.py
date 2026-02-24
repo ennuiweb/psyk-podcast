@@ -19,6 +19,7 @@ class SubjectContentManifestTests(TestCase):
         self.fallback_reading_file = root / "reading-fallback.md"
         self.quiz_links_file = root / "quiz_links.json"
         self.rss_file = root / "rss.xml"
+        self.spotify_map_file = root / "spotify_map.json"
         self.manifest_file = root / "content_manifest.json"
 
         self.primary_reading_file.write_text(
@@ -91,12 +92,26 @@ class SubjectContentManifestTests(TestCase):
             ),
             encoding="utf-8",
         )
+        self.spotify_map_file.write_text(
+            json.dumps(
+                {
+                    "version": 1,
+                    "subject_slug": "personlighedspsykologi",
+                    "by_rss_title": {
+                        "U1F1 · [Podcast] · Lewis (1999) · 02/02 - 08/02": "https://open.spotify.com/episode/4w4gHCXnQK5fjQdsxQO0XG",
+                        "U1F1 · [Podcast] · Alle kilder · 02/02 - 08/02": "https://open.spotify.com/episode/5m0hYfDU9ThM5qR2xMugr8",
+                    },
+                }
+            ),
+            encoding="utf-8",
+        )
 
         self.override = override_settings(
             FREUDD_READING_MASTER_KEY_PATH=self.primary_reading_file,
             FREUDD_READING_MASTER_KEY_FALLBACK_PATH=self.fallback_reading_file,
             QUIZ_LINKS_JSON_PATH=self.quiz_links_file,
             FREUDD_SUBJECT_FEED_RSS_PATH=self.rss_file,
+            FREUDD_SUBJECT_SPOTIFY_MAP_PATH=self.spotify_map_file,
             FREUDD_SUBJECT_CONTENT_MANIFEST_PATH=self.manifest_file,
         )
         self.override.enable()
@@ -116,13 +131,64 @@ class SubjectContentManifestTests(TestCase):
         self.assertEqual(len(lecture["lecture_assets"]["quizzes"]), 1)
         self.assertEqual(lecture["lecture_assets"]["quizzes"][0]["quiz_id"], "cccccccc")
         self.assertEqual(len(lecture["lecture_assets"]["podcasts"]), 1)
+        self.assertEqual(lecture["lecture_assets"]["podcasts"][0]["platform"], "spotify")
+        self.assertEqual(
+            lecture["lecture_assets"]["podcasts"][0]["url"],
+            "https://open.spotify.com/episode/5m0hYfDU9ThM5qR2xMugr8",
+        )
+        self.assertEqual(
+            lecture["lecture_assets"]["podcasts"][0]["source_audio_url"],
+            "https://example.test/audio/all-sources.mp3",
+        )
 
         reading = lecture["readings"][0]
         self.assertEqual(reading["reading_title"], "Lewis (1999)")
         self.assertEqual(len(reading["assets"]["quizzes"]), 2)
         self.assertEqual({item["quiz_id"] for item in reading["assets"]["quizzes"]}, {"aaaaaaaa", "bbbbbbbb"})
         self.assertEqual(len(reading["assets"]["podcasts"]), 1)
+        self.assertEqual(reading["assets"]["podcasts"][0]["platform"], "spotify")
+        self.assertEqual(
+            reading["assets"]["podcasts"][0]["url"],
+            "https://open.spotify.com/episode/4w4gHCXnQK5fjQdsxQO0XG",
+        )
+        self.assertEqual(
+            reading["assets"]["podcasts"][0]["source_audio_url"],
+            "https://example.test/audio/lewis.mp3",
+        )
         self.assertFalse(manifest["warnings"])
+
+    def test_build_manifest_hides_unmapped_spotify_podcasts_and_adds_warning(self) -> None:
+        self.spotify_map_file.write_text(
+            json.dumps(
+                {
+                    "version": 1,
+                    "subject_slug": "personlighedspsykologi",
+                    "by_rss_title": {
+                        "U1F1 · [Podcast] · Lewis (1999) · 02/02 - 08/02": "https://open.spotify.com/episode/4w4gHCXnQK5fjQdsxQO0XG",
+                    },
+                }
+            ),
+            encoding="utf-8",
+        )
+        clear_content_service_caches()
+
+        manifest = build_subject_content_manifest("personlighedspsykologi")
+        lecture = manifest["lectures"][0]
+        self.assertEqual(len(lecture["lecture_assets"]["podcasts"]), 0)
+        self.assertEqual(len(lecture["readings"][0]["assets"]["podcasts"]), 1)
+        warnings = lecture.get("warnings") or []
+        self.assertTrue(any("Spotify mapping missing for RSS item" in warning for warning in warnings))
+
+    def test_build_manifest_reports_invalid_spotify_map_without_crash(self) -> None:
+        self.spotify_map_file.write_text("{not-json", encoding="utf-8")
+        clear_content_service_caches()
+
+        manifest = build_subject_content_manifest("personlighedspsykologi")
+        self.assertEqual(len(manifest["lectures"]), 2)
+        self.assertTrue(any("Spotify map source could not be parsed" in warning for warning in manifest["warnings"]))
+        lecture = manifest["lectures"][0]
+        self.assertEqual(len(lecture["lecture_assets"]["podcasts"]), 0)
+        self.assertEqual(len(lecture["readings"][0]["assets"]["podcasts"]), 0)
 
     def test_build_manifest_uses_fallback_when_primary_missing(self) -> None:
         self.primary_reading_file.unlink()

@@ -47,6 +47,7 @@ class QuizPortalTests(TestCase):
         self.reading_master_file = root / "reading-file-key.md"
         self.reading_fallback_file = root / "reading-file-key-fallback.md"
         self.rss_file = root / "rss.xml"
+        self.spotify_map_file = root / "spotify_map.json"
         self.content_manifest_file = root / "content_manifest.json"
 
         self.override = override_settings(
@@ -56,6 +57,7 @@ class QuizPortalTests(TestCase):
             FREUDD_READING_MASTER_KEY_PATH=self.reading_master_file,
             FREUDD_READING_MASTER_KEY_FALLBACK_PATH=self.reading_fallback_file,
             FREUDD_SUBJECT_FEED_RSS_PATH=self.rss_file,
+            FREUDD_SUBJECT_SPOTIFY_MAP_PATH=self.spotify_map_file,
             FREUDD_SUBJECT_CONTENT_MANIFEST_PATH=self.content_manifest_file,
             FREUDD_CREDENTIALS_MASTER_KEY="MDEyMzQ1Njc4OWFiY2RlZjAxMjM0NTY3ODlhYmNkZWY=",
             FREUDD_CREDENTIALS_KEY_VERSION=1,
@@ -87,6 +89,7 @@ class QuizPortalTests(TestCase):
         self._write_reading_master_file()
         self.reading_fallback_file.write_text(self.reading_master_file.read_text(encoding="utf-8"), encoding="utf-8")
         self._write_rss_file()
+        self._write_spotify_map()
 
     def _write_quiz_file(self, quiz_id: str, *, question_count: int) -> None:
         payload = {"quiz": [{"question": f"Q{i + 1}"} for i in range(question_count)]}
@@ -196,6 +199,22 @@ class QuizPortalTests(TestCase):
                     "</channel>",
                     "</rss>",
                 ]
+            ),
+            encoding="utf-8",
+        )
+
+    def _write_spotify_map(self, by_rss_title: dict[str, str] | None = None) -> None:
+        mapping = by_rss_title if by_rss_title is not None else {
+            "U1F1 · [Podcast] · Alle kilder · 02/02 - 08/02": "https://open.spotify.com/episode/5m0hYfDU9ThM5qR2xMugr8",
+            "U1F1 · [Podcast] · Grundbog kapitel 01 - Introduktion til personlighedspsykologi · 02/02 - 08/02": "https://open.spotify.com/episode/4w4gHCXnQK5fjQdsxQO0XG",
+        }
+        self.spotify_map_file.write_text(
+            json.dumps(
+                {
+                    "version": 1,
+                    "subject_slug": "personlighedspsykologi",
+                    "by_rss_title": mapping,
+                }
             ),
             encoding="utf-8",
         )
@@ -649,6 +668,30 @@ class QuizPortalTests(TestCase):
         self.assertContains(response, "Koutsoumpis (2025)")
         self.assertNotContains(response, "Tilmeld fag")
         self.assertNotContains(response, "Afmeld fag")
+
+    def test_subject_detail_shows_spotify_links_for_mapped_podcasts(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+
+        response = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Spotify")
+        self.assertContains(response, "https://open.spotify.com/episode/5m0hYfDU9ThM5qR2xMugr8")
+        self.assertContains(response, "https://open.spotify.com/episode/4w4gHCXnQK5fjQdsxQO0XG")
+        self.assertNotContains(response, "https://example.test/podcast/w01l1-alle-kilder.mp3")
+        self.assertNotContains(response, "https://example.test/podcast/w01l1-intro.mp3")
+
+    def test_subject_detail_hides_unmapped_podcast_links(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+        self._write_spotify_map({})
+        clear_content_service_caches()
+
+        response = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
+        self.assertEqual(response.status_code, 200)
+        self.assertNotContains(response, "https://open.spotify.com/episode/")
+        self.assertNotContains(response, "https://example.test/podcast/w01l1-alle-kilder.mp3")
+        self.assertNotContains(response, "https://example.test/podcast/w01l1-intro.mp3")
 
     def test_subject_detail_shows_enrolled_status_for_enrolled_user(self) -> None:
         user = self._create_user()

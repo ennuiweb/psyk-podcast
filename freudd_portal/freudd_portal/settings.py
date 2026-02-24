@@ -139,6 +139,12 @@ FREUDD_SUBJECT_FEED_RSS_PATH = Path(
         BASE_DIR.parent / "shows" / "personlighedspsykologi-en" / "feeds" / "rss.xml",
     )
 )
+FREUDD_SUBJECT_SPOTIFY_MAP_PATH = Path(
+    os.environ.get(
+        "FREUDD_SUBJECT_SPOTIFY_MAP_PATH",
+        BASE_DIR.parent / "shows" / "personlighedspsykologi-en" / "spotify_map.json",
+    )
+)
 FREUDD_SUBJECT_CONTENT_MANIFEST_PATH = Path(
     os.environ.get(
         "FREUDD_SUBJECT_CONTENT_MANIFEST_PATH",

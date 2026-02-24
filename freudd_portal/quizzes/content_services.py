@@ -33,6 +33,10 @@ LANGUAGE_TAG_RE = re.compile(r"\[[^\]]+\]")
 ALL_SOURCES_RE = re.compile(r"\b(?:alle kilder|all sources)\b", re.IGNORECASE)
 NON_ALNUM_RE = re.compile(r"[^a-z0-9]+")
 MULTISPACE_RE = re.compile(r"\s+")
+SPOTIFY_EPISODE_URL_RE = re.compile(
+    r"^https://open\.spotify\.com/episode/[A-Za-z0-9]+(?:[/?#].*)?$",
+    re.IGNORECASE,
+)
 MANIFEST_VERSION = 1
 
 _MANIFEST_CACHE: dict[str, Any] = {
@@ -267,11 +271,75 @@ def _find_enclosure_url(item_node: ElementTree.Element) -> str:
     return link_text
 
 
+def _normalize_rss_title_key(value: str) -> str:
+    return MULTISPACE_RE.sub(" ", str(value or "")).strip()
+
+
+def _load_spotify_map(
+    *,
+    path: Path,
+    subject_slug: str,
+    manifest_warnings: list[str],
+) -> dict[str, str]:
+    if not path.exists():
+        manifest_warnings.append(f"Spotify map source missing: {path}")
+        return {}
+
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError):
+        logger.warning("Unable to parse Spotify map for manifest build: %s", path, exc_info=True)
+        manifest_warnings.append(f"Spotify map source could not be parsed: {path}")
+        return {}
+
+    if not isinstance(payload, dict):
+        manifest_warnings.append(f"Spotify map source must be a JSON object: {path}")
+        return {}
+
+    raw_version = payload.get("version")
+    if raw_version != 1:
+        manifest_warnings.append(f"Spotify map has unsupported version ({raw_version!r}): {path}")
+
+    map_subject_slug = str(payload.get("subject_slug") or "").strip().lower()
+    if map_subject_slug and map_subject_slug != subject_slug:
+        manifest_warnings.append(
+            f"Spotify map subject_slug mismatch: expected {subject_slug}, got {map_subject_slug}"
+        )
+
+    raw_by_title = payload.get("by_rss_title")
+    if not isinstance(raw_by_title, dict):
+        manifest_warnings.append(f"Spotify map missing by_rss_title object: {path}")
+        return {}
+
+    by_title: dict[str, str] = {}
+    for raw_title, raw_url in raw_by_title.items():
+        if not isinstance(raw_title, str):
+            manifest_warnings.append("Spotify map contains non-string RSS title key.")
+            continue
+        normalized_title = _normalize_rss_title_key(raw_title)
+        if not normalized_title:
+            manifest_warnings.append("Spotify map contains empty RSS title key.")
+            continue
+        if normalized_title in by_title:
+            manifest_warnings.append(f"Spotify map contains duplicate normalized RSS title: {normalized_title}")
+            continue
+        if not isinstance(raw_url, str):
+            manifest_warnings.append(f"Spotify map URL must be a string for title: {raw_title}")
+            continue
+        spotify_url = raw_url.strip()
+        if not SPOTIFY_EPISODE_URL_RE.match(spotify_url):
+            manifest_warnings.append(f"Spotify map URL must be an episode URL for title: {raw_title}")
+            continue
+        by_title[normalized_title] = spotify_url
+    return by_title
+
+
 def _attach_podcasts(
     *,
     lectures: list[dict[str, Any]],
     lecture_index: dict[str, int],
     rss_path: Path,
+    spotify_by_title: dict[str, str],
     manifest_warnings: list[str],
 ) -> None:
     if not rss_path.exists():
@@ -304,11 +372,18 @@ def _attach_podcasts(
             continue
 
         lecture_state = lectures[lecture_index[lecture_key]]
+        spotify_url = spotify_by_title.get(_normalize_rss_title_key(title_text))
+        if not spotify_url:
+            lecture_state["warnings"].append(f"Spotify mapping missing for RSS item: {title_text}")
+            continue
+        source_audio_url = _find_enclosure_url(item)
         podcast_asset = {
             "kind": _podcast_kind_from_token(kind_hint),
             "title": title_text,
-            "url": _find_enclosure_url(item),
+            "url": spotify_url,
+            "platform": "spotify",
             "pub_date": str(item.findtext("pubDate") or "").strip(),
+            "source_audio_url": source_audio_url,
         }
         if _is_lecture_level_descriptor(descriptor):
             lecture_state["lecture_assets"]["podcasts"].append(podcast_asset)
@@ -372,6 +447,12 @@ def build_subject_content_manifest(subject_slug: str) -> SubjectContentManifest:
 
     quiz_links_path = Path(settings.QUIZ_LINKS_JSON_PATH)
     rss_path = Path(settings.FREUDD_SUBJECT_FEED_RSS_PATH)
+    spotify_map_path = Path(settings.FREUDD_SUBJECT_SPOTIFY_MAP_PATH)
+    spotify_by_title = _load_spotify_map(
+        path=spotify_map_path,
+        subject_slug=slug,
+        manifest_warnings=manifest_warnings,
+    )
     _attach_quizzes(
         lectures=lectures,
         lecture_index=lecture_index,
@@ -383,6 +464,7 @@ def build_subject_content_manifest(subject_slug: str) -> SubjectContentManifest:
         lectures=lectures,
         lecture_index=lecture_index,
         rss_path=rss_path,
+        spotify_by_title=spotify_by_title,
         manifest_warnings=manifest_warnings,
     )
 
@@ -413,6 +495,7 @@ def build_subject_content_manifest(subject_slug: str) -> SubjectContentManifest:
         "reading_error": reading_error,
         "quiz_links_path": str(quiz_links_path),
         "rss_path": str(rss_path),
+        "spotify_map_path": str(spotify_map_path),
     }
 
     return {

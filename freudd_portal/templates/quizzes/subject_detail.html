@@ -345,12 +345,12 @@
             {% if lecture.lecture_assets.podcasts %}
             <div class="asset-block">
               <p class="asset-title">Lecture-podcasts</p>
-              <div class="asset-links">
-                {% for podcast in lecture.lecture_assets.podcasts %}
-                <a class="asset-link" href="{{ podcast.url }}" target="_blank" rel="noopener">{{ podcast.kind }}</a>
-                {% endfor %}
+                <div class="asset-links">
+                  {% for podcast in lecture.lecture_assets.podcasts %}
+                  <a class="asset-link" href="{{ podcast.url }}" target="_blank" rel="noopener">Spotify</a>
+                  {% endfor %}
+                </div>
               </div>
-            </div>
             {% endif %}
           </section>
           {% endif %}
@@ -389,7 +389,7 @@
                   <p class="asset-title">Podcasts</p>
                   <div class="asset-links">
                     {% for podcast in reading.assets.podcasts %}
-                    <a class="asset-link" href="{{ podcast.url }}" target="_blank" rel="noopener">{{ podcast.kind }}</a>
+                    <a class="asset-link" href="{{ podcast.url }}" target="_blank" rel="noopener">Spotify</a>
                     {% endfor %}
                   </div>
                 </div>

@@ -85,6 +85,7 @@ This document captures the current UI direction and reusable interface patterns 
 - Order difficulty actions `Let` -> `Mellem` -> `Svær` and reinforce with difficulty-specific color/icon coding.
 - Keep timeline connectors context-aware: connector from a lecture is accented only when that lecture is completed.
 - Keep compact spacing rhythm in expanded panels: denser inner padding/gaps than lecture headers.
+- Keep expanded lecture subsections (`lecture assets`, `readings`) full-width with consistent `12px` inner spacing and `8px/12px` chip/list gaps to avoid uneven whitespace pockets.
 - Keep `Udvid alle` and `Luk alle` as neutral productivity controls.
 - Preserve open lecture state in local browser storage for continuity.
 

@@ -27,16 +27,16 @@
   .overview-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--space-2);
+    gap: var(--space-3);
   }
 
   .overview-card {
     border: 1px solid var(--border);
     border-radius: var(--radius-md);
     background: #ffffff;
-    padding: var(--space-3);
+    padding: var(--space-4);
     display: grid;
-    gap: var(--space-1);
+    gap: var(--space-2);
     min-height: 84px;
   }
 
@@ -64,14 +64,14 @@
 
   .subject-path {
     display: grid;
-    gap: var(--space-2);
+    gap: var(--space-3);
   }
 
   .path-toolbar {
     display: flex;
     gap: var(--space-2);
     flex-wrap: wrap;
-    margin-bottom: var(--space-1);
+    margin-bottom: 0;
   }
 
   .toolbar-btn {
@@ -174,11 +174,10 @@
   .lecture-summary {
     list-style: none;
     cursor: pointer;
-    padding: var(--space-3);
+    padding: var(--space-4);
     background: #f9fbff;
     display: grid;
-    gap: var(--space-1);
-    min-height: 64px;
+    gap: var(--space-2);
     transition: background 160ms ease;
   }
 
@@ -200,12 +199,12 @@
     align-items: flex-start;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: var(--space-3);
+    gap: var(--space-2);
   }
 
   .lecture-labels {
     display: grid;
-    gap: var(--space-1);
+    gap: var(--space-2);
     min-width: 0;
   }
 
@@ -319,10 +318,10 @@
 
   .lecture-panel {
     border-top: 1px solid rgba(145, 162, 194, 0.4);
-    padding: var(--space-3);
+    padding: var(--space-4);
     display: grid;
-    gap: var(--space-2);
-    background: #f4f7ff;
+    gap: var(--space-3);
+    background: #f6f8ff;
   }
 
   .lecture-assets,
@@ -330,16 +329,15 @@
     border: 0;
     border-radius: var(--radius-sub);
     background: rgba(255, 255, 255, 0.76);
-    padding: var(--space-2) var(--space-3);
+    padding: var(--space-3);
     display: grid;
     gap: var(--space-2);
   }
 
   .lecture-assets {
     box-shadow: inset 0 0 0 1px rgba(138, 160, 201, 0.23);
-    width: fit-content;
-    max-width: 100%;
-    justify-self: flex-start;
+    width: 100%;
+    justify-self: stretch;
   }
 
   .lecture-readings {
@@ -399,7 +397,7 @@
   .asset-links {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-1);
+    gap: var(--space-2);
   }
 
   .asset-link {
@@ -513,16 +511,16 @@
     margin: 0;
     padding: 0;
     display: grid;
-    gap: var(--space-1);
+    gap: var(--space-2);
   }
 
   .reading-item {
     border: 0;
     border-radius: var(--radius-sm);
     background: #ffffff;
-    padding: var(--space-2) var(--space-3);
+    padding: var(--space-3);
     display: grid;
-    gap: var(--space-1);
+    gap: var(--space-2);
     box-shadow: inset 0 0 0 1px rgba(138, 160, 201, 0.26);
   }
 
@@ -545,7 +543,7 @@
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    gap: var(--space-2);
+    gap: var(--space-3);
     flex-wrap: wrap;
   }
 
@@ -633,11 +631,11 @@
     }
 
     .lecture-summary {
-      padding: var(--space-4);
+      padding: var(--space-5);
     }
 
     .lecture-panel {
-      padding: var(--space-4);
+      padding: var(--space-5);
     }
   }
 

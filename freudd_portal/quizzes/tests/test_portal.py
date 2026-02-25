@@ -681,7 +681,7 @@ class QuizPortalTests(TestCase):
         self.assertContains(response, "timeline-item")
         self.assertContains(response, "lecture-details")
         self.assertNotContains(response, "lecture-details\" open")
-        self.assertContains(response, "Forelæsningsquiz")
+        self.assertContains(response, "Quiz for alle kilder")
         self.assertContains(response, "Ikke startet endnu")
         self.assertNotContains(response, ">Aktiv<")
         self.assertContains(response, "Grundbog kapitel 01 - Introduktion til personlighedspsykologi")

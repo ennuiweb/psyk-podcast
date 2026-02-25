@@ -186,7 +186,7 @@ def _progress_percent(*, completed: object, total: object) -> int:
     return max(0, min(100, int(round((completed_count / total_count) * 100))))
 
 
-def _lecture_display_title(*, lecture_key: object, lecture_title: object) -> str:
+def _lecture_display_parts(*, lecture_key: object, lecture_title: object) -> tuple[str, str]:
     raw_key = str(lecture_key or "").strip().upper()
     raw_title = str(lecture_title or "").strip()
 
@@ -196,15 +196,17 @@ def _lecture_display_title(*, lecture_key: object, lecture_title: object) -> str
         lecture = int(match.group("lecture"))
         label = f"Uge {week}, forelæsning {lecture}"
     else:
-        label = raw_key or raw_title
+        label = raw_key
 
     cleaned_title = raw_title
     if raw_key and cleaned_title.upper().startswith(raw_key):
         cleaned_title = cleaned_title[len(raw_key) :].lstrip(" -·").strip()
     cleaned_title = LECTURE_META_SUFFIX_RE.sub("", cleaned_title).strip()
-    if not cleaned_title:
-        return label
-    return f"{label} · {cleaned_title}"
+    if cleaned_title:
+        return label, cleaned_title
+    if label:
+        return label, ""
+    return "", raw_title
 
 
 def _compact_asset_links(assets: object) -> dict[str, list[dict[str, object]]]:
@@ -261,10 +263,16 @@ def _enrich_subject_path_lectures(lectures: object) -> list[dict[str, object]]:
         lecture_assets = _compact_asset_links(lecture.get("lecture_assets"))
         lecture_copy = dict(lecture)
         lecture_copy["lecture_assets"] = lecture_assets
-        lecture_copy["lecture_display_title"] = _lecture_display_title(
+        lecture_label, lecture_name = _lecture_display_parts(
             lecture_key=lecture_copy.get("lecture_key"),
             lecture_title=lecture_copy.get("lecture_title"),
         )
+        lecture_copy["lecture_display_label"] = lecture_label
+        lecture_copy["lecture_display_name"] = lecture_name
+        if lecture_label and lecture_name:
+            lecture_copy["lecture_display_title"] = f"{lecture_label} · {lecture_name}"
+        else:
+            lecture_copy["lecture_display_title"] = lecture_label or lecture_name
         lecture_copy["progress_percent"] = _progress_percent(
             completed=lecture_copy.get("completed_quizzes"),
             total=lecture_copy.get("total_quizzes"),

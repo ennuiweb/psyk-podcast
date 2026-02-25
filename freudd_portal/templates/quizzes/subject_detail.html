@@ -224,6 +224,15 @@
     gap: var(--space-1);
   }
 
+  .lecture-module {
+    margin: 0;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #5f749e;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+
   .lecture-title {
     margin: 0;
     font-weight: 800;
@@ -585,7 +594,12 @@
           <summary class="lecture-summary">
             <div class="lecture-summary-top">
               <div class="lecture-labels">
+                {% if lecture.lecture_display_label and lecture.lecture_display_name %}
+                <p class="lecture-module">{{ lecture.lecture_display_label }}</p>
+                <p class="lecture-title">{{ lecture.lecture_display_name }}</p>
+                {% else %}
                 <p class="lecture-title">{{ lecture.lecture_display_title }}</p>
+                {% endif %}
               </div>
               <div class="lecture-summary-status">
                 <span class="status-badge {% if lecture.status == 'completed' %}is-completed{% else %}is-active{% endif %}">

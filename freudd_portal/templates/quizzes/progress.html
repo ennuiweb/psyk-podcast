@@ -2,8 +2,27 @@
 {% block title %}Min side · freudd{% endblock %}
 {% block content %}
 <style>
+  .dashboard-card {
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 24px;
+    --space-6: 32px;
+    --radius-sm: 10px;
+    --radius-md: 14px;
+    --radius-lg: 18px;
+    background: var(--surface);
+    box-shadow: 0 8px 20px rgba(46, 74, 136, 0.08);
+  }
+
   .dashboard-head {
-    padding: 0.35rem 0.15rem 0.3rem;
+    padding: var(--space-3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--surface-soft);
+    display: grid;
+    gap: var(--space-4);
   }
 
   .dashboard-title {
@@ -11,128 +30,352 @@
   }
 
   .dashboard-intro {
-    margin: 0.45rem 0 0;
-    max-width: 70ch;
-  }
-
-  .dashboard-section {
-    margin-top: 1rem;
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    background: var(--surface-soft);
-    padding: 0.95rem;
-  }
-
-  .section-title {
-    margin: 0 0 0.6rem;
-    font-size: clamp(1.1rem, 2vw, 1.3rem);
+    margin: var(--space-2) 0 0;
+    max-width: 68ch;
+    color: #52688f;
   }
 
   .semester-form {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: end;
-    gap: 0.65rem;
+    margin: 0;
+    display: grid;
+    gap: var(--space-2);
   }
 
   .semester-form label {
-    display: block;
-    font-size: 0.9rem;
+    margin: 0;
+    font-size: 0.86rem;
     color: var(--muted);
-    margin-bottom: 0.35rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
   }
 
-  .semester-form select {
-    min-width: 152px;
+  .semester-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    align-items: center;
+  }
+
+  .semester-select {
+    width: 168px;
+    min-height: 44px;
+    border-radius: var(--radius-sm);
+    background: #ffffff;
+  }
+
+  .dashboard-primary {
+    min-height: 44px;
+    padding-inline: var(--space-4);
+  }
+
+  .dashboard-section {
+    margin-top: var(--space-4);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--surface-soft);
+    padding: var(--space-4);
+  }
+
+  .section-head {
+    margin-bottom: var(--space-3);
+  }
+
+  .section-title {
+    margin: 0;
+    font-size: clamp(1.08rem, 1.9vw, 1.3rem);
+  }
+
+  .section-subtitle {
+    margin: var(--space-2) 0 0;
+    color: var(--muted);
   }
 
   .subject-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 0.75rem;
+    gap: var(--space-3);
   }
 
   .subject-card {
     border: 1px solid var(--border);
-    border-radius: 14px;
+    border-radius: var(--radius-md);
     background: #ffffff;
-    padding: 0.8rem;
+    padding: var(--space-4);
     display: grid;
-    gap: 0.55rem;
+    gap: var(--space-3);
   }
 
-  .subject-card h3 {
+  .subject-headline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    align-items: center;
+  }
+
+  .subject-headline h3 {
     margin: 0;
-    font-size: 1.05rem;
+    font-size: 1.04rem;
   }
 
-  .subject-status {
-    margin: 0;
-    font-size: 0.9rem;
-    font-weight: 600;
+  .subject-badge {
+    display: inline-flex;
+    align-items: center;
+    min-height: 24px;
+    border-radius: 999px;
+    border: 1px solid rgba(47, 103, 232, 0.28);
+    background: #eef4ff;
+    color: #2456c6;
+    padding: 0 var(--space-2);
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
   }
 
-  .subject-status.is-enrolled {
-    color: var(--success);
+  .subject-description {
+    margin: var(--space-2) 0 0;
   }
 
-  .subject-status.is-not-enrolled {
+  .subject-status-pill {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 999px;
+    border: 1px solid var(--border-strong);
+    background: #ffffff;
+    min-height: 30px;
+    padding: 0 var(--space-2);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
     color: var(--muted);
+  }
+
+  .subject-status-pill.is-enrolled {
+    border-color: rgba(31, 143, 78, 0.35);
+    color: var(--success);
+    background: #eef9f1;
   }
 
   .subject-actions {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.45rem;
+    gap: var(--space-2);
+    align-items: center;
   }
 
-  .ghost-button {
+  .subject-actions form {
+    margin: 0;
+  }
+
+  .subject-open-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    border: 1px solid rgba(47, 103, 232, 0.4);
+    border-radius: 999px;
+    background: var(--accent-soft);
+    color: #224fbd;
+    text-decoration: none;
+    font-weight: 700;
+    padding: 0 var(--space-4);
+    transition: border-color 140ms ease, background 140ms ease, color 140ms ease;
+  }
+
+  .subject-open-link:hover {
+    border-color: rgba(47, 103, 232, 0.56);
+    background: #dfe9ff;
+    color: #1e47ad;
+  }
+
+  .subject-toggle-button {
+    min-height: 44px;
     border: 1px solid var(--border-strong);
     border-radius: 999px;
     background: #ffffff;
     color: #304673;
-    padding: 0.52rem 0.92rem;
+    padding: 0 var(--space-4);
     font-weight: 600;
     cursor: pointer;
     transition: background 140ms ease, border-color 140ms ease, color 140ms ease;
   }
 
-  .ghost-button:hover {
-    border-color: rgba(47, 103, 232, 0.42);
-    background: var(--accent-soft);
-    color: #224fbd;
+  .subject-toggle-button:hover {
+    border-color: rgba(47, 103, 232, 0.34);
+    background: #f5f8ff;
+    color: #234892;
+  }
+
+  .table-wrap {
+    border-radius: var(--radius-md);
+    background: #ffffff;
+  }
+
+  .quiz-table {
+    table-layout: fixed;
+  }
+
+  .quiz-table th,
+  .quiz-table td {
+    white-space: normal;
+    vertical-align: middle;
+    padding: var(--space-3);
+  }
+
+  .quiz-table th {
+    text-transform: none;
+    letter-spacing: 0.01em;
+    font-size: 0.82rem;
+    color: #41547c;
+  }
+
+  .quiz-table td:first-child,
+  .quiz-table th:first-child {
+    width: 42%;
+  }
+
+  .quiz-link {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    font-weight: 700;
+    line-height: 1.35;
+    text-decoration: none;
+  }
+
+  .quiz-id {
+    margin-top: var(--space-1);
+    color: var(--muted);
+    font-size: 0.74rem;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  }
+
+  .difficulty-pill {
+    display: inline-flex;
+    align-items: center;
+    min-height: 30px;
+    border-radius: 999px;
+    border: 1px solid var(--border-strong);
+    padding: 0 var(--space-2);
+    font-size: 0.78rem;
+    font-weight: 700;
+    background: #ffffff;
+    color: #44577f;
+  }
+
+  .difficulty-pill.is-easy {
+    border-color: rgba(31, 143, 78, 0.3);
+    background: #eef9f1;
+    color: #1f8f4e;
+  }
+
+  .difficulty-pill.is-hard {
+    border-color: rgba(178, 59, 79, 0.35);
+    background: #fff1f4;
+    color: #9f3146;
+  }
+
+  .status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: currentColor;
+  }
+
+  .answers-cell {
+    display: grid;
+    gap: var(--space-2);
+    min-width: 142px;
+  }
+
+  .answers-track {
+    width: 100%;
+    height: 8px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: #ecf2ff;
+    overflow: hidden;
+  }
+
+  .answers-track > span {
+    display: block;
+    height: 100%;
+    background: linear-gradient(90deg, #3f73ec, #5f8ef4);
+  }
+
+  .answers-text {
+    font-size: 0.8rem;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .updated-at {
+    font-size: 0.85rem;
+    color: #4d618b;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .empty-copy {
+    margin: 0;
+    color: var(--muted);
+  }
+
+  .dashboard-card :is(select, button, a):focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--focus-ring);
+  }
+
+  @media (min-width: 780px) {
+    .dashboard-head {
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: end;
+    }
+
+    .semester-form {
+      justify-items: end;
+    }
   }
 
   @media (max-width: 640px) {
     .dashboard-section {
-      padding: 0.82rem;
+      padding: var(--space-3);
+    }
+
+    .subject-card {
+      padding: var(--space-3);
     }
   }
 </style>
-<div class="card">
+<div class="card dashboard-card">
   <header class="dashboard-head">
-    <h1 class="quiz-title dashboard-title">Min side</h1>
-    <p class="muted dashboard-intro">Vælg semester, tilmeld fag, og få overblik over dine quizscore.</p>
-  </header>
-
-  <section class="dashboard-section">
-    <h2 class="section-title">Semester</h2>
+    <div>
+      <h1 class="quiz-title dashboard-title">Min side</h1>
+      <p class="dashboard-intro">Vælg semester, tilmeld fag, og få overblik over dine quizscore.</p>
+    </div>
     <form method="post" action="{% url 'semester-update' %}" class="semester-form">
       {% csrf_token %}
-      <div>
-        <label for="semester-select">Aktivt semester</label>
-        <select id="semester-select" name="semester">
+      <label for="semester-select">Aktivt semester</label>
+      <div class="semester-controls">
+        <select id="semester-select" name="semester" class="semester-select">
           {% for choice in semester_choices %}
           <option value="{{ choice }}" {% if choice == selected_semester %}selected{% endif %}>{{ choice }}</option>
           {% endfor %}
         </select>
+        <button class="btn-primary dashboard-primary" type="submit">Gem semester</button>
       </div>
-      <button class="btn-primary" type="submit">Gem semester</button>
     </form>
-  </section>
+  </header>
 
   <section class="dashboard-section">
-    <h2 class="section-title">Fag</h2>
+    <div class="section-head">
+      <h2 class="section-title">Mine fag</h2>
+      <p class="section-subtitle">Tilmeld eller afmeld fag her.</p>
+    </div>
     {% if subjects_error %}
     <p class="muted">{{ subjects_error }}</p>
     {% endif %}
@@ -142,14 +385,34 @@
       {% for subject in subject_cards %}
       <article class="subject-card">
         <div>
-          <h3>{{ subject.title }}</h3>
-          <p class="muted">{{ subject.description }}</p>
+          <div class="subject-headline">
+            <h3>{{ subject.title }}</h3>
+            {% if rows and forloop.first %}
+            <span class="subject-badge">Senest åbnet fag</span>
+            {% endif %}
+          </div>
+          <p class="muted subject-description">{{ subject.description }}</p>
         </div>
-        <p class="subject-status {% if subject.is_enrolled %}is-enrolled{% else %}is-not-enrolled{% endif %}">
-          {% if subject.is_enrolled %}Tilmeldt{% else %}Ikke tilmeldt{% endif %}
-        </p>
+        <div>
+          <span class="subject-status-pill {% if subject.is_enrolled %}is-enrolled{% endif %}">
+            {% if subject.is_enrolled %}Tilmeldt{% else %}Ikke tilmeldt{% endif %}
+          </span>
+        </div>
         <div class="subject-actions">
-          <a class="nav-action" href="{{ subject.detail_url }}">Åbn fag</a>
+          <a class="subject-open-link" href="{{ subject.detail_url }}">Åbn fag</a>
+          {% if subject.is_enrolled %}
+          <form method="post" action="{{ subject.unenroll_url }}">
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{% url 'progress' %}" />
+            <button class="subject-toggle-button" type="submit">Afmeld</button>
+          </form>
+          {% else %}
+          <form method="post" action="{{ subject.enroll_url }}">
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{% url 'progress' %}" />
+            <button class="subject-toggle-button" type="submit">Tilmeld</button>
+          </form>
+          {% endif %}
         </div>
       </article>
       {% endfor %}
@@ -160,10 +423,12 @@
   </section>
 
   <section class="dashboard-section">
-    <h2 class="section-title">Mine quizscore</h2>
+    <div class="section-head">
+      <h2 class="section-title">Quizhistorik</h2>
+    </div>
     {% if rows %}
     <div class="table-wrap">
-      <table>
+      <table class="quiz-table">
         <thead>
           <tr>
             <th>Quiz</th>
@@ -177,60 +442,38 @@
           {% for row in rows %}
           <tr>
             <td>
-              <a href="{{ row.quiz_url }}">{{ row.title }}</a>
-              <div class="muted">{{ row.quiz_id }}</div>
+              <a class="quiz-link" href="{{ row.quiz_url }}">{{ row.title }}</a>
+              <div class="quiz-id">{{ row.quiz_id }}</div>
             </td>
-            <td>{{ row.difficulty_label }}</td>
+            <td>
+              <span class="difficulty-pill {% if row.difficulty_label == 'Let' %}is-easy{% elif row.difficulty_label == 'Svær' %}is-hard{% endif %}">
+                {{ row.difficulty_label }}
+              </span>
+            </td>
             <td>
               <span class="status-pill {% if row.status == 'completed' %}is-complete{% else %}is-progress{% endif %}">
+                <span class="status-dot" aria-hidden="true"></span>
                 {{ row.status_label }}
               </span>
             </td>
-            <td>{{ row.answers_count }} / {{ row.question_count }}</td>
-            <td>{{ row.updated_at }}</td>
+            <td>
+              <div class="answers-cell">
+                <span class="answers-track" aria-hidden="true">
+                  <span style="width: {% if row.question_count > 0 %}{% widthratio row.answers_count row.question_count 100 %}{% else %}0{% endif %}%;"></span>
+                </span>
+                <span class="answers-text">{{ row.answers_count }} / {{ row.question_count }}</span>
+              </div>
+            </td>
+            <td>
+              <time class="updated-at" datetime="{{ row.updated_at|date:'c' }}">{{ row.updated_at|date:'d.m.Y H:i' }}</time>
+            </td>
           </tr>
           {% endfor %}
         </tbody>
       </table>
     </div>
     {% else %}
-    <p class="muted">Der er endnu ikke gemte quizscore.</p>
-    {% endif %}
-  </section>
-
-  <section class="dashboard-section">
-    <h2 class="section-title">Indstillinger</h2>
-    <p class="muted">Tilmeld eller afmeld fag her.</p>
-    {% if subject_cards %}
-    <div class="subject-grid">
-      {% for subject in subject_cards %}
-      <article class="subject-card">
-        <div>
-          <h3>{{ subject.title }}</h3>
-          <p class="subject-status {% if subject.is_enrolled %}is-enrolled{% else %}is-not-enrolled{% endif %}">
-            {% if subject.is_enrolled %}Tilmeldt{% else %}Ikke tilmeldt{% endif %}
-          </p>
-        </div>
-        <div class="subject-actions">
-          {% if subject.is_enrolled %}
-          <form method="post" action="{{ subject.unenroll_url }}">
-            {% csrf_token %}
-            <input type="hidden" name="next" value="{% url 'progress' %}" />
-            <button class="ghost-button" type="submit">Afmeld</button>
-          </form>
-          {% else %}
-          <form method="post" action="{{ subject.enroll_url }}">
-            {% csrf_token %}
-            <input type="hidden" name="next" value="{% url 'progress' %}" />
-            <button class="ghost-button" type="submit">Tilmeld</button>
-          </form>
-          {% endif %}
-        </div>
-      </article>
-      {% endfor %}
-    </div>
-    {% else %}
-    <p class="muted">Ingen fag er tilgængelige endnu.</p>
+    <p class="empty-copy">Der er endnu ikke gemte quizscore.</p>
     {% endif %}
   </section>
 </div>

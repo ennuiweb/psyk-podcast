@@ -55,6 +55,12 @@ DIFFICULTY_LABELS_DA = {
     "hard": "Svær",
     "unknown": "Ukendt",
 }
+DIFFICULTY_SORT_ORDER = {
+    "easy": 0,
+    "medium": 1,
+    "hard": 2,
+    "unknown": 3,
+}
 LECTURE_KEY_DISPLAY_RE = re.compile(r"^W(?P<week>\d{1,2})L(?P<lecture>\d+)$", re.IGNORECASE)
 LECTURE_META_SUFFIX_RE = re.compile(
     r"\s*\((?:forelæsning|forelaesning)\s+\d+\s*,\s*\d{4}-\d{2}-\d{2}\)\s*$",
@@ -87,6 +93,11 @@ def _safe_next_redirect(request: HttpRequest) -> str | None:
 def _difficulty_label(value: str | None) -> str:
     difficulty = (value or "unknown").strip().lower() or "unknown"
     return DIFFICULTY_LABELS_DA.get(difficulty, difficulty.capitalize())
+
+
+def _difficulty_sort_rank(value: object) -> int:
+    difficulty = str(value or "unknown").strip().lower() or "unknown"
+    return DIFFICULTY_SORT_ORDER.get(difficulty, len(DIFFICULTY_SORT_ORDER))
 
 
 def _subject_or_404(catalog: SubjectCatalog, subject_slug: str):
@@ -234,6 +245,13 @@ def _compact_asset_links(assets: object) -> dict[str, list[dict[str, object]]]:
                     "difficulty_label_da": _difficulty_label(difficulty),
                 }
             )
+    compact_quizzes.sort(
+        key=lambda item: (
+            _difficulty_sort_rank(item.get("difficulty")),
+            str(item.get("quiz_id") or "").lower(),
+            str(item.get("episode_title") or "").casefold(),
+        )
+    )
 
     compact_podcasts: list[dict[str, object]] = []
     podcasts = assets.get("podcasts")
@@ -250,6 +268,50 @@ def _compact_asset_links(assets: object) -> dict[str, list[dict[str, object]]]:
         "quizzes": compact_quizzes,
         "podcasts": compact_podcasts,
     }
+
+
+def _next_quiz_url_for_lecture(
+    *,
+    lecture_assets: dict[str, list[dict[str, object]]],
+    readings: list[dict[str, object]],
+) -> str | None:
+    lecture_quizzes = lecture_assets.get("quizzes")
+    if isinstance(lecture_quizzes, list):
+        for quiz in lecture_quizzes:
+            if not isinstance(quiz, dict):
+                continue
+            quiz_url = str(quiz.get("quiz_url") or "").strip()
+            if quiz_url:
+                return quiz_url
+
+    active_reading_quiz_urls: list[str] = []
+    completed_reading_quiz_urls: list[str] = []
+    for reading in readings:
+        if not isinstance(reading, dict):
+            continue
+        reading_assets = reading.get("assets")
+        if not isinstance(reading_assets, dict):
+            continue
+        reading_quizzes = reading_assets.get("quizzes")
+        if not isinstance(reading_quizzes, list):
+            continue
+        status = str(reading.get("status") or "").strip().lower()
+        for quiz in reading_quizzes:
+            if not isinstance(quiz, dict):
+                continue
+            quiz_url = str(quiz.get("quiz_url") or "").strip()
+            if not quiz_url:
+                continue
+            if status == "completed":
+                completed_reading_quiz_urls.append(quiz_url)
+            else:
+                active_reading_quiz_urls.append(quiz_url)
+
+    if active_reading_quiz_urls:
+        return active_reading_quiz_urls[0]
+    if completed_reading_quiz_urls:
+        return completed_reading_quiz_urls[0]
+    return None
 
 
 def _enrich_subject_path_lectures(lectures: object) -> list[dict[str, object]]:
@@ -292,6 +354,10 @@ def _enrich_subject_path_lectures(lectures: object) -> list[dict[str, object]]:
                 )
                 reading_payload.append(reading_copy)
         lecture_copy["readings"] = reading_payload
+        lecture_copy["next_quiz_url"] = _next_quiz_url_for_lecture(
+            lecture_assets=lecture_assets,
+            readings=reading_payload,
+        )
         enriched.append(lecture_copy)
     return enriched
 

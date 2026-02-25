@@ -31,6 +31,7 @@ from quizzes.models import (
 )
 from quizzes.services import load_quiz_label_mapping
 from quizzes.subject_services import clear_subject_service_caches
+from quizzes.views import _enrich_subject_path_lectures
 
 
 class QuizPortalTests(TestCase):
@@ -656,12 +657,42 @@ class QuizPortalTests(TestCase):
         self.assertContains(response, "timeline-item")
         self.assertContains(response, "lecture-details")
         self.assertNotContains(response, "lecture-details\" open")
-        self.assertContains(response, "Lecture-quizzer")
+        self.assertContains(response, "Forelæsningsquiz")
+        self.assertContains(response, "Start næste quiz")
+        self.assertContains(response, "Ikke startet endnu")
+        self.assertNotContains(response, ">Aktiv<")
         self.assertContains(response, "Grundbog kapitel 01 - Introduktion til personlighedspsykologi")
         self.assertContains(response, "Mangler kilde")
         self.assertContains(response, "Koutsoumpis (2025)")
         self.assertNotContains(response, "Tilmeld fag")
         self.assertNotContains(response, "Afmeld fag")
+
+    def test_subject_detail_orders_quiz_links_easy_medium_hard(self) -> None:
+        enriched = _enrich_subject_path_lectures(
+            [
+                {
+                    "lecture_key": "W01L1",
+                    "lecture_title": "W01L1 Intro",
+                    "status": "active",
+                    "completed_quizzes": 0,
+                    "total_quizzes": 3,
+                    "lecture_assets": {
+                        "quizzes": [
+                            {"quiz_id": "hard-1", "difficulty": "hard", "quiz_url": "/q/hard-1.html"},
+                            {"quiz_id": "easy-1", "difficulty": "easy", "quiz_url": "/q/easy-1.html"},
+                            {"quiz_id": "medium-1", "difficulty": "medium", "quiz_url": "/q/medium-1.html"},
+                        ],
+                        "podcasts": [],
+                    },
+                    "readings": [],
+                }
+            ]
+        )
+
+        self.assertEqual(
+            [quiz["difficulty"] for quiz in enriched[0]["lecture_assets"]["quizzes"]],
+            ["easy", "medium", "hard"],
+        )
 
     def test_subject_detail_shows_spotify_links_for_mapped_podcasts(self) -> None:
         user = self._create_user()

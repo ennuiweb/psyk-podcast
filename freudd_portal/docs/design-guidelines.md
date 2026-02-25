@@ -79,8 +79,11 @@ This document captures the current UI direction and reusable interface patterns 
 ### Learning path timeline
 
 - Render lectures as a timeline of `timeline-item` rows with collapsed-by-default lecture details.
-- Keep status explicit with text labels (`Aktiv`, `Fuldført`, `Ingen quiz`), not color alone.
-- Keep per-lecture and per-reading progress bars plus numeric counts.
+- Keep one action-first CTA in lecture headers (`Start næste quiz`) so the next step is always visible.
+- Use text status labels only when they differentiate state (`Fuldført`, `Ingen quiz`); do not render `Aktiv` labels by default.
+- Keep per-lecture and per-reading numeric progress counts; replace 0% bars with `Ikke startet endnu`.
+- Order difficulty actions `Let` -> `Mellem` -> `Svær` and reinforce with difficulty-specific color/icon coding.
+- Keep timeline connectors context-aware: connector from a lecture is accented only when that lecture is completed.
 - Keep `Udvid alle` and `Luk alle` as neutral productivity controls.
 - Preserve open lecture state in local browser storage for continuity.
 
@@ -97,6 +100,7 @@ This document captures the current UI direction and reusable interface patterns 
 - Dense content chips (quiz/podcast links in timeline blocks) may use `32-36px` height when spacing/focus remains clear.
 - Preserve visible keyboard focus (`:focus-visible`) on links, buttons, and form controls.
 - Do not communicate status by color alone where text labels exist.
+- Difficulty chips may use color as the primary cue because each chip retains a textual level label.
 
 ## Implementation notes
 

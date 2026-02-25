@@ -136,19 +136,8 @@
     list-style: none;
     margin: 0;
     padding: 0;
-    position: relative;
     display: grid;
     gap: var(--space-3);
-  }
-
-  .timeline-list::before {
-    content: "";
-    position: absolute;
-    top: var(--space-3);
-    bottom: var(--space-3);
-    left: 15px;
-    width: 2px;
-    background: linear-gradient(180deg, #b7c8ea, #d6e1f5);
   }
 
   .timeline-item {
@@ -157,12 +146,30 @@
     animation: timeline-enter 220ms ease-out both;
   }
 
+  .timeline-item::after {
+    content: "";
+    position: absolute;
+    top: 36px;
+    bottom: calc(-1 * var(--space-3));
+    left: 15px;
+    width: 2px;
+    background: #d5e0f4;
+  }
+
+  .timeline-item.is-completed::after {
+    background: #7da0e5;
+  }
+
+  .timeline-item:last-child::after {
+    display: none;
+  }
+
   .timeline-marker {
     position: absolute;
     left: 0;
     top: var(--space-3);
-    width: 30px;
-    height: 30px;
+    width: 32px;
+    height: 32px;
     border-radius: var(--radius-pill);
     border: 1px solid var(--border);
     background: #f4f8ff;
@@ -170,7 +177,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.8rem;
+    font-size: 0.72rem;
     font-weight: 800;
   }
 
@@ -194,8 +201,8 @@
   }
 
   .lecture-details[open] {
-    border-color: rgba(47, 103, 232, 0.45);
-    box-shadow: 0 0 0 3px var(--focus-ring);
+    border-color: rgba(47, 103, 232, 0.34);
+    box-shadow: 0 8px 22px rgba(28, 62, 140, 0.11);
   }
 
   .lecture-summary {
@@ -206,6 +213,16 @@
     display: grid;
     gap: var(--space-2);
     min-height: 64px;
+    transition: background 160ms ease;
+  }
+
+  .lecture-summary:hover {
+    background: #f4f8ff;
+  }
+
+  .lecture-summary:focus-visible {
+    outline: 2px solid rgba(47, 103, 232, 0.42);
+    outline-offset: -2px;
   }
 
   .lecture-summary::-webkit-details-marker {
@@ -216,12 +233,14 @@
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
+    flex-wrap: wrap;
     gap: var(--space-2);
   }
 
   .lecture-labels {
     display: grid;
     gap: var(--space-1);
+    min-width: 0;
   }
 
   .lecture-module {
@@ -236,7 +255,9 @@
   .lecture-title {
     margin: 0;
     font-weight: 800;
-    font-size: 0.95rem;
+    font-size: clamp(1.03rem, 2.4vw, 1.18rem);
+    color: #1d335f;
+    line-height: 1.32;
     overflow-wrap: anywhere;
   }
 
@@ -244,6 +265,7 @@
     margin: 0;
     color: var(--muted);
     font-size: 0.8rem;
+    font-weight: 700;
   }
 
   .status-badge {
@@ -257,12 +279,6 @@
     font-size: 0.72rem;
     font-weight: 700;
     white-space: nowrap;
-  }
-
-  .status-badge.is-active {
-    border-color: rgba(47, 103, 232, 0.5);
-    color: #2456c4;
-    background: #e8efff;
   }
 
   .status-badge.is-completed {
@@ -289,7 +305,7 @@
 
   .progress-track {
     width: 100%;
-    height: 8px;
+    height: 10px;
     border-radius: var(--radius-pill);
     overflow: hidden;
     background: #e7edf9;
@@ -320,7 +336,44 @@
   .lecture-summary-status {
     display: flex;
     align-items: center;
-    gap: var(--space-1);
+    gap: var(--space-2);
+    justify-content: flex-end;
+    flex-wrap: wrap;
+  }
+
+  .lecture-next-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 34px;
+    border-radius: var(--radius-pill);
+    border: 1px solid #2f67e8;
+    background: #2f67e8;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.76rem;
+    font-weight: 700;
+    padding: 0 var(--space-2);
+    transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
+    white-space: nowrap;
+  }
+
+  .lecture-next-action::before {
+    content: "▶";
+    margin-right: 6px;
+    font-size: 0.65rem;
+  }
+
+  .lecture-next-action:hover {
+    background: #2557c6;
+    border-color: #2557c6;
+    color: #ffffff;
+    transform: translateY(-1px);
+  }
+
+  .lecture-next-action:focus-visible {
+    outline: 2px solid rgba(47, 103, 232, 0.45);
+    outline-offset: 2px;
   }
 
   .lecture-chevron {
@@ -334,34 +387,79 @@
   }
 
   .lecture-panel {
-    border-top: 1px solid var(--border);
+    border-top: 1px solid rgba(145, 162, 194, 0.4);
     padding: var(--space-3);
     display: grid;
     gap: var(--space-3);
-    background: #ffffff;
+    background: #f4f7ff;
   }
 
   .lecture-assets,
   .lecture-readings {
-    border: 1px solid var(--border);
+    border: 0;
     border-radius: var(--radius-sub);
-    background: var(--surface-soft);
+    background: rgba(255, 255, 255, 0.76);
     padding: var(--space-3);
     display: grid;
     gap: var(--space-2);
   }
 
+  .lecture-assets {
+    box-shadow: inset 0 0 0 1px rgba(138, 160, 201, 0.23);
+  }
+
   .lecture-readings {
-    background: #ffffff;
+    box-shadow: inset 0 0 0 1px rgba(138, 160, 201, 0.2);
   }
 
   .asset-title {
     margin: 0;
-    color: var(--muted);
+    color: #53678e;
     font-size: 0.76rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.06em;
+  }
+
+  .asset-title-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+  }
+
+  .asset-icon {
+    width: 20px;
+    height: 20px;
+    border-radius: var(--radius-pill);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(117, 141, 186, 0.42);
+    background: #eff4ff;
+    color: #3a5e9e;
+    flex-shrink: 0;
+  }
+
+  .asset-icon svg {
+    width: 12px;
+    height: 12px;
+    fill: currentColor;
+  }
+
+  .asset-icon.is-reading {
+    color: #47658f;
+    background: #edf3ff;
+  }
+
+  .asset-icon.is-quiz {
+    color: #265dc9;
+    background: #e9f1ff;
+  }
+
+  .asset-icon.is-podcast {
+    color: #1f8f4e;
+    background: #e8f8ef;
+    border-color: rgba(31, 143, 78, 0.35);
   }
 
   .asset-links {
@@ -380,16 +478,84 @@
     padding: 0 var(--space-2);
     font-size: 0.78rem;
     font-weight: 700;
-    color: #315289;
+    color: #264878;
     text-decoration: none;
     background: #ffffff;
-    transition: border-color 160ms ease, background 160ms ease, color 160ms ease;
+    transition: border-color 160ms ease, background 160ms ease, color 160ms ease, transform 160ms ease;
+    box-shadow: 0 1px 0 rgba(31, 55, 109, 0.07);
   }
 
   .asset-link:hover {
     border-color: rgba(47, 103, 232, 0.46);
     background: var(--accent-soft);
     color: #2148a8;
+    transform: translateY(-1px);
+  }
+
+  .asset-link:focus-visible {
+    outline: 2px solid rgba(47, 103, 232, 0.45);
+    outline-offset: 2px;
+  }
+
+  .asset-link.asset-link--quiz {
+    justify-content: flex-start;
+    gap: 6px;
+    padding-right: var(--space-3);
+  }
+
+  .asset-level-icon {
+    width: 16px;
+    height: 16px;
+    border-radius: var(--radius-pill);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.58rem;
+    font-weight: 800;
+    border: 1px solid transparent;
+    flex-shrink: 0;
+  }
+
+  .asset-link.is-easy {
+    border-color: rgba(31, 143, 78, 0.4);
+    color: #1f7f47;
+    background: #eefbf2;
+  }
+
+  .asset-link.is-easy .asset-level-icon {
+    border-color: rgba(31, 143, 78, 0.38);
+    background: #dff4e7;
+    color: #1f8f4e;
+  }
+
+  .asset-link.is-medium {
+    border-color: rgba(164, 122, 33, 0.35);
+    color: #7f5f18;
+    background: #fcf8eb;
+  }
+
+  .asset-link.is-medium .asset-level-icon {
+    border-color: rgba(164, 122, 33, 0.36);
+    background: #f5ecc7;
+    color: #8f6d19;
+  }
+
+  .asset-link.is-hard {
+    border-color: rgba(178, 59, 79, 0.35);
+    color: #953e50;
+    background: #fff1f4;
+  }
+
+  .asset-link.is-hard .asset-level-icon {
+    border-color: rgba(178, 59, 79, 0.38);
+    background: #f9dce3;
+    color: #a04658;
+  }
+
+  .asset-link.is-complete {
+    border-color: rgba(31, 143, 78, 0.46);
+    color: #1f8f4e;
+    background: #e7f7ef;
   }
 
   .asset-link.is-spotify {
@@ -400,7 +566,12 @@
 
   .reading-title {
     margin: 0;
-    font-size: 1.02rem;
+    font-size: 1rem;
+    font-weight: 800;
+    color: #223a69;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
   }
 
   .reading-list {
@@ -412,27 +583,28 @@
   }
 
   .reading-item {
-    border: 1px solid var(--border);
+    border: 0;
     border-radius: var(--radius-sm);
-    background: #fdfefe;
+    background: #ffffff;
     padding: var(--space-3);
     display: grid;
     gap: var(--space-2);
+    box-shadow: inset 0 0 0 1px rgba(138, 160, 201, 0.26);
   }
 
   .reading-item.is-active {
-    border-color: rgba(47, 103, 232, 0.45);
-    background: #f3f7ff;
+    box-shadow: inset 3px 0 0 #4f7ddb, inset 0 0 0 1px rgba(101, 131, 189, 0.34);
+    background: #f8faff;
   }
 
   .reading-item.is-completed {
-    border-color: rgba(31, 143, 78, 0.35);
-    background: #eefbf2;
+    box-shadow: inset 3px 0 0 #2ba95f, inset 0 0 0 1px rgba(31, 143, 78, 0.24);
+    background: #f2fbf5;
   }
 
   .reading-item.is-missing {
-    border-color: rgba(178, 59, 79, 0.42);
-    background: #fff5f7;
+    box-shadow: inset 3px 0 0 #c16072, inset 0 0 0 1px rgba(178, 59, 79, 0.24);
+    background: #fff7f8;
   }
 
   .reading-head {
@@ -445,7 +617,8 @@
 
   .reading-name {
     margin: 0;
-    font-size: 0.92rem;
+    font-size: 0.96rem;
+    line-height: 1.36;
     overflow-wrap: anywhere;
   }
 
@@ -453,6 +626,7 @@
     margin: 0;
     color: var(--muted);
     font-size: 0.79rem;
+    font-weight: 700;
   }
 
   .missing-badge {
@@ -474,6 +648,13 @@
     gap: var(--space-1);
     align-items: center;
     flex-wrap: wrap;
+  }
+
+  .progress-empty {
+    margin: 0;
+    color: #5b7099;
+    font-size: 0.78rem;
+    font-weight: 700;
   }
 
   .missing-note {
@@ -520,6 +701,10 @@
       padding: var(--space-4);
     }
 
+    .lecture-summary-top {
+      align-items: center;
+    }
+
     .lecture-panel {
       padding: var(--space-4);
     }
@@ -529,7 +714,8 @@
     .timeline-item,
     .lecture-chevron,
     .toolbar-btn,
-    .asset-link {
+    .asset-link,
+    .lecture-next-action {
       animation: none !important;
       transition: none !important;
     }
@@ -589,7 +775,7 @@
       <li
         class="timeline-item {% if lecture.status == 'completed' %}is-completed{% else %}is-active{% endif %}"
       >
-        <span class="timeline-marker" aria-hidden="true">{% if lecture.status == 'completed' %}✓{% else %}•{% endif %}</span>
+        <span class="timeline-marker" aria-hidden="true">{{ forloop.counter }}</span>
         <details class="lecture-details" data-lecture-key="{{ lecture.lecture_key }}">
           <summary class="lecture-summary">
             <div class="lecture-summary-top">
@@ -602,13 +788,17 @@
                 {% endif %}
               </div>
               <div class="lecture-summary-status">
-                <span class="status-badge {% if lecture.status == 'completed' %}is-completed{% else %}is-active{% endif %}">
-                  {% if lecture.status == 'completed' %}Fuldført{% else %}Aktiv{% endif %}
-                </span>
+                {% if lecture.next_quiz_url %}
+                <a class="lecture-next-action" href="{{ lecture.next_quiz_url }}" data-next-quiz-action>Start næste quiz</a>
+                {% endif %}
+                {% if lecture.status == 'completed' %}
+                <span class="status-badge is-completed">Fuldført</span>
+                {% endif %}
                 <span class="lecture-chevron" aria-hidden="true">⌄</span>
               </div>
             </div>
-            <p class="lecture-meta">{{ lecture.completed_quizzes }} / {{ lecture.total_quizzes }} quizzer</p>
+            <p class="lecture-meta">{{ lecture.completed_quizzes }} / {{ lecture.total_quizzes }}</p>
+            {% if lecture.progress_percent > 0 %}
             <div class="progress-meta">
               <span>Fremdrift</span>
               <span>{{ lecture.progress_percent }}%</span>
@@ -616,6 +806,9 @@
             <progress class="progress-track" value="{{ lecture.progress_percent }}" max="100" aria-label="Fremdrift {{ lecture.progress_percent }} procent">
               {{ lecture.progress_percent }}%
             </progress>
+            {% else %}
+            <p class="progress-empty">Ikke startet endnu</p>
+            {% endif %}
           </summary>
 
           <div class="lecture-panel">
@@ -623,10 +816,25 @@
             <section class="lecture-assets">
               {% if lecture.lecture_assets.quizzes %}
               <div>
-                <p class="asset-title">Lecture-quizzer</p>
+                <p class="asset-title asset-title-row">
+                  <span class="asset-icon is-quiz" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+                      <path d="M12 3a9 9 0 1 0 9 9h-1.6a7.4 7.4 0 1 1-7.4-7.4V3Zm0 4a5 5 0 1 0 5 5h-1.6a3.4 3.4 0 1 1-3.4-3.4V7Zm7.8-4.2-4.2 1.4 1.4 1.4-3.1 3.1 1.1 1.1 3.1-3.1 1.4 1.4 1.3-4.3Z"></path>
+                    </svg>
+                  </span>
+                  Forelæsningsquiz
+                </p>
                 <div class="asset-links">
                   {% for quiz in lecture.lecture_assets.quizzes %}
-                  <a class="asset-link" href="{{ quiz.quiz_url }}">{{ quiz.difficulty_label_da }}</a>
+                  <a
+                    class="asset-link asset-link--quiz {% if quiz.difficulty == 'easy' %}is-easy{% elif quiz.difficulty == 'medium' %}is-medium{% elif quiz.difficulty == 'hard' %}is-hard{% endif %} {% if lecture.status == 'completed' %}is-complete{% endif %}"
+                    href="{{ quiz.quiz_url }}"
+                  >
+                    <span class="asset-level-icon" aria-hidden="true">
+                      {% if quiz.difficulty == 'easy' %}L{% elif quiz.difficulty == 'medium' %}M{% elif quiz.difficulty == 'hard' %}S{% else %}?{% endif %}
+                    </span>
+                    {{ quiz.difficulty_label_da }}
+                  </a>
                   {% endfor %}
                 </div>
               </div>
@@ -634,7 +842,14 @@
 
               {% if lecture.lecture_assets.podcasts %}
               <div>
-                <p class="asset-title">Lecture-podcasts</p>
+                <p class="asset-title asset-title-row">
+                  <span class="asset-icon is-podcast" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+                      <path d="M5 9h2v6H5V9Zm3-3h2v12H8V6Zm6-2h2v16h-2V4Zm3 4h2v8h-2V8Z"></path>
+                    </svg>
+                  </span>
+                  Forelæsningspodcast
+                </p>
                 <div class="asset-links">
                   {% for podcast in lecture.lecture_assets.podcasts %}
                   <a class="asset-link is-spotify" href="{{ podcast.url }}" target="_blank" rel="noopener">Spotify episode {{ forloop.counter }}</a>
@@ -646,7 +861,14 @@
             {% endif %}
 
             <section class="lecture-readings">
-              <h3 class="reading-title">Readings</h3>
+              <h3 class="reading-title">
+                <span class="asset-icon is-reading" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+                    <path d="M4 5.5a2.5 2.5 0 0 1 2.5-2.5H20v16H6.5A2.5 2.5 0 0 0 4 21V5.5Zm2.5-1A1.5 1.5 0 0 0 5 6v12.2c.44-.23.94-.36 1.5-.36H19V4.5H6.5Z"></path>
+                  </svg>
+                </span>
+                Readings
+              </h3>
               {% if lecture.readings %}
               <ul class="reading-list">
                 {% for reading in lecture.readings %}
@@ -657,9 +879,11 @@
                       {% if reading.is_missing %}
                       <span class="missing-badge">Mangler kilde</span>
                       {% endif %}
-                      <span class="status-badge {% if reading.status == 'completed' %}is-completed{% elif reading.status == 'no_quiz' %}is-no-quiz{% else %}is-active{% endif %}">
-                        {% if reading.status == 'completed' %}Fuldført{% elif reading.status == 'no_quiz' %}Ingen quiz{% else %}Aktiv{% endif %}
-                      </span>
+                      {% if reading.status == 'completed' %}
+                      <span class="status-badge is-completed">Fuldført</span>
+                      {% elif reading.status == 'no_quiz' %}
+                      <span class="status-badge is-no-quiz">Ingen quiz</span>
+                      {% endif %}
                     </div>
                   </div>
 
@@ -667,17 +891,36 @@
                   <p class="missing-note">Denne reading er markeret som manglende i kildelisten.</p>
                   {% endif %}
 
-                  <p class="reading-meta">{{ reading.completed_quizzes }} / {{ reading.total_quizzes }} quizzer</p>
+                  <p class="reading-meta">{{ reading.completed_quizzes }} / {{ reading.total_quizzes }}</p>
+                  {% if reading.progress_percent > 0 %}
                   <progress class="progress-track" value="{{ reading.progress_percent }}" max="100" aria-label="Fremdrift {{ reading.progress_percent }} procent">
                     {{ reading.progress_percent }}%
                   </progress>
+                  {% else %}
+                  <p class="progress-empty">Ikke startet endnu</p>
+                  {% endif %}
 
                   {% if reading.assets.quizzes %}
                   <div>
-                    <p class="asset-title">Quizzer</p>
+                    <p class="asset-title asset-title-row">
+                      <span class="asset-icon is-quiz" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+                          <path d="M12 3a9 9 0 1 0 9 9h-1.6a7.4 7.4 0 1 1-7.4-7.4V3Zm0 4a5 5 0 1 0 5 5h-1.6a3.4 3.4 0 1 1-3.4-3.4V7Zm7.8-4.2-4.2 1.4 1.4 1.4-3.1 3.1 1.1 1.1 3.1-3.1 1.4 1.4 1.3-4.3Z"></path>
+                        </svg>
+                      </span>
+                      Quiz
+                    </p>
                     <div class="asset-links">
                       {% for quiz in reading.assets.quizzes %}
-                      <a class="asset-link" href="{{ quiz.quiz_url }}">{{ quiz.difficulty_label_da }}</a>
+                      <a
+                        class="asset-link asset-link--quiz {% if quiz.difficulty == 'easy' %}is-easy{% elif quiz.difficulty == 'medium' %}is-medium{% elif quiz.difficulty == 'hard' %}is-hard{% endif %} {% if reading.status == 'completed' %}is-complete{% endif %}"
+                        href="{{ quiz.quiz_url }}"
+                      >
+                        <span class="asset-level-icon" aria-hidden="true">
+                          {% if quiz.difficulty == 'easy' %}L{% elif quiz.difficulty == 'medium' %}M{% elif quiz.difficulty == 'hard' %}S{% else %}?{% endif %}
+                        </span>
+                        {{ quiz.difficulty_label_da }}
+                      </a>
                       {% endfor %}
                     </div>
                   </div>
@@ -685,7 +928,14 @@
 
                   {% if reading.assets.podcasts %}
                   <div>
-                    <p class="asset-title">Podcasts</p>
+                    <p class="asset-title asset-title-row">
+                      <span class="asset-icon is-podcast" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+                          <path d="M5 9h2v6H5V9Zm3-3h2v12H8V6Zm6-2h2v16h-2V4Zm3 4h2v8h-2V8Z"></path>
+                        </svg>
+                      </span>
+                      Podcast
+                    </p>
                     <div class="asset-links">
                       {% for podcast in reading.assets.podcasts %}
                       <a class="asset-link is-spotify" href="{{ podcast.url }}" target="_blank" rel="noopener">Spotify episode {{ forloop.counter }}</a>
@@ -725,6 +975,7 @@
     const detailsItems = Array.from(container.querySelectorAll(".lecture-details[data-lecture-key]"));
     const expandAllButton = container.querySelector("[data-expand-all]");
     const collapseAllButton = container.querySelector("[data-collapse-all]");
+    const nextQuizActions = Array.from(container.querySelectorAll("[data-next-quiz-action]"));
     if (!detailsItems.length) {
       if (expandAllButton) {
         expandAllButton.disabled = true;
@@ -734,6 +985,15 @@
       }
       return;
     }
+
+    nextQuizActions.forEach((link) => {
+      link.addEventListener("click", (event) => {
+        event.stopPropagation();
+      });
+      link.addEventListener("keydown", (event) => {
+        event.stopPropagation();
+      });
+    });
 
     const slug = container.dataset.subjectSlug || "subject";
     const storageKey = `freudd.subject.${slug}.openLectures`;

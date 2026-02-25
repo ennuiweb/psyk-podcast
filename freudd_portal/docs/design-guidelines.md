@@ -94,17 +94,21 @@ This document captures the current UI direction and reusable interface patterns 
 
 ## Accessibility baseline
 
-- Minimum target size for interactive controls: `44px` height.
+- Primary, secondary, and neutral controls use minimum target size `44px` height.
+- Dense content chips (quiz/podcast links in timeline blocks) may use `32-36px` height when spacing/focus remains clear.
 - Preserve visible keyboard focus (`:focus-visible`) on links, buttons, and form controls.
 - Do not communicate status by color alone where text labels exist.
-- Treat the `44px` target as a baseline, not a soft recommendation.
 
 ## Implementation notes
 
+- Shared primitives in `templates/base.html` enforce spacing/radius/depth/focus baselines portal-wide.
 - Main implementation lives in:
   - `templates/quizzes/progress.html`
   - `templates/quizzes/subject_detail.html`
+  - `templates/quizzes/wrapper.html`
   - `templates/base.html`
+  - `templates/registration/login.html`
+  - `templates/registration/signup.html`
 - Keep these patterns aligned if related templates are refactored.
 
 ## Change checklist for future UI updates

@@ -137,7 +137,7 @@ The repository includes a Django portal in `freudd_portal/` for user login, quiz
 - `GET/POST /api/quiz-state/<quiz_id>` (login-required structured quiz state)
 - `GET/POST /api/quiz-state/<quiz_id>/raw` (login-required legacy raw state payload)
 - `GET /api/gamification/me` (login-required gamification snapshot)
-- `GET /progress` (login-required dashboard with semester selector, subject cards, quiz score rows, and bottom `Indstillinger` section for enroll/unenroll)
+- `GET /progress` (login-required dashboard with header semester selector, `Mine fag` cards for inline enroll/unenroll, and `Quizhistorik` rows)
 - `POST /preferences/semester` (login-required semester update)
 - `GET /subjects/<subject_slug>` (login-required subject detail with lecture-first path + nested readings/assets)
 - `POST /subjects/<subject_slug>/enroll` (login-required)
@@ -157,6 +157,7 @@ The repository includes a Django portal in `freudd_portal/` for user login, quiz
 - Model: `UserExtensionCredential` (`ForeignKey(user)`, encrypted per-user credentials, unique `(user, extension)`)
 - Model: `ExtensionSyncLedger` (`ForeignKey(user)`, idempotent per-day sync rows for each extension)
 - UI: portal now uses a light-first palette with blue-accent cards and shared primitives across dashboard, course view, auth, and quiz wrapper.
+- UI: shared primitives enforce tokenized spacing/radius (`10/12/14/18/22/999`), subtle depth, and `44px` controls for primary/secondary/neutral actions.
 - UI: subject detail page is mobile-first and renders a vertical timeline with manual `<details>` toggles, per-lecture progress bars, nested reading cards, and direct quiz/podcast navigation.
 - UI: subject detail page shows enrollment status only; enroll/unenroll actions live on `/progress` under `Mine fag`.
 - UI layout contract: each lecture renders as a `timeline-item` with collapsed-by-default `lecture-details`; page includes top overview KPI cards plus `Udvid alle`/`Luk alle` controls and localStorage persistence for opened lecture panels.

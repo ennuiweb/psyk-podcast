@@ -4,12 +4,12 @@
 <style>
   .subject-layout {
     display: grid;
-    gap: 1rem;
+    gap: var(--space-4);
   }
 
   .subject-head {
     display: grid;
-    gap: 0.7rem;
+    gap: var(--space-3);
   }
 
   .subject-head h1 {
@@ -23,9 +23,10 @@
   .subject-status-pill {
     display: inline-flex;
     align-items: center;
-    border-radius: 999px;
+    min-height: 30px;
+    border-radius: var(--radius-pill);
     border: 1px solid var(--border);
-    padding: 0.2rem 0.58rem;
+    padding: 0 var(--space-2);
     font-size: 0.8rem;
     font-weight: 700;
     background: #ffffff;
@@ -48,16 +49,16 @@
   .overview-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.58rem;
+    gap: var(--space-2);
   }
 
   .overview-card {
     border: 1px solid var(--border);
-    border-radius: 14px;
+    border-radius: var(--radius-md);
     background: #ffffff;
-    padding: 0.65rem 0.72rem;
+    padding: var(--space-3);
     display: grid;
-    gap: 0.12rem;
+    gap: var(--space-1);
     min-height: 84px;
   }
 
@@ -85,13 +86,12 @@
 
   .next-focus {
     border: 1px solid rgba(47, 103, 232, 0.26);
-    border-radius: 18px;
-    padding: 0.86rem;
+    border-radius: var(--radius-lg);
+    padding: var(--space-4);
     background:
       radial-gradient(circle at 78% 0%, rgba(255, 255, 255, 0.24), transparent 43%),
       linear-gradient(145deg, #2f67e8, #4e83f0);
     color: #ffffff;
-    box-shadow: 0 16px 30px rgba(47, 103, 232, 0.24);
   }
 
   .next-focus-kicker {
@@ -104,27 +104,26 @@
   }
 
   .next-focus-title {
-    margin: 0.35rem 0 0;
+    margin: var(--space-2) 0 0;
     font-size: clamp(1.04rem, 4.9vw, 1.4rem);
     line-height: 1.2;
   }
 
   .next-focus-meta,
   .next-focus-step {
-    margin: 0.5rem 0 0;
+    margin: var(--space-2) 0 0;
     font-size: 0.86rem;
     opacity: 0.94;
   }
 
   .next-focus-actions {
-    margin-top: 0.76rem;
+    margin-top: var(--space-3);
     display: flex;
     flex-wrap: wrap;
-    gap: 0.52rem;
+    gap: var(--space-2);
   }
 
   .next-focus-cta {
-    box-shadow: 0 12px 20px rgba(14, 39, 102, 0.22);
     background: #ffffff;
     color: #204db9;
   }
@@ -148,13 +147,13 @@
 
   .subject-path {
     display: grid;
-    gap: 0.7rem;
+    gap: var(--space-3);
   }
 
   .path-topline {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: var(--space-2);
     align-items: baseline;
     justify-content: space-between;
   }
@@ -173,32 +172,32 @@
 
   .path-toolbar {
     display: flex;
-    gap: 0.48rem;
+    gap: var(--space-2);
     flex-wrap: wrap;
   }
 
   .toolbar-btn {
     border: 1px solid var(--border-strong);
-    border-radius: 999px;
-    padding: 0.35rem 0.72rem;
+    border-radius: var(--radius-pill);
+    min-height: var(--control-min-height);
+    padding: 0 var(--space-3);
     background: #f6f9ff;
     color: #34528a;
     font-size: 0.8rem;
     font-weight: 700;
     cursor: pointer;
-    transition: border-color 160ms ease, background 160ms ease, transform 140ms ease;
+    transition: border-color 160ms ease, background 160ms ease, color 160ms ease;
   }
 
   .toolbar-btn:hover {
     border-color: rgba(47, 103, 232, 0.46);
     background: var(--accent-soft);
-    transform: translateY(-1px);
+    color: #2148a8;
   }
 
   .toolbar-btn[disabled] {
     opacity: 0.54;
     cursor: not-allowed;
-    transform: none;
   }
 
   .timeline-list {
@@ -207,14 +206,14 @@
     padding: 0;
     position: relative;
     display: grid;
-    gap: 0.7rem;
+    gap: var(--space-3);
   }
 
   .timeline-list::before {
     content: "";
     position: absolute;
-    top: 10px;
-    bottom: 10px;
+    top: var(--space-3);
+    bottom: var(--space-3);
     left: 15px;
     width: 2px;
     background: linear-gradient(180deg, #b7c8ea, #d6e1f5);
@@ -222,19 +221,17 @@
 
   .timeline-item {
     position: relative;
-    padding-left: 2.5rem;
-    --enter-delay: 0ms;
-    animation: timeline-enter 280ms ease-out both;
-    animation-delay: var(--enter-delay);
+    padding-left: 36px;
+    animation: timeline-enter 220ms ease-out both;
   }
 
   .timeline-marker {
     position: absolute;
     left: 0;
-    top: 0.65rem;
+    top: var(--space-3);
     width: 30px;
     height: 30px;
-    border-radius: 999px;
+    border-radius: var(--radius-pill);
     border: 1px solid var(--border);
     background: #f4f8ff;
     color: #7e92b8;
@@ -243,7 +240,6 @@
     justify-content: center;
     font-size: 0.8rem;
     font-weight: 800;
-    box-shadow: 0 5px 12px rgba(43, 77, 142, 0.1);
   }
 
   .timeline-item.is-active .timeline-marker {
@@ -266,23 +262,23 @@
 
   .lecture-details {
     border: 1px solid var(--border);
-    border-radius: 14px;
+    border-radius: var(--radius-md);
     background: #ffffff;
     overflow: clip;
   }
 
   .lecture-details[open] {
     border-color: rgba(47, 103, 232, 0.45);
-    box-shadow: 0 0 0 3px rgba(47, 103, 232, 0.1);
+    box-shadow: 0 0 0 3px var(--focus-ring);
   }
 
   .lecture-summary {
     list-style: none;
     cursor: pointer;
-    padding: 0.7rem;
+    padding: var(--space-3);
     background: #f9fbff;
     display: grid;
-    gap: 0.38rem;
+    gap: var(--space-2);
     min-height: 64px;
   }
 
@@ -294,12 +290,12 @@
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    gap: 0.55rem;
+    gap: var(--space-2);
   }
 
   .lecture-labels {
     display: grid;
-    gap: 0.16rem;
+    gap: var(--space-1);
   }
 
   .lecture-title {
@@ -323,10 +319,13 @@
   }
 
   .status-badge {
-    border-radius: 999px;
+    border-radius: var(--radius-pill);
     border: 1px solid var(--border);
     background: #ffffff;
-    padding: 0.16rem 0.45rem;
+    min-height: 30px;
+    padding: 0 var(--space-2);
+    display: inline-flex;
+    align-items: center;
     font-size: 0.72rem;
     font-weight: 700;
     white-space: nowrap;
@@ -360,41 +359,60 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 0.5rem;
+    gap: var(--space-2);
     color: var(--muted);
     font-size: 0.78rem;
     font-weight: 700;
   }
 
   .progress-track {
+    width: 100%;
     height: 8px;
-    border-radius: 999px;
+    border-radius: var(--radius-pill);
     overflow: hidden;
     background: #e7edf9;
     border: 1px solid #d7e0f2;
+    appearance: none;
   }
 
-  .progress-fill {
-    width: var(--progress, 0%);
-    height: 100%;
-    border-radius: inherit;
+  .progress-track::-webkit-progress-bar {
+    background: #e7edf9;
+  }
+
+  .progress-track::-webkit-progress-value {
     background: linear-gradient(90deg, #2f67e8, #4f84ef);
-    transition: width 220ms ease;
   }
 
-  .timeline-item.is-completed .progress-fill {
+  .progress-track::-moz-progress-bar {
+    background: linear-gradient(90deg, #2f67e8, #4f84ef);
+  }
+
+  .timeline-item.is-completed .progress-track::-webkit-progress-value {
     background: linear-gradient(90deg, #1f8f4e, #39b968);
   }
 
-  .timeline-item.is-locked .progress-fill {
+  .timeline-item.is-completed .progress-track::-moz-progress-bar {
+    background: linear-gradient(90deg, #1f8f4e, #39b968);
+  }
+
+  .timeline-item.is-locked .progress-track::-webkit-progress-value {
     background: linear-gradient(90deg, #9aabc8, #a9b8d1);
+  }
+
+  .timeline-item.is-locked .progress-track::-moz-progress-bar {
+    background: linear-gradient(90deg, #9aabc8, #a9b8d1);
+  }
+
+  .lecture-summary-status {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
   }
 
   .lecture-chevron {
     color: #6f82a9;
     font-size: 0.96rem;
     transition: transform 140ms ease;
-    margin-left: 0.35rem;
   }
 
   .lecture-details[open] .lecture-chevron {
@@ -403,20 +421,20 @@
 
   .lecture-panel {
     border-top: 1px solid var(--border);
-    padding: 0.72rem;
+    padding: var(--space-3);
     display: grid;
-    gap: 0.6rem;
+    gap: var(--space-3);
     background: #ffffff;
   }
 
   .lecture-assets,
   .lecture-readings {
     border: 1px solid var(--border);
-    border-radius: 12px;
+    border-radius: var(--radius-sub);
     background: var(--surface-soft);
-    padding: 0.6rem;
+    padding: var(--space-3);
     display: grid;
-    gap: 0.45rem;
+    gap: var(--space-2);
   }
 
   .lecture-readings {
@@ -435,25 +453,29 @@
   .asset-links {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.35rem;
+    gap: var(--space-2);
   }
 
   .asset-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 34px;
     border: 1px solid var(--border);
-    border-radius: 999px;
-    padding: 0.22rem 0.55rem;
+    border-radius: var(--radius-pill);
+    padding: 0 var(--space-2);
     font-size: 0.78rem;
     font-weight: 700;
     color: #315289;
     text-decoration: none;
     background: #ffffff;
-    transition: border-color 160ms ease, background 160ms ease, transform 140ms ease;
+    transition: border-color 160ms ease, background 160ms ease, color 160ms ease;
   }
 
   .asset-link:hover {
     border-color: rgba(47, 103, 232, 0.46);
     background: var(--accent-soft);
-    transform: translateY(-1px);
+    color: #2148a8;
   }
 
   .asset-link.is-spotify {
@@ -472,16 +494,16 @@
     margin: 0;
     padding: 0;
     display: grid;
-    gap: 0.48rem;
+    gap: var(--space-2);
   }
 
   .reading-item {
     border: 1px solid var(--border);
-    border-radius: 10px;
+    border-radius: var(--radius-sm);
     background: #fdfefe;
-    padding: 0.58rem 0.62rem;
+    padding: var(--space-3);
     display: grid;
-    gap: 0.42rem;
+    gap: var(--space-2);
   }
 
   .reading-item.is-active {
@@ -503,7 +525,7 @@
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    gap: 0.5rem;
+    gap: var(--space-2);
     flex-wrap: wrap;
   }
 
@@ -520,14 +542,24 @@
   }
 
   .missing-badge {
-    border-radius: 999px;
+    border-radius: var(--radius-pill);
     border: 1px solid rgba(178, 59, 79, 0.55);
     color: var(--danger);
     background: #fff4f6;
-    padding: 0.13rem 0.45rem;
+    min-height: 30px;
+    padding: 0 var(--space-2);
+    display: inline-flex;
+    align-items: center;
     font-size: 0.72rem;
     font-weight: 700;
     white-space: nowrap;
+  }
+
+  .reading-status-wrap {
+    display: flex;
+    gap: var(--space-1);
+    align-items: center;
+    flex-wrap: wrap;
   }
 
   .missing-note {
@@ -539,8 +571,8 @@
   .empty-path {
     margin: 0;
     border: 1px dashed var(--border-strong);
-    border-radius: 12px;
-    padding: 0.8rem;
+    border-radius: var(--radius-sub);
+    padding: var(--space-3);
     background: #f7faff;
   }
 
@@ -571,17 +603,16 @@
     }
 
     .lecture-summary {
-      padding: 0.78rem;
+      padding: var(--space-4);
     }
 
     .lecture-panel {
-      padding: 0.82rem;
+      padding: var(--space-4);
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
     .timeline-item,
-    .progress-fill,
     .lecture-chevron,
     .toolbar-btn,
     .asset-link {
@@ -679,7 +710,6 @@
       {% for lecture in subject_path_lectures %}
       <li
         class="timeline-item {% if lecture.status == 'completed' %}is-completed{% elif lecture.status == 'active' %}is-active{% else %}is-locked{% endif %}"
-        style="--enter-delay: {{ forloop.counter0 }}0ms;"
       >
         <span class="timeline-marker" aria-hidden="true">{% if lecture.status == 'completed' %}✓{% elif lecture.status == 'active' %}•{% else %}🔒{% endif %}</span>
         <details class="lecture-details" data-lecture-key="{{ lecture.lecture_key }}">
@@ -689,7 +719,7 @@
                 <p class="lecture-title">{{ lecture.lecture_key }} · {{ lecture.lecture_title }}</p>
                 <p class="lecture-step">Trin {{ forloop.counter }} af {{ subject_path_overview.total_lectures }}</p>
               </div>
-              <div style="display:flex; align-items:center; gap:0.35rem;">
+              <div class="lecture-summary-status">
                 <span class="status-badge {% if lecture.status == 'active' %}is-active{% elif lecture.status == 'completed' %}is-completed{% else %}is-locked{% endif %}">
                   {% if lecture.status == 'completed' %}Fuldført{% elif lecture.status == 'active' %}Aktiv{% else %}Låst{% endif %}
                 </span>
@@ -701,9 +731,9 @@
               <span>Fremdrift</span>
               <span>{{ lecture.progress_percent }}%</span>
             </div>
-            <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{ lecture.progress_percent }}">
-              <div class="progress-fill" style="--progress: {{ lecture.progress_percent }}%;"></div>
-            </div>
+            <progress class="progress-track" value="{{ lecture.progress_percent }}" max="100" aria-label="Fremdrift {{ lecture.progress_percent }} procent">
+              {{ lecture.progress_percent }}%
+            </progress>
           </summary>
 
           <div class="lecture-panel">
@@ -741,7 +771,7 @@
                 <li class="reading-item {% if reading.is_missing %}is-missing{% endif %} {% if reading.status == 'active' %}is-active{% elif reading.status == 'completed' %}is-completed{% endif %}">
                   <div class="reading-head">
                     <p class="reading-name"><strong>{{ reading.reading_title }}</strong></p>
-                    <div style="display:flex;gap:0.35rem;align-items:center;flex-wrap:wrap;">
+                    <div class="reading-status-wrap">
                       {% if reading.is_missing %}
                       <span class="missing-badge">Mangler kilde</span>
                       {% endif %}
@@ -756,9 +786,9 @@
                   {% endif %}
 
                   <p class="reading-meta">{{ reading.completed_quizzes }} / {{ reading.total_quizzes }} quizzer</p>
-                  <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{ reading.progress_percent }}">
-                    <div class="progress-fill" style="--progress: {{ reading.progress_percent }}%;"></div>
-                  </div>
+                  <progress class="progress-track" value="{{ reading.progress_percent }}" max="100" aria-label="Fremdrift {{ reading.progress_percent }} procent">
+                    {{ reading.progress_percent }}%
+                  </progress>
 
                   {% if reading.assets.quizzes %}
                   <div>

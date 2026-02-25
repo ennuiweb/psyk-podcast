@@ -35,6 +35,7 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Credentials are encrypted at rest with Fernet via `FREUDD_CREDENTIALS_MASTER_KEY`.
 - Habitica server sync is active; Anki remains gated but server sync is deferred.
 - Theme direction: light-first UI (Space Grotesk + Manrope) with blue-accent cards inspired by the progress mockup.
+- Shared primitives in `templates/base.html` enforce radius/spacing/depth rules portal-wide, while page templates apply local layout detail.
 
 ## Routes
 - `GET/POST /accounts/signup`

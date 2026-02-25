@@ -61,6 +61,7 @@ This document captures the current UI direction and reusable interface patterns 
   - status pill with dot,
   - answer progress bar + numeric ratio,
   - fixed datetime formatting.
+- In quiz list rows, render difficulty as `Label · N spørgsmål` when total question count is known; hide the count entirely when unknown (`0`/missing).
 
 ## Subject detail structure (`/subjects/<subject_slug>`)
 
@@ -82,6 +83,7 @@ This document captures the current UI direction and reusable interface patterns 
 - Render lectures as a timeline of `timeline-item` rows with collapsed-by-default lecture details.
 - Use text status labels only when they differentiate state (`Fuldført`, `Ingen quiz`); do not render `Aktiv` labels by default.
 - Keep per-lecture and per-reading numeric progress counts; replace 0% bars with `Ikke startet endnu`.
+- In lecture/reading quiz link lists, render each level as `Label · N spørgsmål` when count is known, otherwise show only the level label.
 - Order difficulty actions `Let` -> `Mellem` -> `Svær` and reinforce with difficulty-specific color/icon coding.
 - Keep timeline connectors context-aware: connector from a lecture is accented only when that lecture is completed.
 - Keep compact spacing rhythm in expanded panels: denser inner padding/gaps than lecture headers.

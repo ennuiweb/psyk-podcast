@@ -335,9 +335,15 @@ def _quiz_display_context(*, episode_title: object, quiz_id: str) -> dict[str, o
     }
 
 
-def _compact_asset_links(assets: object) -> dict[str, list[dict[str, object]]]:
+def _compact_asset_links(
+    assets: object,
+    *,
+    question_count_by_quiz_id: dict[str, int | None] | None = None,
+) -> dict[str, list[dict[str, object]]]:
     if not isinstance(assets, dict):
         return {"quizzes": [], "podcasts": []}
+
+    question_count_cache = question_count_by_quiz_id if question_count_by_quiz_id is not None else {}
 
     compact_quizzes: list[dict[str, object]] = []
     seen_difficulties: set[str] = set()
@@ -353,11 +359,19 @@ def _compact_asset_links(assets: object) -> dict[str, list[dict[str, object]]]:
             if difficulty in seen_difficulties:
                 continue
             seen_difficulties.add(difficulty)
+            quiz_id = str(quiz.get("quiz_id") or "").strip()
+            question_count: int | None = None
+            if quiz_id:
+                if quiz_id not in question_count_cache:
+                    count = quiz_question_count(quiz_id)
+                    question_count_cache[quiz_id] = count if count and count > 0 else None
+                question_count = question_count_cache.get(quiz_id)
             compact_quizzes.append(
                 {
                     **quiz,
                     "difficulty": difficulty,
                     "difficulty_label_da": _difficulty_label(difficulty),
+                    "question_count": question_count,
                 }
             )
     compact_quizzes.sort(
@@ -389,11 +403,15 @@ def _enrich_subject_path_lectures(lectures: object) -> list[dict[str, object]]:
     if not isinstance(lectures, list):
         return []
 
+    question_count_by_quiz_id: dict[str, int | None] = {}
     enriched: list[dict[str, object]] = []
     for lecture in lectures:
         if not isinstance(lecture, dict):
             continue
-        lecture_assets = _compact_asset_links(lecture.get("lecture_assets"))
+        lecture_assets = _compact_asset_links(
+            lecture.get("lecture_assets"),
+            question_count_by_quiz_id=question_count_by_quiz_id,
+        )
         lecture_copy = dict(lecture)
         lecture_copy["lecture_assets"] = lecture_assets
         lecture_label, lecture_name = _lecture_display_parts(
@@ -418,7 +436,10 @@ def _enrich_subject_path_lectures(lectures: object) -> list[dict[str, object]]:
                 if not isinstance(reading, dict):
                     continue
                 reading_copy = dict(reading)
-                reading_copy["assets"] = _compact_asset_links(reading_copy.get("assets"))
+                reading_copy["assets"] = _compact_asset_links(
+                    reading_copy.get("assets"),
+                    question_count_by_quiz_id=question_count_by_quiz_id,
+                )
                 reading_copy["progress_percent"] = _progress_percent(
                     completed=reading_copy.get("completed_quizzes"),
                     total=reading_copy.get("total_quizzes"),

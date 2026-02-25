@@ -441,7 +441,7 @@
             </td>
             <td>
               <span class="difficulty-pill {% if row.difficulty_label == 'Let' %}is-easy{% elif row.difficulty_label == 'Svær' %}is-hard{% endif %}">
-                {{ row.difficulty_label }}
+                {{ row.difficulty_label }}{% if row.question_count > 0 %} · {{ row.question_count }} spørgsmål{% endif %}
               </span>
             </td>
             <td>

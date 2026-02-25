@@ -564,7 +564,7 @@ class QuizPortalTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Uge 1, forelæsning 1")
         self.assertContains(response, "Episode")
-        self.assertContains(response, "Mellem")
+        self.assertContains(response, "Mellem · 2 spørgsmål")
         self.assertContains(response, "Senest åbnet fag")
 
     def test_load_quiz_label_mapping_reads_subject_slug(self) -> None:
@@ -682,6 +682,7 @@ class QuizPortalTests(TestCase):
         self.assertContains(response, "lecture-details")
         self.assertNotContains(response, "lecture-details\" open")
         self.assertContains(response, "Quiz for alle kilder")
+        self.assertContains(response, "Mellem · 2 spørgsmål")
         self.assertContains(response, "Ikke startet endnu")
         self.assertNotContains(response, ">Aktiv<")
         self.assertContains(response, "Grundbog kapitel 01 - Introduktion til personlighedspsykologi")
@@ -689,6 +690,43 @@ class QuizPortalTests(TestCase):
         self.assertContains(response, "Koutsoumpis (2025)")
         self.assertNotContains(response, "Tilmeld fag")
         self.assertNotContains(response, "Afmeld fag")
+
+    def test_subject_detail_hides_question_count_when_quiz_file_is_missing(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+
+        with patch(
+            "quizzes.views.get_subject_learning_path_snapshot",
+            return_value={
+                "lectures": [
+                    {
+                        "lecture_key": "W01L1",
+                        "lecture_title": "W01L1 Intro",
+                        "status": "active",
+                        "completed_quizzes": 0,
+                        "total_quizzes": 1,
+                        "lecture_assets": {
+                            "quizzes": [
+                                {
+                                    "quiz_id": "ffffffff",
+                                    "difficulty": "medium",
+                                    "quiz_url": "/q/ffffffff.html",
+                                }
+                            ],
+                            "podcasts": [],
+                        },
+                        "readings": [],
+                    }
+                ],
+                "source_meta": {},
+            },
+        ):
+            response = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Mellem")
+        self.assertNotContains(response, "· 0 spørgsmål")
+        self.assertNotContains(response, "Ukendt")
 
     def test_subject_detail_orders_quiz_links_easy_medium_hard(self) -> None:
         enriched = _enrich_subject_path_lectures(

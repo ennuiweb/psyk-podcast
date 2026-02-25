@@ -751,7 +751,7 @@
                     <span class="asset-level-icon" aria-hidden="true">
                       {% if quiz.difficulty == 'easy' %}L{% elif quiz.difficulty == 'medium' %}M{% elif quiz.difficulty == 'hard' %}S{% else %}?{% endif %}
                     </span>
-                    {{ quiz.difficulty_label_da }}
+                    {{ quiz.difficulty_label_da }}{% if quiz.question_count %} · {{ quiz.question_count }} spørgsmål{% endif %}
                   </a>
                   {% endfor %}
                 </div>
@@ -837,7 +837,7 @@
                         <span class="asset-level-icon" aria-hidden="true">
                           {% if quiz.difficulty == 'easy' %}L{% elif quiz.difficulty == 'medium' %}M{% elif quiz.difficulty == 'hard' %}S{% else %}?{% endif %}
                         </span>
-                        {{ quiz.difficulty_label_da }}
+                        {{ quiz.difficulty_label_da }}{% if quiz.question_count %} · {{ quiz.question_count }} spørgsmål{% endif %}
                       </a>
                       {% endfor %}
                     </div>

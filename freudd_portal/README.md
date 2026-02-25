@@ -26,12 +26,13 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Completion rule: `currentView == "summary"` and `answers_count == question_count`.
 - Gamification core is quiz-driven and always available for authenticated users (`/progress`, `/api/gamification/me`).
 - Learning path on subject pages (`/subjects/<subject_slug>`) is lecture-first with nested reading status (`locked|active|completed|no_quiz`) and quiz/podcast navigation.
+- Subject detail UI now uses a vertical timeline with manual `<details>` toggles per lecture, plus a "What's next" hero card and optional `Start nu` CTA for active lecture quiz links.
 - `quiz_links.json` entries must include `subject_slug` so unit progression can be computed per subject.
 - Optional extensions (`habitica`, `anki`) are disabled by default and must be enabled per account via management command.
 - Extension sync is server-driven (`manage.py sync_extensions`) and runs only for enabled users with stored per-user credentials.
 - Credentials are encrypted at rest with Fernet via `FREUDD_CREDENTIALS_MASTER_KEY`.
 - Habitica server sync is active; Anki remains gated but server sync is deferred.
-- Theme direction: dark mode UI (Space Grotesk + Manrope); wrapper responds `ThemeChange: "dark"`.
+- Theme direction: light-first UI (Space Grotesk + Manrope) with blue-accent cards inspired by the progress mockup.
 
 ## Routes
 - `GET/POST /accounts/signup`
@@ -194,6 +195,8 @@ git pull --ff-only origin main
 sudo -u www-data /opt/podcasts/.venv/bin/python /opt/podcasts/freudd_portal/manage.py migrate
 sudo systemctl restart freudd-portal
 ```
+
+If `/opt/podcasts` does not exist on the current host, run these deploy commands on the production droplet where `freudd-portal.service` is installed.
 
 ## Operational notes
 - Health checks: use `GET` endpoints. `HEAD` on auth endpoints may return `405` because views allow `GET/POST`.

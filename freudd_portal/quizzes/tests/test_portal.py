@@ -660,8 +660,9 @@ class QuizPortalTests(TestCase):
         self.assertContains(response, "Læringssti")
         self.assertContains(response, "Næste fokus")
         self.assertContains(response, "W01L1")
-        self.assertContains(response, "path-node-row")
-        self.assertContains(response, "path-details")
+        self.assertContains(response, "timeline-item")
+        self.assertContains(response, "lecture-details")
+        self.assertNotContains(response, "lecture-details\" open")
         self.assertContains(response, "Lecture-quizzer")
         self.assertContains(response, "Grundbog kapitel 01 - Introduktion til personlighedspsykologi")
         self.assertContains(response, "MISSING")
@@ -735,6 +736,104 @@ class QuizPortalTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Næste fokus")
         self.assertContains(response, "W01L2")
+
+    def test_subject_detail_shows_next_focus_cta_with_lecture_asset_quiz(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+
+        response = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Start nu")
+        self.assertContains(response, reverse("quiz-wrapper", kwargs={"quiz_id": self.quiz_id}))
+
+    def test_subject_detail_uses_reading_quiz_as_next_focus_fallback(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+
+        custom_snapshot = {
+            "lectures": [
+                {
+                    "lecture_key": "W01L1",
+                    "lecture_title": "Intro",
+                    "status": "active",
+                    "completed_quizzes": 0,
+                    "total_quizzes": 1,
+                    "readings": [
+                        {
+                            "reading_key": "R1",
+                            "reading_title": "Reading",
+                            "is_missing": False,
+                            "status": "active",
+                            "completed_quizzes": 0,
+                            "total_quizzes": 1,
+                            "assets": {
+                                "quizzes": [{"quiz_url": reverse("quiz-wrapper", kwargs={"quiz_id": self.quiz_id})}],
+                                "podcasts": [],
+                            },
+                        }
+                    ],
+                    "lecture_assets": {"quizzes": [], "podcasts": []},
+                }
+            ],
+            "active_lecture": {
+                "lecture_key": "W01L1",
+                "lecture_title": "Intro",
+                "status": "active",
+                "completed_quizzes": 0,
+                "total_quizzes": 1,
+                "readings": [
+                    {
+                        "assets": {
+                            "quizzes": [{"quiz_url": reverse("quiz-wrapper", kwargs={"quiz_id": self.quiz_id})}],
+                            "podcasts": [],
+                        }
+                    }
+                ],
+                "lecture_assets": {"quizzes": [], "podcasts": []},
+            },
+            "source_meta": {},
+        }
+
+        with patch("quizzes.views.get_subject_learning_path_snapshot", return_value=custom_snapshot):
+            response = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Start nu")
+        self.assertContains(response, reverse("quiz-wrapper", kwargs={"quiz_id": self.quiz_id}))
+
+    def test_subject_detail_hides_next_focus_cta_without_quiz_links(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+
+        custom_snapshot = {
+            "lectures": [
+                {
+                    "lecture_key": "W01L1",
+                    "lecture_title": "Intro",
+                    "status": "active",
+                    "completed_quizzes": 0,
+                    "total_quizzes": 0,
+                    "readings": [],
+                    "lecture_assets": {"quizzes": [], "podcasts": []},
+                }
+            ],
+            "active_lecture": {
+                "lecture_key": "W01L1",
+                "lecture_title": "Intro",
+                "status": "active",
+                "completed_quizzes": 0,
+                "total_quizzes": 0,
+                "readings": [],
+                "lecture_assets": {"quizzes": [], "podcasts": []},
+            },
+            "source_meta": {},
+        }
+
+        with patch("quizzes.views.get_subject_learning_path_snapshot", return_value=custom_snapshot):
+            response = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertNotContains(response, "Start nu")
 
     def test_subject_detail_keeps_path_even_when_quiz_subject_slug_missing(self) -> None:
         user = self._create_user()

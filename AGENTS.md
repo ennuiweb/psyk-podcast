@@ -2,6 +2,10 @@
 
 - Når ændringer i `freudd_portal` er færdigimplementerede, skal der altid deployes til freudd-portal-miljøet som sidste trin.
 
+## Migration Policy
+
+- Ved model-/schemaændringer i `freudd_portal` skal migrations altid oprettes og køres (`makemigrations` + `migrate`) som en fast del af implementeringen.
+
 ## README Command Inventory (checked 2026-02-12)
 
 ### Selected explicit runnable commands

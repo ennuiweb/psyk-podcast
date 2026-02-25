@@ -113,6 +113,42 @@ def _rate_limit_exceeded(
     return (not result.allowed, result.retry_after_seconds)
 
 
+def _first_quiz_url_from_assets(assets: object) -> str | None:
+    if not isinstance(assets, dict):
+        return None
+    quizzes = assets.get("quizzes")
+    if not isinstance(quizzes, list):
+        return None
+    for quiz in quizzes:
+        if not isinstance(quiz, dict):
+            continue
+        quiz_url = str(quiz.get("quiz_url") or "").strip()
+        if quiz_url:
+            return quiz_url
+    return None
+
+
+def _next_focus_quiz_url(active_lecture: object) -> str | None:
+    if not isinstance(active_lecture, dict):
+        return None
+
+    lecture_quiz_url = _first_quiz_url_from_assets(active_lecture.get("lecture_assets"))
+    if lecture_quiz_url:
+        return lecture_quiz_url
+
+    readings = active_lecture.get("readings")
+    if not isinstance(readings, list):
+        return None
+
+    for reading in readings:
+        if not isinstance(reading, dict):
+            continue
+        reading_quiz_url = _first_quiz_url_from_assets(reading.get("assets"))
+        if reading_quiz_url:
+            return reading_quiz_url
+    return None
+
+
 @require_http_methods(["GET", "POST"])
 def signup_view(request: HttpRequest) -> HttpResponse:
     if request.user.is_authenticated:
@@ -496,6 +532,9 @@ def subject_detail_view(request: HttpRequest, subject_slug: str) -> HttpResponse
         source_meta = subject_path.get("source_meta") if isinstance(subject_path.get("source_meta"), dict) else {}
         readings_error = str(source_meta.get("reading_error") or "").strip() or None
 
+    active_lecture = subject_path.get("active_lecture")
+    subject_path_next_focus_url = _next_focus_quiz_url(active_lecture)
+
     return render(
         request,
         "quizzes/subject_detail.html",
@@ -504,6 +543,7 @@ def subject_detail_view(request: HttpRequest, subject_slug: str) -> HttpResponse
             "is_enrolled": is_enrolled,
             "readings_error": readings_error,
             "subject_path_lectures": subject_path.get("lectures", []),
-            "subject_path_active_lecture": subject_path.get("active_lecture"),
+            "subject_path_active_lecture": active_lecture,
+            "subject_path_next_focus_url": subject_path_next_focus_url,
         },
     )

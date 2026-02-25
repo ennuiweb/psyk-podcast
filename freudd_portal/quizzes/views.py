@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import logging
+import re
 from urllib.parse import urlencode
 
 from django.conf import settings
@@ -54,6 +55,11 @@ DIFFICULTY_LABELS_DA = {
     "hard": "Svær",
     "unknown": "Ukendt",
 }
+LECTURE_KEY_DISPLAY_RE = re.compile(r"^W(?P<week>\d{1,2})L(?P<lecture>\d+)$", re.IGNORECASE)
+LECTURE_META_SUFFIX_RE = re.compile(
+    r"\s*\((?:forelæsning|forelaesning)\s+\d+\s*,\s*\d{4}-\d{2}-\d{2}\)\s*$",
+    re.IGNORECASE,
+)
 
 
 def _is_http_insecure(request: HttpRequest) -> bool:
@@ -180,6 +186,27 @@ def _progress_percent(*, completed: object, total: object) -> int:
     return max(0, min(100, int(round((completed_count / total_count) * 100))))
 
 
+def _lecture_display_title(*, lecture_key: object, lecture_title: object) -> str:
+    raw_key = str(lecture_key or "").strip().upper()
+    raw_title = str(lecture_title or "").strip()
+
+    match = LECTURE_KEY_DISPLAY_RE.match(raw_key)
+    if match:
+        week = int(match.group("week"))
+        lecture = int(match.group("lecture"))
+        label = f"Uge {week}, forelæsning {lecture}"
+    else:
+        label = raw_key or raw_title
+
+    cleaned_title = raw_title
+    if raw_key and cleaned_title.upper().startswith(raw_key):
+        cleaned_title = cleaned_title[len(raw_key) :].lstrip(" -·").strip()
+    cleaned_title = LECTURE_META_SUFFIX_RE.sub("", cleaned_title).strip()
+    if not cleaned_title:
+        return label
+    return f"{label} · {cleaned_title}"
+
+
 def _compact_asset_links(assets: object) -> dict[str, list[dict[str, object]]]:
     if not isinstance(assets, dict):
         return {"quizzes": [], "podcasts": []}
@@ -234,6 +261,10 @@ def _enrich_subject_path_lectures(lectures: object) -> list[dict[str, object]]:
         lecture_assets = _compact_asset_links(lecture.get("lecture_assets"))
         lecture_copy = dict(lecture)
         lecture_copy["lecture_assets"] = lecture_assets
+        lecture_copy["lecture_display_title"] = _lecture_display_title(
+            lecture_key=lecture_copy.get("lecture_key"),
+            lecture_title=lecture_copy.get("lecture_title"),
+        )
         lecture_copy["progress_percent"] = _progress_percent(
             completed=lecture_copy.get("completed_quizzes"),
             total=lecture_copy.get("total_quizzes"),

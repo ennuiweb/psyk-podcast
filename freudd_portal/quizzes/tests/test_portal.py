@@ -647,7 +647,9 @@ class QuizPortalTests(TestCase):
         self.assertNotContains(response, "Næste fokus")
         self.assertNotContains(response, "Trin ")
         self.assertNotContains(response, "Låst")
-        self.assertContains(response, "W01L1")
+        self.assertContains(response, "Uge 1, forelæsning 1")
+        self.assertNotContains(response, "W01L1 ·")
+        self.assertNotContains(response, "Introforelaesning (Forelaesning 1, 2026-02-02)")
         self.assertContains(response, "timeline-item")
         self.assertContains(response, "lecture-details")
         self.assertNotContains(response, "lecture-details\" open")
@@ -813,7 +815,7 @@ class QuizPortalTests(TestCase):
         response = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
         self.assertEqual(response.status_code, 200)
         self.assertNotContains(response, "Reading-nøglen kunne ikke indlæses.")
-        self.assertContains(response, "W01L1")
+        self.assertContains(response, "Uge 1, forelæsning 1")
 
     def test_subject_detail_shows_error_when_both_master_and_fallback_missing(self) -> None:
         user = self._create_user()

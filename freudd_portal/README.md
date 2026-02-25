@@ -27,6 +27,7 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Learning path on subject pages (`/subjects/<subject_slug>`) is lecture-first with nested reading status (`active|completed|no_quiz`) and quiz/podcast navigation.
 - Subject detail UI is mobile-first and uses a vertical timeline with manual `<details>` toggles, per-lecture progress bars, and compact quiz chips per difficulty.
 - Subject detail includes top overview KPI cards, `Udvid alle`/`Luk alle` controls, and local browser persistence of opened lectures.
+- Module labels in subject detail use `Uge x, forelæsning x` naming and hide trailing heading metadata like `(Forelæsning x, YYYY-MM-DD)`.
 - `quiz_links.json` entries must include `subject_slug` so unit progression can be computed per subject.
 - Optional extensions (`habitica`, `anki`) are disabled by default and must be enabled per account via management command.
 - Extension sync is server-driven (`manage.py sync_extensions`) and runs only for enabled users with stored per-user credentials.

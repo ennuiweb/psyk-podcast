@@ -300,11 +300,32 @@ class QuizPortalTests(TestCase):
         quiz_url = reverse("quiz-wrapper", kwargs={"quiz_id": self.quiz_id})
         response = self.client.get(quiz_url)
         self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Uge 1, forelæsning 1")
+        self.assertContains(response, "Episode")
         self.assertNotContains(response, "Tag quizzen anonymt.")
         self.assertNotContains(response, "Log ind for ")
         self.assertContains(response, "Quizzen er færdig. Log ind nu for at gemme din score og se din samlede score.")
         self.assertContains(response, f"{reverse('login')}?{urlencode({'next': quiz_url})}")
         self.assertContains(response, f"{reverse('signup')}?{urlencode({'next': quiz_url})}")
+
+    def test_quiz_wrapper_formats_complex_episode_title(self) -> None:
+        self._write_links_file(
+            {
+                self.quiz_id: {
+                    "title": "W1L1 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3",
+                    "difficulty": "medium",
+                }
+            }
+        )
+        quiz_url = reverse("quiz-wrapper", kwargs={"quiz_id": self.quiz_id})
+        response = self.client.get(quiz_url)
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Uge 1, forelæsning 1")
+        self.assertContains(response, "Alle kilder")
+        self.assertContains(response, "Deep dive")
+        self.assertContains(response, "EN")
+        self.assertNotContains(response, "hash=f104a13e")
+        self.assertNotContains(response, ".mp3")
 
     def test_quiz_wrapper_hides_anonymous_end_prompt_for_logged_in_user(self) -> None:
         self._create_user()
@@ -541,7 +562,8 @@ class QuizPortalTests(TestCase):
 
         response = self.client.get(reverse("progress"))
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "W1L1 - Episode")
+        self.assertContains(response, "Uge 1, forelæsning 1")
+        self.assertContains(response, "Episode")
         self.assertContains(response, "Mellem")
         self.assertContains(response, "Senest åbnet fag")
 

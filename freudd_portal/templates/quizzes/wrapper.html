@@ -1,7 +1,86 @@
 {% extends "base.html" %}
-{% block title %}Quiz · {{ quiz_title }}{% endblock %}
+{% block title %}Quiz · {{ quiz_page_title|default:quiz_title }}{% endblock %}
 {% block content %}
 <style>
+  .quiz-shell {
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  .quiz-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: var(--space-3);
+    background: linear-gradient(180deg, #f7faff 0%, #ffffff 100%);
+  }
+
+  .quiz-headline {
+    display: grid;
+    gap: var(--space-2);
+    max-width: 78ch;
+  }
+
+  .quiz-module {
+    margin: 0;
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    min-height: 28px;
+    border-radius: var(--radius-pill);
+    border: 1px solid rgba(47, 103, 232, 0.34);
+    background: #edf3ff;
+    color: #2454be;
+    padding: 0 var(--space-2);
+    font-size: 0.74rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    font-weight: 800;
+  }
+
+  .quiz-title {
+    margin: 0;
+    font-size: clamp(1.28rem, 3vw, 2.05rem);
+    line-height: 1.18;
+    overflow-wrap: anywhere;
+  }
+
+  .quiz-meta-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1);
+    align-items: center;
+  }
+
+  .quiz-chip {
+    display: inline-flex;
+    align-items: center;
+    min-height: 28px;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--border);
+    background: #ffffff;
+    color: #44577e;
+    padding: 0 var(--space-2);
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+  }
+
+  .quiz-chip.is-difficulty {
+    border-color: rgba(47, 103, 232, 0.36);
+    background: #ecf2ff;
+    color: #244fb4;
+  }
+
+  .quiz-chip.is-id {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    letter-spacing: 0;
+  }
+
   .quiz-login-note-links {
     display: inline-flex;
     gap: var(--space-2);
@@ -27,15 +106,58 @@
   }
 
   .quiz-stage {
-    margin-top: var(--space-3);
     border: 1px solid var(--border);
     border-radius: var(--radius-md);
     background: #ffffff;
     padding: var(--space-4);
   }
 
+  .quiz-flow-head {
+    display: grid;
+    gap: var(--space-2);
+    margin-bottom: var(--space-3);
+  }
+
+  .quiz-flow-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--space-2);
+    align-items: baseline;
+  }
+
   .quiz-counter {
-    margin: 0 0 var(--space-1);
+    margin: 0;
+    font-weight: 700;
+  }
+
+  .quiz-answered {
+    margin: 0;
+    color: #566d98;
+    font-size: 0.84rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .quiz-progress-track {
+    width: 100%;
+    height: 9px;
+    border-radius: var(--radius-pill);
+    border: 1px solid #d5e0f4;
+    background: #edf3ff;
+    overflow: hidden;
+    appearance: none;
+  }
+
+  .quiz-progress-track::-webkit-progress-bar {
+    background: #edf3ff;
+  }
+
+  .quiz-progress-track::-webkit-progress-value {
+    background: linear-gradient(90deg, #2f67e8, #5a89f0);
+  }
+
+  .quiz-progress-track::-moz-progress-bar {
+    background: linear-gradient(90deg, #2f67e8, #5a89f0);
   }
 
   .quiz-question {
@@ -54,13 +176,14 @@
     text-align: left;
     display: flex;
     align-items: center;
+    gap: var(--space-2);
     width: 100%;
     min-height: var(--control-min-height);
     border: 1px solid var(--border-strong);
     border-radius: var(--radius-sub);
-    background: #f8faff;
+    background: #fbfdff;
     color: var(--ink);
-    padding: 0 var(--space-3);
+    padding: var(--space-2) var(--space-3);
     cursor: pointer;
     transition: border-color 140ms ease, background 140ms ease, color 140ms ease;
   }
@@ -84,6 +207,25 @@
   .quiz-option.is-wrong {
     border-color: rgba(178, 59, 79, 0.45);
     background: #ffeef2;
+  }
+
+  .quiz-option-index {
+    flex: 0 0 auto;
+    width: 24px;
+    height: 24px;
+    border-radius: var(--radius-pill);
+    border: 1px solid rgba(47, 103, 232, 0.36);
+    color: #2a58bd;
+    background: #edf3ff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.72rem;
+    font-weight: 800;
+  }
+
+  .quiz-option-text {
+    overflow-wrap: anywhere;
   }
 
   .quiz-hint,
@@ -172,14 +314,27 @@
     .summary-grid {
       grid-template-columns: 1fr;
     }
+
+    .quiz-head {
+      padding: var(--space-3);
+    }
   }
 </style>
 <div class="card quiz-shell">
   <form class="inline-form is-hidden">{% csrf_token %}</form>
   <div class="quiz-head">
-    <div>
+    <div class="quiz-headline">
+      {% if quiz_module_label %}
+      <p class="quiz-module">{{ quiz_module_label }}</p>
+      {% endif %}
       <h1 class="quiz-title">{{ quiz_title }}</h1>
-      <p class="muted">Sværhedsgrad: {{ quiz_difficulty_label }} · ID: {{ quiz_id }}</p>
+      <div class="quiz-meta-chips">
+        <span class="quiz-chip is-difficulty">{{ quiz_difficulty_label }}</span>
+        {% for chip in quiz_meta_chips %}
+        <span class="quiz-chip">{{ chip }}</span>
+        {% endfor %}
+        <span class="quiz-chip is-id">ID {{ quiz_id }}</span>
+      </div>
     </div>
     {% if user_is_authenticated %}
     <a class="ghost-link" href="{% url 'progress' %}">Tilbage til min side</a>
@@ -190,7 +345,21 @@
   <div id="quiz-loading" class="quiz-loading">Indlæser quiz…</div>
 
   <section id="quiz-question-view" class="quiz-stage is-hidden">
-    <p class="muted quiz-counter" id="quiz-counter"></p>
+    <div class="quiz-flow-head">
+      <div class="quiz-flow-row">
+        <p class="muted quiz-counter" id="quiz-counter"></p>
+        <p class="quiz-answered" id="quiz-answered"></p>
+      </div>
+      <progress
+        id="quiz-progress"
+        class="quiz-progress-track"
+        value="0"
+        max="100"
+        aria-label="Progress i quiz"
+      >
+        0%
+      </progress>
+    </div>
     <h2 class="quiz-question" id="quiz-question"></h2>
     <div id="quiz-hint" class="quiz-hint is-hidden"></div>
     <div id="quiz-options" class="quiz-options"></div>
@@ -256,6 +425,8 @@
     const summaryViewNode = document.getElementById("quiz-summary-view");
 
     const counterNode = document.getElementById("quiz-counter");
+    const answeredNode = document.getElementById("quiz-answered");
+    const progressNode = document.getElementById("quiz-progress");
     const questionNode = document.getElementById("quiz-question");
     const hintNode = document.getElementById("quiz-hint");
     const hintBtnNode = document.getElementById("quiz-hint-btn");
@@ -483,8 +654,14 @@
       const options = Array.isArray(question.answerOptions) ? question.answerOptions : [];
       const selectedOption = state.userAnswers[String(state.currentQuestionIndex)];
       const hasAnswered = selectedOption !== null && selectedOption !== undefined;
+      const totalQuestions = quiz.questions.length;
+      const answeredQuestions = answeredCount();
+      const flowProgress = totalQuestions ? Math.round(((state.currentQuestionIndex + 1) / totalQuestions) * 100) : 0;
 
-      counterNode.textContent = `Spørgsmål ${state.currentQuestionIndex + 1} af ${quiz.questions.length}`;
+      counterNode.textContent = `Spørgsmål ${state.currentQuestionIndex + 1} af ${totalQuestions}`;
+      answeredNode.textContent = `Besvaret: ${answeredQuestions} / ${totalQuestions}`;
+      progressNode.value = flowProgress;
+      progressNode.textContent = `${flowProgress}%`;
       questionNode.textContent = String(question.question || "");
 
       optionsNode.innerHTML = "";
@@ -492,7 +669,14 @@
         const button = document.createElement("button");
         button.type = "button";
         button.className = "quiz-option";
-        button.textContent = String(option?.text || "");
+        const optionLabel = document.createElement("span");
+        optionLabel.className = "quiz-option-index";
+        optionLabel.textContent = String.fromCharCode(65 + optionIndex);
+
+        const optionText = document.createElement("span");
+        optionText.className = "quiz-option-text";
+        optionText.textContent = String(option?.text || "");
+        button.append(optionLabel, optionText);
         if (selectedOption === optionIndex) {
           button.classList.add("is-selected");
           if (option?.isCorrect === true) {

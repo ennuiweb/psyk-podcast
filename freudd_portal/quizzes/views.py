@@ -66,6 +66,13 @@ LECTURE_META_SUFFIX_RE = re.compile(
     r"\s*\((?:forelæsning|forelaesning)\s+\d+\s*,\s*\d{4}-\d{2}-\d{2}\)\s*$",
     re.IGNORECASE,
 )
+QUIZ_CFG_BLOCK_RE = re.compile(r"\{(?P<body>[^{}]+)\}")
+QUIZ_CFG_PAIR_RE = re.compile(r"(?P<key>[a-z0-9._:+-]+)=(?P<value>[^{}\s]+)", re.IGNORECASE)
+QUIZ_FILE_SUFFIX_RE = re.compile(r"\.(?:mp3|m4a|wav|aac|flac|ogg|json|html)$", re.IGNORECASE)
+QUIZ_LANGUAGE_TAG_RE = re.compile(r"\[(?P<lang>[A-Za-z]{2,5})\]")
+QUIZ_BRIEF_PREFIX_RE = re.compile(r"^\s*\[brief\]\s*", re.IGNORECASE)
+QUIZ_LECTURE_KEY_RE = re.compile(r"\bW(?P<week>\d{1,2})L(?P<lecture>\d+)\b", re.IGNORECASE)
+MULTISPACE_RE = re.compile(r"\s+")
 
 
 def _is_http_insecure(request: HttpRequest) -> bool:
@@ -218,6 +225,114 @@ def _lecture_display_parts(*, lecture_key: object, lecture_title: object) -> tup
     if label:
         return label, ""
     return "", raw_title
+
+
+def _quiz_cfg_tags(raw_title: str) -> dict[str, str]:
+    tags: dict[str, str] = {}
+    for block_match in QUIZ_CFG_BLOCK_RE.finditer(raw_title):
+        block = str(block_match.group("body") or "").strip()
+        for token_match in QUIZ_CFG_PAIR_RE.finditer(block):
+            key = str(token_match.group("key") or "").strip().lower()
+            value = str(token_match.group("value") or "").strip()
+            if key and value:
+                tags[key] = value
+    return tags
+
+
+def _quiz_module_label_from_text(value: str) -> str:
+    match = QUIZ_LECTURE_KEY_RE.search(value)
+    if not match:
+        return ""
+    week = int(match.group("week"))
+    lecture = int(match.group("lecture"))
+    return f"Uge {week}, forelæsning {lecture}"
+
+
+def _quiz_core_parts(episode_title: object) -> tuple[str, str, dict[str, str], str]:
+    raw_title = str(episode_title or "").strip()
+    if not raw_title:
+        return "", "Quiz", {}, ""
+
+    without_suffix = QUIZ_FILE_SUFFIX_RE.sub("", raw_title)
+    cfg_tags = _quiz_cfg_tags(without_suffix)
+    without_cfg = QUIZ_CFG_BLOCK_RE.sub("", without_suffix).strip()
+
+    language = str(cfg_tags.get("lang") or "").strip()
+    if not language:
+        lang_matches = QUIZ_LANGUAGE_TAG_RE.findall(without_cfg)
+        if lang_matches:
+            language = str(lang_matches[-1]).strip()
+    without_language = QUIZ_LANGUAGE_TAG_RE.sub("", without_cfg).strip()
+
+    without_brief = QUIZ_BRIEF_PREFIX_RE.sub("", without_language).strip()
+    module_label = _quiz_module_label_from_text(without_brief)
+
+    lecture_match = QUIZ_LECTURE_KEY_RE.search(without_brief)
+    if lecture_match:
+        without_brief = (
+            f"{without_brief[: lecture_match.start()]} {without_brief[lecture_match.end() :]}"
+        ).strip()
+
+    title = without_brief.lstrip("-·: ").strip()
+    title = MULTISPACE_RE.sub(" ", title).strip()
+    if not title:
+        title = "Quiz"
+
+    return module_label, title, cfg_tags, language.upper()
+
+
+def _quiz_meta_chips(*, cfg_tags: dict[str, str], language: str) -> list[str]:
+    chips: list[str] = []
+    seen: set[str] = set()
+
+    def _add(value: str) -> None:
+        candidate = value.strip()
+        if not candidate:
+            return
+        key = candidate.casefold()
+        if key in seen:
+            return
+        seen.add(key)
+        chips.append(candidate)
+
+    media_type = str(cfg_tags.get("type") or "").strip().lower()
+    if media_type == "audio":
+        _add("Lyd")
+    elif media_type:
+        _add(media_type.replace("-", " ").replace("_", " ").title())
+
+    format_token = str(cfg_tags.get("format") or "").strip().lower()
+    if format_token == "deep-dive":
+        _add("Deep dive")
+    elif format_token == "brief":
+        _add("Brief")
+    elif format_token:
+        _add(format_token.replace("-", " ").replace("_", " ").title())
+
+    length_token = str(cfg_tags.get("length") or "").strip().lower()
+    if length_token == "long":
+        _add("Lang")
+    elif length_token in {"default", "standard"}:
+        _add("Standard")
+    elif length_token:
+        _add(length_token.replace("-", " ").replace("_", " ").title())
+
+    if language:
+        _add(language)
+
+    return chips
+
+
+def _quiz_display_context(*, episode_title: object, quiz_id: str) -> dict[str, object]:
+    module_label, title, cfg_tags, language = _quiz_core_parts(episode_title)
+    meta_chips = _quiz_meta_chips(cfg_tags=cfg_tags, language=language)
+    raw_title = str(episode_title or "").strip() or str(quiz_id)
+    return {
+        "raw_title": raw_title,
+        "title": title,
+        "module_label": module_label,
+        "meta_chips": meta_chips,
+    }
 
 
 def _compact_asset_links(assets: object) -> dict[str, list[dict[str, object]]]:
@@ -470,11 +585,20 @@ def quiz_wrapper_view(request: HttpRequest, quiz_id: str) -> HttpResponse:
     _ensure_quiz_exists_or_404(quiz_id)
 
     label = load_quiz_label_mapping().get(quiz_id)
+    episode_title = label.episode_title if label else quiz_id
+    difficulty_label = _difficulty_label(label.difficulty if label else "unknown")
+    quiz_display = _quiz_display_context(episode_title=episode_title, quiz_id=quiz_id)
     quiz_path = reverse("quiz-wrapper", kwargs={"quiz_id": quiz_id})
     context = {
         "quiz_id": quiz_id,
-        "quiz_title": label.episode_title if label else quiz_id,
-        "quiz_difficulty_label": _difficulty_label(label.difficulty if label else "unknown"),
+        "quiz_page_title": " · ".join(
+            item for item in (quiz_display.get("module_label"), quiz_display.get("title")) if item
+        ),
+        "quiz_title": quiz_display.get("title") or quiz_id,
+        "quiz_module_label": quiz_display.get("module_label") or "",
+        "quiz_meta_chips": list(quiz_display.get("meta_chips") or []),
+        "quiz_raw_title": quiz_display.get("raw_title") or episode_title,
+        "quiz_difficulty_label": difficulty_label,
         "quiz_content_url": reverse("quiz-content", kwargs={"quiz_id": quiz_id}),
         "state_api_url": reverse("quiz-state", kwargs={"quiz_id": quiz_id}),
         "user_is_authenticated": request.user.is_authenticated,
@@ -637,10 +761,14 @@ def progress_view(request: HttpRequest) -> HttpResponse:
     rows: list[dict[str, object]] = []
     for row in progress_rows:
         label = label_mapping.get(row.quiz_id)
+        episode_title = label.episode_title if label else row.quiz_id
+        quiz_display = _quiz_display_context(episode_title=episode_title, quiz_id=row.quiz_id)
         rows.append(
             {
                 "quiz_id": row.quiz_id,
-                "title": label.episode_title if label else row.quiz_id,
+                "title": quiz_display.get("title") or row.quiz_id,
+                "module_label": quiz_display.get("module_label") or "",
+                "meta_chips": list(quiz_display.get("meta_chips") or []),
                 "difficulty_label": _difficulty_label(label.difficulty if label else "unknown"),
                 "status": row.status,
                 "status_label": row.get_status_display(),

@@ -199,10 +199,46 @@
     text-decoration: none;
   }
 
-  .quiz-id {
+  .quiz-module-label {
+    margin: 0 0 var(--space-1);
+    display: inline-flex;
+    align-items: center;
+    min-height: 24px;
+    border-radius: var(--radius-pill);
+    border: 1px solid rgba(47, 103, 232, 0.28);
+    background: #edf3ff;
+    color: #2753b6;
+    padding: 0 var(--space-2);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    font-weight: 800;
+  }
+
+  .quiz-meta-row {
     margin-top: var(--space-1);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1);
+    align-items: center;
+  }
+
+  .quiz-mini-chip {
+    display: inline-flex;
+    align-items: center;
+    min-height: 22px;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--border);
+    background: #f7faff;
+    color: #566d97;
+    padding: 0 var(--space-2);
+    font-size: 0.68rem;
+    font-weight: 700;
+  }
+
+  .quiz-id {
     color: var(--muted);
-    font-size: 0.74rem;
+    font-size: 0.7rem;
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   }
 
@@ -390,8 +426,18 @@
           {% for row in rows %}
           <tr>
             <td>
+              {% if row.module_label %}
+              <div class="quiz-module-label">{{ row.module_label }}</div>
+              {% endif %}
               <a class="quiz-link" href="{{ row.quiz_url }}">{{ row.title }}</a>
-              <div class="quiz-id">{{ row.quiz_id }}</div>
+              <div class="quiz-meta-row">
+                {% for chip in row.meta_chips %}
+                {% if forloop.counter <= 2 %}
+                <span class="quiz-mini-chip">{{ chip }}</span>
+                {% endif %}
+                {% endfor %}
+                <span class="quiz-id">{{ row.quiz_id }}</span>
+              </div>
             </td>
             <td>
               <span class="difficulty-pill {% if row.difficulty_label == 'Let' %}is-easy{% elif row.difficulty_label == 'Svær' %}is-hard{% endif %}">

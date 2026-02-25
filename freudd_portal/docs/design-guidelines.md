@@ -84,8 +84,23 @@ This document captures the current UI direction and reusable interface patterns 
 - Keep per-lecture and per-reading numeric progress counts; replace 0% bars with `Ikke startet endnu`.
 - Order difficulty actions `Let` -> `Mellem` -> `Svær` and reinforce with difficulty-specific color/icon coding.
 - Keep timeline connectors context-aware: connector from a lecture is accented only when that lecture is completed.
+- Keep compact spacing rhythm in expanded panels: denser inner padding/gaps than lecture headers.
 - Keep `Udvid alle` and `Luk alle` as neutral productivity controls.
 - Preserve open lecture state in local browser storage for continuity.
+
+## Quiz wrapper structure (`/q/<quiz_id>.html`)
+
+### Header identity
+
+- Render quiz identity as two levels: module label (`Uge x, forelæsning x`) and cleaned quiz title.
+- Show metadata as compact chips (for example `Lyd`, `Deep dive`, `EN`) plus explicit difficulty and quiz id.
+- Avoid exposing raw file metadata in the visible title (`{type=...}`, hash fragments, file extensions).
+
+### Question flow
+
+- Keep question stage action-first and focused on one decision at a time.
+- Show lightweight flow feedback (`Spørgsmål x/y`, `Besvaret x/y`, and a compact progress bar).
+- Answer options should keep strong hit areas and clear selected/correct/wrong states without relying on color alone.
 
 ## Component hierarchy
 

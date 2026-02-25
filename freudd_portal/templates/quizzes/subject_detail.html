@@ -20,28 +20,6 @@
     margin: 0;
   }
 
-  .subject-status-pill {
-    display: inline-flex;
-    align-items: center;
-    min-height: 30px;
-    border-radius: var(--radius-pill);
-    border: 1px solid var(--border);
-    padding: 0 var(--space-2);
-    font-size: 0.8rem;
-    font-weight: 700;
-    background: #ffffff;
-  }
-
-  .subject-status-pill.is-enrolled {
-    border-color: rgba(31, 143, 78, 0.35);
-    color: var(--success);
-    background: #eefbf2;
-  }
-
-  .subject-status-pill.is-not-enrolled {
-    color: var(--muted);
-  }
-
   .subject-back {
     justify-self: flex-start;
   }
@@ -715,9 +693,6 @@
     <div>
       <h1 class="quiz-title">{{ subject.title }}</h1>
       <p class="muted">{{ subject.description }}</p>
-      <span class="subject-status-pill {% if is_enrolled %}is-enrolled{% else %}is-not-enrolled{% endif %}">
-        {% if is_enrolled %}Tilmeldt{% else %}Ikke tilmeldt{% endif %}
-      </span>
     </div>
     <a class="ghost-link subject-back" href="{% url 'progress' %}">Tilbage til min side</a>
   </header>

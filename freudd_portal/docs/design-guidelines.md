@@ -66,7 +66,7 @@ This document captures the current UI direction and reusable interface patterns 
 
 ### Header and orientation
 
-- Keep subject title/description and enrollment status in the top header block.
+- Keep subject title/description in the top header block; do not render enrollment-state badges on this page.
 - Keep the return navigation (`Tilbage til min side`) as a utility action.
 - Keep actions in this page focused on learning flow, not enrollment mutation.
 

@@ -665,7 +665,8 @@ class QuizPortalTests(TestCase):
         detail_url = reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"})
         response = self.client.get(detail_url)
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "Ikke tilmeldt")
+        self.assertNotContains(response, "Ikke tilmeldt")
+        self.assertNotContains(response, "Tilmeldt")
         self.assertContains(response, "Udvid alle")
         self.assertNotContains(response, "<h2>Læringssti</h2>", html=True)
         self.assertNotContains(response, "Næste fokus")
@@ -743,7 +744,7 @@ class QuizPortalTests(TestCase):
         self.assertNotContains(response, "https://example.test/podcast/w01l1-alle-kilder.mp3")
         self.assertNotContains(response, "https://example.test/podcast/w01l1-intro.mp3")
 
-    def test_subject_detail_shows_enrolled_status_for_enrolled_user(self) -> None:
+    def test_subject_detail_hides_enrollment_badge_for_enrolled_user(self) -> None:
         user = self._create_user()
         SubjectEnrollment.objects.create(user=user, subject_slug="personlighedspsykologi")
         self.client.force_login(user)
@@ -751,7 +752,8 @@ class QuizPortalTests(TestCase):
         detail_url = reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"})
         response = self.client.get(detail_url)
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "Tilmeldt")
+        self.assertNotContains(response, "Tilmeldt")
+        self.assertNotContains(response, "Ikke tilmeldt")
         self.assertContains(response, "Udvid alle")
         self.assertNotContains(response, "Afmeld fag")
 

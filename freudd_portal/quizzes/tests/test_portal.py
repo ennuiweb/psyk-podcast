@@ -666,7 +666,8 @@ class QuizPortalTests(TestCase):
         response = self.client.get(detail_url)
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Ikke tilmeldt")
-        self.assertContains(response, "Læringssti")
+        self.assertContains(response, "Udvid alle")
+        self.assertNotContains(response, "<h2>Læringssti</h2>", html=True)
         self.assertNotContains(response, "Næste fokus")
         self.assertNotContains(response, "Trin ")
         self.assertNotContains(response, "Låst")
@@ -751,7 +752,7 @@ class QuizPortalTests(TestCase):
         response = self.client.get(detail_url)
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Tilmeldt")
-        self.assertContains(response, "Læringssti")
+        self.assertContains(response, "Udvid alle")
         self.assertNotContains(response, "Afmeld fag")
 
     def test_subject_detail_handles_snapshot_failure_without_500(self) -> None:
@@ -813,7 +814,7 @@ class QuizPortalTests(TestCase):
         detail_url = reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"})
         response = self.client.get(detail_url)
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "Læringssti")
+        self.assertContains(response, "Udvid alle")
         self.assertContains(response, "Ingen quiz")
 
     def test_unknown_subject_slug_returns_404_for_all_subject_endpoints(self) -> None:

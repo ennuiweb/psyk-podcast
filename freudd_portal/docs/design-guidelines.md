@@ -78,6 +78,7 @@ This document captures the current UI direction and reusable interface patterns 
 
 ### Learning path timeline
 
+- Keep the timeline section titleless inside subject pages; start directly with controls/content.
 - Render lectures as a timeline of `timeline-item` rows with collapsed-by-default lecture details.
 - Keep one action-first CTA in lecture headers (`Start næste quiz`) so the next step is always visible.
 - Use text status labels only when they differentiate state (`Fuldført`, `Ingen quiz`); do not render `Aktiv` labels by default.

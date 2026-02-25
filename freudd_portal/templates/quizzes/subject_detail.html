@@ -4,7 +4,7 @@
 <style>
   .subject-layout {
     display: grid;
-    gap: var(--space-4);
+    gap: var(--space-5);
   }
 
   .subject-head {
@@ -86,26 +86,14 @@
 
   .subject-path {
     display: grid;
-    gap: var(--space-3);
-  }
-
-  .path-topline {
-    display: flex;
-    flex-wrap: wrap;
     gap: var(--space-2);
-    align-items: baseline;
-    justify-content: space-between;
-  }
-
-  .path-topline h2 {
-    margin: 0;
-    font-size: clamp(1.05rem, 4.4vw, 1.28rem);
   }
 
   .path-toolbar {
     display: flex;
     gap: var(--space-2);
     flex-wrap: wrap;
+    margin-bottom: var(--space-1);
   }
 
   .toolbar-btn {
@@ -137,7 +125,7 @@
     margin: 0;
     padding: 0;
     display: grid;
-    gap: var(--space-3);
+    gap: var(--space-4);
   }
 
   .timeline-item {
@@ -150,7 +138,7 @@
     content: "";
     position: absolute;
     top: 36px;
-    bottom: calc(-1 * var(--space-3));
+    bottom: calc(-1 * var(--space-4));
     left: 15px;
     width: 2px;
     background: #d5e0f4;
@@ -211,7 +199,7 @@
     padding: var(--space-3);
     background: #f9fbff;
     display: grid;
-    gap: var(--space-2);
+    gap: var(--space-1);
     min-height: 64px;
     transition: background 160ms ease;
   }
@@ -234,7 +222,7 @@
     align-items: flex-start;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: var(--space-2);
+    gap: var(--space-3);
   }
 
   .lecture-labels {
@@ -336,7 +324,7 @@
   .lecture-summary-status {
     display: flex;
     align-items: center;
-    gap: var(--space-2);
+    gap: var(--space-1);
     justify-content: flex-end;
     flex-wrap: wrap;
   }
@@ -390,7 +378,7 @@
     border-top: 1px solid rgba(145, 162, 194, 0.4);
     padding: var(--space-3);
     display: grid;
-    gap: var(--space-3);
+    gap: var(--space-2);
     background: #f4f7ff;
   }
 
@@ -399,13 +387,16 @@
     border: 0;
     border-radius: var(--radius-sub);
     background: rgba(255, 255, 255, 0.76);
-    padding: var(--space-3);
+    padding: var(--space-2) var(--space-3);
     display: grid;
     gap: var(--space-2);
   }
 
   .lecture-assets {
     box-shadow: inset 0 0 0 1px rgba(138, 160, 201, 0.23);
+    width: fit-content;
+    max-width: 100%;
+    justify-self: flex-start;
   }
 
   .lecture-readings {
@@ -465,7 +456,7 @@
   .asset-links {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-2);
+    gap: var(--space-1);
   }
 
   .asset-link {
@@ -579,16 +570,16 @@
     margin: 0;
     padding: 0;
     display: grid;
-    gap: var(--space-2);
+    gap: var(--space-1);
   }
 
   .reading-item {
     border: 0;
     border-radius: var(--radius-sm);
     background: #ffffff;
-    padding: var(--space-3);
+    padding: var(--space-2) var(--space-3);
     display: grid;
-    gap: var(--space-2);
+    gap: var(--space-1);
     box-shadow: inset 0 0 0 1px rgba(138, 160, 201, 0.26);
   }
 
@@ -655,6 +646,7 @@
     color: #5b7099;
     font-size: 0.78rem;
     font-weight: 700;
+    line-height: 1.3;
   }
 
   .missing-note {
@@ -699,10 +691,6 @@
 
     .lecture-summary {
       padding: var(--space-4);
-    }
-
-    .lecture-summary-top {
-      align-items: center;
     }
 
     .lecture-panel {
@@ -760,10 +748,6 @@
   {% endif %}
 
   <section class="subject-path" data-subject-path data-subject-slug="{{ subject.slug }}">
-    <div class="path-topline">
-      <h2>Læringssti</h2>
-    </div>
-
     {% if subject_path_lectures %}
     <div class="path-toolbar" role="toolbar" aria-label="Læringssti handlinger">
       <button class="toolbar-btn" type="button" data-expand-all>Udvid alle</button>

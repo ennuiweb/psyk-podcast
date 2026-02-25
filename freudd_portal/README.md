@@ -26,7 +26,9 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Completion rule: `currentView == "summary"` and `answers_count == question_count`.
 - Gamification core is quiz-driven and always available for authenticated users (`/progress`, `/api/gamification/me`).
 - Learning path on subject pages (`/subjects/<subject_slug>`) is lecture-first with nested reading status (`locked|active|completed|no_quiz`) and quiz/podcast navigation.
-- Subject detail UI now uses a vertical timeline with manual `<details>` toggles per lecture, plus a "What's next" hero card and optional `Start nu` CTA for active lecture quiz links.
+- Subject detail UI is mobile-first and uses a vertical timeline with manual `<details>` toggles, per-lecture progress bars, and compact quiz chips per difficulty.
+- Subject detail includes top overview KPI cards, `Udvid alle`/`Luk alle` controls, and local browser persistence of opened lectures.
+- Active lecture hero now exposes `Næste fokus` with optional `Start nu` quiz CTA and a direct Spotify episode link when available.
 - `quiz_links.json` entries must include `subject_slug` so unit progression can be computed per subject.
 - Optional extensions (`habitica`, `anki`) are disabled by default and must be enabled per account via management command.
 - Extension sync is server-driven (`manage.py sync_extensions`) and runs only for enabled users with stored per-user credentials.
@@ -50,7 +52,7 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - `POST /subjects/<subject_slug>/enroll`
 - `POST /subjects/<subject_slug>/unenroll`
 
-Enrollment UX rule: enroll/unenroll actions are only shown on the bottom `Indstillinger` section of `GET /progress`; subject detail is read-only for enrollment state.
+Enrollment UX rule: enroll/unenroll actions are shown inline per subject in the `Mine fag` section of `GET /progress`; subject detail remains read-only for enrollment state.
 
 `quiz_id` format is strict 8-char hex (`^[0-9a-f]{8}$`).
 

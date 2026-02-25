@@ -128,6 +128,21 @@ def _first_quiz_url_from_assets(assets: object) -> str | None:
     return None
 
 
+def _first_podcast_url_from_assets(assets: object) -> str | None:
+    if not isinstance(assets, dict):
+        return None
+    podcasts = assets.get("podcasts")
+    if not isinstance(podcasts, list):
+        return None
+    for podcast in podcasts:
+        if not isinstance(podcast, dict):
+            continue
+        podcast_url = str(podcast.get("url") or "").strip()
+        if podcast_url:
+            return podcast_url
+    return None
+
+
 def _next_focus_quiz_url(active_lecture: object) -> str | None:
     if not isinstance(active_lecture, dict):
         return None
@@ -147,6 +162,180 @@ def _next_focus_quiz_url(active_lecture: object) -> str | None:
         if reading_quiz_url:
             return reading_quiz_url
     return None
+
+
+def _next_focus_spotify_url(active_lecture: object) -> str | None:
+    if not isinstance(active_lecture, dict):
+        return None
+
+    lecture_podcast_url = _first_podcast_url_from_assets(active_lecture.get("lecture_assets"))
+    if lecture_podcast_url:
+        return lecture_podcast_url
+
+    readings = active_lecture.get("readings")
+    if not isinstance(readings, list):
+        return None
+
+    for reading in readings:
+        if not isinstance(reading, dict):
+            continue
+        reading_podcast_url = _first_podcast_url_from_assets(reading.get("assets"))
+        if reading_podcast_url:
+            return reading_podcast_url
+    return None
+
+
+def _safe_non_negative_int(value: object) -> int:
+    try:
+        return max(0, int(value))
+    except (TypeError, ValueError):
+        return 0
+
+
+def _subject_path_overview(lectures: object) -> dict[str, int]:
+    if not isinstance(lectures, list):
+        return {
+            "total_lectures": 0,
+            "completed_lectures": 0,
+            "active_lecture_index": 0,
+            "total_quizzes": 0,
+            "completed_quizzes": 0,
+            "remaining_quizzes": 0,
+            "total_readings": 0,
+            "remaining_readings": 0,
+            "completion_percent": 0,
+        }
+
+    total_lectures = 0
+    completed_lectures = 0
+    active_lecture_index = 0
+    total_quizzes = 0
+    completed_quizzes = 0
+    total_readings = 0
+    remaining_readings = 0
+
+    for lecture in lectures:
+        if not isinstance(lecture, dict):
+            continue
+        total_lectures += 1
+        status = str(lecture.get("status") or "").strip().lower()
+        if status == "completed":
+            completed_lectures += 1
+        if status == "active" and active_lecture_index == 0:
+            active_lecture_index = total_lectures
+
+        total_quizzes += _safe_non_negative_int(lecture.get("total_quizzes"))
+        completed_quizzes += _safe_non_negative_int(lecture.get("completed_quizzes"))
+
+        readings = lecture.get("readings")
+        if not isinstance(readings, list):
+            continue
+        for reading in readings:
+            if not isinstance(reading, dict):
+                continue
+            total_readings += 1
+            reading_status = str(reading.get("status") or "").strip().lower()
+            if reading_status not in {"completed", "no_quiz"}:
+                remaining_readings += 1
+
+    remaining_quizzes = max(0, total_quizzes - completed_quizzes)
+    completion_percent = int(round((completed_quizzes / total_quizzes) * 100)) if total_quizzes else 0
+    return {
+        "total_lectures": total_lectures,
+        "completed_lectures": completed_lectures,
+        "active_lecture_index": active_lecture_index,
+        "total_quizzes": total_quizzes,
+        "completed_quizzes": completed_quizzes,
+        "remaining_quizzes": remaining_quizzes,
+        "total_readings": total_readings,
+        "remaining_readings": remaining_readings,
+        "completion_percent": completion_percent,
+    }
+
+
+def _progress_percent(*, completed: object, total: object) -> int:
+    completed_count = _safe_non_negative_int(completed)
+    total_count = _safe_non_negative_int(total)
+    if total_count <= 0:
+        return 0
+    return max(0, min(100, int(round((completed_count / total_count) * 100))))
+
+
+def _compact_asset_links(assets: object) -> dict[str, list[dict[str, object]]]:
+    if not isinstance(assets, dict):
+        return {"quizzes": [], "podcasts": []}
+
+    compact_quizzes: list[dict[str, object]] = []
+    seen_difficulties: set[str] = set()
+    quizzes = assets.get("quizzes")
+    if isinstance(quizzes, list):
+        for quiz in quizzes:
+            if not isinstance(quiz, dict):
+                continue
+            quiz_url = str(quiz.get("quiz_url") or "").strip()
+            if not quiz_url:
+                continue
+            difficulty = str(quiz.get("difficulty") or "unknown").strip().lower() or "unknown"
+            if difficulty in seen_difficulties:
+                continue
+            seen_difficulties.add(difficulty)
+            compact_quizzes.append(
+                {
+                    **quiz,
+                    "difficulty": difficulty,
+                    "difficulty_label_da": _difficulty_label(difficulty),
+                }
+            )
+
+    compact_podcasts: list[dict[str, object]] = []
+    podcasts = assets.get("podcasts")
+    if isinstance(podcasts, list):
+        for podcast in podcasts:
+            if not isinstance(podcast, dict):
+                continue
+            podcast_url = str(podcast.get("url") or "").strip()
+            if not podcast_url:
+                continue
+            compact_podcasts.append(dict(podcast))
+
+    return {
+        "quizzes": compact_quizzes,
+        "podcasts": compact_podcasts,
+    }
+
+
+def _enrich_subject_path_lectures(lectures: object) -> list[dict[str, object]]:
+    if not isinstance(lectures, list):
+        return []
+
+    enriched: list[dict[str, object]] = []
+    for lecture in lectures:
+        if not isinstance(lecture, dict):
+            continue
+        lecture_assets = _compact_asset_links(lecture.get("lecture_assets"))
+        lecture_copy = dict(lecture)
+        lecture_copy["lecture_assets"] = lecture_assets
+        lecture_copy["progress_percent"] = _progress_percent(
+            completed=lecture_copy.get("completed_quizzes"),
+            total=lecture_copy.get("total_quizzes"),
+        )
+
+        readings = lecture_copy.get("readings")
+        reading_payload: list[dict[str, object]] = []
+        if isinstance(readings, list):
+            for reading in readings:
+                if not isinstance(reading, dict):
+                    continue
+                reading_copy = dict(reading)
+                reading_copy["assets"] = _compact_asset_links(reading_copy.get("assets"))
+                reading_copy["progress_percent"] = _progress_percent(
+                    completed=reading_copy.get("completed_quizzes"),
+                    total=reading_copy.get("total_quizzes"),
+                )
+                reading_payload.append(reading_copy)
+        lecture_copy["readings"] = reading_payload
+        enriched.append(lecture_copy)
+    return enriched
 
 
 @require_http_methods(["GET", "POST"])
@@ -532,8 +721,14 @@ def subject_detail_view(request: HttpRequest, subject_slug: str) -> HttpResponse
         source_meta = subject_path.get("source_meta") if isinstance(subject_path.get("source_meta"), dict) else {}
         readings_error = str(source_meta.get("reading_error") or "").strip() or None
 
-    active_lecture = subject_path.get("active_lecture")
+    lecture_payload = _enrich_subject_path_lectures(subject_path.get("lectures", []))
+    active_lecture = next(
+        (lecture for lecture in lecture_payload if str(lecture.get("status") or "").strip().lower() == "active"),
+        None,
+    )
+    overview = _subject_path_overview(lecture_payload)
     subject_path_next_focus_url = _next_focus_quiz_url(active_lecture)
+    subject_path_next_focus_spotify_url = _next_focus_spotify_url(active_lecture)
 
     return render(
         request,
@@ -542,8 +737,10 @@ def subject_detail_view(request: HttpRequest, subject_slug: str) -> HttpResponse
             "subject": subject,
             "is_enrolled": is_enrolled,
             "readings_error": readings_error,
-            "subject_path_lectures": subject_path.get("lectures", []),
+            "subject_path_lectures": lecture_payload,
             "subject_path_active_lecture": active_lecture,
             "subject_path_next_focus_url": subject_path_next_focus_url,
+            "subject_path_next_focus_spotify_url": subject_path_next_focus_spotify_url,
+            "subject_path_overview": overview,
         },
     )

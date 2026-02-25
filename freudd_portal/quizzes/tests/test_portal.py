@@ -544,6 +544,7 @@ class QuizPortalTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "W1L1 - Episode")
         self.assertContains(response, "Mellem")
+        self.assertContains(response, "Senest åbnet fag")
 
     def test_load_quiz_label_mapping_reads_subject_slug(self) -> None:
         labels = load_quiz_label_mapping()
@@ -602,7 +603,7 @@ class QuizPortalTests(TestCase):
         self.assertContains(response, "Aktivt semester")
         self.assertContains(response, "F26")
         self.assertContains(response, "Personlighedspsykologi")
-        self.assertContains(response, "Indstillinger")
+        self.assertContains(response, "Mine fag")
         self.assertContains(response, "Tilmeld")
 
         preference = UserPreference.objects.get(user=user)
@@ -665,7 +666,7 @@ class QuizPortalTests(TestCase):
         self.assertNotContains(response, "lecture-details\" open")
         self.assertContains(response, "Lecture-quizzer")
         self.assertContains(response, "Grundbog kapitel 01 - Introduktion til personlighedspsykologi")
-        self.assertContains(response, "MISSING")
+        self.assertContains(response, "Mangler kilde")
         self.assertContains(response, "Koutsoumpis (2025)")
         self.assertNotContains(response, "Tilmeld fag")
         self.assertNotContains(response, "Afmeld fag")
@@ -677,6 +678,7 @@ class QuizPortalTests(TestCase):
         response = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Spotify")
+        self.assertContains(response, "class=\"ghost-link next-focus-spotify\"")
         self.assertContains(response, "https://open.spotify.com/episode/5m0hYfDU9ThM5qR2xMugr8")
         self.assertContains(response, "https://open.spotify.com/episode/4w4gHCXnQK5fjQdsxQO0XG")
         self.assertNotContains(response, "https://example.test/podcast/w01l1-alle-kilder.mp3")
@@ -690,6 +692,7 @@ class QuizPortalTests(TestCase):
 
         response = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
         self.assertEqual(response.status_code, 200)
+        self.assertNotContains(response, "class=\"ghost-link next-focus-spotify\"")
         self.assertNotContains(response, "https://open.spotify.com/episode/")
         self.assertNotContains(response, "https://example.test/podcast/w01l1-alle-kilder.mp3")
         self.assertNotContains(response, "https://example.test/podcast/w01l1-intro.mp3")

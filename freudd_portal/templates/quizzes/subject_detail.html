@@ -2,190 +2,399 @@
 {% block title %}Fag · {{ subject.title }}{% endblock %}
 {% block content %}
 <style>
+  .subject-layout {
+    display: grid;
+    gap: 1rem;
+  }
+
   .subject-head {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.8rem;
-    align-items: flex-start;
-    justify-content: space-between;
+    display: grid;
+    gap: 0.7rem;
+  }
+
+  .subject-head h1 {
+    margin: 0;
+  }
+
+  .subject-head p {
+    margin: 0;
   }
 
   .subject-status-pill {
     display: inline-flex;
     align-items: center;
-    margin-top: 0.2rem;
     border-radius: 999px;
     border: 1px solid var(--border);
-    padding: 0.22rem 0.58rem;
-    font-size: 0.82rem;
-    font-weight: 600;
+    padding: 0.2rem 0.58rem;
+    font-size: 0.8rem;
+    font-weight: 700;
     background: #ffffff;
   }
 
   .subject-status-pill.is-enrolled {
     border-color: rgba(31, 143, 78, 0.35);
     color: var(--success);
+    background: #eefbf2;
   }
 
   .subject-status-pill.is-not-enrolled {
     color: var(--muted);
   }
 
+  .subject-back {
+    justify-self: flex-start;
+  }
+
+  .overview-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.58rem;
+  }
+
+  .overview-card {
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: #ffffff;
+    padding: 0.65rem 0.72rem;
+    display: grid;
+    gap: 0.12rem;
+    min-height: 84px;
+  }
+
+  .overview-label {
+    margin: 0;
+    font-size: 0.74rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    font-weight: 700;
+  }
+
+  .overview-value {
+    margin: 0;
+    font-size: clamp(1.06rem, 4.8vw, 1.34rem);
+    font-weight: 800;
+    color: #1f376d;
+  }
+
+  .overview-meta {
+    margin: 0;
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+
   .next-focus {
-    margin-top: 1rem;
-    border: 1px solid rgba(47, 103, 232, 0.28);
+    border: 1px solid rgba(47, 103, 232, 0.26);
     border-radius: 18px;
-    background: linear-gradient(145deg, #2f67e8, #4e83f0);
+    padding: 0.86rem;
+    background:
+      radial-gradient(circle at 78% 0%, rgba(255, 255, 255, 0.24), transparent 43%),
+      linear-gradient(145deg, #2f67e8, #4e83f0);
     color: #ffffff;
-    padding: 1rem;
-    box-shadow: 0 18px 32px rgba(47, 103, 232, 0.24);
+    box-shadow: 0 16px 30px rgba(47, 103, 232, 0.24);
   }
 
   .next-focus-kicker {
     margin: 0;
-    font-size: 0.84rem;
-    font-weight: 600;
-    opacity: 0.88;
+    font-size: 0.76rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    opacity: 0.9;
+    font-weight: 700;
   }
 
   .next-focus-title {
-    margin: 0.3rem 0 0;
-    font-size: clamp(1.2rem, 2.1vw, 1.6rem);
+    margin: 0.35rem 0 0;
+    font-size: clamp(1.04rem, 4.9vw, 1.4rem);
+    line-height: 1.2;
   }
 
-  .next-focus-meta {
-    margin: 0.55rem 0 0;
-    font-size: 0.9rem;
-    opacity: 0.9;
+  .next-focus-meta,
+  .next-focus-step {
+    margin: 0.5rem 0 0;
+    font-size: 0.86rem;
+    opacity: 0.94;
+  }
+
+  .next-focus-actions {
+    margin-top: 0.76rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.52rem;
   }
 
   .next-focus-cta {
-    margin-top: 0.85rem;
+    box-shadow: 0 12px 20px rgba(14, 39, 102, 0.22);
     background: #ffffff;
-    color: #2755c6;
-    box-shadow: 0 10px 24px rgba(17, 45, 120, 0.22);
+    color: #204db9;
   }
 
   .next-focus-cta:hover {
-    color: #1c48b3;
-    background: #f6f9ff;
+    background: #f5f8ff;
+    color: #1f46a6;
+  }
+
+  .next-focus-spotify {
+    border-color: rgba(255, 255, 255, 0.55);
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .next-focus-spotify:hover {
+    border-color: rgba(255, 255, 255, 0.86);
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.22);
   }
 
   .subject-path {
-    margin-top: 1rem;
+    display: grid;
+    gap: 0.7rem;
   }
 
-  .subject-path h2,
-  .lecture-readings-title {
-    margin: 0 0 0.55rem;
-    font-size: clamp(1.02rem, 2vw, 1.24rem);
+  .path-topline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+
+  .path-topline h2 {
+    margin: 0;
+    font-size: clamp(1.05rem, 4.4vw, 1.28rem);
+  }
+
+  .path-step {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.84rem;
+    font-weight: 700;
+  }
+
+  .path-toolbar {
+    display: flex;
+    gap: 0.48rem;
+    flex-wrap: wrap;
+  }
+
+  .toolbar-btn {
+    border: 1px solid var(--border-strong);
+    border-radius: 999px;
+    padding: 0.35rem 0.72rem;
+    background: #f6f9ff;
+    color: #34528a;
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: border-color 160ms ease, background 160ms ease, transform 140ms ease;
+  }
+
+  .toolbar-btn:hover {
+    border-color: rgba(47, 103, 232, 0.46);
+    background: var(--accent-soft);
+    transform: translateY(-1px);
+  }
+
+  .toolbar-btn[disabled] {
+    opacity: 0.54;
+    cursor: not-allowed;
+    transform: none;
   }
 
   .timeline-list {
-    margin: 0.7rem 0 0;
-    padding: 0;
     list-style: none;
+    margin: 0;
+    padding: 0;
     position: relative;
+    display: grid;
+    gap: 0.7rem;
   }
 
   .timeline-list::before {
     content: "";
     position: absolute;
-    top: 8px;
-    bottom: 8px;
-    left: 16px;
+    top: 10px;
+    bottom: 10px;
+    left: 15px;
     width: 2px;
-    background: linear-gradient(180deg, #b8c8ea, #d7e0f2);
+    background: linear-gradient(180deg, #b7c8ea, #d6e1f5);
   }
 
   .timeline-item {
     position: relative;
-    padding-left: 2.8rem;
-  }
-
-  .timeline-item + .timeline-item {
-    margin-top: 0.72rem;
+    padding-left: 2.5rem;
+    --enter-delay: 0ms;
+    animation: timeline-enter 280ms ease-out both;
+    animation-delay: var(--enter-delay);
   }
 
   .timeline-marker {
     position: absolute;
     left: 0;
-    top: 0.55rem;
-    width: 34px;
-    height: 34px;
+    top: 0.65rem;
+    width: 30px;
+    height: 30px;
     border-radius: 999px;
+    border: 1px solid var(--border);
+    background: #f4f8ff;
+    color: #7e92b8;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.95rem;
-    font-weight: 700;
-    border: 1px solid var(--border);
-    color: var(--muted);
-    background: #f5f8ff;
+    font-size: 0.8rem;
+    font-weight: 800;
+    box-shadow: 0 5px 12px rgba(43, 77, 142, 0.1);
   }
 
   .timeline-item.is-active .timeline-marker {
-    background: #dce8ff;
-    border-color: rgba(47, 103, 232, 0.45);
-    color: #2b5ecf;
+    background: #dfeaff;
+    border-color: rgba(47, 103, 232, 0.54);
+    color: #2251bf;
   }
 
   .timeline-item.is-completed .timeline-marker {
-    background: #e5f6ec;
-    border-color: rgba(31, 143, 78, 0.34);
+    background: #e6f8ee;
+    border-color: rgba(31, 143, 78, 0.4);
     color: #1f8f4e;
   }
 
   .timeline-item.is-locked .timeline-marker {
-    background: #f3f6fc;
-    border-color: #d2dceb;
-    color: #8a9cbc;
+    background: #f4f6fb;
+    border-color: #d0dceb;
+    color: #93a3bf;
   }
 
   .lecture-details {
     border: 1px solid var(--border);
     border-radius: 14px;
     background: #ffffff;
-    overflow: hidden;
+    overflow: clip;
   }
 
   .lecture-details[open] {
     border-color: rgba(47, 103, 232, 0.45);
-    box-shadow: 0 0 0 3px rgba(47, 103, 232, 0.08);
+    box-shadow: 0 0 0 3px rgba(47, 103, 232, 0.1);
   }
 
   .lecture-summary {
     list-style: none;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.8rem;
-    padding: 0.74rem 0.82rem;
+    padding: 0.7rem;
     background: #f9fbff;
+    display: grid;
+    gap: 0.38rem;
+    min-height: 64px;
   }
 
   .lecture-summary::-webkit-details-marker {
     display: none;
   }
 
+  .lecture-summary-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.55rem;
+  }
+
+  .lecture-labels {
+    display: grid;
+    gap: 0.16rem;
+  }
+
   .lecture-title {
     margin: 0;
-    font-weight: 700;
+    font-weight: 800;
+    font-size: 0.95rem;
     overflow-wrap: anywhere;
+  }
+
+  .lecture-step {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.77rem;
+    font-weight: 700;
   }
 
   .lecture-meta {
-    margin: 0.24rem 0 0;
-    font-size: 0.84rem;
+    margin: 0;
     color: var(--muted);
-    overflow-wrap: anywhere;
+    font-size: 0.8rem;
+  }
+
+  .status-badge {
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: #ffffff;
+    padding: 0.16rem 0.45rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .status-badge.is-active {
+    border-color: rgba(47, 103, 232, 0.5);
+    color: #2456c4;
+    background: #e8efff;
+  }
+
+  .status-badge.is-completed {
+    border-color: rgba(31, 143, 78, 0.45);
+    color: #1f8f4e;
+    background: #e7f7ef;
+  }
+
+  .status-badge.is-locked {
+    border-color: #cfd9ea;
+    color: #7f93b6;
+    background: #f4f7fc;
+  }
+
+  .status-badge.is-no-quiz {
+    border-color: rgba(96, 113, 148, 0.46);
+    color: #546b95;
+    background: #edf2fb;
+  }
+
+  .progress-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    color: var(--muted);
+    font-size: 0.78rem;
+    font-weight: 700;
+  }
+
+  .progress-track {
+    height: 8px;
+    border-radius: 999px;
+    overflow: hidden;
+    background: #e7edf9;
+    border: 1px solid #d7e0f2;
+  }
+
+  .progress-fill {
+    width: var(--progress, 0%);
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #2f67e8, #4f84ef);
+    transition: width 220ms ease;
+  }
+
+  .timeline-item.is-completed .progress-fill {
+    background: linear-gradient(90deg, #1f8f4e, #39b968);
+  }
+
+  .timeline-item.is-locked .progress-fill {
+    background: linear-gradient(90deg, #9aabc8, #a9b8d1);
   }
 
   .lecture-chevron {
-    font-size: 1rem;
-    color: #6b7fa8;
+    color: #6f82a9;
+    font-size: 0.96rem;
     transition: transform 140ms ease;
+    margin-left: 0.35rem;
   }
 
   .lecture-details[open] .lecture-chevron {
@@ -193,67 +402,37 @@
   }
 
   .lecture-panel {
-    padding: 0.78rem;
     border-top: 1px solid var(--border);
+    padding: 0.72rem;
+    display: grid;
+    gap: 0.6rem;
     background: #ffffff;
   }
 
-  .lecture-panel > * + * {
-    margin-top: 0.62rem;
-  }
-
-  .status-badge {
-    border-radius: 999px;
-    border: 1px solid var(--border);
-    padding: 0.13rem 0.45rem;
-    font-size: 0.74rem;
-    color: var(--muted);
-    white-space: nowrap;
-    background: #ffffff;
-  }
-
-  .status-badge.is-active {
-    border-color: rgba(47, 103, 232, 0.52);
-    color: #2b5ecf;
-    background: #e7efff;
-  }
-
-  .status-badge.is-completed {
-    border-color: rgba(31, 143, 78, 0.48);
-    color: #1f8f4e;
-    background: #e8f7ef;
-  }
-
-  .status-badge.is-locked {
-    color: #8a9cbc;
-    border-color: #d1dceb;
-  }
-
-  .status-badge.is-no-quiz {
-    border-color: rgba(96, 113, 148, 0.45);
-  }
-
-  .lecture-assets {
+  .lecture-assets,
+  .lecture-readings {
     border: 1px solid var(--border);
     border-radius: 12px;
     background: var(--surface-soft);
-    padding: 0.58rem 0.66rem;
+    padding: 0.6rem;
     display: grid;
-    gap: 0.36rem;
+    gap: 0.45rem;
   }
 
-  .asset-block {
-    margin-top: 0.1rem;
+  .lecture-readings {
+    background: #ffffff;
   }
 
   .asset-title {
     margin: 0;
-    font-size: 0.78rem;
     color: var(--muted);
+    font-size: 0.76rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
   }
 
   .asset-links {
-    margin-top: 0.28rem;
     display: flex;
     flex-wrap: wrap;
     gap: 0.35rem;
@@ -262,46 +441,47 @@
   .asset-link {
     border: 1px solid var(--border);
     border-radius: 999px;
-    padding: 0.22rem 0.5rem;
+    padding: 0.22rem 0.55rem;
     font-size: 0.78rem;
+    font-weight: 700;
     color: #315289;
-    background: #ffffff;
     text-decoration: none;
+    background: #ffffff;
+    transition: border-color 160ms ease, background 160ms ease, transform 140ms ease;
   }
 
   .asset-link:hover {
     border-color: rgba(47, 103, 232, 0.46);
     background: var(--accent-soft);
-    color: #224fbd;
+    transform: translateY(-1px);
   }
 
-  .lecture-readings {
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    background: #ffffff;
-    padding: 0.75rem;
+  .asset-link.is-spotify {
+    border-color: rgba(31, 143, 78, 0.42);
+    color: #1f8f4e;
+    background: #eefbf2;
+  }
+
+  .reading-title {
+    margin: 0;
+    font-size: 1.02rem;
   }
 
   .reading-list {
+    list-style: none;
     margin: 0;
     padding: 0;
-    list-style: none;
     display: grid;
-    gap: 0.46rem;
+    gap: 0.48rem;
   }
 
   .reading-item {
     border: 1px solid var(--border);
     border-radius: 10px;
     background: #fdfefe;
-    padding: 0.6rem 0.7rem;
+    padding: 0.58rem 0.62rem;
     display: grid;
-    gap: 0.4rem;
-  }
-
-  .reading-item.is-missing {
-    border-color: rgba(178, 59, 79, 0.4);
-    background: #fff5f7;
+    gap: 0.42rem;
   }
 
   .reading-item.is-active {
@@ -314,21 +494,29 @@
     background: #eefbf2;
   }
 
+  .reading-item.is-missing {
+    border-color: rgba(178, 59, 79, 0.42);
+    background: #fff5f7;
+  }
+
   .reading-head {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
-    gap: 0.55rem;
+    gap: 0.5rem;
     flex-wrap: wrap;
   }
 
+  .reading-name {
+    margin: 0;
+    font-size: 0.92rem;
+    overflow-wrap: anywhere;
+  }
+
   .reading-meta {
-    margin-top: 0.2rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-    font-size: 0.8rem;
+    margin: 0;
     color: var(--muted);
+    font-size: 0.79rem;
   }
 
   .missing-badge {
@@ -336,26 +524,75 @@
     border: 1px solid rgba(178, 59, 79, 0.55);
     color: var(--danger);
     background: #fff4f6;
-    padding: 0.14rem 0.45rem;
-    font-size: 0.74rem;
+    padding: 0.13rem 0.45rem;
+    font-size: 0.72rem;
     font-weight: 700;
-    letter-spacing: 0.01em;
     white-space: nowrap;
   }
 
-  @media (max-width: 640px) {
-    .timeline-item {
-      padding-left: 2.6rem;
+  .missing-note {
+    margin: 0;
+    color: #8f3f4d;
+    font-size: 0.76rem;
+  }
+
+  .empty-path {
+    margin: 0;
+    border: 1px dashed var(--border-strong);
+    border-radius: 12px;
+    padding: 0.8rem;
+    background: #f7faff;
+  }
+
+  @keyframes timeline-enter {
+    from {
+      opacity: 0;
+      transform: translateY(7px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (min-width: 700px) {
+    .subject-head {
+      grid-template-columns: 1fr auto;
+      align-items: start;
+    }
+
+    .subject-back {
+      justify-self: end;
+    }
+
+    .overview-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
     }
 
     .lecture-summary {
-      padding: 0.68rem 0.72rem;
+      padding: 0.78rem;
+    }
+
+    .lecture-panel {
+      padding: 0.82rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .timeline-item,
+    .progress-fill,
+    .lecture-chevron,
+    .toolbar-btn,
+    .asset-link {
+      animation: none !important;
+      transition: none !important;
     }
   }
 </style>
 
-<div class="card">
-  <div class="subject-head">
+<div class="card subject-layout">
+  <header class="subject-head">
     <div>
       <h1 class="quiz-title">{{ subject.title }}</h1>
       <p class="muted">{{ subject.description }}</p>
@@ -363,58 +600,132 @@
         {% if is_enrolled %}Tilmeldt{% else %}Ikke tilmeldt{% endif %}
       </span>
     </div>
-    <a class="ghost-link" href="{% url 'progress' %}">Tilbage til min side</a>
-  </div>
+    <a class="ghost-link subject-back" href="{% url 'progress' %}">Tilbage til min side</a>
+  </header>
 
-  {% if subject_path_active_lecture %}
-  <section class="next-focus">
-    <p class="next-focus-kicker">What's next</p>
-    <h2 class="next-focus-title">Næste fokus: {{ subject_path_active_lecture.lecture_key }} · {{ subject_path_active_lecture.lecture_title }}</h2>
-    <p class="next-focus-meta">{{ subject_path_active_lecture.completed_quizzes }} / {{ subject_path_active_lecture.total_quizzes }} quizzer</p>
-    {% if subject_path_next_focus_url %}
-    <a class="btn-primary next-focus-cta" href="{{ subject_path_next_focus_url }}">Start nu</a>
-    {% endif %}
+  {% if subject_path_lectures %}
+  <section aria-label="Forløbsoverblik" class="overview-grid">
+    <article class="overview-card">
+      <p class="overview-label">Samlet fremdrift</p>
+      <p class="overview-value">{{ subject_path_overview.completion_percent }}%</p>
+      <p class="overview-meta">{{ subject_path_overview.completed_quizzes }} / {{ subject_path_overview.total_quizzes }} quizzer</p>
+    </article>
+    <article class="overview-card">
+      <p class="overview-label">Nuværende trin</p>
+      <p class="overview-value">
+        {% if subject_path_overview.active_lecture_index %}
+          {{ subject_path_overview.active_lecture_index }} / {{ subject_path_overview.total_lectures }}
+        {% else %}
+          {{ subject_path_overview.total_lectures }} / {{ subject_path_overview.total_lectures }}
+        {% endif %}
+      </p>
+      <p class="overview-meta">Forelæsninger fuldført: {{ subject_path_overview.completed_lectures }}</p>
+    </article>
+    <article class="overview-card">
+      <p class="overview-label">Quizzer tilbage</p>
+      <p class="overview-value">{{ subject_path_overview.remaining_quizzes }}</p>
+      <p class="overview-meta">Af {{ subject_path_overview.total_quizzes }} i alt</p>
+    </article>
+    <article class="overview-card">
+      <p class="overview-label">Readings tilbage</p>
+      <p class="overview-value">{{ subject_path_overview.remaining_readings }}</p>
+      <p class="overview-meta">Af {{ subject_path_overview.total_readings }} i alt</p>
+    </article>
   </section>
   {% endif %}
 
-  <section class="subject-path">
-    <h2>Læringssti</h2>
+  {% if subject_path_active_lecture %}
+  <section class="next-focus" aria-label="Næste fokus">
+    <p class="next-focus-kicker">Næste fokus</p>
+    <h2 class="next-focus-title">{{ subject_path_active_lecture.lecture_key }} · {{ subject_path_active_lecture.lecture_title }}</h2>
+    <p class="next-focus-meta">{{ subject_path_active_lecture.completed_quizzes }} / {{ subject_path_active_lecture.total_quizzes }} quizzer</p>
+    {% if subject_path_overview.active_lecture_index and subject_path_overview.total_lectures %}
+    <p class="next-focus-step">Trin {{ subject_path_overview.active_lecture_index }} af {{ subject_path_overview.total_lectures }}</p>
+    {% endif %}
+    <div class="next-focus-actions">
+      {% if subject_path_next_focus_url %}
+      <a class="btn-primary next-focus-cta" href="{{ subject_path_next_focus_url }}">Start nu</a>
+      {% endif %}
+      {% if subject_path_next_focus_spotify_url %}
+      <a class="ghost-link next-focus-spotify" href="{{ subject_path_next_focus_spotify_url }}" target="_blank" rel="noopener">Spotify episode</a>
+      {% endif %}
+    </div>
+  </section>
+  {% endif %}
+
+  <section class="subject-path" data-subject-path data-subject-slug="{{ subject.slug }}">
+    <div class="path-topline">
+      <h2>Læringssti</h2>
+      {% if subject_path_overview.total_lectures %}
+      <p class="path-step">
+        Trin
+        {% if subject_path_overview.active_lecture_index %}
+          {{ subject_path_overview.active_lecture_index }}
+        {% else %}
+          {{ subject_path_overview.total_lectures }}
+        {% endif %}
+        af {{ subject_path_overview.total_lectures }}
+      </p>
+      {% endif %}
+    </div>
+
     {% if subject_path_lectures %}
+    <div class="path-toolbar" role="toolbar" aria-label="Læringssti handlinger">
+      <button class="toolbar-btn" type="button" data-expand-all>Udvid alle</button>
+      <button class="toolbar-btn" type="button" data-collapse-all>Luk alle</button>
+    </div>
+
     <ol class="timeline-list">
       {% for lecture in subject_path_lectures %}
-      <li class="timeline-item {% if lecture.status == 'completed' %}is-completed{% elif lecture.status == 'active' %}is-active{% else %}is-locked{% endif %}">
+      <li
+        class="timeline-item {% if lecture.status == 'completed' %}is-completed{% elif lecture.status == 'active' %}is-active{% else %}is-locked{% endif %}"
+        style="--enter-delay: {{ forloop.counter0 }}0ms;"
+      >
         <span class="timeline-marker" aria-hidden="true">{% if lecture.status == 'completed' %}✓{% elif lecture.status == 'active' %}•{% else %}🔒{% endif %}</span>
-        <details class="lecture-details">
+        <details class="lecture-details" data-lecture-key="{{ lecture.lecture_key }}">
           <summary class="lecture-summary">
-            <div>
-              <p class="lecture-title">{{ lecture.lecture_key }} · {{ lecture.lecture_title }}</p>
-              <p class="lecture-meta">
-                {{ lecture.completed_quizzes }} / {{ lecture.total_quizzes }} quizzer ·
-                {% if lecture.status == 'completed' %}Fuldført{% elif lecture.status == 'active' %}Aktiv{% else %}Låst{% endif %}
-              </p>
+            <div class="lecture-summary-top">
+              <div class="lecture-labels">
+                <p class="lecture-title">{{ lecture.lecture_key }} · {{ lecture.lecture_title }}</p>
+                <p class="lecture-step">Trin {{ forloop.counter }} af {{ subject_path_overview.total_lectures }}</p>
+              </div>
+              <div style="display:flex; align-items:center; gap:0.35rem;">
+                <span class="status-badge {% if lecture.status == 'active' %}is-active{% elif lecture.status == 'completed' %}is-completed{% else %}is-locked{% endif %}">
+                  {% if lecture.status == 'completed' %}Fuldført{% elif lecture.status == 'active' %}Aktiv{% else %}Låst{% endif %}
+                </span>
+                <span class="lecture-chevron" aria-hidden="true">⌄</span>
+              </div>
             </div>
-            <span class="lecture-chevron" aria-hidden="true">⌄</span>
+            <p class="lecture-meta">{{ lecture.completed_quizzes }} / {{ lecture.total_quizzes }} quizzer</p>
+            <div class="progress-meta">
+              <span>Fremdrift</span>
+              <span>{{ lecture.progress_percent }}%</span>
+            </div>
+            <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{ lecture.progress_percent }}">
+              <div class="progress-fill" style="--progress: {{ lecture.progress_percent }}%;"></div>
+            </div>
           </summary>
 
           <div class="lecture-panel">
             {% if lecture.lecture_assets.quizzes or lecture.lecture_assets.podcasts %}
             <section class="lecture-assets">
               {% if lecture.lecture_assets.quizzes %}
-              <div class="asset-block">
-                <p class="asset-title">Lecture-quizzer (fx Alle kilder)</p>
+              <div>
+                <p class="asset-title">Lecture-quizzer</p>
                 <div class="asset-links">
                   {% for quiz in lecture.lecture_assets.quizzes %}
-                  <a class="asset-link" href="{{ quiz.quiz_url }}">{{ quiz.difficulty|capfirst }} quiz</a>
+                  <a class="asset-link" href="{{ quiz.quiz_url }}">{{ quiz.difficulty_label_da }}</a>
                   {% endfor %}
                 </div>
               </div>
               {% endif %}
+
               {% if lecture.lecture_assets.podcasts %}
-              <div class="asset-block">
+              <div>
                 <p class="asset-title">Lecture-podcasts</p>
                 <div class="asset-links">
                   {% for podcast in lecture.lecture_assets.podcasts %}
-                  <a class="asset-link" href="{{ podcast.url }}" target="_blank" rel="noopener">Spotify</a>
+                  <a class="asset-link is-spotify" href="{{ podcast.url }}" target="_blank" rel="noopener">Spotify episode {{ forloop.counter }}</a>
                   {% endfor %}
                 </div>
               </div>
@@ -423,41 +734,49 @@
             {% endif %}
 
             <section class="lecture-readings">
-              <h3 class="lecture-readings-title">Readings</h3>
+              <h3 class="reading-title">Readings</h3>
               {% if lecture.readings %}
               <ul class="reading-list">
                 {% for reading in lecture.readings %}
                 <li class="reading-item {% if reading.is_missing %}is-missing{% endif %} {% if reading.status == 'active' %}is-active{% elif reading.status == 'completed' %}is-completed{% endif %}">
                   <div class="reading-head">
-                    <strong>{{ reading.reading_title }}</strong>
+                    <p class="reading-name"><strong>{{ reading.reading_title }}</strong></p>
                     <div style="display:flex;gap:0.35rem;align-items:center;flex-wrap:wrap;">
                       {% if reading.is_missing %}
-                      <span class="missing-badge">MISSING</span>
+                      <span class="missing-badge">Mangler kilde</span>
                       {% endif %}
                       <span class="status-badge {% if reading.status == 'active' %}is-active{% elif reading.status == 'completed' %}is-completed{% elif reading.status == 'no_quiz' %}is-no-quiz{% else %}is-locked{% endif %}">
                         {% if reading.status == 'active' %}Aktiv{% elif reading.status == 'completed' %}Fuldført{% elif reading.status == 'no_quiz' %}Ingen quiz{% else %}Låst{% endif %}
                       </span>
                     </div>
                   </div>
-                  <div class="reading-meta">
-                    <span>{{ reading.completed_quizzes }} / {{ reading.total_quizzes }} quizzer</span>
+
+                  {% if reading.is_missing %}
+                  <p class="missing-note">Denne reading er markeret som manglende i kildelisten.</p>
+                  {% endif %}
+
+                  <p class="reading-meta">{{ reading.completed_quizzes }} / {{ reading.total_quizzes }} quizzer</p>
+                  <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{ reading.progress_percent }}">
+                    <div class="progress-fill" style="--progress: {{ reading.progress_percent }}%;"></div>
                   </div>
+
                   {% if reading.assets.quizzes %}
-                  <div class="asset-block">
+                  <div>
                     <p class="asset-title">Quizzer</p>
                     <div class="asset-links">
                       {% for quiz in reading.assets.quizzes %}
-                      <a class="asset-link" href="{{ quiz.quiz_url }}">{{ quiz.difficulty|capfirst }}</a>
+                      <a class="asset-link" href="{{ quiz.quiz_url }}">{{ quiz.difficulty_label_da }}</a>
                       {% endfor %}
                     </div>
                   </div>
                   {% endif %}
+
                   {% if reading.assets.podcasts %}
-                  <div class="asset-block">
+                  <div>
                     <p class="asset-title">Podcasts</p>
                     <div class="asset-links">
                       {% for podcast in reading.assets.podcasts %}
-                      <a class="asset-link" href="{{ podcast.url }}" target="_blank" rel="noopener">Spotify</a>
+                      <a class="asset-link is-spotify" href="{{ podcast.url }}" target="_blank" rel="noopener">Spotify episode {{ forloop.counter }}</a>
                       {% endfor %}
                     </div>
                   </div>
@@ -475,12 +794,93 @@
       {% endfor %}
     </ol>
     {% else %}
-    <p class="muted">Ingen læringssti endnu for dette fag.</p>
+    <p class="muted empty-path">Ingen læringssti endnu for dette fag.</p>
     {% endif %}
   </section>
 
   {% if readings_error %}
-  <div class="message error" style="margin-top: 0.9rem;">{{ readings_error }}</div>
+  <div class="message error">{{ readings_error }}</div>
   {% endif %}
 </div>
+
+<script>
+  (() => {
+    const container = document.querySelector("[data-subject-path]");
+    if (!container) {
+      return;
+    }
+
+    const detailsItems = Array.from(container.querySelectorAll(".lecture-details[data-lecture-key]"));
+    const expandAllButton = container.querySelector("[data-expand-all]");
+    const collapseAllButton = container.querySelector("[data-collapse-all]");
+    if (!detailsItems.length) {
+      if (expandAllButton) {
+        expandAllButton.disabled = true;
+      }
+      if (collapseAllButton) {
+        collapseAllButton.disabled = true;
+      }
+      return;
+    }
+
+    const slug = container.dataset.subjectSlug || "subject";
+    const storageKey = `freudd.subject.${slug}.openLectures`;
+
+    const saveOpenState = () => {
+      const openKeys = detailsItems.filter((item) => item.open).map((item) => item.dataset.lectureKey || "");
+      try {
+        window.localStorage.setItem(storageKey, JSON.stringify(openKeys));
+      } catch (error) {
+        // Ignore localStorage write failures and keep default behavior.
+      }
+    };
+
+    const restoreOpenState = () => {
+      let savedKeys = [];
+      try {
+        const raw = window.localStorage.getItem(storageKey);
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          if (Array.isArray(parsed)) {
+            savedKeys = parsed.filter((value) => typeof value === "string");
+          }
+        }
+      } catch (error) {
+        savedKeys = [];
+      }
+      if (!savedKeys.length) {
+        return;
+      }
+      const keySet = new Set(savedKeys);
+      detailsItems.forEach((item) => {
+        const lectureKey = item.dataset.lectureKey || "";
+        item.open = keySet.has(lectureKey);
+      });
+    };
+
+    restoreOpenState();
+
+    detailsItems.forEach((item) => {
+      item.addEventListener("toggle", saveOpenState);
+    });
+
+    if (expandAllButton) {
+      expandAllButton.addEventListener("click", () => {
+        detailsItems.forEach((item) => {
+          item.open = true;
+        });
+        saveOpenState();
+      });
+    }
+
+    if (collapseAllButton) {
+      collapseAllButton.addEventListener("click", () => {
+        detailsItems.forEach((item) => {
+          item.open = false;
+        });
+        saveOpenState();
+      });
+    }
+  })();
+</script>
 {% endblock %}

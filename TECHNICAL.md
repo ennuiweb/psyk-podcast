@@ -157,9 +157,10 @@ The repository includes a Django portal in `freudd_portal/` for user login, quiz
 - Model: `UserExtensionCredential` (`ForeignKey(user)`, encrypted per-user credentials, unique `(user, extension)`)
 - Model: `ExtensionSyncLedger` (`ForeignKey(user)`, idempotent per-day sync rows for each extension)
 - UI: portal now uses a light-first palette with blue-accent cards and shared primitives across dashboard, course view, auth, and quiz wrapper.
-- UI: subject detail page renders a vertical timeline with manual `<details>` toggles per lecture, nested reading cards, and direct quiz/podcast navigation.
-- UI: subject detail page shows enrollment status only; enroll/unenroll actions live only on `/progress` under `Indstillinger`.
-- UI layout contract: each lecture renders as a `timeline-item` with collapsed-by-default `lecture-details`; active lecture can expose a top "What's next" hero with optional `Start nu` CTA.
+- UI: subject detail page is mobile-first and renders a vertical timeline with manual `<details>` toggles, per-lecture progress bars, nested reading cards, and direct quiz/podcast navigation.
+- UI: subject detail page shows enrollment status only; enroll/unenroll actions live on `/progress` under `Mine fag`.
+- UI layout contract: each lecture renders as a `timeline-item` with collapsed-by-default `lecture-details`; page includes top overview KPI cards plus `Udvid alle`/`Luk alle` controls and localStorage persistence for opened lecture panels.
+- UI hero contract: active lecture exposes top `Næste fokus` with optional `Start nu` CTA and optional direct Spotify episode link.
 - Podcast link policy: subject detail renders Spotify-only podcast links from `spotify_map.json`; unmapped RSS podcasts are hidden from UI.
 - Subject detail now degrades gracefully: if snapshot computation fails, route still returns 200 with a user-facing retry message instead of 500.
 - Unique key: `(user, quiz_id)` for quiz state

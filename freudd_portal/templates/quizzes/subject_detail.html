@@ -307,41 +307,6 @@
     flex-wrap: wrap;
   }
 
-  .lecture-next-action {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 34px;
-    border-radius: var(--radius-pill);
-    border: 1px solid #2f67e8;
-    background: #2f67e8;
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 0.76rem;
-    font-weight: 700;
-    padding: 0 var(--space-2);
-    transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
-    white-space: nowrap;
-  }
-
-  .lecture-next-action::before {
-    content: "▶";
-    margin-right: 6px;
-    font-size: 0.65rem;
-  }
-
-  .lecture-next-action:hover {
-    background: #2557c6;
-    border-color: #2557c6;
-    color: #ffffff;
-    transform: translateY(-1px);
-  }
-
-  .lecture-next-action:focus-visible {
-    outline: 2px solid rgba(47, 103, 232, 0.45);
-    outline-offset: 2px;
-  }
-
   .lecture-chevron {
     color: #6f82a9;
     font-size: 0.96rem;
@@ -680,8 +645,7 @@
     .timeline-item,
     .lecture-chevron,
     .toolbar-btn,
-    .asset-link,
-    .lecture-next-action {
+    .asset-link {
       animation: none !important;
       transition: none !important;
     }
@@ -747,9 +711,6 @@
                 {% endif %}
               </div>
               <div class="lecture-summary-status">
-                {% if lecture.next_quiz_url %}
-                <a class="lecture-next-action" href="{{ lecture.next_quiz_url }}" data-next-quiz-action>Start næste quiz</a>
-                {% endif %}
                 {% if lecture.status == 'completed' %}
                 <span class="status-badge is-completed">Fuldført</span>
                 {% endif %}
@@ -934,7 +895,6 @@
     const detailsItems = Array.from(container.querySelectorAll(".lecture-details[data-lecture-key]"));
     const expandAllButton = container.querySelector("[data-expand-all]");
     const collapseAllButton = container.querySelector("[data-collapse-all]");
-    const nextQuizActions = Array.from(container.querySelectorAll("[data-next-quiz-action]"));
     if (!detailsItems.length) {
       if (expandAllButton) {
         expandAllButton.disabled = true;
@@ -944,15 +904,6 @@
       }
       return;
     }
-
-    nextQuizActions.forEach((link) => {
-      link.addEventListener("click", (event) => {
-        event.stopPropagation();
-      });
-      link.addEventListener("keydown", (event) => {
-        event.stopPropagation();
-      });
-    });
 
     const slug = container.dataset.subjectSlug || "subject";
     const storageKey = `freudd.subject.${slug}.openLectures`;

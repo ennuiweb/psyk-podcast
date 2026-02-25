@@ -385,50 +385,6 @@ def _compact_asset_links(assets: object) -> dict[str, list[dict[str, object]]]:
     }
 
 
-def _next_quiz_url_for_lecture(
-    *,
-    lecture_assets: dict[str, list[dict[str, object]]],
-    readings: list[dict[str, object]],
-) -> str | None:
-    lecture_quizzes = lecture_assets.get("quizzes")
-    if isinstance(lecture_quizzes, list):
-        for quiz in lecture_quizzes:
-            if not isinstance(quiz, dict):
-                continue
-            quiz_url = str(quiz.get("quiz_url") or "").strip()
-            if quiz_url:
-                return quiz_url
-
-    active_reading_quiz_urls: list[str] = []
-    completed_reading_quiz_urls: list[str] = []
-    for reading in readings:
-        if not isinstance(reading, dict):
-            continue
-        reading_assets = reading.get("assets")
-        if not isinstance(reading_assets, dict):
-            continue
-        reading_quizzes = reading_assets.get("quizzes")
-        if not isinstance(reading_quizzes, list):
-            continue
-        status = str(reading.get("status") or "").strip().lower()
-        for quiz in reading_quizzes:
-            if not isinstance(quiz, dict):
-                continue
-            quiz_url = str(quiz.get("quiz_url") or "").strip()
-            if not quiz_url:
-                continue
-            if status == "completed":
-                completed_reading_quiz_urls.append(quiz_url)
-            else:
-                active_reading_quiz_urls.append(quiz_url)
-
-    if active_reading_quiz_urls:
-        return active_reading_quiz_urls[0]
-    if completed_reading_quiz_urls:
-        return completed_reading_quiz_urls[0]
-    return None
-
-
 def _enrich_subject_path_lectures(lectures: object) -> list[dict[str, object]]:
     if not isinstance(lectures, list):
         return []
@@ -469,10 +425,6 @@ def _enrich_subject_path_lectures(lectures: object) -> list[dict[str, object]]:
                 )
                 reading_payload.append(reading_copy)
         lecture_copy["readings"] = reading_payload
-        lecture_copy["next_quiz_url"] = _next_quiz_url_for_lecture(
-            lecture_assets=lecture_assets,
-            readings=reading_payload,
-        )
         enriched.append(lecture_copy)
     return enriched
 

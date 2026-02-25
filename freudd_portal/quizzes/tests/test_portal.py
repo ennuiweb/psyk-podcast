@@ -660,7 +660,8 @@ class QuizPortalTests(TestCase):
         self.assertContains(response, "Ikke tilmeldt")
         self.assertContains(response, "Læringssti")
         self.assertContains(response, "Næste fokus")
-        self.assertContains(response, "W01L1")
+        self.assertContains(response, "U1F1 · Introforelaesning")
+        self.assertNotContains(response, "Introforelaesning (Forelaesning 1, 2026-02-02)")
         self.assertContains(response, "timeline-item")
         self.assertContains(response, "lecture-details")
         self.assertNotContains(response, "lecture-details\" open")
@@ -738,7 +739,7 @@ class QuizPortalTests(TestCase):
         response = self.client.get(detail_url)
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Næste fokus")
-        self.assertContains(response, "W01L2")
+        self.assertContains(response, "U1F2 · Personality assessment")
 
     def test_subject_detail_shows_next_focus_cta_with_lecture_asset_quiz(self) -> None:
         user = self._create_user()

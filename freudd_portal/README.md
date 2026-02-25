@@ -28,6 +28,7 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Learning path on subject pages (`/subjects/<subject_slug>`) is lecture-first with nested reading status (`locked|active|completed|no_quiz`) and quiz/podcast navigation.
 - Subject detail UI is mobile-first and uses a vertical timeline with manual `<details>` toggles, per-lecture progress bars, and compact quiz chips per difficulty.
 - Subject detail includes top overview KPI cards, `Udvid alle`/`Luk alle` controls, and local browser persistence of opened lectures.
+- Lecture step naming in subject detail follows podcast-style unit tags (`U1F1`, `U1F2`, ...) and strips trailing heading metadata like `(Forelæsning X, YYYY-MM-DD)` from the visible title.
 - Active lecture hero now exposes `Næste fokus` with optional `Start nu` quiz CTA and a direct Spotify episode link when available.
 - `quiz_links.json` entries must include `subject_slug` so unit progression can be computed per subject.
 - Optional extensions (`habitica`, `anki`) are disabled by default and must be enabled per account via management command.

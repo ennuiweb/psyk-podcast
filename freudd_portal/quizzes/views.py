@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import logging
+import re
 from urllib.parse import urlencode
 
 from django.conf import settings
@@ -54,6 +55,11 @@ DIFFICULTY_LABELS_DA = {
     "hard": "Svær",
     "unknown": "Ukendt",
 }
+LECTURE_KEY_DISPLAY_RE = re.compile(r"^W(?P<week>\d{1,2})L(?P<lecture>\d+)$", re.IGNORECASE)
+LECTURE_META_SUFFIX_RE = re.compile(
+    r"\s*\((?:forelæsning|forelaesning)\s+\d+\s*,\s*\d{4}-\d{2}-\d{2}\)\s*$",
+    re.IGNORECASE,
+)
 
 
 def _is_http_insecure(request: HttpRequest) -> bool:
@@ -261,6 +267,38 @@ def _progress_percent(*, completed: object, total: object) -> int:
     return max(0, min(100, int(round((completed_count / total_count) * 100))))
 
 
+def _lecture_code_for_display(lecture_key: object) -> str:
+    raw_key = str(lecture_key or "").strip().upper()
+    if not raw_key:
+        return ""
+    match = LECTURE_KEY_DISPLAY_RE.match(raw_key)
+    if not match:
+        return raw_key
+    week = int(match.group("week"))
+    lecture = int(match.group("lecture"))
+    return f"U{week}F{lecture}"
+
+
+def _lecture_title_for_display(*, lecture_title: object, lecture_key: object) -> str:
+    key = str(lecture_key or "").strip()
+    title = str(lecture_title or "").strip()
+    if title.upper().startswith(key.upper()):
+        title = title[len(key) :].lstrip(" -·").strip()
+    title = LECTURE_META_SUFFIX_RE.sub("", title).strip()
+    return title
+
+
+def _lecture_step_title(lecture: dict[str, object]) -> str:
+    code = _lecture_code_for_display(lecture.get("lecture_key"))
+    title = _lecture_title_for_display(
+        lecture_title=lecture.get("lecture_title"),
+        lecture_key=lecture.get("lecture_key"),
+    )
+    if code and title:
+        return f"{code} · {title}"
+    return code or title or str(lecture.get("lecture_key") or "")
+
+
 def _compact_asset_links(assets: object) -> dict[str, list[dict[str, object]]]:
     if not isinstance(assets, dict):
         return {"quizzes": [], "podcasts": []}
@@ -315,6 +353,7 @@ def _enrich_subject_path_lectures(lectures: object) -> list[dict[str, object]]:
         lecture_assets = _compact_asset_links(lecture.get("lecture_assets"))
         lecture_copy = dict(lecture)
         lecture_copy["lecture_assets"] = lecture_assets
+        lecture_copy["lecture_step_title"] = _lecture_step_title(lecture_copy)
         lecture_copy["progress_percent"] = _progress_percent(
             completed=lecture_copy.get("completed_quizzes"),
             total=lecture_copy.get("total_quizzes"),

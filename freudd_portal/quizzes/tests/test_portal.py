@@ -26,7 +26,6 @@ from quizzes.models import (
     UserExtensionCredential,
     UserGamificationProfile,
     UserLectureProgress,
-    UserPreference,
     UserReadingProgress,
     UserUnitProgress,
 )
@@ -147,7 +146,6 @@ class QuizPortalTests(TestCase):
     def _write_subjects_file(self, *, include_subject: bool = True) -> None:
         payload: dict[str, object] = {
             "version": 1,
-            "semester_choices": ["F26"],
             "subjects": [],
         }
         if include_subject:
@@ -594,37 +592,24 @@ class QuizPortalTests(TestCase):
         labels = load_quiz_label_mapping()
         self.assertIsNone(labels[self.quiz_id].subject_slug)
 
-    def test_progress_page_shows_semester_and_subject_cards(self) -> None:
+    def test_progress_page_shows_subject_cards_without_semester(self) -> None:
         user = self._create_user()
         self.client.force_login(user)
 
         response = self.client.get(reverse("progress"))
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "Aktivt semester")
-        self.assertContains(response, "F26")
+        self.assertNotContains(response, "Aktivt semester")
+        self.assertNotContains(response, "Gem semester")
         self.assertContains(response, "Personlighedspsykologi")
         self.assertContains(response, "Mine fag")
         self.assertContains(response, "Tilmeld")
 
-        preference = UserPreference.objects.get(user=user)
-        self.assertEqual(preference.semester, "F26")
-
-    def test_semester_update_accepts_valid_and_rejects_invalid_value(self) -> None:
+    def test_semester_update_endpoint_is_removed(self) -> None:
         user = self._create_user()
         self.client.force_login(user)
 
-        update_url = reverse("semester-update")
-        response = self.client.post(update_url, {"semester": "F26"})
-        self.assertEqual(response.status_code, 302)
-        self.assertEqual(response.url, reverse("progress"))
-
-        preference = UserPreference.objects.get(user=user)
-        self.assertEqual(preference.semester, "F26")
-
-        response = self.client.post(update_url, {"semester": "INVALID"})
-        self.assertEqual(response.status_code, 302)
-        preference.refresh_from_db()
-        self.assertEqual(preference.semester, "F26")
+        response = self.client.post("/preferences/semester", {"semester": "F26"})
+        self.assertEqual(response.status_code, 404)
 
     def test_subject_enroll_and_unenroll_are_idempotent(self) -> None:
         user = self._create_user()
@@ -659,9 +644,10 @@ class QuizPortalTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Ikke tilmeldt")
         self.assertContains(response, "Læringssti")
-        self.assertContains(response, "Næste fokus")
-        self.assertContains(response, "U1F1 · Introforelaesning")
-        self.assertNotContains(response, "Introforelaesning (Forelaesning 1, 2026-02-02)")
+        self.assertNotContains(response, "Næste fokus")
+        self.assertNotContains(response, "Trin ")
+        self.assertNotContains(response, "Låst")
+        self.assertContains(response, "W01L1")
         self.assertContains(response, "timeline-item")
         self.assertContains(response, "lecture-details")
         self.assertNotContains(response, "lecture-details\" open")
@@ -679,7 +665,7 @@ class QuizPortalTests(TestCase):
         response = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Spotify")
-        self.assertContains(response, "class=\"ghost-link next-focus-spotify\"")
+        self.assertContains(response, "class=\"asset-link is-spotify\"")
         self.assertContains(response, "https://open.spotify.com/episode/5m0hYfDU9ThM5qR2xMugr8")
         self.assertContains(response, "https://open.spotify.com/episode/4w4gHCXnQK5fjQdsxQO0XG")
         self.assertNotContains(response, "https://example.test/podcast/w01l1-alle-kilder.mp3")
@@ -693,7 +679,7 @@ class QuizPortalTests(TestCase):
 
         response = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
         self.assertEqual(response.status_code, 200)
-        self.assertNotContains(response, "class=\"ghost-link next-focus-spotify\"")
+        self.assertNotContains(response, "class=\"asset-link is-spotify\"")
         self.assertNotContains(response, "https://open.spotify.com/episode/")
         self.assertNotContains(response, "https://example.test/podcast/w01l1-alle-kilder.mp3")
         self.assertNotContains(response, "https://example.test/podcast/w01l1-intro.mp3")
@@ -721,7 +707,7 @@ class QuizPortalTests(TestCase):
         self.assertContains(response, "Læringsstien kunne ikke indlæses lige nu")
         self.assertContains(response, "Ingen læringssti endnu for dette fag.")
 
-    def test_subject_detail_shows_path_hint_when_active_lecture_exists(self) -> None:
+    def test_subject_detail_has_no_next_focus_or_step_copy_after_progress_updates(self) -> None:
         user = self._create_user()
         self.client.force_login(user)
 
@@ -738,106 +724,9 @@ class QuizPortalTests(TestCase):
         detail_url = reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"})
         response = self.client.get(detail_url)
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "Næste fokus")
-        self.assertContains(response, "U1F2 · Personality assessment")
-
-    def test_subject_detail_shows_next_focus_cta_with_lecture_asset_quiz(self) -> None:
-        user = self._create_user()
-        self.client.force_login(user)
-
-        response = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
-        self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "Start nu")
-        self.assertContains(response, reverse("quiz-wrapper", kwargs={"quiz_id": self.quiz_id}))
-
-    def test_subject_detail_uses_reading_quiz_as_next_focus_fallback(self) -> None:
-        user = self._create_user()
-        self.client.force_login(user)
-
-        custom_snapshot = {
-            "lectures": [
-                {
-                    "lecture_key": "W01L1",
-                    "lecture_title": "Intro",
-                    "status": "active",
-                    "completed_quizzes": 0,
-                    "total_quizzes": 1,
-                    "readings": [
-                        {
-                            "reading_key": "R1",
-                            "reading_title": "Reading",
-                            "is_missing": False,
-                            "status": "active",
-                            "completed_quizzes": 0,
-                            "total_quizzes": 1,
-                            "assets": {
-                                "quizzes": [{"quiz_url": reverse("quiz-wrapper", kwargs={"quiz_id": self.quiz_id})}],
-                                "podcasts": [],
-                            },
-                        }
-                    ],
-                    "lecture_assets": {"quizzes": [], "podcasts": []},
-                }
-            ],
-            "active_lecture": {
-                "lecture_key": "W01L1",
-                "lecture_title": "Intro",
-                "status": "active",
-                "completed_quizzes": 0,
-                "total_quizzes": 1,
-                "readings": [
-                    {
-                        "assets": {
-                            "quizzes": [{"quiz_url": reverse("quiz-wrapper", kwargs={"quiz_id": self.quiz_id})}],
-                            "podcasts": [],
-                        }
-                    }
-                ],
-                "lecture_assets": {"quizzes": [], "podcasts": []},
-            },
-            "source_meta": {},
-        }
-
-        with patch("quizzes.views.get_subject_learning_path_snapshot", return_value=custom_snapshot):
-            response = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
-
-        self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "Start nu")
-        self.assertContains(response, reverse("quiz-wrapper", kwargs={"quiz_id": self.quiz_id}))
-
-    def test_subject_detail_hides_next_focus_cta_without_quiz_links(self) -> None:
-        user = self._create_user()
-        self.client.force_login(user)
-
-        custom_snapshot = {
-            "lectures": [
-                {
-                    "lecture_key": "W01L1",
-                    "lecture_title": "Intro",
-                    "status": "active",
-                    "completed_quizzes": 0,
-                    "total_quizzes": 0,
-                    "readings": [],
-                    "lecture_assets": {"quizzes": [], "podcasts": []},
-                }
-            ],
-            "active_lecture": {
-                "lecture_key": "W01L1",
-                "lecture_title": "Intro",
-                "status": "active",
-                "completed_quizzes": 0,
-                "total_quizzes": 0,
-                "readings": [],
-                "lecture_assets": {"quizzes": [], "podcasts": []},
-            },
-            "source_meta": {},
-        }
-
-        with patch("quizzes.views.get_subject_learning_path_snapshot", return_value=custom_snapshot):
-            response = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
-
-        self.assertEqual(response.status_code, 200)
+        self.assertNotContains(response, "Næste fokus")
         self.assertNotContains(response, "Start nu")
+        self.assertNotContains(response, "Trin ")
 
     def test_subject_detail_keeps_path_even_when_quiz_subject_slug_missing(self) -> None:
         user = self._create_user()
@@ -955,13 +844,10 @@ class QuizPortalTests(TestCase):
         response = csrf_client.post(state_url, data=json.dumps(payload), content_type="application/json")
         self.assertEqual(response.status_code, 403)
 
-    def test_subject_and_semester_posts_require_csrf(self) -> None:
+    def test_subject_posts_require_csrf(self) -> None:
         user = self._create_user()
         csrf_client = Client(enforce_csrf_checks=True)
         csrf_client.force_login(user)
-
-        response = csrf_client.post(reverse("semester-update"), {"semester": "F26"})
-        self.assertEqual(response.status_code, 403)
 
         response = csrf_client.post(
             reverse("subject-enroll", kwargs={"subject_slug": "personlighedspsykologi"}),
@@ -1014,6 +900,9 @@ class QuizPortalTests(TestCase):
         self.assertEqual(len(units), 1)
         self.assertEqual(units[0].unit_key, "W01")
         self.assertEqual(units[0].status, UserUnitProgress.Status.COMPLETED)
+        self.assertFalse(
+            UserUnitProgress.objects.filter(user=user, status="locked").exists()
+        )
 
         lectures = list(UserLectureProgress.objects.filter(user=user).order_by("sequence_index"))
         self.assertEqual(len(lectures), 2)
@@ -1021,6 +910,9 @@ class QuizPortalTests(TestCase):
         self.assertEqual(lectures[0].status, UserLectureProgress.Status.COMPLETED)
         self.assertEqual(lectures[1].lecture_key, "W01L2")
         self.assertEqual(lectures[1].status, UserLectureProgress.Status.ACTIVE)
+        self.assertFalse(
+            UserLectureProgress.objects.filter(user=user, status="locked").exists()
+        )
 
         readings = list(
             UserReadingProgress.objects.filter(
@@ -1032,6 +924,9 @@ class QuizPortalTests(TestCase):
         self.assertEqual(len(readings), 2)
         self.assertEqual(readings[0].status, UserReadingProgress.Status.NO_QUIZ)
         self.assertEqual(readings[1].status, UserReadingProgress.Status.NO_QUIZ)
+        self.assertFalse(
+            UserReadingProgress.objects.filter(user=user, status="locked").exists()
+        )
 
     def test_progress_page_hides_learning_path_section(self) -> None:
         user = self._create_user()

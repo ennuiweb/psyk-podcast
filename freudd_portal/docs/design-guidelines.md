@@ -41,8 +41,8 @@ This document captures the current UI direction and reusable interface patterns 
 
 ### Header block
 
-- Keep title + intro in the same visual block as semester controls.
-- Semester control is top-level context, not a separate full section.
+- Keep title + intro in a compact visual block without extra global selectors.
+- Keep the header lightweight and focused on orientation.
 
 ### Subjects section
 
@@ -70,17 +70,16 @@ This document captures the current UI direction and reusable interface patterns 
 - Keep the return navigation (`Tilbage til min side`) as a utility action.
 - Keep actions in this page focused on learning flow, not enrollment mutation.
 
-### Overview and next action
+### Overview
 
 - Use compact overview KPI cards for progress orientation.
-- Keep `Næste fokus` as the primary directional block.
-- Use one primary CTA (`Start nu`) when available.
-- Optional secondary CTA can link to Spotify episode for the active lecture context.
+- Avoid separate hero blocks for "next step" direction.
+- Keep actions close to the lecture/reading assets in the timeline.
 
 ### Learning path timeline
 
 - Render lectures as a timeline of `timeline-item` rows with collapsed-by-default lecture details.
-- Keep status explicit with text labels (`Aktiv`, `Fuldført`, `Låst`, `Ingen quiz`), not color alone.
+- Keep status explicit with text labels (`Aktiv`, `Fuldført`, `Ingen quiz`), not color alone.
 - Keep per-lecture and per-reading progress bars plus numeric counts.
 - Keep `Udvid alle` and `Luk alle` as neutral productivity controls.
 - Preserve open lecture state in local browser storage for continuity.

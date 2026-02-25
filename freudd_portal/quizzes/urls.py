@@ -26,6 +26,5 @@ urlpatterns = [
         views.subject_unenroll_view,
         name="subject-unenroll",
     ),
-    re_path(r"^preferences/semester$", views.semester_update_view, name="semester-update"),
     re_path(r"^progress$", views.progress_view, name="progress"),
 ]

@@ -84,67 +84,6 @@
     color: var(--muted);
   }
 
-  .next-focus {
-    border: 1px solid rgba(47, 103, 232, 0.26);
-    border-radius: var(--radius-lg);
-    padding: var(--space-4);
-    background:
-      radial-gradient(circle at 78% 0%, rgba(255, 255, 255, 0.24), transparent 43%),
-      linear-gradient(145deg, #2f67e8, #4e83f0);
-    color: #ffffff;
-  }
-
-  .next-focus-kicker {
-    margin: 0;
-    font-size: 0.76rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    opacity: 0.9;
-    font-weight: 700;
-  }
-
-  .next-focus-title {
-    margin: var(--space-2) 0 0;
-    font-size: clamp(1.04rem, 4.9vw, 1.4rem);
-    line-height: 1.2;
-  }
-
-  .next-focus-meta,
-  .next-focus-step {
-    margin: var(--space-2) 0 0;
-    font-size: 0.86rem;
-    opacity: 0.94;
-  }
-
-  .next-focus-actions {
-    margin-top: var(--space-3);
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-2);
-  }
-
-  .next-focus-cta {
-    background: #ffffff;
-    color: #204db9;
-  }
-
-  .next-focus-cta:hover {
-    background: #f5f8ff;
-    color: #1f46a6;
-  }
-
-  .next-focus-spotify {
-    border-color: rgba(255, 255, 255, 0.55);
-    color: #ffffff;
-    background: rgba(255, 255, 255, 0.1);
-  }
-
-  .next-focus-spotify:hover {
-    border-color: rgba(255, 255, 255, 0.86);
-    color: #ffffff;
-    background: rgba(255, 255, 255, 0.22);
-  }
-
   .subject-path {
     display: grid;
     gap: var(--space-3);
@@ -161,13 +100,6 @@
   .path-topline h2 {
     margin: 0;
     font-size: clamp(1.05rem, 4.4vw, 1.28rem);
-  }
-
-  .path-step {
-    margin: 0;
-    color: var(--muted);
-    font-size: 0.84rem;
-    font-weight: 700;
   }
 
   .path-toolbar {
@@ -254,12 +186,6 @@
     color: #1f8f4e;
   }
 
-  .timeline-item.is-locked .timeline-marker {
-    background: #f4f6fb;
-    border-color: #d0dceb;
-    color: #93a3bf;
-  }
-
   .lecture-details {
     border: 1px solid var(--border);
     border-radius: var(--radius-md);
@@ -305,13 +231,6 @@
     overflow-wrap: anywhere;
   }
 
-  .lecture-step {
-    margin: 0;
-    color: var(--muted);
-    font-size: 0.77rem;
-    font-weight: 700;
-  }
-
   .lecture-meta {
     margin: 0;
     color: var(--muted);
@@ -341,12 +260,6 @@
     border-color: rgba(31, 143, 78, 0.45);
     color: #1f8f4e;
     background: #e7f7ef;
-  }
-
-  .status-badge.is-locked {
-    border-color: #cfd9ea;
-    color: #7f93b6;
-    background: #f4f7fc;
   }
 
   .status-badge.is-no-quiz {
@@ -393,14 +306,6 @@
 
   .timeline-item.is-completed .progress-track::-moz-progress-bar {
     background: linear-gradient(90deg, #1f8f4e, #39b968);
-  }
-
-  .timeline-item.is-locked .progress-track::-webkit-progress-value {
-    background: linear-gradient(90deg, #9aabc8, #a9b8d1);
-  }
-
-  .timeline-item.is-locked .progress-track::-moz-progress-bar {
-    background: linear-gradient(90deg, #9aabc8, #a9b8d1);
   }
 
   .lecture-summary-status {
@@ -642,15 +547,9 @@
       <p class="overview-meta">{{ subject_path_overview.completed_quizzes }} / {{ subject_path_overview.total_quizzes }} quizzer</p>
     </article>
     <article class="overview-card">
-      <p class="overview-label">Nuværende trin</p>
-      <p class="overview-value">
-        {% if subject_path_overview.active_lecture_index %}
-          {{ subject_path_overview.active_lecture_index }} / {{ subject_path_overview.total_lectures }}
-        {% else %}
-          {{ subject_path_overview.total_lectures }} / {{ subject_path_overview.total_lectures }}
-        {% endif %}
-      </p>
-      <p class="overview-meta">Forelæsninger fuldført: {{ subject_path_overview.completed_lectures }}</p>
+      <p class="overview-label">Forelæsninger</p>
+      <p class="overview-value">{{ subject_path_overview.completed_lectures }} / {{ subject_path_overview.total_lectures }}</p>
+      <p class="overview-meta">Fuldførte forelæsninger</p>
     </article>
     <article class="overview-card">
       <p class="overview-label">Quizzer tilbage</p>
@@ -665,39 +564,9 @@
   </section>
   {% endif %}
 
-  {% if subject_path_active_lecture %}
-  <section class="next-focus" aria-label="Næste fokus">
-    <p class="next-focus-kicker">Næste fokus</p>
-    <h2 class="next-focus-title">{{ subject_path_active_lecture.lecture_step_title }}</h2>
-    <p class="next-focus-meta">{{ subject_path_active_lecture.completed_quizzes }} / {{ subject_path_active_lecture.total_quizzes }} quizzer</p>
-    {% if subject_path_overview.active_lecture_index and subject_path_overview.total_lectures %}
-    <p class="next-focus-step">Trin {{ subject_path_overview.active_lecture_index }} af {{ subject_path_overview.total_lectures }}</p>
-    {% endif %}
-    <div class="next-focus-actions">
-      {% if subject_path_next_focus_url %}
-      <a class="btn-primary next-focus-cta" href="{{ subject_path_next_focus_url }}">Start nu</a>
-      {% endif %}
-      {% if subject_path_next_focus_spotify_url %}
-      <a class="ghost-link next-focus-spotify" href="{{ subject_path_next_focus_spotify_url }}" target="_blank" rel="noopener">Spotify episode</a>
-      {% endif %}
-    </div>
-  </section>
-  {% endif %}
-
   <section class="subject-path" data-subject-path data-subject-slug="{{ subject.slug }}">
     <div class="path-topline">
       <h2>Læringssti</h2>
-      {% if subject_path_overview.total_lectures %}
-      <p class="path-step">
-        Trin
-        {% if subject_path_overview.active_lecture_index %}
-          {{ subject_path_overview.active_lecture_index }}
-        {% else %}
-          {{ subject_path_overview.total_lectures }}
-        {% endif %}
-        af {{ subject_path_overview.total_lectures }}
-      </p>
-      {% endif %}
     </div>
 
     {% if subject_path_lectures %}
@@ -709,19 +578,18 @@
     <ol class="timeline-list">
       {% for lecture in subject_path_lectures %}
       <li
-        class="timeline-item {% if lecture.status == 'completed' %}is-completed{% elif lecture.status == 'active' %}is-active{% else %}is-locked{% endif %}"
+        class="timeline-item {% if lecture.status == 'completed' %}is-completed{% else %}is-active{% endif %}"
       >
-        <span class="timeline-marker" aria-hidden="true">{% if lecture.status == 'completed' %}✓{% elif lecture.status == 'active' %}•{% else %}🔒{% endif %}</span>
+        <span class="timeline-marker" aria-hidden="true">{% if lecture.status == 'completed' %}✓{% else %}•{% endif %}</span>
         <details class="lecture-details" data-lecture-key="{{ lecture.lecture_key }}">
           <summary class="lecture-summary">
             <div class="lecture-summary-top">
               <div class="lecture-labels">
-                <p class="lecture-title">{{ lecture.lecture_step_title }}</p>
-                <p class="lecture-step">Trin {{ forloop.counter }} af {{ subject_path_overview.total_lectures }}</p>
+                <p class="lecture-title">{{ lecture.lecture_key }} · {{ lecture.lecture_title }}</p>
               </div>
               <div class="lecture-summary-status">
-                <span class="status-badge {% if lecture.status == 'active' %}is-active{% elif lecture.status == 'completed' %}is-completed{% else %}is-locked{% endif %}">
-                  {% if lecture.status == 'completed' %}Fuldført{% elif lecture.status == 'active' %}Aktiv{% else %}Låst{% endif %}
+                <span class="status-badge {% if lecture.status == 'completed' %}is-completed{% else %}is-active{% endif %}">
+                  {% if lecture.status == 'completed' %}Fuldført{% else %}Aktiv{% endif %}
                 </span>
                 <span class="lecture-chevron" aria-hidden="true">⌄</span>
               </div>
@@ -775,8 +643,8 @@
                       {% if reading.is_missing %}
                       <span class="missing-badge">Mangler kilde</span>
                       {% endif %}
-                      <span class="status-badge {% if reading.status == 'active' %}is-active{% elif reading.status == 'completed' %}is-completed{% elif reading.status == 'no_quiz' %}is-no-quiz{% else %}is-locked{% endif %}">
-                        {% if reading.status == 'active' %}Aktiv{% elif reading.status == 'completed' %}Fuldført{% elif reading.status == 'no_quiz' %}Ingen quiz{% else %}Låst{% endif %}
+                      <span class="status-badge {% if reading.status == 'completed' %}is-completed{% elif reading.status == 'no_quiz' %}is-no-quiz{% else %}is-active{% endif %}">
+                        {% if reading.status == 'completed' %}Fuldført{% elif reading.status == 'no_quiz' %}Ingen quiz{% else %}Aktiv{% endif %}
                       </span>
                     </div>
                   </div>

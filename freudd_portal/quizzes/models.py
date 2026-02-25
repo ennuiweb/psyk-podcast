@@ -36,15 +36,6 @@ class QuizProgress(models.Model):
         return f"{self.user_id}:{self.quiz_id}:{self.status}"
 
 
-class UserPreference(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    semester = models.CharField(max_length=16, default="F26")
-    updated_at = models.DateTimeField(auto_now=True)
-
-    def __str__(self) -> str:
-        return f"{self.user_id}:{self.semester}"
-
-
 class SubjectEnrollment(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     subject_slug = models.CharField(max_length=64)
@@ -78,7 +69,6 @@ class UserGamificationProfile(models.Model):
 
 class UserUnitProgress(models.Model):
     class Status(models.TextChoices):
-        LOCKED = "locked", "Låst"
         ACTIVE = "active", "Aktiv"
         COMPLETED = "completed", "Fuldført"
 
@@ -87,7 +77,7 @@ class UserUnitProgress(models.Model):
     unit_key = models.CharField(max_length=32)
     unit_label = models.CharField(max_length=128)
     sequence_index = models.PositiveIntegerField(default=0)
-    status = models.CharField(max_length=16, choices=Status.choices, default=Status.LOCKED)
+    status = models.CharField(max_length=16, choices=Status.choices, default=Status.ACTIVE)
     completed_quizzes = models.PositiveIntegerField(default=0)
     total_quizzes = models.PositiveIntegerField(default=0)
     mastery_ratio = models.DecimalField(max_digits=5, decimal_places=4, default=0)
@@ -108,7 +98,6 @@ class UserUnitProgress(models.Model):
 
 class UserLectureProgress(models.Model):
     class Status(models.TextChoices):
-        LOCKED = "locked", "Låst"
         ACTIVE = "active", "Aktiv"
         COMPLETED = "completed", "Fuldført"
 
@@ -117,7 +106,7 @@ class UserLectureProgress(models.Model):
     lecture_key = models.CharField(max_length=32)
     lecture_title = models.CharField(max_length=255)
     sequence_index = models.PositiveIntegerField(default=0)
-    status = models.CharField(max_length=16, choices=Status.choices, default=Status.LOCKED)
+    status = models.CharField(max_length=16, choices=Status.choices, default=Status.ACTIVE)
     completed_quizzes = models.PositiveIntegerField(default=0)
     total_quizzes = models.PositiveIntegerField(default=0)
     updated_at = models.DateTimeField(auto_now=True)
@@ -140,7 +129,6 @@ class UserLectureProgress(models.Model):
 
 class UserReadingProgress(models.Model):
     class Status(models.TextChoices):
-        LOCKED = "locked", "Låst"
         ACTIVE = "active", "Aktiv"
         COMPLETED = "completed", "Fuldført"
         NO_QUIZ = "no_quiz", "Ingen quiz"
@@ -151,7 +139,7 @@ class UserReadingProgress(models.Model):
     reading_key = models.CharField(max_length=96)
     reading_title = models.CharField(max_length=255)
     sequence_index = models.PositiveIntegerField(default=0)
-    status = models.CharField(max_length=16, choices=Status.choices, default=Status.LOCKED)
+    status = models.CharField(max_length=16, choices=Status.choices, default=Status.ACTIVE)
     completed_quizzes = models.PositiveIntegerField(default=0)
     total_quizzes = models.PositiveIntegerField(default=0)
     updated_at = models.DateTimeField(auto_now=True)

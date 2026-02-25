@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import json
 import logging
-import re
 from urllib.parse import urlencode
 
 from django.conf import settings
@@ -27,11 +26,11 @@ from django.views.decorators.http import require_GET, require_http_methods, requ
 
 from .forms import SignupForm
 from .gamification_services import (
-    get_subject_learning_path_snapshot,
     get_gamification_snapshot,
+    get_subject_learning_path_snapshot,
     record_quiz_progress_delta,
 )
-from .models import QuizProgress, SubjectEnrollment, UserPreference
+from .models import QuizProgress, SubjectEnrollment
 from .rate_limit import evaluate_rate_limit
 from .services import (
     QUIZ_ID_RE,
@@ -55,11 +54,6 @@ DIFFICULTY_LABELS_DA = {
     "hard": "Svær",
     "unknown": "Ukendt",
 }
-LECTURE_KEY_DISPLAY_RE = re.compile(r"^W(?P<week>\d{1,2})L(?P<lecture>\d+)$", re.IGNORECASE)
-LECTURE_META_SUFFIX_RE = re.compile(
-    r"\s*\((?:forelæsning|forelaesning)\s+\d+\s*,\s*\d{4}-\d{2}-\d{2}\)\s*$",
-    re.IGNORECASE,
-)
 
 
 def _is_http_insecure(request: HttpRequest) -> bool:
@@ -89,10 +83,6 @@ def _difficulty_label(value: str | None) -> str:
     return DIFFICULTY_LABELS_DA.get(difficulty, difficulty.capitalize())
 
 
-def _default_semester_choice(catalog: SubjectCatalog) -> str:
-    return catalog.semester_choices[0] if catalog.semester_choices else "F26"
-
-
 def _subject_or_404(catalog: SubjectCatalog, subject_slug: str):
     subject = catalog.active_subject_by_slug(subject_slug)
     if subject is None:
@@ -119,78 +109,6 @@ def _rate_limit_exceeded(
     return (not result.allowed, result.retry_after_seconds)
 
 
-def _first_quiz_url_from_assets(assets: object) -> str | None:
-    if not isinstance(assets, dict):
-        return None
-    quizzes = assets.get("quizzes")
-    if not isinstance(quizzes, list):
-        return None
-    for quiz in quizzes:
-        if not isinstance(quiz, dict):
-            continue
-        quiz_url = str(quiz.get("quiz_url") or "").strip()
-        if quiz_url:
-            return quiz_url
-    return None
-
-
-def _first_podcast_url_from_assets(assets: object) -> str | None:
-    if not isinstance(assets, dict):
-        return None
-    podcasts = assets.get("podcasts")
-    if not isinstance(podcasts, list):
-        return None
-    for podcast in podcasts:
-        if not isinstance(podcast, dict):
-            continue
-        podcast_url = str(podcast.get("url") or "").strip()
-        if podcast_url:
-            return podcast_url
-    return None
-
-
-def _next_focus_quiz_url(active_lecture: object) -> str | None:
-    if not isinstance(active_lecture, dict):
-        return None
-
-    lecture_quiz_url = _first_quiz_url_from_assets(active_lecture.get("lecture_assets"))
-    if lecture_quiz_url:
-        return lecture_quiz_url
-
-    readings = active_lecture.get("readings")
-    if not isinstance(readings, list):
-        return None
-
-    for reading in readings:
-        if not isinstance(reading, dict):
-            continue
-        reading_quiz_url = _first_quiz_url_from_assets(reading.get("assets"))
-        if reading_quiz_url:
-            return reading_quiz_url
-    return None
-
-
-def _next_focus_spotify_url(active_lecture: object) -> str | None:
-    if not isinstance(active_lecture, dict):
-        return None
-
-    lecture_podcast_url = _first_podcast_url_from_assets(active_lecture.get("lecture_assets"))
-    if lecture_podcast_url:
-        return lecture_podcast_url
-
-    readings = active_lecture.get("readings")
-    if not isinstance(readings, list):
-        return None
-
-    for reading in readings:
-        if not isinstance(reading, dict):
-            continue
-        reading_podcast_url = _first_podcast_url_from_assets(reading.get("assets"))
-        if reading_podcast_url:
-            return reading_podcast_url
-    return None
-
-
 def _safe_non_negative_int(value: object) -> int:
     try:
         return max(0, int(value))
@@ -203,7 +121,6 @@ def _subject_path_overview(lectures: object) -> dict[str, int]:
         return {
             "total_lectures": 0,
             "completed_lectures": 0,
-            "active_lecture_index": 0,
             "total_quizzes": 0,
             "completed_quizzes": 0,
             "remaining_quizzes": 0,
@@ -214,7 +131,6 @@ def _subject_path_overview(lectures: object) -> dict[str, int]:
 
     total_lectures = 0
     completed_lectures = 0
-    active_lecture_index = 0
     total_quizzes = 0
     completed_quizzes = 0
     total_readings = 0
@@ -227,8 +143,6 @@ def _subject_path_overview(lectures: object) -> dict[str, int]:
         status = str(lecture.get("status") or "").strip().lower()
         if status == "completed":
             completed_lectures += 1
-        if status == "active" and active_lecture_index == 0:
-            active_lecture_index = total_lectures
 
         total_quizzes += _safe_non_negative_int(lecture.get("total_quizzes"))
         completed_quizzes += _safe_non_negative_int(lecture.get("completed_quizzes"))
@@ -249,7 +163,6 @@ def _subject_path_overview(lectures: object) -> dict[str, int]:
     return {
         "total_lectures": total_lectures,
         "completed_lectures": completed_lectures,
-        "active_lecture_index": active_lecture_index,
         "total_quizzes": total_quizzes,
         "completed_quizzes": completed_quizzes,
         "remaining_quizzes": remaining_quizzes,
@@ -265,38 +178,6 @@ def _progress_percent(*, completed: object, total: object) -> int:
     if total_count <= 0:
         return 0
     return max(0, min(100, int(round((completed_count / total_count) * 100))))
-
-
-def _lecture_code_for_display(lecture_key: object) -> str:
-    raw_key = str(lecture_key or "").strip().upper()
-    if not raw_key:
-        return ""
-    match = LECTURE_KEY_DISPLAY_RE.match(raw_key)
-    if not match:
-        return raw_key
-    week = int(match.group("week"))
-    lecture = int(match.group("lecture"))
-    return f"U{week}F{lecture}"
-
-
-def _lecture_title_for_display(*, lecture_title: object, lecture_key: object) -> str:
-    key = str(lecture_key or "").strip()
-    title = str(lecture_title or "").strip()
-    if title.upper().startswith(key.upper()):
-        title = title[len(key) :].lstrip(" -·").strip()
-    title = LECTURE_META_SUFFIX_RE.sub("", title).strip()
-    return title
-
-
-def _lecture_step_title(lecture: dict[str, object]) -> str:
-    code = _lecture_code_for_display(lecture.get("lecture_key"))
-    title = _lecture_title_for_display(
-        lecture_title=lecture.get("lecture_title"),
-        lecture_key=lecture.get("lecture_key"),
-    )
-    if code and title:
-        return f"{code} · {title}"
-    return code or title or str(lecture.get("lecture_key") or "")
 
 
 def _compact_asset_links(assets: object) -> dict[str, list[dict[str, object]]]:
@@ -353,7 +234,6 @@ def _enrich_subject_path_lectures(lectures: object) -> list[dict[str, object]]:
         lecture_assets = _compact_asset_links(lecture.get("lecture_assets"))
         lecture_copy = dict(lecture)
         lecture_copy["lecture_assets"] = lecture_assets
-        lecture_copy["lecture_step_title"] = _lecture_step_title(lecture_copy)
         lecture_copy["progress_percent"] = _progress_percent(
             completed=lecture_copy.get("completed_quizzes"),
             total=lecture_copy.get("total_quizzes"),
@@ -628,15 +508,6 @@ def gamification_me_view(request: HttpRequest) -> HttpResponse:
 @require_GET
 def progress_view(request: HttpRequest) -> HttpResponse:
     catalog = load_subject_catalog()
-    preference, _ = UserPreference.objects.get_or_create(
-        user=request.user,
-        defaults={"semester": _default_semester_choice(catalog)},
-    )
-
-    semester_choices = catalog.semester_choices or (_default_semester_choice(catalog),)
-    selected_semester = preference.semester
-    if selected_semester not in semester_choices:
-        selected_semester = _default_semester_choice(catalog)
 
     enrolled_slugs = set(
         SubjectEnrollment.objects.filter(user=request.user).values_list("subject_slug", flat=True)
@@ -681,32 +552,10 @@ def progress_view(request: HttpRequest) -> HttpResponse:
         "quizzes/progress.html",
         {
             "rows": rows,
-            "semester_choices": semester_choices,
-            "selected_semester": selected_semester,
             "subject_cards": subject_cards,
             "subjects_error": catalog.error,
         },
     )
-
-
-@login_required
-@require_POST
-def semester_update_view(request: HttpRequest) -> HttpResponse:
-    catalog = load_subject_catalog()
-    semester = request.POST.get("semester", "").strip()
-    if semester not in catalog.semester_choices:
-        messages.error(request, "Ugyldigt semester valgt.")
-        return redirect("progress")
-
-    preference, _ = UserPreference.objects.get_or_create(
-        user=request.user,
-        defaults={"semester": _default_semester_choice(catalog)},
-    )
-    if preference.semester != semester:
-        preference.semester = semester
-        preference.save(update_fields=["semester", "updated_at"])
-        messages.success(request, "Semester er opdateret.")
-    return redirect("progress")
 
 
 @login_required
@@ -754,20 +603,14 @@ def subject_detail_view(request: HttpRequest, subject_slug: str) -> HttpResponse
                 "subject_slug": subject.slug,
             },
         )
-        subject_path = {"lectures": [], "active_lecture": None, "source_meta": {}}
+        subject_path = {"lectures": [], "source_meta": {}}
         readings_error = "Læringsstien kunne ikke indlæses lige nu. Prøv igen om et øjeblik."
     else:
         source_meta = subject_path.get("source_meta") if isinstance(subject_path.get("source_meta"), dict) else {}
         readings_error = str(source_meta.get("reading_error") or "").strip() or None
 
     lecture_payload = _enrich_subject_path_lectures(subject_path.get("lectures", []))
-    active_lecture = next(
-        (lecture for lecture in lecture_payload if str(lecture.get("status") or "").strip().lower() == "active"),
-        None,
-    )
     overview = _subject_path_overview(lecture_payload)
-    subject_path_next_focus_url = _next_focus_quiz_url(active_lecture)
-    subject_path_next_focus_spotify_url = _next_focus_spotify_url(active_lecture)
 
     return render(
         request,
@@ -777,9 +620,6 @@ def subject_detail_view(request: HttpRequest, subject_slug: str) -> HttpResponse
             "is_enrolled": is_enrolled,
             "readings_error": readings_error,
             "subject_path_lectures": lecture_payload,
-            "subject_path_active_lecture": active_lecture,
-            "subject_path_next_focus_url": subject_path_next_focus_url,
-            "subject_path_next_focus_spotify_url": subject_path_next_focus_spotify_url,
             "subject_path_overview": overview,
         },
     )

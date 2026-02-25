@@ -153,7 +153,6 @@ def _recompute_unit_progress(user) -> tuple[int, list[UserUnitProgress]]:
     active_keys_by_subject: dict[str, set[str]] = {}
     completed_units_total = 0
     for subject_slug, units in units_by_subject.items():
-        first_active_index: int | None = None
         sequence = 0
         for definition in units:
             sequence += 1
@@ -166,11 +165,8 @@ def _recompute_unit_progress(user) -> tuple[int, list[UserUnitProgress]]:
             if total_quizzes > 0 and completed_quizzes == total_quizzes:
                 status = UserUnitProgress.Status.COMPLETED
                 completed_units_total += 1
-            elif first_active_index is None:
-                status = UserUnitProgress.Status.ACTIVE
-                first_active_index = sequence
             else:
-                status = UserUnitProgress.Status.LOCKED
+                status = UserUnitProgress.Status.ACTIVE
 
             row, _ = UserUnitProgress.objects.update_or_create(
                 user=user,
@@ -237,7 +233,6 @@ def recompute_subject_progress(user, subject_slug: str) -> dict[str, Any]:
 
     active_lecture_keys: set[str] = set()
     active_reading_keys: set[str] = set()
-    blocked_by_active = False
     lecture_row_count = 0
     reading_row_count = 0
 
@@ -260,17 +255,10 @@ def recompute_subject_progress(user, subject_slug: str) -> dict[str, Any]:
 
         total_quizzes = len(lecture_quiz_ids)
         completed_quizzes = len(lecture_quiz_ids.intersection(completed_ids))
-        if blocked_by_active:
-            lecture_status = UserLectureProgress.Status.LOCKED
+        if total_quizzes > 0 and completed_quizzes == total_quizzes:
+            lecture_status = UserLectureProgress.Status.COMPLETED
         else:
-            if total_quizzes == 0:
-                lecture_status = UserLectureProgress.Status.ACTIVE
-                blocked_by_active = True
-            elif completed_quizzes == total_quizzes:
-                lecture_status = UserLectureProgress.Status.COMPLETED
-            else:
-                lecture_status = UserLectureProgress.Status.ACTIVE
-                blocked_by_active = True
+            lecture_status = UserLectureProgress.Status.ACTIVE
 
         UserLectureProgress.objects.update_or_create(
             user=user,
@@ -287,7 +275,6 @@ def recompute_subject_progress(user, subject_slug: str) -> dict[str, Any]:
         lecture_row_count += 1
         active_lecture_keys.add(lecture_key)
 
-        reading_active_assigned = False
         for reading_position, reading in enumerate(readings, start=1):
             if not isinstance(reading, dict):
                 continue
@@ -302,15 +289,10 @@ def recompute_subject_progress(user, subject_slug: str) -> dict[str, Any]:
 
             if reading_total == 0:
                 reading_status = UserReadingProgress.Status.NO_QUIZ
-            elif lecture_status == UserLectureProgress.Status.LOCKED:
-                reading_status = UserReadingProgress.Status.LOCKED
             elif reading_completed == reading_total:
                 reading_status = UserReadingProgress.Status.COMPLETED
-            elif lecture_status == UserLectureProgress.Status.ACTIVE and not reading_active_assigned:
-                reading_status = UserReadingProgress.Status.ACTIVE
-                reading_active_assigned = True
             else:
-                reading_status = UserReadingProgress.Status.LOCKED
+                reading_status = UserReadingProgress.Status.ACTIVE
 
             UserReadingProgress.objects.update_or_create(
                 user=user,
@@ -550,7 +532,7 @@ def get_subject_learning_path_snapshot(user, subject_slug: str) -> dict[str, Any
             default_status = (
                 UserReadingProgress.Status.NO_QUIZ
                 if len(_quiz_ids_from_assets(reading_assets)) == 0
-                else UserReadingProgress.Status.LOCKED
+                else UserReadingProgress.Status.ACTIVE
             )
             readings_payload.append(
                 {
@@ -572,7 +554,7 @@ def get_subject_learning_path_snapshot(user, subject_slug: str) -> dict[str, Any
                 "lecture_key": lecture_key,
                 "lecture_title": str(lecture.get("lecture_title") or lecture_key),
                 "sequence_index": int(lecture.get("sequence_index") or 0),
-                "status": lecture_row.status if lecture_row else UserLectureProgress.Status.LOCKED,
+                "status": lecture_row.status if lecture_row else UserLectureProgress.Status.ACTIVE,
                 "completed_quizzes": int(lecture_row.completed_quizzes) if lecture_row else 0,
                 "total_quizzes": int(lecture_row.total_quizzes) if lecture_row else len(_quiz_ids_from_assets(lecture_assets)),
                 "warnings": list(lecture.get("warnings") or []),

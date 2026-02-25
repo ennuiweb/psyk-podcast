@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import QuizProgress, SubjectEnrollment, UserPreference
+from .models import QuizProgress, SubjectEnrollment
 
 
 @admin.register(QuizProgress)
@@ -17,13 +17,6 @@ class QuizProgressAdmin(admin.ModelAdmin):
     )
     search_fields = ("quiz_id", "user__username", "user__email")
     list_filter = ("status", "updated_at")
-
-
-@admin.register(UserPreference)
-class UserPreferenceAdmin(admin.ModelAdmin):
-    list_display = ("id", "user", "semester", "updated_at")
-    search_fields = ("user__username", "user__email", "semester")
-    list_filter = ("semester", "updated_at")
 
 
 @admin.register(SubjectEnrollment)

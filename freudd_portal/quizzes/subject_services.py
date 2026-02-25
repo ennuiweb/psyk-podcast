@@ -28,7 +28,6 @@ class SubjectDefinition:
 
 @dataclass(frozen=True)
 class SubjectCatalog:
-    semester_choices: tuple[str, ...]
     subjects: tuple[SubjectDefinition, ...]
     error: str | None = None
 
@@ -77,25 +76,7 @@ def clear_subject_service_caches() -> None:
 
 
 def _default_catalog(error: str | None = None) -> SubjectCatalog:
-    return SubjectCatalog(semester_choices=("F26",), subjects=tuple(), error=error)
-
-
-def _normalize_semester_choices(raw_values: Any) -> tuple[str, ...]:
-    if not isinstance(raw_values, list):
-        return ("F26",)
-
-    choices: list[str] = []
-    seen: set[str] = set()
-    for value in raw_values:
-        if not isinstance(value, str):
-            continue
-        cleaned = value.strip()
-        if not cleaned or cleaned in seen:
-            continue
-        seen.add(cleaned)
-        choices.append(cleaned)
-
-    return tuple(choices) if choices else ("F26",)
+    return SubjectCatalog(subjects=tuple(), error=error)
 
 
 def _normalize_subjects(raw_values: Any) -> tuple[SubjectDefinition, ...]:
@@ -166,7 +147,6 @@ def load_subject_catalog() -> SubjectCatalog:
             raise ValueError("unsupported catalog version")
 
         catalog = SubjectCatalog(
-            semester_choices=_normalize_semester_choices(payload.get("semester_choices")),
             subjects=_normalize_subjects(payload.get("subjects")),
         )
     except (OSError, UnicodeDecodeError, json.JSONDecodeError, ValueError):

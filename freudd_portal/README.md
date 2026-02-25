@@ -17,7 +17,6 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Quiz files directory must be readable by `www-data`; sync uploads now avoid owner/group preservation and enforce root dir mode `755`.
 - Public static quiz files still exist at `/quizzes/personlighedspsykologi/<id>.html` (Caddy static route).
 - Score key: per `(user, quiz_id)`.
-- Semester is stored globally per user (`UserPreference.semester`), and rendered as a fixed dropdown sourced from `subjects.json`.
 - Subjects are loaded from `freudd_portal/subjects.json`; first active subject is `personlighedspsykologi`.
 - Subject enrollment is per `(user, subject_slug)` in `SubjectEnrollment`.
 - Subject learning path is lecture-first: each lecture node contains readings, plus lecture-level assets (for example `Alle kilder`).
@@ -25,11 +24,9 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Podcast links on subject pages are Spotify-only (`spotify_map.json` matched by RSS title); unmapped podcast items are hidden.
 - Completion rule: `currentView == "summary"` and `answers_count == question_count`.
 - Gamification core is quiz-driven and always available for authenticated users (`/progress`, `/api/gamification/me`).
-- Learning path on subject pages (`/subjects/<subject_slug>`) is lecture-first with nested reading status (`locked|active|completed|no_quiz`) and quiz/podcast navigation.
+- Learning path on subject pages (`/subjects/<subject_slug>`) is lecture-first with nested reading status (`active|completed|no_quiz`) and quiz/podcast navigation.
 - Subject detail UI is mobile-first and uses a vertical timeline with manual `<details>` toggles, per-lecture progress bars, and compact quiz chips per difficulty.
 - Subject detail includes top overview KPI cards, `Udvid alle`/`Luk alle` controls, and local browser persistence of opened lectures.
-- Lecture step naming in subject detail follows podcast-style unit tags (`U1F1`, `U1F2`, ...) and strips trailing heading metadata like `(Forelæsning X, YYYY-MM-DD)` from the visible title.
-- Active lecture hero now exposes `Næste fokus` with optional `Start nu` quiz CTA and a direct Spotify episode link when available.
 - `quiz_links.json` entries must include `subject_slug` so unit progression can be computed per subject.
 - Optional extensions (`habitica`, `anki`) are disabled by default and must be enabled per account via management command.
 - Extension sync is server-driven (`manage.py sync_extensions`) and runs only for enabled users with stored per-user credentials.
@@ -49,7 +46,6 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - `GET/POST /api/quiz-state/<quiz_id>/raw`
 - `GET /api/gamification/me`
 - `GET /progress`
-- `POST /preferences/semester`
 - `GET /subjects/<subject_slug>`
 - `POST /subjects/<subject_slug>/enroll`
 - `POST /subjects/<subject_slug>/unenroll`
@@ -60,13 +56,12 @@ Enrollment UX rule: enroll/unenroll actions are shown inline per subject in the 
 
 ## Data model
 - `QuizProgress` (existing): per-user quiz completion/score state.
-- `UserPreference`: one-to-one with user (`semester`, `updated_at`).
 - `SubjectEnrollment`: per-user subject enrollment keyed by `(user, subject_slug)`.
 - `UserGamificationProfile`: per-user XP/streak/level aggregates.
-- `UserUnitProgress`: per-user learning path unit status (`locked`, `active`, `completed`).
+- `UserUnitProgress`: per-user learning path unit status (`active`, `completed`).
 - `DailyGamificationStat`: per-user daily answer/completion deltas + goal state.
-- `UserLectureProgress`: per-user lecture status (`locked|active|completed`) and quiz totals.
-- `UserReadingProgress`: per-user reading status (`locked|active|completed|no_quiz`) and quiz totals.
+- `UserLectureProgress`: per-user lecture status (`active|completed`) and quiz totals.
+- `UserReadingProgress`: per-user reading status (`active|completed|no_quiz`) and quiz totals.
 - `UserExtensionAccess`: per-user enablement and last sync status for optional extensions.
 - `UserExtensionCredential`: per-user encrypted extension credentials (`habitica` now, `anki` deferred).
 - `ExtensionSyncLedger`: per-user/per-extension/per-day idempotent sync log (`ok|error|skipped`).
@@ -76,7 +71,6 @@ Enrollment UX rule: enroll/unenroll actions are shown inline per subject in the 
 ```json
 {
   "version": 1,
-  "semester_choices": ["F26"],
   "subjects": [
     {
       "slug": "personlighedspsykologi",
@@ -180,7 +174,7 @@ python3 manage.py runserver 0.0.0.0:8000
 - Service: `freudd-portal.service`
 - Gunicorn bind: `127.0.0.1:8001`
 - Env file: `/etc/freudd-portal.env`
-- Caddy routes to portal: `/accounts/*`, `/api/*`, `/progress*`, `/q/*`, `/subjects/*`, `/preferences/*`
+- Caddy routes to portal: `/accounts/*`, `/api/*`, `/progress*`, `/q/*`, `/subjects/*`
 
 Service commands:
 ```bash

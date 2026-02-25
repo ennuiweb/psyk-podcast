@@ -25,39 +25,6 @@
     color: #52688f;
   }
 
-  .semester-form {
-    margin: 0;
-    display: grid;
-    gap: var(--space-2);
-  }
-
-  .semester-form label {
-    margin: 0;
-    font-size: 0.86rem;
-    color: var(--muted);
-    font-weight: 700;
-    letter-spacing: 0.01em;
-  }
-
-  .semester-controls {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-2);
-    align-items: center;
-  }
-
-  .semester-select {
-    width: 168px;
-    min-height: var(--control-min-height);
-    border-radius: var(--radius-sm);
-    background: #ffffff;
-  }
-
-  .dashboard-primary {
-    min-height: var(--control-min-height);
-    padding-inline: var(--space-4);
-  }
-
   .dashboard-section {
     margin-top: var(--space-4);
     border: 1px solid var(--border);
@@ -329,12 +296,8 @@
 
   @media (min-width: 780px) {
     .dashboard-head {
-      grid-template-columns: minmax(0, 1fr) auto;
-      align-items: end;
-    }
-
-    .semester-form {
-      justify-items: end;
+      grid-template-columns: minmax(0, 1fr);
+      align-items: start;
     }
   }
 
@@ -352,20 +315,8 @@
   <header class="dashboard-head">
     <div>
       <h1 class="quiz-title dashboard-title">Min side</h1>
-      <p class="dashboard-intro">Vælg semester, tilmeld fag, og få overblik over dine quizscore.</p>
+      <p class="dashboard-intro">Tilmeld fag, og få overblik over dine quizscore.</p>
     </div>
-    <form method="post" action="{% url 'semester-update' %}" class="semester-form">
-      {% csrf_token %}
-      <label for="semester-select">Aktivt semester</label>
-      <div class="semester-controls">
-        <select id="semester-select" name="semester" class="semester-select">
-          {% for choice in semester_choices %}
-          <option value="{{ choice }}" {% if choice == selected_semester %}selected{% endif %}>{{ choice }}</option>
-          {% endfor %}
-        </select>
-        <button class="btn-primary dashboard-primary" type="submit">Gem semester</button>
-      </div>
-    </form>
   </header>
 
   <section class="dashboard-section">

@@ -903,9 +903,6 @@
                       {% if reading.is_missing %}
                       <span class="missing-badge">Mangler kilde</span>
                       {% endif %}
-                      {% if reading.primary_quiz_url %}
-                      <a class="reading-quiz-link" href="{{ reading.primary_quiz_url }}">quiz</a>
-                      {% endif %}
                       {% if reading.open_url %}
                       <a class="reading-quiz-link" href="{{ reading.open_url }}" target="_blank" rel="noopener">åbn reading</a>
                       {% endif %}

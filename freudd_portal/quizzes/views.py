@@ -99,8 +99,8 @@ QUIZ_LANGUAGE_TAG_RE = re.compile(r"\[(?P<lang>[A-Za-z]{2,5})\]")
 QUIZ_BRIEF_PREFIX_RE = re.compile(r"^\s*\[brief\]\s*", re.IGNORECASE)
 QUIZ_LECTURE_KEY_RE = re.compile(r"\bW(?P<week>\d{1,2})L(?P<lecture>\d+)\b", re.IGNORECASE)
 MULTISPACE_RE = re.compile(r"\s+")
-SPOTIFY_EPISODE_URL_RE = re.compile(
-    r"^https://open\.spotify\.com/episode/[A-Za-z0-9]+(?:[/?#].*)?$",
+SPOTIFY_EPISODE_ID_RE = re.compile(
+    r"^https://open\.spotify\.com/episode/(?P<episode_id>[A-Za-z0-9]+)(?:[/?#].*)?$",
     re.IGNORECASE,
 )
 
@@ -461,9 +461,15 @@ def _compact_asset_links(
             podcast_url = str(podcast.get("url") or "").strip()
             if not podcast_url:
                 continue
-            if not SPOTIFY_EPISODE_URL_RE.match(podcast_url):
+            match = SPOTIFY_EPISODE_ID_RE.match(podcast_url)
+            if not match:
                 continue
-            compact_podcasts.append(dict(podcast))
+            podcast_copy = dict(podcast)
+            episode_id = str(match.group("episode_id") or "").strip()
+            podcast_copy["spotify_embed_url"] = (
+                f"https://open.spotify.com/embed/episode/{episode_id}?utm_source=generator"
+            )
+            compact_podcasts.append(podcast_copy)
 
     return {
         "quizzes": compact_quizzes,

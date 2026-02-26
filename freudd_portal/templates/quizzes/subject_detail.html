@@ -347,7 +347,7 @@
 
   .podcast-row {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) auto auto;
+    grid-template-columns: minmax(0, 1fr) auto;
     gap: var(--space-2);
     align-items: center;
     padding: var(--space-3);
@@ -378,19 +378,50 @@
     font-size: 0.78rem;
   }
 
-  .podcast-play {
-    width: 34px;
-    height: 34px;
+  .podcast-actions {
+    display: grid;
+    gap: var(--space-1);
+    justify-items: end;
+  }
+
+  .podcast-actions form {
+    margin: 0;
+  }
+
+  .podcast-inline-trigger {
+    min-height: 30px;
     border-radius: var(--radius-pill);
-    border: 1px solid color-mix(in srgb, var(--ink) 35%, transparent);
-    background: color-mix(in srgb, var(--ink) 46%, var(--surface));
-    color: var(--surface);
+    border: 1px solid color-mix(in srgb, var(--accent) 42%, var(--border));
+    background: color-mix(in srgb, var(--accent) 18%, var(--surface));
+    color: var(--text-strong);
+    padding: 0 var(--space-2);
+    font-size: 0.74rem;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .podcast-inline-trigger.is-active {
+    border-color: color-mix(in srgb, var(--success) 45%, var(--border));
+    background: color-mix(in srgb, var(--success) 18%, var(--surface));
+    color: var(--success-ink);
+  }
+
+  .podcast-play {
+    min-height: 30px;
+    border-radius: var(--radius-pill);
+    border: 1px solid color-mix(in srgb, #1db954 56%, transparent);
+    background: color-mix(in srgb, #1db954 20%, var(--surface));
+    color: var(--text-strong);
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 0.74rem;
+    font-weight: 700;
+    padding: 0 var(--space-2);
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    line-height: 1;
+    line-height: 1.2;
+    white-space: nowrap;
   }
 
   .tracking-toggle-button {
@@ -421,6 +452,29 @@
     text-align: center;
     color: var(--text-subtle);
     font-size: 0.95rem;
+  }
+
+  .podcast-inline-player {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sub);
+    background: var(--surface);
+    padding: var(--space-2);
+    display: grid;
+    gap: var(--space-2);
+  }
+
+  .podcast-inline-label {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.82rem;
+  }
+
+  .podcast-inline-frame {
+    width: 100%;
+    min-height: 152px;
+    border: 0;
+    border-radius: var(--radius-sub);
+    background: var(--surface-soft);
   }
 
   .reading-list {
@@ -650,12 +704,12 @@
     }
 
     .podcast-row {
-      grid-template-columns: minmax(0, 1fr) auto;
+      grid-template-columns: minmax(0, 1fr);
+      align-items: start;
     }
 
-    .podcast-row form {
-      grid-column: 1 / -1;
-      justify-self: start;
+    .podcast-actions {
+      justify-items: start;
     }
   }
 </style>
@@ -813,31 +867,57 @@
                   </p>
                   <p class="podcast-meta">{{ podcast.source_label }}</p>
                 </div>
-                <a
-                  class="podcast-play"
-                  href="{{ podcast.url }}"
-                  target="_blank"
-                  rel="noopener"
-                  aria-label="Afspil episode {{ podcast.episode_index }}"
-                >
-                  ▶
-                </a>
-                <form method="post" action="{{ podcast_tracking_url }}">
-                  {% csrf_token %}
-                  <input type="hidden" name="next" value="{{ request.get_full_path }}" />
-                  <input type="hidden" name="lecture_key" value="{{ podcast.lecture_key }}" />
-                  {% if podcast.reading_key %}
-                  <input type="hidden" name="reading_key" value="{{ podcast.reading_key }}" />
-                  {% endif %}
-                  <input type="hidden" name="podcast_key" value="{{ podcast.podcast_key }}" />
-                  <input type="hidden" name="action" value="{% if podcast.is_marked_listened %}unmark{% else %}mark{% endif %}" />
-                  <button class="tracking-toggle-button {% if podcast.is_marked_listened %}is-marked{% endif %}" type="submit">
-                    {% if podcast.is_marked_listened %}Lyttet{% else %}Markér lyttet{% endif %}
+                <div class="podcast-actions">
+                  {% if podcast.spotify_embed_url %}
+                  <button
+                    class="podcast-inline-trigger"
+                    type="button"
+                    data-spotify-embed-url="{{ podcast.spotify_embed_url }}"
+                    data-spotify-title="Ep. {{ podcast.episode_index }}: {{ podcast.display_title }}"
+                    aria-pressed="false"
+                    aria-label="Afspil episode {{ podcast.episode_index }} direkte her"
+                  >
+                    Afspil her
                   </button>
-                </form>
+                  {% endif %}
+                  <a
+                    class="podcast-play"
+                    href="{{ podcast.url }}"
+                    target="_blank"
+                    rel="noopener"
+                    aria-label="Åbn episode {{ podcast.episode_index }} i Spotify"
+                  >
+                    Spotify
+                  </a>
+                  <form method="post" action="{{ podcast_tracking_url }}">
+                    {% csrf_token %}
+                    <input type="hidden" name="next" value="{{ request.get_full_path }}" />
+                    <input type="hidden" name="lecture_key" value="{{ podcast.lecture_key }}" />
+                    {% if podcast.reading_key %}
+                    <input type="hidden" name="reading_key" value="{{ podcast.reading_key }}" />
+                    {% endif %}
+                    <input type="hidden" name="podcast_key" value="{{ podcast.podcast_key }}" />
+                    <input type="hidden" name="action" value="{% if podcast.is_marked_listened %}unmark{% else %}mark{% endif %}" />
+                    <button class="tracking-toggle-button {% if podcast.is_marked_listened %}is-marked{% endif %}" type="submit">
+                      {% if podcast.is_marked_listened %}Lyttet{% else %}Markér lyttet{% endif %}
+                    </button>
+                  </form>
+                </div>
               </li>
               {% endfor %}
             </ul>
+            <div class="podcast-inline-player" data-spotify-player hidden>
+              <p class="podcast-inline-label" data-spotify-player-label></p>
+              <iframe
+                class="podcast-inline-frame"
+                data-spotify-player-frame
+                src=""
+                title="Spotify afspiller"
+                loading="lazy"
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                referrerpolicy="strict-origin-when-cross-origin"
+              ></iframe>
+            </div>
             <p class="podcast-end">Ingen flere podcasts tilgængelige</p>
             {% else %}
             <p class="section-empty">Ingen podcasts registreret i denne forelæsning.</p>
@@ -881,4 +961,62 @@
   <div class="message error">{{ readings_error }}</div>
   {% endif %}
 </div>
+<script>
+  (() => {
+    const section = document.querySelector(".lecture-podcasts");
+    if (!section) {
+      return;
+    }
+    const playerContainer = section.querySelector("[data-spotify-player]");
+    const playerFrame = section.querySelector("[data-spotify-player-frame]");
+    const playerLabel = section.querySelector("[data-spotify-player-label]");
+    if (!(playerContainer && playerFrame && playerLabel)) {
+      return;
+    }
+
+    const playButtons = Array.from(section.querySelectorAll("button[data-spotify-embed-url]"));
+    if (!playButtons.length) {
+      return;
+    }
+
+    const setPressedState = (activeButton = null) => {
+      playButtons.forEach((button) => {
+        const isActive = button === activeButton;
+        button.classList.toggle("is-active", isActive);
+        button.setAttribute("aria-pressed", isActive ? "true" : "false");
+      });
+    };
+
+    const closePlayer = () => {
+      playerContainer.setAttribute("hidden", "");
+      playerFrame.setAttribute("src", "");
+      playerFrame.setAttribute("title", "Spotify afspiller");
+      playerLabel.textContent = "";
+      setPressedState(null);
+    };
+
+    const openPlayer = (button) => {
+      const embedUrl = String(button.getAttribute("data-spotify-embed-url") || "").trim();
+      if (!embedUrl) {
+        return;
+      }
+      const isSameUrl = playerFrame.getAttribute("src") === embedUrl;
+      const isOpen = !playerContainer.hasAttribute("hidden");
+      if (isSameUrl && isOpen) {
+        closePlayer();
+        return;
+      }
+      const title = String(button.getAttribute("data-spotify-title") || "Podcast episode").trim();
+      playerFrame.setAttribute("src", embedUrl);
+      playerFrame.setAttribute("title", `Spotify afspiller: ${title}`);
+      playerLabel.textContent = `Afspiller: ${title}`;
+      playerContainer.removeAttribute("hidden");
+      setPressedState(button);
+    };
+
+    playButtons.forEach((button) => {
+      button.addEventListener("click", () => openPlayer(button));
+    });
+  })();
+</script>
 {% endblock %}

@@ -1297,8 +1297,18 @@ class QuizPortalTests(TestCase):
         response = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "class=\"podcast-play\"")
+        self.assertContains(response, "class=\"podcast-inline-trigger\"")
         self.assertContains(response, "https://open.spotify.com/episode/5m0hYfDU9ThM5qR2xMugr8")
         self.assertContains(response, "https://open.spotify.com/episode/4w4gHCXnQK5fjQdsxQO0XG")
+        self.assertContains(
+            response,
+            "data-spotify-embed-url=\"https://open.spotify.com/embed/episode/5m0hYfDU9ThM5qR2xMugr8?utm_source=generator\"",
+        )
+        self.assertContains(
+            response,
+            "data-spotify-embed-url=\"https://open.spotify.com/embed/episode/4w4gHCXnQK5fjQdsxQO0XG?utm_source=generator\"",
+        )
+        self.assertContains(response, "data-spotify-player-frame")
         self.assertNotContains(response, "https://example.test/podcast/w01l1-alle-kilder.mp3")
         self.assertNotContains(response, "https://example.test/podcast/w01l1-intro.mp3")
 
@@ -1311,6 +1321,7 @@ class QuizPortalTests(TestCase):
         response = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
         self.assertEqual(response.status_code, 200)
         self.assertNotContains(response, "https://open.spotify.com/episode/")
+        self.assertNotContains(response, "data-spotify-embed-url=")
         self.assertNotContains(response, "https://example.test/podcast/w01l1-alle-kilder.mp3")
         self.assertNotContains(response, "https://example.test/podcast/w01l1-intro.mp3")
         self.assertContains(response, "Ingen podcasts registreret i denne forelæsning.")
@@ -1357,6 +1368,10 @@ class QuizPortalTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Ep. 1: Introduktion til kurset (15 min)")
         self.assertContains(response, "Ep. 2: Hvad er personlighed?")
+        self.assertContains(
+            response,
+            "data-spotify-embed-url=\"https://open.spotify.com/embed/episode/5m0hYfDU9ThM5qR2xMugr8?utm_source=generator\"",
+        )
 
     def test_subject_detail_shows_private_tracking_controls(self) -> None:
         user = self._create_user()

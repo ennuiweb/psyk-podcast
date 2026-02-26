@@ -26,6 +26,7 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Subject learning path is lecture-first: each lecture node contains readings, plus lecture-level assets (for example `Alle kilder`).
 - Subject content is compiled from reading master key + quiz links + local RSS into `content_manifest.json`.
 - Podcast links on subject pages are Spotify-only (`spotify_map.json` matched by RSS title). Direct source/Drive audio links are never exposed in UI.
+- Subject detail includes inline Spotify playback via embedded episode player, plus the existing external Spotify link.
 - Completion rule: `currentView == "summary"` and `answers_count == question_count`.
 - Gamification core is quiz-driven and always available for authenticated users (`/progress`, `/api/gamification/me`).
 - `/progress` is split in two tracks: private personal tracking and public quizliga preview.

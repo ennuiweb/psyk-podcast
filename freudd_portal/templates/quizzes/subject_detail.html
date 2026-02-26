@@ -368,11 +368,12 @@
     gap: var(--space-2);
   }
 
-  .podcast-title-actions {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-1);
-    flex-shrink: 0;
+  .podcast-title-main {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-2);
+    min-width: 0;
+    flex: 1 1 auto;
   }
 
   .podcast-title {
@@ -595,7 +596,7 @@
   .reading-title-row {
     display: flex;
     align-items: flex-start;
-    justify-content: space-between;
+    justify-content: flex-start;
     gap: var(--space-2);
   }
 
@@ -865,7 +866,6 @@
                 <div class="reading-top">
                   <div class="reading-main">
                     <div class="reading-title-row">
-                      <p class="reading-title"><strong>{{ reading.reading_title }}</strong></p>
                       <form method="post" action="{{ reading_tracking_url }}" class="tracking-toggle-form">
                         {% csrf_token %}
                         <input type="hidden" name="next" value="{{ request.get_full_path }}" />
@@ -883,6 +883,7 @@
                           <span class="visually-hidden">{% if reading.is_marked_read %}Læst{% else %}Markér læst{% endif %}</span>
                         </button>
                       </form>
+                      <p class="reading-title"><strong>{{ reading.reading_title }}</strong></p>
                     </div>
                     <p class="reading-meta">{{ reading.completed_quizzes }} / {{ reading.total_quizzes }}</p>
                     <p class="reading-meta">
@@ -904,6 +905,9 @@
                       {% endif %}
                       {% if reading.primary_quiz_url %}
                       <a class="reading-quiz-link" href="{{ reading.primary_quiz_url }}">quiz</a>
+                      {% endif %}
+                      {% if reading.open_url %}
+                      <a class="reading-quiz-link" href="{{ reading.open_url }}" target="_blank" rel="noopener">åbn reading</a>
                       {% endif %}
                     </div>
 
@@ -956,27 +960,7 @@
               <li class="podcast-row">
                 <div class="podcast-copy">
                   <div class="podcast-title-row">
-                    <p class="podcast-title">
-                      Ep. {{ podcast.episode_index }}: {{ podcast.display_title }}{% if podcast.duration_label %} ({{ podcast.duration_label }}){% endif %}
-                    </p>
-                    <div class="podcast-title-actions">
-                      {% if podcast.spotify_embed_url %}
-                      <button
-                        class="podcast-inline-trigger"
-                        type="button"
-                        data-spotify-embed-url="{{ podcast.spotify_embed_url }}"
-                        data-spotify-title="Ep. {{ podcast.episode_index }}: {{ podcast.display_title }}"
-                        aria-pressed="false"
-                        aria-label="Afspil episode {{ podcast.episode_index }} i Spotify-afspilleren"
-                      >
-                        <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
-                          <circle cx="12" cy="12" r="10"></circle>
-                          <path d="M7.8 14.2c2.6-.7 5.6-.3 7.8 1"></path>
-                          <path d="M8.6 11.6c2.9-.8 6.1-.4 8.4 1"></path>
-                          <path d="M9.2 9.1c3-.8 6.4-.4 8.8 1.1"></path>
-                        </svg>
-                      </button>
-                      {% endif %}
+                    <div class="podcast-title-main">
                       <form method="post" action="{{ podcast_tracking_url }}" class="tracking-toggle-form">
                         {% csrf_token %}
                         <input type="hidden" name="next" value="{{ request.get_full_path }}" />
@@ -997,7 +981,27 @@
                           <span class="visually-hidden">{% if podcast.is_marked_listened %}Lyttet{% else %}Markér lyttet{% endif %}</span>
                         </button>
                       </form>
+                      <p class="podcast-title">
+                        Ep. {{ podcast.episode_index }}: {{ podcast.display_title }}{% if podcast.duration_label %} ({{ podcast.duration_label }}){% endif %}
+                      </p>
                     </div>
+                    {% if podcast.spotify_embed_url %}
+                    <button
+                      class="podcast-inline-trigger"
+                      type="button"
+                      data-spotify-embed-url="{{ podcast.spotify_embed_url }}"
+                      data-spotify-title="Ep. {{ podcast.episode_index }}: {{ podcast.display_title }}"
+                      aria-pressed="false"
+                      aria-label="Afspil episode {{ podcast.episode_index }} i Spotify-afspilleren"
+                    >
+                      <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M7.8 14.2c2.6-.7 5.6-.3 7.8 1"></path>
+                        <path d="M8.6 11.6c2.9-.8 6.1-.4 8.4 1"></path>
+                        <path d="M9.2 9.1c3-.8 6.4-.4 8.8 1.1"></path>
+                      </svg>
+                    </button>
+                    {% endif %}
                   </div>
                   <p class="podcast-meta">{{ podcast.source_label }}</p>
                 </div>

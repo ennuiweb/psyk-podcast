@@ -22,6 +22,10 @@ SubjectContentManifest = dict[str, Any]
 
 LECTURE_KEY_RE = re.compile(r"\bW(?P<week>\d{1,2})L(?P<lecture>\d+)\b", re.IGNORECASE)
 SEMESTER_LECTURE_RE = re.compile(r"^\s*U(?P<week>\d{1,2})F(?P<lecture>\d+)\s*$", re.IGNORECASE)
+DANISH_LECTURE_RE = re.compile(
+    r"^\s*uge\s*(?P<week>\d{1,2})\s*,?\s*forel(?:æ|ae)sning\s*(?P<lecture>\d+)\s*$",
+    re.IGNORECASE,
+)
 QUIZ_ID_RE = re.compile(r"(?P<id>[0-9a-f]{8})\.html$", re.IGNORECASE)
 CFG_TAG_RE = re.compile(
     r"(?:\s+\{[a-z0-9._:+-]+=[^{}\s]+(?:\s+[a-z0-9._:+-]+=[^{}\s]+)*\})+"
@@ -64,6 +68,11 @@ def _lecture_key_from_text(value: str) -> str | None:
     if compact_match:
         week = int(compact_match.group("week"))
         lecture = int(compact_match.group("lecture"))
+        return f"W{week:02d}L{lecture}"
+    danish_match = DANISH_LECTURE_RE.match((value or "").strip())
+    if danish_match:
+        week = int(danish_match.group("week"))
+        lecture = int(danish_match.group("lecture"))
         return f"W{week:02d}L{lecture}"
     return None
 
@@ -373,15 +382,23 @@ def _attach_podcasts(
 
         lecture_state = lectures[lecture_index[lecture_key]]
         spotify_url = spotify_by_title.get(_normalize_rss_title_key(title_text))
-        if not spotify_url:
-            lecture_state["warnings"].append(f"Spotify mapping missing for RSS item: {title_text}")
-            continue
         source_audio_url = _find_enclosure_url(item)
+        platform = "spotify"
+        resolved_url = spotify_url
+        if not resolved_url:
+            if not source_audio_url:
+                lecture_state["warnings"].append(f"Spotify mapping missing for RSS item: {title_text}")
+                continue
+            lecture_state["warnings"].append(
+                f"Spotify mapping missing for RSS item; using source audio URL: {title_text}"
+            )
+            platform = "source"
+            resolved_url = source_audio_url
         podcast_asset = {
             "kind": _podcast_kind_from_token(kind_hint),
             "title": title_text,
-            "url": spotify_url,
-            "platform": "spotify",
+            "url": resolved_url,
+            "platform": platform,
             "pub_date": str(item.findtext("pubDate") or "").strip(),
             "source_audio_url": source_audio_url,
         }

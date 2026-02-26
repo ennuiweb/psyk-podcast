@@ -506,6 +506,12 @@
     background: var(--success-bg);
   }
 
+  .asset-link.is-source {
+    border-color: rgba(36, 86, 198, 0.34);
+    color: var(--info-ink-strong);
+    background: var(--info-bg);
+  }
+
   .reading-title {
     margin: 0;
     font-size: 1rem;
@@ -602,6 +608,36 @@
     gap: var(--space-1);
     align-items: center;
     flex-wrap: wrap;
+  }
+
+  .reading-status-wrap form,
+  .asset-link-row form {
+    margin: 0;
+  }
+
+  .tracking-toggle-button {
+    min-height: 30px;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--border-strong);
+    background: var(--surface);
+    color: var(--text-subtle-2);
+    padding: 0 var(--space-2);
+    font-size: 0.72rem;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .tracking-toggle-button.is-marked {
+    border-color: rgba(31, 143, 78, 0.44);
+    background: var(--success-bg);
+    color: var(--success-ink);
+  }
+
+  .asset-link-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-2);
   }
 
   .progress-empty {
@@ -784,7 +820,14 @@
                 </p>
                 <div class="asset-links">
                   {% for podcast in lecture.lecture_assets.podcasts %}
-                  <a class="asset-link is-spotify" href="{{ podcast.url }}" target="_blank" rel="noopener">Spotify episode {{ forloop.counter }}</a>
+                  <a
+                    class="asset-link {% if podcast.platform == 'spotify' %}is-spotify{% else %}is-source{% endif %}"
+                    href="{{ podcast.url }}"
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    {% if podcast.platform == 'spotify' %}Spotify episode{% else %}Lydfil{% endif %} {{ forloop.counter }}
+                  </a>
                   {% endfor %}
                 </div>
               </div>
@@ -872,7 +915,14 @@
                     </p>
                     <div class="asset-links">
                       {% for podcast in reading.assets.podcasts %}
-                      <a class="asset-link is-spotify" href="{{ podcast.url }}" target="_blank" rel="noopener">Spotify episode {{ forloop.counter }}</a>
+                      <a
+                        class="asset-link {% if podcast.platform == 'spotify' %}is-spotify{% else %}is-source{% endif %}"
+                        href="{{ podcast.url }}"
+                        target="_blank"
+                        rel="noopener"
+                      >
+                        {% if podcast.platform == 'spotify' %}Spotify episode{% else %}Lydfil{% endif %} {{ forloop.counter }}
+                      </a>
                       {% endfor %}
                     </div>
                     </div>

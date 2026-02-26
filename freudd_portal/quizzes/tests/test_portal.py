@@ -896,7 +896,7 @@ class QuizPortalTests(TestCase):
         self.assertNotContains(response, "https://example.test/podcast/w01l1-alle-kilder.mp3")
         self.assertNotContains(response, "https://example.test/podcast/w01l1-intro.mp3")
 
-    def test_subject_detail_hides_unmapped_podcast_links(self) -> None:
+    def test_subject_detail_uses_source_audio_links_when_spotify_map_missing(self) -> None:
         user = self._create_user()
         self.client.force_login(user)
         self._write_spotify_map({})
@@ -906,8 +906,9 @@ class QuizPortalTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertNotContains(response, "class=\"asset-link is-spotify\"")
         self.assertNotContains(response, "https://open.spotify.com/episode/")
-        self.assertNotContains(response, "https://example.test/podcast/w01l1-alle-kilder.mp3")
-        self.assertNotContains(response, "https://example.test/podcast/w01l1-intro.mp3")
+        self.assertContains(response, "https://example.test/podcast/w01l1-alle-kilder.mp3")
+        self.assertContains(response, "https://example.test/podcast/w01l1-intro.mp3")
+        self.assertContains(response, "Lydfil 1")
 
     def test_subject_detail_hides_enrollment_badge_for_enrolled_user(self) -> None:
         user = self._create_user()

@@ -162,7 +162,7 @@ The repository includes a Django portal in `freudd_portal/` for user login, quiz
 - UI: subject detail page shows enrollment status only; enroll/unenroll actions live on `/progress` under `Mine fag`.
 - UI layout contract: each lecture renders as a `timeline-item` with collapsed-by-default `lecture-details`; page includes top overview KPI cards plus `Udvid alle`/`Luk alle` controls and localStorage persistence for opened lecture panels.
 - UI hero contract: active lecture exposes top `Næste fokus` with optional `Start nu` CTA and optional direct Spotify episode link.
-- Podcast link policy: subject detail renders Spotify-only podcast links from `spotify_map.json`; unmapped RSS podcasts are hidden from UI.
+- Podcast link policy: subject detail renders Spotify podcast links from `spotify_map.json` when mapped; unmapped RSS podcasts fall back to source-audio links.
 - Subject detail now degrades gracefully: if snapshot computation fails, route still returns 200 with a user-facing retry message instead of 500.
 - Unique key: `(user, quiz_id)` for quiz state
 - Unique key: `(user, subject_slug)` for subject enrollment
@@ -173,7 +173,7 @@ The repository includes a Django portal in `freudd_portal/` for user login, quiz
 - First subject in the catalog: `personlighedspsykologi`.
 - Lecture/readings source of truth is the master markdown key path (`FREUDD_READING_MASTER_KEY_PATH`) with fallback to repo mirror (`FREUDD_READING_MASTER_KEY_FALLBACK_PATH`).
 - Subject content is compiled into a lecture-first `content_manifest.json` that merges reading key + `quiz_links.json` + local RSS.
-- Spotify mapping source is `spotify_map.json` keyed by RSS item title; mapped entries become canonical podcast URLs in manifest (`platform=spotify`, `source_audio_url` preserved for traceability).
+- Spotify mapping source is `spotify_map.json` keyed by RSS item title; mapped entries become canonical podcast URLs in manifest (`platform=spotify`). Unmapped entries use `platform=source` with RSS source-audio URL.
 - `MISSING:` reading lines are preserved and rendered as missing reading cards in subject detail.
 
 ### Local setup

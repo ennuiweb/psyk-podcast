@@ -21,7 +21,7 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Subject enrollment is per `(user, subject_slug)` in `SubjectEnrollment`.
 - Subject learning path is lecture-first: each lecture node contains readings, plus lecture-level assets (for example `Alle kilder`).
 - Subject content is compiled from reading master key + quiz links + local RSS into `content_manifest.json`.
-- Podcast links on subject pages are Spotify-only (`spotify_map.json` matched by RSS title); unmapped podcast items are hidden.
+- Podcast links on subject pages prefer Spotify links from `spotify_map.json`; if no mapping exists, RSS source-audio URLs are shown as fallback links.
 - Completion rule: `currentView == "summary"` and `answers_count == question_count`.
 - Gamification core is quiz-driven and always available for authenticated users (`/progress`, `/api/gamification/me`).
 - Learning path on subject pages (`/subjects/<subject_slug>`) is lecture-first with nested reading status (`active|completed|no_quiz`) and quiz/podcast navigation.
@@ -105,7 +105,7 @@ Enrollment UX rule: enroll/unenroll actions are shown inline per subject in the 
 - `lectures[]`: lecture-first tree with `lecture_key`, `lecture_title`, `sequence_index`, `readings[]`, `lecture_assets`, `warnings[]`.
 - `readings[]`: each reading has stable `reading_key`, `reading_title`, `is_missing`, and `assets` (`quizzes[]`, `podcasts[]`).
 - `lecture_assets`: lecture-level assets for items like `Alle kilder`.
-- `podcasts[]`: Spotify-resolved assets with `url` (Spotify episode), `platform="spotify"`, and `source_audio_url` (original RSS enclosure/link).
+- `podcasts[]`: resolved assets with `url`, `platform` (`spotify` or `source`), and `source_audio_url` (original RSS enclosure/link when available).
 
 ## Spotify map contract (`spotify_map.json`)
 - Path default: `shows/personlighedspsykologi-en/spotify_map.json`
@@ -124,7 +124,7 @@ Enrollment UX rule: enroll/unenroll actions are shown inline per subject in the 
 
 Operational behavior:
 - Mapped RSS titles render Spotify links on `/subjects/<subject_slug>`.
-- Unmapped RSS titles are omitted from UI and emitted as manifest warnings (non-fatal).
+- Unmapped RSS titles render source-audio fallback links and emit lecture warnings (non-fatal).
 - Keep `spotify_map.json` updated when new RSS episodes are published, then rebuild manifest.
 
 ## New env configuration

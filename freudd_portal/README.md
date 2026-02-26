@@ -4,6 +4,7 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 
 ## Current decisions
 - Auth: Hybrid login (`brugernavn/adgangskode` + optional Google OAuth), med open signup (`/accounts/signup`) bevaret.
+- Signup policy: `email` er obligatorisk; `brugernavn` er valgfrit og autogenereres unikt ved tomt felt.
 - Google OAuth er feature-flagged via `FREUDD_AUTH_GOOGLE_ENABLED`; når aktiv eksponeres allauth Google-login + konto-linking flows.
 - Existing password users linker Google eksplicit via `Forbind Google` (`/accounts/3rdparty/`) efter login.
 - UI language: Danish only (`da`) for now; English is intentionally disabled.

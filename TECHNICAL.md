@@ -259,6 +259,7 @@ Quiz sync behavior (current):
 ### Security controls in phase 1
 - Django session auth + CSRF middleware
 - Hybrid auth model: local password login + optional Google OAuth login
+- Signup policy: `email` is required; `username` is optional and auto-generated uniquely when omitted
 - Google account linking is explicit (`/accounts/3rdparty/`); implicit email-based social account takeover is disabled
 - Wrapper/raw quiz endpoints are public (`/q/*`, `/q/raw/*`) for anonymous play
 - Public quiz content API (`/api/quiz-content/<id>`) serves normalized quiz JSON to the portal UI

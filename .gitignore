@@ -15,6 +15,8 @@ freudd_portal/db.sqlite3
 
 # Python envs
 .venv/
+.env
+freudd_portal/.env
 
 # macOS artifacts
 .DS_Store

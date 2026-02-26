@@ -291,6 +291,35 @@ class QuizPortalTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertIn("username", response.context["form"].errors)
 
+    def test_signup_requires_email(self) -> None:
+        response = self.client.post(
+            reverse("signup"),
+            {
+                "username": "",
+                "email": "",
+                "password1": "StrongPass123!",
+                "password2": "StrongPass123!",
+            },
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertIn("email", response.context["form"].errors)
+
+    def test_signup_allows_blank_username_and_generates_username(self) -> None:
+        response = self.client.post(
+            reverse("signup"),
+            {
+                "username": "",
+                "email": "new.user@example.com",
+                "password1": "StrongPass123!",
+                "password2": "StrongPass123!",
+            },
+        )
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.url, reverse("progress"))
+        created = User.objects.get(email="new.user@example.com")
+        self.assertTrue(created.username)
+        self.assertIn("_auth_user_id", self.client.session)
+
     def test_login_bad_password(self) -> None:
         self._create_user(username="alice", password="Secret123!!")
         response = self.client.post(

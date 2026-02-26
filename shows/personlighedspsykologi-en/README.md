@@ -50,6 +50,7 @@ Update the Drive folder ID, owner email, and upload service account credentials 
 Quiz link sync note:
 - `scripts/sync_quiz_links.py` and `podcast-tools/sync_drive_quiz_links.py` use quiz JSON exports as the source of truth.
 - `shows/personlighedspsykologi-en/quiz_links.json` intentionally keeps `.html` relative paths so public links remain `/q/<id>.html`.
+- Feed generation uses `quiz.base_url = https://freudd.dk/q/` so podcast descriptions link to the domain (not raw IP).
 
 Reading key sync note:
 - Source of truth file: `/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/.ai/reading-file-key.md`

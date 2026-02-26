@@ -527,8 +527,8 @@
 
   .reading-assets {
     display: grid;
-    gap: var(--subject-space-block);
-    margin-top: var(--subject-space-tight);
+    gap: var(--subject-space-tight);
+    margin-top: clamp(4px, 0.6vw, 8px);
   }
 
   .reading-asset-group {
@@ -540,9 +540,9 @@
     border: 0;
     border-radius: var(--radius-sm);
     background: var(--surface);
-    padding: var(--subject-space-block);
+    padding: clamp(12px, 1vw, 16px);
     display: grid;
-    gap: var(--subject-space-tight);
+    gap: clamp(8px, 0.8vw, 12px);
     box-shadow: inset 0 0 0 1px rgba(138, 160, 201, 0.26);
   }
 

@@ -6,6 +6,7 @@ import html
 import json
 import logging
 import re
+from datetime import datetime, timedelta, timezone as dt_timezone
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
@@ -39,6 +40,24 @@ class ProgressComputation:
     answers_count: int
     question_count: int
     status: str
+
+
+@dataclass(frozen=True)
+class CooldownStatus:
+    is_blocked: bool
+    retry_after_seconds: int
+    available_at: str | None
+    streak_count: int
+    next_cooldown_seconds: int
+
+
+@dataclass(frozen=True)
+class QuizOutcome:
+    question_count: int
+    answered_count: int
+    correct_answers: int
+    wrong_answers: int
+    skipped_answers: int
 
 
 _METADATA_CACHE: dict[str, Any] = {"mtime": None, "data": {}}
@@ -210,17 +229,53 @@ def normalize_state_payload(raw_payload: Any) -> dict[str, Any]:
     if len(current_view) > 32:
         raise StatePayloadError("currentView er for lang.")
 
+    timed_out_raw = raw_payload.get("timedOutQuestionIndices", [])
+    if timed_out_raw is None:
+        timed_out_raw = []
+    if not isinstance(timed_out_raw, list):
+        raise StatePayloadError("timedOutQuestionIndices skal være en liste.")
+    timed_out_indices: list[int] = []
+    for item in timed_out_raw:
+        if isinstance(item, bool) or not isinstance(item, int):
+            raise StatePayloadError("timedOutQuestionIndices-elementer skal være heltal.")
+        timed_out_indices.append(item)
+
+    deadlines_raw = raw_payload.get("questionDeadlineEpochMs", {})
+    if deadlines_raw is None:
+        deadlines_raw = {}
+    if not isinstance(deadlines_raw, dict):
+        raise StatePayloadError("questionDeadlineEpochMs skal være et objekt.")
+    deadlines: dict[str, int] = {}
+    for raw_key, raw_value in deadlines_raw.items():
+        key_str = str(raw_key).strip()
+        if len(key_str) > 64:
+            raise StatePayloadError("questionDeadlineEpochMs indeholder en for lang nøgle.")
+        if isinstance(raw_value, bool) or not isinstance(raw_value, int):
+            raise StatePayloadError("questionDeadlineEpochMs-værdier skal være heltal.")
+        if raw_value < 0:
+            raise StatePayloadError("questionDeadlineEpochMs-værdier skal være nul eller positive.")
+        deadlines[key_str] = raw_value
+
     return {
         "userAnswers": user_answers,
         "currentQuestionIndex": current_question_index,
         "hiddenQuestionIndices": hidden_indices,
         "currentView": current_view,
+        "timedOutQuestionIndices": timed_out_indices,
+        "questionDeadlineEpochMs": deadlines,
     }
 
 
 def compute_progress(state_payload: dict[str, Any], question_count: int) -> ProgressComputation:
     user_answers = state_payload.get("userAnswers", {})
-    answers_count = sum(1 for _, value in user_answers.items() if value is not None)
+    answered_keys = {str(key) for key, value in user_answers.items() if value is not None}
+    timed_out_indices = state_payload.get("timedOutQuestionIndices", [])
+    timed_out_keys = {
+        str(index)
+        for index in timed_out_indices
+        if isinstance(index, int) and not isinstance(index, bool) and index >= 0
+    }
+    answers_count = len(answered_keys.union(timed_out_keys))
     current_view = str(state_payload.get("currentView", "question"))
 
     status = QuizProgress.Status.IN_PROGRESS
@@ -232,6 +287,206 @@ def compute_progress(state_payload: dict[str, Any], question_count: int) -> Prog
         question_count=question_count,
         status=status,
     )
+
+
+def _question_time_limit_seconds() -> int:
+    value = int(getattr(settings, "FREUDD_QUIZ_QUESTION_TIME_LIMIT_SECONDS", 30))
+    return max(5, value)
+
+
+def _retry_reset_seconds() -> int:
+    value = int(getattr(settings, "FREUDD_QUIZ_RETRY_COOLDOWN_RESET_SECONDS", 3600))
+    return max(60, value)
+
+
+def question_time_limit_seconds() -> int:
+    return _question_time_limit_seconds()
+
+
+def current_leaderboard_season_key(*, now: datetime | None = None) -> str:
+    current = now or timezone.now()
+    if timezone.is_naive(current):
+        current = timezone.make_aware(current, dt_timezone.utc)
+    current = current.astimezone(dt_timezone.utc)
+    half = "H1" if current.month <= 6 else "H2"
+    return f"{current.year}-{half}"
+
+
+def cooldown_seconds_for_streak(streak_count: int) -> int:
+    streak = max(1, int(streak_count))
+    if streak <= 2:
+        return 60
+    if streak <= 5:
+        return 300
+    return 600
+
+
+def maybe_reset_retry_streak(progress: QuizProgress, *, now: datetime | None = None) -> bool:
+    current = now or timezone.now()
+    last_completed = progress.last_attempt_completed_at
+    if last_completed is None:
+        return False
+    elapsed_seconds = (current - last_completed).total_seconds()
+    if elapsed_seconds < _retry_reset_seconds():
+        return False
+
+    changed = False
+    if int(progress.retry_streak_count or 0) != 0:
+        progress.retry_streak_count = 0
+        changed = True
+    if progress.retry_cooldown_until_at is not None:
+        progress.retry_cooldown_until_at = None
+        changed = True
+    return changed
+
+
+def build_cooldown_status(progress: QuizProgress, *, now: datetime | None = None) -> CooldownStatus:
+    current = now or timezone.now()
+    streak_count = max(0, int(progress.retry_streak_count or 0))
+    cooldown_until = progress.retry_cooldown_until_at
+    is_blocked = bool(cooldown_until and cooldown_until > current)
+    retry_after = 0
+    if is_blocked and cooldown_until:
+        retry_after = max(1, int((cooldown_until - current).total_seconds()))
+
+    return CooldownStatus(
+        is_blocked=is_blocked,
+        retry_after_seconds=retry_after,
+        available_at=cooldown_until.isoformat() if cooldown_until else None,
+        streak_count=streak_count,
+        next_cooldown_seconds=cooldown_seconds_for_streak(streak_count + 1),
+    )
+
+
+def apply_completion_cooldown(progress: QuizProgress, *, now: datetime | None = None) -> CooldownStatus:
+    current = now or timezone.now()
+    streak_count = max(0, int(progress.retry_streak_count or 0)) + 1
+    cooldown_seconds = cooldown_seconds_for_streak(streak_count)
+    progress.retry_streak_count = streak_count
+    progress.last_attempt_completed_at = current
+    progress.retry_cooldown_until_at = current + timedelta(seconds=cooldown_seconds)
+    return build_cooldown_status(progress, now=current)
+
+
+def compute_attempt_duration_ms(progress: QuizProgress, *, now: datetime | None = None) -> int:
+    current = now or timezone.now()
+    started_at = progress.attempt_started_at or progress.first_seen_at or current
+    duration_ms = int((current - started_at).total_seconds() * 1000)
+    return max(1_000, duration_ms)
+
+
+def compute_quiz_outcome(*, state_payload: dict[str, Any], quiz_payload: dict[str, Any] | None) -> QuizOutcome:
+    questions = _extract_question_entries(quiz_payload)
+    question_count = len(questions)
+    raw_answers = state_payload.get("userAnswers", {})
+    user_answers = raw_answers if isinstance(raw_answers, dict) else {}
+    timed_out = {
+        int(index)
+        for index in state_payload.get("timedOutQuestionIndices", [])
+        if isinstance(index, int) and not isinstance(index, bool) and index >= 0
+    }
+
+    correct_answers = 0
+    wrong_answers = 0
+    skipped_answers = 0
+    answered_count = 0
+
+    for index in range(question_count):
+        if index in timed_out:
+            answered_count += 1
+            wrong_answers += 1
+            continue
+
+        selected = user_answers.get(str(index))
+        if selected is None:
+            skipped_answers += 1
+            continue
+        if isinstance(selected, bool) or not isinstance(selected, int):
+            skipped_answers += 1
+            continue
+
+        question = questions[index] if index < len(questions) else None
+        options = question.get("answerOptions") if isinstance(question, dict) else None
+        if not isinstance(options, list) or selected < 0 or selected >= len(options):
+            skipped_answers += 1
+            continue
+
+        answered_count += 1
+        option = options[selected]
+        if isinstance(option, dict) and option.get("isCorrect") is True:
+            correct_answers += 1
+        else:
+            wrong_answers += 1
+
+    return QuizOutcome(
+        question_count=question_count,
+        answered_count=answered_count,
+        correct_answers=correct_answers,
+        wrong_answers=wrong_answers,
+        skipped_answers=skipped_answers,
+    )
+
+
+def compute_leaderboard_score(
+    *,
+    correct_answers: int,
+    question_count: int,
+    duration_ms: int,
+    question_time_limit_seconds: int | None = None,
+) -> int:
+    correct = max(0, int(correct_answers))
+    total = max(0, int(question_count))
+    duration = max(1_000, int(duration_ms))
+    limit_seconds = max(5, int(question_time_limit_seconds or _question_time_limit_seconds()))
+    expected_ms = max(1, total) * limit_seconds * 1_000
+    speed_factor = max(0.0, min(1.0, expected_ms / duration))
+    speed_bonus = round(correct * 20 * speed_factor)
+    return max(0, int(correct * 100 + speed_bonus))
+
+
+def update_leaderboard_best(
+    *,
+    progress: QuizProgress,
+    season_key: str,
+    reached_at: datetime,
+    score_points: int,
+    correct_answers: int,
+    question_count: int,
+    duration_ms: int,
+) -> None:
+    target_season = str(season_key or "").strip()
+    if progress.leaderboard_season_key != target_season:
+        progress.leaderboard_season_key = target_season
+        progress.leaderboard_best_score = 0
+        progress.leaderboard_best_correct_answers = 0
+        progress.leaderboard_best_question_count = 0
+        progress.leaderboard_best_duration_ms = 0
+        progress.leaderboard_best_reached_at = None
+
+    best_score = int(progress.leaderboard_best_score or 0)
+    best_correct = int(progress.leaderboard_best_correct_answers or 0)
+    best_duration = int(progress.leaderboard_best_duration_ms or 0)
+
+    has_no_entry = progress.leaderboard_best_reached_at is None
+    is_better = False
+    if has_no_entry:
+        is_better = True
+    elif score_points > best_score:
+        is_better = True
+    elif score_points == best_score and correct_answers > best_correct:
+        is_better = True
+    elif score_points == best_score and correct_answers == best_correct:
+        if best_duration <= 0 or duration_ms < best_duration:
+            is_better = True
+
+    if not is_better:
+        return
+
+    progress.leaderboard_best_score = max(0, int(score_points))
+    progress.leaderboard_best_correct_answers = max(0, int(correct_answers))
+    progress.leaderboard_best_question_count = max(0, int(question_count))
+    progress.leaderboard_best_duration_ms = max(0, int(duration_ms))
+    progress.leaderboard_best_reached_at = reached_at
 
 
 def _quiz_id_from_relative_path(value: Any) -> str | None:

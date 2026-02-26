@@ -22,6 +22,7 @@ from django.http import (
     JsonResponse,
 )
 from django.shortcuts import redirect, render
+from django.utils import timezone
 from django.utils.http import url_has_allowed_host_and_scheme
 from django.urls import reverse
 from django.views.decorators.http import require_GET, require_http_methods, require_POST
@@ -49,13 +50,22 @@ from .rate_limit import evaluate_rate_limit
 from .services import (
     QUIZ_ID_RE,
     StatePayloadError,
+    apply_completion_cooldown,
+    build_cooldown_status,
+    compute_attempt_duration_ms,
+    compute_leaderboard_score,
     compute_progress,
+    compute_quiz_outcome,
+    current_leaderboard_season_key,
     load_quiz_content,
     load_quiz_label_mapping,
+    maybe_reset_retry_streak,
     normalize_state_payload,
+    question_time_limit_seconds,
     quiz_exists,
     quiz_file_path,
     quiz_question_count,
+    update_leaderboard_best,
     upsert_progress_from_state,
 )
 from .subject_services import SubjectCatalog, load_subject_catalog
@@ -187,6 +197,17 @@ def _safe_non_negative_int(value: object) -> int:
         return max(0, int(value))
     except (TypeError, ValueError):
         return 0
+
+
+def _cooldown_payload(*, progress: QuizProgress) -> dict[str, object]:
+    status = build_cooldown_status(progress)
+    return {
+        "is_blocked": status.is_blocked,
+        "retry_after_seconds": status.retry_after_seconds,
+        "available_at": status.available_at,
+        "streak_count": status.streak_count,
+        "next_cooldown_seconds": status.next_cooldown_seconds,
+    }
 
 
 def _subject_path_overview(lectures: object) -> dict[str, int]:
@@ -887,6 +908,7 @@ def quiz_wrapper_view(request: HttpRequest, quiz_id: str) -> HttpResponse:
         "quiz_difficulty_label": difficulty_label,
         "quiz_content_url": reverse("quiz-content", kwargs={"quiz_id": quiz_id}),
         "state_api_url": reverse("quiz-state", kwargs={"quiz_id": quiz_id}),
+        "question_time_limit_seconds": question_time_limit_seconds(),
         "user_is_authenticated": request.user.is_authenticated,
         "login_next_url": _auth_url_with_next("login", quiz_path),
         "signup_next_url": _auth_url_with_next("signup", quiz_path),
@@ -925,7 +947,18 @@ def quiz_state_view(request: HttpRequest, quiz_id: str) -> HttpResponse:
         progress = QuizProgress.objects.filter(user=request.user, quiz_id=quiz_id).first()
         if not progress:
             return JsonResponse(None, safe=False)
-        return JsonResponse(progress.state_json, safe=False)
+        if maybe_reset_retry_streak(progress):
+            progress.save(
+                update_fields=[
+                    "retry_streak_count",
+                    "retry_cooldown_until_at",
+                    "updated_at",
+                ]
+            )
+        state_payload = progress.state_json if isinstance(progress.state_json, dict) else {}
+        response_payload = dict(state_payload)
+        response_payload["_meta"] = {"cooldown": _cooldown_payload(progress=progress)}
+        return JsonResponse(response_payload, safe=False)
 
     if len(request.body) > MAX_STATE_BYTES:
         return HttpResponseBadRequest("State-payload er for stor.")
@@ -945,12 +978,85 @@ def quiz_state_view(request: HttpRequest, quiz_id: str) -> HttpResponse:
         quiz_id=quiz_id,
         defaults={"state_json": {}, "raw_state_payload": None},
     )
+    now = timezone.now()
+    if maybe_reset_retry_streak(progress, now=now):
+        progress.save(
+            update_fields=[
+                "retry_streak_count",
+                "retry_cooldown_until_at",
+                "updated_at",
+            ]
+        )
     previous_answers_count = int(progress.answers_count or 0)
     previous_status = str(progress.status or QuizProgress.Status.IN_PROGRESS)
 
     question_count = quiz_question_count(quiz_id) or progress.question_count
     computation = compute_progress(state_payload, question_count)
+
+    is_reset_request = (
+        previous_status == QuizProgress.Status.COMPLETED
+        and computation.status != QuizProgress.Status.COMPLETED
+        and computation.answers_count == 0
+        and int(state_payload.get("currentQuestionIndex") or 0) == 0
+        and str(state_payload.get("currentView") or "question").strip().lower() == "question"
+    )
+    if is_reset_request:
+        cooldown_payload = _cooldown_payload(progress=progress)
+        if bool(cooldown_payload.get("is_blocked")):
+            return JsonResponse(
+                {
+                    "error": "cooldown_active",
+                    "cooldown": cooldown_payload,
+                },
+                status=429,
+            )
+        progress.attempt_started_at = now
+    elif progress.attempt_started_at is None:
+        progress.attempt_started_at = now
+
     upsert_progress_from_state(progress=progress, state_payload=state_payload, computation=computation)
+
+    completion_transition = (
+        previous_status != QuizProgress.Status.COMPLETED
+        and progress.status == QuizProgress.Status.COMPLETED
+    )
+    if completion_transition:
+        now = timezone.now()
+        quiz_payload = load_quiz_content(quiz_id)
+        outcome = compute_quiz_outcome(state_payload=state_payload, quiz_payload=quiz_payload)
+        duration_ms = compute_attempt_duration_ms(progress, now=now)
+        apply_completion_cooldown(progress, now=now)
+        season_key = current_leaderboard_season_key(now=now)
+        score_points = compute_leaderboard_score(
+            correct_answers=outcome.correct_answers,
+            question_count=outcome.question_count,
+            duration_ms=duration_ms,
+            question_time_limit_seconds=question_time_limit_seconds(),
+        )
+        update_leaderboard_best(
+            progress=progress,
+            season_key=season_key,
+            reached_at=now,
+            score_points=score_points,
+            correct_answers=outcome.correct_answers,
+            question_count=outcome.question_count,
+            duration_ms=duration_ms,
+        )
+        progress.save(
+            update_fields=[
+                "retry_streak_count",
+                "last_attempt_completed_at",
+                "retry_cooldown_until_at",
+                "leaderboard_season_key",
+                "leaderboard_best_score",
+                "leaderboard_best_correct_answers",
+                "leaderboard_best_question_count",
+                "leaderboard_best_duration_ms",
+                "leaderboard_best_reached_at",
+                "updated_at",
+            ]
+        )
+
     try:
         record_quiz_progress_delta(
             progress=progress,
@@ -968,6 +1074,7 @@ def quiz_state_view(request: HttpRequest, quiz_id: str) -> HttpResponse:
             "question_count": progress.question_count,
             "last_view": progress.last_view,
             "completed_at": progress.completed_at.isoformat() if progress.completed_at else None,
+            "cooldown": _cooldown_payload(progress=progress),
         }
     )
 

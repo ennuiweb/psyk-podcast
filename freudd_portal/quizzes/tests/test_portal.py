@@ -6,7 +6,7 @@ import io
 import json
 import tempfile
 from contextlib import contextmanager
-from datetime import datetime, timezone as dt_timezone
+from datetime import datetime, timedelta, timezone as dt_timezone
 from pathlib import Path
 from unittest.mock import patch
 from urllib.parse import urlencode
@@ -600,6 +600,96 @@ class QuizPortalTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json()["currentView"], "summary")
 
+    def test_state_api_allows_timed_out_questions_to_complete_quiz(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+        state_url = reverse("quiz-state", kwargs={"quiz_id": self.quiz_id})
+
+        payload = {
+            "userAnswers": {"0": 0},
+            "currentQuestionIndex": 1,
+            "hiddenQuestionIndices": [],
+            "currentView": "summary",
+            "timedOutQuestionIndices": [1],
+            "questionDeadlineEpochMs": {},
+        }
+        response = self.client.post(state_url, data=json.dumps(payload), content_type="application/json")
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json()["status"], "completed")
+
+        progress = QuizProgress.objects.get(user=user, quiz_id=self.quiz_id)
+        self.assertEqual(progress.answers_count, 2)
+        self.assertEqual(progress.status, QuizProgress.Status.COMPLETED)
+
+    def test_state_api_blocks_quiz_reset_while_cooldown_active(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+        state_url = reverse("quiz-state", kwargs={"quiz_id": self.quiz_id})
+
+        completed_payload = {
+            "userAnswers": {"0": 0, "1": 1},
+            "currentQuestionIndex": 1,
+            "hiddenQuestionIndices": [],
+            "currentView": "summary",
+        }
+        response = self.client.post(state_url, data=json.dumps(completed_payload), content_type="application/json")
+        self.assertEqual(response.status_code, 200)
+        self.assertTrue(response.json()["cooldown"]["is_blocked"])
+
+        reset_payload = {
+            "userAnswers": {},
+            "currentQuestionIndex": 0,
+            "hiddenQuestionIndices": [],
+            "currentView": "question",
+        }
+        response = self.client.post(state_url, data=json.dumps(reset_payload), content_type="application/json")
+        self.assertEqual(response.status_code, 429)
+        body = response.json()
+        self.assertEqual(body["error"], "cooldown_active")
+        self.assertTrue(body["cooldown"]["is_blocked"])
+
+    def test_state_api_allows_quiz_reset_after_full_cooldown_reset_window(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+        state_url = reverse("quiz-state", kwargs={"quiz_id": self.quiz_id})
+
+        completed_payload = {
+            "userAnswers": {"0": 0, "1": 1},
+            "currentQuestionIndex": 1,
+            "hiddenQuestionIndices": [],
+            "currentView": "summary",
+        }
+        response = self.client.post(state_url, data=json.dumps(completed_payload), content_type="application/json")
+        self.assertEqual(response.status_code, 200)
+
+        progress = QuizProgress.objects.get(user=user, quiz_id=self.quiz_id)
+        progress.retry_streak_count = 4
+        progress.last_attempt_completed_at = timezone.now() - timedelta(hours=2)
+        progress.retry_cooldown_until_at = timezone.now() - timedelta(minutes=5)
+        progress.save(
+            update_fields=[
+                "retry_streak_count",
+                "last_attempt_completed_at",
+                "retry_cooldown_until_at",
+                "updated_at",
+            ]
+        )
+
+        reset_payload = {
+            "userAnswers": {},
+            "currentQuestionIndex": 0,
+            "hiddenQuestionIndices": [],
+            "currentView": "question",
+        }
+        response = self.client.post(state_url, data=json.dumps(reset_payload), content_type="application/json")
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json()["status"], "in_progress")
+        self.assertFalse(response.json()["cooldown"]["is_blocked"])
+
+        progress.refresh_from_db()
+        self.assertEqual(progress.retry_streak_count, 0)
+        self.assertIsNone(progress.retry_cooldown_until_at)
+
     def test_state_api_rejects_invalid_schema(self) -> None:
         self._create_user()
         self._login()
@@ -944,6 +1034,102 @@ class QuizPortalTests(TestCase):
         self.assertEqual(entries[0]["alias"], "Alpha")
         self.assertEqual(entries[1]["alias"], "Beta")
         self.assertEqual(entries[0]["quiz_count"], 2)
+        self.assertEqual(entries[1]["quiz_count"], 2)
+
+    def test_leaderboard_scoring_uses_points_before_quiz_count(self) -> None:
+        second_quiz_id = "aaaaaaaa"
+        self._write_quiz_file(second_quiz_id, question_count=2)
+        self._write_quiz_json_file(second_quiz_id, question_count=2)
+        self._write_links_file(
+            {
+                self.quiz_id: {
+                    "title": "W1L1 - Episode",
+                    "difficulty": "medium",
+                    "subject_slug": "personlighedspsykologi",
+                },
+                second_quiz_id: {
+                    "title": "W1L1 - Episode Two",
+                    "difficulty": "medium",
+                    "subject_slug": "personlighedspsykologi",
+                },
+            }
+        )
+
+        user_a = self._create_user(username="alpha-points")
+        user_b = self._create_user(username="beta-points")
+        UserLeaderboardProfile.objects.create(
+            user=user_a,
+            public_alias="AlphaPoints",
+            public_alias_normalized="alphapoints",
+            is_public=True,
+        )
+        UserLeaderboardProfile.objects.create(
+            user=user_b,
+            public_alias="BetaPoints",
+            public_alias_normalized="betapoints",
+            is_public=True,
+        )
+
+        season_key = active_half_year_season(datetime(2026, 2, 1, 0, 0, tzinfo=dt_timezone.utc)).key
+        QuizProgress.objects.create(
+            user=user_a,
+            quiz_id=self.quiz_id,
+            status=QuizProgress.Status.COMPLETED,
+            state_json={},
+            answers_count=2,
+            question_count=2,
+            last_view="summary",
+            completed_at=datetime(2026, 1, 2, 10, 0, tzinfo=dt_timezone.utc),
+            leaderboard_season_key=season_key,
+            leaderboard_best_score=100,
+            leaderboard_best_correct_answers=1,
+            leaderboard_best_question_count=2,
+            leaderboard_best_duration_ms=60000,
+            leaderboard_best_reached_at=datetime(2026, 1, 2, 10, 0, tzinfo=dt_timezone.utc),
+        )
+        QuizProgress.objects.create(
+            user=user_a,
+            quiz_id=second_quiz_id,
+            status=QuizProgress.Status.COMPLETED,
+            state_json={},
+            answers_count=2,
+            question_count=2,
+            last_view="summary",
+            completed_at=datetime(2026, 1, 3, 10, 0, tzinfo=dt_timezone.utc),
+            leaderboard_season_key=season_key,
+            leaderboard_best_score=100,
+            leaderboard_best_correct_answers=1,
+            leaderboard_best_question_count=2,
+            leaderboard_best_duration_ms=60000,
+            leaderboard_best_reached_at=datetime(2026, 1, 3, 10, 0, tzinfo=dt_timezone.utc),
+        )
+        QuizProgress.objects.create(
+            user=user_b,
+            quiz_id=self.quiz_id,
+            status=QuizProgress.Status.COMPLETED,
+            state_json={},
+            answers_count=2,
+            question_count=2,
+            last_view="summary",
+            completed_at=datetime(2026, 1, 2, 11, 0, tzinfo=dt_timezone.utc),
+            leaderboard_season_key=season_key,
+            leaderboard_best_score=250,
+            leaderboard_best_correct_answers=2,
+            leaderboard_best_question_count=2,
+            leaderboard_best_duration_ms=20000,
+            leaderboard_best_reached_at=datetime(2026, 1, 2, 11, 0, tzinfo=dt_timezone.utc),
+        )
+
+        response = self.client.get(
+            reverse("leaderboard-subject", kwargs={"subject_slug": "personlighedspsykologi"})
+        )
+        self.assertEqual(response.status_code, 200)
+        entries = response.context["entries"]
+        self.assertEqual(entries[0]["alias"], "BetaPoints")
+        self.assertEqual(entries[0]["score_points"], 250)
+        self.assertEqual(entries[0]["quiz_count"], 1)
+        self.assertEqual(entries[1]["alias"], "AlphaPoints")
+        self.assertEqual(entries[1]["score_points"], 200)
         self.assertEqual(entries[1]["quiz_count"], 2)
 
     def test_half_year_season_boundaries(self) -> None:

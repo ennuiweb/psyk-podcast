@@ -626,7 +626,7 @@
           {% for entry in item.entries %}
           <li class="leaderboard-top-item">
             <span class="leaderboard-alias">#{{ entry.rank }} · {{ entry.alias }}</span>
-            <span class="leaderboard-points">{{ entry.quiz_count }} quizzer</span>
+            <span class="leaderboard-points">{{ entry.score_points }} point · {{ entry.quiz_count }} quizzer</span>
           </li>
           {% endfor %}
         </ul>

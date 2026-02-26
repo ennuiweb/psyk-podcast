@@ -73,7 +73,9 @@
         <tr>
           <th>Placering</th>
           <th>Alias</th>
-          <th>Gennemførte quizzer</th>
+          <th>Point</th>
+          <th>Korrekte</th>
+          <th>Quizzer</th>
         </tr>
       </thead>
       <tbody>
@@ -81,6 +83,8 @@
         <tr>
           <td>#{{ entry.rank }}</td>
           <td>{{ entry.alias }}</td>
+          <td>{{ entry.score_points }}</td>
+          <td>{{ entry.correct_answers }}</td>
           <td>{{ entry.quiz_count }}</td>
         </tr>
         {% endfor %}

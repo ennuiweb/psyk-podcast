@@ -17,6 +17,8 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Quiz data source: portal reads `<id>.json` when available and falls back to parsing `<id>.html`.
 - Anonymous quiz state is kept locally in browser storage; logged-in users persist state in DB via state API.
 - Anonymous users are prompted to log in when they reach quiz summary/completion.
+- Quiz flow enforces a per-question timer (`FREUDD_QUIZ_QUESTION_TIME_LIMIT_SECONDS`, default `30s`); timeout auto-marks the question wrong and advances.
+- Quiz retry cooldown is per `(user, quiz_id)` with tiering: `1m x2`, `5m x3`, then `10m`; streak resets after `1h` inactivity (`FREUDD_QUIZ_RETRY_COOLDOWN_RESET_SECONDS`).
 - Quiz files directory must be readable by `www-data`; sync uploads now avoid owner/group preservation and enforce root dir mode `755`.
 - Public static quiz files still exist at `/quizzes/personlighedspsykologi/<id>.html` (Caddy static route).
 - Score key: per `(user, quiz_id)`.
@@ -27,13 +29,13 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Subject content is compiled from reading master key + quiz links + local RSS into `content_manifest.json`.
 - Podcast links on subject pages are Spotify-only and episode-only. Unmapped RSS items are hidden from the podcast list until a direct Spotify episode URL exists. Direct source/Drive audio links are never exposed in UI.
 - Subject detail includes inline Spotify playback via embedded episode player plus the external Spotify link for each visible podcast row.
-- Completion rule: `currentView == "summary"` and `answers_count == question_count`.
+- Completion rule: `currentView == "summary"` and `answers_count == question_count`; timed-out questions count as answered/wrong.
 - Gamification core is quiz-driven and always available for authenticated users (`/progress`, `/api/gamification/me`).
 - `/progress` is split in two tracks: private personal tracking and public quizliga preview.
 - Private personal tracking is manual for readings/podcasts (`mark/unmark`) and keeps quiz completion as-is from `QuizProgress`.
-- Public quizliga is opt-in and alias-based; only `alias + rank + completed quiz count` is shown publicly.
-- Quizliga score is `1` point per unique `quiz_id` completed in active season for the selected subject.
-- Quizliga tie-break is earliest `reached_at` (time user first reached score), then alias alphabetic.
+- Public quizliga is opt-in and alias-based; public view shows `alias + rank + score point + quiz count`.
+- Quizliga score per quiz is based on correctness plus speed bonus (`score = correct*100 + speed_bonus`), with correctness weighted highest.
+- Quizliga tie-break is `correct_answers`, then earliest `reached_at`, then alias alphabetic.
 - Quizliga seasons reset every half year in UTC: `H1 = [Jan 1, Jul 1)`, `H2 = [Jul 1, Jan 1 next year)`.
 - Learning path on subject pages (`/subjects/<subject_slug>`) is lecture-first with nested reading status (`active|completed|no_quiz`) and quiz/podcast navigation.
 - Subject detail UI is mobile-first and uses a left lecture rail + single active lecture card (no multi-panel accordion).
@@ -176,6 +178,8 @@ Operational behavior:
 - `FREUDD_GAMIFICATION_XP_PER_ANSWER` (default: `5`)
 - `FREUDD_GAMIFICATION_XP_PER_COMPLETION` (default: `50`)
 - `FREUDD_GAMIFICATION_XP_PER_LEVEL` (default: `500`)
+- `FREUDD_QUIZ_QUESTION_TIME_LIMIT_SECONDS` (default: `30`)
+- `FREUDD_QUIZ_RETRY_COOLDOWN_RESET_SECONDS` (default: `3600`)
 - `FREUDD_CREDENTIALS_MASTER_KEY` (required for credential encrypt/decrypt)
 - `FREUDD_CREDENTIALS_KEY_VERSION` (default: `1`)
 - `FREUDD_EXT_SYNC_TIMEOUT_SECONDS` (default: `20`)

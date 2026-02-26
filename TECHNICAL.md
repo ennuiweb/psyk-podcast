@@ -137,7 +137,7 @@ The repository includes a Django portal in `freudd_portal/` for hybrid auth (use
 - `GET /q/<quiz_id>.html` (public JSON-driven quiz wrapper)
 - `GET /q/raw/<quiz_id>.html` (public raw quiz HTML)
 - `GET /api/quiz-content/<quiz_id>` (public normalized quiz JSON for wrapper UI)
-- `GET/POST /api/quiz-state/<quiz_id>` (login-required structured quiz state)
+- `GET/POST /api/quiz-state/<quiz_id>` (login-required structured quiz state; POST can return `429` on active retry cooldown)
 - `GET/POST /api/quiz-state/<quiz_id>/raw` (login-required legacy raw state payload)
 - `GET /api/gamification/me` (login-required gamification snapshot)
 - `GET /progress` (login-required dashboard with header semester selector, `Mine fag` cards for inline enroll/unenroll, and `Quizhistorik` rows)
@@ -169,7 +169,10 @@ The repository includes a Django portal in `freudd_portal/` for hybrid auth (use
 - Subject detail now degrades gracefully: if snapshot computation fails, route still returns 200 with a user-facing retry message instead of 500.
 - Unique key: `(user, quiz_id)` for quiz state
 - Unique key: `(user, subject_slug)` for subject enrollment
-- Completion rule (phase 1): `currentView == "summary"` and `answers_count == question_count`
+- Completion rule: `currentView == "summary"` and `answers_count == question_count`; timed-out questions count as answered/wrong.
+- Question timer: default `30s` per question (`FREUDD_QUIZ_QUESTION_TIME_LIMIT_SECONDS`), auto-timeout marks wrong + advances.
+- Retry cooldown: per `(user, quiz_id)` with tiers `1m x2`, `5m x3`, then `10m`, and full streak reset after `1h` (`FREUDD_QUIZ_RETRY_COOLDOWN_RESET_SECONDS`).
+- Quizliga scoring: per-quiz point uses correctness + speed bonus (correctness weighted highest), aggregated per subject in active half-year season.
 
 ### Subject catalog + readings
 - Subject catalog is JSON-driven via `freudd_portal/subjects.json` (`version`, `semester_choices`, `subjects[]`).
@@ -224,6 +227,8 @@ python3 manage.py test
 - `FREUDD_GAMIFICATION_XP_PER_ANSWER` (default: `5`)
 - `FREUDD_GAMIFICATION_XP_PER_COMPLETION` (default: `50`)
 - `FREUDD_GAMIFICATION_XP_PER_LEVEL` (default: `500`)
+- `FREUDD_QUIZ_QUESTION_TIME_LIMIT_SECONDS` (default: `30`)
+- `FREUDD_QUIZ_RETRY_COOLDOWN_RESET_SECONDS` (default: `3600`)
 - `FREUDD_CREDENTIALS_MASTER_KEY` (Fernet key for extension credential encryption)
 - `FREUDD_CREDENTIALS_KEY_VERSION` (default: `1`)
 - `FREUDD_EXT_SYNC_TIMEOUT_SECONDS` (default: `20`)

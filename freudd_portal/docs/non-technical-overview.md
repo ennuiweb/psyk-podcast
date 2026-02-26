@@ -4,11 +4,13 @@ Freudd Portal is the learner-facing layer on top of static quiz and podcast cont
 
 The progress experience is split into two clear tracks:
 - Personal tracking (private): each student can manually mark readings as read and podcasts as listened, while quiz completion still comes from actual completed quizzes.
-- Public quizliga: an opt-in public leaderboard that only shows alias, rank, and number of completed quizzes per subject.
+- Public quizliga: an opt-in public leaderboard that shows alias, rank, point score, and completed quiz count per subject.
 
 This split keeps personal study habits private while still allowing a lightweight shared competition around quiz completion.
 
-Quizliga is seasonal and automatically resets every half year (UTC). Ranking is based on unique completed quizzes in the active season, with tie-break by who reached the score first.
+Quizliga is seasonal and automatically resets every half year (UTC). Ranking is based on a score that weighs correct answers highest and adds a speed bonus for faster quiz completion.
+
+Each quiz question has a built-in timer, and quiz retries are throttled with an escalating cooldown to prevent rapid retakes.
 
 The portal still keeps core motivation features (quiz progress and gamification snapshots), but avoids exposing detailed personal learning activity publicly.
 

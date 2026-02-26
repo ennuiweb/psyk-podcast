@@ -107,6 +107,14 @@
     font-variant-numeric: tabular-nums;
   }
 
+  .quiz-timer {
+    margin: 0;
+    font-size: 0.84rem;
+    font-variant-numeric: tabular-nums;
+    color: var(--warn-ink);
+    font-weight: 700;
+  }
+
   .quiz-progress-track {
     width: 100%;
     height: 9px;
@@ -279,6 +287,11 @@
     margin: 0 0 var(--space-2);
   }
 
+  .quiz-cooldown-note {
+    margin: 0;
+    min-height: 1.2rem;
+  }
+
   @media (max-width: 640px) {
     .summary-grid {
       grid-template-columns: 1fr;
@@ -311,6 +324,7 @@
       <div class="quiz-flow-row">
         <p class="muted quiz-counter" id="quiz-counter"></p>
         <p class="quiz-answered" id="quiz-answered"></p>
+        <p class="quiz-timer" id="quiz-timer"></p>
       </div>
       <progress
         id="quiz-progress"
@@ -336,6 +350,7 @@
   <section id="quiz-summary-view" class="quiz-stage is-hidden">
     <h2 class="quiz-question">opsummering</h2>
     <p class="muted" id="quiz-summary-line"></p>
+    <p class="quiz-cooldown-note muted" id="quiz-cooldown-note"></p>
     <div class="summary-grid">
       <div class="summary-card">
         <strong id="summary-correct">0</strong>
@@ -377,8 +392,14 @@
 
     const quizContentUrl = "{{ quiz_content_url }}";
     const stateApiUrl = "{{ state_api_url }}";
+    const questionTimeLimitSeconds = Math.max(
+      5,
+      Number.parseInt("{{ question_time_limit_seconds|default:30 }}", 10) || 30
+    );
+    const cooldownResetSeconds = 3600;
     const isAuthenticated = {{ user_is_authenticated|yesno:"true,false" }};
     const localStateKey = "quiz-local-state:{{ quiz_id }}";
+    const localCooldownKey = "quiz-local-cooldown:{{ quiz_id }}";
     const loginEndPrompt = document.getElementById("login-end-prompt");
 
     const loadingNode = document.getElementById("quiz-loading");
@@ -388,6 +409,7 @@
 
     const counterNode = document.getElementById("quiz-counter");
     const answeredNode = document.getElementById("quiz-answered");
+    const timerNode = document.getElementById("quiz-timer");
     const progressNode = document.getElementById("quiz-progress");
     const questionNode = document.getElementById("quiz-question");
     const hintNode = document.getElementById("quiz-hint");
@@ -405,13 +427,19 @@
     const summaryWrongNode = document.getElementById("summary-wrong");
     const summarySkippedNode = document.getElementById("summary-skipped");
     const summaryAnsweredNode = document.getElementById("summary-answered");
+    const summaryCooldownNode = document.getElementById("quiz-cooldown-note");
 
     let quiz = null;
+    let tickerId = null;
+    let timerBusy = false;
+    let cooldownState = null;
     let state = {
       userAnswers: {},
       currentQuestionIndex: 0,
       hiddenQuestionIndices: [],
       currentView: "question",
+      timedOutQuestionIndices: [],
+      questionDeadlineEpochMs: {},
       showHintForCurrent: false,
     };
 
@@ -481,6 +509,38 @@
       }
     }
 
+    function parseEpoch(value) {
+      const parsed = Number.parseInt(String(value), 10);
+      if (!Number.isFinite(parsed) || parsed <= 0) {
+        return null;
+      }
+      return parsed;
+    }
+
+    function loadLocalCooldown() {
+      try {
+        return parseStoredState(window.localStorage.getItem(localCooldownKey));
+      } catch (error) {
+        return null;
+      }
+    }
+
+    function saveLocalCooldown(payload) {
+      try {
+        window.localStorage.setItem(localCooldownKey, JSON.stringify(payload));
+      } catch (error) {
+        // Ignore local storage failures.
+      }
+    }
+
+    function clearLocalCooldown() {
+      try {
+        window.localStorage.removeItem(localCooldownKey);
+      } catch (error) {
+        // Ignore local storage failures.
+      }
+    }
+
     function normalizeQuizPayload(payload) {
       if (!payload || typeof payload !== "object") {
         return null;
@@ -502,6 +562,8 @@
         currentQuestionIndex: 0,
         hiddenQuestionIndices: [],
         currentView: "question",
+        timedOutQuestionIndices: [],
+        questionDeadlineEpochMs: {},
         showHintForCurrent: false,
       };
 
@@ -545,18 +607,171 @@
         normalized.currentView = "summary";
       }
 
+      if (Array.isArray(rawState.timedOutQuestionIndices)) {
+        const timedOut = rawState.timedOutQuestionIndices
+          .map((entry) => Number.parseInt(String(entry), 10))
+          .filter((entry) => Number.isInteger(entry) && entry >= 0 && entry < questionCount);
+        normalized.timedOutQuestionIndices = Array.from(new Set(timedOut));
+      }
+
+      if (rawState.questionDeadlineEpochMs && typeof rawState.questionDeadlineEpochMs === "object") {
+        for (const [rawKey, rawValue] of Object.entries(rawState.questionDeadlineEpochMs)) {
+          const index = Number.parseInt(String(rawKey), 10);
+          if (!Number.isInteger(index) || index < 0 || index >= questionCount) {
+            continue;
+          }
+          const deadline = parseEpoch(rawValue);
+          if (deadline) {
+            normalized.questionDeadlineEpochMs[String(index)] = deadline;
+          }
+        }
+      }
+
       return normalized;
     }
 
+    function normalizeCooldownPayload(rawValue) {
+      if (!rawValue || typeof rawValue !== "object") {
+        return null;
+      }
+      const isBlocked = Boolean(rawValue.is_blocked);
+      const retryAfterSeconds = Math.max(0, Number.parseInt(String(rawValue.retry_after_seconds ?? 0), 10) || 0);
+      const streakCount = Math.max(0, Number.parseInt(String(rawValue.streak_count ?? 0), 10) || 0);
+      const nextCooldownSeconds = Math.max(
+        60,
+        Number.parseInt(String(rawValue.next_cooldown_seconds ?? 60), 10) || 60
+      );
+      const availableAt = typeof rawValue.available_at === "string" && rawValue.available_at.trim()
+        ? rawValue.available_at.trim()
+        : null;
+      return {
+        is_blocked: isBlocked,
+        retry_after_seconds: retryAfterSeconds,
+        streak_count: streakCount,
+        next_cooldown_seconds: nextCooldownSeconds,
+        available_at: availableAt,
+      };
+    }
+
+    function cooldownSecondsForStreak(streakCount) {
+      const streak = Math.max(1, Number.parseInt(String(streakCount), 10) || 1);
+      if (streak <= 2) {
+        return 60;
+      }
+      if (streak <= 5) {
+        return 300;
+      }
+      return 600;
+    }
+
+    function formatSeconds(seconds) {
+      const value = Math.max(0, Number.parseInt(String(seconds), 10) || 0);
+      const minutes = Math.floor(value / 60);
+      const rest = value % 60;
+      if (minutes <= 0) {
+        return `${rest}s`;
+      }
+      return `${minutes}m ${rest}s`;
+    }
+
+    function liveCooldownState(rawCooldown) {
+      const normalized = normalizeCooldownPayload(rawCooldown);
+      if (!normalized) {
+        return null;
+      }
+      if (!normalized.available_at) {
+        return normalized;
+      }
+      const availableEpoch = Date.parse(normalized.available_at);
+      if (!Number.isFinite(availableEpoch)) {
+        return normalized;
+      }
+      const diffSeconds = Math.max(0, Math.ceil((availableEpoch - Date.now()) / 1000));
+      return {
+        ...normalized,
+        is_blocked: diffSeconds > 0,
+        retry_after_seconds: diffSeconds,
+      };
+    }
+
+    function refreshAnonymousCooldown() {
+      const stored = loadLocalCooldown();
+      if (!stored || typeof stored !== "object") {
+        return normalizeCooldownPayload({
+          is_blocked: false,
+          retry_after_seconds: 0,
+          streak_count: 0,
+          next_cooldown_seconds: 60,
+          available_at: null,
+        });
+      }
+
+      let streakCount = Math.max(0, Number.parseInt(String(stored.streak_count ?? 0), 10) || 0);
+      const availableEpoch = parseEpoch(stored.available_epoch_ms);
+      const lastCompletedEpoch = parseEpoch(stored.last_completed_epoch_ms);
+      const now = Date.now();
+      if (lastCompletedEpoch && now - lastCompletedEpoch >= cooldownResetSeconds * 1000) {
+        clearLocalCooldown();
+        return normalizeCooldownPayload({
+          is_blocked: false,
+          retry_after_seconds: 0,
+          streak_count: 0,
+          next_cooldown_seconds: 60,
+          available_at: null,
+        });
+      }
+
+      const retryAfterSeconds = availableEpoch ? Math.max(0, Math.ceil((availableEpoch - now) / 1000)) : 0;
+      return normalizeCooldownPayload({
+        is_blocked: retryAfterSeconds > 0,
+        retry_after_seconds: retryAfterSeconds,
+        streak_count: streakCount,
+        next_cooldown_seconds: cooldownSecondsForStreak(streakCount + 1),
+        available_at: availableEpoch ? new Date(availableEpoch).toISOString() : null,
+      });
+    }
+
+    function registerAnonymousCompletion() {
+      const now = Date.now();
+      const current = refreshAnonymousCooldown();
+      const streakCount = Math.max(0, Number.parseInt(String(current?.streak_count ?? 0), 10) || 0) + 1;
+      const cooldownSeconds = cooldownSecondsForStreak(streakCount);
+      const availableEpoch = now + cooldownSeconds * 1000;
+      saveLocalCooldown({
+        streak_count: streakCount,
+        last_completed_epoch_ms: now,
+        available_epoch_ms: availableEpoch,
+      });
+      cooldownState = normalizeCooldownPayload({
+        is_blocked: true,
+        retry_after_seconds: cooldownSeconds,
+        streak_count: streakCount,
+        next_cooldown_seconds: cooldownSecondsForStreak(streakCount + 1),
+        available_at: new Date(availableEpoch).toISOString(),
+      });
+    }
+
     function answeredCount() {
-      return Object.values(state.userAnswers).filter((value) => value !== null && value !== undefined).length;
+      const answered = Object.entries(state.userAnswers)
+        .filter(([, value]) => value !== null && value !== undefined)
+        .map(([key]) => key);
+      const timedOut = (Array.isArray(state.timedOutQuestionIndices) ? state.timedOutQuestionIndices : [])
+        .map((index) => String(index));
+      return new Set([...answered, ...timedOut]).size;
     }
 
     function summaryStats() {
+      const timedOut = new Set(
+        (Array.isArray(state.timedOutQuestionIndices) ? state.timedOutQuestionIndices : []).map((index) => String(index))
+      );
       let correct = 0;
       let wrong = 0;
       let skipped = 0;
       quiz.questions.forEach((question, index) => {
+        if (timedOut.has(String(index))) {
+          wrong += 1;
+          return;
+        }
         const selected = state.userAnswers[String(index)];
         if (selected === null || selected === undefined) {
           skipped += 1;
@@ -570,6 +785,98 @@
         }
       });
       return { correct, wrong, skipped };
+    }
+
+    function isQuestionTimedOut(index) {
+      const value = Number.parseInt(String(index), 10);
+      if (!Number.isInteger(value)) {
+        return false;
+      }
+      return (state.timedOutQuestionIndices || []).includes(value);
+    }
+
+    function addTimedOutQuestion(index) {
+      const value = Number.parseInt(String(index), 10);
+      if (!Number.isInteger(value)) {
+        return;
+      }
+      if (!Array.isArray(state.timedOutQuestionIndices)) {
+        state.timedOutQuestionIndices = [];
+      }
+      if (!state.timedOutQuestionIndices.includes(value)) {
+        state.timedOutQuestionIndices.push(value);
+      }
+    }
+
+    function ensureDeadlineForQuestion(index) {
+      const key = String(index);
+      const selected = state.userAnswers[key];
+      if (selected !== null && selected !== undefined) {
+        return;
+      }
+      if (isQuestionTimedOut(index)) {
+        return;
+      }
+      if (!state.questionDeadlineEpochMs || typeof state.questionDeadlineEpochMs !== "object") {
+        state.questionDeadlineEpochMs = {};
+      }
+      const existing = parseEpoch(state.questionDeadlineEpochMs[key]);
+      if (existing && existing > Date.now()) {
+        return;
+      }
+      state.questionDeadlineEpochMs[key] = Date.now() + questionTimeLimitSeconds * 1000;
+    }
+
+    function renderTimerLabel() {
+      if (!timerNode) {
+        return;
+      }
+      if (!quiz || state.currentView !== "question") {
+        timerNode.textContent = "";
+        return;
+      }
+      const key = String(state.currentQuestionIndex);
+      if (isQuestionTimedOut(state.currentQuestionIndex)) {
+        timerNode.textContent = "Tid: udløbet";
+        return;
+      }
+      const selected = state.userAnswers[key];
+      if (selected !== null && selected !== undefined) {
+        timerNode.textContent = "Tid: besvaret";
+        return;
+      }
+      const deadline = parseEpoch(state.questionDeadlineEpochMs?.[key]);
+      if (!deadline) {
+        timerNode.textContent = `Tid: ${questionTimeLimitSeconds}s`;
+        return;
+      }
+      const remaining = Math.max(0, Math.ceil((deadline - Date.now()) / 1000));
+      timerNode.textContent = `Tid: ${remaining}s`;
+    }
+
+    function activeCooldownState() {
+      if (isAuthenticated) {
+        return liveCooldownState(cooldownState);
+      }
+      return refreshAnonymousCooldown();
+    }
+
+    function updateCooldownUi() {
+      const active = activeCooldownState();
+      cooldownState = active;
+
+      const shouldBlock = Boolean(active && active.is_blocked);
+      resetBtnNode.disabled = shouldBlock;
+      if (!summaryCooldownNode) {
+        return;
+      }
+      if (shouldBlock) {
+        summaryCooldownNode.textContent = `Du kan tage quizzen igen om ${formatSeconds(
+          active.retry_after_seconds
+        )}.`;
+        return;
+      }
+      summaryCooldownNode.textContent = "";
     }
 
     function showEndPromptIfNeeded() {
@@ -611,14 +918,78 @@
       return quiz.questions[state.currentQuestionIndex];
     }
 
+    async function handleQuestionTimeoutIfNeeded() {
+      if (!quiz || state.currentView !== "question" || timerBusy) {
+        return;
+      }
+      const key = String(state.currentQuestionIndex);
+      if (isQuestionTimedOut(state.currentQuestionIndex)) {
+        return;
+      }
+      const selected = state.userAnswers[key];
+      if (selected !== null && selected !== undefined) {
+        return;
+      }
+      const deadline = parseEpoch(state.questionDeadlineEpochMs?.[key]);
+      if (!deadline || deadline > Date.now()) {
+        return;
+      }
+
+      timerBusy = true;
+      addTimedOutQuestion(state.currentQuestionIndex);
+      state.userAnswers[key] = null;
+      delete state.questionDeadlineEpochMs[key];
+      state.showHintForCurrent = false;
+
+      if (state.currentQuestionIndex >= quiz.questions.length - 1) {
+        state.currentView = "summary";
+        if (!isAuthenticated) {
+          registerAnonymousCompletion();
+        }
+      } else {
+        state.currentQuestionIndex += 1;
+      }
+
+      try {
+        await saveState();
+      } catch (error) {
+        showError("Kunne ikke gemme timeout-state. Prøv igen.");
+      } finally {
+        render();
+        timerBusy = false;
+      }
+    }
+
+    function startTicker() {
+      if (tickerId !== null) {
+        return;
+      }
+      tickerId = window.setInterval(function () {
+        if (!quiz) {
+          return;
+        }
+        if (state.currentView === "question") {
+          renderTimerLabel();
+          handleQuestionTimeoutIfNeeded().catch(() => {
+            showError("Kunne ikke håndtere timeout. Prøv igen.");
+          });
+        } else {
+          updateCooldownUi();
+        }
+      }, 250);
+    }
+
     function renderQuestionView() {
       const question = currentQuestion();
       const options = Array.isArray(question.answerOptions) ? question.answerOptions : [];
       const selectedOption = state.userAnswers[String(state.currentQuestionIndex)];
       const hasAnswered = selectedOption !== null && selectedOption !== undefined;
+      const isTimedOut = isQuestionTimedOut(state.currentQuestionIndex);
       const totalQuestions = quiz.questions.length;
       const answeredQuestions = answeredCount();
       const flowProgress = totalQuestions ? Math.round(((state.currentQuestionIndex + 1) / totalQuestions) * 100) : 0;
+
+      ensureDeadlineForQuestion(state.currentQuestionIndex);
 
       counterNode.textContent = `Spørgsmål ${state.currentQuestionIndex + 1} af ${totalQuestions}`;
       answeredNode.textContent = `Besvaret: ${answeredQuestions} / ${totalQuestions}`;
@@ -639,6 +1010,7 @@
         optionText.className = "quiz-option-text";
         optionText.textContent = String(option?.text || "");
         button.append(optionLabel, optionText);
+        button.disabled = isTimedOut;
         if (selectedOption === optionIndex) {
           button.classList.add("is-selected");
           if (option?.isCorrect === true) {
@@ -650,7 +1022,14 @@
           button.classList.add("is-correct");
         }
         button.addEventListener("click", function () {
+          if (isTimedOut) {
+            return;
+          }
           state.userAnswers[String(state.currentQuestionIndex)] = optionIndex;
+          state.timedOutQuestionIndices = (state.timedOutQuestionIndices || []).filter(
+            (value) => value !== state.currentQuestionIndex
+          );
+          delete state.questionDeadlineEpochMs[String(state.currentQuestionIndex)];
           state.showHintForCurrent = false;
           saveState().catch((error) => {
             showError("Kunne ikke gemme state. Prøv igen.");
@@ -678,7 +1057,10 @@
         hintNode.classList.add("is-hidden");
       }
 
-      if (hasAnswered) {
+      if (isTimedOut) {
+        rationaleNode.textContent = "Tiden udløb for dette spørgsmål, og svaret tæller som forkert.";
+        rationaleNode.classList.remove("is-hidden");
+      } else if (hasAnswered) {
         const selected = options[selectedOption];
         const rationale = String(selected?.rationale || "").trim();
         if (rationale) {
@@ -696,6 +1078,7 @@
       backBtnNode.disabled = state.currentQuestionIndex === 0;
       nextBtnNode.textContent =
         state.currentQuestionIndex >= quiz.questions.length - 1 ? "Se opsummering" : "Næste";
+      renderTimerLabel();
     }
 
     function renderSummaryView() {
@@ -706,6 +1089,7 @@
       summaryWrongNode.textContent = String(stats.wrong);
       summarySkippedNode.textContent = String(stats.skipped);
       summaryAnsweredNode.textContent = `${answeredCount()} / ${total}`;
+      updateCooldownUi();
     }
 
     function render() {
@@ -730,12 +1114,15 @@
         currentQuestionIndex: state.currentQuestionIndex,
         hiddenQuestionIndices: state.hiddenQuestionIndices,
         currentView: state.currentView,
+        timedOutQuestionIndices: state.timedOutQuestionIndices,
+        questionDeadlineEpochMs: state.questionDeadlineEpochMs,
       };
 
       saveLocalState(payload);
 
       if (!isAuthenticated) {
-        return;
+        cooldownState = activeCooldownState();
+        return { ok: true, cooldown: cooldownState };
       }
 
       const response = await fetch(stateApiUrl, {
@@ -747,9 +1134,22 @@
         },
         body: JSON.stringify(payload),
       });
+      if (response.status === 429) {
+        let body = null;
+        try {
+          body = await response.json();
+        } catch (error) {
+          body = null;
+        }
+        cooldownState = normalizeCooldownPayload(body?.cooldown);
+        return { ok: false, cooldown: cooldownState };
+      }
       if (!response.ok) {
         throw new Error("Failed to save state");
       }
+      const body = await response.json();
+      cooldownState = normalizeCooldownPayload(body?.cooldown);
+      return { ok: true, cooldown: cooldownState, data: body };
     }
 
     async function init() {
@@ -764,6 +1164,7 @@
       const localState = loadLocalState();
       try {
         const accountState = await fetchAccountState();
+        cooldownState = normalizeCooldownPayload(accountState?._meta?.cooldown);
         state = normalizeStatePayload(accountState || localState);
         render();
 
@@ -773,11 +1174,18 @@
         }
       } catch (error) {
         state = normalizeStatePayload(localState);
+        if (!isAuthenticated) {
+          cooldownState = refreshAnonymousCooldown();
+        }
         render();
         if (isAuthenticated) {
           showError("Kunne ikke hente kontostate. Viser lokal state i stedet.");
         }
       }
+      if (!isAuthenticated && !cooldownState) {
+        cooldownState = refreshAnonymousCooldown();
+      }
+      startTicker();
     }
 
     hintBtnNode.addEventListener("click", function () {
@@ -793,6 +1201,7 @@
         state.currentQuestionIndex -= 1;
       }
       state.showHintForCurrent = false;
+      ensureDeadlineForQuestion(state.currentQuestionIndex);
       saveState().catch(() => {
         showError("Kunne ikke gemme state. Prøv igen.");
       });
@@ -802,8 +1211,12 @@
     nextBtnNode.addEventListener("click", function () {
       if (state.currentQuestionIndex >= quiz.questions.length - 1) {
         state.currentView = "summary";
+        if (!isAuthenticated) {
+          registerAnonymousCompletion();
+        }
       } else {
         state.currentQuestionIndex += 1;
+        ensureDeadlineForQuestion(state.currentQuestionIndex);
       }
       state.showHintForCurrent = false;
       saveState().catch(() => {
@@ -816,17 +1229,40 @@
       state.currentView = "question";
       state.currentQuestionIndex = 0;
       state.showHintForCurrent = false;
+      ensureDeadlineForQuestion(state.currentQuestionIndex);
       saveState().catch(() => {
         showError("Kunne ikke gemme state. Prøv igen.");
       });
       render();
     });
 
-    resetBtnNode.addEventListener("click", function () {
+    resetBtnNode.addEventListener("click", async function () {
+      const active = activeCooldownState();
+      if (active && active.is_blocked) {
+        showError(`Du kan tage quizzen igen om ${formatSeconds(active.retry_after_seconds)}.`);
+        render();
+        return;
+      }
+
+      const previousState = state;
       state = normalizeStatePayload(null);
-      saveState().catch(() => {
+      ensureDeadlineForQuestion(state.currentQuestionIndex);
+
+      try {
+        const result = await saveState();
+        if (result && result.ok === false) {
+          state = previousState;
+          const blocked = activeCooldownState();
+          if (blocked && blocked.is_blocked) {
+            showError(`Du kan tage quizzen igen om ${formatSeconds(blocked.retry_after_seconds)}.`);
+          } else {
+            showError("Du kan ikke starte quizzen igen endnu.");
+          }
+        }
+      } catch (error) {
+        state = previousState;
         showError("Kunne ikke nulstille state. Prøv igen.");
-      });
+      }
       render();
     });
 

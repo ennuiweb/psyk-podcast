@@ -139,32 +139,73 @@ def build_subject_leaderboard_snapshot(
 
     rows = QuizProgress.objects.filter(
         quiz_id__in=subject_quiz_ids,
-        completed_at__isnull=False,
-        completed_at__gte=active_season.start_at,
-        completed_at__lt=active_season.end_at,
         user_id__in=public_profiles.keys(),
-    ).values("user_id", "quiz_id", "completed_at")
+    ).values(
+        "user_id",
+        "quiz_id",
+        "completed_at",
+        "answers_count",
+        "leaderboard_season_key",
+        "leaderboard_best_score",
+        "leaderboard_best_correct_answers",
+        "leaderboard_best_duration_ms",
+        "leaderboard_best_reached_at",
+    )
 
     aggregate_by_user: dict[int, dict[str, Any]] = {}
     for row in rows:
+        quiz_id = str(row.get("quiz_id") or "").strip().lower()
+        if not quiz_id:
+            continue
+
+        season_key = str(row.get("leaderboard_season_key") or "").strip()
+        best_reached_at = row.get("leaderboard_best_reached_at")
+        best_score = int(row.get("leaderboard_best_score") or 0)
+        best_correct = int(row.get("leaderboard_best_correct_answers") or 0)
+        best_duration_ms = int(row.get("leaderboard_best_duration_ms") or 0)
+
+        if season_key == active_season.key and best_reached_at:
+            score_points = max(0, best_score)
+            correct_answers = max(0, best_correct)
+            reached_at = best_reached_at
+            duration_ms = max(0, best_duration_ms)
+        else:
+            completed_at = row.get("completed_at")
+            if not completed_at or completed_at < active_season.start_at or completed_at >= active_season.end_at:
+                continue
+            # Backward compatibility for rows created before score-aware leaderboard fields existed.
+            fallback_correct = max(0, int(row.get("answers_count") or 0))
+            score_points = fallback_correct * 100
+            correct_answers = fallback_correct
+            reached_at = completed_at
+            duration_ms = 0
+
         user_id = int(row["user_id"])
         payload = aggregate_by_user.setdefault(
             user_id,
             {
                 "quiz_ids": set(),
                 "quiz_count": 0,
+                "score_points": 0,
+                "correct_answers": 0,
+                "duration_total_ms": 0,
+                "duration_count": 0,
                 "reached_at": None,
             },
         )
-        quiz_id = str(row.get("quiz_id") or "").strip().lower()
-        if not quiz_id or quiz_id in payload["quiz_ids"]:
+        if quiz_id in payload["quiz_ids"]:
             continue
         payload["quiz_ids"].add(quiz_id)
         payload["quiz_count"] += 1
-        completed_at = row.get("completed_at")
-        reached_at = payload["reached_at"]
-        if reached_at is None or (completed_at and completed_at > reached_at):
-            payload["reached_at"] = completed_at
+        payload["score_points"] += score_points
+        payload["correct_answers"] += correct_answers
+        if duration_ms > 0:
+            payload["duration_total_ms"] += duration_ms
+            payload["duration_count"] += 1
+
+        existing_reached_at = payload["reached_at"]
+        if existing_reached_at is None or (reached_at and reached_at > existing_reached_at):
+            payload["reached_at"] = reached_at
 
     ranking_rows: list[dict[str, Any]] = []
     for user_id, payload in aggregate_by_user.items():
@@ -173,19 +214,27 @@ def build_subject_leaderboard_snapshot(
         profile = public_profiles.get(user_id)
         if profile is None or not profile.public_alias:
             continue
+        duration_count = int(payload.get("duration_count") or 0)
+        avg_duration_seconds = None
+        if duration_count > 0:
+            avg_duration_seconds = int(round((int(payload["duration_total_ms"]) / duration_count) / 1000))
         ranking_rows.append(
             {
                 "user_id": user_id,
                 "alias": profile.public_alias,
                 "alias_normalized": profile.public_alias_normalized or profile.public_alias.lower(),
                 "quiz_count": int(payload["quiz_count"]),
+                "score_points": int(payload["score_points"]),
+                "correct_answers": int(payload["correct_answers"]),
+                "avg_duration_seconds": avg_duration_seconds,
                 "reached_at": payload["reached_at"],
             }
         )
 
     ranking_rows.sort(
         key=lambda item: (
-            -int(item["quiz_count"]),
+            -int(item["score_points"]),
+            -int(item["correct_answers"]),
             item["reached_at"] or datetime.max.replace(tzinfo=dt_timezone.utc),
             str(item["alias_normalized"]),
         )
@@ -199,6 +248,9 @@ def build_subject_leaderboard_snapshot(
                 "rank": index,
                 "alias": item["alias"],
                 "quiz_count": item["quiz_count"],
+                "score_points": item["score_points"],
+                "correct_answers": item["correct_answers"],
+                "avg_duration_seconds": item["avg_duration_seconds"],
                 "reached_at": reached_at.isoformat() if reached_at else None,
             }
         )

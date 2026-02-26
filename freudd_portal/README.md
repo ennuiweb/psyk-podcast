@@ -143,7 +143,8 @@ Enrollment UX rule: enroll/unenroll actions are shown inline per subject in the 
   "subject_slug": "personlighedspsykologi",
   "by_rss_title": {
     "Uge 12, Forelæsning 1 · Podcast · Alle kilder": "https://open.spotify.com/episode/..."
-  }
+  },
+  "unresolved_rss_titles": []
 }
 ```
 
@@ -151,7 +152,8 @@ Operational behavior:
 - Mapped RSS titles render Spotify links on `/subjects/<subject_slug>`.
 - Unmapped RSS titles are skipped from manifest podcast assets and emit warnings until a direct episode mapping exists.
 - Inline embed playback is always enabled for visible podcast rows (because only episode URLs are accepted).
-- `scripts/sync_spotify_map.py` auto-syncs RSS titles into `spotify_map.json` with direct Spotify episode URLs only and fails when unresolved titles remain.
+- `scripts/sync_spotify_map.py` auto-syncs RSS titles into `spotify_map.json` with direct Spotify episode URLs only.
+- Default behavior fails when unresolved titles remain; use `--allow-unresolved` to persist resolved episode URLs and list unresolved titles in `unresolved_rss_titles`.
 - Direct show lookup uses `--spotify-show-url` and Spotify client credentials (`SPOTIFY_CLIENT_ID`, `SPOTIFY_CLIENT_SECRET`) to resolve episode URLs by title.
 - Manifest refresh is automatic on next subject load when source files are newer; CI feed workflow also rebuilds `content_manifest.json` for `personlighedspsykologi-en`.
 

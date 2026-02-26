@@ -1,7 +1,9 @@
 import importlib.util
+import io
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 
 def _load_module():
@@ -133,6 +135,62 @@ class SyncSpotifyMapTests(unittest.TestCase):
                 "Uge 1, Forelæsning 1 · Podcast · Lewis (1999)",
             ],
         )
+
+    def test_main_returns_non_zero_when_unresolved_without_allow_unresolved(self):
+        rss_payload = """<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"><channel><item><title>Uge 1, Forelæsning 1 · Podcast · Alle kilder</title></item></channel></rss>
+"""
+        with tempfile.TemporaryDirectory() as temp_dir:
+            rss_path = Path(temp_dir) / "rss.xml"
+            map_path = Path(temp_dir) / "spotify_map.json"
+            rss_path.write_text(rss_payload, encoding="utf-8")
+
+            argv = [
+                "sync_spotify_map.py",
+                "--rss",
+                str(rss_path),
+                "--spotify-map",
+                str(map_path),
+                "--subject-slug",
+                "personlighedspsykologi",
+            ]
+            with mock.patch("sys.argv", argv), mock.patch("sys.stderr", new=io.StringIO()):
+                code = self.mod.main()
+
+            self.assertEqual(code, 2)
+            self.assertFalse(map_path.exists())
+
+    def test_main_writes_map_when_allow_unresolved_is_set(self):
+        rss_payload = """<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"><channel><item><title>Uge 1, Forelæsning 1 · Podcast · Alle kilder</title></item></channel></rss>
+"""
+        with tempfile.TemporaryDirectory() as temp_dir:
+            rss_path = Path(temp_dir) / "rss.xml"
+            map_path = Path(temp_dir) / "spotify_map.json"
+            rss_path.write_text(rss_payload, encoding="utf-8")
+
+            argv = [
+                "sync_spotify_map.py",
+                "--rss",
+                str(rss_path),
+                "--spotify-map",
+                str(map_path),
+                "--subject-slug",
+                "personlighedspsykologi",
+                "--allow-unresolved",
+            ]
+            with mock.patch("sys.argv", argv), mock.patch("sys.stderr", new=io.StringIO()):
+                code = self.mod.main()
+
+            self.assertEqual(code, 0)
+            payload = self.mod.json.loads(map_path.read_text(encoding="utf-8"))
+            self.assertEqual(payload["version"], 1)
+            self.assertEqual(payload["subject_slug"], "personlighedspsykologi")
+            self.assertEqual(payload["by_rss_title"], {})
+            self.assertEqual(
+                payload["unresolved_rss_titles"],
+                ["Uge 1, Forelæsning 1 · Podcast · Alle kilder"],
+            )
 
 
 if __name__ == "__main__":

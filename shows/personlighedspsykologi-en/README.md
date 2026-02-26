@@ -57,7 +57,8 @@ Spotify map sync note:
 - Existing valid Spotify mappings are preserved.
 - If Spotify show lookup succeeds (`--spotify-show-url` + `SPOTIFY_CLIENT_ID`/`SPOTIFY_CLIENT_SECRET`), matching RSS titles are mapped to direct episode URLs.
 - Non-episode mappings are rejected.
-- Unresolved RSS titles fail the sync (no Spotify search fallback is allowed).
+- Unresolved RSS titles fail sync by default (no Spotify search fallback is allowed).
+- With `--allow-unresolved`, sync writes resolved episode URLs and records unresolved titles under `unresolved_rss_titles`.
 - Workflow `generate-feed.yml` runs this sync automatically for `personlighedspsykologi-en`.
 
 Reading key sync note:

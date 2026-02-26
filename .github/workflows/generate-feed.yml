@@ -198,7 +198,8 @@ jobs:
             --spotify-map shows/${SHOW}/spotify_map.json \
             --subject-slug personlighedspsykologi \
             --spotify-show-url https://open.spotify.com/show/0jAvkPCcZ1x98lIMno1oqv \
-            --spotify-market DK
+            --spotify-market DK \
+            --allow-unresolved
 
       - name: Rebuild subject content manifest
         if: matrix.show == 'personlighedspsykologi-en'

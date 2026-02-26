@@ -284,6 +284,14 @@ def main() -> int:
         action="store_true",
         help="Drop existing map entries not present in the current RSS.",
     )
+    parser.add_argument(
+        "--allow-unresolved",
+        action="store_true",
+        help=(
+            "Allow unresolved RSS titles and still write direct episode mappings for resolved titles. "
+            "Unresolved titles are reported and stored in unresolved_rss_titles."
+        ),
+    )
     parser.add_argument("--dry-run", action="store_true", help="Print changes without writing files.")
     args = parser.parse_args()
 
@@ -340,12 +348,18 @@ def main() -> int:
         remaining = len(unresolved_titles) - preview_limit
         if remaining > 0:
             print(f"... and {remaining} more", file=sys.stderr)
-        return 2
+        if not args.allow_unresolved:
+            return 2
+        print(
+            "Continuing because --allow-unresolved is set; unresolved titles were omitted from by_rss_title.",
+            file=sys.stderr,
+        )
 
     payload = {
         "version": 1,
         "subject_slug": subject_slug,
         "by_rss_title": by_rss_title,
+        "unresolved_rss_titles": unresolved_titles,
     }
     changed = write_spotify_map(spotify_map_path, payload, dry_run=bool(args.dry_run))
 

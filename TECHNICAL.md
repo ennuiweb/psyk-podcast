@@ -256,7 +256,8 @@ Quiz sync behavior (current):
 - Non-quiz JSON artifacts (for example `*.html.request.json`, manifest JSON files) are ignored; zero valid quiz JSON files is treated as an error.
 - `manage.py rebuild_content_manifest --subject <slug>` regenerates lecture-first manifest and validates source merges.
 - `load_subject_content_manifest()` auto-detects stale manifests by comparing source mtimes (`reading key`, `quiz_links.json`, `rss.xml`, `spotify_map.json`) and rebuilds on-demand.
-- `scripts/sync_spotify_map.py` auto-syncs RSS titles into `spotify_map.json` with direct episode URLs only and fails if any RSS title cannot be resolved.
+- `scripts/sync_spotify_map.py` auto-syncs RSS titles into `spotify_map.json` with direct episode URLs only.
+- By default, unresolved RSS titles fail sync; with `--allow-unresolved`, resolved episode mappings are still written and unresolved titles are stored in `unresolved_rss_titles`.
 - Show lookup is driven by `--spotify-show-url https://open.spotify.com/show/<id>` plus credentials `SPOTIFY_CLIENT_ID` + `SPOTIFY_CLIENT_SECRET`.
 - If an RSS episode is missing from `spotify_map.json`, the manifest emits warnings and skips the podcast asset (no search fallback).
 - Mapped episode URLs in `spotify_map.json` enable inline embed playback on next manifest refresh.

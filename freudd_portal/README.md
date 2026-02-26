@@ -27,6 +27,7 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Learning path on subject pages (`/subjects/<subject_slug>`) is lecture-first with nested reading status (`active|completed|no_quiz`) and quiz/podcast navigation.
 - Subject detail UI is mobile-first and uses a vertical timeline with manual `<details>` toggles, per-lecture progress bars, and compact quiz chips per difficulty.
 - Subject detail includes top overview KPI cards, `Udvid alle`/`Luk alle` controls, and local browser persistence of opened lectures.
+- Subject detail spacing now uses a local responsive scale (`section/block/tight`) to keep vertical rhythm consistent across KPI cards, timeline items, lecture panels, and reading rows.
 - Module headers in subject detail are split visually into two title elements: `Uge x, forelæsning x` (label) and the cleaned lecture title (without trailing `(Forelæsning x, YYYY-MM-DD)` metadata).
 - Quiz labels are rendered from cleaned `episode_title` metadata (`modul` + `titel`) instead of raw file/tag strings.
 - Quiz wrapper header uses a structured identity block (module label + title) and includes in-flow progress feedback per question step.

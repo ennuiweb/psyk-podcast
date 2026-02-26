@@ -254,7 +254,8 @@ Quiz sync behavior (current):
 - `scripts/sync_quiz_links.py` now requires `--subject-slug` and writes `subject_slug` into each `quiz_links.json` entry.
 - Non-quiz JSON artifacts (for example `*.html.request.json`, manifest JSON files) are ignored; zero valid quiz JSON files is treated as an error.
 - `manage.py rebuild_content_manifest --subject <slug>` regenerates lecture-first manifest and validates source merges.
-- After publishing Spotify episodes, update `shows/personlighedspsykologi-en/spotify_map.json` (RSS title → Spotify episode URL) and rerun `manage.py rebuild_content_manifest --subject <slug>`.
+- `load_subject_content_manifest()` auto-detects stale manifests by comparing source mtimes (`reading key`, `quiz_links.json`, `rss.xml`, `spotify_map.json`) and rebuilds on-demand.
+- After publishing Spotify episodes, update `shows/personlighedspsykologi-en/spotify_map.json`; the next subject load or workflow run will refresh `content_manifest.json`.
 
 ### Security controls in phase 1
 - Django session auth + CSRF middleware
@@ -419,7 +420,8 @@ The workflow (`.github/workflows/generate-feed.yml`) runs on a daily cron and on
 - write the shared service-account JSON secret to `shows/<show>/service-account.json`;
 - materialise a `config.runtime.json` per show (optionally overriding the Drive folder ID from GitHub Secrets);
 - probe for Drive videos that need transcoding, run `transcode_drive_media.py` when required, and then execute `gdrive_podcast_feed.py` for that show;
-- commit `shows/<show>/feeds/rss.xml` back to the default branch whenever it changes.
+- for `personlighedspsykologi-en`, run `python freudd_portal/manage.py rebuild_content_manifest --subject personlighedspsykologi`;
+- commit updated artifacts (`feeds/rss.xml`, `quiz_links.json`, and `content_manifest.json` when changed) back to the default branch.
 
 The repository ignores stray `rss.xml` files, but `shows/**/feeds/rss.xml` are explicitly tracked so new shows can publish their feeds.
 

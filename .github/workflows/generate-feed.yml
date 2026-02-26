@@ -180,18 +180,26 @@ jobs:
           SHOW: ${{ matrix.show }}
         run: python podcast-tools/gdrive_podcast_feed.py --config shows/${SHOW}/config.runtime.json
 
+      - name: Rebuild subject content manifest
+        if: matrix.show == 'personlighedspsykologi-en'
+        run: python freudd_portal/manage.py rebuild_content_manifest --subject personlighedspsykologi
+
       - name: Commit updated feed
         env:
           SHOW: ${{ matrix.show }}
         run: |
           feed_path="shows/${SHOW}/feeds/rss.xml"
           quiz_path="shows/${SHOW}/quiz_links.json"
+          manifest_path="shows/${SHOW}/content_manifest.json"
           files=()
           if [[ -n "$(git status --porcelain "$feed_path")" ]]; then
             files+=("$feed_path")
           fi
           if [[ -f "$quiz_path" && -n "$(git status --porcelain "$quiz_path")" ]]; then
             files+=("$quiz_path")
+          fi
+          if [[ -f "$manifest_path" && -n "$(git status --porcelain "$manifest_path")" ]]; then
+            files+=("$manifest_path")
           fi
           if [[ ${#files[@]} -gt 0 ]]; then
             git config user.name "github-actions[bot]"

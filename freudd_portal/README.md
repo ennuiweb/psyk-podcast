@@ -147,7 +147,8 @@ Enrollment UX rule: enroll/unenroll actions are shown inline per subject in the 
 Operational behavior:
 - Mapped RSS titles render Spotify links on `/subjects/<subject_slug>`.
 - Unmapped RSS titles fall back to source audio links in UI and are emitted as manifest warnings (non-fatal).
-- Keep `spotify_map.json` updated when new RSS episodes are published, then rebuild manifest.
+- Keep `spotify_map.json` updated when new RSS episodes are published.
+- Manifest refresh is automatic on next subject load when source files are newer; CI feed workflow also rebuilds `content_manifest.json` for `personlighedspsykologi-en`.
 
 ## New env configuration
 - `FREUDD_PORTAL_SITE_ID` (default: `1`)

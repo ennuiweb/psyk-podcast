@@ -2,11 +2,18 @@ from __future__ import annotations
 
 import json
 import tempfile
+import time
 from pathlib import Path
+from unittest.mock import patch
 
 from django.test import TestCase, override_settings
 
-from quizzes.content_services import build_subject_content_manifest, clear_content_service_caches
+from quizzes.content_services import (
+    build_subject_content_manifest,
+    clear_content_service_caches,
+    load_subject_content_manifest,
+    write_subject_content_manifest,
+)
 from quizzes.subject_services import clear_subject_service_caches
 
 
@@ -92,6 +99,7 @@ class SubjectContentManifestTests(TestCase):
             ),
             encoding="utf-8",
         )
+        self.default_rss_payload = self.rss_file.read_text(encoding="utf-8")
         self.spotify_map_file.write_text(
             json.dumps(
                 {
@@ -265,3 +273,65 @@ class SubjectContentManifestTests(TestCase):
         manifest = build_subject_content_manifest("personlighedspsykologi")
         self.assertEqual(manifest["lectures"], [])
         self.assertEqual(manifest["source_meta"]["reading_error"], "Reading-nøglen kunne ikke indlæses.")
+
+    def test_load_manifest_rebuilds_when_rss_is_newer_than_manifest(self) -> None:
+        self.rss_file.write_text(
+            "\n".join(
+                [
+                    '<?xml version="1.0" encoding="UTF-8"?>',
+                    "<rss version=\"2.0\">",
+                    "<channel>",
+                    "</channel>",
+                    "</rss>",
+                ]
+            ),
+            encoding="utf-8",
+        )
+        stale_manifest = build_subject_content_manifest("personlighedspsykologi")
+        stale_count = self._podcast_count(stale_manifest)
+        self.assertEqual(stale_count, 0)
+        write_subject_content_manifest(stale_manifest, path=self.manifest_file)
+
+        clear_content_service_caches()
+        time.sleep(0.02)
+        self.rss_file.write_text(self.default_rss_payload, encoding="utf-8")
+
+        refreshed = load_subject_content_manifest("personlighedspsykologi")
+        refreshed_count = self._podcast_count(refreshed)
+        self.assertGreater(refreshed_count, 0)
+        persisted = json.loads(self.manifest_file.read_text(encoding="utf-8"))
+        self.assertEqual(self._podcast_count(persisted), refreshed_count)
+
+    def test_load_manifest_keeps_existing_payload_when_stale_rebuild_raises(self) -> None:
+        manifest = build_subject_content_manifest("personlighedspsykologi")
+        expected_count = self._podcast_count(manifest)
+        self.assertGreater(expected_count, 0)
+        write_subject_content_manifest(manifest, path=self.manifest_file)
+
+        clear_content_service_caches()
+        time.sleep(0.02)
+        self.rss_file.write_text(self.default_rss_payload, encoding="utf-8")
+        with patch("quizzes.content_services.build_subject_content_manifest", side_effect=RuntimeError("boom")):
+            loaded = load_subject_content_manifest("personlighedspsykologi")
+        self.assertEqual(self._podcast_count(loaded), expected_count)
+
+    @staticmethod
+    def _podcast_count(manifest: dict[str, object]) -> int:
+        total = 0
+        lectures = manifest.get("lectures")
+        if not isinstance(lectures, list):
+            return 0
+        for lecture in lectures:
+            if not isinstance(lecture, dict):
+                continue
+            lecture_assets = lecture.get("lecture_assets") if isinstance(lecture.get("lecture_assets"), dict) else {}
+            total += len(lecture_assets.get("podcasts") or [])
+            readings = lecture.get("readings")
+            if not isinstance(readings, list):
+                continue
+            for reading in readings:
+                if not isinstance(reading, dict):
+                    continue
+                assets = reading.get("assets") if isinstance(reading.get("assets"), dict) else {}
+                total += len(assets.get("podcasts") or [])
+        return total

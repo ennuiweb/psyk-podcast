@@ -58,6 +58,62 @@ def clear_content_service_caches() -> None:
     _MANIFEST_CACHE["data"] = None
 
 
+def _set_manifest_cache(
+    *,
+    path: Path | None,
+    mtime_ns: int | None,
+    subject_slug: str,
+    data: SubjectContentManifest,
+) -> SubjectContentManifest:
+    _MANIFEST_CACHE["path"] = str(path) if path is not None else None
+    _MANIFEST_CACHE["mtime"] = mtime_ns
+    _MANIFEST_CACHE["subject_slug"] = subject_slug
+    _MANIFEST_CACHE["data"] = data
+    return data
+
+
+def _manifest_source_paths(payload: SubjectContentManifest | None = None) -> tuple[Path, ...]:
+    candidates: list[Path] = [
+        Path(settings.FREUDD_READING_MASTER_KEY_PATH),
+        Path(settings.FREUDD_READING_MASTER_KEY_FALLBACK_PATH),
+        Path(settings.QUIZ_LINKS_JSON_PATH),
+        Path(settings.FREUDD_SUBJECT_FEED_RSS_PATH),
+        Path(settings.FREUDD_SUBJECT_SPOTIFY_MAP_PATH),
+    ]
+    if isinstance(payload, dict):
+        source_meta = payload.get("source_meta")
+        if isinstance(source_meta, dict):
+            reading_source_used = str(source_meta.get("reading_source_used") or "").strip()
+            if reading_source_used:
+                candidates.append(Path(reading_source_used))
+
+    unique_paths: list[Path] = []
+    seen_paths: set[str] = set()
+    for candidate in candidates:
+        key = str(candidate)
+        if key in seen_paths:
+            continue
+        seen_paths.add(key)
+        unique_paths.append(candidate)
+    return tuple(unique_paths)
+
+
+def _stale_manifest_sources(
+    *,
+    manifest_mtime_ns: int,
+    payload: SubjectContentManifest | None = None,
+) -> list[str]:
+    stale_sources: list[str] = []
+    for source_path in _manifest_source_paths(payload):
+        try:
+            source_mtime_ns = source_path.stat().st_mtime_ns
+        except OSError:
+            continue
+        if source_mtime_ns > manifest_mtime_ns:
+            stale_sources.append(str(source_path))
+    return stale_sources
+
+
 def _lecture_key_from_text(value: str) -> str | None:
     match = LECTURE_KEY_RE.search(value or "")
     if match:
@@ -565,15 +621,71 @@ def load_subject_content_manifest(subject_slug: str) -> SubjectContentManifest:
                     and payload.get("subject_slug") == slug
                     and isinstance(payload.get("lectures"), list)
                 ):
-                    _MANIFEST_CACHE["path"] = str(path)
-                    _MANIFEST_CACHE["mtime"] = mtime
-                    _MANIFEST_CACHE["subject_slug"] = slug
-                    _MANIFEST_CACHE["data"] = payload
-                    return payload
+                    stale_sources = _stale_manifest_sources(
+                        manifest_mtime_ns=mtime,
+                        payload=payload,
+                    )
+                    if not stale_sources:
+                        return _set_manifest_cache(
+                            path=path,
+                            mtime_ns=mtime,
+                            subject_slug=slug,
+                            data=payload,
+                        )
+                    logger.info(
+                        "Detected stale content manifest; rebuilding from source files.",
+                        extra={
+                            "subject_slug": slug,
+                            "manifest_path": str(path),
+                            "stale_sources": stale_sources,
+                        },
+                    )
+                    try:
+                        refreshed_manifest = build_subject_content_manifest(slug)
+                    except Exception:
+                        logger.exception(
+                            "Failed to rebuild stale content manifest; keeping existing payload.",
+                            extra={
+                                "subject_slug": slug,
+                                "manifest_path": str(path),
+                                "stale_sources": stale_sources,
+                            },
+                        )
+                        return _set_manifest_cache(
+                            path=path,
+                            mtime_ns=mtime,
+                            subject_slug=slug,
+                            data=payload,
+                        )
+                    try:
+                        write_subject_content_manifest(refreshed_manifest, path=path)
+                    except OSError:
+                        logger.warning(
+                            "Unable to write refreshed content manifest path: %s",
+                            path,
+                            exc_info=True,
+                        )
+                        return _set_manifest_cache(
+                            path=None,
+                            mtime_ns=None,
+                            subject_slug=slug,
+                            data=refreshed_manifest,
+                        )
+                    try:
+                        refreshed_mtime = path.stat().st_mtime_ns
+                    except OSError:
+                        refreshed_mtime = None
+                    return _set_manifest_cache(
+                        path=path,
+                        mtime_ns=refreshed_mtime,
+                        subject_slug=slug,
+                        data=refreshed_manifest,
+                    )
 
     manifest = build_subject_content_manifest(slug)
-    _MANIFEST_CACHE["path"] = None
-    _MANIFEST_CACHE["mtime"] = None
-    _MANIFEST_CACHE["subject_slug"] = slug
-    _MANIFEST_CACHE["data"] = manifest
-    return manifest
+    return _set_manifest_cache(
+        path=None,
+        mtime_ns=None,
+        subject_slug=slug,
+        data=manifest,
+    )

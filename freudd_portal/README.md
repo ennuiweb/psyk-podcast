@@ -37,6 +37,8 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Habitica server sync is active; Anki remains gated but server sync is deferred.
 - Theme direction: light-first UI (Space Grotesk + Manrope) with blue-accent cards inspired by the progress mockup.
 - Shared primitives in `templates/base.html` enforce radius/spacing/depth rules portal-wide, while page templates apply local layout detail.
+- Design system source of truth: `freudd_portal/docs/design-guidelines.md` (anchored to `docs/non-technical-overview.md`).
+- Alternative expressive design system: `freudd_portal/docs/design-system-v2-expressive.md` (non-generic typography + dual-theme approach).
 
 ## Routes
 - `GET/POST /accounts/signup`

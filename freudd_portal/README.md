@@ -25,8 +25,8 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Topmenu shows direct links for the authenticated user’s enrolled active subjects.
 - Subject learning path is lecture-first: each lecture node contains readings, plus lecture-level assets (for example `Alle kilder`).
 - Subject content is compiled from reading master key + quiz links + local RSS into `content_manifest.json`.
-- Podcast links on subject pages are Spotify-only (`spotify_map.json` matched by RSS title). Direct source/Drive audio links are never exposed in UI.
-- Subject detail includes inline Spotify playback via embedded episode player, plus the existing external Spotify link.
+- Podcast links on subject pages are Spotify-only. Mapped RSS titles use Spotify episode URLs; unmapped titles fall back to Spotify search URLs. Direct source/Drive audio links are never exposed in UI.
+- Subject detail includes inline Spotify playback via embedded episode player when an episode URL is available, plus the external Spotify link.
 - Completion rule: `currentView == "summary"` and `answers_count == question_count`.
 - Gamification core is quiz-driven and always available for authenticated users (`/progress`, `/api/gamification/me`).
 - `/progress` is split in two tracks: private personal tracking and public quizliga preview.
@@ -129,7 +129,8 @@ Enrollment UX rule: enroll/unenroll actions are shown inline per subject in the 
 - `lectures[]`: lecture-first tree with `lecture_key`, `lecture_title`, `sequence_index`, `readings[]`, `lecture_assets`, `warnings[]`.
 - `readings[]`: each reading has stable `reading_key`, `reading_title`, `is_missing`, and `assets` (`quizzes[]`, `podcasts[]`).
 - `lecture_assets`: lecture-level assets for items like `Alle kilder`.
-- `podcasts[]`: Spotify-resolved assets with `url` (Spotify episode), `platform="spotify"`, and `source_audio_url` (original RSS enclosure/link).
+- `podcasts[]`: Spotify-only assets with `url`, `platform`, and `source_audio_url` (original RSS enclosure/link).
+- `platform`: `spotify` when `url` is an episode URL; `spotify_search` when fallback search is used.
 
 ## Spotify map contract (`spotify_map.json`)
 - Path default: `shows/personlighedspsykologi-en/spotify_map.json`
@@ -148,7 +149,8 @@ Enrollment UX rule: enroll/unenroll actions are shown inline per subject in the 
 
 Operational behavior:
 - Mapped RSS titles render Spotify links on `/subjects/<subject_slug>`.
-- Unmapped RSS titles are skipped from podcast assets and emitted as manifest warnings (non-fatal).
+- Unmapped RSS titles stay visible via Spotify search fallback links and emit manifest warnings (non-fatal).
+- Inline embed playback is only available for mapped Spotify episode URLs.
 - Keep `spotify_map.json` updated when new RSS episodes are published.
 - Manifest refresh is automatic on next subject load when source files are newer; CI feed workflow also rebuilds `content_manifest.json` for `personlighedspsykologi-en`.
 

@@ -3,7 +3,7 @@
   "subject_slug": "personlighedspsykologi",
   "source_meta": {
     "version": 1,
-    "generated_at": "2026-02-26T15:12:35.818895+00:00",
+    "generated_at": "2026-02-26T15:23:17.655142+00:00",
     "reading_master_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/.ai/reading-file-key.md",
     "reading_fallback_path": "/home/runner/work/psyk-podcast/psyk-podcast/shows/personlighedspsykologi-en/docs/reading-file-key.md",
     "reading_source_used": "/home/runner/work/psyk-podcast/psyk-podcast/shows/personlighedspsykologi-en/docs/reading-file-key.md",
@@ -63,32 +63,7 @@
                 "episode_title": "[Brief] W1L1 - Grundbog kapitel 1 - Introduktion til personlighedspsykologi [EN] {type=audio lang=en format=brief length=default hash=7e1ef4f1}.mp3"
               }
             ],
-            "podcasts": [
-              {
-                "kind": "short_podcast",
-                "title": "Uge 1, Forelæsning 1 · Kort podcast · Grundbog kapitel 1 - Introduktion til personlighedspsykologi",
-                "url": "https://drive.google.com/uc?export=download&id=1sqBrNF6inMTOH03G6C8BJhiv7_qUw7nw",
-                "platform": "source",
-                "pub_date": "Mon, 02 Feb 2025 16:00:00 +0100",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1sqBrNF6inMTOH03G6C8BJhiv7_qUw7nw"
-              },
-              {
-                "kind": "lydbog",
-                "title": "Uge 1, Forelæsning 1 · Lydbog · Grundbog kapitel 01 - Introduktion til personlighedspsykologi",
-                "url": "https://drive.google.com/uc?export=download&id=10Ckp4-zQTCfhrq45FVo-EvtGInTQMuyM",
-                "platform": "source",
-                "pub_date": "Mon, 02 Feb 2025 10:00:00 +0100",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=10Ckp4-zQTCfhrq45FVo-EvtGInTQMuyM"
-              },
-              {
-                "kind": "podcast",
-                "title": "Uge 1, Forelæsning 1 · Podcast · Grundbog kapitel 1 - Introduktion til personlighedspsykologi",
-                "url": "https://drive.google.com/uc?export=download&id=1193g8EKHbWfliAd2V5z7MxfbzcYaJ7rw",
-                "platform": "source",
-                "pub_date": "Mon, 02 Feb 2025 14:00:00 +0100",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1193g8EKHbWfliAd2V5z7MxfbzcYaJ7rw"
-              }
-            ]
+            "podcasts": []
           }
         },
         {
@@ -117,16 +92,7 @@
                 "episode_title": "W1L1 - Lewis (1999) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               }
             ],
-            "podcasts": [
-              {
-                "kind": "podcast",
-                "title": "Uge 1, Forelæsning 1 · Podcast · Lewis (1999)",
-                "url": "https://drive.google.com/uc?export=download&id=1Lobxbk0tRz8tT2-IoMLodlXww8rFM6yF",
-                "platform": "source",
-                "pub_date": "Mon, 02 Feb 2025 12:00:00 +0100",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1Lobxbk0tRz8tT2-IoMLodlXww8rFM6yF"
-              }
-            ]
+            "podcasts": []
           }
         }
       ],
@@ -151,23 +117,14 @@
             "episode_title": "W1L1 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3"
           }
         ],
-        "podcasts": [
-          {
-            "kind": "podcast",
-            "title": "Uge 1, Forelæsning 1 · Podcast · Alle kilder",
-            "url": "https://drive.google.com/uc?export=download&id=1xyN3ZSMJTR9tiBPKxCQhTnuuPFRX5o9l",
-            "platform": "source",
-            "pub_date": "Mon, 02 Feb 2025 08:00:00 +0100",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1xyN3ZSMJTR9tiBPKxCQhTnuuPFRX5o9l"
-          }
-        ]
+        "podcasts": []
       },
       "warnings": [
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 1, Forelæsning 1 · Kort podcast · Grundbog kapitel 1 - Introduktion til personlighedspsykologi",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 1, Forelæsning 1 · Podcast · Alle kilder",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 1, Forelæsning 1 · Lydbog · Grundbog kapitel 01 - Introduktion til personlighedspsykologi",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 1, Forelæsning 1 · Podcast · Grundbog kapitel 1 - Introduktion til personlighedspsykologi",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 1, Forelæsning 1 · Podcast · Lewis (1999)"
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 1, Forelæsning 1 · Kort podcast · Grundbog kapitel 1 - Introduktion til personlighedspsykologi",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 1, Forelæsning 1 · Podcast · Alle kilder",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 1, Forelæsning 1 · Lydbog · Grundbog kapitel 01 - Introduktion til personlighedspsykologi",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 1, Forelæsning 1 · Podcast · Grundbog kapitel 1 - Introduktion til personlighedspsykologi",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 1, Forelæsning 1 · Podcast · Lewis (1999)"
       ]
     },
     {
@@ -201,16 +158,7 @@
                 "episode_title": "W1L2 - Mayer & Bryan (2024) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               }
             ],
-            "podcasts": [
-              {
-                "kind": "podcast",
-                "title": "Uge 1, Forelæsning 2 · Podcast · Mayer & Bryan (2024)",
-                "url": "https://drive.google.com/uc?export=download&id=1Z0Id6a06PzWTyFrB2KcKe_GT-xGwXXOc",
-                "platform": "source",
-                "pub_date": "Tue, 03 Feb 2025 14:00:00 +0100",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1Z0Id6a06PzWTyFrB2KcKe_GT-xGwXXOc"
-              }
-            ]
+            "podcasts": []
           }
         },
         {
@@ -239,16 +187,7 @@
                 "episode_title": "W1L2 - Koutsoumpis (2025) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               }
             ],
-            "podcasts": [
-              {
-                "kind": "podcast",
-                "title": "Uge 1, Forelæsning 2 · Podcast · Koutsoumpis (2025)",
-                "url": "https://drive.google.com/uc?export=download&id=1A-84Ubp7t7HvIHACr9RmO8DC__D133cO",
-                "platform": "source",
-                "pub_date": "Tue, 03 Feb 2025 16:00:00 +0100",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1A-84Ubp7t7HvIHACr9RmO8DC__D133cO"
-              }
-            ]
+            "podcasts": []
           }
         },
         {
@@ -277,16 +216,7 @@
                 "episode_title": "W1L2 - Phan et al. (2024) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               }
             ],
-            "podcasts": [
-              {
-                "kind": "podcast",
-                "title": "Uge 1, Forelæsning 2 · Podcast · Phan et al. (2024)",
-                "url": "https://drive.google.com/uc?export=download&id=13EZemxaD3xwdufGwiDhHWdxVhbjx5VHQ",
-                "platform": "source",
-                "pub_date": "Tue, 03 Feb 2025 10:00:00 +0100",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=13EZemxaD3xwdufGwiDhHWdxVhbjx5VHQ"
-              }
-            ]
+            "podcasts": []
           }
         }
       ],
@@ -311,22 +241,13 @@
             "episode_title": "W1L2 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=1b3d31bc}.mp3"
           }
         ],
-        "podcasts": [
-          {
-            "kind": "podcast",
-            "title": "Uge 1, Forelæsning 2 · Podcast · Alle kilder",
-            "url": "https://drive.google.com/uc?export=download&id=1QdHf2MViSxXBQZvrNLPuWRmgvGr_mVV9",
-            "platform": "source",
-            "pub_date": "Tue, 03 Feb 2025 12:00:00 +0100",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1QdHf2MViSxXBQZvrNLPuWRmgvGr_mVV9"
-          }
-        ]
+        "podcasts": []
       },
       "warnings": [
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 1, Forelæsning 2 · Podcast · Alle kilder",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 1, Forelæsning 2 · Podcast · Koutsoumpis (2025)",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 1, Forelæsning 2 · Podcast · Mayer & Bryan (2024)",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 1, Forelæsning 2 · Podcast · Phan et al. (2024)"
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 1, Forelæsning 2 · Podcast · Alle kilder",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 1, Forelæsning 2 · Podcast · Koutsoumpis (2025)",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 1, Forelæsning 2 · Podcast · Mayer & Bryan (2024)",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 1, Forelæsning 2 · Podcast · Phan et al. (2024)"
       ]
     },
     {
@@ -370,16 +291,7 @@
                 "episode_title": "W2L1 - Columbus & Strandsbjerg (2025) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               }
             ],
-            "podcasts": [
-              {
-                "kind": "podcast",
-                "title": "Uge 2, Forelæsning 1 · Podcast · Columbus & Strandsbjerg (2025)",
-                "url": "https://drive.google.com/uc?export=download&id=1i0IhS3iSXMW9jWcpaxxE3BaCb3VVT5u2",
-                "platform": "source",
-                "pub_date": "Mon, 09 Feb 2025 12:00:00 +0100",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1i0IhS3iSXMW9jWcpaxxE3BaCb3VVT5u2"
-              }
-            ]
+            "podcasts": []
           }
         }
       ],
@@ -422,31 +334,13 @@
             "episode_title": "W2L1 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3"
           }
         ],
-        "podcasts": [
-          {
-            "kind": "podcast",
-            "title": "Uge 2, Forelæsning 1 · Podcast · Alle kilder",
-            "url": "https://drive.google.com/uc?export=download&id=1ilu3L_zhiRxrxj-Qd014gSwhvNHV0hYK",
-            "platform": "source",
-            "pub_date": "Mon, 09 Feb 2025 10:00:00 +0100",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1ilu3L_zhiRxrxj-Qd014gSwhvNHV0hYK"
-          },
-          {
-            "kind": "podcast",
-            "title": "Uge 2, Forelæsning 1 · Podcast · X Zettler et al. (2020)",
-            "url": "https://drive.google.com/uc?export=download&id=1oNwgAgljhbGh2ZhZSzOawXV5FWx4C03r",
-            "platform": "source",
-            "pub_date": "Mon, 09 Feb 2025 08:00:00 +0100",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1oNwgAgljhbGh2ZhZSzOawXV5FWx4C03r"
-          }
-        ]
+        "podcasts": []
       },
       "warnings": [
         "Quiz entry could not map to reading; attached to lecture assets: W2L1 - X Zettler et al. (2020) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 2, Forelæsning 1 · Podcast · Alle kilder",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 2, Forelæsning 1 · Podcast · Columbus & Strandsbjerg (2025)",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 2, Forelæsning 1 · Podcast · X Zettler et al. (2020)",
-        "RSS item could not map to reading; attached to lecture assets: Uge 2, Forelæsning 1 · Podcast · X Zettler et al. (2020)"
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 2, Forelæsning 1 · Podcast · Alle kilder",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 2, Forelæsning 1 · Podcast · Columbus & Strandsbjerg (2025)",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 2, Forelæsning 1 · Podcast · X Zettler et al. (2020)"
       ]
     },
     {
@@ -480,16 +374,7 @@
                 "episode_title": "W2L2 - Bleidorn et al. (2022) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               }
             ],
-            "podcasts": [
-              {
-                "kind": "podcast",
-                "title": "Uge 2, Forelæsning 2 · Podcast · Bleidorn et al. (2022)",
-                "url": "https://drive.google.com/uc?export=download&id=1Sv5Gj8XUh2S2-xZ9b_MEsM4i-7cIH8RM",
-                "platform": "source",
-                "pub_date": "Tue, 10 Feb 2025 14:00:00 +0100",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1Sv5Gj8XUh2S2-xZ9b_MEsM4i-7cIH8RM"
-              }
-            ]
+            "podcasts": []
           }
         },
         {
@@ -518,16 +403,7 @@
                 "episode_title": "W2L2 - Li & Wilt (2025) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               }
             ],
-            "podcasts": [
-              {
-                "kind": "podcast",
-                "title": "Uge 2, Forelæsning 2 · Podcast · Li & Wilt (2025)",
-                "url": "https://drive.google.com/uc?export=download&id=1aS3bsTmhECO7djrrEqnTBuBXmKzG9jPP",
-                "platform": "source",
-                "pub_date": "Tue, 10 Feb 2025 12:00:00 +0100",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1aS3bsTmhECO7djrrEqnTBuBXmKzG9jPP"
-              }
-            ]
+            "podcasts": []
           }
         }
       ],
@@ -552,21 +428,12 @@
             "episode_title": "W2L2 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3"
           }
         ],
-        "podcasts": [
-          {
-            "kind": "podcast",
-            "title": "Uge 2, Forelæsning 2 · Podcast · Alle kilder",
-            "url": "https://drive.google.com/uc?export=download&id=1qt-rN4dR-fvzakp0CACc4AMaTjANaPAd",
-            "platform": "source",
-            "pub_date": "Tue, 10 Feb 2025 10:00:00 +0100",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1qt-rN4dR-fvzakp0CACc4AMaTjANaPAd"
-          }
-        ]
+        "podcasts": []
       },
       "warnings": [
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 2, Forelæsning 2 · Podcast · Alle kilder",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 2, Forelæsning 2 · Podcast · Bleidorn et al. (2022)",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 2, Forelæsning 2 · Podcast · Li & Wilt (2025)"
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 2, Forelæsning 2 · Podcast · Alle kilder",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 2, Forelæsning 2 · Podcast · Bleidorn et al. (2022)",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 2, Forelæsning 2 · Podcast · Li & Wilt (2025)"
       ]
     },
     {
@@ -600,16 +467,7 @@
                 "episode_title": "W3L1 - Kandler & Instinske (2025) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               }
             ],
-            "podcasts": [
-              {
-                "kind": "podcast",
-                "title": "Uge 3, Forelæsning 1 · Podcast · Kandler & Instinske (2025)",
-                "url": "https://drive.google.com/uc?export=download&id=165mvPMJf8QKb-oHKqVlfut9294LJTw2g",
-                "platform": "source",
-                "pub_date": "Mon, 16 Feb 2025 16:00:00 +0100",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=165mvPMJf8QKb-oHKqVlfut9294LJTw2g"
-              }
-            ]
+            "podcasts": []
           }
         },
         {
@@ -638,16 +496,7 @@
                 "episode_title": "W3L1 - Lu, Benet-Martínez & Wang (2023) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               }
             ],
-            "podcasts": [
-              {
-                "kind": "podcast",
-                "title": "Uge 3, Forelæsning 1 · Podcast · Lu, Benet-Martínez & Wang (2023)",
-                "url": "https://drive.google.com/uc?export=download&id=1vKe3Qa9Gt4Wlf38S2q8LGlQW_JVBLEwt",
-                "platform": "source",
-                "pub_date": "Mon, 16 Feb 2025 14:00:00 +0100",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1vKe3Qa9Gt4Wlf38S2q8LGlQW_JVBLEwt"
-              }
-            ]
+            "podcasts": []
           }
         },
         {
@@ -676,16 +525,7 @@
                 "episode_title": "W3L1 - Volk & Puchalski (2025) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               }
             ],
-            "podcasts": [
-              {
-                "kind": "podcast",
-                "title": "Uge 3, Forelæsning 1 · Podcast · Volk & Puchalski (2025)",
-                "url": "https://drive.google.com/uc?export=download&id=1k5eY1rRq7mOGycHqtgVkIS19w_ZFjfQF",
-                "platform": "source",
-                "pub_date": "Mon, 16 Feb 2025 12:00:00 +0100",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1k5eY1rRq7mOGycHqtgVkIS19w_ZFjfQF"
-              }
-            ]
+            "podcasts": []
           }
         },
         {
@@ -714,16 +554,7 @@
                 "episode_title": "W3L1 - Zettler et al. (2025) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               }
             ],
-            "podcasts": [
-              {
-                "kind": "podcast",
-                "title": "Uge 3, Forelæsning 1 · Podcast · Zettler et al. (2025)",
-                "url": "https://drive.google.com/uc?export=download&id=1ytV496e8NOFmS6i7yzUKU_cL6u2LVCrv",
-                "platform": "source",
-                "pub_date": "Mon, 16 Feb 2025 10:00:00 +0100",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1ytV496e8NOFmS6i7yzUKU_cL6u2LVCrv"
-              }
-            ]
+            "podcasts": []
           }
         }
       ],
@@ -748,23 +579,14 @@
             "episode_title": "W3L1 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=4 hash=a7e138f5}.mp3"
           }
         ],
-        "podcasts": [
-          {
-            "kind": "podcast",
-            "title": "Uge 3, Forelæsning 1 · Podcast · Alle kilder",
-            "url": "https://drive.google.com/uc?export=download&id=18moHn--252JqWGZn2ZGEKAVEYCl53ebq",
-            "platform": "source",
-            "pub_date": "Mon, 16 Feb 2025 08:00:00 +0100",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=18moHn--252JqWGZn2ZGEKAVEYCl53ebq"
-          }
-        ]
+        "podcasts": []
       },
       "warnings": [
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 3, Forelæsning 1 · Podcast · Alle kilder",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 3, Forelæsning 1 · Podcast · Kandler & Instinske (2025)",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 3, Forelæsning 1 · Podcast · Lu, Benet-Martínez & Wang (2023)",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 3, Forelæsning 1 · Podcast · Volk & Puchalski (2025)",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 3, Forelæsning 1 · Podcast · Zettler et al. (2025)"
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 3, Forelæsning 1 · Podcast · Alle kilder",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 3, Forelæsning 1 · Podcast · Kandler & Instinske (2025)",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 3, Forelæsning 1 · Podcast · Lu, Benet-Martínez & Wang (2023)",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 3, Forelæsning 1 · Podcast · Volk & Puchalski (2025)",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 3, Forelæsning 1 · Podcast · Zettler et al. (2025)"
       ]
     },
     {
@@ -808,16 +630,7 @@
                 "episode_title": "W3L2 - Sharp & Wall (2021) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               }
             ],
-            "podcasts": [
-              {
-                "kind": "podcast",
-                "title": "Uge 3, Forelæsning 2 · Podcast · Sharp & Wall (2021)",
-                "url": "https://drive.google.com/uc?export=download&id=1mrqnvlNxfIMq_KGzgWLSwL3vxA53ZshT",
-                "platform": "source",
-                "pub_date": "Tue, 17 Feb 2025 10:00:00 +0100",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1mrqnvlNxfIMq_KGzgWLSwL3vxA53ZshT"
-              }
-            ]
+            "podcasts": []
           }
         }
       ],
@@ -826,7 +639,7 @@
         "podcasts": []
       },
       "warnings": [
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 3, Forelæsning 2 · Podcast · Sharp & Wall (2021)"
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 3, Forelæsning 2 · Podcast · Sharp & Wall (2021)"
       ]
     },
     {
@@ -860,16 +673,7 @@
                 "episode_title": "W4L1 - Freud (1973-1933) DA [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               }
             ],
-            "podcasts": [
-              {
-                "kind": "podcast",
-                "title": "Uge 4, Forelæsning 1 · Podcast · Freud (1973-1933) DA",
-                "url": "https://drive.google.com/uc?export=download&id=1DQCHrKuLVdiRaKSnjSxCt0FnV--b593E",
-                "platform": "source",
-                "pub_date": "Mon, 23 Feb 2025 12:00:00 +0100",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1DQCHrKuLVdiRaKSnjSxCt0FnV--b593E"
-              }
-            ]
+            "podcasts": []
           }
         },
         {
@@ -898,16 +702,7 @@
                 "episode_title": "W4L1 - Gammelgaard (2007) [EN]  {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.m4a"
               }
             ],
-            "podcasts": [
-              {
-                "kind": "podcast",
-                "title": "Uge 4, Forelæsning 1 · Podcast · Gammelgaard (2007)",
-                "url": "https://drive.google.com/uc?export=download&id=1GX0gL8y8EfBNouDv0SOKGz-ccmWN5XYN",
-                "platform": "source",
-                "pub_date": "Mon, 23 Feb 2025 08:00:00 +0100",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1GX0gL8y8EfBNouDv0SOKGz-ccmWN5XYN"
-              }
-            ]
+            "podcasts": []
           }
         }
       ],
@@ -932,21 +727,12 @@
             "episode_title": "W4L1 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=1b3d31bc}.mp3"
           }
         ],
-        "podcasts": [
-          {
-            "kind": "podcast",
-            "title": "Uge 4, Forelæsning 1 · Podcast · Alle kilder",
-            "url": "https://drive.google.com/uc?export=download&id=1OjoMSgU0Vjs06hkk7IeGlT8tnB1uPetU",
-            "platform": "source",
-            "pub_date": "Mon, 23 Feb 2025 10:00:00 +0100",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1OjoMSgU0Vjs06hkk7IeGlT8tnB1uPetU"
-          }
-        ]
+        "podcasts": []
       },
       "warnings": [
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 4, Forelæsning 1 · Podcast · Alle kilder",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 4, Forelæsning 1 · Podcast · Freud (1973-1933) DA",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 4, Forelæsning 1 · Podcast · Gammelgaard (2007)"
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 4, Forelæsning 1 · Podcast · Alle kilder",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 4, Forelæsning 1 · Podcast · Freud (1973-1933) DA",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 4, Forelæsning 1 · Podcast · Gammelgaard (2007)"
       ]
     },
     {
@@ -980,16 +766,7 @@
                 "episode_title": "W4L2 - Lacan (1966) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               }
             ],
-            "podcasts": [
-              {
-                "kind": "podcast",
-                "title": "Uge 4, Forelæsning 2 · Podcast · Lacan (1966)",
-                "url": "https://drive.google.com/uc?export=download&id=1nPMcXMLcjDFExxugXSEIxyjfPg-JTCLl",
-                "platform": "source",
-                "pub_date": "Tue, 24 Feb 2025 14:00:00 +0100",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1nPMcXMLcjDFExxugXSEIxyjfPg-JTCLl"
-              }
-            ]
+            "podcasts": []
           }
         },
         {
@@ -1042,31 +819,13 @@
             "episode_title": "W4L2 - Laplanche, J. (1970). Liv og død i psykoanalysen (pp. 18‐38) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
           }
         ],
-        "podcasts": [
-          {
-            "kind": "podcast",
-            "title": "Uge 4, Forelæsning 2 · Podcast · Alle kilder",
-            "url": "https://drive.google.com/uc?export=download&id=1JZNR-t-P-HZrqkmenNhYypaBBMthuijr",
-            "platform": "source",
-            "pub_date": "Tue, 24 Feb 2025 10:00:00 +0100",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1JZNR-t-P-HZrqkmenNhYypaBBMthuijr"
-          },
-          {
-            "kind": "podcast",
-            "title": "Uge 4, Forelæsning 2 · Podcast · Laplanche, J. (1970). Liv og død i psykoanalysen (pp. 18‐38)",
-            "url": "https://drive.google.com/uc?export=download&id=19dMkRWZ6a9Ko7vRPCqNvV2lbUjjFgHJE",
-            "platform": "source",
-            "pub_date": "Tue, 24 Feb 2025 12:00:00 +0100",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=19dMkRWZ6a9Ko7vRPCqNvV2lbUjjFgHJE"
-          }
-        ]
+        "podcasts": []
       },
       "warnings": [
         "Quiz entry could not map to reading; attached to lecture assets: W4L2 - Laplanche, J. (1970). Liv og død i psykoanalysen (pp. 18‐38) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 4, Forelæsning 2 · Podcast · Alle kilder",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 4, Forelæsning 2 · Podcast · Lacan (1966)",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 4, Forelæsning 2 · Podcast · Laplanche, J. (1970). Liv og død i psykoanalysen (pp. 18‐38)",
-        "RSS item could not map to reading; attached to lecture assets: Uge 4, Forelæsning 2 · Podcast · Laplanche, J. (1970). Liv og død i psykoanalysen (pp. 18‐38)"
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 4, Forelæsning 2 · Podcast · Alle kilder",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 4, Forelæsning 2 · Podcast · Lacan (1966)",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 4, Forelæsning 2 · Podcast · Laplanche, J. (1970). Liv og død i psykoanalysen (pp. 18‐38)"
       ]
     },
     {
@@ -1120,16 +879,7 @@
                 "episode_title": "W5L1 - Ricoeur (1981) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               }
             ],
-            "podcasts": [
-              {
-                "kind": "podcast",
-                "title": "Uge 5, Forelæsning 1 · Podcast · Ricoeur (1981)",
-                "url": "https://drive.google.com/uc?export=download&id=1cXlnIBb9_ZDw7Hz0UznHXqYCBFfVcc-z",
-                "platform": "source",
-                "pub_date": "Mon, 02 Mar 2025 10:00:00 +0100",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1cXlnIBb9_ZDw7Hz0UznHXqYCBFfVcc-z"
-              }
-            ]
+            "podcasts": []
           }
         }
       ],
@@ -1154,22 +904,12 @@
             "episode_title": "W5L1 - X Freud, S. (1984-1905). Brudstykke af en hysteri-analyse (pp. 9-62, pp. 96- [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
           }
         ],
-        "podcasts": [
-          {
-            "kind": "podcast",
-            "title": "Uge 5, Forelæsning 1 · Podcast · X Freud, S. (1984-1905). Brudstykke af en hysteri-analyse (pp. 9-62, pp. 96",
-            "url": "https://drive.google.com/uc?export=download&id=17j4K9zbsVqGxK-dU527n1xgMvhDFw-xY",
-            "platform": "source",
-            "pub_date": "Mon, 02 Mar 2025 08:00:00 +0100",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=17j4K9zbsVqGxK-dU527n1xgMvhDFw-xY"
-          }
-        ]
+        "podcasts": []
       },
       "warnings": [
         "Quiz entry could not map to reading; attached to lecture assets: W5L1 - X Freud, S. (1984-1905). Brudstykke af en hysteri-analyse (pp. 9-62, pp. 96- [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 5, Forelæsning 1 · Podcast · Ricoeur (1981)",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 5, Forelæsning 1 · Podcast · X Freud, S. (1984-1905). Brudstykke af en hysteri-analyse (pp. 9-62, pp. 96",
-        "RSS item could not map to reading; attached to lecture assets: Uge 5, Forelæsning 1 · Podcast · X Freud, S. (1984-1905). Brudstykke af en hysteri-analyse (pp. 9-62, pp. 96"
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 5, Forelæsning 1 · Podcast · Ricoeur (1981)",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 5, Forelæsning 1 · Podcast · X Freud, S. (1984-1905). Brudstykke af en hysteri-analyse (pp. 9-62, pp. 96"
       ]
     },
     {
@@ -1283,32 +1023,7 @@
                 "episode_title": "W6L1 - Grundbog kapitel 4 - Fænomenologisk personlighedspsykologi [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               }
             ],
-            "podcasts": [
-              {
-                "kind": "short_podcast",
-                "title": "Uge 6, Forelæsning 1 · Kort podcast · Grundbog kapitel 4 - Fænomenologisk personlighedspsykologi",
-                "url": "https://drive.google.com/uc?export=download&id=1rjgHLO3OOwlQa3EjZwjNxfoVTiofn_og",
-                "platform": "source",
-                "pub_date": "Mon, 09 Mar 2025 12:00:00 +0100",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1rjgHLO3OOwlQa3EjZwjNxfoVTiofn_og"
-              },
-              {
-                "kind": "lydbog",
-                "title": "Uge 6, Forelæsning 1 · Lydbog · Grundbog kapitel 04 - Fænomenologisk personlighedspsykologi",
-                "url": "https://drive.google.com/uc?export=download&id=1o0vwyWDfj8DwYkUwGTAkpUQ1w8DsIEpT",
-                "platform": "source",
-                "pub_date": "Mon, 09 Mar 2025 08:00:00 +0100",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1o0vwyWDfj8DwYkUwGTAkpUQ1w8DsIEpT"
-              },
-              {
-                "kind": "podcast",
-                "title": "Uge 6, Forelæsning 1 · Podcast · Grundbog kapitel 4 - Fænomenologisk personlighedspsykologi",
-                "url": "https://drive.google.com/uc?export=download&id=14hbzadagN2VnWLNV7Zj_drrTLrx1m6no",
-                "platform": "source",
-                "pub_date": "Mon, 09 Mar 2025 18:00:00 +0100",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=14hbzadagN2VnWLNV7Zj_drrTLrx1m6no"
-              }
-            ]
+            "podcasts": []
           }
         },
         {
@@ -1379,44 +1094,17 @@
             "episode_title": "W6L1 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=1b3d31bc}.mp3"
           }
         ],
-        "podcasts": [
-          {
-            "kind": "podcast",
-            "title": "Uge 6, Forelæsning 1 · Podcast · Alle kilder",
-            "url": "https://drive.google.com/uc?export=download&id=10l-759q-GWO0sDY2jy8ltRb_LjyqfBRu",
-            "platform": "source",
-            "pub_date": "Mon, 09 Mar 2025 10:00:00 +0100",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=10l-759q-GWO0sDY2jy8ltRb_LjyqfBRu"
-          },
-          {
-            "kind": "podcast",
-            "title": "Uge 6, Forelæsning 1 · Podcast · X Moeskær Hansen & Roald (2022)",
-            "url": "https://drive.google.com/uc?export=download&id=1JJEGcZrm1j0_Lly0vo7dTCgNzlU3lPPN",
-            "platform": "source",
-            "pub_date": "Mon, 09 Mar 2025 16:00:00 +0100",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1JJEGcZrm1j0_Lly0vo7dTCgNzlU3lPPN"
-          },
-          {
-            "kind": "podcast",
-            "title": "Uge 6, Forelæsning 1 · Podcast · X Spinelli (2005)",
-            "url": "https://drive.google.com/uc?export=download&id=1cT_Ap2FJDLbshnG7569V-0Ckz8J1WjzW",
-            "platform": "source",
-            "pub_date": "Mon, 09 Mar 2025 14:00:00 +0100",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1cT_Ap2FJDLbshnG7569V-0Ckz8J1WjzW"
-          }
-        ]
+        "podcasts": []
       },
       "warnings": [
         "Quiz entry could not map to reading; attached to lecture assets: W6L1 - X Moeskær Hansen & Roald (2022) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
         "Quiz entry could not map to reading; attached to lecture assets: W6L1 - X Spinelli (2005) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 6, Forelæsning 1 · Kort podcast · Grundbog kapitel 4 - Fænomenologisk personlighedspsykologi",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 6, Forelæsning 1 · Podcast · Alle kilder",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 6, Forelæsning 1 · Lydbog · Grundbog kapitel 04 - Fænomenologisk personlighedspsykologi",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 6, Forelæsning 1 · Podcast · Grundbog kapitel 4 - Fænomenologisk personlighedspsykologi",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 6, Forelæsning 1 · Podcast · X Moeskær Hansen & Roald (2022)",
-        "RSS item could not map to reading; attached to lecture assets: Uge 6, Forelæsning 1 · Podcast · X Moeskær Hansen & Roald (2022)",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 6, Forelæsning 1 · Podcast · X Spinelli (2005)",
-        "RSS item could not map to reading; attached to lecture assets: Uge 6, Forelæsning 1 · Podcast · X Spinelli (2005)"
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 6, Forelæsning 1 · Kort podcast · Grundbog kapitel 4 - Fænomenologisk personlighedspsykologi",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 6, Forelæsning 1 · Podcast · Alle kilder",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 6, Forelæsning 1 · Lydbog · Grundbog kapitel 04 - Fænomenologisk personlighedspsykologi",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 6, Forelæsning 1 · Podcast · Grundbog kapitel 4 - Fænomenologisk personlighedspsykologi",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 6, Forelæsning 1 · Podcast · X Moeskær Hansen & Roald (2022)",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 6, Forelæsning 1 · Podcast · X Spinelli (2005)"
       ]
     },
     {
@@ -1450,16 +1138,7 @@
                 "episode_title": "W6L2 - Boss (1963) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               }
             ],
-            "podcasts": [
-              {
-                "kind": "podcast",
-                "title": "Uge 6, Forelæsning 2 · Podcast · Boss (1963)",
-                "url": "https://drive.google.com/uc?export=download&id=1gni80Tq1YnQf3czjU-eJQnoGzdC42SnB",
-                "platform": "source",
-                "pub_date": "Tue, 10 Mar 2025 14:00:00 +0100",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1gni80Tq1YnQf3czjU-eJQnoGzdC42SnB"
-              }
-            ]
+            "podcasts": []
           }
         },
         {
@@ -1488,16 +1167,7 @@
                 "episode_title": "W6L2 - May (1966) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               }
             ],
-            "podcasts": [
-              {
-                "kind": "podcast",
-                "title": "Uge 6, Forelæsning 2 · Podcast · May (1966)",
-                "url": "https://drive.google.com/uc?export=download&id=1lM4Hnam3V63jGqUHfCHWM587jYoyvcJr",
-                "platform": "source",
-                "pub_date": "Tue, 10 Mar 2025 12:00:00 +0100",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1lM4Hnam3V63jGqUHfCHWM587jYoyvcJr"
-              }
-            ]
+            "podcasts": []
           }
         }
       ],
@@ -1522,21 +1192,12 @@
             "episode_title": "W6L2 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3"
           }
         ],
-        "podcasts": [
-          {
-            "kind": "podcast",
-            "title": "Uge 6, Forelæsning 2 · Podcast · Alle kilder",
-            "url": "https://drive.google.com/uc?export=download&id=1WUFNV7P5G7XKNdAsDVRSUBdhnx1yH93Y",
-            "platform": "source",
-            "pub_date": "Tue, 10 Mar 2025 10:00:00 +0100",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1WUFNV7P5G7XKNdAsDVRSUBdhnx1yH93Y"
-          }
-        ]
+        "podcasts": []
       },
       "warnings": [
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 6, Forelæsning 2 · Podcast · Alle kilder",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 6, Forelæsning 2 · Podcast · Boss (1963)",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 6, Forelæsning 2 · Podcast · May (1966)"
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 6, Forelæsning 2 · Podcast · Alle kilder",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 6, Forelæsning 2 · Podcast · Boss (1963)",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 6, Forelæsning 2 · Podcast · May (1966)"
       ]
     },
     {
@@ -1570,16 +1231,7 @@
                 "episode_title": "W7L1 - Cooper (2003) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               }
             ],
-            "podcasts": [
-              {
-                "kind": "podcast",
-                "title": "Uge 7, Forelæsning 1 · Podcast · Cooper (2003)",
-                "url": "https://drive.google.com/uc?export=download&id=1PZqRmZM6Pw7MoqsEnb7eT9jH8P1np08E",
-                "platform": "source",
-                "pub_date": "Mon, 16 Mar 2025 12:00:00 +0100",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1PZqRmZM6Pw7MoqsEnb7eT9jH8P1np08E"
-              }
-            ]
+            "podcasts": []
           }
         },
         {
@@ -1608,16 +1260,7 @@
                 "episode_title": "W7L1 - Jacobsen (2021) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               }
             ],
-            "podcasts": [
-              {
-                "kind": "podcast",
-                "title": "Uge 7, Forelæsning 1 · Podcast · Jacobsen (2021)",
-                "url": "https://drive.google.com/uc?export=download&id=1oBJwN6Hh5TaZGja6UollemOaMDQPo-1C",
-                "platform": "source",
-                "pub_date": "Mon, 16 Mar 2025 10:00:00 +0100",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1oBJwN6Hh5TaZGja6UollemOaMDQPo-1C"
-              }
-            ]
+            "podcasts": []
           }
         }
       ],
@@ -1642,21 +1285,12 @@
             "episode_title": "W7L1 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3"
           }
         ],
-        "podcasts": [
-          {
-            "kind": "podcast",
-            "title": "Uge 7, Forelæsning 1 · Podcast · Alle kilder",
-            "url": "https://drive.google.com/uc?export=download&id=1Jf30roQ92q5XeTh3p9vFZ8u1FYa3SbCU",
-            "platform": "source",
-            "pub_date": "Mon, 16 Mar 2025 08:00:00 +0100",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1Jf30roQ92q5XeTh3p9vFZ8u1FYa3SbCU"
-          }
-        ]
+        "podcasts": []
       },
       "warnings": [
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 7, Forelæsning 1 · Podcast · Alle kilder",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 7, Forelæsning 1 · Podcast · Cooper (2003)",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 7, Forelæsning 1 · Podcast · Jacobsen (2021)"
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 7, Forelæsning 1 · Podcast · Alle kilder",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 7, Forelæsning 1 · Podcast · Cooper (2003)",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 7, Forelæsning 1 · Podcast · Jacobsen (2021)"
       ]
     },
     {
@@ -1690,16 +1324,7 @@
                 "episode_title": "W7L2 - Evans (1975) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               }
             ],
-            "podcasts": [
-              {
-                "kind": "podcast",
-                "title": "Uge 7, Forelæsning 2 · Podcast · Evans (1975)",
-                "url": "https://drive.google.com/uc?export=download&id=1jfWGfpWHIemiyddFQCQdgdGtfaNpDQ1W",
-                "platform": "source",
-                "pub_date": "Tue, 17 Mar 2025 16:00:00 +0100",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1jfWGfpWHIemiyddFQCQdgdGtfaNpDQ1W"
-              }
-            ]
+            "podcasts": []
           }
         },
         {
@@ -1728,16 +1353,7 @@
                 "episode_title": "W7L2 - Giorgi (2005) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               }
             ],
-            "podcasts": [
-              {
-                "kind": "podcast",
-                "title": "Uge 7, Forelæsning 2 · Podcast · Giorgi (2005)",
-                "url": "https://drive.google.com/uc?export=download&id=1zI_ZG4KWhngq_Hk7xuYP0p6WFybiXtDA",
-                "platform": "source",
-                "pub_date": "Tue, 17 Mar 2025 14:00:00 +0100",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1zI_ZG4KWhngq_Hk7xuYP0p6WFybiXtDA"
-              }
-            ]
+            "podcasts": []
           }
         },
         {
@@ -1766,16 +1382,7 @@
                 "episode_title": "W7L2 - Maslow (1968) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               }
             ],
-            "podcasts": [
-              {
-                "kind": "podcast",
-                "title": "Uge 7, Forelæsning 2 · Podcast · Maslow (1968)",
-                "url": "https://drive.google.com/uc?export=download&id=1V058CowoVSpZp4iGcHCp5GcCGZ6W6xl5",
-                "platform": "source",
-                "pub_date": "Tue, 17 Mar 2025 12:00:00 +0100",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1V058CowoVSpZp4iGcHCp5GcCGZ6W6xl5"
-              }
-            ]
+            "podcasts": []
           }
         }
       ],
@@ -1800,22 +1407,13 @@
             "episode_title": "W7L2 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=1b3d31bc}.mp3"
           }
         ],
-        "podcasts": [
-          {
-            "kind": "podcast",
-            "title": "Uge 7, Forelæsning 2 · Podcast · Alle kilder",
-            "url": "https://drive.google.com/uc?export=download&id=1-t56dMIHaub5h8eHNGv5YXPf-PNX3TmP",
-            "platform": "source",
-            "pub_date": "Tue, 17 Mar 2025 10:00:00 +0100",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1-t56dMIHaub5h8eHNGv5YXPf-PNX3TmP"
-          }
-        ]
+        "podcasts": []
       },
       "warnings": [
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 7, Forelæsning 2 · Podcast · Alle kilder",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 7, Forelæsning 2 · Podcast · Evans (1975)",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 7, Forelæsning 2 · Podcast · Giorgi (2005)",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 7, Forelæsning 2 · Podcast · Maslow (1968)"
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 7, Forelæsning 2 · Podcast · Alle kilder",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 7, Forelæsning 2 · Podcast · Evans (1975)",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 7, Forelæsning 2 · Podcast · Giorgi (2005)",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 7, Forelæsning 2 · Podcast · Maslow (1968)"
       ]
     },
     {
@@ -1859,16 +1457,7 @@
                 "episode_title": "W8L1 - Laux et al. (2010) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               }
             ],
-            "podcasts": [
-              {
-                "kind": "podcast",
-                "title": "Uge 8, Forelæsning 1 · Podcast · Laux et al. (2010)",
-                "url": "https://drive.google.com/uc?export=download&id=1XHg13ZiyU3HjRSPiHOC7BeiUvjk3zSBs",
-                "platform": "source",
-                "pub_date": "Mon, 23 Mar 2025 12:00:00 +0100",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1XHg13ZiyU3HjRSPiHOC7BeiUvjk3zSBs"
-              }
-            ]
+            "podcasts": []
           }
         }
       ],
@@ -1911,31 +1500,13 @@
             "episode_title": "W8L1 - Lamiell, J.T. (2021) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
           }
         ],
-        "podcasts": [
-          {
-            "kind": "podcast",
-            "title": "Uge 8, Forelæsning 1 · Podcast · Alle kilder",
-            "url": "https://drive.google.com/uc?export=download&id=10qbJHkBqYC9yRwGwhHineVhoEvOhV4VS",
-            "platform": "source",
-            "pub_date": "Mon, 23 Mar 2025 10:00:00 +0100",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=10qbJHkBqYC9yRwGwhHineVhoEvOhV4VS"
-          },
-          {
-            "kind": "podcast",
-            "title": "Uge 8, Forelæsning 1 · Podcast · Lamiell, J.T. (2021)",
-            "url": "https://drive.google.com/uc?export=download&id=1cAkyo0FhPxSKUPuShp0-u0GoKkKelQDo",
-            "platform": "source",
-            "pub_date": "Mon, 23 Mar 2025 08:00:00 +0100",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1cAkyo0FhPxSKUPuShp0-u0GoKkKelQDo"
-          }
-        ]
+        "podcasts": []
       },
       "warnings": [
         "Quiz entry could not map to reading; attached to lecture assets: W8L1 - Lamiell, J.T. (2021) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 8, Forelæsning 1 · Podcast · Alle kilder",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 8, Forelæsning 1 · Podcast · Laux et al. (2010)",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 8, Forelæsning 1 · Podcast · Lamiell, J.T. (2021)",
-        "RSS item could not map to reading; attached to lecture assets: Uge 8, Forelæsning 1 · Podcast · Lamiell, J.T. (2021)"
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 8, Forelæsning 1 · Podcast · Alle kilder",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 8, Forelæsning 1 · Podcast · Laux et al. (2010)",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 8, Forelæsning 1 · Podcast · Lamiell, J.T. (2021)"
       ]
     },
     {
@@ -1969,16 +1540,7 @@
                 "episode_title": "W8L2 - Holzkamp (1982) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               }
             ],
-            "podcasts": [
-              {
-                "kind": "podcast",
-                "title": "Uge 8, Forelæsning 2 · Podcast · Holzkamp (1982)",
-                "url": "https://drive.google.com/uc?export=download&id=1VWi-R_qdc77JezzDeDtwLBTGllRKU31X",
-                "platform": "source",
-                "pub_date": "Tue, 24 Mar 2025 14:00:00 +0100",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1VWi-R_qdc77JezzDeDtwLBTGllRKU31X"
-              }
-            ]
+            "podcasts": []
           }
         },
         {
@@ -2007,16 +1569,7 @@
                 "episode_title": "W8L2 - Tolman (2009) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               }
             ],
-            "podcasts": [
-              {
-                "kind": "podcast",
-                "title": "Uge 8, Forelæsning 2 · Podcast · Tolman (2009)",
-                "url": "https://drive.google.com/uc?export=download&id=1UeifKyG9IDBV9_irtH9DXS3Ww_52_W5J",
-                "platform": "source",
-                "pub_date": "Tue, 24 Mar 2025 12:00:00 +0100",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1UeifKyG9IDBV9_irtH9DXS3Ww_52_W5J"
-              }
-            ]
+            "podcasts": []
           }
         }
       ],
@@ -2041,21 +1594,12 @@
             "episode_title": "W8L2 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3"
           }
         ],
-        "podcasts": [
-          {
-            "kind": "podcast",
-            "title": "Uge 8, Forelæsning 2 · Podcast · Alle kilder",
-            "url": "https://drive.google.com/uc?export=download&id=14YjufpXhTEizjwu7B1iRtw79bhyaUg9p",
-            "platform": "source",
-            "pub_date": "Tue, 24 Mar 2025 10:00:00 +0100",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=14YjufpXhTEizjwu7B1iRtw79bhyaUg9p"
-          }
-        ]
+        "podcasts": []
       },
       "warnings": [
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 8, Forelæsning 2 · Podcast · Alle kilder",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 8, Forelæsning 2 · Podcast · Holzkamp (1982)",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 8, Forelæsning 2 · Podcast · Tolman (2009)"
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 8, Forelæsning 2 · Podcast · Alle kilder",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 8, Forelæsning 2 · Podcast · Holzkamp (1982)",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 8, Forelæsning 2 · Podcast · Tolman (2009)"
       ]
     },
     {
@@ -2099,16 +1643,7 @@
                 "episode_title": "W9L1 - Dreier (1999) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               }
             ],
-            "podcasts": [
-              {
-                "kind": "podcast",
-                "title": "Uge 9, Forelæsning 1 · Podcast · Dreier (1999)",
-                "url": "https://drive.google.com/uc?export=download&id=1QbZ_vYWpjByMZtkMyj0OcFg6R2LHkakt",
-                "platform": "source",
-                "pub_date": "Tue, 07 Apr 2025 22:00:00 +0200",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1QbZ_vYWpjByMZtkMyj0OcFg6R2LHkakt"
-              }
-            ]
+            "podcasts": []
           }
         },
         {
@@ -2137,16 +1672,7 @@
                 "episode_title": "W9L1 - Holzkamp (2013) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               }
             ],
-            "podcasts": [
-              {
-                "kind": "podcast",
-                "title": "Uge 9, Forelæsning 1 · Podcast · Holzkamp (2013)",
-                "url": "https://drive.google.com/uc?export=download&id=1ZBYafYd8hlsk8Vd2dtJeiGmeDiDy6XcI",
-                "platform": "source",
-                "pub_date": "Tue, 07 Apr 2025 18:00:00 +0200",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1ZBYafYd8hlsk8Vd2dtJeiGmeDiDy6XcI"
-              }
-            ]
+            "podcasts": []
           }
         },
         {
@@ -2193,32 +1719,7 @@
                 "episode_title": "W9L1 - Grundbog kapitel 10 - Kritisk psykologi [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               }
             ],
-            "podcasts": [
-              {
-                "kind": "short_podcast",
-                "title": "Uge 9, Forelæsning 1 · Kort podcast · Grundbog kapitel 10 - Kritisk psykologi",
-                "url": "https://drive.google.com/uc?export=download&id=1ixn2pv8VRIlQKL5tPNuP2C4J2oN0oHxY",
-                "platform": "source",
-                "pub_date": "Tue, 07 Apr 2025 14:00:00 +0200",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1ixn2pv8VRIlQKL5tPNuP2C4J2oN0oHxY"
-              },
-              {
-                "kind": "lydbog",
-                "title": "Uge 9, Forelæsning 1 · Lydbog · Grundbog kapitel 10 - Kritisk psykologi",
-                "url": "https://drive.google.com/uc?export=download&id=1XvfTx81ZSqZ-RujibZKGfjjJZTsz75Ex",
-                "platform": "source",
-                "pub_date": "Tue, 07 Apr 2025 12:00:00 +0200",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1XvfTx81ZSqZ-RujibZKGfjjJZTsz75Ex"
-              },
-              {
-                "kind": "podcast",
-                "title": "Uge 9, Forelæsning 1 · Podcast · Grundbog kapitel 10 - Kritisk psykologi",
-                "url": "https://drive.google.com/uc?export=download&id=12JiC5uMv4CRx1mbAtR46u_N4alAtWRV-",
-                "platform": "source",
-                "pub_date": "Tue, 07 Apr 2025 20:00:00 +0200",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=12JiC5uMv4CRx1mbAtR46u_N4alAtWRV-"
-              }
-            ]
+            "podcasts": []
           }
         },
         {
@@ -2271,35 +1772,17 @@
             "episode_title": "W9L1 - X Mørch & Hansen (2015) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
           }
         ],
-        "podcasts": [
-          {
-            "kind": "podcast",
-            "title": "Uge 9, Forelæsning 1 · Podcast · Alle kilder",
-            "url": "https://drive.google.com/uc?export=download&id=11HUqIhyTJKNxRWW5hDsG-RxtHyqLMNQk",
-            "platform": "source",
-            "pub_date": "Tue, 07 Apr 2025 10:00:00 +0200",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=11HUqIhyTJKNxRWW5hDsG-RxtHyqLMNQk"
-          },
-          {
-            "kind": "podcast",
-            "title": "Uge 9, Forelæsning 1 · Podcast · X Mørch & Hansen (2015)",
-            "url": "https://drive.google.com/uc?export=download&id=1iBhgobHUa42svn71OjgHxsuxi3LuM9Wu",
-            "platform": "source",
-            "pub_date": "Tue, 07 Apr 2025 16:00:00 +0200",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1iBhgobHUa42svn71OjgHxsuxi3LuM9Wu"
-          }
-        ]
+        "podcasts": []
       },
       "warnings": [
         "Quiz entry could not map to reading; attached to lecture assets: W9L1 - X Mørch & Hansen (2015) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 9, Forelæsning 1 · Kort podcast · Grundbog kapitel 10 - Kritisk psykologi",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 9, Forelæsning 1 · Podcast · Alle kilder",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 9, Forelæsning 1 · Lydbog · Grundbog kapitel 10 - Kritisk psykologi",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 9, Forelæsning 1 · Podcast · Dreier (1999)",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 9, Forelæsning 1 · Podcast · Grundbog kapitel 10 - Kritisk psykologi",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 9, Forelæsning 1 · Podcast · Holzkamp (2013)",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 9, Forelæsning 1 · Podcast · X Mørch & Hansen (2015)",
-        "RSS item could not map to reading; attached to lecture assets: Uge 9, Forelæsning 1 · Podcast · X Mørch & Hansen (2015)"
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 9, Forelæsning 1 · Kort podcast · Grundbog kapitel 10 - Kritisk psykologi",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 9, Forelæsning 1 · Podcast · Alle kilder",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 9, Forelæsning 1 · Lydbog · Grundbog kapitel 10 - Kritisk psykologi",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 9, Forelæsning 1 · Podcast · Dreier (1999)",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 9, Forelæsning 1 · Podcast · Grundbog kapitel 10 - Kritisk psykologi",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 9, Forelæsning 1 · Podcast · Holzkamp (2013)",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 9, Forelæsning 1 · Podcast · X Mørch & Hansen (2015)"
       ]
     },
     {
@@ -2333,16 +1816,7 @@
                 "episode_title": "W10L1 - Bjerrum Nielsen & Rudberg (2006) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               }
             ],
-            "podcasts": [
-              {
-                "kind": "podcast",
-                "title": "Uge 10, Forelæsning 1 · Podcast · Bjerrum Nielsen & Rudberg (2006)",
-                "url": "https://drive.google.com/uc?export=download&id=1OIk0eu-vA3cbs9_ujxve3PCuvOe-mlgm",
-                "platform": "source",
-                "pub_date": "Mon, 13 Apr 2025 12:00:00 +0200",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1OIk0eu-vA3cbs9_ujxve3PCuvOe-mlgm"
-              }
-            ]
+            "podcasts": []
           }
         },
         {
@@ -2371,16 +1845,7 @@
                 "episode_title": "W10L1 - Mitchell (2015) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               }
             ],
-            "podcasts": [
-              {
-                "kind": "podcast",
-                "title": "Uge 10, Forelæsning 1 · Podcast · Mitchell (2015)",
-                "url": "https://drive.google.com/uc?export=download&id=13z0GiUf9rpOqUUa5Txgyju8wRc6R-DjA",
-                "platform": "source",
-                "pub_date": "Mon, 13 Apr 2025 08:00:00 +0200",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=13z0GiUf9rpOqUUa5Txgyju8wRc6R-DjA"
-              }
-            ]
+            "podcasts": []
           }
         }
       ],
@@ -2423,32 +1888,14 @@
             "episode_title": "W10L1 - Bjerrum Nielsen, H. & Rudberg, M. (2006). Ytre og indre kjønn i forandring. I Moderne jenter. 117-149. Oslo [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
           }
         ],
-        "podcasts": [
-          {
-            "kind": "podcast",
-            "title": "Uge 10, Forelæsning 1 · Podcast · Alle kilder",
-            "url": "https://drive.google.com/uc?export=download&id=1aTOpPVt7T0u_XYSj0-mvAqIpkafAZc_i",
-            "platform": "source",
-            "pub_date": "Mon, 13 Apr 2025 14:00:00 +0200",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1aTOpPVt7T0u_XYSj0-mvAqIpkafAZc_i"
-          },
-          {
-            "kind": "podcast",
-            "title": "Uge 10, Forelæsning 1 · Podcast · Bjerrum Nielsen, H. & Rudberg, M. (2006). Ytre og indre kjønn i forandring. I Moderne jenter. 117-149. Oslo",
-            "url": "https://drive.google.com/uc?export=download&id=1K5cxhsRYXdThNduGaWAfBrtNYzVvvJ2Q",
-            "platform": "source",
-            "pub_date": "Mon, 13 Apr 2025 10:00:00 +0200",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1K5cxhsRYXdThNduGaWAfBrtNYzVvvJ2Q"
-          }
-        ]
+        "podcasts": []
       },
       "warnings": [
         "Quiz entry could not map to reading; attached to lecture assets: W10L1 - Bjerrum Nielsen, H. & Rudberg, M. (2006). Ytre og indre kjønn i forandring. I Moderne jenter. 117-149. Oslo [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 10, Forelæsning 1 · Podcast · Alle kilder",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 10, Forelæsning 1 · Podcast · Bjerrum Nielsen & Rudberg (2006)",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 10, Forelæsning 1 · Podcast · Bjerrum Nielsen, H. & Rudberg, M. (2006). Ytre og indre kjønn i forandring. I Moderne jenter. 117-149. Oslo",
-        "RSS item could not map to reading; attached to lecture assets: Uge 10, Forelæsning 1 · Podcast · Bjerrum Nielsen, H. & Rudberg, M. (2006). Ytre og indre kjønn i forandring. I Moderne jenter. 117-149. Oslo",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 10, Forelæsning 1 · Podcast · Mitchell (2015)"
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 10, Forelæsning 1 · Podcast · Alle kilder",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 10, Forelæsning 1 · Podcast · Bjerrum Nielsen & Rudberg (2006)",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 10, Forelæsning 1 · Podcast · Bjerrum Nielsen, H. & Rudberg, M. (2006). Ytre og indre kjønn i forandring. I Moderne jenter. 117-149. Oslo",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 10, Forelæsning 1 · Podcast · Mitchell (2015)"
       ]
     },
     {
@@ -2516,40 +1963,13 @@
             "episode_title": "W10L2 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3"
           }
         ],
-        "podcasts": [
-          {
-            "kind": "podcast",
-            "title": "Uge 10, Forelæsning 2 · Podcast · Alle kilder",
-            "url": "https://drive.google.com/uc?export=download&id=1BwZ8p5hb62awxpsP4ZJXO7eSRrO4mpsP",
-            "platform": "source",
-            "pub_date": "Tue, 14 Apr 2025 10:00:00 +0200",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1BwZ8p5hb62awxpsP4ZJXO7eSRrO4mpsP"
-          },
-          {
-            "kind": "podcast",
-            "title": "Uge 10, Forelæsning 2 · Podcast · Foucault, M. (1997). The Ethics of the Concern of the Self as a Practice of Freedom - Essential Works 1954-1984, Penguin Books. Vol. 1, s. 281-301",
-            "url": "https://drive.google.com/uc?export=download&id=1yhfSBFLyzbpWpUj2TqStkfFfoAgG8MvX",
-            "platform": "source",
-            "pub_date": "Tue, 14 Apr 2025 14:00:00 +0200",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1yhfSBFLyzbpWpUj2TqStkfFfoAgG8MvX"
-          },
-          {
-            "kind": "podcast",
-            "title": "Uge 10, Forelæsning 2 · Podcast · X Davies (1990)",
-            "url": "https://drive.google.com/uc?export=download&id=1K8EHgG6wOfdtVKJ4DctnJQGszn8WqH_I",
-            "platform": "source",
-            "pub_date": "Tue, 14 Apr 2025 12:00:00 +0200",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1K8EHgG6wOfdtVKJ4DctnJQGszn8WqH_I"
-          }
-        ]
+        "podcasts": []
       },
       "warnings": [
         "Quiz entry could not map to reading; attached to lecture assets: W10L2 - X Davies (1990) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 10, Forelæsning 2 · Podcast · Alle kilder",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 10, Forelæsning 2 · Podcast · Foucault, M. (1997). The Ethics of the Concern of the Self as a Practice of Freedom - Essential Works 1954-1984, Penguin Books. Vol. 1, s. 281-301",
-        "RSS item could not map to reading; attached to lecture assets: Uge 10, Forelæsning 2 · Podcast · Foucault, M. (1997). The Ethics of the Concern of the Self as a Practice of Freedom - Essential Works 1954-1984, Penguin Books. Vol. 1, s. 281-301",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 10, Forelæsning 2 · Podcast · X Davies (1990)",
-        "RSS item could not map to reading; attached to lecture assets: Uge 10, Forelæsning 2 · Podcast · X Davies (1990)"
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 10, Forelæsning 2 · Podcast · Alle kilder",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 10, Forelæsning 2 · Podcast · Foucault, M. (1997). The Ethics of the Concern of the Self as a Practice of Freedom - Essential Works 1954-1984, Penguin Books. Vol. 1, s. 281-301",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 10, Forelæsning 2 · Podcast · X Davies (1990)"
       ]
     },
     {
@@ -2583,16 +2003,7 @@
                 "episode_title": "W11L1 - Gergen (1999) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               }
             ],
-            "podcasts": [
-              {
-                "kind": "podcast",
-                "title": "Uge 11, Forelæsning 1 · Podcast · Gergen (1999)",
-                "url": "https://drive.google.com/uc?export=download&id=1pEo_Nbkc5fdXoupfvImxh4LfXsYO9NBo",
-                "platform": "source",
-                "pub_date": "Mon, 20 Apr 2025 18:00:00 +0200",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1pEo_Nbkc5fdXoupfvImxh4LfXsYO9NBo"
-              }
-            ]
+            "podcasts": []
           }
         },
         {
@@ -2621,16 +2032,7 @@
                 "episode_title": "W11L1 - Hacking (2007) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               }
             ],
-            "podcasts": [
-              {
-                "kind": "podcast",
-                "title": "Uge 11, Forelæsning 1 · Podcast · Hacking (2007)",
-                "url": "https://drive.google.com/uc?export=download&id=1QmJJlPivd_GzNRNB9b9TvTrBMzu1O7eY",
-                "platform": "source",
-                "pub_date": "Mon, 20 Apr 2025 14:00:00 +0200",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1QmJJlPivd_GzNRNB9b9TvTrBMzu1O7eY"
-              }
-            ]
+            "podcasts": []
           }
         },
         {
@@ -2677,32 +2079,7 @@
                 "episode_title": "[Brief] W11L1 - Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori [EN] {type=audio lang=en format=brief length=default hash=7e1ef4f1}.mp3"
               }
             ],
-            "podcasts": [
-              {
-                "kind": "short_podcast",
-                "title": "Uge 11, Forelæsning 1 · Kort podcast · Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori",
-                "url": "https://drive.google.com/uc?export=download&id=1IDW0W26ohPd8j0pCI-wnym0-IS4BpYa5",
-                "platform": "source",
-                "pub_date": "Mon, 20 Apr 2025 12:00:00 +0200",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1IDW0W26ohPd8j0pCI-wnym0-IS4BpYa5"
-              },
-              {
-                "kind": "lydbog",
-                "title": "Uge 11, Forelæsning 1 · Lydbog · Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori. Problemet med personligheden version 2.0",
-                "url": "https://drive.google.com/uc?export=download&id=1CtsbLjmPkylHRaiJVKwiymxU7W279kEQ",
-                "platform": "source",
-                "pub_date": "Mon, 20 Apr 2025 10:00:00 +0200",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1CtsbLjmPkylHRaiJVKwiymxU7W279kEQ"
-              },
-              {
-                "kind": "podcast",
-                "title": "Uge 11, Forelæsning 1 · Podcast · Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori",
-                "url": "https://drive.google.com/uc?export=download&id=14q9CZXyNnJLqy7LVAibWnBGrQBwDd9P6",
-                "platform": "source",
-                "pub_date": "Mon, 20 Apr 2025 16:00:00 +0200",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=14q9CZXyNnJLqy7LVAibWnBGrQBwDd9P6"
-              }
-            ]
+            "podcasts": []
           }
         },
         {
@@ -2737,24 +2114,15 @@
             "episode_title": "W11L1 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=1b3d31bc}.mp3"
           }
         ],
-        "podcasts": [
-          {
-            "kind": "podcast",
-            "title": "Uge 11, Forelæsning 1 · Podcast · Alle kilder",
-            "url": "https://drive.google.com/uc?export=download&id=1ek9GVGMnDIBsBIN0gO1GAQftbRCYqiLR",
-            "platform": "source",
-            "pub_date": "Mon, 20 Apr 2025 08:00:00 +0200",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1ek9GVGMnDIBsBIN0gO1GAQftbRCYqiLR"
-          }
-        ]
+        "podcasts": []
       },
       "warnings": [
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 11, Forelæsning 1 · Kort podcast · Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 11, Forelæsning 1 · Podcast · Alle kilder",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 11, Forelæsning 1 · Lydbog · Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori. Problemet med personligheden version 2.0",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 11, Forelæsning 1 · Podcast · Gergen (1999)",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 11, Forelæsning 1 · Podcast · Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 11, Forelæsning 1 · Podcast · Hacking (2007)"
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 11, Forelæsning 1 · Kort podcast · Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 11, Forelæsning 1 · Podcast · Alle kilder",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 11, Forelæsning 1 · Lydbog · Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori. Problemet med personligheden version 2.0",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 11, Forelæsning 1 · Podcast · Gergen (1999)",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 11, Forelæsning 1 · Podcast · Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 11, Forelæsning 1 · Podcast · Hacking (2007)"
       ]
     },
     {
@@ -2808,16 +2176,7 @@
                 "episode_title": "W11L2 - Bruner (1999) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               }
             ],
-            "podcasts": [
-              {
-                "kind": "podcast",
-                "title": "Uge 11, Forelæsning 2 · Podcast · Bruner (1999)",
-                "url": "https://drive.google.com/uc?export=download&id=1-wiae8AfOPF0WxsxQvStQKnu64MadRku",
-                "platform": "source",
-                "pub_date": "Wed, 22 Apr 2025 00:00:00 +0200",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1-wiae8AfOPF0WxsxQvStQKnu64MadRku"
-              }
-            ]
+            "podcasts": []
           }
         },
         {
@@ -2846,16 +2205,7 @@
                 "episode_title": "W11L2 - McAdams & Pals (2006) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               }
             ],
-            "podcasts": [
-              {
-                "kind": "podcast",
-                "title": "Uge 11, Forelæsning 2 · Podcast · McAdams & Pals (2006)",
-                "url": "https://drive.google.com/uc?export=download&id=1v2X5vUtZg4K0EhnRQVwXum8Mz7wAG4v8",
-                "platform": "source",
-                "pub_date": "Tue, 21 Apr 2025 20:00:00 +0200",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1v2X5vUtZg4K0EhnRQVwXum8Mz7wAG4v8"
-              }
-            ]
+            "podcasts": []
           }
         },
         {
@@ -2902,32 +2252,7 @@
                 "episode_title": "[Brief] W11L2 - Grundbog kapitel 9 - Narrative teorier [EN] {type=audio lang=en format=brief length=default hash=7e1ef4f1}.mp3"
               }
             ],
-            "podcasts": [
-              {
-                "kind": "short_podcast",
-                "title": "Uge 11, Forelæsning 2 · Kort podcast · Grundbog kapitel 9 - Narrative teorier",
-                "url": "https://drive.google.com/uc?export=download&id=1S0jviS1M5GEBNtQr-k7lg2sEIhJ4CpPF",
-                "platform": "source",
-                "pub_date": "Tue, 21 Apr 2025 16:00:00 +0200",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1S0jviS1M5GEBNtQr-k7lg2sEIhJ4CpPF"
-              },
-              {
-                "kind": "lydbog",
-                "title": "Uge 11, Forelæsning 2 · Lydbog · Grundbog kapitel 09 - Narrative teorier",
-                "url": "https://drive.google.com/uc?export=download&id=1Hh4rRsk49WsxspGklu5JDppd-96rvXE1",
-                "platform": "source",
-                "pub_date": "Tue, 21 Apr 2025 12:00:00 +0200",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1Hh4rRsk49WsxspGklu5JDppd-96rvXE1"
-              },
-              {
-                "kind": "podcast",
-                "title": "Uge 11, Forelæsning 2 · Podcast · Grundbog kapitel 9 - Narrative teorier",
-                "url": "https://drive.google.com/uc?export=download&id=1sJGnWNAtp5bXlv94meaQNp6Z_0SkGkhl",
-                "platform": "source",
-                "pub_date": "Tue, 21 Apr 2025 22:00:00 +0200",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1sJGnWNAtp5bXlv94meaQNp6Z_0SkGkhl"
-              }
-            ]
+            "podcasts": []
           }
         }
       ],
@@ -2988,46 +2313,19 @@
             "episode_title": "W11L2 - Bank, M. (2014). Narrative psykologier. I Køppe, S. & Dammeyer, J. (Red.) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
           }
         ],
-        "podcasts": [
-          {
-            "kind": "podcast",
-            "title": "Uge 11, Forelæsning 2 · Podcast · Alle kilder",
-            "url": "https://drive.google.com/uc?export=download&id=105Y3bokEfnfcnY8bY-u_v34jgAUB-uRO",
-            "platform": "source",
-            "pub_date": "Tue, 21 Apr 2025 10:00:00 +0200",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=105Y3bokEfnfcnY8bY-u_v34jgAUB-uRO"
-          },
-          {
-            "kind": "podcast",
-            "title": "Uge 11, Forelæsning 2 · Podcast · Bank, M. (2014). Narrative psykologier. I Køppe, S. & Dammeyer, J. (Red.)",
-            "url": "https://drive.google.com/uc?export=download&id=1znrSssDk4nJGtctdSCeY-E1CpxMi__GV",
-            "platform": "source",
-            "pub_date": "Tue, 21 Apr 2025 14:00:00 +0200",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1znrSssDk4nJGtctdSCeY-E1CpxMi__GV"
-          },
-          {
-            "kind": "podcast",
-            "title": "Uge 11, Forelæsning 2 · Podcast · X Raggatt (2002)",
-            "url": "https://drive.google.com/uc?export=download&id=1eSsZIZdHR6cp3shRTPZbwQ4scxiR9FA9",
-            "platform": "source",
-            "pub_date": "Tue, 21 Apr 2025 18:00:00 +0200",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1eSsZIZdHR6cp3shRTPZbwQ4scxiR9FA9"
-          }
-        ]
+        "podcasts": []
       },
       "warnings": [
         "Quiz entry could not map to reading; attached to lecture assets: W11L2 - Bank, M. (2014). Narrative psykologier. I Køppe, S. & Dammeyer, J. (Red.) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
         "Quiz entry could not map to reading; attached to lecture assets: W11L2 - X Raggatt (2002) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 11, Forelæsning 2 · Kort podcast · Grundbog kapitel 9 - Narrative teorier",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 11, Forelæsning 2 · Podcast · Alle kilder",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 11, Forelæsning 2 · Lydbog · Grundbog kapitel 09 - Narrative teorier",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 11, Forelæsning 2 · Podcast · Bruner (1999)",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 11, Forelæsning 2 · Podcast · Grundbog kapitel 9 - Narrative teorier",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 11, Forelæsning 2 · Podcast · McAdams & Pals (2006)",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 11, Forelæsning 2 · Podcast · X Raggatt (2002)",
-        "RSS item could not map to reading; attached to lecture assets: Uge 11, Forelæsning 2 · Podcast · X Raggatt (2002)",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 11, Forelæsning 2 · Podcast · Bank, M. (2014). Narrative psykologier. I Køppe, S. & Dammeyer, J. (Red.)",
-        "RSS item could not map to reading; attached to lecture assets: Uge 11, Forelæsning 2 · Podcast · Bank, M. (2014). Narrative psykologier. I Køppe, S. & Dammeyer, J. (Red.)"
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 11, Forelæsning 2 · Kort podcast · Grundbog kapitel 9 - Narrative teorier",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 11, Forelæsning 2 · Podcast · Alle kilder",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 11, Forelæsning 2 · Lydbog · Grundbog kapitel 09 - Narrative teorier",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 11, Forelæsning 2 · Podcast · Bruner (1999)",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 11, Forelæsning 2 · Podcast · Grundbog kapitel 9 - Narrative teorier",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 11, Forelæsning 2 · Podcast · McAdams & Pals (2006)",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 11, Forelæsning 2 · Podcast · X Raggatt (2002)",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 11, Forelæsning 2 · Podcast · Bank, M. (2014). Narrative psykologier. I Køppe, S. & Dammeyer, J. (Red.)"
       ]
     },
     {
@@ -3061,16 +2359,7 @@
                 "episode_title": "W12L1 - Elias (2000) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               }
             ],
-            "podcasts": [
-              {
-                "kind": "podcast",
-                "title": "Uge 12, Forelæsning 1 · Podcast · Elias (2000)",
-                "url": "https://drive.google.com/uc?export=download&id=1bOVv7JK15CVaTjX-nZDtqwJhDZ1mBBFc",
-                "platform": "source",
-                "pub_date": "Mon, 27 Apr 2025 22:00:00 +0200",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1bOVv7JK15CVaTjX-nZDtqwJhDZ1mBBFc"
-              }
-            ]
+            "podcasts": []
           }
         },
         {
@@ -3117,32 +2406,7 @@
                 "episode_title": "[Brief] W12L1 - Grundbog kapitel 8 - Personlighed, subjektivitet og historicitet [EN] {type=audio lang=en format=brief length=default hash=7e1ef4f1}.mp3"
               }
             ],
-            "podcasts": [
-              {
-                "kind": "short_podcast",
-                "title": "Uge 12, Forelæsning 1 · Kort podcast · Grundbog kapitel 8 - Personlighed, subjektivitet og historicitet",
-                "url": "https://drive.google.com/uc?export=download&id=1lgQOFA_SWOy0-zLwf10N3BSthm4UKUVK",
-                "platform": "source",
-                "pub_date": "Mon, 27 Apr 2025 14:00:00 +0200",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1lgQOFA_SWOy0-zLwf10N3BSthm4UKUVK"
-              },
-              {
-                "kind": "lydbog",
-                "title": "Uge 12, Forelæsning 1 · Lydbog · Grundbog kapitel 08 - Personlighed, subjektivitet og historicitet",
-                "url": "https://drive.google.com/uc?export=download&id=1cKt7CDmUVi0W6xax5UKZjy9BmSJH7Omd",
-                "platform": "source",
-                "pub_date": "Mon, 27 Apr 2025 12:00:00 +0200",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1cKt7CDmUVi0W6xax5UKZjy9BmSJH7Omd"
-              },
-              {
-                "kind": "podcast",
-                "title": "Uge 12, Forelæsning 1 · Podcast · Grundbog kapitel 8 - Personlighed, subjektivitet og historicitet",
-                "url": "https://drive.google.com/uc?export=download&id=1AiUV45XhMphXgvHv-AljCrWuAKvlba-F",
-                "platform": "source",
-                "pub_date": "Mon, 27 Apr 2025 16:00:00 +0200",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1AiUV45XhMphXgvHv-AljCrWuAKvlba-F"
-              }
-            ]
+            "podcasts": []
           }
         },
         {
@@ -3189,32 +2453,7 @@
                 "episode_title": "[Brief] W12L1 - Grundbog kapitel 14 - Perspektiver på personlighedspsykologi [EN] {type=audio lang=en format=brief length=default hash=7e1ef4f1}.mp3"
               }
             ],
-            "podcasts": [
-              {
-                "kind": "short_podcast",
-                "title": "Uge 12, Forelæsning 1 · Kort podcast · Grundbog kapitel 14 - Perspektiver på personlighedspsykologi",
-                "url": "https://drive.google.com/uc?export=download&id=11DR3smTTOOpT5n5n0U36qDZzTlkxES9p",
-                "platform": "source",
-                "pub_date": "Mon, 27 Apr 2025 20:00:00 +0200",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=11DR3smTTOOpT5n5n0U36qDZzTlkxES9p"
-              },
-              {
-                "kind": "lydbog",
-                "title": "Uge 12, Forelæsning 1 · Lydbog · Grundbog kapitel 14 - Perspektiver på personlighedspsykologi",
-                "url": "https://drive.google.com/uc?export=download&id=1x0VtwDYf1ePNCNgncWt_lFN8pp4SsDU-",
-                "platform": "source",
-                "pub_date": "Mon, 27 Apr 2025 10:00:00 +0200",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1x0VtwDYf1ePNCNgncWt_lFN8pp4SsDU-"
-              },
-              {
-                "kind": "podcast",
-                "title": "Uge 12, Forelæsning 1 · Podcast · Grundbog kapitel 14 - Perspektiver på personlighedspsykologi",
-                "url": "https://drive.google.com/uc?export=download&id=13yWzcHR5rAWAIxKQ-CIjeJhVuiQ9tJkD",
-                "platform": "source",
-                "pub_date": "Mon, 27 Apr 2025 18:00:00 +0200",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=13yWzcHR5rAWAIxKQ-CIjeJhVuiQ9tJkD"
-              }
-            ]
+            "podcasts": []
           }
         },
         {
@@ -3259,26 +2498,17 @@
             "episode_title": "W12L1 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=1b3d31bc}.mp3"
           }
         ],
-        "podcasts": [
-          {
-            "kind": "podcast",
-            "title": "Uge 12, Forelæsning 1 · Podcast · Alle kilder",
-            "url": "https://drive.google.com/uc?export=download&id=1K5DP9c5Xa990MCfylgFHsq8gNw4JW6uq",
-            "platform": "source",
-            "pub_date": "Mon, 27 Apr 2025 08:00:00 +0200",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1K5DP9c5Xa990MCfylgFHsq8gNw4JW6uq"
-          }
-        ]
+        "podcasts": []
       },
       "warnings": [
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 12, Forelæsning 1 · Kort podcast · Grundbog kapitel 14 - Perspektiver på personlighedspsykologi",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 12, Forelæsning 1 · Kort podcast · Grundbog kapitel 8 - Personlighed, subjektivitet og historicitet",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 12, Forelæsning 1 · Podcast · Alle kilder",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 12, Forelæsning 1 · Lydbog · Grundbog kapitel 08 - Personlighed, subjektivitet og historicitet",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 12, Forelæsning 1 · Lydbog · Grundbog kapitel 14 - Perspektiver på personlighedspsykologi",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 12, Forelæsning 1 · Podcast · Elias (2000)",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 12, Forelæsning 1 · Podcast · Grundbog kapitel 14 - Perspektiver på personlighedspsykologi",
-        "Spotify mapping missing for RSS item; using source audio URL: Uge 12, Forelæsning 1 · Podcast · Grundbog kapitel 8 - Personlighed, subjektivitet og historicitet"
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 12, Forelæsning 1 · Kort podcast · Grundbog kapitel 14 - Perspektiver på personlighedspsykologi",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 12, Forelæsning 1 · Kort podcast · Grundbog kapitel 8 - Personlighed, subjektivitet og historicitet",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 12, Forelæsning 1 · Podcast · Alle kilder",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 12, Forelæsning 1 · Lydbog · Grundbog kapitel 08 - Personlighed, subjektivitet og historicitet",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 12, Forelæsning 1 · Lydbog · Grundbog kapitel 14 - Perspektiver på personlighedspsykologi",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 12, Forelæsning 1 · Podcast · Elias (2000)",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 12, Forelæsning 1 · Podcast · Grundbog kapitel 14 - Perspektiver på personlighedspsykologi",
+        "Spotify mapping missing for RSS item; skipping podcast asset: Uge 12, Forelæsning 1 · Podcast · Grundbog kapitel 8 - Personlighed, subjektivitet og historicitet"
       ]
     }
   ],

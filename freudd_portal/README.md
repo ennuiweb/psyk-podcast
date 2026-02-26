@@ -19,6 +19,7 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Score key: per `(user, quiz_id)`.
 - Subjects are loaded from `freudd_portal/subjects.json`; first active subject is `personlighedspsykologi`.
 - Subject enrollment is per `(user, subject_slug)` in `SubjectEnrollment`.
+- Topmenu shows direct links for the authenticated user’s enrolled active subjects.
 - Subject learning path is lecture-first: each lecture node contains readings, plus lecture-level assets (for example `Alle kilder`).
 - Subject content is compiled from reading master key + quiz links + local RSS into `content_manifest.json`.
 - Podcast links on subject pages prefer Spotify (`spotify_map.json` matched by RSS title) and fall back to source audio URL when mapping is missing.

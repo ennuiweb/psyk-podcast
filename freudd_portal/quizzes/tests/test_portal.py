@@ -1296,10 +1296,10 @@ class QuizPortalTests(TestCase):
 
         response = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "class=\"podcast-play\"")
         self.assertContains(response, "class=\"podcast-inline-trigger\"")
-        self.assertContains(response, "https://open.spotify.com/episode/5m0hYfDU9ThM5qR2xMugr8")
-        self.assertContains(response, "https://open.spotify.com/episode/4w4gHCXnQK5fjQdsxQO0XG")
+        self.assertNotContains(response, "class=\"podcast-play\"")
+        self.assertNotContains(response, "https://open.spotify.com/episode/5m0hYfDU9ThM5qR2xMugr8")
+        self.assertNotContains(response, "https://open.spotify.com/episode/4w4gHCXnQK5fjQdsxQO0XG")
         self.assertContains(
             response,
             "data-spotify-embed-url=\"https://open.spotify.com/embed/episode/5m0hYfDU9ThM5qR2xMugr8?utm_source=generator\"",

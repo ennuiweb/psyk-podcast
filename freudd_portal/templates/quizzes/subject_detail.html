@@ -387,39 +387,41 @@
   }
 
   .podcast-inline-trigger {
-    min-height: 30px;
-    border-radius: var(--radius-pill);
-    border: 1px solid color-mix(in srgb, var(--accent) 42%, var(--border));
-    background: color-mix(in srgb, var(--accent) 18%, var(--surface));
-    color: var(--text-strong);
-    padding: 0 var(--space-2);
-    font-size: 0.74rem;
-    font-weight: 700;
+    width: 36px;
+    height: 36px;
+    border-radius: 999px;
+    border: 1px solid color-mix(in srgb, #1db954 50%, var(--border));
+    background: color-mix(in srgb, #1db954 14%, var(--surface));
+    color: #1db954;
+    padding: 0;
     cursor: pointer;
-    white-space: nowrap;
-  }
-
-  .podcast-inline-trigger.is-active {
-    border-color: color-mix(in srgb, var(--success) 45%, var(--border));
-    background: color-mix(in srgb, var(--success) 18%, var(--surface));
-    color: var(--success-ink);
-  }
-
-  .podcast-play {
-    min-height: 30px;
-    border-radius: var(--radius-pill);
-    border: 1px solid color-mix(in srgb, #1db954 56%, transparent);
-    background: color-mix(in srgb, #1db954 20%, var(--surface));
-    color: var(--text-strong);
-    text-decoration: none;
-    font-size: 0.74rem;
-    font-weight: 700;
-    padding: 0 var(--space-2);
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    line-height: 1.2;
-    white-space: nowrap;
+  }
+
+  .podcast-inline-trigger.is-active {
+    border-color: color-mix(in srgb, #1db954 68%, var(--border));
+    background: color-mix(in srgb, #1db954 24%, var(--surface));
+    color: color-mix(in srgb, #1db954 82%, #0f4221);
+  }
+
+  .podcast-inline-trigger svg {
+    width: 20px;
+    height: 20px;
+    display: block;
+  }
+
+  .podcast-inline-trigger circle {
+    fill: currentColor;
+  }
+
+  .podcast-inline-trigger path {
+    fill: none;
+    stroke: var(--surface);
+    stroke-width: 1.9;
+    stroke-linecap: round;
+    opacity: 0.92;
   }
 
   .tracking-toggle-button {
@@ -889,20 +891,16 @@
                     data-spotify-embed-url="{{ podcast.spotify_embed_url }}"
                     data-spotify-title="Ep. {{ podcast.episode_index }}: {{ podcast.display_title }}"
                     aria-pressed="false"
-                    aria-label="Afspil episode {{ podcast.episode_index }} direkte her"
+                    aria-label="Afspil episode {{ podcast.episode_index }} i Spotify-afspilleren"
                   >
-                    Afspil her
+                    <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <path d="M7.8 14.2c2.6-.7 5.6-.3 7.8 1"></path>
+                      <path d="M8.6 11.6c2.9-.8 6.1-.4 8.4 1"></path>
+                      <path d="M9.2 9.1c3-.8 6.4-.4 8.8 1.1"></path>
+                    </svg>
                   </button>
                   {% endif %}
-                  <a
-                    class="podcast-play"
-                    href="{{ podcast.url }}"
-                    target="_blank"
-                    rel="noopener"
-                    aria-label="Åbn episode {{ podcast.episode_index }} i Spotify"
-                  >
-                    Spotify
-                  </a>
                   <form method="post" action="{{ podcast_tracking_url }}">
                     {% csrf_token %}
                     <input type="hidden" name="next" value="{{ request.get_full_path }}" />

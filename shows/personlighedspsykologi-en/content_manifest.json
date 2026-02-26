@@ -3,15 +3,15 @@
   "subject_slug": "personlighedspsykologi",
   "source_meta": {
     "version": 1,
-    "generated_at": "2026-02-26T19:16:23.650530+00:00",
+    "generated_at": "2026-02-26T19:22:14.548273+00:00",
     "reading_master_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/.ai/reading-file-key.md",
-    "reading_fallback_path": "/Users/oskar/repo/podcasts/shows/personlighedspsykologi-en/docs/reading-file-key.md",
-    "reading_source_used": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/.ai/reading-file-key.md",
-    "reading_fallback_used": false,
+    "reading_fallback_path": "/home/runner/work/psyk-podcast/psyk-podcast/shows/personlighedspsykologi-en/docs/reading-file-key.md",
+    "reading_source_used": "/home/runner/work/psyk-podcast/psyk-podcast/shows/personlighedspsykologi-en/docs/reading-file-key.md",
+    "reading_fallback_used": true,
     "reading_error": null,
-    "quiz_links_path": "/Users/oskar/repo/podcasts/shows/personlighedspsykologi-en/quiz_links.json",
-    "rss_path": "/Users/oskar/repo/podcasts/shows/personlighedspsykologi-en/feeds/rss.xml",
-    "spotify_map_path": "/Users/oskar/repo/podcasts/shows/personlighedspsykologi-en/spotify_map.json"
+    "quiz_links_path": "/home/runner/work/psyk-podcast/psyk-podcast/shows/personlighedspsykologi-en/quiz_links.json",
+    "rss_path": "/home/runner/work/psyk-podcast/psyk-podcast/shows/personlighedspsykologi-en/feeds/rss.xml",
+    "spotify_map_path": "/home/runner/work/psyk-podcast/psyk-podcast/shows/personlighedspsykologi-en/spotify_map.json"
   },
   "lectures": [
     {
@@ -648,7 +648,26 @@
           "is_missing": false,
           "sequence_index": 2,
           "assets": {
-            "quizzes": [],
+            "quizzes": [
+              {
+                "quiz_id": "e2fbbc86",
+                "difficulty": "easy",
+                "quiz_url": "/q/e2fbbc86.html",
+                "episode_title": "W3L1 - Lu, Benet-Martínez & Wang (2023) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "d7e62638",
+                "difficulty": "hard",
+                "quiz_url": "/q/d7e62638.html",
+                "episode_title": "W3L1 - Lu, Benet-Martínez & Wang (2023) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "25883f8b",
+                "difficulty": "medium",
+                "quiz_url": "/q/25883f8b.html",
+                "episode_title": "W3L1 - Lu, Benet-Martínez & Wang (2023) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              }
+            ],
             "podcasts": [
               {
                 "kind": "podcast",
@@ -899,7 +918,26 @@
           "is_missing": false,
           "sequence_index": 2,
           "assets": {
-            "quizzes": [],
+            "quizzes": [
+              {
+                "quiz_id": "8a9048d8",
+                "difficulty": "easy",
+                "quiz_url": "/q/8a9048d8.html",
+                "episode_title": "W4L1 - Gammelgaard (2007) [EN]  {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.m4a"
+              },
+              {
+                "quiz_id": "eb9b6d1f",
+                "difficulty": "hard",
+                "quiz_url": "/q/eb9b6d1f.html",
+                "episode_title": "W4L1 - Gammelgaard (2007) [EN]  {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.m4a"
+              },
+              {
+                "quiz_id": "cf07f890",
+                "difficulty": "medium",
+                "quiz_url": "/q/cf07f890.html",
+                "episode_title": "W4L1 - Gammelgaard (2007) [EN]  {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.m4a"
+              }
+            ],
             "podcasts": [
               {
                 "kind": "podcast",
@@ -925,28 +963,10 @@
             "episode_title": "W4L1 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=1b3d31bc}.mp3"
           },
           {
-            "quiz_id": "fcfa2ace",
-            "difficulty": "easy",
-            "quiz_url": "/q/fcfa2ace.html",
-            "episode_title": "W4L1 - Freud, S. (1973-1933) EN [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
-          },
-          {
-            "quiz_id": "00fc90d7",
-            "difficulty": "hard",
-            "quiz_url": "/q/00fc90d7.html",
-            "episode_title": "W4L1 - Freud, S. (1973-1933) EN [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
-          },
-          {
             "quiz_id": "f9af2514",
             "difficulty": "hard",
             "quiz_url": "/q/f9af2514.html",
             "episode_title": "W4L1 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=1b3d31bc}.mp3"
-          },
-          {
-            "quiz_id": "493f9e46",
-            "difficulty": "medium",
-            "quiz_url": "/q/493f9e46.html",
-            "episode_title": "W4L1 - Freud, S. (1973-1933) EN [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
           },
           {
             "quiz_id": "e077bf58",
@@ -969,9 +989,7 @@
           }
         ]
       },
-      "warnings": [
-        "Quiz entry could not map to reading; attached to lecture assets: W4L1 - Freud, S. (1973-1933) EN [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
-      ]
+      "warnings": []
     },
     {
       "lecture_key": "W04L2",
@@ -2576,12 +2594,6 @@
       "lecture_assets": {
         "quizzes": [
           {
-            "quiz_id": "03a9f921",
-            "difficulty": "easy",
-            "quiz_url": "/q/03a9f921.html",
-            "episode_title": "W10L2 - Foucault, M. (1997). s. 281-301 [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
-          },
-          {
             "quiz_id": "c64425d1",
             "difficulty": "easy",
             "quiz_url": "/q/c64425d1.html",
@@ -2600,12 +2612,6 @@
             "episode_title": "W10L2 - X Davies (1990) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
           },
           {
-            "quiz_id": "85ac5916",
-            "difficulty": "hard",
-            "quiz_url": "/q/85ac5916.html",
-            "episode_title": "W10L2 - Foucault, M. (1997). s. 281-301 [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
-          },
-          {
             "quiz_id": "8e81ffc2",
             "difficulty": "hard",
             "quiz_url": "/q/8e81ffc2.html",
@@ -2616,12 +2622,6 @@
             "difficulty": "medium",
             "quiz_url": "/q/4508d590.html",
             "episode_title": "W10L2 - X Davies (1990) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
-          },
-          {
-            "quiz_id": "78b2f7a7",
-            "difficulty": "medium",
-            "quiz_url": "/q/78b2f7a7.html",
-            "episode_title": "W10L2 - Foucault, M. (1997). s. 281-301 [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
           },
           {
             "quiz_id": "fce66fd1",
@@ -2667,7 +2667,6 @@
         ]
       },
       "warnings": [
-        "Quiz entry could not map to reading; attached to lecture assets: W10L2 - Foucault, M. (1997). s. 281-301 [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
         "Quiz entry could not map to reading; attached to lecture assets: W10L2 - X Davies (1990) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
         "RSS item could not map to reading; attached to lecture assets: Uge 10, Forelæsning 2 · Podcast · Foucault, M. (1997). The Ethics of the Concern of the Self as a Practice of Freedom - Essential Works 1954-1984, Penguin Books. Vol. 1, s. 281-301",
         "RSS item could not map to reading; attached to lecture assets: Uge 10, Forelæsning 2 · Podcast · X Davies (1990)"

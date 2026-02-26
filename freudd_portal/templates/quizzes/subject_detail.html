@@ -793,7 +793,7 @@
                 </span>
                 <h3 class="section-title">Quizzer</h3>
               </div>
-              {% if lecture.lecture_assets.quizzes or (show_reading_quizzes and lecture.has_reading_quizzes) %}
+              {% if lecture.lecture_assets.quizzes or show_reading_quizzes and lecture.has_reading_quizzes %}
                 {% if lecture.lecture_assets.quizzes %}
                 <div class="section-subgroup">
                   <p class="section-subgroup-title">Quiz for alle kilder</p>

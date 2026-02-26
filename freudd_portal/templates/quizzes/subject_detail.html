@@ -73,7 +73,7 @@
 
   .subject-path {
     display: grid;
-    gap: var(--subject-space-block);
+    gap: var(--subject-space-tight);
   }
 
   .path-toolbar {
@@ -525,6 +525,17 @@
     gap: var(--subject-space-tight);
   }
 
+  .reading-assets {
+    display: grid;
+    gap: var(--subject-space-block);
+    margin-top: var(--subject-space-tight);
+  }
+
+  .reading-asset-group {
+    display: grid;
+    gap: var(--subject-space-tight);
+  }
+
   .reading-item {
     border: 0;
     border-radius: var(--radius-sm);
@@ -821,8 +832,10 @@
                   <p class="progress-empty">Ikke startet endnu</p>
                   {% endif %}
 
-                  {% if reading.assets.quizzes %}
-                  <div>
+                  {% if reading.assets.quizzes or reading.assets.podcasts %}
+                  <div class="reading-assets">
+                    {% if reading.assets.quizzes %}
+                    <div class="reading-asset-group">
                     <p class="asset-title asset-title-row">
                       <span class="asset-icon is-quiz" aria-hidden="true">
                         <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
@@ -844,11 +857,11 @@
                       </a>
                       {% endfor %}
                     </div>
-                  </div>
-                  {% endif %}
+                    </div>
+                    {% endif %}
 
-                  {% if reading.assets.podcasts %}
-                  <div>
+                    {% if reading.assets.podcasts %}
+                    <div class="reading-asset-group">
                     <p class="asset-title asset-title-row">
                       <span class="asset-icon is-podcast" aria-hidden="true">
                         <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
@@ -862,6 +875,8 @@
                       <a class="asset-link is-spotify" href="{{ podcast.url }}" target="_blank" rel="noopener">Spotify episode {{ forloop.counter }}</a>
                       {% endfor %}
                     </div>
+                    </div>
+                    {% endif %}
                   </div>
                   {% endif %}
                 </li>

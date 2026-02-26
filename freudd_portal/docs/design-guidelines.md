@@ -170,12 +170,13 @@ Rules:
 - Learning path is a two-column rail layout: left lecture rail + right single active lecture card.
 - Lecture switching is URL-addressable (`?lecture=<lecture_key>`) and server-rendered on reload.
 - Rail connector remains muted by default and accentuates completed context.
+- Rail rows render both numbered marker and lecture copy (short week label + lecture title).
 - Active lecture card must always render three sibling sections in this order:
-  - `Quizzer`
-  - `Podcasts`
   - `Readings`
+  - `Podcasts`
+  - `Quiz for alle kilder`
 - Section content boundaries are strict:
-  - Quiz chips and quiz status belong only in `Quizzer`.
+  - Quiz chips and quiz status belong only in `Quiz for alle kilder`.
   - Episode metadata belongs only in `Podcasts`.
   - Text/article cards and reading progress belong only in `Readings`.
 - Reading cards always show L/M/S difficulty indicators in subject detail.
@@ -219,9 +220,9 @@ Behavior:
 - No KPI strip or global expand/collapse controls on this page.
 - Rail marker click updates active lecture via `?lecture=<lecture_key>`.
 - Active lecture card uses fixed section order:
-  - `Quizzer` (lecture quiz + item quizzes, with level chips in order `Let`, `Mellem`, `Svær`)
+  - `Readings` (text/article cards with always-visible L/M/S indicators + tracking controls)
   - `Podcasts` (flat episode list with discrete tracking controls)
-  - `Readings` (text/article cards with always-visible L/M/S indicators)
+  - `Quiz for alle kilder` (lecture quiz level chips in order `Let`, `Mellem`, `Svær`)
 
 ### `/q/<quiz_id>.html` (quiz wrapper)
 

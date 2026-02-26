@@ -148,6 +148,8 @@ class SubjectContentManifestTests(TestCase):
             lecture["lecture_assets"]["podcasts"][0]["source_audio_url"],
             "https://example.test/audio/all-sources.mp3",
         )
+        self.assertEqual(lecture["lecture_assets"]["podcasts"][0]["duration_label"], "")
+        self.assertIsNone(lecture["lecture_assets"]["podcasts"][0]["duration_seconds"])
 
         reading = lecture["readings"][0]
         self.assertEqual(reading["reading_title"], "Lewis (1999)")
@@ -163,7 +165,47 @@ class SubjectContentManifestTests(TestCase):
             reading["assets"]["podcasts"][0]["source_audio_url"],
             "https://example.test/audio/lewis.mp3",
         )
+        self.assertEqual(reading["assets"]["podcasts"][0]["duration_label"], "")
+        self.assertIsNone(reading["assets"]["podcasts"][0]["duration_seconds"])
         self.assertFalse(manifest["warnings"])
+
+    def test_build_manifest_extracts_podcast_duration_when_present(self) -> None:
+        self.rss_file.write_text(
+            "\n".join(
+                [
+                    '<?xml version="1.0" encoding="UTF-8"?>',
+                    "<rss version=\"2.0\" xmlns:itunes=\"http://www.itunes.com/dtds/podcast-1.0.dtd\">",
+                    "<channel>",
+                    "<item>",
+                    "<title>U1F1 · [Podcast] · Alle kilder · 02/02 - 08/02</title>",
+                    "<pubDate>Mon, 02 Feb 2026 08:00:00 +0100</pubDate>",
+                    "<itunes:duration>00:15:00</itunes:duration>",
+                    '<enclosure url="https://example.test/audio/all-sources.mp3" length="1" type="audio/mpeg" />',
+                    "</item>",
+                    "</channel>",
+                    "</rss>",
+                ]
+            ),
+            encoding="utf-8",
+        )
+        self.spotify_map_file.write_text(
+            json.dumps(
+                {
+                    "version": 1,
+                    "subject_slug": "personlighedspsykologi",
+                    "by_rss_title": {
+                        "U1F1 · [Podcast] · Alle kilder · 02/02 - 08/02": "https://open.spotify.com/episode/5m0hYfDU9ThM5qR2xMugr8",
+                    },
+                }
+            ),
+            encoding="utf-8",
+        )
+        clear_content_service_caches()
+
+        manifest = build_subject_content_manifest("personlighedspsykologi")
+        lecture_podcast = manifest["lectures"][0]["lecture_assets"]["podcasts"][0]
+        self.assertEqual(lecture_podcast["duration_seconds"], 900)
+        self.assertEqual(lecture_podcast["duration_label"], "15 min")
 
     def test_build_manifest_falls_back_to_source_audio_when_spotify_mapping_missing(self) -> None:
         self.spotify_map_file.write_text(

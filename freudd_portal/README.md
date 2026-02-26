@@ -38,10 +38,11 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Subject detail UI is mobile-first and uses a left lecture rail + single active lecture card (no multi-panel accordion).
 - Subject detail removes KPI strip and global `Udvid alle`/`Luk alle`; lecture switching is via rail links (`?lecture=<lecture_key>`).
 - Subject detail spacing uses a local responsive scale (`section/block/tight`) to keep vertical rhythm consistent across rail, card header, and section blocks.
-- Active lecture card is partitioned into three fixed sibling sections: `Quizzer`, `Podcasts`, `Readings`.
-- Quiz assets are surfaced only in `Quizzer`, podcast assets only in `Podcasts`, and reading status/progress only in `Readings`.
+- Active lecture card is partitioned into three fixed sibling sections in this order: `Readings`, `Podcasts`, `Quiz for alle kilder`.
+- Quiz assets are surfaced only in `Quiz for alle kilder`, podcast assets only in `Podcasts`, and reading status/progress only in `Readings`.
 - Section-level empty states are shown per section; one populated section does not hide the others.
 - Reading cards always render L/M/S difficulty indicators in subject detail.
+- Lecture rail rows render both numbered marker and lecture copy (week label + cleaned lecture title).
 - Module headers in subject detail are rendered as a combined headline (`Uge x, forelæsning x: <titel>`), with cleaned lecture title metadata.
 - Quiz labels are rendered from cleaned `episode_title` metadata (`modul` + `titel`) instead of raw file/tag strings.
 - Quiz wrapper header uses a structured identity block (module label + title) and includes in-flow progress feedback per question step.

@@ -163,7 +163,7 @@ The repository includes a Django portal in `freudd_portal/` for hybrid auth (use
 - UI: subject detail page is mobile-first and renders a left lecture rail with a single active lecture card (no multi-panel `<details>` accordion).
 - UI: subject detail page shows enrollment status only; enroll/unenroll actions live on `/progress` under `Mine fag`.
 - UI layout contract: lecture rail links use `GET /subjects/<subject_slug>?lecture=<lecture_key>` to switch active lecture on full-page reload.
-- UI section contract: active lecture card always renders `Quizzer`, `Podcasts`, `Readings`; podcasts are flattened into one list and reading cards always show L/M/S difficulty indicators.
+- UI section contract: active lecture card always renders `Readings`, `Podcasts`, `Quiz for alle kilder`; podcasts are flattened into one list and reading cards always show L/M/S difficulty indicators.
 - Podcast link policy: subject detail prefers Spotify links from `spotify_map.json`; unmapped RSS podcasts fall back to source audio links in UI.
 - Subject detail now degrades gracefully: if snapshot computation fails, route still returns 200 with a user-facing retry message instead of 500.
 - Unique key: `(user, quiz_id)` for quiz state

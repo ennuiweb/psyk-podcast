@@ -169,9 +169,9 @@ Use one orchestrated entrance per page, not many unrelated animations.
 
 ### Lecture detail partitioning (required)
 
-- Active lecture card must render three sibling sections in this order: `Quizzer`, `Podcasts`, `Readings`.
+- Active lecture card must render three sibling sections in this order: `Readings`, `Podcasts`, `Quiz for alle kilder`.
 - Each section has its own heading, icon, and content container.
-- Quiz chips, level pills, and quiz status live only in `Quizzer`.
+- Quiz chips, level pills, and quiz status live only in `Quiz for alle kilder`.
 - Episode metadata (duration, listen-state, speed markers) lives only in `Podcasts`.
 - Text/article cards and reading progress live only in `Readings`.
 - Reading cards always expose L/M/S difficulty indicators in subject detail.
@@ -190,9 +190,9 @@ Use one orchestrated entrance per page, not many unrelated animations.
 - Remove KPI strip and global expand/collapse controls.
 - Use lecture rail navigation (left) + one active lecture card (right).
 - Active lecture card uses fixed section order:
-  - `Quizzer` (lecture quiz + item quizzes, with level chips).
+  - `Readings` (text/article cards with L/M/S indicators + tracking controls).
   - `Podcasts` (flat episode list with discrete tracking controls).
-  - `Readings` (text/article cards with always-visible L/M/S indicators).
+  - `Quiz for alle kilder` (lecture quiz chips by level).
 - Quiz chips use stronger level distinction: `Let` calm, `Mellem` vivid, `Svær` warm/high-attention.
 
 ### `/q/<quiz_id>.html`
@@ -228,6 +228,6 @@ Do use:
 2. Set `data-design-system="paper-studio"` on `<html>` as locked default.
 3. Update shared controls (`.btn-primary`, `.nav-action`, `.card`) to tokenized V2 slots.
 4. Migrate `progress`, `subject_detail`, and `wrapper` page-specific colors to semantic tokens.
-5. Refactor subject detail lecture content into three explicit blocks: `Quizzer`, `Podcasts`, `Readings`. (Implemented 2026-02-26 in `templates/quizzes/subject_detail.html` + `quizzes/views.py`)
+5. Refactor subject detail lecture content into three explicit blocks: `Readings`, `Podcasts`, `Quiz for alle kilder` (implemented in `templates/quizzes/subject_detail.html` + `quizzes/views.py`).
 6. Add reduced-motion-safe reveal classes to top-level sections only.
 7. Validate contrast, keyboard focus, and section partitioning behavior before rollout.

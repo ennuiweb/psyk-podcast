@@ -41,6 +41,8 @@ SPOTIFY_EPISODE_URL_RE = re.compile(
     r"^https://open\.spotify\.com/episode/[A-Za-z0-9]+(?:[/?#].*)?$",
     re.IGNORECASE,
 )
+HUMAN_MINUTES_RE = re.compile(r"(?P<minutes>\d+)\s*(?:min(?:ute)?s?|minutter)\b", re.IGNORECASE)
+ITUNES_NS = "http://www.itunes.com/dtds/podcast-1.0.dtd"
 MANIFEST_VERSION = 1
 
 _MANIFEST_CACHE: dict[str, Any] = {
@@ -336,6 +338,59 @@ def _find_enclosure_url(item_node: ElementTree.Element) -> str:
     return link_text
 
 
+def _duration_seconds_from_text(value: object) -> int | None:
+    text = str(value or "").strip()
+    if not text:
+        return None
+
+    if text.isdigit():
+        seconds = int(text)
+        return seconds if seconds > 0 else None
+
+    clock_parts = [part.strip() for part in text.split(":")]
+    if len(clock_parts) in {2, 3} and all(part.isdigit() for part in clock_parts):
+        try:
+            numbers = [int(part) for part in clock_parts]
+        except ValueError:
+            return None
+        if len(numbers) == 2:
+            minutes, seconds = numbers
+            total_seconds = minutes * 60 + seconds
+        else:
+            hours, minutes, seconds = numbers
+            total_seconds = hours * 3600 + minutes * 60 + seconds
+        return total_seconds if total_seconds > 0 else None
+
+    minutes_match = HUMAN_MINUTES_RE.search(text)
+    if minutes_match:
+        minutes = int(minutes_match.group("minutes"))
+        total_seconds = minutes * 60
+        return total_seconds if total_seconds > 0 else None
+    return None
+
+
+def _duration_label_from_seconds(seconds: int | None) -> str:
+    if not seconds:
+        return ""
+    minutes = int(round(seconds / 60))
+    if minutes <= 0:
+        minutes = 1
+    return f"{minutes} min"
+
+
+def _duration_payload_from_item(item_node: ElementTree.Element) -> tuple[int | None, str]:
+    duration_candidates = [
+        item_node.findtext(f"{{{ITUNES_NS}}}duration"),
+        item_node.findtext("duration"),
+    ]
+    for raw_duration in duration_candidates:
+        duration_seconds = _duration_seconds_from_text(raw_duration)
+        if duration_seconds is None:
+            continue
+        return duration_seconds, _duration_label_from_seconds(duration_seconds)
+    return None, ""
+
+
 def _normalize_rss_title_key(value: str) -> str:
     return MULTISPACE_RE.sub(" ", str(value or "")).strip()
 
@@ -450,6 +505,7 @@ def _attach_podcasts(
             )
             platform = "source"
             resolved_url = source_audio_url
+        duration_seconds, duration_label = _duration_payload_from_item(item)
         podcast_asset = {
             "kind": _podcast_kind_from_token(kind_hint),
             "title": title_text,
@@ -457,6 +513,8 @@ def _attach_podcasts(
             "platform": platform,
             "pub_date": str(item.findtext("pubDate") or "").strip(),
             "source_audio_url": source_audio_url,
+            "duration_seconds": duration_seconds,
+            "duration_label": duration_label,
         }
         if _is_lecture_level_descriptor(descriptor):
             lecture_state["lecture_assets"]["podcasts"].append(podcast_asset)

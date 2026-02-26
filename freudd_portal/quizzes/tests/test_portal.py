@@ -1141,14 +1141,25 @@ class QuizPortalTests(TestCase):
         self.assertNotContains(response, "lecture-details")
         self.assertNotContains(response, "timeline-item")
         self.assertNotContains(response, "Introforelaesning (Forelaesning 1, 2026-02-02)")
-        self.assertContains(response, "quiz for alle kilder")
+        self.assertContains(response, "Quiz for alle kilder")
         self.assertContains(response, "reading-difficulties")
         self.assertContains(response, "Ikke startet endnu")
         self.assertContains(response, "Grundbog kapitel 01 - Introduktion til personlighedspsykologi")
+        self.assertContains(response, "Uge 1: Introforelaesning")
         self.assertNotContains(response, "Mangler kilde")
         self.assertNotContains(response, "Koutsoumpis (2025)")
         self.assertNotContains(response, "Tilmeld fag")
         self.assertNotContains(response, "Afmeld fag")
+
+        body = response.content.decode("utf-8")
+        readings_pos = body.find('class="lecture-section lecture-readings"')
+        podcasts_pos = body.find('class="lecture-section lecture-podcasts"')
+        quizzes_pos = body.find('class="lecture-section lecture-quizzes"')
+        self.assertGreaterEqual(readings_pos, 0)
+        self.assertGreaterEqual(podcasts_pos, 0)
+        self.assertGreaterEqual(quizzes_pos, 0)
+        self.assertLess(readings_pos, podcasts_pos)
+        self.assertLess(podcasts_pos, quizzes_pos)
 
         self.assertEqual(response.context["active_lecture"]["lecture_key"], "W01L1")
         self.assertEqual(len(response.context["lecture_rail_items"]), 2)
@@ -1302,6 +1313,49 @@ class QuizPortalTests(TestCase):
         self.assertNotContains(response, "https://open.spotify.com/episode/")
         self.assertContains(response, "https://example.test/podcast/w01l1-alle-kilder.mp3")
         self.assertContains(response, "https://example.test/podcast/w01l1-intro.mp3")
+
+    def test_subject_detail_podcast_duration_label_is_optional(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+
+        with patch(
+            "quizzes.views.get_subject_learning_path_snapshot",
+            return_value={
+                "lectures": [
+                    {
+                        "lecture_key": "W01L1",
+                        "lecture_title": "W01L1 Intro",
+                        "status": "active",
+                        "completed_quizzes": 0,
+                        "total_quizzes": 2,
+                        "lecture_assets": {
+                            "quizzes": [
+                                {"quiz_id": "aaaaaaaa", "difficulty": "easy", "quiz_url": "/q/aaaaaaaa.html"},
+                                {"quiz_id": "bbbbbbbb", "difficulty": "medium", "quiz_url": "/q/bbbbbbbb.html"},
+                            ],
+                            "podcasts": [
+                                {
+                                    "title": "U1F1 · [Podcast] · Introduktion til kurset",
+                                    "url": "https://example.test/podcast/intro.mp3",
+                                    "duration_label": "15 min",
+                                },
+                                {
+                                    "title": "U1F1 · [Podcast] · Hvad er personlighed?",
+                                    "url": "https://example.test/podcast/personlighed.mp3",
+                                },
+                            ],
+                        },
+                        "readings": [],
+                    }
+                ],
+                "source_meta": {},
+            },
+        ):
+            response = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Ep. 1: Introduktion til kurset (15 min)")
+        self.assertContains(response, "Ep. 2: Hvad er personlighed?")
 
     def test_subject_detail_shows_private_tracking_controls(self) -> None:
         user = self._create_user()

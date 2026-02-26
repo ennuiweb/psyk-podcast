@@ -272,6 +272,27 @@ def _lecture_display_parts(*, lecture_key: object, lecture_title: object) -> tup
     return "", raw_title
 
 
+def _lecture_rail_copy(
+    *,
+    lecture_key: object,
+    lecture_display_name: object,
+    lecture_display_title: object,
+) -> str:
+    key_text = str(lecture_key or "").strip().upper()
+    name_text = str(lecture_display_name or "").strip()
+    title_text = str(lecture_display_title or "").strip()
+    lecture_text = name_text or title_text or key_text
+
+    match = LECTURE_KEY_DISPLAY_RE.match(key_text)
+    if match:
+        week = int(match.group("week"))
+        prefix = f"Uge {week}"
+        if lecture_text:
+            return f"{prefix}: {lecture_text}"
+        return prefix
+    return lecture_text
+
+
 def _quiz_cfg_tags(raw_title: str) -> dict[str, str]:
     tags: dict[str, str] = {}
     for block_match in QUIZ_CFG_BLOCK_RE.finditer(raw_title):
@@ -585,6 +606,7 @@ def _flatten_podcast_rows(lecture: object) -> list[dict[str, object]]:
                 "reading_key": None,
                 "source_label": "Forelæsning",
                 "display_title": _podcast_display_title(podcast.get("title")),
+                "duration_label": str(podcast.get("duration_label") or "").strip(),
             }
         )
 
@@ -610,6 +632,7 @@ def _flatten_podcast_rows(lecture: object) -> list[dict[str, object]]:
                     "reading_key": reading_key,
                     "source_label": reading_title,
                     "display_title": _podcast_display_title(podcast.get("title")),
+                    "duration_label": str(podcast.get("duration_label") or "").strip(),
                 }
             )
 
@@ -666,6 +689,11 @@ def _lecture_rail_items(
                 "lecture_display_label": str(lecture.get("lecture_display_label") or "").strip(),
                 "lecture_display_name": str(lecture.get("lecture_display_name") or "").strip(),
                 "lecture_display_title": str(lecture.get("lecture_display_title") or "").strip(),
+                "rail_copy": _lecture_rail_copy(
+                    lecture_key=lecture.get("lecture_key"),
+                    lecture_display_name=lecture.get("lecture_display_name"),
+                    lecture_display_title=lecture.get("lecture_display_title"),
+                ),
             }
         )
     return items

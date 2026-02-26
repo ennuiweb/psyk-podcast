@@ -36,14 +36,14 @@
 
   .subject-path-layout {
     display: grid;
-    grid-template-columns: 54px minmax(0, 1fr);
+    grid-template-columns: minmax(240px, 320px) minmax(0, 1fr);
     gap: var(--subject-space-block);
     align-items: start;
   }
 
   .lecture-rail {
     position: relative;
-    padding-top: 10px;
+    padding-top: 8px;
   }
 
   .lecture-rail-list {
@@ -56,9 +56,11 @@
 
   .lecture-rail-item {
     position: relative;
-    min-height: 62px;
+    min-height: 82px;
     display: grid;
-    justify-items: center;
+    grid-template-columns: 44px minmax(0, 1fr);
+    column-gap: var(--space-3);
+    align-items: start;
   }
 
   .lecture-rail-item::after {
@@ -66,14 +68,23 @@
     position: absolute;
     top: 44px;
     bottom: calc(-1 * var(--subject-space-tight));
-    left: 50%;
+    left: 22px;
     width: 2px;
-    transform: translateX(-50%);
     background: var(--timeline-connector);
   }
 
   .lecture-rail-item:last-child::after {
     display: none;
+  }
+
+  .lecture-rail-item.is-active::before {
+    content: "";
+    position: absolute;
+    left: 44px;
+    right: calc(-1 * var(--subject-space-block));
+    top: 22px;
+    height: 2px;
+    background: color-mix(in srgb, var(--accent) 60%, var(--timeline-connector));
   }
 
   .lecture-rail-item.is-completed::after {
@@ -95,6 +106,8 @@
     font-weight: 500;
     line-height: 1;
     box-shadow: inset 0 0 0 1px rgba(106, 127, 165, 0.15);
+    position: relative;
+    z-index: 1;
   }
 
   .lecture-rail-item.is-active .lecture-rail-link {
@@ -107,6 +120,21 @@
     background: var(--surface-soft);
     border-color: color-mix(in srgb, var(--success) 34%, var(--border));
     color: var(--muted);
+  }
+
+  .lecture-rail-copy {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.34;
+    font-size: 1.02rem;
+    max-width: 280px;
+    padding-top: 2px;
+    text-transform: lowercase;
+  }
+
+  .lecture-rail-item.is-active .lecture-rail-copy {
+    color: var(--text-strong);
+    font-weight: 600;
   }
 
   .active-lecture-card {
@@ -585,7 +613,7 @@
   @media (max-width: 720px) {
     .subject-path-layout {
       gap: var(--space-3);
-      grid-template-columns: 42px minmax(0, 1fr);
+      grid-template-columns: minmax(188px, 44vw) minmax(0, 1fr);
     }
 
     .lecture-rail-link {
@@ -594,9 +622,20 @@
       font-size: 1.02rem;
     }
 
+    .lecture-rail-item {
+      min-height: 74px;
+      grid-template-columns: 36px minmax(0, 1fr);
+      column-gap: var(--space-2);
+    }
+
     .lecture-rail-item::after {
       top: 36px;
-      left: 50%;
+      left: 18px;
+    }
+
+    .lecture-rail-item.is-active::before {
+      left: 36px;
+      top: 18px;
     }
 
     .active-lecture-card {
@@ -621,7 +660,7 @@
   }
 </style>
 
-<div class="card subject-layout">
+<div class="subject-layout">
   <header class="subject-head">
     <div class="subject-head-copy">
       <h1 class="quiz-title">{{ subject.title }}</h1>
@@ -645,6 +684,7 @@
             >
               {{ rail.index }}
             </a>
+            <p class="lecture-rail-copy">{{ rail.rail_copy|default:rail.lecture_display_title }}</p>
           </li>
           {% endfor %}
         </ol>
@@ -672,84 +712,6 @@
         </header>
 
         <div class="active-lecture-sections">
-          <section class="lecture-section lecture-quizzes">
-            <div class="lecture-section-head">
-              <div class="section-title-wrap">
-                <span class="asset-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
-                    <path d="M12 3a9 9 0 1 0 9 9h-1.6a7.4 7.4 0 1 1-7.4-7.4V3Zm0 4a5 5 0 1 0 5 5h-1.6a3.4 3.4 0 1 1-3.4-3.4V7Zm7.8-4.2-4.2 1.4 1.4 1.4-3.1 3.1 1.1 1.1 3.1-3.1 1.4 1.4 1.3-4.3Z"></path>
-                  </svg>
-                </span>
-                <h3 class="section-title">Quizzer</h3>
-              </div>
-              <p class="section-note">quiz for alle kilder</p>
-            </div>
-
-            <div class="quiz-band">
-              {% for slot in active_lecture.quiz_difficulty_slots %}
-              <div class="quiz-slot is-{{ slot.difficulty }}">
-                <p class="quiz-slot-label">{{ slot.label }}</p>
-                {% if slot.quiz_url %}
-                <a class="quiz-slot-chip" href="{{ slot.quiz_url }}">{{ slot.chip }}</a>
-                {% else %}
-                <span class="quiz-slot-chip is-disabled">{{ slot.chip }}</span>
-                {% endif %}
-              </div>
-              {% endfor %}
-            </div>
-          </section>
-
-          <section class="lecture-section lecture-podcasts">
-            <div class="lecture-section-head">
-              <div class="section-title-wrap">
-                <span class="asset-icon is-podcast" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
-                    <path d="M12 2a7 7 0 0 0-7 7v4a3 3 0 0 0 2 2.83V17a5 5 0 0 0 10 0v-1.17A3 3 0 0 0 19 13V9a7 7 0 0 0-7-7Zm0 2a5 5 0 0 1 5 5v4a1 1 0 0 1-1 1h-1V9a3 3 0 1 0-6 0v5H8a1 1 0 0 1-1-1V9a5 5 0 0 1 5-5Zm-1 5a1 1 0 1 1 2 0v8a3 3 0 1 1-6 0v-1h2v1a1 1 0 1 0 2 0V9Z"></path>
-                  </svg>
-                </span>
-                <h3 class="section-title">Podcasts</h3>
-              </div>
-            </div>
-
-            {% if active_lecture.podcast_rows %}
-            <ul class="podcast-list">
-              {% for podcast in active_lecture.podcast_rows %}
-              <li class="podcast-row">
-                <div class="podcast-copy">
-                  <p class="podcast-title">Ep. {{ podcast.episode_index }}: {{ podcast.display_title }}</p>
-                  <p class="podcast-meta">{{ podcast.source_label }}</p>
-                </div>
-                <a
-                  class="podcast-play"
-                  href="{{ podcast.url }}"
-                  target="_blank"
-                  rel="noopener"
-                  aria-label="Afspil episode {{ podcast.episode_index }}"
-                >
-                  ▶
-                </a>
-                <form method="post" action="{{ podcast_tracking_url }}">
-                  {% csrf_token %}
-                  <input type="hidden" name="next" value="{{ request.get_full_path }}" />
-                  <input type="hidden" name="lecture_key" value="{{ podcast.lecture_key }}" />
-                  {% if podcast.reading_key %}
-                  <input type="hidden" name="reading_key" value="{{ podcast.reading_key }}" />
-                  {% endif %}
-                  <input type="hidden" name="podcast_key" value="{{ podcast.podcast_key }}" />
-                  <input type="hidden" name="action" value="{% if podcast.is_marked_listened %}unmark{% else %}mark{% endif %}" />
-                  <button class="tracking-toggle-button {% if podcast.is_marked_listened %}is-marked{% endif %}" type="submit">
-                    {% if podcast.is_marked_listened %}Lyttet{% else %}Markér lyttet{% endif %}
-                  </button>
-                </form>
-              </li>
-              {% endfor %}
-            </ul>
-            <p class="podcast-end">Ingen flere podcasts tilgængelige</p>
-            {% else %}
-            <p class="section-empty">Ingen podcasts registreret i denne forelæsning.</p>
-            {% endif %}
-          </section>
-
           <section class="lecture-section lecture-readings">
             <div class="lecture-section-head">
               <div class="section-title-wrap">
@@ -827,6 +789,85 @@
             {% else %}
             <p class="section-empty">Ingen readings registreret i denne forelæsning.</p>
             {% endif %}
+          </section>
+
+          <section class="lecture-section lecture-podcasts">
+            <div class="lecture-section-head">
+              <div class="section-title-wrap">
+                <span class="asset-icon is-podcast" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+                    <path d="M12 2a7 7 0 0 0-7 7v4a3 3 0 0 0 2 2.83V17a5 5 0 0 0 10 0v-1.17A3 3 0 0 0 19 13V9a7 7 0 0 0-7-7Zm0 2a5 5 0 0 1 5 5v4a1 1 0 0 1-1 1h-1V9a3 3 0 1 0-6 0v5H8a1 1 0 0 1-1-1V9a5 5 0 0 1 5-5Zm-1 5a1 1 0 1 1 2 0v8a3 3 0 1 1-6 0v-1h2v1a1 1 0 1 0 2 0V9Z"></path>
+                  </svg>
+                </span>
+                <h3 class="section-title">Podcasts</h3>
+              </div>
+            </div>
+
+            {% if active_lecture.podcast_rows %}
+            <ul class="podcast-list">
+              {% for podcast in active_lecture.podcast_rows %}
+              <li class="podcast-row">
+                <div class="podcast-copy">
+                  <p class="podcast-title">
+                    Ep. {{ podcast.episode_index }}: {{ podcast.display_title }}{% if podcast.duration_label %} ({{ podcast.duration_label }}){% endif %}
+                  </p>
+                  <p class="podcast-meta">{{ podcast.source_label }}</p>
+                </div>
+                <a
+                  class="podcast-play"
+                  href="{{ podcast.url }}"
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="Afspil episode {{ podcast.episode_index }}"
+                >
+                  ▶
+                </a>
+                <form method="post" action="{{ podcast_tracking_url }}">
+                  {% csrf_token %}
+                  <input type="hidden" name="next" value="{{ request.get_full_path }}" />
+                  <input type="hidden" name="lecture_key" value="{{ podcast.lecture_key }}" />
+                  {% if podcast.reading_key %}
+                  <input type="hidden" name="reading_key" value="{{ podcast.reading_key }}" />
+                  {% endif %}
+                  <input type="hidden" name="podcast_key" value="{{ podcast.podcast_key }}" />
+                  <input type="hidden" name="action" value="{% if podcast.is_marked_listened %}unmark{% else %}mark{% endif %}" />
+                  <button class="tracking-toggle-button {% if podcast.is_marked_listened %}is-marked{% endif %}" type="submit">
+                    {% if podcast.is_marked_listened %}Lyttet{% else %}Markér lyttet{% endif %}
+                  </button>
+                </form>
+              </li>
+              {% endfor %}
+            </ul>
+            <p class="podcast-end">Ingen flere podcasts tilgængelige</p>
+            {% else %}
+            <p class="section-empty">Ingen podcasts registreret i denne forelæsning.</p>
+            {% endif %}
+          </section>
+
+          <section class="lecture-section lecture-quizzes">
+            <div class="lecture-section-head">
+              <div class="section-title-wrap">
+                <span class="asset-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+                    <path d="M12 3a9 9 0 1 0 9 9h-1.6a7.4 7.4 0 1 1-7.4-7.4V3Zm0 4a5 5 0 1 0 5 5h-1.6a3.4 3.4 0 1 1-3.4-3.4V7Zm7.8-4.2-4.2 1.4 1.4 1.4-3.1 3.1 1.1 1.1 3.1-3.1 1.4 1.4 1.3-4.3Z"></path>
+                  </svg>
+                </span>
+                <h3 class="section-title">Quiz for alle kilder</h3>
+              </div>
+            </div>
+
+            <div class="quiz-band">
+              {% for slot in active_lecture.quiz_difficulty_slots %}
+              <div class="quiz-slot is-{{ slot.difficulty }}">
+                <p class="quiz-slot-label">{{ slot.label }}</p>
+                {% if slot.quiz_url %}
+                <a class="quiz-slot-chip" href="{{ slot.quiz_url }}">{{ slot.chip }}</a>
+                {% else %}
+                <span class="quiz-slot-chip is-disabled">{{ slot.chip }}</span>
+                {% endif %}
+              </div>
+              {% endfor %}
+            </div>
           </section>
         </div>
       </article>

@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 import logging
 import re
+from pathlib import Path
 from urllib.parse import urlencode
 
 from django.conf import settings
@@ -113,6 +114,14 @@ SPOTIFY_EPISODE_ID_RE = re.compile(
     r"^https://open\.spotify\.com/episode/(?P<episode_id>[A-Za-z0-9]+)(?:[/?#].*)?$",
     re.IGNORECASE,
 )
+SUBJECT_READING_KEY_RE = re.compile(r"^[a-z0-9-]+$")
+SUBJECT_LECTURE_KEY_RE = re.compile(r"^W\d{2}L\d+$", re.IGNORECASE)
+SUBJECT_SLUG_RE = re.compile(r"^[a-z0-9-]+$")
+_READING_EXCLUSION_CACHE: dict[str, object] = {
+    "path": None,
+    "mtime": None,
+    "data": {},
+}
 
 
 def _is_http_insecure(request: HttpRequest) -> bool:
@@ -171,6 +180,119 @@ def _subject_or_404(catalog: SubjectCatalog, subject_slug: str):
     if subject is None:
         raise Http404("Fag ikke fundet")
     return subject
+
+
+def _source_filename_or_none(value: object) -> str | None:
+    text = str(value or "").strip()
+    if not text:
+        return None
+    candidate = Path(text)
+    if candidate.is_absolute():
+        return None
+    if candidate.name != text:
+        return None
+    if ".." in candidate.parts:
+        return None
+    return text
+
+
+def _reading_file_path_or_404(*, lecture_key: str, source_filename: str) -> Path:
+    lecture = str(lecture_key or "").strip().upper()
+    if not SUBJECT_LECTURE_KEY_RE.match(lecture):
+        raise Http404("Reading ikke fundet i fagets læringssti.")
+
+    root = Path(settings.FREUDD_READING_FILES_ROOT)
+    try:
+        resolved_root = root.resolve()
+    except OSError as exc:
+        raise Http404("Reading-filer kunne ikke tilgås.") from exc
+
+    candidate = resolved_root / lecture / source_filename
+    try:
+        resolved_candidate = candidate.resolve()
+    except OSError as exc:
+        raise Http404("Reading-filen kunne ikke tilgås.") from exc
+
+    if resolved_root not in resolved_candidate.parents:
+        raise Http404("Reading-filen kunne ikke tilgås.")
+    if not resolved_candidate.is_file():
+        raise Http404("Reading-filen blev ikke fundet.")
+    return resolved_candidate
+
+
+def _normalize_exclusion_payload(payload: object) -> dict[str, set[str]]:
+    by_subject: dict[str, set[str]] = {}
+    if not isinstance(payload, dict):
+        return by_subject
+
+    subjects = payload.get("subjects")
+    if isinstance(subjects, dict):
+        for raw_slug, raw_entry in subjects.items():
+            slug = str(raw_slug or "").strip().lower()
+            if not SUBJECT_SLUG_RE.match(slug):
+                continue
+            entry = raw_entry if isinstance(raw_entry, dict) else {}
+            values = entry.get("excluded_reading_keys")
+            if not isinstance(values, list):
+                continue
+            excluded = {
+                str(item or "").strip().lower()
+                for item in values
+                if SUBJECT_READING_KEY_RE.match(str(item or "").strip().lower())
+            }
+            by_subject[slug] = excluded
+
+    # Backward-compatible single-subject shape.
+    single_slug = str(payload.get("subject_slug") or "").strip().lower()
+    single_values = payload.get("excluded_reading_keys")
+    if SUBJECT_SLUG_RE.match(single_slug) and isinstance(single_values, list):
+        single_excluded = {
+            str(item or "").strip().lower()
+            for item in single_values
+            if SUBJECT_READING_KEY_RE.match(str(item or "").strip().lower())
+        }
+        by_subject[single_slug] = single_excluded
+
+    return by_subject
+
+
+def _load_reading_download_exclusions() -> dict[str, set[str]]:
+    path = Path(settings.FREUDD_READING_DOWNLOAD_EXCLUSIONS_PATH)
+    if not path.exists():
+        return {}
+
+    try:
+        mtime = path.stat().st_mtime_ns
+    except OSError:
+        logger.warning("Unable to stat reading exclusion config: %s", path, exc_info=True)
+        return {}
+
+    cache_hit = (
+        _READING_EXCLUSION_CACHE.get("path") == str(path)
+        and _READING_EXCLUSION_CACHE.get("mtime") == mtime
+        and isinstance(_READING_EXCLUSION_CACHE.get("data"), dict)
+    )
+    if cache_hit:
+        return _READING_EXCLUSION_CACHE["data"]  # type: ignore[return-value]
+
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError):
+        logger.warning("Unable to read reading exclusion config: %s", path, exc_info=True)
+        data: dict[str, set[str]] = {}
+    else:
+        data = _normalize_exclusion_payload(payload)
+
+    _READING_EXCLUSION_CACHE["path"] = str(path)
+    _READING_EXCLUSION_CACHE["mtime"] = mtime
+    _READING_EXCLUSION_CACHE["data"] = data
+    return data
+
+
+def _is_reading_download_excluded(*, subject_slug: str, reading_key: str) -> bool:
+    by_subject = _load_reading_download_exclusions()
+    excluded = by_subject.get(subject_slug, set())
+    return reading_key in excluded
 
 
 def _auth_url_with_next(route_name: str, next_path: str) -> str:
@@ -1282,6 +1404,69 @@ def leaderboard_profile_view(request: HttpRequest) -> HttpResponse:
 
 
 @login_required
+@require_GET
+def subject_open_reading_view(request: HttpRequest, subject_slug: str, reading_key: str) -> HttpResponse:
+    catalog = load_subject_catalog()
+    subject = _subject_or_404(catalog, subject_slug)
+
+    normalized_reading_key = str(reading_key or "").strip().lower()
+    if not SUBJECT_READING_KEY_RE.match(normalized_reading_key):
+        raise Http404("Reading ikke fundet i fagets læringssti.")
+    if _is_reading_download_excluded(
+        subject_slug=subject.slug,
+        reading_key=normalized_reading_key,
+    ):
+        raise Http404("Reading ikke fundet i fagets læringssti.")
+
+    subject_path = get_subject_learning_path_snapshot(request.user, subject.slug)
+    found_lecture_key: str | None = None
+    found_source_filename: str | None = None
+    for lecture in subject_path.get("lectures") or []:
+        if not isinstance(lecture, dict):
+            continue
+        lecture_key = str(lecture.get("lecture_key") or "").strip().upper()
+        readings = lecture.get("readings") if isinstance(lecture.get("readings"), list) else []
+        for reading in readings:
+            if not isinstance(reading, dict):
+                continue
+            candidate_key = str(reading.get("reading_key") or "").strip().lower()
+            if candidate_key != normalized_reading_key:
+                continue
+            found_lecture_key = lecture_key
+            found_source_filename = _source_filename_or_none(reading.get("source_filename"))
+            break
+        if found_lecture_key:
+            break
+
+    if not found_lecture_key:
+        raise Http404("Reading ikke fundet i fagets læringssti.")
+    if not found_source_filename:
+        raise Http404("Reading-filen blev ikke fundet.")
+
+    file_path = _reading_file_path_or_404(
+        lecture_key=found_lecture_key,
+        source_filename=found_source_filename,
+    )
+    suffix = file_path.suffix.lower()
+    if suffix == ".pdf":
+        content_type = "application/pdf"
+        as_attachment = False
+    elif suffix == ".docx":
+        content_type = "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        as_attachment = True
+    else:
+        content_type = "application/octet-stream"
+        as_attachment = True
+
+    return FileResponse(
+        file_path.open("rb"),
+        content_type=content_type,
+        as_attachment=as_attachment,
+        filename=found_source_filename,
+    )
+
+
+@login_required
 @require_POST
 def subject_tracking_reading_view(request: HttpRequest, subject_slug: str) -> HttpResponse:
     catalog = load_subject_catalog()
@@ -1442,6 +1627,25 @@ def subject_detail_view(request: HttpRequest, subject_slug: str) -> HttpResponse
             summary = _reading_difficulty_summary(reading)
             reading["difficulty_summary"] = summary
             reading["primary_quiz_url"] = ""
+            normalized_reading_key = str(reading.get("reading_key") or "").strip().lower()
+            source_filename = _source_filename_or_none(reading.get("source_filename"))
+            reading["download_excluded"] = (
+                bool(normalized_reading_key)
+                and _is_reading_download_excluded(
+                    subject_slug=subject.slug,
+                    reading_key=normalized_reading_key,
+                )
+            )
+            if source_filename and normalized_reading_key and not reading["download_excluded"]:
+                reading["open_url"] = reverse(
+                    "subject-open-reading",
+                    kwargs={
+                        "subject_slug": subject.slug,
+                        "reading_key": normalized_reading_key,
+                    },
+                )
+            else:
+                reading["open_url"] = ""
             for slot in summary:
                 quiz_url = str(slot.get("quiz_url") or "").strip()
                 if quiz_url:

@@ -6,11 +6,17 @@ log_file="${PRE_PUSH_LOG_FILE:-}"
 quiz_extract_on_push="${QUIZ_JSON_EXTRACT_ON_PUSH:-1}"
 quiz_extract_script="${repo_root}/notebooklm-podcast-auto/personlighedspsykologi/scripts/extract_quiz_html_to_json.py"
 quiz_extract_python="python3"
+readings_sync_on_push="${FREUDD_READINGS_SYNC_ON_PUSH:-1}"
+readings_sync_script="${repo_root}/scripts/sync_personlighedspsykologi_readings_to_droplet.py"
+readings_sync_python="python3"
 
 if [[ -x "${repo_root}/notebooklm-podcast-auto/.venv/bin/python" ]]; then
   quiz_extract_python="${repo_root}/notebooklm-podcast-auto/.venv/bin/python"
 elif [[ -x "${repo_root}/.venv/bin/python" ]]; then
   quiz_extract_python="${repo_root}/.venv/bin/python"
+fi
+if [[ -x "${repo_root}/.venv/bin/python" ]]; then
+  readings_sync_python="${repo_root}/.venv/bin/python"
 fi
 
 if [[ "${quiz_extract_on_push}" != "0" ]]; then
@@ -30,6 +36,52 @@ if [[ "${quiz_extract_on_push}" != "0" ]]; then
   if [[ -n "${log_file}" ]]; then
     printf '%s %s\n' "$(date +'%Y-%m-%d %H:%M:%S')" \
       "pre-push: quiz html to json extraction completed" >> "${log_file}"
+  fi
+fi
+
+if [[ "${readings_sync_on_push}" != "0" ]]; then
+  echo "pre-push: syncing personlighedspsykologi readings to droplet"
+  if [[ -n "${log_file}" ]]; then
+    printf '%s %s\n' "$(date +'%Y-%m-%d %H:%M:%S')" \
+      "pre-push: syncing personlighedspsykologi readings to droplet" >> "${log_file}"
+  fi
+
+  if [[ ! -f "${readings_sync_script}" ]]; then
+    echo "pre-push: readings sync script not found: ${readings_sync_script}" >&2
+    exit 1
+  fi
+
+  readings_sync_cmd=("${readings_sync_python}" "${readings_sync_script}")
+  if [[ -n "${FREUDD_READINGS_SOURCE_ROOT:-}" ]]; then
+    readings_sync_cmd+=(--source-root "${FREUDD_READINGS_SOURCE_ROOT}")
+  fi
+  if [[ -n "${FREUDD_READINGS_REMOTE_ROOT:-}" ]]; then
+    readings_sync_cmd+=(--remote-root "${FREUDD_READINGS_REMOTE_ROOT}")
+  fi
+  if [[ -n "${FREUDD_READINGS_HOST:-}" ]]; then
+    readings_sync_cmd+=(--host "${FREUDD_READINGS_HOST}")
+  fi
+  if [[ -n "${FREUDD_READINGS_USER:-}" ]]; then
+    readings_sync_cmd+=(--user "${FREUDD_READINGS_USER}")
+  fi
+  if [[ -n "${FREUDD_READINGS_SSH_KEY:-}" ]]; then
+    readings_sync_cmd+=(--ssh-key "${FREUDD_READINGS_SSH_KEY}")
+  fi
+  if [[ -n "${FREUDD_READINGS_EXCLUSIONS_PATH:-}" ]]; then
+    readings_sync_cmd+=(--exclusions-config "${FREUDD_READINGS_EXCLUSIONS_PATH}")
+  fi
+  if [[ -n "${FREUDD_READINGS_SUBJECT_SLUG:-}" ]]; then
+    readings_sync_cmd+=(--subject-slug "${FREUDD_READINGS_SUBJECT_SLUG}")
+  fi
+
+  if ! "${readings_sync_cmd[@]}"; then
+    echo "pre-push: readings sync failed; aborting push" >&2
+    exit 1
+  fi
+
+  if [[ -n "${log_file}" ]]; then
+    printf '%s %s\n' "$(date +'%Y-%m-%d %H:%M:%S')" \
+      "pre-push: readings sync completed" >> "${log_file}"
   fi
 fi
 

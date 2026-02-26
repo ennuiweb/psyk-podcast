@@ -204,6 +204,18 @@ FREUDD_SUBJECT_CONTENT_MANIFEST_PATH = Path(
         BASE_DIR.parent / "shows" / "personlighedspsykologi-en" / "content_manifest.json",
     )
 )
+FREUDD_READING_FILES_ROOT = Path(
+    os.environ.get(
+        "FREUDD_READING_FILES_ROOT",
+        "/var/www/readings/personlighedspsykologi",
+    )
+)
+FREUDD_READING_DOWNLOAD_EXCLUSIONS_PATH = Path(
+    os.environ.get(
+        "FREUDD_READING_DOWNLOAD_EXCLUSIONS_PATH",
+        BASE_DIR.parent / "shows" / "personlighedspsykologi-en" / "reading_download_exclusions.json",
+    )
+)
 
 QUIZ_SIGNUP_RATE_LIMIT = int(os.environ.get("QUIZ_SIGNUP_RATE_LIMIT", "20"))
 QUIZ_LOGIN_RATE_LIMIT = int(os.environ.get("QUIZ_LOGIN_RATE_LIMIT", "40"))

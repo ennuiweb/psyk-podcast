@@ -38,6 +38,11 @@ urlpatterns = [
         name="subject-tracking-reading",
     ),
     re_path(
+        r"^subjects/(?P<subject_slug>[a-z0-9-]+)/readings/open/(?P<reading_key>[a-z0-9-]+)$",
+        views.subject_open_reading_view,
+        name="subject-open-reading",
+    ),
+    re_path(
         r"^subjects/(?P<subject_slug>[a-z0-9-]+)/tracking/podcast$",
         views.subject_tracking_podcast_view,
         name="subject-tracking-podcast",

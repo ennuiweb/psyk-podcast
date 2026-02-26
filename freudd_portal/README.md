@@ -79,6 +79,7 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - `GET /leaderboard/<subject_slug>`
 - `POST /leaderboard/profile`
 - `GET /subjects/<subject_slug>`
+- `GET /subjects/<subject_slug>/readings/open/<reading_key>` (login-required reading file access)
 - `POST /subjects/<subject_slug>/enroll`
 - `POST /subjects/<subject_slug>/unenroll`
 - `POST /subjects/<subject_slug>/tracking/reading`
@@ -129,10 +130,29 @@ Enrollment UX rule: enroll/unenroll actions are shown inline per subject in the 
 - `subject_slug`: canonical slug for the subject manifest.
 - `source_meta`: source paths + generation metadata (`reading master`, `rss`, `quiz_links`).
 - `lectures[]`: lecture-first tree with `lecture_key`, `lecture_title`, `sequence_index`, `readings[]`, `lecture_assets`, `warnings[]`.
-- `readings[]`: each reading has stable `reading_key`, `reading_title`, `is_missing`, and `assets` (`quizzes[]`, `podcasts[]`).
+- `readings[]`: each reading has deterministic `reading_key`, `reading_title`, optional `source_filename`, `is_missing`, and `assets` (`quizzes[]`, `podcasts[]`). Duplicate reading titles in the same lecture are disambiguated with `-2`, `-3`, etc.
 - `lecture_assets`: lecture-level assets for items like `Alle kilder`.
 - `podcasts[]`: Spotify-only episode assets with `url`, `platform`, and `source_audio_url` (original RSS enclosure/link).
 - `platform`: always `spotify` (`url` must be a Spotify episode URL).
+
+## Reading download exclusions contract (`reading_download_exclusions.json`)
+- Path default: `shows/personlighedspsykologi-en/reading_download_exclusions.json`
+- Used by `GET /subjects/<subject_slug>/readings/open/<reading_key>` and subject detail link rendering.
+- `excluded_reading_keys` blocks selected `reading_key` values from being opened/downloaded.
+- Keys must match the manifest `readings[].reading_key` values exactly.
+
+```json
+{
+  "version": 1,
+  "subjects": {
+    "personlighedspsykologi": {
+      "excluded_reading_keys": [
+        "w01l1-example-reading-abcd1234"
+      ]
+    }
+  }
+}
+```
 
 ## Spotify map contract (`spotify_map.json`)
 - Path default: `shows/personlighedspsykologi-en/spotify_map.json`
@@ -174,6 +194,8 @@ Operational behavior:
 - `FREUDD_SUBJECT_FEED_RSS_PATH` (default: `shows/personlighedspsykologi-en/feeds/rss.xml`)
 - `FREUDD_SUBJECT_SPOTIFY_MAP_PATH` (default: `shows/personlighedspsykologi-en/spotify_map.json`)
 - `FREUDD_SUBJECT_CONTENT_MANIFEST_PATH` (default: `shows/personlighedspsykologi-en/content_manifest.json`)
+- `FREUDD_READING_FILES_ROOT` (default: `/var/www/readings/personlighedspsykologi`)
+- `FREUDD_READING_DOWNLOAD_EXCLUSIONS_PATH` (default: `shows/personlighedspsykologi-en/reading_download_exclusions.json`)
 - `FREUDD_GAMIFICATION_DAILY_GOAL` (default: `20`)
 - `FREUDD_GAMIFICATION_XP_PER_ANSWER` (default: `5`)
 - `FREUDD_GAMIFICATION_XP_PER_COMPLETION` (default: `50`)

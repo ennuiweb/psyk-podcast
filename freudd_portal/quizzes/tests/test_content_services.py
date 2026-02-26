@@ -153,6 +153,7 @@ class SubjectContentManifestTests(TestCase):
 
         reading = lecture["readings"][0]
         self.assertEqual(reading["reading_title"], "Lewis (1999)")
+        self.assertEqual(reading["source_filename"], "Lewis (1999).pdf")
         self.assertEqual(len(reading["assets"]["quizzes"]), 2)
         self.assertEqual({item["quiz_id"] for item in reading["assets"]["quizzes"]}, {"aaaaaaaa", "bbbbbbbb"})
         self.assertEqual(len(reading["assets"]["podcasts"]), 1)
@@ -168,6 +169,58 @@ class SubjectContentManifestTests(TestCase):
         self.assertEqual(reading["assets"]["podcasts"][0]["duration_label"], "")
         self.assertIsNone(reading["assets"]["podcasts"][0]["duration_seconds"])
         self.assertFalse(manifest["warnings"])
+
+    def test_build_manifest_sets_source_filename_none_for_missing_readings(self) -> None:
+        self.primary_reading_file.write_text(
+            "\n".join(
+                [
+                    "# Reading File Key",
+                    "",
+                    "**W01L1 Intro (Forelaesning 1, 2026-02-02)**",
+                    "- MISSING: Lewis (1999)",
+                ]
+            ),
+            encoding="utf-8",
+        )
+        self.fallback_reading_file.write_text(
+            self.primary_reading_file.read_text(encoding="utf-8"),
+            encoding="utf-8",
+        )
+        clear_subject_service_caches()
+        clear_content_service_caches()
+
+        manifest = build_subject_content_manifest("personlighedspsykologi")
+        reading = manifest["lectures"][0]["readings"][0]
+        self.assertTrue(reading["is_missing"])
+        self.assertIsNone(reading["source_filename"])
+
+    def test_build_manifest_disambiguates_duplicate_reading_titles(self) -> None:
+        self.primary_reading_file.write_text(
+            "\n".join(
+                [
+                    "# Reading File Key",
+                    "",
+                    "**W01L1 Intro (Forelaesning 1, 2026-02-02)**",
+                    "- Exercise text \u2192 W01L1 X Alpha.pdf",
+                    "- Exercise text \u2192 W01L1 X Beta.pdf",
+                ]
+            ),
+            encoding="utf-8",
+        )
+        self.fallback_reading_file.write_text(
+            self.primary_reading_file.read_text(encoding="utf-8"),
+            encoding="utf-8",
+        )
+        clear_subject_service_caches()
+        clear_content_service_caches()
+
+        manifest = build_subject_content_manifest("personlighedspsykologi")
+        readings = manifest["lectures"][0]["readings"]
+        reading_keys = [str(item["reading_key"]) for item in readings]
+        self.assertEqual(len(reading_keys), 2)
+        self.assertEqual(len(set(reading_keys)), 2)
+        self.assertFalse(reading_keys[0].endswith("-2"))
+        self.assertTrue(reading_keys[1].endswith("-2"))
 
     def test_build_manifest_extracts_podcast_duration_when_present(self) -> None:
         self.rss_file.write_text(

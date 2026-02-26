@@ -142,6 +142,7 @@ The repository includes a Django portal in `freudd_portal/` for hybrid auth (use
 - `GET /api/gamification/me` (login-required gamification snapshot)
 - `GET /progress` (login-required dashboard with header semester selector, `Mine fag` cards for inline enroll/unenroll, and `Quizhistorik` rows)
 - `GET /subjects/<subject_slug>` (login-required subject detail with lecture-first path + nested readings/assets)
+- `GET /subjects/<subject_slug>/readings/open/<reading_key>` (login-required reading file access; blocked if excluded in config)
 - `POST /subjects/<subject_slug>/enroll` (login-required)
 - `POST /subjects/<subject_slug>/unenroll` (login-required)
 
@@ -179,6 +180,8 @@ The repository includes a Django portal in `freudd_portal/` for hybrid auth (use
 - First subject in the catalog: `personlighedspsykologi`.
 - Lecture/readings source of truth is the master markdown key path (`FREUDD_READING_MASTER_KEY_PATH`) with fallback to repo mirror (`FREUDD_READING_MASTER_KEY_FALLBACK_PATH`).
 - Subject content is compiled into a lecture-first `content_manifest.json` that merges reading key + `quiz_links.json` + local RSS.
+- Manifest readings include optional `source_filename` so the portal can resolve and open local reading files.
+- Reading file downloads are governed by `reading_download_exclusions.json` (`excluded_reading_keys` per subject, matching manifest `readings[].reading_key`).
 - Spotify mapping source is `spotify_map.json` keyed by RSS item title; only direct Spotify episode URLs are valid (`platform=spotify`).
 - `MISSING:` reading lines are preserved and rendered as missing reading cards in subject detail.
 
@@ -223,6 +226,8 @@ python3 manage.py test
 - `FREUDD_SUBJECT_FEED_RSS_PATH` (default: `shows/personlighedspsykologi-en/feeds/rss.xml`)
 - `FREUDD_SUBJECT_SPOTIFY_MAP_PATH` (default: `shows/personlighedspsykologi-en/spotify_map.json`)
 - `FREUDD_SUBJECT_CONTENT_MANIFEST_PATH` (default: `shows/personlighedspsykologi-en/content_manifest.json`)
+- `FREUDD_READING_FILES_ROOT` (default: `/var/www/readings/personlighedspsykologi`)
+- `FREUDD_READING_DOWNLOAD_EXCLUSIONS_PATH` (default: `shows/personlighedspsykologi-en/reading_download_exclusions.json`)
 - `FREUDD_GAMIFICATION_DAILY_GOAL` (default: `20`)
 - `FREUDD_GAMIFICATION_XP_PER_ANSWER` (default: `5`)
 - `FREUDD_GAMIFICATION_XP_PER_COMPLETION` (default: `50`)
@@ -349,9 +354,12 @@ If you want the Apps Script file to update without manual pasting, use the `clas
 To push the Apps Script file whenever you run `git push`, install the repository git hook:
 1. Run `scripts/install_git_hooks.sh`.
 2. Push as usual; the hook first runs quiz extraction (`extract_quiz_html_to_json.py`) and then runs `apps-script/push_drive_trigger.sh`.
-3. Set `QUIZ_JSON_EXTRACT_ON_PUSH=0` in your environment to skip quiz extraction on demand.
-4. Set `APPS_SCRIPT_PUSH_ON_PUSH=0` in your environment to skip the Apps Script push step on demand.
-5. (Optional) Set `PRE_PUSH_LOG_FILE=/path/to/pre-push.log` to enable logging; by default no log file is written.
+3. The hook also runs blocking reading sync (`scripts/sync_personlighedspsykologi_readings_to_droplet.py`) after quiz extraction.
+4. Set `QUIZ_JSON_EXTRACT_ON_PUSH=0` in your environment to skip quiz extraction on demand.
+5. Set `FREUDD_READINGS_SYNC_ON_PUSH=0` to disable reading sync on push.
+6. Optional reading sync overrides: `FREUDD_READINGS_SOURCE_ROOT`, `FREUDD_READINGS_REMOTE_ROOT`, `FREUDD_READINGS_HOST`, `FREUDD_READINGS_USER`, `FREUDD_READINGS_SSH_KEY`, `FREUDD_READINGS_EXCLUSIONS_PATH`, `FREUDD_READINGS_SUBJECT_SLUG`.
+7. Set `APPS_SCRIPT_PUSH_ON_PUSH=0` in your environment to skip the Apps Script push step on demand.
+8. (Optional) Set `PRE_PUSH_LOG_FILE=/path/to/pre-push.log` to enable logging; by default no log file is written.
 
 ### Bioneuro audio mirror on push
 The same `pre-push` hook can mirror local Bioneuro audio files from OneDrive into the Google Drive mounted destination used by the `bioneuro` show:
@@ -397,7 +405,13 @@ Validation commands:
 ```bash
 ./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/sync_reading_summaries.py --validate-only --validate-weekly
 ./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_week.py --week W1L2 --content-types quiz --dry-run
+python3 scripts/sync_personlighedspsykologi_readings_to_droplet.py --dry-run
+python3 scripts/sync_personlighedspsykologi_readings_to_droplet.py
 ```
+
+Default reading sync behavior:
+- Sync reads exclusions from `shows/personlighedspsykologi-en/reading_download_exclusions.json` and skips excluded `reading_key` values.
+- Use `--exclusions-config ''` to disable exclusions for a manual run.
 
 Reading key sync (OneDrive -> repo mirror used by feed config):
 ```bash

@@ -59,6 +59,8 @@ class QuizPortalTests(TestCase):
         self.rss_file = root / "rss.xml"
         self.spotify_map_file = root / "spotify_map.json"
         self.content_manifest_file = root / "content_manifest.json"
+        self.reading_files_root = root / "reading-files"
+        self.reading_exclusions_file = root / "reading_download_exclusions.json"
 
         self.override = override_settings(
             QUIZ_FILES_ROOT=self.quiz_root,
@@ -69,6 +71,8 @@ class QuizPortalTests(TestCase):
             FREUDD_SUBJECT_FEED_RSS_PATH=self.rss_file,
             FREUDD_SUBJECT_SPOTIFY_MAP_PATH=self.spotify_map_file,
             FREUDD_SUBJECT_CONTENT_MANIFEST_PATH=self.content_manifest_file,
+            FREUDD_READING_FILES_ROOT=self.reading_files_root,
+            FREUDD_READING_DOWNLOAD_EXCLUSIONS_PATH=self.reading_exclusions_file,
             FREUDD_CREDENTIALS_MASTER_KEY="MDEyMzQ1Njc4OWFiY2RlZjAxMjM0NTY3ODlhYmNkZWY=",
             FREUDD_CREDENTIALS_KEY_VERSION=1,
             FREUDD_EXT_SYNC_TIMEOUT_SECONDS=2,
@@ -103,6 +107,8 @@ class QuizPortalTests(TestCase):
         self.reading_fallback_file.write_text(self.reading_master_file.read_text(encoding="utf-8"), encoding="utf-8")
         self._write_rss_file()
         self._write_spotify_map()
+        self._write_reading_files()
+        self._write_reading_download_exclusions([])
 
     def _write_quiz_file(self, quiz_id: str, *, question_count: int) -> None:
         payload = {"quiz": [{"question": f"Q{i + 1}"} for i in range(question_count)]}
@@ -226,6 +232,30 @@ class QuizPortalTests(TestCase):
                     "version": 1,
                     "subject_slug": "personlighedspsykologi",
                     "by_rss_title": mapping,
+                }
+            ),
+            encoding="utf-8",
+        )
+
+    def _write_reading_files(self) -> None:
+        w01l1 = self.reading_files_root / "W01L1"
+        w01l2 = self.reading_files_root / "W01L2"
+        w01l1.mkdir(parents=True, exist_ok=True)
+        w01l2.mkdir(parents=True, exist_ok=True)
+        (w01l1 / "Grundbog kapitel 01 - Introduktion.pdf").write_bytes(b"%PDF-1.4\n%test\n")
+        (w01l1 / "Lewis (1999).pdf").write_bytes(b"%PDF-1.4\n%test\n")
+        (w01l2 / "Mayer & Bryan (2024).pdf").write_bytes(b"%PDF-1.4\n%test\n")
+
+    def _write_reading_download_exclusions(self, reading_keys: list[str]) -> None:
+        self.reading_exclusions_file.write_text(
+            json.dumps(
+                {
+                    "version": 1,
+                    "subjects": {
+                        "personlighedspsykologi": {
+                            "excluded_reading_keys": reading_keys,
+                        }
+                    },
                 }
             ),
             encoding="utf-8",
@@ -1569,6 +1599,187 @@ class QuizPortalTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Markér læst")
         self.assertContains(response, "Markér lyttet")
+
+    def test_subject_detail_shows_open_reading_link_for_available_file(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+
+        response = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
+        self.assertEqual(response.status_code, 200)
+        lecture = response.context["active_lecture"]
+        reading = lecture["readings"][0]
+        expected_url = reverse(
+            "subject-open-reading",
+            kwargs={
+                "subject_slug": "personlighedspsykologi",
+                "reading_key": reading["reading_key"],
+            },
+        )
+        self.assertContains(response, expected_url)
+        self.assertContains(response, "åbn reading")
+
+    def test_subject_open_reading_requires_login(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+        detail = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
+        reading_key = detail.context["active_lecture"]["readings"][0]["reading_key"]
+        self.client.logout()
+
+        response = self.client.get(
+            reverse(
+                "subject-open-reading",
+                kwargs={
+                    "subject_slug": "personlighedspsykologi",
+                    "reading_key": reading_key,
+                },
+            )
+        )
+        self.assertEqual(response.status_code, 302)
+        self.assertIn("/accounts/login", response.url)
+
+    def test_subject_open_reading_serves_pdf_inline(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+        detail = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
+        reading_key = detail.context["active_lecture"]["readings"][0]["reading_key"]
+
+        response = self.client.get(
+            reverse(
+                "subject-open-reading",
+                kwargs={
+                    "subject_slug": "personlighedspsykologi",
+                    "reading_key": reading_key,
+                },
+            )
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response["Content-Type"], "application/pdf")
+        self.assertIn("inline", response.get("Content-Disposition", ""))
+
+    def test_subject_open_reading_serves_docx_as_attachment(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+        (self.reading_files_root / "W01L1" / "Custom.docx").write_bytes(b"DOCX")
+
+        with patch(
+            "quizzes.views.get_subject_learning_path_snapshot",
+            return_value={
+                "lectures": [
+                    {
+                        "lecture_key": "W01L1",
+                        "readings": [
+                            {
+                                "reading_key": "w01l1-custom-1234",
+                                "source_filename": "Custom.docx",
+                            }
+                        ],
+                    }
+                ]
+            },
+        ):
+            response = self.client.get(
+                reverse(
+                    "subject-open-reading",
+                    kwargs={
+                        "subject_slug": "personlighedspsykologi",
+                        "reading_key": "w01l1-custom-1234",
+                    },
+                )
+            )
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(
+            response["Content-Type"],
+            "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        )
+        self.assertIn("attachment", response.get("Content-Disposition", ""))
+
+    def test_subject_open_reading_returns_404_when_file_is_missing(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+
+        with patch(
+            "quizzes.views.get_subject_learning_path_snapshot",
+            return_value={
+                "lectures": [
+                    {
+                        "lecture_key": "W01L1",
+                        "readings": [
+                            {
+                                "reading_key": "w01l1-missing-1234",
+                                "source_filename": "DoesNotExist.pdf",
+                            }
+                        ],
+                    }
+                ]
+            },
+        ):
+            response = self.client.get(
+                reverse(
+                    "subject-open-reading",
+                    kwargs={
+                        "subject_slug": "personlighedspsykologi",
+                        "reading_key": "w01l1-missing-1234",
+                    },
+                )
+            )
+        self.assertEqual(response.status_code, 404)
+
+    def test_subject_open_reading_rejects_path_traversal_source_filename(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+
+        with patch(
+            "quizzes.views.get_subject_learning_path_snapshot",
+            return_value={
+                "lectures": [
+                    {
+                        "lecture_key": "W01L1",
+                        "readings": [
+                            {
+                                "reading_key": "w01l1-evil-1234",
+                                "source_filename": "../secret.pdf",
+                            }
+                        ],
+                    }
+                ]
+            },
+        ):
+            response = self.client.get(
+                reverse(
+                    "subject-open-reading",
+                    kwargs={
+                        "subject_slug": "personlighedspsykologi",
+                        "reading_key": "w01l1-evil-1234",
+                    },
+                )
+            )
+        self.assertEqual(response.status_code, 404)
+
+    def test_subject_open_reading_blocks_excluded_reading_keys(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+        detail = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
+        reading_key = detail.context["active_lecture"]["readings"][0]["reading_key"]
+        open_url = reverse(
+            "subject-open-reading",
+            kwargs={
+                "subject_slug": "personlighedspsykologi",
+                "reading_key": reading_key,
+            },
+        )
+
+        self._write_reading_download_exclusions([reading_key])
+        from quizzes import views as quiz_views
+
+        quiz_views._READING_EXCLUSION_CACHE["path"] = None
+        quiz_views._READING_EXCLUSION_CACHE["mtime"] = None
+        quiz_views._READING_EXCLUSION_CACHE["data"] = {}
+
+        blocked_detail = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
+        self.assertNotContains(blocked_detail, open_url)
+
+        blocked_open = self.client.get(open_url)
+        self.assertEqual(blocked_open.status_code, 404)
 
     def test_subject_reading_tracking_toggle_is_idempotent(self) -> None:
         user = self._create_user()

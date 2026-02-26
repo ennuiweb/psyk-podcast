@@ -179,6 +179,14 @@ def _reading_key(lecture_key: str, reading_title: str) -> str:
     return f"{lecture_key.lower()}-{slug}-{digest}"
 
 
+def _dedupe_reading_key(base_key: str, *, seen_counts: dict[str, int]) -> str:
+    count = seen_counts.get(base_key, 0) + 1
+    seen_counts[base_key] = count
+    if count == 1:
+        return base_key
+    return f"{base_key}-{count}"
+
+
 def _lecture_title_from_heading(lecture_key: str, heading: str) -> str:
     value = str(heading or "").strip()
     if value.upper().startswith(lecture_key.upper()):
@@ -543,12 +551,23 @@ def build_subject_content_manifest(subject_slug: str) -> SubjectContentManifest:
         lecture_title = _lecture_title_from_heading(lecture_key, lecture.heading)
         readings: list[dict[str, Any]] = []
         reading_lookup: dict[str, list[int]] = {}
+        reading_key_counts: dict[str, int] = {}
         for reading_position, reading in enumerate(lecture.readings):
             normalized_title = _normalize_title(reading.title)
+            source_filename = (
+                str(reading.source_filename).strip()
+                if isinstance(reading.source_filename, str) and reading.source_filename.strip()
+                else None
+            )
+            base_reading_key = _reading_key(lecture_key, reading.title)
             reading_item = {
-                "reading_key": _reading_key(lecture_key, reading.title),
+                "reading_key": _dedupe_reading_key(
+                    base_reading_key,
+                    seen_counts=reading_key_counts,
+                ),
                 "reading_title": str(reading.title),
                 "is_missing": bool(reading.is_missing),
+                "source_filename": source_filename,
                 "sequence_index": reading_position + 1,
                 "assets": {
                     "quizzes": [],

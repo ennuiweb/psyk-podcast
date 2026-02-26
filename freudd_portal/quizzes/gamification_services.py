@@ -539,6 +539,9 @@ def get_subject_learning_path_snapshot(user, subject_slug: str) -> dict[str, Any
                     "reading_key": reading_key,
                     "reading_title": str(reading.get("reading_title") or reading_key),
                     "is_missing": bool(reading.get("is_missing", False)),
+                    "source_filename": (
+                        str(reading.get("source_filename") or "").strip() or None
+                    ),
                     "sequence_index": int(reading.get("sequence_index") or 0),
                     "status": reading_row.status if reading_row else default_status,
                     "completed_quizzes": int(reading_row.completed_quizzes) if reading_row else 0,

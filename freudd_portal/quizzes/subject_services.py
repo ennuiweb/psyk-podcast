@@ -16,6 +16,7 @@ logger = logging.getLogger(__name__)
 SUBJECT_SLUG_RE = re.compile(r"^[a-z0-9-]+$")
 LECTURE_HEADING_RE = re.compile(r"^\*\*(?P<key>W\d{2}L\d+)\s+(?P<title>.+?)\*\*$")
 MISSING_READING_RE = re.compile(r"^MISSING:\s*(?P<title>.+)$", re.IGNORECASE)
+BRIEF_SUFFIX_RE = re.compile(r"\s*\([^)]*\bbrief\b[^)]*\)\s*$", re.IGNORECASE)
 
 
 @dataclass(frozen=True)
@@ -47,6 +48,7 @@ class SubjectCatalog:
 class ReadingItem:
     title: str
     is_missing: bool
+    source_filename: str | None
 
 
 @dataclass(frozen=True)
@@ -165,6 +167,16 @@ def _reading_title_from_bullet(bullet_body: str) -> str:
     return bullet_body.strip()
 
 
+def _source_filename_from_bullet(bullet_body: str) -> str | None:
+    if "→" not in bullet_body:
+        return None
+    right = bullet_body.split("→", 1)[1].strip()
+    if not right:
+        return None
+    cleaned = BRIEF_SUFFIX_RE.sub("", right).strip()
+    return cleaned or None
+
+
 def parse_master_readings(path: str | Path) -> ReadingParseResult:
     source = Path(path)
     if not source.exists():
@@ -221,13 +233,25 @@ def parse_master_readings(path: str | Path) -> ReadingParseResult:
         if missing_match:
             missing_title = missing_match.group("title").strip()
             if missing_title:
-                current_lecture["readings"].append(ReadingItem(title=missing_title, is_missing=True))
+                current_lecture["readings"].append(
+                    ReadingItem(
+                        title=missing_title,
+                        is_missing=True,
+                        source_filename=None,
+                    )
+                )
             continue
 
         reading_title = _reading_title_from_bullet(bullet_body)
         if not reading_title:
             continue
-        current_lecture["readings"].append(ReadingItem(title=reading_title, is_missing=False))
+        current_lecture["readings"].append(
+            ReadingItem(
+                title=reading_title,
+                is_missing=False,
+                source_filename=_source_filename_from_bullet(bullet_body),
+            )
+        )
 
     lectures = tuple(
         ReadingLecture(

@@ -1302,7 +1302,7 @@ class QuizPortalTests(TestCase):
         self.assertNotContains(response, "https://example.test/podcast/w01l1-alle-kilder.mp3")
         self.assertNotContains(response, "https://example.test/podcast/w01l1-intro.mp3")
 
-    def test_subject_detail_uses_source_audio_links_when_spotify_map_missing(self) -> None:
+    def test_subject_detail_hides_unmapped_podcasts_when_spotify_map_missing(self) -> None:
         user = self._create_user()
         self.client.force_login(user)
         self._write_spotify_map({})
@@ -1311,8 +1311,9 @@ class QuizPortalTests(TestCase):
         response = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
         self.assertEqual(response.status_code, 200)
         self.assertNotContains(response, "https://open.spotify.com/episode/")
-        self.assertContains(response, "https://example.test/podcast/w01l1-alle-kilder.mp3")
-        self.assertContains(response, "https://example.test/podcast/w01l1-intro.mp3")
+        self.assertNotContains(response, "https://example.test/podcast/w01l1-alle-kilder.mp3")
+        self.assertNotContains(response, "https://example.test/podcast/w01l1-intro.mp3")
+        self.assertContains(response, "Ingen podcasts registreret i denne forelæsning.")
 
     def test_subject_detail_podcast_duration_label_is_optional(self) -> None:
         user = self._create_user()
@@ -1336,12 +1337,12 @@ class QuizPortalTests(TestCase):
                             "podcasts": [
                                 {
                                     "title": "U1F1 · [Podcast] · Introduktion til kurset",
-                                    "url": "https://example.test/podcast/intro.mp3",
+                                    "url": "https://open.spotify.com/episode/5m0hYfDU9ThM5qR2xMugr8",
                                     "duration_label": "15 min",
                                 },
                                 {
                                     "title": "U1F1 · [Podcast] · Hvad er personlighed?",
-                                    "url": "https://example.test/podcast/personlighed.mp3",
+                                    "url": "https://open.spotify.com/episode/4w4gHCXnQK5fjQdsxQO0XG",
                                 },
                             ],
                         },

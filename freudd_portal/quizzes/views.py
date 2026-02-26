@@ -99,6 +99,10 @@ QUIZ_LANGUAGE_TAG_RE = re.compile(r"\[(?P<lang>[A-Za-z]{2,5})\]")
 QUIZ_BRIEF_PREFIX_RE = re.compile(r"^\s*\[brief\]\s*", re.IGNORECASE)
 QUIZ_LECTURE_KEY_RE = re.compile(r"\bW(?P<week>\d{1,2})L(?P<lecture>\d+)\b", re.IGNORECASE)
 MULTISPACE_RE = re.compile(r"\s+")
+SPOTIFY_EPISODE_URL_RE = re.compile(
+    r"^https://open\.spotify\.com/episode/[A-Za-z0-9]+(?:[/?#].*)?$",
+    re.IGNORECASE,
+)
 
 
 def _is_http_insecure(request: HttpRequest) -> bool:
@@ -456,6 +460,8 @@ def _compact_asset_links(
                 continue
             podcast_url = str(podcast.get("url") or "").strip()
             if not podcast_url:
+                continue
+            if not SPOTIFY_EPISODE_URL_RE.match(podcast_url):
                 continue
             compact_podcasts.append(dict(podcast))
 

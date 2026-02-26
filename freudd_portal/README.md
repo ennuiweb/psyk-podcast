@@ -25,7 +25,7 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Topmenu shows direct links for the authenticated user’s enrolled active subjects.
 - Subject learning path is lecture-first: each lecture node contains readings, plus lecture-level assets (for example `Alle kilder`).
 - Subject content is compiled from reading master key + quiz links + local RSS into `content_manifest.json`.
-- Podcast links on subject pages prefer Spotify (`spotify_map.json` matched by RSS title) and fall back to source audio URL when mapping is missing.
+- Podcast links on subject pages are Spotify-only (`spotify_map.json` matched by RSS title). Direct source/Drive audio links are never exposed in UI.
 - Completion rule: `currentView == "summary"` and `answers_count == question_count`.
 - Gamification core is quiz-driven and always available for authenticated users (`/progress`, `/api/gamification/me`).
 - `/progress` is split in two tracks: private personal tracking and public quizliga preview.
@@ -147,7 +147,7 @@ Enrollment UX rule: enroll/unenroll actions are shown inline per subject in the 
 
 Operational behavior:
 - Mapped RSS titles render Spotify links on `/subjects/<subject_slug>`.
-- Unmapped RSS titles fall back to source audio links in UI and are emitted as manifest warnings (non-fatal).
+- Unmapped RSS titles are skipped from podcast assets and emitted as manifest warnings (non-fatal).
 - Keep `spotify_map.json` updated when new RSS episodes are published.
 - Manifest refresh is automatic on next subject load when source files are newer; CI feed workflow also rebuilds `content_manifest.json` for `personlighedspsykologi-en`.
 

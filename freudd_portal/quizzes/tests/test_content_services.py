@@ -207,7 +207,7 @@ class SubjectContentManifestTests(TestCase):
         self.assertEqual(lecture_podcast["duration_seconds"], 900)
         self.assertEqual(lecture_podcast["duration_label"], "15 min")
 
-    def test_build_manifest_falls_back_to_source_audio_when_spotify_mapping_missing(self) -> None:
+    def test_build_manifest_skips_unmapped_podcasts_when_spotify_mapping_missing(self) -> None:
         self.spotify_map_file.write_text(
             json.dumps(
                 {
@@ -224,17 +224,12 @@ class SubjectContentManifestTests(TestCase):
 
         manifest = build_subject_content_manifest("personlighedspsykologi")
         lecture = manifest["lectures"][0]
-        self.assertEqual(len(lecture["lecture_assets"]["podcasts"]), 1)
-        self.assertEqual(lecture["lecture_assets"]["podcasts"][0]["platform"], "source")
-        self.assertEqual(
-            lecture["lecture_assets"]["podcasts"][0]["url"],
-            "https://example.test/audio/all-sources.mp3",
-        )
+        self.assertEqual(len(lecture["lecture_assets"]["podcasts"]), 0)
         self.assertEqual(len(lecture["readings"][0]["assets"]["podcasts"]), 1)
         self.assertEqual(lecture["readings"][0]["assets"]["podcasts"][0]["platform"], "spotify")
         warnings = lecture.get("warnings") or []
         self.assertTrue(
-            any("Spotify mapping missing for RSS item; using source audio URL" in warning for warning in warnings)
+            any("Spotify mapping missing for RSS item; skipping podcast asset" in warning for warning in warnings)
         )
 
     def test_build_manifest_reports_invalid_spotify_map_without_crash(self) -> None:
@@ -245,18 +240,8 @@ class SubjectContentManifestTests(TestCase):
         self.assertEqual(len(manifest["lectures"]), 2)
         self.assertTrue(any("Spotify map source could not be parsed" in warning for warning in manifest["warnings"]))
         lecture = manifest["lectures"][0]
-        self.assertEqual(len(lecture["lecture_assets"]["podcasts"]), 1)
-        self.assertEqual(lecture["lecture_assets"]["podcasts"][0]["platform"], "source")
-        self.assertEqual(
-            lecture["lecture_assets"]["podcasts"][0]["url"],
-            "https://example.test/audio/all-sources.mp3",
-        )
-        self.assertEqual(len(lecture["readings"][0]["assets"]["podcasts"]), 1)
-        self.assertEqual(lecture["readings"][0]["assets"]["podcasts"][0]["platform"], "source")
-        self.assertEqual(
-            lecture["readings"][0]["assets"]["podcasts"][0]["url"],
-            "https://example.test/audio/lewis.mp3",
-        )
+        self.assertEqual(len(lecture["lecture_assets"]["podcasts"]), 0)
+        self.assertEqual(len(lecture["readings"][0]["assets"]["podcasts"]), 0)
 
     def test_build_manifest_parses_danish_lecture_hints_in_rss_titles(self) -> None:
         self.rss_file.write_text(

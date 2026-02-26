@@ -19,8 +19,8 @@ class SyncSpotifyMapTests(unittest.TestCase):
     def setUpClass(cls):
         cls.mod = _load_module()
 
-    def test_build_spotify_map_adds_search_for_missing_titles(self):
-        by_title, stats = self.mod.build_spotify_map(
+    def test_build_spotify_map_reports_unresolved_titles_when_missing(self):
+        by_title, unresolved, stats = self.mod.build_spotify_map(
             rss_titles=[
                 "Uge 1, Forelæsning 1 · Podcast · Alle kilder",
                 "Uge 1, Forelæsning 1 · Podcast · Lewis (1999)",
@@ -29,15 +29,20 @@ class SyncSpotifyMapTests(unittest.TestCase):
             spotify_episode_by_title={},
             prune_stale=False,
         )
-        self.assertEqual(len(by_title), 2)
-        self.assertTrue(all(url.startswith("https://open.spotify.com/search/") for url in by_title.values()))
-        self.assertEqual(stats["added_search"], 2)
+        self.assertEqual(by_title, {})
+        self.assertEqual(
+            unresolved,
+            [
+                "Uge 1, Forelæsning 1 · Podcast · Alle kilder",
+                "Uge 1, Forelæsning 1 · Podcast · Lewis (1999)",
+            ],
+        )
+        self.assertEqual(stats["unresolved"], 2)
         self.assertEqual(stats["preserved_existing"], 0)
-        self.assertEqual(stats["upgraded_search_to_episode"], 0)
-        self.assertEqual(stats["repaired_invalid"], 0)
+        self.assertEqual(stats["matched_show_episode"], 0)
 
-    def test_build_spotify_map_preserves_valid_urls_and_repairs_invalid(self):
-        by_title, stats = self.mod.build_spotify_map(
+    def test_build_spotify_map_preserves_episode_urls_only_and_ignores_non_episode(self):
+        by_title, unresolved, stats = self.mod.build_spotify_map(
             rss_titles=[
                 "Uge 1, Forelæsning 1 · Podcast · Alle kilder",
                 "Uge 1, Forelæsning 1 · Podcast · Lewis (1999)",
@@ -47,9 +52,14 @@ class SyncSpotifyMapTests(unittest.TestCase):
                     "Uge 1, Forelæsning 1 · Podcast · Alle kilder": (
                         "https://open.spotify.com/episode/5m0hYfDU9ThM5qR2xMugr8"
                     ),
-                    "Uge 1, Forelæsning 1 · Podcast · Lewis (1999)": "https://example.test/not-spotify",
-                    "Uge 2, Forelæsning 1 · Podcast · Stale": (
-                        "https://open.spotify.com/search/Uge%202%2C%20Forel%C3%A6sning%201%20%C2%B7%20Podcast%20%C2%B7%20Stale/episodes"
+                    "Uge 1, Forelæsning 1 · Podcast · Lewis (1999)": (
+                        "https://open.spotify.com/search/Uge%201%2C%20Forel%C3%A6sning%201%20%C2%B7%20Podcast%20%C2%B7%20Lewis%20%281999%29/episodes"
+                    ),
+                    "Uge 2, Forelæsning 1 · Podcast · Stale episode": (
+                        "https://open.spotify.com/episode/0Yqa6gY5GJfNfQfY7wsY5Y"
+                    ),
+                    "Uge 2, Forelæsning 1 · Podcast · Stale search": (
+                        "https://open.spotify.com/search/Uge%202%2C%20Forel%C3%A6sning%201%20%C2%B7%20Podcast/episodes"
                     ),
                 }
             },
@@ -60,19 +70,17 @@ class SyncSpotifyMapTests(unittest.TestCase):
             by_title["Uge 1, Forelæsning 1 · Podcast · Alle kilder"],
             "https://open.spotify.com/episode/5m0hYfDU9ThM5qR2xMugr8",
         )
-        self.assertTrue(
-            by_title["Uge 1, Forelæsning 1 · Podcast · Lewis (1999)"].startswith(
-                "https://open.spotify.com/search/"
-            )
-        )
-        self.assertIn("Uge 2, Forelæsning 1 · Podcast · Stale", by_title)
+        self.assertNotIn("Uge 1, Forelæsning 1 · Podcast · Lewis (1999)", by_title)
+        self.assertIn("Uge 2, Forelæsning 1 · Podcast · Stale episode", by_title)
+        self.assertNotIn("Uge 2, Forelæsning 1 · Podcast · Stale search", by_title)
+        self.assertEqual(unresolved, ["Uge 1, Forelæsning 1 · Podcast · Lewis (1999)"])
         self.assertEqual(stats["preserved_existing"], 1)
-        self.assertEqual(stats["upgraded_search_to_episode"], 0)
-        self.assertEqual(stats["repaired_invalid"], 1)
         self.assertEqual(stats["carried_stale"], 1)
+        self.assertEqual(stats["discarded_non_episode"], 1)
+        self.assertEqual(stats["unresolved"], 1)
 
     def test_build_spotify_map_matches_direct_episode_urls_from_show_index(self):
-        by_title, stats = self.mod.build_spotify_map(
+        by_title, unresolved, stats = self.mod.build_spotify_map(
             rss_titles=["Uge 1, Forelæsning 1 · Podcast · Alle kilder"],
             existing_payload={},
             spotify_episode_by_title={
@@ -86,34 +94,9 @@ class SyncSpotifyMapTests(unittest.TestCase):
             by_title["Uge 1, Forelæsning 1 · Podcast · Alle kilder"],
             "https://open.spotify.com/episode/5m0hYfDU9ThM5qR2xMugr8",
         )
+        self.assertEqual(unresolved, [])
         self.assertEqual(stats["matched_show_episode"], 1)
-        self.assertEqual(stats["upgraded_search_to_episode"], 0)
-        self.assertEqual(stats["added_search"], 0)
-
-    def test_build_spotify_map_upgrades_existing_search_to_episode_when_show_match_exists(self):
-        by_title, stats = self.mod.build_spotify_map(
-            rss_titles=["Uge 1, Forelæsning 1 · Podcast · Alle kilder"],
-            existing_payload={
-                "by_rss_title": {
-                    "Uge 1, Forelæsning 1 · Podcast · Alle kilder": (
-                        "https://open.spotify.com/search/Uge%201%2C%20Forel%C3%A6sning%201%20%C2%B7%20Podcast%20%C2%B7%20Alle%20kilder/episodes"
-                    )
-                }
-            },
-            spotify_episode_by_title={
-                "uge 1, forelæsning 1 · podcast · alle kilder": (
-                    "https://open.spotify.com/episode/5m0hYfDU9ThM5qR2xMugr8"
-                )
-            },
-            prune_stale=False,
-        )
-        self.assertEqual(
-            by_title["Uge 1, Forelæsning 1 · Podcast · Alle kilder"],
-            "https://open.spotify.com/episode/5m0hYfDU9ThM5qR2xMugr8",
-        )
-        self.assertEqual(stats["matched_show_episode"], 1)
-        self.assertEqual(stats["upgraded_search_to_episode"], 1)
-        self.assertEqual(stats["preserved_existing"], 0)
+        self.assertEqual(stats["unresolved"], 0)
 
     def test_parse_show_id_from_url(self):
         self.assertEqual(

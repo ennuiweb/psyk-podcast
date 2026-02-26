@@ -189,6 +189,10 @@ jobs:
           SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
           SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
         run: |
+          if [[ -z "${SPOTIFY_CLIENT_ID}" || -z "${SPOTIFY_CLIENT_SECRET}" ]]; then
+            echo "::error::SPOTIFY_CLIENT_ID and SPOTIFY_CLIENT_SECRET are required for direct Spotify episode mapping."
+            exit 1
+          fi
           python scripts/sync_spotify_map.py \
             --rss shows/${SHOW}/feeds/rss.xml \
             --spotify-map shows/${SHOW}/spotify_map.json \

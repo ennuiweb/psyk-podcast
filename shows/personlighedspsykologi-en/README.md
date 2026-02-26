@@ -56,8 +56,8 @@ Spotify map sync note:
 - `scripts/sync_spotify_map.py` auto-fills `shows/personlighedspsykologi-en/spotify_map.json` from RSS titles.
 - Existing valid Spotify mappings are preserved.
 - If Spotify show lookup succeeds (`--spotify-show-url` + `SPOTIFY_CLIENT_ID`/`SPOTIFY_CLIENT_SECRET`), matching RSS titles are mapped to direct episode URLs.
-- Existing Spotify search URLs are automatically upgraded to direct episode URLs when a show match is found.
-- Missing/invalid entries are filled with Spotify search URLs as fallback.
+- Non-episode mappings are rejected.
+- Unresolved RSS titles fail the sync (no Spotify search fallback is allowed).
 - Workflow `generate-feed.yml` runs this sync automatically for `personlighedspsykologi-en`.
 
 Reading key sync note:

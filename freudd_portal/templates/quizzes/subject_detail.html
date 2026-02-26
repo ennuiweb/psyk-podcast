@@ -909,9 +909,9 @@
                     href="{{ podcast.url }}"
                     target="_blank"
                     rel="noopener"
-                    aria-label="{% if podcast.spotify_embed_url %}Åbn episode {{ podcast.episode_index }} i Spotify{% else %}Find episode {{ podcast.episode_index }} i Spotify{% endif %}"
+                    aria-label="Åbn episode {{ podcast.episode_index }} i Spotify"
                   >
-                    {% if podcast.spotify_embed_url %}Spotify{% else %}Find i Spotify{% endif %}
+                    Spotify
                   </a>
                   <form method="post" action="{{ podcast_tracking_url }}">
                     {% csrf_token %}

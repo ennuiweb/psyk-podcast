@@ -23,10 +23,6 @@ SPOTIFY_EPISODE_URL_RE = re.compile(
     r"^https://open\.spotify\.com/episode/[A-Za-z0-9]+(?:[/?#].*)?$",
     re.IGNORECASE,
 )
-SPOTIFY_SEARCH_URL_RE = re.compile(
-    r"^https://open\.spotify\.com/search/[A-Za-z0-9%._~+-]+(?:/episodes)?(?:[/?#].*)?$",
-    re.IGNORECASE,
-)
 SPOTIFY_SHOW_URL_RE = re.compile(
     r"^https://open\.spotify\.com/show/(?P<show_id>[A-Za-z0-9]+)(?:[/?#].*)?$",
     re.IGNORECASE,
@@ -37,18 +33,11 @@ def normalize_title_key(value: str) -> str:
     return MULTISPACE_RE.sub(" ", str(value or "")).strip()
 
 
-def spotify_search_url_from_title(title: str) -> str:
-    query = normalize_title_key(title)
-    if not query:
-        return "https://open.spotify.com/search"
-    return f"https://open.spotify.com/search/{quote(query, safe='')}/episodes"
-
-
-def is_supported_spotify_url(value: str) -> bool:
+def is_episode_spotify_url(value: str) -> bool:
     url = str(value or "").strip()
     if not url:
         return False
-    return bool(SPOTIFY_EPISODE_URL_RE.match(url) or SPOTIFY_SEARCH_URL_RE.match(url))
+    return bool(SPOTIFY_EPISODE_URL_RE.match(url))
 
 
 def load_rss_titles(rss_path: Path) -> list[str]:
@@ -189,17 +178,18 @@ def build_spotify_map(
     existing_payload: Dict[str, Any],
     spotify_episode_by_title: Dict[str, str] | None,
     prune_stale: bool,
-) -> tuple[Dict[str, str], Dict[str, int]]:
+) -> tuple[Dict[str, str], list[str], Dict[str, int]]:
     existing_by_title = _normalize_existing_by_title(existing_payload.get("by_rss_title"))
     updated: Dict[str, str] = {}
+    unresolved_titles: list[str] = []
     seen_keys: set[str] = set()
     stats = {
-        "added_search": 0,
         "preserved_existing": 0,
-        "upgraded_search_to_episode": 0,
         "matched_show_episode": 0,
         "repaired_invalid": 0,
+        "discarded_non_episode": 0,
         "carried_stale": 0,
+        "unresolved": 0,
     }
     spotify_episode_by_title = spotify_episode_by_title or {}
 
@@ -213,8 +203,7 @@ def build_spotify_map(
         seen_keys.add(key)
         existing = existing_by_title.get(key)
         existing_url = existing[1] if existing else ""
-        existing_is_episode = bool(SPOTIFY_EPISODE_URL_RE.match(existing_url))
-        existing_is_search = bool(SPOTIFY_SEARCH_URL_RE.match(existing_url))
+        existing_is_episode = is_episode_spotify_url(existing_url)
 
         if existing and existing_is_episode:
             updated[title] = existing[1]
@@ -222,35 +211,33 @@ def build_spotify_map(
             continue
 
         mapped_episode_url = spotify_episode_by_title.get(key)
-        if mapped_episode_url and SPOTIFY_EPISODE_URL_RE.match(mapped_episode_url):
+        if mapped_episode_url and is_episode_spotify_url(mapped_episode_url):
             updated[title] = mapped_episode_url
-            if existing and existing_is_search:
-                stats["upgraded_search_to_episode"] += 1
             stats["matched_show_episode"] += 1
             continue
 
-        if existing and existing_is_search:
-            updated[title] = existing[1]
-            stats["preserved_existing"] += 1
-            continue
-
-        updated[title] = spotify_search_url_from_title(title)
         if existing and existing[1]:
-            stats["repaired_invalid"] += 1
-        else:
-            stats["added_search"] += 1
+            if existing_is_episode:
+                pass
+            elif existing_url:
+                if existing_url.startswith("https://open.spotify.com/"):
+                    stats["discarded_non_episode"] += 1
+                else:
+                    stats["repaired_invalid"] += 1
+        unresolved_titles.append(title)
+        stats["unresolved"] += 1
 
     if not prune_stale:
         for key, (title, url) in existing_by_title.items():
             if key in seen_keys:
                 continue
-            if not is_supported_spotify_url(url):
+            if not is_episode_spotify_url(url):
                 continue
             updated[title] = url
             stats["carried_stale"] += 1
 
     ordered = dict(sorted(updated.items(), key=lambda item: item[0].casefold()))
-    return ordered, stats
+    return ordered, unresolved_titles, stats
 
 
 def write_spotify_map(path: Path, payload: Dict[str, Any], *, dry_run: bool) -> bool:
@@ -313,7 +300,7 @@ def main() -> int:
     show_url = str(args.spotify_show_url or "").strip()
     show_id = parse_show_id_from_url(show_url) if show_url else None
     if show_url and not show_id:
-        print(f"Warning: invalid Spotify show URL, skipping show lookup: {show_url}", file=sys.stderr)
+        raise SystemExit(f"--spotify-show-url is invalid: {show_url}")
     if show_id:
         spotify_client_id = str(args.spotify_client_id or os.getenv("SPOTIFY_CLIENT_ID") or "").strip()
         spotify_client_secret = str(
@@ -328,19 +315,32 @@ def main() -> int:
                     market=str(args.spotify_market or "DK"),
                 )
             except RuntimeError as exc:
-                print(f"Warning: Spotify show lookup failed, using search fallbacks only: {exc}", file=sys.stderr)
+                raise SystemExit(f"Spotify show lookup failed: {exc}")
         else:
-            print(
-                "Warning: Spotify show URL provided but API credentials are missing; "
-                "set --spotify-client-id/--spotify-client-secret or env vars.",
-                file=sys.stderr,
+            raise SystemExit(
+                "Spotify show URL provided but API credentials are missing; "
+                "set --spotify-client-id/--spotify-client-secret or env vars."
             )
-    by_rss_title, stats = build_spotify_map(
+    by_rss_title, unresolved_titles, stats = build_spotify_map(
         rss_titles=rss_titles,
         existing_payload=existing_payload,
         spotify_episode_by_title=spotify_episode_by_title,
         prune_stale=bool(args.prune_stale),
     )
+
+    if unresolved_titles:
+        print(
+            "Error: could not map all RSS titles to direct Spotify episode URLs. "
+            "No search fallback is allowed.",
+            file=sys.stderr,
+        )
+        preview_limit = 30
+        for title in unresolved_titles[:preview_limit]:
+            print(f"- {title}", file=sys.stderr)
+        remaining = len(unresolved_titles) - preview_limit
+        if remaining > 0:
+            print(f"... and {remaining} more", file=sys.stderr)
+        return 2
 
     payload = {
         "version": 1,
@@ -352,10 +352,10 @@ def main() -> int:
     print(f"RSS titles: {len(rss_titles)}")
     print(f"Map entries: {len(by_rss_title)}")
     print(f"Preserved existing: {stats['preserved_existing']}")
-    print(f"Upgraded search->episode: {stats['upgraded_search_to_episode']}")
     print(f"Matched show episodes: {stats['matched_show_episode']}")
-    print(f"Added search links: {stats['added_search']}")
+    print(f"Unresolved RSS titles: {stats['unresolved']}")
     print(f"Repaired invalid links: {stats['repaired_invalid']}")
+    print(f"Discarded non-episode Spotify links: {stats['discarded_non_episode']}")
     print(f"Carried stale entries: {stats['carried_stale']}")
     if args.dry_run:
         print(f"Dry run: {'changes detected' if changed else 'no changes'}")

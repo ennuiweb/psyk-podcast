@@ -9,7 +9,6 @@ import re
 import unicodedata
 from pathlib import Path
 from typing import Any
-from urllib.parse import quote
 from xml.etree import ElementTree
 
 from django.conf import settings
@@ -40,10 +39,6 @@ NON_ALNUM_RE = re.compile(r"[^a-z0-9]+")
 MULTISPACE_RE = re.compile(r"\s+")
 SPOTIFY_EPISODE_URL_RE = re.compile(
     r"^https://open\.spotify\.com/episode/[A-Za-z0-9]+(?:[/?#].*)?$",
-    re.IGNORECASE,
-)
-SPOTIFY_SEARCH_URL_RE = re.compile(
-    r"^https://open\.spotify\.com/search/[A-Za-z0-9%._~+-]+(?:/episodes)?(?:[/?#].*)?$",
     re.IGNORECASE,
 )
 HUMAN_MINUTES_RE = re.compile(r"(?P<minutes>\d+)\s*(?:min(?:ute)?s?|minutter)\b", re.IGNORECASE)
@@ -399,14 +394,6 @@ def _duration_payload_from_item(item_node: ElementTree.Element) -> tuple[int | N
 def _normalize_rss_title_key(value: str) -> str:
     return MULTISPACE_RE.sub(" ", str(value or "")).strip()
 
-
-def _spotify_search_url_from_title(title: str) -> str:
-    query = str(title or "").strip()
-    if not query:
-        return "https://open.spotify.com/search"
-    return f"https://open.spotify.com/search/{quote(query, safe='')}/episodes"
-
-
 def _load_spotify_map(
     *,
     path: Path,
@@ -459,10 +446,8 @@ def _load_spotify_map(
             manifest_warnings.append(f"Spotify map URL must be a string for title: {raw_title}")
             continue
         spotify_url = raw_url.strip()
-        if not (SPOTIFY_EPISODE_URL_RE.match(spotify_url) or SPOTIFY_SEARCH_URL_RE.match(spotify_url)):
-            manifest_warnings.append(
-                f"Spotify map URL must be an episode/search URL for title: {raw_title}"
-            )
+        if not SPOTIFY_EPISODE_URL_RE.match(spotify_url):
+            manifest_warnings.append(f"Spotify map URL must be an episode URL for title: {raw_title}")
             continue
         by_title[normalized_title] = spotify_url
     return by_title
@@ -508,24 +493,23 @@ def _attach_podcasts(
         lecture_state = lectures[lecture_index[lecture_key]]
         spotify_url = spotify_by_title.get(_normalize_rss_title_key(title_text))
         source_audio_url = _find_enclosure_url(item)
-        platform = "spotify"
-        used_search_fallback = False
         if not spotify_url:
-            spotify_url = _spotify_search_url_from_title(title_text)
-            platform = "spotify_search"
-            used_search_fallback = True
             lecture_state["warnings"].append(
-                f"Spotify mapping missing for RSS item; using Spotify search fallback: {title_text}"
+                f"Spotify episode mapping missing for RSS item; skipping podcast asset: {title_text}"
             )
-        elif not SPOTIFY_EPISODE_URL_RE.match(spotify_url):
-            platform = "spotify_search"
+            continue
+        if not SPOTIFY_EPISODE_URL_RE.match(spotify_url):
+            lecture_state["warnings"].append(
+                f"Spotify mapping is not an episode URL; skipping podcast asset: {title_text}"
+            )
+            manifest_warnings.append(f"Spotify mapping is not an episode URL for RSS item: {title_text}")
+            continue
         duration_seconds, duration_label = _duration_payload_from_item(item)
         podcast_asset = {
             "kind": _podcast_kind_from_token(kind_hint),
             "title": title_text,
             "url": spotify_url,
-            "platform": platform,
-            "is_spotify_search_fallback": used_search_fallback,
+            "platform": "spotify",
             "pub_date": str(item.findtext("pubDate") or "").strip(),
             "source_audio_url": source_audio_url,
             "duration_seconds": duration_seconds,

@@ -165,7 +165,7 @@ The repository includes a Django portal in `freudd_portal/` for hybrid auth (use
 - UI layout contract: lecture rail links use `GET /subjects/<subject_slug>?lecture=<lecture_key>` to switch active lecture on full-page reload.
 - UI section contract: active lecture card always renders `Readings`, `Podcasts`, `Quiz for alle kilder`; podcasts are flattened into one list and reading cards always show L/M/S difficulty indicators.
 - Podcast link policy (hard requirement): subject detail must only use Spotify URLs. Direct source/Drive audio links must never be exposed in UI.
-- Subject detail podcasts include inline Spotify embed playback (`open.spotify.com/embed/episode/...`) when an episode URL is available, plus an external Spotify link for all podcast rows.
+- Subject detail podcasts include inline Spotify embed playback (`open.spotify.com/embed/episode/...`) and external Spotify links for all visible podcast rows.
 - Subject detail now degrades gracefully: if snapshot computation fails, route still returns 200 with a user-facing retry message instead of 500.
 - Unique key: `(user, quiz_id)` for quiz state
 - Unique key: `(user, subject_slug)` for subject enrollment
@@ -176,7 +176,7 @@ The repository includes a Django portal in `freudd_portal/` for hybrid auth (use
 - First subject in the catalog: `personlighedspsykologi`.
 - Lecture/readings source of truth is the master markdown key path (`FREUDD_READING_MASTER_KEY_PATH`) with fallback to repo mirror (`FREUDD_READING_MASTER_KEY_FALLBACK_PATH`).
 - Subject content is compiled into a lecture-first `content_manifest.json` that merges reading key + `quiz_links.json` + local RSS.
-- Spotify mapping source is `spotify_map.json` keyed by RSS item title; mapped entries use `platform=spotify`, while unmapped entries use `platform=spotify_search` fallback links (`open.spotify.com/search/...`) so podcasts remain visible without exposing Drive URLs.
+- Spotify mapping source is `spotify_map.json` keyed by RSS item title; only direct Spotify episode URLs are valid (`platform=spotify`).
 - `MISSING:` reading lines are preserved and rendered as missing reading cards in subject detail.
 
 ### Local setup
@@ -256,10 +256,10 @@ Quiz sync behavior (current):
 - Non-quiz JSON artifacts (for example `*.html.request.json`, manifest JSON files) are ignored; zero valid quiz JSON files is treated as an error.
 - `manage.py rebuild_content_manifest --subject <slug>` regenerates lecture-first manifest and validates source merges.
 - `load_subject_content_manifest()` auto-detects stale manifests by comparing source mtimes (`reading key`, `quiz_links.json`, `rss.xml`, `spotify_map.json`) and rebuilds on-demand.
-- `scripts/sync_spotify_map.py` auto-syncs RSS titles into `spotify_map.json`, preserving valid mappings, upgrading existing Spotify search URLs to direct episode URLs when show lookup matches, and filling unresolved entries with Spotify search URLs.
-- Show lookup is driven by `--spotify-show-url https://open.spotify.com/show/<id>` and optional credentials `SPOTIFY_CLIENT_ID` + `SPOTIFY_CLIENT_SECRET` (fallback remains Spotify search links when credentials are unavailable).
-- If an RSS episode is missing from `spotify_map.json`, the manifest emits a warning and falls back to a Spotify search URL for that title (still no Drive URL exposure).
-- Mapped episode URLs in `spotify_map.json` enable inline embed playback and replace search fallback links on next manifest refresh.
+- `scripts/sync_spotify_map.py` auto-syncs RSS titles into `spotify_map.json` with direct episode URLs only and fails if any RSS title cannot be resolved.
+- Show lookup is driven by `--spotify-show-url https://open.spotify.com/show/<id>` plus credentials `SPOTIFY_CLIENT_ID` + `SPOTIFY_CLIENT_SECRET`.
+- If an RSS episode is missing from `spotify_map.json`, the manifest emits warnings and skips the podcast asset (no search fallback).
+- Mapped episode URLs in `spotify_map.json` enable inline embed playback on next manifest refresh.
 
 ### Security controls in phase 1
 - Django session auth + CSRF middleware

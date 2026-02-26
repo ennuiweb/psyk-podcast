@@ -103,10 +103,6 @@ SPOTIFY_EPISODE_ID_RE = re.compile(
     r"^https://open\.spotify\.com/episode/(?P<episode_id>[A-Za-z0-9]+)(?:[/?#].*)?$",
     re.IGNORECASE,
 )
-SPOTIFY_SEARCH_URL_RE = re.compile(
-    r"^https://open\.spotify\.com/search/[A-Za-z0-9%._~+-]+(?:/episodes)?(?:[/?#].*)?$",
-    re.IGNORECASE,
-)
 
 
 def _is_http_insecure(request: HttpRequest) -> bool:
@@ -473,11 +469,6 @@ def _compact_asset_links(
                     f"https://open.spotify.com/embed/episode/{episode_id}?utm_source=generator"
                 )
                 compact_podcasts.append(podcast_copy)
-                continue
-            if not SPOTIFY_SEARCH_URL_RE.match(podcast_url):
-                continue
-            podcast_copy["spotify_embed_url"] = ""
-            compact_podcasts.append(podcast_copy)
 
     return {
         "quizzes": compact_quizzes,

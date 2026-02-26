@@ -105,15 +105,18 @@ class CfgTagFilenameHelpersTests(unittest.TestCase):
                 {"relative_path": "W1L1/foo-hard.html", "format": "html", "difficulty": "hard"},
                 {"relative_path": "W1L1/foo-medium.html", "format": "html", "difficulty": "medium"},
                 {"relative_path": "W1L1/foo-easy.html", "format": "html", "difficulty": "easy"},
-            ]
+            ],
+            "personlighedspsykologi",
         )
         self.assertIsNotNone(entry)
         self.assertEqual(entry["relative_path"], "W1L1/foo-medium.html")
         self.assertEqual(entry["difficulty"], "medium")
+        self.assertEqual(entry["subject_slug"], "personlighedspsykologi")
         self.assertEqual(
             [item["difficulty"] for item in entry["links"]],
             ["easy", "medium", "hard"],
         )
+        self.assertTrue(all(item["subject_slug"] == "personlighedspsykologi" for item in entry["links"]))
 
     def test_local_build_flat_quiz_relative_path_is_deterministic(self):
         mod = self.local_sync
@@ -206,6 +209,8 @@ class CfgTagFilenameHelpersTests(unittest.TestCase):
                     str(script_path),
                     "--output-root",
                     tmp_dir,
+                    "--subject-slug",
+                    "personlighedspsykologi",
                     "--dry-run",
                     "--no-upload",
                 ],
@@ -312,15 +317,18 @@ class CfgTagFilenameHelpersTests(unittest.TestCase):
                 {"relative_path": "W1L1/foo-hard.html", "format": "html", "difficulty": "hard"},
                 {"relative_path": "W1L1/foo-medium.html", "format": "html", "difficulty": "medium"},
                 {"relative_path": "W1L1/foo-easy.html", "format": "html", "difficulty": "easy"},
-            ]
+            ],
+            "personlighedspsykologi",
         )
         self.assertIsNotNone(entry)
         self.assertEqual(entry["relative_path"], "W1L1/foo-medium.html")
         self.assertEqual(entry["difficulty"], "medium")
+        self.assertEqual(entry["subject_slug"], "personlighedspsykologi")
         self.assertEqual(
             [item["difficulty"] for item in entry["links"]],
             ["easy", "medium", "hard"],
         )
+        self.assertTrue(all(item["subject_slug"] == "personlighedspsykologi" for item in entry["links"]))
 
     def test_flat_quiz_relative_path_matches_between_local_and_drive_sync(self):
         if self.drive_sync is None:

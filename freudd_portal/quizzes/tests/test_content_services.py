@@ -234,6 +234,35 @@ class SubjectContentManifestTests(TestCase):
             any("Spotify mapping missing for RSS item; using Spotify search fallback" in warning for warning in warnings)
         )
 
+    def test_build_manifest_accepts_spotify_search_urls_in_map(self) -> None:
+        self.spotify_map_file.write_text(
+            json.dumps(
+                {
+                    "version": 1,
+                    "subject_slug": "personlighedspsykologi",
+                    "by_rss_title": {
+                        "U1F1 · [Podcast] · Lewis (1999) · 02/02 - 08/02": (
+                            "https://open.spotify.com/search/U1F1%20%C2%B7%20%5BPodcast%5D%20%C2%B7%20Lewis%20%281999%29%20%C2%B7%2002%2F02%20-%2008%2F02/episodes"
+                        ),
+                        "U1F1 · [Podcast] · Alle kilder · 02/02 - 08/02": (
+                            "https://open.spotify.com/search/U1F1%20%C2%B7%20%5BPodcast%5D%20%C2%B7%20Alle%20kilder%20%C2%B7%2002%2F02%20-%2008%2F02/episodes"
+                        ),
+                    },
+                }
+            ),
+            encoding="utf-8",
+        )
+        clear_content_service_caches()
+
+        manifest = build_subject_content_manifest("personlighedspsykologi")
+        lecture = manifest["lectures"][0]
+        self.assertEqual(lecture["lecture_assets"]["podcasts"][0]["platform"], "spotify_search")
+        self.assertEqual(lecture["readings"][0]["assets"]["podcasts"][0]["platform"], "spotify_search")
+        warnings = lecture.get("warnings") or []
+        self.assertFalse(
+            any("Spotify mapping missing for RSS item; using Spotify search fallback" in warning for warning in warnings)
+        )
+
     def test_build_manifest_reports_invalid_spotify_map_without_crash(self) -> None:
         self.spotify_map_file.write_text("{not-json", encoding="utf-8")
         clear_content_service_caches()

@@ -39,6 +39,7 @@ QUIZ_DIFFICULTY_RE = re.compile(
 QUIZ_TYPE_RE = re.compile(r"\{[^{}]*\btype=quiz\b[^{}]*\}", re.IGNORECASE)
 DUPLICATE_WEEK_PREFIX_RE = re.compile(r"^(W\d{2}L\d+)\s*-\s*\1\b", re.IGNORECASE)
 MISSING_TOKEN_RE = re.compile(r"\bMISSING\b", re.IGNORECASE)
+SUBJECT_SLUG_RE = re.compile(r"^[a-z0-9-]+$")
 QUIZ_DIFFICULTY_SORT_ORDER = {"easy": 0, "medium": 1, "hard": 2}
 QUIZ_PRIMARY_DIFFICULTY_SORT_ORDER = {"medium": 0, "easy": 1, "hard": 2}
 
@@ -427,7 +428,7 @@ def select_primary_quiz_link(links: List[Dict[str, str]]) -> Dict[str, str] | No
     return ranked[0] if ranked else None
 
 
-def build_mapping_entry(links: List[Dict[str, str]]) -> Dict[str, Any] | None:
+def build_mapping_entry(links: List[Dict[str, str]], subject_slug: str) -> Dict[str, Any] | None:
     if not links:
         return None
     normalized_links: List[Dict[str, str]] = []
@@ -445,6 +446,7 @@ def build_mapping_entry(links: List[Dict[str, str]]) -> Dict[str, Any] | None:
                 "relative_path": rel_path,
                 "format": str(raw_link.get("format") or "html"),
                 "difficulty": difficulty,
+                "subject_slug": subject_slug,
             }
         )
     if not normalized_links:
@@ -456,6 +458,7 @@ def build_mapping_entry(links: List[Dict[str, str]]) -> Dict[str, Any] | None:
         "relative_path": primary["relative_path"],
         "format": primary["format"],
         "difficulty": primary["difficulty"],
+        "subject_slug": subject_slug,
     }
     if len(normalized_links) > 1:
         mapping_entry["links"] = normalized_links
@@ -565,6 +568,13 @@ def main() -> int:
         help="Override quiz_links.json path (defaults to config quiz.links_file).",
     )
     parser.add_argument(
+        "--subject-slug",
+        help=(
+            "Subject slug for quiz_links entries. "
+            "Defaults to quiz.subject_slug in config, otherwise personlighedspsykologi."
+        ),
+    )
+    parser.add_argument(
         "--language-tag",
         default="[EN]",
         help="Only include files containing this tag (set empty to include all).",
@@ -630,6 +640,10 @@ def main() -> int:
     quiz_cfg = config.get("quiz")
     if not isinstance(quiz_cfg, dict):
         raise SystemExit("Show config is missing quiz settings.")
+    configured_subject_slug = str(quiz_cfg.get("subject_slug") or "").strip().lower()
+    subject_slug = str(args.subject_slug or configured_subject_slug or "personlighedspsykologi").strip().lower()
+    if not SUBJECT_SLUG_RE.match(subject_slug):
+        raise SystemExit("--subject-slug must match ^[a-z0-9-]+$")
     links_path = resolve_links_path(config_path, quiz_cfg, args.links_file)
 
     language_tag = args.language_tag or None
@@ -754,7 +768,7 @@ def main() -> int:
     sorted_mapping: Dict[str, Dict[str, Any]] = {}
     mapped_quiz_links = 0
     for key in sorted(mapping_links):
-        mapping_entry = build_mapping_entry(mapping_links[key])
+        mapping_entry = build_mapping_entry(mapping_links[key], subject_slug)
         if not mapping_entry:
             continue
         sorted_mapping[key] = mapping_entry

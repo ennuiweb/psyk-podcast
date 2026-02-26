@@ -252,12 +252,14 @@ Proxy these routes to the Django service (Gunicorn/Uvicorn):
 Quiz sync behavior (current):
 - `scripts/sync_quiz_links.py` and `podcast-tools/sync_drive_quiz_links.py` discover quizzes from JSON exports only.
 - Both scripts keep emitting `.html` `relative_path` entries in `quiz_links.json` so feed/portal links stay `/q/<id>.html`.
-- `scripts/sync_quiz_links.py` now requires `--subject-slug` and writes `subject_slug` into each `quiz_links.json` entry.
+- `scripts/sync_quiz_links.py` writes `subject_slug` into each `quiz_links.json` entry; `podcast-tools/sync_drive_quiz_links.py` now does the same (from `--subject-slug` or config fallback).
 - Non-quiz JSON artifacts (for example `*.html.request.json`, manifest JSON files) are ignored; zero valid quiz JSON files is treated as an error.
 - `manage.py rebuild_content_manifest --subject <slug>` regenerates lecture-first manifest and validates source merges.
 - `load_subject_content_manifest()` auto-detects stale manifests by comparing source mtimes (`reading key`, `quiz_links.json`, `rss.xml`, `spotify_map.json`) and rebuilds on-demand.
+- `scripts/sync_spotify_map.py` auto-syncs RSS titles into `spotify_map.json`, preserving valid mappings, upgrading existing Spotify search URLs to direct episode URLs when show lookup matches, and filling unresolved entries with Spotify search URLs.
+- Show lookup is driven by `--spotify-show-url https://open.spotify.com/show/<id>` and optional credentials `SPOTIFY_CLIENT_ID` + `SPOTIFY_CLIENT_SECRET` (fallback remains Spotify search links when credentials are unavailable).
 - If an RSS episode is missing from `spotify_map.json`, the manifest emits a warning and falls back to a Spotify search URL for that title (still no Drive URL exposure).
-- After publishing Spotify episodes, update `shows/personlighedspsykologi-en/spotify_map.json`; mapped episode URLs enable inline embed playback and replace search fallback links on next manifest refresh.
+- Mapped episode URLs in `spotify_map.json` enable inline embed playback and replace search fallback links on next manifest refresh.
 
 ### Security controls in phase 1
 - Django session auth + CSRF middleware

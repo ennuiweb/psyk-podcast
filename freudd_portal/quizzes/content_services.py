@@ -42,6 +42,10 @@ SPOTIFY_EPISODE_URL_RE = re.compile(
     r"^https://open\.spotify\.com/episode/[A-Za-z0-9]+(?:[/?#].*)?$",
     re.IGNORECASE,
 )
+SPOTIFY_SEARCH_URL_RE = re.compile(
+    r"^https://open\.spotify\.com/search/[A-Za-z0-9%._~+-]+(?:/episodes)?(?:[/?#].*)?$",
+    re.IGNORECASE,
+)
 HUMAN_MINUTES_RE = re.compile(r"(?P<minutes>\d+)\s*(?:min(?:ute)?s?|minutter)\b", re.IGNORECASE)
 ITUNES_NS = "http://www.itunes.com/dtds/podcast-1.0.dtd"
 MANIFEST_VERSION = 1
@@ -455,8 +459,10 @@ def _load_spotify_map(
             manifest_warnings.append(f"Spotify map URL must be a string for title: {raw_title}")
             continue
         spotify_url = raw_url.strip()
-        if not SPOTIFY_EPISODE_URL_RE.match(spotify_url):
-            manifest_warnings.append(f"Spotify map URL must be an episode URL for title: {raw_title}")
+        if not (SPOTIFY_EPISODE_URL_RE.match(spotify_url) or SPOTIFY_SEARCH_URL_RE.match(spotify_url)):
+            manifest_warnings.append(
+                f"Spotify map URL must be an episode/search URL for title: {raw_title}"
+            )
             continue
         by_title[normalized_title] = spotify_url
     return by_title
@@ -511,6 +517,8 @@ def _attach_podcasts(
             lecture_state["warnings"].append(
                 f"Spotify mapping missing for RSS item; using Spotify search fallback: {title_text}"
             )
+        elif not SPOTIFY_EPISODE_URL_RE.match(spotify_url):
+            platform = "spotify_search"
         duration_seconds, duration_label = _duration_payload_from_item(item)
         podcast_asset = {
             "kind": _podcast_kind_from_token(kind_hint),

@@ -47,7 +47,7 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Module headers in subject detail are rendered as a combined headline (`Uge x, forelæsning x: <titel>`), with cleaned lecture title metadata.
 - Quiz labels are rendered from cleaned `episode_title` metadata (`modul` + `titel`) instead of raw file/tag strings.
 - Quiz wrapper header uses a structured identity block (module label + title) and includes in-flow progress feedback per question step.
-- `quiz_links.json` entries must include `subject_slug` so unit progression can be computed per subject.
+- `quiz_links.json` entries must include `subject_slug` so unit progression can be computed per subject (auto-populated by quiz-link sync scripts).
 - Optional extensions (`habitica`, `anki`) are disabled by default and must be enabled per account via management command.
 - Extension sync is server-driven (`manage.py sync_extensions`) and runs only for enabled users with stored per-user credentials.
 - Credentials are encrypted at rest with Fernet via `FREUDD_CREDENTIALS_MASTER_KEY`.
@@ -135,7 +135,7 @@ Enrollment UX rule: enroll/unenroll actions are shown inline per subject in the 
 ## Spotify map contract (`spotify_map.json`)
 - Path default: `shows/personlighedspsykologi-en/spotify_map.json`
 - Lookup key: exact RSS `<item><title>` after trim + whitespace normalization.
-- Value: full Spotify episode URL (`https://open.spotify.com/episode/...`).
+- Value: Spotify episode URL (`https://open.spotify.com/episode/...`) or Spotify search URL (`https://open.spotify.com/search/.../episodes`).
 
 ```json
 {
@@ -151,7 +151,8 @@ Operational behavior:
 - Mapped RSS titles render Spotify links on `/subjects/<subject_slug>`.
 - Unmapped RSS titles stay visible via Spotify search fallback links and emit manifest warnings (non-fatal).
 - Inline embed playback is only available for mapped Spotify episode URLs.
-- Keep `spotify_map.json` updated when new RSS episodes are published.
+- `scripts/sync_spotify_map.py` auto-syncs RSS titles into `spotify_map.json` (preserving valid mappings, upgrading search URLs to episode URLs when show lookup matches, and defaulting unresolved titles to Spotify search URLs).
+- Direct show lookup uses `--spotify-show-url` and Spotify client credentials (`SPOTIFY_CLIENT_ID`, `SPOTIFY_CLIENT_SECRET`) to resolve episode URLs by title.
 - Manifest refresh is automatic on next subject load when source files are newer; CI feed workflow also rebuilds `content_manifest.json` for `personlighedspsykologi-en`.
 
 ## New env configuration

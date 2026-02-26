@@ -158,6 +158,7 @@ jobs:
             python podcast-tools/sync_drive_quiz_links.py \
               --config shows/${SHOW}/config.runtime.json \
               --download-root "${download_root}" \
+              --subject-slug personlighedspsykologi \
               --language-tag "[EN]" \
               --quiz-path-mode flat-id \
               --flat-id-len 8 \
@@ -169,6 +170,7 @@ jobs:
             python podcast-tools/sync_drive_quiz_links.py \
               --config shows/${SHOW}/config.runtime.json \
               --download-root "${download_root}" \
+              --subject-slug personlighedspsykologi \
               --language-tag "[EN]" \
               --quiz-path-mode flat-id \
               --flat-id-len 8 \
@@ -180,6 +182,20 @@ jobs:
           SHOW: ${{ matrix.show }}
         run: python podcast-tools/gdrive_podcast_feed.py --config shows/${SHOW}/config.runtime.json
 
+      - name: Sync Spotify map
+        if: matrix.show == 'personlighedspsykologi-en'
+        env:
+          SHOW: ${{ matrix.show }}
+          SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
+          SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
+        run: |
+          python scripts/sync_spotify_map.py \
+            --rss shows/${SHOW}/feeds/rss.xml \
+            --spotify-map shows/${SHOW}/spotify_map.json \
+            --subject-slug personlighedspsykologi \
+            --spotify-show-url https://open.spotify.com/show/0jAvkPCcZ1x98lIMno1oqv \
+            --spotify-market DK
+
       - name: Rebuild subject content manifest
         if: matrix.show == 'personlighedspsykologi-en'
         run: python freudd_portal/manage.py rebuild_content_manifest --subject personlighedspsykologi
@@ -190,6 +206,7 @@ jobs:
         run: |
           feed_path="shows/${SHOW}/feeds/rss.xml"
           quiz_path="shows/${SHOW}/quiz_links.json"
+          spotify_map_path="shows/${SHOW}/spotify_map.json"
           manifest_path="shows/${SHOW}/content_manifest.json"
           files=()
           if [[ -n "$(git status --porcelain "$feed_path")" ]]; then
@@ -197,6 +214,9 @@ jobs:
           fi
           if [[ -f "$quiz_path" && -n "$(git status --porcelain "$quiz_path")" ]]; then
             files+=("$quiz_path")
+          fi
+          if [[ -f "$spotify_map_path" && -n "$(git status --porcelain "$spotify_map_path")" ]]; then
+            files+=("$spotify_map_path")
           fi
           if [[ -f "$manifest_path" && -n "$(git status --porcelain "$manifest_path")" ]]; then
             files+=("$manifest_path")

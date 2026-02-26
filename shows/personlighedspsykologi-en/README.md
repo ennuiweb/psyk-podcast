@@ -49,8 +49,16 @@ Update the Drive folder ID, owner email, and upload service account credentials 
 
 Quiz link sync note:
 - `scripts/sync_quiz_links.py` and `podcast-tools/sync_drive_quiz_links.py` use quiz JSON exports as the source of truth.
-- `shows/personlighedspsykologi-en/quiz_links.json` intentionally keeps `.html` relative paths so public links remain `/q/<id>.html`.
+- `shows/personlighedspsykologi-en/quiz_links.json` intentionally keeps `.html` relative paths so public links remain `/q/<id>.html`, and all entries include `subject_slug`.
 - Feed generation uses `quiz.base_url = https://freudd.dk/q/` so podcast descriptions link to the domain (not raw IP).
+
+Spotify map sync note:
+- `scripts/sync_spotify_map.py` auto-fills `shows/personlighedspsykologi-en/spotify_map.json` from RSS titles.
+- Existing valid Spotify mappings are preserved.
+- If Spotify show lookup succeeds (`--spotify-show-url` + `SPOTIFY_CLIENT_ID`/`SPOTIFY_CLIENT_SECRET`), matching RSS titles are mapped to direct episode URLs.
+- Existing Spotify search URLs are automatically upgraded to direct episode URLs when a show match is found.
+- Missing/invalid entries are filled with Spotify search URLs as fallback.
+- Workflow `generate-feed.yml` runs this sync automatically for `personlighedspsykologi-en`.
 
 Reading key sync note:
 - Source of truth file: `/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/.ai/reading-file-key.md`

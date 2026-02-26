@@ -160,11 +160,11 @@ The repository includes a Django portal in `freudd_portal/` for hybrid auth (use
 - Model: `ExtensionSyncLedger` (`ForeignKey(user)`, idempotent per-day sync rows for each extension)
 - UI: portal now uses a light-first palette with blue-accent cards and shared primitives across dashboard, course view, auth, and quiz wrapper.
 - UI: shared primitives enforce tokenized spacing/radius (`10/12/14/18/22/999`), subtle depth, and `44px` controls for primary/secondary/neutral actions.
-- UI: subject detail page is mobile-first and renders a vertical timeline with manual `<details>` toggles, per-lecture progress bars, nested reading cards, and direct quiz/podcast navigation.
+- UI: subject detail page is mobile-first and renders a left lecture rail with a single active lecture card (no multi-panel `<details>` accordion).
 - UI: subject detail page shows enrollment status only; enroll/unenroll actions live on `/progress` under `Mine fag`.
-- UI layout contract: each lecture renders as a `timeline-item` with collapsed-by-default `lecture-details`; page includes top overview KPI cards plus `Udvid alle`/`Luk alle` controls and localStorage persistence for opened lecture panels.
-- UI hero contract: active lecture exposes top `Næste fokus` with optional `Start nu` CTA and optional direct Spotify episode link.
-- Podcast link policy: subject detail renders Spotify podcast links from `spotify_map.json` when mapped; unmapped RSS podcasts fall back to source-audio links.
+- UI layout contract: lecture rail links use `GET /subjects/<subject_slug>?lecture=<lecture_key>` to switch active lecture on full-page reload.
+- UI section contract: active lecture card always renders `Quizzer`, `Podcasts`, `Readings`; podcasts are flattened into one list and reading cards always show L/M/S difficulty indicators.
+- Podcast link policy: subject detail prefers Spotify links from `spotify_map.json`; unmapped RSS podcasts fall back to source audio links in UI.
 - Subject detail now degrades gracefully: if snapshot computation fails, route still returns 200 with a user-facing retry message instead of 500.
 - Unique key: `(user, quiz_id)` for quiz state
 - Unique key: `(user, subject_slug)` for subject enrollment
@@ -175,7 +175,7 @@ The repository includes a Django portal in `freudd_portal/` for hybrid auth (use
 - First subject in the catalog: `personlighedspsykologi`.
 - Lecture/readings source of truth is the master markdown key path (`FREUDD_READING_MASTER_KEY_PATH`) with fallback to repo mirror (`FREUDD_READING_MASTER_KEY_FALLBACK_PATH`).
 - Subject content is compiled into a lecture-first `content_manifest.json` that merges reading key + `quiz_links.json` + local RSS.
-- Spotify mapping source is `spotify_map.json` keyed by RSS item title; mapped entries become canonical podcast URLs in manifest (`platform=spotify`). Unmapped entries use `platform=source` with RSS source-audio URL.
+- Spotify mapping source is `spotify_map.json` keyed by RSS item title; mapped entries become canonical podcast URLs in manifest (`platform=spotify`, `source_audio_url` preserved for traceability).
 - `MISSING:` reading lines are preserved and rendered as missing reading cards in subject detail.
 
 ### Local setup
@@ -267,7 +267,7 @@ Quiz sync behavior (current):
 - Anonymous users are prompted to log in when they reach quiz summary/completion
 - Strict quiz ID regex (`^[0-9a-f]{8}$`) plus existence checks
 - IP-based login/signup rate limiting
-- HTTP warning banners on auth pages (until HTTPS rollout)
+- HTTP warning banners on auth pages (keep until domain TLS cutover is complete)
 - Extension sync runs server-side from management commands/cron, with per-user credentials encrypted in DB.
 
 Google OAuth callback allowlist (Google Cloud OAuth client):
@@ -280,8 +280,19 @@ Google OAuth callback allowlist (Google Cloud OAuth client):
 - Runtime names are now `freudd-portal.service` and `/etc/freudd-portal.env`.
 - Upgrades from pre-rename deployments must move the SQLite file to `/opt/podcasts/freudd_portal/db.sqlite3` and ensure `www-data` can write in `/opt/podcasts/freudd_portal`.
 
-### Operational note
-The current deployment is HTTP on IP. Credentials are therefore vulnerable on untrusted networks. HTTPS with a domain should be prioritized as the next rollout step.
+### freudd.dk domain cutover (2026-02-26)
+- Server is prepared for domain traffic in Caddy: `freudd.dk, www.freudd.dk` now route with the same path split as IP (`/accounts/*`, `/api/*`, `/progress*`, `/subjects/*`, `/preferences/*`, `/q/*` to `127.0.0.1:8001`, fallback to `127.0.0.1:3000`).
+- Django host allowlist on production was updated to include domain names: `FREUDD_PORTAL_ALLOWED_HOSTS=freudd.dk,www.freudd.dk,64.226.79.109,127.0.0.1,localhost`.
+- TLS issuance is configured in Caddy but will fail until DNS points to the droplet.
+
+Required DNS records at registrar/DNS provider:
+- `A @ -> 64.226.79.109`
+- `A www -> 64.226.79.109` (or `CNAME www -> freudd.dk`)
+
+Verification commands after DNS change:
+- `dig +short freudd.dk A` should return `64.226.79.109`
+- `dig +short www.freudd.dk A` should return `64.226.79.109` (or CNAME target)
+- `curl -I https://freudd.dk/accounts/login` should return `200`
 
 ## Configure GitHub Actions
 1. Create two repository secrets:

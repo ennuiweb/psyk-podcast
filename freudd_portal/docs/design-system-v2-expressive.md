@@ -163,18 +163,18 @@ Use one orchestrated entrance per page, not many unrelated animations.
 
 ### Timeline
 
-- Keep vertical timeline for lectures/readings.
-- Dot marker uses accent on active node and success on completed node.
-- Connector remains muted unless previous node is completed.
+- Keep lecture progression as a left rail with numbered markers and connector.
+- Active marker uses accent; non-active markers stay neutral with completed context on connector.
+- Right column renders a single active lecture card selected by URL query (`?lecture=<lecture_key>`).
 
 ### Lecture detail partitioning (required)
 
-- Expanded lecture details must render three sibling sections in this order: `Quizzer`, `Podcasts`, `Readings`.
+- Active lecture card must render three sibling sections in this order: `Quizzer`, `Podcasts`, `Readings`.
 - Each section has its own heading, icon, and content container.
 - Quiz chips, level pills, and quiz status live only in `Quizzer`.
 - Episode metadata (duration, listen-state, speed markers) lives only in `Podcasts`.
 - Text/article cards and reading progress live only in `Readings`.
-- Reading-level quiz chips are hidden by default and controlled via `FREUDD_SUBJECT_DETAIL_SHOW_READING_QUIZZES`.
+- Reading cards always expose L/M/S difficulty indicators in subject detail.
 - Empty state messaging is shown per section; one populated section must not hide the others.
 
 ## Page Blueprints
@@ -187,12 +187,12 @@ Use one orchestrated entrance per page, not many unrelated animations.
 
 ### `/subjects/<subject_slug>`
 
-- Keep KPI strip at top, but move "what next" cue into first timeline item.
-- Lecture details remain collapsed by default.
-- Expanded lecture details use fixed section order:
+- Remove KPI strip and global expand/collapse controls.
+- Use lecture rail navigation (left) + one active lecture card (right).
+- Active lecture card uses fixed section order:
   - `Quizzer` (lecture quiz + item quizzes, with level chips).
-  - `Podcasts` (episode cards only).
-  - `Readings` (text/article cards; reading-linked quiz badges are toggle-controlled and hidden by default).
+  - `Podcasts` (flat episode list with discrete tracking controls).
+  - `Readings` (text/article cards with always-visible L/M/S indicators).
 - Quiz chips use stronger level distinction: `Let` calm, `Mellem` vivid, `Svær` warm/high-attention.
 
 ### `/q/<quiz_id>.html`

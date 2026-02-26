@@ -508,6 +508,169 @@ def _enrich_subject_path_lectures(lectures: object) -> list[dict[str, object]]:
     return enriched
 
 
+def _quiz_difficulty_slots(assets: object) -> list[dict[str, object]]:
+    quiz_by_difficulty: dict[str, dict[str, object]] = {}
+    assets_payload = assets if isinstance(assets, dict) else {}
+    quizzes = assets_payload.get("quizzes") if isinstance(assets_payload.get("quizzes"), list) else []
+    for quiz in quizzes:
+        if not isinstance(quiz, dict):
+            continue
+        difficulty = str(quiz.get("difficulty") or "unknown").strip().lower() or "unknown"
+        if difficulty not in {"easy", "medium", "hard"}:
+            continue
+        if difficulty not in quiz_by_difficulty:
+            quiz_by_difficulty[difficulty] = quiz
+
+    return [
+        {
+            "difficulty": "easy",
+            "label": "Let",
+            "chip": "L",
+            "quiz_url": str(quiz_by_difficulty.get("easy", {}).get("quiz_url") or "").strip(),
+            "question_count": quiz_by_difficulty.get("easy", {}).get("question_count"),
+        },
+        {
+            "difficulty": "medium",
+            "label": "Mellem",
+            "chip": "M",
+            "quiz_url": str(quiz_by_difficulty.get("medium", {}).get("quiz_url") or "").strip(),
+            "question_count": quiz_by_difficulty.get("medium", {}).get("question_count"),
+        },
+        {
+            "difficulty": "hard",
+            "label": "Svær",
+            "chip": "S",
+            "quiz_url": str(quiz_by_difficulty.get("hard", {}).get("quiz_url") or "").strip(),
+            "question_count": quiz_by_difficulty.get("hard", {}).get("question_count"),
+        },
+    ]
+
+
+def _reading_difficulty_summary(reading: object) -> list[dict[str, object]]:
+    if not isinstance(reading, dict):
+        return _quiz_difficulty_slots({})
+    assets = reading.get("assets") if isinstance(reading.get("assets"), dict) else {}
+    return _quiz_difficulty_slots(assets)
+
+
+def _podcast_display_title(value: object) -> str:
+    title_text = str(value or "").strip()
+    if not title_text:
+        return "Podcast episode"
+    parts = [part.strip() for part in title_text.split("·") if part.strip()]
+    if len(parts) >= 3:
+        return parts[2]
+    return title_text
+
+
+def _flatten_podcast_rows(lecture: object) -> list[dict[str, object]]:
+    if not isinstance(lecture, dict):
+        return []
+    rows: list[dict[str, object]] = []
+    lecture_key = str(lecture.get("lecture_key") or "").strip().upper()
+
+    lecture_assets = lecture.get("lecture_assets") if isinstance(lecture.get("lecture_assets"), dict) else {}
+    lecture_podcasts = (
+        lecture_assets.get("podcasts")
+        if isinstance(lecture_assets.get("podcasts"), list)
+        else []
+    )
+    for podcast in lecture_podcasts:
+        if not isinstance(podcast, dict):
+            continue
+        rows.append(
+            {
+                **podcast,
+                "lecture_key": lecture_key,
+                "reading_key": None,
+                "source_label": "Forelæsning",
+                "display_title": _podcast_display_title(podcast.get("title")),
+            }
+        )
+
+    readings = lecture.get("readings") if isinstance(lecture.get("readings"), list) else []
+    for reading in readings:
+        if not isinstance(reading, dict):
+            continue
+        reading_title = str(reading.get("reading_title") or "").strip() or "Reading"
+        reading_key = str(reading.get("reading_key") or "").strip() or None
+        assets = reading.get("assets") if isinstance(reading.get("assets"), dict) else {}
+        reading_podcasts = (
+            assets.get("podcasts")
+            if isinstance(assets.get("podcasts"), list)
+            else []
+        )
+        for podcast in reading_podcasts:
+            if not isinstance(podcast, dict):
+                continue
+            rows.append(
+                {
+                    **podcast,
+                    "lecture_key": lecture_key,
+                    "reading_key": reading_key,
+                    "source_label": reading_title,
+                    "display_title": _podcast_display_title(podcast.get("title")),
+                }
+            )
+
+    for index, row in enumerate(rows, start=1):
+        row["episode_index"] = index
+    return rows
+
+
+def _selected_active_lecture(
+    lectures: list[dict[str, object]],
+    *,
+    requested_lecture_key: object,
+) -> tuple[int, dict[str, object] | None]:
+    if not lectures:
+        return -1, None
+
+    requested_key = str(requested_lecture_key or "").strip().upper()
+    if requested_key:
+        for index, lecture in enumerate(lectures):
+            lecture_key = str(lecture.get("lecture_key") or "").strip().upper()
+            if lecture_key == requested_key:
+                return index, lecture
+
+    for index, lecture in enumerate(lectures):
+        status = str(lecture.get("status") or "").strip().lower()
+        if status != "completed":
+            return index, lecture
+
+    return 0, lectures[0]
+
+
+def _lecture_rail_items(
+    *,
+    subject_slug: str,
+    lectures: list[dict[str, object]],
+    active_index: int,
+) -> list[dict[str, object]]:
+    detail_url = reverse("subject-detail", kwargs={"subject_slug": subject_slug})
+    items: list[dict[str, object]] = []
+    for index, lecture in enumerate(lectures, start=1):
+        lecture_key = str(lecture.get("lecture_key") or "").strip().upper()
+        if lecture_key:
+            lecture_url = f"{detail_url}?{urlencode({'lecture': lecture_key})}"
+        else:
+            lecture_url = detail_url
+        status = str(lecture.get("status") or "").strip().lower()
+        items.append(
+            {
+                "index": index,
+                "lecture_key": lecture_key,
+                "lecture_url": lecture_url,
+                "is_active": (index - 1) == active_index,
+                "is_completed": status == "completed",
+                "lecture_display_label": str(lecture.get("lecture_display_label") or "").strip(),
+                "lecture_display_name": str(lecture.get("lecture_display_name") or "").strip(),
+                "lecture_display_title": str(lecture.get("lecture_display_title") or "").strip(),
+            }
+        )
+    return items
+
+
 @require_http_methods(["GET", "POST"])
 def signup_view(request: HttpRequest) -> HttpResponse:
     if request.user.is_authenticated:
@@ -1119,7 +1282,25 @@ def subject_detail_view(request: HttpRequest, subject_slug: str) -> HttpResponse
         subject_slug=subject.slug,
         lectures=lecture_payload,
     )
-    overview = _subject_path_overview(lecture_payload)
+    active_index, active_lecture = _selected_active_lecture(
+        lecture_payload,
+        requested_lecture_key=request.GET.get("lecture"),
+    )
+    if isinstance(active_lecture, dict):
+        active_lecture["quiz_difficulty_slots"] = _quiz_difficulty_slots(active_lecture.get("lecture_assets"))
+        active_lecture["podcast_rows"] = _flatten_podcast_rows(active_lecture)
+        readings = active_lecture.get("readings") if isinstance(active_lecture.get("readings"), list) else []
+        for reading in readings:
+            if not isinstance(reading, dict):
+                continue
+            summary = _reading_difficulty_summary(reading)
+            reading["difficulty_summary"] = summary
+            reading["primary_quiz_url"] = ""
+            for slot in summary:
+                quiz_url = str(slot.get("quiz_url") or "").strip()
+                if quiz_url:
+                    reading["primary_quiz_url"] = quiz_url
+                    break
 
     return render(
         request,
@@ -1129,11 +1310,13 @@ def subject_detail_view(request: HttpRequest, subject_slug: str) -> HttpResponse
             "is_enrolled": is_enrolled,
             "readings_error": readings_error,
             "subject_path_lectures": lecture_payload,
-            "subject_path_overview": overview,
+            "lecture_rail_items": _lecture_rail_items(
+                subject_slug=subject.slug,
+                lectures=lecture_payload,
+                active_index=active_index,
+            ),
+            "active_lecture": active_lecture,
             "reading_tracking_url": reverse("subject-tracking-reading", kwargs={"subject_slug": subject.slug}),
             "podcast_tracking_url": reverse("subject-tracking-podcast", kwargs={"subject_slug": subject.slug}),
-            "show_reading_quizzes": _as_bool(
-                getattr(settings, "FREUDD_SUBJECT_DETAIL_SHOW_READING_QUIZZES", False)
-            ),
         },
     )

@@ -167,10 +167,10 @@ Rules:
 
 ### Timeline and lecture detail partitioning
 
-- Learning path is a vertical timeline of lecture items (`.timeline-item`).
-- Lecture details default collapsed (`<details>`), open state persisted client-side.
-- Timeline connector accent appears only for completed lectures.
-- Expanded lecture details must always render three sibling sections in this order:
+- Learning path is a two-column rail layout: left lecture rail + right single active lecture card.
+- Lecture switching is URL-addressable (`?lecture=<lecture_key>`) and server-rendered on reload.
+- Rail connector remains muted by default and accentuates completed context.
+- Active lecture card must always render three sibling sections in this order:
   - `Quizzer`
   - `Podcasts`
   - `Readings`
@@ -178,7 +178,7 @@ Rules:
   - Quiz chips and quiz status belong only in `Quizzer`.
   - Episode metadata belongs only in `Podcasts`.
   - Text/article cards and reading progress belong only in `Readings`.
-- Reading-level quiz chips are feature-toggled and hidden by default (`FREUDD_SUBJECT_DETAIL_SHOW_READING_QUIZZES=0`).
+- Reading cards always show L/M/S difficulty indicators in subject detail.
 - Empty state messaging is shown per section; a populated section never hides the other two.
 
 ### Data table pattern
@@ -211,16 +211,17 @@ Behavior:
 
 Order:
 1. Subject title/description and return utility action
-2. Compact KPI overview cards
-3. Timeline with lecture items
+2. Left lecture rail with numbered markers
+3. Single active lecture card with section blocks
 
 Behavior:
 - No enrollment mutation controls on this page.
-- `Udvid alle`/`Luk alle` are neutral productivity controls.
-- Expanded lecture details use fixed section order:
+- No KPI strip or global expand/collapse controls on this page.
+- Rail marker click updates active lecture via `?lecture=<lecture_key>`.
+- Active lecture card uses fixed section order:
   - `Quizzer` (lecture quiz + item quizzes, with level chips in order `Let`, `Mellem`, `Svær`)
-  - `Podcasts` (episode cards only)
-  - `Readings` (text/article cards; reading-linked quiz badges are hidden by default behind feature toggle)
+  - `Podcasts` (flat episode list with discrete tracking controls)
+  - `Readings` (text/article cards with always-visible L/M/S indicators)
 
 ### `/q/<quiz_id>.html` (quiz wrapper)
 

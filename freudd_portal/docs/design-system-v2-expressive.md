@@ -227,6 +227,6 @@ Do use:
 2. Set `data-design-system="paper-studio"` on `<html>` as locked default.
 3. Update shared controls (`.btn-primary`, `.nav-action`, `.card`) to tokenized V2 slots.
 4. Migrate `progress`, `subject_detail`, and `wrapper` page-specific colors to semantic tokens.
-5. Refactor subject detail lecture content into three explicit blocks: `Quizzer`, `Podcasts`, `Readings`.
+5. Refactor subject detail lecture content into three explicit blocks: `Quizzer`, `Podcasts`, `Readings`. (Implemented 2026-02-26 in `templates/quizzes/subject_detail.html` + `quizzes/views.py`)
 6. Add reduced-motion-safe reveal classes to top-level sections only.
 7. Validate contrast, keyboard focus, and section partitioning behavior before rollout.

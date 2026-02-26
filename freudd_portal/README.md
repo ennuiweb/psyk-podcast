@@ -28,8 +28,9 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Subject detail UI is mobile-first and uses a vertical timeline with manual `<details>` toggles, per-lecture progress bars, and compact quiz chips per difficulty.
 - Subject detail includes top overview KPI cards, `Udvid alle`/`Luk alle` controls, and local browser persistence of opened lectures.
 - Subject detail spacing now uses a local responsive scale (`section/block/tight`) to keep vertical rhythm consistent across KPI cards, timeline items, lecture panels, and reading rows.
-- Subject detail reading cards group quiz/podcast assets in a dedicated `reading-assets` stack to preserve clearer spacing from status/progress to action chips.
-- Subject detail reading cards use a slightly denser compact mode (reduced card padding + tighter status-to-chip offset) to keep long reading lists visually lighter.
+- Expanded lecture details are partitioned into three fixed sibling sections: `Quizzer`, `Podcasts`, `Readings`.
+- Quiz assets are surfaced only in `Quizzer`, podcast assets only in `Podcasts`, and reading status/progress only in `Readings`.
+- Section-level empty states are shown per section; one populated section does not hide the others.
 - Module headers in subject detail are split visually into two title elements: `Uge x, forelæsning x` (label) and the cleaned lecture title (without trailing `(Forelæsning x, YYYY-MM-DD)` metadata).
 - Quiz labels are rendered from cleaned `episode_title` metadata (`modul` + `titel`) instead of raw file/tag strings.
 - Quiz wrapper header uses a structured identity block (module label + title) and includes in-flow progress feedback per question step.
@@ -38,13 +39,13 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Extension sync is server-driven (`manage.py sync_extensions`) and runs only for enabled users with stored per-user credentials.
 - Credentials are encrypted at rest with Fernet via `FREUDD_CREDENTIALS_MASTER_KEY`.
 - Habitica server sync is active; Anki remains gated but server sync is deferred.
-- Theme direction: multi-system UI with switchable `classic`, `night-lab`, and `paper-studio` design systems.
+- Theme governance: `paper-studio` is the redesign baseline; `classic` and `night-lab` remain runtime compatibility/preview systems.
 - Default design system is `paper-studio` (`FREUDD_DESIGN_SYSTEM_DEFAULT`), with selector placed on `mit overblik` (`GET /progress`).
 - Active design system resolution order: query (`?ds=`) -> session preview -> authenticated user preference -> cookie -> configured default.
 - Headings/titles in the portal UI are rendered in lower-case for consistent visual tone.
 - Shared primitives in `templates/base.html` enforce radius/spacing/depth rules portal-wide, while page templates apply local layout detail.
 - Design system source of truth: `freudd_portal/docs/design-guidelines.md` (anchored to `docs/non-technical-overview.md`).
-- Alternative expressive design system: `freudd_portal/docs/design-system-v2-expressive.md` (non-generic typography + dual-theme approach).
+- Expressive design system spec: `freudd_portal/docs/design-system-v2-expressive.md` (Paper Studio locked + lecture partitioning rules).
 
 ## Routes
 - `GET/POST /accounts/signup`
@@ -57,9 +58,13 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - `GET/POST /api/quiz-state/<quiz_id>/raw`
 - `GET /api/gamification/me`
 - `GET /progress`
+- `GET /leaderboard/<subject_slug>`
+- `POST /leaderboard/profile`
 - `GET /subjects/<subject_slug>`
 - `POST /subjects/<subject_slug>/enroll`
 - `POST /subjects/<subject_slug>/unenroll`
+- `POST /subjects/<subject_slug>/tracking/reading`
+- `POST /subjects/<subject_slug>/tracking/podcast`
 - `POST /preferences/design-system`
 
 Enrollment UX rule: enroll/unenroll actions are shown inline per subject in the `Mine fag` section of `GET /progress`; subject detail remains read-only for enrollment state.
@@ -78,6 +83,9 @@ Enrollment UX rule: enroll/unenroll actions are shown inline per subject in the 
 - `UserExtensionCredential`: per-user encrypted extension credentials (`habitica` now, `anki` deferred).
 - `ExtensionSyncLedger`: per-user/per-extension/per-day idempotent sync log (`ok|error|skipped`).
 - `UserInterfacePreference`: per-user interface settings (`design_system`) for persistent theme selection.
+- `UserReadingMark`: per-user private reading tracking marks (`mark/unmark`) on subject detail.
+- `UserPodcastMark`: per-user private podcast tracking marks (`mark/unmark`) on subject detail.
+- `UserLeaderboardProfile`: per-user public alias and visibility settings for quizliga leaderboard.
 - `UserUnitProgress`: legacy/compat path model kept temporarily for API compatibility.
 
 ## Subject catalog (`subjects.json`)

@@ -6,8 +6,10 @@ from __future__ import annotations
 import argparse
 import datetime as dt
 import json
+import random
 import re
 import sys
+import time
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Sequence, Set, Tuple
 from urllib.parse import quote
@@ -16,9 +18,11 @@ from zoneinfo import ZoneInfo
 try:
     from google.oauth2 import service_account
     from googleapiclient.discovery import build
+    from googleapiclient.errors import HttpError
 except ModuleNotFoundError:  # pragma: no cover - optional for pure-metadata/unit tests
     service_account = None  # type: ignore[assignment]
     build = None  # type: ignore[assignment]
+    HttpError = None  # type: ignore[assignment]
 
 SCOPES = ["https://www.googleapis.com/auth/drive"]
 ATOM_NS = "http://www.w3.org/2005/Atom"
@@ -151,6 +155,10 @@ DOC_CALLOUT_PATTERN = re.compile(
     r"\[!\s*(important|warning|attention|prioritet|priority|vigtig)\b", re.IGNORECASE
 )
 WEEK_X_PREFIX_PATTERN = re.compile(r"^w\d+(?:l\d+)?\s+x\b", re.IGNORECASE)
+GOOGLE_API_RETRY_STATUS_CODES = {429, 500, 502, 503, 504}
+GOOGLE_API_RETRY_REASONS = {"internalError", "backendError", "rateLimitExceeded", "userRateLimitExceeded"}
+GOOGLE_API_MAX_RETRIES = 4
+GOOGLE_API_RETRY_BASE_DELAY_SECONDS = 1.0
 
 
 def load_json(path: Path) -> Dict[str, Any]:
@@ -182,6 +190,40 @@ def build_drive_service(credentials_path: Path):
     return build("drive", "v3", credentials=credentials, cache_discovery=False)
 
 
+def _is_retryable_http_error(exc: BaseException) -> bool:
+    if HttpError is None or not isinstance(exc, HttpError):
+        return False
+
+    status_code = getattr(getattr(exc, "resp", None), "status", None)
+    if status_code in GOOGLE_API_RETRY_STATUS_CODES:
+        return True
+
+    content = getattr(exc, "content", b"")
+    if isinstance(content, bytes):
+        try:
+            payload = json.loads(content.decode("utf-8"))
+        except (UnicodeDecodeError, json.JSONDecodeError):
+            payload = {}
+        errors = payload.get("error", {}).get("errors", []) if isinstance(payload, dict) else []
+        if isinstance(errors, list):
+            for entry in errors:
+                reason = str((entry or {}).get("reason") or "").strip()
+                if reason in GOOGLE_API_RETRY_REASONS:
+                    return True
+    return False
+
+
+def _execute_with_retry(request):
+    for attempt in range(GOOGLE_API_MAX_RETRIES + 1):
+        try:
+            return request.execute()
+        except Exception as exc:  # pragma: no cover - network failure path
+            if not _is_retryable_http_error(exc) or attempt >= GOOGLE_API_MAX_RETRIES:
+                raise
+            delay = GOOGLE_API_RETRY_BASE_DELAY_SECONDS * (2**attempt) + random.uniform(0.0, 0.35)
+            time.sleep(delay)
+
+
 def _drive_list(
     service,
     *,
@@ -210,7 +252,7 @@ def _drive_list(
             )
         if drive_id:
             params.update({"driveId": drive_id, "corpora": "drive"})
-        response = service.files().list(**params).execute()
+        response = _execute_with_retry(service.files().list(**params))
         entries.extend(response.get("files", []))
         page_token = response.get("nextPageToken")
         if not page_token:
@@ -758,7 +800,7 @@ def ensure_public_permission(
     }
     if supports_all_drives:
         params["supportsAllDrives"] = True
-    permissions = service.permissions().list(**params).execute()
+    permissions = _execute_with_retry(service.permissions().list(**params))
     for permission in permissions.get("permissions", []):
         if permission.get("type") == "anyone" and permission.get("role") in {"reader", "commenter"}:
             return False
@@ -771,7 +813,7 @@ def ensure_public_permission(
     }
     if supports_all_drives:
         create_params["supportsAllDrives"] = True
-    service.permissions().create(**create_params).execute()
+    _execute_with_retry(service.permissions().create(**create_params))
     return True
 
 
@@ -1133,7 +1175,7 @@ def get_folder_metadata(
     params: Dict[str, Any] = {"fileId": folder_id, "fields": "id,name,parents"}
     if supports_all_drives:
         params["supportsAllDrives"] = True
-    metadata = service.files().get(**params).execute()
+    metadata = _execute_with_retry(service.files().get(**params))
     cache[folder_id] = metadata
     return metadata
 

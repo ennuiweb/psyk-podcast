@@ -4,37 +4,24 @@ Last updated: 2026-02-26
 
 ## Intent
 
-This is an alternative visual system for `freudd_portal` designed to avoid generic SaaS aesthetics. It keeps the same product goals (identity, continuity, progression, motivation, coherence) but uses stronger typography, bolder contrast, and atmospheric surfaces.
+This is the active visual system for `freudd_portal` designed to avoid generic SaaS aesthetics. It keeps the same product goals (identity, continuity, progression, motivation, coherence) but uses stronger typography, bolder contrast, and atmospheric surfaces.
 
 Primary inspiration:
-- Dark IDE environments (focused study energy)
 - Editorial print systems (content dignity and hierarchy)
 - Nordic cultural contrast (quiet base + sharp signal accents)
 
 ## Direction
 
-One product, two intentional moods:
-- `Night Lab` (default): dark, concentrated, confident.
-- `Paper Studio`: warm light, editorial, reflective.
-
-Both modes use the same component grammar and spacing so users can switch without relearning the interface.
+Theme lock (effective 2026-02-26):
+- `Paper Studio` is the selected and only approved redesign theme.
+- All new redesign work must start from Paper Studio tokens, typography, and surfaces.
+- `Night Lab` is archived for reference and must not be used for new redesigns.
 
 ## Typography System
 
 Avoided on purpose: `Inter`, `Roboto`, `Arial`, system-default-heavy stacks.
 
-### Pairing A (Night Lab)
-
-- Display/headers: `Syne` (`600-800`)
-- Body/UI: `Instrument Sans` (`400-700`)
-- Data/meta: `IBM Plex Mono` (`500-600`)
-
-Character:
-- Geometric but human.
-- Distinctive headings without sacrificing readability.
-- Strong visual separation between narrative text and technical metadata.
-
-### Pairing B (Paper Studio)
+### Paper Studio pairing (locked)
 
 - Display/headers: `Fraunces` (`600-700`, optical size enabled)
 - Body/UI: `Public Sans` (`400-700`)
@@ -49,7 +36,7 @@ Character:
 Dominant palette strategy:
 - Large neutral fields carry concentration.
 - One electric action color + one warm highlight create rhythm.
-- Success and danger stay semantically stable across modes.
+- Success and danger stay semantically stable across components.
 
 ```css
 /* shared semantic slots */
@@ -68,25 +55,8 @@ Dominant palette strategy:
   --focus-ring-size: 3px;
 }
 
-/* Theme A: Night Lab (dark default) */
-:root[data-theme="night-lab"] {
-  --bg: #0a0f1d;
-  --bg-elevated: #111a30;
-  --surface: #141f39;
-  --surface-soft: #1a2746;
-  --ink: #e8eefc;
-  --muted: #9aabcf;
-  --border: #2a3c68;
-  --accent: #1de2b6;
-  --accent-strong: #0fbf97;
-  --accent-warm: #ff9f1c;
-  --success: #4dd36f;
-  --danger: #ff627e;
-  --focus-ring: color-mix(in srgb, var(--accent) 45%, transparent);
-}
-
-/* Theme B: Paper Studio (light editorial) */
-:root[data-theme="paper-studio"] {
+/* Locked theme: Paper Studio (light editorial) */
+:root[data-design-system="paper-studio"] {
   --bg: #f4efe4;
   --bg-elevated: #efe7d7;
   --surface: #fffdf7;
@@ -106,28 +76,6 @@ Dominant palette strategy:
 ## Atmospheric Background System
 
 No flat monochrome canvas. Use layered depth:
-
-### Night Lab background
-
-```css
-body {
-  background:
-    radial-gradient(1200px 600px at 12% -10%, rgba(29, 226, 182, 0.12), transparent 55%),
-    radial-gradient(900px 420px at 90% 0%, rgba(255, 159, 28, 0.11), transparent 60%),
-    linear-gradient(160deg, #0a0f1d 0%, #0d1426 45%, #101a31 100%);
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background-image:
-    linear-gradient(rgba(154, 171, 207, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(154, 171, 207, 0.06) 1px, transparent 1px);
-  background-size: 36px 36px;
-}
-```
 
 ### Paper Studio background
 
@@ -219,6 +167,15 @@ Use one orchestrated entrance per page, not many unrelated animations.
 - Dot marker uses accent on active node and success on completed node.
 - Connector remains muted unless previous node is completed.
 
+### Lecture detail partitioning (required)
+
+- Expanded lecture details must render three sibling sections in this order: `Quizzer`, `Podcasts`, `Readings`.
+- Each section has its own heading, icon, and content container.
+- Quiz chips, level pills, and quiz status live only in `Quizzer`.
+- Episode metadata (duration, listen-state, speed markers) lives only in `Podcasts`.
+- Text/article cards and reading progress live only in `Readings`.
+- Empty state messaging is shown per section; one populated section must not hide the others.
+
 ## Page Blueprints
 
 ### `/progress`
@@ -231,10 +188,11 @@ Use one orchestrated entrance per page, not many unrelated animations.
 
 - Keep KPI strip at top, but move "what next" cue into first timeline item.
 - Lecture details remain collapsed by default.
-- Quiz chips use stronger level distinction:
-  - `Let` calm
-  - `Mellem` vivid
-  - `Svær` warm/high-attention
+- Expanded lecture details use fixed section order:
+  - `Quizzer` (lecture quiz + item quizzes, with level chips).
+  - `Podcasts` (episode cards only).
+  - `Readings` (text/article cards + reading-linked quiz badges).
+- Quiz chips use stronger level distinction: `Let` calm, `Mellem` vivid, `Svær` warm/high-attention.
 
 ### `/q/<quiz_id>.html`
 
@@ -252,16 +210,23 @@ Do not use:
 - Flat solid-color page backgrounds without atmosphere.
 
 Do use:
-- Distinct font pairings per mood.
+- Paper Studio font pairing (`Fraunces`, `Public Sans`, `IBM Plex Mono`).
 - Strong neutral dominance with sharp, intentional accents.
 - One high-quality page entrance animation with stagger.
-- Layered gradients/patterns tied to the selected theme.
+- Layered gradients/patterns tied to Paper Studio only.
+
+## Theme Governance (Paper Studio Only)
+
+- All future redesign documentation and UI proposals in `freudd_portal` must be authored for `Paper Studio`.
+- New redesign PRs must include a short "Paper Studio compliance" note covering typography, tokens, and section partitioning.
+- If an experimental visual direction is explored, it must be documented outside this file and cannot replace the Paper Studio baseline.
 
 ## Implementation Plan (safe incremental)
 
-1. Add theme tokens and new fonts in `templates/base.html`.
-2. Introduce `data-theme` on `<html>` with `night-lab` default.
+1. Add design-system tokens and fonts in `templates/base.html`.
+2. Set `data-design-system="paper-studio"` on `<html>` as locked default.
 3. Update shared controls (`.btn-primary`, `.nav-action`, `.card`) to tokenized V2 slots.
 4. Migrate `progress`, `subject_detail`, and `wrapper` page-specific colors to semantic tokens.
-5. Add reduced-motion-safe reveal classes to top-level sections only.
-6. Validate contrast and keyboard focus in both modes before rollout.
+5. Refactor subject detail lecture content into three explicit blocks: `Quizzer`, `Podcasts`, `Readings`.
+6. Add reduced-motion-safe reveal classes to top-level sections only.
+7. Validate contrast, keyboard focus, and section partitioning behavior before rollout.

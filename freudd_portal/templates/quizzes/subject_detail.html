@@ -442,6 +442,7 @@
   }
 
   .podcast-inline-player {
+    grid-column: 1 / -1;
     border: 1px solid var(--border);
     border-radius: var(--radius-sub);
     background: var(--surface);
@@ -916,21 +917,23 @@
                     </button>
                   </form>
                 </div>
+                {% if podcast.spotify_embed_url %}
+                <div class="podcast-inline-player" data-spotify-player hidden>
+                  <p class="podcast-inline-label" data-spotify-player-label></p>
+                  <iframe
+                    class="podcast-inline-frame"
+                    data-spotify-player-frame
+                    src=""
+                    title="Spotify afspiller"
+                    loading="lazy"
+                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                  ></iframe>
+                </div>
+                {% endif %}
               </li>
               {% endfor %}
             </ul>
-            <div class="podcast-inline-player" data-spotify-player hidden>
-              <p class="podcast-inline-label" data-spotify-player-label></p>
-              <iframe
-                class="podcast-inline-frame"
-                data-spotify-player-frame
-                src=""
-                title="Spotify afspiller"
-                loading="lazy"
-                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                referrerpolicy="strict-origin-when-cross-origin"
-              ></iframe>
-            </div>
             {% else %}
             <p class="section-empty">Ingen podcasts registreret i denne forelæsning.</p>
             {% endif %}
@@ -981,15 +984,9 @@
     if (!section) {
       return;
     }
-    const playerContainer = section.querySelector("[data-spotify-player]");
-    const playerFrame = section.querySelector("[data-spotify-player-frame]");
-    const playerLabel = section.querySelector("[data-spotify-player-label]");
-    if (!(playerContainer && playerFrame && playerLabel)) {
-      return;
-    }
-
     const playButtons = Array.from(section.querySelectorAll("button[data-spotify-embed-url]"));
-    if (!playButtons.length) {
+    const playerContainers = Array.from(section.querySelectorAll("[data-spotify-player]"));
+    if (!playButtons.length || !playerContainers.length) {
       return;
     }
 
@@ -1001,12 +998,16 @@
       });
     };
 
-    const closePlayer = () => {
-      playerContainer.setAttribute("hidden", "");
-      playerFrame.setAttribute("src", "");
-      playerFrame.setAttribute("title", "Spotify afspiller");
-      playerLabel.textContent = "";
-      setPressedState(null);
+    const closePlayer = (container) => {
+      const frame = container.querySelector("[data-spotify-player-frame]");
+      const label = container.querySelector("[data-spotify-player-label]");
+      if (!(frame && label)) {
+        return;
+      }
+      container.setAttribute("hidden", "");
+      frame.setAttribute("src", "");
+      frame.setAttribute("title", "Spotify afspiller");
+      label.textContent = "";
     };
 
     const openPlayer = (button) => {
@@ -1014,12 +1015,23 @@
       if (!embedUrl) {
         return;
       }
+      const row = button.closest(".podcast-row");
+      const playerContainer = row ? row.querySelector("[data-spotify-player]") : null;
+      const playerFrame = playerContainer ? playerContainer.querySelector("[data-spotify-player-frame]") : null;
+      const playerLabel = playerContainer ? playerContainer.querySelector("[data-spotify-player-label]") : null;
+      if (!(playerContainer && playerFrame && playerLabel)) {
+        return;
+      }
+
       const isSameUrl = playerFrame.getAttribute("src") === embedUrl;
       const isOpen = !playerContainer.hasAttribute("hidden");
       if (isSameUrl && isOpen) {
-        closePlayer();
+        closePlayer(playerContainer);
+        setPressedState(null);
         return;
       }
+      playerContainers.forEach((container) => closePlayer(container));
+
       const title = String(button.getAttribute("data-spotify-title") || "Podcast episode").trim();
       playerFrame.setAttribute("src", embedUrl);
       playerFrame.setAttribute("title", `Spotify afspiller: ${title}`);

@@ -31,7 +31,7 @@ from .gamification_services import (
     get_subject_learning_path_snapshot,
     record_quiz_progress_delta,
 )
-from .models import QuizProgress, SubjectEnrollment
+from .models import QuizProgress, SubjectEnrollment, UserInterfacePreference
 from .rate_limit import evaluate_rate_limit
 from .services import (
     QUIZ_ID_RE,
@@ -46,6 +46,12 @@ from .services import (
     upsert_progress_from_state,
 )
 from .subject_services import SubjectCatalog, load_subject_catalog
+from .theme_resolver import (
+    DESIGN_SYSTEM_SESSION_PREVIEW_KEY,
+    clear_session_preview_override,
+    get_cookie_name,
+)
+from .design_systems import normalize_design_system_key
 
 logger = logging.getLogger(__name__)
 MAX_STATE_BYTES = 5_000_000
@@ -95,6 +101,25 @@ def _safe_next_redirect(request: HttpRequest) -> str | None:
     ):
         return None
     return candidate
+
+
+def _safe_referer_redirect(request: HttpRequest) -> str | None:
+    referer = str(request.META.get("HTTP_REFERER") or "").strip()
+    if not referer:
+        return None
+    if not url_has_allowed_host_and_scheme(
+        url=referer,
+        allowed_hosts={request.get_host()},
+        require_https=request.is_secure(),
+    ):
+        return None
+    return referer
+
+
+def _as_bool(value: object, *, default: bool = False) -> bool:
+    if value is None:
+        return default
+    return str(value).strip().lower() in {"1", "true", "yes", "on"}
 
 
 def _difficulty_label(value: str | None) -> str:
@@ -539,6 +564,51 @@ def logout_view(request: HttpRequest) -> HttpResponse:
     logout(request)
     messages.info(request, "Du er nu logget ud.")
     return redirect("login")
+
+
+@require_POST
+def design_system_preference_view(request: HttpRequest) -> HttpResponse:
+    requested_key = normalize_design_system_key(request.POST.get("design_system") or request.POST.get("ds"))
+    clear_preview = _as_bool(request.POST.get("clear_preview"))
+    preview_only = _as_bool(request.POST.get("preview"))
+    persist = _as_bool(request.POST.get("persist"), default=True)
+
+    if clear_preview:
+        clear_session_preview_override(request)
+
+    if requested_key is None:
+        return HttpResponseBadRequest("Ugyldigt design-system.")
+
+    if preview_only:
+        request.session[DESIGN_SYSTEM_SESSION_PREVIEW_KEY] = requested_key
+        persist = False
+    elif persist:
+        clear_session_preview_override(request)
+    elif not clear_preview:
+        request.session[DESIGN_SYSTEM_SESSION_PREVIEW_KEY] = requested_key
+
+    if persist and request.user.is_authenticated:
+        UserInterfacePreference.objects.update_or_create(
+            user=request.user,
+            defaults={"design_system": requested_key},
+        )
+
+    redirect_target = (
+        _safe_next_redirect(request)
+        or _safe_referer_redirect(request)
+        or (reverse("progress") if request.user.is_authenticated else reverse("login"))
+    )
+    response = redirect(redirect_target)
+    if persist:
+        cookie_name = get_cookie_name()
+        response.set_cookie(
+            cookie_name,
+            requested_key,
+            max_age=60 * 60 * 24 * 365,
+            secure=request.is_secure(),
+            samesite="Lax",
+        )
+    return response
 
 
 def _ensure_quiz_id_or_404(quiz_id: str) -> str:

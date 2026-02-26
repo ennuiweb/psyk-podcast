@@ -35,7 +35,9 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Extension sync is server-driven (`manage.py sync_extensions`) and runs only for enabled users with stored per-user credentials.
 - Credentials are encrypted at rest with Fernet via `FREUDD_CREDENTIALS_MASTER_KEY`.
 - Habitica server sync is active; Anki remains gated but server sync is deferred.
-- Theme direction: light-first UI (Space Grotesk + Manrope) with blue-accent cards inspired by the progress mockup.
+- Theme direction: multi-system UI with switchable `classic`, `night-lab`, and `paper-studio` design systems.
+- Active design system resolution order: query (`?ds=`) -> session preview -> authenticated user preference -> cookie -> configured default.
+- Headings/titles in the portal UI are rendered in lower-case for consistent visual tone.
 - Shared primitives in `templates/base.html` enforce radius/spacing/depth rules portal-wide, while page templates apply local layout detail.
 - Design system source of truth: `freudd_portal/docs/design-guidelines.md` (anchored to `docs/non-technical-overview.md`).
 - Alternative expressive design system: `freudd_portal/docs/design-system-v2-expressive.md` (non-generic typography + dual-theme approach).
@@ -54,6 +56,7 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - `GET /subjects/<subject_slug>`
 - `POST /subjects/<subject_slug>/enroll`
 - `POST /subjects/<subject_slug>/unenroll`
+- `POST /preferences/design-system`
 
 Enrollment UX rule: enroll/unenroll actions are shown inline per subject in the `Mine fag` section of `GET /progress`; subject detail remains read-only for enrollment state.
 
@@ -70,6 +73,7 @@ Enrollment UX rule: enroll/unenroll actions are shown inline per subject in the 
 - `UserExtensionAccess`: per-user enablement and last sync status for optional extensions.
 - `UserExtensionCredential`: per-user encrypted extension credentials (`habitica` now, `anki` deferred).
 - `ExtensionSyncLedger`: per-user/per-extension/per-day idempotent sync log (`ok|error|skipped`).
+- `UserInterfacePreference`: per-user interface settings (`design_system`) for persistent theme selection.
 - `UserUnitProgress`: legacy/compat path model kept temporarily for API compatibility.
 
 ## Subject catalog (`subjects.json`)
@@ -133,6 +137,8 @@ Operational behavior:
 - `FREUDD_CREDENTIALS_MASTER_KEY` (required for credential encrypt/decrypt)
 - `FREUDD_CREDENTIALS_KEY_VERSION` (default: `1`)
 - `FREUDD_EXT_SYNC_TIMEOUT_SECONDS` (default: `20`)
+- `FREUDD_DESIGN_SYSTEM_DEFAULT` (default: `classic`)
+- `FREUDD_DESIGN_SYSTEM_COOKIE_NAME` (default: `freudd_design_system`)
 
 ## Management commands (no admin panel required)
 Prerequisite: der skal eksistere en brugerkonto (via signup eller `createsuperuser`) før per-user extension-commands kan køres.

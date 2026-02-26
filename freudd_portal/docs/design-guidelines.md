@@ -13,6 +13,15 @@ Source alignment:
 - Auth patterns: `templates/registration/login.html`, `templates/registration/signup.html`
 - External reference method: `ui-ux-pro-max` skill searches (style, color, typography, UX)
 
+## Runtime design-system architecture
+
+- Active systems: `classic`, `night-lab`, `paper-studio`.
+- Selector UI: header form in `templates/base.html`.
+- Resolution precedence: query (`?ds=`) -> session preview -> authenticated user preference -> cookie -> configured default.
+- Persistence endpoint: `POST /preferences/design-system`.
+- Source registry: `quizzes/design_systems.py`.
+- Resolver/context wiring: `quizzes/theme_resolver.py` + `quizzes/context_processors.py`.
+
 ## Product intent -> design requirements
 
 Freudd Portal exists to add identity, memory, progression, and motivation on top of static quiz content. The UI therefore must always make these five jobs visible:
@@ -44,18 +53,20 @@ The style direction is "calm educational dashboard" with accessibility-first beh
 
 ### Typography
 
-- Heading font: `Space Grotesk` (`600-700`) for section hierarchy and labels that need authority.
-- Body font: `Manrope` (`400-700`) for readability in dense learning content.
-- Monospace utility: system monospace only for raw IDs/technical metadata (`.quiz-id`).
+- `classic`: heading `Space Grotesk`, body `Manrope`.
+- `night-lab`: heading `Syne`, body `Instrument Sans`.
+- `paper-studio`: heading `Fraunces`, body `Public Sans`.
+- Monospace utility: `IBM Plex Mono` (fallback to system monospace) for raw IDs/technical metadata (`.quiz-id`).
 
 Usage rules:
 - Keep heading line-height tight (`~1.1`) and body line-height comfortable (`~1.5`).
+- Render headings and title labels in lower-case across templates for a consistent voice.
 - Avoid decorative fonts in learner flows.
 - Keep all UI copy in Danish until multilingual rollout is enabled.
 
 ### Color system (live tokens)
 
-The current token set in `templates/base.html` is the source of truth.
+`templates/base.html` is the source of truth for all shared semantic tokens. `:root` contains `classic`; data-attribute variants provide `night-lab` and `paper-studio`.
 
 | Role | Token | Value | Usage |
 |---|---|---|---|

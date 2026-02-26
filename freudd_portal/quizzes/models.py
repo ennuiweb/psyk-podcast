@@ -55,6 +55,15 @@ class SubjectEnrollment(models.Model):
         return f"{self.user_id}:{self.subject_slug}"
 
 
+class UserInterfacePreference(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    design_system = models.CharField(max_length=32, default="classic")
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self) -> str:
+        return f"{self.user_id}:{self.design_system}"
+
+
 class UserGamificationProfile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     xp_total = models.PositiveIntegerField(default=0)

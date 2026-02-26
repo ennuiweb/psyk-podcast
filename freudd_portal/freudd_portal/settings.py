@@ -60,6 +60,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "quizzes.context_processors.design_system_context",
             ],
         },
     },
@@ -172,3 +173,9 @@ CACHES = {
         "LOCATION": "freudd-portal-cache",
     }
 }
+
+FREUDD_DESIGN_SYSTEM_DEFAULT = os.environ.get("FREUDD_DESIGN_SYSTEM_DEFAULT", "classic")
+FREUDD_DESIGN_SYSTEM_COOKIE_NAME = os.environ.get(
+    "FREUDD_DESIGN_SYSTEM_COOKIE_NAME",
+    "freudd_design_system",
+)

@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}Mit overblik · freudd{% endblock %}
+{% block title %}mit overblik · freudd{% endblock %}
 {% block content %}
 <style>
   .dashboard-card {
@@ -17,12 +17,13 @@
 
   .dashboard-title {
     margin: 0;
+    text-transform: lowercase;
   }
 
   .dashboard-intro {
     margin: var(--space-2) 0 0;
     max-width: 68ch;
-    color: #52688f;
+    color: var(--text-subtle);
   }
 
   .dashboard-section {
@@ -40,6 +41,7 @@
   .section-title {
     margin: 0;
     font-size: clamp(1.08rem, 1.9vw, 1.3rem);
+    text-transform: lowercase;
   }
 
   .section-subtitle {
@@ -55,7 +57,7 @@
   .subject-card {
     border: 1px solid var(--border);
     border-radius: var(--radius-md);
-    background: #ffffff;
+    background: var(--surface);
     padding: var(--space-4);
     display: grid;
     gap: var(--space-3);
@@ -71,6 +73,7 @@
   .subject-headline h3 {
     margin: 0;
     font-size: 1.04rem;
+    text-transform: lowercase;
   }
 
   .subject-badge {
@@ -78,9 +81,9 @@
     align-items: center;
     min-height: 24px;
     border-radius: var(--radius-pill);
-    border: 1px solid rgba(47, 103, 232, 0.28);
-    background: #eef4ff;
-    color: #2456c6;
+    border: 1px solid color-mix(in srgb, var(--accent) 28%, transparent);
+    background: var(--info-bg);
+    color: var(--info-ink);
     padding: 0 var(--space-2);
     font-size: 0.74rem;
     font-weight: 700;
@@ -96,7 +99,7 @@
     align-items: center;
     border-radius: var(--radius-pill);
     border: 1px solid var(--border-strong);
-    background: #ffffff;
+    background: var(--surface);
     min-height: 30px;
     padding: 0 var(--space-2);
     font-size: 0.82rem;
@@ -108,7 +111,7 @@
   .subject-status-pill.is-enrolled {
     border-color: rgba(31, 143, 78, 0.35);
     color: var(--success);
-    background: #eef9f1;
+    background: var(--success-bg);
   }
 
   .subject-actions {
@@ -127,10 +130,10 @@
     align-items: center;
     justify-content: center;
     min-height: var(--control-min-height);
-    border: 1px solid rgba(47, 103, 232, 0.4);
+    border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
     border-radius: var(--radius-pill);
     background: var(--accent-soft);
-    color: #224fbd;
+    color: var(--info-ink-strong);
     text-decoration: none;
     font-weight: 700;
     padding: 0 var(--space-4);
@@ -138,17 +141,17 @@
   }
 
   .subject-open-link:hover {
-    border-color: rgba(47, 103, 232, 0.56);
-    background: #dfe9ff;
-    color: #1e47ad;
+    border-color: color-mix(in srgb, var(--accent) 56%, transparent);
+    background: var(--info-bg-strong);
+    color: var(--info-ink-strong);
   }
 
   .subject-toggle-button {
     min-height: var(--control-min-height);
     border: 1px solid var(--border-strong);
     border-radius: var(--radius-pill);
-    background: #ffffff;
-    color: #304673;
+    background: var(--surface);
+    color: var(--text-subtle-2);
     padding: 0 var(--space-4);
     font-weight: 600;
     cursor: pointer;
@@ -156,14 +159,14 @@
   }
 
   .subject-toggle-button:hover {
-    border-color: rgba(47, 103, 232, 0.34);
-    background: #f5f8ff;
-    color: #234892;
+    border-color: color-mix(in srgb, var(--accent) 34%, transparent);
+    background: var(--surface-soft);
+    color: var(--info-ink-strong);
   }
 
   .table-wrap {
     border-radius: var(--radius-md);
-    background: #ffffff;
+    background: var(--surface);
   }
 
   .quiz-table {
@@ -178,10 +181,10 @@
   }
 
   .quiz-table th {
-    text-transform: none;
+    text-transform: lowercase;
     letter-spacing: 0.01em;
     font-size: 0.82rem;
-    color: #41547c;
+    color: var(--text-subtle-2);
   }
 
   .quiz-table td:first-child,
@@ -205,12 +208,12 @@
     align-items: center;
     min-height: 24px;
     border-radius: var(--radius-pill);
-    border: 1px solid rgba(47, 103, 232, 0.28);
-    background: #edf3ff;
-    color: #2753b6;
+    border: 1px solid color-mix(in srgb, var(--accent) 28%, transparent);
+    background: var(--info-bg);
+    color: var(--info-ink);
     padding: 0 var(--space-2);
     font-size: 0.7rem;
-    text-transform: uppercase;
+    text-transform: lowercase;
     letter-spacing: 0.03em;
     font-weight: 800;
   }
@@ -229,8 +232,8 @@
     min-height: 22px;
     border-radius: var(--radius-pill);
     border: 1px solid var(--border);
-    background: #f7faff;
-    color: #566d97;
+    background: var(--surface-alt);
+    color: var(--muted);
     padding: 0 var(--space-2);
     font-size: 0.68rem;
     font-weight: 700;
@@ -251,20 +254,20 @@
     padding: 0 var(--space-2);
     font-size: 0.78rem;
     font-weight: 700;
-    background: #ffffff;
-    color: #44577f;
+    background: var(--surface);
+    color: var(--text-subtle-2);
   }
 
   .difficulty-pill.is-easy {
     border-color: rgba(31, 143, 78, 0.3);
-    background: #eef9f1;
-    color: #1f8f4e;
+    background: var(--success-bg);
+    color: var(--success-ink);
   }
 
   .difficulty-pill.is-hard {
     border-color: rgba(178, 59, 79, 0.35);
-    background: #fff1f4;
-    color: #9f3146;
+    background: var(--danger-bg);
+    color: var(--danger-ink);
   }
 
   .status-pill {
@@ -291,21 +294,21 @@
     height: 8px;
     border-radius: var(--radius-pill);
     border: 1px solid var(--border);
-    background: #ecf2ff;
+    background: var(--progress-track-bg);
     overflow: hidden;
     appearance: none;
   }
 
   .answers-track::-webkit-progress-bar {
-    background: #ecf2ff;
+    background: var(--progress-track-bg);
   }
 
   .answers-track::-webkit-progress-value {
-    background: linear-gradient(90deg, #3f73ec, #5f8ef4);
+    background: linear-gradient(90deg, var(--progress-accent-start), var(--progress-accent-end));
   }
 
   .answers-track::-moz-progress-bar {
-    background: linear-gradient(90deg, #3f73ec, #5f8ef4);
+    background: linear-gradient(90deg, var(--progress-accent-start), var(--progress-accent-end));
   }
 
   .answers-text {
@@ -316,7 +319,7 @@
 
   .updated-at {
     font-size: 0.85rem;
-    color: #4d618b;
+    color: var(--text-subtle-2);
     font-variant-numeric: tabular-nums;
   }
 

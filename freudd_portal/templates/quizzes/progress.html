@@ -206,6 +206,90 @@
     color: var(--info-ink-strong);
   }
 
+  .metric-grid {
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  .metric-card {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--surface);
+    padding: var(--space-3);
+    display: grid;
+    gap: var(--space-2);
+  }
+
+  .metric-card h3 {
+    margin: 0;
+    font-size: 1rem;
+    text-transform: lowercase;
+  }
+
+  .metric-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    color: var(--muted);
+    font-size: 0.86rem;
+  }
+
+  .leaderboard-top-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: var(--space-1);
+  }
+
+  .leaderboard-top-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2);
+    font-size: 0.9rem;
+  }
+
+  .leaderboard-alias {
+    font-weight: 600;
+  }
+
+  .leaderboard-points {
+    color: var(--muted);
+  }
+
+  .leaderboard-profile-form {
+    margin: 0 0 var(--space-3);
+    display: grid;
+    gap: var(--space-2);
+    max-width: 26rem;
+  }
+
+  .leaderboard-profile-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    align-items: center;
+  }
+
+  .leaderboard-profile-form input[type="text"] {
+    min-height: var(--control-min-height);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-pill);
+    background: var(--surface);
+    color: var(--ink);
+    padding: 0 var(--space-3);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    width: 100%;
+  }
+
+  .leaderboard-season-text {
+    margin: 0 0 var(--space-3);
+    color: var(--muted);
+    font-size: 0.88rem;
+  }
+
   .table-wrap {
     border-radius: var(--radius-md);
     background: var(--surface);
@@ -478,6 +562,83 @@
     </div>
     {% else %}
     <p class="muted">Ingen fag er tilgængelige endnu.</p>
+    {% endif %}
+  </section>
+
+  <section class="dashboard-section">
+    <div class="section-head">
+      <h2 class="section-title">Personlig tracking</h2>
+      <p class="section-subtitle">Din private status på tekster, podcasts og quizzer.</p>
+    </div>
+    {% if personal_tracking_by_subject %}
+    <div class="metric-grid">
+      {% for item in personal_tracking_by_subject %}
+      <article class="metric-card">
+        <h3>{{ item.title }}</h3>
+        <div class="metric-row">Tekster: {{ item.readings_marked }} / {{ item.readings_total }}</div>
+        <div class="metric-row">Podcasts: {{ item.podcasts_marked }} / {{ item.podcasts_total }}</div>
+        <div class="metric-row">Quizzer: {{ item.quizzes_completed }} / {{ item.quizzes_total }}</div>
+        <div class="subject-actions">
+          <a class="subject-open-link" href="{{ item.detail_url }}">Åbn fag</a>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+    {% else %}
+    <p class="empty-copy">Ingen personlig tracking-data endnu.</p>
+    {% endif %}
+  </section>
+
+  <section class="dashboard-section">
+    <div class="section-head">
+      <h2 class="section-title">Offentlig quizliga</h2>
+      <p class="section-subtitle">Kun alias, placering og gennemførte quizzer vises offentligt.</p>
+    </div>
+    <p class="leaderboard-season-text">Aktiv sæson: {{ active_season.label }}</p>
+
+    <form method="post" action="{% url 'leaderboard-profile' %}" class="leaderboard-profile-form">
+      {% csrf_token %}
+      <input type="hidden" name="next" value="{{ request.get_full_path }}" />
+      <input
+        type="text"
+        name="public_alias"
+        maxlength="24"
+        value="{{ leaderboard_profile.public_alias }}"
+        placeholder="Alias (3-24 tegn)"
+        aria-label="Offentligt alias"
+      />
+      <div class="leaderboard-profile-controls">
+        <label>
+          <input type="checkbox" name="is_public" value="1" {% if leaderboard_profile.is_public %}checked{% endif %} />
+          Deltag offentligt
+        </label>
+        <button class="subject-toggle-button" type="submit">Gem quizliga-profil</button>
+      </div>
+    </form>
+
+    {% if leaderboard_preview_by_subject %}
+    <div class="metric-grid">
+      {% for item in leaderboard_preview_by_subject %}
+      <article class="metric-card">
+        <h3>{{ item.title }}</h3>
+        {% if item.entries %}
+        <ul class="leaderboard-top-list">
+          {% for entry in item.entries %}
+          <li class="leaderboard-top-item">
+            <span class="leaderboard-alias">#{{ entry.rank }} · {{ entry.alias }}</span>
+            <span class="leaderboard-points">{{ entry.quiz_count }} quizzer</span>
+          </li>
+          {% endfor %}
+        </ul>
+        {% else %}
+        <p class="empty-copy">Ingen offentlige deltagere endnu.</p>
+        {% endif %}
+        <div class="subject-actions">
+          <a class="subject-open-link" href="{{ item.leaderboard_url }}">Se fuld quizliga</a>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
     {% endif %}
   </section>
 

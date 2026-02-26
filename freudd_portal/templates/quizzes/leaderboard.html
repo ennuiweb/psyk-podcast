@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% block title %}quizliga · {{ subject.title }}{% endblock %}
+{% block content %}
+<style>
+  .leaderboard-layout {
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  .leaderboard-head {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+  }
+
+  .leaderboard-season {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.92rem;
+  }
+
+  .leaderboard-table-wrap {
+    overflow-x: auto;
+  }
+
+  .leaderboard-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 420px;
+  }
+
+  .leaderboard-table th,
+  .leaderboard-table td {
+    padding: var(--space-3);
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+  }
+
+  .leaderboard-table th {
+    background: var(--table-head-bg);
+    color: var(--table-head-ink);
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .leaderboard-empty {
+    margin: 0;
+    color: var(--muted);
+  }
+</style>
+
+<div class="card leaderboard-layout">
+  <header class="leaderboard-head">
+    <div>
+      <h1 class="quiz-title">quizliga · {{ subject.title }}</h1>
+      <p class="leaderboard-season">Sæson: {{ active_season.label }}</p>
+      <p class="leaderboard-season">Deltagere: {{ participant_count }}</p>
+    </div>
+    {% if request.user.is_authenticated %}
+    <a class="ghost-link" href="{% url 'progress' %}">Tilbage til mit overblik</a>
+    {% else %}
+    <a class="ghost-link" href="{% url 'login' %}">Log ind</a>
+    {% endif %}
+  </header>
+
+  {% if entries %}
+  <div class="leaderboard-table-wrap">
+    <table class="leaderboard-table">
+      <thead>
+        <tr>
+          <th>Placering</th>
+          <th>Alias</th>
+          <th>Gennemførte quizzer</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for entry in entries %}
+        <tr>
+          <td>#{{ entry.rank }}</td>
+          <td>{{ entry.alias }}</td>
+          <td>{{ entry.quiz_count }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% else %}
+  <p class="leaderboard-empty">Ingen offentlige deltagere i den aktive sæson endnu.</p>
+  {% endif %}
+</div>
+{% endblock %}

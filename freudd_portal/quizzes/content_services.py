@@ -382,15 +382,23 @@ def _attach_podcasts(
 
         lecture_state = lectures[lecture_index[lecture_key]]
         spotify_url = spotify_by_title.get(_normalize_rss_title_key(title_text))
-        if not spotify_url:
-            lecture_state["warnings"].append(f"Spotify mapping missing for RSS item: {title_text}")
-            continue
         source_audio_url = _find_enclosure_url(item)
+        platform = "spotify"
+        resolved_url = spotify_url
+        if not resolved_url:
+            if not source_audio_url:
+                lecture_state["warnings"].append(f"Spotify mapping missing for RSS item: {title_text}")
+                continue
+            lecture_state["warnings"].append(
+                f"Spotify mapping missing for RSS item; using source audio URL: {title_text}"
+            )
+            platform = "source"
+            resolved_url = source_audio_url
         podcast_asset = {
             "kind": _podcast_kind_from_token(kind_hint),
             "title": title_text,
-            "url": spotify_url,
-            "platform": "spotify",
+            "url": resolved_url,
+            "platform": platform,
             "pub_date": str(item.findtext("pubDate") or "").strip(),
             "source_audio_url": source_audio_url,
         }

@@ -12,6 +12,7 @@ from django.contrib import messages
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
+from django.core.exceptions import ValidationError
 from django.http import (
     FileResponse,
     Http404,
@@ -31,7 +32,19 @@ from .gamification_services import (
     get_subject_learning_path_snapshot,
     record_quiz_progress_delta,
 )
-from .models import QuizProgress, SubjectEnrollment, UserInterfacePreference
+from .leaderboard_services import (
+    active_half_year_season,
+    build_subject_leaderboard_snapshot,
+    get_profile_payload,
+    update_leaderboard_profile,
+)
+from .models import (
+    QuizProgress,
+    SubjectEnrollment,
+    UserInterfacePreference,
+    UserPodcastMark,
+    UserReadingMark,
+)
 from .rate_limit import evaluate_rate_limit
 from .services import (
     QUIZ_ID_RE,
@@ -46,6 +59,13 @@ from .services import (
     upsert_progress_from_state,
 )
 from .subject_services import SubjectCatalog, load_subject_catalog
+from .tracking_services import (
+    annotate_subject_lectures_with_marks,
+    personal_tracking_summary_for_user,
+    set_podcast_mark,
+    set_reading_mark,
+    subject_tracking_index,
+)
 from .theme_resolver import (
     DESIGN_SYSTEM_SESSION_PREVIEW_KEY,
     clear_session_preview_override,
@@ -453,9 +473,13 @@ def _enrich_subject_path_lectures(lectures: object) -> list[dict[str, object]]:
             completed=lecture_copy.get("completed_quizzes"),
             total=lecture_copy.get("total_quizzes"),
         )
+        has_lecture_quizzes = bool(lecture_assets.get("quizzes"))
+        has_lecture_podcasts = bool(lecture_assets.get("podcasts"))
 
         readings = lecture_copy.get("readings")
         reading_payload: list[dict[str, object]] = []
+        has_reading_quizzes = False
+        has_reading_podcasts = False
         if isinstance(readings, list):
             for reading in readings:
                 if not isinstance(reading, dict):
@@ -469,8 +493,17 @@ def _enrich_subject_path_lectures(lectures: object) -> list[dict[str, object]]:
                     completed=reading_copy.get("completed_quizzes"),
                     total=reading_copy.get("total_quizzes"),
                 )
+                assets = reading_copy.get("assets") if isinstance(reading_copy.get("assets"), dict) else {}
+                if assets.get("quizzes"):
+                    has_reading_quizzes = True
+                if assets.get("podcasts"):
+                    has_reading_podcasts = True
                 reading_payload.append(reading_copy)
         lecture_copy["readings"] = reading_payload
+        lecture_copy["has_reading_quizzes"] = has_reading_quizzes
+        lecture_copy["has_reading_podcasts"] = has_reading_podcasts
+        lecture_copy["has_any_quizzes"] = has_lecture_quizzes or has_reading_quizzes
+        lecture_copy["has_any_podcasts"] = has_lecture_podcasts or has_reading_podcasts
         enriched.append(lecture_copy)
     return enriched
 
@@ -780,21 +813,48 @@ def gamification_me_view(request: HttpRequest) -> HttpResponse:
 @require_GET
 def progress_view(request: HttpRequest) -> HttpResponse:
     catalog = load_subject_catalog()
+    season = active_half_year_season()
 
     enrolled_slugs = set(
         SubjectEnrollment.objects.filter(user=request.user).values_list("subject_slug", flat=True)
     )
     subject_cards: list[dict[str, object]] = []
+    subject_tracking_targets: list[dict[str, str]] = []
+    leaderboard_preview_by_subject: list[dict[str, object]] = []
     for subject in catalog.active_subjects:
+        detail_url = reverse("subject-detail", kwargs={"subject_slug": subject.slug})
+        leaderboard_url = reverse("leaderboard-subject", kwargs={"subject_slug": subject.slug})
         subject_cards.append(
             {
                 "slug": subject.slug,
                 "title": subject.title,
                 "description": subject.description,
                 "is_enrolled": subject.slug in enrolled_slugs,
-                "detail_url": reverse("subject-detail", kwargs={"subject_slug": subject.slug}),
+                "detail_url": detail_url,
                 "enroll_url": reverse("subject-enroll", kwargs={"subject_slug": subject.slug}),
                 "unenroll_url": reverse("subject-unenroll", kwargs={"subject_slug": subject.slug}),
+                "leaderboard_url": leaderboard_url,
+            }
+        )
+        subject_tracking_targets.append(
+            {
+                "slug": subject.slug,
+                "title": subject.title,
+                "detail_url": detail_url,
+            }
+        )
+        leaderboard_snapshot = build_subject_leaderboard_snapshot(
+            subject_slug=subject.slug,
+            limit=5,
+            season=season,
+        )
+        leaderboard_preview_by_subject.append(
+            {
+                "slug": subject.slug,
+                "title": subject.title,
+                "leaderboard_url": leaderboard_url,
+                "entries": leaderboard_snapshot.get("entries") or [],
+                "participant_count": int(leaderboard_snapshot.get("participant_count") or 0),
             }
         )
 
@@ -823,6 +883,12 @@ def progress_view(request: HttpRequest) -> HttpResponse:
             }
         )
 
+    profile_payload = get_profile_payload(request.user)
+    personal_tracking_by_subject = personal_tracking_summary_for_user(
+        user=request.user,
+        subjects=subject_tracking_targets,
+    )
+
     return render(
         request,
         "quizzes/progress.html",
@@ -830,7 +896,161 @@ def progress_view(request: HttpRequest) -> HttpResponse:
             "rows": rows,
             "subject_cards": subject_cards,
             "subjects_error": catalog.error,
+            "leaderboard_profile": profile_payload,
+            "leaderboard_preview_by_subject": leaderboard_preview_by_subject,
+            "personal_tracking_by_subject": personal_tracking_by_subject,
+            "active_season": {
+                "key": season.key,
+                "label": season.label,
+                "start_date_label": season.start_date_label,
+                "end_date_label": season.end_date_label,
+            },
         },
+    )
+
+
+@require_GET
+def leaderboard_subject_view(request: HttpRequest, subject_slug: str) -> HttpResponse:
+    catalog = load_subject_catalog()
+    subject = _subject_or_404(catalog, subject_slug)
+    season = active_half_year_season()
+    snapshot = build_subject_leaderboard_snapshot(
+        subject_slug=subject.slug,
+        limit=50,
+        season=season,
+    )
+
+    own_profile = None
+    if request.user.is_authenticated:
+        own_profile = get_profile_payload(request.user)
+
+    return render(
+        request,
+        "quizzes/leaderboard.html",
+        {
+            "subject": subject,
+            "entries": snapshot.get("entries") or [],
+            "participant_count": int(snapshot.get("participant_count") or 0),
+            "active_season": snapshot.get("season") or {},
+            "leaderboard_profile": own_profile,
+        },
+    )
+
+
+@login_required
+@require_POST
+def leaderboard_profile_view(request: HttpRequest) -> HttpResponse:
+    alias = request.POST.get("public_alias")
+    is_public = _as_bool(request.POST.get("is_public"))
+
+    try:
+        update_leaderboard_profile(
+            user=request.user,
+            alias=alias,
+            is_public=is_public,
+        )
+    except ValidationError as exc:
+        messages.error(request, "; ".join(exc.messages) if exc.messages else "Kunne ikke opdatere quizliga-profil.")
+    else:
+        if is_public:
+            messages.success(request, "Din quizliga-profil er nu offentlig.")
+        else:
+            messages.info(request, "Din quizliga-profil er nu privat.")
+
+    return redirect(
+        _safe_next_redirect(request)
+        or _safe_referer_redirect(request)
+        or reverse("progress")
+    )
+
+
+@login_required
+@require_POST
+def subject_tracking_reading_view(request: HttpRequest, subject_slug: str) -> HttpResponse:
+    catalog = load_subject_catalog()
+    subject = _subject_or_404(catalog, subject_slug)
+
+    lecture_key = str(request.POST.get("lecture_key") or "").strip().upper()
+    reading_key = str(request.POST.get("reading_key") or "").strip()
+    if not lecture_key or not reading_key:
+        return HttpResponseBadRequest("Mangler lecture_key eller reading_key.")
+
+    index = subject_tracking_index(subject.slug)
+    if (lecture_key, reading_key, "") not in index["reading_keys"]:
+        raise Http404("Reading ikke fundet i fagets læringssti.")
+
+    action = str(request.POST.get("action") or "toggle").strip().lower()
+    if action == "mark":
+        marked = True
+    elif action == "unmark":
+        marked = False
+    else:
+        marked = not UserReadingMark.objects.filter(
+            user=request.user,
+            subject_slug=subject.slug,
+            lecture_key=lecture_key,
+            reading_key=reading_key,
+        ).exists()
+
+    set_reading_mark(
+        user=request.user,
+        subject_slug=subject.slug,
+        lecture_key=lecture_key,
+        reading_key=reading_key,
+        marked=marked,
+    )
+
+    return redirect(
+        _safe_next_redirect(request)
+        or _safe_referer_redirect(request)
+        or reverse("subject-detail", kwargs={"subject_slug": subject.slug})
+    )
+
+
+@login_required
+@require_POST
+def subject_tracking_podcast_view(request: HttpRequest, subject_slug: str) -> HttpResponse:
+    catalog = load_subject_catalog()
+    subject = _subject_or_404(catalog, subject_slug)
+
+    lecture_key = str(request.POST.get("lecture_key") or "").strip().upper()
+    reading_key_raw = str(request.POST.get("reading_key") or "").strip()
+    reading_key = reading_key_raw or None
+    podcast_key = str(request.POST.get("podcast_key") or "").strip().lower()
+    if not lecture_key or not podcast_key:
+        return HttpResponseBadRequest("Mangler lecture_key eller podcast_key.")
+
+    index = subject_tracking_index(subject.slug)
+    if (lecture_key, reading_key, podcast_key) not in index["podcast_keys"]:
+        raise Http404("Podcast ikke fundet i fagets læringssti.")
+
+    action = str(request.POST.get("action") or "toggle").strip().lower()
+    if action == "mark":
+        marked = True
+    elif action == "unmark":
+        marked = False
+    else:
+        marked = not UserPodcastMark.objects.filter(
+            user=request.user,
+            subject_slug=subject.slug,
+            lecture_key=lecture_key,
+            reading_key=reading_key,
+            podcast_key=podcast_key,
+        ).exists()
+
+    set_podcast_mark(
+        user=request.user,
+        subject_slug=subject.slug,
+        lecture_key=lecture_key,
+        reading_key=reading_key,
+        podcast_key=podcast_key,
+        marked=marked,
+    )
+
+    return redirect(
+        _safe_next_redirect(request)
+        or _safe_referer_redirect(request)
+        or reverse("subject-detail", kwargs={"subject_slug": subject.slug})
     )
 
 
@@ -886,6 +1106,11 @@ def subject_detail_view(request: HttpRequest, subject_slug: str) -> HttpResponse
         readings_error = str(source_meta.get("reading_error") or "").strip() or None
 
     lecture_payload = _enrich_subject_path_lectures(subject_path.get("lectures", []))
+    annotate_subject_lectures_with_marks(
+        user=request.user,
+        subject_slug=subject.slug,
+        lectures=lecture_payload,
+    )
     overview = _subject_path_overview(lecture_payload)
 
     return render(
@@ -897,5 +1122,10 @@ def subject_detail_view(request: HttpRequest, subject_slug: str) -> HttpResponse
             "readings_error": readings_error,
             "subject_path_lectures": lecture_payload,
             "subject_path_overview": overview,
+            "reading_tracking_url": reverse("subject-tracking-reading", kwargs={"subject_slug": subject.slug}),
+            "podcast_tracking_url": reverse("subject-tracking-podcast", kwargs={"subject_slug": subject.slug}),
+            "show_reading_quizzes": bool(
+                getattr(settings, "FREUDD_SUBJECT_DETAIL_SHOW_READING_QUIZZES", False)
+            ),
         },
     )

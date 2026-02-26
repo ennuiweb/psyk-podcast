@@ -21,9 +21,15 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Subject enrollment is per `(user, subject_slug)` in `SubjectEnrollment`.
 - Subject learning path is lecture-first: each lecture node contains readings, plus lecture-level assets (for example `Alle kilder`).
 - Subject content is compiled from reading master key + quiz links + local RSS into `content_manifest.json`.
-- Podcast links on subject pages are Spotify-only (`spotify_map.json` matched by RSS title); unmapped podcast items are hidden.
+- Podcast links on subject pages prefer Spotify (`spotify_map.json` matched by RSS title) and fall back to source audio URL when mapping is missing.
 - Completion rule: `currentView == "summary"` and `answers_count == question_count`.
 - Gamification core is quiz-driven and always available for authenticated users (`/progress`, `/api/gamification/me`).
+- `/progress` is split in two tracks: private personal tracking and public quizliga preview.
+- Private personal tracking is manual for readings/podcasts (`mark/unmark`) and keeps quiz completion as-is from `QuizProgress`.
+- Public quizliga is opt-in and alias-based; only `alias + rank + completed quiz count` is shown publicly.
+- Quizliga score is `1` point per unique `quiz_id` completed in active season for the selected subject.
+- Quizliga tie-break is earliest `reached_at` (time user first reached score), then alias alphabetic.
+- Quizliga seasons reset every half year in UTC: `H1 = [Jan 1, Jul 1)`, `H2 = [Jul 1, Jan 1 next year)`.
 - Learning path on subject pages (`/subjects/<subject_slug>`) is lecture-first with nested reading status (`active|completed|no_quiz`) and quiz/podcast navigation.
 - Subject detail UI is mobile-first and uses a vertical timeline with manual `<details>` toggles, per-lecture progress bars, and compact quiz chips per difficulty.
 - Subject detail includes top overview KPI cards, `Udvid alle`/`Luk alle` controls, and local browser persistence of opened lectures.
@@ -31,6 +37,7 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Expanded lecture details are partitioned into three fixed sibling sections: `Quizzer`, `Podcasts`, `Readings`.
 - Quiz assets are surfaced only in `Quizzer`, podcast assets only in `Podcasts`, and reading status/progress only in `Readings`.
 - Section-level empty states are shown per section; one populated section does not hide the others.
+- Reading-level quiz chips are temporarily hidden by default in subject detail; re-enable with `FREUDD_SUBJECT_DETAIL_SHOW_READING_QUIZZES=1`.
 - Module headers in subject detail are split visually into two title elements: `Uge x, forelæsning x` (label) and the cleaned lecture title (without trailing `(Forelæsning x, YYYY-MM-DD)` metadata).
 - Quiz labels are rendered from cleaned `episode_title` metadata (`modul` + `titel`) instead of raw file/tag strings.
 - Quiz wrapper header uses a structured identity block (module label + title) and includes in-flow progress feedback per question step.
@@ -85,7 +92,7 @@ Enrollment UX rule: enroll/unenroll actions are shown inline per subject in the 
 - `UserInterfacePreference`: per-user interface settings (`design_system`) for persistent theme selection.
 - `UserReadingMark`: per-user private reading tracking marks (`mark/unmark`) on subject detail.
 - `UserPodcastMark`: per-user private podcast tracking marks (`mark/unmark`) on subject detail.
-- `UserLeaderboardProfile`: per-user public alias and visibility settings for quizliga leaderboard.
+- `UserLeaderboardProfile`: per-user public alias and visibility settings for quizliga leaderboard (case-insensitive unique alias).
 - `UserUnitProgress`: legacy/compat path model kept temporarily for API compatibility.
 
 ## Subject catalog (`subjects.json`)
@@ -151,6 +158,7 @@ Operational behavior:
 - `FREUDD_EXT_SYNC_TIMEOUT_SECONDS` (default: `20`)
 - `FREUDD_DESIGN_SYSTEM_DEFAULT` (default: `paper-studio`)
 - `FREUDD_DESIGN_SYSTEM_COOKIE_NAME` (default: `freudd_design_system`)
+- `FREUDD_SUBJECT_DETAIL_SHOW_READING_QUIZZES` (default: `0`; set `1` to show reading-level quizzes inside `Quizzer`)
 
 ## Management commands (no admin panel required)
 Prerequisite: der skal eksistere en brugerkonto (via signup eller `createsuperuser`) før per-user extension-commands kan køres.

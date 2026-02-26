@@ -1,16 +1,18 @@
 # Freudd Portal (non-technical overview)
 
-Freudd Portal is the learner-facing home for study material. Its purpose is to turn static quiz and podcast content into a learning experience where students can sign in, track what they have done, and follow a clear path through a subject over time.
+Freudd Portal is the learner-facing layer on top of static quiz and podcast content. Students can sign in, enroll in subjects, and continue where they left off through a structured lecture-first journey.
 
-From a student perspective, it works like a personal study dashboard. You can create an account, enroll in relevant subjects, and immediately work through all available quiz material. The portal then shows your progress through lectures and readings, highlights what is done, and keeps that state so you can return later without losing momentum.
+The progress experience is split into two clear tracks:
+- Personal tracking (private): each student can manually mark readings as read and podcasts as listened, while quiz completion still comes from actual completed quizzes.
+- Public quizliga: an opt-in public leaderboard that only shows alias, rank, and number of completed quizzes per subject.
 
-It is also designed to add motivation. As students complete quizzes and answer questions, the portal tracks achievements such as progress milestones and streak-like activity so effort feels visible and cumulative rather than scattered across separate files.
+This split keeps personal study habits private while still allowing a lightweight shared competition around quiz completion.
 
-For teaching flow, Freudd Portal organizes learning in a structured sequence (lecture first, then readings/resources), so the material feels curated instead of fragmented. It connects quiz content, reading references, and podcast material into one coherent subject journey.
+Quizliga is seasonal and automatically resets every half year (UTC). Ranking is based on unique completed quizzes in the active season, with tie-break by who reached the score first.
 
-In practical terms, the portal exists to solve a simple problem: static generated quiz files are useful, but they do not on their own provide identity, memory, progression, or a learner dashboard. Freudd Portal provides that missing layer while preserving the original quiz content.
+The portal still keeps core motivation features (quiz progress and gamification snapshots), but avoids exposing detailed personal learning activity publicly.
 
-The portal now also supports selectable visual design systems so teams can evaluate different interface directions without rebuilding core pages. Learners can switch style from "mit overblik" and keep their preferred system across sessions.
+The platform also supports selectable visual design systems so teams can evaluate different interface directions without rebuilding core pages. Learners can switch style from "mit overblik" and keep their preferred system across sessions.
 
 ## Design system reference
 

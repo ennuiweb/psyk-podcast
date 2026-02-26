@@ -334,24 +334,31 @@
     background: var(--surface-soft);
   }
 
-  .lecture-assets,
-  .lecture-readings {
+  .lecture-section {
     border: 0;
     border-radius: var(--radius-sub);
     background: rgba(255, 255, 255, 0.76);
     padding: var(--subject-space-block);
     display: grid;
     gap: var(--subject-space-tight);
+    box-shadow: inset 0 0 0 1px rgba(138, 160, 201, 0.22);
   }
 
-  .lecture-assets {
-    box-shadow: inset 0 0 0 1px rgba(138, 160, 201, 0.23);
-    width: 100%;
-    justify-self: stretch;
+  .lecture-section-head {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
   }
 
-  .lecture-readings {
-    box-shadow: inset 0 0 0 1px rgba(138, 160, 201, 0.2);
+  .section-title {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--text-strong);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    text-transform: none;
   }
 
   .asset-title {
@@ -512,17 +519,6 @@
     background: var(--info-bg);
   }
 
-  .reading-title {
-    margin: 0;
-    font-size: 1rem;
-    font-weight: 800;
-    color: var(--text-strong);
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-1);
-    text-transform: lowercase;
-  }
-
   .reading-list {
     list-style: none;
     margin: 0;
@@ -531,15 +527,23 @@
     gap: var(--subject-space-tight);
   }
 
-  .reading-assets {
+  .section-subgroup {
     display: grid;
     gap: var(--subject-space-tight);
-    margin-top: clamp(4px, 0.6vw, 8px);
+    border: 0;
+    border-radius: var(--radius-sm);
+    background: var(--surface);
+    padding: clamp(12px, 1vw, 16px);
+    box-shadow: inset 0 0 0 1px rgba(138, 160, 201, 0.26);
   }
 
-  .reading-asset-group {
-    display: grid;
-    gap: var(--subject-space-tight);
+  .section-subgroup-title {
+    margin: 0;
+    color: var(--text-subtle);
+    font-size: 0.8rem;
+    font-weight: 700;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
   }
 
   .reading-item {
@@ -780,70 +784,150 @@
           </summary>
 
           <div class="lecture-panel">
-            {% if lecture.lecture_assets.quizzes or lecture.lecture_assets.podcasts %}
-            <section class="lecture-assets">
-              {% if lecture.lecture_assets.quizzes %}
-              <div>
-                <p class="asset-title asset-title-row">
-                  <span class="asset-icon is-quiz" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
-                      <path d="M12 3a9 9 0 1 0 9 9h-1.6a7.4 7.4 0 1 1-7.4-7.4V3Zm0 4a5 5 0 1 0 5 5h-1.6a3.4 3.4 0 1 1-3.4-3.4V7Zm7.8-4.2-4.2 1.4 1.4 1.4-3.1 3.1 1.1 1.1 3.1-3.1 1.4 1.4 1.3-4.3Z"></path>
-                    </svg>
-                  </span>
-                  Quiz for alle kilder
-                </p>
-                <div class="asset-links">
-                  {% for quiz in lecture.lecture_assets.quizzes %}
-                  <a
-                    class="asset-link asset-link--quiz {% if quiz.difficulty == 'easy' %}is-easy{% elif quiz.difficulty == 'medium' %}is-medium{% elif quiz.difficulty == 'hard' %}is-hard{% endif %} {% if lecture.status == 'completed' %}is-complete{% endif %}"
-                    href="{{ quiz.quiz_url }}"
-                  >
-                    <span class="asset-level-icon" aria-hidden="true">
-                      {% if quiz.difficulty == 'easy' %}L{% elif quiz.difficulty == 'medium' %}M{% elif quiz.difficulty == 'hard' %}S{% else %}?{% endif %}
-                    </span>
-                    {{ quiz.difficulty_label_da }}{% if quiz.question_count %} · {{ quiz.question_count }} spørgsmål{% endif %}
-                  </a>
-                  {% endfor %}
-                </div>
+            <section class="lecture-section lecture-quizzes">
+              <div class="lecture-section-head">
+                <span class="asset-icon is-quiz" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+                    <path d="M12 3a9 9 0 1 0 9 9h-1.6a7.4 7.4 0 1 1-7.4-7.4V3Zm0 4a5 5 0 1 0 5 5h-1.6a3.4 3.4 0 1 1-3.4-3.4V7Zm7.8-4.2-4.2 1.4 1.4 1.4-3.1 3.1 1.1 1.1 3.1-3.1 1.4 1.4 1.3-4.3Z"></path>
+                  </svg>
+                </span>
+                <h3 class="section-title">Quizzer</h3>
               </div>
-              {% endif %}
+              {% if lecture.lecture_assets.quizzes or (show_reading_quizzes and lecture.has_reading_quizzes) %}
+                {% if lecture.lecture_assets.quizzes %}
+                <div class="section-subgroup">
+                  <p class="section-subgroup-title">Quiz for alle kilder</p>
+                  <div class="asset-links">
+                    {% for quiz in lecture.lecture_assets.quizzes %}
+                    <a
+                      class="asset-link asset-link--quiz {% if quiz.difficulty == 'easy' %}is-easy{% elif quiz.difficulty == 'medium' %}is-medium{% elif quiz.difficulty == 'hard' %}is-hard{% endif %} {% if lecture.status == 'completed' %}is-complete{% endif %}"
+                      href="{{ quiz.quiz_url }}"
+                    >
+                      <span class="asset-level-icon" aria-hidden="true">
+                        {% if quiz.difficulty == 'easy' %}L{% elif quiz.difficulty == 'medium' %}M{% elif quiz.difficulty == 'hard' %}S{% else %}?{% endif %}
+                      </span>
+                      {{ quiz.difficulty_label_da }}{% if quiz.question_count %} · {{ quiz.question_count }} spørgsmål{% endif %}
+                    </a>
+                    {% endfor %}
+                  </div>
+                </div>
+                {% endif %}
 
-              {% if lecture.lecture_assets.podcasts %}
-              <div>
-                <p class="asset-title asset-title-row">
-                  <span class="asset-icon is-podcast" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
-                      <path d="M5 9h2v6H5V9Zm3-3h2v12H8V6Zm6-2h2v16h-2V4Zm3 4h2v8h-2V8Z"></path>
-                    </svg>
-                  </span>
-                  Forelæsningspodcast
-                </p>
-                <div class="asset-links">
-                  {% for podcast in lecture.lecture_assets.podcasts %}
-                  <a
-                    class="asset-link {% if podcast.platform == 'spotify' %}is-spotify{% else %}is-source{% endif %}"
-                    href="{{ podcast.url }}"
-                    target="_blank"
-                    rel="noopener"
-                  >
-                    {% if podcast.platform == 'spotify' %}Spotify episode{% else %}Lydfil{% endif %} {{ forloop.counter }}
-                  </a>
-                  {% endfor %}
-                </div>
-              </div>
+                {% if show_reading_quizzes %}
+                {% for reading in lecture.readings %}
+                  {% if reading.assets.quizzes %}
+                  <div class="section-subgroup">
+                    <p class="section-subgroup-title">{{ reading.reading_title }}</p>
+                    <div class="asset-links">
+                      {% for quiz in reading.assets.quizzes %}
+                      <a
+                        class="asset-link asset-link--quiz {% if quiz.difficulty == 'easy' %}is-easy{% elif quiz.difficulty == 'medium' %}is-medium{% elif quiz.difficulty == 'hard' %}is-hard{% endif %} {% if reading.status == 'completed' %}is-complete{% endif %}"
+                        href="{{ quiz.quiz_url }}"
+                      >
+                        <span class="asset-level-icon" aria-hidden="true">
+                          {% if quiz.difficulty == 'easy' %}L{% elif quiz.difficulty == 'medium' %}M{% elif quiz.difficulty == 'hard' %}S{% else %}?{% endif %}
+                        </span>
+                        {{ quiz.difficulty_label_da }}{% if quiz.question_count %} · {{ quiz.question_count }} spørgsmål{% endif %}
+                      </a>
+                      {% endfor %}
+                    </div>
+                  </div>
+                  {% endif %}
+                {% endfor %}
+                {% endif %}
+              {% elif lecture.has_reading_quizzes %}
+              <p class="muted">Reading-quizzer er midlertidigt skjult.</p>
+              {% else %}
+              <p class="muted">Ingen quizzer registreret i denne forelæsning.</p>
               {% endif %}
             </section>
-            {% endif %}
 
-            <section class="lecture-readings">
-              <h3 class="reading-title">
+            <section class="lecture-section lecture-podcasts">
+              <div class="lecture-section-head">
+                <span class="asset-icon is-podcast" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+                    <path d="M5 9h2v6H5V9Zm3-3h2v12H8V6Zm6-2h2v16h-2V4Zm3 4h2v8h-2V8Z"></path>
+                  </svg>
+                </span>
+                <h3 class="section-title">Podcasts</h3>
+              </div>
+              {% if lecture.has_any_podcasts %}
+                {% if lecture.lecture_assets.podcasts %}
+                <div class="section-subgroup">
+                  <p class="section-subgroup-title">Forelæsningspodcast</p>
+                  <div class="asset-links">
+                    {% for podcast in lecture.lecture_assets.podcasts %}
+                    <div class="asset-link-row">
+                      <a
+                        class="asset-link {% if podcast.platform == 'spotify' %}is-spotify{% else %}is-source{% endif %}"
+                        href="{{ podcast.url }}"
+                        target="_blank"
+                        rel="noopener"
+                      >
+                        {% if podcast.platform == 'spotify' %}Spotify episode{% else %}Lydfil{% endif %} {{ forloop.counter }}
+                      </a>
+                      <form method="post" action="{{ podcast_tracking_url }}">
+                        {% csrf_token %}
+                        <input type="hidden" name="next" value="{{ request.get_full_path }}" />
+                        <input type="hidden" name="lecture_key" value="{{ lecture.lecture_key }}" />
+                        <input type="hidden" name="podcast_key" value="{{ podcast.podcast_key }}" />
+                        <input type="hidden" name="action" value="{% if podcast.is_marked_listened %}unmark{% else %}mark{% endif %}" />
+                        <button class="tracking-toggle-button {% if podcast.is_marked_listened %}is-marked{% endif %}" type="submit">
+                          {% if podcast.is_marked_listened %}Lyttet{% else %}Markér lyttet{% endif %}
+                        </button>
+                      </form>
+                    </div>
+                    {% endfor %}
+                  </div>
+                </div>
+                {% endif %}
+
+                {% for reading in lecture.readings %}
+                  {% if reading.assets.podcasts %}
+                  <div class="section-subgroup">
+                    <p class="section-subgroup-title">{{ reading.reading_title }}</p>
+                    <div class="asset-links">
+                      {% for podcast in reading.assets.podcasts %}
+                      <div class="asset-link-row">
+                        <a
+                          class="asset-link {% if podcast.platform == 'spotify' %}is-spotify{% else %}is-source{% endif %}"
+                          href="{{ podcast.url }}"
+                          target="_blank"
+                          rel="noopener"
+                        >
+                          {% if podcast.platform == 'spotify' %}Spotify episode{% else %}Lydfil{% endif %} {{ forloop.counter }}
+                        </a>
+                        <form method="post" action="{{ podcast_tracking_url }}">
+                          {% csrf_token %}
+                          <input type="hidden" name="next" value="{{ request.get_full_path }}" />
+                          <input type="hidden" name="lecture_key" value="{{ lecture.lecture_key }}" />
+                          <input type="hidden" name="reading_key" value="{{ reading.reading_key }}" />
+                          <input type="hidden" name="podcast_key" value="{{ podcast.podcast_key }}" />
+                          <input type="hidden" name="action" value="{% if podcast.is_marked_listened %}unmark{% else %}mark{% endif %}" />
+                          <button class="tracking-toggle-button {% if podcast.is_marked_listened %}is-marked{% endif %}" type="submit">
+                            {% if podcast.is_marked_listened %}Lyttet{% else %}Markér lyttet{% endif %}
+                          </button>
+                        </form>
+                      </div>
+                      {% endfor %}
+                    </div>
+                  </div>
+                  {% endif %}
+                {% endfor %}
+              {% else %}
+              <p class="muted">Ingen podcasts registreret i denne forelæsning.</p>
+              {% endif %}
+            </section>
+
+            <section class="lecture-section lecture-readings">
+              <div class="lecture-section-head">
                 <span class="asset-icon is-reading" aria-hidden="true">
                   <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
                     <path d="M4 5.5a2.5 2.5 0 0 1 2.5-2.5H20v16H6.5A2.5 2.5 0 0 0 4 21V5.5Zm2.5-1A1.5 1.5 0 0 0 5 6v12.2c.44-.23.94-.36 1.5-.36H19V4.5H6.5Z"></path>
                   </svg>
                 </span>
-                tekster
-              </h3>
+                <h3 class="section-title">Readings</h3>
+              </div>
               {% if lecture.readings %}
               <ul class="reading-list">
                 {% for reading in lecture.readings %}
@@ -859,6 +943,16 @@
                       {% elif reading.status == 'no_quiz' %}
                       <span class="status-badge is-no-quiz">Ingen quiz</span>
                       {% endif %}
+                      <form method="post" action="{{ reading_tracking_url }}">
+                        {% csrf_token %}
+                        <input type="hidden" name="next" value="{{ request.get_full_path }}" />
+                        <input type="hidden" name="lecture_key" value="{{ lecture.lecture_key }}" />
+                        <input type="hidden" name="reading_key" value="{{ reading.reading_key }}" />
+                        <input type="hidden" name="action" value="{% if reading.is_marked_read %}unmark{% else %}mark{% endif %}" />
+                        <button class="tracking-toggle-button {% if reading.is_marked_read %}is-marked{% endif %}" type="submit">
+                          {% if reading.is_marked_read %}Læst{% else %}Markér læst{% endif %}
+                        </button>
+                      </form>
                     </div>
                   </div>
 
@@ -874,66 +968,11 @@
                   {% else %}
                   <p class="progress-empty">Ikke startet endnu</p>
                   {% endif %}
-
-                  {% if reading.assets.quizzes or reading.assets.podcasts %}
-                  <div class="reading-assets">
-                    {% if reading.assets.quizzes %}
-                    <div class="reading-asset-group">
-                    <p class="asset-title asset-title-row">
-                      <span class="asset-icon is-quiz" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
-                          <path d="M12 3a9 9 0 1 0 9 9h-1.6a7.4 7.4 0 1 1-7.4-7.4V3Zm0 4a5 5 0 1 0 5 5h-1.6a3.4 3.4 0 1 1-3.4-3.4V7Zm7.8-4.2-4.2 1.4 1.4 1.4-3.1 3.1 1.1 1.1 3.1-3.1 1.4 1.4 1.3-4.3Z"></path>
-                        </svg>
-                      </span>
-                      Quiz
-                    </p>
-                    <div class="asset-links">
-                      {% for quiz in reading.assets.quizzes %}
-                      <a
-                        class="asset-link asset-link--quiz {% if quiz.difficulty == 'easy' %}is-easy{% elif quiz.difficulty == 'medium' %}is-medium{% elif quiz.difficulty == 'hard' %}is-hard{% endif %} {% if reading.status == 'completed' %}is-complete{% endif %}"
-                        href="{{ quiz.quiz_url }}"
-                      >
-                        <span class="asset-level-icon" aria-hidden="true">
-                          {% if quiz.difficulty == 'easy' %}L{% elif quiz.difficulty == 'medium' %}M{% elif quiz.difficulty == 'hard' %}S{% else %}?{% endif %}
-                        </span>
-                        {{ quiz.difficulty_label_da }}{% if quiz.question_count %} · {{ quiz.question_count }} spørgsmål{% endif %}
-                      </a>
-                      {% endfor %}
-                    </div>
-                    </div>
-                    {% endif %}
-
-                    {% if reading.assets.podcasts %}
-                    <div class="reading-asset-group">
-                    <p class="asset-title asset-title-row">
-                      <span class="asset-icon is-podcast" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
-                          <path d="M5 9h2v6H5V9Zm3-3h2v12H8V6Zm6-2h2v16h-2V4Zm3 4h2v8h-2V8Z"></path>
-                        </svg>
-                      </span>
-                      Podcast
-                    </p>
-                    <div class="asset-links">
-                      {% for podcast in reading.assets.podcasts %}
-                      <a
-                        class="asset-link {% if podcast.platform == 'spotify' %}is-spotify{% else %}is-source{% endif %}"
-                        href="{{ podcast.url }}"
-                        target="_blank"
-                        rel="noopener"
-                      >
-                        {% if podcast.platform == 'spotify' %}Spotify episode{% else %}Lydfil{% endif %} {{ forloop.counter }}
-                      </a>
-                      {% endfor %}
-                    </div>
-                    </div>
-                    {% endif %}
-                  </div>
-                  {% endif %}
                 </li>
                 {% endfor %}
               </ul>
               {% else %}
-              <p class="muted">Ingen tekster registreret i denne forelæsning.</p>
+              <p class="muted">Ingen readings registreret i denne forelæsning.</p>
               {% endif %}
             </section>
           </div>

@@ -15,6 +15,12 @@ urlpatterns = [
         views.quiz_state_raw_view,
         name="quiz-state-raw",
     ),
+    re_path(r"^leaderboard/profile$", views.leaderboard_profile_view, name="leaderboard-profile"),
+    re_path(
+        r"^leaderboard/(?P<subject_slug>[a-z0-9-]+)$",
+        views.leaderboard_subject_view,
+        name="leaderboard-subject",
+    ),
     re_path(r"^subjects/(?P<subject_slug>[a-z0-9-]+)$", views.subject_detail_view, name="subject-detail"),
     re_path(
         r"^subjects/(?P<subject_slug>[a-z0-9-]+)/enroll$",
@@ -25,6 +31,16 @@ urlpatterns = [
         r"^subjects/(?P<subject_slug>[a-z0-9-]+)/unenroll$",
         views.subject_unenroll_view,
         name="subject-unenroll",
+    ),
+    re_path(
+        r"^subjects/(?P<subject_slug>[a-z0-9-]+)/tracking/reading$",
+        views.subject_tracking_reading_view,
+        name="subject-tracking-reading",
+    ),
+    re_path(
+        r"^subjects/(?P<subject_slug>[a-z0-9-]+)/tracking/podcast$",
+        views.subject_tracking_podcast_view,
+        name="subject-tracking-podcast",
     ),
     re_path(r"^progress$", views.progress_view, name="progress"),
     re_path(

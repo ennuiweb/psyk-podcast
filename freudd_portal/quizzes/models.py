@@ -2,8 +2,15 @@
 
 from __future__ import annotations
 
+import re
+
 from django.conf import settings
+from django.core.exceptions import ValidationError
 from django.db import models
+from django.db.models import Q
+
+
+PUBLIC_ALIAS_RE = re.compile(r"^[A-Za-z0-9_-]{3,24}$")
 
 
 class QuizProgress(models.Model):
@@ -273,3 +280,94 @@ class DailyGamificationStat(models.Model):
 
     def __str__(self) -> str:
         return f"{self.user_id}:{self.date}:goal={self.goal_met}"
+
+
+class UserReadingMark(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    subject_slug = models.CharField(max_length=64)
+    lecture_key = models.CharField(max_length=32)
+    reading_key = models.CharField(max_length=96)
+    marked_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["user", "subject_slug", "lecture_key", "reading_key"],
+                name="uq_user_subject_lecture_reading_mark",
+            ),
+        ]
+        indexes = [
+            models.Index(fields=["user", "subject_slug"], name="reading_mark_user_subject_idx"),
+        ]
+
+    def __str__(self) -> str:
+        return f"{self.user_id}:{self.subject_slug}:{self.lecture_key}:{self.reading_key}"
+
+
+class UserPodcastMark(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    subject_slug = models.CharField(max_length=64)
+    lecture_key = models.CharField(max_length=32)
+    reading_key = models.CharField(max_length=96, blank=True, null=True)
+    podcast_key = models.CharField(max_length=40)
+    marked_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["user", "subject_slug", "lecture_key", "reading_key", "podcast_key"],
+                condition=Q(reading_key__isnull=False),
+                name="uq_user_subject_lecture_reading_podcast_mark",
+            ),
+            models.UniqueConstraint(
+                fields=["user", "subject_slug", "lecture_key", "podcast_key"],
+                condition=Q(reading_key__isnull=True),
+                name="uq_user_subject_lecture_podcast_mark",
+            ),
+        ]
+        indexes = [
+            models.Index(fields=["user", "subject_slug"], name="podcast_mark_user_subject_idx"),
+        ]
+
+    def __str__(self) -> str:
+        reading = self.reading_key or "-"
+        return f"{self.user_id}:{self.subject_slug}:{self.lecture_key}:{reading}:{self.podcast_key}"
+
+
+class UserLeaderboardProfile(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    public_alias = models.CharField(max_length=24, blank=True, null=True)
+    public_alias_normalized = models.CharField(max_length=24, blank=True, null=True, unique=True)
+    is_public = models.BooleanField(default=False)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        indexes = [
+            models.Index(
+                fields=["is_public", "public_alias_normalized"],
+                name="leader_public_alias_idx",
+            ),
+        ]
+
+    def clean(self) -> None:
+        super().clean()
+        alias = str(self.public_alias or "").strip()
+        if alias and not PUBLIC_ALIAS_RE.match(alias):
+            raise ValidationError(
+                {
+                    "public_alias": (
+                        "Alias skal være 3-24 tegn og må kun indeholde bogstaver, tal, '_' eller '-'."
+                    )
+                }
+            )
+
+    def save(self, *args, **kwargs):
+        alias = str(self.public_alias or "").strip()
+        self.public_alias = alias or None
+        self.public_alias_normalized = alias.lower() if alias else None
+        super().save(*args, **kwargs)
+
+    def __str__(self) -> str:
+        alias = self.public_alias or "-"
+        state = "public" if self.is_public else "private"
+        return f"{self.user_id}:{alias}:{state}"

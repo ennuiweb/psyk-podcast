@@ -31,7 +31,7 @@ _DESIGN_SYSTEMS: tuple[DesignSystemDefinition, ...] = (
     ),
 )
 
-DEFAULT_DESIGN_SYSTEM_KEY = "classic"
+DEFAULT_DESIGN_SYSTEM_KEY = "paper-studio"
 
 DESIGN_SYSTEM_KEY_TO_DEFINITION: dict[str, DesignSystemDefinition] = {
     item.key: item for item in _DESIGN_SYSTEMS

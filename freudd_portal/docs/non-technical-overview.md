@@ -10,7 +10,7 @@ For teaching flow, Freudd Portal organizes learning in a structured sequence (le
 
 In practical terms, the portal exists to solve a simple problem: static generated quiz files are useful, but they do not on their own provide identity, memory, progression, or a learner dashboard. Freudd Portal provides that missing layer while preserving the original quiz content.
 
-The portal now also supports selectable visual design systems so teams can evaluate different interface directions without rebuilding core pages. Learners can switch style directly in the header and keep their preferred system across sessions.
+The portal now also supports selectable visual design systems so teams can evaluate different interface directions without rebuilding core pages. Learners can switch style from "mit overblik" and keep their preferred system across sessions.
 
 ## Design system reference
 

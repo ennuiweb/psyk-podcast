@@ -174,7 +174,7 @@ CACHES = {
     }
 }
 
-FREUDD_DESIGN_SYSTEM_DEFAULT = os.environ.get("FREUDD_DESIGN_SYSTEM_DEFAULT", "classic")
+FREUDD_DESIGN_SYSTEM_DEFAULT = os.environ.get("FREUDD_DESIGN_SYSTEM_DEFAULT", "paper-studio")
 FREUDD_DESIGN_SYSTEM_COOKIE_NAME = os.environ.get(
     "FREUDD_DESIGN_SYSTEM_COOKIE_NAME",
     "freudd_design_system",

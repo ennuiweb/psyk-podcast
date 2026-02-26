@@ -16,7 +16,8 @@ Source alignment:
 ## Runtime design-system architecture
 
 - Active systems: `classic`, `night-lab`, `paper-studio`.
-- Selector UI: header form in `templates/base.html`.
+- Default system: `paper-studio` unless overridden by query/session/user/cookie preference.
+- Selector UI: dashboard form on `GET /progress` in `templates/quizzes/progress.html`.
 - Resolution precedence: query (`?ds=`) -> session preview -> authenticated user preference -> cookie -> configured default.
 - Persistence endpoint: `POST /preferences/design-system`.
 - Source registry: `quizzes/design_systems.py`.

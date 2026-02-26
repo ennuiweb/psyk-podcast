@@ -36,6 +36,7 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Credentials are encrypted at rest with Fernet via `FREUDD_CREDENTIALS_MASTER_KEY`.
 - Habitica server sync is active; Anki remains gated but server sync is deferred.
 - Theme direction: multi-system UI with switchable `classic`, `night-lab`, and `paper-studio` design systems.
+- Default design system is `paper-studio` (`FREUDD_DESIGN_SYSTEM_DEFAULT`), with selector placed on `mit overblik` (`GET /progress`).
 - Active design system resolution order: query (`?ds=`) -> session preview -> authenticated user preference -> cookie -> configured default.
 - Headings/titles in the portal UI are rendered in lower-case for consistent visual tone.
 - Shared primitives in `templates/base.html` enforce radius/spacing/depth rules portal-wide, while page templates apply local layout detail.
@@ -137,7 +138,7 @@ Operational behavior:
 - `FREUDD_CREDENTIALS_MASTER_KEY` (required for credential encrypt/decrypt)
 - `FREUDD_CREDENTIALS_KEY_VERSION` (default: `1`)
 - `FREUDD_EXT_SYNC_TIMEOUT_SECONDS` (default: `20`)
-- `FREUDD_DESIGN_SYSTEM_DEFAULT` (default: `classic`)
+- `FREUDD_DESIGN_SYSTEM_DEFAULT` (default: `paper-studio`)
 - `FREUDD_DESIGN_SYSTEM_COOKIE_NAME` (default: `freudd_design_system`)
 
 ## Management commands (no admin panel required)

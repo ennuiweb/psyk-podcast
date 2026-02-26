@@ -15,6 +15,48 @@
     gap: var(--space-4);
   }
 
+  .dashboard-top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-3);
+  }
+
+  .dashboard-copy {
+    min-width: min(100%, 24rem);
+  }
+
+  .dashboard-theme-form {
+    margin: 0;
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .dashboard-theme-label {
+    font-size: 0.82rem;
+    color: var(--text-subtle-2);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: lowercase;
+  }
+
+  .dashboard-theme-select {
+    width: auto;
+    min-width: 11rem;
+    max-width: 15rem;
+    min-height: var(--control-min-height);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-pill);
+    background: var(--surface);
+    color: var(--ink);
+    padding: 0 var(--space-3);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+  }
+
   .dashboard-title {
     margin: 0;
     text-transform: lowercase;
@@ -345,6 +387,16 @@
       padding: var(--space-3);
     }
 
+    .dashboard-theme-form {
+      width: 100%;
+    }
+
+    .dashboard-theme-select {
+      flex: 1 1 auto;
+      min-width: 0;
+      max-width: none;
+    }
+
     .subject-card {
       padding: var(--space-3);
     }
@@ -352,9 +404,29 @@
 </style>
 <div class="card dashboard-card">
   <header class="dashboard-head">
-    <div>
-      <h1 class="quiz-title dashboard-title">Mit overblik</h1>
-      <p class="dashboard-intro">Tilmeld fag, og få overblik over dine quizscore.</p>
+    <div class="dashboard-top">
+      <div class="dashboard-copy">
+        <h1 class="quiz-title dashboard-title">Mit overblik</h1>
+        <p class="dashboard-intro">Tilmeld fag, og få overblik over dine quizscore.</p>
+      </div>
+      <form method="post" action="{% url 'design-system-preference' %}" class="dashboard-theme-form">
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ request.get_full_path }}" />
+        <label class="dashboard-theme-label" for="progress-design-system-select">design-system</label>
+        <select
+          id="progress-design-system-select"
+          name="design_system"
+          class="dashboard-theme-select"
+          aria-label="Vælg design-system"
+        >
+          {% for system in design_systems %}
+          <option value="{{ system.key }}" {% if system.key == active_design_system_key %}selected{% endif %}>
+            {{ system.label }}
+          </option>
+          {% endfor %}
+        </select>
+        <button class="nav-action" type="submit">Skift</button>
+      </form>
     </div>
   </header>
 

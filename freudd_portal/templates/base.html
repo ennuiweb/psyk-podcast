@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="da" data-design-system="{{ active_design_system_key|default:'classic' }}">
+<html lang="da" data-design-system="{{ active_design_system_key|default:'paper-studio' }}">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -332,12 +332,6 @@
         margin: 0;
       }
 
-      .theme-form {
-        display: inline-flex;
-        align-items: center;
-        gap: var(--space-1);
-      }
-
       .visually-hidden {
         position: absolute;
         width: 1px;
@@ -348,20 +342,6 @@
         clip: rect(0, 0, 0, 0);
         white-space: nowrap;
         border: 0;
-      }
-
-      .theme-select {
-        width: auto;
-        min-width: 10.5rem;
-        max-width: 14rem;
-        min-height: var(--control-min-height);
-        border: 1px solid var(--border-strong);
-        border-radius: var(--radius-pill);
-        background: var(--surface);
-        color: var(--ink);
-        padding: 0 var(--space-3);
-        font-family: var(--font-body);
-        font-size: 0.88rem;
       }
 
       .nav-action {
@@ -564,14 +544,6 @@
         border-color: var(--input-hover-border);
       }
 
-      .theme-form .theme-select {
-        width: auto;
-        min-width: 10.5rem;
-        max-width: 14rem;
-        min-height: var(--control-min-height);
-        padding: 0 var(--space-3);
-      }
-
       .errorlist {
         margin: var(--space-2) 0 0;
         padding: 0;
@@ -720,15 +692,6 @@
           font-size: 0.85rem;
         }
 
-        .theme-form {
-          width: 100%;
-        }
-
-        .theme-select {
-          flex: 1 1 auto;
-          min-width: 0;
-        }
-
         .card {
           border-radius: var(--radius-xl);
           padding: var(--space-4);
@@ -749,19 +712,6 @@
       <div class="header-inner">
         <a class="brand" href="{% url 'progress' %}">freudd</a>
         <div class="nav-links">
-          <form method="post" action="{% url 'design-system-preference' %}" class="inline-form theme-form">
-            {% csrf_token %}
-            <input type="hidden" name="next" value="{{ request.get_full_path }}" />
-            <label class="visually-hidden" for="design-system-select">Design-system</label>
-            <select id="design-system-select" name="design_system" class="theme-select">
-              {% for system in design_systems %}
-              <option value="{{ system.key }}" {% if system.key == active_design_system_key %}selected{% endif %}>
-                {{ system.label }}
-              </option>
-              {% endfor %}
-            </select>
-            <button class="nav-action" type="submit">Skift</button>
-          </form>
           {% if request.user.is_authenticated %}
           <a class="nav-action" href="{% url 'progress' %}">Mit overblik</a>
           <form method="post" action="{% url 'logout' %}" class="inline-form">

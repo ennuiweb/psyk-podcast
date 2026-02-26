@@ -639,7 +639,7 @@ class QuizPortalTests(TestCase):
     def test_default_design_system_renders_in_html_attribute(self) -> None:
         response = self.client.get(reverse("login"))
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, 'data-design-system="classic"')
+        self.assertContains(response, 'data-design-system="paper-studio"')
 
     def test_design_system_cookie_applies_for_anonymous_request(self) -> None:
         self.client.cookies[settings.FREUDD_DESIGN_SYSTEM_COOKIE_NAME] = "night-lab"
@@ -657,7 +657,21 @@ class QuizPortalTests(TestCase):
         self.client.cookies[settings.FREUDD_DESIGN_SYSTEM_COOKIE_NAME] = "not-a-theme"
         response = self.client.get(reverse("login"))
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, 'data-design-system="classic"')
+        self.assertContains(response, 'data-design-system="paper-studio"')
+
+    def test_design_system_switcher_is_on_progress_page(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+
+        response = self.client.get(reverse("progress"))
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'id="progress-design-system-select"')
+        self.assertContains(response, reverse("design-system-preference"))
+
+        self.client.logout()
+        response = self.client.get(reverse("login"))
+        self.assertEqual(response.status_code, 200)
+        self.assertNotContains(response, 'id="progress-design-system-select"')
 
     def test_design_system_preview_query_persists_session_override(self) -> None:
         user = self._create_user()

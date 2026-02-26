@@ -1,4 +1,5 @@
 Django>=5.1,<6.0
+django-allauth>=65.14.3,<66
 google-api-python-client
 google-auth
 PyYAML
@@ -6,3 +7,4 @@ requests
 cryptography
 Jinja2
 pypdf
+PyJWT>=2.10,<3

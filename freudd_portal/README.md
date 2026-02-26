@@ -3,7 +3,9 @@
 Django portal for authentication, quiz state, and quiz-driven gamification on top of static NotebookLM quiz exports.
 
 ## Current decisions
-- Auth: Django session auth with open signup (`/accounts/signup`).
+- Auth: Hybrid login (`brugernavn/adgangskode` + optional Google OAuth), med open signup (`/accounts/signup`) bevaret.
+- Google OAuth er feature-flagged via `FREUDD_AUTH_GOOGLE_ENABLED`; når aktiv eksponeres allauth Google-login + konto-linking flows.
+- Existing password users linker Google eksplicit via `Forbind Google` (`/accounts/3rdparty/`) efter login.
 - UI language: Danish only (`da`) for now; English is intentionally disabled.
 - Multi-language readiness: internal IDs/status codes remain language-neutral (`quiz_id`, `in_progress`, `completed`) so additional UI languages can be added later without data migration.
 - Runtime naming: service/env/config namespace is `freudd` (`freudd-portal.service`, `/etc/freudd-portal.env`, `FREUDD_PORTAL_*`).
@@ -32,14 +34,14 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Quizliga tie-break is earliest `reached_at` (time user first reached score), then alias alphabetic.
 - Quizliga seasons reset every half year in UTC: `H1 = [Jan 1, Jul 1)`, `H2 = [Jul 1, Jan 1 next year)`.
 - Learning path on subject pages (`/subjects/<subject_slug>`) is lecture-first with nested reading status (`active|completed|no_quiz`) and quiz/podcast navigation.
-- Subject detail UI is mobile-first and uses a vertical timeline with manual `<details>` toggles, per-lecture progress bars, and compact quiz chips per difficulty.
-- Subject detail includes top overview KPI cards, `Udvid alle`/`Luk alle` controls, and local browser persistence of opened lectures.
-- Subject detail spacing now uses a local responsive scale (`section/block/tight`) to keep vertical rhythm consistent across KPI cards, timeline items, lecture panels, and reading rows.
-- Expanded lecture details are partitioned into three fixed sibling sections: `Quizzer`, `Podcasts`, `Readings`.
+- Subject detail UI is mobile-first and uses a left lecture rail + single active lecture card (no multi-panel accordion).
+- Subject detail removes KPI strip and global `Udvid alle`/`Luk alle`; lecture switching is via rail links (`?lecture=<lecture_key>`).
+- Subject detail spacing uses a local responsive scale (`section/block/tight`) to keep vertical rhythm consistent across rail, card header, and section blocks.
+- Active lecture card is partitioned into three fixed sibling sections: `Quizzer`, `Podcasts`, `Readings`.
 - Quiz assets are surfaced only in `Quizzer`, podcast assets only in `Podcasts`, and reading status/progress only in `Readings`.
 - Section-level empty states are shown per section; one populated section does not hide the others.
-- Reading-level quiz chips are temporarily hidden by default in subject detail; re-enable with `FREUDD_SUBJECT_DETAIL_SHOW_READING_QUIZZES=1`.
-- Module headers in subject detail are split visually into two title elements: `Uge x, forelæsning x` (label) and the cleaned lecture title (without trailing `(Forelæsning x, YYYY-MM-DD)` metadata).
+- Reading cards always render L/M/S difficulty indicators in subject detail.
+- Module headers in subject detail are rendered as a combined headline (`Uge x, forelæsning x: <titel>`), with cleaned lecture title metadata.
 - Quiz labels are rendered from cleaned `episode_title` metadata (`modul` + `titel`) instead of raw file/tag strings.
 - Quiz wrapper header uses a structured identity block (module label + title) and includes in-flow progress feedback per question step.
 - `quiz_links.json` entries must include `subject_slug` so unit progression can be computed per subject.
@@ -59,6 +61,9 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - `GET/POST /accounts/signup`
 - `GET/POST /accounts/login`
 - `POST /accounts/logout`
+- `GET/POST /accounts/google/login/` (feature-flagged)
+- `GET /accounts/google/login/callback/` (feature-flagged)
+- `GET/POST /accounts/3rdparty/*` (feature-flagged social account linking)
 - `GET /q/<quiz_id>.html`
 - `GET /q/raw/<quiz_id>.html`
 - `GET /api/quiz-content/<quiz_id>`
@@ -140,10 +145,18 @@ Enrollment UX rule: enroll/unenroll actions are shown inline per subject in the 
 
 Operational behavior:
 - Mapped RSS titles render Spotify links on `/subjects/<subject_slug>`.
-- Unmapped RSS titles are omitted from UI and emitted as manifest warnings (non-fatal).
+- Unmapped RSS titles fall back to source audio links in UI and are emitted as manifest warnings (non-fatal).
 - Keep `spotify_map.json` updated when new RSS episodes are published, then rebuild manifest.
 
 ## New env configuration
+- `FREUDD_PORTAL_SITE_ID` (default: `1`)
+- `FREUDD_AUTH_GOOGLE_ENABLED` (default: `0`)
+- `FREUDD_GOOGLE_CLIENT_ID` (required when `FREUDD_AUTH_GOOGLE_ENABLED=1`)
+- `FREUDD_GOOGLE_CLIENT_SECRET` (required when `FREUDD_AUTH_GOOGLE_ENABLED=1`)
+- `FREUDD_PORTAL_TRUST_X_FORWARDED_PROTO` (default: `0`; set `1` behind proxy TLS termination)
+- `FREUDD_PORTAL_CSRF_TRUSTED_ORIGINS` (comma-separated, for example `https://freudd.dk,https://www.freudd.dk`)
+- `FREUDD_PORTAL_SESSION_COOKIE_SECURE` (default: `0`; set `1` in production HTTPS)
+- `FREUDD_PORTAL_CSRF_COOKIE_SECURE` (default: `0`; set `1` in production HTTPS)
 - `FREUDD_SUBJECTS_JSON_PATH` (default: `freudd_portal/subjects.json`)
 - `FREUDD_READING_MASTER_KEY_PATH` (default: `/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/.ai/reading-file-key.md`)
 - `FREUDD_READING_MASTER_KEY_FALLBACK_PATH` (default: `shows/personlighedspsykologi-en/docs/reading-file-key.md`)
@@ -159,7 +172,19 @@ Operational behavior:
 - `FREUDD_EXT_SYNC_TIMEOUT_SECONDS` (default: `20`)
 - `FREUDD_DESIGN_SYSTEM_DEFAULT` (default: `paper-studio`)
 - `FREUDD_DESIGN_SYSTEM_COOKIE_NAME` (default: `freudd_design_system`)
-- `FREUDD_SUBJECT_DETAIL_SHOW_READING_QUIZZES` (default: `0`; set `1` to show reading-level quizzes inside `Quizzer`)
+- `FREUDD_SUBJECT_DETAIL_SHOW_READING_QUIZZES` (legacy toggle; reading difficulty indicators are now always shown in subject detail)
+
+## Google OAuth setup
+Create a Google OAuth client (Web application) and whitelist callback URLs:
+- `https://freudd.dk/accounts/google/login/callback/`
+- `https://www.freudd.dk/accounts/google/login/callback/`
+- `http://127.0.0.1:8000/accounts/google/login/callback/` (local dev)
+- `http://localhost:8000/accounts/google/login/callback/` (local dev)
+
+Then set:
+- `FREUDD_AUTH_GOOGLE_ENABLED=1`
+- `FREUDD_GOOGLE_CLIENT_ID=<client id>`
+- `FREUDD_GOOGLE_CLIENT_SECRET=<client secret>`
 
 ## Management commands (no admin panel required)
 Prerequisite: der skal eksistere en brugerkonto (via signup eller `createsuperuser`) før per-user extension-commands kan køres.

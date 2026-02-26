@@ -512,6 +512,8 @@ def _enrich_subject_path_lectures(lectures: object) -> list[dict[str, object]]:
 def signup_view(request: HttpRequest) -> HttpResponse:
     if request.user.is_authenticated:
         return redirect("progress")
+    safe_next = _safe_next_redirect(request)
+    google_auth_enabled = bool(getattr(settings, "FREUDD_AUTH_GOOGLE_ENABLED", False))
 
     if request.method == "POST":
         blocked, retry_after = _rate_limit_exceeded(
@@ -528,13 +530,14 @@ def signup_view(request: HttpRequest) -> HttpResponse:
                 {
                     "form": form,
                     "insecure_http": _is_http_insecure(request),
-                    "next_value": _requested_next(request),
+                    "next_value": safe_next,
+                    "google_auth_enabled": google_auth_enabled,
                 },
                 status=429,
             )
         if form.is_valid():
             user = form.save()
-            login(request, user)
+            login(request, user, backend="django.contrib.auth.backends.ModelBackend")
             return redirect(_safe_next_redirect(request) or "progress")
     else:
         form = SignupForm()
@@ -545,7 +548,8 @@ def signup_view(request: HttpRequest) -> HttpResponse:
         {
             "form": form,
             "insecure_http": _is_http_insecure(request),
-            "next_value": _requested_next(request),
+            "next_value": safe_next,
+            "google_auth_enabled": google_auth_enabled,
         },
     )
 
@@ -554,6 +558,8 @@ def signup_view(request: HttpRequest) -> HttpResponse:
 def login_view(request: HttpRequest) -> HttpResponse:
     if request.user.is_authenticated:
         return redirect("progress")
+    safe_next = _safe_next_redirect(request)
+    google_auth_enabled = bool(getattr(settings, "FREUDD_AUTH_GOOGLE_ENABLED", False))
 
     if request.method == "POST":
         blocked, retry_after = _rate_limit_exceeded(
@@ -570,7 +576,8 @@ def login_view(request: HttpRequest) -> HttpResponse:
                 {
                     "form": form,
                     "insecure_http": _is_http_insecure(request),
-                    "next_value": _requested_next(request),
+                    "next_value": safe_next,
+                    "google_auth_enabled": google_auth_enabled,
                 },
                 status=429,
             )
@@ -586,7 +593,8 @@ def login_view(request: HttpRequest) -> HttpResponse:
         {
             "form": form,
             "insecure_http": _is_http_insecure(request),
-            "next_value": _requested_next(request),
+            "next_value": safe_next,
+            "google_auth_enabled": google_auth_enabled,
         },
     )
 

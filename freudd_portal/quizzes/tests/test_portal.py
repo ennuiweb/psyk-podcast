@@ -1,9 +1,11 @@
 from __future__ import annotations
 
+import importlib
 import html
 import io
 import json
 import tempfile
+from contextlib import contextmanager
 from datetime import datetime, timezone as dt_timezone
 from pathlib import Path
 from unittest.mock import patch
@@ -14,7 +16,7 @@ from django.contrib.auth.models import User
 from django.core.management import call_command
 from django.core.management.base import CommandError
 from django.test import Client, TestCase, override_settings
-from django.urls import reverse
+from django.urls import clear_url_caches, reverse, set_urlconf
 from django.utils import timezone
 
 from quizzes import services as quiz_services
@@ -72,9 +74,12 @@ class QuizPortalTests(TestCase):
             FREUDD_EXT_SYNC_TIMEOUT_SECONDS=2,
             QUIZ_SIGNUP_RATE_LIMIT=1000,
             QUIZ_LOGIN_RATE_LIMIT=1000,
+            FREUDD_AUTH_GOOGLE_ENABLED=False,
+            SOCIALACCOUNT_PROVIDERS={},
         )
         self.override.enable()
         self.addCleanup(self.override.disable)
+        self.addCleanup(self._reload_root_urlconf)
         clear_subject_service_caches()
         self.addCleanup(clear_subject_service_caches)
         clear_content_service_caches()
@@ -232,6 +237,32 @@ class QuizPortalTests(TestCase):
     def _login(self, username: str = "alice", password: str = "Secret123!!") -> None:
         self.client.login(username=username, password=password)
 
+    def _reload_root_urlconf(self) -> None:
+        clear_url_caches()
+        importlib.reload(importlib.import_module(settings.ROOT_URLCONF))
+        set_urlconf(None)
+
+    @contextmanager
+    def _google_auth_enabled(self):
+        with override_settings(
+            FREUDD_AUTH_GOOGLE_ENABLED=True,
+            SOCIALACCOUNT_PROVIDERS={
+                "google": {
+                    "APP": {
+                        "client_id": "test-google-client-id",
+                        "secret": "test-google-client-secret",
+                        "key": "",
+                    },
+                    "SCOPE": ["profile", "email"],
+                }
+            },
+        ):
+            self._reload_root_urlconf()
+            try:
+                yield
+            finally:
+                self._reload_root_urlconf()
+
     def test_signup_creates_user_and_logs_in(self) -> None:
         response = self.client.post(
             reverse("signup"),
@@ -295,6 +326,47 @@ class QuizPortalTests(TestCase):
         )
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response.url, reverse("quiz-wrapper", kwargs={"quiz_id": self.quiz_id}))
+
+    def test_google_button_hidden_when_feature_disabled(self) -> None:
+        response = self.client.get(reverse("login"))
+        self.assertEqual(response.status_code, 200)
+        self.assertNotContains(response, "Fortsæt med Google")
+        self.assertEqual(self.client.get("/accounts/google/login/").status_code, 404)
+
+    def test_google_button_visible_when_feature_enabled(self) -> None:
+        with self._google_auth_enabled():
+            response = self.client.get(reverse("login"))
+            self.assertEqual(response.status_code, 200)
+            self.assertContains(response, "Fortsæt med Google")
+            self.assertContains(response, 'action="/accounts/google/login/"')
+
+    def test_google_button_does_not_render_external_next_value(self) -> None:
+        with self._google_auth_enabled():
+            response = self.client.get(f"{reverse('login')}?next=https://example.com/steal")
+            self.assertEqual(response.status_code, 200)
+            self.assertNotContains(response, 'name="next" value="https://example.com/steal"')
+            self.assertNotContains(response, "example.com/steal")
+            self.assertContains(response, 'action="/accounts/google/login/"')
+
+    def test_google_login_post_initiates_oauth_redirect(self) -> None:
+        with self._google_auth_enabled():
+            response = self.client.post("/accounts/google/login/")
+            self.assertEqual(response.status_code, 302)
+            self.assertTrue(response.url.startswith("https://accounts.google.com/o/oauth2/v2/auth"))
+
+    def test_google_login_get_renders_confirmation_when_login_on_get_disabled(self) -> None:
+        with self._google_auth_enabled():
+            response = self.client.get("/accounts/google/login/")
+            self.assertEqual(response.status_code, 200)
+            self.assertContains(response, "Fortsæt")
+
+    def test_socialaccount_connections_available_for_authenticated_user(self) -> None:
+        with self._google_auth_enabled():
+            user = self._create_user()
+            self.client.force_login(user)
+            response = self.client.get("/accounts/3rdparty/")
+            self.assertEqual(response.status_code, 200)
+            self.assertContains(response, "Forbind Google-konto")
 
     def test_logout_requires_post_and_clears_session(self) -> None:
         self._create_user()
@@ -1026,29 +1098,93 @@ class QuizPortalTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertNotContains(response, "Ikke tilmeldt")
         self.assertNotContains(response, "Tilmeldt")
-        self.assertContains(response, "Udvid alle")
+        self.assertNotContains(response, "Udvid alle")
+        self.assertNotContains(response, "Luk alle")
+        self.assertNotContains(response, "overview-grid")
         self.assertNotContains(response, "<h2>Læringssti</h2>", html=True)
         self.assertNotContains(response, "Næste fokus")
         self.assertNotContains(response, "Trin ")
         self.assertNotContains(response, "Låst")
         self.assertContains(response, "Uge 1, forelæsning 1")
-        self.assertContains(response, "class=\"lecture-module\"")
         self.assertContains(response, "Introforelaesning")
-        self.assertNotContains(response, "Uge 1, forelæsning 1 · Introforelaesning")
-        self.assertNotContains(response, "W01L1 ·")
+        self.assertContains(response, "data-active-lecture-key=\"W01L1\"")
+        self.assertContains(response, "lecture-rail-item")
+        self.assertNotContains(response, "lecture-details")
+        self.assertNotContains(response, "timeline-item")
         self.assertNotContains(response, "Introforelaesning (Forelaesning 1, 2026-02-02)")
-        self.assertContains(response, "timeline-item")
-        self.assertContains(response, "lecture-details")
-        self.assertNotContains(response, "lecture-details\" open")
-        self.assertContains(response, "Quiz for alle kilder")
-        self.assertContains(response, "Mellem · 2 spørgsmål")
+        self.assertContains(response, "quiz for alle kilder")
+        self.assertContains(response, "reading-difficulties")
         self.assertContains(response, "Ikke startet endnu")
-        self.assertNotContains(response, ">Aktiv<")
         self.assertContains(response, "Grundbog kapitel 01 - Introduktion til personlighedspsykologi")
-        self.assertContains(response, "Mangler kilde")
-        self.assertContains(response, "Koutsoumpis (2025)")
+        self.assertNotContains(response, "Mangler kilde")
+        self.assertNotContains(response, "Koutsoumpis (2025)")
         self.assertNotContains(response, "Tilmeld fag")
         self.assertNotContains(response, "Afmeld fag")
+
+        self.assertEqual(response.context["active_lecture"]["lecture_key"], "W01L1")
+        self.assertEqual(len(response.context["lecture_rail_items"]), 2)
+        self.assertTrue(response.context["lecture_rail_items"][0]["is_active"])
+        self.assertFalse(response.context["lecture_rail_items"][1]["is_active"])
+
+    def test_subject_detail_query_param_selects_active_lecture(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+
+        detail_url = reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"})
+        response = self.client.get(f"{detail_url}?lecture=W01L2")
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.context["active_lecture"]["lecture_key"], "W01L2")
+        self.assertContains(response, "data-active-lecture-key=\"W01L2\"")
+        self.assertContains(response, "Koutsoumpis (2025)")
+        self.assertTrue(response.context["lecture_rail_items"][1]["is_active"])
+        self.assertFalse(response.context["lecture_rail_items"][0]["is_active"])
+
+    def test_subject_detail_invalid_query_param_falls_back_to_default_lecture(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+
+        detail_url = reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"})
+        response = self.client.get(f"{detail_url}?lecture=DOES_NOT_EXIST")
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.context["active_lecture"]["lecture_key"], "W01L1")
+        self.assertContains(response, "data-active-lecture-key=\"W01L1\"")
+
+    def test_subject_detail_omits_kpi_strip_and_toolbar_controls(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+
+        response = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
+        self.assertEqual(response.status_code, 200)
+        self.assertNotContains(response, "overview-grid")
+        self.assertNotContains(response, "Udvid alle")
+        self.assertNotContains(response, "Luk alle")
+        self.assertNotContains(response, "subject_path_overview")
+
+    def test_subject_detail_renders_rail_links_for_each_lecture(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+
+        detail_url = reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"})
+        response = self.client.get(detail_url)
+        self.assertEqual(response.status_code, 200)
+        rail_items = response.context["lecture_rail_items"]
+        self.assertEqual(len(rail_items), 2)
+        self.assertEqual(rail_items[0]["lecture_key"], "W01L1")
+        self.assertEqual(rail_items[1]["lecture_key"], "W01L2")
+        self.assertTrue(rail_items[0]["lecture_url"].endswith("?lecture=W01L1"))
+        self.assertTrue(rail_items[1]["lecture_url"].endswith("?lecture=W01L2"))
+
+    @override_settings(FREUDD_SUBJECT_DETAIL_SHOW_READING_QUIZZES=False)
+    def test_subject_detail_always_shows_reading_difficulty_indicators(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+
+        response = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "reading-difficulties")
+        self.assertContains(response, "difficulty-chip is-easy")
+        self.assertContains(response, "difficulty-chip is-medium")
+        self.assertContains(response, "difficulty-chip is-hard")
 
     def test_subject_detail_hides_question_count_when_quiz_file_is_missing(self) -> None:
         user = self._create_user()
@@ -1120,8 +1256,7 @@ class QuizPortalTests(TestCase):
 
         response = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "Spotify")
-        self.assertContains(response, "class=\"asset-link is-spotify\"")
+        self.assertContains(response, "class=\"podcast-play\"")
         self.assertContains(response, "https://open.spotify.com/episode/5m0hYfDU9ThM5qR2xMugr8")
         self.assertContains(response, "https://open.spotify.com/episode/4w4gHCXnQK5fjQdsxQO0XG")
         self.assertNotContains(response, "https://example.test/podcast/w01l1-alle-kilder.mp3")
@@ -1135,11 +1270,9 @@ class QuizPortalTests(TestCase):
 
         response = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
         self.assertEqual(response.status_code, 200)
-        self.assertNotContains(response, "class=\"asset-link is-spotify\"")
         self.assertNotContains(response, "https://open.spotify.com/episode/")
         self.assertContains(response, "https://example.test/podcast/w01l1-alle-kilder.mp3")
         self.assertContains(response, "https://example.test/podcast/w01l1-intro.mp3")
-        self.assertContains(response, "Lydfil 1")
 
     def test_subject_detail_shows_private_tracking_controls(self) -> None:
         user = self._create_user()
@@ -1264,7 +1397,7 @@ class QuizPortalTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertNotContains(response, "Tilmeldt")
         self.assertNotContains(response, "Ikke tilmeldt")
-        self.assertContains(response, "Udvid alle")
+        self.assertContains(response, "lecture-rail-item")
         self.assertNotContains(response, "Afmeld fag")
 
     def test_subject_detail_handles_snapshot_failure_without_500(self) -> None:
@@ -1326,8 +1459,9 @@ class QuizPortalTests(TestCase):
         detail_url = reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"})
         response = self.client.get(detail_url)
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "Udvid alle")
-        self.assertContains(response, "Ingen quiz")
+        self.assertContains(response, "lecture-rail-item")
+        self.assertContains(response, "data-active-lecture-key=\"W01L1\"")
+        self.assertContains(response, "Grundbog kapitel 01 - Introduktion til personlighedspsykologi")
 
     def test_unknown_subject_slug_returns_404_for_all_subject_endpoints(self) -> None:
         user = self._create_user()

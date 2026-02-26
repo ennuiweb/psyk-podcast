@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}google login fejlede · freudd{% endblock %}
+{% block content %}
+<div class="card auth-shell">
+  <h1 class="auth-title">google login fejlede</h1>
+  <p class="muted auth-subtitle">Der opstod en fejl under login via Google. Prøv igen.</p>
+  <p class="auth-footer"><a href="{% url 'login' %}">Gå tilbage til login</a></p>
+</div>
+{% endblock %}

@@ -125,12 +125,15 @@ python podcast/gdrive_podcast_feed.py --config podcast/config.local.json
 The repository ships with `podcast/config.json` and `podcast/episode_metadata.json` pre-populated for Socialpsykologi Deep Dives - Hold 1 - 2024—update the titles, artwork, contact email, and descriptions to match your own show before publishing.
 
 ## freudd (login + learning dashboard)
-The repository includes a Django portal in `freudd_portal/` for user login, quiz state persistence, quiz-driven gamification, subject enrollment, semester preferences, and subject reading overviews without changing NotebookLM-generated quiz HTML internals.
+The repository includes a Django portal in `freudd_portal/` for hybrid auth (username/password + optional Google OAuth), quiz state persistence, quiz-driven gamification, subject enrollment, and subject reading overviews without changing NotebookLM-generated quiz HTML internals.
 
 ### What it serves
 - `GET/POST /accounts/signup`
 - `GET/POST /accounts/login`
 - `POST /accounts/logout`
+- `GET/POST /accounts/google/login/` (feature-flagged via `FREUDD_AUTH_GOOGLE_ENABLED`)
+- `GET /accounts/google/login/callback/` (feature-flagged via `FREUDD_AUTH_GOOGLE_ENABLED`)
+- `GET/POST /accounts/3rdparty/*` (feature-flagged social linking flows)
 - `GET /q/<quiz_id>.html` (public JSON-driven quiz wrapper)
 - `GET /q/raw/<quiz_id>.html` (public raw quiz HTML)
 - `GET /api/quiz-content/<quiz_id>` (public normalized quiz JSON for wrapper UI)
@@ -138,7 +141,6 @@ The repository includes a Django portal in `freudd_portal/` for user login, quiz
 - `GET/POST /api/quiz-state/<quiz_id>/raw` (login-required legacy raw state payload)
 - `GET /api/gamification/me` (login-required gamification snapshot)
 - `GET /progress` (login-required dashboard with header semester selector, `Mine fag` cards for inline enroll/unenroll, and `Quizhistorik` rows)
-- `POST /preferences/semester` (login-required semester update)
 - `GET /subjects/<subject_slug>` (login-required subject detail with lecture-first path + nested readings/assets)
 - `POST /subjects/<subject_slug>/enroll` (login-required)
 - `POST /subjects/<subject_slug>/unenroll` (login-required)
@@ -197,6 +199,14 @@ python3 manage.py test
 - `FREUDD_PORTAL_SECRET_KEY`
 - `FREUDD_PORTAL_DEBUG`
 - `FREUDD_PORTAL_ALLOWED_HOSTS` (comma-separated)
+- `FREUDD_PORTAL_SITE_ID` (default: `1`)
+- `FREUDD_AUTH_GOOGLE_ENABLED` (default: `0`)
+- `FREUDD_GOOGLE_CLIENT_ID` (required when `FREUDD_AUTH_GOOGLE_ENABLED=1`)
+- `FREUDD_GOOGLE_CLIENT_SECRET` (required when `FREUDD_AUTH_GOOGLE_ENABLED=1`)
+- `FREUDD_PORTAL_TRUST_X_FORWARDED_PROTO` (default: `0`; set `1` behind TLS-terminating proxy)
+- `FREUDD_PORTAL_CSRF_TRUSTED_ORIGINS` (comma-separated origins)
+- `FREUDD_PORTAL_SESSION_COOKIE_SECURE` (default: `0`; set `1` in production HTTPS)
+- `FREUDD_PORTAL_CSRF_COOKIE_SECURE` (default: `0`; set `1` in production HTTPS)
 - Temporary fallback: old `QUIZ_PORTAL_SECRET_KEY`, `QUIZ_PORTAL_DEBUG`, and `QUIZ_PORTAL_ALLOWED_HOSTS` are still accepted during rollout.
 - `QUIZ_FILES_ROOT` (default: `/var/www/quizzes/personlighedspsykologi`)
 - `QUIZ_LINKS_JSON_PATH` (default: `shows/personlighedspsykologi-en/quiz_links.json`)
@@ -248,6 +258,8 @@ Quiz sync behavior (current):
 
 ### Security controls in phase 1
 - Django session auth + CSRF middleware
+- Hybrid auth model: local password login + optional Google OAuth login
+- Google account linking is explicit (`/accounts/3rdparty/`); implicit email-based social account takeover is disabled
 - Wrapper/raw quiz endpoints are public (`/q/*`, `/q/raw/*`) for anonymous play
 - Public quiz content API (`/api/quiz-content/<id>`) serves normalized quiz JSON to the portal UI
 - Login required on dashboard + state persistence + subject preference APIs (`/progress`, `/api/quiz-state/*`, `/subjects/*`, `/preferences/*`)
@@ -257,6 +269,12 @@ Quiz sync behavior (current):
 - IP-based login/signup rate limiting
 - HTTP warning banners on auth pages (until HTTPS rollout)
 - Extension sync runs server-side from management commands/cron, with per-user credentials encrypted in DB.
+
+Google OAuth callback allowlist (Google Cloud OAuth client):
+- `https://freudd.dk/accounts/google/login/callback/`
+- `https://www.freudd.dk/accounts/google/login/callback/`
+- `http://127.0.0.1:8000/accounts/google/login/callback/`
+- `http://localhost:8000/accounts/google/login/callback/`
 
 ### Deployment notes (current)
 - Runtime names are now `freudd-portal.service` and `/etc/freudd-portal.env`.

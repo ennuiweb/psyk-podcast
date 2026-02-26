@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}fuldfør konto · freudd{% endblock %}
+{% block content %}
+<div class="card auth-shell">
+  <h1 class="auth-title">fuldfør konto</h1>
+  <p class="muted auth-subtitle">Afslut opsætningen for din {{ account.get_provider.name }}-konto.</p>
+
+  <form method="post" action="{% url 'socialaccount_signup' %}" class="form-stack">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    {% for field in form %}
+    <p>
+      <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+      {{ field }}
+      {{ field.errors }}
+    </p>
+    {% endfor %}
+    {% if redirect_field_name and redirect_field_value %}
+    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+    {% endif %}
+    <button class="btn-primary" type="submit">Fortsæt</button>
+  </form>
+</div>
+{% endblock %}

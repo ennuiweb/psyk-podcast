@@ -1,5 +1,6 @@
 """Top-level URL routing for freudd."""
 
+from django.conf import settings
 from django.contrib import admin
 from django.urls import include, path
 
@@ -12,3 +13,9 @@ urlpatterns = [
     path("accounts/logout", quiz_views.logout_view, name="logout"),
     path("", include("quizzes.urls")),
 ]
+
+if settings.FREUDD_AUTH_GOOGLE_ENABLED:
+    urlpatterns += [
+        path("accounts/", include("allauth.socialaccount.providers.google.urls")),
+        path("accounts/3rdparty/", include("allauth.socialaccount.urls")),
+    ]

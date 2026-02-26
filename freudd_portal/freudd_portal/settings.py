@@ -7,6 +7,16 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+
+def _as_bool_env(name: str, *, default: str = "0") -> bool:
+    return os.environ.get(name, default).strip().lower() in {"1", "true", "yes", "on"}
+
+
+def _as_csv_env(name: str, *, default: str = "") -> list[str]:
+    value = os.environ.get(name, default)
+    return [part.strip() for part in value.split(",") if part.strip()]
+
+
 # QUIZ_PORTAL_* fallback is temporary for rollout compatibility.
 SECRET_KEY = os.environ.get("FREUDD_PORTAL_SECRET_KEY") or os.environ.get(
     "QUIZ_PORTAL_SECRET_KEY",
@@ -26,14 +36,25 @@ ALLOWED_HOSTS = [host.strip() for host in allowed_hosts.split(",") if host.strip
     "127.0.0.1",
     "localhost",
 ]
+CSRF_TRUSTED_ORIGINS = _as_csv_env("FREUDD_PORTAL_CSRF_TRUSTED_ORIGINS")
+SESSION_COOKIE_SECURE = _as_bool_env("FREUDD_PORTAL_SESSION_COOKIE_SECURE", default="0")
+CSRF_COOKIE_SECURE = _as_bool_env("FREUDD_PORTAL_CSRF_COOKIE_SECURE", default="0")
+
+if _as_bool_env("FREUDD_PORTAL_TRUST_X_FORWARDED_PROTO", default="0"):
+    SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
+    "django.contrib.sites",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
+    "allauth.socialaccount.providers.google",
     "quizzes",
 ]
 
@@ -44,6 +65,7 @@ MIDDLEWARE = [
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "allauth.account.middleware.AccountMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
@@ -95,10 +117,40 @@ USE_TZ = True
 STATIC_URL = "/static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+SITE_ID = int(os.environ.get("FREUDD_PORTAL_SITE_ID", "1"))
+
+AUTHENTICATION_BACKENDS = [
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend",
+]
 
 LOGIN_URL = "/accounts/login"
 LOGIN_REDIRECT_URL = "/progress"
 LOGOUT_REDIRECT_URL = "/accounts/login"
+
+SOCIALACCOUNT_LOGIN_ON_GET = False
+SOCIALACCOUNT_AUTO_SIGNUP = True
+SOCIALACCOUNT_EMAIL_AUTHENTICATION = False
+SOCIALACCOUNT_EMAIL_AUTHENTICATION_AUTO_CONNECT = False
+
+FREUDD_AUTH_GOOGLE_ENABLED = _as_bool_env("FREUDD_AUTH_GOOGLE_ENABLED", default="0")
+FREUDD_GOOGLE_CLIENT_ID = os.environ.get("FREUDD_GOOGLE_CLIENT_ID", "").strip()
+FREUDD_GOOGLE_CLIENT_SECRET = os.environ.get("FREUDD_GOOGLE_CLIENT_SECRET", "").strip()
+SOCIALACCOUNT_PROVIDERS: dict[str, dict[str, object]] = {}
+
+if FREUDD_AUTH_GOOGLE_ENABLED:
+    if not FREUDD_GOOGLE_CLIENT_ID or not FREUDD_GOOGLE_CLIENT_SECRET:
+        raise RuntimeError(
+            "Google auth is enabled but FREUDD_GOOGLE_CLIENT_ID/FREUDD_GOOGLE_CLIENT_SECRET is missing."
+        )
+    SOCIALACCOUNT_PROVIDERS["google"] = {
+        "APP": {
+            "client_id": FREUDD_GOOGLE_CLIENT_ID,
+            "secret": FREUDD_GOOGLE_CLIENT_SECRET,
+            "key": "",
+        },
+        "SCOPE": ["profile", "email"],
+    }
 
 X_FRAME_OPTIONS = "SAMEORIGIN"
 

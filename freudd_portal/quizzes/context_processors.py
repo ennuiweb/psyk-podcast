@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from django.conf import settings
 from django.urls import reverse
 
 from .models import SubjectEnrollment
@@ -57,4 +58,5 @@ def design_system_context(request):
         "design_system_preview_session_key": DESIGN_SYSTEM_SESSION_PREVIEW_KEY,
         "leaderboard_default_subject_slug": default_subject,
         "topmenu_enrolled_subjects": enrolled_subjects,
+        "google_auth_enabled": bool(getattr(settings, "FREUDD_AUTH_GOOGLE_ENABLED", False)),
     }

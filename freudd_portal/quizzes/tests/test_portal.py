@@ -4,6 +4,7 @@ import html
 import io
 import json
 import tempfile
+from datetime import datetime, timezone as dt_timezone
 from pathlib import Path
 from unittest.mock import patch
 from urllib.parse import urlencode
@@ -14,9 +15,11 @@ from django.core.management import call_command
 from django.core.management.base import CommandError
 from django.test import Client, TestCase, override_settings
 from django.urls import reverse
+from django.utils import timezone
 
 from quizzes import services as quiz_services
 from quizzes.content_services import clear_content_service_caches
+from quizzes.leaderboard_services import active_half_year_season
 from quizzes.models import (
     DailyGamificationStat,
     ExtensionSyncLedger,
@@ -27,6 +30,9 @@ from quizzes.models import (
     UserGamificationProfile,
     UserInterfacePreference,
     UserLectureProgress,
+    UserLeaderboardProfile,
+    UserPodcastMark,
+    UserReadingMark,
     UserReadingProgress,
     UserUnitProgress,
 )
@@ -629,6 +635,231 @@ class QuizPortalTests(TestCase):
         self.assertContains(response, "Mine fag")
         self.assertContains(response, "Tilmeld")
 
+    def test_progress_page_shows_personal_tracking_and_leaderboard_sections(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+
+        response = self.client.get(reverse("progress"))
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Personlig tracking")
+        self.assertContains(response, "Offentlig quizliga")
+        self.assertContains(response, reverse("leaderboard-profile"))
+
+    def test_leaderboard_page_is_public(self) -> None:
+        response = self.client.get(
+            reverse("leaderboard-subject", kwargs={"subject_slug": "personlighedspsykologi"})
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "quizliga")
+
+    def test_base_nav_contains_quizliga_link(self) -> None:
+        response = self.client.get(reverse("login"))
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(
+            response,
+            reverse("leaderboard-subject", kwargs={"subject_slug": "personlighedspsykologi"}),
+        )
+
+    def test_leaderboard_profile_requires_login(self) -> None:
+        response = self.client.post(
+            reverse("leaderboard-profile"),
+            {
+                "public_alias": "AliasOne",
+                "is_public": "1",
+            },
+        )
+        self.assertEqual(response.status_code, 302)
+        self.assertTrue(response.url.startswith(f"{reverse('login')}?next="))
+
+    def test_leaderboard_profile_alias_is_case_insensitive_unique(self) -> None:
+        first = self._create_user(username="first-user")
+        second = self._create_user(username="second-user")
+        UserLeaderboardProfile.objects.create(
+            user=first,
+            public_alias="Alias",
+            public_alias_normalized="alias",
+            is_public=True,
+        )
+
+        self.client.force_login(second)
+        response = self.client.post(
+            reverse("leaderboard-profile"),
+            {
+                "public_alias": "alias",
+                "is_public": "1",
+                "next": reverse("progress"),
+            },
+        )
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.url, reverse("progress"))
+        self.assertFalse(UserLeaderboardProfile.objects.filter(user=second).exists())
+
+    def test_leaderboard_opt_out_hides_user_but_keeps_alias(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+        QuizProgress.objects.create(
+            user=user,
+            quiz_id=self.quiz_id,
+            status=QuizProgress.Status.COMPLETED,
+            state_json={},
+            answers_count=2,
+            question_count=2,
+            last_view="summary",
+            completed_at=timezone.now(),
+        )
+
+        response = self.client.post(
+            reverse("leaderboard-profile"),
+            {
+                "public_alias": "PublicAlias",
+                "is_public": "1",
+                "next": reverse("progress"),
+            },
+        )
+        self.assertEqual(response.status_code, 302)
+
+        response = self.client.get(
+            reverse("leaderboard-subject", kwargs={"subject_slug": "personlighedspsykologi"})
+        )
+        self.assertContains(response, "PublicAlias")
+
+        response = self.client.post(
+            reverse("leaderboard-profile"),
+            {
+                "public_alias": "",
+                "next": reverse("progress"),
+            },
+        )
+        self.assertEqual(response.status_code, 302)
+
+        profile = UserLeaderboardProfile.objects.get(user=user)
+        self.assertFalse(profile.is_public)
+        self.assertEqual(profile.public_alias, "PublicAlias")
+        self.assertEqual(profile.public_alias_normalized, "publicalias")
+
+        response = self.client.get(
+            reverse("leaderboard-subject", kwargs={"subject_slug": "personlighedspsykologi"})
+        )
+        self.assertNotContains(response, "PublicAlias")
+
+    def test_leaderboard_scoring_tiebreak_and_subject_filtering(self) -> None:
+        second_quiz_id = "aaaaaaaa"
+        other_subject_quiz = "bbbbbbbb"
+        self._write_quiz_file(second_quiz_id, question_count=2)
+        self._write_quiz_json_file(second_quiz_id, question_count=2)
+        self._write_quiz_file(other_subject_quiz, question_count=2)
+        self._write_quiz_json_file(other_subject_quiz, question_count=2)
+        self._write_links_file(
+            {
+                self.quiz_id: {
+                    "title": "W1L1 - Episode",
+                    "difficulty": "medium",
+                    "subject_slug": "personlighedspsykologi",
+                },
+                second_quiz_id: {
+                    "title": "W1L1 - Episode Two",
+                    "difficulty": "medium",
+                    "subject_slug": "personlighedspsykologi",
+                },
+                other_subject_quiz: {
+                    "title": "W1L1 - Other Subject Quiz",
+                    "difficulty": "medium",
+                    "subject_slug": "other-subject",
+                },
+            }
+        )
+
+        user_a = self._create_user(username="alpha")
+        user_b = self._create_user(username="beta")
+        UserLeaderboardProfile.objects.create(
+            user=user_a,
+            public_alias="Alpha",
+            public_alias_normalized="alpha",
+            is_public=True,
+        )
+        UserLeaderboardProfile.objects.create(
+            user=user_b,
+            public_alias="Beta",
+            public_alias_normalized="beta",
+            is_public=True,
+        )
+
+        QuizProgress.objects.create(
+            user=user_a,
+            quiz_id=self.quiz_id,
+            status=QuizProgress.Status.COMPLETED,
+            state_json={},
+            answers_count=2,
+            question_count=2,
+            last_view="summary",
+            completed_at=datetime(2026, 1, 2, 10, 0, tzinfo=dt_timezone.utc),
+        )
+        QuizProgress.objects.create(
+            user=user_a,
+            quiz_id=second_quiz_id,
+            status=QuizProgress.Status.COMPLETED,
+            state_json={},
+            answers_count=2,
+            question_count=2,
+            last_view="summary",
+            completed_at=datetime(2026, 1, 3, 10, 0, tzinfo=dt_timezone.utc),
+        )
+        QuizProgress.objects.create(
+            user=user_b,
+            quiz_id=self.quiz_id,
+            status=QuizProgress.Status.COMPLETED,
+            state_json={},
+            answers_count=2,
+            question_count=2,
+            last_view="summary",
+            completed_at=datetime(2026, 1, 2, 11, 0, tzinfo=dt_timezone.utc),
+        )
+        QuizProgress.objects.create(
+            user=user_b,
+            quiz_id=second_quiz_id,
+            status=QuizProgress.Status.COMPLETED,
+            state_json={},
+            answers_count=2,
+            question_count=2,
+            last_view="summary",
+            completed_at=datetime(2026, 1, 4, 10, 0, tzinfo=dt_timezone.utc),
+        )
+        QuizProgress.objects.create(
+            user=user_b,
+            quiz_id=other_subject_quiz,
+            status=QuizProgress.Status.COMPLETED,
+            state_json={},
+            answers_count=2,
+            question_count=2,
+            last_view="summary",
+            completed_at=datetime(2026, 1, 5, 10, 0, tzinfo=dt_timezone.utc),
+        )
+
+        response = self.client.get(
+            reverse("leaderboard-subject", kwargs={"subject_slug": "personlighedspsykologi"})
+        )
+        self.assertEqual(response.status_code, 200)
+        entries = response.context["entries"]
+        self.assertEqual(entries[0]["alias"], "Alpha")
+        self.assertEqual(entries[1]["alias"], "Beta")
+        self.assertEqual(entries[0]["quiz_count"], 2)
+        self.assertEqual(entries[1]["quiz_count"], 2)
+
+    def test_half_year_season_boundaries(self) -> None:
+        jan_start = active_half_year_season(datetime(2026, 1, 1, 0, 0, tzinfo=dt_timezone.utc))
+        self.assertEqual(jan_start.key, "2026-H1")
+        self.assertEqual(jan_start.start_at.isoformat(), "2026-01-01T00:00:00+00:00")
+        self.assertEqual(jan_start.end_at.isoformat(), "2026-07-01T00:00:00+00:00")
+
+        june_end = active_half_year_season(datetime(2026, 6, 30, 23, 59, 59, tzinfo=dt_timezone.utc))
+        self.assertEqual(june_end.key, "2026-H1")
+        self.assertEqual(june_end.end_at.isoformat(), "2026-07-01T00:00:00+00:00")
+
+        july_start = active_half_year_season(datetime(2026, 7, 1, 0, 0, tzinfo=dt_timezone.utc))
+        self.assertEqual(july_start.key, "2026-H2")
+        self.assertEqual(july_start.start_at.isoformat(), "2026-07-01T00:00:00+00:00")
+        self.assertEqual(july_start.end_at.isoformat(), "2027-01-01T00:00:00+00:00")
+
     def test_semester_update_endpoint_is_removed(self) -> None:
         user = self._create_user()
         self.client.force_login(user)
@@ -910,6 +1141,119 @@ class QuizPortalTests(TestCase):
         self.assertContains(response, "https://example.test/podcast/w01l1-intro.mp3")
         self.assertContains(response, "Lydfil 1")
 
+    def test_subject_detail_shows_private_tracking_controls(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+
+        response = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Markér læst")
+        self.assertContains(response, "Markér lyttet")
+
+    def test_subject_reading_tracking_toggle_is_idempotent(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+
+        detail_url = reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"})
+        detail_response = self.client.get(detail_url)
+        lecture = detail_response.context["subject_path_lectures"][0]
+        reading = lecture["readings"][0]
+
+        track_url = reverse(
+            "subject-tracking-reading",
+            kwargs={"subject_slug": "personlighedspsykologi"},
+        )
+        payload = {
+            "next": detail_url,
+            "lecture_key": lecture["lecture_key"],
+            "reading_key": reading["reading_key"],
+            "action": "mark",
+        }
+        response = self.client.post(track_url, payload)
+        self.assertEqual(response.status_code, 302)
+        response = self.client.post(track_url, payload)
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(
+            UserReadingMark.objects.filter(
+                user=user,
+                subject_slug="personlighedspsykologi",
+                lecture_key=lecture["lecture_key"],
+                reading_key=reading["reading_key"],
+            ).count(),
+            1,
+        )
+
+        payload["action"] = "unmark"
+        response = self.client.post(track_url, payload)
+        self.assertEqual(response.status_code, 302)
+        response = self.client.post(track_url, payload)
+        self.assertEqual(response.status_code, 302)
+        self.assertFalse(
+            UserReadingMark.objects.filter(
+                user=user,
+                subject_slug="personlighedspsykologi",
+                lecture_key=lecture["lecture_key"],
+                reading_key=reading["reading_key"],
+            ).exists()
+        )
+
+    def test_subject_podcast_tracking_toggle_is_idempotent_with_stable_key(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+
+        detail_url = reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"})
+        first_response = self.client.get(detail_url)
+        lecture = first_response.context["subject_path_lectures"][0]
+        lecture_podcasts = lecture["lecture_assets"]["podcasts"]
+        self.assertGreaterEqual(len(lecture_podcasts), 1)
+        first_key = lecture_podcasts[0]["podcast_key"]
+
+        second_response = self.client.get(detail_url)
+        second_key = second_response.context["subject_path_lectures"][0]["lecture_assets"]["podcasts"][0][
+            "podcast_key"
+        ]
+        self.assertEqual(first_key, second_key)
+
+        track_url = reverse(
+            "subject-tracking-podcast",
+            kwargs={"subject_slug": "personlighedspsykologi"},
+        )
+        payload = {
+            "next": detail_url,
+            "lecture_key": lecture["lecture_key"],
+            "podcast_key": first_key,
+            "action": "mark",
+        }
+        response = self.client.post(track_url, payload)
+        self.assertEqual(response.status_code, 302)
+        response = self.client.post(track_url, payload)
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(
+            UserPodcastMark.objects.filter(
+                user=user,
+                subject_slug="personlighedspsykologi",
+                lecture_key=lecture["lecture_key"],
+                reading_key__isnull=True,
+                podcast_key=first_key,
+            ).count(),
+            1,
+        )
+
+        payload["action"] = "unmark"
+        response = self.client.post(track_url, payload)
+        self.assertEqual(response.status_code, 302)
+        response = self.client.post(track_url, payload)
+        self.assertEqual(response.status_code, 302)
+        self.assertFalse(
+            UserPodcastMark.objects.filter(
+                user=user,
+                subject_slug="personlighedspsykologi",
+                lecture_key=lecture["lecture_key"],
+                reading_key__isnull=True,
+                podcast_key=first_key,
+            ).exists()
+        )
+
     def test_subject_detail_hides_enrollment_badge_for_enrolled_user(self) -> None:
         user = self._create_user()
         SubjectEnrollment.objects.create(user=user, subject_slug="personlighedspsykologi")
@@ -1010,6 +1354,41 @@ class QuizPortalTests(TestCase):
         self.assertContains(response, "Personlighedspsykologi")
         self.assertNotContains(response, "legacy-subject")
 
+    def test_topmenu_context_lists_enrolled_subjects(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+        SubjectEnrollment.objects.create(user=user, subject_slug="personlighedspsykologi")
+
+        response = self.client.get(reverse("progress"))
+        self.assertEqual(response.status_code, 200)
+        subjects = response.context["topmenu_enrolled_subjects"]
+        self.assertEqual(len(subjects), 1)
+        self.assertEqual(subjects[0]["slug"], "personlighedspsykologi")
+        self.assertEqual(subjects[0]["title"], "Personlighedspsykologi")
+        self.assertEqual(
+            subjects[0]["detail_url"],
+            reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}),
+        )
+        self.assertContains(
+            response,
+            '<a class="nav-action" href="/subjects/personlighedspsykologi">Personlighedspsykologi</a>',
+            html=True,
+        )
+
+    def test_topmenu_context_hides_stale_subject_enrollments(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+        SubjectEnrollment.objects.create(user=user, subject_slug="legacy-subject")
+
+        response = self.client.get(reverse("progress"))
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.context["topmenu_enrolled_subjects"], tuple())
+        self.assertNotContains(
+            response,
+            '<a class="nav-action" href="/subjects/legacy-subject">legacy-subject</a>',
+            html=True,
+        )
+
     def test_progress_handles_missing_subject_catalog_file(self) -> None:
         user = self._create_user()
         self.client.force_login(user)
@@ -1075,6 +1454,11 @@ class QuizPortalTests(TestCase):
         user = self._create_user()
         csrf_client = Client(enforce_csrf_checks=True)
         csrf_client.force_login(user)
+        detail_url = reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"})
+        detail_response = csrf_client.get(detail_url)
+        lecture = detail_response.context["subject_path_lectures"][0]
+        reading = lecture["readings"][0]
+        podcast_key = lecture["lecture_assets"]["podcasts"][0]["podcast_key"]
 
         response = csrf_client.post(
             reverse("subject-enroll", kwargs={"subject_slug": "personlighedspsykologi"}),
@@ -1085,6 +1469,38 @@ class QuizPortalTests(TestCase):
         response = csrf_client.post(
             reverse("subject-unenroll", kwargs={"subject_slug": "personlighedspsykologi"}),
             {"next": reverse("progress")},
+        )
+        self.assertEqual(response.status_code, 403)
+
+        response = csrf_client.post(
+            reverse("subject-tracking-reading", kwargs={"subject_slug": "personlighedspsykologi"}),
+            {
+                "next": detail_url,
+                "lecture_key": lecture["lecture_key"],
+                "reading_key": reading["reading_key"],
+                "action": "mark",
+            },
+        )
+        self.assertEqual(response.status_code, 403)
+
+        response = csrf_client.post(
+            reverse("subject-tracking-podcast", kwargs={"subject_slug": "personlighedspsykologi"}),
+            {
+                "next": detail_url,
+                "lecture_key": lecture["lecture_key"],
+                "podcast_key": podcast_key,
+                "action": "mark",
+            },
+        )
+        self.assertEqual(response.status_code, 403)
+
+        response = csrf_client.post(
+            reverse("leaderboard-profile"),
+            {
+                "public_alias": "AliasOne",
+                "is_public": "1",
+                "next": reverse("progress"),
+            },
         )
         self.assertEqual(response.status_code, 403)
 

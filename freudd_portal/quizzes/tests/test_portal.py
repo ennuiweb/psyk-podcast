@@ -322,8 +322,8 @@ class QuizPortalTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Uge 1, forelæsning 1")
         self.assertContains(response, "Alle kilder")
-        self.assertContains(response, "Deep dive")
-        self.assertContains(response, "EN")
+        self.assertNotContains(response, "Deep dive")
+        self.assertNotContains(response, f"ID {self.quiz_id}")
         self.assertNotContains(response, "hash=f104a13e")
         self.assertNotContains(response, ".mp3")
 

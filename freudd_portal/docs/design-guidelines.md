@@ -96,7 +96,7 @@ This document captures the current UI direction and reusable interface patterns 
 ### Header identity
 
 - Render quiz identity as two levels: module label (`Uge x, forelæsning x`) and cleaned quiz title.
-- Show metadata as compact chips (for example `Lyd`, `Deep dive`, `EN`) plus explicit difficulty and quiz id.
+- Keep header identity minimal; do not render metadata/difficulty/id chips in the title area.
 - Avoid exposing raw file metadata in the visible title (`{type=...}`, hash fragments, file extensions).
 
 ### Question flow

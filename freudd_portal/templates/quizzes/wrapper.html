@@ -49,38 +49,6 @@
     overflow-wrap: anywhere;
   }
 
-  .quiz-meta-chips {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-1);
-    align-items: center;
-  }
-
-  .quiz-chip {
-    display: inline-flex;
-    align-items: center;
-    min-height: 28px;
-    border-radius: var(--radius-pill);
-    border: 1px solid var(--border);
-    background: #ffffff;
-    color: #44577e;
-    padding: 0 var(--space-2);
-    font-size: 0.74rem;
-    font-weight: 700;
-    letter-spacing: 0.01em;
-  }
-
-  .quiz-chip.is-difficulty {
-    border-color: rgba(47, 103, 232, 0.36);
-    background: #ecf2ff;
-    color: #244fb4;
-  }
-
-  .quiz-chip.is-id {
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-    letter-spacing: 0;
-  }
-
   .quiz-login-note-links {
     display: inline-flex;
     gap: var(--space-2);
@@ -328,13 +296,6 @@
       <p class="quiz-module">{{ quiz_module_label }}</p>
       {% endif %}
       <h1 class="quiz-title">{{ quiz_title }}</h1>
-      <div class="quiz-meta-chips">
-        <span class="quiz-chip is-difficulty">{{ quiz_difficulty_label }}</span>
-        {% for chip in quiz_meta_chips %}
-        <span class="quiz-chip">{{ chip }}</span>
-        {% endfor %}
-        <span class="quiz-chip is-id">ID {{ quiz_id }}</span>
-      </div>
     </div>
     {% if user_is_authenticated %}
     <a class="ghost-link" href="{% url 'progress' %}">Tilbage til min side</a>

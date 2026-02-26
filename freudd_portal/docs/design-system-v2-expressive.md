@@ -174,6 +174,7 @@ Use one orchestrated entrance per page, not many unrelated animations.
 - Quiz chips, level pills, and quiz status live only in `Quizzer`.
 - Episode metadata (duration, listen-state, speed markers) lives only in `Podcasts`.
 - Text/article cards and reading progress live only in `Readings`.
+- Reading-level quiz chips are hidden by default and controlled via `FREUDD_SUBJECT_DETAIL_SHOW_READING_QUIZZES`.
 - Empty state messaging is shown per section; one populated section must not hide the others.
 
 ## Page Blueprints
@@ -191,7 +192,7 @@ Use one orchestrated entrance per page, not many unrelated animations.
 - Expanded lecture details use fixed section order:
   - `Quizzer` (lecture quiz + item quizzes, with level chips).
   - `Podcasts` (episode cards only).
-  - `Readings` (text/article cards + reading-linked quiz badges).
+  - `Readings` (text/article cards; reading-linked quiz badges are toggle-controlled and hidden by default).
 - Quiz chips use stronger level distinction: `Let` calm, `Mellem` vivid, `Svær` warm/high-attention.
 
 ### `/q/<quiz_id>.html`

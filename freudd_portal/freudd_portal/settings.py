@@ -179,3 +179,7 @@ FREUDD_DESIGN_SYSTEM_COOKIE_NAME = os.environ.get(
     "FREUDD_DESIGN_SYSTEM_COOKIE_NAME",
     "freudd_design_system",
 )
+FREUDD_SUBJECT_DETAIL_SHOW_READING_QUIZZES = (
+    os.environ.get("FREUDD_SUBJECT_DETAIL_SHOW_READING_QUIZZES", "0").strip().lower()
+    in {"1", "true", "yes", "on"}
+)

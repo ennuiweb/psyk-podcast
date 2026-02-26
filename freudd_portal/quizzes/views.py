@@ -1124,7 +1124,7 @@ def subject_detail_view(request: HttpRequest, subject_slug: str) -> HttpResponse
             "subject_path_overview": overview,
             "reading_tracking_url": reverse("subject-tracking-reading", kwargs={"subject_slug": subject.slug}),
             "podcast_tracking_url": reverse("subject-tracking-podcast", kwargs={"subject_slug": subject.slug}),
-            "show_reading_quizzes": bool(
+            "show_reading_quizzes": _as_bool(
                 getattr(settings, "FREUDD_SUBJECT_DETAIL_SHOW_READING_QUIZZES", False)
             ),
         },

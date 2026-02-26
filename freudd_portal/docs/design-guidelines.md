@@ -178,6 +178,7 @@ Rules:
   - Quiz chips and quiz status belong only in `Quizzer`.
   - Episode metadata belongs only in `Podcasts`.
   - Text/article cards and reading progress belong only in `Readings`.
+- Reading-level quiz chips are feature-toggled and hidden by default (`FREUDD_SUBJECT_DETAIL_SHOW_READING_QUIZZES=0`).
 - Empty state messaging is shown per section; a populated section never hides the other two.
 
 ### Data table pattern
@@ -219,7 +220,7 @@ Behavior:
 - Expanded lecture details use fixed section order:
   - `Quizzer` (lecture quiz + item quizzes, with level chips in order `Let`, `Mellem`, `Svær`)
   - `Podcasts` (episode cards only)
-  - `Readings` (text/article cards and reading-linked quiz badges)
+  - `Readings` (text/article cards; reading-linked quiz badges are hidden by default behind feature toggle)
 
 ### `/q/<quiz_id>.html` (quiz wrapper)
 

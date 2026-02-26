@@ -345,9 +345,8 @@
 
   .podcast-row {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
     gap: var(--space-2);
-    align-items: center;
+    align-items: start;
     padding: var(--space-3);
     border-bottom: 1px solid var(--border);
   }
@@ -362,28 +361,34 @@
     gap: 2px;
   }
 
+  .podcast-title-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-2);
+  }
+
+  .podcast-title-actions {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    flex-shrink: 0;
+  }
+
   .podcast-title {
     margin: 0;
     font-size: 1.02rem;
     color: var(--text-strong);
     line-height: 1.24;
     overflow-wrap: anywhere;
+    flex: 1 1 auto;
+    min-width: 0;
   }
 
   .podcast-meta {
     margin: 0;
     color: var(--muted);
     font-size: 0.78rem;
-  }
-
-  .podcast-actions {
-    display: grid;
-    gap: var(--space-1);
-    justify-items: end;
-  }
-
-  .podcast-actions form {
-    margin: 0;
   }
 
   .podcast-inline-trigger {
@@ -424,23 +429,78 @@
     opacity: 0.92;
   }
 
+  .tracking-toggle-form {
+    margin: 0;
+    flex-shrink: 0;
+  }
+
   .tracking-toggle-button {
-    min-height: 30px;
-    border-radius: var(--radius-pill);
+    width: 34px;
+    height: 34px;
+    border-radius: 999px;
     border: 1px solid var(--border-strong);
     background: var(--surface);
     color: var(--text-subtle-2);
-    padding: 0 var(--space-2);
-    font-size: 0.72rem;
-    font-weight: 700;
+    padding: 0;
     cursor: pointer;
-    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition:
+      transform 150ms ease,
+      border-color 150ms ease,
+      background 150ms ease,
+      color 150ms ease,
+      box-shadow 150ms ease;
+  }
+
+  .tracking-toggle-button svg {
+    width: 17px;
+    height: 17px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: transform 150ms ease;
+  }
+
+  .tracking-toggle-button:hover {
+    border-color: color-mix(in srgb, var(--accent) 48%, var(--border-strong));
+    background: var(--surface-soft);
+    color: var(--accent-strong);
+  }
+
+  .tracking-toggle-button:hover svg {
+    transform: scale(1.08);
+  }
+
+  .tracking-toggle-button:active {
+    transform: scale(0.94);
+  }
+
+  .tracking-toggle-button:active svg {
+    animation: tracking-check-pop 220ms ease-out;
   }
 
   .tracking-toggle-button.is-marked {
     border-color: rgba(31, 143, 78, 0.44);
     background: var(--success-bg);
     color: var(--success-ink);
+  }
+
+  @keyframes tracking-check-pop {
+    0% {
+      transform: scale(0.8);
+    }
+
+    65% {
+      transform: scale(1.2);
+    }
+
+    100% {
+      transform: scale(1);
+    }
   }
 
   .podcast-inline-player {
@@ -528,6 +588,15 @@
     color: var(--text-strong);
     font-size: 1.06rem;
     line-height: 1.22;
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .reading-title-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-2);
   }
 
   .reading-meta {
@@ -701,12 +770,7 @@
     }
 
     .podcast-row {
-      grid-template-columns: minmax(0, 1fr);
       align-items: start;
-    }
-
-    .podcast-actions {
-      justify-items: start;
     }
 
     .reading-top {
@@ -800,7 +864,26 @@
               <li class="reading-card {% if reading.is_missing %}is-missing{% endif %} {% if reading.status == 'active' %}is-active{% elif reading.status == 'completed' %}is-completed{% endif %}">
                 <div class="reading-top">
                   <div class="reading-main">
-                    <p class="reading-title"><strong>{{ reading.reading_title }}</strong></p>
+                    <div class="reading-title-row">
+                      <p class="reading-title"><strong>{{ reading.reading_title }}</strong></p>
+                      <form method="post" action="{{ reading_tracking_url }}" class="tracking-toggle-form">
+                        {% csrf_token %}
+                        <input type="hidden" name="next" value="{{ request.get_full_path }}" />
+                        <input type="hidden" name="lecture_key" value="{{ active_lecture.lecture_key }}" />
+                        <input type="hidden" name="reading_key" value="{{ reading.reading_key }}" />
+                        <input type="hidden" name="action" value="{% if reading.is_marked_read %}unmark{% else %}mark{% endif %}" />
+                        <button
+                          class="tracking-toggle-button {% if reading.is_marked_read %}is-marked{% endif %}"
+                          type="submit"
+                          aria-label="{% if reading.is_marked_read %}Fjern markering læst{% else %}Markér læst{% endif %}"
+                        >
+                          <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+                            <path d="M5 12.5 9.3 17 19 7.4"></path>
+                          </svg>
+                          <span class="visually-hidden">{% if reading.is_marked_read %}Læst{% else %}Markér læst{% endif %}</span>
+                        </button>
+                      </form>
+                    </div>
                     <p class="reading-meta">{{ reading.completed_quizzes }} / {{ reading.total_quizzes }}</p>
                     <p class="reading-meta">
                       {% if reading.status == 'completed' %}
@@ -822,16 +905,6 @@
                       {% if reading.primary_quiz_url %}
                       <a class="reading-quiz-link" href="{{ reading.primary_quiz_url }}">quiz</a>
                       {% endif %}
-                      <form method="post" action="{{ reading_tracking_url }}">
-                        {% csrf_token %}
-                        <input type="hidden" name="next" value="{{ request.get_full_path }}" />
-                        <input type="hidden" name="lecture_key" value="{{ active_lecture.lecture_key }}" />
-                        <input type="hidden" name="reading_key" value="{{ reading.reading_key }}" />
-                        <input type="hidden" name="action" value="{% if reading.is_marked_read %}unmark{% else %}mark{% endif %}" />
-                        <button class="tracking-toggle-button {% if reading.is_marked_read %}is-marked{% endif %}" type="submit">
-                          {% if reading.is_marked_read %}Læst{% else %}Markér læst{% endif %}
-                        </button>
-                      </form>
                     </div>
 
                     <div class="reading-difficulties">
@@ -882,42 +955,51 @@
               {% for podcast in active_lecture.podcast_rows %}
               <li class="podcast-row">
                 <div class="podcast-copy">
-                  <p class="podcast-title">
-                    Ep. {{ podcast.episode_index }}: {{ podcast.display_title }}{% if podcast.duration_label %} ({{ podcast.duration_label }}){% endif %}
-                  </p>
+                  <div class="podcast-title-row">
+                    <p class="podcast-title">
+                      Ep. {{ podcast.episode_index }}: {{ podcast.display_title }}{% if podcast.duration_label %} ({{ podcast.duration_label }}){% endif %}
+                    </p>
+                    <div class="podcast-title-actions">
+                      {% if podcast.spotify_embed_url %}
+                      <button
+                        class="podcast-inline-trigger"
+                        type="button"
+                        data-spotify-embed-url="{{ podcast.spotify_embed_url }}"
+                        data-spotify-title="Ep. {{ podcast.episode_index }}: {{ podcast.display_title }}"
+                        aria-pressed="false"
+                        aria-label="Afspil episode {{ podcast.episode_index }} i Spotify-afspilleren"
+                      >
+                        <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+                          <circle cx="12" cy="12" r="10"></circle>
+                          <path d="M7.8 14.2c2.6-.7 5.6-.3 7.8 1"></path>
+                          <path d="M8.6 11.6c2.9-.8 6.1-.4 8.4 1"></path>
+                          <path d="M9.2 9.1c3-.8 6.4-.4 8.8 1.1"></path>
+                        </svg>
+                      </button>
+                      {% endif %}
+                      <form method="post" action="{{ podcast_tracking_url }}" class="tracking-toggle-form">
+                        {% csrf_token %}
+                        <input type="hidden" name="next" value="{{ request.get_full_path }}" />
+                        <input type="hidden" name="lecture_key" value="{{ podcast.lecture_key }}" />
+                        {% if podcast.reading_key %}
+                        <input type="hidden" name="reading_key" value="{{ podcast.reading_key }}" />
+                        {% endif %}
+                        <input type="hidden" name="podcast_key" value="{{ podcast.podcast_key }}" />
+                        <input type="hidden" name="action" value="{% if podcast.is_marked_listened %}unmark{% else %}mark{% endif %}" />
+                        <button
+                          class="tracking-toggle-button {% if podcast.is_marked_listened %}is-marked{% endif %}"
+                          type="submit"
+                          aria-label="{% if podcast.is_marked_listened %}Fjern markering lyttet{% else %}Markér lyttet{% endif %}"
+                        >
+                          <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+                            <path d="M5 12.5 9.3 17 19 7.4"></path>
+                          </svg>
+                          <span class="visually-hidden">{% if podcast.is_marked_listened %}Lyttet{% else %}Markér lyttet{% endif %}</span>
+                        </button>
+                      </form>
+                    </div>
+                  </div>
                   <p class="podcast-meta">{{ podcast.source_label }}</p>
-                </div>
-                <div class="podcast-actions">
-                  {% if podcast.spotify_embed_url %}
-                  <button
-                    class="podcast-inline-trigger"
-                    type="button"
-                    data-spotify-embed-url="{{ podcast.spotify_embed_url }}"
-                    data-spotify-title="Ep. {{ podcast.episode_index }}: {{ podcast.display_title }}"
-                    aria-pressed="false"
-                    aria-label="Afspil episode {{ podcast.episode_index }} i Spotify-afspilleren"
-                  >
-                    <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
-                      <circle cx="12" cy="12" r="10"></circle>
-                      <path d="M7.8 14.2c2.6-.7 5.6-.3 7.8 1"></path>
-                      <path d="M8.6 11.6c2.9-.8 6.1-.4 8.4 1"></path>
-                      <path d="M9.2 9.1c3-.8 6.4-.4 8.8 1.1"></path>
-                    </svg>
-                  </button>
-                  {% endif %}
-                  <form method="post" action="{{ podcast_tracking_url }}">
-                    {% csrf_token %}
-                    <input type="hidden" name="next" value="{{ request.get_full_path }}" />
-                    <input type="hidden" name="lecture_key" value="{{ podcast.lecture_key }}" />
-                    {% if podcast.reading_key %}
-                    <input type="hidden" name="reading_key" value="{{ podcast.reading_key }}" />
-                    {% endif %}
-                    <input type="hidden" name="podcast_key" value="{{ podcast.podcast_key }}" />
-                    <input type="hidden" name="action" value="{% if podcast.is_marked_listened %}unmark{% else %}mark{% endif %}" />
-                    <button class="tracking-toggle-button {% if podcast.is_marked_listened %}is-marked{% endif %}" type="submit">
-                      {% if podcast.is_marked_listened %}Lyttet{% else %}Markér lyttet{% endif %}
-                    </button>
-                  </form>
                 </div>
                 {% if podcast.spotify_embed_url %}
                 <div class="podcast-inline-player" data-spotify-player hidden>

@@ -414,6 +414,7 @@ python3 scripts/sync_personlighedspsykologi_readings_to_droplet.py
 Default reading sync behavior:
 - Sync reads exclusions from `shows/personlighedspsykologi-en/reading_download_exclusions.json` and skips excluded `reading_key` values.
 - Use `--exclusions-config ''` to disable exclusions for a manual run.
+- Sync normalizes destination permissions on droplet after upload (`dirs=755`, `files=644`) so `freudd-portal` can always serve reading files.
 
 Reading key sync (OneDrive -> repo mirror used by feed config):
 ```bash

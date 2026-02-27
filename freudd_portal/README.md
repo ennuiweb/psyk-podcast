@@ -195,6 +195,7 @@ Operational behavior:
 - `FREUDD_SUBJECT_SPOTIFY_MAP_PATH` (default: `shows/personlighedspsykologi-en/spotify_map.json`)
 - `FREUDD_SUBJECT_CONTENT_MANIFEST_PATH` (default: `shows/personlighedspsykologi-en/content_manifest.json`)
 - `FREUDD_READING_FILES_ROOT` (default: `/var/www/readings/personlighedspsykologi`)
+- `FREUDD_READING_FILES_ROOT` must be traversable/readable by the portal service user (`www-data`) or reading open/download routes will fail at runtime.
 - `FREUDD_READING_DOWNLOAD_EXCLUSIONS_PATH` (default: `shows/personlighedspsykologi-en/reading_download_exclusions.json`)
 - `FREUDD_GAMIFICATION_DAILY_GOAL` (default: `20`)
 - `FREUDD_GAMIFICATION_XP_PER_ANSWER` (default: `5`)

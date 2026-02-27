@@ -771,14 +771,6 @@
     display: none;
   }
 
-  .podcast-inline-label {
-    margin: 0;
-    padding: 0 var(--space-3);
-    font-family: var(--subject-font-ui);
-    color: var(--muted);
-    font-size: 0.82rem;
-  }
-
   .podcast-inline-frame {
     display: block;
     width: 100%;
@@ -1741,7 +1733,6 @@
                 </div>
                 {% if podcast.spotify_embed_url %}
                 <div class="podcast-inline-player" data-spotify-player hidden>
-                  <p class="podcast-inline-label" data-spotify-player-label></p>
                   <iframe
                     class="podcast-inline-frame"
                     data-spotify-player-frame
@@ -1857,14 +1848,12 @@
 
     const closePlayer = (container) => {
       const frame = container.querySelector("[data-spotify-player-frame]");
-      const label = container.querySelector("[data-spotify-player-label]");
-      if (!(frame && label)) {
+      if (!frame) {
         return;
       }
       container.setAttribute("hidden", "");
       frame.setAttribute("src", "");
       frame.setAttribute("title", "Spotify afspiller");
-      label.textContent = "";
       const row = container.closest(".podcast-row");
       if (row) {
         row.classList.remove("is-player-open");
@@ -1883,9 +1872,8 @@
       const row = button.closest(".podcast-row");
       const playerContainer = row ? row.querySelector("[data-spotify-player]") : null;
       const playerFrame = playerContainer ? playerContainer.querySelector("[data-spotify-player-frame]") : null;
-      const playerLabel = playerContainer ? playerContainer.querySelector("[data-spotify-player-label]") : null;
       const hoverActions = row ? row.querySelector(".podcast-hover-actions") : null;
-      if (!(playerContainer && playerFrame && playerLabel)) {
+      if (!(playerContainer && playerFrame)) {
         return;
       }
 
@@ -1901,7 +1889,6 @@
       const title = String(button.getAttribute("data-spotify-title") || "Podcast episode").trim();
       playerFrame.setAttribute("src", embedUrl);
       playerFrame.setAttribute("title", `Spotify afspiller: ${title}`);
-      playerLabel.textContent = `Afspiller: ${title}`;
       playerContainer.removeAttribute("hidden");
       if (row) {
         row.classList.add("is-player-open");

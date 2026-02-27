@@ -421,22 +421,45 @@
     background: color-mix(in srgb, #1db954 16%, var(--surface));
   }
 
-  .podcast-hover-label {
+  .podcast-hover-actions {
     position: absolute;
     top: 50%;
     left: 50%;
     z-index: 2;
+    display: inline-flex;
+    gap: var(--space-2);
+    align-items: center;
     pointer-events: none;
+  }
+
+  .podcast-hover-action {
     border-radius: var(--radius-pill);
     border: 1px solid color-mix(in srgb, #1db954 62%, transparent);
     background: color-mix(in srgb, #1db954 20%, #fff);
     color: color-mix(in srgb, #1db954 90%, #0f4221);
-    padding: 0.26rem 0.68rem;
+    padding: 0.28rem 0.72rem;
     font-family: var(--subject-font-ui);
     font-size: 0.72rem;
     font-weight: 700;
     letter-spacing: 0.01em;
     text-transform: lowercase;
+    pointer-events: auto;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 1px 2px rgba(15, 66, 33, 0.08);
+  }
+
+  .podcast-hover-action:hover {
+    background: color-mix(in srgb, #1db954 30%, #fff);
+    color: color-mix(in srgb, #1db954 96%, #0b311b);
+  }
+
+  .podcast-hover-action.is-listen {
+    border-color: color-mix(in srgb, #1db954 40%, var(--border));
+    background: color-mix(in srgb, #1db954 14%, var(--surface));
+  }
+
+  .podcast-row.has-open-podcast .podcast-hover-actions {
     opacity: 0;
     transform: translate(-50%, calc(-50% - 4px));
     transition:
@@ -444,8 +467,8 @@
       transform 160ms ease;
   }
 
-  .podcast-row.has-open-podcast:hover .podcast-hover-label,
-  .podcast-row.has-open-podcast:focus-visible .podcast-hover-label {
+  .podcast-row.has-open-podcast:hover .podcast-hover-actions,
+  .podcast-row.has-open-podcast:focus-visible .podcast-hover-actions {
     opacity: 1;
     transform: translate(-50%, -50%);
   }
@@ -1135,11 +1158,14 @@
                 data-spotify-embed-url="{{ podcast.spotify_embed_url }}"
                 role="link"
                 tabindex="0"
-                aria-label="åbn på spotiify: Ep. {{ podcast.episode_index }}: {{ podcast.display_title }}"
+                aria-label="åbn på spotify: Ep. {{ podcast.episode_index }}: {{ podcast.display_title }}"
                 {% endif %}
               >
                 {% if podcast.spotify_embed_url %}
-                <span class="podcast-hover-label" aria-hidden="true">åbn på spotiify</span>
+                <div class="podcast-hover-actions">
+                  <button class="podcast-hover-action" type="button" data-podcast-action="open">åbn på spotify</button>
+                  <button class="podcast-hover-action is-listen" type="button" data-podcast-action="listen">lyt her</button>
+                </div>
                 {% endif %}
                 <div class="podcast-copy">
                   <div class="podcast-title-row">
@@ -1368,6 +1394,27 @@
     };
 
     rows.forEach((row) => {
+      const openButton = row.querySelector("[data-podcast-action='open']");
+      const listenButton = row.querySelector("[data-podcast-action='listen']");
+
+      if (openButton instanceof HTMLButtonElement) {
+        openButton.addEventListener("click", (event) => {
+          event.preventDefault();
+          openPodcast(row);
+        });
+      }
+
+      if (listenButton instanceof HTMLButtonElement) {
+        listenButton.addEventListener("click", (event) => {
+          event.preventDefault();
+          const trigger = row.querySelector(".podcast-inline-trigger[data-spotify-embed-url]");
+          if (trigger instanceof HTMLButtonElement) {
+            trigger.click();
+            trigger.focus();
+          }
+        });
+      }
+
       row.addEventListener("click", (event) => {
         const target = event.target;
         if (target instanceof Element && target.closest(interactiveSelector)) {

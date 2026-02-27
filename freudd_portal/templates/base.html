@@ -802,7 +802,7 @@
       }
     </style>
   </head>
-  <body>
+  <body class="{% if request.resolver_match %}page-{{ request.resolver_match.url_name }}{% endif %}">
     <header class="site-header">
       <div class="header-inner">
         <a class="brand" href="{% url 'progress' %}">freudd</a>

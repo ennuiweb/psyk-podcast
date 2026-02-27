@@ -170,9 +170,11 @@ Use one orchestrated entrance per page, not many unrelated animations.
 
 ### Lecture detail partitioning (required)
 
-- Active lecture card must render three sibling sections in this order: `Tekster`, `Podcasts`, `Quiz for alle kilder`.
+- Active lecture card must render three sibling sections: `Tekster`, `Podcasts`, `Quizzer`.
+- Default content/DOM order remains `Tekster`, `Podcasts`, `Quizzer` to keep data semantics stable.
+- Compact layout (`<=1024px`) may reorder visual priority to `Quizzer`, `Podcasts`, `Tekster` via CSS `order`.
 - Each section has its own heading, icon, and content container.
-- Quiz chips, level pills, and quiz status live only in `Quiz for alle kilder`.
+- Quiz chips, level pills, and quiz status live only in `Quizzer`.
 - Episode metadata (duration, listen-state, speed markers) lives only in `Podcasts`.
 - Text/article cards and tekst progress live only in `Tekster`.
 - Tekst cards always expose L/M/S difficulty indicators in subject detail.
@@ -193,20 +195,22 @@ Use one orchestrated entrance per page, not many unrelated animations.
 - Active lecture card uses fixed section order:
   - `Tekster` (text/article cards with L/M/S indicators + tracking controls).
   - `Podcasts` (flat episode list with discrete tracking controls).
-  - `Quiz for alle kilder` (lecture quiz chips by level).
+  - `Quizzer` (lecture quiz chips by level).
 - Quiz chips use stronger level distinction: `Let` calm, `Mellem` vivid, `Svær` warm/high-attention.
 
 #### Responsive contract (required)
 
-- Desktop (`>1100px`): two-column lecture rail + active lecture card.
-- Tablet (`901-1100px`): still two-column, with compressed rail width and wrapped-safe header navigation.
-- Tablet/mobile stack (`<=900px`): lecture rail and active lecture card stack in one column.
-- Mobile narrow (`<=520px`): lecture-level quiz band collapses to a single-column list.
+- Desktop (`>1024px`): standard top header, rail with lecture labels, and two-column layout.
+- Compact app shell (`<=1024px`): hide global site header on subject detail and use local topbar (`freudd` + auth action).
+- Tablet/mobile compact layout keeps two columns with narrow numeric rail + active lecture card.
+- Mobile tabbar is fixed at bottom in compact mode and requires safe-area aware bottom padding.
+- Compact visual section priority may be `Quizzer` -> `Podcasts` -> `Tekster` while preserving DOM semantics.
 
 Guardrails:
 - No horizontal page scroll on subject detail for iPhone 11 Pro Max (`414x896`) and iPad portrait (`768x1024`).
-- Active lecture title and rail labels must support long Danish compounds (`overflow-wrap:anywhere`, `hyphens:auto`).
+- Active lecture title and rail copy must support long Danish compounds (`overflow-wrap:anywhere`, `hyphens:auto`).
 - On coarse pointers, primary interaction controls must be at least `44x44`.
+- Bottom tabbar must never cover interactive content (`padding-bottom` includes `env(safe-area-inset-bottom)`).
 
 ### `/q/<quiz_id>.html`
 

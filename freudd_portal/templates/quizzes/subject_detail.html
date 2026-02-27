@@ -572,6 +572,8 @@
     padding: var(--space-3);
     display: grid;
     gap: var(--space-2);
+    position: relative;
+    overflow: hidden;
   }
 
   .reading-card.is-active {
@@ -647,20 +649,63 @@
     justify-content: flex-end;
   }
 
-  .reading-quiz-link {
-    min-height: 30px;
-    border-radius: var(--radius-pill);
-    border: 1px solid var(--border);
-    padding: 0 var(--space-2);
+  .reading-open-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    opacity: 0;
+    pointer-events: none;
     text-decoration: none;
+    background: rgba(37, 98, 184, 0.78);
+    transition: opacity 160ms ease;
+  }
+
+  .reading-open-overlay-label {
+    border-radius: var(--radius-pill);
+    border: 1px solid rgba(255, 255, 255, 0.72);
+    background: rgba(21, 64, 127, 0.84);
+    padding: 0.42rem 0.9rem;
+    color: #fff;
     font-family: var(--subject-font-ui);
-    font-size: 0.84rem;
-    font-weight: 600;
-    color: var(--text-subtle-2);
-    background: var(--surface-soft);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    text-transform: lowercase;
+    transform: translateY(6px);
+    transition: transform 160ms ease;
+  }
+
+  .reading-card.has-open-reading:hover .reading-open-overlay,
+  .reading-open-overlay:focus-visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .reading-card.has-open-reading:hover .reading-open-overlay-label,
+  .reading-open-overlay:focus-visible .reading-open-overlay-label {
+    transform: translateY(0);
+  }
+
+  @media (hover: none), (pointer: coarse) {
+    .reading-open-overlay {
+      top: var(--space-3);
+      right: var(--space-3);
+      bottom: auto;
+      left: auto;
+      opacity: 1;
+      pointer-events: auto;
+      background: transparent;
+    }
+
+    .reading-open-overlay-label {
+      border-color: var(--border);
+      background: var(--surface-soft);
+      color: var(--text-subtle-2);
+      transform: none;
+    }
   }
 
   .reading-difficulties {
@@ -901,7 +946,18 @@
             {% if active_lecture.readings %}
             <ul class="reading-list">
               {% for reading in active_lecture.readings %}
-              <li class="reading-card {% if reading.is_missing %}is-missing{% endif %} {% if reading.status == 'active' %}is-active{% elif reading.status == 'completed' %}is-completed{% endif %}">
+              <li class="reading-card {% if reading.open_url %}has-open-reading{% endif %} {% if reading.is_missing %}is-missing{% endif %} {% if reading.status == 'active' %}is-active{% elif reading.status == 'completed' %}is-completed{% endif %}">
+                {% if reading.open_url %}
+                <a
+                  class="reading-open-overlay"
+                  href="{{ reading.open_url }}"
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="åbn reading: {{ reading.reading_title }}"
+                >
+                  <span class="reading-open-overlay-label">åbn reading</span>
+                </a>
+                {% endif %}
                 <div class="reading-top">
                   <div class="reading-main">
                     <div class="reading-title-row">
@@ -938,14 +994,11 @@
                     </p>
                   </div>
                   <div class="reading-side">
+                    {% if reading.is_missing %}
                     <div class="reading-actions">
-                      {% if reading.is_missing %}
                       <span class="missing-badge">Mangler kilde</span>
-                      {% endif %}
-                      {% if reading.open_url %}
-                      <a class="reading-quiz-link" href="{{ reading.open_url }}" target="_blank" rel="noopener">åbn reading</a>
-                      {% endif %}
                     </div>
+                    {% endif %}
 
                     <div class="reading-difficulties">
                       {% for slot in reading.difficulty_summary %}

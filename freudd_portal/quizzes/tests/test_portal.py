@@ -445,6 +445,7 @@ class QuizPortalTests(TestCase):
         self.assertNotContains(response, "Log ind for ")
         self.assertContains(response, "Quizzen er færdig. Log ind nu for at gemme din score og se din samlede score.")
         self.assertContains(response, 'id="quiz-points-feedback"')
+        self.assertContains(response, "Optjent:")
         self.assertContains(response, f"{reverse('login')}?{urlencode({'next': quiz_url})}")
         self.assertContains(response, f"{reverse('signup')}?{urlencode({'next': quiz_url})}")
 

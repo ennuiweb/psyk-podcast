@@ -988,7 +988,13 @@
       }
       const selected = state.userAnswers[key];
       if (selected !== null && selected !== undefined) {
-        timerNode.textContent = "Tid: besvaret";
+        const question = currentQuestion();
+        const options = Array.isArray(question?.answerOptions) ? question.answerOptions : [];
+        const selectedIndex = Number.parseInt(String(selected), 10);
+        const selectedOption = Number.isInteger(selectedIndex) ? options[selectedIndex] : null;
+        const isCorrect = Boolean(selectedOption && selectedOption.isCorrect === true);
+        const points = computeQuestionPoints(isCorrect, responseDurationMsForQuestion(state.currentQuestionIndex));
+        timerNode.textContent = `Optjent: ${points} point`;
         return;
       }
       const deadline = parseEpoch(state.questionDeadlineEpochMs?.[key]);

@@ -369,10 +369,65 @@
     align-items: start;
     padding: var(--space-3);
     border-bottom: 1px solid var(--border);
+    position: relative;
   }
 
   .podcast-row:last-child {
     border-bottom: 0;
+  }
+
+  .podcast-row.has-open-podcast {
+    cursor: pointer;
+    transition: background 160ms ease;
+  }
+
+  .podcast-row.has-open-podcast:hover {
+    background: color-mix(in srgb, #1db954 16%, var(--surface));
+  }
+
+  .podcast-row.has-open-podcast:hover .podcast-title,
+  .podcast-row.has-open-podcast:focus-visible .podcast-title {
+    color: color-mix(in srgb, #1db954 82%, #0f4221);
+  }
+
+  .podcast-row.has-open-podcast:hover .podcast-meta,
+  .podcast-row.has-open-podcast:focus-visible .podcast-meta {
+    color: color-mix(in srgb, #1db954 72%, #1b6034);
+  }
+
+  .podcast-row.has-open-podcast:focus-visible {
+    outline: 2px solid color-mix(in srgb, #1db954 54%, transparent);
+    outline-offset: -2px;
+    background: color-mix(in srgb, #1db954 16%, var(--surface));
+  }
+
+  .podcast-hover-label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+    pointer-events: none;
+    border-radius: var(--radius-pill);
+    border: 1px solid color-mix(in srgb, #1db954 62%, transparent);
+    background: color-mix(in srgb, #1db954 20%, #fff);
+    color: color-mix(in srgb, #1db954 90%, #0f4221);
+    padding: 0.26rem 0.68rem;
+    font-family: var(--subject-font-ui);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    text-transform: lowercase;
+    opacity: 0;
+    transform: translate(-50%, calc(-50% - 4px));
+    transition:
+      opacity 160ms ease,
+      transform 160ms ease;
+  }
+
+  .podcast-row.has-open-podcast:hover .podcast-hover-label,
+  .podcast-row.has-open-podcast:focus-visible .podcast-hover-label {
+    opacity: 1;
+    transform: translate(-50%, -50%);
   }
 
   .podcast-copy {
@@ -1034,7 +1089,18 @@
             {% if active_lecture.podcast_rows %}
             <ul class="podcast-list">
               {% for podcast in active_lecture.podcast_rows %}
-              <li class="podcast-row">
+              <li
+                class="podcast-row {% if podcast.spotify_embed_url %}has-open-podcast{% endif %}"
+                {% if podcast.spotify_embed_url %}
+                data-spotify-embed-url="{{ podcast.spotify_embed_url }}"
+                role="link"
+                tabindex="0"
+                aria-label="åbn på spotiify: Ep. {{ podcast.episode_index }}: {{ podcast.display_title }}"
+                {% endif %}
+              >
+                {% if podcast.spotify_embed_url %}
+                <span class="podcast-hover-label" aria-hidden="true">åbn på spotiify</span>
+                {% endif %}
                 <div class="podcast-copy">
                   <div class="podcast-title-row">
                     <div class="podcast-title-main">
@@ -1240,6 +1306,42 @@
         }
         event.preventDefault();
         openReading(card);
+      });
+    });
+  })();
+
+  (() => {
+    const rows = Array.from(document.querySelectorAll(".podcast-row[data-spotify-embed-url]"));
+    if (!rows.length) {
+      return;
+    }
+
+    const interactiveSelector = "a, button, input, select, textarea, label, form, iframe, [data-spotify-player]";
+    const openPodcast = (row) => {
+      const embedUrl = String(row.getAttribute("data-spotify-embed-url") || "").trim();
+      const match = embedUrl.match(/^https:\/\/open\.spotify\.com\/embed\/episode\/([A-Za-z0-9]+)(?:\?.*)?$/);
+      if (!match) {
+        return;
+      }
+      const url = embedUrl.replace("/embed/episode/", "/episode/").replace(/\?.*$/, "");
+      window.open(url, "_blank", "noopener");
+    };
+
+    rows.forEach((row) => {
+      row.addEventListener("click", (event) => {
+        const target = event.target;
+        if (target instanceof Element && target.closest(interactiveSelector)) {
+          return;
+        }
+        openPodcast(row);
+      });
+
+      row.addEventListener("keydown", (event) => {
+        if (event.key !== "Enter" && event.key !== " ") {
+          return;
+        }
+        event.preventDefault();
+        openPodcast(row);
       });
     });
   })();

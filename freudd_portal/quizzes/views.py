@@ -1324,6 +1324,9 @@ def progress_view(request: HttpRequest) -> HttpResponse:
         )
 
     profile_payload = get_profile_payload(request.user)
+    leaderboard_alias_editing = _as_bool(request.GET.get("edit_alias")) and bool(
+        str(profile_payload.get("public_alias") or "").strip()
+    )
     personal_tracking_by_subject = personal_tracking_summary_for_user(
         user=request.user,
         subjects=subject_tracking_targets,
@@ -1337,6 +1340,7 @@ def progress_view(request: HttpRequest) -> HttpResponse:
             "subject_cards": subject_cards,
             "subjects_error": catalog.error,
             "leaderboard_profile": profile_payload,
+            "leaderboard_alias_editing": leaderboard_alias_editing,
             "leaderboard_preview_by_subject": leaderboard_preview_by_subject,
             "personal_tracking_by_subject": personal_tracking_by_subject,
             "active_season": {
@@ -1380,7 +1384,12 @@ def leaderboard_subject_view(request: HttpRequest, subject_slug: str) -> HttpRes
 @login_required
 @require_POST
 def leaderboard_profile_view(request: HttpRequest) -> HttpResponse:
+    profile_payload = get_profile_payload(request.user)
+    current_alias = str(profile_payload.get("public_alias") or "").strip()
+    allow_alias_change = _as_bool(request.POST.get("allow_alias_change"))
     alias = request.POST.get("public_alias")
+    if current_alias and not allow_alias_change:
+        alias = None
     is_public = _as_bool(request.POST.get("is_public"))
 
     try:

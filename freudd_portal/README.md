@@ -86,7 +86,9 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - `POST /subjects/<subject_slug>/tracking/podcast`
 - `POST /preferences/design-system`
 
-Enrollment UX rule: enroll/unenroll actions are shown inline per subject in the `Mine fag` section of `GET /progress`; subject detail remains read-only for enrollment state.
+Enrollment UX rule: `Mine fag` on `GET /progress` is read-only (open + status), while enroll/unenroll actions live in the bottom `Tilmeld og afmeld fag` module; subject detail remains read-only for enrollment state.
+
+Leaderboard alias UX rule: if a user already has an alias, it is shown locked on `GET /progress` and can only be changed via explicit `Ændr alias` mode (`allow_alias_change=1` on submit).
 
 `quiz_id` format is strict 8-char hex (`^[0-9a-f]{8}$`).
 

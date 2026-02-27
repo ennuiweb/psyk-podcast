@@ -200,13 +200,16 @@ Rules:
 
 Order:
 1. Intro context (`dashboard-head`)
-2. `Mine fag` cards with enrollment + next action
-3. `Quizhistorik` table
+2. `Mine fag` cards with status + `Åbn fag`
+3. Tracking + leaderboard blocks
+4. `Quizhistorik` table
+5. Bottom `Tilmeld og afmeld fag` module
 
 Behavior:
 - `Åbn fag` is the dominant action when enrolled.
-- Enrollment mutation stays secondary (`Tilmeld`/`Afmeld`).
+- Enrollment mutation stays secondary and is isolated to the bottom module (`Tilmeld`/`Afmeld`).
 - `Senest åbnet fag` badge supports continuity.
+- Existing leaderboard alias is locked by default and requires explicit edit mode.
 
 ### `/subjects/<subject_slug>` (learning path)
 

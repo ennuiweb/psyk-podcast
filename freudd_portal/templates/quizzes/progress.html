@@ -189,6 +189,10 @@
   }
 
   .subject-toggle-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
     min-height: var(--control-min-height);
     border: 1px solid var(--border-strong);
     border-radius: var(--radius-pill);
@@ -263,6 +267,17 @@
     display: grid;
     gap: var(--space-2);
     max-width: 26rem;
+  }
+
+  .leaderboard-alias-lock {
+    display: grid;
+    gap: var(--space-2);
+  }
+
+  .leaderboard-alias-note {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.82rem;
   }
 
   .leaderboard-profile-controls {
@@ -517,7 +532,7 @@
   <section class="dashboard-section">
     <div class="section-head">
       <h2 class="section-title">Mine fag</h2>
-      <p class="section-subtitle">Tilmeld eller afmeld fag her.</p>
+      <p class="section-subtitle">Åbn fag og se status.</p>
     </div>
     {% if subjects_error %}
     <p class="muted">{{ subjects_error }}</p>
@@ -543,19 +558,6 @@
         </div>
         <div class="subject-actions">
           <a class="subject-open-link" href="{{ subject.detail_url }}">Åbn fag</a>
-          {% if subject.is_enrolled %}
-          <form method="post" action="{{ subject.unenroll_url }}">
-            {% csrf_token %}
-            <input type="hidden" name="next" value="{% url 'progress' %}" />
-            <button class="subject-toggle-button" type="submit">Afmeld</button>
-          </form>
-          {% else %}
-          <form method="post" action="{{ subject.enroll_url }}">
-            {% csrf_token %}
-            <input type="hidden" name="next" value="{% url 'progress' %}" />
-            <button class="subject-toggle-button" type="submit">Tilmeld</button>
-          </form>
-          {% endif %}
         </div>
       </article>
       {% endfor %}
@@ -589,7 +591,7 @@
     {% endif %}
   </section>
 
-  <section class="dashboard-section">
+  <section class="dashboard-section" id="quizliga-indstillinger">
     <div class="section-head">
       <h2 class="section-title">Offentlig quizliga</h2>
       <p class="section-subtitle">Kun alias, placering og gennemførte quizzer vises offentligt.</p>
@@ -598,7 +600,19 @@
 
     <form method="post" action="{% url 'leaderboard-profile' %}" class="leaderboard-profile-form">
       {% csrf_token %}
-      <input type="hidden" name="next" value="{{ request.get_full_path }}" />
+      <input type="hidden" name="next" value="{% url 'progress' %}" />
+      {% if leaderboard_profile.public_alias and not leaderboard_alias_editing %}
+      <div class="leaderboard-alias-lock">
+        <input
+          type="text"
+          value="{{ leaderboard_profile.public_alias }}"
+          aria-label="Offentligt alias (låst)"
+          readonly
+        />
+        <p class="leaderboard-alias-note">Alias er låst for at undgå utilsigtede ændringer.</p>
+        <a class="subject-toggle-button" href="{% url 'progress' %}?edit_alias=1#quizliga-indstillinger">Ændr alias</a>
+      </div>
+      {% else %}
       <input
         type="text"
         name="public_alias"
@@ -607,12 +621,17 @@
         placeholder="Alias (3-24 tegn)"
         aria-label="Offentligt alias"
       />
+      <input type="hidden" name="allow_alias_change" value="1" />
+      {% if leaderboard_profile.public_alias %}
+      <a class="subject-toggle-button" href="{% url 'progress' %}#quizliga-indstillinger">Annuller alias-ændring</a>
+      {% endif %}
+      {% endif %}
       <div class="leaderboard-profile-controls">
         <label>
           <input type="checkbox" name="is_public" value="1" {% if leaderboard_profile.is_public %}checked{% endif %} />
           Deltag offentligt
         </label>
-        <button class="subject-toggle-button" type="submit">Gem quizliga-profil</button>
+        <button class="subject-toggle-button" type="submit">Gem quizliga-indstillinger</button>
       </div>
     </form>
 
@@ -710,6 +729,47 @@
     </div>
     {% else %}
     <p class="empty-copy">Der er endnu ikke gemte quizscore.</p>
+    {% endif %}
+  </section>
+
+  <section class="dashboard-section">
+    <div class="section-head">
+      <h2 class="section-title">Tilmeld og afmeld fag</h2>
+      <p class="section-subtitle">Administrer hvilke fag du følger.</p>
+    </div>
+    {% if subject_cards %}
+    <div class="subject-grid">
+      {% for subject in subject_cards %}
+      <article class="subject-card">
+        <div>
+          <div class="subject-headline">
+            <h3>{{ subject.title }}</h3>
+          </div>
+          <p class="muted subject-description">{{ subject.description }}</p>
+        </div>
+        <div class="subject-actions">
+          <span class="subject-status-pill {% if subject.is_enrolled %}is-enrolled{% endif %}">
+            {% if subject.is_enrolled %}Tilmeldt{% else %}Ikke tilmeldt{% endif %}
+          </span>
+          {% if subject.is_enrolled %}
+          <form method="post" action="{{ subject.unenroll_url }}">
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{% url 'progress' %}" />
+            <button class="subject-toggle-button" type="submit">Afmeld</button>
+          </form>
+          {% else %}
+          <form method="post" action="{{ subject.enroll_url }}">
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{% url 'progress' %}" />
+            <button class="subject-toggle-button" type="submit">Tilmeld</button>
+          </form>
+          {% endif %}
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+    {% else %}
+    <p class="muted">Ingen fag er tilgængelige endnu.</p>
     {% endif %}
   </section>
 </div>

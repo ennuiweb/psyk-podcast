@@ -873,6 +873,51 @@ class QuizPortalTests(TestCase):
         self.assertContains(response, "Offentlig quizliga")
         self.assertContains(response, reverse("leaderboard-profile"))
 
+    def test_progress_page_moves_enrollment_controls_to_bottom_module(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+        SubjectEnrollment.objects.create(user=user, subject_slug="personlighedspsykologi")
+
+        response = self.client.get(reverse("progress"))
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Tilmeld og afmeld fag")
+
+        body = response.content.decode("utf-8")
+        mine_fag_start = body.find("<h2 class=\"section-title\">Mine fag</h2>")
+        tracking_start = body.find("<h2 class=\"section-title\">Personlig tracking</h2>")
+        self.assertGreaterEqual(mine_fag_start, 0)
+        self.assertGreaterEqual(tracking_start, 0)
+        mine_fag_markup = body[mine_fag_start:tracking_start]
+        self.assertNotIn(">Afmeld</button>", mine_fag_markup)
+        self.assertNotIn(">Tilmeld</button>", mine_fag_markup)
+
+        history_start = body.find("<h2 class=\"section-title\">Quizhistorik</h2>")
+        enroll_start = body.find("<h2 class=\"section-title\">Tilmeld og afmeld fag</h2>")
+        self.assertGreaterEqual(history_start, 0)
+        self.assertGreaterEqual(enroll_start, 0)
+        self.assertGreater(enroll_start, history_start)
+
+    def test_progress_page_locks_existing_quizliga_alias_by_default(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+        UserLeaderboardProfile.objects.create(
+            user=user,
+            public_alias="LockedAlias",
+            public_alias_normalized="lockedalias",
+            is_public=True,
+        )
+
+        response = self.client.get(reverse("progress"))
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Alias er låst for at undgå utilsigtede ændringer.")
+        self.assertContains(response, "Ændr alias")
+        self.assertNotContains(response, 'name="allow_alias_change" value="1"')
+
+        response = self.client.get(f"{reverse('progress')}?edit_alias=1")
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'name="allow_alias_change" value="1"')
+        self.assertContains(response, "Annuller alias-ændring")
+
     def test_leaderboard_page_is_public(self) -> None:
         response = self.client.get(
             reverse("leaderboard-subject", kwargs={"subject_slug": "personlighedspsykologi"})
@@ -921,6 +966,42 @@ class QuizPortalTests(TestCase):
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response.url, reverse("progress"))
         self.assertFalse(UserLeaderboardProfile.objects.filter(user=second).exists())
+
+    def test_leaderboard_profile_alias_change_requires_explicit_flag_when_alias_exists(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+        UserLeaderboardProfile.objects.create(
+            user=user,
+            public_alias="FixedAlias",
+            public_alias_normalized="fixedalias",
+            is_public=True,
+        )
+
+        response = self.client.post(
+            reverse("leaderboard-profile"),
+            {
+                "public_alias": "AttemptedAlias",
+                "is_public": "1",
+                "next": reverse("progress"),
+            },
+        )
+        self.assertEqual(response.status_code, 302)
+        profile = UserLeaderboardProfile.objects.get(user=user)
+        self.assertEqual(profile.public_alias, "FixedAlias")
+
+        response = self.client.post(
+            reverse("leaderboard-profile"),
+            {
+                "public_alias": "UpdatedAlias",
+                "allow_alias_change": "1",
+                "is_public": "1",
+                "next": reverse("progress"),
+            },
+        )
+        self.assertEqual(response.status_code, 302)
+        profile.refresh_from_db()
+        self.assertEqual(profile.public_alias, "UpdatedAlias")
+        self.assertEqual(profile.public_alias_normalized, "updatedalias")
 
     def test_leaderboard_opt_out_hides_user_but_keeps_alias(self) -> None:
         user = self._create_user()

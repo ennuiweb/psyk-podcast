@@ -93,16 +93,6 @@
     display: none;
   }
 
-  .lecture-rail-item.is-active::before {
-    content: "";
-    position: absolute;
-    left: 44px;
-    right: calc(-1 * var(--subject-space-block));
-    top: 22px;
-    height: 2px;
-    background: color-mix(in srgb, var(--accent) 60%, var(--timeline-connector));
-  }
-
   .lecture-rail-item.is-completed::after {
     background: var(--timeline-connector-done);
   }
@@ -934,11 +924,6 @@
     .lecture-rail-item::after {
       top: 36px;
       left: 18px;
-    }
-
-    .lecture-rail-item.is-active::before {
-      left: 36px;
-      top: 18px;
     }
 
     .active-lecture-card {

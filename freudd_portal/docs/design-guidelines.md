@@ -1,30 +1,25 @@
-# Freudd Portal Design Guidelines (Merged)
+# Freudd Portal Design Guidelines
 
-Last updated: 2026-02-27
+Last updated: 2026-02-26
 
 ## Purpose
 
-This document is the merged design baseline for `freudd_portal`.
-It consolidates:
-- `docs/design-guidelines.md`
-- `docs/design-system-v2-expressive.md`
-
-Conflict rule:
-- Expressive (`design-system-v2-expressive.md`) is authoritative on overlap.
+This document defines the production design baseline for `freudd_portal`.
+It maps product goals to concrete UI rules and component behavior.
 
 Source alignment:
 - Product intent: `docs/non-technical-overview.md`
 - Shared primitives: `templates/base.html`
 - Page patterns: `templates/quizzes/progress.html`, `templates/quizzes/subject_detail.html`, `templates/quizzes/wrapper.html`
 - Auth patterns: `templates/registration/login.html`, `templates/registration/signup.html`
+- Expressive reference: `docs/design-system-v2-expressive.md`
 
 ## Scope and governance
 
-- `Paper Studio` is the selected and only approved redesign theme.
-- All new redesign work must start from Paper Studio tokens, typography, surfaces, and motion rules in this file.
-- `Night Lab` is archived for reference and must not be used for new redesign work.
-- Legacy runtime keys (`classic`, `night-lab`) may remain for compatibility/preview only.
-- New redesign PRs must include a short `Paper Studio compliance` note covering typography, tokens, and section partitioning.
+- `Paper Studio` is the only approved redesign theme for new UI work.
+- Any new redesign proposal must include a short `Paper Studio compliance` note.
+- Legacy systems (`classic`, `night-lab`) remain in runtime only for backward compatibility and preview/testing.
+- This file is the operational baseline; `design-system-v2-expressive.md` is the stylistic expansion layer.
 
 ## Runtime design-system architecture (current code)
 
@@ -56,21 +51,16 @@ The UI must always make these jobs visible:
 4. Consistent semantics: same status always uses same words, colors, and shapes.
 5. Mobile-first readability: dense information is allowed, hard scanning is not.
 
-## Visual language (Paper Studio)
+## Visual language (Paper Studio baseline)
 
-### Direction and character
+### Brand personality
 
-Primary inspiration:
-- Editorial print systems (content dignity and hierarchy)
-- Nordic contrast (quiet base + sharp signal accents)
-
-Brand personality:
 - Reliable
 - Focused
 - Encouraging
 - Practical
 
-### Typography system (locked)
+### Typography
 
 - Display/headers: `Fraunces` (`600-700`, optical size enabled)
 - Body/UI: `Public Sans` (`400-700`)
@@ -82,117 +72,59 @@ Usage rules:
 - Avoid decorative or novelty fonts in learner flows.
 - Keep heading casing and emphasis consistent within each template.
 
-### Token system (Expressive priority)
+### Color system (Paper Studio semantic tokens)
 
-`templates/base.html` and `:root[data-design-system="paper-studio"]` are source of truth.
-
-Shared semantic slots:
-
-```css
-:root {
-  --space-1: 4px;
-  --space-2: 8px;
-  --space-3: 12px;
-  --space-4: 16px;
-  --space-5: 24px;
-  --space-6: 32px;
-  --radius-sm: 8px;
-  --radius-md: 14px;
-  --radius-lg: 20px;
-  --radius-pill: 999px;
-  --control-min-height: 44px;
-  --focus-ring-size: 3px;
-}
-```
-
-Paper Studio theme slots:
+`templates/base.html` and `:root[data-design-system="paper-studio"]` are the source of truth.
 
 | Role | Token | Value | Usage |
 |---|---|---|---|
 | App background | `--bg` | `#f4efe4` | Global page backdrop |
-| Elevated backdrop | `--bg-elevated` | `#efe7d7` | Supporting elevated blocks |
+| Soft backdrop | `--bg-soft` | `#efe7d7` | Supporting surface blocks |
 | Main surface | `--surface` | `#fffdf7` | Cards and forms |
 | Soft surface | `--surface-soft` | `#f8f2e6` | Section containers |
 | Primary text | `--ink` | `#201d18` | Core readable text |
 | Secondary text | `--muted` | `#625a4f` | Metadata/support text |
-| Border default | `--border` | `#d5c7ac` | Neutral card/section border |
 | Primary accent | `--accent` | `#0f5f8c` | Primary action and active state |
-| Accent strong | `--accent-strong` | `#0b4b6f` | Link and stronger emphasis |
-| Warm accent | `--accent-warm` | `#d9480f` | Highlight and rhythmic contrast |
+| Accent strong | `--accent-strong` | `#0b4b6f` | Link and higher emphasis |
 | Success | `--success` | `#2f8a23` | Completed states |
 | Danger | `--danger` | `#ba344f` | Error/wrong states |
-| Focus ring | `--focus-ring` | `color-mix(in srgb, var(--accent) 40%, transparent)` | Keyboard-visible focus outline |
+| Border default | `--border` | `#d5c7ac` | Neutral card/section border |
+| Border strong | `--border-strong` | `#c5b494` | Inputs and controls |
+| Focus ring | `--focus-ring` | `rgba(15, 95, 140, 0.28)` | Keyboard-visible focus outline |
 
 Color behavior rules:
 - Blue accent indicates action/progression.
-- Warm accent is for deliberate highlight, not default primary actions.
 - Green indicates completion/success.
 - Red indicates errors/incorrect answers.
 - Never rely on color as the only state cue where text is required.
 
-### Atmospheric background system
+### Spacing, radius, depth, motion
 
-No flat monochrome canvas. Use layered depth:
+Spacing scale:
+- `--space-1: 4px`
+- `--space-2: 8px`
+- `--space-3: 12px`
+- `--space-4: 16px`
+- `--space-5: 24px`
+- `--space-6: 32px`
 
-```css
-body {
-  background:
-    radial-gradient(900px 500px at 6% -10%, rgba(15, 95, 140, 0.09), transparent 56%),
-    radial-gradient(1000px 420px at 92% -4%, rgba(217, 72, 15, 0.09), transparent 64%),
-    linear-gradient(160deg, #f6f1e7 0%, #f3ecdf 52%, #ede3d2 100%);
-}
+Radius scale:
+- `--radius-sm: 10px`
+- `--radius-sub: 12px`
+- `--radius-md: 14px`
+- `--radius-lg: 18px`
+- `--radius-xl: 22px`
+- `--radius-pill: 999px`
 
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background-image: repeating-linear-gradient(
-    0deg,
-    transparent 0 24px,
-    rgba(98, 90, 79, 0.03) 24px 25px
-  );
-}
-```
+Depth:
+- Main container shadow only: `--shadow-container`.
+- Hover shadow only where needed: `--shadow-hover-subtle`.
+- Prefer borders over heavy shadows.
 
-## Motion system
-
-Use one orchestrated entrance per page, not many unrelated animations.
-
-Page-load choreography:
-- Animate only: header, primary card shell, first action row.
-- Stagger with class delays (`.reveal-1`, `.reveal-2`, `.reveal-3`).
-- Duration range: `260-420ms`.
-- Easing: `cubic-bezier(0.22, 1, 0.36, 1)`.
-
-```css
-@keyframes reveal-up {
-  from { opacity: 0; transform: translateY(14px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.reveal {
-  opacity: 0;
-  animation: reveal-up 360ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-
-.reveal-1 { animation-delay: 40ms; }
-.reveal-2 { animation-delay: 120ms; }
-.reveal-3 { animation-delay: 200ms; }
-
-@media (prefers-reduced-motion: reduce) {
-  .reveal {
-    animation: none;
-    opacity: 1;
-    transform: none;
-  }
-}
-```
-
-Micro-interaction rules:
-- Hover states: color/border/light translation only (`translateY(-1px)` max).
-- Never scale cards enough to shift layout.
-- Keep transitions in `140-180ms`.
+Motion:
+- Page/container entry: `~220ms` ease-out.
+- Hover/focus transitions: `~140-160ms`.
+- Respect reduced motion preferences for all new animation.
 
 ## Layout system
 
@@ -210,12 +142,6 @@ Micro-interaction rules:
 
 ## Component system
 
-### Signature shapes
-
-- Main cards: rounded (`14-20px`) with strong border contrast.
-- Pills/chips: fully rounded but compact.
-- Section separators: subtle rule + small uppercase label.
-
 ### Action hierarchy
 
 - Primary action: `.btn-primary` for commit/continue actions.
@@ -227,18 +153,11 @@ Rules:
 - Secondary and neutral controls must not visually compete with primary.
 - All interactive controls must keep pointer cursor and visible hover/focus states.
 
-### Buttons
-
-- Primary button uses action color fill; hover may introduce warm-accent border.
-- Secondary button uses outline on elevated surface.
-- Utility controls stay visually lighter than progression CTAs.
-
 ### Status and feedback
 
 - `status-pill`, `status-badge`, `subject-status-pill`, and difficulty chips carry state.
-- Status text must remain explicit (`Fuldført`, `I gang`, `Ikke startet`, `Ingen quiz`) where state matters.
+- Status text must remain explicit (`Fuldført`, `Ikke startet`, `Ingen quiz`) where state matters.
 - Dot indicators (`.status-dot`) supplement text, never replace it.
-- Wrong/correct answer states in quizzes must pair color with text or iconography.
 
 ### Progress indicators
 
@@ -257,7 +176,7 @@ Rules:
   - `Podcasts`
   - `Quiz for alle kilder`
 - Section content boundaries are strict:
-  - Quiz chips, level pills, and quiz status belong only in `Quiz for alle kilder`.
+  - Quiz chips and quiz status belong only in `Quiz for alle kilder`.
   - Episode metadata belongs only in `Podcasts`.
   - Text/article cards and reading progress belong only in `Readings`.
 - Reading cards always show L/M/S difficulty indicators in subject detail.
@@ -285,7 +204,6 @@ Order:
 3. `Quizhistorik` table
 
 Behavior:
-- Hero row includes learner greeting, resume action, and one fast metric.
 - `Åbn fag` is the dominant action when enrolled.
 - Enrollment mutation stays secondary (`Tilmeld`/`Afmeld`).
 - `Senest åbnet fag` badge supports continuity.
@@ -305,7 +223,6 @@ Behavior:
   - `Readings` (text/article cards with always-visible L/M/S indicators + tracking controls)
   - `Podcasts` (flat episode list with discrete tracking controls)
   - `Quiz for alle kilder` (lecture quiz level chips in order `Let`, `Mellem`, `Svær`)
-- Quiz chips keep level distinction: `Let` calm, `Mellem` vivid, `Svær` warm/high-attention.
 
 ### `/q/<quiz_id>.html` (quiz wrapper)
 
@@ -316,10 +233,8 @@ Order:
 4. Summary and login prompt (for anonymous completion handoff)
 
 Behavior:
-- Quiz header uses exam-card styling with module label and large title.
 - Keep one decision per step.
 - Keep option hit areas large and stateful (selected/correct/wrong).
-- Correct/wrong transitions are instant-feedback first, then rationale reveal.
 - Never expose noisy raw filename metadata in the visible title area.
 
 ### Auth routes (`/accounts/login`, `/accounts/signup`)
@@ -344,31 +259,6 @@ Behavior:
 - Prefer short verbs and measurable progress phrases (`Besvaret x/y`, `Fuldført`).
 - Avoid technical file jargon in learner-facing text.
 
-## Anti-slop guardrails
-
-Do not use:
-- `Inter`, `Roboto`, `Arial`, or fallback-only visual identity.
-- Purple-on-white gradient templates.
-- Equal-weight palettes where every color competes.
-- Component libraries copied 1:1 without local character.
-- Flat solid-color page backgrounds without atmosphere.
-
-Do use:
-- Paper Studio font pairing (`Fraunces`, `Public Sans`, `IBM Plex Mono`).
-- Strong neutral dominance with sharp, intentional accents.
-- One high-quality page entrance animation with stagger.
-- Layered gradients/patterns tied to Paper Studio only.
-
-## Implementation plan (safe incremental)
-
-1. Add design-system tokens and fonts in `templates/base.html`.
-2. Set `data-design-system="paper-studio"` on `<html>` as locked default.
-3. Update shared controls (`.btn-primary`, `.nav-action`, `.card`) to tokenized slots.
-4. Migrate `progress`, `subject_detail`, and `wrapper` page-specific colors to semantic tokens.
-5. Refactor subject detail lecture content into three explicit blocks: `Readings`, `Podcasts`, `Quiz for alle kilder` (implemented in `templates/quizzes/subject_detail.html` + `quizzes/views.py`).
-6. Add reduced-motion-safe reveal classes to top-level sections only.
-7. Validate contrast, keyboard focus, and section partitioning behavior before rollout.
-
 ## Governance and change checklist
 
 Before shipping UI changes:
@@ -378,6 +268,6 @@ Before shipping UI changes:
 3. Preserve action hierarchy (primary vs secondary vs neutral).
 4. Verify keyboard focus, tap targets, and color contrast.
 5. Verify mobile layouts at `375px` and tablet/desktop breakpoints.
-6. Verify lecture detail partitioning (`Readings`, `Podcasts`, `Quiz for alle kilder`) and per-section empty states.
+6. Verify lecture detail partitioning (`Quizzer`, `Podcasts`, `Readings`) and per-section empty states.
 7. Include a `Paper Studio compliance` note in the PR.
 8. Update this document when introducing a new recurring UI pattern.

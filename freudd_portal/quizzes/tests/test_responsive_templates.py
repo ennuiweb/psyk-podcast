@@ -13,11 +13,19 @@ class ResponsiveTemplateRulesTests(SimpleTestCase):
 
     def test_subject_detail_uses_compact_app_shell_on_tablet_mobile(self) -> None:
         body = self._template_text("quizzes/subject_detail.html")
-        self.assertIn("@media (max-width: 1024px)", body)
+        self.assertIn("@media (max-width: 1180px)", body)
         self.assertIn("body.page-subject-detail .site-header", body)
         self.assertIn("grid-template-columns: minmax(62px, 84px) minmax(0, 1fr);", body)
         self.assertIn(".subject-mobile-topbar", body)
         self.assertIn(".subject-mobile-tabbar", body)
+
+    def test_subject_detail_mobile_navigation_uses_quizliga_overblik_and_subject_picker(self) -> None:
+        body = self._template_text("quizzes/subject_detail.html")
+        self.assertIn("<span>Quizliga</span>", body)
+        self.assertIn("<span>Mit overblik</span>", body)
+        self.assertIn("<span>Mine fag</span>", body)
+        self.assertIn("data-subject-menu-toggle", body)
+        self.assertIn("data-subject-menu-list", body)
 
     def test_subject_detail_supports_long_word_wrapping(self) -> None:
         body = self._template_text("quizzes/subject_detail.html")

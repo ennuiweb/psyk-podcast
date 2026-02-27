@@ -2,12 +2,17 @@
 {% block title %}fag · {{ subject.title|lower }}{% endblock %}
 {% block content %}
 <style>
+  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap");
+
   .subject-layout {
+    --subject-font-ui: "Inter", "Public Sans", "Manrope", sans-serif;
+    --subject-font-editorial: "Playfair Display", "Fraunces", serif;
     --subject-space-section: clamp(20px, 2vw, 30px);
     --subject-space-block: clamp(14px, 1.4vw, 20px);
     --subject-space-tight: clamp(10px, 0.9vw, 14px);
     display: grid;
     gap: var(--subject-space-section);
+    font-family: var(--subject-font-ui);
   }
 
   .subject-head {
@@ -23,6 +28,12 @@
   .subject-head h1,
   .subject-head p {
     margin: 0;
+  }
+
+  .subject-head h1 {
+    font-family: var(--subject-font-editorial);
+    font-weight: 700;
+    letter-spacing: -0.012em;
   }
 
   .subject-back {
@@ -102,6 +113,7 @@
     align-items: center;
     justify-content: center;
     text-decoration: none;
+    font-family: var(--subject-font-ui);
     font-size: 1.22rem;
     font-weight: 500;
     line-height: 1;
@@ -125,8 +137,9 @@
   .lecture-rail-copy {
     margin: 0;
     color: var(--muted);
+    font-family: var(--subject-font-ui);
     line-height: 1.34;
-    font-size: 1.02rem;
+    font-size: 0.94rem;
     max-width: 280px;
     padding-top: 2px;
     text-transform: lowercase;
@@ -171,23 +184,26 @@
   .active-lecture-title {
     margin: 0;
     color: var(--text-strong);
-    font-size: clamp(1.44rem, 2.8vw, 2.4rem);
-    line-height: 1.1;
-    letter-spacing: -0.02em;
+    font-family: var(--subject-font-editorial);
+    font-size: clamp(1.72rem, 2.2vw, 2.08rem);
+    font-weight: 500;
+    line-height: 1.14;
+    letter-spacing: -0.01em;
   }
 
   .active-lecture-progress {
     margin: 0;
     color: var(--text-strong);
-    font-size: 1.84rem;
-    line-height: 1;
+    font-family: var(--subject-font-ui);
+    font-size: 1rem;
+    line-height: 1.2;
     font-weight: 700;
-    letter-spacing: -0.02em;
   }
 
   .active-lecture-state {
     margin: 0;
-    font-size: 0.98rem;
+    font-family: var(--subject-font-ui);
+    font-size: 0.95rem;
     color: var(--muted);
   }
 
@@ -249,16 +265,19 @@
 
   .section-title {
     margin: 0;
-    font-size: clamp(1.24rem, 1.9vw, 1.54rem);
+    font-family: var(--subject-font-editorial);
+    font-size: clamp(1.34rem, 1.8vw, 1.52rem);
+    font-weight: 700;
     color: var(--text-strong);
-    line-height: 1.1;
-    letter-spacing: -0.01em;
+    line-height: 1.12;
+    letter-spacing: -0.006em;
   }
 
   .section-note {
     margin: 0;
     color: var(--muted);
-    font-size: 0.95rem;
+    font-family: var(--subject-font-ui);
+    font-size: 0.88rem;
   }
 
   .quiz-band {
@@ -299,8 +318,9 @@
   .quiz-slot-label {
     margin: 0;
     color: var(--text-strong);
-    font-size: 1.06rem;
-    font-weight: 700;
+    font-family: var(--subject-font-ui);
+    font-size: 0.96rem;
+    font-weight: 600;
   }
 
   .quiz-slot-chip {
@@ -311,8 +331,9 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.24rem;
-    font-weight: 700;
+    font-family: var(--subject-font-ui);
+    font-size: 1.04rem;
+    font-weight: 600;
     text-decoration: none;
     color: var(--text-strong);
     background: color-mix(in srgb, var(--surface) 72%, transparent);
@@ -378,9 +399,11 @@
 
   .podcast-title {
     margin: 0;
-    font-size: 1.02rem;
+    font-family: var(--subject-font-ui);
+    font-size: 1.12rem;
+    font-weight: 500;
     color: var(--text-strong);
-    line-height: 1.24;
+    line-height: 1.28;
     overflow-wrap: anywhere;
     flex: 1 1 auto;
     min-width: 0;
@@ -389,7 +412,8 @@
   .podcast-meta {
     margin: 0;
     color: var(--muted);
-    font-size: 0.78rem;
+    font-family: var(--subject-font-ui);
+    font-size: 0.88rem;
   }
 
   .podcast-inline-trigger {
@@ -520,6 +544,7 @@
 
   .podcast-inline-label {
     margin: 0;
+    font-family: var(--subject-font-ui);
     color: var(--muted);
     font-size: 0.82rem;
   }
@@ -586,11 +611,18 @@
 
   .reading-title {
     margin: 0;
+    font-family: var(--subject-font-editorial);
     color: var(--text-strong);
-    font-size: 1.06rem;
-    line-height: 1.22;
+    font-size: 1.24rem;
+    line-height: 1.18;
+    letter-spacing: -0.006em;
     flex: 1 1 auto;
     min-width: 0;
+  }
+
+  .reading-title strong {
+    font-family: inherit;
+    font-weight: 700;
   }
 
   .reading-title-row {
@@ -603,7 +635,8 @@
   .reading-meta {
     margin: 0;
     color: var(--muted);
-    font-size: 0.84rem;
+    font-family: var(--subject-font-ui);
+    font-size: 0.88rem;
   }
 
   .reading-actions {
@@ -623,8 +656,9 @@
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    font-size: 0.78rem;
-    font-weight: 700;
+    font-family: var(--subject-font-ui);
+    font-size: 0.84rem;
+    font-weight: 600;
     color: var(--text-subtle-2);
     background: var(--surface-soft);
   }
@@ -661,15 +695,17 @@
     align-items: center;
     justify-content: center;
     border: 1px solid var(--border);
-    font-size: 1.15rem;
-    font-weight: 700;
+    font-family: var(--subject-font-ui);
+    font-size: 1rem;
+    font-weight: 600;
     color: var(--text-strong);
   }
 
   .difficulty-label {
     margin: 0;
     color: var(--muted);
-    font-size: 0.86rem;
+    font-family: var(--subject-font-ui);
+    font-size: 0.78rem;
     line-height: 1;
   }
 
@@ -700,13 +736,15 @@
     padding: 0 var(--space-2);
     display: inline-flex;
     align-items: center;
+    font-family: var(--subject-font-ui);
     font-size: 0.74rem;
-    font-weight: 700;
+    font-weight: 600;
   }
 
   .missing-note {
     margin: 0;
     color: var(--danger-ink);
+    font-family: var(--subject-font-ui);
     font-size: 0.82rem;
   }
 
@@ -717,6 +755,7 @@
     border-radius: var(--radius-sub);
     background: var(--surface-alt);
     padding: var(--space-3);
+    font-family: var(--subject-font-ui);
     color: var(--muted);
   }
 

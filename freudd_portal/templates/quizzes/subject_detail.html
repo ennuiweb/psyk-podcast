@@ -497,6 +497,12 @@
     transform: translate(-50%, -50%);
   }
 
+  .podcast-row.is-player-open .podcast-hover-actions {
+    opacity: 0;
+    transform: translate(-50%, calc(-50% - 4px));
+    pointer-events: none;
+  }
+
   .podcast-copy {
     min-width: 0;
     display: grid;
@@ -663,12 +669,15 @@
 
   .podcast-inline-player {
     grid-column: 1 / -1;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sub);
-    background: var(--surface);
-    padding: var(--space-2);
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    padding: 0;
     display: grid;
-    gap: var(--space-2);
+    gap: var(--space-1);
+    margin-left: calc(-1 * var(--space-3));
+    margin-right: calc(-1 * var(--space-3));
+    width: calc(100% + (2 * var(--space-3)));
   }
 
   .podcast-inline-player[hidden] {
@@ -677,17 +686,19 @@
 
   .podcast-inline-label {
     margin: 0;
+    padding: 0 var(--space-3);
     font-family: var(--subject-font-ui);
     color: var(--muted);
     font-size: 0.82rem;
   }
 
   .podcast-inline-frame {
+    display: block;
     width: 100%;
     min-height: 152px;
     border: 0;
-    border-radius: var(--radius-sub);
-    background: var(--surface-soft);
+    border-radius: 0;
+    background: transparent;
   }
 
   .reading-list {
@@ -1329,6 +1340,10 @@
       frame.setAttribute("src", "");
       frame.setAttribute("title", "Spotify afspiller");
       label.textContent = "";
+      const row = container.closest(".podcast-row");
+      if (row) {
+        row.classList.remove("is-player-open");
+      }
     };
 
     const openPlayer = (button) => {
@@ -1358,6 +1373,9 @@
       playerFrame.setAttribute("title", `Spotify afspiller: ${title}`);
       playerLabel.textContent = `Afspiller: ${title}`;
       playerContainer.removeAttribute("hidden");
+      if (row) {
+        row.classList.add("is-player-open");
+      }
       setPressedState(button);
     };
 

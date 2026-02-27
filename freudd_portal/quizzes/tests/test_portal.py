@@ -1517,6 +1517,8 @@ class QuizPortalTests(TestCase):
         self.assertEqual(rail_items[1]["lecture_key"], "W01L2")
         self.assertTrue(rail_items[0]["lecture_url"].endswith("?lecture=W01L1"))
         self.assertTrue(rail_items[1]["lecture_url"].endswith("?lecture=W01L2"))
+        self.assertContains(response, 'class="lecture-rail-copy"')
+        self.assertContains(response, 'href="/subjects/personlighedspsykologi?lecture=W01L1"')
 
     @override_settings(FREUDD_SUBJECT_DETAIL_SHOW_READING_QUIZZES=False)
     def test_subject_detail_always_shows_reading_difficulty_indicators(self) -> None:

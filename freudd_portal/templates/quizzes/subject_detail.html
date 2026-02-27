@@ -161,6 +161,7 @@
 
   .lecture-rail-copy {
     margin: 0;
+    display: block;
     color: var(--muted);
     font-family: var(--subject-font-ui);
     line-height: 1.34;
@@ -170,6 +171,27 @@
     overflow-wrap: anywhere;
     word-break: break-word;
     hyphens: auto;
+    text-decoration: none;
+    transition: color 160ms ease, text-decoration-color 160ms ease;
+  }
+
+  .lecture-rail-copy:hover,
+  .lecture-rail-copy:focus-visible {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.12em;
+    text-decoration-color: currentColor;
+  }
+
+  .lecture-rail-item:not(.is-active) .lecture-rail-copy:hover,
+  .lecture-rail-item:not(.is-active) .lecture-rail-copy:focus-visible {
+    color: var(--text-subtle-2);
+  }
+
+  .lecture-rail-copy:focus-visible {
+    outline: 2px solid color-mix(in srgb, var(--accent) 30%, transparent);
+    outline-offset: 2px;
+    border-radius: 4px;
   }
 
   .lecture-rail-item.is-active .lecture-rail-copy {
@@ -1145,7 +1167,13 @@
             >
               {{ rail.index }}
             </a>
-            <p class="lecture-rail-copy">{{ rail.rail_copy|default:rail.lecture_display_title }}</p>
+            <a
+              class="lecture-rail-copy"
+              href="{{ rail.lecture_url }}"
+              aria-label="{{ rail.lecture_display_title|default:rail.lecture_key }}"
+            >
+              {{ rail.rail_copy|default:rail.lecture_display_title }}
+            </a>
           </li>
           {% endfor %}
         </ol>

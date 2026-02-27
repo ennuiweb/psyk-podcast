@@ -3,6 +3,9 @@ set -euo pipefail
 
 repo_root="$(git rev-parse --show-toplevel)"
 log_file="${PRE_PUSH_LOG_FILE:-}"
+reading_key_sync_on_push="${FREUDD_READING_KEY_SYNC_ON_PUSH:-1}"
+reading_key_sync_script="${repo_root}/scripts/sync_personlighedspsykologi_reading_file_key.py"
+reading_key_sync_python="python3"
 quiz_extract_on_push="${QUIZ_JSON_EXTRACT_ON_PUSH:-1}"
 quiz_extract_script="${repo_root}/notebooklm-podcast-auto/personlighedspsykologi/scripts/extract_quiz_html_to_json.py"
 quiz_extract_python="python3"
@@ -10,6 +13,9 @@ readings_sync_on_push="${FREUDD_READINGS_SYNC_ON_PUSH:-1}"
 readings_sync_script="${repo_root}/scripts/sync_personlighedspsykologi_readings_to_droplet.py"
 readings_sync_python="python3"
 
+if [[ -x "${repo_root}/.venv/bin/python" ]]; then
+  reading_key_sync_python="${repo_root}/.venv/bin/python"
+fi
 if [[ -x "${repo_root}/notebooklm-podcast-auto/.venv/bin/python" ]]; then
   quiz_extract_python="${repo_root}/notebooklm-podcast-auto/.venv/bin/python"
 elif [[ -x "${repo_root}/.venv/bin/python" ]]; then
@@ -36,6 +42,56 @@ if [[ "${quiz_extract_on_push}" != "0" ]]; then
   if [[ -n "${log_file}" ]]; then
     printf '%s %s\n' "$(date +'%Y-%m-%d %H:%M:%S')" \
       "pre-push: quiz html to json extraction completed" >> "${log_file}"
+  fi
+fi
+
+if [[ "${reading_key_sync_on_push}" != "0" ]]; then
+  echo "pre-push: syncing OneDrive reading-file-key to repo mirrors"
+  if [[ -n "${log_file}" ]]; then
+    printf '%s %s\n' "$(date +'%Y-%m-%d %H:%M:%S')" \
+      "pre-push: syncing OneDrive reading-file-key to repo mirrors" >> "${log_file}"
+  fi
+
+  if [[ ! -f "${reading_key_sync_script}" ]]; then
+    echo "pre-push: reading key sync script not found: ${reading_key_sync_script}" >&2
+    exit 1
+  fi
+
+  reading_key_sync_cmd=("${reading_key_sync_python}" "${reading_key_sync_script}" --apply)
+  if [[ -n "${FREUDD_READING_KEY_SYNC_SOURCE:-}" ]]; then
+    reading_key_sync_cmd+=(--source "${FREUDD_READING_KEY_SYNC_SOURCE}")
+  fi
+  if [[ -n "${FREUDD_READING_KEY_SYNC_TARGET:-}" ]]; then
+    reading_key_sync_cmd+=(--target "${FREUDD_READING_KEY_SYNC_TARGET}")
+  fi
+  if [[ "${FREUDD_READING_KEY_SYNC_NO_SECONDARY_TARGET:-0}" != "0" ]]; then
+    reading_key_sync_cmd+=(--no-secondary-target)
+  elif [[ -n "${FREUDD_READING_KEY_SYNC_SECONDARY_TARGET:-}" ]]; then
+    reading_key_sync_cmd+=(--secondary-target "${FREUDD_READING_KEY_SYNC_SECONDARY_TARGET}")
+  fi
+  if [[ "${FREUDD_READING_KEY_SYNC_NO_BACKUP:-0}" != "0" ]]; then
+    reading_key_sync_cmd+=(--no-backup)
+  fi
+
+  if ! "${reading_key_sync_cmd[@]}"; then
+    echo "pre-push: reading key sync failed; aborting push" >&2
+    exit 1
+  fi
+
+  reading_key_primary_target="${FREUDD_READING_KEY_SYNC_TARGET:-shows/personlighedspsykologi-en/docs/reading-file-key.md}"
+  reading_key_secondary_target="${FREUDD_READING_KEY_SYNC_SECONDARY_TARGET:-notebooklm-podcast-auto/personlighedspsykologi/docs/reading-file-key.md}"
+  reading_key_changed_paths=("${reading_key_primary_target}")
+  if [[ "${FREUDD_READING_KEY_SYNC_NO_SECONDARY_TARGET:-0}" == "0" && "${reading_key_secondary_target}" != "${reading_key_primary_target}" ]]; then
+    reading_key_changed_paths+=("${reading_key_secondary_target}")
+  fi
+  if [[ -n "$(git status --porcelain -- "${reading_key_changed_paths[@]}")" ]]; then
+    echo "pre-push: reading-file-key mirror updated. Commit the mirror files, then push again." >&2
+    exit 1
+  fi
+
+  if [[ -n "${log_file}" ]]; then
+    printf '%s %s\n' "$(date +'%Y-%m-%d %H:%M:%S')" \
+      "pre-push: OneDrive reading-file-key sync completed" >> "${log_file}"
   fi
 fi
 

@@ -355,13 +355,24 @@ If you want the Apps Script file to update without manual pasting, use the `clas
 ### Auto-push on git push
 To push the Apps Script file whenever you run `git push`, install the repository git hook:
 1. Run `scripts/install_git_hooks.sh`.
-2. Push as usual; the hook first runs quiz extraction (`extract_quiz_html_to_json.py`) and then runs `apps-script/push_drive_trigger.sh`.
-3. The hook also runs blocking reading sync (`scripts/sync_personlighedspsykologi_readings_to_droplet.py`) after quiz extraction.
+2. Push as usual; the hook runs steps in this order:
+   - quiz extraction (`extract_quiz_html_to_json.py`)
+   - OneDrive reading-key mirror sync (`sync_personlighedspsykologi_reading_file_key.py --apply`)
+   - blocking reading-file sync to droplet (`sync_personlighedspsykologi_readings_to_droplet.py`)
+   - Apps Script push (`apps-script/push_drive_trigger.sh`)
+3. If mirror sync updates tracked files, push is aborted so you can commit mirror changes first (prevents stale mirror state on remote).
 4. Set `QUIZ_JSON_EXTRACT_ON_PUSH=0` in your environment to skip quiz extraction on demand.
-5. Set `FREUDD_READINGS_SYNC_ON_PUSH=0` to disable reading sync on push.
-6. Optional reading sync overrides: `FREUDD_READINGS_SOURCE_ROOT`, `FREUDD_READINGS_REMOTE_ROOT`, `FREUDD_READINGS_HOST`, `FREUDD_READINGS_USER`, `FREUDD_READINGS_SSH_KEY`, `FREUDD_READINGS_EXCLUSIONS_PATH`, `FREUDD_READINGS_SUBJECT_SLUG`.
-7. Set `APPS_SCRIPT_PUSH_ON_PUSH=0` in your environment to skip the Apps Script push step on demand.
-8. (Optional) Set `PRE_PUSH_LOG_FILE=/path/to/pre-push.log` to enable logging; by default no log file is written.
+5. Set `FREUDD_READING_KEY_SYNC_ON_PUSH=0` to disable OneDrive reading-key mirror sync on push.
+6. Optional reading-key sync overrides:
+   - `FREUDD_READING_KEY_SYNC_SOURCE`
+   - `FREUDD_READING_KEY_SYNC_TARGET`
+   - `FREUDD_READING_KEY_SYNC_SECONDARY_TARGET`
+   - `FREUDD_READING_KEY_SYNC_NO_SECONDARY_TARGET=1`
+   - `FREUDD_READING_KEY_SYNC_NO_BACKUP=1`
+7. Set `FREUDD_READINGS_SYNC_ON_PUSH=0` to disable reading-file sync to droplet on push.
+8. Optional reading-file sync overrides: `FREUDD_READINGS_SOURCE_ROOT`, `FREUDD_READINGS_REMOTE_ROOT`, `FREUDD_READINGS_HOST`, `FREUDD_READINGS_USER`, `FREUDD_READINGS_SSH_KEY`, `FREUDD_READINGS_EXCLUSIONS_PATH`, `FREUDD_READINGS_SUBJECT_SLUG`.
+9. Set `APPS_SCRIPT_PUSH_ON_PUSH=0` in your environment to skip the Apps Script push step on demand.
+10. (Optional) Set `PRE_PUSH_LOG_FILE=/path/to/pre-push.log` to enable logging; by default no log file is written.
 
 ### Bioneuro audio mirror on push
 The same `pre-push` hook can mirror local Bioneuro audio files from OneDrive into the Google Drive mounted destination used by the `bioneuro` show:

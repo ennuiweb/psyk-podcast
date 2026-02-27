@@ -25,26 +25,26 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Subjects are loaded from `freudd_portal/subjects.json`; first active subject is `personlighedspsykologi`.
 - Subject enrollment is per `(user, subject_slug)` in `SubjectEnrollment`.
 - Topmenu shows direct links for the authenticated user’s enrolled active subjects.
-- Subject learning path is lecture-first: each lecture node contains readings, plus lecture-level assets (for example `Alle kilder`).
-- Subject content is compiled from reading master key + quiz links + local RSS into `content_manifest.json`.
+- Subject learning path is lecture-first: each lecture node contains tekster, plus lecture-level assets (for example `Alle kilder`).
+- Subject content is compiled from tekst master key + quiz links + local RSS into `content_manifest.json`.
 - Podcast links on subject pages are Spotify-only and episode-only. Unmapped RSS items are hidden from the podcast list until a direct Spotify episode URL exists. Direct source/Drive audio links are never exposed in UI.
 - Subject detail includes inline Spotify playback via embedded episode player plus the external Spotify link for each visible podcast row.
 - Completion rule: `currentView == "summary"` and `answers_count == question_count`; timed-out questions count as answered/wrong.
 - Gamification core is quiz-driven and always available for authenticated users (`/progress`, `/api/gamification/me`).
 - `/progress` is split in two tracks: private personal tracking and public quizliga preview.
-- Private personal tracking is manual for readings/podcasts (`mark/unmark`) and keeps quiz completion as-is from `QuizProgress`.
+- Private personal tracking is manual for tekster/podcasts (`mark/unmark`) and keeps quiz completion as-is from `QuizProgress`.
 - Public quizliga is opt-in and alias-based; public view shows `alias + rank + score point + quiz count`.
 - Quizliga score per quiz is based on correctness plus speed bonus (`score = correct*100 + speed_bonus`), with correctness weighted highest.
 - Quizliga tie-break is `correct_answers`, then earliest `reached_at`, then alias alphabetic.
 - Quizliga seasons reset every half year in UTC: `H1 = [Jan 1, Jul 1)`, `H2 = [Jul 1, Jan 1 next year)`.
-- Learning path on subject pages (`/subjects/<subject_slug>`) is lecture-first with nested reading status (`active|completed|no_quiz`) and quiz/podcast navigation.
+- Learning path on subject pages (`/subjects/<subject_slug>`) is lecture-first with nested tekststatus (`active|completed|no_quiz`) and quiz/podcast navigation.
 - Subject detail UI is mobile-first and uses a left lecture rail + single active lecture card (no multi-panel accordion).
 - Subject detail removes KPI strip and global `Udvid alle`/`Luk alle`; lecture switching is via rail links (`?lecture=<lecture_key>`).
 - Subject detail spacing uses a local responsive scale (`section/block/tight`) to keep vertical rhythm consistent across rail, card header, and section blocks.
-- Active lecture card is partitioned into three fixed sibling sections in this order: `Readings`, `Podcasts`, `Quiz for alle kilder`.
-- Quiz assets are surfaced only in `Quiz for alle kilder`, podcast assets only in `Podcasts`, and reading status/progress only in `Readings`.
+- Active lecture card is partitioned into three fixed sibling sections in this order: `Tekster`, `Podcasts`, `Quiz for alle kilder`.
+- Quiz assets are surfaced only in `Quiz for alle kilder`, podcast assets only in `Podcasts`, and tekststatus/progress only in `Tekster`.
 - Section-level empty states are shown per section; one populated section does not hide the others.
-- Reading cards always render L/M/S difficulty indicators in subject detail.
+- Tekstkort always render L/M/S difficulty indicators in subject detail.
 - Lecture rail rows render both numbered marker and lecture copy (week label + cleaned lecture title).
 - Module headers in subject detail are rendered as a combined headline (`Uge x, forelæsning x: <titel>`), with cleaned lecture title metadata.
 - Quiz labels are rendered from cleaned `episode_title` metadata (`modul` + `titel`) instead of raw file/tag strings.
@@ -79,7 +79,7 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - `GET /leaderboard/<subject_slug>`
 - `POST /leaderboard/profile`
 - `GET /subjects/<subject_slug>`
-- `GET /subjects/<subject_slug>/readings/open/<reading_key>` (login-required reading file access)
+- `GET /subjects/<subject_slug>/readings/open/<reading_key>` (login-required tekst-fil adgang)
 - `POST /subjects/<subject_slug>/enroll`
 - `POST /subjects/<subject_slug>/unenroll`
 - `POST /subjects/<subject_slug>/tracking/reading`
@@ -97,12 +97,12 @@ Enrollment UX rule: enroll/unenroll actions are shown inline per subject in the 
 - `UserUnitProgress`: per-user learning path unit status (`active`, `completed`).
 - `DailyGamificationStat`: per-user daily answer/completion deltas + goal state.
 - `UserLectureProgress`: per-user lecture status (`active|completed`) and quiz totals.
-- `UserReadingProgress`: per-user reading status (`active|completed|no_quiz`) and quiz totals.
+- `UserReadingProgress`: per-user tekststatus (`active|completed|no_quiz`) and quiz totals.
 - `UserExtensionAccess`: per-user enablement and last sync status for optional extensions.
 - `UserExtensionCredential`: per-user encrypted extension credentials (`habitica` now, `anki` deferred).
 - `ExtensionSyncLedger`: per-user/per-extension/per-day idempotent sync log (`ok|error|skipped`).
 - `UserInterfacePreference`: per-user interface settings (`design_system`) for persistent theme selection.
-- `UserReadingMark`: per-user private reading tracking marks (`mark/unmark`) on subject detail.
+- `UserReadingMark`: per-user private tekst tracking marks (`mark/unmark`) on subject detail.
 - `UserPodcastMark`: per-user private podcast tracking marks (`mark/unmark`) on subject detail.
 - `UserLeaderboardProfile`: per-user public alias and visibility settings for quizliga leaderboard (case-insensitive unique alias).
 - `UserUnitProgress`: legacy/compat path model kept temporarily for API compatibility.
@@ -128,14 +128,14 @@ Enrollment UX rule: enroll/unenroll actions are shown inline per subject in the 
 
 ## Subject content manifest contract (`content_manifest.json`)
 - `subject_slug`: canonical slug for the subject manifest.
-- `source_meta`: source paths + generation metadata (`reading master`, `rss`, `quiz_links`).
+- `source_meta`: source paths + generation metadata (`tekst master`, `rss`, `quiz_links`).
 - `lectures[]`: lecture-first tree with `lecture_key`, `lecture_title`, `sequence_index`, `readings[]`, `lecture_assets`, `warnings[]`.
-- `readings[]`: each reading has deterministic `reading_key`, `reading_title`, optional `source_filename`, `is_missing`, and `assets` (`quizzes[]`, `podcasts[]`). Duplicate reading titles in the same lecture are disambiguated with `-2`, `-3`, etc.
+- `readings[]`: each tekst has deterministic `reading_key`, `reading_title`, optional `source_filename`, `is_missing`, and `assets` (`quizzes[]`, `podcasts[]`). Duplicate tekst titles in the same lecture are disambiguated with `-2`, `-3`, etc.
 - `lecture_assets`: lecture-level assets for items like `Alle kilder`.
 - `podcasts[]`: Spotify-only episode assets with `url`, `platform`, and `source_audio_url` (original RSS enclosure/link).
 - `platform`: always `spotify` (`url` must be a Spotify episode URL).
 
-## Reading download exclusions contract (`reading_download_exclusions.json`)
+## Tekst download exclusions contract (`reading_download_exclusions.json`)
 - Path default: `shows/personlighedspsykologi-en/reading_download_exclusions.json`
 - Used by `GET /subjects/<subject_slug>/readings/open/<reading_key>` and subject detail link rendering.
 - `excluded_reading_keys` blocks selected `reading_key` values from being opened/downloaded.
@@ -195,7 +195,7 @@ Operational behavior:
 - `FREUDD_SUBJECT_SPOTIFY_MAP_PATH` (default: `shows/personlighedspsykologi-en/spotify_map.json`)
 - `FREUDD_SUBJECT_CONTENT_MANIFEST_PATH` (default: `shows/personlighedspsykologi-en/content_manifest.json`)
 - `FREUDD_READING_FILES_ROOT` (default: `/var/www/readings/personlighedspsykologi`)
-- `FREUDD_READING_FILES_ROOT` must be traversable/readable by the portal service user (`www-data`) or reading open/download routes will fail at runtime.
+- `FREUDD_READING_FILES_ROOT` must be traversable/readable by the portal service user (`www-data`) or tekst open/download routes will fail at runtime.
 - `FREUDD_READING_DOWNLOAD_EXCLUSIONS_PATH` (default: `shows/personlighedspsykologi-en/reading_download_exclusions.json`)
 - `FREUDD_GAMIFICATION_DAILY_GOAL` (default: `20`)
 - `FREUDD_GAMIFICATION_XP_PER_ANSWER` (default: `5`)
@@ -208,7 +208,7 @@ Operational behavior:
 - `FREUDD_EXT_SYNC_TIMEOUT_SECONDS` (default: `20`)
 - `FREUDD_DESIGN_SYSTEM_DEFAULT` (default: `paper-studio`)
 - `FREUDD_DESIGN_SYSTEM_COOKIE_NAME` (default: `freudd_design_system`)
-- `FREUDD_SUBJECT_DETAIL_SHOW_READING_QUIZZES` (legacy toggle; reading difficulty indicators are now always shown in subject detail)
+- `FREUDD_SUBJECT_DETAIL_SHOW_READING_QUIZZES` (legacy toggle; tekst difficulty indicators are now always shown in subject detail)
 
 ## Google OAuth setup
 Create a Google OAuth client (Web application) and whitelist callback URLs:

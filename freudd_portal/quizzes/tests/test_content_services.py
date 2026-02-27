@@ -384,7 +384,7 @@ class SubjectContentManifestTests(TestCase):
 
         manifest = build_subject_content_manifest("personlighedspsykologi")
         self.assertEqual(manifest["lectures"], [])
-        self.assertEqual(manifest["source_meta"]["reading_error"], "Reading-nøglen kunne ikke indlæses.")
+        self.assertEqual(manifest["source_meta"]["reading_error"], "Tekst-nøglen kunne ikke indlæses.")
 
     def test_load_manifest_rebuilds_when_rss_is_newer_than_manifest(self) -> None:
         self.rss_file.write_text(

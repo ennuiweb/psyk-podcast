@@ -180,13 +180,13 @@ def _source_filename_from_bullet(bullet_body: str) -> str | None:
 def parse_master_readings(path: str | Path) -> ReadingParseResult:
     source = Path(path)
     if not source.exists():
-        return ReadingParseResult(lectures=tuple(), error="Reading-nøglen kunne ikke indlæses.")
+        return ReadingParseResult(lectures=tuple(), error="Tekst-nøglen kunne ikke indlæses.")
 
     try:
         mtime = source.stat().st_mtime_ns
     except OSError:
         logger.warning("Unable to stat reading key path: %s", source, exc_info=True)
-        return ReadingParseResult(lectures=tuple(), error="Reading-nøglen kunne ikke indlæses.")
+        return ReadingParseResult(lectures=tuple(), error="Tekst-nøglen kunne ikke indlæses.")
 
     cache_hit = (
         _READING_PARSE_CACHE.get("path") == str(source)
@@ -200,7 +200,7 @@ def parse_master_readings(path: str | Path) -> ReadingParseResult:
         raw_text = source.read_text(encoding="utf-8")
     except (OSError, UnicodeDecodeError):
         logger.warning("Unable to read reading key path: %s", source, exc_info=True)
-        return ReadingParseResult(lectures=tuple(), error="Reading-nøglen kunne ikke indlæses.")
+        return ReadingParseResult(lectures=tuple(), error="Tekst-nøglen kunne ikke indlæses.")
 
     parsed_lectures: list[dict[str, Any]] = []
     current_lecture: dict[str, Any] | None = None

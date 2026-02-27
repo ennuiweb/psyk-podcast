@@ -1069,7 +1069,7 @@
                     <path d="M10 15h6"></path>
                   </svg>
                 </span>
-                <h3 class="section-title">Readings</h3>
+                <h3 class="section-title">Tekster</h3>
               </div>
             </div>
 
@@ -1082,7 +1082,7 @@
                 data-open-url="{{ reading.open_url }}"
                 role="link"
                 tabindex="0"
-                aria-label="åbn reading: {{ reading.reading_title }}"
+                aria-label="åbn tekst: {{ reading.reading_title }}"
                 {% endif %}
               >
                 {% if reading.open_url %}
@@ -1149,13 +1149,13 @@
                 </div>
 
                 {% if reading.is_missing %}
-                <p class="missing-note">Denne reading er markeret som manglende i kildelisten.</p>
+                <p class="missing-note">Denne tekst er markeret som manglende i kildelisten.</p>
                 {% endif %}
               </li>
               {% endfor %}
             </ul>
             {% else %}
-            <p class="section-empty">Ingen readings registreret i denne forelæsning.</p>
+            <p class="section-empty">Ingen tekster registreret i denne forelæsning.</p>
             {% endif %}
           </section>
 

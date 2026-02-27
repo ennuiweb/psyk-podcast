@@ -199,24 +199,24 @@ def _source_filename_or_none(value: object) -> str | None:
 def _reading_file_path_or_404(*, lecture_key: str, source_filename: str) -> Path:
     lecture = str(lecture_key or "").strip().upper()
     if not SUBJECT_LECTURE_KEY_RE.match(lecture):
-        raise Http404("Reading ikke fundet i fagets læringssti.")
+        raise Http404("Tekst ikke fundet i fagets læringssti.")
 
     root = Path(settings.FREUDD_READING_FILES_ROOT)
     try:
         resolved_root = root.resolve()
     except OSError as exc:
-        raise Http404("Reading-filer kunne ikke tilgås.") from exc
+        raise Http404("Tekst-filer kunne ikke tilgås.") from exc
 
     candidate = resolved_root / lecture / source_filename
     try:
         resolved_candidate = candidate.resolve()
     except OSError as exc:
-        raise Http404("Reading-filen kunne ikke tilgås.") from exc
+        raise Http404("Tekst-filen kunne ikke tilgås.") from exc
 
     if resolved_root not in resolved_candidate.parents:
-        raise Http404("Reading-filen kunne ikke tilgås.")
+        raise Http404("Tekst-filen kunne ikke tilgås.")
     if not resolved_candidate.is_file():
-        raise Http404("Reading-filen blev ikke fundet.")
+        raise Http404("Tekst-filen blev ikke fundet.")
     return resolved_candidate
 
 
@@ -769,7 +769,7 @@ def _flatten_podcast_rows(lecture: object) -> list[dict[str, object]]:
     for reading in readings:
         if not isinstance(reading, dict):
             continue
-        reading_title = str(reading.get("reading_title") or "").strip() or "Reading"
+        reading_title = str(reading.get("reading_title") or "").strip() or "Tekst"
         reading_key = str(reading.get("reading_key") or "").strip() or None
         assets = reading.get("assets") if isinstance(reading.get("assets"), dict) else {}
         reading_podcasts = (
@@ -1412,12 +1412,12 @@ def subject_open_reading_view(request: HttpRequest, subject_slug: str, reading_k
 
     normalized_reading_key = str(reading_key or "").strip().lower()
     if not SUBJECT_READING_KEY_RE.match(normalized_reading_key):
-        raise Http404("Reading ikke fundet i fagets læringssti.")
+        raise Http404("Tekst ikke fundet i fagets læringssti.")
     if _is_reading_download_excluded(
         subject_slug=subject.slug,
         reading_key=normalized_reading_key,
     ):
-        raise Http404("Reading ikke fundet i fagets læringssti.")
+        raise Http404("Tekst ikke fundet i fagets læringssti.")
 
     subject_path = get_subject_learning_path_snapshot(request.user, subject.slug)
     found_lecture_key: str | None = None
@@ -1440,9 +1440,9 @@ def subject_open_reading_view(request: HttpRequest, subject_slug: str, reading_k
             break
 
     if not found_lecture_key:
-        raise Http404("Reading ikke fundet i fagets læringssti.")
+        raise Http404("Tekst ikke fundet i fagets læringssti.")
     if not found_source_filename:
-        raise Http404("Reading-filen blev ikke fundet.")
+        raise Http404("Tekst-filen blev ikke fundet.")
 
     file_path = _reading_file_path_or_404(
         lecture_key=found_lecture_key,
@@ -1480,7 +1480,7 @@ def subject_tracking_reading_view(request: HttpRequest, subject_slug: str) -> Ht
 
     index = subject_tracking_index(subject.slug)
     if (lecture_key, reading_key, "") not in index["reading_keys"]:
-        raise Http404("Reading ikke fundet i fagets læringssti.")
+        raise Http404("Tekst ikke fundet i fagets læringssti.")
 
     action = str(request.POST.get("action") or "toggle").strip().lower()
     if action == "mark":

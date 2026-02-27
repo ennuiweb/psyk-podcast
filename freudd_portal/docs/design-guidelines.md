@@ -41,7 +41,7 @@ The UI must always make these jobs visible:
 2. Continuity: learner sees where they left off and can resume fast.
 3. Progression: learner sees completed vs pending in a clear sequence.
 4. Motivation: learner effort is reflected in status and achievement cues.
-5. Coherence: quizzes, readings, and podcasts feel like one learning journey.
+5. Coherence: quizzes, tekster, and podcasts feel like one learning journey.
 
 ## Experience principles
 
@@ -172,14 +172,14 @@ Rules:
 - Rail connector remains muted by default and accentuates completed context.
 - Rail rows render both numbered marker and lecture copy (short week label + lecture title).
 - Active lecture card must always render three sibling sections in this order:
-  - `Readings`
+  - `Tekster`
   - `Podcasts`
   - `Quiz for alle kilder`
 - Section content boundaries are strict:
   - Quiz chips and quiz status belong only in `Quiz for alle kilder`.
   - Episode metadata belongs only in `Podcasts`.
-  - Text/article cards and reading progress belong only in `Readings`.
-- Reading cards always show L/M/S difficulty indicators in subject detail.
+  - Text/article cards and tekst progress belong only in `Tekster`.
+- Tekst cards always show L/M/S difficulty indicators in subject detail.
 - Empty state messaging is shown per section; a populated section never hides the other two.
 
 ### Data table pattern
@@ -220,7 +220,7 @@ Behavior:
 - No KPI strip or global expand/collapse controls on this page.
 - Rail marker click updates active lecture via `?lecture=<lecture_key>`.
 - Active lecture card uses fixed section order:
-  - `Readings` (text/article cards with always-visible L/M/S indicators + tracking controls)
+  - `Tekster` (text/article cards with always-visible L/M/S indicators + tracking controls)
   - `Podcasts` (flat episode list with discrete tracking controls)
   - `Quiz for alle kilder` (lecture quiz level chips in order `Let`, `Mellem`, `Svær`)
 
@@ -268,6 +268,6 @@ Before shipping UI changes:
 3. Preserve action hierarchy (primary vs secondary vs neutral).
 4. Verify keyboard focus, tap targets, and color contrast.
 5. Verify mobile layouts at `375px` and tablet/desktop breakpoints.
-6. Verify lecture detail partitioning (`Quizzer`, `Podcasts`, `Readings`) and per-section empty states.
+6. Verify lecture detail partitioning (`Quizzer`, `Podcasts`, `Tekster`) and per-section empty states.
 7. Include a `Paper Studio compliance` note in the PR.
 8. Update this document when introducing a new recurring UI pattern.

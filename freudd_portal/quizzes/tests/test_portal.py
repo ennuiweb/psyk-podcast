@@ -1623,7 +1623,7 @@ class QuizPortalTests(TestCase):
             },
         )
         self.assertContains(response, expected_url)
-        self.assertContains(response, "åbn reading")
+        self.assertContains(response, "åbn tekst")
 
     def test_subject_open_reading_requires_login(self) -> None:
         user = self._create_user()
@@ -2063,7 +2063,7 @@ class QuizPortalTests(TestCase):
 
         response = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
         self.assertEqual(response.status_code, 200)
-        self.assertNotContains(response, "Reading-nøglen kunne ikke indlæses.")
+        self.assertNotContains(response, "Tekst-nøglen kunne ikke indlæses.")
         self.assertContains(response, "Uge 1, forelæsning 1")
 
     def test_subject_detail_shows_error_when_both_master_and_fallback_missing(self) -> None:
@@ -2076,7 +2076,7 @@ class QuizPortalTests(TestCase):
 
         response = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "Reading-nøglen kunne ikke indlæses.")
+        self.assertContains(response, "Tekst-nøglen kunne ikke indlæses.")
         self.assertContains(response, "Ingen læringssti endnu for dette fag.")
 
     def test_state_post_requires_csrf(self) -> None:

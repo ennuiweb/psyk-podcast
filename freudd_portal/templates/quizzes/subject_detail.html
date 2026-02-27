@@ -497,10 +497,13 @@
     transform: translate(-50%, -50%);
   }
 
-  .podcast-row.is-player-open .podcast-hover-actions {
+  .podcast-row.has-open-podcast.is-player-open .podcast-hover-actions,
+  .podcast-row.has-open-podcast.is-player-open:hover .podcast-hover-actions,
+  .podcast-row.has-open-podcast.is-player-open:focus-visible .podcast-hover-actions {
     opacity: 0;
     transform: translate(-50%, calc(-50% - 4px));
     pointer-events: none;
+    display: none;
   }
 
   .podcast-copy {

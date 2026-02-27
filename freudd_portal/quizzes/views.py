@@ -433,8 +433,9 @@ def _lecture_rail_copy(
     match = LECTURE_KEY_DISPLAY_RE.match(key_text)
     if match:
         week = int(match.group("week"))
-        prefix = f"Uge {week}"
-        if lecture_text:
+        lecture = int(match.group("lecture"))
+        prefix = f"Uge {week}, forelæsning {lecture}"
+        if lecture_text and lecture_text.casefold() != prefix.casefold():
             return f"{prefix}: {lecture_text}"
         return prefix
     return lecture_text

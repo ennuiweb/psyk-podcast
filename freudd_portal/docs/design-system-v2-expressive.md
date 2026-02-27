@@ -165,6 +165,7 @@ Use one orchestrated entrance per page, not many unrelated animations.
 
 - Keep lecture progression as a left rail with numbered markers and connector.
 - Active marker uses accent; non-active markers stay neutral with completed context on connector.
+- Timeline copy must show both week and lecture title, e.g. `Uge 1, forelæsning 1: Intro...`.
 - Right column renders a single active lecture card selected by URL query (`?lecture=<lecture_key>`).
 
 ### Lecture detail partitioning (required)

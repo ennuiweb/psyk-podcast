@@ -1368,7 +1368,7 @@ class QuizPortalTests(TestCase):
         self.assertContains(response, "reading-difficulties")
         self.assertContains(response, "Ikke startet endnu")
         self.assertContains(response, "Grundbog kapitel 01 - Introduktion til personlighedspsykologi")
-        self.assertContains(response, "Uge 1: Introforelaesning")
+        self.assertContains(response, "Uge 1, forelæsning 1: Introforelaesning")
         self.assertNotContains(response, "Mangler kilde")
         self.assertNotContains(response, "Koutsoumpis (2025)")
         self.assertNotContains(response, "Tilmeld fag")

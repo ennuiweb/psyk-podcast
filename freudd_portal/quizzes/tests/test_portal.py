@@ -2009,9 +2009,15 @@ class QuizPortalTests(TestCase):
         )
         self.assertContains(
             response,
-            '<a class="nav-action" href="/subjects/personlighedspsykologi">Personlighedspsykologi</a>',
+            '<a class="nav-action nav-action-subject" href="/subjects/personlighedspsykologi">Personlighedspsykologi</a>',
             html=True,
         )
+        self.assertContains(
+            response,
+            '<button class="nav-text-button" type="submit">Log ud</button>',
+            html=True,
+        )
+        self.assertNotContains(response, "Forbind Google")
 
     def test_topmenu_context_hides_stale_subject_enrollments(self) -> None:
         user = self._create_user()
@@ -2023,7 +2029,7 @@ class QuizPortalTests(TestCase):
         self.assertEqual(response.context["topmenu_enrolled_subjects"], tuple())
         self.assertNotContains(
             response,
-            '<a class="nav-action" href="/subjects/legacy-subject">legacy-subject</a>',
+            '<a class="nav-action nav-action-subject" href="/subjects/legacy-subject">legacy-subject</a>',
             html=True,
         )
 

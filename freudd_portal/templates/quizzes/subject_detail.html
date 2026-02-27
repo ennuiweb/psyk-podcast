@@ -595,6 +595,35 @@
     background: #eaf4ff;
   }
 
+  .reading-hover-label {
+    position: absolute;
+    top: var(--space-2);
+    right: var(--space-2);
+    z-index: 2;
+    pointer-events: none;
+    border-radius: var(--radius-pill);
+    border: 1px solid color-mix(in srgb, #4f8ddf 56%, transparent);
+    background: color-mix(in srgb, #4f8ddf 16%, #fff);
+    color: color-mix(in srgb, #2d6ec9 84%, #143c7a);
+    padding: 0.24rem 0.62rem;
+    font-family: var(--subject-font-ui);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    text-transform: lowercase;
+    opacity: 0;
+    transform: translateY(-4px);
+    transition:
+      opacity 160ms ease,
+      transform 160ms ease;
+  }
+
+  .reading-card.has-open-reading:hover .reading-hover-label,
+  .reading-card.has-open-reading:focus-visible .reading-hover-label {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
   .reading-card.is-active {
     border-color: color-mix(in srgb, var(--accent) 42%, transparent);
     box-shadow: inset 3px 0 0 color-mix(in srgb, var(--accent) 70%, transparent);
@@ -915,6 +944,9 @@
                 aria-label="åbn reading: {{ reading.reading_title }}"
                 {% endif %}
               >
+                {% if reading.open_url %}
+                <span class="reading-hover-label" aria-hidden="true">åben tekst</span>
+                {% endif %}
                 <div class="reading-top">
                   <div class="reading-main">
                     <div class="reading-title-row">

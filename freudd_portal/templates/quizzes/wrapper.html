@@ -422,7 +422,6 @@
     );
     const cooldownResetSeconds = 3600;
     const isAuthenticated = {{ user_is_authenticated|yesno:"true,false" }};
-    const localStateKey = "quiz-local-state:{{ quiz_id }}";
     const localCooldownKey = "quiz-local-cooldown:{{ quiz_id }}";
     const loginEndPrompt = document.getElementById("login-end-prompt");
 
@@ -511,25 +510,10 @@
       }
     }
 
-    function loadLocalState() {
-      try {
-        return parseStoredState(window.localStorage.getItem(localStateKey));
-      } catch (error) {
-        return null;
-      }
-    }
-
-    function saveLocalState(payload) {
-      try {
-        window.localStorage.setItem(localStateKey, JSON.stringify(payload));
-      } catch (error) {
-        // Local storage can fail in restricted browser modes.
-      }
-    }
-
     function clearLocalState() {
       try {
-        window.localStorage.removeItem(localStateKey);
+        // Backward compatibility cleanup for older clients that persisted partial quiz state.
+        window.localStorage.removeItem("quiz-local-state:{{ quiz_id }}");
       } catch (error) {
         // Ignore local storage failures.
       }
@@ -792,13 +776,34 @@
       });
     }
 
-    function answeredCount() {
-      const answered = Object.entries(state.userAnswers)
+    function answeredCountForState(statePayload) {
+      const userAnswers = statePayload?.userAnswers && typeof statePayload.userAnswers === "object"
+        ? statePayload.userAnswers
+        : {};
+      const timedOutIndices = Array.isArray(statePayload?.timedOutQuestionIndices)
+        ? statePayload.timedOutQuestionIndices
+        : [];
+      const answered = Object.entries(userAnswers)
         .filter(([, value]) => value !== null && value !== undefined)
         .map(([key]) => key);
-      const timedOut = (Array.isArray(state.timedOutQuestionIndices) ? state.timedOutQuestionIndices : [])
+      const timedOut = timedOutIndices
         .map((index) => String(index));
       return new Set([...answered, ...timedOut]).size;
+    }
+
+    function answeredCount() {
+      return answeredCountForState(state);
+    }
+
+    function isCompletedState(statePayload) {
+      if (!quiz || !Array.isArray(quiz.questions) || !quiz.questions.length) {
+        return false;
+      }
+      const view = String(statePayload?.currentView || "").trim().toLowerCase();
+      if (view !== "summary") {
+        return false;
+      }
+      return answeredCountForState(statePayload) >= quiz.questions.length;
     }
 
     function summaryStats() {
@@ -1174,9 +1179,6 @@
           );
           delete state.questionDeadlineEpochMs[String(state.currentQuestionIndex)];
           state.showHintForCurrent = false;
-          saveState().catch((error) => {
-            showError("Kunne ikke gemme state. Prøv igen.");
-          });
           render();
         });
         optionsNode.appendChild(button);
@@ -1257,7 +1259,9 @@
       showEndPromptIfNeeded();
     }
 
-    async function saveState() {
+    async function saveState(options) {
+      const settings = options && typeof options === "object" ? options : {};
+      const persistIncomplete = Boolean(settings.persistIncomplete);
       const payload = {
         userAnswers: state.userAnswers,
         currentQuestionIndex: state.currentQuestionIndex,
@@ -1267,8 +1271,6 @@
         questionDeadlineEpochMs: state.questionDeadlineEpochMs,
         questionResponseDurationMs: state.questionResponseDurationMs,
       };
-
-      saveLocalState(payload);
 
       const accountPayload = {
         userAnswers: payload.userAnswers,
@@ -1282,6 +1284,10 @@
       if (!isAuthenticated) {
         cooldownState = activeCooldownState();
         return { ok: true, cooldown: cooldownState };
+      }
+
+      if (!persistIncomplete && !isCompletedState(payload)) {
+        return { ok: true, skipped: true, cooldown: cooldownState };
       }
 
       const response = await fetch(stateApiUrl, {
@@ -1320,29 +1326,25 @@
         return;
       }
 
-      const localState = loadLocalState();
-      const normalizedLocalState = normalizeStatePayload(localState);
+      clearLocalState();
       try {
         const accountState = await fetchAccountState();
         cooldownState = normalizeCooldownPayload(accountState?._meta?.cooldown);
-        state = normalizeStatePayload(accountState || localState);
-        if (accountState && normalizedLocalState.questionResponseDurationMs) {
-          state.questionResponseDurationMs = normalizedLocalState.questionResponseDurationMs;
+        const normalizedAccountState = normalizeStatePayload(accountState);
+        if (isCompletedState(normalizedAccountState)) {
+          state = normalizedAccountState;
+        } else {
+          state = normalizeStatePayload(null);
         }
         render();
-
-        if (isAuthenticated && localState && !accountState) {
-          await saveState();
-          clearLocalState();
-        }
       } catch (error) {
-        state = normalizeStatePayload(localState);
+        state = normalizeStatePayload(null);
         if (!isAuthenticated) {
           cooldownState = refreshAnonymousCooldown();
         }
         render();
         if (isAuthenticated) {
-          showError("Kunne ikke hente kontostate. Viser lokal state i stedet.");
+          showError("Kunne ikke hente kontostate. Starter quizzen fra begyndelsen.");
         }
       }
       if (!isAuthenticated && !cooldownState) {
@@ -1365,13 +1367,10 @@
       }
       state.showHintForCurrent = false;
       ensureDeadlineForQuestion(state.currentQuestionIndex);
-      saveState().catch(() => {
-        showError("Kunne ikke gemme state. Prøv igen.");
-      });
       render();
     });
 
-    nextBtnNode.addEventListener("click", function () {
+    nextBtnNode.addEventListener("click", async function () {
       if (state.currentQuestionIndex >= quiz.questions.length - 1) {
         state.currentView = "summary";
         if (!isAuthenticated) {
@@ -1382,10 +1381,14 @@
         ensureDeadlineForQuestion(state.currentQuestionIndex);
       }
       state.showHintForCurrent = false;
-      saveState().catch(() => {
-        showError("Kunne ikke gemme state. Prøv igen.");
-      });
       render();
+      if (isCompletedState(state)) {
+        try {
+          await saveState();
+        } catch (error) {
+          showError("Kunne ikke gemme afsluttet quiz. Prøv igen.");
+        }
+      }
     });
 
     reviewBtnNode.addEventListener("click", function () {
@@ -1393,9 +1396,6 @@
       state.currentQuestionIndex = 0;
       state.showHintForCurrent = false;
       ensureDeadlineForQuestion(state.currentQuestionIndex);
-      saveState().catch(() => {
-        showError("Kunne ikke gemme state. Prøv igen.");
-      });
       render();
     });
 
@@ -1412,7 +1412,7 @@
       ensureDeadlineForQuestion(state.currentQuestionIndex);
 
       try {
-        const result = await saveState();
+        const result = await saveState({ persistIncomplete: isAuthenticated });
         if (result && result.ok === false) {
           state = previousState;
           const blocked = activeCooldownState();
@@ -1427,6 +1427,10 @@
         showError("Kunne ikke nulstille state. Prøv igen.");
       }
       render();
+    });
+
+    window.addEventListener("pagehide", function () {
+      clearLocalState();
     });
 
     init();

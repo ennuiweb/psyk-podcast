@@ -448,6 +448,11 @@ class QuizPortalTests(TestCase):
         self.assertContains(response, f"{reverse('login')}?{urlencode({'next': quiz_url})}")
         self.assertContains(response, f"{reverse('signup')}?{urlencode({'next': quiz_url})}")
 
+    def test_quiz_wrapper_does_not_persist_partial_progress_in_local_storage(self) -> None:
+        response = self.client.get(reverse("quiz-wrapper", kwargs={"quiz_id": self.quiz_id}))
+        self.assertEqual(response.status_code, 200)
+        self.assertNotContains(response, 'setItem("quiz-local-state:')
+
     def test_quiz_wrapper_formats_complex_episode_title(self) -> None:
         self._write_links_file(
             {

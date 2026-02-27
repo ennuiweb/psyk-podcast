@@ -7,6 +7,7 @@ import argparse
 import hashlib
 import json
 import re
+import shlex
 import shutil
 import subprocess
 import tempfile
@@ -297,16 +298,43 @@ def sync_to_droplet(
         ssh_cmd.extend(
             [
                 f"{user}@{host}",
-                f"mkdir -p {remote_clean!s}",
+                f"mkdir -p {shlex.quote(remote_clean)}",
             ]
         )
         _run(ssh_cmd, dry_run=dry_run)
 
-        rsync_cmd = ["rsync", "-av", "--delete"]
+        # Avoid carrying restrictive local ownership/mode bits to the server.
+        rsync_cmd = [
+            "rsync",
+            "-av",
+            "--delete",
+            "--no-owner",
+            "--no-group",
+            "--chmod=Du=rwx,Dgo=rx,Fu=rw,Fgo=r",
+        ]
         if ssh_key:
             rsync_cmd.extend(["-e", f"ssh -i {ssh_key}"])
         rsync_cmd.extend([f"{stage_root}/", f"{user}@{host}:{remote_clean}/"])
         _run(rsync_cmd, dry_run=dry_run)
+
+        # Ensure web-serving user can always traverse/read synced files.
+        perm_cmd = [
+            "ssh",
+        ]
+        if ssh_key:
+            perm_cmd.extend(["-i", ssh_key])
+        remote_quoted = shlex.quote(remote_clean)
+        perm_cmd.extend(
+            [
+                f"{user}@{host}",
+                (
+                    f"chmod 755 {remote_quoted} && "
+                    f"find {remote_quoted} -type d -exec chmod 755 {{}} + && "
+                    f"find {remote_quoted} -type f -exec chmod 644 {{}} +"
+                ),
+            ]
+        )
+        _run(perm_cmd, dry_run=dry_run)
 
 
 def main() -> int:

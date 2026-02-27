@@ -468,6 +468,10 @@
     pointer-events: none;
   }
 
+  .podcast-hover-actions[hidden] {
+    display: none !important;
+  }
+
   .podcast-hover-action {
     border-radius: var(--radius-pill);
     border: 1px solid color-mix(in srgb, #1db954 62%, transparent);
@@ -1443,6 +1447,10 @@
       const row = container.closest(".podcast-row");
       if (row) {
         row.classList.remove("is-player-open");
+        const hoverActions = row.querySelector(".podcast-hover-actions");
+        if (hoverActions instanceof HTMLElement) {
+          hoverActions.removeAttribute("hidden");
+        }
       }
     };
 
@@ -1455,6 +1463,7 @@
       const playerContainer = row ? row.querySelector("[data-spotify-player]") : null;
       const playerFrame = playerContainer ? playerContainer.querySelector("[data-spotify-player-frame]") : null;
       const playerLabel = playerContainer ? playerContainer.querySelector("[data-spotify-player-label]") : null;
+      const hoverActions = row ? row.querySelector(".podcast-hover-actions") : null;
       if (!(playerContainer && playerFrame && playerLabel)) {
         return;
       }
@@ -1475,6 +1484,9 @@
       playerContainer.removeAttribute("hidden");
       if (row) {
         row.classList.add("is-player-open");
+      }
+      if (hoverActions instanceof HTMLElement) {
+        hoverActions.setAttribute("hidden", "");
       }
       setPressedState(button);
     };

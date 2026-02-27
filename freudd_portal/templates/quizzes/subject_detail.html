@@ -576,6 +576,25 @@
     overflow: hidden;
   }
 
+  .reading-card.has-open-reading {
+    cursor: pointer;
+    transition:
+      background 160ms ease,
+      border-color 160ms ease,
+      box-shadow 160ms ease;
+  }
+
+  .reading-card.has-open-reading:hover {
+    background: #eaf4ff;
+    border-color: color-mix(in srgb, #4f8ddf 40%, var(--border));
+  }
+
+  .reading-card.has-open-reading:focus-visible {
+    outline: 2px solid rgba(53, 117, 206, 0.5);
+    outline-offset: 2px;
+    background: #eaf4ff;
+  }
+
   .reading-card.is-active {
     border-color: color-mix(in srgb, var(--accent) 42%, transparent);
     box-shadow: inset 3px 0 0 color-mix(in srgb, var(--accent) 70%, transparent);
@@ -647,65 +666,6 @@
     gap: var(--space-1);
     flex-wrap: wrap;
     justify-content: flex-end;
-  }
-
-  .reading-open-overlay {
-    position: absolute;
-    inset: 0;
-    z-index: 4;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    pointer-events: none;
-    text-decoration: none;
-    background: rgba(37, 98, 184, 0.78);
-    transition: opacity 160ms ease;
-  }
-
-  .reading-open-overlay-label {
-    border-radius: var(--radius-pill);
-    border: 1px solid rgba(255, 255, 255, 0.72);
-    background: rgba(21, 64, 127, 0.84);
-    padding: 0.42rem 0.9rem;
-    color: #fff;
-    font-family: var(--subject-font-ui);
-    font-size: 0.82rem;
-    font-weight: 700;
-    letter-spacing: 0.01em;
-    text-transform: lowercase;
-    transform: translateY(6px);
-    transition: transform 160ms ease;
-  }
-
-  .reading-card.has-open-reading:hover .reading-open-overlay,
-  .reading-open-overlay:focus-visible {
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  .reading-card.has-open-reading:hover .reading-open-overlay-label,
-  .reading-open-overlay:focus-visible .reading-open-overlay-label {
-    transform: translateY(0);
-  }
-
-  @media (hover: none), (pointer: coarse) {
-    .reading-open-overlay {
-      top: var(--space-3);
-      right: var(--space-3);
-      bottom: auto;
-      left: auto;
-      opacity: 1;
-      pointer-events: auto;
-      background: transparent;
-    }
-
-    .reading-open-overlay-label {
-      border-color: var(--border);
-      background: var(--surface-soft);
-      color: var(--text-subtle-2);
-      transform: none;
-    }
   }
 
   .reading-difficulties {
@@ -946,18 +906,15 @@
             {% if active_lecture.readings %}
             <ul class="reading-list">
               {% for reading in active_lecture.readings %}
-              <li class="reading-card {% if reading.open_url %}has-open-reading{% endif %} {% if reading.is_missing %}is-missing{% endif %} {% if reading.status == 'active' %}is-active{% elif reading.status == 'completed' %}is-completed{% endif %}">
+              <li
+                class="reading-card {% if reading.open_url %}has-open-reading{% endif %} {% if reading.is_missing %}is-missing{% endif %} {% if reading.status == 'active' %}is-active{% elif reading.status == 'completed' %}is-completed{% endif %}"
                 {% if reading.open_url %}
-                <a
-                  class="reading-open-overlay"
-                  href="{{ reading.open_url }}"
-                  target="_blank"
-                  rel="noopener"
-                  aria-label="åbn reading: {{ reading.reading_title }}"
-                >
-                  <span class="reading-open-overlay-label">åbn reading</span>
-                </a>
+                data-open-url="{{ reading.open_url }}"
+                role="link"
+                tabindex="0"
+                aria-label="åbn reading: {{ reading.reading_title }}"
                 {% endif %}
+              >
                 <div class="reading-top">
                   <div class="reading-main">
                     <div class="reading-title-row">
@@ -1219,6 +1176,40 @@
 
     playButtons.forEach((button) => {
       button.addEventListener("click", () => openPlayer(button));
+    });
+  })();
+
+  (() => {
+    const cards = Array.from(document.querySelectorAll(".reading-card[data-open-url]"));
+    if (!cards.length) {
+      return;
+    }
+
+    const interactiveSelector = "a, button, input, select, textarea, label, form";
+    const openReading = (card) => {
+      const url = String(card.getAttribute("data-open-url") || "").trim();
+      if (!url) {
+        return;
+      }
+      window.open(url, "_blank", "noopener");
+    };
+
+    cards.forEach((card) => {
+      card.addEventListener("click", (event) => {
+        const target = event.target;
+        if (target instanceof Element && target.closest(interactiveSelector)) {
+          return;
+        }
+        openReading(card);
+      });
+
+      card.addEventListener("keydown", (event) => {
+        if (event.key !== "Enter" && event.key !== " ") {
+          return;
+        }
+        event.preventDefault();
+        openReading(card);
+      });
     });
   })();
 </script>

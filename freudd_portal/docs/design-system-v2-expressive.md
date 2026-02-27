@@ -196,6 +196,18 @@ Use one orchestrated entrance per page, not many unrelated animations.
   - `Quiz for alle kilder` (lecture quiz chips by level).
 - Quiz chips use stronger level distinction: `Let` calm, `Mellem` vivid, `Svær` warm/high-attention.
 
+#### Responsive contract (required)
+
+- Desktop (`>1100px`): two-column lecture rail + active lecture card.
+- Tablet (`901-1100px`): still two-column, with compressed rail width and wrapped-safe header navigation.
+- Tablet/mobile stack (`<=900px`): lecture rail and active lecture card stack in one column.
+- Mobile narrow (`<=520px`): lecture-level quiz band collapses to a single-column list.
+
+Guardrails:
+- No horizontal page scroll on subject detail for iPhone 11 Pro Max (`414x896`) and iPad portrait (`768x1024`).
+- Active lecture title and rail labels must support long Danish compounds (`overflow-wrap:anywhere`, `hyphens:auto`).
+- On coarse pointers, primary interaction controls must be at least `44x44`.
+
 ### `/q/<quiz_id>.html`
 
 - Quiz header becomes an "exam card" with module label and large title.

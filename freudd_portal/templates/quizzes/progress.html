@@ -673,7 +673,7 @@
             <th>Quiz</th>
             <th>Sværhedsgrad</th>
             <th>Status</th>
-            <th>Svar</th>
+            <th>Rigtige svar</th>
             <th>Opdateret</th>
           </tr>
         </thead>
@@ -708,11 +708,11 @@
             <td>
               <div class="answers-cell">
                 {% if row.question_count > 0 %}
-                <progress class="answers-track" value="{{ row.answers_count }}" max="{{ row.question_count }}" aria-label="{{ row.answers_count }} af {{ row.question_count }} besvaret">
+                <progress class="answers-track" value="{{ row.answers_count }}" max="{{ row.question_count }}" aria-label="{{ row.answers_count }} af {{ row.question_count }} rigtige svar">
                   {{ row.answers_count }} / {{ row.question_count }}
                 </progress>
                 {% else %}
-                <progress class="answers-track" value="0" max="1" aria-label="0 af 0 besvaret">
+                <progress class="answers-track" value="0" max="1" aria-label="0 af 0 rigtige svar">
                   0 / 0
                 </progress>
                 {% endif %}

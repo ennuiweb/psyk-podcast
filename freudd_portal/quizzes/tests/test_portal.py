@@ -794,6 +794,8 @@ class QuizPortalTests(TestCase):
             answers_count=2,
             question_count=2,
             last_view="summary",
+            completed_at=timezone.now(),
+            last_attempt_completed_at=timezone.now(),
         )
 
         response = self.client.get(reverse("progress"))
@@ -802,6 +804,32 @@ class QuizPortalTests(TestCase):
         self.assertContains(response, "Episode")
         self.assertContains(response, "Mellem · 2 spørgsmål")
         self.assertContains(response, "Senest åbnet fag")
+
+    def test_progress_page_quiz_history_shows_completed_status_and_correct_answers(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+        completed_at = timezone.now() - timedelta(minutes=20)
+
+        QuizProgress.objects.create(
+            user=user,
+            quiz_id=self.quiz_id,
+            status=QuizProgress.Status.IN_PROGRESS,
+            state_json={},
+            answers_count=1,
+            question_count=10,
+            last_view="question",
+            completed_at=completed_at,
+            last_attempt_completed_at=completed_at,
+            leaderboard_best_correct_answers=5,
+            leaderboard_best_question_count=10,
+        )
+
+        response = self.client.get(reverse("progress"))
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Rigtige svar")
+        self.assertContains(response, "Fuldført")
+        self.assertNotContains(response, "I gang")
+        self.assertContains(response, "5 / 10")
 
     def test_load_quiz_label_mapping_reads_subject_slug(self) -> None:
         labels = load_quiz_label_mapping()

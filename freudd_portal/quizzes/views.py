@@ -1299,13 +1299,26 @@ def progress_view(request: HttpRequest) -> HttpResponse:
         )
 
     label_mapping = load_quiz_label_mapping()
-    progress_rows = QuizProgress.objects.filter(user=request.user).order_by("-updated_at")
+    progress_rows = (
+        QuizProgress.objects.filter(user=request.user, completed_at__isnull=False)
+        .order_by("-last_attempt_completed_at", "-completed_at", "-updated_at")
+    )
 
     rows: list[dict[str, object]] = []
     for row in progress_rows:
         label = label_mapping.get(row.quiz_id)
         episode_title = label.episode_title if label else row.quiz_id
         quiz_display = _quiz_display_context(episode_title=episode_title, quiz_id=row.quiz_id)
+        best_question_count = int(row.leaderboard_best_question_count or 0)
+        best_correct_answers = int(row.leaderboard_best_correct_answers or 0)
+        if best_question_count > 0:
+            score_question_count = best_question_count
+            score_correct_answers = max(0, min(best_correct_answers, best_question_count))
+        else:
+            score_question_count = max(0, int(row.question_count or 0))
+            score_correct_answers = max(0, int(row.answers_count or 0))
+        status = QuizProgress.Status.COMPLETED
+        updated_at = row.last_attempt_completed_at or row.completed_at or row.updated_at
         rows.append(
             {
                 "quiz_id": row.quiz_id,
@@ -1313,11 +1326,11 @@ def progress_view(request: HttpRequest) -> HttpResponse:
                 "module_label": quiz_display.get("module_label") or "",
                 "meta_chips": list(quiz_display.get("meta_chips") or []),
                 "difficulty_label": _difficulty_label(label.difficulty if label else "unknown"),
-                "status": row.status,
-                "status_label": row.get_status_display(),
-                "answers_count": row.answers_count,
-                "question_count": row.question_count,
-                "updated_at": row.updated_at,
+                "status": status,
+                "status_label": status.label,
+                "answers_count": score_correct_answers,
+                "question_count": score_question_count,
+                "updated_at": updated_at,
                 "completed_at": row.completed_at,
                 "quiz_url": reverse("quiz-wrapper", kwargs={"quiz_id": row.quiz_id}),
             }

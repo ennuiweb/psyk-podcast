@@ -128,8 +128,18 @@
     color: var(--text-subtle-2);
   }
 
+  .lecture-rail-item:not(.is-active):not(.is-completed):hover .lecture-rail-link {
+    border-color: color-mix(in srgb, var(--accent) 26%, var(--border));
+    background: color-mix(in srgb, var(--accent) 12%, var(--surface-soft));
+    color: var(--text-subtle-2);
+  }
+
   .lecture-rail-item.is-active .lecture-rail-link:hover {
     background: color-mix(in srgb, var(--accent) 44%, var(--surface));
+  }
+
+  .lecture-rail-item:not(.is-active):hover .lecture-rail-copy {
+    color: var(--text-subtle-2);
   }
 
   .lecture-rail-item.is-active .lecture-rail-link {
@@ -306,6 +316,7 @@
     gap: var(--space-2);
     text-align: center;
     border-right: 1px solid color-mix(in srgb, var(--border) 66%, transparent);
+    transition: background 160ms ease;
   }
 
   .quiz-slot:last-child {
@@ -322,6 +333,19 @@
 
   .quiz-slot.is-hard {
     background: #f5d8df;
+  }
+
+  .quiz-slot.has-action:hover {
+    filter: brightness(0.95);
+  }
+
+  .quiz-slot.has-action:hover .quiz-slot-label {
+    color: color-mix(in srgb, var(--text-strong) 88%, #000);
+  }
+
+  .quiz-slot.has-action:hover .quiz-slot-chip {
+    background: color-mix(in srgb, var(--surface-strong) 74%, var(--surface-soft));
+    color: color-mix(in srgb, var(--text-strong) 88%, #000);
   }
 
   .quiz-slot-label {
@@ -1252,7 +1276,7 @@
 
             <div class="quiz-band">
               {% for slot in active_lecture.quiz_difficulty_slots %}
-              <div class="quiz-slot is-{{ slot.difficulty }}">
+              <div class="quiz-slot is-{{ slot.difficulty }} {% if slot.quiz_url %}has-action{% endif %}">
                 <p class="quiz-slot-label">{{ slot.label }}</p>
                 {% if slot.quiz_url %}
                 <a class="quiz-slot-chip" href="{{ slot.quiz_url }}">{{ slot.chip }}</a>

@@ -26,13 +26,6 @@
 
   .subject-mobile-brand {
     margin: 0;
-    color: var(--text-strong);
-    font-family: var(--subject-font-editorial);
-    font-size: clamp(2rem, 4.8vw, 2.5rem);
-    font-weight: 700;
-    text-decoration: none;
-    letter-spacing: -0.02em;
-    text-transform: lowercase;
   }
 
   .subject-mobile-logout {
@@ -1580,7 +1573,7 @@
 </style>
 
 <div class="subject-mobile-topbar">
-  <a class="subject-mobile-brand" href="{% url 'progress' %}">freudd</a>
+  <a class="brand subject-mobile-brand" href="{% url 'progress' %}">freudd</a>
   {% if request.user.is_authenticated %}
   <form method="post" action="{% url 'logout' %}">
     {% csrf_token %}

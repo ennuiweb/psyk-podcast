@@ -40,7 +40,7 @@ Sources used for this mapping:
 - Phan et al. (2024) → Phan et al. (2024).pdf
 
 **W02L1 Personality traits, personality states, and personality dimensions (Forelæsning 3, 2026-02-09)**
-- Exercise text → W02L1 X Zettler et al. (2020).pdf
+- X Zettler et al. (2020) → W02L1 X Zettler et al. (2020).pdf
 - Columbus & Strandsbjerg (2025) → Columbus & Strandsbjerg (2025).pdf
 
 **W02L2 Person-situation interplay - stability and change of individual differences (Forelæsning 4, 2026-02-10)**
@@ -66,7 +66,7 @@ Sources used for this mapping:
 - Laplanche (1970) → Laplanche (1970).pdf
 
 **W05L1 Empiri og metode i psykoanalysen (Forelæsning 9, 2026-03-02)**
-- Exercise text → W05L1 X Freud, S. (1984/1905). Brudstykke af en hysteri-analyse.pdf
+- X Freud, S. (1984/1905). Brudstykke af en hysteri-analyse → W05L1 X Freud, S. (1984/1905). Brudstykke af en hysteri-analyse.pdf
 - MISSING: W05L1 X Gammelgaard (2010)
 - Ricoeur (1981) → Ricoeur (1981).pdf
 
@@ -76,8 +76,8 @@ Sources used for this mapping:
 - MISSING: Zeuthen & Køppe (2014)
 
 **W06L1 Fænomenologi (Forelæsning 11, 2026-03-09)**
-- Exercise text → W06L1 X Spinelli (2005).pdf
-- Exercise text → W06L1 X Moeskær Hansen & Roald (2022) .pdf
+- X Spinelli (2005) → W06L1 X Spinelli (2005).pdf
+- X Moeskær Hansen & Roald (2022) → W06L1 X Moeskær Hansen & Roald (2022) .pdf
 - Grundbog kapitel 04 - Fænomenologisk personlighedspsykologi → Grundbog kapitel 04 - Fænomenologisk personlighedspsykologi.pdf (brief + full)
 - MISSING: Funch & Roald (2014) chapter
 
@@ -103,7 +103,7 @@ Sources used for this mapping:
 - Tolman (2009) → Tolman (2009).pdf
 
 **W09L1 Kritisk psykologi (Forelæsning 17, 2026-04-07)**
-- Exercise text → W09L1 X Mørch & Hansen (2015).pdf
+- X Mørch & Hansen (2015) → W09L1 X Mørch & Hansen (2015).pdf
 - Dreier (1999) → Dreier (1999).pdf
 - Holzkamp (2013) → Holzkamp (2013).pdf
 - Grundbog kapitel 10 - Kritisk psykologi → Grundbog kapitel 10 - Kritisk psykologi.pdf (brief + full)
@@ -114,7 +114,7 @@ Sources used for this mapping:
 - Mitchell (2015) → Mitchell (2015).pdf
 
 **W10L2 Sociokulturelle teorier - socialkonstruktionisme og poststrukturalisme (Forelæsning 19, 2026-04-14)**
-- Exercise text → W10L2 X Davies (1990).pdf
+- X Davies (1990) → W10L2 X Davies (1990).pdf
 - Foucault (1997) → Foucault (1997) .pdf
 
 **W11L1 Poststrukturalisme, diskursiv psykologi og feministisk teori (Forelæsning 20, 2026-04-20)**
@@ -124,7 +124,7 @@ Sources used for this mapping:
 - MISSING: Staunæs & Juelskjær (2014)
 
 **W11L2 Narrativitet, kultur og mening (Forelæsning 21, 2026-04-21)**
-- Exercise text → W11L2 X Raggatt (2002).pdf
+- X Raggatt (2002) → W11L2 X Raggatt (2002).pdf
 - Bank (2014) → Bank, M. (2014). Narrative psykologier. I Køppe, S. & Dammeyer, J. (Red.).pdf
 - Bruner (1999) → Bruner (1999) .pdf
 - McAdams & Pals (2006) → McAdams & Pals (2006) .pdf

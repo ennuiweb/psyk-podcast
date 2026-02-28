@@ -429,6 +429,8 @@ Default reading sync behavior:
 
 Reading key sync (OneDrive -> repo mirror used by feed config):
 ```bash
+python3 scripts/normalize_personlighedspsykologi_exercise_titles.py
+python3 scripts/normalize_personlighedspsykologi_exercise_titles.py --apply
 python3 scripts/sync_personlighedspsykologi_reading_file_key.py
 python3 scripts/sync_personlighedspsykologi_reading_file_key.py --apply
 python3 scripts/sync_personlighedspsykologi_reading_file_key.py --bootstrap-source-from-repo --apply

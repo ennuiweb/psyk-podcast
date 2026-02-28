@@ -1360,12 +1360,12 @@ def leaderboard_profile_view(request: HttpRequest) -> HttpResponse:
             is_public=is_public,
         )
     except ValidationError as exc:
-        messages.error(request, "; ".join(exc.messages) if exc.messages else "Kunne ikke opdatere freudd quiz cup-profil.")
+        messages.error(request, "; ".join(exc.messages) if exc.messages else "Kunne ikke opdatere quizliga-profil.")
     else:
         if is_public:
-            messages.success(request, "Din freudd quiz cup-profil er nu offentlig.")
+            messages.success(request, "Din quizliga-profil er nu offentlig.")
         else:
-            messages.info(request, "Din freudd quiz cup-profil er nu privat.")
+            messages.info(request, "Din quizliga-profil er nu privat.")
 
     return redirect(
         _safe_next_redirect(request)

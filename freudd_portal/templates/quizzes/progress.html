@@ -533,9 +533,9 @@
     {% endif %}
   </section>
 
-  <section class="dashboard-section" id="freudd-quiz-cup-indstillinger">
+  <section class="dashboard-section" id="quizliga-indstillinger">
     <div class="section-head">
-      <h2 class="section-title">Offentlig freudd quiz cup</h2>
+      <h2 class="section-title">Offentlig quizliga</h2>
       <p class="section-subtitle">Kun alias, placering og gennemførte quizzer vises offentligt.</p>
     </div>
     <p class="leaderboard-season-text">Aktiv sæson: {{ active_season.label }}</p>
@@ -552,7 +552,7 @@
           readonly
         />
         <p class="leaderboard-alias-note">Alias er låst for at undgå utilsigtede ændringer.</p>
-        <a class="subject-toggle-button" href="{% url 'progress' %}?edit_alias=1#freudd-quiz-cup-indstillinger">Ændr alias</a>
+        <a class="subject-toggle-button" href="{% url 'progress' %}?edit_alias=1#quizliga-indstillinger">Ændr alias</a>
       </div>
       {% else %}
       <input
@@ -565,7 +565,7 @@
       />
       <input type="hidden" name="allow_alias_change" value="1" />
       {% if leaderboard_profile.public_alias %}
-      <a class="subject-toggle-button" href="{% url 'progress' %}#freudd-quiz-cup-indstillinger">Annuller alias-ændring</a>
+      <a class="subject-toggle-button" href="{% url 'progress' %}#quizliga-indstillinger">Annuller alias-ændring</a>
       {% endif %}
       {% endif %}
       <div class="leaderboard-profile-controls">
@@ -573,7 +573,7 @@
           <input type="checkbox" name="is_public" value="1" {% if leaderboard_profile.is_public %}checked{% endif %} />
           Deltag offentligt
         </label>
-        <button class="subject-toggle-button" type="submit">Gem freudd quiz cup-indstillinger</button>
+        <button class="subject-toggle-button" type="submit">Gem quizliga-indstillinger</button>
       </div>
     </form>
 
@@ -595,7 +595,7 @@
         <p class="empty-copy">Ingen offentlige deltagere endnu.</p>
         {% endif %}
         <div class="subject-actions">
-          <a class="subject-open-link" href="{{ item.leaderboard_url }}">Se fuld freudd quiz cup</a>
+          <a class="subject-open-link" href="{{ item.leaderboard_url }}">Se fuld quizliga</a>
         </div>
       </article>
       {% endfor %}

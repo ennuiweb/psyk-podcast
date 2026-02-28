@@ -897,7 +897,7 @@ class QuizPortalTests(TestCase):
         response = self.client.get(reverse("progress"))
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Personlig tracking")
-        self.assertContains(response, "Offentlig freudd quiz cup")
+        self.assertContains(response, "Offentlig quizliga")
         self.assertContains(response, reverse("leaderboard-profile"))
 
     def test_progress_page_moves_enrollment_controls_to_bottom_module(self) -> None:
@@ -924,7 +924,7 @@ class QuizPortalTests(TestCase):
         self.assertGreaterEqual(enroll_start, 0)
         self.assertGreater(enroll_start, history_start)
 
-    def test_progress_page_locks_existing_freudd_quiz_cup_alias_by_default(self) -> None:
+    def test_progress_page_locks_existing_quizliga_alias_by_default(self) -> None:
         user = self._create_user()
         self.client.force_login(user)
         UserLeaderboardProfile.objects.create(
@@ -950,9 +950,9 @@ class QuizPortalTests(TestCase):
             reverse("leaderboard-subject", kwargs={"subject_slug": "personlighedspsykologi"})
         )
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "freudd quiz cup")
+        self.assertContains(response, "quizliga")
 
-    def test_base_nav_contains_freudd_quiz_cup_link(self) -> None:
+    def test_base_nav_contains_quizliga_link(self) -> None:
         response = self.client.get(reverse("login"))
         self.assertEqual(response.status_code, 200)
         self.assertContains(

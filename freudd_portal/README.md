@@ -31,12 +31,12 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Subject detail includes inline Spotify playback via embedded episode player plus the external Spotify link for each visible podcast row.
 - Completion rule: `currentView == "summary"` and `answers_count == question_count`; timed-out questions count as answered/wrong.
 - Gamification core is quiz-driven and always available for authenticated users (`/progress`, `/api/gamification/me`).
-- `/progress` is split in two tracks: private personal tracking and public quizliga preview.
+- `/progress` is split in two tracks: private personal tracking and public freudd quiz cup preview.
 - Private personal tracking is manual for tekster/podcasts (`mark/unmark`) and keeps quiz completion as-is from `QuizProgress`.
-- Public quizliga is opt-in and alias-based; public view shows `alias + rank + score point + quiz count`.
-- Quizliga score per quiz is based on correctness plus speed bonus (`score = correct*100 + speed_bonus`), with correctness weighted highest.
-- Quizliga tie-break is `correct_answers`, then earliest `reached_at`, then alias alphabetic.
-- Quizliga seasons reset every half year in UTC: `H1 = [Jan 1, Jul 1)`, `H2 = [Jul 1, Jan 1 next year)`.
+- Public freudd quiz cup is opt-in and alias-based; public view shows `alias + rank + score point + quiz count`.
+- freudd quiz cup score per quiz is based on correctness plus speed bonus (`score = correct*100 + speed_bonus`), with correctness weighted highest.
+- freudd quiz cup tie-break is `correct_answers`, then earliest `reached_at`, then alias alphabetic.
+- freudd quiz cup seasons reset every half year in UTC: `H1 = [Jan 1, Jul 1)`, `H2 = [Jul 1, Jan 1 next year)`.
 - Learning path on subject pages (`/subjects/<subject_slug>`) is lecture-first with nested tekststatus (`active|completed|no_quiz`) and quiz/podcast navigation.
 - Subject detail UI is mobile-first and uses a left lecture rail + single active lecture card (no multi-panel accordion).
 - Subject detail removes KPI strip and global `Udvid alle`/`Luk alle`; lecture switching is via rail links (`?lecture=<lecture_key>`).
@@ -104,7 +104,7 @@ Leaderboard alias UX rule: if a user already has an alias, it is shown locked on
 - `UserInterfacePreference`: legacy per-user interface settings (`design_system`) kept for backward compatibility.
 - `UserReadingMark`: per-user private tekst tracking marks (`mark/unmark`) on subject detail.
 - `UserPodcastMark`: per-user private podcast tracking marks (`mark/unmark`) on subject detail.
-- `UserLeaderboardProfile`: per-user public alias and visibility settings for quizliga leaderboard (case-insensitive unique alias).
+- `UserLeaderboardProfile`: per-user public alias and visibility settings for freudd quiz cup leaderboard (case-insensitive unique alias).
 - `UserUnitProgress`: legacy/compat path model kept temporarily for API compatibility.
 
 ## Subject catalog (`subjects.json`)

@@ -18,10 +18,10 @@ class ResponsiveTemplateRulesTests(SimpleTestCase):
         self.assertIn("grid-template-columns: minmax(62px, 84px) minmax(0, 1fr);", body)
         self.assertIn(".subject-mobile-topbar", body)
 
-    def test_base_mobile_navigation_uses_quizliga_overblik_and_subject_picker(self) -> None:
+    def test_base_mobile_navigation_uses_freudd_quiz_cup_overblik_and_subject_picker(self) -> None:
         body = self._template_text("base.html")
         self.assertIn("data-mobile-nav", body)
-        self.assertIn("<span>Quizliga</span>", body)
+        self.assertIn("<span>freudd quiz cup</span>", body)
         self.assertIn("<span>Mit overblik</span>", body)
         self.assertIn("<span>Mine fag</span>", body)
         self.assertIn("data-subject-menu-toggle", body)
@@ -49,6 +49,12 @@ class ResponsiveTemplateRulesTests(SimpleTestCase):
         body = self._template_text("base.html")
         self.assertIn("@media (max-width: 980px)", body)
         self.assertIn(".nav-group-subjects", body)
+
+    def test_base_template_hides_topbar_on_mobile(self) -> None:
+        body = self._template_text("base.html")
+        self.assertIn("@media (max-width: 1180px)", body)
+        self.assertIn(".site-header", body)
+        self.assertIn("display: none;", body)
 
     def test_base_template_exposes_page_class_hook_for_scoped_layout_modes(self) -> None:
         body = self._template_text("base.html")

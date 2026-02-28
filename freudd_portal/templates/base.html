@@ -869,6 +869,10 @@
       }
 
       @media (max-width: 1180px) {
+        .site-header {
+          display: none;
+        }
+
         body.has-mobile-nav .page-shell {
           padding-bottom: calc(92px + env(safe-area-inset-bottom));
         }
@@ -963,7 +967,7 @@
           {% endif %}
           <div class="nav-group nav-group-main">
             {% if leaderboard_default_subject_slug %}
-            <a class="nav-action nav-action-utility" href="{% url 'leaderboard-subject' subject_slug=leaderboard_default_subject_slug %}">Quizliga</a>
+            <a class="nav-action nav-action-utility" href="{% url 'leaderboard-subject' subject_slug=leaderboard_default_subject_slug %}">freudd quiz cup</a>
             {% endif %}
             {% if request.user.is_authenticated %}
             <a class="nav-action nav-action-utility" href="{% url 'progress' %}">Mit overblik</a>
@@ -1005,7 +1009,7 @@
             <path d="M19 12.6V8.7"></path>
             <path d="M3.5 18h17"></path>
           </svg>
-          <span>Quizliga</span>
+          <span>freudd quiz cup</span>
         </a>
         {% else %}
         <a class="mobile-tab" href="{% url 'progress' %}">
@@ -1015,7 +1019,7 @@
             <path d="M19 12.6V8.7"></path>
             <path d="M3.5 18h17"></path>
           </svg>
-          <span>Quizliga</span>
+          <span>freudd quiz cup</span>
         </a>
         {% endif %}
         <a class="mobile-tab {% if current_page == 'progress' %}is-active{% endif %}" href="{% url 'progress' %}">

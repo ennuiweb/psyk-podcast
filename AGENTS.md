@@ -12,6 +12,49 @@
 
 - Ved model-/schemaændringer i `freudd_portal` skal migrations altid oprettes og køres (`makemigrations` + `migrate`) som en fast del af implementeringen.
 
+## Mandatory Git Worktree Protocol (No Exceptions)
+
+- Every task must use a dedicated worktree and branch created from `origin/main`.
+- Use the task naming format `worktree-<task-name>` and place worktrees under `.ai/worktrees/`.
+- Create worktree + branch with:
+
+```bash
+TASK="<kebab-task-name>"
+git fetch origin
+git worktree add ".ai/worktrees/$TASK" -b "worktree-$TASK" origin/main
+```
+
+- Agents must only edit files inside the assigned worktree directory.
+- Agents must commit and push only to `worktree-$TASK`.
+- Required session preamble (first output):
+- `Worktree: .ai/worktrees/<task-name>`
+- `Branch: worktree-<task-name>`
+- `Scope: <explicit in-scope work only>`
+- `Constraint: Do not modify files outside this directory.`
+
+### Definition of Done (task is not finished until all are true)
+
+- Changes are merged to `main`.
+- Worktree is removed locally.
+- Worktree branch is deleted locally.
+- Worktree branch is deleted on remote (if pushed).
+- Stale worktree metadata is pruned.
+
+```bash
+git worktree remove ".ai/worktrees/$TASK"
+git branch -d "worktree-$TASK"
+git push origin --delete "worktree-$TASK" || true
+git worktree prune
+```
+
+- If any cleanup step fails, the agent must report the failure and continue working until cleanup is complete.
+
+### Parallel Agent Isolation (No Correspondence Required)
+
+- Assign each agent a unique `TASK` name.
+- Assign each agent a non-overlapping scope (files/components).
+- Use merge into `main` as the only integration point.
+
 ## Freudd Remote Deploy Runbook (operational, verified 2026-02-25)
 
 - Lokal maskine (`/Users/oskar/repo/podcasts`) har ikke `systemctl` og ikke `/opt/podcasts`; deploy skal køres via SSH på dropletten.

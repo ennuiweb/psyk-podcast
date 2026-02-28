@@ -1,25 +1,37 @@
 # Freudd Portal Design Guidelines
 
-Last updated: 2026-02-26
+Last updated: 2026-02-28
 
 ## Purpose
 
-This document defines the production design baseline for `freudd_portal`.
-It maps product goals to concrete UI rules and component behavior.
+This document is the single production design reference for `freudd_portal`.
+It maps product goals to concrete UI rules, component behavior, and visual guardrails.
 
 Source alignment:
 - Product intent: `docs/non-technical-overview.md`
 - Shared primitives: `templates/base.html`
 - Page patterns: `templates/quizzes/progress.html`, `templates/quizzes/subject_detail.html`, `templates/quizzes/wrapper.html`
 - Auth patterns: `templates/registration/login.html`, `templates/registration/signup.html`
-- Expressive reference: `docs/design-system-v2-expressive.md`
+
+## Intent and direction
+
+The active visual direction is `Paper Studio`, chosen to avoid generic SaaS aesthetics while preserving study-first usability.
+
+Primary inspiration:
+- Editorial print systems (content dignity and hierarchy)
+- Nordic contrast (calm base + sharper progression accents)
+
+Theme lock (effective 2026-02-26):
+- `Paper Studio` is the selected and only approved redesign theme.
+- All new redesign work must start from Paper Studio tokens, typography, and surfaces.
+- `Night Lab` is archived for reference and must not be used for new redesigns.
 
 ## Scope and governance
 
 - `Paper Studio` is the only approved redesign theme for new UI work.
 - Any new redesign proposal must include a short `Paper Studio compliance` note.
 - Legacy systems (`classic`, `night-lab`) are removed from runtime selection; `paper-studio` is locked for users.
-- This file is the operational baseline; `design-system-v2-expressive.md` is the stylistic expansion layer.
+- This file is the operational and stylistic baseline; prior split references are merged here.
 
 ## Runtime design-system architecture (current code)
 
@@ -70,6 +82,7 @@ Usage rules:
 - Keep UI copy in Danish (`da`) until multilingual rollout is explicitly enabled.
 - Avoid decorative or novelty fonts in learner flows.
 - Keep heading casing and emphasis consistent within each template.
+- Avoid `Inter`, `Roboto`, `Arial`, and fallback-only visual identity for redesign work.
 
 ### Color system (Paper Studio semantic tokens)
 
@@ -96,8 +109,9 @@ Color behavior rules:
 - Green indicates completion/success.
 - Red indicates errors/incorrect answers.
 - Never rely on color as the only state cue where text is required.
+- Keep neutral fields dominant and accents intentional.
 
-### Spacing, radius, depth, motion
+### Spacing, radius, depth
 
 Spacing scale:
 - `--space-1: 4px`
@@ -120,16 +134,75 @@ Depth:
 - Hover shadow only where needed: `--shadow-hover-subtle`.
 - Prefer borders over heavy shadows.
 
-Motion:
-- Page/container entry: `~220ms` ease-out.
-- Hover/focus transitions: `~140-160ms`.
+### Atmospheric background system
+
+Avoid flat monochrome canvas. Use layered depth tied to Paper Studio:
+
+```css
+body {
+  background: var(--bg-layer-1), var(--bg-layer-2), var(--bg-layer-3);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(var(--body-grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--body-grid-color) 1px, transparent 1px);
+  background-size: 42px 42px;
+}
+```
+
+### Motion system
+
+Motion defaults:
+- Page/container entry: `~220ms` ease-out baseline.
+- Hover/focus transitions: `~140-180ms`.
 - Respect reduced motion preferences for all new animation.
+
+Use one orchestrated entrance per page, not many unrelated animations.
+
+Page load choreography:
+- Animate only: header, primary card shell, first action row.
+- Stagger with class delays (`.reveal-1`, `.reveal-2`, `.reveal-3`).
+- Duration range: `260-420ms`.
+- Easing: `cubic-bezier(0.22, 1, 0.36, 1)` for enter.
+
+```css
+@keyframes reveal-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+  opacity: 0;
+  animation: reveal-up 360ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.reveal-1 { animation-delay: 40ms; }
+.reveal-2 { animation-delay: 120ms; }
+.reveal-3 { animation-delay: 200ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+```
+
+Micro-interaction rules:
+- Hover states: color, border, and very light translation only (`translateY(-1px)` max).
+- Never scale cards enough to shift layout.
+- Keep interactions subtle and stable.
 
 ## Layout system
 
 ### Global shell
 
-- Sticky top navigation (`.site-header`) is desktop-only; mobile/tablet (`<=1180px`) hides topbar and uses bottom navigation.
+- Sticky top navigation (`.site-header`) for orientation persistence.
 - Authenticated mobile/tablet views (`<=1180px`) keep a persistent bottom tabbar (`freudd quiz cup`, `Mit overblik`, `Mine fag`) across all pages.
 - Constrained content width (`max-width: 1120px`) inside `.page-shell`.
 - Single primary content card (`.card`) per route as default frame.
@@ -141,6 +214,12 @@ Motion:
 - Prefer grouped cards over long uninterrupted text blocks.
 
 ## Component system
+
+### Signature shapes
+
+- Main cards: rounded (`14-20px`) with strong border contrast.
+- Pills/chips: fully rounded but compact.
+- Section separators: subtle rule plus short uppercase label where needed.
 
 ### Action hierarchy
 
@@ -158,6 +237,7 @@ Rules:
 - `status-pill`, `status-badge`, `subject-status-pill`, and difficulty chips carry state.
 - Status text must remain explicit (`Fuldført`, `Ikke startet`, `Ingen quiz`) where state matters.
 - Dot indicators (`.status-dot`) supplement text, never replace it.
+- Wrong/correct answer states must pair color with text or iconography.
 
 ### Progress indicators
 
@@ -170,7 +250,7 @@ Rules:
 - Learning path is a two-column rail layout: left lecture rail + right single active lecture card.
 - Lecture switching is URL-addressable (`?lecture=<lecture_key>`) and server-rendered on reload.
 - Rail connector remains muted by default and accentuates completed context.
-- Rail rows render both numbered marker and lecture copy (short week label + lecture title).
+- Rail rows render marker plus lecture copy (short week label + lecture title).
 - Active lecture card must always render three sibling sections in this order:
   - `Tekster`
   - `Podcasts`
@@ -215,7 +295,7 @@ Behavior:
 
 Order:
 1. Subject title/description and return utility action
-2. Left lecture rail with numbered markers
+2. Left lecture rail with lecture markers
 3. Single active lecture card with section blocks
 
 Behavior:
@@ -226,6 +306,19 @@ Behavior:
   - `Tekster` (text/article cards with always-visible L/M/S indicators + tracking controls)
   - `Podcasts` (flat episode list with discrete tracking controls)
   - `Quiz for alle kilder` (lecture quiz level chips in order `Let`, `Mellem`, `Svær`)
+
+Responsive contract (required):
+- Desktop (`>1024px`): standard top header, rail with lecture labels, and two-column layout.
+- Compact app shell (`<=1024px`): hide global site header on subject detail and use local topbar (`freudd` + auth action).
+- Tablet/mobile compact layout keeps two columns with narrow rail + active lecture card.
+- Mobile tabbar is fixed at bottom in compact mode and requires safe-area-aware bottom padding.
+- Compact visual section priority may be `Quiz for alle kilder` -> `Podcasts` -> `Tekster` while preserving DOM semantics.
+
+Guardrails:
+- No horizontal page scroll on subject detail for iPhone 11 Pro Max (`414x896`) and iPad portrait (`768x1024`).
+- Active lecture title and rail copy must support long Danish compounds (`overflow-wrap:anywhere`, `hyphens:auto`).
+- On coarse pointers, primary interaction controls must be at least `44x44`.
+- Bottom tabbar must never cover interactive content (`padding-bottom` includes `env(safe-area-inset-bottom)`).
 
 ### `/q/<quiz_id>.html` (quiz wrapper)
 
@@ -239,6 +332,7 @@ Behavior:
 - Keep one decision per step.
 - Keep option hit areas large and stateful (selected/correct/wrong).
 - Never expose noisy raw filename metadata in the visible title area.
+- Quiz header should read as an exam card with clear hierarchy.
 
 ### Auth routes (`/accounts/login`, `/accounts/signup`)
 
@@ -262,6 +356,21 @@ Behavior:
 - Prefer short verbs and measurable progress phrases (`Besvaret x/y`, `Fuldført`).
 - Avoid technical file jargon in learner-facing text.
 
+## Anti-slop guardrails
+
+Do not use:
+- `Inter`, `Roboto`, `Arial`, fallback-only visual identity.
+- Purple-on-white gradient templates.
+- Equal-weight palettes where every color competes.
+- Component libraries copied 1:1 without local character.
+- Flat solid-color page backgrounds without atmosphere.
+
+Do use:
+- Paper Studio font pairing (`Fraunces`, `Public Sans`, `IBM Plex Mono`).
+- Strong neutral dominance with sharp, intentional accents.
+- One high-quality page entrance animation with stagger.
+- Layered gradients and subtle patterns tied to Paper Studio only.
+
 ## Governance and change checklist
 
 Before shipping UI changes:
@@ -271,6 +380,18 @@ Before shipping UI changes:
 3. Preserve action hierarchy (primary vs secondary vs neutral).
 4. Verify keyboard focus, tap targets, and color contrast.
 5. Verify mobile layouts at `375px` and tablet/desktop breakpoints.
-6. Verify lecture detail partitioning (`Quizzer`, `Podcasts`, `Tekster`) and per-section empty states.
-7. Include a `Paper Studio compliance` note in the PR.
-8. Update this document when introducing a new recurring UI pattern.
+6. Verify lecture detail partitioning (`Tekster`, `Podcasts`, `Quiz for alle kilder`) and per-section empty states.
+7. Keep atmospheric background layers and avoid flat fallback-only surfaces.
+8. Keep motion reduced-motion-safe and limited to meaningful entry/feedback.
+9. Include a `Paper Studio compliance` note in the PR.
+10. Update this document when introducing a new recurring UI pattern.
+
+## Implementation plan (safe incremental)
+
+1. Add design-system tokens and fonts in `templates/base.html`.
+2. Set `data-design-system="paper-studio"` on `<html>` as locked default.
+3. Update shared controls (`.btn-primary`, `.nav-action`, `.card`) to tokenized slots.
+4. Migrate `progress`, `subject_detail`, and `wrapper` page-specific colors to semantic tokens.
+5. Keep subject detail lecture content in three explicit blocks: `Tekster`, `Podcasts`, `Quiz for alle kilder` (`templates/quizzes/subject_detail.html` + `quizzes/views.py`).
+6. Keep reduced-motion-safe reveal classes limited to top-level sections only.
+7. Validate contrast, keyboard focus, responsive guardrails, and section partitioning behavior before rollout.

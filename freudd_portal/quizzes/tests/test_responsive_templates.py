@@ -33,11 +33,11 @@ class ResponsiveTemplateRulesTests(SimpleTestCase):
         self.assertIn("overflow-wrap: anywhere;", body)
         self.assertIn("hyphens: auto;", body)
 
-    def test_subject_detail_prioritizes_quiz_and_podcast_sections_on_compact_layout(self) -> None:
+    def test_subject_detail_uses_desktop_section_order_on_compact_layout(self) -> None:
         body = self._template_text("quizzes/subject_detail.html")
-        self.assertIn(".lecture-quizzes {\n      order: 1;", body)
+        self.assertIn(".lecture-readings {\n      order: 1;", body)
         self.assertIn(".lecture-podcasts {\n      order: 2;", body)
-        self.assertIn(".lecture-readings {\n      order: 3;", body)
+        self.assertIn(".lecture-quizzes {\n      order: 3;", body)
 
     def test_subject_detail_has_coarse_pointer_touch_target_guardrails(self) -> None:
         body = self._template_text("quizzes/subject_detail.html")

@@ -3,7 +3,7 @@
   "subject_slug": "personlighedspsykologi",
   "source_meta": {
     "version": 1,
-    "generated_at": "2026-02-28T09:33:37.430831+00:00",
+    "generated_at": "2026-02-28T10:26:59.374593+00:00",
     "reading_master_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/.ai/reading-file-key.md",
     "reading_fallback_path": "/home/runner/work/psyk-podcast/psyk-podcast/shows/personlighedspsykologi-en/docs/reading-file-key.md",
     "reading_source_used": "/home/runner/work/psyk-podcast/psyk-podcast/shows/personlighedspsykologi-en/docs/reading-file-key.md",
@@ -347,14 +347,44 @@
       "sequence_index": 3,
       "readings": [
         {
-          "reading_key": "w02l1-exercise-text-b6954eb1",
-          "reading_title": "Exercise text",
+          "reading_key": "w02l1-zettler-et-al-2020-0c54e6e4",
+          "reading_title": "X Zettler et al. (2020)",
           "is_missing": false,
           "source_filename": "W02L1 X Zettler et al. (2020).pdf",
           "sequence_index": 1,
           "assets": {
-            "quizzes": [],
-            "podcasts": []
+            "quizzes": [
+              {
+                "quiz_id": "1a145545",
+                "difficulty": "easy",
+                "quiz_url": "/q/1a145545.html",
+                "episode_title": "W2L1 - X Zettler et al. (2020) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "94101aa6",
+                "difficulty": "hard",
+                "quiz_url": "/q/94101aa6.html",
+                "episode_title": "W2L1 - X Zettler et al. (2020) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "5857f342",
+                "difficulty": "medium",
+                "quiz_url": "/q/5857f342.html",
+                "episode_title": "W2L1 - X Zettler et al. (2020) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              }
+            ],
+            "podcasts": [
+              {
+                "kind": "podcast",
+                "title": "Uge 2, Forelæsning 1 · Podcast · X Zettler et al. (2020)",
+                "url": "https://open.spotify.com/episode/4QU5jQe8JeAp5CTqKDAXvI",
+                "platform": "spotify",
+                "pub_date": "Mon, 09 Feb 2025 08:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1oNwgAgljhbGh2ZhZSzOawXV5FWx4C03r",
+                "duration_seconds": null,
+                "duration_label": ""
+              }
+            ]
           }
         },
         {
@@ -402,12 +432,6 @@
       "lecture_assets": {
         "quizzes": [
           {
-            "quiz_id": "1a145545",
-            "difficulty": "easy",
-            "quiz_url": "/q/1a145545.html",
-            "episode_title": "W2L1 - X Zettler et al. (2020) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
-          },
-          {
             "quiz_id": "42810325",
             "difficulty": "easy",
             "quiz_url": "/q/42810325.html",
@@ -418,18 +442,6 @@
             "difficulty": "hard",
             "quiz_url": "/q/63fcb155.html",
             "episode_title": "W2L1 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3"
-          },
-          {
-            "quiz_id": "94101aa6",
-            "difficulty": "hard",
-            "quiz_url": "/q/94101aa6.html",
-            "episode_title": "W2L1 - X Zettler et al. (2020) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
-          },
-          {
-            "quiz_id": "5857f342",
-            "difficulty": "medium",
-            "quiz_url": "/q/5857f342.html",
-            "episode_title": "W2L1 - X Zettler et al. (2020) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
           },
           {
             "quiz_id": "d21f1cf7",
@@ -448,23 +460,10 @@
             "source_audio_url": "https://drive.google.com/uc?export=download&id=1ilu3L_zhiRxrxj-Qd014gSwhvNHV0hYK",
             "duration_seconds": null,
             "duration_label": ""
-          },
-          {
-            "kind": "podcast",
-            "title": "Uge 2, Forelæsning 1 · Podcast · X Zettler et al. (2020)",
-            "url": "https://open.spotify.com/episode/4QU5jQe8JeAp5CTqKDAXvI",
-            "platform": "spotify",
-            "pub_date": "Mon, 09 Feb 2025 08:00:00 +0100",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1oNwgAgljhbGh2ZhZSzOawXV5FWx4C03r",
-            "duration_seconds": null,
-            "duration_label": ""
           }
         ]
       },
-      "warnings": [
-        "Quiz entry could not map to reading; attached to lecture assets: W2L1 - X Zettler et al. (2020) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
-        "RSS item could not map to reading; attached to lecture assets: Uge 2, Forelæsning 1 · Podcast · X Zettler et al. (2020)"
-      ]
+      "warnings": []
     },
     {
       "lecture_key": "W02L2",
@@ -1115,14 +1114,44 @@
       "sequence_index": 9,
       "readings": [
         {
-          "reading_key": "w05l1-exercise-text-311e6f56",
-          "reading_title": "Exercise text",
+          "reading_key": "w05l1-freud-s-1984-1905-brudstykke-af-en-hysteri-analy-df466bb5",
+          "reading_title": "X Freud, S. (1984/1905). Brudstykke af en hysteri-analyse",
           "is_missing": false,
           "source_filename": "W05L1 X Freud, S. (1984/1905). Brudstykke af en hysteri-analyse.pdf",
           "sequence_index": 1,
           "assets": {
-            "quizzes": [],
-            "podcasts": []
+            "quizzes": [
+              {
+                "quiz_id": "5d135cf7",
+                "difficulty": "easy",
+                "quiz_url": "/q/5d135cf7.html",
+                "episode_title": "W5L1 - X Freud, S. (1984-1905). Brudstykke af en hysteri-analyse (pp. 9-62, pp. 96- [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "26e0cec7",
+                "difficulty": "hard",
+                "quiz_url": "/q/26e0cec7.html",
+                "episode_title": "W5L1 - X Freud, S. (1984-1905). Brudstykke af en hysteri-analyse (pp. 9-62, pp. 96- [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "67ce167b",
+                "difficulty": "medium",
+                "quiz_url": "/q/67ce167b.html",
+                "episode_title": "W5L1 - X Freud, S. (1984-1905). Brudstykke af en hysteri-analyse (pp. 9-62, pp. 96- [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              }
+            ],
+            "podcasts": [
+              {
+                "kind": "podcast",
+                "title": "Uge 5, Forelæsning 1 · Podcast · X Freud, S. (1984-1905). Brudstykke af en hysteri-analyse (pp. 9-62, pp. 96",
+                "url": "https://open.spotify.com/episode/28DdpKFf1Ntnhl7ukuZuXb",
+                "platform": "spotify",
+                "pub_date": "Mon, 02 Mar 2025 08:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=17j4K9zbsVqGxK-dU527n1xgMvhDFw-xY",
+                "duration_seconds": null,
+                "duration_label": ""
+              }
+            ]
           }
         },
         {
@@ -1179,43 +1208,10 @@
         }
       ],
       "lecture_assets": {
-        "quizzes": [
-          {
-            "quiz_id": "5d135cf7",
-            "difficulty": "easy",
-            "quiz_url": "/q/5d135cf7.html",
-            "episode_title": "W5L1 - X Freud, S. (1984-1905). Brudstykke af en hysteri-analyse (pp. 9-62, pp. 96- [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
-          },
-          {
-            "quiz_id": "26e0cec7",
-            "difficulty": "hard",
-            "quiz_url": "/q/26e0cec7.html",
-            "episode_title": "W5L1 - X Freud, S. (1984-1905). Brudstykke af en hysteri-analyse (pp. 9-62, pp. 96- [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
-          },
-          {
-            "quiz_id": "67ce167b",
-            "difficulty": "medium",
-            "quiz_url": "/q/67ce167b.html",
-            "episode_title": "W5L1 - X Freud, S. (1984-1905). Brudstykke af en hysteri-analyse (pp. 9-62, pp. 96- [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
-          }
-        ],
-        "podcasts": [
-          {
-            "kind": "podcast",
-            "title": "Uge 5, Forelæsning 1 · Podcast · X Freud, S. (1984-1905). Brudstykke af en hysteri-analyse (pp. 9-62, pp. 96",
-            "url": "https://open.spotify.com/episode/28DdpKFf1Ntnhl7ukuZuXb",
-            "platform": "spotify",
-            "pub_date": "Mon, 02 Mar 2025 08:00:00 +0100",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=17j4K9zbsVqGxK-dU527n1xgMvhDFw-xY",
-            "duration_seconds": null,
-            "duration_label": ""
-          }
-        ]
+        "quizzes": [],
+        "podcasts": []
       },
-      "warnings": [
-        "Quiz entry could not map to reading; attached to lecture assets: W5L1 - X Freud, S. (1984-1905). Brudstykke af en hysteri-analyse (pp. 9-62, pp. 96- [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
-        "RSS item could not map to reading; attached to lecture assets: Uge 5, Forelæsning 1 · Podcast · X Freud, S. (1984-1905). Brudstykke af en hysteri-analyse (pp. 9-62, pp. 96"
-      ]
+      "warnings": []
     },
     {
       "lecture_key": "W05L2",
@@ -1268,25 +1264,85 @@
       "sequence_index": 11,
       "readings": [
         {
-          "reading_key": "w06l1-exercise-text-9a6d1619",
-          "reading_title": "Exercise text",
+          "reading_key": "w06l1-spinelli-2005-b2f76e93",
+          "reading_title": "X Spinelli (2005)",
           "is_missing": false,
           "source_filename": "W06L1 X Spinelli (2005).pdf",
           "sequence_index": 1,
           "assets": {
-            "quizzes": [],
-            "podcasts": []
+            "quizzes": [
+              {
+                "quiz_id": "884e0bf7",
+                "difficulty": "easy",
+                "quiz_url": "/q/884e0bf7.html",
+                "episode_title": "W6L1 - X Spinelli (2005) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "d2f6755f",
+                "difficulty": "hard",
+                "quiz_url": "/q/d2f6755f.html",
+                "episode_title": "W6L1 - X Spinelli (2005) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "30c6f5c7",
+                "difficulty": "medium",
+                "quiz_url": "/q/30c6f5c7.html",
+                "episode_title": "W6L1 - X Spinelli (2005) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              }
+            ],
+            "podcasts": [
+              {
+                "kind": "podcast",
+                "title": "Uge 6, Forelæsning 1 · Podcast · X Spinelli (2005)",
+                "url": "https://open.spotify.com/episode/5IoMrPZlJxLIZYpbeflOHU",
+                "platform": "spotify",
+                "pub_date": "Mon, 09 Mar 2025 14:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1cT_Ap2FJDLbshnG7569V-0Ckz8J1WjzW",
+                "duration_seconds": null,
+                "duration_label": ""
+              }
+            ]
           }
         },
         {
-          "reading_key": "w06l1-exercise-text-9a6d1619-2",
-          "reading_title": "Exercise text",
+          "reading_key": "w06l1-moesk-r-hansen-and-roald-2022-b7aec462",
+          "reading_title": "X Moeskær Hansen & Roald (2022)",
           "is_missing": false,
           "source_filename": "W06L1 X Moeskær Hansen & Roald (2022) .pdf",
           "sequence_index": 2,
           "assets": {
-            "quizzes": [],
-            "podcasts": []
+            "quizzes": [
+              {
+                "quiz_id": "e22bd5c8",
+                "difficulty": "easy",
+                "quiz_url": "/q/e22bd5c8.html",
+                "episode_title": "W6L1 - X Moeskær Hansen & Roald (2022) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "92c3bd8a",
+                "difficulty": "hard",
+                "quiz_url": "/q/92c3bd8a.html",
+                "episode_title": "W6L1 - X Moeskær Hansen & Roald (2022) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "2a54192c",
+                "difficulty": "medium",
+                "quiz_url": "/q/2a54192c.html",
+                "episode_title": "W6L1 - X Moeskær Hansen & Roald (2022) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              }
+            ],
+            "podcasts": [
+              {
+                "kind": "podcast",
+                "title": "Uge 6, Forelæsning 1 · Podcast · X Moeskær Hansen & Roald (2022)",
+                "url": "https://open.spotify.com/episode/2U29L5QWpIIrdxomsvspIN",
+                "platform": "spotify",
+                "pub_date": "Mon, 09 Mar 2025 16:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1JJEGcZrm1j0_Lly0vo7dTCgNzlU3lPPN",
+                "duration_seconds": null,
+                "duration_label": ""
+              }
+            ]
           }
         },
         {
@@ -1379,46 +1435,10 @@
             "episode_title": "W6L1 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=1b3d31bc}.mp3"
           },
           {
-            "quiz_id": "884e0bf7",
-            "difficulty": "easy",
-            "quiz_url": "/q/884e0bf7.html",
-            "episode_title": "W6L1 - X Spinelli (2005) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
-          },
-          {
-            "quiz_id": "e22bd5c8",
-            "difficulty": "easy",
-            "quiz_url": "/q/e22bd5c8.html",
-            "episode_title": "W6L1 - X Moeskær Hansen & Roald (2022) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
-          },
-          {
             "quiz_id": "7cf81120",
             "difficulty": "hard",
             "quiz_url": "/q/7cf81120.html",
             "episode_title": "W6L1 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=1b3d31bc}.mp3"
-          },
-          {
-            "quiz_id": "92c3bd8a",
-            "difficulty": "hard",
-            "quiz_url": "/q/92c3bd8a.html",
-            "episode_title": "W6L1 - X Moeskær Hansen & Roald (2022) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
-          },
-          {
-            "quiz_id": "d2f6755f",
-            "difficulty": "hard",
-            "quiz_url": "/q/d2f6755f.html",
-            "episode_title": "W6L1 - X Spinelli (2005) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
-          },
-          {
-            "quiz_id": "2a54192c",
-            "difficulty": "medium",
-            "quiz_url": "/q/2a54192c.html",
-            "episode_title": "W6L1 - X Moeskær Hansen & Roald (2022) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
-          },
-          {
-            "quiz_id": "30c6f5c7",
-            "difficulty": "medium",
-            "quiz_url": "/q/30c6f5c7.html",
-            "episode_title": "W6L1 - X Spinelli (2005) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
           },
           {
             "quiz_id": "8b37a8e3",
@@ -1437,35 +1457,11 @@
             "source_audio_url": "https://drive.google.com/uc?export=download&id=10l-759q-GWO0sDY2jy8ltRb_LjyqfBRu",
             "duration_seconds": null,
             "duration_label": ""
-          },
-          {
-            "kind": "podcast",
-            "title": "Uge 6, Forelæsning 1 · Podcast · X Moeskær Hansen & Roald (2022)",
-            "url": "https://open.spotify.com/episode/2U29L5QWpIIrdxomsvspIN",
-            "platform": "spotify",
-            "pub_date": "Mon, 09 Mar 2025 16:00:00 +0100",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1JJEGcZrm1j0_Lly0vo7dTCgNzlU3lPPN",
-            "duration_seconds": null,
-            "duration_label": ""
-          },
-          {
-            "kind": "podcast",
-            "title": "Uge 6, Forelæsning 1 · Podcast · X Spinelli (2005)",
-            "url": "https://open.spotify.com/episode/5IoMrPZlJxLIZYpbeflOHU",
-            "platform": "spotify",
-            "pub_date": "Mon, 09 Mar 2025 14:00:00 +0100",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1cT_Ap2FJDLbshnG7569V-0Ckz8J1WjzW",
-            "duration_seconds": null,
-            "duration_label": ""
           }
         ]
       },
       "warnings": [
-        "Quiz entry could not map to reading; attached to lecture assets: W6L1 - X Moeskær Hansen & Roald (2022) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
-        "Quiz entry could not map to reading; attached to lecture assets: W6L1 - X Spinelli (2005) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
-        "Spotify episode mapping missing for RSS item; skipping podcast asset: Uge 6, Forelæsning 1 · Lydbog · Grundbog kapitel 04 - Fænomenologisk personlighedspsykologi",
-        "RSS item could not map to reading; attached to lecture assets: Uge 6, Forelæsning 1 · Podcast · X Moeskær Hansen & Roald (2022)",
-        "RSS item could not map to reading; attached to lecture assets: Uge 6, Forelæsning 1 · Podcast · X Spinelli (2005)"
+        "Spotify episode mapping missing for RSS item; skipping podcast asset: Uge 6, Forelæsning 1 · Lydbog · Grundbog kapitel 04 - Fænomenologisk personlighedspsykologi"
       ]
     },
     {
@@ -2136,14 +2132,44 @@
       "sequence_index": 17,
       "readings": [
         {
-          "reading_key": "w09l1-exercise-text-8fc55928",
-          "reading_title": "Exercise text",
+          "reading_key": "w09l1-m-rch-and-hansen-2015-b1dbfc5f",
+          "reading_title": "X Mørch & Hansen (2015)",
           "is_missing": false,
           "source_filename": "W09L1 X Mørch & Hansen (2015).pdf",
           "sequence_index": 1,
           "assets": {
-            "quizzes": [],
-            "podcasts": []
+            "quizzes": [
+              {
+                "quiz_id": "15c34e2e",
+                "difficulty": "easy",
+                "quiz_url": "/q/15c34e2e.html",
+                "episode_title": "W9L1 - X Mørch & Hansen (2015) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "93972da4",
+                "difficulty": "hard",
+                "quiz_url": "/q/93972da4.html",
+                "episode_title": "W9L1 - X Mørch & Hansen (2015) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "65f827b9",
+                "difficulty": "medium",
+                "quiz_url": "/q/65f827b9.html",
+                "episode_title": "W9L1 - X Mørch & Hansen (2015) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              }
+            ],
+            "podcasts": [
+              {
+                "kind": "podcast",
+                "title": "Uge 9, Forelæsning 1 · Podcast · X Mørch & Hansen (2015)",
+                "url": "https://open.spotify.com/episode/28lbf7PdlNtBZVtWIx8KxZ",
+                "platform": "spotify",
+                "pub_date": "Tue, 07 Apr 2025 16:00:00 +0200",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1iBhgobHUa42svn71OjgHxsuxi3LuM9Wu",
+                "duration_seconds": null,
+                "duration_label": ""
+              }
+            ]
           }
         },
         {
@@ -2312,22 +2338,10 @@
       "lecture_assets": {
         "quizzes": [
           {
-            "quiz_id": "15c34e2e",
-            "difficulty": "easy",
-            "quiz_url": "/q/15c34e2e.html",
-            "episode_title": "W9L1 - X Mørch & Hansen (2015) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
-          },
-          {
             "quiz_id": "d29022f1",
             "difficulty": "easy",
             "quiz_url": "/q/d29022f1.html",
             "episode_title": "W9L1 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=4 hash=a7e138f5}.mp3"
-          },
-          {
-            "quiz_id": "93972da4",
-            "difficulty": "hard",
-            "quiz_url": "/q/93972da4.html",
-            "episode_title": "W9L1 - X Mørch & Hansen (2015) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
           },
           {
             "quiz_id": "b109ba97",
@@ -2340,12 +2354,6 @@
             "difficulty": "medium",
             "quiz_url": "/q/1780e5fc.html",
             "episode_title": "W9L1 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=4 hash=a7e138f5}.mp3"
-          },
-          {
-            "quiz_id": "65f827b9",
-            "difficulty": "medium",
-            "quiz_url": "/q/65f827b9.html",
-            "episode_title": "W9L1 - X Mørch & Hansen (2015) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
           }
         ],
         "podcasts": [
@@ -2358,23 +2366,11 @@
             "source_audio_url": "https://drive.google.com/uc?export=download&id=11HUqIhyTJKNxRWW5hDsG-RxtHyqLMNQk",
             "duration_seconds": null,
             "duration_label": ""
-          },
-          {
-            "kind": "podcast",
-            "title": "Uge 9, Forelæsning 1 · Podcast · X Mørch & Hansen (2015)",
-            "url": "https://open.spotify.com/episode/28lbf7PdlNtBZVtWIx8KxZ",
-            "platform": "spotify",
-            "pub_date": "Tue, 07 Apr 2025 16:00:00 +0200",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1iBhgobHUa42svn71OjgHxsuxi3LuM9Wu",
-            "duration_seconds": null,
-            "duration_label": ""
           }
         ]
       },
       "warnings": [
-        "Quiz entry could not map to reading; attached to lecture assets: W9L1 - X Mørch & Hansen (2015) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
-        "Spotify episode mapping missing for RSS item; skipping podcast asset: Uge 9, Forelæsning 1 · Lydbog · Grundbog kapitel 10 - Kritisk psykologi",
-        "RSS item could not map to reading; attached to lecture assets: Uge 9, Forelæsning 1 · Podcast · X Mørch & Hansen (2015)"
+        "Spotify episode mapping missing for RSS item; skipping podcast asset: Uge 9, Forelæsning 1 · Lydbog · Grundbog kapitel 10 - Kritisk psykologi"
       ]
     },
     {
@@ -2538,14 +2534,44 @@
       "sequence_index": 19,
       "readings": [
         {
-          "reading_key": "w10l2-exercise-text-0483a65e",
-          "reading_title": "Exercise text",
+          "reading_key": "w10l2-davies-1990-65185910",
+          "reading_title": "X Davies (1990)",
           "is_missing": false,
           "source_filename": "W10L2 X Davies (1990).pdf",
           "sequence_index": 1,
           "assets": {
-            "quizzes": [],
-            "podcasts": []
+            "quizzes": [
+              {
+                "quiz_id": "cc6e80f2",
+                "difficulty": "easy",
+                "quiz_url": "/q/cc6e80f2.html",
+                "episode_title": "W10L2 - X Davies (1990) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "254ffc1c",
+                "difficulty": "hard",
+                "quiz_url": "/q/254ffc1c.html",
+                "episode_title": "W10L2 - X Davies (1990) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "4508d590",
+                "difficulty": "medium",
+                "quiz_url": "/q/4508d590.html",
+                "episode_title": "W10L2 - X Davies (1990) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              }
+            ],
+            "podcasts": [
+              {
+                "kind": "podcast",
+                "title": "Uge 10, Forelæsning 2 · Podcast · X Davies (1990)",
+                "url": "https://open.spotify.com/episode/2oHmccTRz88k9OhYEVx9dK",
+                "platform": "spotify",
+                "pub_date": "Tue, 14 Apr 2025 12:00:00 +0200",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1K8EHgG6wOfdtVKJ4DctnJQGszn8WqH_I",
+                "duration_seconds": null,
+                "duration_label": ""
+              }
+            ]
           }
         },
         {
@@ -2569,28 +2595,10 @@
             "episode_title": "W10L2 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3"
           },
           {
-            "quiz_id": "cc6e80f2",
-            "difficulty": "easy",
-            "quiz_url": "/q/cc6e80f2.html",
-            "episode_title": "W10L2 - X Davies (1990) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
-          },
-          {
-            "quiz_id": "254ffc1c",
-            "difficulty": "hard",
-            "quiz_url": "/q/254ffc1c.html",
-            "episode_title": "W10L2 - X Davies (1990) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
-          },
-          {
             "quiz_id": "8e81ffc2",
             "difficulty": "hard",
             "quiz_url": "/q/8e81ffc2.html",
             "episode_title": "W10L2 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3"
-          },
-          {
-            "quiz_id": "4508d590",
-            "difficulty": "medium",
-            "quiz_url": "/q/4508d590.html",
-            "episode_title": "W10L2 - X Davies (1990) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
           },
           {
             "quiz_id": "fce66fd1",
@@ -2619,23 +2627,11 @@
             "source_audio_url": "https://drive.google.com/uc?export=download&id=1yhfSBFLyzbpWpUj2TqStkfFfoAgG8MvX",
             "duration_seconds": null,
             "duration_label": ""
-          },
-          {
-            "kind": "podcast",
-            "title": "Uge 10, Forelæsning 2 · Podcast · X Davies (1990)",
-            "url": "https://open.spotify.com/episode/2oHmccTRz88k9OhYEVx9dK",
-            "platform": "spotify",
-            "pub_date": "Tue, 14 Apr 2025 12:00:00 +0200",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1K8EHgG6wOfdtVKJ4DctnJQGszn8WqH_I",
-            "duration_seconds": null,
-            "duration_label": ""
           }
         ]
       },
       "warnings": [
-        "Quiz entry could not map to reading; attached to lecture assets: W10L2 - X Davies (1990) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
-        "RSS item could not map to reading; attached to lecture assets: Uge 10, Forelæsning 2 · Podcast · Foucault, M. (1997). The Ethics of the Concern of the Self as a Practice of Freedom - Essential Works 1954-1984, Penguin Books. Vol. 1, s. 281-301",
-        "RSS item could not map to reading; attached to lecture assets: Uge 10, Forelæsning 2 · Podcast · X Davies (1990)"
+        "RSS item could not map to reading; attached to lecture assets: Uge 10, Forelæsning 2 · Podcast · Foucault, M. (1997). The Ethics of the Concern of the Self as a Practice of Freedom - Essential Works 1954-1984, Penguin Books. Vol. 1, s. 281-301"
       ]
     },
     {
@@ -2850,14 +2846,44 @@
       "sequence_index": 21,
       "readings": [
         {
-          "reading_key": "w11l2-exercise-text-523d0532",
-          "reading_title": "Exercise text",
+          "reading_key": "w11l2-raggatt-2002-d15129af",
+          "reading_title": "X Raggatt (2002)",
           "is_missing": false,
           "source_filename": "W11L2 X Raggatt (2002).pdf",
           "sequence_index": 1,
           "assets": {
-            "quizzes": [],
-            "podcasts": []
+            "quizzes": [
+              {
+                "quiz_id": "251f1051",
+                "difficulty": "easy",
+                "quiz_url": "/q/251f1051.html",
+                "episode_title": "W11L2 - X Raggatt (2002) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "299e1589",
+                "difficulty": "hard",
+                "quiz_url": "/q/299e1589.html",
+                "episode_title": "W11L2 - X Raggatt (2002) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "216d136c",
+                "difficulty": "medium",
+                "quiz_url": "/q/216d136c.html",
+                "episode_title": "W11L2 - X Raggatt (2002) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              }
+            ],
+            "podcasts": [
+              {
+                "kind": "podcast",
+                "title": "Uge 11, Forelæsning 2 · Podcast · X Raggatt (2002)",
+                "url": "https://open.spotify.com/episode/0w41i9SWE15I0DSJMvD1KU",
+                "platform": "spotify",
+                "pub_date": "Tue, 21 Apr 2025 18:00:00 +0200",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1eSsZIZdHR6cp3shRTPZbwQ4scxiR9FA9",
+                "duration_seconds": null,
+                "duration_label": ""
+              }
+            ]
           }
         },
         {
@@ -3026,12 +3052,6 @@
       "lecture_assets": {
         "quizzes": [
           {
-            "quiz_id": "251f1051",
-            "difficulty": "easy",
-            "quiz_url": "/q/251f1051.html",
-            "episode_title": "W11L2 - X Raggatt (2002) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
-          },
-          {
             "quiz_id": "2ce1f67d",
             "difficulty": "easy",
             "quiz_url": "/q/2ce1f67d.html",
@@ -3044,12 +3064,6 @@
             "episode_title": "W11L2 - Bank, M. (2014). Narrative psykologier. I Køppe, S. & Dammeyer, J. (Red.) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
           },
           {
-            "quiz_id": "299e1589",
-            "difficulty": "hard",
-            "quiz_url": "/q/299e1589.html",
-            "episode_title": "W11L2 - X Raggatt (2002) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
-          },
-          {
             "quiz_id": "6913b0bc",
             "difficulty": "hard",
             "quiz_url": "/q/6913b0bc.html",
@@ -3060,12 +3074,6 @@
             "difficulty": "hard",
             "quiz_url": "/q/bfd24968.html",
             "episode_title": "W11L2 - Bank, M. (2014). Narrative psykologier. I Køppe, S. & Dammeyer, J. (Red.) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
-          },
-          {
-            "quiz_id": "216d136c",
-            "difficulty": "medium",
-            "quiz_url": "/q/216d136c.html",
-            "episode_title": "W11L2 - X Raggatt (2002) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
           },
           {
             "quiz_id": "7fd183bf",
@@ -3100,24 +3108,12 @@
             "source_audio_url": "https://drive.google.com/uc?export=download&id=1znrSssDk4nJGtctdSCeY-E1CpxMi__GV",
             "duration_seconds": null,
             "duration_label": ""
-          },
-          {
-            "kind": "podcast",
-            "title": "Uge 11, Forelæsning 2 · Podcast · X Raggatt (2002)",
-            "url": "https://open.spotify.com/episode/0w41i9SWE15I0DSJMvD1KU",
-            "platform": "spotify",
-            "pub_date": "Tue, 21 Apr 2025 18:00:00 +0200",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1eSsZIZdHR6cp3shRTPZbwQ4scxiR9FA9",
-            "duration_seconds": null,
-            "duration_label": ""
           }
         ]
       },
       "warnings": [
         "Quiz entry could not map to reading; attached to lecture assets: W11L2 - Bank, M. (2014). Narrative psykologier. I Køppe, S. & Dammeyer, J. (Red.) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
-        "Quiz entry could not map to reading; attached to lecture assets: W11L2 - X Raggatt (2002) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
         "Spotify episode mapping missing for RSS item; skipping podcast asset: Uge 11, Forelæsning 2 · Lydbog · Grundbog kapitel 09 - Narrative teorier",
-        "RSS item could not map to reading; attached to lecture assets: Uge 11, Forelæsning 2 · Podcast · X Raggatt (2002)",
         "RSS item could not map to reading; attached to lecture assets: Uge 11, Forelæsning 2 · Podcast · Bank, M. (2014). Narrative psykologier. I Køppe, S. & Dammeyer, J. (Red.)"
       ]
     },

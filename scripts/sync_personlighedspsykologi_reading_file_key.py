@@ -82,13 +82,17 @@ def _bootstrap_source(source: Path, target: Path, *, apply: bool) -> int:
 def main() -> int:
     parser = argparse.ArgumentParser(
         description=(
-            "Sync Personlighedspsykologi reading-file-key from OneDrive source into repo mirrors."
+            "Sync Personlighedspsykologi reading-file-key into repo mirrors "
+            "(OneDrive source with repo fallback)."
         )
     )
     parser.add_argument(
         "--source",
         default=DEFAULT_ONEDRIVE_SOURCE,
-        help="Absolute OneDrive source markdown path.",
+        help=(
+            "Source markdown path. Defaults to OneDrive master. "
+            "When missing, script falls back to primary target unless --strict-source is set."
+        ),
     )
     parser.add_argument(
         "--target",
@@ -120,14 +124,22 @@ def main() -> int:
         action="store_true",
         help="Do not create a .bak-<timestamp> file when overwriting changed target content.",
     )
+    parser.add_argument(
+        "--strict-source",
+        action="store_true",
+        help="Fail if configured source path is missing (disable primary-target fallback).",
+    )
     args = parser.parse_args()
 
     repo_root = _resolve_repo_root(Path(__file__).resolve())
-    source = Path(args.source).expanduser()
+    configured_source = Path(args.source).expanduser()
+    if not configured_source.is_absolute():
+        configured_source = (repo_root / configured_source).resolve()
+    else:
+        configured_source = configured_source.resolve()
     primary_target = Path(args.target).expanduser()
     if not primary_target.is_absolute():
         primary_target = (repo_root / primary_target).resolve()
-    source = source.resolve()
     target_items: list[tuple[str, Path]] = [("TARGET1", primary_target)]
     if not args.no_secondary_target and args.secondary_target:
         secondary_target = Path(args.secondary_target).expanduser()
@@ -136,17 +148,26 @@ def main() -> int:
         if secondary_target != primary_target:
             target_items.append(("TARGET2", secondary_target))
 
-    print(f"SOURCE={source}")
+    print(f"CONFIGURED_SOURCE={configured_source}")
     for label, target in target_items:
         print(f"{label}_PATH={target}")
 
     if args.bootstrap_source_from_repo:
-        return _bootstrap_source(source, primary_target, apply=args.apply)
+        return _bootstrap_source(configured_source, primary_target, apply=args.apply)
 
+    source = configured_source
+    source_mode = "configured_source"
     if not source.exists():
-        print("SOURCE_STATUS=missing_source")
-        print("ABORTED: source missing. Create it in OneDrive or run --bootstrap-source-from-repo.")
-        return 1
+        print(f"SOURCE_STATUS=missing_source:{source}")
+        if primary_target.exists() and not args.strict_source:
+            source = primary_target
+            source_mode = "fallback_primary_target"
+            print(f"SOURCE_FALLBACK={source}")
+        else:
+            print("ABORTED: source missing. Create it in OneDrive or run --bootstrap-source-from-repo.")
+            return 1
+    print(f"SOURCE={source}")
+    print(f"SOURCE_MODE={source_mode}")
 
     statuses: list[tuple[str, Path, str]] = []
     needs_sync = False

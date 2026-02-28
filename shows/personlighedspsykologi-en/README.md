@@ -68,4 +68,6 @@ Reading key sync note:
 - Sync commands:
   - Dry-run: `python3 scripts/sync_personlighedspsykologi_reading_file_key.py`
   - Apply: `python3 scripts/sync_personlighedspsykologi_reading_file_key.py --apply`
+  - Stable fallback mode is default: if OneDrive source is unavailable, primary repo mirror is used as source.
+  - Strict mode (fail when source missing): `python3 scripts/sync_personlighedspsykologi_reading_file_key.py --strict-source --apply`
   - One-time bootstrap source from current repo file: `python3 scripts/sync_personlighedspsykologi_reading_file_key.py --bootstrap-source-from-repo --apply`

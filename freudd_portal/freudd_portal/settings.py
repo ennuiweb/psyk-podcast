@@ -176,8 +176,7 @@ FREUDD_SUBJECTS_JSON_PATH = Path(
 FREUDD_READING_MASTER_KEY_PATH = Path(
     os.environ.get(
         "FREUDD_READING_MASTER_KEY_PATH",
-        "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/"
-        "Mine dokumenter \U0001F4BE/psykologi/Personlighedspsykologi/.ai/reading-file-key.md",
+        BASE_DIR.parent / "shows" / "personlighedspsykologi-en" / "docs" / "reading-file-key.md",
     )
 )
 FREUDD_READING_MASTER_KEY_FALLBACK_PATH = Path(

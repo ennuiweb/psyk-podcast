@@ -33,14 +33,25 @@ urlpatterns = [
         name="subject-unenroll",
     ),
     re_path(
-        r"^subjects/(?P<subject_slug>[a-z0-9-]+)/tracking/reading$",
+        r"^subjects/(?P<subject_slug>[a-z0-9-]+)/tracking/tekst$",
         views.subject_tracking_reading_view,
         name="subject-tracking-reading",
     ),
     re_path(
-        r"^subjects/(?P<subject_slug>[a-z0-9-]+)/readings/open/(?P<reading_key>[a-z0-9-]+)$",
+        r"^subjects/(?P<subject_slug>[a-z0-9-]+)/tekster/open/(?P<reading_key>[a-z0-9-]+)$",
         views.subject_open_reading_view,
         name="subject-open-reading",
+    ),
+    # Legacy aliases kept for backward compatibility with existing deep links.
+    re_path(
+        r"^subjects/(?P<subject_slug>[a-z0-9-]+)/tracking/reading$",
+        views.subject_tracking_reading_view,
+        name="subject-tracking-reading-legacy",
+    ),
+    re_path(
+        r"^subjects/(?P<subject_slug>[a-z0-9-]+)/readings/open/(?P<reading_key>[a-z0-9-]+)$",
+        views.subject_open_reading_view,
+        name="subject-open-reading-legacy",
     ),
     re_path(
         r"^subjects/(?P<subject_slug>[a-z0-9-]+)/tracking/podcast$",

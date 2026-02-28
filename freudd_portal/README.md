@@ -79,10 +79,10 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - `GET /leaderboard/<subject_slug>`
 - `POST /leaderboard/profile`
 - `GET /subjects/<subject_slug>`
-- `GET /subjects/<subject_slug>/readings/open/<reading_key>` (login-required tekst-fil adgang)
+- `GET /subjects/<subject_slug>/tekster/open/<reading_key>` (login-required tekst-fil adgang)
 - `POST /subjects/<subject_slug>/enroll`
 - `POST /subjects/<subject_slug>/unenroll`
-- `POST /subjects/<subject_slug>/tracking/reading`
+- `POST /subjects/<subject_slug>/tracking/tekst`
 - `POST /subjects/<subject_slug>/tracking/podcast`
 - `POST /preferences/design-system`
 
@@ -139,7 +139,7 @@ Leaderboard alias UX rule: if a user already has an alias, it is shown locked on
 
 ## Tekst download exclusions contract (`reading_download_exclusions.json`)
 - Path default: `shows/personlighedspsykologi-en/reading_download_exclusions.json`
-- Used by `GET /subjects/<subject_slug>/readings/open/<reading_key>` and subject detail link rendering.
+- Used by `GET /subjects/<subject_slug>/tekster/open/<reading_key>` and subject detail link rendering.
 - `excluded_reading_keys` blocks selected `reading_key` values from being opened/downloaded.
 - Keys must match the manifest `readings[].reading_key` values exactly.
 

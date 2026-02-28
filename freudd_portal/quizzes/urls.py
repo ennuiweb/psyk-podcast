@@ -59,9 +59,4 @@ urlpatterns = [
         name="subject-tracking-podcast",
     ),
     re_path(r"^progress$", views.progress_view, name="progress"),
-    re_path(
-        r"^preferences/design-system$",
-        views.design_system_preference_view,
-        name="design-system-preference",
-    ),
 ]

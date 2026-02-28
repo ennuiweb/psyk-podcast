@@ -54,9 +54,8 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Extension sync is server-driven (`manage.py sync_extensions`) and runs only for enabled users with stored per-user credentials.
 - Credentials are encrypted at rest with Fernet via `FREUDD_CREDENTIALS_MASTER_KEY`.
 - Habitica server sync is active; Anki remains gated but server sync is deferred.
-- Theme governance: `paper-studio` is the redesign baseline; `classic` and `night-lab` remain runtime compatibility/preview systems.
-- Default design system is `paper-studio` (`FREUDD_DESIGN_SYSTEM_DEFAULT`), with selector placed on `mit overblik` (`GET /progress`).
-- Active design system resolution order: query (`?ds=`) -> session preview -> authenticated user preference -> cookie -> configured default.
+- Theme governance: `paper-studio` is the only active portal design system.
+- Default design system is `paper-studio` (`FREUDD_DESIGN_SYSTEM_DEFAULT`) and is locked for end users.
 - Headings/titles in the portal UI are rendered in lower-case for consistent visual tone.
 - Shared primitives in `templates/base.html` enforce radius/spacing/depth rules portal-wide, while page templates apply local layout detail.
 - Design system source of truth: `freudd_portal/docs/design-guidelines.md` (anchored to `docs/non-technical-overview.md`).
@@ -84,7 +83,6 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - `POST /subjects/<subject_slug>/unenroll`
 - `POST /subjects/<subject_slug>/tracking/tekst`
 - `POST /subjects/<subject_slug>/tracking/podcast`
-- `POST /preferences/design-system`
 
 Enrollment UX rule: `Mine fag` on `GET /progress` is read-only (open + status), while enroll/unenroll actions live in the bottom `Tilmeld og afmeld fag` module; subject detail remains read-only for enrollment state.
 
@@ -103,7 +101,7 @@ Leaderboard alias UX rule: if a user already has an alias, it is shown locked on
 - `UserExtensionAccess`: per-user enablement and last sync status for optional extensions.
 - `UserExtensionCredential`: per-user encrypted extension credentials (`habitica` now, `anki` deferred).
 - `ExtensionSyncLedger`: per-user/per-extension/per-day idempotent sync log (`ok|error|skipped`).
-- `UserInterfacePreference`: per-user interface settings (`design_system`) for persistent theme selection.
+- `UserInterfacePreference`: legacy per-user interface settings (`design_system`) kept for backward compatibility.
 - `UserReadingMark`: per-user private tekst tracking marks (`mark/unmark`) on subject detail.
 - `UserPodcastMark`: per-user private podcast tracking marks (`mark/unmark`) on subject detail.
 - `UserLeaderboardProfile`: per-user public alias and visibility settings for quizliga leaderboard (case-insensitive unique alias).

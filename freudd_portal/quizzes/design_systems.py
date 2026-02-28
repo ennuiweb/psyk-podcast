@@ -15,16 +15,6 @@ class DesignSystemDefinition:
 
 _DESIGN_SYSTEMS: tuple[DesignSystemDefinition, ...] = (
     DesignSystemDefinition(
-        key="classic",
-        label="Classic",
-        description="Eksisterende lyse portal-design.",
-    ),
-    DesignSystemDefinition(
-        key="night-lab",
-        label="Night Lab",
-        description="Mørkt, fokuseret og kontraststærkt studieudtryk.",
-    ),
-    DesignSystemDefinition(
         key="paper-studio",
         label="Paper Studio",
         description="Lys, varm og editorial-inspireret læseflade.",

@@ -18,18 +18,17 @@ Source alignment:
 
 - `Paper Studio` is the only approved redesign theme for new UI work.
 - Any new redesign proposal must include a short `Paper Studio compliance` note.
-- Legacy systems (`classic`, `night-lab`) remain in runtime only for backward compatibility and preview/testing.
+- Legacy systems (`classic`, `night-lab`) are removed from runtime selection; `paper-studio` is locked for users.
 - This file is the operational baseline; `design-system-v2-expressive.md` is the stylistic expansion layer.
 
 ## Runtime design-system architecture (current code)
 
 - Registry: `quizzes/design_systems.py`.
-- Runtime keys available: `classic`, `night-lab`, `paper-studio`.
+- Runtime keys available: `paper-studio`.
 - Default key: `paper-studio`.
 - Theme attribute on HTML: `data-design-system="<key>"`.
-- Selector UI: dashboard form on `GET /progress` in `templates/quizzes/progress.html`.
-- Resolution precedence: query (`?ds=`) -> session preview -> authenticated user preference -> cookie -> configured default.
-- Persistence endpoint: `POST /preferences/design-system`.
+- Selector UI: removed (users cannot switch design system).
+- Resolution behavior: only valid key is `paper-studio`; unsupported overrides fall back to default.
 - Resolver/context wiring: `quizzes/theme_resolver.py` + `quizzes/context_processors.py`.
 
 ## Product intent -> design requirements

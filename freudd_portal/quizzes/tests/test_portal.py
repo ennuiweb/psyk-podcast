@@ -40,7 +40,6 @@ from quizzes.models import (
 )
 from quizzes.services import load_quiz_label_mapping
 from quizzes.subject_services import clear_subject_service_caches
-from quizzes.theme_resolver import DESIGN_SYSTEM_SESSION_PREVIEW_KEY
 from quizzes.views import _enrich_subject_path_lectures
 
 
@@ -1305,15 +1304,14 @@ class QuizPortalTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'data-design-system="paper-studio"')
 
-    def test_design_system_cookie_applies_for_anonymous_request(self) -> None:
+    def test_design_system_cookie_override_is_ignored_for_unsupported_theme(self) -> None:
         self.client.cookies[settings.FREUDD_DESIGN_SYSTEM_COOKIE_NAME] = "night-lab"
         response = self.client.get(reverse("login"))
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, 'data-design-system="night-lab"')
+        self.assertContains(response, 'data-design-system="paper-studio"')
 
-    def test_design_system_query_override_wins_over_cookie(self) -> None:
-        self.client.cookies[settings.FREUDD_DESIGN_SYSTEM_COOKIE_NAME] = "night-lab"
-        response = self.client.get(f"{reverse('login')}?ds=paper-studio")
+    def test_design_system_query_override_is_ignored_for_unsupported_theme(self) -> None:
+        response = self.client.get(f"{reverse('login')}?ds=night-lab&preview=1")
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'data-design-system="paper-studio"')
 
@@ -1323,104 +1321,32 @@ class QuizPortalTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'data-design-system="paper-studio"')
 
-    def test_design_system_switcher_is_on_progress_page(self) -> None:
+    def test_design_system_switcher_is_removed_from_progress_page(self) -> None:
         user = self._create_user()
         self.client.force_login(user)
 
         response = self.client.get(reverse("progress"))
-        self.assertEqual(response.status_code, 200)
-        self.assertContains(response, 'id="progress-design-system-select"')
-        self.assertContains(response, reverse("design-system-preference"))
-
-        self.client.logout()
-        response = self.client.get(reverse("login"))
         self.assertEqual(response.status_code, 200)
         self.assertNotContains(response, 'id="progress-design-system-select"')
 
-    def test_design_system_preview_query_persists_session_override(self) -> None:
-        user = self._create_user()
-        self.client.force_login(user)
-
-        response = self.client.get(f"{reverse('progress')}?ds=night-lab&preview=1")
-        self.assertEqual(response.status_code, 200)
-        self.assertContains(response, 'data-design-system="night-lab"')
-        self.assertEqual(self.client.session.get(DESIGN_SYSTEM_SESSION_PREVIEW_KEY), "night-lab")
-
-        response = self.client.get(reverse("progress"))
-        self.assertEqual(response.status_code, 200)
-        self.assertContains(response, 'data-design-system="night-lab"')
-
-        clear_response = self.client.post(
-            reverse("design-system-preference"),
-            {
-                "design_system": "classic",
-                "clear_preview": "1",
-                "persist": "0",
-                "next": reverse("progress"),
-            },
-        )
-        self.assertEqual(clear_response.status_code, 302)
-        self.assertNotIn(DESIGN_SYSTEM_SESSION_PREVIEW_KEY, self.client.session)
-
-    def test_design_system_preference_endpoint_sets_cookie_for_anonymous(self) -> None:
-        response = self.client.post(
-            reverse("design-system-preference"),
-            {"design_system": "night-lab", "next": reverse("login")},
-        )
-        self.assertEqual(response.status_code, 302)
-        self.assertEqual(response.url, reverse("login"))
-        self.assertEqual(
-            response.cookies[settings.FREUDD_DESIGN_SYSTEM_COOKIE_NAME].value,
-            "night-lab",
-        )
-
-    def test_design_system_preference_preview_only_sets_session_without_cookie_or_db(self) -> None:
-        user = self._create_user()
-        self.client.force_login(user)
-
-        response = self.client.post(
-            reverse("design-system-preference"),
-            {
-                "design_system": "night-lab",
-                "preview": "1",
-                "persist": "0",
-                "next": reverse("progress"),
-            },
-        )
-        self.assertEqual(response.status_code, 302)
-        self.assertEqual(response.url, reverse("progress"))
-        self.assertEqual(self.client.session.get(DESIGN_SYSTEM_SESSION_PREVIEW_KEY), "night-lab")
-        self.assertFalse(UserInterfacePreference.objects.filter(user=user).exists())
-        self.assertNotIn(settings.FREUDD_DESIGN_SYSTEM_COOKIE_NAME, response.cookies)
-
-    def test_design_system_preference_endpoint_persists_for_authenticated_user(self) -> None:
-        user = self._create_user()
-        self.client.force_login(user)
-
-        response = self.client.post(
-            reverse("design-system-preference"),
-            {"design_system": "paper-studio", "next": reverse("progress")},
-        )
-        self.assertEqual(response.status_code, 302)
-        self.assertEqual(response.url, reverse("progress"))
-        pref = UserInterfacePreference.objects.get(user=user)
-        self.assertEqual(pref.design_system, "paper-studio")
-
-        response = self.client.get(reverse("progress"))
-        self.assertContains(response, 'data-design-system="paper-studio"')
-
-    def test_design_system_preference_endpoint_rejects_invalid_key(self) -> None:
-        response = self.client.post(
-            reverse("design-system-preference"),
-            {"design_system": "invalid-theme"},
-        )
-        self.assertEqual(response.status_code, 400)
+    def test_design_system_preference_endpoint_is_removed(self) -> None:
+        response = self.client.post("/preferences/design-system", {"design_system": "paper-studio"})
+        self.assertEqual(response.status_code, 404)
 
     def test_authenticated_user_preference_wins_over_cookie(self) -> None:
         user = self._create_user()
         UserInterfacePreference.objects.create(user=user, design_system="paper-studio")
         self.client.force_login(user)
         self.client.cookies[settings.FREUDD_DESIGN_SYSTEM_COOKIE_NAME] = "night-lab"
+
+        response = self.client.get(reverse("progress"))
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'data-design-system="paper-studio"')
+
+    def test_authenticated_user_unsupported_preference_falls_back_to_default(self) -> None:
+        user = self._create_user()
+        UserInterfacePreference.objects.create(user=user, design_system="classic")
+        self.client.force_login(user)
 
         response = self.client.get(reverse("progress"))
         self.assertEqual(response.status_code, 200)

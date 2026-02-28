@@ -113,7 +113,7 @@
     position: relative;
     min-height: 82px;
     display: grid;
-    grid-template-columns: 44px minmax(0, 1fr);
+    grid-template-columns: 36px minmax(0, 1fr);
     column-gap: var(--space-3);
     align-items: start;
   }
@@ -121,9 +121,9 @@
   .lecture-rail-item::after {
     content: "";
     position: absolute;
-    top: 44px;
+    top: 36px;
     bottom: calc(-1 * var(--subject-space-tight));
-    left: 22px;
+    left: 18px;
     width: 2px;
     background: var(--timeline-connector);
   }
@@ -138,8 +138,8 @@
   }
 
   .lecture-rail-link {
-    width: 44px;
-    height: 44px;
+    width: 36px;
+    height: 36px;
     border-radius: var(--radius-pill);
     border: 1px solid var(--border);
     background: var(--surface-soft);
@@ -1230,14 +1230,14 @@
 
     .lecture-rail-item {
       min-height: 76px;
-      grid-template-columns: 44px;
+      grid-template-columns: 34px;
       column-gap: 0;
       justify-content: center;
     }
 
     .lecture-rail-item::after {
-      top: 44px;
-      left: 21px;
+      top: 34px;
+      left: 16px;
       bottom: 0;
       width: 3px;
       background: #d6dce7;
@@ -1474,17 +1474,17 @@
 
     .lecture-rail-item {
       min-height: 66px;
-      grid-template-columns: 38px;
+      grid-template-columns: 30px;
     }
 
     .lecture-rail-item::after {
-      left: 18px;
-      top: 38px;
+      left: 15px;
+      top: 30px;
     }
 
     .lecture-rail-link {
-      width: 38px;
-      height: 38px;
+      width: 30px;
+      height: 30px;
       font-size: 0.92rem;
       line-height: 1;
     }
@@ -1558,8 +1558,8 @@
     .lecture-rail-link,
     .tracking-toggle-button,
     .podcast-inline-trigger {
-      min-width: 44px;
-      min-height: 44px;
+      min-width: 30px;
+      min-height: 30px;
     }
 
     .reading-hover-label {
@@ -1605,9 +1605,7 @@
               href="{{ rail.lecture_url }}"
               aria-current="{% if rail.is_active %}step{% else %}false{% endif %}"
               aria-label="{{ rail.lecture_display_title|default:rail.lecture_key }}"
-            >
-              {{ rail.index }}
-            </a>
+            ></a>
             <a
               class="lecture-rail-copy"
               href="{{ rail.lecture_url }}"

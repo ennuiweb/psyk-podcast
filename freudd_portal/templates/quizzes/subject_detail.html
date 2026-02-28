@@ -1333,12 +1333,19 @@
   }
 
   @media (max-width: 760px) {
+    body.page-subject-detail .page-shell {
+      padding:
+        10px max(8px, env(safe-area-inset-left))
+        calc(86px + env(safe-area-inset-bottom))
+        max(8px, env(safe-area-inset-right));
+    }
+
     .subject-layout {
-      gap: var(--space-3);
+      gap: var(--space-2);
     }
 
     .subject-path {
-      gap: var(--space-3);
+      gap: var(--space-2);
     }
 
     .subject-path-layout {
@@ -1364,15 +1371,31 @@
     }
 
     .active-lecture-card {
-      border-radius: 24px;
-      padding: var(--space-3);
+      border-radius: 20px;
+      padding: 10px;
+      gap: 10px;
     }
 
     .active-lecture-card::before {
-      top: 84px;
-      left: -8px;
-      width: 14px;
-      height: 14px;
+      display: none;
+    }
+
+    .active-lecture-sections {
+      gap: 10px;
+    }
+
+    .lecture-section {
+      padding: 10px;
+      border-radius: 16px;
+      gap: 8px;
+    }
+
+    .lecture-section-head {
+      gap: 8px;
+    }
+
+    .section-title-wrap {
+      gap: 6px;
     }
 
     .active-lecture-title {
@@ -1392,14 +1415,38 @@
     }
 
     .section-title {
-      font-size: clamp(1.3rem, 5.2vw, 1.56rem);
+      font-size: clamp(1.18rem, 5vw, 1.42rem);
       line-height: 1.12;
       letter-spacing: -0.004em;
     }
 
+    .reading-list {
+      gap: 8px;
+    }
+
+    .reading-card {
+      padding: 8px 10px;
+      gap: 8px;
+      border-radius: 14px;
+    }
+
+    .reading-top {
+      gap: 8px;
+    }
+
+    .reading-title {
+      font-size: clamp(1.02rem, 4.8vw, 1.18rem);
+      line-height: 1.14;
+    }
+
+    .reading-difficulties {
+      gap: 8px;
+    }
+
     .quiz-slot {
-      min-height: 102px;
-      padding: 10px;
+      min-height: 92px;
+      padding: 8px;
+      gap: 6px;
     }
 
     .quiz-slot-label {
@@ -1408,14 +1455,38 @@
     }
 
     .quiz-slot-chip {
-      width: 44px;
-      height: 44px;
-      font-size: 0.96rem;
+      width: 40px;
+      height: 40px;
+      font-size: 0.9rem;
+    }
+
+    .podcast-row {
+      padding: 8px 0;
+      gap: 8px;
+    }
+
+    .podcast-title-row {
+      gap: 8px;
+    }
+
+    .podcast-title-main {
+      gap: 8px;
+    }
+
+    .podcast-title {
+      font-size: clamp(0.98rem, 4.5vw, 1.12rem);
     }
 
   }
 
   @media (max-width: 360px) {
+    body.page-subject-detail .page-shell {
+      padding:
+        8px max(6px, env(safe-area-inset-left))
+        calc(84px + env(safe-area-inset-bottom))
+        max(6px, env(safe-area-inset-right));
+    }
+
     .subject-path-layout {
       grid-template-columns: 22px minmax(0, 1fr);
       gap: 2px;
@@ -1434,6 +1505,27 @@
     .lecture-rail-link {
       width: 18px;
       height: 18px;
+    }
+
+    .active-lecture-card {
+      padding: 8px;
+      gap: 8px;
+    }
+
+    .lecture-section {
+      padding: 8px;
+      gap: 6px;
+    }
+
+    .reading-card {
+      padding: 7px 8px;
+      gap: 6px;
+    }
+
+    .quiz-slot {
+      min-height: 84px;
+      padding: 6px;
+      gap: 4px;
     }
   }
 

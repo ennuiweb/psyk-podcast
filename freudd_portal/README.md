@@ -42,6 +42,7 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Subject detail removes KPI strip and global `Udvid alle`/`Luk alle`; lecture switching is via rail links (`?lecture=<lecture_key>`).
 - Subject detail remembers each user's last opened lecture per subject and uses it as default when `?lecture=` is omitted.
 - Subject detail spacing uses a local responsive scale (`section/block/tight`) to keep vertical rhythm consistent across rail, card header, and section blocks.
+- Subject detail uses compact mobile density on small screens (`<=760px`) to reduce nested card padding/gaps for narrow devices.
 - Active lecture card is partitioned into three fixed sibling sections in this order: `Tekster`, `Podcasts`, `Quiz for alle kilder`.
 - Quiz assets are surfaced only in `Quiz for alle kilder`, podcast assets only in `Podcasts`, and tekststatus/progress only in `Tekster`.
 - Section-level empty states are shown per section; one populated section does not hide the others.

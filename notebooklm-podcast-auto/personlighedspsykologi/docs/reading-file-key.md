@@ -54,7 +54,7 @@ Sources used for this mapping:
 - Zettler et al. (2025) → Zettler et al. (2025).pdf
 
 **W03L2 Personlighedsfunktion og forstyrrelse (Forelæsning 6, 2026-02-17)**
-- Bach & Simonsen (2023) → Bach & Simonsen (2023) .docx
+- MISSING: Bach & Simonsen (2023)
 - Sharp & Wall (2021) → Sharp & Wall (2021).pdf
 
 **W04L1 Psykoanalysens personlighedsbegreb (Forelæsning 7, 2026-02-23)**
@@ -67,13 +67,13 @@ Sources used for this mapping:
 
 **W05L1 Empiri og metode i psykoanalysen (Forelæsning 9, 2026-03-02)**
 - Exercise text → W05L1 X Freud, S. (1984/1905). Brudstykke af en hysteri-analyse.pdf
-- Exercise text → W05L1 X Gammelgaard (2010).docx
+- MISSING: W05L1 X Gammelgaard (2010)
 - Ricoeur (1981) → Ricoeur (1981).pdf
 
 **W05L2 Psykoanalysens konstituering (Forelæsning 10, 2026-03-03)**
-- Andkjær Olsen & Køppe (1991a + 1991b) → Andkjær Olsen & Køppe (1991a og b) .docx
+- MISSING: Andkjær Olsen & Køppe (1991a + 1991b)
 - Køppe (1992) → Køppe (1992) .pdf
-- Zeuthen & Køppe (2014) → Zeuthen & Køppe (2014).docx
+- MISSING: Zeuthen & Køppe (2014)
 
 **W06L1 Fænomenologi (Forelæsning 11, 2026-03-09)**
 - Exercise text → W06L1 X Spinelli (2005).pdf

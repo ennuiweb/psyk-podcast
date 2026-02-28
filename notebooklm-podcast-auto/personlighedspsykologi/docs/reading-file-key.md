@@ -8,22 +8,6 @@
 - Brief versions: any `Grundbog kapitel` gets an extra `[Brief]` version (brief, no length toggle).
 - Prompts are configured in `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json`.
 
-## Missing files → skip list (until readings are found)
-Rule: skip audio generation for any episode whose source file is missing, and skip the **lecture-level “Alle kilder”** episode if that lecture has any missing readings.
-
-Single-file skips:
-- W06L1: Funch & Roald (2014) chapter
-- W09L1: Jensen (2014)
-- W11L1: Staunæs & Juelskjær (2014)
-- W12L1: Køppe (2014)
-- W12L1: Køppe og Dammeyer (2014b)
-
-Weekly overview skips:
-- W06L1 (missing Funch & Roald 2014)
-- W09L1 (missing Jensen 2014)
-- W11L1 (missing Staunæs & Juelskjær 2014)
-- W12L1 (missing Køppe 2014; Køppe og Dammeyer 2014b)
-
 Sources used for this mapping:
 - Forelæsningsplan 2026 Personlighedspsykologi.pdf
 - Semesterplan for holdundervisning - opdateret d. 03.02.pdf
@@ -79,7 +63,6 @@ Sources used for this mapping:
 - X Spinelli (2005) → W06L1 X Spinelli (2005).pdf
 - X Moeskær Hansen & Roald (2022) → W06L1 X Moeskær Hansen & Roald (2022) .pdf
 - Grundbog kapitel 04 - Fænomenologisk personlighedspsykologi → Grundbog kapitel 04 - Fænomenologisk personlighedspsykologi.pdf (brief + full)
-- MISSING: Funch & Roald (2014) chapter
 
 **W06L2 Eksistentiel personlighedspsykologi I (Funch) (Forelæsning 12, 2026-03-10)**
 - Boss (1963) → Boss (1963) .pdf
@@ -107,7 +90,6 @@ Sources used for this mapping:
 - Dreier (1999) → Dreier (1999).pdf
 - Holzkamp (2013) → Holzkamp (2013).pdf
 - Grundbog kapitel 10 - Kritisk psykologi → Grundbog kapitel 10 - Kritisk psykologi.pdf (brief + full)
-- MISSING: Jensen (2014)
 
 **W10L1 Køn (Forelæsning 18, 2026-04-13)**
 - Bjerrum Nielsen & Rudberg (2006) → Bjerrum Nielsen & Rudberg (2006) .pdf
@@ -121,7 +103,6 @@ Sources used for this mapping:
 - Gergen (1999) → Gergen (1999) .pdf
 - Hacking (2007) → Hacking (2007) .pdf
 - Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori → Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori.pdf (brief + full)
-- MISSING: Staunæs & Juelskjær (2014)
 
 **W11L2 Narrativitet, kultur og mening (Forelæsning 21, 2026-04-21)**
 - X Raggatt (2002) → W11L2 X Raggatt (2002).pdf
@@ -134,5 +115,3 @@ Sources used for this mapping:
 - Elias (2000) → Elias (2000) .pdf
 - Grundbog kapitel 08 - Personlighed, subjektivitet og historicitet → Grundbog kapitel 08 - Personlighed, subjektivitet og historicitet.pdf (brief + full)
 - Grundbog kapitel 14 - Perspektiver på personlighedspsykologi → Grundbog kapitel 14 - Perspektiver på personlighedspsykologi.pdf (brief + full)
-- MISSING: Køppe (2014)
-- MISSING: Køppe og Dammeyer (2014b)

@@ -139,8 +139,9 @@
     display: none;
   }
 
+  .lecture-rail-item.is-past::after,
   .lecture-rail-item.is-completed::after {
-    background: var(--timeline-connector-done);
+    background: #be9358;
   }
 
   .lecture-rail-link {
@@ -168,36 +169,39 @@
       box-shadow 160ms ease;
   }
 
-  .lecture-rail-item:not(.is-active):not(.is-completed) .lecture-rail-link:hover {
+  .lecture-rail-item:not(.is-active):not(.is-past):not(.is-completed) .lecture-rail-link:hover {
     border-color: color-mix(in srgb, var(--accent) 26%, var(--border));
     background: color-mix(in srgb, var(--accent) 12%, var(--surface-soft));
     color: var(--text-subtle-2);
   }
 
-  .lecture-rail-item:not(.is-active):not(.is-completed):hover .lecture-rail-link {
+  .lecture-rail-item:not(.is-active):not(.is-past):not(.is-completed):hover .lecture-rail-link {
     border-color: color-mix(in srgb, var(--accent) 26%, var(--border));
     background: color-mix(in srgb, var(--accent) 12%, var(--surface-soft));
     color: var(--text-subtle-2);
   }
 
   .lecture-rail-item.is-active .lecture-rail-link:hover {
-    background: color-mix(in srgb, var(--accent) 44%, var(--surface));
+    background: color-mix(in srgb, #be9358 22%, var(--surface));
   }
 
-  .lecture-rail-item:not(.is-active):hover .lecture-rail-copy {
+  .lecture-rail-item:not(.is-active):not(.is-past):not(.is-completed):hover .lecture-rail-copy {
     color: var(--text-subtle-2);
   }
 
   .lecture-rail-item.is-active .lecture-rail-link {
-    border-color: color-mix(in srgb, var(--accent) 55%, transparent);
-    background: color-mix(in srgb, var(--accent) 36%, var(--surface));
-    color: var(--surface);
+    border-color: #be9358;
+    background: color-mix(in srgb, #be9358 14%, var(--surface));
+    color: #2c2316;
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, #be9358 28%, transparent);
   }
 
+  .lecture-rail-item.is-past .lecture-rail-link,
   .lecture-rail-item.is-completed .lecture-rail-link {
-    background: var(--surface-soft);
-    border-color: color-mix(in srgb, var(--success) 34%, var(--border));
-    color: var(--muted);
+    background: #be9358;
+    border-color: #be9358;
+    color: #fff;
+    box-shadow: none;
   }
 
   .lecture-rail-copy {
@@ -224,8 +228,8 @@
     text-decoration-color: currentColor;
   }
 
-  .lecture-rail-item:not(.is-active) .lecture-rail-copy:hover,
-  .lecture-rail-item:not(.is-active) .lecture-rail-copy:focus-visible {
+  .lecture-rail-item:not(.is-active):not(.is-past):not(.is-completed) .lecture-rail-copy:hover,
+  .lecture-rail-item:not(.is-active):not(.is-past):not(.is-completed) .lecture-rail-copy:focus-visible {
     color: var(--text-subtle-2);
   }
 
@@ -237,6 +241,12 @@
 
   .lecture-rail-item.is-active .lecture-rail-copy {
     color: var(--text-strong);
+    font-weight: 600;
+  }
+
+  .lecture-rail-item.is-past .lecture-rail-copy,
+  .lecture-rail-item.is-completed .lecture-rail-copy {
+    color: #4a5365;
     font-weight: 600;
   }
 
@@ -1240,6 +1250,11 @@
       background: #d6dce7;
     }
 
+    .lecture-rail-item.is-past::after,
+    .lecture-rail-item.is-completed::after {
+      background: #be9358;
+    }
+
     .lecture-rail-item:last-child::after {
       display: block;
       bottom: -40px;
@@ -1258,6 +1273,7 @@
       font-weight: 600;
     }
 
+    .lecture-rail-item.is-past .lecture-rail-link,
     .lecture-rail-item.is-completed .lecture-rail-link {
       border-color: #be9358;
       background: #be9358;
@@ -1590,7 +1606,7 @@
       <aside class="lecture-rail" aria-label="Forelæsningsforløb">
         <ol class="lecture-rail-list">
           {% for rail in lecture_rail_items %}
-          <li class="lecture-rail-item {% if rail.is_active %}is-active{% endif %} {% if rail.is_completed %}is-completed{% endif %}">
+          <li class="lecture-rail-item {% if rail.is_active %}is-active{% endif %} {% if rail.is_past %}is-past{% endif %} {% if rail.is_completed %}is-completed{% endif %}">
             <a
               class="lecture-rail-link"
               href="{{ rail.lecture_url }}"

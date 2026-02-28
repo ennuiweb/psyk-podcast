@@ -840,6 +840,7 @@ def _lecture_rail_items(
                 "lecture_key": lecture_key,
                 "lecture_url": lecture_url,
                 "is_active": (index - 1) == active_index,
+                "is_past": (index - 1) < active_index,
                 "is_completed": status == "completed",
                 "lecture_display_label": str(lecture.get("lecture_display_label") or "").strip(),
                 "lecture_display_name": str(lecture.get("lecture_display_name") or "").strip(),

@@ -1510,6 +1510,9 @@ class QuizPortalTests(TestCase):
         self.assertContains(response, "Koutsoumpis (2025)")
         self.assertTrue(response.context["lecture_rail_items"][1]["is_active"])
         self.assertFalse(response.context["lecture_rail_items"][0]["is_active"])
+        self.assertTrue(response.context["lecture_rail_items"][0]["is_past"])
+        self.assertFalse(response.context["lecture_rail_items"][1]["is_past"])
+        self.assertContains(response, 'class="lecture-rail-item  is-past ')
 
     def test_subject_detail_invalid_query_param_falls_back_to_default_lecture(self) -> None:
         user = self._create_user()

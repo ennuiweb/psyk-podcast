@@ -17,10 +17,10 @@ class ResponsiveTemplateRulesTests(SimpleTestCase):
         self.assertIn("body.page-subject-detail .site-header", body)
         self.assertIn("grid-template-columns: minmax(62px, 84px) minmax(0, 1fr);", body)
         self.assertIn(".subject-mobile-topbar", body)
-        self.assertIn(".subject-mobile-tabbar", body)
 
-    def test_subject_detail_mobile_navigation_uses_quizliga_overblik_and_subject_picker(self) -> None:
-        body = self._template_text("quizzes/subject_detail.html")
+    def test_base_mobile_navigation_uses_quizliga_overblik_and_subject_picker(self) -> None:
+        body = self._template_text("base.html")
+        self.assertIn("data-mobile-nav", body)
         self.assertIn("<span>Quizliga</span>", body)
         self.assertIn("<span>Mit overblik</span>", body)
         self.assertIn("<span>Mine fag</span>", body)
@@ -52,4 +52,5 @@ class ResponsiveTemplateRulesTests(SimpleTestCase):
 
     def test_base_template_exposes_page_class_hook_for_scoped_layout_modes(self) -> None:
         body = self._template_text("base.html")
-        self.assertIn('<body class="{% if request.resolver_match %}page-{{ request.resolver_match.url_name }}{% endif %}">', body)
+        self.assertIn("page-{{ request.resolver_match.url_name }}", body)
+        self.assertIn("has-mobile-nav", body)

@@ -131,6 +131,7 @@ Motion:
 ### Global shell
 
 - Sticky top navigation (`.site-header`) for orientation persistence.
+- Authenticated mobile/tablet views (`<=1180px`) keep a persistent bottom tabbar (`Quizliga`, `Mit overblik`, `Mine fag`) across all pages.
 - Constrained content width (`max-width: 1120px`) inside `.page-shell`.
 - Single primary content card (`.card`) per route as default frame.
 

@@ -420,6 +420,112 @@
         text-decoration: underline;
       }
 
+      .mobile-tabbar {
+        display: none;
+      }
+
+      .mobile-tabbar-inner {
+        margin: 0 auto;
+        max-width: 920px;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 6px;
+        align-items: end;
+      }
+
+      .mobile-tab,
+      .mobile-tab-button {
+        min-height: 58px;
+        border-radius: 14px;
+        border: 0;
+        color: var(--text-subtle);
+        text-decoration: none;
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        font-family: var(--font-body);
+        font-size: 0.8rem;
+        font-weight: 700;
+      }
+
+      .mobile-tab-button {
+        width: 100%;
+        background: transparent;
+        cursor: pointer;
+      }
+
+      .mobile-tab svg,
+      .mobile-tab-button svg {
+        width: 24px;
+        height: 24px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .mobile-tab.is-active,
+      .mobile-tab-button.is-active {
+        color: var(--accent-strong);
+        background: color-mix(in srgb, var(--accent) 16%, transparent);
+      }
+
+      .mobile-tab:focus-visible,
+      .mobile-tab-button:focus-visible,
+      .mobile-subject-link:focus-visible {
+        outline: 2px solid color-mix(in srgb, var(--accent) 54%, var(--accent-strong));
+        outline-offset: 2px;
+      }
+
+      .mobile-tab-subjects {
+        position: relative;
+      }
+
+      .mobile-subject-list {
+        position: absolute;
+        right: 0;
+        bottom: calc(100% + 10px);
+        width: min(280px, calc(100vw - 28px));
+        max-height: min(340px, 52vh);
+        overflow-y: auto;
+        border: 1px solid color-mix(in srgb, var(--border) 88%, transparent);
+        border-radius: 16px;
+        background: color-mix(in srgb, var(--surface) 95%, var(--surface-soft));
+        box-shadow: 0 16px 36px rgba(30, 43, 69, 0.16);
+        padding: 8px;
+        display: grid;
+        gap: 6px;
+      }
+
+      .mobile-subject-list[hidden] {
+        display: none;
+      }
+
+      .mobile-subject-link {
+        min-height: 44px;
+        border-radius: 11px;
+        border: 1px solid color-mix(in srgb, var(--border) 78%, transparent);
+        background: color-mix(in srgb, var(--surface) 85%, transparent);
+        color: var(--text-subtle-2);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        padding: 0 12px;
+        font-family: var(--font-body);
+        font-size: 0.9rem;
+        font-weight: 600;
+        line-height: 1.2;
+      }
+
+      .mobile-subject-link.is-active {
+        border-color: color-mix(in srgb, var(--accent) 44%, var(--border));
+        color: var(--text-strong);
+        background: color-mix(in srgb, var(--accent) 14%, var(--surface));
+      }
+
       .page-shell {
         position: relative;
         z-index: 1;
@@ -762,6 +868,31 @@
         }
       }
 
+      @media (max-width: 1180px) {
+        body.has-mobile-nav .page-shell {
+          padding-bottom: calc(92px + env(safe-area-inset-bottom));
+        }
+
+        .mobile-tabbar {
+          position: fixed;
+          z-index: 35;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          border-top: 1px solid color-mix(in srgb, var(--border) 84%, transparent);
+          background: color-mix(in srgb, var(--surface) 92%, var(--surface-soft));
+          padding:
+            10px max(14px, env(safe-area-inset-left))
+            calc(10px + env(safe-area-inset-bottom))
+            max(14px, env(safe-area-inset-right));
+          backdrop-filter: blur(9px);
+        }
+
+        body.has-mobile-nav .mobile-tabbar {
+          display: block;
+        }
+      }
+
       @media (max-width: 640px) {
         .page-shell {
           margin-top: var(--space-4);
@@ -800,9 +931,25 @@
           height: 76vh;
         }
       }
+
+      @media (max-width: 760px) {
+        .mobile-tabbar {
+          padding:
+            8px max(10px, env(safe-area-inset-left))
+            calc(8px + env(safe-area-inset-bottom))
+            max(10px, env(safe-area-inset-right));
+        }
+
+        .mobile-tab,
+        .mobile-tab-button {
+          min-height: 54px;
+          border-radius: 12px;
+          font-size: 0.74rem;
+        }
+      }
     </style>
   </head>
-  <body class="{% if request.resolver_match %}page-{{ request.resolver_match.url_name }}{% endif %}">
+  <body class="{% if request.resolver_match %}page-{{ request.resolver_match.url_name }}{% endif %}{% if request.user.is_authenticated %} has-mobile-nav{% endif %}">
     <header class="site-header">
       <div class="header-inner">
         <a class="brand" href="{% url 'progress' %}">freudd</a>
@@ -842,5 +989,135 @@
       {% endif %}
       {% block content %}{% endblock %}
     </main>
+    {% if request.user.is_authenticated %}
+    {% with current_page=request.resolver_match.url_name|default:'' current_subject_slug=request.resolver_match.kwargs.subject_slug|default:'' %}
+    {% with leaderboard_subject_slug=current_subject_slug|default:leaderboard_default_subject_slug %}
+    <nav class="mobile-tabbar" aria-label="Primær navigation" data-mobile-nav>
+      <div class="mobile-tabbar-inner">
+        {% if leaderboard_subject_slug %}
+        <a
+          class="mobile-tab {% if current_page == 'leaderboard-subject' or current_page == 'leaderboard-profile' %}is-active{% endif %}"
+          href="{% url 'leaderboard-subject' subject_slug=leaderboard_subject_slug %}"
+        >
+          <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+            <path d="M5 12.6V6.7"></path>
+            <path d="M12 12.6V4.6"></path>
+            <path d="M19 12.6V8.7"></path>
+            <path d="M3.5 18h17"></path>
+          </svg>
+          <span>Quizliga</span>
+        </a>
+        {% else %}
+        <a class="mobile-tab" href="{% url 'progress' %}">
+          <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+            <path d="M5 12.6V6.7"></path>
+            <path d="M12 12.6V4.6"></path>
+            <path d="M19 12.6V8.7"></path>
+            <path d="M3.5 18h17"></path>
+          </svg>
+          <span>Quizliga</span>
+        </a>
+        {% endif %}
+        <a class="mobile-tab {% if current_page == 'progress' %}is-active{% endif %}" href="{% url 'progress' %}">
+          <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+            <path d="M3.8 8.4h16.4"></path>
+            <path d="M3.8 15.6h16.4"></path>
+            <path d="M8 4.8v14.4"></path>
+          </svg>
+          <span>Mit overblik</span>
+        </a>
+        <div class="mobile-tab-subjects">
+          <button
+            type="button"
+            class="mobile-tab-button {% if current_page|slice:':8' == 'subject-' %}is-active{% endif %}"
+            data-subject-menu-toggle
+            aria-expanded="false"
+            aria-controls="mobile-subject-list"
+          >
+            <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+              <path d="M5 5h14"></path>
+              <path d="M5 11h14"></path>
+              <path d="M5 17h10"></path>
+              <path d="m18 15 2 2-2 2"></path>
+            </svg>
+            <span>Mine fag</span>
+          </button>
+          <div class="mobile-subject-list" id="mobile-subject-list" data-subject-menu-list hidden>
+            {% if topmenu_enrolled_subjects %}
+            {% for top_subject in topmenu_enrolled_subjects %}
+            <a
+              class="mobile-subject-link {% if top_subject.slug == current_subject_slug and current_page|slice:':8' == 'subject-' %}is-active{% endif %}"
+              href="{{ top_subject.detail_url }}"
+            >
+              {{ top_subject.title }}
+            </a>
+            {% endfor %}
+            {% else %}
+            <a class="mobile-subject-link" href="{% url 'progress' %}">Ingen tilmeldte fag endnu</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </nav>
+    {% endwith %}
+    {% endwith %}
+    {% endif %}
+    <script>
+      (() => {
+        const nav = document.querySelector("[data-mobile-nav]");
+        if (!nav) {
+          return;
+        }
+        const toggle = nav.querySelector("[data-subject-menu-toggle]");
+        const list = nav.querySelector("[data-subject-menu-list]");
+        if (!(toggle instanceof HTMLButtonElement) || !(list instanceof HTMLElement)) {
+          return;
+        }
+
+        const closeList = () => {
+          list.setAttribute("hidden", "");
+          toggle.setAttribute("aria-expanded", "false");
+          toggle.classList.remove("is-active");
+        };
+
+        const openList = () => {
+          list.removeAttribute("hidden");
+          toggle.setAttribute("aria-expanded", "true");
+          toggle.classList.add("is-active");
+        };
+
+        toggle.addEventListener("click", (event) => {
+          event.stopPropagation();
+          if (list.hasAttribute("hidden")) {
+            openList();
+            return;
+          }
+          closeList();
+        });
+
+        document.addEventListener("click", (event) => {
+          if (list.hasAttribute("hidden")) {
+            return;
+          }
+          const target = event.target;
+          if (target instanceof Node && nav.contains(target)) {
+            return;
+          }
+          closeList();
+        });
+
+        document.addEventListener("keydown", (event) => {
+          if (event.key === "Escape") {
+            closeList();
+          }
+        });
+
+        list.querySelectorAll("a").forEach((item) => {
+          item.addEventListener("click", () => {
+            closeList();
+          });
+        });
+      })();
+    </script>
   </body>
 </html>

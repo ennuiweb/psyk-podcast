@@ -40,6 +40,7 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Learning path on subject pages (`/subjects/<subject_slug>`) is lecture-first with nested tekststatus (`active|completed|no_quiz`) and quiz/podcast navigation.
 - Subject detail UI is mobile-first and uses a left lecture rail + single active lecture card (no multi-panel accordion).
 - Subject detail removes KPI strip and global `Udvid alle`/`Luk alle`; lecture switching is via rail links (`?lecture=<lecture_key>`).
+- Subject detail remembers each user's last opened lecture per subject and uses it as default when `?lecture=` is omitted.
 - Subject detail spacing uses a local responsive scale (`section/block/tight`) to keep vertical rhythm consistent across rail, card header, and section blocks.
 - Active lecture card is partitioned into three fixed sibling sections in this order: `Tekster`, `Podcasts`, `Quiz for alle kilder`.
 - Quiz assets are surfaced only in `Quiz for alle kilder`, podcast assets only in `Podcasts`, and tekststatus/progress only in `Tekster`.

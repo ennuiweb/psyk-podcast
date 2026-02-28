@@ -36,6 +36,7 @@ from quizzes.models import (
     UserPodcastMark,
     UserReadingMark,
     UserReadingProgress,
+    UserSubjectLastLecture,
     UserUnitProgress,
 )
 from quizzes.services import load_quiz_label_mapping
@@ -1439,6 +1440,66 @@ class QuizPortalTests(TestCase):
         self.assertTrue(response.context["lecture_rail_items"][0]["is_past"])
         self.assertFalse(response.context["lecture_rail_items"][1]["is_past"])
         self.assertContains(response, 'class="lecture-rail-item  is-past ')
+
+    def test_subject_detail_remembers_last_selected_lecture_per_subject(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+
+        detail_url = reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"})
+        first = self.client.get(f"{detail_url}?lecture=W01L2")
+        self.assertEqual(first.status_code, 200)
+        self.assertEqual(first.context["active_lecture"]["lecture_key"], "W01L2")
+
+        remembered = UserSubjectLastLecture.objects.get(
+            user=user,
+            subject_slug="personlighedspsykologi",
+        )
+        self.assertEqual(remembered.lecture_key, "W01L2")
+
+        second = self.client.get(detail_url)
+        self.assertEqual(second.status_code, 200)
+        self.assertEqual(second.context["active_lecture"]["lecture_key"], "W01L2")
+        self.assertContains(second, "data-active-lecture-key=\"W01L2\"")
+
+    def test_subject_detail_query_param_overrides_saved_lecture(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+        UserSubjectLastLecture.objects.create(
+            user=user,
+            subject_slug="personlighedspsykologi",
+            lecture_key="W01L2",
+        )
+
+        detail_url = reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"})
+        response = self.client.get(f"{detail_url}?lecture=W01L1")
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.context["active_lecture"]["lecture_key"], "W01L1")
+
+        remembered = UserSubjectLastLecture.objects.get(
+            user=user,
+            subject_slug="personlighedspsykologi",
+        )
+        self.assertEqual(remembered.lecture_key, "W01L1")
+
+    def test_subject_detail_falls_back_when_saved_lecture_is_missing(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+        UserSubjectLastLecture.objects.create(
+            user=user,
+            subject_slug="personlighedspsykologi",
+            lecture_key="W99L9",
+        )
+
+        detail_url = reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"})
+        response = self.client.get(detail_url)
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.context["active_lecture"]["lecture_key"], "W01L1")
+
+        remembered = UserSubjectLastLecture.objects.get(
+            user=user,
+            subject_slug="personlighedspsykologi",
+        )
+        self.assertEqual(remembered.lecture_key, "W01L1")
 
     def test_subject_detail_invalid_query_param_falls_back_to_default_lecture(self) -> None:
         user = self._create_user()

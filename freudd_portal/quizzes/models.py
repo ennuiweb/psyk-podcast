@@ -72,6 +72,25 @@ class SubjectEnrollment(models.Model):
         return f"{self.user_id}:{self.subject_slug}"
 
 
+class UserSubjectLastLecture(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    subject_slug = models.CharField(max_length=64)
+    lecture_key = models.CharField(max_length=32)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=["user", "subject_slug"], name="uq_user_subject_last_lecture"),
+        ]
+        indexes = [
+            models.Index(fields=["user", "subject_slug"], name="subject_last_user_slug_idx"),
+            models.Index(fields=["subject_slug"], name="subject_last_slug_idx"),
+        ]
+
+    def __str__(self) -> str:
+        return f"{self.user_id}:{self.subject_slug}:{self.lecture_key}"
+
+
 class UserInterfacePreference(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     design_system = models.CharField(max_length=32, default="classic")

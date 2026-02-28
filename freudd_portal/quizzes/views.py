@@ -45,6 +45,7 @@ from .models import (
     SubjectEnrollment,
     UserPodcastMark,
     UserReadingMark,
+    UserSubjectLastLecture,
 )
 from .rate_limit import evaluate_rate_limit
 from .services import (
@@ -809,6 +810,40 @@ def _selected_active_lecture(
             return index, lecture
 
     return 0, lectures[0]
+
+
+def _normalize_subject_lecture_key(value: object) -> str:
+    lecture_key = str(value or "").strip().upper()
+    if not lecture_key:
+        return ""
+    if not SUBJECT_LECTURE_KEY_RE.match(lecture_key):
+        return ""
+    return lecture_key
+
+
+def _load_last_subject_lecture_key(*, user, subject_slug: str) -> str:
+    row = (
+        UserSubjectLastLecture.objects.filter(
+            user=user,
+            subject_slug=subject_slug,
+        )
+        .only("lecture_key")
+        .first()
+    )
+    if row is None:
+        return ""
+    return _normalize_subject_lecture_key(row.lecture_key)
+
+
+def _save_last_subject_lecture_key(*, user, subject_slug: str, lecture_key: object) -> None:
+    normalized_lecture_key = _normalize_subject_lecture_key(lecture_key)
+    if not normalized_lecture_key:
+        return
+    UserSubjectLastLecture.objects.update_or_create(
+        user=user,
+        subject_slug=subject_slug,
+        defaults={"lecture_key": normalized_lecture_key},
+    )
 
 
 def _lecture_rail_items(
@@ -1584,11 +1619,23 @@ def subject_detail_view(request: HttpRequest, subject_slug: str) -> HttpResponse
         subject_slug=subject.slug,
         lectures=lecture_payload,
     )
+    requested_lecture_key = _normalize_subject_lecture_key(request.GET.get("lecture"))
+    fallback_lecture_key = ""
+    if not requested_lecture_key:
+        fallback_lecture_key = _load_last_subject_lecture_key(
+            user=request.user,
+            subject_slug=subject.slug,
+        )
     active_index, active_lecture = _selected_active_lecture(
         lecture_payload,
-        requested_lecture_key=request.GET.get("lecture"),
+        requested_lecture_key=requested_lecture_key or fallback_lecture_key,
     )
     if isinstance(active_lecture, dict):
+        _save_last_subject_lecture_key(
+            user=request.user,
+            subject_slug=subject.slug,
+            lecture_key=active_lecture.get("lecture_key"),
+        )
         active_lecture["quiz_difficulty_slots"] = _quiz_difficulty_slots(active_lecture.get("lecture_assets"))
         active_lecture["podcast_rows"] = _flatten_podcast_rows(active_lecture)
         readings = active_lecture.get("readings") if isinstance(active_lecture.get("readings"), list) else []

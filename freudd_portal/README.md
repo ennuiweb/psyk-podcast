@@ -47,7 +47,7 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Quiz assets are surfaced only in `Quiz for alle kilder`, podcast assets only in `Podcasts`, and tekststatus/progress only in `Tekster`.
 - Section-level empty states are shown per section; one populated section does not hide the others.
 - Tekstkort always render L/M/S difficulty indicators in subject detail.
-- Lecture rail rows render compact marker dots (without index numbers) plus lecture copy (week label + cleaned lecture title).
+- Lecture rail rows render extra-compact marker dots on mobile (without index numbers) plus lecture copy (week label + cleaned lecture title).
 - Module headers in subject detail are rendered as a combined headline (`Uge x, forelæsning x: <titel>`), with cleaned lecture title metadata.
 - Quiz labels are rendered from cleaned `episode_title` metadata (`modul` + `titel`) instead of raw file/tag strings.
 - Quiz wrapper header uses a structured identity block (module label + title) and includes in-flow progress feedback per question step.

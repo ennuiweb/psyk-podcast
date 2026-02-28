@@ -1342,24 +1342,24 @@
     }
 
     .subject-path-layout {
-      grid-template-columns: 56px minmax(0, 1fr);
-      gap: 10px;
+      grid-template-columns: 24px minmax(0, 1fr);
+      gap: 4px;
     }
 
     .lecture-rail-item {
-      min-height: 66px;
-      grid-template-columns: 30px;
+      min-height: 52px;
+      grid-template-columns: 20px;
     }
 
     .lecture-rail-item::after {
-      left: 15px;
-      top: 30px;
+      left: 10px;
+      top: 20px;
     }
 
     .lecture-rail-link {
-      width: 30px;
-      height: 30px;
-      font-size: 0.92rem;
+      width: 20px;
+      height: 20px;
+      font-size: 0.72rem;
       line-height: 1;
     }
 
@@ -1415,8 +1415,34 @@
 
   }
 
+  @media (max-width: 360px) {
+    .subject-path-layout {
+      grid-template-columns: 22px minmax(0, 1fr);
+      gap: 2px;
+    }
+
+    .lecture-rail-item {
+      min-height: 48px;
+      grid-template-columns: 18px;
+    }
+
+    .lecture-rail-item::after {
+      left: 9px;
+      top: 18px;
+    }
+
+    .lecture-rail-link {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
   @media (hover: none), (pointer: coarse) {
-    .lecture-rail-link,
+    .lecture-rail-link {
+      min-width: 20px;
+      min-height: 20px;
+    }
+
     .tracking-toggle-button,
     .podcast-inline-trigger {
       min-width: 44px;

@@ -335,7 +335,7 @@
       <h1 class="quiz-title">{{ quiz_title }}</h1>
     </div>
     {% if user_is_authenticated %}
-    <a class="ghost-link" href="{{ back_url }}" onclick="if (window.history.length > 1) { event.preventDefault(); window.history.back(); }">Tilbage</a>
+    <a class="ghost-link back-link" href="{{ back_url }}" onclick="if (window.history.length > 1) { event.preventDefault(); window.history.back(); }">Tilbage</a>
     {% endif %}
   </div>
 

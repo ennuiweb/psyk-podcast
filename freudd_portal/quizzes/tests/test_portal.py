@@ -802,6 +802,11 @@ class QuizPortalTests(TestCase):
     def test_progress_page_uses_quiz_links_labels(self) -> None:
         user = self._create_user()
         self.client.force_login(user)
+        UserSubjectLastLecture.objects.create(
+            user=user,
+            subject_slug="personlighedspsykologi",
+            lecture_key="W01L1",
+        )
 
         QuizProgress.objects.create(
             user=user,
@@ -826,6 +831,14 @@ class QuizPortalTests(TestCase):
         self.assertContains(response, "Episode")
         self.assertContains(response, "Mellem · 2 spørgsmål")
         self.assertContains(response, "Senest åbnet fag")
+
+    def test_progress_page_hides_last_opened_badge_without_saved_subject(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+
+        response = self.client.get(reverse("progress"))
+        self.assertEqual(response.status_code, 200)
+        self.assertNotContains(response, "Senest åbnet fag")
 
     def test_progress_page_quiz_history_shows_completed_status_and_correct_answers(self) -> None:
         user = self._create_user()
@@ -852,6 +865,8 @@ class QuizPortalTests(TestCase):
         self.assertContains(response, "Fuldført")
         self.assertNotContains(response, "I gang")
         self.assertContains(response, "5 / 10")
+        self.assertContains(response, "quiz-history-mobile")
+        self.assertContains(response, "quiz-history-card")
 
     def test_load_quiz_label_mapping_reads_subject_slug(self) -> None:
         labels = load_quiz_label_mapping()

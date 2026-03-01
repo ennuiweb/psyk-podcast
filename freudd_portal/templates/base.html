@@ -346,6 +346,30 @@
         text-decoration: underline;
       }
 
+      .mobile-header-menu-button {
+        display: none;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+        border: 1px solid color-mix(in srgb, var(--border-strong) 88%, transparent);
+        background: color-mix(in srgb, var(--surface) 92%, var(--surface-soft));
+        color: var(--text-strong);
+        cursor: pointer;
+        padding: 0;
+      }
+
+      .mobile-header-menu-button svg {
+        width: 22px;
+        height: 22px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
       .mobile-tabbar {
         display: none;
       }
@@ -853,21 +877,6 @@
           font-size: 1.36rem;
         }
 
-        .nav-group-subjects {
-          flex-wrap: wrap;
-          overflow-x: visible;
-          padding-bottom: 0;
-        }
-
-        .nav-group-main {
-          justify-content: flex-start;
-        }
-
-        .nav-action {
-          padding: 0 var(--space-3);
-          font-size: 0.85rem;
-        }
-
         .card {
           border-radius: var(--radius-xl);
           padding: var(--space-4);
@@ -883,6 +892,98 @@
       }
 
       @media (max-width: 760px) {
+        .site-header {
+          overflow: visible;
+        }
+
+        .header-inner {
+          position: relative;
+          min-height: 60px;
+          align-items: center;
+          flex-wrap: nowrap;
+          padding: var(--space-2) var(--space-3);
+        }
+
+        .mobile-header-menu-button {
+          display: inline-flex;
+          flex: 0 0 auto;
+        }
+
+        .brand {
+          margin-left: var(--space-2);
+          font-size: clamp(1.55rem, 8vw, 1.82rem);
+        }
+
+        .nav-links {
+          display: none;
+          position: absolute;
+          top: calc(100% + 8px);
+          left: var(--space-2);
+          right: var(--space-2);
+          border: 1px solid color-mix(in srgb, var(--border) 85%, transparent);
+          border-radius: var(--radius-lg);
+          background: color-mix(in srgb, var(--surface) 97%, var(--surface-soft));
+          box-shadow: 0 16px 30px rgba(30, 43, 69, 0.16);
+          padding: var(--space-2);
+          z-index: 42;
+        }
+
+        .site-header.is-mobile-menu-open .nav-links {
+          display: flex;
+          flex-direction: column;
+          align-items: stretch;
+          gap: var(--space-2);
+        }
+
+        .site-header.is-mobile-menu-open .mobile-header-menu-button {
+          color: var(--accent-strong);
+          border-color: color-mix(in srgb, var(--accent) 45%, var(--border-strong));
+          background: color-mix(in srgb, var(--accent) 16%, var(--surface));
+        }
+
+        .nav-group,
+        .nav-group-main {
+          width: 100%;
+          margin-left: 0;
+          justify-content: flex-start;
+        }
+
+        .nav-group-subjects {
+          display: grid;
+          gap: var(--space-2);
+          max-height: min(280px, 38vh);
+          overflow-y: auto;
+          padding-bottom: 0;
+        }
+
+        .nav-action {
+          width: 100%;
+          justify-content: flex-start;
+          font-size: 0.92rem;
+        }
+
+        .inline-form {
+          width: 100%;
+          display: block;
+        }
+
+        .nav-text-button {
+          width: 100%;
+          min-height: 44px;
+          border-radius: var(--radius-nav);
+          border: 1px solid var(--border-strong);
+          background: var(--surface);
+          color: var(--text-subtle-2);
+          text-align: left;
+          padding: 0 var(--space-3);
+        }
+
+        .nav-text-button:hover {
+          border-color: color-mix(in srgb, var(--accent) 48%, var(--border-strong));
+          background: var(--accent-soft);
+          text-decoration: none;
+        }
+
         .mobile-tabbar {
           padding:
             8px max(10px, env(safe-area-inset-left))
@@ -902,8 +1003,22 @@
   <body class="{% if request.resolver_match %}page-{{ request.resolver_match.url_name }}{% endif %}{% if request.user.is_authenticated %} has-mobile-nav{% endif %}">
     <header class="site-header">
       <div class="header-inner">
+        <button
+          type="button"
+          class="mobile-header-menu-button"
+          data-header-menu-toggle
+          aria-expanded="false"
+          aria-controls="header-nav-links"
+        >
+          <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+            <path d="M4 7h16"></path>
+            <path d="M4 12h16"></path>
+            <path d="M4 17h16"></path>
+          </svg>
+          <span class="visually-hidden">Åbn menu</span>
+        </button>
         <a class="brand" href="{% url 'progress' %}">freudd</a>
-        <div class="nav-links">
+        <div class="nav-links" id="header-nav-links" data-header-menu-panel>
           {% if request.user.is_authenticated and topmenu_enrolled_subjects %}
           <div class="nav-group nav-group-subjects">
             {% for subject in topmenu_enrolled_subjects %}
@@ -991,8 +1106,81 @@
     {% endif %}
     <script>
       (() => {
+        const mobileHeaderQuery = window.matchMedia("(max-width: 760px)");
+        const header = document.querySelector(".site-header");
+        const headerToggle = document.querySelector("[data-header-menu-toggle]");
+        const headerPanel = document.querySelector("[data-header-menu-panel]");
+        if (
+          header instanceof HTMLElement &&
+          headerToggle instanceof HTMLButtonElement &&
+          headerPanel instanceof HTMLElement
+        ) {
+          const closeHeaderMenu = () => {
+            header.classList.remove("is-mobile-menu-open");
+            headerToggle.setAttribute("aria-expanded", "false");
+          };
+
+          const openHeaderMenu = () => {
+            header.classList.add("is-mobile-menu-open");
+            headerToggle.setAttribute("aria-expanded", "true");
+          };
+
+          const syncHeaderMenu = () => {
+            if (!mobileHeaderQuery.matches) {
+              closeHeaderMenu();
+            }
+          };
+
+          headerToggle.addEventListener("click", (event) => {
+            event.stopPropagation();
+            if (!mobileHeaderQuery.matches) {
+              return;
+            }
+            if (header.classList.contains("is-mobile-menu-open")) {
+              closeHeaderMenu();
+              return;
+            }
+            openHeaderMenu();
+          });
+
+          document.addEventListener("click", (event) => {
+            if (!mobileHeaderQuery.matches || !header.classList.contains("is-mobile-menu-open")) {
+              return;
+            }
+            const target = event.target;
+            if (target instanceof Node && header.contains(target)) {
+              return;
+            }
+            closeHeaderMenu();
+          });
+
+          document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") {
+              closeHeaderMenu();
+            }
+          });
+
+          headerPanel.querySelectorAll("a, button").forEach((item) => {
+            if (item === headerToggle) {
+              return;
+            }
+            item.addEventListener("click", () => {
+              if (mobileHeaderQuery.matches) {
+                closeHeaderMenu();
+              }
+            });
+          });
+
+          if (typeof mobileHeaderQuery.addEventListener === "function") {
+            mobileHeaderQuery.addEventListener("change", syncHeaderMenu);
+          } else if (typeof mobileHeaderQuery.addListener === "function") {
+            mobileHeaderQuery.addListener(syncHeaderMenu);
+          }
+          syncHeaderMenu();
+        }
+
         const nav = document.querySelector("[data-mobile-nav]");
-        if (!nav) {
+        if (!(nav instanceof HTMLElement)) {
           return;
         }
         const toggle = nav.querySelector("[data-subject-menu-toggle]");

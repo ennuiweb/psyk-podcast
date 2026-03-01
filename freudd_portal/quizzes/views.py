@@ -1243,9 +1243,24 @@ def gamification_me_view(request: HttpRequest) -> HttpResponse:
 def progress_view(request: HttpRequest) -> HttpResponse:
     catalog = load_subject_catalog()
     season = active_half_year_season()
+    active_subject_slugs = {subject.slug for subject in catalog.active_subjects}
 
     enrolled_slugs = set(
         SubjectEnrollment.objects.filter(user=request.user).values_list("subject_slug", flat=True)
+    )
+    last_opened_subject_row = (
+        UserSubjectLastLecture.objects.filter(
+            user=request.user,
+            subject_slug__in=active_subject_slugs,
+        )
+        .only("subject_slug")
+        .order_by("-updated_at")
+        .first()
+    )
+    last_opened_subject_slug = (
+        str(last_opened_subject_row.subject_slug).strip()
+        if last_opened_subject_row is not None
+        else ""
     )
     subject_cards: list[dict[str, object]] = []
     subject_tracking_targets: list[dict[str, str]] = []
@@ -1340,6 +1355,7 @@ def progress_view(request: HttpRequest) -> HttpResponse:
         {
             "rows": rows,
             "subject_cards": subject_cards,
+            "last_opened_subject_slug": last_opened_subject_slug,
             "subjects_error": catalog.error,
             "leaderboard_profile": profile_payload,
             "leaderboard_alias_editing": leaderboard_alias_editing,

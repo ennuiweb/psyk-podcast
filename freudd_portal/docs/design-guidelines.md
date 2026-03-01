@@ -228,7 +228,7 @@ Order:
 1. Intro context (`dashboard-head`)
 2. `Mine fag` cards with status and `Åbn fag`
 3. Tracking + leaderboard blocks
-4. `Quizhistorik` table
+4. `Quizhistorik` (`table` on desktop, compact cards on mobile)
 5. `Tilmeld og afmeld fag` module
 
 Behavior:
@@ -236,6 +236,8 @@ Behavior:
 - `Åbn fag` is dominant for enrolled subjects.
 - Enrollment mutation controls are isolated to bottom module.
 - Alias editing is explicit mode-based (not always-on).
+- Mobile (`<=760px`) uses a compact topbar with menu button + fixed bottom tabbar.
+- Dashboard sections render as stacked cards with full-width primary CTAs on mobile.
 
 ### 7.2 Subject Detail (`/subjects/<subject_slug>`)
 

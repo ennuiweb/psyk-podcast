@@ -2,24 +2,15 @@
 {% block title %}mit overblik · freudd{% endblock %}
 {% block content %}
 <style>
-  .dashboard-card {
-    background: var(--surface);
+  .dashboard-shell {
+    display: grid;
+    gap: var(--space-3);
   }
 
   .dashboard-head {
-    padding: var(--space-3);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    background: var(--surface-soft);
+    border-color: color-mix(in srgb, var(--border) 86%, transparent);
+    background: linear-gradient(160deg, color-mix(in srgb, var(--surface-soft) 92%, var(--surface)), var(--surface));
     display: grid;
-    gap: var(--space-4);
-  }
-
-  .dashboard-top {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    justify-content: space-between;
     gap: var(--space-3);
   }
 
@@ -39,15 +30,14 @@
   }
 
   .dashboard-section {
-    margin-top: var(--space-4);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    background: var(--surface-soft);
-    padding: var(--space-4);
+    border-color: color-mix(in srgb, var(--border) 88%, transparent);
+    background: linear-gradient(160deg, color-mix(in srgb, var(--surface-soft) 95%, var(--surface)), var(--surface));
+    display: grid;
+    gap: var(--space-3);
   }
 
   .section-head {
-    margin-bottom: var(--space-3);
+    margin-bottom: 0;
   }
 
   .section-title {
@@ -70,7 +60,7 @@
     border: 1px solid var(--border);
     border-radius: var(--radius-md);
     background: var(--surface);
-    padding: var(--space-4);
+    padding: var(--space-3);
     display: grid;
     gap: var(--space-3);
   }
@@ -144,8 +134,8 @@
     min-height: var(--control-min-height);
     border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
     border-radius: var(--radius-pill);
-    background: var(--accent-soft);
-    color: var(--info-ink-strong);
+    background: linear-gradient(150deg, var(--button-grad-start), var(--button-grad-end));
+    color: var(--accent-ink);
     text-decoration: none;
     font-weight: 700;
     padding: 0 var(--space-4);
@@ -154,8 +144,8 @@
 
   .subject-open-link:hover {
     border-color: color-mix(in srgb, var(--accent) 56%, transparent);
-    background: var(--info-bg-strong);
-    color: var(--info-ink-strong);
+    background: linear-gradient(145deg, var(--button-grad-hover-start), var(--button-grad-hover-end));
+    color: var(--button-hover-ink);
   }
 
   .subject-toggle-button {
@@ -205,7 +195,7 @@
     flex-wrap: wrap;
     gap: var(--space-2);
     color: var(--muted);
-    font-size: 0.86rem;
+    font-size: 0.9rem;
   }
 
   .leaderboard-top-list {
@@ -233,10 +223,10 @@
   }
 
   .leaderboard-profile-form {
-    margin: 0 0 var(--space-3);
+    margin: 0;
     display: grid;
     gap: var(--space-2);
-    max-width: 26rem;
+    max-width: 28rem;
   }
 
   .leaderboard-alias-lock {
@@ -257,6 +247,20 @@
     align-items: center;
   }
 
+  .leaderboard-profile-controls label {
+    margin-bottom: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: 0.95rem;
+  }
+
+  .leaderboard-profile-controls input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin: 0;
+  }
+
   .leaderboard-profile-form input[type="text"] {
     min-height: var(--control-min-height);
     border: 1px solid var(--border-strong);
@@ -270,12 +274,12 @@
   }
 
   .leaderboard-season-text {
-    margin: 0 0 var(--space-3);
+    margin: 0;
     color: var(--muted);
     font-size: 0.88rem;
   }
 
-  .table-wrap {
+  .quiz-history-desktop {
     border-radius: var(--radius-md);
     background: var(--surface);
   }
@@ -434,44 +438,110 @@
     font-variant-numeric: tabular-nums;
   }
 
+  .quiz-history-mobile {
+    display: none;
+    gap: var(--space-2);
+  }
+
+  .quiz-history-card {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--surface);
+    padding: var(--space-3);
+    display: grid;
+    gap: var(--space-2);
+  }
+
+  .quiz-history-title {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.3;
+  }
+
+  .quiz-history-line {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    align-items: center;
+  }
+
+  .quiz-history-meta {
+    color: var(--muted);
+    font-size: 0.82rem;
+  }
+
   .empty-copy {
     margin: 0;
     color: var(--muted);
   }
 
-  .dashboard-card :is(select, button, a):focus-visible {
+  .dashboard-shell :is(select, button, a):focus-visible {
     outline: none;
     box-shadow: 0 0 0 3px var(--focus-ring);
   }
 
-  @media (min-width: 780px) {
-    .dashboard-head {
-      grid-template-columns: minmax(0, 1fr);
-      align-items: start;
+  @media (min-width: 900px) {
+    .subject-grid,
+    .metric-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
 
-  @media (max-width: 640px) {
+  @media (max-width: 760px) {
+    .dashboard-shell {
+      gap: var(--space-2);
+    }
+
+    .dashboard-head,
     .dashboard-section {
+      padding: var(--space-3);
+      border-radius: var(--radius-lg);
+    }
+
+    .subject-card,
+    .metric-card,
+    .quiz-history-card {
       padding: var(--space-3);
     }
 
-    .subject-card {
-      padding: var(--space-3);
+    .subject-actions,
+    .leaderboard-profile-controls {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      align-items: stretch;
+    }
+
+    .subject-actions form {
+      width: 100%;
+    }
+
+    .subject-open-link,
+    .subject-toggle-button {
+      width: 100%;
+    }
+
+    .leaderboard-profile-controls label {
+      justify-content: flex-start;
+    }
+
+    .quiz-history-desktop {
+      display: none;
+    }
+
+    .quiz-history-mobile {
+      display: grid;
     }
   }
 </style>
-<div class="card dashboard-card">
-  <header class="dashboard-head">
-    <div class="dashboard-top">
-      <div class="dashboard-copy">
-        <h1 class="quiz-title dashboard-title">Mit overblik</h1>
-        <p class="dashboard-intro">Tilmeld fag, og få overblik over dine quizscore.</p>
-      </div>
+<div class="dashboard-shell">
+  <header class="card dashboard-head">
+    <div class="dashboard-copy">
+      <h1 class="quiz-title dashboard-title">Mit overblik</h1>
+      <p class="dashboard-intro">Tilmeld fag, og få overblik over dine quizscore.</p>
     </div>
   </header>
 
-  <section class="dashboard-section">
+  <section class="card dashboard-section">
     <div class="section-head">
       <h2 class="section-title">Mine fag</h2>
       <p class="section-subtitle">Åbn fag og se status.</p>
@@ -487,7 +557,7 @@
         <div>
           <div class="subject-headline">
             <h3>{{ subject.title }}</h3>
-            {% if rows and forloop.first %}
+            {% if subject.slug == last_opened_subject_slug %}
             <span class="subject-badge">Senest åbnet fag</span>
             {% endif %}
           </div>
@@ -509,7 +579,7 @@
     {% endif %}
   </section>
 
-  <section class="dashboard-section">
+  <section class="card dashboard-section">
     <div class="section-head">
       <h2 class="section-title">Personlig tracking</h2>
       <p class="section-subtitle">Din private status på tekster, podcasts og quizzer.</p>
@@ -533,7 +603,7 @@
     {% endif %}
   </section>
 
-  <section class="dashboard-section" id="quizliga-indstillinger">
+  <section class="card dashboard-section" id="quizliga-indstillinger">
     <div class="section-head">
       <h2 class="section-title">Offentlig quizliga</h2>
       <p class="section-subtitle">Kun alias, placering og gennemførte quizzer vises offentligt.</p>
@@ -603,12 +673,12 @@
     {% endif %}
   </section>
 
-  <section class="dashboard-section">
+  <section class="card dashboard-section">
     <div class="section-head">
       <h2 class="section-title">Quizhistorik</h2>
     </div>
     {% if rows %}
-    <div class="table-wrap">
+    <div class="table-wrap quiz-history-desktop">
       <table class="quiz-table">
         <thead>
           <tr>
@@ -669,12 +739,56 @@
         </tbody>
       </table>
     </div>
+
+    <div class="quiz-history-mobile">
+      {% for row in rows %}
+      <article class="quiz-history-card">
+        {% if row.module_label %}
+        <div class="quiz-module-label">{{ row.module_label }}</div>
+        {% endif %}
+        <h3 class="quiz-history-title"><a class="quiz-link" href="{{ row.quiz_url }}">{{ row.title }}</a></h3>
+        <div class="quiz-history-line">
+          <span class="difficulty-pill {% if row.difficulty_label == 'Let' %}is-easy{% elif row.difficulty_label == 'Svær' %}is-hard{% endif %}">
+            {{ row.difficulty_label }}{% if row.question_count > 0 %} · {{ row.question_count }} spørgsmål{% endif %}
+          </span>
+          <span class="status-pill {% if row.status == 'completed' %}is-complete{% else %}is-progress{% endif %}">
+            <span class="status-dot" aria-hidden="true"></span>
+            {{ row.status_label }}
+          </span>
+        </div>
+        <div class="answers-cell">
+          {% if row.question_count > 0 %}
+          <progress class="answers-track" value="{{ row.answers_count }}" max="{{ row.question_count }}" aria-label="{{ row.answers_count }} af {{ row.question_count }} rigtige svar">
+            {{ row.answers_count }} / {{ row.question_count }}
+          </progress>
+          {% else %}
+          <progress class="answers-track" value="0" max="1" aria-label="0 af 0 rigtige svar">
+            0 / 0
+          </progress>
+          {% endif %}
+          <span class="answers-text">Rigtige svar: {{ row.answers_count }} / {{ row.question_count }}</span>
+        </div>
+        <div class="quiz-meta-row">
+          {% for chip in row.meta_chips %}
+          {% if forloop.counter <= 2 %}
+          <span class="quiz-mini-chip">{{ chip }}</span>
+          {% endif %}
+          {% endfor %}
+          <span class="quiz-id">ID: {{ row.quiz_id }}</span>
+        </div>
+        <div class="quiz-history-line quiz-history-meta">
+          <span>Opdateret:</span>
+          <time class="updated-at" datetime="{{ row.updated_at|date:'c' }}">{{ row.updated_at|date:'d.m.Y H:i' }}</time>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
     {% else %}
     <p class="empty-copy">Der er endnu ikke gemte quizscore.</p>
     {% endif %}
   </section>
 
-  <section class="dashboard-section">
+  <section class="card dashboard-section">
     <div class="section-head">
       <h2 class="section-title">Tilmeld og afmeld fag</h2>
       <p class="section-subtitle">Administrer hvilke fag du følger.</p>

@@ -21,11 +21,19 @@ class ResponsiveTemplateRulesTests(SimpleTestCase):
     def test_base_mobile_navigation_uses_freudd_quiz_cup_overblik_and_subject_picker(self) -> None:
         body = self._template_text("base.html")
         self.assertIn("data-mobile-nav", body)
+        self.assertIn("data-header-menu-toggle", body)
+        self.assertIn("data-header-menu-panel", body)
         self.assertIn("<span>freudd quiz cup</span>", body)
         self.assertIn("<span>Mit overblik</span>", body)
         self.assertIn("<span>Mine fag</span>", body)
         self.assertIn("data-subject-menu-toggle", body)
         self.assertIn("data-subject-menu-list", body)
+
+    def test_progress_template_has_mobile_history_cards_and_last_opened_subject_badge_hook(self) -> None:
+        body = self._template_text("quizzes/progress.html")
+        self.assertIn("quiz-history-mobile", body)
+        self.assertIn("quiz-history-card", body)
+        self.assertIn("last_opened_subject_slug", body)
 
     def test_subject_detail_supports_long_word_wrapping(self) -> None:
         body = self._template_text("quizzes/subject_detail.html")

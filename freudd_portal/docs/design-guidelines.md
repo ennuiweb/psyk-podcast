@@ -140,6 +140,7 @@ Motion rules:
 
 - Desktop: full header + full lecture rail labels + two-column learning layout.
 - Compact (`<=1024px`): global sticky header remains visible with logo; fixed bottom tabbar.
+- Mobile bottom tabbar labels are text-only (no icons/logos) for maximum clarity.
 - Bottom tabbar must never cover interactive content.
 - All layouts must avoid horizontal page scroll.
 
@@ -151,6 +152,7 @@ Target validation viewports:
 - Desktop widths `>=1280px`
 
 ## 6. Component Specification
+
 
 ### 6.1 Cards and Surfaces
 

@@ -51,7 +51,7 @@ Sources used for this mapping:
 
 **W05L1 Empiri og metode i psykoanalysen (Forelæsning 9, 2026-03-02)**
 - X Freud, S. (1984/1905). Brudstykke af en hysteri-analyse → W05L1 X Freud, S. (1984/1905). Brudstykke af en hysteri-analyse.pdf
-- MISSING: W05L1 X Gammelgaard (2010)
+- X Gammelgaard (2010) → W5L1 X Gammelgaard (2010).pdf
 - Ricoeur (1981) → Ricoeur (1981).pdf
 
 **W05L2 Psykoanalysens konstituering (Forelæsning 10, 2026-03-03)**

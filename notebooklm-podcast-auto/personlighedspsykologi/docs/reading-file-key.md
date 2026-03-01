@@ -55,7 +55,7 @@ Sources used for this mapping:
 - Ricoeur (1981) → Ricoeur (1981).pdf
 
 **W05L2 Psykoanalysens konstituering (Forelæsning 10, 2026-03-03)**
-- MISSING: Andkjær Olsen & Køppe (1991a + 1991b)
+- Andkjær Olsen & Køppe (1991a + 1991b) → Andkjær Olsen & Køppe (1991a og b) .docx
 - Køppe (1992) → Køppe (1992) .pdf
 - MISSING: Zeuthen & Køppe (2014)
 

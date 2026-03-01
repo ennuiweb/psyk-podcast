@@ -236,7 +236,7 @@ Behavior:
 - `Åbn fag` is dominant for enrolled subjects.
 - Enrollment mutation controls are isolated to bottom module.
 - Alias editing is explicit mode-based (not always-on).
-- Mobile (`<=760px`) uses a compact topbar with menu button + fixed bottom tabbar.
+- Mobile (`<=760px`) uses a compact logo-only topbar + fixed bottom tabbar.
 - Dashboard sections render as stacked cards with full-width primary CTAs on mobile.
 
 ### 7.2 Subject Detail (`/subjects/<subject_slug>`)

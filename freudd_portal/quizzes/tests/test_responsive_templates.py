@@ -21,8 +21,8 @@ class ResponsiveTemplateRulesTests(SimpleTestCase):
     def test_base_mobile_navigation_uses_freudd_quiz_cup_overblik_and_subject_picker(self) -> None:
         body = self._template_text("base.html")
         self.assertIn("data-mobile-nav", body)
-        self.assertIn("data-header-menu-toggle", body)
-        self.assertIn("data-header-menu-panel", body)
+        self.assertNotIn("data-header-menu-toggle", body)
+        self.assertNotIn("data-header-menu-panel", body)
         self.assertIn("<span>freudd quiz cup</span>", body)
         self.assertIn("<span>Mit overblik</span>", body)
         self.assertIn("<span>Mine fag</span>", body)
@@ -77,6 +77,8 @@ class ResponsiveTemplateRulesTests(SimpleTestCase):
             "        }",
             body,
         )
+        self.assertNotIn(".mobile-header-menu-button", body)
+        self.assertNotIn("is-mobile-menu-open", body)
         self.assertNotIn(
             ".site-header {\n          display: none;\n        }",
             body,

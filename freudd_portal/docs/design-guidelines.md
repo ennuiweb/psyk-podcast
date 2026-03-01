@@ -1,119 +1,89 @@
-# Freudd Portal Design Guidelines
+# Freudd Portal UI Design Specification (Contractor Edition)
 
-Last updated: 2026-02-28
+## 1. Objective
 
-## Purpose
+Design a focused, motivating learning interface for Freudd Portal that helps students:
 
-This document is the single production design reference for `freudd_portal`.
-It maps product goals to concrete UI rules, component behavior, and visual guardrails.
+1. Resume quickly.
+2. Understand progress at a glance.
+3. Move through lectures in a clear sequence.
+4. Stay motivated with visible completion signals.
 
-Source alignment:
-- Product intent: `docs/non-technical-overview.md`
-- Shared primitives: `templates/base.html`
-- Page patterns: `templates/quizzes/progress.html`, `templates/quizzes/subject_detail.html`, `templates/quizzes/wrapper.html`
-- Auth patterns: `templates/registration/login.html`, `templates/registration/signup.html`
+This specification is the design source of truth for visual language and UX behavior.
 
-## Intent and direction
+## 2. Product Context
 
-The active visual direction is `Paper Studio`, chosen to avoid generic SaaS aesthetics while preserving study-first usability.
+Freudd Portal is a learner-facing platform for:
 
-Primary inspiration:
-- Editorial print systems (content dignity and hierarchy)
-- Nordic contrast (calm base + sharper progression accents)
+- Reading assignments (`Tekster`)
+- Podcast episodes (`Podcasts`)
+- Quiz-based learning checks (`Quiz for alle kilder`)
 
-Theme lock (effective 2026-02-26):
-- `Paper Studio` is the selected and only approved redesign theme.
-- All new redesign work must start from Paper Studio tokens, typography, and surfaces.
-- `Night Lab` is archived for reference and must not be used for new redesigns.
+Primary UI language is Danish (`da`).
 
-## Scope and governance
+## 3. Experience Principles
 
-- `Paper Studio` is the only approved redesign theme for new UI work.
-- Any new redesign proposal must include a short `Paper Studio compliance` note.
-- Legacy systems (`classic`, `night-lab`) are removed from runtime selection; `paper-studio` is locked for users.
-- This file is the operational and stylistic baseline; prior split references are merged here.
+1. Study-first clarity: the interface must be easy to scan under cognitive load.
+2. One dominant action per section: users should always know what to do next.
+3. Progress before decoration: status and continuity cues are higher priority than visual novelty.
+4. Semantic consistency: the same states must look and read the same everywhere.
+5. Mobile-first readability: dense information is acceptable; confusion is not.
 
-## Runtime design-system architecture (current code)
+## 4. Visual Direction
 
-- Registry: `quizzes/design_systems.py`.
-- Runtime keys available: `paper-studio`.
-- Default key: `paper-studio`.
-- Theme attribute on HTML: `data-design-system="<key>"`.
-- Selector UI: removed (users cannot switch design system).
-- Resolution behavior: only valid key is `paper-studio`; unsupported overrides fall back to default.
-- Resolver/context wiring: `quizzes/theme_resolver.py` + `quizzes/context_processors.py`.
+Theme name: `Paper Studio`
 
-## Product intent -> design requirements
+Character:
 
-Freudd Portal exists to add identity, memory, progression, and motivation on top of static quiz content.
-The UI must always make these jobs visible:
+- Editorial, calm, and practical.
+- Neutral-heavy surfaces with intentional accent contrast.
+- Quietly premium, never generic SaaS.
 
-1. Identity: learner sees personal context quickly.
-2. Continuity: learner sees where they left off and can resume fast.
-3. Progression: learner sees completed vs pending in a clear sequence.
-4. Motivation: learner effort is reflected in status and achievement cues.
-5. Coherence: quizzes, tekster, and podcasts feel like one learning journey.
+### 4.1 Typography
 
-## Experience principles
+- Display and headings: `Fraunces` (600-700, optical size enabled)
+- Body and UI: `Public Sans` (400-700)
+- Data and metadata: `IBM Plex Mono` (500-600)
 
-1. Study-first clarity: keep visual noise low and decisions obvious.
-2. One dominant action per block: each section has one clear next step.
-3. Progress over decoration: status and momentum cues outrank ornament.
-4. Consistent semantics: same status always uses same words, colors, and shapes.
-5. Mobile-first readability: dense information is allowed, hard scanning is not.
+Typography rules:
 
-## Visual language (Paper Studio baseline)
+- Heading line-height around `1.1`.
+- Body line-height around `1.5`.
+- Avoid decorative or novelty fonts.
+- Keep heading style consistent per page.
+- Do not use `Inter`, `Roboto`, `Arial`, or fallback-only typography as identity.
 
-### Brand personality
+### 4.2 Color Tokens
 
-- Reliable
-- Focused
-- Encouraging
-- Practical
+Use semantic tokens rather than raw color values in component designs.
 
-### Typography
+| Role | Token | Value |
+|---|---|---|
+| App background | `--bg` | `#f4efe4` |
+| Soft backdrop | `--bg-soft` | `#efe7d7` |
+| Main surface | `--surface` | `#fffdf7` |
+| Soft surface | `--surface-soft` | `#f8f2e6` |
+| Primary text | `--ink` | `#201d18` |
+| Secondary text | `--muted` | `#625a4f` |
+| Primary accent | `--accent` | `#0f5f8c` |
+| Accent strong | `--accent-strong` | `#0b4b6f` |
+| Success | `--success` | `#2f8a23` |
+| Danger | `--danger` | `#ba344f` |
+| Border default | `--border` | `#d5c7ac` |
+| Border strong | `--border-strong` | `#c5b494` |
+| Focus ring | `--focus-ring` | `rgba(15, 95, 140, 0.28)` |
 
-- Display/headers: `Fraunces` (`600-700`, optical size enabled)
-- Body/UI: `Public Sans` (`400-700`)
-- Data/meta: `IBM Plex Mono` (`500-600`)
+Color semantics:
 
-Usage rules:
-- Keep heading line-height tight (`~1.1`) and body line-height comfortable (`~1.5`).
-- Keep UI copy in Danish (`da`) until multilingual rollout is explicitly enabled.
-- Avoid decorative or novelty fonts in learner flows.
-- Keep heading casing and emphasis consistent within each template.
-- Avoid `Inter`, `Roboto`, `Arial`, and fallback-only visual identity for redesign work.
+- Blue = action/progression.
+- Green = completion/success.
+- Red = error/incorrect.
+- Never communicate critical state with color alone; always pair with text/icon.
 
-### Color system (Paper Studio semantic tokens)
-
-`templates/base.html` and `:root[data-design-system="paper-studio"]` are the source of truth.
-
-| Role | Token | Value | Usage |
-|---|---|---|---|
-| App background | `--bg` | `#f4efe4` | Global page backdrop |
-| Soft backdrop | `--bg-soft` | `#efe7d7` | Supporting surface blocks |
-| Main surface | `--surface` | `#fffdf7` | Cards and forms |
-| Soft surface | `--surface-soft` | `#f8f2e6` | Section containers |
-| Primary text | `--ink` | `#201d18` | Core readable text |
-| Secondary text | `--muted` | `#625a4f` | Metadata/support text |
-| Primary accent | `--accent` | `#0f5f8c` | Primary action and active state |
-| Accent strong | `--accent-strong` | `#0b4b6f` | Link and higher emphasis |
-| Success | `--success` | `#2f8a23` | Completed states |
-| Danger | `--danger` | `#ba344f` | Error/wrong states |
-| Border default | `--border` | `#d5c7ac` | Neutral card/section border |
-| Border strong | `--border-strong` | `#c5b494` | Inputs and controls |
-| Focus ring | `--focus-ring` | `rgba(15, 95, 140, 0.28)` | Keyboard-visible focus outline |
-
-Color behavior rules:
-- Blue accent indicates action/progression.
-- Green indicates completion/success.
-- Red indicates errors/incorrect answers.
-- Never rely on color as the only state cue where text is required.
-- Keep neutral fields dominant and accents intentional.
-
-### Spacing, radius, depth
+### 4.3 Spacing and Shape
 
 Spacing scale:
+
 - `--space-1: 4px`
 - `--space-2: 8px`
 - `--space-3: 12px`
@@ -122,6 +92,7 @@ Spacing scale:
 - `--space-6: 32px`
 
 Radius scale:
+
 - `--radius-sm: 10px`
 - `--radius-sub: 12px`
 - `--radius-md: 14px`
@@ -130,268 +101,219 @@ Radius scale:
 - `--radius-pill: 999px`
 
 Depth:
-- Main container shadow only: `--shadow-container`.
-- Hover shadow only where needed: `--shadow-hover-subtle`.
+
 - Prefer borders over heavy shadows.
+- Use subtle container depth and minimal hover depth.
 
-### Atmospheric background system
+### 4.4 Background and Atmosphere
 
-Avoid flat monochrome canvas. Use layered depth tied to Paper Studio:
+- Avoid flat monochrome backgrounds.
+- Use layered gradients and subtle patterning for depth.
+- Keep atmosphere low-noise so content remains dominant.
 
-```css
-body {
-  background: var(--bg-layer-1), var(--bg-layer-2), var(--bg-layer-3);
-}
+### 4.5 Motion
 
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background-image:
-    linear-gradient(var(--body-grid-color) 1px, transparent 1px),
-    linear-gradient(90deg, var(--body-grid-color) 1px, transparent 1px);
-  background-size: 42px 42px;
-}
-```
+Defaults:
 
-### Motion system
+- Entry motion: around `220ms` ease-out baseline.
+- Hover/focus transitions: `140-180ms`.
 
-Motion defaults:
-- Page/container entry: `~220ms` ease-out baseline.
-- Hover/focus transitions: `~140-180ms`.
-- Respect reduced motion preferences for all new animation.
+Motion rules:
 
-Use one orchestrated entrance per page, not many unrelated animations.
+- Use one coordinated reveal sequence per page.
+- Prefer subtle translation (`translateY(-1px)` max on hover).
+- Never use aggressive card scaling.
+- Honor `prefers-reduced-motion` with functional equivalents.
 
-Page load choreography:
-- Animate only: header, primary card shell, first action row.
-- Stagger with class delays (`.reveal-1`, `.reveal-2`, `.reveal-3`).
-- Duration range: `260-420ms`.
-- Easing: `cubic-bezier(0.22, 1, 0.36, 1)` for enter.
+## 5. Layout System
 
-```css
-@keyframes reveal-up {
-  from { opacity: 0; transform: translateY(14px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+### 5.1 Global Shell
 
-.reveal {
-  opacity: 0;
-  animation: reveal-up 360ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-.reveal-1 { animation-delay: 40ms; }
-.reveal-2 { animation-delay: 120ms; }
-.reveal-3 { animation-delay: 200ms; }
+- Sticky top navigation for orientation.
+- Constrained content width (`max-width: 1120px`) in main content shell.
+- Single primary content card per route as default framing pattern.
 
-@media (prefers-reduced-motion: reduce) {
-  .reveal {
-    animation: none;
-    opacity: 1;
-    transform: none;
-  }
-}
-```
+### 5.2 Responsive Behavior
 
-Micro-interaction rules:
-- Hover states: color, border, and very light translation only (`translateY(-1px)` max).
-- Never scale cards enough to shift layout.
-- Keep interactions subtle and stable.
+- Desktop: full header + full lecture rail labels + two-column learning layout.
+- Compact (`<=1024px`): local topbar on subject detail; fixed bottom tabbar.
+- Bottom tabbar must never cover interactive content.
+- All layouts must avoid horizontal page scroll.
 
-## Layout system
+Target validation viewports:
 
-### Global shell
+- `375px` mobile baseline
+- `414x896` (iPhone 11 Pro Max class)
+- `768x1024` (tablet portrait)
+- Desktop widths `>=1280px`
 
-- Sticky top navigation (`.site-header`) for orientation persistence.
-- Authenticated mobile/tablet views (`<=1180px`) keep a persistent bottom tabbar (`freudd quiz cup`, `Mit overblik`, `Mine fag`) across all pages.
-- Constrained content width (`max-width: 1120px`) inside `.page-shell`.
-- Single primary content card (`.card`) per route as default frame.
+## 6. Component Specification
 
-### Information density model
+### 6.1 Cards and Surfaces
 
-- Keep section stacks compact (`12-24px` rhythm).
-- Keep metadata close to actions.
-- Prefer grouped cards over long uninterrupted text blocks.
+- Rounded cards (`14-20px`) with strong but subtle border contrast.
+- Compact but readable spacing rhythm (`12-24px` between major blocks).
 
-## Component system
+### 6.2 Buttons and Action Hierarchy
 
-### Signature shapes
+- Primary action: high-contrast fill (`.btn-primary` style intent).
+- Secondary action: visually lighter than primary.
+- Utility controls: neutral and non-competing.
+- One primary CTA per local section.
 
-- Main cards: rounded (`14-20px`) with strong border contrast.
-- Pills/chips: fully rounded but compact.
-- Section separators: subtle rule plus short uppercase label where needed.
+### 6.3 Status and Feedback
 
-### Action hierarchy
+Required explicit state labels:
 
-- Primary action: `.btn-primary` for commit/continue actions.
-- Page-level secondary action: `.subject-open-link` for subject progression.
-- Neutral utility action: `.nav-action`, `.subject-toggle-button`, `.ghost-button`, `.toolbar-btn`.
+- `Fuldført`
+- `I gang`
+- `Ikke startet`
+- `Ingen quiz` (where relevant)
 
 Rules:
-- One primary action per local section.
-- Secondary and neutral controls must not visually compete with primary.
-- All interactive controls must keep pointer cursor and visible hover/focus states.
 
-### Status and feedback
+- Status chips/badges must combine text + color.
+- Dot markers may support state but never replace text.
+- Correct/wrong quiz feedback must be explicit and immediate.
 
-- `status-pill`, `status-badge`, `subject-status-pill`, and difficulty chips carry state.
-- Status text must remain explicit (`Fuldført`, `Ikke startet`, `Ingen quiz`) where state matters.
-- Dot indicators (`.status-dot`) supplement text, never replace it.
-- Wrong/correct answer states must pair color with text or iconography.
+### 6.4 Progress Indicators
 
-### Progress indicators
+- Show numeric context (`x/y` or `%`) next to progress bars.
+- Explicitly label zero-state progress (`Ikke startet endnu`).
 
-- Use compact progress tracks with numeric context (`x/y` or percent) nearby.
-- `0%` should be explained as `Ikke startet endnu` where relevant.
-- Completed lecture context may shift progress gradient to success green.
+### 6.5 Forms
 
-### Timeline and lecture detail partitioning
+- Minimum control height: `44px`.
+- Always-visible labels.
+- Inline validation at field level and/or form-level error summary.
 
-- Learning path is a two-column rail layout: left lecture rail + right single active lecture card.
-- Lecture switching is URL-addressable (`?lecture=<lecture_key>`) and server-rendered on reload.
-- Rail connector remains muted by default and accentuates completed context.
-- Rail rows render marker plus lecture copy (short week label + lecture title).
-- Active lecture card must always render three sibling sections in this order:
-  - `Tekster`
-  - `Podcasts`
-  - `Quiz for alle kilder`
-- Section content boundaries are strict:
-  - Quiz chips and quiz status belong only in `Quiz for alle kilder`.
-  - Episode metadata belongs only in `Podcasts`.
-  - Text/article cards and tekst progress belong only in `Tekster`.
-- Tekst cards always show L/M/S difficulty indicators in subject detail.
-- Empty state messaging is shown per section; a populated section never hides the other two.
+### 6.6 Data Tables
 
-### Data table pattern
+- Keep semantic table structure.
+- Optimize scanability with concise metadata and clear row hierarchy.
+- Hover states must remain subtle and non-disruptive.
 
-- Keep semantic table structure for quiz history.
-- Improve scanability with clamped titles, module labels, difficulty chips, and concise metadata.
-- Keep row hover subtle and non-disruptive.
+### 6.7 Lecture Timeline and Section Partitioning
 
-### Form pattern
+Learning path pattern:
 
-- Inputs use shared `44px` minimum control height.
-- Labels are always visible and directly associated.
-- Validation errors appear inline near field or as a form-level non-field error.
+- Left lecture rail + right active lecture card.
+- Lecture switching is URL-addressable (`?lecture=<lecture_key>`).
 
-## Page blueprints
+Active lecture card must include three sibling sections in this order:
 
-### `/progress` (dashboard)
+1. `Tekster`
+2. `Podcasts`
+3. `Quiz for alle kilder`
+
+Strict content boundaries:
+
+- Quiz chips and quiz status only in `Quiz for alle kilder`.
+- Episode metadata only in `Podcasts`.
+- Reading cards/progress only in `Tekster`.
+- L/M/S difficulty indicators always visible on reading cards.
+- Empty states shown per section independently.
+
+## 7. Page-Level Blueprints
+
+### 7.1 Dashboard (`/progress`)
 
 Order:
+
 1. Intro context (`dashboard-head`)
-2. `Mine fag` cards with status + `Åbn fag`
+2. `Mine fag` cards with status and `Åbn fag`
 3. Tracking + leaderboard blocks
 4. `Quizhistorik` table
-5. Bottom `Tilmeld og afmeld fag` module
+5. `Tilmeld og afmeld fag` module
 
 Behavior:
-- `Åbn fag` is the dominant action when enrolled.
-- Enrollment mutation stays secondary and is isolated to the bottom module (`Tilmeld`/`Afmeld`).
-- `Senest åbnet fag` badge supports continuity.
-- Existing leaderboard alias is locked by default and requires explicit edit mode.
 
-### `/subjects/<subject_slug>` (learning path)
+- `Åbn fag` is dominant for enrolled subjects.
+- Enrollment mutation controls are isolated to bottom module.
+- Alias editing is explicit mode-based (not always-on).
+
+### 7.2 Subject Detail (`/subjects/<subject_slug>`)
 
 Order:
-1. Subject title/description and return utility action
-2. Left lecture rail with lecture markers
-3. Single active lecture card with section blocks
+
+1. Subject header and return action
+2. Left lecture rail
+3. Single active lecture card
 
 Behavior:
+
 - No enrollment mutation controls on this page.
-- No KPI strip or global expand/collapse controls on this page.
-- Rail marker click updates active lecture via `?lecture=<lecture_key>`.
-- Active lecture card uses fixed section order:
-  - `Tekster` (text/article cards with always-visible L/M/S indicators + tracking controls)
-  - `Podcasts` (flat episode list with discrete tracking controls)
-  - `Quiz for alle kilder` (lecture quiz level chips in order `Let`, `Mellem`, `Svær`)
+- No KPI strip and no global expand/collapse controls.
+- Rail interaction updates active lecture.
+- Maintain fixed section order and strict section boundaries.
 
-Responsive contract (required):
-- Desktop (`>1024px`): standard top header, rail with lecture labels, and two-column layout.
-- Compact app shell (`<=1024px`): hide global site header on subject detail and use local topbar (`freudd` + auth action).
-- Tablet/mobile compact layout keeps two columns with narrow rail + active lecture card.
-- Mobile tabbar is fixed at bottom in compact mode and requires safe-area-aware bottom padding.
-- Compact visual section priority may be `Quiz for alle kilder` -> `Podcasts` -> `Tekster` while preserving DOM semantics.
+Responsive contract:
 
-Guardrails:
-- No horizontal page scroll on subject detail for iPhone 11 Pro Max (`414x896`) and iPad portrait (`768x1024`).
-- Active lecture title and rail copy must support long Danish compounds (`overflow-wrap:anywhere`, `hyphens:auto`).
-- On coarse pointers, primary interaction controls must be at least `44x44`.
-- Bottom tabbar must never cover interactive content (`padding-bottom` includes `env(safe-area-inset-bottom)`).
+- Desktop: standard header + labeled rail + two-column layout.
+- Compact: local topbar + fixed bottom tabbar + safe-area-aware padding.
+- Visual reprioritization may occur in compact mode, but semantic section structure must remain stable.
 
-### `/q/<quiz_id>.html` (quiz wrapper)
+### 7.3 Quiz Wrapper (`/q/<quiz_id>.html`)
 
 Order:
+
 1. Structured identity header (`module` + cleaned title)
 2. Question stage with progress context
 3. Answer options and rationale/hint feedback
-4. Summary and login prompt (for anonymous completion handoff)
+4. Summary and login prompt (for anonymous handoff)
 
 Behavior:
-- Keep one decision per step.
-- Keep option hit areas large and stateful (selected/correct/wrong).
-- Never expose noisy raw filename metadata in the visible title area.
-- Quiz header should read as an exam card with clear hierarchy.
 
-### Auth routes (`/accounts/login`, `/accounts/signup`)
+- One decision per step.
+- Large answer hit areas.
+- Clear selected/correct/wrong states.
+- No noisy raw filename strings in visible title surfaces.
 
-- Keep forms compact, direct, and trust-oriented.
-- Keep insecure transport warning visible when `insecure_http` is true.
-- Keep CTA copy action-first and short.
+### 7.4 Auth (`/accounts/login`, `/accounts/signup`)
 
-## Accessibility baseline
+- Compact, direct, trust-oriented forms.
+- Short, action-first CTA copy.
+- Keep transport/security warning visible when applicable.
 
-- Minimum target size: `44px` for main controls.
-- Dense chips may use `32-36px` only when focus state remains clear.
-- Keyboard focus must always be visible (`:focus-visible` ring).
-- Contrast should meet WCAG AA minimum for text and controls.
-- Motion should be minimal and optional for users with reduced-motion preferences.
-- Status communication should include text, not color only.
+## 8. Accessibility Requirements
 
-## Copy and language system
+1. Minimum target size `44x44` for primary interactive controls.
+2. Visible keyboard focus (`:focus-visible` equivalent ring behavior).
+3. WCAG AA contrast minimum for text and controls.
+4. Status communication must not rely on color only.
+5. Motion-reduced experience must preserve usability.
+6. Long Danish words must wrap safely (`overflow-wrap:anywhere`, `hyphens:auto` behavior).
 
-- Product UI language: Danish (`da`).
-- Keep labels concrete and action-oriented (`Log ind`, `Opret konto`, `Åbn fag`).
-- Prefer short verbs and measurable progress phrases (`Besvaret x/y`, `Fuldført`).
-- Avoid technical file jargon in learner-facing text.
+## 9. Copy and Language
 
-## Anti-slop guardrails
+- Interface language: Danish.
+- Keep labels short and concrete.
+- Favor action verbs and measurable progress phrasing.
+- Avoid technical/internal file terminology in learner-facing UI.
+
+## 10. Anti-Patterns
 
 Do not use:
-- `Inter`, `Roboto`, `Arial`, fallback-only visual identity.
+
 - Purple-on-white gradient templates.
-- Equal-weight palettes where every color competes.
-- Component libraries copied 1:1 without local character.
-- Flat solid-color page backgrounds without atmosphere.
+- Equal-weight palettes where everything competes.
+- Heavy, generic component-library look copied 1:1.
+- Flat, atmosphere-free page backgrounds.
+- Multiple unrelated animations on a single screen.
 
-Do use:
-- Paper Studio font pairing (`Fraunces`, `Public Sans`, `IBM Plex Mono`).
-- Strong neutral dominance with sharp, intentional accents.
-- One high-quality page entrance animation with stagger.
-- Layered gradients and subtle patterns tied to Paper Studio only.
+## 11. Contractor Deliverables
 
-## Governance and change checklist
+Provide:
 
-Before shipping UI changes:
+1. High-fidelity designs for `/progress`, `/subjects/<subject_slug>`, `/q/<quiz_id>.html`, login, and signup.
+2. Component sheet covering buttons, cards, badges/chips, timeline rail, form controls, and table rows.
+3. Responsive variants (mobile, tablet portrait, desktop).
+4. Interaction notes for hover, focus, active, disabled, and success/error states.
+5. Accessibility annotations (contrast, focus behavior, touch targets, motion-reduced behavior).
 
-1. Reuse existing tokens in `templates/base.html` before adding new raw values.
-2. Keep spacing and radius on the documented scale.
-3. Preserve action hierarchy (primary vs secondary vs neutral).
-4. Verify keyboard focus, tap targets, and color contrast.
-5. Verify mobile layouts at `375px` and tablet/desktop breakpoints.
-6. Verify lecture detail partitioning (`Tekster`, `Podcasts`, `Quiz for alle kilder`) and per-section empty states.
-7. Keep atmospheric background layers and avoid flat fallback-only surfaces.
-8. Keep motion reduced-motion-safe and limited to meaningful entry/feedback.
-9. Include a `Paper Studio compliance` note in the PR.
-10. Update this document when introducing a new recurring UI pattern.
+Acceptance criteria:
 
-## Implementation plan (safe incremental)
-
-1. Add design-system tokens and fonts in `templates/base.html`.
-2. Set `data-design-system="paper-studio"` on `<html>` as locked default.
-3. Update shared controls (`.btn-primary`, `.nav-action`, `.card`) to tokenized slots.
-4. Migrate `progress`, `subject_detail`, and `wrapper` page-specific colors to semantic tokens.
-5. Keep subject detail lecture content in three explicit blocks: `Tekster`, `Podcasts`, `Quiz for alle kilder` (`templates/quizzes/subject_detail.html` + `quizzes/views.py`).
-6. Keep reduced-motion-safe reveal classes limited to top-level sections only.
-7. Validate contrast, keyboard focus, responsive guardrails, and section partitioning behavior before rollout.
+1. Visual language matches Paper Studio direction and token semantics.
+2. Action hierarchy is unambiguous across all page types.
+3. Lecture section partitioning is respected without cross-section leakage.
+4. Designs are implementation-ready without requiring interpretation of historical/project-internal context.

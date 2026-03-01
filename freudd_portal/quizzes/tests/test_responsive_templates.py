@@ -54,6 +54,21 @@ class ResponsiveTemplateRulesTests(SimpleTestCase):
         body = self._template_text("base.html")
         self.assertIn("@media (max-width: 1180px)", body)
         self.assertIn(".site-header", body)
+        self.assertIn(
+            ".header-inner {\n"
+            "          padding: var(--space-2) var(--space-3);\n"
+            "          justify-content: flex-start;\n"
+            "          align-items: center;\n"
+            "          flex-wrap: nowrap;\n"
+            "        }",
+            body,
+        )
+        self.assertIn(
+            ".nav-links {\n"
+            "          display: none;\n"
+            "        }",
+            body,
+        )
         self.assertNotIn(
             ".site-header {\n          display: none;\n        }",
             body,

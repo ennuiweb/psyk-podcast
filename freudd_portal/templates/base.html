@@ -808,6 +808,17 @@
       }
 
       @media (max-width: 1180px) {
+        .header-inner {
+          padding: var(--space-2) var(--space-3);
+          justify-content: flex-start;
+          align-items: center;
+          flex-wrap: nowrap;
+        }
+
+        .nav-links {
+          display: none;
+        }
+
         body.has-mobile-nav .page-shell {
           padding-bottom: calc(92px + env(safe-area-inset-bottom));
         }

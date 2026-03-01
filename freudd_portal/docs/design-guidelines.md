@@ -139,7 +139,7 @@ Motion rules:
 ### 5.2 Responsive Behavior
 
 - Desktop: full header + full lecture rail labels + two-column learning layout.
-- Compact (`<=1024px`): global sticky header remains visible with logo; fixed bottom tabbar.
+- Compact (`<=1024px`): global sticky header remains visible as logo-only; fixed bottom tabbar.
 - Mobile bottom tabbar labels are text-only (no icons/logos) for maximum clarity.
 - Bottom tabbar must never cover interactive content.
 - All layouts must avoid horizontal page scroll.
@@ -255,7 +255,7 @@ Behavior:
 Responsive contract:
 
 - Desktop: standard header + labeled rail + two-column layout.
-- Compact: standard header remains visible + fixed bottom tabbar + safe-area-aware padding.
+- Compact: sticky logo-only header + fixed bottom tabbar + safe-area-aware padding.
 - Visual reprioritization may occur in compact mode, but semantic section structure must remain stable.
 
 ### 7.3 Quiz Wrapper (`/q/<quiz_id>.html`)

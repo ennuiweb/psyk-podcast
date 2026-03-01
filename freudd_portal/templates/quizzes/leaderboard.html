@@ -60,7 +60,7 @@
       <p class="leaderboard-season">Deltagere: {{ participant_count }}</p>
     </div>
     {% if request.user.is_authenticated %}
-    <a class="ghost-link" href="{% url 'progress' %}">Tilbage til mit overblik</a>
+    <a class="ghost-link" href="{{ back_url }}" onclick="if (window.history.length > 1) { event.preventDefault(); window.history.back(); }">Tilbage</a>
     {% else %}
     <a class="ghost-link" href="{% url 'login' %}">Log ind</a>
     {% endif %}

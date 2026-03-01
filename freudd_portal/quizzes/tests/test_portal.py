@@ -480,6 +480,29 @@ class QuizPortalTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertNotContains(response, "Quizzen er færdig. Log ind nu for at gemme din score og se din samlede score.")
 
+    def test_quiz_wrapper_back_link_uses_safe_referer_for_authenticated_user(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+        back_url = reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"})
+
+        response = self.client.get(
+            reverse("quiz-wrapper", kwargs={"quiz_id": self.quiz_id}),
+            HTTP_REFERER=back_url,
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, f'class="ghost-link" href="{back_url}"')
+
+    def test_quiz_wrapper_back_link_falls_back_to_progress_for_external_referer(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+
+        response = self.client.get(
+            reverse("quiz-wrapper", kwargs={"quiz_id": self.quiz_id}),
+            HTTP_REFERER="https://example.com/evil",
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, f'class="ghost-link" href="{reverse("progress")}"')
+
     def test_quiz_raw_is_public_and_serves_html(self) -> None:
         response = self.client.get(reverse("quiz-raw", kwargs={"quiz_id": self.quiz_id}))
         self.assertEqual(response.status_code, 200)
@@ -953,6 +976,18 @@ class QuizPortalTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "quizliga")
 
+    def test_leaderboard_page_back_link_uses_safe_referer_for_authenticated_user(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+        back_url = reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"})
+
+        response = self.client.get(
+            reverse("leaderboard-subject", kwargs={"subject_slug": "personlighedspsykologi"}),
+            HTTP_REFERER=back_url,
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, f'class="ghost-link" href="{back_url}"')
+
     def test_base_nav_contains_quizliga_link(self) -> None:
         response = self.client.get(reverse("login"))
         self.assertEqual(response.status_code, 200)
@@ -1424,6 +1459,20 @@ class QuizPortalTests(TestCase):
         self.assertEqual(len(response.context["lecture_rail_items"]), 2)
         self.assertTrue(response.context["lecture_rail_items"][0]["is_active"])
         self.assertFalse(response.context["lecture_rail_items"][1]["is_active"])
+
+    def test_subject_detail_back_link_uses_safe_referer_and_falls_back_when_unsafe(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+        detail_url = reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"})
+        leaderboard_url = reverse("leaderboard-subject", kwargs={"subject_slug": "personlighedspsykologi"})
+
+        response = self.client.get(detail_url, HTTP_REFERER=leaderboard_url)
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, f'class="ghost-link subject-back" href="{leaderboard_url}"')
+
+        response = self.client.get(detail_url, HTTP_REFERER="https://example.com/not-allowed")
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, f'class="ghost-link subject-back" href="{reverse("progress")}"')
 
     def test_subject_detail_query_param_selects_active_lecture(self) -> None:
         user = self._create_user()

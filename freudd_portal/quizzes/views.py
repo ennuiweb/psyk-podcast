@@ -152,6 +152,10 @@ def _safe_referer_redirect(request: HttpRequest) -> str | None:
     return referer
 
 
+def _safe_back_url(request: HttpRequest, *, fallback_url: str) -> str:
+    return _safe_next_redirect(request) or _safe_referer_redirect(request) or fallback_url
+
+
 def _as_bool(value: object, *, default: bool = False) -> bool:
     if value is None:
         return default
@@ -1002,6 +1006,7 @@ def quiz_wrapper_view(request: HttpRequest, quiz_id: str) -> HttpResponse:
     difficulty_label = _difficulty_label(label.difficulty if label else "unknown")
     quiz_display = _quiz_display_context(episode_title=episode_title, quiz_id=quiz_id)
     quiz_path = reverse("quiz-wrapper", kwargs={"quiz_id": quiz_id})
+    fallback_back_url = reverse("progress")
     context = {
         "quiz_id": quiz_id,
         "quiz_page_title": " · ".join(
@@ -1018,6 +1023,7 @@ def quiz_wrapper_view(request: HttpRequest, quiz_id: str) -> HttpResponse:
         "user_is_authenticated": request.user.is_authenticated,
         "login_next_url": _auth_url_with_next("login", quiz_path),
         "signup_next_url": _auth_url_with_next("signup", quiz_path),
+        "back_url": _safe_back_url(request, fallback_url=fallback_back_url),
     }
     return render(request, "quizzes/wrapper.html", context)
 
@@ -1373,6 +1379,7 @@ def leaderboard_subject_view(request: HttpRequest, subject_slug: str) -> HttpRes
             "participant_count": int(snapshot.get("participant_count") or 0),
             "active_season": snapshot.get("season") or {},
             "leaderboard_profile": own_profile,
+            "back_url": _safe_back_url(request, fallback_url=reverse("progress")),
         },
     )
 
@@ -1686,5 +1693,6 @@ def subject_detail_view(request: HttpRequest, subject_slug: str) -> HttpResponse
             "active_lecture": active_lecture,
             "reading_tracking_url": reverse("subject-tracking-reading", kwargs={"subject_slug": subject.slug}),
             "podcast_tracking_url": reverse("subject-tracking-podcast", kwargs={"subject_slug": subject.slug}),
+            "back_url": _safe_back_url(request, fallback_url=reverse("progress")),
         },
     )

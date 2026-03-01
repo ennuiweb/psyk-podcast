@@ -62,7 +62,7 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Headings/titles in the portal UI are rendered in lower-case for consistent visual tone.
 - Shared primitives in `templates/base.html` enforce radius/spacing/depth rules portal-wide, while page templates apply local layout detail.
 - Design system source of truth: `freudd_portal/docs/design-guidelines.md` (anchored to `docs/non-technical-overview.md`).
-- Expressive design system spec: `freudd_portal/docs/design-system-v2-expressive.md` (Paper Studio locked + lecture partitioning rules).
+- Design guidance includes former expressive V2 rules directly in `freudd_portal/docs/design-guidelines.md`.
 
 ## Routes
 - `GET/POST /accounts/signup`

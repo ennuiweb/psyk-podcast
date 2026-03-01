@@ -55,8 +55,8 @@ Sources used for this mapping:
 - Ricoeur (1981) → Ricoeur (1981).pdf
 
 **W05L2 Psykoanalysens konstituering (Forelæsning 10, 2026-03-03)**
-- Andkjær Olsen & Køppe (1991a + 1991b) → Andkjær Olsen & Køppe (1991a og b) .docx
-- Køppe (1992) → Køppe (1992) .pdf
+- Andkjær Olsen & Køppe (1991a + 1991b) → W5L2 Andkjær Olsen & Køppe (1991a og b).pdf
+- Køppe (1992) → W5L2 Køppe (1992).pdf
 - Zeuthen & Køppe (2014) → Grundbog kapitel 07 - Nyere psykoanalytiske teorier.pdf
 
 **W06L1 Fænomenologi (Forelæsning 11, 2026-03-09)**

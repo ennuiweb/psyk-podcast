@@ -93,7 +93,7 @@ class UserSubjectLastLecture(models.Model):
 
 class UserInterfacePreference(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    design_system = models.CharField(max_length=32, default="classic")
+    design_system = models.CharField(max_length=32, default="paper-studio")
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self) -> str:

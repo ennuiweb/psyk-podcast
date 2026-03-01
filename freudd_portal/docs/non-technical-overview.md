@@ -15,6 +15,7 @@ Each quiz question has a built-in timer, and quiz retries are throttled with an 
 The portal still keeps core motivation features (quiz progress and gamification snapshots), but avoids exposing detailed personal learning activity publicly.
 
 The platform uses a single locked visual design system (`paper-studio`) so learners get a consistent interface across all pages.
+Future multi-theme support may be reintroduced, but is not active in the current product.
 
 ## Design system reference
 

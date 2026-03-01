@@ -59,6 +59,7 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Habitica server sync is active; Anki remains gated but server sync is deferred.
 - Theme governance: `paper-studio` is the only active portal design system.
 - Default design system is `paper-studio` (`FREUDD_DESIGN_SYSTEM_DEFAULT`) and is locked for end users.
+- Multi-theme support is future-facing only; runtime is currently single-theme (`paper-studio`).
 - Headings/titles in the portal UI are rendered in lower-case for consistent visual tone.
 - Shared primitives in `templates/base.html` enforce radius/spacing/depth rules portal-wide, while page templates apply local layout detail.
 - Design system source of truth: `freudd_portal/docs/design-guidelines.md` (anchored to `docs/non-technical-overview.md`).
@@ -104,7 +105,7 @@ Leaderboard alias UX rule: if a user already has an alias, it is shown locked on
 - `UserExtensionAccess`: per-user enablement and last sync status for optional extensions.
 - `UserExtensionCredential`: per-user encrypted extension credentials (`habitica` now, `anki` deferred).
 - `ExtensionSyncLedger`: per-user/per-extension/per-day idempotent sync log (`ok|error|skipped`).
-- `UserInterfacePreference`: legacy per-user interface settings (`design_system`) kept for backward compatibility.
+- `UserInterfacePreference`: reserved for future multi-theme support; current runtime remains locked to `paper-studio`.
 - `UserReadingMark`: per-user private tekst tracking marks (`mark/unmark`) on subject detail.
 - `UserPodcastMark`: per-user private podcast tracking marks (`mark/unmark`) on subject detail.
 - `UserLeaderboardProfile`: per-user public alias and visibility settings for quizliga leaderboard (case-insensitive unique alias).
@@ -210,7 +211,6 @@ Operational behavior:
 - `FREUDD_CREDENTIALS_KEY_VERSION` (default: `1`)
 - `FREUDD_EXT_SYNC_TIMEOUT_SECONDS` (default: `20`)
 - `FREUDD_DESIGN_SYSTEM_DEFAULT` (default: `paper-studio`)
-- `FREUDD_DESIGN_SYSTEM_COOKIE_NAME` (default: `freudd_design_system`)
 - `FREUDD_SUBJECT_DETAIL_SHOW_READING_QUIZZES` (legacy toggle; tekst difficulty indicators are now always shown in subject detail)
 
 ## Google OAuth setup

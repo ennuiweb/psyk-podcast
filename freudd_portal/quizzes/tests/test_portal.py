@@ -30,7 +30,6 @@ from quizzes.models import (
     UserExtensionAccess,
     UserExtensionCredential,
     UserGamificationProfile,
-    UserInterfacePreference,
     UserLectureProgress,
     UserLeaderboardProfile,
     UserPodcastMark,
@@ -1340,23 +1339,6 @@ class QuizPortalTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'data-design-system="paper-studio"')
 
-    def test_design_system_cookie_override_is_ignored_for_unsupported_theme(self) -> None:
-        self.client.cookies[settings.FREUDD_DESIGN_SYSTEM_COOKIE_NAME] = "night-lab"
-        response = self.client.get(reverse("login"))
-        self.assertEqual(response.status_code, 200)
-        self.assertContains(response, 'data-design-system="paper-studio"')
-
-    def test_design_system_query_override_is_ignored_for_unsupported_theme(self) -> None:
-        response = self.client.get(f"{reverse('login')}?ds=night-lab&preview=1")
-        self.assertEqual(response.status_code, 200)
-        self.assertContains(response, 'data-design-system="paper-studio"')
-
-    def test_design_system_invalid_cookie_falls_back_to_default(self) -> None:
-        self.client.cookies[settings.FREUDD_DESIGN_SYSTEM_COOKIE_NAME] = "not-a-theme"
-        response = self.client.get(reverse("login"))
-        self.assertEqual(response.status_code, 200)
-        self.assertContains(response, 'data-design-system="paper-studio"')
-
     def test_design_system_switcher_is_removed_from_progress_page(self) -> None:
         user = self._create_user()
         self.client.force_login(user)
@@ -1368,25 +1350,6 @@ class QuizPortalTests(TestCase):
     def test_design_system_preference_endpoint_is_removed(self) -> None:
         response = self.client.post("/preferences/design-system", {"design_system": "paper-studio"})
         self.assertEqual(response.status_code, 404)
-
-    def test_authenticated_user_preference_wins_over_cookie(self) -> None:
-        user = self._create_user()
-        UserInterfacePreference.objects.create(user=user, design_system="paper-studio")
-        self.client.force_login(user)
-        self.client.cookies[settings.FREUDD_DESIGN_SYSTEM_COOKIE_NAME] = "night-lab"
-
-        response = self.client.get(reverse("progress"))
-        self.assertEqual(response.status_code, 200)
-        self.assertContains(response, 'data-design-system="paper-studio"')
-
-    def test_authenticated_user_unsupported_preference_falls_back_to_default(self) -> None:
-        user = self._create_user()
-        UserInterfacePreference.objects.create(user=user, design_system="classic")
-        self.client.force_login(user)
-
-        response = self.client.get(reverse("progress"))
-        self.assertEqual(response.status_code, 200)
-        self.assertContains(response, 'data-design-system="paper-studio"')
 
     def test_subject_enroll_and_unenroll_are_idempotent(self) -> None:
         user = self._create_user()

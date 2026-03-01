@@ -39,6 +39,9 @@ Character:
 - Neutral-heavy surfaces with intentional accent contrast.
 - Quietly premium, never generic SaaS.
 
+Future note:
+- Additional themes may be introduced later; this specification currently defines `Paper Studio` only.
+
 ### 4.1 Typography
 
 - Display and headings: `Fraunces` (600-700, optical size enabled)

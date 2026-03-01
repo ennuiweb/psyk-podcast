@@ -17,7 +17,7 @@ class Migration(migrations.Migration):
             name='UserInterfacePreference',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('design_system', models.CharField(default='classic', max_length=32)),
+                ('design_system', models.CharField(default='paper-studio', max_length=32)),
                 ('updated_at', models.DateTimeField(auto_now=True)),
                 ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],

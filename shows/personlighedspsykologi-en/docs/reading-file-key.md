@@ -57,7 +57,7 @@ Sources used for this mapping:
 **W05L2 Psykoanalysens konstituering (Forelæsning 10, 2026-03-03)**
 - Andkjær Olsen & Køppe (1991a + 1991b) → Andkjær Olsen & Køppe (1991a og b) .docx
 - Køppe (1992) → Køppe (1992) .pdf
-- MISSING: Zeuthen & Køppe (2014)
+- Zeuthen & Køppe (2014) → Grundbog kapitel 07 - Nyere psykoanalytiske teorier.pdf
 
 **W06L1 Fænomenologi (Forelæsning 11, 2026-03-09)**
 - X Spinelli (2005) → W06L1 X Spinelli (2005).pdf

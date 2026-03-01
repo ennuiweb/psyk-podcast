@@ -14,9 +14,9 @@ class ResponsiveTemplateRulesTests(SimpleTestCase):
     def test_subject_detail_uses_compact_app_shell_on_tablet_mobile(self) -> None:
         body = self._template_text("quizzes/subject_detail.html")
         self.assertIn("@media (max-width: 1180px)", body)
-        self.assertIn("body.page-subject-detail .site-header", body)
         self.assertIn("grid-template-columns: minmax(62px, 84px) minmax(0, 1fr);", body)
         self.assertIn(".subject-mobile-topbar", body)
+        self.assertNotIn("display: none !important;", body)
 
     def test_base_mobile_navigation_uses_freudd_quiz_cup_overblik_and_subject_picker(self) -> None:
         body = self._template_text("base.html")
@@ -50,11 +50,14 @@ class ResponsiveTemplateRulesTests(SimpleTestCase):
         self.assertIn("@media (max-width: 980px)", body)
         self.assertIn(".nav-group-subjects", body)
 
-    def test_base_template_hides_topbar_on_mobile(self) -> None:
+    def test_base_template_keeps_topbar_visible_on_mobile(self) -> None:
         body = self._template_text("base.html")
         self.assertIn("@media (max-width: 1180px)", body)
         self.assertIn(".site-header", body)
-        self.assertIn("display: none;", body)
+        self.assertNotIn(
+            ".site-header {\n          display: none;\n        }",
+            body,
+        )
 
     def test_base_template_exposes_page_class_hook_for_scoped_layout_modes(self) -> None:
         body = self._template_text("base.html")

@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}quiz · {{ quiz_page_title|default:quiz_title|lower }}{% endblock %}
+{% block title %}quiz · {{ quiz_page_title|default:quiz_title }}{% endblock %}
 {% block content %}
 <style>
   .quiz-shell {
@@ -47,7 +47,7 @@
     font-size: clamp(1.28rem, 3vw, 2.05rem);
     line-height: 1.18;
     overflow-wrap: anywhere;
-    text-transform: lowercase;
+    text-transform: none;
   }
 
   .quiz-login-note-links {

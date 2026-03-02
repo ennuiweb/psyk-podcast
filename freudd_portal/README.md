@@ -68,6 +68,7 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Default design system is `paper-studio` (`FREUDD_DESIGN_SYSTEM_DEFAULT`) and is locked for end users.
 - Multi-theme support is future-facing only; runtime is currently single-theme (`paper-studio`).
 - Headings/titles in the portal UI are rendered in lower-case for consistent visual tone.
+- Quiz wrapper reading titles preserve source capitalization (no forced lowercasing).
 - `Freudd Quiz Cup` hero heading intentionally keeps title case to match the approved cup design.
 - Shared primitives in `templates/base.html` enforce radius/spacing/depth rules portal-wide, while page templates apply local layout detail.
 - Design system source of truth: `freudd_portal/docs/design-guidelines.md` (anchored to `docs/non-technical-overview.md`).

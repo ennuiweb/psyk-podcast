@@ -1731,6 +1731,7 @@
             {% endif %}
           </section>
 
+          {% if active_lecture.podcast_rows %}
           <section class="lecture-section lecture-podcasts" id="subject-podcasts">
             <div class="lecture-section-head">
               <div class="section-title-wrap">
@@ -1745,7 +1746,6 @@
               </div>
             </div>
 
-            {% if active_lecture.podcast_rows %}
             <ul class="podcast-list">
               {% for podcast in active_lecture.podcast_rows %}
               <li
@@ -1825,10 +1825,8 @@
               </li>
               {% endfor %}
             </ul>
-            {% else %}
-            <p class="section-empty">Ingen podcasts registreret i denne forelæsning.</p>
-            {% endif %}
           </section>
+          {% endif %}
 
           <section class="lecture-section lecture-quizzes" id="subject-quizzes">
             <div class="lecture-section-head">

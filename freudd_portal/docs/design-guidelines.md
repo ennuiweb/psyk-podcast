@@ -205,10 +205,10 @@ Learning path pattern:
 - Left lecture rail + right active lecture card.
 - Lecture switching is URL-addressable (`?lecture=<lecture_key>`).
 
-Active lecture card must include three sibling sections in this order:
+Active lecture card renders sections in this order:
 
 1. `Tekster`
-2. `Podcasts`
+2. `Podcasts` (only when podcast rows exist)
 3. `Quiz for alle kilder`
 
 Strict content boundaries:
@@ -217,7 +217,7 @@ Strict content boundaries:
 - Episode metadata only in `Podcasts`.
 - Reading cards/progress only in `Tekster`.
 - L/M/S difficulty indicators always visible on reading cards.
-- Empty states shown per section independently.
+- If no podcasts are available for the active lecture, hide the `Podcasts` section.
 
 ## 7. Page-Level Blueprints
 

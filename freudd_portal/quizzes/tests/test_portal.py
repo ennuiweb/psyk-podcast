@@ -1890,7 +1890,7 @@ class QuizPortalTests(TestCase):
         self.assertNotContains(response, "https://example.test/podcast/w01l1-alle-kilder.mp3")
         self.assertNotContains(response, "https://example.test/podcast/w01l1-intro.mp3")
 
-    def test_subject_detail_hides_podcast_rows_when_spotify_episode_map_missing(self) -> None:
+    def test_subject_detail_hides_podcast_section_when_spotify_episode_map_missing(self) -> None:
         user = self._create_user()
         self.client.force_login(user)
         self._write_spotify_map({})
@@ -1904,7 +1904,8 @@ class QuizPortalTests(TestCase):
         self.assertNotContains(response, "Find i Spotify")
         self.assertNotContains(response, "https://example.test/podcast/w01l1-alle-kilder.mp3")
         self.assertNotContains(response, "https://example.test/podcast/w01l1-intro.mp3")
-        self.assertContains(response, "Ingen podcasts registreret i denne forelæsning.")
+        self.assertNotContains(response, 'class="lecture-section lecture-podcasts"')
+        self.assertNotContains(response, "Ingen podcasts registreret i denne forelæsning.")
 
     def test_subject_detail_podcast_duration_label_is_optional(self) -> None:
         user = self._create_user()

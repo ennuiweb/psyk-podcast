@@ -933,7 +933,7 @@ class QuizPortalTests(TestCase):
             response,
             "Se dine resultater, find svage temaer hurtigt, og hop direkte tilbage i en quiz.",
         )
-        self.assertContains(response, "Offentlig quizliga")
+        self.assertContains(response, "Offentlig quiz cup")
 
     def test_load_quiz_label_mapping_reads_subject_slug(self) -> None:
         labels = load_quiz_label_mapping()
@@ -1029,7 +1029,7 @@ class QuizPortalTests(TestCase):
         self.assertGreaterEqual(enroll_start, 0)
         self.assertGreater(enroll_start, history_start)
 
-    def test_progress_page_locks_existing_quizliga_alias_by_default(self) -> None:
+    def test_progress_page_locks_existing_quizcup_alias_by_default(self) -> None:
         user = self._create_user()
         self.client.force_login(user)
         UserLeaderboardProfile.objects.create(
@@ -1189,7 +1189,7 @@ class QuizPortalTests(TestCase):
         self.assertGreaterEqual(rank_three_pos, 0)
         self.assertLess(rank_two_pos, rank_one_pos)
         self.assertLess(rank_one_pos, rank_three_pos)
-    def test_base_nav_contains_quiz_cup_link(self) -> None:
+    def test_base_nav_contains_quizcup_link(self) -> None:
         response = self.client.get(reverse("login"))
         self.assertEqual(response.status_code, 200)
         self.assertContains(

@@ -294,7 +294,7 @@ Order:
 
 Behavior:
 
-- Keep ranking logic/data source unchanged from quizliga scoring rules.
+- Keep ranking logic/data source unchanged from quiz cup scoring rules.
 - Alias participation uses the existing profile endpoint (`POST /leaderboard/profile`).
 - Alias edits remain explicit mode-based (not always-on).
 - On compact layouts, tabs scroll horizontally and podium stacks vertically.

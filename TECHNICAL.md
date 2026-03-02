@@ -174,7 +174,7 @@ The repository includes a Django portal in `freudd_portal/` for hybrid auth (use
 - Question timer: default `30s` per question (`FREUDD_QUIZ_QUESTION_TIME_LIMIT_SECONDS`), auto-timeout marks wrong + advances; when answered, header label switches to earned points for that question.
 - Partial quiz progress persistence: disabled in wrapper flow; users always restart from question 1 unless they already completed the quiz.
 - Retry cooldown: per `(user, quiz_id)` with tiers `1m x2`, `5m x3`, then `10m`, and full streak reset after `1h` (`FREUDD_QUIZ_RETRY_COOLDOWN_RESET_SECONDS`).
-- Quizliga scoring: per-quiz point uses correctness + speed bonus (correctness weighted highest), aggregated per subject in active half-year season.
+- Quiz Cup scoring: per-quiz point uses correctness + speed bonus (correctness weighted highest), aggregated per subject in active half-year season.
 - Quiz wrapper feedback: after each answer, UI shows per-question points derived from correctness and response time (same 100+speed-bonus shape as score model for a single question).
 
 ### Subject catalog + readings

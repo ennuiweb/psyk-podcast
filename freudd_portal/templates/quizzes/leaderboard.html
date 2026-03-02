@@ -72,10 +72,6 @@
     font-variation-settings: "FILL" 0, "wght" 500, "GRAD" 0, "opsz" 24;
   }
 
-  .cup-back {
-    margin-top: var(--space-3);
-  }
-
   .cup-participation-note {
     margin: var(--space-3) 0 0;
     color: var(--text-subtle-2);
@@ -357,9 +353,6 @@
       order: 3;
     }
 
-    .cup-back {
-      width: 100%;
-    }
   }
 </style>
 
@@ -379,7 +372,6 @@
       </nav>
 
       {% if request.user.is_authenticated %}
-      <a class="ghost-link back-link cup-back" href="{{ back_url }}" onclick="if (window.history.length > 1) { event.preventDefault(); window.history.back(); }">Tilbage</a>
       <p class="cup-participation-note">
         {% if leaderboard_profile.public_alias and leaderboard_profile.is_public %}
         Du deltager i Freudd Quiz Cup som <strong>{{ leaderboard_profile.public_alias }}</strong>.

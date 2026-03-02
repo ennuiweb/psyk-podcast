@@ -1587,7 +1587,6 @@ def leaderboard_subject_view(request: HttpRequest, subject_slug: str) -> HttpRes
             "table_preview_limit": 7,
             "subject_tabs": subject_tabs,
             "leaderboard_profile": own_profile,
-            "back_url": _safe_back_url(request, fallback_url=reverse("progress")),
         },
     )
 
@@ -1905,6 +1904,5 @@ def subject_detail_view(request: HttpRequest, subject_slug: str) -> HttpResponse
             "active_lecture": active_lecture,
             "reading_tracking_url": reverse("subject-tracking-reading", kwargs={"subject_slug": subject.slug}),
             "podcast_tracking_url": reverse("subject-tracking-podcast", kwargs={"subject_slug": subject.slug}),
-            "back_url": _safe_back_url(request, fallback_url=reverse("progress")),
         },
     )

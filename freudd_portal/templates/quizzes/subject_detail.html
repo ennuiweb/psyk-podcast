@@ -142,16 +142,10 @@
     text-transform: lowercase;
   }
 
-  .subject-back {
-    justify-self: flex-start;
-  }
-
-  .subject-back,
   .subject-cup-link {
     transition: filter 160ms ease;
   }
 
-  .subject-back:hover,
   .subject-cup-link:hover {
     filter: brightness(0.96);
   }
@@ -1160,9 +1154,6 @@
       align-items: start;
     }
 
-    .subject-back {
-      justify-self: end;
-    }
   }
 
   @media (max-width: 1180px) {
@@ -1202,10 +1193,6 @@
       line-height: 1.3;
       letter-spacing: -0.004em;
       color: var(--text-subtle-2);
-    }
-
-    .subject-back {
-      display: none;
     }
 
     .subject-path-tools {
@@ -1711,7 +1698,6 @@
         </span>
         <span class="subject-cup-link-label">quiz cup for {{ subject.title|lower }}</span>
       </a>
-      <a class="ghost-link back-link subject-back" href="{{ back_url }}" onclick="if (window.history.length > 1) { event.preventDefault(); window.history.back(); }">Tilbage</a>
     </div>
   </header>
 

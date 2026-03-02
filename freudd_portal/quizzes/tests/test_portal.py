@@ -1071,17 +1071,15 @@ class QuizPortalTests(TestCase):
         self.assertNotContains(response, "Deltagere:")
         self.assertNotContains(response, "Semesteret slutter om")
 
-    def test_leaderboard_page_back_link_uses_safe_referer_for_authenticated_user(self) -> None:
+    def test_leaderboard_page_hides_back_link_for_authenticated_user(self) -> None:
         user = self._create_user()
         self.client.force_login(user)
-        back_url = reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"})
-
         response = self.client.get(
             reverse("leaderboard-subject", kwargs={"subject_slug": "personlighedspsykologi"}),
-            HTTP_REFERER=back_url,
+            HTTP_REFERER=reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}),
         )
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, f'class="ghost-link back-link cup-back" href="{back_url}"')
+        self.assertNotContains(response, "ghost-link back-link cup-back")
 
     def test_leaderboard_page_hides_participation_status_for_anonymous_users(self) -> None:
         url = reverse("leaderboard-subject", kwargs={"subject_slug": "personlighedspsykologi"})
@@ -1677,7 +1675,7 @@ class QuizPortalTests(TestCase):
         self.assertTrue(response.context["lecture_rail_items"][0]["is_active"])
         self.assertFalse(response.context["lecture_rail_items"][1]["is_active"])
 
-    def test_subject_detail_back_link_uses_safe_referer_and_falls_back_when_unsafe(self) -> None:
+    def test_subject_detail_hides_back_link_for_safe_and_unsafe_referer(self) -> None:
         user = self._create_user()
         self.client.force_login(user)
         detail_url = reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"})
@@ -1685,11 +1683,11 @@ class QuizPortalTests(TestCase):
 
         response = self.client.get(detail_url, HTTP_REFERER=leaderboard_url)
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, f'class="ghost-link back-link subject-back" href="{leaderboard_url}"')
+        self.assertNotContains(response, "ghost-link back-link subject-back")
 
         response = self.client.get(detail_url, HTTP_REFERER="https://example.com/not-allowed")
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, f'class="ghost-link back-link subject-back" href="{reverse("progress")}"')
+        self.assertNotContains(response, "ghost-link back-link subject-back")
 
     def test_subject_detail_query_param_selects_active_lecture(self) -> None:
         user = self._create_user()

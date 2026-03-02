@@ -50,7 +50,7 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Quiz Cup semesters reset every half year in UTC: `H1 = [Jan 1, Jul 1)`, `H2 = [Jul 1, Jan 1 next year)`.
 - Learning path on subject pages (`/subjects/<subject_slug>`) is lecture-first with nested tekststatus (`active|completed|no_quiz`) and quiz/podcast navigation.
 - Subject detail UI is mobile-first and uses a left lecture rail + single active lecture card (no multi-panel accordion).
-- Subject detail header shows a desktop-only trophy CTA (`quiz cup for <fag>`) linking to the current subject leaderboard plus `Tilbage`; these actions are hidden on compact layouts (`<=1180px`).
+- Subject detail header shows a desktop-only trophy CTA (`quiz cup for <fag>`) linking to the current subject leaderboard; header actions are hidden on compact layouts (`<=1180px`).
 - Subject detail removes KPI strip and global `Udvid alle`/`Luk alle`; lecture switching is via rail links (`?lecture=<lecture_key>`).
 - Subject detail remembers each user's last opened lecture per subject and uses it as default when `?lecture=` is omitted.
 - Subject detail spacing uses a local responsive scale (`section/block/tight`) to keep vertical rhythm consistent across rail, card header, and section blocks.

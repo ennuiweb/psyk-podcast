@@ -470,7 +470,7 @@
         {% endfor %}
       </nav>
 
-      <p class="cup-meta">Deltagere: {{ participant_count }} · Aktiv sæson: {{ active_season.label }}</p>
+      <p class="cup-meta">Deltagere: {{ participant_count }} · Aktivt semester: {{ active_semester.label }}</p>
 
       {% if request.user.is_authenticated %}
       <a class="ghost-link back-link cup-back" href="{{ back_url }}" onclick="if (window.history.length > 1) { event.preventDefault(); window.history.back(); }">Tilbage</a>
@@ -551,13 +551,13 @@
     {% endfor %}
   </section>
   {% else %}
-  <p class="card cup-empty">Ingen offentlige deltagere i den aktive sæson endnu.</p>
+  <p class="card cup-empty">Ingen offentlige deltagere i det aktive semester endnu.</p>
   {% endif %}
 
   <section class="card cup-table-shell" aria-labelledby="cup-top-50-title">
     <header class="cup-table-head">
       <h2 class="cup-table-title" id="cup-top-50-title">Top 50 - {{ subject.title }}</h2>
-      <p class="cup-table-meta">{{ season_countdown_label }}</p>
+      <p class="cup-table-meta">{{ semester_countdown_label }}</p>
     </header>
 
     {% if table_entries %}

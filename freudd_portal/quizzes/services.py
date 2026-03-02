@@ -303,7 +303,7 @@ def question_time_limit_seconds() -> int:
     return _question_time_limit_seconds()
 
 
-def current_leaderboard_season_key(*, now: datetime | None = None) -> str:
+def current_leaderboard_semester_key(*, now: datetime | None = None) -> str:
     current = now or timezone.now()
     if timezone.is_naive(current):
         current = timezone.make_aware(current, dt_timezone.utc)
@@ -447,16 +447,16 @@ def compute_leaderboard_score(
 def update_leaderboard_best(
     *,
     progress: QuizProgress,
-    season_key: str,
+    semester_key: str,
     reached_at: datetime,
     score_points: int,
     correct_answers: int,
     question_count: int,
     duration_ms: int,
 ) -> None:
-    target_season = str(season_key or "").strip()
-    if progress.leaderboard_season_key != target_season:
-        progress.leaderboard_season_key = target_season
+    target_semester = str(semester_key or "").strip()
+    if progress.leaderboard_semester_key != target_semester:
+        progress.leaderboard_semester_key = target_semester
         progress.leaderboard_best_score = 0
         progress.leaderboard_best_correct_answers = 0
         progress.leaderboard_best_question_count = 0

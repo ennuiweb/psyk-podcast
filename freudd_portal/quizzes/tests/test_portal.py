@@ -21,7 +21,7 @@ from django.utils import timezone
 
 from quizzes import services as quiz_services
 from quizzes.content_services import clear_content_service_caches
-from quizzes.leaderboard_services import active_half_year_season
+from quizzes.leaderboard_services import active_half_year_semester
 from quizzes.models import (
     DailyGamificationStat,
     ExtensionSyncLedger,
@@ -979,13 +979,13 @@ class QuizPortalTests(TestCase):
         labels = load_quiz_label_mapping()
         self.assertIsNone(labels[self.quiz_id].subject_slug)
 
-    def test_progress_page_shows_subject_cards_without_semester(self) -> None:
+    def test_progress_page_shows_subject_cards_with_active_semester(self) -> None:
         user = self._create_user()
         self.client.force_login(user)
 
         response = self.client.get(reverse("progress"))
         self.assertEqual(response.status_code, 200)
-        self.assertNotContains(response, "Aktivt semester")
+        self.assertContains(response, "Aktivt semester")
         self.assertNotContains(response, "Gem semester")
         self.assertContains(response, "Personlighedspsykologi")
         self.assertContains(response, "Mine fag")
@@ -1142,7 +1142,7 @@ class QuizPortalTests(TestCase):
                 is_public=True,
             )
 
-        season_key = active_half_year_season(datetime(2026, 2, 1, 0, 0, tzinfo=dt_timezone.utc)).key
+        semester_key = active_half_year_semester(datetime(2026, 2, 1, 0, 0, tzinfo=dt_timezone.utc)).key
         score_rows = [
             (users[0], 400, 4, datetime(2026, 1, 2, 9, 0, tzinfo=dt_timezone.utc)),
             (users[1], 350, 4, datetime(2026, 1, 2, 10, 0, tzinfo=dt_timezone.utc)),
@@ -1159,7 +1159,7 @@ class QuizPortalTests(TestCase):
                 question_count=4,
                 last_view="summary",
                 completed_at=reached_at,
-                leaderboard_season_key=season_key,
+                leaderboard_semester_key=semester_key,
                 leaderboard_best_score=score,
                 leaderboard_best_correct_answers=correct,
                 leaderboard_best_question_count=4,
@@ -1453,7 +1453,7 @@ class QuizPortalTests(TestCase):
             is_public=True,
         )
 
-        season_key = active_half_year_season(datetime(2026, 2, 1, 0, 0, tzinfo=dt_timezone.utc)).key
+        semester_key = active_half_year_semester(datetime(2026, 2, 1, 0, 0, tzinfo=dt_timezone.utc)).key
         QuizProgress.objects.create(
             user=user_a,
             quiz_id=self.quiz_id,
@@ -1463,7 +1463,7 @@ class QuizPortalTests(TestCase):
             question_count=2,
             last_view="summary",
             completed_at=datetime(2026, 1, 2, 10, 0, tzinfo=dt_timezone.utc),
-            leaderboard_season_key=season_key,
+            leaderboard_semester_key=semester_key,
             leaderboard_best_score=100,
             leaderboard_best_correct_answers=1,
             leaderboard_best_question_count=2,
@@ -1479,7 +1479,7 @@ class QuizPortalTests(TestCase):
             question_count=2,
             last_view="summary",
             completed_at=datetime(2026, 1, 3, 10, 0, tzinfo=dt_timezone.utc),
-            leaderboard_season_key=season_key,
+            leaderboard_semester_key=semester_key,
             leaderboard_best_score=100,
             leaderboard_best_correct_answers=1,
             leaderboard_best_question_count=2,
@@ -1495,7 +1495,7 @@ class QuizPortalTests(TestCase):
             question_count=2,
             last_view="summary",
             completed_at=datetime(2026, 1, 2, 11, 0, tzinfo=dt_timezone.utc),
-            leaderboard_season_key=season_key,
+            leaderboard_semester_key=semester_key,
             leaderboard_best_score=250,
             leaderboard_best_correct_answers=2,
             leaderboard_best_question_count=2,
@@ -1517,17 +1517,17 @@ class QuizPortalTests(TestCase):
         self.assertEqual(entries[1]["quiz_count"], 2)
         self.assertEqual(entries[1]["accuracy_percent"], 50)
 
-    def test_half_year_season_boundaries(self) -> None:
-        jan_start = active_half_year_season(datetime(2026, 1, 1, 0, 0, tzinfo=dt_timezone.utc))
+    def test_half_year_semester_boundaries(self) -> None:
+        jan_start = active_half_year_semester(datetime(2026, 1, 1, 0, 0, tzinfo=dt_timezone.utc))
         self.assertEqual(jan_start.key, "2026-H1")
         self.assertEqual(jan_start.start_at.isoformat(), "2026-01-01T00:00:00+00:00")
         self.assertEqual(jan_start.end_at.isoformat(), "2026-07-01T00:00:00+00:00")
 
-        june_end = active_half_year_season(datetime(2026, 6, 30, 23, 59, 59, tzinfo=dt_timezone.utc))
+        june_end = active_half_year_semester(datetime(2026, 6, 30, 23, 59, 59, tzinfo=dt_timezone.utc))
         self.assertEqual(june_end.key, "2026-H1")
         self.assertEqual(june_end.end_at.isoformat(), "2026-07-01T00:00:00+00:00")
 
-        july_start = active_half_year_season(datetime(2026, 7, 1, 0, 0, tzinfo=dt_timezone.utc))
+        july_start = active_half_year_semester(datetime(2026, 7, 1, 0, 0, tzinfo=dt_timezone.utc))
         self.assertEqual(july_start.key, "2026-H2")
         self.assertEqual(july_start.start_at.isoformat(), "2026-07-01T00:00:00+00:00")
         self.assertEqual(july_start.end_at.isoformat(), "2027-01-01T00:00:00+00:00")

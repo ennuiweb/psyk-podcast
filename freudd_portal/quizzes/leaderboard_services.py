@@ -15,7 +15,7 @@ from .services import load_quiz_label_mapping
 
 
 @dataclass(frozen=True)
-class LeaderboardSeason:
+class LeaderboardSemester:
     key: str
     start_at: datetime
     end_at: datetime
@@ -24,7 +24,7 @@ class LeaderboardSeason:
     end_date_label: str
 
 
-def active_half_year_season(now: datetime | None = None) -> LeaderboardSeason:
+def active_half_year_semester(now: datetime | None = None) -> LeaderboardSemester:
     current = now or timezone.now()
     if timezone.is_naive(current):
         current = timezone.make_aware(current, dt_timezone.utc)
@@ -42,7 +42,7 @@ def active_half_year_season(now: datetime | None = None) -> LeaderboardSeason:
     end_inclusive = (end_at - timedelta(seconds=1)).date()
     start_date_label = start_at.date().strftime("%d.%m.%Y")
     end_date_label = end_inclusive.strftime("%d.%m.%Y")
-    return LeaderboardSeason(
+    return LeaderboardSemester(
         key=key,
         start_at=start_at,
         end_at=end_at,
@@ -103,10 +103,10 @@ def build_subject_leaderboard_snapshot(
     *,
     subject_slug: str,
     limit: int = 50,
-    season: LeaderboardSeason | None = None,
+    semester: LeaderboardSemester | None = None,
 ) -> dict[str, Any]:
     slug = str(subject_slug or "").strip().lower()
-    active_season = season or active_half_year_season()
+    active_semester = semester or active_half_year_semester()
 
     labels = load_quiz_label_mapping()
     subject_quiz_ids = {
@@ -117,7 +117,7 @@ def build_subject_leaderboard_snapshot(
     if not subject_quiz_ids:
         return {
             "subject_slug": slug,
-            "season": _season_payload(active_season),
+            "semester": _semester_payload(active_semester),
             "participant_count": 0,
             "entries": [],
         }
@@ -132,7 +132,7 @@ def build_subject_leaderboard_snapshot(
     if not public_profiles:
         return {
             "subject_slug": slug,
-            "season": _season_payload(active_season),
+            "semester": _semester_payload(active_semester),
             "participant_count": 0,
             "entries": [],
         }
@@ -146,7 +146,7 @@ def build_subject_leaderboard_snapshot(
         "completed_at",
         "answers_count",
         "question_count",
-        "leaderboard_season_key",
+        "leaderboard_semester_key",
         "leaderboard_best_score",
         "leaderboard_best_correct_answers",
         "leaderboard_best_question_count",
@@ -160,14 +160,14 @@ def build_subject_leaderboard_snapshot(
         if not quiz_id:
             continue
 
-        season_key = str(row.get("leaderboard_season_key") or "").strip()
+        semester_key = str(row.get("leaderboard_semester_key") or "").strip()
         best_reached_at = row.get("leaderboard_best_reached_at")
         best_score = int(row.get("leaderboard_best_score") or 0)
         best_correct = int(row.get("leaderboard_best_correct_answers") or 0)
         best_question_count = int(row.get("leaderboard_best_question_count") or 0)
         best_duration_ms = int(row.get("leaderboard_best_duration_ms") or 0)
 
-        if season_key == active_season.key and best_reached_at:
+        if semester_key == active_semester.key and best_reached_at:
             score_points = max(0, best_score)
             correct_answers = max(0, best_correct)
             question_count = max(0, best_question_count)
@@ -175,7 +175,7 @@ def build_subject_leaderboard_snapshot(
             duration_ms = max(0, best_duration_ms)
         else:
             completed_at = row.get("completed_at")
-            if not completed_at or completed_at < active_season.start_at or completed_at >= active_season.end_at:
+            if not completed_at or completed_at < active_semester.start_at or completed_at >= active_semester.end_at:
                 continue
             # Backward compatibility for rows created before score-aware leaderboard fields existed.
             fallback_correct = max(0, int(row.get("answers_count") or 0))
@@ -274,20 +274,20 @@ def build_subject_leaderboard_snapshot(
 
     return {
         "subject_slug": slug,
-        "season": _season_payload(active_season),
+        "semester": _semester_payload(active_semester),
         "participant_count": len(ranking_rows),
         "entries": entries,
     }
 
 
-def _season_payload(season: LeaderboardSeason) -> dict[str, str]:
+def _semester_payload(semester: LeaderboardSemester) -> dict[str, str]:
     return {
-        "key": season.key,
-        "label": season.label,
-        "start_at": season.start_at.isoformat(),
-        "end_at": season.end_at.isoformat(),
-        "start_date_label": season.start_date_label,
-        "end_date_label": season.end_date_label,
+        "key": semester.key,
+        "label": semester.label,
+        "start_at": semester.start_at.isoformat(),
+        "end_at": semester.end_at.isoformat(),
+        "start_date_label": semester.start_date_label,
+        "end_date_label": semester.end_date_label,
     }
 
 

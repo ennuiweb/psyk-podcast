@@ -35,7 +35,7 @@ from .gamification_services import (
     record_quiz_progress_delta,
 )
 from .leaderboard_services import (
-    active_half_year_season,
+    active_half_year_semester,
     build_subject_leaderboard_snapshot,
     get_profile_payload,
     update_leaderboard_profile,
@@ -57,7 +57,7 @@ from .services import (
     compute_leaderboard_score,
     compute_progress,
     compute_quiz_outcome,
-    current_leaderboard_season_key,
+    current_leaderboard_semester_key,
     load_quiz_content,
     load_quiz_label_mapping,
     maybe_reset_retry_streak,
@@ -1139,7 +1139,7 @@ def quiz_state_view(request: HttpRequest, quiz_id: str) -> HttpResponse:
         outcome = compute_quiz_outcome(state_payload=state_payload, quiz_payload=quiz_payload)
         duration_ms = compute_attempt_duration_ms(progress, now=now)
         apply_completion_cooldown(progress, now=now)
-        season_key = current_leaderboard_season_key(now=now)
+        semester_key = current_leaderboard_semester_key(now=now)
         score_points = compute_leaderboard_score(
             correct_answers=outcome.correct_answers,
             question_count=outcome.question_count,
@@ -1148,7 +1148,7 @@ def quiz_state_view(request: HttpRequest, quiz_id: str) -> HttpResponse:
         )
         update_leaderboard_best(
             progress=progress,
-            season_key=season_key,
+            semester_key=semester_key,
             reached_at=now,
             score_points=score_points,
             correct_answers=outcome.correct_answers,
@@ -1160,7 +1160,7 @@ def quiz_state_view(request: HttpRequest, quiz_id: str) -> HttpResponse:
                 "retry_streak_count",
                 "last_attempt_completed_at",
                 "retry_cooldown_until_at",
-                "leaderboard_season_key",
+                "leaderboard_semester_key",
                 "leaderboard_best_score",
                 "leaderboard_best_correct_answers",
                 "leaderboard_best_question_count",
@@ -1243,7 +1243,7 @@ def gamification_me_view(request: HttpRequest) -> HttpResponse:
 @require_GET
 def progress_view(request: HttpRequest) -> HttpResponse:
     catalog = load_subject_catalog()
-    season = active_half_year_season()
+    semester = active_half_year_semester()
     active_subject_slugs = {subject.slug for subject in catalog.active_subjects}
 
     enrolled_slugs = set(
@@ -1291,7 +1291,7 @@ def progress_view(request: HttpRequest) -> HttpResponse:
         leaderboard_snapshot = build_subject_leaderboard_snapshot(
             subject_slug=subject.slug,
             limit=5,
-            season=season,
+            semester=semester,
         )
         leaderboard_preview_by_subject.append(
             {
@@ -1408,11 +1408,11 @@ def progress_view(request: HttpRequest) -> HttpResponse:
             "personal_tracking_by_subject": personal_tracking_by_subject,
             "quiz_history_enabled": quiz_history_enabled,
             "quiz_history_summary": quiz_history_summary,
-            "active_season": {
-                "key": season.key,
-                "label": season.label,
-                "start_date_label": season.start_date_label,
-                "end_date_label": season.end_date_label,
+            "active_semester": {
+                "key": semester.key,
+                "label": semester.label,
+                "start_date_label": semester.start_date_label,
+                "end_date_label": semester.end_date_label,
             },
         },
     )
@@ -1422,11 +1422,11 @@ def progress_view(request: HttpRequest) -> HttpResponse:
 def leaderboard_subject_view(request: HttpRequest, subject_slug: str) -> HttpResponse:
     catalog = load_subject_catalog()
     subject = _subject_or_404(catalog, subject_slug)
-    season = active_half_year_season()
+    semester = active_half_year_semester()
     snapshot = build_subject_leaderboard_snapshot(
         subject_slug=subject.slug,
         limit=50,
-        season=season,
+        semester=semester,
     )
 
     own_profile = None
@@ -1453,14 +1453,14 @@ def leaderboard_subject_view(request: HttpRequest, subject_slug: str) -> HttpRes
         for item in catalog.active_subjects
     ]
 
-    now_utc = timezone.now().astimezone(season.end_at.tzinfo)
-    season_days_remaining = max(0, (season.end_at.date() - now_utc.date()).days)
-    if season_days_remaining == 0:
-        season_countdown_label = "Semesteret slutter i dag"
-    elif season_days_remaining == 1:
-        season_countdown_label = "Semesteret slutter om 1 dag"
+    now_utc = timezone.now().astimezone(semester.end_at.tzinfo)
+    semester_days_remaining = max(0, (semester.end_at.date() - now_utc.date()).days)
+    if semester_days_remaining == 0:
+        semester_countdown_label = "Semesteret slutter i dag"
+    elif semester_days_remaining == 1:
+        semester_countdown_label = "Semesteret slutter om 1 dag"
     else:
-        season_countdown_label = f"Semesteret slutter om {season_days_remaining} dage"
+        semester_countdown_label = f"Semesteret slutter om {semester_days_remaining} dage"
 
     return render(
         request,
@@ -1473,8 +1473,8 @@ def leaderboard_subject_view(request: HttpRequest, subject_slug: str) -> HttpRes
             "table_preview_limit": 7,
             "subject_tabs": subject_tabs,
             "participant_count": int(snapshot.get("participant_count") or 0),
-            "active_season": snapshot.get("season") or {},
-            "season_countdown_label": season_countdown_label,
+            "active_semester": snapshot.get("semester") or {},
+            "semester_countdown_label": semester_countdown_label,
             "leaderboard_profile": own_profile,
             "leaderboard_alias_editing": leaderboard_alias_editing,
             "login_next_url": _auth_url_with_next("login", request.path),

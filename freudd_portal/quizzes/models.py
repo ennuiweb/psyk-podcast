@@ -33,7 +33,7 @@ class QuizProgress(models.Model):
     last_attempt_completed_at = models.DateTimeField(blank=True, null=True)
     retry_streak_count = models.PositiveIntegerField(default=0)
     retry_cooldown_until_at = models.DateTimeField(blank=True, null=True)
-    leaderboard_season_key = models.CharField(max_length=8, blank=True, default="")
+    leaderboard_semester_key = models.CharField(max_length=8, blank=True, default="")
     leaderboard_best_score = models.PositiveIntegerField(default=0)
     leaderboard_best_correct_answers = models.PositiveIntegerField(default=0)
     leaderboard_best_question_count = models.PositiveIntegerField(default=0)

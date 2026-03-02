@@ -10,7 +10,7 @@ The dedicated quiz cup page (`/leaderboard/<subject_slug>`) presents this as sub
 
 This split keeps personal study habits private while still allowing a lightweight shared competition around quiz completion.
 
-freudd quiz cup is seasonal and automatically resets every half year (UTC). Ranking is based on a score that weighs correct answers highest and adds a speed bonus for faster quiz completion.
+freudd quiz cup runs on semesters and automatically resets every half year (UTC). Ranking is based on a score that weighs correct answers highest and adds a speed bonus for faster quiz completion.
 
 Each quiz question has a built-in timer, and quiz retries are throttled with an escalating cooldown to prevent rapid retakes.
 

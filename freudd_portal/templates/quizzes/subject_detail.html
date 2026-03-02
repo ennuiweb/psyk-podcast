@@ -270,7 +270,7 @@
     position: absolute;
     top: 16px;
     bottom: 0;
-    left: 11px;
+    left: 12px;
     width: 2px;
     background: color-mix(in srgb, var(--border-strong) 88%, #d2c4ac);
   }
@@ -289,11 +289,13 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    justify-self: center;
+    align-self: start;
     text-decoration: none;
     box-shadow: none;
     position: relative;
     z-index: 1;
-    margin-top: 2px;
+    margin-top: 0;
     transition:
       background 160ms ease,
       border-color 160ms ease;
@@ -308,7 +310,8 @@
   }
 
   .lecture-rail-item.is-active .lecture-rail-link:hover {
-    background: color-mix(in srgb, var(--surface) 97%, #f7fbff);
+    background: color-mix(in srgb, var(--accent) 94%, #0f5f8c);
+    border-color: color-mix(in srgb, var(--accent) 96%, #0f5f8c);
   }
 
   .lecture-rail-item:not(.is-active):not(.is-past):not(.is-completed):hover .lecture-rail-copy {
@@ -317,12 +320,12 @@
 
   .lecture-rail-item.is-active .lecture-rail-link {
     border-color: var(--accent);
-    background: color-mix(in srgb, var(--surface) 98%, #fbfdff);
+    background: var(--accent);
   }
 
   .lecture-rail-item.is-past .lecture-rail-link,
   .lecture-rail-item.is-completed .lecture-rail-link {
-    background: var(--accent);
+    background: color-mix(in srgb, var(--surface) 96%, #fff9ef);
     border-color: var(--accent);
     box-shadow: none;
   }
@@ -1271,7 +1274,7 @@
 
     .lecture-rail-item::after {
       top: 16px;
-      left: 9px;
+      left: 10px;
       bottom: 0;
       width: 2px;
       background: color-mix(in srgb, var(--border-strong) 80%, #d8cab2);
@@ -1298,12 +1301,12 @@
     .lecture-rail-item.is-past .lecture-rail-link,
     .lecture-rail-item.is-completed .lecture-rail-link {
       border-color: var(--accent);
-      background: var(--accent);
+      background: color-mix(in srgb, var(--surface) 96%, #fff9ef);
     }
 
     .lecture-rail-item.is-active .lecture-rail-link {
       border-color: var(--accent);
-      background: color-mix(in srgb, var(--surface) 96%, #f6f9ff);
+      background: var(--accent);
     }
 
     .active-lecture-card {

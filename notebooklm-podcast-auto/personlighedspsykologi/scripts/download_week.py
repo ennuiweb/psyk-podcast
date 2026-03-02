@@ -56,7 +56,7 @@ def normalize_quiz_format(value: str | None) -> str | None:
     return normalized
 
 
-WEEK_SELECTOR_PATTERN = re.compile(r"^W0*(\d{1,2})(?:L0*(\d{1,2}))?$", re.IGNORECASE)
+WEEK_SELECTOR_PATTERN = re.compile(r"^(?:W)?0*(\d{1,2})(?:L0*(\d{1,2}))?$", re.IGNORECASE)
 WEEK_DIR_PATTERN = re.compile(r"^W0*(\d{1,2})(?:L0*(\d{1,2}))?\b", re.IGNORECASE)
 
 
@@ -435,11 +435,11 @@ def main() -> int:
     )
     parser.add_argument(
         "--week",
-        help="Single week label, e.g. W01L1 (or W01 to include all W01L* folders).",
+        help="Single week label, e.g. W01L1/1L1 (or W01/1 to include all W01L* folders).",
     )
     parser.add_argument(
         "--weeks",
-        help="Comma-separated week labels, e.g. W01,W02 (expands to W01L*, W02L*).",
+        help="Comma-separated week labels, e.g. W01,W02 or 1,2 (expands to W01L*, W02L*).",
     )
     parser.add_argument(
         "--content-types",

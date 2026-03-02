@@ -35,6 +35,14 @@ class ResponsiveTemplateRulesTests(SimpleTestCase):
         self.assertIn("quiz-history-card", body)
         self.assertIn("last_opened_subject_slug", body)
 
+    def test_leaderboard_template_has_quiz_cup_layout_sections(self) -> None:
+        body = self._template_text("quizzes/leaderboard.html")
+        self.assertIn("cup-tabs", body)
+        self.assertIn("cup-podium", body)
+        self.assertIn("cup-table-shell", body)
+        self.assertIn("data-cup-expand", body)
+        self.assertIn("cup-alias-card", body)
+
     def test_subject_detail_supports_long_word_wrapping(self) -> None:
         body = self._template_text("quizzes/subject_detail.html")
         self.assertIn(".active-lecture-title", body)

@@ -145,9 +145,11 @@ def build_subject_leaderboard_snapshot(
         "quiz_id",
         "completed_at",
         "answers_count",
+        "question_count",
         "leaderboard_season_key",
         "leaderboard_best_score",
         "leaderboard_best_correct_answers",
+        "leaderboard_best_question_count",
         "leaderboard_best_duration_ms",
         "leaderboard_best_reached_at",
     )
@@ -162,11 +164,13 @@ def build_subject_leaderboard_snapshot(
         best_reached_at = row.get("leaderboard_best_reached_at")
         best_score = int(row.get("leaderboard_best_score") or 0)
         best_correct = int(row.get("leaderboard_best_correct_answers") or 0)
+        best_question_count = int(row.get("leaderboard_best_question_count") or 0)
         best_duration_ms = int(row.get("leaderboard_best_duration_ms") or 0)
 
         if season_key == active_season.key and best_reached_at:
             score_points = max(0, best_score)
             correct_answers = max(0, best_correct)
+            question_count = max(0, best_question_count)
             reached_at = best_reached_at
             duration_ms = max(0, best_duration_ms)
         else:
@@ -175,8 +179,10 @@ def build_subject_leaderboard_snapshot(
                 continue
             # Backward compatibility for rows created before score-aware leaderboard fields existed.
             fallback_correct = max(0, int(row.get("answers_count") or 0))
+            fallback_question_count = max(0, int(row.get("question_count") or 0))
             score_points = fallback_correct * 100
             correct_answers = fallback_correct
+            question_count = fallback_question_count
             reached_at = completed_at
             duration_ms = 0
 
@@ -188,6 +194,7 @@ def build_subject_leaderboard_snapshot(
                 "quiz_count": 0,
                 "score_points": 0,
                 "correct_answers": 0,
+                "question_count": 0,
                 "duration_total_ms": 0,
                 "duration_count": 0,
                 "reached_at": None,
@@ -199,6 +206,7 @@ def build_subject_leaderboard_snapshot(
         payload["quiz_count"] += 1
         payload["score_points"] += score_points
         payload["correct_answers"] += correct_answers
+        payload["question_count"] += question_count
         if duration_ms > 0:
             payload["duration_total_ms"] += duration_ms
             payload["duration_count"] += 1
@@ -218,6 +226,9 @@ def build_subject_leaderboard_snapshot(
         avg_duration_seconds = None
         if duration_count > 0:
             avg_duration_seconds = int(round((int(payload["duration_total_ms"]) / duration_count) / 1000))
+        total_correct_answers = int(payload["correct_answers"])
+        total_question_count = int(payload.get("question_count") or 0)
+        accuracy_percent = int(round((total_correct_answers / total_question_count) * 100)) if total_question_count > 0 else 0
         ranking_rows.append(
             {
                 "user_id": user_id,
@@ -225,7 +236,9 @@ def build_subject_leaderboard_snapshot(
                 "alias_normalized": profile.public_alias_normalized or profile.public_alias.lower(),
                 "quiz_count": int(payload["quiz_count"]),
                 "score_points": int(payload["score_points"]),
-                "correct_answers": int(payload["correct_answers"]),
+                "correct_answers": total_correct_answers,
+                "question_count": total_question_count,
+                "accuracy_percent": accuracy_percent,
                 "avg_duration_seconds": avg_duration_seconds,
                 "reached_at": payload["reached_at"],
             }
@@ -250,6 +263,10 @@ def build_subject_leaderboard_snapshot(
                 "quiz_count": item["quiz_count"],
                 "score_points": item["score_points"],
                 "correct_answers": item["correct_answers"],
+                "question_count": item["question_count"],
+                "accuracy_percent": item["accuracy_percent"],
+                "accuracy_tone": _accuracy_tone(item["accuracy_percent"]),
+                "score_points_label": _format_points(item["score_points"]),
                 "avg_duration_seconds": item["avg_duration_seconds"],
                 "reached_at": reached_at.isoformat() if reached_at else None,
             }
@@ -272,3 +289,17 @@ def _season_payload(season: LeaderboardSeason) -> dict[str, str]:
         "start_date_label": season.start_date_label,
         "end_date_label": season.end_date_label,
     }
+
+
+def _format_points(value: object) -> str:
+    number = max(0, int(value or 0))
+    return f"{number:,}".replace(",", ".")
+
+
+def _accuracy_tone(value: object) -> str:
+    percent = max(0, int(value or 0))
+    if percent >= 85:
+        return "high"
+    if percent >= 70:
+        return "mid"
+    return "low"

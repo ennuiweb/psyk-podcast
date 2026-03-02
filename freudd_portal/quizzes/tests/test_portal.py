@@ -1051,7 +1051,8 @@ class QuizPortalTests(TestCase):
             reverse("leaderboard-subject", kwargs={"subject_slug": "personlighedspsykologi"})
         )
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "quizliga")
+        self.assertContains(response, "Freudd Quiz Cup")
+        self.assertContains(response, "Sæt dit alias op")
 
     def test_leaderboard_page_back_link_uses_safe_referer_for_authenticated_user(self) -> None:
         user = self._create_user()
@@ -1063,8 +1064,128 @@ class QuizPortalTests(TestCase):
             HTTP_REFERER=back_url,
         )
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, f'class="ghost-link back-link" href="{back_url}"')
+        self.assertContains(response, f'class="ghost-link back-link cup-back" href="{back_url}"')
 
+    def test_leaderboard_page_shows_anonymous_login_cta_with_safe_next(self) -> None:
+        url = reverse("leaderboard-subject", kwargs={"subject_slug": "personlighedspsykologi"})
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Log ind og deltag")
+        self.assertContains(response, f'href="{reverse("login")}?next=%2Fleaderboard%2Fpersonlighedspsykologi"')
+
+    def test_leaderboard_page_shows_join_call_to_action_for_private_alias(self) -> None:
+        user = self._create_user(username="alias-private")
+        self.client.force_login(user)
+        UserLeaderboardProfile.objects.create(
+            user=user,
+            public_alias="PrivateAlias",
+            public_alias_normalized="privatealias",
+            is_public=False,
+        )
+
+        response = self.client.get(
+            reverse("leaderboard-subject", kwargs={"subject_slug": "personlighedspsykologi"})
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "PrivateAlias")
+        self.assertContains(response, "Deltag med alias")
+        self.assertNotContains(response, "Du deltager allerede offentligt i Freudd Quiz Cup.")
+
+    def test_leaderboard_page_renders_tabs_for_all_active_subjects(self) -> None:
+        self.subjects_file.write_text(
+            json.dumps(
+                {
+                    "version": 1,
+                    "subjects": [
+                        {
+                            "slug": "personlighedspsykologi",
+                            "title": "Personlighedspsykologi",
+                            "description": "Personlighedspsykologi F26",
+                            "active": True,
+                        },
+                        {
+                            "slug": "kognitionspsykologi",
+                            "title": "Kognitionspsykologi",
+                            "description": "Kognitionspsykologi F26",
+                            "active": True,
+                        },
+                    ],
+                }
+            ),
+            encoding="utf-8",
+        )
+        clear_subject_service_caches()
+
+        response = self.client.get(
+            reverse("leaderboard-subject", kwargs={"subject_slug": "personlighedspsykologi"})
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Personlighedspsykologi")
+        self.assertContains(response, "Kognitionspsykologi")
+        self.assertContains(response, "class=\"cup-tab is-active\"")
+        self.assertContains(response, '<span class="cup-tab-icon" aria-hidden="true">psychology</span>')
+        self.assertContains(response, '<span class="cup-tab-icon" aria-hidden="true">memory</span>')
+
+    def test_leaderboard_page_uses_podium_layout_and_accuracy_badges(self) -> None:
+        users = [
+            self._create_user(username="rank-one"),
+            self._create_user(username="rank-two"),
+            self._create_user(username="rank-three"),
+            self._create_user(username="rank-four"),
+        ]
+        aliases = ["RankOne", "RankTwo", "RankThree", "RankFour"]
+        for user, alias in zip(users, aliases):
+            UserLeaderboardProfile.objects.create(
+                user=user,
+                public_alias=alias,
+                public_alias_normalized=alias.lower(),
+                is_public=True,
+            )
+
+        season_key = active_half_year_season(datetime(2026, 2, 1, 0, 0, tzinfo=dt_timezone.utc)).key
+        score_rows = [
+            (users[0], 400, 4, datetime(2026, 1, 2, 9, 0, tzinfo=dt_timezone.utc)),
+            (users[1], 350, 4, datetime(2026, 1, 2, 10, 0, tzinfo=dt_timezone.utc)),
+            (users[2], 300, 3, datetime(2026, 1, 2, 11, 0, tzinfo=dt_timezone.utc)),
+            (users[3], 250, 3, datetime(2026, 1, 2, 12, 0, tzinfo=dt_timezone.utc)),
+        ]
+        for user, score, correct, reached_at in score_rows:
+            QuizProgress.objects.create(
+                user=user,
+                quiz_id=self.quiz_id,
+                status=QuizProgress.Status.COMPLETED,
+                state_json={},
+                answers_count=correct,
+                question_count=4,
+                last_view="summary",
+                completed_at=reached_at,
+                leaderboard_season_key=season_key,
+                leaderboard_best_score=score,
+                leaderboard_best_correct_answers=correct,
+                leaderboard_best_question_count=4,
+                leaderboard_best_duration_ms=20_000,
+                leaderboard_best_reached_at=reached_at,
+            )
+
+        response = self.client.get(
+            reverse("leaderboard-subject", kwargs={"subject_slug": "personlighedspsykologi"})
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Accuracy 100%")
+        self.assertContains(response, "Accuracy 75%")
+        self.assertContains(response, "Top 50 - Personlighedspsykologi")
+        self.assertContains(response, "RankFour")
+        body = response.content.decode("utf-8")
+        self.assertNotRegex(body, r"<button[^>]+data-cup-expand\b")
+
+        rank_two_pos = body.find("RankTwo")
+        rank_one_pos = body.find("RankOne")
+        rank_three_pos = body.find("RankThree")
+        self.assertGreaterEqual(rank_two_pos, 0)
+        self.assertGreaterEqual(rank_one_pos, 0)
+        self.assertGreaterEqual(rank_three_pos, 0)
+        self.assertLess(rank_two_pos, rank_one_pos)
+        self.assertLess(rank_one_pos, rank_three_pos)
     def test_base_nav_contains_quizliga_link(self) -> None:
         response = self.client.get(reverse("login"))
         self.assertEqual(response.status_code, 200)
@@ -1189,7 +1310,11 @@ class QuizPortalTests(TestCase):
         response = self.client.get(
             reverse("leaderboard-subject", kwargs={"subject_slug": "personlighedspsykologi"})
         )
-        self.assertNotContains(response, "PublicAlias")
+        body = response.content.decode("utf-8")
+        self.assertContains(response, "PublicAlias")
+        self.assertContains(response, "Deltag med alias")
+        self.assertNotIn('class="cup-podium-alias">PublicAlias', body)
+        self.assertNotIn('class="cup-table-alias">PublicAlias', body)
 
     def test_leaderboard_scoring_tiebreak_and_subject_filtering(self) -> None:
         second_quiz_id = "aaaaaaaa"
@@ -1386,9 +1511,11 @@ class QuizPortalTests(TestCase):
         self.assertEqual(entries[0]["alias"], "BetaPoints")
         self.assertEqual(entries[0]["score_points"], 250)
         self.assertEqual(entries[0]["quiz_count"], 1)
+        self.assertEqual(entries[0]["accuracy_percent"], 100)
         self.assertEqual(entries[1]["alias"], "AlphaPoints")
         self.assertEqual(entries[1]["score_points"], 200)
         self.assertEqual(entries[1]["quiz_count"], 2)
+        self.assertEqual(entries[1]["accuracy_percent"], 50)
 
     def test_half_year_season_boundaries(self) -> None:
         jan_start = active_half_year_season(datetime(2026, 1, 1, 0, 0, tzinfo=dt_timezone.utc))

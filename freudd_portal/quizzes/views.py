@@ -91,6 +91,12 @@ DIFFICULTY_SORT_ORDER = {
     "hard": 2,
     "unknown": 3,
 }
+LEADERBOARD_TAB_ICON_BY_SUBJECT = {
+    "personlighedspsykologi": "psychology",
+    "udviklingspsykologi": "child_care",
+    "kognitionspsykologi": "memory",
+    "socialpsykologi": "groups",
+}
 LECTURE_KEY_DISPLAY_RE = re.compile(r"^W(?P<week>\d{1,2})L(?P<lecture>\d+)$", re.IGNORECASE)
 LECTURE_META_SUFFIX_RE = re.compile(
     r"\s*\((?:forelæsning|forelaesning)\s+\d+\s*,\s*\d{4}-\d{2}-\d{2}\)\s*$",
@@ -170,6 +176,11 @@ def _difficulty_label(value: str | None) -> str:
 def _difficulty_sort_rank(value: object) -> int:
     difficulty = str(value or "unknown").strip().lower() or "unknown"
     return DIFFICULTY_SORT_ORDER.get(difficulty, len(DIFFICULTY_SORT_ORDER))
+
+
+def _leaderboard_tab_icon(subject_slug: str) -> str:
+    slug = str(subject_slug or "").strip().lower()
+    return LEADERBOARD_TAB_ICON_BY_SUBJECT.get(slug, "school")
 
 
 def _subject_or_404(catalog: SubjectCatalog, subject_slug: str):
@@ -1419,18 +1430,54 @@ def leaderboard_subject_view(request: HttpRequest, subject_slug: str) -> HttpRes
     )
 
     own_profile = None
+    leaderboard_alias_editing = False
     if request.user.is_authenticated:
         own_profile = get_profile_payload(request.user)
+        leaderboard_alias_editing = _as_bool(request.GET.get("edit_alias")) and bool(
+            str(own_profile.get("public_alias") or "").strip()
+        )
+
+    entries = snapshot.get("entries") or []
+    rank_to_entry = {int(item.get("rank") or 0): item for item in entries if isinstance(item, dict)}
+    podium_entries = [rank_to_entry[rank] for rank in (2, 1, 3) if rank in rank_to_entry]
+    table_entries = [item for item in entries if int(item.get("rank") or 0) > 3]
+
+    subject_tabs = [
+        {
+            "slug": item.slug,
+            "title": item.title,
+            "icon": _leaderboard_tab_icon(item.slug),
+            "url": reverse("leaderboard-subject", kwargs={"subject_slug": item.slug}),
+            "is_active": item.slug == subject.slug,
+        }
+        for item in catalog.active_subjects
+    ]
+
+    now_utc = timezone.now().astimezone(season.end_at.tzinfo)
+    season_days_remaining = max(0, (season.end_at.date() - now_utc.date()).days)
+    if season_days_remaining == 0:
+        season_countdown_label = "Semesteret slutter i dag"
+    elif season_days_remaining == 1:
+        season_countdown_label = "Semesteret slutter om 1 dag"
+    else:
+        season_countdown_label = f"Semesteret slutter om {season_days_remaining} dage"
 
     return render(
         request,
         "quizzes/leaderboard.html",
         {
             "subject": subject,
-            "entries": snapshot.get("entries") or [],
+            "entries": entries,
+            "podium_entries": podium_entries,
+            "table_entries": table_entries,
+            "table_preview_limit": 7,
+            "subject_tabs": subject_tabs,
             "participant_count": int(snapshot.get("participant_count") or 0),
             "active_season": snapshot.get("season") or {},
+            "season_countdown_label": season_countdown_label,
             "leaderboard_profile": own_profile,
+            "leaderboard_alias_editing": leaderboard_alias_editing,
+            "login_next_url": _auth_url_with_next("login", request.path),
             "back_url": _safe_back_url(request, fallback_url=reverse("progress")),
         },
     )

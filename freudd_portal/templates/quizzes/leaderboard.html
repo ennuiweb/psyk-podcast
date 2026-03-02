@@ -1,98 +1,638 @@
 {% extends "base.html" %}
-{% block title %}quizliga · {{ subject.title }}{% endblock %}
+{% block title %}Freudd Quiz Cup · {{ subject.title }}{% endblock %}
 {% block content %}
 <style>
-  .leaderboard-layout {
+  @import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400..700,0..1,0");
+
+  .cup-shell {
     display: grid;
-    gap: var(--space-4);
+    gap: var(--space-5);
   }
 
-  .leaderboard-head {
-    display: flex;
+  .cup-top-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.6fr) minmax(280px, 0.9fr);
+    gap: var(--space-5);
     align-items: start;
-    justify-content: space-between;
-    gap: var(--space-3);
-    flex-wrap: wrap;
   }
 
-  .leaderboard-season {
+  .cup-title {
+    margin: 0;
+    font-size: clamp(2rem, 5.5vw, 3.35rem);
+  }
+
+  .cup-lede {
+    margin: var(--space-3) 0 0;
+    color: var(--text-subtle-2);
+    font-size: clamp(1rem, 2.2vw, 1.16rem);
+    max-width: 34ch;
+  }
+
+  .cup-tabs {
+    margin-top: var(--space-4);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 10px;
+  }
+
+  .cup-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 42px;
+    border-radius: var(--radius-pill);
+    border: 1px solid transparent;
+    color: var(--text-subtle-2);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0 14px;
+    transition: border-color 140ms ease, color 140ms ease, background 140ms ease;
+  }
+
+  .cup-tab:hover {
+    border-color: color-mix(in srgb, var(--accent) 38%, var(--border));
+    color: var(--text-strong);
+    background: color-mix(in srgb, var(--accent-soft) 62%, var(--surface));
+  }
+
+  .cup-tab.is-active {
+    color: var(--accent-strong);
+    border-color: color-mix(in srgb, var(--accent) 44%, var(--border));
+    background: color-mix(in srgb, var(--accent-soft) 78%, var(--surface));
+  }
+
+  .cup-tab-icon {
+    font-family: "Material Symbols Outlined", sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1;
+    font-style: normal;
+    font-variation-settings: "FILL" 0, "wght" 500, "GRAD" 0, "opsz" 24;
+  }
+
+  .cup-meta {
+    margin: var(--space-3) 0 0;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  .cup-back {
+    margin-top: var(--space-3);
+  }
+
+  .cup-alias-card {
+    position: relative;
+    border-radius: var(--radius-lg);
+    padding: clamp(16px, 2.8vw, 22px);
+    display: grid;
+    gap: var(--space-2);
+  }
+
+  .cup-alias-card::after {
+    content: "";
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 72px;
+    height: 72px;
+    border-radius: 14px;
+    opacity: 0.12;
+    background:
+      radial-gradient(circle at 48% 24%, color-mix(in srgb, var(--accent) 74%, transparent) 0 22%, transparent 23%),
+      linear-gradient(180deg, color-mix(in srgb, var(--accent) 54%, transparent), transparent 60%),
+      linear-gradient(90deg, color-mix(in srgb, var(--accent) 38%, transparent), color-mix(in srgb, var(--accent) 18%, transparent));
+  }
+
+  .cup-alias-title {
+    margin: 0;
+    font-size: 1.86rem;
+  }
+
+  .cup-alias-copy {
+    margin: 0;
+    color: var(--text-subtle);
+    max-width: 34ch;
+  }
+
+  .cup-alias-form {
+    margin: var(--space-1) 0 0;
+    display: grid;
+    gap: var(--space-2);
+  }
+
+  .cup-alias-form input[type="text"] {
+    border-radius: var(--radius-pill);
+  }
+
+  .cup-alias-inline {
+    margin-top: var(--space-1);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    align-items: center;
+  }
+
+  .cup-cta {
+    width: 100%;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .cup-cta-icon {
+    font-family: "Material Symbols Outlined", sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1;
+    font-style: normal;
+    font-variation-settings: "FILL" 0, "wght" 600, "GRAD" 0, "opsz" 24;
+  }
+
+  .cup-secondary-button {
+    min-width: 180px;
+  }
+
+  .cup-alias-lock {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border-radius: var(--radius-pill);
+    border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--border));
+    background: color-mix(in srgb, var(--accent-soft) 58%, var(--surface));
+    color: var(--accent-strong);
+    font-weight: 700;
+    min-height: 40px;
+    padding: 0 14px;
+    width: fit-content;
+  }
+
+  .cup-alias-note {
     margin: 0;
     color: var(--muted);
-    font-size: 0.92rem;
+    font-size: 0.84rem;
   }
 
-  .leaderboard-table-wrap {
+  .cup-podium {
+    display: grid;
+    gap: var(--space-3);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: end;
+  }
+
+  .cup-podium-card {
+    position: relative;
+    border-radius: var(--radius-lg);
+    padding: 18px;
+    text-align: center;
+    display: grid;
+    gap: 8px;
+    min-height: 220px;
+    align-content: center;
+  }
+
+  .cup-podium-card.rank-1 {
+    min-height: 256px;
+    transform: translateY(-8px);
+  }
+
+  .cup-rank-badge {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--border);
+    background: var(--surface-soft);
+    color: var(--text-subtle-2);
+    font-family: var(--font-mono);
+    font-size: 0.84rem;
+    font-weight: 700;
+  }
+
+  .cup-trophy {
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+
+  .cup-podium-alias {
+    margin: 0;
+    font-size: clamp(1.5rem, 2vw, 2rem);
+    overflow-wrap: anywhere;
+  }
+
+  .cup-accuracy-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 28px;
+    border-radius: var(--radius-pill);
+    border: 1px solid transparent;
+    padding: 0 10px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    width: fit-content;
+    justify-self: center;
+  }
+
+  .cup-accuracy-chip.tone-high {
+    color: var(--success-ink);
+    background: var(--success-bg);
+    border-color: color-mix(in srgb, var(--success) 32%, transparent);
+  }
+
+  .cup-accuracy-chip.tone-mid {
+    color: var(--warn-ink-soft);
+    background: var(--warn-bg-soft);
+    border-color: color-mix(in srgb, var(--warn-border) 68%, transparent);
+  }
+
+  .cup-accuracy-chip.tone-low {
+    color: var(--danger-ink);
+    background: var(--danger-bg-soft);
+    border-color: color-mix(in srgb, var(--danger) 28%, transparent);
+  }
+
+  .cup-points {
+    margin: 4px 0 0;
+    font-family: var(--font-mono);
+    font-size: clamp(2rem, 4.2vw, 3rem);
+    color: var(--accent-strong);
+    line-height: 1;
+  }
+
+  .cup-points-label {
+    margin: 0;
+    color: var(--text-subtle-2);
+    letter-spacing: 0.08em;
+    font-size: 0.88rem;
+    text-transform: uppercase;
+  }
+
+  .cup-empty {
+    margin: 0;
+    color: var(--muted);
+  }
+
+  .cup-table-shell {
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .cup-table-head {
+    padding: clamp(16px, 2.5vw, 24px);
+    border-bottom: 1px solid var(--border);
+    display: grid;
+    gap: 4px;
+  }
+
+  .cup-table-title {
+    margin: 0;
+    font-size: clamp(1.5rem, 2.6vw, 2rem);
+  }
+
+  .cup-table-meta {
+    margin: 0;
+    color: var(--text-subtle-2);
+  }
+
+  .cup-table-wrap {
     overflow-x: auto;
   }
 
-  .leaderboard-table {
+  .cup-table {
     width: 100%;
     border-collapse: collapse;
-    min-width: 420px;
+    min-width: 620px;
   }
 
-  .leaderboard-table th,
-  .leaderboard-table td {
-    padding: var(--space-3);
+  .cup-table th,
+  .cup-table td {
+    padding: 14px clamp(12px, 2vw, 18px);
     border-bottom: 1px solid var(--border);
     text-align: left;
   }
 
-  .leaderboard-table th {
+  .cup-table th {
     background: var(--table-head-bg);
     color: var(--table-head-ink);
-    font-size: 0.82rem;
+    font-size: 0.84rem;
     text-transform: uppercase;
     letter-spacing: 0.06em;
   }
 
-  .leaderboard-empty {
+  .cup-table td:first-child,
+  .cup-table th:first-child {
+    width: 74px;
+  }
+
+  .cup-table td:last-child,
+  .cup-table th:last-child {
+    text-align: right;
+  }
+
+  .cup-table tbody tr:hover {
+    background: color-mix(in srgb, var(--accent-soft) 62%, transparent);
+  }
+
+  .cup-table-alias {
+    font-weight: 700;
+  }
+
+  .cup-table-points {
+    font-family: var(--font-mono);
+    color: var(--accent-strong);
+  }
+
+  .cup-table-footer {
+    padding: var(--space-3) var(--space-4);
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: center;
+  }
+
+  .cup-expand-button {
+    border: 0;
+    background: transparent;
+    color: var(--accent-strong);
+    font: inherit;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .cup-expand-button:hover {
+    color: var(--accent);
+  }
+
+  .cup-expand-icon {
+    font-family: "Material Symbols Outlined", sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1;
+    font-style: normal;
+    font-variation-settings: "FILL" 0, "wght" 600, "GRAD" 0, "opsz" 24;
+    transition: transform 140ms ease;
+  }
+
+  .cup-expand-button[aria-expanded="true"] .cup-expand-icon {
+    transform: rotate(180deg);
+  }
+
+  .cup-table-empty {
     margin: 0;
+    padding: var(--space-4);
     color: var(--muted);
+  }
+
+  @media (max-width: 1040px) {
+    .cup-top-grid {
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--space-4);
+    }
+
+    .cup-podium {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .cup-podium-card.rank-1 {
+      grid-column: 1 / -1;
+      transform: none;
+      min-height: 236px;
+    }
+  }
+
+  @media (max-width: 760px) {
+    .cup-shell {
+      gap: var(--space-4);
+    }
+
+    .cup-tabs {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      padding-bottom: 12px;
+      scrollbar-width: thin;
+    }
+
+    .cup-tab {
+      flex: 0 0 auto;
+    }
+
+    .cup-podium {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .cup-podium-card.rank-1 {
+      grid-column: auto;
+      order: 1;
+    }
+
+    .cup-podium-card.rank-2 {
+      order: 2;
+    }
+
+    .cup-podium-card.rank-3 {
+      order: 3;
+    }
+
+    .cup-alias-inline {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .cup-secondary-button,
+    .cup-back {
+      width: 100%;
+    }
   }
 </style>
 
-<div class="card leaderboard-layout">
-  <header class="leaderboard-head">
+<div class="cup-shell">
+  <section class="cup-top-grid">
     <div>
-      <h1 class="quiz-title">quizliga · {{ subject.title }}</h1>
-      <p class="leaderboard-season">Sæson: {{ active_season.label }}</p>
-      <p class="leaderboard-season">Deltagere: {{ participant_count }}</p>
-    </div>
-    {% if request.user.is_authenticated %}
-    <a class="ghost-link back-link" href="{{ back_url }}" onclick="if (window.history.length > 1) { event.preventDefault(); window.history.back(); }">Tilbage</a>
-    {% else %}
-    <a class="ghost-link" href="{% url 'login' %}">Log ind</a>
-    {% endif %}
-  </header>
+      <h1 class="cup-title">Freudd Quiz Cup</h1>
+      <p class="cup-lede">Konkurrer mod dine medstuderende i psykologi. Vælg et fagområde for at se ranglisten og din placering.</p>
 
-  {% if entries %}
-  <div class="leaderboard-table-wrap">
-    <table class="leaderboard-table">
-      <thead>
-        <tr>
-          <th>Placering</th>
-          <th>Alias</th>
-          <th>Point</th>
-          <th>Korrekte</th>
-          <th>Quizzer</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for entry in entries %}
-        <tr>
-          <td>#{{ entry.rank }}</td>
-          <td>{{ entry.alias }}</td>
-          <td>{{ entry.score_points }}</td>
-          <td>{{ entry.correct_answers }}</td>
-          <td>{{ entry.quiz_count }}</td>
-        </tr>
+      <nav class="cup-tabs" aria-label="Fagområder i quiz cup">
+        {% for tab in subject_tabs %}
+        <a class="cup-tab {% if tab.is_active %}is-active{% endif %}" href="{{ tab.url }}">
+          <span class="cup-tab-icon" aria-hidden="true">{{ tab.icon }}</span>
+          {{ tab.title }}
+        </a>
         {% endfor %}
-      </tbody>
-    </table>
-  </div>
+      </nav>
+
+      <p class="cup-meta">Deltagere: {{ participant_count }} · Aktiv sæson: {{ active_season.label }}</p>
+
+      {% if request.user.is_authenticated %}
+      <a class="ghost-link back-link cup-back" href="{{ back_url }}" onclick="if (window.history.length > 1) { event.preventDefault(); window.history.back(); }">Tilbage</a>
+      {% endif %}
+    </div>
+
+    <aside class="card cup-alias-card" id="cup-alias-card">
+      <h2 class="cup-alias-title">Sæt dit alias op</h2>
+      <p class="cup-alias-copy">For at deltage i cuppen skal du vælge et anonymt alias. Det tager kun et øjeblik.</p>
+
+      {% if not request.user.is_authenticated %}
+      <a class="btn-primary cup-cta" href="{{ login_next_url }}">Log ind og deltag</a>
+      {% elif leaderboard_profile.public_alias and leaderboard_profile.is_public and not leaderboard_alias_editing %}
+      <span class="cup-alias-lock">Alias: {{ leaderboard_profile.public_alias }}</span>
+      <p class="cup-alias-note">Du deltager allerede offentligt i Freudd Quiz Cup.</p>
+      <div class="cup-alias-inline">
+        <form method="post" action="{% url 'leaderboard-profile' %}">
+          {% csrf_token %}
+          <input type="hidden" name="next" value="{{ request.path }}#cup-alias-card" />
+          <button class="ghost-link cup-secondary-button" type="submit">Gør profil privat</button>
+        </form>
+        <a class="ghost-link cup-secondary-button" href="{{ request.path }}?edit_alias=1#cup-alias-card">Ændr alias</a>
+      </div>
+      {% elif leaderboard_profile.public_alias and not leaderboard_alias_editing %}
+      <span class="cup-alias-lock">Alias: {{ leaderboard_profile.public_alias }}</span>
+      <p class="cup-alias-note">Dit alias er klar. Aktiver deltagelse for at blive vist på ranglisten.</p>
+      <div class="cup-alias-inline">
+        <form method="post" action="{% url 'leaderboard-profile' %}">
+          {% csrf_token %}
+          <input type="hidden" name="next" value="{{ request.path }}#cup-alias-card" />
+          <input type="hidden" name="is_public" value="1" />
+          <button class="btn-primary cup-cta" type="submit">Deltag med alias</button>
+        </form>
+        <a class="ghost-link cup-secondary-button" href="{{ request.path }}?edit_alias=1#cup-alias-card">Ændr alias</a>
+      </div>
+      {% else %}
+      <form method="post" action="{% url 'leaderboard-profile' %}" class="cup-alias-form">
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ request.path }}#cup-alias-card" />
+        <input
+          type="text"
+          name="public_alias"
+          maxlength="24"
+          value="{{ leaderboard_profile.public_alias }}"
+          placeholder="Alias (3-24 tegn)"
+          aria-label="Offentligt alias"
+          required
+        />
+        {% if leaderboard_profile.public_alias %}
+        <input type="hidden" name="allow_alias_change" value="1" />
+        {% endif %}
+        <input type="hidden" name="is_public" value="1" />
+        <button class="btn-primary cup-cta" type="submit">
+          {% if leaderboard_profile.public_alias %}Gem alias og deltag{% else %}Opret alias og deltag{% endif %}
+          <span class="cup-cta-icon" aria-hidden="true">arrow_forward</span>
+        </button>
+        {% if leaderboard_profile.public_alias %}
+        <a class="ghost-link cup-secondary-button" href="{{ request.path }}#cup-alias-card">Annuller alias-ændring</a>
+        {% endif %}
+      </form>
+      {% endif %}
+    </aside>
+  </section>
+
+  {% if podium_entries %}
+  <section class="cup-podium" aria-label="Top 3 i Freudd Quiz Cup">
+    {% for entry in podium_entries %}
+    <article class="card cup-podium-card rank-{{ entry.rank }}">
+      <span class="cup-rank-badge" aria-label="Placering {{ entry.rank }}">{{ entry.rank }}</span>
+      {% if entry.rank == 1 %}
+      <span class="cup-trophy" aria-hidden="true">🏆</span>
+      {% endif %}
+      <h2 class="cup-podium-alias">{{ entry.alias }}</h2>
+      <span class="cup-accuracy-chip tone-{{ entry.accuracy_tone }}">Accuracy {{ entry.accuracy_percent }}%</span>
+      <p class="cup-points">{{ entry.score_points_label }}</p>
+      <p class="cup-points-label">POINT</p>
+    </article>
+    {% endfor %}
+  </section>
   {% else %}
-  <p class="leaderboard-empty">Ingen offentlige deltagere i den aktive sæson endnu.</p>
+  <p class="card cup-empty">Ingen offentlige deltagere i den aktive sæson endnu.</p>
   {% endif %}
+
+  <section class="card cup-table-shell" aria-labelledby="cup-top-50-title">
+    <header class="cup-table-head">
+      <h2 class="cup-table-title" id="cup-top-50-title">Top 50 - {{ subject.title }}</h2>
+      <p class="cup-table-meta">{{ season_countdown_label }}</p>
+    </header>
+
+    {% if table_entries %}
+    <div class="cup-table-wrap">
+      <table class="cup-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Alias</th>
+            <th>Point</th>
+            <th>Korrekthed</th>
+            <th>Antal quizzer</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for entry in table_entries %}
+          <tr class="{% if forloop.counter > table_preview_limit %}is-extra{% endif %}" {% if forloop.counter > table_preview_limit %}hidden{% endif %}>
+            <td>{{ entry.rank }}</td>
+            <td class="cup-table-alias">{{ entry.alias }}</td>
+            <td class="cup-table-points">{{ entry.score_points_label }}</td>
+            <td><span class="cup-accuracy-chip tone-{{ entry.accuracy_tone }}">{{ entry.accuracy_percent }}%</span></td>
+            <td>{{ entry.quiz_count }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% else %}
+    <p class="cup-table-empty">Ingen yderligere placeringer endnu.</p>
+    {% endif %}
+
+    {% if table_entries|length > table_preview_limit %}
+    <footer class="cup-table-footer">
+      <button
+        type="button"
+        class="cup-expand-button"
+        data-cup-expand
+        data-cup-expand-open-label="Se alle placeringer"
+        data-cup-expand-close-label="Skjul placeringer"
+        aria-expanded="false"
+      >
+        <span data-cup-expand-label>Se alle placeringer</span>
+        <span class="cup-expand-icon" aria-hidden="true">expand_more</span>
+      </button>
+    </footer>
+    {% endif %}
+  </section>
 </div>
+
+<script>
+  (() => {
+    const toggle = document.querySelector("[data-cup-expand]");
+    if (!toggle) {
+      return;
+    }
+
+    const extraRows = Array.from(document.querySelectorAll(".cup-table tbody tr.is-extra"));
+    if (extraRows.length === 0) {
+      return;
+    }
+
+    let expanded = false;
+    const label = toggle.querySelector("[data-cup-expand-label]");
+    const openLabel = toggle.getAttribute("data-cup-expand-open-label") || "";
+    const closeLabel = toggle.getAttribute("data-cup-expand-close-label") || "";
+    toggle.addEventListener("click", () => {
+      expanded = !expanded;
+      for (const row of extraRows) {
+        row.hidden = !expanded;
+      }
+      if (label) {
+        label.textContent = expanded ? closeLabel : openLabel;
+      }
+      toggle.setAttribute("aria-expanded", expanded ? "true" : "false");
+    });
+  })();
+</script>
 {% endblock %}

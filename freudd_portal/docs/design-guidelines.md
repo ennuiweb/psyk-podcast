@@ -282,6 +282,24 @@ Behavior:
 - Short, action-first CTA copy.
 - Keep transport/security warning visible when applicable.
 
+### 7.5 Freudd Quiz Cup (`/leaderboard/<subject_slug>`)
+
+Order:
+
+1. Hero intro (`Freudd Quiz Cup`) with short competitive framing copy.
+2. Subject tabs for active subjects.
+3. Alias setup/deltag card (right column on desktop, stacked on compact layouts).
+4. Podium cards for ranks `#2`, `#1`, `#3`.
+5. `Top 50` table (starting from rank `#4`) with expandable footer action.
+
+Behavior:
+
+- Keep ranking logic/data source unchanged from quizliga scoring rules.
+- Alias participation uses the existing profile endpoint (`POST /leaderboard/profile`).
+- Alias edits remain explicit mode-based (not always-on).
+- On compact layouts, tabs scroll horizontally and podium stacks vertically.
+- Accuracy badges must communicate status with text and not color alone.
+
 ## 8. Accessibility Requirements
 
 1. Minimum target size `44x44` for primary interactive controls.

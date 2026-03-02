@@ -6,6 +6,8 @@ The progress experience is split into two clear tracks:
 - Personal tracking (private): each student can manually mark tekster as read and podcasts as listened, while quiz completion still comes from actual completed quizzes.
 - Public freudd quiz cup: an opt-in public leaderboard that shows alias, rank, point score, and completed quiz count per subject.
 
+The dedicated quiz cup page (`/leaderboard/<subject_slug>`) presents this as subject tabs, a top-3 podium, and a Top 50 table.
+
 This split keeps personal study habits private while still allowing a lightweight shared competition around quiz completion.
 
 freudd quiz cup is seasonal and automatically resets every half year (UTC). Ranking is based on a score that weighs correct answers highest and adds a speed bonus for faster quiz completion.

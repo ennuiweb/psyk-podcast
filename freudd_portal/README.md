@@ -19,6 +19,7 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Anonymous users are prompted to log in when they reach quiz summary/completion.
 - Quiz flow enforces a per-question timer (`FREUDD_QUIZ_QUESTION_TIME_LIMIT_SECONDS`, default `30s`); timeout auto-marks the question wrong and advances.
 - Quiz question header shows live potential score while unanswered (`Tid: <sek>s · <point>/120 point`) and updates continuously as time passes.
+- Quiz question/hint/option copy normalizes inline math delimiters (`$...$`, `\\(...\\)`) for cleaner learner-facing text.
 - Quiz retry cooldown is per `(user, quiz_id)` with tiering: `1m x2`, `5m x3`, then `10m`; streak resets after `1h` inactivity (`FREUDD_QUIZ_RETRY_COOLDOWN_RESET_SECONDS`).
 - Quiz files directory must be readable by `www-data`; sync uploads now avoid owner/group preservation and enforce root dir mode `755`.
 - Public static quiz files still exist at `/quizzes/personlighedspsykologi/<id>.html` (Caddy static route).

@@ -141,6 +141,8 @@
     margin: 0 0 var(--space-3);
     font-size: clamp(1.08rem, 2.5vw, 1.42rem);
     line-height: 1.36;
+    overflow-wrap: anywhere;
+    hyphens: auto;
   }
 
   .quiz-options {
@@ -203,6 +205,7 @@
 
   .quiz-option-text {
     overflow-wrap: anywhere;
+    hyphens: auto;
   }
 
   .quiz-hint,
@@ -211,6 +214,8 @@
     border-radius: var(--radius-sub);
     padding: var(--space-3);
     margin: 0 0 var(--space-3);
+    overflow-wrap: anywhere;
+    hyphens: auto;
   }
 
   .quiz-hint {
@@ -512,6 +517,15 @@
       } catch (error) {
         return null;
       }
+    }
+
+    function normalizeQuestionCopy(rawValue) {
+      const text = String(rawValue ?? "");
+      return text
+        .replace(/\\\((.+?)\\\)/g, "$1")
+        .replace(/\$([^$\n]+)\$/g, "$1")
+        .replace(/\s+/g, " ")
+        .trim();
     }
 
     function clearLocalState() {
@@ -1153,7 +1167,7 @@
       answeredNode.textContent = `Besvaret: ${answeredQuestions} / ${totalQuestions}`;
       progressNode.value = flowProgress;
       progressNode.textContent = `${flowProgress}%`;
-      questionNode.textContent = String(question.question || "");
+      questionNode.textContent = normalizeQuestionCopy(question.question);
 
       optionsNode.innerHTML = "";
       options.forEach((option, optionIndex) => {
@@ -1166,7 +1180,7 @@
 
         const optionText = document.createElement("span");
         optionText.className = "quiz-option-text";
-        optionText.textContent = String(option?.text || "");
+        optionText.textContent = normalizeQuestionCopy(option?.text);
         button.append(optionLabel, optionText);
         button.disabled = isTimedOut;
         if (selectedOption === optionIndex) {
@@ -1195,7 +1209,7 @@
         optionsNode.appendChild(button);
       });
 
-      const hintText = String(question.hint || "").trim();
+      const hintText = normalizeQuestionCopy(question.hint);
       if (hintText) {
         hintBtnNode.disabled = false;
         hintBtnNode.textContent = state.showHintForCurrent ? "Skjul hint" : "Vis hint";
@@ -1218,7 +1232,7 @@
         rationaleNode.classList.remove("is-hidden");
       } else if (hasAnswered) {
         const selected = options[selectedOption];
-        const rationale = String(selected?.rationale || "").trim();
+        const rationale = normalizeQuestionCopy(selected?.rationale);
         if (rationale) {
           rationaleNode.textContent = rationale;
           rationaleNode.classList.remove("is-hidden");

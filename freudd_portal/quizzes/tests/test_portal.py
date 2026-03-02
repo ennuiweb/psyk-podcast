@@ -446,6 +446,8 @@ class QuizPortalTests(TestCase):
         self.assertContains(response, 'id="quiz-points-feedback"')
         self.assertContains(response, "Optjent:")
         self.assertContains(response, "${livePoints}/${maxQuestionPoints} point")
+        self.assertContains(response, "normalizeQuestionCopy(question.question)")
+        self.assertContains(response, ".replace(/\\$([^$\\n]+)\\$/g, \"$1\")")
         self.assertContains(response, f"{reverse('login')}?{urlencode({'next': quiz_url})}")
         self.assertContains(response, f"{reverse('signup')}?{urlencode({'next': quiz_url})}")
 

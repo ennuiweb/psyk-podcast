@@ -1418,15 +1418,17 @@ def progress_view(request: HttpRequest) -> HttpResponse:
             limit=5,
             semester=semester,
         )
-        leaderboard_preview_by_subject.append(
-            {
-                "slug": subject.slug,
-                "title": subject.title,
-                "leaderboard_url": leaderboard_url,
-                "entries": leaderboard_snapshot.get("entries") or [],
-                "participant_count": int(leaderboard_snapshot.get("participant_count") or 0),
-            }
-        )
+        preview_entries = leaderboard_snapshot.get("entries") or []
+        if preview_entries:
+            leaderboard_preview_by_subject.append(
+                {
+                    "slug": subject.slug,
+                    "title": subject.title,
+                    "leaderboard_url": leaderboard_url,
+                    "entries": preview_entries,
+                    "participant_count": int(leaderboard_snapshot.get("participant_count") or 0),
+                }
+            )
 
     quiz_history_enabled = bool(getattr(settings, "FREUDD_PROGRESS_QUIZ_HISTORY_ENABLED", True))
     rows: list[dict[str, object]] = []

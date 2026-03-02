@@ -1007,6 +1007,15 @@ class QuizPortalTests(TestCase):
         self.assertContains(response, "Offentlig quiz cup")
         self.assertContains(response, reverse("leaderboard-profile"))
 
+    def test_progress_page_hides_empty_leaderboard_preview_cards(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+
+        response = self.client.get(reverse("progress"))
+        self.assertEqual(response.status_code, 200)
+        self.assertNotContains(response, "Ingen offentlige deltagere endnu.")
+        self.assertNotContains(response, "Se fuld quiz cup")
+
     def test_progress_page_moves_enrollment_controls_to_bottom_module(self) -> None:
         user = self._create_user()
         self.client.force_login(user)

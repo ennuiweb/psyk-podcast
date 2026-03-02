@@ -79,6 +79,13 @@ from .tracking_services import (
 )
 logger = logging.getLogger(__name__)
 MAX_STATE_BYTES = 5_000_000
+QUIZ_DISPLAY_POINTS_MAX = 150
+QUIZ_POINTS_MAX_PER_QUESTION = 120
+QUIZ_SLOT_STATE_LABELS_DA = {
+    "not_started": "Ikke startet",
+    "in_progress": "I gang",
+    "completed": "Fuldført",
+}
 DIFFICULTY_LABELS_DA = {
     "easy": "Let",
     "medium": "Mellem",
@@ -176,6 +183,121 @@ def _difficulty_label(value: str | None) -> str:
 def _difficulty_sort_rank(value: object) -> int:
     difficulty = str(value or "unknown").strip().lower() or "unknown"
     return DIFFICULTY_SORT_ORDER.get(difficulty, len(DIFFICULTY_SORT_ORDER))
+
+
+def _quiz_slot_state_from_progress(progress: QuizProgress | None) -> str:
+    if progress is None:
+        return "not_started"
+    status = str(progress.status or QuizProgress.Status.IN_PROGRESS).strip().lower()
+    if status == QuizProgress.Status.COMPLETED:
+        return "completed"
+    if _safe_non_negative_int(progress.answers_count) > 0:
+        return "in_progress"
+    return "not_started"
+
+
+def _display_points_from_raw_score(*, raw_points: int, question_count: int) -> int:
+    total_questions = max(0, int(question_count))
+    if total_questions <= 0:
+        return 0
+    raw_max = total_questions * QUIZ_POINTS_MAX_PER_QUESTION
+    if raw_max <= 0:
+        return 0
+    normalized = round((max(0, int(raw_points)) / raw_max) * QUIZ_DISPLAY_POINTS_MAX)
+    return max(0, min(QUIZ_DISPLAY_POINTS_MAX, int(normalized)))
+
+
+def _annotate_quiz_difficulty_slots_for_user(
+    *,
+    user,
+    slots: list[dict[str, object]],
+) -> list[dict[str, object]]:
+    if not slots:
+        return []
+
+    quiz_ids = [
+        str(item.get("quiz_id") or "").strip().lower()
+        for item in slots
+        if str(item.get("quiz_id") or "").strip()
+    ]
+    progress_by_quiz_id: dict[str, QuizProgress] = {}
+    if quiz_ids:
+        progress_rows = QuizProgress.objects.filter(user=user, quiz_id__in=quiz_ids)
+        progress_by_quiz_id = {
+            str(row.quiz_id or "").strip().lower(): row
+            for row in progress_rows
+            if str(row.quiz_id or "").strip()
+        }
+
+    quiz_payload_cache: dict[str, dict[str, object] | None] = {}
+    enriched_slots: list[dict[str, object]] = []
+    for index, slot in enumerate(slots, start=1):
+        slot_copy = dict(slot)
+        difficulty_label = str(slot_copy.get("label") or "").strip() or "Quiz"
+        quiz_id = str(slot_copy.get("quiz_id") or "").strip().lower()
+        progress = progress_by_quiz_id.get(quiz_id) if quiz_id else None
+        state_key = _quiz_slot_state_from_progress(progress)
+
+        slot_copy["display_index"] = index
+        slot_copy["title"] = f"{difficulty_label} quiz"
+        slot_copy["state_key"] = state_key
+        slot_copy["state_label"] = QUIZ_SLOT_STATE_LABELS_DA.get(state_key, QUIZ_SLOT_STATE_LABELS_DA["not_started"])
+        slot_copy["has_metrics"] = False
+        slot_copy["meta_line"] = slot_copy["state_label"]
+
+        if progress is None:
+            enriched_slots.append(slot_copy)
+            continue
+
+        best_question_count = _safe_non_negative_int(progress.leaderboard_best_question_count)
+        best_correct_answers = _safe_non_negative_int(progress.leaderboard_best_correct_answers)
+        raw_points = _safe_non_negative_int(progress.leaderboard_best_score)
+        correct_answers = 0
+        question_count = 0
+
+        if state_key == "completed" and best_question_count > 0:
+            question_count = best_question_count
+            correct_answers = max(0, min(best_correct_answers, best_question_count))
+        elif quiz_id and isinstance(progress.state_json, dict):
+            if quiz_id not in quiz_payload_cache:
+                try:
+                    quiz_payload_cache[quiz_id] = load_quiz_content(quiz_id)
+                except Exception:
+                    logger.exception(
+                        "Failed to load quiz content for subject slot",
+                        extra={
+                            "user_id": user.id,
+                            "quiz_id": quiz_id,
+                        },
+                    )
+                    quiz_payload_cache[quiz_id] = None
+            quiz_payload = quiz_payload_cache.get(quiz_id)
+            if isinstance(quiz_payload, dict):
+                outcome = compute_quiz_outcome(state_payload=progress.state_json, quiz_payload=quiz_payload)
+                question_count = _safe_non_negative_int(outcome.question_count)
+                correct_answers = max(0, min(_safe_non_negative_int(outcome.correct_answers), question_count))
+
+        if raw_points <= 0 and question_count > 0 and correct_answers > 0:
+            raw_points = correct_answers * 100
+
+        if question_count > 0:
+            display_points = _display_points_from_raw_score(
+                raw_points=raw_points,
+                question_count=question_count,
+            )
+            slot_copy["has_metrics"] = True
+            slot_copy["correct_answers"] = correct_answers
+            slot_copy["question_count"] = question_count
+            slot_copy["display_points_earned"] = display_points
+            slot_copy["display_points_total"] = QUIZ_DISPLAY_POINTS_MAX
+            slot_copy["meta_line"] = (
+                f"{correct_answers}/{question_count} rigtige"
+                f" • {display_points}/{QUIZ_DISPLAY_POINTS_MAX} point"
+            )
+
+        enriched_slots.append(slot_copy)
+
+    return enriched_slots
 
 
 def _leaderboard_tab_icon(subject_slug: str) -> str:
@@ -700,6 +822,7 @@ def _quiz_difficulty_slots(assets: object) -> list[dict[str, object]]:
             "difficulty": "easy",
             "label": "Let",
             "chip": "L",
+            "quiz_id": str(quiz_by_difficulty.get("easy", {}).get("quiz_id") or "").strip().lower(),
             "quiz_url": str(quiz_by_difficulty.get("easy", {}).get("quiz_url") or "").strip(),
             "question_count": quiz_by_difficulty.get("easy", {}).get("question_count"),
         },
@@ -707,6 +830,7 @@ def _quiz_difficulty_slots(assets: object) -> list[dict[str, object]]:
             "difficulty": "medium",
             "label": "Mellem",
             "chip": "M",
+            "quiz_id": str(quiz_by_difficulty.get("medium", {}).get("quiz_id") or "").strip().lower(),
             "quiz_url": str(quiz_by_difficulty.get("medium", {}).get("quiz_url") or "").strip(),
             "question_count": quiz_by_difficulty.get("medium", {}).get("question_count"),
         },
@@ -714,6 +838,7 @@ def _quiz_difficulty_slots(assets: object) -> list[dict[str, object]]:
             "difficulty": "hard",
             "label": "Svær",
             "chip": "S",
+            "quiz_id": str(quiz_by_difficulty.get("hard", {}).get("quiz_id") or "").strip().lower(),
             "quiz_url": str(quiz_by_difficulty.get("hard", {}).get("quiz_url") or "").strip(),
             "question_count": quiz_by_difficulty.get("hard", {}).get("question_count"),
         },
@@ -1725,7 +1850,10 @@ def subject_detail_view(request: HttpRequest, subject_slug: str) -> HttpResponse
             subject_slug=subject.slug,
             lecture_key=active_lecture.get("lecture_key"),
         )
-        active_lecture["quiz_difficulty_slots"] = _quiz_difficulty_slots(active_lecture.get("lecture_assets"))
+        active_lecture["quiz_difficulty_slots"] = _annotate_quiz_difficulty_slots_for_user(
+            user=request.user,
+            slots=_quiz_difficulty_slots(active_lecture.get("lecture_assets")),
+        )
         active_lecture["podcast_rows"] = _flatten_podcast_rows(active_lecture)
         readings = active_lecture.get("readings") if isinstance(active_lecture.get("readings"), list) else []
         for reading in readings:

@@ -446,103 +446,99 @@
     font-size: 0.88rem;
   }
 
-  .quiz-band {
-    border: 1px solid color-mix(in srgb, var(--border) 80%, transparent);
-    border-radius: var(--radius-sub);
-    overflow: hidden;
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .quiz-slot {
-    min-height: 114px;
-    padding: var(--space-3);
-    display: grid;
-    justify-items: center;
-    align-content: center;
-    gap: var(--space-2);
-    text-align: center;
-    border-right: 1px solid color-mix(in srgb, var(--border) 66%, transparent);
-    transition: background 160ms ease;
-  }
-
-  .quiz-slot:last-child {
-    border-right: 0;
-  }
-
-  .quiz-slot.is-easy {
-    background: #d8efd7;
-  }
-
-  .quiz-slot.is-medium {
-    background: #f6e5c8;
-  }
-
-  .quiz-slot.is-hard {
-    background: #f5d8df;
-  }
-
-  .quiz-slot.has-action:hover {
-    filter: brightness(0.95);
-  }
-
-  .quiz-slot.has-action:hover .quiz-slot-label {
-    color: color-mix(in srgb, var(--text-strong) 88%, #000);
-  }
-
-  .quiz-slot.has-action:hover .quiz-slot-chip {
-    background: color-mix(in srgb, var(--surface-strong) 74%, var(--surface-soft));
-    color: color-mix(in srgb, var(--text-strong) 88%, #000);
-  }
-
-  .quiz-slot-label {
+  .quiz-difficulty-list {
     margin: 0;
-    color: var(--text-strong);
-    font-family: var(--subject-font-ui);
-    font-size: 0.96rem;
-    font-weight: 600;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: var(--space-2);
   }
 
-  .quiz-slot-chip {
-    width: 46px;
-    height: 46px;
-    border-radius: var(--radius-pill);
-    border: 1px solid transparent;
+  .quiz-difficulty-row {
+    margin: 0;
+    display: grid;
+    grid-template-columns: 40px minmax(0, 1fr);
+    align-items: start;
+    gap: var(--space-2);
+    border-radius: 14px;
+    border: 1px solid color-mix(in srgb, var(--border) 72%, transparent);
+    padding: 10px 12px;
+    background: color-mix(in srgb, var(--surface) 94%, #f7f4ed);
+    transition: border-color 160ms ease, background 160ms ease;
+  }
+
+  .quiz-difficulty-row.is-easy {
+    background: color-mix(in srgb, #d8efd7 50%, var(--surface) 50%);
+  }
+
+  .quiz-difficulty-row.is-medium {
+    background: color-mix(in srgb, #f6e5c8 46%, var(--surface) 54%);
+  }
+
+  .quiz-difficulty-row.is-hard {
+    background: color-mix(in srgb, #f5d8df 42%, var(--surface) 58%);
+  }
+
+  .quiz-difficulty-row.has-action:hover {
+    border-color: color-mix(in srgb, var(--text-subtle-2) 30%, var(--border));
+    background: color-mix(in srgb, var(--surface) 70%, #f4ede3);
+  }
+
+  .quiz-difficulty-index {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     font-family: var(--subject-font-ui);
-    font-size: 1.04rem;
-    font-weight: 600;
-    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #26201a;
+    background: color-mix(in srgb, #f7f0e5 70%, #fff);
+    border: 1px solid color-mix(in srgb, #4a4034 28%, transparent);
+    box-shadow: -4px 4px 0 color-mix(in srgb, #000 10%, transparent);
+  }
+
+  .quiz-difficulty-copy {
+    min-width: 0;
+    display: grid;
+    gap: 2px;
+    padding-top: 1px;
+  }
+
+  .quiz-difficulty-title {
+    margin: 0;
     color: var(--text-strong);
-    background: color-mix(in srgb, var(--surface) 72%, transparent);
-    transition:
-      background 160ms ease,
-      color 160ms ease,
-      transform 160ms ease;
+    font-family: var(--subject-font-editorial);
+    font-size: 1.9rem;
+    font-weight: 700;
+    line-height: 1.04;
+    letter-spacing: -0.006em;
+    text-decoration: none;
   }
 
-  .quiz-slot-chip:not(.is-disabled):hover {
-    background: color-mix(in srgb, var(--surface-strong) 74%, var(--surface-soft));
-    color: color-mix(in srgb, var(--text-strong) 88%, #000);
-    transform: translateY(-1px);
+  .quiz-difficulty-row.has-action .quiz-difficulty-title:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.1em;
   }
 
-  .quiz-slot.is-easy .quiz-slot-chip {
-    border-color: rgba(31, 143, 78, 0.5);
+  .quiz-difficulty-meta {
+    margin: 0;
+    color: color-mix(in srgb, var(--text-subtle-2) 75%, #7a6d5c);
+    font-family: var(--subject-font-ui);
+    font-size: 0.96rem;
+    line-height: 1.24;
   }
 
-  .quiz-slot.is-medium .quiz-slot-chip {
-    border-color: rgba(164, 122, 33, 0.5);
+  .quiz-difficulty-row.is-not_started .quiz-difficulty-title,
+  .quiz-difficulty-row.is-not_started .quiz-difficulty-meta {
+    color: #77706a;
   }
 
-  .quiz-slot.is-hard .quiz-slot-chip {
-    border-color: rgba(178, 59, 79, 0.5);
-  }
-
-  .quiz-slot-chip.is-disabled {
-    opacity: 0.44;
+  .quiz-difficulty-row.is-disabled {
+    opacity: 0.82;
   }
 
   .podcast-list {
@@ -1281,33 +1277,30 @@
       letter-spacing: -0.005em;
     }
 
-    .quiz-band {
-      border: 0;
-      background: transparent;
-      gap: var(--space-2);
-      overflow: visible;
+    .quiz-difficulty-list {
+      gap: 10px;
     }
 
-    .quiz-slot {
+    .quiz-difficulty-row {
       border: 0;
       border-radius: 16px;
-      min-height: 118px;
-      padding: var(--space-3);
+      padding: 10px 12px;
+      grid-template-columns: 36px minmax(0, 1fr);
     }
 
-    .quiz-slot-label {
-      text-transform: uppercase;
-      letter-spacing: 0.02em;
-      font-size: 0.9rem;
-      font-weight: 650;
+    .quiz-difficulty-index {
+      width: 30px;
+      height: 30px;
+      font-size: 0.95rem;
+      box-shadow: -3px 3px 0 color-mix(in srgb, #000 9%, transparent);
     }
 
-    .quiz-slot-chip {
-      width: 52px;
-      height: 52px;
-      border: 0;
-      font-size: 1.06rem;
-      font-weight: 700;
+    .quiz-difficulty-title {
+      font-size: clamp(1.52rem, 3.6vw, 1.84rem);
+    }
+
+    .quiz-difficulty-meta {
+      font-size: 0.92rem;
     }
 
     .lecture-quizzes .section-note {
@@ -1502,21 +1495,26 @@
       gap: 8px;
     }
 
-    .quiz-slot {
-      min-height: 92px;
-      padding: 8px;
-      gap: 6px;
+    .quiz-difficulty-row {
+      padding: 9px 10px;
+      grid-template-columns: 32px minmax(0, 1fr);
+      gap: 8px;
     }
 
-    .quiz-slot-label {
-      font-size: 0.82rem;
-      letter-spacing: 0.018em;
+    .quiz-difficulty-index {
+      width: 26px;
+      height: 26px;
+      border-radius: 7px;
+      font-size: 0.84rem;
+      box-shadow: -2px 2px 0 color-mix(in srgb, #000 9%, transparent);
     }
 
-    .quiz-slot-chip {
-      width: 40px;
-      height: 40px;
-      font-size: 0.9rem;
+    .quiz-difficulty-title {
+      font-size: clamp(1.24rem, 5.5vw, 1.44rem);
+    }
+
+    .quiz-difficulty-meta {
+      font-size: 0.88rem;
     }
 
     .podcast-row {
@@ -1582,10 +1580,17 @@
       gap: 6px;
     }
 
-    .quiz-slot {
-      min-height: 84px;
-      padding: 6px;
-      gap: 4px;
+    .quiz-difficulty-row {
+      padding: 7px 8px;
+      grid-template-columns: 28px minmax(0, 1fr);
+      gap: 6px;
+    }
+
+    .quiz-difficulty-index {
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      font-size: 0.76rem;
     }
   }
 
@@ -1903,18 +1908,21 @@
               </div>
             </div>
 
-            <div class="quiz-band">
+            <ol class="quiz-difficulty-list">
               {% for slot in active_lecture.quiz_difficulty_slots %}
-              <div class="quiz-slot is-{{ slot.difficulty }} {% if slot.quiz_url %}has-action{% endif %}">
-                <p class="quiz-slot-label">{{ slot.label }}</p>
+              <li class="quiz-difficulty-row is-{{ slot.difficulty }} is-{{ slot.state_key }} {% if slot.quiz_url %}has-action{% else %}is-disabled{% endif %}">
+                <span class="quiz-difficulty-index" aria-hidden="true">{{ slot.display_index }}</span>
+                <div class="quiz-difficulty-copy">
                 {% if slot.quiz_url %}
-                <a class="quiz-slot-chip" href="{{ slot.quiz_url }}">{{ slot.chip }}</a>
+                <a class="quiz-difficulty-title" href="{{ slot.quiz_url }}">{{ slot.title }}</a>
                 {% else %}
-                <span class="quiz-slot-chip is-disabled">{{ slot.chip }}</span>
+                <span class="quiz-difficulty-title">{{ slot.title }}</span>
                 {% endif %}
-              </div>
+                <p class="quiz-difficulty-meta">{{ slot.meta_line }}</p>
+                </div>
+              </li>
               {% endfor %}
-            </div>
+            </ol>
             <p class="section-note">Quizzer baseret på alle ugens kilder</p>
           </section>
         </div>

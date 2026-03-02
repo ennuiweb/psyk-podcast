@@ -1870,6 +1870,137 @@ class QuizPortalTests(TestCase):
             ["easy", "medium", "hard"],
         )
 
+    def test_subject_detail_renders_quiz_mockup_rows_with_state_and_points(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+        self._write_quiz_json_file("aaaaaaaa", question_count=10)
+        self._write_quiz_json_file("bbbbbbbb", question_count=10)
+        self._write_quiz_json_file("cccccccc", question_count=10)
+
+        QuizProgress.objects.create(
+            user=user,
+            quiz_id="aaaaaaaa",
+            status=QuizProgress.Status.COMPLETED,
+            state_json={
+                "userAnswers": {str(index): 0 for index in range(10)},
+                "currentQuestionIndex": 9,
+                "hiddenQuestionIndices": [],
+                "currentView": "summary",
+                "timedOutQuestionIndices": [],
+                "questionDeadlineEpochMs": {},
+            },
+            answers_count=10,
+            question_count=10,
+            leaderboard_best_score=1200,
+            leaderboard_best_correct_answers=10,
+            leaderboard_best_question_count=10,
+        )
+        QuizProgress.objects.create(
+            user=user,
+            quiz_id="bbbbbbbb",
+            status=QuizProgress.Status.IN_PROGRESS,
+            state_json={
+                "userAnswers": {str(index): (index % 2) for index in range(6)},
+                "currentQuestionIndex": 6,
+                "hiddenQuestionIndices": [],
+                "currentView": "question",
+                "timedOutQuestionIndices": [],
+                "questionDeadlineEpochMs": {},
+            },
+            answers_count=6,
+            question_count=10,
+        )
+
+        with patch(
+            "quizzes.views.get_subject_learning_path_snapshot",
+            return_value={
+                "lectures": [
+                    {
+                        "lecture_key": "W01L1",
+                        "lecture_title": "W01L1 Intro",
+                        "status": "active",
+                        "completed_quizzes": 1,
+                        "total_quizzes": 3,
+                        "lecture_assets": {
+                            "quizzes": [
+                                {"quiz_id": "aaaaaaaa", "difficulty": "easy", "quiz_url": "/q/aaaaaaaa.html"},
+                                {"quiz_id": "bbbbbbbb", "difficulty": "medium", "quiz_url": "/q/bbbbbbbb.html"},
+                                {"quiz_id": "cccccccc", "difficulty": "hard", "quiz_url": "/q/cccccccc.html"},
+                            ],
+                            "podcasts": [],
+                        },
+                        "readings": [],
+                    }
+                ],
+                "source_meta": {},
+            },
+        ):
+            response = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "quiz-difficulty-row is-easy is-completed has-action")
+        self.assertContains(response, "quiz-difficulty-row is-medium is-in_progress has-action")
+        self.assertContains(response, "quiz-difficulty-row is-hard is-not_started has-action")
+        self.assertContains(response, "Let quiz")
+        self.assertContains(response, "Mellem quiz")
+        self.assertContains(response, "Svær quiz")
+        self.assertContains(response, "10/10 rigtige • 150/150 point")
+        self.assertContains(response, "6/10 rigtige • 75/150 point")
+        self.assertContains(response, "Ikke startet")
+
+    def test_subject_detail_quiz_mockup_falls_back_to_state_when_content_is_missing(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+
+        QuizProgress.objects.create(
+            user=user,
+            quiz_id="ffffffff",
+            status=QuizProgress.Status.IN_PROGRESS,
+            state_json={
+                "userAnswers": {"0": 0},
+                "currentQuestionIndex": 1,
+                "hiddenQuestionIndices": [],
+                "currentView": "question",
+                "timedOutQuestionIndices": [],
+                "questionDeadlineEpochMs": {},
+            },
+            answers_count=1,
+            question_count=10,
+        )
+
+        with patch(
+            "quizzes.views.get_subject_learning_path_snapshot",
+            return_value={
+                "lectures": [
+                    {
+                        "lecture_key": "W01L1",
+                        "lecture_title": "W01L1 Intro",
+                        "status": "active",
+                        "completed_quizzes": 0,
+                        "total_quizzes": 1,
+                        "lecture_assets": {
+                            "quizzes": [
+                                {
+                                    "quiz_id": "ffffffff",
+                                    "difficulty": "medium",
+                                    "quiz_url": "/q/ffffffff.html",
+                                }
+                            ],
+                            "podcasts": [],
+                        },
+                        "readings": [],
+                    }
+                ],
+                "source_meta": {},
+            },
+        ):
+            response = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Mellem quiz")
+        self.assertContains(response, "I gang")
+        self.assertNotContains(response, "rigtige •")
+
     def test_subject_detail_shows_spotify_links_for_mapped_podcasts(self) -> None:
         user = self._create_user()
         self.client.force_login(user)

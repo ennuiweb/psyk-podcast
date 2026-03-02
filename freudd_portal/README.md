@@ -117,7 +117,7 @@ Leaderboard alias UX rule: if a user already has an alias, it is shown locked by
 - `UserInterfacePreference`: reserved for future multi-theme support; current runtime remains locked to `paper-studio`.
 - `UserReadingMark`: per-user private tekst tracking marks (`mark/unmark`) on subject detail.
 - `UserPodcastMark`: per-user private podcast tracking marks (`mark/unmark`) on subject detail.
-- `UserLeaderboardProfile`: per-user public alias and visibility settings for quiz cup leaderboard (case-insensitive unique alias).
+- `UserLeaderboardProfile`: per-user public alias and visibility settings for quizliga leaderboard (case-insensitive unique alias).
 - `UserUnitProgress`: legacy/compat path model kept temporarily for API compatibility.
 
 ## Subject catalog (`subjects.json`)

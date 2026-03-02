@@ -1002,7 +1002,7 @@ class QuizPortalTests(TestCase):
         response = self.client.get(reverse("progress"))
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Personlig tracking")
-        self.assertContains(response, "Offentlig quiz cup")
+        self.assertContains(response, "Offentlig quizliga")
         self.assertContains(response, reverse("leaderboard-profile"))
 
     def test_progress_page_moves_enrollment_controls_to_bottom_module(self) -> None:
@@ -1029,7 +1029,7 @@ class QuizPortalTests(TestCase):
         self.assertGreaterEqual(enroll_start, 0)
         self.assertGreater(enroll_start, history_start)
 
-    def test_progress_page_locks_existing_quiz cup_alias_by_default(self) -> None:
+    def test_progress_page_locks_existing_quizliga_alias_by_default(self) -> None:
         user = self._create_user()
         self.client.force_login(user)
         UserLeaderboardProfile.objects.create(
@@ -1055,13 +1055,8 @@ class QuizPortalTests(TestCase):
             reverse("leaderboard-subject", kwargs={"subject_slug": "personlighedspsykologi"})
         )
         self.assertEqual(response.status_code, 200)
-<<<<<<< HEAD
         self.assertContains(response, "Freudd Quiz Cup")
         self.assertContains(response, "Sæt dit alias op")
-=======
-        self.assertContains(response, "quiz cup")
->>>>>>> db698b0 (refactor: rename quizliga to quiz cup in templates and views for consistency)
-
     def test_leaderboard_page_back_link_uses_safe_referer_for_authenticated_user(self) -> None:
         user = self._create_user()
         self.client.force_login(user)
@@ -1074,7 +1069,6 @@ class QuizPortalTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, f'class="ghost-link back-link cup-back" href="{back_url}"')
 
-<<<<<<< HEAD
     def test_leaderboard_page_shows_anonymous_login_cta_with_safe_next(self) -> None:
         url = reverse("leaderboard-subject", kwargs={"subject_slug": "personlighedspsykologi"})
         response = self.client.get(url)

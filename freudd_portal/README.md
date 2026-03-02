@@ -33,17 +33,17 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Subject detail includes inline Spotify playback via embedded episode player plus the external Spotify link for each visible podcast row.
 - Completion rule: `currentView == "summary"` and `answers_count == question_count`; timed-out questions count as answered/wrong.
 - Gamification core is quiz-driven and always available for authenticated users (`/progress`, `/api/gamification/me`).
-- `/progress` is split in two tracks: private personal tracking and a lightweight public quizliga preview.
+- `/progress` is split in two tracks: private personal tracking and a lightweight public quiz cup preview.
 - `/leaderboard/<subject_slug>` is the dedicated `Freudd Quiz Cup` page with subject tabs, podium cards, and Top 50 table.
 - Quizhistorik on `/progress` is card-based and includes live search, difficulty/status filters, sort modes, and auto-updating summary metrics (`quiz count`, `rigtige svar`, `træfsikkerhed`, `perfekte quizzer`).
 - Quizhistorik visibility on `/progress` is feature-flagged by `FREUDD_PROGRESS_QUIZ_HISTORY_ENABLED` (default: `1`).
 - Quizhistorik chips are text-oriented (`Tekstquiz`, `Alle tekster`) and intentionally avoid audio/podcast tags like `Lyd`/`Deep dive`.
 - Private personal tracking is manual for tekster/podcasts (`mark/unmark`) and keeps quiz completion as-is from `QuizProgress`.
-- Public quizliga is opt-in and alias-based; public view shows `alias + rank + score point + quiz count`.
-- Quizliga score per quiz is based on correctness plus speed bonus (`score = correct*100 + speed_bonus`), with correctness weighted highest.
+- Public quiz cup is opt-in and alias-based; public view shows `alias + rank + score point + quiz count`.
+- Quiz Cup score per quiz is based on correctness plus speed bonus (`score = correct*100 + speed_bonus`), with correctness weighted highest.
 - Speed bonus reaches max when average correct-answer pace is `<= 10s` per question (capped by configured per-question timeout if lower).
-- Quizliga tie-break is `correct_answers`, then earliest `reached_at`, then alias alphabetic.
-- Quizliga semesters reset every half year in UTC: `H1 = [Jan 1, Jul 1)`, `H2 = [Jul 1, Jan 1 next year)`.
+- Quiz Cup tie-break is `correct_answers`, then earliest `reached_at`, then alias alphabetic.
+- Quiz Cup semesters reset every half year in UTC: `H1 = [Jan 1, Jul 1)`, `H2 = [Jul 1, Jan 1 next year)`.
 - Learning path on subject pages (`/subjects/<subject_slug>`) is lecture-first with nested tekststatus (`active|completed|no_quiz`) and quiz/podcast navigation.
 - Subject detail UI is mobile-first and uses a left lecture rail + single active lecture card (no multi-panel accordion).
 - Subject detail removes KPI strip and global `Udvid alle`/`Luk alle`; lecture switching is via rail links (`?lecture=<lecture_key>`).
@@ -117,7 +117,7 @@ Leaderboard alias UX rule: if a user already has an alias, it is shown locked by
 - `UserInterfacePreference`: reserved for future multi-theme support; current runtime remains locked to `paper-studio`.
 - `UserReadingMark`: per-user private tekst tracking marks (`mark/unmark`) on subject detail.
 - `UserPodcastMark`: per-user private podcast tracking marks (`mark/unmark`) on subject detail.
-- `UserLeaderboardProfile`: per-user public alias and visibility settings for quizliga leaderboard (case-insensitive unique alias).
+- `UserLeaderboardProfile`: per-user public alias and visibility settings for quiz cup leaderboard (case-insensitive unique alias).
 - `UserUnitProgress`: legacy/compat path model kept temporarily for API compatibility.
 
 ## Subject catalog (`subjects.json`)

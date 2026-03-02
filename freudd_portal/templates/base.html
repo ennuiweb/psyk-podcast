@@ -319,6 +319,10 @@
       }
 
       .nav-action-subject {
+        --subject-chip-scale: 0.75;
+        min-height: calc(var(--control-min-height) * var(--subject-chip-scale));
+        padding-inline: calc(var(--space-3) * var(--subject-chip-scale));
+        font-size: calc(0.9rem * var(--subject-chip-scale));
         border-radius: var(--radius-pill);
         border-color: color-mix(in srgb, var(--accent) 32%, var(--border-strong));
         background: linear-gradient(

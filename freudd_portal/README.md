@@ -37,6 +37,7 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - `/progress` focuses on subject access, quiz history, and a lightweight public quiz cup preview.
 - `/leaderboard/<subject_slug>` is the dedicated `Freudd Quiz Cup` page with subject tabs, podium cards, and Top 50 table.
 - Desktop topbar centers `Quiz cup` in its own highlighted pill with a trophy icon; utility actions (`Indstillinger`, `Log ud`) stay right-aligned.
+- Desktop topbar enrolled-subject chips are scaled down by 25% (`height/padding/font-size`) to keep visual balance with the `freudd` wordmark.
 - Quizhistorik on `/progress` is card-based and includes live search, difficulty/status filters, sort modes, and auto-updating summary metrics (`quiz count`, `rigtige svar`, `træfsikkerhed`, `perfekte quizzer`).
 - Quizhistorik visibility on `/progress` is feature-flagged by `FREUDD_PROGRESS_QUIZ_HISTORY_ENABLED` (default: `1`).
 - Quizhistorik chips are text-oriented (`Tekstquiz`, `Alle tekster`) and intentionally avoid audio/podcast tags like `Lyd`/`Deep dive`.

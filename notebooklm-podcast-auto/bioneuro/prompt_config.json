@@ -1,0 +1,50 @@
+{
+  "language": "en",
+  "languages": [
+    {
+      "code": "en",
+      "suffix": "[EN]"
+    }
+  ],
+  "weekly_overview": {
+    "format": "deep-dive",
+    "length": "long",
+    "prompt": ""
+  },
+  "per_reading": {
+    "format": "deep-dive",
+    "length": "long",
+    "prompt": ""
+  },
+  "brief": {
+    "format": "brief",
+    "prompt": "",
+    "title_prefix": "[Brief]"
+  },
+  "quiz": {
+    "difficulty": "all",
+    "quantity": "standard",
+    "format": "json",
+    "prompt": ""
+  },
+  "infographic": {
+    "orientation": "square",
+    "detail": "concise",
+    "prompt": ""
+  },
+  "weekly_infographic": {
+    "orientation": "square",
+    "detail": "concise",
+    "prompt": ""
+  },
+  "per_reading_infographic": {
+    "orientation": "square",
+    "detail": "concise",
+    "prompt": ""
+  },
+  "brief_infographic": {
+    "orientation": "square",
+    "detail": "concise",
+    "prompt": ""
+  }
+}

@@ -404,6 +404,22 @@ Pre-push environment controls:
 
 Mirror failures currently print a warning and do not block `git push`.
 
+### Bioneuro NotebookLM subject
+`notebooklm-podcast-auto/bioneuro` now provides a dedicated wrapper for NotebookLM week generation.
+
+Defaults:
+- source root: `/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Bioneuro/Readings`
+- prompt config: `notebooklm-podcast-auto/bioneuro/prompt_config.json`
+- output root: `notebooklm-podcast-auto/bioneuro/output`
+
+Usage:
+```bash
+./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/bioneuro/scripts/generate_week.py --week W1L1 --dry-run
+./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/bioneuro/scripts/generate_week.py --week W1L1 --content-types audio
+```
+
+You can override any default path by passing `--sources-root`, `--prompt-config`, or `--output-root`.
+
 ### Personlighedspsykologi OneDrive source lock
 Personlighedspsykologi source resolution is now hard-locked to the absolute OneDrive Readings root:
 `/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings`

@@ -1948,6 +1948,7 @@
           </section>
           {% endif %}
 
+          {% if active_lecture.quiz_difficulty_visible_slots %}
           <section class="lecture-section lecture-quizzes" id="subject-quizzes">
             <div class="lecture-section-head">
               <div class="section-title-wrap">
@@ -1963,7 +1964,6 @@
               </div>
             </div>
 
-            {% if active_lecture.quiz_difficulty_visible_slots %}
             <ol class="quiz-difficulty-list">
               {% for slot in active_lecture.quiz_difficulty_visible_slots %}
               <li class="quiz-difficulty-row is-{{ slot.difficulty }} is-{{ slot.state_key }} {% if slot.quiz_url %}has-action{% else %}is-disabled{% endif %}">
@@ -1981,11 +1981,9 @@
               </li>
               {% endfor %}
             </ol>
-            {% else %}
-            <p class="quiz-difficulty-empty">Ingen aktivitet registreret</p>
-            {% endif %}
             <p class="section-note">Quizzer baseret på alle ugens kilder</p>
           </section>
+          {% endif %}
         </div>
       </article>
     </div>

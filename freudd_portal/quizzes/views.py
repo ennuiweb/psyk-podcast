@@ -82,8 +82,7 @@ MAX_STATE_BYTES = 5_000_000
 QUIZ_DISPLAY_POINTS_MAX = 150
 QUIZ_POINTS_MAX_PER_QUESTION = 120
 QUIZ_SLOT_STATE_LABELS_DA = {
-    "not_started": "Ikke startet",
-    "in_progress": "I gang",
+    "not_started": "",
     "completed": "Fuldført",
 }
 DIFFICULTY_LABELS_DA = {
@@ -191,8 +190,6 @@ def _quiz_slot_state_from_progress(progress: QuizProgress | None) -> str:
     status = str(progress.status or QuizProgress.Status.IN_PROGRESS).strip().lower()
     if status == QuizProgress.Status.COMPLETED:
         return "completed"
-    if _safe_non_negative_int(progress.answers_count) > 0:
-        return "in_progress"
     return "not_started"
 
 
@@ -241,11 +238,11 @@ def _annotate_quiz_difficulty_slots_for_user(
         slot_copy["display_index"] = index
         slot_copy["title"] = f"{difficulty_label} quiz"
         slot_copy["state_key"] = state_key
-        slot_copy["state_label"] = QUIZ_SLOT_STATE_LABELS_DA.get(state_key, QUIZ_SLOT_STATE_LABELS_DA["not_started"])
+        slot_copy["state_label"] = QUIZ_SLOT_STATE_LABELS_DA.get(state_key, "")
         slot_copy["has_metrics"] = False
         slot_copy["meta_line"] = slot_copy["state_label"]
 
-        if progress is None:
+        if progress is None or state_key != "completed":
             enriched_slots.append(slot_copy)
             continue
 
@@ -255,7 +252,7 @@ def _annotate_quiz_difficulty_slots_for_user(
         correct_answers = 0
         question_count = 0
 
-        if state_key == "completed" and best_question_count > 0:
+        if best_question_count > 0:
             question_count = best_question_count
             correct_answers = max(0, min(best_correct_answers, best_question_count))
         elif quiz_id and isinstance(progress.state_json, dict):
@@ -309,7 +306,7 @@ def _visible_quiz_difficulty_slots(slots: object) -> list[dict[str, object]]:
             continue
         quiz_url = str(slot.get("quiz_url") or "").strip()
         state_key = str(slot.get("state_key") or "not_started").strip().lower() or "not_started"
-        if quiz_url or state_key in {"in_progress", "completed"}:
+        if quiz_url or state_key == "completed":
             visible.append(slot)
     return visible
 

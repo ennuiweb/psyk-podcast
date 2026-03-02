@@ -1737,15 +1737,11 @@
           {% endif %}
           <div class="active-lecture-meta">
             <p class="active-lecture-progress">{{ active_lecture.completed_quizzes }} / {{ active_lecture.total_quizzes }}</p>
+            {% if active_lecture.status == 'completed' %}
             <p class="active-lecture-state">
-              {% if active_lecture.status == 'completed' %}
               Fuldført
-              {% elif active_lecture.progress_percent > 0 %}
-              I gang
-              {% else %}
-              Ikke startet endnu
-              {% endif %}
             </p>
+            {% endif %}
           </div>
         </header>
 
@@ -1769,7 +1765,7 @@
             <ul class="reading-list">
               {% for reading in active_lecture.readings %}
               <li
-                class="reading-card {% if reading.open_url %}has-open-reading{% endif %} {% if reading.is_missing %}is-missing{% endif %} {% if reading.status == 'active' %}is-active{% elif reading.status == 'completed' %}is-completed{% endif %}"
+                class="reading-card {% if reading.open_url %}has-open-reading{% endif %} {% if reading.is_missing %}is-missing{% endif %} {% if reading.status == 'completed' %}is-completed{% endif %}"
                 {% if reading.open_url %}
                 data-open-url="{{ reading.open_url }}"
                 role="link"
@@ -1803,17 +1799,15 @@
                       <p class="reading-title"><strong>{{ reading.reading_title }}</strong></p>
                     </div>
                     <p class="reading-meta">{{ reading.completed_quizzes }} / {{ reading.total_quizzes }}</p>
+                    {% if reading.status == 'completed' or reading.status == 'no_quiz' %}
                     <p class="reading-meta">
                       {% if reading.status == 'completed' %}
                       Fuldført
-                      {% elif reading.status == 'no_quiz' %}
-                      Ingen quiz
-                      {% elif reading.progress_percent > 0 %}
-                      I gang
                       {% else %}
-                      Ikke startet endnu
+                      Ingen quiz
                       {% endif %}
                     </p>
+                    {% endif %}
                   </div>
                   <div class="reading-side">
                     {% if reading.is_missing %}
@@ -1976,7 +1970,9 @@
                 {% else %}
                 <span class="quiz-difficulty-title">{{ slot.title }}</span>
                 {% endif %}
-                <p class="quiz-difficulty-meta {% if slot.state_key == 'not_started' %}is-idle{% endif %}">{{ slot.meta_line }}</p>
+                {% if slot.meta_line %}
+                <p class="quiz-difficulty-meta">{{ slot.meta_line }}</p>
+                {% endif %}
                 </div>
               </li>
               {% endfor %}

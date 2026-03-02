@@ -2047,6 +2047,70 @@ class QuizPortalTests(TestCase):
         )
         self.assertIn("attachment", response.get("Content-Disposition", ""))
 
+    def test_subject_open_reading_uses_subject_specific_files_root(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+
+        bioneuro_root = Path(self.temp_dir.name) / "bioneuro-reading-files"
+        (bioneuro_root / "W01L1").mkdir(parents=True, exist_ok=True)
+        (bioneuro_root / "W01L1" / "Bioneuro.pdf").write_bytes(b"%PDF-1.4\n%bioneuro\n")
+        self.subjects_file.write_text(
+            json.dumps(
+                {
+                    "version": 1,
+                    "subjects": [
+                        {
+                            "slug": "personlighedspsykologi",
+                            "title": "Personlighedspsykologi",
+                            "description": "Personlighedspsykologi F26",
+                            "active": True,
+                        },
+                        {
+                            "slug": "bioneuro",
+                            "title": "Bioneuro",
+                            "description": "Bioneuro F26",
+                            "active": True,
+                            "paths": {
+                                "reading_files_root": str(bioneuro_root),
+                            },
+                        },
+                    ],
+                }
+            ),
+            encoding="utf-8",
+        )
+        clear_subject_service_caches()
+
+        with patch(
+            "quizzes.views.get_subject_learning_path_snapshot",
+            return_value={
+                "lectures": [
+                    {
+                        "lecture_key": "W01L1",
+                        "readings": [
+                            {
+                                "reading_key": "w01l1-bioneuro-1234",
+                                "source_filename": "Bioneuro.pdf",
+                            }
+                        ],
+                    }
+                ]
+            },
+        ):
+            response = self.client.get(
+                reverse(
+                    "subject-open-reading",
+                    kwargs={
+                        "subject_slug": "bioneuro",
+                        "reading_key": "w01l1-bioneuro-1234",
+                    },
+                )
+            )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response["Content-Type"], "application/pdf")
+        self.assertIn("inline", response.get("Content-Disposition", ""))
+
     def test_subject_open_reading_returns_404_when_file_is_missing(self) -> None:
         user = self._create_user()
         self.client.force_login(user)

@@ -69,7 +69,7 @@ from .services import (
     update_leaderboard_best,
     upsert_progress_from_state,
 )
-from .subject_services import SubjectCatalog, load_subject_catalog
+from .subject_services import SubjectCatalog, load_subject_catalog, resolve_subject_paths
 from .tracking_services import (
     annotate_subject_lectures_with_marks,
     personal_tracking_summary_for_user,
@@ -204,12 +204,12 @@ def _source_filename_or_none(value: object) -> str | None:
     return text
 
 
-def _reading_file_path_or_404(*, lecture_key: str, source_filename: str) -> Path:
+def _reading_file_path_or_404(*, subject_slug: str, lecture_key: str, source_filename: str) -> Path:
     lecture = str(lecture_key or "").strip().upper()
     if not SUBJECT_LECTURE_KEY_RE.match(lecture):
         raise Http404("Tekst ikke fundet i fagets læringssti.")
 
-    root = Path(settings.FREUDD_READING_FILES_ROOT)
+    root = resolve_subject_paths(subject_slug).reading_files_root
     try:
         resolved_root = root.resolve()
     except OSError as exc:
@@ -264,8 +264,7 @@ def _normalize_exclusion_payload(payload: object) -> dict[str, set[str]]:
     return by_subject
 
 
-def _load_reading_download_exclusions() -> dict[str, set[str]]:
-    path = Path(settings.FREUDD_READING_DOWNLOAD_EXCLUSIONS_PATH)
+def _load_reading_download_exclusions(path: Path) -> dict[str, set[str]]:
     if not path.exists():
         return {}
 
@@ -298,7 +297,8 @@ def _load_reading_download_exclusions() -> dict[str, set[str]]:
 
 
 def _is_reading_download_excluded(*, subject_slug: str, reading_key: str) -> bool:
-    by_subject = _load_reading_download_exclusions()
+    exclusions_path = resolve_subject_paths(subject_slug).reading_download_exclusions_path
+    by_subject = _load_reading_download_exclusions(exclusions_path)
     excluded = by_subject.get(subject_slug, set())
     return reading_key in excluded
 
@@ -1556,6 +1556,7 @@ def subject_open_reading_view(request: HttpRequest, subject_slug: str, reading_k
         raise Http404("Tekst-filen blev ikke fundet.")
 
     file_path = _reading_file_path_or_404(
+        subject_slug=subject.slug,
         lecture_key=found_lecture_key,
         source_filename=found_source_filename,
     )

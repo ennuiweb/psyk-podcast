@@ -6,6 +6,22 @@
       "title": "Personlighedspsykologi",
       "description": "Personlighedspsykologi F26",
       "active": true
+    },
+    {
+      "slug": "bioneuro",
+      "title": "Bioneuro",
+      "description": "Bio / Neuropsychology F26",
+      "active": true,
+      "paths": {
+        "reading_master_path": "shows/bioneuro/docs/freudd-reading-file-key.md",
+        "reading_fallback_path": "shows/bioneuro/docs/freudd-reading-file-key.md",
+        "quiz_links_path": "shows/bioneuro/quiz_links.json",
+        "feed_rss_path": "shows/bioneuro/feeds/rss.xml",
+        "spotify_map_path": "shows/bioneuro/spotify_map.json",
+        "content_manifest_path": "shows/bioneuro/content_manifest.json",
+        "reading_files_root": "/var/www/readings/bioneuro",
+        "reading_download_exclusions_path": "shows/bioneuro/reading_download_exclusions.json"
+      }
     }
   ]
 }

@@ -11,10 +11,9 @@ from pathlib import Path
 from typing import Any
 from xml.etree import ElementTree
 
-from django.conf import settings
 from django.utils import timezone
 
-from .subject_services import parse_master_readings
+from .subject_services import parse_master_readings, resolve_subject_paths
 
 logger = logging.getLogger(__name__)
 
@@ -74,13 +73,17 @@ def _set_manifest_cache(
     return data
 
 
-def _manifest_source_paths(payload: SubjectContentManifest | None = None) -> tuple[Path, ...]:
+def _manifest_source_paths(
+    subject_slug: str,
+    payload: SubjectContentManifest | None = None,
+) -> tuple[Path, ...]:
+    subject_paths = resolve_subject_paths(subject_slug)
     candidates: list[Path] = [
-        Path(settings.FREUDD_READING_MASTER_KEY_PATH),
-        Path(settings.FREUDD_READING_MASTER_KEY_FALLBACK_PATH),
-        Path(settings.QUIZ_LINKS_JSON_PATH),
-        Path(settings.FREUDD_SUBJECT_FEED_RSS_PATH),
-        Path(settings.FREUDD_SUBJECT_SPOTIFY_MAP_PATH),
+        subject_paths.reading_master_path,
+        subject_paths.reading_fallback_path,
+        subject_paths.quiz_links_path,
+        subject_paths.feed_rss_path,
+        subject_paths.spotify_map_path,
     ]
     if isinstance(payload, dict):
         source_meta = payload.get("source_meta")
@@ -103,10 +106,11 @@ def _manifest_source_paths(payload: SubjectContentManifest | None = None) -> tup
 def _stale_manifest_sources(
     *,
     manifest_mtime_ns: int,
+    subject_slug: str,
     payload: SubjectContentManifest | None = None,
 ) -> list[str]:
     stale_sources: list[str] = []
-    for source_path in _manifest_source_paths(payload):
+    for source_path in _manifest_source_paths(subject_slug, payload):
         try:
             source_mtime_ns = source_path.stat().st_mtime_ns
         except OSError:
@@ -194,9 +198,10 @@ def _lecture_title_from_heading(lecture_key: str, heading: str) -> str:
     return value.lstrip("-").strip() or lecture_key
 
 
-def _reading_source_with_fallback() -> tuple[Any, Path | None, bool]:
-    primary = Path(settings.FREUDD_READING_MASTER_KEY_PATH)
-    fallback = Path(settings.FREUDD_READING_MASTER_KEY_FALLBACK_PATH)
+def _reading_source_with_fallback(subject_slug: str) -> tuple[Any, Path | None, bool]:
+    subject_paths = resolve_subject_paths(subject_slug)
+    primary = subject_paths.reading_master_path
+    fallback = subject_paths.reading_fallback_path
 
     primary_result = parse_master_readings(primary)
     if not primary_result.error:
@@ -541,7 +546,8 @@ def build_subject_content_manifest(subject_slug: str) -> SubjectContentManifest:
     if not slug:
         raise ValueError("subject_slug is required")
 
-    parse_result, reading_source_path, used_fallback = _reading_source_with_fallback()
+    subject_paths = resolve_subject_paths(slug)
+    parse_result, reading_source_path, used_fallback = _reading_source_with_fallback(slug)
     manifest_warnings: list[str] = []
 
     lectures: list[dict[str, Any]] = []
@@ -594,9 +600,9 @@ def build_subject_content_manifest(subject_slug: str) -> SubjectContentManifest:
         )
         lecture_index[lecture_key] = len(lectures) - 1
 
-    quiz_links_path = Path(settings.QUIZ_LINKS_JSON_PATH)
-    rss_path = Path(settings.FREUDD_SUBJECT_FEED_RSS_PATH)
-    spotify_map_path = Path(settings.FREUDD_SUBJECT_SPOTIFY_MAP_PATH)
+    quiz_links_path = subject_paths.quiz_links_path
+    rss_path = subject_paths.feed_rss_path
+    spotify_map_path = subject_paths.spotify_map_path
     spotify_by_title = _load_spotify_map(
         path=spotify_map_path,
         subject_slug=slug,
@@ -637,8 +643,8 @@ def build_subject_content_manifest(subject_slug: str) -> SubjectContentManifest:
     source_meta = {
         "version": MANIFEST_VERSION,
         "generated_at": timezone.now().isoformat(),
-        "reading_master_path": str(settings.FREUDD_READING_MASTER_KEY_PATH),
-        "reading_fallback_path": str(settings.FREUDD_READING_MASTER_KEY_FALLBACK_PATH),
+        "reading_master_path": str(subject_paths.reading_master_path),
+        "reading_fallback_path": str(subject_paths.reading_fallback_path),
         "reading_source_used": str(reading_source_path) if reading_source_path else None,
         "reading_fallback_used": used_fallback,
         "reading_error": reading_error,
@@ -661,7 +667,11 @@ def write_subject_content_manifest(
     *,
     path: str | Path | None = None,
 ) -> Path:
-    destination = Path(path or settings.FREUDD_SUBJECT_CONTENT_MANIFEST_PATH)
+    if path is not None:
+        destination = Path(path)
+    else:
+        subject_slug = str(manifest.get("subject_slug") or "").strip().lower()
+        destination = resolve_subject_paths(subject_slug).content_manifest_path
     destination.parent.mkdir(parents=True, exist_ok=True)
     temp_path = destination.with_suffix(destination.suffix + ".tmp")
     temp_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
@@ -672,7 +682,7 @@ def write_subject_content_manifest(
 
 def load_subject_content_manifest(subject_slug: str) -> SubjectContentManifest:
     slug = str(subject_slug or "").strip().lower()
-    path = Path(settings.FREUDD_SUBJECT_CONTENT_MANIFEST_PATH)
+    path = resolve_subject_paths(slug).content_manifest_path
     if path.exists():
         try:
             mtime = path.stat().st_mtime_ns
@@ -699,6 +709,7 @@ def load_subject_content_manifest(subject_slug: str) -> SubjectContentManifest:
                 ):
                     stale_sources = _stale_manifest_sources(
                         manifest_mtime_ns=mtime,
+                        subject_slug=slug,
                         payload=payload,
                     )
                     if not stale_sources:

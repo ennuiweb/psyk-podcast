@@ -136,6 +136,26 @@ Leaderboard alias UX rule: if a user already has an alias, it is shown locked by
 }
 ```
 
+Optional per-subject `paths` overrides let a subject use its own reading key, RSS, manifest, quiz links, and reading-file root instead of the global defaults:
+
+```json
+{
+  "slug": "bioneuro",
+  "title": "Bioneuro",
+  "description": "Bio / Neuropsychology F26",
+  "active": true,
+  "paths": {
+    "reading_master_path": "shows/bioneuro/docs/freudd-reading-file-key.md",
+    "quiz_links_path": "shows/bioneuro/quiz_links.json",
+    "feed_rss_path": "shows/bioneuro/feeds/rss.xml",
+    "spotify_map_path": "shows/bioneuro/spotify_map.json",
+    "content_manifest_path": "shows/bioneuro/content_manifest.json",
+    "reading_files_root": "/var/www/readings/bioneuro",
+    "reading_download_exclusions_path": "shows/bioneuro/reading_download_exclusions.json"
+  }
+}
+```
+
 ## Quiz links contract (`quiz_links.json`)
 - `by_name.<episode>.subject_slug` is required for learning path calculations.
 - `links[].subject_slug` is optional fallback; entry-level `subject_slug` is canonical.

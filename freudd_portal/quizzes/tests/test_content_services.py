@@ -22,6 +22,7 @@ class SubjectContentManifestTests(TestCase):
         self.temp_dir = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp_dir.cleanup)
         root = Path(self.temp_dir.name)
+        self.subjects_file = root / "subjects.json"
         self.primary_reading_file = root / "reading-primary.md"
         self.fallback_reading_file = root / "reading-fallback.md"
         self.quiz_links_file = root / "quiz_links.json"
@@ -113,8 +114,25 @@ class SubjectContentManifestTests(TestCase):
             ),
             encoding="utf-8",
         )
+        self.subjects_file.write_text(
+            json.dumps(
+                {
+                    "version": 1,
+                    "subjects": [
+                        {
+                            "slug": "personlighedspsykologi",
+                            "title": "Personlighedspsykologi",
+                            "description": "Personlighedspsykologi F26",
+                            "active": True,
+                        }
+                    ],
+                }
+            ),
+            encoding="utf-8",
+        )
 
         self.override = override_settings(
+            FREUDD_SUBJECTS_JSON_PATH=self.subjects_file,
             FREUDD_READING_MASTER_KEY_PATH=self.primary_reading_file,
             FREUDD_READING_MASTER_KEY_FALLBACK_PATH=self.fallback_reading_file,
             QUIZ_LINKS_JSON_PATH=self.quiz_links_file,
@@ -385,6 +403,87 @@ class SubjectContentManifestTests(TestCase):
         manifest = build_subject_content_manifest("personlighedspsykologi")
         self.assertEqual(manifest["lectures"], [])
         self.assertEqual(manifest["source_meta"]["reading_error"], "Tekst-nøglen kunne ikke indlæses.")
+
+    def test_build_manifest_uses_subject_specific_paths_from_catalog(self) -> None:
+        subject_root = Path(self.temp_dir.name) / "bioneuro"
+        subject_root.mkdir(parents=True, exist_ok=True)
+        reading_file = subject_root / "reading-file-key.md"
+        fallback_file = subject_root / "reading-file-key-fallback.md"
+        quiz_links_file = subject_root / "quiz_links.json"
+        rss_file = subject_root / "rss.xml"
+        spotify_map_file = subject_root / "spotify_map.json"
+        manifest_file = subject_root / "content_manifest.json"
+
+        reading_file.write_text(
+            "\n".join(
+                [
+                    "# Reading File Key",
+                    "",
+                    "**W01L1 Bioneuro intro**",
+                    "- Neural foundations \u2192 Neural foundations.pdf",
+                ]
+            ),
+            encoding="utf-8",
+        )
+        fallback_file.write_text(reading_file.read_text(encoding="utf-8"), encoding="utf-8")
+        quiz_links_file.write_text(json.dumps({"version": 1, "subject_slug": "bioneuro", "by_name": {}}), encoding="utf-8")
+        rss_file.write_text(
+            "\n".join(
+                [
+                    '<?xml version="1.0" encoding="UTF-8"?>',
+                    "<rss version=\"2.0\">",
+                    "<channel>",
+                    "</channel>",
+                    "</rss>",
+                ]
+            ),
+            encoding="utf-8",
+        )
+        spotify_map_file.write_text(
+            json.dumps({"version": 1, "subject_slug": "bioneuro", "by_rss_title": {}}),
+            encoding="utf-8",
+        )
+        self.subjects_file.write_text(
+            json.dumps(
+                {
+                    "version": 1,
+                    "subjects": [
+                        {
+                            "slug": "personlighedspsykologi",
+                            "title": "Personlighedspsykologi",
+                            "description": "Personlighedspsykologi F26",
+                            "active": True,
+                        },
+                        {
+                            "slug": "bioneuro",
+                            "title": "Bioneuro",
+                            "description": "Bioneuro F26",
+                            "active": True,
+                            "paths": {
+                                "reading_master_path": str(reading_file),
+                                "reading_fallback_path": str(fallback_file),
+                                "quiz_links_path": str(quiz_links_file),
+                                "feed_rss_path": str(rss_file),
+                                "spotify_map_path": str(spotify_map_file),
+                                "content_manifest_path": str(manifest_file),
+                            },
+                        },
+                    ],
+                }
+            ),
+            encoding="utf-8",
+        )
+        clear_subject_service_caches()
+        clear_content_service_caches()
+
+        manifest = build_subject_content_manifest("bioneuro")
+        self.assertEqual(manifest["subject_slug"], "bioneuro")
+        self.assertEqual(len(manifest["lectures"]), 1)
+        self.assertEqual(manifest["lectures"][0]["readings"][0]["source_filename"], "Neural foundations.pdf")
+
+        written_path = write_subject_content_manifest(manifest)
+        self.assertEqual(written_path, manifest_file)
+        self.assertTrue(manifest_file.exists())
 
     def test_load_manifest_rebuilds_when_rss_is_newer_than_manifest(self) -> None:
         self.rss_file.write_text(

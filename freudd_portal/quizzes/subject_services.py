@@ -5,7 +5,7 @@ from __future__ import annotations
 import json
 import logging
 import re
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
@@ -17,6 +17,16 @@ SUBJECT_SLUG_RE = re.compile(r"^[a-z0-9-]+$")
 LECTURE_HEADING_RE = re.compile(r"^\*\*(?P<key>W\d{2}L\d+)\s+(?P<title>.+?)\*\*$")
 MISSING_READING_RE = re.compile(r"^MISSING:\s*(?P<title>.+)$", re.IGNORECASE)
 BRIEF_SUFFIX_RE = re.compile(r"\s*\([^)]*\bbrief\b[^)]*\)\s*$", re.IGNORECASE)
+SUBJECT_PATH_KEYS = {
+    "reading_master_path",
+    "reading_fallback_path",
+    "quiz_links_path",
+    "feed_rss_path",
+    "spotify_map_path",
+    "content_manifest_path",
+    "reading_files_root",
+    "reading_download_exclusions_path",
+}
 
 
 @dataclass(frozen=True)
@@ -25,6 +35,19 @@ class SubjectDefinition:
     title: str
     description: str
     active: bool
+    paths: dict[str, str] = field(default_factory=dict)
+
+
+@dataclass(frozen=True)
+class SubjectAssetPaths:
+    reading_master_path: Path
+    reading_fallback_path: Path
+    quiz_links_path: Path
+    feed_rss_path: Path
+    spotify_map_path: Path
+    content_manifest_path: Path
+    reading_files_root: Path
+    reading_download_exclusions_path: Path
 
 
 @dataclass(frozen=True)
@@ -81,6 +104,87 @@ def _default_catalog(error: str | None = None) -> SubjectCatalog:
     return SubjectCatalog(subjects=tuple(), error=error)
 
 
+def _normalize_subject_paths(raw_paths: Any) -> dict[str, str]:
+    if not isinstance(raw_paths, dict):
+        return {}
+
+    normalized: dict[str, str] = {}
+    for raw_key, raw_value in raw_paths.items():
+        if not isinstance(raw_key, str):
+            continue
+        key = raw_key.strip()
+        if key not in SUBJECT_PATH_KEYS:
+            continue
+        if not isinstance(raw_value, str):
+            continue
+        value = raw_value.strip()
+        if not value:
+            continue
+        normalized[key] = value
+    return normalized
+
+
+def _repo_root() -> Path:
+    return Path(settings.BASE_DIR).resolve().parent
+
+
+def _resolve_subject_path(value: str | Path) -> Path:
+    candidate = Path(value)
+    if candidate.is_absolute():
+        return candidate
+    return _repo_root() / candidate
+
+
+def _default_subject_paths() -> SubjectAssetPaths:
+    return SubjectAssetPaths(
+        reading_master_path=Path(settings.FREUDD_READING_MASTER_KEY_PATH),
+        reading_fallback_path=Path(settings.FREUDD_READING_MASTER_KEY_FALLBACK_PATH),
+        quiz_links_path=Path(settings.QUIZ_LINKS_JSON_PATH),
+        feed_rss_path=Path(settings.FREUDD_SUBJECT_FEED_RSS_PATH),
+        spotify_map_path=Path(settings.FREUDD_SUBJECT_SPOTIFY_MAP_PATH),
+        content_manifest_path=Path(settings.FREUDD_SUBJECT_CONTENT_MANIFEST_PATH),
+        reading_files_root=Path(settings.FREUDD_READING_FILES_ROOT),
+        reading_download_exclusions_path=Path(settings.FREUDD_READING_DOWNLOAD_EXCLUSIONS_PATH),
+    )
+
+
+def resolve_subject_paths(subject_slug: str) -> SubjectAssetPaths:
+    slug = str(subject_slug or "").strip().lower()
+    defaults = _default_subject_paths()
+    if not slug:
+        return defaults
+
+    catalog = load_subject_catalog()
+    subject = next((item for item in catalog.subjects if item.slug == slug), None)
+    if subject is None or not subject.paths:
+        return defaults
+
+    values = {
+        "reading_master_path": defaults.reading_master_path,
+        "reading_fallback_path": defaults.reading_fallback_path,
+        "quiz_links_path": defaults.quiz_links_path,
+        "feed_rss_path": defaults.feed_rss_path,
+        "spotify_map_path": defaults.spotify_map_path,
+        "content_manifest_path": defaults.content_manifest_path,
+        "reading_files_root": defaults.reading_files_root,
+        "reading_download_exclusions_path": defaults.reading_download_exclusions_path,
+    }
+    for key, raw_value in subject.paths.items():
+        if key in values:
+            values[key] = _resolve_subject_path(raw_value)
+
+    return SubjectAssetPaths(
+        reading_master_path=values["reading_master_path"],
+        reading_fallback_path=values["reading_fallback_path"],
+        quiz_links_path=values["quiz_links_path"],
+        feed_rss_path=values["feed_rss_path"],
+        spotify_map_path=values["spotify_map_path"],
+        content_manifest_path=values["content_manifest_path"],
+        reading_files_root=values["reading_files_root"],
+        reading_download_exclusions_path=values["reading_download_exclusions_path"],
+    )
+
+
 def _normalize_subjects(raw_values: Any) -> tuple[SubjectDefinition, ...]:
     if not isinstance(raw_values, list):
         return tuple()
@@ -115,6 +219,7 @@ def _normalize_subjects(raw_values: Any) -> tuple[SubjectDefinition, ...]:
                 title=title,
                 description=description,
                 active=active,
+                paths=_normalize_subject_paths(entry.get("paths")),
             )
         )
         seen_slugs.add(slug)

@@ -20,6 +20,9 @@ class ResponsiveTemplateRulesTests(SimpleTestCase):
 
     def test_base_mobile_navigation_uses_subjects_quiz_cup_and_indstillinger_order_with_icons(self) -> None:
         body = self._template_text("base.html")
+        mobile_nav_start = body.index("<nav class=\"mobile-tabbar\"")
+        mobile_nav_end = body.index("</nav>", mobile_nav_start)
+        mobile_nav = body[mobile_nav_start:mobile_nav_end]
         self.assertIn("data-mobile-nav", body)
         self.assertNotIn("data-header-menu-toggle", body)
         self.assertNotIn("data-header-menu-panel", body)
@@ -30,8 +33,8 @@ class ResponsiveTemplateRulesTests(SimpleTestCase):
         self.assertIn("mobile-tab-icon--cup", body)
         self.assertIn("mobile-tab-icon--overview", body)
         self.assertIn("viewBox=\"0 0 24 24\"", body)
-        self.assertLess(body.index(">Mine fag</span>"), body.index(">Quiz cup</span>"))
-        self.assertLess(body.index(">Quiz cup</span>"), body.index(">Indstillinger</span>"))
+        self.assertLess(mobile_nav.index(">Mine fag</span>"), mobile_nav.index(">Quiz cup</span>"))
+        self.assertLess(mobile_nav.index(">Quiz cup</span>"), mobile_nav.index(">Indstillinger</span>"))
         self.assertIn("data-subject-menu-toggle", body)
         self.assertIn("data-subject-menu-list", body)
 

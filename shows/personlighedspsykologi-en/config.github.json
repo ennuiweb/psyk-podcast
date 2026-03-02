@@ -53,7 +53,7 @@
     "title": "Personlighedspsykologi",
     "link": "https://github.com/ennuiweb/psyk-podcast",
     "self_link": "https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/personlighedspsykologi-en/feeds/rss.xml",
-    "description": "Personlighedspsykologi (F26) podcast feed.",
+    "description": "Personlighedspsykologi: https://open.spotify.com/show/0jAvkPCcZ1x98lIMno1oqv\nBioneuro: https://open.spotify.com/show/5QIHRkc1N6xuCqtnfmsPfN\nSocialpsykologi: https://open.spotify.com/show/08cv2AZyBv2W9S8GiAysVP",
     "pubdate_year_rewrite": {
       "from": 2026,
       "to": 2025
@@ -94,6 +94,7 @@
     "audio_category_prefix_position": "after_first_block",
     "description_prepend_semester_week_lecture": true,
     "description_blank_line_marker": "·",
+    "description_footer": "\n·\n·\n·\nPersonlighedspsykologi: https://open.spotify.com/show/0jAvkPCcZ1x98lIMno1oqv\nBioneuro: https://open.spotify.com/show/5QIHRkc1N6xuCqtnfmsPfN\nSocialpsykologi: https://open.spotify.com/show/08cv2AZyBv2W9S8GiAysVP",
     "tail_grundbog_lydbog": {
       "enabled": true,
       "include_forord": true,

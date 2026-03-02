@@ -1956,6 +1956,10 @@ def validate_feed_block_config(feed_config: Dict[str, Any]) -> None:
             raise ValueError("feed.description_blank_line_marker must be a non-empty string.")
         if "\n" in raw_blank_line_marker or "\r" in raw_blank_line_marker:
             raise ValueError("feed.description_blank_line_marker must be a single-line string.")
+    if "description_footer" in feed_config:
+        raw_description_footer = feed_config.get("description_footer")
+        if not isinstance(raw_description_footer, str) or not raw_description_footer.strip():
+            raise ValueError("feed.description_footer must be a non-empty string.")
 
     mapping_specs = (
         ("title_blocks_by_kind", TITLE_BLOCKS_ALLOWED),
@@ -2568,6 +2572,12 @@ def build_episode_entry(
         and raw_description_blank_line_marker.strip()
         else None
     )
+    raw_description_footer = feed_config.get("description_footer")
+    description_footer = (
+        raw_description_footer.rstrip("\r\n")
+        if isinstance(raw_description_footer, str) and raw_description_footer.strip()
+        else None
+    )
     audio_category_prefixes = _resolve_audio_category_prefixes(feed_config)
 
     semester_week_lecture_title = None
@@ -2889,6 +2899,8 @@ def build_episode_entry(
                 meta["description"],
                 description_blank_line_marker,
             )
+        if description_footer and not meta["description"].endswith(description_footer):
+            meta["description"] = f"{meta['description']}{description_footer}"
 
     explicit_default = feed_config.get("default_explicit", False)
     duration = meta.get("duration")

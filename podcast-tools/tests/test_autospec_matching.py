@@ -1830,6 +1830,37 @@ class AutoSpecMatchingTests(unittest.TestCase):
         self.assertIn("Bank introducerer narrative psykologier.\n·\nKey points:", episode["description"])
         self.assertNotIn("\n\n", episode["description"])
 
+    def test_description_footer_appends_to_episode_description(self):
+        mod = _load_feed_module()
+        file_entry = {
+            "id": "file1",
+            "name": "W01L1 - Foo [EN].mp3",
+            "createdTime": "2026-02-02T08:00:00+00:00",
+        }
+        footer = (
+            "\n·\n·\n·\n"
+            "Personlighedspsykologi: https://open.spotify.com/show/0jAvkPCcZ1x98lIMno1oqv\n"
+            "Bioneuro: https://open.spotify.com/show/5QIHRkc1N6xuCqtnfmsPfN\n"
+            "Socialpsykologi: https://open.spotify.com/show/08cv2AZyBv2W9S8GiAysVP"
+        )
+        episode = mod.build_episode_entry(
+            file_entry=file_entry,
+            feed_config={
+                "title": "Personlighedspsykologi (EN)",
+                "link": "https://example.com",
+                "description": "Test feed",
+                "description_footer": footer,
+                "description_blocks": ["subject", "lecture"],
+                "language": "en",
+            },
+            overrides={},
+            public_link_template="https://example.com/{file_id}",
+        )
+        self.assertEqual(
+            episode["description"],
+            "Foo · Forelæsning 1" + footer,
+        )
+
     def test_description_quiz_block_renders_all_difficulties_with_short_ids(self):
         mod = _load_feed_module()
         file_entry = {
@@ -2420,6 +2451,13 @@ class AutoSpecMatchingTests(unittest.TestCase):
             ValueError, r"feed\.description_blank_line_marker must be a non-empty string"
         ):
             mod.validate_feed_block_config({"description_blank_line_marker": ""})
+
+    def test_validate_feed_block_config_rejects_invalid_description_footer(self):
+        mod = _load_feed_module()
+        with self.assertRaisesRegex(
+            ValueError, r"feed\.description_footer must be a non-empty string"
+        ):
+            mod.validate_feed_block_config({"description_footer": ""})
 
     def test_validate_feed_block_config_rejects_invalid_audio_category_prefixes(self):
         mod = _load_feed_module()

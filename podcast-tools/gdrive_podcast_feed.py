@@ -2082,6 +2082,54 @@ def _wxlx_kind_priority(item: Dict[str, Any]) -> int:
     return 3
 
 
+def _wxlx_oldest_sort_priority(item: Dict[str, Any]) -> int:
+    kind = str(item.get("episode_kind") or "").strip()
+    is_tts = bool(item.get("is_tts"))
+    if kind == "weekly_overview":
+        return 0
+    if kind == "brief":
+        return 1
+    if kind == "reading" and is_tts:
+        return 2
+    return 3
+
+
+def _resequence_wxlx_block_pubdates_for_oldest_clients(
+    values: List[Tuple[int, Dict[str, Any]]],
+    feed_config: Dict[str, Any],
+) -> None:
+    if len(values) <= 1:
+        return
+
+    published_values: List[dt.datetime] = []
+    for _, item in values:
+        published = item.get("published_at")
+        if isinstance(published, dt.datetime):
+            if published.tzinfo is None:
+                published = published.replace(tzinfo=dt.timezone.utc)
+            published_values.append(published)
+            continue
+        return
+
+    published_values.sort()
+    rewrite_config = _resolve_pubdate_year_rewrite(feed_config)
+    oldest_order = sorted(
+        values,
+        key=lambda pair: (
+            _wxlx_oldest_sort_priority(pair[1]),
+            _published_sort_value(pair[1]),
+            pair[0],
+        ),
+    )
+    for position, (_, item) in enumerate(oldest_order):
+        reassigned = published_values[position]
+        item["published_at"] = reassigned
+        item["pubDate"] = _rewrite_pubdate_year(
+            format_rfc2822(reassigned),
+            rewrite_config,
+        )
+
+
 def _extract_grundbog_subject_from_text(value: Any) -> Optional[str]:
     if not isinstance(value, str) or not value.strip():
         return None
@@ -2282,6 +2330,7 @@ def _sort_feed_episodes(
     ordered: List[Dict[str, Any]] = []
     for _, _, _, group_key, values in grouped_entries:
         if group_key[0] == "block":
+            _resequence_wxlx_block_pubdates_for_oldest_clients(values, feed_config)
             values.sort(
                 key=lambda pair: (
                     _wxlx_kind_priority(pair[1]),

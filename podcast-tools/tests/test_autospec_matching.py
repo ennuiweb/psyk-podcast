@@ -3,6 +3,7 @@ import io
 import re
 import unittest
 from contextlib import redirect_stderr
+from email.utils import parsedate_to_datetime
 from pathlib import Path
 
 
@@ -378,6 +379,96 @@ class AutoSpecMatchingTests(unittest.TestCase):
         root = ET.fromstring(ET.tostring(feed, encoding="unicode"))
         titles = [el.text for el in root.findall("./channel/item/title")]
         self.assertEqual(titles, ["W2 alle", "W2 reading", "W1 brief", "W1 alle"])
+
+    def test_build_feed_document_wxlx_sort_resequences_pubdates_for_oldest_clients(self):
+        mod = _load_feed_module()
+
+        def make_episode(
+            *,
+            guid: str,
+            title: str,
+            published_at: str,
+            episode_kind: str,
+            is_tts: bool,
+            sort_week: int,
+            sort_lecture: int,
+        ):
+            published_dt = mod.parse_datetime(published_at)
+            return {
+                "guid": guid,
+                "title": title,
+                "description": title,
+                "link": "https://example.com",
+                "published_at": published_dt,
+                "pubDate": mod.format_rfc2822(published_dt),
+                "mimeType": "audio/mpeg",
+                "size": 123,
+                "duration": None,
+                "explicit": "false",
+                "image": None,
+                "episode_kind": episode_kind,
+                "is_tts": is_tts,
+                "sort_week": sort_week,
+                "sort_lecture": sort_lecture,
+                "audio_url": f"https://example.com/{guid}.mp3",
+            }
+
+        episodes = [
+            make_episode(
+                guid="alle",
+                title="Alle kilder",
+                published_at="2026-02-02T10:00:00+00:00",
+                episode_kind="weekly_overview",
+                is_tts=False,
+                sort_week=2,
+                sort_lecture=1,
+            ),
+            make_episode(
+                guid="reading-newer",
+                title="Reading newer",
+                published_at="2026-02-02T12:00:00+00:00",
+                episode_kind="reading",
+                is_tts=False,
+                sort_week=2,
+                sort_lecture=1,
+            ),
+            make_episode(
+                guid="reading-older",
+                title="Reading older",
+                published_at="2026-02-02T08:00:00+00:00",
+                episode_kind="reading",
+                is_tts=False,
+                sort_week=2,
+                sort_lecture=1,
+            ),
+        ]
+        feed = mod.build_feed_document(
+            episodes=episodes,
+            feed_config={
+                "title": "Personlighedspsykologi",
+                "link": "https://example.com",
+                "description": "Test feed",
+                "language": "en",
+                "sort_mode": "wxlx_kind_priority",
+            },
+            last_build=mod.parse_datetime("2026-02-10T00:00:00+00:00"),
+        )
+        from xml.etree import ElementTree as ET
+
+        root = ET.fromstring(ET.tostring(feed, encoding="unicode"))
+        items = root.findall("./channel/item")
+        by_oldest = sorted(
+            (
+                (
+                    parsedate_to_datetime(item.findtext("pubDate", "")),
+                    item.findtext("title", ""),
+                )
+                for item in items
+            ),
+            key=lambda pair: pair[0],
+        )
+        oldest_titles = [title for _, title in by_oldest]
+        self.assertEqual(oldest_titles, ["Alle kilder", "Reading older", "Reading newer"])
 
     def test_build_feed_document_wxlx_tail_items_always_sort_last(self):
         mod = _load_feed_module()

@@ -5,6 +5,7 @@ It is **not** a podcast feed. Feed config now lives in:
 
 - `shows/personlighedspsykologi-en`
 - Feed ordering preference is configured there via `feed.sort_mode: "wxlx_kind_priority"` (`Brief -> Alle kilder -> Oplæst/TTS readings -> other readings` within each `W#L#` block).
+- In this mode, `pubDate` values inside each `W#L#` block are also re-sequenced so clients that sort by `Oldest` show `Alle kilder` first in the block.
 
 ## Key paths
 - `scripts/` - generation helpers (`generate_week.py`, `download_week.py`, `sync_reading_summaries.py`)

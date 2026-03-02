@@ -492,7 +492,7 @@ def _quiz_core_parts(episode_title: object) -> tuple[str, str, dict[str, str], s
     return module_label, title, cfg_tags, language.upper()
 
 
-def _quiz_meta_chips(*, cfg_tags: dict[str, str], language: str) -> list[str]:
+def _quiz_meta_chips(*, cfg_tags: dict[str, str], language: str, title: str) -> list[str]:
     chips: list[str] = []
     seen: set[str] = set()
 
@@ -506,27 +506,17 @@ def _quiz_meta_chips(*, cfg_tags: dict[str, str], language: str) -> list[str]:
         seen.add(key)
         chips.append(candidate)
 
+    normalized_title = str(title or "").strip().casefold()
     media_type = str(cfg_tags.get("type") or "").strip().lower()
-    if media_type == "audio":
-        _add("Lyd")
+    if media_type in {"audio", "quiz"}:
+        _add("Tekstquiz")
     elif media_type:
         _add(media_type.replace("-", " ").replace("_", " ").title())
+    elif normalized_title:
+        _add("Tekstquiz")
 
-    format_token = str(cfg_tags.get("format") or "").strip().lower()
-    if format_token == "deep-dive":
-        _add("Deep dive")
-    elif format_token == "brief":
-        _add("Brief")
-    elif format_token:
-        _add(format_token.replace("-", " ").replace("_", " ").title())
-
-    length_token = str(cfg_tags.get("length") or "").strip().lower()
-    if length_token == "long":
-        _add("Lang")
-    elif length_token in {"default", "standard"}:
-        _add("Standard")
-    elif length_token:
-        _add(length_token.replace("-", " ").replace("_", " ").title())
+    if "alle kilder" in normalized_title:
+        _add("Alle tekster")
 
     if language:
         _add(language)
@@ -536,7 +526,7 @@ def _quiz_meta_chips(*, cfg_tags: dict[str, str], language: str) -> list[str]:
 
 def _quiz_display_context(*, episode_title: object, quiz_id: str) -> dict[str, object]:
     module_label, title, cfg_tags, language = _quiz_core_parts(episode_title)
-    meta_chips = _quiz_meta_chips(cfg_tags=cfg_tags, language=language)
+    meta_chips = _quiz_meta_chips(cfg_tags=cfg_tags, language=language, title=title)
     raw_title = str(episode_title or "").strip() or str(quiz_id)
     return {
         "raw_title": raw_title,

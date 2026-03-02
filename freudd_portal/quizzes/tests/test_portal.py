@@ -832,6 +832,39 @@ class QuizPortalTests(TestCase):
         self.assertContains(response, "Mellem · 2 spørgsmål")
         self.assertContains(response, "Senest åbnet fag")
 
+    def test_progress_page_quiz_history_uses_text_based_chips_for_audio_tagged_titles(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+        self._write_links_file(
+            {
+                self.quiz_id: {
+                    "title": "W1L1 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3",
+                    "difficulty": "medium",
+                }
+            }
+        )
+
+        QuizProgress.objects.create(
+            user=user,
+            quiz_id=self.quiz_id,
+            status=QuizProgress.Status.COMPLETED,
+            state_json={},
+            answers_count=2,
+            question_count=2,
+            last_view="summary",
+            completed_at=timezone.now(),
+            last_attempt_completed_at=timezone.now(),
+            leaderboard_best_correct_answers=2,
+            leaderboard_best_question_count=2,
+        )
+
+        response = self.client.get(reverse("progress"))
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Tekstquiz")
+        self.assertContains(response, "Alle tekster")
+        self.assertNotContains(response, ">Lyd<", html=False)
+        self.assertNotContains(response, "Deep dive")
+
     def test_progress_page_hides_last_opened_badge_without_saved_subject(self) -> None:
         user = self._create_user()
         self.client.force_login(user)

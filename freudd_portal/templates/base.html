@@ -383,6 +383,46 @@
           box-shadow 180ms ease;
       }
 
+      .mobile-tab-label {
+        white-space: nowrap;
+      }
+
+      .mobile-tab-logo {
+        width: 26px;
+        height: 26px;
+        margin-right: 7px;
+        border-radius: 9px;
+        border: 1px solid color-mix(in srgb, var(--border-strong) 78%, transparent);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--font-mono);
+        font-size: 0.63rem;
+        font-weight: 600;
+        letter-spacing: 0.01em;
+        line-height: 1;
+        color: var(--accent-strong);
+        background: color-mix(in srgb, var(--surface) 70%, var(--surface-soft));
+      }
+
+      .mobile-tab-logo--subjects {
+        background:
+          radial-gradient(circle at 28% 24%, color-mix(in srgb, var(--accent) 20%, var(--surface)) 0 26%, transparent 60%),
+          color-mix(in srgb, var(--accent-soft) 65%, var(--surface));
+      }
+
+      .mobile-tab-logo--cup {
+        background:
+          radial-gradient(circle at 66% 28%, color-mix(in srgb, var(--accent) 23%, var(--surface)) 0 22%, transparent 58%),
+          color-mix(in srgb, var(--surface) 68%, var(--surface-soft));
+      }
+
+      .mobile-tab-logo--overview {
+        background:
+          radial-gradient(circle at 34% 66%, color-mix(in srgb, var(--accent) 20%, var(--surface)) 0 24%, transparent 58%),
+          color-mix(in srgb, var(--surface) 60%, var(--surface-soft));
+      }
+
       .mobile-tab-button {
         width: 100%;
         background: transparent;
@@ -402,6 +442,13 @@
         color: var(--accent-strong);
         background: color-mix(in srgb, var(--accent) 18%, var(--surface));
         box-shadow: 0 3px 10px color-mix(in srgb, var(--accent) 18%, transparent);
+      }
+
+      .mobile-tab.is-active .mobile-tab-logo,
+      .mobile-tab-button.is-active .mobile-tab-logo {
+        border-color: color-mix(in srgb, var(--accent) 54%, var(--border));
+        color: var(--accent-strong);
+        background: color-mix(in srgb, var(--accent-soft) 75%, var(--surface));
       }
 
       .mobile-tab:focus-visible,
@@ -909,10 +956,10 @@
           {% endif %}
           <div class="nav-group nav-group-main">
             {% if leaderboard_default_subject_slug %}
-            <a class="nav-action nav-action-utility" href="{% url 'leaderboard-subject' subject_slug=leaderboard_default_subject_slug %}">freudd quiz cup</a>
+            <a class="nav-action nav-action-utility" href="{% url 'leaderboard-subject' subject_slug=leaderboard_default_subject_slug %}">Quiz cup</a>
             {% endif %}
             {% if request.user.is_authenticated %}
-            <a class="nav-action nav-action-utility" href="{% url 'progress' %}">Mit overblik</a>
+            <a class="nav-action nav-action-utility" href="{% url 'progress' %}">Overblik</a>
             <form method="post" action="{% url 'logout' %}" class="inline-form">
               {% csrf_token %}
               <button class="nav-text-button" type="submit">Log ud</button>
@@ -940,21 +987,6 @@
     {% with leaderboard_subject_slug=current_subject_slug|default:leaderboard_default_subject_slug %}
     <nav class="mobile-tabbar" aria-label="Primær navigation" data-mobile-nav>
       <div class="mobile-tabbar-inner">
-        {% if leaderboard_subject_slug %}
-        <a
-          class="mobile-tab {% if current_page == 'leaderboard-subject' or current_page == 'leaderboard-profile' %}is-active{% endif %}"
-          href="{% url 'leaderboard-subject' subject_slug=leaderboard_subject_slug %}"
-        >
-          <span>freudd quiz cup</span>
-        </a>
-        {% else %}
-        <a class="mobile-tab" href="{% url 'progress' %}">
-          <span>freudd quiz cup</span>
-        </a>
-        {% endif %}
-        <a class="mobile-tab {% if current_page == 'progress' %}is-active{% endif %}" href="{% url 'progress' %}">
-          <span>Mit overblik</span>
-        </a>
         <div class="mobile-tab-subjects">
           <button
             type="button"
@@ -963,7 +995,8 @@
             aria-expanded="false"
             aria-controls="mobile-subject-list"
           >
-            <span>Mine fag</span>
+            <span class="mobile-tab-logo mobile-tab-logo--subjects" aria-hidden="true">MF</span>
+            <span class="mobile-tab-label">Mine fag</span>
           </button>
           <div class="mobile-subject-list" id="mobile-subject-list" data-subject-menu-list hidden>
             {% if topmenu_enrolled_subjects %}
@@ -980,6 +1013,24 @@
             {% endif %}
           </div>
         </div>
+        {% if leaderboard_subject_slug %}
+        <a
+          class="mobile-tab {% if current_page == 'leaderboard-subject' or current_page == 'leaderboard-profile' %}is-active{% endif %}"
+          href="{% url 'leaderboard-subject' subject_slug=leaderboard_subject_slug %}"
+        >
+          <span class="mobile-tab-logo mobile-tab-logo--cup" aria-hidden="true">QC</span>
+          <span class="mobile-tab-label">Quiz cup</span>
+        </a>
+        {% else %}
+        <a class="mobile-tab" href="{% url 'progress' %}">
+          <span class="mobile-tab-logo mobile-tab-logo--cup" aria-hidden="true">QC</span>
+          <span class="mobile-tab-label">Quiz cup</span>
+        </a>
+        {% endif %}
+        <a class="mobile-tab {% if current_page == 'progress' %}is-active{% endif %}" href="{% url 'progress' %}">
+          <span class="mobile-tab-logo mobile-tab-logo--overview" aria-hidden="true">OV</span>
+          <span class="mobile-tab-label">Overblik</span>
+        </a>
       </div>
     </nav>
     {% endwith %}

@@ -3,7 +3,7 @@
   "subject_slug": "personlighedspsykologi",
   "source_meta": {
     "version": 1,
-    "generated_at": "2026-03-02T16:50:48.767707+00:00",
+    "generated_at": "2026-03-02T16:56:08.333667+00:00",
     "reading_master_path": "/home/runner/work/psyk-podcast/psyk-podcast/shows/personlighedspsykologi-en/docs/reading-file-key.md",
     "reading_fallback_path": "/home/runner/work/psyk-podcast/psyk-podcast/shows/personlighedspsykologi-en/docs/reading-file-key.md",
     "reading_source_used": "/home/runner/work/psyk-podcast/psyk-podcast/shows/personlighedspsykologi-en/docs/reading-file-key.md",
@@ -1220,7 +1220,18 @@
                 "episode_title": "W5L2 - Køppe (1992) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               }
             ],
-            "podcasts": []
+            "podcasts": [
+              {
+                "kind": "podcast",
+                "title": "Uge 5, Forelæsning 2 · Podcast · Køppe (1992)",
+                "url": "https://open.spotify.com/episode/1LECP6FrzfUufYbBZPtJs5",
+                "platform": "spotify",
+                "pub_date": "Tue, 03 Mar 2025 14:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1eDRw7XTHJgSM9lziaFT2KZULi3i8Xfcx",
+                "duration_seconds": null,
+                "duration_label": ""
+              }
+            ]
           }
         },
         {
@@ -1323,6 +1334,26 @@
           },
           {
             "kind": "podcast",
+            "title": "Uge 5, Forelæsning 2 · Podcast · Alle kilder",
+            "url": "https://open.spotify.com/episode/3FxcTxGB8FXDEzui8StyeT",
+            "platform": "spotify",
+            "pub_date": "Tue, 03 Mar 2025 10:00:00 +0100",
+            "source_audio_url": "https://drive.google.com/uc?export=download&id=1SQltYmo2sel56_L7oSyHkMGnZ-bL4kOX",
+            "duration_seconds": null,
+            "duration_label": ""
+          },
+          {
+            "kind": "podcast",
+            "title": "Uge 5, Forelæsning 2 · Podcast · Andkjær Olsen & Køppe (1991a og b)",
+            "url": "https://open.spotify.com/episode/4o45xGRvx1w26I7w3Jqn5U",
+            "platform": "spotify",
+            "pub_date": "Tue, 03 Mar 2025 16:00:00 +0100",
+            "source_audio_url": "https://drive.google.com/uc?export=download&id=1-MUzDHyTeCGnXPDXK16jJWp3sxBgmv7E",
+            "duration_seconds": null,
+            "duration_label": ""
+          },
+          {
+            "kind": "podcast",
             "title": "Uge 5, Forelæsning 2 · Podcast · Grundbog kapitel 07 - Nyere psykoanalytiske teorier",
             "url": "https://open.spotify.com/episode/4CY4keNuV5PHVBZLyqV6bV",
             "platform": "spotify",
@@ -1338,10 +1369,8 @@
         "Quiz entry could not map to reading; attached to lecture assets: W5L2 - Grundbog kapitel 07 - Nyere psykoanalytiske teorier [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
         "Quiz entry could not map to reading; attached to lecture assets: [Brief] W5L2 - Grundbog kapitel 07 - Nyere psykoanalytiske teorier [EN] {type=audio lang=en format=brief length=default hash=7e1ef4f1}.mp3",
         "RSS item could not map to reading; attached to lecture assets: Uge 5, Forelæsning 2 · Kort podcast · Grundbog kapitel 07 - Nyere psykoanalytiske teorier",
-        "Spotify episode mapping missing for RSS item; skipping podcast asset: Uge 5, Forelæsning 2 · Podcast · Alle kilder",
         "RSS item could not map to reading; attached to lecture assets: Uge 5, Forelæsning 2 · Podcast · Grundbog kapitel 07 - Nyere psykoanalytiske teorier",
-        "Spotify episode mapping missing for RSS item; skipping podcast asset: Uge 5, Forelæsning 2 · Podcast · Andkjær Olsen & Køppe (1991a og b)",
-        "Spotify episode mapping missing for RSS item; skipping podcast asset: Uge 5, Forelæsning 2 · Podcast · Køppe (1992)"
+        "RSS item could not map to reading; attached to lecture assets: Uge 5, Forelæsning 2 · Podcast · Andkjær Olsen & Køppe (1991a og b)"
       ]
     },
     {
@@ -1357,6 +1386,12 @@
           "sequence_index": 1,
           "assets": {
             "quizzes": [
+              {
+                "quiz_id": "884e0bf7",
+                "difficulty": "easy",
+                "quiz_url": "/q/884e0bf7.html",
+                "episode_title": "W6L1 - X Spinelli (2005) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
               {
                 "quiz_id": "d2f6755f",
                 "difficulty": "hard",
@@ -1399,6 +1434,12 @@
                 "episode_title": "W6L1 - X Moeskær Hansen & Roald (2022) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               },
               {
+                "quiz_id": "92c3bd8a",
+                "difficulty": "hard",
+                "quiz_url": "/q/92c3bd8a.html",
+                "episode_title": "W6L1 - X Moeskær Hansen & Roald (2022) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
                 "quiz_id": "2a54192c",
                 "difficulty": "medium",
                 "quiz_url": "/q/2a54192c.html",
@@ -1426,7 +1467,44 @@
           "source_filename": "Grundbog kapitel 04 - Fænomenologisk personlighedspsykologi.pdf",
           "sequence_index": 3,
           "assets": {
-            "quizzes": [],
+            "quizzes": [
+              {
+                "quiz_id": "08504c77",
+                "difficulty": "easy",
+                "quiz_url": "/q/08504c77.html",
+                "episode_title": "W6L1 - Grundbog kapitel 4 - Fænomenologisk personlighedspsykologi [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "c0e5edfa",
+                "difficulty": "easy",
+                "quiz_url": "/q/c0e5edfa.html",
+                "episode_title": "[Brief] W6L1 - Grundbog kapitel 4 - Fænomenologisk personlighedspsykologi [EN] {type=audio lang=en format=brief length=default hash=7e1ef4f1}.mp3"
+              },
+              {
+                "quiz_id": "7c70988d",
+                "difficulty": "hard",
+                "quiz_url": "/q/7c70988d.html",
+                "episode_title": "W6L1 - Grundbog kapitel 4 - Fænomenologisk personlighedspsykologi [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "854f1b7b",
+                "difficulty": "hard",
+                "quiz_url": "/q/854f1b7b.html",
+                "episode_title": "[Brief] W6L1 - Grundbog kapitel 4 - Fænomenologisk personlighedspsykologi [EN] {type=audio lang=en format=brief length=default hash=7e1ef4f1}.mp3"
+              },
+              {
+                "quiz_id": "56fa0325",
+                "difficulty": "medium",
+                "quiz_url": "/q/56fa0325.html",
+                "episode_title": "[Brief] W6L1 - Grundbog kapitel 4 - Fænomenologisk personlighedspsykologi [EN] {type=audio lang=en format=brief length=default hash=7e1ef4f1}.mp3"
+              },
+              {
+                "quiz_id": "d152d5a7",
+                "difficulty": "medium",
+                "quiz_url": "/q/d152d5a7.html",
+                "episode_title": "W6L1 - Grundbog kapitel 4 - Fænomenologisk personlighedspsykologi [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              }
+            ],
             "podcasts": [
               {
                 "kind": "short_podcast",
@@ -1453,7 +1531,26 @@
         }
       ],
       "lecture_assets": {
-        "quizzes": [],
+        "quizzes": [
+          {
+            "quiz_id": "50297a38",
+            "difficulty": "easy",
+            "quiz_url": "/q/50297a38.html",
+            "episode_title": "W6L1 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=1b3d31bc}.mp3"
+          },
+          {
+            "quiz_id": "7cf81120",
+            "difficulty": "hard",
+            "quiz_url": "/q/7cf81120.html",
+            "episode_title": "W6L1 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=1b3d31bc}.mp3"
+          },
+          {
+            "quiz_id": "8b37a8e3",
+            "difficulty": "medium",
+            "quiz_url": "/q/8b37a8e3.html",
+            "episode_title": "W6L1 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=1b3d31bc}.mp3"
+          }
+        ],
         "podcasts": [
           {
             "kind": "podcast",

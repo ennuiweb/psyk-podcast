@@ -32,3 +32,17 @@ Download artifacts for flere uger:
 
 Bemærk:
 - Du kan stadig overskrive defaults med egne argumenter (`--sources-root`, `--prompt-config`, `--output-root`).
+
+## Troubleshooting (2026-03-02)
+
+Hvis en PDF fejler med `Source <id> failed to process`, men andre PDF'er virker:
+
+1. Omskriv PDF'en før upload (Ghostscript):
+
+```bash
+gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -dPDFSETTINGS=/ebook \
+  -sOutputFile="/tmp/<name>_normalized.pdf" "<original>.pdf"
+```
+
+2. Ved flakey ingestion: forsøg upload igen (samme fil kan fejle og lykkes på efterfølgende forsøg).
+3. Hvis `generate_podcast.py` køres med `--wait`, skal script-versionen inkludere fixet hvor wait/download kører i en ny client-kontekst.

@@ -1002,7 +1002,7 @@ class QuizPortalTests(TestCase):
         response = self.client.get(reverse("progress"))
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Personlig tracking")
-        self.assertContains(response, "Offentlig quizliga")
+        self.assertContains(response, "Offentlig quiz cup")
         self.assertContains(response, reverse("leaderboard-profile"))
 
     def test_progress_page_moves_enrollment_controls_to_bottom_module(self) -> None:

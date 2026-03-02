@@ -420,6 +420,9 @@
       5,
       Number.parseInt("{{ question_time_limit_seconds|default:30 }}", 10) || 30
     );
+    const baseQuestionPoints = 100;
+    const maxSpeedBonusPoints = 20;
+    const maxQuestionPoints = baseQuestionPoints + maxSpeedBonusPoints;
     const maxSpeedBonusSecondsPerQuestion = Math.min(10, questionTimeLimitSeconds);
     const cooldownResetSeconds = 3600;
     const isAuthenticated = {{ user_is_authenticated|yesno:"true,false" }};
@@ -917,8 +920,8 @@
       const duration = Math.max(1_000, Number.parseInt(String(durationMs), 10) || questionTimeLimitSeconds * 1000);
       const expectedMs = maxSpeedBonusSecondsPerQuestion * 1000;
       const speedFactor = Math.max(0.0, Math.min(1.0, expectedMs / duration));
-      const speedBonus = Math.round(20 * speedFactor);
-      return 100 + speedBonus;
+      const speedBonus = Math.round(maxSpeedBonusPoints * speedFactor);
+      return baseQuestionPoints + speedBonus;
     }
 
     function formatDurationLabel(durationMs) {
@@ -984,7 +987,7 @@
       }
       const key = String(state.currentQuestionIndex);
       if (isQuestionTimedOut(state.currentQuestionIndex)) {
-        timerNode.textContent = "Tid: udløbet";
+        timerNode.textContent = `Tid: udløbet · 0/${maxQuestionPoints} point`;
         return;
       }
       const selected = state.userAnswers[key];
@@ -1000,11 +1003,12 @@
       }
       const deadline = parseEpoch(state.questionDeadlineEpochMs?.[key]);
       if (!deadline) {
-        timerNode.textContent = `Tid: ${questionTimeLimitSeconds}s`;
+        timerNode.textContent = `Tid: ${questionTimeLimitSeconds}s · ${maxQuestionPoints}/${maxQuestionPoints} point`;
         return;
       }
       const remaining = Math.max(0, Math.ceil((deadline - Date.now()) / 1000));
-      timerNode.textContent = `Tid: ${remaining}s`;
+      const livePoints = computeQuestionPoints(true, elapsedMsFromQuestionDeadline(state.currentQuestionIndex));
+      timerNode.textContent = `Tid: ${remaining}s · ${livePoints}/${maxQuestionPoints} point`;
     }
 
     function activeCooldownState() {

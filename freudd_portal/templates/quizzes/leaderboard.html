@@ -568,7 +568,7 @@
             <th>#</th>
             <th>Alias</th>
             <th>Point</th>
-            <th>Korrekthed</th>
+            <th>Korrekte svar</th>
             <th>Antal quizzer</th>
           </tr>
         </thead>
@@ -578,7 +578,7 @@
             <td>{{ entry.rank }}</td>
             <td class="cup-table-alias">{{ entry.alias }}</td>
             <td class="cup-table-points">{{ entry.score_points_label }}</td>
-            <td><span class="cup-accuracy-chip tone-{{ entry.accuracy_tone }}">{{ entry.accuracy_percent }}%</span></td>
+            <td>{{ entry.correct_answers }}</td>
             <td>{{ entry.quiz_count }}</td>
           </tr>
           {% endfor %}

@@ -1185,6 +1185,8 @@ class QuizPortalTests(TestCase):
             ["RankOne", "RankTwo", "RankThree", "RankFour"],
         )
         body = response.content.decode("utf-8")
+        self.assertIn("<th>Korrekte svar</th>", body)
+        self.assertNotIn("<th>Korrekthed</th>", body)
         self.assertNotRegex(body, r"<button[^>]+data-cup-expand\b")
 
         rank_two_pos = body.find("RankTwo")

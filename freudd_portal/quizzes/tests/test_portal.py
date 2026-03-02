@@ -1079,7 +1079,7 @@ class QuizPortalTests(TestCase):
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
         self.assertNotContains(response, "Du deltager i Freudd Quiz Cup som")
-        self.assertContains(response, "Alias og deltagelse administreres fra fremskridtssiden.")
+        self.assertNotContains(response, "Alias og deltagelse administreres fra fremskridtssiden.")
 
     def test_leaderboard_page_shows_participation_state_for_private_alias(self) -> None:
         user = self._create_user(username="alias-private")

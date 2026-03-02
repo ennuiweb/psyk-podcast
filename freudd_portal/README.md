@@ -35,6 +35,7 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Completion rule: `currentView == "summary"` and `answers_count == question_count`; timed-out questions count as answered/wrong.
 - Gamification core is quiz-driven and always available for authenticated users (`/progress`, `/api/gamification/me`).
 - `/progress` focuses on subject access, quiz history, and a lightweight public quiz cup preview.
+- `/progress` public quiz cup preview only renders subject cards when at least one public participant exists for that subject.
 - `/leaderboard/<subject_slug>` is the dedicated `Freudd Quiz Cup` page with subject tabs, podium cards, and Top 50 table.
 - Desktop topbar centers `Quiz cup` in its own highlighted pill with a trophy icon; utility actions (`Indstillinger`, `Log ud`) stay right-aligned.
 - Quizhistorik on `/progress` is card-based and includes live search, difficulty/status filters, sort modes, and auto-updating summary metrics (`quiz count`, `rigtige svar`, `træfsikkerhed`, `perfekte quizzer`).

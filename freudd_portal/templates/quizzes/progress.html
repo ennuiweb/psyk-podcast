@@ -928,6 +928,7 @@
     {% endif %}
   </section>
 
+  {% if quiz_history_enabled %}
   <section class="card dashboard-section quiz-history-shell">
     <div class="section-head history-head">
       <div>
@@ -1080,6 +1081,7 @@
     <p class="empty-copy">Der er endnu ikke gemte quizscore.</p>
     {% endif %}
   </section>
+  {% endif %}
 
   <section class="card dashboard-section">
     <div class="section-head">

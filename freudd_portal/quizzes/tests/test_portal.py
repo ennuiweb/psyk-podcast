@@ -1652,9 +1652,10 @@ class QuizPortalTests(TestCase):
         self.assertContains(response, "Ikke startet endnu")
         self.assertContains(response, "Grundbog kapitel 01 - Introduktion til personlighedspsykologi")
         self.assertContains(response, "Uge 1, forelæsning 1: Introforelaesning")
+        self.assertContains(response, "quiz cup for personlighedspsykologi")
         self.assertContains(
             response,
-            f'class="ghost-link back-link subject-desktop-link" href="{quiz_cup_url}"',
+            f'class="ghost-link back-link subject-cup-link" href="{quiz_cup_url}"',
         )
         self.assertNotContains(response, "Mangler kilde")
         self.assertNotContains(response, "Koutsoumpis (2025)")

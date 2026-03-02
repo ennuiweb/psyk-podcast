@@ -63,6 +63,68 @@
     flex-wrap: wrap;
   }
 
+  .subject-cup-link {
+    min-height: 54px;
+    border-radius: 18px;
+    border-color: color-mix(in srgb, var(--accent) 44%, var(--border-strong));
+    background:
+      radial-gradient(circle at 14% 26%, color-mix(in srgb, var(--surface) 88%, #fff7d8), transparent 58%),
+      linear-gradient(
+        140deg,
+        color-mix(in srgb, var(--accent-soft) 90%, var(--surface)),
+        color-mix(in srgb, var(--surface-soft) 92%, #faf4e4)
+      );
+    color: var(--accent-strong);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 16px 0 12px;
+    box-shadow: 0 10px 18px -15px color-mix(in srgb, var(--accent) 44%, transparent);
+    font-family: var(--subject-font-ui);
+    text-decoration: none;
+  }
+
+  .subject-cup-link:hover {
+    border-color: color-mix(in srgb, var(--accent) 66%, var(--border-strong));
+    background:
+      radial-gradient(circle at 14% 26%, color-mix(in srgb, var(--surface) 82%, #fff7d8), transparent 56%),
+      linear-gradient(
+        140deg,
+        color-mix(in srgb, var(--accent-soft) 96%, var(--surface)),
+        color-mix(in srgb, var(--surface-soft) 95%, #faf4e4)
+      );
+  }
+
+  .subject-cup-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid color-mix(in srgb, var(--accent) 32%, var(--border));
+    background: color-mix(in srgb, var(--surface) 90%, #fff5cc);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+  }
+
+  .subject-cup-icon svg {
+    width: 17px;
+    height: 17px;
+    stroke: currentColor;
+    stroke-width: 1.75;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .subject-cup-link-label {
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: -0.004em;
+    line-height: 1.14;
+    text-transform: lowercase;
+  }
+
   .subject-head-copy {
     display: grid;
     gap: var(--subject-space-tight);
@@ -85,12 +147,12 @@
   }
 
   .subject-back,
-  .subject-desktop-link {
+  .subject-cup-link {
     transition: filter 160ms ease;
   }
 
   .subject-back:hover,
-  .subject-desktop-link:hover {
+  .subject-cup-link:hover {
     filter: brightness(0.96);
   }
 
@@ -1637,7 +1699,18 @@
       <p class="muted">{{ subject.description }}</p>
     </div>
     <div class="subject-head-actions">
-      <a class="ghost-link back-link subject-desktop-link" href="{% url 'leaderboard-subject' subject_slug=subject.slug %}">Quiz cup</a>
+      <a class="ghost-link back-link subject-cup-link" href="{% url 'leaderboard-subject' subject_slug=subject.slug %}" aria-label="quiz cup for {{ subject.title|lower }}">
+        <span class="subject-cup-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M8 5h8v2a4 4 0 0 1-8 0V5Z" />
+            <path d="M8 7H6a2 2 0 0 1-2-2V4h4" />
+            <path d="M16 7h2a2 2 0 0 0 2-2V4h-4" />
+            <path d="M12 11v4" />
+            <path d="M9 19h6" />
+          </svg>
+        </span>
+        <span class="subject-cup-link-label">quiz cup for {{ subject.title|lower }}</span>
+      </a>
       <a class="ghost-link back-link subject-back" href="{{ back_url }}" onclick="if (window.history.length > 1) { event.preventDefault(); window.history.back(); }">Tilbage</a>
     </div>
   </header>

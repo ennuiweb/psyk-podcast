@@ -61,7 +61,9 @@ class ResponsiveTemplateRulesTests(SimpleTestCase):
     def test_subject_detail_exposes_desktop_only_quiz_cup_link(self) -> None:
         body = self._template_text("quizzes/subject_detail.html")
         self.assertIn("subject-head-actions", body)
-        self.assertIn("subject-desktop-link", body)
+        self.assertIn("subject-cup-link", body)
+        self.assertIn("subject-cup-icon", body)
+        self.assertIn("quiz cup for {{ subject.title|lower }}", body)
         self.assertIn("{% url 'leaderboard-subject' subject_slug=subject.slug %}", body)
         self.assertIn(
             ".subject-head-actions {\n"

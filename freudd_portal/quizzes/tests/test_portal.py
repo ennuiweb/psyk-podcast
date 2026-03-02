@@ -1656,11 +1656,13 @@ class QuizPortalTests(TestCase):
         self.assertNotContains(response, "lecture-details")
         self.assertNotContains(response, "timeline-item")
         self.assertNotContains(response, "Introforelaesning (Forelaesning 1, 2026-02-02)")
+        self.assertContains(response, "(2026-02-02)")
         self.assertContains(response, "Quiz for alle kilder")
         self.assertContains(response, "reading-difficulties")
         self.assertContains(response, "Ikke startet endnu")
         self.assertContains(response, "Grundbog kapitel 01 - Introduktion til personlighedspsykologi")
         self.assertContains(response, "Uge 1, forelæsning 1: Introforelaesning")
+        self.assertContains(response, "lecture-rail-copy-date")
         self.assertContains(response, "quiz cup for personlighedspsykologi")
         self.assertContains(
             response,
@@ -1685,6 +1687,8 @@ class QuizPortalTests(TestCase):
         self.assertEqual(len(response.context["lecture_rail_items"]), 2)
         self.assertTrue(response.context["lecture_rail_items"][0]["is_active"])
         self.assertFalse(response.context["lecture_rail_items"][1]["is_active"])
+        self.assertEqual(response.context["lecture_rail_items"][0]["lecture_date"], "2026-02-02")
+        self.assertEqual(response.context["lecture_rail_items"][1]["lecture_date"], "2026-02-03")
 
     def test_subject_detail_hides_back_link_for_safe_and_unsafe_referer(self) -> None:
         user = self._create_user()
@@ -1811,6 +1815,8 @@ class QuizPortalTests(TestCase):
         self.assertTrue(rail_items[0]["lecture_url"].endswith("?lecture=W01L1"))
         self.assertTrue(rail_items[1]["lecture_url"].endswith("?lecture=W01L2"))
         self.assertContains(response, 'class="lecture-rail-copy"')
+        self.assertContains(response, 'class="lecture-rail-copy-title"')
+        self.assertContains(response, 'class="lecture-rail-copy-date"')
         self.assertContains(response, 'href="/subjects/personlighedspsykologi?lecture=W01L1"')
 
     @override_settings(FREUDD_SUBJECT_DETAIL_SHOW_READING_QUIZZES=False)

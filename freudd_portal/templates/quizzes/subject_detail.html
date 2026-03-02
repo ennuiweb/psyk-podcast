@@ -165,29 +165,56 @@
   .subject-path-toggle {
     min-height: 44px;
     border-radius: var(--radius-pill);
-    border: 1px solid var(--border);
-    background: var(--surface);
-    color: var(--muted);
-    padding: 0 var(--space-4);
+    border: 1px solid color-mix(in srgb, var(--border-strong) 86%, #c9b896);
+    background: color-mix(in srgb, var(--surface) 95%, #f7efe2);
+    color: color-mix(in srgb, var(--text-strong) 88%, #2c3d56);
+    padding: 0 18px;
     display: inline-flex;
     align-items: center;
+    gap: 10px;
     justify-content: center;
     justify-self: flex-start;
     font-family: var(--subject-font-ui);
-    font-size: 0.9rem;
+    font-size: 1.06rem;
     font-weight: 600;
     line-height: 1;
     cursor: pointer;
     transition:
       border-color 160ms ease,
       background 160ms ease,
-      color 160ms ease;
+      color 160ms ease,
+      box-shadow 160ms ease;
+  }
+
+  .subject-path-toggle-icon {
+    width: 18px;
+    height: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+  }
+
+  .subject-path-toggle-icon svg {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+    stroke-width: 2;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .subject-path-toggle-label {
+    display: inline-block;
+    letter-spacing: -0.01em;
   }
 
   .subject-path-toggle:hover {
-    border-color: var(--border-strong);
-    background: color-mix(in srgb, var(--surface-soft) 78%, var(--surface));
+    border-color: color-mix(in srgb, var(--border-strong) 78%, #ad9676);
+    background: color-mix(in srgb, var(--surface-soft) 70%, var(--surface));
     color: var(--text-strong);
+    box-shadow: 0 6px 16px -14px color-mix(in srgb, var(--text-strong) 56%, transparent);
   }
 
   .subject-path-toggle:focus-visible {
@@ -220,7 +247,7 @@
 
   .lecture-rail {
     position: relative;
-    padding-top: 8px;
+    padding-top: 6px;
   }
 
   .lecture-rail-list {
@@ -228,26 +255,26 @@
     padding: 0;
     list-style: none;
     display: grid;
-    gap: var(--subject-space-tight);
+    gap: var(--space-2);
   }
 
   .lecture-rail-item {
     position: relative;
-    min-height: 82px;
+    min-height: 92px;
     display: grid;
-    grid-template-columns: 36px minmax(0, 1fr);
-    column-gap: var(--space-3);
+    grid-template-columns: 22px minmax(0, 1fr);
+    column-gap: 14px;
     align-items: start;
   }
 
   .lecture-rail-item::after {
     content: "";
     position: absolute;
-    top: 36px;
-    bottom: calc(-1 * var(--subject-space-tight));
-    left: 18px;
+    top: 14px;
+    bottom: calc(-1 * var(--space-2));
+    left: 10px;
     width: 2px;
-    background: var(--timeline-connector);
+    background: color-mix(in srgb, var(--border-strong) 82%, #d8cab2);
   }
 
   .lecture-rail-item:last-child::after {
@@ -256,113 +283,134 @@
 
   .lecture-rail-item.is-past::after,
   .lecture-rail-item.is-completed::after {
-    background: #be9358;
+    background: color-mix(in srgb, var(--accent) 82%, #0f5f8c);
   }
 
   .lecture-rail-link {
-    width: 36px;
-    height: 36px;
-    border-radius: var(--radius-pill);
-    border: 1px solid var(--border);
-    background: var(--surface-soft);
-    color: var(--muted);
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid color-mix(in srgb, var(--border-strong) 92%, #c5b494);
+    background: color-mix(in srgb, var(--surface) 96%, #fff9ef);
+    color: transparent;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    font-family: var(--subject-font-ui);
-    font-size: 1.22rem;
-    font-weight: 500;
-    line-height: 1;
-    box-shadow: inset 0 0 0 1px rgba(106, 127, 165, 0.15);
+    box-shadow: none;
     position: relative;
     z-index: 1;
+    margin-top: 2px;
     transition:
       background 160ms ease,
       border-color 160ms ease,
-      color 160ms ease,
       box-shadow 160ms ease;
   }
 
   .lecture-rail-item:not(.is-active):not(.is-past):not(.is-completed) .lecture-rail-link:hover {
-    border-color: color-mix(in srgb, var(--accent) 26%, var(--border));
-    background: color-mix(in srgb, var(--accent) 12%, var(--surface-soft));
-    color: var(--text-subtle-2);
+    border-color: color-mix(in srgb, var(--accent) 48%, var(--border-strong));
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 24%, transparent);
   }
 
   .lecture-rail-item:not(.is-active):not(.is-past):not(.is-completed):hover .lecture-rail-link {
-    border-color: color-mix(in srgb, var(--accent) 26%, var(--border));
-    background: color-mix(in srgb, var(--accent) 12%, var(--surface-soft));
-    color: var(--text-subtle-2);
+    border-color: color-mix(in srgb, var(--accent) 48%, var(--border-strong));
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 24%, transparent);
   }
 
   .lecture-rail-item.is-active .lecture-rail-link:hover {
-    background: color-mix(in srgb, #be9358 22%, var(--surface));
+    background: color-mix(in srgb, var(--surface) 98%, #f8fbff);
   }
 
   .lecture-rail-item:not(.is-active):not(.is-past):not(.is-completed):hover .lecture-rail-copy {
-    color: var(--text-subtle-2);
+    color: color-mix(in srgb, var(--text-subtle-2) 90%, #4a5f80);
   }
 
   .lecture-rail-item.is-active .lecture-rail-link {
-    border-color: #be9358;
-    background: color-mix(in srgb, #be9358 14%, var(--surface));
-    color: #2c2316;
-    box-shadow: inset 0 0 0 1px color-mix(in srgb, #be9358 28%, transparent);
+    border-color: var(--accent);
+    background: color-mix(in srgb, var(--surface) 96%, #f6f9ff);
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 20%, transparent);
   }
 
   .lecture-rail-item.is-past .lecture-rail-link,
   .lecture-rail-item.is-completed .lecture-rail-link {
-    background: #be9358;
-    border-color: #be9358;
-    color: #fff;
+    background: var(--accent);
+    border-color: var(--accent);
     box-shadow: none;
   }
 
   .lecture-rail-copy {
     margin: 0;
-    display: block;
-    color: var(--muted);
+    display: grid;
+    gap: 3px;
+    color: #8090a7;
     font-family: var(--subject-font-ui);
-    line-height: 1.34;
-    font-size: 0.94rem;
+    line-height: 1.2;
+    font-size: 0.95rem;
     max-width: none;
-    padding-top: 2px;
+    padding-top: 0;
     overflow-wrap: anywhere;
     word-break: break-word;
     hyphens: auto;
     text-decoration: none;
-    transition: color 160ms ease, text-decoration-color 160ms ease;
+    transition: color 160ms ease;
+  }
+
+  .lecture-rail-copy-title {
+    color: inherit;
+    font-size: clamp(1.05rem, 1.15vw, 1.08rem);
+    font-weight: 640;
+    line-height: 1.26;
+    letter-spacing: -0.012em;
+    text-wrap: pretty;
+  }
+
+  .lecture-rail-copy-date {
+    color: #6f8199;
+    font-family: var(--font-mono);
+    font-size: 0.79rem;
+    line-height: 1.2;
+    letter-spacing: 0.018em;
+    white-space: nowrap;
   }
 
   .lecture-rail-copy:hover,
   .lecture-rail-copy:focus-visible {
-    text-decoration: underline;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 0.12em;
-    text-decoration-color: currentColor;
+    color: color-mix(in srgb, var(--text-subtle-2) 92%, #4c5f7e);
   }
 
   .lecture-rail-item:not(.is-active):not(.is-past):not(.is-completed) .lecture-rail-copy:hover,
   .lecture-rail-item:not(.is-active):not(.is-past):not(.is-completed) .lecture-rail-copy:focus-visible {
-    color: var(--text-subtle-2);
+    color: color-mix(in srgb, var(--text-subtle-2) 92%, #4c5f7e);
   }
 
   .lecture-rail-copy:focus-visible {
-    outline: 2px solid color-mix(in srgb, var(--accent) 30%, transparent);
+    outline: 2px solid color-mix(in srgb, var(--accent) 34%, transparent);
     outline-offset: 2px;
-    border-radius: 4px;
+    border-radius: 8px;
   }
 
   .lecture-rail-item.is-active .lecture-rail-copy {
-    color: var(--text-strong);
-    font-weight: 600;
+    color: #27354d;
   }
 
   .lecture-rail-item.is-past .lecture-rail-copy,
   .lecture-rail-item.is-completed .lecture-rail-copy {
-    color: #4a5365;
-    font-weight: 600;
+    color: #28374f;
+  }
+
+  .lecture-rail-item.is-active .lecture-rail-copy-title,
+  .lecture-rail-item.is-past .lecture-rail-copy-title,
+  .lecture-rail-item.is-completed .lecture-rail-copy-title {
+    font-weight: 700;
+  }
+
+  .lecture-rail-item.is-active .lecture-rail-copy-date {
+    color: #3d4f68;
+  }
+
+  .lecture-rail-item.is-past .lecture-rail-copy-date,
+  .lecture-rail-item.is-completed .lecture-rail-copy-date {
+    color: #596f8c;
   }
 
   .active-lecture-card {
@@ -1225,28 +1273,28 @@
     }
 
     .lecture-rail-item {
-      min-height: 76px;
-      grid-template-columns: 34px;
+      min-height: 72px;
+      grid-template-columns: 20px;
       column-gap: 0;
       justify-content: center;
     }
 
     .lecture-rail-item::after {
-      top: 34px;
-      left: 16px;
+      top: 16px;
+      left: 9px;
       bottom: 0;
-      width: 3px;
-      background: #d6dce7;
+      width: 2px;
+      background: color-mix(in srgb, var(--border-strong) 80%, #d8cab2);
     }
 
     .lecture-rail-item.is-past::after,
     .lecture-rail-item.is-completed::after {
-      background: #be9358;
+      background: var(--accent);
     }
 
     .lecture-rail-item:last-child::after {
       display: block;
-      bottom: -40px;
+      bottom: -34px;
       opacity: 0.8;
     }
 
@@ -1256,23 +1304,21 @@
 
     .lecture-rail-link {
       box-shadow: none;
-      border-color: #a8b2c3;
-      background: transparent;
-      color: #374156;
-      font-weight: 600;
+      width: 16px;
+      height: 16px;
+      border-color: color-mix(in srgb, var(--border-strong) 92%, #c5b494);
+      background: color-mix(in srgb, var(--surface) 96%, #fff9ef);
     }
 
     .lecture-rail-item.is-past .lecture-rail-link,
     .lecture-rail-item.is-completed .lecture-rail-link {
-      border-color: #be9358;
-      background: #be9358;
-      color: #fff;
+      border-color: var(--accent);
+      background: var(--accent);
     }
 
     .lecture-rail-item.is-active .lecture-rail-link {
-      border-color: #be9358;
-      background: color-mix(in srgb, #be9358 16%, var(--surface));
-      color: #2c2316;
+      border-color: var(--accent);
+      background: color-mix(in srgb, var(--surface) 96%, #f6f9ff);
     }
 
     .active-lecture-card {
@@ -1717,7 +1763,15 @@
     {% if lecture_rail_items and active_lecture %}
     <div class="subject-path-tools">
       <button class="subject-path-toggle" type="button" data-subject-rail-toggle aria-controls="subject-lecture-rail" aria-expanded="true">
-        Skjul tidslinje
+        <span class="subject-path-toggle-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+            <path d="M2.9 12s3.5-6.4 9.1-6.4c2.4 0 4.4.8 6.1 2.1"></path>
+            <path d="M21.1 12s-3.5 6.4-9.1 6.4c-2.4 0-4.4-.8-6.1-2.1"></path>
+            <path d="M10.6 10.7a2 2 0 0 0 2.7 2.7"></path>
+            <path d="M3 3 21 21"></path>
+          </svg>
+        </span>
+        <span class="subject-path-toggle-label" data-subject-rail-toggle-label>Skjul tidslinje</span>
       </button>
     </div>
 
@@ -1737,7 +1791,10 @@
               href="{{ rail.lecture_url }}"
               aria-label="{{ rail.lecture_display_title|default:rail.lecture_key }}"
             >
-              {{ rail.rail_copy|default:rail.lecture_display_title }}
+              <span class="lecture-rail-copy-title">{{ rail.rail_copy|default:rail.lecture_display_title }}</span>
+              {% if rail.lecture_date %}
+              <span class="lecture-rail-copy-date">({{ rail.lecture_date }})</span>
+              {% endif %}
             </a>
           </li>
           {% endfor %}
@@ -2028,14 +2085,21 @@
     if (!(layout instanceof HTMLElement) || !(toggle instanceof HTMLButtonElement)) {
       return;
     }
+    const toggleLabel = toggle.querySelector("[data-subject-rail-toggle-label]");
 
     const compactViewport = window.matchMedia("(max-width: 1180px)");
 
     const applyCollapsedState = (collapsed) => {
       const shouldCollapse = collapsed && !compactViewport.matches;
+      const nextLabel = shouldCollapse ? "Vis tidslinje" : "Skjul tidslinje";
       layout.classList.toggle("is-rail-hidden", shouldCollapse);
       toggle.setAttribute("aria-expanded", shouldCollapse ? "false" : "true");
-      toggle.textContent = shouldCollapse ? "Vis tidslinje" : "Skjul tidslinje";
+      toggle.setAttribute("aria-label", nextLabel);
+      if (toggleLabel instanceof HTMLElement) {
+        toggleLabel.textContent = nextLabel;
+      } else {
+        toggle.textContent = nextLabel;
+      }
     };
 
     toggle.addEventListener("click", () => {

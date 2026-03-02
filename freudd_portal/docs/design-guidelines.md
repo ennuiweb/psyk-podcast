@@ -140,7 +140,7 @@ Motion rules:
 
 - Desktop: full header + full lecture rail labels + two-column learning layout.
 - Compact (`<=1024px`): global sticky header remains visible as logo-only; fixed bottom tabbar.
-- Mobile bottom tabbar labels are text-only (no icons/logos) for maximum clarity.
+- Mobile bottom tabbar uses compact monogram logos plus short labels in this order: `Mine fag`, `Quiz cup`, `Overblik`.
 - Bottom tabbar must never cover interactive content.
 - All layouts must avoid horizontal page scroll.
 

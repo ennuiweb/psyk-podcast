@@ -18,14 +18,19 @@ class ResponsiveTemplateRulesTests(SimpleTestCase):
         self.assertIn(".subject-mobile-topbar", body)
         self.assertNotIn("display: none !important;", body)
 
-    def test_base_mobile_navigation_uses_freudd_quiz_cup_overblik_and_subject_picker(self) -> None:
+    def test_base_mobile_navigation_uses_subjects_quiz_cup_and_overblik_order_with_logos(self) -> None:
         body = self._template_text("base.html")
         self.assertIn("data-mobile-nav", body)
         self.assertNotIn("data-header-menu-toggle", body)
         self.assertNotIn("data-header-menu-panel", body)
-        self.assertIn("<span>freudd quiz cup</span>", body)
-        self.assertIn("<span>Mit overblik</span>", body)
-        self.assertIn("<span>Mine fag</span>", body)
+        self.assertIn("<span class=\"mobile-tab-label\">Mine fag</span>", body)
+        self.assertIn("<span class=\"mobile-tab-label\">Quiz cup</span>", body)
+        self.assertIn("<span class=\"mobile-tab-label\">Overblik</span>", body)
+        self.assertIn("mobile-tab-logo--subjects", body)
+        self.assertIn("mobile-tab-logo--cup", body)
+        self.assertIn("mobile-tab-logo--overview", body)
+        self.assertLess(body.index(">Mine fag</span>"), body.index(">Quiz cup</span>"))
+        self.assertLess(body.index(">Quiz cup</span>"), body.index(">Overblik</span>"))
         self.assertIn("data-subject-menu-toggle", body)
         self.assertIn("data-subject-menu-list", body)
 

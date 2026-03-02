@@ -300,6 +300,20 @@ def _annotate_quiz_difficulty_slots_for_user(
     return enriched_slots
 
 
+def _visible_quiz_difficulty_slots(slots: object) -> list[dict[str, object]]:
+    if not isinstance(slots, list):
+        return []
+    visible: list[dict[str, object]] = []
+    for slot in slots:
+        if not isinstance(slot, dict):
+            continue
+        quiz_url = str(slot.get("quiz_url") or "").strip()
+        state_key = str(slot.get("state_key") or "not_started").strip().lower() or "not_started"
+        if quiz_url or state_key in {"in_progress", "completed"}:
+            visible.append(slot)
+    return visible
+
+
 def _leaderboard_tab_icon(subject_slug: str) -> str:
     slug = str(subject_slug or "").strip().lower()
     return LEADERBOARD_TAB_ICON_BY_SUBJECT.get(slug, "school")
@@ -1834,6 +1848,9 @@ def subject_detail_view(request: HttpRequest, subject_slug: str) -> HttpResponse
         active_lecture["quiz_difficulty_slots"] = _annotate_quiz_difficulty_slots_for_user(
             user=request.user,
             slots=_quiz_difficulty_slots(active_lecture.get("lecture_assets")),
+        )
+        active_lecture["quiz_difficulty_visible_slots"] = _visible_quiz_difficulty_slots(
+            active_lecture.get("quiz_difficulty_slots"),
         )
         active_lecture["podcast_rows"] = _flatten_podcast_rows(active_lecture)
         readings = active_lecture.get("readings") if isinstance(active_lecture.get("readings"), list) else []

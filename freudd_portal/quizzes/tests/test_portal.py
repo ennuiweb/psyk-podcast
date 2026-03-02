@@ -2020,6 +2020,36 @@ class QuizPortalTests(TestCase):
         self.assertContains(response, "I gang")
         self.assertNotContains(response, "rigtige •")
 
+    def test_subject_detail_quiz_mockup_shows_empty_activity_when_no_quizzes_are_available(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+
+        with patch(
+            "quizzes.views.get_subject_learning_path_snapshot",
+            return_value={
+                "lectures": [
+                    {
+                        "lecture_key": "W01L1",
+                        "lecture_title": "W01L1 Intro",
+                        "status": "active",
+                        "completed_quizzes": 0,
+                        "total_quizzes": 0,
+                        "lecture_assets": {
+                            "quizzes": [],
+                            "podcasts": [],
+                        },
+                        "readings": [],
+                    }
+                ],
+                "source_meta": {},
+            },
+        ):
+            response = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Ingen aktivitet registreret")
+        self.assertNotContains(response, "Let quiz")
+
     def test_subject_detail_shows_spotify_links_for_mapped_podcasts(self) -> None:
         user = self._create_user()
         self.client.force_login(user)

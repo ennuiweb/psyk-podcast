@@ -1,0 +1,265 @@
+{
+  "title": "Neuroscience Quiz",
+  "questions": [
+    {
+      "question": "If the Nernst equation predicts an equilibrium potential for $K^{+}$ of approximately $-80\\text{ mV}$, why do actual measured resting membrane potentials in neurons typically hover around $-65\\text{ mV}$?",
+      "answerOptions": [
+        {
+          "text": "The neuronal membrane is slightly permeable to other ions, such as $Na^{+}$, which have different equilibrium potentials.",
+          "isCorrect": true,
+          "rationale": "While the Nernst equation assumes permeability to only one ion, the Goldman equation accounts for the small amount of $Na^{+}$ leakage that pulls the potential toward a more positive value."
+        },
+        {
+          "text": "The sodium-potassium pump stops functioning once the cell reaches a potential of $-65\\text{ mV}$.",
+          "isCorrect": false,
+          "rationale": "This pump is an active transporter that requires constant energy to maintain ion gradients, regardless of reaching a specific voltage."
+        },
+        {
+          "text": "Large negatively charged proteins inside the cell are pushed out through selective channels.",
+          "isCorrect": false,
+          "rationale": "Organic anions are generally too large to leave the cell and remain inside, contributing to the negative internal charge."
+        },
+        {
+          "text": "Electrostatic pressure is insufficient to counteract the concentration gradient at $-80\\text{ mV}$.",
+          "isCorrect": false,
+          "rationale": "At $-80\\text{ mV}$, the electrostatic pressure would actually exactly balance the concentration gradient for $K^{+}$, according to the Nernst equation."
+        }
+      ],
+      "hint": "Consider the limitations of the Nernst equation compared to the Goldman equation."
+    },
+    {
+      "question": "In the study of ion channels, which variation of the patch clamp technique would be most effective for testing how a drug applied to the extracellular surface of a receptor affects its function?",
+      "answerOptions": [
+        {
+          "text": "Outside-out recording patch",
+          "isCorrect": true,
+          "rationale": "This configuration orients the extracellular domain of the membrane toward the surrounding bath, allowing for easy application of external ligands or drugs."
+        },
+        {
+          "text": "Inside-out recording patch",
+          "isCorrect": false,
+          "rationale": "This setup exposes the cytoplasmic (internal) side of the membrane to the bath, which is better for studying second-messenger effects."
+        },
+        {
+          "text": "Whole-cell recording",
+          "isCorrect": false,
+          "rationale": "This technique makes the pipette interior continuous with the entire cytoplasm rather than isolating a single patch of membrane."
+        },
+        {
+          "text": "Cell-attached recording",
+          "isCorrect": false,
+          "rationale": "This method leaves the membrane intact on the cell, making it difficult to manipulate the chemical environment of only the isolated channels."
+        }
+      ],
+      "hint": "Think about which part of the membrane needs to face the saline solution in the bath."
+    },
+    {
+      "question": "Which of the following describes the mechanism by which batrachotoxin, produced by South American poison arrow frogs, leads to lethal paralysis?",
+      "answerOptions": [
+        {
+          "text": "It forces voltage-gated $Na^{+}$ channels to remain open.",
+          "isCorrect": true,
+          "rationale": "By preventing $Na^{+}$ channels from closing, the toxin causes massive depolarization that prevents the cell from resetting and firing subsequent action potentials."
+        },
+        {
+          "text": "It selectively blocks the pore of voltage-gated $Na^{+}$ channels.",
+          "isCorrect": false,
+          "rationale": "This describes the action of tetrodotoxin ($TTX$) or saxitoxin ($STX$), rather than batrachotoxin."
+        },
+        {
+          "text": "It cleaves $SNARE$ proteins to prevent neurotransmitter release.",
+          "isCorrect": false,
+          "rationale": "This mechanism is characteristic of botulinum and tetanus toxins, which target the release machinery rather than ion channels."
+        },
+        {
+          "text": "It prevents the binding of acetylcholine to nicotinic receptors.",
+          "isCorrect": false,
+          "rationale": "This describes the action of curare or bungarotoxin, which are receptor antagonists."
+        }
+      ],
+      "hint": "Contrast this toxin's effect with the 'blocking' action of puffer fish venom."
+    },
+    {
+      "question": "During synaptic transmission, what is the specific role of synaptotagmin once $Ca^{2+}$ enters the presynaptic terminal?",
+      "answerOptions": [
+        {
+          "text": "It acts as a $Ca^{2+}$ sensor that triggers the final fusion of the vesicle membrane with the plasma membrane.",
+          "isCorrect": true,
+          "rationale": "Binding of $Ca^{2+}$ to synaptotagmin changes its conformation, allowing it to interact with $SNARE$ proteins to catalyze membrane fusion."
+        },
+        {
+          "text": "It functions as the primary $v-SNARE$ that anchors the vesicle to the terminal wall.",
+          "isCorrect": false,
+          "rationale": "Synaptobrevin is the primary $v-SNARE$; synaptotagmin is the specialized calcium sensor associated with it."
+        },
+        {
+          "text": "It actively pumps $Ca^{2+}$ back into the extracellular space to end the signal.",
+          "isCorrect": false,
+          "rationale": "The termination of the signal usually involves buffers or active $Ca^{2+}$ pumps, not the fusion-triggering proteins."
+        },
+        {
+          "text": "It provides the recognition site for neurotransmitters on the postsynaptic side.",
+          "isCorrect": false,
+          "rationale": "Synaptotagmin is a presynaptic protein involved in release, not a postsynaptic receptor."
+        }
+      ],
+      "hint": "Focus on the protein that translates a chemical ion signal into a physical membrane fusion event."
+    },
+    {
+      "question": "Otto Loewi's 1921 experiment using two frog hearts provided the first definitive evidence for which neurophysiological principle?",
+      "answerOptions": [
+        {
+          "text": "Chemical neurotransmission",
+          "isCorrect": true,
+          "rationale": "By showing that fluid from a stimulated heart could slow a second, unstimulated heart, Loewi proved that a chemical substance (ACh) was responsible for the effect."
+        },
+        {
+          "text": "Electrical saltatory conduction",
+          "isCorrect": false,
+          "rationale": "Saltatory conduction refers to the jumping of action potentials between nodes of Ranvier, which was not the focus of Loewi's 'fluid' experiment."
+        },
+        {
+          "text": "The all-or-none property of action potentials",
+          "isCorrect": false,
+          "rationale": "Loewi studied the communication between cells (synapses) rather than the internal mechanics of a single neuron's axon firing."
+        },
+        {
+          "text": "The spatial summation of $EPSPs$",
+          "isCorrect": false,
+          "rationale": "Summation involves the integration of multiple signals on a single neuron, whereas Loewi focused on the nature of the signal itself."
+        }
+      ],
+      "hint": "Consider the significance of the 'Vagusstoff' substance transferred between the heart chambers."
+    },
+    {
+      "question": "A researcher uses optogenetics to inhibit a specific population of neurons. Which tool and light combination should they choose to achieve hyperpolarization?",
+      "answerOptions": [
+        {
+          "text": "Halorhodopsin ($NpHR$) stimulated by yellow light.",
+          "isCorrect": true,
+          "rationale": "Halorhodopsin acts as a pump that moves $Cl^{-}$ ions into the cell when illuminated with yellow light, making the interior more negative."
+        },
+        {
+          "text": "Channelrhodopsin ($ChR2$) stimulated by blue light.",
+          "isCorrect": false,
+          "rationale": "Channelrhodopsin allows $Na^{+}$ ions to enter the cell, which causes depolarization and excitation, not inhibition."
+        },
+        {
+          "text": "Halorhodopsin ($NpHR$) stimulated by blue light.",
+          "isCorrect": false,
+          "rationale": "While $NpHR$ is inhibitory, it specifically responds to yellow light rather than blue light."
+        },
+        {
+          "text": "Channelrhodopsin ($ChR2$) stimulated by yellow light.",
+          "isCorrect": false,
+          "rationale": "Channelrhodopsin is an excitatory tool and is specifically activated by blue light frequencies."
+        }
+      ],
+      "hint": "Recall which opsin moves negative ions into the cell and the specific color of light that activates it."
+    },
+    {
+      "question": "What is the primary difference between a simple partial seizure and a complex partial seizure?",
+      "answerOptions": [
+        {
+          "text": "Simple partial seizures involve a loss of awareness without unusual muscle activity, while complex partial seizures produce varied symptoms and are often preceded by an aura.",
+          "isCorrect": true,
+          "rationale": "Simple partial seizures (absence attacks) are characterized by staring and loss of recall, whereas complex partial seizures are localized but can produce abnormal behaviors and sensory premonitions."
+        },
+        {
+          "text": "Simple partial seizures involve the whole brain, whereas complex partial seizures are restricted to one hemisphere.",
+          "isCorrect": false,
+          "rationale": "Simple partial (absence) attacks are actually a variant of generalized seizures involving the whole brain, whereas complex partial seizures do not involve the entire brain."
+        },
+        {
+          "text": "Simple partial seizures are characterized by rhythmic clonic contractions, while complex partial seizures involve only tonic contractions.",
+          "isCorrect": false,
+          "rationale": "Tonic-clonic (grand mal) seizures involve those specific muscle movements; simple partial seizures involve a cessation of activity."
+        },
+        {
+          "text": "Simple partial seizures are induced by kindling, while complex partial seizures are strictly genetic.",
+          "isCorrect": false,
+          "rationale": "Both types of seizures can have various causes, and kindling is an experimental model rather than a defining clinical category."
+        }
+      ],
+      "hint": "Look for the distinction in awareness and the presence of an 'aura'."
+    },
+    {
+      "question": "How does the structure of the human brain reflect the evolutionary 'cost' of maintaining rapid neural conduction without myelin?",
+      "answerOptions": [
+        {
+          "text": "Without myelin, the brain would need to be 10 times larger to maintain the same conduction velocities.",
+          "isCorrect": true,
+          "rationale": "The source material notes that unmyelinated axons would need to be 100 times larger in volume to match myelinated speeds, resulting in a significantly larger brain."
+        },
+        {
+          "text": "Invertebrates evolved giant axons to compensate for a lack of myelin, which humans have entirely replaced with small unmyelinated axons.",
+          "isCorrect": false,
+          "rationale": "Humans still have unmyelinated axons, but we rely on myelin for high-speed transmission in a compact space."
+        },
+        {
+          "text": "Myelin allows for convergence in the visual system, which would otherwise require more energy than the body can provide.",
+          "isCorrect": false,
+          "rationale": "While myelin is efficient, convergence is a property of circuit architecture rather than a direct consequence of insulation."
+        },
+        {
+          "text": "The brain uses saltatory conduction only in the brainstem to save space in the cerebral cortex.",
+          "isCorrect": false,
+          "rationale": "Saltatory conduction via myelinated axons occurs throughout the nervous system, including at least $10\\%$ of the human brain's volume."
+        }
+      ],
+      "hint": "Consider the relationship between axon diameter, myelin, and total tissue volume."
+    },
+    {
+      "question": "In the context of G protein-coupled receptors ($GPCRs$), what happens immediately after a transmitter molecule binds to the extracellular portion of the receptor?",
+      "answerOptions": [
+        {
+          "text": "The alpha subunit of the G protein complex dissociates from the beta and gamma subunits.",
+          "isCorrect": true,
+          "rationale": "Binding triggers the internal G protein subunits to separate, allowing them to migrate and interact with various intracellular targets."
+        },
+        {
+          "text": "The receptor opens a central pore to allow $Na^{+}$ and $K^{+}$ to flow down their gradients.",
+          "isCorrect": false,
+          "rationale": "This describes the action of ionotropic receptors; $GPCRs$ (metabotropic) act through intermediary proteins."
+        },
+        {
+          "text": "A second messenger like $cAMP$ binds to the extracellular surface to amplify the signal.",
+          "isCorrect": false,
+          "rationale": "Second messengers are internal chemicals activated by G proteins, not external ligands."
+        },
+        {
+          "text": "The entire receptor-transmitter complex is internalized into the cell via a varicosity.",
+          "isCorrect": false,
+          "rationale": "While receptors can be down-regulated, the immediate signaling step involves subunit dissociation, and varicosities are sites of release, not internalization."
+        }
+      ],
+      "hint": "Focus on the behavior of the internal protein subunits ($alpha, beta, gamma$)."
+    },
+    {
+      "question": "The knee-jerk reflex is remarkably fast, occurring in about $40\\text{ ms}$. Which of the following is NOT one of the three factors cited as contributing to this rapidity?",
+      "answerOptions": [
+        {
+          "text": "The use of slow, metabotropic synapses to prolong the motor response.",
+          "isCorrect": true,
+          "rationale": "The reflex actually relies on fast, ionotropic synapses; metabotropic synapses would be too slow for such a rapid response."
+        },
+        {
+          "text": "The large diameter and myelination of the sensory and motor axons.",
+          "isCorrect": false,
+          "rationale": "Large, myelinated axons conduct signals much faster, which is a key factor in the reflex's speed."
+        },
+        {
+          "text": "Sensory cells synapsing directly on motor neurons.",
+          "isCorrect": false,
+          "rationale": "A monosynaptic connection minimizes synaptic delay, contributing significantly to the speed of the reflex."
+        },
+        {
+          "text": "Fast, ionotropic synapses at both the central synapse and neuromuscular junction.",
+          "isCorrect": false,
+          "rationale": "The speed of chemical transmission at these sites is essential for the sub-$50\\text{ ms}$ response time."
+        }
+      ],
+      "hint": "Look for a factor that would logically slow down the signal rather than speed it up."
+    }
+  ]
+}

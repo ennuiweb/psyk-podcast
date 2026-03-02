@@ -1,0 +1,265 @@
+{
+  "title": "Neuroscience Quiz",
+  "questions": [
+    {
+      "question": "According to the neuron doctrine proposed by Santiago Ram\u00f3n y Cajal, what is the primary structural relationship between neurons?",
+      "answerOptions": [
+        {
+          "text": "Neurons are continuous with one another, forming an endless network of tubes.",
+          "isCorrect": false,
+          "rationale": "This describes the perspective of Camillo Golgi, which Cajal argued against."
+        },
+        {
+          "text": "Neurons are contiguous but separate, interacting across tiny gaps called synapses.",
+          "isCorrect": true,
+          "rationale": "Cajal's doctrine established that neurons are discrete cells that communicate across small spaces rather than being physically fused."
+        },
+        {
+          "text": "Neurons are physically fused at the cell body but separate at the axon terminals.",
+          "isCorrect": false,
+          "rationale": "This does not reflect the structural independence described in the neuron doctrine."
+        },
+        {
+          "text": "Information is transmitted between neurons through physical protein bridges connecting their cytoplasms.",
+          "isCorrect": false,
+          "rationale": "The doctrine specifically identifies independent structural and metabolic identities for each cell."
+        }
+      ],
+      "hint": "Focus on whether the cells are physically connected or just very close to each other."
+    },
+    {
+      "question": "In a unipolar neuron, where is the integration zone typically located?",
+      "answerOptions": [
+        {
+          "text": "Within the cell body (soma).",
+          "isCorrect": false,
+          "rationale": "In multipolar and bipolar cells, the cell body serves this function, but unipolar neurons are structured differently."
+        },
+        {
+          "text": "At the base of the dendritic branches where they meet the axon.",
+          "isCorrect": true,
+          "rationale": "Unlike other neuron types, the integration zone in unipolar neurons is found at the origin of the axonal process rather than the soma."
+        },
+        {
+          "text": "At the specialized swellings of the axon terminals.",
+          "isCorrect": false,
+          "rationale": "The axon terminals represent the output zone where information is transferred to other cells."
+        },
+        {
+          "text": "Evenly distributed along the entire length of the conduction zone.",
+          "isCorrect": false,
+          "rationale": "Integration is a specific event that occurs before the signal is propagated down the conduction zone."
+        }
+      ],
+      "hint": "Consider the unique anatomical arrangement of a single process extending from the cell body."
+    },
+    {
+      "question": "Which of the following measurements accurately represents the width of the synaptic cleft?",
+      "answerOptions": [
+        {
+          "text": "$100-200\\text{ nm}$",
+          "isCorrect": false,
+          "rationale": "This size is significantly larger than the actual gap found in a typical synapse."
+        },
+        {
+          "text": "$30-140\\text{ nm}$",
+          "isCorrect": false,
+          "rationale": "This range actually describes the diameter of synaptic vesicles, not the cleft itself."
+        },
+        {
+          "text": "$20-40\\text{ nm}$",
+          "isCorrect": true,
+          "rationale": "The source material specifies that the synaptic cleft is a gap of approximately this width separating the membranes."
+        },
+        {
+          "text": "$1-5\\text{ \\mu m}$",
+          "isCorrect": false,
+          "rationale": "Micrometers are much larger than the nanometer scale required to describe the synaptic gap."
+        }
+      ],
+      "hint": "The synaptic cleft is a very small fraction of the size of a synaptic terminal."
+    },
+    {
+      "question": "If a researcher wants to identify which specific neurons were active during a complex behavior immediately before an animal was euthanized, which technique would be most appropriate?",
+      "answerOptions": [
+        {
+          "text": "Nissl staining",
+          "isCorrect": false,
+          "rationale": "Nissl stains highlight all cell bodies by targeting RNA, providing information on density rather than activity."
+        },
+        {
+          "text": "Golgi staining",
+          "isCorrect": false,
+          "rationale": "Golgi stains reveal the full anatomy of only a small minority of neurons regardless of their activity level."
+        },
+        {
+          "text": "Immunohistochemistry for $c-fos$ protein",
+          "isCorrect": true,
+          "rationale": "$c-fos$ is an immediate early gene (IEG) expressed in cells that have been recently active, making it a marker for neural activation."
+        },
+        {
+          "text": "Anterograde tract tracing",
+          "isCorrect": false,
+          "rationale": "This technique identifies where neurons send their axons but does not indicate whether those neurons were recently firing."
+        }
+      ],
+      "hint": "Look for a method that targets the products of immediate early genes."
+    },
+    {
+      "question": "Based on the quantitative distribution of glial cells in the brain, which type is the most numerous?",
+      "answerOptions": [
+        {
+          "text": "Astrocytes",
+          "isCorrect": false,
+          "rationale": "While significant, astrocytes make up only about $17\\%$ of the brain's glial cells."
+        },
+        {
+          "text": "Microglial cells",
+          "isCorrect": false,
+          "rationale": "Microglia are the smallest portion of the glial population, accounting for about $7\\%$."
+        },
+        {
+          "text": "Oligodendrocytes",
+          "isCorrect": true,
+          "rationale": "Oligodendrocytes are the most abundant glia, representing more than $75\\%$ of the total glial population."
+        },
+        {
+          "text": "Schwann cells",
+          "isCorrect": false,
+          "rationale": "Schwann cells are located in the peripheral nervous system, while the majority of glia discussed in these percentages are in the brain."
+        }
+      ],
+      "hint": "Think about the percentage of glia dedicated to myelination in the central nervous system."
+    },
+    {
+      "question": "How does the 'fast' axonal transport system differ from the 'slow' system?",
+      "answerOptions": [
+        {
+          "text": "Fast transport moves electrical signals, while slow transport moves vesicles.",
+          "isCorrect": false,
+          "rationale": "Electrical signals move along the outside of the axon, while both fast and slow transport occur inside the axon."
+        },
+        {
+          "text": "Fast transport occurs at $200-400\\text{ mm}$ per day, while slow transport is less than $8\\text{ mm}$ per day.",
+          "isCorrect": true,
+          "rationale": "The source defines the fast system by its significantly higher rate of travel compared to the slow system."
+        },
+        {
+          "text": "Fast transport is exclusively retrograde, whereas slow transport is anterograde.",
+          "isCorrect": false,
+          "rationale": "Axonal transport can move materials in both directions regardless of the speed category."
+        },
+        {
+          "text": "Fast transport uses microtubules, while slow transport relies on direct cytoplasmic diffusion.",
+          "isCorrect": false,
+          "rationale": "The source material indicates that motor proteins 'walk' vesicles along microtubules, which is the mechanism for axonal transport."
+        }
+      ],
+      "hint": "Compare the daily travel distance in millimeters for each system."
+    },
+    {
+      "question": "The concept of a 'tripartite synapse' suggests that which glial cell directly participates in information transmission between neurons?",
+      "answerOptions": [
+        {
+          "text": "Microglial cells",
+          "isCorrect": false,
+          "rationale": "Microglia primarily handle damage control and debris removal, not direct synaptic signaling."
+        },
+        {
+          "text": "Oligodendrocytes",
+          "isCorrect": false,
+          "rationale": "These cells provide myelination and trophic support rather than active participation in individual synaptic events."
+        },
+        {
+          "text": "Astrocytes",
+          "isCorrect": true,
+          "rationale": "Astrocytes monitor synaptic activity and can participate in signaling, forming the third part of the 'tripartite synapse'."
+        },
+        {
+          "text": "Schwann cells",
+          "isCorrect": false,
+          "rationale": "Schwann cells provide insulation in the periphery and are not typically associated with the tripartite synapse model in the brain."
+        }
+      ],
+      "hint": "Identify the star-shaped cell that forms end feet on blood vessels and surrounds synapses."
+    },
+    {
+      "question": "What is the primary role of motor proteins in the context of neuronal function?",
+      "answerOptions": [
+        {
+          "text": "Integrating electrical signals at the axon hillock.",
+          "isCorrect": false,
+          "rationale": "Electrical integration is a process of the axonal membrane, not a function of motor proteins."
+        },
+        {
+          "text": "Physically transporting vesicles along microtubules within the axon.",
+          "isCorrect": true,
+          "rationale": "Motor proteins use 'leglike' structures to walk vesicles to and from the axon terminals."
+        },
+        {
+          "text": "Acting as receptors for neurotransmitters in the postsynaptic membrane.",
+          "isCorrect": false,
+          "rationale": "Postsynaptic receptors are specialized proteins that bind neurotransmitters, but they do not walk along microtubules."
+        },
+        {
+          "text": "Initiating the swelling response (edema) after a brain injury.",
+          "isCorrect": false,
+          "rationale": "Edema is a swelling of tissue often involving astrocytes, not the mechanical action of motor proteins."
+        }
+      ],
+      "hint": "Think about the 'walking' mechanism used for axonal transport."
+    },
+    {
+      "question": "In the somatic nervous system, which of the following is true regarding the cranial nerves?",
+      "answerOptions": [
+        {
+          "text": "They all exclusively carry sensory information from the body to the brain.",
+          "isCorrect": false,
+          "rationale": "Many cranial nerves have motor functions or are mixed, conveying both sensory and motor information."
+        },
+        {
+          "text": "There are twelve pairs that primarily serve the sensory and motor systems of the head and neck.",
+          "isCorrect": true,
+          "rationale": "The cranial nerves are a distinct group within the somatic nervous system that innervate the head and neck area."
+        },
+        {
+          "text": "They are part of the autonomic nervous system's control of internal organs.",
+          "isCorrect": false,
+          "rationale": "The source material categorizes cranial nerves under the somatic nervous system, not the autonomic division."
+        },
+        {
+          "text": "They emerge exclusively from the lumbar region of the spinal cord.",
+          "isCorrect": false,
+          "rationale": "Cranial nerves emerge from the brain, not the lumbar spinal cord."
+        }
+      ],
+      "hint": "Consider the number of pairs and the anatomical region they primarily serve."
+    },
+    {
+      "question": "Which histological method allows for 'transsynaptic' labeling, moving backward across synapses to reveal higher-level connections?",
+      "answerOptions": [
+        {
+          "text": "Retrograde tract tracing with pseudorabies virus",
+          "isCorrect": true,
+          "rationale": "Certain specialized tracers like the pseudorabies virus can jump backward across synapses to trace 'upstream' circuits."
+        },
+        {
+          "text": "Anterograde labeling using fabric dye derivatives",
+          "isCorrect": false,
+          "rationale": "Traditional dyes generally do not have the ability to cross synapses and move upstream."
+        },
+        {
+          "text": "In situ hybridization",
+          "isCorrect": false,
+          "rationale": "This technique labels cells based on gene expression (mRNA) rather than tracing axonal pathways across synapses."
+        },
+        {
+          "text": "Nissl staining for RNA density",
+          "isCorrect": false,
+          "rationale": "Nissl stains only outline cell bodies and do not trace pathways or cross synaptic gaps."
+        }
+      ],
+      "hint": "Identify a specialized type of retrograde labeling that uses a biological agent."
+    }
+  ]
+}

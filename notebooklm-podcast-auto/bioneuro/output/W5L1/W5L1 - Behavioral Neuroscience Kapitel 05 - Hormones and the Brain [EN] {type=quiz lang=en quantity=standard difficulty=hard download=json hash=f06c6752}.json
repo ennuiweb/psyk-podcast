@@ -1,0 +1,317 @@
+{
+  "title": "Hormone Quiz",
+  "questions": [
+    {
+      "question": "Mary Lou Jepsen's tumor led to a condition known as panhypopituitarism. Based on the source material, what is the most significant clinical implication of this specific condition?",
+      "answerOptions": [
+        {
+          "text": "The failure of the pituitary gland to produce a wide range of essential hormones.",
+          "isCorrect": true,
+          "rationale": "The prefix 'pan-' refers to all or everything, indicating that the entire range of hormones produced by the pituitary is deficient."
+        },
+        {
+          "text": "An overproduction of growth hormone resulting in gigantism.",
+          "isCorrect": false,
+          "rationale": "The material describes Mary Lou as lacking hormones crucial for survival, whereas overproduction describes hyperpituitarism."
+        },
+        {
+          "text": "The localized destruction of only the posterior pituitary while the anterior remains intact.",
+          "isCorrect": false,
+          "rationale": "Panhypopituitarism implies a global failure of the gland's functions, not just one specific lobe."
+        },
+        {
+          "text": "A temporary disruption of hormonal signaling that resolves after the tumor is removed.",
+          "isCorrect": false,
+          "rationale": "The source specifies that Mary Lou's pituitary was damaged beyond repair and she requires lifelong hormone replacement."
+        }
+      ],
+      "hint": "Focus on the meaning of the Greek prefix in the name of the condition."
+    },
+    {
+      "question": "In Berthold's $19^{th}$-century experiment with roosters, what would have likely occurred if he had waited until the castrated chicks reached adulthood before reimplanting the testes?",
+      "answerOptions": [
+        {
+          "text": "The roosters would display little to no change in their adult reproductive behavior or secondary sexual characteristics.",
+          "isCorrect": true,
+          "rationale": "The brain and body must be 'organized' by hormones early in life for these dramatic structural and behavioral effects to occur."
+        },
+        {
+          "text": "The roosters would immediately develop normal wattles and combs but remain non-aggressive.",
+          "isCorrect": false,
+          "rationale": "Organizational effects on physical structures like combs also require early developmental exposure to testosterone."
+        },
+        {
+          "text": "The roosters would develop normal behavior, but only for the duration that the testosterone levels remained exceptionally high.",
+          "isCorrect": false,
+          "rationale": "While 'activational' effects can occur in adults, they cannot retroactively organize the juvenile development that was missed."
+        },
+        {
+          "text": "The reimplanted testes would fail to secrete any testosterone due to the lack of juvenile neural innervation.",
+          "isCorrect": false,
+          "rationale": "Berthold's key finding was that the testes function independently of neural connections by releasing chemicals into the blood."
+        }
+      ],
+      "hint": "Consider the distinction between the 'organizational' and 'activational' effects of hormones."
+    },
+    {
+      "question": "A bolas spider releases a chemical that mimics a moth's sex pheromone to lure male moths. This is an example of which type of chemical communication?",
+      "answerOptions": [
+        {
+          "text": "Allomone communication",
+          "isCorrect": true,
+          "rationale": "Allomones are chemical signals released by one species to affect the behavior of individuals from a different species."
+        },
+        {
+          "text": "Pheromone communication",
+          "isCorrect": false,
+          "rationale": "Pheromones are specifically used for communication between members of the same species."
+        },
+        {
+          "text": "Paracrine communication",
+          "isCorrect": false,
+          "rationale": "Paracrine signals diffuse through the extracellular space to nearby target cells within the same individual."
+        },
+        {
+          "text": "Autocrine communication",
+          "isCorrect": false,
+          "rationale": "Autocrine signals affect the very cell that released them, acting as a feedback mechanism."
+        }
+      ],
+      "hint": "Think about whether the sender and the receiver of the signal belong to the same or different species."
+    },
+    {
+      "question": "Which of the following describes a 'reciprocal relationship' between hormones and behavior, as mentioned in the text?",
+      "answerOptions": [
+        {
+          "text": "A male's testosterone levels influence his aggressive behavior, and the outcome of that aggression further alters his testosterone levels.",
+          "isCorrect": true,
+          "rationale": "This illustrates that behavior and hormonal levels are not independent; they continuously influence and reinforce one another."
+        },
+        {
+          "text": "A hormone like insulin triggers a specific behavior, which then stops the production of that hormone once the goal is met.",
+          "isCorrect": false,
+          "rationale": "This describes a simple negative feedback loop rather than the complex social-biological reciprocity discussed in the text."
+        },
+        {
+          "text": "Two different hormones acting on the same target organ to produce opposite physiological effects.",
+          "isCorrect": false,
+          "rationale": "This is an example of hormonal interaction or antagonism, not the link between behavioral outcomes and somatic changes."
+        },
+        {
+          "text": "The brain sending electrical signals to the pituitary to release hormones in a one-way path.",
+          "isCorrect": false,
+          "rationale": "Reciprocity requires a bidirectional influence where the behavior also impacts the internal hormonal state."
+        }
+      ],
+      "hint": "Consider how the environment and the individual's actions might loop back to change their internal chemistry."
+    },
+    {
+      "question": "Which chemical class of hormones is characterized by being modified versions of a single amino acid?",
+      "answerOptions": [
+        {
+          "text": "Amine hormones",
+          "isCorrect": true,
+          "rationale": "Amine hormones, also called monoamine hormones, are derived from a single modified amino acid like thyroxine or melatonin."
+        },
+        {
+          "text": "Peptide hormones",
+          "isCorrect": false,
+          "rationale": "Peptide hormones consist of short strings or chains of multiple amino acids."
+        },
+        {
+          "text": "Steroid hormones",
+          "isCorrect": false,
+          "rationale": "Steroid hormones are derivatives of cholesterol and consist of four interconnected carbon rings."
+        },
+        {
+          "text": "Protein hormones",
+          "isCorrect": false,
+          "rationale": "Protein hormones are just longer strings of amino acids, falling into the peptide category."
+        }
+      ],
+      "hint": "These are sometimes referred to as 'monoamines'."
+    },
+    {
+      "question": "What is the primary role of a transcription factor in the context of steroid hormone action?",
+      "answerOptions": [
+        {
+          "text": "Binding to specific regions of DNA to regulate the expression of target genes.",
+          "isCorrect": true,
+          "rationale": "Steroid-receptor complexes act in the nucleus to increase or decrease the production of proteins by controlling gene expression."
+        },
+        {
+          "text": "Activating a second-messenger system like $cAMP$ on the cell membrane surface.",
+          "isCorrect": false,
+          "rationale": "Membrane-bound activation is typical of peptide and amine hormones, whereas steroids generally act within the nucleus."
+        },
+        {
+          "text": "Converting cholesterol into active steroid molecules within the mitochondria.",
+          "isCorrect": false,
+          "rationale": "This describes the synthesis of steroids rather than the mechanism by which they exert their effects on target cells."
+        },
+        {
+          "text": "Facilitating the rapid diffusion of steroids through the lipid bilayer of the cell membrane.",
+          "isCorrect": false,
+          "rationale": "Steroids diffuse easily due to their lipid solubility; transcription factors are involved in the subsequent nuclear response."
+        }
+      ],
+      "hint": "Think about the final destination and function of the steroid-receptor complex."
+    },
+    {
+      "question": "How do neuroendocrine cells differ from regular neurons regarding their output?",
+      "answerOptions": [
+        {
+          "text": "They receive synaptic signals from other neurons but secrete hormones into the bloodstream instead of a synaptic cleft.",
+          "isCorrect": true,
+          "rationale": "Neuroendocrine cells bridge the two systems by converting electrical (neural) signals into systemic (hormonal) messages."
+        },
+        {
+          "text": "They use only autocrine signaling to regulate their own internal circadian clocks.",
+          "isCorrect": false,
+          "rationale": "While they may have autocrine functions, their primary role is systemic signaling via the blood."
+        },
+        {
+          "text": "They lack axons and instead release neurotransmitters directly from the cell body into nearby tissues.",
+          "isCorrect": false,
+          "rationale": "Neuroendocrine cells typically release their products into the circulation to reach distant targets."
+        },
+        {
+          "text": "They function without action potentials, relying solely on graded potentials to release amines.",
+          "isCorrect": false,
+          "rationale": "The source material illustrates that neuroendocrine cells can fire action potentials to trigger hormone release."
+        }
+      ],
+      "hint": "Consider the 'interface' role these cells play between the nervous and endocrine systems."
+    },
+    {
+      "question": "In the signaling pathway of peptide hormones, what is the role of $IP_3$ and $DAG$?",
+      "answerOptions": [
+        {
+          "text": "They serve as second-messenger compounds within the target cell.",
+          "isCorrect": true,
+          "rationale": "Both inositol triphosphate ($IP_3$) and diacylglycerol ($DAG$) are common second messengers in the phospholipase $C$ pathway."
+        },
+        {
+          "text": "They are the extracellular ligands that bind to G protein-coupled receptors.",
+          "isCorrect": false,
+          "rationale": "Hormones themselves act as the extracellular ligands; $IP_3$ and $DAG$ work inside the cell."
+        },
+        {
+          "text": "They are the enzymes responsible for breaking down $cAMP$ to terminate a signal.",
+          "isCorrect": false,
+          "rationale": "These molecules propagate the signal as part of a messenger cascade rather than degrading other messengers."
+        },
+        {
+          "text": "They act as steroid receptor cofactors to facilitate DNA binding.",
+          "isCorrect": false,
+          "rationale": "Steroid cofactors are specific to intracellular steroid receptors, not the peptide hormone membrane pathways."
+        }
+      ],
+      "hint": "These compounds are part of the internal chemical cascade following receptor activation."
+    },
+    {
+      "question": "The discovery of 'nongenomic effects' of steroids like $estradiol$ challenges the classical model of steroid action because these effects:",
+      "answerOptions": [
+        {
+          "text": "Occur too rapidly to be explained by changes in gene expression and protein synthesis.",
+          "isCorrect": true,
+          "rationale": "Nongenomic effects involve membrane receptors and modulate neural excitability within seconds or minutes."
+        },
+        {
+          "text": "Require the hormone to be converted into a peptide before it can bind to a receptor.",
+          "isCorrect": false,
+          "rationale": "Steroids remain steroids, but they act on receptors other than the traditional nuclear transcription factors."
+        },
+        {
+          "text": "Depend entirely on the presence of pheromones in the external environment.",
+          "isCorrect": false,
+          "rationale": "Nongenomic effects are internal cellular mechanisms unrelated to inter-species or intra-species external signaling."
+        },
+        {
+          "text": "Can only be triggered by neurosteroids produced within the brain itself.",
+          "isCorrect": false,
+          "rationale": "While the brain makes neurosteroids, circulating steroids from glands can also trigger nongenomic membrane effects."
+        }
+      ],
+      "hint": "Think about the speed of the cellular response compared to traditional steroid mechanisms."
+    },
+    {
+      "question": "Why might two different cells containing the same type of steroid receptor respond differently to the same hormone?",
+      "answerOptions": [
+        {
+          "text": "The cells may produce different sets of steroid receptor cofactors.",
+          "isCorrect": true,
+          "rationale": "Cofactors are essential for the cell's specific response and can determine the nature of the target cell's reaction."
+        },
+        {
+          "text": "One cell might lack the G protein complex required to transport the steroid into the nucleus.",
+          "isCorrect": false,
+          "rationale": "Steroids diffuse passively and do not require G proteins for nuclear entry; G proteins are for membrane receptors."
+        },
+        {
+          "text": "The receptors in one cell may have been down-regulated by high levels of $cAMP$.",
+          "isCorrect": false,
+          "rationale": "Down-regulation usually refers to receptor count, not the qualitative difference in response between two receptor-positive cells."
+        },
+        {
+          "text": "Steroid hormones can only bind to receptors in cells that also have active synaptic transmission.",
+          "isCorrect": false,
+          "rationale": "Hormonal action is independent of the cell's current synaptic activity status, provided the receptor is present."
+        }
+      ],
+      "hint": "Look for a secondary protein that modulates the effect of the bound receptor."
+    },
+    {
+      "question": "Which research technique would be most appropriate for determining which specific brain regions have high densities of receptors for a steroid hormone like testosterone?",
+      "answerOptions": [
+        {
+          "text": "Autoradiography",
+          "isCorrect": true,
+          "rationale": "This technique uses radioactively labeled hormones to 'expose' film, revealing exactly where the hormone has accumulated in the tissue."
+        },
+        {
+          "text": "Radioimmunoassay (RIA)",
+          "isCorrect": false,
+          "rationale": "RIA is used to measure the total concentration of a hormone in a blood sample, not its anatomical location in the brain."
+        },
+        {
+          "text": "Knockout organism study",
+          "isCorrect": false,
+          "rationale": "Knockouts help determine the necessity of a gene/receptor for a behavior but do not map receptor density in the brain."
+        },
+        {
+          "text": "Infrared 3D imaging",
+          "isCorrect": false,
+          "rationale": "While mentioned as Mary Lou's current project, it provides high-resolution anatomical images but does not tag receptors."
+        }
+      ],
+      "hint": "Think about a method where the tissue 'takes its own picture' using radioactivity."
+    },
+    {
+      "question": "According to the principles of hormonal action, what is a primary limitation of hormone replacement therapy compared to natural secretion?",
+      "answerOptions": [
+        {
+          "text": "It is difficult to replicate the natural pulsatile and rhythmic patterns of hormone release.",
+          "isCorrect": true,
+          "rationale": "Natural hormone levels vary throughout the day and are often secreted in bursts, which manual dosing cannot perfectly mirror."
+        },
+        {
+          "text": "Synthetic hormones cannot bind to the same receptors as naturally produced ones.",
+          "isCorrect": false,
+          "rationale": "Pharmacies provide hormones that are chemically identical or similar enough to successfully bind to target receptors."
+        },
+        {
+          "text": "Therapy can only provide steroid hormones, while the pituitary only produces peptides.",
+          "isCorrect": false,
+          "rationale": "Therapy can replace various classes, including peptides like those missing in Mary Lou's case."
+        },
+        {
+          "text": "Replacing hormones prevents the brain from ever developing new receptors.",
+          "isCorrect": false,
+          "rationale": "The brain can still up-regulate or down-regulate receptors regardless of whether the hormone is natural or synthetic."
+        }
+      ],
+      "hint": "Consider the timing and frequency of how hormones are naturally released in the body."
+    }
+  ]
+}

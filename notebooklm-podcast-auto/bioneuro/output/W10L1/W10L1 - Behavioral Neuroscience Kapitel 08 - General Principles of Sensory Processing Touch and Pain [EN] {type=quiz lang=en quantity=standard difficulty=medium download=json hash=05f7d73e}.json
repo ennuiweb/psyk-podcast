@@ -1,0 +1,395 @@
+{
+  "title": "Sensory Quiz",
+  "questions": [
+    {
+      "question": "The case of Ashlyn B., who was born with an inability to feel pain, demonstrates that pain serves what primary evolutionary function?",
+      "answerOptions": [
+        {
+          "text": "It acts as a warning system to prevent serious physical injury or death.",
+          "isCorrect": true,
+          "rationale": "Pain provides immediate feedback that discourages harmful behaviors and alerts the individual to damage that requires attention."
+        },
+        {
+          "text": "It facilitates the development of reflexive movements like the withdrawal reflex.",
+          "isCorrect": false,
+          "rationale": "While reflexes are related, Ashlyn still has reflexes; the danger lies in the lack of conscious agony that prevents repeated or sustained injury."
+        },
+        {
+          "text": "It is a prerequisite for the development of the primary somatosensory cortex.",
+          "isCorrect": false,
+          "rationale": "The cortex still develops and maps the body; the deficit is in the specific processing or detection of nociceptive signals."
+        },
+        {
+          "text": "It ensures that the body maintains a constant state of homeostasis through hormonal regulation.",
+          "isCorrect": false,
+          "rationale": "Homeostasis involves many systems, but the specific role of pain is related to external and internal damage awareness rather than general hormonal balance."
+        }
+      ],
+      "hint": "Consider why Ashlyn's mother had to wrap her hands and why reaching into boiling water was so perilous for her."
+    },
+    {
+      "question": "Which of the following best defines the concept of an 'adequate stimulus'?",
+      "answerOptions": [
+        {
+          "text": "The minimum intensity of energy required to trigger a single action potential in a receptor.",
+          "isCorrect": false,
+          "rationale": "This describes the sensory threshold rather than the specific type of energy the organ is designed to detect."
+        },
+        {
+          "text": "The type of energy for which a specific sensory organ has evolved to be particularly sensitive.",
+          "isCorrect": true,
+          "rationale": "An adequate stimulus is the specific modality, such as light for the eye, that the organ is specialized to process."
+        },
+        {
+          "text": "The maximum amount of stimulation a receptor can handle before reaching its firing limit.",
+          "isCorrect": false,
+          "rationale": "This refers to the saturation point of a neuron's firing rate, not the nature of the stimulus itself."
+        },
+        {
+          "text": "Any form of energy that can produce a phosphene or illusory sensation in a sensory system.",
+          "isCorrect": false,
+          "rationale": "Phosphenes result from non-adequate stimuli, such as pressure on the eye, which is not the energy the eye is adapted for."
+        }
+      ],
+      "hint": "Think about the specific relationship between a biological 'filter' and the environmental event it is 'tuned' to receive."
+    },
+    {
+      "question": "How does the brain distinguish between different sensory modalities, such as touch and sound, despite all signals being transmitted via action potentials?",
+      "answerOptions": [
+        {
+          "text": "Through the doctrine of specific nerve energies, where each nerve uses a unique form of electrical charge.",
+          "isCorrect": false,
+          "rationale": "While Johannes M\u00fcller proposed this, we now know all action potentials are essentially the same type of energy."
+        },
+        {
+          "text": "By utilizing labeled lines, where specific nerve tracts are dedicated to specific sensory experiences.",
+          "isCorrect": true,
+          "rationale": "The brain recognizes modalities based on which neural pathway the signal arrives from, as each line is 'labeled' for a distinct sense."
+        },
+        {
+          "text": "By varying the amplitude of the action potentials based on the sensory organ of origin.",
+          "isCorrect": false,
+          "rationale": "Action potentials are 'all-or-none' and do not vary in amplitude to encode different modalities."
+        },
+        {
+          "text": "By measuring the speed of conduction, which is unique for every sensory system.",
+          "isCorrect": false,
+          "rationale": "While conduction speeds vary, the primary method for modality identification is the anatomical destination of the pathway."
+        }
+      ],
+      "hint": "Recall the experiment where pressing on your eyelid causes you to see a blob because the brain interprets all signals from that 'line' as visual."
+    },
+    {
+      "question": "During sensory transduction, what is the immediate result of a stimulus hitting a receptor cell?",
+      "answerOptions": [
+        {
+          "text": "A change in the electrical potential across the receptor cell membrane.",
+          "isCorrect": true,
+          "rationale": "Sensory transduction is the process of converting environmental energy into a change in membrane potential, known as a receptor potential."
+        },
+        {
+          "text": "The immediate release of neurotransmitters into the primary sensory cortex.",
+          "isCorrect": false,
+          "rationale": "Processing is hierarchical; the signal must first travel through several relay stations before reaching the cortex."
+        },
+        {
+          "text": "A permanent structural modification of the mechanically gated ion channels.",
+          "isCorrect": false,
+          "rationale": "Ion channels open and close dynamically in response to stimuli; they are not permanently altered."
+        },
+        {
+          "text": "The conversion of action potentials into mechanical vibration within the dermis.",
+          "isCorrect": false,
+          "rationale": "Transduction is the conversion of external energy *into* neural signals, not the reverse."
+        }
+      ],
+      "hint": "Think of the receptor as a 'transducer' like a microphone that converts sound into electricity."
+    },
+    {
+      "question": "The Pacinian corpuscle is a specialized skin receptor primarily responsible for detecting which type of stimulus?",
+      "answerOptions": [
+        {
+          "text": "Sustained skin stretch.",
+          "isCorrect": false,
+          "rationale": "Skin stretch is typically detected by Ruffini's endings, not Pacinian corpuscles."
+        },
+        {
+          "text": "Vibration and pressure.",
+          "isCorrect": true,
+          "rationale": "The onion-like structure of the Pacinian corpuscle allows it to respond specifically to mechanical vibration and pressure."
+        },
+        {
+          "text": "Fine touch and detailed textures.",
+          "isCorrect": false,
+          "rationale": "Merkel's discs and Meissner's corpuscles are more specialized for fine touch and light contact."
+        },
+        {
+          "text": "Changes in temperature and painful stimuli.",
+          "isCorrect": false,
+          "rationale": "These modalities are generally handled by free nerve endings rather than encapsulated corpuscles."
+        }
+      ],
+      "hint": "Consider the mechanical structure of this receptor, which resembles a tiny onion."
+    },
+    {
+      "question": "In the context of sensory coding, 'range fractionation' allows the nervous system to perform which of the following tasks?",
+      "answerOptions": [
+        {
+          "text": "Accurately locate a stimulus by comparing inputs from bilateral receptor systems.",
+          "isCorrect": false,
+          "rationale": "Spatial location is handled by comparing timing or intensity between sides, whereas range fractionation handles intensity levels."
+        },
+        {
+          "text": "Detect a wide range of stimulus intensities by using a group of neurons with different thresholds.",
+          "isCorrect": true,
+          "rationale": "By having neurons that specialize in 'fractions' of the intensity scale, the system can encode much higher intensities than a single neuron could alone."
+        },
+        {
+          "text": "Filter out constant background noise to focus on changing stimuli.",
+          "isCorrect": false,
+          "rationale": "This describes sensory adaptation, not the encoding of intensity through multiple neurons."
+        },
+        {
+          "text": "Divide a single modality into multiple sub-modalities like heat and cold.",
+          "isCorrect": false,
+          "rationale": "Sub-modalities are handled by distinct labeled lines/receptors, not by dividing an intensity scale among similar neurons."
+        }
+      ],
+      "hint": "Think about how multiple low-, medium-, and high-threshold neurons can work together to indicate how strong a signal is."
+    },
+    {
+      "question": "A sensory receptor that continues to fire action potentials at a steady rate as long as a stimulus is maintained is classified as a:",
+      "answerOptions": [
+        {
+          "text": "Phasic receptor.",
+          "isCorrect": false,
+          "rationale": "Phasic receptors show rapid adaptation, decreasing their firing rate quickly even if the stimulus continues."
+        },
+        {
+          "text": "Tonic receptor.",
+          "isCorrect": true,
+          "rationale": "Tonic receptors show little to no adaptation, providing a continuous signal for the duration of the stimulus."
+        },
+        {
+          "text": "Polymodal receptor.",
+          "isCorrect": false,
+          "rationale": "Polymodal refers to a receptor that responds to multiple types of energy, not its adaptation rate."
+        },
+        {
+          "text": "High-threshold receptor.",
+          "isCorrect": false,
+          "rationale": "This term refers to the intensity required to trigger the neuron, not the duration of its response."
+        }
+      ],
+      "hint": "Focus on whether the receptor 'adapts' to the stimulus or keeps 'noting' its presence continuously."
+    },
+    {
+      "question": "Top-down processing in sensory systems is best exemplified by which of the following mechanisms?",
+      "answerOptions": [
+        {
+          "text": "The spinal cord initiating a reflex arc to move a hand away from a hot stove.",
+          "isCorrect": false,
+          "rationale": "Reflex arcs are primarily bottom-up/local processes within the spinal cord that do not require higher brain centers."
+        },
+        {
+          "text": "The brain sending signals to the spinal cord to inhibit incoming pain information.",
+          "isCorrect": true,
+          "rationale": "This is a classic example of higher cortical or subcortical regions modulating the activity of lower sensory stations."
+        },
+        {
+          "text": "The Pacinian corpuscle's mechanical structure filtering out slow-moving vibrations.",
+          "isCorrect": false,
+          "rationale": "This is a non-neural peripheral filter, which is part of the initial bottom-up detection process."
+        },
+        {
+          "text": "The automatic recruitment of high-threshold neurons when stimulus intensity increases.",
+          "isCorrect": false,
+          "rationale": "This is an intrinsic property of sensory coding at the receptor level, not a descending control from the brain."
+        }
+      ],
+      "hint": "Look for an example where a 'higher' brain region controls or influences 'lower' sensory inputs."
+    },
+    {
+      "question": "Which brain region acts as the central relay station for most sensory information before it reaches the cerebral cortex?",
+      "answerOptions": [
+        {
+          "text": "Hypothalamus.",
+          "isCorrect": false,
+          "rationale": "The hypothalamus is primarily involved in hormonal regulation and homeostasis, not sensory relay."
+        },
+        {
+          "text": "Thalamus.",
+          "isCorrect": true,
+          "rationale": "For almost all senses (except smell), information passes through specific divisions of the thalamus before reaching the cortex."
+        },
+        {
+          "text": "Basal ganglia.",
+          "isCorrect": false,
+          "rationale": "The basal ganglia are primarily associated with motor control and habit formation."
+        },
+        {
+          "text": "Cerebellum.",
+          "isCorrect": false,
+          "rationale": "The cerebellum is mostly involved in coordination and motor learning."
+        }
+      ],
+      "hint": "This structure is often described as the 'gateway' to the cortex."
+    },
+    {
+      "question": "What anatomical feature describes the region of space where a stimulus will alter a specific sensory neuron's firing rate?",
+      "answerOptions": [
+        {
+          "text": "Labeled line.",
+          "isCorrect": false,
+          "rationale": "A labeled line is the pathway itself, whereas the spatial area of sensitivity is a different concept."
+        },
+        {
+          "text": "Receptive field.",
+          "isCorrect": true,
+          "rationale": "A receptive field is the specific patch of skin (for touch) or region of space (for vision) that a neuron monitors."
+        },
+        {
+          "text": "Dorsal root ganglion.",
+          "isCorrect": false,
+          "rationale": "The dorsal root ganglion is a cluster of cell bodies for sensory neurons, not a spatial region of sensitivity."
+        },
+        {
+          "text": "Postcentral gyrus.",
+          "isCorrect": false,
+          "rationale": "The postcentral gyrus is the location of the primary somatosensory cortex, not the definition of an individual neuron's stimulus region."
+        }
+      ],
+      "hint": "Think about the 'patch' of skin you must touch to get a specific brain cell to fire."
+    },
+    {
+      "question": "Primary somatosensory cortex ($S1$) is located in which specific part of the brain?",
+      "answerOptions": [
+        {
+          "text": "Precentral gyrus of the frontal lobe.",
+          "isCorrect": false,
+          "rationale": "The precentral gyrus is the location of the primary motor cortex."
+        },
+        {
+          "text": "Postcentral gyrus of the parietal lobe.",
+          "isCorrect": true,
+          "rationale": "The $S1$ is located just behind the central sulcus in the postcentral gyrus."
+        },
+        {
+          "text": "Superior temporal gyrus.",
+          "isCorrect": false,
+          "rationale": "This area is primarily associated with the primary auditory cortex."
+        },
+        {
+          "text": "Occipital lobe near the calcarine sulcus.",
+          "isCorrect": false,
+          "rationale": "This region contains the primary visual cortex."
+        }
+      ],
+      "hint": "Look for a location just posterior to the central sulcus."
+    },
+    {
+      "question": "Why are the hands and lips represented by much larger areas in the somatosensory homunculus compared to the back or legs?",
+      "answerOptions": [
+        {
+          "text": "Hands and lips have a higher density of sensory receptors.",
+          "isCorrect": true,
+          "rationale": "Cortical allocation is proportional to the density of innervation; more sensitive areas require more neural 'real estate' to process detailed information."
+        },
+        {
+          "text": "Hands and lips are physically larger in terms of total surface area.",
+          "isCorrect": false,
+          "rationale": "The back has a much larger physical surface area, but it is represented by a much smaller cortical area."
+        },
+        {
+          "text": "The receptors in the hands and lips have larger receptive fields.",
+          "isCorrect": false,
+          "rationale": "Sensitive areas actually have smaller, more precise receptive fields to allow for higher resolution."
+        },
+        {
+          "text": "These areas are closer to the brainstem, reducing signal travel time.",
+          "isCorrect": false,
+          "rationale": "Distance from the brain does not determine the size of cortical representation; receptor density does."
+        }
+      ],
+      "hint": "Consider the relationship between 'sensitivity' and the amount of 'processing power' required by the brain."
+    },
+    {
+      "question": "Which of the following cortical regions is specifically implicated in the emotional and discomforting aspects of pain and plays a role in attention?",
+      "answerOptions": [
+        {
+          "text": "Secondary somatosensory cortex ($S2$).",
+          "isCorrect": false,
+          "rationale": "While $S2$ processes touch and pain, it is not the primary region associated with the emotional 'distress' of pain."
+        },
+        {
+          "text": "Cingulate cortex.",
+          "isCorrect": true,
+          "rationale": "The anterior cingulate cortex is known to mediate the emotional aspect of pain and is active during tasks requiring focused attention."
+        },
+        {
+          "text": "Postcentral sulcus.",
+          "isCorrect": false,
+          "rationale": "This is an anatomical landmark near $S1$, not a region specialized for emotional processing."
+        },
+        {
+          "text": "Occipital cortex.",
+          "isCorrect": false,
+          "rationale": "The occipital cortex is dedicated to visual processing."
+        }
+      ],
+      "hint": "Think of a region located just above the corpus callosum."
+    },
+    {
+      "question": "Johannes M\u00fcller's 'doctrine of specific nerve energies' was technically incorrect because:",
+      "answerOptions": [
+        {
+          "text": "He believed different senses used different types of electrical energy.",
+          "isCorrect": true,
+          "rationale": "M\u00fcller hypothesized that different nerves used different 'energies,' but we now know they all use the same type: action potentials."
+        },
+        {
+          "text": "He failed to realize that the brain treats all sensory inputs identically.",
+          "isCorrect": false,
+          "rationale": "The brain does *not* treat them identically; it distinguishes them via labeled lines, which M\u00fcller's theory actually paved the way for."
+        },
+        {
+          "text": "He argued that sensory perception happened in the receptors rather than the brain.",
+          "isCorrect": false,
+          "rationale": "M\u00fcller understood that the brain was the site of analysis, but he was wrong about the transmission mechanism."
+        },
+        {
+          "text": "He thought that receptors could only respond to one specific intensity of stimulus.",
+          "isCorrect": false,
+          "rationale": "His doctrine was about the *modality* of the sense, not the intensity coding."
+        }
+      ],
+      "hint": "Focus on what he thought was moving through the 'tubes' of the nerves."
+    },
+    {
+      "question": "The auditory sensitivity of humans is limited to a range of approximately:",
+      "answerOptions": [
+        {
+          "text": "$10$ to $100,000$ $Hz$.",
+          "isCorrect": false,
+          "rationale": "This range exceeds human capabilities, especially at the higher frequencies where cats and bats operate."
+        },
+        {
+          "text": "$20$ to $20,000$ $Hz$.",
+          "isCorrect": true,
+          "rationale": "This is the standard range of human hearing; frequencies above this are considered ultrasonic."
+        },
+        {
+          "text": "$1,000$ to $50,000$ $Hz$.",
+          "isCorrect": false,
+          "rationale": "While $1,000$ is well within range, humans cannot hear up to $50,000$ $Hz$."
+        },
+        {
+          "text": "Less than $10$ $Hz$.",
+          "isCorrect": false,
+          "rationale": "Frequencies this low are infrasound, which are typically below the human threshold of hearing."
+        }
+      ],
+      "hint": "Recall the frequency limit that defines 'ultrasonic' for humans."
+    }
+  ]
+}

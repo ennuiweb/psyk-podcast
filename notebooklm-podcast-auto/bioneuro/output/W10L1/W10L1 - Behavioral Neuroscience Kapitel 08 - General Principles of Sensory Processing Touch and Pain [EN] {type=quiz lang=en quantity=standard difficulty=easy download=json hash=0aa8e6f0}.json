@@ -1,0 +1,317 @@
+{
+  "title": "Sensation Quiz",
+  "questions": [
+    {
+      "question": "What is the term for the specific type of stimulus for which a given sensory organ is particularly adapted to detect?",
+      "answerOptions": [
+        {
+          "text": "Adequate stimulus",
+          "isCorrect": true,
+          "rationale": "This concept refers to the unique form of energy, such as light for the eye, that a receptor is biologically tuned to respond to."
+        },
+        {
+          "text": "Specific nerve energy",
+          "isCorrect": false,
+          "rationale": "This older doctrine proposed that different senses used different types of energy, rather than referring to the stimulus itself."
+        },
+        {
+          "text": "Receptor potential",
+          "isCorrect": false,
+          "rationale": "A receptor potential is the electrical change within the cell following stimulation, not the external stimulus itself."
+        },
+        {
+          "text": "Photic energy",
+          "isCorrect": false,
+          "rationale": "While photic energy is an example of a stimulus, it is specific to the visual system and not the general term for all adapted stimuli."
+        }
+      ],
+      "hint": "Think about the most 'suitable' or 'sufficient' input for a specific organ."
+    },
+    {
+      "question": "How does the brain recognize different sensory modalities, like touch and sound, if all sensory information is transmitted via identical action potentials?",
+      "answerOptions": [
+        {
+          "text": "Labeled lines",
+          "isCorrect": true,
+          "rationale": "The brain identifies modalities based on the specific neural pathways or 'lines' the signals travel through, as each line is dedicated to a specific sense."
+        },
+        {
+          "text": "Range fractionation",
+          "isCorrect": false,
+          "rationale": "Range fractionation is a method for encoding stimulus intensity, not for distinguishing between different types of senses."
+        },
+        {
+          "text": "Sensory adaptation",
+          "isCorrect": false,
+          "rationale": "Adaptation describes the decrease in receptor response over time, which does not help the brain distinguish between modalities."
+        },
+        {
+          "text": "Transduction frequency",
+          "isCorrect": false,
+          "rationale": "While frequency can encode intensity, the brain relies on the anatomy of the pathway rather than the speed of firing to identify the modality."
+        }
+      ],
+      "hint": "Consider the anatomical concept of dedicated 'tracks' for different types of information."
+    },
+    {
+      "question": "Which skin receptor is uniquely structured with concentric layers of tissue, resembling a tiny onion, to detect vibration?",
+      "answerOptions": [
+        {
+          "text": "Pacinian corpuscle",
+          "isCorrect": true,
+          "rationale": "Also known as the lamellated corpuscle, its onion-like structure allows it to filter mechanical stimuli and specifically detect vibration."
+        },
+        {
+          "text": "Meissner's corpuscle",
+          "isCorrect": false,
+          "rationale": "While this is a skin receptor, it is specialized for light touch rather than the deep vibration detected by the Pacinian corpuscle."
+        },
+        {
+          "text": "Merkel's disc",
+          "isCorrect": false,
+          "rationale": "Merkel's discs are primarily involved in fine touch and do not possess the layered tissue structure of vibration receptors."
+        },
+        {
+          "text": "Ruffini's ending",
+          "isCorrect": false,
+          "rationale": "Ruffini's endings are specialized for detecting skin stretch, which is a different mechanical modality than vibration."
+        }
+      ],
+      "hint": "This receptor is named after an Italian anatomist and is also known as a lamellated corpuscle."
+    },
+    {
+      "question": "What process is occurring when a sensory neuron's firing rate drops rapidly even though the stimulus is still being applied at a constant level?",
+      "answerOptions": [
+        {
+          "text": "Adaptation",
+          "isCorrect": true,
+          "rationale": "Sensory adaptation is the progressive loss of receptor sensitivity during maintained stimulation, allowing the system to focus on new changes."
+        },
+        {
+          "text": "Coding",
+          "isCorrect": false,
+          "rationale": "Coding refers to the translation of stimulus features into neural patterns, rather than the loss of sensitivity over time."
+        },
+        {
+          "text": "Transduction",
+          "isCorrect": false,
+          "rationale": "Transduction is the initial conversion of physical energy into electrical signals, occurring at the start of stimulation."
+        },
+        {
+          "text": "Suppression",
+          "isCorrect": false,
+          "rationale": "While both reduce response, suppression usually refers to active mechanisms like closing eyelids or top-down inhibition, rather than a shift in receptor sensitivity."
+        }
+      ],
+      "hint": "This process helps the nervous system avoid being overwhelmed by 'old news' from the environment."
+    },
+    {
+      "question": "In the somatosensory system, what describes the area of the skin where a stimulus will trigger a change in the firing rate of a specific neuron?",
+      "answerOptions": [
+        {
+          "text": "Receptive field",
+          "isCorrect": true,
+          "rationale": "A receptive field is the specific spatial region and set of stimulus features that influence a particular sensory cell's activity."
+        },
+        {
+          "text": "Sensory pathway",
+          "isCorrect": false,
+          "rationale": "The pathway refers to the chain of neural connections from the periphery to the brain, not the physical area on the skin."
+        },
+        {
+          "text": "Somatotopic map",
+          "isCorrect": false,
+          "rationale": "A map refers to the organizational arrangement of these fields in the brain, rather than the field of a single neuron."
+        },
+        {
+          "text": "Postcentral gyrus",
+          "isCorrect": false,
+          "rationale": "The postcentral gyrus is the anatomical location of the primary somatosensory cortex, not the stimulus region itself."
+        }
+      ],
+      "hint": "This term defines the 'territory' on the body that a single neuron is responsible for monitoring."
+    },
+    {
+      "question": "Which phenomenon allows the nervous system to perceive intensities far greater than a single neuron's maximum firing rate of approximately $1200$ action potentials per second?",
+      "answerOptions": [
+        {
+          "text": "Range fractionation",
+          "isCorrect": true,
+          "rationale": "By using multiple neurons with different thresholds, the system can distribute a wide range of intensities across an entire population of cells."
+        },
+        {
+          "text": "Tonic reception",
+          "isCorrect": false,
+          "rationale": "Tonic receptors relate to how long a signal lasts, not the total range of intensities a system can detect."
+        },
+        {
+          "text": "Phasic reception",
+          "isCorrect": false,
+          "rationale": "Phasic receptors are specialized for adaptation to change, rather than extending the intensity detection range."
+        },
+        {
+          "text": "Labeled lines",
+          "isCorrect": false,
+          "rationale": "Labeled lines tell the brain 'what' is being felt, while range fractionation tells the brain 'how much' of it is present."
+        }
+      ],
+      "hint": "This strategy involves 'recruiting' different specialist neurons for low, medium, and high intensity levels."
+    },
+    {
+      "question": "Where is the primary somatosensory cortex ($S1$) located in the human brain?",
+      "answerOptions": [
+        {
+          "text": "Postcentral gyrus",
+          "isCorrect": true,
+          "rationale": "Located in the parietal lobe just behind the central sulcus, the postcentral gyrus contains the map of body sensations."
+        },
+        {
+          "text": "Precentral gyrus",
+          "isCorrect": false,
+          "rationale": "The precentral gyrus is primarily associated with motor control rather than sensory processing."
+        },
+        {
+          "text": "Posterior parietal lobe",
+          "isCorrect": false,
+          "rationale": "While the posterior parietal lobe is involved in sensory attention, it is not the site of the primary sensory map."
+        },
+        {
+          "text": "Cingulate cortex",
+          "isCorrect": false,
+          "rationale": "The cingulate cortex is involved in the emotional and attentional aspects of pain, rather than the primary mapping of touch."
+        }
+      ],
+      "hint": "Look for a specific fold of the cerebral cortex located just posterior to the central sulcus."
+    },
+    {
+      "question": "Based on the story of Ashlyn B. in the text, what is the most significant consequence of the inability to feel pain?",
+      "answerOptions": [
+        {
+          "text": "High risk of severe unnoticed injury",
+          "isCorrect": true,
+          "rationale": "Pain acts as a crucial warning system; without it, individuals may inadvertently cause themselves damage that leads to disability or death."
+        },
+        {
+          "text": "Inability to feel any tactile contact",
+          "isCorrect": false,
+          "rationale": "The text notes Ashlyn could be damaged just like anyone else, but it implies her touch system (the 'what' and 'where') might still function while the 'pain' aspect does not."
+        },
+        {
+          "text": "Increased sensory adaptation",
+          "isCorrect": false,
+          "rationale": "Adaptation is a normal process and is not the primary danger associated with the medical condition of congenital insensitivity to pain."
+        },
+        {
+          "text": "Failure of the thalamus to relay signals",
+          "isCorrect": false,
+          "rationale": "The case describes a specific failure to perceive pain, which does not necessarily mean the entire thalamic relay system is non-functional."
+        }
+      ],
+      "hint": "Consider the biological purpose of pain as a survival mechanism."
+    },
+    {
+      "question": "Which brain region is heavily involved in the top-down processing of sensory attention and is activated when a person expects a stimulus?",
+      "answerOptions": [
+        {
+          "text": "Posterior parietal cortex",
+          "isCorrect": true,
+          "rationale": "The posterior parietal cortex plays a key role in focusing attention on specific stimuli and is often activated during periods of expectation."
+        },
+        {
+          "text": "Primary auditory cortex",
+          "isCorrect": false,
+          "rationale": "This area processes actual sound information rather than the higher-order task of directing attention across different modalities."
+        },
+        {
+          "text": "Medullary brainstem",
+          "isCorrect": false,
+          "rationale": "The brainstem handles basic reflexes and signal relay, while attention is a higher-order cortical process."
+        },
+        {
+          "text": "Dorsal root ganglion",
+          "isCorrect": false,
+          "rationale": "The dorsal root ganglion is a peripheral structure for incoming sensory cell bodies and is not involved in cortical attention."
+        }
+      ],
+      "hint": "This region is located in the upper-back part of the cortex and is associated with 'neglect' if damaged."
+    },
+    {
+      "question": "What is the primary relay station for almost all sensory modalities before they reach the cerebral cortex?",
+      "answerOptions": [
+        {
+          "text": "Thalamus",
+          "isCorrect": true,
+          "rationale": "The thalamus serves as a central clearinghouse, relaying information from various senses to their respective primary cortical areas."
+        },
+        {
+          "text": "Cerebellum",
+          "isCorrect": false,
+          "rationale": "The cerebellum is primarily involved in motor coordination and balance rather than sensory relay to the cortex."
+        },
+        {
+          "text": "Hypothalamus",
+          "isCorrect": false,
+          "rationale": "The hypothalamus regulates internal bodily functions and hormones, whereas sensory relay is a function of the thalamus."
+        },
+        {
+          "text": "Spinal cord",
+          "isCorrect": false,
+          "rationale": "While sensory info passes through the spinal cord, it is the 'entryway' for body sensation rather than the final relay station for all senses like the thalamus."
+        }
+      ],
+      "hint": "This structure is located at the top of the brainstem and does not relay the sense of smell."
+    },
+    {
+      "question": "Humans cannot hear sounds with frequencies exceeding $20,000$ $Hz$. What is the term for these high-frequency sounds?",
+      "answerOptions": [
+        {
+          "text": "Ultrasonic",
+          "isCorrect": true,
+          "rationale": "Sounds above the human hearing range of $20,000$ $Hz$ are classified as ultrasonic, a range many bats can detect."
+        },
+        {
+          "text": "Infrasonic",
+          "isCorrect": false,
+          "rationale": "Infrasound refers to frequencies lower than the range detectable by humans, often used by large mammals like elephants."
+        },
+        {
+          "text": "Photic",
+          "isCorrect": false,
+          "rationale": "Photic refers to light energy and is not related to sound frequency classifications."
+        },
+        {
+          "text": "Polymodal",
+          "isCorrect": false,
+          "rationale": "Polymodal refers to the interaction of multiple sensory systems rather than a specific range of sound frequencies."
+        }
+      ],
+      "hint": "The prefix of this term means 'beyond' or 'above'."
+    },
+    {
+      "question": "How are the spatial properties of a touch stimulus, such as whether it occurs on the hand or the foot, primarily represented in the nervous system?",
+      "answerOptions": [
+        {
+          "text": "Position of excited receptors",
+          "isCorrect": true,
+          "rationale": "The nervous system uses the specific location of the activated receptor on the body surface to map the stimulus location, a form of labeled lines."
+        },
+        {
+          "text": "Amplitude of action potentials",
+          "isCorrect": false,
+          "rationale": "Action potentials are always the same size; their amplitude does not encode location or any other stimulus feature."
+        },
+        {
+          "text": "Speed of transduction",
+          "isCorrect": false,
+          "rationale": "While some fibers are faster than others, the identity of the location is based on the specific anatomical connections, not signal speed."
+        },
+        {
+          "text": "Chemical composition of the stimulus",
+          "isCorrect": false,
+          "rationale": "Chemical composition is relevant for smell and taste, but the touch system relies on mechanical stimulation and spatial mapping."
+        }
+      ],
+      "hint": "Consider the arrangement of the 'homunculus' in the brain's sensory map."
+    }
+  ]
+}

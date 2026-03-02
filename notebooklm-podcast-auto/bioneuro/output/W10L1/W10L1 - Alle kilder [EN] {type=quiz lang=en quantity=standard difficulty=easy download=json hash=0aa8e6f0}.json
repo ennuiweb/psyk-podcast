@@ -1,0 +1,317 @@
+{
+  "title": "Vision Quiz",
+  "questions": [
+    {
+      "question": "What is the specific range of electromagnetic radiation wavelengths that the human visual system can detect?",
+      "answerOptions": [
+        {
+          "text": "About $400$ to $700$ nanometers (nm)",
+          "isCorrect": true,
+          "rationale": "This narrow band of the electromagnetic spectrum provides accurate reflection from objects and is what we perceive as visible light."
+        },
+        {
+          "text": "About $100$ to $400$ nanometers (nm)",
+          "isCorrect": false,
+          "rationale": "This range corresponds to ultraviolet rays, which are generally outside the detectable range of the human eye."
+        },
+        {
+          "text": "About $700$ to $1000$ nanometers (nm)",
+          "isCorrect": false,
+          "rationale": "This range falls into infrared radiation, which humans can sometimes feel as heat but cannot see as light."
+        },
+        {
+          "text": "About $10$ to $100$ nanometers (nm)",
+          "isCorrect": false,
+          "rationale": "Radiation in this range consists of X-rays, which penetrate surfaces rather than reflecting off them to provide visual images."
+        }
+      ],
+      "hint": "The visible spectrum is a very narrow section of the total electromagnetic range."
+    },
+    {
+      "question": "Which structure of the eye is primarily responsible for the majority of light refraction and has a fixed curvature?",
+      "answerOptions": [
+        {
+          "text": "Cornea",
+          "isCorrect": true,
+          "rationale": "The cornea is the transparent outer layer that bends light rays to help form an image on the retina."
+        },
+        {
+          "text": "Lens",
+          "isCorrect": false,
+          "rationale": "While this structure does help focus light, its shape is adjustable rather than fixed."
+        },
+        {
+          "text": "Pupil",
+          "isCorrect": false,
+          "rationale": "This is an opening or aperture that controls light quantity rather than a refractive surface itself."
+        },
+        {
+          "text": "Retina",
+          "isCorrect": false,
+          "rationale": "This is the layer where the image is formed and converted into neural signals, not where light is focused."
+        }
+      ],
+      "hint": "Think about the very first transparent layer light encounters when entering the eye."
+    },
+    {
+      "question": "What is the term for the process of focusing by the ciliary muscles and the lens to form a sharp image on the retina?",
+      "answerOptions": [
+        {
+          "text": "Accommodation",
+          "isCorrect": true,
+          "rationale": "In mammals, focus is adjusted by changing the curvature of the lens through contraction of the ciliary muscles."
+        },
+        {
+          "text": "Refraction",
+          "isCorrect": false,
+          "rationale": "This is the general term for the bending of light when it enters a new medium, not the specific process of focus adjustment."
+        },
+        {
+          "text": "Adaptation",
+          "isCorrect": false,
+          "rationale": "This refers to the system's ability to adjust sensitivity to light intensity levels, not the physical focus of the lens."
+        },
+        {
+          "text": "Transduction",
+          "isCorrect": false,
+          "rationale": "This is the conversion of light energy into electrical signals, which happens later at the photoreceptor level."
+        }
+      ],
+      "hint": "This process involves the lens changing shape to allow us to see both near and far objects clearly."
+    },
+    {
+      "question": "When light strikes a rod photoreceptor, what is the initial electrical result in the cell?",
+      "answerOptions": [
+        {
+          "text": "Hyperpolarization",
+          "isCorrect": true,
+          "rationale": "The cascade of neurochemical events triggered by light causes sodium channels to close, making the receptor more negative."
+        },
+        {
+          "text": "Depolarization",
+          "isCorrect": false,
+          "rationale": "Photoreceptors are actually in this state in the dark and move away from it when stimulated by light."
+        },
+        {
+          "text": "Action Potential",
+          "isCorrect": false,
+          "rationale": "Photoreceptors produce graded potentials rather than the all-or-nothing spikes found in long-range neurons."
+        },
+        {
+          "text": "Repolarization",
+          "isCorrect": false,
+          "rationale": "This term describes the return to resting potential after an action potential, which does not characterize the light response."
+        }
+      ],
+      "hint": "Stimulation by light leads to the closing of sodium channels."
+    },
+    {
+      "question": "Which part of the retina provides the highest visual acuity and is composed primarily of densely packed cones?",
+      "answerOptions": [
+        {
+          "text": "Fovea",
+          "isCorrect": true,
+          "rationale": "This central region of the retina lacks obstructing blood vessels and has the highest concentration of receptors for sharp detail."
+        },
+        {
+          "text": "Optic Disc",
+          "isCorrect": false,
+          "rationale": "This area is known as the blind spot because it is where the optic nerve leaves the eye and contains no photoreceptors."
+        },
+        {
+          "text": "Extraocular muscle",
+          "isCorrect": false,
+          "rationale": "These are muscles attached to the outside of the eyeball used for movement, not part of the light-sensing retina."
+        },
+        {
+          "text": "Iris",
+          "isCorrect": false,
+          "rationale": "This is the colorful structure at the front of the eye that regulates the size of the pupil."
+        }
+      ],
+      "hint": "Think about the central point of your gaze where vision is most clear."
+    },
+    {
+      "question": "The visual system is organized into two main processing streams. Which stream is responsible for visually identifying objects ('what')?",
+      "answerOptions": [
+        {
+          "text": "Ventral stream",
+          "isCorrect": true,
+          "rationale": "This pathway, involving the occipitotemporal cortex, is specialized for object recognition and identification."
+        },
+        {
+          "text": "Dorsal stream",
+          "isCorrect": false,
+          "rationale": "This pathway is primarily concerned with the location of objects and guiding movement toward them ('where')."
+        },
+        {
+          "text": "Saccadic stream",
+          "isCorrect": false,
+          "rationale": "This is not a recognized major cortical processing stream for visual identity."
+        },
+        {
+          "text": "Refractive stream",
+          "isCorrect": false,
+          "rationale": "This is not a term used to describe the higher-order visual pathways in the brain."
+        }
+      ],
+      "hint": "This stream was significantly impaired in patient D.F., who could not recognize faces."
+    },
+    {
+      "question": "Which visual disorder is characterized by the eyeball being too long, causing images to focus in front of the retina?",
+      "answerOptions": [
+        {
+          "text": "Myopia",
+          "isCorrect": true,
+          "rationale": "Commonly called nearsightedness, this condition prevents distant objects from being focused sharply on the retina."
+        },
+        {
+          "text": "Amblyopia",
+          "isCorrect": false,
+          "rationale": "This refers to reduced visual acuity in one eye ('lazy eye') usually due to misalignment during development."
+        },
+        {
+          "text": "Macular degeneration",
+          "isCorrect": false,
+          "rationale": "This is a progressive loss of central vision caused by the death of photoreceptors in the fovea."
+        },
+        {
+          "text": "Optic ataxia",
+          "isCorrect": false,
+          "rationale": "This is a motor coordination issue where people have difficulty reaching for objects under visual control."
+        }
+      ],
+      "hint": "This condition is often associated with spending too much time indoors during childhood."
+    },
+    {
+      "question": "What are the two primary components that make up a photopigment molecule like rhodopsin?",
+      "answerOptions": [
+        {
+          "text": "Retinal and Opsin",
+          "isCorrect": true,
+          "rationale": "Photopigments consist of retinaldehyde (a form of Vitamin A) and a protein molecule that spans the receptor discs."
+        },
+        {
+          "text": "Transducin and PDE",
+          "isCorrect": false,
+          "rationale": "These are part of the biochemical signaling cascade that occurs after light hits the photopigment."
+        },
+        {
+          "text": "cGMP and $Na^{+}$",
+          "isCorrect": false,
+          "rationale": "These elements are involved in opening or closing ion channels but are not components of the pigment molecule itself."
+        },
+        {
+          "text": "Melanin and Keratin",
+          "isCorrect": false,
+          "rationale": "These are proteins found in skin, hair, and other tissues, but they are not the light-sensitive pigments of the retina."
+        }
+      ],
+      "hint": "One component is derived from Vitamin A, and the other is a specialized protein."
+    },
+    {
+      "question": "Which theory of color vision, endorsed by Hermann von Helmholtz, suggests that the retina contains three separate types of receptors (blue, green, and red)?",
+      "answerOptions": [
+        {
+          "text": "Trichromatic hypothesis",
+          "isCorrect": true,
+          "rationale": "This theory correctly predicted that three types of cones with different spectral sensitivities provide the basis for color vision."
+        },
+        {
+          "text": "Opponent-process hypothesis",
+          "isCorrect": false,
+          "rationale": "This theory focuses on opposed pairs of colors (like blue vs. yellow) rather than three distinct receptor types."
+        },
+        {
+          "text": "Spatial-frequency model",
+          "isCorrect": false,
+          "rationale": "This model explains how the brain breaks down complex patterns into sine wave components, not color perception."
+        },
+        {
+          "text": "Retinotopic mapping",
+          "isCorrect": false,
+          "rationale": "This refers to the orderly mapping of the visual field onto the brain's surface, not the mechanisms of color."
+        }
+      ],
+      "hint": "The name of this hypothesis uses the Greek prefix for 'three'."
+    },
+    {
+      "question": "What is the primary function of mirror neurons as described in the text?",
+      "answerOptions": [
+        {
+          "text": "Mediating the understanding of actions performed by others",
+          "isCorrect": true,
+          "rationale": "These neurons in the premotor cortex activate both when performing an action and when watching someone else do it."
+        },
+        {
+          "text": "Detecting the orientation of bars in the visual field",
+          "isCorrect": false,
+          "rationale": "This is the function of simple and complex cortical cells in the visual cortex."
+        },
+        {
+          "text": "Controlling the tiny saccades used to prevent image fading",
+          "isCorrect": false,
+          "rationale": "These movements are controlled by the motor system to keep photoreceptors fresh, not mirror neurons."
+        },
+        {
+          "text": "Regulating the amount of light that enters the pupil",
+          "isCorrect": false,
+          "rationale": "This process is managed by the autonomic nervous system and the muscles of the iris."
+        }
+      ],
+      "hint": "Think about neurons that 'reflect' the behavior of others."
+    },
+    {
+      "question": "Which condition results from damage to the fovea, leading to a loss of central vision while peripheral vision remains intact but blurry?",
+      "answerOptions": [
+        {
+          "text": "Macular degeneration",
+          "isCorrect": true,
+          "rationale": "This disease involves the death of photoreceptors specifically in the central retina, severely impairing visual acuity."
+        },
+        {
+          "text": "Scotoma",
+          "isCorrect": false,
+          "rationale": "This is a general term for a region of blindness in the visual field, not necessarily restricted to central vision."
+        },
+        {
+          "text": "Hemispatial neglect",
+          "isCorrect": false,
+          "rationale": "This is a neglect of one side of the world due to brain injury, rather than a specific retinal problem."
+        },
+        {
+          "text": "Blindsight",
+          "isCorrect": false,
+          "rationale": "This is a paradoxical phenomenon where people can discriminate objects in a blind spot without conscious perception."
+        }
+      ],
+      "hint": "The name of this condition refers to the part of the retina that includes the fovea."
+    },
+    {
+      "question": "According to the spatial-frequency approach, how does the brain analyze complex visual scenes?",
+      "answerOptions": [
+        {
+          "text": "By breaking them down into individual spatial-frequency components",
+          "isCorrect": true,
+          "rationale": "The system performs a kind of crude Fourier analysis, handling different levels of detail and contrast as frequencies."
+        },
+        {
+          "text": "By using one single 'grandmother cell' for every object",
+          "isCorrect": false,
+          "rationale": "The text notes that while some neurons are specific, the 'grandmother cell' hypothesis has significant theoretical flaws."
+        },
+        {
+          "text": "By ignoring all high-frequency details to save energy",
+          "isCorrect": false,
+          "rationale": "If the system did this, we would lose all fine details and sharp edges in our vision."
+        },
+        {
+          "text": "By processing every pixel of the retina individually without integration",
+          "isCorrect": false,
+          "rationale": "The visual system relies on integration and hierarchical processing rather than isolated pixel analysis."
+        }
+      ],
+      "hint": "This approach is similar to how complex sounds are decomposed into sine waves."
+    }
+  ]
+}

@@ -1,0 +1,266 @@
+{
+  "title": "Brain Disorders Quiz",
+  "questions": [
+    {
+      "question": "In the context of Phenylketonuria (PKU), what is the specific biochemical consequence of an abnormality in the gene for phenylalanine hydroxylase (PAH)?",
+      "answerOptions": [
+        {
+          "text": "Phenylalanine levels rise because it cannot be converted into tyrosine.",
+          "isCorrect": true,
+          "rationale": "The PAH enzyme is responsible for breaking down phenylalanine into tyrosine; a defect leads to a toxic buildup of phenylalanine."
+        },
+        {
+          "text": "Tyrosine levels become excessively high, causing skin rashes and seizures.",
+          "isCorrect": false,
+          "rationale": "Tyrosine levels actually decrease or become insufficient because the conversion process from phenylalanine is impaired."
+        },
+        {
+          "text": "Norepinephrine and dopamine production increases due to precursor overflow.",
+          "isCorrect": false,
+          "rationale": "While phenylalanine is a precursor, the metabolic block usually leads to a deficiency in the downstream neurotransmitters rather than an increase."
+        },
+        {
+          "text": "The amino acid is immediately converted into a musty-smelling protein in the blood.",
+          "isCorrect": false,
+          "rationale": "The musty odor is a byproduct of the excess phenylalanine and its metabolites, not a result of its conversion into a specific protein."
+        }
+      ],
+      "hint": "Consider the primary role of an enzyme ending in '-hydroxylase' in a metabolic pathway."
+    },
+    {
+      "question": "How does the Research Domain Criteria (RDoC) approach to classifying behavioral disorders differ fundamentally from the Diagnostic and Statistical Manual of Mental Disorders (DSM)?",
+      "text": "How does the Research Domain Criteria (RDoC) approach to classifying behavioral disorders differ fundamentally from the Diagnostic and Statistical Manual of Mental Disorders (DSM)?",
+      "answerOptions": [
+        {
+          "text": "RDoC focuses on biological and functional systems rather than symptomatic groupings.",
+          "isCorrect": true,
+          "rationale": "The RDoC assumes that understanding basic biological functions across multiple levels of analysis will lead to an understanding of malfunction."
+        },
+        {
+          "text": "RDoC is designed to replace the DSM as the primary clinical diagnostic guide.",
+          "isCorrect": false,
+          "rationale": "The source explicitly states that NIMH is not trying to provide a diagnostic guide or replace current diagnostic systems like the DSM."
+        },
+        {
+          "text": "The DSM uses units of analysis such as genes, molecules, and circuits, whereas RDoC uses symptoms.",
+          "isCorrect": false,
+          "rationale": "This is the reverse of the actual roles; the DSM is symptom-based, while the RDoC utilizes biological units of analysis."
+        },
+        {
+          "text": "RDoC classifies disorders based on their historical progression and prognosis.",
+          "isCorrect": false,
+          "rationale": "RDoC focuses on current biological dysfunction across systems, not necessarily historical progression or clinical prognosis."
+        }
+      ],
+      "hint": "Think about whether the focus is on the outward behavioral 'effect' or the underlying biological 'cause'."
+    },
+    {
+      "question": "Which of the following describes the ionic changes that occur in the brain during the first few seconds of an ischemic stroke?",
+      "answerOptions": [
+        {
+          "text": "Massive amounts of glutamate are released, causing prolonged opening of calcium channels.",
+          "isCorrect": true,
+          "rationale": "This initial excitotoxic event triggers a cascade of damage by allowing toxic levels of calcium to enter cells."
+        },
+        {
+          "text": "Calcium levels drop significantly as the cell attempts to preserve energy.",
+          "isCorrect": false,
+          "rationale": "Calcium levels actually rise to toxic levels inside the cell due to the failure of ion pumps and open channels."
+        },
+        {
+          "text": "Protein synthesis increases rapidly to repair damaged cell membranes.",
+          "isCorrect": false,
+          "rationale": "As shown in Figure 16-8, protein synthesis actually drops during the onset of the stroke."
+        },
+        {
+          "text": "The pH of the affected region becomes highly alkaline due to oxygen loss.",
+          "isCorrect": false,
+          "rationale": "Loss of oxygen and the resulting metabolic shift typically lead to acidosis (lower pH), not alkalinity."
+        }
+      ],
+      "hint": "Look for a specific excitatory neurotransmitter that becomes toxic when overabundant."
+    },
+    {
+      "question": "According to the dopamine hypothesis of schizophrenia, what neurochemical abnormality is most strongly associated with the disorder?",
+      "answerOptions": [
+        {
+          "text": "Increased activation of striatal $D_{2}$ receptors.",
+          "isCorrect": true,
+          "rationale": "Research indicates that drugs blocking $D_{2}$ receptors treat schizophrenia, while those enhancing dopamine activity can produce psychotic symptoms."
+        },
+        {
+          "text": "A global decrease in dopamine metabolites in the cerebrospinal fluid.",
+          "isCorrect": false,
+          "rationale": "The hypothesis specifically emphasizes overactivity or increased receptor sensitivity rather than a general decrease in metabolites."
+        },
+        {
+          "text": "The complete absence of glutamate uptake sites in the cingulate cortex.",
+          "isCorrect": false,
+          "rationale": "While glutamate is involved, the specific dopamine hypothesis focuses on dopamine receptors, and glutamate uptake is decreased, not absent."
+        },
+        {
+          "text": "Increased levels of cortical glutamate and GABA receptors.",
+          "isCorrect": false,
+          "rationale": "Table 16-4 indicates that cortical glutamate is actually decreased in specific regions, and GABA receptor levels vary."
+        }
+      ],
+      "hint": "Recall the effect of neuroleptic (antipsychotic) drugs on specific dopamine receptor subtypes."
+    },
+    {
+      "question": "What is the 'vicious cycle' identified in the relationship between chronic stress, cortisol, and the hippocampus?",
+      "answerOptions": [
+        {
+          "text": "High cortisol levels cause hippocampal neuron death, which reduces the brain's ability to turn off the stress response.",
+          "isCorrect": true,
+          "rationale": "The hippocampus normally inhibits the HPA axis; if its cells die due to cortisol, the HPA axis remains active, producing even more cortisol."
+        },
+        {
+          "text": "Excessive neurogenesis in the hippocampus leads to an overactive HPA axis.",
+          "isCorrect": false,
+          "rationale": "Stress actually reduces neurogenesis; it is the loss of neurons, not their increase, that causes the cycle."
+        },
+        {
+          "text": "Low cortisol levels prevent the hippocampus from signaling the adrenal gland to stop production.",
+          "isCorrect": false,
+          "rationale": "The cycle is driven by high levels of cortisol, not low levels."
+        },
+        {
+          "text": "Cortisol increases the density of hippocampal neurons, making the brain more sensitive to future stress.",
+          "isCorrect": false,
+          "rationale": "Cortisol has a degenerative effect on hippocampal neurons, decreasing their density."
+        }
+      ],
+      "hint": "Consider the feedback loop involving the Hypothalamic-Pituitary-Adrenal (HPA) axis."
+    },
+    {
+      "question": "In Parkinson disease, how are 'negative symptoms' distinguished from 'positive symptoms'?",
+      "answerOptions": [
+        {
+          "text": "Negative symptoms represent the loss of normal behaviors, such as disorders of posture and locomotion.",
+          "isCorrect": true,
+          "rationale": "Negative symptoms are characterized by an inability to perform standard actions, while positive symptoms are added abnormal behaviors."
+        },
+        {
+          "text": "Negative symptoms are those that have a 'negative' impact on mood, such as depression.",
+          "isCorrect": false,
+          "rationale": "In neurology, 'negative' refers to the absence of a behavior or function, not the emotional valence of the symptom."
+        },
+        {
+          "text": "Positive symptoms, such as hypokinesia, are those that respond well to L-dopa treatment.",
+          "isCorrect": false,
+          "rationale": "Hypokinesia is a negative symptom (lack of movement); positive symptoms are behaviors like tremors that are normally inhibited."
+        },
+        {
+          "text": "Negative symptoms are primary genetic defects, while positive symptoms are environmental.",
+          "isCorrect": false,
+          "rationale": "Both types of symptoms arise from the same underlying neurodegeneration of the substantia nigra."
+        }
+      ],
+      "hint": "Think about the literal meaning of 'positive' as something added and 'negative' as something taken away."
+    },
+    {
+      "question": "According to the prion theory of neurodegenerative disorders, how do Lewy bodies form in Parkinson disease?",
+      "answerOptions": [
+        {
+          "text": "The protein $\\alpha$-synuclein misfolds and aggregates into fibrous rings within the neuronal cytoplasm.",
+          "isCorrect": true,
+          "rationale": "Prion theory suggests that misfolded proteins like $\\alpha$-synuclein can cause other proteins to misfold, leading to the formation of Lewy bodies."
+        },
+        {
+          "text": "Amyloid plaques from the extracellular space are absorbed into the cell and compressed.",
+          "isCorrect": false,
+          "rationale": "Amyloid plaques are associated with Alzheimer's and are generally extracellular, whereas Lewy bodies are intracellular and composed of different proteins."
+        },
+        {
+          "text": "Bacteria from the gut travel up the vagus nerve and deposit waste products in the midbrain.",
+          "isCorrect": false,
+          "rationale": "While the gut-brain axis is mentioned, Lewy bodies are formed by misfolded endogenous proteins, not bacterial waste."
+        },
+        {
+          "text": "Neurons overproduce myelin, which then collapses and becomes trapped inside the cell body.",
+          "isCorrect": false,
+          "rationale": "Lewy bodies are related to neurofilament metabolism and specific proteins, not the overproduction of myelin."
+        }
+      ],
+      "hint": "Focus on a specific protein mentioned in Figure 16-18 that is associated with both the gut and the brain."
+    },
+    {
+      "question": "What is the primary difference between an ischemic stroke and a hemorrhagic stroke?",
+      "answerOptions": [
+        {
+          "text": "Ischemic stroke results from a blockage in a vessel, while hemorrhagic stroke results from a vessel rupture.",
+          "isCorrect": true,
+          "rationale": "The source defines ischemia as a blockage and hemorrhage as bleeding from a vessel."
+        },
+        {
+          "text": "Ischemic strokes are caused by external head trauma, while hemorrhagic strokes are caused by genetics.",
+          "isCorrect": false,
+          "rationale": "Both can have various causes, including high blood pressure or aneurysms, and are not strictly divided by trauma vs. genetics."
+        },
+        {
+          "text": "Ischemic strokes only affect the white matter, while hemorrhagic strokes affect the gray matter.",
+          "isCorrect": false,
+          "rationale": "Both types of strokes can affect any brain tissue depending on the location of the involved blood vessel."
+        },
+        {
+          "text": "Hemorrhagic strokes lead to immediate recovery, whereas ischemic strokes lead to permanent damage.",
+          "isCorrect": false,
+          "rationale": "Both can lead to permanent damage, and hemorrhagic strokes often have a poorer prognosis due to the pressure from bleeding."
+        }
+      ],
+      "hint": "One involves 'not enough' blood reaching an area, while the other involves blood 'leaking' into an area."
+    },
+    {
+      "question": "Which neuroanatomical change is characteristically observed in individuals with Multiple Sclerosis (MS)?",
+      "answerOptions": [
+        {
+          "text": "Discrete lesions appearing as dark patches on MRI, representing areas of demyelination.",
+          "isCorrect": true,
+          "rationale": "MS is characterized by the loss of myelin in the brain and spinal cord, which shows up as distinct lesions or plaques."
+        },
+        {
+          "text": "A significant increase in the size of the lateral ventricles due to plaque buildup.",
+          "isCorrect": false,
+          "rationale": "Ventricle enlargement is more commonly associated with schizophrenia or general cortical atrophy in Alzheimer's, not MS lesions."
+        },
+        {
+          "text": "The growth of new, disorganized pyramidal neurons in the hippocampus.",
+          "isCorrect": false,
+          "rationale": "Disorganized hippocampal neurons are a hallmark of schizophrenia, not the demyelinating process of MS."
+        },
+        {
+          "text": "The accumulation of tau protein within the cerebral cortex.",
+          "isCorrect": false,
+          "rationale": "Tau protein accumulation is a feature of Alzheimer's and CTE, while MS is focused on the destruction of the myelin sheath."
+        }
+      ],
+      "hint": "Think about the target of the autoimmune attack described in Figure 16-13."
+    },
+    {
+      "question": "In the treatment of behavioral disorders, what distinguishes 'electrophysiological' treatments from 'neurosurgical' treatments according to the general categories provided?",
+      "answerOptions": [
+        {
+          "text": "Electrophysiological treatments stimulate the brain through the skull, while neurosurgical treatments involve opening the skull.",
+          "isCorrect": true,
+          "rationale": "Categories 1 and 2 define neurosurgery as opening the skull and electrophysiology as stimulation through the skull."
+        },
+        {
+          "text": "Electrophysiological treatments use chemicals to alter brain function, while neurosurgery uses electricity.",
+          "isCorrect": false,
+          "rationale": "Chemical alteration is categorized as pharmacological, while both electrophysiology and neurosurgery (like DBS) can involve electricity."
+        },
+        {
+          "text": "Neurosurgical treatments are behavioral interventions, while electrophysiological treatments are biological.",
+          "isCorrect": false,
+          "rationale": "Both are biological interventions; behavioral treatments belong to a separate category involving manipulation of experience."
+        },
+        {
+          "text": "Electrophysiological treatments are only used for depression, while neurosurgery is used only for tumors.",
+          "isCorrect": false,
+          "rationale": "Both categories have multiple applications, including TBI, Parkinson's, and various behavioral dysfunctions."
+        }
+      ],
+      "hint": "Consider the physical 'entry method' used to reach the brain in each category."
+    }
+  ]
+}

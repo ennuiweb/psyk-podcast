@@ -1,0 +1,265 @@
+{
+  "title": "Auditory Quiz",
+  "questions": [
+    {
+      "question": "Which physical property of a sound wave is primarily responsible for the perception of pitch?",
+      "answerOptions": [
+        {
+          "text": "Frequency",
+          "isCorrect": true,
+          "rationale": "Frequency, measured in hertz ($Hz$), refers to the number of cycles per second and is the physical basis for the subjective experience of pitch."
+        },
+        {
+          "text": "Amplitude",
+          "isCorrect": false,
+          "rationale": "Amplitude relates to the intensity or pressure of the sound wave, which the brain perceives as loudness rather than pitch."
+        },
+        {
+          "text": "Timbre",
+          "isCorrect": false,
+          "rationale": "Timbre refers to the characteristic sound quality or 'voice' of an instrument, determined by the relative intensities of various harmonics."
+        },
+        {
+          "text": "Complexity",
+          "isCorrect": false,
+          "rationale": "Complexity refers to the presence of multiple frequencies or harmonics, whereas the basic sense of pitch is derived from the fundamental frequency."
+        }
+      ],
+      "hint": "Consider the unit of measurement used to describe the number of cycles per second in a sound wave."
+    },
+    {
+      "question": "What is the primary function of the three ossicles in the middle ear?",
+      "answerOptions": [
+        {
+          "text": "To amplify and concentrate sound pressure onto the oval window",
+          "isCorrect": true,
+          "rationale": "By concentrating force from the large tympanic membrane onto the small oval window, the ossicles significantly increase sound pressure to move fluid in the inner ear."
+        },
+        {
+          "text": "To perform transduction of mechanical energy into electrical signals",
+          "isCorrect": false,
+          "rationale": "Transduction is carried out by the hair cells within the cochlea of the inner ear, not the bones of the middle ear."
+        },
+        {
+          "text": "To filter out specific frequencies between $2000$ and $5000$ $Hz$",
+          "isCorrect": false,
+          "rationale": "Filtering and enhancement of these specific frequencies is primarily a function of the shape of the external ear, or pinna."
+        },
+        {
+          "text": "To provide the brain with proprioceptive information about head position",
+          "isCorrect": false,
+          "rationale": "While the vestibular system handles balance, the ossicles are purely involved in the mechanical transmission of sound."
+        }
+      ],
+      "hint": "Think about how sound energy must transition from moving through air to moving through the denser fluid of the cochlea."
+    },
+    {
+      "question": "How does the basilar membrane respond differently to high-frequency versus low-frequency sounds?",
+      "answerOptions": [
+        {
+          "text": "High frequencies displace the narrow, stiff base; low frequencies displace the wide, floppy apex.",
+          "isCorrect": true,
+          "rationale": "The tapered physical properties of the basilar membrane make the base responsive to high frequencies and the apex responsive to low frequencies."
+        },
+        {
+          "text": "High frequencies displace the wide apex; low frequencies displace the narrow base.",
+          "isCorrect": false,
+          "rationale": "This reverses the actual tonotopic map; stiff structures respond better to high frequencies, and the base is the stiffest part."
+        },
+        {
+          "text": "The entire membrane vibrates uniformly, and frequency is encoded only by the rate of neural firing.",
+          "isCorrect": false,
+          "rationale": "This ignores the place coding theory, which relies on the specific physical displacement of different locations along the membrane."
+        },
+        {
+          "text": "Low frequencies are blocked by the round window, while high frequencies pass through to the apex.",
+          "isCorrect": false,
+          "rationale": "The round window serves as a pressure release for all frequencies to allow fluid movement; it does not act as a frequency filter."
+        }
+      ],
+      "hint": "Recall that the 'base' of the cochlea is near the stapes and is narrower and stiffer than the far end."
+    },
+    {
+      "question": "What is the role of 'tip links' in the process of auditory transduction?",
+      "answerOptions": [
+        {
+          "text": "They mechanically open ion channels when stereocilia are bent by sound waves.",
+          "isCorrect": true,
+          "rationale": "Tip links are fine fibers that connect stereocilia; when the cilia sway, the tension on these links pulls open 'trapdoor' ion channels."
+        },
+        {
+          "text": "They serve as the primary neurotransmitter in the synapse between hair cells and the auditory nerve.",
+          "isCorrect": false,
+          "rationale": "Tip links are structural protein fibers, whereas glutamate is the primary neurotransmitter used for afferent signaling."
+        },
+        {
+          "text": "They provide the motor force that allows outer hair cells to change their length.",
+          "isCorrect": false,
+          "rationale": "The change in length of outer hair cells is driven by the motor protein prestin, not by the tip links."
+        },
+        {
+          "text": "They anchor the tectorial membrane to the basilar membrane to prevent shearing.",
+          "isCorrect": false,
+          "rationale": "Shearing is actually necessary for hearing; tip links facilitate the response to that shearing rather than preventing it."
+        }
+      ],
+      "hint": "Imagine a spring-loaded trapdoor that is triggered by physical movement."
+    },
+    {
+      "question": "Outer hair cells ($OHCs$) are unique because they can change their length. What is the functional consequence of this 'electromechanical' action?",
+      "answerOptions": [
+        {
+          "text": "It sharpens frequency tuning and amplifies the movement of the basilar membrane.",
+          "isCorrect": true,
+          "rationale": "By changing length, $OHCs$ actively modify the stiffness of the basilar membrane, which enhances both sensitivity and frequency discrimination."
+        },
+        {
+          "text": "It provides the majority of the sensory information sent to the brain via the auditory nerve.",
+          "isCorrect": false,
+          "rationale": "Approximately $90\\text{--}95\\%$ of afferent auditory information actually comes from the inner hair cells, not the outer hair cells."
+        },
+        {
+          "text": "It prevents loud sounds from damaging the delicate receptors of the inner ear.",
+          "isCorrect": false,
+          "rationale": "Protection from loud sounds is primarily handled by the middle-ear muscles (tensor tympani and stapedius) stiffening the ossicles."
+        },
+        {
+          "text": "It allows the cochlea to generate electrical power to sustain the vestibulocochlear nerve.",
+          "isCorrect": false,
+          "rationale": "While the process uses electrical potential, its purpose is mechanical amplification, not power generation for the nerve."
+        }
+      ],
+      "hint": "Consider the role of the motor protein prestin in 'fine-tuning' the auditory system."
+    },
+    {
+      "question": "Which brainstem structure is the first to receive input from both ears, making it critical for sound localization?",
+      "answerOptions": [
+        {
+          "text": "Superior olivary nucleus",
+          "isCorrect": true,
+          "rationale": "The superior olive receives bilateral input from the cochlear nuclei, allowing it to compare information from both ears for binaural analysis."
+        },
+        {
+          "text": "Dorsal cochlear nucleus",
+          "isCorrect": false,
+          "rationale": "Cochlear nuclei receive ipsilateral input from the auditory nerve of only one ear before projecting to the superior olive."
+        },
+        {
+          "text": "Inferior colliculus",
+          "isCorrect": false,
+          "rationale": "While the inferior colliculus processes auditory information, it is located higher in the midbrain and receives signals after they have already been integrated in the olive."
+        },
+        {
+          "text": "Medial geniculate nucleus",
+          "isCorrect": false,
+          "rationale": "The medial geniculate is a thalamic nucleus that acts as a relay to the cortex, rather than being the first site of binaural integration."
+        }
+      ],
+      "hint": "Look for a structure in the lower brainstem that is positioned between the cochlear nuclei and the midbrain."
+    },
+    {
+      "question": "According to temporal coding theory, how is the frequency of a sound encoded by the nervous system?",
+      "answerOptions": [
+        {
+          "text": "The firing rate of auditory neurons is phase-locked to the cycles of the sound wave.",
+          "isCorrect": true,
+          "rationale": "Temporal coding proposes that the timing or frequency of action potentials directly reflects the frequency of the sound stimulus."
+        },
+        {
+          "text": "Specific frequencies are mapped to precise physical locations along the basilar membrane.",
+          "isCorrect": false,
+          "rationale": "Mapping frequency to a physical location is the core principle of place coding theory, not temporal coding."
+        },
+        {
+          "text": "High-frequency sounds are encoded by the total number of hair cells activated simultaneously.",
+          "isCorrect": false,
+          "rationale": "Total activation usually corresponds to intensity (loudness) rather than the specific encoding of frequency/pitch."
+        },
+        {
+          "text": "The brain calculates frequency based on the volume of neurotransmitter released at the IHC synapse.",
+          "isCorrect": false,
+          "rationale": "Neurotransmitter volume typically signals the intensity of a sound rather than its frequency."
+        }
+      ],
+      "hint": "Think about how the timing of action potentials might sync up with the peaks and troughs of a sound wave."
+    },
+    {
+      "question": "Interaural intensity differences ($IIDs$) are most effective for localizing which types of sounds?",
+      "answerOptions": [
+        {
+          "text": "High-frequency sounds",
+          "isCorrect": true,
+          "rationale": "High-frequency sounds have short wavelengths that are easily blocked by the head, creating a significant 'sound shadow' that produces intensity differences."
+        },
+        {
+          "text": "Low-frequency sounds",
+          "isCorrect": false,
+          "rationale": "Low-frequency sounds have long wavelengths that easily bend around the head, resulting in minimal intensity differences between the ears."
+        },
+        {
+          "text": "Infrasound",
+          "isCorrect": false,
+          "rationale": "Infrasound frequencies are too low for humans to hear and would not produce a usable sound shadow for localization."
+        },
+        {
+          "text": "Pure tones at exactly $440$ $Hz$",
+          "isCorrect": false,
+          "rationale": "Middle A ($440$ $Hz$) is a relatively low frequency where intensity differences are less pronounced than for high-pitched sounds like cymbals."
+        }
+      ],
+      "hint": "Consider which wavelengths are more likely to be blocked by the physical size of the human head."
+    },
+    {
+      "question": "In the human auditory cortex, which region is specifically activated by speech sounds in addition to the primary auditory cortex ($A1$)?",
+      "answerOptions": [
+        {
+          "text": "Specialized auditory areas on the temporal lobe",
+          "isCorrect": true,
+          "rationale": "While $A1$ responds to basic sounds, speech sounds recruit additional specialized cortical regions nearby for complex linguistic processing."
+        },
+        {
+          "text": "The primary somatosensory cortex",
+          "isCorrect": false,
+          "rationale": "This area processes touch and bodily sensation, not the specific linguistic components of speech sounds."
+        },
+        {
+          "text": "The superior olivary nucleus",
+          "isCorrect": false,
+          "rationale": "This is a brainstem structure involved in localization, not a cortical region specialized for speech."
+        },
+        {
+          "text": "The dorsal cochlear nucleus",
+          "isCorrect": false,
+          "rationale": "This is the initial entry point for auditory signals in the brainstem and does not perform high-level speech analysis."
+        }
+      ],
+      "hint": "Recall the fMRI findings regarding the difference between listening to noise versus listening to words."
+    },
+    {
+      "question": "What happens to the tuning curve of an auditory nerve fiber as the intensity of the sound stimulus increases?",
+      "answerOptions": [
+        {
+          "text": "The fiber responds to a broader range of frequencies.",
+          "isCorrect": true,
+          "rationale": "While a fiber has a 'best frequency' at its threshold, louder sounds cause it to become less selective and respond to a wider frequency band."
+        },
+        {
+          "text": "The fiber becomes more selective and narrows its response to only the 'best frequency'.",
+          "isCorrect": false,
+          "rationale": "Increased intensity generally broadens the response of sensory neurons rather than narrowing it."
+        },
+        {
+          "text": "The fiber stops responding to prevent damage to the cochlea.",
+          "isCorrect": false,
+          "rationale": "Neurons continue to fire at higher intensities; protection is provided by middle-ear muscles, not by individual fibers shutting down."
+        },
+        {
+          "text": "The fiber switches from place coding to temporal coding exclusively.",
+          "isCorrect": false,
+          "rationale": "The encoding mechanism is a property of the system's organization and doesn't switch simply based on stimulus volume."
+        }
+      ],
+      "hint": "Look at the 'V' shape of a tuning curve and imagine moving upward along the y-axis (intensity)."
+    }
+  ]
+}

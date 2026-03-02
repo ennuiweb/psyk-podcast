@@ -1,0 +1,291 @@
+{
+  "title": "Neurophysiology Quiz",
+  "questions": [
+    {
+      "question": "At rest, what is the typical electrical charge of the interior of a neuron relative to the exterior?",
+      "answerOptions": [
+        {
+          "text": "$-65 \\text{ mV}$",
+          "isCorrect": true,
+          "rationale": "This value represents the typical resting membrane potential where the inside of the cell is more negative than the outside."
+        },
+        {
+          "text": "$+40 \\text{ mV}$",
+          "isCorrect": false,
+          "rationale": "This positive value is more characteristic of the peak of an action potential rather than a cell at rest."
+        },
+        {
+          "text": "$0 \\text{ mV}$",
+          "isCorrect": false,
+          "rationale": "A potential of zero would mean there is no electrical difference across the membrane, which is not the case for living neurons."
+        },
+        {
+          "text": "$-120 \\text{ mV}$",
+          "isCorrect": false,
+          "rationale": "While negative, this value is significantly lower than the typical equilibrium potentials found in standard neurophysiology."
+        }
+      ],
+      "hint": "Consider the state of a neuron when it is inactive or at its baseline polarization."
+    },
+    {
+      "question": "Which physical process describes the movement of particles from an area of high concentration to an area of low concentration?",
+      "answerOptions": [
+        {
+          "text": "Diffusion",
+          "isCorrect": true,
+          "rationale": "Particles move down their concentration gradient to achieve uniform distribution unless obstructed."
+        },
+        {
+          "text": "Electrostatic pressure",
+          "isCorrect": false,
+          "rationale": "This force refers to the movement of ions based on their electrical charge rather than their concentration."
+        },
+        {
+          "text": "Active transport",
+          "isCorrect": false,
+          "rationale": "This process generally requires energy to move substances against a gradient, which is the opposite of the described movement."
+        },
+        {
+          "text": "Saltatory conduction",
+          "isCorrect": false,
+          "rationale": "This term specifically refers to the way an action potential travels along a myelinated axon."
+        }
+      ],
+      "hint": "This is a passive process that causes molecules to spread out naturally."
+    },
+    {
+      "question": "The sodium-potassium ($Na^{+}$-$K^{+}$) pump is critical for maintaining the resting potential. What is the standard ratio of ions it moves?",
+      "answerOptions": [
+        {
+          "text": "$3 Na^{+}$ out for every $2 K^{+}$ in",
+          "isCorrect": true,
+          "rationale": "This unequal exchange uses energy to maintain a high concentration of sodium outside and potassium inside while keeping the interior negative."
+        },
+        {
+          "text": "$2 Na^{+}$ in for every $3 K^{+}$ out",
+          "isCorrect": false,
+          "rationale": "Moving more potassium out than sodium in would not align with the established mechanism that builds up internal potassium."
+        },
+        {
+          "text": "$1 Na^{+}$ out for every $1 K^{+}$ in",
+          "isCorrect": false,
+          "rationale": "An equal exchange would not contribute to the net negative charge inside the cell required for the resting potential."
+        },
+        {
+          "text": "$3 Na^{+}$ in for every $2 K^{+}$ out",
+          "isCorrect": false,
+          "rationale": "This would result in a buildup of sodium inside the cell, which contradicts the pump's primary function."
+        }
+      ],
+      "hint": "Think about how the pump must remove more positive charge than it brings in to maintain negativity."
+    },
+    {
+      "question": "What does the 'all-or-none' property of action potentials imply?",
+      "answerOptions": [
+        {
+          "text": "The amplitude of the action potential is independent of the stimulus size.",
+          "isCorrect": true,
+          "rationale": "Once the threshold is reached, the action potential fires at full strength regardless of how much the stimulus exceeded the threshold."
+        },
+        {
+          "text": "Stronger stimuli produce taller and wider action potentials.",
+          "isCorrect": false,
+          "rationale": "The size of the action potential does not change; instead, stronger stimuli usually increase the frequency of firing."
+        },
+        {
+          "text": "Neurons either fire at their maximum rate or do not fire at all.",
+          "isCorrect": false,
+          "rationale": "The property refers to the occurrence and size of individual pulses, not the overall firing rate of the neuron."
+        },
+        {
+          "text": "The action potential will stop halfway down the axon if the signal is weak.",
+          "isCorrect": false,
+          "rationale": "Action potentials are actively regenerated and do not typically decay or stop before reaching the terminal."
+        }
+      ],
+      "hint": "Consider whether the height of the electrical spike changes with the intensity of the trigger."
+    },
+    {
+      "question": "Which toxin, found in puffer fish, selectively blocks voltage-gated sodium channels?",
+      "answerOptions": [
+        {
+          "text": "Tetrodotoxin ($TTX$)",
+          "isCorrect": true,
+          "rationale": "This toxin prevents the production of action potentials by clogging the $Na^{+}$ channels, leading to rapid paralysis."
+        },
+        {
+          "text": "Batrachotoxin",
+          "isCorrect": false,
+          "rationale": "While it affects sodium channels, this toxin from poison arrow frogs forces them to stay open rather than blocking them."
+        },
+        {
+          "text": "Muscarine",
+          "isCorrect": false,
+          "rationale": "This substance mimics acetylcholine at specific receptors and does not target voltage-gated sodium channels."
+        },
+        {
+          "text": "Curare",
+          "isCorrect": false,
+          "rationale": "Curare works at the neuromuscular junction by blocking acetylcholine receptors, not the sodium channels on the axon."
+        }
+      ],
+      "hint": "This substance is a well-known laboratory tool for stopping neuronal firing by targeting the start of the action potential."
+    },
+    {
+      "question": "How does myelin contribute to the speed of neural signaling?",
+      "answerOptions": [
+        {
+          "text": "It allows the action potential to jump between nodes of Ranvier.",
+          "isCorrect": true,
+          "rationale": "Saltatory conduction is much faster than continuous conduction because the signal leaps across insulated segments."
+        },
+        {
+          "text": "It increases the number of available sodium-potassium pumps.",
+          "isCorrect": false,
+          "rationale": "Myelin functions as an electrical insulator rather than a biological source for more ion pumps."
+        },
+        {
+          "text": "It reduces the threshold needed to trigger an action potential.",
+          "isCorrect": false,
+          "rationale": "The threshold is a property of the axon membrane itself, typically at the axon hillock or nodes, not the myelin."
+        },
+        {
+          "text": "It provides extra glucose to power the neuron's electrical activity.",
+          "isCorrect": false,
+          "rationale": "While glia provide support, the specific role of the myelin sheath mentioned is electrical insulation."
+        }
+      ],
+      "hint": "Think about the gaps in the insulation and the term 'saltatory conduction'."
+    },
+    {
+      "question": "Which ion's influx into the axon terminal is directly responsible for triggering the release of neurotransmitters into the synaptic cleft?",
+      "answerOptions": [
+        {
+          "text": "Calcium ($Ca^{2+}$)",
+          "isCorrect": true,
+          "rationale": "The entry of $Ca^{2+}$ through voltage-gated channels causes synaptic vesicles to fuse with the presynaptic membrane."
+        },
+        {
+          "text": "Chloride ($Cl^{-}$)",
+          "isCorrect": false,
+          "rationale": "Chloride influx typically hyperpolarizes neurons and is associated with inhibition rather than transmitter release."
+        },
+        {
+          "text": "Potassium ($K^{+}$)",
+          "isCorrect": false,
+          "rationale": "Potassium efflux is mainly involved in repolarizing the cell after an action potential."
+        },
+        {
+          "text": "Magnesium ($Mg^{2+}$)",
+          "isCorrect": false,
+          "rationale": "Magnesium is not the primary ion that binds to synaptotagmin to catalyze vesicle fusion."
+        }
+      ],
+      "hint": "This divalent cation binds to synaptotagmin during the docking process."
+    },
+    {
+      "question": "What was the significance of Otto Loewi's experiment with frog hearts?",
+      "answerOptions": [
+        {
+          "text": "It proved that synaptic transmission is chemical rather than purely electrical.",
+          "isCorrect": true,
+          "rationale": "By transferring fluid from a stimulated heart to a second heart, he showed a 'substance' (acetylcholine) carried the signal."
+        },
+        {
+          "text": "It identified the exact mathematical formula for the Nernst equation.",
+          "isCorrect": false,
+          "rationale": "The Nernst equation is a physical chemistry principle unrelated to Loewi's biological heart experiments."
+        },
+        {
+          "text": "It demonstrated that the brain is organized into discrete lobes.",
+          "isCorrect": false,
+          "rationale": "Loewi focused on the microscopic and chemical level of the synapse, not gross neuroanatomy."
+        },
+        {
+          "text": "It discovered the existence of the sodium-potassium pump.",
+          "isCorrect": false,
+          "rationale": "The discovery of the ion pump came later and involved different experimental setups than Loewi's fluid transfer."
+        }
+      ],
+      "hint": "Recall the story of the dream involving two hearts and the term 'Vagusstoff'."
+    },
+    {
+      "question": "How do metabotropic receptors differ from ionotropic receptors?",
+      "answerOptions": [
+        {
+          "text": "They act more slowly by using G proteins and second messengers.",
+          "isCorrect": true,
+          "rationale": "Unlike ionotropic receptors which are ion channels, metabotropic receptors trigger a multi-step internal signaling cascade."
+        },
+        {
+          "text": "They are located only on the cell body, never on dendrites.",
+          "isCorrect": false,
+          "rationale": "Both types of receptors can be found across various parts of the postsynaptic membrane."
+        },
+        {
+          "text": "They inhibit the cell while ionotropic receptors always excite it.",
+          "isCorrect": false,
+          "rationale": "Both receptor types can produce either excitatory or inhibitory effects depending on the ions and pathways involved."
+        },
+        {
+          "text": "They do not require a ligand to bind for activation.",
+          "isCorrect": false,
+          "rationale": "Both metabotropic and ionotropic receptors are primarily ligand-gated and require neurotransmitter binding."
+        }
+      ],
+      "hint": "Consider the speed of action and the involvement of intermediary signaling proteins."
+    },
+    {
+      "question": "In the context of epilepsy, what characterizes a 'simple partial seizure' (absence attack)?",
+      "answerOptions": [
+        {
+          "text": "A brief loss of awareness and staring without rhythmic body movements.",
+          "isCorrect": true,
+          "rationale": "These seizures are subtle and involve a characteristic 'spike-and-wave' EEG pattern for a few seconds."
+        },
+        {
+          "text": "Uncontrollable rhythmic movements and loss of consciousness for several minutes.",
+          "isCorrect": false,
+          "rationale": "This description fits a tonic-clonic (grand mal) seizure rather than a simple partial one."
+        },
+        {
+          "text": "A seizure that starts in one limb and stays localized there.",
+          "isCorrect": false,
+          "rationale": "Simple partial seizures usually refer to absence attacks in the text, which involve a generalized but subtle change in awareness."
+        },
+        {
+          "text": "A total cessation of all electrical activity in the brain.",
+          "isCorrect": false,
+          "rationale": "Seizures involve excessive and synchronized activity, not a lack of electrical activity."
+        }
+      ],
+      "hint": "This type of seizure is often so subtle that an observer might think the person is just daydreaming."
+    },
+    {
+      "question": "In optogenetics, what is the effect of stimulating the protein halorhodopsin ($NpHR$) with yellow light?",
+      "answerOptions": [
+        {
+          "text": "It hyperpolarizes the neuron, preventing it from firing.",
+          "isCorrect": true,
+          "rationale": "Halorhodopsin acts as a pump that moves chloride ($Cl^{-}$) into the cell, making the interior more negative."
+        },
+        {
+          "text": "It depolarizes the neuron, causing it to fire action potentials.",
+          "isCorrect": false,
+          "rationale": "Depolarization is the effect of channelrhodopsin ($ChR2$) when stimulated by blue light."
+        },
+        {
+          "text": "It triggers the immediate release of all stored neurotransmitters.",
+          "isCorrect": false,
+          "rationale": "Halorhodopsin manipulates membrane potential but does not directly force a total vesicle dump."
+        },
+        {
+          "text": "It destroys the ion channels, permanently disabling the cell.",
+          "isCorrect": false,
+          "rationale": "Optogenetic tools are used for reversible control of neural activity, not for destroying cells."
+        }
+      ],
+      "hint": "Think about the specific ion involved and whether yellow light is used for excitation or inhibition."
+    }
+  ]
+}

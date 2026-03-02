@@ -1,0 +1,317 @@
+{
+  "title": "Neuroscience Quiz",
+  "questions": [
+    {
+      "question": "In Phenylketonuria ($PKU$), the accumulation of which substance in the brain is responsible for the associated puzzles of cognitive and physical disabilities?",
+      "answerOptions": [
+        {
+          "text": "Dopamine",
+          "isCorrect": false,
+          "rationale": "Dopamine is a neurotransmitter that phenylalanine is a precursor for, but its deficiency is not the primary cause of the cognitive disability in $PKU$."
+        },
+        {
+          "text": "Phenylalanine",
+          "isCorrect": true,
+          "rationale": "A defect in the gene for the enzyme phenylalanine hydroxylase ($PAH$) prevents the breakdown of this amino acid, leading to toxic levels in the brain."
+        },
+        {
+          "text": "Tyrosine",
+          "isCorrect": false,
+          "rationale": "Tyrosine is the product that should be formed from phenylalanine; its levels are typically low rather than high in untreated $PKU$."
+        },
+        {
+          "text": "Norepinephrine",
+          "isCorrect": false,
+          "rationale": "While related to the metabolic pathway, the buildup of phenylalanine itself, rather than norepinephrine, causes the characteristic brain damage."
+        }
+      ],
+      "hint": "Consider the name of the disorder and what the 'missing' enzyme is supposed to metabolize."
+    },
+    {
+      "question": "How does the National Institute of Mental Health's Research Domain Criteria ($RDoC$) differ from the $DSM-5-TR$ in its approach to behavioral disorders?",
+      "answerOptions": [
+        {
+          "text": "It focuses on classifying disorders by clinical symptoms to aid in insurance reimbursement.",
+          "isCorrect": false,
+          "rationale": "This is a characteristic of the $DSM$ system, whereas $RDoC$ is intended primarily as a research framework."
+        },
+        {
+          "text": "It prioritizes subjective patient reports over biological markers.",
+          "isCorrect": false,
+          "rationale": "The $RDoC$ actually emphasizes biological units of analysis like genes and circuits to understand malfunction."
+        },
+        {
+          "text": "It seeks to understand disorders based on biological and psychological systems of dysfunction.",
+          "isCorrect": true,
+          "rationale": "The $RDoC$ aims to define the basic biological functions that, when disrupted, lead to the symptoms of mental illness."
+        },
+        {
+          "text": "It is used primarily to provide a definitive guide for practitioners to diagnose patients.",
+          "isCorrect": false,
+          "rationale": "The $RDoC$ is not intended to replace current diagnostic systems like the $DSM$ but to inform research on underlying mechanisms."
+        }
+      ],
+      "hint": "One system is for clinical categorization of symptoms, while the other looks at underlying biological 'building blocks'."
+    },
+    {
+      "question": "Which neuroanatomical finding is most consistently associated with individuals diagnosed with schizophrenia?",
+      "answerOptions": [
+        {
+          "text": "Enlarged ventricles and a thinner cortex",
+          "isCorrect": true,
+          "rationale": "Neuroimaging studies frequently show that loss of gray matter and increased ventricular volume are hallmarks of the schizophrenic brain."
+        },
+        {
+          "text": "Increased dendritic arborization in the prefrontal cortex",
+          "isCorrect": false,
+          "rationale": "The source material indicates that schizophrenia is actually associated with reduced dendritic fields and cell loss."
+        },
+        {
+          "text": "Strictly parallel orientation of hippocampal pyramidal neurons",
+          "isCorrect": false,
+          "rationale": "The hippocampal neurons in schizophrenia are often found to be disorganized or 'haphazardly' oriented."
+        },
+        {
+          "text": "Excessive accumulation of amyloid plaques",
+          "isCorrect": false,
+          "rationale": "Amyloid plaques are a primary feature of Alzheimer disease, not schizophrenia."
+        }
+      ],
+      "hint": "Look for a structural change that suggests a loss of brain tissue or an increase in fluid-filled spaces."
+    },
+    {
+      "question": "The 'Dopamine Hypothesis' of schizophrenia was originally based on which two lines of clinical evidence?",
+      "answerOptions": [
+        {
+          "text": "The use of $L-dopa$ to treat symptoms and the discovery of low dopamine levels in the CSF.",
+          "isCorrect": false,
+          "rationale": "$L-dopa$ is used for Parkinson disease, and levels in the CSF are not the primary evidence for the hypothesis."
+        },
+        {
+          "text": "Antipsychotic drug effects on $D_2$ receptors and amphetamine-induced psychosis.",
+          "isCorrect": true,
+          "rationale": "Neuroleptics that block dopamine receptors reduce symptoms, while drugs that increase dopamine can produce psychotic states."
+        },
+        {
+          "text": "The success of $SSRIs$ and the measurement of dopamine metabolites in urine.",
+          "isCorrect": false,
+          "rationale": "$SSRIs$ affect serotonin and are used for depression, not as the basis for the dopamine hypothesis of schizophrenia."
+        },
+        {
+          "text": "Genetic mutations in the $PAH$ gene and viral infections during the second trimester.",
+          "isCorrect": false,
+          "rationale": "The $PAH$ gene is related to $PKU$, and while viral infections are a risk factor, they are not the basis of the dopamine hypothesis."
+        }
+      ],
+      "hint": "Think about how certain drugs that block or enhance dopamine signaling affect psychotic symptoms."
+    },
+    {
+      "question": "In the context of Parkinson disease, which of the following is categorized as a 'positive symptom'?",
+      "answerOptions": [
+        {
+          "text": "Festination",
+          "isCorrect": false,
+          "rationale": "Festination is a disorder of locomotion (speeding up steps) which is a negative symptom involving the loss of gait control."
+        },
+        {
+          "text": "Hypokinesia",
+          "isCorrect": false,
+          "rationale": "Hypokinesia refers to a lack of movement, which is the absence of a normal behavior (negative symptom)."
+        },
+        {
+          "text": "Tremor at rest",
+          "isCorrect": true,
+          "rationale": "Positive symptoms are involuntary movements that are present but should normally be inhibited."
+        },
+        {
+          "text": "Disorders of posture",
+          "isCorrect": false,
+          "rationale": "Postural disorders represent the inability to maintain normal balance, which is a loss of function (negative symptom)."
+        }
+      ],
+      "hint": "Focus on the definition of symptoms that manifest as 'added' involuntary behaviors rather than 'lost' normal functions."
+    },
+    {
+      "question": "Which pathological feature is characteristic of Chronic Traumatic Encephalopathy ($CTE$), often found in athletes with a history of multiple concussions?",
+      "answerOptions": [
+        {
+          "text": "Demyelination of the optic nerve",
+          "isCorrect": false,
+          "rationale": "This is a characteristic feature sometimes found in Multiple Sclerosis, not $CTE$."
+        },
+        {
+          "text": "Neurofibrillary tangles composed of tau protein",
+          "isCorrect": true,
+          "rationale": "$CTE$ is specifically identified postmortem by the accumulation of tau protein tangles, leading to brain degeneration."
+        },
+        {
+          "text": "Ischemic blockages in the middle cerebral artery",
+          "isCorrect": false,
+          "rationale": "This describes a stroke, which is a distinct vascular event rather than the progressive proteinopathy of $CTE$."
+        },
+        {
+          "text": "Excessive production of acetylcholine in the forebrain",
+          "isCorrect": false,
+          "rationale": "Alzheimer treatments often aim to increase acetylcholine, but $CTE$ is associated with cell death and protein tangles."
+        }
+      ],
+      "hint": "Think about the specific protein that 'tangles' and marks the degeneration in various neurocognitive disorders."
+    },
+    {
+      "question": "What is the primary difference between an ischemic stroke and a hemorrhagic stroke?",
+      "answerOptions": [
+        {
+          "text": "Ischemic is caused by a burst vessel; hemorrhagic is caused by a clot.",
+          "isCorrect": false,
+          "rationale": "This reverses the definitions of the two stroke types."
+        },
+        {
+          "text": "Ischemic involves a lack of blood flow due to blockage; hemorrhagic involves bleeding into the brain.",
+          "isCorrect": true,
+          "rationale": "Ischemia refers to the restriction of blood supply, while hemorrhage refers to active bleeding from a ruptured vessel."
+        },
+        {
+          "text": "Ischemic strokes only affect the spinal cord; hemorrhagic strokes only affect the brain.",
+          "isCorrect": false,
+          "rationale": "Both types primarily refer to cerebrovascular events affecting the brain."
+        },
+        {
+          "text": "Ischemic strokes are always silent; hemorrhagic strokes always cause seizures.",
+          "isCorrect": false,
+          "rationale": "While symptoms vary, the distinction is based on the underlying vascular cause (blockage vs. bleeding)."
+        }
+      ],
+      "hint": "One term relates to 'stopping' flow, and the other relates to 'excessive' flow or leaking."
+    },
+    {
+      "question": "In the 'Prion Theory' of neurodegenerative diseases, what occurs when a healthy protein encounters a prion?",
+      "answerOptions": [
+        {
+          "text": "The healthy protein is immediately digested by lysosomes.",
+          "isCorrect": false,
+          "rationale": "The problem with prions is that they are resistant to normal cellular cleanup mechanisms."
+        },
+        {
+          "text": "The healthy protein undergoes a change in its physical shape to match the prion's fold.",
+          "isCorrect": true,
+          "rationale": "Prions are abnormally folded proteins that cause normal proteins of the same type to misfold as well."
+        },
+        {
+          "text": "The prion injects viral $RNA$ into the healthy protein's nucleus.",
+          "isCorrect": false,
+          "rationale": "Prions do not contain nucleic acids; they are entirely proteinaceous infectious particles."
+        },
+        {
+          "text": "The healthy protein is converted into an amyloid plaque by the mitochondria.",
+          "isCorrect": false,
+          "rationale": "While plaques can form, the mechanism is the misfolding induced by the prion, not mitochondrial conversion."
+        }
+      ],
+      "hint": "Recall that prions act as a template that forces other proteins to 'mimic' their abnormal structure."
+    },
+    {
+      "question": "Which treatment for depression involves the induction of a seizure and is typically reserved for treatment-resistant cases?",
+      "answerOptions": [
+        {
+          "text": "Transcranial Magnetic Stimulation ($TMS$)",
+          "isCorrect": false,
+          "rationale": "$TMS$ uses magnetic fields to stimulate focal regions and typically does not induce seizures."
+        },
+        {
+          "text": "Electroconvulsive Therapy ($ECT$)",
+          "isCorrect": true,
+          "rationale": "Developed in the 1930s, $ECT$ uses electrical current to produce a seizure as a treatment for severe depression."
+        },
+        {
+          "text": "Deep Brain Stimulation ($DBS$)",
+          "isCorrect": false,
+          "rationale": "$DBS$ involves implanted electrodes to stimulate specific nuclei, often for Parkinson disease or severe $OCD$."
+        },
+        {
+          "text": "Cognitive-Behavioral Therapy ($CBT$)",
+          "isCorrect": false,
+          "rationale": "$CBT$ is a behavioral talk therapy, not an electrophysiological intervention."
+        }
+      ],
+      "hint": "This procedure has a long history and is often the last resort for severe, non-responsive mood disorders."
+    },
+    {
+      "question": "Multiple Sclerosis ($MS$) is classified as an autoimmune disease because the immune system attacks which specific component of the nervous system?",
+      "answerOptions": [
+        {
+          "text": "The cell bodies of dopaminergic neurons in the substantia nigra.",
+          "isCorrect": false,
+          "rationale": "This describes the pathology of Parkinson disease, not $MS$."
+        },
+        {
+          "text": "The myelin sheath surrounding axons.",
+          "isCorrect": true,
+          "rationale": "$MS$ involves the immune system identifying myelin as a foreign invader and destroying it, leading to scars (sclerosis)."
+        },
+        {
+          "text": "The $PAH$ enzyme in the liver.",
+          "isCorrect": false,
+          "rationale": "This relates to the metabolic dysfunction in $PKU$."
+        },
+        {
+          "text": "The acetylcholine receptors at the neuromuscular junction.",
+          "isCorrect": false,
+          "rationale": "While this is an autoimmune condition (Myasthenia Gravis), it is not the definition of Multiple Sclerosis."
+        }
+      ],
+      "hint": "Think about the 'insulation' of the neurons that, when lost, leads to the varied symptoms of the disease."
+    },
+    {
+      "question": "Which of the following describes the mechanism of 'rt-fMRI' as a behavioral treatment?",
+      "answerOptions": [
+        {
+          "text": "It uses magnetic pulses to permanently deactivate overactive brain regions.",
+          "isCorrect": false,
+          "rationale": "This more closely describes radiosurgery or high-intensity $TMS$, not $rt-fMRI$."
+        },
+        {
+          "text": "It allows individuals to view their own brain activity in real time to learn how to change it.",
+          "isCorrect": true,
+          "rationale": "Real-time $fMRI$ acts as a form of biofeedback or operant conditioning for brain activity patterns."
+        },
+        {
+          "text": "It delivers $L-dopa$ directly to the basal ganglia during the imaging session.",
+          "isCorrect": false,
+          "rationale": "$rt-fMRI$ is a non-invasive imaging technique used for training, not a drug delivery system."
+        },
+        {
+          "text": "It identifies the exact genetic mutation causing a patient's depression.",
+          "isCorrect": false,
+          "rationale": "$fMRI$ measures blood flow and activity, not genetic sequences."
+        }
+      ],
+      "hint": "This technique functions similarly to biofeedback, but the 'feedback' is the patient's own neural data."
+    },
+    {
+      "question": "In Alzheimer disease, the loss of which neurotransmitter system is most closely associated with the early cognitive decline and memory loss?",
+      "answerOptions": [
+        {
+          "text": "Dopamine",
+          "isCorrect": false,
+          "rationale": "Dopamine loss is primarily associated with Parkinson disease symptoms."
+        },
+        {
+          "text": "Serotonin",
+          "isCorrect": false,
+          "rationale": "While serotonin is reduced in Alzheimer's, it is more often linked to mood changes than the primary memory deficit."
+        },
+        {
+          "text": "Acetylcholine ($ACh$)",
+          "isCorrect": true,
+          "rationale": "The cholinergic system in the forebrain is significantly impaired in Alzheimer's, and many treatments aim to increase $ACh$ levels."
+        },
+        {
+          "text": "GABA",
+          "isCorrect": false,
+          "rationale": "GABA is the brain's main inhibitory neurotransmitter, but it is not the primary focus of early Alzheimer's memory pathology."
+        }
+      ],
+      "hint": "Recall the candidate neurotransmitter that was the focus of the first major treatments for the disease in the 1970s."
+    }
+  ]
+}

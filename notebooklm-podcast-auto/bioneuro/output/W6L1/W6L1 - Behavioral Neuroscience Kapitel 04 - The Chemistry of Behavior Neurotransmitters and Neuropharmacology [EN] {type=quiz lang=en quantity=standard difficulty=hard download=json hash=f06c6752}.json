@@ -1,0 +1,265 @@
+{
+  "title": "Neurofarmakologi Quiz",
+  "questions": [
+    {
+      "question": "Hvilken specifik proces i den pr\u00e6synaptiske terminal afh\u00e6nger direkte af aktiveringen af $SNARE$-proteiner?",
+      "answerOptions": [
+        {
+          "text": "Fusionen af synaptiske vesikler med den pr\u00e6synaptiske membran",
+          "isCorrect": true,
+          "rationale": "Denne proces muligg\u00f8r exocytose, hvor neurotransmittere frigives til den synaptiske kl\u00f8ft som reaktion p\u00e5 $Ca^{2+}$-influx."
+        },
+        {
+          "text": "Syntesen af neurotransmittere fra pr\u00e6kursorer",
+          "isCorrect": false,
+          "rationale": "Syntese styres af specifikke enzymer i cytoplasmaet, ikke af de proteiner der st\u00e5r for vesikelfusion."
+        },
+        {
+          "text": "Genoptagelse af transmittermolekyler via transportere",
+          "isCorrect": false,
+          "rationale": "Genoptagelse udf\u00f8res af specialiserede transportproteiner og er en mekanisme til at afslutte signalet, ikke til at frigive det."
+        },
+        {
+          "text": "\u00c5bning af sp\u00e6ndingsstyrede natriumkanaler",
+          "isCorrect": false,
+          "rationale": "Natriumkanaler er ansvarlige for udbredelsen af aktionspotentialet, hvilket sker f\u00f8r $SNARE$-proteinerne aktiveres."
+        }
+      ],
+      "hint": "Overvej hvilke proteiner der fungerer som en 'anker-mekanisme' for de sm\u00e5 beholdere med kemiske budbringere."
+    },
+    {
+      "question": "Hvis et l\u00e6gemiddel har en h\u00f8j affinitet for en receptor, men ingen efficancy (egenvirkning), hvordan vil det s\u00e5 klassificeres?",
+      "answerOptions": [
+        {
+          "text": "Som en antagonist",
+          "isCorrect": true,
+          "rationale": "En antagonist binder sig til receptoren (affinitet), men aktiverer den ikke, hvilket blokerer for den naturlige transmitter."
+        },
+        {
+          "text": "Som en agonist",
+          "isCorrect": false,
+          "rationale": "En agonist kr\u00e6ver b\u00e5de affinitet for binding og h\u00f8j efficancy for at udl\u00f8se en respons i cellen."
+        },
+        {
+          "text": "Som en invers agonist",
+          "isCorrect": false,
+          "rationale": "Dette stof ville ikke blot blokere, men aktivt fremkalde den modsatte effekt af den normale transmitter."
+        },
+        {
+          "text": "Som en non-monoton ligand",
+          "isCorrect": false,
+          "rationale": "Dette begreb refererer til formen p\u00e5 en dosis-respons-kurve, ikke til de funktionelle egenskaber ved selve bindingen."
+        }
+      ],
+      "hint": "T\u00e6nk p\u00e5 en n\u00f8gle, der passer i l\u00e5sen, men som ikke kan dreje rundt."
+    },
+    {
+      "question": "Hvilken dopaminerg bane er prim\u00e6rt involveret i hjernens bel\u00f8nningssystem og er associeret med skizofreni?",
+      "answerOptions": [
+        {
+          "text": "Den mesolimbokortikale bane",
+          "isCorrect": true,
+          "rationale": "Denne bane udspringer fra det ventrale tegmentale omr\u00e5de ($VTA$) og projicerer til det limbiske system og cortex."
+        },
+        {
+          "text": "Den mesostriatale bane",
+          "isCorrect": false,
+          "rationale": "Denne bane fokuserer p\u00e5 motorisk kontrol via forbindelsen mellem substantia nigra og striatum."
+        },
+        {
+          "text": "Den cholinerge projektion fra nucleus basalis",
+          "isCorrect": false,
+          "rationale": "Denne bane bruger acetylcholin, ikke dopamin, og er t\u00e6ttere knyttet til hukommelse og Alzheimers sygdom."
+        },
+        {
+          "text": "Den noradrenerge bane fra locus coeruleus",
+          "isCorrect": false,
+          "rationale": "Denne bane benytter norepinephrin og er prim\u00e6rt involveret i \u00e5rv\u00e5genhed og arousal."
+        }
+      ],
+      "hint": "Fokuser p\u00e5 banen, der forbinder midthjernen med b\u00e5de det limbiske system og hjernebarken."
+    },
+    {
+      "question": "Hvordan adskiller gas-neurotransmittere som nitrogenoxid ($NO$) sig fundamentalt fra klassiske neurotransmittere?",
+      "answerOptions": [
+        {
+          "text": "De lagres ikke i vesikler, men diffunderer direkte ud af cellen",
+          "isCorrect": true,
+          "rationale": "Gasser er opl\u00f8selige og produceres 'on-demand' i dendritter, hvorefter de spreder sig gennem cellemembraner uden exocytose."
+        },
+        {
+          "text": "De binder sig udelukkende til ionotrope receptorer",
+          "isCorrect": false,
+          "rationale": "Gasser interagerer ofte med intracellul\u00e6re processer fremfor ionkanaler p\u00e5 overfladen."
+        },
+        {
+          "text": "De kan kun bev\u00e6ge sig fra det pr\u00e6synaptiske til det postsynaptiske neuron",
+          "isCorrect": false,
+          "rationale": "Gasser fungerer ofte som retrograde transmittere, der bev\u00e6ger sig 'bagl\u00e6ns' for at p\u00e5virke det pr\u00e6synaptiske neuron."
+        },
+        {
+          "text": "De kr\u00e6ver nedbrydning af enzymet acetylcholinesterase",
+          "isCorrect": false,
+          "rationale": "Dette enzym er specifikt for acetylcholin; gasser forsvinder typisk ved simpel diffusion eller kemisk omdannelse."
+        }
+      ],
+      "hint": "Overvej hvordan en luftart opf\u00f8rer sig sammenlignet med et fast stof i en v\u00e6skefyldt beholder."
+    },
+    {
+      "question": "Hvilken \u00e6ndring i receptort\u00e6theden vil man typisk observere som en kompensation for kronisk brug af en antagonist?",
+      "answerOptions": [
+        {
+          "text": "Opregulering",
+          "isCorrect": true,
+          "rationale": "Cellen fors\u00f8ger at \u00f8ge sin f\u00f8lsomhed ved at inds\u00e6tte flere receptorer, n\u00e5r de eksisterende blokeres af en antagonist."
+        },
+        {
+          "text": "Nedregulering",
+          "isCorrect": false,
+          "rationale": "Dette sker typisk som respons p\u00e5 en agonist, hvor cellen fors\u00f8ger at beskytte sig mod overstimulering."
+        },
+        {
+          "text": "Metabolisk tolerance",
+          "isCorrect": false,
+          "rationale": "Dette refererer til kroppens evne til hurtigere at nedbryde stoffet i organer som leveren, ikke til receptorer i hjernen."
+        },
+        {
+          "text": "Krydstolerance",
+          "isCorrect": false,
+          "rationale": "Dette beskriver et f\u00e6nomen, hvor tolerance over for \u00e9t stof medf\u00f8rer tolerance over for et andet i samme klasse."
+        }
+      ],
+      "hint": "Hvis en d\u00f8r holdes l\u00e5st udefra, vil cellen fors\u00f8ge at bygge flere d\u00f8re for at modtage signaler."
+    },
+    {
+      "question": "Hvilken mekanisme benytter benzodiazepiner til at reducere angst via $GABA_{A}$-receptoren?",
+      "answerOptions": [
+        {
+          "text": "De binder sig til et modulatorisk site og forst\u00e6rker effekten af naturlig GABA",
+          "isCorrect": true,
+          "rationale": "Som non-kompetitive agonister \u00f8ger de $Cl^{-}$-influx, n\u00e5r GABA er til stede, hvilket h\u00e6mmer neuronet yderligere."
+        },
+        {
+          "text": "De blokerer for genoptagelsen af GABA i den pr\u00e6synaptiske terminal",
+          "isCorrect": false,
+          "rationale": "Benzodiazepiner virker direkte p\u00e5 receptor-komplekset postsynaptisk, ikke p\u00e5 transporter-proteiner."
+        },
+        {
+          "text": "De fungerer som kompetitive antagonister for glutamat",
+          "isCorrect": false,
+          "rationale": "Selvom de modvirker excitation, g\u00f8r de det ved at fremme inhibition via GABA, ikke ved direkte at blokere glutamat-receptorer."
+        },
+        {
+          "text": "De \u00e5bner chloridkanalen direkte uden behov for neurotransmittere",
+          "isCorrect": false,
+          "rationale": "De kr\u00e6ver tilstedev\u00e6relsen af GABA for at virke; de er ikke i stand til at \u00e5bne kanalen alene."
+        }
+      ],
+      "hint": "T\u00e6nk p\u00e5 et stof, der g\u00f8r en eksisterende 'bremse' endnu mere effektiv."
+    },
+    {
+      "question": "Hvad angiver $ED_{50}$ v\u00e6rdien p\u00e5 en dosis-respons-kurve?",
+      "answerOptions": [
+        {
+          "text": "Den dosis, hvor stoffet udviser halvdelen af sin maksimale effekt",
+          "isCorrect": true,
+          "rationale": "Dette punkt bruges til at sammenligne potensen mellem forskellige l\u00e6gemidler."
+        },
+        {
+          "text": "Den dosis, der er d\u00f8delig for halvdelen af fors\u00f8gsdyrene",
+          "isCorrect": false,
+          "rationale": "Dette beskriver $LD_{50}$ (Lethal Dose 50%), som bruges til at vurdere sikkerhed."
+        },
+        {
+          "text": "Det punkt, hvor alle receptorer i hjernen er m\u00e6ttede",
+          "isCorrect": false,
+          "rationale": "M\u00e6tning sker ved den maksimale effekt (plateauet p\u00e5 kurven), ikke ved halvvejspunktet."
+        },
+        {
+          "text": "Forholdet mellem den terapeutiske og den toksiske dosis",
+          "isCorrect": false,
+          "rationale": "Dette forhold kaldes det terapeutiske indeks, ikke $ED_{50}$."
+        }
+      ],
+      "hint": "Bogstaverne st\u00e5r for 'Effective Dose'."
+    },
+    {
+      "question": "Koffein \u00f8ger arousal ved at blokere receptorer for et neuromodulatorisk stof. Hvilket stof er der tale om?",
+      "answer9ptions": [
+        {
+          "text": "Adenosin",
+          "isCorrect": true,
+          "rationale": "Adenosin fungerer normalt ved at h\u00e6mme frigivelsen af katekolaminer via pr\u00e6synaptiske autoreceptorer; blokering heraf \u00f8ger frigivelsen."
+        },
+        {
+          "text": "Acetylcholin",
+          "isCorrect": false,
+          "rationale": "Koffein p\u00e5virker cholinerge systemer indirekte, men dets prim\u00e6re angrebspunkt er adenosin-receptorer."
+        },
+        {
+          "text": "GABA",
+          "isCorrect": false,
+          "rationale": "GABA er den prim\u00e6re inhibitoriske transmitter, men koffein virker ikke som en antagonist p\u00e5 GABA-receptorer."
+        },
+        {
+          "text": "Serotonin",
+          "isCorrect": false,
+          "rationale": "Selvom koffein kan p\u00e5virke hum\u00f8ret, er det ikke via direkte blokering af serotonerge autoreceptorer."
+        }
+      ],
+      "hint": "Dette stof ophobes i l\u00f8bet af dagen og fremmer s\u00f8vnighed, medmindre dets autoreceptor-effekt blokeres."
+    },
+    {
+      "question": "Hvad er den prim\u00e6re farmakologiske forskel mellem f\u00f8rste- og anden-generations antipsykotika?",
+      "answerOptions": [
+        {
+          "text": "Anden-generations midler blokerer b\u00e5de dopamin- og serotoninreceptorer",
+          "isCorrect": true,
+          "rationale": "Hvor f\u00f8rste-generations midler fokuserer p\u00e5 $D_{2}$-antagonisme, har nyere midler en bredere profil, der inkluderer $5-HT_{2A}$ receptorer."
+        },
+        {
+          "text": "F\u00f8rste-generations midler er kun effektive mod negative symptomer",
+          "isCorrect": false,
+          "rationale": "De \u00e6ldre midler er faktisk mest kendte for at behandle 'positive' symptomer som hallucinationer."
+        },
+        {
+          "text": "Anden-generations midler virker ved at \u00f8ge dopaminniveauet i striatum",
+          "isCorrect": false,
+          "rationale": "Begge typer er prim\u00e6rt antagonister; \u00f8get dopamin ville potentielt forv\u00e6rre psykotiske symptomer."
+        },
+        {
+          "text": "F\u00f8rste-generations midler har ingen affinitet for dopaminreceptorer",
+          "isCorrect": false,
+          "rationale": "Tv\u00e6rtimod er deres blokering af dopamin $D_{2}$-receptorer deres definerende egenskab."
+        }
+      ],
+      "hint": "T\u00e6nk p\u00e5 overgangen fra at ramme \u00e9t m\u00e5lsystem til at ramme flere systemer samtidigt."
+    },
+    {
+      "question": "Hvilket enzym er ansvarligt for at nedbryde acetylcholin ($ACh$) i den synaptiske kl\u00f8ft?",
+      "answerOptions": [
+        {
+          "text": "Acetylcholinesterase ($AChE$)",
+          "isCorrect": true,
+          "rationale": "Dette enzym inaktiverer lynhurtigt $ACh$ ved at opdele det i cholin og eddikesyre."
+        },
+        {
+          "text": "Cholin-acetyltransferase ($ChAT$)",
+          "isCorrect": false,
+          "rationale": "Dette enzym bruges til at *syntetisere* acetylcholin, ikke til at nedbryde det."
+        },
+        {
+          "text": "Monoaminoxidase ($MAO$)",
+          "isCorrect": false,
+          "rationale": "Dette enzym nedbryder monoaminer som dopamin og serotonin, men ikke acetylcholin."
+        },
+        {
+          "text": "Tyrosinhydroxylase",
+          "isCorrect": false,
+          "rationale": "Dette er det hastighedsbegr\u00e6nsende enzym i syntesen af katekolaminer."
+        }
+      ],
+      "hint": "Navnet p\u00e5 enzymet slutter p\u00e5 '-esterase'."
+    }
+  ]
+}

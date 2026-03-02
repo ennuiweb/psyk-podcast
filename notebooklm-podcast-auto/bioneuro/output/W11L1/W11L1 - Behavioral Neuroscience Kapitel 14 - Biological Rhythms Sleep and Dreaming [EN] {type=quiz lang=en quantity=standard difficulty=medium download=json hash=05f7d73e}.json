@@ -1,0 +1,318 @@
+{
+  "title": "Sleep Quiz",
+  "questions": [
+    {
+      "question": "What does the term 'free-running' refer to in the context of biological rhythms?",
+      "answerOptions": [
+        {
+          "text": "The rhythm of an animal that is deprived of external cues about the time of day.",
+          "isCorrect": true,
+          "rationale": "In the absence of external synchronisers, an endogenous clock maintains its own natural period, which often slightly deviates from 24 hours."
+        },
+        {
+          "text": "The rapid phase shift experienced when travelling across several time zones.",
+          "isCorrect": false,
+          "rationale": "This describes jet lag or a phase shift, which is an adjustment to new external cues rather than the absence of them."
+        },
+        {
+          "text": "A sleep cycle that lacks any periods of rapid-eye-movement (REM) sleep.",
+          "isCorrect": false,
+          "rationale": "Free-running relates to the timing and periodicity of the sleep-wake cycle as a whole, not the internal structure of sleep stages."
+        },
+        {
+          "text": "The process of using a 'zeitgeber' to synchronise internal activity with the environment.",
+          "isCorrect": false,
+          "rationale": "This process is known as entrainment, which is the opposite of a free-running state."
+        }
+      ],
+      "hint": "Think about how a clock behaves when it is not being reset by an external time-giver."
+    },
+    {
+      "question": "In the hypothalamic molecular clock, which proteins form a dimer to promote the transcription of the $per$ and $cry$ genes?",
+      "answerOptions": [
+        {
+          "text": "Clock and Cycle (Bmal1)",
+          "isCorrect": true,
+          "rationale": "These two proteins bind together as a dimer to enhance the transcription of the Period and Cryptochrome genes."
+        },
+        {
+          "text": "Per and Cry",
+          "isCorrect": false,
+          "rationale": "While these proteins do dimerise, their role is to inhibit the activity of the Clock/Cycle dimer, not to promote transcription."
+        },
+        {
+          "text": "Melanopsin and Glutamate",
+          "isCorrect": false,
+          "rationale": "Melanopsin is a photopigment and glutamate is a neurotransmitter involved in entrainment, not the core transcriptional feedback loop."
+        },
+        {
+          "text": "Alpha and Beta",
+          "isCorrect": false,
+          "rationale": "These terms refer to EEG rhythms seen during different states of arousal, rather than molecular clock proteins."
+        }
+      ],
+      "hint": "Identify the pair of molecules that start the cycle by acting on the cell's DNA."
+    },
+    {
+      "question": "What was the primary finding of the SCN transplant experiments involving the $\\tau$ mutation in hamsters?",
+      "answerOptions": [
+        {
+          "text": "The endogenous period of the recipient hamster changed to match the period of the donor SCN.",
+          "isCorrect": true,
+          "rationale": "This demonstrated that the SCN itself is the source of the endogenous rhythm, as the host adopted the 20-hour or 24-hour cycle of the donor tissue."
+        },
+        {
+          "text": "The recipient hamsters became permanently arrhythmic regardless of the donor's genotype.",
+          "isCorrect": false,
+          "rationale": "Transplants actually restored rhythmicity to lesioned animals, provided the donor tissue was healthy."
+        },
+        {
+          "text": "The SCN required direct synaptic connections to the hypothalamus to drive circadian rhythms.",
+          "isCorrect": false,
+          "rationale": "Encapsulation experiments showed that chemical signals from the SCN could drive rhythms even without synaptic connections."
+        },
+        {
+          "text": "Light information was required for the transplanted SCN to establish any rhythm at all.",
+          "isCorrect": false,
+          "rationale": "The experiments were conducted in constant conditions to reveal the endogenous rhythm, showing the clock works without light cues."
+        }
+      ],
+      "hint": "Focus on whose internal timing\u2014the host's or the donor's\u2014prevailed after the procedure."
+    },
+    {
+      "question": "Which photopigment is specifically found in the retinal ganglion cells that project to the suprachiasmatic nucleus (SCN) in mammals?",
+      "answerOptions": [
+        {
+          "text": "Melanopsin",
+          "isCorrect": true,
+          "rationale": "This photopigment allows certain ganglion cells to be intrinsically photosensitive, carrying light information directly to the SCN."
+        },
+        {
+          "text": "Rhodopsin",
+          "isCorrect": false,
+          "rationale": "Rhodopsin is the photopigment found in rods, which are primarily involved in low-light vision rather than circadian entrainment."
+        },
+        {
+          "text": "Cryptochrome",
+          "isCorrect": false,
+          "rationale": "In mammals, Cryptochrome is a protein involved in the internal molecular clock feedback loop, not a retinal photopigment."
+        },
+        {
+          "text": "Cone opsin",
+          "isCorrect": false,
+          "rationale": "Opsins in cones provide colour vision and form vision, but the circadian system can function even in their absence."
+        }
+      ],
+      "hint": "Consider the pigment most sensitive to blue light frequencies that informs the biological clock."
+    },
+    {
+      "question": "During which stage of sleep are 'sleep spindles' and 'K-complexes' the defining electroencephalographic (EEG) features?",
+      "answerOptions": [
+        {
+          "text": "Stage 2 sleep (NREM 2)",
+          "isCorrect": true,
+          "rationale": "Stage 2 is characterised by periodic bursts of 12-14 Hz waves (spindles) and sharp negative potentials (K-complexes)."
+        },
+        {
+          "text": "Stage 1 sleep (NREM 1)",
+          "isCorrect": false,
+          "rationale": "Stage 1 is characterised by vertex spikes and a slowing of the heart rate, but does not yet show spindles."
+        },
+        {
+          "text": "Stage 3 sleep (SWS)",
+          "isCorrect": false,
+          "rationale": "Stage 3 is defined by large-amplitude, very slow $\\Delta$ waves representing widespread cortical synchronisation."
+        },
+        {
+          "text": "REM sleep",
+          "isCorrect": false,
+          "rationale": "REM sleep features a desynchronised EEG similar to wakefulness, along with complete muscle atonia."
+        }
+      ],
+      "hint": "This stage occurs after light drowsiness but before the appearance of deep, slow delta waves."
+    },
+    {
+      "question": "How does the distribution of sleep stages typically change across a single night in a healthy young adult?",
+      "answerOptions": [
+        {
+          "text": "Stage 3 sleep is more prominent early in the night, while REM episodes lengthen towards the morning.",
+          "isCorrect": true,
+          "rationale": "The first half of the night is dominated by slow-wave sleep, whereas the second half contains more REM sleep."
+        },
+        {
+          "text": "REM sleep occurs only in the first 90 minutes, followed by continuous Stage 3 sleep.",
+          "isCorrect": false,
+          "rationale": "Sleep consists of repeating cycles; REM usually occurs at the end of each 90-110 minute cycle throughout the night."
+        },
+        {
+          "text": "Stage 2 sleep gradually disappears as the night progresses, being replaced by Stage 1.",
+          "isCorrect": false,
+          "rationale": "Stage 2 remains a significant portion of total sleep time (about 50%) throughout the night's cycles."
+        },
+        {
+          "text": "The duration of sleep cycles increases from 90 minutes at the start to 180 minutes by dawn.",
+          "isCorrect": false,
+          "rationale": "While the composition of stages within the cycles changes, the cycle length itself remains relatively consistent."
+        }
+      ],
+      "hint": "Think about why you are more likely to remember vivid dreams if you wake up late in the morning."
+    },
+    {
+      "question": "Which of the following is a characteristic change in sleep patterns associated with healthy ageing?",
+      "answerOptions": [
+        {
+          "text": "A significant reduction in the total amount of Stage 3 (SWS) sleep.",
+          "isCorrect": true,
+          "rationale": "By age 60, humans spend about half as much time in Stage 3 as they did at age 20, and it may disappear entirely by age 90."
+        },
+        {
+          "text": "An increase in the total percentage of REM sleep to nearly 50%.",
+          "isCorrect": false,
+          "rationale": "High percentages of REM sleep (up to 50%) are characteristic of infancy, not old age."
+        },
+        {
+          "text": "The consolidation of sleep into a single, uninterrupted 8-hour block.",
+          "isCorrect": false,
+          "rationale": "Ageing is typically associated with more frequent awakenings and fragmented sleep patterns."
+        },
+        {
+          "text": "A shift in circadian rhythm that makes elderly individuals 'night owls'.",
+          "isCorrect": false,
+          "rationale": "The shift towards being a 'late riser' is most prominent at puberty; elderly people often tend to wake earlier."
+        }
+      ],
+      "hint": "Consider which stage of deep sleep, linked to growth hormone and cognitive function, declines most sharply."
+    },
+    {
+      "question": "What is the primary function of the 'glymphatic system' during sleep?",
+      "questionLaTeX": "What is the primary function of the 'glymphatic system' during sleep?",
+      "answerOptions": [
+        {
+          "text": "The disposal of metabolic toxins and waste products, such as $\\beta$-amyloid, from the brain.",
+          "isCorrect": true,
+          "rationale": "Glia control a network of channels that flush out waste products much faster during sleep than during wakefulness."
+        },
+        {
+          "text": "The consolidation of declarative memories into long-term storage.",
+          "isCorrect": false,
+          "rationale": "While sleep helps memory, this is generally attributed to neural activity patterns rather than the glymphatic drainage system."
+        },
+        {
+          "text": "The regulation of body temperature to conserve energy during the night.",
+          "isCorrect": false,
+          "rationale": "Thermoregulation is a separate physiological process, and in REM sleep, it is actually impaired."
+        },
+        {
+          "text": "The synthesis of new proteins used to repair muscle tissue throughout the body.",
+          "isCorrect": false,
+          "rationale": "The glymphatic system is specific to the brain's waste clearance, not systemic protein synthesis."
+        }
+      ],
+      "hint": "Think of this as the brain's unique plumbing or 'waste management' system."
+    },
+    {
+      "question": "Which biological rhythm is characterised by a period that is shorter than a day, such as the 90-minute cycle of sleep stages?",
+      "answerOptions": [
+        {
+          "text": "Ultradian",
+          "isCorrect": true,
+          "rationale": "Ultradian rhythms have a frequency greater than once per day, with periods ranging from minutes to several hours."
+        },
+        {
+          "text": "Infradian",
+          "isCorrect": false,
+          "rationale": "Infradian rhythms have periods longer than a day, such as the 28-day human menstrual cycle."
+        },
+        {
+          "text": "Circannual",
+          "isCorrect": false,
+          "rationale": "Circannual rhythms occur on a roughly annual basis, often regulating seasonal behaviours like breeding."
+        },
+        {
+          "text": "Diurnal",
+          "isCorrect": false,
+          "rationale": "Diurnal refers to being active during the light periods of a 24-hour circadian cycle, not a shorter period."
+        }
+      ],
+      "hint": "The prefix of this term comes from the Latin for 'beyond', indicating a higher frequency than daily."
+    },
+    {
+      "question": "What unique adaptation allows dolphins and certain migratory birds to remain vigilant or active while sleeping?",
+      "answerOptions": [
+        {
+          "text": "Unilateral sleep, where one hemisphere sleeps while the other remains awake.",
+          "isCorrect": true,
+          "rationale": "This allows dolphins to surface for air and birds to watch for predators or continue flying over long distances."
+        },
+        {
+          "text": "The complete elimination of NREM sleep in favour of brief REM bursts.",
+          "isCorrect": false,
+          "rationale": "Dolphins actually appear to lack REM sleep because its associated muscle atonia is incompatible with surfacing to breathe."
+        },
+        {
+          "text": "An endogenous clock that runs on a 12-hour rather than 24-hour cycle.",
+          "isCorrect": false,
+          "rationale": "These animals still maintain circadian rhythms; the adaptation relates to how the brain engages in sleep stages."
+        },
+        {
+          "text": "The use of the pineal gland as a 'third eye' to detect predators during deep SWS.",
+          "isCorrect": false,
+          "rationale": "While some non-mammalian vertebrates have light-sensitive pineal glands, it does not allow for 'waking' behaviour during sleep."
+        }
+      ],
+      "hint": "Consider how the brain might divide the 'labour' of sleeping and staying alert."
+    },
+    {
+      "question": "Fatal familial insomnia is associated with the degeneration of which brain regions?",
+      "answerOptions": [
+        {
+          "text": "Cortex and thalamus",
+          "isCorrect": true,
+          "rationale": "Autopsies of patients with this inherited prion disease show significant damage to these areas, which likely causes the inability to sleep."
+        },
+        {
+          "text": "Suprachiasmatic nucleus (SCN) and optic chiasm",
+          "isCorrect": false,
+          "rationale": "While the SCN is the master clock, its specific degeneration is not the hallmark of this fatal insomnia disorder."
+        },
+        {
+          "text": "Retina and pineal gland",
+          "isCorrect": false,
+          "rationale": "These areas are involved in light detection and melatonin release, but they are not the primary sites of cortical degeneration in this disease."
+        },
+        {
+          "text": "Hippocampus and amygdala",
+          "isCorrect": false,
+          "rationale": "These regions are more typically associated with memory and emotion rather than the fatal sleep loss seen in this condition."
+        }
+      ],
+      "hint": "The disease results in large holes in the frontal areas and affects the brain's sensory relay station."
+    },
+    {
+      "question": "Why is REM sleep often referred to as 'paradoxical sleep'?",
+      "answerOptions": [
+        {
+          "text": "The EEG appears like an active, waking brain, yet the skeletal muscles are completely flaccid.",
+          "isCorrect": true,
+          "rationale": "This contradiction between intense brain activity and profound muscle relaxation defines the 'paradox'."
+        },
+        {
+          "text": "It is the only sleep stage where dreaming is impossible.",
+          "isCorrect": false,
+          "rationale": "On the contrary, REM sleep is the stage most closely associated with vivid, cinematic dreaming."
+        },
+        {
+          "text": "The body's temperature rises significantly while the heart rate drops to its lowest point.",
+          "isCorrect": false,
+          "rationale": "In REM, both heart rate and respiration become irregular and variable, and thermoregulation is actually impaired."
+        },
+        {
+          "text": "It occurs only in the absence of an endogenous circadian clock.",
+          "isCorrect": false,
+          "rationale": "REM sleep is a regular part of the sleep cycle driven and organised by circadian and ultradian rhythms."
+        }
+      ],
+      "hint": "Think about the contradiction between what the brainwaves show and what the body's muscles are doing."
+    }
+  ]
+}

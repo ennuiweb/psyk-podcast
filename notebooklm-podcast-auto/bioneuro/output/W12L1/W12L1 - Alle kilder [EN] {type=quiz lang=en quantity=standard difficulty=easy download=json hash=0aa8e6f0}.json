@@ -1,0 +1,291 @@
+{
+  "title": "Reproduction Quiz",
+  "questions": [
+    {
+      "question": "Which of the following is the correct order for the four major stages of reproductive behavior?",
+      "answerOptions": [
+        {
+          "text": "Sexual attraction, appetitive behavior, copulation, post-copulatory behavior",
+          "isCorrect": true,
+          "rationale": "This sequence accurately reflects the progression from initially finding a mate to the behaviors following the sex act itself."
+        },
+        {
+          "text": "Appetitive behavior, sexual attraction, copulation, refractory period",
+          "isCorrect": false,
+          "rationale": "Sexual attraction is the first stage that brings mates together before appetitive behaviors begin."
+        },
+        {
+          "text": "Sexual attraction, proceptivity, receptivity, resolution",
+          "isCorrect": false,
+          "rationale": "Proceptivity and receptivity are states within the appetitive and copulatory stages, rather than being the stages themselves."
+        },
+        {
+          "text": "Excitement, plateau, orgasm, resolution",
+          "isCorrect": false,
+          "rationale": "These are the phases of the human physiological sexual response described by Masters and Johnson, not the four broad stages of reproductive behavior."
+        }
+      ],
+      "hint": "Consider the very first step that brings two potential mates together in the environment."
+    },
+    {
+      "question": "What phenomenon describes a sexually satiated male resuming sexual activity when introduced to a novel partner?",
+      "answerOptions": [
+        {
+          "text": "The Bruce effect",
+          "isCorrect": false,
+          "rationale": "The Bruce effect refers to the termination of pregnancy in the presence of a new male's odor, not a change in male mating drive."
+        },
+        {
+          "text": "The Coolidge effect",
+          "isCorrect": true,
+          "rationale": "This effect demonstrates how a new reproductive opportunity can shorten the refractory period in many animal species."
+        },
+        {
+          "text": "Lordosis",
+          "isCorrect": false,
+          "rationale": "Lordosis is a stereotyped female receptive posture, not a phenomenon related to male sexual satiety."
+        },
+        {
+          "text": "Parthenogenesis",
+          "isCorrect": false,
+          "rationale": "Parthenogenesis is a form of asexual reproduction and is unrelated to behavioral responses to new partners."
+        }
+      ],
+      "hint": "This effect is named after a story involving a former U.S. President."
+    },
+    {
+      "question": "In many vertebrates, which brain region is considered the 'final common pathway' for the production of male copulatory behaviors?",
+      "answerOptions": [
+        {
+          "text": "Ventromedial hypothalamus (VMH)",
+          "isCorrect": false,
+          "rationale": "The VMH is primarily associated with female sexual behavior, specifically the lordosis response."
+        },
+        {
+          "text": "Medial preoptic area (mPOA)",
+          "isCorrect": true,
+          "rationale": "Lesions in the mPOA abolish male mating behavior across many species, identifying it as a critical node for male copulation."
+        },
+        {
+          "text": "Periaqueductal gray",
+          "isCorrect": false,
+          "rationale": "While involved in the circuit, this region is a downstream target of the VMH in the female lordosis circuit."
+        },
+        {
+          "text": "Medial amygdala",
+          "isCorrect": false,
+          "rationale": "The medial amygdala processes pheromonal information and projects to the mPOA, but it is not the final output center for motor patterns."
+        }
+      ],
+      "hint": "This hypothalamic region is full of steroid-sensitive neurons and coordinates the motor patterns of male mating."
+    },
+    {
+      "question": "Which genetic factor on the Y chromosome is responsible for directing the indifferent gonads to develop into testes?",
+      "answerOptions": [
+        {
+          "text": "The $5\\alpha-reductase$ gene",
+          "isCorrect": false,
+          "rationale": "$5\\alpha-reductase$ is an enzyme that converts testosterone to DHT, not a gene that determines initial gonadal sex."
+        },
+        {
+          "text": "The SRY gene",
+          "isCorrect": true,
+          "rationale": "The SRY gene produces a protein that causes the core of the indifferent gonad to proliferate and form a testis."
+        },
+        {
+          "text": "The anti-M\u00fcllerian hormone gene",
+          "isCorrect": false,
+          "rationale": "AMH is a hormone secreted by the testes after they have already developed; it does not trigger the initial development of the testes."
+        },
+        {
+          "text": "The DHT receptor gene",
+          "isCorrect": false,
+          "rationale": "Receptors respond to hormones once the gonads are functional; they do not determine the primary sex of the gonad."
+        }
+      ],
+      "hint": "The name of this gene stands for 'sex-determining region on the Y chromosome'."
+    },
+    {
+      "question": "Which embryonic duct system develops into the female oviducts, uterus, and inner vagina in the absence of testicular hormones?",
+      "answerOptions": [
+        {
+          "text": "Wolffian ducts",
+          "isCorrect": false,
+          "rationale": "The Wolffian ducts develop into male structures like the vas deferens and seminal vesicles when testosterone is present."
+        },
+        {
+          "text": "M\u00fcllerian ducts",
+          "isCorrect": true,
+          "rationale": "In the absence of anti-M\u00fcllerian hormone (AMH), these ducts naturally develop into the female internal reproductive tract."
+        },
+        {
+          "text": "Urogenital sinus",
+          "isCorrect": false,
+          "rationale": "The urogenital sinus is a precursor to external structures rather than the internal duct system."
+        },
+        {
+          "text": "Genital tubercle",
+          "isCorrect": false,
+          "rationale": "The genital tubercle is the precursor to the phallus (clitoris or penis), not the internal reproductive tract."
+        }
+      ],
+      "hint": "These ducts regress in males due to the action of a specific hormone secreted by the fetal testes."
+    },
+    {
+      "question": "What is the primary role of the enzyme $5\\alpha-reductase$ in human sexual differentiation?",
+      "answerOptions": [
+        {
+          "text": "It converts testosterone into dihydrotestosterone (DHT) to masculinize external genitalia.",
+          "isCorrect": true,
+          "rationale": "DHT is a more potent androgen required for the formation of the penis and scrotum from bipotential tissue."
+        },
+        {
+          "text": "It aromatizes testosterone into estradiol to masculinize the brain.",
+          "isCorrect": false,
+          "rationale": "Aromatization is performed by the enzyme aromatase, not $5\\alpha-reductase$."
+        },
+        {
+          "text": "It triggers the regression of the M\u00fcllerian ducts in males.",
+          "isCorrect": false,
+          "rationale": "M\u00fcllerian duct regression is caused by anti-M\u00fcllerian hormone (AMH), which is a protein hormone, not an enzyme."
+        },
+        {
+          "text": "It binds to $\\alpha-fetoprotein$ to protect the fetus from maternal hormones.",
+          "isCorrect": false,
+          "rationale": "$\\alpha-fetoprotein$ is a blood protein that binds estrogens directly; it is not an enzyme like $5\\alpha-reductase$."
+        }
+      ],
+      "hint": "Consider the chemical conversion needed to create the potent androgen responsible for external male features."
+    },
+    {
+      "question": "In Androgen Insensitivity Syndrome (AIS), why do affected XY individuals develop a feminine phenotype despite having testes?",
+      "answerOptions": [
+        {
+          "text": "They lack the SRY gene on their Y chromosome.",
+          "isCorrect": false,
+          "rationale": "AIS individuals have a functional SRY gene and develop internal testes; the issue is how tissues respond to hormones."
+        },
+        {
+          "text": "Their tissues lack functional androgen receptors.",
+          "isCorrect": true,
+          "rationale": "Because the receptors are dysfunctional, the body cannot respond to testosterone, leading to the development of female external features."
+        },
+        {
+          "text": "They produce excessive amounts of estrogen during fetal development.",
+          "isCorrect": false,
+          "rationale": "While they do have a high estrogen-to-androgen ratio at puberty, the primary cause of the condition is androgen receptor failure."
+        },
+        {
+          "text": "The M\u00fcllerian ducts fail to regress.",
+          "isCorrect": false,
+          "rationale": "The M\u00fcllerian ducts do regress because AMH is secreted by the testes and does not rely on androgen receptors to function."
+        }
+      ],
+      "hint": "Think about why a 'message' (hormone) might not be 'received' by the target cells."
+    },
+    {
+      "question": "According to the aromatization hypothesis, what happens to testosterone in the rodent brain to cause masculinization?",
+      "answerOptions": [
+        {
+          "text": "It is converted into dihydrotestosterone (DHT).",
+          "isCorrect": false,
+          "rationale": "DHT is important for external genitalia, but the aromatization hypothesis specifically focuses on conversion to estrogens for brain organization."
+        },
+        {
+          "text": "It is converted into estradiol by the enzyme aromatase.",
+          "isCorrect": true,
+          "rationale": "In rodents, it is actually the estrogen metabolite of testosterone that acts on receptors to organize the brain in a masculine fashion."
+        },
+        {
+          "text": "It binds to $\\alpha-fetoprotein$ to enter neurons.",
+          "isCorrect": false,
+          "rationale": "$\\alpha-fetoprotein$ prevents estrogen from entering the brain; it does not help testosterone enter neurons."
+        },
+        {
+          "text": "It triggers the immediate release of progesterone.",
+          "isCorrect": false,
+          "rationale": "Progesterone is involved in activating female receptivity, not the early organizational masculinization of the male brain."
+        }
+      ],
+      "hint": "This hypothesis suggests that a 'female' hormone is paradoxically responsible for making a rodent's brain 'male'."
+    },
+    {
+      "question": "What is the function of $\\alpha-fetoprotein$ in the sexual differentiation of rodents?",
+      "answerOptions": [
+        {
+          "text": "It converts androgens into estrogens in the hypothalamus.",
+          "isCorrect": false,
+          "rationale": "Conversion is the role of the enzyme aromatase, not a binding protein like $\\alpha-fetoprotein$."
+        },
+        {
+          "text": "It binds to circulating estrogens to prevent them from masculinizing the female brain.",
+          "isCorrect": true,
+          "rationale": "This protein protects fetal female rodents from the high levels of maternal estrogens present in the blood."
+        },
+        {
+          "text": "It facilitates the transport of testosterone into the brain.",
+          "isCorrect": false,
+          "rationale": "$\\alpha-fetoprotein$ does not bind testosterone, allowing testosterone to bypass the protection and enter the brain freely."
+        },
+        {
+          "text": "It activates the spinal nucleus of the bulbocavernosus (SNB).",
+          "isCorrect": false,
+          "rationale": "The SNB is spared by the action of androgens on muscles, not by $\\alpha-fetoprotein$."
+        }
+      ],
+      "hint": "This blood protein acts as a barrier or 'sponge' for specific steroid hormones."
+    },
+    {
+      "question": "Which of the following is an example of an activational effect of hormones, as opposed to an organizational effect?",
+      "answerOptions": [
+        {
+          "text": "The permanent enlargement of the SDN-POA in male rats during the neonatal period.",
+          "isCorrect": false,
+          "rationale": "This is an organizational effect because it involves a permanent structural change during a sensitive period."
+        },
+        {
+          "text": "Testosterone treatment restoring mating behavior in a castrated adult male rat.",
+          "isCorrect": true,
+          "rationale": "This is an activational effect because the behavior is transient and depends on the current presence of the hormone."
+        },
+        {
+          "text": "The death of SNB motor neurons in female rats shortly after birth.",
+          "isCorrect": false,
+          "rationale": "Neuronal death during development is a permanent structural event characteristic of organizational effects."
+        },
+        {
+          "text": "The development of the uterus from M\u00fcllerian ducts in the absence of AMH.",
+          "isCorrect": false,
+          "rationale": "The development of internal organs is a permanent developmental process, making it an organizational effect."
+        }
+      ],
+      "hint": "Look for a change that is temporary and occurs in adulthood based on hormone circulation."
+    },
+    {
+      "question": "How does social experience, such as maternal licking, influence the sexual differentiation of the rat spinal cord?",
+      "answerOptions": [
+        {
+          "text": "It has no physical effect and only changes the rat's adult personality.",
+          "isCorrect": false,
+          "rationale": "The text explicitly states that social influences must exert a physical effect on the brain or nervous system to change behavior."
+        },
+        {
+          "text": "Increased licking of male pups by the dam helps more SNB motor neurons survive.",
+          "isCorrect": true,
+          "rationale": "Social stimulation from the mother provides an external input that contributes to the masculinization of the male pup's spinal cord."
+        },
+        {
+          "text": "Licking prevents the conversion of testosterone to DHT in the skin.",
+          "isCorrect": false,
+          "rationale": "Licking is a behavioral interaction and does not interfere with the chemical conversion of hormones in the tissue."
+        },
+        {
+          "text": "Maternal licking is triggered by $\\alpha-fetoprotein$ in the pup's saliva.",
+          "isCorrect": false,
+          "rationale": "Dams distinguish male pups by detecting androgen metabolites in their urine, not $\\alpha-fetoprotein$ in saliva."
+        }
+      ],
+      "hint": "This is an example of how 'nature' and 'nurture' interact to shape the physical nervous system."
+    }
+  ]
+}

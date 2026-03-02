@@ -1,0 +1,291 @@
+{
+  "title": "Visual System Quiz",
+  "questions": [
+    {
+      "question": "Based on the case of patient D.F., what does the discrepancy between her inability to name objects and her ability to accurately grasp them suggest about the visual system?",
+      "answerOptions": [
+        {
+          "text": "Visual processing is split into distinct pathways for identifying objects and for guiding action toward them.",
+          "isCorrect": true,
+          "rationale": "D.F. suffered from visual form agnosia, where her 'what' pathway was damaged, but her 'how/where' pathway remained intact for motor interaction."
+        },
+        {
+          "text": "The retina is capable of complex object recognition before sending signals to the brain.",
+          "isCorrect": false,
+          "rationale": "The retina primarily performs transduction and basic processing; object recognition occurs in higher cortical regions."
+        },
+        {
+          "text": "Carbon monoxide poisoning specifically targets the primary visual cortex (V1) while sparing extrastriate regions.",
+          "isCorrect": false,
+          "rationale": "Injury to V1 usually causes total blindness (scotoma) in the corresponding visual field rather than selective object agnosia."
+        },
+        {
+          "text": "Tactile information from the skin can substitute for visual signals in the naming of objects.",
+          "isCorrect": false,
+          "rationale": "While she could perceive touch, the problem was a specific deficit in visual recognition, not a failure of sensory integration."
+        }
+      ],
+      "hint": "Consider the difference between 'seeing' an object's identity and 'acting' upon its physical orientation."
+    },
+    {
+      "question": "In the process of phototransduction, what is the immediate effect of light hitting the photopigment rhodopsin?",
+      "answerOptions": [
+        {
+          "text": "RETINAL dissociates from opsin to reveal an enzymatic site.",
+          "isCorrect": true,
+          "rationale": "This dissociation is the first step in a cascade that activates the G protein transducin."
+        },
+        {
+          "text": "Sodium channels are forced open, causing a massive influx of $Na^{+}$ ions.",
+          "isCorrect": false,
+          "rationale": "Light actually causes sodium channels to close, leading to hyperpolarization rather than depolarization."
+        },
+        {
+          "text": "Phosphodiesterase (PDE) levels decrease, allowing cyclic GMP to accumulate.",
+          "isCorrect": false,
+          "rationale": "Light activates PDE, which then breaks down cyclic GMP to reduce its concentration."
+        },
+        {
+          "text": "The photoreceptor cell releases an increased amount of glutamate.",
+          "isCorrect": false,
+          "rationale": "Hyperpolarization of the cell leads to a decrease in the release of neurotransmitters."
+        }
+      ],
+      "hint": "Recall the two-part composition of photopigments and how they react to photon capture."
+    },
+    {
+      "question": "Which statement best describes the difference between the human scotopic and photopic visual systems regarding convergence?",
+      "answerOptions": [
+        {
+          "text": "The scotopic system has high convergence, with many rods providing information to a single ganglion cell.",
+          "isCorrect": true,
+          "rationale": "This high convergence enhances sensitivity to dim light but limits visual acuity."
+        },
+        {
+          "text": "The photopic system has high convergence to ensure color signals are amplified.",
+          "isCorrect": false,
+          "rationale": "The photopic system has low convergence, often with one cone reporting to one ganglion cell, to maximize sharpness."
+        },
+        {
+          "text": "Both systems have identical levels of convergence to maintain a consistent spatial map.",
+          "isCorrect": false,
+          "rationale": "The systems differ fundamentally in their circuitry to balance the trade-off between sensitivity and acuity."
+        },
+        {
+          "text": "Convergence is only found in the peripheral retina, regardless of receptor type.",
+          "isCorrect": false,
+          "rationale": "While convergence increases in the periphery, the rod-based scotopic system is inherently more convergent than the cone-based photopic system."
+        }
+      ],
+      "hint": "Think about why night vision is sensitive but lacks the sharpness of daylight vision."
+    },
+    {
+      "question": "How do mammals adjust focus for objects at different distances, and what is this process called?",
+      "answerOptions": [
+        {
+          "text": "The ciliary muscles change the shape of the lens; this is known as accommodation.",
+          "isCorrect": true,
+          "rationale": "By altering lens curvature, the eye can bring near or far objects into sharp focus on the retina."
+        },
+        {
+          "text": "The lens moves physically closer or further from the retina; this is known as refraction.",
+          "isCorrect": false,
+          "rationale": "While some vertebrates move the lens, mammals specifically adjust the lens shape through muscular contraction."
+        },
+        {
+          "text": "The cornea changes its fixed curvature to bend light rays; this is known as adaptation.",
+          "isCorrect": false,
+          "rationale": "The curvature of the cornea is generally fixed and is not the primary mechanism for active focusing."
+        },
+        {
+          "text": "The pupil constricts or dilates to adjust light levels; this is known as range fractionation.",
+          "isCorrect": false,
+          "rationale": "Pupillary changes regulate light intensity but do not adjust the focal point of the image."
+        }
+      ],
+      "hint": "Focus on the internal structures that modify the path of light through muscular effort."
+    },
+    {
+      "question": "Which retinal cells are the only ones to conduct action potentials rather than graded local potentials?",
+      "answerOptions": [
+        {
+          "text": "Ganglion cells",
+          "isCorrect": true,
+          "rationale": "Since they must transmit signals over the long distance of the optic nerve, they require action potentials."
+        },
+        {
+          "text": "Photoreceptors",
+          "isCorrect": false,
+          "rationale": "Rods and cones respond to light with graded hyperpolarizing potentials."
+        },
+        {
+          "text": "Bipolar cells",
+          "isCorrect": false,
+          "rationale": "Bipolar cells use graded potentials to release neurotransmitters proportional to the signal intensity."
+        },
+        {
+          "text": "Horizontal cells",
+          "isCorrect": false,
+          "rationale": "These cells facilitate lateral interactions using graded electrical changes rather than spikes."
+        }
+      ],
+      "hint": "Identify the cells whose axons form the optic nerve and travel all the way to the brain."
+    },
+    {
+      "question": "During photoreceptor adaptation, which ion's concentration is most critical for regulating the cell's sensitivity to light?",
+      "answerOptions": [
+        {
+          "text": "Calcium ($Ca^{2+}$)",
+          "isCorrect": true,
+          "rationale": "The regulation of intracellular calcium levels allows the photoreceptor to shift its range of response to match ambient light."
+        },
+        {
+          "text": "Potassium ($K^{+}$)",
+          "isCorrect": false,
+          "rationale": "While $K^{+}$ is involved in resting potentials, it is not the primary factor for the shifting of sensitivity ranges."
+        },
+        {
+          "text": "Chloride ($Cl^{-}$)",
+          "isCorrect": false,
+          "rationale": "Chloride is usually involved in inhibitory synaptic potentials but not in the adaptation of rod/cone sensitivity."
+        },
+        {
+          "text": "Magnesium ($Mg^{2+}$)",
+          "isCorrect": false,
+          "rationale": "Magnesium is not cited as the primary regulator for matching photoreceptor sensitivity to ambient illumination."
+        }
+      ],
+      "hint": "Consider the mechanism shared by many sensory modalities for handling wide ranges of intensity."
+    },
+    {
+      "question": "In the human visual pathway, how is information from the left visual field processed by the brain?",
+      "answerOptions": [
+        {
+          "text": "It is received by the right temporal retina and left nasal retina, and then projected to the right hemisphere.",
+          "isCorrect": true,
+          "rationale": "Nasal axons cross the optic chiasm while temporal axons do not, ensuring the right brain sees the left visual world."
+        },
+        {
+          "text": "It is received by both temporal retinas and projected exclusively to the left hemisphere.",
+          "isCorrect": false,
+          "rationale": "Visual fields project to contralateral hemispheres, and temporal retinas do not cross the midline."
+        },
+        {
+          "text": "It is received by both nasal retinas, both of which cross to the right hemisphere.",
+          "isCorrect": false,
+          "rationale": "Each eye sees part of the left visual field using different halves of its retina (one nasal, one temporal)."
+        },
+        {
+          "text": "It is processed by the superior colliculus before being sent to the left primary visual cortex.",
+          "isCorrect": false,
+          "rationale": "The primary pathway for conscious perception involves the LGN and the contralateral visual cortex."
+        }
+      ],
+      "hint": "Trace which halves of each retina capture the left side of the world and remember the rule of the optic chiasm."
+    },
+    {
+      "question": "What distinguishes the parvocellular layers of the Lateral Geniculate Nucleus (LGN) from the magnocellular layers?",
+      "answerOptions": [
+        {
+          "text": "Parvocellular cells have smaller receptive fields and provide information about fine detail and color.",
+          "isCorrect": true,
+          "rationale": "These cells receive input from small ganglion cells that contact fewer photoreceptors, allowing for higher resolution."
+        },
+        {
+          "text": "Magnocellular cells are primarily responsible for color discrimination in bright light.",
+          "isCorrect": false,
+          "rationale": "Magnocellular cells do not show differential wavelength responses and are more sensitive to motion."
+        },
+        {
+          "text": "Parvocellular cells are found in the ventral layers of the LGN.",
+          "isCorrect": false,
+          "rationale": "The parvocellular layers are the four dorsal (outer) layers, while the magnocellular layers are ventral."
+        },
+        {
+          "text": "Magnocellular cells have much smaller receptive fields than parvocellular cells.",
+          "isCorrect": false,
+          "rationale": "Magnocellular neurons have large receptive fields, receiving input from many converging receptors."
+        }
+      ],
+      "hint": "Think about the Latin roots 'parvus' (small) and 'magnus' (large) and how cell size relates to acuity."
+    },
+    {
+      "question": "A neuron in the primary visual cortex (V1) that responds most strongly to a vertical bar of a specific width at a fixed location in the visual field is classified as a:",
+      "answerOptions": [
+        {
+          "text": "Simple cortical cell",
+          "isCorrect": true,
+          "rationale": "These cells, also called bar or edge detectors, are highly sensitive to the exact position and orientation of a stimulus."
+        },
+        {
+          "text": "Complex cortical cell",
+          "isCorrect": false,
+          "rationale": "Complex cells also care about orientation but allow the bar to be placed anywhere within a larger receptive field."
+        },
+        {
+          "text": "On-center ganglion cell",
+          "isCorrect": false,
+          "rationale": "Ganglion cells typically have concentric (circular) receptive fields rather than elongated bar-shaped ones."
+        },
+        {
+          "text": "Halle Berry neuron",
+          "isCorrect": false,
+          "rationale": "These are examples of high-level neurons that respond to complex objects/faces, not basic geometric bars."
+        }
+      ],
+      "hint": "Differentiate between cells that require precise spatial positioning versus those with more latitude."
+    },
+    {
+      "question": "What evolutionary evidence suggests that the eyes of vastly different species, such as fruit flies and humans, might share a common origin?",
+      "answerOptions": [
+        {
+          "text": "They all rely on the Pax gene family for development and use opsin pigments.",
+          "isCorrect": true,
+          "rationale": "The presence of homologous regulator genes and similar pigments across phyla points toward a single progenitor or deeply conserved mechanism."
+        },
+        {
+          "text": "They all possess three sets of extraocular muscles to control eye movement.",
+          "isCorrect": false,
+          "rationale": "While cephalopods and vertebrates share this, it is an example of convergent evolution rather than evidence of a universal common origin for all eyes."
+        },
+        {
+          "text": "All eyes evolved from a simple pinhole aperture without a lens.",
+          "isCorrect": false,
+          "rationale": "The pinhole eye is an intermediate stage found in some species, but it is not the genetic proof of common origin."
+        },
+        {
+          "text": "The retina is always the thickest part of the sensory system in all seeing animals.",
+          "isCorrect": false,
+          "rationale": "Retinal thickness varies significantly across species and is not a conserved evolutionary marker."
+        }
+      ],
+      "hint": "Look for specific genetic markers and biochemical components that are universal among seeing organisms."
+    },
+    {
+      "question": "In the retina, why does light hitting the center of an on-center bipolar cell's receptive field cause it to depolarise?",
+      "answerOptions": [
+        {
+          "text": "Light reduces the release of glutamate from the photoreceptor, which normally inhibits on-center bipolar cells.",
+          "isCorrect": true,
+          "rationale": "Glutamate has different effects depending on the receptor; in this case, its reduction removes an inhibitory influence."
+        },
+        {
+          "text": "Light triggers the release of excitatory acetylcholine from the rod cells.",
+          "isCorrect": false,
+          "rationale": "Photoreceptors primarily use glutamate as their neurotransmitter, and they release less of it when stimulated by light."
+        },
+        {
+          "text": "The bipolar cell receives more glutamate, which is inherently excitatory to all retinal cells.",
+          "isCorrect": false,
+          "rationale": "Bipolar cells receive less glutamate in light, and glutamate's effect is receptor-specific (inhibitory for on-center, excitatory for off-center)."
+        },
+        {
+          "text": "Horizontal cells provide direct electrical stimulation to the bipolar cell in response to photons.",
+          "isCorrect": false,
+          "rationale": "While horizontal cells are involved in lateral interactions, the primary center-response is driven by direct photoreceptor-to-bipolar synapses."
+        }
+      ],
+      "hint": "Remember that photoreceptors hyperpolarise in light and consider the inhibitory nature of their neurotransmitter on this specific cell type."
+    }
+  ]
+}

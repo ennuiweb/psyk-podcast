@@ -1,0 +1,265 @@
+{
+  "title": "Emotion Quiz",
+  "questions": [
+    {
+      "question": "Which theory of emotion suggests that the physiological arousal we experience is relatively nonspecific and that the specific emotion we feel depends on our cognitive assessment of the current context?",
+      "answerOptions": [
+        {
+          "text": "James-Lange theory",
+          "isCorrect": false,
+          "rationale": "This theory posits that unique constellations of physiological responses directly trigger specific emotional experiences."
+        },
+        {
+          "text": "Cognitive attribution theory",
+          "isCorrect": true,
+          "rationale": "Proposed by Schachter, this model argues that our interpretation of the environment determines the emotional label we apply to general autonomic arousal."
+        },
+        {
+          "text": "Cannon-Bard theory",
+          "isCorrect": false,
+          "rationale": "This model suggests that the cerebral cortex simultaneously decides on the emotional experience and activates the autonomic nervous system."
+        },
+        {
+          "text": "Folk psychology",
+          "isCorrect": false,
+          "rationale": "This informal view assumes that the subjective emotional feeling is the direct cause of the subsequent autonomic reaction."
+        }
+      ],
+      "hint": "Consider the model that emphasizes the interaction between physiological intensity and situational interpretation."
+    },
+    {
+      "question": "What was the primary neurological finding in patient S.M., who famously lacks the ability to experience fear?",
+      "answerOptions": [
+        {
+          "text": "Bilateral destruction of the amygdala due to calcium deposits",
+          "isCorrect": true,
+          "rationale": "S.M. has a rare genetic disorder that caused her amygdalae to calcify and waste away, specifically removing her ability to process external threats."
+        },
+        {
+          "text": "Hyper-activation of the prefrontal cortex during stressful stimuli",
+          "isCorrect": false,
+          "rationale": "High activation in this area is more often associated with the inhibition or extinction of fear, rather than a total absence of the capacity for fear."
+        },
+        {
+          "text": "A complete loss of the sympathetic nervous system's ability to respond",
+          "isCorrect": false,
+          "rationale": "While S.M. shows little physiological response to fear, her sympathetic system functions normally for other survival needs."
+        },
+        {
+          "text": "Degeneration of the hippocampus and cingulate gyrus",
+          "isCorrect": false,
+          "rationale": "These structures are part of the limbic system but their damage is typically associated with memory or emotional regulation rather than pure fearlessness."
+        }
+      ],
+      "hint": "Focus on the specific subcortical structure located in the anterior medial temporal lobe."
+    },
+    {
+      "question": "According to Paul Ekman's research, which set of emotions is universally recognized through facial expressions across various cultures?",
+      "answerOptions": [
+        {
+          "text": "Joy, sadness, affection, and disgust",
+          "isCorrect": false,
+          "rationale": "Affection is part of Plutchik's model of basic emotions but is not listed by Ekman as one of the eight universal facial expressions."
+        },
+        {
+          "text": "Anger, sadness, happiness, fear, disgust, surprise, contempt, and embarrassment",
+          "isCorrect": true,
+          "rationale": "Ekman identified these eight specific expressions as being interpreted similarly across diverse cultures without explicit training."
+        },
+        {
+          "text": "Expectation, vigilance, loathing, and adoration",
+          "isCorrect": false,
+          "rationale": "These are higher-intensity or combined emotions from Plutchik's scheme rather than the core universal expressions identified by Ekman."
+        },
+        {
+          "text": "Rage, grief, terror, and amazement",
+          "isCorrect": false,
+          "rationale": "While these represent intense emotional states, they are considered high-intensity variants rather than the standard set of basic universal expressions."
+        }
+      ],
+      "hint": "Identify the list that includes socially complex expressions like contempt and embarrassment."
+    },
+    {
+      "question": "Which cranial nerve is primarily responsible for the superficial muscles involved in facial emotional expressions?",
+      "answerOptions": [
+        {
+          "text": "Trigeminal nerve ($V$)",
+          "isCorrect": false,
+          "rationale": "This nerve controls the deep muscles used for large movements like chewing and moving the jaw."
+        },
+        {
+          "text": "Vagus nerve ($X$)",
+          "isCorrect": false,
+          "rationale": "The vagus nerve is primarily involved in parasympathetic control of internal organs rather than facial expression."
+        },
+        {
+          "text": "Facial nerve ($VII$)",
+          "isCorrect": true,
+          "rationale": "This nerve innervates the superficial facial muscles that attach to the skin and change the shape of the mouth, eyes, and nose."
+        },
+        {
+          "text": "Optic nerve ($II$)",
+          "isCorrect": false,
+          "rationale": "This nerve is dedicated to transmitting visual information from the retina to the brain, not motor control of the face."
+        }
+      ],
+      "hint": "Think of the nerve whose name directly describes its primary anatomical target."
+    },
+    {
+      "question": "In the context of fear conditioning, what is the 'low road' pathway?",
+      "answerOptions": [
+        {
+          "text": "A projection from the sensory cortex to the amygdala for fine-grained analysis",
+          "isCorrect": false,
+          "rationale": "This describes the 'high road,' which allows for slower, conscious processing of a stimulus."
+        },
+        {
+          "text": "A direct projection from the thalamus to the amygdala for immediate reactions",
+          "isCorrect": true,
+          "rationale": "This pathway bypasses conscious cortical processing, allowing the amygdala to trigger an instant emotional response to a threat."
+        },
+        {
+          "text": "The pathway from the amygdala to the lateral hypothalamus for autonomic responses",
+          "isCorrect": false,
+          "rationale": "This is an output pathway that executes the response, rather than the sensory input pathway that defines the 'low road'."
+        },
+        {
+          "text": "A feedback loop from the heart to the brainstem to signal arousal",
+          "isCorrect": false,
+          "rationale": "This refers to visceral feedback, which is central to the James-Lange theory but not the 'low road' of fear circuitry."
+        }
+      ],
+      "hint": "Think about the shortest route sensory information can take to reach the emotional processing center."
+    },
+    {
+      "question": "What specific synaptic change was observed in the frontal cortex of mice that successfully learned a fear response during fear conditioning?",
+      "answerOptions": [
+        {
+          "text": "The formation of new dendritic spines in the auditory cortex",
+          "isCorrect": false,
+          "rationale": "The formation of spines in the auditory cortex is actually associated with the 'unlearning' or extinction of fear."
+        },
+        {
+          "text": "The elimination of existing dendritic spines",
+          "isCorrect": true,
+          "rationale": "Two-photon microscopy revealed that mice showing the greatest fear response also had the most dendritic spine elimination in the frontal cortex."
+        },
+        {
+          "text": "A decrease in the release of dopamine in the nucleus accumbens",
+          "isCorrect": false,
+          "rationale": "Dopamine levels in the reward circuitry are more closely linked to appetitive learning and addiction than to the structural changes of fear conditioning."
+        },
+        {
+          "text": "The rapid growth of superficial facial muscles",
+          "isCorrect": false,
+          "rationale": "Muscular growth is not a synaptic change and is not a mechanism of associative learning in the brain."
+        }
+      ],
+      "hint": "Look for a structural reduction in the frontal cortex as observed via two-photon excitation microscopy."
+    },
+    {
+      "question": "Research into the neurochemistry of aggression has found that which neurotransmitter typically inhibits aggressive behavior?",
+      "answerOptions": [
+        {
+          "text": "Glutamate",
+          "isCorrect": false,
+          "rationale": "Glutamate is the primary excitatory neurotransmitter and generally promotes responses to stimuli rather than inhibiting them."
+        },
+        {
+          "text": "Serotonin",
+          "isCorrect": true,
+          "rationale": "Studies in monkeys and mice consistently show that lower levels of serotonin (or its metabolites) are associated with increased aggression."
+        },
+        {
+          "text": "Vasopressin",
+          "isCorrect": false,
+          "rationale": "Vasopressin is a peptide hormone that has been implicated in the control of aggression but is not the primary inhibitory neurotransmitter mentioned."
+        },
+        {
+          "text": "Epinephrine",
+          "isCorrect": false,
+          "rationale": "Epinephrine is involved in the sympathetic 'fight-or-flight' response, which facilitates the body's reaction during aggression rather than inhibiting the behavior."
+        }
+      ],
+      "hint": "Low levels of this 'calming' metabolite, $5-HIAA$, are found in the most aggressive individuals."
+    },
+    {
+      "question": "Which brain region acts as a 'switch' to trigger physical aggression when stimulated, and can even cause a male mouse to attack a receptive female?",
+      "answerOptions": [
+        {
+          "text": "Ventromedial hypothalamus ($VMH$)",
+          "isCorrect": true,
+          "rationale": "Optogenetic stimulation of the $VMH$ in male mice can override social cues and trigger immediate aggressive attacking behavior."
+        },
+        {
+          "text": "Hippocampus",
+          "isCorrect": false,
+          "rationale": "The hippocampus is primarily involved in memory formation and spatial navigation, not the direct triggering of aggressive attacks."
+        },
+        {
+          "text": "Nucleus accumbens",
+          "isCorrect": false,
+          "rationale": "This region is a key part of the reward circuitry and is associated with pleasure and addiction rather than the initiation of violence."
+        },
+        {
+          "text": "Mammillary bodies",
+          "isCorrect": false,
+          "rationale": "These are part of the Papez circuit and are involved in memory processing rather than serving as an aggression switch."
+        }
+      ],
+      "hint": "Focus on a specific hypothalamic nucleus involved in eating, sexual, and aggressive behaviors."
+    },
+    {
+      "question": "How does the brain respond differently to 'internal' threats, such as high levels of $CO_2$, compared to 'external' threats like a predator?",
+      "answerOptions": [
+        {
+          "text": "The amygdala is required to detect both internal and external threats",
+          "isCorrect": false,
+          "rationale": "Patient S.M. proved this false, as she felt panic from $CO_2$ despite having no amygdala."
+        },
+        {
+          "text": "Internal threats are processed by alternate systems, possibly in the brainstem",
+          "isCorrect": true,
+          "rationale": "Fearless patients like S.M. still experience panic in response to $CO_2$, suggesting the brain has amygdala-independent circuits for internal survival threats."
+        },
+        {
+          "text": "The 'high road' pathway is the only way to detect internal threats",
+          "isCorrect": false,
+          "rationale": "Internal threats like low oxygen trigger rapid, primal panic that does not rely on slow, conscious cortical processing."
+        },
+        {
+          "text": "There is no physiological response to internal threats in fearless individuals",
+          "isCorrect": false,
+          "rationale": "S.M. displayed a full-blown panic attack, including flailing and crying out, when exposed to high $CO_2$ levels."
+        }
+      ],
+      "hint": "Think about the surprising discovery made when S.M. was given a concentrated air mixture."
+    },
+    {
+      "question": "In the study of individual response stereotypy, infants classified as 'high reactives' showed which of the following long-term outcomes?",
+      "answerOptions": [
+        {
+          "text": "They were more likely to become outgoing and socially dominant adults",
+          "isCorrect": false,
+          "rationale": "High reactive infants typically move toward shyness and social aversion rather than dominance."
+        },
+        {
+          "text": "They developed a lower sensitivity to facial expressions of fear in others",
+          "isCorrect": false,
+          "rationale": "The text suggests they may actually process emotional cues more deeply, showing exaggerated amygdala activation."
+        },
+        {
+          "text": "They were more likely to develop anxiety disorders and extreme phobias",
+          "isCorrect": true,
+          "rationale": "About a third of infants with strong initial reactions to stimuli grew up to have diagnosable phobias, significantly higher than the general population."
+        },
+        {
+          "text": "They showed a significant decrease in amygdala activity when viewing strangers",
+          "isCorrect": false,
+          "rationale": "Actually, these individuals tend to show stronger activation of the amygdala in response to the faces of strangers."
+        }
+      ],
+      "hint": "Consider how an early 'vigilance for danger' might manifest in a child's social development."
+    }
+  ]
+}

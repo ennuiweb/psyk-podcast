@@ -1,0 +1,317 @@
+{
+  "title": "Neurofysiologi Quiz",
+  "questions": [
+    {
+      "question": "Hvad er den typiske hvilemembranpotentiale for en gennemsnitlig neuron?",
+      "answerOptions": [
+        {
+          "text": "$-65$ $\\text{mV}$",
+          "isCorrect": true,
+          "rationale": "Dette er den standardv\u00e6rdi, der oftest m\u00e5les i hvileperioder, hvor cellen er mere negativ p\u00e5 indersiden end p\u00e5 ydersiden."
+        },
+        {
+          "text": "$+40$ $\\text{mV}$",
+          "isCorrect": false,
+          "rationale": "Denne positive sp\u00e6nding opn\u00e5s typisk kun under toppen af et aktionspotentiale, ikke i hviletilstand."
+        },
+        {
+          "text": "$-80$ $\\text{mV}$",
+          "isCorrect": false,
+          "rationale": "Selvom dette er ligev\u00e6gtspotentialet for $K^{+}$, er den faktiske hvilepotentiale ofte lidt mindre negativ p\u00e5 grund af andre ioners permeabilitet."
+        },
+        {
+          "text": "$0$ $\\text{mV}$",
+          "isCorrect": false,
+          "rationale": "Hvis potentialet var nul, ville der ikke v\u00e6re nogen elektrisk drivkraft til r\u00e5dighed for signalering."
+        }
+      ],
+      "hint": "Overvej sp\u00e6ndingsforskellen i en inaktiv nervecelle som beskrevet i kapitlet."
+    },
+    {
+      "question": "Hvilken opgave udf\u00f8rer natrium-kalium-pumpen ($Na^{+}-K^{+}$ pumpen) i neuronen?",
+      "answerOptions": [
+        {
+          "text": "Den pumper $Na^{+}$ ud og $K^{+}$ ind i cellen",
+          "isCorrect": true,
+          "rationale": "Pumpen bruger energi p\u00e5 aktivt at opretholde koncentrationsgradienterne ved at flytte natrium ud og kalium ind."
+        },
+        {
+          "text": "Den tillader $K^{+}$ at diffundere frit ud af cellen",
+          "isCorrect": false,
+          "rationale": "Dette sker passivt gennem ionkanaler og er ikke en funktion af selve den energikr\u00e6vende pumpe."
+        },
+        {
+          "text": "Den pumper $Na^{+}$ ind og $K^{+}$ ud af cellen",
+          "isCorrect": false,
+          "rationale": "Dette ville modvirke hvilepotentialet, da ionerne naturligt \u00f8nsker at bev\u00e6ge sig i denne retning via diffusion."
+        },
+        {
+          "text": "Den producerer neurotransmittere i axonterminalen",
+          "isCorrect": false,
+          "rationale": "Pumpens prim\u00e6re rolle er iontransport over membranen, ikke syntese af kemiske stoffer."
+        }
+      ],
+      "hint": "T\u00e6nk p\u00e5 hvilken vej ionerne skal flyttes aktivt for at modvirke passiv diffusion."
+    },
+    {
+      "question": "Hvilken ligning tager h\u00f8jde for koncentrationen og permeabiliteten af flere forskellige ioner for at beregne membranpotentialet?",
+      "answerOptions": [
+        {
+          "text": "Goldman-ligningen",
+          "isCorrect": true,
+          "rationale": "Goldman-ligningen er mere pr\u00e6cis end Nernst-ligningen, da den inkluderer flere iontyper og deres respektive evne til at krydse membranen."
+        },
+        {
+          "text": "Nernst-ligningen",
+          "isCorrect": false,
+          "rationale": "Denne ligning beregner kun ligev\u00e6gtspotentialet for en enkelt ionart ad gangen."
+        },
+        {
+          "text": "SNARE-ligningen",
+          "isCorrect": false,
+          "rationale": "SNARE refererer til proteinkomplekser involveret i vesikelfusion, ikke en matematisk formel for potentiale."
+        },
+        {
+          "text": "Newton-ligningen",
+          "isCorrect": false,
+          "rationale": "Dette er en klassisk fysisk lov, som ikke specifikt omhandler neurofysiologiske membranpotentialer."
+        }
+      ],
+      "hint": "Find navnet p\u00e5 den ligning, der n\u00e6vnes som en mere avanceret version til beregning af hvilepotentialet."
+    },
+    {
+      "question": "Hvad g\u00f8r giften tetrodotoxin (TTX), som findes i kuglefisk, ved neuronernes funktion?",
+      "answerOptions": [
+        {
+          "text": "Den blokerer sp\u00e6ndingsstyrrede natriumkanaler ($Na^{+}$ kanaler)",
+          "isCorrect": true,
+          "rationale": "Ved at blokere disse kanaler forhindres dannelsen af aktionspotentialer, hvilket f\u00f8rer til lammelse."
+        },
+        {
+          "text": "Den tvinger natriumkanaler til at forblive \u00e5bne",
+          "isCorrect": false,
+          "rationale": "Dette er effekten af batrachotoxin fra giftpilefr\u00f8, ikke tetrodotoxin."
+        },
+        {
+          "text": "Den fungerer som en agonist for acetylcholin",
+          "isCorrect": false,
+          "rationale": "TTX p\u00e5virker ionkanaler direkte og ikke de kemiske receptorer for neurotransmittere som acetylcholin."
+        },
+        {
+          "text": "Den \u00f8ger hastigheden af saltatorisk ledning",
+          "isCorrect": false,
+          "rationale": "TTX stopper signalering fuldst\u00e6ndigt i stedet for at g\u00f8re den hurtigere."
+        }
+      ],
+      "hint": "T\u00e6nk p\u00e5 hvilken kritisk komponent i aktionspotentialet, der bliver fysisk blokeret af denne gift."
+    },
+    {
+      "question": "Hvad kaldes processen, hvor et aktionspotentiale 'hopper' fra den ene Ranviersk indsn\u00f8ring til den n\u00e6ste langs et myeliniseret axon?",
+      "answerOptions": [
+        {
+          "text": "Saltatorisk ledning",
+          "isCorrect": true,
+          "rationale": "Myelinisering isolerer axonet, hvilket tvinger den elektriske impuls til at springe mellem de uisolerede knuder, hvilket \u00f8ger hastigheden."
+        },
+        {
+          "text": "Kontinuerlig ledning",
+          "isCorrect": false,
+          "rationale": "Dette sker i ikke-myeliniserede axoner, hvor impulsen bev\u00e6ger sig j\u00e6vnt og langsommere langs hele membranen."
+        },
+        {
+          "text": "Refrakt\u00e6r ledning",
+          "isCorrect": false,
+          "rationale": "Refrakt\u00e6r refererer til den periode, hvor en neuron ikke kan affyre et nyt signal, ikke selve ledningsm\u00e5den."
+        },
+        {
+          "text": "Gradueret potentiale",
+          "isCorrect": false,
+          "rationale": "Graduerede potentialer sv\u00e6kkes med afstand og er ikke det samme som det selvforst\u00e6rkende aktionspotentiale i axonet."
+        }
+      ],
+      "hint": "Begrebet stammer fra det latinske ord for 'at hoppe'."
+    },
+    {
+      "question": "Hvilken ion er direkte ansvarlig for at udl\u00f8se frigivelsen af neurotransmittere fra vesiklerne i den pr\u00e6synaptiske terminal?",
+      "answerOptions": [
+        {
+          "text": "Calcium ($Ca^{2+}$)",
+          "isCorrect": true,
+          "rationale": "N\u00e5r et aktionspotentiale n\u00e5r terminalen, \u00e5bnes sp\u00e6ndingsstyrrede calciumkanaler, og indstr\u00f8mningen af $Ca^{2+}$ aktiverer vesikelfusion."
+        },
+        {
+          "text": "Natrium ($Na^{+}$)",
+          "isCorrect": false,
+          "rationale": "Natrium er ansvarlig for selve udbredelsen af aktionspotentialet, men ikke direkte for vesikelfrigivelsen."
+        },
+        {
+          "text": "Kalium ($K^{+}$)",
+          "isCorrect": false,
+          "rationale": "Kaliumstr\u00f8mme hj\u00e6lper med at bringe membranen tilbage til hviletilstand efter et signal."
+        },
+        {
+          "text": "Klorid ($Cl^{-}$)",
+          "isCorrect": false,
+          "rationale": "Klorid er ofte involveret i h\u00e6mmende (inhibitoriske) potentialer, ikke i selve exocytosen af transmittere."
+        }
+      ],
+      "hint": "T\u00e6nk p\u00e5 den ion, der tr\u00e6der ind i cellen lige f\u00f8r 'exocytose' finder sted."
+    },
+    {
+      "question": "Hvad kaldes et stof, der binder sig til en receptor og efterligner den naturlige neurotransmitters virkning?",
+      "answerOptions": [
+        {
+          "text": "Agonist",
+          "isCorrect": true,
+          "rationale": "En agonist 'k\u00e6mper' for den samme effekt som transmitteren ved at aktivere receptoren."
+        },
+        {
+          "text": "Antagonist",
+          "isCorrect": false,
+          "rationale": "En antagonist blokerer eller modvirker effekten af en neurotransmitter ved at optage pladsen p\u00e5 receptoren."
+        },
+        {
+          "text": "Endogen ligand",
+          "isCorrect": false,
+          "rationale": "Dette refererer til stoffer produceret inde i kroppen, mens sp\u00f8rgsm\u00e5let d\u00e6kker over selve funktionen (efterligning)."
+        },
+        {
+          "text": "Anden budbringer (second messenger)",
+          "isCorrect": false,
+          "rationale": "Dette er kemikalier inde i cellen, der aktiveres efter receptoren er blevet bundet."
+        }
+      ],
+      "hint": "Overvej den gr\u00e6ske betegnelse for en 'deltager i en kamp' eller en der fremmer en proces."
+    },
+    {
+      "question": "I Otto Loewis klassiske eksperiment med fr\u00f8hjerter, hvad beviste han om overf\u00f8rslen af signaler mellem nerver?",
+      "answerOptions": [
+        {
+          "text": "At transmissionen er kemisk",
+          "isCorrect": true,
+          "rationale": "Ved at overf\u00f8re v\u00e6ske fra et stimuleret hjerte til et andet viste han, at et kemisk stof (senere identificeret som acetylcholin) bar signalet."
+        },
+        {
+          "text": "At transmissionen er rent elektrisk",
+          "isCorrect": false,
+          "rationale": "Hans eksperiment modbeviste netop ideen om, at gnister eller elektrisk str\u00f8m sprang direkte fra nerve til muskel."
+        },
+        {
+          "text": "At hjertet ikke beh\u00f8ver nerver for at sl\u00e5",
+          "isCorrect": false,
+          "rationale": "Eksperimentet fokuserede p\u00e5, hvordan nerverne kommunikerede med hjertet, ikke p\u00e5 hjertets egen rytme."
+        },
+        {
+          "text": "At myelin er n\u00f8dvendigt for hjerteslag",
+          "isCorrect": false,
+          "rationale": "Myelin var ikke fokuspunktet i dette dream-inspirerede eksperiment om synaptisk overf\u00f8rsel."
+        }
+      ],
+      "hint": "T\u00e6nk p\u00e5 betydningen af den 'Vagusstoff', han opdagede i badevandet."
+    },
+    {
+      "question": "Hvilken type epileptisk anfald er karakteriseret ved en kortvarig stirren og tab af bevidsthed uden voldsomme muskelkramper?",
+      "answerOptions": [
+        {
+          "text": "Simpelt partielt anfald (absence attack)",
+          "isCorrect": true,
+          "rationale": "Disse anfald varer ofte kun f\u00e5 sekunder og involverer ikke de dramatiske bev\u00e6gelser, man ser ved andre typer."
+        },
+        {
+          "text": "Tonisk-klonisk anfald (grand mal)",
+          "isCorrect": false,
+          "rationale": "Disse involverer bevidsthedstab ledsaget af kraftige, rytmiske sammentr\u00e6kninger af hele kroppens muskulatur."
+        },
+        {
+          "text": "Komplekst partielt anfald",
+          "isCorrect": false,
+          "rationale": "Disse starter ofte i et begr\u00e6nset omr\u00e5de og kan give m\u00e6rkelige fornemmelser (aura) eller automatisk adf\u00e6rd."
+        },
+        {
+          "text": "Kindling-anfald",
+          "isCorrect": false,
+          "rationale": "Kindling er en metode til eksperimentelt at fremprovokere epilepsi, ikke en specifik klinisk anfaldstype."
+        }
+      ],
+      "hint": "Dette kaldes ogs\u00e5 et 'frav\u00e6rsanfald'."
+    },
+    {
+      "question": "Hvad er det prim\u00e6re form\u00e5l med teknologien optogenetik?",
+      "answerOptions": [
+        {
+          "text": "At styre neuroners aktivitet ved hj\u00e6lp af lys",
+          "isCorrect": true,
+          "rationale": "Ved at inds\u00e6tte lysf\u00f8lsomme ionkanaler (opsiner) kan forskere t\u00e6nde eller slukke for specifikke celler med laserlys."
+        },
+        {
+          "text": "At m\u00e5le hjerneb\u00f8lger gennem kraniet",
+          "isCorrect": false,
+          "rationale": "Dette er funktionen af et EEG (elektroencefalogram), ikke optogenetik."
+        },
+        {
+          "text": "At fjerne epileptisk v\u00e6v med pr\u00e6cision",
+          "isCorrect": false,
+          "rationale": "Selvom det er pr\u00e6cist, bruges det prim\u00e6rt til at studere kredsl\u00f8b frem for at udf\u00f8re kirurgi p\u00e5 patienter."
+        },
+        {
+          "text": "At visualisere neurotransmittere med mikroskopi",
+          "isCorrect": false,
+          "rationale": "Optogenetik handler om funktionel kontrol snarere end blot passiv visualisering."
+        }
+      ],
+      "hint": "T\u00e6nk p\u00e5 kombinationen af 'optik' (lys) og 'genetik'."
+    },
+    {
+      "question": "Hvilket protein bruges i optogenetik til at hyperpolarisere (h\u00e6mme) en neuron, n\u00e5r det rammes af gult lys?",
+      "answerOptions": [
+        {
+          "text": "Halorhodopsin",
+          "isCorrect": true,
+          "rationale": "Halorhodopsin pumper kloridioner ($Cl^{-}$) ind i cellen, hvilket g\u00f8r den mere negativ og forhindrer den i at affyre."
+        },
+        {
+          "text": "Channelrhodopsin",
+          "isCorrect": false,
+          "rationale": "Channelrhodopsin reagerer p\u00e5 bl\u00e5t lys og depolariserer cellen ved at lade $Na^{+}$ slippe ind."
+        },
+        {
+          "text": "Muscarin",
+          "isCorrect": false,
+          "rationale": "Muscarin er et giftstof fra svampe, der binder til acetylcholinreceptorer, ikke et lysf\u00f8lsomt protein."
+        },
+        {
+          "text": "G-protein",
+          "isCorrect": false,
+          "rationale": "G-proteiner er intracellul\u00e6re signalmolekyler, men de er ikke i sig selv lysf\u00f8lsomme ionpumper."
+        }
+      ],
+      "hint": "Husk p\u00e5 proteinet, der reagerer p\u00e5 den gule del af spektret."
+    },
+    {
+      "question": "Hvad beskriver 'all-or-none' (alt-eller-intet) egenskaben ved et aktionspotentiale?",
+      "answerOptions": [
+        {
+          "text": "At amplituden er uafh\u00e6ngig af stimulusstyrken, s\u00e5 l\u00e6nge t\u00e6rsklen n\u00e5s",
+          "isCorrect": true,
+          "rationale": "Et aktionspotentiale affyres enten med fuld styrke eller slet ikke; st\u00e6rkere stimuli giver flere impulser, ikke st\u00f8rre impulser."
+        },
+        {
+          "text": "At alle neuroner i et netv\u00e6rk skal affyre samtidigt",
+          "isCorrect": false,
+          "rationale": "Neuroner kan affyre uafh\u00e6ngigt; synkronisering er typisk et tegn p\u00e5 patologi som f.eks. anfald."
+        },
+        {
+          "text": "At en neuron enten bruger elektrisk eller kemisk signalering",
+          "isCorrect": false,
+          "rationale": "N\u00e6sten alle neuroner bruger begge dele: elektrisk internt og kemisk ved synapsen."
+        },
+        {
+          "text": "At ionkanalerne enten pumper natrium eller kalium",
+          "isCorrect": false,
+          "rationale": "Dette refererer til selektivitet, ikke til den bin\u00e6re natur af selve nerveimpulsen."
+        }
+      ],
+      "hint": "T\u00e6nk p\u00e5 ligheden med at affyre en pistol: enten g\u00e5r skuddet af, eller ogs\u00e5 g\u00f8r det ikke."
+    }
+  ]
+}

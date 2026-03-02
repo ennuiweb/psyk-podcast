@@ -1,0 +1,265 @@
+{
+  "title": "Neuroscience Quiz",
+  "questions": [
+    {
+      "question": "Wilder Penfield developed the procedure of cortical electrical-stimulation mapping primarily to achieve which clinical goal?",
+      "answerOptions": [
+        {
+          "text": "To identify and remove diseased brain tissue without damaging areas essential for speech or movement.",
+          "isCorrect": true,
+          "rationale": "Mapping provides a functional guide that allows surgeons to distinguish between pathological tissue and healthy regions responsible for critical motor and sensory behaviours."
+        },
+        {
+          "text": "To permanently cure epilepsy by stimulating the brain with high-voltage electrical currents.",
+          "isCorrect": false,
+          "rationale": "While the procedure helps manage epilepsy by identifying seizure foci, the stimulation itself is a mapping tool rather than a high-voltage curative treatment."
+        },
+        {
+          "text": "To map the 'general-purpose processors' of the brain that are identical in every human individual.",
+          "isCorrect": false,
+          "rationale": "The source material notes that while some regions are similar, others are unique to the individual, making precise mapping necessary for each patient."
+        },
+        {
+          "text": "To record the electrical signals of neurons without the patient being conscious or aware.",
+          "isCorrect": false,
+          "rationale": "The procedure requires the patient to be conscious and aware to report sensory experiences and vignettes of past memories during stimulation."
+        }
+      ],
+      "hint": "Consider the safety of the patient's existing motor and language functions during surgery."
+    },
+    {
+      "question": "Which of the following best describes the 'neuron doctrine' proposed by Santiago Ram\u00f3n y Cajal?",
+      "answerOptions": [
+        {
+          "text": "The brain is composed of independent cells that are structurally, metabolically, and functionally distinct.",
+          "isCorrect": true,
+          "rationale": "This perspective emphasises that neurons are discrete units that communicate across gaps rather than being physically fused into a single continuous network."
+        },
+        {
+          "text": "Neurons form a continuous network of connected tubes through which information flows without interruption.",
+          "isCorrect": false,
+          "rationale": "This reflects the view of Camillo Golgi, which Cajal successfully challenged using precise staining techniques."
+        },
+        {
+          "text": "Glial cells are the primary information-processing units of the nervous system, outperforming neurons in electrical signaling.",
+          "isCorrect": false,
+          "rationale": "Although glia support processing, the neuron doctrine specifically focuses on the independence and connectivity of nerve cells."
+        },
+        {
+          "text": "The synapses between neurons are physically connected by tight junctions that allow for metabolic sharing.",
+          "isCorrect": false,
+          "rationale": "The doctrine specifically posits that neurons are metabolically independent and separated by tiny gaps called synapses."
+        }
+      ],
+      "hint": "Think about whether the cells in the brain were thought to be fused together or separate entities."
+    },
+    {
+      "question": "In which functional zone of a neuron is the 'decision' to produce a neural signal typically made?",
+      "answerOptions": [
+        {
+          "text": "The integration zone, which usually corresponds to the axon hillock.",
+          "isCorrect": true,
+          "rationale": "This region gathers and processes all incoming synaptic inputs to determine if an electrical impulse should be initiated."
+        },
+        {
+          "text": "The input zone, which is comprised of the dendritic arborisation.",
+          "isCorrect": false,
+          "rationale": "This zone is specialized for receiving information from other neurons rather than initiating the neuron's own outgoing signal."
+        },
+        {
+          "text": "The conduction zone, where the axon transmits electrical signals over long distances.",
+          "isCorrect": false,
+          "rationale": "The role of this zone is the active propagation of the signal after it has already been initiated at the cell body's base."
+        },
+        {
+          "text": "The output zone, located at the axon terminals or synaptic boutons.",
+          "isCorrect": false,
+          "rationale": "This area is responsible for transferring information to the next cell via neurotransmitter release, following the signal's conduction."
+        }
+      ],
+      "hint": "Look for the specific area where information is 'integrated' before being sent down the axon."
+    },
+    {
+      "question": "Which morphological type of neuron is most commonly found in sensory systems, such as vision, and features a single dendrite at one end and a single axon at the other?",
+      "answerOptions": [
+        {
+          "text": "Bipolar neuron",
+          "isCorrect": true,
+          "rationale": "This structure is specialised for passing information directly from a receptive pole to an output pole, making it ideal for sensory pathways."
+        },
+        {
+          "text": "Multipolar neuron",
+          "isCorrect": false,
+          "rationale": "These are the most common type and feature many dendrites, often found in complex processing centres rather than simple sensory relays."
+        },
+        {
+          "text": "Unipolar neuron",
+          "isCorrect": false,
+          "rationale": "These cells have a single process that branches in two directions and are primarily associated with touch information entering the spinal cord."
+        },
+        {
+          "text": "Interneuron",
+          "isCorrect": false,
+          "rationale": "This term refers to a functional classification for neurons with short axons in complex circuits, rather than a specific physical shape like bipolar."
+        }
+      ],
+      "hint": "The name of this neuron reflects the two distinct extensions protruding from the cell body."
+    },
+    {
+      "question": "What is the typical width of the synaptic cleft, the gap that separates the presynaptic and postsynaptic neurons?",
+      "answerOptions": [
+        {
+          "text": "$20$ to $40$ nm",
+          "isCorrect": true,
+          "rationale": "This extremely narrow gap allows neurotransmitters to diffuse rapidly from the axon terminal to the receptors on the target cell."
+        },
+        {
+          "text": "$2$ to $4$ nm",
+          "isCorrect": false,
+          "rationale": "This would be too narrow for the complex structural machinery of the synapse, though it might describe a neuronal membrane's thickness."
+        },
+        {
+          "text": "$20$ to $40$ $\\mu m$",
+          "isCorrect": false,
+          "rationale": "This distance is far too large for effective chemical communication, as diffusion would take too long to facilitate rapid neural firing."
+        },
+        {
+          "text": "$200$ to $400$ nm",
+          "isCorrect": false,
+          "rationale": "While still small, this is closer to the size of some synaptic vesicles rather than the specialized gap of the cleft itself."
+        }
+      ],
+      "hint": "The unit is nanometres, and the value is roughly four times the thickness of a typical neuronal membrane."
+    },
+    {
+      "question": "In the context of axonal transport, which system is responsible for moving used materials from the axon terminals back to the cell body for recycling?",
+      "answerOptions": [
+        {
+          "text": "Retrograde transport",
+          "isCorrect": true,
+          "rationale": "This process involves motor proteins 'walking' vesicles back along microtubules toward the soma to repurpose molecular components."
+        },
+        {
+          "text": "Anterograde transport",
+          "isCorrect": false,
+          "rationale": "This system moves newly manufactured materials, such as enzymes and proteins, away from the cell body toward the axon terminals."
+        },
+        {
+          "text": "Action potential propagation",
+          "isCorrect": false,
+          "rationale": "This refers to the electrical signal moving along the outside of the axon membrane, whereas transport occurs inside the axon."
+        },
+        {
+          "text": "Slow axonal transport",
+          "isCorrect": false,
+          "rationale": "While transport can be slow, this term describes the rate rather than the direction of movement back to the cell body."
+        }
+      ],
+      "hint": "The term implies a 'backward' direction relative to the normal flow of electrical information."
+    },
+    {
+      "question": "Which type of glial cell is involved in the 'tripartite synapse' by directly participating in the transmission of information between neurons?",
+      "answerOptions": [
+        {
+          "text": "Astrocyte",
+          "isCorrect": true,
+          "rationale": "These star-shaped cells surround synapses and monitor neural activity, providing chemical signals that can alter neuronal excitability."
+        },
+        {
+          "text": "Microglial cell",
+          "isCorrect": false,
+          "rationale": "These act as the brain's immune system and cleanup crew, rather than providing the metabolic and signaling support typical of a tripartite synapse."
+        },
+        {
+          "text": "Oligodendrocyte",
+          "isCorrect": false,
+          "rationale": "The primary role of these cells is to provide the fatty insulation known as myelin for axons in the central nervous system."
+        },
+        {
+          "text": "Schwann cell",
+          "isCorrect": false,
+          "rationale": "These provide myelination in the peripheral nervous system and are not typically described as part of the tripartite synapse in the brain."
+        }
+      ],
+      "hint": "These cells are star-shaped and also help regulate blood flow to active neurons."
+    },
+    {
+      "question": "What is a significant consequence of the clinical condition known as multiple sclerosis?",
+      "answerOptions": [
+        {
+          "text": "The loss of the insulating myelin sheath, which impairs the speed and reliability of electrical signals.",
+          "isCorrect": true,
+          "rationale": "Degeneration of myelin leads to 'short circuits' and loss of information as signals can no longer jump effectively between nodes of Ranvier."
+        },
+        {
+          "text": "The uncontrollable division of microglial cells, leading to large tumours in the cerebral hemispheres.",
+          "isCorrect": false,
+          "rationale": "While glial cells can form tumours, multiple sclerosis is specifically a demyelinating disorder rather than a primary cancer of the glia."
+        },
+        {
+          "text": "The swelling of brain tissue (edema) in response to a traumatic physical injury to the skull.",
+          "isCorrect": false,
+          "rationale": "Edema is a general response to injury or stroke, whereas multiple sclerosis is a chronic degenerative process targeting myelin."
+        },
+        {
+          "text": "The failure of the axon hillock to integrate information, preventing the generation of any electrical impulses.",
+          "isCorrect": false,
+          "rationale": "Signals are still initiated, but they cannot be conducted properly along the axon due to the damaged insulation."
+        }
+      ],
+      "hint": "Consider how removing the insulation from a computer cable would affect the signal it carries."
+    },
+    {
+      "question": "Which histological technique is used to identify brain regions that were recently active by labeling the protein expressed by the immediate early gene $c-fos$?",
+      "answerOptions": [
+        {
+          "text": "Immunohistochemistry (IHC)",
+          "isCorrect": true,
+          "rationale": "This method uses colourful antibodies to selectively attach to and reveal the distribution of specific target proteins within brain tissue."
+        },
+        {
+          "text": "Nissl stain",
+          "isCorrect": false,
+          "rationale": "This technique outlines all cell bodies by staining RNA, providing information on cell density but not on specific protein expression or recent activity."
+        },
+        {
+          "text": "Golgi stain",
+          "isCorrect": false,
+          "rationale": "This stain is used to reveal the fine structural details of an entire single neuron but only affects a small minority of the cells in a sample."
+        },
+        {
+          "text": "Anterograde labeling",
+          "isCorrect": false,
+          "rationale": "This is a tract-tracing method used to find where neurons in a specific region send their axons, not to measure gene activation."
+        }
+      ],
+      "hint": "This technique relies on the use of antibodies to 'seek out' particular proteins."
+    },
+    {
+      "question": "In the peripheral nervous system, which division is responsible for interconnecting the brain with the major muscles and sensory systems of the body?",
+      "answerOptions": [
+        {
+          "text": "Somatic nervous system",
+          "isCorrect": true,
+          "rationale": "Derived from the Latin for 'body', this system handles voluntary movement and receives sensory input from the head and limbs."
+        },
+        {
+          "text": "Autonomic nervous system",
+          "isCorrect": false,
+          "rationale": "This system primarily controls the internal organs and involuntary functions rather than the skeletal muscles."
+        },
+        {
+          "text": "Central nervous system",
+          "isCorrect": false,
+          "rationale": "This division consists of the brain and spinal cord, whereas the question specifies the peripheral nervous system."
+        },
+        {
+          "text": "Enteric nervous system",
+          "isCorrect": false,
+          "rationale": "This is a specialised part of the autonomic system that governs the function of the gastrointestinal tract."
+        }
+      ],
+      "hint": "The name comes from the Latin word for 'body'."
+    }
+  ]
+}

@@ -1,0 +1,317 @@
+{
+  "title": "Physiology Quiz",
+  "questions": [
+    {
+      "question": "Which term describes the dynamic process of adjusting physiological systems to accommodate stressors and anticipated activity, rather than simply defending a single set point?",
+      "answerOptions": [
+        {
+          "text": "Homeostasis",
+          "isCorrect": false,
+          "rationale": "This term traditionally refers to the maintenance of a relatively stable, unchanging internal environment."
+        },
+        {
+          "text": "Allostasis",
+          "isCorrect": true,
+          "rationale": "Allostasis involves changing physiological responses to meet environmental demands and anticipated needs, acknowledging that the 'optimal' state is often shifting."
+        },
+        {
+          "text": "Negative feedback",
+          "isCorrect": false,
+          "rationale": "This is the mechanism used to achieve regulation, but it does not describe the specific dynamic shift in set zones themselves."
+        },
+        {
+          "text": "Thermoregulation",
+          "isCorrect": false,
+          "rationale": "This is a specific example of a homeostatic system rather than the overarching concept of dynamic physiological adjustment."
+        }
+      ],
+      "hint": "Consider the concept that accounts for the 'wear and tear' of daily life and shifting baseline requirements."
+    },
+    {
+      "question": "In the context of thermoregulation, what is the primary evolutionary advantage that endotherms possess over ectotherms?",
+      "answerOptions": [
+        {
+          "text": "They require significantly less food to maintain their body temperature.",
+          "isCorrect": false,
+          "rationale": "Endotherms actually require much more energy intake than ectotherms to fuel their internal heat production."
+        },
+        {
+          "text": "They can survive solely on environmental heat sources like sunlight.",
+          "isCorrect": false,
+          "rationale": "This describes ectotherms; endotherms rely primarily on internal metabolic processes."
+        },
+        {
+          "text": "They can sustain high levels of muscular activity for much longer periods.",
+          "isCorrect": true,
+          "rationale": "The evolution of endothermy was linked to an enhanced capacity for oxygen utilisation, allowing for prolonged activity compared to ectotherms."
+        },
+        {
+          "text": "Their proteins are immune to denaturing at high temperatures.",
+          "isCorrect": false,
+          "rationale": "Both endotherms and ectotherms are susceptible to protein denaturing if temperatures exceed a certain threshold."
+        }
+      ],
+      "hint": "Think about why a hare will almost always outrun a tortoise in a long-distance race."
+    },
+    {
+      "question": "What is the physiological consequence of proteins losing their correct shape and linking together due to excessive heat?",
+      "answerOptions": [
+        {
+          "text": "Glycogenolysis",
+          "isCorrect": false,
+          "rationale": "This is the conversion of glycogen back into glucose, which is unrelated to protein structural failure."
+        },
+        {
+          "text": "Allostatic load",
+          "isCorrect": false,
+          "rationale": "This refers to the cumulative wear and tear on the body from chronic stress, not immediate thermal damage to proteins."
+        },
+        {
+          "text": "Denaturing",
+          "isCorrect": true,
+          "rationale": "Denaturing occurs when high temperatures cause proteins to lose their functional structure and malfunction."
+        },
+        {
+          "text": "Gluconeogenesis",
+          "isCorrect": false,
+          "rationale": "This is the metabolic production of glucose from non-carbohydrate sources, not a term for protein damage."
+        }
+      ],
+      "hint": "In extreme cases, this process is colloquially referred to as 'cooking' the tissues."
+    },
+    {
+      "question": "How do osmosensory neurons in the hypothalamus detect changes in the concentration of the extracellular fluid?",
+      "answerOptions": [
+        {
+          "text": "They use voltage-gated $Na^{+}$ channels to measure electrical resistance.",
+          "isCorrect": false,
+          "rationale": "While $Na^{+}$ channels are involved in action potentials, these neurons rely on physical structural changes to sense osmolality."
+        },
+        {
+          "text": "They balloon or shrink, physically opening mechanically gated ion channels.",
+          "isCorrect": true,
+          "rationale": "Unlike most cells, osmosensory neurons are stretchy and respond to osmotic pressure by changing size, which triggers ion flow."
+        },
+        {
+          "text": "They monitor the binding of $Cl^{-}$ ions to specialised external receptors.",
+          "isCorrect": false,
+          "rationale": "The sensing mechanism is primarily mechanical and related to cell volume, not specific ion binding."
+        },
+        {
+          "text": "They detect the temperature of the blood passing through the $OVLT$.",
+          "isCorrect": false,
+          "rationale": "While the $OVLT$ is involved, this specific description refers to thermoregulation rather than osmotic sensing."
+        }
+      ],
+      "hint": "Think about the mechanical properties of the cell membrane in these specialised hypothalamic cells."
+    },
+    {
+      "question": "A solution is described as 'isotonic' when it has a salt concentration of approximately:",
+      "answerOptions": [
+        {
+          "text": "$0.09\\%$",
+          "isCorrect": false,
+          "rationale": "This value is ten times lower than the actual physiological saline concentration."
+        },
+        {
+          "text": "$0.9\\%$",
+          "isCorrect": true,
+          "rationale": "Physiological saline, which matches mammalian extracellular fluid, is a $0.9\\%$ $NaCl$ solution."
+        },
+        {
+          "text": "$9.0\\%$",
+          "isCorrect": false,
+          "rationale": "This would be a highly hypertonic solution, much saltier than body fluids."
+        },
+        {
+          "text": "$0.5\\%$",
+          "isCorrect": false,
+          "rationale": "This value does not correspond to the standard concentration of physiological saline found in mammals."
+        }
+      ],
+      "hint": "This concentration is the standard for 'physiological saline'."
+    },
+    {
+      "question": "Which condition is the primary trigger for hypovolemic thirst?",
+      "answerOptions": [
+        {
+          "text": "An increase in the solute concentration of the intracellular compartment.",
+          "isCorrect": false,
+          "rationale": "This describes the trigger for osmotic thirst, not hypovolemic thirst."
+        },
+        {
+          "text": "A decrease in the overall volume of the extracellular fluid.",
+          "isCorrect": true,
+          "rationale": "Hypovolemia refers specifically to low volume, such as that caused by haemorrhage or severe diarrhoea."
+        },
+        {
+          "text": "The ingestion of a highly salty meal without accompanying water.",
+          "isCorrect": false,
+          "rationale": "Ingesting salt increases osmolality, which triggers osmotic thirst rather than a pure volume-loss response."
+        },
+        {
+          "text": "A sudden drop in the temperature of the blood vessels.",
+          "isCorrect": false,
+          "rationale": "Temperature changes affect thermoregulatory systems, not the fluid volume sensing mechanisms."
+        }
+      ],
+      "hint": "Consider the literal meaning of the prefix 'hypo-' and the root 'volum-'."
+    },
+    {
+      "question": "What is the role of the enzyme renin in the body's response to dehydration?",
+      "answerOptions": [
+        {
+          "text": "It directly stimulates the kidneys to excrete excess water.",
+          "isCorrect": false,
+          "rationale": "Renin is part of a conservation pathway; excretion is inhibited during dehydration."
+        },
+        {
+          "text": "It converts glucose into glycogen for long-term storage.",
+          "isCorrect": false,
+          "rationale": "This process is mediated by insulin, not renin."
+        },
+        {
+          "text": "It triggers a hormonal cascade that produces Angiotensin $II$.",
+          "isCorrect": true,
+          "rationale": "Released by the kidneys, renin catalyzes the formation of Angiotensin $I$, which is then converted to Angiotensin $II$ to conserve water."
+        },
+        {
+          "text": "It acts as a neurotransmitter in the $NPY$ neurons to stimulate hunger.",
+          "isCorrect": false,
+          "rationale": "Renin is a peripheral enzyme involved in fluid regulation, not a hypothalamic hunger neurotransmitter."
+        }
+      ],
+      "hint": "Follow the sequence of the 'Angiotensin Cascade' mentioned in the text."
+    },
+    {
+      "question": "According to the study of 'The Biggest Loser' contestants, what happened to their basal metabolic rate six years after their initial weight loss?",
+      "answerOptions": [
+        {
+          "text": "It returned to the normal levels expected for their new, lower weights.",
+          "isCorrect": false,
+          "rationale": "The study found that their metabolisms remained significantly lower than average, even years later."
+        },
+        {
+          "text": "It increased significantly due to the 'all-day exercise' habits they maintained.",
+          "isCorrect": false,
+          "rationale": "Despite their efforts, their basal metabolism remained suppressed as a compensatory homeostatic measure."
+        },
+        {
+          "text": "It remained persistently low, burning hundreds of fewer calories than average.",
+          "isCorrect": true,
+          "rationale": "The body defends its original weight through metabolic adaptation, making it harder to maintain weight loss over time."
+        },
+        {
+          "text": "It fluctuated wildly based on their daily intake of carbohydrates.",
+          "isCorrect": false,
+          "rationale": "The metabolic suppression was a stable, long-term adaptation to the massive weight loss, not a daily fluctuation."
+        }
+      ],
+      "hint": "Recall the concept of 'metabolic adaptation' and why Danny C. has to eat much less than a typical man of his size."
+    },
+    {
+      "question": "During which phase of insulin release does the brain trigger the pancreas to secrete insulin simply by seeing or smelling food?",
+      "answerOptions": [
+        {
+          "text": "Digestive phase",
+          "isCorrect": false,
+          "rationale": "This phase occurs when food actually enters the stomach and intestines."
+        },
+        {
+          "text": "Absorptive phase",
+          "isCorrect": false,
+          "rationale": "This phase is triggered by glucodetectors in the liver sensing glucose in the bloodstream."
+        },
+        {
+          "text": "Cephalic phase",
+          "isCorrect": true,
+          "rationale": "The 'cephalic' (head) phase involves the brain's anticipatory response to sensory stimuli before food is even ingested."
+        },
+        {
+          "text": "Glycogenolytic phase",
+          "isCorrect": false,
+          "rationale": "This is not a recognised phase of insulin release; glycogenolysis refers to breaking down glycogen when glucose is low."
+        }
+      ],
+      "hint": "The name of this phase comes from the Greek word for 'head'."
+    },
+    {
+      "question": "Rats with bilateral lesions to the ventromedial hypothalamus ($VMH$) typically exhibit which behaviour?",
+      "answerOptions": [
+        {
+          "text": "Aphagia, leading to rapid and dangerous weight loss.",
+          "isCorrect": false,
+          "rationale": "Aphagia is characteristic of lesions in the lateral hypothalamus ($LH$)."
+        },
+        {
+          "text": "Hyperphagia, leading to excessive eating and obesity.",
+          "isCorrect": true,
+          "rationale": "The $VMH$ was historically considered a 'satiety centre', so its removal leads to overeating."
+        },
+        {
+          "text": "An immediate cessation of drinking, resulting in dehydration.",
+          "isCorrect": false,
+          "rationale": "The $VMH$ lesion primarily affects food intake and metabolism rather than the primary thirst centres."
+        },
+        {
+          "text": "Increased basal metabolism that prevents any weight gain.",
+          "isCorrect": false,
+          "rationale": "These animals actually experience massive weight gain due to both overeating and metabolic changes."
+        }
+      ],
+      "hint": "Think about what happens when a 'satiety centre' is destroyed."
+    },
+    {
+      "question": "Which hormone is produced by fat cells and acts as a long-term signal to the brain regarding the body's energy reserves?",
+      "answerOptions": [
+        {
+          "text": "Ghrelin",
+          "isCorrect": false,
+          "rationale": "Ghrelin is produced by the stomach and acts as a short-term 'fasting' signal."
+        },
+        {
+          "text": "Leptin",
+          "isCorrect": true,
+          "rationale": "Fat cells (adipose tissue) secrete leptin to inform the hypothalamus about current fat stores."
+        },
+        {
+          "text": "Cholecystokinin ($CCK$)",
+          "isCorrect": false,
+          "rationale": "This hormone is produced by the duodenum and acts on the vagus nerve to signal satiety during a meal."
+        },
+        {
+          "text": "Glucagon",
+          "isCorrect": false,
+          "rationale": "Glucagon is a pancreatic hormone that increases blood glucose by breaking down glycogen."
+        }
+      ],
+      "hint": "Defects in this hormone's production or its receptors lead to morbid obesity in $ob/ob$ mice."
+    },
+    {
+      "question": "In the arcuate nucleus appetite controller, which set of neurons is responsible for stimulating appetite and inhibiting satiety signals?",
+      "answerOptions": [
+        {
+          "text": "$POMC$ neurons",
+          "isCorrect": false,
+          "rationale": "$POMC$ neurons act as satiety neurons that inhibit appetite."
+        },
+        {
+          "text": "$NPY$ neurons",
+          "isCorrect": true,
+          "rationale": "$NPY$ (Neuropeptide Y) neurons act as hunger neurons, stimulating appetite and blocking $POMC$ activity."
+        },
+        {
+          "text": "Glucodetector neurons",
+          "isCorrect": false,
+          "rationale": "These are primarily found in the liver and brainstem to monitor glucose levels, not as the primary arcuate 'hunger' set."
+        },
+        {
+          "text": "Baroreceptor neurons",
+          "isCorrect": false,
+          "rationale": "These are pressure sensors in the cardiovascular system, not metabolic sensors in the hypothalamus."
+        }
+      ],
+      "hint": "These neurons produce Agouti-related peptide ($AgRP$) and Neuropeptide Y."
+    }
+  ]
+}

@@ -1,0 +1,265 @@
+{
+  "title": "Visual Quiz",
+  "questions": [
+    {
+      "question": "The human visual system is sensitive to a narrow band of electromagnetic radiation. Within what range of wavelengths, measured in nanometers ($nm$), do these photons typically fall?",
+      "answerOptions": [
+        {
+          "text": "$100$ to $400$ $nm$",
+          "isCorrect": false,
+          "rationale": "This range corresponds primarily to ultraviolet radiation, which is mostly filtered out or invisible to the human eye."
+        },
+        {
+          "text": "$400$ to $700$ $nm$",
+          "isCorrect": true,
+          "rationale": "The human visual system has evolved to respond specifically to this narrow band of the electromagnetic spectrum, referred to as visible light."
+        },
+        {
+          "text": "$700$ to $1000$ $nm$",
+          "isCorrect": false,
+          "rationale": "Radiation in this range is classified as infrared, which humans generally perceive as heat rather than visible light."
+        },
+        {
+          "text": "$10^{-12}$ to $10^{-8}$ $nm$",
+          "isCorrect": false,
+          "rationale": "These extremely short wavelengths correspond to gamma rays and X-rays, which penetrate surfaces rather than reflecting off them to provide visual information."
+        }
+      ],
+      "hint": "Consider the specific range that provides accurate reflection from objects vital for survival."
+    },
+    {
+      "question": "In mammals, the process of accommodation allows the eye to focus on objects at varying distances. How is this change in focus primarily achieved?",
+      "answerOptions": [
+        {
+          "text": "Moving the lens closer to or farther from the retina",
+          "isCorrect": false,
+          "rationale": "While this method is used by fish and reptiles, mammals rely on a different mechanism involving physical deformation of the lens."
+        },
+        {
+          "text": "Changing the fixed curvature of the cornea",
+          "isCorrect": false,
+          "rationale": "The cornea's curvature is fixed and provides the primary refractive power, but it does not adjust for different distances."
+        },
+        {
+          "text": "Adjusting the shape of the lens via ciliary muscles",
+          "isCorrect": true,
+          "rationale": "Mammals use ciliary muscles to alter the elasticity and curvature of the lens to bring near or far objects into sharp focus on the retina."
+        },
+        {
+          "text": "Constricting the iris to increase the depth of field",
+          "isCorrect": false,
+          "rationale": "The iris controls light entry via the pupil but is not the primary mechanism for the active focusing process known as accommodation."
+        }
+      ],
+      "hint": "Think about the role of the internal eye muscles and the elasticity of the lens."
+    },
+    {
+      "question": "When light strikes a rod photoreceptor, it initiates a biochemical cascade. What is the immediate electrical result of this process in the receptor cell?",
+      "answerOptions": [
+        {
+          "text": "Depolarization of the cell membrane",
+          "isCorrect": false,
+          "rationale": "Unlike many other sensory receptors, photoreceptors do not become more positive (depolarize) when stimulated by their primary input."
+        },
+        {
+          "text": "Hyperpolarization of the cell membrane",
+          "isCorrect": true,
+          "rationale": "The closure of sodium ($Na^{+}$) channels in response to light causes the membrane potential to become more negative, creating a hyperpolarizing potential."
+        },
+        {
+          "text": "The generation of an action potential",
+          "isCorrect": false,
+          "rationale": "Photoreceptors use graded potentials rather than action potentials to communicate with bipolar cells; action potentials first occur later in the ganglion cells."
+        },
+        {
+          "text": "An immediate increase in neurotransmitter release",
+          "isCorrect": false,
+          "rationale": "Hyperpolarization actually leads to a reduction in the amount of synaptic transmitter released by the photoreceptor."
+        }
+      ],
+      "hint": "Recall how the closing of $Na^{+}$ channels affects the electrical charge inside the cell."
+    },
+    {
+      "question": "According to the spatial-frequency model of vision, how does the brain perceive complex visual patterns like a human face?",
+      "answerOptions": [
+        {
+          "text": "By activating a single 'grandmother cell' for each specific face",
+          "isCorrect": false,
+          "rationale": "This hierarchical model is criticized because it would require more neurons than the cortex possesses to account for every possible object."
+        },
+        {
+          "text": "By breaking the scene down into individual spatial-frequency components",
+          "isCorrect": true,
+          "rationale": "This model suggests the visual system performs a crude Fourier analysis, decomposing stimuli into different frequencies of dark and light bands."
+        },
+        {
+          "text": "By using simple cortical cells to detect only the edges and bars of the face",
+          "isCorrect": false,
+          "rationale": "While simple cells detect edges, the spatial-frequency approach argues the system is tuned to the overall frequency components rather than just isolated features."
+        },
+        {
+          "text": "By ignoring low-frequency components to focus only on sharp details",
+          "isCorrect": false,
+          "rationale": "The system must handle both high and low frequencies; filtering out low frequencies would cause the loss of large uniform areas and gradual transitions."
+        }
+      ],
+      "hint": "Consider the mathematical technique used to decompose sounds or images into simpler waves."
+    },
+    {
+      "question": "Patient D.F. suffered from a condition where she could not recognize objects or faces but could still reach out and grasp them accurately. This suggests damage to which processing stream?",
+      "answerOptions": [
+        {
+          "text": "The dorsal 'where' pathway",
+          "isCorrect": false,
+          "rationale": "The dorsal stream, which handles spatial location and movement guidance, remained intact in D.F., allowing her to grasp objects."
+        },
+        {
+          "text": "The ventral 'what' pathway",
+          "isCorrect": true,
+          "rationale": "Damage to the ventral stream in the occipitotemporal area impairs the ability to identify objects and faces while often leaving spatial guidance unaffected."
+        },
+        {
+          "text": "The primary visual cortex ($V1$) entirely",
+          "isCorrect": false,
+          "rationale": "Complete $V1$ damage would result in a loss of all conscious visual perception, including the ability to guide movements visually."
+        },
+        {
+          "text": "The $V5$ area of the extrastriate cortex",
+          "isCorrect": false,
+          "rationale": "$V5$ is specialized for motion perception; damage there would result in an inability to perceive continuous motion, not a failure of object recognition."
+        }
+      ],
+      "hint": "Distinguish between the stream responsible for identification and the stream responsible for spatial action."
+    },
+    {
+      "question": "Recent research into the development of myopia (nearsightedness) suggests that environmental factors play a significant role. Which factor is most strongly correlated with reduced incidence of myopia in children?",
+      "answerOptions": [
+        {
+          "text": "Reducing the amount of time spent reading or looking at screens",
+          "isCorrect": false,
+          "rationale": "Studies have found that myopia correlates more strongly with indoor versus outdoor time than with the actual time spent on near-work activities."
+        },
+        {
+          "text": "Spending more time outdoors in bright, natural light",
+          "isCorrect": true,
+          "rationale": "Higher illumination levels outdoors may slow excessive eyeball growth, which is the physical cause of myopia."
+        },
+        {
+          "text": "Wearing corrective eyeglasses as early as possible",
+          "isCorrect": false,
+          "rationale": "Eyeglasses correct the blur caused by the elongated eyeball but do not prevent the initial excessive growth of the eyeball itself."
+        },
+        {
+          "text": "Using dim indoor lighting to prevent eye strain",
+          "isCorrect": false,
+          "rationale": "Indoor lighting is generally much less bright than sunlight and may actually be a contributing factor to the excessive eyeball growth seen in myopia."
+        }
+      ],
+      "hint": "Look for the difference between Singaporean and Australian children of similar genetic backgrounds."
+    },
+    {
+      "question": "What role do mirror neurons in the premotor cortex play in visual perception?",
+      "answerOptions": [
+        {
+          "text": "They allow for the perception of oneself in a mirror",
+          "isCorrect": false,
+          "rationale": "Mirror neurons are not specifically for self-recognition but for understanding the actions and intentions of others."
+        },
+        {
+          "text": "They detect the direction of motion of moving objects",
+          "isCorrect": false,
+          "rationale": "Perceiving the direction of motion is primarily the function of area $V5$ in the extrastriate cortex."
+        },
+        {
+          "text": "They activate both when performing an action and when seeing another perform it",
+          "isCorrect": true,
+          "rationale": "These neurons are thought to mediate the understanding of others' actions by simulating those actions within the observer's own motor system."
+        },
+        {
+          "text": "They compensate for blind spots in the visual field",
+          "isCorrect": false,
+          "rationale": "Compensation for a scotoma or blind spot is an internal mapping and processing function of the visual cortex, not a motor-related mirror neuron function."
+        }
+      ],
+      "hint": "Think about how we might 'internalize' or understand the behaviors of others."
+    },
+    {
+      "question": "In the context of photoreceptor adaptation, which ion's concentration is regulated to control sensitivity to light?",
+      "answerOptions": [
+        {
+          "text": "Sodium ($Na^{+}$)",
+          "isCorrect": false,
+          "rationale": "While sodium channels close during the initial response to light, they are not the primary regulator of the long-term sensitivity adjustment known as adaptation."
+        },
+        {
+          "text": "Potassium ($K^{+}$)",
+          "isCorrect": false,
+          "rationale": "Potassium is essential for maintaining resting potentials but is not the key factor in the feedback mechanism for photoreceptor adaptation."
+        },
+        {
+          "text": "Calcium ($Ca^{2+}$)",
+          "isCorrect": true,
+          "rationale": "Photoreceptors regulate intracellular $Ca^{2+}$ levels to adjust their sensitivity to match the prevailing level of ambient illumination."
+        },
+        {
+          "text": "Chloride ($Cl^{-}$)",
+          "isCorrect": false,
+          "rationale": "Chloride ions are often involved in inhibitory synaptic transmission but do not play the central role in photoreceptor sensitivity regulation described in the text."
+        }
+      ],
+      "hint": "This ion is shared as a sensitivity regulator across several other sensory modalities."
+    },
+    {
+      "question": "Why are human males significantly more likely to experience red-green color deficiency than human females?",
+      "answerOptions": [
+        {
+          "text": "The gene for the short-wavelength pigment is on the $Y$ chromosome",
+          "isCorrect": false,
+          "rationale": "The short-wavelength photopigment gene is actually located on an autosome, not a sex chromosome."
+        },
+        {
+          "text": "Males lack the $X$ chromosome required for color vision",
+          "isCorrect": false,
+          "rationale": "Males have one $X$ chromosome; however, having only one means they lack a 'backup' if a gene on that chromosome is defective."
+        },
+        {
+          "text": "The genes for medium- and long-wavelength pigments are on the $X$ chromosome",
+          "isCorrect": true,
+          "rationale": "Since males have only one $X$ chromosome, a single defective gene for these pigments will result in color deficiency, whereas females need two defective copies."
+        },
+        {
+          "text": "Female hormones enhance the sensitivity of the cones",
+          "isCorrect": false,
+          "rationale": "Color vision capabilities are determined by the presence and type of photopigments encoded by genes, not by hormonal differences between the sexes."
+        }
+      ],
+      "hint": "Consider the genetic inheritance patterns associated with sex chromosomes."
+    },
+    {
+      "question": "Which specific region of the visual system is organized into 'pinwheels' where groups of neurons respond to different stimulus orientations?",
+      "answerOptions": [
+        {
+          "text": "The retina",
+          "isCorrect": false,
+          "rationale": "The retina is organized by the distribution of rods and cones, but complex orientation preferences are first constructed in the cortex."
+        },
+        {
+          "text": "The lateral geniculate nucleus ($LGN$)",
+          "isCorrect": false,
+          "rationale": "The $LGN$ maintains retinotopic mapping but does not yet show the complex orientation columns found in the higher visual cortex."
+        },
+        {
+          "text": "The primary visual cortex ($V1$)",
+          "isCorrect": true,
+          "rationale": "Optical imaging of $V1$ reveals orientation columns that converge at regular intervals to form pinwheel patterns pivot around a center."
+        },
+        {
+          "text": "The superior colliculus",
+          "isCorrect": false,
+          "rationale": "The superior colliculus is involved in visual reflexes and orientation to stimuli, but the specific 'pinwheel' organization of orientation columns is characteristic of the cortex."
+        }
+      ],
+      "hint": "Recall the visualization of orientation preference by optical imaging in the cortex."
+    }
+  ]
+}

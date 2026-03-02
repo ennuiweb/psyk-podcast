@@ -1,0 +1,317 @@
+{
+  "title": "Sex Biology Quiz",
+  "questions": [
+    {
+      "question": "Which of the following describes the 'Coolidge effect' in animal mating behavior?",
+      "answerOptions": [
+        {
+          "text": "The increase in parental care shown by males when they are certain of their paternity.",
+          "isCorrect": false,
+          "rationale": "This describes a strategy for reproductive success rather than a shift in sexual arousal based on partner novelty."
+        },
+        {
+          "text": "The propensity of a sexually satiated animal to resume mating when introduced to a novel partner.",
+          "isCorrect": true,
+          "rationale": "This effect demonstrates how a new reproductive opportunity can override the typical refractory period following copulation."
+        },
+        {
+          "text": "The tendency for females to choose mates based on elaborate physical ornaments or traits.",
+          "isCorrect": false,
+          "rationale": "This behavior is referred to as sexual selection or attraction based on species-typical traits."
+        },
+        {
+          "text": "The permanent cessation of sexual interest after a single, high-intensity mating event.",
+          "isCorrect": false,
+          "rationale": "Most species engage in multiple mating events, and this describes the opposite of the observed arousal patterns."
+        }
+      ],
+      "hint": "Consider how an animal's refractory period might change if the available partner is different from the previous one."
+    },
+    {
+      "question": "In the neural circuitry of female rodents, which brain region is considered crucial for the activation of the lordosis response?",
+      "answerOptions": [
+        {
+          "text": "Medial preoptic area (mPOA)",
+          "isCorrect": false,
+          "rationale": "This region is primarily associated with male copulatory behavior rather than the female lordosis circuit."
+        },
+        {
+          "text": "Ventromedial hypothalamus (VMH)",
+          "isCorrect": true,
+          "rationale": "The VMH monitors steroid concentrations and activates a multisynaptic pathway that induces the motor patterns for lordosis."
+        },
+        {
+          "text": "Accessory olfactory bulb",
+          "isCorrect": false,
+          "rationale": "This area processes pheromonal information but does not directly coordinate the motor response of lordosis."
+        },
+        {
+          "text": "Nucleus accumbens",
+          "isCorrect": false,
+          "rationale": "While involved in the reward system, this region is not the primary command center for the lordosis posture."
+        }
+      ],
+      "hint": "Think about the hypothalamic region that is sensitive to estrogens and progesterone to induce receptivity."
+    },
+    {
+      "question": "According to the aromatization hypothesis, what is the primary molecule that masculinizes the rodent brain during the sensitive period?",
+      "answerOptions": [
+        {
+          "text": "Testosterone",
+          "isCorrect": false,
+          "rationale": "While testosterone is the precursor, it must be converted to another molecule to act on the specific receptors involved in this process."
+        },
+        {
+          "text": "Dihydrotestosterone (DHT)",
+          "isCorrect": false,
+          "rationale": "DHT is responsible for masculinizing external genitalia but cannot be converted to the molecule required for rodent brain masculinization."
+        },
+        {
+          "text": "Estradiol",
+          "isCorrect": true,
+          "rationale": "Testosterone enters the brain and is converted by aromatase into estradiol, which then binds to estrogen receptors to masculinize the nervous system."
+        },
+        {
+          "text": "Progesterone",
+          "isCorrect": false,
+          "rationale": "Progesterone is involved in activating female receptivity and does not play a role in the masculinization process described by this hypothesis."
+        }
+      ],
+      "hint": "Recall the enzyme aromatase and what chemical reaction it facilitates within the brain."
+    },
+    {
+      "question": "Which genetic condition results in an XY individual developing a feminine phenotype because their tissues cannot respond to androgens?",
+      "answerOptions": [
+        {
+          "text": "Congenital adrenal hyperplasia (CAH)",
+          "isCorrect": false,
+          "rationale": "CAH typically involves XX individuals being exposed to excess adrenal androgens, resulting in varying degrees of masculinization."
+        },
+        {
+          "text": "Turner's syndrome",
+          "isCorrect": false,
+          "rationale": "This syndrome is characterized by a single X chromosome (XO) and underdeveloped ovaries, not a lack of androgen response."
+        },
+        {
+          "text": "Androgen insensitivity syndrome (AIS)",
+          "isCorrect": true,
+          "rationale": "AIS occurs when a mutation in the androgen receptor gene prevents tissues from sensing male hormones, leading to female external development despite having testes."
+        },
+        {
+          "text": "Guevedoces ($5\\alpha$-reductase deficiency)",
+          "isCorrect": false,
+          "rationale": "These individuals can respond to androgens but lack the specific enzyme to convert testosterone into the more potent DHT needed for early genital development."
+        }
+      ],
+      "hint": "Focus on the condition where the SRY gene functions correctly but the target tissues are effectively 'deaf' to masculine signals."
+    },
+    {
+      "question": "In the context of rodent sexual differentiation, what is the role of $\\alpha$-fetoprotein in female fetuses?",
+      "answerOptions": [
+        {
+          "text": "It converts testosterone into estrogens to promote feminine brain development.",
+          "isCorrect": false,
+          "rationale": "Testosterone conversion is performed by aromatase, and it actually leads to masculinization."
+        },
+        {
+          "text": "It binds to maternal estrogens, preventing them from entering the brain and masculinizing it.",
+          "isCorrect": true,
+          "rationale": "This protein protects the female brain from the masculinizing effects of estrogen circulating in the mother's blood."
+        },
+        {
+          "text": "It triggers the regression of the Wolffian duct system in the absence of Sry protein.",
+          "isCorrect": false,
+          "rationale": "Wolffian duct regression occurs naturally when testosterone is absent, not because of a specific binding protein."
+        },
+        {
+          "text": "It facilitates the transport of testosterone across the blood-brain barrier in males.",
+          "isCorrect": false,
+          "rationale": "The protein does not bind testosterone; testosterone enters the brain freely in both sexes."
+        }
+      ],
+      "hint": "Consider why maternal hormones that cross the placenta don't masculinize every fetus."
+    },
+    {
+      "question": "What happens to the Spinal Nucleus of the Bulbocavernosus (SNB) in female rats during early development?",
+      "answerOptions": [
+        {
+          "text": "The neurons proliferate rapidly due to high levels of progesterone.",
+          "isCorrect": false,
+          "rationale": "SNB development is primarily regulated by androgens, and proliferation is not the mechanism for the observed sex difference."
+        },
+        {
+          "text": "The neurons survive because they receive trophic factors from the clitoral muscles.",
+          "isCorrect": false,
+          "rationale": "In females, the lack of androgens causes the target muscles to die, which in turn leads to the death of the innervating neurons."
+        },
+        {
+          "text": "Most of the SNB motor neurons die because their target muscles regress in the absence of androgens.",
+          "isCorrect": true,
+          "rationale": "Without testosterone to spare the bulbocavernosus muscles, the muscles die and fail to provide the necessary trophic support for the motor neurons."
+        },
+        {
+          "text": "The neurons migrate to the brainstem to form the Medullary Reticular Formation.",
+          "isCorrect": false,
+          "rationale": "The SNB is a spinal structure, and its neurons do not migrate to the brainstem during differentiation."
+        }
+      ],
+      "hint": "Look at the relationship between the target muscle and the survival of the motor neurons that control it."
+    },
+    {
+      "question": "The Bruce effect, observed in rodents and some primates, refers to which phenomenon?",
+      "answerOptions": [
+        {
+          "text": "The acceleration of puberty in young females by the urine of adult males.",
+          "isCorrect": false,
+          "rationale": "This is a different pheromonal effect related to maturation rather than pregnancy termination."
+        },
+        {
+          "text": "The termination of pregnancy in a female exposed to the scent of a novel male.",
+          "isCorrect": true,
+          "rationale": "This effect suggests an evolutionary strategy where females resorbed fetuses to restart reproduction with a new, potentially more dominant male."
+        },
+        {
+          "text": "The synchronized ovulation of females living in close proximity.",
+          "isCorrect": false,
+          "rationale": "While pheromones can influence cycles, the Bruce effect specifically deals with the interruption of an existing pregnancy."
+        },
+        {
+          "text": "The inhibition of male aggression in the presence of receptive females.",
+          "isCorrect": false,
+          "rationale": "Mating behaviors and aggression are linked but this does not define the Bruce effect."
+        }
+      ],
+      "hint": "Think about how a female's body might respond if her original mate is replaced by a stranger."
+    },
+    {
+      "question": "Which model of human sexual response emphasizes emotional intimacy and incentives over a strictly linear physiological progression for women?",
+      "answerOptions": [
+        {
+          "text": "The Masters and Johnson model",
+          "isCorrect": false,
+          "rationale": "Masters and Johnson proposed a linear model consisting of excitement, plateau, orgasm, and resolution for both sexes."
+        },
+        {
+          "text": "The Basson model",
+          "isCorrect": true,
+          "rationale": "Basson's model views female sexuality as a cycle where emotional factors and the context of the relationship are key drivers of desire."
+        },
+        {
+          "text": "The Kinsey scale",
+          "isCorrect": false,
+          "rationale": "Kinsey developed a scale to describe sexual orientation based on surveys, not a physiological response model."
+        },
+        {
+          "text": "The Aromatization hypothesis",
+          "isCorrect": false,
+          "rationale": "This is a biological theory concerning brain masculinization in rodents, not human sexual response patterns."
+        }
+      ],
+      "hint": "Identify the researcher who proposed a cyclical, rather than linear, framework for understanding female sexuality."
+    },
+    {
+      "question": "In the development of the mammalian reproductive tract, which hormone is responsible for the regression of the ducts that would otherwise form the uterus and oviducts?",
+      "answerOptions": [
+        {
+          "text": "Testosterone",
+          "isCorrect": false,
+          "rationale": "Testosterone promotes the development of the male Wolffian system but does not actively shrink the female precursor ducts."
+        },
+        {
+          "text": "Anti-M\u00fcllerian hormone (AMH)",
+          "isCorrect": true,
+          "rationale": "Secreted by the fetal testes, AMH specifically causes the M\u00fcllerian ducts to regress, preventing the development of female internal structures."
+        },
+        {
+          "text": "Prolactin",
+          "isCorrect": false,
+          "rationale": "Prolactin is associated with lactation and maternal behavior, not early embryonic sexual differentiation."
+        },
+        {
+          "text": "Estrogen",
+          "isCorrect": false,
+          "rationale": "Fetal ovaries produce very little hormone; female development is generally the 'default' in the absence of testicular secretions."
+        }
+      ],
+      "hint": "Search for the hormone named specifically for its inhibitory effect on the precursor to the female tract."
+    },
+    {
+      "question": "What distinguishes an 'organizational' effect of a hormone from an 'activational' effect?",
+      "answerOptions": [
+        {
+          "text": "Organizational effects are temporary, while activational effects are permanent.",
+          "isCorrect": false,
+          "rationale": "The reverse is true: organizational effects permanently structure the nervous system."
+        },
+        {
+          "text": "Organizational effects occur during a sensitive period and are permanent; activational effects are transient and occur in adulthood.",
+          "isCorrect": true,
+          "rationale": "This distinction explains how early exposure 'wires' the brain, while later exposure 'turns on' the pre-wired behaviors."
+        },
+        {
+          "text": "Organizational effects only occur in males, while activational effects only occur in females.",
+          "isCorrect": false,
+          "rationale": "Both types of effects occur in both sexes to regulate sex-typical development and behavior."
+        },
+        {
+          "text": "Activational effects require the conversion of testosterone to DHT, while organizational effects do not.",
+          "isCorrect": false,
+          "rationale": "Both processes involve various hormones and metabolites depending on the tissue and species."
+        }
+      ],
+      "hint": "Think about the timing of the hormone exposure and whether the resulting change in behavior is lasting or temporary."
+    },
+    {
+      "question": "Which enzyme is deficient in individuals known as 'guevedoces', preventing the early masculinization of their external genitalia?",
+      "answerOptions": [
+        {
+          "text": "Aromatase",
+          "isCorrect": false,
+          "rationale": "Aromatase converts testosterone to estrogen, which is not the missing step for external genital development."
+        },
+        {
+          "text": "$5\\alpha$-reductase$",
+          "isCorrect": true,
+          "rationale": "This enzyme converts testosterone into Dihydrotestosterone (DHT), the primary hormone responsible for masculinizing external genitals in the womb."
+        },
+        {
+          "text": "Tyrosine hydroxylase",
+          "isCorrect": false,
+          "rationale": "This enzyme is involved in the synthesis of catecholamines like dopamine, not sex steroids."
+        },
+        {
+          "text": "Corticosteroid synthase",
+          "isCorrect": false,
+          "rationale": "A lack of this type of enzyme is related to Congenital Adrenal Hyperplasia (CAH), not the guevedoces phenotype."
+        }
+      ],
+      "hint": "Consider the enzyme responsible for creating the more potent androgen needed for penis and scrotum formation."
+    },
+    {
+      "question": "In rat maternal behavior, what does the parabiosis experiment (joining the blood supplies of two rats) demonstrate?",
+      "answerOptions": [
+        {
+          "text": "That maternal behavior is entirely learned through social observation.",
+          "isCorrect": false,
+          "rationale": "If it were entirely learned, sharing blood would not induce the behavior in a non-pregnant rat."
+        },
+        {
+          "text": "That a combination of hormones in the blood during pregnancy prepares the brain for maternal care.",
+          "isCorrect": true,
+          "rationale": "The non-pregnant rat showed maternal behaviors because it was exposed to the specific hormonal milieu of the pregnant partner."
+        },
+        {
+          "text": "That virgin rats are biologically incapable of showing care for pups.",
+          "isCorrect": false,
+          "rationale": "Virgin rats can show maternal behavior after repeated exposure (habituation), but hormones accelerate this process."
+        },
+        {
+          "text": "That the medial amygdala must be inhibited by pheromones for nursing to occur.",
+          "isCorrect": false,
+          "rationale": "While the amygdala is involved in pup aversion, the parabiosis study focuses on systemic blood-borne factors."
+        }
+      ],
+      "hint": "Focus on how the non-pregnant rat was affected by being physically connected to a pregnant one."
+    }
+  ]
+}

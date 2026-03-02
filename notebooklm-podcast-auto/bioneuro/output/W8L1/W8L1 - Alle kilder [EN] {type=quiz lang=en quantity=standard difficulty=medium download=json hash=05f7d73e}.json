@@ -1,0 +1,265 @@
+{
+  "title": "Neurovidenskab Quiz",
+  "questions": [
+    {
+      "question": "Hvad var den mest invaliderende konsekvens for Ian Waterman efter hans virusinfektion, som p\u00e5virkede hans evne til at bev\u00e6ge sig?",
+      "answerOptions": [
+        {
+          "text": "Tabet af proprioception (kropssans) under halsen.",
+          "isCorrect": true,
+          "rationale": "Ian mistede de nerver, der sender information om muskelaktivitet og kropsposition, hvilket gjorde ham ude af stand til at koordinere bev\u00e6gelser uden visuel feedback."
+        },
+        {
+          "text": "Total lammelse af alle muskler i benene.",
+          "isCorrect": false,
+          "rationale": "Ian kunne stadig bev\u00e6ge sine muskler, men han modtog ingen sensorisk feedback om deres position."
+        },
+        {
+          "text": "Tabet af evnen til at f\u00f8le smerte og temperatur.",
+          "isCorrect": false,
+          "rationale": "Kildematerialet angiver specifikt, at Ian stadig kunne f\u00f8le smerte og temperatur, da de ber\u00f8rte nerver kun var dem, der sendte information om let ber\u00f8ring og position."
+        },
+        {
+          "text": "Nedbrydning af det prim\u00e6re motoriske cortex.",
+          "isCorrect": false,
+          "rationale": "Hans problem l\u00e5 i de sensoriske nerver, der sender information til hjernen, ikke i hjernens evne til at sende motoriske kommandoer."
+        }
+      ],
+      "hint": "T\u00e6nk p\u00e5 den sans, der fort\u00e6ller hjernen, hvor kroppens lemmer befinder sig uden at bruge synet."
+    },
+    {
+      "question": "Hvilken type motorisk kontrolmekanisme er karakteriseret ved at maksimere hastighed frem for n\u00f8jagtighed, og fungerer uden ekstern feedback?",
+      "answerOptions": [
+        {
+          "text": "Open-loop kontrolmekanisme.",
+          "isCorrect": true,
+          "rationale": "Open-loop systemer er pr\u00e6programmerede og bruges til hurtige, ballistiske bev\u00e6gelser, hvor der ikke er tid til at vente p\u00e5 feedback."
+        },
+        {
+          "text": "Closed-loop kontrolmekanisme.",
+          "isCorrect": false,
+          "rationale": "Dette system prioriterer n\u00f8jagtighed ved konstant at bruge feedback til at korrigere fejl, som f.eks. n\u00e5r man styrer en bil."
+        },
+        {
+          "text": "Refleks-k\u00e6de kontrol.",
+          "isCorrect": false,
+          "rationale": "Dette refererer til teorien om, at \u00e9n bev\u00e6gelse trigger den n\u00e6ste via sensorisk feedback, hvilket er det modsatte af hastighedsorienteret open-loop kontrol."
+        },
+        {
+          "text": "Proprioceptiv feedback-kontrol.",
+          "isCorrect": false,
+          "rationale": "Dette er en form for closed-loop kontrol, da det involverer brug af sensorisk information til at justere bev\u00e6gelser."
+        }
+      ],
+      "hint": "Overvej forskellen p\u00e5 en baseball-pitchers hurtige kast og det at styre en bil p\u00e5 vejen."
+    },
+    {
+      "question": "Hvilken egenskab kendetegner 'slow-twitch' muskelfibre i forhold til 'fast-twitch' fibre?",
+      "answerOptions": [
+        {
+          "text": "De har stor udholdenhed og bruges prim\u00e6rt til at opretholde kropsholdning.",
+          "isCorrect": true,
+          "rationale": "Slow-twitch fibre tr\u00e6kker sig langsommere sammen, men er meget modstandsdygtige over for tr\u00e6thed, hvilket g\u00f8r dem ideelle til statisk arbejde."
+        },
+        {
+          "text": "De reagerer hurtigt og kraftfuldt, men bliver hurtigt tr\u00e6tte.",
+          "isCorrect": false,
+          "rationale": "Dette beskriver fast-twitch fibre, som bruges til eksplosive bev\u00e6gelser som f.eks. \u00f8jenbev\u00e6gelser eller l\u00f8b."
+        },
+        {
+          "text": "De findes udelukkende i \u00f8jets ekstraokul\u00e6re muskler.",
+          "isCorrect": false,
+          "rationale": "\u00d8jets muskler best\u00e5r prim\u00e6rt af fast-twitch fibre for at sikre hurtige og pr\u00e6cise blikskift."
+        },
+        {
+          "text": "De aktiveres udelukkende af det autonome nervesystem.",
+          "isCorrect": false,
+          "rationale": "B\u00e5de slow- og fast-twitch fibre er en del af den tv\u00e6rstribede skeletmuskulatur, som er under frivillig kontrol."
+        }
+      ],
+      "hint": "T\u00e6nk p\u00e5 forskellen mellem det 'm\u00f8rke k\u00f8d' p\u00e5 et fugleunderl\u00e5r og det 'hvide k\u00f8d' i brystet."
+    },
+    {
+      "question": "Hvad er den patofysiologiske \u00e5rsag til myasthenia gravis?",
+      "answerOptions": [
+        {
+          "text": "En autoimmun reaktion, hvor antistoffer angriber acetylcholin-receptorer.",
+          "isCorrect": true,
+          "rationale": "Ved myasthenia gravis sv\u00e6kkes den neuromuskul\u00e6re overf\u00f8rsel, fordi immunforsvaret \u00f8del\u00e6gger de receptorer, som musklen skal bruge for at modtage signaler fra motorneuroner."
+        },
+        {
+          "text": "Degeneration af dopamin-producerende neuroner i hjernen.",
+          "isCorrect": false,
+          "rationale": "Dette er \u00e5rsagen til Parkinsons sygdom, ikke myasthenia gravis."
+        },
+        {
+          "text": "Et genetisk betinget tab af dystrophin-proteinet.",
+          "isCorrect": false,
+          "rationale": "Dette beskriver Duchennes muskel-dystrofi, som f\u00f8rer til muskelnedbrydning frem for blokeret signaloverf\u00f8rsel."
+        },
+        {
+          "text": "Overproduktion af acetylcholin i den neuromuskul\u00e6re forbindelse.",
+          "isCorrect": false,
+          "rationale": "Problemet er mangel p\u00e5 fungerende receptorer, ikke en overflod af neurotransmitter."
+        }
+      ],
+      "hint": "Sygdommen skyldes, at kroppens eget immunforsvar blokerer kommunikationen mellem nerve og muskel."
+    },
+    {
+      "question": "Hvilken specifik funktion har muskelspolen (muscle spindle) i nervesystemets overv\u00e5gning af bev\u00e6gelse?",
+      "answerOptions": [
+        {
+          "text": "Den sender information om musklens l\u00e6ngde og \u00e6ndringer i denne l\u00e6ngde.",
+          "isCorrect": true,
+          "rationale": "Muskelspoler indeholder intrafusale fibre, der reagerer p\u00e5 str\u00e6k, hvilket informerer hjernen om musklens aktuelle tilstand."
+        },
+        {
+          "text": "Den overv\u00e5ger prim\u00e6rt sp\u00e6ndingen (tension) i senerne.",
+          "isCorrect": false,
+          "rationale": "Dette er funktionen for Golgi-seneorganet, som beskytter mod overbelastning ved kraftig muskelkontraktion."
+        },
+        {
+          "text": "Den fungerer som den 'sidste f\u00e6lles vej' for alle motoriske kommandoer.",
+          "isCorrect": false,
+          "rationale": "Dette udtryk bruges om selve motorneuronerne i rygmarven, ikke de sensoriske receptorer."
+        },
+        {
+          "text": "Den h\u00e6mmer antagonisten direkte under en str\u00e6krefleks.",
+          "isCorrect": false,
+          "rationale": "Selvom muskelspolen starter signalet, sker h\u00e6mningen af antagonisten via et interneuron i rygmarven."
+        }
+      ],
+      "hint": "Overvej hvilket organ, der reagerer, n\u00e5r en l\u00e6ge sl\u00e5r p\u00e5 kn\u00e6ets sene for at teste en refleks."
+    },
+    {
+      "question": "Hvad adskiller Research Domain Criteria (RDoc) klassifikationssystemet fra det traditionelle DSM-5-TR?",
+      "answerOptions": [
+        {
+          "text": "RDoc fokuserer p\u00e5 dysfunktioner i biologiske og psykologiske systemer frem for symptom-kategorier.",
+          "isCorrect": true,
+          "rationale": "NIMH introducerede RDoc for at skabe en guide baseret p\u00e5 underliggende biologi, gener og neurale kredsl\u00f8b snarere end blot at gruppere observerede symptomer."
+        },
+        {
+          "text": "RDoc er udelukkende baseret p\u00e5 patienternes selvrapporterede f\u00f8lelser.",
+          "isCorrect": false,
+          "rationale": "Tv\u00e6rtimod fors\u00f8ger RDoc at inkludere objektive m\u00e5linger som genetik, molekyler og hjernescanninger."
+        },
+        {
+          "text": "DSM-5-TR er det eneste system, der anerkender skizofreni som en lidelse.",
+          "isCorrect": false,
+          "rationale": "Begge systemer anerkender de samme lidelser, men de tilg\u00e5r diagnosen og forst\u00e5elsen af dem forskelligt."
+        },
+        {
+          "text": "RDoc bruges prim\u00e6rt til at bestemme forsikringsd\u00e6kning i USA.",
+          "isCorrect": false,
+          "rationale": "Det er prim\u00e6rt DSM, der anvendes til klinisk diagnosticering og administrativ brug, mens RDoc er et forskningsv\u00e6rkt\u00f8j."
+        }
+      ],
+      "hint": "T\u00e6nk p\u00e5 hvilket system, der fors\u00f8ger at finde de 'fundamentale biologiske byggesten' bag psykiske lidelser."
+    },
+    {
+      "question": "Hvilken neurotransmitter-hypotese har historisk set v\u00e6ret den mest centrale i forklaringen af de positive symptomer ved skizofreni?",
+      "answerOptions": [
+        {
+          "text": "Dopamin-hypotesen.",
+          "isCorrect": true,
+          "rationale": "Observationer af, at l\u00e6gemidler, der blokerer dopamin-receptorer (specifikt $D_2$), reducerer psykotiske symptomer, har gjort denne hypotese central."
+        },
+        {
+          "text": "Acetylcholin-mangel-hypotesen.",
+          "isCorrect": false,
+          "rationale": "Denne er prim\u00e6rt knyttet til hukommelsestab ved Alzheimers sygdom."
+        },
+        {
+          "text": "Serotonin-reuptake-hypotesen.",
+          "isCorrect": false,
+          "rationale": "Dette er hovedfokus i behandlingen af depression, ikke den prim\u00e6re \u00e5rsagsforklaring p\u00e5 skizofreni."
+        },
+        {
+          "text": "GABA-overskuds-hypotesen.",
+          "isCorrect": false,
+          "rationale": "Ved skizofreni ser man ofte et fald i GABA-mark\u00f8rer i visse hjerneomr\u00e5der, ikke et overskud."
+        }
+      ],
+      "hint": "Overvej hvilken neurotransmitter, der ofte er involveret i hjernens bel\u00f8nningssystem og kontrol af motorik."
+    },
+    {
+      "question": "Hvilken rolle spiller HPA-aksen (hypotalamus-hypofyse-binyre-aksen) typisk i forbindelse med sv\u00e6r depression?",
+      "answerOptions": [
+        {
+          "text": "Den bliver overaktiv, hvilket f\u00f8rer til kronisk forh\u00f8jede niveauer af kortisol.",
+          "isCorrect": true,
+          "rationale": "Ved depression fejler feedback-mekanismen ofte, hvilket resulterer i en konstant stressrespons, der kan skade hjernen, herunder hippocampus."
+        },
+        {
+          "text": "Den deaktiveres fuldst\u00e6ndigt, s\u00e5 patienten ikke kan f\u00f8le stress.",
+          "isCorrect": false,
+          "rationale": "Depression er ofte pr\u00e6get af en unormal og vedvarende stressrespons, ikke mangel p\u00e5 samme."
+        },
+        {
+          "text": "Den producerer for meget v\u00e6ksthormon, hvilket for\u00e5rsager fysisk rastl\u00f8shed.",
+          "isCorrect": false,
+          "rationale": "HPA-aksens hovedprodukt i stressresponsen er kortisol, ikke v\u00e6ksthormon."
+        },
+        {
+          "text": "Den forhindrer cytokiner i at skabe neuroinflammation.",
+          "isCorrect": false,
+          "rationale": "Kronisk stress og h\u00f8j kortisol kan tv\u00e6rtimod bidrage til neuroinflammation, som er en af de foresl\u00e5ede mekanismer bag depression."
+        }
+      ],
+      "hint": "T\u00e6nk p\u00e5 kroppens prim\u00e6re hormonelle 'stress-system'."
+    },
+    {
+      "question": "Hvad er den v\u00e6sentligste forskel p\u00e5 et isk\u00e6misk slagtilf\u00e6lde og et h\u00e6morragisk slagtilf\u00e6lde?",
+      "answerOptions": [
+        {
+          "text": "Isk\u00e6misk skyldes en blokering af et blodkar, mens h\u00e6morragisk skyldes en bl\u00f8dning.",
+          "isCorrect": true,
+          "rationale": "Isk\u00e6mi refererer til iltmangel pga. stoppet blodtilf\u00f8rsel, mens h\u00e6morragi betyder bl\u00f8dning fra et \u00f8delagt kar."
+        },
+        {
+          "text": "Isk\u00e6misk rammer kun unge mennesker, mens h\u00e6morragisk kun rammer \u00e6ldre.",
+          "isCorrect": false,
+          "rationale": "Begge typer kan ramme folk i alle aldre, selvom risikofaktorerne \u00e6ndrer sig."
+        },
+        {
+          "text": "H\u00e6morragisk slagtilf\u00e6lde kan behandles med blodfortyndende medicin.",
+          "isCorrect": false,
+          "rationale": "Blodfortyndende medicin ville forv\u00e6rre en bl\u00f8dning (h\u00e6morragisk) drastisk og gives kun ved visse isk\u00e6miske tilf\u00e6lde."
+        },
+        {
+          "text": "Isk\u00e6misk slagtilf\u00e6lde medf\u00f8rer altid total lammelse med det samme.",
+          "isCorrect": false,
+          "rationale": "Symptomerne afh\u00e6nger af, hvilket omr\u00e5de i hjernen der mister blodtilf\u00f8rsel, og kan variere meget."
+        }
+      ],
+      "hint": "T\u00e6nk p\u00e5 forskellen mellem en 'prop' og et 'l\u00e6k' i et r\u00f8rsystem."
+    },
+    {
+      "question": "If\u00f8lge 'prion-teorien' for neurodegenerative sygdomme, hvordan spreder sygdommen sig i hjernen?",
+      "answerOptions": [
+        {
+          "text": "Unormalt foldede proteiner tvinger normale proteiner til ogs\u00e5 at folde sig forkert.",
+          "isCorrect": true,
+          "rationale": "Prioner fungerer som en skabelon for fejlfoldning, hvilket skaber protein-aggregater, der er giftige for neuronerne og kan sprede sig fra celle til celle."
+        },
+        {
+          "text": "En langsomt virkende virus inficerer neuronerne \u00e9n efter \u00e9n via synapserne.",
+          "isCorrect": false,
+          "rationale": "Prioner er proteiner uden genetisk materiale (DNA/RNA) og er derfor ikke vira."
+        },
+        {
+          "text": "Bakterier i tarmen producerer toksiner, der direkte opl\u00f8ser myelinen.",
+          "isCorrect": false,
+          "rationale": "Selvom tarm-hjerne-aksen unders\u00f8ges, handler prion-teorien specifikt om proteiners form\u00e6ndring."
+        },
+        {
+          "text": "Hjernens immunceller (microglia) begynder at spise sunde neuroner ved en fejl.",
+          "isCorrect": false,
+          "rationale": "Dette beskriver en autoimmun proces, mens prion-teorien fokuserer p\u00e5 de fysisk-kemiske egenskaber ved proteiner som $\\alpha$-synuclein eller amyloid beta."
+        }
+      ],
+      "hint": "Det handler om en k\u00e6dereaktion i proteiners tredimensionelle struktur."
+    }
+  ]
+}

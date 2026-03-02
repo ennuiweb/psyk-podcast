@@ -1,0 +1,265 @@
+{
+  "title": "Neuroscience Quiz",
+  "questions": [
+    {
+      "question": "Which neurosurgeon is credited with developing cortical electrical-stimulation mapping in the mid-twentieth century?",
+      "answerOptions": [
+        {
+          "text": "Wilder Penfield",
+          "isCorrect": true,
+          "rationale": "He developed mapping techniques to remove diseased brain tissue while preserving critical functions like speech."
+        },
+        {
+          "text": "Santiago Ram\u00f3n y Cajal",
+          "isCorrect": false,
+          "rationale": "Cajal was a neuroanatomist famous for his pen-and-ink studies of neurons and proposing the neuron doctrine."
+        },
+        {
+          "text": "Camillo Golgi",
+          "isCorrect": false,
+          "rationale": "Golgi developed revolutionary staining techniques but incorrectly believed neurons were continuous with one another."
+        },
+        {
+          "text": "Sir Charles Sherrington",
+          "isCorrect": false,
+          "rationale": "Sherrington is known for demonstrating the existence of and naming the gaps between neurons."
+        }
+      ],
+      "hint": "Think of the researcher who mapped the brain to help patients experiencing frequent seizures."
+    },
+    {
+      "question": "According to the neuron doctrine, how do neurons interact with one another?",
+      "answerOptions": [
+        {
+          "text": "They are continuous, forming an endless network of connected tubes.",
+          "isCorrect": false,
+          "rationale": "This reflects Golgi's rejected hypothesis of a continuous reticular network."
+        },
+        {
+          "text": "They are independent units that communicate across tiny gaps.",
+          "isCorrect": true,
+          "rationale": "The doctrine proposes that neurons are structurally, metabolically, and functionally distinct."
+        },
+        {
+          "text": "They fuse their cell bodies together to share genetic information.",
+          "isCorrect": false,
+          "rationale": "Neurons remain independent and do not fuse their somata for information exchange."
+        },
+        {
+          "text": "They communicate only through direct physical contact of their nuclei.",
+          "isCorrect": false,
+          "rationale": "Communication occurs at the synapse, far from the cell nucleus."
+        }
+      ],
+      "hint": "This principle emphasizes that neurons are contiguous but not continuous."
+    },
+    {
+      "question": "In the functional 'zones' of a neuron, which part serves as the integration zone?",
+      "answerOptions": [
+        {
+          "text": "Dendrites",
+          "isCorrect": false,
+          "rationale": "Dendrites are primarily considered the input zone where information is collected."
+        },
+        {
+          "text": "Axon terminals",
+          "isCorrect": false,
+          "rationale": "Axon terminals represent the output zone where information is transferred to other cells."
+        },
+        {
+          "text": "Cell body and axon hillock",
+          "isCorrect": true,
+          "rationale": "This region combines received inputs to determine whether or not to send an electrical signal."
+        },
+        {
+          "text": "Myelin sheath",
+          "isCorrect": false,
+          "rationale": "The myelin sheath provides insulation and is not a zone for processing or integrating signals."
+        }
+      ],
+      "hint": "This zone is where the decision to produce a neural signal is made."
+    },
+    {
+      "question": "Which type of neuron is the most common in the vertebrate nervous system?",
+      "answerOptions": [
+        {
+          "text": "Unipolar neurons",
+          "isCorrect": false,
+          "rationale": "Unipolar neurons are primarily specialized for transmitting touch information into the spinal cord."
+        },
+        {
+          "text": "Bipolar neurons",
+          "isCorrect": false,
+          "rationale": "Bipolar neurons are relatively rare and mostly found in specific sensory systems like vision."
+        },
+        {
+          "text": "Multipolar neurons",
+          "isCorrect": true,
+          "rationale": "Multipolar neurons, featuring many dendrites and a single axon, are the most prevalent type."
+        },
+        {
+          "text": "Monopolar neurons",
+          "isCorrect": false,
+          "rationale": "Monopolar is another name for unipolar neurons, which are not the most common variety."
+        }
+      ],
+      "hint": "These neurons are characterized by having many dendrites and a single axon."
+    },
+    {
+      "question": "What is the typical width of the synaptic cleft?",
+      "answerOptions": [
+        {
+          "text": "$20-40$ nm",
+          "isCorrect": true,
+          "rationale": "This tiny gap separates the presynaptic and postsynaptic membranes for chemical transmission."
+        },
+        {
+          "text": "$10-100$ $\\mu$m",
+          "isCorrect": false,
+          "rationale": "Micrometers would be the size of an entire cell body, not a sub-cellular gap."
+        },
+        {
+          "text": "$5$ nm",
+          "isCorrect": false,
+          "rationale": "This is the approximate thickness of a neuronal membrane, not the width of the cleft."
+        },
+        {
+          "text": "$1$ mm",
+          "isCorrect": false,
+          "rationale": "A millimeter is much too large for microscopic structures like a synapse."
+        }
+      ],
+      "hint": "The measurement is in nanometers and is slightly larger than the thickness of the cell membrane."
+    },
+    {
+      "question": "Which glial cells are responsible for the 'cleanup' process, removing debris from injured or dead cells?",
+      "answerOptions": [
+        {
+          "text": "Astrocytes",
+          "isCorrect": false,
+          "rationale": "Astrocytes primarily regulate blood flow and support synaptic activity."
+        },
+        {
+          "text": "Microglial cells",
+          "isCorrect": true,
+          "rationale": "Microglia migrate to sites of injury to contain damage and remove cellular waste."
+        },
+        {
+          "text": "Oligodendrocytes",
+          "isCorrect": false,
+          "rationale": "These cells focus on providing myelin insulation for axons within the central nervous system."
+        },
+        {
+          "text": "Schwann cells",
+          "isCorrect": false,
+          "rationale": "Schwann cells provide myelination in the peripheral nervous system rather than acting as a cleanup crew."
+        }
+      ],
+      "hint": "These are the smallest glial cells and are remarkably active at sites of damage."
+    },
+    {
+      "question": "What is the primary function of the myelin sheath?",
+      "answerOptions": [
+        {
+          "text": "To manufacture neurotransmitters for the cell.",
+          "isCorrect": false,
+          "rationale": "Neurotransmitters are manufactured in the cell body or terminals, not by myelin."
+        },
+        {
+          "text": "To increase the speed of electrical signal conduction.",
+          "isCorrect": true,
+          "rationale": "Myelin acts as insulation that allows signals to jump between nodes, greatly accelerating transmission."
+        },
+        {
+          "text": "To provide a pathway for retrograde axonal transport.",
+          "isCorrect": false,
+          "rationale": "Axonal transport occurs along microtubules inside the axon, not via the myelin sheath."
+        },
+        {
+          "text": "To detect changes in the external environment.",
+          "isCorrect": false,
+          "rationale": "Environment detection is the role of specialized sensory neurons."
+        }
+      ],
+      "hint": "Think about how insulation on a wire affects the flow of electricity."
+    },
+    {
+      "question": "A scientist wants to label all cell bodies in a brain slice to measure cell density. Which histological method should they use?",
+      "answerOptions": [
+        {
+          "text": "Golgi stain",
+          "isCorrect": false,
+          "rationale": "Golgi stains only label a small minority of neurons to reveal their complete fine structure."
+        },
+        {
+          "text": "Nissl stain",
+          "isCorrect": true,
+          "rationale": "Nissl stains outline all cell bodies because the dyes are attracted to RNA within the cells."
+        },
+        {
+          "text": "Anterograde labeling",
+          "isCorrect": false,
+          "rationale": "This is a tract-tracing method used to identify the targets of neuronal axons."
+        },
+        {
+          "text": "Brainbow",
+          "isCorrect": false,
+          "rationale": "Brainbow uses multiple fluorescent proteins to distinguish individual neurons and their connections."
+        }
+      ],
+      "hint": "This traditional stain is attracted to RNA distributed within the cell."
+    },
+    {
+      "question": "Which term describes the movement of used materials from the axon terminals back to the cell body for recycling?",
+      "answerOptions": [
+        {
+          "text": "Anterograde transport",
+          "isCorrect": false,
+          "rationale": "Anterograde transport moves new materials from the cell body toward the terminals."
+        },
+        {
+          "text": "Retrograde transport",
+          "isCorrect": true,
+          "rationale": "Retrograde transport specifically refers to the inward movement of materials toward the soma."
+        },
+        {
+          "text": "Gliotransmission",
+          "isCorrect": false,
+          "rationale": "This refers to the communication between glial cells and neurons."
+        },
+        {
+          "text": "Neural plasticity",
+          "isCorrect": false,
+          "rationale": "Plasticity is the ability of the nervous system to change in response to experience."
+        }
+      ],
+      "hint": "The prefix of this term implies moving backward or returning to the source."
+    },
+    {
+      "question": "Which disorder is characterized by the widespread degeneration of the insulating myelin sheath in the brain?",
+      "answerOptions": [
+        {
+          "text": "Epilepsy",
+          "isCorrect": false,
+          "rationale": "Epilepsy is primarily associated with excessive neuronal excitability, often linked to astrocyte dysfunction."
+        },
+        {
+          "text": "Multiple sclerosis",
+          "isCorrect": true,
+          "rationale": "Multiple sclerosis involves the loss of myelin, leading to short circuits and loss of information transmission."
+        },
+        {
+          "text": "Alzheimer's disease",
+          "isCorrect": false,
+          "rationale": "While glia are involved, Alzheimer's is more broadly categorized as a degenerative proteinopathy."
+        },
+        {
+          "text": "Schizophrenia",
+          "isCorrect": false,
+          "rationale": "While myelin loss is implicated, it is not the primary definition of schizophrenia."
+        }
+      ],
+      "hint": "The name of this disorder literally means 'many scars.'"
+    }
+  ]
+}

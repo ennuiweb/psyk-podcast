@@ -1,0 +1,395 @@
+{
+  "title": "Reproduction Quiz",
+  "questions": [
+    {
+      "question": "What are the four major stages of reproductive behavior identified in many animal species?",
+      "answerOptions": [
+        {
+          "text": "Sexual attraction, appetitive behavior, copulation, and postcopulatory behavior",
+          "isCorrect": true,
+          "rationale": "These stages describe the complete progression from initial mate selection to the behaviors following the act of mating."
+        },
+        {
+          "text": "Arousal, plateau, orgasm, and resolution",
+          "isCorrect": false,
+          "rationale": "While related, these are the four phases of the human sexual response model rather than the general stages of reproductive behavior."
+        },
+        {
+          "text": "Attraction, courtship, gestation, and parental care",
+          "isCorrect": false,
+          "rationale": "Gestation and parental care occur long after the reproductive behavior stages themselves have concluded."
+        },
+        {
+          "text": "Pheromonal signaling, mounting, ejaculation, and refractory period",
+          "isCorrect": false,
+          "rationale": "These are specific components of mating but do not represent the four broad categories used by researchers to organize reproductive behavior."
+        }
+      ],
+      "hint": "Think about the sequence starting from finding a mate to the actions performed after mating is completed."
+    },
+    {
+      "question": "The Coolidge effect describes which of the following phenomena in animal behavior?",
+      "answerOptions": [
+        {
+          "text": "A male resumes sexual activity more quickly when provided with a novel partner.",
+          "isCorrect": true,
+          "rationale": "This effect demonstrates how a new reproductive opportunity can shorten the refractory period in many species."
+        },
+        {
+          "text": "A female becomes sexually receptive only during specific times of her ovulatory cycle.",
+          "isCorrect": false,
+          "rationale": "This refers to the state of being in estrus, which is distinct from the response to a novel partner."
+        },
+        {
+          "text": "A mated pair forms a lifelong social bond regardless of sexual activity.",
+          "isCorrect": false,
+          "rationale": "This describes social monogamy or pair-bonding, which is a different aspect of reproductive strategy."
+        },
+        {
+          "text": "A male remains in a copulatory lock to ensure paternity of the offspring.",
+          "isCorrect": false,
+          "rationale": "Copulatory lock is a postcopulatory strategy to prevent other males from mating, not a resumption of activity."
+        }
+      ],
+      "hint": "This phenomenon involves the introduction of a new individual to a sexually satiated male."
+    },
+    {
+      "question": "Which term describes a form of asexual reproduction where a female produces offspring without the need for a male?",
+      "answerOptions": [
+        {
+          "text": "Parthenogenesis",
+          "isCorrect": true,
+          "rationale": "Often called 'virgin birth,' this process allows females of some species to produce clones or offspring from unfertilized eggs."
+        },
+        {
+          "text": "Hermaphroditism",
+          "isCorrect": false,
+          "rationale": "This refers to individuals possessing both male and female reproductive organs, rather than reproduction without a partner."
+        },
+        {
+          "text": "Viviparity",
+          "isCorrect": false,
+          "rationale": "Viviparity is a strategy where the female nourishes embryos inside her body and gives birth to live young, but it still requires fertilization."
+        },
+        {
+          "text": "External fertilization",
+          "isCorrect": false,
+          "rationale": "This is a sexual reproduction strategy where gametes are released into the environment, typically requiring both male and female contributions."
+        }
+      ],
+      "hint": "The term is derived from Greek words meaning 'virgin' and 'birth.'"
+    },
+    {
+      "question": "In female rats, what is the name of the stereotyped posture that facilitates intromission by the male?",
+      "answerOptions": [
+        {
+          "text": "Lordosis",
+          "isCorrect": true,
+          "rationale": "This posture involves elevating the rump and moving the tail to the side, which is necessary for successful copulation in rodents."
+        },
+        {
+          "text": "Proceptivity",
+          "isCorrect": false,
+          "rationale": "Proceptivity refers to the active behaviors a female uses to attract a male, rather than the specific physical posture for mating."
+        },
+        {
+          "text": "Estrus",
+          "isCorrect": false,
+          "rationale": "Estrus is the hormonal state or period of being 'in heat,' whereas the posture itself has a specific anatomical name."
+        },
+        {
+          "text": "Musth",
+          "isCorrect": false,
+          "rationale": "Musth is a period of heightened aggression and sexual activity in male elephants, not a female rodent posture."
+        }
+      ],
+      "hint": "It is a specific physical stance involving an arched back and a raised hindquarter."
+    },
+    {
+      "question": "Which brain region is considered the 'final common pathway' for the production of male copulatory behaviors in rats?",
+      "answerOptions": [
+        {
+          "text": "Medial preoptic area (mPOA)",
+          "isCorrect": true,
+          "rationale": "Lesions in this area abolish mounting and intromission behaviors, while testosterone implants here can restore them in castrated males."
+        },
+        {
+          "text": "Ventromedial hypothalamus (VMH)",
+          "isCorrect": false,
+          "rationale": "The VMH is primarily associated with the regulation of the lordosis response in females, not the motor patterns of males."
+        },
+        {
+          "text": "Periaqueductal gray (PAG)",
+          "isCorrect": false,
+          "rationale": "The PAG is a relay point in the female lordosis circuit rather than the primary coordinator for masculine mating acts."
+        },
+        {
+          "text": "Vomeronasal organ (VNO)",
+          "isCorrect": false,
+          "rationale": "The VNO is a sensory structure for detecting pheromones, not a central brain region that coordinates motor patterns."
+        }
+      ],
+      "hint": "This area is located in the anterior hypothalamus and is rich in steroid receptors."
+    },
+    {
+      "question": "Which genetic condition involves the presence of only a single X chromosome ($X0$) and results in underdeveloped ovaries?",
+      "answerOptions": [
+        {
+          "text": "Turner's syndrome",
+          "isCorrect": true,
+          "rationale": "Individuals with this syndrome lack a second sex chromosome, which prevents the normal development of ovaries but results in a feminine phenotype because no $SRY$ gene is present."
+        },
+        {
+          "text": "Congenital adrenal hyperplasia (CAH)",
+          "isCorrect": false,
+          "rationale": "CAH involves $XX$ individuals exposed to excessive androgens, rather than a missing chromosome."
+        },
+        {
+          "text": "Androgen insensitivity syndrome (AIS)",
+          "isCorrect": false,
+          "rationale": "AIS affects $XY$ individuals who have a mutation in their androgen receptors, not a chromosomal deletion."
+        },
+        {
+          "text": "$5\\alpha$-reductase deficiency",
+          "isCorrect": false,
+          "rationale": "This condition involves a specific enzyme mutation in $XY$ individuals, leading to incomplete masculinization of external genitalia."
+        }
+      ],
+      "hint": "This syndrome is characterized by a chromosomal makeup lacking a second X or a Y chromosome."
+    },
+    {
+      "question": "During early development, which duct system develops into the internal female reproductive tract in the absence of testicular hormones?",
+      "answerOptions": [
+        {
+          "text": "M\\\"ullerian ducts",
+          "isCorrect": true,
+          "rationale": "In the absence of anti-M\\\"ullerian hormone ($AMH$), these ducts develop into the oviducts, uterus, and inner vagina."
+        },
+        {
+          "text": "Wolffian ducts",
+          "isCorrect": false,
+          "rationale": "Wolffian ducts require testosterone to develop into male internal structures like the vas deferens and seminal vesicles."
+        },
+        {
+          "text": "Urogenital sinus",
+          "isCorrect": false,
+          "rationale": "The urogenital sinus is a precursor for lower urinary and genital structures, but it is not the primary duct system for the uterus and oviducts."
+        },
+        {
+          "text": "Genital tubercle",
+          "isCorrect": false,
+          "rationale": "The genital tubercle is the embryonic structure that becomes either the clitoris or the penis, not an internal duct system."
+        }
+      ],
+      "hint": "These ducts are the precursors to the oviducts and the uterus."
+    },
+    {
+      "question": "What is the function of the enzyme $5\\alpha$-reductase in mammalian sexual differentiation?",
+      "answerOptions": [
+        {
+          "text": "It converts testosterone into dihydrotestosterone ($DHT$) to masculinize external genitalia.",
+          "isCorrect": true,
+          "rationale": "$DHT$ is a more potent androgen required to induce the formation of the scrotum and penis from the bipotential genital tissues."
+        },
+        {
+          "text": "It converts testosterone into estradiol to masculinize the brain.",
+          "isCorrect": false,
+          "rationale": "This describes the process of aromatization, which is performed by the enzyme aromatase, not $5\\alpha$-reductase."
+        },
+        {
+          "text": "It triggers the $SRY$ gene to begin the development of testes.",
+          "isCorrect": false,
+          "rationale": "The $SRY$ gene is a genetic factor on the Y chromosome that acts independently of $5\\alpha$-reductase."
+        },
+        {
+          "text": "It causes the regression of the M\\\"ullerian duct system.",
+          "isCorrect": false,
+          "rationale": "The regression of M\\\"ullerian ducts is caused by anti-M\\\"ullerian hormone ($AMH$), which is a protein secreted by the testes."
+        }
+      ],
+      "hint": "This enzyme is essential for the development of a recognizable penis and scrotum."
+    },
+    {
+      "question": "The 'aromatization hypothesis' suggests that in rodents, the brain is masculinized by which hormone?",
+      "answerOptions": [
+        {
+          "text": "Estradiol",
+          "isCorrect": true,
+          "rationale": "According to this hypothesis, testosterone enters the brain and is converted into estradiol, which then binds to estrogen receptors to organize the brain in a masculine fashion."
+        },
+        {
+          "text": "Dihydrotestosterone ($DHT$)",
+          "isCorrect": false,
+          "rationale": "While $DHT$ is an androgen, it cannot be converted into estrogen and therefore does not play a role in the aromatization-based masculinization of the brain."
+        },
+        {
+          "text": "Progesterone",
+          "isCorrect": false,
+          "rationale": "Progesterone is involved in activating female receptivity and is not the hormone responsible for early brain masculinization."
+        },
+        {
+          "text": "Anti-M\\\"ullerian hormone ($AMH$)",
+          "isCorrect": false,
+          "rationale": "$AMH$ acts on the internal duct systems during body differentiation, not on the neural circuits of the brain."
+        }
+      ],
+      "hint": "This hypothesis focuses on a metabolite of testosterone that typically binds to estrogen receptors."
+    },
+    {
+      "question": "What distinguishes an 'organizational effect' of a hormone from an 'activational effect'?",
+      "answerOptions": [
+        {
+          "text": "Organizational effects are permanent and occur during sensitive periods, while activational effects are temporary and occur in adulthood.",
+          "isCorrect": true,
+          "rationale": "Organizational effects structuralize the nervous system during development, whereas activational effects transiently promote behaviors later in life."
+        },
+        {
+          "text": "Organizational effects only occur in males, while activational effects only occur in females.",
+          "isCorrect": false,
+          "rationale": "Both types of effects occur in both sexes to regulate sex-typical development and behavior."
+        },
+        {
+          "text": "Organizational effects are caused by estrogens, while activational effects are caused by androgens.",
+          "isCorrect": false,
+          "rationale": "Both androgens and estrogens can exert both organizational and activational effects depending on the timing and the tissue."
+        },
+        {
+          "text": "Organizational effects occur only at puberty, while activational effects occur only before birth.",
+          "isCorrect": false,
+          "rationale": "This reverses the typical timeline; organizational effects generally occur early (though some happen at puberty), while activational effects are usually seen in adults."
+        }
+      ],
+      "hint": "Consider which effect involves long-lasting structural changes versus short-term behavioral readiness."
+    },
+    {
+      "question": "Which of the following is an example of a sexual dimorphism in the rodent nervous system?",
+      "answerOptions": [
+        {
+          "text": "The sexually dimorphic nucleus of the preoptic area ($SDN$-$POA$)",
+          "isCorrect": true,
+          "rationale": "This hypothalamic nucleus is significantly larger in volume in male rats than in females due to early androgen exposure."
+        },
+        {
+          "text": "The vomeronasal organ ($VNO$)",
+          "isCorrect": false,
+          "rationale": "While it processes sex-related information, the $VNO$ is a sensory structure present in both sexes and is not the primary example of brain dimorphism."
+        },
+        {
+          "text": "The pituitary gland",
+          "isCorrect": false,
+          "rationale": "The pituitary gland is a master endocrine gland found in both sexes with similar general structures, though its secretions differ."
+        },
+        {
+          "text": "The motor cortex",
+          "isCorrect": false,
+          "rationale": "The motor cortex regulates general movement and does not show the pronounced, sex-specific volume differences seen in reproductive nuclei."
+        }
+      ],
+      "hint": "Look for a nucleus in the hypothalamus whose size is directly influenced by perinatal testosterone."
+    },
+    {
+      "question": "What happens to the spinal nucleus of the bulbocavernosus ($SNB$) in female rats during development?",
+      "answerOptions": [
+        {
+          "text": "Most of the motor neurons die because the target muscles do not receive androgenic stimulation.",
+          "isCorrect": true,
+          "rationale": "Without testosterone to spare the muscles, the muscles die, and the innervating $SNB$ neurons subsequently undergo cell death."
+        },
+        {
+          "text": "The neurons migrate to the brain to help regulate maternal behavior.",
+          "isCorrect": false,
+          "rationale": "Neurons in the $SNB$ are spinal motor neurons and do not migrate to the brain; their fate is determined by survival or death."
+        },
+        {
+          "text": "They grow larger and innervate the M\\\"ullerian ducts.",
+          "isCorrect": false,
+          "rationale": "These neurons are specifically linked to the bulbocavernosus muscles, not the internal reproductive tracts."
+        },
+        {
+          "text": "They produce aromatase to convert testosterone into estrogens.",
+          "isCorrect": false,
+          "rationale": "Masculinization of the $SNB$ system does not rely on aromatization, and these motor neurons are targets of hormones, not primary sources of conversion."
+        }
+      ],
+      "hint": "Consider the fate of these neurons in the absence of the male-typical hormone surge."
+    },
+    {
+      "question": "Which phenomenon involves the termination of pregnancy and resorption of fetuses in a female rodent when exposed to a new male's urine?",
+      "answerOptions": [
+        {
+          "text": "The Bruce effect",
+          "isCorrect": true,
+          "rationale": "This pheromonal response allows a female to potentially start a new litter with a different male if her previous mate is no longer present."
+        },
+        {
+          "text": "The Coolidge effect",
+          "isCorrect": false,
+          "rationale": "The Coolidge effect refers to the resumption of mating by a male with a new partner, not the termination of pregnancy."
+        },
+        {
+          "text": "Lordosis",
+          "isCorrect": false,
+          "rationale": "Lordosis is a physical posture for mating, not a physiological response to pregnancy."
+        },
+        {
+          "text": "Parthenogenesis",
+          "isCorrect": false,
+          "rationale": "Parthenogenesis is a form of asexual reproduction, which is unrelated to the pheromonal blocking of an existing pregnancy."
+        }
+      ],
+      "hint": "This effect is an example of how pheromones from a strange male can influence a female's reproductive status."
+    },
+    {
+      "question": "In the human sexual response model, during which phase do the phallus and clitoris become engorged with blood and erect?",
+      "answerOptions": [
+        {
+          "text": "Excitement",
+          "isCorrect": true,
+          "rationale": "The excitement phase is the first stage of the human sexual response cycle and is characterized by physical arousal and vasocongestion."
+        },
+        {
+          "text": "Plateau",
+          "isCorrect": false,
+          "rationale": "The plateau phase follows excitement and represents a leveling off of high arousal before reaching orgasm."
+        },
+        {
+          "text": "Resolution",
+          "isCorrect": false,
+          "rationale": "Resolution is the final phase where the body returns to its normal physiological state."
+        },
+        {
+          "text": "Refractory period",
+          "isCorrect": false,
+          "rationale": "The refractory period is a specific time following orgasm, particularly in men, where further arousal is temporarily inhibited."
+        }
+      ],
+      "hint": "This is the initial phase of physiological arousal described by Masters and Johnson."
+    },
+    {
+      "question": "What distinguishes altricial young from precocial young in vertebrate species?",
+      "answerOptions": [
+        {
+          "text": "Altricial young are born helpless and require significant parental investment to survive.",
+          "isCorrect": true,
+          "rationale": "Species like humans and songbirds produce altricial young that need food and protection because their motor and sensory systems are underdeveloped at birth."
+        },
+        {
+          "text": "Altricial young can move, see, and regulate their temperature immediately after birth.",
+          "isCorrect": false,
+          "rationale": "This description fits precocial young, such as horses or ducks, rather than altricial young."
+        },
+        {
+          "text": "Altricial young are produced only through external fertilization.",
+          "isCorrect": false,
+          "rationale": "The terms altricial and precocial refer to the state of development at birth/hatching, regardless of whether fertilization was internal or external."
+        },
+        {
+          "text": "Altricial young do not require any hormonal triggers for maternal care.",
+          "isCorrect": false,
+          "rationale": "Maternal care for altricial young is heavily regulated by hormones such as prolactin and oxytocin."
+        }
+      ],
+      "hint": "Think about the difference between a newborn human baby and a newborn foal that can walk within hours."
+    }
+  ]
+}

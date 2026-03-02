@@ -1,0 +1,317 @@
+{
+  "title": "Motorik Quiz",
+  "questions": [
+    {
+      "question": "Hvilken specifik type nervefibre mistede Ian Waterman evnen til at bruge under sin hals efter en viral infektion?",
+      "answerOptions": [
+        {
+          "text": "Fibre til smerte og temperatur",
+          "isCorrect": false,
+          "rationale": "Ian kunne stadig m\u00e6rke smerte, varme og kulde p\u00e5 sin hud."
+        },
+        {
+          "text": "Fibre til proprioception og let ber\u00f8ring",
+          "isCorrect": true,
+          "rationale": "Infektionen ramte de store, myelinerede axoner, der sender information om kropsstilling og ber\u00f8ring til hjernen."
+        },
+        {
+          "text": "Motoriske nerver til alle muskler",
+          "isCorrect": false,
+          "rationale": "Han bevarede evnen til at bev\u00e6ge alle sine muskler, men vidste ikke, hvor de var, uden at se dem."
+        },
+        {
+          "text": "Det autonome nervesystem",
+          "isCorrect": false,
+          "rationale": "Kilden fokuserer p\u00e5 hans tab af sensorisk feedback for bev\u00e6gelse, ikke hans indre organers funktion."
+        }
+      ],
+      "hint": "T\u00e6nk p\u00e5 de store, myelinerede axoner, der b\u00e6rer kropsfornemmelsen."
+    },
+    {
+      "question": "Hvad er if\u00f8lge kilden begr\u00e6nsningen ved Sir Charles Sherringtons teori om, at adf\u00e6rd blot er en k\u00e6de af reflekser?",
+      "answerOptions": [
+        {
+          "text": "Reflekser er for langsomme til at forklare tale",
+          "isCorrect": false,
+          "rationale": "Problemet er ikke hastigheden, men den komplekse planl\u00e6gning og foregribelse af lyde."
+        },
+        {
+          "text": "Reflekser involverer kun rygmarven",
+          "isCorrect": false,
+          "rationale": "Selvom mange er spinale, findes der ogs\u00e5 l\u00e6ngere refleks-loops, der involverer hjernen."
+        },
+        {
+          "text": "Det forklarer ikke fejl som 'spoonerisms'",
+          "isCorrect": true,
+          "rationale": "Talefejl viser, at hjernen har en overordnet motorisk plan, hvor fremtidige lyde forventes og udf\u00f8res for tidligt."
+        },
+        {
+          "text": "Rygmarvsdyr kan ikke udf\u00f8re reflekser",
+          "isCorrect": false,
+          "rationale": "Faktisk blev rygmarvsdyr brugt til netop at bevise, at rygmarven medierer simple reflekser."
+        }
+      ],
+      "hint": "Overvej hvad sproglige fejl fort\u00e6ller os om r\u00e6kkef\u00f8lgen af handlinger."
+    },
+    {
+      "question": "Hvilken type kontrolmekanisme er karakteriseret ved at maksimere n\u00f8jagtighed gennem konstant feedback?",
+      "answerOptions": [
+        {
+          "text": "Open-loop kontrol",
+          "isCorrect": false,
+          "rationale": "Denne mekanisme maksimerer hastighed og mangler ekstern feedback under selve handlingen."
+        },
+        {
+          "text": "Ballistisk kontrol",
+          "isCorrect": false,
+          "rationale": "Ballistiske bev\u00e6gelser er hurtige og programmerede uden justering undervejs."
+        },
+        {
+          "text": "Closed-loop kontrol",
+          "isCorrect": true,
+          "rationale": "I et lukket kredsl\u00f8b flyder information fra det kontrollerede system tilbage til controlleren for at minimere fejl."
+        },
+        {
+          "text": "Refleks-medieret kontrol",
+          "isCorrect": false,
+          "rationale": "Selvom reflekser giver feedback, refererer engineering-begrebet specifikt til systemets struktur."
+        }
+      ],
+      "hint": "T\u00e6nk p\u00e5 analogien med at styre en bil p\u00e5 vejen."
+    },
+    {
+      "question": "Hvilket protein er en v\u00e6sentlig del af musklernes tykke filamenter og binder sig til actin under kontraktion?",
+      "answerOptions": [
+        {
+          "text": "Myoglobin",
+          "isCorrect": false,
+          "rationale": "Dette er et iltbindende protein, der findes i m\u00f8rkt k\u00f8d, men det skaber ikke bev\u00e6gelse."
+        },
+        {
+          "text": "Dystrophin",
+          "isCorrect": false,
+          "rationale": "Dette protein er vigtigt for musklens struktur, men er ikke en del af selve kontraktionsmekanismen."
+        },
+        {
+          "text": "Myosin",
+          "isCorrect": true,
+          "rationale": "Myosinhoveder binder sig til actin og b\u00f8jer sig for at glide filamenterne forbi hinanden, hvilket forkorter musklen."
+        },
+        {
+          "text": "Acetylcholin",
+          "isCorrect": false,
+          "rationale": "Dette er en neurotransmitter, der signalerer til musklen, men det er ikke et strukturelt filament."
+        }
+      ],
+      "hint": "Dette protein arbejder sammen med actin for at skabe muskelkraft."
+    },
+    {
+      "question": "Hvorfor er 'm\u00f8rkt k\u00f8d' i benene p\u00e5 en fugl m\u00f8rkere end det hvide brystk\u00f8d?",
+      "answerOptions": [
+        {
+          "text": "Det indeholder flere fast-twitch fibre",
+          "isCorrect": false,
+          "rationale": "Fast-twitch fibre er typisk lysere og findes i brystet til hurtige vingeslag."
+        },
+        {
+          "text": "Det har en h\u00f8jere koncentration af myoglobin og mitokondrier",
+          "isCorrect": true,
+          "rationale": "Slow-twitch fibre i benene kr\u00e6ver mere ilt og energi til vedvarende aktivitet som gang."
+        },
+        {
+          "text": "Det er d\u00e6kket af tykkere sener",
+          "isCorrect": false,
+          "rationale": "Sener forbinder muskler til knogler, men giver ikke musklen dens farve."
+        },
+        {
+          "text": "Det er resultatet af flere nerveforbindelser",
+          "isCorrect": false,
+          "rationale": "Antallet af nerver bestemmer pr\u00e6cision, men ikke musklens visuelle pigmentering."
+        }
+      ],
+      "hint": "Overvej behovet for ilt og udholdenhed i de muskler, fuglen bruger mest til at st\u00e5."
+    },
+    {
+      "question": "Hvad sker der ved den neuromuskul\u00e6re forbindelse ($NMJ$), n\u00e5r et aktionspotentiale n\u00e5r axonterminalen?",
+      "answerOptions": [
+        {
+          "text": "Der frigives dopamin til muskelcellen",
+          "isCorrect": false,
+          "rationale": "Dopamin bruges i hjernen, men ikke som det prim\u00e6re signal ved $NMJ$."
+        },
+        {
+          "text": "Der frigives acetylcholin ($ACh$)",
+          "isCorrect": true,
+          "rationale": "I hvirveldyr udl\u00f8ser $ACh$ et aktionspotentiale i muskelcellen, hvilket f\u00f8rer til kontraktion."
+        },
+        {
+          "text": "Musklen sender en elektrisk impuls tilbage til nerven",
+          "isCorrect": false,
+          "rationale": "Signalet ved $NMJ$ er ensrettet fra motoneuron til muskel."
+        },
+        {
+          "text": "Natriumkanalerne i nerven lukker permanent",
+          "isCorrect": false,
+          "rationale": "Aktionspotentialet \u00e5bner midlertidigt kanaler for at frigive transmittere."
+        }
+      ],
+      "hint": "Navngiv den centrale neurotransmitter, der styrer vores skeletmuskulatur."
+    },
+    {
+      "question": "Hvilken type proprioceptiv receptor overv\u00e5ger muskelsp\u00e6nding ($tension$) og hj\u00e6lper med at forhindre skader ved overbelastning?",
+      "answerOptions": [
+        {
+          "text": "Muskeltenen",
+          "isCorrect": false,
+          "rationale": "Muskeltenen reagerer prim\u00e6rt p\u00e5 musklens l\u00e6ngde og str\u00e6k, ikke sp\u00e6nding."
+        },
+        {
+          "text": "Golgi-seneorganet",
+          "isCorrect": true,
+          "rationale": "Disse organer sidder i senerne og h\u00e6mmer motoneuronerne, hvis sp\u00e6ndingen bliver farligt h\u00f8j."
+        },
+        {
+          "text": "Intrafusale fibre",
+          "isCorrect": false,
+          "rationale": "Dette er sm\u00e5 muskelfibre inde i muskeltenen, der kontrollerer dens f\u00f8lsomhed."
+        },
+        {
+          "text": "Pacinian korpuskler",
+          "isCorrect": false,
+          "rationale": "Disse er touch-receptorer i huden, ikke receptorer inde i selve muskelsystemet."
+        }
+      ],
+      "hint": "Denne receptor er v\u00e6vet ind i de st\u00e6rke proteiner i senerne."
+    },
+    {
+      "question": "Hvad er funktionen af $\\gamma$-motoneuroner (gamma efferenter)?",
+      "answerOptions": [
+        {
+          "text": "At kontrollere de store extrafusale muskelfibre",
+          "isCorrect": false,
+          "rationale": "Dette er opgaven for $\\alpha$-motoneuronerne."
+        },
+        {
+          "text": "At justere l\u00e6ngden af muskeltenen, s\u00e5 den forbliver f\u00f8lsom",
+          "isCorrect": true,
+          "rationale": "Ved at stimulere de intrafusale fibre holder $\\gamma$-neuronerne tenen stram, selv n\u00e5r musklen tr\u00e6kker sig sammen."
+        },
+        {
+          "text": "At blokere smertesignaler fra rygmarven",
+          "isCorrect": false,
+          "rationale": "Gamma-neuroner er motoriske og ikke involveret i smertelindring."
+        },
+        {
+          "text": "At frigive adrenalin direkte i musklen",
+          "isCorrect": false,
+          "rationale": "De bruger acetylcholin ligesom andre motoneuroner."
+        }
+      ],
+      "hint": "T\u00e6nk p\u00e5 hvordan en receptor indstilles til at fungere ved forskellige muskell\u00e6ngder."
+    },
+    {
+      "question": "Hvilken sygdom skyldes en autoimmun reaktion, hvor kroppen angriber sine egne $ACh$-receptorer?",
+      "answerOptions": [
+        {
+          "text": "Duchenne muskeldystrofi",
+          "isCorrect": false,
+          "rationale": "Dette er en genetisk sygdom relateret til dystrophin-proteinet, ikke et autoimmunt angreb."
+        },
+        {
+          "text": "Amyotrofisk lateral sklerose ($ALS$)",
+          "isCorrect": false,
+          "rationale": "Dette skyldes gradvis d\u00f8d af selve motoneuronerne, ikke n\u00f8dvendigvis et receptorangreb."
+        },
+        {
+          "text": "Myasthenia gravis",
+          "isCorrect": true,
+          "rationale": "Svagheden opst\u00e5r, fordi musklerne ikke modtager signalet om at tr\u00e6kke sig sammen p\u00e5 grund af manglende receptorer."
+        },
+        {
+          "text": "Polio",
+          "isCorrect": false,
+          "rationale": "Polio for\u00e5rsages af en virus, der \u00f8del\u00e6gger selve motoneuronerne i rygmarven."
+        }
+      ],
+      "hint": "Symptomerne inkluderer ofte h\u00e6ngende \u00f8jenl\u00e5g og generel muskelsvaghed."
+    },
+    {
+      "question": "Hvad er et 'central pattern generator' i relation til rygmarven?",
+      "answerOptions": [
+        {
+          "text": "En hjerneredskab til at l\u00e6re nye sportsgrene",
+          "isCorrect": false,
+          "rationale": "Begrebet refererer til spinale kredsl\u00f8b, ikke hjerneregioner."
+        },
+        {
+          "text": "Et neuralt kredsl\u00f8b, der genererer rytmisk adf\u00e6rd som gang",
+          "isCorrect": true,
+          "rationale": "Disse kredsl\u00f8b i rygmarven kan skabe den grundl\u00e6ggende rytme for gang uafh\u00e6ngigt af hjernen."
+        },
+        {
+          "text": "En mekanisme der kun findes i rygmarvsdyr",
+          "isCorrect": false,
+          "rationale": "Mennesker og fugle har ogs\u00e5 disse kredsl\u00f8b til lokomotion."
+        },
+        {
+          "text": "En sensorisk receptor i huden",
+          "isCorrect": false,
+          "rationale": "Det er et motorisk kredsl\u00f8b best\u00e5ende af neuroner, ikke en receptor."
+        }
+      ],
+      "hint": "Overvej hvordan vi kan g\u00e5 rytmisk uden konstant at t\u00e6nke over hvert skridt."
+    },
+    {
+      "question": "Hvilken af f\u00f8lgende strategier unders\u00f8ges IKKE som en m\u00e5de at reparere rygmarvsskader p\u00e5 i kilden?",
+      "answerOptions": [
+        {
+          "text": "Brug af stamceller til at danne nye neuroner",
+          "isCorrect": false,
+          "rationale": "Dette er en af de fire hovedstrategier, der n\u00e6vnes i figur 11.12."
+        },
+        {
+          "text": "Transplantation af lugtekolbens st\u00f8tteceller",
+          "isCorrect": false,
+          "rationale": "Olfactory ensheathing cells bruges til at guide axon-v\u00e6kst."
+        },
+        {
+          "text": "Elektrisk stimulation af musklerne for at erstatte nerverne",
+          "isCorrect": true,
+          "rationale": "Kilden fokuserer p\u00e5 biologisk genforbindelse af selve rygmarven frem for ekstern muskelstimulation."
+        },
+        {
+          "text": "Brug af perifere nerver som 'broer' over skaden",
+          "isCorrect": false,
+          "rationale": "Da perifere axoner regenererer godt, fors\u00f8ger man at bruge dem som stilladser."
+        }
+      ],
+      "hint": "Kig efter de fire biologiske forskningsstrategier vist i illustrationen."
+    },
+    {
+      "question": "Hvad menes der med begrebet 'toxic gain of function' i forbindelse med arvelig $ALS$?",
+      "answerOptions": [
+        {
+          "text": "At motoneuronerne producerer for lidt af $SOD1$ enzymet",
+          "isCorrect": false,
+          "rationale": "Sygdommen skyldes ikke tab af enzymfunktion, da musene stadig havde deres normale gener."
+        },
+        {
+          "text": "At det muterede protein f\u00e5r en ny, skadelig egenskab",
+          "isCorrect": true,
+          "rationale": "Det unormale protein dr\u00e6ber neuronerne gennem en aktiv skadelig proces, m\u00e5ske via n\u00e6rliggende astrocytter."
+        },
+        {
+          "text": "At musklerne bliver giftige for huden",
+          "isCorrect": false,
+          "rationale": "Det er motoneuronerne, der d\u00f8r, mens huden forbliver up\u00e5virket."
+        },
+        {
+          "text": "At virusser genaktiveres i rygmarven",
+          "isCorrect": false,
+          "rationale": "Dette begreb refererer specifikt til proteinets opf\u00f8rsel ved genetiske mutationer."
+        }
+      ],
+      "hint": "T\u00e6nk p\u00e5 at mutationen tilf\u00f8jer en d\u00e5rlig funktion frem for at fjerne en god en."
+    }
+  ]
+}

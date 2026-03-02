@@ -1,0 +1,395 @@
+{
+  "title": "Neuroscience Quiz",
+  "questions": [
+    {
+      "question": "In the context of the historical debate regarding neuronal connectivity, how did Santiago Ram\u00f3n y Cajal's 'neuron doctrine' fundamentally differ from Camillo Golgi's perspective?",
+      "hint": "Consider the distinction between a continuous network and discrete, individual units.",
+      "answerOptions": [
+        {
+          "text": "Golgi proposed that neurons were contiguous rather than continuous, separated by microscopic gaps.",
+          "isCorrect": false,
+          "rationale": "This describes Cajal's view; Golgi actually believed neurons formed an endless, continuous network of connected tubes."
+        },
+        {
+          "text": "Cajal argued that neurons are independent structural and functional units separated by tiny gaps called synapses.",
+          "isCorrect": true,
+          "rationale": "The neuron doctrine posits that the nervous system is composed of discrete cells that are structurally and metabolically distinct."
+        },
+        {
+          "text": "Cajal utilised Golgi's staining method to prove that electrical signals flow through a seamless syncytium.",
+          "isCorrect": false,
+          "rationale": "Cajal used the stain to demonstrate the opposite: that neurons are separate entities, not a seamless syncytium."
+        },
+        {
+          "text": "The two scientists agreed on the 'neuron doctrine' but disagreed on the chemical nature of neurotransmission.",
+          "isCorrect": false,
+          "rationale": "Golgi was a staunch opponent of the neuron doctrine, maintaining his reticular theory of continuity."
+        }
+      ]
+    },
+    {
+      "question": "Regarding the functional zones of a neuron, where is the 'integration zone' typically located in a multipolar neuron?",
+      "hint": "Look for the specific region where the decision to produce an electrical signal occurs.",
+      "answerOptions": [
+        {
+          "text": "The dendritic spines",
+          "isCorrect": false,
+          "rationale": "Dendritic spines are primarily part of the input zone where information is collected from other cells."
+        },
+        {
+          "text": "The axon terminal",
+          "isCorrect": false,
+          "rationale": "The axon terminal is the output zone where information is transferred to the next cell."
+        },
+        {
+          "text": "The axon hillock",
+          "isCorrect": true,
+          "rationale": "The axon hillock gathers and integrates synaptic inputs to determine if an action potential should be initiated."
+        },
+        {
+          "text": "The soma's mitochondria",
+          "isCorrect": false,
+          "rationale": "Mitochondria provide metabolic energy for cellular processes but do not serve as the electrical integration site."
+        }
+      ]
+    },
+    {
+      "question": "Unipolar neurons, often found in sensory systems, exhibit a unique structural characteristic regarding their integration zone. Where does integration occur in these cells?",
+      "hint": "Refer to the diagram illustrating the three principal forms of neurons and their respective zones.",
+      "answerOptions": [
+        {
+          "text": "Within the cell body (soma)",
+          "isCorrect": false,
+          "rationale": "Unlike multipolar or bipolar neurons, the cell body of a unipolar neuron is not part of the integration or input pathway."
+        },
+        {
+          "text": "At the base of the dendritic branches",
+          "isCorrect": true,
+          "rationale": "In unipolar cells, the integration zone is located where the dendritic branches meet the axon, bypassing the soma."
+        },
+        {
+          "text": "At the very tip of the axon terminals",
+          "isCorrect": false,
+          "rationale": "The axon terminals are strictly the output zone for transmitting signals, not for integrating them."
+        },
+        {
+          "text": "Within the axon collaterals",
+          "isCorrect": false,
+          "rationale": "Axon collaterals are branches of the conduction zone that allow a single neuron to innervate multiple targets."
+        }
+      ]
+    },
+    {
+      "question": "What is the primary mechanism by which neurotransmitters influence a postsynaptic neuron?",
+      "hint": "Focus on the interaction between the chemical signal and the specialised membrane proteins.",
+      "answerOptions": [
+        {
+          "text": "They enter the postsynaptic cell through ion channels to trigger genetic changes.",
+          "isCorrect": false,
+          "rationale": "Neurotransmitters generally do not enter the postsynaptic neuron; they act on the surface receptors."
+        },
+        {
+          "text": "They fuse with the postsynaptic membrane to become part of the cell's lipid bilayer.",
+          "isCorrect": false,
+          "rationale": "Vesicles fuse with the presynaptic membrane to release chemicals, but the chemicals themselves do not fuse with the postsynaptic membrane."
+        },
+        {
+          "text": "They bind momentarily to specialised protein receptors to induce local electrical changes.",
+          "isCorrect": true,
+          "rationale": "Receptors capture and react to neurotransmitters, causing electrical shifts before the molecules detach and diffuse away."
+        },
+        {
+          "text": "They travel retrograde through the synaptic cleft to signal the presynaptic axon to fire again.",
+          "isCorrect": false,
+          "rationale": "Standard synaptic transmission is anterograde, moving from the presynaptic terminal to the postsynaptic membrane."
+        }
+      ]
+    },
+    {
+      "question": "Axonal transport involves the movement of materials inside the axon. Which statement correctly describes 'retrograde transport'?",
+      "hint": "Identify the direction of movement and the components involved in the internal 'walking' process.",
+      "answerOptions": [
+        {
+          "text": "Movement of electrical impulses toward the axon terminals at a speed of $400\\ mm$ per day.",
+          "isCorrect": false,
+          "rationale": "This describes conduction of signals, not the internal transport of physical materials."
+        },
+        {
+          "text": "The rapid transmission of trophic signals along the outside of the myelin sheath.",
+          "isCorrect": false,
+          "rationale": "Axonal transport occurs internally along microtubules, not along the external myelin sheath."
+        },
+        {
+          "text": "The movement of used materials from the axon terminals back to the cell body for recycling.",
+          "isCorrect": true,
+          "rationale": "Retrograde transport uses motor proteins to 'walk' vesicles back toward the soma for processing."
+        },
+        {
+          "text": "The 'slow' system of transport that moves enzymes at less than $8\\ mm$ per day toward the synapse.",
+          "isCorrect": false,
+          "rationale": "Movement toward the synapse is known as anterograde transport, regardless of the speed."
+        }
+      ]
+    },
+    {
+      "question": "Which type of glial cell is involved in the 'tripartite synapse' and plays a critical role in regulating local blood flow?",
+      "hint": "This star-shaped cell is the most numerous in certain regions and monitors synaptic activity.",
+      "answerOptions": [
+        {
+          "text": "Microglial cells",
+          "isCorrect": false,
+          "rationale": "Microglia are primarily responsible for removing debris and immune-like responses."
+        },
+        {
+          "text": "Schwann cells",
+          "isCorrect": false,
+          "rationale": "Schwann cells provide myelination in the peripheral nervous system, not blood flow regulation in the brain."
+        },
+        {
+          "text": "Astrocytes",
+          "isCorrect": true,
+          "rationale": "Astrocytes have 'end feet' on blood vessels to control blood flow and participate directly in synaptic transmission."
+        },
+        {
+          "text": "Oligodendrocytes",
+          "isCorrect": false,
+          "rationale": "Oligodendrocytes focus on providing myelin to multiple axons within the central nervous system."
+        }
+      ]
+    },
+    {
+      "question": "Recent research suggests that microglial cells are involved in functions beyond simple 'damage control'. Which of the following is a non-traditional function mentioned for microglia?",
+      "hint": "Consider their role in sensory perception and the fine-tuning of neural circuits.",
+      "answerOptions": [
+        {
+          "text": "Synthesising myelin for unmyelinated axons",
+          "isCorrect": false,
+          "rationale": "Myelination is exclusively the role of oligodendrocytes and Schwann cells."
+        },
+        {
+          "text": "Participation in pain perception and neuronal remodelling",
+          "isCorrect": true,
+          "rationale": "Beyond cleanup, microglia are active in pain pathways and the structural modification of neurons."
+        },
+        {
+          "text": "Acting as the primary integration zone for multipolar neurons",
+          "isCorrect": false,
+          "rationale": "Integration is a neuronal function occurring at the axon hillock, not a glial function."
+        },
+        {
+          "text": "Translating genetic instructions into proteins via ribosomes",
+          "isCorrect": false,
+          "rationale": "While all cells have ribosomes, this is a basic cellular maintenance function, not a specialised system-level role for microglia."
+        }
+      ]
+    },
+    {
+      "question": "What is a major structural difference between myelination in the central nervous system (CNS) versus the peripheral nervous system (PNS)?",
+      "hint": "Think about the ratio of glial cells to the number of axon segments they insulate.",
+      "answerOptions": [
+        {
+          "text": "Oligodendrocytes in the CNS myelinate only one axon segment per cell.",
+          "isCorrect": false,
+          "rationale": "A single oligodendrocyte typically provides myelin to several nearby axons."
+        },
+        {
+          "text": "Schwann cells in the PNS can wrap around dozens of different axons simultaneously.",
+          "isCorrect": false,
+          "rationale": "In the PNS, a single Schwann cell ensheathes only a limited length of a single axon."
+        },
+        {
+          "text": "Myelin in the CNS lacks nodes of Ranvier, whereas PNS myelin has them.",
+          "isCorrect": false,
+          "rationale": "Nodes of Ranvier are present in both systems to allow the signal to 'jump' along the axon."
+        },
+        {
+          "text": "A single Schwann cell ensheathes only one axon segment, while one oligodendrocyte can myelinate multiple axons.",
+          "isCorrect": true,
+          "rationale": "This reflects the difference in support efficiency between the two types of myelinating glia."
+        }
+      ]
+    },
+    {
+      "question": "If a researcher wants to identify brain regions that were recently active during a specific behaviour, which histological technique is most appropriate?",
+      "hint": "This method looks for proteins produced by immediate early genes like $c-fos$.",
+      "answerOptions": [
+        {
+          "text": "Nissl staining",
+          "isCorrect": false,
+          "rationale": "Nissl stains highlight all cell bodies by staining RNA but do not indicate functional activity levels."
+        },
+        {
+          "text": "Golgi staining",
+          "isCorrect": false,
+          "rationale": "Golgi staining reveals the full morphology of a few neurons but provides no information on recent activity."
+        },
+        {
+          "text": "Immunohistochemistry (IHC) for IEG proteins",
+          "isCorrect": true,
+          "rationale": "IHC can label proteins expressed by genes like $c-fos$, which serve as markers for cells that have been recently active."
+        },
+        {
+          "text": "Anterograde tract tracing",
+          "isCorrect": false,
+          "rationale": "Tract tracing is used to map physical connections between regions, not to measure the activity of those regions."
+        }
+      ]
+    },
+    {
+      "question": "A scientist injects a substance into the spinal cord to identify the specific locations in the brain that send signals to that area. Which type of labelling is being used?",
+      "hint": "Think about the direction of transport from the axon terminals back to the originating soma.",
+      "answerOptions": [
+        {
+          "text": "Anterograde labelling",
+          "isCorrect": false,
+          "rationale": "Anterograde tracing moves from the cell body to the axon tips to show where a region sends its signals."
+        },
+        {
+          "text": "Retrograde labelling",
+          "isCorrect": true,
+          "rationale": "Retrograde tracers are taken up by terminals and transported back to the cell bodies, revealing the sources of innervation."
+        },
+        {
+          "text": "Nissl labelling",
+          "isCorrect": false,
+          "rationale": "Nissl is a general cell stain, not a transport-based tracer for mapping connections."
+        },
+        {
+          "text": "Autoradiography",
+          "isCorrect": false,
+          "rationale": "Autoradiography shows drug or hormone distribution but is not used for directional tract tracing."
+        }
+      ]
+    },
+    {
+      "question": "The human brain is estimated to contain approximately $10^{15}$ synapses. What is this number commonly called?",
+      "hint": "This value represents a million billion.",
+      "answerOptions": [
+        {
+          "text": "A trillion",
+          "isCorrect": false,
+          "rationale": "A trillion is $10^{12}$, which is significantly smaller than the number of synapses in the brain."
+        },
+        {
+          "text": "A quadrillion",
+          "isCorrect": true,
+          "rationale": "A quadrillion ($10^{15}$) is the vast number of connections that allow for complex human cognition."
+        },
+        {
+          "text": "A billion",
+          "isCorrect": false,
+          "rationale": "The brain has about 80-90 billion neurons, but the number of synapses is orders of magnitude higher."
+        },
+        {
+          "text": "A quintillion",
+          "isCorrect": false,
+          "rationale": "A quintillion is $10^{18}$, which exceeds the current estimates of synaptic density."
+        }
+      ]
+    },
+    {
+      "question": "Why are glial cells of significant clinical interest in the study of brain tumours and injury response?",
+      "hint": "Consider the differences between neurons and glia regarding cell division and physiological changes after trauma.",
+      "answerOptions": [
+        {
+          "text": "Glial cells are the only cells capable of electrical signalling during an injury.",
+          "isCorrect": false,
+          "rationale": "Neurons produce electrical signals; glia generally communicate via chemical and ionic changes."
+        },
+        {
+          "text": "Unlike neurons, many glial cells continue to divide throughout life and can form tumours.",
+          "isCorrect": true,
+          "rationale": "The ability of glia to divide makes them the source of most brain-derived tumours, such as gliomas."
+        },
+        {
+          "text": "Glia are immune to edema (swelling), making them the primary targets for treating brain injuries.",
+          "isCorrect": false,
+          "rationale": "Astrocytes actually respond to injury by swelling (edema), which can damage surrounding neurons."
+        },
+        {
+          "text": "Glial cells can transform into neurons to replace tissue lost to Alzheimer's disease.",
+          "isCorrect": false,
+          "rationale": "While glia support neurons, the text does not state they transform into neurons as a standard response to degeneration."
+        }
+      ]
+    },
+    {
+      "question": "Wilder Penfield's work with cortical electrical-stimulation mapping revealed that the brain's organisation is both consistent and variable. Which statement best summarises his findings?",
+      "hint": "Think about the difference between basic motor functions and higher-level cognitive vignette evocations.",
+      "answerOptions": [
+        {
+          "text": "Every human brain is organised exactly the same way across all regions.",
+          "isCorrect": false,
+          "rationale": "Penfield found that while some regions are similar, others are unique to the individual."
+        },
+        {
+          "text": "Stimulating the brain produces only motor movements and never sensory experiences.",
+          "isCorrect": false,
+          "rationale": "Stimulation can produce sensations like hand tingling, flashes of light, and even complex memory vignettes."
+        },
+        {
+          "text": "Regions for complex cognition are well-mapped and identical in all patients.",
+          "isCorrect": false,
+          "rationale": "The brain's control of complex cognition remains a 'tantalising mystery' and is less predictably organised."
+        },
+        {
+          "text": "Specific functions are reliably located in some areas, but other regions are uniquely organised in each person.",
+          "isCorrect": true,
+          "rationale": "Penfield observed that basic functions were predictable, but high-level organisation varied between individuals."
+        }
+      ]
+    },
+    {
+      "question": "What is the specific role of 'motor proteins' in the function of an axon?",
+      "hint": "They interact with microtubules to provide a transport mechanism.",
+      "answerOptions": [
+        {
+          "text": "They contract to move the axon like a muscle fibre.",
+          "isCorrect": false,
+          "rationale": "Axons do not contract; they are hollow tubes used for transmission and transport."
+        },
+        {
+          "text": "They 'walk' transport vesicles along microtubules within the axon.",
+          "isCorrect": true,
+          "rationale": "Motor proteins provide the mechanical force needed to move materials between the soma and the terminals."
+        },
+        {
+          "text": "They act as receptors on the postsynaptic membrane to capture neurotransmitters.",
+          "isCorrect": false,
+          "rationale": "Receptors are proteins, but they are stationary on the membrane and not 'motor' proteins involved in internal transport."
+        },
+        {
+          "text": "They generate the energy (ATP) needed for action potentials.",
+          "isCorrect": false,
+          "rationale": "ATP is produced by mitochondria; motor proteins consume energy to perform mechanical work."
+        }
+      ]
+    },
+    {
+      "question": "In the peripheral nervous system, which division is primarily responsible for the 'viscera' or internal organs?",
+      "hint": "Contrast this with the system that governs voluntary skeletal muscle movement.",
+      "answerOptions": [
+        {
+          "text": "The somatic nervous system",
+          "isCorrect": false,
+          "rationale": "The somatic system interconnects the brain with major muscles and sensory systems, not internal organs."
+        },
+        {
+          "text": "The autonomic nervous system",
+          "isCorrect": true,
+          "rationale": "The autonomic system primarily controls the internal organs and glands through sympathetic and parasympathetic nerves."
+        },
+        {
+          "text": "The cranial nervous system",
+          "isCorrect": false,
+          "rationale": "Cranial nerves are a subset of the somatic system (though some have autonomic functions, they are not the 'division' itself)."
+        },
+        {
+          "text": "The spinal motor system",
+          "isCorrect": false,
+          "rationale": "This refers specifically to nerves emerging from the spinal cord to control skeletal muscles."
+        }
+      ]
+    }
+  ]
+}

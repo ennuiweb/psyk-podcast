@@ -1,0 +1,317 @@
+{
+  "title": "Neuroscience Quiz",
+  "questions": [
+    {
+      "question": "Approximately how many neurons are estimated to be in the human brain?",
+      "answerOptions": [
+        {
+          "text": "$86$ billion",
+          "isCorrect": true,
+          "rationale": "This is the current scientific estimate for the number of nerve cells found in a healthy adult human brain."
+        },
+        {
+          "text": "$100$ billion",
+          "isCorrect": false,
+          "rationale": "While a commonly cited figure in older texts, recent research has refined this estimate to a slightly lower number."
+        },
+        {
+          "text": "$10$ trillion",
+          "isCorrect": false,
+          "rationale": "This number is closer to the estimated number of synapses, rather than the total number of individual neurons."
+        },
+        {
+          "text": "$86$ million",
+          "isCorrect": false,
+          "rationale": "This figure is far too low, representing only a tiny fraction of the actual neural density in the human brain."
+        }
+      ],
+      "hint": "It is a very large number, often compared to the number of stars in our galaxy."
+    },
+    {
+      "question": "What is the term for the ability of the nervous system to physically change in response to experience or the environment?",
+      "answerOptions": [
+        {
+          "text": "Ontogeny",
+          "isCorrect": false,
+          "rationale": "This term refers specifically to the process of individual development over a lifespan, not the underlying mechanism of change."
+        },
+        {
+          "text": "Reductionism",
+          "isCorrect": false,
+          "rationale": "Reductionism is a scientific strategy of breaking down complex systems into smaller parts for study."
+        },
+        {
+          "text": "Neuroplasticity",
+          "isCorrect": true,
+          "rationale": "This concept describes the brain's malleability, allowing it to be molded or reshaped by learning and social interaction."
+        },
+        {
+          "text": "Dualism",
+          "isCorrect": false,
+          "rationale": "Dualism is a philosophical belief that the mind and body are separate entities, rather than a biological property of brain tissue."
+        }
+      ],
+      "hint": "Think of a word that describes a material that can be easily molded or formed."
+    },
+    {
+      "question": "In a somatic intervention study, what serves as the independent variable?",
+      "answerOptions": [
+        {
+          "text": "The resulting behavior",
+          "isCorrect": false,
+          "rationale": "The behavior is the factor being measured to see if it changes, making it the dependent variable."
+        },
+        {
+          "text": "The physical alteration of the body or brain",
+          "isCorrect": true,
+          "rationale": "The independent variable is the factor manipulated by the researcher, which in this case is the biological structure or function."
+        },
+        {
+          "text": "The correlation coefficient",
+          "isCorrect": false,
+          "rationale": "A correlation is a measure of relationship between two variables, not a variable itself that is manipulated in an experiment."
+        },
+        {
+          "text": "The environmental stimuli",
+          "isCorrect": false,
+          "rationale": "Changing the environment or experience would constitute a behavioral intervention rather than a somatic one."
+        }
+      ],
+      "hint": "Consider which factor the researcher is directly changing to observe an effect."
+    },
+    {
+      "question": "Which ancient philosopher believed that the heart, rather than the brain, was the seat of mental capacities?",
+      "answerOptions": [
+        {
+          "text": "Galen",
+          "isCorrect": false,
+          "rationale": "This Greco-Roman physician actually argued for the brain's importance after observing head injuries in gladiators."
+        },
+        {
+          "text": "Aristotle",
+          "isCorrect": true,
+          "rationale": "He famously argued that the brain served only as a cooling unit for the blood, while the heart controlled the mind."
+        },
+        {
+          "text": "Herophilus",
+          "isCorrect": false,
+          "rationale": "Known as the Father of Anatomy, he dissected bodies and traced nerves into the spinal cord, supporting a brain-centered view."
+        },
+        {
+          "text": "Descartes",
+          "isCorrect": false,
+          "rationale": "He was a much later philosopher who proposed that the mind and body interacted within the brain itself."
+        }
+      ],
+      "hint": "This prominent Greek scientist thought the brain functioned primarily as a cooling unit."
+    },
+    {
+      "question": "According to Ren\u00e9 Descartes, where did the nonmaterial soul interact with the material body?",
+      "answerOptions": [
+        {
+          "text": "The heart",
+          "isCorrect": false,
+          "rationale": "While ancient thinkers focused on the heart, Descartes was focused on finding a single point of interaction within the brain."
+        },
+        {
+          "text": "The cerebral cortex",
+          "isCorrect": false,
+          "rationale": "The cortex is the outermost layer of the brain, but Descartes believed the interaction happened deeper within a single structure."
+        },
+        {
+          "text": "The pineal gland",
+          "isCorrect": true,
+          "rationale": "Descartes chose this structure because it was single rather than paired, aligning with his view of a single, unified consciousness."
+        },
+        {
+          "text": "Broca's area",
+          "isCorrect": false,
+          "rationale": "This region was identified much later in the nineteenth century as being specifically related to speech production."
+        }
+      ],
+      "hint": "He picked this specific brain structure because it is not split into two symmetrical halves."
+    },
+    {
+      "question": "Which research perspective focuses on the process by which an individual changes in the course of their lifetime?",
+      "answerOptions": [
+        {
+          "text": "Evolutionary",
+          "isCorrect": false,
+          "rationale": "The evolutionary perspective looks at how behavior changes across generations of a species, not within a single individual's life."
+        },
+        {
+          "text": "Ontogeny",
+          "isCorrect": true,
+          "rationale": "Ontogeny is the study of development and maturation from early life through old age."
+        },
+        {
+          "text": "Mechanism",
+          "isCorrect": false,
+          "rationale": "Mechanistic questions focus on how the body currently works to produce a specific behavior right now."
+        },
+        {
+          "text": "Functional",
+          "isCorrect": false,
+          "rationale": "The functional perspective describes behavior in terms of the results or purposes it serves for the organism."
+        }
+      ],
+      "hint": "This term refers to the 'womb to tomb' development of an organism."
+    },
+    {
+      "question": "What is the scientific strategy of breaking a system down into increasingly smaller parts to understand it?",
+      "answerOptions": [
+        {
+          "text": "Localization",
+          "isCorrect": false,
+          "rationale": "Localization refers to the idea that specific brain regions are responsible for specific tasks, not the strategy of simplifying systems."
+        },
+        {
+          "text": "Dualism",
+          "isCorrect": false,
+          "rationale": "Dualism is a philosophical stance on the mind-body problem, not a methodological research strategy."
+        },
+        {
+          "text": "Reductionism",
+          "isCorrect": true,
+          "rationale": "Reductionism involves analyzing behavior by looking at lower levels of analysis, such as neurons or molecules."
+        },
+        {
+          "text": "Correlation",
+          "isCorrect": false,
+          "rationale": "Correlation is a statistical measure of how two variables relate, which can occur at any level of analysis."
+        }
+      ],
+      "hint": "This approach assumes that complex systems are best understood by examining their simplest constituents."
+    },
+    {
+      "question": "Paul Broca's postmortem analysis of a patient who could not speak provided evidence for which concept?",
+      "answerOptions": [
+        {
+          "text": "Neural plasticity",
+          "isCorrect": false,
+          "rationale": "While the brain is plastic, Broca's specific finding focused on the permanent loss of function due to a localized lesion."
+        },
+        {
+          "text": "Localization of function",
+          "isCorrect": true,
+          "rationale": "By showing that damage to a specific left frontal region impaired speech, Broca proved that different parts of the brain do different things."
+        },
+        {
+          "text": "The '10% of the brain' myth",
+          "isCorrect": false,
+          "rationale": "Broca's work showed that every part of the brain has a specific purpose, contradicting the idea that most of the brain is unused."
+        },
+        {
+          "text": "Cell assemblies",
+          "isCorrect": false,
+          "rationale": "The concept of cell assemblies was proposed much later by Donald Hebb to explain how neurons form networks."
+        }
+      ],
+      "hint": "He argued that language ability was restricted to a specific region rather than the whole brain."
+    },
+    {
+      "question": "According to the textbook, approximately what percentage of the population is estimated to suffer from a mental disorder in a typical year?",
+      "answerOptions": [
+        {
+          "text": "$10\\%$",
+          "isCorrect": false,
+          "rationale": "This figure underestimates the prevalence of mental health challenges in the general population."
+        },
+        {
+          "text": "$38\\%$",
+          "isCorrect": true,
+          "rationale": "A large-scale European survey cited in the text estimated that over one-third of the population is afflicted by mental disorders annually."
+        },
+        {
+          "text": "$50\\%$",
+          "isCorrect": false,
+          "rationale": "While mental health issues are common, they do not quite reach half of the entire population in a single typical year."
+        },
+        {
+          "text": "$5\\%$",
+          "isCorrect": false,
+          "rationale": "This very low estimate fails to account for the broad spectrum of neurological and psychiatric conditions documented by health organizations."
+        }
+      ],
+      "hint": "The estimate is surprisingly high, representing more than one in every three people."
+    },
+    {
+      "question": "What happened to the brains of male rats that were raised in isolation compared to those raised with playmates?",
+      "answerOptions": [
+        {
+          "text": "Their total brain weight doubled",
+          "isCorrect": false,
+          "rationale": "Environmental factors can change brain structure, but they do not typically double the total weight of the organ."
+        },
+        {
+          "text": "A brain region involved in processing odors was smaller",
+          "isCorrect": true,
+          "rationale": "Research showed that social isolation stunted the growth of the posterodorsal portion of the medial amygdala."
+        },
+        {
+          "text": "They developed $10$ times more neurons",
+          "isCorrect": false,
+          "rationale": "Experience usually alters the size of neurons or the number of connections, rather than causing a massive surge in new neuron numbers."
+        },
+        {
+          "text": "There were no measurable differences between the groups",
+          "isCorrect": false,
+          "rationale": "This study is a key example of how social experience physically changes the structure of the brain."
+        }
+      ],
+      "hint": "Social deprivation led to stunted growth in a specific area of the amygdala."
+    },
+    {
+      "question": "What is the top speed that electrical impulses can travel along an axon in the human brain?",
+      "answerOptions": [
+        {
+          "text": "$220$ MPH",
+          "isCorrect": true,
+          "rationale": "Specialized extensions of neurons allow electrical signals to travel at hundreds of miles per hour."
+        },
+        {
+          "text": "$55$ MPH",
+          "isCorrect": false,
+          "rationale": "This speed is too slow; neural communication must be much faster to allow for rapid reactions and thoughts."
+        },
+        {
+          "text": "The speed of light",
+          "isCorrect": false,
+          "rationale": "Neural impulses involve movement of ions across membranes, which is significantly slower than electromagnetic radiation."
+        },
+        {
+          "text": "$1,000$ MPH",
+          "isCorrect": false,
+          "rationale": "While very fast, the biological constraints of axons limit the speed of impulses to well below the speed of sound."
+        }
+      ],
+      "hint": "It is faster than a high-speed car but slower than a commercial jet."
+    },
+    {
+      "question": "Which of the following describes a behavioral intervention approach?",
+      "answerOptions": [
+        {
+          "text": "Administering a hormone to see how it affects aggression",
+          "isCorrect": false,
+          "rationale": "This is a somatic intervention because the body's chemistry is the independent variable being manipulated."
+        },
+        {
+          "text": "Measuring brain size to see if it relates to IQ scores",
+          "isCorrect": false,
+          "rationale": "This is a correlational study because neither variable is being actively manipulated by the researcher."
+        },
+        {
+          "text": "Training an animal in a maze and measuring changes in its brain",
+          "isCorrect": true,
+          "rationale": "In this approach, the experience (behavior) is the independent variable, and the resulting brain change is the dependent variable."
+        },
+        {
+          "text": "Applying electrical stimulation to a specific brain region",
+          "isCorrect": false,
+          "rationale": "This is a somatic intervention as the researcher is directly altering the brain's electrical state."
+        }
+      ],
+      "hint": "In this approach, you change what the organism does or experiences to see how its biology responds."
+    }
+  ]
+}

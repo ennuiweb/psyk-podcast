@@ -1,0 +1,265 @@
+{
+  "title": "Neurovidenskab Quiz",
+  "questions": [
+    {
+      "question": "Hvad er den prim\u00e6re funktion for natrium-kalium ($Na^+-K^+$)-pumpen i en neuron?",
+      "answerOptions": [
+        {
+          "text": "At pumpe tre $Na^+$-ioner ud for hver to $K^+$-ioner, der pumpes ind, hvilket kr\u00e6ver energi.",
+          "isCorrect": true,
+          "rationale": "Denne aktive transportmekanisme opretholder ionkoncentrationsgradienterne, som er afg\u00f8rende for cellens hvilepotentiale."
+        },
+        {
+          "text": "At lade $Na^+$-ioner str\u00f8mme frit ind i cellen for at udl\u00f8se et aktionspotentiale.",
+          "isCorrect": false,
+          "rationale": "Dette beskriver \u00e5bningen af sp\u00e6ndingsstyrede natriumkanaler, ikke pumpens energikr\u00e6vende arbejde."
+        },
+        {
+          "text": "At nedbryde neurotransmittere i den synaptiske kl\u00f8ft efter signaloverf\u00f8rsel.",
+          "isCorrect": false,
+          "rationale": "Nedbrydning af neurotransmittere sker typisk via enzymer som acetylcholinesterase, ikke via en ionpumpe."
+        },
+        {
+          "text": "At transportere calciumioner ($Ca^{2+}$) ud af cellen for at forhindre vesikelfusion.",
+          "isCorrect": false,
+          "rationale": "Selvom calcium fjernes fra cellen, er det ikke hovedopgaven for natrium-kalium-pumpen."
+        }
+      ],
+      "hint": "T\u00e6nk p\u00e5 hvordan cellen bruger energi ($ATP$) til at opretholde en ubalance af ioner."
+    },
+    {
+      "question": "Hvilken af f\u00f8lgende kr\u00e6fter beskriver tendensen hos ladede partikler til at bev\u00e6ge sig mod omr\u00e5der med den modsatte elektriske ladning?",
+      "answerOptions": [
+        {
+          "text": "Elektrostatisk tryk",
+          "isCorrect": true,
+          "rationale": "Elektrostatisk tryk er den fysiske kraft, der f\u00e5r modsat ladede ioner til at tiltr\u00e6kke hinanden og ens ladninger til at afst\u00f8de hinanden."
+        },
+        {
+          "text": "Diffusion",
+          "isCorrect": false,
+          "rationale": "Diffusion er bev\u00e6gelsen af partikler fra h\u00f8j til lav koncentration, uafh\u00e6ngigt af deres elektriske ladning."
+        },
+        {
+          "text": "Saltatorisk ledning",
+          "isCorrect": false,
+          "rationale": "Dette refererer til den m\u00e5de, et aktionspotentiale bev\u00e6ger sig langs en myeliniseret axon."
+        },
+        {
+          "text": "Selektiv permeabilitet",
+          "isCorrect": false,
+          "rationale": "Dette er en egenskab ved cellemembranen, der bestemmer, hvilke stoffer der kan passere, ikke en drivkraft for ionbev\u00e6gelse."
+        }
+      ],
+      "hint": "Dette princip handler om tiltr\u00e6kning og afst\u00f8dning mellem elektriske ladninger."
+    },
+    {
+      "question": "Hvorfor betragtes Goldman-ligningen som en mere n\u00f8jagtig model for en neurons hvilepotentiale end Nernst-ligningen?",
+      "answerOptions": [
+        {
+          "text": "Fordi den tager h\u00f8jde for koncentrationen og permeabiliteten af flere forskellige ioner, s\u00e5som $Na^+$ og $Cl^-$, udover $K^+$.",
+          "isCorrect": true,
+          "rationale": "Nernst-ligningen antager, at membranen kun er permeabel for \u00e9n ion, mens Goldman-ligningen afspejler den komplekse virkelighed med flere ioner."
+        },
+        {
+          "text": "Fordi den kun fokuserer p\u00e5 de elektriske kr\u00e6fter og ignorerer kemiske koncentrationsgradienter.",
+          "isCorrect": false,
+          "rationale": "Begge ligninger inkluderer koncentrationsgradienter som en central del af beregningen."
+        },
+        {
+          "text": "Fordi den kan forudsige den pr\u00e6cise timing af et aktionspotentiale.",
+          "isCorrect": false,
+          "rationale": "Goldman-ligningen bruges til at beregne hvilepotentialet, ikke dynamikken i et aktionspotentiale."
+        },
+        {
+          "text": "Fordi den forklarer, hvordan myelin fremskynder ledningshastigheden.",
+          "isCorrect": false,
+          "rationale": "Ligningen vedr\u00f8rer membranpotentiale baseret p\u00e5 ionkoncentrationer, ikke axo-geometri eller myelin."
+        }
+      ],
+      "hint": "T\u00e6nk over hvilken ligning der er mest omfattende i forhold til membranens gennemtr\u00e6ngelighed for forskellige ioner."
+    },
+    {
+      "question": "Hvilken specifik teknik anvendes til at isolere og studere str\u00f8mmen gennem en enkelt ionkanal i en lille del af cellemembranen?",
+      "answerOptions": [
+        {
+          "text": "Patch clamping",
+          "isCorrect": true,
+          "rationale": "Patch clamping g\u00f8r det muligt at forsegle en lille membranlap i en glaspipette, s\u00e5 man kan m\u00e5le aktiviteten af individuelle kanaler."
+        },
+        {
+          "text": "Voltage clamping",
+          "isCorrect": false,
+          "rationale": "Voltage clamping bruges til at fastl\u00e5se hele axonets potentiale, ikke n\u00f8dvendigvis en enkelt kanal."
+        },
+        {
+          "text": "Elektroencephalografi ($EEG$)",
+          "isCorrect": false,
+          "rationale": "EEG m\u00e5ler den overordnede elektriske aktivitet fra millioner af neuroner via elektroder p\u00e5 hovedbunden."
+        },
+        {
+          "text": "Magnetisk resonans scanning ($MRI$)",
+          "isCorrect": false,
+          "rationale": "MRI er en billeddannelsesteknik og bruges ikke til at m\u00e5le elektriske str\u00f8mme i enkelte ionkanaler."
+        }
+      ],
+      "hint": "Navnet p\u00e5 denne teknik antyder, at man tager en lille 'lap' af membranen."
+    },
+    {
+      "question": "Hvordan p\u00e5virker neurotoxinet tetrodotoxin ($TTX$), der findes i kuglefisk, nervesystemet?",
+      "answerOptions": [
+        {
+          "text": "Det blokerer de sp\u00e6ndingsstyrede $Na^+$-kanaler og forhindrer dermed dannelsen af aktionspotentialer.",
+          "isCorrect": true,
+          "rationale": "Ved at blokere natriumgennemstr\u00f8mningen kan neuronen ikke depolarisere nok til at generere et signal, hvilket f\u00f8rer til lammelse."
+        },
+        {
+          "text": "Det tvinger $Na^+$-kanalerne til at forblive \u00e5bne, hvilket f\u00f8rer til konstant fyring af neuroner.",
+          "isCorrect": false,
+          "rationale": "Dette er virkningen af batrachotoxin fra giftpilefr\u00f8, ikke TTX."
+        },
+        {
+          "text": "Det blokerer $Ca^{2+}$-kanaler i axonterminalen og stopper frigivelsen af neurotransmittere.",
+          "isCorrect": false,
+          "rationale": "TTX er specifikt rettet mod natriumkanaler, ikke calciumkanaler."
+        },
+        {
+          "text": "Det fungerer som en agonist for acetylcholin-receptorer i musklerne.",
+          "isCorrect": false,
+          "rationale": "TTX blokerer kanaler i axoner frem for at binde sig til receptorer p\u00e5 muskler."
+        }
+      ],
+      "hint": "T\u00e6nk p\u00e5 den ionkanal, der er ansvarlig for den hurtige depolarisering i starten af et aktionspotentiale."
+    },
+    {
+      "question": "Hvilken rolle spiller $SNARE$-proteiner i den synaptiske transmission?",
+      "answerOptions": [
+        {
+          "text": "De formidler fusionen af synaptiske vesikler med den pr\u00e6synaptiske membran efter aktivering af calcium.",
+          "isCorrect": true,
+          "rationale": "SNARE-proteiner (v-SNARE og t-SNARE) danner et kompleks, der tr\u00e6kker vesiklen t\u00e6t p\u00e5 membranen for at muligg\u00f8re frigivelse af neurotransmittere."
+        },
+        {
+          "text": "De fungerer som receptorer p\u00e5 den postsynaptiske membran for at modtage signaler.",
+          "isCorrect": false,
+          "rationale": "Receptorer er separate proteiner, der binder neurotransmittere; SNARE-proteiner findes p\u00e5 den pr\u00e6synaptiske side."
+        },
+        {
+          "text": "De pumper kalium ud af cellen under efterpotentialet.",
+          "isCorrect": false,
+          "rationale": "Ionkanaler og pumper h\u00e5ndterer ionbev\u00e6gelser, mens SNARE-proteiner h\u00e5ndterer vesikelbev\u00e6gelser."
+        },
+        {
+          "text": "De syntetiserer nye neurotransmittere i somaen.",
+          "isCorrect": false,
+          "rationale": "Syntese styres af enzymer, mens SNARE er involveret i selve frigivelsesprocessen (exocytose)."
+        }
+      ],
+      "hint": "Disse proteiner fungerer som et molekyl\u00e6rt 'ankersystem' for vesikler."
+    },
+    {
+      "question": "Hvad beviste Otto Loewis ber\u00f8mte eksperiment med to fr\u00f8hjerter i 1921?",
+      "answerOptions": [
+        {
+          "text": "At kommunikation i nervesystemet involverer frigivelse af kemiske stoffer.",
+          "isCorrect": true,
+          "rationale": "Ved at overf\u00f8re v\u00e6ske fra et stimuleret hjerte til et andet viste han, at et kemisk stof (ACh) kunne fremkalde en biologisk effekt."
+        },
+        {
+          "text": "At hjertet kun styres af elektriske impulser direkte fra hjernen.",
+          "isCorrect": false,
+          "rationale": "Loewis eksperiment modbeviste netop ideen om, at al kommunikation udelukkende var elektrisk."
+        },
+        {
+          "text": "At neuroner er fysisk forbundne i et kontinuerligt netv\u00e6rk uden mellemrum.",
+          "isCorrect": false,
+          "rationale": "Dette var Golgi-hypotesen, som allerede var blevet udfordret af Ramon y Cajals neurondoktrin."
+        },
+        {
+          "text": "At alle synapser i hjernen er excitatoriske.",
+          "isCorrect": false,
+          "rationale": "Hans eksperiment fokuserede p\u00e5 den h\u00e6mmende effekt af nervus vagus p\u00e5 hjerterytmen."
+        }
+      ],
+      "hint": "T\u00e6nk p\u00e5 begrebet 'Vagusstoff', og hvordan det blev overf\u00f8rt via en opl\u00f8sning."
+    },
+    {
+      "question": "Inden for optogenetik, hvordan p\u00e5virker belysning med bl\u00e5t lys en neuron, der udtrykker proteinet channelrhodopsin ($ChR2$)?",
+      "answerOptions": [
+        {
+          "text": "Det f\u00e5r neuronen til at depolarisere og affyre aktionspotentialer ved at \u00e5bne natriumkanaler.",
+          "isCorrect": true,
+          "rationale": "ChR2 reagerer p\u00e5 bl\u00e5t lys ved at lade positive natriumioner str\u00f8mme ind, hvilket aktiverer cellen."
+        },
+        {
+          "text": "Det hyperpolariserer neuronen ved at aktivere en chloridpumpe.",
+          "isCorrect": false,
+          "rationale": "Dette beskriver funktionen af halorhodopsin ($NpHR$) ved gult lys, ikke channelrhodopsin."
+        },
+        {
+          "text": "Det \u00f8del\u00e6gger cellens evne til at producere myelin.",
+          "isCorrect": false,
+          "rationale": "Optogenetik bruges til midlertidig kontrol af elektrisk aktivitet, ikke strukturel \u00f8del\u00e6ggelse af cellen."
+        },
+        {
+          "text": "Det omdanner neuronen til en receptorcelle i \u00f8jet.",
+          "isCorrect": false,
+          "rationale": "Selvom proteinerne stammer fra lysf\u00f8lsomme organismer, \u00e6ndrer de ikke neuronens grundl\u00e6ggende type."
+        }
+      ],
+      "hint": "Channelrhodopsin fungerer som en lys-aktiveret 't\u00e6nd'-knap for neuroner."
+    },
+    {
+      "question": "Hvilken type epileptisk anfald er karakteriseret ved en pludselig bevidstl\u00f8shed og symmetriske kramper i hele kroppen, efterfulgt af forvirring?",
+      "answerOptions": [
+        {
+          "text": "Tonisk-klonisk anfald",
+          "isCorrect": true,
+          "rationale": "Tidligere kendt som 'grand mal', involverer dette anfald kraftige muskelkontraktioner og rytmiske ryk i hele kroppen."
+        },
+        {
+          "text": "Simpelt partielt anfald",
+          "isCorrect": false,
+          "rationale": "Disse anfald, ogs\u00e5 kaldet frav\u00e6rsanfald, involverer typisk kun kortvarig stirren og ingen kraftige kramper."
+        },
+        {
+          "text": "Komplekst partielt anfald",
+          "isCorrect": false,
+          "rationale": "Disse starter ofte i et begr\u00e6nset omr\u00e5de af hjernen og kan medf\u00f8re m\u00e6rkelige fornemmelser eller automatiske handlinger."
+        },
+        {
+          "text": "Aura",
+          "isCorrect": false,
+          "rationale": "En aura er en advarsel eller en us\u00e6dvanlig sansning, der kan g\u00e5 forud for et anfald, men er ikke selve anfaldet."
+        }
+      ],
+      "hint": "Dette anfald blev tidligere kaldt et 'grand mal' anfald."
+    },
+    {
+      "question": "Hvad sker der under saltatorisk ledning i en myeliniseret axon?",
+      "answerOptions": [
+        {
+          "text": "Aktionspotentialet regenereres kun ved de Ranvierske indsn\u00f8ringer, hvilket \u00f8ger hastigheden betydeligt.",
+          "isCorrect": true,
+          "rationale": "Myelinet fungerer som isolation, s\u00e5 den elektriske ladning hurtigt kan 'springe' mellem de uisolerede omr\u00e5der p\u00e5 membranen."
+        },
+        {
+          "text": "Ionstr\u00f8mmen bev\u00e6ger sig langsommere p\u00e5 grund af den ekstra modstand fra myelinet.",
+          "isCorrect": false,
+          "rationale": "Myelin reducerer kapacitansen og \u00f8ger modstanden mod l\u00e6kage, hvilket faktisk g\u00f8r ledningen hurtigere."
+        },
+        {
+          "text": "Aktionspotentialet bev\u00e6ger sig bagl\u00e6ns mod somaen for at informere om signaloverf\u00f8rslen.",
+          "isCorrect": false,
+          "rationale": "Aktionspotentialer bev\u00e6ger sig normalt kun i \u00e9n retning v\u00e6k fra somaen p\u00e5 grund af refrakt\u00e6rperioden."
+        },
+        {
+          "text": "Sodium-kalium-pumpen stopper med at virke for at spare energi under hurtig ledning.",
+          "isCorrect": false,
+          "rationale": "Pumpen skal fortsat arbejde for at genoprette hvilepotentialet efter passagen af impulser."
+        }
+      ],
+      "hint": "Navnet kommer fra det latinske ord 'saltare', som betyder 'at hoppe'."
+    }
+  ]
+}

@@ -1,0 +1,395 @@
+{
+  "title": "Physiology Quiz",
+  "questions": [
+    {
+      "question": "Which term describes the dynamic process where physiological systems shift their responses based on stressors and prior experience, rather than defending a single set point?",
+      "answerOptions": [
+        {
+          "text": "Homeostasis",
+          "isCorrect": false,
+          "rationale": "This refers to the maintenance of a relatively stable, balanced internal environment rather than the dynamic adjustments to changing stressors."
+        },
+        {
+          "text": "Allostasis",
+          "isCorrect": true,
+          "rationale": "This concept involves the varying behavioural and physiological adjustments an individual makes to maintain optimal functioning in the face of changing environmental demands."
+        },
+        {
+          "text": "Negative feedback",
+          "isCorrect": false,
+          "rationale": "This is a mechanism within a system that reduces activity when a specific set point is reached, but it is not the term for the overall dynamic adjustment process."
+        },
+        {
+          "text": "Glycogenesis",
+          "isCorrect": false,
+          "rationale": "This is the specific physiological process of converting glucose into glycogen for short-term energy storage."
+        }
+      ],
+      "hint": "Consider the term used to describe the 'wear and tear' or load resulting from these constant adjustments."
+    },
+    {
+      "question": "What is a primary evolutionary advantage of endothermy over ectothermy?",
+      "answerOptions": [
+        {
+          "text": "Lower overall energy requirements",
+          "isCorrect": false,
+          "rationale": "Endotherms actually require much more energy to generate their own internal heat compared to ectotherms."
+        },
+        {
+          "text": "Enhanced capacity for oxygen utilisation and sustained muscular activity",
+          "isCorrect": true,
+          "rationale": "The evolution of internal heat generation allowed for higher levels of muscular activity over longer periods."
+        },
+        {
+          "text": "Reliance on external sources of warmth",
+          "isCorrect": false,
+          "rationale": "This is a characteristic of ectotherms, which limits the range of environments they can inhabit."
+        },
+        {
+          "text": "The ability to thrive without a set zone for temperature",
+          "isCorrect": false,
+          "rationale": "Both endotherms and ectotherms regulate their body temperature within an optimal set zone for cellular functioning."
+        }
+      ],
+      "hint": "Think about why an endothermic hare will always outrun an ectothermic tortoise over a long distance."
+    },
+    {
+      "question": "In the context of fluid regulation, what defines the 'intracellular compartment'?",
+      "answerOptions": [
+        {
+          "text": "The fluid found between individual cells",
+          "isCorrect": false,
+          "rationale": "This describes interstitial fluid, which is a component of the extracellular compartment."
+        },
+        {
+          "text": "The protein-rich fluid that carries red and white blood cells",
+          "isCorrect": false,
+          "rationale": "This refers to blood plasma, which is part of the extracellular compartment."
+        },
+        {
+          "text": "The fluid space of the body contained within cells",
+          "isCorrect": true,
+          "rationale": "Most of the body's water is stored within this combined region inside the cell membranes."
+        },
+        {
+          "text": "The reservoir of isotonic fluid that acts as a buffer",
+          "isCorrect": false,
+          "rationale": "This describes the extracellular fluid's role in protecting cells from osmotic damage."
+        }
+      ],
+      "hint": "Distinguish between the fluid inside the cells and the fluid surrounding them."
+    },
+    {
+      "question": "What occurs when a cell is placed in a hypertonic solution?",
+      "answerOptions": [
+        {
+          "text": "Water moves into the cell via osmosis, potentially causing it to rupture.",
+          "isCorrect": false,
+          "rationale": "This occurs in a hypotonic solution, where the external solute concentration is lower than that inside the cell."
+        },
+        {
+          "text": "Water moves out of the cell to equalise solute concentration, causing the cell to shrink.",
+          "isCorrect": true,
+          "rationale": "Osmotic pressure pulls water towards the higher concentration of salt outside the cell."
+        },
+        {
+          "text": "Sodium ions ($Na^{+}$) passively diffuse into the cell until an isotonic state is reached.",
+          "isCorrect": false,
+          "rationale": "Cell membranes are selectively permeable and do not allow $Na^{+}$ to pass freely to equalise concentration; water moves instead."
+        },
+        {
+          "text": "The cell utilizes aquaporins to actively pump salt out of the intracellular space.",
+          "isCorrect": false,
+          "rationale": "Aquaporins are specialized channels for conducting water molecules, not for pumping salt."
+        }
+      ],
+      "hint": "Remember that a hypertonic solution has a higher concentration of solute, such as salt, than the internal environment of the cell."
+    },
+    {
+      "question": "Which physiological signal specifically triggers osmotic thirst?",
+      "answerOptions": [
+        {
+          "text": "A sudden drop in blood pressure detected by baroreceptors",
+          "isCorrect": false,
+          "rationale": "This is the primary trigger for hypovolemic thirst, not osmotic thirst."
+        },
+        {
+          "text": "Increased saltiness of the extracellular fluid pulling water out of cells",
+          "isCorrect": true,
+          "rationale": "This increased osmolality is detected by specialized neurons that shrink or balloon in response to the concentration change."
+        },
+        {
+          "text": "A reduction in the overall volume of the extracellular fluid through hemorrhage",
+          "isCorrect": false,
+          "rationale": "A loss of volume without a change in concentration results in hypovolemic thirst."
+        },
+        {
+          "text": "The secretion of atrial natriuretic peptide ($ANP$) by the heart",
+          "isCorrect": false,
+          "rationale": "This hormone actually reduces blood pressure and inhibits drinking."
+        }
+      ],
+      "hint": "Think about what happens to cells when you eat a very salty meal."
+    },
+    {
+      "question": "What is the function of circumventricular organs, such as the $SFO$ and $OVLT$, in fluid regulation?",
+      "answerOptions": [
+        {
+          "text": "They act as the primary pump for circulating physiological saline.",
+          "isCorrect": false,
+          "rationale": "These organs are neural structures, not mechanical pumps like the heart."
+        },
+        {
+          "text": "They contain baroreceptors that monitor the stretch of major blood vessels.",
+          "isCorrect": false,
+          "rationale": "Baroreceptors are located in the heart and major arteries, whereas these organs are in the brain."
+        },
+        {
+          "text": "They monitor blood salt concentration and hormones due to a reduced blood-brain barrier.",
+          "isCorrect": true,
+          "rationale": "Their fenestrated capillaries allow neurons to directly sense the composition and osmolality of the bloodstream."
+        },
+        {
+          "text": "They produce 'antifreeze' proteins to prevent ice crystal formation in the brain.",
+          "isCorrect": false,
+          "rationale": "This is a specialized adaptation found in certain cold-adapted species, not a general function of these organs in fluid balance."
+        }
+      ],
+      "hint": "Focus on their unique location in the walls of the cerebral ventricles and their 'leaky' blood vessels."
+    },
+    {
+      "question": "According to the text, what happened to the basal metabolism of the 'Biggest Loser' contestants six years after their weight loss?",
+      "answerOptions": [
+        {
+          "text": "It returned to normal levels once their weight stabilized.",
+          "isCorrect": false,
+          "rationale": "The study found that the metabolic suppression was persistent and did not recover even after six years."
+        },
+        {
+          "text": "It remained significantly suppressed, with the body still striving to regain the lost weight.",
+          "isCorrect": true,
+          "rationale": "This process, known as metabolic adaptation, meant the contestants had to eat far fewer calories than average just to maintain their new weight."
+        },
+        {
+          "text": "It increased dramatically to compensate for the higher level of exercise.",
+          "isCorrect": false,
+          "rationale": "Basal metabolism actually decreased, which is a homeostatic mechanism to conserve energy when the brain perceives a shortage."
+        },
+        {
+          "text": "It shifted to a new 'settling point' that favoured the thinner silhouette.",
+          "isCorrect": false,
+          "rationale": "The body vigorously defended the original obese state, making it extremely difficult to keep weight off."
+        }
+      ],
+      "hint": "Consider why Danny C. needs to consume 800 fewer calories per day than a typical man of his size."
+    },
+    {
+      "question": "Which hormone, released by the pancreas, mediates the conversion of glycogen back into glucose when blood sugar levels drop?",
+      "answerOptions": [
+        {
+          "text": "Insulin",
+          "isCorrect": false,
+          "rationale": "Insulin promotes the conversion of glucose into glycogen for storage; it does not trigger the reverse process."
+        },
+        {
+          "text": "Glucagon",
+          "isCorrect": true,
+          "rationale": "This hormone facilitates glycogenolysis, which releases glucose into the blood when levels are low."
+        },
+        {
+          "text": "Aldosterone",
+          "isCorrect": false,
+          "rationale": "This is an adrenal steroid involved in sodium conservation, not glucose regulation."
+        },
+        {
+          "text": "Ghrelin",
+          "isCorrect": false,
+          "rationale": "This is a gut hormone that acts as an appetite stimulant, not a pancreatic hormone regulating glycogen."
+        }
+      ],
+      "hint": "This hormone acts in opposition to insulin to maintain blood glucose levels between meals."
+    },
+    {
+      "question": "Which phase of insulin release is triggered by the sight, smell, or taste of food before it even reaches the stomach?",
+      "answerOptions": [
+        {
+          "text": "The digestive phase",
+          "isCorrect": false,
+          "rationale": "This phase occurs when food actually enters the stomach and intestines."
+        },
+        {
+          "text": "The absorptive phase",
+          "isCorrect": false,
+          "rationale": "This phase begins when glucodetectors in the liver detect glucose entering the bloodstream."
+        },
+        {
+          "text": "The cephalic phase",
+          "isCorrect": true,
+          "rationale": "This conditioned response is mediated by the brain in anticipation of glucose arrival."
+        },
+        {
+          "text": "The gluconeogenesis phase",
+          "isCorrect": false,
+          "rationale": "This is a process of creating glucose from body fats and proteins, not a phase of insulin release."
+        }
+      ],
+      "hint": "The name of this phase comes from a word meaning 'head'."
+    },
+    {
+      "question": "In the arcuate nucleus appetite controller, what is the role of $NPY$ neurons?",
+      "answerOptions": [
+        {
+          "text": "They act as satiety neurons, inhibiting appetite and increasing metabolism.",
+          "isCorrect": false,
+          "rationale": "This describes the function of $POMC$ neurons, not $NPY$ neurons."
+        },
+        {
+          "text": "They act as hunger neurons, stimulating appetite and inhibiting satiety signals.",
+          "isCorrect": true,
+          "rationale": "These neurons produce neuropeptide Y and agouti-related peptide to increase feeding behaviour."
+        },
+        {
+          "text": "They primarily monitor long-term fat stores to suppress feeding.",
+          "isCorrect": false,
+          "rationale": "While they respond to leptin, their primary role when activated is to increase, not suppress, feeding."
+        },
+        {
+          "text": "They release insulin directly into the hypothalamus to signal satiety.",
+          "isCorrect": false,
+          "rationale": "Insulin is released by the pancreas, not by neurons in the arcuate nucleus."
+        }
+      ],
+      "hint": "Identify which set of arcuate neurons is inhibited by high levels of leptin."
+    },
+    {
+      "question": "Which gut hormone is considered a powerful appetite stimulant whose levels rise during fasting and drop after a meal?",
+      "answerOptions": [
+        {
+          "text": "Leptin",
+          "isCorrect": false,
+          "rationale": "Leptin is produced by fat cells and generally suppresses appetite over the long term."
+        },
+        {
+          "text": "Peptide $YY_{3-36}$ ($PYY_{3-36}$)",
+          "isCorrect": false,
+          "rationale": "This peptide rises after a meal and acts to suppress appetite."
+        },
+        {
+          "text": "Ghrelin",
+          "isCorrect": true,
+          "rationale": "This hormone provides a 'fasting' signal to the brain, prompting an increase in appetite."
+        },
+        {
+          "text": "Glucagon-like peptide-1 ($GLP-1$)",
+          "isCorrect": false,
+          "rationale": "This hormone is released after a meal and works to suppress appetite and enhance insulin release."
+        }
+      ],
+      "hint": "The name of this hormone refers to its effects on growth hormone secretion."
+    },
+    {
+      "question": "Historical research once suggested the ventromedial hypothalamus ($VMH$) was the 'satiety center' because lesions there caused:",
+      "answerOptions": [
+        {
+          "text": "Aphagia and rapid weight loss.",
+          "isCorrect": false,
+          "rationale": "This result was associated with lesions of the lateral hypothalamus ($LH$)."
+        },
+        {
+          "text": "Hyperphagia and obesity.",
+          "isCorrect": true,
+          "rationale": "Animals without a $VMH$ ate to excess, leading researchers to believe it was responsible for the feeling of being full."
+        },
+        {
+          "text": "A complete loss of metabolic adaptation.",
+          "isCorrect": false,
+          "rationale": "Lesioned animals still defended a stable body weight, though at a different level, indicating adaptation was still present."
+        },
+        {
+          "text": "The inability to release insulin during the cephalic phase.",
+          "isCorrect": false,
+          "rationale": "Hypothalamic lesions affect appetite control more broadly than just the cephalic phase of insulin release."
+        }
+      ],
+      "hint": "Think about whether a 'satiety center' being destroyed would make an animal stop eating or eat too much."
+    },
+    {
+      "question": "What happens in the 'Angiotensin Cascade' immediately after baroreceptors detect a drop in blood pressure?",
+      "answerOptions": [
+        {
+          "text": "The heart increases its secretion of atrial natriuretic peptide ($ANP$).",
+          "isCorrect": false,
+          "rationale": "The heart actually decreases $ANP$ secretion to allow blood pressure to rise."
+        },
+        {
+          "text": "The kidneys release the enzyme renin into the circulation.",
+          "isCorrect": true,
+          "rationale": "Renin is the initial trigger for the hormonal cascade that produces angiotensin II."
+        },
+        {
+          "text": "The pancreas releases large amounts of glucagon to increase blood volume.",
+          "isCorrect": false,
+          "rationale": "Glucagon regulates blood glucose, not blood volume or pressure."
+        },
+        {
+          "text": "The hypothalamus stops the production of vasopressin to conserve energy.",
+          "isCorrect": false,
+          "rationale": "The brain actually increases vasopressin release to conserve water and constrict blood vessels."
+        }
+      ],
+      "hint": "Focus on the organ that produces the enzyme responsible for converting angiotensinogen into angiotensin I."
+    },
+    {
+      "question": "Which statement best describes the role of redundancy in homeostatic systems like thermoregulation?",
+      "answerOptions": [
+        {
+          "text": "It ensures that only one primary brain region, the $POA$, controls all responses.",
+          "isCorrect": false,
+          "rationale": "Redundancy means multiple brain regions and mechanisms are involved, so the $POA$ is not the sole controller."
+        },
+        {
+          "text": "Loss of function in one part of the system can usually be compensated for by remaining parts.",
+          "isCorrect": true,
+          "rationale": "Redundancy provides safety by having multiple mechanisms for monitoring, conserving, and obtaining resources."
+        },
+        {
+          "text": "It allows the body to maintain a rigid set point with zero tolerance for change.",
+          "isCorrect": false,
+          "rationale": "Most systems have a set zone with built-in tolerance, and redundancy helps maintain this range through various means."
+        },
+        {
+          "text": "It refers to the fact that endotherms and ectotherms use identical physiological mechanisms.",
+          "isCorrect": false,
+          "rationale": "They use different mechanisms (internal vs. external heat), though both may exhibit redundancy in their respective strategies."
+        }
+      ],
+      "hint": "Think about why engineers equip critical equipment with backup systems."
+    },
+    {
+      "question": "How do marine birds like the giant petrel manage to drink seawater without suffering from severe osmotic thirst?",
+      "answerOptions": [
+        {
+          "text": "Their kidneys are uniquely adapted to produce extremely dilute urine.",
+          "isCorrect": false,
+          "rationale": "Producing dilute urine would waste water; they need to remove salt while keeping water."
+        },
+        {
+          "text": "They possess specialized salt glands near the nostrils that excrete concentrated salt solutions.",
+          "isCorrect": true,
+          "rationale": "These glands allow them to dump excess sodium acquired from drinking hypertonic seawater."
+        },
+        {
+          "text": "They utilize behavioral thermoregulation to lower their metabolic salt requirements.",
+          "isCorrect": false,
+          "rationale": "Salt regulation is a physiological challenge related to fluid balance, not directly controlled by metabolic rate in this context."
+        },
+        {
+          "text": "Their cell membranes are completely impermeable to sodium ions.",
+          "isCorrect": false,
+          "rationale": "No animal cell is completely impermeable to ions, and they still need salt for extracellular fluid balance."
+        }
+      ],
+      "hint": "Look for a specialized organ used to 'dump' excess minerals."
+    }
+  ]
+}

@@ -1,0 +1,395 @@
+{
+  "title": "Neuroscience Quiz",
+  "questions": [
+    {
+      "question": "In the case of Deidre, what mental process was unexpectedly triggered when doctors applied a tiny electrical current to a specific part of her brain?",
+      "answerOptions": [
+        {
+          "text": "A genuine sense of amusement and laughter",
+          "isCorrect": true,
+          "rationale": "Stimulating the specific brain area didn't just cause a motor reflex of laughter; it actually altered her mind to interpret the environment as humorous."
+        },
+        {
+          "text": "A sudden, uncontrollable motor reflex of the diaphragm",
+          "isCorrect": false,
+          "rationale": "While laughter involves the diaphragm, Deidre also felt subjectively amused and rationalized why she was laughing."
+        },
+        {
+          "text": "An intense feeling of fear and foreboding",
+          "isCorrect": false,
+          "rationale": "Feelings of foreboding or an aura are often associated with the start of a seizure, but in this specific trial, she experienced humor."
+        },
+        {
+          "text": "The immediate onset of a tonic-clonic seizure",
+          "isCorrect": false,
+          "rationale": "While she had epilepsy, the goal of this stimulation was to map brain function, and in this instance, it elicited humor rather than a seizure."
+        }
+      ],
+      "hint": "Consider how she interpreted the behavior of the doctors in the room as funny during the stimulation."
+    },
+    {
+      "question": "Which mathematical equation provides the most accurate prediction of the resting membrane potential in real neurons by accounting for multiple ions and their specific permeability?",
+      "answerOptions": [
+        {
+          "text": "The Goldman equation",
+          "isCorrect": true,
+          "rationale": "This equation is more comprehensive than others because it considers the concentrations and the degree of permeability for $\\text{K}^+$, $\\text{Na}^+$, and other ions."
+        },
+        {
+          "text": "The Nernst equation",
+          "isCorrect": false,
+          "rationale": "This equation only predicts the equilibrium potential for a single ion and assumes the membrane is permeable only to that ion."
+        },
+        {
+          "text": "The Ohm's Law equation",
+          "isCorrect": false,
+          "rationale": "While Ohm's law relates voltage, current, and resistance, it does not specifically predict membrane potential based on ion concentrations."
+        },
+        {
+          "text": "The Henderson-Hasselbalch equation",
+          "isCorrect": false,
+          "rationale": "This equation is used in chemistry to estimate the pH of a buffer solution, not the electrical potential of a neuronal membrane."
+        }
+      ],
+      "hint": "This model expands upon a simpler equation by considering how easily different ions can actually cross the lipid bilayer."
+    },
+    {
+      "question": "The sodium-potassium ($\\text{Na}^+$-$\\text{K}^+$) pump is a critical active transport mechanism. What is its standard exchange ratio per cycle?",
+      "answerOptions": [
+        {
+          "text": "It pushes $3 \\text{ Na}^+$ ions out and pulls $2 \\text{ K}^+$ ions in",
+          "isCorrect": true,
+          "rationale": "This unequal exchange of cations contributes to the net negative charge inside the neuron relative to the outside."
+        },
+        {
+          "text": "It pulls $3 \\text{ K}^+$ ions in and pushes $2 \\text{ Na}^+$ ions out",
+          "isCorrect": false,
+          "rationale": "This reverses the actual direction of the ions; the pump must move sodium against its concentration gradient to the outside."
+        },
+        {
+          "text": "It exchanges $1 \\text{ Na}^+$ ion for $1 \\text{ K}^+$ ion",
+          "isCorrect": false,
+          "rationale": "A $1:1$ ratio would not contribute as effectively to the electrical polarization of the membrane."
+        },
+        {
+          "text": "It pushes $3 \\text{ Na}^+$ ions out and pulls $3 \\text{ Cl}^-$ ions in",
+          "isCorrect": false,
+          "rationale": "The pump specifically targets sodium and potassium, not chloride, to maintain the resting potential."
+        }
+      ],
+      "hint": "Think about the net loss of positive charge that occurs with each cycle of this energy-consuming process."
+    },
+    {
+      "question": "How does the neurotoxin tetrodotoxin ($\\text{TTX}$), found in puffer fish, specifically impede neuronal function?",
+      "answerOptions": [
+        {
+          "text": "By selectively blocking voltage-gated sodium ($\\text{Na}^+$) channels",
+          "isCorrect": true,
+          "rationale": "By preventing sodium from entering the cell, $\\text{TTX}$ stops the depolarization phase, making it impossible to produce action potentials."
+        },
+        {
+          "text": "By forcing sodium ($\\text{Na}^+$) channels to stay permanently open",
+          "isCorrect": false,
+          "rationale": "This describes the effect of batrachotoxin from poison arrow frogs, not $\\text{TTX}$."
+        },
+        {
+          "text": "By blocking the calcium ($\\text{Ca}^{2+}$) channels at the axon terminal",
+          "isCorrect": false,
+          "rationale": "Blocking calcium channels would stop neurotransmitter release, but $\\text{TTX}$ acts earlier by stopping the action potential itself."
+        },
+        {
+          "text": "By inhibiting the sodium-potassium pump",
+          "isCorrect": false,
+          "rationale": "While inhibiting the pump would eventually degrade the resting potential, $\\text{TTX}$'s lethal effect is the immediate blockade of action potentials."
+        }
+      ],
+      "hint": "This toxin prevents the specific rapid influx of cations required to flip the membrane's polarity."
+    },
+    {
+      "question": "During synaptic transmission, what is the critical role of synaptotagmin after calcium ($\\text{Ca}^{2+}$) enters the presynaptic terminal?",
+      "answerOptions": [
+        {
+          "text": "It binds with calcium to catalyze the fusion of the vesicle with the plasma membrane",
+          "isCorrect": true,
+          "rationale": "Synaptotagmin acts as a calcium sensor that triggers the final step of membrane fusion by interacting with $\\text{SNARE}$ proteins."
+        },
+        {
+          "text": "It acts as the primary neurotransmitter receptor on the postsynaptic side",
+          "isCorrect": false,
+          "rationale": "Synaptotagmin is a presynaptic protein involved in release machinery, not a postsynaptic receptor."
+        },
+        {
+          "text": "It pumps calcium ($\\text{Ca}^{2+}$) ions back out of the terminal to end transmission",
+          "isCorrect": false,
+          "rationale": "While calcium must be removed, synaptotagmin's role is to facilitate vesicle fusion, not to act as an ion pump."
+        },
+        {
+          "text": "It cleaves the $\\text{v-SNARE}$ and $\\text{t-SNARE}$ proteins to stop vesicle release",
+          "isCorrect": false,
+          "rationale": "Cleaving $\\text{SNAREs}$ is the mechanism of botulinum toxin, which disables neurotransmitter release rather than catalyzing it."
+        }
+      ],
+      "hint": "Think of this protein as a specialized 'trigger' that responds to the arrival of calcium ions."
+    },
+    {
+      "question": "What fundamental discovery about the nervous system was confirmed by Otto Loewi\u2019s experiment using fluid transfer between two frog hearts?",
+      "answerOptions": [
+        {
+          "text": "Neurons communicate with each other using chemical signals",
+          "isCorrect": true,
+          "rationale": "Loewi demonstrated that stimulating the vagus nerve released a substance (later identified as acetylcholine) that could influence a second heart without direct electrical contact."
+        },
+        {
+          "text": "Neural communication is purely electrical and travels across gaps like sparks",
+          "isCorrect": false,
+          "rationale": "Loewi's experiment actually disproved the theory that communication was exclusively electrical (the 'sparks' theory)."
+        },
+        {
+          "text": "Individual neurons are physically fused together in a continuous network",
+          "isCorrect": false,
+          "rationale": "This 'reticular' theory was already being challenged by the 'neuron doctrine'; Loewi's work focused on the mechanism of communication between discrete cells."
+        },
+        {
+          "text": "The brain uses saltatory conduction to speed up heart rate",
+          "isCorrect": false,
+          "rationale": "Saltatory conduction is a method of signal travel within a single axon, whereas Loewi investigated how a signal crosses from a nerve to an organ."
+        }
+      ],
+      "hint": "His dream-inspired experiment settled the long-standing debate between proponents of 'soups' and 'sparks' in the nervous system."
+    },
+    {
+      "question": "In the field of optogenetics, what is the effect on a neuron when the light-sensitive protein halorhodopsin ($\\text{NpHR}$) is stimulated with yellow light?",
+      "answerOptions": [
+        {
+          "text": "The neuron is inhibited because chloride ($\\text{Cl}^-$) ions are pumped into the cell",
+          "isCorrect": true,
+          "rationale": "Halorhodopsin hyperpolarizes the neuron by increasing the negative charge inside, thereby preventing it from reaching the action potential threshold."
+        },
+        {
+          "text": "The neuron fires action potentials because sodium ($\\text{Na}^+$) ions enter the cell",
+          "isCorrect": false,
+          "rationale": "This describes the excitatory effect of channelrhodopsin stimulated by blue light, not halorhodopsin."
+        },
+        {
+          "text": "The neuron's $\\text{SNARE}$ proteins are activated, causing neurotransmitter release",
+          "isCorrect": false,
+          "rationale": "Optogenetic proteins typically control the membrane potential directly through ion flow, rather than interacting with the $\\text{SNARE}$ release machinery."
+        },
+        {
+          "text": "The neuron undergoes rapid up-regulation of its nicotinic receptors",
+          "isCorrect": false,
+          "rationale": "Up-regulation is a long-term compensatory process, while optogenetic stimulation produces immediate, transient electrical changes."
+        }
+      ],
+      "hint": "This protein is used by researchers to selectively 'silence' targeted neurons."
+    },
+    {
+      "question": "Which type of epileptic episode is characterized by a brief loss of awareness and a 'spike-and-wave' $\\text{EEG}$ pattern, but lacks dramatic muscle convulsions?",
+      "answerOptions": [
+        {
+          "text": "Simple partial seizure (absence attack)",
+          "isCorrect": true,
+          "rationale": "Simple partial seizures involve a cessation of activity and staring into space, lasting only $5$-$15$ seconds, without the violent movements of other seizures."
+        },
+        {
+          "text": "Tonic-clonic seizure (grand mal)",
+          "isCorrect": false,
+          "rationale": "Tonic-clonic seizures involve loss of consciousness accompanied by rhythmic convulsions and uncontrollable body movements."
+        },
+        {
+          "text": "Complex partial seizure",
+          "isCorrect": false,
+          "rationale": "Complex partial seizures often involve an aura and localized symptoms or unusual behaviors, rather than the characteristic brief, silent staring of absence attacks."
+        },
+        {
+          "text": "Kindling episode",
+          "isCorrect": false,
+          "rationale": "Kindling is a process used in research to experimentally induce seizures through repeated low-level stimulation, not a specific category of clinical seizure."
+        }
+      ],
+      "hint": "This specific event is frequently missed by observers because it lacks the dramatic physical convulsions often associated with epilepsy."
+    },
+    {
+      "question": "The 'all-or-none' property of the action potential states that:",
+      "answerOptions": [
+        {
+          "text": "The amplitude of the action potential does not change regardless of the stimulus size",
+          "isCorrect": true,
+          "rationale": "Once a stimulus reaches the threshold, a full-sized action potential is triggered; a stronger stimulus will not create a larger spike."
+        },
+        {
+          "text": "Every neuron in a circuit must fire simultaneously for a signal to be sent",
+          "isCorrect": false,
+          "rationale": "The property refers to the behavior of a single neuron's action potential, not the synchronization of a whole population."
+        },
+        {
+          "text": "A neuron either uses electrical transmission or chemical transmission, but never both",
+          "isCorrect": false,
+          "rationale": "Almost all neurons use both electrical signals (action potentials) and chemical signals (neurotransmitters)."
+        },
+        {
+          "text": "The action potential only travels in the direction of the cell body",
+          "isCorrect": false,
+          "rationale": "Action potentials typically travel away from the cell body toward the axon terminals."
+        }
+      ],
+      "hint": "Consider whether a very strong electrical 'zap' would produce a taller peak on a graph than a 'zap' that only just reached the threshold."
+    },
+    {
+      "question": "What is the primary advantage of saltatory conduction in myelinated vertebrate axons?",
+      "answerOptions": [
+        {
+          "text": "It significantly increases the speed of the action potential by allowing it to jump between nodes",
+          "isCorrect": true,
+          "rationale": "By bypassing the insulated myelin segments and regenerating only at the nodes of Ranvier, the signal travels much faster than in unmyelinated fibers."
+        },
+        {
+          "text": "It allows the neuron to process information without requiring any energy",
+          "isCorrect": false,
+          "rationale": "While efficient, the neuron still requires energy for the sodium-potassium pump and other cellular processes."
+        },
+        {
+          "text": "It prevents the action potential from ever reaching the axon terminal",
+          "isCorrect": false,
+          "rationale": "The purpose of conduction is to ensure the signal reaches the terminal to trigger neurotransmitter release."
+        },
+        {
+          "text": "It allows the neuron to fire multiple action potentials at the exact same time",
+          "isCorrect": false,
+          "rationale": "Saltatory conduction refers to the travel of a single signal along the axon, not simultaneous firing."
+        }
+      ],
+      "hint": "This process involves the gaps in the myelin sheath known as the nodes of Ranvier."
+    },
+    {
+      "question": "In a neural circuit, the human visual system demonstrates 'convergence' because:",
+      "answerOptions": [
+        {
+          "text": "Information from roughly $100$ million receptor cells is concentrated into $1$ million optic nerve axons",
+          "isCorrect": true,
+          "rationale": "Convergence occurs when many neurons provide input to a smaller number of downstream neurons, essentially 'funneling' information."
+        },
+        {
+          "text": "A single optic nerve fiber communicates with billions of neurons in the cortex",
+          "isCorrect": false,
+          "rationale": "This describes 'divergence,' where a small number of inputs spread out to affect a much larger number of cells."
+        },
+        {
+          "text": "The left and right eyes see the exact same image at all times",
+          "isCorrect": false,
+          "rationale": "Convergence in neurophysiology refers to the mapping of neural connections rather than the alignment of the visual fields."
+        },
+        {
+          "text": "All neurons in the retina are physically connected by dendro-dendritic synapses",
+          "isCorrect": false,
+          "rationale": "While some cells have such contacts, the principle of convergence refers to the many-to-few ratio of information flow."
+        }
+      ],
+      "hint": "Think about how information from a vast field of light receptors is compressed into fewer pathways as it moves toward the brain."
+    },
+    {
+      "question": "What is the defining characteristic of an 'agonist' in the context of neurotransmitter receptors?",
+      "answerOptions": [
+        {
+          "text": "It is an exogenous ligand that mimics the effect of a natural neurotransmitter",
+          "isCorrect": true,
+          "rationale": "Agonists, like nicotine at acetylcholine receptors, bind to the receptor and initiate a response similar to the endogenous ligand."
+        },
+        {
+          "text": "It is a molecule that prevents the action of a neurotransmitter by blocking its receptor",
+          "isCorrect": false,
+          "rationale": "This describes an 'antagonist,' such as curare, which prevents the neurotransmitter from working."
+        },
+        {
+          "text": "It is a neurotransmitter that is produced inside the body and released by neurons",
+          "isCorrect": false,
+          "rationale": "These are called 'endogenous ligands' rather than agonists, which usually refers to drugs or outside substances."
+        },
+        {
+          "text": "It is a protein subunit that forms the ion channel itself",
+          "isCorrect": false,
+          "rationale": "An agonist is a molecule that binds to the receptor protein, not a structural part of the protein itself."
+        }
+      ],
+      "hint": "The term is derived from a Greek word meaning 'contest' or 'struggle,' as these molecules compete to activate the receptor."
+    },
+    {
+      "question": "Medical conditions known as channelopathies result from which of the following?",
+      "answerOptions": [
+        {
+          "text": "Genetic mutations that cause abnormalities in the function of ion channels",
+          "isCorrect": true,
+          "rationale": "Errors in the genes that code for ion channel proteins can lead to various diseases, including epilepsy and muscle disorders."
+        },
+        {
+          "text": "A total lack of neurotransmitters in the synaptic cleft",
+          "isCorrect": false,
+          "rationale": "Channelopathies are specifically rooted in the structure of the ion channels themselves, not the quantity of neurotransmitter."
+        },
+        {
+          "text": "Physical trauma that severs the myelin sheath of an axon",
+          "isCorrect": false,
+          "rationale": "Trauma to myelin can cause conduction issues (like in multiple sclerosis), but 'channelopathy' refers specifically to protein mutations in the channels."
+        },
+        {
+          "text": "The presence of excessive calcium ($\\text{Ca}^{2+}$) in the primordial sea",
+          "isCorrect": false,
+          "rationale": "This refers to the evolutionary origins of cells mentioned in the text, rather than a specific medical condition."
+        }
+      ],
+      "hint": "These diseases are rooted in the biological 'blueprints' that dictate how the cell membrane's pores are constructed."
+    },
+    {
+      "question": "What is the primary difference between a local potential and an action potential?",
+      "answerOptions": [
+        {
+          "text": "Local potentials decrease in strength as they spread, while action potentials do not",
+          "isCorrect": true,
+          "rationale": "Local potentials are graded and dissipate with distance, whereas action potentials are actively regenerated along the axon."
+        },
+        {
+          "text": "Action potentials can be triggered by any level of stimulus, no matter how small",
+          "isCorrect": false,
+          "rationale": "Action potentials require the stimulus to reach a specific 'threshold' intensity to be triggered."
+        },
+        {
+          "text": "Local potentials only occur in the axon, while action potentials occur in dendrites",
+          "isCorrect": false,
+          "rationale": "It is generally the reverse: local potentials occur on dendrites and cell bodies, while action potentials are usually generated in the axon."
+        },
+        {
+          "text": "Action potentials move much slower because they rely on myelin",
+          "isCorrect": false,
+          "rationale": "Action potentials are generally faster, especially with the aid of myelin, whereas local potentials spread slowly and passively."
+        }
+      ],
+      "hint": "Consider the difference between a ripple created by a stone in a pond and a self-sustaining wave."
+    },
+    {
+      "question": "In optogenetics, what happens when a neuron that has been engineered to make channelrhodopsin ($\\text{ChR2}$) is illuminated with blue light?",
+      "answerOptions": [
+        {
+          "text": "The neuron depolarizes and fires action potentials because sodium ($\\text{Na}^+$) enters",
+          "isCorrect": true,
+          "rationale": "$\\text{ChR2}$ is a light-activated channel that allows cations to flow into the cell, triggering neural activity."
+        },
+        {
+          "text": "The neuron hyperpolarizes because chloride ($\\text{Cl}^-$) is pumped out",
+          "isCorrect": false,
+          "rationale": "This would result in depolarization, but $\\text{ChR2}$ specifically functions by allowing sodium influx, not chloride efflux."
+        },
+        {
+          "text": "The neuron's lipid bilayer is destroyed by the intensity of the light",
+          "isCorrect": false,
+          "rationale": "The light levels used are carefully calibrated to be safe for the cell while activating the specific opsin proteins."
+        },
+        {
+          "text": "The neuron releases all its neurotransmitters immediately and dies",
+          "isCorrect": false,
+          "rationale": "The goal of optogenetics is to precisely control normal firing patterns, not to destroy the cell."
+        }
+      ],
+      "hint": "This opsin protein acts as a light-driven 'on' switch for the cell's electrical activity."
+    }
+  ]
+}

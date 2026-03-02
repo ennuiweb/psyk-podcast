@@ -1,0 +1,317 @@
+{
+  "title": "Motor Control Quiz",
+  "questions": [
+    {
+      "question": "The case of Ian Waterman, who lost specific sensory nerves following a viral infection, illustrates the vital importance of which 'sixth sense' for movement?",
+      "answerOptions": [
+        {
+          "text": "Proprioception",
+          "isCorrect": true,
+          "rationale": "This sense provides the brain with constant feedback regarding muscle activity and body position, which is essential for coordinating movement without constant visual monitoring."
+        },
+        {
+          "text": "Nociception",
+          "isCorrect": false,
+          "rationale": "Ian was still able to feel pain, which is the primary function of this sensory system."
+        },
+        {
+          "text": "Thermoception",
+          "isCorrect": false,
+          "rationale": "The text notes that Ian could still detect warm and cool surfaces, meaning his temperature sensation remained intact."
+        },
+        {
+          "text": "Vestibular sense",
+          "isCorrect": false,
+          "rationale": "While the vestibular system helps with balance, Ian's specific deficit was the loss of information from his muscles and joints below the neck."
+        }
+      ],
+      "hint": "Consider the term used to describe the perception of the body's own movement and position."
+    },
+    {
+      "question": "Which of the following best describes the difference between a closed-loop and an open-loop motor control mechanism?",
+      "answerOptions": [
+        {
+          "text": "Closed-loop mechanisms prioritize accuracy through feedback, while open-loop mechanisms prioritize speed without feedback.",
+          "isCorrect": true,
+          "rationale": "Closed-loop systems use continuous feedback to correct errors, whereas open-loop systems execute preprogrammed ballistic movements where speed is essential."
+        },
+        {
+          "text": "Open-loop mechanisms are used for delicate tasks like driving, while closed-loop mechanisms are for rapid actions like a baseball pitch.",
+          "isCorrect": false,
+          "rationale": "Driving requires constant feedback (closed-loop) to stay on the road, while a rapid pitch occurs too fast for feedback to alter the movement (open-loop)."
+        },
+        {
+          "text": "Closed-loop systems are strictly preprogrammed, whereas open-loop systems rely on error detectors to minimize discrepancy.",
+          "isCorrect": false,
+          "rationale": "Error detection and correction are hallmark features of closed-loop systems, not open-loop systems."
+        },
+        {
+          "text": "Open-loop systems utilize transducers to monitor output, while closed-loop systems lack external forms of feedback.",
+          "isCorrect": false,
+          "rationale": "Transducers are part of the feedback circuit in closed-loop systems; open-loop systems are characterized by a lack of such feedback."
+        }
+      ],
+      "hint": "Think about whether the system waits for information to come back before making its next move."
+    },
+    {
+      "question": "Errors in speech known as 'spoonerisms' provide evidence for which concept in motor control?",
+      "answerOptions": [
+        {
+          "text": "Motor planning",
+          "isCorrect": true,
+          "rationale": "Because the speaker anticipates a later sound and executes it too early, it reveals that an overall sequence was established before the behavior began."
+        },
+        {
+          "text": "Reflex chaining",
+          "isCorrect": false,
+          "rationale": "A chain of simple reflexes triggered by previous sensations could not account for errors that involve anticipating future sounds in a sequence."
+        },
+        {
+          "text": "Closed-loop control",
+          "isCorrect": false,
+          "rationale": "Speech errors of this type occur too quickly for real-time feedback to prevent the transposition of sounds, suggesting a pre-established program."
+        },
+        {
+          "text": "Final common pathway",
+          "isCorrect": false,
+          "rationale": "While speech involves the final common pathway (motor neurons), spoonerisms specifically demonstrate the hierarchical planning of movement sequences."
+        }
+      ],
+      "hint": "Consider how the brain organizes complex sequences of behavior before they are actually performed."
+    },
+    {
+      "question": "What is the primary functional difference between fast-twitch and slow-twitch muscle fibers?",
+      "answerOptions": [
+        {
+          "text": "Fast-twitch fibers contract rapidly but fatigue easily, while slow-twitch fibers have greater endurance and resist fatigue.",
+          "isCorrect": true,
+          "rationale": "This specialization allows fast-twitch fibers to be used for quick bursts of activity, while slow-twitch fibers maintain posture and sustained activity."
+        },
+        {
+          "text": "Slow-twitch fibers are found exclusively in the 'white meat' of birds, whereas fast-twitch fibers make up 'dark meat'.",
+          "isCorrect": false,
+          "rationale": "The opposite is true; dark meat is rich in myoglobin and mitochondria for endurance (slow-twitch), while white meat is for rapid flight (fast-twitch)."
+        },
+        {
+          "text": "Fast-twitch fibers are controlled by the autonomic nervous system, while slow-twitch fibers are under voluntary control.",
+          "isCorrect": false,
+          "rationale": "Both types of striated muscle fibers are typically under voluntary control via motor neurons; autonomic control is associated with smooth muscle."
+        },
+        {
+          "text": "Slow-twitch fibers rely on actin for contraction, while fast-twitch fibers rely solely on myosin.",
+          "isCorrect": false,
+          "rationale": "All striated muscles use a combination of actin and myosin filaments sliding past each other to produce contraction."
+        }
+      ],
+      "hint": "Think about the trade-off between the speed of a contraction and how long that contraction can be maintained."
+    },
+    {
+      "question": "In the context of the neuromuscular junction (NMJ), how does the neurotransmitter acetylcholine (ACh) trigger a muscle contraction?",
+      "answerOptions": [
+        {
+          "text": "It induces an action potential in the muscle fiber, allowing $Na^{+}$ and $Ca^{2+}$ to enter and activate molecular changes in actin and myosin.",
+          "isCorrect": true,
+          "rationale": "The release of ACh from motor neurons triggers a postsynaptic action potential in the muscle, which is the catalyst for the sliding filament mechanism."
+        },
+        {
+          "text": "It acts as a physical bridge between the myosin heads and the actin filaments to pull them together.",
+          "isCorrect": false,
+          "rationale": "ACh is a chemical signal that triggers electrical activity; the actual physical sliding is performed by the protein filaments themselves."
+        },
+        {
+          "text": "It blocks the entry of $Ca^{2+}$ ions to prevent the muscle from over-contracting during delicate movements.",
+          "isCorrect": false,
+          "rationale": "ACh facilitates the entry of ions that trigger contraction rather than blocking them; inhibition of contraction occurs at the level of the motor neuron."
+        },
+        {
+          "text": "It travels back up the motor neuron to signal that the muscle has successfully reached its target length.",
+          "isCorrect": false,
+          "rationale": "ACh is released from the presynaptic terminal to the muscle; sensory feedback about muscle state is provided by proprioceptors, not the neurotransmitter itself."
+        }
+      ],
+      "hint": "Consider the electrical and chemical steps that occur after a motor neuron fires."
+    },
+    {
+      "question": "A motor unit with a low innervation ratio, such as $1:3$, is most likely to be found in which of the following muscles?",
+      "answerOptions": [
+        {
+          "text": "Extraocular muscles of the eye",
+          "isCorrect": true,
+          "rationale": "Low ratios allow for exquisitely fine gradations of contraction, which are necessary for the precision of eye movements."
+        },
+        {
+          "text": "Gastrocnemius muscle of the leg",
+          "isCorrect": false,
+          "rationale": "Massive muscles used for strength and force have high innervation ratios, where one neuron controls hundreds of fibers."
+        },
+        {
+          "text": "Biceps brachii of the arm",
+          "isCorrect": false,
+          "rationale": "Large limb muscles generally have higher innervation ratios to produce significant force, though they are less precise than eye muscles."
+        },
+        {
+          "text": "Postural muscles of the back",
+          "isCorrect": false,
+          "rationale": "These muscles prioritize sustained tension and force over the highly delicate movements associated with low innervation ratios."
+        }
+      ],
+      "hint": "Identify which muscle requires the most precise and delicate control rather than sheer power."
+    },
+    {
+      "question": "Myasthenia gravis is characterized by profound muscle weakness due to which pathological mechanism?",
+      "answerOptions": [
+        {
+          "text": "An autoimmune attack that destroys or disrupts acetylcholine (ACh) receptors at the neuromuscular junction.",
+          "isCorrect": true,
+          "rationale": "This prevents the muscle from receiving the chemical message to contract, even when the motor neuron is functioning normally."
+        },
+        {
+          "text": "A genetic mutation that prevents the production of the structural protein dystrophin.",
+          "isCorrect": false,
+          "rationale": "The loss of dystrophin is the cause of Duchenne muscular dystrophy, which leads to the wasting away of muscle cells themselves."
+        },
+        {
+          "text": "The spontaneous death of motor neurons in the spinal cord and brainstem.",
+          "isCorrect": false,
+          "rationale": "The death of motor neurons is the hallmark of Amyotrophic Lateral Sclerosis (ALS), not myasthenia gravis."
+        },
+        {
+          "text": "A viral infection that selectively targets large, myelinated sensory axons.",
+          "isCorrect": false,
+          "rationale": "This describes the condition suffered by Ian Waterman, which leads to a loss of proprioception rather than a failure of the neuromuscular junction."
+        }
+      ],
+      "hint": "Recall that this is an autoimmune disorder affecting the site where the nerve meets the muscle."
+    },
+    {
+      "question": "How do primary sensory endings (annulospiral) and secondary sensory endings (flower spray) in the muscle spindle differ in the information they provide?",
+      "answerOptions": [
+        {
+          "text": "Primary endings communicate the velocity of muscle stretch, while secondary endings communicate static muscle length.",
+          "isCorrect": true,
+          "rationale": "Primary endings show a phasic response sensitive to the rate of change, whereas secondary endings show a tonic response sensitive to maintained length."
+        },
+        {
+          "text": "Primary endings monitor muscle tension, while secondary endings monitor the rate of muscle shortening.",
+          "isCorrect": false,
+          "rationale": "Muscle tension is monitored by Golgi tendon organs, not by the sensory endings within the muscle spindle."
+        },
+        {
+          "text": "Primary endings are stimulated by $\\alpha$ (alpha) motor neurons, while secondary endings are stimulated by $\\gamma$ (gamma) motor neurons.",
+          "isCorrect": false,
+          "rationale": "Both types of endings are afferent (sensory) elements; motor neurons are efferent and stimulate muscle fibers, not the sensory endings themselves."
+        },
+        {
+          "text": "Primary endings wrap around the ends of the spindle, while secondary endings wrap around the central region.",
+          "isCorrect": false,
+          "rationale": "The text states the opposite: primary endings wrap around the central region, while secondary endings terminate toward the thin ends."
+        }
+      ],
+      "hint": "Distinguish between the sensing of movement (speed) versus the sensing of position (length)."
+    },
+    {
+      "question": "What is the primary function of Golgi tendon organs in the motor system?",
+      "answerOptions": [
+        {
+          "text": "To monitor muscle tension and prevent mechanical damage by inhibiting motor neurons during overloads.",
+          "isCorrect": true,
+          "rationale": "Because they are interwoven with tendon proteins, they are sensitive to the force of contraction and can trigger a protective relaxation if the tension is too high."
+        },
+        {
+          "text": "To detect the velocity of a limb's movement to provide feedback for ballistic actions.",
+          "isCorrect": false,
+          "rationale": "Velocity is primarily tracked by the primary sensory endings of the muscle spindles, not the Golgi tendon organs."
+        },
+        {
+          "text": "To stimulate the contraction of antagonistic muscles during a stretch reflex.",
+          "isCorrect": false,
+          "rationale": "The stretch reflex involves muscle spindles and results in the inhibition of antagonists, not their stimulation via tendon organs."
+        },
+        {
+          "text": "To maintain the tautness of intrafusal fibers so that muscle spindles remain sensitive.",
+          "isCorrect": false,
+          "rationale": "This task is performed by $\\gamma$ (gamma) motor neurons, which adjust the spindle's internal fibers."
+        }
+      ],
+      "hint": "These receptors are located in the tough tissue connecting muscle to bone."
+    },
+    {
+      "question": "Which of the following describes the sequence of events in a simple stretch reflex, such as the knee-jerk reflex?",
+      "answerOptions": [
+        {
+          "text": "Muscle stretch excites spindle afferents, which connect monosynaptically to motor neurons that stimulate the same muscle to contract.",
+          "isCorrect": true,
+          "rationale": "This direct, one-synapse connection allows for an extremely rapid 'automatic' response to load changes."
+        },
+        {
+          "text": "Muscle tension excites Golgi tendon organs, which send signals to the primary motor cortex to adjust the planned movement.",
+          "isCorrect": false,
+          "rationale": "The stretch reflex is a spinal-level response that does not require brain intervention to execute the initial contraction."
+        },
+        {
+          "text": "Skin receptors detect touch, sending signals through the dorsal root to trigger a complex motor plan in the brainstem.",
+          "isCorrect": false,
+          "rationale": "The stretch reflex is triggered by muscle spindles detecting length changes, not by cutaneous touch receptors."
+        },
+        {
+          "text": "Spindle afferents inhibit the motor neurons of the stretched muscle while exciting the motor neurons of the antagonist muscle.",
+          "isCorrect": false,
+          "rationale": "The reflex excites the motor neurons of the stretched muscle and inhibits the antagonist to prevent injury and restore position."
+        }
+      ],
+      "hint": "Recall the simplest neural circuit that bypasses the brain for an immediate response."
+    },
+    {
+      "question": "In the study of Amyotrophic Lateral Sclerosis (ALS), what is meant by the term 'toxic gain of function' regarding the $SOD1$ gene mutation?",
+      "answerOptions": [
+        {
+          "text": "The mutant protein performs a new, harmful action that kills motor neurons, rather than simply failing to perform its normal job.",
+          "isCorrect": true,
+          "rationale": "Because mice with both normal and mutant genes still develop the disease, it indicates the mutant protein is actively damaging, not just absent."
+        },
+        {
+          "text": "The mutation causes motor neurons to divide uncontrollably, leading to the formation of tumors in the spinal cord.",
+          "isCorrect": false,
+          "rationale": "ALS is characterized by the death and wasting away of neurons and muscles, not the uncontrolled growth of cells."
+        },
+        {
+          "text": "The $SOD1$ enzyme becomes hyper-efficient at removing toxins, accidentally removing essential neurotransmitters like acetylcholine.",
+          "isCorrect": false,
+          "rationale": "There is no evidence that the enzyme's normal function is simply 'overactive'; rather, the mutant protein acts through astrocytes or muscles to kill neurons."
+        },
+        {
+          "text": "The mutation allows the motor neurons to survive indefinitely, preventing the natural turnover of cells in the brainstem.",
+          "isCorrect": false,
+          "rationale": "The pathology of ALS is defined by premature neuronal death and the resulting paralysis, the opposite of indefinite survival."
+        }
+      ],
+      "hint": "Consider why having a normal copy of the gene does not protect against the effects of the defective copy."
+    },
+    {
+      "question": "One research strategy for restoring movement after a spinal cord injury involves 'olfactory ensheathing cells.' Why are these specific glial cells considered promising?",
+      "answerOptions": [
+        {
+          "text": "They provide a scaffold that CNS axons can use to cross a gap and reach their targets, similar to how they guide new olfactory neurons.",
+          "isCorrect": true,
+          "rationale": "Because olfactory neurons are continually replaced and must find their way to the brain, their specialized glia are uniquely suited for promoting axon growth."
+        },
+        {
+          "text": "They convert into stem cells that differentiate into new $ACh$ receptors for the neuromuscular junction.",
+          "isCorrect": false,
+          "rationale": "Their primary role in research is guiding existing or regenerating axons across a break, not replacing muscle receptors."
+        },
+        {
+          "text": "They produce large amounts of myoglobin to darken the 'white meat' of damaged muscle fibers.",
+          "isCorrect": false,
+          "rationale": "Myoglobin is an oxygen-binding protein in muscles; it is not produced by glial cells in the spinal cord for regeneration."
+        },
+        {
+          "text": "They block the 'toxic gain of function' associated with mutant $TDP43$ proteins in the brainstem.",
+          "isCorrect": false,
+          "rationale": "While protective, these cells are being studied for structural repair of spinal breaks rather than as a specific genetic therapy for ALS."
+        }
+      ],
+      "hint": "Think about the unique regenerative ability of the sensory system located in the nose."
+    }
+  ]
+}

@@ -1,0 +1,265 @@
+{
+  "title": "Neurofarmakologi Quiz",
+  "questions": [
+    {
+      "question": "Hvilken type organisme var kilden til de forbindelser, som Albert Hofmann studerede, da han ved et uheld opdagede de hallucinogene effekter af LSD?",
+      "answerOptions": [
+        {
+          "text": "En svamp, der vokser p\u00e5 korn",
+          "isCorrect": true,
+          "rationale": "LSD er afledt af ergot, som er en svamp, der angriber kornsorter."
+        },
+        {
+          "text": "En giftig fr\u00f8art",
+          "isCorrect": false,
+          "rationale": "Selvom kilden n\u00e6vner giftstoffer i fr\u00f8er, var Hofmanns specifikke forskning rettet mod forbindelser fra ergot."
+        },
+        {
+          "text": "En sj\u00e6lden blomst fra junglen",
+          "isCorrect": false,
+          "rationale": "Dette er en almindelig misforst\u00e5else omkring kilden til psykoaktive stoffer, men Hofmann arbejdede for et farmaceutisk firma med kornsvamp."
+        },
+        {
+          "text": "En bakterie i laboratoriet",
+          "isCorrect": false,
+          "rationale": "Selvom visse toksiner som Botox kommer fra bakterier, stammer LSD fra en svamp."
+        }
+      ],
+      "hint": "T\u00e6nk p\u00e5 den specifikke kilde kaldet ergot, som n\u00e6vnes i teksten."
+    },
+    {
+      "question": "N\u00e5r et aktionspotentiale n\u00e5r axon-terminalen, hvilken ion-kanal \u00e5bnes da for at igangs\u00e6tte frig\u00f8relsen af neurotransmittere?",
+      "answerOptions": [
+        {
+          "text": "Sp\u00e6ndingsstyrede $Ca^{2+}$-kanaler",
+          "isCorrect": true,
+          "rationale": "Indstr\u00f8mningen af calciumioner er det kritiske signal, der f\u00e5r synaptiske vesikler til at fusionere med membranen."
+        },
+        {
+          "text": "Sp\u00e6ndingsstyrede $Na^{+}$-kanaler",
+          "isCorrect": false,
+          "rationale": "Natriumkanaler er ansvarlige for selve forplantningen af aktionspotentialet, men ikke direkte for exocytose i terminalen."
+        },
+        {
+          "text": "Ligandstyrede $Cl^{-}$-kanaler",
+          "isCorrect": false,
+          "rationale": "Kloridkanaler er ofte involveret i h\u00e6mning (IPSPs) p\u00e5 den postsynaptiske side, ikke i frig\u00f8relsen af transmittere."
+        },
+        {
+          "text": "Kalium-l\u00e6kagekanaler",
+          "isCorrect": false,
+          "rationale": "Kaliumkanaler hj\u00e6lper med at genoprette hvilepotentialet, men de udl\u00f8ser ikke frig\u00f8relse af vesikler."
+        }
+      ],
+      "hint": "Overvej hvilken positivt ladet ion, der fungerer som en 'n\u00f8gle' til at aktivere SNARE-proteiner."
+    },
+    {
+      "question": "Hvad er den vigtigste forskel p\u00e5 funktionen af en ionotrop receptor og en metabotrop receptor?",
+      "answerOptions": [
+        {
+          "text": "Ionotrope receptorer virker hurtigere end metabotrope receptorer",
+          "isCorrect": true,
+          "rationale": "Ionotrope receptorer \u00e5bner direkte en ionkanal ved binding, mens metabotrope kr\u00e6ver kemiske reaktioner via G-proteiner."
+        },
+        {
+          "text": "Metabotrope receptorer indeholder altid en ionkanal",
+          "isCorrect": false,
+          "rationale": "Metabotrope receptorer indeholder netop ikke en kanal selv, men bruger i stedet 'second messengers'."
+        },
+        {
+          "text": "Kun ionotrope receptorer genkender specifikke transmittere",
+          "isCorrect": false,
+          "rationale": "Begge typer receptorer er h\u00f8jtspecifikke for de neurotransmittere, de binder."
+        },
+        {
+          "text": "Ionotrope receptorer findes kun i det perifere nervesystem",
+          "isCorrect": false,
+          "rationale": "Begge receptortyper er vidt udbredt i b\u00e5de det centrale og perifere nervesystem."
+        }
+      ],
+      "hint": "T\u00e6nk p\u00e5 hastigheden af signaloverf\u00f8rslen og om receptoren selv danner en passage for ioner."
+    },
+    {
+      "question": "Hvilken af f\u00f8lgende neurotransmittere betragtes som den mest udbredte excitatoriske transmitter i hjernen?",
+      "answerOptions": [
+        {
+          "text": "Glutamat",
+          "isCorrect": true,
+          "rationale": "Glutamat er den prim\u00e6re aminosyre-transmitter, der skaber excitatoriske signaler via receptorer som NMDA og AMPA."
+        },
+        {
+          "text": "GABA",
+          "isCorrect": false,
+          "rationale": "GABA er den vigtigste h\u00e6mmende (inhibitoriske) transmitter, ikke excitatorisk."
+        },
+        {
+          "text": "Serotonin",
+          "isCorrect": false,
+          "rationale": "Serotonin er en monoamin med mange funktioner, men den er ikke den mest udbredte generelle excitatoriske transmitter."
+        },
+        {
+          "text": "Dopamin",
+          "isCorrect": false,
+          "rationale": "Dopamin er vigtig for bel\u00f8nning og motorik, men glutamat varetager det meste af den generelle excitation."
+        }
+      ],
+      "hint": "Denne aminosyre er ofte associeret med excitotoksicitet ved for store m\u00e6ngder."
+    },
+    {
+      "question": "Hvis et l\u00e6gemiddel binder til en receptor, men ikke aktiverer den og derved blokerer for den naturlige neurotransmitter, kaldes det en:",
+      "answerOptions": [
+        {
+          "text": "Antagonist",
+          "isCorrect": true,
+          "rationale": "En antagonist fungerer som en prop i l\u00e5sen, der forhindrer aktivering uden selv at udl\u00f8se en respons."
+        },
+        {
+          "text": "Agonist",
+          "isCorrect": false,
+          "rationale": "En agonist efterligner og aktiverer receptorens normale funktion."
+        },
+        {
+          "text": "Invers agonist",
+          "isCorrect": false,
+          "rationale": "En invers agonist fremkalder en effekt, der er den modsatte af den normale funktion."
+        },
+        {
+          "text": "Endogen ligand",
+          "isCorrect": false,
+          "rationale": "En endogen ligand er kroppens egen naturlige transmitter, ikke et blokerende l\u00e6gemiddel."
+        }
+      ],
+      "hint": "Ordet betyder bogstaveligt talt en modstander eller modvirker."
+    },
+    {
+      "question": "Hvilket begreb beskriver et l\u00e6gemiddels evne til at aktivere en receptor, efter det er blevet bundet til den?",
+      "answerOptions": [
+        {
+          "text": "Efficacy (Efficasitet)",
+          "isCorrect": true,
+          "rationale": "Efficacy beskriver, i hvor h\u00f8j grad liganden form\u00e5r at aktivere receptoren og skabe et respons."
+        },
+        {
+          "text": "Binding affinity (Affinitet)",
+          "isCorrect": false,
+          "rationale": "Affinitet beskriver, hvor st\u00e6rkt eller let et l\u00e6gemiddel binder til receptoren, ikke hvad der sker efter bindingen."
+        },
+        {
+          "text": "Biotransformation",
+          "isCorrect": false,
+          "rationale": "Biotransformation refererer til kroppens metabolske nedbrydning af stoffet til andre produkter."
+        },
+        {
+          "text": "Pharmacokinetics (Farmakokinetik)",
+          "isCorrect": false,
+          "rationale": "Farmakokinetik omhandler stoffets bev\u00e6gelse gennem kroppen (optagelse, fordeling, udskillelse)."
+        }
+      ],
+      "hint": "T\u00e6nk p\u00e5 forskellen mellem blot at s\u00e6tte n\u00f8glen i l\u00e5sen og rent faktisk at kunne dreje den."
+    },
+    {
+      "question": "Hvilken proces i neuronen kan f\u00f8re til funktionel tolerance, n\u00e5r man gentagne gange bruger et agonist-l\u00e6gemiddel?",
+      "answerOptions": [
+        {
+          "text": "Down-regulation",
+          "isCorrect": true,
+          "rationale": "Ved overstimulering fjerner cellen receptorer fra membranen for at beskytte sig selv, hvilket g\u00f8r den mindre f\u00f8lsom."
+        },
+        {
+          "text": "Up-regulation",
+          "isCorrect": false,
+          "rationale": "Up-regulation sker typisk som respons p\u00e5 en antagonist, hvor cellen tilf\u00f8jer flere receptorer for at opfange svage signaler."
+        },
+        {
+          "text": "Retrograd transport",
+          "isCorrect": false,
+          "rationale": "Retrograd transport handler om flytning af materialer fra terminalen tilbage til cellekroppen."
+        },
+        {
+          "text": "Sensibilisering (Sensitization)",
+          "isCorrect": false,
+          "rationale": "Sensibilisering er det modsatte af tolerance, hvor responsen bliver st\u00e6rkere ved gentagen brug."
+        }
+      ],
+      "hint": "Overvej hvordan en celle kompenserer for 'for meget' signal ved at reducere antallet af modtagere."
+    },
+    {
+      "question": "F\u00f8rstegenerations antipsykotika (neuroleptika) virker prim\u00e6rt ved at blokere hvilken type receptor?",
+      "answerOptions": [
+        {
+          "text": "Dopamin $D_{2}$-receptorer",
+          "isCorrect": true,
+          "rationale": "Klassiske antipsykotika som haloperidol virker som selektive antagonister for $D_{2}$-subtypen af dopaminreceptorer."
+        },
+        {
+          "text": "Serotonin $5$-$HT_{2A}$-receptorer",
+          "isCorrect": false,
+          "rationale": "Blokade af disse receptorer er mere karakteristisk for andengenerations antipsykotika."
+        },
+        {
+          "text": "Nikotiniske ACh-receptorer",
+          "isCorrect": false,
+          "rationale": "Blokade af disse receptorer f\u00f8rer til lammelse, ikke lindring af psykotiske symptomer."
+        },
+        {
+          "text": "$GABA_{A}$-receptorer",
+          "isCorrect": false,
+          "rationale": "Disse receptorer er m\u00e5let for anxiolytika (angstmedicin), ikke prim\u00e6rt for antipsykotika."
+        }
+      ],
+      "hint": "Det var opdagelsen af disse l\u00e6gemidler, der f\u00f8rte til den dopaminerge model for skizofreni."
+    },
+    {
+      "question": "Hvad m\u00e5ler v\u00e6rdien $ED_{50}$ p\u00e5 en dosis-respons kurve?",
+      "answerOptions": [
+        {
+          "text": "Den dosis, der giver halvdelen af den maksimale effekt",
+          "isCorrect": true,
+          "rationale": "$ED_{50}$ st\u00e5r for den effektive dosis for $50\\%$ af den maksimale respons."
+        },
+        {
+          "text": "Den dosis, der dr\u00e6ber halvdelen af fors\u00f8gsdyrene",
+          "isCorrect": false,
+          "rationale": "Dette beskrives ved $LD_{50}$ (lethal dose), ikke $ED_{50}$."
+        },
+        {
+          "text": "Tidspunktet, hvor stoffet er halvt ude af kroppen",
+          "isCorrect": false,
+          "rationale": "Dette kaldes stoffets halveringstid, hvilket er et farmakokinetisk begreb."
+        },
+        {
+          "text": "Den minimale dosis, der overhovedet kan m\u00e5les",
+          "isCorrect": false,
+          "rationale": "T\u00e6rskelv\u00e6rdien er den laveste dosis med effekt, mens $ED_{50}$ er et punkt midt p\u00e5 kurven."
+        }
+      ],
+      "hint": "Bogstaverne st\u00e5r for 'Effective Dose'."
+    },
+    {
+      "question": "Hvilken egenskab adskiller gas-neurotransmittere som nitrogenoxid ($NO$) fra 'klassiske' transmittere?",
+      "answerOptions": [
+        {
+          "text": "De kan fungere som retrograde transmittere",
+          "isCorrect": true,
+          "rationale": "Gasser kan diffundere fra den postsynaptiske celle tilbage til den pr\u00e6synaptiske celle for at p\u00e5virke fremtidig frig\u00f8relse."
+        },
+        {
+          "text": "De opbevares i store m\u00e6ngder i synaptiske vesikler",
+          "isCorrect": false,
+          "rationale": "Gasser produceres efter behov og diffunderer straks ud af cellen; de kan ikke opbevares i vesikler."
+        },
+        {
+          "text": "De binder kun til receptorer p\u00e5 ydersiden af cellen",
+          "isCorrect": false,
+          "rationale": "Gasser diffunderer direkte gennem cellemembranen og stimulerer produktionen af second messengers inde i cellen."
+        },
+        {
+          "text": "De findes kun i axonerne i det visuelle cortex",
+          "isCorrect": false,
+          "rationale": "Gas-transmittere er vidt udbredt i hele kroppen og hjernen."
+        }
+      ],
+      "hint": "Overvej deres evne til at sende information 'bagl\u00e6ns' over synapsen."
+    }
+  ]
+}

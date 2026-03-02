@@ -1,0 +1,265 @@
+{
+  "title": "Neurovidenskab Quiz",
+  "questions": [
+    {
+      "question": "Hvilken type motorisk kontrolmekanisme er mest afh\u00e6ngig af pr\u00e6programmering og anvendes ved ekstremt hurtige bev\u00e6gelser, hvor der ikke er tid til sensorisk feedback?",
+      "answerOptions": [
+        {
+          "text": "Open-loop kontrol",
+          "isCorrect": true,
+          "rationale": "Open-loop systemer maksimerer hastighed ved at eksekvere en pr\u00e6programmeret motorisk plan uden at vente p\u00e5 feedback under selve bev\u00e6gelsen."
+        },
+        {
+          "text": "Closed-loop kontrol",
+          "isCorrect": false,
+          "rationale": "Dette system prioriterer n\u00f8jagtighed frem for hastighed og kr\u00e6ver kontinuerlig feedback for at korrigere fejl undervejs."
+        },
+        {
+          "text": "Negativ feedback-kontrol",
+          "isCorrect": false,
+          "rationale": "Dette er et kendetegn ved closed-loop systemer, som bruges til at minimere afvigelser fra et \u00f8nsket m\u00e5l, hvilket er for langsomt til ballistiske bev\u00e6gelser."
+        },
+        {
+          "text": "Proprioceptiv sl\u00f8jfe-kontrol",
+          "isCorrect": false,
+          "rationale": "Selvom proprioception er vigtig for motorik, refererer dette ikke til den specifikke ingeni\u00f8rm\u00e6ssige model for hastighedsoptimerede bev\u00e6gelser."
+        }
+      ],
+      "hint": "Overvej forskellen mellem en bilist, der styrer (korrigerer konstant), og en baseball-pitcher, der kaster (kan ikke \u00e6ndre kurs midt i kastet)."
+    },
+    {
+      "question": "I muskelspolen findes der to typer sensoriske ender. Hvilket udsagn beskriver korrekt funktionen af de prim\u00e6re sensoriske ender (annulospirale ender)?",
+      "answerOptions": [
+        {
+          "text": "De udviser et fasisk respons og kommunikerer hastigheden af muskelstr\u00e6k",
+          "isCorrect": true,
+          "rationale": "Prim\u00e6re ender reagerer maksimalt tidligt i et str\u00e6k og adapterer derefter, hvilket g\u00f8r dem f\u00f8lsomme over for selve bev\u00e6gelsens hastighed."
+        },
+        {
+          "text": "De udviser et tonisk respons og overv\u00e5ger den statiske muskell\u00e6ngde",
+          "isCorrect": false,
+          "rationale": "Dette er funktionen for de sekund\u00e6re sensoriske ender (flower spray), som er mest f\u00f8lsomme over for opretholdt l\u00e6ngde."
+        },
+        {
+          "text": "De reagerer prim\u00e6rt p\u00e5 muskelsp\u00e6nding frem for l\u00e6ngde",
+          "isCorrect": false,
+          "rationale": "Overv\u00e5gning af sp\u00e6nding (tension) er funktionen for Golgi-seneorganerne, ikke muskelspolerne."
+        },
+        {
+          "text": "De innerverer de ekstrafusale muskelfibre for at skabe kontraktionskraft",
+          "isCorrect": false,
+          "rationale": "Sensoriske ender sender information til CNS; det er $\\alpha$-motorneuroner, der aktiverer de kraftskabende ekstrafusale fibre."
+        }
+      ],
+      "hint": "T\u00e6nk p\u00e5 forskellen mellem at m\u00e5le, hvor hurtigt noget \u00e6ndrer sig, versus hvad den nuv\u00e6rende position er."
+    },
+    {
+      "question": "Hvad er den prim\u00e6re opgave for $\\gamma$-motorneuroner (gamma-efferenter) i det motoriske system?",
+      "answerOptions": [
+        {
+          "text": "At kontrahere de intrafusale fibre for at opretholde muskelspolens f\u00f8lsomhed",
+          "isCorrect": true,
+          "rationale": "Ved at \u00e6ndre sp\u00e6ndingen i muskelspolens egne fibre sikrer $\\gamma$-neuroner, at spolen ikke bliver 'slap', n\u00e5r hovedmusklen kontraherer."
+        },
+        {
+          "text": "At udl\u00f8se den egentlige sammentr\u00e6kning af de store ekstrafusale muskelfibre",
+          "isCorrect": false,
+          "rationale": "Dette udf\u00f8res af $\\alpha$-motorneuroner, som er ansvarlige for den kraft, der bev\u00e6ger knoglerne."
+        },
+        {
+          "text": "At h\u00e6mme antagonistiske muskler via spinale interneuroner",
+          "isCorrect": false,
+          "rationale": "H\u00e6mning af antagonister sker gennem spinale kredsl\u00f8b udl\u00f8st af sensoriske afferenter, ikke af motoriske efferenter til spolen."
+        },
+        {
+          "text": "At registrere overbelastning i senerne for at undg\u00e5 v\u00e6vsskade",
+          "isCorrect": false,
+          "rationale": "Dette er en sensorisk funktion varetaget af Golgi-seneorganerne, ikke en motorisk kommando."
+        }
+      ],
+      "hint": "Disse neuroner g\u00e5r til de sm\u00e5 fibre 'inde i' selve receptoren."
+    },
+    {
+      "question": "Ved sygdommen Myasthenia gravis opst\u00e5r der muskelsvaghed. Hvad er den underliggende patofysiologiske \u00e5rsag if\u00f8lge kilderne?",
+      "answerOptions": [
+        {
+          "text": "Autoimmun destruktion af postsynaptiske acetylcholin-receptorer",
+          "isCorrect": true,
+          "rationale": "Kroppens eget immunforsvar danner antistoffer, der angriber ACh-receptorerne ved den neuromuskul\u00e6re overgang, hvilket blokerer signaloverf\u00f8rslen."
+        },
+        {
+          "text": "Genetisk mangel p\u00e5 proteinet dystrophin i muskelcellerne",
+          "isCorrect": false,
+          "rationale": "Dette er \u00e5rsagen til Duchenne muskelsvind, ikke Myasthenia gravis."
+        },
+        {
+          "text": "Selektiv degeneration af dopaminerge neuroner i substantia nigra",
+          "isCorrect": false,
+          "rationale": "Dette beskriver Parkinsons sygdom, som p\u00e5virker basalganglierne snarere end den neuromuskul\u00e6re overgang."
+        },
+        {
+          "text": "Tab af myelin omkring de store motoriske aksoner",
+          "isCorrect": false,
+          "rationale": "Dette ses ved multipel sklerose (MS), mens Myasthenia gravis specifikt rammer selve synapsen ved musklen."
+        }
+      ],
+      "hint": "Problemet ligger specifikt i overgangen mellem nerve og muskel, og involverer immunforsvaret."
+    },
+    {
+      "question": "PATS (Posttraumatisk stresslidelse) behandles i stigende grad med Virtual Reality (VR) eksponeringsterapi. Hvad er det prim\u00e6re form\u00e5l med denne metode?",
+      "answerOptions": [
+        {
+          "text": "At lade patienten genopleve traumer i et kontrolleret milj\u00f8 for at skabe emotionel ekstinktion",
+          "isCorrect": true,
+          "rationale": "Ved gradvist at eksponere patienten for traumatiske stimuli i et sikkert virtuelt milj\u00f8 kan de udvikle mestringsstrategier og sv\u00e6kke den emotionelle respons."
+        },
+        {
+          "text": "At distrahere hjernen fra traumatiske minder ved at skabe en ny, behagelig virkelighed",
+          "isCorrect": false,
+          "rationale": "VR-terapi i PTSD fokuserer p\u00e5 at konfrontere frem for at undg\u00e5 eller distrahere fra de sv\u00e6re minder."
+        },
+        {
+          "text": "At genoptr\u00e6ne motoriske f\u00e6rdigheder efter en traumatisk hjerneskade",
+          "isCorrect": false,
+          "rationale": "Selvom VR kan bruges til genoptr\u00e6ning, fokuserer PTSD-specifik VR-behandling p\u00e5 de psykologiske og emotionelle aspekter af traumet."
+        },
+        {
+          "text": "At blokere for dannelsen af nye traumatiske minder via sensorisk overbelastning",
+          "isCorrect": false,
+          "rationale": "M\u00e5let er ikke at blokere hukommelsen, men at \u00e6ndre personens reaktion p\u00e5 de eksisterende minder."
+        }
+      ],
+      "hint": "T\u00e6nk p\u00e5 princippet om at 'v\u00e6nne sig til' noget skr\u00e6mmende under kontrollerede forhold."
+    },
+    {
+      "question": "Hvilken anatomisk abnormalitet er fundet i hippocampus hos nogle personer med skizofreni, hvilket tyder p\u00e5 en forstyrrelse i hjernens tidlige udvikling?",
+      "answerOptions": [
+        {
+          "text": "Pyramidale neuroner ligger uorganiseret i stedet for i parallelle lag",
+          "isCorrect": true,
+          "rationale": "Unders\u00f8gelser har vist, at den normale strukturerede organisering af cellerne i hippocampus er kaotisk hos skizofrene patienter."
+        },
+        {
+          "text": "Et ekstremt h\u00f8jt antal af dopaminproducerende celler direkte i hippocampus",
+          "isCorrect": false,
+          "rationale": "Dopamin-hypotesen fokuserer p\u00e5 synaptisk aktivitet og receptorer, is\u00e6r i de mesolimbiske baner, snarere end neuronantal i hippocampus."
+        },
+        {
+          "text": "Komplet frav\u00e6r af myelin i de temporale kortikale regioner",
+          "isCorrect": false,
+          "rationale": "Skizofreni er associeret med \u00e6ndringer i hvid substans, men ikke et komplet frav\u00e6r, hvilket ville svare til en sv\u00e6r demyeliniserende sygdom."
+        },
+        {
+          "text": "Overdreven dannelse af Lewy-legemer i de pyramidale cellelag",
+          "isCorrect": false,
+          "rationale": "Lewy-legemer er karakteristiske for Parkinsons sygdom og visse demensformer, ikke skizofreni."
+        }
+      ],
+      "hint": "Det handler om, hvordan cellerne er orienteret i forhold til hinanden."
+    },
+    {
+      "question": "I forbindelse med Parkinsons sygdom skelnes der mellem positive og negative symptomer. Hvilket af f\u00f8lgende er et eksempel p\u00e5 et *negativt* symptom?",
+      "answerOptions": [
+        {
+          "text": "Hypokinesia (langsomme bev\u00e6gelser og manglende mimik)",
+          "isCorrect": true,
+          "rationale": "Negative symptomer refererer til frav\u00e6ret af normale adf\u00e6rdsm\u00f8nstre eller evner, s\u00e5som evnen til at bev\u00e6ge sig hurtigt eller udtrykke f\u00f8lelser i ansigtet."
+        },
+        {
+          "text": "Hvilerysten (tremor) i h\u00e6nderne",
+          "isCorrect": false,
+          "rationale": "Rysten er et positivt symptom, da det er en ekstra adf\u00e6rd, der normalt er h\u00e6mmet, men som her 'frigives'."
+        },
+        {
+          "text": "Muskul\u00e6r rigiditet (modstand mod passiv bev\u00e6gelse)",
+          "isCorrect": false,
+          "rationale": "Rigiditet betragtes som et positivt symptom, da det involverer en aktiv, men uhensigtsm\u00e6ssig muskelsp\u00e6nding."
+        },
+        {
+          "text": "Akathisia (indre uro og rastl\u00f8shed)",
+          "isCorrect": false,
+          "rationale": "Dette er et positivt symptom pr\u00e6get af ufrivillig eller tvangspr\u00e6get bev\u00e6gelse."
+        }
+      ],
+      "hint": "Husk at 'negativ' her betyder 'mangel p\u00e5 noget normalt'."
+    },
+    {
+      "question": "Prionsygdomme som Creutzfeldt-Jakob og BSE skyldes en fejlfoldning af proteiner. Hvad sker der rent strukturelt under denne proces?",
+      "answerOptions": [
+        {
+          "text": "Normale $\\alpha$-helixer \u00e6ndres til abnorme $\\beta$-foldeblade",
+          "isCorrect": true,
+          "rationale": "Prionproteinet skifter form til en struktur med mange $\\beta$-plader, hvilket g\u00f8r det modstandsdygtigt over for nedbrydning og f\u00e5r det til at klumpe sammen."
+        },
+        {
+          "text": "Proteinet mister sin evne til at binde jern i blodet",
+          "isCorrect": false,
+          "rationale": "Prioner er ikke involveret i jernmetabolisme; de p\u00e5virker neurofilamenter og celleoverlevelse i hjernen."
+        },
+        {
+          "text": "Antistoffer angriber proteinet og danner giftige komplekser",
+          "isCorrect": false,
+          "rationale": "Prionsygdomme skyldes selve proteinets form\u00e6ndring og ophobning, ikke et prim\u00e6rt angreb fra immunsystemet."
+        },
+        {
+          "text": "DNA-sekvensen i neuronet muterer ved hver celledeling",
+          "isCorrect": false,
+          "rationale": "Selvom nogle prionsygdomme er arvelige, skyldes selve sygdomsprocessen protein-til-protein smitte af form, ikke l\u00f8bende genetisk mutation."
+        }
+      ],
+      "hint": "Det handler om en geometrisk \u00e6ndring i proteinets sekund\u00e6re struktur."
+    },
+    {
+      "question": "Phenylketonuria (PKU) er en arvelig metabolisk lidelse. Hvordan kan den alvorlige hjerneskade, som sygdommen ellers medf\u00f8rer, forhindres?",
+      "answerOptions": [
+        {
+          "text": "Ved at f\u00f8lge en streng di\u00e6t med lavt indhold af phenylalanin fra f\u00f8dslen",
+          "isCorrect": true,
+          "rationale": "Da kroppen ikke kan nedbryde phenylalanin korrekt, akkumuleres det og bliver giftigt; l\u00f8sningen er at begr\u00e6nse indtaget gennem kosten."
+        },
+        {
+          "text": "Ved daglige indspr\u00f8jtninger af syntetisk dopamin og noradrenalin",
+          "isCorrect": false,
+          "rationale": "Selvom phenylalanin er en forl\u00f8ber for disse stoffer, l\u00f8ser tilf\u00f8rsel af dem ikke problemet med den toksiske ophobning af selve phenylalaninen."
+        },
+        {
+          "text": "Gennem genterapi der erstatter PAH-genet i leveren",
+          "isCorrect": false,
+          "rationale": "Selvom genterapi er et forskningsfelt, er den etablerede og effektive behandling i dag en di\u00e6trestriktion."
+        },
+        {
+          "text": "Ved at indtage store m\u00e6ngder af enzymet phenylalanin hydroxylase som kosttilskud",
+          "isCorrect": false,
+          "rationale": "Enzymer nedbrydes normalt i ford\u00f8jelsessystemet og n\u00e5r ikke frem til deres virkningssted i cellerne p\u00e5 denne m\u00e5de."
+        }
+      ],
+      "hint": "L\u00f8sningen findes i det, barnet spiser (eller ikke spiser)."
+    },
+    {
+      "question": "Ved et isk\u00e6misk slagtilf\u00e6lde d\u00f8r neuroner ikke kun af iltmangel, men ogs\u00e5 af en 'excitotoksisk' kaskade. Hvilken neurotransmitter spiller hovedrollen her?",
+      "answerOptions": [
+        {
+          "text": "Glutamat",
+          "isCorrect": true,
+          "rationale": "Massiv frigivelse af glutamat f\u00f8rer til overstimulering af receptorer og et fatalt indl\u00f8b af $Ca^{2+}$-ioner i cellerne."
+        },
+        {
+          "text": "GABA",
+          "isCorrect": false,
+          "rationale": "GABA er en h\u00e6mmende neurotransmitter, og \u00f8get GABA-aktivitet ville typisk beskytte mod overeksponering frem for at for\u00e5rsage celled\u00f8d."
+        },
+        {
+          "text": "Acetylcholin",
+          "isCorrect": false,
+          "rationale": "ACh er vigtig i det perifere nervesystem og kognition, men det er ikke den prim\u00e6re \u00e5rsag til den hurtige excitotoksiske kaskade ved slagtilf\u00e6lde."
+        },
+        {
+          "text": "Serotonin",
+          "isCorrect": false,
+          "rationale": "Serotonin er involveret i hum\u00f8rregulering, men spiller ikke en central rolle i de akutte ioniske \u00e6ndringer efter blodprop i hjernen."
+        }
+      ],
+      "hint": "Det er hjernens prim\u00e6re excitatoriske signalstof."
+    }
+  ]
+}

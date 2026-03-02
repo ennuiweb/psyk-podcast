@@ -1,0 +1,265 @@
+{
+  "title": "Auditory Quiz",
+  "questions": [
+    {
+      "question": "In the case of Tony described in the text, he is unable to recognize tunes like 'Happy Birthday' without lyrics and cannot sing in tune, yet he perceives the rising tone at the end of a question perfectly. What does this dissociation suggest about the processing of pitch?",
+      "answerOptions": [
+        {
+          "text": "The auditory system uses entirely different pathways for frequency and amplitude.",
+          "isCorrect": false,
+          "rationale": "Frequency and amplitude are basic physical properties of sound, but Tony's issue is specific to the musical application of pitch, not a failure to detect amplitude."
+        },
+        {
+          "text": "Musical pitch relationships are processed separately from nonmusical uses of pitch, such as prosody.",
+          "isCorrect": true,
+          "rationale": "Tony's ability to understand linguistic pitch (intonation) despite his amusia indicates that the brain handles musical and communicative pitch through distinct mechanisms."
+        },
+        {
+          "text": "Damage to the primary auditory cortex (A1) specifically eliminates the ability to hear harmonics.",
+          "isCorrect": false,
+          "rationale": "While A1 is involved in sound processing, Tony's specific cognitive profile suggests a more specialized deficit in musical pitch integration rather than a total loss of harmonic perception."
+        },
+        {
+          "text": "The temporal coding theory applies only to speech sounds, while place coding applies to music.",
+          "isCorrect": false,
+          "rationale": "Both coding theories are complementary mechanisms for frequency discrimination across different ranges, regardless of whether the sound is speech or music."
+        }
+      ],
+      "hint": "Consider the difference between a melody and the inflection of a spoken sentence."
+    },
+    {
+      "question": "When comparing the sound of a piano and a guitar playing the same middle A note ($440\\text{ Hz}$), they differ in their characteristic 'voice.' According to the text, what physical property accounts for this difference in timbre?",
+      "answerOptions": [
+        {
+          "text": "The fundamental frequency of the note produced by each instrument.",
+          "isCorrect": false,
+          "rationale": "By definition, if they are playing the same note, their fundamental frequency is identical at $440\\text{ Hz}$."
+        },
+        {
+          "text": "The relative intensities of the various harmonics accompanying the fundamental frequency.",
+          "isCorrect": true,
+          "rationale": "Timbre is determined by the specific blend and intensity of overtones or harmonics that occur alongside the primary frequency."
+        },
+        {
+          "text": "The absolute amplitude of the sound wave measured in decibels ($dB$).",
+          "isCorrect": false,
+          "rationale": "Amplitude determines the loudness of the sound, but does not dictate the qualitative difference between two different instruments."
+        },
+        {
+          "text": "The speed at which the sound waves travel from the instrument to the ear canal.",
+          "isCorrect": false,
+          "rationale": "The speed of sound is a property of the medium (air) and does not change based on the musical instrument."
+        }
+      ],
+      "hint": "Think about the integer multiples of the base frequency."
+    },
+    {
+      "question": "The middle ear employs a reflex involving the tensor tympani and stapedius muscles. What is a critical functional aspect of this reflex according to the source material?",
+      "answerOptions": [
+        {
+          "text": "It activates instantly with $0\\text{ ms}$ latency to prevent any loud sound from reaching the cochlea.",
+          "isCorrect": false,
+          "rationale": "The reflex has a latency of about $200\\text{ milliseconds}$, meaning it cannot protect against sudden, impulsive loud noises."
+        },
+        {
+          "text": "It primarily serves to amplify low-intensity sounds by loosening the chain of ossicles.",
+          "isCorrect": false,
+          "rationale": "The reflex stiffens the ossicles specifically to reduce the transmission of energy, thereby attenuating loud sounds."
+        },
+        {
+          "text": "It activates just before an individual produces self-made sounds like speech or coughing.",
+          "isCorrect": true,
+          "rationale": "By contracting before we speak, these muscles protect our own hearing and prevent our voices from being perceived as distractingly loud."
+        },
+        {
+          "text": "It is controlled by the primary auditory cortex to filter out background noise.",
+          "isCorrect": false,
+          "rationale": "This is a reflex arc managed within the brainstem, not a high-level cortical filtering process."
+        }
+      ],
+      "hint": "Think about why you don't find the sound of your own voice deafeningly loud."
+    },
+    {
+      "question": "The basilar membrane is described as having a 'tapered' structure. How does this physical gradient affect the displacement caused by different sound frequencies?",
+      "answerOptions": [
+        {
+          "text": "High frequencies produce a larger response at the apex where the membrane is wide and floppy.",
+          "isCorrect": false,
+          "rationale": "High frequencies actually affect the base, where the membrane is narrow and stiff; the floppy apex responds to low frequencies."
+        },
+        {
+          "text": "Low frequencies displace the membrane most effectively at the base, near the oval window.",
+          "isCorrect": false,
+          "rationale": "The base is too stiff to be moved significantly by the long, low-energy waves of low-frequency sounds."
+        },
+        {
+          "text": "The membrane is five times wider at the apex than the base, allowing low frequencies to resonate there.",
+          "isCorrect": true,
+          "rationale": "The increased width and decreased stiffness at the apex make it the ideal site for low-frequency sound transduction."
+        },
+        {
+          "text": "The entire membrane vibrates uniformly to all frequencies, and the brain performs a Fourier analysis afterward.",
+          "isCorrect": false,
+          "rationale": "The membrane itself acts as a mechanical frequency analyzer, with different locations responding to specific frequencies."
+        }
+      ],
+      "hint": "Contrast the stiffness and width of the base versus the apex."
+    },
+    {
+      "question": "Which statement accurately describes the physiological difference between Inner Hair Cells ($IHCs$) and Outer Hair Cells ($OHCs$) in the human ear?",
+      "answerOptions": [
+        {
+          "text": "$OHCs$ comprise $90\\text{-}95\\%$ of the afferent auditory fibers leading to the brain.",
+          "isCorrect": false,
+          "rationale": "It is actually the $IHCs$ that provide the vast majority of the afferent input used for sound perception."
+        },
+        {
+          "text": "$IHCs$ use the motor protein prestin to change their length and amplify sound.",
+          "isCorrect": false,
+          "rationale": "Prestin is specifically found in $OHCs$, enabling them to act as mechanical amplifiers."
+        },
+        {
+          "text": "$OHCs$ function as mechanical tuners that can change length to modify the stiffness of the basilar membrane.",
+          "isCorrect": true,
+          "rationale": "Through electromechanical action, $OHCs$ sharpen frequency tuning and amplify the movement of the basilar membrane."
+        },
+        {
+          "text": "$IHCs$ are arranged in three rows, while $OHCs$ consist of a single row.",
+          "isCorrect": false,
+          "rationale": "The arrangement is the opposite: a single row of $IHCs$ and three rows of $OHCs$."
+        }
+      ],
+      "hint": "One type is for 'hearing' and the other is for 'tuning' or 'amplifying'."
+    },
+    {
+      "question": "What is the critical mechanical step that leads to the depolarization of an auditory hair cell?",
+      "answerOptions": [
+        {
+          "text": "The movement of the tectorial membrane causes an influx of $Na^{+}$ ions through voltage-gated channels.",
+          "isCorrect": false,
+          "rationale": "The initial depolarization is driven by $K^{+}$ and $Ca^{2+}$, and it involves mechanically-gated, not voltage-gated, channels on the stereocilia."
+        },
+        {
+          "text": "The bending of stereocilia increases tension on tip links, which physically 'pop' open ion channels.",
+          "isCorrect": true,
+          "rationale": "Tip links act as tiny spring-loaded cables that mechanically pull open channels when the cilia sway."
+        },
+        {
+          "text": "The release of glutamate from the tectorial membrane binds to receptors on the tips of the cilia.",
+          "isCorrect": false,
+          "rationale": "Glutamate is the neurotransmitter released at the base of the hair cell to the afferent nerve, not a trigger for the cilia themselves."
+        },
+        {
+          "text": "The ossicles vibrate the round window, creating a pressure gradient that opens portholes in the hair cell body.",
+          "isCorrect": false,
+          "rationale": "Vibrations enter through the oval window; the round window serves as a pressure release, and transduction occurs specifically at the stereocilia."
+        }
+      ],
+      "hint": "Focus on the threadlike structures connecting the cilia."
+    },
+    {
+      "question": "According to the ascending auditory pathway, what is the first level at which binaural (two-ear) effects are processed in the brain?",
+      "answerOptions": [
+        {
+          "text": "Dorsal and Ventral Cochlear Nuclei",
+          "isCorrect": false,
+          "rationale": "The cochlear nuclei receive unilateral input from the auditory nerve on the same side of the head."
+        },
+        {
+          "text": "Superior Olivary Nuclei",
+          "isCorrect": true,
+          "rationale": "The superior olive is the first site to receive bilateral projections from both the left and right cochlear nuclei."
+        },
+        {
+          "text": "Inferior Colliculi",
+          "isCorrect": false,
+          "rationale": "While the inferior colliculi process binaural info, they are higher up the chain than the superior olivary nuclei."
+        },
+        {
+          "text": "Medial Geniculate Nuclei",
+          "isCorrect": false,
+          "rationale": "These are thalamic relay stations that receive already-integrated binaural information from lower brainstem structures."
+        }
+      ],
+      "hint": "This structure is located in the brainstem and compares inputs from both ears."
+    },
+    {
+      "question": "The text discusses two theories of pitch perception: place coding and temporal coding. Which of the following is a limitation of temporal coding?",
+      "answerOptions": [
+        {
+          "text": "It cannot account for frequencies above approximately $4000\\text{ Hz}$ because of neuronal firing rate limits.",
+          "isCorrect": true,
+          "rationale": "Individual neurons cannot fire fast enough to phase-lock to high-frequency cycles, even with the volley principle helping."
+        },
+        {
+          "text": "It only functions at the base of the cochlea where the basilar membrane is stiff.",
+          "isCorrect": false,
+          "rationale": "Place coding is more prominent at the base for high frequencies, whereas temporal coding is most evident at the lower end of the hearing range."
+        },
+        {
+          "text": "It requires the brain to analyze a spatial map of activated receptors.",
+          "isCorrect": false,
+          "rationale": "This description refers to place coding theory, not temporal coding."
+        },
+        {
+          "text": "It is unable to differentiate between speech sounds and pure tones.",
+          "isCorrect": false,
+          "rationale": "Both coding mechanisms contribute to the perception of any auditory stimulus, regardless of its source."
+        }
+      ],
+      "hint": "Consider the maximum firing rate of action potentials in a single cell."
+    },
+    {
+      "question": "Interaural intensity differences ($IIDs$) are a primary cue for sound localization. Why are $IIDs$ less effective for low-frequency sounds?",
+      "answerOptions": [
+        {
+          "text": "Low-frequency sounds are processed exclusively by the temporal coding mechanism.",
+          "isCorrect": false,
+          "rationale": "While true that low frequencies use temporal coding, this doesn't explain the physical physics of the sound shadow."
+        },
+        {
+          "text": "The head does not cast a significant sound shadow for sounds with long wavelengths.",
+          "isCorrect": true,
+          "rationale": "Longer waves associated with low frequencies can bend around the head, reaching both ears with nearly equal intensity."
+        },
+        {
+          "text": "Low-frequency sounds travel slower than high-frequency sounds, eliminating intensity gaps.",
+          "isCorrect": false,
+          "rationale": "All frequencies of sound travel at the same speed in a given medium."
+        },
+        {
+          "text": "The superior olivary nucleus is specialized only for interaural temporal differences ($ITDs$).",
+          "isCorrect": false,
+          "rationale": "The superior olive processes both types of cues ($IIDs$ and $ITDs$)."
+        }
+      ],
+      "hint": "Think about the size of the wavelength relative to the size of the human head."
+    },
+    {
+      "question": "What curious phenomenon is a direct consequence of the mechanical manipulation of the basilar membrane by the Outer Hair Cells ($OHCs$)?",
+      "answerOptions": [
+        {
+          "text": "The perception of 'phantom' sounds known as tinnitus.",
+          "isCorrect": false,
+          "rationale": "While related to hearing, tinnitus is not the specific mechanical 'push back' phenomenon described in the text."
+        },
+        {
+          "text": "The production of otoacoustic emissions by the cochlea.",
+          "isCorrect": true,
+          "rationale": "Because $OHCs$ push on the membranes, the cochlea actually generates sounds that can be detected in the ear canal."
+        },
+        {
+          "text": "The complete inhibition of the vestibulocochlear nerve during loud sounds.",
+          "isCorrect": false,
+          "rationale": "The reflex reduces energy transmission but does not completely shut down the nerve."
+        },
+        {
+          "text": "The ability to localize sounds in the vertical plane (elevation).",
+          "isCorrect": false,
+          "rationale": "Vertical localization is primarily a function of the external ear's (pinna) shape, not $OHC$ motility."
+        }
+      ],
+      "hint": "The ear doesn't just receive sound; in this case, it creates it."
+    }
+  ]
+}

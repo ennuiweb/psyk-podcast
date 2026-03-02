@@ -1,0 +1,265 @@
+{
+  "title": "Neuroscience Quiz",
+  "questions": [
+    {
+      "question": "In the study of behavioral neuroscience, which research perspective is specifically concerned with the process of ontogeny?",
+      "answerOptions": [
+        {
+          "text": "Observing how a particular behavior changes during the course of an individual's lifetime.",
+          "isCorrect": true,
+          "rationale": "Ontogeny refers to the developmental changes an individual undergoes from growing up to growing old."
+        },
+        {
+          "text": "Comparing the reproductive behaviors of different species to identify shared ancestry.",
+          "isCorrect": false,
+          "rationale": "This describes the evolutionary perspective, which focuses on differences and similarities across species rather than individual lifespans."
+        },
+        {
+          "text": "Analyzing the immediate physical interactions and neural circuits that control a specific act.",
+          "isCorrect": false,
+          "rationale": "This describes the study of biological mechanisms or 'proximate' questions, rather than developmental changes over time."
+        },
+        {
+          "text": "Investigating how specialized patterns of behavior contribute to the success of mating and care of young.",
+          "isCorrect": false,
+          "rationale": "This represents a functional description of behavior, focusing on the results and purposes of an action."
+        }
+      ],
+      "hint": "Consider the Greek-derived term that describes the origin and development of an individual organism."
+    },
+    {
+      "question": "Which of the following scenarios best illustrates a 'behavioral intervention' approach in neuroscience research?",
+      "answerOptions": [
+        {
+          "text": "Measuring the change in electrical activity in the brain after exposing a subject to a visual stimulus.",
+          "isCorrect": true,
+          "rationale": "In behavioral intervention, the behavior or environment is the independent variable, and the resulting change in the body is the dependent variable."
+        },
+        {
+          "text": "Administering a hormone to a group of animals to observe changes in their mating strength.",
+          "isCorrect": false,
+          "rationale": "This is a somatic intervention, where a body structure or function is manipulated to observe effects on behavior."
+        },
+        {
+          "text": "Observing the correlation between the size of the cerebral ventricles and the severity of schizophrenic symptoms.",
+          "isCorrect": false,
+          "rationale": "This is a correlational study, which identifies how two measures vary together without manipulating either."
+        },
+        {
+          "text": "Electrically stimulating a specific brain region to see if it induces laughter in a patient.",
+          "isCorrect": false,
+          "rationale": "Manipulation of the brain's physical state to measure a behavioral outcome is a hallmark of somatic intervention."
+        }
+      ],
+      "hint": "Identify the approach where the independent variable is an experience or an environmental change."
+    },
+    {
+      "question": "Ren\u00e9 Descartes proposed that the mind and body interact in the pineal gland. Which of the following was a primary reason for his selection of this specific structure?",
+      "answerOptions": [
+        {
+          "text": "The pineal gland is a single, unitary structure unlike many other brain regions that are paired symmetrically.",
+          "isCorrect": true,
+          "rationale": "Descartes believed that because consciousness is single, its point of contact with the body must also be a single structure."
+        },
+        {
+          "text": "The pineal gland was known to be the primary site for the production of 'animal spirits'.",
+          "isCorrect": false,
+          "rationale": "While he believed in animal spirits, his reason for choosing the pineal gland specifically related to its symmetry and perceived uniqueness to humans."
+        },
+        {
+          "text": "He correctly identified the pineal gland as the center of the human endocrine system.",
+          "isCorrect": false,
+          "rationale": "Descartes lacked modern knowledge of the endocrine system and incorrectly believed the gland was absent in non-human animals."
+        },
+        {
+          "text": "The pineal gland is the only part of the brain that does not physically change in response to experience.",
+          "isCorrect": false,
+          "rationale": "Descartes' reasoning was philosophical and anatomical regarding symmetry, not based on concepts of neuroplasticity."
+        }
+      ],
+      "hint": "Think about Descartes' observations regarding the symmetry of brain structures versus the nature of consciousness."
+    },
+    {
+      "question": "Based on modern brain-imaging studies, which factor shows the strongest correlation with IQ scores in humans?",
+      "answerOptions": [
+        {
+          "text": "The extent of connectivity between various brain regions.",
+          "isCorrect": true,
+          "rationale": "Studies cited in the text report a correlation of approximately $+0.50$ between brain connectivity and IQ scores."
+        },
+        {
+          "text": "Total brain volume corrected for body size.",
+          "isCorrect": false,
+          "rationale": "While significant, the correlation for brain volume is lower, typically around $+0.38$."
+        },
+        {
+          "text": "The thickness of the inner layers of the cerebral cortex.",
+          "isCorrect": false,
+          "rationale": "The text notes that thickening of the outer layer, particularly in the front, is associated with high IQ in children."
+        },
+        {
+          "text": "The absolute volume of the occipital lobes.",
+          "isCorrect": false,
+          "rationale": "IQ correlates more specifically with the volume of the front of the brain rather than the back."
+        }
+      ],
+      "hint": "Consider the relationship between how different parts of the brain communicate and overall intelligence."
+    },
+    {
+      "question": "What is the primary mechanism by which caffeine produces its characteristic arousal effects?",
+      "answerOptions": [
+        {
+          "text": "It blocks the autoreceptor effects of adenosine, thereby increasing the release of catecholamines.",
+          "isCorrect": true,
+          "rationale": "Adenosine normally inhibits transmitter release; by blocking its receptors, caffeine prevents this inhibition."
+        },
+        {
+          "text": "It acts as a direct agonist at dopaminergic $D_{2}$ receptors in the mesolimbocortical pathway.",
+          "isCorrect": false,
+          "rationale": "Caffeine's primary action is on adenosine receptors, which then indirectly affects other neurotransmitter systems."
+        },
+        {
+          "text": "It inhibits the enzyme monoamine oxidase (MAO), slowing the breakdown of serotonin.",
+          "isCorrect": false,
+          "rationale": "MAO inhibitors are a different class of drugs; caffeine does not primarily function through enzymatic inhibition of monoamines."
+        },
+        {
+          "text": "It triggers the rapid up-regulation of nicotinic acetylcholine receptors.",
+          "isCorrect": false,
+          "rationale": "Up-regulation is typically a slow compensatory response to antagonists, whereas caffeine's arousal is an immediate effect of blocking adenosine."
+        }
+      ],
+      "hint": "Think about how caffeine interferes with a naturally occurring neuromodulator that usually inhibits neural activity."
+    },
+    {
+      "question": "How do 'second-generation' antipsychotics differ from 'first-generation' (typical) antipsychotics like chlorpromazine?",
+      "answerOptions": [
+        {
+          "text": "They block certain serotonin receptors in addition to their effects on dopamine receptors.",
+          "isCorrect": true,
+          "rationale": "Second-generation antipsychotics have a broader range of action, often targeting serotonin receptors to help with negative symptoms."
+        },
+        {
+          "text": "They act exclusively as selective agonists of dopamine $D_{2}$ receptors.",
+          "isCorrect": false,
+          "rationale": "Antipsychotics are generally antagonists, and first-generation drugs are the ones primarily selective for $D_{2}$ receptors."
+        },
+        {
+          "text": "They are specifically designed to ignore the mesolimbocortical pathway to reduce side effects.",
+          "isCorrect": false,
+          "rationale": "The dopaminergic pathways are central targets for antipsychotics; second-generation drugs simply add nondopaminergic actions."
+        },
+        {
+          "text": "They function primarily by blocking the reuptake of glutamate in the prefrontal cortex.",
+          "isCorrect": false,
+          "rationale": "While glutamate is a target for emerging 'third-generation' research, second-generation drugs focus on dopamine and serotonin."
+        }
+      ],
+      "hint": "Consider the additional neurotransmitter system targeted by newer medications to address symptoms like social withdrawal."
+    },
+    {
+      "question": "The 'therapeutic index' of a drug is determined by comparing which two measures on a dose-response curve?",
+      "answerOptions": [
+        {
+          "text": "The $ED_{50}$ (effective dose) and the $LD_{50}$ (lethal dose).",
+          "isCorrect": true,
+          "rationale": "The therapeutic index is the gap between the dose that produces a half-maximal effect and the dose that is lethal to $50\\%$ of subjects."
+        },
+        {
+          "text": "The $TD_{50}$ (toxic dose) and the bioavailability of the drug.",
+          "isCorrect": false,
+          "rationale": "Bioavailability refers to the amount of drug that reaches circulation, not a point on the dose-response curve used for safety margins."
+        },
+        {
+          "text": "The affinity of the drug for its receptor and its maximum efficacy.",
+          "isCorrect": false,
+          "rationale": "Affinity and efficacy describe how a drug binds and activates receptors, but they do not define the therapeutic safety range."
+        },
+        {
+          "text": "The speed of absorption via ingestion versus the speed of central injection.",
+          "isCorrect": false,
+          "rationale": "Routes of administration affect the timing of effects but are not used to calculate the therapeutic index."
+        }
+      ],
+      "hint": "Think about the statistical values that represent the beneficial versus the fatal doses of a medication."
+    },
+    {
+      "question": "Which brain region, tucked deep within the folds of the frontal cortex, has been identified as a critical mediator of drug craving and the urge to smoke?",
+      "answerOptions": [
+        {
+          "text": "The insula.",
+          "isCorrect": true,
+          "rationale": "Damage to the insula is reported to lead to a loss of the urge to smoke and is associated with reduced volumes in addicted individuals."
+        },
+        {
+          "text": "The periaqueductal gray.",
+          "isCorrect": false,
+          "rationale": "The periaqueductal gray is primarily associated with pain perception and is a rich site for opioid receptors."
+        },
+        {
+          "text": "The nucleus accumbens.",
+          "isCorrect": false,
+          "rationale": "While the nucleus accumbens is part of the dopaminergic reward pathway, the text specifically highlights the insula's role in craving and subjective feelings."
+        },
+        {
+          "text": "The substantia nigra.",
+          "isCorrect": false,
+          "rationale": "The substantia nigra is part of the mesostriatal dopaminergic pathway involved in motor control, not specifically defined by the text as the 'island' of craving."
+        }
+      ],
+      "hint": "The name of this region is Latin for 'island'."
+    },
+    {
+      "question": "In the context of substance use disorders, what is the theoretical goal of a cocaine vaccination strategy?",
+      "answerOptions": [
+        {
+          "text": "To stimulate the immune system to create antibodies that bind to cocaine molecules, preventing them from reaching the brain.",
+          "isCorrect": true,
+          "rationale": "The vaccine causes antibodies to form large conglomerates with the drug that are too large to pass the blood-brain barrier."
+        },
+        {
+          "text": "To induce a permanent down-regulation of dopamine receptors to reduce the drug's rewarding potential.",
+          "isCorrect": false,
+          "rationale": "Down-regulation is a form of functional tolerance; the vaccine targets the drug itself in the bloodstream, not the receptors."
+        },
+        {
+          "text": "To increase the rate of metabolic biotransformation in the liver to clear the drug more quickly.",
+          "isCorrect": false,
+          "rationale": "Metabolic tolerance involves enzymes; vaccination involves the immune system's antibodies."
+        },
+        {
+          "text": "To provide a synthetic antagonist that competitively blocks cocaine from binding to reuptake transporters.",
+          "isCorrect": false,
+          "rationale": "A vaccine is not a competitive antagonist; it acts on the drug before it can ever interact with its neural targets."
+        }
+      ],
+      "hint": "Focus on how the immune system's response can physically block a drug's access to the central nervous system."
+    },
+    {
+      "question": "Which of the following is a characteristic of 'functional tolerance' resulting from repeated drug exposure?",
+      "answerOptions": [
+        {
+          "text": "A compensatory change in the number of available receptors at the synapse, such as up- or down-regulation.",
+          "isCorrect": true,
+          "rationale": "Functional tolerance involves the brain adjusting its sensitivity by changing receptor density in response to drug presence."
+        },
+        {
+          "text": "An increase in the efficiency of the body's metabolic machinery at clearing the drug from the system.",
+          "isCorrect": false,
+          "rationale": "This describes metabolic tolerance, which involves enzymes rather than synaptic receptor changes."
+        },
+        {
+          "text": "The development of a 'dual dependence' where effects only occur when two drugs are taken simultaneously.",
+          "isCorrect": false,
+          "rationale": "Dual dependence refers to the interaction of two drugs (like alcohol and cocaine) for emergent effects, not a change in receptor sensitivity."
+        },
+        {
+          "text": "The process of sensitization where the body shows an enhanced response to the same dose of a drug.",
+          "isCorrect": false,
+          "rationale": "Sensitization is the opposite of tolerance; it is an increased responsiveness rather than a decreased one."
+        }
+      ],
+      "hint": "Think about how a neuron might 'mold' its own surface to maintain balance when a drug is constantly present."
+    }
+  ]
+}

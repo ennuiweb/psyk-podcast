@@ -1,0 +1,265 @@
+{
+  "title": "Sensation Quiz",
+  "questions": [
+    {
+      "question": "A researcher applies mechanical pressure to a subject's eye, causing the subject to report seeing a flash of light known as a phosphene. This phenomenon demonstrates that the brain prioritizes which of the following principles?",
+      "answerOptions": [
+        {
+          "text": "Labeled lines",
+          "isCorrect": true,
+          "rationale": "The brain interprets any activity on a specific nerve tract according to its predetermined sensory modality, regardless of how that activity was initiated."
+        },
+        {
+          "text": "Adequate stimulus",
+          "isCorrect": false,
+          "rationale": "While related, this specific principle refers to the type of energy a receptor is best adapted to detect, rather than how the brain interprets the resulting signal."
+        },
+        {
+          "text": "Sensory transduction",
+          "isCorrect": false,
+          "rationale": "This refers to the conversion of energy into electrical signals, but does not explain why mechanical pressure is perceived as light."
+        },
+        {
+          "text": "Range fractionation",
+          "isCorrect": false,
+          "rationale": "This concept explains how groups of neurons with different thresholds encode intensity, not how the brain distinguishes between different modalities like touch and sight."
+        }
+      ],
+      "hint": "Consider why the brain perceives 'vision' even when the stimulus isn't light."
+    },
+    {
+      "question": "In the Pacinian corpuscle, what is the immediate consequence of the physical deformation of the axonal membrane?",
+      "answer_options": [
+        {
+          "text": "The opening of mechanically gated ion channels",
+          "isCorrect": true,
+          "rationale": "Physical stretching of the membrane directly pulls open channels that allow positively charged ions to enter, initiating the generator potential."
+        },
+        {
+          "text": "The immediate firing of an action potential",
+          "isCorrect": false,
+          "rationale": "An action potential only occurs after a graded receptor potential reaches a specific threshold amplitude."
+        },
+        {
+          "text": "The release of neurotransmitters into the synapse",
+          "isCorrect": false,
+          "rationale": "Neurotransmitter release is a downstream event that typically follows the arrival of an action potential at the axon terminal, not the initial stimulus detection."
+        },
+        {
+          "text": "The activation of a second messenger system",
+          "isCorrect": false,
+          "rationale": "Mechanical receptors like the Pacinian corpuscle rely on direct ion channel gating rather than slower metabolic pathways."
+        }
+      ],
+      "hint": "Focus on the first electrical change occurring at the site of stimulation."
+    },
+    {
+      "question": "If a single sensory neuron has a maximum firing rate of approximately $1200$ action potentials per second, how does the nervous system discriminate intensities that exceed the capacity of that individual cell?",
+      "answerOptions": [
+        {
+          "text": "Range fractionation",
+          "isCorrect": true,
+          "rationale": "Different neurons with varying thresholds are recruited as intensity increases, allowing the total population to encode a much wider range of values."
+        },
+        {
+          "text": "Temporal summation",
+          "isCorrect": false,
+          "rationale": "This refers to the additive effect of multiple potentials over time in a single neuron, but it cannot bypass the absolute refractory period that limits firing rates."
+        },
+        {
+          "text": "Sensory adaptation",
+          "isCorrect": false,
+          "rationale": "Adaptation actually reduces the firing rate in response to a constant stimulus, which would hinder rather than help encode higher intensities."
+        },
+        {
+          "text": "Top-down processing",
+          "isCorrect": false,
+          "rationale": "While this can modulate perception, the basic biological encoding of intensity range relies on peripheral recruitment and specialized thresholds."
+        }
+      ],
+      "hint": "Think about how a 'team' of cells might handle a task too big for one individual."
+    },
+    {
+      "question": "Which type of receptor would be most critical for a person to maintain a constant awareness of the position of their limbs while standing still?",
+      "answerOptions": [
+        {
+          "text": "Tonic receptors",
+          "isCorrect": true,
+          "rationale": "These receptors show little adaptation and continue to fire as long as a stimulus is maintained, providing constant information to the brain."
+        },
+        {
+          "text": "Phasic receptors",
+          "isCorrect": false,
+          "rationale": "These receptors adapt rapidly and are better suited for detecting changes in stimuli rather than maintained states."
+        },
+        {
+          "text": "Pacinian corpuscles",
+          "isCorrect": false,
+          "rationale": "These are highly phasic vibration detectors and would stop firing once the limb becomes stationary."
+        },
+        {
+          "text": "Meissner\u2019s corpuscles",
+          "isCorrect": false,
+          "rationale": "These are specialized for light touch and typically display phasic characteristics rather than sustained signaling of limb position."
+        }
+      ],
+      "hint": "Identify the receptor type that resists 'tuning out' a constant stimulus."
+    },
+    {
+      "question": "In the context of sensory suppression, how does the brain typically execute 'top-down' control to minimize unimportant information?",
+      "answerOptions": [
+        {
+          "text": "Higher brain centers send inhibitory signals to the thalamus or spinal cord",
+          "isCorrect": true,
+          "rationale": "Cortical regions can modulate lower relay stations to emphasize or suppress specific incoming sensory streams."
+        },
+        {
+          "text": "The receptor cells physically change their shape to become less sensitive",
+          "isCorrect": false,
+          "rationale": "Physical changes like this characterize peripheral adaptation, not top-down neural control from the brain."
+        },
+        {
+          "text": "The brain increases the refractory period of all peripheral sensory nerves",
+          "isCorrect": false,
+          "rationale": "The refractory period is a fundamental property of the axon's ion channels and is not dynamically adjusted by the brain to suppress specific stimuli."
+        },
+        {
+          "text": "Eyelids or middle-ear muscles are reflexively bypassed",
+          "isCorrect": false,
+          "rationale": "These are examples of accessory structures providing suppression, rather than direct top-down neural inhibition of the sensory pathway."
+        }
+      ],
+      "hint": "Consider the hierarchy of the nervous system and how higher levels influence lower levels."
+    },
+    {
+      "question": "An electrophysiologist is recording from a neuron in the somatosensory cortex. Touching a specific $1$ cm patch of skin on the hand increases the neuron's firing rate, but touching the area immediately surrounding that patch decreases the firing rate. This defines the neuron's:",
+      "answerOptions": [
+        {
+          "text": "Receptive field",
+          "isCorrect": true,
+          "rationale": "This term describes the specific region of space and its internal organization (like excitatory centers and inhibitory surrounds) that affects a cell's activity."
+        },
+        {
+          "text": "Sensory modality",
+          "isCorrect": false,
+          "rationale": "Modality refers to the type of sense (e.g., touch vs. hearing), not the spatial area that triggers a response."
+        },
+        {
+          "text": "Threshold of excitation",
+          "isCorrect": false,
+          "rationale": "The threshold is the minimum intensity needed for a response, whereas this scenario describes the spatial mapping and antagonistic organization of the input."
+        },
+        {
+          "text": "Topographic homunculus",
+          "isCorrect": false,
+          "rationale": "While the homunculus represents the overall map, the specific antagonistic area affecting a single neuron is its receptive field."
+        }
+      ],
+      "hint": "Think of the term for the 'territory' a single neuron monitors."
+    },
+    {
+      "question": "Why is the cortical representation of the human hand in the primary somatosensory cortex ($S1$) significantly larger than the representation of the human back?",
+      "answerOptions": [
+        {
+          "text": "The hand has a higher density of sensory receptors",
+          "isCorrect": true,
+          "rationale": "Cortical space is allocated based on the complexity and density of sensory innervation rather than the physical size of the body part."
+        },
+        {
+          "text": "The back consists mostly of phasic receptors which require less processing",
+          "isCorrect": false,
+          "rationale": "While receptor types vary, the primary driver for cortical mapping size is the number of independent 'labeled lines' coming from the area."
+        },
+        {
+          "text": "The back uses infrasound receptors which bypass the $S1$ region",
+          "isCorrect": false,
+          "rationale": "Infrasound relates to hearing, not touch, and all touch information from the body surface is processed through somatosensory pathways."
+        },
+        {
+          "text": "The hand is closer to the brain in terms of neural pathway length",
+          "isCorrect": false,
+          "rationale": "Pathway length affects speed of transmission (latency) but does not dictate the volume of cortical tissue dedicated to a body part."
+        }
+      ],
+      "hint": "Consider the relationship between sensory 'sharpness' and the number of neurons required."
+    },
+    {
+      "question": "Which brain region is most likely activated when a person is specifically 'expecting' a stimulus to appear in a certain location, reflecting the process of attention?",
+      "answerOptions": [
+        {
+          "text": "Posterior parietal lobe",
+          "isCorrect": true,
+          "rationale": "This area plays a specialized role in selecting and focusing on specific stimuli for enhanced processing, and lesions here can lead to neglect of the opposite side."
+        },
+        {
+          "text": "Postcentral gyrus",
+          "isCorrect": false,
+          "rationale": "This is the primary somatosensory cortex, which maps the body surface but is not primarily responsible for the cognitive 'focus' or 'expectation' of a stimulus."
+        },
+        {
+          "text": "Primary auditory cortex",
+          "isCorrect": false,
+          "rationale": "While involved in hearing, it does not serve as the general attentional control center for expecting stimuli across different modalities."
+        },
+        {
+          "text": "Dorsal root ganglion",
+          "isCorrect": false,
+          "rationale": "This is a peripheral structure containing cell bodies of sensory neurons, far removed from the high-level cognitive processes of attention."
+        }
+      ],
+      "hint": "Look for a region involved in spatial awareness and cognitive selection."
+    },
+    {
+      "question": "In the case of Ashlyn B., who was born with a congenital insensitivity to pain, she still possesses the ability to retrieve a spoon from boiling water reflexively. What does this suggest about her nervous system?",
+      "answerOptions": [
+        {
+          "text": "Her mechanical touch pathways are intact even if her pain pathways are not",
+          "isCorrect": true,
+          "rationale": "Because touch and pain use separate 'labeled lines,' she can respond to mechanical or thermal stimuli reflexively without the brain interpreting the 'pain' modality."
+        },
+        {
+          "text": "She has an overactive secondary somatosensory cortex ($S2$)",
+          "isCorrect": false,
+          "rationale": "Overactivity in $S2$ would likely increase sensitivity rather than abolish pain perception."
+        },
+        {
+          "text": "Her receptors have reached a state of permanent adaptation",
+          "isCorrect": false,
+          "rationale": "Adaptation is a temporary process of declining response; her condition is a congenital lack of perception, not a result of maintained stimulation."
+        },
+        {
+          "text": "Her brain lacks a thalamus",
+          "isCorrect": false,
+          "rationale": "The thalamus relays nearly all sensory information; if it were missing, she would likely lack all touch, sight, and hearing as well."
+        }
+      ],
+      "hint": "Consider the concept of independent nerve tracts for different qualities of skin stimulation."
+    },
+    {
+      "question": "According to the auditory sensitivity ranges described in the text, which of the following statements regarding species-specific hearing is accurate?",
+      "answerOptions": [
+        {
+          "text": "Cats can detect frequencies that exceed the human limit of $20,000$ Hz",
+          "isCorrect": true,
+          "rationale": "Humans are limited to a range below ultrasonic frequencies, whereas animals like cats and bats can detect much higher vibrations."
+        },
+        {
+          "text": "All mammals share an identical range of hearing from $10$ to $100,000$ Hz",
+          "isCorrect": false,
+          "rationale": "Auditory ranges vary significantly; for example, elephants hear lower frequencies than humans, while cats hear higher ones."
+        },
+        {
+          "text": "Fishes are only capable of hearing sounds within the human 'ultrasonic' range",
+          "isCorrect": false,
+          "rationale": "The auditory ranges of fishes generally fall into lower frequency categories compared to the specialized ultrasonic ranges of bats."
+        },
+        {
+          "text": "Infrasound refers to any frequency that can be heard by humans but not by birds",
+          "isCorrect": false,
+          "rationale": "Infrasound refers specifically to frequencies lower than the range detectable by the human ear."
+        }
+      ],
+      "hint": "Recall the definitions of 'ultrasonic' and 'infrasonic' relative to human capabilities."
+    }
+  ]
+}

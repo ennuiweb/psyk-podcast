@@ -1,0 +1,291 @@
+{
+  "title": "Neuroscience Quiz",
+  "questions": [
+    {
+      "question": "The case of Deidre, who laughed when a specific part of her brain was stimulated, demonstrates which principle of behavioral neuroscience?",
+      "answerOptions": [
+        {
+          "text": "Complex mental processes are the products of the brain's biological machinery.",
+          "isCorrect": true,
+          "rationale": "The ability to elicit a specific emotional and behavioral response through electrical stimulation implies that these processes are rooted in the physical and electrical activity of the brain."
+        },
+        {
+          "text": "Laughter is a purely reflexive motor response that does not involve the mind.",
+          "isCorrect": false,
+          "rationale": "Deidre did not just laugh reflexively; she also interpreted her environment as humorous, showing the stimulation affected her mental state."
+        },
+        {
+          "text": "Brain stimulation can only affect simple motor movements, not complex emotions.",
+          "isCorrect": false,
+          "rationale": "Deidre's experience shows that stimulation can trigger complex cognitive interpretations, such as finding doctors humorous without a joke."
+        },
+        {
+          "text": "Epilepsy is primarily a psychological disorder rather than an electrical one.",
+          "isCorrect": false,
+          "rationale": "The text explicitly defines epilepsy as a disorder resulting from electrical malfunctions in the brain."
+        }
+      ],
+      "hint": "Consider how the doctor's 'tiny zap' influenced Deidre's interpretation of her surroundings."
+    },
+    {
+      "question": "At the resting membrane potential, how is the distribution of $K^{+}$ ions maintained across the neuronal membrane?",
+      "answerOptions": [
+        {
+          "text": "The concentration is approximately $24$ times higher inside the cell than outside.",
+          "isCorrect": true,
+          "rationale": "This specific concentration gradient is maintained by the sodium-potassium pump and is a key factor in establishing the equilibrium potential."
+        },
+        {
+          "text": "The concentration is approximately $10$ times higher outside the cell than inside.",
+          "isCorrect": false,
+          "rationale": "While the text uses a $10$-fold difference as a hypothetical example for the Nernst equation, actual neurons maintain a much higher concentration of $K^{+}$ internally."
+        },
+        {
+          "text": "Ions are distributed equally on both sides to maintain electrical neutrality.",
+          "isCorrect": false,
+          "rationale": "An equal distribution would result in a membrane potential of $0$ $mV$, whereas neurons are electrically polarized at rest."
+        },
+        {
+          "text": "The membrane is completely impermeable to $K^{+}$, preventing any movement.",
+          "isCorrect": false,
+          "rationale": "The resting potential relies on the membrane being highly permeable to $K^{+}$ through open ion channels."
+        }
+      ],
+      "hint": "Think about the specific ratio mentioned in the text regarding real neurons and the Nernst equation calculation."
+    },
+    {
+      "question": "Why does the Goldman equation provide a more accurate prediction of a neuron's resting potential than the Nernst equation?",
+      "answerOptions": [
+        {
+          "text": "It accounts for the relative permeability of the membrane to multiple ions, including $Na^{+}$ and $Cl^{-}$.",
+          "isCorrect": true,
+          "rationale": "Unlike the Nernst equation, which assumes permeability to only one ion, the Goldman equation considers the contributions and permeabilities of various ions present."
+        },
+        {
+          "text": "It focuses exclusively on the concentration of negatively charged proteins inside the cell.",
+          "isCorrect": false,
+          "rationale": "While proteins contribute to the negative charge, the Goldman equation is designed to calculate potentials based on permeable ions."
+        },
+        {
+          "text": "It simplifies the calculation by ignoring the effect of the sodium-potassium pump.",
+          "isCorrect": false,
+          "rationale": "The equation is used to understand the steady-state potential, which is fundamentally dependent on the gradients established by the pump."
+        },
+        {
+          "text": "It is only used for calculating the peak voltage of an action potential.",
+          "isCorrect": false,
+          "rationale": "The Goldman equation is specifically discussed in the context of accurately calculating the resting membrane potential."
+        }
+      ],
+      "hint": "The Nernst equation makes a simplifying assumption about the membrane's selectivity that doesn't fully hold true for real neurons."
+    },
+    {
+      "question": "Which neurophysiological technique is best suited for studying the effects of drugs on the cytoplasmic (internal) domain of a neurotransmitter receptor?",
+      "answerOptions": [
+        {
+          "text": "Inside-out patch clamping",
+          "isCorrect": true,
+          "rationale": "This variation of patch clamping orients the membrane so that the intracellular surface faces the external bath, allowing direct application of substances to that side."
+        },
+        {
+          "text": "Outside-out patch clamping",
+          "isCorrect": false,
+          "rationale": "This technique places the extracellular side of the membrane toward the bath, which is useful for studying neurotransmitter binding rather than internal processes."
+        },
+        {
+          "text": "Scalp electroencephalography ($EEG$)",
+          "isCorrect": false,
+          "rationale": "$EEG$ records gross electrical activity from millions of cells and cannot isolate single channels or specific membrane domains."
+        },
+        {
+          "text": "Voltage clamping of a squid giant axon",
+          "isCorrect": false,
+          "rationale": "While useful for studying whole-cell currents, standard voltage clamping doesn't isolate the specific cytoplasmic domain of individual receptors like patch clamping can."
+        }
+      ],
+      "hint": "Look for a method that involves manipulating a tiny fragment of the membrane so that its 'inner' side is exposed."
+    },
+    {
+      "question": "How does the toxin batrachotoxin, secreted by poison arrow frogs, disrupt neural communication?",
+      "answerOptions": [
+        {
+          "text": "It forces voltage-gated $Na^{+}$ channels to stay open.",
+          "isCorrect": true,
+          "rationale": "By preventing $Na^{+}$ channels from closing, the toxin causes lethal disruptions in the regulated electrical activity required for action potentials."
+        },
+        {
+          "text": "It selectively blocks voltage-gated $Na^{+}$ channels from opening.",
+          "isCorrect": false,
+          "rationale": "This describes the action of tetrodotoxin ($TTX$) or saxitoxin ($STX$), which has the opposite effect of batrachotoxin."
+        },
+        {
+          "text": "It prevents the release of acetylcholine at the neuromuscular junction.",
+          "isCorrect": false,
+          "rationale": "This mechanism is associated with toxins like botulinum, which target vesicle docking rather than $Na^{+}$ channels."
+        },
+        {
+          "text": "It blocks muscarinic receptors in the heart muscle.",
+          "isCorrect": false,
+          "rationale": "Batrachotoxin is specific to $Na^{+}$ channels, not the cholinergic receptors involved in Loewi's experiments."
+        }
+      ],
+      "hint": "This toxin has the reverse effect of tetrodotoxin ($TTX$)."
+    },
+    {
+      "question": "In the context of saltatory conduction, what is the role of the nodes of Ranvier?",
+      "answerOptions": [
+        {
+          "text": "They serve as small gaps in the myelin where the action potential is regenerated.",
+          "isCorrect": true,
+          "rationale": "Because myelin provides high resistance, the electrical signal effectively 'jumps' between these uninsulated gaps to maintain speed and strength."
+        },
+        {
+          "text": "They act as insulators that prevent the flow of ionic currents.",
+          "isCorrect": false,
+          "rationale": "The nodes are actually the spots where the membrane is exposed and ionic flow occurs; the myelin is the insulator."
+        },
+        {
+          "text": "They are the sites where neurotransmitters are released into the synapse.",
+          "isCorrect": false,
+          "rationale": "Neurotransmitter release occurs at the axon terminal, not at the nodes of Ranvier along the axon's length."
+        },
+        {
+          "text": "They decrease the conduction velocity to allow for precise timing.",
+          "isCorrect": false,
+          "rationale": "The nodal structure is an evolutionary adaptation specifically designed to increase, not decrease, conduction velocity."
+        }
+      ],
+      "hint": "Consider the meaning of the Latin word 'saltare' and where the actual ion movement happens in a myelinated axon."
+    },
+    {
+      "question": "Otto Loewi's famous experiment with frog hearts provided definitive evidence for which of the following?",
+      "answerOptions": [
+        {
+          "text": "Chemical transmission at synapses",
+          "isCorrect": true,
+          "rationale": "By showing that fluid from a stimulated heart could slow a second heart, Loewi proved that a chemical substance ($Vagusstoff$) was responsible for the signal."
+        },
+        {
+          "text": "Electrical continuity between neurons (the 'spark' theory)",
+          "isCorrect": false,
+          "rationale": "Loewi's experiment actually helped resolve the debate against the theory that all transmission was purely electrical."
+        },
+        {
+          "text": "The discovery of the sodium-potassium pump",
+          "isCorrect": false,
+          "rationale": "Loewi's work focused on synaptic communication between cells, while the pump is a mechanism for maintaining a single cell's resting state."
+        },
+        {
+          "text": "The role of myelin in speeding up heart rate",
+          "isCorrect": false,
+          "rationale": "The experiment focused on the vagus nerve's chemical release and its inhibitory effect on the heart, not on conduction velocity via myelin."
+        }
+      ],
+      "hint": "Think about why Loewi transferred fluid from one container to another."
+    },
+    {
+      "question": "What is the primary structural difference between nicotinic and muscarinic acetylcholine receptors?",
+      "answerOptions": [
+        {
+          "text": "Nicotinic receptors are ionotropic, while muscarinic receptors are G protein-coupled (metabotropic).",
+          "isCorrect": true,
+          "rationale": "The text describes nicotinic receptors as ion channels with subunits, whereas muscarinic receptors (like those in Loewi's experiment) often involve more complex signaling pathways."
+        },
+        {
+          "text": "Nicotinic receptors are only found in the brain, while muscarinic are only in muscles.",
+          "isCorrect": false,
+          "rationale": "Nicotinic receptors are found at neuromuscular junctions, and muscarinic receptors are prevalent in the brain and the parasympathetic system."
+        },
+        {
+          "text": "Nicotinic receptors are inhibitory, whereas all muscarinic receptors are excitatory.",
+          "isCorrect": false,
+          "rationale": "The text notes that there are both excitatory and inhibitory subtypes for both nicotinic and muscarinic receptors."
+        },
+        {
+          "text": "Muscarinic receptors consist of five protein subunits, while nicotinic receptors are single proteins.",
+          "isCorrect": false,
+          "rationale": "The text specifically describes the nicotinic receptor as having five protein subunits arranged like staves in a barrel."
+        }
+      ],
+      "hint": "Consider the mechanism by which each receptor influences the postsynaptic cell (direct vs. indirect)."
+    },
+    {
+      "question": "During the process of synaptic vesicle release, what is the role of synaptotagmin?",
+      "answerOptions": [
+        {
+          "text": "It acts as a calcium sensor that triggers membrane fusion.",
+          "isCorrect": true,
+          "rationale": "When $Ca^{2+}$ enters the terminal, it binds to synaptotagmin, which then catalyzes the fusion of the vesicle membrane with the presynaptic membrane."
+        },
+        {
+          "text": "It cleaves $SNARE$ proteins to prevent neurotransmitter release.",
+          "isCorrect": false,
+          "rationale": "Cleaving $SNAREs$ is the mechanism of action for toxins like botulinum, not a normal function of synaptotagmin."
+        },
+        {
+          "text": "It is an ion channel that allows $Na^{+}$ to enter the vesicle.",
+          "isCorrect": false,
+          "rationale": "Synaptotagmin is a protein involved in the fusion process, not an ion channel for $Na^{+}$."
+        },
+        {
+          "text": "It pumps neurotransmitters back into the presynaptic terminal.",
+          "isCorrect": false,
+          "rationale": "This describes a reuptake transporter, whereas synaptotagmin is part of the release machinery."
+        }
+      ],
+      "hint": "This protein is activated specifically when $Ca^{2+}$ ions enter the axon terminal."
+    },
+    {
+      "question": "In optogenetics, what distinguishes the use of channelrhodopsin ($ChR2$) from halorhodopsin ($NpHR$)?",
+      "answerOptions": [
+        {
+          "text": "$ChR2$ causes depolarization via $Na^{+}$ entry, while $NpHR$ causes hyperpolarization via $Cl^{-}$ entry.",
+          "isCorrect": true,
+          "rationale": "Channelrhodopsin responds to blue light to excite neurons, whereas halorhodopsin responds to yellow light to inhibit them by pumping in $Cl^{-}$ ions."
+        },
+        {
+          "text": "$ChR2$ is sensitive to yellow light, while $NpHR$ is sensitive to blue light.",
+          "isCorrect": false,
+          "rationale": "The text states the opposite: $ChR2$ responds to blue light and $NpHR$ responds to yellow light."
+        },
+        {
+          "text": "$ChR2$ is used to record electrical activity, while $NpHR$ is used for genetic engineering.",
+          "isCorrect": false,
+          "rationale": "Both are light-sensitive proteins used for controlling (stimulating or inhibiting) neuronal activity, not for passive recording."
+        },
+        {
+          "text": "$ChR2$ acts on $G$ protein-coupled receptors, while $NpHR$ acts on ionotropic receptors.",
+          "isCorrect": false,
+          "rationale": "Both microbial opsins function as light-gated ion channels/pumps directly, rather than through traditional mammalian GPCR signaling."
+        }
+      ],
+      "hint": "Think about the specific ion moved and the resulting change in membrane potential for each protein."
+    },
+    {
+      "question": "Which type of seizure is characterized by a spike-and-wave pattern on an $EEG$ and a brief loss of awareness without unusual muscle activity?",
+      "answerOptions": [
+        {
+          "text": "Simple partial seizure (absence attack)",
+          "isCorrect": true,
+          "rationale": "These seizures involve a short lapse in consciousness and a cessation of activity, often appearing as sustained staring, with a distinct $EEG$ signature."
+        },
+        {
+          "text": "Tonic-clonic seizure (grand mal)",
+          "isCorrect": false,
+          "rationale": "Tonic-clonic seizures involve loss of consciousness accompanied by violent rhythmic convulsions and contractions."
+        },
+        {
+          "text": "Complex partial seizure",
+          "isCorrect": false,
+          "rationale": "Complex partial seizures often involve an 'aura' and localized abnormal behaviors (like rocking or nonsensical speech) rather than a simple staring spell."
+        },
+        {
+          "text": "Kindling",
+          "isCorrect": false,
+          "rationale": "Kindling is an experimental method for inducing epilepsy in animals, not a specific clinical category of human seizure."
+        }
+      ],
+      "hint": "This type of seizure is often subtle and might be mistaken for daydreaming or staring."
+    }
+  ]
+}

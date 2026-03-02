@@ -1,0 +1,395 @@
+{
+  "title": "Sexual Behavior Quiz",
+  "questions": [
+    {
+      "question": "In the four stages of reproductive behavior, how is the state of a female rat described when she performs 'ear wiggling' and a 'hopping and darting' gait to induce a male to mount?",
+      "answerOptions": [
+        {
+          "text": "Proceptive",
+          "isCorrect": true,
+          "rationale": "Proceptivity refers to species-specific appetitive behaviors, such as ear wiggling in rats, that establish or maintain sexual interaction."
+        },
+        {
+          "text": "Receptive",
+          "isCorrect": false,
+          "rationale": "Receptivity refers specifically to the state in which an individual is willing to copulate, such as adopting the lordosis posture, rather than the active solicitation of it."
+        },
+        {
+          "text": "Estrous",
+          "isCorrect": false,
+          "rationale": "While this behavior occurs during estrus, the term 'estrous' describes the broader physiological period of heat rather than the specific behavioral stage of solicitation."
+        },
+        {
+          "text": "Postcopulatory",
+          "isCorrect": false,
+          "rationale": "This stage occurs after the sex act and involves behaviors like grooming or temporary inhibition of attraction, not the initial solicitation of a mate."
+        }
+      ],
+      "hint": "Consider the term used for behaviors that advertise a readiness to mate through active solicitation."
+    },
+    {
+      "question": "Which phenomenon explains why a sexually satiated male guinea pig might resume mating immediately if introduced to a novel female partner?",
+      "answerOptions": [
+        {
+          "text": "The Coolidge effect",
+          "isCorrect": true,
+          "rationale": "The Coolidge effect is the propensity for a sexually satiated animal to resume activity when provided with a novel partner, effectively reducing the refractory period."
+        },
+        {
+          "text": "The Bruce effect",
+          "isCorrect": false,
+          "rationale": "The Bruce effect refers to the termination of pregnancy in a female when exposed to the urine of a novel male."
+        },
+        {
+          "text": "Lordosis response",
+          "isCorrect": false,
+          "rationale": "Lordosis is a stereotyped female receptive posture and does not describe the male's renewal of sexual interest."
+        },
+        {
+          "text": "The Activational effect",
+          "isCorrect": false,
+          "rationale": "This is a general term for how hormones transiently promote certain behaviors in adulthood, not a specific term for the renewal of sexual drive via novelty."
+        }
+      ],
+      "hint": "This effect is named after a U.S. President and involves the impact of partner novelty on the refractory period."
+    },
+    {
+      "question": "In the neural circuitry of the female rat, which brain region is primarily responsible for monitoring steroid levels and activating the multisynaptic pathway that induces the lordosis posture?",
+      "answerOptions": [
+        {
+          "text": "Ventromedial hypothalamus (VMH)",
+          "isCorrect": true,
+          "rationale": "The VMH is crucial for lordosis as it monitors estrogen and progesterone levels to activate the descending pathway to the periaqueductal gray and spinal cord."
+        },
+        {
+          "text": "Medial preoptic area (mPOA)",
+          "isCorrect": false,
+          "rationale": "While involved in many sexual behaviors, the mPOA is specifically the 'final common pathway' for male copulatory behavior rather than the primary lordosis center."
+        },
+        {
+          "text": "Vomeronasal organ (VNO)",
+          "isCorrect": false,
+          "rationale": "The VNO is a sensory organ for detecting pheromones and is not the central hypothalamic integrator for the lordosis motor response."
+        },
+        {
+          "text": "Medial amygdala",
+          "isCorrect": false,
+          "rationale": "The medial amygdala processes pheromonal information and projects to the hypothalamus but is not the primary site where steroid-induced lordosis is coordinated."
+        }
+      ],
+      "hint": "This hypothalamic region is often associated with eating behaviors but is also the master regulator of the lordosis circuit."
+    },
+    {
+      "question": "For a male rat to achieve an erection, the medial preoptic area (mPOA) must perform which of the following neural actions?",
+      "answerOptions": [
+        {
+          "text": "Inhibit the paragigantocellular nucleus (PGN)",
+          "isCorrect": true,
+          "rationale": "The PGN normally sends serotonergic fibers to inhibit spinal erection circuits; the mPOA must inhibit this inhibition to allow an erection to occur."
+        },
+        {
+          "text": "Stimulate the vomeronasal organ",
+          "isCorrect": false,
+          "rationale": "The vomeronasal organ is a sensory receptor that provides input to the brain; it is not a downstream target for motor coordination of erection."
+        },
+        {
+          "text": "Activate the reticulospinal tract",
+          "isCorrect": false,
+          "rationale": "The reticulospinal tract is part of the descending female lordosis circuit, whereas male erection involves spinal circuits inhibited by the brainstem."
+        },
+        {
+          "text": "Decrease dopamine levels in the ventral tegmental area",
+          "isCorrect": false,
+          "rationale": "Erection and sexual arousal are generally associated with increases in reward-related neurotransmitters like dopamine, not decreases."
+        }
+      ],
+      "hint": "Consider the role of the serotonergic projection from the brainstem to the spinal cord."
+    },
+    {
+      "question": "A parabiotic experiment joining a pregnant rat and a virgin female rat demonstrated that maternal behavior is regulated by which mechanism?",
+      "answerOptions": [
+        {
+          "text": "A combination of circulating hormones including estrogens, progesterone, and prolactin",
+          "isCorrect": true,
+          "rationale": "The sharing of blood in parabiotic rats showed that the complex hormonal milieu of pregnancy is sufficient to induce maternal behavior in a non-pregnant individual."
+        },
+        {
+          "text": "The immediate detection of pup pheromones by the vomeronasal organ",
+          "isCorrect": false,
+          "rationale": "Virgin rats actually find pup smells aversive; maternal behavior in the parabiotic rat occurred due to internal hormones, not external sensory cues."
+        },
+        {
+          "text": "A purely learned social response through observation of the pregnant partner",
+          "isCorrect": false,
+          "rationale": "The experiment specifically targeted blood-borne factors (hormones), showing that learning or observation was not the primary driver in this model."
+        },
+        {
+          "text": "The suppression of testosterone in the medial preoptic area",
+          "isCorrect": false,
+          "rationale": "While the mPOA is involved in maternal care, the parabiotic study specifically highlighted the role of pregnancy-related hormones like prolactin."
+        }
+      ],
+      "hint": "Focus on the substances shared between the two animals through their joined circulatory systems."
+    },
+    {
+      "question": "During mammalian sexual differentiation, what is the specific role of the $SRY$ gene?",
+      "answerOptions": [
+        {
+          "text": "It causes the core of the indifferent gonad to develop into a testis",
+          "isCorrect": true,
+          "rationale": "The $SRY$ (sex-determining region on the Y chromosome) gene produces a protein that directs the indifferent gonads to become testes."
+        },
+        {
+          "text": "It triggers the secretion of anti-m$\\ddot{u}$llerian hormone directly from the pituitary",
+          "isCorrect": false,
+          "rationale": "AMH is secreted by the fetal testes themselves after $SRY$ has already directed their development, not by the pituitary gland."
+        },
+        {
+          "text": "It prevents the conversion of testosterone into dihydrotestosterone",
+          "isCorrect": false,
+          "rationale": "This conversion is handled by the enzyme $5\\alpha$-reductase; $SRY$ is a genetic switch for gonadal sex determination."
+        },
+        {
+          "text": "It promotes the development of the m$\\ddot{u}$llerian duct system into oviducts",
+          "isCorrect": false,
+          "rationale": "The $SRY$ gene leads to the development of testes, which then produce hormones that cause the m$\\ddot{u}$llerian ducts to regress."
+        }
+      ],
+      "hint": "Think of this gene as the initial genetic 'master switch' for male gonadal development."
+    },
+    {
+      "question": "In an individual with Androgen Insensitivity Syndrome ($AIS$), which of the following best describes their internal reproductive anatomy?",
+      "answerOptions": [
+        {
+          "text": "They have internal testes but lack both the wolffian and m$\\ddot{u}$llerian duct systems",
+          "isCorrect": true,
+          "rationale": "Testes develop due to the $SRY$ gene and produce AMH (causing m$\\ddot{u}$llerian regression), but the lack of androgen receptors prevents wolffian development."
+        },
+        {
+          "text": "They have ovaries and a fully developed m$\\ddot{u}$llerian duct system",
+          "isCorrect": false,
+          "rationale": "Individuals with $AIS$ are $XY$ and have an $SRY$ gene, which leads to testes rather than ovaries."
+        },
+        {
+          "text": "They have internal testes and a fully developed wolffian duct system",
+          "isCorrect": false,
+          "rationale": "Wolffian development requires functional androgen receptors to respond to testosterone, which individuals with $AIS$ lack."
+        },
+        {
+          "text": "They have both male and female internal reproductive tracts",
+          "isCorrect": false,
+          "rationale": "The presence of AMH from the testes causes the female tract to regress, while the insensitivity to androgens prevents the male tract from forming."
+        }
+      ],
+      "hint": "Recall that $SRY$ is present, meaning testes form, but the body cannot respond to the 'masculinizing' signal of testosterone."
+    },
+    {
+      "question": "What is the primary cause of the 'guevedoces' phenotype seen in certain families in the Dominican Republic?",
+      "answerOptions": [
+        {
+          "text": "A deficiency in the enzyme $5\\alpha$-reductase",
+          "isCorrect": true,
+          "rationale": "$5\\alpha$-reductase deficiency prevents the conversion of testosterone to $DHT$, leading to incomplete masculinization of external genitalia at birth."
+        },
+        {
+          "text": "An excess of adrenal androgens during gestation",
+          "isCorrect": false,
+          "rationale": "Excess adrenal androgens cause Congenital Adrenal Hyperplasia ($CAH$), which masculinizes $XX$ individuals, rather than leaving $XY$ individuals under-masculinized."
+        },
+        {
+          "text": "A complete mutation of the androgen receptor gene",
+          "isCorrect": false,
+          "rationale": "A complete mutation of the androgen receptor causes $AIS$, resulting in a female phenotype that does not masculinize at puberty."
+        },
+        {
+          "text": "An absence of the $SRY$ gene on the Y chromosome",
+          "isCorrect": false,
+          "rationale": "The absence of $SRY$ would lead to the development of ovaries, whereas guevedoces have internal testes that produce a surge of testosterone at puberty."
+        }
+      ],
+      "hint": "Consider the enzyme responsible for creating the more potent androgen required for external genital development."
+    },
+    {
+      "question": "According to the aromatization hypothesis, how is the brain of a male rat masculinized during the sensitive period?",
+      "answerOptions": [
+        {
+          "text": "Testosterone enters the brain and is converted into estradiol by aromatase",
+          "isCorrect": true,
+          "rationale": "In rodents, the masculinization of the brain is largely due to the conversion of testosterone into estradiol, which then binds to estrogen receptors."
+        },
+        {
+          "text": "Testosterone binds directly to androgen receptors in the hypothalamus",
+          "isCorrect": false,
+          "rationale": "While this happens in primates, the aromatization hypothesis specifically posits that estrogenic metabolites are the key for rodent brain masculinization."
+        },
+        {
+          "text": "$\\alpha$-fetoprotein carries estradiol into the brain to activate gene expression",
+          "isCorrect": false,
+          "rationale": "$\\alpha$-fetoprotein actually binds estradiol to prevent it from entering the brain, protecting the fetus from maternal estrogens."
+        },
+        {
+          "text": "Dihydrotestosterone ($DHT$) activates the sexually dimorphic nucleus of the preoptic area",
+          "isCorrect": false,
+          "rationale": "$DHT$ cannot be aromatized into estrogen, and thus it fails to masculinize the rodent brain behaviors associated with the aromatization pathway."
+        }
+      ],
+      "hint": "This hypothesis involves the conversion of a 'male' hormone into a 'female' hormone within the central nervous system."
+    },
+    {
+      "question": "Why are female rat fetuses not masculinized by the high levels of maternal estrogens circulating in their bloodstream?",
+      "answerOptions": [
+        {
+          "text": "The blood protein $\\alpha$-fetoprotein binds estrogens and prevents them from entering the brain",
+          "isCorrect": true,
+          "rationale": "$\\alpha$-fetoprotein serves as a protective barrier in rodents, sequestering maternal estrogens while allowing testosterone to pass through."
+        },
+        {
+          "text": "The female brain lacks aromatase enzymes during the sensitive period",
+          "isCorrect": false,
+          "rationale": "The presence or absence of aromatase in the female is less relevant than the fact that circulating estrogens are prevented from reaching the brain in the first place."
+        },
+        {
+          "text": "Maternal estrogens are immediately converted into progesterone by the placenta",
+          "isCorrect": false,
+          "rationale": "The placenta does not convert estrogens to progesterone as a primary defense; rather, the binding protein in the fetal blood manages the levels."
+        },
+        {
+          "text": "The m$\\ddot{u}$llerian duct system produces an inhibitor that blocks estrogen receptors in the brain",
+          "isCorrect": false,
+          "rationale": "There is no evidence for such an inhibitor; sexual differentiation is primarily driven by the presence or absence of testicular secretions."
+        }
+      ],
+      "hint": "Think of a specific fetal plasma protein that acts as a 'molecular sponge' for estrogen."
+    },
+    {
+      "question": "Which brain structure in male songbirds is roughly 5 to 6 times larger than in females and controls the motor neurons of the syrinx?",
+      "answerOptions": [
+        {
+          "text": "Robustus archistriatum ($RA$)",
+          "isCorrect": true,
+          "rationale": "The $RA$ is a song control nucleus that is significantly larger in males and directly innervates the vocal organ (syrinx)."
+        },
+        {
+          "text": "High vocal center ($HVC$)",
+          "isCorrect": false,
+          "rationale": "While the $HVC$ is larger and controls the $RA$, the $RA$ is the specific nucleus that directly innervates the motor neurons of the syrinx."
+        },
+        {
+          "text": "Sexually dimorphic nucleus of the preoptic area ($SDN-POA$)",
+          "isCorrect": false,
+          "rationale": "The $SDN-POA$ is a hypothalamic nucleus found in mammals, not the primary motor control center for bird song."
+        },
+        {
+          "text": "Spinal nucleus of the bulbocavernosus ($SNB$)",
+          "isCorrect": false,
+          "rationale": "The $SNB$ is a group of motor neurons in the spinal cord of rats that control penile muscles, not bird vocalizations."
+        }
+      ],
+      "hint": "Look for the nucleus named for its location and robust size in the avian song production hierarchy."
+    },
+    {
+      "question": "In the development of the rat Spinal Nucleus of the Bulbocavernosus ($SNB$), how do androgens primarily prevent the death of motor neurons?",
+      "answerOptions": [
+        {
+          "text": "They act on the bulbocavernosus muscles, which then provide trophic factors to the neurons",
+          "isCorrect": true,
+          "rationale": "Androgens spare the muscles first, and the surviving muscles provide the necessary neurotrophic support to keep the innervating $SNB$ neurons alive."
+        },
+        {
+          "text": "They directly block the aromatization of testosterone within the spinal cord",
+          "isCorrect": false,
+          "rationale": "Aromatization is not the primary factor in $SNB$ survival; $AIS$ rats (who can aromatize but lack androgen receptors) lose their $SNB$ neurons."
+        },
+        {
+          "text": "They stimulate the mother rat to lick the male pups more frequently",
+          "isCorrect": false,
+          "rationale": "While maternal licking is a social influence that aids survival, the direct biological mechanism involves androgenic effects on the target muscles."
+        },
+        {
+          "text": "They increase the production of serotonin in the paragigantocellular nucleus",
+          "isCorrect": false,
+          "rationale": "Serotonin from the $PGN$ actually inhibits penile reflexes in the adult; it is not the survival factor for neonatal $SNB$ neurons."
+        }
+      ],
+      "hint": "Consider the relationship between a muscle and its innervating neuron during development."
+    },
+    {
+      "question": "What unusual feature of spotted hyena development contributes to the masculinized external genitalia of the females?",
+      "answerOptions": [
+        {
+          "text": "The placenta is deficient in the enzyme aromatase",
+          "isCorrect": true,
+          "rationale": "The lack of placental aromatase prevents the conversion of maternal androstenedione into estrogens, exposing the female fetuses to high androgen levels."
+        },
+        {
+          "text": "Female hyena fetuses possess a functional $SRY$ gene",
+          "isCorrect": false,
+          "rationale": "Hyenas follow standard mammalian sex determination; females are $XX$ and lack the $SRY$ gene."
+        },
+        {
+          "text": "They produce high levels of $\\alpha$-fetoprotein that binds all available estrogens",
+          "isCorrect": false,
+          "rationale": "While $\\alpha$-fetoprotein is a rodent mechanism, the hyena's masculinization is specifically linked to an 'aromatase gap' in the placenta."
+        },
+        {
+          "text": "The mother hyena's ovaries secrete high levels of dihydrotestosterone ($DHT$)",
+          "isCorrect": false,
+          "rationale": "The mother produces androstenedione, which is then not converted to estrogen by the placenta, rather than the ovaries secreting $DHT$ directly."
+        }
+      ],
+      "hint": "The placenta usually acts as a barrier by converting androgens to estrogens, but this barrier is 'leaky' in hyenas."
+    },
+    {
+      "question": "Which of the following describes an 'organizational effect' of a hormone as defined in the text?",
+      "answerOptions": [
+        {
+          "text": "The permanent alteration of the nervous system and behavior resulting from steroid action early in development",
+          "isCorrect": true,
+          "rationale": "Organizational effects occur during a sensitive period and result in lasting, structural changes to the brain and body."
+        },
+        {
+          "text": "The temporary activation of a behavior in an adult animal by the presence of a hormone",
+          "isCorrect": false,
+          "rationale": "This describes an 'activational effect,' which is transient and depends on the presence of the hormone in circulation."
+        },
+        {
+          "text": "The process by which an individual decides their sexual orientation based on social experience",
+          "isCorrect": false,
+          "rationale": "Organizational effects refer to biological/hormonal sculpting of the nervous system, not a conscious decision-making process."
+        },
+        {
+          "text": "The inhibition of a behavior due to the lack of a novel partner",
+          "isCorrect": false,
+          "rationale": "This refers to the refractory period or the absence of the Coolidge effect, not the structural organization of the brain."
+        }
+      ],
+      "hint": "Focus on the timing (early life) and the duration (permanent) of the change."
+    },
+    {
+      "question": "In the human sexual response model by Masters and Johnson, which phase is characterized by the phallus becoming engorged with blood and erect?",
+      "answerOptions": [
+        {
+          "text": "Excitement",
+          "isCorrect": true,
+          "rationale": "The excitement phase involves the initial physiological arousal, including vasocongestion and erection of the penis or clitoris."
+        },
+        {
+          "text": "Plateau",
+          "isCorrect": false,
+          "rationale": "The plateau phase is the period of sustained high arousal that follows the initial excitement but precedes orgasm."
+        },
+        {
+          "text": "Orgasm",
+          "isCorrect": false,
+          "rationale": "Orgasm is the brief climax marked by rhythmic muscle contractions and intense pleasure, rather than just the initial state of erection."
+        },
+        {
+          "text": "Resolution",
+          "isCorrect": false,
+          "rationale": "Resolution is the final phase where the body returns to its non-aroused state following the sexual activity."
+        }
+      ],
+      "hint": "This is the very first of the four stages described in their linear model."
+    }
+  ]
+}

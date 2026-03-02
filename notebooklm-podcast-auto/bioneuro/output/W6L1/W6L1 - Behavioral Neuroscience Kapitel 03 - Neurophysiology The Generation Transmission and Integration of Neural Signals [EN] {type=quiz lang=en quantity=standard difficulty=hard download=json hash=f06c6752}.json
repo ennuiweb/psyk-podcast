@@ -1,0 +1,317 @@
+{
+  "title": "Neuron Quiz",
+  "questions": [
+    {
+      "question": "Hvad er den prim\u00e6re \u00e5rsag til, at en neurons hvilemembranpotentiale typisk er t\u00e6ttere p\u00e5 $-65$ $mV$ end p\u00e5 de $-80$ $mV$, som Nernst-ligningen for $K^{+}$ forudsiger?",
+      "answerOptions": [
+        {
+          "text": "Membranen er en anelse permeabel over for andre ioner som $Na^{+}$",
+          "isCorrect": true,
+          "rationale": "Selvom membranen er mest permeabel for $K^{+}$, tillader en lille l\u00e6kage af $Na^{+}$ ind i cellen, at potentialet bliver mindre negativt end det rene kalium-ligev\u00e6gtspotentiale."
+        },
+        {
+          "text": "Natrium-kalium-pumpen stopper med at virke ved hvilepotentialet",
+          "isCorrect": false,
+          "rationale": "Denne pumpe k\u00f8rer kontinuerligt for at opretholde koncentrationsgradienterne og er afg\u00f8rende for at opretholde hvilepotentialet frem for at mindske det."
+        },
+        {
+          "text": "De negative proteiner indeni cellen neutraliseres af ekstracellul\u00e6r v\u00e6ske",
+          "isCorrect": false,
+          "rationale": "De negativt ladede proteiner er fanget inde i cellen og bidrager konstant til den interne negative ladning uden at blive neutraliseret udefra."
+        },
+        {
+          "text": "Nernst-ligningen tager ikke h\u00f8jde for temperaturforskelle i levende v\u00e6v",
+          "isCorrect": false,
+          "rationale": "Nernst-ligningen kan justeres for temperatur; afvigelsen skyldes snarere membranens manglende selektivitet for kun \u00e9n iontype."
+        }
+      ],
+      "hint": "Overvej antagelserne bag Nernst-ligningen kontra den faktiske sammens\u00e6tning af en biologisk cellemembran."
+    },
+    {
+      "question": "Hvilken matematisk ligning anvendes til at forudsige hvilepotentialet ved at inddrage b\u00e5de koncentrationerne og de relative permeabiliteter for flere forskellige iontyper?",
+      "answerOptions": [
+        {
+          "text": "Goldman-ligningen",
+          "isCorrect": true,
+          "rationale": "Denne ligning udvider Nernst-princippet ved at v\u00e6gte hver ions bidrag til potentialet baseret p\u00e5, hvor let de kan passere membranen."
+        },
+        {
+          "text": "Nernst-ligningen",
+          "isCorrect": false,
+          "rationale": "Denne formel er begr\u00e6nset til at beregne ligev\u00e6gtspotentialet for en enkelt iontype under antagelse af fuld permeabilitet for kun den p\u00e5g\u00e6ldende ion."
+        },
+        {
+          "text": "Hodgkin-Huxley-ligningen",
+          "isCorrect": false,
+          "rationale": "Selvom de studerede aktionspotentialet, beskriver deres specifikke matematiske modeller snarere tidsforl\u00f8bet af kanal\u00e5bninger end det statiske hvilepotentiale."
+        },
+        {
+          "text": "Michaelis-Menten-ligningen",
+          "isCorrect": false,
+          "rationale": "Dette er en biokemisk model for enzymkinetik og har ikke direkte relevans for beregning af elektriske potentialer over en membran."
+        }
+      ],
+      "hint": "T\u00e6nk p\u00e5 den ligning, der n\u00e6vnes som en mere realistisk model end Nernst-ligningen i kildematerialet."
+    },
+    {
+      "question": "Ved brug af optogenetiske v\u00e6rkt\u00f8jer, hvordan p\u00e5virker gult lys en neuron, der er genetisk modificeret til at udtrykke halorhodopsin ($NpHR$)?",
+      "answerOptions": [
+        {
+          "text": "Det pumper $Cl^{-}$-ioner ind i cellen og hyperpolariserer den",
+          "isCorrect": true,
+          "rationale": "Halorhodopsin fungerer som en lysdrevet ionpumpe, der \u00f8ger den negative ladning indeni cellen, hvilket g\u00f8r det sv\u00e6rere for neuronen at n\u00e5 t\u00e6rskelv\u00e6rdien."
+        },
+        {
+          "text": "Det \u00e5bner $Na^{+}$-kanaler og depolariserer cellen til fyring",
+          "isCorrect": false,
+          "rationale": "Dette er funktionen af channelrhodopsin ($ChR2$) under bl\u00e5t lys, ikke halorhodopsin under gult lys."
+        },
+        {
+          "text": "Det aktiverer G-proteiner, der f\u00f8rer til langvarig synaptisk plasticitet",
+          "isCorrect": false,
+          "rationale": "Halorhodopsin er en direkte ionkanal/pumpe og fungerer uafh\u00e6ngigt af de langsommere metabotrope G-protein-systemer."
+        },
+        {
+          "text": "Det blokerer sp\u00e6ndingsstyrrede $K^{+}$-kanaler og forl\u00e6nger aktionspotentialet",
+          "isCorrect": false,
+          "rationale": "Halorhodopsin tilf\u00f8jer en ny inhibitorisk str\u00f8m frem for at blokere eksisterende sp\u00e6ndingsstyrrede kanaler i neuronens membran."
+        }
+      ],
+      "hint": "Fokuser p\u00e5 den specifikke iontype og den retning, den bev\u00e6ger sig, n\u00e5r dette protein aktiveres."
+    },
+    {
+      "question": "Hvilken virkningsmekanisme forklarer den d\u00f8delige effekt af batrachotoxin, som produceres af sydamerikanske pilgiftfr\u00f8er?",
+      "answerOptions": [
+        {
+          "text": "Den tvinger sp\u00e6ndingsstyrrede $Na^{+}$-kanaler til at forblive \u00e5bne",
+          "isCorrect": true,
+          "rationale": "Ved at forhindre $Na^{+}$-kanaler i at lukke, kortsluttes neuronens evne til at nulstille sit potentiale, hvilket f\u00f8rer til vedvarende depolarisering og hurtig lammelse."
+        },
+        {
+          "text": "Den blokerer selektivt porerne i $Na^{+}$-kanalerne",
+          "isCorrect": false,
+          "rationale": "Dette beskriver virkningen af tetrodotoxin ($TTX$) fra kuglefisk, som forhindrer natrium i overhovedet at tr\u00e6nge ind i cellen."
+        },
+        {
+          "text": "Den forhindrer frigivelsen af neurotransmitteren acetylcholin",
+          "isCorrect": false,
+          "rationale": "Denne mekanisme er karakteristisk for botulinumtoksin, som angriber de proteiner, der er ansvarlige for vesikelfusion."
+        },
+        {
+          "text": "Den fungerer som en reversibel antagonist p\u00e5 nikotinerge receptorer",
+          "isCorrect": false,
+          "rationale": "Dette svarer til virkningen af curare, som konkurrerer med $ACh$ om bindingsstederne p\u00e5 muskler, men batrachotoxin rammer selve ionkanalerne i axonet."
+        }
+      ],
+      "hint": "Denne gift har den modsatte effekt af tetrodotoxin ($TTX$) p\u00e5 natriumkanaler."
+    },
+    {
+      "question": "I forbindelse med epilepsi, hvad adskiller et 'simple partial seizure' (absence attack) fra et tonisk-klonisk anfald?",
+      "answerOptions": [
+        {
+          "text": "Det involverer et kortvarigt tab af bevidsthed uden voldsomme muskelkramper",
+          "isCorrect": true,
+          "rationale": "Absence-anfald er karakteriseret ved stirren og oph\u00f8r af aktivitet i f\u00e5 sekunder, hvorimod tonisk-kloniske anfald involverer dramatiske, rytmiske kropsbev\u00e6gelser."
+        },
+        {
+          "text": "Det er begr\u00e6nset til kun \u00e9n hjernehalvdel og p\u00e5virker aldrig bevidstheden",
+          "isCorrect": false,
+          "rationale": "Selvom det kaldes 'partial' i \u00e6ldre terminologi, indeb\u00e6rer det stadig et bevidsthedstab, hvor personen er uvidende om sine omgivelser."
+        },
+        {
+          "text": "Det varer typisk i flere timer og efterf\u00f8lges af dyb s\u00f8vn",
+          "isCorrect": false,
+          "rationale": "Disse anfald er meget kortvarige ($5$-$15$ sekunder), mens den langvarige post-iktale fase med forvirring og s\u00f8vn er typisk for de store tonisk-kloniske anfald."
+        },
+        {
+          "text": "Det kan kun diagnosticeres ved hj\u00e6lp af funktionel $MRI$ frem for $EEG$",
+          "isCorrect": false,
+          "rationale": "Absence-anfald har et meget karakteristisk 'spike-and-wave' m\u00f8nster p\u00e5 et $EEG$, som er det prim\u00e6re diagnostiske v\u00e6rkt\u00f8j."
+        }
+      ],
+      "hint": "T\u00e6nk p\u00e5 de ydre adf\u00e6rdsm\u00e6ssige tegn, som en iagttager ville bem\u00e6rke ved disse to typer anfald."
+    },
+    {
+      "question": "Hvilken fysiologisk fordel opn\u00e5r hvirveldyr ved at anvende saltatorisk ledning i myeliniserede axoner?",
+      "answerOptions": [
+        {
+          "text": "Ledningshastigheden \u00f8ges markant uden behov for massive axondiametre",
+          "isCorrect": true,
+          "rationale": "Myelin isolerer axonet og lader aktionspotentialet 'hoppe' mellem noderne, hvilket sparer plads og \u00f8ger hastigheden sammenlignet med hvirvell\u00f8se dyrs k\u00e6mpeaxoner."
+        },
+        {
+          "text": "Det eliminerer behovet for Ranvierske indsn\u00f8ringer langs axonet",
+          "isCorrect": false,
+          "rationale": "Ranvierske indsn\u00f8ringer er faktisk essentielle for saltatorisk ledning, da det er her, de sp\u00e6ndingsstyrrede kanaler er koncentreret for at regenerere signalet."
+        },
+        {
+          "text": "Det g\u00f8r axonet fuldst\u00e6ndig uigennemtr\u00e6ngeligt for alle ioner",
+          "isCorrect": false,
+          "rationale": "Hvis axonet var helt uigennemtr\u00e6ngeligt, kunne der ikke genereres elektriske signaler; isolationen findes kun mellem noderne."
+        },
+        {
+          "text": "Det tillader aktionspotentialer at bev\u00e6ge sig i begge retninger samtidigt",
+          "isCorrect": false,
+          "rationale": "Aktionspotentialer bev\u00e6ger sig stadig kun i \u00e9n retning pga. de sp\u00e6ndingsstyrrede kanalers refrakt\u00e6rperiode, uanset myelinisering."
+        }
+      ],
+      "hint": "T\u00e6nk p\u00e5 forholdet mellem pladskrav i hjernen og hastigheden af nervesignaler."
+    },
+    {
+      "question": "Hvordan fungerer de s\u00e5kaldte SNARE-proteiner i den pr\u00e6synaptiske terminal?",
+      "answerOptions": [
+        {
+          "text": "De formidler fusionen af neurotransmitter-vesikler med den pr\u00e6synaptiske membran",
+          "isCorrect": true,
+          "rationale": "SNARE-proteiner p\u00e5 vesiklerne ($v$-SNARE) binder til proteiner p\u00e5 target-membranen ($t$-SNARE) for at 'dokke' vesiklen klar til frigivelse."
+        },
+        {
+          "text": "De fungerer som sekund\u00e6re budbringere, der \u00e5bner ionkanaler indefra",
+          "isCorrect": false,
+          "rationale": "Denne opgave varetages typisk af G-proteiner eller molekyler som $cAMP$, ikke af de strukturelle SNARE-proteiner."
+        },
+        {
+          "text": "De nedbryder overskydende acetylcholin i den synaptiske kl\u00f8ft",
+          "isCorrect": false,
+          "rationale": "Dette er funktionen af specifikke enzymer som acetylcholinesterase, mens SNARE-proteiner er placeret inde i selve terminalen."
+        },
+        {
+          "text": "De pumper calcium-ioner ud af cellen efter et aktionspotentiale",
+          "isCorrect": false,
+          "rationale": "Calcium fjernes af pumper og buffere; SNARE-proteiner reagerer derimod p\u00e5 den indtr\u00e6ngende calcium via synaptotagmin."
+        }
+      ],
+      "hint": "T\u00e6nk p\u00e5 den mekaniske proces, der kr\u00e6ves for at frigive kemiske signaler fra en neuron."
+    },
+    {
+      "question": "I det visuelle system beskrives processen, hvor information fra $100$ millioner fotoreceptorer ender i ca. $1$ million axoner i synsnerven. Hvad kaldes dette organisatoriske princip?",
+      "answerOptions": [
+        {
+          "text": "Konvergens",
+          "isCorrect": true,
+          "rationale": "Konvergens opst\u00e5r, n\u00e5r input fra mange kilder samles i et f\u00e6rre antal neuroner eller axoner for at koncentrere informationen."
+        },
+        {
+          "text": "Divergens",
+          "isCorrect": false,
+          "rationale": "Divergens er det modsatte princip, hvor \u00e9t axon spreder sit signal til tusindvis af modtagerceller, hvilket sker senere i hjernebarken."
+        },
+        {
+          "text": "Ektopisk transmission",
+          "isCorrect": false,
+          "rationale": "Dette refererer til frigivelse af neurotransmittere uden for de traditionelle synaptiske gr\u00e6nser og er ikke et princip for m\u00e6ngden af kredsl\u00f8bsforbindelser."
+        },
+        {
+          "text": "Up-regulering",
+          "isCorrect": false,
+          "rationale": "Dette begreb d\u00e6kker over en stigning i antallet af receptorer p\u00e5 en cellemembran som reaktion p\u00e5 lav stimulering."
+        }
+      ],
+      "hint": "T\u00e6nk p\u00e5 ordet for ting, der l\u00f8ber sammen mod et f\u00e6lles punkt."
+    },
+    {
+      "question": "Hvad er den vigtigste funktionelle forskel p\u00e5 ionotrope og metabotrope receptorer (G-protein-koblede receptorer)?",
+      "answerOptions": [
+        {
+          "text": "Metabotrope receptorer kan amplificere signaler via sekund\u00e6re budbringere",
+          "isCorrect": true,
+          "rationale": "Hvor ionotrope receptorer blot \u00e5bner en kanal, kan metabotrope receptorer starte kaskader, der p\u00e5virker mange ionkanaler og cellul\u00e6re processer."
+        },
+        {
+          "text": "Ionotrope receptorer er betydeligt langsommere til at reagere p\u00e5 transmittere",
+          "isCorrect": false,
+          "rationale": "Ionotrope receptorer er faktisk de hurtigste, da de danner en direkte kanal gennem membranen umiddelbart efter binding."
+        },
+        {
+          "text": "Kun ionotrope receptorer findes i centralnervesystemet",
+          "isCorrect": false,
+          "rationale": "Begge typer findes overalt i hjernen og arbejder ofte sammen om at integrere komplekse signaler."
+        },
+        {
+          "text": "Metabotrope receptorer reagerer kun p\u00e5 elektriske signaler frem for kemiske",
+          "isCorrect": false,
+          "rationale": "Begge typer er ligand-styrede, hvilket betyder, at de begge aktiveres af kemiske stoffer som neurotransmittere."
+        }
+      ],
+      "hint": "T\u00e6nk p\u00e5 kompleksiteten og varigheden af det signal, der genereres inde i den modtagende celle."
+    },
+    {
+      "question": "Hvad afsl\u00f8rede Otto Loewis eksperiment med to fr\u00f8hjerter om nervesystemets natur?",
+      "answerOptions": [
+        {
+          "text": "At kommunikation mellem neuroner og m\u00e5lorganer involverer kemiske stoffer",
+          "isCorrect": true,
+          "rationale": "Ved at overf\u00f8re v\u00e6ske fra et stimuleret hjerte til et andet viste han, at en kemisk substans ('Vagusstoff') var ansvarlig for at s\u00e6nke hjerterytmen."
+        },
+        {
+          "text": "At elektricitet er den eneste form for signalering i hjertet",
+          "isCorrect": false,
+          "rationale": "Loewis eksperiment modbeviste netop denne hypotese ved at vise, at et kemisk mellemled var n\u00f8dvendigt for at overf\u00f8re effekten."
+        },
+        {
+          "text": "At alle synapser i kroppen er excitatoriske som standard",
+          "isCorrect": false,
+          "rationale": "Eksperimentet viste faktisk en inhibitorisk effekt, da stimulering af vagusnerven fik hjertet til at sl\u00e5 langsommere."
+        },
+        {
+          "text": "At hjertet styres uafh\u00e6ngigt af hjernen via det somatiske nervesystem",
+          "isCorrect": false,
+          "rationale": "Eksperimentet demonstrerede netop forbindelsen mellem hjernen (vagusnerven) og det autonome system via kemisk signalering."
+        }
+      ],
+      "hint": "Fokuser p\u00e5 overf\u00f8rslen af v\u00e6sken mellem de to beholdere i eksperimentet."
+    },
+    {
+      "question": "Hvilket f\u00e6nomen beskriver en genetisk betinget fejl i ionkanalers struktur eller funktion, som kan f\u00f8re til lidelser som epilepsi?",
+      "answerOptions": [
+        {
+          "text": "Channelopathy",
+          "isCorrect": true,
+          "rationale": "Begrebet d\u00e6kker over sygdomme for\u00e5rsaget af mutationer i gener, der koder for ionkanaler, hvilket forstyrrer cellernes elektriske stabilitet."
+        },
+        {
+          "text": "Neuropati",
+          "isCorrect": false,
+          "rationale": "Dette er en generel betegnelse for nerveskader eller dysfunktion, men refererer ikke specifikt til de molekyl\u00e6re fejl i ionkanalerne."
+        },
+        {
+          "text": "Synaptopati",
+          "isCorrect": false,
+          "rationale": "Selvom det minder om det, refererer dette bredere til fejl i selve synapsen, hvorimod kildematerialet fokuserer specifikt p\u00e5 kanalfejl."
+        },
+        {
+          "text": "Kindling",
+          "isCorrect": false,
+          "rationale": "Kindling er en eksperimentel metode til at fremprovokere anfald gennem gentagen stimulering, ikke en betegnelse for en genetisk fejl."
+        }
+      ],
+      "hint": "Selve navnet kombinerer det biologiske ord for 'kanal' med det gr\u00e6ske ord for 'lidelse'."
+    },
+    {
+      "question": "Hvorfor er 'event-related potentials' ($ERPs$) nyttige til at vurdere h\u00f8relsen hos sp\u00e6db\u00f8rn, der ikke kan kommunikere verbalt?",
+      "answerOptions": [
+        {
+          "text": "De m\u00e5ler hjernens automatiske elektriske respons p\u00e5 lydstimuli via gennemsnitsberegning",
+          "isCorrect": true,
+          "rationale": "Ved at pr\u00e6sentere lyde gentagne gange og midle $EEG$-signalerne kan man isolere den specifikke auditive respons fra baggrundsst\u00f8jen."
+        },
+        {
+          "text": "De kan forudsige pr\u00e6cis, hvilke ord et barn vil l\u00e6re f\u00f8rst",
+          "isCorrect": false,
+          "rationale": "$ERPs$ m\u00e5ler sensorisk og kognitiv proceshastighed, men kan ikke forudsige specifikt sprogligt indhold."
+        },
+        {
+          "text": "De erstatter behovet for fysiske elektroder ved brug af infrar\u00f8dt lys",
+          "isCorrect": false,
+          "rationale": "$ERPs$ kr\u00e6ver stadig $EEG$-elektroder p\u00e5 skalpen for at opfange de elektriske potentialer fra hjernen."
+        },
+        {
+          "text": "De m\u00e5ler udelukkende muskelreflekser i \u00f8ret frem for hjerneaktivitet",
+          "isCorrect": false,
+          "rationale": "$ERPs$ er defineret ved deres oprindelse i centralnervesystemet, selvom de udl\u00f8ses af sensoriske input."
+        }
+      ],
+      "hint": "T\u00e6nk p\u00e5 hvordan man kan tr\u00e6kke et svagt, specifikt signal ud af hjernens konstante elektriske 'st\u00f8j'."
+    }
+  ]
+}

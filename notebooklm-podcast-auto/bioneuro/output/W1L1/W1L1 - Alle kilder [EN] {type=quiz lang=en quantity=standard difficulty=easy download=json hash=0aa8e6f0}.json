@@ -1,0 +1,265 @@
+{
+  "title": "Neuroscience Quiz",
+  "questions": [
+    {
+      "question": "Approximately how many neurons (nerve cells) are found in the average human brain?",
+      "answerOptions": [
+        {
+          "text": "100 trillion",
+          "isCorrect": false,
+          "rationale": "While this number is closer to the estimated number of synapses, it greatly exceeds the actual count of individual nerve cells."
+        },
+        {
+          "text": "86 billion",
+          "isCorrect": true,
+          "rationale": "Current scientific estimates place the number of neurons in the human brain at approximately $86 \\times 10^{9}$."
+        },
+        {
+          "text": "15 million",
+          "isCorrect": false,
+          "rationale": "This number is significantly lower than the actual cellular complexity of the brain and corresponds more closely to the number of people who suffer from strokes annually."
+        },
+        {
+          "text": "10 billion",
+          "isCorrect": false,
+          "rationale": "This was a common older estimate, but modern counting techniques have refined the number to be significantly higher."
+        }
+      ],
+      "hint": "The text mentions this specific 'billion' figure when discussing the sheer scale of brain hardware."
+    },
+    {
+      "question": "What is the term for the brain's ability to be physically changed by experience and the environment throughout life?",
+      "answerOptions": [
+        {
+          "text": "Ontogeny",
+          "isCorrect": false,
+          "rationale": "This term refers to the process of an individual changing over their entire lifespan, rather than the specific mechanism of neural change."
+        },
+        {
+          "text": "Reductionism",
+          "isCorrect": false,
+          "rationale": "This is a scientific strategy of breaking down complex systems into smaller parts, not a biological property of the brain."
+        },
+        {
+          "text": "Neuroplasticity",
+          "isCorrect": true,
+          "rationale": "Derived from the Greek word for 'to mold,' this term describes the nervous system's capacity to reorganize its structure or functions."
+        },
+        {
+          "text": "Dualism",
+          "isCorrect": false,
+          "rationale": "This is a philosophical concept regarding the separation of mind and body, not a description of physical brain changes."
+        }
+      ],
+      "hint": "Think of a word that describes materials that are flexible or capable of being molded into different shapes."
+    },
+    {
+      "question": "In a behavioral neuroscience experiment, an investigator administers a hormone to a group of rats to see if it changes their mating behavior. In this study, the hormone administration is the:",
+      "answerOptions": [
+        {
+          "text": "Dependent variable",
+          "isCorrect": false,
+          "rationale": "The dependent variable is the factor being measured to see if it changes, which in this case would be the mating behavior."
+        },
+        {
+          "text": "Independent variable",
+          "isCorrect": true,
+          "rationale": "The independent variable is the factor that is directly manipulated by the experimenter to observe its effects."
+        },
+        {
+          "text": "Correlation coefficient",
+          "isCorrect": false,
+          "rationale": "This is a statistical measure of the relationship between two variables, not a component of experimental manipulation."
+        },
+        {
+          "text": "Somatic effect",
+          "isCorrect": false,
+          "rationale": "This term usually describes the result of a manipulation rather than the manipulation itself."
+        }
+      ],
+      "hint": "Consider which variable is the 'cause' being introduced by the scientist."
+    },
+    {
+      "question": "Which historical figure incorrectly believed that the heart was the seat of mental capacities and the brain was simply a cooling unit for the blood?",
+      "answerOptions": [
+        {
+          "text": "Galen",
+          "isCorrect": false,
+          "rationale": "Galen actually recognized the brain's importance through his work with gladiators and their head injuries."
+        },
+        {
+          "text": "Leonardo da Vinci",
+          "isCorrect": false,
+          "rationale": "Da Vinci was a pioneer of brain anatomy and conducted direct observations of the cerebral ventricles."
+        },
+        {
+          "text": "Aristotle",
+          "isCorrect": true,
+          "rationale": "Despite his prominence as a scientist, Aristotle believed mental functions were localized in the heart."
+        },
+        {
+          "text": "Ren\u00e9 Descartes",
+          "isCorrect": false,
+          "rationale": "Descartes focused on the brain as the site where the soul and body interact, specifically through the pineal gland."
+        }
+      ],
+      "hint": "This ancient Greek scientist's view is still reflected in modern idioms like 'learning by heart'."
+    },
+    {
+      "question": "The scientific strategy of breaking a system down into increasingly smaller parts to understand it is known as:",
+      "answerOptions": [
+        {
+          "text": "Somatic intervention",
+          "isCorrect": false,
+          "rationale": "This is a specific research approach involving body manipulation, not the general strategy of hierarchical analysis."
+        },
+        {
+          "text": "Reductionism",
+          "isCorrect": true,
+          "rationale": "Reductionism involves explaining complex phenomena by analyzing their simpler constituent parts."
+        },
+        {
+          "text": "Phrenology",
+          "isCorrect": false,
+          "rationale": "This was a debunked nineteenth-century practice of reading skull bumps to determine personality traits."
+        },
+        {
+          "text": "Ontogeny",
+          "isCorrect": false,
+          "rationale": "This term describes the development of an individual over time rather than a method of scientific analysis."
+        }
+      ],
+      "hint": "The name of this approach suggests 'reducing' a complex problem to its basic elements."
+    },
+    {
+      "question": "Ren\u00e9 Descartes is most famous in the history of neuroscience for promoting the idea of dualism, which suggests that:",
+      "answerOptions": [
+        {
+          "text": "The brain and behavior are reciprocal",
+          "isCorrect": false,
+          "rationale": "While the book emphasizes this reciprocal relationship, it is a modern neuroscience concept, not Descartes's dualism."
+        },
+        {
+          "text": "Mental functions are distributed equally across the whole brain",
+          "isCorrect": false,
+          "rationale": "This was the view held by opponents of localization, whereas Descartes looked for a specific point of contact between mind and body."
+        },
+        {
+          "text": "Humans have a nonmaterial soul and a material body",
+          "isCorrect": true,
+          "rationale": "Dualism is the belief that the mind (or soul) is a spiritual entity distinct from the physical matter of the body."
+        },
+        {
+          "text": "Nerves conduct electricity in both directions simultaneously",
+          "isCorrect": false,
+          "rationale": "Descartes was unaware of the specific unidirectional nature of nerve conduction, but this was not the core of his dualistic theory."
+        }
+      ],
+      "hint": "Think about the philosophical division between the physical 'machine' of the body and the intangible 'self'."
+    },
+    {
+      "question": "Which nineteenth-century practice erroneously claimed that personality traits could be determined by measuring bumps on the skull?",
+      "answerOptions": [
+        {
+          "text": "Neuroplasticity",
+          "isCorrect": false,
+          "rationale": "This is a valid scientific concept regarding neural change, not a method of skull measurement."
+        },
+        {
+          "text": "Phrenology",
+          "isCorrect": true,
+          "rationale": "Phrenologists believed that enlargements in specific brain regions would cause detectable bumps on the overlying skull."
+        },
+        {
+          "text": "Biological psychology",
+          "isCorrect": false,
+          "rationale": "This is another name for behavioral neuroscience, a legitimate field of study."
+        },
+        {
+          "text": "Reductionism",
+          "isCorrect": false,
+          "rationale": "This is an analytical philosophy used across sciences, not a specific skull-reading practice."
+        }
+      ],
+      "hint": "This 'neuromythology' was a precursor to modern ideas of localization of function."
+    },
+    {
+      "question": "What percentage of the body's total oxygen consumption is used by the human brain?",
+      "answerOptions": [
+        {
+          "text": "$50\\%$",
+          "isCorrect": false,
+          "rationale": "This would be a disproportionately high amount of energy for one organ, even one as active as the brain."
+        },
+        {
+          "text": "$10\\%$",
+          "isCorrect": false,
+          "rationale": "This is an underestimate of the brain's actual metabolic demands relative to the rest of the body."
+        },
+        {
+          "text": "$20\\%$",
+          "isCorrect": true,
+          "rationale": "Despite making up only a small fraction of body weight, the brain's high activity requires about one-fifth of the body's oxygen."
+        },
+        {
+          "text": "$5\\%$",
+          "isCorrect": false,
+          "rationale": "This figure is too low given that the brain is a highly metabolically active organ requiring constant fuel."
+        }
+      ],
+      "hint": "It is exactly one-fifth of the total oxygen used by the body."
+    },
+    {
+      "question": "Which research approach is used when a scientist observes how much a brain measure (like brain size) varies with a behavioral measure (like learning speed)?",
+      "answerOptions": [
+        {
+          "text": "Correlation",
+          "isCorrect": true,
+          "rationale": "Correlation measures the extent to which two variables covary without directly manipulating either one."
+        },
+        {
+          "text": "Somatic intervention",
+          "isCorrect": false,
+          "rationale": "This would require the scientist to actively change the brain structure to see if behavior changes."
+        },
+        {
+          "text": "Behavioral intervention",
+          "isCorrect": false,
+          "rationale": "This would require the scientist to actively change the behavior to see if the brain structure changes."
+        },
+        {
+          "text": "Phrenology",
+          "isCorrect": false,
+          "rationale": "Phrenology is a debunked pseudoscience, not a standard scientific approach to relating brain and behavior."
+        }
+      ],
+      "hint": "This approach looks for a link between two variables but does not necessarily prove that one causes the other."
+    },
+    {
+      "question": "Paul Broca's nineteenth-century discovery was critical to neuroscience because it provided evidence for:",
+      "answerOptions": [
+        {
+          "text": "The 10% brain usage myth",
+          "isCorrect": false,
+          "rationale": "Broca's work actually showed that even small regions have specialized, vital functions, contradicting the idea that most of the brain is unused."
+        },
+        {
+          "text": "The pineal gland as the seat of the soul",
+          "isCorrect": false,
+          "rationale": "This was a claim made by Descartes, not Broca."
+        },
+        {
+          "text": "Localization of function",
+          "isCorrect": true,
+          "rationale": "Broca showed that damage to a specific area of the left frontal lobe led to a specific loss of speech production."
+        },
+        {
+          "text": "The heart as the center of emotion",
+          "isCorrect": false,
+          "rationale": "This was Aristotle's ancient view, which Broca's brain-focused work helped move beyond."
+        }
+      ],
+      "hint": "Broca identified a specific region in the frontal lobe that was exclusively tied to speech."
+    }
+  ]
+}

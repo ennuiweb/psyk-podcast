@@ -1,0 +1,395 @@
+{
+  "title": "Vision Quiz",
+  "questions": [
+    {
+      "question": "In the case of patient D.F., who suffered from carbon monoxide poisoning, what specific visual deficit was observed despite her ability to grasp objects accurately?",
+      "answerOptions": [
+        {
+          "text": "The inability to name or recognise objects and faces.",
+          "isCorrect": true,
+          "rationale": "D.F. exhibited a dissociation between 'vision for perception' (recognition) and 'vision for action' (guided movement)."
+        },
+        {
+          "text": "Total blindness in the entire visual field.",
+          "isCorrect": false,
+          "rationale": "The source material clarifies that she was 'not entirely blind' as she could still describe material properties and navigate objects."
+        },
+        {
+          "text": "The loss of the ability to perceive colour and depth.",
+          "isCorrect": false,
+          "rationale": "D.F. could describe the shiny aluminium and red plastic of a flashlight, indicating some preserved colour and material perception."
+        },
+        {
+          "text": "An inability to perceive touch or move her limbs.",
+          "isCorrect": false,
+          "rationale": "The text states she could understand questions, move her limbs, and perceive touch normally; her issues were purely visual."
+        }
+      ],
+      "hint": "Consider the difference between knowing what an object is and knowing how to interact with it physically."
+    },
+    {
+      "question": "What is the approximate range of wavelengths in nanometres ($nm$) that the human visual system is capable of detecting?",
+      "answerOptions": [
+        {
+          "text": "$400$ to $700$ $nm$",
+          "isCorrect": true,
+          "rationale": "Human vision is restricted to a narrow band of the electromagnetic spectrum between these two values."
+        },
+        {
+          "text": "$10$ to $400$ $nm$",
+          "isCorrect": false,
+          "rationale": "This range typically describes ultraviolet radiation, which is mostly invisible to the human eye."
+        },
+        {
+          "text": "$700$ to $1000$ $nm$",
+          "isCorrect": false,
+          "rationale": "Wavelengths longer than $700$ $nm$ enter the infrared range, which we perceive as heat rather than light."
+        },
+        {
+          "text": "$10^{-12}$ to $10^{-8}$ $nm$",
+          "isCorrect": false,
+          "rationale": "These extremely short wavelengths correspond to gamma rays and X-rays, not visible light."
+        }
+      ],
+      "hint": "The visible spectrum is a very narrow band located between ultraviolet and infrared radiation."
+    },
+    {
+      "question": "Which structure of the eye is primarily responsible for the majority of the light refraction required to form an image on the retina?",
+      "answerOptions": [
+        {
+          "text": "The cornea",
+          "isCorrect": true,
+          "rationale": "The fixed curvature of the cornea provides the initial and most significant bending of light rays entering the eye."
+        },
+        {
+          "text": "The lens",
+          "isCorrect": false,
+          "rationale": "While the lens is crucial for fine-tuning focus through accommodation, it is not the primary refractive surface."
+        },
+        {
+          "text": "The iris",
+          "isCorrect": false,
+          "rationale": "The iris controls the amount of light entering the eye by adjusting pupil size, but it does not refract light to form images."
+        },
+        {
+          "text": "The ciliary muscle",
+          "isCorrect": false,
+          "rationale": "This muscle alters the shape of the lens for focusing but is not a refractive medium itself."
+        }
+      ],
+      "hint": "Think of the transparent outer layer whose curvature is permanent and fixed."
+    },
+    {
+      "question": "What occurs during the process of accommodation when a person focuses on a nearby object?",
+      "answerOptions": [
+        {
+          "text": "The ciliary muscles contract to change the shape of the lens.",
+          "isCorrect": true,
+          "rationale": "Accommodation in mammals involves muscular control to alter lens curvature for sharp retinal images at varying distances."
+        },
+        {
+          "text": "The lens moves forward and backward within the eyeball.",
+          "isCorrect": false,
+          "rationale": "This mechanism is used by fish and reptiles, whereas mammals and birds change the lens shape instead."
+        },
+        {
+          "text": "The extraocular muscles pull the eyeball into a more elongated shape.",
+          "isCorrect": false,
+          "rationale": "Extraocular muscles control the position and movement of the eye in the socket, not the internal focus."
+        },
+        {
+          "text": "The pupil constricts to increase the depth of field.",
+          "isCorrect": false,
+          "rationale": "While pupil size affects light and depth of field, 'accommodation' specifically refers to the lens adjustment process."
+        }
+      ],
+      "hint": "Focusing involves internal eye muscles acting on a flexible structure behind the pupil."
+    },
+    {
+      "question": "Which of the following cell types in the retina are responsible for generating action potentials?",
+      "answerOptions": [
+        {
+          "text": "Ganglion cells",
+          "isCorrect": true,
+          "rationale": "Unlike other retinal neurons that use graded potentials, ganglion cells must transmit signals over long distances via the optic nerve using action potentials."
+        },
+        {
+          "text": "Photoreceptors (rods and cones)",
+          "isCorrect": false,
+          "rationale": "Rods and cones respond to light with graded hyperpolarising potentials rather than all-or-nothing spikes."
+        },
+        {
+          "text": "Bipolar cells",
+          "isCorrect": false,
+          "rationale": "Bipolar cells use graded local potentials to relay information from receptors to ganglion cells."
+        },
+        {
+          "text": "Horizontal cells",
+          "isCorrect": false,
+          "rationale": "Horizontal cells facilitate lateral interactions through graded potentials to modulate signal transmission."
+        }
+      ],
+      "hint": "Only the cells whose axons form the optic nerve and travel to the brain require this type of long-distance signalling."
+    },
+    {
+      "question": "What is the initial electrical effect of light striking a rod photoreceptor in the vertebrate retina?",
+      "answerOptions": [
+        {
+          "text": "Hyperpolarisation of the receptor membrane.",
+          "isCorrect": true,
+          "rationale": "Light triggers a biochemical cascade that closes $Na^{+}$ channels, making the interior of the cell more negative."
+        },
+        {
+          "text": "Depolarisation of the receptor membrane.",
+          "isCorrect": false,
+          "rationale": "While most sensory receptors depolarise when stimulated, vertebrate photoreceptors are unique in that they hyperpolarise."
+        },
+        {
+          "text": "Immediate triggering of an action potential.",
+          "isCorrect": false,
+          "rationale": "Photoreceptors do not produce action potentials; they communicate via graded changes in neurotransmitter release."
+        },
+        {
+          "text": "Opening of $Na^{+}$ channels to allow ion influx.",
+          "isCorrect": false,
+          "rationale": "Light actually causes these channels to close; they are held open in the dark by cyclic $GMP$ ($cGMP$)."
+        }
+      ],
+      "hint": "Consider how the closing of ion channels affects the resting potential of a cell."
+    },
+    {
+      "question": "In the phototransduction cascade, what is the role of the enzyme phosphodiesterase ($PDE$)?",
+      "answerOptions": [
+        {
+          "text": "It breaks down cyclic $GMP$ ($cGMP$), leading to the closure of $Na^{+}$ channels.",
+          "isCorrect": true,
+          "rationale": "The reduction in $cGMP$ concentration directly causes the sodium channels to close, resulting in hyperpolarisation."
+        },
+        {
+          "text": "It activates the G protein transducin.",
+          "isCorrect": false,
+          "rationale": "It is the activated transducin that stimulates $PDE$, not the other way around."
+        },
+        {
+          "text": "It causes retinal to dissociate from opsin.",
+          "isCorrect": false,
+          "rationale": "The dissociation of retinal from opsin is triggered directly by the absorption of a photon, which precedes $PDE$ activation."
+        },
+        {
+          "text": "It acts as a pump to remove $Ca^{2+}$ from the cell.",
+          "isCorrect": false,
+          "rationale": "While calcium levels are involved in adaptation, $PDE$ specifically targets nucleotide messengers like $cGMP$."
+        }
+      ],
+      "hint": "This enzyme acts on the molecule that keeps sodium channels open in the dark."
+    },
+    {
+      "question": "Which statement best describes the 'scotopic system' in the human eye?",
+      "answerOptions": [
+        {
+          "text": "It uses rods, has high sensitivity to light, and provides low visual acuity.",
+          "isCorrect": true,
+          "rationale": "The scotopic system is designed for night vision where light is scarce, sacrificing detail for the ability to detect weak stimuli."
+        },
+        {
+          "text": "It uses cones, operates in bright light, and allows for colour vision.",
+          "isCorrect": false,
+          "rationale": "This description defines the photopic system, which requires higher light levels and provides high acuity."
+        },
+        {
+          "text": "It is concentrated primarily in the fovea.",
+          "isCorrect": false,
+          "rationale": "Rods are actually absent from the fovea and are more numerous in the periphery of the retina."
+        },
+        {
+          "text": "It involves a one-to-one mapping between receptors and ganglion cells.",
+          "isCorrect": false,
+          "rationale": "The scotopic system features high convergence, where many rods provide information to a single ganglion cell."
+        }
+      ],
+      "hint": "Recall the Greek root 'skotos', meaning darkness, and how it relates to our ability to see at night."
+    },
+    {
+      "question": "How does 'range fractionation' assist the visual system in processing a wide range of light intensities?",
+      "answerOptions": [
+        {
+          "text": "By using different populations of receptors (rods and cones) to handle different intensity thresholds.",
+          "isCorrect": true,
+          "rationale": "This mechanism allows the eye to cover a massive range of light by specialising certain cells for low light and others for high light."
+        },
+        {
+          "text": "By rapidly changing the diameter of the pupil to block excess photons.",
+          "isCorrect": false,
+          "rationale": "While the pupil does adjust, it only accounts for a $16$-fold change, which is insufficient for the billion-fold range of sensitivity."
+        },
+        {
+          "text": "By splitting the visual field into segments processed by different hemispheres.",
+          "isCorrect": false,
+          "rationale": "Visual field splitting relates to topographic mapping and binocularity, not to intensity sensitivity."
+        },
+        {
+          "text": "By constantly shifting the fovea via tiny saccades.",
+          "isCorrect": false,
+          "rationale": "Saccades prevent photoreceptor adaptation and keep images fresh, but they don't handle intensity ranges."
+        }
+      ],
+      "hint": "Think about how different specialised tools might be used for small versus large tasks."
+    },
+    {
+      "question": "What anatomical feature of the fovea contributes to its exceptionally high visual acuity?",
+      "answerOptions": [
+        {
+          "text": "The displacement of blood vessels and upper cell layers allows light to reach cones directly.",
+          "isCorrect": true,
+          "rationale": "By clearing the path of obstacles, the fovea ensures that the light falling on its densely packed cones is as undistorted as possible."
+        },
+        {
+          "text": "A high concentration of rods enables better vision in dim environments.",
+          "isCorrect": false,
+          "rationale": "The fovea is actually devoid of rods; it relies entirely on cones."
+        },
+        {
+          "text": "The presence of the optic disc where axons leave the eye.",
+          "isCorrect": false,
+          "rationale": "The optic disc is the blind spot, located on the nasal side of the fovea, and contains no receptors."
+        },
+        {
+          "text": "A higher ratio of ganglion cells to cones compared to the periphery.",
+          "isCorrect": false,
+          "rationale": "While foveal cones often have a one-to-one relationship with ganglion cells, acuity is primarily driven by receptor density and unobstructed light path."
+        }
+      ],
+      "hint": "Consider the literal meaning of 'fovea' (pit) and why light might travel more cleanly there."
+    },
+    {
+      "question": "What is the primary cause of the 'blind spot' in the human visual field?",
+      "answerOptions": [
+        {
+          "text": "The exit point of the optic nerve and blood vessels lacks photoreceptors.",
+          "isCorrect": true,
+          "rationale": "The optic disc is a region where neural wiring and plumbing leave the eye, leaving no space for light-sensitive cells."
+        },
+        {
+          "text": "A lack of cortical representation for the extreme periphery of the retina.",
+          "isCorrect": false,
+          "rationale": "The blind spot is a retinal phenomenon, not a result of a lack of brain circuits."
+        },
+        {
+          "text": "Excessive lateral inhibition from neighbouring horizontal cells.",
+          "isCorrect": false,
+          "rationale": "Lateral inhibition enhances edges but does not create a total void of perception in a specific region."
+        },
+        {
+          "text": "The shadow cast by the iris on the retina.",
+          "isCorrect": false,
+          "rationale": "The iris defines the pupil and doesn't cast a shadow that results in a permanent blind spot in the central-nasal field."
+        }
+      ],
+      "hint": "This area is also known as the optic disc."
+    },
+    {
+      "question": "Which neural process explains why uniform gray bars may appear lighter on one edge and darker on the other?",
+      "answerOptions": [
+        {
+          "text": "Lateral inhibition",
+          "isCorrect": true,
+          "rationale": "Retinal cells inhibit their neighbours, which amplifies the contrast at the boundaries between different light intensities."
+        },
+        {
+          "text": "Accommodation",
+          "isCorrect": false,
+          "rationale": "Accommodation is the focusing of the lens and does not involve the contrast enhancement of brightness perception."
+        },
+        {
+          "text": "Photoreceptor adaptation",
+          "isCorrect": false,
+          "rationale": "Adaptation adjusts the general sensitivity of receptors to ambient light levels but is not the cause of Mach bands or edge effects."
+        },
+        {
+          "text": "Convergence",
+          "isCorrect": false,
+          "rationale": "Convergence refers to multiple receptors feeding into one ganglion cell, which increases sensitivity but decreases acuity."
+        }
+      ],
+      "hint": "This involves interconnected neurons in a region suppressing the activity of their neighbours."
+    },
+    {
+      "question": "In the human visual pathway, which fibres cross the midline at the optic chiasm?",
+      "answerOptions": [
+        {
+          "text": "Axons from the nasal hemiretina",
+          "isCorrect": true,
+          "rationale": "Fibres from the half of the retina closest to the nose cross over, ensuring each hemisphere processes the opposite visual field."
+        },
+        {
+          "text": "Axons from the temporal hemiretina",
+          "isCorrect": false,
+          "rationale": "Fibres from the temporal (outer) half of the retina stay on the same side of the brain."
+        },
+        {
+          "text": "All axons from the left eye cross to the right side.",
+          "isCorrect": false,
+          "rationale": "In humans, only a portion of the fibres cross; this partial decussation is vital for binocular depth perception."
+        },
+        {
+          "text": "Only the axons originating from the fovea.",
+          "isCorrect": false,
+          "rationale": "Crossing is determined by whether the receptors are on the nasal or temporal side of the retina, regardless of their proximity to the fovea."
+        }
+      ],
+      "hint": "Think about which part of the retina receives light from the outer periphery of the visual field."
+    },
+    {
+      "question": "In the primate lateral geniculate nucleus ($LGN$), which layers are characterized by large neurons and a lack of colour sensitivity?",
+      "answerOptions": [
+        {
+          "text": "Magnocellular layers",
+          "isCorrect": true,
+          "rationale": "The two inner layers (layers $1$ and $2$) contain large cells that process motion and depth but do not distinguish between wavelengths."
+        },
+        {
+          "text": "Parvocellular layers",
+          "isCorrect": false,
+          "rationale": "These layers contain smaller cells that are highly sensitive to colour and fine detail."
+        },
+        {
+          "text": "Striate layers",
+          "isCorrect": false,
+          "rationale": "The term 'striate' refers to the primary visual cortex ($V1$), not the layers within the $LGN$."
+        },
+        {
+          "text": "Horizontal layers",
+          "isCorrect": false,
+          "rationale": "The $LGN$ is organised into six distinct layers, but 'horizontal' is a name for retinal interneurons, not $LGN$ layers."
+        }
+      ],
+      "hint": "The name of these layers comes from the Latin word for 'large'."
+    },
+    {
+      "question": "What is the defining characteristic of a 'complex cortical cell' in the primary visual cortex, as described by Hubel and Wiesel?",
+      "answerOptions": [
+        {
+          "text": "It responds to a bar of a specific orientation anywhere within a relatively large area.",
+          "isCorrect": true,
+          "rationale": "Unlike simple cells, complex cells show spatial invariance, responding to the correct stimulus regardless of its exact location in the field."
+        },
+        {
+          "text": "It responds only to spots of light in a concentric on-center/off-surround pattern.",
+          "isCorrect": false,
+          "rationale": "This pattern describes $LGN$ and retinal ganglion cells, whereas cortical cells prefer elongated bars or edges."
+        },
+        {
+          "text": "It responds only to specific human faces, such as those of famous actresses.",
+          "isCorrect": false,
+          "rationale": "Such highly specific 'grandmother cells' are hypothesized for higher-order visual areas, not the basic simple/complex cells of $V1$."
+        },
+        {
+          "text": "It is located exclusively in layer $IV$ of the striate cortex.",
+          "isCorrect": false,
+          "rationale": "Layer $IV$ is where $LGN$ axons arrive; simple and complex cells are found throughout the various layers of the cortex."
+        }
+      ],
+      "hint": "These cells build upon the input of simpler bar detectors but are less fussy about the exact position."
+    }
+  ]
+}

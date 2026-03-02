@@ -1,0 +1,265 @@
+{
+  "title": "Motorik Quiz",
+  "questions": [
+    {
+      "question": "Hvilken type motorisk kontrolmekanisme prioriterer n\u00f8jagtighed ved at bruge kontinuerlig feedback til at foretage korrektioner?",
+      "answerOptions": [
+        {
+          "text": "Open-loop kontrol",
+          "isCorrect": false,
+          "rationale": "Denne type mekanisme prioriterer hastighed over n\u00f8jagtighed og venter ikke p\u00e5 feedback-signaler."
+        },
+        {
+          "text": "Lukket sl\u00f8jfe-kontrol (Closed-loop)",
+          "isCorrect": true,
+          "rationale": "I et lukket sl\u00f8jfe-system flyder information tilbage fra det, der kontrolleres, for at minimere fejl og sikre pr\u00e6cision."
+        },
+        {
+          "text": "Ballistisk bev\u00e6gelse",
+          "isCorrect": false,
+          "rationale": "Dette refererer til hurtige bev\u00e6gelser, der er pr\u00e6programmerede og ikke kan \u00e6ndres undervejs via feedback."
+        },
+        {
+          "text": "Refleksbue",
+          "isCorrect": false,
+          "rationale": "Selvom det er en automatisk reaktion, beskriver det ikke den overordnede ingeni\u00f8rm\u00e6ssige kontrolmodel for n\u00f8jagtighed via feedback."
+        }
+      ],
+      "hint": "Overvej analogien med at k\u00f8re bil, hvor visuel information konstant justerer styringen."
+    },
+    {
+      "question": "Hvilken neurotransmitter frigives af motorneuroner ved den neuromuskul\u00e6re forbindelse ($NMJ$) for at udl\u00f8se muskelkontraktion?",
+      "answerOptions": [
+        {
+          "text": "Dopamin",
+          "isCorrect": false,
+          "rationale": "Dopamin er involveret i hjernens bel\u00f8nningssystem og motoriske planl\u00e6gning, men ikke direkte ved muskelovergangen."
+        },
+        {
+          "text": "Glutamat",
+          "isCorrect": false,
+          "rationale": "Glutamat er den prim\u00e6re excitatoriske transmitter i centralnervesystemet, men ikke den prim\u00e6re transmitter ved $NMJ$."
+        },
+        {
+          "text": "Serotonin",
+          "isCorrect": false,
+          "rationale": "Serotonin regulerer hum\u00f8r og mange andre funktioner, men aktiverer ikke de tv\u00e6rstribede muskler direkte."
+        },
+        {
+          "text": "Acetylcholin ($ACh$)",
+          "isCorrect": true,
+          "rationale": "Motorneuroner frigiver specifikt $ACh$, som binder sig til receptorer p\u00e5 muskelfiberen og starter den molekyl\u00e6re proces for kontraktion."
+        }
+      ],
+      "hint": "Dette er det samme stof, som blokeres af visse slangegifte for at for\u00e5rsage lammelse."
+    },
+    {
+      "question": "Hvad overv\u00e5ger muskelspoler (muscle spindles) prim\u00e6rt i det proprioceptive system?",
+      "answerOptions": [
+        {
+          "text": "Muskelsp\u00e6nding (tension)",
+          "isCorrect": false,
+          "rationale": "Det er Golgi-seneorganerne, der er placeret i senerne, som m\u00e5ler den kraft eller sp\u00e6nding, der genereres."
+        },
+        {
+          "text": "Muskell\u00e6ngde og str\u00e6k",
+          "isCorrect": true,
+          "rationale": "Muskelspoler ligger parallelt med muskelfibrene og sender signaler, n\u00e5r musklen forl\u00e6nges."
+        },
+        {
+          "text": "Blodgennemstr\u00f8mning i musklen",
+          "isCorrect": false,
+          "rationale": "Dette overv\u00e5ges af det vaskul\u00e6re system og metaboliske receptorer, ikke af muskelspoler."
+        },
+        {
+          "text": "Knoglet\u00e6thed",
+          "isCorrect": false,
+          "rationale": "Proprioception handler om kroppens position og bev\u00e6gelse, ikke om knoglernes strukturelle t\u00e6thed."
+        }
+      ],
+      "hint": "T\u00e6nk p\u00e5 hvilken sensor, der ville reagere f\u00f8rst, hvis nogen lagde en tung bog i din udstrakte h\u00e5nd."
+    },
+    {
+      "question": "Hvilken sygdom er en autoimmun lidelse, hvor kroppens eget immunsystem angriber $ACh$-receptorerne ved den neuromuskul\u00e6re forbindelse?",
+      "answerOptions": [
+        {
+          "text": "Amyotrofisk lateral sklerose ($ALS$)",
+          "isCorrect": false,
+          "rationale": "$ALS$ involverer selve motorneuronerne, der d\u00f8r, snarere end et angreb p\u00e5 receptorerne."
+        },
+        {
+          "text": "Duchenne muskeldystrofi",
+          "isCorrect": false,
+          "rationale": "Dette er en genetisk sygdom for\u00e5rsaget af mangel p\u00e5 proteinet dystrophin, ikke et autoimmunt angreb."
+        },
+        {
+          "text": "Myasthenia gravis",
+          "isCorrect": true,
+          "rationale": "Ved denne sygdom blokeres eller \u00f8del\u00e6gges receptorerne, hvilket f\u00f8rer til gradvis muskelsv\u00e6kkelse."
+        },
+        {
+          "text": "Polio",
+          "isCorrect": false,
+          "rationale": "Polio skyldes en virusinfektion, der \u00f8del\u00e6gger motorneuroner i rygmarven."
+        }
+      ],
+      "hint": "Navnet p\u00e5 denne lidelse stammer fra gr\u00e6sk og betyder bogstaveligt 'alvorlig muskelsvaghed'."
+    },
+    {
+      "question": "Hvad er funktionen af 'centrale m\u00f8nstergeneratorer' ($CPG$) i rygmarven?",
+      "answerOptions": [
+        {
+          "text": "At lagre langtidshukommelse for motoriske f\u00e6rdigheder",
+          "isCorrect": false,
+          "rationale": "Hukommelse for f\u00e6rdigheder er prim\u00e6rt placeret i hjernen, ikke i rygmarvens rytmiske kredsl\u00f8b."
+        },
+        {
+          "text": "At generere rytmiske bev\u00e6gelser som gang",
+          "isCorrect": true,
+          "rationale": "$CPG$ er neurale netv\u00e6rk, der kan producere gentagne m\u00f8nstre af motorisk output uden konstant input fra hjernen."
+        },
+        {
+          "text": "At fungere som den prim\u00e6re kilde til bevidste motoriske planer",
+          "isCorrect": false,
+          "rationale": "Bevidste planer opst\u00e5r i hjernebarken, mens $CPG$ h\u00e5ndterer de automatiserede rytmer."
+        },
+        {
+          "text": "At forbinde sensoriske input direkte med smertereceptorer",
+          "isCorrect": false,
+          "rationale": "Dette beskriver smertebaner, mens $CPG$ specifikt handler om koordineret motorisk aktivitet."
+        }
+      ],
+      "hint": "Overvej hvordan visse dyr stadig kan udf\u00f8re gangbev\u00e6gelser, selvom deres rygmarv er afsk\u00e5ret fra hjernen."
+    },
+    {
+      "question": "Hvilket protein er afg\u00f8rende for muskelfibrenes strukturelle integritet, og mangler ved Duchenne muskeldystrofi?",
+      "answerOptions": [
+        {
+          "text": "Aktin",
+          "isCorrect": false,
+          "rationale": "Aktin er et kontraktilt protein, der findes i alle raske muskelfibre, ikke det specifikke protein knyttet til dystrofi."
+        },
+        {
+          "text": "Dystrophin",
+          "isCorrect": true,
+          "rationale": "Dystrophin fungerer som en vital strukturel st\u00f8tte i muskelcellerne; uden det svinder musklerne ind."
+        },
+        {
+          "text": "Myoglobin",
+          "isCorrect": false,
+          "rationale": "Myoglobin binder ilt i musklerne og giver dem deres m\u00f8rke farve, men er ikke \u00e5rsagen til muskeldystrofi."
+        },
+        {
+          "text": "Myosin",
+          "isCorrect": false,
+          "rationale": "Myosin danner de tykke filamenter i musklen, men er ikke det protein, der mangler ved Duchenne-typen."
+        }
+      ],
+      "hint": "Proteinet deler rod med det latinske ord for 'd\u00e5rlig ern\u00e6ring' eller 'v\u00e6kst'."
+    },
+    {
+      "question": "N\u00e5r en muskel tr\u00e6kker sig sammen, glider to typer proteiner forbi hinanden. Hvad kaldes disse to proteiner?",
+      "answerOptions": [
+        {
+          "text": "Natrium og Kalium",
+          "isCorrect": false,
+          "rationale": "Disse er ioner involveret i aktionspotentialer, ikke de strukturelle proteiner der forkorter musklen."
+        },
+        {
+          "text": "Myosin og Aktin",
+          "isCorrect": true,
+          "rationale": "Muskelkontraktion sker, n\u00e5r myosin-hoveder binder sig til og tr\u00e6kker i aktin-filamenter."
+        },
+        {
+          "text": "Acetylcholin og Dopamin",
+          "isCorrect": false,
+          "rationale": "Disse er neurotransmittere, der sender kemiske signaler mellem celler."
+        },
+        {
+          "text": "Dendritter og Axoner",
+          "isCorrect": false,
+          "rationale": "Dette er dele af et neuron, ikke proteinerne inde i en muskelfiber."
+        }
+      ],
+      "hint": "T\u00e6nk p\u00e5 de tykke og tynde filamenter, der giver tv\u00e6rstribede muskler deres stribede udseende."
+    },
+    {
+      "question": "Hvad beskriver 'den endelige f\u00e6lles vej' (final common pathway) i det motoriske system?",
+      "answerOptions": [
+        {
+          "text": "Den prim\u00e6re motoriske cortex",
+          "isCorrect": false,
+          "rationale": "Cortex er startpunktet for mange kommandoer, men ikke det sidste led f\u00f8r musklen."
+        },
+        {
+          "text": "Basalganglierne",
+          "isCorrect": false,
+          "rationale": "Disse modulerer bev\u00e6gelser, men sender ikke direkte signaler til muskelfibrene."
+        },
+        {
+          "text": "Motorneuronerne i rygmarven",
+          "isCorrect": true,
+          "rationale": "Alle signaler fra hjernen og rygmarven skal passere gennem motorneuronerne for at aktivere musklerne."
+        },
+        {
+          "text": "Cerebellum (Lillehjernen)",
+          "isCorrect": false,
+          "rationale": "Cerebellum koordinerer bev\u00e6gelse, men er ikke det sidste led i kommunikationsk\u00e6den til musklerne."
+        }
+      ],
+      "hint": "Det refererer til de neuroner, hvis axoner forlader centralnervesystemet for at kontakte musklerne direkte."
+    },
+    {
+      "question": "Hvad viser f\u00e6nomener som 'spoonerisms' (f.eks. at sige 'queer old dean' i stedet for 'dear old queen') om motorisk kontrol?",
+      "answerOptions": [
+        {
+          "text": "At tale udelukkende styres af simple reflekser",
+          "isCorrect": false,
+          "rationale": "Hvis det var reflekser, ville man ikke kunne foregribe lyde, der kommer senere i en s\u00e6tning."
+        },
+        {
+          "text": "At der findes en pr\u00e6etableret motorisk plan",
+          "isCorrect": true,
+          "rationale": "Fejlene opst\u00e5r, fordi hjernen har planlagt hele sekvensen p\u00e5 forh\u00e5nd og ved en fejl bytter rundt p\u00e5 elementerne."
+        },
+        {
+          "text": "At talefejl skyldes mangel p\u00e5 proprioception",
+          "isCorrect": false,
+          "rationale": "Proprioception handler om kropsposition, mens spoonerisms er en fejl i den sekventielle planl\u00e6gning."
+        },
+        {
+          "text": "At sproget styres af open-loop systemer uden fejlretning",
+          "isCorrect": false,
+          "rationale": "Selvom planen er lagt, modtager vi feedback (vi h\u00f8rer os selv fejle), men selve fejlen afsl\u00f8rer planl\u00e6gningsfasen."
+        }
+      ],
+      "hint": "Overvej om fejlen opst\u00e5r p\u00e5 grund af en \u00f8jeblikkelig reaktion eller en fejl i forberedelsen af en r\u00e6kkef\u00f8lge."
+    },
+    {
+      "question": "Hvad er den vigtigste forskel p\u00e5 fast-twitch og slow-twitch muskelfibre?",
+      "answerOptions": [
+        {
+          "text": "Deres placering i forhold til knoglerne",
+          "isCorrect": false,
+          "rationale": "Begge typer findes ofte blandet i de samme muskler, uanset deres tilh\u00e6ftning p\u00e5 knoglen."
+        },
+        {
+          "text": "Hvorvidt de styres bevidst eller ubevidst",
+          "isCorrect": false,
+          "rationale": "Begge fibertyper i tv\u00e6rstribede muskler er underlagt frivillig (somatisk) kontrol."
+        },
+        {
+          "text": "Deres kontraktionshastighed og modstand mod tr\u00e6thed",
+          "isCorrect": true,
+          "rationale": "Fast-twitch reagerer hurtigt men tr\u00e6ttes let, mens slow-twitch er langsommere og meget udholdende."
+        },
+        {
+          "text": "M\u00e6ngden af dopamin de kan lagre",
+          "isCorrect": false,
+          "rationale": "Muskelfibre lagrer ikke dopamin; de reagerer prim\u00e6rt p\u00e5 acetylcholin."
+        }
+      ],
+      "hint": "T\u00e6nk p\u00e5 forskellen mellem de muskler, en sprinter bruger, og dem, en maratonl\u00f8ber (eller en person der st\u00e5r oprejst l\u00e6nge) bruger."
+    }
+  ]
+}

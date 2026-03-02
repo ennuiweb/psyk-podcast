@@ -1,0 +1,317 @@
+{
+  "title": "Neuroscience Quiz",
+  "questions": [
+    {
+      "question": "According to the provided text, approximately how many neurons are found in the human brain?",
+      "answerOptions": [
+        {
+          "text": "100 trillion",
+          "isCorrect": false,
+          "rationale": "This number actually refers to the estimated number of synapses, which are the connections between cells, rather than the cells themselves."
+        },
+        {
+          "text": "86 billion",
+          "isCorrect": true,
+          "rationale": "Recent estimates suggest the human brain contains about 86 billion nerve cells, each contacting many others."
+        },
+        {
+          "text": "10 billion",
+          "isCorrect": false,
+          "rationale": "While a large number, this significantly underestimates the actual count of nerve cells identified in neuroscientific research."
+        },
+        {
+          "text": "1 million",
+          "isCorrect": false,
+          "rationale": "This number is far too low; for comparison, the text mentions that even 100 columns of cortex contain about 1 million neurons."
+        }
+      ],
+      "hint": "Consider the figure provided in the 'Brain by the Numbers' section."
+    },
+    {
+      "question": "In the context of research perspectives, what does the term 'ontogeny' refer to?",
+      "answerOptions": [
+        {
+          "text": "The evolutionary history of a species over millions of years.",
+          "isCorrect": false,
+          "rationale": "This describes evolution rather than the changes occurring within a single individual's lifespan."
+        },
+        {
+          "text": "The process by which an individual changes in the course of its lifetime.",
+          "isCorrect": true,
+          "rationale": "Ontogeny is defined as the process of growing up and growing old, providing clues to behavioral functions and mechanisms."
+        },
+        {
+          "text": "The study of immediate biological mechanisms and physical interactions.",
+          "isCorrect": false,
+          "rationale": "This describes the study of biological mechanisms or 'proximate' questions rather than developmental changes over time."
+        },
+        {
+          "text": "The application of neuroscience to clinical dysfunctions.",
+          "isCorrect": false,
+          "rationale": "This refers to the 'applications' perspective of behavioral neuroscience research."
+        }
+      ],
+      "hint": "This term relates to how an organism 'grows up' from a young age to adulthood."
+    },
+    {
+      "question": "Which research approach involves manipulating a body structure or function to observe resultant changes in behavior?",
+      "answerOptions": [
+        {
+          "text": "Behavioral intervention",
+          "isCorrect": false,
+          "rationale": "This approach is the opposite, where behavior is changed to see how it affects body structure or function."
+        },
+        {
+          "text": "Correlation",
+          "isCorrect": false,
+          "rationale": "This approach measures how two variables vary together without necessarily manipulating either one to establish cause."
+        },
+        {
+          "text": "Somatic intervention",
+          "isCorrect": true,
+          "rationale": "In somatic intervention, the body is the independent variable being altered to measure behavioral effects as the dependent variable."
+        },
+        {
+          "text": "Ontogenetic analysis",
+          "isCorrect": false,
+          "rationale": "This is a perspective for describing development rather than a specific experimental approach involving direct manipulation of variables."
+        }
+      ],
+      "hint": "The term comes from the Greek word for 'body'."
+    },
+    {
+      "question": "What is 'neuroplasticity' in the study of the brain and behavior?",
+      "answerOptions": [
+        {
+          "text": "The rigid, unchanging nature of the adult brain's circuitry.",
+          "isCorrect": false,
+          "rationale": "Neuroplasticity specifically describes the brain's ability to be flexible and malleable, not rigid."
+        },
+        {
+          "text": "The ability of the nervous system to change in response to experience or environment.",
+          "isCorrect": true,
+          "rationale": "This term refers to the brain's capacity to be physically altered by experience, such as learning or social interaction."
+        },
+        {
+          "text": "The use of synthetic materials to repair damaged brain tissue.",
+          "isCorrect": false,
+          "rationale": "While 'plastic' is a modern material, in neuroscience, the term refers to biological flexibility, not synthetic implants."
+        },
+        {
+          "text": "The genetic determination of brain structure that occurs before birth.",
+          "isCorrect": false,
+          "rationale": "Neuroplasticity focuses on changes that occur due to the environment and experience, often after birth and throughout adulthood."
+        }
+      ],
+      "hint": "Think about the original meaning of the word 'plastic'\u2014to mold or form."
+    },
+    {
+      "question": "If a researcher finds that people with larger cerebral ventricles tend to have more severe symptoms of schizophrenia, which approach are they using?",
+      "answerOptions": [
+        {
+          "text": "Somatic intervention",
+          "isCorrect": false,
+          "rationale": "Somatic intervention would require the researcher to actively change the ventricle size to see if symptoms change."
+        },
+        {
+          "text": "Behavioral intervention",
+          "isCorrect": false,
+          "rationale": "Behavioral intervention would require changing the person's behavior to see if it causes ventricles to enlarge."
+        },
+        {
+          "text": "Correlation",
+          "isCorrect": true,
+          "rationale": "Correlation measures the extent to which two variables, such as brain structure and behavioral symptoms, covary."
+        },
+        {
+          "text": "Reductionism",
+          "isCorrect": false,
+          "rationale": "Reductionism is a scientific strategy of breaking systems into smaller parts, not a method for relating two variables."
+        }
+      ],
+      "hint": "The researcher is observing how two measures vary together without manipulating them."
+    },
+    {
+      "question": "According to the 'levels of analysis' in behavioral neuroscience, which level is considered more 'reduced' (simpler) than the circuit level?",
+      "answerOptions": [
+        {
+          "text": "Neural systems level",
+          "isCorrect": false,
+          "rationale": "Neural systems involve multiple circuits and brain regions, making them more complex than a single circuit."
+        },
+        {
+          "text": "Cellular level",
+          "isCorrect": true,
+          "rationale": "The cellular level, which looks at single neurons, is one step down in complexity from the circuit level."
+        },
+        {
+          "text": "Organ level",
+          "isCorrect": false,
+          "rationale": "The organ level (the whole brain) is near the top of the complexity hierarchy."
+        },
+        {
+          "text": "Social level",
+          "isCorrect": false,
+          "rationale": "Social interactions represent the highest and most complex level of analysis mentioned."
+        }
+      ],
+      "hint": "Think about what individual components make up a local neural circuit."
+    },
+    {
+      "question": "How did the ancient Greek philosopher Aristotle view the function of the brain?",
+      "answerOptions": [
+        {
+          "text": "The center of all mental capacities and passions.",
+          "isCorrect": false,
+          "rationale": "Aristotle believed the heart, not the brain, was the seat of mental capacities."
+        },
+        {
+          "text": "A cooling unit for the blood.",
+          "isCorrect": true,
+          "rationale": "Aristotle erroneously suggested the brain served to lower the temperature of hot blood coming from the heart."
+        },
+        {
+          "text": "The controller of all physical reflexes.",
+          "isCorrect": false,
+          "rationale": "The concept of reflexes was developed much later, notably by Ren\u00e9 Descartes in the seventeenth century."
+        },
+        {
+          "text": "A collection of organs for phrenological faculties.",
+          "isCorrect": false,
+          "rationale": "Phrenology was a nineteenth-century concept, appearing over two millennia after Aristotle."
+        }
+      ],
+      "hint": "He viewed the brain as a simple biological 'radiator'."
+    },
+    {
+      "question": "Ren\u00e9 Descartes promoted the idea of 'dualism,' which suggests that:",
+      "answerOptions": [
+        {
+          "text": "The brain and the heart both control behavior equally.",
+          "isCorrect": false,
+          "rationale": "Descartes focused on the brain's role but introduced a split between the material and non-material."
+        },
+        {
+          "text": "All mental processes are purely physical and occur in the brain.",
+          "isCorrect": false,
+          "rationale": "This is the view of modern neuroscientists; Descartes believed in a non-material soul."
+        },
+        {
+          "text": "Humans have a non-material soul as well as a material body.",
+          "isCorrect": true,
+          "rationale": "Dualism is the notion that the mind is subject to spiritual interactions while the body follows material laws."
+        },
+        {
+          "text": "Nerves can carry both sensory and motor information at once.",
+          "isCorrect": false,
+          "rationale": "Descartes did not know the difference between sensory and motor nerves, but this is not the definition of dualism."
+        }
+      ],
+      "hint": "This concept involves a distinction between the 'soul' and the 'machine' of the body."
+    },
+    {
+      "question": "Which nineteenth-century surgeon provided evidence for the localization of function by studying a patient who could not speak?",
+      "answerOptions": [
+        {
+          "text": "Paul Broca",
+          "isCorrect": true,
+          "rationale": "Broca identified a specific area in the left frontal lobe that, when damaged, impaired speech production."
+        },
+        {
+          "text": "Thomas Willis",
+          "isCorrect": false,
+          "rationale": "Willis was an earlier seventeenth-century physician known for detailed brain anatomy and disorders."
+        },
+        {
+          "text": "Hermann Ebbinghaus",
+          "isCorrect": false,
+          "rationale": "Ebbinghaus is known for being the first to measure learning and memory in humans."
+        },
+        {
+          "text": "Donald Hebb",
+          "isCorrect": false,
+          "rationale": "Hebb was a twentieth-century psychologist who proposed the idea of cell assemblies."
+        }
+      ],
+      "hint": "His name is still used to identify a specific brain region involved in speech."
+    },
+    {
+      "question": "Based on modern imaging studies discussed in the text, what is the reported correlation between brain size and IQ scores in humans?",
+      "answerOptions": [
+        {
+          "text": "No significant correlation has ever been found.",
+          "isCorrect": false,
+          "rationale": "Modern noninvasive techniques have indeed found significant, though modest, correlations."
+        },
+        {
+          "text": "A perfect correlation of $+1.00$.",
+          "isCorrect": false,
+          "rationale": "No biological correlation of this nature is ever perfect; many other factors contribute to intelligence."
+        },
+        {
+          "text": "Approximately $+0.26$ to $+0.38$.",
+          "isCorrect": true,
+          "rationale": "Studies using brain scans have found statistically significant correlations in this range, accounting for about $10\\%$-$20\\%$ of variability."
+        },
+        {
+          "text": "A negative correlation of $-0.50$.",
+          "isCorrect": false,
+          "rationale": "A negative correlation would imply that larger brains lead to lower intelligence, which is contrary to the findings presented."
+        }
+      ],
+      "hint": "The correlation is positive and statistically significant, but accounts for only a small portion of overall variability."
+    },
+    {
+      "question": "The concept of 'cell assemblies,' where neurons strengthen their connections through use, was proposed by:",
+      "answerOptions": [
+        {
+          "text": "Charles Darwin",
+          "isCorrect": false,
+          "rationale": "Darwin focused on the evolution of species rather than the internal organization of neural networks."
+        },
+        {
+          "text": "Donald Hebb",
+          "isCorrect": true,
+          "rationale": "Hebb's 1949 book proposed that sensory input could organize random connections into strongly interconnected 'cell assemblies'."
+        },
+        {
+          "text": "Karl Lashley",
+          "isCorrect": false,
+          "rationale": "Lashley was Hebb's teacher and is famous for his 'search for the engram' (the trace of memory)."
+        },
+        {
+          "text": "Ivan Pavlov",
+          "isCorrect": false,
+          "rationale": "Pavlov is known for his work on classical conditioning in animals, not the concept of cell assemblies."
+        }
+      ],
+      "hint": "This Canadian psychologist's name is associated with a specific type of 'synapse'."
+    },
+    {
+      "question": "According to the text, which organ did the ancient Egyptians throw away during mummification because they thought it was useless?",
+      "answerOptions": [
+        {
+          "text": "The heart",
+          "isCorrect": false,
+          "rationale": "The heart was preserved because it was considered necessary for the afterlife."
+        },
+        {
+          "text": "The liver",
+          "isCorrect": false,
+          "rationale": "The liver was one of the five important organs preserved in Tutankhamen's tomb."
+        },
+        {
+          "text": "The brain",
+          "isCorrect": true,
+          "rationale": "The brain was picked out through the nostrils and discarded, as it was not considered an asset for the afterlife."
+        },
+        {
+          "text": "The intestines",
+          "isCorrect": false,
+          "rationale": "Like the stomach and lungs, the intestines were preserved by the Egyptians."
+        }
+      ],
+      "hint": "This organ, now considered the center of behavior, was once pulled out through the nose."
+    }
+  ]
+}

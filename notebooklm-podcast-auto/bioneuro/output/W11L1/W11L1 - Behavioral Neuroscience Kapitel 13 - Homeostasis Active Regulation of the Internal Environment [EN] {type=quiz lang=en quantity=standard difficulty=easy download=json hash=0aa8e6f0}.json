@@ -1,0 +1,369 @@
+{
+  "title": "Homeostasis Quiz",
+  "questions": [
+    {
+      "question": "What is the primary goal of homeostasis in the body?",
+      "answerOptions": [
+        {
+          "text": "To maintain a relatively stable and balanced internal environment.",
+          "isCorrect": true,
+          "rationale": "Homeostasis refers to the active processes that monitor and maintain optimal physiological conditions for cellular activity."
+        },
+        {
+          "text": "To ensure that the body temperature always remains exactly $37^{\\circ}C$.",
+          "isCorrect": false,
+          "rationale": "While temperature is regulated, most systems operate within a set zone rather than a rigid, unchanging point."
+        },
+        {
+          "text": "To maximise the amount of energy stored in adipose tissue.",
+          "isCorrect": false,
+          "rationale": "Energy storage is one variable regulated by homeostasis, but the goal is balance rather than maximisation."
+        },
+        {
+          "text": "To allow the internal environment to fluctuate freely with external changes.",
+          "isCorrect": false,
+          "rationale": "This describes the opposite of homeostasis, as the body actively resists external fluctuations to protect cells."
+        }
+      ],
+      "hint": "Consider the meaning of a 'balanced' internal state for cellular health."
+    },
+    {
+      "question": "Which term describes animals that generate their own body heat through internal metabolic processes?",
+      "answerOptions": [
+        {
+          "text": "Ectotherms",
+          "isCorrect": false,
+          "rationale": "These animals, such as snakes and lizards, obtain most of their heat from the external environment."
+        },
+        {
+          "text": "Endotherms",
+          "isCorrect": true,
+          "rationale": "Mammals and birds are endotherms, using metabolism and muscular activity to create warmth from within."
+        },
+        {
+          "text": "Allotherms",
+          "isCorrect": false,
+          "rationale": "This is not a standard biological term used to describe the primary source of body heat."
+        },
+        {
+          "text": "Isotherms",
+          "isCorrect": false,
+          "rationale": "In thermodynamics, this refers to processes occurring at a constant temperature, not the method of heat generation."
+        }
+      ],
+      "hint": "Think about the prefix used for 'internal' or 'within'."
+    },
+    {
+      "question": "In a negative feedback system, what happens when the desired value or 'set point' is reached?",
+      "answerOptions": [
+        {
+          "text": "The compensatory action is turned off.",
+          "isCorrect": true,
+          "rationale": "Restoring the desired value provides the feedback that inhibits further activity of the regulatory system."
+        },
+        {
+          "text": "The system increases its activity to exceed the set point.",
+          "isCorrect": false,
+          "rationale": "This would describe positive feedback, which moves the system further away from the starting point."
+        },
+        {
+          "text": "The set point is automatically adjusted to a higher level.",
+          "isCorrect": false,
+          "rationale": "While set points can change (e.g., during fever), reaching the value triggers a cessation of the current response, not an adjustment."
+        },
+        {
+          "text": "The system enters a state of allostatic load.",
+          "isCorrect": false,
+          "rationale": "Allostatic load refers to the wear and tear of chronic stress, not the immediate result of a feedback loop."
+        }
+      ],
+      "hint": "Reflect on how a household thermostat behaves once the room reaches the target temperature."
+    },
+    {
+      "question": "What is the concentration of salt in a 'physiological saline' solution that is described as isotonic?",
+      "answerOptions": [
+        {
+          "text": "$0.09\\%$",
+          "isCorrect": false,
+          "rationale": "This value is ten times lower than the actual concentration found in mammalian extracellular fluid."
+        },
+        {
+          "text": "$9.0\\%$",
+          "isCorrect": false,
+          "rationale": "This would be a highly hypertonic solution, causing cells to lose water and shrink dangerously."
+        },
+        {
+          "text": "$0.9\\%$",
+          "isCorrect": true,
+          "rationale": "An isotonic solution of $0.9\\%$ NaCl matches the solute concentration of mammalian interstitial fluid and blood plasma."
+        },
+        {
+          "text": "$5.0\\%$",
+          "isCorrect": false,
+          "rationale": "This concentration is significantly higher than the natural salt balance of the body's 'internal sea'."
+        }
+      ],
+      "hint": "The value is less than one per cent."
+    },
+    {
+      "question": "Which type of thirst is triggered by a loss of overall extracellular fluid volume, such as from a haemorrhage?",
+      "answerOptions": [
+        {
+          "text": "Osmotic thirst",
+          "isCorrect": false,
+          "rationale": "Osmotic thirst is triggered by high solute concentration (saltiness) rather than a simple drop in total volume."
+        },
+        {
+          "text": "Hypovolemic thirst",
+          "isCorrect": true,
+          "rationale": "Hypovolemia refers specifically to low volume, which is detected by baroreceptors when fluid is lost without an initial change in concentration."
+        },
+        {
+          "text": "Isotonic thirst",
+          "isCorrect": false,
+          "rationale": "While the lost fluid may be isotonic, this is not the formal name of the drive state produced by volume loss."
+        },
+        {
+          "text": "Aquaporic thirst",
+          "isCorrect": false,
+          "rationale": "Aquaporins are the channels that move water, but they do not define the specific type of thirst drive."
+        }
+      ],
+      "hint": "Consider the prefix that means 'low' and the root word for 'volume'."
+    },
+    {
+      "question": "Where are the osmosensory neurons that monitor the salt concentration of the extracellular fluid primarily located?",
+      "answerOptions": [
+        {
+          "text": "In the peripheral nerves of the limbs.",
+          "isCorrect": false,
+          "rationale": "Peripheral nerves transmit somatosensory data but do not centrally monitor the osmolality of the blood."
+        },
+        {
+          "text": "In the circumventricular organs of the hypothalamus.",
+          "isCorrect": true,
+          "rationale": "The SFO and OVLT are located in the ventricle walls and lack a blood-brain barrier, allowing them to monitor blood solutes directly."
+        },
+        {
+          "text": "Exclusively within the kidneys.",
+          "isCorrect": false,
+          "rationale": "The kidneys respond to hormones like aldosterone and vasopressin, but the sensory drive for thirst originates in the brain."
+        },
+        {
+          "text": "In the cerebral cortex.",
+          "isCorrect": false,
+          "rationale": "The cortex processes the conscious experience of thirst, but the primary sensors are in subcortical hypothalamic regions."
+        }
+      ],
+      "hint": "These regions are named for being 'around' the brain's fluid-filled cavities."
+    },
+    {
+      "question": "What is the role of the hormone Angiotensin II in fluid regulation?",
+      "answerOptions": [
+        {
+          "text": "It decreases blood pressure to promote urination.",
+          "isCorrect": false,
+          "rationale": "This describes the action of atrial natriuretic peptide (ANP), which works in opposition to Angiotensin II."
+        },
+        {
+          "text": "It constricts blood vessels and triggers the release of vasopressin and aldosterone.",
+          "isCorrect": true,
+          "rationale": "Angiotensin II is a potent vasoconstrictor and coordinates multiple hormonal and behavioural responses to conserve water."
+        },
+        {
+          "text": "It directly increases the saltiness of the intracellular compartment.",
+          "isCorrect": false,
+          "rationale": "Its primary function is to manage extracellular volume and pressure, not to increase intracellular salt."
+        },
+        {
+          "text": "It prevents the brain from detecting a dry mouth.",
+          "isCorrect": false,
+          "rationale": "Angiotensin II acts on the brain to stimulate thirst; it does not mask sensory signals from the throat."
+        }
+      ],
+      "hint": "Think about its name, which combines the Greek for 'vessel' and the Latin for 'pressure'."
+    },
+    {
+      "question": "According to the study of 'The Biggest Loser' contestants, why is it so difficult to maintain weight loss long-term?",
+      "answerOptions": [
+        {
+          "text": "Because the contestants' basal metabolism remained suppressed for years after the show.",
+          "isCorrect": true,
+          "rationale": "Metabolic adaptation caused the body to burn fewer calories in a persistent attempt to regain the lost weight."
+        },
+        {
+          "text": "Because the contestants completely stopped exercising after the competition ended.",
+          "isCorrect": false,
+          "rationale": "The study noted that even with ongoing efforts, the physiological drive to regain weight was the primary hurdle."
+        },
+        {
+          "text": "Because their brains lost the ability to produce any leptin.",
+          "isCorrect": false,
+          "rationale": "Leptin production is related to fat stores; it is not 'lost', though its signalling role is part of a complex regulatory system."
+        },
+        {
+          "text": "Because their bodies switched to burning only glucose instead of fats.",
+          "isCorrect": false,
+          "rationale": "The issue was the rate of energy consumption (metabolism), not a switch in the type of fuel being utilised."
+        }
+      ],
+      "hint": "Focus on the term 'metabolic adaptation' and its effect on daily calorie requirements."
+    },
+    {
+      "question": "What is the function of the pancreatic hormone glucagon?",
+      "answerOptions": [
+        {
+          "text": "To promote the conversion of glucose into glycogen for storage.",
+          "isCorrect": false,
+          "rationale": "This describes the process of glycogenesis, which is promoted by insulin, not glucagon."
+        },
+        {
+          "text": "To mediate the conversion of stored glycogen back into glucose.",
+          "isCorrect": true,
+          "rationale": "Glucagon is released when blood glucose is low to trigger glycogenolysis, providing ready energy for the body."
+        },
+        {
+          "text": "To allow glucose to enter cells for immediate use.",
+          "isCorrect": false,
+          "rationale": "Insulin is required for glucose transporters in most cells to function; glucagon does not facilitate this transport."
+        },
+        {
+          "text": "To synthesize essential amino acids from surplus fats.",
+          "isCorrect": false,
+          "rationale": "Essential amino acids cannot be synthesized by the body and must be obtained through the diet."
+        }
+      ],
+      "hint": "Consider how the body accesses sugar reserves when blood levels drop."
+    },
+    {
+      "question": "In the hypothalamic appetite control network, which neurons act as 'hunger neurons' when activated?",
+      "answerOptions": [
+        {
+          "text": "POMC neurons",
+          "isCorrect": false,
+          "rationale": "POMC neurons act as satiety neurons, inhibiting appetite and increasing metabolism when active."
+        },
+        {
+          "text": "NPY neurons",
+          "isCorrect": true,
+          "rationale": "NPY neurons (which also produce AgRP) stimulate appetite and inhibit the satiety-promoting POMC neurons."
+        },
+        {
+          "text": "Glucodetector neurons in the liver",
+          "isCorrect": false,
+          "rationale": "While these signal glucose levels to the brain, they are not the primary 'hunger neurons' of the arcuate nucleus."
+        },
+        {
+          "text": "Baroreceptor neurons",
+          "isCorrect": false,
+          "rationale": "These are pressure sensors involved in fluid regulation and thirst, not the primary hypothalamic appetite circuit."
+        }
+      ],
+      "hint": "These neurons are named after 'neuropeptide Y'."
+    },
+    {
+      "question": "Which hormone is produced by fat cells and helps the brain monitor long-term energy reserves?",
+      "answerOptions": [
+        {
+          "text": "Ghrelin",
+          "isCorrect": false,
+          "rationale": "Ghrelin is produced by the stomach and acts as a short-term appetite stimulant before meals."
+        },
+        {
+          "text": "PYY$_{3-36}$",
+          "isCorrect": false,
+          "rationale": "This peptide is released by the intestines following a meal to provide a satiety signal."
+        },
+        {
+          "text": "Leptin",
+          "isCorrect": true,
+          "rationale": "Leptin is secreted by adipose tissue; its levels in the blood inform the hypothalamus about the amount of stored fat."
+        },
+        {
+          "text": "Insulin",
+          "isCorrect": false,
+          "rationale": "Insulin is produced by the pancreas and primarily regulates immediate glucose utilisation and short-term storage."
+        }
+      ],
+      "hint": "The name of this hormone comes from the Greek word for 'thin'."
+    },
+    {
+      "question": "During which phase of insulin release does the sight or smell of food trigger the pancreas?",
+      "answerOptions": [
+        {
+          "text": "Digestive phase",
+          "isCorrect": false,
+          "rationale": "The digestive phase occurs when food actually enters the stomach and intestines."
+        },
+        {
+          "text": "Absorptive phase",
+          "isCorrect": false,
+          "rationale": "The absorptive phase is triggered by glucodetectors once glucose enters the bloodstream."
+        },
+        {
+          "text": "Cephalic phase",
+          "isCorrect": true,
+          "rationale": "The cephalic phase (from the word for 'head') is a conditioned response to sensory stimuli in anticipation of eating."
+        },
+        {
+          "text": "Metabolic phase",
+          "isCorrect": false,
+          "rationale": "This is not one of the three specific sequential phases of insulin release described in the text."
+        }
+      ],
+      "hint": "This phase involves the 'head' or the brain's anticipation."
+    },
+    {
+      "question": "What happened to rats that received bilateral lesions of the ventromedial hypothalamus (VMH)?",
+      "answerOptions": [
+        {
+          "text": "They stopped eating entirely (aphagia).",
+          "isCorrect": false,
+          "rationale": "Aphagia is characteristic of lesions in the lateral hypothalamus (LH), not the VMH."
+        },
+        {
+          "text": "They ate to excess (hyperphagia) and became obese.",
+          "isCorrect": true,
+          "rationale": "The VMH was traditionally viewed as a 'satiety centre'; without it, the animals failed to stop eating."
+        },
+        {
+          "text": "They lost the ability to regulate their body temperature.",
+          "isCorrect": false,
+          "rationale": "While the hypothalamus is involved in thermoregulation, VMH-specific lesions are famous for their impact on appetite."
+        },
+        {
+          "text": "Their basal metabolism increased dramatically.",
+          "isCorrect": false,
+          "rationale": "Hyperphagic rats typically experience massive weight gain, which would not occur if metabolism were extremely high."
+        }
+      ],
+      "hint": "Recall the historical view of the VMH as the 'satiety centre'."
+    },
+    {
+      "question": "How does the body typically respond to a $15\\%$ decrease in caloric intake over several weeks?",
+      "answerOptions": [
+        {
+          "text": "By increasing the basal metabolic rate to burn fat faster.",
+          "isCorrect": false,
+          "rationale": "The body actually does the opposite, reducing metabolic rate to conserve energy during what it perceives as a shortage."
+        },
+        {
+          "text": "By decreasing the basal metabolic rate, which resists weight loss.",
+          "isCorrect": true,
+          "rationale": "This is a homeostatic defence mechanism where metabolism declines much more than body weight does during food restriction."
+        },
+        {
+          "text": "By switching exclusively to the conversion of ketones into glucose.",
+          "isCorrect": false,
+          "rationale": "While ketones are used during starvation, the primary metabolic change during moderate dieting is a drop in basal rate."
+        },
+        {
+          "text": "By increasing the production of ghrelin to permanently suppress hunger.",
+          "isCorrect": false,
+          "rationale": "Ghrelin is an appetite stimulant; its levels would likely rise, increasing hunger rather than suppressing it."
+        }
+      ],
+      "hint": "Think about why dieters often find their weight loss plateaus despite eating less."
+    }
+  ]
+}

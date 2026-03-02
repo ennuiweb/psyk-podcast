@@ -1,0 +1,317 @@
+{
+  "title": "Neuroscience Quiz",
+  "questions": [
+    {
+      "question": "In the context of behavioral neuroscience, which term describes the process by which an individual changes and matures over the course of their lifetime?",
+      "answerOptions": [
+        {
+          "text": "Ontogeny",
+          "isCorrect": true,
+          "rationale": "This term specifically refers to the developmental changes an organism undergoes from birth through old age."
+        },
+        {
+          "text": "Phylogeny",
+          "isCorrect": false,
+          "rationale": "This refers to the evolutionary history of a species, rather than the development of an individual."
+        },
+        {
+          "text": "Reductionism",
+          "isCorrect": false,
+          "rationale": "This is a scientific strategy of breaking down complex systems into smaller parts, not a developmental process."
+        },
+        {
+          "text": "Dualism",
+          "isCorrect": false,
+          "rationale": "This is a philosophical concept regarding the separation of mind and body, not a description of biological development."
+        }
+      ],
+      "hint": "Think about the specific term used to describe the life-span development of behavior and biological characteristics."
+    },
+    {
+      "question": "A researcher conducts a study where they provide social training to a group of rats and then measure the resulting changes in the thickness of the cerebral cortex. Which research approach does this represent?",
+      "answerOptions": [
+        {
+          "text": "Somatic intervention",
+          "isCorrect": false,
+          "rationale": "This would involve manipulating a body structure first to see its effect on behavior, which is the reverse of this study."
+        },
+        {
+          "text": "Behavioral intervention",
+          "isCorrect": true,
+          "rationale": "In this approach, the scientist changes an organism's behavior or environment to observe resulting physical changes in the brain or body."
+        },
+        {
+          "text": "Correlation",
+          "isCorrect": false,
+          "rationale": "This approach measures how much two variables vary together without direct manipulation of either."
+        },
+        {
+          "text": "Reductionism",
+          "isCorrect": false,
+          "rationale": "This is a general scientific strategy rather than a specific experimental approach to relate brain and behavior."
+        }
+      ],
+      "hint": "Identify whether the independent variable being manipulated is a behavioral experience or a bodily structure."
+    },
+    {
+      "question": "Ren\u00e9 Descartes proposed that the mind and body interact at a single point in the brain. Which structure did he identify for this role, mistakenly believing it was unique to humans?",
+      "answerOptions": [
+        {
+          "text": "The pituitary gland",
+          "isCorrect": false,
+          "rationale": "While an important hormonal center, Descartes did not identify this as the seat of the soul."
+        },
+        {
+          "text": "The cerebral ventricles",
+          "isCorrect": false,
+          "rationale": "Leonardo da Vinci studied these extensively, but Descartes focused on a solid structure for the interaction of the soul."
+        },
+        {
+          "text": "The pineal gland",
+          "isCorrect": true,
+          "rationale": "Descartes chose this structure because it is single rather than paired and he (erroneously) thought it existed only in humans."
+        },
+        {
+          "text": "Broca's area",
+          "isCorrect": false,
+          "rationale": "This region was identified much later in the 19th century as being specifically involved in language production."
+        }
+      ],
+      "hint": "Consider the structure that Descartes favored because it was not symmetrically doubled in the two hemispheres."
+    },
+    {
+      "question": "Which of the following represents the estimated number of neurons found in the adult human brain?",
+      "answerOptions": [
+        {
+          "text": "$86 \\times 10^{9}$",
+          "isCorrect": true,
+          "rationale": "Modern estimates suggest the human head contains approximately 86 billion nerve cells."
+        },
+        {
+          "text": "$10 \\times 10^{12}$",
+          "isCorrect": false,
+          "rationale": "This number is closer to the estimated number of synapses, which are the connections between neurons."
+        },
+        {
+          "text": "$1 \\times 10^{6}$",
+          "isCorrect": false,
+          "rationale": "This is a significant underestimate; the brain contains billions, not millions, of neurons."
+        },
+        {
+          "text": "$400 \\times 10^{3}$",
+          "isCorrect": false,
+          "rationale": "This value is far too low and is actually closer to the number of miles of capillaries in the brain."
+        }
+      ],
+      "hint": "The answer corresponds to the '86 billion' figure mentioned in the text."
+    },
+    {
+      "question": "What does the 'Hebbian synapse' refer to in the study of neuroscience?",
+      "answerOptions": [
+        {
+          "text": "A synapse that is physically larger than average",
+          "isCorrect": false,
+          "rationale": "Size is not the defining characteristic of this conceptual model of synaptic function."
+        },
+        {
+          "text": "A plastic connection between neurons that strengthens through use",
+          "isCorrect": true,
+          "rationale": "Donald Hebb proposed that connections become organized and stronger through sensory input and consistent stimulation."
+        },
+        {
+          "text": "A synapse that utilizes only electrical rather than chemical signals",
+          "isCorrect": false,
+          "rationale": "The Hebbian concept focuses on the strengthening of connections regardless of the specific signaling mechanism."
+        },
+        {
+          "text": "The space between two neurons that never changes",
+          "isCorrect": false,
+          "rationale": "The core of Hebb's theory is neuroplasticity, meaning the connection must be capable of change."
+        }
+      ],
+      "hint": "Consider Donald Hebb's hypothesis about how cell assemblies become organized."
+    },
+    {
+      "question": "According to modern brain-imaging research, what is the approximate correlation coefficient ($r$) between brain size and IQ scores after correcting for body size?",
+      "answerOptions": [
+        {
+          "text": "$+0.08$",
+          "isCorrect": false,
+          "rationale": "This is on the lower end of older estimates based on head size, rather than direct brain imaging."
+        },
+        {
+          "text": "$+0.38$",
+          "isCorrect": true,
+          "rationale": "One specific study using brain scans found this significant positive correlation after adjusting for body size."
+        },
+        {
+          "text": "$+0.85$",
+          "isCorrect": false,
+          "rationale": "This would indicate a nearly perfect relationship, which is much higher than what scientific data suggests."
+        },
+        {
+          "text": "$-0.26$",
+          "isCorrect": false,
+          "rationale": "This suggests a negative relationship, whereas research shows a modest positive correlation."
+        }
+      ],
+      "hint": "The text notes that while significant, this value leaves room for many other factors to contribute to intelligence."
+    },
+    {
+      "question": "Which level of analysis in behavioral neuroscience involves studying the interactions between individual nerve cells via their connections?",
+      "answerOptions": [
+        {
+          "text": "Neural systems level",
+          "isCorrect": false,
+          "rationale": "This level involves large networks, such as the entire visual system, rather than individual connection sites."
+        },
+        {
+          "text": "Circuit level",
+          "isCorrect": false,
+          "rationale": "This level looks at local groups of neurons working together, which is one step above the individual connection."
+        },
+        {
+          "text": "Synaptic level",
+          "isCorrect": true,
+          "rationale": "This level focuses on the specific points of contact where information is passed between cells."
+        },
+        {
+          "text": "Molecular level",
+          "isCorrect": false,
+          "rationale": "This level reduces the study to individual chemical components like receptors or neurotransmitters."
+        }
+      ],
+      "hint": "Focus on the specific term for the points of contact between neurons."
+    },
+    {
+      "question": "Which historical figure is credited with shifting the focus of the seat of mental capacities from the heart to the brain after treating the injuries of gladiators?",
+      "answerOptions": [
+        {
+          "text": "Aristotle",
+          "isCorrect": false,
+          "rationale": "Aristotle famously believed the heart was the center of the mind and the brain was a cooling unit."
+        },
+        {
+          "text": "Galen",
+          "isCorrect": true,
+          "rationale": "His observations of behavioral changes following head injuries in gladiators led him to identify the brain as the controller of behavior."
+        },
+        {
+          "text": "Herophilus",
+          "isCorrect": false,
+          "rationale": "While he dissected bodies and traced nerves, the text links the gladiatorial observations specifically to Galen."
+        },
+        {
+          "text": "Paul Broca",
+          "isCorrect": false,
+          "rationale": "Broca lived in the 19th century, long after the era of Roman gladiators."
+        }
+      ],
+      "hint": "This Greco-Roman physician's work was limited by the illegality of human dissection in Rome at the time."
+    },
+    {
+      "question": "The scientific strategy of breaking down a complex system into increasingly smaller parts to understand it is known as:",
+      "answerOptions": [
+        {
+          "text": "Ontogeny",
+          "isCorrect": false,
+          "rationale": "This refers to development over a lifespan, not a method of scientific analysis."
+        },
+        {
+          "text": "Phrenology",
+          "isCorrect": false,
+          "rationale": "This was the outmoded 19th-century practice of reading skull bumps to determine personality."
+        },
+        {
+          "text": "Reductionism",
+          "isCorrect": true,
+          "rationale": "This is the standard approach of explaining mechanisms by analyzing their simpler constituent parts."
+        },
+        {
+          "text": "Correlation",
+          "isCorrect": false,
+          "rationale": "This is a statistical method for finding links between measures, not a strategy for breaking systems down."
+        }
+      ],
+      "hint": "Consider the term for reducing an explanation to its simplest biological or molecular components."
+    },
+    {
+      "question": "What percentage of the body's total oxygen consumption is used by the brain?",
+      "answerOptions": [
+        {
+          "text": "$2 \\%$",
+          "isCorrect": false,
+          "rationale": "This might represent the brain's percentage of total body weight, but its metabolic demand is much higher."
+        },
+        {
+          "text": "$10 \\%$",
+          "isCorrect": false,
+          "rationale": "This is a common 'neuromyth' percentage often associated with brain usage, but it is incorrect for oxygen consumption."
+        },
+        {
+          "text": "$20 \\%$",
+          "isCorrect": true,
+          "rationale": "The brain is highly metabolically active and requires a significant portion of the body's oxygen to function."
+        },
+        {
+          "text": "$50 \\%$",
+          "isCorrect": false,
+          "rationale": "While the brain uses a lot of energy, half of the body's total oxygen is an overestimate."
+        }
+      ],
+      "hint": "Check the 'Brain by Numbers' infographic for the correct physiological statistic."
+    },
+    {
+      "question": "Paul Broca's research in the 1860s was instrumental in demonstrating which of the following concepts?",
+      "answerOptions": [
+        {
+          "text": "The entire brain functions as a single unit for all tasks",
+          "isCorrect": false,
+          "rationale": "Broca's work actually challenged this view by showing language was tied to a specific area."
+        },
+        {
+          "text": "Localization of function",
+          "isCorrect": true,
+          "rationale": "By identifying a specific frontal region for speech, Broca showed that different brain areas have specialized roles."
+        },
+        {
+          "text": "The existence of spinal reflexes",
+          "isCorrect": false,
+          "rationale": "Descartes proposed the concept of reflexes centuries before Broca's clinical observations."
+        },
+        {
+          "text": "Neuroplasticity in adult humans",
+          "isCorrect": false,
+          "rationale": "While Broca observed brain damage, his primary focus was the specific location of language, not the brain's ability to reorganize."
+        }
+      ],
+      "hint": "Think about whether he believed language property belonged to the whole brain or a restricted region."
+    },
+    {
+      "question": "What is the primary goal of the field of behavioral neuroscience?",
+      "answerOptions": [
+        {
+          "text": "To classify all psychological disorders into a single system",
+          "isCorrect": false,
+          "rationale": "While it contributes to understanding disorders, its scope is much broader than just classification."
+        },
+        {
+          "text": "To understand the neuroscience underlying behavior and experience",
+          "isCorrect": true,
+          "rationale": "The field focuses on the reciprocal relationships between brain structures/actions and mind/behavior."
+        },
+        {
+          "text": "To prove that the mind is entirely separate from the material body",
+          "isCorrect": false,
+          "rationale": "Modern neuroscience generally rejects dualism and seeks physical explanations for mental processes."
+        },
+        {
+          "text": "To replace all psychological study with computerized neural modeling",
+          "isCorrect": false,
+          "rationale": "Neural modeling is just one tool within the multidisciplinary umbrella of behavioral neuroscience."
+        }
+      ],
+      "hint": "Consider the 'main goal' stated in the first section of the text."
+    }
+  ]
+}

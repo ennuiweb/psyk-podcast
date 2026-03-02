@@ -1,0 +1,317 @@
+{
+  "title": "Homeostasis Quiz",
+  "questions": [
+    {
+      "question": "Which term describes the active process of maintaining a relatively stable, balanced internal environment that is optimized for cellular activities?",
+      "answerOptions": [
+        {
+          "text": "Allostasis",
+          "isCorrect": false,
+          "rationale": "This refers to the dynamic process of shifting physiological responses to accommodate stressors rather than maintaining a single stable point."
+        },
+        {
+          "text": "Homeostasis",
+          "isCorrect": true,
+          "rationale": "Homeostasis is the maintenance of a constant internal physiological environment through active regulation."
+        },
+        {
+          "text": "Motivation",
+          "isCorrect": false,
+          "rationale": "This is the psychological process that induces or sustains behaviors, often driven by homeostatic imbalances, but is not the state of balance itself."
+        },
+        {
+          "text": "Thermoregulation",
+          "isCorrect": false,
+          "rationale": "This is a specific example of homeostatic regulation focusing only on body temperature."
+        }
+      ],
+      "hint": "Think of the Greek roots for 'same' and 'standing still' regarding the body's internal state."
+    },
+    {
+      "question": "Mammals are classified as endotherms because they primarily regulate their body temperature through which method?",
+      "answerOptions": [
+        {
+          "text": "Absorbing heat from the external environment",
+          "isCorrect": false,
+          "rationale": "This describes ectotherms, like snakes or lizards, which rely on external sources of warmth."
+        },
+        {
+          "text": "Internal metabolic processes and muscular activity",
+          "isCorrect": true,
+          "rationale": "Endotherms generate their own heat internally through metabolism and behaviors like shivering."
+        },
+        {
+          "text": "Relying exclusively on behavioral adaptations",
+          "isCorrect": false,
+          "rationale": "While endotherms use behaviors, their primary classification comes from internal heat generation."
+        },
+        {
+          "text": "Utilizing specialized 'antifreeze' proteins in the blood",
+          "isCorrect": false,
+          "rationale": "This is a specific adaptation found in some ectothermic fish and beetles to survive subfreezing temperatures."
+        }
+      ],
+      "hint": "Consider the prefix 'endo-', which means 'within' or 'inner'."
+    },
+    {
+      "question": "In a negative feedback system, what is the specific term for the desired value or range that the system tries to maintain?",
+      "answerOptions": [
+        {
+          "text": "Set point",
+          "isCorrect": true,
+          "rationale": "The set point is the reference point in a feedback system, similar to a thermostat setting."
+        },
+        {
+          "text": "Effector",
+          "isCorrect": false,
+          "rationale": "An effector is the device or mechanism that changes the variable, not the value being aimed for."
+        },
+        {
+          "text": "Allostatic load",
+          "isCorrect": false,
+          "rationale": "This refers to the wear and tear on the body caused by chronic stress and physiological shifts."
+        },
+        {
+          "text": "Drive state",
+          "isCorrect": false,
+          "rationale": "A drive state is the psychological motivation to restore balance when a variable deviates from the desired value."
+        }
+      ],
+      "hint": "This term refers to the reference value used by a sensor to determine if action is needed."
+    },
+    {
+      "question": "Which process involves the passive movement of water molecules across a semipermeable membrane to equalize the concentration of solutions?",
+      "answerOptions": [
+        {
+          "text": "Diffusion",
+          "isCorrect": false,
+          "rationale": "Diffusion is the passive spread of solute molecules throughout a solvent until they are uniform, not specifically water across a membrane."
+        },
+        {
+          "text": "Gluconeogenesis",
+          "isCorrect": false,
+          "rationale": "This is the metabolic process of creating glucose from body fats and proteins."
+        },
+        {
+          "text": "Osmosis",
+          "isCorrect": true,
+          "rationale": "Osmosis specifically refers to the movement of water to balance solute concentrations when a membrane blocks the solute itself."
+        },
+        {
+          "text": "Glycogenesis",
+          "isCorrect": false,
+          "rationale": "This is the physiological process of converting glucose into glycogen for storage."
+        }
+      ],
+      "hint": "This physical force is what causes cells to shrink or balloon depending on the saltiness of the surrounding fluid."
+    },
+    {
+      "question": "What type of thirst is triggered by a loss of overall extracellular fluid volume, such as through serious hemorrhaging or diarrhea?",
+      "answerOptions": [
+        {
+          "text": "Osmotic thirst",
+          "isCorrect": false,
+          "rationale": "Osmotic thirst is triggered by high solute concentration (saltiness) in the extracellular fluid, not necessarily a loss of volume."
+        },
+        {
+          "text": "Hypovolemic thirst",
+          "isCorrect": true,
+          "rationale": "Hypovolemic thirst is stimulated by a reduced volume of extracellular fluid, detected by pressure receptors."
+        },
+        {
+          "text": "Antidiuretic thirst",
+          "isCorrect": false,
+          "rationale": "This is not a recognized scientific term; antidiuretic refers to the hormone vasopressin which conserves water."
+        },
+        {
+          "text": "Hypertonic thirst",
+          "isCorrect": false,
+          "rationale": "Hypertonic refers to a solution with high salt concentration, which leads to osmotic thirst, not volume-based thirst."
+        }
+      ],
+      "hint": "The name of this thirst comes from Greek roots meaning 'low volume'."
+    },
+    {
+      "question": "Which hormone, released by the kidneys in response to low blood pressure, triggers a cascade that results in the constriction of blood vessels and the release of vasopressin?",
+      "answerOptions": [
+        {
+          "text": "Aldosterone",
+          "isCorrect": false,
+          "rationale": "Aldosterone is a steroid from the adrenal glands that helps conserve sodium, though it is part of the broader response system."
+        },
+        {
+          "text": "Angiotensin II",
+          "isCorrect": true,
+          "rationale": "Angiotensin II is the active hormone in the cascade that constricts vessels and triggers other water-conserving responses."
+        },
+        {
+          "text": "Atrial natriuretic peptide ($ANP$)",
+          "isCorrect": false,
+          "rationale": "Secreted by the heart, $ANP$ actually reduces blood pressure and promotes the excretion of water and salt."
+        },
+        {
+          "text": "Insulin",
+          "isCorrect": false,
+          "rationale": "Insulin is involved in glucose regulation and energy storage, not the direct regulation of blood pressure and thirst."
+        }
+      ],
+      "hint": "This hormone is the final, biologically active product of a cascade initiated by the enzyme renin."
+    },
+    {
+      "question": "Which of the following is considered the primary 'fuel' for the brain and can be used by brain cells without the help of insulin?",
+      "answerOptions": [
+        {
+          "text": "Glycogen",
+          "isCorrect": false,
+          "rationale": "Glycogen is the complex carbohydrate used for short-term energy storage in the liver and muscles."
+        },
+        {
+          "text": "Glucose",
+          "isCorrect": true,
+          "rationale": "Glucose is the principal simple sugar used for energy by the body and is the brain's primary fuel source."
+        },
+        {
+          "text": "Lipids",
+          "isCorrect": false,
+          "rationale": "Lipids, or fats, are used for long-term energy storage but are not the brain's immediate, primary fuel."
+        },
+        {
+          "text": "Ketones",
+          "isCorrect": false,
+          "rationale": "Ketones are a secondary fuel source used primarily during prolonged food deprivation."
+        }
+      ],
+      "hint": "This simple sugar is monitored by specialized detectors in the liver and hypothalamus."
+    },
+    {
+      "question": "According to the study of 'The Biggest Loser' contestants, what is a major reason why it is extremely difficult to maintain weight loss over several years?",
+      "answerOptions": [
+        {
+          "text": "The loss of insulin sensitivity in the brain",
+          "isCorrect": false,
+          "rationale": "While insulin sensitivity is important, the primary obstacle identified was a persistent drop in metabolic rate."
+        },
+        {
+          "text": "A permanent increase in ghrelin levels",
+          "isCorrect": false,
+          "rationale": "While hunger hormones play a role, the study highlighted the body's metabolic adaptation to lower caloric intake."
+        },
+        {
+          "text": "A persistent decrease in basal metabolic rate",
+          "isCorrect": true,
+          "rationale": "The body undergoes metabolic adaptation, burning fewer calories than average to try and regain lost weight."
+        },
+        {
+          "text": "The depletion of brown-fat deposits",
+          "isCorrect": false,
+          "rationale": "Brown fat helps generate heat, but its depletion was not the cited cause for long-term weight regain in the contestants."
+        }
+      ],
+      "hint": "The body often fights weight loss by becoming much more 'efficient' at using the energy it receives."
+    },
+    {
+      "question": "Lesions in which area of the hypothalamus were traditionally thought to cause chronic hunger and massive weight gain (hyperphagia)?",
+      "answerOptions": [
+        {
+          "text": "Lateral hypothalamus ($LH$)",
+          "isCorrect": false,
+          "rationale": "Lesions in the $LH$ typically lead to aphagia (cessation of eating) and weight loss."
+        },
+        {
+          "text": "Ventromedial hypothalamus ($VMH$)",
+          "isCorrect": true,
+          "rationale": "The $VMH$ was historically considered a 'satiety center' because its removal led to overeating."
+        },
+        {
+          "text": "Arcuate nucleus",
+          "isCorrect": false,
+          "rationale": "The arcuate nucleus contains both hunger and satiety neurons and acts as a complex controller rather than a simple center."
+        },
+        {
+          "text": "Preoptic area ($POA$)",
+          "isCorrect": false,
+          "rationale": "The $POA$ is primarily involved in thermoregulation and fluid balance rather than hunger signals."
+        }
+      ],
+      "hint": "This region was once considered the brain's 'satiety center'."
+    },
+    {
+      "question": "Which peptide hormone is produced by fat cells and helps the brain monitor the body's long-term energy reserves?",
+      "answerOptions": [
+        {
+          "text": "Leptin",
+          "isCorrect": true,
+          "rationale": "Leptin is secreted by adipose tissue and provides the brain with information about current fat stores."
+        },
+        {
+          "text": "Ghrelin",
+          "isCorrect": false,
+          "rationale": "Ghrelin is produced by the stomach and serves as a powerful short-term appetite stimulant."
+        },
+        {
+          "text": "PYY3-36",
+          "isCorrect": false,
+          "rationale": "This peptide is released by the intestines after a meal to signal satiety."
+        },
+        {
+          "text": "Glucagon",
+          "isCorrect": false,
+          "rationale": "Glucagon is a pancreatic hormone that converts stored glycogen back into glucose."
+        }
+      ],
+      "hint": "Mice with a defect in the gene for this hormone become morbidly obese because their brains think they have no fat stores."
+    },
+    {
+      "question": "In the arcuate nucleus appetite controller, which set of neurons acts as 'satiety neurons' by inhibiting appetite and increasing metabolism?",
+      "answerOptions": [
+        {
+          "text": "NPY neurons",
+          "isCorrect": false,
+          "rationale": "NPY neurons (which also produce AgRP) act as hunger neurons that stimulate appetite."
+        },
+        {
+          "text": "POMC neurons",
+          "isCorrect": true,
+          "rationale": "POMC neurons (which also produce CART) inhibit appetite and promote satiety when activated."
+        },
+        {
+          "text": "Glucodetector neurons",
+          "isCorrect": false,
+          "rationale": "While these detect glucose levels, the specific satiety-promoting set in the arcuate nucleus is the POMC group."
+        },
+        {
+          "text": "Osmosensory neurons",
+          "isCorrect": false,
+          "rationale": "These neurons are involved in fluid regulation and monitoring salt concentration, not appetite control."
+        }
+      ],
+      "hint": "These neurons produce pro-opiomelanocortin and are activated by high levels of leptin."
+    },
+    {
+      "question": "Which gut hormone is known as a powerful appetite stimulant that rises during fasting and drops immediately after a meal?",
+      "answerOptions": [
+        {
+          "text": "PYY3-36",
+          "isCorrect": false,
+          "rationale": "PYY3-36 levels rise after a meal to suppress appetite, acting in opposition to hunger stimulants."
+        },
+        {
+          "text": "GLP-1",
+          "isCorrect": false,
+          "rationale": "GLP-1 is released post-meal to enhance insulin release and suppress appetite."
+        },
+        {
+          "text": "Ghrelin",
+          "isCorrect": true,
+          "rationale": "Ghrelin levels peak before meals and stimulate the hunger neurons in the arcuate nucleus."
+        },
+        {
+          "text": "Cholecystokinin ($CCK$)",
+          "isCorrect": false,
+          "rationale": "CCK is a satiety signal released by the duodenum that acts on the vagus nerve."
+        }
+      ],
+      "hint": "This hormone's name is related to its effect on 'growth hormone' secretion."
+    }
+  ]
+}

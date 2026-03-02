@@ -1,0 +1,318 @@
+{
+  "title": "Physiology Quiz",
+  "questions": [
+    {
+      "question": "Which of the following best describes the concept of allostasis in contrast to homeostasis?",
+      "answerOptions": [
+        {
+          "text": "The maintenance of a rigid, unchanging internal set point for all physiological variables.",
+          "isCorrect": false,
+          "rationale": "This describes a narrow view of homeostasis, whereas allostasis involves dynamic shifts to meet anticipated demands."
+        },
+        {
+          "text": "The dynamic process of shifting physiological responses to achieve stability in the face of stressors.",
+          "isCorrect": true,
+          "rationale": "Allostasis refers to the body's ability to adjust its internal environment based on environmental stressors and prior experience."
+        },
+        {
+          "text": "The chronic wear and tear on the body resulting from repeated physiological stress responses.",
+          "isCorrect": false,
+          "rationale": "This specifically defines allostatic load, which is the cumulative cost of allostatic adjustments."
+        },
+        {
+          "text": "The purely behavioural mechanisms used by ectotherms to maintain a consistent body temperature.",
+          "isCorrect": false,
+          "rationale": "This refers to behavioural thermoregulation, a component of homeostasis, rather than the overarching concept of allostasis."
+        }
+      ],
+      "hint": "Consider the difference between maintaining a single fixed point and adapting to changing environmental demands."
+    },
+    {
+      "question": "In the neural hierarchy of mammalian thermoregulation, where do inputs from peripheral warm and cool sensors first synapse in the brainstem?",
+      "answerOptions": [
+        {
+          "text": "The preoptic area (POA) of the hypothalamus.",
+          "isCorrect": false,
+          "rationale": "The POA is the principal integration region but it receives thermal information after it has synapsed in the brainstem."
+        },
+        {
+          "text": "The lateral parabrachial nuclei.",
+          "isCorrect": true,
+          "rationale": "Thermal information from the periphery ascends the dorsal spinal cord and first synapses in these nuclei before projecting to the POA."
+        },
+        {
+          "text": "The supraoptic nucleus.",
+          "isCorrect": false,
+          "rationale": "This nucleus is primarily involved in the release of vasopressin for fluid regulation rather than primary thermal relay."
+        },
+        {
+          "text": "The nucleus of the solitary tract (NST).",
+          "isCorrect": false,
+          "rationale": "The NST primarily receives visceral and taste information, while thermal info uses a different brainstem pathway."
+        }
+      ],
+      "hint": "Think about the specific relay station mentioned in the pathway between the spinal cord and the hypothalamus."
+    },
+    {
+      "question": "What is the specific physiological mechanism that allows osmosensory neurons to detect changes in extracellular osmolality?",
+      "answerOptions": [
+        {
+          "text": "Voltage-gated $Na^{+}$ channels that open in response to salt concentration.",
+          "isCorrect": false,
+          "rationale": "Voltage-gated channels respond to electrical potential changes, not direct physical stretching by osmotic pressure."
+        },
+        {
+          "text": "The active transport of water through aquaporins to maintain a constant cell volume.",
+          "isCorrect": false,
+          "rationale": "Osmosensory neurons are unique because they do not maintain constant volume, allowing them to shrink or swell."
+        },
+        {
+          "text": "Mechanically gated ion channels that open or close as the cell membrane stretches or shrinks.",
+          "isCorrect": true,
+          "rationale": "The physical change in the neuron's size due to osmosis opens these channels, altering the membrane potential."
+        },
+        {
+          "text": "Intracellular receptors that bind to $Cl^{-}$ ions to trigger action potentials.",
+          "isCorrect": false,
+          "rationale": "The detection mechanism is based on the physical state of the cell membrane rather than chemical binding to intracellular receptors."
+        }
+      ],
+      "hint": "Focus on how the physical shape of these specialised neurons changes in response to water movement."
+    },
+    {
+      "question": "During the hormonal cascade triggered by hypovolemia, what is the specific role of the enzyme Renin?",
+      "answerOptions": [
+        {
+          "text": "It directly stimulates the circumventricular organs to trigger immediate thirst.",
+          "isCorrect": false,
+          "rationale": "Renin is an enzyme that acts on a blood protein, not a direct neural stimulant for thirst."
+        },
+        {
+          "text": "It converts circulating Angiotensinogen into Angiotensin I.",
+          "isCorrect": true,
+          "rationale": "Released by the kidneys, Renin catalyzes this initial conversion, which is the first step in the Angiotensin II pathway."
+        },
+        {
+          "text": "It acts as a potent vasoconstrictor to increase blood pressure in major arteries.",
+          "isCorrect": false,
+          "rationale": "Angiotensin II and Vasopressin are the primary vasoconstrictors; Renin acts further upstream in the process."
+        },
+        {
+          "text": "It signals the posterior pituitary to increase the secretion of Vasopressin.",
+          "isCorrect": false,
+          "rationale": "While the cascade eventually involves Vasopressin, Renin's primary enzymatic function is converting Angiotensinogen."
+        }
+      ],
+      "hint": "Look for the very first step in the cascade involving the kidneys."
+    },
+    {
+      "question": "Which hormone, secreted by the heart, acts to inhibit drinking and promote the excretion of water and salt to reduce blood pressure?",
+      "answerOptions": [
+        {
+          "text": "Aldosterone",
+          "isCorrect": false,
+          "rationale": "Aldosterone is secreted by the adrenal glands and promotes the conservation of salt, not its excretion."
+        },
+        {
+          "text": "Atrial natriuretic peptide (ANP)",
+          "isCorrect": true,
+          "rationale": "ANP is a cardiac hormone that opposes the water-conserving effects of Vasopressin and Angiotensin II."
+        },
+        {
+          "text": "Vasopressin",
+          "isCorrect": false,
+          "rationale": "Vasopressin is released by the posterior pituitary and promotes water retention, increasing blood pressure."
+        },
+        {
+          "text": "Angiotensin II",
+          "isCorrect": false,
+          "rationale": "Angiotensin II is a powerful water-conserving hormone that triggers thirst and vasoconstriction."
+        }
+      ],
+      "hint": "Consider the hormone that serves as a physiological counterbalance to the water-retention systems."
+    },
+    {
+      "question": "How does the 'cephalic phase' of insulin release differ from the 'absorptive phase'?",
+      "answerOptions": [
+        {
+          "text": "It is triggered by glucodetectors in the liver rather than sensory stimuli.",
+          "isCorrect": false,
+          "rationale": "Glucodetectors in the liver are responsible for the absorptive phase, not the cephalic phase."
+        },
+        {
+          "text": "It relies on gut hormones released when food enters the small intestine.",
+          "isCorrect": false,
+          "rationale": "This describes the digestive phase, which occurs between the cephalic and absorptive phases."
+        },
+        {
+          "text": "It is a conditioned response mediated by the brain in anticipation of glucose arrival.",
+          "isCorrect": true,
+          "rationale": "The cephalic phase is triggered by the sight, smell, or taste of food before any nutrients are absorbed."
+        },
+        {
+          "text": "It is the only phase that does not involve the vagus nerve.",
+          "isCorrect": false,
+          "rationale": "All phases of insulin regulation involve complex neural and hormonal feedback loops, often including the vagus nerve."
+        }
+      ],
+      "hint": "Think about the 'head' (cephalon) and what happens before food is even swallowed."
+    },
+    {
+      "question": "In the arcuate nucleus appetite controller, what is the functional relationship between NPY neurons and POMC neurons?",
+      "answerOptions": [
+        {
+          "text": "POMC neurons stimulate NPY neurons to create a synergistic hunger signal.",
+          "isCorrect": false,
+          "rationale": "These two sets of neurons have opposing effects; they do not work together to increase hunger."
+        },
+        {
+          "text": "NPY neurons inhibit POMC neurons, simultaneously increasing appetite and blocking satiety.",
+          "isCorrect": true,
+          "rationale": "Activated NPY/AgRP neurons promote feeding and use inhibitory signals to prevent the POMC neurons from signaling satiety."
+        },
+        {
+          "text": "They both respond to Leptin by increasing their activity to promote weight gain.",
+          "isCorrect": false,
+          "rationale": "Leptin activates POMC neurons (satiety) but inhibits NPY neurons (hunger)."
+        },
+        {
+          "text": "They are located in completely different hypothalamic nuclei and do not interact.",
+          "isCorrect": false,
+          "rationale": "Both types of neurons are located within the arcuate nucleus and interact extensively to regulate appetite."
+        }
+      ],
+      "hint": "Recall which neuron type acts as the 'hunger' signal and how it might treat the 'satiety' signal."
+    },
+    {
+      "question": "What did the 6-year follow-up study of 'The Biggest Loser' contestants reveal about metabolic adaptation?",
+      "answerOptions": [
+        {
+          "text": "Contestants' basal metabolic rates returned to normal once they regained their lost weight.",
+          "isCorrect": false,
+          "rationale": "The study alarmingly showed that the metabolic suppression persisted even after weight was regained."
+        },
+        {
+          "text": "Metabolic rates remained significantly suppressed, with some contestants burning 800 fewer calories per day than expected.",
+          "isCorrect": true,
+          "rationale": "This persistent metabolic adaptation makes it incredibly difficult for formerly obese individuals to maintain weight loss."
+        },
+        {
+          "text": "Exercise was sufficient to overcome the reduction in basal metabolism.",
+          "isCorrect": false,
+          "rationale": "Despite exceptional efforts, most contestants regained weight because the metabolic suppression was so powerful."
+        },
+        {
+          "text": "The body's set point for weight was successfully lowered by the 7-month intensive programme.",
+          "isCorrect": false,
+          "rationale": "The body continued to 'strive to return to its original obese state', suggesting the set point was not lowered."
+        }
+      ],
+      "hint": "Focus on the long-term changes in calorie burning after massive, rapid weight loss."
+    },
+    {
+      "question": "Which gut hormone acts in direct opposition to Ghrelin by providing a rapid appetite-suppressing signal after a meal?",
+      "answerOptions": [
+        {
+          "text": "Leptin",
+          "isCorrect": false,
+          "rationale": "Leptin provides a long-term signal about fat stores, rather than a rapid, post-meal signal from the intestines."
+        },
+        {
+          "text": "$PYY_{3-36}$",
+          "isCorrect": true,
+          "rationale": "Released by the small and large intestines, $PYY_{3-36}$ levels rise rapidly after eating to curb appetite."
+        },
+        {
+          "text": "Glucagon",
+          "isCorrect": false,
+          "rationale": "Glucagon is a pancreatic hormone involved in converting glycogen to glucose, not a primary satiety signal from the gut."
+        },
+        {
+          "text": "Renin",
+          "isCorrect": false,
+          "rationale": "Renin is a kidney enzyme involved in fluid balance and the angiotensin cascade."
+        }
+      ],
+      "hint": "Identify the peptide released by the ileum and colon that spikes immediately after ingestion."
+    },
+    {
+      "question": "Why does the evolution of endothermy allow mammals to sustain muscular activity for longer periods than ectotherms?",
+      "answer": "Because endothermy involves an enhanced capacity for oxygen utilisation to generate heat.",
+      "answerOptions": [
+        {
+          "text": "Because endotherms do not have to waste energy on behavioural thermoregulation.",
+          "isCorrect": false,
+          "rationale": "Endotherms still engage in behavioural thermoregulation; their advantage lies in metabolic capacity."
+        },
+        {
+          "text": "Because they have a higher capacity for oxygen utilisation to fuel metabolism and generate heat.",
+          "isCorrect": true,
+          "rationale": "This increased metabolic efficiency allows for sustained high levels of muscular activity, unlike in ectotherms."
+        },
+        {
+          "text": "Because ectotherms are unable to generate any internal heat through metabolism.",
+          "isCorrect": false,
+          "rationale": "Ectotherms do generate some metabolic heat, but not enough to regulate their body temperature independently of the environment."
+        },
+        {
+          "text": "Because endotherms have a lower basal metabolic rate relative to their body size.",
+          "isCorrect": false,
+          "rationale": "Endotherms actually have a higher basal metabolic rate than ectotherms of similar size."
+        }
+      ],
+      "hint": "Consider the relationship between heat production, metabolism, and oxygen."
+    },
+    {
+      "question": "What is the primary difference between glycogenolysis and gluconeogenesis?",
+      "answerOptions": [
+        {
+          "text": "Glycogenolysis creates fats from glucose, while gluconeogenesis creates glucose from proteins.",
+          "isCorrect": false,
+          "rationale": "Glycogenolysis is the breakdown of stored glycogen into glucose, not the creation of fats."
+        },
+        {
+          "text": "Glycogenolysis is the conversion of glycogen to glucose; gluconeogenesis is the creation of glucose from fats and proteins.",
+          "isCorrect": true,
+          "rationale": "Glycogenolysis handles short-term energy release from the liver, while gluconeogenesis is used during prolonged deprivation."
+        },
+        {
+          "text": "Glycogenolysis is promoted by insulin, while gluconeogenesis is promoted by glucagon.",
+          "isCorrect": false,
+          "rationale": "Glycogenesis (storage) is promoted by insulin; both processes listed in the question involve releasing energy."
+        },
+        {
+          "text": "Gluconeogenesis occurs only in the brain, while glycogenolysis occurs only in the muscles.",
+          "isCorrect": false,
+          "rationale": "Both processes occur primarily in the liver to supply glucose to the entire body and brain."
+        }
+      ],
+      "hint": "One involves breaking down a specific carbohydrate polymer, while the other involves making 'new' glucose from non-carbohydrate sources."
+    },
+    {
+      "question": "Which fluid compartment contains the majority of the body's water?",
+      "answerOptions": [
+        {
+          "text": "The extracellular compartment",
+          "isCorrect": false,
+          "rationale": "The extracellular compartment (interstitial fluid and plasma) holds less water than the space inside cells."
+        },
+        {
+          "text": "The intracellular compartment",
+          "isCorrect": true,
+          "rationale": "Most of the body's water is contained within the trillions of cells that make up the organism."
+        },
+        {
+          "text": "The interstitial fluid",
+          "isCorrect": false,
+          "rationale": "Interstitial fluid is a sub-component of the extracellular compartment and does not contain the majority of body water."
+        },
+        {
+          "text": "The blood plasma",
+          "isCorrect": false,
+          "rationale": "Plasma is a relatively small portion of the body's total fluid volume, despite its critical role in transport."
+        }
+      ],
+      "hint": "Think about where water is located relative to the cell membrane."
+    }
+  ]
+}

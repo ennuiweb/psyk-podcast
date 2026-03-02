@@ -1,0 +1,369 @@
+{
+  "title": "Neuroscience Quiz",
+  "questions": [
+    {
+      "question": "Which specific substance did Albert Hofmann synthesize from ergot in 1943 that caused intense visual hallucinations?",
+      "answerOptions": [
+        {
+          "text": "Psilocybin",
+          "isCorrect": false,
+          "rationale": "Psilocybin is found in mushrooms, while Hofmann's discovery was derived specifically from a grain fungus."
+        },
+        {
+          "text": "LSD",
+          "isCorrect": true,
+          "rationale": "Hofmann synthesized LSD from ergot, realizing its massive potency and profound effects on brain function after accidental ingestion."
+        },
+        {
+          "text": "Cocaine",
+          "isCorrect": false,
+          "rationale": "Cocaine is derived from the coca plant, whereas Hofmann was studying compounds from ergot fungus."
+        },
+        {
+          "text": "Morphine",
+          "isCorrect": false,
+          "rationale": "Morphine is a natural compound from poppies, but Hofmann was working with synthetic derivatives of ergot."
+        }
+      ],
+      "hint": "Think about the pharmaceutical 'problem child' synthesized from a fungus growing on grain."
+    },
+    {
+      "question": "Which ion is primarily responsible for triggering the fusion of synaptic vesicles with the presynaptic membrane during an action potential?",
+      "answerOptions": [
+        {
+          "text": "$Na^{+}$",
+          "isCorrect": false,
+          "rationale": "Sodium ions are critical for the propagation of the action potential down the axon, but not for the final release of transmitters."
+        },
+        {
+          "text": "$K^{+}$",
+          "isCorrect": false,
+          "rationale": "Potassium ions typically leave the cell to repolarize the membrane, rather than entering to trigger vesicle fusion."
+        },
+        {
+          "text": "$Ca^{2+}$",
+          "isCorrect": true,
+          "rationale": "The influx of calcium ions through voltage-gated channels triggers the SNARE proteins to facilitate exocytosis of neurotransmitters."
+        },
+        {
+          "text": "$Cl^{-}$",
+          "isCorrect": false,
+          "rationale": "Chloride ions are usually involved in inhibitory postsynaptic potentials, not in the presynaptic release mechanism."
+        }
+      ],
+      "hint": "This divalent cation enters the terminal via voltage-gated channels specifically when the terminal is depolarized."
+    },
+    {
+      "question": "What is the primary difference between ionotropic and metabotropic receptors?",
+      "answerOptions": [
+        {
+          "text": "Ionotropic receptors are located in the nucleus, while metabotropic are on the membrane.",
+          "isCorrect": false,
+          "rationale": "Both types of receptors are typically embedded in the postsynaptic cell membrane."
+        },
+        {
+          "text": "Ionotropic receptors use second messengers, while metabotropic use ion channels.",
+          "isCorrect": false,
+          "rationale": "This statement reverses the roles; metabotropic receptors are the ones that rely on second messenger systems."
+        },
+        {
+          "text": "Ionotropic receptors contain an ion channel, while metabotropic receptors activate $G$ proteins.",
+          "isCorrect": true,
+          "rationale": "Ionotropic receptors allow for fast, direct ion flow, whereas metabotropic receptors work more slowly through intracellular signaling cascades."
+        },
+        {
+          "text": "Metabotropic receptors only respond to excitatory neurotransmitters.",
+          "isCorrect": false,
+          "rationale": "Both metabotropic and ionotropic receptors can mediate either excitatory or inhibitory effects depending on their subtype."
+        }
+      ],
+      "hint": "Consider which type of receptor is a 'ligand-gated ion channel' versus one that uses indirect signaling."
+    },
+    {
+      "question": "Which of the following is considered a 'classic' criterion for establishing a substance as a neurotransmitter?",
+      "answerOptions": [
+        {
+          "text": "The substance must be produced in the liver and transported to the brain.",
+          "isCorrect": false,
+          "rationale": "Neurotransmitters must be synthesized within the presynaptic neurons themselves, not in peripheral organs like the liver."
+        },
+        {
+          "text": "The substance must be present in presynaptic axon terminals.",
+          "isCorrect": true,
+          "rationale": "One of the fundamental criteria is the localized presence of the substance in the terminal from which it is released."
+        },
+        {
+          "text": "The substance must always produce an excitatory effect on the postsynaptic cell.",
+          "isCorrect": false,
+          "rationale": "Many neurotransmitters, such as GABA, are primarily inhibitory, and the effect is determined by the receptor subtype."
+        },
+        {
+          "text": "The substance must be a gas that diffuses across the membrane.",
+          "isCorrect": false,
+          "rationale": "While some gases act as transmitters, they are considered atypical and do not meet all the 'classic' criteria like storage in vesicles."
+        }
+      ],
+      "hint": "Focus on the physical location where the chemical must be stored before it is used for signaling."
+    },
+    {
+      "question": "Which neurotransmitter is identified as the most abundant excitatory transmitter in the mammalian brain?",
+      "answerOptions": [
+        {
+          "text": "GABA",
+          "isCorrect": false,
+          "rationale": "GABA is the most abundant inhibitory neurotransmitter, rather than the primary excitatory one."
+        },
+        {
+          "text": "Serotonin",
+          "isCorrect": false,
+          "rationale": "Serotonin is an amine neurotransmitter involved in mood and sleep, but it is not the most plentiful excitatory transmitter."
+        },
+        {
+          "text": "Glutamate",
+          "isCorrect": true,
+          "rationale": "Glutamate is the primary excitatory neurotransmitter and uses several ionotropic receptor subtypes like NMDA and AMPA."
+        },
+        {
+          "text": "Acetylcholine",
+          "isCorrect": false,
+          "rationale": "While excitatory at the neuromuscular junction, acetylcholine is not the most abundant excitatory transmitter throughout the central nervous system."
+        }
+      ],
+      "hint": "This amino acid is associated with NMDA receptors and can cause excitotoxicity if released in excess."
+    },
+    {
+      "question": "The mesostriatal pathway, which is crucial for motor control, originates in which brain region?",
+      "answerOptions": [
+        {
+          "text": "Locus coeruleus",
+          "isCorrect": false,
+          "rationale": "The locus coeruleus is the primary source of norepinephrine, not dopamine for the mesostriatal pathway."
+        },
+        {
+          "text": "Substantia nigra",
+          "isCorrect": true,
+          "rationale": "The substantia nigra in the midbrain provides the dopaminergic projections to the striatum that are lost in Parkinson's disease."
+        },
+        {
+          "text": "Raphe nuclei",
+          "isCorrect": false,
+          "rationale": "The raphe nuclei are the primary source of serotonergic fibers, whereas the mesostriatal pathway uses dopamine."
+        },
+        {
+          "text": "Basal forebrain",
+          "isCorrect": false,
+          "rationale": "The basal forebrain is a major hub for cholinergic (acetylcholine) neurons, not the dopaminergic mesostriatal system."
+        }
+      ],
+      "hint": "This midbrain structure is literally named 'black substance' and projects to the basal ganglia."
+    },
+    {
+      "question": "How do 'gas' neurotransmitters, like nitric oxide (NO), differ from classic neurotransmitters?",
+      "answerOptions": [
+        {
+          "text": "They are stored in large, dense-core vesicles.",
+          "isCorrect": false,
+          "rationale": "Gas transmitters cannot be stored in vesicles because they diffuse through membranes as soon as they are produced."
+        },
+        {
+          "text": "They act as retrograde transmitters, moving from postsynaptic to presynaptic neurons.",
+          "isCorrect": true,
+          "rationale": "Nitric oxide diffuses from the postsynaptic side back to the presynaptic side to modulate future transmitter release."
+        },
+        {
+          "text": "They only bind to ionotropic receptors on the cell surface.",
+          "isCorrect": false,
+          "rationale": "Gas transmitters diffuse into the target cell to stimulate internal second messengers rather than binding to surface receptors."
+        },
+        {
+          "text": "They are only produced in the axon terminal.",
+          "isCorrect": false,
+          "rationale": "Gases like NO are often produced in other parts of the cell, such as the dendrites."
+        }
+      ],
+      "hint": "Consider the unconventional direction in which these soluble molecules can travel across the synapse."
+    },
+    {
+      "question": "Which term describes a drug that binds to a receptor and initiates an effect that is the opposite of the normal function of that receptor?",
+      "answerOptions": [
+        {
+          "text": "Agonist",
+          "isCorrect": false,
+          "rationale": "An agonist mimics or initiates the normal effects of the endogenous transmitter."
+        },
+        {
+          "text": "Antagonist",
+          "isCorrect": false,
+          "rationale": "An antagonist blocks the receptor, preventing its activation, but does not initiate a reverse effect."
+        },
+        {
+          "text": "Inverse agonist",
+          "isCorrect": true,
+          "rationale": "An inverse agonist binds to a receptor and triggers a response that is functionally opposite to the normal agonist response."
+        },
+        {
+          "text": "Partial agonist",
+          "isCorrect": false,
+          "rationale": "A partial agonist produces a middling response that is weaker than the full endogenous ligand's effect."
+        }
+      ],
+      "hint": "This type of ligand goes beyond simple blocking and creates a reverse functional outcome."
+    },
+    {
+      "question": "If a drug has high binding affinity for a specific receptor, what does this imply about its effective dose?",
+      "answerOptions": [
+        {
+          "text": "A very high dose is required to see any effect.",
+          "isCorrect": false,
+          "rationale": "High affinity means the drug binds easily, so high doses are typically not needed to saturate the receptors."
+        },
+        {
+          "text": "The drug will only bind if the endogenous neurotransmitter is absent.",
+          "isCorrect": false,
+          "rationale": "Affinity is a measure of attraction; high affinity allows a drug to compete effectively even when other ligands are present."
+        },
+        {
+          "text": "The drug will bind to receptors even at low concentrations.",
+          "isCorrect": true,
+          "rationale": "Binding affinity refers to the strength of chemical attraction; a high-affinity drug 'sticks' well even when few molecules are present."
+        },
+        {
+          "text": "The drug will never dissociate from the receptor.",
+          "isCorrect": false,
+          "rationale": "While high affinity means a drug stays bound longer, binding is almost always temporary and reversible."
+        }
+      ],
+      "hint": "Affinity measures the 'propensity' or 'stickiness' of a molecule for its target."
+    },
+    {
+      "question": "What is the difference between metabolic tolerance and functional tolerance?",
+      "answerOptions": [
+        {
+          "text": "Metabolic tolerance involves changes in receptor density, while functional tolerance involves the liver.",
+          "isCorrect": false,
+          "rationale": "This reverses the definitions; metabolic tolerance is related to the body's clearance organs like the liver."
+        },
+        {
+          "text": "Metabolic tolerance is when the body becomes better at clearing the drug, while functional tolerance involves the brain changing its receptor numbers.",
+          "isCorrect": true,
+          "rationale": "Metabolic tolerance improves elimination, whereas functional tolerance (up- or down-regulation) alters the sensitivity of the target tissue itself."
+        },
+        {
+          "text": "Metabolic tolerance only happens with agonists, while functional tolerance only happens with antagonists.",
+          "isCorrect": false,
+          "rationale": "Both types of tolerance can occur regardless of whether a drug is an agonist or an antagonist."
+        },
+        {
+          "text": "Functional tolerance is permanent, while metabolic tolerance is temporary.",
+          "isCorrect": false,
+          "rationale": "Both forms of tolerance are generally reversible adaptations of the body's systems to a chemical challenge."
+        }
+      ],
+      "hint": "Distinguish between the body's ability to eliminate a substance versus the nervous system's ability to adjust its sensitivity."
+    },
+    {
+      "question": "How does caffeine increase arousal in the brain?",
+      "answerOptions": [
+        {
+          "text": "By activating $GABA_{A}$ receptors directly.",
+          "isCorrect": false,
+          "rationale": "Activating GABA receptors would lead to sedation and reduced anxiety, which is the opposite of caffeine's effect."
+        },
+        {
+          "text": "By blocking the reuptake of serotonin in the Raphe nuclei.",
+          "isCorrect": false,
+          "rationale": "Blocking serotonin reuptake is the primary mechanism of SSRI antidepressants, not caffeine."
+        },
+        {
+          "text": "By blocking adenosine autoreceptors, preventing their inhibitory effect on transmitter release.",
+          "isCorrect": true,
+          "rationale": "Adenosine normally inhibits the release of catecholamines; by blocking its receptors, caffeine allows for more neurotransmitter release."
+        },
+        {
+          "text": "By mimicking the action of acetylcholine at the neuromuscular junction.",
+          "isCorrect": false,
+          "rationale": "Caffeine's primary central effects are related to adenosine modulation rather than acting as an acetylcholine agonist."
+        }
+      ],
+      "hint": "Caffeine interferes with a neuromodulator that normally acts as a 'brake' on synaptic activity."
+    },
+    {
+      "question": "First-generation antipsychotics, such as chlorpromazine and haloperidol, primarily target which receptor system?",
+      "answerOptions": [
+        {
+          "text": "Serotonin $5\\text{-HT}_{2A}$ receptors",
+          "isCorrect": false,
+          "rationale": "Serotonin receptors are more specifically targeted by second-generation antipsychotics."
+        },
+        {
+          "text": "Dopamine $D_{2}$ receptors",
+          "isCorrect": true,
+          "rationale": "The first generation of antipsychotics acts primarily as selective antagonists for the $D_{2}$ subtype of dopamine receptors."
+        },
+        {
+          "text": "Nicotinic acetylcholine receptors",
+          "isCorrect": false,
+          "rationale": "Acetylcholine receptors are involved in muscle movement and memory, but are not the primary target for classic antipsychotics."
+        },
+        {
+          "text": "Glutamate NMDA receptors",
+          "isCorrect": false,
+          "rationale": "While glutamate is implicated in schizophrenia, classic antipsychotics do not act directly on NMDA receptors."
+        }
+      ],
+      "hint": "This receptor is central to the 'dopaminergic model' of schizophrenia symptoms like hallucinations."
+    },
+    {
+      "question": "Benzodiazepines like Xanax or Ativan facilitate the action of which neurotransmitter?",
+      "answerOptions": [
+        {
+          "text": "Glutamate",
+          "isCorrect": false,
+          "rationale": "Facilitating glutamate would increase brain excitation and potentially cause seizures, the opposite of what benzodiazepines do."
+        },
+        {
+          "text": "Norepinephrine",
+          "isCorrect": false,
+          "rationale": "Norepinephrine is associated with arousal and 'fight or flight', whereas benzodiazepines are used for calming and relaxation."
+        },
+        {
+          "text": "GABA",
+          "isCorrect": true,
+          "rationale": "Benzodiazepines bind to a modulatory site on the $GABA_{A}$ receptor, enhancing the inhibitory effect of GABA and reducing neuronal excitability."
+        },
+        {
+          "text": "Dopamine",
+          "isCorrect": false,
+          "rationale": "Dopamine is associated with reward and motor control; benzodiazepines primarily target the brain's main inhibitory system."
+        }
+      ],
+      "hint": "This neurotransmitter is the brain's primary inhibitor, and its receptors control a chloride channel."
+    },
+    {
+      "question": "Selective serotonin reuptake inhibitors (SSRIs) primarily act on which stage of synaptic transmission?",
+      "answerOptions": [
+        {
+          "text": "Transmitter production",
+          "isCorrect": false,
+          "rationale": "SSRIs do not increase the synthesis of serotonin; they affect what happens after it is already released."
+        },
+        {
+          "text": "Transmitter release",
+          "isCorrect": false,
+          "rationale": "SSRIs do not trigger more serotonin to be released from vesicles; they focus on the removal process."
+        },
+        {
+          "text": "Transmitter clearance",
+          "isCorrect": true,
+          "rationale": "SSRIs work by blocking the transporters that remove serotonin from the synaptic cleft, allowing it to linger and have a greater effect."
+        },
+        {
+          "text": "Postsynaptic receptor blockade",
+          "isCorrect": false,
+          "rationale": "SSRIs are not antagonists; they indirectly increase receptor activation by keeping more transmitter available in the synapse."
+        }
+      ],
+      "hint": "These drugs prevent the 'recycling' of serotonin back into the presynaptic terminal."
+    }
+  ]
+}

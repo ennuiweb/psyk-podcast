@@ -1,0 +1,395 @@
+{
+  "title": "Emotion Quiz",
+  "questions": [
+    {
+      "question": "Which brain structure was found to be destroyed in patient S.M., leading to her complete lack of fear in dangerous situations?",
+      "answerOptions": [
+        {
+          "text": "Hippocampus",
+          "isCorrect": false,
+          "rationale": "The hippocampus is primarily involved in memory formation and spatial navigation rather than the direct processing of fear."
+        },
+        {
+          "text": "Amygdala",
+          "isCorrect": true,
+          "rationale": "The amygdala is a key structure in the limbic system that mediates the experience and recognition of fear."
+        },
+        {
+          "text": "Thalamus",
+          "isCorrect": false,
+          "rationale": "While the thalamus acts as a sensory relay station, its destruction would cause sensory deficits rather than a selective loss of fear."
+        },
+        {
+          "text": "Cingulate cortex",
+          "isCorrect": false,
+          "rationale": "The cingulate cortex is involved in emotional processing but is not the primary site for generating the basic fear response."
+        }
+      ],
+      "hint": "This almond-shaped structure is often referred to as the brain's 'fear center'."
+    },
+    {
+      "question": "According to the James-Lange theory of emotion, what is the primary cause of the emotions we experience?",
+      "answerOptions": [
+        {
+          "text": "Cognitive analysis of the social context",
+          "isCorrect": false,
+          "rationale": "This perspective belongs to Schachter's cognitive attribution theory, not the James-Lange theory."
+        },
+        {
+          "text": "Simultaneous activation of the brain and the body",
+          "isCorrect": false,
+          "rationale": "The Cannon-Bard theory suggests that emotional experience and physiological arousal occur at the same time."
+        },
+        {
+          "text": "Perception of specific physiological changes in the body",
+          "isCorrect": true,
+          "rationale": "James and Lange argued that we feel emotions because we perceive the bodily responses triggered by a stimulus."
+        },
+        {
+          "text": "Suppression of the parasympathetic nervous system",
+          "isCorrect": false,
+          "rationale": "While physiological arousal involves the autonomic system, the theory focuses on the perception of these changes rather than the suppression of one specific branch."
+        }
+      ],
+      "hint": "Consider whether this theory suggests the body's reaction comes before or after the feeling of the emotion."
+    },
+    {
+      "question": "Which theory of emotion proposes that emotional labels are attributed to relatively nonspecific feelings of physiological arousal based on the current context?",
+      "answerOptions": [
+        {
+          "text": "Cannon-Bard theory",
+          "isCorrect": false,
+          "rationale": "This theory emphasizes the brain deciding on an emotion and activating the body simultaneously, rather than a contextual label."
+        },
+        {
+          "text": "Folk psychology",
+          "isCorrect": false,
+          "rationale": "Folk wisdom traditionally suggests that the emotion itself causes the bodily reaction, which is the opposite of this model."
+        },
+        {
+          "text": "James-Lange theory",
+          "isCorrect": false,
+          "rationale": "This theory suggests that specific constellations of bodily responses lead to specific emotions without needing a cognitive label."
+        },
+        {
+          "text": "Cognitive attribution theory",
+          "isCorrect": true,
+          "rationale": "Schachter's model suggests that our interpretation of the environment determines which emotion we experience in response to general arousal."
+        }
+      ],
+      "hint": "This theory was tested using epinephrine injections and actors playing 'happy' or 'angry' roles."
+    },
+    {
+      "question": "What does a polygraph test actually measure to determine if a person is lying?",
+      "answerOptions": [
+        {
+          "text": "Direct activity in the prefrontal cortex",
+          "isCorrect": false,
+          "rationale": "Polygraphs measure peripheral autonomic responses, not direct brain activity like $fMRI$ or $PET$ scans."
+        },
+        {
+          "text": "Autonomic nervous system arousal",
+          "isCorrect": true,
+          "rationale": "The test monitors physiological signs like heart rate, blood pressure, and skin conductance, which increase during stress or anxiety."
+        },
+        {
+          "text": "The release of cortisol in the bloodstream",
+          "isCorrect": false,
+          "rationale": "Cortisol is a stress hormone, but it is not one of the real-time measures tracked by a standard polygraph machine."
+        },
+        {
+          "text": "Facial micro-expressions",
+          "isCorrect": false,
+          "rationale": "While some researchers study facial cues, the polygraph specifically records bodily functions via sensors on the chest and fingers."
+        }
+      ],
+      "hint": "The device tracks involuntary physical responses such as sweating and heart rate changes."
+    },
+    {
+      "question": "According to Paul Ekman, which of the following is considered one of the eight basic facial expressions of emotion recognized across cultures?",
+      "answerOptions": [
+        {
+          "text": "Guilt",
+          "isCorrect": false,
+          "rationale": "Guilt is a complex social emotion that does not have a universally recognized, distinct facial expression in Ekman's core set."
+        },
+        {
+          "text": "Contempt",
+          "isCorrect": true,
+          "rationale": "Ekman's research identifies contempt as one of the universal expressions, alongside others like happiness and anger."
+        },
+        {
+          "text": "Love",
+          "isCorrect": false,
+          "rationale": "Love is often expressed through various behaviors, but it is not listed as one of the eight primary universal facial expressions."
+        },
+        {
+          "text": "Boredom",
+          "isCorrect": false,
+          "rationale": "Boredom is considered a state of low intensity that lacks a universally unique facial 'affect program' in this specific model."
+        }
+      ],
+      "hint": "Think of a facial expression that conveys a lack of respect or looking down on someone."
+    },
+    {
+      "question": "Which cranial nerve is responsible for innervating the superficial muscles of the face involved in emotional expression?",
+      "answerOptions": [
+        {
+          "text": "Trigeminal nerve ($V$)",
+          "isCorrect": false,
+          "rationale": "The trigeminal nerve primarily controls the deep muscles used for chewing and jaw movement."
+        },
+        {
+          "text": "Optic nerve ($II$)",
+          "isCorrect": false,
+          "rationale": "The optic nerve is purely sensory and carries visual information from the eyes to the brain."
+        },
+        {
+          "text": "Facial nerve ($VII$)",
+          "isCorrect": true,
+          "rationale": "This nerve controls the superficial muscles that change the shape of the mouth, eyes, and forehead to convey emotion."
+        },
+        {
+          "text": "Vagus nerve ($X$)",
+          "isCorrect": false,
+          "rationale": "The vagus nerve is part of the autonomic system and regulates internal organ functions rather than facial muscles."
+        }
+      ],
+      "hint": "The name of this nerve is identical to the part of the body it primarily controls for expression."
+    },
+    {
+      "question": "In the context of brain self-stimulation, which neurotransmitter is primarily associated with the rewarding effects of stimulating the nucleus accumbens?",
+      "answerOptions": [
+        {
+          "text": "GABA",
+          "isCorrect": false,
+          "rationale": "$GABA$ is the main inhibitory neurotransmitter and is generally not the primary driver of the brain's acute reward signal."
+        },
+        {
+          "text": "Dopamine",
+          "isCorrect": true,
+          "rationale": "Dopaminergic axons projecting to the nucleus accumbens are central to the brain's reward circuitry and pleasure sensations."
+        },
+        {
+          "text": "Acetylcholine",
+          "isCorrect": false,
+          "rationale": "While involved in many brain functions, acetylcholine is not the primary neurotransmitter linked to the reward pathways of the medial forebrain bundle."
+        },
+        {
+          "text": "Serotonin",
+          "isCorrect": false,
+          "rationale": "Serotonin is involved in mood regulation and aggression inhibition, but dopamine is the classic 'reward' chemical in self-stimulation."
+        }
+      ],
+      "hint": "This chemical is well-known for its role in the 'reward system' and is often linked to addiction."
+    },
+    {
+      "question": "What is the name of the subcortical circuit of emotion that includes the mammillary bodies, anterior thalamus, and cingulate cortex?",
+      "answerOptions": [
+        {
+          "text": "Kl\u00fcver-Bucy circuit",
+          "isCorrect": false,
+          "rationale": "Kl\u00fcver-Bucy refers to a syndrome resulting from amygdala damage, not the name of the anatomical circuit itself."
+        },
+        {
+          "text": "HPA axis",
+          "isCorrect": false,
+          "rationale": "The $HPA$ axis involves the hypothalamus, pituitary, and adrenal glands and is primarily responsible for the stress response."
+        },
+        {
+          "text": "Papez circuit",
+          "isCorrect": true,
+          "rationale": "Proposed in $1937$, this interconnected group of regions was the first formal model of the brain's emotional system."
+        },
+        {
+          "text": "Basal ganglia",
+          "isCorrect": false,
+          "rationale": "The basal ganglia are primarily involved in motor control rather than the core circuit of emotional experience."
+        }
+      ],
+      "hint": "The name of this circuit rhymes with the word 'capes'."
+    },
+    {
+      "question": "In fear conditioning, what is the 'low road' pathway for sensory information?",
+      "answerOptions": [
+        {
+          "text": "A path that goes from the sensory organ directly to the motor cortex",
+          "isCorrect": false,
+          "rationale": "Motor cortex is involved in action, but the fear response requires an emotional processing center like the amygdala."
+        },
+        {
+          "text": "A direct projection from the thalamus to the amygdala",
+          "isCorrect": true,
+          "rationale": "This pathway bypasses the cortex to allow for immediate, unconscious emotional reactions to potential threats."
+        },
+        {
+          "text": "A pathway that involves detailed processing in the hippocampus",
+          "isCorrect": false,
+          "rationale": "The hippocampus is part of the 'high road' or contextual processing, which is slower than the direct 'low road'."
+        },
+        {
+          "text": "A signal that travels from the amygdala to the prefrontal cortex",
+          "isCorrect": false,
+          "rationale": "This would be a feedback or regulatory path rather than the initial sensory input route for a fear stimulus."
+        }
+      ],
+      "hint": "This route is 'low' because it bypasses the higher-level conscious processing centers of the brain."
+    },
+    {
+      "question": "Which hormone is most strongly linked to intermale aggression across many vertebrate species?",
+      "answerOptions": [
+        {
+          "text": "Estrogen",
+          "isCorrect": false,
+          "rationale": "Estrogen is the primary female sex hormone and is not typically associated with the drive for intermale aggression."
+        },
+        {
+          "text": "Oxytocin",
+          "isCorrect": false,
+          "rationale": "Oxytocin is often called the 'bonding hormone' and is usually linked to social affiliation rather than aggression."
+        },
+        {
+          "text": "Testosterone",
+          "isCorrect": true,
+          "rationale": "Androgens like testosterone rise at sexual maturity and are correlated with increased aggression in males of many species."
+        },
+        {
+          "text": "Melatonin",
+          "isCorrect": false,
+          "rationale": "Melatonin regulates sleep-wake cycles and does not have a direct role in promoting aggressive behavior."
+        }
+      ],
+      "hint": "This androgen is also responsible for the development of male reproductive tissues."
+    },
+    {
+      "question": "Low levels of which serotonin metabolite in the cerebrospinal fluid are associated with high levels of aggression in monkeys?",
+      "answerOptions": [
+        {
+          "text": "$5-HIAA$",
+          "isCorrect": true,
+          "rationale": "Measuring $5-hydroxyindoleacetic\\ acid$ provides an index of serotonin release; lower levels indicate less serotonergic inhibition of aggression."
+        },
+        {
+          "text": "$CO_{2}$",
+          "isCorrect": false,
+          "rationale": "Carbon dioxide is a metabolic byproduct of respiration, not a metabolite of the neurotransmitter serotonin."
+        },
+        {
+          "text": "Epinephrine",
+          "isCorrect": false,
+          "rationale": "Epinephrine is a hormone involved in the fight-or-flight response, not a breakdown product of serotonin."
+        },
+        {
+          "text": "$GABA_{A}$",
+          "isCorrect": false,
+          "rationale": "This refers to a specific type of receptor for the neurotransmitter $GABA$, not a metabolite of serotonin."
+        }
+      ],
+      "hint": "The abbreviation for this metabolite is $5-HIAA$."
+    },
+    {
+      "question": "Which hypothalamic region acts as a 'switch' that can trigger immediate aggressive behavior in mice when stimulated?",
+      "answerOptions": [
+        {
+          "text": "Lateral hypothalamus",
+          "isCorrect": false,
+          "rationale": "The lateral hypothalamus is more typically associated with hunger and thirst than with the specific trigger for aggression."
+        },
+        {
+          "text": "Suprachiasmatic nucleus",
+          "isCorrect": false,
+          "rationale": "This nucleus acts as the brain's biological clock, regulating circadian rhythms rather than triggering attacks."
+        },
+        {
+          "text": "Ventromedial hypothalamus ($VMH$)",
+          "isCorrect": true,
+          "rationale": "Stimulating the ventrolateral part of the $VMH$ can cause a male mouse to immediately attack a female or a rival male."
+        },
+        {
+          "text": "Posterior pituitary",
+          "isCorrect": false,
+          "rationale": "The posterior pituitary is a gland that releases hormones into the blood, not a brain region that triggers behavioral motor programs."
+        }
+      ],
+      "hint": "Look for a region often abbreviated as $VMH$."
+    },
+    {
+      "question": "What is the primary characteristic of 'maternal aggression' observed in rodents?",
+      "answerOptions": [
+        {
+          "text": "Aggression toward the mother's own offspring",
+          "isCorrect": false,
+          "rationale": "Maternal aggression is protective of offspring, not directed against them."
+        },
+        {
+          "text": "Aggression directed at an intruder while nursing",
+          "isCorrect": true,
+          "rationale": "This is a fierce defensive behavior intended to protect the litter from potential external threats."
+        },
+        {
+          "text": "Aggression caused by a lack of testosterone in the mother",
+          "isCorrect": false,
+          "rationale": "Aggression in this context is driven by maternal instincts and specific neural circuits, not by the absence of male hormones."
+        },
+        {
+          "text": "Aggression that occurs only during the mating season",
+          "isCorrect": false,
+          "rationale": "Maternal aggression is specifically linked to the period of caring for young, not the mating period."
+        }
+      ],
+      "hint": "Consider the biological purpose of a mother's fierce behavior toward a stranger in her nest."
+    },
+    {
+      "question": "According to the facial feedback hypothesis, how might receiving Botox injections affect a person's emotions?",
+      "answerOptions": [
+        {
+          "text": "It might increase the intensity of all emotions",
+          "isCorrect": false,
+          "rationale": "The hypothesis suggests that paralyzing muscles reduces the sensory feedback that normally intensifies feelings."
+        },
+        {
+          "text": "It might make emotions feel less intense",
+          "isCorrect": true,
+          "rationale": "If facial muscles cannot move, the brain receives less sensory feedback, which may dampen the subjective experience of emotion."
+        },
+        {
+          "text": "It has no effect because emotions are purely internal brain states",
+          "isCorrect": false,
+          "rationale": "This contradicts the James-Lange and facial feedback ideas which posit that bodily sensations contribute to emotional feelings."
+        },
+        {
+          "text": "It increases social anxiety due to the inability to smile",
+          "isCorrect": false,
+          "rationale": "While it may affect social interactions, the hypothesis specifically focuses on the internal intensity of the feelings themselves."
+        }
+      ],
+      "hint": "Think about the idea that the brain 'listens' to the face's movements to gauge how to feel."
+    },
+    {
+      "question": "What is one major reason why the polygraph is considered an unreliable 'lie detector'?",
+      "answerOptions": [
+        {
+          "text": "It only measures brain waves which are easy to fake",
+          "isCorrect": false,
+          "rationale": "Polygraphs measure autonomic responses, not brain waves (which would be an $EEG$)."
+        },
+        {
+          "text": "Anxious innocent people may show the same physiological responses as liars",
+          "isCorrect": true,
+          "rationale": "Since many emotions (fear, anger, anxiety) trigger the same sympathetic nervous system response, the test cannot distinguish the cause of arousal."
+        },
+        {
+          "text": "The machine requires the participant to be in a deep sleep",
+          "isCorrect": false,
+          "rationale": "Polygraph tests are conducted while the participant is awake and answering structured interview questions."
+        },
+        {
+          "text": "It cannot measure heart rate accurately",
+          "isCorrect": false,
+          "rationale": "Modern polygraphs are very accurate at measuring heart rate; the problem lies in the interpretation of why the heart rate is high."
+        }
+      ],
+      "hint": "Think about whether different negative emotions like fear and guilt produce different physical signatures."
+    }
+  ]
+}

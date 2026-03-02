@@ -1,0 +1,343 @@
+{
+  "title": "Neurofarmakologi Quiz",
+  "questions": [
+    {
+      "question": "Da Albert Hofmann ved et uheld indtog et stof afledt af meldr\u00f8je (en svamp p\u00e5 korn), oplevede han intense visuelle f\u00e6nomener. Hvilket stof var der tale om?",
+      "answerOptions": [
+        {
+          "text": "LSD",
+          "isCorrect": true,
+          "rationale": "I 1943 opdagede Hofmann ved et uheld de potente hallucinogene effekter af lysergsyre-diethylamid (LSD) under sit arbejde med forbindelser fra meldr\u00f8je-svampen."
+        },
+        {
+          "text": "Psilocybin",
+          "isCorrect": false,
+          "rationale": "Selvom dette er et hallucinogen, stammer det fra svampe i sl\u00e6gten Psilocybe, ikke meldr\u00f8je (ergot), som Hofmann unders\u00f8gte."
+        },
+        {
+          "text": "Meskalin",
+          "isCorrect": false,
+          "rationale": "Meskalin udvindes prim\u00e6rt fra peyote-kaktussen og er kemisk forskelligt fra de ergot-afledte forbindelser, Hofmann arbejdede med."
+        },
+        {
+          "text": "Skopolamin",
+          "isCorrect": false,
+          "rationale": "Skopolamin er et antikolinergt stof n\u00e6vnt i teksten i forbindelse med hukommelse, men det var ikke det stof, der gav Hofmann de beskrevne visuelle hallucinationer."
+        }
+      ],
+      "hint": "Dette stof er kendt som et 'farmaceutisk problembarn' og er ekstremt potent i doser p\u00e5 f\u00e5 milliontedele gram."
+    },
+    {
+      "question": "Hvilket af f\u00f8lgende trin sker umiddelbart efter, at et aktionspotentiale n\u00e5r axonterminalen og depolariserer membranen?",
+      "answerOptions": [
+        {
+          "text": "Sp\u00e6ndingsstyrede $Ca^{2+}$-kanaler \u00e5bnes, hvilket f\u00f8rer til en influx af calciumioner.",
+          "isCorrect": true,
+          "rationale": "Depolariseringen \u00e5bner calciumkanalerne, og den resulterende influx af $Ca^{2+}$ er det kritiske signal, der trigger vesikelfusion."
+        },
+        {
+          "text": "Neurotransmitteren genoptages \u00f8jeblikkeligt af transport\u00f8rer i den pr\u00e6synaptiske membran.",
+          "isCorrect": false,
+          "rationale": "Genoptagelse (reuptake) sker efter, at transmitteren er blevet frigivet og har bundet til receptorer, ikke som det f\u00f8rste trin ved ankomst af aktionspotentialet."
+        },
+        {
+          "text": "SNARE-proteiner nedbrydes af enzymer for at frigive vesiklerne.",
+          "isCorrect": false,
+          "rationale": "SNARE-proteiner hj\u00e6lper vesiklerne med at fusionere med membranen; de nedbrydes ikke normalt under den naturlige proces (undtagen ved p\u00e5virkning fra toksiner som Botox)."
+        },
+        {
+          "text": "Kloridioner ($Cl^{-}$) str\u00f8mmer ud af cellen for at skabe en EPSP.",
+          "isCorrect": false,
+          "rationale": "Iontransport ved terminalen involverer prim\u00e6rt calcium for frigivelse, og $Cl^{-}$ influx (ikke efflux) er normalt forbundet med inhibition (IPSP)."
+        }
+      ],
+      "hint": "Overvej hvilken specifik ion, der fungerer som det kemiske signal til at starte exocytose."
+    },
+    {
+      "question": "Hvad kendetegner en metabotrop receptor i mods\u00e6tning til en ionotrop receptor?",
+      "answerOptions": [
+        {
+          "text": "Den aktiverer G-proteiner, som derefter kan \u00e5bne andre ionkanaler eller p\u00e5virke metabolismen.",
+          "isCorrect": true,
+          "rationale": "Metabotrope receptorer indeholder ikke selv en ionkanal, men virker langsommere via sekund\u00e6re budbringere som G-proteiner."
+        },
+        {
+          "text": "Den indeholder en ionkanal i selve receptorstrukturen, der \u00e5bner ved binding.",
+          "isCorrect": false,
+          "rationale": "Dette beskriver en ionotrop receptor (ligand-styret ionkanal), som reagerer meget hurtigt."
+        },
+        {
+          "text": "Den findes udelukkende p\u00e5 den pr\u00e6synaptiske membran som en autoreceptor.",
+          "isCorrect": false,
+          "rationale": "Metabotrope receptorer findes b\u00e5de pr\u00e6- og postsynaptisk og er en udbredt familie af receptorer (GPCRs)."
+        },
+        {
+          "text": "Den kan kun binde til aminosyre-neurotransmittere som glutamat.",
+          "isCorrect": false,
+          "rationale": "Mange forskellige klasser af transmittere, herunder aminer og neuropeptider, benytter metabotrope receptorer."
+        }
+      ],
+      "hint": "T\u00e6nk p\u00e5 om receptoren virker direkte p\u00e5 en kanal eller via et mellemliggende system."
+    },
+    {
+      "question": "Hvilken af f\u00f8lgende neurotransmittere anses for at v\u00e6re den mest udbredte excitatoriske transmitter i hjernen?",
+      "answerOptions": [
+        {
+          "text": "Glutamat",
+          "isCorrect": true,
+          "rationale": "Glutamat er den prim\u00e6re excitatoriske aminosyre-transmitter i centralnervesystemet og benytter receptorer som AMPA og NMDA."
+        },
+        {
+          "text": "GABA",
+          "isCorrect": false,
+          "rationale": "GABA er den mest udbredte inhibitoriske (h\u00e6mmende) neurotransmitter, ikke excitatorisk."
+        },
+        {
+          "text": "Acetylkolin",
+          "isCorrect": false,
+          "rationale": "Selvom acetylkolin er vigtig, er det ikke den mest udbredte excitatoriske transmitter sammenlignet med glutamat."
+        },
+        {
+          "text": "Dopamin",
+          "isCorrect": false,
+          "rationale": "Dopamin fungerer mere som en neuromodulator i specifikke systemer snarere end at v\u00e6re den universelle excitatoriske transmitter."
+        }
+      ],
+      "hint": "Dette stof er en aminosyre og er ofte involveret i excitotoksicitet ved hjerneskader."
+    },
+    {
+      "question": "Hvilken dopaminerg bane udspringer fra substantia nigra og er afg\u00f8rende for motorisk kontrol?",
+      "answerOptions": [
+        {
+          "text": "Den mesostriatale bane",
+          "isCorrect": true,
+          "rationale": "Mesostriatale axoner projicerer fra midbrain (substantia nigra) til striatum og er dem, der g\u00e5r tabt ved Parkinsons sygdom."
+        },
+        {
+          "text": "Den mesolimbokortikale bane",
+          "isCorrect": false,
+          "rationale": "Denne bane udspringer fra det ventrale tegmentale omr\u00e5de (VTA) og er involveret i bel\u00f8nning, ikke prim\u00e6rt motorisk kontrol."
+        },
+        {
+          "text": "Den cholinerge bane",
+          "isCorrect": false,
+          "rationale": "Dette er ikke en dopaminerg bane; den benytter acetylkolin som transmitter."
+        },
+        {
+          "text": "Den noradrenerge bane",
+          "isCorrect": false,
+          "rationale": "Denne bane benytter norepinefrin og udspringer prim\u00e6rt fra locus coeruleus."
+        }
+      ],
+      "hint": "Navnet p\u00e5 banen refererer til dens endestation i de basalganglier, der kaldes caudatus og putamen."
+    },
+    {
+      "question": "De fleste serotonerge neuroner i hjernen har deres cellekroppe placeret i et specifikt omr\u00e5de. Hvad kaldes dette omr\u00e5de?",
+      "answerOptions": [
+        {
+          "text": "Raphe-kernerne",
+          "isCorrect": true,
+          "rationale": "De fleste af hjernens serotonerge cellekroppe findes langs midtlinjen af hjernestammen i raphe-kernerne."
+        },
+        {
+          "text": "Locus coeruleus",
+          "isCorrect": false,
+          "rationale": "Dette omr\u00e5de er hovedkilden til norepinefrin (noradrenalin), ikke serotonin."
+        },
+        {
+          "text": "Nucleus basalis",
+          "isCorrect": false,
+          "rationale": "Dette omr\u00e5de er en vigtig kilde til cholinerge (ACh) projektioner til hjernebarken."
+        },
+        {
+          "text": "Ventralt tegmentalt omr\u00e5de (VTA)",
+          "isCorrect": false,
+          "rationale": "VTA er kilden til den mesolimbokortikale dopamin-bane."
+        }
+      ],
+      "hint": "Navnet betyder 's\u00f8m' p\u00e5 latin, hvilket refererer til deres placering langs hjernestammens midtlinje."
+    },
+    {
+      "question": "Hvis et l\u00e6gemiddel har en h\u00f8j 'affinitet' for en receptor, hvad betyder det s\u00e5?",
+      "answerOptions": [
+        {
+          "text": "At l\u00e6gemidlet binder sig st\u00e6rkt til receptoren selv ved lave doser.",
+          "isCorrect": true,
+          "rationale": "Affinitet beskriver den kemiske tiltr\u00e6kningskraft; h\u00f8j affinitet betyder, at molekylet forbliver bundet i l\u00e6ngere tid."
+        },
+        {
+          "text": "At l\u00e6gemidlet har en kraftig evne til at aktivere receptoren efter binding.",
+          "isCorrect": false,
+          "rationale": "Dette beskriver 'efficas' (efficacy), ikke affinitet."
+        },
+        {
+          "text": "At l\u00e6gemidlet kun kan binde sig til ionotrope receptorer.",
+          "isCorrect": false,
+          "rationale": "Affinitet er en egenskab ved bindingen til enhver type receptor, uanset om den er ionotrop eller metabotrop."
+        },
+        {
+          "text": "At l\u00e6gemidlet fungerer som en antagonist i stedet for en agonist.",
+          "isCorrect": false,
+          "rationale": "B\u00e5de agonister og antagonister kan have enten h\u00f8j eller lav affinitet for en receptor."
+        }
+      ],
+      "hint": "T\u00e6nk p\u00e5 graden af 'kemisk magnetisme' mellem molekylet og dets m\u00e5l."
+    },
+    {
+      "question": "Hvad angiver $ED_{50}$ v\u00e6rdien p\u00e5 en dosis-respons kurve?",
+      "answerOptions": [
+        {
+          "text": "Den dosis, hvor stoffet udviser halvdelen af sin maksimale effekt.",
+          "isCorrect": true,
+          "rationale": "$ED_{50}$ (effektiv dosis 50%) er det punkt, hvor 50% af den maksimale respons observeres."
+        },
+        {
+          "text": "Den dosis, der dr\u00e6ber 50% af fors\u00f8gsdyrene.",
+          "isCorrect": false,
+          "rationale": "Dette kaldes $LD_{50}$ (lethal dose 50%), ikke $ED_{50}$."
+        },
+        {
+          "text": "Det tidspunkt, hvor halvdelen af stoffet er udskilt fra kroppen.",
+          "isCorrect": false,
+          "rationale": "Dette refererer til stoffets halveringstid, som er en farmakokinetisk parameter, ikke et punkt p\u00e5 dosis-respons kurven."
+        },
+        {
+          "text": "Den dosis, hvor stoffet begynder at binde sig til lav-affinitets receptorer.",
+          "isCorrect": false,
+          "rationale": "Selvom dette kan ske ved h\u00f8jere doser, er det ikke definitionen p\u00e5 $ED_{50}$."
+        }
+      ],
+      "hint": "Det er en standardm\u00e5ling for at sammenligne l\u00e6gemidlers potens."
+    },
+    {
+      "question": "Ved gentagen brug af en agonist kan en neuron mindske antallet af tilg\u00e6ngelige receptorer for at kompensere. Hvad kaldes denne proces?",
+      "answerOptions": [
+        {
+          "text": "Down-regulation",
+          "isCorrect": true,
+          "rationale": "Ved overstimulering af en agonist reducerer cellen antallet af receptorer for at mindske f\u00f8lsomheden (funktionel tolerance)."
+        },
+        {
+          "text": "Up-regulation",
+          "isCorrect": false,
+          "rationale": "Up-regulation sker typisk som respons p\u00e5 en antagonist, hvor cellen \u00f8ger antallet af receptorer for at blive mere f\u00f8lsom."
+        },
+        {
+          "text": "Metabolisk tolerance",
+          "isCorrect": false,
+          "rationale": "Dette refererer til kroppens (is\u00e6r leverens) evne til at nedbryde stoffet hurtigere, ikke \u00e6ndringer i receptort\u00e6thed."
+        },
+        {
+          "text": "Sensitivering",
+          "isCorrect": false,
+          "rationale": "Sensitivering er det modsatte af tolerance, hvor responsen bliver st\u00e6rkere ved gentagen eksponering."
+        }
+      ],
+      "hint": "T\u00e6nk p\u00e5 en 'nedadg\u00e5ende' justering af modtageligheden."
+    },
+    {
+      "question": "Hvordan virker koffein som et opkvikkende middel i hjernen?",
+      "answerOptions": [
+        {
+          "text": "Det blokerer autoreceptorer for adenosin, hvilket forhindrer adenosins h\u00e6mmende effekt p\u00e5 transmitterfrigivelse.",
+          "isCorrect": true,
+          "rationale": "Adenosin fungerer som en neuromodulator, der normalt h\u00e6mmer frigivelse af katekolaminer; ved at blokere dette \u00f8ger koffein v\u00e5genhed."
+        },
+        {
+          "text": "Det stimulerer direkte frigivelsen af GABA i hjernebarken.",
+          "isCorrect": false,
+          "rationale": "Stimulering af GABA ville virke beroligende eller bed\u00f8vende, hvilket er det modsatte af koffeins effekt."
+        },
+        {
+          "text": "Det h\u00e6mmer enzymet acetylcholinesterase, s\u00e5 acetylkolin bliver l\u00e6ngere i synapsen.",
+          "isCorrect": false,
+          "rationale": "Dette er mekanismen for visse pesticider og Alzheimers-medicin, ikke for koffein."
+        },
+        {
+          "text": "Det fungerer som en potent agonist p\u00e5 dopamin $D_{2}$ receptorer.",
+          "isCorrect": false,
+          "rationale": "Dopaminagonister kan v\u00e6re opkvikkende, men koffeins prim\u00e6re virkningsmekanisme er via adenosin-receptorer."
+        }
+      ],
+      "hint": "Koffein interagerer med et neuromodulatorisk system, der normalt signalerer tr\u00e6thed."
+    },
+    {
+      "question": "Hvad er den prim\u00e6re farmakologiske egenskab, som n\u00e6sten alle f\u00f8rstegenerations antipsykotika (neuroleptika) deler?",
+      "answerOptions": [
+        {
+          "text": "De fungerer som selektive antagonister for dopamin $D_{2}$ receptorer.",
+          "isCorrect": true,
+          "rationale": "Stoffer som chlorpromazin og haloperidol blokerer $D_{2}$ receptorer, hvilket hj\u00e6lper mod positive symptomer p\u00e5 skizofreni."
+        },
+        {
+          "text": "De \u00f8ger genoptagelsen af serotonin i pr\u00e6synaptiske terminaler.",
+          "isCorrect": false,
+          "rationale": "H\u00e6mning af genoptagelse (ikke \u00f8gning) er en egenskab ved antidepressiva, ikke antipsykotika."
+        },
+        {
+          "text": "De blokerer sp\u00e6ndingsstyrede natriumkanaler for at forhindre aktionspotentialer.",
+          "isCorrect": false,
+          "rationale": "Dette er mekanismen for lokalbed\u00f8velse, som f.eks. novokain, ikke for behandling af psykose."
+        },
+        {
+          "text": "De fungerer som agonister for GABA-receptorer for at mindske hjerneaktivitet.",
+          "isCorrect": false,
+          "rationale": "Dette beskriver anxiolytika (angstd\u00e6mpende midler) som benzodiazepiner."
+        }
+      ],
+      "hint": "T\u00e6nk p\u00e5 den neurotransmitter, der ofte associeres med hallucinationer ved skizofreni."
+    },
+    {
+      "question": "Benzodiazepiner som Xanax og Ativan virker ved at binde sig til et specifikt sted p\u00e5 hvilken receptor?",
+      "answerOptions": [
+        {
+          "text": "$GABA_{A}$ receptoren",
+          "isCorrect": true,
+          "rationale": "De binder til et modulatorkompleks p\u00e5 $GABA_{A}$ receptoren og forst\u00e6rker den h\u00e6mmende effekt af klorid-influx."
+        },
+        {
+          "text": "NMDA glutamat-receptoren",
+          "isCorrect": false,
+          "rationale": "NMDA-receptoren er excitatorisk; blokering af denne kan give bed\u00f8velse, men det er ikke der, benzodiazepiner virker."
+        },
+        {
+          "text": "Muskarine acetylkolin-receptorer",
+          "isCorrect": false,
+          "rationale": "Muskarine receptorer er metabotrope og findes i det parasympatiske system; de er ikke m\u00e5let for benzodiazepiner."
+        },
+        {
+          "text": "5-$HT_{2A}$ serotonin-receptorer",
+          "isCorrect": false,
+          "rationale": "Dette er m\u00e5let for mange hallucinogener som LSD, ikke for angstd\u00e6mpende medicin."
+        }
+      ],
+      "hint": "Denne receptor er en ionotrop kloridkanal, der medierer st\u00f8rstedelen af hjernens h\u00e6mmende aktivitet."
+    },
+    {
+      "question": "Gasser som nitrogenoxid ($NO$) adskiller sig fra klassiske neurotransmittere p\u00e5 flere m\u00e5der. Hvilken af f\u00f8lgende p\u00e5stande er korrekt?",
+      "answerOptions": [
+        {
+          "text": "De kan fungere som retrograde transmittere, der bev\u00e6ger sig fra den postsynaptiske til den pr\u00e6synaptiske neuron.",
+          "isCorrect": true,
+          "rationale": "$NO$ diffunderer frit gennem membraner og kan signalere tilbage til den pr\u00e6synaptiske celle for at \u00e6ndre synaptisk styrke."
+        },
+        {
+          "text": "De opbevares i store m\u00e6ngder i synaptiske vesikler f\u00f8r frigivelse.",
+          "isCorrect": false,
+          "rationale": "Gasser kan ikke opbevares i vesikler; de produceres ved behov og diffunderer straks ud af cellen."
+        },
+        {
+          "text": "De binder sig til specifikke G-protein-koblede receptorer p\u00e5 overfladen af m\u00e5lcellen.",
+          "isCorrect": false,
+          "rationale": "De diffunderer ind i m\u00e5lcellen og aktiverer direkte produktion af sekund\u00e6re budbringere inde i cellen."
+        },
+        {
+          "text": "De frigives kun, n\u00e5r sp\u00e6ndingsstyrede calciumkanaler blokerer membranen.",
+          "isCorrect": false,
+          "rationale": "Frigivelsen af gasser er ikke afh\u00e6ngig af vesikel-exocytose eller blokering af calciumkanaler."
+        }
+      ],
+      "hint": "T\u00e6nk p\u00e5 en besked, der sendes 'bagl\u00e6ns' over synapsen."
+    }
+  ]
+}

@@ -1,0 +1,265 @@
+{
+  "title": "Neuroscience Quiz",
+  "questions": [
+    {
+      "question": "What is the primary function of the sodium-potassium ($Na^{+}-K^{+}$) pump in a resting neuron?",
+      "answerOptions": [
+        {
+          "text": "It pushes three $Na^{+}$ ions out of the cell for every two $K^{+}$ ions it pulls in.",
+          "isCorrect": true,
+          "rationale": "This active transport mechanism maintains the concentration gradients necessary for the resting potential by using energy to move ions against their gradients."
+        },
+        {
+          "text": "It allows $Na^{+}$ ions to flow freely into the cell down their concentration gradient.",
+          "isCorrect": false,
+          "rationale": "Free flow of $Na^{+}$ would depolarise the cell; the pump actually works to remove $Na^{+}$ from the interior."
+        },
+        {
+          "text": "It pulls $Na^{+}$ ions into the cell to balance the negative charge of internal proteins.",
+          "isCorrect": false,
+          "rationale": "The pump specifically excludes $Na^{+}$ from the cell to maintain the resting potential, rather than bringing it in."
+        },
+        {
+          "text": "It facilitates the exit of $K^{+}$ ions through open ion channels during an action potential.",
+          "isCorrect": false,
+          "rationale": "The exit of $K^{+}$ through channels is a passive process of diffusion, whereas the pump is an active transporter."
+        }
+      ],
+      "hint": "Consider the active process required to maintain an imbalance of ions across the membrane."
+    },
+    {
+      "question": "Which equation is used to predict the equilibrium potential of a single ion, assuming the membrane is permeable only to that ion?",
+      "answerOptions": [
+        {
+          "text": "The Nernst equation",
+          "isCorrect": true,
+          "rationale": "This formula calculates the voltage needed to perfectly counterbalance the diffusion of a specific ion based on its concentration gradient."
+        },
+        {
+          "text": "The Goldman equation",
+          "isCorrect": false,
+          "rationale": "While related, this equation is more complex because it accounts for multiple ions and their varying degrees of permeability."
+        },
+        {
+          "text": "The Hodgkin-Huxley model",
+          "isCorrect": false,
+          "rationale": "This model describes the mathematical basis of the action potential rather than the equilibrium potential of a single ion at rest."
+        },
+        {
+          "text": "The Michaelis-Menten equation",
+          "isCorrect": false,
+          "rationale": "This is a model used in enzyme kinetics and is unrelated to membrane potentials in neurophysiology."
+        }
+      ],
+      "hint": "Think of the simpler mathematical function used for isolated ionic equilibrium."
+    },
+    {
+      "question": "What occurs during the process of saltatory conduction in myelinated axons?",
+      "answerOptions": [
+        {
+          "text": "The action potential travels continuously and slowly along the entire length of the axonal membrane.",
+          "isCorrect": false,
+          "rationale": "This describes conduction in unmyelinated axons, where the signal must be regenerated at every point."
+        },
+        {
+          "text": "The action potential 'jumps' from one node of Ranvier to the next.",
+          "isCorrect": true,
+          "rationale": "Myelin provides insulation that forces the electrical signal to regenerate only at the uninsulated gaps, greatly increasing speed."
+        },
+        {
+          "text": "The electrical signal is boosted by the release of neurotransmitters at intervals along the axon.",
+          "isCorrect": false,
+          "rationale": "Neurotransmitters are typically released at the synapse, not at nodes along the axon to boost conduction."
+        },
+        {
+          "text": "Sodium channels remain open throughout the myelinated segments to ensure signal strength.",
+          "isCorrect": false,
+          "rationale": "Sodium channels are actually concentrated at the nodes of Ranvier, and the myelinated segments have very few channels."
+        }
+      ],
+      "hint": "Recall the Latin word 'saltare', which means 'to leap'."
+    },
+    {
+      "question": "How does the toxin tetrodotoxin (TTX), found in puffer fish, affect neuronal function?",
+      "answerOptions": [
+        {
+          "text": "It forces $Na^{+}$ channels to stay open indefinitely.",
+          "isCorrect": false,
+          "rationale": "This effect describes batrachotoxin from poison arrow frogs, rather than the blocking action of TTX."
+        },
+        {
+          "text": "It blocks voltage-gated $Na^{+}$ channels, preventing action potentials.",
+          "isCorrect": true,
+          "rationale": "By preventing $Na^{+}$ entry, the cell cannot depolarise to reach threshold, leading to rapid paralysis."
+        },
+        {
+          "text": "It mimics the neurotransmitter acetylcholine at the neuromuscular junction.",
+          "isCorrect": false,
+          "rationale": "Molecules that mimic transmitters are called agonists; TTX is a channel blocker, not a receptor agonist."
+        },
+        {
+          "text": "It prevents the reuptake of $K^{+}$ ions into the presynaptic terminal.",
+          "isCorrect": false,
+          "rationale": "TTX specifically targets the voltage-gated sodium channels essential for the rising phase of the action potential."
+        }
+      ],
+      "hint": "Focus on the specific gateway required for the initiation of an electrical pulse."
+    },
+    {
+      "question": "In the context of synaptic transmission, what is an 'exogenous ligand'?",
+      "answerOptions": [
+        {
+          "text": "A substance produced naturally within the body, such as a neurotransmitter.",
+          "isCorrect": false,
+          "rationale": "This describes an endogenous ligand, originating from within the organism's own biological systems."
+        },
+        {
+          "text": "A substance originating from outside the body, such as a drug or toxin.",
+          "isCorrect": true,
+          "rationale": "External molecules that can bind to receptors are classified as exogenous, literally meaning 'originating outside'."
+        },
+        {
+          "text": "A protein subunit that forms the ion channel of a nicotinic receptor.",
+          "isCorrect": false,
+          "rationale": "These are structural components of the receptor itself, not the binding molecules (ligands)."
+        },
+        {
+          "text": "A second messenger molecule like cyclic AMP produced inside the cell.",
+          "isCorrect": false,
+          "rationale": "Second messengers are intracellular signaling molecules, not ligands that bind to the extracellular surface of receptors."
+        }
+      ],
+      "hint": "Consider the prefixes 'endo-' versus 'exo-' regarding the source of the molecule."
+    },
+    {
+      "question": "What was the significant finding of Otto Loewi's 1921 experiment with frog hearts?",
+      "answerOptions": [
+        {
+          "text": "Electrical stimulation of the heart is the only way to change heart rate.",
+          "isCorrect": false,
+          "rationale": "His experiment actually proved that a chemical substance, not just electricity, could influence the heart."
+        },
+        {
+          "text": "The nervous system uses chemical signals, as well as electrical ones, to communicate.",
+          "isCorrect": true,
+          "rationale": "By transferring fluid from a stimulated heart to an unstimulated one, he demonstrated that a 'Vagusstoff' (ACh) mediated the response."
+        },
+        {
+          "text": "Neurons are physically continuous with one another at the synapse.",
+          "isCorrect": false,
+          "rationale": "This relates to the older 'reticular theory', which was disproven by the discovery of the synaptic cleft."
+        },
+        {
+          "text": "Heart muscle does not require innervation to contract.",
+          "isCorrect": false,
+          "rationale": "While heart muscle has intrinsic rhythmicity, Loewi's focus was specifically on how the vagus nerve communicates its inhibitory signal."
+        }
+      ],
+      "hint": "Focus on the transition from purely electrical theories to the 'chemical' breakthrough."
+    },
+    {
+      "question": "Which of the following describes a 'simple partial seizure', also known as an absence attack?",
+      "answerOptions": [
+        {
+          "text": "A loss of consciousness accompanied by violent rhythmic convulsions of the whole body.",
+          "isCorrect": false,
+          "rationale": "This describes a tonic-clonic seizure, which involves more dramatic motor symptoms."
+        },
+        {
+          "text": "A brief period of staring and loss of awareness with a characteristic 'spike-and-wave' EEG pattern.",
+          "isCorrect": true,
+          "rationale": "These attacks are subtle, lasting only seconds, and the individual often has no memory of the event afterward."
+        },
+        {
+          "text": "A seizure that produces an 'aura', such as a specific smell or feeling of foreboding.",
+          "isCorrect": false,
+          "rationale": "Auras are more typical of complex partial seizures, which involve localized rather than generalized brain activity."
+        },
+        {
+          "text": "A seizure caused by the excessive buildup of myelin in the cerebral cortex.",
+          "isCorrect": false,
+          "rationale": "Seizures result from electrical synchronization and malfunctions, not from structural myelin excess."
+        }
+      ],
+      "hint": "Think about a seizure that is defined by what the person *stops* doing rather than what they *start* doing."
+    },
+    {
+      "question": "In optogenetics, what is the effect of stimulating the protein halorhodopsin with yellow light?",
+      "answerOptions": [
+        {
+          "text": "It allows $Na^{+}$ ions to enter the cell, causing it to fire action potentials.",
+          "isCorrect": false,
+          "rationale": "This is the function of channelrhodopsin in response to blue light, which depolarises the neuron."
+        },
+        {
+          "text": "It pumps $Cl^{-}$ ions into the cell, hyperpolarising it and inhibiting activity.",
+          "isCorrect": true,
+          "rationale": "Halorhodopsin acts as an inhibitory tool by increasing the negative charge inside the neuron, moving it further from threshold."
+        },
+        {
+          "text": "It triggers the immediate release of all docked synaptic vesicles.",
+          "isCorrect": false,
+          "rationale": "Synaptic vesicle release is triggered by calcium entry, not directly by light-sensitive chloride pumps."
+        },
+        {
+          "text": "It causes the neuron to produce more acetylcholine receptors on its dendrites.",
+          "isCorrect": false,
+          "rationale": "Optogenetics is used for immediate control of electrical activity, not for long-term structural changes like receptor up-regulation."
+        }
+      ],
+      "hint": "Consider the ions involved and whether they would make the cell more or less likely to fire."
+    },
+    {
+      "question": "Which term refers to a compensatory decrease in receptor density at a synapse, often due to drug use?",
+      "answerOptions": [
+        {
+          "text": "Up-regulation",
+          "isCorrect": false,
+          "rationale": "This refers to an increase in receptor availability, typically as a response to a lack of stimulation."
+        },
+        {
+          "text": "Down-regulation",
+          "isCorrect": true,
+          "rationale": "This is a form of plasticity where the cell reduces its sensitivity by decreasing the number of receptors."
+        },
+        {
+          "text": "Hyperpolarisation",
+          "isCorrect": false,
+          "rationale": "This is an electrical state where the membrane potential becomes more negative, not a change in receptor count."
+        },
+        {
+          "text": "Saltatory conduction",
+          "isCorrect": false,
+          "rationale": "This describes the method of action potential propagation in myelinated axons."
+        }
+      ],
+      "hint": "Focus on the direction of change in the number of receptor 'locks' available."
+    },
+    {
+      "question": "What is the role of 'second messengers', such as cyclic AMP ($cAMP$), in neuronal signaling?",
+      "answerOptions": [
+        {
+          "text": "They act as the primary neurotransmitter released into the synaptic cleft.",
+          "isCorrect": false,
+          "rationale": "Neurotransmitters are 'first messengers' that travel between cells; second messengers act inside the postsynaptic cell."
+        },
+        {
+          "text": "They amplify and prolong the effects of the first messenger within the postsynaptic neuron.",
+          "isCorrect": true,
+          "rationale": "Activated by G proteins, these chemicals can initiate broad and lasting changes in cellular function and membrane potential."
+        },
+        {
+          "text": "They provide the physical structure for the nodes of Ranvier.",
+          "isCorrect": false,
+          "rationale": "Nodes of Ranvier are structural gaps in myelin, whereas second messengers are biochemical signaling molecules."
+        },
+        {
+          "text": "They are toxins that block the voltage-gated calcium channels at the axon terminal.",
+          "isCorrect": false,
+          "rationale": "Second messengers are endogenous signaling molecules, not exogenous toxins."
+        }
+      ],
+      "hint": "Think of these as the 'internal relay team' that carries the message once it enters the cell."
+    }
+  ]
+}

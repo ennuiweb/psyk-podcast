@@ -1,0 +1,395 @@
+{
+  "title": "Circadian Quiz",
+  "questions": [
+    {
+      "question": "In the landmark SCN transplant experiments conducted by Ralph and Menaker, what was the primary evidence that the suprachiasmatic nucleus (SCN) serves as the endogenous clock?",
+      "answerOptions": [
+        {
+          "text": "The host animal's original rhythm was restored following the transplant of healthy fetal tissue.",
+          "isCorrect": false,
+          "rationale": "While a rhythm was restored, the significance lay in the specific period of that rhythm rather than the simple restoration of function."
+        },
+        {
+          "text": "The host animal adopted the circadian period characteristic of the donor's genotype rather than its own.",
+          "isCorrect": true,
+          "rationale": "The fact that the host's rhythm matched the donor's endogenous period (e.g. 20 hours instead of 24) proved the SCN generates the rhythm."
+        },
+        {
+          "text": "The transplant was only successful if the donor SCN was allowed to form new synaptic connections with the hypothalamus.",
+          "isCorrect": false,
+          "rationale": "Research showed that SCN cells encapsulated in polymer, which prevents synaptic connections, could still drive the rhythm via chemical signals."
+        },
+        {
+          "text": "The host animal exhibited a permanent phase shift that aligned with the light-dark cycle of the laboratory.",
+          "isCorrect": false,
+          "rationale": "Phase shifting is a response to external zeitgebers like light, not proof of the internal clock's location within the SCN."
+        }
+      ],
+      "hint": "Consider the relationship between the donor's genetic period and the host's post-operative behaviour."
+    },
+    {
+      "question": "Within the molecular clock of mammals, which protein complex acts as the primary transcription factor to promote the expression of the $per$ and $cry$ genes?",
+      "answerOptions": [
+        {
+          "text": "The Per/Cry dimer",
+          "isCorrect": false,
+          "rationale": "The Per and Cry proteins actually form a complex that inhibits the transcription process, completing the negative feedback loop."
+        },
+        {
+          "text": "The Clock/Cycle (Bmal1) dimer",
+          "isCorrect": true,
+          "rationale": "Clock and Cycle (Bmal1) bind together to form a dimer that binds to DNA, enhancing the transcription of Period and Cryptochrome genes."
+        },
+        {
+          "text": "The Glutamate/Melanopsin complex",
+          "isCorrect": false,
+          "rationale": "Glutamate is a neurotransmitter and melanopsin is a photopigment; they are involved in light entrainment rather than the core intracellular clock loop."
+        },
+        {
+          "text": "The Tau/$\tau$ protein complex",
+          "isCorrect": false,
+          "rationale": "Tau refers to a specific mutation in the hamster's period gene, not a standard protein complex within the molecular clock's transcription phase."
+        }
+      ],
+      "hint": "Identify the pair of proteins that initiate the cycle by binding to the cell's DNA."
+    },
+    {
+      "question": "Which of the following best describes the physiological properties of 'intrinsically photosensitive retinal ganglion cells' (ipRGCs) in mammals?",
+      "answerOptions": [
+        {
+          "text": "They rely on input from rods and cones to transmit light information to the lateral geniculate nucleus.",
+          "isCorrect": false,
+          "rationale": "These cells are independent of traditional rods and cones, as evidenced by blind transgenic mice still being able to entrain to light."
+        },
+        {
+          "text": "They contain the photopigment melanopsin and are most sensitive to light in the blue frequency range.",
+          "isCorrect": true,
+          "rationale": "Melanopsin is a specialized pigment in these cells that responds most strongly to blue light, explaining its significant effect on circadian rhythms."
+        },
+        {
+          "text": "They project primarily to the primary visual cortex to facilitate form vision in low-light conditions.",
+          "isCorrect": false,
+          "rationale": "These cells project to the SCN for circadian entrainment and the brainstem for pupil control, not to the visual cortex for image processing."
+        },
+        {
+          "text": "They trigger the release of melatonin directly within the SCN to synchronize the molecular clock.",
+          "isCorrect": false,
+          "rationale": "These cells release glutamate onto SCN neurons; melatonin is released by the pineal gland, not these retinal ganglion cells."
+        }
+      ],
+      "hint": "Think about the specific photopigment they contain and the colour of light that most effectively resets our internal clock."
+    },
+    {
+      "question": "How do circannual rhythms in animals like the Siberian hamster differ from circadian rhythms in terms of their biological regulation?",
+      "answerOptions": [
+        {
+          "text": "Circannual rhythms are purely exogenous and disappear entirely in constant laboratory conditions.",
+          "isCorrect": false,
+          "rationale": "Many annual rhythms persist as free-running circannual rhythms in isolation, indicating an endogenous component."
+        },
+        {
+          "text": "The circannual clock is housed within the SCN and functions by counting approximately 365 circadian cycles.",
+          "isCorrect": false,
+          "rationale": "SCN lesions that abolish circadian rhythms do not necessarily disrupt circannual changes in body weight or reproduction."
+        },
+        {
+          "text": "Circannual rhythms appear to be driven by a mechanism separate from the SCN, though they are entrained by the duration of nightly melatonin release.",
+          "isCorrect": true,
+          "rationale": "Studies show these cycles persist after SCN lesions, and light cycles entrain them by modulating the length of the melatonin signal."
+        },
+        {
+          "text": "Circannual rhythms are only found in primates and are controlled by the pineal gland's 'third eye' photoreceptors.",
+          "isCorrect": false,
+          "rationale": "These rhythms are widespread in many animals, and the 'third eye' concept applies specifically to certain non-mammalian vertebrates like birds and amphibians."
+        }
+      ],
+      "hint": "Consider whether the 24-hour master clock is required for the yearly cycle and how seasonal light changes are detected."
+    },
+    {
+      "question": "Which electrophysiological markers are uniquely characteristic of Stage 2 (NREM 2) sleep in humans?",
+      "answerOptions": [
+        {
+          "text": "Beta activity and desynchronised EEG patterns",
+          "isCorrect": false,
+          "rationale": "These patterns are characteristic of wakefulness and, paradoxically, REM sleep, rather than NREM Stage 2."
+        },
+        {
+          "text": "High-amplitude delta waves occurring at approximately $1\\text{ Hz}$",
+          "isCorrect": false,
+          "rationale": "Delta waves are the defining feature of Stage 3 (Slow-Wave Sleep), representing synchronized cortical activity."
+        },
+        {
+          "text": "Sleep spindles ($12-14\\text{ Hz}$) and K-complexes",
+          "isCorrect": true,
+          "rationale": "These periodic bursts of activity and sharp negative potentials are the specific physiological signatures used to identify NREM Stage 2."
+        },
+        {
+          "text": "Alpha rhythms and vertex spikes",
+          "isCorrect": false,
+          "rationale": "Alpha rhythms occur during relaxation, and vertex spikes mark the beginning of Stage 1 sleep."
+        }
+      ],
+      "hint": "Look for the specific terms describing 12-14 Hz bursts and sharp negative potentials."
+    },
+    {
+      "question": "What is the primary neuroanatomical explanation for the 'paradoxical' nature of REM sleep, where the brain appears active but the body is immobile?",
+      "answerOptions": [
+        {
+          "text": "The cerebral cortex completely ceases firing, while the autonomic nervous system reaches peak activity.",
+          "isCorrect": false,
+          "rationale": "EEG activity during REM sleep actually resembles wakefulness, indicating intense cortical activity."
+        },
+        {
+          "text": "Brainstem regions profoundly inhibit motor neurons, resulting in flaccid muscle paralysis despite high EEG activity.",
+          "isCorrect": true,
+          "rationale": "This state is paradoxical because the high-frequency EEG suggests wakefulness, but motor output is actively suppressed by the brainstem."
+        },
+        {
+          "text": "Sensory-evoked potentials are at their largest, causing the brain to focus entirely on internal stimuli rather than external movement.",
+          "isCorrect": false,
+          "rationale": "According to the source material, sensory-evoked potentials are actually reduced during REM sleep compared to NREM."
+        },
+        {
+          "text": "The SCN temporarily loses control over the molecular clock, leading to a desynchronisation of brain and body rhythms.",
+          "isCorrect": false,
+          "rationale": "While REM sleep involves desynchronised EEG, the SCN remains the overarching master clock for the sleep-wake cycle."
+        }
+      ],
+      "hint": "Focus on the role of the brainstem in regulating muscle tone during this specific sleep stage."
+    },
+    {
+      "question": "Research into infant sleep patterns suggests that the high percentage of REM sleep (up to $80\\%$ in premature babies) serves what likely function?",
+      "answerOptions": [
+        {
+          "text": "It conserves energy to compensate for the infant's high metabolic rate.",
+          "isCorrect": false,
+          "rationale": "Energy conservation is more closely associated with NREM (SWS) sleep, where heart rate and respiration decline significantly."
+        },
+        {
+          "text": "It provides essential stimulation for the maturation of the nervous system, possibly through muscle twitches that guide synaptic development.",
+          "isCorrect": true,
+          "rationale": "The preponderance of active REM sleep early in life suggests it facilitates neural maturation, supported by observation of twitches and vocalizations."
+        },
+        {
+          "text": "It allows the infant to process complex visual imagery before the eyes are fully developed.",
+          "isCorrect": false,
+          "rationale": "While REM is associated with dreams in adults, its role in infants is primarily linked to physiological and synaptic development."
+        },
+        {
+          "text": "It enforces niche adaptation by ensuring infants remain quiet and still during the day.",
+          "isCorrect": false,
+          "rationale": "Infant REM sleep is actually quite active and does not consolidated into a stable night-time pattern until approximately 16 weeks."
+        }
+      ],
+      "hint": "Consider why a developing brain would require such a high level of endogenous activity."
+    },
+    {
+      "question": "The 'glymphatic system' is a recently discovered mechanism that explains which proposed function of sleep?",
+      "answerOptions": [
+        {
+          "text": "Energy conservation through reduced cerebral blood flow",
+          "isCorrect": false,
+          "rationale": "While cerebral blood flow is reduced in NREM, the glymphatic system specifically refers to the clearance of waste products."
+        },
+        {
+          "text": "Niche adaptation by forcing inactivity during dangerous periods",
+          "isCorrect": false,
+          "rationale": "Niche adaptation is an ecological theory of sleep, whereas the glymphatic system is a physiological restoration mechanism."
+        },
+        {
+          "text": "Body restoration by flushing out toxins and metabolic waste products like $\\beta$-amyloid from the brain.",
+          "isCorrect": true,
+          "rationale": "The glymphatic system uses cerebrospinal fluid to clear toxins more effectively during sleep, which may help prevent neurodegenerative diseases."
+        },
+        {
+          "text": "Memory consolidation by replaying neural firing patterns from the day",
+          "isCorrect": false,
+          "rationale": "Memory consolidation is another hypothesized function of sleep, but it involves synaptic changes rather than fluid-based waste clearance."
+        }
+      ],
+      "hint": "Think about how the brain 'cleans' itself during the night."
+    },
+    {
+      "question": "What is the typical progression of sleep stages in a young adult over the course of a single night?",
+      "answerOptions": [
+        {
+          "text": "REM periods are longest in the first half of the night, with Stage 3 SWS increasing towards morning.",
+          "isCorrect": false,
+          "rationale": "Stage 3 SWS is actually more prominent in the early cycles, while REM periods lengthen as the night progresses."
+        },
+        {
+          "text": "Stage 3 SWS is most abundant early in the night, while REM sleep increases in duration in later cycles.",
+          "isCorrect": true,
+          "rationale": "Human sleep cycles shift from deep slow-wave sleep in the first few hours to more frequent and longer REM periods before waking."
+        },
+        {
+          "text": "The sleeper moves through Stages 1, 2, and 3, then remains in Stage 3 for the majority of the night.",
+          "isCorrect": false,
+          "rationale": "Adult sleep is cyclical, typically repeating 90-110 minute cycles four or five times per night."
+        },
+        {
+          "text": "Infants and adults follow the same pattern, with an equal distribution of REM and NREM throughout the night.",
+          "isCorrect": false,
+          "rationale": "Infants have much shorter cycles and a higher percentage of REM, and the distribution of stages changes significantly with age."
+        }
+      ],
+      "hint": "Recall which stage of sleep is most prevalent during the first few hours versus the final few hours."
+    },
+    {
+      "question": "In the context of sleep evolution, what is the significance of 'unilateral sleep' observed in dolphins and certain birds?",
+      "answerOptions": [
+        {
+          "text": "It proves that REM sleep is unnecessary for cognitive function in highly intelligent species.",
+          "isCorrect": false,
+          "rationale": "Dolphins actually appear to lack REM sleep entirely, but unilateral sleep refers to NREM (SWS) occurring in one hemisphere at a time."
+        },
+        {
+          "text": "It allows the animal to remain vigilant for predators or come to the surface to breathe while still obtaining slow-wave sleep.",
+          "isCorrect": true,
+          "rationale": "By sleeping one hemisphere at a time, these animals can maintain necessary behaviours like surfacing or predator detection while resting."
+        },
+        {
+          "text": "It is a primitive trait that was lost in all terrestrial mammals except for humans in unfamiliar environments.",
+          "isCorrect": false,
+          "rationale": "While humans show slightly less deep sleep in one hemisphere on the first night in a lab, true unilateral sleep is a specialized adaptation in marine mammals and birds."
+        },
+        {
+          "text": "It ensures that the metabolic rate remains constant across both halves of the brain to maximize energy conservation.",
+          "isCorrect": false,
+          "rationale": "Unilateral sleep involves one hemisphere being awake and active while the other rests, meaning metabolic rates would differ between hemispheres."
+        }
+      ],
+      "hint": "Consider the environmental challenges of sleeping in the open ocean or during a long flight."
+    },
+    {
+      "question": "Fatal Familial Insomnia (FFI) provides critical insight into the consequences of total sleep deprivation in humans. What is the typical progression and cause of this disorder?",
+      "answerOptions": [
+        {
+          "text": "It is caused by a SCN lesion and results in a permanent free-running rhythm of 27 hours.",
+          "isCorrect": false,
+          "rationale": "FFI is a genetic defect involving the prion protein, and it results in a total inability to sleep, not a shifted rhythm."
+        },
+        {
+          "text": "It involves a defect in the prion protein gene and leads to degeneration of the cortex and thalamus, resulting in death within 7-24 months.",
+          "isCorrect": true,
+          "rationale": "The progressive inability to sleep in FFI leads to multi-system failure and infection, ultimately proving fatal."
+        },
+        {
+          "text": "It is a childhood disorder characterized by intense night terrors that prevent the transition into Stage 2 sleep.",
+          "isCorrect": false,
+          "rationale": "FFI typically begins in midlife, and while night terrors are NREM-related, they are not the same as the total insomnia seen in FFI."
+        },
+        {
+          "text": "It is a metabolic disorder where the immune system attacks the pineal gland, stopping melatonin production.",
+          "isCorrect": false,
+          "rationale": "The pathology of FFI is centered on the cortex and thalamus and involves prion protein abnormalities rather than an autoimmune attack on the pineal gland."
+        }
+      ],
+      "hint": "Identify the specific brain regions affected and the genetic basis of this incurable condition."
+    },
+    {
+      "question": "Which of the following describes the most reproducible behavioural effect of moderate, accumulated 'sleep debt' (e.g., getting 4-6 hours of sleep for two weeks)?",
+      "answerOptions": [
+        {
+          "text": "Spontaneous episodes of hallucinations and schizophrenia-like symptoms.",
+          "isCorrect": false,
+          "rationale": "Schizophrenia-like symptoms were debunked by research; hallucinations are rare and usually only occur after prolonged, total deprivation."
+        },
+        {
+          "text": "Deficits in attention, working memory, and reaction speed equivalent to being totally sleep-deprived for three days.",
+          "isCorrect": true,
+          "rationale": "Studies showed that moderate sleep restriction leads to mounting cognitive impairments that eventually match those of total deprivation."
+        },
+        {
+          "text": "A permanent increase in metabolic rate that prevents future weight gain.",
+          "isCorrect": false,
+          "rationale": "While rats increase metabolic rate during deprivation, this is a symptom of extreme distress and does not translate to a beneficial permanent effect in humans."
+        },
+        {
+          "text": "An immediate and conscious awareness of being sleepy that allows the individual to compensate with naps.",
+          "isCorrect": false,
+          "rationale": "Participants in sleep debt studies often reported not feeling sleepy, despite their objective performance being significantly impaired."
+        }
+      ],
+      "hint": "Consider the cognitive tasks affected and how the level of impairment compares to total deprivation."
+    },
+    {
+      "question": "How does the secretion of growth hormone relate to the human sleep cycle?",
+      "answerOptions": [
+        {
+          "text": "It is primarily released during REM sleep to facilitate muscle repair.",
+          "isCorrect": false,
+          "rationale": "Growth hormone levels are low during REM sleep; muscle repair and protein rebuilding are more associated with slow-wave sleep."
+        },
+        {
+          "text": "It is secreted primarily during Stage 3 (Slow-Wave Sleep), supporting the restoration theory of sleep function.",
+          "isCorrect": true,
+          "rationale": "The peak release of growth hormone during SWS suggests that this stage is crucial for physical rebuilding and restoration."
+        },
+        {
+          "text": "Its release is triggered by the activation of the molecular clock's $Cry$ protein at dawn.",
+          "isCorrect": false,
+          "rationale": "The molecular clock regulates the timing of sleep, but the specific release of growth hormone is tied to the presence of SWS, not a specific protein at dawn."
+        },
+        {
+          "text": "It reaches its peak during Stage 1 vertex spikes to prepare the body for the deep sleep stages.",
+          "isCorrect": false,
+          "rationale": "Stage 1 is a transition phase with low hormone secretion; the major surge occurs once the brain enters deep Stage 3 SWS."
+        }
+      ],
+      "hint": "Associate the hormone with the specific stage of sleep that involves large-amplitude delta waves."
+    },
+    {
+      "question": "What common misconception about dreaming has been challenged by recent research monitoring high-frequency EEG activity in the posterior cortex?",
+      "answerOptions": [
+        {
+          "text": "The idea that nightmares only occur in children who experience night terrors.",
+          "isCorrect": false,
+          "rationale": "While night terrors are more common in children, the study mentioned specifically looked at the indicators of vivid dreaming in sleep stages."
+        },
+        {
+          "text": "The belief that vivid dreaming occurs exclusively during REM sleep.",
+          "isCorrect": true,
+          "rationale": "By monitoring EEG ratios, researchers can predict dreams in NREM sleep with $91\\%$ accuracy, showing that vivid dreaming is not unique to REM."
+        },
+        {
+          "text": "The theory that dreams are necessary to prevent the onset of schizophrenia.",
+          "isCorrect": false,
+          "rationale": "This theory was discarded earlier when studies of patients with schizophrenia showed they have normal sleep-wake cycles."
+        },
+        {
+          "text": "The assumption that the 'paradoxical' EEG of REM sleep is a recording error due to eye movements.",
+          "isCorrect": false,
+          "rationale": "The active EEG of REM is a well-established physiological reality, and desynchronised patterns are not considered recording errors."
+        }
+      ],
+      "hint": "Think about whether 'mental movies' can occur in stages other than REM."
+    },
+    {
+      "question": "In hamsters with the $tau$ mutation, how does the period of the endogenous clock change depending on whether the animal is heterozygous or homozygous for the mutation?",
+      "answerOptions": [
+        {
+          "text": "Heterozygous animals have a $24$-hour period, while homozygous animals have a $20$-hour period.",
+          "isCorrect": false,
+          "rationale": "Heterozygous animals already show a shorter-than-normal rhythm of 22 hours."
+        },
+        {
+          "text": "Heterozygous animals have a $22$-hour period, while homozygous animals have a $20$-hour period.",
+          "isCorrect": true,
+          "rationale": "The mutation has a dose-dependent effect, where one copy of the gene shortens the period to 22 hours and two copies shorten it to 20 hours."
+        },
+        {
+          "text": "The mutation causes the animal to lose its endogenous clock entirely when homozygous.",
+          "isCorrect": false,
+          "rationale": "The $tau$ mutation shortens the period; it is the $Clock$ gene disruption in mice that leads to total arrhythmicity in constant conditions."
+        },
+        {
+          "text": "The mutation only affects the animal's ability to entrain to light-dark cycles, not the endogenous period itself.",
+          "isCorrect": false,
+          "rationale": "Hamsters with the $tau$ mutation entrain to a 24-hour cycle just fine; the abnormality is only revealed in free-running constant conditions."
+        }
+      ],
+      "hint": "Recall the specific durations of the 'short' rhythms mentioned for the male hamster and his mutated offspring."
+    }
+  ]
+}

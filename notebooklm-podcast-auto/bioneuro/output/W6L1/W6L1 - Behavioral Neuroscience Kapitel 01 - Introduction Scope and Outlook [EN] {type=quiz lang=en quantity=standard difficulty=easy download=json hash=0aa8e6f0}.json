@@ -1,0 +1,265 @@
+{
+  "title": "Neuroscience Quiz",
+  "questions": [
+    {
+      "question": "What is the name of the basic unit of the nervous system that makes up the estimated $86$ billion nerve cells in the human brain?",
+      "answerOptions": [
+        {
+          "text": "Neuron",
+          "isCorrect": true,
+          "rationale": "The neuron, or nerve cell, is defined as the fundamental structural and functional unit of the entire nervous system."
+        },
+        {
+          "text": "Synapse",
+          "isCorrect": false,
+          "rationale": "While critical for communication, this term refers to the point of contact between cells rather than the cell itself."
+        },
+        {
+          "text": "Axon",
+          "isCorrect": false,
+          "rationale": "This is a specialised extension of a nerve cell used to transmit impulses, but it is not the name for the whole cell."
+        },
+        {
+          "text": "Hormone",
+          "isCorrect": false,
+          "rationale": "These are chemical compounds that transmit messages through the bloodstream, not the cells that form the brain's hardware."
+        }
+      ],
+      "hint": "Consider the Greek term for 'nerve' or 'cord' mentioned in the text."
+    },
+    {
+      "question": "In behavioural neuroscience research, which approach involves altering a physical structure or function of the brain to observe how it changes behaviour?",
+      "answerOptions": [
+        {
+          "text": "Correlation",
+          "isCorrect": false,
+          "rationale": "This method measures how two variables vary together without necessarily implying a causal direction through manipulation."
+        },
+        {
+          "text": "Somatic intervention",
+          "isCorrect": true,
+          "rationale": "This approach uses a physical change in the body as the independent variable to measure resulting changes in behaviour."
+        },
+        {
+          "text": "Behavioural intervention",
+          "isCorrect": false,
+          "rationale": "This approach manipulates the subject's experience or environment as the independent variable to see how it affects body structure."
+        },
+        {
+          "text": "Ontogeny",
+          "isCorrect": false,
+          "rationale": "This term describes the process of development over a lifetime rather than a specific experimental research approach."
+        }
+      ],
+      "hint": "Think about the term that refers to the 'soma' or physical body."
+    },
+    {
+      "question": "The ability of the brain to be physically changed by experience and the environment throughout development and adulthood is known as:",
+      "answerOptions": [
+        {
+          "text": "Reductionism",
+          "isCorrect": false,
+          "rationale": "This is a scientific strategy of breaking down complex systems into smaller parts rather than a property of brain flexibility."
+        },
+        {
+          "text": "Dualism",
+          "isCorrect": false,
+          "rationale": "This concept suggests that the mind and body are separate entities, which is generally rejected by modern neuroscientists."
+        },
+        {
+          "text": "Neuroplasticity",
+          "isCorrect": true,
+          "rationale": "Rooted in the Greek word for 'moulded', this describes the flexible and malleable nature of the nervous system's structure."
+        },
+        {
+          "text": "Phrenology",
+          "isCorrect": false,
+          "rationale": "This was an outmoded 19th-century belief that bumps on the skull reflected the size of underlying brain regions."
+        }
+      ],
+      "hint": "This term refers to a material that is flexible and can be formed into nearly any shape."
+    },
+    {
+      "question": "According to ancient Greek history, which prominent scientist erroneously believed that the brain served only as a cooling unit for the blood?",
+      "answerOptions": [
+        {
+          "text": "Herophilus",
+          "isCorrect": false,
+          "rationale": "Known as the Father of Anatomy, he actually advanced knowledge by tracing nerves from the skin into the spinal cord."
+        },
+        {
+          "text": "Galen",
+          "isCorrect": false,
+          "rationale": "This physician focused on gladiator head injuries and proposed that 'animal spirits' travelled through nerves."
+        },
+        {
+          "text": "Aristotle",
+          "isCorrect": true,
+          "rationale": "He located mental capacities in the heart and viewed the brain merely as a device to lower the temperature of hot blood."
+        },
+        {
+          "text": "Hippocrates",
+          "isCorrect": false,
+          "rationale": "While a famous Greek physician, the text specifically identifies Aristotle as the proponent of the heart-centred view of the mind."
+        }
+      ],
+      "hint": "This philosopher is widely regarded as one of the most influential figures in the history of Western science and philosophy."
+    },
+    {
+      "question": "Ren\u00e9 Descartes promoted the idea that humans possess a non-material soul as well as a material body, a concept known as:",
+      "answerOptions": [
+        {
+          "text": "Dualism",
+          "isCorrect": true,
+          "rationale": "This philosophical position asserts that the mind is subject to spiritual interactions while the body is subject to material ones."
+        },
+        {
+          "text": "Monism",
+          "isCorrect": false,
+          "rationale": "This view, opposite to Descartes' belief, suggests that the mind and brain are one and the same physical entity."
+        },
+        {
+          "text": "Localisation of function",
+          "isCorrect": false,
+          "rationale": "This refers to the idea that specific brain regions perform specific tasks, which is a physical rather than spiritual concept."
+        },
+        {
+          "text": "Reflexology",
+          "isCorrect": false,
+          "rationale": "While Descartes did propose the concept of spinal reflexes, this is a physiological mechanism rather than a soul-body theory."
+        }
+      ],
+      "hint": "This term implies a 'two-part' system for understanding the human experience."
+    },
+    {
+      "question": "In the 1860s, Paul Broca provided evidence for the localisation of function by showing that damage to a specific region in the left frontal lobe caused impairments in:",
+      "answerOptions": [
+        {
+          "text": "Vision",
+          "isCorrect": false,
+          "rationale": "Visual processing is primarily handled in different areas of the brain, such as the visual cortex, rather than Broca's area."
+        },
+        {
+          "text": "Language production",
+          "isCorrect": true,
+          "rationale": "Broca's post-mortem analysis of a patient who could not talk demonstrated that speech is mediated by a specific brain region."
+        },
+        {
+          "text": "Memory storage",
+          "isCorrect": false,
+          "rationale": "While the brain has regions for memory, Broca's specific patient was characterised by a loss of the ability to talk."
+        },
+        {
+          "text": "Emotional regulation",
+          "isCorrect": false,
+          "rationale": "Emotions involve deeper brain structures, whereas Broca's findings were focused on the expression of speech."
+        }
+      ],
+      "hint": "This area of the brain is named after the French surgeon who studied a patient who was unable to talk."
+    },
+    {
+      "question": "Which scientific strategy involves breaking down a system into increasingly smaller parts to understand its underlying mechanisms?",
+      "answerOptions": [
+        {
+          "text": "Reductionism",
+          "isCorrect": true,
+          "rationale": "This approach aims to explain complex behaviour by looking at simpler levels of analysis, such as neural circuits or molecules."
+        },
+        {
+          "text": "Ontogeny",
+          "isCorrect": false,
+          "rationale": "This refers to the study of an individual's changes over their lifespan, not the strategy of dismantling systems into parts."
+        },
+        {
+          "text": "Correlation",
+          "isCorrect": false,
+          "rationale": "This is a method of observing how two measures change together, not a strategy of simplification."
+        },
+        {
+          "text": "Functionalism",
+          "isCorrect": false,
+          "rationale": "This perspective describes behaviour in terms of its results or functions rather than reducing it to its smallest physical parts."
+        }
+      ],
+      "hint": "Think of a term that describes the 'reducing' of a complex idea into simpler components."
+    },
+    {
+      "question": "A survey in Europe estimated that what percentage of the population would suffer from a mental disorder at some point in a typical year?",
+      "answerOptions": [
+        {
+          "text": "$10\\%$",
+          "isCorrect": false,
+          "rationale": "This figure relates to a common 'neuromyth' about brain usage rather than the estimated prevalence of mental illness."
+        },
+        {
+          "text": "$20\\%$",
+          "isCorrect": false,
+          "rationale": "While roughly one in five people worldwide have a disorder, the European survey provided a higher specific percentage."
+        },
+        {
+          "text": "$38\\%$",
+          "isCorrect": true,
+          "rationale": "This specific figure was cited from a survey highlighting the significant impact of mental disorders on the population."
+        },
+        {
+          "text": "$50\\%$",
+          "isCorrect": false,
+          "rationale": "Although mental illness is common, this percentage is higher than the estimate provided in the source material."
+        }
+      ],
+      "hint": "The number is higher than one-third of the population."
+    },
+    {
+      "question": "During the process of mummification in ancient Egypt, which organ was considered so unimportant that it was typically discarded?",
+      "answerOptions": [
+        {
+          "text": "Heart",
+          "isCorrect": false,
+          "rationale": "The heart was carefully preserved as it was believed to be the seat of wisdom and necessary for the afterlife."
+        },
+        {
+          "text": "Liver",
+          "isCorrect": false,
+          "rationale": "The liver was one of five important organs preserved in the tomb of pharaohs like Tutankhamen."
+        },
+        {
+          "text": "Brain",
+          "isCorrect": true,
+          "rationale": "Ancient Egyptians had little regard for the brain, often picking it out through the nostrils and throwing it away."
+        },
+        {
+          "text": "Intestines",
+          "isCorrect": false,
+          "rationale": "Along with the stomach and lungs, the intestines were considered essential to ensure existence in the afterlife."
+        }
+      ],
+      "hint": "This organ, now considered the centre of the mind, was removed with a hook through the nose."
+    },
+    {
+      "question": "Donald O. Hebb proposed that neurons strengthen their connections through use, leading to the formation of organised groups of cells called:",
+      "answerOptions": [
+        {
+          "text": "Synaptic gaps",
+          "isCorrect": false,
+          "rationale": "This is the physical space between neurons, not the name of the functional groups formed through activity."
+        },
+        {
+          "text": "Cell assemblies",
+          "isCorrect": true,
+          "rationale": "Hebb suggested that initially random connections become interconnected groups that account for complex cognitive behaviour."
+        },
+        {
+          "text": "Dendritic spines",
+          "isCorrect": false,
+          "rationale": "These are small parts of neurons that change shape rapidly, but they are components of individual cells rather than groups."
+        },
+        {
+          "text": "Neural pathways",
+          "isCorrect": false,
+          "rationale": "While related, this is a more general term for connections, whereas Hebb's specific concept focused on interconnected 'assemblies'."
+        }
+      ],
+      "hint": "Think of a term that describes a 'collection' or 'gathering' of units acting together."
+    }
+  ]
+}

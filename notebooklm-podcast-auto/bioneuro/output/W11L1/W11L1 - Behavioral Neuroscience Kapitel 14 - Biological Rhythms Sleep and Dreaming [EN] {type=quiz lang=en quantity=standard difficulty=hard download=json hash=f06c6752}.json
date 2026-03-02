@@ -1,0 +1,265 @@
+{
+  "title": "Sleep Quiz",
+  "questions": [
+    {
+      "question": "In the landmark transplant experiments conducted by Ralph and Menaker, what occurred when a hamster with a lesioned suprachiasmatic nucleus (SCN) received a transplant of fetal SCN tissue from a donor with the homozygous $\\tau$ mutation?",
+      "answerOptions": [
+        {
+          "text": "The recipient hamster resumed a circadian rhythm of approximately 24 hours regardless of the donor's genotype.",
+          "isCorrect": false,
+          "rationale": "This overlooks the genetic control of the endogenous period, which the experiment proved was determined by the donor tissue."
+        },
+        {
+          "text": "The recipient hamster adopted the approximately 20-hour free-running period of the donor animal.",
+          "isCorrect": true,
+          "rationale": "The experiment demonstrated that the endogenous period is intrinsic to the SCN, as the host's behavior shifted to match the donor's genetic mutation."
+        },
+        {
+          "text": "The recipient hamster remained arrhythmic because the transplant could not establish synaptic connections.",
+          "isCorrect": false,
+          "rationale": "Research showed that encapsulated SCN cells, which cannot form synapses, can still drive rhythms through chemical signals."
+        },
+        {
+          "text": "The recipient hamster developed a free-running period of 22 hours, representing a hybrid of the donor and host clocks.",
+          "isCorrect": false,
+          "rationale": "The period was determined strictly by the donor tissue's genotype ($20$ hours for homozygous mutants) rather than a combination of both."
+        }
+      ],
+      "hint": "Consider the specific behavioral outcome of the transplant and what it revealed about the source of the biological clock."
+    },
+    {
+      "question": "Which of the following describes the molecular feedback loop responsible for the mammalian circadian clock within the SCN?",
+      "answerOptions": [
+        {
+          "text": "The Clock/Cycle dimer directly degrades Per and Cry proteins to restart the transcription cycle.",
+          "isCorrect": false,
+          "rationale": "Clock and Cycle actually promote the transcription of the genes, while the breakdown of Per and Cry happens over time to lift inhibition."
+        },
+        {
+          "text": "Glutamate release from the retinohypothalamic tract inhibits the production of Bmal1 to synchronize the clock.",
+          "isCorrect": false,
+          "rationale": "Glutamate stimulation actually leads to increased transcription of the $per$ gene to shift the phase of the clock."
+        },
+        {
+          "text": "The Per/Cry protein complex enters the nucleus and inhibits the transcription-promoting activity of the Clock/Cycle dimer.",
+          "isCorrect": true,
+          "rationale": "The molecular clock functions as a negative feedback loop where the products of the genes (Per and Cry) eventually inhibit the very proteins that promote their expression."
+        },
+        {
+          "text": "Melanopsin-containing ganglion cells travel to the pineal gland to regulate the dimerization of Clock and Cycle.",
+          "isCorrect": false,
+          "rationale": "Melanopsin cells project to the SCN, not the pineal gland, and the dimerization process is a localized intracellular event."
+        }
+      ],
+      "hint": "Focus on how the proteins produced by the clock genes interact with the proteins that initiated their transcription."
+    },
+    {
+      "question": "Why is blue light particularly effective at entraining the human circadian system compared to other wavelengths?",
+      "answerOptions": [
+        {
+          "text": "Blue light penetrates the skull to reach the pineal gland more effectively than longer wavelengths.",
+          "isCorrect": false,
+          "rationale": "While this occurs in some birds and amphibians, human entrainment relies on retinal pathways rather than skull penetration."
+        },
+        {
+          "text": "The intrinsically photosensitive retinal ganglion cells (ipRGCs) contain melanopsin, which is most sensitive to the blue spectrum.",
+          "isCorrect": true,
+          "rationale": "Melanopsin is the specific photopigment in the retinohypothalamic pathway that responds most strongly to frequencies in the blue range."
+        },
+        {
+          "text": "Blue light specifically triggers the rods and cones to send rapid signals to the lateral geniculate nucleus for clock synchronization.",
+          "isCorrect": false,
+          "rationale": "Clock entrainment is primarily driven by specialized ganglion cells rather than the traditional rods and cones used for form vision."
+        },
+        {
+          "text": "The SCN contains blue-light filters that prevent other wavelengths from reaching the molecular clock.",
+          "isCorrect": false,
+          "rationale": "Sensitivity is determined at the level of the retinal photoreceptors (melanopsin), not by filtering at the level of the hypothalamus."
+        }
+      ],
+      "hint": "Identify the specific photopigment and cell type in the eye that communicates light information to the hypothalamus."
+    },
+    {
+      "question": "How does the distribution of sleep stages typically change across a single night of sleep in a healthy young adult?",
+      "answerOptions": [
+        {
+          "text": "Stage 3 (SWS) becomes progressively more frequent and longer as the night approaches morning.",
+          "isCorrect": false,
+          "rationale": "Stage 3 sleep is actually most prominent in the early cycles of the night and disappears in later cycles."
+        },
+        {
+          "text": "The duration of REM sleep episodes increases, while the duration of Stage 3 (SWS) sleep decreases as the night progresses.",
+          "isCorrect": true,
+          "rationale": "Early cycles are dominated by slow-wave sleep, while the latter half of the night features more REM sleep, with the final REM bout being the longest."
+        },
+        {
+          "text": "REM sleep occurs only once during the night, typically halfway through the 8-hour period.",
+          "isCorrect": false,
+          "rationale": "The typical adult experiences four or five distinct sleep cycles throughout the night, each containing a REM period."
+        },
+        {
+          "text": "The ultradian cycle of 90-110 minutes shortens to 45 minutes after the first four hours of sleep.",
+          "isCorrect": false,
+          "rationale": "The length of the overall cycle remains relatively stable, though the internal composition of the stages within the cycle changes."
+        }
+      ],
+      "hint": "Compare the amount of deep sleep in the first half of the night versus the amount of dreaming sleep in the second half."
+    },
+    {
+      "question": "Which physiological evidence distinguishes REM sleep from Stage 1 NREM sleep, despite both having similar low-amplitude, high-frequency EEG patterns?",
+      "answerOptions": [
+        {
+          "text": "The presence of vertex spikes on the EEG.",
+          "isCorrect": false,
+          "rationale": "Vertex spikes are a hallmark of Stage 1 NREM sleep, not REM sleep."
+        },
+        {
+          "text": "The complete elimination of postural muscle tension (atonia).",
+          "isCorrect": true,
+          "rationale": "REM sleep is characterized by an active brain but flaccid skeletal muscles, whereas Stage 1 retains more muscle tone."
+        },
+        {
+          "text": "A regular alpha rhythm of $8-12$ Hz.",
+          "isCorrect": false,
+          "rationale": "Alpha rhythms are characteristic of relaxed wakefulness, while both Stage 1 and REM show desynchronized EEG."
+        },
+        {
+          "text": "The appearance of delta waves at a frequency of 1 Hz.",
+          "isCorrect": false,
+          "rationale": "Delta waves are the defining feature of Stage 3 (SWS), not REM or Stage 1."
+        }
+      ],
+      "hint": "Think about why REM sleep is sometimes called 'paradoxical sleep' regarding muscle state versus brain activity."
+    },
+    {
+      "question": "How does sleep potentially serve a 'restorative' function for the brain in the context of neurodegenerative waste?",
+      "answerOptions": [
+        {
+          "text": "SWS increases the production of protective prion proteins that shield neurons from amyloid plaques.",
+          "isCorrect": false,
+          "rationale": "Prion proteins are actually associated with fatal familial insomnia when defective, rather than being the primary restorative mechanism of sleep."
+        },
+        {
+          "text": "The glymphatic system flushes out toxins, such as $\\beta$-amyloid, significantly faster during sleep than during wakefulness.",
+          "isCorrect": true,
+          "rationale": "Glia-controlled channels disposal of waste products like $\\beta$-amyloid is accelerated during sleep, potentially postponing cognitive disorders."
+        },
+        {
+          "text": "REM sleep prevents the brain from overheating, which stops the denaturing of proteins that causes dementia.",
+          "isCorrect": false,
+          "rationale": "The text notes that brain temperature actually increases during REM sleep; waste clearance is the primary mechanism discussed."
+        },
+        {
+          "text": "Stage 2 sleep spindles act as electrical 'cleansers' that vibrate cellular debris into the cerebrospinal fluid.",
+          "isCorrect": false,
+          "rationale": "While sleep spindles are important for Stage 2, the clearance of toxins is attributed to the glymphatic flow system."
+        }
+      ],
+      "hint": "Look for the role of the glymphatic system and specific waste products cleared during rest."
+    },
+    {
+      "question": "What distinguishes night terrors from nightmares in terms of sleep architecture?",
+      "answerOptions": [
+        {
+          "text": "Nightmares occur during NREM Stage 3, while night terrors occur during REM.",
+          "isCorrect": false,
+          "rationale": "The opposite is true; nightmares are associated with the vivid dreaming of REM sleep."
+        },
+        {
+          "text": "Night terrors are characterized by a sudden arousal from NREM sleep, whereas nightmares occur during REM sleep.",
+          "isCorrect": true,
+          "rationale": "Night terrors involve intense fear and autonomic activation during NREM, whereas nightmares are frightening dreams typically occurring in REM."
+        },
+        {
+          "text": "Nightmares always involve a feeling of suffocation on the chest, whereas night terrors do not.",
+          "isCorrect": false,
+          "rationale": "The crushing sensation on the chest is a description specifically associated with night terrors or sleep paralysis."
+        },
+        {
+          "text": "Night terrors occur exclusively in adults, while nightmares are common only in children.",
+          "isCorrect": false,
+          "rationale": "The text states that night terrors are actually common in children."
+        }
+      ],
+      "hint": "Identify which sleep stage is associated with vivid dreaming and which is associated with sudden, non-dream arousal."
+    },
+    {
+      "question": "Which of the following is true regarding sleep patterns in infants and the elderly?",
+      "answerOptions": [
+        {
+          "text": "Human infants spend only 20% of their sleep in REM, similar to adults.",
+          "isCorrect": false,
+          "rationale": "Infants spend about 50% of their sleep in REM, a much higher percentage than adults."
+        },
+        {
+          "text": "The elderly experience a dramatic increase in Stage 3 sleep as a compensatory mechanism for fragmented rest.",
+          "isCorrect": false,
+          "rationale": "The elderly actually show a severe reduction or even complete disappearance of Stage 3 sleep."
+        },
+        {
+          "text": "Human infants can transition directly from wakefulness to REM sleep, which is atypical for healthy adults.",
+          "isCorrect": true,
+          "rationale": "This immediate transition to REM is a unique characteristic of early infant sleep compared to adult sleep architecture."
+        },
+        {
+          "text": "Growth hormone secretion peaks during REM sleep in both infants and the elderly.",
+          "isCorrect": false,
+          "rationale": "Growth hormone is primarily secreted during Stage 3 (SWS), not REM sleep."
+        }
+      ],
+      "hint": "Compare the percentage of REM sleep and the specific order of sleep stages between these age groups."
+    },
+    {
+      "question": "In the context of biological rhythms, how do circannual rhythms differ from circadian rhythms regarding their neurological control?",
+      "answerOptions": [
+        {
+          "text": "Circannual rhythms are purely exogenous and do not persist in constant laboratory conditions.",
+          "isCorrect": false,
+          "rationale": "The text confirms that circannual rhythms persist in isolation, indicating an endogenous clock."
+        },
+        {
+          "text": "Lesions of the SCN that abolish circadian rhythms do not necessarily disrupt circannual rhythms like body weight cycles.",
+          "isCorrect": true,
+          "rationale": "Experiments showed that while the SCN is the circadian master clock, circannual rhythms likely involve a separate, independent mechanism."
+        },
+        {
+          "text": "Circannual rhythms are measured by the SCN counting 365 circadian cycles.",
+          "isCorrect": false,
+          "rationale": "The text explicitly states that circannual rhythms do not arise simply from counting circadian days."
+        },
+        {
+          "text": "Melatonin secretion has no influence on infradian rhythms, as it only responds to light-dark circadian cues.",
+          "isCorrect": false,
+          "rationale": "The length of nightly melatonin secretion is actually a key factor in entraining circannual rhythms to the seasons."
+        }
+      ],
+      "hint": "Recall the results of SCN lesion studies on different types of biological cycles."
+    },
+    {
+      "question": "According to the ecological niche adaptation theory, why might different species exhibit widely varying sleep durations?",
+      "answerOptions": [
+        {
+          "text": "All animals sleep exactly 8 hours unless they have a metabolic disorder.",
+          "isCorrect": false,
+          "rationale": "Sleep duration varies significantly across species based on their environmental adaptations and safety."
+        },
+        {
+          "text": "Sleep forces animals to remain inactive during times of the day when they are most vulnerable to predators or least efficient at finding food.",
+          "isCorrect": true,
+          "rationale": "This theory suggests sleep is a tool evolved to enforce niche specialization for survival."
+        },
+        {
+          "text": "Predators sleep less than prey species because they must remain vigilant for competition.",
+          "isCorrect": false,
+          "rationale": "Predators actually tend to sleep more because they are generally more secure during sleep than prey species."
+        },
+        {
+          "text": "Small animals sleep less because their high metabolic rates require constant foraging.",
+          "isCorrect": false,
+          "rationale": "Small animals with high metabolic rates actually tend to sleep more to conserve energy."
+        }
+      ],
+      "hint": "Consider how sleep might be an evolutionary mechanism to keep an animal out of harm's way."
+    }
+  ]
+}

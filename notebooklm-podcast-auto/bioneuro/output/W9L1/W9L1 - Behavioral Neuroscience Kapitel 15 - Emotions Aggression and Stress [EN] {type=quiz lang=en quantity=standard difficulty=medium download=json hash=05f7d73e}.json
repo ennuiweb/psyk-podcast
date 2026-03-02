@@ -1,0 +1,266 @@
+{
+  "title": "Emotions Quiz",
+  "questions": [
+    {
+      "question": "Which theory of emotion suggests that the subjective experience of an emotion is a direct response to the specific physiological changes occurring in the body?",
+      "answerOptions": [
+        {
+          "text": "James-Lange theory",
+          "isCorrect": true,
+          "rationale": "This theory posits that we perceive our body's reaction to a stimulus as the emotion itself, meaning we feel afraid because our heart is racing."
+        },
+        {
+          "text": "Cannon-Bard theory",
+          "isCorrect": false,
+          "rationale": "This model suggests that the brain simultaneously and independently triggers both the emotional feeling and the physiological response."
+        },
+        {
+          "text": "Schachter's cognitive attribution theory",
+          "isCorrect": false,
+          "rationale": "This theory argues that physiological arousal is nonspecific and only the cognitive interpretation of the context determines the emotion."
+        },
+        {
+          "text": "Folk psychology",
+          "isCorrect": false,
+          "rationale": "This perspective assumes that the emotional feeling occurs first and subsequently triggers the autonomic reaction."
+        }
+      ],
+      "hint": "Consider the perspective that turned the 'folk' notion on its head by suggesting bodily changes cause feelings."
+    },
+    {
+      "question": "In the Schachter and Singer experiment, how did participants react when they were injected with epinephrine but not warned about its physiological effects?",
+      "answerOptions": [
+        {
+          "text": "They experienced emotions based on the behavior of a confederate in the room.",
+          "isCorrect": true,
+          "rationale": "Because they had no explanation for their racing hearts, they used social cues to label their arousal as either elation or anger."
+        },
+        {
+          "text": "They reported no emotional change because they attributed the arousal to the drug.",
+          "isCorrect": false,
+          "rationale": "This response was typical of the participants who were correctly warned about the drug's side effects."
+        },
+        {
+          "text": "They experienced a 'sham rage' that was undirected and intense.",
+          "isCorrect": false,
+          "rationale": "Sham rage is typically observed in decorticate animals where the inhibitory cortex has been removed."
+        },
+        {
+          "text": "They only felt elation, regardless of the social environment.",
+          "isCorrect": false,
+          "rationale": "The study found that the specific emotion felt depended on whether the confederate acted happy or angry."
+        }
+      ],
+      "hint": "Think about how individuals look for environmental clues to explain internal sensations they don't understand."
+    },
+    {
+      "question": "Patient S.M., who has bilateral damage to the amygdala, is unable to experience fear in most situations. However, she was successfully induced into a state of panic by which of the following?",
+      "answerOptions": [
+        {
+          "text": "Inhaling air with a high concentration of $CO_{2}$",
+          "isCorrect": true,
+          "rationale": "Internal threats like high carbon dioxide levels likely trigger panic through brainstem mechanisms rather than the amygdala."
+        },
+        {
+          "text": "Exposure to venomous snakes and spiders",
+          "isCorrect": false,
+          "rationale": "S.M. famously showed no fear and even curiosity when presented with these common external phobic stimuli."
+        },
+        {
+          "text": "Watching horror film clips like 'The Shining'",
+          "isCorrect": false,
+          "rationale": "Data showed that S.M. reported little to no fear when viewing films that typically evoke extreme fear in control subjects."
+        },
+        {
+          "text": "Being threatened with a knife by a stranger",
+          "isCorrect": false,
+          "rationale": "S.M. responded to a real-life mugging with such a lack of fear that it disquieted the attacker, causing him to flee."
+        }
+      ],
+      "hint": "The brain may use different systems for detecting external threats versus internal threats to survival."
+    },
+    {
+      "question": "In the 'low road' pathway of fear conditioning, sensory information bypasses which structure to allow for an immediate, unconscious reaction?",
+      "answerOptions": [
+        {
+          "text": "Sensory cortex",
+          "isCorrect": true,
+          "rationale": "The low road goes directly from the thalamus to the amygdala, sacrificing detailed processing for speed."
+        },
+        {
+          "text": "Thalamus",
+          "isCorrect": false,
+          "rationale": "The thalamus acts as the initial 'switchboard' for both the high and low road pathways."
+        },
+        {
+          "text": "Central nucleus of the amygdala",
+          "isCorrect": false,
+          "rationale": "The central nucleus is the ultimate output station within the amygdala that triggers the fear response."
+        },
+        {
+          "text": "Lateral hypothalamus",
+          "isCorrect": false,
+          "rationale": "The lateral hypothalamus is a target of the amygdala used to evoke autonomic responses, not a bypass point."
+        }
+      ],
+      "hint": "This structure is involved in conscious, fine-grained processing that is skipped during an emergency response."
+    },
+    {
+      "question": "Research using two-photon excitation microscopy revealed that mice that showed the greatest fear response during conditioning also experienced what change in their frontal cortex?",
+      "answerOptions": [
+        {
+          "text": "Increased elimination of dendritic spines",
+          "isCorrect": true,
+          "rationale": "The study found a correlation where the loss of specific synapses through spine elimination was associated with the learned freezing behavior."
+        },
+        {
+          "text": "Rapid formation of new dendritic spines",
+          "isCorrect": false,
+          "rationale": "While spine formation occurred during extinction (unlearning), the initial fear conditioning was characterized by spine loss."
+        },
+        {
+          "text": "Severe atrophy of the entire prefrontal cortex",
+          "isCorrect": false,
+          "rationale": "The changes observed were microscopic and specific to dendritic spines, not gross anatomical degeneration."
+        },
+        {
+          "text": "Increased levels of the serotonin metabolite $5-HIAA$",
+          "isCorrect": false,
+          "rationale": "Metabolite levels are usually measured in cerebrospinal fluid to gauge neurotransmitter activity, not via two-photon microscopy of spines."
+        }
+      ],
+      "hint": "Consider the physical 'unwiring' of certain connections as a mechanism for forming a fearful association."
+    },
+    {
+      "question": "Which neurotransmitter is generally thought to have an inhibitory effect on aggression, as evidenced by low levels of its metabolite in the most aggressive monkeys?",
+      "answerOptions": [
+        {
+          "text": "Serotonin",
+          "isCorrect": true,
+          "rationale": "Low levels of the serotonin metabolite $5-HIAA$ are strongly correlated with high levels of aggression and risk-taking in primates."
+        },
+        {
+          "text": "Testosterone",
+          "isCorrect": false,
+          "rationale": "Testosterone is a hormone, not a neurotransmitter, and is generally associated with increased rather than decreased aggression."
+        },
+        {
+          "text": "Glutamate",
+          "isCorrect": false,
+          "rationale": "Glutamate is the primary excitatory neurotransmitter and is not typically associated with inhibiting aggressive behaviors."
+        },
+        {
+          "text": "Vasopressin",
+          "isCorrect": false,
+          "rationale": "Vasopressin is a peptide hormone implicated in the control of aggression, but it does not follow the specific inhibitory pattern mentioned."
+        }
+      ],
+      "hint": "Think about the chemical also involved in locust swarming and often measured via $5-HIAA$."
+    },
+    {
+      "question": "The 'extraordinary taming effect' observed in monkeys after the bilateral removal of their temporal lobes (including the amygdala) is a hallmark of which condition?",
+      "author": "Kl\u00fcver and Bucy",
+      "answerOptions": [
+        {
+          "text": "Kl\u00fcver-Bucy syndrome",
+          "isCorrect": true,
+          "rationale": "This syndrome includes a dramatic loss of fear, hypersexuality, and a tendency to explore objects with the mouth."
+        },
+        {
+          "text": "Bell's palsy",
+          "isCorrect": false,
+          "rationale": "Bell's palsy is a facial nerve disorder causing paralysis of one side of the face, not a behavioral syndrome."
+        },
+        {
+          "text": "Individual response stereotypy",
+          "isCorrect": false,
+          "rationale": "This refers to the consistency of an individual's unique physiological response pattern throughout their life."
+        },
+        {
+          "text": "Sham rage",
+          "isCorrect": false,
+          "rationale": "Sham rage is an increase in undirected aggression seen after decortication, which is the opposite of the taming effect."
+        }
+      ],
+      "hint": "This syndrome is named after the two researchers who first described the behavior in temporal-lobe-lesioned monkeys."
+    },
+    {
+      "question": "In the context of aggression, what is the specific role attributed to the ventromedial hypothalamus (VMH) in male mice?",
+      "answerOptions": [
+        {
+          "text": "It acts as a switch that triggers the transition from mating to attacking.",
+          "isCorrect": true,
+          "rationale": "Optogenetic stimulation of the VMH can cause a male to suddenly attack a female he was previously courting."
+        },
+        {
+          "text": "It inhibits the amygdala to prevent unprovoked violence.",
+          "isCorrect": false,
+          "rationale": "While the cortex provides inhibition, the VMH is more directly involved in the execution of aggressive motor programs."
+        },
+        {
+          "text": "It analyzes pheromonal information to identify male rivals.",
+          "isCorrect": false,
+          "rationale": "The medial amygdala is primarily responsible for analyzing olfactory and pheromonal cues before relaying that info to the VMH."
+        },
+        {
+          "text": "It produces testosterone to prepare the animal for reproduction.",
+          "isCorrect": false,
+          "rationale": "Testosterone is produced in the testes, though it acts on receptors within various brain regions like the VMH."
+        }
+      ],
+      "hint": "Consider how this region functions as a behavioral 'toggle' between different social behaviors."
+    },
+    {
+      "question": "Why is the polygraph test considered an unreliable method for specifically detecting lies?",
+      "answerOptions": [
+        {
+          "text": "It measures nonspecific autonomic arousal that can be caused by anxiety or guilt rather than just lying.",
+          "isCorrect": true,
+          "rationale": "The polygraph tracks heart rate and sweating, which occur in many emotional states, making it hard to distinguish a liar from an anxious innocent."
+        },
+        {
+          "text": "It can only detect changes in the parasympathetic nervous system.",
+          "isCorrect": false,
+          "rationale": "Polygraphs primarily track sympathetic activation, which is the 'fight-or-flight' response associated with stress."
+        },
+        {
+          "text": "It requires the participant to have an intact cerebral cortex to function.",
+          "isCorrect": false,
+          "rationale": "The physiological variables measured are involuntary autonomic responses, not dependent on conscious cortical control."
+        },
+        {
+          "text": "The traces recorded by the device are only accurate 10% of the time.",
+          "isCorrect": false,
+          "rationale": "The traces themselves accurately record data; the issue lies in the interpretation, with research suggesting an overall accuracy of about 65%."
+        }
+      ],
+      "hint": "Think about how different emotions like fear, anger, and anxiety share similar physical 'symptoms'."
+    },
+    {
+      "question": "Facial expressions like the 'play face' in nonhuman primates are considered homologous to which human emotional expression?",
+      "answerOptions": [
+        {
+          "text": "Laughing",
+          "isCorrect": true,
+          "rationale": "The play face in primates, often seen during tickling or rough play, is structurally and functionally similar to human laughter."
+        },
+        {
+          "text": "Crying",
+          "isCorrect": false,
+          "rationale": "Crying is generally associated with distress or sadness, which is the opposite context of the play face."
+        },
+        {
+          "text": "Baring teeth in anger",
+          "isCorrect": false,
+          "rationale": "The 'tense mouth' is more closely related to anger, while baring teeth in a grin often signals submission in some species."
+        },
+        {
+          "text": "Surprise",
+          "isCorrect": false,
+          "rationale": "The grimace is often cited as the primate analog for expressions of fear or surprise."
+        }
+      ],
+      "hint": "This expression is typically seen during social play and positive interactions."
+    }
+  ]
+}

@@ -1,0 +1,265 @@
+{
+  "title": "Emotion Quiz",
+  "questions": [
+    {
+      "question": "Patient S.M., who lacks a functional amygdala, does not experience fear in response to external threats like snakes or spiders. However, she experienced a panic attack when forced to breathe air with a high concentration of $CO_{2}$. What does this suggest about the neural mediation of fear?",
+      "answerOptions": [
+        {
+          "text": "The amygdala is primarily responsible for processing external threats, while other systems like the brainstem may detect internal physiological threats.",
+          "isCorrect": true,
+          "rationale": "S.M.'s selective response suggests that the amygdala is not the sole generator of fear and that internal threats like suffocation utilize distinct pathways."
+        },
+        {
+          "text": "The amygdala is only involved in the physiological expression of fear, not the subjective experience of panic.",
+          "isCorrect": false,
+          "rationale": "S.M. lacks both the physiological response and the subjective feeling for external threats, yet experienced both during the $CO_{2}$ challenge."
+        },
+        {
+          "text": "Higher cortical processing is required to interpret internal threats, whereas the amygdala handles subconscious 'low road' stimuli.",
+          "isCorrect": false,
+          "rationale": "The $CO_{2}$ response is likely mediated by more primitive subcortical or brainstem structures rather than higher cortical integration."
+        },
+        {
+          "text": "The sympathetic nervous system can trigger fear independently of any central nervous system structures when blood acidity changes.",
+          "isCorrect": false,
+          "rationale": "While the sympathetic system is involved in the 'fight-or-flight' response, the detection of internal threats still requires central brain mechanisms."
+        }
+      ],
+      "hint": "Consider the difference between a predator in the environment and a lack of oxygen in the blood."
+    },
+    {
+      "question": "Which theory of emotion posits that the specific pattern of autonomic arousal we experience actually precedes and triggers the subjective feeling of an emotion?",
+      "answerOptions": [
+        {
+          "text": "James-Lange theory",
+          "isCorrect": true,
+          "rationale": "This theory argues that we experience fear because we perceive the bodily activity triggered by dangerous conditions."
+        },
+        {
+          "text": "Cannon-Bard theory",
+          "isCorrect": false,
+          "rationale": "This model suggests that the cerebral cortex simultaneously decides on the emotional experience and activates the autonomic nervous system."
+        },
+        {
+          "text": "Cognitive attribution theory",
+          "isCorrect": false,
+          "rationale": "This theory suggests that emotion results from an interaction between nonspecific arousal and a cognitive assessment of the context."
+        },
+        {
+          "text": "Folk psychology",
+          "isCorrect": false,
+          "rationale": "Traditional 'folk wisdom' assumes that the subjective emotion occurs first and subsequently causes the bodily reaction."
+        }
+      ],
+      "hint": "Think of the model that 'turns folk notion on its head' by putting the bodily response before the feeling."
+    },
+    {
+      "question": "In the Schachter and Singer experiment involving epinephrine injections, why did some participants report feeling angry while others felt elated despite receiving the same drug?",
+      "answerOptions": [
+        {
+          "text": "They attributed their nonspecific physiological arousal to the emotional cues provided by the behavior of a confederate.",
+          "isCorrect": true,
+          "rationale": "The cognitive attribution model states that our assessment of the social and physical context determines which emotional label we apply to arousal."
+        },
+        {
+          "text": "The dose of epinephrine varied based on the participant's body weight, leading to different intensities of the same emotion.",
+          "isCorrect": false,
+          "rationale": "The study focused on the cognitive interpretation of the same drug-induced state rather than dosage variations."
+        },
+        {
+          "text": "Some participants had a naturally higher individual response stereotypy for positive emotions.",
+          "isCorrect": false,
+          "rationale": "Individual response stereotypy refers to consistent physiological patterns across different situations, not the choice of emotional label based on context."
+        },
+        {
+          "text": "The sympathetic nervous system produced different profiles of heart rate and blood pressure for each participant.",
+          "isCorrect": false,
+          "rationale": "The theory assumes the physiological arousal from epinephrine is relatively nonspecific and does not specify the emotion's quality."
+        }
+      ],
+      "hint": "Focus on the role of the other person in the room during the experiment."
+    },
+    {
+      "question": "Research into individual response stereotypy found that infants classified as 'high reactives' to stimuli like rubbing alcohol were more likely to develop which of the following as adults?",
+      "answerOptions": [
+        {
+          "text": "Social anxiety and phobias",
+          "isCorrect": true,
+          "rationale": "High reactives showed exaggerated amygdala activation and a lifelong tendency towards shyness and increased vigilance for danger."
+        },
+        {
+          "text": "Psychopathic personality traits",
+          "isCorrect": false,
+          "rationale": "Psychopathy is typically associated with diminished emotional reactivity and empathy, the opposite of the high-reactive profile."
+        },
+        {
+          "text": "Parkinson's disease",
+          "isCorrect": false,
+          "rationale": "While Parkinson's can involve facial masking, it is a neurodegenerative motor disorder not predicted by infant emotional reactivity."
+        },
+        {
+          "text": "Hypersexuality and oral tendencies",
+          "isCorrect": false,
+          "rationale": "These are symptoms of Kl\\\"uver-Bucy syndrome, which results from bilateral amygdala damage rather than innate high reactivity."
+        }
+      ],
+      "hint": "Recall the long-term emotional consequences of being easily upset by sudden cold sensations as a baby."
+    },
+    {
+      "question": "Which cranial nerve is primarily responsible for the superficial muscles involved in changing facial expressions, such as wrinkling the forehead or raising the eyebrows?",
+      "answerOptions": [
+        {
+          "text": "Cranial nerve $VII$ (Facial nerve)",
+          "isCorrect": true,
+          "rationale": "The facial nerve innervates the superficial muscles that attach to the skin to alter the shape of facial features."
+        },
+        {
+          "text": "Cranial nerve $V$ (Trigeminal nerve)",
+          "isCorrect": false,
+          "rationale": "The motor branch of the trigeminal nerve primarily controls the deep muscles used for jaw movement and chewing."
+        },
+        {
+          "text": "Cranial nerve $X$ (Vagus nerve)",
+          "isCorrect": false,
+          "rationale": "The vagus nerve is a major component of the parasympathetic nervous system and does not control facial expression muscles."
+        },
+        {
+          "text": "Cranial nerve $II$ (Optic nerve)",
+          "isCorrect": false,
+          "rationale": "The optic nerve is a purely sensory nerve responsible for transmitting visual information from the retina to the brain."
+        }
+      ],
+      "hint": "One nerve controls the skin-attached muscles while the other controls the bone-attached jaw muscles."
+    },
+    {
+      "question": "When studying fear conditioning in mice using two-photon excitation microscopy, what physical change was observed in the frontal cortex neurons of mice that successfully learned to freeze in response to a tone?",
+      "answerOptions": [
+        {
+          "text": "An increased elimination of existing dendritic spines",
+          "isCorrect": true,
+          "rationale": "The elimination of these spines and their associated synapses was positively correlated with the strength of the fear response."
+        },
+        {
+          "text": "A rapid proliferation of new dendritic spines",
+          "isCorrect": false,
+          "rationale": "New spine formation was actually associated with the process of extinction (unlearning), not the initial fear conditioning."
+        },
+        {
+          "text": "The migration of microglia to the basolateral amygdala",
+          "isCorrect": false,
+          "rationale": "While neuroinflammation can occur, the specific structural change noted in the 'Cutting Edge' section involved cortical dendritic spines."
+        },
+        {
+          "text": "A decrease in the diameter of the medial forebrain bundle",
+          "isCorrect": false,
+          "rationale": "The medial forebrain bundle is associated with reward and self-stimulation, not the synaptic pruning seen in fear learning."
+        }
+      ],
+      "hint": "The structural change involves the loss of specific contact points on the dendrites."
+    },
+    {
+      "question": "According to the neurological model of fear, sensory information reaches the amygdala via two pathways. What is the primary characteristic of the 'low road' pathway?",
+      "answerOptions": [
+        {
+          "text": "It bypasses conscious processing to allow for immediate, unfiltered emotional reactions.",
+          "isCorrect": true,
+          "rationale": "The 'low road' involves a direct projection from the thalamus to the amygdala, prioritizing speed over detailed analysis."
+        },
+        {
+          "text": "It routes information through the sensory cortex to ensure a fine-grained, integrated response.",
+          "isCorrect": false,
+          "rationale": "Routing through the sensory cortex is a feature of the 'high road,' which is slower and involves conscious processing."
+        },
+        {
+          "text": "It is responsible for observational fear learning through social transmission.",
+          "isCorrect": false,
+          "rationale": "Observational learning involves the prefrontal cortex and anterior cingulate, which are part of higher-level cognitive circuits."
+        },
+        {
+          "text": "It exclusively carries information about internal threats like low blood oxygen.",
+          "isCorrect": false,
+          "rationale": "The 'low road' refers to the rapid processing of external sensory stimuli, such as a sudden sound or sight."
+        }
+      ],
+      "hint": "Think about the pathway that values speed and survival over accuracy and detail."
+    },
+    {
+      "question": "Aggressive behavior in many species is modulated by the ventromedial hypothalamus ($VMH$). What occurs when researchers optogenetically stimulate this region in a male mouse currently mounting a receptive female?",
+      "answerOptions": [
+        {
+          "text": "The male will stop the mating behavior and begin attacking the female.",
+          "isCorrect": true,
+          "rationale": "The $VMH$ acts as a neural switch that, when activated, can trigger an immediate transition from reproductive to aggressive behavior."
+        },
+        {
+          "text": "The male will exhibit hypersexuality and attempt to mount multiple targets.",
+          "isCorrect": false,
+          "rationale": "Hypersexuality is a hallmark of Kl\\\"uver-Bucy syndrome (amygdala damage), not specific $VMH$ stimulation."
+        },
+        {
+          "text": "The male will immediately freeze in place due to the activation of the central gray.",
+          "isCorrect": false,
+          "rationale": "Freezing behavior is a fear response mediated by the central gray (periaqueductal gray), whereas $VMH$ stimulation triggers active aggression."
+        },
+        {
+          "text": "The male will show a marked increase in circulating testosterone and $5-HIAA$ levels.",
+          "isCorrect": false,
+          "rationale": "While these chemicals relate to aggression, optogenetic stimulation is a method of triggering neural firing, not a direct hormonal injection."
+        }
+      ],
+      "hint": "Consider how this hypothalamic region functions as a 'switch' between different social behaviors."
+    },
+    {
+      "question": "The relationship between testosterone and aggression in humans is complex. Current research suggests that testosterone levels may be more accurately associated with which of the following rather than just physical violence?",
+      "answerOptions": [
+        {
+          "text": "Behaviors related to social dominance and status-seeking",
+          "isCorrect": true,
+          "rationale": "Testosterone rises in winners of non-physical competitions (like chess) and encourages proactive behaviors to protect social standing."
+        },
+        {
+          "text": "The frequency of 'reactive' defensive attacks in response to external threats",
+          "isCorrect": false,
+          "rationale": "Reactive aggression is primarily a defensive program, whereas testosterone is more closely linked to proactive 'offense' strategies."
+        },
+        {
+          "text": "The total volume of the medial forebrain bundle and nucleus accumbens",
+          "isCorrect": false,
+          "rationale": "These regions are part of the reward circuitry and are not the primary anatomical correlates of circulating testosterone levels."
+        },
+        {
+          "text": "The density of serotonin receptors in the midbrain raphe nuclei",
+          "isCorrect": false,
+          "rationale": "Serotonin generally inhibits aggression, and while it interacts with other systems, it is distinct from the androgenic status-seeking model."
+        }
+      ],
+      "hint": "Think about why chess players or sports fans experience changes in testosterone without engaging in physical combat."
+    },
+    {
+      "question": "Which of the following is a primary reason why polygraph tests are considered unreliable by many scientists?",
+      "answerOptions": [
+        {
+          "text": "All negative emotions, such as fear, anger, and anxiety, elicit similar patterns of autonomic arousal.",
+          "isCorrect": true,
+          "rationale": "Because the polygraph cannot distinguish between the stress of being falsely accused and the stress of lying, it has a high rate of 'false positives'."
+        },
+        {
+          "text": "The test measures brain waves like $EEG$ rather than the physiological signs of the sympathetic nervous system.",
+          "isCorrect": false,
+          "rationale": "The polygraph specifically measures autonomic variables like heart rate and skin conductance, not direct brain activity."
+        },
+        {
+          "text": "Individuals with Bell's palsy are unable to produce the micro-expressions the device needs to record.",
+          "isCorrect": false,
+          "rationale": "Bell's palsy affects facial muscles, but the polygraph records internal autonomic responses that are largely independent of facial movement."
+        },
+        {
+          "text": "Most people can easily suppress their heart rate and sweating through conscious effort alone.",
+          "isCorrect": false,
+          "rationale": "Autonomic responses are involuntary and difficult to control; unreliability stems from the lack of emotion-specific physiological profiles."
+        }
+      ],
+      "hint": "Consider if a racing heart always means someone is lying, or if it could represent a different feeling."
+    }
+  ]
+}

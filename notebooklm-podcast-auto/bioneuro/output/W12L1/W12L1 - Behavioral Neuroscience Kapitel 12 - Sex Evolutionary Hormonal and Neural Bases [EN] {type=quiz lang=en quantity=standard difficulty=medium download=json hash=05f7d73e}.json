@@ -1,0 +1,317 @@
+{
+  "title": "Reproduction Quiz",
+  "questions": [
+    {
+      "question": "In the four stages of reproductive behavior, which term specifically describes behaviors like ear wiggling in a female rat that advertise a readiness to mate?",
+      "answerOptions": [
+        {
+          "text": "Sexual attraction",
+          "isCorrect": false,
+          "rationale": "This stage is the initial bringing together of mates, often involving ornaments or species-typical traits, rather than specific behavioral invitations."
+        },
+        {
+          "text": "Proceptive behavior",
+          "isCorrect": true,
+          "rationale": "Proceptive behaviors are species-specific appetitive actions that establish or maintain sexual interaction and advertise readiness."
+        },
+        {
+          "text": "Lordosis",
+          "isCorrect": false,
+          "rationale": "This refers to the specific receptive posture adopted during the actual act of copulation, rather than the preceding appetitive phase."
+        },
+        {
+          "text": "Postcopulatory behavior",
+          "isCorrect": false,
+          "rationale": "This stage occurs after the sex act and includes varied behaviors like grooming, parental care, or copulatory locks."
+        }
+      ],
+      "hint": "Think about the stage that bridges initial attraction and the physical act of copulation."
+    },
+    {
+      "question": "What phenomenon describes the resumption of sexual activity in a seemingly satiated animal when introduced to a novel partner?",
+      "answerOptions": [
+        {
+          "text": "The Bruce effect",
+          "isCorrect": false,
+          "rationale": "This refers to the termination of pregnancy in a female when exposed to the urine of a new male."
+        },
+        {
+          "text": "The Coolidge effect",
+          "isCorrect": true,
+          "rationale": "This effect demonstrates how a new partner can reduce the refractory period, allowing a male to take advantage of new reproductive opportunities."
+        },
+        {
+          "text": "Refractory period",
+          "isCorrect": false,
+          "rationale": "This is the time following copulation during which an individual cannot recommence mating, the opposite of the resuming behavior."
+        },
+        {
+          "text": "Sexual selection",
+          "isCorrect": false,
+          "rationale": "This is an evolutionary pressure exerted by the opposite sex over generations to favor certain traits."
+        }
+      ],
+      "hint": "This effect is named after a historical anecdote involving a US President and his wife."
+    },
+    {
+      "question": "In rodent sexual differentiation, what is the role of the blood protein $\\alpha$-fetoprotein?",
+      "answerOptions": [
+        {
+          "text": "It converts testosterone into estradiol within the brain.",
+          "isCorrect": false,
+          "rationale": "This conversion is performed by the enzyme aromatase, not a transport protein."
+        },
+        {
+          "text": "It binds to testosterone to prevent it from entering the male brain.",
+          "isCorrect": false,
+          "rationale": "The protein does not bind androgens, which is why testosterone can freely reach the brain to masculinize it."
+        },
+        {
+          "text": "It binds maternal estrogens to protect the female fetus from masculinization.",
+          "isCorrect": true,
+          "rationale": "By sequestering estrogens in the bloodstream, it prevents them from crossing the blood-brain barrier and affecting the developing female brain."
+        },
+        {
+          "text": "It induces the development of the wolffian duct system.",
+          "isCorrect": false,
+          "rationale": "The wolffian system is promoted directly by testosterone secreted from the testes."
+        }
+      ],
+      "hint": "Consider why maternal hormones don't accidentally masculinize female offspring."
+    },
+    {
+      "question": "Which hypothalamic region is considered the 'final common pathway' for male copulatory behavior, coordinating mounting and intromission?",
+      "answerOptions": [
+        {
+          "text": "Ventromedial hypothalamus (VMH)",
+          "isCorrect": false,
+          "rationale": "While involved in sexual behavior, the VMH is specifically crucial for the female lordosis response rather than male mounting."
+        },
+        {
+          "text": "Medial preoptic area (mPOA)",
+          "isCorrect": true,
+          "rationale": "The mPOA integrates hormonal and sensory information to coordinate the motor patterns of male copulation across many species."
+        },
+        {
+          "text": "Periaqueductal gray (PAG)",
+          "isCorrect": false,
+          "rationale": "The PAG is a midbrain region that acts as a relay in the female lordosis circuit, descending from the VMH."
+        },
+        {
+          "text": "Medial amygdala",
+          "isCorrect": false,
+          "rationale": "This area processes pheromonal information and projects to the mPOA, acting as a sensory relay rather than the final motor coordinator."
+        }
+      ],
+      "hint": "This area is full of steroid-sensitive neurons and lesions here abolish male copulation without affecting motivation."
+    },
+    {
+      "question": "Which condition is characterized by an $XY$ genotype and internal testes, but a phenotypic female appearance due to dysfunctional androgen receptors?",
+      "answerOptions": [
+        {
+          "text": "Turner's syndrome",
+          "isCorrect": false,
+          "rationale": "This condition involves a single $X$ chromosome and results in underdeveloped ovaries rather than internal testes."
+        },
+        {
+          "text": "Congenital adrenal hyperplasia (CAH)",
+          "isCorrect": false,
+          "rationale": "This affects $XX$ individuals who are exposed to excess androgens, leading to a partially masculinized phenotype."
+        },
+        {
+          "text": "Androgen insensitivity syndrome (AIS)",
+          "isCorrect": true,
+          "rationale": "Because tissues cannot respond to testosterone, the body develops in a feminine pattern despite the presence of testes and a $Y$ chromosome."
+        },
+        {
+          "text": "$5\\alpha$-reductase deficiency",
+          "isCorrect": false,
+          "rationale": "These individuals can respond to testosterone but lack the metabolite $DHT$, leading to ambiguous genitalia until puberty."
+        }
+      ],
+      "hint": "In this syndrome, the 'blueprint' for maleness is present, but the 'receiver' for the signal is broken."
+    },
+    {
+      "question": "The conversion of testosterone into dihydrotestosterone ($DHT$) by the enzyme $5\\alpha$-reductase is essential for which process?",
+      "answerOptions": [
+        {
+          "text": "The regression of the m\u00fcllerian ducts",
+          "isCorrect": false,
+          "rationale": "This regression is caused by anti-m\u00fcllerian hormone (AMH), a protein secreted by the testes."
+        },
+        {
+          "text": "Masculinization of the external genitalia",
+          "isCorrect": true,
+          "rationale": "Local conversion to $DHT$ is required to induce the bipotential genital tissues to form the penis and scrotum."
+        },
+        {
+          "text": "Development of the wolffian ducts into the vas deferens",
+          "isCorrect": false,
+          "rationale": "The wolffian system is masculinized by testosterone itself, not its $5\\alpha$-reduced metabolite."
+        },
+        {
+          "text": "Aromatization of androgens into estrogens in the brain",
+          "isCorrect": false,
+          "rationale": "Aromatization is a different chemical pathway involving the enzyme aromatase."
+        }
+      ],
+      "hint": "Think about the specific structures that are ambiguous in 'guevedoces' until the pubertal surge of testosterone."
+    },
+    {
+      "question": "What serves as the primary mechanism for the survival of motor neurons in the spinal nucleus of the bulbocavernosus (SNB) in male rats?",
+      "answerOptions": [
+        {
+          "text": "Direct action of estradiol on the spinal cord",
+          "isCorrect": false,
+          "rationale": "Aromatization is not required for SNB development; androgen receptors are the key mediators."
+        },
+        {
+          "text": "Social stimulation from the mother's licking",
+          "isCorrect": false,
+          "rationale": "While social licking modulates the system, the fundamental survival mechanism is hormonal action on target tissues."
+        },
+        {
+          "text": "Trophic factors provided by androgen-spared muscles",
+          "isCorrect": true,
+          "rationale": "Androgens act on the bulbocavernosus muscles to prevent their death, which then provide signals to the motor neurons to survive."
+        },
+        {
+          "text": "The expression of the $SRY$ gene in the spinal cord",
+          "isCorrect": false,
+          "rationale": "The $SRY$ gene acts on the indifferent gonads to form testes; it does not directly spare spinal neurons."
+        }
+      ],
+      "hint": "This is an indirect effect where the target tissue helps preserve its nervous system connections."
+    },
+    {
+      "question": "Which statement accurately describes the neural activation patterns during human orgasm as seen in functional imaging?",
+      "answerOptions": [
+        {
+          "text": "Activation is strictly limited to the hypothalamus.",
+          "isCorrect": false,
+          "rationale": "Orgasm involves widespread activation across dozens of brain sites, including cortical and subcortical regions."
+        },
+        {
+          "text": "The dopamine-based reward system, including the nucleus accumbens, is active.",
+          "isCorrect": true,
+          "rationale": "Orgasm activates subcortical sites in the basal forebrain associated with pleasure and reward, similar to drug-induced states."
+        },
+        {
+          "text": "Men and women show identical brain activity throughout all phases of arousal.",
+          "isCorrect": false,
+          "rationale": "Imaging suggests substantially different networks are active in men\u2019s and women\u2019s brains prior to the climax of orgasm."
+        },
+        {
+          "text": "The orbitofrontal cortex shows a significant decrease in activity.",
+          "isCorrect": false,
+          "rationale": "There is actually a pronounced increase in activity in the orbitofrontal cortex, suggesting an alteration of consciousness."
+        }
+      ],
+      "hint": "Consider the link between sexual climax and other highly pleasurable, reinforcing experiences."
+    },
+    {
+      "question": "In the parabiotic exchange experiment involving rats, why did the non-pregnant female show maternal behavior?",
+      "answerOptions": [
+        {
+          "text": "She habituated to the smell of the pups over several days.",
+          "isCorrect": false,
+          "rationale": "While habituation can induce behavior in virgins, the parabiotic study specifically looked at rapid hormonal induction."
+        },
+        {
+          "text": "She was exposed to the pregnant partner's mix of estrogens, progesterone, and prolactin.",
+          "isCorrect": true,
+          "rationale": "Because the rats shared a blood supply, the hormones of pregnancy from the partner organized the subject's brain for maternal care."
+        },
+        {
+          "text": "She received sensory feedback from the partner's nest-building.",
+          "isCorrect": false,
+          "rationale": "The study's key finding was that blood-borne factors, not just behavioral observation, triggered the change."
+        },
+        {
+          "text": "Her medial amygdala was lesioned by the surgical procedure.",
+          "isCorrect": false,
+          "rationale": "Lesioning the amygdala does induce maternal behavior by removing pup-odor aversion, but this was not the mechanism of the parabiotic study."
+        }
+      ],
+      "hint": "The experiment focused on the shared circulatory system between two individuals."
+    },
+    {
+      "question": "According to research on the 'Bruce effect,' what happens when a pregnant female prairie vole is exposed to the urine of a novel male?",
+      "answerOptions": [
+        {
+          "text": "She becomes more aggressive to protect the litter.",
+          "isCorrect": false,
+          "rationale": "The Bruce effect describes a reproductive failure rather than a change in protective behavior."
+        },
+        {
+          "text": "The pregnancy is terminated and the fetuses are resorbed.",
+          "isCorrect": true,
+          "rationale": "This allows the female to potentially begin a new litter with the new male, which may be an evolutionary strategy for survival."
+        },
+        {
+          "text": "She immediately enters a state of copulatory lock.",
+          "isCorrect": false,
+          "rationale": "Copulatory lock is a postcopulatory physical joining of the male and female, not a pheromonal response to new males."
+        },
+        {
+          "text": "Her $5\\alpha$-reductase levels increase significantly.",
+          "isCorrect": false,
+          "rationale": "This enzyme is involved in androgen metabolism, not the termination of pregnancy via pheromonal pathways."
+        }
+      ],
+      "hint": "This phenomenon is a pheromonal strategy to 'make the best of a bad situation' when the original mate is absent."
+    },
+    {
+      "question": "What distinguishes organizational effects of hormones from activational effects?",
+      "answerOptions": [
+        {
+          "text": "Activational effects are permanent, whereas organizational effects are transient.",
+          "isCorrect": false,
+          "rationale": "This is the reverse; organizational effects involve structural changes that are usually permanent."
+        },
+        {
+          "text": "Organizational effects only occur in adulthood.",
+          "isCorrect": false,
+          "rationale": "Organizational effects typically occur during specific sensitive periods in early development or puberty."
+        },
+        {
+          "text": "Organizational effects occur during sensitive periods and result in permanent structural changes.",
+          "isCorrect": true,
+          "rationale": "These effects mold the brain and body into masculine or feminine patterns, which are then 'activated' by later hormone exposure."
+        },
+        {
+          "text": "Activational effects involve the $SRY$ gene directly.",
+          "isCorrect": false,
+          "rationale": "The $SRY$ gene is part of the initial sex determination process, not the temporary behavioral activation in adults."
+        }
+      ],
+      "hint": "One sets up the 'hardware' of the brain, while the other 'turns on' the software."
+    },
+    {
+      "question": "What did the research by Remedios et al. (2017) conclude about the 'instinctive' nature of mating and aggression in male mice?",
+      "answerOptions": [
+        {
+          "text": "The circuits are fully hardwired and do not require social experience.",
+          "isCorrect": false,
+          "rationale": "The study showed that inexperienced males do not distinguish between male and female intruders at the level of the VMH."
+        },
+        {
+          "text": "Social and sexual experience is required to fine-tune the neuronal ensembles in the VMH.",
+          "isCorrect": true,
+          "rationale": "Experience causes the activation patterns in the VMH to diverge, allowing for appropriate responses to different sexes."
+        },
+        {
+          "text": "Aggression is controlled by the mPOA, while mating is controlled by the VMH.",
+          "isCorrect": false,
+          "rationale": "Both behaviors involve the VMH, specifically estrogen receptor-containing neurons that determine attack or mount responses."
+        },
+        {
+          "text": "Only female mice require experience to develop appropriate mating circuits.",
+          "isCorrect": false,
+          "rationale": "The study focused on how male mice refine their circuits through interaction."
+        }
+      ],
+      "hint": "Consider the difference in VMH firing patterns between a 'virgin' male and one with social experience."
+    }
+  ]
+}

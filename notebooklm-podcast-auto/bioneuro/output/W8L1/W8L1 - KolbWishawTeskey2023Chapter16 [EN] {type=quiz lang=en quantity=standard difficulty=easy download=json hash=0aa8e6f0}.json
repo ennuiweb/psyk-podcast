@@ -1,0 +1,395 @@
+{
+  "title": "Neuroscience Quiz",
+  "questions": [
+    {
+      "question": "What is the primary objective of using virtual reality (VR) exposure therapy for individuals suffering from posttraumatic stress disorder (PTSD)?",
+      "answerOptions": [
+        {
+          "text": "To provide a controlled environment where patients can relive traumatic events to develop coping strategies.",
+          "isCorrect": true,
+          "rationale": "This approach allows for gradual desensitization and the extinguishing of emotional responses to trauma through a simulated immersion experience."
+        },
+        {
+          "text": "To replace traumatic memories with pleasant virtual experiences like children playing.",
+          "isCorrect": false,
+          "rationale": "While simulations might start with calm scenes, the goal is not replacement but gradual exposure to the specific traumatic stressors themselves."
+        },
+        {
+          "text": "To physically repair damaged neural circuits in the amygdala using light stimulation.",
+          "isCorrect": false,
+          "rationale": "VR is a behavioral/cognitive intervention that changes brain function through experience, not a direct physical or surgical repair of tissue."
+        },
+        {
+          "text": "To identify the specific genetic mutations that caused the individual to develop PTSD.",
+          "isCorrect": false,
+          "rationale": "VR is a treatment modality for symptoms, whereas genetic identification is a diagnostic or research-oriented goal."
+        }
+      ],
+      "hint": "Consider how repeating an experience in a safe, simulated environment might change a person's emotional reaction over time."
+    },
+    {
+      "question": "Phenylketonuria (PKU) is a behavioral disorder caused by elevated levels of phenylalanine. How is this condition primarily treated to prevent cognitive disability?",
+      "answerOptions": [
+        {
+          "text": "Through a strict diet that restricts the intake of specific amino acids found in high-protein foods.",
+          "isCorrect": true,
+          "rationale": "Restricting dietary phenylalanine prevents the toxic buildup in the brain that results from the enzyme defect."
+        },
+        {
+          "text": "By administering daily doses of dopamine and norepinephrine to compensate for the defect.",
+          "isCorrect": false,
+          "rationale": "While phenylalanine is a precursor to these neurotransmitters, the primary treatment is preventing its accumulation via diet rather than replacing the end products."
+        },
+        {
+          "text": "Through gene therapy aimed at repairing the autosomal dominant mutation in the $PAH$ gene.",
+          "isCorrect": false,
+          "rationale": "PKU is an autosomal recessive disorder, and while gene therapy is an area of research, the standard established treatment is dietary management."
+        },
+        {
+          "text": "By using systematic desensitization to help the child adjust to different odors and skin rashes.",
+          "isCorrect": false,
+          "rationale": "Desensitization is a behavioral therapy for anxiety or phobias, whereas PKU's symptoms are physiological results of a metabolic defect."
+        }
+      ],
+      "hint": "Think about how a metabolic disorder involving a substance found in food might be managed by controlling intake."
+    },
+    {
+      "question": "How does the Research Domain Criteria (RDoc) classification system differ from the Diagnostic and Statistical Manual of Mental Disorders (DSM)?",
+      "answerOptions": [
+        {
+          "text": "The RDoc focuses on understanding basic biological functions and dysfunctions of brain circuits rather than just symptoms.",
+          "isCorrect": true,
+          "rationale": "The RDoc aims to shift the focus toward underlying biological causes and neural circuitry to understand the nature of mental health and illness."
+        },
+        {
+          "text": "The RDoc is primarily intended to provide a diagnostic guide for general practitioners.",
+          "isCorrect": false,
+          "rationale": "The RDoc is a research framework rather than a clinical tool meant to replace the DSM for standard diagnosis."
+        },
+        {
+          "text": "The RDoc categorizes disorders based on observable behavioral clusters like 'Anxiety' or 'Mood' disorders.",
+          "isCorrect": false,
+          "rationale": "This describes the categorical approach of the DSM, whereas RDoc uses units of analysis like molecules, cells, and circuits."
+        },
+        {
+          "text": "The RDoc ignores genetic and epigenetic factors to focus purely on social environments.",
+          "isCorrect": false,
+          "rationale": "RDoc explicitly includes biological levels of analysis, including genes and molecules."
+        }
+      ],
+      "hint": "One system looks at clinical symptoms, while the other looks at the biological 'why' across different levels of the brain."
+    },
+    {
+      "question": "In the hypothalamic-pituitary-adrenal (HPA) axis, what is the primary hormone released by the adrenal gland in response to stress that can lead to neuroinflammation if levels are excessive?",
+      "answerOptions": [
+        {
+          "text": "Cortisol",
+          "isCorrect": true,
+          "rationale": "Cortisol is the final product of the HPA axis that helps the body deal with stress but can cause damage if its release is chronic and uncontrolled."
+        },
+        {
+          "text": "Dopamine",
+          "isCorrect": false,
+          "rationale": "Dopamine is a neurotransmitter involved in reward and movement, but it is not the primary hormone of the adrenal cortex in the HPA stress response."
+        },
+        {
+          "text": "Adrenocorticotropic hormone (ACTH)",
+          "isCorrect": false,
+          "rationale": "ACTH is released by the pituitary gland to stimulate the adrenal gland, rather than being the final hormone released by the adrenal gland itself."
+        },
+        {
+          "text": "Corticotrophin-releasing hormone (CRH)",
+          "isCorrect": false,
+          "rationale": "CRH is the initial trigger released by the hypothalamus to start the HPA cascade."
+        }
+      ],
+      "hint": "Look for the glucocorticoid that serves as the final messenger in the stress response circuit involving the adrenal cortex."
+    },
+    {
+      "question": "Which neuroanatomical feature is commonly cited as a correlate of schizophrenia, specifically visible in brain imaging?",
+      "answerOptions": [
+        {
+          "text": "Enlarged ventricles",
+          "isCorrect": true,
+          "rationale": "The enlargement of the fluid-filled spaces in the brain suggests a loss of surrounding neural tissue in individuals with schizophrenia."
+        },
+        {
+          "text": "Increased volume of the prefrontal cortex.",
+          "isCorrect": false,
+          "rationale": "Schizophrenia is typically associated with a decrease in the volume and metabolic activity of the frontal lobes, not an increase."
+        },
+        {
+          "text": "A thicker-than-normal myelin sheath around hippocampal neurons.",
+          "isCorrect": false,
+          "rationale": "Schizophrenia is associated with disorganized neuronal orientation and structural deficits rather than excessive myelination."
+        },
+        {
+          "text": "The absence of $D_2$ receptors in the striatum.",
+          "isCorrect": false,
+          "rationale": "The dopamine hypothesis actually suggests an increase in striatal $D_2$ receptors or overactivity in this system."
+        }
+      ],
+      "hint": "Consider what happens to the fluid-filled cavities in the center of the brain if the surrounding gray matter begins to thin or atrophy."
+    },
+    {
+      "question": "What is the fundamental difference between an ischemic stroke and a hemorrhagic stroke?",
+      "answerOptions": [
+        {
+          "text": "An ischemic stroke is caused by a blockage in a blood vessel, while a hemorrhagic stroke results from a vessel bursting.",
+          "isCorrect": true,
+          "rationale": "Ischemia refers to lack of blood flow due to obstruction, whereas hemorrhage refers to bleeding into the brain tissue."
+        },
+        {
+          "text": "Hemorrhagic strokes are always mild, while ischemic strokes are always fatal.",
+          "isCorrect": false,
+          "rationale": "The severity of either type depends on the location and extent of the damage, and both can be life-threatening."
+        },
+        {
+          "text": "Ischemic strokes only affect the spinal cord, while hemorrhagic strokes only affect the brain.",
+          "isCorrect": false,
+          "rationale": "Both terms describe mechanisms of vascular interruption that primarily affect the brain's blood supply."
+        },
+        {
+          "text": "An ischemic stroke is caused by neuroinflammation, whereas a hemorrhagic stroke is caused by prions.",
+          "isCorrect": false,
+          "rationale": "Strokes are vascular events, whereas neuroinflammation and prions are different types of pathological processes."
+        }
+      ],
+      "hint": "One involves a 'clog' and the other involves a 'leak' in the plumbing of the brain."
+    },
+    {
+      "question": "Multiple sclerosis (MS) is classified as an autoimmune disease. What is the specific target of the immune system's attack in this condition?",
+      "answerOptions": [
+        {
+          "text": "The myelin sheath surrounding axons in the central nervous system.",
+          "isCorrect": true,
+          "rationale": "MS involves the destruction of myelin, which disrupts the transmission of neural impulses."
+        },
+        {
+          "text": "The dopamine-producing neurons in the substantia nigra.",
+          "isCorrect": false,
+          "rationale": "The loss of dopaminergic neurons in the substantia nigra is the hallmark of Parkinson's disease, not MS."
+        },
+        {
+          "text": "The accumulation of amyloid plaques in the cerebral cortex.",
+          "isCorrect": false,
+          "rationale": "Amyloid plaques are characteristic of Alzheimer's disease, whereas MS focuses on white matter and demyelination."
+        },
+        {
+          "text": "The $PAH$ enzyme responsible for breaking down phenylalanine.",
+          "isCorrect": false,
+          "rationale": "This enzyme deficiency is the cause of the metabolic disorder PKU, not an autoimmune condition like MS."
+        }
+      ],
+      "hint": "Focus on the insulating layer of the neurons that, when damaged, leads to patches or 'lesions' visible on an MRI."
+    },
+    {
+      "question": "What are the two principal neuroanatomical changes identified in the brains of individuals with Alzheimer's disease?",
+      "answerOptions": [
+        {
+          "text": "Amyloid plaques and neurofibrillary tangles.",
+          "isCorrect": true,
+          "rationale": "These protein accumulations (amyloid beta and tau) are the diagnostic markers for the cortical degeneration seen in Alzheimer's."
+        },
+        {
+          "text": "Lewy bodies and loss of substantia nigra neurons.",
+          "isCorrect": false,
+          "rationale": "These are the primary pathological markers for Parkinson's disease."
+        },
+        {
+          "text": "Enlarged ventricles and increased dopamine metabolites.",
+          "isCorrect": false,
+          "rationale": "While ventricles may enlarge due to atrophy, increased dopamine is more closely associated with schizophrenia research."
+        },
+        {
+          "text": "Demyelination and the presence of anti-myelin antibodies.",
+          "isCorrect": false,
+          "rationale": "These features define Multiple Sclerosis rather than Alzheimer's disease."
+        }
+      ],
+      "hint": "Think of the 'clumps' of protein between cells and the 'tangles' of protein within the neurons themselves."
+    },
+    {
+      "question": "According to the prion theory, what causes the progressive degeneration seen in disorders like Creutzfeldt-Jakob disease or potentially Parkinson's?",
+      "answerOptions": [
+        {
+          "text": "Abnormally folded proteins that cause other similar proteins to also misfold.",
+          "isCorrect": true,
+          "rationale": "Prions are proteinaceous infectious particles that propagate by inducing conformational changes in healthy proteins, leading to cell death."
+        },
+        {
+          "text": "A viral infection that remains dormant in the spinal cord for decades.",
+          "isCorrect": false,
+          "rationale": "Prions are not viruses; they are misfolded proteins that lack genetic material like DNA or RNA."
+        },
+        {
+          "text": "A sudden drop in Vitamin D levels that triggers an immune response against neurons.",
+          "isCorrect": false,
+          "rationale": "Vitamin D deficiency is explored as a risk factor for MS, but it is not the mechanism described by prion theory."
+        },
+        {
+          "text": "The excessive intake of dietary phenylalanine during adulthood.",
+          "isCorrect": false,
+          "rationale": "Phenylalanine issues are related to the metabolic disorder PKU, which is distinct from prion-based neurodegeneration."
+        }
+      ],
+      "hint": "Consider an agent that isn't a bacterium or a virus, but a 'misfit' protein that forces others to follow its shape."
+    },
+    {
+      "question": "Which surgical intervention involves the permanent implantation of electrodes into the brain to treat disorders like Parkinson's or treatment-resistant depression?",
+      "answerOptions": [
+        {
+          "text": "Deep brain stimulation (DBS)",
+          "isCorrect": true,
+          "rationale": "DBS uses low-voltage electrical currents delivered through implanted electrodes to stimulate or inactivate specific brain regions."
+        },
+        {
+          "text": "Transcranial magnetic stimulation (TMS)",
+          "isCorrect": false,
+          "rationale": "TMS is a noninvasive procedure that uses magnetic coils placed on the scalp, rather than surgically implanted electrodes."
+        },
+        {
+          "text": "Electroconvulsive therapy (ECT)",
+          "isCorrect": false,
+          "rationale": "ECT involves inducing a seizure through electrodes placed on the scalp under anesthesia; it is not a permanent implant."
+        },
+        {
+          "text": "Radiosurgery",
+          "isCorrect": false,
+          "rationale": "Radiosurgery uses targeted X-rays to destroy abnormal tissue without opening the skull and does not involve implants."
+        }
+      ],
+      "hint": "Look for a method where 'deep' indicates the location of the electrodes inside the brain tissue itself."
+    },
+    {
+      "question": "The 'dopamine hypothesis' is most central to the understanding and pharmacological treatment of which disorder?",
+      "answerOptions": [
+        {
+          "text": "Schizophrenia",
+          "isCorrect": true,
+          "rationale": "This hypothesis suggests that symptoms of schizophrenia are related to overactivity or abnormalities in dopamine systems, which is why neuroleptics target dopamine receptors."
+        },
+        {
+          "text": "Multiple Sclerosis",
+          "isCorrect": false,
+          "rationale": "MS is an autoimmune demyelinating disease, not primarily a disorder of the dopamine system."
+        },
+        {
+          "text": "Traumatic Brain Injury",
+          "isCorrect": false,
+          "rationale": "TBI involves physical damage to brain tissue and subsequent ionic and inflammatory cascades, rather than a primary dopamine imbalance."
+        },
+        {
+          "text": "Alzheimer's Disease",
+          "isCorrect": false,
+          "rationale": "The primary neurotransmitter deficit identified in Alzheimer's is acetylcholine, not dopamine."
+        }
+      ],
+      "hint": "Consider the condition where drugs that block $D_2$ receptors are used to reduce hallucinations and delusions."
+    },
+    {
+      "question": "What is the primary diagnostic indicator used to identify and classify the different stages of an epileptic seizure?",
+      "answerOptions": [
+        {
+          "text": "Electroencephalogram (EEG)",
+          "isCorrect": true,
+          "rationale": "The EEG records the highly synchronized neuronal firing that characterizes a seizure, allowing clinicians to see focal or generalized patterns."
+        },
+        {
+          "text": "Magnetic Resonance Imaging (MRI)",
+          "isCorrect": false,
+          "rationale": "While MRI can find structural causes for epilepsy (like a tumor), it does not record the electrical activity of a seizure as it happens."
+        },
+        {
+          "text": "Blood tests for phenylalanine levels.",
+          "isCorrect": false,
+          "rationale": "This test is used for PKU, not for identifying the stages or presence of a seizure."
+        },
+        {
+          "text": "Genetic screening for the $PAH$ gene.",
+          "isCorrect": false,
+          "rationale": "The $PAH$ gene is associated with PKU, not the standard diagnosis of epilepsy."
+        }
+      ],
+      "hint": "Think of the tool that measures the 'electrical storm' of the brain by placing sensors on the scalp."
+    },
+    {
+      "question": "In the context of traumatic brain injury (TBI), what is a 'concussion'?",
+      "answerOptions": [
+        {
+          "text": "A wound to the brain usually resulting from a blow to the head.",
+          "isCorrect": true,
+          "rationale": "A concussion is the most common form of TBI and can occur even without a direct penetration of the skull."
+        },
+        {
+          "text": "A type of stroke caused by a ruptured aneurysm.",
+          "isCorrect": false,
+          "rationale": "A ruptured aneurysm causes a hemorrhagic stroke, which is a vascular event rather than a traumatic impact injury."
+        },
+        {
+          "text": "A chronic condition caused by the accumulation of tau protein.",
+          "isCorrect": false,
+          "rationale": "Chronic traumatic encephalopathy (CTE) is the long-term result of multiple injuries, while a concussion is the acute injury event itself."
+        },
+        {
+          "text": "A behavioral disorder treated with phenylketonuria diet.",
+          "isCorrect": false,
+          "rationale": "Concussions are neurological injuries, whereas PKU is a metabolic genetic disorder."
+        }
+      ],
+      "hint": "This term is often used interchangeably with the most common, mild form of brain injury caused by impact."
+    },
+    {
+      "question": "Which behavioral therapy involves changing a person's self-defeating attitudes and beliefs to help them manage emotional responses to events?",
+      "answerOptions": [
+        {
+          "text": "Cognitive therapy",
+          "isCorrect": true,
+          "rationale": "Cognitive therapy operates on the perspective that thoughts intervene between events and emotions, and changing those thoughts can change the outcome."
+        },
+        {
+          "text": "Behavior modification",
+          "isCorrect": false,
+          "rationale": "Behavior modification focuses on principles of conditioning and reinforcement to change actions, rather than internal belief systems."
+        },
+        {
+          "text": "Systematic desensitization",
+          "isCorrect": false,
+          "rationale": "This is a specific form of behavioral therapy used to extinguish fears through gradual exposure, rather than cognitive restructuring."
+        },
+        {
+          "text": "Physical activity therapy",
+          "isCorrect": false,
+          "rationale": "Physical therapy uses exercise and music to improve mood and brain function through physiological means."
+        }
+      ],
+      "hint": "Focus on the type of therapy that challenges how a person 'thinks' about a situation, like viewing a job loss as an opportunity rather than a failure."
+    },
+    {
+      "question": "What is the defining characteristic of 'posttraumatic growth'?",
+      "answerOptions": [
+        {
+          "text": "The ability to cope with and compensate for deficits resulting from brain injury or disease.",
+          "isCorrect": true,
+          "rationale": "Posttraumatic growth describes the remarkable ability of individuals to adapt and find new meaning or skills after a traumatic event."
+        },
+        {
+          "text": "A condition characterized by diminished motivation and apathy after trauma.",
+          "isCorrect": false,
+          "rationale": "This describes posttraumatic apathy, which is the opposite of the adaptive growth process."
+        },
+        {
+          "text": "The rapid regrowth of neurons in the prefrontal cortex immediately following a stroke.",
+          "isCorrect": false,
+          "rationale": "While neuroplasticity occurs, posttraumatic growth refers to the psychological and behavioral adaptation of the whole person."
+        },
+        {
+          "text": "The genetic resistance to developing PTSD after a stressful life event.",
+          "isCorrect": false,
+          "rationale": "Resistance is a preventative state, whereas posttraumatic growth is a positive change that occurs *after* enduring and coping with trauma."
+        }
+      ],
+      "hint": "Think about the case of Fred Linge or Tommy McHugh, who developed new perspectives or artistic talents after their brain injuries."
+    }
+  ]
+}

@@ -1,0 +1,317 @@
+{
+  "title": "Neuroscience Quiz",
+  "questions": [
+    {
+      "question": "According to the provided material, approximately how many neurons are estimated to be in the human brain?",
+      "answerOptions": [
+        {
+          "text": "$100$ billion",
+          "isCorrect": false,
+          "rationale": "While often cited in older texts, recent research mentioned in the source provides a more specific lower estimate."
+        },
+        {
+          "text": "$86$ billion",
+          "isCorrect": true,
+          "rationale": "This specific figure is cited as the estimated number of nerve cells based on research by Herculano-Houzel."
+        },
+        {
+          "text": "$10$ trillion",
+          "isCorrect": false,
+          "rationale": "This number is closer to the estimated number of synapses rather than individual neurons."
+        },
+        {
+          "text": "$50$ million",
+          "isCorrect": false,
+          "rationale": "This figure is associated with the number of people living with epilepsy in the infographic, not the neuron count."
+        }
+      ],
+      "hint": "Consider the specific figure provided in the 'Brain by Numbers' section of the text."
+    },
+    {
+      "question": "Which research approach in behavioural neuroscience involves manipulating a body structure or function to observe resulting changes in behaviour?",
+      "answerOptions": [
+        {
+          "text": "Behavioural intervention",
+          "isCorrect": false,
+          "rationale": "In this approach, the behaviour is the independent variable, not the bodily structure."
+        },
+        {
+          "text": "Correlation",
+          "isCorrect": false,
+          "rationale": "This method measures how much a body measure varies with a behavioural measure without direct manipulation."
+        },
+        {
+          "text": "Somatic intervention",
+          "isCorrect": true,
+          "rationale": "This approach uses bodily manipulation as the independent variable to determine its effects on behaviour."
+        },
+        {
+          "text": "Ontogeny",
+          "isCorrect": false,
+          "rationale": "This refers to the developmental process of an individual over a lifetime rather than a specific experimental manipulation."
+        }
+      ],
+      "hint": "Think about the term that relates to 'of the body' interventions."
+    },
+    {
+      "question": "The ability of the nervous system to change its physical structure in response to experience or the environment is known as:",
+      "answerOptions": [
+        {
+          "text": "Dualism",
+          "isCorrect": false,
+          "rationale": "This is a philosophical concept regarding the separation of mind and body, not a biological process of change."
+        },
+        {
+          "text": "Reductionism",
+          "isCorrect": false,
+          "rationale": "This is a scientific strategy of breaking down complex systems into smaller parts."
+        },
+        {
+          "text": "Neuroplasticity",
+          "isCorrect": true,
+          "rationale": "This term describes the brain's capacity to be 'moulded' or physically altered by experiences such as learning."
+        },
+        {
+          "text": "Phrenology",
+          "isCorrect": false,
+          "rationale": "This is an outmoded belief that skull bumps reflect specific brain enlargements."
+        }
+      ],
+      "hint": "The term is derived from a Greek word meaning 'to mould or form'."
+    },
+    {
+      "question": "What was Aristotle's influential, though incorrect, belief regarding the function of the brain?",
+      "answerOptions": [
+        {
+          "text": "It was the seat of all mental capacities.",
+          "isCorrect": false,
+          "rationale": "Aristotle actually attributed mental capacities to a different organ entirely."
+        },
+        {
+          "text": "It served as a cooling unit for hot blood.",
+          "isCorrect": true,
+          "rationale": "Aristotle believed the heart was the centre of intellect and the brain simply managed blood temperature."
+        },
+        {
+          "text": "It controlled muscles through animal spirits.",
+          "isCorrect": false,
+          "rationale": "This idea is more closely associated with the later physician Galen."
+        },
+        {
+          "text": "It was divided into functional areas reflected by skull shape.",
+          "isCorrect": false,
+          "rationale": "This concept describes phrenology, which emerged much later in the nineteenth century."
+        }
+      ],
+      "hint": "Consider how an ancient scientist might explain the brain's role in relation to the 'warmth' of the heart."
+    },
+    {
+      "question": "Ren\u00e9 Descartes proposed that the mind and body interact at which specific location?",
+      "answerOptions": [
+        {
+          "text": "Broca's area",
+          "isCorrect": false,
+          "rationale": "This area was identified in the nineteenth century as being specific to language production."
+        },
+        {
+          "text": "Cerebral ventricles",
+          "isCorrect": false,
+          "rationale": "While Da Vinci studied these fluid-filled chambers, Descartes focused on a single gland for mind-body interaction."
+        },
+        {
+          "text": "Pineal gland",
+          "isCorrect": true,
+          "rationale": "Descartes chose this structure because it was single rather than paired and he believed it was unique to humans."
+        },
+        {
+          "text": "Spinal cord",
+          "isCorrect": false,
+          "rationale": "Although Descartes proposed spinal reflexes, he did not view the cord as the site of the nonmaterial soul's interaction."
+        }
+      ],
+      "hint": "Look for a small, singular gland that Descartes erroneously believed existed only in humans."
+    },
+    {
+      "question": "Which scientific strategy involves breaking down a system into increasingly smaller parts to understand its function?",
+      "answerOptions": [
+        {
+          "text": "Reductionism",
+          "isCorrect": true,
+          "rationale": "This approach moves through levels of analysis, such as from the organ level down to the molecular level."
+        },
+        {
+          "text": "Holism",
+          "isCorrect": false,
+          "rationale": "This is generally the opposite of reductionism, focusing on the system as a whole rather than its parts."
+        },
+        {
+          "text": "Functionalism",
+          "isCorrect": false,
+          "rationale": "This describes behaviour in terms of results or functions rather than breaking it down into constituent parts."
+        },
+        {
+          "text": "Ontogeny",
+          "isCorrect": false,
+          "rationale": "This describes the development of an individual over time, not a strategy for structural analysis."
+        }
+      ],
+      "hint": "The name of this strategy implies 'reducing' a complex problem to simpler components."
+    },
+    {
+      "question": "Based on the text, what does a correlation between two variables indicate about their relationship?",
+      "answerOptions": [
+        {
+          "text": "It proves that one variable directly causes the other.",
+          "isCorrect": false,
+          "rationale": "Correlation does not establish a causal direction; a third factor could be influencing both."
+        },
+        {
+          "text": "It indicates that the variables are linked in some way.",
+          "isCorrect": true,
+          "rationale": "While not proof of causation, it suggests a connection that can then be tested through interventions."
+        },
+        {
+          "text": "It identifies which variable is independent and which is dependent.",
+          "isCorrect": false,
+          "rationale": "Independent and dependent variables are established in experimental interventions, not in correlational studies."
+        },
+        {
+          "text": "It confirms that the relationship is purely spiritual and nonmaterial.",
+          "isCorrect": false,
+          "rationale": "Correlation is a statistical measure used in material scientific study, not a proof for dualism."
+        }
+      ],
+      "hint": "Think about the common scientific phrase regarding 'correlation' and 'causation'."
+    },
+    {
+      "question": "Paul Broca's nineteenth-century research provided evidence for which major concept in neuroscience?",
+      "answerOptions": [
+        {
+          "text": "Neural networks are randomly organised.",
+          "isCorrect": false,
+          "rationale": "Hebb's later work discussed how random connections become organised, but Broca focused on specific regions."
+        },
+        {
+          "text": "Dualism of the mind and body.",
+          "isCorrect": false,
+          "rationale": "Broca's work was mechanistic and physiological, contrasting with Cartesian dualism."
+        },
+        {
+          "text": "Localization of function.",
+          "isCorrect": true,
+          "rationale": "By identifying a specific brain region for speech production, Broca showed that different areas have different tasks."
+        },
+        {
+          "text": "The 10% brain usage myth.",
+          "isCorrect": false,
+          "rationale": "The text explicitly refutes the 10% myth, which has no basis in Broca's clinical observations."
+        }
+      ],
+      "hint": "His findings supported the idea that specific behaviours are mediated by restricted brain regions."
+    },
+    {
+      "question": "What is the speed of a neural impulse in the human brain as noted in the source material?",
+      "answerOptions": [
+        {
+          "text": "$100$ miles per hour",
+          "isCorrect": false,
+          "rationale": "This is a plausible speed but is lower than the value explicitly stated in the brain facts infographic."
+        },
+        {
+          "text": "$220$ miles per hour",
+          "isCorrect": true,
+          "rationale": "The infographic 'Brain by Numbers' specifies this as the speed of a neural impulse."
+        },
+        {
+          "text": "The speed of light",
+          "isCorrect": false,
+          "rationale": "Neural impulses involve electrical and chemical changes that are significantly slower than light."
+        },
+        {
+          "text": "$400$ miles per hour",
+          "isCorrect": false,
+          "rationale": "This number is associated with the miles of capillaries in the brain, not the impulse speed."
+        }
+      ],
+      "hint": "Refer to the 'Brain by Numbers' illustration near a race car."
+    },
+    {
+      "question": "Donald Hebb's hypothesis about how neurons strengthen their connections through use led to the concept of the:",
+      "answerOptions": [
+        {
+          "text": "Dendritic spine",
+          "isCorrect": false,
+          "rationale": "Dendritic spines are physical structures on neurons, while Hebb's concept describes the functional connection."
+        },
+        {
+          "text": "Hebbian synapse",
+          "isCorrect": true,
+          "rationale": "This concept explains how interconnected groups of neurons, or cell assemblies, become organised through activity."
+        },
+        {
+          "text": "Engram",
+          "isCorrect": false,
+          "rationale": "The engram is the physical trace of memory that Lashley searched for, though Hebb was his student."
+        },
+        {
+          "text": "Control unit",
+          "isCorrect": false,
+          "rationale": "This term was used in the Westworld analogy for the android brain, not a biological concept by Hebb."
+        }
+      ],
+      "hint": "This term is named after the Canadian psychologist who wrote 'The Organization of Behavior'."
+    },
+    {
+      "question": "According to the five viewpoints of behavioural neuroscience, what does 'ontogeny' refer to?",
+      "answerOptions": [
+        {
+          "text": "The evolutionary history of a species.",
+          "isCorrect": false,
+          "rationale": "Evolution focuses on changes across generations, whereas ontogeny focuses on a single organism."
+        },
+        {
+          "text": "The process by which an individual changes over its lifetime.",
+          "isCorrect": true,
+          "rationale": "Ontogeny encompasses growing up and growing old, providing clues to behavioural functions and mechanisms."
+        },
+        {
+          "text": "The immediate physical interactions that control a behaviour.",
+          "isCorrect": false,
+          "rationale": "These are described as 'proximate questions' related to biological mechanisms."
+        },
+        {
+          "text": "The application of research to treat human dysfunctions.",
+          "isCorrect": false,
+          "rationale": "This defines the 'Applications' perspective, not ontogeny."
+        }
+      ],
+      "hint": "This viewpoint observes the development of behaviour from birth to old age."
+    },
+    {
+      "question": "How did the study involving hot water ($47^{\\circ}C$) demonstrate the influence of social factors on the brain?",
+      "answerOptions": [
+        {
+          "text": "Brain activity was identical regardless of what the subjects were told.",
+          "isCorrect": false,
+          "rationale": "The experiment showed that psychological expectation significantly altered the physiological response."
+        },
+        {
+          "text": "Psychological expectation of pain affected the magnitude of the brain response.",
+          "isCorrect": true,
+          "rationale": "Those led to believe the water would be very hot showed more activation than those told the discomfort would be minimal."
+        },
+        {
+          "text": "The heat of the water physically changed the number of neurons in the cortex.",
+          "isCorrect": false,
+          "rationale": "The experiment measured temporary brain activation, not permanent structural changes in neuron count."
+        },
+        {
+          "text": "It proved that pain receptors do not exist in the human brain.",
+          "isCorrect": false,
+          "rationale": "While the brain itself lacks pain receptors, this specific experiment focused on expectation and activation levels."
+        }
+      ],
+      "hint": "Consider the difference in brain scans between people expecting mild versus severe discomfort."
+    }
+  ]
+}

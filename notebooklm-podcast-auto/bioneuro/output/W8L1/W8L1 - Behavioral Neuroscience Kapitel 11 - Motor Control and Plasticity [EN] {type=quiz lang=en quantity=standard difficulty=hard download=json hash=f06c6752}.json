@@ -1,0 +1,265 @@
+{
+  "title": "Motor Control Quiz",
+  "questions": [
+    {
+      "question": "In the case of Ian Waterman, why was he able to feel pain and temperature but unable to sense his body's position or light touch?",
+      "answerOptions": [
+        {
+          "text": "The viral infection specifically destroyed large, myelinated sensory axons while sparing smaller fibers.",
+          "isCorrect": true,
+          "rationale": "Proprioception and light touch are carried by large, myelinated axons, whereas pain and temperature are carried by smaller fibers that were unaffected in his case."
+        },
+        {
+          "text": "The infection caused a complete transection of the dorsal roots in the spinal cord.",
+          "isCorrect": false,
+          "rationale": "A complete transection of the dorsal roots would have eliminated all sensory input, including pain and temperature, which Ian could still feel."
+        },
+        {
+          "text": "His primary motor cortex was damaged, preventing the brain from receiving sensory feedback.",
+          "isCorrect": false,
+          "rationale": "The primary motor cortex is responsible for initiating movement commands, not for the primary reception of light touch or proprioceptive data."
+        },
+        {
+          "text": "The virus targeted the neuromuscular junctions, blocking the release of $ACh$.",
+          "isCorrect": false,
+          "rationale": "Blocking $ACh$ at the neuromuscular junction would cause paralysis, but Ian was still able to move his muscles voluntarily."
+        }
+      ],
+      "hint": "Consider the structural differences between the nerves responsible for different types of sensory information."
+    },
+    {
+      "question": "Which of the following serves as evidence that complex behaviors are driven by a motor plan rather than a simple chain of reflexes?",
+      "answerOptions": [
+        {
+          "text": "The occurrence of spoonerisms, where a speaker anticipates a later sound and executes it too early.",
+          "isCorrect": true,
+          "rationale": "Spoonerisms demonstrate that the brain has established an overall sequence of commands before the behavior even begins."
+        },
+        {
+          "text": "The rapid speed of the monosynaptic stretch reflex in the patellar tendon.",
+          "isCorrect": false,
+          "rationale": "Reflexes are automatic and unlearned; their speed does not imply the existence of a high-level preprogrammed sequence."
+        },
+        {
+          "text": "The use of closed-loop control to provide constant visual feedback during movement.",
+          "isCorrect": false,
+          "rationale": "Closed-loop control relies on external feedback to make corrections, whereas a motor plan is an internal program established before the action."
+        },
+        {
+          "text": "The activation of synergist muscles during the flexion of a joint.",
+          "isCorrect": false,
+          "rationale": "Synergists working together is a functional property of the muscular system's arrangement rather than evidence of a pre-calculated behavioral program."
+        }
+      ],
+      "hint": "Think about speech errors that suggest the brain is thinking several steps ahead of the current action."
+    },
+    {
+      "question": "In terms of motor control, how do open-loop and closed-loop systems differ in their primary functional objectives?",
+      "answerOptions": [
+        {
+          "text": "Open-loop systems prioritize speed and are preprogrammed, while closed-loop systems prioritize accuracy through feedback.",
+          "isCorrect": true,
+          "rationale": "Open-loop systems are ballistic and do not wait for feedback, making them faster but less accurate than the self-correcting closed-loop systems."
+        },
+        {
+          "text": "Open-loop systems use sensory feedback to maximize accuracy, while closed-loop systems are strictly ballistic.",
+          "isCorrect": false,
+          "rationale": "This reverses the definitions; open-loop systems lack feedback, while closed-loop systems rely on it for correction."
+        },
+        {
+          "text": "Open-loop systems are only found in the spinal cord, while closed-loop systems are exclusively cortical.",
+          "isCorrect": false,
+          "rationale": "Both types of control mechanisms can involve various levels of the motor hierarchy depending on the task's requirements."
+        },
+        {
+          "text": "Closed-loop systems are used for rapid, unvarying movements like a baseball pitch.",
+          "isCorrect": false,
+          "rationale": "A baseball pitch is an example of an open-loop (ballistic) movement because it is completed too quickly for feedback to alter the path."
+        }
+      ],
+      "hint": "Consider the trade-off between the time taken to process information and the precision of the resulting action."
+    },
+    {
+      "question": "A researcher is studying the biochemistry of a runner's leg muscles. Why would a marathon runner have a higher proportion of slow-twitch muscle fibers compared to a sprinter?",
+      "answerOptions": [
+        {
+          "text": "Slow-twitch fibers have higher concentrations of mitochondria and myoglobin, providing greater resistance to fatigue.",
+          "isCorrect": true,
+          "rationale": "The aerobic capacity and endurance of slow-twitch fibers make them ideal for sustained activities like long-distance running."
+        },
+        {
+          "text": "Slow-twitch fibers utilize fast-acting myosin heads to produce explosive force.",
+          "isCorrect": false,
+          "rationale": "Explosive force and rapid contraction are characteristics of fast-twitch fibers, which fatigue much more quickly."
+        },
+        {
+          "text": "Slow-twitch fibers are primarily found in the 'white meat' of organisms used for short bursts of flight.",
+          "isCorrect": false,
+          "rationale": "White meat is composed of fast-twitch fibers; slow-twitch fibers are found in 'dark meat' due to high myoglobin and blood vessel content."
+        },
+        {
+          "text": "Slow-twitch fibers are exclusively controlled by $\\gamma$ motor neurons.",
+          "isCorrect": false,
+          "rationale": "$\\gamma$ motor neurons innervate intrafusal fibers within muscle spindles, whereas $\\alpha$ motor neurons control the extrafusal fibers responsible for contraction."
+        }
+      ],
+      "hint": "Recall the metabolic differences that allow some muscles to work for long periods without tiring."
+    },
+    {
+      "question": "What is the underlying cellular mechanism that causes the profound muscle weakness seen in patients with Myasthenia Gravis?",
+      "answerOptions": [
+        {
+          "text": "An autoimmune attack leads to the destruction of postsynaptic acetylcholine receptors at the neuromuscular junction.",
+          "isCorrect": true,
+          "rationale": "The loss of functional receptors means the muscle cannot effectively respond to the neurotransmitter signals sent by motor neurons."
+        },
+        {
+          "text": "A genetic mutation in the dystrophin gene causes the muscle fibers to waste away.",
+          "isCorrect": false,
+          "rationale": "This describes Muscular Dystrophy, not Myasthenia Gravis, which is an autoimmune disorder rather than a primary muscle structural defect."
+        },
+        {
+          "text": "Polioviruses destroy the cell bodies of motor neurons in the ventral horn of the spinal cord.",
+          "isCorrect": false,
+          "rationale": "Polio causes paralysis by killing the motor neurons themselves, whereas in Myasthenia Gravis, the neurons are intact but the signal is not received."
+        },
+        {
+          "text": "Excessive release of calcium ions ($Ca^{2+}$) within the muscle fiber causes permanent contraction.",
+          "isCorrect": false,
+          "rationale": "Weakness in this disease is caused by a failure to trigger contraction, not by an inability of the muscle to relax."
+        }
+      ],
+      "hint": "Focus on the interaction between the nerve terminal and the muscle surface."
+    },
+    {
+      "question": "In the context of the muscle spindle, what is the specific function of the $\\gamma$ motor neuron?",
+      "answerOptions": [
+        {
+          "text": "It contracts the intrafusal fibers to maintain the spindle's sensitivity as the extrafusal muscle changes length.",
+          "isCorrect": true,
+          "rationale": "By keeping the spindle taut, $\\gamma$ motor neurons ensure the sensory endings can still detect stretch even when the main muscle is contracted."
+        },
+        {
+          "text": "It provides the main force of contraction for voluntary movements.",
+          "isCorrect": false,
+          "rationale": "The main contractile force is provided by extrafusal fibers, which are innervated by $\\alpha$ motor neurons."
+        },
+        {
+          "text": "It transmits sensory information regarding the velocity of muscle stretch to the spinal cord.",
+          "isCorrect": false,
+          "rationale": "The $\\gamma$ motor neuron is an efferent (motor) fiber; sensory information is transmitted by the primary and secondary afferent endings."
+        },
+        {
+          "text": "It inhibits the antagonistic muscle during a stretch reflex.",
+          "isCorrect": false,
+          "rationale": "Inhibition of antagonists is handled by spinal interneurons triggered by the spindle's sensory afferents, not by $\\gamma$ motor neurons."
+        }
+      ],
+      "hint": "Think about how the 'sixth sense' receptors stay functional even when the muscle they are inside of gets shorter."
+    },
+    {
+      "question": "How do Golgi tendon organs differ from muscle spindles in their response to muscle activity?",
+      "answerOptions": [
+        {
+          "text": "Golgi tendon organs monitor muscle tension and force, while muscle spindles monitor muscle length and stretch.",
+          "isCorrect": true,
+          "rationale": "Tendon organs are sensitive to the force of contraction (tension) and protect against overloads, while spindles track the degree and speed of stretch."
+        },
+        {
+          "text": "Golgi tendon organs are more sensitive to passive lengthening than muscle spindles.",
+          "isCorrect": false,
+          "rationale": "Golgi tendon organs are relatively insensitive to passive stretch; they require the tension of active contraction or heavy loads to fire."
+        },
+        {
+          "text": "Muscle spindles inhibit the motor neuron to prevent muscle tears, whereas Golgi tendon organs excite them.",
+          "isCorrect": false,
+          "rationale": "The Golgi tendon organ provides the inhibitory signal to prevent damage from excessive tension, whereas the spindle usually triggers a contraction."
+        },
+        {
+          "text": "Golgi tendon organs use secondary 'flower spray' endings to communicate static muscle position.",
+          "isCorrect": false,
+          "rationale": "Secondary sensory endings are part of the muscle spindle apparatus, not the Golgi tendon organ."
+        }
+      ],
+      "hint": "Differentiate between the sensor located in the belly of the muscle and the one located where the muscle attaches to the bone."
+    },
+    {
+      "question": "The stretch reflex, such as the knee-jerk, is characterized as a monosynaptic circuit. What does this imply about its neural pathway?",
+      "answerOptions": [
+        {
+          "text": "The sensory afferent from the muscle spindle synapses directly onto the motor neuron without an intervening interneuron.",
+          "isCorrect": true,
+          "rationale": "This direct connection allows for the rapid, automatic compensatory contraction needed for load control."
+        },
+        {
+          "text": "The circuit requires exactly one synapse in the brainstem before reaching the spinal cord.",
+          "isCorrect": false,
+          "rationale": "Monosynaptic reflexes are mediated entirely within the spinal cord and do not require brain involvement to function."
+        },
+        {
+          "text": "The motor neuron must inhibit the antagonistic muscle through a single direct synapse.",
+          "isCorrect": false,
+          "rationale": "The inhibition of an antagonist requires at least two synapses because it involves an inhibitory interneuron."
+        },
+        {
+          "text": "The signal must travel to the primary motor cortex to establish a motor plan before returning to the muscle.",
+          "isCorrect": false,
+          "rationale": "Reflexes are automatic responses that bypass high-level motor planning to ensure immediate action."
+        }
+      ],
+      "hint": "Consider the simplest possible path from a sensory stimulus to a motor response."
+    },
+    {
+      "question": "Which genetic finding led researchers to propose that familial Amyotrophic Lateral Sclerosis ($ALS$) results from a 'toxic gain of function'?",
+      "answerOptions": [
+        {
+          "text": "Transgenic mice carrying a mutant human $SOD1$ gene developed $ALS$ symptoms despite still possessing their own normal $SOD1$ genes.",
+          "isCorrect": true,
+          "rationale": "If the disease were caused by a loss of function, the normal mouse genes would have prevented the symptoms; their presence suggests the mutant protein is actively harmful."
+        },
+        {
+          "text": "The $SOD1$ gene was found to be missing from the $X$ chromosome in affected boys.",
+          "isCorrect": false,
+          "rationale": "This describes Duchenne Muscular Dystrophy (dystrophin gene), whereas $ALS$ involves different proteins like $SOD1$ and $TDP43$."
+        },
+        {
+          "text": "Antibodies were found to be attacking the copper-zinc superoxide dismutase enzyme in the blood.",
+          "isCorrect": false,
+          "rationale": "$ALS$ is a neurodegenerative disease involving protein mutations, not an autoimmune disease like Myasthenia Gravis."
+        },
+        {
+          "text": "The mutant protein was shown to act exclusively within the motor neuron's nucleus to stop $ACh$ production.",
+          "isCorrect": false,
+          "rationale": "Research indicates the mutant $SOD1$ protein may actually act through nearby astrocytes or target muscles to damage the motor neurons."
+        }
+      ],
+      "hint": "Think about why symptoms appear even when a healthy version of the protein is still being produced."
+    },
+    {
+      "question": "Why do the muscles of the eye have a much lower innervation ratio (e.g., $1:3$) compared to the muscles of the leg (e.g., $1:hundreds$)?",
+      "answerOptions": [
+        {
+          "text": "Lower ratios allow for much finer and more precise gradations of muscle contraction.",
+          "isCorrect": true,
+          "rationale": "A single motor neuron controlling only a few fibers allows the nervous system to adjust movement with extreme accuracy, which is vital for vision."
+        },
+        {
+          "text": "Higher ratios allow the eye to move with greater force to overcome the weight of the eyeball.",
+          "isCorrect": false,
+          "rationale": "High innervation ratios are used for strength and force, which are needed in the legs for weight-bearing, but not in the delicate eye muscles."
+        },
+        {
+          "text": "The eyes require slower, more sustained contractions provided by many fibers working at once.",
+          "isCorrect": false,
+          "rationale": "Eye movements are typically rapid and precise (fast-twitch), not slow and sustained (which would favor high ratios in postural muscles)."
+        },
+        {
+          "text": "The brainstem cannot handle the complexity of large motor units.",
+          "isCorrect": false,
+          "rationale": "The brainstem and spinal cord handle various motor unit sizes; the ratio is determined by the functional need for precision vs. force."
+        }
+      ],
+      "hint": "Compare the need for delicate, subtle movements versus the need for powerful, high-force actions."
+    }
+  ]
+}

@@ -1,0 +1,369 @@
+{
+  "title": "Sleep Quiz",
+  "questions": [
+    {
+      "question": "Which term describes a biological rhythm that has a period of approximately 24 hours?",
+      "answerOptions": [
+        {
+          "text": "Circadian rhythm",
+          "isCorrect": true,
+          "rationale": "Derived from the Latin 'circa' (about) and 'dies' (day), this rhythm matches the Earth's daily rotation."
+        },
+        {
+          "text": "Ultradian rhythm",
+          "isCorrect": false,
+          "rationale": "This type of rhythm occurs more than once per day, such as the 90-minute sleep cycle."
+        },
+        {
+          "text": "Infradian rhythm",
+          "isCorrect": false,
+          "rationale": "Infradian rhythms occur less than once per day, with the human menstrual cycle being a prime example."
+        },
+        {
+          "text": "Circannual rhythm",
+          "isCorrect": false,
+          "rationale": "These rhythms occur on a roughly yearly basis, often regulating seasonal behaviours like migration."
+        }
+      ],
+      "hint": "Consider the typical cycle of the sun and the length of a single day."
+    },
+    {
+      "question": "Which specific region of the hypothalamus is considered the location of the primary biological clock in mammals?",
+      "answerOptions": [
+        {
+          "text": "Suprachiasmatic nucleus (SCN)",
+          "isCorrect": true,
+          "rationale": "The SCN is located just above the optic chiasm and generates an endogenous rhythm to organise behaviour."
+        },
+        {
+          "text": "Lateral geniculate nucleus",
+          "isCorrect": false,
+          "rationale": "This structure is part of the thalamus and is primarily involved in the visual processing pathway rather than timing."
+        },
+        {
+          "text": "Pineal gland",
+          "isCorrect": false,
+          "rationale": "While it secretes melatonin to help signal sleep, it is not the master circadian oscillator in mammals."
+        },
+        {
+          "text": "Optic chiasm",
+          "isCorrect": false,
+          "rationale": "This is the anatomical structure where optic nerves cross, but it does not contain the clock cells themselves."
+        }
+      ],
+      "hint": "This nucleus is named for its location immediately above the crossing of the optic nerves."
+    },
+    {
+      "question": "What is the term for an external stimulus, such as the light-dark cycle, that helps to synchronise an internal biological clock?",
+      "answerOptions": [
+        {
+          "text": "Zeitgeber",
+          "isCorrect": true,
+          "rationale": "This German word literally translates to 'time giver' and refers to cues that entrain circadian rhythms."
+        },
+        {
+          "text": "Phase shift",
+          "isCorrect": false,
+          "rationale": "This refers to the actual change in the timing of activity caused by a synchronising stimulus."
+        },
+        {
+          "text": "Entrainment",
+          "isCorrect": false,
+          "rationale": "This is the process of synchronising the rhythm, whereas the stimulus itself has a different name."
+        },
+        {
+          "text": "Free-running period",
+          "isCorrect": false,
+          "rationale": "This term describes the rhythm shown by an animal when it is deprived of all external time cues."
+        }
+      ],
+      "hint": "Think of a German word that describes something that 'gives' the time to the brain."
+    },
+    {
+      "question": "Which photopigment is found in the specialised retinal ganglion cells that inform the SCN about environmental light levels?",
+      "answerOptions": [
+        {
+          "text": "Melanopsin",
+          "isCorrect": true,
+          "rationale": "Melanopsin-containing ganglion cells are sensitive to light, particularly in the blue range, to help entrain the clock."
+        },
+        {
+          "text": "Rhodopsin",
+          "isCorrect": false,
+          "rationale": "Rhodopsin is the pigment found in rod cells used for low-light vision, not the primary entrainment cells."
+        },
+        {
+          "text": "Melatonin",
+          "isCorrect": false,
+          "rationale": "Melatonin is a hormone secreted by the pineal gland to signal darkness, not a photopigment in the eye."
+        },
+        {
+          "text": "Cone opsin",
+          "isCorrect": false,
+          "rationale": "Cone opsins are used for colour vision and detail, whereas the circadian system uses a different specialized pigment."
+        }
+      ],
+      "hint": "This pigment is most sensitive to light in the blue range of the spectrum."
+    },
+    {
+      "question": "In the molecular clock of mammals, which two proteins bind together to form a dimer that initiates the transcription of clock genes?",
+      "answerOptions": [
+        {
+          "text": "Clock and Cycle",
+          "isCorrect": true,
+          "rationale": "These two proteins (Cycle is also known as Bmal1 in mammals) bind together to promote the expression of the 'per' and 'cry' genes."
+        },
+        {
+          "text": "Per and Cry",
+          "isCorrect": false,
+          "rationale": "While these proteins do form a complex, their role is to inhibit the activity of the Clock/Cycle dimer, not to start the process."
+        },
+        {
+          "text": "Glutamate and Tau",
+          "isCorrect": false,
+          "rationale": "Glutamate is a neurotransmitter that signals light arrival, while 'tau' refers to a symbol for period length or a specific mutation."
+        },
+        {
+          "text": "Alpha and Beta",
+          "isCorrect": false,
+          "rationale": "These terms refer to specific frequencies of brain activity recorded via EEG rather than molecular clock proteins."
+        }
+      ],
+      "hint": "One of these proteins shares its name with the general concept of a timing device."
+    },
+    {
+      "question": "Which type of EEG wave is the defining characteristic of Stage 3 (slow-wave) sleep?",
+      "answerOptions": [
+        {
+          "text": "Delta waves",
+          "isCorrect": true,
+          "rationale": "Delta waves are large-amplitude, very slow oscillations of about $1\\text{ Hz}$ that indicate widespread cortical synchronisation."
+        },
+        {
+          "text": "Alpha rhythms",
+          "isCorrect": false,
+          "rationale": "Alpha rhythms typically appear when a person is awake but relaxed with their eyes closed."
+        },
+        {
+          "text": "Sleep spindles",
+          "isCorrect": false,
+          "rationale": "These periodic bursts of $12$ to $14\\text{ Hz}$ waves are a primary feature of Stage 2 sleep."
+        },
+        {
+          "text": "Vertex spikes",
+          "isCorrect": false,
+          "rationale": "These sharp-wave patterns are associated with the onset of Stage 1 sleep."
+        }
+      ],
+      "hint": "These are the slowest patterns recorded from the human brain during sleep."
+    },
+    {
+      "question": "Why is REM sleep often called 'paradoxical sleep'?",
+      "answerOptions": [
+        {
+          "text": "The EEG shows waking-like activity while the body is functionally paralysed",
+          "isCorrect": true,
+          "rationale": "Despite high brain activity and rapid eye movements, the skeletal muscles are completely relaxed and unresponsive."
+        },
+        {
+          "text": "It is the only stage of sleep where the brain consumes zero energy",
+          "isCorrect": false,
+          "rationale": "The brain is actually very active during REM, with cerebral blood flow reaching levels similar to wakefulness."
+        },
+        {
+          "text": "The heart rate and respiration become perfectly stable and regular",
+          "isCorrect": false,
+          "rationale": "Autonomic activities like breathing and pulse actually become irregular during this stage."
+        },
+        {
+          "text": "It only occurs in people with specific sleep disorders like narcolepsy",
+          "isCorrect": false,
+          "rationale": "REM sleep is a normal and essential stage of the sleep cycle for nearly all mammals."
+        }
+      ],
+      "hint": "Focus on the contradiction between the appearance of the brain waves and the state of the muscles."
+    },
+    {
+      "question": "Approximately what percentage of a newborn human infant's sleep is spent in REM sleep?",
+      "answerOptions": [
+        {
+          "text": "$50\\%$",
+          "isCorrect": true,
+          "rationale": "Infants spend about half of their sleep time in REM, possibly providing stimulation essential for nervous system maturation."
+        },
+        {
+          "text": "$20\\%$",
+          "isCorrect": false,
+          "rationale": "This is the typical percentage of REM sleep seen in healthy young adults."
+        },
+        {
+          "text": "$5\\%$",
+          "isCorrect": false,
+          "rationale": "A percentage this low would be abnormal for any stage of life and is significantly lower than what infants experience."
+        },
+        {
+          "text": "$80\\%$",
+          "isCorrect": false,
+          "rationale": "While very high, this figure is more characteristic of premature infants rather than full-term newborns."
+        }
+      ],
+      "hint": "It is much higher than the amount found in adults, representing exactly half of their total sleep time."
+    },
+    {
+      "question": "Which sleep stage shows the most dramatic decline as humans age into their 60s and beyond?",
+      "answerOptions": [
+        {
+          "text": "Stage 3 sleep (SWS)",
+          "isCorrect": true,
+          "rationale": "Slow-wave sleep declines progressively with age and may disappear entirely by age 90, potentially affecting cognitive function."
+        },
+        {
+          "text": "Stage 2 sleep",
+          "isCorrect": false,
+          "rationale": "Stage 2 sleep actually remains relatively stable and accounts for about half of the total sleep time in young adults."
+        },
+        {
+          "text": "REM sleep",
+          "isCorrect": false,
+          "rationale": "While total REM may decrease slightly, the loss is not as severe or complete as the loss of deep slow-wave sleep."
+        },
+        {
+          "text": "Stage 1 sleep",
+          "isCorrect": false,
+          "rationale": "The amount of light Stage 1 sleep often increases as the elderly experience more frequent awakenings."
+        }
+      ],
+      "hint": "This stage is also known as deep or 'slow-wave' sleep."
+    },
+    {
+      "question": "What is the primary function of the 'glymphatic system' mentioned in the text?",
+      "answerOptions": [
+        {
+          "text": "Clearing toxins and waste products from the brain during sleep",
+          "isCorrect": true,
+          "rationale": "During sleep, glia control the flow of cerebrospinal fluid to flush out byproducts like $\\beta$-amyloid."
+        },
+        {
+          "text": "Regulating the release of growth hormone during NREM",
+          "isCorrect": false,
+          "rationale": "Growth hormone release is a separate endocrine process, though it does happen predominantly during Stage 3."
+        },
+        {
+          "text": "Synchronising the activity of the two cerebral hemispheres",
+          "isCorrect": false,
+          "rationale": "The glymphatic system is a waste-clearance mechanism rather than a neural synchronisation pathway."
+        },
+        {
+          "text": "Generating vivid visual imagery during REM dreaming",
+          "isCorrect": false,
+          "rationale": "Dreaming involves cortical and brainstem activity, whereas the glymphatic system is a metabolic support structure."
+        }
+      ],
+      "hint": "Think of it as a biological 'drainage' or cleaning system for the central nervous system."
+    },
+    {
+      "question": "How do dolphins and certain birds survive while engaging in 'unilateral sleep'?",
+      "answerOptions": [
+        {
+          "text": "Only one brain hemisphere engages in slow-wave sleep at a time",
+          "isCorrect": true,
+          "rationale": "This allows the animal to remain vigilant for predators or surface to breathe while the other half of the brain rests."
+        },
+        {
+          "text": "They enter a state of total paralysis while floating",
+          "isCorrect": false,
+          "rationale": "Muscle paralysis (atonia) is characteristic of REM sleep, which dolphins actually seem to lack or avoid."
+        },
+        {
+          "text": "They swap between NREM and REM every few seconds",
+          "isCorrect": false,
+          "rationale": "Their sleep cycles involve alternating hemispheres in SWS rather than rapid stage cycling."
+        },
+        {
+          "text": "They use their spinal cord to regulate movement without brain involvement",
+          "isCorrect": false,
+          "rationale": "The awake hemisphere of the brain remains in control of movement and vital functions."
+        }
+      ],
+      "hint": "The term 'unilateral' refers to something occurring on only one side."
+    },
+    {
+      "question": "Fatal familial insomnia is an inherited disorder caused by a defect in the gene for which protein?",
+      "answerOptions": [
+        {
+          "text": "Prion protein",
+          "isCorrect": true,
+          "rationale": "This defect causes degeneration of the thalamus and cortex, leading to total insomnia and death within 2 years."
+        },
+        {
+          "text": "Per protein",
+          "isCorrect": false,
+          "rationale": "Mutations in 'per' genes usually affect the timing of the clock (larks vs owls) rather than causing fatal degeneration."
+        },
+        {
+          "text": "Melanopsin",
+          "isCorrect": false,
+          "rationale": "A lack of melanopsin would affect light entrainment but would not be fatal or cause the brain to stop sleeping."
+        },
+        {
+          "text": "Tau protein",
+          "isCorrect": false,
+          "rationale": "The 'tau' mutation in the text refers to a hamster gene that shortens circadian rhythms, not a fatal human disease protein."
+        }
+      ],
+      "hint": "This protein is the same one responsible for transmitting 'mad cow' disease."
+    },
+    {
+      "question": "Which type of sleep event is marked by intense fear and autonomic arousal, typically occurring during NREM sleep in children?",
+      "answerOptions": [
+        {
+          "text": "Night terror",
+          "isCorrect": true,
+          "rationale": "Night terrors are sudden arousals from deep NREM sleep where the sleeper often does not recall a dream."
+        },
+        {
+          "text": "Nightmare",
+          "isCorrect": false,
+          "rationale": "Nightmares are long, frightening dreams that occur during REM sleep and are usually remembered vividly."
+        },
+        {
+          "text": "Sleep paralysis",
+          "isCorrect": false,
+          "rationale": "This is the temporary inability to move upon waking or falling asleep, often associated with REM intrusions."
+        },
+        {
+          "text": "Paradoxical insomnia",
+          "isCorrect": false,
+          "rationale": "Also called sleep state misperception, this is a condition where people feel they are awake when they are actually asleep."
+        }
+      ],
+      "hint": "These events involve sudden screaming or panic and occur outside of the REM dreaming stage."
+    },
+    {
+      "question": "What was the significance of the SCN transplant experiments conducted by Ralph and Menaker?",
+      "answerOptions": [
+        {
+          "text": "The recipient animal adopted the circadian period of the donor animal",
+          "isCorrect": true,
+          "rationale": "This proved that the SCN itself is the source of the endogenous rhythm, as the donor's period length was transferred."
+        },
+        {
+          "text": "The transplant restored vision to animals with damaged retinas",
+          "isCorrect": false,
+          "rationale": "The SCN is a timing centre and does not process form vision or repair the eyes."
+        },
+        {
+          "text": "The animals were able to live without any sleep for several weeks",
+          "isCorrect": false,
+          "rationale": "The experiment focused on the timing of activity (circadian rhythm) rather than the total requirement for sleep."
+        },
+        {
+          "text": "The transplant only worked if the donor and recipient were genetically identical",
+          "isCorrect": false,
+          "rationale": "The experiments used mutant hamsters to show that the donor's specific genetic rhythm (e.g., $20$ hours) was expressed."
+        }
+      ],
+      "hint": "Focus on what happened to the 'timing' of the hamster's daily activity after the surgery."
+    }
+  ]
+}

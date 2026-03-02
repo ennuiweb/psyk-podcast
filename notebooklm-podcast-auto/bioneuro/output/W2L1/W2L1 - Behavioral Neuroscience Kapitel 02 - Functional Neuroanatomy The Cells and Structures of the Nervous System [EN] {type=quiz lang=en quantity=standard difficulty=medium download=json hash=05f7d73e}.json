@@ -1,0 +1,343 @@
+{
+  "title": "Neuroscience Quiz",
+  "questions": [
+    {
+      "question": "Which neuroscientist is credited with developing cortical electrical-stimulation mapping to treat patients with epilepsy?",
+      "answerOptions": [
+        {
+          "text": "Wilder Penfield",
+          "isCorrect": true,
+          "rationale": "This neurosurgeon pioneered the use of electrodes to map brain functions in conscious patients to avoid damaging critical areas during surgery."
+        },
+        {
+          "text": "Santiago Ram\u00f3n y Cajal",
+          "isCorrect": false,
+          "rationale": "While he was a foundational figure in neuroscience, his primary contribution was the anatomical evidence for the neuron doctrine."
+        },
+        {
+          "text": "Camillo Golgi",
+          "isCorrect": false,
+          "rationale": "He developed staining techniques but incorrectly believed the nervous system was a continuous network of tubes."
+        },
+        {
+          "text": "Sir Charles Sherrington",
+          "isCorrect": false,
+          "rationale": "He is best known for demonstrating the function of the gaps between neurons and naming them synapses."
+        }
+      ],
+      "hint": "Think of the researcher who mapped the human cortex in the mid-twentieth century."
+    },
+    {
+      "question": "According to the neuron doctrine, how is information primarily transmitted between cells in the brain?",
+      "answerOptions": [
+        {
+          "text": "Through a continuous network of connected tubes",
+          "isCorrect": false,
+          "rationale": "This reflects the reticular theory, which was the competing hypothesis that the neuron doctrine eventually replaced."
+        },
+        {
+          "text": "Across tiny gaps called synapses",
+          "isCorrect": true,
+          "rationale": "The doctrine posits that neurons are independent units and that signals must cross a physical space to move from one cell to the next."
+        },
+        {
+          "text": "By the direct merging of cell membranes",
+          "isCorrect": false,
+          "rationale": "The doctrine specifically argues that neurons are contiguous but not continuous, meaning they do not merge."
+        },
+        {
+          "text": "Exclusively through glial cell intermediaries",
+          "isCorrect": false,
+          "rationale": "While glial cells support neurons, the doctrine focuses on the structural and functional independence of the neurons themselves."
+        }
+      ],
+      "hint": "Consider the structural independence of cells proposed by Santiago Ram\u00f3n y Cajal."
+    },
+    {
+      "question": "Which functional zone of a neuron is responsible for initiating the decision to produce a neural signal?",
+      "answerOptions": [
+        {
+          "text": "Input zone",
+          "isCorrect": false,
+          "rationale": "This zone, comprised of dendrites, is where information is received rather than where the decision to fire is made."
+        },
+        {
+          "text": "Integration zone",
+          "isCorrect": true,
+          "rationale": "This area, typically the axon hillock, combines incoming signals to determine if an electrical impulse should be sent."
+        },
+        {
+          "text": "Conduction zone",
+          "isCorrect": false,
+          "rationale": "This refers to the axon, which propagates the signal once the decision has already been made."
+        },
+        {
+          "text": "Output zone",
+          "isCorrect": false,
+          "rationale": "This zone consists of axon terminals where information is transferred to other cells, not where the signal originates."
+        }
+      ],
+      "hint": "Focus on the specific region, often called the axon hillock, where inputs are summed."
+    },
+    {
+      "question": "A neuron with a single dendrite at one end and a single axon at the other end is classified as which type?",
+      "answerOptions": [
+        {
+          "text": "Multipolar neuron",
+          "isCorrect": false,
+          "rationale": "These neurons are characterized by having many dendrites and a single axon, making them the most common type."
+        },
+        {
+          "text": "Bipolar neuron",
+          "isCorrect": true,
+          "rationale": "This structure features two distinct processes extending from the cell body and is frequently found in sensory systems like vision."
+        },
+        {
+          "text": "Unipolar neuron",
+          "isCorrect": false,
+          "rationale": "These have a single extension that branches in two directions, common for transmitting touch information."
+        },
+        {
+          "text": "Interneuron",
+          "isCorrect": false,
+          "rationale": "This is a functional classification for neurons that process information between other neurons, rather than a structural shape."
+        }
+      ],
+      "hint": "This type of neuron is especially common in the visual system."
+    },
+    {
+      "question": "What is the typical width of the synaptic cleft, the gap that separates the presynaptic and postsynaptic membranes?",
+      "answerOptions": [
+        {
+          "text": "$100\\-200\\ nm$",
+          "isCorrect": false,
+          "rationale": "This size is much larger than the actual gap found in human synapses."
+        },
+        {
+          "text": "$20\\-40\\ nm$",
+          "isCorrect": true,
+          "rationale": "This extremely small distance allow neurotransmitters to diffuse rapidly from the presynaptic terminal to the postsynaptic receptors."
+        },
+        {
+          "text": "$5\\-10\\ nm$",
+          "isCorrect": false,
+          "rationale": "This distance is closer to the thickness of a neuronal membrane rather than the width of the gap between cells."
+        },
+        {
+          "text": "$1\\-2\\ \\mu m$",
+          "isCorrect": false,
+          "rationale": "This unit of measure is too large; a synaptic ending is about this size, but the gap itself is much smaller."
+        }
+      ],
+      "hint": "The measurement is in nanometers and is slightly larger than the thickness of the neuronal membrane."
+    },
+    {
+      "question": "Which glial cells are responsible for regulating local blood flow to provide active neurons with more energy?",
+      "answerOptions": [
+        {
+          "text": "Microglial cells",
+          "isCorrect": false,
+          "rationale": "These cells serve as the brain's immune system or 'cleanup crew' by removing debris from injured tissue."
+        },
+        {
+          "text": "Astrocytes",
+          "isCorrect": true,
+          "rationale": "These star-shaped cells have 'end feet' that contact blood vessels to manage nutrient delivery based on neural activity."
+        },
+        {
+          "text": "Oligodendrocytes",
+          "isCorrect": false,
+          "rationale": "Their primary function is the myelination of axons within the central nervous system."
+        },
+        {
+          "text": "Schwann cells",
+          "isCorrect": false,
+          "rationale": "These cells provide myelin for axons in the peripheral nervous system, not blood flow regulation."
+        }
+      ],
+      "hint": "Look for the star-shaped glial cell that participates in the 'tripartite synapse'."
+    },
+    {
+      "question": "In the peripheral nervous system, which type of cell is responsible for the process of myelination?",
+      "answerOptions": [
+        {
+          "text": "Oligodendrocytes",
+          "isCorrect": false,
+          "rationale": "While these cells do create myelin, they perform this function specifically within the brain and spinal cord (CNS)."
+        },
+        {
+          "text": "Schwann cells",
+          "isCorrect": true,
+          "rationale": "Each of these cells wraps around a single segment of an axon in the nerves outside of the brain and spinal cord."
+        },
+        {
+          "text": "Astrocytes",
+          "isCorrect": false,
+          "rationale": "Astrocytes provide structural and nutritional support but do not form the fatty insulation known as myelin."
+        },
+        {
+          "text": "Microglia",
+          "isCorrect": false,
+          "rationale": "These cells are involved in inflammation and debris removal rather than insulation of axons."
+        }
+      ],
+      "hint": "Distinguish between the myelin-producing cells of the Central vs. Peripheral nervous systems."
+    },
+    {
+      "question": "Which mechanism allows used materials to be moved from the axon terminals back to the cell body for recycling?",
+      "answerOptions": [
+        {
+          "text": "Anterograde transport",
+          "isCorrect": false,
+          "rationale": "This term refers to the movement of materials from the cell body toward the axon terminals."
+        },
+        {
+          "text": "Retrograde transport",
+          "isCorrect": true,
+          "rationale": "This specific direction of axonal transport involves motor proteins moving vesicles 'backward' toward the soma."
+        },
+        {
+          "text": "Action potential propagation",
+          "isCorrect": false,
+          "rationale": "This refers to the electrical signal traveling along the outer membrane, not the internal transport of substances."
+        },
+        {
+          "text": "Gliotransmission",
+          "isCorrect": false,
+          "rationale": "This is a controversial term for communication between glial cells and neurons, unrelated to internal axonal cargo movement."
+        }
+      ],
+      "hint": "The name for this process implies a 'backward' direction of movement."
+    },
+    {
+      "question": "The autoimmune disorder Multiple Sclerosis is characterized by the widespread degeneration of which structure?",
+      "answerOptions": [
+        {
+          "text": "Dendritic spines",
+          "isCorrect": false,
+          "rationale": "While plasticity involves changes to spines, Multiple Sclerosis specifically targets the insulation of the conduction zone."
+        },
+        {
+          "text": "Myelin sheath",
+          "isCorrect": true,
+          "rationale": "The loss of this insulating layer causes 'short circuits' in electrical signaling, leading to a variety of neurological symptoms."
+        },
+        {
+          "text": "Cell nucleus",
+          "isCorrect": false,
+          "rationale": "Degeneration of the nucleus would result in cell death, but MS is primarily defined by the loss of axon insulation."
+        },
+        {
+          "text": "Synaptic vesicles",
+          "isCorrect": false,
+          "rationale": "These structures are vital for chemical communication, but they are not the target of the inflammatory response in MS."
+        }
+      ],
+      "hint": "Consider the fatty insulation that speeds up nerve impulses."
+    },
+    {
+      "question": "Which histological technique allows researchers to visualize the distribution of specific proteins by using labeled antibodies?",
+      "answerOptions": [
+        {
+          "text": "Nissl stain",
+          "isCorrect": false,
+          "rationale": "This traditional stain highlights RNA and is used to outline cell bodies and measure cell density."
+        },
+        {
+          "text": "Golgi stain",
+          "isCorrect": false,
+          "rationale": "This technique fills a small percentage of neurons completely to reveal their detailed fine structure."
+        },
+        {
+          "text": "Immunohistochemistry (IHC)",
+          "isCorrect": true,
+          "rationale": "By creating antibodies against a target protein, scientists can identify exactly which neurons are producing that protein."
+        },
+        {
+          "text": "Autoradiography",
+          "isCorrect": false,
+          "rationale": "This involves using radioactive drugs to 'take a picture' of where those drugs concentrate in brain tissue."
+        }
+      ],
+      "hint": "Think of a method that borrows principles from the immune system to tag molecules."
+    },
+    {
+      "question": "If a researcher wants to identify the sources of innervation for a specific brain region, which type of tract tracer should they use?",
+      "answerOptions": [
+        {
+          "text": "Anterograde tracer",
+          "isCorrect": false,
+          "rationale": "This tracer travels from the cell body to the terminals, revealing the targets rather than the sources."
+        },
+        {
+          "text": "Retrograde tracer",
+          "isCorrect": true,
+          "rationale": "This substance is taken up by axon terminals and transported back to the cell bodies, showing where the input originated."
+        },
+        {
+          "text": "Nissl stain",
+          "isCorrect": false,
+          "rationale": "This stain labels cell bodies generally but does not trace connections between different brain regions."
+        },
+        {
+          "text": "In situ hybridization",
+          "isCorrect": false,
+          "rationale": "This technique is used to detect specific genetic activation (RNA) rather than mapping physical connections."
+        }
+      ],
+      "hint": "The tracer must move from the 'end' of the projection back to the 'start'."
+    },
+    {
+      "question": "The human brain is estimated to contain approximately how many synapses?",
+      "answerOptions": [
+        {
+          "text": "$80\\-90\\ billion$",
+          "isCorrect": false,
+          "rationale": "This is the estimated number of neurons in the adult human brain, not the number of connections between them."
+        },
+        {
+          "text": "$10^{15}$",
+          "isCorrect": true,
+          "rationale": "Known as a quadrillion, this massive number of connections allows for the extreme complexity of human cognition."
+        },
+        {
+          "text": "$1\\ million$",
+          "isCorrect": false,
+          "rationale": "This number is far too low to account for the networking capabilities of the billions of neurons in the brain."
+        },
+        {
+          "text": "$10^{12}$",
+          "isCorrect": false,
+          "rationale": "While very large (a trillion), this is an underestimate of the total synaptic connectivity described in the text."
+        }
+      ],
+      "hint": "This number is also referred to as a quadrillion."
+    },
+    {
+      "question": "Which specific cranial nerve is responsible for the sensory functions of hearing and balance?",
+      "answerOptions": [
+        {
+          "text": "Cranial Nerve VIII",
+          "isCorrect": true,
+          "rationale": "Also known as the vestibulocochlear nerve, it carries information from the inner ear to the brain."
+        },
+        {
+          "text": "Cranial Nerve I",
+          "isCorrect": false,
+          "rationale": "This is the olfactory nerve, which is responsible for the sense of smell."
+        },
+        {
+          "text": "Cranial Nerve X",
+          "isCorrect": false,
+          "rationale": "The vagus nerve primarily controls internal organs and is part of the autonomic system."
+        },
+        {
+          "text": "Cranial Nerve V",
+          "isCorrect": false,
+          "rationale": "The trigeminal nerve is responsible for facial sensation and chewing muscles."
+        }
+      ],
+      "hint": "Think of the vestibulocochlear nerve and its Roman numeral designation."
+    }
+  ]
+}

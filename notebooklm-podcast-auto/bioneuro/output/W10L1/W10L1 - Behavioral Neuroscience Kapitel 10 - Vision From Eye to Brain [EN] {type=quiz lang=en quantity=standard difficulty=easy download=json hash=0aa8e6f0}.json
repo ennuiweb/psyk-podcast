@@ -1,0 +1,291 @@
+{
+  "title": "Vision Quiz",
+  "questions": [
+    {
+      "question": "What is the specific range of wavelengths in the electromagnetic spectrum that the human visual system can detect?",
+      "answerOptions": [
+        {
+          "text": "About $100$ to $400\\text{ nm}$",
+          "isCorrect": false,
+          "rationale": "This range covers ultraviolet radiation, which is mostly invisible to the human eye."
+        },
+        {
+          "text": "About $400$ to $700\\text{ nm}$",
+          "isCorrect": true,
+          "rationale": "Humans respond to this narrow band of radiant energy, which provides accurate reflections from objects significant for survival."
+        },
+        {
+          "text": "About $700$ to $1000\\text{ nm}$",
+          "isCorrect": false,
+          "rationale": "This range falls into the infrared spectrum, which humans generally perceive as heat rather than visible light."
+        },
+        {
+          "text": "About $10$ to $100\\text{ nm}$",
+          "isCorrect": false,
+          "rationale": "Wavelengths in this extremely short range include X-rays and gamma rays, which penetrate surfaces rather than reflecting off them."
+        }
+      ],
+      "hint": "Consider the narrow band of photons that evoke visual sensations in the vertebrate eye."
+    },
+    {
+      "question": "Which process involves the ciliary muscles changing the shape of the lens to focus on objects at different distances?",
+      "answerOptions": [
+        {
+          "text": "Refraction",
+          "isCorrect": false,
+          "rationale": "While this refers to the bending of light, it is a general term and primarily describes the fixed curvature of the cornea."
+        },
+        {
+          "text": "Transduction",
+          "isCorrect": false,
+          "rationale": "This is the conversion of physical energy, like light, into electrical neural signals by photoreceptors."
+        },
+        {
+          "text": "Accommodation",
+          "isCorrect": true,
+          "rationale": "In mammals, focus is adjusted by altering the elasticity and curvature of the lens through muscular contraction."
+        },
+        {
+          "text": "Lateral inhibition",
+          "isCorrect": false,
+          "rationale": "This process occurs in the retina to enhance the contrast of edges rather than focusing the image."
+        }
+      ],
+      "hint": "Think of the adjustment made by the eye to ensure a sharp image falls on the retina."
+    },
+    {
+      "question": "Which type of retinal cell is the only one that conducts action potentials to the brain?",
+      "answerOptions": [
+        {
+          "text": "Bipolar cells",
+          "isCorrect": false,
+          "rationale": "These interneurons generate graded local potentials rather than action potentials."
+        },
+        {
+          "text": "Photoreceptors",
+          "isCorrect": false,
+          "rationale": "Rods and cones respond to light with graded hyperpolarising potentials."
+        },
+        {
+          "text": "Horizontal cells",
+          "isCorrect": false,
+          "rationale": "These cells facilitate lateral interactions via graded potentials to affect neurotransmitter release."
+        },
+        {
+          "text": "Ganglion cells",
+          "isCorrect": true,
+          "rationale": "Ganglion cells are relatively large and their axons form the optic nerve, requiring action potentials for long-distance signalling."
+        }
+      ],
+      "hint": "Identify the final output stage of the retina whose axons form the optic nerve."
+    },
+    {
+      "question": "When light strikes a photoreceptor in the vertebrate retina, what is the immediate electrical response of that cell?",
+      "answerOptions": [
+        {
+          "text": "Depolarisation",
+          "isCorrect": false,
+          "rationale": "While most sensory receptors depolarise when stimulated, vertebrate photoreceptors behave differently in response to light."
+        },
+        {
+          "text": "Hyperpolarisation",
+          "isCorrect": true,
+          "rationale": "Light causes the closure of $Na^{+}$ channels, leading to a more negative membrane potential and reduced neurotransmitter release."
+        },
+        {
+          "text": "An action potential",
+          "isCorrect": false,
+          "rationale": "Photoreceptors only produce graded local potentials, not the all-or-nothing spikes associated with action potentials."
+        },
+        {
+          "text": "No change in potential",
+          "isCorrect": false,
+          "rationale": "Light triggers a biochemical cascade that significantly alters the electrical state of the receptor membrane."
+        }
+      ],
+      "hint": "Consider how the closing of sodium channels affects the electrical charge inside the cell."
+    },
+    {
+      "question": "Which visual system is characterised by high sensitivity to weak light but low spatial acuity?",
+      "answerOptions": [
+        {
+          "text": "Photopic system",
+          "isCorrect": false,
+          "rationale": "This system uses cones and requires more light to provide sharp, colour vision."
+        },
+        {
+          "text": "Scotopic system",
+          "isCorrect": true,
+          "rationale": "This system relies on rods and features significant convergence, where many receptors provide information to a single ganglion cell."
+        },
+        {
+          "text": "Extrastriate system",
+          "isCorrect": false,
+          "rationale": "This term refers to cortical regions outside the primary visual area involved in complex perception."
+        },
+        {
+          "text": "Parvocellular system",
+          "isCorrect": false,
+          "rationale": "This pathway in the thalamus is associated with small cells that provide high-resolution details."
+        }
+      ],
+      "hint": "Think of the system used for night vision where 'all cats are grey'."
+    },
+    {
+      "question": "Why is visual acuity at its highest in the fovea?",
+      "answerOptions": [
+        {
+          "text": "It contains a high density of rods",
+          "isCorrect": false,
+          "rationale": "Rods are actually absent in the fovea and are more numerous in the periphery of the retina."
+        },
+        {
+          "text": "Light is unobstructed by blood vessels and other cell layers",
+          "isCorrect": true,
+          "rationale": "The foveal region has fewer overlying structures, allowing light to reach the densely packed cones more directly."
+        },
+        {
+          "text": "It has the highest degree of convergence",
+          "isCorrect": false,
+          "rationale": "Higher convergence, like that found in the rod system, actually reduces acuity in favour of sensitivity."
+        },
+        {
+          "text": "It is located at the optic disc",
+          "isCorrect": false,
+          "rationale": "The optic disc is the site of the blind spot and contains no photoreceptors at all."
+        }
+      ],
+      "hint": "Consider the anatomical layout of the central portion of the retina compared to the periphery."
+    },
+    {
+      "question": "What occurs during the process of 'range fractionation' in the visual system?",
+      "answerOptions": [
+        {
+          "text": "Each photoreceptor adjusts its individual sensitivity to the ambient light level",
+          "isCorrect": false,
+          "rationale": "This describes photoreceptor adaptation, which is distinct from using different groups of cells."
+        },
+        {
+          "text": "Different intensities are handled by different sets of receptors",
+          "isCorrect": true,
+          "rationale": "One group of receptors (rods) specialises in high sensitivity for dim light, while another (cones) handles low sensitivity for bright light."
+        },
+        {
+          "text": "Horizontal cells inhibit neighbouring bipolar cells to sharpen images",
+          "isCorrect": false,
+          "rationale": "This refers to lateral inhibition, which deals with spatial contrast rather than intensity range."
+        },
+        {
+          "text": "The pupil constricts to reduce the amount of light entering the eye",
+          "isCorrect": false,
+          "rationale": "This is a mechanical adjustment of the iris that only accounts for a small portion of the eye's intensity range."
+        }
+      ],
+      "hint": "Recall how the workload of detecting light is divided between rods and cones."
+    },
+    {
+      "question": "What is the primary role of lateral inhibition in the retina?",
+      "answerOptions": [
+        {
+          "text": "To increase the overall sensitivity of the eye to light",
+          "isCorrect": false,
+          "rationale": "This would be achieved through convergence or adaptation, not through inhibitory interactions between neighbours."
+        },
+        {
+          "text": "To create contrast by enhancing the boundaries between regions",
+          "isCorrect": true,
+          "rationale": "By inhibiting neighbouring cells, the system exaggerates the differences in brightness at edges."
+        },
+        {
+          "text": "To allow for the perception of different colours",
+          "isCorrect": false,
+          "rationale": "Colour perception is primarily dependent on the different types of cone pigments responding to specific wavelengths."
+        },
+        {
+          "text": "To coordinate the movement of the extraocular muscles",
+          "isCorrect": false,
+          "rationale": "Muscular coordination is a motor function involving the brainstem and superior colliculus."
+        }
+      ],
+      "hint": "Think about why the edges of a grey bar might appear lighter or darker than the centre."
+    },
+    {
+      "question": "In the human visual pathway, which axons cross the midline at the optic chiasm?",
+      "answerOptions": [
+        {
+          "text": "Axons from the temporal hemiretina",
+          "isCorrect": false,
+          "rationale": "Axons from the half of the retina towards the temple project to the same side of the brain."
+        },
+        {
+          "text": "Axons from the nasal hemiretina",
+          "isCorrect": true,
+          "rationale": "Axons from the half of the retina towards the nose cross over to the opposite cerebral hemisphere."
+        },
+        {
+          "text": "All axons from the optic nerve",
+          "isCorrect": false,
+          "rationale": "This occurs in some prey species, but humans have a mix of crossed and uncrossed fibres to facilitate binocular vision."
+        },
+        {
+          "text": "Only axons from the fovea",
+          "isCorrect": false,
+          "rationale": "Crossing is determined by the global position (nasal vs. temporal) rather than whether the input is foveal or peripheral."
+        }
+      ],
+      "hint": "Identify which portion of the retina ensures that the left visual field reaches the right side of the brain."
+    },
+    {
+      "question": "The primary visual cortex ($V1$) is often referred to as the 'striate cortex' due to the appearance of which structure?",
+      "answerOptions": [
+        {
+          "text": "The density of the extraocular muscles",
+          "isCorrect": false,
+          "rationale": "These muscles are located outside the eyeball and are not part of the cortical anatomy."
+        },
+        {
+          "text": "A visible stripe in layer $IV$ where optic radiation fibres arrive",
+          "isCorrect": true,
+          "rationale": "This distinct anatomical feature represents the massive influx of information from the lateral geniculate nucleus."
+        },
+        {
+          "text": "The pattern of blood vessels overlying the fovea",
+          "isCorrect": false,
+          "rationale": "The fovea is actually characterised by a lack of overlying blood vessels to improve light passage."
+        },
+        {
+          "text": "The columnar organisation of the temporal lobe",
+          "isCorrect": false,
+          "rationale": "The primary visual cortex is located in the occipital lobe, not the temporal lobe."
+        }
+      ],
+      "hint": "Look for a term that describes a broad stripe visible in anatomical sections of the occipital lobe."
+    },
+    {
+      "question": "Which of the following is a characteristic of 'simple' cortical cells in the primary visual cortex?",
+      "answerOptions": [
+        {
+          "text": "They respond to a spot of light anywhere in the visual field",
+          "isCorrect": false,
+          "rationale": "This describes a lack of specificity; $V1$ cells are highly selective for orientation and location."
+        },
+        {
+          "text": "They respond best to an edge or bar of a specific width and orientation",
+          "isCorrect": true,
+          "rationale": "These cells, also called bar detectors, require the stimulus to be in a particular position to fire maximally."
+        },
+        {
+          "text": "They are specialised only for detecting colour regardless of shape",
+          "isCorrect": false,
+          "rationale": "Simple cells are primarily defined by their spatial receptive fields and orientation selectivity."
+        },
+        {
+          "text": "They only respond to objects moving in a specific direction",
+          "isCorrect": false,
+          "rationale": "While some cortical cells respond to motion, simple cells are specifically defined by their fixed spatial requirements."
+        }
+      ],
+      "hint": "These cells were originally known as bar or edge detectors."
+    }
+  ]
+}

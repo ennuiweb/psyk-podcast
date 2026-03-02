@@ -1,0 +1,265 @@
+{
+  "title": "Neuroscience Quiz",
+  "questions": [
+    {
+      "question": "Which of the following research perspectives specifically addresses the process by which an individual changes throughout their life-span to provide clues about biological mechanisms?",
+      "answerOptions": [
+        {
+          "text": "Evolutionary perspective",
+          "isCorrect": false,
+          "rationale": "This perspective focuses on traits shared due to common ancestry across different species rather than changes within a single individual's life."
+        },
+        {
+          "text": "Ontogeny",
+          "isCorrect": true,
+          "rationale": "Ontogeny is the specific study of how an individual grows up and grows old, allowing researchers to observe how behavior and brain circuits mature together."
+        },
+        {
+          "text": "Functional description",
+          "isCorrect": false,
+          "rationale": "Functional descriptions explain what a behavior accomplishes at a specific point in time rather than how it changes over the course of development."
+        },
+        {
+          "text": "Mechanistic analysis",
+          "isCorrect": false,
+          "rationale": "While it deals with how the body works, it typically asks 'proximate' questions about current physical interactions rather than developmental history."
+        }
+      ],
+      "hint": "Consider the term used to describe the biological development of an individual from the womb to the tomb."
+    },
+    {
+      "question": "In a study where a researcher administers a hormone to one group of animals and measures the resulting strength of mating behavior, which of the following is true regarding the variables?",
+      "answerOptions": [
+        {
+          "text": "The hormone administration is the dependent variable.",
+          "isCorrect": false,
+          "rationale": "The factor that is manipulated by the experimenter is defined as the independent variable."
+        },
+        {
+          "text": "The mating behavior is the independent variable.",
+          "isCorrect": false,
+          "rationale": "Mating behavior is the outcome being measured, making it the dependent variable in this experimental design."
+        },
+        {
+          "text": "This is an example of a somatic intervention.",
+          "isCorrect": true,
+          "rationale": "Somatic intervention involves manipulating a body structure or function (the independent variable) to see how behavior (the dependent variable) changes."
+        },
+        {
+          "text": "This is a correlational study because it links hormones to behavior.",
+          "isCorrect": false,
+          "rationale": "Since a variable is being actively manipulated by the researcher to observe an effect, it is an experiment, not just a measure of how two variables covary naturally."
+        }
+      ],
+      "hint": "Identify which factor is being 'intervened' upon and which is being measured as a result."
+    },
+    {
+      "question": "Which ancient thinker's view of the brain was based on the erroneous belief that it served as a cooling unit for the blood?",
+      "answerOptions": [
+        {
+          "text": "Herophilus",
+          "isCorrect": false,
+          "rationale": "Known as the Father of Anatomy, he was one of the first to trace nerves from the skin and muscles into the spinal cord."
+        },
+        {
+          "text": "Galen",
+          "isCorrect": false,
+          "rationale": "Galen recognized the brain as the controller of behavior after treating head injuries in gladiators, though his anatomical details were often based on animals."
+        },
+        {
+          "text": "Aristotle",
+          "isCorrect": true,
+          "rationale": "Aristotle famously located mental capacities in the heart and relegated the brain to a simple thermoregulation role for hot blood."
+        },
+        {
+          "text": "Leonardo da Vinci",
+          "isCorrect": false,
+          "rationale": "Da Vinci lived during the Renaissance and used direct observation to create accurate drawings of brain ventricles."
+        }
+      ],
+      "hint": "This Greek philosopher lived around $350$ BCE and is more widely known for his logic and physics than his biology."
+    },
+    {
+      "question": "Ren\u00e9 Descartes's concept of dualism was partially based on the anatomical misconception that which structure existed only in humans?",
+      "answerOptions": [
+        {
+          "text": "Cerebral cortex",
+          "isCorrect": false,
+          "rationale": "While highly developed in humans, the cortex exists in other mammals and was not the specific point of contact Descartes proposed for the soul."
+        },
+        {
+          "text": "Pineal gland",
+          "isCorrect": true,
+          "rationale": "Descartes believed the pineal gland was unique to humans and unitary, making it the ideal location for the nonmaterial soul to interact with the material body."
+        },
+        {
+          "text": "Spinal cord",
+          "isCorrect": false,
+          "rationale": "Descartes actually used the spinal cord to explain mechanical reflexes, which he believed were shared between humans and animals."
+        },
+        {
+          "text": "Broca's area",
+          "isCorrect": false,
+          "rationale": "Broca's area was discovered in the $19^{th}$ century, long after Descartes, and is related to speech production."
+        }
+      ],
+      "hint": "Focus on the small, single structure in the brain that Descartes thought lacked a symmetrical counterpart."
+    },
+    {
+      "question": "In the experiment involving young rats, which specific brain region's growth was stunted by social isolation and a lack of play?",
+      "answerOptions": [
+        {
+          "text": "Anterior cingulate cortex",
+          "isCorrect": false,
+          "rationale": "This region was highlighted in human experiments regarding the psychological expectation of pain, not the rat social isolation study."
+        },
+        {
+          "text": "Posterodorsal medial amygdala",
+          "isCorrect": true,
+          "rationale": "Research showed that this specific quadrant of the amygdala, involved in processing odors, was smaller in rats raised without social interaction."
+        },
+        {
+          "text": "Cerebral ventricles",
+          "isCorrect": false,
+          "rationale": "Enlarged ventricles are discussed in the context of schizophrenia in humans, not as a direct result of play deprivation in rats."
+        },
+        {
+          "text": "Hippocampus",
+          "isCorrect": false,
+          "rationale": "While important for memory, the provided source material specifically identifies the amygdala quadrants in the isolation study."
+        }
+      ],
+      "hint": "Look for a sub-region of the amygdala involved in processing the odors encountered during social play."
+    },
+    {
+      "question": "According to modern neuroscience, what does a peak of activity in a specific brain region during a task imply about 'localization of function'?",
+      "answerOptions": [
+        {
+          "text": "That specific region is the only part of the brain involved in that task.",
+          "isCorrect": false,
+          "rationale": "Modern imaging shows that virtually the entire brain is active during any task, contradicting the idea of isolated activity."
+        },
+        {
+          "text": "The region is where the most significant increase in activity occurs relative to the background.",
+          "isCorrect": true,
+          "rationale": "Localization in modern terms refers to the site of peak activation, even though widespread activity is ongoing throughout the brain."
+        },
+        {
+          "text": "Localization is a 'neuromyth' and has no scientific validity.",
+          "isCorrect": false,
+          "rationale": "While phrenology was flawed, modern research confirms that specific tasks do reliably activate certain areas more than others."
+        },
+        {
+          "text": "Function is localized only in the cerebral ventricles.",
+          "isCorrect": false,
+          "rationale": "The ventricles are fluid-filled spaces; cognitive functions are associated with neural tissue, primarily the cortex."
+        }
+      ],
+      "hint": "Think about the difference between 'exclusive activity' and 'peak activity' against a background of global brain function."
+    },
+    {
+      "question": "Recent neuroimaging research has found a significant correlation between IQ scores and which biological measure?",
+      "answerOptions": [
+        {
+          "text": "The number of neurons in the pineal gland",
+          "isCorrect": false,
+          "rationale": "There is no evidence in the text linking pineal gland neuron count to intelligence scores."
+        },
+        {
+          "text": "Brain size and the extent of connectivity between regions",
+          "isCorrect": true,
+          "rationale": "Studies cited show correlations around $+0.38$ for brain volume and up to $+0.50$ for connectivity between different brain areas."
+        },
+        {
+          "text": "The speed of neural impulses in the spinal cord",
+          "isCorrect": false,
+          "rationale": "While axon speed is mentioned as $220$ MPH, it is not cited as a correlated factor with IQ in this chapter."
+        },
+        {
+          "text": "The volume of the cerebral ventricles",
+          "isCorrect": false,
+          "rationale": "Ventricle size is primarily discussed in relation to disorders like schizophrenia, rather than as a positive predictor of IQ."
+        }
+      ],
+      "hint": "Consider factors related to the overall volume of the front of the brain and how well different areas 'talk' to each other."
+    },
+    {
+      "question": "Donald Hebb's proposal of 'cell assemblies' suggests that cognitive behavior is accomplished by:",
+      "answerOptions": [
+        {
+          "text": "Single neurons acting as independent control units.",
+          "isCorrect": false,
+          "rationale": "Hebb's theory emphasizes the importance of networks and groups of neurons rather than individual cells."
+        },
+        {
+          "text": "Linear pathways of fluid-filled chambers.",
+          "isCorrect": false,
+          "rationale": "This was an ancient schematic view of ventricles, whereas Hebb focused on the electrical and chemical connections of neurons."
+        },
+        {
+          "text": "Networks of active neurons that strengthen their connections through use.",
+          "isCorrect": true,
+          "rationale": "Hebb proposed that sensory stimulation organizes initially random connections into strongly interconnected 'cell assemblies'."
+        },
+        {
+          "text": "The automatic activation of the entire brain at all times.",
+          "isCorrect": false,
+          "rationale": "Hebb's work focused on how specific experiences create organized, specific patterns of connectivity."
+        }
+      ],
+      "hint": "Think about the phrase 'neurons that fire together, wire together,' which relates to his concept of synapses."
+    },
+    {
+      "question": "Which of the following is a key property of consciousness as described by Adam Zeman?",
+      "answerOptions": [
+        {
+          "text": "We are aware of all our brain's internal activities.",
+          "isCorrect": false,
+          "rationale": "Zeman notes that some brain activity, and therefore behavior, is actually unconscious."
+        },
+        {
+          "text": "Consciousness allows for the mental simulation of future events.",
+          "isCorrect": true,
+          "rationale": "Planning and simulating the future are key functions that consciousness permits us to do."
+        },
+        {
+          "text": "The topmost parts of the brain are responsible for basic arousal.",
+          "isCorrect": false,
+          "rationale": "According to the consensus, the deepest parts of the brain are important for arousal, while the topmost parts manage moment-to-moment experience."
+        },
+        {
+          "text": "Consciousness is independent of the physical activity of the brain.",
+          "isCorrect": false,
+          "rationale": "Dualism suggests this, but modern scientists agree that consciousness is bound to brain activity."
+        }
+      ],
+      "hint": "Recall the adaptive purpose of being aware, specifically regarding planning and foresight."
+    },
+    {
+      "question": "If a researcher is using the 'reductionism' strategy to understand the neuroscience of vision, what is their most likely course of action?",
+      "answerOptions": [
+        {
+          "text": "Studying how two people interact visually in a social setting.",
+          "isCorrect": false,
+          "rationale": "This represents the highest level of analysis (social), rather than the strategy of breaking a system down into smaller parts."
+        },
+        {
+          "text": "Comparing the visual systems of jellyfish and humans to find shared ancestry.",
+          "isCorrect": false,
+          "rationale": "This is an evolutionary approach, which is a different perspective from reductionism."
+        },
+        {
+          "text": "Investigating the molecular structure of membrane receptors in the retina.",
+          "isCorrect": true,
+          "rationale": "Reductionism involves breaking systems down into increasingly smaller, simpler parts, such as molecules or atoms."
+        },
+        {
+          "text": "Mapping the entire circuit level of the visual cortex.",
+          "isCorrect": false,
+          "rationale": "While a lower level than social, reductionism seeks the 'simplest' constituents, often moving past circuits toward cells or molecules."
+        }
+      ],
+      "hint": "Identify the approach that focuses on the smallest, most fundamental building blocks of the nervous system."
+    }
+  ]
+}

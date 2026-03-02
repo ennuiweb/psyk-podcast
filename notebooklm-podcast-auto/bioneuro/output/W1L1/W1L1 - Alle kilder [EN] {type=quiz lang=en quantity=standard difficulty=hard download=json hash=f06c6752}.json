@@ -1,0 +1,291 @@
+{
+  "title": "Neuroscience Quiz",
+  "questions": [
+    {
+      "question": "If a researcher administers a specific hormone to a group of rats and then measures their subsequent aggression levels, which research approach and variable relationship are being utilized according to the text?",
+      "answerOptions": [
+        {
+          "text": "Somatic intervention; the hormone is the independent variable.",
+          "isCorrect": true,
+          "rationale": "In somatic intervention, the body or brain is manipulated (independent variable) to observe changes in behavior (dependent variable)."
+        },
+        {
+          "text": "Behavioral intervention; the aggression level is the independent variable.",
+          "isCorrect": false,
+          "rationale": "Behavioral intervention involves manipulating behavior to observe somatic changes, which is the opposite of the scenario described."
+        },
+        {
+          "text": "Correlation; the hormone level and aggression are both dependent variables.",
+          "isCorrect": false,
+          "rationale": "A correlation involves measuring how two variables vary together without direct manipulation by the researcher."
+        },
+        {
+          "text": "Somatic intervention; the aggression level is the independent variable.",
+          "isCorrect": false,
+          "rationale": "In this experiment, the aggression level is the measured effect, making it the dependent variable, not the manipulated factor."
+        }
+      ],
+      "hint": "Consider which factor is being actively changed by the experimenter and which is being measured as a result."
+    },
+    {
+      "question": "Observations in rodents show that while young animals can learn tasks effectively, they forget them more quickly than adults. Within the five perspectives of behavioral neuroscience, this observation primarily informs the study of:",
+      "answerOptions": [
+        {
+          "text": "Ontogeny",
+          "isCorrect": true,
+          "rationale": "Ontogeny refers to the process by which an individual changes and matures across the life-span, including changes in learning and memory."
+        },
+        {
+          "text": "Biological mechanisms",
+          "isCorrect": false,
+          "rationale": "Mechanisms focus on the 'how' of current body functions, such as neural circuits, rather than how those functions change as an organism grows older."
+        },
+        {
+          "text": "Evolution",
+          "isCorrect": false,
+          "rationale": "Evolution focuses on how traits are shared or differ across different species due to common ancestry or adaptation."
+        },
+        {
+          "text": "Functional description",
+          "isCorrect": false,
+          "rationale": "A functional description explains what a behavior accomplishes or its results, rather than its development over time."
+        }
+      ],
+      "hint": "Focus on the term that describes the developmental changes an organism undergoes from youth to old age."
+    },
+    {
+      "question": "In the study conducted by Cooke et al. ($2000$), which specific region of the rat brain was found to have a reduced volume in males raised in isolation compared to those raised with playmates?",
+      "answerOptions": [
+        {
+          "text": "Medial amygdala",
+          "isCorrect": true,
+          "rationale": "The study found that a region involved in processing odors, specifically a portion of the medial amygdala, was smaller in isolated rats."
+        },
+        {
+          "text": "Anterior cingulate cortex",
+          "isCorrect": false,
+          "rationale": "The anterior cingulate cortex was mentioned in the text regarding human pain expectation, not the rat social isolation study."
+        },
+        {
+          "text": "Broca's area",
+          "isCorrect": false,
+          "rationale": "Broca's area is a human brain region associated with speech production and was not the focus of the rodent social study."
+        },
+        {
+          "text": "Cerebral ventricles",
+          "isCorrect": false,
+          "rationale": "Enlarged cerebral ventricles were discussed in the context of human twins and schizophrenia, not rat social deprivation."
+        }
+      ],
+      "hint": "This region is part of a larger structure often associated with emotions and the processing of olfactory information."
+    },
+    {
+      "question": "Which historical figure argued that the brain's primary function was to serve as a cooling unit for the blood, while the heart was the actual seat of mental capacities?",
+      "answerOptions": [
+        {
+          "text": "Aristotle",
+          "isCorrect": true,
+          "rationale": "Aristotle believed the heart was the center of mental capacities and viewed the brain simply as a radiator for hot blood."
+        },
+        {
+          "text": "Galen",
+          "isCorrect": false,
+          "rationale": "Galen, a Greco-Roman physician, actually pointed toward the brain as the controller of behavior after treating head injuries in gladiators."
+        },
+        {
+          "text": "Herophilus",
+          "isCorrect": false,
+          "rationale": "Known as the Father of Anatomy, Herophilus traced nerves into the spinal cord, moving away from the heart-centered view."
+        },
+        {
+          "text": "Thomas Willis",
+          "isCorrect": false,
+          "rationale": "Thomas Willis was a $17\\text{th}$-century physician who convinced the Western world that the brain, not the heart, coordinates behavior."
+        }
+      ],
+      "hint": "This prominent ancient Greek scientist is often remembered for his heart-centered view of the mind."
+    },
+    {
+      "question": "Ren\u00e9 Descartes proposed that the mind and body come into contact in the pineal gland. Which of the following was a reason he provided for this specific selection?",
+      "answerOptions": [
+        {
+          "text": "The pineal gland is a single structure, rather than being mirrored in both hemispheres.",
+          "isCorrect": true,
+          "rationale": "Descartes believed that because consciousness is single, its physical seat should be a single structure, unlike the dual nature of most brain regions."
+        },
+        {
+          "text": "The pineal gland is the only source of 'animal spirits' that travel through the nerves.",
+          "isCorrect": false,
+          "rationale": "While he believed in animal spirits, he did not claim the pineal gland was their sole source, but rather a point of soul-body interaction."
+        },
+        {
+          "text": "The pineal gland is found only in humans and not in other animals.",
+          "isCorrect": false,
+          "rationale": "Descartes believed this incorrectly, but his primary logical argument was based on the structure's lack of symmetry."
+        },
+        {
+          "text": "It is the primary location for the execution of spinal reflexes.",
+          "isCorrect": false,
+          "rationale": "Descartes viewed spinal reflexes as automatic mechanical processes that did not necessarily require the soul's involvement via the pineal gland."
+        }
+      ],
+      "hint": "Think about Descartes's logic regarding the unity of consciousness versus the symmetry of brain anatomy."
+    },
+    {
+      "question": "According to the research cited in the text, which correlation coefficient is most representative of the relationship between IQ scores and the extent of connectivity between brain regions?",
+      "answerOptions": [
+        {
+          "text": "$+0.50$",
+          "isCorrect": true,
+          "rationale": "Brain-imaging studies reported correlations between IQ scores and brain region connectivity of approximately $+0.50$."
+        },
+        {
+          "text": "$+0.08$",
+          "isCorrect": false,
+          "rationale": "$+0.08$ is at the lower end of the correlation range for head size and IQ, not internal brain connectivity."
+        },
+        {
+          "text": "$+0.38$",
+          "isCorrect": false,
+          "rationale": "$+0.38$ was the correlation found between overall brain size (after correcting for body size) and IQ, rather than connectivity specifically."
+        },
+        {
+          "text": "$+0.85$",
+          "isCorrect": false,
+          "rationale": "This value is significantly higher than any correlation between brain morphology and IQ mentioned in the provided text."
+        }
+      ],
+      "hint": "The correlation for connectivity is generally reported as being stronger than the correlation for simple brain volume."
+    },
+    {
+      "question": "A scientist studying how the presence of specific membrane receptors changes on a single neuron during a learning task is operating at which level of analysis?",
+      "answerOptions": [
+        {
+          "text": "Molecular level",
+          "isCorrect": true,
+          "rationale": "The study of receptors and their chemical/structural changes falls under the molecular level of analysis."
+        },
+        {
+          "text": "Cellular level",
+          "isCorrect": false,
+          "rationale": "While it involve a neuron, focusing specifically on the receptors within the membrane is a more reduced level than just the cell itself."
+        },
+        {
+          "text": "Circuit level",
+          "isCorrect": false,
+          "rationale": "The circuit level involves studying groups of neurons and their interconnections rather than individual molecular components."
+        },
+        {
+          "text": "Neural systems level",
+          "isCorrect": false,
+          "rationale": "The neural systems level looks at large-scale structures, such as the visual system, rather than molecules."
+        }
+      ],
+      "hint": "Consider the smallest, most basic constituents of the biological system mentioned in the question."
+    },
+    {
+      "question": "The concept of 'cell assemblies,' where brain cell connections become organized into strongly interconnected groups through stimulation, was a landmark hypothesis proposed by:",
+      "answerOptions": [
+        {
+          "text": "Donald O. Hebb",
+          "isCorrect": true,
+          "rationale": "In his $1949$ book, Hebb described how networks of neurons could form cell assemblies to accomplish complex cognitive behavior."
+        },
+        {
+          "text": "Karl S. Lashley",
+          "isCorrect": false,
+          "rationale": "Lashley was Hebb's teacher and is famous for his 'search for the engram,' rather than the specific cell assembly hypothesis."
+        },
+        {
+          "text": "Hermann Ebbinghaus",
+          "isCorrect": false,
+          "rationale": "Ebbinghaus is known for showing how to measure learning and memory in humans using behavioral methods."
+        },
+        {
+          "text": "Shepard I. Franz",
+          "isCorrect": false,
+          "rationale": "Franz sought the site of learning by removing brain regions in animals but did not theorize the 'Hebbian' synapse or cell assemblies."
+        }
+      ],
+      "hint": "This Canadian psychologist's work bridged the gap between neuronal activity and complex mental processes."
+    },
+    {
+      "question": "The text states that the human brain contains roughly $86$ billion neurons. Based on the provided numbers, how many connections (synapses) are estimated to exist within the brain?",
+      "answerOptions": [
+        {
+          "text": "Trillions",
+          "isCorrect": true,
+          "rationale": "Because each of the $86$ billion neurons contacts many other cells, the resulting number of synapses reaches into the trillions."
+        },
+        {
+          "text": "Billions",
+          "isCorrect": false,
+          "rationale": "While there are $86$ billion neurons, the number of contact points (synapses) between them is significantly higher."
+        },
+        {
+          "text": "Millions",
+          "isCorrect": false,
+          "rationale": "Millions is a massive underestimation of the connectivity found in a single human brain."
+        },
+        {
+          "text": "Quadrillions",
+          "isCorrect": false,
+          "rationale": "While the brain by numbers infographic mentions $10$ trillion synapses, it does not suggest a number as high as quadrillions."
+        }
+      ],
+      "hint": "Recall that each neuron contacts many others, multiplying the total count of connections beyond the number of cells."
+    },
+    {
+      "question": "Which of the following research findings provides the strongest evidence for the concept of neuroplasticity in adulthood?",
+      "answerOptions": [
+        {
+          "text": "Dendritic spines can change their shape within seconds.",
+          "isCorrect": true,
+          "rationale": "The rapid movement and shape-shifting of dendritic spines demonstrate the brain's ongoing physical malleability."
+        },
+        {
+          "text": "The brain uses $20\\%$ of the body\u2019s total oxygen consumption.",
+          "isCorrect": false,
+          "rationale": "While interesting, oxygen consumption is a metabolic fact rather than evidence of structural change due to experience."
+        },
+        {
+          "text": "The pineal gland is a single structure in the center of the brain.",
+          "isCorrect": false,
+          "rationale": "This is an anatomical description used in historical dualist arguments, not evidence of plasticity."
+        },
+        {
+          "text": "Nerve impulses can travel at speeds of $220$ MPH.",
+          "isCorrect": false,
+          "rationale": "The speed of neural impulses is a physiological property of axons, not an indicator of structural flexibility or remodeling."
+        }
+      ],
+      "hint": "Identify a finding that describes a literal, physical change in neuronal structure in response to time or activity."
+    },
+    {
+      "question": "In the context of brain imaging and pain, how did psychological expectation affect brain activation in participants exposed to $\\$47^{\\circ}C\\$$ water?",
+      "answerOptions": [
+        {
+          "text": "Those expecting more discomfort showed greater activation in the anterior cingulate cortex.",
+          "isCorrect": true,
+          "rationale": "Socially induced psychological expectations physically altered the magnitude of the brain's response to the same stimulus."
+        },
+        {
+          "text": "Those expecting more discomfort showed less activation in the medial amygdala.",
+          "isCorrect": false,
+          "rationale": "The study highlighted increased activation in a specific region, and the medial amygdala was not the region identified in this pain study."
+        },
+        {
+          "text": "Brain activation was identical across all participants since the water temperature was the same.",
+          "isCorrect": false,
+          "rationale": "The text explicitly states that the brain response varied significantly based on what the participants were led to believe."
+        },
+        {
+          "text": "Expectation only affected the reported pain levels but had no impact on actual brain scans.",
+          "isCorrect": false,
+          "rationale": "The text notes that both reported pain and the physical activation of brain regions were affected by expectation."
+        }
+      ],
+      "hint": "Reflect on how the social influence of a researcher's instructions can change the brain's reaction to a physical stimulus."
+    }
+  ]
+}

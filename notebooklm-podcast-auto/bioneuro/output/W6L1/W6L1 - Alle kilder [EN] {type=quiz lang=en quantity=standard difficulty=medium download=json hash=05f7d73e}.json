@@ -1,0 +1,396 @@
+{
+  "title": "Neuroscience Quiz",
+  "questions": [
+    {
+      "question": "According to the provided text, what is the estimated number of neurons contained within the human brain?",
+      "answerOptions": [
+        {
+          "text": "100 trillion",
+          "isCorrect": false,
+          "rationale": "This number actually refers to the estimated number of synapses, which are the connections between neurons, rather than the nerve cells themselves."
+        },
+        {
+          "text": "86 billion",
+          "isCorrect": true,
+          "rationale": "Recent research cited in the text indicates that the human brain contains approximately this many individual nerve cells."
+        },
+        {
+          "text": "10 billion",
+          "isCorrect": false,
+          "rationale": "This is a common underestimate; the actual hardware required for human cognition is significantly more vast."
+        },
+        {
+          "text": "1 trillion",
+          "isCorrect": false,
+          "rationale": "While the brain is incredibly dense, this figure exceeds current scientific estimates for the total neuronal count."
+        }
+      ],
+      "hint": "This specific figure was highlighted as a core 'brain by numbers' statistic in the introductory chapter."
+    },
+    {
+      "question": "Which research approach in behavioural neuroscience involves manipulating a body structure or function to observe resultant changes in behaviour?",
+      "text": "Somatic intervention",
+      "answerOptions": [
+        {
+          "text": "Behavioural intervention",
+          "isCorrect": false,
+          "rationale": "This approach is the inverse, where the scientist alters an organism's experience to look for changes in body structure."
+        },
+        {
+          "text": "Correlation",
+          "isCorrect": false,
+          "rationale": "This method measures how much a body measure varies with a behavioural measure without establishing a direct causal direction."
+        },
+        {
+          "text": "Somatic intervention",
+          "isCorrect": true,
+          "rationale": "In this approach, the physical alteration serves as the independent variable while the behavioural change is the dependent variable."
+        },
+        {
+          "text": "Ontogeny",
+          "isCorrect": false,
+          "rationale": "This term refers to the process of individual development over a lifetime rather than a specific experimental manipulation."
+        }
+      ],
+      "hint": "In this approach, the 'soma' or body is the starting point for the experimental change."
+    },
+    {
+      "question": "What does the 'therapeutic index' of a drug describe?",
+      "answerOptions": [
+        {
+          "text": "The speed at which a drug is metabolised by the liver.",
+          "isCorrect": false,
+          "rationale": "This describes metabolic clearance or biotransformation rather than the safety margin between doses."
+        },
+        {
+          "text": "The ratio between the effective dose ($ED_{50}$) and the lethal or toxic dose ($LD_{50}$).",
+          "isCorrect": true,
+          "rationale": "A wider index indicates a greater safety margin between the dose that produces the desired effect and the dose that becomes dangerous."
+        },
+        {
+          "text": "The affinity a drug molecule has for its specific target receptor.",
+          "isCorrect": false,
+          "rationale": "While affinity affects potency, it does not specifically measure the separation between useful and dangerous doses."
+        },
+        {
+          "text": "The number of different receptor subtypes a single drug can activate.",
+          "isCorrect": false,
+          "rationale": "This refers to the drug's selectivity or 'dirtiness' rather than its safety profile in terms of dosage."
+        }
+      ],
+      "hint": "Think about the distance between a dose that helps and a dose that harms."
+    },
+    {
+      "question": "How does caffeine primarily produce its stimulant effects in the human brain?",
+      "answerOptions": [
+        {
+          "text": "By acting as a direct agonist for dopamine receptors.",
+          "isCorrect": false,
+          "rationale": "Caffeine's effect on dopamine is indirect, occurring through the blockade of an inhibitory neuromodulator."
+        },
+        {
+          "text": "By blocking the reuptake of serotonin in the synaptic cleft.",
+          "isCorrect": false,
+          "rationale": "This is the mechanism for many antidepressants, whereas caffeine targets presynaptic autoreceptors."
+        },
+        {
+          "text": "By acting as an antagonist for endogenous adenosine receptors.",
+          "isCorrect": true,
+          "rationale": "Adenosine normally inhibits transmitter release; by blocking this inhibition, caffeine increases the release of catecholamines."
+        },
+        {
+          "text": "By stimulating the direct release of GABA from inhibitory neurons.",
+          "isCorrect": false,
+          "rationale": "GABA is the brain's primary inhibitory transmitter; stimulating its release would likely lead to sedation rather than arousal."
+        }
+      ],
+      "hint": "It works by interfering with a 'brake' system that normally slows down neural activity."
+    },
+    {
+      "question": "Which brain region, located deep within the folds of the frontal cortex, has been identified as a significant participant in addiction and the 'urge' to consume drugs?",
+      "answerOptions": [
+        {
+          "text": "The Hippocampus",
+          "isCorrect": false,
+          "rationale": "While the hippocampus is involved in memory, it is not the 'island' structure specifically linked to the loss of the urge to smoke when damaged."
+        },
+        {
+          "text": "The Pineal Gland",
+          "isCorrect": false,
+          "rationale": "This structure was historically associated with the soul by Descartes but is actually involved in sleep-wake cycles."
+        },
+        {
+          "text": "The Insula",
+          "isCorrect": true,
+          "rationale": "Damage to this area reportedly allows individuals to quit smoking effortlessly, suggesting it mediates subjective feelings of drug hunger."
+        },
+        {
+          "text": "The Cerebellum",
+          "isCorrect": false,
+          "rationale": "The cerebellum is primarily focused on motor coordination and balance rather than the emotional processing of addiction."
+        }
+      ],
+      "hint": "The name of this structure is derived from the Latin word for 'island'."
+    },
+    {
+      "question": "In the context of the history of neuroscience, why did Ren\u00e9 Descartes suggest the pineal gland as the point of contact between the mind and the body?",
+      "answerOptions": [
+        {
+          "text": "Because it was the only part of the brain that showed peak electrical activity during thought.",
+          "isCorrect": false,
+          "rationale": "Descartes lived long before the technology to measure electrical brain activity existed."
+        },
+        {
+          "text": "Because it is a single, non-symmetrical structure, mirroring the unity of consciousness.",
+          "isCorrect": true,
+          "rationale": "He believed that since most brain structures are double, the single pineal gland must be where information is integrated into a single soul."
+        },
+        {
+          "text": "Because he successfully mapped spinal reflexes back to that specific location.",
+          "isCorrect": false,
+          "rationale": "Descartes proposed the concept of reflexes, but he did not have the anatomical evidence to link them specifically to the pineal gland."
+        },
+        {
+          "text": "Because it was the largest structure visible on the external surface of the brain.",
+          "isCorrect": false,
+          "rationale": "The pineal gland is actually a very small, deep structure, not a large external one."
+        }
+      ],
+      "hint": "His reasoning was based on the physical symmetry\u2014or lack thereof\u2014of brain structures compared to our subjective experience."
+    },
+    {
+      "question": "Which of the following describes 'functional tolerance' to a drug?",
+      "answerOptions": [
+        {
+          "text": "The body's metabolic machinery becomes more efficient at clearing the drug from the system.",
+          "isCorrect": false,
+          "rationale": "This describes metabolic tolerance, whereas functional tolerance occurs at the level of the nervous system's sensitivity."
+        },
+        {
+          "text": "The individual learns to perform complex tasks despite being under the influence of the drug.",
+          "isCorrect": false,
+          "rationale": "This refers to behavioural or conditioned tolerance rather than a physiological change in receptor density."
+        },
+        {
+          "text": "The brain reduces the number of available receptors in response to an agonist drug.",
+          "isCorrect": true,
+          "rationale": "This process, known as down-regulation, is a common compensatory mechanism that makes the brain less responsive to a constant dose."
+        },
+        {
+          "text": "The drug molecule is converted by enzymes into an active metabolite.",
+          "isCorrect": false,
+          "rationale": "This refers to biotransformation, which can actually increase the duration of a drug's effect rather than decreasing it."
+        }
+      ],
+      "hint": "This form of tolerance involves a change in the target tissue's sensitivity, often through receptor regulation."
+    },
+    {
+      "question": "What is the primary effect of first-generation antipsychotics (neuroleptics) like chlorpromazine?",
+      "answerOptions": [
+        {
+          "text": "They act as selective agonists for serotonin receptors.",
+          "isCorrect": false,
+          "rationale": "Serotonin receptors are often targets of second-generation antipsychotics, not the classic first-generation ones."
+        },
+        {
+          "text": "They act as selective antagonists of dopamine $D_2$ receptors.",
+          "isCorrect": true,
+          "rationale": "By blocking these specific receptors, they effectively reduce 'positive' symptoms of schizophrenia like hallucinations."
+        },
+        {
+          "text": "They increase the overall volume of the cerebral ventricles.",
+          "isCorrect": false,
+          "rationale": "Enlarged ventricles are an anatomical characteristic of schizophrenia itself, not a intended effect of the medication."
+        },
+        {
+          "text": "They prevent the reuptake of norepinephrine in the prefrontal cortex.",
+          "isCorrect": false,
+          "rationale": "This mechanism is more common in stimulants and certain antidepressants rather than antipsychotic medications."
+        }
+      ],
+      "hint": "These drugs target the catecholamine most closely linked to the brain's reward and hallucination pathways."
+    },
+    {
+      "question": "What is the primary role of the neurotransmitter $\\gamma$-aminobutyric acid ($GABA$)?",
+      "answerOptions": [
+        {
+          "text": "It acts as the brain's main excitatory transmitter, promoting neural firing.",
+          "isCorrect": false,
+          "rationale": "Glutamate is the primary excitatory transmitter; $GABA$ serves the opposite function."
+        },
+        {
+          "text": "It is a monoamine responsible for regulating mood and sleep patterns.",
+          "isCorrect": false,
+          "rationale": "Serotonin and norepinephrine are monoamines that regulate mood; $GABA$ is an amino acid transmitter."
+        },
+        {
+          "text": "It acts as the primary inhibitory neurotransmitter in the mature mammalian brain.",
+          "isCorrect": true,
+          "rationale": "By reducing the excitability of neurons, it prevents over-activity in the brain; drugs that block it can cause seizures."
+        },
+        {
+          "text": "It is exclusively found in the peripheral nervous system to control muscle contraction.",
+          "isCorrect": false,
+          "rationale": "Acetylcholine is the primary transmitter at the neuromuscular junction; $GABA$ is widely distributed throughout the central nervous system."
+        }
+      ],
+      "hint": "Think of this neurotransmitter as the 'brakes' of the central nervous system."
+    },
+    {
+      "question": "According to the five research perspectives in behavioural neuroscience, 'ontogeny' refers to which of the following?",
+      "answerOptions": [
+        {
+          "text": "The evolution of behaviours across different species over millions of years.",
+          "isCorrect": false,
+          "rationale": "This describes the evolutionary perspective rather than the development of a single individual."
+        },
+        {
+          "text": "The process by which an individual changes in the course of its lifetime.",
+          "isCorrect": true,
+          "rationale": "Ontogeny involves observing how a behaviour or biological characteristic changes as an organism grows up and grows old."
+        },
+        {
+          "text": "The study of the immediate biochemical mechanisms that control a behaviour.",
+          "isCorrect": false,
+          "rationale": "This refers to the study of biological mechanisms or 'proximate' questions."
+        },
+        {
+          "text": "The practical application of neuroscience to treat human dysfunctions.",
+          "isCorrect": false,
+          "rationale": "This describes the 'applications' perspective of behavioural neuroscience."
+        }
+      ],
+      "hint": "This term concerns the 'womb to tomb' progression of an organism."
+    },
+    {
+      "question": "What does the term 'neuroplasticity' refer to in the study of the brain?",
+      "answerOptions": [
+        {
+          "text": "The ability of the brain to be physically altered by experience or the environment.",
+          "isCorrect": true,
+          "rationale": "This concept highlights that the brain's structure\u2014such as the number of synapses\u2014is malleable and changes based on what we do and learn."
+        },
+        {
+          "text": "The rigid, unchanging nature of neural circuits once they are formed in infancy.",
+          "isCorrect": false,
+          "rationale": "The text explicitly rejects this view, noting that even adult brains can change, such as through the motion of dendritic spines."
+        },
+        {
+          "text": "The replacement of damaged brain tissue with synthetic plastic implants.",
+          "isCorrect": false,
+          "rationale": "Plasticity refers to biological flexibility, not the use of artificial materials."
+        },
+        {
+          "text": "The tendency of the brain to return to a default state after a trauma.",
+          "isCorrect": false,
+          "rationale": "Plasticity is about modification and change, not necessarily the restoration of a previous state."
+        }
+      ],
+      "hint": "The word is derived from the Greek for 'to mold or form'."
+    },
+    {
+      "question": "Which of the following describes the strategy of 'reductionism' in scientific research?",
+      "answerOptions": [
+        {
+          "text": "The belief that mind and body are two separate, non-overlapping entities.",
+          "isCorrect": false,
+          "rationale": "This describes dualism, which is generally rejected by modern neuroscientists."
+        },
+        {
+          "text": "Breaking a system down into increasingly smaller parts to understand its function.",
+          "isCorrect": true,
+          "rationale": "By looking at molecules or single cells, researchers hope to explain the complex behaviours of the whole organism."
+        },
+        {
+          "text": "The practice of using fewer animals in research to meet ethical guidelines.",
+          "isCorrect": false,
+          "rationale": "While related to ethics, reductionism in this context is an analytical approach to understanding complex systems."
+        },
+        {
+          "text": "A method of brain imaging that reduces the complexity of background activity.",
+          "isCorrect": false,
+          "rationale": "This is a technical process in imaging, not the overarching scientific philosophy of analysis described."
+        }
+      ],
+      "hint": "It involves zooming in on simpler levels of analysis to find explanations for larger phenomena."
+    },
+    {
+      "question": "According to the text, why is the term 'hallucinogen' considered a bit of a misnomer for drugs like LSD?",
+      "answerOptions": [
+        {
+          "text": "Because they only produce effects if the user expects to have them.",
+          "isCorrect": false,
+          "rationale": "While expectations (set and setting) matter, these drugs have potent physiological actions regardless of belief."
+        },
+        {
+          "text": "Because they typically alter or distort existing perceptions rather than creating novel ones from scratch.",
+          "isCorrect": true,
+          "rationale": "Users often see 'fantastic images' in existing objects rather than hearing or seeing things that are entirely absent."
+        },
+        {
+          "text": "Because the experiences they produce are always indistinguishable from reality.",
+          "isCorrect": false,
+          "rationale": "The text notes that users are often aware that the altered perceptions are not real events."
+        },
+        {
+          "text": "Because they only affect the sense of smell and touch, not vision or hearing.",
+          "isCorrect": false,
+          "rationale": "LSD and similar drugs are famous for their profound effects on visual and auditory perception."
+        }
+      ],
+      "hint": "A true hallucination occurs in the complete absence of sensory stimulation."
+    },
+    {
+      "question": "What does 'biotransformation' refer to in the context of pharmacology?",
+      "answerOptions": [
+        {
+          "text": "The process of a drug molecules moving from the blood into the brain.",
+          "isCorrect": false,
+          "rationale": "This is a matter of distribution and crossing the blood-brain barrier, not chemical transformation."
+        },
+        {
+          "text": "The enzymatic conversion of a drug into a metabolite that may be active or inactive.",
+          "isCorrect": true,
+          "rationale": "Liver enzymes transform the original substance, which can sometimes result in new effects from the metabolites."
+        },
+        {
+          "text": "The change in a receptor's shape when a ligand binds to it.",
+          "isCorrect": false,
+          "rationale": "This describes receptor activation or conformational change, not the metabolic alteration of the drug itself."
+        },
+        {
+          "text": "The transition of an individual from a state of use to a state of addiction.",
+          "isCorrect": false,
+          "rationale": "This is a behavioural and psychological process, whereas biotransformation is a biochemical one."
+        }
+      ],
+      "hint": "This term describes what happens when the body's enzymes 'go to work' on a drug molecule."
+    },
+    {
+      "question": "Which family of peptide transmitters is often referred to as the body's own 'narcotics'?",
+      "answerOptions": [
+        {
+          "text": "Catecholamines",
+          "isCorrect": false,
+          "rationale": "This group includes dopamine and norepinephrine, which are involved in arousal and reward but are not the body's natural opioids."
+        },
+        {
+          "text": "Endogenous opioids",
+          "isCorrect": true,
+          "rationale": "This family, including enkephalins and endorphins, binds to the same receptors as morphine to relieve pain."
+        },
+        {
+          "text": "Anxiolytics",
+          "isCorrect": false,
+          "rationale": "This is a functional category of drugs (like benzodiazepines) that reduce anxiety, not a family of endogenous peptide transmitters."
+        },
+        {
+          "text": "Indoleamines",
+          "isCorrect": false,
+          "rationale": "This group includes serotonin, which regulates mood but does not have the primary 'narcotic' or analgesic properties of opioids."
+        }
+      ],
+      "hint": "These include substances like endorphins, whose name is a contraction of 'endogenous morphine'."
+    }
+  ]
+}

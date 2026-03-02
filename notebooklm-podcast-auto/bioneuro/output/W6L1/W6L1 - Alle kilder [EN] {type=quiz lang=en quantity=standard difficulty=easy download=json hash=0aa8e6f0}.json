@@ -1,0 +1,317 @@
+{
+  "title": "Neuroscience Quiz",
+  "questions": [
+    {
+      "question": "What is the primary objective of the field of behavioural neuroscience?",
+      "answerOptions": [
+        {
+          "text": "To understand the neural bases of behaviour and mental processes.",
+          "isCorrect": true,
+          "rationale": "This definition encompasses the study of how brain structures produce mind and behaviour, and how experience reciprocally alters the brain."
+        },
+        {
+          "text": "To study social interactions without considering biological mechanisms.",
+          "isCorrect": false,
+          "rationale": "Social neuroscience is a subset of the field, but behavioural neuroscience specifically focuses on the biological and neural underpinnings."
+        },
+        {
+          "text": "To prove that the heart is the seat of all human emotions.",
+          "isCorrect": false,
+          "rationale": "While historically held by Aristotle, modern neuroscience has established the brain, not the heart, as the organ of behaviour."
+        },
+        {
+          "text": "To replace human brains with mechanical control units in the near future.",
+          "isCorrect": false,
+          "rationale": "This is a science fiction premise mentioned as an introduction, but it is far outside current scientific capabilities and goals."
+        }
+      ],
+      "hint": "Consider the relationship between the physical nervous system and an organism's actions."
+    },
+    {
+      "question": "In a research study using somatic intervention, what is being measured as the dependent variable?",
+      "answerOptions": [
+        {
+          "text": "The resulting behavioural change or effect.",
+          "isCorrect": true,
+          "rationale": "In somatic intervention, the body is manipulated (independent variable) to see how behaviour (dependent variable) reacts."
+        },
+        {
+          "text": "The physical structure of the brain being manipulated.",
+          "isCorrect": false,
+          "rationale": "The manipulation of the brain structure serves as the independent variable, not the measured outcome."
+        },
+        {
+          "text": "The environmental conditions in which the subject lives.",
+          "isCorrect": false,
+          "rationale": "Environmental changes are typically the independent variables in behavioural intervention, not somatic intervention."
+        },
+        {
+          "text": "The correlation coefficient between two body measures.",
+          "isCorrect": false,
+          "rationale": "Correlation studies measure how two variables covary without manipulation, rather than testing a dependent variable."
+        }
+      ],
+      "hint": "Think about which factor is the 'effect' rather than the 'cause' in this specific experimental approach."
+    },
+    {
+      "question": "Which term describes the process by which an individual changes and grows older throughout their lifetime?",
+      "answerOptions": [
+        {
+          "text": "Ontogeny",
+          "isCorrect": true,
+          "rationale": "Ontogeny is specifically defined as the process of an individual changing in the course of its lifetime, from growing up to growing old."
+        },
+        {
+          "text": "Reductionism",
+          "isCorrect": false,
+          "rationale": "Reductionism is a scientific strategy of breaking systems into smaller parts, not a developmental process."
+        },
+        {
+          "text": "Phylogeny",
+          "isCorrect": false,
+          "rationale": "This relates to the evolutionary history of a species rather than the development of a single individual."
+        },
+        {
+          "text": "Neuroplasticity",
+          "isCorrect": false,
+          "rationale": "While neuroplasticity occurs during a lifetime, it refers specifically to the brain's ability to be reshaped by experience."
+        }
+      ],
+      "hint": "This term is often used to describe the biological development of an organism from 'the womb to the tomb'."
+    },
+    {
+      "question": "According to modern imaging studies, what is the approximate correlation between brain size and $IQ$ scores after correcting for body size?",
+      "answerOptions": [
+        {
+          "text": "$+0.38$",
+          "isCorrect": true,
+          "rationale": "One specific study cited used brain scans to find a correlation of $+0.38$ between brain volume and intelligence test scores."
+        },
+        {
+          "text": "$+0.05$",
+          "isCorrect": false,
+          "rationale": "This value is lower than the significant correlations found using modern non-invasive brain imaging techniques."
+        },
+        {
+          "text": "$+0.85$",
+          "isCorrect": false,
+          "rationale": "While significant, the correlation is modest, and a value this high would imply brain size accounts for nearly all intelligence variance."
+        },
+        {
+          "text": "$-0.26$",
+          "isCorrect": false,
+          "rationale": "The relationship found in modern studies is positive, meaning larger volumes generally correlate with higher scores, not lower."
+        }
+      ],
+      "hint": "The correlation is statistically significant but modest, suggesting brain size only accounts for a portion of the variability in test scores."
+    },
+    {
+      "question": "Ren\u00e9 Descartes is well-known for promoting the concept of 'dualism'. What does this notion suggest?",
+      "answerOptions": [
+        {
+          "text": "Humans have a non-material soul as well as a material body.",
+          "isCorrect": true,
+          "rationale": "Dualism asserts that the mind is subject to spiritual interactions while the body is subject to material interactions."
+        },
+        {
+          "text": "The brain and the heart are equally responsible for thought.",
+          "isCorrect": false,
+          "rationale": "Descartes moved away from the 'heart' theory, focusing instead on the brain and the pineal gland as points of contact."
+        },
+        {
+          "text": "The left and right hemispheres of the brain perform identical functions.",
+          "isCorrect": false,
+          "rationale": "Dualism refers to the separation of mind and body, not the symmetrical functions of the brain's hemispheres."
+        },
+        {
+          "text": "All mental processes can be reduced to purely physical interactions.",
+          "isCorrect": false,
+          "rationale": "This is the view of modern neuroscientists who reject dualism in favour of a materialist perspective."
+        }
+      ],
+      "hint": "Think about the distinction between the 'machine' of the body and the 'spirit' of the mind."
+    },
+    {
+      "question": "What was the primary flaw in the nineteenth-century practice of phrenology?",
+      "answerOptions": [
+        {
+          "text": "It used skull bumps to infer the development of underlying brain regions.",
+          "isCorrect": true,
+          "rationale": "Phrenologists erroneously believed that the shape of the skull accurately reflected the size and function of the brain tissue beneath it."
+        },
+        {
+          "text": "It claimed that the brain had no role in controlling behaviour.",
+          "isCorrect": false,
+          "rationale": "Phrenologists actually helped popularise the idea that the brain is the organ of behaviour, even if their methods were wrong."
+        },
+        {
+          "text": "It relied exclusively on electrical stimulation of the cortex.",
+          "isCorrect": false,
+          "rationale": "Electrical stimulation is a modern somatic intervention; phrenology was based on external skull observations."
+        },
+        {
+          "text": "It suggested that language was localised in the frontal lobe.",
+          "isCorrect": false,
+          "rationale": "While phrenologists assigned many faculties to regions, the specific localisation of language was later scientifically argued by Paul Broca."
+        }
+      ],
+      "hint": "Consider the relationship between the 'bumps' on a person's head and the actual organ inside."
+    },
+    {
+      "question": "What characterizes a 'competitive antagonist' drug?",
+      "answerOptions": [
+        {
+          "text": "It binds to a receptor without activating it, effectively blocking agonists.",
+          "isCorrect": true,
+          "rationale": "Competitive antagonists compete for the same binding site as the transmitter (agonist) but do not trigger a response."
+        },
+        {
+          "text": "It mimics the effect of a natural neurotransmitter to activate a receptor.",
+          "isCorrect": false,
+          "rationale": "A drug that binds and activates a receptor is called an agonist, not an antagonist."
+        },
+        {
+          "text": "It increases the production of neurotransmitters in the presynaptic cell.",
+          "isCorrect": false,
+          "rationale": "Antagonism refers to receptor-level interference rather than the enhancement of transmitter synthesis."
+        },
+        {
+          "text": "It binds to a non-competitive site to change the receptor's shape.",
+          "isCorrect": false,
+          "rationale": "This describes a non-competitive antagonist; a competitive one specifically vies for the primary binding site."
+        }
+      ],
+      "hint": "Focus on the 'competitive' aspect regarding the primary binding site on the receptor."
+    },
+    {
+      "question": "Which neurotransmitter system is the primary target for first-generation antipsychotic drugs like chlorpromazine?",
+      "answerOptions": [
+        {
+          "text": "Dopamine $D_{2}$ receptors",
+          "isCorrect": true,
+          "rationale": "First-generation antipsychotics act as selective antagonists of $D_{2}$ receptors, which led to the dopaminergic model of schizophrenia."
+        },
+        {
+          "text": "Serotonin $5$-$HT_{2A}$ receptors",
+          "isCorrect": false,
+          "rationale": "While second-generation antipsychotics target these, the first-generation drugs were defined by their dopamine antagonism."
+        },
+        {
+          "text": "GABA receptors",
+          "isCorrect": false,
+          "rationale": "GABA receptors are the primary targets for anxiolytics like benzodiazepines, not classic antipsychotics."
+        },
+        {
+          "text": "NMDA glutamate receptors",
+          "isCorrect": false,
+          "rationale": "NMDA receptors are associated with drugs like ketamine; they were not the targets of the first wave of antipsychotics."
+        }
+      ],
+      "hint": "Consider the neurotransmitter most closely associated with the 'positive' symptoms of schizophrenia, such as hallucinations."
+    },
+    {
+      "question": "Caffeine is a widely used stimulant that produces its effects by blocking the receptors for which endogenous neuromodulator?",
+      "answerOptions": [
+        {
+          "text": "Adenosine",
+          "isCorrect": true,
+          "rationale": "Caffeine acts as an antagonist at adenosine autoreceptors, preventing adenosine's normal inhibitory effect on catecholamine release."
+        },
+        {
+          "text": "Melatonin",
+          "isCorrect": false,
+          "rationale": "Melatonin is involved in sleep cycles, but caffeine's arousal mechanism specifically involves interfering with adenosine."
+        },
+        {
+          "text": "Acetylcholine",
+          "isCorrect": false,
+          "rationale": "While caffeine affects arousal, it does not primarily work by blocking acetylcholine receptors."
+        },
+        {
+          "text": "Dopamine",
+          "isCorrect": false,
+          "rationale": "Caffeine increases dopamine release indirectly, but its primary 'target' for blockade is the adenosine receptor."
+        }
+      ],
+      "hint": "This neuromodulator is typically co-released with primary transmitters to inhibit further release and promote 'sleep pressure'."
+    },
+    {
+      "question": "Which brain region, located deep within the lateral sulcus, has been identified as a key participant in drug craving and addiction?",
+      "answerOptions": [
+        {
+          "text": "The insula",
+          "isCorrect": true,
+          "rationale": "Damage to the insula has been reported to cause the loss of the urge to smoke, and it is thought to mediate subjective feelings of drug hunger."
+        },
+        {
+          "text": "The hippocampus",
+          "isCorrect": false,
+          "rationale": "The hippocampus is primarily associated with learning and memory rather than the specific subjective 'urge' of drug craving."
+        },
+        {
+          "text": "The cerebellum",
+          "isCorrect": false,
+          "rationale": "The cerebellum is mostly involved in motor coordination and balance, not the motivational processes of addiction."
+        },
+        {
+          "text": "The pineal gland",
+          "isCorrect": false,
+          "rationale": "The pineal gland is involved in melatonin production and sleep-wake cycles, not drug addiction circuits."
+        }
+      ],
+      "hint": "Its name is Latin for 'island', reflecting its hidden position beneath the surface of the frontal and temporal lobes."
+    },
+    {
+      "question": "Which of the following families of endogenous opioids is often referred to as 'the body's own narcotics'?",
+      "answerOptions": [
+        {
+          "text": "Enkephalins",
+          "isCorrect": true,
+          "rationale": "Enkephalins are one of the three major families of potent peptides that bind to opioid receptors to relieve pain."
+        },
+        {
+          "text": "Benzodiazepines",
+          "isCorrect": false,
+          "rationale": "Benzodiazepines are exogenous synthetic drugs used for anxiety, not endogenous peptides produced by the brain."
+        },
+        {
+          "text": "Catecholamines",
+          "isCorrect": false,
+          "rationale": "This group includes transmitters like dopamine and norepinephrine, which are monoamines rather than opioid peptides."
+        },
+        {
+          "text": "Indoleamines",
+          "isCorrect": false,
+          "rationale": "Serotonin and melatonin are indoleamines; they do not belong to the opioid family."
+        }
+      ],
+      "hint": "Think of the three 'E, E, and D' families of peptides produced within the head."
+    },
+    {
+      "question": "What distinguishes 'functional tolerance' from 'metabolic tolerance'?",
+      "answerOptions": [
+        {
+          "text": "It involves the up-regulation or down-regulation of receptors.",
+          "isCorrect": true,
+          "rationale": "Functional tolerance occurs when the brain changes its sensitivity by altering the number of available receptors in response to drug exposure."
+        },
+        {
+          "text": "It occurs when the body becomes more efficient at clearing the drug from the blood.",
+          "isCorrect": false,
+          "rationale": "This describes metabolic tolerance, where enzymes become better at breaking down the substance."
+        },
+        {
+          "text": "It only happens with high doses of intravenous drugs.",
+          "isCorrect": false,
+          "rationale": "Tolerance can develop with many routes of administration and varying doses over repeated exposure."
+        },
+        {
+          "text": "It results in an enhanced response to the drug over time.",
+          "isCorrect": false,
+          "rationale": "An enhanced response is called sensitization, whereas tolerance is a decreased response."
+        }
+      ],
+      "hint": "Consider how the target neurons themselves adapt to the 'over-stimulation' caused by a drug."
+    }
+  ]
+}

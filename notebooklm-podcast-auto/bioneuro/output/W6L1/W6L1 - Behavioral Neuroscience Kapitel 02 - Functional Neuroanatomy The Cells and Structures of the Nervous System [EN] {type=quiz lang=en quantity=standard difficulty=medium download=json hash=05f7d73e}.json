@@ -1,0 +1,265 @@
+{
+  "title": "Neuroscience Quiz",
+  "questions": [
+    {
+      "question": "During the mid-twentieth century, Wilder Penfield developed a technique to ensure that surgical removal of diseased brain tissue did not damage vital areas. What is this procedure called?",
+      "answerOptions": [
+        {
+          "text": "Cortical electrical-stimulation mapping",
+          "isCorrect": true,
+          "rationale": "This procedure allows a surgeon to identify the locations of specific functions by stimulating the brain and observing the patient's responses while they are conscious."
+        },
+        {
+          "text": "Functional magnetic resonance imaging",
+          "isCorrect": false,
+          "rationale": "While used for brain mapping, this is a modern non-invasive imaging technique rather than a surgical stimulation procedure developed by Penfield."
+        },
+        {
+          "text": "Intracellular recording",
+          "isCorrect": false,
+          "rationale": "This involves measuring electrical activity from inside a single neuron rather than stimulating the cortical surface to map behavioural functions."
+        },
+        {
+          "text": "Electroencephalography",
+          "isCorrect": false,
+          "rationale": "This technique records the brain's overall electrical activity from the scalp rather than using electrodes to stimulate and map specific functional zones."
+        }
+      ],
+      "hint": "Think of the method used to evoke sensory or motor responses through direct application of electricity to the cortex."
+    },
+    {
+      "question": "Which historical hypothesis regarding the organisation of the nervous system was championed by Santiago Ram\u00f3n y Cajal?",
+      "answerOptions": [
+        {
+          "text": "The neuron doctrine",
+          "isCorrect": true,
+          "rationale": "This perspective proposes that neurons are independent cells that are structurally and functionally distinct, communicating across tiny gaps."
+        },
+        {
+          "text": "The reticular theory",
+          "isCorrect": false,
+          "rationale": "This was the opposing view held by Camillo Golgi, suggesting that neurons form a continuous, endless network of tubes."
+        },
+        {
+          "text": "The gliotransmission hypothesis",
+          "isCorrect": false,
+          "rationale": "This refers to the controversial modern idea that glia participate in synaptic transmission, which was not part of the early cellular debates."
+        },
+        {
+          "text": "The localizationist theory",
+          "isCorrect": false,
+          "rationale": "This theory focuses on specific brain regions controlling specific behaviours rather than the cellular connectivity debated by Cajal and Golgi."
+        }
+      ],
+      "hint": "Consider the idea that the brain is composed of individual, discrete cells."
+    },
+    {
+      "question": "In the functional 'zones' of a neuron, where is the decision to produce a neural signal typically made?",
+      "answerOptions": [
+        {
+          "text": "Integration zone",
+          "isCorrect": true,
+          "rationale": "Usually corresponding to the axon hillock, this region combines synaptic inputs to determine if an electrical impulse should be initiated."
+        },
+        {
+          "text": "Input zone",
+          "isCorrect": false,
+          "rationale": "This area, consisting of dendrites, is primarily responsible for receiving information rather than initiating the final output signal."
+        },
+        {
+          "text": "Conduction zone",
+          "isCorrect": false,
+          "rationale": "This region, represented by the axon, is designed to propagate an already-formed signal over long distances."
+        },
+        {
+          "text": "Output zone",
+          "isCorrect": false,
+          "rationale": "This zone consists of axon terminals where information is transferred to other cells after the decision to fire has already occurred."
+        }
+      ],
+      "hint": "Identify the region that acts as a gatekeeper, processing all incoming electrical inputs."
+    },
+    {
+      "question": "How is a bipolar neuron structurally distinguished from other neuron types?",
+      "answerOptions": [
+        {
+          "text": "It has a single dendrite at one end and a single axon at the other end.",
+          "isCorrect": true,
+          "rationale": "This specific arrangement of two distinct processes makes it particularly common in specialised sensory systems like vision."
+        },
+        {
+          "text": "It features many dendrites and a single axon extending from the cell body.",
+          "isCorrect": false,
+          "rationale": "This description refers to multipolar neurons, which are the most common type of neuron in the nervous system."
+        },
+        {
+          "text": "It has a single extension that branches in two directions after leaving the soma.",
+          "isCorrect": false,
+          "rationale": "This characterizes unipolar neurons, which are typically involved in transmitting touch information to the spinal cord."
+        },
+        {
+          "text": "It lacks an axon entirely and functions solely through dendritic connections.",
+          "isCorrect": false,
+          "rationale": "While some interneurons have short axons, the standard classification for bipolar cells includes both a dendrite and an axon."
+        }
+      ],
+      "hint": "Think about the number of extensions emerging directly from the cell body."
+    },
+    {
+      "question": "Which component of the synapse contains the specialised protein molecules that capture and react to neurotransmitters?",
+      "answerOptions": [
+        {
+          "text": "Postsynaptic membrane",
+          "isCorrect": true,
+          "rationale": "This surface contains a high density of receptors that convert chemical signals back into electrical changes within the receiving cell."
+        },
+        {
+          "text": "Presynaptic membrane",
+          "isCorrect": false,
+          "rationale": "This area is responsible for releasing neurotransmitters from vesicles rather than receiving them."
+        },
+        {
+          "text": "Synaptic cleft",
+          "isCorrect": false,
+          "rationale": "This is the fluid-filled gap that separates the two neurons and provides the space for neurotransmitter diffusion."
+        },
+        {
+          "text": "Synaptic vesicle",
+          "isCorrect": false,
+          "rationale": "These are the small spheres inside the axon terminal that store and transport the chemical messengers before release."
+        }
+      ],
+      "hint": "Look for the part of the junction that belongs to the 'receiving' neuron."
+    },
+    {
+      "question": "What is the typical width of the synaptic cleft in the human nervous system?",
+      "answerOptions": [
+        {
+          "text": "$20\\text{--}40\\text{ nm}$",
+          "isCorrect": true,
+          "rationale": "This minute gap is wide enough to separate the cells but narrow enough to allow for rapid diffusion of neurotransmitters."
+        },
+        {
+          "text": "$0.5\\text{ nm}$",
+          "isCorrect": false,
+          "rationale": "This size is more representative of the diameter of an individual ion channel within the cell membrane."
+        },
+        {
+          "text": "$5\\text{ nm}$",
+          "isCorrect": false,
+          "rationale": "This value reflects the thickness of the neuronal membrane itself rather than the space between two neurons."
+        },
+        {
+          "text": "$100\\text{ \\mu m}$",
+          "isCorrect": false,
+          "rationale": "This measurement is much larger and represents the diameter of a large nerve cell body."
+        }
+      ],
+      "hint": "Recall the measurement used for the tiny space across which chemical communication occurs."
+    },
+    {
+      "question": "Which type of glial cell is responsible for the 'cleanup' process in the brain, migrating to sites of injury to remove cellular debris?",
+      "answerOptions": [
+        {
+          "text": "Microglial cells",
+          "isCorrect": true,
+          "rationale": "These small, active cells act as the brain's immune defence and cleanup crew by engulfing and destroying debris."
+        },
+        {
+          "text": "Astrocytes",
+          "isCorrect": false,
+          "rationale": "While they support neurons and regulate blood flow, their primary role is not the engulfment of dead cell material."
+        },
+        {
+          "text": "Oligodendrocytes",
+          "isCorrect": false,
+          "rationale": "These cells specialise in creating the myelin sheath for multiple axons within the central nervous system."
+        },
+        {
+          "text": "Schwann cells",
+          "isCorrect": false,
+          "rationale": "These provide myelination specifically for axons in the peripheral nervous system rather than cleaning up the brain."
+        }
+      ],
+      "hint": "Think of the smallest glial cells that act as the nervous system's immune representatives."
+    },
+    {
+      "question": "What is the function of motor proteins in the context of axonal transport?",
+      "answerOptions": [
+        {
+          "text": "They 'walk' transport vesicles along microtubules inside the axon.",
+          "isCorrect": true,
+          "rationale": "These proteins provide the physical mechanism for moving materials between the cell body and the axon terminals."
+        },
+        {
+          "text": "They generate the electrical impulses that travel along the axonal membrane.",
+          "isCorrect": false,
+          "rationale": "The transmission of electrical signals is a membrane-level event involving ion channels, not a mechanical transport process."
+        },
+        {
+          "text": "They form the physical structure of the myelin sheath around the axon.",
+          "isCorrect": false,
+          "rationale": "Myelin is formed by the fatty membranes of glial cells, such as oligodendrocytes, not by individual motor proteins."
+        },
+        {
+          "text": "They act as receptors on the postsynaptic membrane to bind neurotransmitters.",
+          "isCorrect": false,
+          "rationale": "Receptors are specialised proteins on the cell surface, whereas motor proteins work internally along the cytoskeleton."
+        }
+      ],
+      "hint": "Consider how materials like enzymes and proteins are physically moved to distant axon terminals."
+    },
+    {
+      "question": "Which histological staining method is used to selectively label only a small minority of neurons, revealing their full fine structural details?",
+      "answerOptions": [
+        {
+          "text": "Golgi stain",
+          "isCorrect": true,
+          "rationale": "This mysterious stain completely fills a few cells, allowing researchers to see the intricate branching of dendrites and axons against a clear background."
+        },
+        {
+          "text": "Nissl stain",
+          "isCorrect": false,
+          "rationale": "This method outlines all cell bodies in a sample by binding to RNA, which is useful for measuring cell density but not fine branching."
+        },
+        {
+          "text": "Immunohistochemistry (IHC)",
+          "isCorrect": false,
+          "rationale": "This technique uses antibodies to find specific proteins, identifying which cells express those proteins rather than revealing general cell shape."
+        },
+        {
+          "text": "Anterograde labeling",
+          "isCorrect": false,
+          "rationale": "This is a tract-tracing method used to follow axonal projections to their targets, rather than a general cell-shape stain."
+        }
+      ],
+      "hint": "Recall the technique used by Cajal to create his famous pen-and-ink studies of neuron shapes."
+    },
+    {
+      "question": "How do oligodendrocytes and Schwann cells differ in their myelination patterns?",
+      "answerOptions": [
+        {
+          "text": "One oligodendrocyte myelinate multiple axons, while one Schwann cell myelinate a single segment of one axon.",
+          "isCorrect": true,
+          "rationale": "Oligodendrocytes in the CNS extend processes to multiple nearby axons, whereas Schwann cells in the PNS wrap around only one axon."
+        },
+        {
+          "text": "Oligodendrocytes are found in the peripheral nervous system, whereas Schwann cells are in the brain.",
+          "isCorrect": false,
+          "rationale": "This is the opposite of the actual distribution; oligodendrocytes are CNS glia and Schwann cells are PNS glia."
+        },
+        {
+          "text": "Oligodendrocytes use protein to insulate, whereas Schwann cells use fatty lipids.",
+          "isCorrect": false,
+          "rationale": "Both types of cells create myelin, which is primarily a fatty insulation, regardless of the glial cell type."
+        },
+        {
+          "text": "Schwann cells provide myelin beads to several nearby axons at once.",
+          "isCorrect": false,
+          "rationale": "This characteristic describes the oligodendrocyte; Schwann cells are limited to a single axon."
+        }
+      ],
+      "hint": "Compare how these two types of glia interact with axons in the central versus peripheral nervous systems."
+    }
+  ]
+}

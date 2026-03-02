@@ -1,0 +1,265 @@
+{
+  "title": "Neuroscience Quiz",
+  "questions": [
+    {
+      "question": "In the context of behavioural neuroscience research, which approach is being utilised when a researcher administers a specific hormone to an animal to observe its subsequent mating behaviour?",
+      "answerOptions": [
+        {
+          "text": "Somatic intervention",
+          "isCorrect": true,
+          "rationale": "This approach involves manipulating a physical structure or function of the body (the independent variable) to observe changes in behaviour (the dependent variable)."
+        },
+        {
+          "text": "Behavioural intervention",
+          "isCorrect": false,
+          "rationale": "In this approach, the behaviour would be the independent variable, and the resulting change in body chemistry would be the dependent variable."
+        },
+        {
+          "text": "Correlational study",
+          "isCorrect": false,
+          "rationale": "This method looks for a relationship between two variables as they occur naturally, without active manipulation of either."
+        },
+        {
+          "text": "Ontogenetic analysis",
+          "isCorrect": false,
+          "rationale": "This refers to the study of how an individual's behaviour or brain changes throughout their lifespan, rather than a specific experimental manipulation."
+        }
+      ],
+      "hint": "Consider whether the experimenter is changing a physical variable or a behavioural variable first."
+    },
+    {
+      "question": "Which of the following best describes the concept of 'neuroplasticity' as discussed in the source material?",
+      "answerOptions": [
+        {
+          "text": "The physical alteration of the brain's structure or function resulting from experience or environment.",
+          "isCorrect": true,
+          "rationale": "The term derived from the Greek word for 'to mold' refers to the nervous system's ability to be physically changed by life experiences."
+        },
+        {
+          "text": "The brain's ability to remain rigid and unchanging once adulthood is reached.",
+          "isCorrect": false,
+          "rationale": "Research shows that even adult brains can change, such as the sea slug changing connections when learning a task."
+        },
+        {
+          "text": "The synthetic manufacturing of artificial brain cells for host androids.",
+          "isCorrect": false,
+          "rationale": "While the text mentions androids, neuroplasticity refers to a biological property of living nervous systems."
+        },
+        {
+          "text": "The chemical process by which neurons are protected by a plastic-like sheath.",
+          "isCorrect": false,
+          "rationale": "This misinterprets the term 'plastic', which in neuroscience refers to malleability rather than a chemical material."
+        }
+      ],
+      "hint": "Think about the original Greek meaning of the word 'plastic', which implies being malleable or able to be shaped."
+    },
+    {
+      "question": "Ren\u00e9 Descartes is historically significant for proposing a concept known as 'dualism'. What was the core assertion of this belief?",
+      "answerOptions": [
+        {
+          "text": "Humans possess a non-material soul as well as a material body.",
+          "isCorrect": true,
+          "rationale": "Descartes argued that the mind was subject to spiritual interactions while the body was subject to material laws, a view largely rejected by modern neuroscience."
+        },
+        {
+          "text": "The brain and the heart work in tandem to control all human emotions.",
+          "isCorrect": false,
+          "rationale": "This reflects older Aristotelian views; Descartes specifically focussed on the interaction between the soul and the body."
+        },
+        {
+          "text": "Spinal reflexes are controlled by the pineal gland alone.",
+          "isCorrect": false,
+          "rationale": "Descartes believed the pineal gland was where the soul and body met, but he viewed reflexes as a separate mechanical process."
+        },
+        {
+          "text": "Mental capacities are distributed equally across both hemispheres of the cerebral cortex.",
+          "isCorrect": false,
+          "rationale": "Descartes actually noted the pineal gland's single nature as a contrast to the symmetrical, double structures of most of the brain."
+        }
+      ],
+      "hint": "Recall Descartes' concern regarding free will and the differences between mechanical machines and humans."
+    },
+    {
+      "question": "According to the study by Cooke et al. ($2000$), how did social isolation affect the brain structure of young male rats?",
+      "answerOptions": [
+        {
+          "text": "The posterodorsal portion of the medial amygdala was significantly smaller in isolated rats.",
+          "isCorrect": true,
+          "rationale": "This specific region, involved in processing odors, was found to have stunted growth due to the lack of social play and interaction."
+        },
+        {
+          "text": "The entire cerebral cortex became thinner due to the stress of being alone.",
+          "isCorrect": false,
+          "rationale": "The study found specific regional differences rather than a generalized shrinking of the entire cortex."
+        },
+        {
+          "text": "The number of neurons in the olfactory bulb increased to compensate for a lack of social stimuli.",
+          "isCorrect": false,
+          "rationale": "The research indicated a decrease in the volume of a processing region, not a compensatory increase in neuron count."
+        },
+        {
+          "text": "No physical differences were found, suggesting that social behaviour does not alter brain anatomy.",
+          "isCorrect": false,
+          "rationale": "This contradicts the core theme of neuroplasticity and the specific results shown in the study's quadrants analysis."
+        }
+      ],
+      "hint": "Focuss on the specific brain region mentioned in Figure $1.4$ that is involved in processing odours."
+    },
+    {
+      "question": "Based on modern brain-imaging research, what is the reported relationship between brain size and intelligence ($IQ$) scores in humans?",
+      "answerOptions": [
+        {
+          "text": "There is a statistically significant correlation ranging from approximately $+0.26$ to $+0.38$.",
+          "isCorrect": true,
+          "rationale": "While significant, these modest correlations indicate that brain size only accounts for about $10\\%$-$20\\%$ of the variability in $IQ$ scores."
+        },
+        {
+          "text": "There is a near-perfect correlation of $+0.95$, proving that larger brains cause higher intelligence.",
+          "isCorrect": false,
+          "rationale": "Correlations do not prove causation, and the actual figures are much lower than $+0.95$."
+        },
+        {
+          "text": "No correlation exists, confirming Sir Francis Galton's original nineteenth-century findings.",
+          "isCorrect": false,
+          "rationale": "Galton failed to find a link using head size, but modern imaging of actual brain tissue has confirmed a modest correlation."
+        },
+        {
+          "text": "A negative correlation was found, indicating that smaller, more compact brains are more efficient.",
+          "isCorrect": false,
+          "rationale": "The evidence presented indicates a positive, albeit modest, relationship between volume (especially in the frontal regions) and $IQ$."
+        }
+      ],
+      "hint": "The correlation is positive but not strong enough to explain the majority of intelligence differences."
+    },
+    {
+      "question": "What is 'ontogeny', and why is it a useful perspective in behavioural neuroscience?",
+      "answerOptions": [
+        {
+          "text": "It is the process of an individual changing over their lifetime; it helps identify when specific behaviours and their underlying mechanisms emerge.",
+          "isCorrect": true,
+          "rationale": "By observing changes during development, researchers can gain clues about the maturation of required brain circuits for tasks like learning."
+        },
+        {
+          "text": "It is the study of how species evolve over millions of years to adapt to their environment.",
+          "isCorrect": false,
+          "rationale": "This describes the evolutionary perspective, whereas ontogeny focusses on the individual's lifespan from 'womb to tomb'."
+        },
+        {
+          "text": "It is the reductionist method of breaking the brain down into its molecular components.",
+          "isCorrect": false,
+          "rationale": "Ontogeny is a developmental perspective, while reductionism is a strategic approach to levels of analysis."
+        },
+        {
+          "text": "It is the clinical application of neuroscience to treat psychiatric disorders in the elderly.",
+          "isCorrect": false,
+          "rationale": "While it includes growing old, ontogeny encompasses the entire lifespan and is a research perspective, not just a clinical application."
+        }
+      ],
+      "hint": "Consider the lifespan of a single organism rather than the history of a whole species."
+    },
+    {
+      "question": "In the nineteenth century, the 'phrenologists' were known for which specific belief regarding the brain?",
+      "answerOptions": [
+        {
+          "text": "That bumps on the skull reflected the enlargement of specific brain regions responsible for certain faculties.",
+          "isCorrect": true,
+          "rationale": "Phrenology was an early, albeit flawed, attempt to localise function by inferring brain development from the shape of the cranium."
+        },
+        {
+          "text": "That the brain functioned as a single, indivisible whole with no localisation of function.",
+          "isCorrect": false,
+          "rationale": "This view was held by the opponents of phrenology, who rejected the idea of separate functional areas."
+        },
+        {
+          "text": "That the heart was the true seat of wisdom and the brain was merely for cooling blood.",
+          "isCorrect": false,
+          "rationale": "This was Aristotle's ancient view, which had been largely superseded by the nineteenth century."
+        },
+        {
+          "text": "That all human behaviour was controlled by 'animal spirits' flowing through hollow nerves.",
+          "isCorrect": false,
+          "rationale": "This was the second-century view of Galen, which predated the phrenologists by many centuries."
+        }
+      ],
+      "hint": "Think about the methodology of 'reading' the external surface of the head."
+    },
+    {
+      "question": "Which level of analysis in behavioural neuroscience would involve studying the 'Hebbian synapse' and cell assemblies?",
+      "answerOptions": [
+        {
+          "text": "Synaptic and Cellular levels",
+          "isCorrect": true,
+          "rationale": "Donald Hebb's theories focussed on how individual neurons and their connections (synapses) strengthen through use to form functional groups."
+        },
+        {
+          "text": "Social level",
+          "isCorrect": false,
+          "rationale": "The social level deals with interactions between individuals, rather than the microscopic junctions between nerve cells."
+        },
+        {
+          "text": "Organ level",
+          "isCorrect": false,
+          "rationale": "The organ level looks at the brain or spinal cord as a whole, whereas synapses are sub-units of a single cell."
+        },
+        {
+          "text": "Molecular level",
+          "isCorrect": false,
+          "rationale": "While synapses involve molecules, 'cell assemblies' and Hebbian synapses specifically describe the interaction and organisation of cells and their junctions."
+        }
+      ],
+      "hint": "Consider the scale of the structures: are they whole organisms, whole organs, or the junctions between cells?"
+    },
+    {
+      "question": "The source material mentions a study on pain expectation ($Figure 1.5$). What was the primary finding regarding brain activation?",
+      "answerOptions": [
+        {
+          "text": "Psychological expectation of high pain increased activation in the anterior cingulate cortex, even when the temperature remained constant.",
+          "isCorrect": true,
+          "rationale": "This demonstrates how social or psychological influences can physically alter brain responses to the same physical stimulus ($47^{\\circ}C$ water)."
+        },
+        {
+          "text": "The brain's response to pain is purely mechanical and is unaffected by a person's beliefs or expectations.",
+          "isCorrect": false,
+          "rationale": "The study explicitly showed that those led to believe the discomfort would be worse had more activated brains."
+        },
+        {
+          "text": "Pain receptors in the hand sent stronger electrical signals to the brain when the subject was anxious.",
+          "isCorrect": false,
+          "rationale": "The study focussed on brain activation (the anterior cingulate cortex) rather than the peripheral receptors in the hand."
+        },
+        {
+          "text": "Only the primary visual cortex was activated, as subjects were looking at the water.",
+          "isCorrect": false,
+          "rationale": "The activation was found in the anterior cingulate cortex, a region associated with the emotional and sensory processing of pain."
+        }
+      ],
+      "hint": "Think about how the 'socially induced psychological expectation' affected the magnitude of the brain's internal response."
+    },
+    {
+      "question": "Approximately how many neurons are estimated to be in the human brain, and how many synapses do they form?",
+      "answerOptions": [
+        {
+          "text": "$86$ billion neurons forming trillions of synapses.",
+          "isCorrect": true,
+          "rationale": "These figures highlight the incredible complexity of the 'hardware' between our ears, with each neuron contacting many others."
+        },
+        {
+          "text": "$10$ trillion neurons forming billions of synapses.",
+          "isCorrect": false,
+          "rationale": "The number of neurons is estimated at $86$ billion; the 'trillions' figure refers to the synapses between them."
+        },
+        {
+          "text": "$100$ million neurons forming $10$ trillion synapses.",
+          "isCorrect": false,
+          "rationale": "According to Figure $1.16$, $100$ million is the count for a complete rat brain, not a human one."
+        },
+        {
+          "text": "$1$ billion neurons forming $1$ trillion synapses.",
+          "isCorrect": false,
+          "rationale": "While 'a billion' is hard to grasp, the human brain contains significantly more, approximately $86$ billion."
+        }
+      ],
+      "hint": "The neuron count is in the tens of billions, while the connections between them are far more numerous."
+    }
+  ]
+}

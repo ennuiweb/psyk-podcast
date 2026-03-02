@@ -18,6 +18,7 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Anonymous quiz state is kept locally in browser storage; logged-in users persist state in DB via state API.
 - Anonymous users are prompted to log in when they reach quiz summary/completion.
 - Quiz flow enforces a per-question timer (`FREUDD_QUIZ_QUESTION_TIME_LIMIT_SECONDS`, default `30s`); timeout auto-marks the question wrong and advances.
+- Quiz wrapper renders answer options in a deterministic per-question display order to reduce positional-answer bias; selected answers still persist as raw option indices for stable scoring/state compatibility.
 - Quiz question header shows live potential score while unanswered (`Tid: <sek>s · <point>/120 point`) and updates continuously as time passes.
 - Quiz question/hint/option copy normalizes inline math delimiters (`$...$`, `\\(...\\)`) for cleaner learner-facing text.
 - Quiz retry cooldown is per `(user, quiz_id)` with tiering: `1m x2`, `5m x3`, then `10m`; streak resets after `1h` inactivity (`FREUDD_QUIZ_RETRY_COOLDOWN_RESET_SECONDS`).

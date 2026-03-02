@@ -430,6 +430,7 @@
     const maxQuestionPoints = baseQuestionPoints + maxSpeedBonusPoints;
     const maxSpeedBonusSecondsPerQuestion = Math.min(10, questionTimeLimitSeconds);
     const cooldownResetSeconds = 3600;
+    const quizOptionOrderSalt = "{{ quiz_id }}";
     const isAuthenticated = {{ user_is_authenticated|yesno:"true,false" }};
     const localCooldownKey = "quiz-local-cooldown:{{ quiz_id }}";
     const loginEndPrompt = document.getElementById("login-end-prompt");
@@ -526,6 +527,56 @@
         .replace(/\$([^$\n]+)\$/g, "$1")
         .replace(/\s+/g, " ")
         .trim();
+    }
+
+    function stableHash32(rawValue) {
+      const text = String(rawValue ?? "");
+      let hash = 0;
+      for (let index = 0; index < text.length; index += 1) {
+        hash = (hash * 31 + text.charCodeAt(index)) >>> 0;
+      }
+      return hash >>> 0;
+    }
+
+    function shuffledOptionOrderIndices(questionIndex, question, options) {
+      if (!Array.isArray(options) || options.length <= 1) {
+        return Array.isArray(options) ? options.map((_, index) => index) : [];
+      }
+
+      const normalizedQuestion = normalizeQuestionCopy(question?.question);
+      const sortable = options.map((option, optionIndex) => {
+        const normalizedOption = normalizeQuestionCopy(option?.text);
+        const seed = [
+          quizOptionOrderSalt,
+          String(questionIndex),
+          normalizedQuestion,
+          String(optionIndex),
+          normalizedOption,
+        ].join("|");
+        return {
+          optionIndex,
+          hash: stableHash32(seed),
+        };
+      });
+
+      sortable.sort((left, right) => {
+        if (left.hash === right.hash) {
+          return left.optionIndex - right.optionIndex;
+        }
+        return left.hash - right.hash;
+      });
+
+      const ordered = sortable.map((entry) => entry.optionIndex);
+      const isIdentity = ordered.every((value, index) => value === index);
+      if (!isIdentity) {
+        return ordered;
+      }
+
+      const rotationSeed = stableHash32(
+        [quizOptionOrderSalt, String(questionIndex), normalizedQuestion, "rotation"].join("|")
+      );
+      const rotation = (rotationSeed % (options.length - 1)) + 1;
+      return ordered.slice(rotation).concat(ordered.slice(0, rotation));
     }
 
     function clearLocalState() {
@@ -1170,20 +1221,22 @@
       questionNode.textContent = normalizeQuestionCopy(question.question);
 
       optionsNode.innerHTML = "";
-      options.forEach((option, optionIndex) => {
+      const optionOrder = shuffledOptionOrderIndices(state.currentQuestionIndex, question, options);
+      optionOrder.forEach((rawOptionIndex, displayOptionIndex) => {
+        const option = options[rawOptionIndex];
         const button = document.createElement("button");
         button.type = "button";
         button.className = "quiz-option";
         const optionLabel = document.createElement("span");
         optionLabel.className = "quiz-option-index";
-        optionLabel.textContent = String.fromCharCode(65 + optionIndex);
+        optionLabel.textContent = String.fromCharCode(65 + displayOptionIndex);
 
         const optionText = document.createElement("span");
         optionText.className = "quiz-option-text";
         optionText.textContent = normalizeQuestionCopy(option?.text);
         button.append(optionLabel, optionText);
         button.disabled = isTimedOut;
-        if (selectedOption === optionIndex) {
+        if (selectedOption === rawOptionIndex) {
           button.classList.add("is-selected");
           if (option?.isCorrect === true) {
             button.classList.add("is-correct");
@@ -1198,7 +1251,7 @@
             return;
           }
           setQuestionResponseDuration(state.currentQuestionIndex, elapsedMsFromQuestionDeadline(state.currentQuestionIndex));
-          state.userAnswers[String(state.currentQuestionIndex)] = optionIndex;
+          state.userAnswers[String(state.currentQuestionIndex)] = rawOptionIndex;
           state.timedOutQuestionIndices = (state.timedOutQuestionIndices || []).filter(
             (value) => value !== state.currentQuestionIndex
           );

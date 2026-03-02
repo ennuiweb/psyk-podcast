@@ -834,30 +834,6 @@
     {% endif %}
   </section>
 
-  <section class="card dashboard-section">
-    <div class="section-head">
-      <h2 class="section-title">Personlig tracking</h2>
-      <p class="section-subtitle">Din private status på tekster, podcasts og quizzer.</p>
-    </div>
-    {% if personal_tracking_by_subject %}
-    <div class="metric-grid">
-      {% for item in personal_tracking_by_subject %}
-      <article class="metric-card">
-        <h3>{{ item.title }}</h3>
-        <div class="metric-row">Tekster: {{ item.readings_marked }} / {{ item.readings_total }}</div>
-        <div class="metric-row">Podcasts: {{ item.podcasts_marked }} / {{ item.podcasts_total }}</div>
-        <div class="metric-row">Quizzer: {{ item.quizzes_completed }} / {{ item.quizzes_total }}</div>
-        <div class="subject-actions">
-          <a class="subject-open-link" href="{{ item.detail_url }}">Åbn fag</a>
-        </div>
-      </article>
-      {% endfor %}
-    </div>
-    {% else %}
-    <p class="empty-copy">Ingen personlig tracking-data endnu.</p>
-    {% endif %}
-  </section>
-
   <section class="card dashboard-section" id="quiz cup-indstillinger">
     <div class="section-head">
       <h2 class="section-title">Offentlig quiz cup</h2>

@@ -2,13 +2,14 @@
 
 Freudd Portal is the learner-facing layer on top of static quiz and podcast content. Students can sign in, enroll in subjects, and continue where they left off through a structured lecture-first journey.
 
-The progress experience is split into two clear tracks:
-- Personal tracking (private): each student can manually mark tekster as read and podcasts as listened, while quiz completion still comes from actual completed quizzes.
-- Public freudd quiz cup: an opt-in public leaderboard that shows alias, rank, point score, and completed quiz count per subject.
+The progress page (`/progress`) focuses on three things:
+- subject access and enrollment management,
+- personal quiz history and status,
+- public freudd quiz cup settings/preview.
 
 The dedicated quiz cup page (`/leaderboard/<subject_slug>`) presents this as subject tabs, a top-3 podium, and a Top 50 table.
 
-This split keeps personal study habits private while still allowing a lightweight shared competition around quiz completion.
+Personal study habits for tekster/podcasts remain private to each learner on subject pages, while a lightweight shared competition around quizzes is available through freudd quiz cup.
 
 freudd quiz cup runs on semesters and automatically resets every half year (UTC). Ranking is based on a score that weighs correct answers highest and adds a speed bonus for faster quiz completion.
 

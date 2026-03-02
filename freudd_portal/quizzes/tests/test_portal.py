@@ -997,13 +997,13 @@ class QuizPortalTests(TestCase):
         self.assertContains(response, "Mine fag")
         self.assertContains(response, "Tilmeld")
 
-    def test_progress_page_shows_personal_tracking_and_leaderboard_sections(self) -> None:
+    def test_progress_page_shows_leaderboard_section(self) -> None:
         user = self._create_user()
         self.client.force_login(user)
 
         response = self.client.get(reverse("progress"))
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "Personlig tracking")
+        self.assertNotContains(response, "Personlig tracking")
         self.assertContains(response, "Offentlig quiz cup")
         self.assertContains(response, reverse("leaderboard-profile"))
 
@@ -1018,10 +1018,10 @@ class QuizPortalTests(TestCase):
 
         body = response.content.decode("utf-8")
         mine_fag_start = body.find("<h2 class=\"section-title\">Mine fag</h2>")
-        tracking_start = body.find("<h2 class=\"section-title\">Personlig tracking</h2>")
         self.assertGreaterEqual(mine_fag_start, 0)
-        self.assertGreaterEqual(tracking_start, 0)
-        mine_fag_markup = body[mine_fag_start:tracking_start]
+        leaderboard_start = body.find("<h2 class=\"section-title\">Offentlig quiz cup</h2>")
+        self.assertGreaterEqual(leaderboard_start, 0)
+        mine_fag_markup = body[mine_fag_start:leaderboard_start]
         self.assertNotIn(">Afmeld</button>", mine_fag_markup)
         self.assertNotIn(">Tilmeld</button>", mine_fag_markup)
 

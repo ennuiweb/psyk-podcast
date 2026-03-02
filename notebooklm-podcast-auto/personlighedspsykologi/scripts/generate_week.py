@@ -611,15 +611,28 @@ def should_skip_generation(output_path: Path, skip_existing: bool) -> tuple[bool
         return True, "output exists"
     if not skip_existing:
         return False, None
+    request_log = output_path.with_suffix(output_path.suffix + ".request.json")
     error_log = output_path.with_suffix(output_path.suffix + ".request.error.json")
-    if error_log.exists():
-        return False, None
     payload = load_request_payload(output_path)
-    if not payload:
+    artifact_id = payload.get("artifact_id") if payload else None
+    has_request = bool(artifact_id)
+    has_error = error_log.exists()
+
+    if has_request and has_error:
+        # Keep the newest status signal: a newer request means "already queued",
+        # while a newer error means "last attempt failed; retry".
+        request_mtime = request_log.stat().st_mtime if request_log.exists() else 0.0
+        error_mtime = error_log.stat().st_mtime
+        if request_mtime >= error_mtime:
+            return True, "newer request log exists"
         return False, None
-    artifact_id = payload.get("artifact_id")
-    if artifact_id:
+
+    if has_request:
         return True, "request log exists"
+
+    if has_error:
+        return False, None
+
     return False, None
 
 

@@ -162,6 +162,9 @@ python3 podcast-tools/gdrive_podcast_feed.py --config shows/personlighedspsykolo
   - Legacy `download=html`-tagged quiz JSON names (from older extraction runs) should be renamed or re-extracted to avoid duplicate generation.
   - Quick check: `./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_week.py --week W1 --content-types quiz --dry-run`
   - Keep `quiz.format` in `prompt_config.json` aligned with expected filenames (`json` for canonical JSON outputs).
+- If both `<output>.request.json` and `<output>.request.error.json` exist, `generate_week.py` now trusts the newest log:
+  - newer `.request.json` (with `artifact_id`) means the job is already queued, so it is skipped.
+  - newer `.request.error.json` means the latest attempt failed, so it is retried.
 - To list legacy double-prefix files (`W1L1 - W1L1 ...`), run:
   `find notebooklm-podcast-auto/personlighedspsykologi/output -type f | rg '/W[0-9]+L[0-9]+/W[0-9]+L[0-9]+ - W[0-9]+L[0-9]+'`
 

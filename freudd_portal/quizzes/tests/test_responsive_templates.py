@@ -81,6 +81,9 @@ class ResponsiveTemplateRulesTests(SimpleTestCase):
         self.assertIn("data-subject-rail-toggle", body)
         self.assertIn("data-subject-path-layout", body)
         self.assertIn(".subject-path-layout.is-rail-hidden", body)
+        self.assertIn(".subject-path-tools {\n    display: grid;", body)
+        self.assertIn("grid-template-columns: minmax(220px, 300px) minmax(0, 1fr);", body)
+        self.assertIn(".subject-path-toggle {\n    min-height: 44px;", body)
         self.assertIn("Vis tidslinje", body)
         self.assertIn("Skjul tidslinje", body)
 

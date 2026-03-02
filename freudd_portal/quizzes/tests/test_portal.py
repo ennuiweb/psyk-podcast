@@ -1178,6 +1178,10 @@ class QuizPortalTests(TestCase):
         self.assertContains(response, "Accuracy 75%")
         self.assertContains(response, "Top 50 - Personlighedspsykologi")
         self.assertContains(response, "RankFour")
+        self.assertEqual(
+            [item["alias"] for item in response.context["table_entries"]],
+            ["RankOne", "RankTwo", "RankThree", "RankFour"],
+        )
         body = response.content.decode("utf-8")
         self.assertNotRegex(body, r"<button[^>]+data-cup-expand\b")
 

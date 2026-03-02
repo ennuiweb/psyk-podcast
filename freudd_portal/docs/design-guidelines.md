@@ -290,7 +290,7 @@ Order:
 2. Subject tabs for active subjects.
 3. Alias setup/deltag card (right column on desktop, stacked on compact layouts).
 4. Podium cards for ranks `#2`, `#1`, `#3`.
-5. `Top 50` table (starting from rank `#4`) with expandable footer action.
+5. `Top 50` table (all ranks, including podium entries) with expandable footer action.
 
 Behavior:
 

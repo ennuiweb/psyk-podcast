@@ -1440,7 +1440,7 @@ def leaderboard_subject_view(request: HttpRequest, subject_slug: str) -> HttpRes
     entries = snapshot.get("entries") or []
     rank_to_entry = {int(item.get("rank") or 0): item for item in entries if isinstance(item, dict)}
     podium_entries = [rank_to_entry[rank] for rank in (2, 1, 3) if rank in rank_to_entry]
-    table_entries = [item for item in entries if int(item.get("rank") or 0) > 3]
+    table_entries = entries
 
     subject_tabs = [
         {

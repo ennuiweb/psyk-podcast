@@ -168,6 +168,7 @@ Optional flags:
 - `--dry-run` to print what would run.
 - `--content-types audio,infographic` to control which artifacts are downloaded (default: audio).
 - Request logs are cleaned up after a successful download (or when the target file already exists): `*.request.json`, `*.request.error.json`, and `*.request.done.json` are removed for that output.
+- Stale `*.request.done.json` logs in the selected week folders are also removed during cleanup, even if no active `*.request.json` exists.
 - Use `--no-cleanup-requests` to keep request logs in place.
 - `--output-profile-subdir` to read outputs from a profile-based subdirectory (requires `--profile` or `--storage`).
 - Auth resolution:

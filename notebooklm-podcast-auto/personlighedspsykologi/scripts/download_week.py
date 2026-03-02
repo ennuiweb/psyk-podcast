@@ -325,6 +325,13 @@ def cleanup_request_logs(log_path: Path) -> None:
             print(f"Removed request log: {candidate}")
 
 
+def cleanup_done_logs(done_logs: list[Path]) -> None:
+    for log_path in done_logs:
+        if log_path.exists():
+            log_path.unlink()
+            print(f"Removed stale done log: {log_path}")
+
+
 def is_auth_error(output: str) -> bool:
     lowered = output.lower()
     return "authentication expired" in lowered or "received html instead of media file" in lowered
@@ -556,11 +563,21 @@ def main() -> int:
 
         request_logs_set: set[Path] = set()
         error_logs_set: set[Path] = set()
+        done_logs_set: set[Path] = set()
         for week_dir in week_dirs:
             request_logs_set.update(week_dir.glob("*.request.json"))
             error_logs_set.update(week_dir.glob("*.request.error.json"))
+            done_logs_set.update(week_dir.glob("*.request.done.json"))
         request_logs = sorted(request_logs_set)
         error_logs = sorted(error_logs_set)
+        done_logs = sorted(done_logs_set)
+
+        if args.cleanup_requests and done_logs:
+            if args.dry_run:
+                for log_path in done_logs:
+                    print(f"CLEANUP DONE LOG: {log_path}")
+            else:
+                cleanup_done_logs(done_logs)
 
         if not request_logs:
             if error_logs:

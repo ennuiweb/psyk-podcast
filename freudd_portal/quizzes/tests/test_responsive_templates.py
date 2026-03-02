@@ -18,7 +18,7 @@ class ResponsiveTemplateRulesTests(SimpleTestCase):
         self.assertIn(".subject-mobile-topbar", body)
         self.assertNotIn("display: none !important;", body)
 
-    def test_base_mobile_navigation_uses_subjects_quiz_cup_and_overblik_order_with_logos(self) -> None:
+    def test_base_mobile_navigation_uses_subjects_quiz_cup_and_overblik_order_with_icons(self) -> None:
         body = self._template_text("base.html")
         self.assertIn("data-mobile-nav", body)
         self.assertNotIn("data-header-menu-toggle", body)
@@ -26,9 +26,10 @@ class ResponsiveTemplateRulesTests(SimpleTestCase):
         self.assertIn("<span class=\"mobile-tab-label\">Mine fag</span>", body)
         self.assertIn("<span class=\"mobile-tab-label\">Quiz cup</span>", body)
         self.assertIn("<span class=\"mobile-tab-label\">Overblik</span>", body)
-        self.assertIn("mobile-tab-logo--subjects", body)
-        self.assertIn("mobile-tab-logo--cup", body)
-        self.assertIn("mobile-tab-logo--overview", body)
+        self.assertIn("mobile-tab-icon--subjects", body)
+        self.assertIn("mobile-tab-icon--cup", body)
+        self.assertIn("mobile-tab-icon--overview", body)
+        self.assertIn("viewBox=\"0 0 24 24\"", body)
         self.assertLess(body.index(">Mine fag</span>"), body.index(">Quiz cup</span>"))
         self.assertLess(body.index(">Quiz cup</span>"), body.index(">Overblik</span>"))
         self.assertIn("data-subject-menu-toggle", body)

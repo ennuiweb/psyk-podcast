@@ -387,7 +387,7 @@
         white-space: nowrap;
       }
 
-      .mobile-tab-logo {
+      .mobile-tab-icon {
         width: 26px;
         height: 26px;
         margin-right: 7px;
@@ -396,28 +396,33 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        font-family: var(--font-mono);
-        font-size: 0.63rem;
-        font-weight: 600;
-        letter-spacing: 0.01em;
-        line-height: 1;
         color: var(--accent-strong);
         background: color-mix(in srgb, var(--surface) 70%, var(--surface-soft));
       }
 
-      .mobile-tab-logo--subjects {
+      .mobile-tab-icon svg {
+        width: 14px;
+        height: 14px;
+        stroke: currentColor;
+        stroke-width: 1.8;
+        fill: none;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .mobile-tab-icon--subjects {
         background:
           radial-gradient(circle at 28% 24%, color-mix(in srgb, var(--accent) 20%, var(--surface)) 0 26%, transparent 60%),
           color-mix(in srgb, var(--accent-soft) 65%, var(--surface));
       }
 
-      .mobile-tab-logo--cup {
+      .mobile-tab-icon--cup {
         background:
           radial-gradient(circle at 66% 28%, color-mix(in srgb, var(--accent) 23%, var(--surface)) 0 22%, transparent 58%),
           color-mix(in srgb, var(--surface) 68%, var(--surface-soft));
       }
 
-      .mobile-tab-logo--overview {
+      .mobile-tab-icon--overview {
         background:
           radial-gradient(circle at 34% 66%, color-mix(in srgb, var(--accent) 20%, var(--surface)) 0 24%, transparent 58%),
           color-mix(in srgb, var(--surface) 60%, var(--surface-soft));
@@ -444,8 +449,8 @@
         box-shadow: 0 3px 10px color-mix(in srgb, var(--accent) 18%, transparent);
       }
 
-      .mobile-tab.is-active .mobile-tab-logo,
-      .mobile-tab-button.is-active .mobile-tab-logo {
+      .mobile-tab.is-active .mobile-tab-icon,
+      .mobile-tab-button.is-active .mobile-tab-icon {
         border-color: color-mix(in srgb, var(--accent) 54%, var(--border));
         color: var(--accent-strong);
         background: color-mix(in srgb, var(--accent-soft) 75%, var(--surface));
@@ -995,7 +1000,14 @@
             aria-expanded="false"
             aria-controls="mobile-subject-list"
           >
-            <span class="mobile-tab-logo mobile-tab-logo--subjects" aria-hidden="true">MF</span>
+            <span class="mobile-tab-icon mobile-tab-icon--subjects" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M6 4.5h10a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-11a2 2 0 0 1 2-2Z" />
+                <path d="M8.5 4.5v15" />
+                <path d="M11 8h4" />
+                <path d="M11 11h4" />
+              </svg>
+            </span>
             <span class="mobile-tab-label">Mine fag</span>
           </button>
           <div class="mobile-subject-list" id="mobile-subject-list" data-subject-menu-list hidden>
@@ -1018,17 +1030,40 @@
           class="mobile-tab {% if current_page == 'leaderboard-subject' or current_page == 'leaderboard-profile' %}is-active{% endif %}"
           href="{% url 'leaderboard-subject' subject_slug=leaderboard_subject_slug %}"
         >
-          <span class="mobile-tab-logo mobile-tab-logo--cup" aria-hidden="true">QC</span>
+          <span class="mobile-tab-icon mobile-tab-icon--cup" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M8 5h8v2a4 4 0 0 1-8 0V5Z" />
+              <path d="M8 7H6a2 2 0 0 1-2-2V4h4" />
+              <path d="M16 7h2a2 2 0 0 0 2-2V4h-4" />
+              <path d="M12 11v4" />
+              <path d="M9 19h6" />
+            </svg>
+          </span>
           <span class="mobile-tab-label">Quiz cup</span>
         </a>
         {% else %}
         <a class="mobile-tab" href="{% url 'progress' %}">
-          <span class="mobile-tab-logo mobile-tab-logo--cup" aria-hidden="true">QC</span>
+          <span class="mobile-tab-icon mobile-tab-icon--cup" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M8 5h8v2a4 4 0 0 1-8 0V5Z" />
+              <path d="M8 7H6a2 2 0 0 1-2-2V4h4" />
+              <path d="M16 7h2a2 2 0 0 0 2-2V4h-4" />
+              <path d="M12 11v4" />
+              <path d="M9 19h6" />
+            </svg>
+          </span>
           <span class="mobile-tab-label">Quiz cup</span>
         </a>
         {% endif %}
         <a class="mobile-tab {% if current_page == 'progress' %}is-active{% endif %}" href="{% url 'progress' %}">
-          <span class="mobile-tab-logo mobile-tab-logo--overview" aria-hidden="true">OV</span>
+          <span class="mobile-tab-icon mobile-tab-icon--overview" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M5 19h14" />
+              <path d="M8 18v-6" />
+              <path d="M12 18v-9" />
+              <path d="M16 18v-12" />
+            </svg>
+          </span>
           <span class="mobile-tab-label">Overblik</span>
         </a>
       </div>

@@ -99,6 +99,44 @@
     gap: var(--subject-space-block);
   }
 
+  .subject-path-tools {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .subject-path-toggle {
+    min-height: 36px;
+    border-radius: var(--radius-pill);
+    border: 1px solid color-mix(in srgb, var(--border-strong) 72%, transparent);
+    background: color-mix(in srgb, var(--surface) 92%, var(--surface-soft));
+    color: var(--text-subtle-2);
+    padding: 0 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--subject-font-ui);
+    font-size: 0.86rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition:
+      border-color 160ms ease,
+      background 160ms ease,
+      color 160ms ease;
+  }
+
+  .subject-path-toggle:hover {
+    border-color: color-mix(in srgb, var(--accent) 34%, var(--border-strong));
+    background: color-mix(in srgb, var(--accent) 9%, var(--surface));
+    color: var(--text-strong);
+  }
+
+  .subject-path-toggle:focus-visible {
+    outline: 2px solid color-mix(in srgb, var(--accent) 44%, transparent);
+    outline-offset: 2px;
+  }
+
   .subject-path-layout {
     display: grid;
     grid-template-columns: minmax(220px, 300px) minmax(0, 1fr);
@@ -108,6 +146,18 @@
 
   .subject-path-layout > * {
     min-width: 0;
+  }
+
+  .subject-path-layout.is-rail-hidden {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .subject-path-layout.is-rail-hidden .lecture-rail {
+    display: none;
+  }
+
+  .subject-path-layout.is-rail-hidden .active-lecture-card::before {
+    display: none;
   }
 
   .lecture-rail {
@@ -1098,6 +1148,10 @@
       display: none;
     }
 
+    .subject-path-tools {
+      display: none;
+    }
+
     .subject-path-layout {
       grid-template-columns: minmax(62px, 84px) minmax(0, 1fr);
       gap: var(--space-3);
@@ -1583,8 +1637,14 @@
 
   <section class="subject-path" data-subject-path>
     {% if lecture_rail_items and active_lecture %}
-    <div class="subject-path-layout">
-      <aside class="lecture-rail" aria-label="Forelæsningsforløb">
+    <div class="subject-path-tools">
+      <button class="subject-path-toggle" type="button" data-subject-rail-toggle aria-controls="subject-lecture-rail" aria-expanded="true">
+        Skjul tidslinje
+      </button>
+    </div>
+
+    <div class="subject-path-layout" data-subject-path-layout>
+      <aside class="lecture-rail" id="subject-lecture-rail" data-subject-lecture-rail aria-label="Forelæsningsforløb">
         <ol class="lecture-rail-list">
           {% for rail in lecture_rail_items %}
           <li class="lecture-rail-item {% if rail.is_active %}is-active{% endif %} {% if rail.is_past %}is-past{% endif %} {% if rail.is_completed %}is-completed{% endif %}">
@@ -1870,6 +1930,47 @@
   {% endif %}
 </div>
 <script>
+  (() => {
+    const section = document.querySelector("[data-subject-path]");
+    if (!section) {
+      return;
+    }
+
+    const layout = section.querySelector("[data-subject-path-layout]");
+    const toggle = section.querySelector("[data-subject-rail-toggle]");
+    if (!(layout instanceof HTMLElement) || !(toggle instanceof HTMLButtonElement)) {
+      return;
+    }
+
+    const compactViewport = window.matchMedia("(max-width: 1180px)");
+
+    const applyCollapsedState = (collapsed) => {
+      const shouldCollapse = collapsed && !compactViewport.matches;
+      layout.classList.toggle("is-rail-hidden", shouldCollapse);
+      toggle.setAttribute("aria-expanded", shouldCollapse ? "false" : "true");
+      toggle.textContent = shouldCollapse ? "Vis tidslinje" : "Skjul tidslinje";
+    };
+
+    toggle.addEventListener("click", () => {
+      if (compactViewport.matches) {
+        return;
+      }
+      applyCollapsedState(!layout.classList.contains("is-rail-hidden"));
+    });
+
+    const syncForViewport = () => {
+      applyCollapsedState(layout.classList.contains("is-rail-hidden"));
+    };
+
+    if (typeof compactViewport.addEventListener === "function") {
+      compactViewport.addEventListener("change", syncForViewport);
+    } else if (typeof compactViewport.addListener === "function") {
+      compactViewport.addListener(syncForViewport);
+    }
+
+    applyCollapsedState(false);
+  })();
+
   (() => {
     const section = document.querySelector(".lecture-podcasts");
     if (!section) {

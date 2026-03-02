@@ -51,6 +51,7 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Subject detail removes KPI strip and global `Udvid alle`/`Luk alle`; lecture switching is via rail links (`?lecture=<lecture_key>`).
 - Subject detail remembers each user's last opened lecture per subject and uses it as default when `?lecture=` is omitted.
 - Subject detail spacing uses a local responsive scale (`section/block/tight`) to keep vertical rhythm consistent across rail, card header, and section blocks.
+- Subject detail supports desktop rail collapse/expand (`Skjul tidslinje` / `Vis tidslinje`); compact layouts (`<=1180px`) keep the rail visible.
 - Subject detail uses compact mobile density on small screens (`<=760px`) to reduce nested card padding/gaps for narrow devices.
 - Subject detail hides the card-to-rail pointer notch on responsive layouts (`<=1180px`) to keep alignment clean with compact rail widths.
 - Active lecture card renders sections in this order: `Tekster`, optional `Podcasts` (only when podcast rows exist), `Quiz for alle kilder`.

@@ -239,10 +239,6 @@
     display: none;
   }
 
-  .subject-path-layout.is-rail-hidden .active-lecture-card::before {
-    display: none;
-  }
-
   .lecture-rail {
     position: relative;
     padding-top: 6px;
@@ -417,20 +413,6 @@
     box-shadow: var(--shadow-container);
     min-height: 420px;
     min-width: 0;
-  }
-
-  .active-lecture-card::before {
-    content: "";
-    position: absolute;
-    left: -14px;
-    top: 38px;
-    width: 24px;
-    height: 24px;
-    background: var(--surface);
-    border-left: 1px solid var(--border);
-    border-top: 1px solid var(--border);
-    transform: rotate(-45deg);
-    border-top-left-radius: 4px;
   }
 
   .active-lecture-head {
@@ -1318,10 +1300,6 @@
       box-shadow: 0 8px 22px rgba(30, 43, 69, 0.08);
     }
 
-    .active-lecture-card::before {
-      display: none;
-    }
-
     .active-lecture-title {
       font-size: clamp(1.52rem, 3.9vw, 2rem);
       line-height: 1.18;
@@ -1522,10 +1500,6 @@
       border-radius: 20px;
       padding: 10px;
       gap: 10px;
-    }
-
-    .active-lecture-card::before {
-      display: none;
     }
 
     .active-lecture-sections {

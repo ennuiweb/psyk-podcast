@@ -279,46 +279,188 @@
     font-size: 0.88rem;
   }
 
-  .quiz-history-desktop {
+  .quiz-history-shell {
+    --history-glass-bg: color-mix(in srgb, var(--surface) 84%, var(--info-bg-strong));
+    --history-glass-border: color-mix(in srgb, var(--border) 80%, var(--accent) 20%);
+    --history-grid-line: color-mix(in srgb, var(--accent) 12%, transparent);
+    border-color: color-mix(in srgb, var(--accent) 14%, var(--border));
+    background:
+      radial-gradient(120% 100% at 0% 0%, color-mix(in srgb, var(--accent-soft) 56%, transparent), transparent 55%),
+      linear-gradient(150deg, color-mix(in srgb, var(--surface) 84%, var(--bg-soft) 16%), var(--surface));
+    overflow: hidden;
+    position: relative;
+  }
+
+  .quiz-history-shell::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(var(--history-grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--history-grid-line) 1px, transparent 1px);
+    background-size: 42px 42px;
+    opacity: 0.25;
+    mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.75), transparent 90%);
+  }
+
+  .quiz-history-shell > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .history-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+  }
+
+  .history-updated {
+    margin: 0;
+    color: var(--text-subtle-2);
+    font-size: 0.84rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .quiz-history-insights {
+    display: grid;
+    gap: var(--space-2);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .history-stat {
+    border: 1px solid var(--history-glass-border);
     border-radius: var(--radius-md);
+    background: var(--history-glass-bg);
+    padding: var(--space-3);
+    display: grid;
+    gap: 6px;
+    backdrop-filter: blur(6px);
+  }
+
+  .history-stat-label {
+    margin: 0;
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--text-subtle-2);
+    font-weight: 700;
+  }
+
+  .history-stat-value {
+    margin: 0;
+    font-size: clamp(1.2rem, 2.8vw, 1.65rem);
+    font-family: var(--font-display);
+    color: var(--text-strong);
+    letter-spacing: -0.03em;
+  }
+
+  .history-stat-note {
+    margin: 0;
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  .quiz-history-controls {
+    border: 1px solid var(--history-glass-border);
+    border-radius: var(--radius-md);
+    background: var(--history-glass-bg);
+    padding: var(--space-3);
+    display: grid;
+    gap: var(--space-2);
+    grid-template-columns: minmax(0, 1.3fr) repeat(3, minmax(0, 1fr));
+    align-items: end;
+  }
+
+  .history-control {
+    display: grid;
+    gap: 6px;
+  }
+
+  .history-control > span {
+    color: var(--text-subtle-2);
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  .history-control > input,
+  .history-control > select {
+    min-height: var(--control-min-height);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-pill);
     background: var(--surface);
+    color: var(--ink);
+    padding: 0 var(--space-3);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    width: 100%;
   }
 
-  .quiz-table {
-    table-layout: fixed;
+  .history-controls-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-2);
+    flex-wrap: wrap;
   }
 
-  .quiz-table th,
-  .quiz-table td {
-    white-space: normal;
-    vertical-align: middle;
+  .history-result-copy {
+    margin: 0;
+    color: var(--text-subtle-2);
+    font-size: 0.84rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .history-reset-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 36px;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--border-strong);
+    background: var(--surface);
+    color: var(--text-subtle-2);
+    padding: 0 var(--space-3);
+    font-weight: 600;
+    font-size: 0.82rem;
+    cursor: pointer;
+    transition: border-color 140ms ease, color 140ms ease, background 140ms ease;
+  }
+
+  .history-reset-button:hover {
+    border-color: color-mix(in srgb, var(--accent) 36%, var(--border));
+    color: var(--info-ink-strong);
+    background: var(--surface-soft);
+  }
+
+  .quiz-history-desktop {
+    border: 1px solid var(--history-glass-border);
+    border-radius: var(--radius-lg);
+    background: var(--history-glass-bg);
     padding: var(--space-3);
   }
 
-  .quiz-table th {
-    text-transform: lowercase;
-    letter-spacing: 0.01em;
-    font-size: 0.82rem;
-    color: var(--text-subtle-2);
-  }
-
-  .quiz-table td:first-child,
-  .quiz-table th:first-child {
-    width: 42%;
+  .quiz-history-feed {
+    display: grid;
+    gap: var(--space-2);
   }
 
   .quiz-link {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    max-width: 100%;
     font-weight: 700;
-    line-height: 1.35;
+    line-height: 1.3;
+    overflow-wrap: anywhere;
     text-decoration: none;
   }
 
   .quiz-module-label {
-    margin: 0 0 var(--space-1);
+    margin: 0;
     display: inline-flex;
     align-items: center;
     min-height: 24px;
@@ -327,18 +469,49 @@
     background: var(--info-bg);
     color: var(--info-ink);
     padding: 0 var(--space-2);
-    font-size: 0.7rem;
+    font-size: 0.68rem;
     text-transform: lowercase;
     letter-spacing: 0.03em;
     font-weight: 800;
   }
 
-  .quiz-meta-row {
-    margin-top: var(--space-1);
+  .quiz-history-card {
+    border: 1px solid var(--history-glass-border);
+    border-radius: var(--radius-md);
+    background: var(--surface);
+    padding: var(--space-3);
+    display: grid;
+    gap: var(--space-2);
+    transition: transform 140ms ease, box-shadow 140ms ease, border-color 140ms ease;
+    animation: history-card-in 260ms ease both;
+    transform-origin: top center;
+  }
+
+  .quiz-history-card:nth-child(2n) {
+    animation-delay: 30ms;
+  }
+
+  .quiz-history-card:nth-child(3n) {
+    animation-delay: 60ms;
+  }
+
+  .quiz-history-card:hover {
+    border-color: color-mix(in srgb, var(--accent) 35%, var(--border));
+    box-shadow: 0 10px 26px color-mix(in srgb, var(--accent) 18%, transparent);
+    transform: translateY(-1px);
+  }
+
+  .quiz-history-headline {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-1);
+    justify-content: space-between;
     align-items: center;
+    gap: var(--space-2);
+  }
+
+  .quiz-history-kicker {
+    display: grid;
+    gap: var(--space-1);
   }
 
   .quiz-mini-chip {
@@ -352,6 +525,13 @@
     padding: 0 var(--space-2);
     font-size: 0.68rem;
     font-weight: 700;
+  }
+
+  .quiz-meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1);
+    align-items: center;
   }
 
   .quiz-id {
@@ -389,6 +569,26 @@
     display: inline-flex;
     align-items: center;
     gap: var(--space-1);
+    font-size: 0.79rem;
+    padding: 0 var(--space-2);
+    min-height: 30px;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--border-strong);
+    background: var(--surface-soft);
+    color: var(--text-subtle-2);
+    font-weight: 700;
+  }
+
+  .status-pill.is-complete {
+    border-color: rgba(31, 143, 78, 0.32);
+    background: var(--success-bg);
+    color: var(--success-ink);
+  }
+
+  .status-pill.is-progress {
+    border-color: rgba(15, 95, 140, 0.32);
+    background: color-mix(in srgb, var(--accent-soft) 64%, transparent);
+    color: var(--info-ink);
   }
 
   .status-dot {
@@ -398,10 +598,23 @@
     background: currentColor;
   }
 
+  .quiz-history-body {
+    display: grid;
+    grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+    gap: var(--space-3);
+    align-items: center;
+  }
+
+  .quiz-history-title {
+    margin: 0;
+    font-size: clamp(1.03rem, 1.55vw, 1.22rem);
+    letter-spacing: -0.02em;
+  }
+
   .answers-cell {
     display: grid;
-    gap: var(--space-2);
-    min-width: 142px;
+    gap: 7px;
+    min-width: 0;
   }
 
   .answers-track {
@@ -426,36 +639,30 @@
     background: linear-gradient(90deg, var(--progress-accent-start), var(--progress-accent-end));
   }
 
+  .quiz-score-label {
+    margin: 0;
+    color: var(--text-subtle-2);
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
   .answers-text {
     font-size: 0.8rem;
     color: var(--muted);
     font-variant-numeric: tabular-nums;
   }
 
-  .updated-at {
+  .updated-at,
+  .history-updated-value {
     font-size: 0.85rem;
     color: var(--text-subtle-2);
     font-variant-numeric: tabular-nums;
   }
 
   .quiz-history-mobile {
-    display: none;
-    gap: var(--space-2);
-  }
-
-  .quiz-history-card {
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    background: var(--surface);
-    padding: var(--space-3);
-    display: grid;
-    gap: var(--space-2);
-  }
-
-  .quiz-history-title {
-    margin: 0;
-    font-size: 1rem;
-    line-height: 1.3;
+    display: block;
   }
 
   .quiz-history-line {
@@ -465,9 +672,29 @@
     align-items: center;
   }
 
-  .quiz-history-meta {
-    color: var(--muted);
-    font-size: 0.82rem;
+  .quiz-history-empty-filter {
+    margin: 0;
+    border: 1px dashed var(--border-strong);
+    border-radius: var(--radius-md);
+    background: color-mix(in srgb, var(--surface) 90%, var(--surface-soft));
+    color: var(--text-subtle-2);
+    padding: var(--space-3);
+  }
+
+  .quiz-history-empty-filter[hidden] {
+    display: none;
+  }
+
+  @keyframes history-card-in {
+    0% {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   .empty-copy {
@@ -484,6 +711,20 @@
     .subject-grid,
     .metric-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 980px) {
+    .quiz-history-insights {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .quiz-history-controls {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .history-control.is-search {
+      grid-column: 1 / -1;
     }
   }
 
@@ -524,12 +765,26 @@
       justify-content: flex-start;
     }
 
-    .quiz-history-desktop {
-      display: none;
+    .quiz-history-shell {
+      padding: var(--space-3);
     }
 
-    .quiz-history-mobile {
-      display: grid;
+    .quiz-history-insights,
+    .quiz-history-controls {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .history-controls-footer {
+      align-items: stretch;
+    }
+
+    .history-reset-button {
+      width: 100%;
+    }
+
+    .quiz-history-body {
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--space-2);
     }
   }
 </style>
@@ -673,116 +928,154 @@
     {% endif %}
   </section>
 
-  <section class="card dashboard-section">
-    <div class="section-head">
-      <h2 class="section-title">Quizhistorik</h2>
+  <section class="card dashboard-section quiz-history-shell">
+    <div class="section-head history-head">
+      <div>
+        <h2 class="section-title">Quizhistorik</h2>
+        <p class="section-subtitle">Se dine resultater, find svage temaer hurtigt, og hop direkte tilbage i en quiz.</p>
+      </div>
+      {% if quiz_history_summary.latest_updated_at %}
+      <p class="history-updated">
+        Seneste aktivitet:
+        <time class="history-updated-value" datetime="{{ quiz_history_summary.latest_updated_at|date:'c' }}">
+          {{ quiz_history_summary.latest_updated_at|date:'d.m.Y H:i' }}
+        </time>
+      </p>
+      {% endif %}
     </div>
     {% if rows %}
-    <div class="table-wrap quiz-history-desktop">
-      <table class="quiz-table">
-        <thead>
-          <tr>
-            <th>Quiz</th>
-            <th>Sværhedsgrad</th>
-            <th>Status</th>
-            <th>Rigtige svar</th>
-            <th>Opdateret</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for row in rows %}
-          <tr>
-            <td>
+    <div class="quiz-history-insights" data-history-summary>
+      <article class="history-stat">
+        <p class="history-stat-label">Gennemførte quizzer</p>
+        <p class="history-stat-value" data-history-count>{{ quiz_history_summary.quiz_count }}</p>
+        <p class="history-stat-note">Historikposter i alt</p>
+      </article>
+      <article class="history-stat">
+        <p class="history-stat-label">Rigtige svar</p>
+        <p class="history-stat-value" data-history-correct>
+          {{ quiz_history_summary.total_correct_answers }} / {{ quiz_history_summary.total_question_count }}
+        </p>
+        <p class="history-stat-note">Korrekte svar samlet</p>
+      </article>
+      <article class="history-stat">
+        <p class="history-stat-label">Træfsikkerhed</p>
+        <p class="history-stat-value" data-history-percent>{{ quiz_history_summary.completion_percent }}%</p>
+        <p class="history-stat-note">Beregnet på alle forsøg</p>
+      </article>
+      <article class="history-stat">
+        <p class="history-stat-label">Perfekte quizzer</p>
+        <p class="history-stat-value" data-history-perfect>{{ quiz_history_summary.perfect_quiz_count }}</p>
+        <p class="history-stat-note">Med alle svar korrekte</p>
+      </article>
+    </div>
+
+    <div class="quiz-history-controls" data-history-controls>
+      <label class="history-control is-search">
+        <span>Søg</span>
+        <input
+          type="search"
+          placeholder="Søg i titel, modul, tags eller quiz-id"
+          autocomplete="off"
+          data-history-search
+        />
+      </label>
+      <label class="history-control">
+        <span>Sværhedsgrad</span>
+        <select data-history-difficulty>
+          <option value="all">Alle</option>
+          <option value="easy">Let</option>
+          <option value="medium">Mellem</option>
+          <option value="hard">Svær</option>
+          <option value="unknown">Ukendt</option>
+        </select>
+      </label>
+      <label class="history-control">
+        <span>Status</span>
+        <select data-history-status>
+          <option value="all">Alle</option>
+          <option value="completed">Fuldført</option>
+          <option value="in_progress">Aktiv</option>
+        </select>
+      </label>
+      <label class="history-control">
+        <span>Sortering</span>
+        <select data-history-sort>
+          <option value="newest">Senest opdateret</option>
+          <option value="oldest">Ældst først</option>
+          <option value="best">Bedste resultat</option>
+          <option value="worst">Laveste resultat</option>
+          <option value="title">Titel (A-Å)</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="history-controls-footer">
+      <p class="history-result-copy" data-history-feedback aria-live="polite">
+        Viser {{ quiz_history_summary.quiz_count }} af {{ quiz_history_summary.quiz_count }} quizzer
+      </p>
+      <button class="history-reset-button" type="button" data-history-reset>Nulstil filtre</button>
+    </div>
+
+    <div class="quiz-history-desktop">
+      <div class="quiz-history-feed quiz-history-mobile" data-history-list>
+        {% for row in rows %}
+        <article
+          class="quiz-history-card"
+          data-history-item
+          data-status="{{ row.status }}"
+          data-difficulty="{{ row.difficulty_key }}"
+          data-updated="{{ row.updated_at|date:'U' }}"
+          data-correct="{{ row.answers_count }}"
+          data-total="{{ row.question_count }}"
+          data-title="{{ row.title|lower }}"
+          data-search="{{ row.search_text }}"
+        >
+          <div class="quiz-history-headline">
+            <div class="quiz-history-kicker">
               {% if row.module_label %}
               <div class="quiz-module-label">{{ row.module_label }}</div>
               {% endif %}
-              <a class="quiz-link" href="{{ row.quiz_url }}">{{ row.title }}</a>
-              <div class="quiz-meta-row">
-                {% for chip in row.meta_chips %}
-                {% if forloop.counter <= 2 %}
-                <span class="quiz-mini-chip">{{ chip }}</span>
-                {% endif %}
-                {% endfor %}
-                <span class="quiz-id">{{ row.quiz_id }}</span>
-              </div>
-            </td>
-            <td>
+              <h3 class="quiz-history-title"><a class="quiz-link" href="{{ row.quiz_url }}">{{ row.title }}</a></h3>
+            </div>
+            <span class="status-pill {% if row.status == 'completed' %}is-complete{% else %}is-progress{% endif %}">
+              <span class="status-dot" aria-hidden="true"></span>
+              {{ row.status_label }}
+            </span>
+          </div>
+          <div class="quiz-history-body">
+            <div class="quiz-history-line">
               <span class="difficulty-pill {% if row.difficulty_label == 'Let' %}is-easy{% elif row.difficulty_label == 'Svær' %}is-hard{% endif %}">
                 {{ row.difficulty_label }}{% if row.question_count > 0 %} · {{ row.question_count }} spørgsmål{% endif %}
               </span>
-            </td>
-            <td>
-              <span class="status-pill {% if row.status == 'completed' %}is-complete{% else %}is-progress{% endif %}">
-                <span class="status-dot" aria-hidden="true"></span>
-                {{ row.status_label }}
-              </span>
-            </td>
-            <td>
-              <div class="answers-cell">
-                {% if row.question_count > 0 %}
-                <progress class="answers-track" value="{{ row.answers_count }}" max="{{ row.question_count }}" aria-label="{{ row.answers_count }} af {{ row.question_count }} rigtige svar">
-                  {{ row.answers_count }} / {{ row.question_count }}
-                </progress>
-                {% else %}
-                <progress class="answers-track" value="0" max="1" aria-label="0 af 0 rigtige svar">
-                  0 / 0
-                </progress>
-                {% endif %}
-                <span class="answers-text">{{ row.answers_count }} / {{ row.question_count }}</span>
-              </div>
-            </td>
-            <td>
               <time class="updated-at" datetime="{{ row.updated_at|date:'c' }}">{{ row.updated_at|date:'d.m.Y H:i' }}</time>
-            </td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
+            </div>
+            <div class="answers-cell">
+              <p class="quiz-score-label">Rigtige svar</p>
+              {% if row.question_count > 0 %}
+              <progress class="answers-track" value="{{ row.answers_count }}" max="{{ row.question_count }}" aria-label="{{ row.answers_count }} af {{ row.question_count }} rigtige svar">
+                {{ row.answers_count }} / {{ row.question_count }}
+              </progress>
+              {% else %}
+              <progress class="answers-track" value="0" max="1" aria-label="0 af 0 rigtige svar">
+                0 / 0
+              </progress>
+              {% endif %}
+              <span class="answers-text">{{ row.answers_count }} / {{ row.question_count }}</span>
+            </div>
+          </div>
+          <div class="quiz-meta-row">
+            {% for chip in row.meta_chips %}
+            {% if forloop.counter <= 2 %}
+            <span class="quiz-mini-chip">{{ chip }}</span>
+            {% endif %}
+            {% endfor %}
+            <span class="quiz-id">{{ row.quiz_id }}</span>
+          </div>
+        </article>
+        {% endfor %}
+      </div>
     </div>
-
-    <div class="quiz-history-mobile">
-      {% for row in rows %}
-      <article class="quiz-history-card">
-        {% if row.module_label %}
-        <div class="quiz-module-label">{{ row.module_label }}</div>
-        {% endif %}
-        <h3 class="quiz-history-title"><a class="quiz-link" href="{{ row.quiz_url }}">{{ row.title }}</a></h3>
-        <div class="quiz-history-line">
-          <span class="difficulty-pill {% if row.difficulty_label == 'Let' %}is-easy{% elif row.difficulty_label == 'Svær' %}is-hard{% endif %}">
-            {{ row.difficulty_label }}{% if row.question_count > 0 %} · {{ row.question_count }} spørgsmål{% endif %}
-          </span>
-          <span class="status-pill {% if row.status == 'completed' %}is-complete{% else %}is-progress{% endif %}">
-            <span class="status-dot" aria-hidden="true"></span>
-            {{ row.status_label }}
-          </span>
-        </div>
-        <div class="answers-cell">
-          {% if row.question_count > 0 %}
-          <progress class="answers-track" value="{{ row.answers_count }}" max="{{ row.question_count }}" aria-label="{{ row.answers_count }} af {{ row.question_count }} rigtige svar">
-            {{ row.answers_count }} / {{ row.question_count }}
-          </progress>
-          {% else %}
-          <progress class="answers-track" value="0" max="1" aria-label="0 af 0 rigtige svar">
-            0 / 0
-          </progress>
-          {% endif %}
-          <span class="answers-text">Rigtige svar: {{ row.answers_count }} / {{ row.question_count }}</span>
-        </div>
-        <div class="quiz-meta-row">
-          {% for chip in row.meta_chips %}
-          {% if forloop.counter <= 2 %}
-          <span class="quiz-mini-chip">{{ chip }}</span>
-          {% endif %}
-          {% endfor %}
-          <span class="quiz-id">ID: {{ row.quiz_id }}</span>
-        </div>
-        <div class="quiz-history-line quiz-history-meta">
-          <span>Opdateret:</span>
-          <time class="updated-at" datetime="{{ row.updated_at|date:'c' }}">{{ row.updated_at|date:'d.m.Y H:i' }}</time>
-        </div>
-      </article>
-      {% endfor %}
-    </div>
+    <p class="quiz-history-empty-filter" data-history-empty hidden>Ingen quizzer matcher dine filtre lige nu.</p>
     {% else %}
     <p class="empty-copy">Der er endnu ikke gemte quizscore.</p>
     {% endif %}
@@ -829,4 +1122,150 @@
     {% endif %}
   </section>
 </div>
+<script>
+  (() => {
+    const controls = document.querySelector("[data-history-controls]");
+    const list = document.querySelector("[data-history-list]");
+    if (!controls || !list) {
+      return;
+    }
+
+    const items = Array.from(list.querySelectorAll("[data-history-item]"));
+    if (!items.length) {
+      return;
+    }
+
+    const searchInput = controls.querySelector("[data-history-search]");
+    const difficultySelect = controls.querySelector("[data-history-difficulty]");
+    const statusSelect = controls.querySelector("[data-history-status]");
+    const sortSelect = controls.querySelector("[data-history-sort]");
+    const resetButton = document.querySelector("[data-history-reset]");
+    const feedback = document.querySelector("[data-history-feedback]");
+    const emptyState = document.querySelector("[data-history-empty]");
+    const countNode = document.querySelector("[data-history-count]");
+    const correctNode = document.querySelector("[data-history-correct]");
+    const percentNode = document.querySelector("[data-history-percent]");
+    const perfectNode = document.querySelector("[data-history-perfect]");
+
+    const numberFromDataset = (item, key) => {
+      const parsed = Number.parseInt(item.dataset[key] || "0", 10);
+      return Number.isFinite(parsed) ? parsed : 0;
+    };
+
+    const scoreRatio = (item) => {
+      const total = numberFromDataset(item, "total");
+      if (total <= 0) {
+        return 0;
+      }
+      return numberFromDataset(item, "correct") / total;
+    };
+
+    const comparatorByMode = (mode) => {
+      if (mode === "oldest") {
+        return (a, b) => numberFromDataset(a, "updated") - numberFromDataset(b, "updated");
+      }
+      if (mode === "best") {
+        return (a, b) => scoreRatio(b) - scoreRatio(a) || numberFromDataset(b, "updated") - numberFromDataset(a, "updated");
+      }
+      if (mode === "worst") {
+        return (a, b) => scoreRatio(a) - scoreRatio(b) || numberFromDataset(b, "updated") - numberFromDataset(a, "updated");
+      }
+      if (mode === "title") {
+        return (a, b) => (a.dataset.title || "").localeCompare(b.dataset.title || "", "da");
+      }
+      return (a, b) => numberFromDataset(b, "updated") - numberFromDataset(a, "updated");
+    };
+
+    const updateSummary = (visibleItems) => {
+      const total = visibleItems.length;
+      let correct = 0;
+      let questions = 0;
+      let perfect = 0;
+      visibleItems.forEach((item) => {
+        const localCorrect = numberFromDataset(item, "correct");
+        const localTotal = numberFromDataset(item, "total");
+        correct += localCorrect;
+        questions += localTotal;
+        if (localTotal > 0 && localCorrect >= localTotal) {
+          perfect += 1;
+        }
+      });
+      const percent = questions > 0 ? Math.round((correct / questions) * 100) : 0;
+
+      if (countNode) {
+        countNode.textContent = String(total);
+      }
+      if (correctNode) {
+        correctNode.textContent = `${correct} / ${questions}`;
+      }
+      if (percentNode) {
+        percentNode.textContent = `${percent}%`;
+      }
+      if (perfectNode) {
+        perfectNode.textContent = String(perfect);
+      }
+    };
+
+    const applyFilters = () => {
+      const searchTerm = (searchInput && searchInput.value ? searchInput.value : "").trim().toLowerCase();
+      const selectedDifficulty = difficultySelect ? difficultySelect.value : "all";
+      const selectedStatus = statusSelect ? statusSelect.value : "all";
+      const sortMode = sortSelect ? sortSelect.value : "newest";
+
+      const visible = [];
+      items.forEach((item) => {
+        const matchesSearch = !searchTerm || (item.dataset.search || "").includes(searchTerm);
+        const matchesDifficulty = selectedDifficulty === "all" || item.dataset.difficulty === selectedDifficulty;
+        const matchesStatus = selectedStatus === "all" || item.dataset.status === selectedStatus;
+        const shouldShow = matchesSearch && matchesDifficulty && matchesStatus;
+        item.hidden = !shouldShow;
+        if (shouldShow) {
+          visible.push(item);
+        }
+      });
+
+      visible.sort(comparatorByMode(sortMode));
+      visible.forEach((item) => list.appendChild(item));
+
+      if (feedback) {
+        feedback.textContent = `Viser ${visible.length} af ${items.length} quizzer`;
+      }
+      if (emptyState) {
+        emptyState.hidden = visible.length > 0;
+      }
+      updateSummary(visible);
+    };
+
+    const bind = (node, eventName) => {
+      if (node) {
+        node.addEventListener(eventName, applyFilters);
+      }
+    };
+
+    bind(searchInput, "input");
+    bind(difficultySelect, "change");
+    bind(statusSelect, "change");
+    bind(sortSelect, "change");
+
+    if (resetButton) {
+      resetButton.addEventListener("click", () => {
+        if (searchInput) {
+          searchInput.value = "";
+        }
+        if (difficultySelect) {
+          difficultySelect.value = "all";
+        }
+        if (statusSelect) {
+          statusSelect.value = "all";
+        }
+        if (sortSelect) {
+          sortSelect.value = "newest";
+        }
+        applyFilters();
+      });
+    }
+
+    applyFilters();
+  })();
+</script>
 {% endblock %}

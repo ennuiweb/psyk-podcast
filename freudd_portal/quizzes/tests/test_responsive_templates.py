@@ -76,6 +76,14 @@ class ResponsiveTemplateRulesTests(SimpleTestCase):
         self.assertIn(".lecture-podcasts {\n      order: 2;", body)
         self.assertIn(".lecture-quizzes {\n      order: 3;", body)
 
+    def test_subject_detail_has_desktop_timeline_toggle_hook(self) -> None:
+        body = self._template_text("quizzes/subject_detail.html")
+        self.assertIn("data-subject-rail-toggle", body)
+        self.assertIn("data-subject-path-layout", body)
+        self.assertIn(".subject-path-layout.is-rail-hidden", body)
+        self.assertIn("Vis tidslinje", body)
+        self.assertIn("Skjul tidslinje", body)
+
     def test_subject_detail_has_coarse_pointer_touch_target_guardrails(self) -> None:
         body = self._template_text("quizzes/subject_detail.html")
         self.assertIn("@media (hover: none), (pointer: coarse)", body)

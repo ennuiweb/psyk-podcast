@@ -1633,6 +1633,8 @@ class QuizPortalTests(TestCase):
         self.assertContains(response, "Introforelaesning")
         self.assertContains(response, "data-active-lecture-key=\"W01L1\"")
         self.assertContains(response, "lecture-rail-item")
+        self.assertContains(response, "data-subject-rail-toggle")
+        self.assertContains(response, "Skjul tidslinje")
         self.assertNotContains(response, "lecture-details")
         self.assertNotContains(response, "timeline-item")
         self.assertNotContains(response, "Introforelaesning (Forelaesning 1, 2026-02-02)")

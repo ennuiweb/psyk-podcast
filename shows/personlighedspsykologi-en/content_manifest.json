@@ -3,7 +3,7 @@
   "subject_slug": "personlighedspsykologi",
   "source_meta": {
     "version": 1,
-    "generated_at": "2026-03-02T13:47:21.548625+00:00",
+    "generated_at": "2026-03-02T13:54:22.835231+00:00",
     "reading_master_path": "/home/runner/work/psyk-podcast/psyk-podcast/shows/personlighedspsykologi-en/docs/reading-file-key.md",
     "reading_fallback_path": "/home/runner/work/psyk-podcast/psyk-podcast/shows/personlighedspsykologi-en/docs/reading-file-key.md",
     "reading_source_used": "/home/runner/work/psyk-podcast/psyk-podcast/shows/personlighedspsykologi-en/docs/reading-file-key.md",
@@ -1085,7 +1085,18 @@
                 "episode_title": "W5L1 - X Gammelgaard (2010) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               }
             ],
-            "podcasts": []
+            "podcasts": [
+              {
+                "kind": "podcast",
+                "title": "Uge 5, Forelæsning 1 · Podcast · X Gammelgaard (2010)",
+                "url": "https://open.spotify.com/episode/45nQc1s0DiStUWQlonFBbw",
+                "platform": "spotify",
+                "pub_date": "Mon, 02 Mar 2025 10:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1qi71LZSel6RRC5KKuwIrYg1nlJ_mdTqz",
+                "duration_seconds": null,
+                "duration_label": ""
+              }
+            ]
           }
         },
         {
@@ -1151,12 +1162,20 @@
             "episode_title": "W5L1 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=1b3d31bc}.mp3"
           }
         ],
-        "podcasts": []
+        "podcasts": [
+          {
+            "kind": "podcast",
+            "title": "Uge 5, Forelæsning 1 · Podcast · Alle kilder",
+            "url": "https://open.spotify.com/episode/4S7xztQvoozw3jlCmeRrmP",
+            "platform": "spotify",
+            "pub_date": "Mon, 02 Mar 2025 08:00:00 +0100",
+            "source_audio_url": "https://drive.google.com/uc?export=download&id=1HC5jj6np5ONZWnmVLYii1UiguTX3sCm6",
+            "duration_seconds": null,
+            "duration_label": ""
+          }
+        ]
       },
-      "warnings": [
-        "Spotify episode mapping missing for RSS item; skipping podcast asset: Uge 5, Forelæsning 1 · Podcast · Alle kilder",
-        "Spotify episode mapping missing for RSS item; skipping podcast asset: Uge 5, Forelæsning 1 · Podcast · X Gammelgaard (2010)"
-      ]
+      "warnings": []
     },
     {
       "lecture_key": "W05L2",
@@ -1246,6 +1265,16 @@
             "source_audio_url": "https://drive.google.com/uc?export=download&id=1-s0nlRXA9r2e_1GrKqDmGhSd73Y5Jn5J",
             "duration_seconds": null,
             "duration_label": ""
+          },
+          {
+            "kind": "podcast",
+            "title": "Uge 5, Forelæsning 2 · Podcast · Grundbog kapitel 07 - Nyere psykoanalytiske teorier",
+            "url": "https://open.spotify.com/episode/4CY4keNuV5PHVBZLyqV6bV",
+            "platform": "spotify",
+            "pub_date": "Tue, 03 Mar 2025 12:00:00 +0100",
+            "source_audio_url": "https://drive.google.com/uc?export=download&id=10xTkxELVaxzt8roVV0LtkstivDdTU9R2",
+            "duration_seconds": null,
+            "duration_label": ""
           }
         ]
       },
@@ -1253,7 +1282,7 @@
         "Quiz entry could not map to reading; attached to lecture assets: W5L2 - Grundbog kapitel 07 - Nyere psykoanalytiske teorier [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
         "Quiz entry could not map to reading; attached to lecture assets: [Brief] W5L2 - Grundbog kapitel 07 - Nyere psykoanalytiske teorier [EN] {type=audio lang=en format=brief length=default hash=7e1ef4f1}.mp3",
         "RSS item could not map to reading; attached to lecture assets: Uge 5, Forelæsning 2 · Kort podcast · Grundbog kapitel 07 - Nyere psykoanalytiske teorier",
-        "Spotify episode mapping missing for RSS item; skipping podcast asset: Uge 5, Forelæsning 2 · Podcast · Grundbog kapitel 07 - Nyere psykoanalytiske teorier"
+        "RSS item could not map to reading; attached to lecture assets: Uge 5, Forelæsning 2 · Podcast · Grundbog kapitel 07 - Nyere psykoanalytiske teorier"
       ]
     },
     {
@@ -2463,12 +2492,22 @@
             "source_audio_url": "https://drive.google.com/uc?export=download&id=13BwbQ43HXmAF8QL2vGnIkTJkvIGnaUL5",
             "duration_seconds": null,
             "duration_label": ""
+          },
+          {
+            "kind": "podcast",
+            "title": "Uge 10, Forelæsning 2 · Podcast · Foucault, M. (1997). s. 281-301",
+            "url": "https://open.spotify.com/episode/0xdGjghUkkqP1z3ZniaK2T",
+            "platform": "spotify",
+            "pub_date": "Tue, 14 Apr 2025 14:00:00 +0200",
+            "source_audio_url": "https://drive.google.com/uc?export=download&id=16Z3YAYc27E7nfy-G4pIQOyQ0ZFcYhZXb",
+            "duration_seconds": null,
+            "duration_label": ""
           }
         ]
       },
       "warnings": [
         "Quiz entry could not map to reading; attached to lecture assets: W10L2 - Foucault, M. (1997). s. 281-301 [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
-        "Spotify episode mapping missing for RSS item; skipping podcast asset: Uge 10, Forelæsning 2 · Podcast · Foucault, M. (1997). s. 281-301"
+        "RSS item could not map to reading; attached to lecture assets: Uge 10, Forelæsning 2 · Podcast · Foucault, M. (1997). s. 281-301"
       ]
     },
     {

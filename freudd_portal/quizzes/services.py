@@ -61,6 +61,7 @@ class QuizOutcome:
 
 
 _METADATA_CACHE: dict[str, Any] = {"mtime": None, "data": {}}
+MAX_SPEED_BONUS_SECONDS_PER_QUESTION = 10
 
 
 def quiz_html_file_path(quiz_id: str) -> Path:
@@ -438,7 +439,8 @@ def compute_leaderboard_score(
     total = max(0, int(question_count))
     duration = max(1_000, int(duration_ms))
     limit_seconds = max(5, int(question_time_limit_seconds or _question_time_limit_seconds()))
-    expected_ms = max(1, total) * limit_seconds * 1_000
+    speed_bonus_window_seconds = min(limit_seconds, MAX_SPEED_BONUS_SECONDS_PER_QUESTION)
+    expected_ms = max(1, total) * speed_bonus_window_seconds * 1_000
     speed_factor = max(0.0, min(1.0, expected_ms / duration))
     speed_bonus = round(correct * 20 * speed_factor)
     return max(0, int(correct * 100 + speed_bonus))

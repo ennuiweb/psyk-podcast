@@ -420,6 +420,7 @@
       5,
       Number.parseInt("{{ question_time_limit_seconds|default:30 }}", 10) || 30
     );
+    const maxSpeedBonusSecondsPerQuestion = Math.min(10, questionTimeLimitSeconds);
     const cooldownResetSeconds = 3600;
     const isAuthenticated = {{ user_is_authenticated|yesno:"true,false" }};
     const localCooldownKey = "quiz-local-cooldown:{{ quiz_id }}";
@@ -914,7 +915,7 @@
         return 0;
       }
       const duration = Math.max(1_000, Number.parseInt(String(durationMs), 10) || questionTimeLimitSeconds * 1000);
-      const expectedMs = questionTimeLimitSeconds * 1000;
+      const expectedMs = maxSpeedBonusSecondsPerQuestion * 1000;
       const speedFactor = Math.max(0.0, Math.min(1.0, expectedMs / duration));
       const speedBonus = Math.round(20 * speedFactor);
       return 100 + speedBonus;

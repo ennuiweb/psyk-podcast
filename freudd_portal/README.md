@@ -39,6 +39,7 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Private personal tracking is manual for tekster/podcasts (`mark/unmark`) and keeps quiz completion as-is from `QuizProgress`.
 - Public quizliga is opt-in and alias-based; public view shows `alias + rank + score point + quiz count`.
 - Quizliga score per quiz is based on correctness plus speed bonus (`score = correct*100 + speed_bonus`), with correctness weighted highest.
+- Speed bonus reaches max when average correct-answer pace is `<= 10s` per question (capped by configured per-question timeout if lower).
 - Quizliga tie-break is `correct_answers`, then earliest `reached_at`, then alias alphabetic.
 - Quizliga semesters reset every half year in UTC: `H1 = [Jan 1, Jul 1)`, `H2 = [Jul 1, Jan 1 next year)`.
 - Learning path on subject pages (`/subjects/<subject_slug>`) is lecture-first with nested tekststatus (`active|completed|no_quiz`) and quiz/podcast navigation.

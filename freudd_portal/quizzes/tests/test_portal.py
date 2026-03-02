@@ -1517,6 +1517,24 @@ class QuizPortalTests(TestCase):
         self.assertEqual(entries[1]["quiz_count"], 2)
         self.assertEqual(entries[1]["accuracy_percent"], 50)
 
+    def test_compute_leaderboard_score_gives_max_bonus_within_ten_seconds_per_question(self) -> None:
+        score = quiz_services.compute_leaderboard_score(
+            correct_answers=3,
+            question_count=3,
+            duration_ms=30_000,
+            question_time_limit_seconds=30,
+        )
+        self.assertEqual(score, 360)
+
+    def test_compute_leaderboard_score_reduces_bonus_after_ten_seconds_per_question(self) -> None:
+        score = quiz_services.compute_leaderboard_score(
+            correct_answers=3,
+            question_count=3,
+            duration_ms=90_000,
+            question_time_limit_seconds=30,
+        )
+        self.assertEqual(score, 320)
+
     def test_half_year_semester_boundaries(self) -> None:
         jan_start = active_half_year_semester(datetime(2026, 1, 1, 0, 0, tzinfo=dt_timezone.utc))
         self.assertEqual(jan_start.key, "2026-H1")

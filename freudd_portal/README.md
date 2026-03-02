@@ -54,9 +54,9 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Subject detail spacing uses a local responsive scale (`section/block/tight`) to keep vertical rhythm consistent across rail, card header, and section blocks.
 - Subject detail uses compact mobile density on small screens (`<=760px`) to reduce nested card padding/gaps for narrow devices.
 - Subject detail hides the card-to-rail pointer notch on responsive layouts (`<=1180px`) to keep alignment clean with compact rail widths.
-- Active lecture card is partitioned into three fixed sibling sections in this order: `Tekster`, `Podcasts`, `Quiz for alle kilder`.
+- Active lecture card renders sections in this order: `Tekster`, optional `Podcasts` (only when podcast rows exist), `Quiz for alle kilder`.
 - Quiz assets are surfaced only in `Quiz for alle kilder`, podcast assets only in `Podcasts`, and tekststatus/progress only in `Tekster`.
-- Section-level empty states are shown per section; one populated section does not hide the others.
+- If no podcasts are available for the active lecture, the `Podcasts` section is hidden.
 - Tekstkort always render L/M/S difficulty indicators in subject detail.
 - Lecture rail rows render extra-compact marker dots on mobile (without index numbers) plus lecture copy (week label + cleaned lecture title).
 - Module headers in subject detail are rendered as a combined headline (`Uge x, forelæsning x: <titel>`), with cleaned lecture title metadata.

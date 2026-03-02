@@ -125,7 +125,7 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 LOGIN_URL = "/accounts/login"
-LOGIN_REDIRECT_URL = "/progress"
+LOGIN_REDIRECT_URL = "/settings"
 LOGOUT_REDIRECT_URL = "/accounts/login"
 
 SOCIALACCOUNT_LOGIN_ON_GET = False

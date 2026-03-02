@@ -2,10 +2,10 @@
 
 Freudd Portal is the learner-facing layer on top of static quiz and podcast content. Students can sign in, enroll in subjects, and continue where they left off through a structured lecture-first journey.
 
-The progress page (`/progress`) focuses on three things:
+The settings page (`/settings`) focuses on three things:
 - subject access and enrollment management,
 - personal quiz history and status,
-- public freudd quiz cup settings/preview.
+- public freudd quiz cup settings.
 
 The dedicated quiz cup page (`/leaderboard/<subject_slug>`) presents this as subject tabs, a top-3 podium, and a Top 50 table.
 

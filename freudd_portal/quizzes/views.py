@@ -1390,10 +1390,8 @@ def progress_view(request: HttpRequest) -> HttpResponse:
     )
     subject_cards: list[dict[str, object]] = []
     subject_tracking_targets: list[dict[str, str]] = []
-    leaderboard_preview_by_subject: list[dict[str, object]] = []
     for subject in catalog.active_subjects:
         detail_url = reverse("subject-detail", kwargs={"subject_slug": subject.slug})
-        leaderboard_url = reverse("leaderboard-subject", kwargs={"subject_slug": subject.slug})
         subject_cards.append(
             {
                 "slug": subject.slug,
@@ -1403,7 +1401,6 @@ def progress_view(request: HttpRequest) -> HttpResponse:
                 "detail_url": detail_url,
                 "enroll_url": reverse("subject-enroll", kwargs={"subject_slug": subject.slug}),
                 "unenroll_url": reverse("subject-unenroll", kwargs={"subject_slug": subject.slug}),
-                "leaderboard_url": leaderboard_url,
             }
         )
         subject_tracking_targets.append(
@@ -1413,22 +1410,6 @@ def progress_view(request: HttpRequest) -> HttpResponse:
                 "detail_url": detail_url,
             }
         )
-        leaderboard_snapshot = build_subject_leaderboard_snapshot(
-            subject_slug=subject.slug,
-            limit=5,
-            semester=semester,
-        )
-        preview_entries = leaderboard_snapshot.get("entries") or []
-        if preview_entries:
-            leaderboard_preview_by_subject.append(
-                {
-                    "slug": subject.slug,
-                    "title": subject.title,
-                    "leaderboard_url": leaderboard_url,
-                    "entries": preview_entries,
-                    "participant_count": int(leaderboard_snapshot.get("participant_count") or 0),
-                }
-            )
 
     quiz_history_enabled = bool(getattr(settings, "FREUDD_PROGRESS_QUIZ_HISTORY_ENABLED", True))
     rows: list[dict[str, object]] = []
@@ -1531,7 +1512,6 @@ def progress_view(request: HttpRequest) -> HttpResponse:
             "subjects_error": catalog.error,
             "leaderboard_profile": profile_payload,
             "leaderboard_alias_editing": leaderboard_alias_editing,
-            "leaderboard_preview_by_subject": leaderboard_preview_by_subject,
             "personal_tracking_by_subject": personal_tracking_by_subject,
             "quiz_history_enabled": quiz_history_enabled,
             "quiz_history_summary": quiz_history_summary,

@@ -1007,6 +1007,17 @@ class QuizPortalTests(TestCase):
         self.assertContains(response, "Offentlig quiz cup")
         self.assertContains(response, reverse("leaderboard-profile"))
 
+    def test_progress_named_route_uses_settings_slug(self) -> None:
+        self.assertEqual(reverse("progress"), "/settings")
+
+    def test_progress_legacy_slug_redirects_to_settings_with_query_string(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+
+        response = self.client.get("/progress?edit_alias=1")
+        self.assertEqual(response.status_code, 301)
+        self.assertEqual(response.url, f"{reverse('progress')}?edit_alias=1")
+
     def test_progress_page_hides_empty_leaderboard_preview_cards(self) -> None:
         user = self._create_user()
         self.client.force_login(user)

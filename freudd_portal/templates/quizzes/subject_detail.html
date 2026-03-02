@@ -537,10 +537,19 @@
     line-height: 1;
   }
 
-  .quiz-difficulty-rank .material-symbols-outlined {
-    font-size: 28px;
+  .quiz-difficulty-rank-badge {
+    width: 26px;
+    height: 26px;
+    border-radius: 7px;
+    border: 1px solid color-mix(in srgb, #2a2722 32%, transparent);
+    background: color-mix(in srgb, var(--surface) 84%, #f0eadf);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--subject-font-ui);
+    font-size: 1rem;
     font-weight: 600;
-    font-variation-settings: "FILL" 0, "wght" 600, "GRAD" 0, "opsz" 20;
+    color: #1f1b15;
   }
 
   .quiz-difficulty-copy {
@@ -1341,8 +1350,11 @@
       gap: 8px;
     }
 
-    .quiz-difficulty-rank .material-symbols-outlined {
-      font-size: 26px;
+    .quiz-difficulty-rank-badge {
+      width: 24px;
+      height: 24px;
+      border-radius: 7px;
+      font-size: 0.92rem;
     }
 
     .quiz-difficulty-title {
@@ -1550,8 +1562,11 @@
       gap: 7px;
     }
 
-    .quiz-difficulty-rank .material-symbols-outlined {
-      font-size: 24px;
+    .quiz-difficulty-rank-badge {
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      font-size: 0.84rem;
     }
 
     .quiz-difficulty-title {
@@ -1634,8 +1649,11 @@
       padding-left: 10px;
     }
 
-    .quiz-difficulty-rank .material-symbols-outlined {
-      font-size: 22px;
+    .quiz-difficulty-rank-badge {
+      width: 20px;
+      height: 20px;
+      border-radius: 6px;
+      font-size: 0.76rem;
     }
   }
 
@@ -1968,7 +1986,7 @@
               {% for slot in active_lecture.quiz_difficulty_visible_slots %}
               <li class="quiz-difficulty-row is-{{ slot.difficulty }} is-{{ slot.state_key }} {% if slot.quiz_url %}has-action{% else %}is-disabled{% endif %}">
                 <span class="quiz-difficulty-rank" aria-hidden="true">
-                  <span class="material-symbols-outlined">filter_{{ slot.display_index }}</span>
+                  <span class="quiz-difficulty-rank-badge">{{ slot.display_index }}</span>
                 </span>
                 <div class="quiz-difficulty-copy">
                 {% if slot.quiz_url %}

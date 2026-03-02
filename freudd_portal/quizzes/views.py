@@ -1292,78 +1292,87 @@ def progress_view(request: HttpRequest) -> HttpResponse:
             }
         )
 
-    label_mapping = load_quiz_label_mapping()
-    progress_rows = (
-        QuizProgress.objects.filter(user=request.user, completed_at__isnull=False)
-        .order_by("-last_attempt_completed_at", "-completed_at", "-updated_at")
-    )
-
+    quiz_history_enabled = bool(getattr(settings, "FREUDD_PROGRESS_QUIZ_HISTORY_ENABLED", True))
     rows: list[dict[str, object]] = []
-    for row in progress_rows:
-        label = label_mapping.get(row.quiz_id)
-        episode_title = label.episode_title if label else row.quiz_id
-        quiz_display = _quiz_display_context(episode_title=episode_title, quiz_id=row.quiz_id)
-        difficulty_key = str(label.difficulty if label else "unknown").strip().lower() or "unknown"
-        if difficulty_key not in DIFFICULTY_SORT_ORDER:
-            difficulty_key = "unknown"
-        best_question_count = int(row.leaderboard_best_question_count or 0)
-        best_correct_answers = int(row.leaderboard_best_correct_answers or 0)
-        if best_question_count > 0:
-            score_question_count = best_question_count
-            score_correct_answers = max(0, min(best_correct_answers, best_question_count))
-        else:
-            score_question_count = max(0, int(row.question_count or 0))
-            score_correct_answers = max(0, int(row.answers_count or 0))
-        status = QuizProgress.Status.COMPLETED
-        updated_at = row.last_attempt_completed_at or row.completed_at or row.updated_at
-        rows.append(
-            {
-                "quiz_id": row.quiz_id,
-                "title": quiz_display.get("title") or row.quiz_id,
-                "module_label": quiz_display.get("module_label") or "",
-                "meta_chips": list(quiz_display.get("meta_chips") or []),
-                "difficulty_label": _difficulty_label(difficulty_key),
-                "difficulty_key": difficulty_key,
-                "status": status,
-                "status_label": status.label,
-                "answers_count": score_correct_answers,
-                "question_count": score_question_count,
-                "updated_at": updated_at,
-                "completed_at": row.completed_at,
-                "quiz_url": reverse("quiz-wrapper", kwargs={"quiz_id": row.quiz_id}),
-                "search_text": " ".join(
-                    [
-                        str(quiz_display.get("title") or ""),
-                        str(quiz_display.get("module_label") or ""),
-                        " ".join(str(chip or "") for chip in list(quiz_display.get("meta_chips") or [])),
-                        row.quiz_id,
-                    ]
-                ).lower(),
-            }
-        )
-
-    total_correct_answers = sum(int(item.get("answers_count") or 0) for item in rows)
-    total_question_count = sum(int(item.get("question_count") or 0) for item in rows)
-    total_quizzes = len(rows)
-    perfect_quizzes = sum(
-        1
-        for item in rows
-        if int(item.get("question_count") or 0) > 0
-        and int(item.get("answers_count") or 0) >= int(item.get("question_count") or 0)
-    )
-    completion_percent = (
-        int(round((total_correct_answers / total_question_count) * 100))
-        if total_question_count > 0
-        else 0
-    )
     quiz_history_summary = {
-        "quiz_count": total_quizzes,
-        "total_correct_answers": total_correct_answers,
-        "total_question_count": total_question_count,
-        "completion_percent": completion_percent,
-        "perfect_quiz_count": perfect_quizzes,
-        "latest_updated_at": rows[0]["updated_at"] if rows else None,
+        "quiz_count": 0,
+        "total_correct_answers": 0,
+        "total_question_count": 0,
+        "completion_percent": 0,
+        "perfect_quiz_count": 0,
+        "latest_updated_at": None,
     }
+    if quiz_history_enabled:
+        label_mapping = load_quiz_label_mapping()
+        progress_rows = (
+            QuizProgress.objects.filter(user=request.user, completed_at__isnull=False)
+            .order_by("-last_attempt_completed_at", "-completed_at", "-updated_at")
+        )
+        for row in progress_rows:
+            label = label_mapping.get(row.quiz_id)
+            episode_title = label.episode_title if label else row.quiz_id
+            quiz_display = _quiz_display_context(episode_title=episode_title, quiz_id=row.quiz_id)
+            difficulty_key = str(label.difficulty if label else "unknown").strip().lower() or "unknown"
+            if difficulty_key not in DIFFICULTY_SORT_ORDER:
+                difficulty_key = "unknown"
+            best_question_count = int(row.leaderboard_best_question_count or 0)
+            best_correct_answers = int(row.leaderboard_best_correct_answers or 0)
+            if best_question_count > 0:
+                score_question_count = best_question_count
+                score_correct_answers = max(0, min(best_correct_answers, best_question_count))
+            else:
+                score_question_count = max(0, int(row.question_count or 0))
+                score_correct_answers = max(0, int(row.answers_count or 0))
+            status = QuizProgress.Status.COMPLETED
+            updated_at = row.last_attempt_completed_at or row.completed_at or row.updated_at
+            rows.append(
+                {
+                    "quiz_id": row.quiz_id,
+                    "title": quiz_display.get("title") or row.quiz_id,
+                    "module_label": quiz_display.get("module_label") or "",
+                    "meta_chips": list(quiz_display.get("meta_chips") or []),
+                    "difficulty_label": _difficulty_label(difficulty_key),
+                    "difficulty_key": difficulty_key,
+                    "status": status,
+                    "status_label": status.label,
+                    "answers_count": score_correct_answers,
+                    "question_count": score_question_count,
+                    "updated_at": updated_at,
+                    "completed_at": row.completed_at,
+                    "quiz_url": reverse("quiz-wrapper", kwargs={"quiz_id": row.quiz_id}),
+                    "search_text": " ".join(
+                        [
+                            str(quiz_display.get("title") or ""),
+                            str(quiz_display.get("module_label") or ""),
+                            " ".join(str(chip or "") for chip in list(quiz_display.get("meta_chips") or [])),
+                            row.quiz_id,
+                        ]
+                    ).lower(),
+                }
+            )
+
+        total_correct_answers = sum(int(item.get("answers_count") or 0) for item in rows)
+        total_question_count = sum(int(item.get("question_count") or 0) for item in rows)
+        total_quizzes = len(rows)
+        perfect_quizzes = sum(
+            1
+            for item in rows
+            if int(item.get("question_count") or 0) > 0
+            and int(item.get("answers_count") or 0) >= int(item.get("question_count") or 0)
+        )
+        completion_percent = (
+            int(round((total_correct_answers / total_question_count) * 100))
+            if total_question_count > 0
+            else 0
+        )
+        quiz_history_summary = {
+            "quiz_count": total_quizzes,
+            "total_correct_answers": total_correct_answers,
+            "total_question_count": total_question_count,
+            "completion_percent": completion_percent,
+            "perfect_quiz_count": perfect_quizzes,
+            "latest_updated_at": rows[0]["updated_at"] if rows else None,
+        }
 
     profile_payload = get_profile_payload(request.user)
     leaderboard_alias_editing = _as_bool(request.GET.get("edit_alias")) and bool(
@@ -1386,6 +1395,7 @@ def progress_view(request: HttpRequest) -> HttpResponse:
             "leaderboard_alias_editing": leaderboard_alias_editing,
             "leaderboard_preview_by_subject": leaderboard_preview_by_subject,
             "personal_tracking_by_subject": personal_tracking_by_subject,
+            "quiz_history_enabled": quiz_history_enabled,
             "quiz_history_summary": quiz_history_summary,
             "active_season": {
                 "key": season.key,

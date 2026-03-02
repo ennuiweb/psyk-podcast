@@ -1,0 +1,265 @@
+{
+  "title": "Psychoanalysis Quiz",
+  "questions": [
+    {
+      "question": "According to Gammelgaard, which three fundamental theories represent the core of psychoanalysis for both laypeople and professionals?",
+      "answerOptions": [
+        {
+          "text": "Drive theory, developmental theory, and the theory of the unconscious.",
+          "isCorrect": true,
+          "rationale": "These three pillars represent the foundational ideas that define the field's approach to the human mind and its history."
+        },
+        {
+          "text": "Behavior modification, cognitive restructuring, and genetic predisposition.",
+          "isCorrect": false,
+          "rationale": "While significant in general psychology, these concepts are more closely associated with behaviorism and cognitive-behavioral therapy rather than classical psychoanalysis."
+        },
+        {
+          "text": "Neuroplasticity, social learning theory, and existential phenomenology.",
+          "isCorrect": false,
+          "rationale": "These are modern psychological or philosophical frameworks that do not constitute the specific triad identified by Gammelgaard as the essence of Freud's work."
+        },
+        {
+          "text": "Dream analysis, hypnosis, and the study of hereditary hysteria.",
+          "isCorrect": false,
+          "rationale": "These were early methods or specific areas of interest but do not represent the three broad theoretical categories that encompass the whole of psychoanalytic theory."
+        }
+      ],
+      "hint": "Consider the concepts that bridge childhood development, internal motivators, and hidden mental processes."
+    },
+    {
+      "question": "In the context of 'Vienna 1900,' what was the primary cultural shift that allowed psychoanalysis to emerge?",
+      "answerOptions": [
+        {
+          "text": "A rebellion against rationalism and moralism in favor of exploring the irrational and subjective.",
+          "isCorrect": true,
+          "rationale": "The intellectual climate of the time sought to break away from 19th-century constraints, opening doors to the study of the psyche's darker and hidden sides."
+        },
+        {
+          "text": "A strict return to religious values and traditional family structures to combat modernism.",
+          "isCorrect": false,
+          "rationale": "Psychoanalysis was actually part of a cultural radicalism that often challenged these very traditional and religious structures."
+        },
+        {
+          "text": "The complete abandonment of scientific inquiry in favor of purely artistic expression.",
+          "isCorrect": false,
+          "rationale": "Freud aimed to create a scientific psychology, despite his theory's deep connections to art and literature."
+        },
+        {
+          "text": "The centralization of the medical field under government-mandated biological frameworks.",
+          "isCorrect": false,
+          "rationale": "Freud's work was often seen as a break from the established, biological-only medical order of the time."
+        }
+      ],
+      "hint": "Think about the movement away from logic and towards the 'unseen' parts of the human experience."
+    },
+    {
+      "question": "How did Freud define the 'Drive' (Drift) in his 1905 work 'Three Essays on the Theory of Sexuality'?",
+      "answerOptions": [
+        {
+          "text": "As a boundary concept between the psychic and the somatic.",
+          "isCorrect": true,
+          "rationale": "Freud viewed the drive as a mental representation of an internal somatic stimulus that places a demand on the mind for work."
+        },
+        {
+          "text": "As a purely biological instinct identical to those found in animals.",
+          "isCorrect": false,
+          "rationale": "Freud made a distinction between 'instinct' (biologically fixed) and 'drive' (psychically mediated and flexible)."
+        },
+        {
+          "text": "As a conscious choice driven by rational self-interest.",
+          "isCorrect": false,
+          "rationale": "Drives are theorized to originate in the unconscious and are often at odds with rational self-interest."
+        },
+        {
+          "text": "As a result of social conditioning and environmental learning.",
+          "isCorrect": false,
+          "rationale": "While the environment affects the drive's object, the drive itself is rooted in internal somatic processes according to Freud."
+        }
+      ],
+      "hint": "Consider the intersection of the physical body and the mental life."
+    },
+    {
+      "question": "What does the concept of 'Nachtr\u00e4glichkeit' (deferred action) imply about psychological trauma?",
+      "answerOptions": [
+        {
+          "text": "That an event may only acquire traumatic meaning and effect at a later point in time.",
+          "isCorrect": true,
+          "rationale": "This concept suggests a non-linear development where earlier experiences are reinterpreted and become 'active' through later events."
+        },
+        {
+          "text": "That trauma is immediately and fully processed at the moment of the event.",
+          "isCorrect": false,
+          "rationale": "This contradicts Freud's view that the significance of a memory can change over time through a two-phase process."
+        },
+        {
+          "text": "That the human brain eventually deletes memories of stressful events to protect itself.",
+          "isCorrect": false,
+          "rationale": "Psychoanalysis focuses on how memories persist in the unconscious rather than being deleted."
+        },
+        {
+          "text": "That childhood events have no impact on adult life until they are consciously remembered.",
+          "isCorrect": false,
+          "rationale": "Childhood events can have unconscious effects regardless of whether they are clearly remembered in adulthood."
+        }
+      ],
+      "hint": "Focus on how the meaning of a past event is not fixed but changes over time."
+    },
+    {
+      "question": "In Freud's later 'Structural Model' of the psyche, which component is responsible for mediating between internal desires and external reality?",
+      "answerOptions": [
+        {
+          "text": "The Ego (Jeg'et).",
+          "isCorrect": true,
+          "rationale": "The Ego functions as the reality-testing mechanism that balances the demands of the Id, the Superego, and the external world."
+        },
+        {
+          "text": "The Id (Det'et).",
+          "isCorrect": false,
+          "rationale": "The Id is the source of raw, unconscious drives and operates according to the pleasure principle, not external reality."
+        },
+        {
+          "text": "The Superego (Over-jeg'et).",
+          "isCorrect": false,
+          "rationale": "The Superego represents internalized moral standards and ideals, often acting as a conscience rather than a reality-mediator."
+        },
+        {
+          "text": "The Preconscious.",
+          "isCorrect": false,
+          "rationale": "While part of the earlier topographical model, the preconscious is a state of accessibility for memories, not a structural agency of mediation."
+        }
+      ],
+      "hint": "Think of the psychological 'representative' of the person who must handle the 'here and now'."
+    },
+    {
+      "question": "Jean Laplanche introduced the concept of 'enigmatic messages' (g\u00e5defulde meddelelser) to explain what?",
+      "answerOptions": [
+        {
+          "text": "How a mother's unconscious desires are communicated to the child through early care.",
+          "isCorrect": true,
+          "rationale": "Laplanche suggests that the child's psyche is formed by trying to translate the adult's unconsciously sexualized communications."
+        },
+        {
+          "text": "The secret codes used by patients to hide their symptoms from the analyst.",
+          "isCorrect": false,
+          "rationale": "While symptoms can be obscure, this specific term refers to the foundational interaction between adult and infant."
+        },
+        {
+          "text": "The biological signals sent from the gut to the brain to trigger hunger.",
+          "isCorrect": false,
+          "rationale": "This interpretation is purely biological, whereas Laplanche's concept is intersubjective and psychological."
+        },
+        {
+          "text": "The difficulty of translating Freud's original German texts into French.",
+          "isCorrect": false,
+          "rationale": "Although Laplanche was a translator, this specific term is a core part of his original developmental theory."
+        }
+      ],
+      "hint": "Look for a concept involving the early relationship between a caregiver and an infant."
+    },
+    {
+      "question": "Which prominent psychoanalyst rejected Freud's theory of the 'Death Drive' (D\u00f8dsdriften), arguing instead that destructiveness is a secondary reaction to environmental failure?",
+      "answerOptions": [
+        {
+          "text": "Heinz Kohut.",
+          "isCorrect": true,
+          "rationale": "Kohut, along with others like Winnicott, viewed destructive behavior as a result of failure in the 'self-object' environment rather than an innate drive."
+        },
+        {
+          "text": "Melanie Klein.",
+          "isCorrect": false,
+          "rationale": "Klein was one of the few major followers who fully integrated the death drive into her theory, particularly regarding early infantile anxiety."
+        },
+        {
+          "text": "Andr\u00e9 Green.",
+          "isCorrect": false,
+          "rationale": "Green utilized the concept of the 'negative' and worked extensively with Freud's later drive theories."
+        },
+        {
+          "text": "Jean-Martin Charcot.",
+          "isCorrect": false,
+          "rationale": "Charcot was Freud's teacher and focused on hysteria before the death drive theory was even formulated in 1920."
+        }
+      ],
+      "hint": "Think of an analyst who focused on the 'Self' and the importance of empathy."
+    },
+    {
+      "question": "According to Donald Winnicott, what is the purpose of a 'transitional object'?",
+      "answerOptions": [
+        {
+          "text": "To provide an intermediate area of experience between the internal and external world.",
+          "isCorrect": true,
+          "rationale": "The transitional object (like a blanket or teddy bear) helps the child move from the illusion of omnipotence to the recognition of objective reality."
+        },
+        {
+          "text": "To serve as a strictly biological tool for physical survival.",
+          "isCorrect": false,
+          "rationale": "While it might offer comfort, its primary function in this theory is psychological and symbolic."
+        },
+        {
+          "text": "To replace the mother entirely so she no longer needs to provide care.",
+          "isCorrect": false,
+          "rationale": "The object is a bridge, not a permanent replacement for the primary caregiver."
+        },
+        {
+          "text": "To represent the child's repressed anger toward their parents.",
+          "isCorrect": false,
+          "rationale": "While the object can be treated aggressively, its core purpose is to facilitate the development of a sense of self and reality."
+        }
+      ],
+      "hint": "It functions in the space between 'me' and 'not-me'."
+    },
+    {
+      "question": "What is the 'Primary Process' (Prim\u00e6rproces) characteristic of the unconscious according to Freud?",
+      "answerOptions": [
+        {
+          "text": "A type of thinking that ignores time and contradictions, driven by the immediate discharge of energy.",
+          "isCorrect": true,
+          "rationale": "The primary process operates without logic or sequence, seeking instant gratification, and is often seen in dreams."
+        },
+        {
+          "text": "The logical and rational way we solve math problems.",
+          "isCorrect": false,
+          "rationale": "This describes the 'secondary process,' which is characteristic of the conscious and preconscious mind."
+        },
+        {
+          "text": "The biological process of aging and physical decay.",
+          "isCorrect": false,
+          "rationale": "Freud's term 'process' here refers to a mental way of handling energy (libido), not a biological one."
+        },
+        {
+          "text": "The set of social rules we learn in elementary school.",
+          "isCorrect": false,
+          "rationale": "Social rules are closer to the functions of the Superego or the secondary process, which accommodates reality."
+        }
+      ],
+      "hint": "Think about the strange, non-linear logic found in dreams."
+    },
+    {
+      "question": "Andr\u00e9 Green's concept of 'The Dead Mother' refers to which psychological situation?",
+      "answerOptions": [
+        {
+          "text": "A mother who is physically present but emotionally unavailable or 'dead' to the child due to depression.",
+          "isCorrect": true,
+          "rationale": "This leads the child to identify with a 'blank' or 'negative' space in their internal world to maintain a connection to the mother."
+        },
+        {
+          "text": "The literal, physical death of a mother during childbirth.",
+          "isCorrect": false,
+          "rationale": "While that is a tragic event, Green's concept is a metaphor for a psychic reality occurring while the mother is alive."
+        },
+        {
+          "text": "A child's unconscious desire to kill their mother as part of the Oedipal complex.",
+          "isCorrect": false,
+          "rationale": "This relates more to Freud's aggressive drives rather than Green's specific focus on loss and emotional absence."
+        },
+        {
+          "text": "The loss of the 'Mother Tongue' when a child moves to a different country.",
+          "isCorrect": false,
+          "rationale": "This is a linguistic or social issue, not the specific psychoanalytic concept developed by Green."
+        }
+      ],
+      "hint": "It describes a mother who has withdrawn her emotional investment from the child."
+    }
+  ]
+}

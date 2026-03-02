@@ -1,0 +1,395 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "According to the best-fitting spline models in the meta-analysis by Bleidorn et al. (2022), at what approximate age does the rank-order stability of personality traits reach a plateau?",
+      "answerOptions": [
+        {
+          "text": "Age 25",
+          "isCorrect": true,
+          "rationale": "The piece-wise spline model identified a significant increase in stability through early life that plateaus in young adulthood, specifically around the mid-twenties."
+        },
+        {
+          "text": "Age 50",
+          "isCorrect": false,
+          "rationale": "While earlier meta-analyses suggested stability peaks around this age, the current synthesis found little evidence for increasing rank-order stabilities after young adulthood."
+        },
+        {
+          "text": "Age 15",
+          "isCorrect": false,
+          "rationale": "Although stability increases rapidly during adolescence, it does not reach its maximum level until the transition into young adulthood is complete."
+        },
+        {
+          "text": "Age 65",
+          "isCorrect": false,
+          "rationale": "This age marks the transition to late adulthood, where some models actually suggest stability may begin to decrease rather than reach its peak."
+        }
+      ],
+      "hint": "Consider the developmental period traditionally associated with the final transition into stable adult roles."
+    },
+    {
+      "question": "Which Big Five trait is characterized by a cumulative mean-level trajectory that increases substantially during early adulthood but returns to adolescent levels by Age 80?",
+      "answerOptions": [
+        {
+          "text": "Conscientiousness",
+          "isCorrect": true,
+          "rationale": "Model-implied trends show this trait has a large positive rate of change at Age 20 followed by a slow decline in midlife and old age, eventually returning to baseline levels."
+        },
+        {
+          "text": "Emotional Stability",
+          "isCorrect": false,
+          "rationale": "This trait followed a relatively linear, monotonically increasing trend across the life span, amounting to a gain of approximately $1.50$ standard deviations."
+        },
+        {
+          "text": "Agreeableness",
+          "isCorrect": false,
+          "rationale": "This trait increases by about $0.50$ standard deviations during early and middle adulthood and only experiences a slight decrease thereafter."
+        },
+        {
+          "text": "Openness to Experience",
+          "isCorrect": false,
+          "rationale": "While this trait decreases in old age, it does not show the massive gain-and-loss cycle that brings it precisely back to adolescent baseline levels like other traits."
+        }
+      ],
+      "hint": "Think of the trait most closely associated with the demands of the 'social investment' in career and family roles."
+    },
+    {
+      "question": "In the meta-regression models, how did the amount of between-study heterogeneity ($\\tau$) accounted for by age and time lag differ between rank-order stability and mean-level change?",
+      "answerOptions": [
+        {
+          "text": "Age and lag accounted for approximately $41\\%$ of heterogeneity in stability but only $6\\%$ in change.",
+          "isCorrect": true,
+          "rationale": "Rank-order stability is highly predictable based on age and time, whereas mean-level change remains highly heterogeneous even after accounting for these factors."
+        },
+        {
+          "text": "Age and lag accounted for approximately $50\\%$ of heterogeneity in change but only $5\\%$ in stability.",
+          "isCorrect": false,
+          "rationale": "This reverses the actual findings; mean-level change studies show a much higher level of unexplained variance compared to stability studies."
+        },
+        {
+          "text": "Age and lag accounted for nearly $90\\%$ of heterogeneity in both stability and change.",
+          "isCorrect": false,
+          "rationale": "Meta-analytic models rarely account for such a high percentage of variance, especially in the complex domain of personality change."
+        },
+        {
+          "text": "Age and lag accounted for approximately $25\\%$ of heterogeneity in both metrics.",
+          "isCorrect": false,
+          "rationale": "This overestimates the predictive power of age for mean-level change while underestimating it for rank-order stability."
+        }
+      ],
+      "hint": "Reflect on which developmental metric is more systematically influenced by the chronological age of the sample."
+    },
+    {
+      "question": "Which measurement property was identified as a significant moderator of rank-order stability, resulting in lower stability estimates compared to normal-range traits?",
+      "answerOptions": [
+        {
+          "text": "Maladaptive trait measures",
+          "isCorrect": true,
+          "rationale": "Even in nonclinical samples, measures indicating personality problems or maladaptive behaviors were found to be less stable than adaptive traits."
+        },
+        {
+          "text": "Broad domain-level measures",
+          "isCorrect": false,
+          "rationale": "Broad domains were actually found to be slightly more stable than narrow facet-level measures in this study."
+        },
+        {
+          "text": "Big Five taxonomy-based measures",
+          "isCorrect": false,
+          "rationale": "Inventories designed in the Big Five tradition tended to show higher stability estimates than non-Big Five measures."
+        },
+        {
+          "text": "Self-report inventories",
+          "isCorrect": false,
+          "rationale": "The study found that self-report measures are generally stable, and most moderation effects were related to content rather than report format."
+        }
+      ],
+      "hint": "Focus on the content of the measure rather than the level of aggregation or the informant."
+    },
+    {
+      "question": "The exponential modeling of rank-order stability ($r$) revealed that as the time lag between assessments increases, stability tends to reach what lower asymptote in adulthood?",
+      "answerOptions": [
+        {
+          "text": "$r \\approx .50$",
+          "isCorrect": true,
+          "rationale": "While stability decays over time, it plateaus at modest values in adulthood, suggesting an enduring core of personality differences."
+        },
+        {
+          "text": "$r \\approx .20$",
+          "isCorrect": false,
+          "rationale": "This value was the asymptote found in previous research syntheses, whereas the current data found higher long-term stability in adult samples."
+        },
+        {
+          "text": "$r \\approx .00$",
+          "isCorrect": false,
+          "rationale": "Personality traits maintain significant predictive power over time and do not typically decay to zero, even over several decades."
+        },
+        {
+          "text": "$r \\approx .75$",
+          "isCorrect": false,
+          "rationale": "This value represents a high level of short-term stability but is significantly higher than the asymptote for long-term decay."
+        }
+      ],
+      "hint": "Consider the 'core' quality of personality that remains even over extended periods of multiple decades."
+    },
+    {
+      "question": "What finding regarding Agreeableness led the authors to suggest a revision of the maturity principle of personality development?",
+      "answerOptions": [
+        {
+          "text": "Agreeableness did not show continued increases past Age 20.",
+          "isCorrect": true,
+          "rationale": "Unlike Conscientiousness and Emotional Stability, Agreeableness plateaued early, suggesting its trajectory is distinct from other maturity-related traits."
+        },
+        {
+          "text": "Agreeableness showed a significant decrease during the transition to adulthood.",
+          "isCorrect": false,
+          "rationale": "The data generally showed increases or stability for Agreeableness during the early twenties, not decreases."
+        },
+        {
+          "text": "Agreeableness was found to be the least rank-order stable of the Big Five.",
+          "isCorrect": false,
+          "rationale": "Stability estimates were fairly robust across most Big Five domains, with no evidence that Agreeableness was uniquely unstable."
+        },
+        {
+          "text": "Agreeableness increased linearly at a rate of $d = .05$ every year until Age 80.",
+          "isCorrect": false,
+          "rationale": "The actual trajectory showed a plateau in midlife and slight decreases in older age, not linear growth."
+        }
+      ],
+      "hint": "Look for a discrepancy in the continued growth typically expected for maturity-related traits in midlife."
+    },
+    {
+      "question": "In the context of mean-level change, how does the meta-analysis interpret the positive association between time lag and the magnitude of Cohen's $d$?",
+      "answerOptions": [
+        {
+          "text": "It suggests that observed personality changes are true, lasting shifts rather than temporary practice effects.",
+          "isCorrect": true,
+          "rationale": "If changes were due to practice or short-term fluctuations, they would likely decrease or stay stagnant over longer time intervals."
+        },
+        {
+          "text": "It indicates that personality is highly unstable and changes randomly over time.",
+          "isCorrect": false,
+          "rationale": "The systematic direction of the changes (e.g., toward maturity) suggests growth rather than random instability."
+        },
+        {
+          "text": "It proves that personality traits are purely environmental constructs.",
+          "isCorrect": false,
+          "rationale": "The source material acknowledges that both genetic and environmental influences contribute to stability and change."
+        },
+        {
+          "text": "It reflects a methodological bias where longitudinal studies lose their most stable participants over time.",
+          "isCorrect": false,
+          "rationale": "While attrition is a factor in longitudinal research, the positive correlation with time lag is statistically interpreted as true developmental change."
+        }
+      ],
+      "hint": "Think about why a 'set-point model' would predict the opposite relationship between time and change."
+    },
+    {
+      "question": "How did the findings of this meta-analysis regarding the stability of 'narrow' facets compare to 'broad' domain-level measures?",
+      "answerOptions": [
+        {
+          "text": "Broad domains were slightly more stable than narrow facets.",
+          "isCorrect": true,
+          "rationale": "The principle of aggregation suggests that broader measures reduce specific variance, making them slightly more robust over time than individual facets."
+        },
+        {
+          "text": "Narrow facets were significantly more stable because they measure specific behaviors.",
+          "isCorrect": false,
+          "rationale": "Specific behaviors are typically more prone to situational influence and fluctuation than aggregated traits."
+        },
+        {
+          "text": "There was no measurable difference in stability between facets and domains.",
+          "isCorrect": false,
+          "rationale": "The moderator analysis did identify a small but significant difference favoring broad domain measures."
+        },
+        {
+          "text": "Narrow facets showed $0\\%$ rank-order stability over intervals longer than 10 years.",
+          "isCorrect": false,
+          "rationale": "Facets maintain significant stability, and research into 'personality nuances' shows they share many psychometric properties with domains."
+        }
+      ],
+      "hint": "Apply the 'principle of aggregation' to the expected consistency of psychological measurements."
+    },
+    {
+      "question": "Which theoretical framework is mentioned to explain the 'paradox of aging,' where Emotional Stability continues to increase despite late-life losses?",
+      "answerOptions": [
+        {
+          "text": "Socioemotional Selectivity Theory",
+          "isCorrect": true,
+          "rationale": "This theory posits that as time horizons shrink, older adults prioritize emotional meaning and immediate gratification, leading to higher stability and well-being."
+        },
+        {
+          "text": "Cumulative Continuity Principle",
+          "isCorrect": false,
+          "rationale": "This principle describes the trend of increasing stability with age but does not specifically address the motivational shifts in late-life emotional health."
+        },
+        {
+          "text": "The Maturity Principle",
+          "isCorrect": false,
+          "rationale": "While this explains the general trend toward growth, it is more commonly used to describe the transition from adolescence to middle adulthood."
+        },
+        {
+          "text": "Set-Point Theory",
+          "isCorrect": false,
+          "rationale": "This theory suggests that individuals return to a biological baseline, which would actually contradict the observed continuous growth in Emotional Stability."
+        }
+      ],
+      "hint": "Focus on the theory that emphasizes how a person's perception of their remaining time influences their goals."
+    },
+    {
+      "question": "When examining the role of measurement reliability, what was the impact of a higher Cronbach's $\\alpha$ on the meta-analytic estimates of test-retest stability?",
+      "answerOptions": [
+        {
+          "text": "An increase of $.10$ in reliability was associated with approximately $.037$ higher test-retest stability.",
+          "isCorrect": true,
+          "rationale": "Higher internal consistency reduces measurement error, which naturally allows for a more accurate and higher estimate of the trait's stability over time."
+        },
+        {
+          "text": "Reliability had no significant effect on stability estimates in the meta-regression.",
+          "isCorrect": false,
+          "rationale": "Measurement quality is a known factor that attenuates correlations, and the analysis confirmed its positive relationship with stability."
+        },
+        {
+          "text": "Higher reliability was paradoxically associated with lower stability estimates.",
+          "isCorrect": false,
+          "rationale": "There is no theoretical or empirical reason for better measurement to result in lower observed stability."
+        },
+        {
+          "text": "Reliability only affected mean-level change but not rank-order stability.",
+          "isCorrect": false,
+          "rationale": "Measurement reliability is critical for both metrics, as it ensures that the differences being tracked are not simply random error."
+        }
+      ],
+      "hint": "Consider how measurement error 'attenuates' or weakens the observed correlation between two time points."
+    },
+    {
+      "question": "What significant gap in the recent longitudinal literature was highlighted by the researchers when comparing new studies to the original Roberts and DelVecchio (2000) database?",
+      "answerOptions": [
+        {
+          "text": "A lack of informant-report data for samples older than 17 years.",
+          "isCorrect": true,
+          "rationale": "While large-scale panel studies have increased sample sizes, they almost exclusively rely on self-reports, losing the multimethod triangulation present in older 'boutique' studies."
+        },
+        {
+          "text": "A complete absence of studies conducted in North America.",
+          "isCorrect": false,
+          "rationale": "The study found that North American and Northern European samples remain overrepresented in the literature."
+        },
+        {
+          "text": "A decline in the use of the Big Five taxonomy.",
+          "isCorrect": false,
+          "rationale": "The use of Big Five measures has actually increased significantly as the field has reached a paradigmatic consensus."
+        },
+        {
+          "text": "A failure to include any participants over the age of 40.",
+          "isCorrect": false,
+          "rationale": "The current meta-analysis included many more older adults than previous ones, though the very old (Age 80+) are still relatively sparse."
+        }
+      ],
+      "hint": "Think about the tradeoff between the massive scale of modern panel studies and the depth of earlier, smaller research designs."
+    },
+    {
+      "question": "What is the model-implied horizontal asymptote for the maximum rank-order stability ($r$) according to the exponential age model for all traits?",
+      "answerOptions": [
+        {
+          "text": "$.826$",
+          "isCorrect": true,
+          "rationale": "The exponential model $b_0$ parameter indicates the level at which stability plateaus, which is significantly higher than the average $r$ across all age groups."
+        },
+        {
+          "text": "$.608$",
+          "isCorrect": false,
+          "rationale": "This value represents the overall weighted average effect size across the entire data set, not the late-life peak."
+        },
+        {
+          "text": "$1.00$",
+          "isCorrect": false,
+          "rationale": "Personality traits never reach perfect stability ($r = 1.0$), as they always remain open to some degree of rank-order change."
+        },
+        {
+          "text": "$.200$",
+          "isCorrect": false,
+          "rationale": "This reflects the lower end of long-term stability decay rather than the maximum stability reached in adulthood."
+        }
+      ],
+      "hint": "Look for the theoretical maximum stability level reached when the age growth curve levels off."
+    },
+    {
+      "question": "According to the life span trajectories presented, at what age does the rate of mean-level change show its most dramatic 'spike'?",
+      "answerOptions": [
+        {
+          "text": "Age 20",
+          "isCorrect": true,
+          "rationale": "The piece-wise spline models consistently showed a peak in the rate of change during the transition from late adolescence to young adulthood."
+        },
+        {
+          "text": "Age 50",
+          "isCorrect": false,
+          "rationale": "Middle adulthood is described as a period of maintenance and mastery with relatively low rates of mean-level change for most traits."
+        },
+        {
+          "text": "Age 5",
+          "isCorrect": false,
+          "rationale": "While early childhood shows growth, the most significant shifts in Big Five traits occur later during the transition to adult social roles."
+        },
+        {
+          "text": "Age 80",
+          "isCorrect": false,
+          "rationale": "Late adulthood is characterized by decreases in most traits, but the magnitude of change is not as concentrated as the early-adulthood spike."
+        }
+      ],
+      "hint": "Identify the age typically associated with 'emerging adulthood' and significant life transitions like entering the workforce."
+    },
+    {
+      "question": "The meta-analysis found that Openness to Experience follows which specific trajectory in late adulthood?",
+      "answerOptions": [
+        {
+          "text": "It decreases by about $0.50$ standard deviations through the remainder of adulthood.",
+          "isCorrect": true,
+          "rationale": "Physical and cognitive declines in old age may limit the capacity for novel experiences, leading to a steady decrease in Openness."
+        },
+        {
+          "text": "It continues to increase linearly until death.",
+          "isCorrect": false,
+          "rationale": "Unlike Emotional Stability, Openness shows a clear reversal of its early-life growth during the aging process."
+        },
+        {
+          "text": "It remains perfectly stable after Age 30.",
+          "isCorrect": false,
+          "rationale": "Openness is one of the traits that shows significant mean-level changes in both early growth and late-life decline."
+        },
+        {
+          "text": "It shows a massive increase after retirement.",
+          "isCorrect": false,
+          "rationale": "While retirement offers leisure time, the normative trend for Openness in the population is downward in late life."
+        }
+      ],
+      "hint": "Consider how aging might restrict one's ability or motivation to seek out unconventionality and new intellectual challenges."
+    },
+    {
+      "question": "Why did the researchers treat 'blended' and 'contrast' traits as separate categories in their analysis?",
+      "answerOptions": [
+        {
+          "text": "To ensure primary Big Five codes were not contaminated by scales that correlate strongly with multiple or opposing domains.",
+          "isCorrect": true,
+          "rationale": "Assigning these complex traits to a catch-all category preserved the integrity and interpretability of the primary Big Five trajectories."
+        },
+        {
+          "text": "Because blended traits were found to be $100\\%$ genetically determined.",
+          "isCorrect": false,
+          "rationale": "No traits in the study were found to be purely genetic; the distinction was for measurement classification, not etiology."
+        },
+        {
+          "text": "They were found to be more stable than the Big Five.",
+          "isCorrect": false,
+          "rationale": "Contrast traits, which combine adaptive and maladaptive domains, were actually found to be less stable than standard traits."
+        },
+        {
+          "text": "To hide the fact that the Big Five model failed to categorize $50\\%$ of the data.",
+          "isCorrect": false,
+          "rationale": "The Big Five model categorized the vast majority of the data; the blended category was used for psychometric precision in specifically complex scales."
+        }
+      ],
+      "hint": "Think about the importance of 'clean' data when trying to map the trajectories of specific, well-defined domains."
+    }
+  ]
+}

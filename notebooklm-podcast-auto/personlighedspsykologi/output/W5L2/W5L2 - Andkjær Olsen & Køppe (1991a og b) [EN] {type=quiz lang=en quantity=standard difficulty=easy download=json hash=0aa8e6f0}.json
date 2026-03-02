@@ -1,0 +1,395 @@
+{
+  "title": "Freud Quiz",
+  "questions": [
+    {
+      "question": "According to the 'economic' perspective in Freud's theory, what distinguishes internal stimuli from external stimuli?",
+      "answerOptions": [
+        {
+          "text": "Internal stimuli flow in a constant stream, while external stimuli act as momentary impacts.",
+          "isCorrect": true,
+          "rationale": "Internal stimuli represent constant biological needs that provide the continuous 'work' for the psychic apparatus, whereas external stimuli provide information about the environment."
+        },
+        {
+          "text": "External stimuli are the primary cause of psychic energy, while internal stimuli are secondary.",
+          "isCorrect": false,
+          "rationale": "The text states that internal stimuli play the larger role economically because they are constant and require the psychic apparatus to work."
+        },
+        {
+          "text": "Internal stimuli are processed through the reality principle, while external stimuli follow the pleasure principle.",
+          "isCorrect": false,
+          "rationale": "The distinction is based on the quantity and duration of the stimulus, not necessarily which regulatory principle they follow initially."
+        },
+        {
+          "text": "External stimuli are always traumatic, while internal stimuli are always manageable.",
+          "isCorrect": false,
+          "rationale": "External stimuli can be traumatic, but they generally serve to provide information about the world to make psychic work easier."
+        }
+      ],
+      "hint": "Consider the duration and frequency of these two types of psychic 'irritations'."
+    },
+    {
+      "question": "In his 1895 work 'Project for a Scientific Psychology', which mechanical model did Freud use to describe the energy of the nervous system?",
+      "answerOptions": [
+        {
+          "text": "An electrical circuit with voltage and resistance.",
+          "isCorrect": false,
+          "rationale": "While his colleague Breuer favored electrical models, Freud explicitly moved away from electricity for this specific model."
+        },
+        {
+          "text": "A steam engine with pressure and release valves.",
+          "isCorrect": true,
+          "rationale": "Freud viewed the nervous system's energy as behaving like steam that exerts pressure to be released, driving the 'wheels' of the apparatus."
+        },
+        {
+          "text": "A hydraulic system of flowing liquids.",
+          "isCorrect": false,
+          "rationale": "Though related to pressure, the text specifically identifies the steam engine as his chosen mechanical metaphor."
+        },
+        {
+          "text": "A chemical reaction reaching equilibrium.",
+          "isCorrect": false,
+          "rationale": "The text focuses on mechanical and thermodynamic models rather than purely chemical ones for this stage of his theory."
+        }
+      ],
+      "hint": "Think of an invention central to the Industrial Revolution that deals with intense internal pressure."
+    },
+    {
+      "question": "How does Freud define the 'source' ($kilde$) of a drive in his metapsychology?",
+      "answerOptions": [
+        {
+          "text": "A specific person in the external world that triggers desire.",
+          "isCorrect": false,
+          "rationale": "This describes the 'object' of the drive, not its source."
+        },
+        {
+          "text": "The psychological feeling of satisfaction or pleasure.",
+          "isCorrect": false,
+          "rationale": "This relates to the 'aim' or result of the drive's satisfaction."
+        },
+        {
+          "text": "A physico-biological process in an organ or part of the body.",
+          "isCorrect": true,
+          "rationale": "The source is almost always localized at the biological level, involving chemical or mechanical stimuli within the body's organs."
+        },
+        {
+          "text": "The motor activity required to achieve a goal.",
+          "isCorrect": false,
+          "rationale": "This is part of the 'aim' of the drive, describing the action taken to resolve the tension."
+        }
+      ],
+      "hint": "The source is located at the lowest level of description: the physical-biological level."
+    },
+    {
+      "question": "What is the primary 'aim' ($m\u00e5l$) of any drive according to Freud's general definition?",
+      "answerOptions": [
+        {
+          "text": "To find a suitable romantic partner.",
+          "isCorrect": false,
+          "rationale": "While true for sexual drives in a narrow sense, the general metapsychological definition is broader and more physiological."
+        },
+        {
+          "text": "To remove the state of irritation or tension at its source.",
+          "isCorrect": true,
+          "rationale": "The aim is to abolish the stimulus that creates the drive, thereby achieving a state of discharge or satisfaction."
+        },
+        {
+          "text": "To sublimate energy into cultural or artistic achievements.",
+          "isCorrect": false,
+          "rationale": "Sublimation is a specific outcome for some drives, but not the universal aim of all drives."
+        },
+        {
+          "text": "To increase psychic tension to a peak before discharging it.",
+          "isCorrect": false,
+          "rationale": "Drives generally seek to reduce tension, though the experience of total discharge is felt as pleasure."
+        }
+      ],
+      "hint": "Focus on the desire for equilibrium and the reduction of internal pressure."
+    },
+    {
+      "question": "In the 'second metapsychological push' (1910-1915), Freud contrasted sexual drives with which other group?",
+      "answerOptions": [
+        {
+          "text": "Death drives (Thanatos).",
+          "isCorrect": false,
+          "rationale": "The death drive was not introduced until the third phase (roughly 1920)."
+        },
+        {
+          "text": "Ego drives (or self-preservation drives).",
+          "isCorrect": true,
+          "rationale": "During this period, Freud explicitly opposed sexual drives (serving the species) to ego drives (serving individual survival)."
+        },
+        {
+          "text": "Social and moral instincts.",
+          "isCorrect": false,
+          "rationale": "While these were categorized by Exner, Freud's primary duality at this time was between the sexual and the ego."
+        },
+        {
+          "text": "Conscious intentions and unconscious desires.",
+          "isCorrect": false,
+          "rationale": "This describes a topographical conflict rather than the specific dualism of the drive theory in this period."
+        }
+      ],
+      "hint": "Think about the conflict between the needs of the species and the needs of the individual's own survival."
+    },
+    {
+      "question": "Which term describes the part of the libido that remains in the 'pleasure-ego' rather than being attached to an external person?",
+      "answerOptions": [
+        {
+          "text": "Object libido.",
+          "isCorrect": false,
+          "rationale": "Object libido refers specifically to energy attached to external objects."
+        },
+        {
+          "text": "Narcissistic libido (or ego libido).",
+          "isCorrect": true,
+          "rationale": "This is the energy the ego directs toward itself, particularly evident in the narcissistic phase of development."
+        },
+        {
+          "text": "Sublimated energy.",
+          "isCorrect": false,
+          "rationale": "Sublimation involves changing the aim of the drive, not necessarily its object or its focus on the ego."
+        },
+        {
+          "text": "Thanatos energy.",
+          "isCorrect": false,
+          "rationale": "Thanatos refers to the death drive, which is a separate category from the libido entirely in the final version of the theory."
+        }
+      ],
+      "hint": "This term relates to a Greek myth about someone falling in love with their own reflection."
+    },
+    {
+      "question": "In Freud's final drive dualism, what is the ultimate goal of the 'Death Drive' (Thanatos)?",
+      "answerOptions": [
+        {
+          "text": "To destroy external enemies through aggression.",
+          "isCorrect": false,
+          "rationale": "While aggression is a secondary outward expression, the primary goal is more fundamental to the organism's state."
+        },
+        {
+          "text": "To return the living organism to an inorganic, dead state.",
+          "isCorrect": true,
+          "rationale": "Freud postulated that all life seeks to return to the stability of the inorganic matter from which it emerged."
+        },
+        {
+          "text": "To balance the excessive energy produced by the life drives.",
+          "isCorrect": false,
+          "rationale": "The death drive is its own fundamental category with its own goal, not merely a balancing mechanism for Eros."
+        },
+        {
+          "text": "To punish the ego for failing to meet the demands of the Superego.",
+          "isCorrect": false,
+          "rationale": "This describes a specific dynamic within the structural model (the Superego), not the general biological goal of the death drive."
+        }
+      ],
+      "hint": "Freud believed that life is a detour on the way to a much older, non-living state."
+    },
+    {
+      "question": "Which principle is associated with 'Primary Processes' and seeks the immediate discharge of energy?",
+      "answerOptions": [
+        {
+          "text": "The Reality Principle.",
+          "isCorrect": false,
+          "rationale": "The reality principle is associated with secondary processes and the delay of satisfaction."
+        },
+        {
+          "text": "The Pleasure Principle (or Inertia Principle).",
+          "isCorrect": true,
+          "rationale": "Primary processes follow the easiest path to remove irritation immediately, which Freud linked to the pleasure principle and earlier inertia principles."
+        },
+        {
+          "text": "The Constancy Principle.",
+          "isCorrect": false,
+          "rationale": "The constancy principle aims to maintain a stable level of energy, which is more characteristic of secondary functioning."
+        },
+        {
+          "text": "The Repetition Compulsion.",
+          "isCorrect": false,
+          "rationale": "While related to the death drive, this is a specific phenomenon rather than the general regulatory principle of primary processes."
+        }
+      ],
+      "hint": "This principle aims for the 'first and best' discharge without considering consequences."
+    },
+    {
+      "question": "What symptom did the patient Miss Lucy R. suffer from, which Freud used to illustrate the theory of 'Defense' (Abwehr)?",
+      "answerOptions": [
+        {
+          "text": "A paralyzed arm.",
+          "isCorrect": false,
+          "rationale": "This was a symptom of Anna O., not Miss Lucy R."
+        },
+        {
+          "text": "A phobia of being alone in shops.",
+          "isCorrect": false,
+          "rationale": "This was the primary symptom of the patient named Emma."
+        },
+        {
+          "text": "Persistent olfactory hallucinations of burnt dessert.",
+          "isCorrect": true,
+          "rationale": "Miss Lucy R. smelled burnt food, which was traced back to a series of repressed emotional scenes involving her employer."
+        },
+        {
+          "text": "Involuntary shouting of obscenities.",
+          "isCorrect": false,
+          "rationale": "This symptom is more characteristic of Tourette's syndrome or specific cases of 'French' hysteria not highlighted in these excerpts."
+        }
+      ],
+      "hint": "Her symptom involved one of the five senses, specifically related to something being 'overcooked'."
+    },
+    {
+      "question": "In the case of Emma, why did the scene in the shop with the two laughing clerks only become traumatic later (the 'incubation period')?",
+      "answerOptions": [
+        {
+          "text": "She had forgotten the clerks' names.",
+          "isCorrect": false,
+          "rationale": "The trauma was not a matter of missing information but of psychological meaning."
+        },
+        {
+          "text": "She had not yet reached puberty and did not understand the sexual significance of the earlier event.",
+          "isCorrect": true,
+          "rationale": "The earlier event with the candy shop owner was only understood as sexual after she matured, making the later shop scene a 'trigger' for repressed anxiety."
+        },
+        {
+          "text": "She was afraid the clerks would report her for shoplifting.",
+          "isCorrect": false,
+          "rationale": "There is no mention of shoplifting; the anxiety was related to a repressed sexual memory."
+        },
+        {
+          "text": "The clerks were actually her relatives in disguise.",
+          "isCorrect": false,
+          "rationale": "The clerks were strangers; her reaction was based on an internal associative parallel to an earlier memory."
+        }
+      ],
+      "hint": "Consider the difference in a child's understanding versus an adolescent's understanding of sexuality."
+    },
+    {
+      "question": "Who was the Berlin-based physician Freud corresponded with extensively from 1887 to 1902, whose 'period theory' influenced Freud's biological views?",
+      "answerOptions": [
+        {
+          "text": "Josef Breuer.",
+          "isCorrect": false,
+          "rationale": "Breuer was Freud's older colleague in Vienna, not the Berlin-based periodic theorist."
+        },
+        {
+          "text": "Wilhelm Fliess.",
+          "isCorrect": true,
+          "rationale": "Fliess was Freud's 'paternal authority' figure and confidant during his most creative years, contributing ideas about biological cycles."
+        },
+        {
+          "text": "Jean-Martin Charcot.",
+          "isCorrect": false,
+          "rationale": "Charcot was Freud's teacher in Paris, known for his work on hysteria, not a correspondent in Berlin."
+        },
+        {
+          "text": "Theodor Meynert.",
+          "isCorrect": false,
+          "rationale": "Meynert was Freud's teacher in Vienna whom he later attacked for his localization theories."
+        }
+      ],
+      "hint": "This friend suggested that human life was governed by 23-day and 28-day cycles."
+    },
+    {
+      "question": "What significant change occurred in Freud's thinking when he transitioned from 'Seduction Theory' to 'Infantile Sexuality'?",
+      "answerOptions": [
+        {
+          "text": "He concluded that children are completely asexual.",
+          "isCorrect": false,
+          "rationale": "On the contrary, he concluded children have 'many possibilities for sexual activity'."
+        },
+        {
+          "text": "He realized that the reported 'memories' of early abuse were often unconscious wish-fantasies.",
+          "isCorrect": true,
+          "rationale": "Freud shifted from believing in real external trauma as the sole cause of neurosis to exploring the internal world of the Oedipus complex."
+        },
+        {
+          "text": "He decided that parents were never responsible for their children's development.",
+          "isCorrect": false,
+          "rationale": "Parents remain central in his theory via the Oedipus complex, but the focus shifted to the child's internal fantasies about them."
+        },
+        {
+          "text": "He moved away from psychology and focused entirely on neurophysiology.",
+          "isCorrect": false,
+          "rationale": "This period marks his definitive turn *away* from pure neurophysiology toward psychoanalytic psychology."
+        }
+      ],
+      "hint": "The shift involved moving from believing in external 'trauma' to believing in internal 'fantasies'."
+    },
+    {
+      "question": "Which of the following describes 'Secondary Processes' in the psychic apparatus?",
+      "answerOptions": [
+        {
+          "text": "They operate using 'free' energy that seeks immediate release.",
+          "isCorrect": false,
+          "rationale": "This describes primary processes; secondary processes work with 'bound' energy."
+        },
+        {
+          "text": "They facilitate logical thinking, delay of discharge, and reality testing.",
+          "isCorrect": true,
+          "rationale": "Secondary processes are the domain of the ego, managing energy in a way that respects external reality and consequences."
+        },
+        {
+          "text": "They are the dominant mode of the unconscious mind.",
+          "isCorrect": false,
+          "rationale": "The unconscious is characterized by primary processes; secondary processes are characteristic of the preconscious/conscious."
+        },
+        {
+          "text": "They allow for symbolic shifts and overdetermined elements.",
+          "isCorrect": false,
+          "rationale": "Symbolic gliding and overdetermination are hallmarks of primary process thinking."
+        }
+      ],
+      "hint": "These processes are cautious and wait for the 'right' time to act."
+    },
+    {
+      "question": "What is 'overdetermination' ($overdeterminering$) in the context of Freud's theory of symptoms?",
+      "answerOptions": [
+        {
+          "text": "The idea that one cause can lead to many different symptoms.",
+          "isCorrect": false,
+          "rationale": "Overdetermination describes the opposite: many causes converging on a single symptom."
+        },
+        {
+          "text": "The concept that a single symptom or element can be linked to multiple unconscious thoughts or memories.",
+          "isCorrect": true,
+          "rationale": "Symptoms are 'overdetermined' because they represent a compromise between several conflicting internal forces and memories."
+        },
+        {
+          "text": "The feeling that one's fate is controlled by external biological cycles.",
+          "isCorrect": false,
+          "rationale": "While Fliess suggested biological cycles, overdetermination is a psychological concept about meaning."
+        },
+        {
+          "text": "The excessive energy required to maintain a repression.",
+          "isCorrect": false,
+          "rationale": "This describes 'counter-cathexis' or defense work, not the associative structure of symptoms."
+        }
+      ],
+      "hint": "Think of a single point in a net where many different strings meet."
+    },
+    {
+      "question": "In the 1920-25 theory, why does Freud suggest the Death Drive is often 'silent'?",
+      "answerOptions": [
+        {
+          "text": "It only becomes active after the person has died.",
+          "isCorrect": false,
+          "rationale": "It is active throughout life, even if its presence is subtle."
+        },
+        {
+          "text": "It operates entirely outside of consciousness, often manifesting in purely biological ways like cancer cells.",
+          "isCorrect": true,
+          "rationale": "Freud believed the death drive unfolds its effects without conscious registration, unlike the life drives which manifest as love."
+        },
+        {
+          "text": "It is suppressed by the loud and vibrant energy of the Libido.",
+          "isCorrect": false,
+          "rationale": "While the life drives 'bind' the death drive, its 'silence' is a fundamental property, not just a result of suppression."
+        },
+        {
+          "text": "It only communicates through dreams and slips of the tongue.",
+          "isCorrect": false,
+          "rationale": "These are manifestations of the unconscious in general, but Freud viewed the death drive as specifically 'silent' in its core biological function."
+        }
+      ],
+      "hint": "The life drives (Eros) manifest as feelings of love, but Thanatos lacks such a 'pure' affective expression."
+    }
+  ]
+}

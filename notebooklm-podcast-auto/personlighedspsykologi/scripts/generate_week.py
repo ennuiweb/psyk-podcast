@@ -807,6 +807,12 @@ def main() -> int:
         help="Force re-generation even if output file already exists.",
     )
     parser.add_argument(
+        "--print-skips",
+        action="store_true",
+        default=False,
+        help="Print per-file skip messages when outputs already exist (default: off).",
+    )
+    parser.add_argument(
         "--source-timeout",
         type=float,
         help="Seconds to wait for each source (passed through).",
@@ -969,6 +975,8 @@ def main() -> int:
     last_excluded: list[str] = []
     preferred_profile: str | None = None
     profile_priority = args.profile_priority
+    total_sources_read = 0
+    total_missing_outputs = 0
 
     processed_dirs: set[Path] = set()
     for week_input in week_inputs:
@@ -990,8 +998,10 @@ def main() -> int:
             sources = list_source_files(week_dir)
             if not sources:
                 raise SystemExit(f"No source files found in {week_dir}")
+            total_sources_read += len(sources)
 
             planned_lines: list[str] = []
+            missing_outputs = 0
             weekly_base = f"{week_label} - Alle kilder"
             for content_type in content_types:
                 weekly_output = week_output_dir / f"{weekly_base}{output_extension(content_type, quiz_format=quiz_format)}"
@@ -1060,6 +1070,9 @@ def main() -> int:
                         planned_lines.append(
                             f"WEEKLY {content_type.upper()} ({variant['code'] or 'default'}): {planned_path}"
                         )
+                        should_skip, _ = should_skip_generation(planned_path, args.skip_existing)
+                        if not should_skip:
+                            missing_outputs += 1
 
             for source in sources:
                 base_name = normalize_episode_title(source.stem, week_label)
@@ -1131,6 +1144,9 @@ def main() -> int:
                             planned_lines.append(
                                 f"READING {content_type.upper()} ({variant['code'] or 'default'}): {planned_path}"
                             )
+                            should_skip, _ = should_skip_generation(planned_path, args.skip_existing)
+                            if not should_skip:
+                                missing_outputs += 1
                 if "Grundbog kapitel" in source.name:
                     title_prefix = brief_cfg.get("title_prefix", "[Brief]")
                     brief_base = f"{title_prefix} {week_label} - {base_name}"
@@ -1199,6 +1215,14 @@ def main() -> int:
                                 planned_lines.append(
                                     f"BRIEF {content_type.upper()} ({variant['code'] or 'default'}): {planned_path}"
                                 )
+                                should_skip, _ = should_skip_generation(planned_path, args.skip_existing)
+                                if not should_skip:
+                                    missing_outputs += 1
+
+            total_missing_outputs += missing_outputs
+            print(
+                f"{week_label}: read {len(sources)} sources, found {missing_outputs} missing outputs"
+            )
 
             if args.dry_run:
                 print(f"## {week_label}")
@@ -1269,7 +1293,8 @@ def main() -> int:
                         )
                         skip, reason = should_skip_generation(output_path, args.skip_existing)
                         if skip:
-                            print(f"Skipping generation ({reason}): {output_path}")
+                            if args.print_skips:
+                                print(f"Skipping generation ({reason}): {output_path}")
                             continue
                         exclude_profiles = (
                             active_cooldowns(profile_cooldowns)
@@ -1403,7 +1428,8 @@ def main() -> int:
                             )
                             skip, reason = should_skip_generation(output_path, args.skip_existing)
                             if skip:
-                                print(f"Skipping generation ({reason}): {output_path}")
+                                if args.print_skips:
+                                    print(f"Skipping generation ({reason}): {output_path}")
                                 continue
                             exclude_profiles = (
                                 active_cooldowns(profile_cooldowns)
@@ -1534,7 +1560,8 @@ def main() -> int:
                                 )
                                 skip, reason = should_skip_generation(output_path, args.skip_existing)
                                 if skip:
-                                    print(f"Skipping generation ({reason}): {output_path}")
+                                    if args.print_skips:
+                                        print(f"Skipping generation ({reason}): {output_path}")
                                     continue
                                 exclude_profiles = (
                                     active_cooldowns(profile_cooldowns)
@@ -1634,6 +1661,12 @@ def main() -> int:
                 print(cmd)
         else:
             print("\nNo request logs found. Run without --wait to generate them.")
+
+    if len(processed_dirs) > 1:
+        print(
+            f"\nSummary: read {total_sources_read} sources, found "
+            f"{total_missing_outputs} missing outputs"
+        )
 
     if failures:
         print("\nFailures:")

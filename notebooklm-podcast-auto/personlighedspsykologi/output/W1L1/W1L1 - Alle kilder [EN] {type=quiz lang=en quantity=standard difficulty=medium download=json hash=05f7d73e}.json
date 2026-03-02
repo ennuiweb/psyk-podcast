@@ -1,0 +1,395 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "According to the etymology discussed in the Danish text, what was the original meaning of the word 'person'?",
+      "answerOptions": [
+        {
+          "text": "A mask or social role",
+          "isCorrect": true,
+          "rationale": "The term stems from the Etruscan/Greek 'persona', referring to a mask used by actors to perform a specific character or role."
+        },
+        {
+          "text": "The eternal soul",
+          "isCorrect": false,
+          "rationale": "While related to identity, the historical root emphasizes the outward performance rather than an internal metaphysical entity."
+        },
+        {
+          "text": "Biological DNA",
+          "isCorrect": false,
+          "rationale": "The concept of biological inheritance is a modern scientific framework, whereas the etymology of 'person' is rooted in theater and social interaction."
+        },
+        {
+          "text": "An isolated individual",
+          "isCorrect": false,
+          "rationale": "The text notes that there is no reason to 'play a role' if one is alone in the woods, suggesting the term was originally tied to social relations."
+        }
+      ],
+      "hint": "Consider the tools used by ancient actors to represent different characters on stage."
+    },
+    {
+      "question": "In the context of psychoanalysis, which component of the personality is described as being entirely unconscious and containing drives?",
+      "answerOptions": [
+        {
+          "text": "The id (det'et)",
+          "isCorrect": true,
+          "rationale": "In the Freudian triad, the id is the reservoir of unconscious impulses and biological drives."
+        },
+        {
+          "text": "The ego (jeg'et)",
+          "isCorrect": false,
+          "rationale": "This component encompasses consciousness and functions as a mediator between internal drives and external reality."
+        },
+        {
+          "text": "The superego (overjeg'et)",
+          "isCorrect": false,
+          "rationale": "This part represents internalized cultural norms and ideals, rather than the raw, unconscious biological drives."
+        },
+        {
+          "text": "The self (selvet)",
+          "isCorrect": false,
+          "rationale": "In later variants like self-psychology, this is the center of the subject, whereas the original triad specifically assigns drives to the id."
+        }
+      ],
+      "hint": "Think of the Latin term for 'it' that represents the most primitive part of the psyche."
+    },
+    {
+      "question": "Which psychological perspective emphasizes the individual's 'lived life-world' and the inherent potential for healthy development?",
+      "answerOptions": [
+        {
+          "text": "Phenomenology and Humanistic psychology",
+          "isCorrect": true,
+          "rationale": "These theories focus on subjective experience and the human potential to unfold as a whole, healthy person."
+        },
+        {
+          "text": "Behaviorism",
+          "isCorrect": false,
+          "rationale": "This school focuses on observable actions and environmental rewards rather than internal potential or the 'lived life-world'."
+        },
+        {
+          "text": "Evolutionary psychology",
+          "isCorrect": false,
+          "rationale": "This perspective looks at the phylogenetic development of psychic traits based on natural selection rather than subjective experience."
+        },
+        {
+          "text": "Critical psychology",
+          "isCorrect": false,
+          "rationale": "This approach is rooted in Marxist understanding and societal determination rather than individual phenomenological unfolding."
+        }
+      ],
+      "hint": "Reflect on a tradition that views humans as having 'inherent resources' rather than being driven by conflicts or stimuli."
+    },
+    {
+      "question": "What is the primary focus of 'Trait Theory' in personality psychology?",
+      "answerOptions": [
+        {
+          "text": "Identifying stable, measurable characteristics",
+          "isCorrect": true,
+          "rationale": "Trait theory seeks to describe personality as a collection of delimited qualities that can be studied scientifically."
+        },
+        {
+          "text": "Analyzing early childhood trauma",
+          "isCorrect": false,
+          "rationale": "This is a characteristic of psychodynamic or psychoanalytic approaches, whereas trait theory focuses on current, stable dispositions."
+        },
+        {
+          "text": "Decoding unconscious dreams",
+          "isCorrect": false,
+          "rationale": "Projective methods and psychoanalysis focus on the unconscious, while trait theory relies largely on objective measurements and questionnaires."
+        },
+        {
+          "text": "Changing behavior through conditioning",
+          "isCorrect": false,
+          "rationale": "This describes behaviorism, while trait theory is more concerned with describing existing differences between people."
+        }
+      ],
+      "hint": "Think about the approach that uses the 'Big Five' to categorize individual differences."
+    },
+    {
+      "question": "In Michael Lewis's article, what is cited as a major problem regarding the 'Big Five' or other personality traits?",
+      "answerOptions": [
+        {
+          "text": "Low consistency across different contexts and situations",
+          "isCorrect": true,
+          "rationale": "Lewis argues that even if traits emerge, they often differ across situations, leading to low accounted variance in behavior."
+        },
+        {
+          "text": "They are too difficult to calculate mathematically",
+          "isCorrect": false,
+          "rationale": "The issue is not the mathematical complexity, but the lack of empirical evidence for stability across time and place."
+        },
+        {
+          "text": "They focus too much on biological DNA",
+          "isCorrect": false,
+          "rationale": "Lewis critiques the assumption of stability, regardless of whether the proposed source is biological or learned."
+        },
+        {
+          "text": "There are too many traits to be useful",
+          "isCorrect": false,
+          "rationale": "While he mentions a 'combinatorial figure', his primary concern is the lack of predictive power across contexts."
+        }
+      ],
+      "hint": "Consider the core requirement for a characteristic to be defined as a 'personality' variable."
+    },
+    {
+      "question": "When studying childhood depression, Lewis notes that agreement between different raters (mothers, teachers, and children) is typically:",
+      "answerOptions": [
+        {
+          "text": "Low and often not significant",
+          "isCorrect": true,
+          "rationale": "Studies show that different observers often base judgments on different behaviors or lack knowledge of the child's inner state."
+        },
+        {
+          "text": "Nearly perfect in clinical samples",
+          "isCorrect": false,
+          "rationale": "Even in clinical settings, parents and children often disagree on symptoms like internal feelings versus overt behavior."
+        },
+        {
+          "text": "Highly consistent for internalizing problems",
+          "isCorrect": false,
+          "rationale": "Internalizing problems like depression are especially difficult for external observers to rate consistently with the child's self-report."
+        },
+        {
+          "text": "Dependent solely on the child's IQ",
+          "isCorrect": false,
+          "rationale": "Rater disagreement is attributed to situational behavior and different perspectives, not the child's cognitive ability."
+        }
+      ],
+      "hint": "Think about whether a mother and a teacher are likely to see the exact same behavior in different environments."
+    },
+    {
+      "question": "Which developmental model assumes that earlier events are connected to later ones in a directional, irreversible stage-based sequence?",
+      "answerOptions": [
+        {
+          "text": "The transformational model",
+          "isCorrect": true,
+          "rationale": "This model, popular in Piagetian theory, suggests structures are replaced by new ones and development moves toward a fixed end point."
+        },
+        {
+          "text": "The accretional model",
+          "isCorrect": false,
+          "rationale": "This model views development as a simple increase in the amount of an existing skill rather than a change in the type of structure."
+        },
+        {
+          "text": "The additive model",
+          "isCorrect": false,
+          "rationale": "The additive model allows for reversibility because earlier abilities coexist with new ones rather than being replaced."
+        },
+        {
+          "text": "The contextual model",
+          "isCorrect": false,
+          "rationale": "This model rejects the idea of a fixed sequence or necessary historical connection, focusing instead on current adaptation."
+        }
+      ],
+      "hint": "Consider the metaphor of a caterpillar becoming a butterfly, where the previous form no longer exists."
+    },
+    {
+      "question": "In an 'Additive Model' of development, how is 'regression' (e.g., a child sucking their thumb under stress) explained?",
+      "answerOptions": [
+        {
+          "text": "Earlier abilities coexist and remain available",
+          "isCorrect": true,
+          "rationale": "Because development is additive, old skills are not lost or transformed; they can be selectively re-employed depending on the context."
+        },
+        {
+          "text": "It is viewed as a pathological failure of transformation",
+          "isCorrect": false,
+          "rationale": "In a transformational model, regression is difficult to explain because the old state should no longer exist; in an additive model, it is a normal possibility."
+        },
+        {
+          "text": "It is a result of biological DNA reactivation",
+          "isCorrect": false,
+          "rationale": "While biological factors exist, the additive model specifically highlights the coexistence of learned or developed levels of capacity."
+        },
+        {
+          "text": "It is an illusion caused by rater error",
+          "isCorrect": false,
+          "rationale": "The model acknowledges regression as a real behavioral phenomenon made possible by the structure of the developmental process."
+        }
+      ],
+      "hint": "Think about whether old skills are discarded or simply stored alongside new ones."
+    },
+    {
+      "question": "How does the 'Contextual Model' described by Lewis view the role of the past and memory?",
+      "answerOptions": [
+        {
+          "text": "The present reconstructs the past based on current goals",
+          "isCorrect": true,
+          "rationale": "Lewis argues that memory is a construction used to find meaning in the now, rather than an accurate photograph of historical events."
+        },
+        {
+          "text": "The past acts as a virus-like force determining the future",
+          "isCorrect": false,
+          "rationale": "This is a characteristic of some organismic or deterministic models that Lewis critiques as having little empirical support."
+        },
+        {
+          "text": "Memories are static photographs of actual events",
+          "isCorrect": false,
+          "rationale": "The text explicitly rejects the 'memory-as-photograph' model in favor of a constructive, selective narrative approach."
+        },
+        {
+          "text": "Earlier trauma is the only variable that cannot be changed",
+          "isCorrect": false,
+          "rationale": "The contextual model emphasizes that because the context can change, the impact of earlier events can be altered or negated."
+        }
+      ],
+      "hint": "Reflect on how a person's current happiness might change how they remember their childhood."
+    },
+    {
+      "question": "Lewis's longitudinal study on attachment from 1 to 18 years found that:",
+      "answerOptions": [
+        {
+          "text": "Infant attachment classification did not predict adolescent attachment",
+          "isCorrect": true,
+          "rationale": "The study found no significant relation between attachment at age 1 and age 18, supporting a contextual rather than organismic view."
+        },
+        {
+          "text": "Secure infants were 'inoculated' against future divorce effects",
+          "isCorrect": false,
+          "rationale": "The data showed no interaction effect; secure infants from divorced families were just as likely to be insecure at 18."
+        },
+        {
+          "text": "Attachment is a stable trait that accounts for $90\\%$ of behavioral variance",
+          "isCorrect": false,
+          "rationale": "The text notes that association over time is usually weak, often failing to account for more than $10-12\\%$ of variance."
+        },
+        {
+          "text": "Only maternal depression predicted long-term attachment stability",
+          "isCorrect": false,
+          "rationale": "The study emphasized that current context (like current family status) was a better predictor than any early life variable."
+        }
+      ],
+      "hint": "Focus on whether 'dogma' about early security lasting a lifetime was supported by the data."
+    },
+    {
+      "question": "What is meant by 'Agency' as one of the orientation points in personality psychology?",
+      "answerOptions": [
+        {
+          "text": "The active, controlling element of the individual",
+          "isCorrect": true,
+          "rationale": "Agency refers to the extent to which the individual is seen as a self-steering center of action and consciousness."
+        },
+        {
+          "text": "The influence of social institutions on the person",
+          "isCorrect": false,
+          "rationale": "This would relate more to social determination or sociocultural context than to the individual's own active steering."
+        },
+        {
+          "text": "The biological drive for survival",
+          "isCorrect": false,
+          "rationale": "While related to movement, agency specifically focuses on the 'jeg' (ego) or self as a motivating and deciding center."
+        },
+        {
+          "text": "The collection of an individual's past habits",
+          "isCorrect": false,
+          "rationale": "Agency is about the 'now' and the capacity to direct behavior, whereas habits are more related to past conditioning."
+        }
+      ],
+      "hint": "Consider the term that describes whether a person is a 'driver' of their own life or merely a passenger."
+    },
+    {
+      "question": "The 'Historicity' orientation point identifies three types of history. Which one represents the history of the human species?",
+      "answerOptions": [
+        {
+          "text": "Phylogenetic history",
+          "isCorrect": true,
+          "rationale": "This refers to the evolutionary history of the species, such as the development of empathy as a species-specific trait."
+        },
+        {
+          "text": "Ontogenetic history",
+          "isCorrect": false,
+          "rationale": "This refers to the individual's personal life history from birth to death."
+        },
+        {
+          "text": "Sociogenetic history",
+          "isCorrect": false,
+          "rationale": "This represents the history and development of society and its cultural structures."
+        },
+        {
+          "text": "Pathogenetic history",
+          "isCorrect": false,
+          "rationale": "This is not one of the three primary types of historicity mentioned; it typically refers to the origins of a disease."
+        }
+      ],
+      "hint": "Look for the term used in biology to describe the evolutionary development of a group of organisms."
+    },
+    {
+      "question": "According to the Danish text, what is the core assumption behind 'projective tests' like the TAT?",
+      "answerOptions": [
+        {
+          "text": "Unconscious material is externalized onto ambiguous stimuli",
+          "isCorrect": true,
+          "rationale": "Projective tests assume that because the stimulus is unclear, the person must 'project' their own hidden feelings and motives to make sense of it."
+        },
+        {
+          "text": "The brain's reaction speed indicates personality type",
+          "isCorrect": false,
+          "rationale": "This describes a more biological or cognitive measurement approach, whereas projective tests are rooted in psychodynamic theory."
+        },
+        {
+          "text": "Conscious self-report is the most reliable data source",
+          "isCorrect": false,
+          "rationale": "Projective tests are used precisely because they bypass conscious reporting to reach material the person may be unaware of."
+        },
+        {
+          "text": "Social context is the only factor in interpreting behavior",
+          "isCorrect": false,
+          "rationale": "While context matters, projective tests focus specifically on internal psychic 'deep' structures."
+        }
+      ],
+      "hint": "Think about what happens when you are asked to tell a story about a vague or blurry picture."
+    },
+    {
+      "question": "Which orientation point addresses the question of whether personality is determined by biology, psychology, or society?",
+      "answerOptions": [
+        {
+          "text": "Determination",
+          "isCorrect": true,
+          "rationale": "This point examines the 'weight' different theories place on biological genes, psychic components (like the unconscious), or social environment."
+        },
+        {
+          "text": "Essence vs. Context",
+          "isCorrect": false,
+          "rationale": "This point focuses on whether personality is internal to the body or exists primarily in relations between people."
+        },
+        {
+          "text": "Historicity",
+          "isCorrect": false,
+          "rationale": "Historicity is about the development over time, whereas determination is about the causal forces currently shaping the person."
+        },
+        {
+          "text": "Agency",
+          "isCorrect": false,
+          "rationale": "Agency is about the individual's capacity to steer themselves, while determination looks at the forces acting upon them."
+        }
+      ],
+      "hint": "Consider the term that asks: 'What decides how the personality is built?'"
+    },
+    {
+      "question": "Lewis concludes that the best way to understand the changing nature of personality is:",
+      "answerOptions": [
+        {
+          "text": "An analysis of behavior in context",
+          "isCorrect": true,
+          "rationale": "Given the lack of consistency across time, Lewis argues that behavior is a dynamic system influenced mostly by current environment and narratives."
+        },
+        {
+          "text": "Improving the accuracy of early childhood brain scans",
+          "isCorrect": false,
+          "rationale": "Lewis shifts focus away from internal biological traits toward external contextual adaptation."
+        },
+        {
+          "text": "Focusing exclusively on 'Big Five' questionnaire scores",
+          "isCorrect": false,
+          "rationale": "He argues that these scores often account for very little variance and fail to capture situational differences."
+        },
+        {
+          "text": "Assuming that the first three years of life are the only ones that matter",
+          "isCorrect": false,
+          "rationale": "This reflects the 'organismic' or 'primacy' view that Lewis challenges throughout his article."
+        }
+      ],
+      "hint": "Think about an approach that prioritizes the 'now' and the 'where' over the 'then'."
+    }
+  ]
+}

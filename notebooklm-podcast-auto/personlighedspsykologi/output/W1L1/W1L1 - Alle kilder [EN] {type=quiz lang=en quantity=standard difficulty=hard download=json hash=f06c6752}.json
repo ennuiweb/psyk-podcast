@@ -1,0 +1,317 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "The etymological root of the word 'person' is the Etruscan/Greek term 'persona'. Based on the source material, what does this origin suggest about the initial psychological focus of the concept?",
+      "answerOptions": [
+        {
+          "text": "It was primarily concerned with the external presentation of social roles and characters.",
+          "isCorrect": true,
+          "rationale": "The term 'persona' referred to a mask or character played by an actor, emphasizing the outer social relationship rather than an internal, transparent self."
+        },
+        {
+          "text": "It was designed to describe the transparent, essential 'inner self' that exists when one is alone.",
+          "isCorrect": false,
+          "rationale": "The source explicitly states that the 'inner' self is what remains when the mask is removed, whereas 'persona' specifically denotes the mask or social role."
+        },
+        {
+          "text": "It focused on the biological temperament that remains consistent regardless of social context.",
+          "isCorrect": false,
+          "rationale": "The mask analogy implies a role played 'in relation to others,' suggesting context-dependence rather than invariant biological traits."
+        },
+        {
+          "text": "It represented the integration of the unconscious 'Id' with the social 'Superego'.",
+          "isCorrect": false,
+          "rationale": "This reflects a much later Freudian psychoanalytic framework rather than the original etymological meaning of the word."
+        }
+      ],
+      "hint": "Consider the literal function of the object an actor wears during a performance."
+    },
+    {
+      "question": "In the context of Psychoanalysis, what is meant by the 'decentering of the subject' ($decentrering\\ af\\ subjektet$)?",
+      "answerOptions": [
+        {
+          "text": "The realization that consciousness is not the central, controlling force of the psyche.",
+          "isCorrect": true,
+          "rationale": "Psychoanalysis posits that an unconscious part of the mind exerts unrecognized influence, moving the center of the personality away from conscious awareness."
+        },
+        {
+          "text": "The process of moving the Ego from the Id toward the Superego during development.",
+          "isCorrect": false,
+          "rationale": "While related to structural components, 'decentering' specifically refers to the displacement of the conscious self as the primary actor."
+        },
+        {
+          "text": "The shift from focusing on internal drives to focusing on external social structures.",
+          "isCorrect": false,
+          "rationale": "This would actually be a 'centering' on the social environment, whereas psychoanalytic decentering focuses on the hidden internal unconscious."
+        },
+        {
+          "text": "The healthy integration of a child's 'inner state' with parental expectations.",
+          "isCorrect": false,
+          "rationale": "Decentering is a theoretical premise about the nature of the mind's structure, not a description of social adjustment or development."
+        }
+      ],
+      "hint": "Think about whether the 'I' that you are aware of is truly the 'captain of the ship'."
+    },
+    {
+      "question": "According to the Humanistic theories of Rogers and Maslow, how does their focus differ fundamentally from traditional Psychoanalysis?",
+      "answerOptions": [
+        {
+          "text": "They emphasize a recognition of the individual's inherent potential and healthy growth over conflict and illness.",
+          "isCorrect": true,
+          "rationale": "Humanistic psychology defined itself in opposition to the 'sick' focus of psychoanalysis, instead promoting client-centered therapy and the unfolding of internal potential."
+        },
+        {
+          "text": "They prioritize the measurement of stable traits through quantitative experiments.",
+          "isCorrect": false,
+          "rationale": "Quantitative trait measurement is the hallmark of Trait Theory, not the Humanistic/Phenomenological tradition."
+        },
+        {
+          "text": "They focus exclusively on behavior as a result of environmental rewards and punishments.",
+          "isCorrect": false,
+          "rationale": "This description fits Behaviorism, which Humanistic psychology often critiques for ignoring the internal lived experience."
+        },
+        {
+          "text": "They argue that the personality is an illusion constructed by language and social systems.",
+          "isCorrect": false,
+          "rationale": "This view is more aligned with Social Constructionism or Postmodernism mentioned in the sociocultural section."
+        }
+      ],
+      "hint": "Reflect on the 'third force' in psychology that views humans as having a drive toward self-actualization."
+    },
+    {
+      "question": "Lewis (1999) argues that the 'organismic model' of development rests on a specific assumption about the relationship between time and personality. What is this assumption?",
+      "answerOptions": [
+        {
+          "text": "The past exerts a deterministic, enduring force on the present through internal traits or structures.",
+          "isCorrect": true,
+          "rationale": "The organismic model suggests processes are located within the person and that early events are connected to and produce long-lasting effects on later behavior."
+        },
+        {
+          "text": "Personality is a collection of unordered facts that are reconstructed by the mind in the present moment.",
+          "isCorrect": false,
+          "rationale": "This describes the Contextualist or Jamesian view, which Lewis proposes as an alternative to the organismic model."
+        },
+        {
+          "text": "Biological DNA provides a template that only external environmental triggers can activate.",
+          "isCorrect": false,
+          "rationale": "While biological, this emphasizes an interactionist or environmental trigger model rather than the purely internal 'trait-like' continuity of the organismic view."
+        },
+        {
+          "text": "Development is a series of discontinuous leaps with no causal link between childhood and adulthood.",
+          "isCorrect": false,
+          "rationale": "The organismic model typically assumes that earlier events are connected to later ones, even if the change is transformational."
+        }
+      ],
+      "hint": "Think about the belief that 'the child is father to the man' and that early experiences are 'baked into' the person."
+    },
+    {
+      "question": "Flanagan (1991) identifies a 'constructivist problem' within Transformational models of development. What is the core of this critique?",
+      "answerOptions": [
+        {
+          "text": "It is logically difficult to explain how a richer, more complex cognitive system can be built from simpler conceptual resources.",
+          "isCorrect": true,
+          "rationale": "If development is transformational, one must explain how $A$ becomes $B$ when they are different essences, which Flanagan suggests is a logical challenge for constructivists."
+        },
+        {
+          "text": "Transformational models fail to account for the gradual, incremental growth of physical height.",
+          "isCorrect": false,
+          "rationale": "This is a critique of 'Stage' models in general, but the constructivist problem specifically addresses the emergence of complex structures from simple ones."
+        },
+        {
+          "text": "The model incorrectly assumes that children can crawl before they can sit up.",
+          "isCorrect": false,
+          "rationale": "This is an empirical observation about sequence, not a philosophical critique of the logic of transformation."
+        },
+        {
+          "text": "Transformations are reversible, meaning a person can easily return to an earlier developmental stage.",
+          "isCorrect": false,
+          "rationale": "The source states that a key feature of the transformational model is its irreversibility, which is why it struggles to explain regression."
+        }
+      ],
+      "hint": "Consider the difficulty of a caterpillar 'becoming' a butterfly if they are fundamentally different types of entities."
+    },
+    {
+      "question": "In the study of childhood depression cited by Lewis, how did maternal and teacher ratings relate to the child's own self-reported depression?",
+      "answerOptions": [
+        {
+          "text": "Correlations between the raters were low and generally not significant.",
+          "isCorrect": true,
+          "rationale": "The study found that children, mothers, and teachers do not agree with each other regarding the child's depression, highlighting measurement inconsistencies across contexts."
+        },
+        {
+          "text": "Mothers and teachers showed a $90\\%$ agreement rate, while children significantly underestimated their symptoms.",
+          "isCorrect": false,
+          "rationale": "The source indicates that $85$ to $90$ percent of the association between variables over time is often not accounted for, and agreement between raters is moderate to low."
+        },
+        {
+          "text": "The child's early attachment style was the only significant predictor for all three types of ratings.",
+          "isCorrect": false,
+          "rationale": "The path analysis showed different predictors for different outcomes; for example, maternal depression predicted the mother's rating, not the child's."
+        },
+        {
+          "text": "Teachers were found to be the most objective raters, correlating strongly with clinical diagnoses.",
+          "isCorrect": false,
+          "rationale": "The source mentions that outside raters like teachers show low levels of agreement with children's self-reports."
+        }
+      ],
+      "hint": "Recall the discussion on whether different observers 'see the same thing'."
+    },
+    {
+      "question": "How does the 'Additive Model' of development handle the concept of 'regression' (e.g., a child returning to thumb-sucking under stress)?",
+      "answerOptions": [
+        {
+          "text": "It allows for regression because earlier abilities are maintained and coexist alongside new skills.",
+          "isCorrect": true,
+          "rationale": "In an additive model, the emergence of a new skill does not replace the old one, allowing multiple levels of capacity to be employed selectively."
+        },
+        {
+          "text": "It views regression as a 'malfunction' where the transformation process failed to complete.",
+          "isCorrect": false,
+          "rationale": "This is more characteristic of how a strict transformational/stage model might view the reappearance of old behaviors."
+        },
+        {
+          "text": "It denies the existence of regression, viewing all behavior as purely based on current environmental rewards.",
+          "isCorrect": false,
+          "rationale": "The additive model is a developmental model that explicitly accounts for the 'coexistence of all earlier abilities'."
+        },
+        {
+          "text": "It assumes that regression is only possible through biological interventions or brain trauma.",
+          "isCorrect": false,
+          "rationale": "The model suggests that choosing which level to employ is a function of the context or a program within the organism, not just trauma."
+        }
+      ],
+      "hint": "Think of development as a toolbox where you keep your old tools even after buying new ones."
+    },
+    {
+      "question": "Lewis presents longitudinal data on attachment from age $1$ to $18$. What was the primary finding regarding the stability of attachment classification?",
+      "answerOptions": [
+        {
+          "text": "Attachment at $1$ year was not related to attachment at $18$ years; however, $18$-year attachment was related to concurrent family divorce status.",
+          "isCorrect": true,
+          "rationale": "The study found no continuity between infant attachment and adolescent representations, supporting a contextual model where current environment (like divorce) drives current status."
+        },
+        {
+          "text": "Securely attached infants were 'inoculated' against the negative effects of later family divorce.",
+          "isCorrect": false,
+          "rationale": "The study specifically found no interaction effects; being secure at $1$ year did not buffer children from insecurity at $18$ if their parents divorced."
+        },
+        {
+          "text": "Only insecure attachment showed stability, with $90\\%$ of insecure infants remaining insecure as adults.",
+          "isCorrect": false,
+          "rationale": "The data showed that only $38\\%$ of insecure $1$-year-olds were insecure at $18$, indicating significant change."
+        },
+        {
+          "text": "The 'Working Model' formed in infancy remained the single most powerful predictor of adult romantic success.",
+          "isCorrect": false,
+          "rationale": "Lewis critiques the idea that the infant prototype is a stable trait, showing that concurrent adaptation is more important."
+        }
+      ],
+      "hint": "Check the results of the 'Case Study of Attachment' regarding the influence of early vs. current factors."
+    },
+    {
+      "question": "What does the 'Simplex Pattern' in longitudinal research suggest about the nature of personality prediction?",
+      "answerOptions": [
+        {
+          "text": "Predictive power between two measurements decreases as the time interval between them increases.",
+          "isCorrect": true,
+          "rationale": "A simplex pattern shows that we can predict the immediate future reasonably well, but the relationship between events weakens over longer spans of time."
+        },
+        {
+          "text": "Personality traits become more complex and easier to measure as an individual matures.",
+          "isCorrect": false,
+          "rationale": "The simplex pattern refers to the decay of correlations over time, not the increasing complexity of traits."
+        },
+        {
+          "text": "Early measurements of temperament at age $3$ account for over $50\\%$ of the variance in behavior at age $15$.",
+          "isCorrect": false,
+          "rationale": "The source mentions that even significant correlations often account for less than $12\\%$ of the variance, far less than $50\\%$."
+        },
+        {
+          "text": "Human development follows a simple, linear path from infancy to the final adult endpoint.",
+          "isCorrect": false,
+          "rationale": "The 'simplex' refers to a statistical correlation pattern, while the source as a whole argues for complex, contextual development."
+        }
+      ],
+      "hint": "Think about how well you can predict the weather tomorrow versus the weather in six months."
+    },
+    {
+      "question": "According to the contextualist view (influenced by William James), what is the relationship between the 'Present' and the 'Past'?",
+      "answerOptions": [
+        {
+          "text": "The present reconstructs the past as a narrative to serve current needs and goals.",
+          "isCorrect": true,
+          "rationale": "Contextualism argues that history is a construction based on current status and purposes; therefore, we alter our memories to find 'truth' in our current identity."
+        },
+        {
+          "text": "The past is a fixed, objective reality that can be accurately retrieved through 'memory-as-photograph'.",
+          "isCorrect": false,
+          "rationale": "Lewis explicitly rejects the 'memory-as-photograph' model in favor of memory as a construction."
+        },
+        {
+          "text": "The present is merely a symptom caused by the underlying biological realities established in the past.",
+          "isCorrect": false,
+          "rationale": "This is a more organismic or deterministic view, which the contextualist position challenges."
+        },
+        {
+          "text": "There is no relationship between the present and the past because they belong to different developmental stages.",
+          "isCorrect": false,
+          "rationale": "Contextualism posits a relationship where the present *acts on* the past through reconstruction, rather than being unconnected."
+        }
+      ],
+      "hint": "Consider the quote: 'History may represent not the past acting on the present but the present reconstructing the past'."
+    },
+    {
+      "question": "The orientation point of 'Historicity' ($Historicitet$) describes three types of history. Which type represents the history and evolution of society itself?",
+      "answerOptions": [
+        {
+          "text": "The sociogenetic history.",
+          "isCorrect": true,
+          "rationale": "The sociogenetic history represents the history and development of society, which can influence personality (e.g., changes in social definitions of egoism)."
+        },
+        {
+          "text": "The phylogenetic history.",
+          "isCorrect": false,
+          "rationale": "The phylogenetic history represents the history of the species (humanity as a whole)."
+        },
+        {
+          "text": "The ontogenetic history.",
+          "isCorrect": false,
+          "rationale": "The ontogenetic history represents the individual's own life history and experiences."
+        },
+        {
+          "text": "The epigenetic history.",
+          "isCorrect": false,
+          "rationale": "This term is not one of the three primary historicities mentioned in the text's section on orientation points."
+        }
+      ],
+      "hint": "Differentiate between the species level, the individual level, and the cultural/communal level."
+    },
+    {
+      "question": "In the study of maternal recall by Yarrow et al. (1970), what factor most influenced how mothers remembered their children's preschool personalities?",
+      "answerOptions": [
+        {
+          "text": "The mother's perception of the child's current personality status.",
+          "isCorrect": true,
+          "rationale": "The study found that if a child was seen as shy now, the mother tended to recall them as having been shyer in the past, regardless of the actual baseline data."
+        },
+        {
+          "text": "The objective record of baseline data collected years earlier.",
+          "isCorrect": false,
+          "rationale": "The study found little relation between actual baseline data and subsequent recollections."
+        },
+        {
+          "text": "The child's birth order and the mother's age at the time of the first measurement.",
+          "isCorrect": false,
+          "rationale": "These demographic factors were not the primary drivers of recall distortion mentioned in the text."
+        },
+        {
+          "text": "The presence of clinical depression in the child during the early preschool years.",
+          "isCorrect": false,
+          "rationale": "The shift in recall was driven by the *current* state of the relationship and personality perception, not just past clinical status."
+        }
+      ],
+      "hint": "Think about how we project our 'now' onto our 'then'."
+    }
+  ]
+}

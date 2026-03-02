@@ -1,0 +1,291 @@
+{
+  "title": "Psychoanalysis Quiz",
+  "questions": [
+    {
+      "question": "Laplanche describes his methodology as a 'historico-structural' approach. How does this approach differ from a standard 'official' history of Freud's work?",
+      "answerOptions": [
+        {
+          "text": "It prioritizes a latent, partially unconscious history subtended by repetitive themes over manifest chronology.",
+          "isCorrect": true,
+          "rationale": "Laplanche argues that the historical dimension of psychoanalytic thought should refer to coordinates within the theory itself, focusing on reversals and crises rather than just official timelines."
+        },
+        {
+          "text": "It focuses exclusively on the pursuit of external sources and influences that shaped Freud's early medical training.",
+          "isCorrect": false,
+          "rationale": "The author explicitly states that his goal is not to pursue external sources or influences to account for Freud's body of thought."
+        },
+        {
+          "text": "It treats Freud's later synthetic texts as the primary and most accurate representations of the theory's structural truth.",
+          "isCorrect": false,
+          "rationale": "Laplanche suggests that synthetic texts often 'abrade' the theory's complexities, and a critical reading must look beyond these official presentations."
+        },
+        {
+          "text": "It denies the existence of contradictions within Freud's work in favor of a singular, unified developmental line.",
+          "isCorrect": false,
+          "rationale": "The text emphasizes that contradictions are inseparable from the object of study and must be interpreted dialectically."
+        }
+      ],
+      "hint": "Consider the distinction Laplanche makes between manifest records and the internal 'coordinates' of psychoanalytic discovery."
+    },
+    {
+      "question": "According to Laplanche, what is the major contradiction inherent in the Freudian notion of the 'ego'?",
+      "answerOptions": [
+        {
+          "text": "It is simultaneously a totality and a specific agency that behaves like a subject while being a love object.",
+          "isCorrect": true,
+          "rationale": "Laplanche identifies the ego as both a psychic agency and a cathected object that 'arrogates to itself the position of a subject,' creating a structural contradiction."
+        },
+        {
+          "text": "It is defined as the seat of consciousness while remaining entirely inaccessible to the preconscious system.",
+          "isCorrect": false,
+          "rationale": "This describes a topography of systems, but Laplanche's specific structural contradiction for the ego involves its status as both subject and object."
+        },
+        {
+          "text": "It represents the moral conscience yet derives its energy exclusively from the primitive 'death drive.'",
+          "isCorrect": false,
+          "rationale": "This confuses the ego with the superego and misrepresents the source of the contradiction Laplanche outlines."
+        },
+        {
+          "text": "It acts as a mediator between reality and the Id while having no actual influence over the motor apparatus.",
+          "isCorrect": false,
+          "rationale": "While the ego has a mediating role, the core 'contradiction of the object' discussed in the text relates to its dual status as a totality and a specific agency/object."
+        }
+      ],
+      "hint": "Look for the tension between the ego's role as a functional part of the psyche and its status as a target of love."
+    },
+    {
+      "question": "In the analysis of the Freudian term 'Trieb' (drive) versus 'Instinkt' (instinct), how does Laplanche define the latter?",
+      "answerOptions": [
+        {
+          "text": "A preformed, hereditary behavioral pattern adapted to a specific type of object.",
+          "isCorrect": true,
+          "rationale": "Laplanche uses 'Instinkt' to designate biological, pre-programmed behaviors like hunger that are relatively fixed in their modalities and objects."
+        },
+        {
+          "text": "A psychical translation of a somatic process that lacks a pre-determined object.",
+          "isCorrect": false,
+          "rationale": "This description more accurately defines the 'drive' (Trieb) in the human context, which is characterized by its detachment from fixed patterns."
+        },
+        {
+          "text": "A purely speculative cosmological force that is synonymous with the later concept of 'Eros.'",
+          "isCorrect": false,
+          "rationale": "While Freud later links sexuality to Eros, Laplanche uses 'instinct' specifically to refer to the vital functions of self-preservation."
+        },
+        {
+          "text": "A term Freud used exclusively to describe human perversions in the early editions of his work.",
+          "isCorrect": false,
+          "rationale": "Human perversions are used to demonstrate that human sexuality is *not* an instinct in the sense of a fixed biological pattern."
+        }
+      ],
+      "hint": "Think about the biological definition of behaviors that are 'hard-wired' and repetitive across a species."
+    },
+    {
+      "question": "Freud decomposes the drive into four dimensions. Which factor does Laplanche suggest remains constant in the derivation from 'instinct' to 'drive'?",
+      "answerOptions": [
+        {
+          "text": "The impetus ($Drang$), representing the measure of the demand for work.",
+          "isCorrect": true,
+          "rationale": "Laplanche hypothesizes that the economic factor, or 'impetus,' is the abstract element that remains constant when an instinctual function is 'perverted' into a drive."
+        },
+        {
+          "text": "The object ($Objekt$), which stays fixed as a specific biological target throughout life.",
+          "isCorrect": false,
+          "rationale": "The text emphasizes the contingency and displacement of the object during the transition from instinct to drive."
+        },
+        {
+          "text": "The aim ($Ziel$), which is defined exclusively as the ingestion of physical nourishment.",
+          "isCorrect": false,
+          "rationale": "The aim of the drive shifts from physical ingestion to psychical 'incorporation' or 'sensual sucking,' representing a change in quality."
+        },
+        {
+          "text": "The source ($Quelle$), which is identified as a chemical imbalance that never changes its psychical translation.",
+          "isCorrect": false,
+          "rationale": "The source is redefined by Laplanche as the 'instinct in its entirety' which is then mimicked and denatured by the drive."
+        }
+      ],
+      "hint": "Focus on the 'motor factor' or 'pressure' that provides the energetic basis for psychical activity."
+    },
+    {
+      "question": "What does the 'contingency of the object' imply regarding the relationship between a drive and its target?",
+      "answerOptions": [
+        {
+          "text": "The drive is initially independent of its object, which functions merely as a means to achieve satisfaction.",
+          "isCorrect": true,
+          "rationale": "Laplanche explains that the object is not 'intimate' with the drive; it is the thing 'in regard to which' the action finds its conclusion and can be easily substituted."
+        },
+        {
+          "text": "The drive is biologically pre-determined to seek only one specific, total person from birth.",
+          "isCorrect": false,
+          "rationale": "This reflects the 'popular' or biologizing conception of sexuality that Freud's work seeks to 'destroy' or sublate."
+        },
+        {
+          "text": "The object's attractions are the primary cause for the origin of the sexual drive.",
+          "isCorrect": false,
+          "rationale": "The text explicitly states that the origin of the drive is not likely due to its object's attractions."
+        },
+        {
+          "text": "The object must be an 'objective' scientific entity to trigger a successful release of tension.",
+          "isCorrect": false,
+          "rationale": "Laplanche notes that the object of the drive is often 'fantasmatic' rather than an 'objective' object of knowledge."
+        }
+      ],
+      "hint": "Consider the idea that the drive can reach its aim through various, often interchangeable, 'substitutes.'"
+    },
+    {
+      "question": "How does Laplanche interpret the Freudian concept of 'propping' ($Anlehnung$ or $\u00e9tayage$)?",
+      "answerOptions": [
+        {
+          "text": "The sexual drive emerges by leaning upon a non-sexual vital function, such as feeding.",
+          "isCorrect": true,
+          "rationale": "Propping is defined as emergent sexuality attaching itself to and being supported by bodily functions essential to life, like the instinct of hunger."
+        },
+        {
+          "text": "The child physically leans on the mother for protection during the latency period.",
+          "isCorrect": false,
+          "rationale": "Laplanche criticizes this common 'anaclitic' interpretation, arguing that the term originally refers to a leaning of the *drive* on a *function*."
+        },
+        {
+          "text": "The 'death drive' provides the structural support for all life-preserving ego functions.",
+          "isCorrect": false,
+          "rationale": "While the death drive is discussed later, propping specifically describes the relationship between sexuality and self-preservation."
+        },
+        {
+          "text": "A psychological state where the subject lacks any distinct boundaries between self and object.",
+          "isCorrect": false,
+          "rationale": "This describes primary narcissism or a state of fusion, which is not the specific definition of 'Anlehnung' provided in the text."
+        }
+      ],
+      "hint": "Identify the relationship between a 'vital somatic function' and 'sexual activity' during their early development."
+    },
+    {
+      "question": "In the case of orality, Laplanche distinguishes between the object of the 'function' and the object of the 'drive.' What is the real object of the function?",
+      "answerOptions": [
+        {
+          "text": "Milk.",
+          "isCorrect": true,
+          "rationale": "Laplanche clarifies that for the instinct of hunger (the function), the object is the nourishment\u2014milk\u2014which procures satisfaction."
+        },
+        {
+          "text": "The Breast.",
+          "isCorrect": false,
+          "rationale": "The breast becomes the object of the sexual drive (a fantasmatic substitute) after the loss of the original vital object."
+        },
+        {
+          "text": "The Mother as a total person.",
+          "isCorrect": false,
+          "rationale": "The 'mother as person' emerges as a total object later; in the early oral stage, the relationship is with 'partial' objects."
+        },
+        {
+          "text": "The infant's own thumb.",
+          "isCorrect": false,
+          "rationale": "Thumb-sucking is the model for 'auto-erotism,' which occurs *after* the detachment from the original vital function."
+        }
+      ],
+      "hint": "Distinguish between what provides biological 'nourishment' and what becomes a symbol of 'pleasure.'"
+    },
+    {
+      "question": "According to Laplanche's reading of the third 'Essay,' why is it said that 'the finding of an object is in fact a re-finding'?",
+      "answerOptions": [
+        {
+          "text": "Because the object sought in sexuality is a substitute by displacement for the lost object of self-preservation.",
+          "isCorrect": true,
+          "rationale": "The 'lost' object is the milk/function; the object to be 're-found' is the breast, which is a substitute for that first lost object, making a perfect 'finding' impossible."
+        },
+        {
+          "text": "Because human beings are biologically programmed to find their identical genetic match.",
+          "isCorrect": false,
+          "rationale": "This is a biologizing view that Laplanche opposes; the 're-finding' refers to a structural displacement in psychical history."
+        },
+        {
+          "text": "Because the infant returns to the same physical object of nourishment in the latency phase.",
+          "isCorrect": false,
+          "rationale": "The 'original relation' is said to be restored after latency, but the 're-finding' occurs in the context of the drive's detachment and displacement."
+        },
+        {
+          "text": "Because the unconscious contains an innate 'map' of all future love objects.",
+          "isCorrect": false,
+          "rationale": "Laplanche argues against an 'ex nihilo' generation of objects or innate maps, focusing instead on the 'duplicity' of the sexual quest."
+        }
+      ],
+      "hint": "Think about the 'duplicity' and the shift from biological need to fantasmatic desire."
+    },
+    {
+      "question": "How does Laplanche characterize the 'auto-erotic' stage in infantile sexuality?",
+      "answerOptions": [
+        {
+          "text": "A second stage defined by the loss of the object and the autonomy of the drive from the digestive system.",
+          "isCorrect": true,
+          "rationale": "Auto-erotism is not the 'initial stage' but a secondary one where the drive separates from the vital function and the object (the breast) is 'lost' or internalized."
+        },
+        {
+          "text": "A primary, objectless state from which the individual must eventually 'open up' to the world.",
+          "isCorrect": false,
+          "rationale": "Laplanche refers to this as a 'vast fable' and a 'biological idealism' that he intends to critique."
+        },
+        {
+          "text": "The period of maturity at puberty when the sexual instinct finally regains its biological aim.",
+          "isCorrect": false,
+          "rationale": "This refers to the third chapter of the 'Three Essays,' which Laplanche titles 'The Instinct Regained' (or 'Mimed'), not auto-erotism."
+        },
+        {
+          "text": "The purely biological process of growth that occurs independently of any psychical representation.",
+          "isCorrect": false,
+          "rationale": "Auto-erotism is a psychical manifestation where the aim becomes 'pleasure taken on the spot' and the drive takes on autonomy."
+        }
+      ],
+      "hint": "Contrast the 'fable' of an initial objectless state with the 'moment' that follows 'propping.'"
+    },
+    {
+      "question": "Regarding the 'source' of the drive, what does Laplanche identify as the '$Nebenwirkung$' (marginal effect)?",
+      "answerOptions": [
+        {
+          "text": "Sexual excitation that arises as a concomitant byproduct of internal processes when they exceed a quantitative threshold.",
+          "isCorrect": true,
+          "rationale": "Freud posits that any vital process or agitation can 'secrete' sexuality as a 'marginal effect' once its intensity passes certain limits."
+        },
+        {
+          "text": "The physical pain associated with the 'death drive' that limits the pleasure principle.",
+          "isCorrect": false,
+          "rationale": "The Nebenwirkung specifically explains how sexuality is 'propped' on and then detached from vital functions through excitation."
+        },
+        {
+          "text": "The external influence of the mother's care on the infant's motor development.",
+          "isCorrect": false,
+          "rationale": "This is a sociological or developmental observation, whereas Nebenwirkung is a metapsychological term for the generation of sexuality."
+        },
+        {
+          "text": "The permanent discharge of tension that ends an ethological behavioral chain.",
+          "isCorrect": false,
+          "rationale": "This describes the 'aim' in ethology, which Laplanche contrasts with the 'marginal effect' that generates human sexuality."
+        }
+      ],
+      "hint": "Look for the term used to define how sexuality is 'secreted' by other agitation or internal processes."
+    },
+    {
+      "question": "What is the status of 'death' in the unconscious according to the early Freudian view cited by Laplanche?",
+      "answerOptions": [
+        {
+          "text": "It is radically excluded from the field of the unconscious, which remains inaccessible to the idea of one's own death.",
+          "isCorrect": true,
+          "rationale": "Laplanche quotes Freud stating that the unconscious is inaccessible to the idea of our own death and only knows the 'death of the other' through identification or ambivalence."
+        },
+        {
+          "text": "It is the only primordial force at the heart of the psyche from the very beginning of life.",
+          "isCorrect": false,
+          "rationale": "While it emerges this way in 1920 with 'Beyond the Pleasure Principle,' Laplanche notes that 'in the beginning,' it was excluded."
+        },
+        {
+          "text": "It is represented as a 'death anxiety' that serves as the irreducible bedrock of all psychopathology.",
+          "isCorrect": false,
+          "rationale": "The text states that 'death anxiety' is never located as the 'bedrock'; that position is traditionally attributed to the castration complex."
+        },
+        {
+          "text": "It is a silent personage that is frequently and directly interpreted in clinical practice.",
+          "isCorrect": false,
+          "rationale": "Laplanche explicitly states that death remains a 'silent personage in clinical practice' and is an 'uninterpretable, axiomatic limit-element' in therapy."
+        }
+      ],
+      "hint": "Recall the early Freudian distinction between the 'other's death' and the 'subject's own death' within the psyche."
+    }
+  ]
+}

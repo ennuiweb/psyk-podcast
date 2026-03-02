@@ -1,0 +1,395 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "What is the primary difference between a personality 'state' and a personality 'trait' as described in the source material?",
+      "answerOptions": [
+        {
+          "text": "States are short-term manifestations, while traits are relatively enduring patterns.",
+          "isCorrect": true,
+          "rationale": "Personality states describe coherent behaviors and feelings at a particular time, whereas traits represent stable tendencies over longer durations."
+        },
+        {
+          "text": "States are biological, while traits are entirely learned through environment.",
+          "isCorrect": false,
+          "rationale": "Both states and traits are influenced by a combination of internal processes and external inputs, rather than being strictly divided into nature vs. nurture."
+        },
+        {
+          "text": "States refer only to physical behaviors, while traits refer to internal thoughts.",
+          "isCorrect": false,
+          "rationale": "Both concepts encompass the full range of human experience, including thoughts, feelings, and behaviors."
+        },
+        {
+          "text": "States are only measured in clinical settings, while traits are measured in general populations.",
+          "isCorrect": false,
+          "rationale": "Contemporary personality psychology measures both states and traits across broad, non-clinical populations using factor models."
+        }
+      ],
+      "hint": "Consider the duration and stability of these two concepts."
+    },
+    {
+      "question": "Which personality dimension is added by the HEXACO model that is not explicitly its own broad factor in the standard Big Five model?",
+      "answerOptions": [
+        {
+          "text": "Emotionality",
+          "isCorrect": false,
+          "rationale": "This factor is conceptually similar to Neuroticism in the Big Five, though with some internal structural differences."
+        },
+        {
+          "text": "Honesty-Humility",
+          "isCorrect": true,
+          "rationale": "The HEXACO model is distinguished from five-factor models primarily by the inclusion of this sixth dimension, capturing traits like sincerity and fairness."
+        },
+        {
+          "text": "Conscientiousness",
+          "isCorrect": false,
+          "rationale": "This dimension is present in both the HEXACO and Big Five models and is conceptualized in largely the same way."
+        },
+        {
+          "text": "Extraversion",
+          "isCorrect": false,
+          "rationale": "Both models recognize Extraversion as a basic personality dimension related to social engagement."
+        }
+      ],
+      "hint": "Focus on the 'H' in the HEXACO acronym."
+    },
+    {
+      "question": "According to Whole Trait Theory (WTT), how do traits relate to personality states?",
+      "answerOptions": [
+        {
+          "text": "Traits are the average of all possible biological states.",
+          "isCorrect": false,
+          "rationale": "While averages are involved, the theory emphasizes the entire distribution of states rather than just a biological average."
+        },
+        {
+          "text": "Traits correspond to the density distribution of states over time.",
+          "isCorrect": true,
+          "rationale": "WTT posits that a person's trait level is reflected in the frequency and intensity with which they experience different state levels."
+        },
+        {
+          "text": "Traits and states are completely independent systems that do not interact.",
+          "isCorrect": false,
+          "rationale": "The theory seeks to explain the correspondence between traits and the social-cognitive mechanisms that generate states."
+        },
+        {
+          "text": "States are permanent changes to an individual's trait profile.",
+          "isCorrect": false,
+          "rationale": "States are temporary manifestations, though the TESSERA framework suggests repeated states can lead to long-term trait change."
+        }
+      ],
+      "hint": "Think about how a collection of individual moments (states) might form a larger pattern."
+    },
+    {
+      "question": "The Cognitive-Affective Personality System (CAPS) model describes personality through which of the following mechanisms?",
+      "answerOptions": [
+        {
+          "text": "A 'person-in-a-situation' measurement model.",
+          "isCorrect": false,
+          "rationale": "This description more accurately fits the Latent State-Trait Theory (LST-R) rather than CAPS."
+        },
+        {
+          "text": "Biological predispositions toward specific emotional states.",
+          "isCorrect": false,
+          "rationale": "CAPS focuses on cognitive-affective units and their organization rather than purely biological predispositions."
+        },
+        {
+          "text": "'If ... then' contingencies between situations and behaviors.",
+          "isCorrect": true,
+          "rationale": "CAPS explains personality through patterns of cross-situational variability, where specific situations trigger specific behavioral outputs."
+        },
+        {
+          "text": "A linear progression from triggering situations to long-term traits.",
+          "isCorrect": false,
+          "rationale": "This sequential logic is the focus of the TESSERA framework, while CAPS focuses on the situational contingencies."
+        }
+      ],
+      "hint": "Look for a phrase that describes a conditional relationship between environment and behavior."
+    },
+    {
+      "question": "In the Zettler et al. (2020) meta-analysis, which outcome domain was most strongly associated with the Honesty-Humility dimension?",
+      "answerOptions": [
+        {
+          "text": "Insecurity",
+          "isCorrect": false,
+          "rationale": "Insecurity is the domain theoretically linked to Emotionality, dealing with harm-avoidance and help-seeking."
+        },
+        {
+          "text": "Exploitation",
+          "isCorrect": true,
+          "rationale": "Honesty-Humility captures the tendency to be fair and sincere rather than exploiting others for personal gain."
+        },
+        {
+          "text": "Sociality",
+          "isCorrect": false,
+          "rationale": "Sociality is mapped onto Extraversion, focusing on engagement in social endeavors."
+        },
+        {
+          "text": "Exploration",
+          "isCorrect": false,
+          "rationale": "Exploration is linked to Openness to Experience, involving engagement in idea-related endeavors."
+        }
+      ],
+      "hint": "Consider the ethical and moral core of this personality dimension."
+    },
+    {
+      "question": "Which HEXACO dimension is defined as the 'engagement in social endeavors' and maps onto the domain of sociality?",
+      "answerOptions": [
+        {
+          "text": "Agreeableness",
+          "isCorrect": false,
+          "rationale": "Agreeableness focuses on being forgiving and tolerant rather than the active engagement in social leadership or liveliness."
+        },
+        {
+          "text": "Openness to Experience",
+          "isCorrect": false,
+          "rationale": "This factor relates to engagement with ideas and creativity rather than social groups."
+        },
+        {
+          "text": "Extraversion",
+          "isCorrect": true,
+          "rationale": "Extraversion involves active, cheerful, and sociable behaviors that direct positive social attention to oneself."
+        },
+        {
+          "text": "Emotionality",
+          "isCorrect": false,
+          "rationale": "Emotionality relates to kin altruism and harm avoidance, which differs from general social engagement."
+        }
+      ],
+      "hint": "This dimension includes facets such as liveliness and sociability."
+    },
+    {
+      "question": "According to the research, which HEXACO dimension relates to 'kin altruism' and harm-avoidant behaviors?",
+      "answerOptions": [
+        {
+          "text": "Honesty-Humility",
+          "isCorrect": false,
+          "rationale": "Honesty-Humility is linked to reciprocal altruism and fairness rather than kin-specific investment."
+        },
+        {
+          "text": "Emotionality",
+          "isCorrect": true,
+          "rationale": "Emotionality encompasses sentimentality and anxiety, which are thought to facilitate investment in and protection of close relatives."
+        },
+        {
+          "text": "Conscientiousness",
+          "isCorrect": false,
+          "rationale": "Conscientiousness is focused on task-related endeavors like organization and discipline."
+        },
+        {
+          "text": "Agreeableness",
+          "isCorrect": false,
+          "rationale": "HEXACO Agreeableness focuses on being lenient and patient in response to exploitation by others."
+        }
+      ],
+      "hint": "Consider the dimension associated with sensitivity, fearfulness, and anxiety."
+    },
+    {
+      "question": "The outcome domain of 'Duty', which includes achievement and self-control, is the primary counterpart to which HEXACO dimension?",
+      "answerOptions": [
+        {
+          "text": "Conscientiousness",
+          "isCorrect": true,
+          "rationale": "Conscientiousness reflects the tendency to plan, organize, and work hard toward goals rather than seeking immediate gratification."
+        },
+        {
+          "text": "Extraversion",
+          "isCorrect": false,
+          "rationale": "While Extraversion showed some secondary links to leadership, it does not represent the core of duty-bound achievement."
+        },
+        {
+          "text": "Openness to Experience",
+          "isCorrect": false,
+          "rationale": "Openness focuses on discovery and learning rather than the disciplined execution of tasks."
+        },
+        {
+          "text": "Agreeableness",
+          "isCorrect": false,
+          "rationale": "Agreeableness is related to social tolerance and non-retaliation, not task-related self-control."
+        }
+      ],
+      "hint": "This dimension involves being diligent, disciplined, and precise."
+    },
+    {
+      "question": "What common research method is highlighted in Columbus & Strandsbjerg (2025) for capturing short-term, moment-to-moment fluctuations in personality states?",
+      "answerOptions": [
+        {
+          "text": "Cross-sectional surveys",
+          "isCorrect": false,
+          "rationale": "These provide a single snapshot in time and cannot capture the dynamic fluctuations required for state research."
+        },
+        {
+          "text": "Experience sampling methods (ESM)",
+          "isCorrect": true,
+          "rationale": "ESM allows researchers to collect data in real-time within the natural environment, documenting states as they occur."
+        },
+        {
+          "text": "Lexical analysis of dictionaries",
+          "isCorrect": false,
+          "rationale": "This method is used to identify the broad structure of personality dimensions (traits), not short-term fluctuations."
+        },
+        {
+          "text": "Retrospective life-history interviews",
+          "isCorrect": false,
+          "rationale": "Memory biases make it difficult to accurately capture moment-to-moment state changes through long-term recall."
+        }
+      ],
+      "hint": "This method often involves participants responding to prompts on their phones several times a day."
+    },
+    {
+      "question": "Based on meta-analytic findings mentioned in the texts, what is the typical correlation range between average self-reported personality states and corresponding trait scores?",
+      "answerOptions": [
+        {
+          "text": "$r = 0.05$ to $0.15$",
+          "isCorrect": false,
+          "rationale": "This range is far too low; states and traits are meaningfully related despite their distinct natures."
+        },
+        {
+          "text": "$r = 0.42$ to $0.62$",
+          "isCorrect": true,
+          "rationale": "Several studies show a medium-to-strong correlation, indicating that states are manifestations of traits but not identical to them."
+        },
+        {
+          "text": "$r = 0.85$ to $0.95$",
+          "isCorrect": false,
+          "rationale": "This would suggest states and traits are nearly identical, which ignores the significant role of situational influence on states."
+        },
+        {
+          "text": "$r = -0.30$ to $-0.50$",
+          "isCorrect": false,
+          "rationale": "Correlations between corresponding states and traits are expected to be positive, as states manifest their trait counterparts."
+        }
+      ],
+      "hint": "The relationship is considered medium to high, but far from a perfect $r = 1.0$."
+    },
+    {
+      "question": "Which theoretical framework specifically seeks to explain how repeated sequences of personality processes accumulate into long-term personality development?",
+      "answerOptions": [
+        {
+          "text": "Trait Activation Theory (TAT)",
+          "isCorrect": false,
+          "rationale": "TAT focuses on how specific situations activate traits, primarily within organizational and job performance contexts."
+        },
+        {
+          "text": "Latent State-Trait Theory (LST-R)",
+          "isCorrect": false,
+          "rationale": "LST-R is primarily a measurement model designed to decompose variance into trait, situation, and error components."
+        },
+        {
+          "text": "TESSERA",
+          "isCorrect": true,
+          "rationale": "The TESSERA framework grounds development in a chain of triggers, states, and reactions that build up over time."
+        },
+        {
+          "text": "Cognitive-Affective Personality System (CAPS)",
+          "isCorrect": false,
+          "rationale": "CAPS explains behavioral consistency and variability but does not explicitly detail the sequence of long-term development."
+        }
+      ],
+      "hint": "This framework involves a sequence of triggering situations, expectancies, states, and reactions."
+    },
+    {
+      "question": "In the HEXACO model, which dimension is described as the tendency to be 'forgiving and tolerant' and relates to the domain of 'Obstruction'?",
+      "answerOptions": [
+        {
+          "text": "Honesty-Humility",
+          "isCorrect": false,
+          "rationale": "Honesty-Humility focuses on non-exploitation, whereas this dimension focuses on how one reacts after being exploited."
+        },
+        {
+          "text": "Agreeableness",
+          "isCorrect": true,
+          "rationale": "Agreeableness in HEXACO is defined as the tendency to cooperate even when one might be suffering exploitation, avoiding anger and retaliation."
+        },
+        {
+          "text": "Conscientiousness",
+          "isCorrect": false,
+          "rationale": "Conscientiousness deals with achievement and task engagement, not interpersonal tolerance."
+        },
+        {
+          "text": "Extraversion",
+          "isCorrect": false,
+          "rationale": "Extraversion is about social dominance and energy, not necessarily forgiving behavior."
+        }
+      ],
+      "hint": "This dimension is sometimes contrasted with anger and stubbornness."
+    },
+    {
+      "question": "Regarding gender differences, the source material notes that which HEXACO dimension typically shows the largest discrepancy, with women scoring higher than men?",
+      "answerOptions": [
+        {
+          "text": "Openness to Experience",
+          "isCorrect": false,
+          "rationale": "Openness scores are generally similar across genders compared to the more pronounced differences found in other dimensions."
+        },
+        {
+          "text": "Conscientiousness",
+          "isCorrect": false,
+          "rationale": "While slight differences can exist, they do not reach the large $1 SD$ difference mentioned for a different dimension."
+        },
+        {
+          "text": "Emotionality",
+          "isCorrect": true,
+          "rationale": "A meta-analysis cited in the text found women scored approximately one standard deviation higher in Emotionality than men."
+        },
+        {
+          "text": "Extraversion",
+          "isCorrect": false,
+          "rationale": "Extraversion scores tend to be relatively balanced between men and women in large-scale HEXACO research."
+        }
+      ],
+      "hint": "The text mentions a difference of approximately $1 SD$ for this specific dimension."
+    },
+    {
+      "question": "Which of the following is true about the 'nomological net' of a personality construct?",
+      "answerOptions": [
+        {
+          "text": "It consists solely of the biological markers identified for that trait.",
+          "isCorrect": false,
+          "rationale": "Biological markers may be part of it, but the net encompasses a much broader set of inter-relations with other constructs."
+        },
+        {
+          "text": "It refers to the dictionary definitions assigned to personality adjectives.",
+          "isCorrect": false,
+          "rationale": "Dictionary definitions are the starting point for lexical studies, not the evidence-based network of outcomes."
+        },
+        {
+          "text": "It comprises the inter-relations between a construct and its theoretically relevant outcome criteria.",
+          "isCorrect": true,
+          "rationale": "Establishing a nomological net is a crucial step for construct validity, showing how the trait links to various thoughts and behaviors."
+        },
+        {
+          "text": "It is a mathematical formula used to calculate the average state-trait correlation.",
+          "isCorrect": false,
+          "rationale": "The nomological net is a theoretical and empirical concept for validity, not a specific statistical formula."
+        }
+      ],
+      "hint": "Think about how a construct is 'captured' by the web of variables it relates to."
+    },
+    {
+      "question": "The outcome domain of 'Exploration', which includes curiosity and creativity, is primarily linked to which HEXACO dimension?",
+      "answerOptions": [
+        {
+          "text": "Openness to Experience",
+          "isCorrect": true,
+          "rationale": "Openness involves engagement in idea-related endeavors, discovery, and learning, making it the counterpart to exploration."
+        },
+        {
+          "text": "Extraversion",
+          "isCorrect": false,
+          "rationale": "While extraverts are active, their engagement is social rather than the purely intellectual or creative discovery of ideas."
+        },
+        {
+          "text": "Agreeableness",
+          "isCorrect": false,
+          "rationale": "Agreeableness relates to social cooperation and tolerance, not the exploration of new ideas or unconventionality."
+        },
+        {
+          "text": "Honesty-Humility",
+          "isCorrect": false,
+          "rationale": "Honesty-Humility relates to sincerity and fairness in interpersonal dealings, not creative discovery."
+        }
+      ],
+      "hint": "This dimension is defined by engagement in idea-related endeavors like learning and thinking."
+    }
+  ]
+}

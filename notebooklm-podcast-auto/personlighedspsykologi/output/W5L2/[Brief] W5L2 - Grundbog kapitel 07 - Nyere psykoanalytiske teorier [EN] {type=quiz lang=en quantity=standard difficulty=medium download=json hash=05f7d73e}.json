@@ -1,0 +1,317 @@
+{
+  "title": "Psychoanalysis Quiz",
+  "questions": [
+    {
+      "question": "According to the source material, which three dominant 'fields' characterize modern psychoanalysis based on their national origins?",
+      "answerOptions": [
+        {
+          "text": "Cognition (Great Britain), The Unconscious (France), and Culture/Society (Germany).",
+          "isCorrect": true,
+          "rationale": "These three fields represent the primary geographical and thematic divisions in modern psychoanalytic development as described in the introductory sections."
+        },
+        {
+          "text": "Behaviorism (USA), Cognition (Great Britain), and Existentialism (France).",
+          "isCorrect": false,
+          "rationale": "Behaviorism and pure existentialism are distinct psychological movements rather than the core thematic branches of psychoanalysis mentioned."
+        },
+        {
+          "text": "Biological Psychology (Germany), Ego Psychology (USA), and Structuralism (France).",
+          "isCorrect": false,
+          "rationale": "While Ego Psychology is mentioned as a precursor, the three current dominant fields are categorized by cognition, the unconscious, and social context."
+        },
+        {
+          "text": "Neuropsychoanalysis (USA), Object Relations (Great Britain), and Marxism (Germany).",
+          "isCorrect": false,
+          "rationale": "These are specific sub-theories or influences rather than the three broad thematic pillars identified by Zeuthen and K\u00f8ppe."
+        }
+      ],
+      "hint": "Think about the broad themes prioritized by the British, French, and German schools."
+    },
+    {
+      "question": "In psychoanalytic theory, how is the 'Object' primarily defined differently from its everyday meaning?",
+      "answerOptions": [
+        {
+          "text": "As a physical, external entity that remains static and independent of the psyche.",
+          "isCorrect": false,
+          "rationale": "This describes the common material definition of an object rather than the internal psychic construction used in psychoanalysis."
+        },
+        {
+          "text": "As an internal psychic representation constructed on the basis of perceptions and fantasies.",
+          "isCorrect": true,
+          "rationale": "Psychoanalysis views objects as internal representations of people or aspects of them, deeply tied to the subject's emotional life."
+        },
+        {
+          "text": "As a strictly biological drive that ensures physical survival in the external world.",
+          "isCorrect": false,
+          "rationale": "Drives and objects are related, but the object is the target or representation toward which a drive is directed, not the drive itself."
+        },
+        {
+          "text": "As the conscious 'I' that acts as the master of the individual's mental house.",
+          "isCorrect": false,
+          "rationale": "This refers to the 'Subject' or 'Ego,' whereas the object is that which the subject relates to or represents internally."
+        }
+      ],
+      "hint": "Focus on whether the object exists primarily in the physical world or the mental world in this context."
+    },
+    {
+      "question": "What concept did Melanie Klein and Karl Abraham introduce to describe a child's early perception of others?",
+      "answerOptions": [
+        {
+          "text": "Total Objects",
+          "isCorrect": false,
+          "rationale": "Total objects represent a later developmental stage where the child perceives a person as a complete, separate individual."
+        },
+        {
+          "text": "Partial Objects",
+          "isCorrect": true,
+          "rationale": "This term describes how infants initially relate to parts of a person, such as the mother's breast, before they can perceive individuals as whole entities."
+        },
+        {
+          "text": "Intersubjective Fields",
+          "isCorrect": false,
+          "rationale": "This concept relates to the space between two subjects, which is a more modern development in interactionist theories."
+        },
+        {
+          "text": "Mirror Images",
+          "isCorrect": false,
+          "rationale": "While related to the self, this term is more central to Lacan's theory of the ego's formation rather than Klein's object relations."
+        }
+      ],
+      "hint": "Consider how an infant might perceive a caregiver's specific physical features before recognizing them as a whole person."
+    },
+    {
+      "question": "In Peter Fonagy\u2019s theory of mentalization, what is the 'Equivalent Mode'?",
+      "answerOptions": [
+        {
+          "text": "A state where the child distinguishes clearly between their inner world and external reality.",
+          "isCorrect": false,
+          "rationale": "This describes a mature mentalizing capacity rather than the 'Equivalent Mode' seen in early development."
+        },
+        {
+          "text": "A state where the child\u2019s inner world is experienced as being identical to the outer world.",
+          "isCorrect": true,
+          "rationale": "In this mode, the child perceives no difference between what they feel or imagine and what actually exists in reality."
+        },
+        {
+          "text": "A playful state where the child knows their fantasies are not real but acts as if they are.",
+          "isCorrect": false,
+          "rationale": "This describes the 'Pretend Mode,' which is the counterpart to the Equivalent Mode."
+        },
+        {
+          "text": "A biological reflex that regulates the child's physiological needs for milk and warmth.",
+          "isCorrect": false,
+          "rationale": "While regulation is important, the Equivalent Mode specifically refers to the psychic representation of reality."
+        }
+      ],
+      "hint": "Think about a developmental phase where feelings are treated as literal facts of the physical world."
+    },
+    {
+      "question": "What is the primary function of 'Mentalization' according to the Fonagy group?",
+      "answerOptions": [
+        {
+          "text": "The ability to suppress all unconscious drives through cognitive control.",
+          "isCorrect": false,
+          "rationale": "Mentalization is about understanding mental states, not necessarily suppressing or eliminating drives."
+        },
+        {
+          "text": "The capacity to understand oneself and others by attributing mental states such as needs, desires, and goals.",
+          "isCorrect": true,
+          "rationale": "Mentalization involves using reflective function to interpret behavior as being motivated by underlying psychic states."
+        },
+        {
+          "text": "The biological process of mapping neurological pathways in the frontal lobes.",
+          "isCorrect": false,
+          "rationale": "While neuropsychoanalysis looks at brain structures, mentalization is defined as a psychological and interpersonal function."
+        },
+        {
+          "text": "The automatic mirroring of an infant's affect by the caregiver without any modification.",
+          "isCorrect": false,
+          "rationale": "Effective mirroring requires the caregiver to 'mark' or modify the affect to help the child learn that feelings can be regulated."
+        }
+      ],
+      "hint": "Consider the term 'reflective function' and its role in interpreting human behavior."
+    },
+    {
+      "question": "In Jacques Lacan\u2019s theory, what does the 'Mirror Stage' represent?",
+      "answerOptions": [
+        {
+          "text": "The moment a child realizes they are biologically identical to their parents.",
+          "isCorrect": false,
+          "rationale": "The Mirror Stage is about the formation of the 'I' through an image, not biological heredity."
+        },
+        {
+          "text": "The point where the child begins to perceive their motor movements as perfectly coordinated.",
+          "isCorrect": false,
+          "rationale": "Lacan argues the child actually lacks motor coordination and uses the image to compensate for this 'fragmented' body."
+        },
+        {
+          "text": "The formation of the ego through the child's identification with an external image of themselves.",
+          "isCorrect": true,
+          "rationale": "Lacan posits that the 'I' is established when the child sees a unified image of themselves in a mirror or via a caregiver."
+        },
+        {
+          "text": "The transition from the Symbolic order back to the Real order.",
+          "isCorrect": false,
+          "rationale": "The Mirror Stage is generally seen as the foundation of the Imaginary order, preceding the full entry into the Symbolic."
+        }
+      ],
+      "hint": "Think about how an external reflection helps a child create a sense of a unified 'Self'."
+    },
+    {
+      "question": "Jean Laplanche describes the adult's communication to the child as 'enigmatic messages.' Why are they 'enigmatic'?",
+      "answerOptions": [
+        {
+          "text": "Because they are encoded in a secret language that the child must learn to decipher.",
+          "isCorrect": false,
+          "rationale": "The difficulty is not a literal code or language, but the unconscious content embedded in the message."
+        },
+        {
+          "text": "Because they contain unconscious sexual meanings that the adult is unaware of and the child cannot fully process.",
+          "isCorrect": true,
+          "rationale": "Laplanche argues that adult messages are 'compromised' by their own unconscious, which the child attempts to translate, forming their own unconscious in the process."
+        },
+        {
+          "text": "Because the child has not yet developed the cognitive capacity to understand basic vocabulary.",
+          "isCorrect": false,
+          "rationale": "This is a simple developmental delay in language, whereas Laplanche focuses on the intersubjective tension of the unconscious."
+        },
+        {
+          "text": "Because the messages are intentionally designed by the adult to mislead the child.",
+          "isCorrect": false,
+          "rationale": "The enigmatic nature is usually unintentional, arising from the adult's own repressed drives rather than a malicious plan."
+        }
+      ],
+      "hint": "Consider the role of the adult's own unconscious when they interact with a child."
+    },
+    {
+      "question": "What does the concept of 'Nachtr\u00e4glichkeit' (Afterwardness/Retroactivity) imply about psychological development?",
+      "answerOptions": [
+        {
+          "text": "That childhood experiences are static and determine the future in a linear, unchangeable way.",
+          "isCorrect": false,
+          "rationale": "This view represents simple linear determination, which psychoanalysis challenges through 'Nachtr\u00e4glichkeit'."
+        },
+        {
+          "text": "That early experiences are re-interpreted and given new meaning in the light of later developments.",
+          "isCorrect": true,
+          "rationale": "This concept suggests that the 'past' is constantly being reworked and 're-signified' as the individual matures and gains new experiences."
+        },
+        {
+          "text": "That memory is a perfect recording of factual events that can be retrieved exactly as they happened.",
+          "isCorrect": false,
+          "rationale": "Psychoanalysis emphasizes the construction and distortion of memory based on psychic reality and later interpretations."
+        },
+        {
+          "text": "That only adult experiences are significant for the formation of the unconscious.",
+          "isCorrect": false,
+          "rationale": "The theory focuses precisely on how childhood experiences are rendered significant through later events."
+        }
+      ],
+      "hint": "Think about how a later event might change the meaning of a memory from the past."
+    },
+    {
+      "question": "Wilhelm Reich\u2019s 'Sex-pol' movement was an early attempt to combine psychoanalysis with which ideology?",
+      "answerOptions": [
+        {
+          "text": "Liberal Capitalism",
+          "isCorrect": false,
+          "rationale": "Reich was critical of capitalist structures and their effects on sexual health."
+        },
+        {
+          "text": "Marxism",
+          "isCorrect": true,
+          "rationale": "Reich sought to unite the internal liberation of psychoanalysis with the external social liberation of Marxist theory."
+        },
+        {
+          "text": "Religious Conservatism",
+          "isCorrect": false,
+          "rationale": "Reich's focus on sexual freedom was in direct opposition to conservative religious values."
+        },
+        {
+          "text": "Structural Functionalism",
+          "isCorrect": false,
+          "rationale": "This is a sociological framework not associated with Reich's radical political-sexual project."
+        }
+      ],
+      "hint": "Identify the political theory that focuses on social class struggles and revolution."
+    },
+    {
+      "question": "How did J\u00fcrgen Habermas critique classical psychoanalytic metapsychology?",
+      "answerOptions": [
+        {
+          "text": "He argued it was too focused on the interpretive meaning of symbols.",
+          "isCorrect": false,
+          "rationale": "Habermas actually supported the interpretive/hermeneutic side of psychoanalysis."
+        },
+        {
+          "text": "He viewed it as a 'scientistic misunderstanding' that wrongly tried to explain the mind using natural science concepts.",
+          "isCorrect": true,
+          "rationale": "Habermas believed psychoanalysis should be understood as a self-reflective, interpretive discipline rather than a natural science like physics."
+        },
+        {
+          "text": "He claimed it did not pay enough attention to the biological structures of the brain.",
+          "isCorrect": false,
+          "rationale": "This is the opposite of his critique; he felt it tried too hard to sound like a hard science."
+        },
+        {
+          "text": "He believed it was too political and needed to return to the laboratory.",
+          "isCorrect": false,
+          "rationale": "Habermas himself was deeply engaged with political theory and saw the liberating potential of psychoanalysis."
+        }
+      ],
+      "hint": "Think about the tension between 'explaining' things like a scientist versus 'understanding' things like a historian."
+    },
+    {
+      "question": "What is the core argument behind 'Subject Decentralization' in psychoanalysis?",
+      "answerOptions": [
+        {
+          "text": "The subject is the absolute center of their own consciousness and actions.",
+          "isCorrect": false,
+          "rationale": "This represents the 'pre-psychoanalytic' or Cartesian view of the subject that Freud challenged."
+        },
+        {
+          "text": "The conscious 'I' (Ego) is not the master of its own house but is determined by unconscious factors.",
+          "isCorrect": true,
+          "rationale": "Decentralization refers to the idea that the conscious mind is only a small part of the psyche, often driven by forces outside its control."
+        },
+        {
+          "text": "The subject exists only as a collection of biological reflexes with no internal life.",
+          "isCorrect": false,
+          "rationale": "Psychoanalysis insists on a rich inner psychic reality, even if it is not fully conscious."
+        },
+        {
+          "text": "The individual is entirely formed by their social environment with no internal structure.",
+          "isCorrect": false,
+          "rationale": "While social context is important (especially in German theories), decentralization specifically targets the illusion of conscious control."
+        }
+      ],
+      "hint": "Recall Freud's quote about the 'Ego' not being 'master in its own house'."
+    },
+    {
+      "question": "According to Alfred Lorenzer, what are 'interaction forms' (interaktionsformer)?",
+      "answerOptions": [
+        {
+          "text": "Mathematical models used to predict social behavior in groups.",
+          "isCorrect": false,
+          "rationale": "Lorenzer's work is psychoanalytic and social-psychological, not based on mathematical modeling."
+        },
+        {
+          "text": "Specific patterns of child-caregiver interaction that become internal psychic structures.",
+          "isCorrect": true,
+          "rationale": "Lorenzer argued that the way a child and caregiver interact forms the basis for how the child's psyche is structured and how they later interact with the world."
+        },
+        {
+          "text": "The genetic predispositions that determine how a person reacts to stress.",
+          "isCorrect": false,
+          "rationale": "Lorenzer emphasizes the social and intersubjective creation of the mind rather than purely biological factors."
+        },
+        {
+          "text": "Temporary behaviors that have no lasting impact on personality development.",
+          "isCorrect": false,
+          "rationale": "The whole point of Lorenzer's theory is that these interactions have a profound and lasting 'constitutive' effect on the psyche."
+        }
+      ],
+      "hint": "Consider how repetitive social exchanges between a parent and child might 'shape' the child's mind."
+    }
+  ]
+}

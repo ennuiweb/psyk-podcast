@@ -156,6 +156,7 @@ python3 podcast-tools/gdrive_podcast_feed.py --config shows/personlighedspsykolo
 ## Troubleshooting
 - If you interrupt `download_week.py` while waiting, rerun the same command. Already-downloaded outputs are skipped.
 - To avoid long waits for in-progress artifacts, set `--timeout` and rerun later.
+- `generate_week.py` suppresses per-file skip logs by default; add `--print-skips` when you want to inspect every skipped output path.
 - If `generate_week.py` starts creating notebooks even though quiz `.json` files exist, verify tag parity first.
   - Canonical quiz JSON outputs should be tagged `download=json` with matching config hash.
   - Legacy `download=html`-tagged quiz JSON names (from older extraction runs) should be renamed or re-extracted to avoid duplicate generation.

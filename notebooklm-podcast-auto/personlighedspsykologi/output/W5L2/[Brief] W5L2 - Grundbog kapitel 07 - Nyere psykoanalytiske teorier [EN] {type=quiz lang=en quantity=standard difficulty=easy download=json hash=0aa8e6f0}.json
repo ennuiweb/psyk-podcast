@@ -1,0 +1,343 @@
+{
+  "title": "Psychoanalysis Quiz",
+  "questions": [
+    {
+      "question": "In the early development of psychoanalysis, which national tradition was most characterized by an emphasis on the symbolic, sexuality, and psychic reality?",
+      "answerOptions": [
+        {
+          "text": "France",
+          "isCorrect": true,
+          "rationale": "The text identifies the French tradition as one that prioritizes the symbolic order and the role of sexuality in psychic development."
+        },
+        {
+          "text": "Germany",
+          "isCorrect": false,
+          "rationale": "The German tradition was noted more for its focus on social factors and psychosomatic perspectives."
+        },
+        {
+          "text": "United Kingdom",
+          "isCorrect": false,
+          "rationale": "British psychoanalysis is historically associated with object relations and cognitive-biological approaches."
+        },
+        {
+          "text": "United States",
+          "isCorrect": false,
+          "rationale": "American psychoanalysis, specifically ego-psychology, emphasized adaptation to the external world and the strengthening of the 'I'."
+        }
+      ],
+      "hint": "Consider the influence of thinkers like Jacques Lacan who focused heavily on linguistic and symbolic structures."
+    },
+    {
+      "question": "In psychoanalytic theory, how is an 'object' primarily defined differently from its everyday meaning?",
+      "answerOptions": [
+        {
+          "text": "As an internal mental representation or fantasy of a person",
+          "isCorrect": true,
+          "rationale": "Psychoanalysis views objects not just as physical entities but as internal representations constructed through perceptions and fantasies."
+        },
+        {
+          "text": "As a purely physical, external material entity",
+          "isCorrect": false,
+          "rationale": "This is the common, non-psychoanalytic definition that refers to tangible, static items in the environment."
+        },
+        {
+          "text": "As a biological organ that generates instincts",
+          "isCorrect": false,
+          "rationale": "While objects are related to drives, the object itself is a psychological representation rather than the biological source of a drive."
+        },
+        {
+          "text": "As a logical category used for cognitive categorization",
+          "isCorrect": false,
+          "rationale": "This aligns more with cognitive psychology than the affective and emotional focus of psychoanalytic object relations."
+        }
+      ],
+      "hint": "Think about whether the 'object' exists in the physical world or within the subject's mind."
+    },
+    {
+      "question": "According to the text, what is a defining characteristic of a 'drive' ($drift$) in psychoanalysis?",
+      "answerOptions": [
+        {
+          "text": "It is infinitely flexible and seeks the repetition of pleasure",
+          "isCorrect": true,
+          "rationale": "Drives are described as internal psychic impressions that can attach to various objects and seek to repeat established patterns of pleasure."
+        },
+        {
+          "text": "It is a rigid, unchangeable biological instinct for survival",
+          "isCorrect": false,
+          "rationale": "The text distinguishes between biological needs (for survival) and psychoanalytic drives, which are flexible and tied to pleasure."
+        },
+        {
+          "text": "It is a purely conscious motivation for social achievement",
+          "isCorrect": false,
+          "rationale": "Drives originate in the unconscious and are primarily concerned with pleasure rather than conscious social goals."
+        },
+        {
+          "text": "It is a cognitive function used to regulate body temperature",
+          "isCorrect": false,
+          "rationale": "Homeostatic regulation is a physiological process, whereas drives represent the psychic manifestation of somatic pressures."
+        }
+      ],
+      "hint": "Contrast the fixed nature of animal instincts with the diverse ways human desires find satisfaction."
+    },
+    {
+      "question": "What core concept does Peter Fonagy use to describe the ability to understand oneself and others by attributing mental states such as feelings and thoughts?",
+      "answerOptions": [
+        {
+          "text": "Mentalization",
+          "isCorrect": true,
+          "rationale": "Mentalization is defined as the reflective function that allows an individual to perceive mental states as the basis for behavior."
+        },
+        {
+          "text": "Character Armor",
+          "isCorrect": false,
+          "rationale": "Character armor is a concept from Wilhelm Reich referring to physical and psychological defenses against libido."
+        },
+        {
+          "text": "Primary Process",
+          "isCorrect": false,
+          "rationale": "Primary process refers to the unconscious way the psyche handles energy, often characterized by immediate discharge and symbolism."
+        },
+        {
+          "text": "Projective Identification",
+          "isCorrect": false,
+          "rationale": "This is a Kleinian defense mechanism where parts of the self are attributed to another person, which is distinct from Fonagy's focus on reflective capacity."
+        }
+      ],
+      "hint": "This term relates to the 'mental' capacity to reflect on the 'self' and 'other'."
+    },
+    {
+      "question": "In Fonagy\u2019s theory of child development, what occurs when a child is in 'Equivalent Mode'?",
+      "answerOptions": [
+        {
+          "text": "The child experiences their inner world as being identical to the outer world",
+          "isCorrect": true,
+          "rationale": "In equivalent mode, there is no distinction between fantasy and reality; what is thought is felt to be real in the world."
+        },
+        {
+          "text": "The child plays with reality, knowing fantasies are not real",
+          "isCorrect": false,
+          "rationale": "This describes 'Pretend Mode,' where the child can separate the inner world from the outer world during play."
+        },
+        {
+          "text": "The child uses logical reasoning to equate different physical objects",
+          "isCorrect": false,
+          "rationale": "This is a Piagetian cognitive development stage rather than a psychoanalytic mode of mentalization."
+        },
+        {
+          "text": "The child mirrors the parent's facial expressions exactly",
+          "isCorrect": false,
+          "rationale": "Mirroring is part of the process of developing affect regulation, but 'Equivalent Mode' specifically refers to the psychic equivalence of internal and external states."
+        }
+      ],
+      "hint": "Consider a state where a child's nightmare is felt to be a literal monster in the room."
+    },
+    {
+      "question": "Which attachment style, identified in the 'Strange Situation' and 'Adult Attachment Interview', is characterized by a lack of a coherent strategy for dealing with stress?",
+      "answerOptions": [
+        {
+          "text": "Disorganized",
+          "isCorrect": true,
+          "rationale": "Disorganized attachment ($U-tryg/D$) occurs when the caregiver is both a source of fear and a source of comfort, leading to a collapse of coping strategies."
+        },
+        {
+          "text": "Secure",
+          "isCorrect": false,
+          "rationale": "Secure attachment is characterized by the child's ability to use the caregiver as a safe base for exploration and comfort."
+        },
+        {
+          "text": "Avoidant",
+          "isCorrect": false,
+          "rationale": "Avoidant attachment involves a strategy of deactivating the attachment system and minimizing affect expression to avoid rejection."
+        },
+        {
+          "text": "Ambivalent",
+          "isCorrect": false,
+          "rationale": "Ambivalent (or resistant) attachment involves a strategy of maximizing affect and hyper-vigilance toward the caregiver's availability."
+        }
+      ],
+      "hint": "This style is often marked by contradictory behaviors and occurs when the child has no clear path to safety."
+    },
+    {
+      "question": "What is the primary goal of the field of neuropsychoanalysis?",
+      "answerOptions": [
+        {
+          "text": "To find the neurobiological foundations for psychoanalytic concepts",
+          "isCorrect": true,
+          "rationale": "Neuropsychoanalysis seeks to bridge the gap between brain structures (neuroscience) and psychic functions (psychoanalysis)."
+        },
+        {
+          "text": "To replace talk therapy with pharmacological interventions",
+          "isCorrect": false,
+          "rationale": "The field aims for integration and theoretical grounding rather than the abandonment of psychoanalytic clinical practice."
+        },
+        {
+          "text": "To prove that the unconscious does not exist biologically",
+          "isCorrect": false,
+          "rationale": "Neuropsychoanalysis actually seeks to find how the unconscious is mapped or structured within the brain's plastic development."
+        },
+        {
+          "text": "To create a computer model that simulates the human ego",
+          "isCorrect": false,
+          "rationale": "This sounds more like Artificial Intelligence research than the biological-psychoanalytic integration described in the text."
+        }
+      ],
+      "hint": "Think about the connection between 'neuro' (nerves/brain) and 'psychoanalysis' (mind)."
+    },
+    {
+      "question": "In Jacques Lacan\u2019s theory, what is the significance of the 'Mirror Stage'?",
+      "answerOptions": [
+        {
+          "text": "It is the moment the child forms an illusory, unified sense of 'I' ($Ego$)",
+          "isCorrect": true,
+          "rationale": "Lacan argues that the mirror stage allows the child to identify with an external image, creating a sense of wholeness that is actually alienated."
+        },
+        {
+          "text": "It is when the child first learns to recognize their biological mother",
+          "isCorrect": false,
+          "rationale": "Recognition of the mother happens earlier and is more related to primary needs than the specific formation of the Ego in the mirror stage."
+        },
+        {
+          "text": "It is a cognitive test that proves the child has a working visual cortex",
+          "isCorrect": false,
+          "rationale": "While it requires vision, the Mirror Stage is a psychoanalytic milestone regarding subject formation, not just a biological test."
+        },
+        {
+          "text": "It marks the end of the Oedipus complex through identification with the father",
+          "isCorrect": false,
+          "rationale": "The mirror stage typically occurs earlier (6-18 months) and precedes the linguistic 'Symbolic' order of the Oedipus complex."
+        }
+      ],
+      "hint": "Focus on the visual identification with an image that seems more complete than the child's actual motor skills."
+    },
+    {
+      "question": "How does Jean Laplanche define 'enigmatic messages' ($g\u00e5defulde\\ meddelelser$)?",
+      "answerOptions": [
+        {
+          "text": "Adult communications to the child that contain unconscious sexual meanings",
+          "isCorrect": true,
+          "rationale": "Laplanche posits that adults send messages to infants that the child cannot translate because they are 'compromised' by the adult's own unconscious."
+        },
+        {
+          "text": "Genetic codes that pre-determine the child's personality",
+          "isCorrect": false,
+          "rationale": "Laplanche\u2019s theory is intersubjective and focuses on external communication, not biological determinism."
+        },
+        {
+          "text": "Dreams that are too complex for the patient to remember",
+          "isCorrect": false,
+          "rationale": "While dreams are enigmatic, this specific term refers to the foundational interactions between caregiver and child."
+        },
+        {
+          "text": "Linguistic errors made by children learning to speak",
+          "isCorrect": false,
+          "rationale": "The messages come from the 'other' (the adult) to the child, not the other way around."
+        }
+      ],
+      "hint": "Think about what an adult might unintentionally convey to a baby through touch, tone, or gaze."
+    },
+    {
+      "question": "What is the meaning of the psychoanalytic concept of 'afterwardness' ($Nachtr\u00e4glichkeit$)?",
+      "answerOptions": [
+        {
+          "text": "Current experiences can re-interpret and give new meaning to past events",
+          "isCorrect": true,
+          "rationale": "Afterwardness suggests a circular time where the past is constantly re-evaluated and given traumatic or psychological weight by later events."
+        },
+        {
+          "text": "The psychological tendency to procrastinate on difficult tasks",
+          "isCorrect": false,
+          "rationale": "This is a colloquial use of 'afterward' and not the specific theoretical concept regarding psychic time."
+        },
+        {
+          "text": "The inevitable biological decline of the brain in old age",
+          "isCorrect": false,
+          "rationale": "The concept refers to the subjective history and meaning of experiences, not biological aging."
+        },
+        {
+          "text": "The physical echo heard after a patient speaks in a session",
+          "isCorrect": false,
+          "rationale": "This is a literal acoustic phenomenon, unrelated to the restructuring of memory and trauma."
+        }
+      ],
+      "hint": "It describes how a childhood event might only become 'traumatic' once the person reaches puberty and understands it differently."
+    },
+    {
+      "question": "Wilhelm Reich, a key figure in Freudomarxism, introduced the concept of 'Character Armor'. What does this refer to?",
+      "answerOptions": [
+        {
+          "text": "Chronic physical muscle tensions that hold back emotional expression",
+          "isCorrect": true,
+          "rationale": "Reich believed that psychological defenses manifest as physical rigidity in the body to protect against anxiety and suppress libido."
+        },
+        {
+          "text": "A metal suit used in early experimental psychology labs",
+          "isCorrect": false,
+          "rationale": "The term is a metaphor for psychic and somatic defenses, not a literal piece of hardware."
+        },
+        {
+          "text": "A set of moral virtues that protect a person from temptation",
+          "isCorrect": false,
+          "rationale": "Reich's concept was about the inhibition of life energy (orgone/libido) rather than the cultivation of traditional morality."
+        },
+        {
+          "text": "The legal protection afforded to psychoanalysts in court",
+          "isCorrect": false,
+          "rationale": "This refers to professional ethics or law, whereas character armor is a clinical and psychosomatic observation."
+        }
+      ],
+      "hint": "Look for a link between psychological defense mechanisms and the physical body."
+    },
+    {
+      "question": "Alfred Lorenzer developed the concept of 'interaction forms'. When an interaction form becomes rigid and unconscious, what does he call it?",
+      "answerOptions": [
+        {
+          "text": "A clich\u00e9",
+          "isCorrect": true,
+          "rationale": "Lorenzer uses the term 'clich\u00e9' to describe 'frozen' patterns of interaction that repeat unconsciously without being integrated into language."
+        },
+        {
+          "text": "An archetype",
+          "isCorrect": false,
+          "rationale": "Archetypes are universal symbols in Jungian psychology, while Lorenzer's clich\u00e9s are rooted in specific social and early childhood interactions."
+        },
+        {
+          "text": "A cognitive schema",
+          "isCorrect": false,
+          "rationale": "While similar, 'schema' belongs to cognitive psychology, whereas Lorenzer\u2019s 'clich\u00e9' is a psychoanalytic term involving the unconscious and drives."
+        },
+        {
+          "text": "A social contract",
+          "isCorrect": false,
+          "rationale": "A social contract is a conscious political or ethical agreement, whereas a clich\u00e9 is an unconscious, repetitive psychic structure."
+        }
+      ],
+      "hint": "It is a word often used to describe overused or unoriginal phrases in language."
+    },
+    {
+      "question": "According to the text, why is the psychoanalytic subject considered 'decentered'?",
+      "answerOptions": [
+        {
+          "text": "Because the conscious 'I' is not the master of the psyche",
+          "isCorrect": true,
+          "rationale": "Following Freud's claim that 'the Ego is not master in its own house,' the subject is seen as driven by unconscious forces outside its control."
+        },
+        {
+          "text": "Because people today live in cities rather than rural centers",
+          "isCorrect": false,
+          "rationale": "This is a sociological observation about urbanization, not a psychoanalytic theory of the self."
+        },
+        {
+          "text": "Because the brain\u2019s neurons are distributed across many regions",
+          "isCorrect": false,
+          "rationale": "This is a neurological fact about brain anatomy, while 'decentering' refers to the subjective experience of agency and consciousness."
+        },
+        {
+          "text": "Because psychoanalysis is no longer the center of the medical field",
+          "isCorrect": false,
+          "rationale": "This refers to the status of a discipline, whereas 'decentered subject' refers to the internal structure of human identity."
+        }
+      ],
+      "hint": "Consider Freud's famous quote about the 'Ego' and its 'own house'."
+    }
+  ]
+}

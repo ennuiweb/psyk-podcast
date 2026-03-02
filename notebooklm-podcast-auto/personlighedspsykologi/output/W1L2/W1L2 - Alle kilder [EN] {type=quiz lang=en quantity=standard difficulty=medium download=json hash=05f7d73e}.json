@@ -1,0 +1,265 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "According to Mayer and Bryan (2024), what is the primary 'natural joint' used to classify personality data sources?",
+      "answerOptions": [
+        {
+          "text": "Whether the data is quantitative or qualitative",
+          "isCorrect": false,
+          "rationale": "While the distinction between numerical and non-numerical data is common in research, it is not the fundamental model proposed for source classification in this integrative theory."
+        },
+        {
+          "text": "Whether the data is produced by the person or sourced from the surroundings",
+          "isCorrect": true,
+          "rationale": "The model distinguishes between personal-source data (from inner mental processes) and external-source data (from the surrounding environment and observers)."
+        },
+        {
+          "text": "Whether the data targets psychological traits or biological markers",
+          "isCorrect": false,
+          "rationale": "Biological markers are considered a subset of external-source data, but this specific distinction is secondary to the person-versus-surroundings origin."
+        },
+        {
+          "text": "Whether the data is collected in a laboratory or a natural setting",
+          "isCorrect": false,
+          "rationale": "The physical setting of data collection is a methodological detail rather than the core theoretical division of information sources."
+        }
+      ],
+      "hint": "Consider the inner-outer dimension mentioned in the text regarding where the information originates."
+    },
+    {
+      "question": "Based on empirical findings cited in the text, what is the approximate average correlation ($r$) between different measurement methods targeting the same personality attribute?",
+      "answerOptions": [
+        {
+          "text": "$r \\approx .10$",
+          "isCorrect": false,
+          "rationale": "This value represents a negligible relationship, whereas the research indicates a modest but statistically significant positive correlation."
+        },
+        {
+          "text": "$r \\approx .34$",
+          "isCorrect": true,
+          "rationale": "Empirical studies, including those by Campbell and Fiske, found that cross-method correlations are typically lower than expected, averaging in the $.30$s."
+        },
+        {
+          "text": "$r \\approx .57$",
+          "isCorrect": false,
+          "rationale": "This was the theoretical correlation anticipated by early researchers, but it is much higher than what empirical data actually reveals."
+        },
+        {
+          "text": "$r \\approx .85$",
+          "isCorrect": false,
+          "rationale": "Correlations of this magnitude are usually reserved for the reliability of a single measure rather than the convergence of different measurement approaches."
+        }
+      ],
+      "hint": "The text notes that researchers often find 'stubbornly independent' results between methods."
+    },
+    {
+      "question": "Why do self-judgments of intelligence and ability-based intelligence tests often show low convergence?",
+      "answerOptions": [
+        {
+          "text": "Self-judgments are influenced more by personality traits like Extraversion and Emotional Stability than actual cognitive capacity.",
+          "isCorrect": true,
+          "rationale": "Research shows that self-estimated intelligence is often a measure of 'intellectual self-esteem' rather than problem-solving ability."
+        },
+        {
+          "text": "Ability tests are inherently unreliable and prone to significant measurement error.",
+          "isCorrect": false,
+          "rationale": "Mental ability scales are considered the 'gold standard' for assessment and are generally highly reliable."
+        },
+        {
+          "text": "The two methods employ the exact same response processes, leading to redundant variance.",
+          "isCorrect": false,
+          "rationale": "Low convergence is attributed to the fact that they employ different response processes\u2014self-reflection versus active problem-solving."
+        },
+        {
+          "text": "Intelligence is a purely external trait that individuals cannot perceive in themselves.",
+          "isCorrect": false,
+          "rationale": "Individuals can perceive aspects of their own cognition, but their evaluations are frequently biased by self-concept."
+        }
+      ],
+      "hint": "Think about how self-concept and self-esteem might cloud a person's objective view of their skills."
+    },
+    {
+      "question": "Which term did Wilhelm Windelband use to describe scientific disciplines that seek to establish generalizable laws?",
+      "answerOptions": [
+        {
+          "text": "Idiographic",
+          "isCorrect": false,
+          "rationale": "In Windelband's framework, this term describes the study of the particular and unique occurrences."
+        },
+        {
+          "text": "Nomothetic",
+          "isCorrect": true,
+          "rationale": "Derived from the Greek for 'law-giving', this term refers to the search for universal principles or general laws."
+        },
+        {
+          "text": "Ergodic",
+          "isCorrect": false,
+          "rationale": "This is a statistical term used to describe systems where group averages match individual averages over time, not a Windelbandian classification."
+        },
+        {
+          "text": "Psychographic",
+          "isCorrect": false,
+          "rationale": "This term was used by Stern to describe person-centered approaches that characterize individuals across many attributes."
+        }
+      ],
+      "hint": "This term is often associated with 'variable-centered' research in modern psychology."
+    },
+    {
+      "question": "The 'ergodic fallacy' in personality research refers to the problematic assumption that:",
+      "answerOptions": [
+        {
+          "text": "Personal-source data is always more accurate than external-source data.",
+          "isCorrect": false,
+          "rationale": "This is a debate about data validity, not a statistical fallacy regarding levels of analysis."
+        },
+        {
+          "text": "Generalizations derived from a population average necessarily apply to any specific individual within that population.",
+          "isCorrect": true,
+          "rationale": "The fallacy occurs because human systems are non-ergodic; what is true 'on average' may not be true for any actual person."
+        },
+        {
+          "text": "Thematic reports are identical to direct self-reports of motivation.",
+          "isCorrect": false,
+          "rationale": "The lack of convergence between these measures is a matter of divergent response processes, not the ergodic fallacy."
+        },
+        {
+          "text": "Longitudinal studies are the only way to establish idiographic laws.",
+          "isCorrect": false,
+          "rationale": "While longitudinal data is often used for this purpose, the fallacy specifically concerns the misuse of group-level data for individual-level inferences."
+        }
+      ],
+      "hint": "Consider the leap from 'the average person' to a 'real person'."
+    },
+    {
+      "question": "If a researcher wants to measure the Big Five trait of 'Agreeableness,' which measurement approach is recommended by Mayer and Bryan (2024)?",
+      "answerOptions": [
+        {
+          "text": "Self-judgment data",
+          "isCorrect": false,
+          "rationale": "Self-judgments of this trait are often biased by self-enhancement or a lack of understanding of how one is perceived by others."
+        },
+        {
+          "text": "Observer-judgments",
+          "isCorrect": true,
+          "rationale": "Observers may provide more accurate information because they witness the social behavior and are less prone to the target's internal self-deceptions."
+        },
+        {
+          "text": "Mental ability scales",
+          "isCorrect": false,
+          "rationale": "Agreeableness is a personality trait related to social interaction styles, not a cognitive capacity measured by problem-solving tasks."
+        },
+        {
+          "text": "Implicit attitude data",
+          "isCorrect": false,
+          "rationale": "While useful for non-conscious associations, external observation is specifically highlighted as superior for assessing this trait's behavioral expression."
+        }
+      ],
+      "hint": "This trait generally shows the lowest self-other agreement, making informants particularly valuable."
+    },
+    {
+      "question": "In the 'polytomies' framework proposed by Phan et al. (2024), what characterizes the 'Wundtian approach' to generalization?",
+      "answerOptions": [
+        {
+          "text": "Establishing a law that applies to a population as an aggregated whole.",
+          "isCorrect": false,
+          "rationale": "This describes the (Neo-)Galtonian approach, which focuses on group-level parameters."
+        },
+        {
+          "text": "Analyzing individuals separately to see if the same effect holds for every person studied.",
+          "isCorrect": true,
+          "rationale": "The Wundtian approach focuses on cross-person generalization, requiring the phenomenon to be present in each case individually."
+        },
+        {
+          "text": "Generating a detailed portrayal of a single person without any intent to generalize.",
+          "isCorrect": false,
+          "rationale": "This describes an entity-specific portrayal or an in-depth case study."
+        },
+        {
+          "text": "Using big data to track behavioral trends across global social media networks.",
+          "isCorrect": false,
+          "rationale": "While big data can be used, the Wundtian approach is defined by its requirement for person-by-person verification of laws."
+        }
+      ],
+      "hint": "Think of this as 'cross-person' generalization rather than 'sample-to-population' generalization."
+    },
+    {
+      "question": "Which of the following is an example of 'Lifespace data'?",
+      "answerOptions": [
+        {
+          "text": "A participant's rating of their own level of Extraversion.",
+          "isCorrect": false,
+          "rationale": "This is a self-judgment of an inner trait, not an objective record of external activities."
+        },
+        {
+          "text": "An individual's score on a standardized mathematics test.",
+          "isCorrect": false,
+          "rationale": "This is mental ability data, which reflects cognitive capacity rather than life history or environmental interaction."
+        },
+        {
+          "text": "The number of times a person has moved to a new home in the last decade.",
+          "isCorrect": true,
+          "rationale": "Lifespace data involves objectively verifiable facts about a person's behaviors, life history, and environmental settings."
+        },
+        {
+          "text": "A therapist's interpretation of a client's response to an inkblot.",
+          "isCorrect": false,
+          "rationale": "This involves thematic-report data and observer interpretation of mental responses."
+        }
+      ],
+      "hint": "Look for a record of tangible life events or behavioral frequencies that could be checked for accuracy."
+    },
+    {
+      "question": "What is the primary difference between 'n Achievement' and 'v Achievement' in McClelland's research?",
+      "answerOptions": [
+        {
+          "text": "'n Achievement' is measured through mental ability, while 'v Achievement' is measured through physiology.",
+          "isCorrect": false,
+          "rationale": "Neither is typically measured primarily through physiology in this context; they relate to narratives versus self-ratings."
+        },
+        {
+          "text": "'n Achievement' refers to non-conscious motives from stories, while 'v Achievement' refers to conscious self-valued motives.",
+          "isCorrect": true,
+          "rationale": "'n Achievement' (need) is derived from thematic methods like the TAT, whereas 'v Achievement' (value) comes from direct self-reports."
+        },
+        {
+          "text": "'n Achievement' is a trait found only in children, while 'v Achievement' is found only in adults.",
+          "isCorrect": false,
+          "rationale": "Both motivational constructs are studied across the lifespan and refer to different levels of awareness rather than age groups."
+        },
+        {
+          "text": "The two terms are synonyms and always yield perfectly correlated data.",
+          "isCorrect": false,
+          "rationale": "Research famously showed that these two measures are discrepant and represent different aspects of motivation."
+        }
+      ],
+      "hint": "One is 'thematic' and the other is 'self-judged'."
+    },
+    {
+      "question": "In the classification of measurement approaches, why is 'Thematic-report data' (projective tests) considered unique?",
+      "answerOptions": [
+        {
+          "text": "It is the only data source that provides objectively verifiable life records.",
+          "isCorrect": false,
+          "rationale": "Lifespace data, not thematic data, provides objectively verifiable records."
+        },
+        {
+          "text": "It captures mental themes and perceptual constructions by having individuals respond to ambiguous stimuli.",
+          "isCorrect": true,
+          "rationale": "Thematic data allows researchers to infer inner themes through the stories or percepts a person projects onto stimuli like pictures."
+        },
+        {
+          "text": "It relies entirely on the observer's intuition without any input from the target person.",
+          "isCorrect": false,
+          "rationale": "The target person provides the 'thematic production' (stories or responses), making it a personal-source data type."
+        },
+        {
+          "text": "It is a form of ability test where there are strictly correct and incorrect answers.",
+          "isCorrect": false,
+          "rationale": "Unlike ability tests, thematic reports are evaluated for content and themes, not a criterion of correctness."
+        }
+      ],
+      "hint": "Think about the role of 'ambiguous stimuli' and the stories people tell about them."
+    }
+  ]
+}

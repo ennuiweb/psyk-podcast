@@ -1,0 +1,395 @@
+{
+  "title": "Psychology Quiz",
+  "questions": [
+    {
+      "question": "In machine learning-based personality assessment (ML-PA), how are behaviors and personality traits typically treated compared to traditional research?",
+      "answerOptions": [
+        {
+          "text": "Behaviors act as the independent variables to predict personality traits as dependent variables.",
+          "isCorrect": true,
+          "rationale": "ML-PA models use behavioral features like text or digital footprints to predict questionnaire-based personality scores."
+        },
+        {
+          "text": "Personality traits are manipulated as independent variables to observe behavioral outcomes.",
+          "isCorrect": false,
+          "rationale": "This reflects the traditional research approach where traits are the predictors and behaviors are the outcomes."
+        },
+        {
+          "text": "Both behaviors and personality traits are treated as independent variables to predict job performance.",
+          "isCorrect": false,
+          "rationale": "While both can predict performance, ML-PA specifically focuses on using behavior to derive the personality trait scores themselves."
+        },
+        {
+          "text": "Personality traits are the independent variables and digital footprints are the dependent variables.",
+          "isCorrect": false,
+          "rationale": "This describes a traditional perspective where an underlying trait is assumed to cause the observed behavior."
+        }
+      ],
+      "hint": "Consider which element is used as the 'input' for the computational model."
+    },
+    {
+      "question": "According to the review by Koutsoumpis (2025), which type of personality report generally achieves higher accuracy in ML-PA models?",
+      "answerOptions": [
+        {
+          "text": "Self-reports",
+          "isCorrect": false,
+          "rationale": "Self-reports showed a lower average accuracy of approximately $r = 0.30$ compared to observer metrics."
+        },
+        {
+          "text": "Observer reports",
+          "isCorrect": true,
+          "rationale": "Observer reports achieved a higher weighted mean accuracy of $r = 0.55$, likely because behaviors are more visible to others."
+        },
+        {
+          "text": "Both show identical accuracy",
+          "isCorrect": false,
+          "rationale": "There is a documented asymmetry where external assessments are more strongly correlated with behavioral features."
+        },
+        {
+          "text": "Neither can be predicted by machine learning",
+          "isCorrect": false,
+          "rationale": "The research indicates that both can be predicted, although the levels of accuracy differ significantly."
+        }
+      ],
+      "hint": "Think about whether internal thoughts or visible actions are easier for an algorithm to process."
+    },
+    {
+      "question": "Which theory suggests that ML-PA accuracy improves when participants engage in tasks that allow specific personality traits to be expressed?",
+      "answerOptions": [
+        {
+          "text": "Self-Other Knowledge Asymmetry (SOKA) Model",
+          "isCorrect": false,
+          "rationale": "This model explains why different traits are better known by the self versus others, but it is not the primary theory for task alignment."
+        },
+        {
+          "text": "Trait Activation Theory (TAT)",
+          "isCorrect": true,
+          "rationale": "TAT argues that for a trait to be measured accurately, the situation must allow for the activation and behavioral expression of that trait."
+        },
+        {
+          "text": "Ergodic Theory",
+          "isCorrect": false,
+          "rationale": "This theory deals with the statistical conditions required to generalize from group averages to individual persons."
+        },
+        {
+          "text": "The Lexical Hypothesis",
+          "isCorrect": false,
+          "rationale": "This hypothesis focuses on how personality characteristics are encoded into language rather than task alignment."
+        }
+      ],
+      "hint": "This theory focuses on the 'activation' of characteristics within specific behavioral contexts."
+    },
+    {
+      "question": "Mayer and Bryan (2024) classify personality data into two broad classes. Which of the following is an example of external-source data?",
+      "answerOptions": [
+        {
+          "text": "A person's memories and motives expressed in a story",
+          "isCorrect": false,
+          "rationale": "These originate from within the individual's mental processes and are considered personal-source data."
+        },
+        {
+          "text": "Institutional records of a person's accomplishments",
+          "isCorrect": true,
+          "rationale": "External-source data involves records, observations, or biological data that derive from the areas surrounding the person."
+        },
+        {
+          "text": "Self-judgments of confidence on a survey",
+          "isCorrect": false,
+          "rationale": "This represents data produced by the person's own internal self-schema and mental processes."
+        },
+        {
+          "text": "Mental ability test scores",
+          "isCorrect": false,
+          "rationale": "While standardized, these are classified as personal-source because they record what the individual knows or can process mentally."
+        }
+      ],
+      "hint": "Focus on data that exists in the person's environment or is recorded by external systems."
+    },
+    {
+      "question": "What did David McClelland discover regarding motives derived from narrative tests like the Thematic Apperception Test (TAT)?",
+      "answerOptions": [
+        {
+          "text": "They were often discrepant from the test-takers' direct self-reports.",
+          "isCorrect": true,
+          "rationale": "McClelland found that narrative-derived motives and direct self-reports of motives often did not converge."
+        },
+        {
+          "text": "They perfectly matched the test-takers' self-judgments of achievement.",
+          "isCorrect": false,
+          "rationale": "This contradicts the finding that different measurement approaches often depict alternative, non-overlapping parts of personality."
+        },
+        {
+          "text": "Narrative tests were found to be completely invalid for assessing motives.",
+          "isCorrect": false,
+          "rationale": "The tests were considered informative, but they measured a different layer of motivation than conscious self-report."
+        },
+        {
+          "text": "Self-reports were proven to be more accurate than narrative-derived motives.",
+          "isCorrect": false,
+          "rationale": "The research suggests that neither is necessarily 'more accurate,' but rather that they provide different types of information."
+        }
+      ],
+      "hint": "Consider whether the two types of measurement yielded similar or different results."
+    },
+    {
+      "question": "In the $2 \\times 3$ matrix proposed by Phan et al. (2024), what is the primary goal of the 'Wundtian approach'?",
+      "answerOptions": [
+        {
+          "text": "To describe the uniqueness of a single individual without comparing them to others.",
+          "isCorrect": false,
+          "rationale": "This describes the 'entity-specific portrayal' or idiographic approach rather than the search for general cross-person laws."
+        },
+        {
+          "text": "To establish general laws by ensuring the same pattern holds true for every person case-by-case.",
+          "isCorrect": true,
+          "rationale": "The Wundtian approach focuses on cross-person generalizations where phenomena are considered generalizable only if found in all studied individuals."
+        },
+        {
+          "text": "To identify average differences between different populations of people.",
+          "isCorrect": false,
+          "rationale": "This describes the cross-population generalization approach commonly used in cross-cultural research."
+        },
+        {
+          "text": "To generalize from a small sample to a larger population using aggregate statistics.",
+          "isCorrect": false,
+          "rationale": "This is characteristic of the (Neo-)Galtonian approach, which focuses on the population as a whole."
+        }
+      ],
+      "hint": "Think about a method that looks for laws that are 'common to all' by examining people individually."
+    },
+    {
+      "question": "What is the 'ergodic fallacy' in the context of personality research?",
+      "answerOptions": [
+        {
+          "text": "The belief that machine learning models are always less biased than human observers.",
+          "isCorrect": false,
+          "rationale": "This refers to algorithmic bias, which is a separate psychometric concern."
+        },
+        {
+          "text": "The assumption that a pattern found in a group average applies to every individual in that group.",
+          "isCorrect": true,
+          "rationale": "The ergodic fallacy occurs when population-level generalizations are erroneously applied to explain the psychological functioning of individuals."
+        },
+        {
+          "text": "The failure to use a large enough sample size to reach statistical significance.",
+          "isCorrect": false,
+          "rationale": "This is a power issue, whereas ergodicity concerns the structural mapping between group and individual levels."
+        },
+        {
+          "text": "The error of assuming that self-reports are more valid than observer reports.",
+          "isCorrect": false,
+          "rationale": "This relates to measurement validity and the SOKA model, not the translation from group to individual data."
+        }
+      ],
+      "hint": "This fallacy involves a mistake in 'particularizing' group data to a single person."
+    },
+    {
+      "question": "In the classification of algorithmic bias by Koutsoumpis (2025), what does 'Quadrant B' represent?",
+      "answerOptions": [
+        {
+          "text": "Bias is present in the ground truth but not in the modeling process.",
+          "isCorrect": true,
+          "rationale": "Quadrant B describes instances where the original human-based data (ground truth) is biased, but the machine learning model itself is neutral."
+        },
+        {
+          "text": "Bias is present in the modeling process but the ground truth is fair.",
+          "isCorrect": false,
+          "rationale": "This describes Quadrant C, where the algorithm introduces bias during training or validation."
+        },
+        {
+          "text": "Both the ground truth and the modeling process are free of bias.",
+          "isCorrect": false,
+          "rationale": "This is Quadrant A, representing the ideal scenario with no bias present."
+        },
+        {
+          "text": "Bias is present in both the ground truth and the modeling process.",
+          "isCorrect": false,
+          "rationale": "This describes Quadrant D, which represents the most severe combination of bias sources."
+        }
+      ],
+      "hint": "Look for the quadrant where the algorithm faithfully replicates an existing human bias."
+    },
+    {
+      "question": "According to the 'polytomies' framework by Phan et al. (2024), which of the following refers to the 'focal phenomenon' of interest?",
+      "answerOptions": [
+        {
+          "text": "Structure, Process, or Change",
+          "isCorrect": true,
+          "rationale": "The focal phenomenon distinguishes whether research is looking at stable organizations (structure), series of steps (process), or developmental shifts (change)."
+        },
+        {
+          "text": "Convenience, Random, or Representative Sampling",
+          "isCorrect": false,
+          "rationale": "These options refer to the sampling methodology for persons or situations, not the phenomenon itself."
+        },
+        {
+          "text": "Laboratory, Online, or Everyday Life",
+          "isCorrect": false,
+          "rationale": "These describe the context of the study rather than the nature of the psychological phenomenon being studied."
+        },
+        {
+          "text": "Self-reports, Observations, or Behaviors",
+          "isCorrect": false,
+          "rationale": "These are different data sources used in the research process."
+        }
+      ],
+      "hint": "Think about whether the researcher is studying a stable state or how something moves over time."
+    },
+    {
+      "question": "Research on text-based ML-PA tools indicates that the accuracy for self-reports tends to reach an asymptote (level off) at approximately what sample size?",
+      "answerOptions": [
+        {
+          "text": "$n = 500$",
+          "isCorrect": false,
+          "rationale": "According to Hickman et al. (2024), this is the approximate asymptote for observer reports, which level off sooner than self-reports."
+        },
+        {
+          "text": "$n = 5000$",
+          "isCorrect": true,
+          "rationale": "Eichstaedt et al. (2021) found that self-report accuracy followed an inverse exponential function reaching an asymptote at about $n = 5000$."
+        },
+        {
+          "text": "$n = 50,000$",
+          "isCorrect": false,
+          "rationale": "While larger samples were studied, the gains in accuracy become negligible well before this number."
+        },
+        {
+          "text": "$n = 50$",
+          "isCorrect": false,
+          "rationale": "Accuracy typically increases sharply at very small numbers and does not plateau so early."
+        }
+      ],
+      "hint": "Self-reports require a significantly larger sample size to level off than observer reports do."
+    },
+    {
+      "question": "Which dimension in Mayer and Bryan's (2024) theory is used to distinguish personality from higher-level systems like family or community?",
+      "answerOptions": [
+        {
+          "text": "Inner-outer dimension",
+          "isCorrect": false,
+          "rationale": "This dimension distinguishes what is inside the person's mind from the external environment."
+        },
+        {
+          "text": "Molecular-molar dimension",
+          "isCorrect": true,
+          "rationale": "This dimension locates personality at a psychological level, between biological processes (molecular) and social systems (molar)."
+        },
+        {
+          "text": "Time dimension",
+          "isCorrect": false,
+          "rationale": "This dimension places personality at a specific point in developmental or historical time."
+        },
+        {
+          "text": "Sensory-motor boundary",
+          "isCorrect": false,
+          "rationale": "This refers to the boundary through which inner personality is expressed into actions, not a level of hierarchy."
+        }
+      ],
+      "hint": "This term refers to the level of function amid neighboring systems, often described as a biopsychosocial continuum."
+    },
+    {
+      "question": "According to Phan et al. (2024), what is the primary difference between 'individuality' and 'uniqueness'?",
+      "answerOptions": [
+        {
+          "text": "Individuality is defined without reference to others, while uniqueness is established through comparison with others.",
+          "isCorrect": true,
+          "rationale": "Individuality refers to the person's own properties, while uniqueness highlights what is exclusive to that person relative to a group."
+        },
+        {
+          "text": "Uniqueness is measured by self-reports, while individuality is measured by observer reports.",
+          "isCorrect": false,
+          "rationale": "Both can be assessed through various data sources; the difference lies in the conceptual framework of comparison."
+        },
+        {
+          "text": "Individuality refers to stable traits, while uniqueness refers to momentary states.",
+          "isCorrect": false,
+          "rationale": "These terms refer to different levels of comparative identity, not the temporal stability of the characteristics."
+        },
+        {
+          "text": "There is no scientific difference; the terms are used synonymously in personality psychology.",
+          "isCorrect": false,
+          "rationale": "The authors explicitly adopt Lamiell's conceptualization to distinguish these two different idiographic focuses."
+        }
+      ],
+      "hint": "Think about whether you need to look at other people to define the term."
+    },
+    {
+      "question": "When examining the 'nomological network' of ML-PA, what did Koutsoumpis find regarding the correlation of ML-PA scores with external variables?",
+      "answerOptions": [
+        {
+          "text": "ML-PA scores generally correlate with external variables in the opposite direction of questionnaire scores.",
+          "isCorrect": false,
+          "rationale": "Research showed that $100 \\%$ of statistically significant correlations pointed in the same direction."
+        },
+        {
+          "text": "ML-PA and questionnaire-based values show substantial agreement in their correlations with external variables.",
+          "isCorrect": true,
+          "rationale": "The profile correlations between questionnaire and ML-PA effects were high (average $r = 0.64$ to $0.73$), showing good nomological overlap."
+        },
+        {
+          "text": "ML-PA scores are unable to predict external variables like GPA or job performance.",
+          "isCorrect": false,
+          "rationale": "ML-PA scores showed similar, and sometimes stronger, correlations with external variables compared to questionnaire scores."
+        },
+        {
+          "text": "ML-PA scores only correlate with other computer-based metrics, not real-world outcomes.",
+          "isCorrect": false,
+          "rationale": "Table 2 shows correlations with a variety of external variables like satisfaction with life, physician visits, and attractiveness."
+        }
+      ],
+      "hint": "Consider whether the computer-generated scores 'behaved' like traditional scores when compared to life outcomes."
+    },
+    {
+      "question": "Which of the following is considered a 'personal-source' data type according to Mayer and Bryan (2024)?",
+      "answerOptions": [
+        {
+          "text": "Ecological momentary assessment (EMA) of mood",
+          "isCorrect": true,
+          "rationale": "EMA involves the person's own reports of their internal mental states, fitting the definition of personal-source data."
+        },
+        {
+          "text": "Physiological measurements of heart rate",
+          "isCorrect": false,
+          "rationale": "Physiological and neurobiological data are sourced from the person's body and are classified as external-source data."
+        },
+        {
+          "text": "GPS data tracking a person's location",
+          "isCorrect": false,
+          "rationale": "Location and physical setting data are external-source data derived from the surroundings."
+        },
+        {
+          "text": "Social media 'Likes' recorded by a platform",
+          "isCorrect": false,
+          "rationale": "While based on behavior, these are institutional records in the surroundings and thus external-source data."
+        }
+      ],
+      "hint": "Identify which option relies on the person communicating their own inner mental state."
+    },
+    {
+      "question": "In the context of ergodicity, what is the 'stationarity' condition?",
+      "answerOptions": [
+        {
+          "text": "The requirement that all members of a population are essentially interchangeable.",
+          "isCorrect": false,
+          "rationale": "This describes the 'homogeneity' condition, not stationarity."
+        },
+        {
+          "text": "The requirement that the statistical properties of a phenomenon do not change over time.",
+          "isCorrect": true,
+          "rationale": "Stationarity means that a model remains valid across different time points for the entity being studied."
+        },
+        {
+          "text": "The belief that personality traits are fixed and cannot be modified by therapy.",
+          "isCorrect": false,
+          "rationale": "This is a theory of trait stability, whereas stationarity is a specific mathematical condition for ergodicity."
+        },
+        {
+          "text": "The assumption that a person's behavior is consistent across all situations.",
+          "isCorrect": false,
+          "rationale": "While related to consistency, stationarity specifically refers to time-invariance in the statistical model's parameters."
+        }
+      ],
+      "hint": "This term refers to the idea that a process remains 'stationary' or constant as time passes."
+    }
+  ]
+}

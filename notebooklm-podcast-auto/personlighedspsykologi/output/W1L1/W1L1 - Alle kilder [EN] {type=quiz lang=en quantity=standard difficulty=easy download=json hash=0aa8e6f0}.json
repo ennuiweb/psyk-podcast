@@ -1,0 +1,265 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "Based on its etymological roots in Greek and Etruscan, what did the word 'persona' originally signify?",
+      "answerOptions": [
+        {
+          "text": "A mask used by a theatrical actor",
+          "isCorrect": true,
+          "rationale": "The term historically referred to the outer role or character presented to an audience, establishing a distinction between the social 'mask' and the inner self."
+        },
+        {
+          "text": "The inner soul or spirit",
+          "isCorrect": false,
+          "rationale": "This reflects a common misconception that the word originally referred to internal qualities, whereas it actually described the outward presentation."
+        },
+        {
+          "text": "A person's legal status in a city",
+          "isCorrect": false,
+          "rationale": "While legal identity became important later, the term's origin is rooted in performance and social roles rather than law."
+        },
+        {
+          "text": "The biological heritage of a family",
+          "isCorrect": false,
+          "rationale": "Biological determinism is a modern psychological concept that is unrelated to the theatrical origin of the word 'persona'."
+        }
+      ],
+      "hint": "Think about the tools used by performers in ancient drama to portray a specific character."
+    },
+    {
+      "question": "When did personality psychology emerge as a distinct scientific discipline interested in 'complex wholes' rather than isolated functions?",
+      "answerOptions": [
+        {
+          "text": "At the beginning of the $1900s$",
+          "isCorrect": true,
+          "rationale": "This period marked a shift from the mid-$1800s$ focus on isolated functions like sensation and memory toward investigating more complex human phenomena."
+        },
+        {
+          "text": "During the mid-$1800s$",
+          "isCorrect": false,
+          "rationale": "At this time, psychology was primarily focused on experimental studies of limited functions such as sensory perception and attention."
+        },
+        {
+          "text": "Shortly after the Enlightenment in the late $1700s$",
+          "isCorrect": false,
+          "rationale": "While philosophical discussions of the 'self' existed then, the scientific discipline of personality psychology had not yet been established."
+        },
+        {
+          "text": "Following the cognitive revolution of the $1960s$",
+          "isCorrect": false,
+          "rationale": "Cognitive psychology influenced personality theories later, but the field itself emerged as a distinct area of study much earlier in the century."
+        }
+      ],
+      "hint": "It happened after the era when medicine and natural science primarily dominated psychological methods."
+    },
+    {
+      "question": "What is a fundamental assumption of the psychoanalytic approach to personality?",
+      "answerOptions": [
+        {
+          "text": "Personality is composed of multiple parts, including an unconscious element",
+          "isCorrect": true,
+          "rationale": "Psychoanalysis posits that the psyche is a dynamic process where conscious and unconscious instances, like the id and ego, interact."
+        },
+        {
+          "text": "Personality is a single, unified entity that is fully conscious",
+          "isCorrect": false,
+          "rationale": "This contradicts the core psychoanalytic belief in the 'decentering' of the subject, which suggests much of our psyche is unknown to us."
+        },
+        {
+          "text": "Personality is purely a result of learned behavior and rewards",
+          "isCorrect": false,
+          "rationale": "This describes behaviorism, which focuses on external actions rather than the internal dynamic processes central to psychoanalysis."
+        },
+        {
+          "text": "Personality is determined solely by conscious goals and future plans",
+          "isCorrect": false,
+          "rationale": "While some later theories emphasize agency, classic psychoanalysis focuses heavily on childhood history and unconscious drives."
+        }
+      ],
+      "hint": "Consider the idea that not everything influencing our behavior is immediately visible to our awareness."
+    },
+    {
+      "question": "In the study of childhood depression, how does Michael Lewis characterize the agreement between different observers like parents, teachers, and the children themselves?",
+      "answerOptions": [
+        {
+          "text": "There is generally low agreement between different raters",
+          "isCorrect": true,
+          "rationale": "Different observers see children in different contexts (home vs. school), leading to discrepancies in how they assess the child's internal state."
+        },
+        {
+          "text": "Parents and teachers show nearly perfect correlation in their ratings",
+          "isCorrect": false,
+          "rationale": "Research indicates that mothers, teachers, and children often identify different patterns and symptoms based on their specific relationship with the child."
+        },
+        {
+          "text": "Children are always the most reliable source for clinical diagnosis",
+          "isCorrect": false,
+          "rationale": "While children provide insight into their inner state, their perceptions often differ significantly from external clinical and parental observations."
+        },
+        {
+          "text": "Agreement is high because depression manifests identically across all situations",
+          "isCorrect": false,
+          "rationale": "Behavior is often situationally determined, meaning a child might act differently at school than they do at home."
+        }
+      ],
+      "hint": "Think about how being in different environments, like a classroom versus a living room, might change what an observer sees."
+    },
+    {
+      "question": "Which developmental model compares the process of change to a caterpillar transforming into a butterfly, where newer stages replace earlier ones?",
+      "answerOptions": [
+        {
+          "text": "Transformational model",
+          "isCorrect": true,
+          "rationale": "This model views development as a series of stages where successive forms are irreducible to prior forms and the earlier structure is lost."
+        },
+        {
+          "text": "Accretional model",
+          "isCorrect": false,
+          "rationale": "This model suggests that development is simply a gradual increase in the amount of a skill or structure that already exists from the start."
+        },
+        {
+          "text": "Additive model",
+          "isCorrect": false,
+          "rationale": "In this model, new abilities are added while earlier ones remain available, allowing for things like regression under stress."
+        },
+        {
+          "text": "Contextual model",
+          "isCorrect": false,
+          "rationale": "The contextual model emphasizes current adaptation to the environment rather than a fixed sequence of internal structural changes."
+        }
+      ],
+      "hint": "This model assumes that development has a fixed direction and that earlier structures are fundamentally changed into something new."
+    },
+    {
+      "question": "What does the 'Orientation Point' of Agency refer to in personality psychology?",
+      "answerOptions": [
+        {
+          "text": "The degree to which there is an active, controlling element in the person",
+          "isCorrect": true,
+          "rationale": "Agency explores whether the individual is an active 'steering' element or whether behavior is merely a result of external or internal forces."
+        },
+        {
+          "text": "The influence of genes versus the environment on traits",
+          "isCorrect": false,
+          "rationale": "This describes the 'determination' orientation, which looks at the biological or social causes of personality structure."
+        },
+        {
+          "text": "The stability of personality characteristics over a lifetime",
+          "isCorrect": false,
+          "rationale": "While related to how one acts, stability is more closely tied to 'historicity' and the study of development over time."
+        },
+        {
+          "text": "The difference between one's social mask and their true self",
+          "isCorrect": false,
+          "rationale": "This refers to the etymological distinction between the inner and outer person rather than the capacity for active control."
+        }
+      ],
+      "hint": "Focus on the concept of 'the self' as an active participant that makes choices and plans."
+    },
+    {
+      "question": "According to Michael Lewis's longitudinal study on attachment, what was the relationship between attachment at $1$ year and attachment at $18$ years?",
+      "answerOptions": [
+        {
+          "text": "There was no significant relation between the two measurements",
+          "isCorrect": true,
+          "rationale": "The data indicated that infant attachment status did not predict adolescent representation, suggesting attachment is influenced more by current context."
+        },
+        {
+          "text": "Securely attached infants were almost always secure as teenagers",
+          "isCorrect": false,
+          "rationale": "Lewis found that many children changed their status, and infant security did not 'inoculate' them against later environmental stressors."
+        },
+        {
+          "text": "Only children from divorced families showed a change in attachment",
+          "isCorrect": false,
+          "rationale": "While divorce was related to current status at age $18$, the study showed a general lack of continuity for the whole sample regardless of family status."
+        },
+        {
+          "text": "The study confirmed that early experiences are the primary cause of adult personality",
+          "isCorrect": false,
+          "rationale": "Lewis used these results to argue against the organismic model, which emphasizes the lasting power of early events."
+        }
+      ],
+      "hint": "The findings challenged the 'inoculation' theory that early security protects a child for life."
+    },
+    {
+      "question": "In a contextual worldview, how is memory of one's personal history viewed?",
+      "answerOptions": [
+        {
+          "text": "As a construction that reconstructs the past to fit current needs",
+          "isCorrect": true,
+          "rationale": "Contextualism suggests that our current state influences how we remember our past, meaning history is often a narrative created in the present."
+        },
+        {
+          "text": "As a photographic record of actual events that occurred",
+          "isCorrect": false,
+          "rationale": "This 'memory-as-photograph' model is rejected by Lewis in favor of a more pragmatic and constructionist view of the mind."
+        },
+        {
+          "text": "As a fixed biological trait stored in the neural network",
+          "isCorrect": false,
+          "rationale": "This view aligns with an organismic model where the past acts on the person in a deterministic, virus-like fashion."
+        },
+        {
+          "text": "As an irrelevant factor that has no impact on current behavior",
+          "isCorrect": false,
+          "rationale": "While contextualists argue history isn't deterministic, they believe our *construction* of our history is very meaningful for our current identity."
+        }
+      ],
+      "hint": "Think about how your current mood or relationship might change how you describe your childhood."
+    },
+    {
+      "question": "Which branch of personality psychology focuses on measuring stable, delimited characteristics that distinguish one person from another?",
+      "answerOptions": [
+        {
+          "text": "Trait theory",
+          "isCorrect": true,
+          "rationale": "Trait theories seek to identify and quantify specific functions or characteristics, such as the 'Big Five,' using natural science methods."
+        },
+        {
+          "text": "Humanistic theory",
+          "isCorrect": false,
+          "rationale": "Humanistic theories focus on the individual's potential for growth and healthy development rather than just quantifying traits."
+        },
+        {
+          "text": "Critical psychology",
+          "isCorrect": false,
+          "rationale": "Critical psychology focuses on societal structures and how the person is determined by social contexts rather than measuring individual traits."
+        },
+        {
+          "text": "Phenomenology",
+          "isCorrect": false,
+          "rationale": "Phenomenology emphasizes the subjective, lived experience and consciousness rather than objective measurement of stable traits."
+        }
+      ],
+      "hint": "This approach is often associated with terms like 'differential psychology' and the use of questionnaires."
+    },
+    {
+      "question": "What is the core argument of the 'Contextual Model' regarding developmental continuity?",
+      "answerOptions": [
+        {
+          "text": "Continuity is found in the stability of the environment rather than in the child",
+          "isCorrect": true,
+          "rationale": "If a child appears consistent over time, it is often because their environment remains consistent, requiring similar adaptations at each stage."
+        },
+        {
+          "text": "Continuity is a biological imperative located within the child's genotype",
+          "isCorrect": false,
+          "rationale": "This is a feature of the organismic model, which suggests that development is driven by internally derived imperatives."
+        },
+        {
+          "text": "Continuity is impossible because the environment is always chaotic",
+          "isCorrect": false,
+          "rationale": "While environments can be disorderly, the model suggests that *if* there is stability, it comes from the context, not that stability is impossible."
+        },
+        {
+          "text": "Continuity can only be achieved through psychoanalytic intervention",
+          "isCorrect": false,
+          "rationale": "This misinterprets Freud's view, which suggested that therapy could *alter* the deterministic impact of the past, not create continuity."
+        }
+      ],
+      "hint": "Consider how a person's behavior might stay the same if they never leave a specific social setting."
+    }
+  ]
+}

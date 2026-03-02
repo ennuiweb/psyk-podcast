@@ -11,7 +11,7 @@
 
   .cup-top-grid {
     display: grid;
-    grid-template-columns: minmax(0, 1.6fr) minmax(280px, 0.9fr);
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--space-5);
     align-items: start;
   }
@@ -72,102 +72,22 @@
     font-variation-settings: "FILL" 0, "wght" 500, "GRAD" 0, "opsz" 24;
   }
 
-  .cup-meta {
-    margin: var(--space-3) 0 0;
-    color: var(--muted);
-    font-size: 0.9rem;
-  }
-
   .cup-back {
     margin-top: var(--space-3);
   }
 
-  .cup-alias-card {
-    position: relative;
-    border-radius: var(--radius-lg);
-    padding: clamp(16px, 2.8vw, 22px);
-    display: grid;
-    gap: var(--space-2);
+  .cup-participation-note {
+    margin: var(--space-3) 0 0;
+    color: var(--text-subtle-2);
+    font-size: 0.92rem;
+    max-width: 56ch;
   }
 
-  .cup-alias-card::after {
-    content: "";
-    position: absolute;
-    top: 14px;
-    right: 14px;
-    width: 72px;
-    height: 72px;
-    border-radius: 14px;
-    opacity: 0.12;
-    background:
-      radial-gradient(circle at 48% 24%, color-mix(in srgb, var(--accent) 74%, transparent) 0 22%, transparent 23%),
-      linear-gradient(180deg, color-mix(in srgb, var(--accent) 54%, transparent), transparent 60%),
-      linear-gradient(90deg, color-mix(in srgb, var(--accent) 38%, transparent), color-mix(in srgb, var(--accent) 18%, transparent));
+  .cup-participation-note strong {
+    color: var(--text-strong);
   }
 
-  .cup-alias-title {
-    margin: 0;
-    font-size: 1.86rem;
-  }
-
-  .cup-alias-copy {
-    margin: 0;
-    color: var(--text-subtle);
-    max-width: 34ch;
-  }
-
-  .cup-alias-form {
-    margin: var(--space-1) 0 0;
-    display: grid;
-    gap: var(--space-2);
-  }
-
-  .cup-alias-form input[type="text"] {
-    border-radius: var(--radius-pill);
-  }
-
-  .cup-alias-inline {
-    margin-top: var(--space-1);
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-2);
-    align-items: center;
-  }
-
-  .cup-cta {
-    width: 100%;
-    justify-content: center;
-    gap: 8px;
-  }
-
-  .cup-cta-icon {
-    font-family: "Material Symbols Outlined", sans-serif;
-    font-size: 18px;
-    font-weight: 600;
-    line-height: 1;
-    font-style: normal;
-    font-variation-settings: "FILL" 0, "wght" 600, "GRAD" 0, "opsz" 24;
-  }
-
-  .cup-secondary-button {
-    min-width: 180px;
-  }
-
-  .cup-alias-lock {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    border-radius: var(--radius-pill);
-    border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--border));
-    background: color-mix(in srgb, var(--accent-soft) 58%, var(--surface));
-    color: var(--accent-strong);
-    font-weight: 700;
-    min-height: 40px;
-    padding: 0 14px;
-    width: fit-content;
-  }
-
-  .cup-alias-note {
+  .cup-participation-hint {
     margin: 0;
     color: var(--muted);
     font-size: 0.84rem;
@@ -443,12 +363,6 @@
       order: 3;
     }
 
-    .cup-alias-inline {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr);
-    }
-
-    .cup-secondary-button,
     .cup-back {
       width: 100%;
     }
@@ -470,69 +384,20 @@
         {% endfor %}
       </nav>
 
-      <p class="cup-meta">Deltagere: {{ participant_count }} · Aktivt semester: {{ active_semester.label }}</p>
-
       {% if request.user.is_authenticated %}
       <a class="ghost-link back-link cup-back" href="{{ back_url }}" onclick="if (window.history.length > 1) { event.preventDefault(); window.history.back(); }">Tilbage</a>
+      <p class="cup-participation-note">
+        {% if leaderboard_profile.public_alias and leaderboard_profile.is_public %}
+        Du deltager i Freudd Quiz Cup som <strong>{{ leaderboard_profile.public_alias }}</strong>.
+        {% elif leaderboard_profile.public_alias %}
+        Du har aliaset <strong>{{ leaderboard_profile.public_alias }}</strong>, men deltager ikke offentligt lige nu.
+        {% else %}
+        Du deltager ikke i Freudd Quiz Cup endnu.
+        {% endif %}
+      </p>
       {% endif %}
+      <p class="cup-participation-hint">Alias og deltagelse administreres fra fremskridtssiden.</p>
     </div>
-
-    <aside class="card cup-alias-card" id="cup-alias-card">
-      <h2 class="cup-alias-title">Sæt dit alias op</h2>
-      <p class="cup-alias-copy">For at deltage i cuppen skal du vælge et anonymt alias. Det tager kun et øjeblik.</p>
-
-      {% if not request.user.is_authenticated %}
-      <a class="btn-primary cup-cta" href="{{ login_next_url }}">Log ind og deltag</a>
-      {% elif leaderboard_profile.public_alias and leaderboard_profile.is_public and not leaderboard_alias_editing %}
-      <span class="cup-alias-lock">Alias: {{ leaderboard_profile.public_alias }}</span>
-      <p class="cup-alias-note">Du deltager allerede offentligt i Freudd Quiz Cup.</p>
-      <div class="cup-alias-inline">
-        <form method="post" action="{% url 'leaderboard-profile' %}">
-          {% csrf_token %}
-          <input type="hidden" name="next" value="{{ request.path }}#cup-alias-card" />
-          <button class="ghost-link cup-secondary-button" type="submit">Gør profil privat</button>
-        </form>
-        <a class="ghost-link cup-secondary-button" href="{{ request.path }}?edit_alias=1#cup-alias-card">Ændr alias</a>
-      </div>
-      {% elif leaderboard_profile.public_alias and not leaderboard_alias_editing %}
-      <span class="cup-alias-lock">Alias: {{ leaderboard_profile.public_alias }}</span>
-      <p class="cup-alias-note">Dit alias er klar. Aktiver deltagelse for at blive vist på ranglisten.</p>
-      <div class="cup-alias-inline">
-        <form method="post" action="{% url 'leaderboard-profile' %}">
-          {% csrf_token %}
-          <input type="hidden" name="next" value="{{ request.path }}#cup-alias-card" />
-          <input type="hidden" name="is_public" value="1" />
-          <button class="btn-primary cup-cta" type="submit">Deltag med alias</button>
-        </form>
-        <a class="ghost-link cup-secondary-button" href="{{ request.path }}?edit_alias=1#cup-alias-card">Ændr alias</a>
-      </div>
-      {% else %}
-      <form method="post" action="{% url 'leaderboard-profile' %}" class="cup-alias-form">
-        {% csrf_token %}
-        <input type="hidden" name="next" value="{{ request.path }}#cup-alias-card" />
-        <input
-          type="text"
-          name="public_alias"
-          maxlength="24"
-          value="{{ leaderboard_profile.public_alias }}"
-          placeholder="Alias (3-24 tegn)"
-          aria-label="Offentligt alias"
-          required
-        />
-        {% if leaderboard_profile.public_alias %}
-        <input type="hidden" name="allow_alias_change" value="1" />
-        {% endif %}
-        <input type="hidden" name="is_public" value="1" />
-        <button class="btn-primary cup-cta" type="submit">
-          {% if leaderboard_profile.public_alias %}Gem alias og deltag{% else %}Opret alias og deltag{% endif %}
-          <span class="cup-cta-icon" aria-hidden="true">arrow_forward</span>
-        </button>
-        {% if leaderboard_profile.public_alias %}
-        <a class="ghost-link cup-secondary-button" href="{{ request.path }}#cup-alias-card">Annuller alias-ændring</a>
-        {% endif %}
-      </form>
-      {% endif %}
-    </aside>
   </section>
 
   {% if podium_entries %}
@@ -557,7 +422,6 @@
   <section class="card cup-table-shell" aria-labelledby="cup-top-50-title">
     <header class="cup-table-head">
       <h2 class="cup-table-title" id="cup-top-50-title">Top 50 - {{ subject.title }}</h2>
-      <p class="cup-table-meta">{{ semester_countdown_label }}</p>
     </header>
 
     {% if table_entries %}

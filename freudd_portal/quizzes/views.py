@@ -1430,12 +1430,8 @@ def leaderboard_subject_view(request: HttpRequest, subject_slug: str) -> HttpRes
     )
 
     own_profile = None
-    leaderboard_alias_editing = False
     if request.user.is_authenticated:
         own_profile = get_profile_payload(request.user)
-        leaderboard_alias_editing = _as_bool(request.GET.get("edit_alias")) and bool(
-            str(own_profile.get("public_alias") or "").strip()
-        )
 
     entries = snapshot.get("entries") or []
     rank_to_entry = {int(item.get("rank") or 0): item for item in entries if isinstance(item, dict)}
@@ -1453,15 +1449,6 @@ def leaderboard_subject_view(request: HttpRequest, subject_slug: str) -> HttpRes
         for item in catalog.active_subjects
     ]
 
-    now_utc = timezone.now().astimezone(semester.end_at.tzinfo)
-    semester_days_remaining = max(0, (semester.end_at.date() - now_utc.date()).days)
-    if semester_days_remaining == 0:
-        semester_countdown_label = "Semesteret slutter i dag"
-    elif semester_days_remaining == 1:
-        semester_countdown_label = "Semesteret slutter om 1 dag"
-    else:
-        semester_countdown_label = f"Semesteret slutter om {semester_days_remaining} dage"
-
     return render(
         request,
         "quizzes/leaderboard.html",
@@ -1472,12 +1459,7 @@ def leaderboard_subject_view(request: HttpRequest, subject_slug: str) -> HttpRes
             "table_entries": table_entries,
             "table_preview_limit": 7,
             "subject_tabs": subject_tabs,
-            "participant_count": int(snapshot.get("participant_count") or 0),
-            "active_semester": snapshot.get("semester") or {},
-            "semester_countdown_label": semester_countdown_label,
             "leaderboard_profile": own_profile,
-            "leaderboard_alias_editing": leaderboard_alias_editing,
-            "login_next_url": _auth_url_with_next("login", request.path),
             "back_url": _safe_back_url(request, fallback_url=reverse("progress")),
         },
     )

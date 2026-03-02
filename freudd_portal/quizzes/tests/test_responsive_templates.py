@@ -47,7 +47,7 @@ class ResponsiveTemplateRulesTests(SimpleTestCase):
         self.assertIn("cup-podium", body)
         self.assertIn("cup-table-shell", body)
         self.assertIn("data-cup-expand", body)
-        self.assertIn("cup-alias-card", body)
+        self.assertIn("cup-participation-note", body)
 
     def test_subject_detail_supports_long_word_wrapping(self) -> None:
         body = self._template_text("quizzes/subject_detail.html")

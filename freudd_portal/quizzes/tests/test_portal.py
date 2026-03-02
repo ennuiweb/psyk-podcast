@@ -1058,7 +1058,10 @@ class QuizPortalTests(TestCase):
         )
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Freudd Quiz Cup")
-        self.assertContains(response, "Sæt dit alias op")
+        self.assertNotContains(response, "Sæt dit alias op")
+        self.assertNotContains(response, "Deltagere:")
+        self.assertNotContains(response, "Semesteret slutter om")
+
     def test_leaderboard_page_back_link_uses_safe_referer_for_authenticated_user(self) -> None:
         user = self._create_user()
         self.client.force_login(user)
@@ -1071,14 +1074,14 @@ class QuizPortalTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, f'class="ghost-link back-link cup-back" href="{back_url}"')
 
-    def test_leaderboard_page_shows_anonymous_login_cta_with_safe_next(self) -> None:
+    def test_leaderboard_page_hides_participation_status_for_anonymous_users(self) -> None:
         url = reverse("leaderboard-subject", kwargs={"subject_slug": "personlighedspsykologi"})
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "Log ind og deltag")
-        self.assertContains(response, f'href="{reverse("login")}?next=%2Fleaderboard%2Fpersonlighedspsykologi"')
+        self.assertNotContains(response, "Du deltager i Freudd Quiz Cup som")
+        self.assertContains(response, "Alias og deltagelse administreres fra fremskridtssiden.")
 
-    def test_leaderboard_page_shows_join_call_to_action_for_private_alias(self) -> None:
+    def test_leaderboard_page_shows_participation_state_for_private_alias(self) -> None:
         user = self._create_user(username="alias-private")
         self.client.force_login(user)
         UserLeaderboardProfile.objects.create(
@@ -1093,8 +1096,8 @@ class QuizPortalTests(TestCase):
         )
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "PrivateAlias")
-        self.assertContains(response, "Deltag med alias")
-        self.assertNotContains(response, "Du deltager allerede offentligt i Freudd Quiz Cup.")
+        self.assertContains(response, "men deltager ikke offentligt lige nu.")
+        self.assertNotContains(response, "Du deltager i Freudd Quiz Cup som")
 
     def test_leaderboard_page_renders_tabs_for_all_active_subjects(self) -> None:
         self.subjects_file.write_text(
@@ -1323,7 +1326,7 @@ class QuizPortalTests(TestCase):
         )
         body = response.content.decode("utf-8")
         self.assertContains(response, "PublicAlias")
-        self.assertContains(response, "Deltag med alias")
+        self.assertContains(response, "men deltager ikke offentligt lige nu.")
         self.assertNotIn('class="cup-podium-alias">PublicAlias', body)
         self.assertNotIn('class="cup-table-alias">PublicAlias', body)
 

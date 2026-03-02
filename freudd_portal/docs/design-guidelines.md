@@ -171,20 +171,19 @@ Target validation viewports:
 Required explicit state labels:
 
 - `Fuldført`
-- `I gang`
-- `Ikke startet`
 - `Ingen quiz` (where relevant)
 
 Rules:
 
 - Status chips/badges must combine text + color.
 - Dot markers may support state but never replace text.
+- Subject detail status is completion-first: do not render explicit `I gang` or `Ikke startet endnu` labels.
 - Correct/wrong quiz feedback must be explicit and immediate.
 
 ### 6.4 Progress Indicators
 
 - Show numeric context (`x/y` or `%`) next to progress bars.
-- Explicitly label zero-state progress (`Ikke startet endnu`).
+- Zero-state can stay implicit when completion has not been reached.
 
 ### 6.5 Forms
 

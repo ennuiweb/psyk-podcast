@@ -8,7 +8,7 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Google OAuth er feature-flagged via `FREUDD_AUTH_GOOGLE_ENABLED`; når aktiv eksponeres allauth Google-login + konto-linking flows.
 - Existing password users linker Google eksplicit via `Forbind Google` (`/accounts/3rdparty/`) efter login.
 - UI language: Danish only (`da`) for now; English is intentionally disabled.
-- Multi-language readiness: internal IDs/status codes remain language-neutral (`quiz_id`, `in_progress`, `completed`) so additional UI languages can be added later without data migration.
+- Multi-language readiness: internal IDs/status codes remain language-neutral (`quiz_id`, `completed`) so additional UI languages can be added later without data migration.
 - Runtime naming: service/env/config namespace is `freudd` (`freudd-portal.service`, `/etc/freudd-portal.env`, `FREUDD_PORTAL_*`).
 - Rollout compatibility: old `QUIZ_PORTAL_*` env names are still accepted temporarily.
 - Locale stack is active (`LocaleMiddleware` + `LOCALE_PATHS`) but currently constrained to Danish in `LANGUAGES`.
@@ -47,7 +47,7 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Speed bonus reaches max when average correct-answer pace is `<= 10s` per question (capped by configured per-question timeout if lower).
 - Quiz Cup tie-break is `correct_answers`, then earliest `reached_at`, then alias alphabetic.
 - Quiz Cup semesters reset every half year in UTC: `H1 = [Jan 1, Jul 1)`, `H2 = [Jul 1, Jan 1 next year)`.
-- Learning path on subject pages (`/subjects/<subject_slug>`) is lecture-first with nested tekststatus (`active|completed|no_quiz`) and quiz/podcast navigation.
+- Learning path on subject pages (`/subjects/<subject_slug>`) is lecture-first with nested completion-first tekststatus (`completed|no_quiz`; otherwise no explicit in-progress label) and quiz/podcast navigation.
 - Subject detail UI is mobile-first and uses a left lecture rail + single active lecture card (no multi-panel accordion).
 - Subject detail header shows a desktop-only trophy CTA (`quiz cup for <fag>`) linking to the current subject leaderboard; header actions are hidden on compact layouts (`<=1180px`).
 - Subject detail removes KPI strip and global `Udvid alle`/`Luk alle`; lecture switching is via rail links (`?lecture=<lecture_key>`).
@@ -115,7 +115,7 @@ Leaderboard alias UX rule: if a user already has an alias, it is shown locked by
 - `UserUnitProgress`: per-user learning path unit status (`active`, `completed`).
 - `DailyGamificationStat`: per-user daily answer/completion deltas + goal state.
 - `UserLectureProgress`: per-user lecture status (`active|completed`) and quiz totals.
-- `UserReadingProgress`: per-user tekststatus (`active|completed|no_quiz`) and quiz totals.
+- `UserReadingProgress`: per-user tekststatus (`completed|no_quiz`; otherwise implicit not completed) and quiz totals.
 - `UserExtensionAccess`: per-user enablement and last sync status for optional extensions.
 - `UserExtensionCredential`: per-user encrypted extension credentials (`habitica` now, `anki` deferred).
 - `ExtensionSyncLedger`: per-user/per-extension/per-day idempotent sync log (`ok|error|skipped`).

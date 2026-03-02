@@ -1659,7 +1659,8 @@ class QuizPortalTests(TestCase):
         self.assertContains(response, "(2026-02-02)")
         self.assertContains(response, "Quiz for alle kilder")
         self.assertContains(response, "reading-difficulties")
-        self.assertContains(response, "Ikke startet endnu")
+        self.assertNotContains(response, "Ikke startet endnu")
+        self.assertNotContains(response, "I gang")
         self.assertContains(response, "Grundbog kapitel 01 - Introduktion til personlighedspsykologi")
         self.assertContains(response, "Uge 1, forelæsning 1: Introforelaesning")
         self.assertContains(response, "lecture-rail-copy-date")
@@ -1964,14 +1965,15 @@ class QuizPortalTests(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "quiz-difficulty-row is-easy is-completed has-action")
-        self.assertContains(response, "quiz-difficulty-row is-medium is-in_progress has-action")
+        self.assertContains(response, "quiz-difficulty-row is-medium is-not_started has-action")
         self.assertContains(response, "quiz-difficulty-row is-hard is-not_started has-action")
         self.assertContains(response, "Let quiz")
         self.assertContains(response, "Mellem quiz")
         self.assertContains(response, "Svær quiz")
         self.assertContains(response, "10/10 rigtige • 150/150 point")
-        self.assertContains(response, "6/10 rigtige • 75/150 point")
-        self.assertContains(response, "Ikke startet")
+        self.assertNotContains(response, "6/10 rigtige • 75/150 point")
+        self.assertNotContains(response, "Ikke startet")
+        self.assertNotContains(response, "I gang")
 
     def test_subject_detail_quiz_mockup_falls_back_to_state_when_content_is_missing(self) -> None:
         user = self._create_user()
@@ -2023,7 +2025,8 @@ class QuizPortalTests(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Mellem quiz")
-        self.assertContains(response, "I gang")
+        self.assertNotContains(response, "I gang")
+        self.assertNotContains(response, "Ikke startet")
         self.assertNotContains(response, "rigtige •")
 
     def test_subject_detail_quiz_mockup_shows_empty_activity_when_no_quizzes_are_available(self) -> None:

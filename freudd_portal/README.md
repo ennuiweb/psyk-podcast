@@ -33,6 +33,7 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Gamification core is quiz-driven and always available for authenticated users (`/progress`, `/api/gamification/me`).
 - `/progress` is split in two tracks: private personal tracking and public quizliga preview.
 - Quizhistorik on `/progress` is card-based and includes live search, difficulty/status filters, sort modes, and auto-updating summary metrics (`quiz count`, `rigtige svar`, `træfsikkerhed`, `perfekte quizzer`).
+- Quizhistorik visibility on `/progress` is feature-flagged by `FREUDD_PROGRESS_QUIZ_HISTORY_ENABLED` (default: `1`).
 - Quizhistorik chips are text-oriented (`Tekstquiz`, `Alle tekster`) and intentionally avoid audio/podcast tags like `Lyd`/`Deep dive`.
 - Private personal tracking is manual for tekster/podcasts (`mark/unmark`) and keeps quiz completion as-is from `QuizProgress`.
 - Public quizliga is opt-in and alias-based; public view shows `alias + rank + score point + quiz count`.
@@ -190,6 +191,7 @@ Operational behavior:
 - `FREUDD_AUTH_GOOGLE_ENABLED` (default: `0`)
 - `FREUDD_GOOGLE_CLIENT_ID` (required when `FREUDD_AUTH_GOOGLE_ENABLED=1`)
 - `FREUDD_GOOGLE_CLIENT_SECRET` (required when `FREUDD_AUTH_GOOGLE_ENABLED=1`)
+- `FREUDD_PROGRESS_QUIZ_HISTORY_ENABLED` (default: `1`; set `0` to hide Quizhistorik on `/progress`)
 - `FREUDD_PORTAL_TRUST_X_FORWARDED_PROTO` (default: `0`; set `1` behind proxy TLS termination)
 - `FREUDD_PORTAL_CSRF_TRUSTED_ORIGINS` (comma-separated, for example `https://freudd.dk,https://www.freudd.dk`)
 - `FREUDD_PORTAL_SESSION_COOKIE_SECURE` (default: `0`; set `1` in production HTTPS)

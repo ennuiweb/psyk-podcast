@@ -901,6 +901,36 @@ class QuizPortalTests(TestCase):
         self.assertContains(response, "quiz-history-mobile")
         self.assertContains(response, "quiz-history-card")
 
+    @override_settings(FREUDD_PROGRESS_QUIZ_HISTORY_ENABLED=False)
+    def test_progress_page_hides_quiz_history_when_feature_disabled(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+        completed_at = timezone.now() - timedelta(minutes=20)
+
+        QuizProgress.objects.create(
+            user=user,
+            quiz_id=self.quiz_id,
+            status=QuizProgress.Status.COMPLETED,
+            state_json={},
+            answers_count=2,
+            question_count=2,
+            last_view="summary",
+            completed_at=completed_at,
+            last_attempt_completed_at=completed_at,
+            leaderboard_best_correct_answers=2,
+            leaderboard_best_question_count=2,
+        )
+
+        response = self.client.get(reverse("progress"))
+        self.assertEqual(response.status_code, 200)
+        self.assertNotContains(response, "Quizhistorik")
+        self.assertNotContains(response, 'class="card dashboard-section quiz-history-shell"')
+        self.assertNotContains(
+            response,
+            "Se dine resultater, find svage temaer hurtigt, og hop direkte tilbage i en quiz.",
+        )
+        self.assertContains(response, "Offentlig quizliga")
+
     def test_load_quiz_label_mapping_reads_subject_slug(self) -> None:
         labels = load_quiz_label_mapping()
         label = labels[self.quiz_id]

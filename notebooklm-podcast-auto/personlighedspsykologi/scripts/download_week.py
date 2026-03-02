@@ -309,18 +309,20 @@ def build_cli_cmd(notebooklm: Path, storage_path: str | None, args: list[str]) -
     return cmd
 
 
-def archive_request_log(log_path: Path) -> None:
+def cleanup_request_logs(log_path: Path) -> None:
     name = log_path.name
-    if name.endswith(".request.json"):
-        archived = log_path.with_name(name[: -len(".request.json")] + ".request.done.json")
-    else:
-        archived = log_path.with_suffix(log_path.suffix + ".done")
-    if archived.exists():
-        archived.unlink()
-        print(f"Deleted existing archive: {archived}")
-    if log_path.exists():
-        log_path.replace(archived)
-        print(f"Archived request log: {archived}")
+    if not name.endswith(".request.json"):
+        return
+    base = name[: -len(".request.json")]
+    candidates = [
+        log_path.with_name(f"{base}.request.json"),
+        log_path.with_name(f"{base}.request.error.json"),
+        log_path.with_name(f"{base}.request.done.json"),
+    ]
+    for candidate in candidates:
+        if candidate.exists():
+            candidate.unlink()
+            print(f"Removed request log: {candidate}")
 
 
 def is_auth_error(output: str) -> bool:
@@ -500,17 +502,25 @@ def main() -> int:
         help="Print what would run without waiting/downloading.",
     )
     parser.add_argument(
+        "--cleanup-requests",
         "--archive-requests",
-        dest="archive_requests",
+        dest="cleanup_requests",
         action="store_true",
         default=True,
-        help="Archive request logs as *.request.done.json after successful download (default).",
+        help=(
+            "Delete *.request*.json logs for an output after successful download "
+            "(default). Alias: --archive-requests."
+        ),
     )
     parser.add_argument(
+        "--no-cleanup-requests",
         "--no-archive-requests",
-        dest="archive_requests",
+        dest="cleanup_requests",
         action="store_false",
-        help="Keep request logs in place after successful download.",
+        help=(
+            "Keep request logs in place after successful download. "
+            "Alias: --no-archive-requests."
+        ),
     )
     args = parser.parse_args()
     content_types = parse_content_types(args.content_types)
@@ -600,7 +610,7 @@ def main() -> int:
                 continue
 
             success = False
-            archive_ok = False
+            cleanup_ok = False
             for storage_path, auth_source in candidates:
                 if storage_path and not Path(storage_path).expanduser().exists():
                     print(f"Warning: storage file not found: {storage_path}")
@@ -622,7 +632,7 @@ def main() -> int:
                     if status.upper() in {"FAILED", "ERROR"}:
                         print("Artifact already failed; skipping download.")
                         success = True
-                        archive_ok = False
+                        cleanup_ok = False
                         break
                 ok, reason = wait_and_download(
                     notebooklm,
@@ -637,7 +647,7 @@ def main() -> int:
                 )
                 if ok:
                     success = True
-                    archive_ok = reason in {"ok", "skipped"}
+                    cleanup_ok = reason in {"ok", "skipped"}
                     break
                 if reason == "wait":
                     print("Wait failed; skipping remaining auth candidates for this artifact.")
@@ -648,8 +658,8 @@ def main() -> int:
 
             if not success:
                 print(f"Failed to download after trying {len(candidates)} auth option(s).")
-            elif args.archive_requests and archive_ok:
-                archive_request_log(log_path)
+            elif args.cleanup_requests and cleanup_ok:
+                cleanup_request_logs(log_path)
 
     return 0
 

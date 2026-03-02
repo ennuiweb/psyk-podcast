@@ -3,7 +3,7 @@
   "subject_slug": "personlighedspsykologi",
   "source_meta": {
     "version": 1,
-    "generated_at": "2026-03-02T13:00:46.558330+00:00",
+    "generated_at": "2026-03-02T13:11:07.388172+00:00",
     "reading_master_path": "/home/runner/work/psyk-podcast/psyk-podcast/shows/personlighedspsykologi-en/docs/reading-file-key.md",
     "reading_fallback_path": "/home/runner/work/psyk-podcast/psyk-podcast/shows/personlighedspsykologi-en/docs/reading-file-key.md",
     "reading_source_used": "/home/runner/work/psyk-podcast/psyk-podcast/shows/personlighedspsykologi-en/docs/reading-file-key.md",
@@ -567,7 +567,7 @@
                 "title": "Uge 3, Forelæsning 1 · Podcast · Kandler & Instinske (2025)",
                 "url": "https://open.spotify.com/episode/31Vd8qRBPGcx61v737eUOp",
                 "platform": "spotify",
-                "pub_date": "Mon, 16 Feb 2025 12:00:00 +0100",
+                "pub_date": "Mon, 16 Feb 2025 14:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1jQ5xWyW2cRm0e57L_F5v8k0k7H3d3ptg",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -582,8 +582,38 @@
           "source_filename": "Lu, Benet-Martínez & Wang (2023).pdf",
           "sequence_index": 2,
           "assets": {
-            "quizzes": [],
-            "podcasts": []
+            "quizzes": [
+              {
+                "quiz_id": "e2fbbc86",
+                "difficulty": "easy",
+                "quiz_url": "/q/e2fbbc86.html",
+                "episode_title": "W3L1 - Lu, Benet-Martínez & Wang (2023) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "d7e62638",
+                "difficulty": "hard",
+                "quiz_url": "/q/d7e62638.html",
+                "episode_title": "W3L1 - Lu, Benet-Martínez & Wang (2023) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "25883f8b",
+                "difficulty": "medium",
+                "quiz_url": "/q/25883f8b.html",
+                "episode_title": "W3L1 - Lu, Benet-Martínez & Wang (2023) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              }
+            ],
+            "podcasts": [
+              {
+                "kind": "podcast",
+                "title": "Uge 3, Forelæsning 1 · Podcast · Lu, Benet-Martínez & Wang (2023)",
+                "url": "https://open.spotify.com/episode/6lLNQnOAGfpsAQwqyclGrM",
+                "platform": "spotify",
+                "pub_date": "Mon, 16 Feb 2025 12:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1OqgdCM_Aqp3agvf1mxnRDJepHgEGD1wM",
+                "duration_seconds": null,
+                "duration_label": ""
+              }
+            ]
           }
         },
         {
@@ -777,7 +807,7 @@
                 "title": "Uge 4, Forelæsning 1 · Podcast · Freud (1973-1933) DA",
                 "url": "https://open.spotify.com/episode/6yPQqSMzzwYZ2OokD7VwKP",
                 "platform": "spotify",
-                "pub_date": "Mon, 23 Feb 2025 12:00:00 +0100",
+                "pub_date": "Mon, 23 Feb 2025 14:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=13tlDC5_NQW5Cm2QyFGqe_SEebTMKu6la",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -792,27 +822,18 @@
           "source_filename": "Gammelgaard (2007).pdf",
           "sequence_index": 2,
           "assets": {
-            "quizzes": [
-              {
-                "quiz_id": "8a9048d8",
-                "difficulty": "easy",
-                "quiz_url": "/q/8a9048d8.html",
-                "episode_title": "W4L1 - Gammelgaard (2007) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
-              },
-              {
-                "quiz_id": "eb9b6d1f",
-                "difficulty": "hard",
-                "quiz_url": "/q/eb9b6d1f.html",
-                "episode_title": "W4L1 - Gammelgaard (2007) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
-              },
-              {
-                "quiz_id": "cf07f890",
-                "difficulty": "medium",
-                "quiz_url": "/q/cf07f890.html",
-                "episode_title": "W4L1 - Gammelgaard (2007) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
-              }
-            ],
+            "quizzes": [],
             "podcasts": [
+              {
+                "kind": "podcast",
+                "title": "Uge 4, Forelæsning 1 · Podcast · Gammelgaard (2007)",
+                "url": "https://open.spotify.com/episode/1bG6wpp9qzFhQ3lUYDiYSN",
+                "platform": "spotify",
+                "pub_date": "Mon, 23 Feb 2025 10:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1v5icCup4PIIf26DhS7UmCP_8UnPrQMNV",
+                "duration_seconds": null,
+                "duration_label": ""
+              },
               {
                 "kind": "podcast",
                 "title": "Uge 4, Forelæsning 1 · Podcast · Gammelgaard (2007)",
@@ -848,11 +869,22 @@
             "episode_title": "W4L1 - Freud, S. (1973-1933) EN [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
           }
         ],
-        "podcasts": []
+        "podcasts": [
+          {
+            "kind": "podcast",
+            "title": "Uge 4, Forelæsning 1 · Podcast · Freud, S. (1973-1933) EN",
+            "url": "https://open.spotify.com/episode/0PqmtZ5Ejx7GxmYNMQCtuw",
+            "platform": "spotify",
+            "pub_date": "Mon, 23 Feb 2025 12:00:00 +0100",
+            "source_audio_url": "https://drive.google.com/uc?export=download&id=1Qip9s5n6Ioo8YKbn-sUU9qhNTxf2A8AI",
+            "duration_seconds": null,
+            "duration_label": ""
+          }
+        ]
       },
       "warnings": [
         "Quiz entry could not map to reading; attached to lecture assets: W4L1 - Freud, S. (1973-1933) EN [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
-        "Spotify episode mapping missing for RSS item; skipping podcast asset: Uge 4, Forelæsning 1 · Podcast · Freud, S. (1973-1933) EN"
+        "RSS item could not map to reading; attached to lecture assets: Uge 4, Forelæsning 1 · Podcast · Freud, S. (1973-1933) EN"
       ]
     },
     {
@@ -927,7 +959,7 @@
                 "title": "Uge 5, Forelæsning 1 · Podcast · X Freud, S. (1984-1905). Brudstykke af en hysteri-analyse (pp. 9-62, pp. 96",
                 "url": "https://open.spotify.com/episode/28DdpKFf1Ntnhl7ukuZuXb",
                 "platform": "spotify",
-                "pub_date": "Mon, 02 Mar 2025 08:00:00 +0100",
+                "pub_date": "Mon, 02 Mar 2025 12:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=18cm8AOqk5FQS41KMD5TKuzcASzYAePSU",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -942,7 +974,26 @@
           "source_filename": "W5L1 X Gammelgaard (2010).pdf",
           "sequence_index": 2,
           "assets": {
-            "quizzes": [],
+            "quizzes": [
+              {
+                "quiz_id": "744f2fc6",
+                "difficulty": "easy",
+                "quiz_url": "/q/744f2fc6.html",
+                "episode_title": "W5L1 - X Gammelgaard (2010) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "7956f794",
+                "difficulty": "hard",
+                "quiz_url": "/q/7956f794.html",
+                "episode_title": "W5L1 - X Gammelgaard (2010) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "df3ff0f1",
+                "difficulty": "medium",
+                "quiz_url": "/q/df3ff0f1.html",
+                "episode_title": "W5L1 - X Gammelgaard (2010) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              }
+            ],
             "podcasts": []
           }
         },
@@ -979,7 +1030,7 @@
                 "title": "Uge 5, Forelæsning 1 · Podcast · Ricoeur (1981)",
                 "url": "https://open.spotify.com/episode/76KthecVNdT3efo5XrmbXK",
                 "platform": "spotify",
-                "pub_date": "Mon, 02 Mar 2025 10:00:00 +0100",
+                "pub_date": "Mon, 02 Mar 2025 14:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1IS6xpEMj3ahE7-iteuVQu1XOFqc8JyEx",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -989,10 +1040,32 @@
         }
       ],
       "lecture_assets": {
-        "quizzes": [],
+        "quizzes": [
+          {
+            "quiz_id": "353e16e2",
+            "difficulty": "easy",
+            "quiz_url": "/q/353e16e2.html",
+            "episode_title": "W5L1 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=1b3d31bc}.mp3"
+          },
+          {
+            "quiz_id": "5ec30e55",
+            "difficulty": "hard",
+            "quiz_url": "/q/5ec30e55.html",
+            "episode_title": "W5L1 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=1b3d31bc}.mp3"
+          },
+          {
+            "quiz_id": "08c33715",
+            "difficulty": "medium",
+            "quiz_url": "/q/08c33715.html",
+            "episode_title": "W5L1 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=1b3d31bc}.mp3"
+          }
+        ],
         "podcasts": []
       },
-      "warnings": []
+      "warnings": [
+        "Spotify episode mapping missing for RSS item; skipping podcast asset: Uge 5, Forelæsning 1 · Podcast · Alle kilder",
+        "Spotify episode mapping missing for RSS item; skipping podcast asset: Uge 5, Forelæsning 1 · Podcast · X Gammelgaard (2010)"
+      ]
     },
     {
       "lecture_key": "W05L2",
@@ -1036,6 +1109,12 @@
       "lecture_assets": {
         "quizzes": [
           {
+            "quiz_id": "23f73fa8",
+            "difficulty": "easy",
+            "quiz_url": "/q/23f73fa8.html",
+            "episode_title": "W5L2 - Grundbog kapitel 07 - Nyere psykoanalytiske teorier [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+          },
+          {
             "quiz_id": "6f2d1c79",
             "difficulty": "easy",
             "quiz_url": "/q/6f2d1c79.html",
@@ -1048,17 +1127,42 @@
             "episode_title": "[Brief] W5L2 - Grundbog kapitel 07 - Nyere psykoanalytiske teorier [EN] {type=audio lang=en format=brief length=default hash=7e1ef4f1}.mp3"
           },
           {
+            "quiz_id": "b0ee4f84",
+            "difficulty": "hard",
+            "quiz_url": "/q/b0ee4f84.html",
+            "episode_title": "W5L2 - Grundbog kapitel 07 - Nyere psykoanalytiske teorier [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+          },
+          {
+            "quiz_id": "065cd7e6",
+            "difficulty": "medium",
+            "quiz_url": "/q/065cd7e6.html",
+            "episode_title": "W5L2 - Grundbog kapitel 07 - Nyere psykoanalytiske teorier [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+          },
+          {
             "quiz_id": "85567f81",
             "difficulty": "medium",
             "quiz_url": "/q/85567f81.html",
             "episode_title": "[Brief] W5L2 - Grundbog kapitel 07 - Nyere psykoanalytiske teorier [EN] {type=audio lang=en format=brief length=default hash=7e1ef4f1}.mp3"
           }
         ],
-        "podcasts": []
+        "podcasts": [
+          {
+            "kind": "short_podcast",
+            "title": "Uge 5, Forelæsning 2 · Kort podcast · Grundbog kapitel 07 - Nyere psykoanalytiske teorier",
+            "url": "https://open.spotify.com/episode/2WVgKMgcRLhCzTmBVsGi4K",
+            "platform": "spotify",
+            "pub_date": "Tue, 03 Mar 2025 10:00:00 +0100",
+            "source_audio_url": "https://drive.google.com/uc?export=download&id=1-QrCu7c1KWfUI2LdElXg54h35msY9o2a",
+            "duration_seconds": null,
+            "duration_label": ""
+          }
+        ]
       },
       "warnings": [
+        "Quiz entry could not map to reading; attached to lecture assets: W5L2 - Grundbog kapitel 07 - Nyere psykoanalytiske teorier [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
         "Quiz entry could not map to reading; attached to lecture assets: [Brief] W5L2 - Grundbog kapitel 07 - Nyere psykoanalytiske teorier [EN] {type=audio lang=en format=brief length=default hash=7e1ef4f1}.mp3",
-        "Spotify episode mapping missing for RSS item; skipping podcast asset: Uge 5, Forelæsning 2 · Kort podcast · Grundbog kapitel 07 - Nyere psykoanalytiske teorier"
+        "RSS item could not map to reading; attached to lecture assets: Uge 5, Forelæsning 2 · Kort podcast · Grundbog kapitel 07 - Nyere psykoanalytiske teorier",
+        "Spotify episode mapping missing for RSS item; skipping podcast asset: Uge 5, Forelæsning 2 · Podcast · Grundbog kapitel 07 - Nyere psykoanalytiske teorier"
       ]
     },
     {
@@ -1535,8 +1639,38 @@
           "source_filename": "Elias (2000) .pdf",
           "sequence_index": 1,
           "assets": {
-            "quizzes": [],
-            "podcasts": []
+            "quizzes": [
+              {
+                "quiz_id": "4528f7d1",
+                "difficulty": "easy",
+                "quiz_url": "/q/4528f7d1.html",
+                "episode_title": "W12L1 - Elias (2000) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "3d1d629d",
+                "difficulty": "hard",
+                "quiz_url": "/q/3d1d629d.html",
+                "episode_title": "W12L1 - Elias (2000) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "c8500120",
+                "difficulty": "medium",
+                "quiz_url": "/q/c8500120.html",
+                "episode_title": "W12L1 - Elias (2000) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              }
+            ],
+            "podcasts": [
+              {
+                "kind": "podcast",
+                "title": "Uge 12, Forelæsning 1 · Podcast · Elias (2000)",
+                "url": "https://open.spotify.com/episode/1Vlh5DRYrfaixI9XkKxOne",
+                "platform": "spotify",
+                "pub_date": "Mon, 27 Apr 2025 20:00:00 +0200",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1NPSN_MjX_1GQd5DgMKK5j2f7SFdrNROV",
+                "duration_seconds": null,
+                "duration_label": ""
+              }
+            ]
           }
         },
         {
@@ -1554,10 +1688,28 @@
                 "episode_title": "[Brief] W12L1 - Grundbog kapitel 8 - Personlighed, subjektivitet og historicitet [EN] {type=audio lang=en format=brief length=default hash=7e1ef4f1}.mp3"
               },
               {
+                "quiz_id": "40d6c243",
+                "difficulty": "easy",
+                "quiz_url": "/q/40d6c243.html",
+                "episode_title": "W12L1 - Grundbog kapitel 8 - Personlighed, subjektivitet og historicitet [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
                 "quiz_id": "1f7aa069",
                 "difficulty": "hard",
                 "quiz_url": "/q/1f7aa069.html",
                 "episode_title": "[Brief] W12L1 - Grundbog kapitel 8 - Personlighed, subjektivitet og historicitet [EN] {type=audio lang=en format=brief length=default hash=7e1ef4f1}.mp3"
+              },
+              {
+                "quiz_id": "61a96a9d",
+                "difficulty": "hard",
+                "quiz_url": "/q/61a96a9d.html",
+                "episode_title": "W12L1 - Grundbog kapitel 8 - Personlighed, subjektivitet og historicitet [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "49742eb3",
+                "difficulty": "medium",
+                "quiz_url": "/q/49742eb3.html",
+                "episode_title": "W12L1 - Grundbog kapitel 8 - Personlighed, subjektivitet og historicitet [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               },
               {
                 "quiz_id": "638c4471",
@@ -1582,7 +1734,7 @@
                 "title": "Uge 12, Forelæsning 1 · Podcast · Grundbog kapitel 8 - Personlighed, subjektivitet og historicitet",
                 "url": "https://open.spotify.com/episode/3kni4cvJmWeoYaMPtAjHWN",
                 "platform": "spotify",
-                "pub_date": "Mon, 27 Apr 2025 14:00:00 +0200",
+                "pub_date": "Mon, 27 Apr 2025 16:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1mcx-bgUlgYRr5Nc07a3n6hOf1E2LN7Vu",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -1647,11 +1799,21 @@
                 "duration_label": ""
               },
               {
+                "kind": "lydbog",
+                "title": "Uge 12, Forelæsning 1 · Lydbog · Grundbog kapitel 14 - Perspektiver på personlighedspsykologi",
+                "url": "https://open.spotify.com/episode/0VqxSD5b0Zes8G68R4BTkZ",
+                "platform": "spotify",
+                "pub_date": "Mon, 27 Apr 2025 14:00:00 +0200",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1zKvPODI-CPTJUvyx6M5P0IluW9myz2za",
+                "duration_seconds": null,
+                "duration_label": ""
+              },
+              {
                 "kind": "podcast",
                 "title": "Uge 12, Forelæsning 1 · Podcast · Grundbog kapitel 14 - Perspektiver på personlighedspsykologi",
                 "url": "https://open.spotify.com/episode/7mXAZp16nbb0TNo28qfwkB",
                 "platform": "spotify",
-                "pub_date": "Mon, 27 Apr 2025 16:00:00 +0200",
+                "pub_date": "Mon, 27 Apr 2025 18:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1ZpgIhM4MZz4FTIXED1tQVTw2i_WxeSzl",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -1698,6 +1860,7 @@
     }
   ],
   "warnings": [
-    "RSS item has unknown lecture mapping: [Lydbog] · Grundbog kapitel 01 - Introduktion til personlighedspsykologi"
+    "RSS item has unknown lecture mapping: [Lydbog] · Grundbog kapitel 01 - Introduktion til personlighedspsykologi",
+    "RSS item has unknown lecture mapping: [Lydbog] · Grundbog kapitel 14 - Perspektiver på personlighedspsykologi"
   ]
 }

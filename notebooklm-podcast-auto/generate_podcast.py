@@ -1154,39 +1154,42 @@ async def _generate_podcast(args: argparse.Namespace) -> int:
             _save_profile_state(state_path, profile_state)
             return 0
 
-        final = await client.artifacts.wait_for_completion(
-            nb.id,
-            status.task_id,
-            timeout=args.generation_timeout,
-            initial_interval=args.initial_interval,
-        )
+        # The generation request is created inside a client context above.
+        # Re-open a client for the wait/download phase to avoid using a closed client.
+        async with await NotebookLMClient.from_storage(storage_path) as wait_client:
+            final = await wait_client.artifacts.wait_for_completion(
+                nb.id,
+                status.task_id,
+                timeout=args.generation_timeout,
+                initial_interval=args.initial_interval,
+            )
 
-        if not final.is_complete:
-            print(f"Generation failed: status={final.status} error={final.error}")
-            _save_profile_state(state_path, profile_state)
-            return 2
+            if not final.is_complete:
+                print(f"Generation failed: status={final.status} error={final.error}")
+                _save_profile_state(state_path, profile_state)
+                return 2
 
-        if args.artifact_type == "audio":
-            await client.artifacts.download_audio(
-                nb.id,
-                str(output_path),
-                artifact_id=final.task_id,
-            )
-        elif args.artifact_type == "infographic":
-            await client.artifacts.download_infographic(
-                nb.id,
-                str(output_path),
-                artifact_id=final.task_id,
-            )
-        elif args.artifact_type == "quiz":
-            await client.artifacts.download_quiz(
-                nb.id,
-                str(output_path),
-                artifact_id=final.task_id,
-                output_format=args.quiz_format,
-            )
-        else:
-            raise RuntimeError(f"Unsupported artifact type: {args.artifact_type}")
+            if args.artifact_type == "audio":
+                await wait_client.artifacts.download_audio(
+                    nb.id,
+                    str(output_path),
+                    artifact_id=final.task_id,
+                )
+            elif args.artifact_type == "infographic":
+                await wait_client.artifacts.download_infographic(
+                    nb.id,
+                    str(output_path),
+                    artifact_id=final.task_id,
+                )
+            elif args.artifact_type == "quiz":
+                await wait_client.artifacts.download_quiz(
+                    nb.id,
+                    str(output_path),
+                    artifact_id=final.task_id,
+                    output_format=args.quiz_format,
+                )
+            else:
+                raise RuntimeError(f"Unsupported artifact type: {args.artifact_type}")
 
         request_log = output_path.with_suffix(output_path.suffix + ".request.json")
         if auth_meta.get("profile"):

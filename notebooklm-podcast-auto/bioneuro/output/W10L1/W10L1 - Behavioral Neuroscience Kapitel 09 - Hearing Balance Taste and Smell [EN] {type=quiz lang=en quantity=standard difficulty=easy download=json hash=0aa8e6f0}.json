@@ -1,0 +1,317 @@
+{
+  "title": "Sensory Quiz",
+  "questions": [
+    {
+      "question": "Our perception of sound amplitude is referred to by what term?",
+      "answerOptions": [
+        {
+          "text": "Loudness",
+          "isCorrect": true,
+          "rationale": "Loudness is the subjective experience that corresponds to the physical intensity or amplitude of a sound wave, typically measured in $\\text{decibels}$ ($\\text{dB}$)."
+        },
+        {
+          "text": "Pitch",
+          "isCorrect": false,
+          "rationale": "Pitch is the subjective perception of sound frequency, not its amplitude or intensity."
+        },
+        {
+          "text": "Timbre",
+          "isCorrect": false,
+          "rationale": "Timbre refers to the quality or characteristic voice of a sound, determined by its complex harmonics rather than its pressure level."
+        },
+        {
+          "text": "Frequency",
+          "isCorrect": false,
+          "rationale": "Frequency is a physical measure of cycles per second, whereas amplitude measures the force or pressure of the sound."
+        }
+      ],
+      "hint": "Consider how you would describe the volume of a sound."
+    },
+    {
+      "question": "Which of the following describes the three tiny bones in the middle ear that transmit vibrations to the oval window?",
+      "answerOptions": [
+        {
+          "text": "Ossicles",
+          "isCorrect": true,
+          "rationale": "The ossicles consist of the malleus, incus, and stapes, which work together to mechanically amplify and transmit sound to the inner ear."
+        },
+        {
+          "text": "Pinnae",
+          "isCorrect": false,
+          "rationale": "The pinnae are the fleshy, external parts of the ear that funnel sound into the ear canal."
+        },
+        {
+          "text": "Otoliths",
+          "isCorrect": false,
+          "rationale": "Otoliths are small crystals found in the vestibular system that help track linear acceleration, not sound vibrations."
+        },
+        {
+          "text": "Glomeruli",
+          "isCorrect": false,
+          "rationale": "Glomeruli are spherical structures located in the olfactory bulb that process smell information."
+        }
+      ],
+      "hint": "These are known as the smallest bones in the human body."
+    },
+    {
+      "question": "In what unit is the frequency of sound waves, or cycles per second, measured?",
+      "answerOptions": [
+        {
+          "text": "$\\text{Hertz}$ ($\\text{Hz}$)",
+          "isCorrect": true,
+          "rationale": "One $\\text{Hertz}$ represents one cycle of compression and expansion of air per second."
+        },
+        {
+          "text": "$\\text{Decibels}$ ($\\text{dB}$)",
+          "isCorrect": false,
+          "rationale": "Decibels are a logarithmic measure of sound intensity or amplitude, not frequency."
+        },
+        {
+          "text": "$\\text{Dynes}$",
+          "isCorrect": false,
+          "rationale": "Dynes per square centimeter is a measure of sound pressure level rather than the number of wave cycles."
+        },
+        {
+          "text": "$\\text{Amperes}$",
+          "isCorrect": false,
+          "rationale": "Amperes are units of electric current and are not used to measure the properties of sound waves."
+        }
+      ],
+      "hint": "This unit shares its name with a famous physicist and relates to how often a wave repeats."
+    },
+    {
+      "question": "What type of hearing loss occurs when the ossicles become fused and can no longer transmit sound vibrations effectively?",
+      "answerOptions": [
+        {
+          "text": "Conduction deafness",
+          "isCorrect": true,
+          "rationale": "Conduction deafness arises from pathologies in the external or middle ear that prevent mechanical vibrations from reaching the cochlea."
+        },
+        {
+          "text": "Sensorineural deafness",
+          "isCorrect": false,
+          "rationale": "Sensorineural deafness involves damage to the cochlea or the auditory nerve itself, rather than mechanical transmission issues."
+        },
+        {
+          "text": "Central deafness",
+          "isCorrect": false,
+          "rationale": "Central deafness is caused by lesions in the brain regions that process sound, such as the auditory cortex."
+        },
+        {
+          "text": "Word deafness",
+          "isCorrect": false,
+          "rationale": "Word deafness is a specific form of central deafness where a person can hear sounds but cannot recognize spoken language."
+        }
+      ],
+      "hint": "This impairment is related to the physical 'conduction' of sound waves through the ear's anatomy."
+    },
+    {
+      "question": "Which basic taste is described as a meaty, savory flavor often associated with the amino acid glutamate?",
+      "answerOptions": [
+        {
+          "text": "Umami",
+          "isCorrect": true,
+          "rationale": "Umami is the fifth basic taste, detected by specialized receptors like $T1R1$ and $T1R3$ that respond to amino acids found in savory foods."
+        },
+        {
+          "text": "Bitter",
+          "isCorrect": false,
+          "rationale": "Bitter tastes are usually associated with toxic substances and are detected by the $T2R$ family of receptors."
+        },
+        {
+          "text": "Sour",
+          "isCorrect": false,
+          "rationale": "Sour taste is triggered by acids that release protons ($\\text{H}^{+}$) into taste cells."
+        },
+        {
+          "text": "Salty",
+          "isCorrect": false,
+          "rationale": "Salty taste is primarily mediated by the entry of sodium ions through specialized ion channels on the tongue."
+        }
+      ],
+      "hint": "The name of this taste comes from a Japanese word meaning 'delicious taste'."
+    },
+    {
+      "question": "Which part of the vestibular system is responsible for sensing rotation of the head, such as nodding or shaking?",
+      "answerOptions": [
+        {
+          "text": "Semicircular canals",
+          "isCorrect": true,
+          "rationale": "The three semicircular canals are oriented in different planes to detect angular acceleration or rotation in three dimensions."
+        },
+        {
+          "text": "Cochlea",
+          "isCorrect": false,
+          "rationale": "The cochlea is the primary organ for hearing and transduction of sound waves, not for balance."
+        },
+        {
+          "text": "Utricle",
+          "isCorrect": false,
+          "rationale": "The utricle and saccule detect linear acceleration and gravity, while the canals detect rotational movement."
+        },
+        {
+          "text": "Pinna",
+          "isCorrect": false,
+          "rationale": "The pinna is an external structure of the auditory system used to funnel sound, having no role in the vestibular sense."
+        }
+      ],
+      "hint": "These fluid-filled loops are situated in the inner ear and correspond to the pitch, yaw, and roll of the head."
+    },
+    {
+      "question": "Where are the primary olfactory receptor neurons located in the human nose?",
+      "answerOptions": [
+        {
+          "text": "Olfactory epithelium",
+          "isCorrect": true,
+          "rationale": "The olfactory epithelium is a sheet of cells lining the dorsal portion of the nasal cavity that contains millions of receptor neurons."
+        },
+        {
+          "text": "Olfactory bulb",
+          "isCorrect": false,
+          "rationale": "The olfactory bulb is the brain structure where receptor axons terminate and synapse with mitral cells, not where the receptors themselves reside."
+        },
+        {
+          "text": "Turbinates",
+          "isCorrect": false,
+          "rationale": "Turbinates are bony structures that direct airflow but do not contain the primary receptor neurons for smell."
+        },
+        {
+          "text": "Vomeronasal organ",
+          "isCorrect": false,
+          "rationale": "In many animals, this organ detects pheromones, but in humans, it is largely vestigial and nonfunctional."
+        }
+      ],
+      "hint": "This tissue layer provides the starting point for the sense of smell."
+    },
+    {
+      "question": "What is the primary function of the pinna in the mammalian auditory system?",
+      "answerOptions": [
+        {
+          "text": "To funnel and filter sound waves into the ear canal",
+          "isCorrect": true,
+          "rationale": "The uniquely shaped external pinna captures sound vibrations from the environment and directs them toward the internal ear structures."
+        },
+        {
+          "text": "To convert mechanical energy into action potentials",
+          "isCorrect": false,
+          "rationale": "Transduction of energy occurs in the inner ear's cochlea, specifically within the hair cells of the organ of Corti."
+        },
+        {
+          "text": "To amplify sound pressure for the inner ear fluid",
+          "isCorrect": false,
+          "rationale": "This amplification is the job of the middle ear's ossicles, which concentrate force onto the small oval window."
+        },
+        {
+          "text": "To regulate the sense of balance and orientation",
+          "isCorrect": false,
+          "rationale": "Balance is managed by the vestibular system's semicircular canals and otolith organs, not the external ear."
+        }
+      ],
+      "hint": "Think about why the outer part of the ear has such a distinct, flared shape."
+    },
+    {
+      "question": "What is the term for the inability to consciously discern or identify musical tunes, despite having normal hearing and intelligence?",
+      "answerOptions": [
+        {
+          "text": "Amusia",
+          "isCorrect": true,
+          "rationale": "Amusia is a specific disorder, sometimes called tone-deafness, where individuals cannot accurately perceive pitch or melody."
+        },
+        {
+          "text": "Tinnitus",
+          "isCorrect": false,
+          "rationale": "Tinnitus is the sensation of ringing or noise in the ears, often caused by damage to hair cells."
+        },
+        {
+          "text": "Anosmia",
+          "isCorrect": false,
+          "rationale": "Anosmia refers to the loss of the sense of smell, not a deficit in musical perception."
+        },
+        {
+          "text": "Aphasia",
+          "isCorrect": false,
+          "rationale": "Aphasia is a language disorder that affects the ability to speak or understand words, which is distinct from music-specific deficits."
+        }
+      ],
+      "hint": "The name for this condition comes from the Greek word for 'want of harmony'."
+    },
+    {
+      "question": "Which theory suggests that motion sickness results from a discrepancy between vestibular and visual information?",
+      "answerOptions": [
+        {
+          "text": "Sensory conflict theory",
+          "isCorrect": true,
+          "rationale": "This theory argues that nausea occurs when the brain receives contradictory messages, such as feeling movement while seeing a stationary environment."
+        },
+        {
+          "text": "Temporal coding theory",
+          "isCorrect": false,
+          "rationale": "Temporal coding theory explains how sound frequency is encoded by the firing rate of neurons, which is unrelated to motion sickness."
+        },
+        {
+          "text": "Duplex theory",
+          "isCorrect": false,
+          "rationale": "Duplex theory relates to how we localize sounds using intensity and latency differences between the ears."
+        },
+        {
+          "text": "Labeled-line theory",
+          "isCorrect": false,
+          "rationale": "Labeled-line theory suggests that specific nerves report only one type of sensory information, like a single taste."
+        }
+      ],
+      "hint": "This hypothesis focuses on the 'conflict' between different sensory inputs."
+    },
+    {
+      "question": "How do the middle ear muscles, the tensor tympani and stapedius, help protect the ear?",
+      "answerOptions": [
+        {
+          "text": "By stiffening the ossicles to reduce the transmission of loud sounds",
+          "isCorrect": true,
+          "rationale": "These muscles contract in response to loud noises or before self-made sounds to attenuate vibrations reaching the delicate inner ear."
+        },
+        {
+          "text": "By increasing the vibration of the tympanic membrane",
+          "isCorrect": false,
+          "rationale": "Increasing vibrations would make sounds louder and potentially more damaging; the muscles act to reduce them instead."
+        },
+        {
+          "text": "By replenishing the fluid within the cochlear canals",
+          "isCorrect": false,
+          "rationale": "Fluid levels in the cochlea are regulated by physiological processes unrelated to the contraction of middle ear muscles."
+        },
+        {
+          "text": "By regenerating damaged hair cells in the organ of Corti",
+          "isCorrect": false,
+          "rationale": "Hair cell regeneration is a genetic/biological process that does not occur naturally in adult mammals through muscle action."
+        }
+      ],
+      "hint": "Consider how these muscles change the mechanical linkage of the tiny ear bones."
+    },
+    {
+      "question": "Which type of taste papillae resemble button mushrooms and are found in large numbers on the tip and sides of the tongue?",
+      "answerOptions": [
+        {
+          "text": "Fungiform papillae",
+          "isCorrect": true,
+          "rationale": "Fungiform papillae (from the Latin for 'mushroom') contain about six taste buds each and are widely distributed across the tongue."
+        },
+        {
+          "text": "Circumvallate papillae",
+          "isCorrect": false,
+          "rationale": "Circumvallate papillae are larger structures located specifically at the back of the tongue."
+        },
+        {
+          "text": "Foliate papillae",
+          "isCorrect": false,
+          "rationale": "Foliate papillae are found in folds along the sides of the tongue, rather than resembling mushroom shapes."
+        },
+        {
+          "text": "Filiform papillae",
+          "isCorrect": false,
+          "rationale": "While numerous, most papillae of this type do not actually contain taste buds and serve more mechanical functions."
+        }
+      ],
+      "hint": "The name of this papilla is derived from the Latin word for 'fungus'."
+    }
+  ]
+}

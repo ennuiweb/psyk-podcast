@@ -221,7 +221,7 @@ Strict content boundaries:
 
 ## 7. Page-Level Blueprints
 
-### 7.1 Dashboard (`/progress`)
+### 7.1 Dashboard (`/settings`)
 
 Order:
 
@@ -330,7 +330,7 @@ Do not use:
 
 Provide:
 
-1. High-fidelity designs for `/progress`, `/subjects/<subject_slug>`, `/q/<quiz_id>.html`, login, and signup.
+1. High-fidelity designs for `/settings`, `/subjects/<subject_slug>`, `/q/<quiz_id>.html`, login, and signup.
 2. Component sheet covering buttons, cards, badges/chips, timeline rail, form controls, and table rows.
 3. Responsive variants (mobile, tablet portrait, desktop).
 4. Interaction notes for hover, focus, active, disabled, and success/error states.

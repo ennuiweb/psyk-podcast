@@ -170,58 +170,6 @@
     color: var(--info-ink-strong);
   }
 
-  .metric-grid {
-    display: grid;
-    gap: var(--space-3);
-  }
-
-  .metric-card {
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    background: var(--surface);
-    padding: var(--space-3);
-    display: grid;
-    gap: var(--space-2);
-  }
-
-  .metric-card h3 {
-    margin: 0;
-    font-size: 1rem;
-    text-transform: lowercase;
-  }
-
-  .metric-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-2);
-    color: var(--muted);
-    font-size: 0.9rem;
-  }
-
-  .leaderboard-top-list {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    display: grid;
-    gap: var(--space-1);
-  }
-
-  .leaderboard-top-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--space-2);
-    font-size: 0.9rem;
-  }
-
-  .leaderboard-alias {
-    font-weight: 600;
-  }
-
-  .leaderboard-points {
-    color: var(--muted);
-  }
-
   .leaderboard-profile-form {
     margin: 0;
     display: grid;
@@ -708,8 +656,7 @@
   }
 
   @media (min-width: 900px) {
-    .subject-grid,
-    .metric-grid {
+    .subject-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
@@ -878,26 +825,6 @@
       </div>
     </form>
 
-    {% if leaderboard_preview_by_subject %}
-    <div class="metric-grid">
-      {% for item in leaderboard_preview_by_subject %}
-      <article class="metric-card">
-        <h3>{{ item.title }}</h3>
-        <ul class="leaderboard-top-list">
-          {% for entry in item.entries %}
-          <li class="leaderboard-top-item">
-            <span class="leaderboard-alias">#{{ entry.rank }} · {{ entry.alias }}</span>
-            <span class="leaderboard-points">{{ entry.score_points }} point · {{ entry.quiz_count }} quizzer</span>
-          </li>
-          {% endfor %}
-        </ul>
-        <div class="subject-actions">
-          <a class="subject-open-link" href="{{ item.leaderboard_url }}">Se fuld quiz cup</a>
-        </div>
-      </article>
-      {% endfor %}
-    </div>
-    {% endif %}
   </section>
 
   {% if quiz_history_enabled %}

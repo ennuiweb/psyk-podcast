@@ -33,14 +33,13 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Podcast links on subject pages are Spotify-only and episode-only. Unmapped RSS items are hidden from the podcast list until a direct Spotify episode URL exists. Direct source/Drive audio links are never exposed in UI.
 - Subject detail includes inline Spotify playback via embedded episode player plus the external Spotify link for each visible podcast row.
 - Completion rule: `currentView == "summary"` and `answers_count == question_count`; timed-out questions count as answered/wrong.
-- Gamification core is quiz-driven and always available for authenticated users (`/progress`, `/api/gamification/me`).
-- `/progress` focuses on subject access, quiz history, and a lightweight public quiz cup preview.
-- `/progress` public quiz cup preview only renders subject cards when at least one public participant exists for that subject.
+- Gamification core is quiz-driven and always available for authenticated users (`/settings`, `/api/gamification/me`).
+- `/settings` focuses on subject access, quiz history, and public quiz cup alias/visibility settings.
 - `/leaderboard/<subject_slug>` is the dedicated `Freudd Quiz Cup` page with subject tabs, podium cards, and Top 50 table.
 - Desktop topbar centers `Quiz cup` in its own highlighted pill with a trophy icon; utility actions (`Indstillinger`, `Log ud`) stay right-aligned.
 - Desktop topbar enrolled-subject chips are scaled down by 25% (`height/padding/font-size`) to keep visual balance with the `freudd` wordmark.
-- Quizhistorik on `/progress` is card-based and includes live search, difficulty/status filters, sort modes, and auto-updating summary metrics (`quiz count`, `rigtige svar`, `træfsikkerhed`, `perfekte quizzer`).
-- Quizhistorik visibility on `/progress` is feature-flagged by `FREUDD_PROGRESS_QUIZ_HISTORY_ENABLED` (default: `1`).
+- Quizhistorik on `/settings` is card-based and includes live search, difficulty/status filters, sort modes, and auto-updating summary metrics (`quiz count`, `rigtige svar`, `træfsikkerhed`, `perfekte quizzer`).
+- Quizhistorik visibility on `/settings` is feature-flagged by `FREUDD_PROGRESS_QUIZ_HISTORY_ENABLED` (default: `1`).
 - Quizhistorik chips are text-oriented (`Tekstquiz`, `Alle tekster`) and intentionally avoid audio/podcast tags like `Lyd`/`Deep dive`.
 - Personal tekster/podcast tracking data remains private and is handled on subject pages (`mark/unmark`), while quiz completion stays sourced from `QuizProgress`.
 - Public quiz cup is opt-in and alias-based; public view shows `alias + rank + score point + quiz count`.
@@ -93,7 +92,7 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - `GET/POST /api/quiz-state/<quiz_id>`
 - `GET/POST /api/quiz-state/<quiz_id>/raw`
 - `GET /api/gamification/me`
-- `GET /progress`
+- `GET /settings` (`GET /progress` redirects permanently with query string preserved)
 - `GET /leaderboard/<subject_slug>`
 - `POST /leaderboard/profile`
 - `GET /subjects/<subject_slug>`
@@ -103,9 +102,9 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - `POST /subjects/<subject_slug>/tracking/tekst`
 - `POST /subjects/<subject_slug>/tracking/podcast`
 
-Enrollment UX rule: `Mine fag` on `GET /progress` is read-only (open + status), while enroll/unenroll actions live in the bottom `Tilmeld og afmeld fag` module; subject detail remains read-only for enrollment state.
+Enrollment UX rule: `Mine fag` on `GET /settings` is read-only (open + status), while enroll/unenroll actions live in the bottom `Tilmeld og afmeld fag` module; subject detail remains read-only for enrollment state.
 
-Leaderboard alias UX rule: if a user already has an alias, it is shown locked by default and can only be changed via explicit `Ændr alias` mode (`allow_alias_change=1` on submit). This applies to both `GET /progress` and `GET /leaderboard/<subject_slug>`.
+Leaderboard alias UX rule: if a user already has an alias, it is shown locked by default and can only be changed via explicit `Ændr alias` mode (`allow_alias_change=1` on submit). This applies to both `GET /settings` and `GET /leaderboard/<subject_slug>`.
 
 `quiz_id` format is strict 8-char hex (`^[0-9a-f]{8}$`).
 
@@ -223,7 +222,7 @@ Operational behavior:
 - `FREUDD_AUTH_GOOGLE_ENABLED` (default: `0`)
 - `FREUDD_GOOGLE_CLIENT_ID` (required when `FREUDD_AUTH_GOOGLE_ENABLED=1`)
 - `FREUDD_GOOGLE_CLIENT_SECRET` (required when `FREUDD_AUTH_GOOGLE_ENABLED=1`)
-- `FREUDD_PROGRESS_QUIZ_HISTORY_ENABLED` (default: `1`; set `0` to hide Quizhistorik on `/progress`)
+- `FREUDD_PROGRESS_QUIZ_HISTORY_ENABLED` (default: `1`; set `0` to hide Quizhistorik on `/settings`)
 - `FREUDD_PORTAL_TRUST_X_FORWARDED_PROTO` (default: `0`; set `1` behind proxy TLS termination)
 - `FREUDD_PORTAL_CSRF_TRUSTED_ORIGINS` (comma-separated, for example `https://freudd.dk,https://www.freudd.dk`)
 - `FREUDD_PORTAL_SESSION_COOKIE_SECURE` (default: `0`; set `1` in production HTTPS)
@@ -306,7 +305,7 @@ python3 manage.py runserver 0.0.0.0:8000
 - Service: `freudd-portal.service`
 - Gunicorn bind: `127.0.0.1:8001`
 - Env file: `/etc/freudd-portal.env`
-- Caddy routes to portal: `/accounts/*`, `/api/*`, `/progress*`, `/q/*`, `/subjects/*`
+- Caddy routes to portal: `/accounts/*`, `/api/*`, `/settings*`, `/progress*` (legacy redirect), `/q/*`, `/subjects/*`
 
 Service commands:
 ```bash

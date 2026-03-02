@@ -1,6 +1,7 @@
 """URL routing for quiz pages and APIs."""
 
 from django.urls import re_path
+from django.views.generic import RedirectView
 
 from . import views
 
@@ -58,5 +59,10 @@ urlpatterns = [
         views.subject_tracking_podcast_view,
         name="subject-tracking-podcast",
     ),
-    re_path(r"^progress$", views.progress_view, name="progress"),
+    re_path(r"^settings$", views.progress_view, name="progress"),
+    re_path(
+        r"^progress$",
+        RedirectView.as_view(pattern_name="progress", permanent=True, query_string=True),
+        name="progress-legacy-redirect",
+    ),
 ]

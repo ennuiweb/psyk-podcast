@@ -1614,6 +1614,7 @@ class QuizPortalTests(TestCase):
         self.client.force_login(user)
 
         detail_url = reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"})
+        quiz_cup_url = reverse("leaderboard-subject", kwargs={"subject_slug": "personlighedspsykologi"})
         response = self.client.get(detail_url)
         self.assertEqual(response.status_code, 200)
         self.assertNotContains(response, "Ikke tilmeldt")
@@ -1637,6 +1638,10 @@ class QuizPortalTests(TestCase):
         self.assertContains(response, "Ikke startet endnu")
         self.assertContains(response, "Grundbog kapitel 01 - Introduktion til personlighedspsykologi")
         self.assertContains(response, "Uge 1, forelæsning 1: Introforelaesning")
+        self.assertContains(
+            response,
+            f'class="ghost-link back-link subject-desktop-link" href="{quiz_cup_url}"',
+        )
         self.assertNotContains(response, "Mangler kilde")
         self.assertNotContains(response, "Koutsoumpis (2025)")
         self.assertNotContains(response, "Tilmeld fag")

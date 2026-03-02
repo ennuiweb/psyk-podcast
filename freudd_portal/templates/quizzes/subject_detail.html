@@ -54,6 +54,15 @@
     gap: var(--subject-space-block);
   }
 
+  .subject-head-actions {
+    justify-self: flex-end;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+  }
+
   .subject-head-copy {
     display: grid;
     gap: var(--subject-space-tight);
@@ -73,10 +82,15 @@
 
   .subject-back {
     justify-self: flex-start;
+  }
+
+  .subject-back,
+  .subject-desktop-link {
     transition: filter 160ms ease;
   }
 
-  .subject-back:hover {
+  .subject-back:hover,
+  .subject-desktop-link:hover {
     filter: brightness(0.96);
   }
 
@@ -1063,6 +1077,10 @@
       gap: 4px;
     }
 
+    .subject-head-actions {
+      display: none;
+    }
+
     .subject-head h1 {
       font-size: clamp(1.96rem, 4.2vw, 2.5rem);
       line-height: 1.07;
@@ -1557,7 +1575,10 @@
       <h1 class="quiz-title">{{ subject.title }}</h1>
       <p class="muted">{{ subject.description }}</p>
     </div>
-    <a class="ghost-link back-link subject-back" href="{{ back_url }}" onclick="if (window.history.length > 1) { event.preventDefault(); window.history.back(); }">Tilbage</a>
+    <div class="subject-head-actions">
+      <a class="ghost-link back-link subject-desktop-link" href="{% url 'leaderboard-subject' subject_slug=subject.slug %}">Quiz cup</a>
+      <a class="ghost-link back-link subject-back" href="{{ back_url }}" onclick="if (window.history.length > 1) { event.preventDefault(); window.history.back(); }">Tilbage</a>
+    </div>
   </header>
 
   <section class="subject-path" data-subject-path>

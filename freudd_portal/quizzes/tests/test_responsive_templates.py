@@ -55,6 +55,18 @@ class ResponsiveTemplateRulesTests(SimpleTestCase):
         self.assertIn("overflow-wrap: anywhere;", body)
         self.assertIn("hyphens: auto;", body)
 
+    def test_subject_detail_exposes_desktop_only_quiz_cup_link(self) -> None:
+        body = self._template_text("quizzes/subject_detail.html")
+        self.assertIn("subject-head-actions", body)
+        self.assertIn("subject-desktop-link", body)
+        self.assertIn("{% url 'leaderboard-subject' subject_slug=subject.slug %}", body)
+        self.assertIn(
+            ".subject-head-actions {\n"
+            "      display: none;\n"
+            "    }",
+            body,
+        )
+
     def test_subject_detail_uses_desktop_section_order_on_compact_layout(self) -> None:
         body = self._template_text("quizzes/subject_detail.html")
         self.assertIn(".lecture-readings {\n      order: 1;", body)

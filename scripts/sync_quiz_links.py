@@ -71,7 +71,7 @@ def has_quiz_cfg_tag(value: str) -> bool:
 
 def is_excluded_quiz_json_name(name: str) -> bool:
     normalized = name.strip().lower()
-    if ".html.request" in normalized and normalized.endswith(".json"):
+    if ".request" in normalized and normalized.endswith(".json"):
         return True
     if normalized == "quiz_json_manifest.json":
         return True
@@ -169,11 +169,16 @@ def build_flat_quiz_relative_path(
     audio_name: str,
     difficulty: str | None,
     flat_id_len: int,
+    *,
+    include_subject: bool,
+    subject_slug: str,
 ) -> tuple[str, str]:
     if flat_id_len < 1:
         raise ValueError("--flat-id-len must be >= 1.")
     normalized_difficulty = normalize_quiz_difficulty(difficulty)
     seed = f"{canonical_key(Path(audio_name).stem)}|{normalized_difficulty}"
+    if include_subject:
+        seed = f"{subject_slug}|{seed}"
     digest = hashlib.sha1(seed.encode("utf-8")).hexdigest()
     return f"{digest[:flat_id_len]}.html", seed
 
@@ -433,6 +438,11 @@ def main() -> int:
         help="Hex length for deterministic flat quiz IDs in flat-id mode (default: 8).",
     )
     parser.add_argument(
+        "--flat-id-include-subject",
+        action="store_true",
+        help="Salt flat quiz IDs with --subject-slug to avoid cross-subject ID collisions.",
+    )
+    parser.add_argument(
         "--derive-mp3-names",
         action="store_true",
         help="Derive MP3 names directly from quiz JSON filenames (no MP3 scan).",
@@ -545,6 +555,8 @@ def main() -> int:
                     mp3_name,
                     difficulty,
                     args.flat_id_len,
+                    include_subject=args.flat_id_include_subject,
+                    subject_slug=subject_slug,
                 )
                 ensure_unique_flat_quiz_relative_path(
                     flat_id_registry,

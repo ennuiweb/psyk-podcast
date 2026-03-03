@@ -10,6 +10,9 @@ on:
       - 'shows/personlighedspsykologi-en/content_manifest.json'
       - 'shows/personlighedspsykologi-en/quiz_links.json'
       - 'shows/personlighedspsykologi-en/spotify_map.json'
+      - 'shows/bioneuro/content_manifest.json'
+      - 'shows/bioneuro/quiz_links.json'
+      - 'shows/bioneuro/spotify_map.json'
   workflow_dispatch:
 
 permissions:

@@ -23,6 +23,20 @@
   "public_link_template": "https://drive.google.com/uc?export=download&id={file_id}",
   "episode_metadata": "shows/bioneuro/episode_metadata.json",
   "auto_spec": "shows/bioneuro/auto_spec.json",
+  "quiz": {
+    "links_file": "shows/bioneuro/quiz_links.json",
+    "base_url": "https://freudd.dk/q/",
+    "subject_slug": "bioneuro",
+    "labels": {
+      "single": "Quiz",
+      "multiple": "Quizzer",
+      "difficulty": {
+        "easy": "Let",
+        "medium": "Mellem",
+        "hard": "Svær"
+      }
+    }
+  },
   "feed": {
     "title": "Bio / Neuropsychology",
     "link": "https://github.com/ennuiweb/psyk-podcast",

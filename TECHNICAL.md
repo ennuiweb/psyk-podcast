@@ -267,7 +267,8 @@ Quiz sync behavior (current):
 - `scripts/sync_quiz_links.py` and `podcast-tools/sync_drive_quiz_links.py` discover quizzes from JSON exports only.
 - Both scripts keep emitting `.html` `relative_path` entries in `quiz_links.json` so feed/portal links stay `/q/<id>.html`.
 - `scripts/sync_quiz_links.py` writes `subject_slug` into each `quiz_links.json` entry; `podcast-tools/sync_drive_quiz_links.py` now does the same (from `--subject-slug` or config fallback).
-- Non-quiz JSON artifacts (for example `*.html.request.json`, manifest JSON files) are ignored; zero valid quiz JSON files is treated as an error.
+- Non-quiz JSON artifacts (for example `*.request*.json`, manifest JSON files) are ignored; zero valid quiz JSON files is treated as an error.
+- For subjects that may share episode titles, use `--flat-id-include-subject` when generating flat quiz IDs to avoid cross-subject ID collisions.
 - `manage.py rebuild_content_manifest --subject <slug>` regenerates lecture-first manifest and validates source merges.
 - `load_subject_content_manifest()` auto-detects stale manifests by comparing source mtimes (`reading key`, `quiz_links.json`, `rss.xml`, `spotify_map.json`) and rebuilds on-demand.
 - `scripts/sync_spotify_map.py` auto-syncs RSS titles into `spotify_map.json` with direct episode URLs only.
@@ -302,7 +303,7 @@ Google OAuth callback allowlist (Google Cloud OAuth client):
 ### Deployment notes (current)
 - Runtime names are now `freudd-portal.service` and `/etc/freudd-portal.env`.
 - Upgrades from pre-rename deployments must move the SQLite file to `/opt/podcasts/freudd_portal/db.sqlite3` and ensure `www-data` can write in `/opt/podcasts/freudd_portal`.
-- GitHub Actions workflow `.github/workflows/deploy-freudd-portal.yml` auto-deploys to the droplet on pushes to `main` that affect portal/runtime files (`freudd_portal/**`, `requirements.txt`, and key `personlighedspsykologi-en` manifest/map assets), plus manual dispatch.
+- GitHub Actions workflow `.github/workflows/deploy-freudd-portal.yml` auto-deploys to the droplet on pushes to `main` that affect portal/runtime files (`freudd_portal/**`, `requirements.txt`, and key `personlighedspsykologi-en` + `bioneuro` manifest/map assets), plus manual dispatch.
 - GitHub Actions workflow `.github/workflows/monitor-production-drift.yml` runs hourly (`23 * * * *`) to compare deployed `/opt/podcasts` commit with `main` and auto-remediate drift by running the same deploy routine.
 
 ### freudd.dk domain cutover (2026-02-26)
@@ -524,7 +525,7 @@ The workflow (`.github/workflows/generate-feed.yml`) runs on a daily cron and on
 - write the shared service-account JSON secret to `shows/<show>/service-account.json`;
 - materialise a `config.runtime.json` per show (optionally overriding the Drive folder ID from GitHub Secrets);
 - probe for Drive videos that need transcoding, run `transcode_drive_media.py` when required, and then execute `gdrive_podcast_feed.py` for that show;
-- for `personlighedspsykologi-en`, run `python freudd_portal/manage.py rebuild_content_manifest --subject personlighedspsykologi`;
+- for quiz-enabled subjects (`personlighedspsykologi-en`, `bioneuro`), sync quiz links and run `python freudd_portal/manage.py rebuild_content_manifest --subject <slug>`;
 - commit updated artifacts (`feeds/rss.xml`, `quiz_links.json`, and `content_manifest.json` when changed) back to the default branch.
 
 The repository ignores stray `rss.xml` files, but `shows/**/feeds/rss.xml` are explicitly tracked so new shows can publish their feeds.

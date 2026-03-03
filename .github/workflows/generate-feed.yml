@@ -138,43 +138,56 @@ jobs:
         run: python podcast-tools/transcode_drive_media.py --config shows/${SHOW}/config.runtime.json
 
       - name: Trust droplet host key
-        if: matrix.show == 'personlighedspsykologi-en'
+        if: contains(fromJSON('["personlighedspsykologi-en","bioneuro"]'), matrix.show)
         run: |
           mkdir -p ~/.ssh
           ssh-keyscan -H 64.226.79.109 >> ~/.ssh/known_hosts
           chmod 600 ~/.ssh/known_hosts
 
       - name: Sync quiz links
-        if: matrix.show == 'personlighedspsykologi-en'
+        if: contains(fromJSON('["personlighedspsykologi-en","bioneuro"]'), matrix.show)
         env:
           SHOW: ${{ matrix.show }}
           DROPLET_SSH_KEY: ${{ secrets.DIGITALOCEAN_SSH_KEY }}
         run: |
           download_root="${RUNNER_TEMP}/drive-quizzes"
+          case "${SHOW}" in
+            personlighedspsykologi-en)
+              subject_slug="personlighedspsykologi"
+              flat_id_include_subject=""
+              ;;
+            bioneuro)
+              subject_slug="bioneuro"
+              flat_id_include_subject="--flat-id-include-subject"
+              ;;
+            *)
+              echo "::error::Unexpected show for quiz sync: ${SHOW}"
+              exit 1
+              ;;
+          esac
+
+          cmd=(
+            python podcast-tools/sync_drive_quiz_links.py
+            --config "shows/${SHOW}/config.runtime.json"
+            --download-root "${download_root}"
+            --subject-slug "${subject_slug}"
+            --language-tag "[EN]"
+            --quiz-path-mode flat-id
+            --flat-id-len 8
+            --quiz-difficulty any
+          )
+          if [[ -n "${flat_id_include_subject}" ]]; then
+            cmd+=("${flat_id_include_subject}")
+          fi
+
           if [[ -n "${DROPLET_SSH_KEY}" ]]; then
             key_path="${RUNNER_TEMP}/droplet_key"
             echo "${DROPLET_SSH_KEY}" > "${key_path}"
             chmod 600 "${key_path}"
-            python podcast-tools/sync_drive_quiz_links.py \
-              --config shows/${SHOW}/config.runtime.json \
-              --download-root "${download_root}" \
-              --subject-slug personlighedspsykologi \
-              --language-tag "[EN]" \
-              --quiz-path-mode flat-id \
-              --flat-id-len 8 \
-              --quiz-difficulty any \
-              --upload \
-              --ssh-key "${key_path}"
+            "${cmd[@]}" --upload --ssh-key "${key_path}"
           else
             echo "Warning: DIGITALOCEAN_SSH_KEY not set; skipping quiz upload." >&2
-            python podcast-tools/sync_drive_quiz_links.py \
-              --config shows/${SHOW}/config.runtime.json \
-              --download-root "${download_root}" \
-              --subject-slug personlighedspsykologi \
-              --language-tag "[EN]" \
-              --quiz-path-mode flat-id \
-              --flat-id-len 8 \
-              --quiz-difficulty any
+            "${cmd[@]}"
           fi
 
       - name: Generate feed
@@ -202,8 +215,65 @@ jobs:
             --allow-unresolved
 
       - name: Rebuild subject content manifest
-        if: matrix.show == 'personlighedspsykologi-en'
-        run: python freudd_portal/manage.py rebuild_content_manifest --subject personlighedspsykologi
+        if: contains(fromJSON('["personlighedspsykologi-en","bioneuro"]'), matrix.show)
+        env:
+          SHOW: ${{ matrix.show }}
+        run: |
+          case "${SHOW}" in
+            personlighedspsykologi-en) subject_slug="personlighedspsykologi" ;;
+            bioneuro) subject_slug="bioneuro" ;;
+            *)
+              echo "::error::Unexpected show for manifest rebuild: ${SHOW}"
+              exit 1
+              ;;
+          esac
+          python freudd_portal/manage.py rebuild_content_manifest --subject "${subject_slug}"
+
+      - name: Validate quiz coverage
+        if: contains(fromJSON('["personlighedspsykologi-en","bioneuro"]'), matrix.show)
+        env:
+          SHOW: ${{ matrix.show }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          show = os.environ["SHOW"]
+          quiz_path = Path(f"shows/{show}/quiz_links.json")
+          manifest_path = Path(f"shows/{show}/content_manifest.json")
+
+          if not quiz_path.exists():
+              raise SystemExit(f"Missing quiz links file: {quiz_path}")
+          if not manifest_path.exists():
+              raise SystemExit(f"Missing content manifest file: {manifest_path}")
+
+          quiz_payload = json.loads(quiz_path.read_text(encoding="utf-8"))
+          by_name = quiz_payload.get("by_name") if isinstance(quiz_payload, dict) else None
+          if not isinstance(by_name, dict) or not by_name:
+              raise SystemExit(f"quiz_links.by_name is empty for {show}")
+
+          manifest_payload = json.loads(manifest_path.read_text(encoding="utf-8"))
+          lectures = manifest_payload.get("lectures") if isinstance(manifest_payload, dict) else []
+          quiz_assets = 0
+          if isinstance(lectures, list):
+              for lecture in lectures:
+                  if not isinstance(lecture, dict):
+                      continue
+                  lecture_assets = lecture.get("lecture_assets") if isinstance(lecture.get("lecture_assets"), dict) else {}
+                  quiz_assets += len(lecture_assets.get("quizzes") or [])
+                  readings = lecture.get("readings") if isinstance(lecture.get("readings"), list) else []
+                  for reading in readings:
+                      if not isinstance(reading, dict):
+                          continue
+                      assets = reading.get("assets") if isinstance(reading.get("assets"), dict) else {}
+                      quiz_assets += len(assets.get("quizzes") or [])
+
+          if quiz_assets <= 0:
+              raise SystemExit(f"Manifest has zero quiz assets for {show}")
+
+          print(f"Validated {show}: by_name={len(by_name)} quiz_assets={quiz_assets}")
+          PY
 
       - name: Commit updated feed
         env:

@@ -43,6 +43,7 @@ from .leaderboard_services import (
 from .models import (
     QuizProgress,
     SubjectEnrollment,
+    UserLeaderboardProfile,
     UserPodcastMark,
     UserReadingMark,
     UserSubjectLastLecture,
@@ -123,6 +124,7 @@ SPOTIFY_EPISODE_ID_RE = re.compile(
 SUBJECT_READING_KEY_RE = re.compile(r"^[a-z0-9-]+$")
 SUBJECT_LECTURE_KEY_RE = re.compile(r"^W\d{2}L\d+$", re.IGNORECASE)
 SUBJECT_SLUG_RE = re.compile(r"^[a-z0-9-]+$")
+LEADERBOARD_RANK_LOOKUP_LIMIT = 5000
 _READING_EXCLUSION_CACHE: dict[str, object] = {
     "path": None,
     "mtime": None,
@@ -472,6 +474,54 @@ def _cooldown_payload(*, progress: QuizProgress) -> dict[str, object]:
         "streak_count": status.streak_count,
         "next_cooldown_seconds": status.next_cooldown_seconds,
     }
+
+
+def _quiz_subject_slug(quiz_id: str) -> str:
+    label = load_quiz_label_mapping().get(str(quiz_id or "").strip().lower())
+    candidate = str(label.subject_slug or "").strip().lower() if label else ""
+    if not SUBJECT_SLUG_RE.match(candidate):
+        return ""
+    return candidate
+
+
+def _quiz_cup_url(*, subject_slug: str) -> str:
+    slug = str(subject_slug or "").strip().lower()
+    if not SUBJECT_SLUG_RE.match(slug):
+        return ""
+    return reverse("leaderboard-subject", kwargs={"subject_slug": slug})
+
+
+def _quiz_cup_public_alias(user) -> str:
+    profile = UserLeaderboardProfile.objects.filter(user=user, is_public=True).first()
+    return str(profile.public_alias if profile else "").strip()
+
+
+def _quiz_cup_rank_for_alias(
+    *,
+    subject_slug: str,
+    public_alias: str,
+    semester,
+) -> tuple[int | None, int]:
+    alias = str(public_alias or "").strip()
+    slug = str(subject_slug or "").strip().lower()
+    if not alias or not SUBJECT_SLUG_RE.match(slug):
+        return (None, 0)
+    snapshot = build_subject_leaderboard_snapshot(
+        subject_slug=slug,
+        limit=LEADERBOARD_RANK_LOOKUP_LIMIT,
+        semester=semester,
+    )
+    participant_count = _safe_non_negative_int(snapshot.get("participant_count"))
+    entries = snapshot.get("entries") if isinstance(snapshot.get("entries"), list) else []
+    alias_casefold = alias.casefold()
+    for entry in entries:
+        if not isinstance(entry, dict):
+            continue
+        if str(entry.get("alias") or "").strip().casefold() != alias_casefold:
+            continue
+        rank = _safe_non_negative_int(entry.get("rank"))
+        return ((rank if rank > 0 else None), participant_count)
+    return (None, participant_count)
 
 
 def _subject_path_overview(lectures: object) -> dict[str, int]:
@@ -1150,6 +1200,11 @@ def quiz_wrapper_view(request: HttpRequest, quiz_id: str) -> HttpResponse:
     _ensure_quiz_exists_or_404(quiz_id)
 
     label = load_quiz_label_mapping().get(quiz_id)
+    quiz_subject_slug = (
+        str(label.subject_slug or "").strip().lower()
+        if label and SUBJECT_SLUG_RE.match(str(label.subject_slug or "").strip().lower())
+        else ""
+    )
     episode_title = label.episode_title if label else quiz_id
     difficulty_label = _difficulty_label(label.difficulty if label else "unknown")
     quiz_display = _quiz_display_context(episode_title=episode_title, quiz_id=quiz_id)
@@ -1172,6 +1227,8 @@ def quiz_wrapper_view(request: HttpRequest, quiz_id: str) -> HttpResponse:
         "login_next_url": _auth_url_with_next("login", quiz_path),
         "signup_next_url": _auth_url_with_next("signup", quiz_path),
         "back_url": _safe_back_url(request, fallback_url=fallback_back_url),
+        "quiz_cup_url": _quiz_cup_url(subject_slug=quiz_subject_slug),
+        "quiz_subject_slug": quiz_subject_slug,
     }
     return render(request, "quizzes/wrapper.html", context)
 
@@ -1202,6 +1259,11 @@ def quiz_content_view(request: HttpRequest, quiz_id: str) -> HttpResponse:
 def quiz_state_view(request: HttpRequest, quiz_id: str) -> HttpResponse:
     quiz_id = _ensure_quiz_id_or_404(quiz_id)
     _ensure_quiz_exists_or_404(quiz_id)
+    quiz_subject_slug = _quiz_subject_slug(quiz_id)
+    quiz_cup_response_payload: dict[str, object] = {
+        "subject_slug": quiz_subject_slug,
+        "url": _quiz_cup_url(subject_slug=quiz_subject_slug),
+    }
 
     if request.method == "GET":
         progress = QuizProgress.objects.filter(user=request.user, quiz_id=quiz_id).first()
@@ -1280,6 +1342,23 @@ def quiz_state_view(request: HttpRequest, quiz_id: str) -> HttpResponse:
         if progress.attempt_started_at is None:
             progress.attempt_started_at = now
 
+    will_transition_to_completed = (
+        previous_status != QuizProgress.Status.COMPLETED
+        and computation.status == QuizProgress.Status.COMPLETED
+    )
+    public_alias = ""
+    active_semester = None
+    previous_rank: int | None = None
+    if will_transition_to_completed:
+        public_alias = _quiz_cup_public_alias(request.user)
+        if quiz_subject_slug and public_alias:
+            active_semester = active_half_year_semester(now=now)
+            previous_rank, _ = _quiz_cup_rank_for_alias(
+                subject_slug=quiz_subject_slug,
+                public_alias=public_alias,
+                semester=active_semester,
+            )
+
     upsert_progress_from_state(progress=progress, state_payload=state_payload, computation=computation)
 
     completion_transition = (
@@ -1288,6 +1367,11 @@ def quiz_state_view(request: HttpRequest, quiz_id: str) -> HttpResponse:
     )
     if completion_transition:
         now = timezone.now()
+        if not public_alias:
+            public_alias = _quiz_cup_public_alias(request.user)
+        if active_semester is None:
+            active_semester = active_half_year_semester(now=now)
+
         quiz_payload = load_quiz_content(quiz_id)
         outcome = compute_quiz_outcome(state_payload=state_payload, quiz_payload=quiz_payload)
         duration_ms = compute_attempt_duration_ms(progress, now=now)
@@ -1322,6 +1406,23 @@ def quiz_state_view(request: HttpRequest, quiz_id: str) -> HttpResponse:
                 "updated_at",
             ]
         )
+        if quiz_subject_slug and public_alias:
+            current_rank, participant_count = _quiz_cup_rank_for_alias(
+                subject_slug=quiz_subject_slug,
+                public_alias=public_alias,
+                semester=active_semester,
+            )
+            rank_change = 0
+            if previous_rank and current_rank and current_rank < previous_rank:
+                rank_change = previous_rank - current_rank
+            quiz_cup_response_payload.update(
+                {
+                    "previous_rank": previous_rank,
+                    "current_rank": current_rank,
+                    "rank_change": rank_change,
+                    "participant_count": participant_count,
+                }
+            )
 
     try:
         record_quiz_progress_delta(
@@ -1341,6 +1442,7 @@ def quiz_state_view(request: HttpRequest, quiz_id: str) -> HttpResponse:
             "last_view": progress.last_view,
             "completed_at": progress.completed_at.isoformat() if progress.completed_at else None,
             "cooldown": _cooldown_payload(progress=progress),
+            "quiz_cup": quiz_cup_response_payload,
         }
     )
 

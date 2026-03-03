@@ -436,10 +436,13 @@ class QuizPortalTests(TestCase):
 
     def test_quiz_wrapper_allows_anonymous_without_pre_summary_login_prompts(self) -> None:
         quiz_url = reverse("quiz-wrapper", kwargs={"quiz_id": self.quiz_id})
+        quiz_cup_url = reverse("leaderboard-subject", kwargs={"subject_slug": "personlighedspsykologi"})
         response = self.client.get(quiz_url)
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Uge 1, forelæsning 1")
         self.assertContains(response, "Episode")
+        self.assertContains(response, "Gå til Quiz cup")
+        self.assertContains(response, f'href="{quiz_cup_url}"')
         self.assertNotContains(response, "Tag quizzen anonymt.")
         self.assertNotContains(response, "Log ind for ")
         self.assertContains(response, "Quizzen er færdig. Log ind nu for at gemme din score og se din samlede score.")
@@ -666,6 +669,97 @@ class QuizPortalTests(TestCase):
         response = self.client.get(state_url)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json()["currentView"], "summary")
+
+    def test_state_api_returns_quiz_cup_rank_improvement_on_completion(self) -> None:
+        second_quiz_id = "aaaaaaaa"
+        self._write_quiz_file(second_quiz_id, question_count=2)
+        self._write_quiz_json_file(second_quiz_id, question_count=2)
+        self._write_links_file(
+            {
+                self.quiz_id: {
+                    "title": "W1L1 - Episode",
+                    "difficulty": "medium",
+                    "subject_slug": "personlighedspsykologi",
+                },
+                second_quiz_id: {
+                    "title": "W1L1 - Episode Two",
+                    "difficulty": "medium",
+                    "subject_slug": "personlighedspsykologi",
+                },
+            }
+        )
+
+        user = self._create_user(username="quiz-cup-me")
+        rival = self._create_user(username="quiz-cup-rival")
+        UserLeaderboardProfile.objects.create(
+            user=user,
+            public_alias="CupMe",
+            public_alias_normalized="cupme",
+            is_public=True,
+        )
+        UserLeaderboardProfile.objects.create(
+            user=rival,
+            public_alias="CupRival",
+            public_alias_normalized="cuprival",
+            is_public=True,
+        )
+
+        semester_key = active_half_year_semester(timezone.now()).key
+        QuizProgress.objects.create(
+            user=user,
+            quiz_id=second_quiz_id,
+            status=QuizProgress.Status.COMPLETED,
+            state_json={},
+            answers_count=1,
+            question_count=2,
+            last_view="summary",
+            completed_at=timezone.now() - timedelta(days=2),
+            leaderboard_semester_key=semester_key,
+            leaderboard_best_score=100,
+            leaderboard_best_correct_answers=1,
+            leaderboard_best_question_count=2,
+            leaderboard_best_duration_ms=60_000,
+            leaderboard_best_reached_at=timezone.now() - timedelta(days=2),
+        )
+        QuizProgress.objects.create(
+            user=rival,
+            quiz_id=second_quiz_id,
+            status=QuizProgress.Status.COMPLETED,
+            state_json={},
+            answers_count=2,
+            question_count=2,
+            last_view="summary",
+            completed_at=timezone.now() - timedelta(days=1),
+            leaderboard_semester_key=semester_key,
+            leaderboard_best_score=200,
+            leaderboard_best_correct_answers=2,
+            leaderboard_best_question_count=2,
+            leaderboard_best_duration_ms=40_000,
+            leaderboard_best_reached_at=timezone.now() - timedelta(days=1),
+        )
+
+        self.client.force_login(user)
+        state_url = reverse("quiz-state", kwargs={"quiz_id": self.quiz_id})
+        completed_payload = {
+            "userAnswers": {"0": 0, "1": 1},
+            "currentQuestionIndex": 1,
+            "hiddenQuestionIndices": [],
+            "currentView": "summary",
+            "questionResponseDurationMs": {"0": 1_000, "1": 1_000},
+        }
+        response = self.client.post(state_url, data=json.dumps(completed_payload), content_type="application/json")
+
+        self.assertEqual(response.status_code, 200)
+        body = response.json()
+        self.assertEqual(body["status"], "completed")
+        self.assertEqual(
+            body["quiz_cup"]["url"],
+            reverse("leaderboard-subject", kwargs={"subject_slug": "personlighedspsykologi"}),
+        )
+        self.assertEqual(body["quiz_cup"]["previous_rank"], 2)
+        self.assertEqual(body["quiz_cup"]["current_rank"], 1)
+        self.assertEqual(body["quiz_cup"]["rank_change"], 1)
+        self.assertEqual(body["quiz_cup"]["participant_count"], 2)
 
     def test_state_api_locks_answer_after_first_submission(self) -> None:
         user = self._create_user()

@@ -65,6 +65,7 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Module headers in subject detail are rendered as a combined headline (`Uge x, forelæsning x: <titel>`), with cleaned lecture title metadata.
 - Quiz labels are rendered from cleaned `episode_title` metadata (`modul` + `titel`) instead of raw file/tag strings.
 - Quiz wrapper header uses a structured identity block (module label + title) and includes in-flow progress feedback per question step.
+- Quiz summary includes a direct `Gå til Quiz cup` CTA and shows rank movement (`fra #x til #y`) when a logged-in public participant improves placement on completion.
 - Global shell and quiz wrapper enforce horizontal overflow guardrails so sticky header + fixed mobile tabbar stay anchored on narrow devices.
 - Mobile `Mine fag` popup is rendered as a viewport-centered layer (via body portal) to stay centered on both axes across browsers.
 - `quiz_links.json` entries must include `subject_slug` so unit progression can be computed per subject (auto-populated by quiz-link sync scripts).

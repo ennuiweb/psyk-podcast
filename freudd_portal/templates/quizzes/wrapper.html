@@ -307,6 +307,20 @@
     margin-bottom: 0.1rem;
   }
 
+  .quiz-cup-summary {
+    display: grid;
+    gap: var(--space-2);
+    margin: 0 0 var(--space-3);
+  }
+
+  .quiz-cup-rank-feedback {
+    margin: 0;
+  }
+
+  .quiz-cup-link {
+    width: fit-content;
+  }
+
   .quiz-login-prompt {
     margin-top: var(--space-4);
     border: 1px solid var(--warn-border);
@@ -403,6 +417,12 @@
         Besvaret
       </div>
     </div>
+    {% if quiz_cup_url %}
+    <div class="quiz-cup-summary">
+      <p class="quiz-cup-rank-feedback muted" id="quiz-cup-rank-feedback"></p>
+      <a class="ghost-link quiz-cup-link" href="{{ quiz_cup_url }}">Gå til Quiz cup</a>
+    </div>
+    {% endif %}
     <div class="quiz-actions">
       <button id="quiz-review" class="ghost-button" type="button">Gennemgå svar</button>
       <button id="quiz-reset" class="ghost-button" type="button">Tag quiz igen</button>
@@ -437,6 +457,7 @@
     const cooldownResetSeconds = 3600;
     const quizOptionOrderSalt = "{{ quiz_id }}";
     const isAuthenticated = {{ user_is_authenticated|yesno:"true,false" }};
+    const quizCupUrl = "{{ quiz_cup_url|default:'' }}";
     const localCooldownKey = "quiz-local-cooldown:{{ quiz_id }}";
     const loginEndPrompt = document.getElementById("login-end-prompt");
 
@@ -467,11 +488,13 @@
     const summarySkippedNode = document.getElementById("summary-skipped");
     const summaryAnsweredNode = document.getElementById("summary-answered");
     const summaryCooldownNode = document.getElementById("quiz-cooldown-note");
+    const quizCupRankFeedbackNode = document.getElementById("quiz-cup-rank-feedback");
 
     let quiz = null;
     let tickerId = null;
     let timerBusy = false;
     let cooldownState = null;
+    let quizCupState = null;
     let state = {
       userAnswers: {},
       currentQuestionIndex: 0,
@@ -1323,6 +1346,28 @@
       summaryWrongNode.textContent = String(stats.wrong);
       summarySkippedNode.textContent = String(stats.skipped);
       summaryAnsweredNode.textContent = `${answeredCount()} / ${total}`;
+      if (quizCupRankFeedbackNode) {
+        const rankBefore = Number.parseInt(String(quizCupState?.previous_rank ?? ""), 10);
+        const rankAfter = Number.parseInt(String(quizCupState?.current_rank ?? ""), 10);
+        const rankChange = Number.parseInt(String(quizCupState?.rank_change ?? 0), 10) || 0;
+        const participantCount = Number.parseInt(String(quizCupState?.participant_count ?? 0), 10) || 0;
+        if (rankChange > 0 && Number.isInteger(rankBefore) && Number.isInteger(rankAfter)) {
+          const rankWord = rankChange === 1 ? "plads" : "pladser";
+          quizCupRankFeedbackNode.textContent = `Du rykkede op ${rankChange} ${rankWord} i Quiz cup (fra #${rankBefore} til #${rankAfter}).`;
+        } else if (Number.isInteger(rankAfter) && rankAfter > 0 && Number.isInteger(rankBefore) && rankBefore > 0) {
+          quizCupRankFeedbackNode.textContent = `Din placering i Quiz cup er fortsat #${rankAfter}.`;
+        } else if (Number.isInteger(rankAfter) && rankAfter > 0) {
+          if (participantCount > 0) {
+            quizCupRankFeedbackNode.textContent = `Du er nu placeret som #${rankAfter} ud af ${participantCount} i Quiz cup.`;
+          } else {
+            quizCupRankFeedbackNode.textContent = `Du er nu placeret som #${rankAfter} i Quiz cup.`;
+          }
+        } else if (isAuthenticated && quizCupUrl) {
+          quizCupRankFeedbackNode.textContent = "Se din aktuelle placering i Quiz cup.";
+        } else {
+          quizCupRankFeedbackNode.textContent = "";
+        }
+      }
       updateCooldownUi();
     }
 
@@ -1397,6 +1442,9 @@
       }
       const body = await response.json();
       cooldownState = normalizeCooldownPayload(body?.cooldown);
+      if (body?.quiz_cup && typeof body.quiz_cup === "object") {
+        quizCupState = body.quiz_cup;
+      }
       return { ok: true, cooldown: cooldownState, data: body };
     }
 

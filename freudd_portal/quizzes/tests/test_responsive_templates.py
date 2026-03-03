@@ -147,6 +147,14 @@ class ResponsiveTemplateRulesTests(SimpleTestCase):
         self.assertIn("width: 100%;\n    min-width: 0;\n    min-height: var(--control-min-height);", body)
         self.assertIn(".quiz-option-text {\n    flex: 1 1 auto;\n    min-width: 0;", body)
 
+    def test_quiz_wrapper_summary_exposes_quiz_cup_link_and_rank_feedback_hook(self) -> None:
+        body = self._template_text("quizzes/wrapper.html")
+        self.assertIn("quiz-cup-summary", body)
+        self.assertIn('id="quiz-cup-rank-feedback"', body)
+        self.assertIn("Gå til Quiz cup", body)
+        self.assertIn("const quizCupUrl =", body)
+        self.assertIn("quizCupState = body.quiz_cup;", body)
+
     def test_base_template_exposes_page_class_hook_for_scoped_layout_modes(self) -> None:
         body = self._template_text("base.html")
         self.assertIn("page-{{ request.resolver_match.url_name }}", body)

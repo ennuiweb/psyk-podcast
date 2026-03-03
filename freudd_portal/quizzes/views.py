@@ -1979,6 +1979,7 @@ def subject_detail_view(request: HttpRequest, subject_slug: str) -> HttpResponse
                 slots=summary,
             )
             reading["difficulty_summary"] = annotated_summary
+            reading["visible_difficulty_summary"] = _visible_quiz_difficulty_slots(annotated_summary)
             reading["primary_quiz_url"] = ""
             normalized_reading_key = str(reading.get("reading_key") or "").strip().lower()
             source_filename = _source_filename_or_none(reading.get("source_filename"))

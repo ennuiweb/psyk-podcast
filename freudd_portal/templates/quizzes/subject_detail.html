@@ -1713,8 +1713,9 @@
                           <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
                             <path d="M5 12.5 9.3 17 19 7.4"></path>
                           </svg>
-                          <span class="visually-hidden">{% if reading.is_marked_read %}Læst{% else %}Markér læst{% endif
-                            %}</span>
+                          <span class="visually-hidden">
+                            {% if reading.is_marked_read %}Læst{% else %}Markér læst{% endif %}
+                          </span>
                         </button>
                       </form>
                       <p class="reading-title"><strong>{{ reading.reading_title }}</strong></p>
@@ -1744,8 +1745,9 @@
                         <li
                           class="quiz-difficulty-row is-{{ slot.difficulty }} is-{{ slot.state_key }} {% if slot.quiz_url %}has-action{% else %}is-disabled{% endif %}">
                           <div class="quiz-difficulty-header">
-                            <span class="material-symbols-outlined quiz-difficulty-icon">filter_{{ slot.display_index
-                              }}</span>
+                            <span class="material-symbols-outlined quiz-difficulty-icon">
+                              filter_{{ slot.display_index }}
+                            </span>
                             {% if slot.quiz_url %}
                             <a class="quiz-difficulty-title" href="{{ slot.quiz_url }}">{{ slot.title }}</a>
                             {% else %}
@@ -1753,8 +1755,9 @@
                             {% endif %}
                           </div>
                           {% if slot.meta_line %}
-                          <p class="quiz-difficulty-meta {% if not slot.has_metrics %}is-idle{% endif %}">{{
-                            slot.meta_line }}</p>
+                          <p class="quiz-difficulty-meta {% if not slot.has_metrics %}is-idle{% endif %}">
+                            {{ slot.meta_line }}
+                          </p>
                           {% endif %}
                         </li>
                         {% endfor %}
@@ -1796,10 +1799,13 @@
 
             <ul class="podcast-list">
               {% for podcast in active_lecture.podcast_rows %}
-              <li class="podcast-row {% if podcast.spotify_embed_url %}has-open-podcast{% endif %}" {% if
-                podcast.spotify_embed_url %} data-spotify-embed-url="{{ podcast.spotify_embed_url }}" role="link"
-                tabindex="0" aria-label="åbn på spotify: Ep. {{ podcast.episode_index }}: {{ podcast.display_title }}"
-                {% endif %}>
+              {% if podcast.spotify_embed_url %}
+              <li class="podcast-row has-open-podcast" data-spotify-embed-url="{{ podcast.spotify_embed_url }}"
+                role="link" tabindex="0"
+                aria-label="åbn på spotify: Ep. {{ podcast.episode_index }}: {{ podcast.display_title }}">
+                {% else %}
+              <li class="podcast-row">
+                {% endif %}
                 {% if podcast.spotify_embed_url %}
                 <div class="podcast-hover-actions">
                   <button class="podcast-hover-action" type="button" data-podcast-action="open">åbn på spotify</button>

@@ -1,0 +1,395 @@
+{
+  "title": "Psychiatry Quiz",
+  "questions": [
+    {
+      "question": "Which of the following is categorized as a \"positive symptom\" of schizophrenia?",
+      "answerOptions": [
+        {
+          "text": "Auditory hallucinations",
+          "isCorrect": true,
+          "rationale": "Positive symptoms refer to abnormal behaviors or experiences that are gained or added to a person's state, such as hearing voices that are not there."
+        },
+        {
+          "text": "Social withdrawal",
+          "isCorrect": false,
+          "rationale": "This is a negative symptom because it represents a loss or reduction of normal social functioning and engagement."
+        },
+        {
+          "text": "Blunted affect",
+          "isCorrect": false,
+          "rationale": "Reduced emotional expression is a negative symptom, signifying a loss of the typical range of emotional signaling."
+        },
+        {
+          "text": "Impoverished speech",
+          "isCorrect": false,
+          "rationale": "Slow or reduced speech, known as alogia, is considered a negative symptom because it reflects a deficit in normal behavioral output."
+        }
+      ],
+      "hint": "Focus on symptoms that represent an 'addition' to normal experience rather than a 'subtraction' from it."
+    },
+    {
+      "question": "According to epidemiological data, what is the approximate prevalence of schizophrenia in the general population?",
+      "answerOptions": [
+        {
+          "text": "$1\\%$",
+          "isCorrect": true,
+          "rationale": "Schizophrenia is found globally across different cultures and societies at a remarkably consistent rate of about one out of every 100 people."
+        },
+        {
+          "text": "$5\\%$",
+          "isCorrect": false,
+          "rationale": "While significant, this percentage overestimates the incidence of schizophrenia, which affects a smaller portion of the global population."
+        },
+        {
+          "text": "$10\\%$",
+          "isCorrect": false,
+          "rationale": "This rate is much closer to the prevalence of mood disorders like depression rather than schizophrenia."
+        },
+        {
+          "text": "$0.1\\%$",
+          "isCorrect": false,
+          "rationale": "This figure underestimates the impact of the disorder, which affects millions of people in the United States alone."
+        }
+      ],
+      "hint": "Think about a small but significant percentage that remains consistent across nearly every human society."
+    },
+    {
+      "question": "Which structural brain abnormality is most commonly associated with schizophrenia in MRI studies?",
+      "answerOptions": [
+        {
+          "text": "Enlarged cerebral ventricles",
+          "isCorrect": true,
+          "rationale": "Expansion of the fluid-filled lateral ventricles is a consistent finding in schizophrenia, often occurring at the expense of surrounding brain tissue."
+        },
+        {
+          "text": "Increased hippocampal volume",
+          "isCorrect": false,
+          "rationale": "Research actually shows that the hippocampus and amygdala tend to be smaller or show atrophy in affected individuals."
+        },
+        {
+          "text": "Thicker cortical gray matter",
+          "isCorrect": false,
+          "rationale": "Studies of adolescents with schizophrenia show an accelerated loss of gray matter rather than an increase in thickness."
+        },
+        {
+          "text": "Increased frontal lobe activity at rest",
+          "isCorrect": false,
+          "rationale": "The hypofrontality hypothesis suggests the opposite: that the frontal lobes are underactive, especially during cognitive tasks."
+        }
+      ],
+      "hint": "Look for a change involving the fluid-filled spaces located deep within the brain."
+    },
+    {
+      "question": "The dopamine hypothesis of schizophrenia was largely supported by the observation that which class of drugs could reduce positive symptoms?",
+      "answerOptions": [
+        {
+          "text": "$D_{2}$ receptor antagonists",
+          "isCorrect": true,
+          "rationale": "Early antipsychotics like chlorpromazine work by blocking dopamine $D_{2}$ receptors, suggesting that overactivity in these pathways contributes to the disorder."
+        },
+        {
+          "text": "Dopamine agonists",
+          "isCorrect": false,
+          "rationale": "Agonists increase dopamine activity, which can actually induce or worsen psychotic symptoms, as seen with large doses of amphetamines."
+        },
+        {
+          "text": "Selective serotonin reuptake inhibitors (SSRIs)",
+          "isCorrect": false,
+          "rationale": "SSRIs are primarily used to treat depression by increasing serotonin levels, not the primary dopamine-related symptoms of schizophrenia."
+        },
+        {
+          "text": "$NMDA$ receptor agonists",
+          "isCorrect": false,
+          "rationale": "While glutamate is involved, $NMDA$ agonists are not the standard treatment for schizophrenia due to risks like seizures."
+        }
+      ],
+      "hint": "Consider the mechanism of first-generation antipsychotics and how they interact with dopamine signaling."
+    },
+    {
+      "question": "How do concordance rates for schizophrenia compare between monozygotic (identical) and dizygotic (fraternal) twins?",
+      "answerOptions": [
+        {
+          "text": "Monozygotic twins have a significantly higher concordance rate (about $50\\%$) than dizygotic twins (about $17\\%$).",
+          "isCorrect": true,
+          "rationale": "The much higher rate in identical twins, who share $100\\%$ of their genes, provides strong evidence for a genetic component to the disorder."
+        },
+        {
+          "text": "Dizygotic twins have a higher concordance rate because they are exposed to more diverse environmental stressors.",
+          "isCorrect": false,
+          "rationale": "Concordance rates follow genetic closeness; because dizygotic twins only share $50\\%$ of genes, their risk is lower than that of identical twins."
+        },
+        {
+          "text": "The concordance rates are nearly identical, suggesting that environment is the only factor.",
+          "isCorrect": false,
+          "rationale": "If the environment were the only factor, the shared environment of all twin pairs would result in similar rates regardless of genetic similarity."
+        },
+        {
+          "text": "Monozygotic twins have a $100\\%$ concordance rate, proving schizophrenia is entirely hereditary.",
+          "isCorrect": false,
+          "rationale": "The rate is only about $50\\%$, indicating that environmental factors and stress also play a crucial role in triggering the disorder."
+        }
+      ],
+      "hint": "Consider how the sharing of genes influences the statistical likelihood of both twins developing the same condition."
+    },
+    {
+      "question": "The \"hypofrontality hypothesis\" suggests that schizophrenia may result from underactivation of which brain region?",
+      "answerOptions": [
+        {
+          "text": "Frontal lobes",
+          "isCorrect": true,
+          "rationale": "Brain imaging shows that people with schizophrenia often have reduced metabolic activity in the frontal cortex, especially when performing difficult mental tasks."
+        },
+        {
+          "text": "Occipital lobes",
+          "isCorrect": false,
+          "rationale": "The occipital lobes are primarily involved in visual processing and are not the focus of the hypofrontality hypothesis."
+        },
+        {
+          "text": "Cerebellum",
+          "isCorrect": false,
+          "rationale": "While involved in motor coordination, the primary cognitive impairments in schizophrenia are linked to higher cortical regions."
+        },
+        {
+          "text": "Parietal lobes",
+          "isCorrect": false,
+          "rationale": "Though the parietal cortex may show some changes in depression, the term 'hypofrontality' specifically names the anterior part of the brain."
+        }
+      ],
+      "hint": "The name of the hypothesis contains a clue about the specific anatomical location."
+    },
+    {
+      "question": "Which drug is known to produce a temporary state that closely mimics both the positive and negative symptoms of schizophrenia by acting as an $NMDA$ receptor antagonist?",
+      "answerOptions": [
+        {
+          "text": "Phencyclidine (PCP)",
+          "isCorrect": true,
+          "rationale": "PCP blocks glutamate $NMDA$ receptors, leading to the glutamate hypothesis, which suggests underactivation of these receptors contributes to schizophrenia."
+        },
+        {
+          "text": "Chlorpromazine",
+          "isCorrect": false,
+          "rationale": "This is an antipsychotic medication used to treat schizophrenia, not a drug used to model its symptoms."
+        },
+        {
+          "text": "Lithium",
+          "isCorrect": false,
+          "rationale": "Lithium is a mood stabilizer primarily used to treat the manic phases of bipolar disorder."
+        },
+        {
+          "text": "Prozac",
+          "isCorrect": false,
+          "rationale": "Prozac is an SSRI antidepressant and does not induce schizophrenia-like psychosis."
+        }
+      ],
+      "hint": "This substance is also known by the street name 'angel dust' and interferes with glutamate signaling."
+    },
+    {
+      "question": "Which of the following environmental factors has been shown to significantly increase the risk of developing schizophrenia?",
+      "answerOptions": [
+        {
+          "text": "Living in a large city",
+          "isCorrect": true,
+          "rationale": "Epidemiological studies indicate that being raised in an urban environment increases the risk, possibly due to increased stress, pollutants, or exposure to diseases."
+        },
+        {
+          "text": "Living in a rural area",
+          "isCorrect": false,
+          "rationale": "Rural living is actually associated with a lower baseline risk compared to medium or large cities."
+        },
+        {
+          "text": "High levels of physical activity",
+          "isCorrect": false,
+          "rationale": "Physical activity is generally considered a protective factor for mental health rather than a risk factor for psychosis."
+        },
+        {
+          "text": "Exposure to bright light in the morning",
+          "isCorrect": false,
+          "rationale": "Morning light exposure is a treatment for Seasonal Affective Disorder and is not linked to the development of schizophrenia."
+        }
+      ],
+      "hint": "Consider how population density and the associated 'stress of living' might impact mental health."
+    },
+    {
+      "question": "What is the primary mechanism of action for Selective Serotonin Reuptake Inhibitors (SSRIs) in treating depression?",
+      "answerOptions": [
+        {
+          "text": "They block the reabsorption of serotonin into the presynaptic neuron.",
+          "isCorrect": true,
+          "rationale": "By inhibiting reuptake, these drugs allow serotonin to remain in the synaptic cleft longer, increasing its stimulation of postsynaptic receptors."
+        },
+        {
+          "text": "They inhibit the enzyme monoamine oxidase ($MAO$).",
+          "isCorrect": false,
+          "rationale": "This is the mechanism of $MAO$ inhibitors, an older class of antidepressants that prevent the breakdown of neurotransmitters."
+        },
+        {
+          "text": "They act as direct agonists at dopamine $D_{2}$ receptors.",
+          "isCorrect": false,
+          "rationale": "SSRIs specifically target the serotonin system; dopamine $D_{2}$ receptors are the primary targets of antipsychotic medications."
+        },
+        {
+          "text": "They surgically separate the frontal lobes from the rest of the brain.",
+          "isCorrect": false,
+          "rationale": "This describes a lobotomy, a now-obsolete surgical procedure, not a pharmacological treatment."
+        }
+      ],
+      "hint": "The name of this drug class describes exactly what it does to a specific neurotransmitter's recycling process."
+    },
+    {
+      "question": "In people with major depression, what characteristic change is often observed in their cortisol levels?",
+      "answerOptions": [
+        {
+          "text": "Chronically elevated levels and a blunted daily rhythm.",
+          "isCorrect": true,
+          "rationale": "Dysfunction in the HPA axis often leads to excessive cortisol release, and depressed individuals frequently fail the dexamethasone suppression test."
+        },
+        {
+          "text": "Abnormally low levels, especially in the morning.",
+          "isCorrect": false,
+          "rationale": "While some conditions involve low cortisol, depression is typically associated with high levels, reflecting a constant stress response."
+        },
+        {
+          "text": "Cortisol levels that are only elevated during the summer months.",
+          "isCorrect": false,
+          "rationale": "Seasonal patterns are related to SAD, but general major depression involves more consistent HPA axis disruption regardless of season."
+        },
+        {
+          "text": "Cortisol levels are unaffected by depression.",
+          "isCorrect": false,
+          "rationale": "Hormonal changes are a key biological marker of depression, with many patients showing significant HPA axis overactivity."
+        }
+      ],
+      "hint": "Think about the hormone released by the adrenal glands during a prolonged stress response."
+    },
+    {
+      "question": "How does the sleep architecture of a person with depression typically differ from a healthy individual?",
+      "answerOptions": [
+        {
+          "text": "They enter REM sleep much faster after falling asleep.",
+          "isCorrect": true,
+          "rationale": "A shortened REM latency (the time between sleep onset and the first REM period) is a classic biological marker of major depression."
+        },
+        {
+          "text": "They spend significantly more time in Stage 3 slow-wave sleep.",
+          "isCorrect": false,
+          "rationale": "Depressed patients actually show a striking reduction in deep, slow-wave sleep (Stage 3)."
+        },
+        {
+          "text": "They experience fewer but much longer REM cycles in the morning.",
+          "isCorrect": false,
+          "rationale": "In depression, REM sleep is often shifted toward the first half of the night rather than the morning."
+        },
+        {
+          "text": "They fall asleep faster than healthy controls.",
+          "isCorrect": false,
+          "rationale": "Difficulty falling asleep (insomnia) is one of the most common complaints in individuals suffering from depression."
+        }
+      ],
+      "hint": "Focus on the timing of the first cycle of 'dreaming' sleep during the night."
+    },
+    {
+      "question": "Which of the following is an element commonly used as a drug to stabilize mood in patients with bipolar disorder?",
+      "answerOptions": [
+        {
+          "text": "Lithium",
+          "isCorrect": true,
+          "rationale": "Lithium is a naturally occurring element that has been a standard treatment for decades to manage the manic episodes of bipolar disorder."
+        },
+        {
+          "text": "Iron",
+          "isCorrect": false,
+          "rationale": "Iron is an essential mineral for blood health but has no specific role as a psychiatric mood stabilizer."
+        },
+        {
+          "text": "Calcium",
+          "isCorrect": false,
+          "rationale": "While calcium is vital for neurotransmission, it is not used as a pharmacological agent for bipolar disorder."
+        },
+        {
+          "text": "Potassium",
+          "isCorrect": false,
+          "rationale": "Potassium is critical for heart and nerve function but is not the specific treatment identified for mood stabilization in bipolar disorder."
+        }
+      ],
+      "hint": "This simple element is found on the periodic table and is specifically effective against mania."
+    },
+    {
+      "question": "The dexamethasone suppression test is used to assess the function of which biological system in depressed patients?",
+      "answerOptions": [
+        {
+          "text": "The hypothalamic-pituitary-adrenal (HPA) axis",
+          "isCorrect": true,
+          "rationale": "Dexamethasone is a synthetic glucocorticoid that should normally suppress ACTH and cortisol; failure to suppress indicates HPA axis dysfunction."
+        },
+        {
+          "text": "The dopamine reward pathway",
+          "isCorrect": false,
+          "rationale": "This pathway is more closely related to addiction and the positive symptoms of schizophrenia than to the cortisol suppression test."
+        },
+        {
+          "text": "The visual processing system",
+          "isCorrect": false,
+          "rationale": "Eye-tracking tests, not hormone suppression tests, are used to evaluate biological markers in schizophrenia."
+        },
+        {
+          "text": "The neuromuscular junction",
+          "isCorrect": false,
+          "rationale": "This system involves the communication between motor neurons and muscles, which is unrelated to the endocrine markers of depression."
+        }
+      ],
+      "hint": "Think about the complex communication network between the brain and the adrenal glands."
+    },
+    {
+      "question": "What is the primary goal of Cognitive Behavioral Therapy (CBT) in treating depression?",
+      "answerOptions": [
+        {
+          "text": "To correct self-defeating modes of thinking and improve interpersonal relationships.",
+          "isCorrect": true,
+          "rationale": "CBT aims to break the 'treadmill of depression' by helping patients recognize and change negative thought patterns and behaviors."
+        },
+        {
+          "text": "To surgically alter the amygdala to reduce fear responses.",
+          "isCorrect": false,
+          "rationale": "CBT is a talk-based psychotherapy and does not involve any form of invasive surgery or brain lesions."
+        },
+        {
+          "text": "To increase the number of dopamine receptors through prolonged drug treatment.",
+          "isCorrect": false,
+          "rationale": "Drug-induced changes in receptors are physiological side effects of medications, not the psychological goal of behavioral therapy."
+        },
+        {
+          "text": "To induce large-scale seizures to reset brain connectivity.",
+          "isCorrect": false,
+          "rationale": "This describes Electroconvulsive Therapy (ECT), which is a physiological treatment used as a last resort, not a behavioral therapy."
+        }
+      ],
+      "hint": "This approach focuses on the intersection of a person's thoughts, behaviors, and moods."
+    },
+    {
+      "question": "Which of the following is a potential risk associated with high-dose use of amphetamines, as it relates to psychopathology?",
+      "answerOptions": [
+        {
+          "text": "Amphetamine psychosis, which mimics the symptoms of schizophrenia.",
+          "isCorrect": true,
+          "rationale": "Amphetamines cause a massive release of dopamine, which can produce paranoia and hallucinations nearly indistinguishable from acute schizophrenia."
+        },
+        {
+          "text": "A permanent increase in the size of the cerebral ventricles.",
+          "isCorrect": false,
+          "rationale": "While amphetamines are harmful, enlarged ventricles are primarily seen as a structural trait in schizophrenia, not a direct result of stimulant use."
+        },
+        {
+          "text": "Immediate relief from the symptoms of major depression.",
+          "isCorrect": false,
+          "rationale": "While they provide a temporary 'high,' stimulants are not a treatment for depression and can lead to severe crashes and dependence."
+        },
+        {
+          "text": "The development of the Argyll-Robertson pupil.",
+          "isCorrect": false,
+          "rationale": "This specific eye sign is a historical marker for syphilis, a bacterial infection, not a result of drug abuse."
+        }
+      ],
+      "hint": "Consider how drugs that increase dopamine levels might create states that look like other mental disorders."
+    }
+  ]
+}

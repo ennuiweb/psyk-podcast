@@ -1,0 +1,317 @@
+{
+  "title": "Psychopathology Quiz",
+  "questions": [
+    {
+      "question": "Which of the following best describes a \"negative symptom\" of schizophrenia according to the text?",
+      "answerOptions": [
+        {
+          "text": "The experience of auditory hallucinations, such as hearing a disembodied voice.",
+          "isCorrect": false,
+          "rationale": "Hallucinations represent a behavioral state that has been gained, which characterizes positive symptoms."
+        },
+        {
+          "text": "The presence of highly personalized delusions or false beliefs.",
+          "isCorrect": false,
+          "rationale": "Delusions are considered positive symptoms because they involve the addition of distorted thoughts rather than the loss of function."
+        },
+        {
+          "text": "A notable impairment in logical structure known as dissociative thinking.",
+          "isCorrect": false,
+          "rationale": "While a core feature of schizophrenia, disorganized or dissociative thinking is typically grouped with positive symptoms or disorganized behavior."
+        },
+        {
+          "text": "Social withdrawal and an impoverishment of thought and speech.",
+          "isCorrect": true,
+          "rationale": "Negative symptoms refer to functions that have been lost or are insufficient, such as emotional expression and social engagement."
+        }
+      ],
+      "hint": "Focus on the distinction between behavioral states gained versus behavioral functions lost."
+    },
+    {
+      "question": "In the context of genetic studies on schizophrenia, what does a $50\\%$ concordance rate in monozygotic twins suggest?",
+      "answerOptions": [
+        {
+          "text": "Schizophrenia is caused by a single dominant gene inherited from one parent.",
+          "isCorrect": false,
+          "rationale": "If a single dominant gene were responsible, the concordance for identical twins would likely be $100\\%$."
+        },
+        {
+          "text": "Environmental factors and stress play a significant role alongside genetic susceptibility.",
+          "isCorrect": true,
+          "rationale": "Because identical twins share nearly $100\\%$ of their genes, a $50\\%$ concordance rate indicates that genes alone do not determine the disorder."
+        },
+        {
+          "text": "The disorder is purely environmental since the rate is not $100\\%$.",
+          "isCorrect": false,
+          "rationale": "The rate is significantly higher than the $17\\%$ found in dizygotic twins, which confirms a strong genetic component."
+        },
+        {
+          "text": "Dizygotic twins have the same risk as monozygotic twins due to shared family environments.",
+          "isCorrect": false,
+          "rationale": "The text states that monozygotic twins have a much higher concordance rate than dizygotic twins ($17\\%$)."
+        }
+      ],
+      "hint": "Consider why identical twins, who share the same DNA, might not both develop the same condition."
+    },
+    {
+      "question": "What structural brain abnormality is most consistently reported in people with schizophrenia and is also seen in transgenic mice expressing the mutant $DISC1$ gene?",
+      "answerOptions": [
+        {
+          "text": "Enlarged cerebral ventricles, particularly the lateral ventricles.",
+          "isCorrect": true,
+          "rationale": "Enlarged ventricles are a stable trait in many schizophrenia patients and are replicated in $DISC1$ mutant mouse models."
+        },
+        {
+          "text": "A significant increase in overall brain volume and weight.",
+          "isCorrect": false,
+          "rationale": "The text notes that overall brain size does not seem to be affected, meaning enlarged ventricles occur at the expense of surrounding tissue."
+        },
+        {
+          "text": "The complete absence of the corpus callosum.",
+          "isCorrect": false,
+          "rationale": "While the corpus callosum shows differences in structure and activity, it is not reported as being entirely absent."
+        },
+        {
+          "text": "Hyperactivation of the frontal lobes during cognitive tasks.",
+          "isCorrect": false,
+          "rationale": "The hypofrontality hypothesis actually suggests a decrease in frontal lobe metabolic activity."
+        }
+      ],
+      "hint": "Think about the fluid-filled spaces within the brain and how their size might relate to the loss of adjacent neural tissue."
+    },
+    {
+      "question": "The \"hypofrontality hypothesis\" suggests that schizophrenia may result from which of the following?",
+      "answerOptions": [
+        {
+          "text": "Underactivation of the frontal lobes, especially during difficult cognitive tasks.",
+          "isCorrect": true,
+          "rationale": "PET scans show relatively less metabolic activity in the frontal lobes of people with schizophrenia compared to controls."
+        },
+        {
+          "text": "An overabundance of synaptic spines on neurons within the prefrontal cortex.",
+          "isCorrect": false,
+          "rationale": "Research actually shows that neurons in the frontal cortex of affected individuals have a reduced density of synaptic spines."
+        },
+        {
+          "text": "Increased blood flow to the anterior cingulate during rest.",
+          "isCorrect": false,
+          "rationale": "Hypofrontality refers to reduced, not increased, activity and blood flow in the frontal regions."
+        },
+        {
+          "text": "A failure of the parietal lobe to communicate with the temporal lobe.",
+          "isCorrect": false,
+          "rationale": "While connectivity is an issue, the hypothesis specifically focuses on the functional deficit of the frontal lobes."
+        }
+      ],
+      "hint": "Recall the results of PET scans during the Wisconsin Card Sorting Task."
+    },
+    {
+      "question": "First-generation antipsychotic drugs, such as chlorpromazine and haloperidol, primarily act by which mechanism?",
+      "answerOptions": [
+        {
+          "text": "Blocking $5-HT_{2A}$ serotonin receptors.",
+          "isCorrect": false,
+          "rationale": "Serotonin receptor blocking is a hallmark of second-generation (atypical) antipsychotics like clozapine."
+        },
+        {
+          "text": "Acting as antagonists at dopamine $D_2$ receptors.",
+          "isCorrect": true,
+          "rationale": "The clinical effectiveness of first-generation antipsychotics is highly correlated with their affinity for $D_2$ receptors."
+        },
+        {
+          "text": "Increasing the reuptake of dopamine into the presynaptic terminal.",
+          "isCorrect": false,
+          "rationale": "Antipsychotics block receptors; blocking reuptake would increase dopamine activity, which is what amphetamines do."
+        },
+        {
+          "text": "Enhancing the activity of $NMDA$ glutamate receptors.",
+          "isCorrect": false,
+          "rationale": "While the glutamate hypothesis is relevant to schizophrenia, traditional antipsychotics do not target these receptors directly."
+        }
+      ],
+      "hint": "This mechanism is the core of the earliest biological hypothesis regarding the cause of schizophrenia."
+    },
+    {
+      "question": "What condition is characterized by repetitive, involuntary movements of the face and mouth following prolonged use of traditional antipsychotics?",
+      "answerOptions": [
+        {
+          "text": "Amphetamine psychosis",
+          "isCorrect": false,
+          "rationale": "This refers to a delusional state brought on by high doses of amphetamines, not a side effect of antipsychotics."
+        },
+        {
+          "text": "Dissociative thinking",
+          "isCorrect": false,
+          "rationale": "This is a primary symptom of schizophrenia itself, involving impaired logical thought structure."
+        },
+        {
+          "text": "Tardive dyskinesia",
+          "isCorrect": true,
+          "rationale": "Tardive dyskinesia is a late-appearing and often permanent motor side effect of chronic dopamine receptor blockage."
+        },
+        {
+          "text": "Serotonin syndrome",
+          "isCorrect": false,
+          "rationale": "This is a potentially fatal reaction to excessively high levels of serotonin, often caused by drug interactions involving SSRIs."
+        }
+      ],
+      "hint": "The name of this disorder is derived from the Latin word for \"slow,\" referring to its delayed onset."
+    },
+    {
+      "question": "The observation that Phencyclidine ($PCP$) induces both positive and negative symptoms of schizophrenia led to which hypothesis?",
+      "answerOptions": [
+        {
+          "text": "The dopamine hypothesis",
+          "isCorrect": false,
+          "rationale": "The dopamine hypothesis was largely based on the effects of amphetamines and $D_2$ antagonists."
+        },
+        {
+          "text": "The glutamate hypothesis",
+          "isCorrect": true,
+          "rationale": "$PCP$ acts as an $NMDA$ receptor antagonist, suggesting that underactivation of glutamate receptors contributes to the disorder."
+        },
+        {
+          "text": "The serotonin hypothesis",
+          "isCorrect": false,
+          "rationale": "Serotonin is more closely linked to the action of hallucinogens like LSD and the pathology of depression."
+        },
+        {
+          "text": "The epigenetic hypothesis",
+          "isCorrect": false,
+          "rationale": "While epigenetics is discussed, the $PCP$ model specifically points to a neurotransmitter system deficit."
+        }
+      ],
+      "hint": "Consider the specific type of receptor that $PCP$ (angel dust) blocks in the brain."
+    },
+    {
+      "question": "According to epidemiological data, which environmental factor is associated with a significantly increased risk of developing schizophrenia?",
+      "answerOptions": [
+        {
+          "text": "Living in a rural area during childhood.",
+          "isCorrect": false,
+          "rationale": "The text states that moving from the city to the country actually reduces the risk of developing the disorder."
+        },
+        {
+          "text": "Exposure to bright sunlight during the first trimester of pregnancy.",
+          "isCorrect": false,
+          "rationale": "Infections like influenza, which are more common in winter (low sunlight), are the actual prenatal risk factors mentioned."
+        },
+        {
+          "text": "The stress of living in a large city.",
+          "isCorrect": true,
+          "rationale": "People raised in large cities are twice as likely to develop schizophrenia as those in rural areas, possibly due to pollutants or social stress."
+        },
+        {
+          "text": "High levels of physical activity in adolescence.",
+          "isCorrect": false,
+          "rationale": "Physical activity is not listed as a risk factor; social stress and birth complications are the primary environmental stressors discussed."
+        }
+      ],
+      "hint": "Think about how population density and urban environments might impact psychological health."
+    },
+    {
+      "question": "In the dexamethasone suppression test, how do many individuals with depression typically respond?",
+      "answerOptions": [
+        {
+          "text": "They show a significant increase in the production of growth hormone.",
+          "isCorrect": false,
+          "rationale": "The test specifically measures the feedback loop of the hypothalamic-pituitary-adrenal axis and cortisol."
+        },
+        {
+          "text": "Dexamethasone fails to suppress their cortisol release the next day.",
+          "isCorrect": true,
+          "rationale": "In depressed individuals, the negative feedback mechanism is often blunted, so dexamethasone does not fool the hypothalamus into reducing cortisol."
+        },
+        {
+          "text": "Their cortisol levels drop much lower than those of healthy controls.",
+          "isCorrect": false,
+          "rationale": "Healthy individuals show a drop in cortisol; depressed individuals fail to show this suppression."
+        },
+        {
+          "text": "They experience an immediate alleviation of depressive symptoms.",
+          "isCorrect": false,
+          "rationale": "Dexamethasone is used as a diagnostic tool for $HPA$ axis function, not as a fast-acting antidepressant treatment."
+        }
+      ],
+      "hint": "Consider the role of negative feedback in the stress hormone system."
+    },
+    {
+      "question": "Which change in sleep architecture is commonly observed in patients with major depressive disorder?",
+      "answerOptions": [
+        {
+          "text": "A total absence of REM sleep throughout the night.",
+          "isCorrect": false,
+          "rationale": "Patients actually enter REM sleep sooner and have an increased amount of it in the first half of the night."
+        },
+        {
+          "text": "An increase in the time spent in stage 3 (slow-wave) sleep.",
+          "isCorrect": false,
+          "rationale": "There is a striking reduction, not an increase, in stage 3 sleep in depressed individuals."
+        },
+        {
+          "text": "Entering the first REM period significantly earlier after falling asleep.",
+          "isCorrect": true,
+          "rationale": "The latency to the first REM period is decreased, and this correlates with the severity of the depression."
+        },
+        {
+          "text": "A decrease in sleep stages 1 and 2 to compensate for longer deep sleep.",
+          "isCorrect": false,
+          "rationale": "There is actually a corresponding increase in stages 1 and 2 because deep stage 3 sleep is reduced."
+        }
+      ],
+      "hint": "Focus on the timing and distribution of REM sleep during the night."
+    },
+    {
+      "question": "What is a primary limitation of the monoamine hypothesis of depression regarding Selective Serotonin Reuptake Inhibitors (SSRIs)?",
+      "answerOptions": [
+        {
+          "text": "SSRIs take several weeks to increase synaptic serotonin levels.",
+          "isCorrect": false,
+          "rationale": "Synaptic serotonin increases within hours of the first dose, which is why the delay in mood improvement is a paradox."
+        },
+        {
+          "text": "The delay between increased neurotransmitter levels and clinical mood improvement.",
+          "isCorrect": true,
+          "rationale": "The fact that it takes weeks to feel better despite immediate changes in serotonin suggests the brain's long-term response is what matters."
+        },
+        {
+          "text": "SSRIs are only effective if they also block dopamine receptors.",
+          "isCorrect": false,
+          "rationale": "SSRIs specifically target serotonin; SNRIs target serotonin and norepinephrine, but neither primarily targets dopamine receptors like antipsychotics do."
+        },
+        {
+          "text": "They are significantly less effective than MAO inhibitors for all patients.",
+          "isCorrect": false,
+          "rationale": "The text states SSRIs are generally more effective and have fewer side effects than older classes like MAO inhibitors."
+        }
+      ],
+      "hint": "Think about the discrepancy in timing between the drug's biochemical effect and the patient's psychological relief."
+    },
+    {
+      "question": "Which of the following treatments is specifically used to manage the cycles of mania and depression in bipolar disorder?",
+      "answerOptions": [
+        {
+          "text": "Chlorpromazine",
+          "isCorrect": false,
+          "rationale": "This is a first-generation antipsychotic used primarily for schizophrenia."
+        },
+        {
+          "text": "Lithium",
+          "isCorrect": true,
+          "rationale": "Lithium is a classic element used as a mood stabilizer to relieve symptoms of bipolar disorder."
+        },
+        {
+          "text": "Dexamethasone",
+          "isCorrect": false,
+          "rationale": "This is a synthetic glucocorticoid used to test $HPA$ axis function, not a treatment for bipolar disorder."
+        },
+        {
+          "text": "Fluoxetine (Prozac)",
+          "isCorrect": false,
+          "rationale": "While an antidepressant, it is not the primary treatment for the manic phase of bipolar disorder and can sometimes trigger mania."
+        }
+      ],
+      "hint": "This treatment involves a simple chemical element that acts as a mood stabilizer."
+    }
+  ]
+}

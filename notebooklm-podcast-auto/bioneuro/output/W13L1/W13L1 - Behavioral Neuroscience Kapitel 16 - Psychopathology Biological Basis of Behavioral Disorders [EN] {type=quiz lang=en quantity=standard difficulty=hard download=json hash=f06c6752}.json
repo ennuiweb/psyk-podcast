@@ -1,0 +1,395 @@
+{
+  "title": "Psychiatry Quiz",
+  "questions": [
+    {
+      "question": "The historical transition toward a biological perspective in psychiatry was significantly influenced by the discovery that 'paralytic dementia' was actually caused by which of the following?",
+      "answerOptions": [
+        {
+          "text": "A chronic deficiency in $B_{12}$ vitamins.",
+          "isCorrect": false,
+          "rationale": "While vitamin deficiencies can cause neurological issues, this specific disorder was linked to an infectious agent."
+        },
+        {
+          "text": "Extensive brain damage resulting from a bacterial syphilis infection.",
+          "isCorrect": true,
+          "rationale": "Hideyo Noguchi discovered that the brains of those with paralytic dementia were damaged by syphilis, leading to the name 'syphilitic psychosis'."
+        },
+        {
+          "text": "Genetic mutations in the $DISC1$ protein sequence.",
+          "isCorrect": false,
+          "rationale": "$DISC1$ is associated with modern schizophrenia research, not the historical 'paralytic dementia'."
+        },
+        {
+          "text": "Accumulated toxicity from heavy metal exposure in industrial settings.",
+          "isCorrect": false,
+          "rationale": "Although environmental toxins affect the brain, the discovery in 1911 by Noguchi specifically identified a sexually transmitted pathogen."
+        }
+      ],
+      "hint": "Consider the discovery made by microbiologist Hideyo Noguchi regarding 'syphilitic psychosis'."
+    },
+    {
+      "question": "In the context of schizophrenia, how are 'negative symptoms' distinct from 'positive symptoms'?",
+      "answerOptions": [
+        {
+          "text": "Positive symptoms represent harmful behaviors, while negative symptoms represent neutral behaviors.",
+          "isCorrect": false,
+          "rationale": "The terms do not refer to the 'goodness' or 'badness' of the behavior, but rather its presence or absence."
+        },
+        {
+          "text": "Negative symptoms refer to behavioral functions that have been lost, such as social withdrawal or impoverished speech.",
+          "isCorrect": true,
+          "rationale": "Negative symptoms represent an insufficiency of normal functioning, whereas positive symptoms are 'gained' abnormal behaviors like hallucinations."
+        },
+        {
+          "text": "Negative symptoms are only present during the initial onset, whereas positive symptoms persist for life.",
+          "isCorrect": false,
+          "rationale": "Both types of symptoms can be chronic and are categorized by the nature of the behavioral change, not the duration."
+        },
+        {
+          "text": "Positive symptoms respond only to cognitive behavioral therapy, while negative symptoms require medication.",
+          "isCorrect": false,
+          "rationale": "Drug treatments often affect positive and negative symptoms differently, but the categorization is based on clinical presentation."
+        }
+      ],
+      "hint": "Think about whether a behavior is being 'added' to the person's repertoire or 'subtracted' from their normal function."
+    },
+    {
+      "question": "Genetic studies of schizophrenia using monozygotic twins have revealed that if one twin has the disorder, the other has roughly a $50\\%$ chance of developing it. What is the primary implication of this finding?",
+      "answerOptions": [
+        {
+          "text": "Schizophrenia is caused by a single dominant gene that expresses itself half the time.",
+          "isCorrect": false,
+          "rationale": "The inheritance is complex and involves many genes; a single gene does not explain the $50\\%$ concordance rate."
+        },
+        {
+          "text": "The environment has no influence on the development of schizophrenia since the rate is so high.",
+          "isCorrect": false,
+          "rationale": "If genes were the sole cause, the concordance rate for identical twins would be $100\\%$."
+        },
+        {
+          "text": "Genetic susceptibility exists, but environmental factors or stressors are necessary to trigger the disorder.",
+          "isCorrect": true,
+          "rationale": "The fact that identical twins (sharing $100\\%$ of genes) are only concordant $50\\%$ of the time proves that non-genetic factors must be involved."
+        },
+        {
+          "text": "Monozygotic twins are genetically more different than previously thought by scientists.",
+          "isCorrect": false,
+          "rationale": "Monozygotic twins share nearly identical genotypes; the discordance is attributed to epigenetic or environmental differences."
+        }
+      ],
+      "hint": "Reflect on why identical twins, who share nearly all their DNA, do not always both develop the disorder."
+    },
+    {
+      "question": "Research suggests that schizophrenia may be associated with a specific 'endophenotype' related to eye-tracking. Which specific abnormality is observed in many patients?",
+      "answerOptions": [
+        {
+          "text": "An inability to constrict the pupil in response to bright light.",
+          "isCorrect": false,
+          "rationale": "This is the 'Argyll-Robertson pupil' associated with syphilis, not the endophenotype for schizophrenia."
+        },
+        {
+          "text": "Hyper-reactive saccades when fixing gaze on a stationary object.",
+          "isCorrect": false,
+          "rationale": "The primary tracking issue involves moving targets rather than stationary fixation."
+        },
+        {
+          "text": "The intrusion of rapid, jerky movements during 'smooth-pursuit' tracking of a moving object.",
+          "isCorrect": true,
+          "rationale": "Patients with schizophrenia often cannot maintain smooth eye movements when following a cursor and instead show jerky, interruptive movements."
+        },
+        {
+          "text": "A total loss of peripheral vision during stressful cognitive tasks.",
+          "isCorrect": false,
+          "rationale": "The study focuses on oculomotor control and tracking accuracy, not field of vision."
+        }
+      ],
+      "hint": "Look for the term describing the difficulty patients have when following a moving target on a screen."
+    },
+    {
+      "question": "Which neuroanatomical change is most consistently observed in the brains of people with schizophrenia and in transgenic mice expressing the mutant $DISC1$ gene?",
+      "answerOptions": [
+        {
+          "text": "A significant increase in the overall weight of the cerebral cortex.",
+          "isCorrect": false,
+          "rationale": "Schizophrenia is generally associated with a loss of gray matter and a reduction in brain tissue volume, not an increase."
+        },
+        {
+          "text": "Enlargement of the cerebral ventricles, especially the lateral ventricles.",
+          "isCorrect": true,
+          "rationale": "Ventricular enlargement is a hallmark structural change that occurs at the expense of surrounding brain tissue in both humans and $DISC1$ mouse models."
+        },
+        {
+          "text": "Hypertrophy of the hippocampal pyramidal cells in the CA1 region.",
+          "isCorrect": false,
+          "rationale": "The hippocampus in schizophrenia actually shows atrophy and cellular disorganization rather than hypertrophy."
+        },
+        {
+          "text": "Thickening of the corpus callosum to increase hemispheric communication.",
+          "isCorrect": false,
+          "rationale": "Changes in the corpus callosum are observed, but they involve structural and functional impairments rather than thickening."
+        }
+      ],
+      "hint": "Focus on the fluid-filled spaces in the brain that appear larger on MRI scans of affected individuals."
+    },
+    {
+      "question": "The 'hypofrontality hypothesis' suggests that schizophrenia may result from underactivation of the frontal lobes. This is most evident when patients are asked to perform which of the following?",
+      "answerOptions": [
+        {
+          "text": "Identify simple auditory tones in a quiet environment.",
+          "isCorrect": false,
+          "rationale": "This task does not specifically tax the executive functions of the frontal lobes."
+        },
+        {
+          "text": "Recall long-term memories from early childhood.",
+          "isCorrect": false,
+          "rationale": "While memory impairments exist, hypofrontality is best demonstrated during difficult cognitive tasks requiring planning or shifting strategies."
+        },
+        {
+          "text": "The Wisconsin Card Sorting Task.",
+          "isCorrect": true,
+          "rationale": "During this task, which depends on frontal lobe function, people with schizophrenia show little to no increase in prefrontal activation compared to controls."
+        },
+        {
+          "text": "Rapid eye movement (REM) sleep cycles.",
+          "isCorrect": false,
+          "rationale": "Sleep cycles involve the brainstem and other regions, while hypofrontality refers to cortical metabolic activity during wakeful cognition."
+        }
+      ],
+      "hint": "Identify the cognitive test that requires mental flexibility and is sensitive to frontal lobe damage."
+    },
+    {
+      "question": "According to the dopamine hypothesis, first-generation antipsychotics (typical antipsychotics) are effective because they act as antagonists for which specific receptor?",
+      "answerOptions": [
+        {
+          "text": "Serotonin $5-HT_{2A}$ receptors.",
+          "isCorrect": false,
+          "rationale": "While atypical antipsychotics like clozapine target these, typical antipsychotics are defined by their action on dopamine."
+        },
+        {
+          "text": "Dopamine $D_{2}$ receptors.",
+          "isCorrect": true,
+          "rationale": "The clinical effectiveness of first-generation antipsychotics is highly correlated with their binding affinity for $D_{2}$ receptors."
+        },
+        {
+          "text": "Glutamate NMDA receptors.",
+          "isCorrect": false,
+          "rationale": "NMDA receptors are associated with the glutamate hypothesis; typical antipsychotics actually block dopamine."
+        },
+        {
+          "text": "Acetylcholine muscarinic receptors.",
+          "isCorrect": false,
+          "rationale": "While some drugs have side effects on these receptors, it is not the mechanism that reduces psychotic symptoms."
+        }
+      ],
+      "hint": "This receptor's affinity is the primary predictor of the effective clinical dose for drugs like haloperidol."
+    },
+    {
+      "question": "Which condition is characterized by repetitive, involuntary movements of the face and tongue and can result from the prolonged use of traditional antipsychotic drugs?",
+      "answerOptions": [
+        {
+          "text": "Amphetamine psychosis.",
+          "isCorrect": false,
+          "rationale": "This is a delusional state caused by drug abuse, not a motor side effect of antipsychotic treatment."
+        },
+        {
+          "text": "Tardive dyskinesia.",
+          "isCorrect": true,
+          "rationale": "Tardive dyskinesia is a late-appearing and often permanent motor disorder caused by long-term blockage of dopamine receptors."
+        },
+        {
+          "text": "Cushing's syndrome.",
+          "isCorrect": false,
+          "rationale": "Cushing's syndrome is related to excessive cortisol levels, not dopamine receptor antagonists."
+        },
+        {
+          "text": "Hypofrontality.",
+          "isCorrect": false,
+          "rationale": "Hypofrontality is a state of low metabolic activity in the frontal cortex, not a motor disorder."
+        }
+      ],
+      "hint": "The name of this condition is derived from the Latin word for 'slow,' reflecting its delayed onset."
+    },
+    {
+      "question": "The glutamate hypothesis of schizophrenia was largely inspired by the observation that which drug acts as an NMDA receptor antagonist and mimics both positive and negative symptoms?",
+      "answerOptions": [
+        {
+          "text": "Chlorpromazine.",
+          "isCorrect": false,
+          "rationale": "Chlorpromazine is an antipsychotic that blocks dopamine, not an NMDA antagonist."
+        },
+        {
+          "text": "Phencyclidine (PCP).",
+          "isCorrect": true,
+          "rationale": "PCP (angel dust) blocks the NMDA receptor's calcium channel, producing a state very similar to schizophrenia."
+        },
+        {
+          "text": "Reserpine.",
+          "isCorrect": false,
+          "rationale": "Reserpine depletes monoamines and is used to model depression, not schizophrenia."
+        },
+        {
+          "text": "L-dopa.",
+          "isCorrect": false,
+          "rationale": "L-dopa increases dopamine levels and can induce psychosis, but it does not act on glutamate receptors."
+        }
+      ],
+      "hint": "This dissociative anesthetic is also known as 'angel dust'."
+    },
+    {
+      "question": "Based on epidemiological data, how does the risk of developing schizophrenia change for individuals living in urban versus rural environments?",
+      "answerOptions": [
+        {
+          "text": "Rural living increases the risk due to isolation and lack of healthcare access.",
+          "isCorrect": false,
+          "rationale": "The data actually shows that urban environments pose a significantly higher risk."
+        },
+        {
+          "text": "People living in large cities are about twice as likely to develop schizophrenia as those in the countryside.",
+          "isCorrect": true,
+          "rationale": "The stress of city living is a documented risk factor, with the risk increasing the earlier in life one moves to a big city."
+        },
+        {
+          "text": "There is no significant difference in prevalence between city and country dwellers.",
+          "isCorrect": false,
+          "rationale": "Epidemiological studies consistently show a correlation between population density and schizophrenia risk."
+        },
+        {
+          "text": "City living only increases risk if the individual has a history of substance abuse.",
+          "isCorrect": false,
+          "rationale": "The 'city effect' appears to be an independent stressor related to pollutants, crowding, or social interactions."
+        }
+      ],
+      "hint": "Consider the 'stress of city living' discussed in the integrative psychobiological model."
+    },
+    {
+      "question": "Functional imaging (PET scans) of patients with major depressive disorder typically shows increased blood flow and activity in which two brain regions?",
+      "answerOptions": [
+        {
+          "text": "The cerebellum and the basal ganglia.",
+          "isCorrect": false,
+          "rationale": "These areas are primarily involved in motor control and are not the focus of increased activity in depression."
+        },
+        {
+          "text": "The prefrontal cortex and the amygdala.",
+          "isCorrect": true,
+          "rationale": "Increased activity in the amygdala (fear/emotion) and prefrontal cortex (distress/thought) is a common functional finding in depressed patients."
+        },
+        {
+          "text": "The parietal cortex and the posterior temporal cortex.",
+          "isCorrect": false,
+          "rationale": "Blood flow actually decreases in these areas, which are involved in attention, during depression."
+        },
+        {
+          "text": "The corpus callosum and the lateral ventricles.",
+          "isCorrect": false,
+          "rationale": "Ventricles are fluid-filled spaces, and the corpus callosum is white matter; neither shows 'increased activity' in this context."
+        }
+      ],
+      "hint": "One region is involved in mediating fear, and the other in higher-level cognitive processing and distress."
+    },
+    {
+      "question": "The dexamethasone suppression test is used to assess HPA axis function. What is the typical result for a person suffering from depression?",
+      "answerOptions": [
+        {
+          "text": "Dexamethasone causes an immediate and sustained drop in cortisol levels, lasting for several days.",
+          "isCorrect": false,
+          "rationale": "This is the normal, healthy response, but not the one seen in many depressed individuals."
+        },
+        {
+          "text": "The hypothalamus is 'fooled' into producing even more ACTH, leading to dangerous cortisol spikes.",
+          "isCorrect": false,
+          "rationale": "The test is designed to measure suppression via negative feedback, not stimulation."
+        },
+        {
+          "text": "Dexamethasone fails to suppress the release of cortisol the next day.",
+          "isCorrect": true,
+          "rationale": "In many depressed people, the negative feedback loop is impaired, so the synthetic steroid does not inhibit cortisol production as it should."
+        },
+        {
+          "text": "Cortisol levels drop to zero, indicating a complete shutdown of the adrenal glands.",
+          "isCorrect": false,
+          "rationale": "The test measures the blunting of the normal circadian rhythm, not the total elimination of hormone production."
+        }
+      ],
+      "hint": "Think about whether the negative feedback loop in the HPA axis is working properly in these patients."
+    },
+    {
+      "question": "How does sleep architecture typically change in individuals with major depressive disorder?",
+      "answerOptions": [
+        {
+          "text": "They spend significantly more time in stage 3 (slow-wave) sleep than healthy controls.",
+          "isCorrect": false,
+          "rationale": "Depressed patients actually show a striking reduction in stage 3 sleep."
+        },
+        {
+          "text": "They enter their first REM sleep period much sooner after falling asleep.",
+          "isCorrect": true,
+          "rationale": "A shortened latency to REM sleep is a hallmark of depression and often correlates with the severity of the illness."
+        },
+        {
+          "text": "REM sleep is completely absent until the depression is successfully treated with SSRIs.",
+          "isCorrect": false,
+          "rationale": "REM sleep is not absent; rather, it is displaced toward the beginning of the night and is often more vigorous."
+        },
+        {
+          "text": "They experience a total loss of stages 1 and 2 sleep, leading to frequent awakenings.",
+          "isCorrect": false,
+          "rationale": "Stage 1 and 2 sleep actually increase as a proportion of total sleep due to the loss of stage 3."
+        }
+      ],
+      "hint": "Focus on the timing of the first REM period and the amount of deep, slow-wave sleep."
+    },
+    {
+      "question": "In the field of pharmacogenomics, genes that determine how a drug is metabolized and excreted from the body are classified as which of the following?",
+      "answerOptions": [
+        {
+          "text": "Pharmacodynamic genes.",
+          "isCorrect": false,
+          "rationale": "Pharmacodynamic genes relate to the drug's mechanisms of action in the brain, such as receptor binding."
+        },
+        {
+          "text": "Epigenetic genes.",
+          "isCorrect": false,
+          "rationale": "Epigenetics refers to the modification of gene expression, not the classification of metabolism-related genes."
+        },
+        {
+          "text": "Pharmacokinetic genes.",
+          "isCorrect": true,
+          "rationale": "Pharmacokinetics refers to the movement of drugs through the body, including absorption, distribution, metabolism, and excretion."
+        },
+        {
+          "text": "Endophenotypic genes.",
+          "isCorrect": false,
+          "rationale": "An endophenotype is a physical or behavioral characteristic associated with susceptibility, not a drug-metabolism pathway."
+        }
+      ],
+      "hint": "Consider the term used for the branch of pharmacology concerned with the movement of drugs within the body."
+    },
+    {
+      "question": "The monoamine hypothesis of depression was supported by the discovery that which drug, originally used for hypertension, could cause profound depression by depleting norepinephrine and serotonin?",
+      "answerOptions": [
+        {
+          "text": "Prozac (Fluoxetine).",
+          "isCorrect": false,
+          "rationale": "Prozac is an SSRI used to treat depression by increasing serotonin availability."
+        },
+        {
+          "text": "Reserpine.",
+          "isCorrect": true,
+          "rationale": "Reserpine reduces the release of monoamines in the brain, which led researchers to believe that low monoamine levels cause depression."
+        },
+        {
+          "text": "Lithium.",
+          "isCorrect": false,
+          "rationale": "Lithium is primarily used to stabilize mood in bipolar disorder, not as an antihypertensive that causes depression."
+        },
+        {
+          "text": "Clozapine.",
+          "isCorrect": false,
+          "rationale": "Clozapine is a second-generation antipsychotic used for schizophrenia."
+        }
+      ],
+      "hint": "This drug interferes with the storage of monoamines in synaptic vesicles."
+    }
+  ]
+}

@@ -390,6 +390,15 @@ def run_rsync(
         raise SystemExit(f"rsync failed with exit code {result.returncode}")
 
 
+def resolve_remote_root(remote_root: str | None, subject_slug: str) -> str:
+    raw = str(remote_root or "").strip()
+    base = raw or "/var/www/quizzes"
+    cleaned = base.rstrip("/") or "/"
+    if cleaned.endswith("/quizzes"):
+        return f"{cleaned}/{subject_slug}"
+    return cleaned
+
+
 def main() -> int:
     repo_root = Path(__file__).resolve().parents[1]
     parser = argparse.ArgumentParser(description=__doc__)
@@ -449,8 +458,11 @@ def main() -> int:
     )
     parser.add_argument(
         "--remote-root",
-        default="/var/www/quizzes/personlighedspsykologi",
-        help="Remote quiz root directory.",
+        default="/var/www/quizzes",
+        help=(
+            "Remote quiz root directory. "
+            "If this ends with '/quizzes', --subject-slug is appended automatically."
+        ),
     )
     parser.add_argument(
         "--host",
@@ -659,9 +671,11 @@ def main() -> int:
             ssh_key = args.ssh_key
             if ssh_key:
                 ssh_key = str(Path(ssh_key).expanduser())
+            effective_remote_root = resolve_remote_root(args.remote_root, subject_slug)
+            print(f"Upload remote root: {effective_remote_root}")
             run_rsync(
                 output_root=upload_root,
-                remote_root=args.remote_root,
+                remote_root=effective_remote_root,
                 host=args.host,
                 user=args.user,
                 ssh_key=ssh_key,

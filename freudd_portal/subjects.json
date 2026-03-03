@@ -5,7 +5,10 @@
       "slug": "personlighedspsykologi",
       "title": "Personlighedspsykologi",
       "description": "Personlighedspsykologi F26",
-      "active": true
+      "active": true,
+      "paths": {
+        "quiz_files_root": "/var/www/quizzes/personlighedspsykologi"
+      }
     },
     {
       "slug": "bioneuro",
@@ -16,6 +19,7 @@
         "reading_master_path": "shows/bioneuro/docs/freudd-reading-file-key.md",
         "reading_fallback_path": "shows/bioneuro/docs/freudd-reading-file-key.md",
         "quiz_links_path": "shows/bioneuro/quiz_links.json",
+        "quiz_files_root": "/var/www/quizzes/bioneuro",
         "feed_rss_path": "shows/bioneuro/feeds/rss.xml",
         "spotify_map_path": "shows/bioneuro/spotify_map.json",
         "content_manifest_path": "shows/bioneuro/content_manifest.json",

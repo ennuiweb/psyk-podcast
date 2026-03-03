@@ -44,6 +44,17 @@ Bemærk:
   - `download_week.py` rydder request-logs op som default (`.request.json`, `.request.error.json`, `.request.done.json`), inkl. orphan `.request.done.json` i valgte uge-mapper.
   - Brug `--no-cleanup-requests` (eller `--no-archive-requests`) for at beholde logs.
 
+## Quiz sync/hosting
+
+- Portal-quizzer ligger som flade ID-filer under `/q/<id>.html`.
+- Bioneuro quiz-filer synkes til `/var/www/quizzes/bioneuro`.
+- Request-log JSON-filer (`*.request*.json`) ignoreres i sync.
+- Brug altid `--subject-slug bioneuro`; med `--remote-root /var/www/quizzes` får du automatisk korrekt under-mappe:
+
+```bash
+python3 scripts/sync_quiz_links.py --subject-slug bioneuro --output-root notebooklm-podcast-auto/bioneuro/output --links-file shows/bioneuro/quiz_links.json --quiz-difficulty any --quiz-path-mode flat-id --flat-id-len 8 --flat-id-include-subject --remote-root /var/www/quizzes
+```
+
 ## Troubleshooting (2026-03-02)
 
 Hvis en PDF fejler med `Source <id> failed to process`, men andre PDF'er virker:

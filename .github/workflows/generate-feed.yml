@@ -150,21 +150,23 @@ jobs:
           SHOW: ${{ matrix.show }}
           DROPLET_SSH_KEY: ${{ secrets.DIGITALOCEAN_SSH_KEY }}
         run: |
-          download_root="${RUNNER_TEMP}/drive-quizzes"
           case "${SHOW}" in
             personlighedspsykologi-en)
               subject_slug="personlighedspsykologi"
               flat_id_include_subject=""
+              remote_root="/var/www/quizzes/personlighedspsykologi"
               ;;
             bioneuro)
               subject_slug="bioneuro"
               flat_id_include_subject="--flat-id-include-subject"
+              remote_root="/var/www/quizzes/bioneuro"
               ;;
             *)
               echo "::error::Unexpected show for quiz sync: ${SHOW}"
               exit 1
               ;;
           esac
+          download_root="${RUNNER_TEMP}/drive-quizzes/${subject_slug}"
 
           cmd=(
             python podcast-tools/sync_drive_quiz_links.py
@@ -175,20 +177,36 @@ jobs:
             --quiz-path-mode flat-id
             --flat-id-len 8
             --quiz-difficulty any
+            --remote-root "${remote_root}"
           )
           if [[ -n "${flat_id_include_subject}" ]]; then
             cmd+=("${flat_id_include_subject}")
           fi
 
-          if [[ -n "${DROPLET_SSH_KEY}" ]]; then
-            key_path="${RUNNER_TEMP}/droplet_key"
-            echo "${DROPLET_SSH_KEY}" > "${key_path}"
-            chmod 600 "${key_path}"
-            "${cmd[@]}" --upload --ssh-key "${key_path}"
-          else
-            echo "Warning: DIGITALOCEAN_SSH_KEY not set; skipping quiz upload." >&2
-            "${cmd[@]}"
+          if [[ -z "${DROPLET_SSH_KEY}" ]]; then
+            echo "::error::DIGITALOCEAN_SSH_KEY not set; cannot sync quizzes for ${SHOW}."
+            exit 1
           fi
+
+          key_path="${RUNNER_TEMP}/droplet_key"
+          echo "${DROPLET_SSH_KEY}" > "${key_path}"
+          chmod 600 "${key_path}"
+          "${cmd[@]}" --upload --ssh-key "${key_path}"
+
+          local_json_count="$(find "${download_root}" -type f -name '*.json' | wc -l | tr -d '[:space:]')"
+          if [[ "${local_json_count}" -le 0 ]]; then
+            echo "::error::No quiz JSON files downloaded for ${SHOW}; aborting."
+            exit 1
+          fi
+          sample_json="$(find "${download_root}" -type f -name '*.json' | head -n 1)"
+          sample_base="$(basename "${sample_json}")"
+          sample_html="${sample_base%.json}.html"
+          remote_json_count="$(ssh -i "${key_path}" "root@64.226.79.109" "find '${remote_root}' -type f -name '*.json' | wc -l" | tr -d '[:space:]')"
+          if [[ "${remote_json_count}" -lt "${local_json_count}" ]]; then
+            echo "::error::Remote quiz JSON count (${remote_json_count}) is lower than local count (${local_json_count}) for ${SHOW}."
+            exit 1
+          fi
+          ssh -i "${key_path}" "root@64.226.79.109" "test -f '${remote_root}/${sample_base}' && test -f '${remote_root}/${sample_html}'"
 
       - name: Generate feed
         env:

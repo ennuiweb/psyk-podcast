@@ -165,6 +165,13 @@ Quiz links are hosted on the droplet under:
 `http://64.226.79.109/q/<id>.html`
 where `<id>` is a deterministic flat hex ID (default length: 8).
 
+Server storage is now subject-isolated:
+- `personlighedspsykologi` -> `/var/www/quizzes/personlighedspsykologi`
+- `bioneuro` -> `/var/www/quizzes/bioneuro`
+
+Both sync scripts auto-append `--subject-slug` when `--remote-root` ends with `/quizzes`, so
+`--remote-root /var/www/quizzes` is safe for multi-subject sync.
+
 The mapping and upload can run automatically in GitHub Actions (when quiz JSON
 files are uploaded to Drive) via `podcast-tools/sync_drive_quiz_links.py`, as
 long as the repository has the secret `DIGITALOCEAN_SSH_KEY` set. The Apps Script
@@ -173,8 +180,8 @@ Drive trigger must include `application/json` in `mimePrefixes` to detect quiz c
 Use the sync script locally to upload quizzes and update the mapping used by the feed:
 
 ```bash
-python3 scripts/sync_quiz_links.py --quiz-difficulty any --quiz-path-mode flat-id --flat-id-len 8 --dry-run
-python3 scripts/sync_quiz_links.py --quiz-difficulty any --quiz-path-mode flat-id --flat-id-len 8
+python3 scripts/sync_quiz_links.py --subject-slug personlighedspsykologi --quiz-difficulty any --quiz-path-mode flat-id --flat-id-len 8 --remote-root /var/www/quizzes --dry-run
+python3 scripts/sync_quiz_links.py --subject-slug personlighedspsykologi --quiz-difficulty any --quiz-path-mode flat-id --flat-id-len 8 --remote-root /var/www/quizzes
 ```
 
 The mapping file lives at `shows/personlighedspsykologi-en/quiz_links.json` and is

@@ -162,20 +162,33 @@ class QuizPortalTests(TestCase):
 
         self.links_file.write_text(json.dumps({"by_name": by_name}), encoding="utf-8")
 
-    def _write_subjects_file(self, *, include_subject: bool = True) -> None:
+    def _write_subjects_file(
+        self,
+        *,
+        include_subject: bool = True,
+        personlighedspsykologi_paths: dict[str, str] | None = None,
+        extra_subjects: list[dict[str, object]] | None = None,
+    ) -> None:
         payload: dict[str, object] = {
             "version": 1,
             "subjects": [],
         }
         if include_subject:
+            subject_payload: dict[str, object] = {
+                "slug": "personlighedspsykologi",
+                "title": "Personlighedspsykologi",
+                "description": "Personlighedspsykologi F26",
+                "active": True,
+            }
+            if personlighedspsykologi_paths:
+                subject_payload["paths"] = dict(personlighedspsykologi_paths)
             payload["subjects"] = [
-                {
-                    "slug": "personlighedspsykologi",
-                    "title": "Personlighedspsykologi",
-                    "description": "Personlighedspsykologi F26",
-                    "active": True,
-                }
+                subject_payload
             ]
+        if extra_subjects:
+            payload_subjects = payload.setdefault("subjects", [])
+            if isinstance(payload_subjects, list):
+                payload_subjects.extend(extra_subjects)
         self.subjects_file.write_text(json.dumps(payload), encoding="utf-8")
 
     def _write_reading_master_file(self) -> None:
@@ -1109,6 +1122,79 @@ class QuizPortalTests(TestCase):
         )
         labels = load_quiz_label_mapping()
         self.assertIsNone(labels[self.quiz_id].subject_slug)
+
+    def test_quiz_lookup_uses_subject_specific_quiz_root(self) -> None:
+        bioneuro_quiz_id = "95d98d0c"
+        bioneuro_quiz_root = Path(self.temp_dir.name) / "bioneuro-quizzes"
+        bioneuro_quiz_root.mkdir(parents=True, exist_ok=True)
+        bioneuro_links_file = Path(self.temp_dir.name) / "bioneuro-quiz_links.json"
+
+        payload = {"questions": [{"question": "Q1", "answerOptions": [{"text": "A", "isCorrect": True}]}]}
+        escaped_payload = html.escape(json.dumps(payload), quote=True)
+        (bioneuro_quiz_root / f"{bioneuro_quiz_id}.html").write_text(
+            (
+                "<!doctype html><html><body>"
+                f"<app-root data-app-data=\"{escaped_payload}\"></app-root>"
+                "</body></html>"
+            ),
+            encoding="utf-8",
+        )
+        (bioneuro_quiz_root / f"{bioneuro_quiz_id}.json").write_text(
+            json.dumps(payload, ensure_ascii=False),
+            encoding="utf-8",
+        )
+        bioneuro_links_file.write_text(
+            json.dumps(
+                {
+                    "by_name": {
+                        "W13L1 - Bioneuro Episode": {
+                            "relative_path": f"{bioneuro_quiz_id}.html",
+                            "difficulty": "hard",
+                            "subject_slug": "bioneuro",
+                            "links": [
+                                {
+                                    "relative_path": f"{bioneuro_quiz_id}.html",
+                                    "difficulty": "hard",
+                                    "format": "html",
+                                    "subject_slug": "bioneuro",
+                                }
+                            ],
+                        }
+                    }
+                }
+            ),
+            encoding="utf-8",
+        )
+        self._write_subjects_file(
+            personlighedspsykologi_paths={"quiz_files_root": str(self.quiz_root)},
+            extra_subjects=[
+                {
+                    "slug": "bioneuro",
+                    "title": "Bioneuro",
+                    "description": "Bio / Neuropsychology F26",
+                    "active": True,
+                    "paths": {
+                        "quiz_links_path": str(bioneuro_links_file),
+                        "quiz_files_root": str(bioneuro_quiz_root),
+                    },
+                }
+            ],
+        )
+        clear_subject_service_caches()
+        quiz_services._METADATA_CACHE["mtime"] = None
+        quiz_services._METADATA_CACHE["signature"] = None
+        quiz_services._METADATA_CACHE["data"] = {}
+
+        labels = load_quiz_label_mapping()
+        self.assertEqual(labels[bioneuro_quiz_id].subject_slug, "bioneuro")
+        self.assertTrue(quiz_services.quiz_exists(bioneuro_quiz_id))
+        self.assertEqual(quiz_services.quiz_html_file_path(bioneuro_quiz_id).parent, bioneuro_quiz_root)
+
+        response = self.client.get(reverse("quiz-content", kwargs={"quiz_id": bioneuro_quiz_id}))
+        self.assertEqual(response.status_code, 200)
+        body = response.json()
+        self.assertEqual(body.get("title"), "Quiz")
+        self.assertEqual(len(body.get("questions") or []), 1)
 
     def test_progress_page_shows_subject_cards_with_active_semester(self) -> None:
         user = self._create_user()

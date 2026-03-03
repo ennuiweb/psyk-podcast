@@ -533,6 +533,15 @@ def run_rsync(
         raise SystemExit(f"rsync failed with exit code {result.returncode}")
 
 
+def resolve_remote_root(remote_root: str | None, subject_slug: str) -> str:
+    raw = str(remote_root or "").strip()
+    base = raw or "/var/www/quizzes"
+    cleaned = base.rstrip("/") or "/"
+    if cleaned.endswith("/quizzes"):
+        return f"{cleaned}/{subject_slug}"
+    return cleaned
+
+
 def resolve_links_path(config_path: Path, quiz_cfg: Dict[str, Any], override: Optional[str]) -> Path:
     if override:
         override_path = Path(override).expanduser()
@@ -634,8 +643,11 @@ def main() -> int:
     )
     parser.add_argument(
         "--remote-root",
-        default="/var/www/quizzes/personlighedspsykologi",
-        help="Droplet directory for quizzes.",
+        default="/var/www/quizzes",
+        help=(
+            "Droplet directory for quizzes. "
+            "If this ends with '/quizzes', --subject-slug is appended automatically."
+        ),
     )
     parser.add_argument(
         "--json-mime-prefix",
@@ -830,9 +842,11 @@ def main() -> int:
         if not args.ssh_key:
             print("Warning: --upload requested but no --ssh-key provided; skipping upload.")
         else:
+            effective_remote_root = resolve_remote_root(args.remote_root, subject_slug)
+            print(f"Upload remote root: {effective_remote_root}")
             run_rsync(
                 source_root=args.download_root,
-                remote_root=args.remote_root,
+                remote_root=effective_remote_root,
                 host=args.host,
                 user=args.user,
                 ssh_key=args.ssh_key,

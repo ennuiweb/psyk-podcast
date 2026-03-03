@@ -15,6 +15,7 @@ from django.conf import settings
 from django.utils import timezone
 
 from .models import QuizProgress
+from .subject_services import load_subject_catalog, resolve_subject_paths
 
 logger = logging.getLogger(__name__)
 
@@ -60,16 +61,81 @@ class QuizOutcome:
     skipped_answers: int
 
 
-_METADATA_CACHE: dict[str, Any] = {"mtime": None, "data": {}}
+_METADATA_CACHE: dict[str, Any] = {"mtime": None, "signature": None, "data": {}}
 MAX_SPEED_BONUS_SECONDS_PER_QUESTION = 10
 
 
+def _dedupe_paths(paths: list[Path]) -> list[Path]:
+    deduped: list[Path] = []
+    seen: set[str] = set()
+    for path in paths:
+        key = str(path)
+        if key in seen:
+            continue
+        seen.add(key)
+        deduped.append(path)
+    return deduped
+
+
+def _quiz_subject_slug(quiz_id: str) -> str:
+    label = load_quiz_label_mapping().get(str(quiz_id or "").strip().lower())
+    candidate = str(label.subject_slug or "").strip().lower() if label else ""
+    if not SUBJECT_SLUG_RE.match(candidate):
+        return ""
+    return candidate
+
+
+def _all_known_quiz_roots() -> list[Path]:
+    roots: list[Path] = [Path(settings.QUIZ_FILES_ROOT)]
+    catalog = load_subject_catalog()
+    for subject in catalog.active_subjects:
+        roots.append(resolve_subject_paths(subject.slug).quiz_files_root)
+    return _dedupe_paths(roots)
+
+
+def _candidate_quiz_roots(quiz_id: str) -> list[Path]:
+    quiz_id_normalized = str(quiz_id or "").strip().lower()
+    roots: list[Path] = []
+    subject_slug = _quiz_subject_slug(quiz_id_normalized)
+    default_root = Path(settings.QUIZ_FILES_ROOT)
+    if subject_slug:
+        subject_root = resolve_subject_paths(subject_slug).quiz_files_root
+        roots.append(subject_root)
+        # Backward-compatible fallback for deployments that use a shared quiz root.
+        roots.append(default_root / subject_slug)
+    roots.extend(_all_known_quiz_roots())
+    return _dedupe_paths(roots)
+
+
+def _candidate_quiz_file_paths(quiz_id: str, *, suffix: str) -> list[Path]:
+    quiz_id_normalized = str(quiz_id or "").strip().lower()
+    return [
+        root / f"{quiz_id_normalized}.{suffix}"
+        for root in _candidate_quiz_roots(quiz_id_normalized)
+    ]
+
+
+def _first_existing_quiz_file(quiz_id: str, *, suffix: str) -> Path | None:
+    for path in _candidate_quiz_file_paths(quiz_id, suffix=suffix):
+        if _path_is_file(path):
+            return path
+    return None
+
+
 def quiz_html_file_path(quiz_id: str) -> Path:
-    return Path(settings.QUIZ_FILES_ROOT) / f"{quiz_id}.html"
+    existing = _first_existing_quiz_file(quiz_id, suffix="html")
+    if existing is not None:
+        return existing
+    candidates = _candidate_quiz_file_paths(quiz_id, suffix="html")
+    return candidates[0] if candidates else Path(settings.QUIZ_FILES_ROOT) / f"{quiz_id}.html"
 
 
 def quiz_json_file_path(quiz_id: str) -> Path:
-    return Path(settings.QUIZ_FILES_ROOT) / f"{quiz_id}.json"
+    existing = _first_existing_quiz_file(quiz_id, suffix="json")
+    if existing is not None:
+        return existing
+    candidates = _candidate_quiz_file_paths(quiz_id, suffix="json")
+    return candidates[0] if candidates else Path(settings.QUIZ_FILES_ROOT) / f"{quiz_id}.json"
 
 
 def quiz_file_path(quiz_id: str) -> Path:
@@ -86,11 +152,15 @@ def _path_is_file(path: Path) -> bool:
 
 
 def quiz_exists(quiz_id: str) -> bool:
-    return _path_is_file(quiz_json_file_path(quiz_id)) or _path_is_file(quiz_html_file_path(quiz_id))
+    return (
+        _first_existing_quiz_file(quiz_id, suffix="json") is not None
+        or _first_existing_quiz_file(quiz_id, suffix="html") is not None
+    )
 
 
 def read_quiz_bytes(quiz_id: str) -> bytes:
-    return quiz_html_file_path(quiz_id).read_bytes()
+    html_path = _first_existing_quiz_file(quiz_id, suffix="html") or quiz_html_file_path(quiz_id)
+    return html_path.read_bytes()
 
 
 def _extract_question_entries(payload: Any) -> list[Any]:
@@ -567,29 +637,84 @@ def _normalize_subject_slug(value: Any) -> str | None:
     return slug
 
 
+def _quiz_links_candidate_paths() -> list[Path]:
+    paths: list[Path] = [Path(settings.QUIZ_LINKS_JSON_PATH)]
+    catalog = load_subject_catalog()
+    for subject in catalog.active_subjects:
+        paths.append(resolve_subject_paths(subject.slug).quiz_links_path)
+    return _dedupe_paths(paths)
+
+
+def _quiz_links_signature(paths: list[Path]) -> tuple[tuple[str, int | None], ...]:
+    signature: list[tuple[str, int | None]] = []
+    for path in paths:
+        mtime: int | None = None
+        try:
+            if path.exists():
+                mtime = path.stat().st_mtime_ns
+        except OSError:
+            logger.warning("Unable to read stat for quiz_links path: %s", path, exc_info=True)
+        signature.append((str(path), mtime))
+    return tuple(signature)
+
+
+def _set_quiz_label_if_not_conflicting(
+    labels: dict[str, QuizLabel],
+    *,
+    quiz_id: str,
+    candidate: QuizLabel,
+    source_path: Path,
+) -> None:
+    existing = labels.get(quiz_id)
+    if existing is None:
+        labels[quiz_id] = candidate
+        return
+    if existing == candidate:
+        return
+    if (
+        existing.episode_title == candidate.episode_title
+        and existing.difficulty == candidate.difficulty
+        and existing.subject_slug is None
+        and candidate.subject_slug is not None
+    ):
+        labels[quiz_id] = candidate
+        return
+    logger.warning(
+        "Conflicting quiz label mapping for %s in %s; keeping first mapping.",
+        quiz_id,
+        source_path,
+    )
+
+
 def load_quiz_label_mapping() -> dict[str, QuizLabel]:
-    path = Path(settings.QUIZ_LINKS_JSON_PATH)
-    if not path.exists():
-        return {}
-
-    try:
-        mtime = path.stat().st_mtime_ns
-    except OSError:
-        logger.warning("Unable to read stat for quiz_links path: %s", path, exc_info=True)
-        return {}
-
-    if _METADATA_CACHE.get("mtime") == mtime:
+    paths = _quiz_links_candidate_paths()
+    signature = _quiz_links_signature(paths)
+    if _METADATA_CACHE.get("signature") == signature:
         return _METADATA_CACHE.get("data", {})
 
-    try:
-        payload = json.loads(path.read_text(encoding="utf-8"))
-    except (OSError, json.JSONDecodeError):
-        logger.warning("Unable to parse quiz links file: %s", path, exc_info=True)
-        return {}
-
     labels: dict[str, QuizLabel] = {}
-    by_name = payload.get("by_name") if isinstance(payload, dict) else None
-    if isinstance(by_name, dict):
+    latest_mtime: int | None = None
+    for path in paths:
+        if not path.exists():
+            continue
+
+        try:
+            payload = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            logger.warning("Unable to parse quiz links file: %s", path, exc_info=True)
+            continue
+
+        try:
+            path_mtime = path.stat().st_mtime_ns
+        except OSError:
+            path_mtime = None
+        if path_mtime is not None:
+            latest_mtime = path_mtime if latest_mtime is None else max(latest_mtime, path_mtime)
+
+        by_name = payload.get("by_name") if isinstance(payload, dict) else None
+        if not isinstance(by_name, dict):
+            continue
+
         for episode_title, entry in by_name.items():
             if not isinstance(entry, dict):
                 continue
@@ -599,10 +724,15 @@ def load_quiz_label_mapping() -> dict[str, QuizLabel]:
 
             primary_id = _quiz_id_from_relative_path(entry.get("relative_path"))
             if primary_id:
-                labels[primary_id] = QuizLabel(
-                    episode_title=str(episode_title),
-                    difficulty=_normalize_difficulty(entry.get("difficulty")),
-                    subject_slug=subject_slug,
+                _set_quiz_label_if_not_conflicting(
+                    labels,
+                    quiz_id=primary_id,
+                    candidate=QuizLabel(
+                        episode_title=str(episode_title),
+                        difficulty=_normalize_difficulty(entry.get("difficulty")),
+                        subject_slug=subject_slug,
+                    ),
+                    source_path=path,
                 )
 
             links = entry.get("links")
@@ -616,24 +746,29 @@ def load_quiz_label_mapping() -> dict[str, QuizLabel]:
                         fallback_subject_slug = link_subject_slug
                     quiz_id = _quiz_id_from_relative_path(link.get("relative_path"))
                     if quiz_id:
-                        labels[quiz_id] = QuizLabel(
-                            episode_title=str(episode_title),
-                            difficulty=_normalize_difficulty(link.get("difficulty")),
-                            subject_slug=subject_slug or link_subject_slug,
+                        _set_quiz_label_if_not_conflicting(
+                            labels,
+                            quiz_id=quiz_id,
+                            candidate=QuizLabel(
+                                episode_title=str(episode_title),
+                                difficulty=_normalize_difficulty(link.get("difficulty")),
+                                subject_slug=subject_slug or link_subject_slug,
+                            ),
+                            source_path=path,
                         )
-                if subject_slug is None and fallback_subject_slug is not None:
-                    if primary_id and primary_id in labels:
-                        labels[primary_id] = QuizLabel(
-                            episode_title=labels[primary_id].episode_title,
-                            difficulty=labels[primary_id].difficulty,
-                            subject_slug=fallback_subject_slug,
-                        )
+                if subject_slug is None and fallback_subject_slug is not None and primary_id and primary_id in labels:
+                    labels[primary_id] = QuizLabel(
+                        episode_title=labels[primary_id].episode_title,
+                        difficulty=labels[primary_id].difficulty,
+                        subject_slug=fallback_subject_slug,
+                    )
                 if subject_slug is None and fallback_subject_slug is None:
                     logger.warning("Missing subject_slug in quiz links for entry: %s", episode_title)
             elif subject_slug is None:
                 logger.warning("Missing subject_slug in quiz links for entry: %s", episode_title)
 
-    _METADATA_CACHE["mtime"] = mtime
+    _METADATA_CACHE["mtime"] = latest_mtime
+    _METADATA_CACHE["signature"] = signature
     _METADATA_CACHE["data"] = labels
     return labels
 

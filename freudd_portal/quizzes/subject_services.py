@@ -21,6 +21,7 @@ SUBJECT_PATH_KEYS = {
     "reading_master_path",
     "reading_fallback_path",
     "quiz_links_path",
+    "quiz_files_root",
     "feed_rss_path",
     "spotify_map_path",
     "content_manifest_path",
@@ -43,6 +44,7 @@ class SubjectAssetPaths:
     reading_master_path: Path
     reading_fallback_path: Path
     quiz_links_path: Path
+    quiz_files_root: Path
     feed_rss_path: Path
     spotify_map_path: Path
     content_manifest_path: Path
@@ -140,6 +142,7 @@ def _default_subject_paths() -> SubjectAssetPaths:
         reading_master_path=Path(settings.FREUDD_READING_MASTER_KEY_PATH),
         reading_fallback_path=Path(settings.FREUDD_READING_MASTER_KEY_FALLBACK_PATH),
         quiz_links_path=Path(settings.QUIZ_LINKS_JSON_PATH),
+        quiz_files_root=Path(settings.QUIZ_FILES_ROOT),
         feed_rss_path=Path(settings.FREUDD_SUBJECT_FEED_RSS_PATH),
         spotify_map_path=Path(settings.FREUDD_SUBJECT_SPOTIFY_MAP_PATH),
         content_manifest_path=Path(settings.FREUDD_SUBJECT_CONTENT_MANIFEST_PATH),
@@ -163,6 +166,7 @@ def resolve_subject_paths(subject_slug: str) -> SubjectAssetPaths:
         "reading_master_path": defaults.reading_master_path,
         "reading_fallback_path": defaults.reading_fallback_path,
         "quiz_links_path": defaults.quiz_links_path,
+        "quiz_files_root": defaults.quiz_files_root,
         "feed_rss_path": defaults.feed_rss_path,
         "spotify_map_path": defaults.spotify_map_path,
         "content_manifest_path": defaults.content_manifest_path,
@@ -177,6 +181,7 @@ def resolve_subject_paths(subject_slug: str) -> SubjectAssetPaths:
         reading_master_path=values["reading_master_path"],
         reading_fallback_path=values["reading_fallback_path"],
         quiz_links_path=values["quiz_links_path"],
+        quiz_files_root=values["quiz_files_root"],
         feed_rss_path=values["feed_rss_path"],
         spotify_map_path=values["spotify_map_path"],
         content_manifest_path=values["content_manifest_path"],

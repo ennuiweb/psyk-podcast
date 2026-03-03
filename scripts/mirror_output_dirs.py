@@ -1,0 +1,136 @@
+#!/usr/bin/env python3
+"""Mirror NotebookLM output subdirectories into subject-specific Drive mounts."""
+
+from __future__ import annotations
+
+import argparse
+import sys
+from pathlib import Path
+from typing import Dict, List
+
+
+SUBJECT_DEFAULTS: Dict[str, Dict[str, str]] = {
+    "bioneuro": {
+        "source": "notebooklm-podcast-auto/bioneuro/output",
+        "dest": (
+            "/Users/oskar/Library/CloudStorage/GoogleDrive-nopeeeh@gmail.com/"
+            "My Drive/podcasts/bioneuro"
+        ),
+    },
+    "personlighedspsykologi": {
+        "source": "notebooklm-podcast-auto/personlighedspsykologi/output",
+        "dest": (
+            "/Users/oskar/Library/CloudStorage/GoogleDrive-psykku2025@gmail.com/"
+            "My Drive/Personlighedspsykologi-en"
+        ),
+    },
+}
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--subject",
+        required=True,
+        choices=sorted(SUBJECT_DEFAULTS.keys()),
+        help="Subject whose output directories should be mirrored.",
+    )
+    parser.add_argument("--source", default="", help="Optional source root override.")
+    parser.add_argument("--dest", default="", help="Optional destination root override.")
+    parser.add_argument("--dry-run", action="store_true", help="Show actions without creating directories.")
+    return parser.parse_args()
+
+
+def resolve_path(raw: str, repo_root: Path) -> Path:
+    candidate = Path(raw).expanduser()
+    if candidate.is_absolute():
+        return candidate
+    return (repo_root / candidate).resolve()
+
+
+def list_relative_dirs(root: Path) -> List[Path]:
+    directories: List[Path] = []
+    for path in root.rglob("*"):
+        if path.is_dir():
+            directories.append(path.relative_to(root))
+    directories.sort(key=lambda value: value.as_posix())
+    return directories
+
+
+def main() -> int:
+    args = parse_args()
+    defaults = SUBJECT_DEFAULTS[args.subject]
+    source_raw = args.source or defaults["source"]
+    dest_raw = args.dest or defaults["dest"]
+
+    repo_root = Path(__file__).resolve().parents[1]
+    source_root = resolve_path(source_raw, repo_root)
+    dest_root = resolve_path(dest_raw, repo_root)
+
+    if not source_root.exists():
+        print(f"Error: source path not found: {source_root}", file=sys.stderr)
+        return 1
+    if not source_root.is_dir():
+        print(f"Error: source path is not a directory: {source_root}", file=sys.stderr)
+        return 1
+    if dest_root.exists() and not dest_root.is_dir():
+        print(f"Error: destination path is not a directory: {dest_root}", file=sys.stderr)
+        return 1
+
+    print(f"Subject: {args.subject}")
+    print(f"Source: {source_root}")
+    print(f"Destination: {dest_root}")
+    if args.dry_run:
+        print("Mode: dry-run")
+
+    relative_dirs = list_relative_dirs(source_root)
+
+    root_created = False
+    if not dest_root.exists():
+        root_created = True
+        print(f"MKDIR   {dest_root}")
+        if not args.dry_run:
+            dest_root.mkdir(parents=True, exist_ok=True)
+
+    created = 0
+    existing = 0
+    collisions: List[Path] = []
+
+    for rel in relative_dirs:
+        dest_dir = dest_root / rel
+        if dest_dir.exists():
+            if dest_dir.is_dir():
+                existing += 1
+                continue
+            collisions.append(dest_dir)
+            continue
+
+        created += 1
+        print(f"MKDIR   {dest_dir}")
+        if not args.dry_run:
+            dest_dir.mkdir(parents=True, exist_ok=True)
+
+    if collisions:
+        print("\nCollision(s) detected; refusing to continue:", file=sys.stderr)
+        for path in collisions:
+            print(f"  - {path}", file=sys.stderr)
+        print(
+            "\nSummary: "
+            f"subject={args.subject} source_dirs={len(relative_dirs)} "
+            f"root_created={int(root_created)} created={created} "
+            f"existing={existing} collisions={len(collisions)}",
+            file=sys.stderr,
+        )
+        return 2
+
+    print(
+        "\nSummary: "
+        f"subject={args.subject} source_dirs={len(relative_dirs)} "
+        f"root_created={int(root_created)} created={created} "
+        f"existing={existing} collisions=0"
+    )
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

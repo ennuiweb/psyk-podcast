@@ -198,7 +198,11 @@ jobs:
             echo "::error::No quiz JSON files downloaded for ${SHOW}; aborting."
             exit 1
           fi
-          sample_json="$(find "${download_root}" -type f -name '*.json' | head -n 1)"
+          sample_json="$(find "${download_root}" -type f -name '*.json' -print -quit)"
+          if [[ -z "${sample_json}" ]]; then
+            echo "::error::Unable to select sample quiz file for ${SHOW}; aborting."
+            exit 1
+          fi
           sample_base="$(basename "${sample_json}")"
           sample_html="${sample_base%.json}.html"
           remote_json_count="$(ssh -i "${key_path}" "root@64.226.79.109" "find '${remote_root}' -type f -name '*.json' | wc -l" | tr -d '[:space:]')"

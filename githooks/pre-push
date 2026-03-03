@@ -6,12 +6,13 @@ log_file="${PRE_PUSH_LOG_FILE:-}"
 reading_key_sync_on_push="${FREUDD_READING_KEY_SYNC_ON_PUSH:-1}"
 reading_key_sync_script="${repo_root}/scripts/sync_personlighedspsykologi_reading_file_key.py"
 reading_key_sync_python="python3"
-quiz_extract_on_push="${QUIZ_JSON_EXTRACT_ON_PUSH:-1}"
+quiz_extract_on_push="${QUIZ_JSON_EXTRACT_ON_PUSH:-0}"
 quiz_extract_script="${repo_root}/notebooklm-podcast-auto/personlighedspsykologi/scripts/extract_quiz_html_to_json.py"
 quiz_extract_python="python3"
 readings_sync_on_push="${FREUDD_READINGS_SYNC_ON_PUSH:-1}"
 readings_sync_script="${repo_root}/scripts/sync_personlighedspsykologi_readings_to_droplet.py"
 readings_sync_python="python3"
+output_dir_mirror_script="${repo_root}/scripts/mirror_output_dirs.py"
 
 if [[ -x "${repo_root}/.venv/bin/python" ]]; then
   reading_key_sync_python="${repo_root}/.venv/bin/python"
@@ -25,6 +26,39 @@ if [[ -x "${repo_root}/.venv/bin/python" ]]; then
   readings_sync_python="${repo_root}/.venv/bin/python"
 fi
 
+run_output_dir_mirror() {
+  local subject="$1"
+  local env_prefix="$2"
+  local on_push_var="${env_prefix}_MIRROR_ON_PUSH"
+  local src_var="${env_prefix}_MIRROR_SRC"
+  local dst_var="${env_prefix}_MIRROR_DST"
+  local on_push="${!on_push_var:-1}"
+
+  if [[ "${on_push}" == "0" ]]; then
+    return 0
+  fi
+
+  if [[ ! -f "${output_dir_mirror_script}" ]]; then
+    echo "pre-push: warning: output directory mirror script not found: ${output_dir_mirror_script}" >&2
+    return 0
+  fi
+
+  local mirror_cmd=("python3" "${output_dir_mirror_script}" --subject "${subject}")
+  local src_override="${!src_var:-}"
+  local dst_override="${!dst_var:-}"
+  if [[ -n "${src_override}" ]]; then
+    mirror_cmd+=(--source "${src_override}")
+  fi
+  if [[ -n "${dst_override}" ]]; then
+    mirror_cmd+=(--dest "${dst_override}")
+  fi
+
+  echo "pre-push: running ${subject} output directory mirror"
+  if ! "${mirror_cmd[@]}"; then
+    echo "pre-push: warning: ${subject} output directory mirror failed; continuing push" >&2
+  fi
+}
+
 if [[ "${quiz_extract_on_push}" != "0" ]]; then
   echo "pre-push: extracting quiz html to json"
   if [[ -n "${log_file}" ]]; then
@@ -33,11 +67,10 @@ if [[ "${quiz_extract_on_push}" != "0" ]]; then
   fi
 
   if [[ ! -f "${quiz_extract_script}" ]]; then
-    echo "pre-push: quiz extractor script not found: ${quiz_extract_script}" >&2
-    exit 1
+    echo "pre-push: warning: quiz extractor script not found; skipping: ${quiz_extract_script}" >&2
+  else
+    "${quiz_extract_python}" "${quiz_extract_script}"
   fi
-
-  "${quiz_extract_python}" "${quiz_extract_script}"
 
   if [[ -n "${log_file}" ]]; then
     printf '%s %s\n' "$(date +'%Y-%m-%d %H:%M:%S')" \
@@ -141,33 +174,8 @@ if [[ "${readings_sync_on_push}" != "0" ]]; then
   fi
 fi
 
-if [[ "${BIONEURO_MIRROR_ON_PUSH:-1}" != "0" ]]; then
-  mirror_cmd=(python3 "${repo_root}/scripts/mirror_bioneuro_audio.py")
-  if [[ -n "${BIONEURO_MIRROR_SRC:-}" ]]; then
-    mirror_cmd+=(--source "${BIONEURO_MIRROR_SRC}")
-  fi
-  if [[ -n "${BIONEURO_MIRROR_DST:-}" ]]; then
-    mirror_cmd+=(--dest "${BIONEURO_MIRROR_DST}")
-  fi
-  echo "pre-push: running bioneuro audio mirror"
-  if ! "${mirror_cmd[@]}"; then
-    echo "pre-push: warning: bioneuro audio mirror failed; continuing push" >&2
-  fi
-fi
-
-if [[ "${PERSONLIGHEDSPSYKOLOGI_MIRROR_ON_PUSH:-1}" != "0" ]]; then
-  mirror_cmd=(python3 "${repo_root}/scripts/mirror_personlighedspsykologi_output_dirs.py")
-  if [[ -n "${PERSONLIGHEDSPSYKOLOGI_MIRROR_SRC:-}" ]]; then
-    mirror_cmd+=(--source "${PERSONLIGHEDSPSYKOLOGI_MIRROR_SRC}")
-  fi
-  if [[ -n "${PERSONLIGHEDSPSYKOLOGI_MIRROR_DST:-}" ]]; then
-    mirror_cmd+=(--dest "${PERSONLIGHEDSPSYKOLOGI_MIRROR_DST}")
-  fi
-  echo "pre-push: running personlighedspsykologi output directory mirror"
-  if ! "${mirror_cmd[@]}"; then
-    echo "pre-push: warning: personlighedspsykologi output directory mirror failed; continuing push" >&2
-  fi
-fi
+run_output_dir_mirror "bioneuro" "BIONEURO"
+run_output_dir_mirror "personlighedspsykologi" "PERSONLIGHEDSPSYKOLOGI"
 
 if [[ "${APPS_SCRIPT_PUSH_ON_PUSH:-1}" == "0" ]]; then
   exit 0

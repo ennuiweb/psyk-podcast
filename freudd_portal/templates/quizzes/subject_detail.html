@@ -525,12 +525,11 @@
 
   .quiz-difficulty-list {
     margin: 0;
-    padding: 0 0 0 14px;
+    padding: 0;
     list-style: none;
     display: flex;
     flex-direction: column;
     gap: var(--space-3);
-    border-left: 2px solid color-mix(in srgb, var(--border-strong) 88%, transparent);
   }
 
   .quiz-difficulty-row {
@@ -605,10 +604,14 @@
 
   .quiz-difficulty-empty {
     margin: 0;
-    padding: var(--space-3) 0;
+    min-height: 104px;
+    border-left: 2px solid color-mix(in srgb, var(--border-strong) 88%, transparent);
+    padding: 0 0 0 14px;
+    display: inline-flex;
+    align-items: center;
     color: color-mix(in srgb, var(--text-subtle-2) 64%, var(--muted));
     font-family: var(--subject-font-editorial);
-    font-size: clamp(0.88rem, 1.4vw, 0.98rem);
+    font-size: clamp(1.08rem, 2.1vw, 1.38rem);
     font-style: italic;
   }
 
@@ -1004,7 +1007,12 @@
     min-width: 0;
   }
 
-
+  .reading-side {
+    display: grid;
+    gap: var(--space-2);
+    justify-items: end;
+    align-content: start;
+  }
 
   .reading-title {
     margin: 0;
@@ -1178,7 +1186,7 @@
       left: 10px;
       bottom: 0;
       width: 2px;
-      background: color-mix(in srgb, var(--border-strong) 80%, var(--border));
+      background: color-mix(in srgb, var(--border-strong) 80%, #d8cab2);
     }
 
     .lecture-rail-item:last-child::after {
@@ -1195,14 +1203,14 @@
       box-shadow: none;
       width: 14px;
       height: 14px;
-      border-color: color-mix(in srgb, var(--border-strong) 92%, var(--border));
-      background: color-mix(in srgb, var(--surface) 96%, var(--surface-soft));
+      border-color: color-mix(in srgb, var(--border-strong) 92%, #c5b494);
+      background: color-mix(in srgb, var(--surface) 96%, #fff9ef);
     }
 
     .lecture-rail-item.is-past .lecture-rail-link,
     .lecture-rail-item.is-completed .lecture-rail-link {
       border-color: var(--accent);
-      background: color-mix(in srgb, var(--surface) 96%, var(--surface-soft));
+      background: color-mix(in srgb, var(--surface) 96%, #fff9ef);
     }
 
     .lecture-rail-item.is-active .lecture-rail-link {
@@ -1213,8 +1221,8 @@
     .active-lecture-card {
       min-height: 0;
       border-radius: 32px;
-      border-color: var(--border);
-      background: var(--surface-soft);
+      border-color: #d9dce5;
+      background: #f9f9fb;
       padding: clamp(14px, 2.2vw, 24px);
       box-shadow: 0 8px 22px rgba(30, 43, 69, 0.08);
     }
@@ -1239,7 +1247,7 @@
       font-size: 1rem;
       line-height: 1.24;
       font-weight: 500;
-      color: var(--muted);
+      color: #606b80;
     }
 
     .active-lecture-sections {
@@ -1260,8 +1268,8 @@
 
     .lecture-section {
       border-radius: 28px;
-      border-color: var(--border);
-      background: var(--surface);
+      border-color: #e2e5ed;
+      background: #fdfdff;
       padding: clamp(14px, 2vw, 22px);
     }
 
@@ -1298,7 +1306,7 @@
 
     .lecture-quizzes .section-note {
       text-align: center;
-      color: var(--muted);
+      color: #8a93a3;
       font-size: 0.92rem;
       font-style: italic;
       line-height: 1.28;
@@ -1313,7 +1321,7 @@
 
     .podcast-row {
       padding: var(--space-3) 0;
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid #e3e6ee;
     }
 
     .podcast-row.has-open-podcast:hover {
@@ -1333,11 +1341,11 @@
       font-weight: 680;
       line-height: 1.22;
       letter-spacing: -0.004em;
-      color: var(--text-strong);
+      color: #20293a;
     }
 
     .podcast-meta {
-      color: var(--muted);
+      color: #677287;
       font-size: clamp(0.84rem, 1.45vw, 0.96rem);
       line-height: 1.3;
     }
@@ -1345,17 +1353,17 @@
     .podcast-inline-trigger {
       width: 40px;
       height: 40px;
-      border-color: var(--border-strong);
-      background: var(--surface-soft);
-      color: var(--muted);
+      border-color: #bdc5d4;
+      background: #eef1f7;
+      color: #9ca5b4;
       transform: none;
     }
 
     .podcast-inline-trigger:hover,
     .podcast-inline-trigger.is-active {
-      border-color: color-mix(in srgb, var(--border-strong) 84%, var(--border));
-      background: color-mix(in srgb, var(--surface-soft) 78%, var(--surface));
-      color: var(--text-subtle-2);
+      border-color: #aeb7c8;
+      background: #e8edf7;
+      color: #6f7a8f;
     }
 
     .reading-top {

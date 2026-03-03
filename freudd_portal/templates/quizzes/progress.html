@@ -111,7 +111,7 @@
   }
 
   .subject-status-pill.is-enrolled {
-    border-color: rgba(31, 143, 78, 0.35);
+    border-color: color-mix(in srgb, var(--success) 35%, transparent);
     color: var(--success);
     background: var(--success-bg);
   }
@@ -252,7 +252,7 @@
     mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.75), transparent 90%);
   }
 
-  .quiz-history-shell > * {
+  .quiz-history-shell>* {
     position: relative;
     z-index: 1;
   }
@@ -327,7 +327,7 @@
     gap: 6px;
   }
 
-  .history-control > span {
+  .history-control>span {
     color: var(--text-subtle-2);
     font-size: 0.72rem;
     letter-spacing: 0.05em;
@@ -335,8 +335,8 @@
     font-weight: 700;
   }
 
-  .history-control > input,
-  .history-control > select {
+  .history-control>input,
+  .history-control>select {
     min-height: var(--control-min-height);
     border: 1px solid var(--border-strong);
     border-radius: var(--radius-pill);
@@ -502,13 +502,13 @@
   }
 
   .difficulty-pill.is-easy {
-    border-color: rgba(31, 143, 78, 0.3);
+    border-color: color-mix(in srgb, var(--success) 30%, transparent);
     background: var(--success-bg);
     color: var(--success-ink);
   }
 
   .difficulty-pill.is-hard {
-    border-color: rgba(178, 59, 79, 0.35);
+    border-color: color-mix(in srgb, var(--danger) 35%, transparent);
     background: var(--danger-bg);
     color: var(--danger-ink);
   }
@@ -528,13 +528,13 @@
   }
 
   .status-pill.is-complete {
-    border-color: rgba(31, 143, 78, 0.32);
+    border-color: color-mix(in srgb, var(--success) 32%, transparent);
     background: var(--success-bg);
     color: var(--success-ink);
   }
 
   .status-pill.is-progress {
-    border-color: rgba(15, 95, 140, 0.32);
+    border-color: color-mix(in srgb, var(--info-ink) 32%, transparent);
     background: color-mix(in srgb, var(--accent-soft) 64%, transparent);
     color: var(--info-ink);
   }
@@ -793,24 +793,14 @@
       <input type="hidden" name="next" value="{% url 'progress' %}" />
       {% if leaderboard_profile.public_alias and not leaderboard_alias_editing %}
       <div class="leaderboard-alias-lock">
-        <input
-          type="text"
-          value="{{ leaderboard_profile.public_alias }}"
-          aria-label="Offentligt alias (låst)"
-          readonly
-        />
+        <input type="text" value="{{ leaderboard_profile.public_alias }}" aria-label="Offentligt alias (låst)"
+          readonly />
         <p class="leaderboard-alias-note">Alias er låst for at undgå utilsigtede ændringer.</p>
         <a class="subject-toggle-button" href="{% url 'progress' %}?edit_alias=1#quiz cup-indstillinger">Ændr alias</a>
       </div>
       {% else %}
-      <input
-        type="text"
-        name="public_alias"
-        maxlength="24"
-        value="{{ leaderboard_profile.public_alias }}"
-        placeholder="Alias (3-24 tegn)"
-        aria-label="Offentligt alias"
-      />
+      <input type="text" name="public_alias" maxlength="24" value="{{ leaderboard_profile.public_alias }}"
+        placeholder="Alias (3-24 tegn)" aria-label="Offentligt alias" />
       <input type="hidden" name="allow_alias_change" value="1" />
       {% if leaderboard_profile.public_alias %}
       <a class="subject-toggle-button" href="{% url 'progress' %}#quiz cup-indstillinger">Annuller alias-ændring</a>
@@ -872,12 +862,8 @@
     <div class="quiz-history-controls" data-history-controls>
       <label class="history-control is-search">
         <span>Søg</span>
-        <input
-          type="search"
-          placeholder="Søg i titel, modul, tags eller quiz-id"
-          autocomplete="off"
-          data-history-search
-        />
+        <input type="search" placeholder="Søg i titel, modul, tags eller quiz-id" autocomplete="off"
+          data-history-search />
       </label>
       <label class="history-control">
         <span>Sværhedsgrad</span>
@@ -918,17 +904,10 @@
     <div class="quiz-history-desktop">
       <div class="quiz-history-feed quiz-history-mobile" data-history-list>
         {% for row in rows %}
-        <article
-          class="quiz-history-card"
-          data-history-item
-          data-status="{{ row.status }}"
-          data-difficulty="{{ row.difficulty_key }}"
-          data-updated="{{ row.updated_at|date:'U' }}"
-          data-correct="{{ row.answers_count }}"
-          data-total="{{ row.question_count }}"
-          data-title="{{ row.title|lower }}"
-          data-search="{{ row.search_text }}"
-        >
+        <article class="quiz-history-card" data-history-item data-status="{{ row.status }}"
+          data-difficulty="{{ row.difficulty_key }}" data-updated="{{ row.updated_at|date:'U' }}"
+          data-correct="{{ row.answers_count }}" data-total="{{ row.question_count }}"
+          data-title="{{ row.title|lower }}" data-search="{{ row.search_text }}">
           <div class="quiz-history-headline">
             <div class="quiz-history-kicker">
               {% if row.module_label %}
@@ -943,15 +922,19 @@
           </div>
           <div class="quiz-history-body">
             <div class="quiz-history-line">
-              <span class="difficulty-pill {% if row.difficulty_label == 'Let' %}is-easy{% elif row.difficulty_label == 'Svær' %}is-hard{% endif %}">
-                {{ row.difficulty_label }}{% if row.question_count > 0 %} · {{ row.question_count }} spørgsmål{% endif %}
+              <span
+                class="difficulty-pill {% if row.difficulty_label == 'Let' %}is-easy{% elif row.difficulty_label == 'Svær' %}is-hard{% endif %}">
+                {{ row.difficulty_label }}{% if row.question_count > 0 %} · {{ row.question_count }} spørgsmål{% endif
+                %}
               </span>
-              <time class="updated-at" datetime="{{ row.updated_at|date:'c' }}">{{ row.updated_at|date:'d.m.Y H:i' }}</time>
+              <time class="updated-at" datetime="{{ row.updated_at|date:'c' }}">{{ row.updated_at|date:'d.m.Y H:i'
+                }}</time>
             </div>
             <div class="answers-cell">
               <p class="quiz-score-label">Rigtige svar</p>
               {% if row.question_count > 0 %}
-              <progress class="answers-track" value="{{ row.answers_count }}" max="{{ row.question_count }}" aria-label="{{ row.answers_count }} af {{ row.question_count }} rigtige svar">
+              <progress class="answers-track" value="{{ row.answers_count }}" max="{{ row.question_count }}"
+                aria-label="{{ row.answers_count }} af {{ row.question_count }} rigtige svar">
                 {{ row.answers_count }} / {{ row.question_count }}
               </progress>
               {% else %}
@@ -964,11 +947,10 @@
           </div>
           <div class="quiz-meta-row">
             {% for chip in row.meta_chips %}
-            {% if forloop.counter <= 2 %}
-            <span class="quiz-mini-chip">{{ chip }}</span>
-            {% endif %}
-            {% endfor %}
-            <span class="quiz-id">{{ row.quiz_id }}</span>
+            {% if forloop.counter <= 2 %} <span class="quiz-mini-chip">{{ chip }}</span>
+              {% endif %}
+              {% endfor %}
+              <span class="quiz-id">{{ row.quiz_id }}</span>
           </div>
         </article>
         {% endfor %}

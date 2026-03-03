@@ -69,11 +69,9 @@
     border-color: color-mix(in srgb, var(--accent) 44%, var(--border-strong));
     background:
       radial-gradient(circle at 14% 26%, color-mix(in srgb, var(--surface) 88%, #fff7d8), transparent 58%),
-      linear-gradient(
-        140deg,
+      linear-gradient(140deg,
         color-mix(in srgb, var(--accent-soft) 90%, var(--surface)),
-        color-mix(in srgb, var(--surface-soft) 92%, #faf4e4)
-      );
+        color-mix(in srgb, var(--surface-soft) 92%, #faf4e4));
     color: var(--accent-strong);
     display: inline-flex;
     align-items: center;
@@ -88,11 +86,9 @@
     border-color: color-mix(in srgb, var(--accent) 66%, var(--border-strong));
     background:
       radial-gradient(circle at 14% 26%, color-mix(in srgb, var(--surface) 82%, #fff7d8), transparent 56%),
-      linear-gradient(
-        140deg,
+      linear-gradient(140deg,
         color-mix(in srgb, var(--accent-soft) 96%, var(--surface)),
-        color-mix(in srgb, var(--surface-soft) 95%, #faf4e4)
-      );
+        color-mix(in srgb, var(--surface-soft) 95%, #faf4e4));
   }
 
   .subject-cup-icon {
@@ -100,7 +96,7 @@
     height: 30px;
     border-radius: 50%;
     border: 1px solid color-mix(in srgb, var(--accent) 32%, var(--border));
-    background: color-mix(in srgb, var(--surface) 90%, #fff5cc);
+    background: color-mix(in srgb, var(--surface) 90%, var(--warn-bg));
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -165,9 +161,9 @@
   .subject-path-toggle {
     min-height: 44px;
     border-radius: var(--radius-pill);
-    border: 1px solid color-mix(in srgb, var(--border-strong) 92%, #c7b89e);
+    border: 1px solid color-mix(in srgb, var(--border-strong) 92%, var(--border));
     background: var(--surface);
-    color: color-mix(in srgb, var(--text-subtle-2) 92%, #32445f);
+    color: color-mix(in srgb, var(--text-subtle-2) 92%, var(--text-strong));
     padding: 0 18px;
     display: inline-flex;
     align-items: center;
@@ -210,7 +206,7 @@
   }
 
   .subject-path-toggle:hover {
-    border-color: color-mix(in srgb, var(--border-strong) 96%, #b8a283);
+    border-color: color-mix(in srgb, var(--border-strong) 96%, var(--border));
     background: color-mix(in srgb, var(--surface-soft) 52%, var(--surface));
     color: var(--text-strong);
   }
@@ -227,7 +223,7 @@
     align-items: start;
   }
 
-  .subject-path-layout > * {
+  .subject-path-layout>* {
     min-width: 0;
   }
 
@@ -268,7 +264,7 @@
     bottom: 0;
     left: 12px;
     width: 2px;
-    background: color-mix(in srgb, var(--border-strong) 88%, #d2c4ac);
+    background: color-mix(in srgb, var(--border-strong) 88%, var(--border));
   }
 
   .lecture-rail-item:last-child::after {
@@ -279,8 +275,8 @@
     width: 14px;
     height: 14px;
     border-radius: 50%;
-    border: 2px solid color-mix(in srgb, var(--border-strong) 92%, #c5b494);
-    background: color-mix(in srgb, var(--surface) 96%, #fff9ef);
+    border: 2px solid color-mix(in srgb, var(--border-strong) 92%, var(--border));
+    background: color-mix(in srgb, var(--surface) 96%, var(--surface-soft));
     color: transparent;
     display: inline-flex;
     align-items: center;
@@ -306,12 +302,12 @@
   }
 
   .lecture-rail-item.is-active .lecture-rail-link:hover {
-    background: color-mix(in srgb, var(--accent) 94%, #0f5f8c);
-    border-color: color-mix(in srgb, var(--accent) 96%, #0f5f8c);
+    background: color-mix(in srgb, var(--accent) 94%, var(--accent-strong));
+    border-color: color-mix(in srgb, var(--accent) 96%, var(--accent-strong));
   }
 
   .lecture-rail-item:not(.is-active):not(.is-past):not(.is-completed):hover .lecture-rail-copy {
-    color: #7f8ea2;
+    color: var(--text-subtle-2);
   }
 
   .lecture-rail-item.is-active .lecture-rail-link {
@@ -321,7 +317,7 @@
 
   .lecture-rail-item.is-past .lecture-rail-link,
   .lecture-rail-item.is-completed .lecture-rail-link {
-    background: color-mix(in srgb, var(--surface) 96%, #fff9ef);
+    background: color-mix(in srgb, var(--surface) 96%, var(--surface-soft));
     border-color: var(--accent);
     box-shadow: none;
   }
@@ -330,7 +326,7 @@
     margin: 0;
     display: grid;
     gap: 3px;
-    color: #8997ab;
+    color: var(--text-subtle-2);
     font-family: var(--subject-font-ui);
     line-height: 1.2;
     font-size: 0.92rem;
@@ -353,7 +349,7 @@
   }
 
   .lecture-rail-copy-date {
-    color: #7f90a7;
+    color: var(--muted);
     font-family: var(--font-mono);
     font-size: 0.78rem;
     line-height: 1.2;
@@ -529,19 +525,17 @@
 
   .quiz-difficulty-list {
     margin: 0;
-    padding: 0 0 0 14px;
+    padding: 0;
     list-style: none;
-    display: grid;
+    display: flex;
+    flex-direction: column;
     gap: var(--space-3);
-    border-left: 2px solid color-mix(in srgb, var(--border-strong) 88%, transparent);
   }
 
   .quiz-difficulty-row {
     margin: 0;
-    display: grid;
-    grid-template-columns: 30px minmax(0, 1fr);
-    align-items: start;
-    gap: 10px;
+    display: flex;
+    flex-direction: column;
     padding: 0;
     background: transparent;
   }
@@ -550,44 +544,29 @@
     filter: brightness(0.97);
   }
 
-  .quiz-difficulty-rank {
-    width: 28px;
-    min-height: 30px;
+  .quiz-difficulty-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 4px;
+  }
+
+  .quiz-difficulty-icon {
+    font-family: 'Material Symbols Outlined';
+    font-size: 20px;
+    color: var(--text-strong);
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    color: #1f1b15;
-    line-height: 1;
-  }
-
-  .quiz-difficulty-rank-badge {
-    width: 26px;
-    height: 26px;
-    border-radius: 7px;
-    border: 1px solid color-mix(in srgb, #2a2722 32%, transparent);
-    background: color-mix(in srgb, var(--surface) 84%, #f0eadf);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--subject-font-ui);
-    font-size: 1rem;
-    font-weight: 600;
-    color: #1f1b15;
-  }
-
-  .quiz-difficulty-copy {
-    min-width: 0;
-    display: grid;
-    gap: 3px;
-    padding-top: 2px;
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
   }
 
   .quiz-difficulty-title {
     margin: 0;
     color: var(--text-strong);
     font-family: var(--subject-font-editorial);
-    font-size: clamp(1.05rem, 1.8vw, 1.65rem);
-    font-weight: 700;
+    font-size: clamp(0.94rem, 1.8vw, 1.05rem);
+    font-weight: 600;
     line-height: 1.14;
     letter-spacing: -0.006em;
     text-decoration: none;
@@ -601,9 +580,10 @@
 
   .quiz-difficulty-meta {
     margin: 0;
-    color: color-mix(in srgb, var(--text-subtle-2) 72%, #8a7d6d);
+    padding-left: 28px;
+    color: color-mix(in srgb, var(--text-subtle-2) 72%, var(--muted));
     font-family: var(--font-mono);
-    font-size: clamp(1rem, 1.35vw, 1.6rem);
+    font-size: clamp(0.8rem, 1.35vw, 0.9rem);
     line-height: 1.33;
     letter-spacing: 0.01em;
   }
@@ -613,8 +593,9 @@
   }
 
   .quiz-difficulty-row.is-not_started .quiz-difficulty-title,
+  .quiz-difficulty-row.is-not_started .quiz-difficulty-icon,
   .quiz-difficulty-row.is-not_started .quiz-difficulty-meta {
-    color: #7d756c;
+    color: var(--muted);
   }
 
   .quiz-difficulty-row.is-disabled {
@@ -628,7 +609,7 @@
     padding: 0 0 0 14px;
     display: inline-flex;
     align-items: center;
-    color: color-mix(in srgb, var(--text-subtle-2) 64%, #8f8475);
+    color: color-mix(in srgb, var(--text-subtle-2) 64%, var(--muted));
     font-family: var(--subject-font-editorial);
     font-size: clamp(1.08rem, 2.1vw, 1.38rem);
     font-style: italic;
@@ -698,9 +679,9 @@
 
   .podcast-hover-action {
     border-radius: var(--radius-pill);
-    border: 1px solid color-mix(in srgb, #1db954 62%, transparent);
-    background: color-mix(in srgb, #1db954 20%, #fff);
-    color: color-mix(in srgb, #1db954 90%, #0f4221);
+    border: 1px solid color-mix(in srgb, var(--success) 62%, transparent);
+    background: color-mix(in srgb, var(--success) 20%, #fff);
+    color: color-mix(in srgb, var(--success) 90%, var(--success-ink));
     padding: 0.28rem 0.72rem;
     font-family: var(--subject-font-ui);
     font-size: 0.72rem;
@@ -714,13 +695,13 @@
   }
 
   .podcast-hover-action:hover {
-    background: color-mix(in srgb, #1db954 30%, #fff);
-    color: color-mix(in srgb, #1db954 96%, #0b311b);
+    background: color-mix(in srgb, var(--success) 30%, #fff);
+    color: color-mix(in srgb, var(--success) 96%, var(--success-ink));
   }
 
   .podcast-hover-action.is-listen {
-    border-color: color-mix(in srgb, #1db954 40%, var(--border));
-    background: color-mix(in srgb, #1db954 14%, var(--surface));
+    border-color: color-mix(in srgb, var(--success) 40%, var(--border));
+    background: color-mix(in srgb, var(--success) 14%, var(--surface));
   }
 
   .podcast-row.has-open-podcast .podcast-hover-actions {
@@ -790,9 +771,9 @@
     width: 36px;
     height: 36px;
     border-radius: 999px;
-    border: 1px solid color-mix(in srgb, #1db954 50%, var(--border));
-    background: color-mix(in srgb, #1db954 14%, var(--surface));
-    color: #1db954;
+    border: 1px solid color-mix(in srgb, var(--success) 50%, var(--border));
+    background: color-mix(in srgb, var(--success) 14%, var(--surface));
+    color: var(--success);
     padding: 0;
     cursor: pointer;
     display: inline-flex;
@@ -1074,81 +1055,29 @@
     justify-content: flex-end;
   }
 
-  .reading-difficulties {
+  .reading-side {
     display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
     align-items: flex-start;
-    gap: var(--space-2);
-    flex-wrap: nowrap;
-    justify-content: flex-end;
-  }
-
-  .difficulty-chip {
-    min-width: 44px;
-    display: grid;
-    justify-items: center;
-    gap: 4px;
-    text-decoration: none;
-    color: var(--muted);
-    border: 0;
-    padding: 0;
-    background: transparent;
-  }
-
-  .difficulty-chip.is-disabled {
-    opacity: 0.56;
-  }
-
-  .difficulty-dot {
-    width: 44px;
-    height: 44px;
-    border-radius: 10px;
-    display: inline-flex;
-    align-items: center;
     justify-content: center;
-    border: 1px solid var(--border);
-    font-family: var(--subject-font-ui);
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--text-strong);
-    transition:
-      transform 160ms ease,
-      filter 160ms ease;
+    border-top: 1px solid color-mix(in srgb, var(--border-strong) 20%, transparent);
+    padding-top: var(--space-3);
   }
 
-  .difficulty-label {
-    margin: 0;
-    color: var(--muted);
-    font-family: var(--subject-font-ui);
-    font-size: 0.78rem;
-    line-height: 1;
-    transition: color 160ms ease;
+  @media (min-width: 1181px) {
+    .reading-side {
+      width: 256px;
+      flex-shrink: 0;
+      border-top: none;
+      border-left: 1px solid color-mix(in srgb, var(--border-strong) 20%, transparent);
+      padding-top: 0;
+      padding-left: var(--space-4);
+    }
   }
 
-  .difficulty-chip[href]:hover .difficulty-dot {
-    transform: translateY(-1px);
-    filter: brightness(0.93);
-  }
-
-  .difficulty-chip[href]:hover .difficulty-label {
-    color: var(--text-subtle-2);
-  }
-
-  .difficulty-chip.is-easy .difficulty-dot {
-    border-color: rgba(31, 143, 78, 0.4);
-    background: #d8efd7;
-    color: var(--success-ink);
-  }
-
-  .difficulty-chip.is-medium .difficulty-dot {
-    border-color: rgba(164, 122, 33, 0.35);
-    background: #f6e5c8;
-    color: var(--warn-ink-soft);
-  }
-
-  .difficulty-chip.is-hard .difficulty-dot {
-    border-color: rgba(178, 59, 79, 0.35);
-    background: #f5d8df;
-    color: var(--danger-ink);
+  .reading-difficulties {
+    width: 100%;
   }
 
   .missing-badge {
@@ -1196,9 +1125,7 @@
       max-width: 920px;
       margin: 0 auto;
       padding:
-        clamp(14px, 2.2vw, 22px)
-        clamp(14px, 2.5vw, 28px)
-        calc(92px + env(safe-area-inset-bottom));
+        clamp(14px, 2.2vw, 22px) clamp(14px, 2.5vw, 28px) calc(92px + env(safe-area-inset-bottom));
     }
 
     body.page-subject-detail::before {
@@ -1442,27 +1369,12 @@
     .reading-top {
       grid-template-columns: minmax(0, 1fr);
     }
-
-    .reading-side {
-      justify-items: start;
-    }
-
-    .reading-actions {
-      justify-content: flex-start;
-    }
-
-    .reading-difficulties {
-      justify-content: flex-start;
-      flex-wrap: wrap;
-    }
   }
 
   @media (max-width: 760px) {
     body.page-subject-detail .page-shell {
       padding:
-        10px max(8px, env(safe-area-inset-left))
-        calc(86px + env(safe-area-inset-bottom))
-        max(8px, env(safe-area-inset-right));
+        10px max(8px, env(safe-area-inset-left)) calc(86px + env(safe-area-inset-bottom)) max(8px, env(safe-area-inset-right));
     }
 
     .subject-layout {
@@ -1565,26 +1477,6 @@
       gap: 8px;
     }
 
-    .quiz-difficulty-row {
-      grid-template-columns: 25px minmax(0, 1fr);
-      gap: 7px;
-    }
-
-    .quiz-difficulty-rank-badge {
-      width: 22px;
-      height: 22px;
-      border-radius: 6px;
-      font-size: 0.84rem;
-    }
-
-    .quiz-difficulty-title {
-      font-size: clamp(1.06rem, 5.4vw, 1.24rem);
-    }
-
-    .quiz-difficulty-meta {
-      font-size: clamp(0.88rem, 4vw, 1.02rem);
-    }
-
     .podcast-row {
       padding: 8px 0;
       gap: 8px;
@@ -1607,9 +1499,7 @@
   @media (max-width: 360px) {
     body.page-subject-detail .page-shell {
       padding:
-        8px max(6px, env(safe-area-inset-left))
-        calc(84px + env(safe-area-inset-bottom))
-        max(6px, env(safe-area-inset-right));
+        8px max(6px, env(safe-area-inset-left)) calc(84px + env(safe-area-inset-bottom)) max(6px, env(safe-area-inset-right));
     }
 
     .subject-path-layout {
@@ -1665,7 +1555,8 @@
     }
   }
 
-  @media (hover: none), (pointer: coarse) {
+  @media (hover: none),
+  (pointer: coarse) {
     .lecture-rail-link {
       min-width: 12px;
       min-height: 12px;
@@ -1706,7 +1597,8 @@
       <p class="muted">{{ subject.description }}</p>
     </div>
     <div class="subject-head-actions">
-      <a class="ghost-link back-link subject-cup-link" href="{% url 'leaderboard-subject' subject_slug=subject.slug %}" aria-label="quiz cup for {{ subject.title|lower }}">
+      <a class="ghost-link back-link subject-cup-link" href="{% url 'leaderboard-subject' subject_slug=subject.slug %}"
+        aria-label="quiz cup for {{ subject.title|lower }}">
         <span class="subject-cup-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path d="M8 5h8v2a4 4 0 0 1-8 0V5Z" />
@@ -1724,7 +1616,8 @@
   <section class="subject-path" data-subject-path>
     {% if lecture_rail_items and active_lecture %}
     <div class="subject-path-tools">
-      <button class="subject-path-toggle" type="button" data-subject-rail-toggle aria-controls="subject-lecture-rail" aria-expanded="true">
+      <button class="subject-path-toggle" type="button" data-subject-rail-toggle aria-controls="subject-lecture-rail"
+        aria-expanded="true">
         <span class="subject-path-toggle-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
             <path d="M2.9 12s3.5-6.4 9.1-6.4c2.4 0 4.4.8 6.1 2.1"></path>
@@ -1741,18 +1634,13 @@
       <aside class="lecture-rail" id="subject-lecture-rail" data-subject-lecture-rail aria-label="Forelæsningsforløb">
         <ol class="lecture-rail-list">
           {% for rail in lecture_rail_items %}
-          <li class="lecture-rail-item {% if rail.is_active %}is-active{% endif %} {% if rail.is_past %}is-past{% endif %} {% if rail.is_completed %}is-completed{% endif %}">
-            <a
-              class="lecture-rail-link"
-              href="{{ rail.lecture_url }}"
+          <li
+            class="lecture-rail-item {% if rail.is_active %}is-active{% endif %} {% if rail.is_past %}is-past{% endif %} {% if rail.is_completed %}is-completed{% endif %}">
+            <a class="lecture-rail-link" href="{{ rail.lecture_url }}"
               aria-current="{% if rail.is_active %}step{% else %}false{% endif %}"
-              aria-label="{{ rail.lecture_display_title|default:rail.lecture_key }}"
-            ></a>
-            <a
-              class="lecture-rail-copy"
-              href="{{ rail.lecture_url }}"
-              aria-label="{{ rail.lecture_display_title|default:rail.lecture_key }}"
-            >
+              aria-label="{{ rail.lecture_display_title|default:rail.lecture_key }}"></a>
+            <a class="lecture-rail-copy" href="{{ rail.lecture_url }}"
+              aria-label="{{ rail.lecture_display_title|default:rail.lecture_key }}">
               <span class="lecture-rail-copy-title">{{ rail.rail_copy|default:rail.lecture_display_title }}</span>
               {% if rail.lecture_date %}
               <span class="lecture-rail-copy-date">({{ rail.lecture_date }})</span>
@@ -1773,7 +1661,8 @@
           <h2 class="active-lecture-title">{{ active_lecture.lecture_display_title }}</h2>
           {% endif %}
           <div class="active-lecture-meta">
-            <p class="active-lecture-progress">{{ active_lecture.completed_quizzes }} / {{ active_lecture.total_quizzes }}</p>
+            <p class="active-lecture-progress">{{ active_lecture.completed_quizzes }} / {{ active_lecture.total_quizzes
+              }}</p>
             {% if active_lecture.status == 'completed' %}
             <p class="active-lecture-state">
               Fuldført
@@ -1803,13 +1692,8 @@
               {% for reading in active_lecture.readings %}
               <li
                 class="reading-card {% if reading.open_url %}has-open-reading{% endif %} {% if reading.is_missing %}is-missing{% endif %} {% if reading.status == 'completed' %}is-completed{% endif %}"
-                {% if reading.open_url %}
-                data-open-url="{{ reading.open_url }}"
-                role="link"
-                tabindex="0"
-                aria-label="åbn tekst: {{ reading.reading_title }}"
-                {% endif %}
-              >
+                {% if reading.open_url %} data-open-url="{{ reading.open_url }}" role="link" tabindex="0"
+                aria-label="åbn tekst: {{ reading.reading_title }}" {% endif %}>
                 {% if reading.open_url %}
                 <span class="reading-hover-label" aria-hidden="true">åben tekst</span>
                 {% endif %}
@@ -1821,16 +1705,16 @@
                         <input type="hidden" name="next" value="{{ request.get_full_path }}" />
                         <input type="hidden" name="lecture_key" value="{{ active_lecture.lecture_key }}" />
                         <input type="hidden" name="reading_key" value="{{ reading.reading_key }}" />
-                        <input type="hidden" name="action" value="{% if reading.is_marked_read %}unmark{% else %}mark{% endif %}" />
-                        <button
-                          class="tracking-toggle-button {% if reading.is_marked_read %}is-marked{% endif %}"
+                        <input type="hidden" name="action"
+                          value="{% if reading.is_marked_read %}unmark{% else %}mark{% endif %}" />
+                        <button class="tracking-toggle-button {% if reading.is_marked_read %}is-marked{% endif %}"
                           type="submit"
-                          aria-label="{% if reading.is_marked_read %}Fjern markering læst{% else %}Markér læst{% endif %}"
-                        >
+                          aria-label="{% if reading.is_marked_read %}Fjern markering læst{% else %}Markér læst{% endif %}">
                           <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
                             <path d="M5 12.5 9.3 17 19 7.4"></path>
                           </svg>
-                          <span class="visually-hidden">{% if reading.is_marked_read %}Læst{% else %}Markér læst{% endif %}</span>
+                          <span class="visually-hidden">{% if reading.is_marked_read %}Læst{% else %}Markér læst{% endif
+                            %}</span>
                         </button>
                       </form>
                       <p class="reading-title"><strong>{{ reading.reading_title }}</strong></p>
@@ -1854,19 +1738,32 @@
                     {% endif %}
 
                     <div class="reading-difficulties">
-                      {% for slot in reading.difficulty_summary %}
-                        {% if slot.quiz_url %}
-                        <a class="difficulty-chip is-{{ slot.difficulty }}" href="{{ slot.quiz_url }}">
-                          <span class="difficulty-dot">{{ slot.chip }}</span>
-                          <span class="difficulty-label">{{ slot.label }}</span>
-                        </a>
-                        {% else %}
-                        <span class="difficulty-chip is-{{ slot.difficulty }} is-disabled">
-                          <span class="difficulty-dot">{{ slot.chip }}</span>
-                          <span class="difficulty-label">{{ slot.label }}</span>
-                        </span>
-                        {% endif %}
-                      {% endfor %}
+                      {% if reading.total_quizzes > 0 %}
+                      <ol class="quiz-difficulty-list">
+                        {% for slot in reading.difficulty_summary %}
+                        <li
+                          class="quiz-difficulty-row is-{{ slot.difficulty }} is-{{ slot.state_key }} {% if slot.quiz_url %}has-action{% else %}is-disabled{% endif %}">
+                          <div class="quiz-difficulty-header">
+                            <span class="material-symbols-outlined quiz-difficulty-icon">filter_{{ slot.display_index
+                              }}</span>
+                            {% if slot.quiz_url %}
+                            <a class="quiz-difficulty-title" href="{{ slot.quiz_url }}">{{ slot.title }}</a>
+                            {% else %}
+                            <span class="quiz-difficulty-title">{{ slot.title }}</span>
+                            {% endif %}
+                          </div>
+                          {% if slot.meta_line %}
+                          <p class="quiz-difficulty-meta {% if not slot.has_metrics %}is-idle{% endif %}">{{
+                            slot.meta_line }}</p>
+                          {% endif %}
+                        </li>
+                        {% endfor %}
+                      </ol>
+                      {% else %}
+                      <div class="quiz-difficulty-empty">
+                        Ingen aktivitet registreret
+                      </div>
+                      {% endif %}
                     </div>
                   </div>
                 </div>
@@ -1899,19 +1796,15 @@
 
             <ul class="podcast-list">
               {% for podcast in active_lecture.podcast_rows %}
-              <li
-                class="podcast-row {% if podcast.spotify_embed_url %}has-open-podcast{% endif %}"
-                {% if podcast.spotify_embed_url %}
-                data-spotify-embed-url="{{ podcast.spotify_embed_url }}"
-                role="link"
-                tabindex="0"
-                aria-label="åbn på spotify: Ep. {{ podcast.episode_index }}: {{ podcast.display_title }}"
-                {% endif %}
-              >
+              <li class="podcast-row {% if podcast.spotify_embed_url %}has-open-podcast{% endif %}" {% if
+                podcast.spotify_embed_url %} data-spotify-embed-url="{{ podcast.spotify_embed_url }}" role="link"
+                tabindex="0" aria-label="åbn på spotify: Ep. {{ podcast.episode_index }}: {{ podcast.display_title }}"
+                {% endif %}>
                 {% if podcast.spotify_embed_url %}
                 <div class="podcast-hover-actions">
                   <button class="podcast-hover-action" type="button" data-podcast-action="open">åbn på spotify</button>
-                  <button class="podcast-hover-action is-listen" type="button" data-podcast-action="listen">lyt her</button>
+                  <button class="podcast-hover-action is-listen" type="button" data-podcast-action="listen">lyt
+                    her</button>
                 </div>
                 {% endif %}
                 <div class="podcast-copy">
@@ -1925,31 +1818,29 @@
                         <input type="hidden" name="reading_key" value="{{ podcast.reading_key }}" />
                         {% endif %}
                         <input type="hidden" name="podcast_key" value="{{ podcast.podcast_key }}" />
-                        <input type="hidden" name="action" value="{% if podcast.is_marked_listened %}unmark{% else %}mark{% endif %}" />
-                        <button
-                          class="tracking-toggle-button {% if podcast.is_marked_listened %}is-marked{% endif %}"
+                        <input type="hidden" name="action"
+                          value="{% if podcast.is_marked_listened %}unmark{% else %}mark{% endif %}" />
+                        <button class="tracking-toggle-button {% if podcast.is_marked_listened %}is-marked{% endif %}"
                           type="submit"
-                          aria-label="{% if podcast.is_marked_listened %}Fjern markering lyttet{% else %}Markér lyttet{% endif %}"
-                        >
+                          aria-label="{% if podcast.is_marked_listened %}Fjern markering lyttet{% else %}Markér lyttet{% endif %}">
                           <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
                             <path d="M5 12.5 9.3 17 19 7.4"></path>
                           </svg>
-                          <span class="visually-hidden">{% if podcast.is_marked_listened %}Lyttet{% else %}Markér lyttet{% endif %}</span>
+                          <span class="visually-hidden">{% if podcast.is_marked_listened %}Lyttet{% else %}Markér
+                            lyttet{% endif %}</span>
                         </button>
                       </form>
                       <p class="podcast-title">
-                        Ep. {{ podcast.episode_index }}: {{ podcast.display_title }}{% if podcast.duration_label %} ({{ podcast.duration_label }}){% endif %}
+                        Ep. {{ podcast.episode_index }}: {{ podcast.display_title }}{% if podcast.duration_label %} ({{
+                        podcast.duration_label }}){% endif %}
                       </p>
                     </div>
                     {% if podcast.spotify_embed_url %}
-                    <button
-                      class="podcast-inline-trigger"
-                      type="button"
+                    <button class="podcast-inline-trigger" type="button"
                       data-spotify-embed-url="{{ podcast.spotify_embed_url }}"
                       data-spotify-title="Ep. {{ podcast.episode_index }}: {{ podcast.display_title }}"
                       aria-pressed="false"
-                      aria-label="Afspil episode {{ podcast.episode_index }} i Spotify-afspilleren"
-                    >
+                      aria-label="Afspil episode {{ podcast.episode_index }} i Spotify-afspilleren">
                       <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
                         <circle cx="12" cy="12" r="10"></circle>
                         <path d="M7.8 14.2c2.6-.7 5.6-.3 7.8 1"></path>
@@ -1962,15 +1853,9 @@
                 </div>
                 {% if podcast.spotify_embed_url %}
                 <div class="podcast-inline-player" data-spotify-player hidden>
-                  <iframe
-                    class="podcast-inline-frame"
-                    data-spotify-player-frame
-                    src=""
-                    title="Spotify afspiller"
-                    loading="lazy"
-                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                    referrerpolicy="strict-origin-when-cross-origin"
-                  ></iframe>
+                  <iframe class="podcast-inline-frame" data-spotify-player-frame src="" title="Spotify afspiller"
+                    loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                    referrerpolicy="strict-origin-when-cross-origin"></iframe>
                 </div>
                 {% endif %}
               </li>
@@ -1987,7 +1872,9 @@
                   <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
                     <path d="M14.25 4.5h5.25v5.25"></path>
                     <path d="M13.5 10.5 19.5 4.5"></path>
-                    <path d="M10.5 6H6A2.25 2.25 0 0 0 3.75 8.25V18A2.25 2.25 0 0 0 6 20.25h9.75A2.25 2.25 0 0 0 18 18v-4.5"></path>
+                    <path
+                      d="M10.5 6H6A2.25 2.25 0 0 0 3.75 8.25V18A2.25 2.25 0 0 0 6 20.25h9.75A2.25 2.25 0 0 0 18 18v-4.5">
+                    </path>
                   </svg>
                 </span>
                 <h3 class="section-title">Quizzer</h3>
@@ -1997,20 +1884,19 @@
 
             <ol class="quiz-difficulty-list">
               {% for slot in active_lecture.quiz_difficulty_visible_slots %}
-              <li class="quiz-difficulty-row is-{{ slot.difficulty }} is-{{ slot.state_key }} {% if slot.quiz_url %}has-action{% else %}is-disabled{% endif %}">
-                <span class="quiz-difficulty-rank" aria-hidden="true">
-                  <span class="quiz-difficulty-rank-badge">{{ slot.display_index }}</span>
-                </span>
-                <div class="quiz-difficulty-copy">
-                {% if slot.quiz_url %}
-                <a class="quiz-difficulty-title" href="{{ slot.quiz_url }}">{{ slot.title }}</a>
-                {% else %}
-                <span class="quiz-difficulty-title">{{ slot.title }}</span>
-                {% endif %}
-                {% if slot.meta_line %}
-                <p class="quiz-difficulty-meta">{{ slot.meta_line }}</p>
-                {% endif %}
+              <li
+                class="quiz-difficulty-row is-{{ slot.difficulty }} is-{{ slot.state_key }} {% if slot.quiz_url %}has-action{% else %}is-disabled{% endif %}">
+                <div class="quiz-difficulty-header">
+                  <span class="material-symbols-outlined quiz-difficulty-icon">filter_{{ slot.display_index }}</span>
+                  {% if slot.quiz_url %}
+                  <a class="quiz-difficulty-title" href="{{ slot.quiz_url }}">{{ slot.title }}</a>
+                  {% else %}
+                  <span class="quiz-difficulty-title">{{ slot.title }}</span>
+                  {% endif %}
                 </div>
+                {% if slot.meta_line %}
+                <p class="quiz-difficulty-meta {% if not slot.has_metrics %}is-idle{% endif %}">{{ slot.meta_line }}</p>
+                {% endif %}
               </li>
               {% endfor %}
             </ol>

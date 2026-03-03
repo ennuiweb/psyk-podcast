@@ -1974,7 +1974,11 @@ def subject_detail_view(request: HttpRequest, subject_slug: str) -> HttpResponse
             if not isinstance(reading, dict):
                 continue
             summary = _reading_difficulty_summary(reading)
-            reading["difficulty_summary"] = summary
+            annotated_summary = _annotate_quiz_difficulty_slots_for_user(
+                user=request.user,
+                slots=summary,
+            )
+            reading["difficulty_summary"] = annotated_summary
             reading["primary_quiz_url"] = ""
             normalized_reading_key = str(reading.get("reading_key") or "").strip().lower()
             source_filename = _source_filename_or_none(reading.get("source_filename"))

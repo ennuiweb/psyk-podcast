@@ -1,0 +1,395 @@
+{
+  "title": "Psychopathology Quiz",
+  "questions": [
+    {
+      "question": "What is the approximate prevalence of schizophrenia in the general human population worldwide?",
+      "answerOptions": [
+        {
+          "text": "10%",
+          "isCorrect": false,
+          "rationale": "This rate would be significantly higher than observed epidemiological data, which shows a much lower frequency."
+        },
+        {
+          "text": "1%",
+          "isCorrect": true,
+          "rationale": "Research indicates that schizophrenia afflicts about 1% of individuals across all human societies."
+        },
+        {
+          "text": "0.1%",
+          "isCorrect": false,
+          "rationale": "This understates the impact of the disorder, which affects millions of people globally."
+        },
+        {
+          "text": "5%",
+          "isCorrect": false,
+          "rationale": "While significant, 5% is much higher than the actual reported prevalence of approximately 1 in 100 people."
+        }
+      ],
+      "hint": "Consider the percentage of the population typically cited in epidemiological studies of this disorder."
+    },
+    {
+      "question": "Which of the following is classified as a 'positive' symptom of schizophrenia?",
+      "answerOptions": [
+        {
+          "text": "Social withdrawal",
+          "isCorrect": false,
+          "rationale": "Social withdrawal is a negative symptom because it represents a loss or reduction of normal functioning."
+        },
+        {
+          "text": "Emotional blunting",
+          "isCorrect": false,
+          "rationale": "The loss of emotional expression is categorized as a negative symptom of the disorder."
+        },
+        {
+          "text": "Auditory hallucinations",
+          "isCorrect": true,
+          "rationale": "Positive symptoms refer to behaviors or states that are gained or added, such as hallucinations or delusions."
+        },
+        {
+          "text": "Slowed speech",
+          "isCorrect": false,
+          "rationale": "Impoverished speech is considered a negative symptom because it involves a deficit in normal behavior."
+        }
+      ],
+      "hint": "Focus on identifying a behavioral state that is 'gained' rather than one that reflects a 'loss' of function."
+    },
+    {
+      "question": "What is the concordance rate for schizophrenia among monozygotic (identical) twins?",
+      "answerOptions": [
+        {
+          "text": "100%",
+          "isCorrect": false,
+          "rationale": "If concordance were 100%, genes would be the only factor, but environmental stressors also play a significant role."
+        },
+        {
+          "text": "17%",
+          "isCorrect": false,
+          "rationale": "This is actually the concordance rate for dizygotic (fraternal) twins, who share only about half of their genes."
+        },
+        {
+          "text": "About 50%",
+          "isCorrect": true,
+          "rationale": "Studies show that even with identical genes, there is only a 50% chance the other twin will develop the disorder, highlighting environmental influences."
+        },
+        {
+          "text": "1%",
+          "isCorrect": false,
+          "rationale": "This is the prevalence in the general population, not the specific concordance rate for closely related family members."
+        }
+      ],
+      "hint": "Recall that while genes play a major role, the concordance rate is not perfect even when individuals share $100$% of their DNA."
+    },
+    {
+      "question": "Which anatomical feature is consistently found to be enlarged in the brains of many people with schizophrenia?",
+      "answerOptions": [
+        {
+          "text": "Cerebral ventricles",
+          "isCorrect": true,
+          "rationale": "The lateral ventricles are often significantly larger in patients with schizophrenia, likely at the expense of surrounding brain tissue."
+        },
+        {
+          "text": "Hippocampus",
+          "isCorrect": false,
+          "rationale": "The hippocampus actually tends to be smaller or show cellular disorganization in those with schizophrenia."
+        },
+        {
+          "text": "Prefrontal cortex",
+          "isCorrect": false,
+          "rationale": "Many studies show a thinning of gray matter in the cortex rather than an enlargement of these regions."
+        },
+        {
+          "text": "Amygdala",
+          "isCorrect": false,
+          "rationale": "The amygdala, along with the hippocampus, is often found to be smaller in the affected twin of discordant pairs."
+        }
+      ],
+      "hint": "Think about the fluid-filled spaces in the brain that appear larger on MRI scans in affected individuals."
+    },
+    {
+      "question": "The 'hypofrontality hypothesis' suggests that schizophrenia may involve which of the following?",
+      "answerOptions": [
+        {
+          "text": "Overactivity in the occipital lobes",
+          "isCorrect": false,
+          "rationale": "The hypothesis specifically targets the frontal lobes, not the visual processing centers in the back of the brain."
+        },
+        {
+          "text": "Underactivation of the frontal lobes",
+          "isCorrect": true,
+          "rationale": "PET scans show relatively less metabolic activity in the frontal cortex of people with schizophrenia, especially during cognitive tasks."
+        },
+        {
+          "text": "Structural damage to the cerebellum",
+          "isCorrect": false,
+          "rationale": "While many areas are studied, 'hypofrontality' refers specifically to functional activity levels in the prefrontal cortex."
+        },
+        {
+          "text": "Excessive dopamine in the motor cortex",
+          "isCorrect": false,
+          "rationale": "This relates more to side effects of medication than the core hypofrontality hypothesis regarding frontal lobe function."
+        }
+      ],
+      "hint": "Consider the meaning of the prefix 'hypo-' and its application to the frontal region of the brain."
+    },
+    {
+      "question": "How do first-generation antipsychotics, such as chlorpromazine, primarily act on the brain?",
+      "answerOptions": [
+        {
+          "text": "By increasing serotonin levels",
+          "isCorrect": false,
+          "rationale": "Increasing serotonin is a primary mechanism for many antidepressants, not traditional antipsychotics."
+        },
+        {
+          "text": "By blocking dopamine $D_2$ receptors",
+          "isCorrect": true,
+          "rationale": "These typical antipsychotics are antagonists at the $D_2$ receptor, which aligns with the dopamine hypothesis of schizophrenia."
+        },
+        {
+          "text": "By stimulating glutamate release",
+          "isCorrect": false,
+          "rationale": "Though glutamate is implicated in the disorder, traditional antipsychotics do not act by stimulating its release."
+        },
+        {
+          "text": "By inhibiting monoamine oxidase",
+          "isCorrect": false,
+          "rationale": "MAO inhibition is a mechanism used to treat depression, not the primary action of early antipsychotic drugs."
+        }
+      ],
+      "hint": "Think about the specific dopamine receptor subtype that these drugs target to reduce positive symptoms."
+    },
+    {
+      "question": "What is the name of the permanent motor disorder characterized by involuntary facial movements that can result from long-term use of traditional antipsychotics?",
+      "answerOptions": [
+        {
+          "text": "Amphetamine psychosis",
+          "isCorrect": false,
+          "rationale": "This refers to symptoms induced by drug abuse that mimic schizophrenia, not a motor side effect of medication."
+        },
+        {
+          "text": "Tardive dyskinesia",
+          "isCorrect": true,
+          "rationale": "Tardive dyskinesia involves repetitive, involuntary movements of the face and tongue caused by prolonged receptor blockage."
+        },
+        {
+          "text": "Dissociative thinking",
+          "isCorrect": false,
+          "rationale": "This is a core cognitive symptom of schizophrenia itself, not a side effect of its treatment."
+        },
+        {
+          "text": "Serotonin syndrome",
+          "isCorrect": false,
+          "rationale": "This is a dangerous condition caused by excess serotonin, typically associated with antidepressant interactions."
+        }
+      ],
+      "hint": "The term for this condition includes a Latin word meaning 'slow,' reflecting its delayed onset."
+    },
+    {
+      "question": "The glutamate hypothesis of schizophrenia was prompted by the observation that which drug produces both positive and negative symptoms?",
+      "answerOptions": [
+        {
+          "text": "LSD",
+          "isCorrect": false,
+          "rationale": "LSD primarily affects serotonin and produces hallucinations that are quite different from schizophrenic psychosis."
+        },
+        {
+          "text": "Chlorpromazine",
+          "isCorrect": false,
+          "rationale": "This drug is used to treat schizophrenia, whereas the question asks for a drug that mimics its symptoms."
+        },
+        {
+          "text": "Phencyclidine (PCP)",
+          "isCorrect": true,
+          "rationale": "PCP acts as an NMDA receptor antagonist, and its effects closely resemble the full spectrum of schizophrenia symptoms."
+        },
+        {
+          "text": "Reserpine",
+          "isCorrect": false,
+          "rationale": "Reserpine depletes monoamines and is associated with inducing depression, not schizophrenia-like symptoms."
+        }
+      ],
+      "hint": "Consider the drug known as 'angel dust' which acts as an NMDA receptor antagonist."
+    },
+    {
+      "question": "Which epidemiological factor has been shown to significantly increase the risk of developing schizophrenia?",
+      "answerOptions": [
+        {
+          "text": "Living in a rural area",
+          "isCorrect": false,
+          "rationale": "Data shows that moving from a city to the country actually reduces the risk of developing the disorder."
+        },
+        {
+          "text": "City living",
+          "isCorrect": true,
+          "rationale": "People raised in large cities are about twice as likely to develop schizophrenia as those in the countryside, possibly due to stress."
+        },
+        {
+          "text": "High socioeconomic status",
+          "isCorrect": false,
+          "rationale": "The disorder is often associated with the stress of urban environments and fewer resources rather than high status."
+        },
+        {
+          "text": "Dietary choices",
+          "isCorrect": false,
+          "rationale": "While nutrition is important, the most significant environmental risk factor cited in the text is the degree of urbanization."
+        }
+      ],
+      "hint": "Think about the differences in stress levels between urban and rural environments."
+    },
+    {
+      "question": "In the United States, how does the prevalence of major depressive disorder compare between men and women?",
+      "answerOptions": [
+        {
+          "text": "It is twice as prevalent in men.",
+          "isCorrect": false,
+          "rationale": "Males are actually more susceptible to drug dependency and alcoholism, whereas women show higher rates of depression."
+        },
+        {
+          "text": "It is twice as prevalent in women.",
+          "isCorrect": true,
+          "rationale": "Studies consistently show that women are about twice as likely as men to experience clinically significant depression."
+        },
+        {
+          "text": "There is no difference in prevalence.",
+          "isCorrect": false,
+          "rationale": "Surveys, including door-to-door assessments, reveal a clear sex difference in the incidence of depression."
+        },
+        {
+          "text": "Men only show higher rates after age 65.",
+          "isCorrect": false,
+          "rationale": "The sex difference is evident throughout much of adulthood, and cognitive impairment is the primary concern for those over 65."
+        }
+      ],
+      "hint": "Consider which gender is statistically reported to be more susceptible to mood disorders versus substance abuse."
+    },
+    {
+      "question": "Which of the following is a mechanism of action for selective serotonin reuptake inhibitors (SSRIs)?",
+      "answerOptions": [
+        {
+          "text": "They increase the breakdown of serotonin in the synapse.",
+          "isCorrect": false,
+          "rationale": "This would decrease serotonin availability, which is the opposite of what these drugs are designed to do."
+        },
+        {
+          "text": "They block the reabsorption of serotonin into the presynaptic neuron.",
+          "isCorrect": true,
+          "rationale": "By blocking reuptake, SSRIs allow serotonin to remain in the synapse longer, increasing its activity."
+        },
+        {
+          "text": "They act as antagonists at dopamine $D_2$ receptors.",
+          "isCorrect": false,
+          "rationale": "Dopamine $D_2$ antagonism is the primary mechanism for antipsychotic drugs, not SSRIs."
+        },
+        {
+          "text": "They decrease neurogenesis in the hippocampus.",
+          "isCorrect": false,
+          "rationale": "SSRIs actually appear to increase neurogenesis in the hippocampus in animal models."
+        }
+      ],
+      "hint": "Focus on the term 'reuptake inhibitor' and what that means for the transmitter remaining in the synaptic cleft."
+    },
+    {
+      "question": "What does the dexamethasone suppression test reveal in many individuals with depression?",
+      "answerOptions": [
+        {
+          "text": "An immediate rise in serotonin levels",
+          "isCorrect": false,
+          "rationale": "Dexamethasone is a glucocorticoid and does not directly measure or affect serotonin levels in this manner."
+        },
+        {
+          "text": "A failure to suppress cortisol release",
+          "isCorrect": true,
+          "rationale": "In healthy people, dexamethasone 'fools' the brain into reducing cortisol, but this feedback mechanism is often broken in depressed patients."
+        },
+        {
+          "text": "Increased activity in the visual cortex",
+          "isCorrect": false,
+          "rationale": "The test is a measure of the hypothalamic-pituitary-adrenal (HPA) axis, not cortical sensory activity."
+        },
+        {
+          "text": "A sudden onset of REM sleep",
+          "isCorrect": false,
+          "rationale": "While REM sleep is affected in depression, this specific chemical test is designed to measure hormone suppression."
+        }
+      ],
+      "hint": "Think about how this synthetic glucocorticoid affects the hypothalamic-pituitary-adrenal (HPA) axis."
+    },
+    {
+      "question": "What is a common abnormality observed in the sleep patterns of people with major depression?",
+      "answerOptions": [
+        {
+          "text": "Increased time spent in stage 3 (slow-wave) sleep",
+          "isCorrect": false,
+          "rationale": "Depressed individuals actually show a striking reduction in stage 3 slow-wave sleep."
+        },
+        {
+          "text": "A shorter latency to enter REM sleep",
+          "isCorrect": true,
+          "rationale": "People with depression often enter their first REM period much sooner after falling asleep than healthy controls."
+        },
+        {
+          "text": "Total absence of REM sleep",
+          "isCorrect": false,
+          "rationale": "They still experience REM sleep; in fact, it is often more vigorous and displaced toward the beginning of the night."
+        },
+        {
+          "text": "Difficulty waking up in the morning",
+          "isCorrect": false,
+          "rationale": "While they may feel tired, the most common complaints involve difficulty falling and staying asleep."
+        }
+      ],
+      "hint": "Consider the timing of the first rapid eye movement period after the onset of sleep."
+    },
+    {
+      "question": "Which model of depression involves exposing an animal to a repetitive, inescapable stressful stimulus?",
+      "answerOptions": [
+        {
+          "text": "Hypofrontality model",
+          "isCorrect": false,
+          "rationale": "Hypofrontality is a hypothesis about brain activity in schizophrenia, not a behavioral stress model."
+        },
+        {
+          "text": "Learned helplessness",
+          "isCorrect": true,
+          "rationale": "In this paradigm, an animal that cannot escape a stressor eventually stops trying, mimicking the passivity seen in human depression."
+        },
+        {
+          "text": "Ammon's horn disorganization",
+          "isCorrect": false,
+          "rationale": "This refers to cellular disarray in the hippocampus, which is a structural finding in schizophrenia."
+        },
+        {
+          "text": "The endophenotype paradigm",
+          "isCorrect": false,
+          "rationale": "Endophenotypes are physical or behavioral markers of susceptibility, not the stress-based learning model described."
+        }
+      ],
+      "hint": "Think of the term for a state where an individual feels their actions have no effect on unpleasant outcomes."
+    },
+    {
+      "question": "Which gene, when mutated, has been found to be shared by several members of a Scottish family with schizophrenia and is involved in brain development?",
+      "answerOptions": [
+        {
+          "text": "$COMT$",
+          "isCorrect": false,
+          "rationale": "$COMT$ is involved in dopamine metabolism but is not the specific gene famously identified in the Scottish family study."
+        },
+        {
+          "text": "$DISC1$",
+          "isCorrect": true,
+          "rationale": "Disrupted in schizophrenia 1 ($DISC1$) is associated with schizophrenia and influences synaptic plasticity and brain structure."
+        },
+        {
+          "text": "$5-HTTLPR$",
+          "isCorrect": false,
+          "rationale": "This polymorphic region of the serotonin transporter gene has been studied more in relation to depression than as the primary schizophrenia gene."
+        },
+        {
+          "text": "Neuregulin 1",
+          "isCorrect": false,
+          "rationale": "While neuregulin 1 is linked to schizophrenia risk, it was not the specific 'disabled' gene identified in the large Scottish pedigree."
+        }
+      ],
+      "hint": "The name of this gene is an acronym for 'Disrupted in Schizophrenia 1'."
+    }
+  ]
+}

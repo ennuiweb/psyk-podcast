@@ -1,0 +1,343 @@
+{
+  "title": "Neurodevelopment Quiz",
+  "questions": [
+    {
+      "question": "In the case of Michael May, who regained his sight at age 46, which of the following tasks remained difficult for him years after the procedure?",
+      "answerOptions": [
+        {
+          "text": "Recognizing his wife's face visually",
+          "isCorrect": true,
+          "rationale": "While basic visual input was restored, higher-order processing like facial recognition and identifying static 3D objects did not fully develop."
+        },
+        {
+          "text": "Distinguishing between day and night",
+          "isCorrect": false,
+          "rationale": "He was already able to distinguish light and dark before the procedure."
+        },
+        {
+          "text": "Detecting the movement of spheres or cubes",
+          "isCorrect": false,
+          "rationale": "The source material notes he could recognize these objects if they were moving."
+        },
+        {
+          "text": "Sensing the color of his wife's eyes",
+          "isCorrect": false,
+          "rationale": "He was able to see his wife's blue eyes immediately after the bandages were removed."
+        }
+      ],
+      "hint": "Think about the specific complex visual tasks that require significant cortical processing."
+    },
+    {
+      "question": "During the first week of human development, the emerging embryo forms three distinct layers. Which layer is responsible for the formation of the nervous system?",
+      "answerOptions": [
+        {
+          "text": "Ectoderm",
+          "isCorrect": true,
+          "rationale": "The ectoderm is the outer layer that thickens to form the neural plate and eventually the entire nervous system."
+        },
+        {
+          "text": "Mesoderm",
+          "isCorrect": false,
+          "rationale": "This middle layer primarily forms connective tissues, muscles, and the vascular system."
+        },
+        {
+          "text": "Endoderm",
+          "isCorrect": false,
+          "rationale": "The endoderm gives rise to the internal linings of the digestive and respiratory systems."
+        },
+        {
+          "text": "Neural crest",
+          "isCorrect": false,
+          "rationale": "While it forms parts of the peripheral nervous system, it is a derivative of the ectoderm rather than one of the primary three layers."
+        }
+      ],
+      "hint": "The name of this layer comes from the Greek word for 'outer skin'."
+    },
+    {
+      "question": "At roughly 24 days of development, the head end of the neural tube shows three subdivisions. Which of these corresponds to the future forebrain?",
+      "answerOptions": [
+        {
+          "text": "Prosencephalon",
+          "isCorrect": true,
+          "rationale": "The prosencephalon is the anterior-most division that develops into the telencephalon and diencephalon."
+        },
+        {
+          "text": "Mesencephalon",
+          "isCorrect": false,
+          "rationale": "This subdivision corresponds to the midbrain."
+        },
+        {
+          "text": "Rhombencephalon",
+          "isCorrect": false,
+          "rationale": "This subdivision corresponds to the hindbrain."
+        },
+        {
+          "text": "Metencephalon",
+          "isCorrect": false,
+          "rationale": "This is a secondary subdivision of the hindbrain, not the primary name for the forebrain precursor."
+        }
+      ],
+      "hint": "This term refers to the 'forward' part of the brain."
+    },
+    {
+      "question": "Which of the following statements best describes the relationship between genotype and phenotype?",
+      "answerOptions": [
+        {
+          "text": "The genotype is fixed at fertilization, but the phenotype changes constantly throughout life.",
+          "isCorrect": true,
+          "rationale": "Inherited genetic information remains constant, while physical characteristics evolve due to interaction with the environment."
+        },
+        {
+          "text": "The phenotype is determined solely by the genotype regardless of environmental factors.",
+          "isCorrect": false,
+          "rationale": "Experience and environment significantly influence how genes are expressed and the resulting physical traits."
+        },
+        {
+          "text": "Identical genotypes always result in identical phenotypes.",
+          "isCorrect": false,
+          "rationale": "Even with the same genes, different experiences lead to variations in the nervous system and behavior."
+        },
+        {
+          "text": "The genotype can be altered by behavioral interactions with the environment.",
+          "isCorrect": false,
+          "rationale": "While gene expression changes, the underlying genetic code (genotype) remains the same."
+        }
+      ],
+      "hint": "Consider which of these represents the static blueprint and which represents the actual physical expression."
+    },
+    {
+      "question": "How does cellular differentiation in vertebrates differ from that in the microscopic worm $Caenorhabditis$ $elegans$?",
+      "answerOptions": [
+        {
+          "text": "Vertebrate cell fate is guided by cell-cell interactions rather than strictly by mitotic lineage.",
+          "isCorrect": true,
+          "rationale": "Vertebrate development is flexible and responds to signals from neighboring cells, unlike the rigid lineage of $C. elegans$."
+        },
+        {
+          "text": "Vertebrate cell fate is determined entirely by ancestors in the cell division process.",
+          "isCorrect": false,
+          "rationale": "This describes $C. elegans$, whereas vertebrates use local environmental cues."
+        },
+        {
+          "text": "$C. elegans$ relies on environmental signals to determine if a cell becomes a neuron.",
+          "isCorrect": false,
+          "rationale": "In $C. elegans$, the fate of every cell can be predicted solely from its mitotic history."
+        },
+        {
+          "text": "Vertebrates have fewer neural cells, making their differentiation simpler to predict.",
+          "isCorrect": false,
+          "rationale": "Vertebrates have billions of neurons, making their development much more complex than the 302 neurons in $C. elegans$."
+        }
+      ],
+      "hint": "Think about whether the destination is predetermined by 'birth' or influenced by 'neighbors'."
+    },
+    {
+      "question": "What is the primary cause of brain damage in individuals with Phenylketonuria (PKU) if it is left untreated?",
+      "answerOptions": [
+        {
+          "text": "Toxic buildup of the amino acid phenylalanine",
+          "isCorrect": true,
+          "rationale": "The absence of an enzyme to metabolize phenylalanine leads to high levels that are damaging to the developing brain."
+        },
+        {
+          "text": "A total lack of protein in the diet",
+          "isCorrect": false,
+          "rationale": "The issue is a specific metabolic failure, not a general protein deficiency."
+        },
+        {
+          "text": "Exposure to a viral infection during the first 10 weeks of gestation",
+          "isCorrect": false,
+          "rationale": "PKU is an inherited genetic disorder of metabolism, not an acquired infection."
+        },
+        {
+          "text": "Hypoxia occurring during a complicated delivery",
+          "isCorrect": false,
+          "rationale": "While hypoxia can cause disability, PKU is specifically related to enzyme deficiency and diet."
+        }
+      ],
+      "hint": "Focus on the specific metabolic error involving an amino acid found in many foods."
+    },
+    {
+      "question": "Which anatomical abnormality is frequently observed in severe cases of Fetal Alcohol Syndrome (FAS)?",
+      "answerOptions": [
+        {
+          "text": "Absence of the corpus callosum",
+          "isCorrect": true,
+          "rationale": "FAS can lead to profound structural changes, including the failure of the bridge between the two hemispheres to develop."
+        },
+        {
+          "text": "An unusually large brain (macrocephaly)",
+          "isCorrect": false,
+          "rationale": "FAS is typically associated with microcephaly, or an abnormally small brain."
+        },
+        {
+          "text": "An increased number of cerebral cortical gyri",
+          "isCorrect": false,
+          "rationale": "FAS brains often show fewer gyri (folds) than normal brains."
+        },
+        {
+          "text": "Hypertrophy of the spinal cord",
+          "isCorrect": false,
+          "rationale": "The source material emphasizes cortical and midline brain abnormalities rather than spinal cord enlargement."
+        }
+      ],
+      "hint": "Look for a missing connection between the two cerebral hemispheres."
+    },
+    {
+      "question": "In which region of the embryonic neural tube does the mitotic division of nonneuronal cells (neurogenesis) primarily occur?",
+      "answerOptions": [
+        {
+          "text": "Ventricular zone",
+          "isCorrect": true,
+          "rationale": "All neurons and glia originate from cells dividing in this layer lining the central canal of the neural tube."
+        },
+        {
+          "text": "Marginal zone",
+          "isCorrect": false,
+          "rationale": "This layer is located toward the outer surface and does not host the primary mitotic divisions."
+        },
+        {
+          "text": "Neural crest",
+          "isCorrect": false,
+          "rationale": "The neural crest provides cells for the peripheral nervous system, but the central nervous system neurons originate in the ventricular zone."
+        },
+        {
+          "text": "Intermediate zone",
+          "isCorrect": false,
+          "rationale": "This layer develops as cells migrate away from the ventricular zone; it is not the site of birth."
+        }
+      ],
+      "hint": "This zone is located along the inner surface of the neural tube."
+    },
+    {
+      "question": "What is the primary role of radial glial cells during the stage of cell migration?",
+      "answerOptions": [
+        {
+          "text": "Acting as guide wires for new neurons to move toward the outer layers",
+          "isCorrect": true,
+          "rationale": "Migrating cells move along the processes of radial glia, which span the width of the emerging hemispheres."
+        },
+        {
+          "text": "Providing the myelin sheath for growing axons",
+          "isCorrect": false,
+          "rationale": "Myelination is a later stage of development handled by other types of glia."
+        },
+        {
+          "text": "Secreting the protein Sonic hedgehog to induce motor neurons",
+          "isCorrect": false,
+          "rationale": "Induction of motor neurons is performed by the notochord, not radial glia."
+        },
+        {
+          "text": "Refining synaptic connections by removing excess synapses",
+          "isCorrect": false,
+          "rationale": "This describes synapse rearrangement, which occurs much later than cell migration."
+        }
+      ],
+      "hint": "Think of these cells as 'spokes' on a wheel that guide movement."
+    },
+    {
+      "question": "The protein Sonic hedgehog, released by the notochord, is an example of which developmental process?",
+      "answerOptions": [
+        {
+          "text": "Induction",
+          "isCorrect": true,
+          "rationale": "Induction occurs when one set of cells influences the developmental fate of neighboring cells through chemical signals."
+        },
+        {
+          "text": "Neurogenesis",
+          "isCorrect": false,
+          "rationale": "Neurogenesis refers to the birth of cells through mitosis, not their specialization into specific types."
+        },
+        {
+          "text": "Synaptogenesis",
+          "isCorrect": false,
+          "rationale": "This involves the formation of connections between established neurons, rather than determining a cell's identity."
+        },
+        {
+          "text": "Cell adhesion",
+          "isCorrect": false,
+          "rationale": "While related to migration, induction specifically refers to changing the gene expression of target cells."
+        }
+      ],
+      "hint": "This process involves neighboring cells 'telling' each other what to become."
+    },
+    {
+      "question": "Which of the following describes adult neurogenesis in the human brain?",
+      "answerOptions": [
+        {
+          "text": "New neurons are primarily added to the dentate gyrus of the hippocampal formation.",
+          "isCorrect": true,
+          "rationale": "Research indicates that the hippocampus continues to generate roughly $1400$ new neurons per day throughout adulthood."
+        },
+        {
+          "text": "Neurogenesis ceases completely at the moment of birth in all mammals.",
+          "isCorrect": false,
+          "rationale": "While most neurons are present at birth, specific regions continue to produce new neurons."
+        },
+        {
+          "text": "The rate of neurogenesis is decreased by physical exercise.",
+          "isCorrect": false,
+          "rationale": "Physical exercise has actually been shown to boost neurogenesis in adult mammals."
+        },
+        {
+          "text": "New neurons are added to replace those lost in the cerebellum during aging.",
+          "isCorrect": false,
+          "rationale": "The most prominent sites for adult neurogenesis are the hippocampus and olfactory organ, not the cerebellum."
+        }
+      ],
+      "hint": "Focus on the brain area associated with learning and memory."
+    },
+    {
+      "question": "What are growth cones and their extensions, known as filopodia, responsible for during development?",
+      "answerOptions": [
+        {
+          "text": "Pulling the growing axon or dendrite in a particular direction",
+          "isCorrect": true,
+          "rationale": "Growth cones detect chemical gradients and use filopodia to adhere to surfaces and advance the process."
+        },
+        {
+          "text": "Wrapping axons in fatty myelin for faster signal conduction",
+          "isCorrect": false,
+          "rationale": "This is the role of myelinating glia, not growth cones."
+        },
+        {
+          "text": "Dividing via mitosis to increase the total number of neurons",
+          "isCorrect": false,
+          "rationale": "Growth cones are at the tips of processes and do not undergo cell division."
+        },
+        {
+          "text": "Triggering programmed cell death in unnecessary neurons",
+          "isCorrect": false,
+          "rationale": "Growth cones facilitate connection and growth rather than cellular destruction."
+        }
+      ],
+      "hint": "Think of these as the 'navigators' at the tips of developing nerve fibers."
+    },
+    {
+      "question": "In the study of neural development, what is a 'knockout organism'?",
+      "answerOptions": [
+        {
+          "text": "An animal in which a specific gene has been deliberately disabled",
+          "isCorrect": true,
+          "rationale": "Knockout animals allow researchers to observe the effects of a missing gene on brain development and behavior."
+        },
+        {
+          "text": "An embryo that has lost cells due to a chemical explosion",
+          "isCorrect": false,
+          "rationale": "This refers to an injury or lesion, not a specific genetic engineering technique."
+        },
+        {
+          "text": "A transgenic animal where a new functional gene has been introduced",
+          "isCorrect": false,
+          "rationale": "This describes a 'knock-in' or transgenic approach, whereas 'knockout' implies removal of function."
+        },
+        {
+          "text": "A mutant mouse that displays motor impairments like the 'reeler' mouse",
+          "isCorrect": false,
+          "rationale": "While 'reeler' mice are mutants, 'knockout' specifically refers to experimental gene disruption using tools like CRISPR."
+        }
+      ],
+      "hint": "Consider the literal meaning of 'knocking out' a functional part of the genetic code."
+    }
+  ]
+}

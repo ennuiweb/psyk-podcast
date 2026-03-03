@@ -1,0 +1,317 @@
+{
+  "title": "Neurodevelopment Quiz",
+  "questions": [
+    {
+      "question": "Which embryonic layer is responsible for the eventual formation of the nervous system?",
+      "answerOptions": [
+        {
+          "text": "Ectoderm",
+          "isCorrect": true,
+          "rationale": "This outer cellular layer thickens to form the neural plate, which eventually develops into the brain and spinal cord."
+        },
+        {
+          "text": "Mesoderm",
+          "isCorrect": false,
+          "rationale": "While this is one of the three primary layers, it primarily forms muscles, bones, and the circulatory system rather than the nervous system."
+        },
+        {
+          "text": "Endoderm",
+          "isCorrect": false,
+          "rationale": "This internal layer typically develops into the lining of the digestive and respiratory systems."
+        },
+        {
+          "text": "Notochord",
+          "isCorrect": false,
+          "rationale": "This is a midline structure that provides signals for development but is not the primary layer that gives rise to the entire nervous system."
+        }
+      ],
+      "hint": "Think about the Greek root meaning 'outer skin'."
+    },
+    {
+      "question": "In the human embryo, the neural tube eventually develops into which part of the nervous system?",
+      "answerOptions": [
+        {
+          "text": "The central nervous system (brain and spinal cord)",
+          "isCorrect": true,
+          "rationale": "The ridges of the neural groove join to form this tube, which serves as the foundation for the brain and spinal cord."
+        },
+        {
+          "text": "The peripheral nervous system",
+          "isCorrect": false,
+          "rationale": "This part of the nervous system is actually formed by the neural crest, which is pinched off from the sides of the tube."
+        },
+        {
+          "text": "The sympathetic ganglia",
+          "isCorrect": false,
+          "rationale": "These structures are part of the peripheral nervous system and arise from the neural crest rather than the tube itself."
+        },
+        {
+          "text": "The skin and hair follicles",
+          "isCorrect": false,
+          "rationale": "Although these also arise from the ectoderm, they come from the outer layer rather than the specialized neural tube."
+        }
+      ],
+      "hint": "Consider the major midline structures of the nervous system."
+    },
+    {
+      "question": "Which term describes the sum of all physical characteristics of an individual, which changes constantly throughout life?",
+      "answerOptions": [
+        {
+          "text": "Phenotype",
+          "isCorrect": true,
+          "rationale": "This represents the interaction of the genetic code with environmental factors and experience over time."
+        },
+        {
+          "text": "Genotype",
+          "isCorrect": false,
+          "rationale": "This refers to the fixed genetic information inherited at fertilization, which does not change during one's life."
+        },
+        {
+          "text": "Zygote",
+          "isCorrect": false,
+          "rationale": "This is the term for the single fertilized egg cell, representing the very beginning of an organism's life cycle."
+        },
+        {
+          "text": "Mitotic lineage",
+          "isCorrect": false,
+          "rationale": "This refers to the 'ancestry' of a cell through divisions, which is more critical for organisms like $C. elegans$ than for vertebrates."
+        }
+      ],
+      "hint": "Focus on the term that encompasses outward physical traits and behaviors."
+    },
+    {
+      "question": "How does cell differentiation in vertebrates differ from that in the worm $Caenorhabditis$ $elegans$?",
+      "answerOptions": [
+        {
+          "text": "Vertebrate cell fate is guided by cell-cell interactions rather than strictly by mitotic lineage.",
+          "isCorrect": true,
+          "rationale": "Vertebrates rely on communication between neighboring cells to determine their final form, making development more flexible."
+        },
+        {
+          "text": "Vertebrate cell fate is determined entirely by the cell's mitotic ancestors.",
+          "isCorrect": false,
+          "rationale": "This is the mechanism found in $C. elegans$, where scientists can precisely predict a cell's fate based on its divisions."
+        },
+        {
+          "text": "Vertebrates do not use gene expression to differentiate cells.",
+          "isCorrect": false,
+          "rationale": "All complex organisms use gene expression; the difference lies in what signals trigger that expression."
+        },
+        {
+          "text": "Vertebrates have fewer neurons, making the process less complex than in $C. elegans$.",
+          "isCorrect": false,
+          "rationale": "Human brains have over 80 billion neurons, whereas $C. elegans$ has exactly 302, making vertebrate development far more complex."
+        }
+      ],
+      "hint": "Think about whether development is highly predetermined or influenced by the local environment."
+    },
+    {
+      "question": "Anatomical effects of Fetal Alcohol Syndrome (FAS) can include the absence of which brain structure?",
+      "answerOptions": [
+        {
+          "text": "Corpus callosum",
+          "isCorrect": true,
+          "rationale": "In severe cases of FAS, this major pathway connecting the two cerebral hemispheres may fail to develop."
+        },
+        {
+          "text": "Telencephalon",
+          "isCorrect": false,
+          "rationale": "The telencephalon is a major subdivision of the forebrain; its total absence would be incompatible with life."
+        },
+        {
+          "text": "Ventral horn",
+          "isCorrect": false,
+          "rationale": "While alcohol affects many areas, the characteristic anatomical hallmark in severe FAS imaging is the missing bridge between hemispheres."
+        },
+        {
+          "text": "Neural plate",
+          "isCorrect": false,
+          "rationale": "The neural plate is a very early embryonic structure; if it were absent, no nervous system would form at all."
+        }
+      ],
+      "hint": "Look for a structure that facilitates communication between the left and right sides of the brain."
+    },
+    {
+      "question": "The disorder phenylketonuria (PKU) is a classic example of nature-nurture interaction because:",
+      "answerOptions": [
+        {
+          "text": "The toxic buildup of phenylalanine depends on the individual's diet.",
+          "isCorrect": true,
+          "rationale": "The genetic defect only leads to intellectual disability if the person consumes foods containing the amino acid phenylalanine."
+        },
+        {
+          "text": "It is caused by a virus that only affects people with a specific genotype.",
+          "isCorrect": false,
+          "rationale": "PKU is an inborn error of metabolism involving an enzyme deficiency, not a viral infection."
+        },
+        {
+          "text": "The disorder is purely environmental and not related to genes.",
+          "isCorrect": false,
+          "rationale": "PKU is a recessive hereditary disorder, meaning it has a clear genetic (nature) component."
+        },
+        {
+          "text": "It can only be cured using gene therapy in adulthood.",
+          "isCorrect": false,
+          "rationale": "The condition is managed through early dietary intervention, not by altering the genes themselves."
+        }
+      ],
+      "hint": "Consider how a specific environmental factor\u2014what we eat\u2014changes the outcome of this genetic defect."
+    },
+    {
+      "question": "During neurogenesis, where do the precursor cells that give rise to neurons and glia undergo mitosis?",
+      "answerOptions": [
+        {
+          "text": "Ventricular zone",
+          "isCorrect": true,
+          "rationale": "This region lines the inner surface of the neural tube and is the primary site of cell division for future neural cells."
+        },
+        {
+          "text": "Marginal zone",
+          "isCorrect": false,
+          "rationale": "This layer is located further from the central canal and is where cells migrate to, rather than where they primarily divide."
+        },
+        {
+          "text": "Cerebral cortex",
+          "isCorrect": false,
+          "rationale": "The cortex is the final destination for many cells, but the birth of these cells occurs earlier in the inner ventricular layer."
+        },
+        {
+          "text": "Olfactory bulb",
+          "isCorrect": false,
+          "rationale": "While neurogenesis can occur here in adults, the vast majority of neurons are born in the ventricular zone during early development."
+        }
+      ],
+      "hint": "Identify the layer lining the fluid-filled ventricles."
+    },
+    {
+      "question": "What is the primary function of radial glial cells during brain development?",
+      "answerOptions": [
+        {
+          "text": "They act as guide wires for the migration of newly born neurons.",
+          "isCorrect": true,
+          "rationale": "Cells move along these glial 'spokes' to reach their final destinations in the various layers of the brain."
+        },
+        {
+          "text": "They provide the myelin sheath for growing axons.",
+          "isCorrect": false,
+          "rationale": "Myelination is a later stage of development performed by different types of glia, such as oligodendrocytes."
+        },
+        {
+          "text": "They trigger the death of surplus neurons via apoptosis.",
+          "isCorrect": false,
+          "rationale": "Radial glia are involved in movement and structure rather than the chemical signaling of programmed cell death."
+        },
+        {
+          "text": "They are the primary source of the protein Sonic hedgehog.",
+          "isCorrect": false,
+          "rationale": "Sonic hedgehog is secreted by the notochord to induce cell differentiation, not by radial glia to guide migration."
+        }
+      ],
+      "hint": "Imagine these cells as a scaffold or a ladder for moving neurons."
+    },
+    {
+      "question": "The process of induction, where one set of cells influences the fate of neighboring cells, is exemplified by the notochord's release of which protein?",
+      "answerOptions": [
+        {
+          "text": "Sonic hedgehog",
+          "isCorrect": true,
+          "rationale": "This protein diffuses from the notochord to the spinal cord, directing nearby cells to differentiate into motor neurons."
+        },
+        {
+          "text": "Phenylalanine",
+          "isCorrect": false,
+          "rationale": "Phenylalanine is an amino acid found in food that becomes toxic in PKU, not a signaling protein for differentiation."
+        },
+        {
+          "text": "Beta-catenin",
+          "isCorrect": false,
+          "rationale": "While $\\beta$-catenin is involved in neural development, the specific example given for motor neuron induction is Sonic hedgehog."
+        },
+        {
+          "text": "Nerve growth factor (NGF)",
+          "isCorrect": false,
+          "rationale": "NGF is a trophic factor involved in cell survival and growth rather than the initial induction of motor neurons."
+        }
+      ],
+      "hint": "Recall the playful name of the protein mentioned in the context of spinal motor neuron development."
+    },
+    {
+      "question": "What are the fine, threadlike extensions of a growth cone that adhere to surfaces to pull an axon in a specific direction?",
+      "answerOptions": [
+        {
+          "text": "Filopodia",
+          "isCorrect": true,
+          "rationale": "These extensions search for chemical cues and provide the traction needed for the growing axon or dendrite to move."
+        },
+        {
+          "text": "Radial glia",
+          "isCorrect": false,
+          "rationale": "Radial glia are separate cells that guide migration; they are not part of the individual neuron's growth cone."
+        },
+        {
+          "text": "Myelin",
+          "isCorrect": false,
+          "rationale": "Myelin is the fatty insulation that wraps around mature axons, not a contractile extension used for growth."
+        },
+        {
+          "text": "Synaptic vesicles",
+          "isCorrect": false,
+          "rationale": "These are small sacs containing neurotransmitters found at mature synapses, not structures for axonal pathfinding."
+        }
+      ],
+      "hint": "These 'feet' help the growth cone crawl toward its target."
+    },
+    {
+      "question": "In which part of the adult human brain has it been estimated that roughly 1400 new neurons are added daily?",
+      "answerOptions": [
+        {
+          "text": "Dentate gyrus of the hippocampal formation",
+          "isCorrect": true,
+          "rationale": "This region is a primary site for adult neurogenesis, helping to replace neurons that have died."
+        },
+        {
+          "text": "Cerebellar cortex",
+          "isCorrect": false,
+          "rationale": "While the cerebellum is critical for movement, the most prominent evidence for significant daily adult neurogenesis is in the hippocampus."
+        },
+        {
+          "text": "Corpus callosum",
+          "isCorrect": false,
+          "rationale": "The corpus callosum consists mostly of white matter (axons) and does not typically generate new neuronal cell bodies in adulthood."
+        },
+        {
+          "text": "Mesencephalon",
+          "isCorrect": false,
+          "rationale": "This midbrain division does not show the same high rate of ongoing neurogenesis seen in the dentate gyrus."
+        }
+      ],
+      "hint": "Think of a brain region closely associated with learning and memory."
+    },
+    {
+      "question": "The field of teratology is specifically concerned with which of the following?",
+      "answerOptions": [
+        {
+          "text": "The study of prenatal malformations and abnormal development",
+          "isCorrect": true,
+          "rationale": "Teratologists investigate how outside influences, like drugs or infections, cause developmental disorders in the womb."
+        },
+        {
+          "text": "The mapping of the human genome (genotype)",
+          "isCorrect": false,
+          "rationale": "This focuses on the nature side of development, while teratology focuses on harmful environmental 'nurture' factors."
+        },
+        {
+          "text": "The process of synaptic pruning in adolescence",
+          "isCorrect": false,
+          "rationale": "Synaptic pruning is a normal developmental stage, whereas teratology focuses on pathological or abnormal development."
+        },
+        {
+          "text": "The behavioral interactions of adult organisms",
+          "isCorrect": false,
+          "rationale": "Teratology is primarily focused on the prenatal and fetal stages where malformations occur."
+        }
+      ],
+      "hint": "The name comes from a Greek word meaning 'monster'."
+    }
+  ]
+}

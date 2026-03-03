@@ -1,0 +1,317 @@
+{
+  "title": "Neurodevelopment Quiz",
+  "questions": [
+    {
+      "question": "In the case of Michael May, why was his vision still poor years after successful corneal transplants restored focus to his retina?",
+      "answerOptions": [
+        {
+          "text": "The chemical explosion had permanently damaged the underlying neural circuitry of his primary visual cortex.",
+          "isCorrect": false,
+          "rationale": "While neural circuits were involved, the text specifically notes that the brain's progress through life relies on experience to refine synaptic networks, rather than citing direct explosive damage to the cortex itself."
+        },
+        {
+          "text": "His brain had missed the developmental window where behavioral interactions with the environment decide which synapses persist.",
+          "isCorrect": true,
+          "rationale": "The text explains that while genes guide initial construction, experience gained through behavioral interaction with the environment is crucial for the functional persistence of synapses."
+        },
+        {
+          "text": "The three-dimensional objects he encountered were mostly stationary, preventing the activation of his motion-sensing neurons.",
+          "isCorrect": false,
+          "rationale": "He actually could recognize moving objects; his primary deficit was identifying stationary three-dimensional objects and faces, which requires refined perceptual networks."
+        },
+        {
+          "text": "His retina failed to focus images properly due to the severity of the initial chemical burn.",
+          "isCorrect": false,
+          "rationale": "The source material explicitly states that doctors could tell images were focusing properly on his retina."
+        }
+      ],
+      "hint": "Consider the role of environmental experience in the 'nature/nurture' framework described in the text."
+    },
+    {
+      "question": "Which embryonic structure is specifically responsible for the formation of the peripheral nervous system?",
+      "answerOptions": [
+        {
+          "text": "Neural tube",
+          "isCorrect": false,
+          "rationale": "This structure forms the central nervous system, which includes the brain and the spinal cord."
+        },
+        {
+          "text": "Neural crest",
+          "isCorrect": true,
+          "rationale": "Cells from columns of ectoderm pinched off from each side of the neural tube form this structure, which gives rise to the peripheral nervous system."
+        },
+        {
+          "text": "Ectoderm",
+          "isCorrect": false,
+          "rationale": "This is the broad outer layer that eventually forms the entire nervous system, but it is not the specific sub-structure for the peripheral system."
+        },
+        {
+          "text": "Notochord",
+          "isCorrect": false,
+          "rationale": "This is a midline structure that releases signaling proteins like Sonic hedgehog but does not itself become the peripheral nervous system."
+        }
+      ],
+      "hint": "Identify the columns of ectoderm that are pinched off from the sides of the midline structure."
+    },
+    {
+      "question": "According to the five-vesicle stage of brain development, which secondary vesicles are derived from the hindbrain (rhombencephalon)?",
+      "answerOptions": [
+        {
+          "text": "Telencephalon and diencephalon",
+          "isCorrect": false,
+          "rationale": "These are the subdivisions of the forebrain (prosencephalon)."
+        },
+        {
+          "text": "Mesencephalon and myelencephalon",
+          "isCorrect": false,
+          "rationale": "The mesencephalon is the midbrain itself, not a subdivision of the hindbrain."
+        },
+        {
+          "text": "Metencephalon and myelencephalon",
+          "isCorrect": true,
+          "rationale": "The rhombencephalon divides into these two specific subdivisions, which later form structures like the cerebellum and medulla."
+        },
+        {
+          "text": "Prosencephalon and telencephalon",
+          "isCorrect": false,
+          "rationale": "The prosencephalon is the primary vesicle for the forebrain, and the telencephalon is its division."
+        }
+      ],
+      "hint": "Look for the terms associated specifically with the 'rear division' of the brain during embryonic development."
+    },
+    {
+      "question": "How does the control of cellular differentiation in vertebrates differ from that in the nematode $Caenorhabditis$ $elegans$?",
+      "answerOptions": [
+        {
+          "text": "Vertebrate cell fate is determined strictly by mitotic lineage, whereas $C.$ $elegans$ relies on environmental signals.",
+          "isCorrect": false,
+          "rationale": "This reverses the actual relationship; $C.$ $elegans$ is the organism with the highly predetermined mitotic lineage."
+        },
+        {
+          "text": "Vertebrate cell differentiation is guided by cell-cell interactions, while $C.$ $elegans$ follows a highly predetermined mitotic lineage.",
+          "isCorrect": true,
+          "rationale": "In vertebrates, gene expression and cell fate are regulated locally by communication with neighboring cells, unlike the rigid lineage of the worm."
+        },
+        {
+          "text": "Vertebrates utilize induction to fix the genotype, whereas $C.$ $elegans$ utilizes induction to modify the phenotype.",
+          "isCorrect": false,
+          "rationale": "Genotype is fixed at fertilization for both; induction is a process used in vertebrates to determine cell fate, not to fix genes."
+        },
+        {
+          "text": "Both organisms rely entirely on environmental factors to determine the structure of their $302$ neurons.",
+          "isCorrect": false,
+          "rationale": "Only $C.$ $elegans$ has exactly $302$ neurons, and their fate is predetermined by ancestry rather than the environment."
+        }
+      ],
+      "hint": "Think about which organism is described as being more 'flexible' and susceptible to local signals."
+    },
+    {
+      "question": "Phenylketonuria (PKU) is cited as a critical example of the interaction between genes and environment because:",
+      "answerOptions": [
+        {
+          "text": "The faulty gene only expresses itself if the mother consumes alcohol during the first $10$ weeks of pregnancy.",
+          "isCorrect": false,
+          "rationale": "Alcohol exposure is associated with Fetal Alcohol Syndrome (FAS), not the metabolic pathways of PKU."
+        },
+        {
+          "text": "A specific dietary environment is required for the dysfunctional genotype to produce the intellectually disabled phenotype.",
+          "isCorrect": true,
+          "rationale": "The buildup of phenylalanine to toxic levels only occurs if the individual consumes foods containing that amino acid."
+        },
+        {
+          "text": "The recessive genotype can be overwritten by environmental enrichment before the age of $2$.",
+          "isCorrect": false,
+          "rationale": "The genotype remains the same; only the physical expression (phenotype) is managed by dietary intervention."
+        },
+        {
+          "text": "It is an inborn error of metabolism that can only be detected via environmental stressors like hypoxia.",
+          "isCorrect": false,
+          "rationale": "PKU is detected through screening for phenylalanine levels shortly after birth, regardless of oxygen levels."
+        }
+      ],
+      "hint": "Recall the specific amino acid that becomes toxic in this disorder and how it enters the body."
+    },
+    {
+      "question": "During the process of cell migration, what is the primary function of radial glial cells?",
+      "answerOptions": [
+        {
+          "text": "They undergo mitosis in the marginal zone to produce new neurons.",
+          "isCorrect": false,
+          "rationale": "Mitosis primarily occurs in the ventricular zone, and radial glia act as structural guides rather than being the source of new neurons."
+        },
+        {
+          "text": "They act as guide wires, providing a surface for newly born neurons to move from the ventricular zone to the cortical plate.",
+          "isCorrect": true,
+          "rationale": "These cells extend from the inner to the outer surfaces of the brain, allowing neurons to 'shinny' past established layers."
+        },
+        {
+          "text": "They secrete the protein Slit to prevent axons from crossing the midline of the brain.",
+          "isCorrect": false,
+          "rationale": "Slit is a chemorepellent protein involved in axonal pathfinding, not the mechanical guidance of cell migration provided by radial glia."
+        },
+        {
+          "text": "They form the myelination of axons to increase the speed of electrical signals.",
+          "isCorrect": false,
+          "rationale": "While glial cells perform myelination, the specific 'radial' glial cells are specialized for guidance during development."
+        }
+      ],
+      "hint": "Think of these cells as 'spokes of a wheel' along which neurons travel."
+    },
+    {
+      "question": "The protein 'Sonic hedgehog' is a key factor in which developmental process?",
+      "answerOptions": [
+        {
+          "text": "Synaptogenesis",
+          "isCorrect": false,
+          "rationale": "While signaling is involved in synapses, Sonic hedgehog is specifically highlighted in the text for its role in determining cell fate."
+        },
+        {
+          "text": "Induction",
+          "isCorrect": true,
+          "rationale": "This protein is released by the notochord and induces nearby spinal cord cells to differentiate specifically into motor neurons."
+        },
+        {
+          "text": "Neurogenesis",
+          "isCorrect": false,
+          "rationale": "Neurogenesis is the mitotic production of cells; Sonic hedgehog acts after cells are produced to decide what they become."
+        },
+        {
+          "text": "Adult neurogenesis",
+          "isCorrect": false,
+          "rationale": "The text discusses this protein in the context of embryonic spinal cord development, not the replacement of neurons in the adult hippocampus."
+        }
+      ],
+      "hint": "This involves one set of cells influencing the differentiation and gene expression of their neighbors."
+    },
+    {
+      "question": "In the study of adult neurogenesis, approximately how many new neurons are estimated to be added daily to the human hippocampal formation?",
+      "answerOptions": [
+        {
+          "text": "$302$",
+          "isCorrect": false,
+          "rationale": "$302$ is the total number of neurons in the entire adult body of the worm $C.$ $elegans$."
+        },
+        {
+          "text": "$1400$",
+          "isCorrect": true,
+          "rationale": "Estimates suggest that the dentate gyrus of the hippocampal formation adds this many neurons per day to replace those that have died."
+        },
+        {
+          "text": "$80$ billion",
+          "isCorrect": false,
+          "rationale": "$80$ billion is the estimated total number of neurons in a mature human brain, not the daily rate of new additions."
+        },
+        {
+          "text": "$20,000$",
+          "isCorrect": false,
+          "rationale": "$20,000$ is the approximate number of genes in the human genotype."
+        }
+      ],
+      "hint": "This value represents a tiny minority of total neurons but is significant for functions like learning and memory."
+    },
+    {
+      "question": "Fetal alcohol syndrome (FAS) is characterized by specific brain abnormalities. Which of the following is a common anatomical finding in severe cases?",
+      "answerOptions": [
+        {
+          "text": "Excessive cerebral cortical gyri",
+          "isCorrect": false,
+          "rationale": "The text states that FAS brains often show fewer cerebral cortical gyri, not more."
+        },
+        {
+          "text": "Absence of the corpus callosum",
+          "isCorrect": true,
+          "rationale": "Severe FAS can lead to the lack of this critical structure that connects the two cerebral hemispheres."
+        },
+        {
+          "text": "Enlarged head size (macrocephaly)",
+          "isCorrect": false,
+          "rationale": "FAS is associated with microcephaly, which refers to an abnormally small head and brain."
+        },
+        {
+          "text": "Over-proliferation of synaptic connections in the hippocampal formation",
+          "isCorrect": false,
+          "rationale": "FAS typically results in stunted growth and intellectual disability, which is generally associated with impaired rather than excessive connectivity."
+        }
+      ],
+      "hint": "Focus on the structure that connects the two halves of the brain."
+    },
+    {
+      "question": "What role do Cell Adhesion Molecules (CAMs) play during the growth of axons and dendrites?",
+      "answerOptions": [
+        {
+          "text": "They provide a chemical gradient that growth cones follow toward target cells.",
+          "isCorrect": false,
+          "rationale": "While gradients provide directional guidance, CAMs specifically provide the adhesive surfaces that allow the growth cone to move."
+        },
+        {
+          "text": "They are the specialized swellings at the tips of axons that contain filopodia.",
+          "isCorrect": false,
+          "rationale": "The specialized swellings themselves are called growth cones; CAMs are the proteins found on surfaces that guide them."
+        },
+        {
+          "text": "They are proteins on the cell surface that growth cones adhere to, enabling them to pull the growing process forward.",
+          "isCorrect": true,
+          "rationale": "The filopodia of growth cones bind to CAMs and contract, effectively dragging the axon or dendrite along the path."
+        },
+        {
+          "text": "They act as chemorepellents that prevent synaptogenesis from occurring too early.",
+          "isCorrect": false,
+          "rationale": "CAMs promote the adhesion and outgrowth of neural elements rather than repelling them."
+        }
+      ],
+      "hint": "Consider how the 'fingers' of the growth cone manage to anchor themselves to move forward."
+    },
+    {
+      "question": "The embryonic phenomenon of 'regulation' refers to which of the following?",
+      "answerOptions": [
+        {
+          "text": "The strict control of gene expression by the mitotic lineage of a cell.",
+          "isCorrect": false,
+          "rationale": "This describes the predetermined development found in organisms like $C.$ $elegans$, not the flexible regulation found in vertebrates."
+        },
+        {
+          "text": "The ability of a developing animal to compensate for missing or injured cells.",
+          "isCorrect": true,
+          "rationale": "Because vertebrate cells take cues from neighbors, other cells can 'answer the call' and fill in for missing components if injury occurs early enough."
+        },
+        {
+          "text": "The process by which the diet regulates the toxic buildup of phenylalanine.",
+          "isCorrect": false,
+          "rationale": "This refers to the management of PKU, which is a specific interaction of genes and environment, not the embryonic property of cell compensation."
+        },
+        {
+          "text": "The mechanism by which the neural tube closes to form the central nervous system.",
+          "isCorrect": false,
+          "rationale": "The closure of the neural tube is a standard part of neural development, whereas regulation refers to an adaptive response to injury."
+        }
+      ],
+      "hint": "Think about an adaptive response that allows the embryo to 'self-repair' missing parts."
+    },
+    {
+      "question": "At which point in development is a human individual transitioned from being called an 'embryo' to being called a 'fetus'?",
+      "answerOptions": [
+        {
+          "text": "After the first $3$ days, when the homogeneous mass of cells forms.",
+          "isCorrect": false,
+          "rationale": "At $3$ days, the organism is still just a cluster of grape-like cells; the embryo stage begins later with the development of tissue layers."
+        },
+        {
+          "text": "When the neural tube closes at $22$ days.",
+          "isCorrect": false,
+          "rationale": "This is a major milestone in embryonic development, but the term 'embryo' is used for several weeks following this event."
+        },
+        {
+          "text": "After the first $10$ weeks following fertilization.",
+          "isCorrect": true,
+          "rationale": "The text specifies that the developing human is an embryo for the first $10$ weeks, after which it is termed a fetus."
+        },
+        {
+          "text": "When the head becomes half the total size of the organism at $8$ weeks.",
+          "isCorrect": false,
+          "rationale": "While this is a significant developmental marker of brain growth, the transition to the fetal stage occurs two weeks later."
+        }
+      ],
+      "hint": "This transition occurs slightly after the two-month mark of development."
+    }
+  ]
+}

@@ -1,0 +1,395 @@
+{
+  "title": "Neurodevelopment Quiz",
+  "questions": [
+    {
+      "question": "During the first week of human embryonic development, which of the three distinct cell layers gives rise to the nervous system?",
+      "answerOptions": [
+        {
+          "text": "Ectoderm",
+          "isCorrect": true,
+          "rationale": "This outermost layer thickens to form the neural plate, which eventually develops into the brain and spinal cord."
+        },
+        {
+          "text": "Mesoderm",
+          "isCorrect": false,
+          "rationale": "While this middle layer forms many internal tissues, it is not the primary origin of the central nervous system."
+        },
+        {
+          "text": "Endoderm",
+          "isCorrect": false,
+          "rationale": "This inner layer typically develops into the linings of the digestive and respiratory systems rather than neural tissue."
+        },
+        {
+          "text": "Neural crest",
+          "isCorrect": false,
+          "rationale": "These specific cells are pinched off during neural tube formation and primarily form the peripheral nervous system, not the initial three-layered embryo."
+        }
+      ],
+      "hint": "Consider the Greek root meaning \"outer\" and \"skin.\""
+    },
+    {
+      "question": "At the head end of the neural tube, three subdivisions become apparent. Which future brain region corresponds to the prosencephalon?",
+      "answerOptions": [
+        {
+          "text": "Forebrain",
+          "isCorrect": true,
+          "rationale": "This anterior division further divides into the telencephalon and diencephalon as the brain develops."
+        },
+        {
+          "text": "Midbrain",
+          "isCorrect": false,
+          "rationale": "The mesencephalon is the middle division of the brain, distinct from the anterior prosencephalon."
+        },
+        {
+          "text": "Hindbrain",
+          "isCorrect": false,
+          "rationale": "This rear division, also called the rhombencephalon, eventually contains the cerebellum, pons, and medulla."
+        },
+        {
+          "text": "Spinal cord",
+          "isCorrect": false,
+          "rationale": "This structure forms from the elongated posterior portion of the neural tube rather than one of the three primary head subdivisions."
+        }
+      ],
+      "hint": "Think about the subdivision that includes the cerebral hemispheres and the thalamus."
+    },
+    {
+      "question": "Why is the phenotype of an individual constantly changing, while the genotype remains fixed?",
+      "answerOptions": [
+        {
+          "text": "Phenotype is the result of continuous interaction between genes and environmental factors.",
+          "isCorrect": true,
+          "rationale": "Physical characteristics and behaviors are modified by life experiences and aging, whereas the inherited genetic sequence does not change."
+        },
+        {
+          "text": "The genotype is modified every time a cell expresses a new gene during development.",
+          "isCorrect": false,
+          "rationale": "Gene expression changes which genes are active, but it does not alter the underlying genetic information inherited at fertilization."
+        },
+        {
+          "text": "Phenotype is determined solely by the mitotic lineage of an individual's cells.",
+          "isCorrect": false,
+          "rationale": "While mitotic lineage is critical in simpler organisms like worms, vertebrate development relies heavily on local environmental signals."
+        },
+        {
+          "text": "Environmental factors can only alter phenotype after an organism has reached adulthood.",
+          "isCorrect": false,
+          "rationale": "External influences like nutrition and maternal health begin affecting physical characteristics as early as the embryonic stage."
+        }
+      ],
+      "hint": "Focus on the definition of phenotype as the sum of all physical characteristics at a particular time."
+    },
+    {
+      "question": "In the microscopic worm $Caenorhabditis\\ elegans$, what determines the eventual fate of a developing cell?",
+      "answerOptions": [
+        {
+          "text": "Its mitotic lineage",
+          "isCorrect": true,
+          "rationale": "The transparent nature of this organism allows scientists to trace every cell back to its specific ancestors in a predictable sequence."
+        },
+        {
+          "text": "Cell-cell interactions with neighbors",
+          "isCorrect": false,
+          "rationale": "This flexible method of development is characteristic of vertebrates, whereas this specific worm follows a highly predetermined path."
+        },
+        {
+          "text": "Exposure to proteins like Sonic hedgehog",
+          "isCorrect": false,
+          "rationale": "This induction process is a feature of vertebrate spinal cord development rather than the fixed lineage found in simple nematodes."
+        },
+        {
+          "text": "The amount of phenylalanine in its environment",
+          "isCorrect": false,
+          "rationale": "This metabolic factor is relevant to a specific human genetic disorder rather than the general developmental programming of worms."
+        }
+      ],
+      "hint": "Think about whether the cell's fate is predetermined by its \"ancestors\" or dictated by its \"neighbors.\""
+    },
+    {
+      "question": "Which anatomical abnormality is frequently observed in severe cases of Fetal Alcohol Syndrome (FAS)?",
+      "answerOptions": [
+        {
+          "text": "Absence of the corpus callosum",
+          "isCorrect": true,
+          "rationale": "Prenatal alcohol exposure can lead to the failure of this major pathway that connects the two cerebral hemispheres."
+        },
+        {
+          "text": "Abnormally large brain size (macrocephaly)",
+          "isCorrect": false,
+          "rationale": "FAS is actually associated with microcephaly, or an abnormally small brain; larger brains are sometimes noted in autism spectrum disorder."
+        },
+        {
+          "text": "An excessive number of cerebral cortical gyri",
+          "isCorrect": false,
+          "rationale": "Brain imaging of FAS infants typically shows fewer gyri, indicating stunted or abnormal cortical development."
+        },
+        {
+          "text": "Over-proliferation of the ventricular zone",
+          "isCorrect": false,
+          "rationale": "Alcohol acts as a teratogen that impairs development rather than stimulating the production of extra neural precursors."
+        }
+      ],
+      "hint": "Look for a missing connection between the two sides of the brain."
+    },
+    {
+      "question": "How does phenylketonuria (PKU) illustrate the interaction between genes and the environment?",
+      "answerOptions": [
+        {
+          "text": "The dysfunctional genotype only leads to intellectual disability if the amino acid phenylalanine is present in the diet.",
+          "isCorrect": true,
+          "rationale": "Controlling the environment by reducing intake of specific proteins can prevent the toxic buildup that damages the brain."
+        },
+        {
+          "text": "Environmental factors like hypoxia cause the genetic mutation that leads to PKU.",
+          "isCorrect": false,
+          "rationale": "PKU is an inherited recessive disorder determined at fertilization, not a result of birth complications or oxygen deprivation."
+        },
+        {
+          "text": "The genotype for PKU changes automatically if the child follows a protein-free diet.",
+          "isCorrect": false,
+          "rationale": "The diet manages the symptoms and physical outcomes (phenotype), but the underlying genetic defect (genotype) remains."
+        },
+        {
+          "text": "PKU is caused by maternal viral infections that alter the fetal genetic recipe.",
+          "isCorrect": false,
+          "rationale": "While viral infections are teratogens, PKU is specifically an inborn error of metabolism related to enzyme deficiency."
+        }
+      ],
+      "hint": "Consider why early detection and specific dietary restrictions are critical for babies with this condition."
+    },
+    {
+      "question": "During the stage of neurogenesis, where do the precursor cells that give rise to neurons and glia primarily divide?",
+      "answerOptions": [
+        {
+          "text": "Ventricular zone",
+          "isCorrect": true,
+          "rationale": "This region lining the inner surface of the neural tube is where mitotic division produces the progeny that will eventually become nerve cells."
+        },
+        {
+          "text": "Marginal zone",
+          "isCorrect": false,
+          "rationale": "While cells may migrate toward this outer surface later, the initial proliferation occurs in the inner layer."
+        },
+        {
+          "text": "Neural crest",
+          "isCorrect": false,
+          "rationale": "These cells form the peripheral nervous system and are separate from the main mitotic layer of the neural tube."
+        },
+        {
+          "text": "Intermediate layer",
+          "isCorrect": false,
+          "rationale": "This layer develops as a result of cells moving away from the primary site of mitosis."
+        }
+      ],
+      "hint": "Think about the fluid-filled center of the developing neural tube."
+    },
+    {
+      "question": "Which specialized cells act as \"guide wires\" to assist newly born neurons in moving to their final destinations in the cerebral cortex?",
+      "answerOptions": [
+        {
+          "text": "Radial glial cells",
+          "isCorrect": true,
+          "rationale": "These cells span the width of the emerging hemispheres, providing a path for neurons to 'shinny' past established layers."
+        },
+        {
+          "text": "Stem cells",
+          "isCorrect": false,
+          "rationale": "These are undifferentiated cells that can become various types of tissue, but they are not the primary structural guides for migration."
+        },
+        {
+          "text": "Purkinje cells",
+          "isCorrect": false,
+          "rationale": "These are a specific type of large neuron found in the cerebellum, not the glial support structure used for guidance."
+        },
+        {
+          "text": "Filopodia",
+          "isCorrect": false,
+          "rationale": "These are threadlike extensions of growth cones that pull axons or dendrites, rather than the cells that guide whole-body migration."
+        }
+      ],
+      "hint": "These cells extend from the inner to the outer surface of the brain like spokes on a wheel."
+    },
+    {
+      "question": "What is the primary mechanism of \"induction\" in vertebrate neural development?",
+      "answerOptions": [
+        {
+          "text": "One set of cells influences the fate of neighboring cells by secreting chemical factors.",
+          "isCorrect": true,
+          "rationale": "This process coordinates development by ensuring the right types of neurons differentiate in specific regions."
+        },
+        {
+          "text": "Cells follow a rigid internal clock determined strictly by their mitotic ancestors.",
+          "isCorrect": false,
+          "rationale": "This describes the predetermined development of $C.\\ elegans$ rather than the flexible induction seen in vertebrates."
+        },
+        {
+          "text": "The neural tube automatically divides into six layers without any external signaling.",
+          "isCorrect": false,
+          "rationale": "Vertebrate development is highly dependent on cell-cell interactions and signals from structures like the notochord."
+        },
+        {
+          "text": "Induction refers to the process where neurons die if they do not receive enough trophic factors.",
+          "isCorrect": false,
+          "rationale": "The survival or death of neurons is a separate stage (cell death) that occurs after differentiation has already taken place."
+        }
+      ],
+      "hint": "Think about how cells \"take cues\" from their environment to decide what they will become."
+    },
+    {
+      "question": "In the developing spinal cord, the protein Sonic hedgehog is secreted by the notochord to induce the formation of which specific cells?",
+      "answerOptions": [
+        {
+          "text": "Motor neurons",
+          "isCorrect": true,
+          "rationale": "The concentration gradient of this protein directs ventral spinal cells to express genes specific to controlling muscles."
+        },
+        {
+          "text": "Sensory neurons",
+          "isCorrect": false,
+          "rationale": "Different proteins expressed in the dorsal spinal cord typically inhibit motor neuron differentiation and promote other cell types."
+        },
+        {
+          "text": "Radial glia",
+          "isCorrect": false,
+          "rationale": "These cells form earlier to guide migration and are not the target of induction by the notochord at this stage."
+        },
+        {
+          "text": "Filopodia",
+          "isCorrect": false,
+          "rationale": "These are structural components of growth cones rather than a distinct type of neuron differentiated through induction."
+        }
+      ],
+      "hint": "These large, multipolar cells are found in the ventral horns of the spinal cord's gray matter."
+    },
+    {
+      "question": "Adult neurogenesis is most prominent in which specific region of the human brain?",
+      "answerOptions": [
+        {
+          "text": "Dentate gyrus of the hippocampal formation",
+          "isCorrect": true,
+          "rationale": "Research indicates that hundreds of new neurons are added to this area daily, potentially playing a role in learning."
+        },
+        {
+          "text": "Corpus callosum",
+          "isCorrect": false,
+          "rationale": "This region consists of white matter (axons) and is not a primary site for the generation of new neuronal cell bodies."
+        },
+        {
+          "text": "Six layers of the cerebral cortex",
+          "isCorrect": false,
+          "rationale": "Most neurons in the cerebral cortex are produced prenatally and are not significantly replaced in adulthood."
+        },
+        {
+          "text": "The notochord",
+          "isCorrect": false,
+          "rationale": "The notochord is a midline structure in the embryo that induces development but does not exist in the adult brain."
+        }
+      ],
+      "hint": "Think of a structure critical for memory where approximately $1400$ new neurons are added daily."
+    },
+    {
+      "question": "What happens during the process of \"embryonic regulation\" following an early injury?",
+      "answerOptions": [
+        {
+          "text": "Remaining undifferentiated cells respond to inducing factors to fill in for missing or injured cells.",
+          "isCorrect": true,
+          "rationale": "This adaptive response demonstrates the flexibility of vertebrate development where neighboring cells can 'answer the call'."
+        },
+        {
+          "text": "The embryo immediately ceases all cell migration until the injury is repaired by the immune system.",
+          "isCorrect": false,
+          "rationale": "Development continues, but the system reconfigures itself to compensate for the loss of specific precursor cells."
+        },
+        {
+          "text": "The mitotic lineage of the damaged cells is restarted from the zygote stage.",
+          "isCorrect": false,
+          "rationale": "Lineage is fixed once division has occurred; regulation relies on the flexibility of neighboring undifferentiated cells."
+        },
+        {
+          "text": "Specific genes are 'knocked out' naturally to prevent further damage to the neural tube.",
+          "isCorrect": false,
+          "rationale": "Knockout organisms are created through deliberate laboratory manipulation, not as a natural regulatory response to injury."
+        }
+      ],
+      "hint": "This term describes a self-correcting mechanism in the developing animal."
+    },
+    {
+      "question": "Which specialized structures are responsible for pulling a growing axon toward its target by adhering to cell adhesion molecules (CAMs)?",
+      "answerOptions": [
+        {
+          "text": "Filopodia",
+          "isCorrect": true,
+          "rationale": "These fine, threadlike extensions of the growth cone contract once they find an adhesive surface, providing directional movement."
+        },
+        {
+          "text": "Myelin sheaths",
+          "isCorrect": false,
+          "rationale": "Myelin is added later in development to insulate mature axons, not to guide their initial growth."
+        },
+        {
+          "text": "Nodes of Ranvier",
+          "isCorrect": false,
+          "rationale": "These are gaps in myelin on a mature axon and do not play a role in the initial guidance of growth cones."
+        },
+        {
+          "text": "Radial glial spokes",
+          "isCorrect": false,
+          "rationale": "While these guide the migration of the whole cell body, they are not the specific extensions at the tip of growing axons."
+        }
+      ],
+      "hint": "Think of the threadlike \"feet\" extending from the growth cone."
+    },
+    {
+      "question": "In the context of genetic research, how does a \"knockout organism\" differ from a \"transgenic organism\"?",
+      "answerOptions": [
+        {
+          "text": "A knockout organism has a specific gene disabled, while a transgenic organism has a new or altered gene introduced.",
+          "isCorrect": true,
+          "rationale": "Knockouts help identify a gene's normal function by seeing what goes wrong when it's missing, while transgenics allow for studying the effects of new genetic material."
+        },
+        {
+          "text": "Knockout organisms are created by environmental stress, whereas transgenic organisms are created in a lab.",
+          "isCorrect": false,
+          "rationale": "Both are results of deliberate scientific techniques such as CRISPR or site-directed mutagenesis."
+        },
+        {
+          "text": "Transgenic animals are only used for adult studies, while knockout animals are only used for embryonic studies.",
+          "isCorrect": false,
+          "rationale": "Both techniques can be applied across various life stages, although many genetic manipulations exist from the moment of conception."
+        },
+        {
+          "text": "A knockout organism lacks a notochord, while a transgenic organism lacks radial glia.",
+          "isCorrect": false,
+          "rationale": "These terms refer to the specific genetic manipulation performed (disabling vs. adding), not to the specific anatomical result."
+        }
+      ],
+      "hint": "Consider the literal meaning of \"knocking out\" a function versus \"transferring\" a gene."
+    },
+    {
+      "question": "What is the primary role of cell adhesion molecules (CAMs) during the \"cell migration\" and \"synaptogenesis\" stages?",
+      "answerOptions": [
+        {
+          "text": "They provide chemical signals that promote the sticking and guidance of developing neural elements.",
+          "isCorrect": true,
+          "rationale": "CAMs are laid down along paths to guide both migrating cell bodies and the growing tips of axons and dendrites."
+        },
+        {
+          "text": "They act as enzymes that metabolize toxic levels of phenylalanine in the brain.",
+          "isCorrect": false,
+          "rationale": "Metabolism is handled by specific proteins, whereas CAMs are structural and signaling molecules involved in guidance."
+        },
+        {
+          "text": "They are the fluid that fills the cerebral ventricles and the central canal of the spinal cord.",
+          "isCorrect": false,
+          "rationale": "The ventricles are filled with cerebrospinal fluid; CAMs are proteins found on the surfaces of cells or in the extracellular space."
+        },
+        {
+          "text": "They are the specific genes that trigger neuronal cell death when synapses are not rearranged.",
+          "isCorrect": false,
+          "rationale": "Cell death and synapse rearrangement are later stages, whereas CAMs are primarily involved in the movement and initial connection phases."
+        }
+      ],
+      "hint": "Focus on the \"adhesion\" part of the name and how it relates to finding a path."
+    }
+  ]
+}

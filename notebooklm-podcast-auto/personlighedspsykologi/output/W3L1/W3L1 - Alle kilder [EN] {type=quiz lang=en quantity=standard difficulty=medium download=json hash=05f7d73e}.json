@@ -1,0 +1,265 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "According to the meta-analysis by Polderman et al. (2015), what is the estimated overall heritability ($h^2$) for temperament and personality functions?",
+      "answerOptions": [
+        {
+          "text": "$47\\%$",
+          "isCorrect": true,
+          "rationale": "This value represents the portion of personality differences attributable to genetic variance across thousands of twin research publications."
+        },
+        {
+          "text": "$22\\%$",
+          "isCorrect": false,
+          "rationale": "This figure more closely matches heritability estimates from non-twin family and adoption studies, which typically only capture additive genetic effects."
+        },
+        {
+          "text": "$13\\%$",
+          "isCorrect": false,
+          "rationale": "This percentage reflects the average $h^2_{SNP}$ or heritability explained specifically by common single nucleotide polymorphisms in unrelated individuals."
+        },
+        {
+          "text": "$53\\%$",
+          "isCorrect": false,
+          "rationale": "This value is often associated with the remaining environmental variance or error rather than the genetic contribution itself."
+        }
+      ],
+      "hint": "Consider the aggregate finding from over 2,500 twin studies conducted over several decades."
+    },
+    {
+      "question": "The 'missing heritability' gap in personality research refers to the discrepancy between which two types of estimates?",
+      "answerOptions": [
+        {
+          "text": "Twin-based heritability and $SNP$-heritability",
+          "isCorrect": true,
+          "rationale": "The gap exists because twin studies capture rare variants and nonadditive effects that genome-wide association studies of common $SNPs$ often miss."
+        },
+        {
+          "text": "Self-report heritability and informant-report heritability",
+          "isCorrect": false,
+          "rationale": "While these differ due to rater-specific variance, the term specifically describes the difference between molecular genetic findings and twin-based biometrical findings."
+        },
+        {
+          "text": "Additive genetic variance and nonadditive dominance effects",
+          "isCorrect": false,
+          "rationale": "These are sub-components of heritability rather than the two distinct types of study-based estimates being compared in the 'missing heritability' problem."
+        },
+        {
+          "text": "Shared environmental effects and non-shared environmental effects",
+          "isCorrect": false,
+          "rationale": "These refer to the environmental sources of variance ($se^2$ and $nse^2$) rather than the genetic gap identified by molecular studies."
+        }
+      ],
+      "hint": "Think about the difference between estimates derived from familial relationships and those derived from direct DNA analysis of unrelated individuals."
+    },
+    {
+      "question": "In the Socioecological-Genetic Framework, how is 'socioecology' distinguished from 'culture'?",
+      "answerOptions": [
+        {
+          "text": "Socioecology involves objective macro-conditions, while culture involves subjective shared meanings.",
+          "isCorrect": true,
+          "rationale": "Socioecology focuses on measurable variables like temperature and population density, whereas culture focuses on symbols, values, and norms."
+        },
+        {
+          "text": "Socioecology refers to individual differences, while culture refers to societal structures.",
+          "isCorrect": false,
+          "rationale": "Both constructs operate at a macro-level, but they differ in their objectivity and the nature of the systems they describe."
+        },
+        {
+          "text": "Socioecology is a product of personality, whereas culture is a root of personality.",
+          "isCorrect": false,
+          "rationale": "Both are considered roots of personality in the framework, and socioecology is often viewed as a predictor of culture itself."
+        },
+        {
+          "text": "Socioecology is studied through genetics, while culture is studied through sociology.",
+          "isCorrect": false,
+          "rationale": "Socioecology is studied through objective scientific units like humidity or income, while culture is studied through subjective indices."
+        }
+      ],
+      "hint": "Focus on whether the variables being measured are objective scientific units or subjective systems of belief."
+    },
+    {
+      "question": "Which theory suggests that the prevalence of infectious diseases in a region promotes the development of collectivistic cultures?",
+      "answerOptions": [
+        {
+          "text": "Pathogen prevalence theory",
+          "isCorrect": true,
+          "rationale": "This theory posits that collectivistic behaviors like conformity act as a social defense system to inhibit disease transmission."
+        },
+        {
+          "text": "Subsistence style theory",
+          "isCorrect": false,
+          "rationale": "This theory focuses on the type of labor, such as rice versus wheat farming, and how it necessitates different levels of social coordination."
+        },
+        {
+          "text": "Frontier settlement theory",
+          "isCorrect": false,
+          "rationale": "This theory links individualism to the harsh, sparsely populated environments of newly settled regions where autonomy is vital for survival."
+        },
+        {
+          "text": "Modernization theory",
+          "isCorrect": false,
+          "rationale": "This perspective attributes the rise of individualism to socioeconomic development and increased resources that reduce reliance on others."
+        }
+      ],
+      "hint": "Think about which environmental threat would make behavioral conformity and group-exclusivity most adaptive."
+    },
+    {
+      "question": "According to Volk & Puchalski, how do the $HEXACO$ traits of Honesty-Humility and Agreeableness relate to biological theories of cooperation?",
+      "answerOptions": [
+        {
+          "text": "They correspond to the initiation and maintenance of reciprocal altruism.",
+          "isCorrect": true,
+          "rationale": "Honesty-Humility relates to the tendency to cooperate rather than exploit, while Agreeableness relates to the tendency to forgive rather than punish."
+        },
+        {
+          "text": "They represent the trade-off between mating effort and somatic effort.",
+          "isCorrect": false,
+          "rationale": "While related to life history, these specific traits are theoretically mapped directly onto the mechanics of reciprocal exchange between non-kin."
+        },
+        {
+          "text": "They are the primary drivers of kin selection and parental investment.",
+          "isCorrect": false,
+          "rationale": "Kin selection is more closely associated with the Emotionality factor in the $HEXACO$ model."
+        },
+        {
+          "text": "They function to maximize personal formidability in social conflicts.",
+          "isCorrect": false,
+          "rationale": "Formidability is typically linked to the calibration of anger and lower levels of Agreeableness rather than the underlying mechanism of altruism."
+        }
+      ],
+      "hint": "Look for a biological concept that explains cooperation between individuals who are not necessarily related."
+    },
+    {
+      "question": "What does the 'niche diversity hypothesis' suggest about the factor structure of personality?",
+      "answerOptions": [
+        {
+          "text": "Complex societies with diverse social roles foster a greater number of unique personality dimensions.",
+          "isCorrect": true,
+          "rationale": "High niche diversity allows for different combinations of traits to be adaptive, resulting in more distinct personality factors compared to small-scale societies."
+        },
+        {
+          "text": "The Five-Factor Model is a universal biological blueprint regardless of environmental complexity.",
+          "isCorrect": false,
+          "rationale": "Research in forager-horticulturalist populations has often failed to replicate the Big Five, supporting the idea that structure varies with complexity."
+        },
+        {
+          "text": "Ecological harshness reduces the variance of personality traits to a single optimal phenotype.",
+          "isCorrect": false,
+          "rationale": "The hypothesis focuses on the 'diversity' of niches and trait profiles rather than a single optimum level."
+        },
+        {
+          "text": "Genetic diversity is the sole predictor of whether a population will exhibit a six-factor structure.",
+          "isCorrect": false,
+          "rationale": "The hypothesis emphasizes socioecological complexity\u2014the demands of different roles\u2014rather than just genetic variation."
+        }
+      ],
+      "hint": "Consider how the number of available 'jobs' or roles in a society might influence how many different types of people can thrive."
+    },
+    {
+      "question": "In the study of ambient temperature and personality, what was the significance of the $22^{\\circ}C$ ($71.6^{\\circ}F$) threshold?",
+      "answerOptions": [
+        {
+          "text": "Growth in more benign temperatures (near $22^{\\circ}C$) predicted higher levels of socialization and personal growth traits.",
+          "isCorrect": true,
+          "rationale": "Temperatures near this level are considered optimal for thermal comfort, encouraging individuals to explore and interact more with their environment."
+        },
+        {
+          "text": "This temperature represents the point where pathogens become too prevalent for individualistic behavior.",
+          "isCorrect": false,
+          "rationale": "Pathogen prevalence is a separate ecological predictor and is not defined by this specific thermal comfort threshold."
+        },
+        {
+          "text": "It is the average temperature at which epigenetic changes in $NR3C1$ gene expression are triggered.",
+          "isCorrect": false,
+          "rationale": "Epigenetic changes in that specific gene are typically linked to childhood trauma or maltreatment rather than ambient temperature."
+        },
+        {
+          "text": "Temperatures above $22^{\\circ}C$ are required to trigger the 'sleeper effect' of neuroticism in voting behavior.",
+          "isCorrect": false,
+          "rationale": "The 'sleeper effect' of neuroticism relates to regional economic decline and industrial history, not specific climate thresholds."
+        }
+      ],
+      "hint": "Think about the environmental conditions that would make someone more or less likely to go outside and socialize."
+    },
+    {
+      "question": "Which of the following best describes the 'poly-environmental' nature of personality as discussed by Kandler & Instinske?",
+      "answerOptions": [
+        {
+          "text": "Personality differences result from the aggregate of numerous specific experiences, each having a very small effect.",
+          "isCorrect": true,
+          "rationale": "Like polygenic effects, environmental variance is likely composed of many small, idiosyncratic factors rather than a few large life events."
+        },
+        {
+          "text": "Shared family environments like parenting style explain the majority of personality variance.",
+          "isCorrect": false,
+          "rationale": "Research consistently shows that shared environmental influences are often negligible compared to individually unique ones ($nse^2$)."
+        },
+        {
+          "text": "The environment only influences personality through its interaction with the $DRD4$ gene.",
+          "isCorrect": false,
+          "rationale": "While gene-environment interactions exist, the term 'poly-environmental' refers to the cumulative structure of environmental sources themselves."
+        },
+        {
+          "text": "Major life events like winning the lottery cause large, replicable shifts in broad trait dimensions.",
+          "isCorrect": false,
+          "rationale": "Single major life events have generally failed to explain a substantial portion of environmental personality differences."
+        }
+      ],
+      "hint": "Compare the term 'poly-environmental' to the way 'polygenic' describes many genes with tiny individual impacts."
+    },
+    {
+      "question": "How does 'adaptive developmental calibration' explain changes in personality over the lifespan?",
+      "answerOptions": [
+        {
+          "text": "Traits shift to meet the specific adaptive problems faced at different life stages, such as mating in youth or kin investment in old age.",
+          "isCorrect": true,
+          "rationale": "Calibration ensures that behavioral patterns are optimized for the goals most relevant to an individual's current age and situation."
+        },
+        {
+          "text": "Personality remains perfectly stable because it is a fixed biological adaptation determined at birth.",
+          "isCorrect": false,
+          "rationale": "Evolutionary perspectives now recognize that stability is not the same as being fixed; changes are often predictable and adaptive."
+        },
+        {
+          "text": "Lifespan changes are random fluctuations caused by the gradual accumulation of genetic mutations.",
+          "isCorrect": false,
+          "rationale": "While mutations occur, the systematic shifts in traits like Agreeableness or Extraversion across cultures suggest an organized adaptive process."
+        },
+        {
+          "text": "Calibration only occurs if an individual possesses the $7/2-R$ allele of the $DRD4$ gene.",
+          "isCorrect": false,
+          "rationale": "While some genes increase environmental sensitivity, adaptive calibration is considered a general human developmental principle."
+        }
+      ],
+      "hint": "Think about how a person's priorities change as they transition from seeking a partner to supporting grandchildren."
+    },
+    {
+      "question": "What is the 'phenotypic null hypothesis' regarding the genetics of personality, as cited in the literature?",
+      "answerOptions": [
+        {
+          "text": "All personality traits are partly heritable.",
+          "isCorrect": true,
+          "rationale": "This is a fundamental consensus in behavioral genetics, supported by twin and adoption studies across virtually all measured traits."
+        },
+        {
+          "text": "Personality traits are entirely determined by the shared family environment.",
+          "isCorrect": false,
+          "rationale": "The consensus is actually that shared environment ($se^2$) has a surprisingly small impact compared to genetics and unique environments."
+        },
+        {
+          "text": "Each trait is controlled by a single high-impact 'personality gene'.",
+          "isCorrect": false,
+          "rationale": "Personality is considered polygenic, meaning it is influenced by many genes with very small effects, and no single 'personality gene' has been found."
+        },
+        {
+          "text": "Genetic influences only appear in individuals living in demanding climates.",
+          "isCorrect": false,
+          "rationale": "While genes interact with environments like climate, heritability is found across a wide range of stable environmental conditions."
+        }
+      ],
+      "hint": "Consider the baseline assumption made by behavioral geneticists when they look at any complex human characteristic."
+    }
+  ]
+}

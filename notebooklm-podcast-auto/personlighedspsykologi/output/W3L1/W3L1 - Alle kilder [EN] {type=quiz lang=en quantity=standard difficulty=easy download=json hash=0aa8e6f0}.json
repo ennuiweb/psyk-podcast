@@ -1,0 +1,265 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "Based on meta-analyses of twin research, approximately what percentage of personality differences in human traits is attributed to genetic variance?",
+      "answerOptions": [
+        {
+          "text": "$47\\%$",
+          "isCorrect": true,
+          "rationale": "Extensive meta-analyses of over 2500 twin research publications indicate that nearly half of the variance in temperament and personality is due to heritable factors."
+        },
+        {
+          "text": "$13\\%$",
+          "isCorrect": false,
+          "rationale": "This value reflects the average heritability found in SNP-based studies of unrelated individuals, rather than the broader estimate from twin studies."
+        },
+        {
+          "text": "$90\\%$",
+          "isCorrect": false,
+          "rationale": "While twins share a high degree of similarity, environmental factors still account for a substantial portion of the variance, making this figure far too high."
+        },
+        {
+          "text": "$22\\%$",
+          "isCorrect": false,
+          "rationale": "This figure is often found in non-twin family and adoption studies, which typically capture only additive genetic effects and exclude non-additive variance."
+        }
+      ],
+      "hint": "Consider the figure that represents nearly half of the observed individual differences."
+    },
+    {
+      "question": "Which type of environmental influence is considered the most important driver for the development of individual uniqueness in personality?",
+      "answerOptions": [
+        {
+          "text": "Non-shared (individual-specific) environment",
+          "isCorrect": true,
+          "rationale": "Individual-specific experiences that are not shared by family members are the primary source of environmental personality variance and individualization."
+        },
+        {
+          "text": "Shared family environment",
+          "isCorrect": false,
+          "rationale": "Research indicates that environmental influences shared by siblings or twins reared together have a negligible or small effect on personality variance compared to unique experiences."
+        },
+        {
+          "text": "Genetic dominance deviations",
+          "isCorrect": false,
+          "rationale": "Dominance deviations are a form of genetic influence rather than an environmental source of variance."
+        },
+        {
+          "text": "Random measurement error",
+          "isCorrect": false,
+          "rationale": "Measurement error is a statistical artifact in data collection rather than a substantive environmental factor shaping personality."
+        }
+      ],
+      "hint": "Focus on the source of variance that accounts for differences between family members who live together."
+    },
+    {
+      "question": "According to the Socioecological-Genetic Framework, how does 'socioecology' differ from 'culture'?",
+      "answerOptions": [
+        {
+          "text": "Socioecology involves objective macro conditions, while culture involves shared subjective meanings.",
+          "isCorrect": true,
+          "rationale": "Socioecology refers to objective variables like temperature and population density, whereas culture focuses on subjective systems of symbols, beliefs, and values."
+        },
+        {
+          "text": "Socioecology is inherited through genes, while culture is learned from peers.",
+          "isCorrect": false,
+          "rationale": "Socioecology refers to the physical and economic environment, and both it and culture are environmental (nurture) rather than strictly biological (nature)."
+        },
+        {
+          "text": "Socioecology only refers to climate, while culture refers to social institutions.",
+          "isCorrect": false,
+          "rationale": "Socioecology includes both ecological factors (climate) and socioeconomic factors (median income, rice farming area)."
+        },
+        {
+          "text": "There is no conceptual difference between the two terms in modern psychology.",
+          "isCorrect": false,
+          "rationale": "The framework specifically distinguishes between objective environmental conditions and the subjective meaning systems shared by a group."
+        }
+      ],
+      "hint": "Think about the distinction between objective, measurable environment factors and subjective, shared belief systems."
+    },
+    {
+      "question": "Which hypothesis in subsistence style theory explains why certain regions in China are more collectivistic than others?",
+      "answerOptions": [
+        {
+          "text": "Rice farming requires more social coordination and interdependence than wheat farming.",
+          "isCorrect": true,
+          "rationale": "Labor-intensive crops like rice foster higher collectivism because they necessitate communal coordination for irrigation and labor sharing."
+        },
+        {
+          "text": "Wheat farming involves higher levels of pathogen prevalence.",
+          "isCorrect": false,
+          "rationale": "Pathogen prevalence is a separate theory regarding collectivism and is not the core focus of subsistence style theory related to farming types."
+        },
+        {
+          "text": "Industrialization occurs more slowly in rice-growing regions.",
+          "isCorrect": false,
+          "rationale": "While modernization plays a role, subsistence style theory specifically looks at the social demands of the agricultural practice itself."
+        },
+        {
+          "text": "Rice-growing regions have more benign ambient temperatures.",
+          "isCorrect": false,
+          "rationale": "Climate is a socioecological predictor, but the coordination required for specific crops is what defines subsistence style theory."
+        }
+      ],
+      "hint": "Consider the social requirements of managing different types of crops."
+    },
+    {
+      "question": "What does the 'niche diversity hypothesis' suggest about personality structure?",
+      "answerOptions": [
+        {
+          "text": "Societies with more diverse social and occupational roles have more distinct personality profiles.",
+          "isCorrect": true,
+          "rationale": "Increasing environmental complexity provides more varied 'niches' for individuals to fill, leading to the development of a wider range of distinct personality factors."
+        },
+        {
+          "text": "Individualism is always the most adaptive trait in complex environments.",
+          "isCorrect": false,
+          "rationale": "The hypothesis focuses on the variety of personality structures (the number of factors) rather than the level of a single trait like individualism."
+        },
+        {
+          "text": "Genetic mutations are more likely to be removed in complex societies.",
+          "isCorrect": false,
+          "rationale": "The hypothesis is related to socioecological complexity and behavior adaptations rather than the rate of genetic mutation removal."
+        },
+        {
+          "text": "Forager-horticulturalist populations show the most complex personality structures.",
+          "isCorrect": false,
+          "rationale": "Research actually shows that small-scale populations often exhibit fewer unique personality factors due to having fewer specialized social niches."
+        }
+      ],
+      "hint": "Think about how a variety of different jobs and roles might affect how people act differently."
+    },
+    {
+      "question": "In evolutionary personality psychology, what is 'adaptive developmental calibration'?",
+      "answerOptions": [
+        {
+          "text": "The process where personality traits are shaped during development to meet specific environmental demands.",
+          "isCorrect": true,
+          "rationale": "Calibration suggests that individuals adjust their behavioral strategies based on cues from their early environment to maximize survival and reproduction."
+        },
+        {
+          "text": "The biological instinct to migrate to new environments like frontiers.",
+          "isCorrect": false,
+          "rationale": "Selective migration is related to how people move, but calibration refers to how traits change in response to the environment an individual is already in."
+        },
+        {
+          "text": "The removal of harmful genetic mutations from the gene pool.",
+          "isCorrect": false,
+          "rationale": "This describes negative selection or mutation-selection balance, which is different from the developmental adjustment of traits."
+        },
+        {
+          "text": "The genetic identicalness found in monozygotic twins.",
+          "isCorrect": false,
+          "rationale": "This is a fact of biology used to study heritability, not a process of developmental adjustment."
+        }
+      ],
+      "hint": "Consider how a child's environment might 'tune' their behavior for later life."
+    },
+    {
+      "question": "According to Volk and Puchalski (2025), which model of personality structure has better evolutionary validity due to its links with biological theories of cooperation?",
+      "answerOptions": [
+        {
+          "text": "HEXACO model",
+          "isCorrect": true,
+          "rationale": "The HEXACO model's traits like Honesty-Humility and Agreeableness are explicitly tied to biological theories of kin selection and reciprocal altruism."
+        },
+        {
+          "text": "Five-Factor Model (Big Five)",
+          "isCorrect": false,
+          "rationale": "The Big Five is largely a bottom-up lexical model and is criticized for lacking clear adaptive trade-offs for some traits like Neuroticism."
+        },
+        {
+          "text": "The Big Seven factor model",
+          "isCorrect": false,
+          "rationale": "While it captures more variance, it is not highlighted as having the same strong theoretical link to biological cooperation as the HEXACO."
+        },
+        {
+          "text": "The Single Factor of Personality",
+          "isCorrect": false,
+          "rationale": "Reducing personality to a single factor ignores the distinct adaptive trade-offs found in multi-dimensional models."
+        }
+      ],
+      "hint": "Look for a six-letter model name that includes traits tied to altruism and kin selection."
+    },
+    {
+      "question": "What is 'epigenetics' as defined in the Socioecological-Genetic Framework?",
+      "answerOptions": [
+        {
+          "text": "The study of environmental influences on gene expression without changes in the DNA sequence.",
+          "isCorrect": true,
+          "rationale": "Epigenetics explains how cultural and socioecological experiences can trigger chemical changes that turn genes 'on' or 'off' without altering the genome itself."
+        },
+        {
+          "text": "The theory that cultural evolution happens faster than genetic evolution.",
+          "isCorrect": false,
+          "rationale": "While true, this refers to cultural evolution rates rather than the specific biological mechanism of gene expression."
+        },
+        {
+          "text": "The inheritance of personality traits strictly from biological parents.",
+          "isCorrect": false,
+          "rationale": "This is standard genetic inheritance (heritability), whereas epigenetics focuses on environmental regulation of those genes."
+        },
+        {
+          "text": "A method for mapping single nucleotide polymorphisms (SNPs) in the human genome.",
+          "isCorrect": false,
+          "rationale": "SNP mapping is part of genome-wide association studies (GWAS), not the study of gene expression regulation."
+        }
+      ],
+      "hint": "Think about how 'nature' and 'nurture' might connect at a molecular level."
+    },
+    {
+      "question": "Which of the following is a common reason for the 'missing heritability' gap in personality research?",
+      "answerOptions": [
+        {
+          "text": "SNP-based estimates typically only account for additive effects of common genetic variants.",
+          "isCorrect": true,
+          "rationale": "Twin studies capture rare variants and non-additive effects (gene-gene interactions) that GWAS/SNP-based studies often miss, leading to lower heritability estimates in the latter."
+        },
+        {
+          "text": "Twin studies fail to account for the shared environment of siblings.",
+          "isCorrect": false,
+          "rationale": "Classical twin models actually do account for shared environment, though it is usually found to be a small component of personality variance."
+        },
+        {
+          "text": "Personality is $100\\%$ determined by environmental factors.",
+          "isCorrect": false,
+          "rationale": "This is incorrect as both genetic and environmental factors are proven to contribute to personality variance."
+        },
+        {
+          "text": "GWAS studies are limited by very small sample sizes.",
+          "isCorrect": false,
+          "rationale": "Modern GWAS studies have very large sample sizes (often hundreds of thousands), yet the individual effect sizes of SNPs remain tiny."
+        }
+      ],
+      "hint": "Consider the difference between simple additive effects and complex interactions or rare occurrences."
+    },
+    {
+      "question": "From an evolutionary perspective, why might 'dark' personality traits like psychopathy persist in human populations?",
+      "answerOptions": [
+        {
+          "text": "They may be adaptive strategies in specific environments that reward exploitation.",
+          "isCorrect": true,
+          "rationale": "Psychopathic traits can lead to successful resource acquisition and reproduction in hostile or anonymous environments where social cheating is not easily punished."
+        },
+        {
+          "text": "They are the result of severe brain damage occurring during early childhood.",
+          "isCorrect": false,
+          "rationale": "Evolutionary researchers argue that psychopaths often lack the deficits associated with general criminality, suggesting an adaptive rather than pathological origin."
+        },
+        {
+          "text": "They are a recent genetic mutation that selection hasn't had time to remove.",
+          "isCorrect": false,
+          "rationale": "While some argue for novel origins, the predominant evolutionary view is that these represent a calibrated strategy rather than a simple 'error'."
+        },
+        {
+          "text": "They help individuals prioritize investment in their own kin and family.",
+          "isCorrect": false,
+          "rationale": "Psychopathy is generally associated with selfish behaviors and exploitation of others, often outside the realm of kin investment."
+        }
+      ],
+      "hint": "Think about how some behaviors that seem 'bad' might actually help someone survive or reproduce in certain tough situations."
+    }
+  ]
+}

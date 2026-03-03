@@ -1,0 +1,265 @@
+{
+  "title": "Vision Quiz",
+  "questions": [
+    {
+      "question": "Which of the following best describes the biochemical cascade in a rod photoreceptor immediately following the capture of a photon by rhodopsin?",
+      "answerOptions": [
+        {
+          "text": "The activation of transducin leads to an increase in $cGMP$ levels, which opens $Na^+$ channels.",
+          "isCorrect": false,
+          "rationale": "Light actually triggers the hydrolysis of $cGMP$, leading to the closure of $Na^+$ channels rather than opening them."
+        },
+        {
+          "text": "Altered opsin activates transducin, which then stimulates phosphodiesterase (PDE) to hydrolyze $cGMP$.",
+          "isCorrect": true,
+          "rationale": "This sequence correctly identifies the role of PDE in reducing $cGMP$ concentration to initiate hyperpolarization."
+        },
+        {
+          "text": "The dissociation of $RETINAL$ from opsin directly blocks $Na^+$ channels in the outer segment membrane.",
+          "isCorrect": false,
+          "rationale": "While the dissociation starts the process, the channel closure is mediated by the reduction of the second messenger $cGMP$, not the opsin itself."
+        },
+        {
+          "text": "The photoreceptor depolarizes due to the rapid entry of $Ca^{2+}$ and $Na^+$ ions.",
+          "isCorrect": false,
+          "rationale": "Light stimulation causes hyperpolarization in vertebrate photoreceptors by stopping the 'dark current' of sodium ions."
+        }
+      ],
+      "hint": "Focus on the role of the enzyme phosphodiesterase and its effect on the second messenger that keeps ion channels open."
+    },
+    {
+      "question": "In the vertebrate retina, how does the response of an on-center bipolar cell differ from an off-center bipolar cell when light hits the center of their receptive field?",
+      "answerOptions": [
+        {
+          "text": "On-center cells are depolarized because they are inhibited by the glutamate released in the dark.",
+          "isCorrect": true,
+          "rationale": "Light reduces glutamate release; since glutamate inhibits on-center cells, this reduction results in depolarization."
+        },
+        {
+          "text": "Off-center cells are depolarized because glutamate acts as an excitatory transmitter on their receptors.",
+          "isCorrect": false,
+          "rationale": "Off-center cells are excited by glutamate, but light reduces glutamate release, meaning light actually hyperpolarizes these cells."
+        },
+        {
+          "text": "Both cell types are hyperpolarized because all retinal interneurons respond to light with graded potentials.",
+          "isCorrect": false,
+          "rationale": "While they use graded potentials, the polarity of the response (depolarization vs. hyperpolarization) depends on the specific glutamate receptor type."
+        },
+        {
+          "text": "On-center cells produce action potentials in response to decreased glutamate levels.",
+          "isCorrect": false,
+          "rationale": "Bipolar cells do not produce action potentials; they only produce graded local potentials."
+        }
+      ],
+      "hint": "Consider the inhibitory or excitatory nature of glutamate receptors on different bipolar cell types when the photoreceptor stops releasing it."
+    },
+    {
+      "question": "Which organizational feature of the Primate Lateral Geniculate Nucleus (LGN) is responsible for processing information related to fine detail and color?",
+      "answerOptions": [
+        {
+          "text": "The ventral magnocellular layers ($1$ and $2$).",
+          "isCorrect": false,
+          "rationale": "Magnocellular layers are primarily involved in motion perception and have low sensitivity to wavelength."
+        },
+        {
+          "text": "The dorsal parvocellular layers ($3$ through $6$).",
+          "isCorrect": true,
+          "rationale": "Parvocellular cells are smaller, have smaller receptive fields, and provide the high-acuity and color information of the photopic system."
+        },
+        {
+          "text": "The superior colliculus projections within the thalamus.",
+          "isCorrect": false,
+          "rationale": "The superior colliculus is a midbrain structure, not a layer of the LGN, and it handles orienting movements."
+        },
+        {
+          "text": "The optic radiations terminating in layer $IV$ of the striate cortex.",
+          "isCorrect": false,
+          "rationale": "While these carry the information, the specific segregation of detail and color occurs within the LGN layers themselves before reaching the cortex."
+        }
+      ],
+      "hint": "Think about the Latin roots for 'small' and 'large' and which cell size would better support high-resolution spatial analysis."
+    },
+    {
+      "question": "What occurs at the optic chiasm regarding the routing of visual information in humans?",
+      "answerOptions": [
+        {
+          "text": "Axons from the temporal hemiretinas cross the midline to the contralateral hemisphere.",
+          "isCorrect": false,
+          "rationale": "Temporal hemiretina axons stay on the same side (ipsilateral) of the brain."
+        },
+        {
+          "text": "All axons from both eyes cross to the opposite side to ensure binocular integration.",
+          "isCorrect": false,
+          "rationale": "Complete decussation occurs in some prey species like rabbits, but not in humans, where only nasal axons cross."
+        },
+        {
+          "text": "Axons from the nasal hemiretinas cross the midline, while temporal hemiretina axons remain ipsilateral.",
+          "isCorrect": true,
+          "rationale": "This partial crossover ensures that the entire left visual field is processed by the right hemisphere and vice versa."
+        },
+        {
+          "text": "The optic nerves merge into a single optic tract that projects exclusively to the superior colliculus.",
+          "isCorrect": false,
+          "rationale": "The optic nerves become optic tracts after the chiasm, and they project mostly to the LGN, not just the superior colliculus."
+        }
+      ],
+      "hint": "Identify which part of the retina (nasal or temporal) perceives the peripheral visual field that must be sent to the opposite side of the brain."
+    },
+    {
+      "question": "Which mechanism primarily allows the human visual system to operate across a range of light intensities spanning $10^{10}$ units?",
+      "answerOptions": [
+        {
+          "text": "Rapid adjustments in the diameter of the pupil.",
+          "isCorrect": false,
+          "rationale": "Pupillary constriction only accounts for approximately a $16$-fold change in light entry."
+        },
+        {
+          "text": "The constant shifting of the entire response range of individual photoreceptors.",
+          "isCorrect": true,
+          "rationale": "Photoreceptor adaptation, largely controlled by $Ca^{2+}$ concentrations, allows receptors to adjust sensitivity to the ambient light level."
+        },
+        {
+          "text": "The exclusive use of range fractionation between rods and cones.",
+          "isCorrect": false,
+          "rationale": "While range fractionation helps, it cannot account for the full billion-fold range without causing significant loss of image detail."
+        },
+        {
+          "text": "The regeneration of rhodopsin within milliseconds of entering a dark environment.",
+          "isCorrect": false,
+          "rationale": "Rhodopsin recombination is a slow process that takes several minutes to fully restore dark vision."
+        }
+      ],
+      "hint": "Consider the adaptive process where neurons change their sensitivity threshold based on the prevailing background illumination."
+    },
+    {
+      "question": "The phenomenon of lateral inhibition in the retina is fundamentally responsible for which of the following perceptual effects?",
+      "answerOptions": [
+        {
+          "text": "The perception of color in the scotopic system.",
+          "isCorrect": false,
+          "rationale": "The scotopic system lacks multiple photopigments and therefore cannot perceive color regardless of lateral interactions."
+        },
+        {
+          "text": "The ability to see dim stars more clearly in the periphery of the visual field.",
+          "isCorrect": false,
+          "rationale": "This is due to the high density of rods and convergence in the periphery, not lateral inhibition."
+        },
+        {
+          "text": "The enhancement of contrast and edges, such as in Mach bands.",
+          "isCorrect": true,
+          "rationale": "By inhibiting neighboring cells, the visual system exaggerates brightness differences at boundaries."
+        },
+        {
+          "text": "The prevention of scotomas during rapid eye movements.",
+          "isCorrect": false,
+          "rationale": "Saccades prevent adaptation, but lateral inhibition is not the mechanism used to fill in blind spots or avoid scotomas."
+        }
+      ],
+      "hint": "Think about how interconnected neurons suppressing their neighbors might affect the reported brightness of a border."
+    },
+    {
+      "question": "How do complex cortical cells in $V1$ differ from simple cortical cells?",
+      "answerOptions": [
+        {
+          "text": "Complex cells respond only to spots of light, while simple cells respond to bars.",
+          "isCorrect": false,
+          "rationale": "Both respond to bars; it is the LGN and ganglion cells that typically respond to spots."
+        },
+        {
+          "text": "Complex cells require a bar to be in a fixed, precise location, whereas simple cells show spatial latitude.",
+          "isCorrect": false,
+          "rationale": "It is the opposite; simple cells are location-specific, while complex cells respond to a bar anywhere within a larger area."
+        },
+        {
+          "text": "Complex cells respond to a bar of a particular orientation anywhere within a larger receptive field.",
+          "isCorrect": true,
+          "rationale": "Complex cells integrate inputs from simple cells, allowing them to maintain orientation specificity over a broader spatial range."
+        },
+        {
+          "text": "Simple cells are found in the extrastriate cortex, while complex cells are limited to the LGN.",
+          "isCorrect": false,
+          "rationale": "Both are found in the primary visual cortex ($V1$), also known as the striate cortex."
+        }
+      ],
+      "hint": "Consider which cell type exhibits a higher level of hierarchical processing and therefore more flexibility in stimulus position."
+    },
+    {
+      "question": "Which of the following findings regarding 'Halle Berry neurons' challenges the traditional hierarchical feature-detector model of vision?",
+      "answerOptions": [
+        {
+          "text": "These neurons only fire when specific individual features, like an eye or a nose, are presented in isolation.",
+          "isCorrect": false,
+          "rationale": "The hierarchical model suggests they would respond to features, but research shows they typically require a near-complete face."
+        },
+        {
+          "text": "These neurons are located in the retina, suggesting that complex object recognition begins before the brain.",
+          "isCorrect": false,
+          "rationale": "These neurons are located in the cortex, as complex recognition requires high-level processing."
+        },
+        {
+          "text": "These neurons respond to the concept or whole face rather than being built from simple 'feature' inputs like edges.",
+          "isCorrect": true,
+          "rationale": "Because they don't respond to isolated features, it suggests vision involves more than just a simple pyramid of feature detectors."
+        },
+        {
+          "text": "These neurons are only found in the scotopic system and are inactive during daylight.",
+          "isCorrect": false,
+          "rationale": "Face recognition is a high-acuity task performed by the photopic (cone-based) system."
+        }
+      ],
+      "hint": "Review the requirements for these specific neurons to fire\u2014specifically whether they need a 'part' or the 'whole'."
+    },
+    {
+      "question": "What anatomical feature of the fovea contributes to its high visual acuity compared to the rest of the retina?",
+      "answerOptions": [
+        {
+          "text": "A high concentration of rods to capture dim light photons.",
+          "isCorrect": false,
+          "rationale": "The fovea is actually devoid of rods and is packed with cones."
+        },
+        {
+          "text": "The displacement of blood vessels and ganglion cell layers, allowing light an unobstructed path to the cones.",
+          "isCorrect": true,
+          "rationale": "This structural 'pit' reduces light scattering before it reaches the photoreceptors, sharpening the image."
+        },
+        {
+          "text": "Significant convergence where hundreds of cones provide input to a single ganglion cell.",
+          "isCorrect": false,
+          "rationale": "The fovea has low convergence; often one cone maps to one ganglion cell to preserve spatial detail."
+        },
+        {
+          "text": "The presence of the optic disc, which acts as a magnifying lens for central vision.",
+          "isCorrect": false,
+          "rationale": "The optic disc is the blind spot where no photoreceptors exist; it does not assist in acuity."
+        }
+      ],
+      "hint": "Think about why the fovea is described as a 'pit' in Latin and how that affects light's journey to the receptors."
+    },
+    {
+      "question": "Which set of muscles is responsible for the process of accommodation in the mammalian eye?",
+      "answerOptions": [
+        {
+          "text": "The extraocular muscles that control the eyeball's position in the orbit.",
+          "isCorrect": false,
+          "rationale": "Extraocular muscles move the eye itself, but do not change the focus of the lens."
+        },
+        {
+          "text": "The iris sphincter muscles that regulate the size of the pupil.",
+          "isCorrect": false,
+          "rationale": "The iris controls light entry (aperture), not the focal length of the eye."
+        },
+        {
+          "text": "The ciliary muscles that alter the curvature of the lens.",
+          "isCorrect": true,
+          "rationale": "Contraction and relaxation of these muscles change the lens shape to focus on objects at varying distances."
+        },
+        {
+          "text": "The horizontal and amacrine cells that adjust lateral inhibitory signals.",
+          "isCorrect": false,
+          "rationale": "These are retinal neurons involved in signal processing, not mechanical focusing muscles."
+        }
+      ],
+      "hint": "Look for the internal eye muscles that specifically interact with the structure that bends light for near and far vision."
+    }
+  ]
+}

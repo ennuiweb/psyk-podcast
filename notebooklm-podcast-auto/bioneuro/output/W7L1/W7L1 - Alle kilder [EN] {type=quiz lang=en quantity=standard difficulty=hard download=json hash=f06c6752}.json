@@ -1,0 +1,265 @@
+{
+  "title": "Neurodevelopment Quiz",
+  "questions": [
+    {
+      "question": "In the case of Michael May, why was his vision severely limited even after successful corneal transplants and proper focusing of images on his retina?",
+      "answerOptions": [
+        {
+          "text": "The chemical explosion had permanently damaged the primary visual cortex beyond repair.",
+          "isCorrect": false,
+          "rationale": "While the brain was affected, the text suggests the issue was a lack of early experience to guide the development of vast neural networks, rather than direct physical trauma to the cortex itself."
+        },
+        {
+          "text": "Critical periods of sensory experience during early development were missed, preventing the construction of necessary neural networks.",
+          "isCorrect": true,
+          "rationale": "Neural development requires an interaction between genes and environmental experience to refine synaptic connections and recognize complex objects or faces."
+        },
+        {
+          "text": "His right eye lacked the necessary density of rod and cone photoreceptors to resolve three-dimensional shapes.",
+          "isCorrect": false,
+          "rationale": "The text notes that images were focusing properly on the retina, implying the peripheral sensory apparatus was functional."
+        },
+        {
+          "text": "The adult brain is entirely incapable of plasticity, making any form of sensory restoration impossible after the age of 40.",
+          "isCorrect": false,
+          "rationale": "The brain maintains some plasticity throughout life, as evidenced by adult neurogenesis and Michael May's ability to see colors and some motion."
+        }
+      ],
+      "hint": "Consider the interaction between biological structure and environmental interaction discussed in the 'nature versus nurture' debate."
+    },
+    {
+      "question": "Which embryonic structure is specifically responsible for the formation of the peripheral nervous system?",
+      "answerOptions": [
+        {
+          "text": "Neural tube",
+          "isCorrect": false,
+          "rationale": "The neural tube gives rise to the central nervous system, which includes the brain and spinal cord."
+        },
+        {
+          "text": "Neural crest",
+          "isCorrect": true,
+          "rationale": "Cells from the columns of ectoderm pinched off from each side of the neural tube form the peripheral nervous system."
+        },
+        {
+          "text": "Notochord",
+          "isCorrect": false,
+          "rationale": "The notochord is a midline structure that releases signaling proteins to induce cell differentiation in the spinal cord."
+        },
+        {
+          "text": "Endoderm",
+          "isCorrect": false,
+          "rationale": "The endoderm is the inner layer of the embryo and does not form the nervous system."
+        }
+      ],
+      "hint": "Think about the tissue that is 'pinched off' during the closure of the neural groove."
+    },
+    {
+      "question": "How does the developmental control of cellular differentiation in the nematode $Caenorhabditis$ $elegans$ fundamentally differ from that in vertebrates?",
+      "answerOptions": [
+        {
+          "text": "Cell fate in $C.$ $elegans$ is determined by local cell-cell interactions rather than lineage.",
+          "isCorrect": false,
+          "rationale": "This describes the vertebrate model; in the worm, the fate is highly predetermined and rigid."
+        },
+        {
+          "text": "Vertebrates rely exclusively on mitotic lineage to determine if a cell becomes a neuron or glia.",
+          "isCorrect": false,
+          "rationale": "Vertebrate development is more flexible and relies on signaling from neighboring cells."
+        },
+        {
+          "text": "Cell fate in $C.$ $elegans$ is a predetermined result of mitotic lineage, whereas vertebrate cell fate is regulated by neighbor-to-neighbor communication.",
+          "isCorrect": true,
+          "rationale": "Worms have a transparent body allowing scientists to trace every cell back to its ancestor, while vertebrates use induction and local environment to guide gene expression."
+        },
+        {
+          "text": "$C.$ $elegans$ possesses a larger proportion of glial cells to neurons compared to the vertebrate brain.",
+          "isCorrect": false,
+          "rationale": "The text focuses on the 302 neurons of the worm and how their specific roles are determined by ancestry."
+        }
+      ],
+      "hint": "Reflect on whether a cell's identity is inherited from its parent cell or influenced by its surroundings."
+    },
+    {
+      "question": "Phenylketonuria (PKU) is a prime example of the interaction between genotype and phenotype because:",
+      "answerOptions": [
+        {
+          "text": "The underlying genetic mutation can be repaired by a specific diet high in phenylalanine.",
+          "isCorrect": false,
+          "rationale": "Diet does not change the genotype; it prevents the toxic buildup that leads to the intellectual disability phenotype."
+        },
+        {
+          "text": "The dysfunctional genotype only manifests as the phenotype of intellectual disability in the presence of a specific environmental factor.",
+          "isCorrect": true,
+          "rationale": "Knowledge of the genome alone cannot predict the outcome without knowing the individual's dietary exposure to phenylalanine."
+        },
+        {
+          "text": "It is a dominant hereditary disorder that is expressed regardless of the external environment.",
+          "isCorrect": false,
+          "rationale": "PKU is a recessive disorder, and its expression is highly dependent on environmental (dietary) factors."
+        },
+        {
+          "text": "The missing enzyme is produced by glial cells rather than neurons in response to social experience.",
+          "isCorrect": false,
+          "rationale": "PKU is a metabolic protein disorder caused by a genetic absence of an enzyme, not a social or glial-specific response."
+        }
+      ],
+      "hint": "Recall how the severity of the brain damage is managed through external intervention."
+    },
+    {
+      "question": "During the stage of neurogenesis, where do the precursor cells primarily undergo mitosis before migrating?",
+      "answerOptions": [
+        {
+          "text": "Marginal zone",
+          "isCorrect": false,
+          "rationale": "The marginal zone is the outer layer where cells eventually settle; it is not the primary site of division."
+        },
+        {
+          "text": "Intermediate zone",
+          "isCorrect": false,
+          "rationale": "The intermediate layer develops as the neural tube wall thickens but is not the mitotic source."
+        },
+        {
+          "text": "Ventricular zone",
+          "isCorrect": true,
+          "rationale": "The ventricular zone, also known as the ependymal layer, lines the cerebral ventricles and is the site of mitotic division."
+        },
+        {
+          "text": "Cortical plate",
+          "isCorrect": false,
+          "rationale": "The cortical plate is formed later by migrating neurons and is a destination, not a birthplace."
+        }
+      ],
+      "hint": "This region is named for its proximity to the fluid-filled passages of the developing brain."
+    },
+    {
+      "question": "Which protein is secreted by the notochord to induce the differentiation of spinal cord cells into motor neurons?",
+      "answerOptions": [
+        {
+          "text": "$Cre-lox$",
+          "isCorrect": false,
+          "rationale": "This is a laboratory technology used for site-directed mutagenesis, not a naturally secreted signaling protein."
+        },
+        {
+          "text": "$Sonic$ $hedgehog$",
+          "isCorrect": true,
+          "rationale": "This protein diffuses from the notochord to the ventral spinal cord to direct the expression of motor neuron-specific genes."
+        },
+        {
+          "text": "$\\beta-catenin$",
+          "isCorrect": false,
+          "rationale": "Modified levels of this protein can lead to extra gyri and sulci in transgenic mice, but it is not the primary induction factor for motor neurons."
+        },
+        {
+          "text": "Nerve Growth Factor (NGF)",
+          "isCorrect": false,
+          "rationale": "While NGF is a trophic factor, the specific factor mentioned for spinal motor neuron induction is different."
+        }
+      ],
+      "hint": "This protein shares its name with a famous video game character."
+    },
+    {
+      "question": "What is the primary function of radial glial cells during the fetal development of the cerebral cortex?",
+      "answerOptions": [
+        {
+          "text": "They act as physical scaffolds or 'guide wires' for the migration of newly born neurons.",
+          "isCorrect": true,
+          "rationale": "Migrating cells move along the surface of radial glia from the inner layers toward the outer surface of the brain."
+        },
+        {
+          "text": "They provide the myelin sheath for growing axons to increase conduction velocity.",
+          "isCorrect": false,
+          "rationale": "Myelination is a later stage of development primarily performed by oligodendrocytes or Schwann cells."
+        },
+        {
+          "text": "They differentiate into motor neurons in response to signals from the notochord.",
+          "isCorrect": false,
+          "rationale": "Radial glia are a specialized type of glia that guide neurons, though some may later differentiate, their primary fetal role is guidance."
+        },
+        {
+          "text": "They produce the cell adhesion molecules (CAMs) that initiate synaptogenesis.",
+          "isCorrect": false,
+          "rationale": "While CAMs are involved in migration, the primary structural role of radial glia is the physical guidance of moving cells."
+        }
+      ],
+      "hint": "Think of them as the 'spokes' of a wheel that cells climb to reach their final destination."
+    },
+    {
+      "question": "In the context of neural development, what does the term 'regulation' or 'self-regulation' refer to?",
+      "answerOptions": [
+        {
+          "text": "The ability of the adult brain to replace lost neurons through exercise.",
+          "isCorrect": false,
+          "rationale": "This refers to adult neurogenesis rather than the specific embryological term 'regulation'."
+        },
+        {
+          "text": "The process by which a cell maintains its internal temperature during mitosis.",
+          "isCorrect": false,
+          "rationale": "Biological regulation in a general sense exists, but in embryology, it refers to structural compensation."
+        },
+        {
+          "text": "An adaptive response where remaining cells compensate for missing or injured cells early in development.",
+          "isCorrect": true,
+          "rationale": "Because vertebrate development relies on cell-cell interaction, neighboring cells can 'answer the call' to fill in for damaged areas."
+        },
+        {
+          "text": "The genetic mechanism that prevents teratogens like alcohol from entering the fetal brain.",
+          "isCorrect": false,
+          "rationale": "Teratogens like alcohol can readily affect the fetus; regulation does not prevent their entry."
+        }
+      ],
+      "hint": "Consider how the flexibility of vertebrate development allows for recovery from early embryonic injury."
+    },
+    {
+      "question": "Which specific anatomical abnormality is often observed in the brains of children with severe Fetal Alcohol Syndrome (FAS)?",
+      "answerOptions": [
+        {
+          "text": "An enlarged corpus callosum",
+          "isCorrect": false,
+          "rationale": "In severe FAS, the corpus callosum is typically absent or stunted rather than enlarged."
+        },
+        {
+          "text": "Absence of the corpus callosum and microcephaly",
+          "isCorrect": true,
+          "rationale": "FAS is associated with abnormal smallness of the brain, fewer cortical gyri, and missing connections between hemispheres."
+        },
+        {
+          "text": "Hypertrophy of the cerebellar granule cells",
+          "isCorrect": false,
+          "rationale": "FAS generally results in stunted growth and underdevelopment rather than hypertrophy."
+        },
+        {
+          "text": "A significantly increased number of synaptic connections in the primary visual cortex",
+          "isCorrect": false,
+          "rationale": "FAS is linked to impairments and underdevelopment, not an increase in connectivity."
+        }
+      ],
+      "hint": "Think about the structure that connects the two cerebral hemispheres."
+    },
+    {
+      "question": "Research into adult neurogenesis suggests that the generation of new neurons is particularly prominent in which structure?",
+      "answerOptions": [
+        {
+          "text": "Telencephalon",
+          "isCorrect": false,
+          "rationale": "This is a broad subdivision of the forebrain; neurogenesis is specific to certain regions within it."
+        },
+        {
+          "text": "Cerebellar cortex",
+          "isCorrect": false,
+          "rationale": "While migration mutations often affect the cerebellum, it is not the primary site cited for adult neurogenesis."
+        },
+        {
+          "text": "Dentate gyrus of the hippocampal formation",
+          "isCorrect": true,
+          "rationale": "It is estimated that roughly 1400 new neurons are added here daily in humans, a process influenced by learning and exercise."
+        },
+        {
+          "text": "Ventricular zone of the spinal cord",
+          "isCorrect": false,
+          "rationale": "While the ventricular zone is where neurogenesis begins in embryos, adult neurogenesis is focused in the hippocampus and olfactory organ."
+        }
+      ],
+      "hint": "This area is crucial for memory formation and is influenced by enriched environments."
+    }
+  ]
+}

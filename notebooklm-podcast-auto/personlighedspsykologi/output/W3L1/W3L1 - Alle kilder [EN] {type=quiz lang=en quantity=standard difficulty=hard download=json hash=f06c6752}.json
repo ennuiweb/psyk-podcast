@@ -1,0 +1,265 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "According to the review by Kandler and Instinske (2025), what primarily explains why heritability estimates for personality traits are significantly higher in twin studies ($h^2 \\approx .47$) compared to non-twin family and adoption studies ($h^2 \\approx .22$)?",
+      "answerOptions": [
+        {
+          "text": "The presence of nonadditive genetic effects such as allelic dominance or gene-gene interactions.",
+          "isCorrect": true,
+          "rationale": "Twin studies can capture both additive ($a^2$) and nonadditive ($na^2$) genetic effects, whereas most other family designs only estimate additive similarity between relatives."
+        },
+        {
+          "text": "The violation of the equal environment assumption in classical twin models.",
+          "isCorrect": false,
+          "rationale": "While violations of this assumption can inflate estimates, research on twins reared apart suggests this effect is only slight and not the primary driver of the gap."
+        },
+        {
+          "text": "The higher prevalence of rare genetic variants ($< 1\\%$) in monozygotic twin pairs.",
+          "isCorrect": false,
+          "rationale": "Rare genetic variants contribute to family-based heritability as well, and do not explain the specific discrepancy between twins and other first-degree relatives."
+        },
+        {
+          "text": "The systematic underestimation of shared environmental influences in adoption designs.",
+          "isCorrect": false,
+          "rationale": "The source material indicates that shared environment ($se^2$) is generally negligible in adults, making it an unlikely explanation for the heritability gap."
+        }
+      ],
+      "hint": "Consider the types of genetic variance that contribute to similarity between identical twins versus parents and offspring."
+    },
+    {
+      "question": "In the context of SNP-heritability, what is the reported range for the joint effect of common genetic variants on the Big Five personality traits, and how does it relate to 'missing heritability'?",
+      "answerOptions": [
+        {
+          "text": "$9\\%$ to $18\\%$; it represents the gap between common variant effects and the total heritability found in twin studies.",
+          "isCorrect": true,
+          "rationale": "SNP-heritability only accounts for common additive variants, leaving a gap called 'missing heritability' when compared to the $\\approx 47\\%$ found in twin studies."
+        },
+        {
+          "text": "$40\\%$ to $50\\%$; it confirms that common variants explain the entirety of the phenotypic variance identified in meta-analyses.",
+          "isCorrect": false,
+          "rationale": "This range reflects total heritability estimates from twin studies, not the specific lower bound established by SNP-based estimates."
+        },
+        {
+          "text": "$1\\%$ to $5\\%$; it highlights the failure of GWAS to identify any robust trait-SNP associations regardless of sample size.",
+          "isCorrect": false,
+          "rationale": "While individual SNP effects are smaller than $1\\%$, the aggregate SNP-heritability is significantly higher, and GWAS associations have increased with sample size."
+        },
+        {
+          "text": "$27\\%$ to $47\\%$; it suggests that rare variants and nonadditive effects are negligible in personality architecture.",
+          "isCorrect": false,
+          "rationale": "This range includes the additive genetic factors found in extended family studies, whereas SNP-heritability specifically represents a much lower bound."
+        }
+      ],
+      "hint": "This value represents the lower bound of genetic contributions because it focuses only on common additive units."
+    },
+    {
+      "question": "Based on the lifespan perspective provided by Kandler and Instinske, how does the genetic contribution to personality variance typically shift from childhood to late adulthood?",
+      "answerOptions": [
+        {
+          "text": "It increases during childhood and adolescence, reaches a plateau in young adulthood, and then decreases during later adulthood.",
+          "isCorrect": true,
+          "rationale": "The shift from passive to active gene-environment transactions increases genetic variance early in life, while individualizing experiences in later life increase nonshared environmental variance."
+        },
+        {
+          "text": "It remains stable at approximately $47\\%$ throughout the entire lifespan regardless of environmental transactions.",
+          "isCorrect": false,
+          "rationale": "Twin studies show dynamic shifts where genetic and environmental components fluctuate as individuals mature and change their life contexts."
+        },
+        {
+          "text": "It starts high in childhood due to parental influence and linearly declines until it reaches zero in late adulthood.",
+          "isCorrect": false,
+          "rationale": "The genetic component actually increases through adolescence as individuals actively select environments that match their heritable traits."
+        },
+        {
+          "text": "It is negligible in childhood and only becomes a significant factor after the 'epigenetic drift' of middle adulthood.",
+          "isCorrect": false,
+          "rationale": "Genetic factors are present and measurable from childhood, and 'epigenetic drift' is associated more with late-life individualization."
+        }
+      ],
+      "hint": "Think about the transition from passive roles in the family home to active selection of personal environments in young adulthood."
+    },
+    {
+      "question": "Which biological theories of cooperation are uniquely associated with the Emotionality and Honesty-Humility/Agreeableness factors of the HEXACO model, according to Volk and Puchalski (2025)?",
+      "answerOptions": [
+        {
+          "text": "Kin selection and reciprocal altruism.",
+          "isCorrect": true,
+          "rationale": "HEXACO Emotionality is linked to investing in related genes (kin selection), while Honesty-Humility and Agreeableness relate to initiating or maintaining cooperation (reciprocal altruism)."
+        },
+        {
+          "text": "Sexual selection and parental investment theory.",
+          "isCorrect": false,
+          "rationale": "While these are evolutionary theories, the source specifically links the social behavior underlying HEXACO to mechanisms of cooperation between relatives and non-relatives."
+        },
+        {
+          "text": "Niche diversification and adaptive phenotypic plasticity.",
+          "isCorrect": false,
+          "rationale": "These concepts explain why variance exists across populations but do not serve as the direct biological foundations for the specific HEXACO traits mentioned."
+        },
+        {
+          "text": "Group selection and frequency-dependent mutation load.",
+          "isCorrect": false,
+          "rationale": "These are broader evolutionary mechanisms rather than the specific biological processes tied to the investment in kin and reciprocal social exchanges."
+        }
+      ],
+      "hint": "Focus on the two key processes that allow for extended and enduring social behavior in biological systems."
+    },
+    {
+      "question": "In the adaptationist framework proposed by Volk and Puchalski, what is the relationship between 'personal formidability' and the expression of trait anger or HEXACO Agreeableness?",
+      "answerOptions": [
+        {
+          "text": "Physically stronger individuals can better afford the costs of conflict, leading to lower levels of forgiveness and higher trait anger.",
+          "isCorrect": true,
+          "rationale": "Adaptive logic suggests that formidability increases the odds of success in conflict, making retaliation a more viable strategy for resource protection."
+        },
+        {
+          "text": "Physically weaker individuals must develop higher trait anger as a compensatory mechanism to deter potential predators.",
+          "isCorrect": false,
+          "rationale": "The source argues the opposite: weaker individuals should be more tolerant because the costs of retaliation are prohibitively high."
+        },
+        {
+          "text": "Formidability is negatively correlated with trait anger because social systems evolve to punish stronger individuals who exploit others.",
+          "isCorrect": false,
+          "rationale": "Evolutionary calibration typically rewards behaviors that produce benefits at the least cost; for the formidable, anger is often 'low cost' relative to its utility."
+        },
+        {
+          "text": "There is no evolutionary link between physical attributes and personality traits, as personality is strictly calibrated to social cues.",
+          "isCorrect": false,
+          "rationale": "The principle of adaptive calibration explicitly includes genetic/physical confluences, such as formidability, as factors that shape trait expression."
+        }
+      ],
+      "hint": "Consider the 'costs versus benefits' logic of responding to someone who threatens your resources."
+    },
+    {
+      "question": "The Dark Factor of Personality (D) is conceptualized as a 'reflective construct.' What does this imply about its relationship with specific traits like Machiavellianism or sadism?",
+      "answerOptions": [
+        {
+          "text": "D is the underlying disposition from which all specific aversive traits arise as manifestations.",
+          "isCorrect": true,
+          "rationale": "Similar to the $g$ factor of intelligence, D represents the core 'aversive essence' that predisposes individuals to specific manifestations like sadism."
+        },
+        {
+          "text": "D is a statistical aggregate of independent dark traits that have no common core.",
+          "isCorrect": false,
+          "rationale": "A reflective construct implies a common underlying cause, whereas an aggregate would be a 'formative' construct."
+        },
+        {
+          "text": "Specific traits like Machiavellianism are the causes of D, rather than its consequences.",
+          "isCorrect": false,
+          "rationale": "In a reflective model, the underlying trait (D) is the cause of the observed behaviors and specific traits, not the other way around."
+        },
+        {
+          "text": "D only exists as a linguistic shortcut and does not predict behavioral outcomes better than specific traits.",
+          "isCorrect": false,
+          "rationale": "Research shows D predicts behaviors like dishonesty and selfishness, often rendering specific traits redundant in terms of incremental validity."
+        }
+      ],
+      "hint": "Compare this concept to how 'general intelligence' relates to specific cognitive abilities."
+    },
+    {
+      "question": "Zettler et al. (2025) constructed an index of Aversive Societal Conditions (ASC) based on four specific variables. Which of the following correctly identifies those variables?",
+      "answerOptions": [
+        {
+          "text": "Corruption, inequality, poverty, and violence.",
+          "isCorrect": true,
+          "rationale": "These four 'objectively' assessed variables jointly reflect environments where self-serving behavior at the cost of others might be perceived as adaptive or non-sanctioned."
+        },
+        {
+          "text": "Individualism, power distance, uncertainty avoidance, and masculinity.",
+          "isCorrect": false,
+          "rationale": "These are Hofstede's cultural dimensions, which are distinct from the specific societal 'aversive conditions' measured in the Zettler study."
+        },
+        {
+          "text": "Unemployment, illiteracy, population density, and religiousness.",
+          "isCorrect": false,
+          "rationale": "While related to sociology, these were not the specific indicators used to construct the ASC index in this research."
+        },
+        {
+          "text": "Niche diversity, climatic stress, pathogen prevalence, and resource scarcity.",
+          "isCorrect": false,
+          "rationale": "These are socioecological variables often used in evolutionary psychology, but they were not the components of the index used to explain D-levels."
+        }
+      ],
+      "hint": "Think of the negative societal factors that would make 'looking out only for oneself' a survival strategy."
+    },
+    {
+      "question": "What significant finding regarding 'rater bias' emerged from the study of multi-rater scores compared to single-method self-reports in personality research?",
+      "answerOptions": [
+        {
+          "text": "Latent trait scores derived from multiple raters typically yield higher heritability estimates by reducing rater-specific noise.",
+          "isCorrect": true,
+          "rationale": "Multi-rater scores (Common Trait) can reach heritability estimates as high as $71\\%$, suggesting self-reports may mask true genetic effects due to rater bias."
+        },
+        {
+          "text": "Informant ratings show much higher familial similarity than self-reports, suggesting self-reports are largely invalid.",
+          "isCorrect": false,
+          "rationale": "Actually, family similarities based on informant ratings are often lower; however, the common variance across multiple raters provides the most accurate genetic estimate."
+        },
+        {
+          "text": "Self-reports are more accurate than informant reports because individuals have exclusive access to their own thoughts and motivations.",
+          "isCorrect": false,
+          "rationale": "The source material suggests that self-ratings can be biased and that multi-perspective approaches provide more accurate reflections of true trait differences."
+        },
+        {
+          "text": "Heritability estimates decrease when using multi-rater designs because genetic influences are primarily restricted to self-perception.",
+          "isCorrect": false,
+          "rationale": "Studies using multi-rater scores actually show higher heritability, indicating that the genetic component of the actual trait is substantial."
+        }
+      ],
+      "hint": "Think about how 'Common Trait' measures (aggregating self and peer reports) impact the estimation of genetic variance."
+    },
+    {
+      "question": "Zettler et al. (2025) utilized a 20-year time lag between the assessment of ASC and the assessment of D. What was the primary methodological reasoning for this specific duration?",
+      "answerOptions": [
+        {
+          "text": "To allow time for ASC to coshape the participants' personality development and exclude the possibility of reversed causality.",
+          "isCorrect": true,
+          "rationale": "A 20-year lag ensures that the societal conditions preceded the personality development of the participants, preventing the participants' traits from influencing the ASC index."
+        },
+        {
+          "text": "To align the study with the average duration of human generation cycles for evolutionary tracking.",
+          "isCorrect": false,
+          "rationale": "While it roughly matches a generation, the specific reason given was to ensure the causal direction from environment to personality development."
+        },
+        {
+          "text": "Because research shows that the 'Dark Factor' only stabilizes in individuals after they have lived in a society for at least two decades.",
+          "isCorrect": false,
+          "rationale": "Personality traits stabilize earlier; the 20-year period was a conservative measure to ensure the societal environment was the 'cause' and not the 'effect'."
+        },
+        {
+          "text": "To account for the 'epigenetic drift' that occurs between childhood and middle adulthood.",
+          "isCorrect": false,
+          "rationale": "While epigenetic drift is a real concept mentioned in other sources, it was not the justification for the time lag in the Zettler study."
+        }
+      ],
+      "hint": "This lag helps determine whether the environment shaped the people or the people shaped the environment."
+    },
+    {
+      "question": "In evolutionary personality theory, the concept of 'balancing selection' is sometimes challenged by the idea of 'negative selection.' What does the negative selection perspective imply about personality variation?",
+      "answerOptions": [
+        {
+          "text": "Personality variation is largely random genetic noise resulting from the removal of harmful mutations from a single adaptive optimum.",
+          "isCorrect": true,
+          "rationale": "This view suggests that, like intelligence, there might be one 'best' level for traits, and variation is just the byproduct of mutations being deleted slowly."
+        },
+        {
+          "text": "A range of personality genotypes is actively preserved because different environments reward different traits.",
+          "isCorrect": false,
+          "rationale": "This describes balancing selection, which is the opposing view to the negative selection hypothesis mentioned in the question."
+        },
+        {
+          "text": "Evolutionary pressure works to maximize dark traits in all populations due to their reproductive benefits.",
+          "isCorrect": false,
+          "rationale": "This is a misinterpretation; while psychopathy can be adaptive, negative selection focuses on the elimination of deleterious mutations, not the promotion of dark traits."
+        },
+        {
+          "text": "Environmental complexity is the sole driver of trait expression, making genetic selection irrelevant for modern personality.",
+          "isCorrect": false,
+          "rationale": "Evolutionary theory maintains that genes are the product of selection, and current debates focus on what type of selection preserves heritable variance."
+        }
+      ],
+      "hint": "Think about whether variation is an 'active adaptation' to different niches or just 'residual error' around a single ideal trait level."
+    }
+  ]
+}

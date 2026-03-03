@@ -1,0 +1,265 @@
+{
+  "title": "Neuroscience Quiz",
+  "questions": [
+    {
+      "question": "In the case of Michael May, why was he unable to recognize faces or three-dimensional objects despite having a properly functioning retina after surgery?",
+      "answerOptions": [
+        {
+          "text": "His brain had missed critical periods of experience-guided development needed to interpret visual signals.",
+          "isCorrect": true,
+          "rationale": "While the eyes could focus images, the complex neural networks required for higher-level visual processing are shaped by experience early in life."
+        },
+        {
+          "text": "The chemical explosion had permanently damaged the primary visual cortex in addition to his eyes.",
+          "isCorrect": false,
+          "rationale": "The source material indicates that the injury was to his eyes, not his brain, but the lack of visual input prevented proper neural maturation."
+        },
+        {
+          "text": "His adult brain was incapable of any further neurogenesis in the visual processing centers.",
+          "isCorrect": false,
+          "rationale": "Adult neurogenesis is limited to specific areas and is not the primary mechanism for restoring complex sensory interpretation skills."
+        },
+        {
+          "text": "The corneal transplant introduced biological toxins that inhibited synaptic rearrangement.",
+          "isCorrect": false,
+          "rationale": "There is no evidence in the text suggesting toxins from the transplant; the issue was the lack of developmental experience."
+        }
+      ],
+      "hint": "Consider the role of early behavioral interactions with the environment in guiding the construction of brain networks."
+    },
+    {
+      "question": "During early embryonic development, which cellular layer is responsible for the formation of the nervous system?",
+      "answerOptions": [
+        {
+          "text": "Ectoderm",
+          "isCorrect": true,
+          "rationale": "This outer layer thickens into the neural plate and eventually forms both the central and peripheral nervous systems."
+        },
+        {
+          "text": "Mesoderm",
+          "isCorrect": false,
+          "rationale": "The mesoderm primarily gives rise to muscle, bone, and circulatory systems rather than neural tissue."
+        },
+        {
+          "text": "Endoderm",
+          "isCorrect": false,
+          "rationale": "This inner layer is responsible for the lining of the digestive and respiratory tracts."
+        },
+        {
+          "text": "Notochord",
+          "isCorrect": false,
+          "rationale": "The notochord is a midline structure that influences neural development through induction but is not the layer that becomes the nervous system."
+        }
+      ],
+      "hint": "Recall the Greek roots meaning 'outer skin' to identify the correct embryonic layer."
+    },
+    {
+      "question": "The prosencephalon, or forebrain, eventually differentiates into which two major subdivisions?",
+      "answerOptions": [
+        {
+          "text": "Telencephalon and diencephalon",
+          "isCorrect": true,
+          "rationale": "The anterior division of the neural tube subdivides into these two structures, which form the cerebral hemispheres and thalamus/hypothalamus."
+        },
+        {
+          "text": "Metencephalon and myelencephalon",
+          "isCorrect": false,
+          "rationale": "These subdivisions actually arise from the rhombencephalon, or hindbrain."
+        },
+        {
+          "text": "Mesencephalon and telencephalon",
+          "isCorrect": false,
+          "rationale": "The mesencephalon is the midbrain, which is a separate subdivision from the forebrain."
+        },
+        {
+          "text": "Prosencephalon and rhombencephalon",
+          "isCorrect": false,
+          "rationale": "These are the primary divisions themselves rather than the secondary subdivisions of the forebrain."
+        }
+      ],
+      "hint": "These subdivisions include the structures that will become the cerebral hemispheres and the thalamus."
+    },
+    {
+      "question": "How does cell differentiation in vertebrates differ from that in the nematode $Caenorhabditis\\ elegans$?",
+      "answerOptions": [
+        {
+          "text": "Vertebrate cell fate is regulated by cell-cell interactions rather than strictly by mitotic lineage.",
+          "isCorrect": true,
+          "rationale": "Unlike the predetermined lineage seen in $C.\\ elegans$, vertebrate cells take cues from neighboring cells to determine their final identity."
+        },
+        {
+          "text": "Vertebrate cells are predetermined from the first zygotic division, unlike $C.\\ elegans$.",
+          "isCorrect": false,
+          "rationale": "This is the opposite of the truth; $C.\\ elegans$ is the organism with a highly predetermined and unvarying mitotic lineage."
+        },
+        {
+          "text": "Vertebrates do not undergo the stage of cell differentiation, whereas $C.\\ elegans$ does.",
+          "isCorrect": false,
+          "rationale": "Both organisms undergo cell differentiation to acquire distinctive characteristics, though the guiding mechanisms differ."
+        },
+        {
+          "text": "Vertebrate differentiation is entirely guided by genotype, while $C.\\ elegans$ is guided by phenotype.",
+          "isCorrect": false,
+          "rationale": "Genotype provides the instructions for both, but the execution is influenced differently by lineage versus local environment."
+        }
+      ],
+      "hint": "Think about whether a cell's identity depends on its 'ancestors' or its 'neighbors'."
+    },
+    {
+      "question": "Which anatomical abnormality is frequently observed in severe cases of Fetal Alcohol Syndrome (FAS)?",
+      "answerOptions": [
+        {
+          "text": "The absence of the corpus callosum",
+          "isCorrect": true,
+          "rationale": "Alcohol exposure during development can severely disrupt the formation of this major white matter tract connecting the cerebral hemispheres."
+        },
+        {
+          "text": "An oversized brain (macrocephaly)",
+          "isCorrect": false,
+          "rationale": "FAS is actually associated with microcephaly, or an abnormally small brain, rather than macrocephaly."
+        },
+        {
+          "text": "Excessive cerebral cortical gyri",
+          "isCorrect": false,
+          "rationale": "FAS brains often show fewer gyri (pachygyria or lissencephaly-like features) rather than an excess of them."
+        },
+        {
+          "text": "Hypertrophy of the cerebellum",
+          "isCorrect": false,
+          "rationale": "The text highlights overall stunted growth and specific missing structures rather than the enlargement of the cerebellum."
+        }
+      ],
+      "hint": "Focus on the structure that facilitates communication between the two halves of the brain."
+    },
+    {
+      "question": "Phenylketonuria (PKU) serves as a classic example of the interaction between genes and the environment because:",
+      "answerOptions": [
+        {
+          "text": "The intellectual disability phenotype only develops if the individual consumes phenylalanine.",
+          "isCorrect": true,
+          "rationale": "The genetic defect causes harm only in the presence of a specific environmental factor (dietary phenylalanine), which can be managed to prevent brain damage."
+        },
+        {
+          "text": "It is caused by a dominant gene that only expresses itself in malnourished environments.",
+          "isCorrect": false,
+          "rationale": "PKU is a recessive hereditary disorder, and its expression is linked to specific protein intake rather than general malnutrition."
+        },
+        {
+          "text": "The genotype itself changes if a child is placed on a strict diet before age $2$.",
+          "isCorrect": false,
+          "rationale": "An individual's genotype is fixed at fertilization; it is the phenotype (intellectual functioning) that is altered by the diet."
+        },
+        {
+          "text": "The environment causes a mutation in the enzyme responsible for protein metabolism.",
+          "isCorrect": false,
+          "rationale": "The mutation is inherited (nature); the environment (diet/nurture) determines the severity of its impact on the phenotype."
+        }
+      ],
+      "hint": "Consider how dietary choices can prevent the toxic buildup associated with this genetic condition."
+    },
+    {
+      "question": "In which region of the human brain has adult neurogenesis been most clearly estimated to occur at a rate of roughly $1400$ new neurons per day?",
+      "answerOptions": [
+        {
+          "text": "Dentate gyrus of the hippocampal formation",
+          "isCorrect": true,
+          "rationale": "This specific hippocampal region continues to produce new neurons throughout adulthood, which are thought to be important for learning and memory."
+        },
+        {
+          "text": "Ventricular zone of the cerebral cortex",
+          "isCorrect": false,
+          "rationale": "While the ventricular zone is the site of neurogenesis during early development, most cortical neurons are present at birth."
+        },
+        {
+          "text": "Primary visual cortex",
+          "isCorrect": false,
+          "rationale": "Neurogenesis is not a standard feature of the adult primary visual cortex, which is why early blindness has such lasting effects."
+        },
+        {
+          "text": "Substantia nigra",
+          "isCorrect": false,
+          "rationale": "The loss of neurons in this area is associated with Parkinson\u2019s disease, but it is not a primary site of daily adult neurogenesis mentioned in the text."
+        }
+      ],
+      "hint": "This area is located within a structure crucial for the formation of new memories."
+    },
+    {
+      "question": "What is the primary role of radial glial cells during the 'cell migration' stage of neural development?",
+      "answerOptions": [
+        {
+          "text": "They act as physical guides or 'tracks' for newly born neurons to move toward the brain's surface.",
+          "isCorrect": true,
+          "rationale": "Radial glia span the width of the emerging hemispheres, allowing neurons to 'shinny' along them to reach their final destination."
+        },
+        {
+          "text": "They undergo mitosis to produce the majority of the brain's future neurons.",
+          "isCorrect": false,
+          "rationale": "While they are glia, their primary role in this context is structural guidance during migration rather than proliferation."
+        },
+        {
+          "text": "They secrete Sonic hedgehog to induce cells to become motor neurons.",
+          "isCorrect": false,
+          "rationale": "Sonic hedgehog is secreted by the notochord, not by radial glial cells."
+        },
+        {
+          "text": "They form the myelin sheath around axons to speed up electrical conduction.",
+          "isCorrect": false,
+          "rationale": "Myelination is a later stage of development performed by other types of glia, such as oligodendrocytes."
+        }
+      ],
+      "hint": "Imagine these cells acting like the spokes of a wheel or a ladder."
+    },
+    {
+      "question": "The process of induction, where one set of cells influences the fate of neighboring cells, is illustrated by the notochord's release of which protein?",
+      "answerOptions": [
+        {
+          "text": "Sonic hedgehog",
+          "isCorrect": true,
+          "rationale": "This protein diffuses from the notochord to the ventral spinal cord, directing nearby cells to differentiate into spinal motor neurons."
+        },
+        {
+          "text": "Cell adhesion molecule (CAM)",
+          "isCorrect": false,
+          "rationale": "CAMs are proteins on the cell surface that guide migration and axonal pathfinding, but they are not the primary inducing signal from the notochord."
+        },
+        {
+          "text": "Phenylalanine",
+          "isCorrect": false,
+          "rationale": "Phenylalanine is an amino acid from the diet that can be toxic in PKU, not a signaling protein used in neural induction."
+        },
+        {
+          "text": "$\\\\beta$-catenin",
+          "isCorrect": false,
+          "rationale": "Modified $\\\\beta$-catenin can lead to over-proliferation of neurons, but it is not the specific factor mentioned for inducing motor neurons."
+        }
+      ],
+      "hint": "This protein is named after a famous video game character."
+    },
+    {
+      "question": "What are filopodia, and what is their function during the process of synaptogenesis?",
+      "answerOptions": [
+        {
+          "text": "Fine extensions of growth cones that adhere to the environment and pull the axon forward.",
+          "isCorrect": true,
+          "rationale": "Filopodia extend from growth cones, detect chemical signals and CAMs, and contract to guide the growing neurite."
+        },
+        {
+          "text": "Specialized glial cells that provide metabolic support to migrating neurons.",
+          "isCorrect": false,
+          "rationale": "Filopodia are parts of the neurons themselves (the growth cones), not separate glial support cells."
+        },
+        {
+          "text": "The gaps between myelin sheaths that allow for saltatory conduction.",
+          "isCorrect": false,
+          "rationale": "Those are the nodes of Ranvier; filopodia are involved in growth and pathfinding, not conduction."
+        },
+        {
+          "text": "Toxic enzymes that cause programmed cell death in redundant neurons.",
+          "isCorrect": false,
+          "rationale": "Filopodia are structural extensions for growth, whereas cell death is a later stage involving different biochemical processes."
+        }
+      ],
+      "hint": "The name of these threadlike structures comes from the Latin 'filum' (thread) and Greek 'pod' (foot)."
+    }
+  ]
+}

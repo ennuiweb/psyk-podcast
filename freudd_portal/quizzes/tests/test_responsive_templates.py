@@ -39,6 +39,7 @@ class ResponsiveTemplateRulesTests(SimpleTestCase):
         self.assertIn("data-subject-menu-list", body)
         self.assertIn("document.body.appendChild(list);", body)
         self.assertIn("nav.contains(target) || list.contains(target)", body)
+        self.assertIn("box-shadow: 0 20px 42px rgba(15, 95, 140, 0.22), 0 6px 14px rgba(11, 75, 111, 0.14);", body)
 
     def test_progress_template_has_mobile_history_cards_and_last_opened_subject_badge_hook(self) -> None:
         body = self._template_text("quizzes/progress.html")

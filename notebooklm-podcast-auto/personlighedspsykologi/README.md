@@ -43,6 +43,7 @@ python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_week.py 
 ## "Alle kilder" notebook behavior (lecture-level episodes)
 - `Alle kilder` generation runs per lecture (`W#L#`) and uses a fresh NotebookLM notebook on every run (no notebook reuse).
 - This guarantees the run re-uploads the full lecture source list instead of relying on existing notebook sources.
+- `Alle kilder` is skipped automatically for lecture folders that contain only one source file.
 
 ## Output filename config tags
 - `generate_week.py` appends a human-readable config tag before the extension: ` {...}`.

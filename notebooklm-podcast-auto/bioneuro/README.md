@@ -33,6 +33,7 @@ Download artifacts for flere uger:
 Bemærk:
 - Du kan stadig overskrive defaults med egne argumenter (`--sources-root`, `--prompt-config`, `--output-root`).
 - Wrappers bruger de fælles scripts i `personlighedspsykologi/scripts`, så de arver samme forbedringer:
+  - `Alle kilder` bliver automatisk sprunget over for uge/lektions-mapper med kun én kildefil.
   - `generate_week.py` skip-logic håndterer konflikt mellem `.request.json` og `.request.error.json` ved at stole på nyeste log.
   - `download_week.py` rydder request-logs op som default (`.request.json`, `.request.error.json`, `.request.done.json`), inkl. orphan `.request.done.json` i valgte uge-mapper.
   - Brug `--no-cleanup-requests` (eller `--no-archive-requests`) for at beholde logs.

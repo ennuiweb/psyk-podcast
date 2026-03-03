@@ -97,6 +97,12 @@ def list_source_files(week_dir: Path) -> list[Path]:
     return files
 
 
+def should_generate_weekly_overview(source_count: int) -> bool:
+    if source_count < 0:
+        raise ValueError("source_count must be >= 0")
+    return source_count > 1
+
+
 # Keep this as a raw regex with single escapes (\b, \s) so week-prefix stripping works.
 WEEK_PREFIX_PATTERN = re.compile(r"^(W0*(\d{1,2})L0*(\d{1,2}))\b[\s._-]*", re.IGNORECASE)
 
@@ -1011,81 +1017,89 @@ def main() -> int:
             sources = list_source_files(week_dir)
             if not sources:
                 raise SystemExit(f"No source files found in {week_dir}")
-            total_sources_read += len(sources)
+            source_count = len(sources)
+            total_sources_read += source_count
+            generate_weekly_overview = should_generate_weekly_overview(source_count)
+            if not generate_weekly_overview:
+                print(
+                    f"{week_label}: skipping Alle kilder generation "
+                    f"(only {source_count} source file)"
+                )
 
             planned_lines: list[str] = []
             missing_outputs = 0
             weekly_base = f"{week_label} - Alle kilder"
-            for content_type in content_types:
-                weekly_output = week_output_dir / f"{weekly_base}{output_extension(content_type, quiz_format=quiz_format)}"
-                for variant in language_variants:
-                    for quiz_difficulty_value in quiz_difficulty_values(content_type, quiz_difficulty):
-                        if content_type == "audio":
-                            planned_instructions = ensure_prompt(
-                                "weekly_overview", weekly_cfg.get("prompt", "")
+            if generate_weekly_overview:
+                for content_type in content_types:
+                    weekly_output = week_output_dir / f"{weekly_base}{output_extension(content_type, quiz_format=quiz_format)}"
+                    for variant in language_variants:
+                        for quiz_difficulty_value in quiz_difficulty_values(content_type, quiz_difficulty):
+                            if content_type == "audio":
+                                planned_instructions = ensure_prompt(
+                                    "weekly_overview", weekly_cfg.get("prompt", "")
+                                )
+                                planned_tag = build_output_cfg_tag_token(
+                                    content_type=content_type,
+                                    language=variant["code"],
+                                    instructions=planned_instructions,
+                                    audio_format=weekly_cfg.get("format", "deep-dive"),
+                                    audio_length=weekly_cfg.get("length", "long"),
+                                    infographic_orientation=None,
+                                    infographic_detail=None,
+                                    quiz_quantity=None,
+                                    quiz_difficulty=None,
+                                    quiz_format=None,
+                                    source_count=source_count,
+                                    hash_len=args.config_tag_len,
+                                )
+                            elif content_type == "infographic":
+                                planned_instructions = ensure_prompt(
+                                    "weekly_infographic", weekly_infographic_cfg.get("prompt", "")
+                                )
+                                planned_tag = build_output_cfg_tag_token(
+                                    content_type=content_type,
+                                    language=variant["code"],
+                                    instructions=planned_instructions,
+                                    audio_format=None,
+                                    audio_length=None,
+                                    infographic_orientation=weekly_infographic_cfg.get("orientation"),
+                                    infographic_detail=weekly_infographic_cfg.get("detail"),
+                                    quiz_quantity=None,
+                                    quiz_difficulty=None,
+                                    quiz_format=None,
+                                    source_count=None,
+                                    hash_len=args.config_tag_len,
+                                )
+                            else:
+                                planned_instructions = ensure_prompt("quiz", quiz_cfg.get("prompt", ""))
+                                planned_tag = build_output_cfg_tag_token(
+                                    content_type=content_type,
+                                    language=variant["code"],
+                                    instructions=planned_instructions,
+                                    audio_format=None,
+                                    audio_length=None,
+                                    infographic_orientation=None,
+                                    infographic_detail=None,
+                                    quiz_quantity=quiz_quantity,
+                                    quiz_difficulty=quiz_difficulty_value,
+                                    quiz_format=quiz_format,
+                                    source_count=None,
+                                    hash_len=args.config_tag_len,
+                                )
+                            weekly_candidate = apply_config_tag(
+                                apply_path_suffix(weekly_output, variant["suffix"]),
+                                planned_tag if args.config_tagging else None,
                             )
-                            planned_tag = build_output_cfg_tag_token(
-                                content_type=content_type,
-                                language=variant["code"],
-                                instructions=planned_instructions,
-                                audio_format=weekly_cfg.get("format", "deep-dive"),
-                                audio_length=weekly_cfg.get("length", "long"),
-                                infographic_orientation=None,
-                                infographic_detail=None,
-                                quiz_quantity=None,
-                                quiz_difficulty=None,
-                                quiz_format=None,
-                                source_count=len(sources),
-                                hash_len=args.config_tag_len,
+                            planned_path = ensure_unique_output_path(
+                                weekly_candidate,
+                                auth_label,
                             )
-                        elif content_type == "infographic":
-                            planned_instructions = ensure_prompt(
-                                "weekly_infographic", weekly_infographic_cfg.get("prompt", "")
+                            planned_lines.append(
+                                f"WEEKLY {content_type.upper()} ({variant['code'] or 'default'}): {planned_path}"
                             )
-                            planned_tag = build_output_cfg_tag_token(
-                                content_type=content_type,
-                                language=variant["code"],
-                                instructions=planned_instructions,
-                                audio_format=None,
-                                audio_length=None,
-                                infographic_orientation=weekly_infographic_cfg.get("orientation"),
-                                infographic_detail=weekly_infographic_cfg.get("detail"),
-                                quiz_quantity=None,
-                                quiz_difficulty=None,
-                                quiz_format=None,
-                                source_count=None,
-                                hash_len=args.config_tag_len,
-                            )
-                        else:
-                            planned_instructions = ensure_prompt("quiz", quiz_cfg.get("prompt", ""))
-                            planned_tag = build_output_cfg_tag_token(
-                                content_type=content_type,
-                                language=variant["code"],
-                                instructions=planned_instructions,
-                                audio_format=None,
-                                audio_length=None,
-                                infographic_orientation=None,
-                                infographic_detail=None,
-                                quiz_quantity=quiz_quantity,
-                                quiz_difficulty=quiz_difficulty_value,
-                                quiz_format=quiz_format,
-                                source_count=None,
-                                hash_len=args.config_tag_len,
-                            )
-                        weekly_candidate = apply_config_tag(
-                            apply_path_suffix(weekly_output, variant["suffix"]),
-                            planned_tag if args.config_tagging else None,
-                        )
-                        planned_path = ensure_unique_output_path(
-                            weekly_candidate,
-                            auth_label,
-                        )
-                        planned_lines.append(
-                            f"WEEKLY {content_type.upper()} ({variant['code'] or 'default'}): {planned_path}"
-                        )
-                        should_skip, _ = should_skip_generation(planned_path, args.skip_existing)
-                        if not should_skip:
-                            missing_outputs += 1
+                            should_skip, _ = should_skip_generation(planned_path, args.skip_existing)
+                            if not should_skip:
+                                missing_outputs += 1
 
             for source in sources:
                 base_name = normalize_episode_title(source.stem, week_label)
@@ -1243,139 +1257,140 @@ def main() -> int:
                     print(line)
                 continue
 
-            for content_type in content_types:
-                weekly_output = week_output_dir / f"{weekly_base}{output_extension(content_type, quiz_format=quiz_format)}"
-                for variant in language_variants:
-                    for quiz_difficulty_value in quiz_difficulty_values(content_type, quiz_difficulty):
-                        if content_type == "audio":
-                            instructions = ensure_prompt(
-                                "weekly_overview", weekly_cfg.get("prompt", "")
-                            )
-                            audio_format = weekly_cfg.get("format", "deep-dive")
-                            audio_length = weekly_cfg.get("length", "long")
-                            infographic_orientation = None
-                            infographic_detail = None
-                            quiz_quantity_arg = None
-                            quiz_difficulty_arg = None
-                            quiz_format_arg = None
-                        elif content_type == "infographic":
-                            instructions = ensure_prompt(
-                                "weekly_infographic", weekly_infographic_cfg.get("prompt", "")
-                            )
-                            audio_format = None
-                            audio_length = None
-                            infographic_orientation = weekly_infographic_cfg.get("orientation")
-                            infographic_detail = weekly_infographic_cfg.get("detail")
-                            quiz_quantity_arg = None
-                            quiz_difficulty_arg = None
-                            quiz_format_arg = None
-                        else:
-                            instructions = ensure_prompt("quiz", quiz_cfg.get("prompt", ""))
-                            audio_format = None
-                            audio_length = None
-                            infographic_orientation = None
-                            infographic_detail = None
-                            quiz_quantity_arg = quiz_quantity
-                            quiz_difficulty_arg = quiz_difficulty_value
-                            quiz_format_arg = quiz_format
-                        weekly_tag = (
-                            build_output_cfg_tag_token(
-                                content_type=content_type,
-                                language=variant["code"],
-                                instructions=instructions,
-                                audio_format=audio_format,
-                                audio_length=audio_length,
-                                infographic_orientation=infographic_orientation,
-                                infographic_detail=infographic_detail,
-                                quiz_quantity=quiz_quantity_arg,
-                                quiz_difficulty=quiz_difficulty_arg,
-                                quiz_format=quiz_format_arg,
-                                source_count=len(sources),
-                                hash_len=args.config_tag_len,
-                            )
-                            if args.config_tagging
-                            else None
-                        )
-                        weekly_candidate = apply_config_tag(
-                            apply_path_suffix(weekly_output, variant["suffix"]),
-                            weekly_tag,
-                        )
-                        output_path = ensure_unique_output_path(
-                            weekly_candidate,
-                            auth_label,
-                        )
-                        skip, reason = should_skip_generation(output_path, args.skip_existing)
-                        if skip:
-                            if args.print_skips:
-                                print(f"Skipping generation ({reason}): {output_path}")
-                            continue
-                        exclude_profiles = (
-                            active_cooldowns(profile_cooldowns)
-                            if rotation_enabled and args.profile_cooldown > 0
-                            else []
-                        )
-                        if exclude_profiles and exclude_profiles != last_excluded:
-                            print(f"Cooling profiles this run: {', '.join(exclude_profiles)}")
-                            last_excluded = exclude_profiles
-                        try:
-                            run_generate(
-                                Path(sys.executable),
-                                generator_script,
-                                sources_file=None,
-                                source_path=None,
-                                source_paths=sources,
-                                notebook_title=apply_suffix(
-                                    f"Personlighedspsykologi {week_label} Alle kilder",
-                                    variant["title_suffix"],
-                                ),
-                                instructions=instructions,
-                                artifact_type=content_type,
-                                audio_format=audio_format,
-                                audio_length=audio_length,
-                                infographic_orientation=infographic_orientation,
-                                infographic_detail=infographic_detail,
-                                quiz_quantity=quiz_quantity_arg,
-                                quiz_difficulty=quiz_difficulty_arg,
-                                quiz_format=quiz_format_arg,
-                                language=variant["code"],
-                                output_path=output_path,
-                                wait=args.wait,
-                                skip_existing=args.skip_existing,
-                                source_timeout=args.source_timeout,
-                                generation_timeout=args.generation_timeout,
-                                artifact_retries=args.artifact_retries,
-                                artifact_retry_backoff=args.artifact_retry_backoff,
-                                storage=args.storage,
-                                profile=profile_for_run,
-                                preferred_profile=preferred_profile,
-                                profile_priority=profile_priority,
-                                profiles_file=profiles_file_for_run,
-                                exclude_profiles=exclude_profiles or None,
-                                rotate_on_rate_limit=args.rotate_on_rate_limit,
-                                ensure_sources_ready=args.ensure_sources_ready,
-                                append_profile_to_notebook_title=args.append_profile_to_notebook_title,
-                                reuse_notebook=False,
-                            )
-                        except Exception as exc:
-                            failures.append(f"{output_path}: {exc}")
-                            continue
-                        else:
-                            if rotation_enabled:
-                                preferred_profile = update_preferred_profile(
-                                    output_path, preferred_profile
+            if generate_weekly_overview:
+                for content_type in content_types:
+                    weekly_output = week_output_dir / f"{weekly_base}{output_extension(content_type, quiz_format=quiz_format)}"
+                    for variant in language_variants:
+                        for quiz_difficulty_value in quiz_difficulty_values(content_type, quiz_difficulty):
+                            if content_type == "audio":
+                                instructions = ensure_prompt(
+                                    "weekly_overview", weekly_cfg.get("prompt", "")
                                 )
-                        finally:
-                            if rotation_enabled and args.profile_cooldown > 0:
-                                update_profile_cooldowns(
-                                    output_path,
-                                    profile_cooldowns,
-                                    args.profile_cooldown,
-                                    AUTH_COOLDOWN_SECONDS,
+                                audio_format = weekly_cfg.get("format", "deep-dive")
+                                audio_length = weekly_cfg.get("length", "long")
+                                infographic_orientation = None
+                                infographic_detail = None
+                                quiz_quantity_arg = None
+                                quiz_difficulty_arg = None
+                                quiz_format_arg = None
+                            elif content_type == "infographic":
+                                instructions = ensure_prompt(
+                                    "weekly_infographic", weekly_infographic_cfg.get("prompt", "")
                                 )
-                            maybe_sleep(args.sleep_between)
-                        request_logs.append(
-                            output_path.with_suffix(output_path.suffix + ".request.json")
-                        )
+                                audio_format = None
+                                audio_length = None
+                                infographic_orientation = weekly_infographic_cfg.get("orientation")
+                                infographic_detail = weekly_infographic_cfg.get("detail")
+                                quiz_quantity_arg = None
+                                quiz_difficulty_arg = None
+                                quiz_format_arg = None
+                            else:
+                                instructions = ensure_prompt("quiz", quiz_cfg.get("prompt", ""))
+                                audio_format = None
+                                audio_length = None
+                                infographic_orientation = None
+                                infographic_detail = None
+                                quiz_quantity_arg = quiz_quantity
+                                quiz_difficulty_arg = quiz_difficulty_value
+                                quiz_format_arg = quiz_format
+                            weekly_tag = (
+                                build_output_cfg_tag_token(
+                                    content_type=content_type,
+                                    language=variant["code"],
+                                    instructions=instructions,
+                                    audio_format=audio_format,
+                                    audio_length=audio_length,
+                                    infographic_orientation=infographic_orientation,
+                                    infographic_detail=infographic_detail,
+                                    quiz_quantity=quiz_quantity_arg,
+                                    quiz_difficulty=quiz_difficulty_arg,
+                                    quiz_format=quiz_format_arg,
+                                    source_count=source_count,
+                                    hash_len=args.config_tag_len,
+                                )
+                                if args.config_tagging
+                                else None
+                            )
+                            weekly_candidate = apply_config_tag(
+                                apply_path_suffix(weekly_output, variant["suffix"]),
+                                weekly_tag,
+                            )
+                            output_path = ensure_unique_output_path(
+                                weekly_candidate,
+                                auth_label,
+                            )
+                            skip, reason = should_skip_generation(output_path, args.skip_existing)
+                            if skip:
+                                if args.print_skips:
+                                    print(f"Skipping generation ({reason}): {output_path}")
+                                continue
+                            exclude_profiles = (
+                                active_cooldowns(profile_cooldowns)
+                                if rotation_enabled and args.profile_cooldown > 0
+                                else []
+                            )
+                            if exclude_profiles and exclude_profiles != last_excluded:
+                                print(f"Cooling profiles this run: {', '.join(exclude_profiles)}")
+                                last_excluded = exclude_profiles
+                            try:
+                                run_generate(
+                                    Path(sys.executable),
+                                    generator_script,
+                                    sources_file=None,
+                                    source_path=None,
+                                    source_paths=sources,
+                                    notebook_title=apply_suffix(
+                                        f"Personlighedspsykologi {week_label} Alle kilder",
+                                        variant["title_suffix"],
+                                    ),
+                                    instructions=instructions,
+                                    artifact_type=content_type,
+                                    audio_format=audio_format,
+                                    audio_length=audio_length,
+                                    infographic_orientation=infographic_orientation,
+                                    infographic_detail=infographic_detail,
+                                    quiz_quantity=quiz_quantity_arg,
+                                    quiz_difficulty=quiz_difficulty_arg,
+                                    quiz_format=quiz_format_arg,
+                                    language=variant["code"],
+                                    output_path=output_path,
+                                    wait=args.wait,
+                                    skip_existing=args.skip_existing,
+                                    source_timeout=args.source_timeout,
+                                    generation_timeout=args.generation_timeout,
+                                    artifact_retries=args.artifact_retries,
+                                    artifact_retry_backoff=args.artifact_retry_backoff,
+                                    storage=args.storage,
+                                    profile=profile_for_run,
+                                    preferred_profile=preferred_profile,
+                                    profile_priority=profile_priority,
+                                    profiles_file=profiles_file_for_run,
+                                    exclude_profiles=exclude_profiles or None,
+                                    rotate_on_rate_limit=args.rotate_on_rate_limit,
+                                    ensure_sources_ready=args.ensure_sources_ready,
+                                    append_profile_to_notebook_title=args.append_profile_to_notebook_title,
+                                    reuse_notebook=False,
+                                )
+                            except Exception as exc:
+                                failures.append(f"{output_path}: {exc}")
+                                continue
+                            else:
+                                if rotation_enabled:
+                                    preferred_profile = update_preferred_profile(
+                                        output_path, preferred_profile
+                                    )
+                            finally:
+                                if rotation_enabled and args.profile_cooldown > 0:
+                                    update_profile_cooldowns(
+                                        output_path,
+                                        profile_cooldowns,
+                                        args.profile_cooldown,
+                                        AUTH_COOLDOWN_SECONDS,
+                                    )
+                                maybe_sleep(args.sleep_between)
+                            request_logs.append(
+                                output_path.with_suffix(output_path.suffix + ".request.json")
+                            )
 
             for source in sources:
                 base_name = normalize_episode_title(source.stem, week_label)

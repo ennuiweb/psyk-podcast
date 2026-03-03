@@ -186,6 +186,7 @@ def build_spotify_map(
     stats = {
         "preserved_existing": 0,
         "matched_show_episode": 0,
+        "refreshed_from_show_episode": 0,
         "repaired_invalid": 0,
         "discarded_non_episode": 0,
         "carried_stale": 0,
@@ -205,15 +206,20 @@ def build_spotify_map(
         existing_url = existing[1] if existing else ""
         existing_is_episode = is_episode_spotify_url(existing_url)
 
-        if existing and existing_is_episode:
-            updated[title] = existing[1]
-            stats["preserved_existing"] += 1
-            continue
-
         mapped_episode_url = spotify_episode_by_title.get(key)
         if mapped_episode_url and is_episode_spotify_url(mapped_episode_url):
             updated[title] = mapped_episode_url
-            stats["matched_show_episode"] += 1
+            if existing and existing_is_episode and normalize_title_key(existing[1]) != normalize_title_key(mapped_episode_url):
+                stats["refreshed_from_show_episode"] += 1
+            elif existing and existing_is_episode:
+                stats["preserved_existing"] += 1
+            else:
+                stats["matched_show_episode"] += 1
+            continue
+
+        if existing and existing_is_episode:
+            updated[title] = existing[1]
+            stats["preserved_existing"] += 1
             continue
 
         if existing and existing[1]:
@@ -367,6 +373,7 @@ def main() -> int:
     print(f"Map entries: {len(by_rss_title)}")
     print(f"Preserved existing: {stats['preserved_existing']}")
     print(f"Matched show episodes: {stats['matched_show_episode']}")
+    print(f"Refreshed from show episodes: {stats['refreshed_from_show_episode']}")
     print(f"Unresolved RSS titles: {stats['unresolved']}")
     print(f"Repaired invalid links: {stats['repaired_invalid']}")
     print(f"Discarded non-episode Spotify links: {stats['discarded_non_episode']}")

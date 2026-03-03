@@ -100,6 +100,32 @@ class SyncSpotifyMapTests(unittest.TestCase):
         self.assertEqual(stats["matched_show_episode"], 1)
         self.assertEqual(stats["unresolved"], 0)
 
+    def test_build_spotify_map_refreshes_existing_episode_with_show_match(self):
+        by_title, unresolved, stats = self.mod.build_spotify_map(
+            rss_titles=["Uge 1, Forelæsning 1 · Podcast · Alle kilder"],
+            existing_payload={
+                "by_rss_title": {
+                    "Uge 1, Forelæsning 1 · Podcast · Alle kilder": (
+                        "https://open.spotify.com/episode/5m0hYfDU9ThM5qR2xMugr8"
+                    )
+                }
+            },
+            spotify_episode_by_title={
+                "uge 1, forelæsning 1 · podcast · alle kilder": (
+                    "https://open.spotify.com/episode/0Yqa6gY5GJfNfQfY7wsY5Y"
+                )
+            },
+            prune_stale=False,
+        )
+        self.assertEqual(
+            by_title["Uge 1, Forelæsning 1 · Podcast · Alle kilder"],
+            "https://open.spotify.com/episode/0Yqa6gY5GJfNfQfY7wsY5Y",
+        )
+        self.assertEqual(unresolved, [])
+        self.assertEqual(stats["refreshed_from_show_episode"], 1)
+        self.assertEqual(stats["preserved_existing"], 0)
+        self.assertEqual(stats["matched_show_episode"], 0)
+
     def test_parse_show_id_from_url(self):
         self.assertEqual(
             self.mod.parse_show_id_from_url("https://open.spotify.com/show/0jAvkPCcZ1x98lIMno1oqv"),

@@ -128,6 +128,22 @@ class ResponsiveTemplateRulesTests(SimpleTestCase):
             body,
         )
 
+    def test_base_template_guards_against_horizontal_overflow_drift(self) -> None:
+        body = self._template_text("base.html")
+        self.assertIn("html {\n        max-width: 100%;\n        overflow-x: clip;\n      }", body)
+        self.assertIn("max-width: 100%;", body)
+        self.assertIn("overflow-x: clip;", body)
+        self.assertIn("@supports not (overflow: clip)", body)
+        self.assertIn("overflow-x: hidden;", body)
+
+    def test_quiz_wrapper_supports_long_option_copy_without_horizontal_overflow(self) -> None:
+        body = self._template_text("quizzes/wrapper.html")
+        self.assertIn(".quiz-shell {\n    display: grid;\n    gap: var(--space-3);\n    min-width: 0;\n  }", body)
+        self.assertIn(".quiz-stage {\n    border: 1px solid var(--border);", body)
+        self.assertIn("padding: var(--space-4);\n    min-width: 0;\n  }", body)
+        self.assertIn("width: 100%;\n    min-width: 0;\n    min-height: var(--control-min-height);", body)
+        self.assertIn(".quiz-option-text {\n    flex: 1 1 auto;\n    min-width: 0;", body)
+
     def test_base_template_exposes_page_class_hook_for_scoped_layout_modes(self) -> None:
         body = self._template_text("base.html")
         self.assertIn("page-{{ request.resolver_match.url_name }}", body)

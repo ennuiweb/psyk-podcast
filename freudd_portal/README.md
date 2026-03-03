@@ -65,6 +65,7 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Module headers in subject detail are rendered as a combined headline (`Uge x, forelæsning x: <titel>`), with cleaned lecture title metadata.
 - Quiz labels are rendered from cleaned `episode_title` metadata (`modul` + `titel`) instead of raw file/tag strings.
 - Quiz wrapper header uses a structured identity block (module label + title) and includes in-flow progress feedback per question step.
+- Global shell and quiz wrapper enforce horizontal overflow guardrails so sticky header + fixed mobile tabbar stay anchored on narrow devices.
 - `quiz_links.json` entries must include `subject_slug` so unit progression can be computed per subject (auto-populated by quiz-link sync scripts).
 - Optional extensions (`habitica`, `anki`) are disabled by default and must be enabled per account via management command.
 - Extension sync is server-driven (`manage.py sync_extensions`) and runs only for enabled users with stored per-user credentials.

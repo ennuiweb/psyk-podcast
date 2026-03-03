@@ -10,6 +10,12 @@ Dette fag er en let wrapper omkring den eksisterende ugegenerator, med `bioneuro
 - `scripts/generate_week.py` - wrapper til den fælles ugegenerator med `bioneuro`-stier som default.
 - `scripts/download_week.py` - wrapper til download af artifacts fra request-logs med `bioneuro` output-root som default.
 
+## Canonical output path
+- Kun `notebooklm-podcast-auto/bioneuro/output/W#L#` er gyldig output-lokation.
+- `notebooklm-podcast-auto/bioneuro/W#L#` betragtes som legacy/fejlplaceret output.
+- Wrapperne stopper nu med en fejl, hvis der findes filer i root `bioneuro/W#L#` mapper.
+- Midlertidig bypass (kun ved bevidst migration/debug): `BIONEURO_ALLOW_ROOT_WEEK_DIRS=1`.
+
 ## Brug
 
 Dry-run for én uge:

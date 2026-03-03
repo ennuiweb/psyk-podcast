@@ -1363,7 +1363,7 @@ class QuizPortalTests(TestCase):
         self.assertContains(response, '<span class="cup-tab-icon" aria-hidden="true">psychology</span>')
         self.assertContains(response, '<span class="cup-tab-icon" aria-hidden="true">memory</span>')
 
-    def test_leaderboard_page_uses_podium_layout_and_accuracy_badges(self) -> None:
+    def test_leaderboard_page_uses_podium_layout_and_correct_answer_badges(self) -> None:
         users = [
             self._create_user(username="rank-one"),
             self._create_user(username="rank-two"),
@@ -1408,8 +1408,8 @@ class QuizPortalTests(TestCase):
             reverse("leaderboard-subject", kwargs={"subject_slug": "personlighedspsykologi"})
         )
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "Accuracy 100%")
-        self.assertContains(response, "Accuracy 75%")
+        self.assertContains(response, "Korrekte svar 4")
+        self.assertContains(response, "Korrekte svar 3")
         self.assertContains(response, "Top 50 - Personlighedspsykologi")
         self.assertContains(response, "RankFour")
         self.assertEqual(

@@ -142,30 +142,14 @@
     justify-content: center;
     min-height: 28px;
     border-radius: var(--radius-pill);
-    border: 1px solid transparent;
+    border: 1px solid var(--border);
+    background: var(--surface-soft);
+    color: var(--text-subtle-2);
     padding: 0 10px;
     font-size: 0.82rem;
     font-weight: 700;
     width: fit-content;
     justify-self: center;
-  }
-
-  .cup-accuracy-chip.tone-high {
-    color: var(--success-ink);
-    background: var(--success-bg);
-    border-color: color-mix(in srgb, var(--success) 32%, transparent);
-  }
-
-  .cup-accuracy-chip.tone-mid {
-    color: var(--warn-ink-soft);
-    background: var(--warn-bg-soft);
-    border-color: color-mix(in srgb, var(--warn-border) 68%, transparent);
-  }
-
-  .cup-accuracy-chip.tone-low {
-    color: var(--danger-ink);
-    background: var(--danger-bg-soft);
-    border-color: color-mix(in srgb, var(--danger) 28%, transparent);
   }
 
   .cup-points {
@@ -394,7 +378,7 @@
       <span class="cup-trophy" aria-hidden="true">🏆</span>
       {% endif %}
       <h2 class="cup-podium-alias">{{ entry.alias }}</h2>
-      <span class="cup-accuracy-chip tone-{{ entry.accuracy_tone }}">Accuracy {{ entry.accuracy_percent }}%</span>
+      <span class="cup-accuracy-chip">Korrekte svar {{ entry.correct_answers }}</span>
       <p class="cup-points">{{ entry.score_points_label }}</p>
       <p class="cup-points-label">POINT</p>
     </article>

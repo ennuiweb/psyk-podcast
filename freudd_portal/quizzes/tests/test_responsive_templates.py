@@ -37,6 +37,8 @@ class ResponsiveTemplateRulesTests(SimpleTestCase):
         self.assertLess(mobile_nav.index(">Quiz cup</span>"), mobile_nav.index(">Indstillinger</span>"))
         self.assertIn("data-subject-menu-toggle", body)
         self.assertIn("data-subject-menu-list", body)
+        self.assertIn("document.body.appendChild(list);", body)
+        self.assertIn("nav.contains(target) || list.contains(target)", body)
 
     def test_progress_template_has_mobile_history_cards_and_last_opened_subject_badge_hook(self) -> None:
         body = self._template_text("quizzes/progress.html")

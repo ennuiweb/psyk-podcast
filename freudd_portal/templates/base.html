@@ -1160,6 +1160,12 @@
           return;
         }
 
+        // Keep the popup outside the filtered tabbar so fixed-centering stays
+        // relative to the viewport across mobile browsers.
+        if (list.parentElement !== document.body) {
+          document.body.appendChild(list);
+        }
+
         const closeList = () => {
           list.setAttribute("hidden", "");
           toggle.setAttribute("aria-expanded", "false");
@@ -1186,7 +1192,7 @@
             return;
           }
           const target = event.target;
-          if (target instanceof Node && nav.contains(target)) {
+          if (target instanceof Node && (nav.contains(target) || list.contains(target))) {
             return;
           }
           closeList();

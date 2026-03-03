@@ -361,6 +361,8 @@ To push the Apps Script file whenever you run `git push`, install the repository
    - quiz extraction (`extract_quiz_html_to_json.py`)
    - OneDrive reading-key mirror sync (`sync_personlighedspsykologi_reading_file_key.py --apply`)
    - blocking reading-file sync to droplet (`sync_personlighedspsykologi_readings_to_droplet.py`)
+   - warning-only Bioneuro audio mirror (`mirror_bioneuro_audio.py`)
+   - warning-only Personlighedspsykologi output directory mirror (`mirror_personlighedspsykologi_output_dirs.py`)
    - Apps Script push (`apps-script/push_drive_trigger.sh`)
 3. If mirror sync updates tracked files, push is aborted so you can commit mirror changes first (prevents stale mirror state on remote).
 4. Set `QUIZ_JSON_EXTRACT_ON_PUSH=0` in your environment to skip quiz extraction on demand.
@@ -373,8 +375,12 @@ To push the Apps Script file whenever you run `git push`, install the repository
    - `FREUDD_READING_KEY_SYNC_NO_BACKUP=1`
 7. Set `FREUDD_READINGS_SYNC_ON_PUSH=0` to disable reading-file sync to droplet on push.
 8. Optional reading-file sync overrides: `FREUDD_READINGS_SOURCE_ROOT`, `FREUDD_READINGS_REMOTE_ROOT`, `FREUDD_READINGS_HOST`, `FREUDD_READINGS_USER`, `FREUDD_READINGS_SSH_KEY`, `FREUDD_READINGS_EXCLUSIONS_PATH`, `FREUDD_READINGS_SUBJECT_SLUG`.
-9. Set `APPS_SCRIPT_PUSH_ON_PUSH=0` in your environment to skip the Apps Script push step on demand.
-10. (Optional) Set `PRE_PUSH_LOG_FILE=/path/to/pre-push.log` to enable logging; by default no log file is written.
+9. Set `BIONEURO_MIRROR_ON_PUSH=0` to disable the Bioneuro audio mirror step on demand.
+10. Optional Bioneuro mirror overrides: `BIONEURO_MIRROR_SRC`, `BIONEURO_MIRROR_DST`.
+11. Set `PERSONLIGHEDSPSYKOLOGI_MIRROR_ON_PUSH=0` to disable the Personlighedspsykologi output directory mirror step on demand.
+12. Optional Personlighedspsykologi mirror overrides: `PERSONLIGHEDSPSYKOLOGI_MIRROR_SRC`, `PERSONLIGHEDSPSYKOLOGI_MIRROR_DST`.
+13. Set `APPS_SCRIPT_PUSH_ON_PUSH=0` in your environment to skip the Apps Script push step on demand.
+14. (Optional) Set `PRE_PUSH_LOG_FILE=/path/to/pre-push.log` to enable logging; by default no log file is written.
 
 ### Bioneuro audio mirror on push
 The same `pre-push` hook can mirror local Bioneuro audio files from OneDrive into the Google Drive mounted destination used by the `bioneuro` show:
@@ -401,6 +407,32 @@ Pre-push environment controls:
 - `BIONEURO_MIRROR_ON_PUSH=0` to disable mirror on push.
 - `BIONEURO_MIRROR_SRC=/custom/source/path` to override source.
 - `BIONEURO_MIRROR_DST=/custom/destination/path` to override destination.
+
+Mirror failures currently print a warning and do not block `git push`.
+
+### Personlighedspsykologi output directory mirror on push
+The same `pre-push` hook can mirror local `output` subdirectories from the Personlighedspsykologi NotebookLM workspace into the Google Drive mount used by the `personlighedspsykologi-en` show:
+
+```bash
+python3 scripts/mirror_personlighedspsykologi_output_dirs.py --dry-run
+python3 scripts/mirror_personlighedspsykologi_output_dirs.py
+```
+
+Default source:
+- `notebooklm-podcast-auto/personlighedspsykologi/output`
+
+Default destination:
+- `/Users/oskar/Library/CloudStorage/GoogleDrive-psykku2025@gmail.com/My Drive/Personlighedspsykologi-en`
+
+Behavior:
+- mirrors all nested subdirectories from source into destination;
+- creates missing directories only (no file copy and no destination deletions);
+- fails the mirror step on path collisions (destination path exists but is a file).
+
+Pre-push environment controls:
+- `PERSONLIGHEDSPSYKOLOGI_MIRROR_ON_PUSH=0` to disable mirror on push.
+- `PERSONLIGHEDSPSYKOLOGI_MIRROR_SRC=/custom/source/path` to override source.
+- `PERSONLIGHEDSPSYKOLOGI_MIRROR_DST=/custom/destination/path` to override destination.
 
 Mirror failures currently print a warning and do not block `git push`.
 

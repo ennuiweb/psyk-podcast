@@ -155,6 +155,20 @@ if [[ "${BIONEURO_MIRROR_ON_PUSH:-1}" != "0" ]]; then
   fi
 fi
 
+if [[ "${PERSONLIGHEDSPSYKOLOGI_MIRROR_ON_PUSH:-1}" != "0" ]]; then
+  mirror_cmd=(python3 "${repo_root}/scripts/mirror_personlighedspsykologi_output_dirs.py")
+  if [[ -n "${PERSONLIGHEDSPSYKOLOGI_MIRROR_SRC:-}" ]]; then
+    mirror_cmd+=(--source "${PERSONLIGHEDSPSYKOLOGI_MIRROR_SRC}")
+  fi
+  if [[ -n "${PERSONLIGHEDSPSYKOLOGI_MIRROR_DST:-}" ]]; then
+    mirror_cmd+=(--dest "${PERSONLIGHEDSPSYKOLOGI_MIRROR_DST}")
+  fi
+  echo "pre-push: running personlighedspsykologi output directory mirror"
+  if ! "${mirror_cmd[@]}"; then
+    echo "pre-push: warning: personlighedspsykologi output directory mirror failed; continuing push" >&2
+  fi
+fi
+
 if [[ "${APPS_SCRIPT_PUSH_ON_PUSH:-1}" == "0" ]]; then
   exit 0
 fi

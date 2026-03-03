@@ -24,6 +24,7 @@ git worktree add ".ai/worktrees/$TASK" -b "worktree-$TASK" origin/main
 - `Scope: <explicit in-scope work only>`
 - `Constraint: Do not modify files outside this directory.`
 - Parallel agents must use unique `TASK` names and non-overlapping scope; integrate only via merge to `main`.
+- A dirty/changed local `main` is expected and must not block work: always ignore unrelated `main` changes and continue in the assigned worktree (do not reset/stash/clean `main` unless explicitly instructed).
 
 ### Done Gate (mandatory cleanup)
 

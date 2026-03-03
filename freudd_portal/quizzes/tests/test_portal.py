@@ -450,6 +450,8 @@ class QuizPortalTests(TestCase):
         self.assertContains(response, ".replace(/\\$([^$\\n]+)\\$/g, \"$1\")")
         self.assertContains(response, "function shuffledOptionOrderIndices(questionIndex, question, options)")
         self.assertContains(response, "state.userAnswers[String(state.currentQuestionIndex)] = rawOptionIndex;")
+        self.assertContains(response, "button.disabled = isTimedOut || hasAnswered;")
+        self.assertContains(response, "if (isTimedOut || hasAnswered) {")
         self.assertContains(response, "text-transform: none;")
         self.assertContains(response, f"{reverse('login')}?{urlencode({'next': quiz_url})}")
         self.assertContains(response, f"{reverse('signup')}?{urlencode({'next': quiz_url})}")
@@ -664,6 +666,35 @@ class QuizPortalTests(TestCase):
         response = self.client.get(state_url)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json()["currentView"], "summary")
+
+    def test_state_api_locks_answer_after_first_submission(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+        state_url = reverse("quiz-state", kwargs={"quiz_id": self.quiz_id})
+
+        first_payload = {
+            "userAnswers": {"0": 1},
+            "currentQuestionIndex": 0,
+            "hiddenQuestionIndices": [],
+            "currentView": "question",
+        }
+        response = self.client.post(state_url, data=json.dumps(first_payload), content_type="application/json")
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json()["status"], "in_progress")
+
+        mutated_payload = {
+            "userAnswers": {"0": 0, "1": 1},
+            "currentQuestionIndex": 1,
+            "hiddenQuestionIndices": [],
+            "currentView": "summary",
+        }
+        response = self.client.post(state_url, data=json.dumps(mutated_payload), content_type="application/json")
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json()["status"], "completed")
+
+        progress = QuizProgress.objects.get(user=user, quiz_id=self.quiz_id)
+        self.assertEqual(progress.state_json["userAnswers"]["0"], 1)
+        self.assertEqual(progress.leaderboard_best_correct_answers, 1)
 
     def test_state_api_allows_timed_out_questions_to_complete_quiz(self) -> None:
         user = self._create_user()

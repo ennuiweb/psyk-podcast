@@ -267,6 +267,56 @@ def normalize_state_payload(raw_payload: Any) -> dict[str, Any]:
     }
 
 
+def _coerce_answered_index_map(raw_user_answers: Any) -> dict[str, int]:
+    if not isinstance(raw_user_answers, dict):
+        return {}
+    answered: dict[str, int] = {}
+    for key, value in raw_user_answers.items():
+        if isinstance(value, bool) or not isinstance(value, int):
+            continue
+        answered[str(key)] = value
+    return answered
+
+
+def _coerce_timed_out_index_set(raw_timed_out: Any) -> set[int]:
+    if not isinstance(raw_timed_out, list):
+        return set()
+    return {
+        int(index)
+        for index in raw_timed_out
+        if isinstance(index, int) and not isinstance(index, bool) and index >= 0
+    }
+
+
+def lock_answered_questions_in_state(
+    *,
+    previous_state_payload: dict[str, Any] | None,
+    state_payload: dict[str, Any],
+) -> dict[str, Any]:
+    if not isinstance(previous_state_payload, dict):
+        return state_payload
+
+    previous_answers = _coerce_answered_index_map(previous_state_payload.get("userAnswers"))
+    previous_timed_out = _coerce_timed_out_index_set(previous_state_payload.get("timedOutQuestionIndices"))
+    if not previous_answers and not previous_timed_out:
+        return state_payload
+
+    merged = dict(state_payload)
+    incoming_answers = dict(state_payload.get("userAnswers") or {})
+    incoming_timed_out = _coerce_timed_out_index_set(state_payload.get("timedOutQuestionIndices"))
+
+    for key, selected in previous_answers.items():
+        incoming_answers[key] = selected
+
+    for index in previous_timed_out:
+        incoming_timed_out.add(index)
+        incoming_answers[str(index)] = None
+
+    merged["userAnswers"] = incoming_answers
+    merged["timedOutQuestionIndices"] = sorted(incoming_timed_out)
+    return merged
+
+
 def compute_progress(state_payload: dict[str, Any], question_count: int) -> ProgressComputation:
     user_answers = state_payload.get("userAnswers", {})
     answered_keys = {str(key) for key, value in user_answers.items() if value is not None}

@@ -1235,7 +1235,7 @@
         optionText.className = "quiz-option-text";
         optionText.textContent = normalizeQuestionCopy(option?.text);
         button.append(optionLabel, optionText);
-        button.disabled = isTimedOut;
+        button.disabled = isTimedOut || hasAnswered;
         if (selectedOption === rawOptionIndex) {
           button.classList.add("is-selected");
           if (option?.isCorrect === true) {
@@ -1247,7 +1247,7 @@
           button.classList.add("is-correct");
         }
         button.addEventListener("click", function () {
-          if (isTimedOut) {
+          if (isTimedOut || hasAnswered) {
             return;
           }
           setQuestionResponseDuration(state.currentQuestionIndex, elapsedMsFromQuestionDeadline(state.currentQuestionIndex));

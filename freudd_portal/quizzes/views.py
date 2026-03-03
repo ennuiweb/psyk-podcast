@@ -60,6 +60,7 @@ from .services import (
     current_leaderboard_semester_key,
     load_quiz_content,
     load_quiz_label_mapping,
+    lock_answered_questions_in_state,
     maybe_reset_retry_streak,
     normalize_state_payload,
     question_time_limit_seconds,
@@ -1270,8 +1271,14 @@ def quiz_state_view(request: HttpRequest, quiz_id: str) -> HttpResponse:
                 status=429,
             )
         progress.attempt_started_at = now
-    elif progress.attempt_started_at is None:
-        progress.attempt_started_at = now
+    else:
+        state_payload = lock_answered_questions_in_state(
+            previous_state_payload=progress.state_json if isinstance(progress.state_json, dict) else None,
+            state_payload=state_payload,
+        )
+        computation = compute_progress(state_payload, question_count)
+        if progress.attempt_started_at is None:
+            progress.attempt_started_at = now
 
     upsert_progress_from_state(progress=progress, state_payload=state_payload, computation=computation)
 

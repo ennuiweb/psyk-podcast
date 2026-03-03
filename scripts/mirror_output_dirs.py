@@ -1,12 +1,15 @@
 #!/usr/bin/env python3
-"""Mirror NotebookLM output subdirectories into subject-specific Drive mounts."""
+"""Mirror NotebookLM output files into subject-specific Drive mounts."""
 
 from __future__ import annotations
 
 import argparse
+import hashlib
+import shutil
 import sys
+from dataclasses import dataclass
 from pathlib import Path
-from typing import Dict, List
+from typing import Dict, Iterable, List, TextIO
 
 
 SUBJECT_DEFAULTS: Dict[str, Dict[str, str]] = {
@@ -26,18 +29,48 @@ SUBJECT_DEFAULTS: Dict[str, Dict[str, str]] = {
     },
 }
 
+REQUEST_JSON_TOKEN = ".request"
+REQUEST_JSON_SUFFIX = ".json"
+
+
+@dataclass
+class SyncSummary:
+    subject: str
+    source_files: int = 0
+    dest_files_seen: int = 0
+    ignored_source: int = 0
+    ignored_dest: int = 0
+    copied: int = 0
+    updated: int = 0
+    unchanged: int = 0
+    deleted: int = 0
+    dirs_created: int = 0
+    dirs_removed: int = 0
+    root_created: bool = False
+    collisions: int = 0
+
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "--subject",
         required=True,
-        choices=sorted(SUBJECT_DEFAULTS.keys()),
-        help="Subject whose output directories should be mirrored.",
+        choices=sorted([*SUBJECT_DEFAULTS.keys(), "all"]),
+        help="Subject to mirror, or 'all' for all configured subjects.",
     )
     parser.add_argument("--source", default="", help="Optional source root override.")
     parser.add_argument("--dest", default="", help="Optional destination root override.")
-    parser.add_argument("--dry-run", action="store_true", help="Show actions without creating directories.")
+    parser.add_argument("--dry-run", action="store_true", help="Show actions without writing changes.")
+    parser.add_argument(
+        "--delete",
+        action="store_true",
+        help="Delete destination files that are missing in source (ignored files are never deleted).",
+    )
+    parser.add_argument(
+        "--checksum",
+        action="store_true",
+        help="Use sha256 checksum comparison instead of size+mtime for change detection.",
+    )
     return parser.parse_args()
 
 
@@ -48,25 +81,104 @@ def resolve_path(raw: str, repo_root: Path) -> Path:
     return (repo_root / candidate).resolve()
 
 
-def list_relative_dirs(root: Path) -> List[Path]:
-    directories: List[Path] = []
+def is_request_json(rel_path: Path) -> bool:
+    lower = rel_path.name.lower()
+    return lower.endswith(REQUEST_JSON_SUFFIX) and REQUEST_JSON_TOKEN in lower
+
+
+def list_files(root: Path) -> tuple[Dict[Path, Path], int]:
+    files: Dict[Path, Path] = {}
+    ignored = 0
     for path in root.rglob("*"):
-        if path.is_dir():
-            directories.append(path.relative_to(root))
-    directories.sort(key=lambda value: value.as_posix())
-    return directories
+        if not path.is_file():
+            continue
+        rel = path.relative_to(root)
+        if is_request_json(rel):
+            ignored += 1
+            continue
+        files[rel] = path
+    return files, ignored
 
 
-def main() -> int:
-    args = parse_args()
-    defaults = SUBJECT_DEFAULTS[args.subject]
-    source_raw = args.source or defaults["source"]
-    dest_raw = args.dest or defaults["dest"]
+def sha256_file(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
 
-    repo_root = Path(__file__).resolve().parents[1]
-    source_root = resolve_path(source_raw, repo_root)
-    dest_root = resolve_path(dest_raw, repo_root)
 
+def files_identical(src: Path, dest: Path, use_checksum: bool) -> bool:
+    src_stat = src.stat()
+    dest_stat = dest.stat()
+    if src_stat.st_size != dest_stat.st_size:
+        return False
+    if not use_checksum and src_stat.st_mtime_ns == dest_stat.st_mtime_ns:
+        return True
+    if use_checksum:
+        return sha256_file(src) == sha256_file(dest)
+    return False
+
+
+def maybe_copy(src: Path, dest: Path, dry_run: bool) -> None:
+    if dry_run:
+        return
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(src, dest)
+
+
+def maybe_unlink(path: Path, dry_run: bool) -> None:
+    if dry_run:
+        return
+    path.unlink()
+
+
+def remove_empty_parents(path: Path, stop_at: Path, dry_run: bool) -> int:
+    removed = 0
+    current = path
+    while current != stop_at and current.exists():
+        try:
+            if any(current.iterdir()):
+                break
+        except OSError:
+            break
+        if dry_run:
+            removed += 1
+            current = current.parent
+            continue
+        try:
+            current.rmdir()
+        except OSError:
+            break
+        removed += 1
+        current = current.parent
+    return removed
+
+
+def detect_collisions(source_files: Iterable[Path], dest_root: Path) -> List[Path]:
+    collisions: List[Path] = []
+    for rel in source_files:
+        dest_path = dest_root / rel
+        if dest_path.is_dir():
+            collisions.append(dest_path)
+        for parent in rel.parents:
+            if parent == Path("."):
+                continue
+            parent_path = dest_root / parent
+            if parent_path.is_file():
+                collisions.append(parent_path)
+    return collisions
+
+
+def run_subject(
+    *,
+    subject: str,
+    source_root: Path,
+    dest_root: Path,
+    dry_run: bool,
+    delete: bool,
+    checksum: bool,
+) -> int:
     if not source_root.exists():
         print(f"Error: source path not found: {source_root}", file=sys.stderr)
         return 1
@@ -77,59 +189,154 @@ def main() -> int:
         print(f"Error: destination path is not a directory: {dest_root}", file=sys.stderr)
         return 1
 
-    print(f"Subject: {args.subject}")
+    source_files, ignored_source = list_files(source_root)
+    if dest_root.exists():
+        dest_files, ignored_dest = list_files(dest_root)
+    else:
+        dest_files, ignored_dest = {}, 0
+
+    summary = SyncSummary(
+        subject=subject,
+        source_files=len(source_files),
+        dest_files_seen=len(dest_files),
+        ignored_source=ignored_source,
+        ignored_dest=ignored_dest,
+    )
+
+    print(f"\nSubject: {subject}")
     print(f"Source: {source_root}")
     print(f"Destination: {dest_root}")
-    if args.dry_run:
+    print(f"Ignore rule: *{REQUEST_JSON_TOKEN}*{REQUEST_JSON_SUFFIX}")
+    if dry_run:
         print("Mode: dry-run")
+    if delete:
+        print("Delete mode: enabled")
+    if checksum:
+        print("Comparison mode: checksum")
+    else:
+        print("Comparison mode: size+mtime")
 
-    relative_dirs = list_relative_dirs(source_root)
-
-    root_created = False
     if not dest_root.exists():
-        root_created = True
+        summary.root_created = True
+        summary.dirs_created += 1
         print(f"MKDIR   {dest_root}")
-        if not args.dry_run:
+        if not dry_run:
             dest_root.mkdir(parents=True, exist_ok=True)
 
-    created = 0
-    existing = 0
-    collisions: List[Path] = []
+    planned_dirs: set[Path] = set()
+    if not dest_root.exists():
+        planned_dirs.add(dest_root)
 
-    for rel in relative_dirs:
-        dest_dir = dest_root / rel
-        if dest_dir.exists():
-            if dest_dir.is_dir():
-                existing += 1
-                continue
-            collisions.append(dest_dir)
-            continue
-
-        created += 1
-        print(f"MKDIR   {dest_dir}")
-        if not args.dry_run:
-            dest_dir.mkdir(parents=True, exist_ok=True)
-
+    collisions = detect_collisions(source_files.keys(), dest_root)
     if collisions:
+        unique = sorted(set(collisions))
+        summary.collisions = len(unique)
         print("\nCollision(s) detected; refusing to continue:", file=sys.stderr)
-        for path in collisions:
+        for path in unique:
             print(f"  - {path}", file=sys.stderr)
-        print(
-            "\nSummary: "
-            f"subject={args.subject} source_dirs={len(relative_dirs)} "
-            f"root_created={int(root_created)} created={created} "
-            f"existing={existing} collisions={len(collisions)}",
-            file=sys.stderr,
-        )
+        print_subject_summary(summary, stream=sys.stderr)
         return 2
 
+    for rel in sorted(source_files.keys(), key=lambda value: value.as_posix()):
+        src = source_files[rel]
+        dest = dest_root / rel
+        if dest.exists():
+            if dest.is_dir():
+                summary.collisions += 1
+                print(f"COLLIDE {dest} (destination is a directory)", file=sys.stderr)
+                continue
+            if files_identical(src, dest, checksum):
+                summary.unchanged += 1
+                continue
+            summary.updated += 1
+            print(f"UPDATE  {src} -> {dest}")
+            maybe_copy(src, dest, dry_run)
+            continue
+
+        if not dest.parent.exists() and dest.parent not in planned_dirs:
+            summary.dirs_created += 1
+            print(f"MKDIR   {dest.parent}")
+            if not dry_run:
+                dest.parent.mkdir(parents=True, exist_ok=True)
+            planned_dirs.add(dest.parent)
+        summary.copied += 1
+        print(f"COPY    {src} -> {dest}")
+        maybe_copy(src, dest, dry_run)
+
+    if delete:
+        stale_rel_paths = sorted(set(dest_files.keys()) - set(source_files.keys()), key=lambda value: value.as_posix())
+        for rel in stale_rel_paths:
+            stale = dest_root / rel
+            summary.deleted += 1
+            print(f"DELETE  {stale}")
+            maybe_unlink(stale, dry_run)
+            summary.dirs_removed += remove_empty_parents(stale.parent, dest_root, dry_run)
+
+    if summary.collisions:
+        print_subject_summary(summary, stream=sys.stderr)
+        return 2
+
+    print_subject_summary(summary)
+    return 0
+
+
+def print_subject_summary(summary: SyncSummary, stream: TextIO = sys.stdout) -> None:
     print(
         "\nSummary: "
-        f"subject={args.subject} source_dirs={len(relative_dirs)} "
-        f"root_created={int(root_created)} created={created} "
-        f"existing={existing} collisions=0"
+        f"subject={summary.subject} source_files={summary.source_files} "
+        f"dest_files_seen={summary.dest_files_seen} copied={summary.copied} "
+        f"updated={summary.updated} unchanged={summary.unchanged} "
+        f"deleted={summary.deleted} dirs_created={summary.dirs_created} "
+        f"dirs_removed={summary.dirs_removed} "
+        f"root_created={int(summary.root_created)} ignored_source={summary.ignored_source} "
+        f"ignored_dest={summary.ignored_dest} collisions={summary.collisions}",
+        file=stream,
     )
-    return 0
+
+
+def run_all_subjects(args: argparse.Namespace, repo_root: Path) -> int:
+    exit_code = 0
+    for subject in sorted(SUBJECT_DEFAULTS.keys()):
+        defaults = SUBJECT_DEFAULTS[subject]
+        source_root = resolve_path(defaults["source"], repo_root)
+        dest_root = resolve_path(defaults["dest"], repo_root)
+        subject_exit = run_subject(
+            subject=subject,
+            source_root=source_root,
+            dest_root=dest_root,
+            dry_run=args.dry_run,
+            delete=args.delete,
+            checksum=args.checksum,
+        )
+        if subject_exit != 0:
+            exit_code = subject_exit
+    return exit_code
+
+
+def main() -> int:
+    args = parse_args()
+    repo_root = Path(__file__).resolve().parents[1]
+
+    if args.subject == "all":
+        if args.source or args.dest:
+            print("Error: --source/--dest cannot be used with --subject all.", file=sys.stderr)
+            return 1
+        return run_all_subjects(args, repo_root)
+
+    defaults = SUBJECT_DEFAULTS[args.subject]
+    source_raw = args.source or defaults["source"]
+    dest_raw = args.dest or defaults["dest"]
+    source_root = resolve_path(source_raw, repo_root)
+    dest_root = resolve_path(dest_raw, repo_root)
+
+    return run_subject(
+        subject=args.subject,
+        source_root=source_root,
+        dest_root=dest_root,
+        dry_run=args.dry_run,
+        delete=args.delete,
+        checksum=args.checksum,
+    )
 
 
 if __name__ == "__main__":

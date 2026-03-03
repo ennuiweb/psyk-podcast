@@ -394,6 +394,8 @@ python3 scripts/mirror_output_dirs.py --subject bioneuro --dry-run
 python3 scripts/mirror_output_dirs.py --subject bioneuro
 python3 scripts/mirror_output_dirs.py --subject personlighedspsykologi --dry-run
 python3 scripts/mirror_output_dirs.py --subject personlighedspsykologi
+# optional one-shot for both:
+python3 scripts/mirror_output_dirs.py --subject all
 ```
 
 Default source (`bioneuro`):
@@ -409,9 +411,11 @@ Default destination (`personlighedspsykologi`):
 - `/Users/oskar/Library/CloudStorage/GoogleDrive-psykku2025@gmail.com/My Drive/Personlighedspsykologi-en`
 
 Behavior:
-- mirrors all nested subdirectories from source into destination;
-- creates missing directories only (no file copy and no destination deletions);
-- fails the mirror step on path collisions (destination path exists but is a file).
+- recursively mirrors files + directories from source into destination;
+- ignores all request JSON logs matching `*.request*.json`;
+- add/update sync by default (no destination deletions unless `--delete` is passed);
+- can run by fast `size+mtime` comparison (default) or `--checksum`;
+- fails the mirror step on path collisions (destination file/dir conflict).
 
 Pre-push environment controls (`bioneuro`):
 - `BIONEURO_MIRROR_ON_PUSH=0` to disable mirror on push.

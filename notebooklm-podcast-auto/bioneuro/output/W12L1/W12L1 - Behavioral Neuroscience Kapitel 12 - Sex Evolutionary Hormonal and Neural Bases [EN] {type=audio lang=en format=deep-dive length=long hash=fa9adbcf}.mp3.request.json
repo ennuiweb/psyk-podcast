@@ -1,0 +1,34 @@
+{
+  "created_at": "2026-03-03T15:06:28.225355+00:00",
+  "notebook_id": "2b9f98e2-bc12-4dbb-96cc-e83d91685b67",
+  "notebook_title": "Personlighedspsykologi W12L1 Behavioral Neuroscience Kapitel 12 - Sex Evolutionary Hormonal and Neural Bases [EN] [djspindoctor]",
+  "artifact_id": "bfa19443-0972-49cc-a0e8-b4754e6b8846",
+  "output_path": "/Users/oskar/repo/podcasts/notebooklm-podcast-auto/bioneuro/output/W12L1/W12L1 - Behavioral Neuroscience Kapitel 12 - Sex Evolutionary Hormonal and Neural Bases [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
+  "artifact_type": "audio",
+  "instructions": "",
+  "language": "en",
+  "sources": [
+    {
+      "kind": "file",
+      "value": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter \ud83d\udcbe/psykologi/Bioneuro/Readings/W12L1 Koen hormoner og neurale baser (2026-05-01)/W12L1 Behavioral Neuroscience Kapitel 12 - Sex Evolutionary Hormonal and Neural Bases.pdf"
+    }
+  ],
+  "sources_file": null,
+  "auth": {
+    "profile": "djspindoctor",
+    "profiles_file": "/Users/oskar/repo/podcasts/notebooklm-podcast-auto/profiles.json",
+    "storage_path": "/Users/oskar/repo/podcasts/notebooklm-podcast-auto/profiles/djspindoctor_storage_state.json",
+    "source": "profile-rotation"
+  },
+  "audio_format": "deep-dive",
+  "audio_length": "long",
+  "rotation_attempts": [
+    {
+      "profile": "freudagsbaren",
+      "storage_path": "/Users/oskar/.notebooklm/storage_state.json",
+      "source": "auto-profile",
+      "error": "API rate limit or quota exceeded. Please wait before retrying.",
+      "error_type": "rate_limit"
+    }
+  ]
+}

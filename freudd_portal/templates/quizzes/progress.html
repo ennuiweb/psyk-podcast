@@ -924,11 +924,9 @@
             <div class="quiz-history-line">
               <span
                 class="difficulty-pill {% if row.difficulty_label == 'Let' %}is-easy{% elif row.difficulty_label == 'Svær' %}is-hard{% endif %}">
-                {{ row.difficulty_label }}{% if row.question_count > 0 %} · {{ row.question_count }} spørgsmål{% endif
-                %}
+                {{ row.difficulty_label }}{% if row.question_count > 0 %} · {{ row.question_count }} spørgsmål{% endif %}
               </span>
-              <time class="updated-at" datetime="{{ row.updated_at|date:'c' }}">{{ row.updated_at|date:'d.m.Y H:i'
-                }}</time>
+              <time class="updated-at" datetime="{{ row.updated_at|date:'c' }}">{{ row.updated_at|date:'d.m.Y H:i' }}</time>
             </div>
             <div class="answers-cell">
               <p class="quiz-score-label">Rigtige svar</p>

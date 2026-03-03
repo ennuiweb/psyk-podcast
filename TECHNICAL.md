@@ -302,6 +302,8 @@ Google OAuth callback allowlist (Google Cloud OAuth client):
 ### Deployment notes (current)
 - Runtime names are now `freudd-portal.service` and `/etc/freudd-portal.env`.
 - Upgrades from pre-rename deployments must move the SQLite file to `/opt/podcasts/freudd_portal/db.sqlite3` and ensure `www-data` can write in `/opt/podcasts/freudd_portal`.
+- GitHub Actions workflow `.github/workflows/deploy-freudd-portal.yml` auto-deploys to the droplet on pushes to `main` that affect portal/runtime files (`freudd_portal/**`, `requirements.txt`, and key `personlighedspsykologi-en` manifest/map assets), plus manual dispatch.
+- GitHub Actions workflow `.github/workflows/monitor-production-drift.yml` runs hourly (`23 * * * *`) to compare deployed `/opt/podcasts` commit with `main` and auto-remediate drift by running the same deploy routine.
 
 ### freudd.dk domain cutover (2026-02-26)
 - Server is prepared for domain traffic in Caddy: `freudd.dk, www.freudd.dk` now route with the same path split as IP (`/accounts/*`, `/api/*`, `/progress*`, `/subjects/*`, `/preferences/*`, `/q/*` to `127.0.0.1:8001`, fallback to `127.0.0.1:3000`).

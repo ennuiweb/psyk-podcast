@@ -1,0 +1,83 @@
+name: Deploy Freudd Portal
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'freudd_portal/**'
+      - 'requirements.txt'
+      - 'shows/personlighedspsykologi-en/content_manifest.json'
+      - 'shows/personlighedspsykologi-en/quiz_links.json'
+      - 'shows/personlighedspsykologi-en/spotify_map.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-freudd-portal
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      DROPLET_HOST: 64.226.79.109
+      DROPLET_USER: root
+      DROPLET_SSH_KEY: ${{ secrets.DIGITALOCEAN_SSH_KEY }}
+    steps:
+      - name: Check required secrets
+        run: |
+          if [[ -z "${DROPLET_SSH_KEY}" ]]; then
+            echo "::error::DIGITALOCEAN_SSH_KEY is required for deployment."
+            exit 1
+          fi
+
+      - name: Set up SSH
+        id: setup_ssh
+        run: |
+          set -euo pipefail
+          key_path="${RUNNER_TEMP}/droplet_key"
+          printf '%s\n' "${DROPLET_SSH_KEY}" > "${key_path}"
+          chmod 600 "${key_path}"
+          mkdir -p ~/.ssh
+          ssh-keyscan -H "${DROPLET_HOST}" >> ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/known_hosts
+          echo "key_path=${key_path}" >> "$GITHUB_OUTPUT"
+
+      - name: Deploy latest main
+        run: |
+          set -euo pipefail
+          ssh -i "${{ steps.setup_ssh.outputs.key_path }}" "${DROPLET_USER}@${DROPLET_HOST}" \
+            'set -euo pipefail;
+             cd /opt/podcasts;
+             git fetch origin main;
+             git checkout main;
+             git pull --ff-only origin main;
+             /opt/podcasts/.venv/bin/pip install -r /opt/podcasts/requirements.txt;
+             sudo -u www-data /opt/podcasts/.venv/bin/python /opt/podcasts/freudd_portal/manage.py migrate;
+             systemctl restart freudd-portal;
+             systemctl is-active freudd-portal;
+             systemctl status freudd-portal --no-pager -n 25'
+
+      - name: Post-deploy smoke check
+        run: |
+          set -euo pipefail
+          ssh -i "${{ steps.setup_ssh.outputs.key_path }}" "${DROPLET_USER}@${DROPLET_HOST}" '
+            set -euo pipefail
+            gunicorn_login=$(curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:8001/accounts/login)
+            gunicorn_progress=$(curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:8001/progress)
+            public_login=$(curl -s -o /dev/null -w "%{http_code}" http://64.226.79.109/accounts/login)
+            public_progress=$(curl -s -o /dev/null -w "%{http_code}" http://64.226.79.109/progress)
+
+            echo "gunicorn_login=${gunicorn_login}"
+            echo "gunicorn_progress=${gunicorn_progress}"
+            echo "public_login=${public_login}"
+            echo "public_progress=${public_progress}"
+
+            [[ "${gunicorn_login}" == "200" ]] || { echo "Unexpected gunicorn_login"; exit 1; }
+            [[ "${public_login}" == "200" ]] || { echo "Unexpected public_login"; exit 1; }
+            [[ "${gunicorn_progress}" =~ ^30[12]$ ]] || { echo "Unexpected gunicorn_progress"; exit 1; }
+            [[ "${public_progress}" =~ ^30[12]$ ]] || { echo "Unexpected public_progress"; exit 1; }
+          '

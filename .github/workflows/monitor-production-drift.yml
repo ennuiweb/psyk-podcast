@@ -1,0 +1,110 @@
+name: Monitor Production Drift
+
+on:
+  schedule:
+    - cron: '23 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: monitor-production-drift
+  cancel-in-progress: false
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    env:
+      DROPLET_HOST: 64.226.79.109
+      DROPLET_USER: root
+      DROPLET_SSH_KEY: ${{ secrets.DIGITALOCEAN_SSH_KEY }}
+    steps:
+      - name: Check required secrets
+        run: |
+          if [[ -z "${DROPLET_SSH_KEY}" ]]; then
+            echo "::error::DIGITALOCEAN_SSH_KEY is required for drift monitoring."
+            exit 1
+          fi
+
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up SSH
+        id: setup_ssh
+        run: |
+          set -euo pipefail
+          key_path="${RUNNER_TEMP}/droplet_key"
+          printf '%s\n' "${DROPLET_SSH_KEY}" > "${key_path}"
+          chmod 600 "${key_path}"
+          mkdir -p ~/.ssh
+          ssh-keyscan -H "${DROPLET_HOST}" >> ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/known_hosts
+          echo "key_path=${key_path}" >> "$GITHUB_OUTPUT"
+
+      - name: Compare deployed commit with main
+        id: compare
+        run: |
+          set -euo pipefail
+          target_commit="$(git rev-parse HEAD)"
+          deployed_commit="$(ssh -i "${{ steps.setup_ssh.outputs.key_path }}" "${DROPLET_USER}@${DROPLET_HOST}" 'set -euo pipefail; cd /opt/podcasts; git rev-parse HEAD')"
+
+          echo "target_commit=${target_commit}" >> "$GITHUB_OUTPUT"
+          echo "deployed_commit=${deployed_commit}" >> "$GITHUB_OUTPUT"
+          if [[ "${target_commit}" == "${deployed_commit}" ]]; then
+            echo "drift=false" >> "$GITHUB_OUTPUT"
+            echo "Production is up to date (${deployed_commit})."
+          else
+            echo "drift=true" >> "$GITHUB_OUTPUT"
+            echo "::warning::Production drift detected. deployed=${deployed_commit} target=${target_commit}"
+          fi
+
+      - name: Self-heal deploy when drift is detected
+        if: steps.compare.outputs.drift == 'true'
+        run: |
+          set -euo pipefail
+          ssh -i "${{ steps.setup_ssh.outputs.key_path }}" "${DROPLET_USER}@${DROPLET_HOST}" \
+            'set -euo pipefail;
+             cd /opt/podcasts;
+             git fetch origin main;
+             git checkout main;
+             git pull --ff-only origin main;
+             /opt/podcasts/.venv/bin/pip install -r /opt/podcasts/requirements.txt;
+             sudo -u www-data /opt/podcasts/.venv/bin/python /opt/podcasts/freudd_portal/manage.py migrate;
+             systemctl restart freudd-portal;
+             systemctl is-active freudd-portal'
+
+      - name: Verify deployed commit
+        run: |
+          set -euo pipefail
+          deployed_commit="$(ssh -i "${{ steps.setup_ssh.outputs.key_path }}" "${DROPLET_USER}@${DROPLET_HOST}" 'set -euo pipefail; cd /opt/podcasts; git rev-parse HEAD')"
+          target_commit="${{ steps.compare.outputs.target_commit }}"
+          echo "deployed_commit=${deployed_commit}"
+          echo "target_commit=${target_commit}"
+          [[ "${deployed_commit}" == "${target_commit}" ]] || {
+            echo "::error::Deployment drift remains after remediation."
+            exit 1
+          }
+
+      - name: Smoke check portal endpoints
+        run: |
+          set -euo pipefail
+          ssh -i "${{ steps.setup_ssh.outputs.key_path }}" "${DROPLET_USER}@${DROPLET_HOST}" '
+            set -euo pipefail
+            gunicorn_login=$(curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:8001/accounts/login)
+            gunicorn_progress=$(curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:8001/progress)
+            public_login=$(curl -s -o /dev/null -w "%{http_code}" http://64.226.79.109/accounts/login)
+            public_progress=$(curl -s -o /dev/null -w "%{http_code}" http://64.226.79.109/progress)
+
+            echo "gunicorn_login=${gunicorn_login}"
+            echo "gunicorn_progress=${gunicorn_progress}"
+            echo "public_login=${public_login}"
+            echo "public_progress=${public_progress}"
+
+            [[ "${gunicorn_login}" == "200" ]] || { echo "Unexpected gunicorn_login"; exit 1; }
+            [[ "${public_login}" == "200" ]] || { echo "Unexpected public_login"; exit 1; }
+            [[ "${gunicorn_progress}" =~ ^30[12]$ ]] || { echo "Unexpected gunicorn_progress"; exit 1; }
+            [[ "${public_progress}" =~ ^30[12]$ ]] || { echo "Unexpected public_progress"; exit 1; }
+          '

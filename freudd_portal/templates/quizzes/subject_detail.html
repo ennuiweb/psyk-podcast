@@ -1738,9 +1738,9 @@
                     {% endif %}
 
                     <div class="reading-difficulties">
-                      {% if reading.total_quizzes > 0 %}
+                      {% if reading.visible_difficulty_summary %}
                       <ol class="quiz-difficulty-list">
-                        {% for slot in reading.difficulty_summary %}
+                        {% for slot in reading.visible_difficulty_summary %}
                         <li
                           class="quiz-difficulty-row is-{{ slot.difficulty }} is-{{ slot.state_key }} {% if slot.quiz_url %}has-action{% else %}is-disabled{% endif %}">
                           <div class="quiz-difficulty-header">

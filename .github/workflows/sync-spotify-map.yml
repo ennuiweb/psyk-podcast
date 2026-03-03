@@ -1,0 +1,135 @@
+name: Sync Spotify Map
+
+on:
+  schedule:
+    - cron: '17 */6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-spotify-map
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    env:
+      SHOW: personlighedspsykologi-en
+      SUBJECT_SLUG: personlighedspsykologi
+      SPOTIFY_SHOW_URL: https://open.spotify.com/show/0jAvkPCcZ1x98lIMno1oqv
+      SPOTIFY_MARKET: DK
+      SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
+      SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
+    steps:
+      - name: Check required secrets
+        run: |
+          if [[ -z "${SPOTIFY_CLIENT_ID}" || -z "${SPOTIFY_CLIENT_SECRET}" ]]; then
+            echo "::error::SPOTIFY_CLIENT_ID and SPOTIFY_CLIENT_SECRET are required for direct Spotify episode mapping."
+            exit 1
+          fi
+
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Sync Spotify map
+        run: |
+          python scripts/sync_spotify_map.py \
+            --rss "shows/${SHOW}/feeds/rss.xml" \
+            --spotify-map "shows/${SHOW}/spotify_map.json" \
+            --subject-slug "${SUBJECT_SLUG}" \
+            --spotify-show-url "${SPOTIFY_SHOW_URL}" \
+            --spotify-market "${SPOTIFY_MARKET}" \
+            --allow-unresolved
+
+      - name: Rebuild subject content manifest
+        run: python freudd_portal/manage.py rebuild_content_manifest --subject "${SUBJECT_SLUG}"
+
+      - name: Commit and push updates
+        run: |
+          set -euo pipefail
+          spotify_map_path="shows/${SHOW}/spotify_map.json"
+          manifest_path="shows/${SHOW}/content_manifest.json"
+          safe_rebase_paths=("$spotify_map_path" "$manifest_path")
+
+          resolve_rebase_conflicts() {
+            mapfile -t conflicted_files < <(git diff --name-only --diff-filter=U)
+            if [[ ${#conflicted_files[@]} -eq 0 ]]; then
+              echo "::error::Rebase failed without conflicted files."
+              git rebase --abort || true
+              return 1
+            fi
+
+            for conflicted in "${conflicted_files[@]}"; do
+              keep_ours=0
+              for safe_path in "${safe_rebase_paths[@]}"; do
+                if [[ "${conflicted}" == "${safe_path}" ]]; then
+                  keep_ours=1
+                  break
+                fi
+              done
+              if [[ "${keep_ours}" == "1" ]]; then
+                git checkout --ours -- "${conflicted}"
+                git add "${conflicted}"
+              else
+                echo "::error::Unexpected rebase conflict in ${conflicted}"
+                git rebase --abort || true
+                return 1
+              fi
+            done
+
+            GIT_EDITOR=true git rebase --continue
+          }
+
+          files=()
+          if [[ -f "$spotify_map_path" && -n "$(git status --porcelain "$spotify_map_path")" ]]; then
+            files+=("$spotify_map_path")
+          fi
+          if [[ -f "$manifest_path" && -n "$(git status --porcelain "$manifest_path")" ]]; then
+            files+=("$manifest_path")
+          fi
+
+          if [[ ${#files[@]} -eq 0 ]]; then
+            echo "No Spotify map changes to commit."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "${files[@]}"
+          git commit -m "chore: auto-sync Spotify map for ${SHOW}"
+
+          branch="${GITHUB_REF#refs/heads/}"
+          max_attempts=3
+          attempt=1
+          while [[ "${attempt}" -le "${max_attempts}" ]]; do
+            if ! git pull --rebase origin "$branch"; then
+              echo "Rebase conflict on attempt ${attempt}; resolving generated-file conflicts."
+              resolve_rebase_conflicts
+            fi
+
+            if git push origin HEAD:"$branch"; then
+              echo "Push succeeded on attempt ${attempt}."
+              exit 0
+            fi
+
+            if [[ "${attempt}" -eq "${max_attempts}" ]]; then
+              echo "::error::Failed to push Spotify map update after ${max_attempts} attempts."
+              exit 1
+            fi
+
+            echo "Push rejected on attempt ${attempt}; retrying after refetch."
+            git fetch origin "$branch"
+            attempt=$((attempt + 1))
+          done

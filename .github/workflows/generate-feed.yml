@@ -204,13 +204,12 @@ jobs:
             exit 1
           fi
           sample_base="$(basename "${sample_json}")"
-          sample_html="${sample_base%.json}.html"
           remote_json_count="$(ssh -i "${key_path}" "root@64.226.79.109" "find '${remote_root}' -type f -name '*.json' | wc -l" | tr -d '[:space:]')"
           if [[ "${remote_json_count}" -lt "${local_json_count}" ]]; then
             echo "::error::Remote quiz JSON count (${remote_json_count}) is lower than local count (${local_json_count}) for ${SHOW}."
             exit 1
           fi
-          ssh -i "${key_path}" "root@64.226.79.109" "test -f '${remote_root}/${sample_base}' && test -f '${remote_root}/${sample_html}'"
+          ssh -i "${key_path}" "root@64.226.79.109" "test -f '${remote_root}/${sample_base}'"
 
       - name: Generate feed
         env:

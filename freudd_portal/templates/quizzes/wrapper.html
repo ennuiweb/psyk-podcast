@@ -105,13 +105,6 @@
     font-weight: 700;
   }
 
-  .quiz-answered {
-    margin: 0;
-    color: var(--muted);
-    font-size: 0.84rem;
-    font-variant-numeric: tabular-nums;
-  }
-
   .quiz-score-progress {
     margin: 0;
     color: var(--info-ink-strong);
@@ -389,7 +382,6 @@
     <div class="quiz-flow-head">
       <div class="quiz-flow-row">
         <p class="muted quiz-counter" id="quiz-counter"></p>
-        <p class="quiz-answered" id="quiz-answered"></p>
         <p class="quiz-score-progress" id="quiz-score-progress"></p>
         <p class="quiz-timer" id="quiz-timer"></p>
       </div>
@@ -481,7 +473,6 @@
   const summaryViewNode = document.getElementById("quiz-summary-view");
 
   const counterNode = document.getElementById("quiz-counter");
-  const answeredNode = document.getElementById("quiz-answered");
   const scoreProgressNode = document.getElementById("quiz-score-progress");
   const timerNode = document.getElementById("quiz-timer");
   const progressNode = document.getElementById("quiz-progress");
@@ -1278,13 +1269,11 @@
     const hasAnswered = selectedOption !== null && selectedOption !== undefined;
     const isTimedOut = isQuestionTimedOut(state.currentQuestionIndex);
     const totalQuestions = quiz.questions.length;
-    const answeredQuestions = answeredCount();
     const flowProgress = totalQuestions ? Math.round(((state.currentQuestionIndex + 1) / totalQuestions) * 100) : 0;
 
     ensureDeadlineForQuestion(state.currentQuestionIndex);
 
     counterNode.textContent = `Spørgsmål ${state.currentQuestionIndex + 1} af ${totalQuestions}`;
-    answeredNode.textContent = `Besvaret: ${answeredQuestions} / ${totalQuestions}`;
     renderScoreProgressLabel();
     progressNode.value = flowProgress;
     progressNode.textContent = `${flowProgress}%`;

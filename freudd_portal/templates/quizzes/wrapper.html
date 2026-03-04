@@ -1198,15 +1198,6 @@
     delete state.questionDeadlineEpochMs[key];
     state.showHintForCurrent = false;
 
-    if (state.currentQuestionIndex >= quiz.questions.length - 1) {
-      state.currentView = "summary";
-      if (!isAuthenticated) {
-        registerAnonymousCompletion();
-      }
-    } else {
-      state.currentQuestionIndex += 1;
-    }
-
     try {
       await saveState();
     } catch (error) {
@@ -1269,7 +1260,7 @@
       optionText.className = "quiz-option-text";
       optionText.textContent = normalizeQuestionCopy(option?.text);
       button.append(optionLabel, optionText);
-      button.disabled = isTimedOut || hasAnswered;
+      button.disabled = hasAnswered;
       if (selectedOption === rawOptionIndex) {
         button.classList.add("is-selected");
         if (option?.isCorrect === true) {
@@ -1281,14 +1272,11 @@
         button.classList.add("is-correct");
       }
       button.addEventListener("click", function () {
-        if (isTimedOut || hasAnswered) {
+        if (hasAnswered) {
           return;
         }
         setQuestionResponseDuration(state.currentQuestionIndex, elapsedMsFromQuestionDeadline(state.currentQuestionIndex));
         state.userAnswers[String(state.currentQuestionIndex)] = rawOptionIndex;
-        state.timedOutQuestionIndices = (state.timedOutQuestionIndices || []).filter(
-          (value) => value !== state.currentQuestionIndex
-        );
         delete state.questionDeadlineEpochMs[String(state.currentQuestionIndex)];
         state.showHintForCurrent = false;
         render();
@@ -1314,8 +1302,14 @@
       hintNode.classList.add("is-hidden");
     }
 
-    if (isTimedOut) {
-      rationaleNode.textContent = "Tiden udløb for dette spørgsmål, og svaret tæller som forkert.";
+    if (isTimedOut && hasAnswered) {
+      const selected = options[selectedOption];
+      const rationale = normalizeQuestionCopy(selected?.rationale);
+      const timeoutMessage = "Tiden udløb for dette spørgsmål, så svaret giver 0 point.";
+      rationaleNode.textContent = rationale ? `${timeoutMessage} ${rationale}` : timeoutMessage;
+      rationaleNode.classList.remove("is-hidden");
+    } else if (isTimedOut) {
+      rationaleNode.textContent = "Tiden udløb for dette spørgsmål. Du kan stadig vælge et svar, men det giver 0 point.";
       rationaleNode.classList.remove("is-hidden");
     } else if (hasAnswered) {
       const selected = options[selectedOption];

@@ -380,7 +380,9 @@ def lock_answered_questions_in_state(
 
     for index in previous_timed_out:
         incoming_timed_out.add(index)
-        incoming_answers[str(index)] = None
+        key = str(index)
+        if key not in incoming_answers:
+            incoming_answers[key] = None
 
     merged["userAnswers"] = incoming_answers
     merged["timedOutQuestionIndices"] = sorted(incoming_timed_out)

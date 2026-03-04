@@ -846,6 +846,40 @@ class QuizPortalTests(TestCase):
         self.assertEqual(progress.answers_count, 2)
         self.assertEqual(progress.status, QuizProgress.Status.COMPLETED)
 
+    def test_state_api_keeps_selected_answer_for_timed_out_question_but_awards_no_credit(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+        state_url = reverse("quiz-state", kwargs={"quiz_id": self.quiz_id})
+
+        timeout_payload = {
+            "userAnswers": {"0": None},
+            "currentQuestionIndex": 0,
+            "hiddenQuestionIndices": [],
+            "currentView": "question",
+            "timedOutQuestionIndices": [0],
+            "questionDeadlineEpochMs": {},
+        }
+        response = self.client.post(state_url, data=json.dumps(timeout_payload), content_type="application/json")
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json()["status"], "in_progress")
+
+        completed_payload = {
+            "userAnswers": {"0": 0, "1": 1},
+            "currentQuestionIndex": 1,
+            "hiddenQuestionIndices": [],
+            "currentView": "summary",
+            "timedOutQuestionIndices": [0],
+            "questionDeadlineEpochMs": {},
+        }
+        response = self.client.post(state_url, data=json.dumps(completed_payload), content_type="application/json")
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json()["status"], "completed")
+
+        progress = QuizProgress.objects.get(user=user, quiz_id=self.quiz_id)
+        self.assertEqual(progress.state_json["userAnswers"]["0"], 0)
+        self.assertEqual(progress.state_json["timedOutQuestionIndices"], [0])
+        self.assertEqual(progress.leaderboard_best_correct_answers, 1)
+
     def test_state_api_blocks_quiz_reset_while_cooldown_active(self) -> None:
         user = self._create_user()
         self.client.force_login(user)

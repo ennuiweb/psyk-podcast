@@ -73,7 +73,7 @@ def update_leaderboard_profile(*, user, alias: object, is_public: bool) -> UserL
     if alias_candidate:
         profile.public_alias = validate_public_alias(alias_candidate)
     elif not profile.public_alias and is_public:
-        raise ValidationError("Alias er påkrævet for at være offentlig i freudd quiz cup.")
+        raise ValidationError("Alias er påkrævet for at være offentlig i qiuizkonkurrencen.")
 
     profile.is_public = bool(is_public)
     profile.full_clean()

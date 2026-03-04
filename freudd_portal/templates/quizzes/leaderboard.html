@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}Freudd Quiz Cup · {{ subject.title }}{% endblock %}
+{% block title %}qiuizkonkurrencen · {{ subject.title }}{% endblock %}
 {% block content %}
 <style>
   .cup-shell {
@@ -349,11 +349,11 @@
 <div class="cup-shell">
   <section class="cup-top-grid">
     <div>
-      <h1 class="cup-title">Freudd Quiz Cup</h1>
+      <h1 class="cup-title">qiuizkonkurrencen</h1>
       <p class="cup-lede">Konkurrer mod dine medstuderende i psykologi. Vælg et fagområde for at se ranglisten og din
         placering.</p>
 
-      <nav class="cup-tabs" aria-label="Fagområder i quiz cup">
+      <nav class="cup-tabs" aria-label="Fagområder i qiuizkonkurrencen">
         {% for tab in subject_tabs %}
         <a class="cup-tab {% if tab.is_active %}is-active{% endif %}" href="{{ tab.url }}">
           <span class="cup-tab-icon" aria-hidden="true">{{ tab.icon }}</span>
@@ -365,11 +365,11 @@
       {% if request.user.is_authenticated %}
       <p class="cup-participation-note">
         {% if leaderboard_profile.public_alias and leaderboard_profile.is_public %}
-        Du deltager i Freudd Quiz Cup som <strong>{{ leaderboard_profile.public_alias }}</strong>.
+        Du deltager i qiuizkonkurrencen som <strong>{{ leaderboard_profile.public_alias }}</strong>.
         {% elif leaderboard_profile.public_alias %}
         Du har aliaset <strong>{{ leaderboard_profile.public_alias }}</strong>, men deltager ikke offentligt lige nu.
         {% else %}
-        Du deltager ikke i Freudd Quiz Cup endnu.
+        Du deltager ikke i qiuizkonkurrencen endnu.
         {% endif %}
       </p>
       {% endif %}
@@ -377,7 +377,7 @@
   </section>
 
   {% if podium_entries %}
-  <section class="cup-podium" aria-label="Top 3 i Freudd Quiz Cup">
+  <section class="cup-podium" aria-label="Top 3 i qiuizkonkurrencen">
     {% for entry in podium_entries %}
     <article class="card cup-podium-card rank-{{ entry.rank }}">
       <span class="cup-rank-badge" aria-label="Placering {{ entry.rank }}">{{ entry.rank }}</span>

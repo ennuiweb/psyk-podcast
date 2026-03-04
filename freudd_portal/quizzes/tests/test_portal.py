@@ -454,7 +454,7 @@ class QuizPortalTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Uge 1, forelæsning 1")
         self.assertContains(response, "Episode")
-        self.assertContains(response, "Gå til Quiz cup")
+        self.assertContains(response, "Gå til qiuizkonkurrencen")
         self.assertContains(response, f'href="{quiz_cup_url}"')
         self.assertNotContains(response, "Tag quizzen anonymt.")
         self.assertNotContains(response, "Log ind for ")
@@ -1073,7 +1073,7 @@ class QuizPortalTests(TestCase):
             response,
             "Se dine resultater, find svage temaer hurtigt, og hop direkte tilbage i en quiz.",
         )
-        self.assertContains(response, "Offentlig quiz cup")
+        self.assertContains(response, "Offentlig qiuizkonkurrencen")
 
     def test_load_quiz_label_mapping_reads_subject_slug(self) -> None:
         labels = load_quiz_label_mapping()
@@ -1215,7 +1215,7 @@ class QuizPortalTests(TestCase):
         response = self.client.get(reverse("progress"))
         self.assertEqual(response.status_code, 200)
         self.assertNotContains(response, "Personlig tracking")
-        self.assertContains(response, "Offentlig quiz cup")
+        self.assertContains(response, "Offentlig qiuizkonkurrencen")
         self.assertContains(response, reverse("leaderboard-profile"))
 
     def test_progress_named_route_uses_settings_slug(self) -> None:
@@ -1236,7 +1236,7 @@ class QuizPortalTests(TestCase):
         response = self.client.get(reverse("progress"))
         self.assertEqual(response.status_code, 200)
         self.assertNotContains(response, "Ingen offentlige deltagere endnu.")
-        self.assertNotContains(response, "Se fuld quiz cup")
+        self.assertNotContains(response, "Se fuld qiuizkonkurrencen")
 
     def test_progress_page_moves_enrollment_controls_to_bottom_module(self) -> None:
         user = self._create_user()
@@ -1250,7 +1250,7 @@ class QuizPortalTests(TestCase):
         body = response.content.decode("utf-8")
         mine_fag_start = body.find("<h2 class=\"section-title\">Mine fag</h2>")
         self.assertGreaterEqual(mine_fag_start, 0)
-        leaderboard_start = body.find("<h2 class=\"section-title\">Offentlig quiz cup</h2>")
+        leaderboard_start = body.find("<h2 class=\"section-title\">Offentlig qiuizkonkurrencen</h2>")
         self.assertGreaterEqual(leaderboard_start, 0)
         mine_fag_markup = body[mine_fag_start:leaderboard_start]
         self.assertNotIn(">Afmeld</button>", mine_fag_markup)
@@ -1288,7 +1288,7 @@ class QuizPortalTests(TestCase):
             reverse("leaderboard-subject", kwargs={"subject_slug": "personlighedspsykologi"})
         )
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "Freudd Quiz Cup")
+        self.assertContains(response, "qiuizkonkurrencen")
         self.assertNotContains(response, "Sæt dit alias op")
         self.assertNotContains(response, "Deltagere:")
         self.assertNotContains(response, "Semesteret slutter om")
@@ -1307,7 +1307,7 @@ class QuizPortalTests(TestCase):
         url = reverse("leaderboard-subject", kwargs={"subject_slug": "personlighedspsykologi"})
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
-        self.assertNotContains(response, "Du deltager i Freudd Quiz Cup som")
+        self.assertNotContains(response, "Du deltager i qiuizkonkurrencen som")
         self.assertNotContains(response, "Alias og deltagelse administreres fra fremskridtssiden.")
 
     def test_leaderboard_page_shows_participation_state_for_private_alias(self) -> None:
@@ -1326,7 +1326,7 @@ class QuizPortalTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "PrivateAlias")
         self.assertContains(response, "men deltager ikke offentligt lige nu.")
-        self.assertNotContains(response, "Du deltager i Freudd Quiz Cup som")
+        self.assertNotContains(response, "Du deltager i qiuizkonkurrencen som")
 
     def test_leaderboard_page_renders_tabs_for_all_active_subjects(self) -> None:
         self.subjects_file.write_text(
@@ -1875,7 +1875,7 @@ class QuizPortalTests(TestCase):
         self.assertContains(response, "Grundbog kapitel 01 - Introduktion til personlighedspsykologi")
         self.assertContains(response, "Uge 1, forelæsning 1: Introforelaesning")
         self.assertContains(response, "lecture-rail-copy-date")
-        self.assertContains(response, "quiz cup for personlighedspsykologi")
+        self.assertContains(response, "qiuizkonkurrencen for personlighedspsykologi")
         self.assertContains(
             response,
             f'class="ghost-link back-link subject-cup-link" href="{quiz_cup_url}"',

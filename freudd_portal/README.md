@@ -35,22 +35,22 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Subject detail includes inline Spotify playback via embedded episode player plus the external Spotify link for each visible podcast row.
 - Completion rule: `currentView == "summary"` and `answers_count == question_count`; timed-out questions count as answered/wrong.
 - Gamification core is quiz-driven and always available for authenticated users (`/settings`, `/api/gamification/me`).
-- `/settings` focuses on subject access, quiz history, and public qiuizkonkurrencen alias/visibility settings.
-- `/leaderboard/<subject_slug>` is the dedicated `qiuizkonkurrencen` page with subject tabs, podium cards, and Top 50 table.
-- Desktop topbar centers `qiuizkonkurrencen` in its own highlighted pill with a trophy icon; utility actions (`Indstillinger`, `Log ud`) stay right-aligned.
+- `/settings` focuses on subject access, quiz history, and public quizkonkurrencen alias/visibility settings.
+- `/leaderboard/<subject_slug>` is the dedicated `quizkonkurrencen` page with subject tabs, podium cards, and Top 50 table.
+- Desktop topbar centers `quizkonkurrencen` in its own highlighted pill with a trophy icon; utility actions (`Indstillinger`, `Log ud`) stay right-aligned.
 - Desktop topbar enrolled-subject chips are scaled down by 25% (`height/padding/font-size`) to keep visual balance with the `freudd` wordmark.
 - Quizhistorik on `/settings` is card-based and includes live search, difficulty/status filters, sort modes, and auto-updating summary metrics (`quiz count`, `rigtige svar`, `træfsikkerhed`, `perfekte quizzer`).
 - Quizhistorik visibility on `/settings` is feature-flagged by `FREUDD_PROGRESS_QUIZ_HISTORY_ENABLED` (default: `1`).
 - Quizhistorik chips are text-oriented (`Tekstquiz`, `Alle tekster`) and intentionally avoid audio/podcast tags like `Lyd`/`Deep dive`.
 - Personal tekster/podcast tracking data remains private and is handled on subject pages (`mark/unmark`), while quiz completion stays sourced from `QuizProgress`.
-- Public qiuizkonkurrencen is opt-in and alias-based; public view shows `alias + rank + score point + quiz count`.
-- qiuizkonkurrencen score per quiz is based on correctness plus speed bonus (`score = correct*100 + speed_bonus`), with correctness weighted highest.
+- Public quizkonkurrencen is opt-in and alias-based; public view shows `alias + rank + score point + quiz count`.
+- quizkonkurrencen score per quiz is based on correctness plus speed bonus (`score = correct*100 + speed_bonus`), with correctness weighted highest.
 - Speed bonus reaches max when average correct-answer pace is `<= 10s` per question (capped by configured per-question timeout if lower).
-- qiuizkonkurrencen tie-break is `correct_answers`, then earliest `reached_at`, then alias alphabetic.
-- qiuizkonkurrencen semesters reset every half year in UTC: `H1 = [Jan 1, Jul 1)`, `H2 = [Jul 1, Jan 1 next year)`.
+- quizkonkurrencen tie-break is `correct_answers`, then earliest `reached_at`, then alias alphabetic.
+- quizkonkurrencen semesters reset every half year in UTC: `H1 = [Jan 1, Jul 1)`, `H2 = [Jul 1, Jan 1 next year)`.
 - Learning path on subject pages (`/subjects/<subject_slug>`) is lecture-first with nested completion-first tekststatus (`completed|no_quiz`; otherwise no explicit in-progress label) and quiz/podcast navigation.
 - Subject detail UI is mobile-first and uses a left lecture rail + single active lecture card (no multi-panel accordion).
-- Subject detail header shows a desktop-only trophy CTA (`qiuizkonkurrencen for <fag>`) linking to the current subject leaderboard; header actions are hidden on compact layouts (`<=1180px`).
+- Subject detail header shows a desktop-only trophy CTA (`quizkonkurrencen for <fag>`) linking to the current subject leaderboard; header actions are hidden on compact layouts (`<=1180px`).
 - Subject detail removes KPI strip and global `Udvid alle`/`Luk alle`; lecture switching is via rail links (`?lecture=<lecture_key>`).
 - Subject detail remembers each user's last opened lecture per subject and uses it as default when `?lecture=` is omitted.
 - Subject detail spacing uses a local responsive scale (`section/block/tight`) to keep vertical rhythm consistent across rail, card header, and section blocks.
@@ -65,7 +65,7 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Module headers in subject detail are rendered as a combined headline (`Uge x, forelæsning x: <titel>`), with cleaned lecture title metadata.
 - Quiz labels are rendered from cleaned `episode_title` metadata (`modul` + `titel`) instead of raw file/tag strings.
 - Quiz wrapper header uses a structured identity block (module label + title) and includes in-flow progress feedback per question step.
-- Quiz summary includes a direct `Gå til qiuizkonkurrencen` CTA and shows rank movement (`fra #x til #y`) when a logged-in public participant improves placement on completion.
+- Quiz summary includes a direct `Gå til quizkonkurrencen` CTA and shows rank movement (`fra #x til #y`) when a logged-in public participant improves placement on completion.
 - Global shell and quiz wrapper enforce horizontal overflow guardrails so sticky header + fixed mobile tabbar stay anchored on narrow devices.
 - Mobile `Mine fag` popup is rendered as a viewport-centered layer (via body portal) to stay centered on both axes across browsers.
 - `quiz_links.json` entries must include `subject_slug` so unit progression can be computed per subject (auto-populated by quiz-link sync scripts).
@@ -78,7 +78,7 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Multi-theme support is future-facing only; runtime is currently single-theme (`paper-studio`).
 - Headings/titles in the portal UI are rendered in lower-case for consistent visual tone.
 - Quiz wrapper reading titles preserve source capitalization (no forced lowercasing).
-- `qiuizkonkurrencen` hero heading intentionally keeps title case to match the approved cup design.
+- `quizkonkurrencen` hero heading intentionally keeps title case to match the approved cup design.
 - Shared primitives in `templates/base.html` enforce radius/spacing/depth rules portal-wide, while page templates apply local layout detail.
 - Design system source of truth: `freudd_portal/docs/design-guidelines.md` (anchored to `docs/non-technical-overview.md`).
 - Design guidance includes former expressive V2 rules directly in `freudd_portal/docs/design-guidelines.md`.
@@ -126,7 +126,7 @@ Leaderboard alias UX rule: if a user already has an alias, it is shown locked by
 - `UserInterfacePreference`: reserved for future multi-theme support; current runtime remains locked to `paper-studio`.
 - `UserReadingMark`: per-user private tekst tracking marks (`mark/unmark`) on subject detail.
 - `UserPodcastMark`: per-user private podcast tracking marks (`mark/unmark`) on subject detail.
-- `UserLeaderboardProfile`: per-user public alias and visibility settings for qiuizkonkurrencen leaderboard (case-insensitive unique alias).
+- `UserLeaderboardProfile`: per-user public alias and visibility settings for quizkonkurrencen leaderboard (case-insensitive unique alias).
 - `UserUnitProgress`: legacy/compat path model kept temporarily for API compatibility.
 
 ## Subject catalog (`subjects.json`)

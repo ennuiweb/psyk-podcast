@@ -140,7 +140,7 @@ Motion rules:
 
 - Desktop: full header + full lecture rail labels + two-column learning layout.
 - Compact (`<=1024px`): global sticky header remains visible as logo-only; fixed bottom tabbar.
-- Mobile bottom tabbar uses compact line-icons plus short labels in this order: `Mine fag`, `qiuizkonkurrencen`, `Indstillinger`.
+- Mobile bottom tabbar uses compact line-icons plus short labels in this order: `Mine fag`, `quizkonkurrencen`, `Indstillinger`.
 - Bottom tabbar must never cover interactive content.
 - All layouts must avoid horizontal page scroll.
 
@@ -281,11 +281,11 @@ Behavior:
 - Short, action-first CTA copy.
 - Keep transport/security warning visible when applicable.
 
-### 7.5 qiuizkonkurrencen (`/leaderboard/<subject_slug>`)
+### 7.5 quizkonkurrencen (`/leaderboard/<subject_slug>`)
 
 Order:
 
-1. Hero intro (`qiuizkonkurrencen`) with short competitive framing copy.
+1. Hero intro (`quizkonkurrencen`) with short competitive framing copy.
 2. Subject tabs for active subjects.
 3. Alias setup/deltag card (right column on desktop, stacked on compact layouts).
 4. Podium cards for ranks `#2`, `#1`, `#3`.
@@ -293,7 +293,7 @@ Order:
 
 Behavior:
 
-- Keep ranking logic/data source unchanged from qiuizkonkurrencen scoring rules.
+- Keep ranking logic/data source unchanged from quizkonkurrencen scoring rules.
 - Alias participation uses the existing profile endpoint (`POST /leaderboard/profile`).
 - Alias edits remain explicit mode-based (not always-on).
 - On compact layouts, tabs scroll horizontally and podium stacks vertically.

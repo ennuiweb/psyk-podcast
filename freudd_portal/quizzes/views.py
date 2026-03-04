@@ -243,6 +243,9 @@ def _annotate_quiz_difficulty_slots_for_user(
         quiz_id = str(slot_copy.get("quiz_id") or "").strip().lower()
         progress = progress_by_quiz_id.get(quiz_id) if quiz_id else None
         state_key = _quiz_slot_state_from_progress(progress)
+        question_count = _safe_non_negative_int(slot_copy.get("question_count"))
+        correct_answers = 0
+        raw_points = 0
 
         slot_copy["display_index"] = index
         slot_copy["title"] = f"{difficulty_label} quiz"
@@ -251,45 +254,56 @@ def _annotate_quiz_difficulty_slots_for_user(
         slot_copy["has_metrics"] = False
         slot_copy["meta_line"] = slot_copy["state_label"]
 
-        if progress is None or state_key != "completed":
-            enriched_slots.append(slot_copy)
-            continue
+        if progress is not None:
+            best_question_count = _safe_non_negative_int(progress.leaderboard_best_question_count)
+            best_correct_answers = _safe_non_negative_int(progress.leaderboard_best_correct_answers)
+            raw_points = _safe_non_negative_int(progress.leaderboard_best_score)
 
-        best_question_count = _safe_non_negative_int(progress.leaderboard_best_question_count)
-        best_correct_answers = _safe_non_negative_int(progress.leaderboard_best_correct_answers)
-        raw_points = _safe_non_negative_int(progress.leaderboard_best_score)
-        correct_answers = 0
-        question_count = 0
+            if best_question_count > 0:
+                question_count = best_question_count
+                correct_answers = max(0, min(best_correct_answers, best_question_count))
+            else:
+                progress_question_count = _safe_non_negative_int(progress.question_count)
+                if progress_question_count > 0:
+                    question_count = progress_question_count
+                if best_correct_answers > 0 and question_count > 0:
+                    correct_answers = max(0, min(best_correct_answers, question_count))
 
-        if best_question_count > 0:
-            question_count = best_question_count
-            correct_answers = max(0, min(best_correct_answers, best_question_count))
-        elif quiz_id and isinstance(progress.state_json, dict):
-            if quiz_id not in quiz_payload_cache:
-                try:
-                    quiz_payload_cache[quiz_id] = load_quiz_content(quiz_id)
-                except Exception:
-                    logger.exception(
-                        "Failed to load quiz content for subject slot",
-                        extra={
-                            "user_id": user.id,
-                            "quiz_id": quiz_id,
-                        },
-                    )
-                    quiz_payload_cache[quiz_id] = None
-            quiz_payload = quiz_payload_cache.get(quiz_id)
-            if isinstance(quiz_payload, dict):
-                outcome = compute_quiz_outcome(state_payload=progress.state_json, quiz_payload=quiz_payload)
-                question_count = _safe_non_negative_int(outcome.question_count)
-                correct_answers = max(0, min(_safe_non_negative_int(outcome.correct_answers), question_count))
+                if quiz_id and isinstance(progress.state_json, dict):
+                    if quiz_id not in quiz_payload_cache:
+                        try:
+                            quiz_payload_cache[quiz_id] = load_quiz_content(quiz_id)
+                        except Exception:
+                            logger.exception(
+                                "Failed to load quiz content for subject slot",
+                                extra={
+                                    "user_id": user.id,
+                                    "quiz_id": quiz_id,
+                                },
+                            )
+                            quiz_payload_cache[quiz_id] = None
+                    quiz_payload = quiz_payload_cache.get(quiz_id)
+                    if isinstance(quiz_payload, dict):
+                        outcome = compute_quiz_outcome(state_payload=progress.state_json, quiz_payload=quiz_payload)
+                        outcome_question_count = _safe_non_negative_int(outcome.question_count)
+                        if outcome_question_count > 0:
+                            question_count = outcome_question_count
+                            correct_answers = max(
+                                0,
+                                min(_safe_non_negative_int(outcome.correct_answers), outcome_question_count),
+                            )
 
         if raw_points <= 0 and question_count > 0 and correct_answers > 0:
             raw_points = correct_answers * 100
 
         if question_count > 0:
-            display_points = _display_points_from_raw_score(
-                raw_points=raw_points,
-                question_count=question_count,
+            display_points = (
+                _display_points_from_raw_score(
+                    raw_points=raw_points,
+                    question_count=question_count,
+                )
+                if raw_points > 0
+                else 0
             )
             slot_copy["has_metrics"] = True
             slot_copy["correct_answers"] = correct_answers

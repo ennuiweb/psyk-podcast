@@ -1,0 +1,18 @@
+<ol class="quiz-difficulty-list">
+  {% for slot in slots %}
+  <li
+    class="quiz-difficulty-row is-{{ slot.difficulty }} is-{{ slot.state_key }} {% if slot.quiz_url %}has-action{% else %}is-disabled{% endif %}">
+    <div class="quiz-difficulty-header">
+      <span class="material-symbols-outlined quiz-difficulty-icon">filter_{{ slot.display_index }}</span>
+      {% if slot.quiz_url %}
+      <a class="quiz-difficulty-title" href="{{ slot.quiz_url }}">{{ slot.title }}</a>
+      {% else %}
+      <span class="quiz-difficulty-title">{{ slot.title }}</span>
+      {% endif %}
+    </div>
+    {% if slot.meta_line %}
+    <p class="quiz-difficulty-meta">{{ slot.meta_line }}</p>
+    {% endif %}
+  </li>
+  {% endfor %}
+</ol>

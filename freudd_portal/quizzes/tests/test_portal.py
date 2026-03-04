@@ -2095,9 +2095,9 @@ class QuizPortalTests(TestCase):
         response = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "reading-difficulties")
-        self.assertContains(response, "difficulty-chip is-easy")
-        self.assertContains(response, "difficulty-chip is-medium")
-        self.assertContains(response, "difficulty-chip is-hard")
+        self.assertContains(response, "quiz-difficulty-row")
+        self.assertContains(response, "quiz-difficulty-icon")
+        self.assertNotContains(response, "difficulty-chip")
 
     def test_subject_detail_hides_question_count_when_quiz_file_is_missing(self) -> None:
         user = self._create_user()
@@ -2238,7 +2238,7 @@ class QuizPortalTests(TestCase):
         self.assertContains(response, "Mellem quiz")
         self.assertContains(response, "Svær quiz")
         self.assertContains(response, "10/10 rigtige • 150/150 point")
-        self.assertNotContains(response, "6/10 rigtige • 75/150 point")
+        self.assertContains(response, "6/10 rigtige • 75/150 point")
         self.assertNotContains(response, "Ikke startet")
         self.assertNotContains(response, "I gang")
 
@@ -2294,7 +2294,7 @@ class QuizPortalTests(TestCase):
         self.assertContains(response, "Mellem quiz")
         self.assertNotContains(response, "I gang")
         self.assertNotContains(response, "Ikke startet")
-        self.assertNotContains(response, "rigtige •")
+        self.assertContains(response, "0/10 rigtige • 0/150 point")
 
     def test_subject_detail_quiz_mockup_hides_all_quiz_section_when_no_quizzes_are_available(self) -> None:
         user = self._create_user()

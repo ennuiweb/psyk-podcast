@@ -988,35 +988,6 @@
     background: #eaf4ff;
   }
 
-  .reading-hover-label {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    z-index: 2;
-    pointer-events: none;
-    border-radius: var(--radius-pill);
-    border: 1px solid color-mix(in srgb, #4f8ddf 56%, transparent);
-    background: color-mix(in srgb, #4f8ddf 16%, #fff);
-    color: color-mix(in srgb, #2d6ec9 72%, #ffffff);
-    padding: 0.24rem 0.62rem;
-    font-family: var(--subject-font-ui);
-    font-size: 0.86rem;
-    font-weight: 700;
-    letter-spacing: 0.01em;
-    text-transform: lowercase;
-    opacity: 0;
-    transform: translate(-50%, calc(-50% - 4px));
-    transition:
-      opacity 160ms ease,
-      transform 160ms ease;
-  }
-
-  .reading-card.has-open-reading:hover .reading-hover-label,
-  .reading-card.has-open-reading:focus-visible .reading-hover-label {
-    opacity: 1;
-    transform: translate(-50%, -50%);
-  }
-
   .reading-card.is-completed {
     border-color: color-mix(in srgb, var(--success) 38%, transparent);
     box-shadow: inset 3px 0 0 color-mix(in srgb, var(--success) 72%, transparent);
@@ -1625,10 +1596,6 @@
       min-height: 44px;
     }
 
-    .reading-hover-label {
-      display: none;
-    }
-
     .podcast-hover-actions {
       display: none;
     }
@@ -1759,9 +1726,6 @@
                 class="reading-card {% if reading_open_url %}has-open-reading{% endif %} {% if reading.is_missing %}is-missing{% endif %} {% if reading.status == 'completed' %}is-completed{% endif %}"
                 {% if reading_open_url %} data-open-url="{{ reading_open_url }}" role="link" tabindex="0"
                 aria-label="åbn tekst: {{ reading.reading_title }}" {% endif %}>
-                {% if reading_open_url %}
-                <span class="reading-hover-label" aria-hidden="true">åben tekst</span>
-                {% endif %}
                 <div class="reading-top">
                   <div class="reading-main">
                     <div class="reading-title-row">
@@ -1780,6 +1744,13 @@
                   </div>
                   <div class="reading-side">
                     <div class="reading-actions">
+                      {% if reading_open_url %}
+                      <a class="reading-action-button reading-action-open" href="{{ reading_open_url }}" target="_blank"
+                        rel="noopener noreferrer" aria-label="Åbn {{ reading.reading_title }}">
+                        åben tekst
+                      </a>
+                      {% endif %}
+
                       {% if reading.open_pdf_url %}
                       <button class="reading-action-button reading-action-chatgpt" type="button" data-chatgpt-reading
                         data-reading-title="{{ reading.reading_title }}"

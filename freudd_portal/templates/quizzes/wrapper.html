@@ -417,7 +417,7 @@
     {% if quiz_cup_url %}
     <div class="quiz-cup-summary">
       <p class="quiz-cup-rank-feedback muted" id="quiz-cup-rank-feedback"></p>
-      <a class="ghost-link quiz-cup-link" href="{{ quiz_cup_url }}">Gå til quizkonkurrencen</a>
+      <a class="ghost-link quiz-cup-link" href="{{ quiz_cup_url }}">Gå til scoreboard</a>
     </div>
     {% endif %}
     <div class="quiz-actions">
@@ -1351,17 +1351,17 @@
       const participantCount = Number.parseInt(String(quizCupState?.participant_count ?? 0), 10) || 0;
       if (rankChange > 0 && Number.isInteger(rankBefore) && Number.isInteger(rankAfter)) {
         const rankWord = rankChange === 1 ? "plads" : "pladser";
-        quizCupRankFeedbackNode.textContent = `Du rykkede op ${rankChange} ${rankWord} i quizkonkurrencen (fra #${rankBefore} til #${rankAfter}).`;
+        quizCupRankFeedbackNode.textContent = `Du rykkede op ${rankChange} ${rankWord} i scoreboard (fra #${rankBefore} til #${rankAfter}).`;
       } else if (Number.isInteger(rankAfter) && rankAfter > 0 && Number.isInteger(rankBefore) && rankBefore > 0) {
-        quizCupRankFeedbackNode.textContent = `Din placering i quizkonkurrencen er fortsat #${rankAfter}.`;
+        quizCupRankFeedbackNode.textContent = `Din placering i scoreboard er fortsat #${rankAfter}.`;
       } else if (Number.isInteger(rankAfter) && rankAfter > 0) {
         if (participantCount > 0) {
-          quizCupRankFeedbackNode.textContent = `Du er nu placeret som #${rankAfter} ud af ${participantCount} i quizkonkurrencen.`;
+          quizCupRankFeedbackNode.textContent = `Du er nu placeret som #${rankAfter} ud af ${participantCount} i scoreboard.`;
         } else {
-          quizCupRankFeedbackNode.textContent = `Du er nu placeret som #${rankAfter} i quizkonkurrencen.`;
+          quizCupRankFeedbackNode.textContent = `Du er nu placeret som #${rankAfter} i scoreboard.`;
         }
       } else if (isAuthenticated && quizCupUrl) {
-        quizCupRankFeedbackNode.textContent = "Se din aktuelle placering i quizkonkurrencen.";
+        quizCupRankFeedbackNode.textContent = "Se din aktuelle placering i scoreboard.";
       } else {
         quizCupRankFeedbackNode.textContent = "";
       }

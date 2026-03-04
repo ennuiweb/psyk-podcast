@@ -5,13 +5,13 @@ Freudd Portal is the learner-facing layer on top of static quiz and podcast cont
 The settings page (`/settings`) focuses on three things:
 - subject access and enrollment management,
 - personal quiz history and status,
-- public quizkonkurrencen settings.
+- public scoreboard settings.
 
-The dedicated quizkonkurrencen page (`/leaderboard/<subject_slug>`) presents this as subject tabs, a top-3 podium, and a Top 50 table.
+The dedicated scoreboard page (`/leaderboard/<subject_slug>`) presents this as subject tabs, a top-3 podium, and a Top 50 table.
 
-Personal study habits for tekster/podcasts remain private to each learner on subject pages, while a lightweight shared competition around quizzes is available through quizkonkurrencen.
+Personal study habits for tekster/podcasts remain private to each learner on subject pages, while a lightweight shared competition around quizzes is available through scoreboard.
 
-quizkonkurrencen runs on semesters and automatically resets every half year (UTC). Ranking is based on a score that weighs correct answers highest and adds a speed bonus for faster quiz completion.
+scoreboard runs on semesters and automatically resets every half year (UTC). Ranking is based on a score that weighs correct answers highest and adds a speed bonus for faster quiz completion.
 
 Each quiz question has a built-in timer, and quiz retries are throttled with an escalating cooldown to prevent rapid retakes.
 

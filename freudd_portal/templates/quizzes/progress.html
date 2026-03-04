@@ -781,9 +781,9 @@
     {% endif %}
   </section>
 
-  <section class="card dashboard-section" id="quizkonkurrencen-indstillinger">
+  <section class="card dashboard-section" id="scoreboard-indstillinger">
     <div class="section-head">
-      <h2 class="section-title">Offentlig quizkonkurrencen</h2>
+      <h2 class="section-title">Offentlig scoreboard</h2>
       <p class="section-subtitle">Kun alias, placering og gennemførte quizzer vises offentligt.</p>
     </div>
     <p class="leaderboard-semester-text">Aktivt semester: {{ active_semester.label }}</p>
@@ -796,14 +796,14 @@
         <input type="text" value="{{ leaderboard_profile.public_alias }}" aria-label="Offentligt alias (låst)"
           readonly />
         <p class="leaderboard-alias-note">Alias er låst for at undgå utilsigtede ændringer.</p>
-        <a class="subject-toggle-button" href="{% url 'progress' %}?edit_alias=1#quizkonkurrencen-indstillinger">Ændr alias</a>
+        <a class="subject-toggle-button" href="{% url 'progress' %}?edit_alias=1#scoreboard-indstillinger">Ændr alias</a>
       </div>
       {% else %}
       <input type="text" name="public_alias" maxlength="24" value="{{ leaderboard_profile.public_alias }}"
         placeholder="Alias (3-24 tegn)" aria-label="Offentligt alias" />
       <input type="hidden" name="allow_alias_change" value="1" />
       {% if leaderboard_profile.public_alias %}
-      <a class="subject-toggle-button" href="{% url 'progress' %}#quizkonkurrencen-indstillinger">Annuller alias-ændring</a>
+      <a class="subject-toggle-button" href="{% url 'progress' %}#scoreboard-indstillinger">Annuller alias-ændring</a>
       {% endif %}
       {% endif %}
       <div class="leaderboard-profile-controls">
@@ -811,7 +811,7 @@
           <input type="checkbox" name="is_public" value="1" {% if leaderboard_profile.is_public %}checked{% endif %} />
           Deltag offentligt
         </label>
-        <button class="subject-toggle-button" type="submit">Gem quizkonkurrencen-indstillinger</button>
+        <button class="subject-toggle-button" type="submit">Gem scoreboard-indstillinger</button>
       </div>
     </form>
 

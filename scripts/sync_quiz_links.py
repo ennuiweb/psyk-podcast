@@ -32,6 +32,7 @@ MISSING_TOKEN_RE = re.compile(r"\bMISSING\b", re.IGNORECASE)
 SUBJECT_SLUG_RE = re.compile(r"^[a-z0-9-]+$")
 QUIZ_DIFFICULTY_SORT_ORDER = {"easy": 0, "medium": 1, "hard": 2}
 QUIZ_PRIMARY_DIFFICULTY_SORT_ORDER = {"medium": 0, "easy": 1, "hard": 2}
+WEEK_X_PREFIX_RE = re.compile(r"^(W\d{2}L\d+)\s*(?:-\s*)?X\s+", re.IGNORECASE)
 
 
 def normalize_week_tokens(text: str) -> str:
@@ -128,6 +129,8 @@ def canonical_key(stem: str) -> str:
             rest,
             flags=re.IGNORECASE,
         ).strip()
+    rest = WEEK_X_PREFIX_RE.sub(r"\1 ", rest).strip()
+    rest = re.sub(r"^X\s+", "", rest, flags=re.IGNORECASE)
     if rest:
         return f"{prefix}{week} - {rest}".strip()
     return f"{prefix}{week}".strip()

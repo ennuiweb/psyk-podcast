@@ -37,6 +37,7 @@ SUBJECT_SLUG_RE = re.compile(r"^[a-z0-9-]+$")
 READING_KEY_RE = re.compile(r"^[a-z0-9-]+$")
 NON_ALNUM_RE = re.compile(r"[^a-z0-9]+")
 MULTISPACE_RE = re.compile(r"\s+")
+OVELSESHOLD_NOTE_RE = re.compile(r"\(\s*tekst\s+for\s+øvelseshold\s*\)", re.IGNORECASE)
 
 
 @dataclass(frozen=True)
@@ -64,7 +65,8 @@ def _canonical_lecture_key(value: str) -> str | None:
 
 
 def _normalize_name(value: str) -> str:
-    normalized = unicodedata.normalize("NFKD", str(value or ""))
+    value_text = OVELSESHOLD_NOTE_RE.sub("", str(value or ""))
+    normalized = unicodedata.normalize("NFKD", value_text)
     normalized = "".join(ch for ch in normalized if not unicodedata.combining(ch))
     normalized = normalized.lower().replace("&", " and ")
     normalized = normalized.replace("–", "-").replace("—", "-").replace("/", " ").replace("_", " ")

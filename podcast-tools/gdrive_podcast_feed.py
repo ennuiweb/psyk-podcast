@@ -155,6 +155,7 @@ DOC_CALLOUT_PATTERN = re.compile(
     r"\[!\s*(important|warning|attention|prioritet|priority|vigtig)\b", re.IGNORECASE
 )
 WEEK_X_PREFIX_PATTERN = re.compile(r"^w\d+(?:l\d+)?\s+x\b", re.IGNORECASE)
+OVELSESHOLD_MARKER_PATTERN = re.compile(r"\btekst\s+for\s+(?:ø|oe)velseshold\b", re.IGNORECASE)
 GOOGLE_API_RETRY_STATUS_CODES = {429, 500, 502, 503, 504}
 GOOGLE_API_RETRY_REASONS = {"internalError", "backendError", "rateLimitExceeded", "userRateLimitExceeded"}
 GOOGLE_API_MAX_RETRIES = 4
@@ -375,12 +376,31 @@ def _strip_cfg_tag_from_filename(name: str) -> str:
     return f"{_strip_cfg_tag_suffix(stem)}{suffix}"
 
 
+WEEK_X_IN_STEM_PATTERN = re.compile(r"^(W\d{1,2}L\d+)\s*(?:-\s*)?X\s+", re.IGNORECASE)
+
+
+def _normalize_name_for_lookup(name: str) -> str:
+    stripped = _strip_cfg_tag_from_filename(name)
+    path = Path(stripped)
+    suffix = "".join(path.suffixes)
+    stem = stripped[: -len(suffix)] if suffix else stripped
+    stem = normalize_week_tokens(stem)
+    stem = re.sub(r"\s+", " ", stem).strip()
+    stem = WEEK_X_IN_STEM_PATTERN.sub(r"\1 ", stem).strip()
+    stem = re.sub(r"\s+", " ", stem).strip()
+    return f"{stem}{suffix}".casefold()
+
+
 def _lookup_by_name_with_cfg_fallback(mapping: Dict[str, Any], name: str) -> Any:
     if name in mapping:
         return mapping[name]
     stripped = _strip_cfg_tag_from_filename(name)
     if stripped in mapping:
         return mapping[stripped]
+    normalized = _normalize_name_for_lookup(name)
+    for key, value in mapping.items():
+        if isinstance(key, str) and _normalize_name_for_lookup(key) == normalized:
+            return value
     for key, value in mapping.items():
         if isinstance(key, str) and _strip_cfg_tag_from_filename(key) == stripped:
             return value
@@ -566,6 +586,8 @@ def _canonicalize_episode_stem(name: str) -> str:
         if dup and int(dup.group("week")) == week and int(dup.group("lecture")) == lesson:
             remainder = remainder[dup.end() :].strip()
     canonical_week = f"W{week:02d}L{lesson}"
+    remainder = WEEK_X_IN_STEM_PATTERN.sub(r"\1 ", f"{canonical_week} {remainder}".strip())
+    remainder = re.sub(rf"^{re.escape(canonical_week)}\s+", "", remainder, flags=re.IGNORECASE).strip()
     if remainder:
         stem = f"{canonical_week} - {remainder}"
     else:
@@ -1466,7 +1488,9 @@ def _candidate_is_week_x(candidate: str) -> bool:
         return False
     stripped = candidate.strip()
     stripped = stripped.lstrip("-• ")
-    return bool(WEEK_X_PREFIX_PATTERN.match(stripped))
+    if WEEK_X_PREFIX_PATTERN.match(stripped):
+        return True
+    return bool(OVELSESHOLD_MARKER_PATTERN.search(stripped))
 
 
 def _extract_doc_candidates(line: str) -> List[str]:
@@ -1618,6 +1642,7 @@ WEEK_LECTURE_PATTERN = re.compile(r"\bw\s*(\d{1,2})\s*l\s*(\d+)\b", re.IGNORECAS
 BRIEF_PREFIX_PATTERN = re.compile(r"^\[\s*brief\s*\]\s*", re.IGNORECASE)
 WEEK_PREFIX_TOKEN_PATTERN = re.compile(r"^w\s*\d{1,2}(?:\s*l\s*\d+)?\b", re.IGNORECASE)
 WEEK_PREFIX_SEPARATOR_PATTERN = re.compile(r"^[\s._\-–:]+")
+WEEK_X_PREFIX_TOKEN_PATTERN = re.compile(r"^x\b[\s._\-–:]*", re.IGNORECASE)
 EPISODE_KINDS = {"reading", "brief", "weekly_overview"}
 TITLE_BLOCKS_ALLOWED = {
     "semester_week_lecture",
@@ -1686,6 +1711,7 @@ def strip_week_prefix(value: str) -> str:
             break
         cleaned = cleaned[token_match.end() :]
         cleaned = WEEK_PREFIX_SEPARATOR_PATTERN.sub("", cleaned)
+    cleaned = WEEK_X_PREFIX_TOKEN_PATTERN.sub("", cleaned).strip()
     return cleaned.strip()
 
 

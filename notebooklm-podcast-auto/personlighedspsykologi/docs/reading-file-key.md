@@ -1,6 +1,6 @@
 # Reading File Key (Personlighedspsykologi F26)
 
-**Important:** `important_text_mode` is set to `week_x_only`. Priority items must have filenames that start with `W##L# X` to be highlighted in the feed. The list below uses the intended `W##L# X` prefixes; rename the files to match when you want the highlights to appear.
+**Important:** `important_text_mode` is set to `week_x_only`. Priority items can be marked either with legacy `W##L# X ...` filenames or with the explicit note `(tekst for Øvelseshold)` in the title field. This key uses the explicit note form.
 
 ## Episode output policy
 - Weekly overview kind (`W#L#` lecture-level): `Alle kilder` (deep-dive, long).
@@ -24,7 +24,7 @@ Sources used for this mapping:
 - Phan et al. (2024) → Phan et al. (2024).pdf
 
 **W02L1 Personality traits, personality states, and personality dimensions (Forelæsning 3, 2026-02-09)**
-- X Zettler et al. (2020) → W02L1 X Zettler et al. (2020).pdf
+- Zettler et al. (2020) (tekst for Øvelseshold) → W02L1 Zettler et al. (2020).pdf
 - Columbus & Strandsbjerg (2025) → Columbus & Strandsbjerg (2025).pdf
 
 **W02L2 Person-situation interplay - stability and change of individual differences (Forelæsning 4, 2026-02-10)**
@@ -50,8 +50,8 @@ Sources used for this mapping:
 - Laplanche (1970) → Laplanche (1970).pdf
 
 **W05L1 Empiri og metode i psykoanalysen (Forelæsning 9, 2026-03-02)**
-- X Freud, S. (1984/1905). Brudstykke af en hysteri-analyse → W05L1 X Freud, S. (1984/1905). Brudstykke af en hysteri-analyse.pdf
-- X Gammelgaard (2010) → W5L1 X Gammelgaard (2010).pdf
+- Freud, S. (1984/1905). Brudstykke af en hysteri-analyse (tekst for Øvelseshold) → W05L1 Freud, S. (1984/1905). Brudstykke af en hysteri-analyse.pdf
+- Gammelgaard (2010) (tekst for Øvelseshold) → W5L1 Gammelgaard (2010).pdf
 - Ricoeur (1981) → Ricoeur (1981).pdf
 
 **W05L2 Psykoanalysens konstituering (Forelæsning 10, 2026-03-03)**
@@ -60,8 +60,8 @@ Sources used for this mapping:
 - Zeuthen & Køppe (2014) → Grundbog kapitel 07 - Nyere psykoanalytiske teorier.pdf
 
 **W06L1 Fænomenologi (Forelæsning 11, 2026-03-09)**
-- X Spinelli (2005) → W06L1 X Spinelli (2005).pdf
-- X Moeskær Hansen & Roald (2022) → W06L1 X Moeskær Hansen & Roald (2022) .pdf
+- Spinelli (2005) (tekst for Øvelseshold) → W06L1 Spinelli (2005).pdf
+- Moeskær Hansen & Roald (2022) (tekst for Øvelseshold) → W06L1 Moeskær Hansen & Roald (2022) .pdf
 - Grundbog kapitel 04 - Fænomenologisk personlighedspsykologi → Grundbog kapitel 04 - Fænomenologisk personlighedspsykologi.pdf (brief + full)
 
 **W06L2 Eksistentiel personlighedspsykologi I (Funch) (Forelæsning 12, 2026-03-10)**
@@ -86,7 +86,7 @@ Sources used for this mapping:
 - Tolman (2009) → Tolman (2009).pdf
 
 **W09L1 Kritisk psykologi (Forelæsning 17, 2026-04-07)**
-- X Mørch & Hansen (2015) → W09L1 X Mørch & Hansen (2015).pdf
+- Mørch & Hansen (2015) (tekst for Øvelseshold) → W09L1 Mørch & Hansen (2015).pdf
 - Dreier (1999) → Dreier (1999).pdf
 - Holzkamp (2013) → Holzkamp (2013).pdf
 - Grundbog kapitel 10 - Kritisk psykologi → Grundbog kapitel 10 - Kritisk psykologi.pdf (brief + full)
@@ -96,7 +96,7 @@ Sources used for this mapping:
 - Mitchell (2015) → Mitchell (2015).pdf
 
 **W10L2 Sociokulturelle teorier - socialkonstruktionisme og poststrukturalisme (Forelæsning 19, 2026-04-14)**
-- X Davies (1990) → W10L2 X Davies (1990).pdf
+- Davies (1990) (tekst for Øvelseshold) → W10L2 Davies (1990).pdf
 - Foucault (1997) → Foucault (1997) .pdf
 
 **W11L1 Poststrukturalisme, diskursiv psykologi og feministisk teori (Forelæsning 20, 2026-04-20)**
@@ -105,7 +105,7 @@ Sources used for this mapping:
 - Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori → Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori.pdf (brief + full)
 
 **W11L2 Narrativitet, kultur og mening (Forelæsning 21, 2026-04-21)**
-- X Raggatt (2002) → W11L2 X Raggatt (2002).pdf
+- Raggatt (2002) (tekst for Øvelseshold) → W11L2 Raggatt (2002).pdf
 - Bank (2014) → Bank, M. (2014). Narrative psykologier. I Køppe, S. & Dammeyer, J. (Red.).pdf
 - Bruner (1999) → Bruner (1999) .pdf
 - McAdams & Pals (2006) → McAdams & Pals (2006) .pdf

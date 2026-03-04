@@ -36,6 +36,7 @@ LANGUAGE_TAG_RE = re.compile(r"\[[^\]]+\]")
 ALL_SOURCES_RE = re.compile(r"\b(?:alle kilder|all sources)\b", re.IGNORECASE)
 NON_ALNUM_RE = re.compile(r"[^a-z0-9]+")
 MULTISPACE_RE = re.compile(r"\s+")
+OVELSESHOLD_NOTE_RE = re.compile(r"\(\s*tekst\s+for\s+øvelseshold\s*\)", re.IGNORECASE)
 SPOTIFY_EPISODE_URL_RE = re.compile(
     r"^https://open\.spotify\.com/episode/[A-Za-z0-9]+(?:[/?#].*)?$",
     re.IGNORECASE,
@@ -155,12 +156,14 @@ def _descriptor_from_episode_name(value: str) -> str:
     cleaned = _strip_cfg_tag_suffix(_strip_episode_extension(value))
     cleaned = LANGUAGE_TAG_RE.sub("", cleaned).strip()
     cleaned = READING_PREFIX_RE.sub("", cleaned).strip()
+    cleaned = re.sub(r"^x\s+", "", cleaned, flags=re.IGNORECASE).strip()
     cleaned = re.sub(r"^(?:missing)\s+", "", cleaned, flags=re.IGNORECASE).strip()
     return cleaned
 
 
 def _normalize_title(value: str) -> str:
-    normalized = unicodedata.normalize("NFKD", str(value or ""))
+    value_text = OVELSESHOLD_NOTE_RE.sub("", str(value or ""))
+    normalized = unicodedata.normalize("NFKD", value_text)
     normalized = "".join(char for char in normalized if not unicodedata.combining(char))
     normalized = normalized.lower().replace("&", " and ")
     normalized = _strip_cfg_tag_suffix(normalized)

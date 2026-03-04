@@ -1,6 +1,6 @@
 # Reading File Key (Personlighedspsykologi F26)
 
-**Important:** `important_text_mode` is set to `week_x_only`. Priority items can be marked either with legacy `W##L# X ...` filenames or with the explicit note `(tekst for Øvelseshold)` in the title field. This key uses the explicit note form.
+**Important:** `important_text_mode` is set to `week_x_only`. Priority items must have filenames that start with `W##L# X` to be highlighted in the feed. The list below uses the intended `W##L# X` prefixes; rename the files to match when you want the highlights to appear.
 
 ## Episode output policy
 - Weekly overview kind (`W#L#` lecture-level): `Alle kilder` (deep-dive, long).

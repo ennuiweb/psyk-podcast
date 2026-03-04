@@ -28,6 +28,7 @@ from django.utils.http import url_has_allowed_host_and_scheme
 from django.urls import reverse
 from django.views.decorators.http import require_GET, require_http_methods, require_POST
 
+from .content_services import load_subject_content_manifest
 from .forms import SignupForm
 from .gamification_services import (
     get_gamification_snapshot,
@@ -362,6 +363,30 @@ def _reading_file_path_or_404(*, subject_slug: str, lecture_key: str, source_fil
     if not resolved_candidate.is_file():
         raise Http404("Tekst-filen blev ikke fundet.")
     return resolved_candidate
+
+
+def _find_reading_source_in_lectures(
+    *,
+    lectures: object,
+    normalized_reading_key: str,
+) -> tuple[str | None, str | None]:
+    lecture_rows = lectures if isinstance(lectures, list) else []
+    for lecture in lecture_rows:
+        if not isinstance(lecture, dict):
+            continue
+        lecture_key = str(lecture.get("lecture_key") or "").strip().upper()
+        if not lecture_key:
+            continue
+        readings = lecture.get("readings") if isinstance(lecture.get("readings"), list) else []
+        for reading in readings:
+            if not isinstance(reading, dict):
+                continue
+            candidate_key = str(reading.get("reading_key") or "").strip().lower()
+            if candidate_key != normalized_reading_key:
+                continue
+            source_filename = _source_filename_or_none(reading.get("source_filename"))
+            return lecture_key, source_filename
+    return None, None
 
 
 def _normalize_exclusion_payload(payload: object) -> dict[str, set[str]]:
@@ -1733,7 +1758,6 @@ def leaderboard_profile_view(request: HttpRequest) -> HttpResponse:
     )
 
 
-@login_required
 @require_GET
 def subject_open_reading_view(request: HttpRequest, subject_slug: str, reading_key: str) -> HttpResponse:
     catalog = load_subject_catalog()
@@ -1748,25 +1772,14 @@ def subject_open_reading_view(request: HttpRequest, subject_slug: str, reading_k
     ):
         raise Http404("Tekst ikke fundet i fagets læringssti.")
 
-    subject_path = get_subject_learning_path_snapshot(request.user, subject.slug)
-    found_lecture_key: str | None = None
-    found_source_filename: str | None = None
-    for lecture in subject_path.get("lectures") or []:
-        if not isinstance(lecture, dict):
-            continue
-        lecture_key = str(lecture.get("lecture_key") or "").strip().upper()
-        readings = lecture.get("readings") if isinstance(lecture.get("readings"), list) else []
-        for reading in readings:
-            if not isinstance(reading, dict):
-                continue
-            candidate_key = str(reading.get("reading_key") or "").strip().lower()
-            if candidate_key != normalized_reading_key:
-                continue
-            found_lecture_key = lecture_key
-            found_source_filename = _source_filename_or_none(reading.get("source_filename"))
-            break
-        if found_lecture_key:
-            break
+    if request.user.is_authenticated:
+        subject_payload = get_subject_learning_path_snapshot(request.user, subject.slug)
+    else:
+        subject_payload = load_subject_content_manifest(subject.slug)
+    found_lecture_key, found_source_filename = _find_reading_source_in_lectures(
+        lectures=subject_payload.get("lectures") if isinstance(subject_payload, dict) else None,
+        normalized_reading_key=normalized_reading_key,
+    )
 
     if not found_lecture_key:
         raise Http404("Tekst ikke fundet i fagets læringssti.")

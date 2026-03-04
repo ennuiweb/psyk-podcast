@@ -142,7 +142,7 @@ The repository includes a Django portal in `freudd_portal/` for hybrid auth (use
 - `GET /api/gamification/me` (login-required gamification snapshot)
 - `GET /progress` (login-required dashboard with `Mine fag`, personal tracking, quizliga, and optional `Quizhistorik` section controlled by `FREUDD_PROGRESS_QUIZ_HISTORY_ENABLED`)
 - `GET /subjects/<subject_slug>` (login-required subject detail with lecture-first path + nested readings/assets)
-- `GET /subjects/<subject_slug>/readings/open/<reading_key>` (login-required reading file access; blocked if excluded in config)
+- `GET /subjects/<subject_slug>/readings/open/<reading_key>` (public reading file access; blocked if excluded in config)
 - `POST /subjects/<subject_slug>/enroll` (login-required)
 - `POST /subjects/<subject_slug>/unenroll` (login-required)
 
@@ -286,7 +286,7 @@ Quiz sync behavior (current):
 - Google account linking is explicit (`/accounts/3rdparty/`); implicit email-based social account takeover is disabled
 - Wrapper/raw quiz endpoints are public (`/q/*`, `/q/raw/*`) for anonymous play
 - Public quiz content API (`/api/quiz-content/<id>`) serves normalized quiz JSON to the portal UI
-- Login required on dashboard + state persistence + subject preference APIs (`/progress`, `/api/quiz-state/*`, `/subjects/*`, `/preferences/*`)
+- Login required on dashboard + state persistence + subject preference APIs (`/progress`, `/api/quiz-state/*`, `/subjects/*`, `/preferences/*`), except public reading file endpoint (`/subjects/<subject_slug>/readings/open/<reading_key>` and `/tekster/open/<reading_key>`)
 - Login required on `/api/gamification/me`
 - Anonymous users are prompted to log in when they reach quiz summary/completion
 - Strict quiz ID regex (`^[0-9a-f]{8}$`) plus existence checks

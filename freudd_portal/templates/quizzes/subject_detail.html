@@ -1055,6 +1055,27 @@
     justify-content: flex-end;
   }
 
+  .reading-action-button {
+    border: 1px solid color-mix(in srgb, var(--accent) 40%, var(--border));
+    background: color-mix(in srgb, var(--accent-soft) 55%, var(--surface));
+    color: var(--accent-strong);
+    border-radius: var(--radius-pill);
+    min-height: 30px;
+    padding: 0 10px;
+    font-family: var(--subject-font-ui);
+    font-size: 0.76rem;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 140ms ease, border-color 140ms ease, color 140ms ease;
+  }
+
+  .reading-action-button:hover {
+    border-color: color-mix(in srgb, var(--accent) 64%, var(--border));
+    background: color-mix(in srgb, var(--accent-soft) 72%, var(--surface));
+    color: var(--accent);
+  }
+
   .reading-side {
     display: flex;
     flex-direction: column;
@@ -1732,11 +1753,19 @@
                     {% endif %}
                   </div>
                   <div class="reading-side">
-                    {% if reading.is_missing %}
                     <div class="reading-actions">
+                      {% if reading.open_url %}
+                      <button class="reading-action-button reading-action-chatgpt" type="button" data-chatgpt-reading
+                        data-reading-title="{{ reading.reading_title }}" data-reading-url="{{ reading.open_url }}"
+                        aria-label="Send {{ reading.reading_title }} til ChatGPT">
+                        Send til ChatGPT
+                      </button>
+                      {% endif %}
+
+                      {% if reading.is_missing %}
                       <span class="missing-badge">Mangler kilde</span>
+                      {% endif %}
                     </div>
-                    {% endif %}
 
                     <div class="reading-difficulties">
                       {% if reading.visible_difficulty_summary %}
@@ -2044,6 +2073,60 @@
 
     playButtons.forEach((button) => {
       button.addEventListener("click", () => openPlayer(button));
+    });
+  })();
+
+  (() => {
+    const chatButtons = Array.from(document.querySelectorAll("button[data-chatgpt-reading]"));
+    if (!chatButtons.length) {
+      return;
+    }
+
+    const chatBaseUrl = "https://chatgpt.com/";
+    const buildPrompt = ({ title, fileUrl }) => {
+      return [
+        "Hjælp mig med denne tekst.",
+        `Titel: ${title}`,
+        `Fil: ${fileUrl}`,
+        "Lav et kort resume i punktform og derefter 5 refleksionsspørgsmål på dansk.",
+      ].join("\n");
+    };
+
+    const copyToClipboard = async (value) => {
+      if (!navigator.clipboard || typeof navigator.clipboard.writeText !== "function") {
+        return false;
+      }
+      try {
+        await navigator.clipboard.writeText(value);
+        return true;
+      } catch (error) {
+        return false;
+      }
+    };
+
+    chatButtons.forEach((button) => {
+      button.addEventListener("click", async (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+
+        const readingTitle = String(button.getAttribute("data-reading-title") || "").trim() || "Tekst";
+        const readingUrlRaw = String(button.getAttribute("data-reading-url") || "").trim();
+        if (!readingUrlRaw) {
+          return;
+        }
+
+        const readingUrl = new URL(readingUrlRaw, window.location.origin).href;
+        const prompt = buildPrompt({
+          title: readingTitle,
+          fileUrl: readingUrl,
+        });
+        const chatUrl = `${chatBaseUrl}?q=${encodeURIComponent(prompt)}`;
+        await copyToClipboard(prompt);
+        const openedWindow = window.open(chatUrl, "_blank", "noopener");
+        if (!openedWindow) {
+          window.location.assign(chatUrl);
+        }
+      });
     });
   })();
 

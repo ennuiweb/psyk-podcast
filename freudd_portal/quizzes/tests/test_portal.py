@@ -2406,8 +2406,11 @@ class QuizPortalTests(TestCase):
         )
         self.assertContains(response, expected_url)
         self.assertContains(response, "åbn tekst")
+        self.assertContains(response, "Send til ChatGPT")
+        self.assertContains(response, "data-chatgpt-reading")
+        self.assertContains(response, f'data-reading-url="{expected_url}"')
 
-    def test_subject_open_reading_requires_login(self) -> None:
+    def test_subject_open_reading_is_public(self) -> None:
         user = self._create_user()
         self.client.force_login(user)
         detail = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
@@ -2423,8 +2426,9 @@ class QuizPortalTests(TestCase):
                 },
             )
         )
-        self.assertEqual(response.status_code, 302)
-        self.assertIn("/accounts/login", response.url)
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response["Content-Type"], "application/pdf")
+        self.assertIn("inline", response.get("Content-Disposition", ""))
 
     def test_subject_open_reading_serves_pdf_inline(self) -> None:
         user = self._create_user()

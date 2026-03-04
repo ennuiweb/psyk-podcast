@@ -162,24 +162,26 @@
   .quiz-option {
     text-align: left;
     display: flex;
-    align-items: center;
-    gap: var(--space-2);
+    align-items: flex-start;
+    gap: var(--space-3);
     width: 100%;
     min-width: 0;
     min-height: var(--control-min-height);
     border: 1px solid var(--border-strong);
     border-radius: var(--radius-sub);
-    background: var(--surface-elevated);
+    background: color-mix(in srgb, var(--surface) 88%, var(--surface-elevated));
     color: var(--ink);
-    padding: var(--space-3) var(--space-3);
+    padding: var(--space-3) var(--space-4);
     cursor: pointer;
-    transition: border-color 140ms ease, background 140ms ease, color 140ms ease;
+    box-shadow: 0 1px 0 color-mix(in srgb, var(--border) 68%, transparent);
+    transition: border-color 140ms ease, background 140ms ease, color 140ms ease, box-shadow 140ms ease;
   }
 
   .quiz-option:hover {
-    border-color: color-mix(in srgb, var(--accent) 45%, transparent);
-    background: var(--info-bg);
+    border-color: color-mix(in srgb, var(--accent) 62%, var(--border-strong));
+    background: color-mix(in srgb, var(--info-bg) 78%, var(--surface));
     color: var(--info-ink-strong);
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent) 18%, transparent);
   }
 
   .quiz-option.is-selected {
@@ -199,24 +201,41 @@
 
   .quiz-option-index {
     flex: 0 0 auto;
-    width: 24px;
-    height: 24px;
+    width: 42px;
+    height: 42px;
     border-radius: var(--radius-pill);
-    border: 1px solid color-mix(in srgb, var(--accent) 36%, transparent);
+    border: 1px solid color-mix(in srgb, var(--accent) 48%, transparent);
     color: var(--info-ink);
     background: var(--info-bg);
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.72rem;
-    font-weight: 800;
+    font-size: 1.14rem;
+    font-weight: 900;
+    line-height: 1;
+    margin-top: 1px;
   }
 
   .quiz-option-text {
     flex: 1 1 auto;
     min-width: 0;
+    color: var(--text-strong);
+    font-size: clamp(1.12rem, 1.28vw, 1.34rem);
+    line-height: 1.34;
+    font-weight: 600;
     overflow-wrap: anywhere;
     hyphens: auto;
+  }
+
+  .quiz-option.is-selected .quiz-option-text,
+  .quiz-option.is-correct .quiz-option-text,
+  .quiz-option.is-wrong .quiz-option-text {
+    color: var(--ink);
+  }
+
+  .quiz-option.is-selected .quiz-option-index {
+    border-color: color-mix(in srgb, var(--accent) 64%, transparent);
+    background: color-mix(in srgb, var(--info-bg-strong) 78%, var(--surface));
   }
 
   .quiz-hint,
@@ -357,6 +376,21 @@
 
     .quiz-stage {
       padding: var(--space-4);
+    }
+
+    .quiz-option {
+      padding: var(--space-3);
+    }
+
+    .quiz-option-index {
+      width: 38px;
+      height: 38px;
+      font-size: 1.02rem;
+    }
+
+    .quiz-option-text {
+      font-size: 1.04rem;
+      line-height: 1.32;
     }
   }
 </style>

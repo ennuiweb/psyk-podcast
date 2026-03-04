@@ -502,14 +502,15 @@
     margin: 0;
     padding: 0;
     list-style: none;
-    display: grid;
-    gap: clamp(16px, 1.6vw, 24px);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
   }
 
   .quiz-difficulty-row {
     margin: 0;
-    display: grid;
-    gap: 6px;
+    display: flex;
+    flex-direction: column;
     padding: 0;
     background: transparent;
   }
@@ -517,50 +518,49 @@
   .quiz-difficulty-header {
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin: 0;
+    gap: 8px;
+    margin: 0 0 4px;
   }
 
   .quiz-difficulty-icon {
     font-family: 'Material Symbols Outlined';
-    width: clamp(30px, 2.15vw, 36px);
-    font-size: clamp(24px, 1.9vw, 30px);
-    line-height: 1;
+    font-size: 20px;
     color: var(--text-strong);
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    flex: 0 0 auto;
-    font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 36;
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
   }
 
   .quiz-difficulty-title {
     margin: 0;
     color: var(--text-strong);
     font-family: var(--subject-font-editorial);
-    font-size: clamp(1.9rem, 2.05vw, 2.7rem);
-    font-weight: 700;
-    line-height: 1.05;
-    letter-spacing: -0.01em;
+    font-size: clamp(1rem, 1.7vw, 1.32rem);
+    font-weight: 600;
+    line-height: 1.14;
+    letter-spacing: -0.006em;
     text-decoration: none;
   }
 
   .quiz-difficulty-row.has-action .quiz-difficulty-title:hover {
-    color: color-mix(in srgb, var(--text-strong) 82%, var(--muted));
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.1em;
   }
 
   .quiz-difficulty-meta {
     margin: 0;
-    padding-left: calc(clamp(30px, 2.15vw, 36px) + 10px);
-    color: color-mix(in srgb, var(--muted) 88%, #9a8e7b);
+    padding-left: 28px;
+    color: color-mix(in srgb, var(--text-subtle-2) 72%, var(--muted));
     font-family: var(--font-mono);
-    font-size: clamp(1.3rem, 1.6vw, 2.05rem);
-    line-height: 1.15;
+    font-size: clamp(0.9rem, 1.25vw, 1.08rem);
+    line-height: 1.24;
     letter-spacing: 0.01em;
   }
 
   .quiz-difficulty-row.is-disabled {
-    opacity: 1;
+    opacity: 0.68;
   }
 
   .quiz-difficulty-empty {
@@ -1042,11 +1042,12 @@
 
   @media (min-width: 1181px) {
     .reading-side {
-      width: min(100%, 520px);
+      width: min(100%, 340px);
       flex-shrink: 0;
       border-top: none;
+      border-left: 1px solid color-mix(in srgb, var(--border-strong) 20%, transparent);
       padding-top: 0;
-      padding-left: 0;
+      padding-left: var(--space-4);
     }
   }
 
@@ -1254,15 +1255,15 @@
     }
 
     .quiz-difficulty-list {
-      gap: clamp(14px, 2.8vw, 22px);
+      gap: var(--space-3);
     }
 
     .quiz-difficulty-title {
-      font-size: clamp(1.6rem, 2.7vw, 2rem);
+      font-size: clamp(1.04rem, 2.3vw, 1.34rem);
     }
 
     .quiz-difficulty-meta {
-      font-size: clamp(1.05rem, 2vw, 1.34rem);
+      font-size: clamp(0.92rem, 1.6vw, 1.08rem);
     }
 
     .podcast-list {
@@ -1494,22 +1495,13 @@
       gap: var(--space-3);
     }
 
-    .quiz-difficulty-header {
-      gap: 8px;
-    }
-
-    .quiz-difficulty-icon {
-      width: 26px;
-      font-size: 22px;
-    }
-
     .quiz-difficulty-title {
-      font-size: clamp(1.04rem, 5vw, 1.2rem);
+      font-size: clamp(0.98rem, 4.2vw, 1.14rem);
     }
 
     .quiz-difficulty-meta {
-      padding-left: 34px;
-      font-size: clamp(0.84rem, 3.8vw, 1rem);
+      padding-left: 28px;
+      font-size: clamp(0.82rem, 3.6vw, 0.98rem);
     }
   }
 

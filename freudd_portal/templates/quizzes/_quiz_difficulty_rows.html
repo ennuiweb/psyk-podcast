@@ -3,7 +3,14 @@
   <li
     class="quiz-difficulty-row is-{{ slot.difficulty }} is-{{ slot.state_key }} {% if slot.quiz_url %}has-action{% else %}is-disabled{% endif %}">
     <div class="quiz-difficulty-header">
+      {% if slot.quiz_url %}
+      <a class="material-symbols-outlined quiz-difficulty-icon quiz-difficulty-icon-link" href="{{ slot.quiz_url }}"
+        aria-label="Åbn {{ slot.title }}">
+        filter_{{ slot.display_index }}
+      </a>
+      {% else %}
       <span class="material-symbols-outlined quiz-difficulty-icon">filter_{{ slot.display_index }}</span>
+      {% endif %}
       {% if slot.quiz_url %}
       <a class="quiz-difficulty-title" href="{{ slot.quiz_url }}">{{ slot.title }}</a>
       {% else %}
@@ -11,7 +18,11 @@
       {% endif %}
     </div>
     {% if slot.meta_line %}
+    {% if slot.quiz_url %}
+    <a class="quiz-difficulty-meta quiz-difficulty-meta-link" href="{{ slot.quiz_url }}">{{ slot.meta_line }}</a>
+    {% else %}
     <p class="quiz-difficulty-meta">{{ slot.meta_line }}</p>
+    {% endif %}
     {% endif %}
   </li>
   {% endfor %}

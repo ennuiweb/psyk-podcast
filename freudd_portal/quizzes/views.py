@@ -252,6 +252,7 @@ def _annotate_quiz_difficulty_slots_for_user(
         slot_copy["title"] = f"{difficulty_label} quiz"
         slot_copy["state_key"] = state_key
         slot_copy["state_label"] = QUIZ_SLOT_STATE_LABELS_DA.get(state_key, "")
+        slot_copy["has_attempt"] = progress is not None
         slot_copy["has_metrics"] = False
         slot_copy["meta_line"] = slot_copy["state_label"]
 
@@ -333,6 +334,67 @@ def _visible_quiz_difficulty_slots(slots: object) -> list[dict[str, object]]:
         if quiz_url or state_key == "completed":
             visible.append(slot)
     return visible
+
+
+def _active_lecture_quiz_progress_totals(lecture: object) -> dict[str, int]:
+    totals = {
+        "total_quizzes": 0,
+        "perfect_quizzes": 0,
+        "taken_quizzes": 0,
+        "correct_answers": 0,
+        "total_questions": 0,
+        "points_earned": 0,
+        "points_total": 0,
+    }
+    if not isinstance(lecture, dict):
+        return totals
+
+    slots = lecture.get("quiz_difficulty_slots") if isinstance(lecture.get("quiz_difficulty_slots"), list) else []
+    referenced_slots = 0
+
+    for slot in slots:
+        if not isinstance(slot, dict):
+            continue
+        quiz_id = str(slot.get("quiz_id") or "").strip()
+        quiz_url = str(slot.get("quiz_url") or "").strip()
+        has_attempt = bool(slot.get("has_attempt"))
+        state_key = str(slot.get("state_key") or "").strip().lower()
+
+        if quiz_id or quiz_url or has_attempt or state_key == "completed":
+            referenced_slots += 1
+
+        if has_attempt:
+            totals["taken_quizzes"] += 1
+
+        question_count = _safe_non_negative_int(slot.get("question_count"))
+        correct_answers = max(0, min(_safe_non_negative_int(slot.get("correct_answers")), question_count))
+        totals["correct_answers"] += correct_answers
+        totals["total_questions"] += question_count
+
+        display_points_total = _safe_non_negative_int(slot.get("display_points_total"))
+        if question_count > 0 and display_points_total <= 0:
+            display_points_total = QUIZ_DISPLAY_POINTS_MAX
+        display_points_earned = max(
+            0,
+            min(_safe_non_negative_int(slot.get("display_points_earned")), display_points_total),
+        )
+        totals["points_earned"] += display_points_earned
+        totals["points_total"] += display_points_total
+
+        if has_attempt and question_count > 0 and correct_answers >= question_count:
+            totals["perfect_quizzes"] += 1
+
+    declared_total = _safe_non_negative_int(lecture.get("total_quizzes"))
+    totals["total_quizzes"] = max(
+        declared_total,
+        referenced_slots,
+        totals["taken_quizzes"],
+        totals["perfect_quizzes"],
+    )
+    totals["taken_quizzes"] = min(totals["taken_quizzes"], totals["total_quizzes"])
+    totals["perfect_quizzes"] = min(totals["perfect_quizzes"], totals["taken_quizzes"])
+
+    return totals
 
 
 def _leaderboard_tab_icon(subject_slug: str) -> str:
@@ -2171,6 +2233,7 @@ def subject_detail_view(request: HttpRequest, subject_slug: str) -> HttpResponse
         active_lecture["quiz_difficulty_visible_slots"] = _visible_quiz_difficulty_slots(
             active_lecture.get("quiz_difficulty_slots"),
         )
+        active_lecture["quiz_progress_totals"] = _active_lecture_quiz_progress_totals(active_lecture)
         active_lecture["podcast_rows"] = _flatten_podcast_rows(active_lecture)
         readings = active_lecture.get("readings") if isinstance(active_lecture.get("readings"), list) else []
         for reading in readings:

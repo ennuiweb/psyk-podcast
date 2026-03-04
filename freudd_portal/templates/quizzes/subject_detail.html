@@ -1703,7 +1703,7 @@
           <h2 class="active-lecture-title">{{ active_lecture.lecture_display_title }}</h2>
           {% endif %}
           <div class="active-lecture-meta">
-            <p class="active-lecture-progress">{{ active_lecture.completed_quizzes }} / {{ active_lecture.total_quizzes }}</p>
+            <p class="active-lecture-progress">{{ active_lecture.quiz_progress_totals.perfect_quizzes }}/{{ active_lecture.quiz_progress_totals.total_quizzes }} quizzer perfekt gennemført • {{ active_lecture.quiz_progress_totals.taken_quizzes }}/{{ active_lecture.quiz_progress_totals.total_quizzes }} quizzer taget • {{ active_lecture.quiz_progress_totals.correct_answers }}/{{ active_lecture.quiz_progress_totals.total_questions }} rigtige svar • {{ active_lecture.quiz_progress_totals.points_earned }}/{{ active_lecture.quiz_progress_totals.points_total }} point</p>
             {% if active_lecture.status == 'completed' %}
             <p class="active-lecture-state">
               Fuldført

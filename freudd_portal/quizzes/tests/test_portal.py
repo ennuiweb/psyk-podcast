@@ -2244,7 +2244,13 @@ class QuizPortalTests(TestCase):
         self.assertContains(response, "Svær quiz")
         self.assertContains(response, "10/10 rigtige • 150/150 point")
         self.assertContains(response, "6/10 rigtige • 75/150 point")
-        self.assertContains(response, 'class="active-lecture-progress">1 / 3</p>')
+        self.assertContains(
+            response,
+            (
+                'class="active-lecture-progress">1/3 quizzer perfekt gennemført • 2/3 quizzer taget'
+                " • 16/30 rigtige svar • 225/450 point</p>"
+            ),
+        )
         self.assertNotContains(response, "{{ active_lecture.total_quizzes")
         self.assertNotContains(response, "Ikke startet")
         self.assertNotContains(response, "I gang")
@@ -2330,6 +2336,10 @@ class QuizPortalTests(TestCase):
             response = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
 
         self.assertEqual(response.status_code, 200)
+        self.assertContains(
+            response,
+            "0/0 quizzer perfekt gennemført • 0/0 quizzer taget • 0/0 rigtige svar • 0/0 point",
+        )
         self.assertNotContains(response, 'class="lecture-section lecture-quizzes"')
         self.assertNotContains(response, "Quiz for alle kilder")
         self.assertNotContains(response, "Ingen aktivitet registreret")

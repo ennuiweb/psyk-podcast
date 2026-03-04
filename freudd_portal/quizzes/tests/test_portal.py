@@ -2404,11 +2404,19 @@ class QuizPortalTests(TestCase):
                 "reading_key": reading["reading_key"],
             },
         )
+        expected_text_url = reverse(
+            "subject-open-reading-text",
+            kwargs={
+                "subject_slug": "personlighedspsykologi",
+                "reading_key": reading["reading_key"],
+            },
+        )
         self.assertContains(response, expected_url)
         self.assertContains(response, "åbn tekst")
         self.assertContains(response, "Send til ChatGPT")
         self.assertContains(response, "data-chatgpt-reading")
         self.assertContains(response, f'data-reading-url="{expected_url}"')
+        self.assertContains(response, f'data-reading-text-url="{expected_text_url}"')
 
     def test_subject_open_reading_is_public(self) -> None:
         user = self._create_user()
@@ -2448,6 +2456,50 @@ class QuizPortalTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response["Content-Type"], "application/pdf")
         self.assertIn("inline", response.get("Content-Disposition", ""))
+
+    def test_subject_open_reading_text_is_public(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+        detail = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
+        reading_key = detail.context["active_lecture"]["readings"][0]["reading_key"]
+        self.client.logout()
+
+        response = self.client.get(
+            reverse(
+                "subject-open-reading-text",
+                kwargs={
+                    "subject_slug": "personlighedspsykologi",
+                    "reading_key": reading_key,
+                },
+            )
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response["Content-Type"], "text/plain; charset=utf-8")
+        self.assertIn("Titel:", response.content.decode("utf-8"))
+
+    def test_subject_open_reading_text_blocks_excluded_reading_keys(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+        detail = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
+        reading_key = detail.context["active_lecture"]["readings"][0]["reading_key"]
+
+        text_url = reverse(
+            "subject-open-reading-text",
+            kwargs={
+                "subject_slug": "personlighedspsykologi",
+                "reading_key": reading_key,
+            },
+        )
+
+        self._write_reading_download_exclusions([reading_key])
+        from quizzes import views as quiz_views
+
+        quiz_views._READING_EXCLUSION_CACHE["path"] = None
+        quiz_views._READING_EXCLUSION_CACHE["mtime"] = None
+        quiz_views._READING_EXCLUSION_CACHE["data"] = {}
+
+        blocked = self.client.get(text_url)
+        self.assertEqual(blocked.status_code, 404)
 
     def test_subject_open_reading_serves_docx_as_attachment(self) -> None:
         user = self._create_user()

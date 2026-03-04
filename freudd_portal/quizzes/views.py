@@ -5,6 +5,8 @@ from __future__ import annotations
 import json
 import logging
 import re
+import zipfile
+from xml.etree import ElementTree
 from pathlib import Path
 from urllib.parse import urlencode
 
@@ -27,6 +29,7 @@ from django.utils import timezone
 from django.utils.http import url_has_allowed_host_and_scheme
 from django.urls import reverse
 from django.views.decorators.http import require_GET, require_http_methods, require_POST
+from pypdf import PdfReader
 
 from .content_services import load_subject_content_manifest
 from .forms import SignupForm
@@ -131,6 +134,8 @@ _READING_EXCLUSION_CACHE: dict[str, object] = {
     "mtime": None,
     "data": {},
 }
+READING_TEXT_CHAR_LIMIT = 200_000
+READING_TEXT_PAGE_LIMIT = 60
 
 
 def _is_http_insecure(request: HttpRequest) -> bool:
@@ -387,6 +392,130 @@ def _find_reading_source_in_lectures(
             source_filename = _source_filename_or_none(reading.get("source_filename"))
             return lecture_key, source_filename
     return None, None
+
+
+def _resolve_subject_reading_file_or_404(
+    request: HttpRequest,
+    *,
+    subject_slug: str,
+    reading_key: str,
+) -> tuple[object, str, str, Path]:
+    catalog = load_subject_catalog()
+    subject = _subject_or_404(catalog, subject_slug)
+
+    normalized_reading_key = str(reading_key or "").strip().lower()
+    if not SUBJECT_READING_KEY_RE.match(normalized_reading_key):
+        raise Http404("Tekst ikke fundet i fagets læringssti.")
+    if _is_reading_download_excluded(
+        subject_slug=subject.slug,
+        reading_key=normalized_reading_key,
+    ):
+        raise Http404("Tekst ikke fundet i fagets læringssti.")
+
+    if request.user.is_authenticated:
+        subject_payload = get_subject_learning_path_snapshot(request.user, subject.slug)
+    else:
+        subject_payload = load_subject_content_manifest(subject.slug)
+    found_lecture_key, found_source_filename = _find_reading_source_in_lectures(
+        lectures=subject_payload.get("lectures") if isinstance(subject_payload, dict) else None,
+        normalized_reading_key=normalized_reading_key,
+    )
+
+    if not found_lecture_key:
+        raise Http404("Tekst ikke fundet i fagets læringssti.")
+    if not found_source_filename:
+        raise Http404("Tekst-filen blev ikke fundet.")
+
+    file_path = _reading_file_path_or_404(
+        subject_slug=subject.slug,
+        lecture_key=found_lecture_key,
+        source_filename=found_source_filename,
+    )
+    return subject, normalized_reading_key, found_source_filename, file_path
+
+
+def _extract_pdf_text_for_chatgpt(path: Path) -> tuple[str, bool]:
+    try:
+        reader = PdfReader(str(path))
+    except Exception:
+        return "", False
+
+    parts: list[str] = []
+    char_count = 0
+    truncated = False
+    for page_index, page in enumerate(reader.pages):
+        if page_index >= READING_TEXT_PAGE_LIMIT:
+            truncated = True
+            break
+        try:
+            page_text = str(page.extract_text() or "").strip()
+        except Exception:
+            continue
+        if not page_text:
+            continue
+        remaining = READING_TEXT_CHAR_LIMIT - char_count
+        if remaining <= 0:
+            truncated = True
+            break
+        clipped = page_text[:remaining]
+        if len(clipped) < len(page_text):
+            truncated = True
+        parts.append(clipped)
+        char_count += len(clipped)
+    return "\n\n".join(parts).strip(), truncated
+
+
+def _extract_docx_text_for_chatgpt(path: Path) -> tuple[str, bool]:
+    try:
+        with zipfile.ZipFile(path) as archive:
+            raw_xml = archive.read("word/document.xml")
+    except Exception:
+        return "", False
+
+    try:
+        root = ElementTree.fromstring(raw_xml)
+    except ElementTree.ParseError:
+        return "", False
+
+    namespace = {"w": "http://schemas.openxmlformats.org/wordprocessingml/2006/main"}
+    paragraphs: list[str] = []
+    char_count = 0
+    truncated = False
+    for paragraph in root.findall(".//w:p", namespace):
+        fragments = [str(node.text) for node in paragraph.findall(".//w:t", namespace) if node.text]
+        if not fragments:
+            continue
+        text = "".join(fragments).strip()
+        if not text:
+            continue
+        remaining = READING_TEXT_CHAR_LIMIT - char_count
+        if remaining <= 0:
+            truncated = True
+            break
+        clipped = text[:remaining]
+        if len(clipped) < len(text):
+            truncated = True
+        paragraphs.append(clipped)
+        char_count += len(clipped)
+    return "\n\n".join(paragraphs).strip(), truncated
+
+
+def _text_payload_for_chatgpt_reading(*, title: str, text: str, source_url: str, truncated: bool) -> str:
+    body = text.strip() or "Ingen læsbar tekst kunne udtrækkes automatisk fra filen."
+    lines = [
+        f"Titel: {title}",
+        f"Kilde: {source_url}",
+        "",
+    ]
+    if truncated:
+        lines.append(
+            f"Bemærk: Teksten er afkortet til de første {READING_TEXT_CHAR_LIMIT} tegn "
+            f"eller {READING_TEXT_PAGE_LIMIT} sider."
+        )
+        lines.append("")
+    lines.append(body)
+    lines.append("")
+    return "\n".join(lines)
 
 
 def _normalize_exclusion_payload(payload: object) -> dict[str, set[str]]:
@@ -1750,36 +1879,10 @@ def leaderboard_profile_view(request: HttpRequest) -> HttpResponse:
 
 @require_GET
 def subject_open_reading_view(request: HttpRequest, subject_slug: str, reading_key: str) -> HttpResponse:
-    catalog = load_subject_catalog()
-    subject = _subject_or_404(catalog, subject_slug)
-
-    normalized_reading_key = str(reading_key or "").strip().lower()
-    if not SUBJECT_READING_KEY_RE.match(normalized_reading_key):
-        raise Http404("Tekst ikke fundet i fagets læringssti.")
-    if _is_reading_download_excluded(
-        subject_slug=subject.slug,
-        reading_key=normalized_reading_key,
-    ):
-        raise Http404("Tekst ikke fundet i fagets læringssti.")
-
-    if request.user.is_authenticated:
-        subject_payload = get_subject_learning_path_snapshot(request.user, subject.slug)
-    else:
-        subject_payload = load_subject_content_manifest(subject.slug)
-    found_lecture_key, found_source_filename = _find_reading_source_in_lectures(
-        lectures=subject_payload.get("lectures") if isinstance(subject_payload, dict) else None,
-        normalized_reading_key=normalized_reading_key,
-    )
-
-    if not found_lecture_key:
-        raise Http404("Tekst ikke fundet i fagets læringssti.")
-    if not found_source_filename:
-        raise Http404("Tekst-filen blev ikke fundet.")
-
-    file_path = _reading_file_path_or_404(
-        subject_slug=subject.slug,
-        lecture_key=found_lecture_key,
-        source_filename=found_source_filename,
+    _, _, found_source_filename, file_path = _resolve_subject_reading_file_or_404(
+        request,
+        subject_slug=subject_slug,
+        reading_key=reading_key,
     )
     suffix = file_path.suffix.lower()
     if suffix == ".pdf":
@@ -1798,6 +1901,41 @@ def subject_open_reading_view(request: HttpRequest, subject_slug: str, reading_k
         as_attachment=as_attachment,
         filename=found_source_filename,
     )
+
+
+@require_GET
+def subject_open_reading_text_view(request: HttpRequest, subject_slug: str, reading_key: str) -> HttpResponse:
+    subject, normalized_reading_key, source_filename, file_path = _resolve_subject_reading_file_or_404(
+        request,
+        subject_slug=subject_slug,
+        reading_key=reading_key,
+    )
+    suffix = file_path.suffix.lower()
+    if suffix == ".pdf":
+        extracted_text, truncated = _extract_pdf_text_for_chatgpt(file_path)
+    elif suffix == ".docx":
+        extracted_text, truncated = _extract_docx_text_for_chatgpt(file_path)
+    else:
+        extracted_text, truncated = "", False
+
+    source_url = request.build_absolute_uri(
+        reverse(
+            "subject-open-reading",
+            kwargs={
+                "subject_slug": subject.slug,
+                "reading_key": normalized_reading_key,
+            },
+        )
+    )
+    payload = _text_payload_for_chatgpt_reading(
+        title=source_filename,
+        text=extracted_text,
+        source_url=source_url,
+        truncated=truncated,
+    )
+    response = HttpResponse(payload, content_type="text/plain; charset=utf-8")
+    response["Content-Disposition"] = f'inline; filename="{source_filename}.txt"'
+    return response
 
 
 @login_required
@@ -2001,8 +2139,16 @@ def subject_detail_view(request: HttpRequest, subject_slug: str) -> HttpResponse
                         "reading_key": normalized_reading_key,
                     },
                 )
+                reading["open_text_url"] = reverse(
+                    "subject-open-reading-text",
+                    kwargs={
+                        "subject_slug": subject.slug,
+                        "reading_key": normalized_reading_key,
+                    },
+                )
             else:
                 reading["open_url"] = ""
+                reading["open_text_url"] = ""
             for slot in summary:
                 quiz_url = str(slot.get("quiz_url") or "").strip()
                 if quiz_url:

@@ -61,7 +61,7 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Quiz assets are surfaced only in `Quiz for alle kilder`, podcast assets only in `Podcasts`, and tekststatus/progress only in `Tekster`.
 - If no podcasts are available for the active lecture, the `Podcasts` section is hidden.
 - Tekstkort always render L/M/S difficulty indicators in subject detail.
-- Tekstkort include a `Send til ChatGPT` quick action that opens a new ChatGPT chat with a prefilled prompt (title + tekst URL).
+- Tekstkort include a `Send til ChatGPT` quick action that opens a new ChatGPT chat with a prefilled prompt (title + tekst text-URL + original file URL).
 - Lecture rail rows render extra-compact marker dots on mobile (without index numbers) plus lecture copy (week label + cleaned lecture title).
 - Module headers in subject detail are rendered as a combined headline (`Uge x, forelæsning x: <titel>`), with cleaned lecture title metadata.
 - Quiz labels are rendered from cleaned `episode_title` metadata (`modul` + `titel`) instead of raw file/tag strings.
@@ -102,6 +102,7 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - `POST /leaderboard/profile`
 - `GET /subjects/<subject_slug>`
 - `GET /subjects/<subject_slug>/tekster/open/<reading_key>` (public tekst-fil adgang; blocked if excluded in config)
+- `GET /subjects/<subject_slug>/tekster/open/<reading_key>/text` (public tekstudtræk til ChatGPT; blocked if excluded in config)
 - `POST /subjects/<subject_slug>/enroll`
 - `POST /subjects/<subject_slug>/unenroll`
 - `POST /subjects/<subject_slug>/tracking/tekst`

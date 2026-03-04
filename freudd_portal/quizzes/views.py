@@ -801,6 +801,27 @@ def _lecture_rail_copy(
     return lecture_text
 
 
+def _lecture_mobile_rail_label(
+    *,
+    lecture_key: object,
+    lecture_display_label: object,
+    index: int,
+) -> str:
+    key_text = str(lecture_key or "").strip().upper()
+    match = LECTURE_KEY_DISPLAY_RE.match(key_text)
+    if match:
+        week = int(match.group("week"))
+        lecture = int(match.group("lecture"))
+        return f"U{week} · F{lecture}"
+
+    label_text = str(lecture_display_label or "").strip()
+    if label_text:
+        return re.sub(r"\s+", " ", label_text)
+    if key_text:
+        return key_text
+    return f"Lektion {index}"
+
+
 def _quiz_cfg_tags(raw_title: str) -> dict[str, str]:
     tags: dict[str, str] = {}
     for block_match in QUIZ_CFG_BLOCK_RE.finditer(raw_title):
@@ -1236,6 +1257,11 @@ def _lecture_rail_items(
                     lecture_key=lecture.get("lecture_key"),
                     lecture_display_name=lecture.get("lecture_display_name"),
                     lecture_display_title=lecture.get("lecture_display_title"),
+                ),
+                "mobile_rail_label": _lecture_mobile_rail_label(
+                    lecture_key=lecture.get("lecture_key"),
+                    lecture_display_label=lecture.get("lecture_display_label"),
+                    index=index,
                 ),
             }
         )

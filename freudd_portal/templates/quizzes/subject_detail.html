@@ -339,6 +339,23 @@
     transition: color 160ms ease;
   }
 
+  .lecture-rail-mobile-copy {
+    display: none;
+    margin: 0;
+    color: var(--text-subtle-2);
+    font-family: "Public Sans", "Inter", "Manrope", sans-serif;
+    line-height: 1.12;
+    font-size: 0.58rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    hyphens: auto;
+    transition: color 160ms ease;
+  }
+
   .lecture-rail-copy-title {
     color: inherit;
     font-family: "Public Sans", "Inter", "Manrope", sans-serif;
@@ -369,8 +386,17 @@
     color: #2d3a4f;
   }
 
+  .lecture-rail-item.is-active .lecture-rail-mobile-copy {
+    color: #2d3a4f;
+  }
+
   .lecture-rail-item.is-past .lecture-rail-copy,
   .lecture-rail-item.is-completed .lecture-rail-copy {
+    color: #2f3d53;
+  }
+
+  .lecture-rail-item.is-past .lecture-rail-mobile-copy,
+  .lecture-rail-item.is-completed .lecture-rail-mobile-copy {
     color: #2f3d53;
   }
 
@@ -1151,9 +1177,9 @@
 
     .lecture-rail-item {
       min-height: 72px;
-      grid-template-columns: 20px;
-      column-gap: 0;
-      justify-content: center;
+      grid-template-columns: 20px minmax(0, 1fr);
+      column-gap: 8px;
+      justify-content: start;
     }
 
     .lecture-rail-item::after {
@@ -1172,6 +1198,24 @@
 
     .lecture-rail-copy {
       display: none;
+    }
+
+    .lecture-rail-mobile-copy {
+      display: block;
+      align-self: start;
+      max-width: 44px;
+      font-size: clamp(0.54rem, 1.2vw, 0.66rem);
+    }
+
+    .lecture-rail-mobile-copy:hover,
+    .lecture-rail-mobile-copy:focus-visible {
+      color: #7f8ea2;
+    }
+
+    .lecture-rail-mobile-copy:focus-visible {
+      outline: 2px solid color-mix(in srgb, var(--accent) 34%, transparent);
+      outline-offset: 2px;
+      border-radius: 6px;
     }
 
     .lecture-rail-link {
@@ -1339,13 +1383,14 @@
     }
 
     .subject-path-layout {
-      grid-template-columns: 16px minmax(0, 1fr);
-      gap: 2px;
+      grid-template-columns: 54px minmax(0, 1fr);
+      gap: 4px;
     }
 
     .lecture-rail-item {
       min-height: 44px;
-      grid-template-columns: 14px;
+      grid-template-columns: 14px minmax(0, 1fr);
+      column-gap: 5px;
     }
 
     .lecture-rail-item::after {
@@ -1359,6 +1404,11 @@
       height: 14px;
       font-size: 0;
       line-height: 1;
+    }
+
+    .lecture-rail-mobile-copy {
+      max-width: 35px;
+      font-size: 0.53rem;
     }
 
     .active-lecture-card {
@@ -1456,13 +1506,14 @@
     }
 
     .subject-path-layout {
-      grid-template-columns: 14px minmax(0, 1fr);
+      grid-template-columns: 48px minmax(0, 1fr);
       gap: 1px;
     }
 
     .lecture-rail-item {
       min-height: 40px;
-      grid-template-columns: 12px;
+      grid-template-columns: 12px minmax(0, 1fr);
+      column-gap: 4px;
     }
 
     .lecture-rail-item::after {
@@ -1474,6 +1525,11 @@
     .lecture-rail-link {
       width: 12px;
       height: 12px;
+    }
+
+    .lecture-rail-mobile-copy {
+      max-width: 30px;
+      font-size: 0.5rem;
     }
 
     .active-lecture-card {
@@ -1589,6 +1645,10 @@
             <a class="lecture-rail-link" href="{{ rail.lecture_url }}"
               aria-current="{% if rail.is_active %}step{% else %}false{% endif %}"
               aria-label="{{ rail.lecture_display_title|default:rail.lecture_key }}"></a>
+            <a class="lecture-rail-mobile-copy" href="{{ rail.lecture_url }}"
+              aria-label="{{ rail.lecture_display_title|default:rail.lecture_key }}">
+              {{ rail.mobile_rail_label|default:rail.lecture_display_label|default:rail.index }}
+            </a>
             <a class="lecture-rail-copy" href="{{ rail.lecture_url }}"
               aria-label="{{ rail.lecture_display_title|default:rail.lecture_key }}">
               <span class="lecture-rail-copy-title">{{ rail.rail_copy|default:rail.lecture_display_title }}</span>

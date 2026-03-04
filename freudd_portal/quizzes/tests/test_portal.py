@@ -1931,6 +1931,8 @@ class QuizPortalTests(TestCase):
         self.assertContains(response, "Grundbog kapitel 01 - Introduktion til personlighedspsykologi")
         self.assertContains(response, "Uge 1, forelæsning 1: Introforelaesning")
         self.assertNotContains(response, "lecture-rail-copy-date")
+        self.assertContains(response, "lecture-rail-mobile-copy")
+        self.assertContains(response, "U1 · F1")
         self.assertContains(response, "subject-cup-link-label\">scoreboard</span>")
         self.assertContains(
             response,
@@ -2082,6 +2084,9 @@ class QuizPortalTests(TestCase):
         self.assertEqual(rail_items[1]["lecture_key"], "W01L2")
         self.assertTrue(rail_items[0]["lecture_url"].endswith("?lecture=W01L1"))
         self.assertTrue(rail_items[1]["lecture_url"].endswith("?lecture=W01L2"))
+        self.assertEqual(rail_items[0]["mobile_rail_label"], "U1 · F1")
+        self.assertEqual(rail_items[1]["mobile_rail_label"], "U1 · F2")
+        self.assertContains(response, 'class="lecture-rail-mobile-copy"')
         self.assertContains(response, 'class="lecture-rail-copy"')
         self.assertContains(response, 'class="lecture-rail-copy-title"')
         self.assertNotContains(response, 'class="lecture-rail-copy-date"')

@@ -962,9 +962,9 @@
     border: 1px solid var(--border);
     border-radius: var(--radius-sub);
     background: var(--surface);
-    padding: var(--space-3);
+    padding: clamp(24px, 2vw, 32px);
     display: grid;
-    gap: var(--space-2);
+    gap: clamp(16px, 1.4vw, 24px);
     position: relative;
     overflow: hidden;
   }
@@ -1002,13 +1002,15 @@
 
   .reading-top {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 420px);
     align-items: start;
-    gap: var(--space-3);
+    gap: clamp(24px, 3vw, 40px);
   }
 
   .reading-main {
     min-width: 0;
+    display: grid;
+    gap: 8px;
   }
 
   .reading-title {
@@ -1047,7 +1049,7 @@
   .reading-actions {
     display: inline-flex;
     align-items: center;
-    gap: var(--space-1);
+    gap: 12px;
     flex-wrap: wrap;
     justify-content: flex-end;
   }
@@ -1057,10 +1059,10 @@
     background: color-mix(in srgb, var(--surface-alt) 78%, var(--surface));
     color: var(--text-strong);
     border-radius: var(--radius-pill);
-    min-height: 30px;
-    padding: 0 10px;
+    min-height: 44px;
+    padding: 0 18px;
     font-family: var(--subject-font-ui);
-    font-size: 0.76rem;
+    font-size: 0.9rem;
     font-weight: 700;
     cursor: pointer;
     text-decoration: none;
@@ -1111,8 +1113,20 @@
     }
   }
 
+  .reading-side.has-difficulties .reading-actions {
+    margin-bottom: 20px;
+  }
+
   .reading-difficulties {
     width: 100%;
+  }
+
+  .reading-difficulties .quiz-difficulty-list {
+    gap: 18px;
+  }
+
+  .reading-difficulties .quiz-difficulty-row {
+    gap: 6px;
   }
 
   .missing-badge {
@@ -1400,6 +1414,25 @@
     .reading-top {
       grid-template-columns: minmax(0, 1fr);
     }
+
+    .reading-card {
+      padding: clamp(16px, 2vw, 24px);
+      gap: 14px;
+    }
+
+    .reading-actions {
+      gap: 10px;
+    }
+
+    .reading-side.has-difficulties .reading-actions {
+      margin-bottom: 14px;
+    }
+
+    .reading-action-button {
+      min-height: 40px;
+      padding: 0 14px;
+      font-size: 0.84rem;
+    }
   }
 
   @media (max-width: 760px) {
@@ -1512,6 +1545,12 @@
 
     .reading-difficulties {
       gap: 8px;
+    }
+
+    .reading-action-button {
+      min-height: 36px;
+      padding: 0 12px;
+      font-size: 0.78rem;
     }
 
     .podcast-row {
@@ -1759,7 +1798,7 @@
                     </p>
                     {% endif %}
                   </div>
-                  <div class="reading-side">
+                  <div class="reading-side {% if reading.visible_difficulty_summary %}has-difficulties{% endif %}">
                     <div class="reading-actions">
                       {% if reading.open_pdf_url %}
                       <button class="reading-action-button reading-action-chatgpt" type="button" data-chatgpt-reading

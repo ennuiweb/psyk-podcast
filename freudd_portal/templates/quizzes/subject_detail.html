@@ -458,6 +458,22 @@
     gap: 2px;
   }
 
+  .active-lecture-inline-quizzes {
+    display: grid;
+    gap: var(--space-2);
+  }
+
+  .active-lecture-inline-quizzes-title {
+    margin: 0;
+    color: var(--text-subtle-2);
+    font-family: var(--subject-font-ui);
+    font-size: 0.92rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0.01em;
+    text-transform: none;
+  }
+
   .active-lecture-sections {
     display: grid;
     gap: var(--subject-space-block);
@@ -1712,6 +1728,13 @@
           </div>
         </header>
 
+        {% if active_lecture.quiz_difficulty_visible_slots %}
+        <div class="active-lecture-inline-quizzes" id="subject-quizzes">
+          <h3 class="active-lecture-inline-quizzes-title">quizzer for alle kilder til lektionen</h3>
+          {% include "quizzes/_quiz_difficulty_rows.html" with slots=active_lecture.quiz_difficulty_visible_slots %}
+        </div>
+        {% endif %}
+
         <div class="active-lecture-sections">
           <section class="lecture-section lecture-readings" id="subject-library">
             <div class="lecture-section-head">
@@ -1876,27 +1899,6 @@
           </section>
           {% endif %}
 
-          {% if active_lecture.quiz_difficulty_visible_slots %}
-          <section class="lecture-section lecture-quizzes" id="subject-quizzes">
-            <div class="lecture-section-head">
-              <div class="section-title-wrap">
-                <span class="asset-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
-                    <path d="M14.25 4.5h5.25v5.25"></path>
-                    <path d="M13.5 10.5 19.5 4.5"></path>
-                    <path
-                      d="M10.5 6H6A2.25 2.25 0 0 0 3.75 8.25V18A2.25 2.25 0 0 0 6 20.25h9.75A2.25 2.25 0 0 0 18 18v-4.5">
-                    </path>
-                  </svg>
-                </span>
-                <h3 class="section-title">Quizzer</h3>
-                <span class="visually-hidden">Quiz for alle kilder</span>
-              </div>
-            </div>
-
-            {% include "quizzes/_quiz_difficulty_rows.html" with slots=active_lecture.quiz_difficulty_visible_slots %}
-          </section>
-          {% endif %}
         </div>
       </article>
     </div>

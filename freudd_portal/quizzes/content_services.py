@@ -37,6 +37,7 @@ ALL_SOURCES_RE = re.compile(r"\b(?:alle kilder|all sources)\b", re.IGNORECASE)
 NON_ALNUM_RE = re.compile(r"[^a-z0-9]+")
 MULTISPACE_RE = re.compile(r"\s+")
 OVELSESHOLD_NOTE_RE = re.compile(r"\(\s*tekst\s+for\s+øvelseshold\s*\)", re.IGNORECASE)
+OVELSESHOLD_SHORT_NOTE = "(Øvelseshold)"
 SPOTIFY_EPISODE_URL_RE = re.compile(
     r"^https://open\.spotify\.com/episode/[A-Za-z0-9]+(?:[/?#].*)?$",
     re.IGNORECASE,
@@ -177,6 +178,16 @@ def _normalize_title(value: str) -> str:
             normalized = normalized[len(token) :].strip()
     normalized = re.sub(r"^w\d{1,2}l\d+\s*", "", normalized)
     return normalized.strip()
+
+
+def _display_reading_title(value: str) -> str:
+    raw = str(value or "").strip()
+    if not raw:
+        return ""
+    if not OVELSESHOLD_NOTE_RE.search(raw):
+        return raw
+    shortened = OVELSESHOLD_NOTE_RE.sub(OVELSESHOLD_SHORT_NOTE, raw)
+    return MULTISPACE_RE.sub(" ", shortened).strip()
 
 
 def _reading_key(lecture_key: str, reading_title: str) -> str:
@@ -574,7 +585,7 @@ def build_subject_content_manifest(subject_slug: str) -> SubjectContentManifest:
                     base_reading_key,
                     seen_counts=reading_key_counts,
                 ),
-                "reading_title": str(reading.title),
+                "reading_title": _display_reading_title(reading.title),
                 "is_missing": bool(reading.is_missing),
                 "source_filename": source_filename,
                 "sequence_index": reading_position + 1,

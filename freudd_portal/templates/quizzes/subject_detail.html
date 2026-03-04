@@ -1792,10 +1792,6 @@
                     <div class="reading-difficulties">
                       {% if reading.visible_difficulty_summary %}
                       {% include "quizzes/_quiz_difficulty_rows.html" with slots=reading.visible_difficulty_summary %}
-                      {% else %}
-                      <div class="quiz-difficulty-empty">
-                        Ingen aktivitet registreret
-                      </div>
                       {% endif %}
                     </div>
                   </div>

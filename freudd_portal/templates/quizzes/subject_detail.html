@@ -1645,11 +1645,12 @@
             {% if active_lecture.readings %}
             <ul class="reading-list">
               {% for reading in active_lecture.readings %}
+              {% with reading_open_url=reading.open_pdf_url|default:reading.open_url %}
               <li
-                class="reading-card {% if reading.open_url %}has-open-reading{% endif %} {% if reading.is_missing %}is-missing{% endif %} {% if reading.status == 'completed' %}is-completed{% endif %}"
-                {% if reading.open_url %} data-open-url="{{ reading.open_url }}" role="link" tabindex="0"
+                class="reading-card {% if reading_open_url %}has-open-reading{% endif %} {% if reading.is_missing %}is-missing{% endif %} {% if reading.status == 'completed' %}is-completed{% endif %}"
+                {% if reading_open_url %} data-open-url="{{ reading_open_url }}" role="link" tabindex="0"
                 aria-label="åbn tekst: {{ reading.reading_title }}" {% endif %}>
-                {% if reading.open_url %}
+                {% if reading_open_url %}
                 <span class="reading-hover-label" aria-hidden="true">åben tekst</span>
                 {% endif %}
                 <div class="reading-top">
@@ -1718,6 +1719,7 @@
                 <p class="missing-note">Denne tekst er markeret som manglende i kildelisten.</p>
                 {% endif %}
               </li>
+              {% endwith %}
               {% endfor %}
             </ul>
             {% else %}

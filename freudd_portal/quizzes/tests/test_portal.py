@@ -2431,13 +2431,6 @@ class QuizPortalTests(TestCase):
         self.assertEqual(response.status_code, 200)
         lecture = response.context["active_lecture"]
         reading = lecture["readings"][0]
-        expected_url = reverse(
-            "subject-open-reading",
-            kwargs={
-                "subject_slug": "personlighedspsykologi",
-                "reading_key": reading["reading_key"],
-            },
-        )
         expected_pdf_url = reverse(
             "subject-open-reading-pdf",
             kwargs={
@@ -2445,7 +2438,7 @@ class QuizPortalTests(TestCase):
                 "reading_key": reading["reading_key"],
             },
         )
-        self.assertContains(response, expected_url)
+        self.assertContains(response, f'data-open-url="{expected_pdf_url}"')
         self.assertContains(response, "åbn tekst")
         self.assertContains(response, "Send til ChatGPT")
         self.assertContains(response, "data-chatgpt-reading")

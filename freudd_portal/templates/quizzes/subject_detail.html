@@ -1742,24 +1742,6 @@
                 <div class="reading-top">
                   <div class="reading-main">
                     <div class="reading-title-row">
-                      <form method="post" action="{{ reading_tracking_url }}" class="tracking-toggle-form">
-                        {% csrf_token %}
-                        <input type="hidden" name="next" value="{{ request.get_full_path }}" />
-                        <input type="hidden" name="lecture_key" value="{{ active_lecture.lecture_key }}" />
-                        <input type="hidden" name="reading_key" value="{{ reading.reading_key }}" />
-                        <input type="hidden" name="action"
-                          value="{% if reading.is_marked_read %}unmark{% else %}mark{% endif %}" />
-                        <button class="tracking-toggle-button {% if reading.is_marked_read %}is-marked{% endif %}"
-                          type="submit"
-                          aria-label="{% if reading.is_marked_read %}Fjern markering læst{% else %}Markér læst{% endif %}">
-                          <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
-                            <path d="M5 12.5 9.3 17 19 7.4"></path>
-                          </svg>
-                          <span class="visually-hidden">
-                            {% if reading.is_marked_read %}Læst{% else %}Markér læst{% endif %}
-                          </span>
-                        </button>
-                      </form>
                       <p class="reading-title"><strong>{{ reading.reading_title }}</strong></p>
                     </div>
                     <p class="reading-meta">{{ reading.completed_quizzes }} / {{ reading.total_quizzes }}</p>

@@ -2,7 +2,7 @@
 {% block title %}fag · {{ subject.title|lower }}{% endblock %}
 {% block content %}
 <style>
-  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Public+Sans:wght@300;400;500&display=swap");
 
   .subject-layout {
     --subject-font-ui: "Inter", "Public Sans", "Manrope", sans-serif;
@@ -153,7 +153,7 @@
 
   .subject-path-tools {
     display: grid;
-    grid-template-columns: minmax(187px, 255px) minmax(0, 1fr);
+    grid-template-columns: minmax(168px, 230px) minmax(0, 1fr);
     align-items: center;
     margin-bottom: var(--subject-space-tight);
   }
@@ -218,7 +218,7 @@
 
   .subject-path-layout {
     display: grid;
-    grid-template-columns: minmax(187px, 255px) minmax(0, 1fr);
+    grid-template-columns: minmax(168px, 230px) minmax(0, 1fr);
     gap: var(--subject-space-block);
     align-items: start;
   }
@@ -342,8 +342,8 @@
   .lecture-rail-copy-title {
     color: inherit;
     font-family: "Public Sans", "Inter", "Manrope", sans-serif;
-    font-size: clamp(1rem, 1.08vw, 1.06rem);
-    font-weight: 400;
+    font-size: clamp(0.9rem, 0.972vw, 0.954rem);
+    font-weight: 300;
     line-height: 1.23;
     letter-spacing: -0.012em;
     text-wrap: pretty;
@@ -377,7 +377,7 @@
   .lecture-rail-item.is-active .lecture-rail-copy-title,
   .lecture-rail-item.is-past .lecture-rail-copy-title,
   .lecture-rail-item.is-completed .lecture-rail-copy-title {
-    font-weight: 500;
+    font-weight: 400;
   }
 
   .active-lecture-card {

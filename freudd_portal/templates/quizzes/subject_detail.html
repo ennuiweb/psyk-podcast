@@ -1995,23 +1995,38 @@
     };
 
     chatButtons.forEach((button) => {
+      if (button.dataset.chatgptBound === "1") {
+        return;
+      }
+      button.dataset.chatgptBound = "1";
       button.addEventListener("click", async (event) => {
         event.preventDefault();
+        event.stopImmediatePropagation();
         event.stopPropagation();
-
-        const readingPdfUrlRaw = String(button.getAttribute("data-reading-pdf-url") || "").trim();
-        if (!readingPdfUrlRaw) {
+        if (button.dataset.chatgptLaunching === "1") {
           return;
         }
-        const readingPdfUrl = new URL(readingPdfUrlRaw, window.location.origin).href;
-        const prompt = buildPrompt({
-          pdfUrl: readingPdfUrl,
-        });
-        const chatUrl = `${chatBaseUrl}?q=${encodeURIComponent(prompt)}`;
-        await copyToClipboard(prompt);
-        const openedWindow = window.open(chatUrl, "_blank", "noopener");
-        if (!openedWindow) {
-          window.location.assign(chatUrl);
+        button.dataset.chatgptLaunching = "1";
+
+        try {
+          const readingPdfUrlRaw = String(button.getAttribute("data-reading-pdf-url") || "").trim();
+          if (!readingPdfUrlRaw) {
+            return;
+          }
+          const readingPdfUrl = new URL(readingPdfUrlRaw, window.location.origin).href;
+          const prompt = buildPrompt({
+            pdfUrl: readingPdfUrl,
+          });
+          const chatUrl = `${chatBaseUrl}?q=${encodeURIComponent(prompt)}`;
+          await copyToClipboard(prompt);
+          const openedWindow = window.open(chatUrl, "_blank", "noopener");
+          if (!openedWindow) {
+            window.location.assign(chatUrl);
+          }
+        } finally {
+          window.setTimeout(() => {
+            button.dataset.chatgptLaunching = "0";
+          }, 1200);
         }
       });
     });

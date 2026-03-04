@@ -384,7 +384,7 @@ def _normalize_name_for_lookup(name: str) -> str:
     path = Path(stripped)
     suffix = "".join(path.suffixes)
     stem = stripped[: -len(suffix)] if suffix else stripped
-    stem = normalize_week_tokens(stem)
+    stem = strip_week_prefix(stem)
     stem = re.sub(r"\s+", " ", stem).strip()
     stem = WEEK_X_IN_STEM_PATTERN.sub(r"\1 ", stem).strip()
     stem = re.sub(r"\s+", " ", stem).strip()

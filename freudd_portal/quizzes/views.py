@@ -108,7 +108,7 @@ LEADERBOARD_TAB_ICON_BY_SUBJECT = {
 }
 LECTURE_KEY_DISPLAY_RE = re.compile(r"^W(?P<week>\d{1,2})L(?P<lecture>\d+)$", re.IGNORECASE)
 LECTURE_META_SUFFIX_RE = re.compile(
-    r"\s*\((?:forelæsning|forelaesning)\s+(?P<lecture>\d+)\s*,\s*(?P<date>\d{4}-\d{2}-\d{2})\)\s*$",
+    r"\s*\((?:forelæsning|forelaesning)\s+\d+(?:\s*,\s*\d{4}-\d{2}-\d{2})?\)\s*$",
     re.IGNORECASE,
 )
 QUIZ_CFG_BLOCK_RE = re.compile(r"\{(?P<body>[^{}]+)\}")
@@ -636,14 +636,6 @@ def _lecture_display_parts(*, lecture_key: object, lecture_title: object) -> tup
     return "", raw_title
 
 
-def _lecture_date_from_title(lecture_title: object) -> str:
-    raw_title = str(lecture_title or "").strip()
-    match = LECTURE_META_SUFFIX_RE.search(raw_title)
-    if not match:
-        return ""
-    return str(match.group("date") or "").strip()
-
-
 def _lecture_rail_copy(
     *,
     lecture_key: object,
@@ -860,7 +852,6 @@ def _enrich_subject_path_lectures(lectures: object) -> list[dict[str, object]]:
             lecture_copy["lecture_display_title"] = f"{lecture_label} · {lecture_name}"
         else:
             lecture_copy["lecture_display_title"] = lecture_label or lecture_name
-        lecture_copy["lecture_date"] = _lecture_date_from_title(lecture_copy.get("lecture_title"))
         lecture_copy["progress_percent"] = _progress_percent(
             completed=lecture_copy.get("completed_quizzes"),
             total=lecture_copy.get("total_quizzes"),
@@ -1098,7 +1089,6 @@ def _lecture_rail_items(
                 "lecture_display_label": str(lecture.get("lecture_display_label") or "").strip(),
                 "lecture_display_name": str(lecture.get("lecture_display_name") or "").strip(),
                 "lecture_display_title": str(lecture.get("lecture_display_title") or "").strip(),
-                "lecture_date": str(lecture.get("lecture_date") or "").strip(),
                 "rail_copy": _lecture_rail_copy(
                     lecture_key=lecture.get("lecture_key"),
                     lecture_display_name=lecture.get("lecture_display_name"),

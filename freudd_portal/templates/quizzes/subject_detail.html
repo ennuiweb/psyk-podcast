@@ -348,15 +348,6 @@
     text-wrap: pretty;
   }
 
-  .lecture-rail-copy-date {
-    color: var(--muted);
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
-    line-height: 1.2;
-    letter-spacing: 0.018em;
-    white-space: nowrap;
-  }
-
   .lecture-rail-copy:hover,
   .lecture-rail-copy:focus-visible {
     color: #7f8ea2;
@@ -386,16 +377,6 @@
   .lecture-rail-item.is-past .lecture-rail-copy-title,
   .lecture-rail-item.is-completed .lecture-rail-copy-title {
     font-weight: 700;
-  }
-
-  .lecture-rail-item.is-active .lecture-rail-copy-date {
-    color: #33445f;
-    font-weight: 600;
-  }
-
-  .lecture-rail-item.is-past .lecture-rail-copy-date,
-  .lecture-rail-item.is-completed .lecture-rail-copy-date {
-    color: #6c7f9a;
   }
 
   .active-lecture-card {
@@ -1663,9 +1644,6 @@
             <a class="lecture-rail-copy" href="{{ rail.lecture_url }}"
               aria-label="{{ rail.lecture_display_title|default:rail.lecture_key }}">
               <span class="lecture-rail-copy-title">{{ rail.rail_copy|default:rail.lecture_display_title }}</span>
-              {% if rail.lecture_date %}
-              <span class="lecture-rail-copy-date">({{ rail.lecture_date }})</span>
-              {% endif %}
             </a>
           </li>
           {% endfor %}

@@ -151,6 +151,8 @@ class ResponsiveTemplateRulesTests(SimpleTestCase):
         self.assertIn("padding: var(--space-5);\n    min-width: 0;\n  }", body)
         self.assertIn("width: 100%;\n    min-width: 0;\n    min-height: var(--control-min-height);", body)
         self.assertIn(".quiz-option-text {\n    flex: 1 1 auto;\n    min-width: 0;", body)
+        self.assertIn('id="quiz-score-progress"', body)
+        self.assertIn("const scoreProgressNode = document.getElementById(\"quiz-score-progress\");", body)
 
     def test_quiz_wrapper_summary_exposes_quiz_cup_link_and_rank_feedback_hook(self) -> None:
         body = self._template_text("quizzes/wrapper.html")

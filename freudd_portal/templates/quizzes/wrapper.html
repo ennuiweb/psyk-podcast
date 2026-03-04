@@ -112,6 +112,14 @@
     font-variant-numeric: tabular-nums;
   }
 
+  .quiz-score-progress {
+    margin: 0;
+    color: var(--info-ink-strong);
+    font-size: 0.84rem;
+    font-variant-numeric: tabular-nums;
+    font-weight: 700;
+  }
+
   .quiz-timer {
     margin: 0;
     font-size: 0.84rem;
@@ -382,6 +390,7 @@
       <div class="quiz-flow-row">
         <p class="muted quiz-counter" id="quiz-counter"></p>
         <p class="quiz-answered" id="quiz-answered"></p>
+        <p class="quiz-score-progress" id="quiz-score-progress"></p>
         <p class="quiz-timer" id="quiz-timer"></p>
       </div>
       <progress id="quiz-progress" class="quiz-progress-track" value="0" max="100" aria-label="Progress i quiz">
@@ -473,6 +482,7 @@
 
   const counterNode = document.getElementById("quiz-counter");
   const answeredNode = document.getElementById("quiz-answered");
+  const scoreProgressNode = document.getElementById("quiz-score-progress");
   const timerNode = document.getElementById("quiz-timer");
   const progressNode = document.getElementById("quiz-progress");
   const questionNode = document.getElementById("quiz-question");
@@ -1023,6 +1033,40 @@
     return baseQuestionPoints + speedBonus;
   }
 
+  function accumulatedQuizPoints() {
+    if (!quiz || !Array.isArray(quiz.questions)) {
+      return 0;
+    }
+    let totalPoints = 0;
+    for (let index = 0; index < quiz.questions.length; index += 1) {
+      if (isQuestionTimedOut(index)) {
+        continue;
+      }
+      const selected = state.userAnswers[String(index)];
+      if (selected === null || selected === undefined) {
+        continue;
+      }
+      const question = quiz.questions[index];
+      const options = Array.isArray(question?.answerOptions) ? question.answerOptions : [];
+      const selectedIndex = Number.parseInt(String(selected), 10);
+      if (!Number.isInteger(selectedIndex) || selectedIndex < 0 || selectedIndex >= options.length) {
+        continue;
+      }
+      if (options[selectedIndex]?.isCorrect === true) {
+        totalPoints += computeQuestionPoints(true, responseDurationMsForQuestion(index));
+      }
+    }
+    return totalPoints;
+  }
+
+  function renderScoreProgressLabel() {
+    if (!scoreProgressNode || !quiz || !Array.isArray(quiz.questions)) {
+      return;
+    }
+    const totalPossiblePoints = quiz.questions.length * maxQuestionPoints;
+    scoreProgressNode.textContent = `Point: ${accumulatedQuizPoints()}/${totalPossiblePoints}`;
+  }
+
   function formatDurationLabel(durationMs) {
     const value = Math.max(0, Number.parseInt(String(durationMs), 10) || 0);
     const seconds = value / 1000;
@@ -1241,6 +1285,7 @@
 
     counterNode.textContent = `Spørgsmål ${state.currentQuestionIndex + 1} af ${totalQuestions}`;
     answeredNode.textContent = `Besvaret: ${answeredQuestions} / ${totalQuestions}`;
+    renderScoreProgressLabel();
     progressNode.value = flowProgress;
     progressNode.textContent = `${flowProgress}%`;
     questionNode.textContent = normalizeQuestionCopy(question.question);

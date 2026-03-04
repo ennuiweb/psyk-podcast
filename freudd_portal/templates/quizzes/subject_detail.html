@@ -415,23 +415,23 @@
     display: grid;
     gap: var(--subject-space-block);
     box-shadow: var(--shadow-container);
-    min-height: 420px;
+    min-height: 0;
     min-width: 0;
   }
 
   .active-lecture-head {
     display: grid;
-    gap: 6px;
+    gap: 10px;
   }
 
   .active-lecture-title {
     margin: 0;
     color: var(--text-strong);
     font-family: var(--subject-font-editorial);
-    font-size: clamp(1.38rem, 2.2vw, 2.08rem);
-    font-weight: 500;
-    line-height: 1.14;
-    letter-spacing: -0.01em;
+    font-size: clamp(1.26rem, 1.8vw, 1.74rem);
+    font-weight: 600;
+    line-height: 1.12;
+    letter-spacing: -0.008em;
     overflow-wrap: anywhere;
     word-break: break-word;
     hyphens: auto;
@@ -439,11 +439,14 @@
 
   .active-lecture-progress {
     margin: 0;
-    color: var(--text-strong);
-    font-family: var(--subject-font-ui);
-    font-size: 1rem;
-    line-height: 1.2;
-    font-weight: 700;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
   }
 
   .active-lecture-state {
@@ -455,22 +458,64 @@
 
   .active-lecture-meta {
     display: grid;
+    gap: 9px;
+  }
+
+  .active-lecture-kpis {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .active-lecture-kpi {
+    margin: 0;
+    border: 1px solid color-mix(in srgb, var(--border-strong) 24%, var(--border));
+    border-radius: 11px;
+    background: color-mix(in srgb, var(--surface) 90%, var(--surface-soft));
+    padding: 8px 10px;
+    display: grid;
     gap: 2px;
+    min-width: 0;
+  }
+
+  .active-lecture-kpi-value {
+    color: var(--text-strong);
+    font-family: var(--font-mono);
+    font-size: 0.84rem;
+    font-weight: 600;
+    line-height: 1.14;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .active-lecture-kpi-label {
+    color: color-mix(in srgb, var(--muted) 92%, var(--text-subtle-2));
+    font-family: var(--subject-font-ui);
+    font-size: 0.69rem;
+    font-weight: 600;
+    line-height: 1.16;
+    letter-spacing: 0.01em;
+    text-transform: lowercase;
   }
 
   .active-lecture-inline-quizzes {
     display: grid;
-    gap: var(--space-2);
+    gap: var(--space-3);
   }
 
   .active-lecture-inline-quizzes-title {
     margin: 0;
     color: var(--text-subtle-2);
     font-family: var(--subject-font-ui);
-    font-size: 0.92rem;
+    font-size: 0.94rem;
     font-weight: 700;
     line-height: 1.2;
-    letter-spacing: 0.01em;
+    letter-spacing: -0.005em;
     text-transform: none;
   }
 
@@ -545,13 +590,13 @@
     padding: 0;
     list-style: none;
     display: grid;
-    gap: clamp(9px, 0.95vw, 14px);
+    gap: clamp(11px, 0.9vw, 15px);
   }
 
   .quiz-difficulty-row {
     margin: 0;
     display: grid;
-    gap: 4px;
+    gap: 2px;
     padding: 0;
     background: transparent;
   }
@@ -559,14 +604,14 @@
   .quiz-difficulty-header {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 5px;
     margin: 0;
   }
 
   .quiz-difficulty-icon {
     font-family: 'Material Symbols Outlined';
-    width: clamp(20px, 1.3vw, 24px);
-    font-size: clamp(17px, 1.08vw, 21px);
+    width: clamp(18px, 1.1vw, 21px);
+    font-size: clamp(16px, 0.96vw, 19px);
     line-height: 1;
     color: var(--text-strong);
     display: inline-flex;
@@ -581,9 +626,9 @@
     margin: 0;
     color: var(--text-strong);
     font-family: var(--subject-font-editorial);
-    font-size: clamp(1.04rem, 1.04vw, 1.26rem);
+    font-size: clamp(0.98rem, 0.9vw, 1.12rem);
     font-weight: 700;
-    line-height: 1.1;
+    line-height: 1.08;
     letter-spacing: -0.01em;
     text-decoration: none;
   }
@@ -604,12 +649,12 @@
 
   .quiz-difficulty-meta {
     margin: 0;
-    padding-left: calc(clamp(20px, 1.3vw, 24px) + 6px);
-    color: color-mix(in srgb, var(--muted) 56%, #d2cabc);
+    padding-left: calc(clamp(18px, 1.1vw, 21px) + 5px);
+    color: color-mix(in srgb, var(--muted) 76%, #d5cec1);
     font-family: var(--font-mono);
-    font-size: clamp(0.82rem, 0.79vw, 0.94rem);
-    font-weight: 400;
-    line-height: 1.16;
+    font-size: clamp(0.78rem, 0.72vw, 0.86rem);
+    font-weight: 500;
+    line-height: 1.14;
     letter-spacing: 0.01em;
   }
 
@@ -1288,24 +1333,35 @@
     }
 
     .active-lecture-title {
-      font-size: clamp(1.52rem, 3.9vw, 2rem);
-      line-height: 1.18;
+      font-size: clamp(1.36rem, 3vw, 1.74rem);
+      line-height: 1.16;
       letter-spacing: -0.008em;
     }
 
     .active-lecture-meta {
-      gap: 10px;
+      gap: 8px;
     }
 
-    .active-lecture-progress {
-      font-size: 1rem;
-      line-height: 1.22;
-      letter-spacing: -0.006em;
+    .active-lecture-kpis {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 7px;
+    }
+
+    .active-lecture-kpi {
+      padding: 8px 9px;
+    }
+
+    .active-lecture-kpi-value {
+      font-size: 0.82rem;
+    }
+
+    .active-lecture-kpi-label {
+      font-size: 0.67rem;
     }
 
     .active-lecture-state {
-      font-size: 1rem;
-      line-height: 1.24;
+      font-size: 0.92rem;
+      line-height: 1.2;
       font-weight: 500;
       color: #606b80;
     }
@@ -1340,15 +1396,15 @@
     }
 
     .quiz-difficulty-list {
-      gap: clamp(9px, 1.8vw, 13px);
+      gap: clamp(10px, 1.5vw, 13px);
     }
 
     .quiz-difficulty-title {
-      font-size: clamp(0.94rem, 1.95vw, 1.14rem);
+      font-size: clamp(0.92rem, 1.6vw, 1.06rem);
     }
 
     .quiz-difficulty-meta {
-      font-size: clamp(0.8rem, 1.33vw, 0.9rem);
+      font-size: clamp(0.74rem, 1.16vw, 0.84rem);
     }
 
     .podcast-list {
@@ -1496,19 +1552,32 @@
     }
 
     .active-lecture-title {
-      font-size: clamp(1.34rem, 6.1vw, 1.72rem);
-      line-height: 1.2;
+      font-size: clamp(1.18rem, 5.1vw, 1.42rem);
+      line-height: 1.16;
       letter-spacing: -0.006em;
     }
 
-    .active-lecture-progress {
-      font-size: 0.96rem;
-      line-height: 1.22;
+    .active-lecture-kpis {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 6px;
+    }
+
+    .active-lecture-kpi {
+      padding: 7px 8px;
+      border-radius: 9px;
+    }
+
+    .active-lecture-kpi-value {
+      font-size: 0.78rem;
+    }
+
+    .active-lecture-kpi-label {
+      font-size: 0.64rem;
     }
 
     .active-lecture-state {
-      font-size: 0.92rem;
-      line-height: 1.24;
+      font-size: 0.86rem;
+      line-height: 1.2;
     }
 
     .section-title {
@@ -1623,12 +1692,12 @@
     }
 
     .quiz-difficulty-title {
-      font-size: clamp(0.86rem, 3.7vw, 0.98rem);
+      font-size: clamp(0.82rem, 3.5vw, 0.94rem);
     }
 
     .quiz-difficulty-meta {
       padding-left: 26px;
-      font-size: clamp(0.74rem, 3vw, 0.84rem);
+      font-size: clamp(0.7rem, 2.8vw, 0.8rem);
     }
   }
 
@@ -1736,6 +1805,24 @@
           {% endif %}
           <div class="active-lecture-meta">
             <p class="active-lecture-progress">{{ active_lecture.quiz_progress_totals.perfect_quizzes }}/{{ active_lecture.quiz_progress_totals.total_quizzes }} quizzer perfekt gennemført • {{ active_lecture.quiz_progress_totals.taken_quizzes }}/{{ active_lecture.quiz_progress_totals.total_quizzes }} quizzer taget • {{ active_lecture.quiz_progress_totals.correct_answers }}/{{ active_lecture.quiz_progress_totals.total_questions }} rigtige svar • {{ active_lecture.quiz_progress_totals.points_earned }}/{{ active_lecture.quiz_progress_totals.points_total }} point</p>
+            <ul class="active-lecture-kpis" aria-label="fremdrift i quizzer">
+              <li class="active-lecture-kpi">
+                <span class="active-lecture-kpi-value">{{ active_lecture.quiz_progress_totals.perfect_quizzes }}/{{ active_lecture.quiz_progress_totals.total_quizzes }}</span>
+                <span class="active-lecture-kpi-label">quizzer perfekt</span>
+              </li>
+              <li class="active-lecture-kpi">
+                <span class="active-lecture-kpi-value">{{ active_lecture.quiz_progress_totals.taken_quizzes }}/{{ active_lecture.quiz_progress_totals.total_quizzes }}</span>
+                <span class="active-lecture-kpi-label">quizzer taget</span>
+              </li>
+              <li class="active-lecture-kpi">
+                <span class="active-lecture-kpi-value">{{ active_lecture.quiz_progress_totals.correct_answers }}/{{ active_lecture.quiz_progress_totals.total_questions }}</span>
+                <span class="active-lecture-kpi-label">rigtige svar</span>
+              </li>
+              <li class="active-lecture-kpi">
+                <span class="active-lecture-kpi-value">{{ active_lecture.quiz_progress_totals.points_earned }}/{{ active_lecture.quiz_progress_totals.points_total }}</span>
+                <span class="active-lecture-kpi-label">point</span>
+              </li>
+            </ul>
             {% if active_lecture.status == 'completed' %}
             <p class="active-lecture-state">
               Fuldført

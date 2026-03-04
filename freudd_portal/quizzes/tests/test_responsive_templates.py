@@ -66,7 +66,8 @@ class ResponsiveTemplateRulesTests(SimpleTestCase):
         self.assertIn("subject-head-actions", body)
         self.assertIn("subject-cup-link", body)
         self.assertIn("subject-cup-icon", body)
-        self.assertIn("scoreboard for {{ subject.title|lower }}", body)
+        self.assertIn("aria-label=\"scoreboard\"", body)
+        self.assertIn("<span class=\"subject-cup-link-label\">scoreboard</span>", body)
         self.assertIn("{% url 'leaderboard-subject' subject_slug=subject.slug %}", body)
         self.assertIn(
             ".subject-head-actions {\n"

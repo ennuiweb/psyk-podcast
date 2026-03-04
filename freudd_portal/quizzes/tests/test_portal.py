@@ -1897,7 +1897,7 @@ class QuizPortalTests(TestCase):
         self.assertContains(response, "Grundbog kapitel 01 - Introduktion til personlighedspsykologi")
         self.assertContains(response, "Uge 1, forelæsning 1: Introforelaesning")
         self.assertContains(response, "lecture-rail-copy-date")
-        self.assertContains(response, "scoreboard for personlighedspsykologi")
+        self.assertContains(response, "subject-cup-link-label\">scoreboard</span>")
         self.assertContains(
             response,
             f'class="ghost-link back-link subject-cup-link" href="{quiz_cup_url}"',

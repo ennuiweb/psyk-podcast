@@ -135,7 +135,7 @@ Motion rules:
 - Sticky top navigation for orientation.
 - Desktop top navigation uses a three-zone row:
   1. left-aligned `freudd` brand
-  2. subject segmented switcher
+  2. subject tab strip with active underline
   3. right action cluster (`scoreboard`, `Indstillinger`, `Log ud`) in that order
 - Header surface uses `--surface` with a subtle bottom divider (`--border` intent).
 - Constrained content width (`max-width: 1120px`) in main content shell.
@@ -146,7 +146,7 @@ Motion rules:
 - Desktop: full header + full lecture rail labels + two-column learning layout.
 - Compact (`<=1024px`): global sticky header remains visible as logo-only; fixed bottom tabbar.
 - Mobile bottom tabbar uses compact line-icons plus short labels in this order: `Mine fag`, `scoreboard`, `Indstillinger`.
-- In compact mode, the desktop subject segmented switcher and desktop right action cluster are hidden; `scoreboard` remains reachable via the tabbar.
+- In compact mode, the desktop subject tab strip and desktop right action cluster are hidden; `scoreboard` remains reachable via the tabbar.
 - Bottom tabbar must never cover interactive content.
 - All layouts must avoid horizontal page scroll.
 
@@ -175,8 +175,8 @@ Target validation viewports:
 Navigation action hierarchy (`desktop top menu`):
 
 - `scoreboard`: high-salience utility action rendered as an outlined pill with trophy icon + text.
-- `Indstillinger`: neutral outlined pill with lower emphasis than `scoreboard`.
-- `Log ud`: tertiary text-style action (no pill by default).
+- `Indstillinger`: secondary text-link action (no pill).
+- `Log ud`: tertiary text-link action with muted emphasis.
 
 `scoreboard` button design intent:
 
@@ -238,16 +238,17 @@ Strict content boundaries:
 - L/M/S difficulty indicators always visible on reading cards.
 - If no podcasts are available for the active lecture, hide the `Podcasts` section.
 
-### 6.8 Top Navigation Subject Switcher
+### 6.8 Top Navigation Subject Tabs
 
-Segmented switcher pattern (`desktop top menu`, subject context only):
+Subject tab strip pattern (`desktop top menu`, subject context only):
 
-- Container: soft capsule surface (`--surface-soft` / `--bg-soft` intent) with pill silhouette.
-- Active segment: raised/contained pill on `--surface`, stronger text contrast (`--ink`).
-- Inactive segment: flat within the capsule with muted text.
-- Segment labels use body/UI typography (`Public Sans`), medium to semibold weight.
-- The switcher must clearly indicate current subject and remain keyboard reachable.
-- Keep segment motion subtle (color/border/translate only), aligned with global motion rules.
+- Tabs are rendered inline as text-first navigation items, not as segmented pills.
+- Active tab uses accent text (`--accent`) with a clear underline indicator.
+- Inactive tabs use `--muted` text with no underline.
+- Underline should be clearly visible (2-3px) and aligned to tab label width.
+- Tab labels use body/UI typography (`Public Sans`), medium to semibold weight.
+- The tab strip must clearly indicate current subject and remain keyboard reachable.
+- Keep tab-state motion subtle (color/underline only), aligned with global motion rules.
 
 ## 7. Page-Level Blueprints
 
@@ -267,7 +268,7 @@ Behavior:
 - Enrollment mutation controls are isolated to bottom module.
 - Alias editing is explicit mode-based (not always-on).
 - Desktop header action hierarchy follows the global navigation contract:
-  `scoreboard` (outlined icon-pill) > `Indstillinger` (neutral outline) > `Log ud` (text).
+  `scoreboard` (outlined icon-pill) > `Indstillinger` (text-link) > `Log ud` (muted text-link).
 - Mobile (`<=760px`) uses a compact logo-only topbar + fixed bottom tabbar.
 - Dashboard sections render as stacked cards with full-width primary CTAs on mobile.
 
@@ -285,7 +286,7 @@ Behavior:
 - No KPI strip and no global expand/collapse controls.
 - Rail interaction updates active lecture.
 - Maintain fixed section order and strict section boundaries.
-- Subject switching in desktop header uses the segmented control pattern from section `6.8`.
+- Subject switching in desktop header uses the tab-strip pattern from section `6.8`.
 - Keep `scoreboard` accessible as a top-menu quick action with icon + text.
 
 Responsive contract:

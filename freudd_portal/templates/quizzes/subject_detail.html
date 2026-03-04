@@ -1978,14 +1978,8 @@
     }
 
     const chatBaseUrl = "https://chatgpt.com/";
-    const buildPrompt = ({ title, pdfUrl }) => {
-      const lines = [
-        "Hjælp mig med denne tekst.",
-        `Titel: ${title}`,
-      ];
-      lines.push(`Direkte PDF URL: ${pdfUrl}`);
-      lines.push("Lav et kort resume i punktform og derefter 5 refleksionsspørgsmål på dansk.");
-      return lines.join("\n");
+    const buildPrompt = ({ pdfUrl }) => {
+      return `${pdfUrl}\nJeg studerer psykologi på KU. Hjælp mig med denne tekst.\n\n`;
     };
 
     const copyToClipboard = async (value) => {
@@ -2005,14 +1999,12 @@
         event.preventDefault();
         event.stopPropagation();
 
-        const readingTitle = String(button.getAttribute("data-reading-title") || "").trim() || "Tekst";
         const readingPdfUrlRaw = String(button.getAttribute("data-reading-pdf-url") || "").trim();
         if (!readingPdfUrlRaw) {
           return;
         }
         const readingPdfUrl = new URL(readingPdfUrlRaw, window.location.origin).href;
         const prompt = buildPrompt({
-          title: readingTitle,
           pdfUrl: readingPdfUrl,
         });
         const chatUrl = `${chatBaseUrl}?q=${encodeURIComponent(prompt)}`;

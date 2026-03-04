@@ -212,6 +212,29 @@ class SubjectContentManifestTests(TestCase):
         self.assertTrue(reading["is_missing"])
         self.assertIsNone(reading["source_filename"])
 
+    def test_build_manifest_sanitizes_source_filename_path_separators(self) -> None:
+        self.primary_reading_file.write_text(
+            "\n".join(
+                [
+                    "# Reading File Key",
+                    "",
+                    "**W01L1 Intro (Forelaesning 1, 2026-02-02)**",
+                    "- Freud, S. (1984/1905) \u2192 W01L1 Freud, S. (1984/1905).pdf",
+                ]
+            ),
+            encoding="utf-8",
+        )
+        self.fallback_reading_file.write_text(
+            self.primary_reading_file.read_text(encoding="utf-8"),
+            encoding="utf-8",
+        )
+        clear_subject_service_caches()
+        clear_content_service_caches()
+
+        manifest = build_subject_content_manifest("personlighedspsykologi")
+        reading = manifest["lectures"][0]["readings"][0]
+        self.assertEqual(reading["source_filename"], "W01L1 Freud, S. (1984-1905).pdf")
+
     def test_build_manifest_shortens_ovelseshold_note_in_reading_title(self) -> None:
         self.primary_reading_file.write_text(
             "\n".join(

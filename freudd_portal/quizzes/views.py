@@ -118,6 +118,7 @@ QUIZ_CFG_BLOCK_RE = re.compile(r"\{(?P<body>[^{}]+)\}")
 QUIZ_CFG_PAIR_RE = re.compile(r"(?P<key>[a-z0-9._:+-]+)=(?P<value>[^{}\s]+)", re.IGNORECASE)
 QUIZ_FILE_SUFFIX_RE = re.compile(r"\.(?:mp3|m4a|wav|aac|flac|ogg|json|html)$", re.IGNORECASE)
 QUIZ_LANGUAGE_TAG_RE = re.compile(r"\[(?P<lang>[A-Za-z]{2,5})\]")
+SOURCE_FILENAME_SEPARATORS_RE = re.compile(r"[\\/]+")
 QUIZ_BRIEF_PREFIX_RE = re.compile(r"^\s*\[brief\]\s*", re.IGNORECASE)
 QUIZ_LECTURE_KEY_RE = re.compile(r"\bW(?P<week>\d{1,2})L(?P<lecture>\d+)\b", re.IGNORECASE)
 MULTISPACE_RE = re.compile(r"\s+")
@@ -350,9 +351,13 @@ def _source_filename_or_none(value: object) -> str | None:
     text = str(value or "").strip()
     if not text:
         return None
-    candidate = Path(text)
-    if candidate.is_absolute():
+    raw_candidate = Path(text)
+    if raw_candidate.is_absolute():
         return None
+    if ".." in text and ("/" in text or "\\" in text):
+        return None
+    text = SOURCE_FILENAME_SEPARATORS_RE.sub("-", text).strip()
+    candidate = Path(text)
     if candidate.name != text:
         return None
     if ".." in candidate.parts:

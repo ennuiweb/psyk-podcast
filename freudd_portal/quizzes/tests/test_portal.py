@@ -2720,6 +2720,39 @@ class QuizPortalTests(TestCase):
             )
         self.assertEqual(response.status_code, 404)
 
+    def test_subject_open_reading_normalizes_source_filename_path_separators(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+        (self.reading_files_root / "W01L1" / "Freud (1984-1905).pdf").write_bytes(b"%PDF-1.4\n%freud\n")
+
+        with patch(
+            "quizzes.views.get_subject_learning_path_snapshot",
+            return_value={
+                "lectures": [
+                    {
+                        "lecture_key": "W01L1",
+                        "readings": [
+                            {
+                                "reading_key": "w01l1-freud-1234",
+                                "source_filename": "Freud (1984/1905).pdf",
+                            }
+                        ],
+                    }
+                ]
+            },
+        ):
+            response = self.client.get(
+                reverse(
+                    "subject-open-reading",
+                    kwargs={
+                        "subject_slug": "personlighedspsykologi",
+                        "reading_key": "w01l1-freud-1234",
+                    },
+                )
+            )
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response["Content-Type"], "application/pdf")
+
     def test_subject_open_reading_rejects_path_traversal_source_filename(self) -> None:
         user = self._create_user()
         self.client.force_login(user)

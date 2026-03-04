@@ -2244,6 +2244,8 @@ class QuizPortalTests(TestCase):
         self.assertContains(response, "Svær quiz")
         self.assertContains(response, "10/10 rigtige • 150/150 point")
         self.assertContains(response, "6/10 rigtige • 75/150 point")
+        self.assertContains(response, 'class="active-lecture-progress">1 / 3</p>')
+        self.assertNotContains(response, "{{ active_lecture.total_quizzes")
         self.assertNotContains(response, "Ikke startet")
         self.assertNotContains(response, "I gang")
 

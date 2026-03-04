@@ -2156,13 +2156,6 @@ def subject_detail_view(request: HttpRequest, subject_slug: str) -> HttpResponse
                         "reading_key": normalized_reading_key,
                     },
                 )
-                reading["open_text_url"] = reverse(
-                    "subject-open-reading-text",
-                    kwargs={
-                        "subject_slug": subject.slug,
-                        "reading_key": normalized_reading_key,
-                    },
-                )
                 reading["open_pdf_url"] = (
                     reverse(
                         "subject-open-reading-pdf",
@@ -2176,7 +2169,6 @@ def subject_detail_view(request: HttpRequest, subject_slug: str) -> HttpResponse
                 )
             else:
                 reading["open_url"] = ""
-                reading["open_text_url"] = ""
                 reading["open_pdf_url"] = ""
             for slot in summary:
                 quiz_url = str(slot.get("quiz_url") or "").strip()

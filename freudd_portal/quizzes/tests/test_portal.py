@@ -2438,13 +2438,6 @@ class QuizPortalTests(TestCase):
                 "reading_key": reading["reading_key"],
             },
         )
-        expected_text_url = reverse(
-            "subject-open-reading-text",
-            kwargs={
-                "subject_slug": "personlighedspsykologi",
-                "reading_key": reading["reading_key"],
-            },
-        )
         expected_pdf_url = reverse(
             "subject-open-reading-pdf",
             kwargs={
@@ -2456,8 +2449,8 @@ class QuizPortalTests(TestCase):
         self.assertContains(response, "åbn tekst")
         self.assertContains(response, "Send til ChatGPT")
         self.assertContains(response, "data-chatgpt-reading")
-        self.assertContains(response, f'data-reading-url="{expected_url}"')
-        self.assertContains(response, f'data-reading-text-url="{expected_text_url}"')
+        self.assertNotContains(response, "data-reading-url=")
+        self.assertNotContains(response, "data-reading-text-url=")
         self.assertContains(response, f'data-reading-pdf-url="{expected_pdf_url}"')
 
     def test_subject_open_reading_is_public(self) -> None:

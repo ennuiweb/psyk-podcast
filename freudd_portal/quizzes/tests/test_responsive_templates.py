@@ -1,9 +1,12 @@
 from __future__ import annotations
 
 from pathlib import Path
+from types import SimpleNamespace
 
+from django.contrib.auth.models import AnonymousUser
 from django.conf import settings
-from django.test import SimpleTestCase
+from django.template.loader import get_template
+from django.test import RequestFactory, SimpleTestCase
 
 
 class ResponsiveTemplateRulesTests(SimpleTestCase):
@@ -54,6 +57,41 @@ class ResponsiveTemplateRulesTests(SimpleTestCase):
         self.assertIn("cup-table-shell", body)
         self.assertIn("data-cup-expand", body)
         self.assertIn("cup-participation-note", body)
+
+    def test_leaderboard_template_compiles_and_renders(self) -> None:
+        request = RequestFactory().get("/leaderboard/personlighedspsykologi")
+        request.user = AnonymousUser()
+        template = get_template("quizzes/leaderboard.html")
+        rendered = template.render(
+            {
+                "subject": SimpleNamespace(title="Personlighedspsykologi", slug="personlighedspsykologi"),
+                "subject_tabs": [
+                    {
+                        "title": "Personlighedspsykologi",
+                        "url": "/leaderboard/personlighedspsykologi",
+                        "icon": "psychology",
+                        "is_active": True,
+                    }
+                ],
+                "leaderboard_profile": {
+                    "public_alias": "",
+                    "is_public": False,
+                },
+                "podium_entries": [],
+                "table_entries": [
+                    {
+                        "rank": 1,
+                        "alias": "alpha",
+                        "score_points_label": "100",
+                        "correct_answers": 1,
+                        "quiz_count": 1,
+                    }
+                ],
+                "table_preview_limit": 7,
+            },
+            request=request,
+        )
+        self.assertIn("Top 50 - Personlighedspsykologi", rendered)
 
     def test_subject_detail_supports_long_word_wrapping(self) -> None:
         body = self._template_text("quizzes/subject_detail.html")

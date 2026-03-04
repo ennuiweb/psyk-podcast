@@ -415,8 +415,7 @@
         </thead>
         <tbody>
           {% for entry in table_entries %}
-          <tr class="{% if forloop.counter > table_preview_limit %}is-extra{% endif %}" {% if forloop.counter>
-            table_preview_limit %}hidden{% endif %}>
+          <tr class="{% if forloop.counter > table_preview_limit %}is-extra{% endif %}" {% if forloop.counter > table_preview_limit %}hidden{% endif %}>
             <td>{{ entry.rank }}</td>
             <td class="cup-table-alias">{{ entry.alias }}</td>
             <td class="cup-table-points">{{ entry.score_points_label }}</td>

@@ -2456,7 +2456,7 @@ class QuizPortalTests(TestCase):
             },
         )
         self.assertContains(response, f'data-open-url="{expected_pdf_url}"')
-        self.assertContains(response, "åbn tekst")
+        self.assertContains(response, "Åben tekst")
         self.assertContains(response, "Send til ChatGPT")
         self.assertContains(response, "data-chatgpt-reading")
         self.assertNotContains(response, "data-reading-url=")

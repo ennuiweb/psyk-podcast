@@ -1053,9 +1053,9 @@
   }
 
   .reading-action-button {
-    border: 1px solid color-mix(in srgb, var(--accent) 40%, var(--border));
-    background: color-mix(in srgb, var(--accent-soft) 55%, var(--surface));
-    color: var(--accent-strong);
+    border: 1px solid color-mix(in srgb, var(--border-strong) 45%, transparent);
+    background: color-mix(in srgb, var(--surface-alt) 78%, var(--surface));
+    color: var(--text-strong);
     border-radius: var(--radius-pill);
     min-height: 30px;
     padding: 0 10px;
@@ -1068,8 +1068,25 @@
   }
 
   .reading-action-button:hover {
-    border-color: color-mix(in srgb, var(--accent) 64%, var(--border));
-    background: color-mix(in srgb, var(--accent-soft) 72%, var(--surface));
+    border-color: color-mix(in srgb, var(--border-strong) 64%, transparent);
+    background: color-mix(in srgb, var(--surface-alt) 92%, var(--surface));
+    color: var(--text-strong);
+  }
+
+  .reading-action-button:focus-visible {
+    outline: 2px solid color-mix(in srgb, var(--accent) 48%, transparent);
+    outline-offset: 2px;
+  }
+
+  .reading-action-chatgpt {
+    border-color: color-mix(in srgb, var(--accent) 46%, var(--border));
+    background: color-mix(in srgb, var(--accent-soft) 66%, var(--surface));
+    color: var(--accent-strong);
+  }
+
+  .reading-action-chatgpt:hover {
+    border-color: color-mix(in srgb, var(--accent) 68%, var(--border));
+    background: color-mix(in srgb, var(--accent-soft) 84%, var(--surface));
     color: var(--accent);
   }
 
@@ -1744,13 +1761,6 @@
                   </div>
                   <div class="reading-side">
                     <div class="reading-actions">
-                      {% if reading_open_url %}
-                      <a class="reading-action-button reading-action-open" href="{{ reading_open_url }}" target="_blank"
-                        rel="noopener noreferrer" aria-label="Åbn {{ reading.reading_title }}">
-                        åben tekst
-                      </a>
-                      {% endif %}
-
                       {% if reading.open_pdf_url %}
                       <button class="reading-action-button reading-action-chatgpt" type="button" data-chatgpt-reading
                         data-reading-title="{{ reading.reading_title }}"
@@ -1758,6 +1768,13 @@
                         aria-label="Send {{ reading.reading_title }} til ChatGPT">
                         Send til ChatGPT
                       </button>
+                      {% endif %}
+
+                      {% if reading_open_url %}
+                      <a class="reading-action-button reading-action-open" href="{{ reading_open_url }}" target="_blank"
+                        rel="noopener noreferrer" aria-label="Åbn {{ reading.reading_title }}">
+                        Åben tekst
+                      </a>
                       {% endif %}
 
                       {% if reading.is_missing %}

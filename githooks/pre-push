@@ -102,9 +102,6 @@ if [[ "${reading_key_sync_on_push}" != "0" ]]; then
   elif [[ -n "${FREUDD_READING_KEY_SYNC_SECONDARY_TARGET:-}" ]]; then
     reading_key_sync_cmd+=(--secondary-target "${FREUDD_READING_KEY_SYNC_SECONDARY_TARGET}")
   fi
-  if [[ "${FREUDD_READING_KEY_SYNC_NO_BACKUP:-0}" != "0" ]]; then
-    reading_key_sync_cmd+=(--no-backup)
-  fi
 
   if ! "${reading_key_sync_cmd[@]}"; then
     echo "pre-push: reading key sync failed; aborting push" >&2

@@ -3,7 +3,6 @@ from __future__ import annotations
 
 import argparse
 import hashlib
-from datetime import datetime, timezone
 from pathlib import Path
 
 DEFAULT_ONEDRIVE_SOURCE = (
@@ -44,19 +43,7 @@ def _status_for_target(source: Path, target: Path, *, label: str) -> str:
     return "out_of_sync"
 
 
-def _backup_path(target: Path) -> Path:
-    stamp = datetime.now(timezone.utc).strftime("%Y%m%d-%H%M%SZ")
-    return target.with_name(f"{target.name}.bak-{stamp}")
-
-
-def _copy_file(source: Path, target: Path, *, backup_on_change: bool, label: str) -> None:
-    if target.exists() and backup_on_change:
-        src_hash = _sha256(source)
-        dst_hash = _sha256(target)
-        if src_hash != dst_hash:
-            backup = _backup_path(target)
-            target.replace(backup)
-            print(f"{label}_BACKUP_CREATED={backup}")
+def _copy_file(source: Path, target: Path, *, label: str) -> None:
     target.parent.mkdir(parents=True, exist_ok=True)
     target.write_bytes(source.read_bytes())
     print(f"{label}_SYNCED={target}")
@@ -122,7 +109,7 @@ def main() -> int:
     parser.add_argument(
         "--no-backup",
         action="store_true",
-        help="Do not create a .bak-<timestamp> file when overwriting changed target content.",
+        help="Deprecated no-op. Backups are no longer created.",
     )
     parser.add_argument(
         "--strict-source",
@@ -187,7 +174,7 @@ def main() -> int:
     for label, target, status in statuses:
         if status not in {"missing_target", "out_of_sync"}:
             continue
-        _copy_file(source, target, backup_on_change=not args.no_backup, label=label)
+        _copy_file(source, target, label=label)
     return 0
 
 

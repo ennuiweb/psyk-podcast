@@ -143,6 +143,10 @@ class ResponsiveTemplateRulesTests(SimpleTestCase):
         body = self._template_text("quizzes/wrapper.html")
         self.assertIn(".quiz-shell {\n    display: grid;\n    gap: var(--space-3);\n    min-width: 0;\n  }", body)
         self.assertIn(".quiz-stage {\n    border: 1px solid var(--border);", body)
+        self.assertIn(
+            ".quiz-question {\n    margin: 0 0 var(--space-3);\n    font-family: var(--font-body);\n    font-weight: 600;",
+            body,
+        )
         self.assertIn("padding: var(--space-4);\n    min-width: 0;\n  }", body)
         self.assertIn("width: 100%;\n    min-width: 0;\n    min-height: var(--control-min-height);", body)
         self.assertIn(".quiz-option-text {\n    flex: 1 1 auto;\n    min-width: 0;", body)

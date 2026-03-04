@@ -477,6 +477,28 @@ class QuizPortalTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertNotContains(response, 'setItem("quiz-local-state:')
 
+    def test_quiz_wrapper_renders_js_auth_flag_for_anonymous_user(self) -> None:
+        response = self.client.get(reverse("quiz-wrapper", kwargs={"quiz_id": self.quiz_id}))
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "const isAuthenticated = false;")
+        self.assertNotContains(response, "{{ user_is_authenticated|")
+
+    def test_quiz_wrapper_renders_js_auth_flag_for_authenticated_user(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+
+        response = self.client.get(reverse("quiz-wrapper", kwargs={"quiz_id": self.quiz_id}))
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "const isAuthenticated = true;")
+        self.assertNotContains(response, "{{ user_is_authenticated|")
+
+    def test_quiz_wrapper_does_not_include_unrendered_template_tokens(self) -> None:
+        response = self.client.get(reverse("quiz-wrapper", kwargs={"quiz_id": self.quiz_id}))
+        self.assertEqual(response.status_code, 200)
+        body = response.content.decode("utf-8")
+        self.assertNotIn("{{", body)
+        self.assertNotIn("{%", body)
+
     def test_quiz_wrapper_formats_complex_episode_title(self) -> None:
         self._write_links_file(
             {

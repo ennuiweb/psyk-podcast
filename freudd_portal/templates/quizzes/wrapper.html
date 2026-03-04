@@ -439,8 +439,8 @@
   (function () {
     "use strict";
 
-    const quizContentUrl = "{{ quiz_content_url }}";
-    const stateApiUrl = "{{ state_api_url }}";
+    const quizContentUrl = "{{ quiz_content_url|escapejs }}";
+    const stateApiUrl = "{{ state_api_url|escapejs }}";
     const questionTimeLimitSeconds = Math.max(
       5,
       Number.parseInt("{{ question_time_limit_seconds|default:30 }}", 10) || 30
@@ -450,12 +450,11 @@
     const maxQuestionPoints = baseQuestionPoints + maxSpeedBonusPoints;
     const maxSpeedBonusSecondsPerQuestion = Math.min(10, questionTimeLimitSeconds);
     const cooldownResetSeconds = 3600;
-    const quizOptionOrderSalt = "{{ quiz_id }}";
-    const isAuthenticated = {{ user_is_authenticated| yesno: "true,false"
-  }};
-  const quizCupUrl = "{{ quiz_cup_url|default:'' }}";
-  const localCooldownKey = "quiz-local-cooldown:{{ quiz_id }}";
-  const loginEndPrompt = document.getElementById("login-end-prompt");
+    const quizOptionOrderSalt = "{{ quiz_id|escapejs }}";
+    const isAuthenticated = {{ user_is_authenticated|yesno:"true,false" }};
+    const quizCupUrl = "{{ quiz_cup_url|default:''|escapejs }}";
+    const localCooldownKey = "quiz-local-cooldown:{{ quiz_id|escapejs }}";
+    const loginEndPrompt = document.getElementById("login-end-prompt");
 
   const loadingNode = document.getElementById("quiz-loading");
   const errorNode = document.getElementById("quiz-error");
@@ -607,7 +606,7 @@
   function clearLocalState() {
     try {
       // Backward compatibility cleanup for older clients that persisted partial quiz state.
-      window.localStorage.removeItem("quiz-local-state:{{ quiz_id }}");
+      window.localStorage.removeItem("quiz-local-state:{{ quiz_id|escapejs }}");
     } catch (error) {
       // Ignore local storage failures.
     }

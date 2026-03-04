@@ -2445,12 +2445,20 @@ class QuizPortalTests(TestCase):
                 "reading_key": reading["reading_key"],
             },
         )
+        expected_pdf_url = reverse(
+            "subject-open-reading-pdf",
+            kwargs={
+                "subject_slug": "personlighedspsykologi",
+                "reading_key": reading["reading_key"],
+            },
+        )
         self.assertContains(response, expected_url)
         self.assertContains(response, "åbn tekst")
         self.assertContains(response, "Send til ChatGPT")
         self.assertContains(response, "data-chatgpt-reading")
         self.assertContains(response, f'data-reading-url="{expected_url}"')
         self.assertContains(response, f'data-reading-text-url="{expected_text_url}"')
+        self.assertContains(response, f'data-reading-pdf-url="{expected_pdf_url}"')
 
     def test_subject_open_reading_is_public(self) -> None:
         user = self._create_user()
@@ -2462,6 +2470,26 @@ class QuizPortalTests(TestCase):
         response = self.client.get(
             reverse(
                 "subject-open-reading",
+                kwargs={
+                    "subject_slug": "personlighedspsykologi",
+                    "reading_key": reading_key,
+                },
+            )
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response["Content-Type"], "application/pdf")
+        self.assertIn("inline", response.get("Content-Disposition", ""))
+
+    def test_subject_open_reading_pdf_is_public(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+        detail = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
+        reading_key = detail.context["active_lecture"]["readings"][0]["reading_key"]
+        self.client.logout()
+
+        response = self.client.get(
+            reverse(
+                "subject-open-reading-pdf",
                 kwargs={
                     "subject_slug": "personlighedspsykologi",
                     "reading_key": reading_key,
@@ -2571,6 +2599,38 @@ class QuizPortalTests(TestCase):
             "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
         )
         self.assertIn("attachment", response.get("Content-Disposition", ""))
+
+    def test_subject_open_reading_pdf_returns_404_for_non_pdf_source(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+        (self.reading_files_root / "W01L1" / "Custom.docx").write_bytes(b"DOCX")
+
+        with patch(
+            "quizzes.views.get_subject_learning_path_snapshot",
+            return_value={
+                "lectures": [
+                    {
+                        "lecture_key": "W01L1",
+                        "readings": [
+                            {
+                                "reading_key": "w01l1-custom-1234",
+                                "source_filename": "Custom.docx",
+                            }
+                        ],
+                    }
+                ]
+            },
+        ):
+            response = self.client.get(
+                reverse(
+                    "subject-open-reading-pdf",
+                    kwargs={
+                        "subject_slug": "personlighedspsykologi",
+                        "reading_key": "w01l1-custom-1234",
+                    },
+                )
+            )
+        self.assertEqual(response.status_code, 404)
 
     def test_subject_open_reading_uses_subject_specific_files_root(self) -> None:
         user = self._create_user()

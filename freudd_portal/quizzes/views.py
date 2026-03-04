@@ -1904,6 +1904,23 @@ def subject_open_reading_view(request: HttpRequest, subject_slug: str, reading_k
 
 
 @require_GET
+def subject_open_reading_pdf_view(request: HttpRequest, subject_slug: str, reading_key: str) -> HttpResponse:
+    _, _, found_source_filename, file_path = _resolve_subject_reading_file_or_404(
+        request,
+        subject_slug=subject_slug,
+        reading_key=reading_key,
+    )
+    if file_path.suffix.lower() != ".pdf":
+        raise Http404("PDF ikke fundet for teksten.")
+    return FileResponse(
+        file_path.open("rb"),
+        content_type="application/pdf",
+        as_attachment=False,
+        filename=found_source_filename,
+    )
+
+
+@require_GET
 def subject_open_reading_text_view(request: HttpRequest, subject_slug: str, reading_key: str) -> HttpResponse:
     subject, normalized_reading_key, source_filename, file_path = _resolve_subject_reading_file_or_404(
         request,
@@ -2146,9 +2163,21 @@ def subject_detail_view(request: HttpRequest, subject_slug: str) -> HttpResponse
                         "reading_key": normalized_reading_key,
                     },
                 )
+                reading["open_pdf_url"] = (
+                    reverse(
+                        "subject-open-reading-pdf",
+                        kwargs={
+                            "subject_slug": subject.slug,
+                            "reading_key": normalized_reading_key,
+                        },
+                    )
+                    if Path(source_filename).suffix.lower() == ".pdf"
+                    else ""
+                )
             else:
                 reading["open_url"] = ""
                 reading["open_text_url"] = ""
+                reading["open_pdf_url"] = ""
             for slot in summary:
                 quiz_url = str(slot.get("quiz_url") or "").strip()
                 if quiz_url:

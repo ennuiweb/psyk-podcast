@@ -44,6 +44,11 @@ urlpatterns = [
         name="subject-open-reading",
     ),
     re_path(
+        r"^subjects/(?P<subject_slug>[a-z0-9-]+)/tekster/open/(?P<reading_key>[a-z0-9-]+)\.pdf$",
+        views.subject_open_reading_pdf_view,
+        name="subject-open-reading-pdf",
+    ),
+    re_path(
         r"^subjects/(?P<subject_slug>[a-z0-9-]+)/tekster/open/(?P<reading_key>[a-z0-9-]+)/text$",
         views.subject_open_reading_text_view,
         name="subject-open-reading-text",
@@ -58,6 +63,11 @@ urlpatterns = [
         r"^subjects/(?P<subject_slug>[a-z0-9-]+)/readings/open/(?P<reading_key>[a-z0-9-]+)$",
         views.subject_open_reading_view,
         name="subject-open-reading-legacy",
+    ),
+    re_path(
+        r"^subjects/(?P<subject_slug>[a-z0-9-]+)/readings/open/(?P<reading_key>[a-z0-9-]+)\.pdf$",
+        views.subject_open_reading_pdf_view,
+        name="subject-open-reading-pdf-legacy",
     ),
     re_path(
         r"^subjects/(?P<subject_slug>[a-z0-9-]+)/readings/open/(?P<reading_key>[a-z0-9-]+)/text$",

@@ -1737,6 +1737,7 @@
                       <button class="reading-action-button reading-action-chatgpt" type="button" data-chatgpt-reading
                         data-reading-title="{{ reading.reading_title }}" data-reading-url="{{ reading.open_url }}"
                         data-reading-text-url="{{ reading.open_text_url|default:reading.open_url }}"
+                        data-reading-pdf-url="{{ reading.open_pdf_url }}"
                         aria-label="Send {{ reading.reading_title }} til ChatGPT">
                         Send til ChatGPT
                       </button>
@@ -2063,14 +2064,18 @@
     }
 
     const chatBaseUrl = "https://chatgpt.com/";
-    const buildPrompt = ({ title, textUrl, fileUrl }) => {
-      return [
+    const buildPrompt = ({ title, textUrl, fileUrl, pdfUrl }) => {
+      const lines = [
         "Hjælp mig med denne tekst.",
         `Titel: ${title}`,
-        `Tekst URL: ${textUrl}`,
-        `Original fil URL: ${fileUrl}`,
-        "Lav et kort resume i punktform og derefter 5 refleksionsspørgsmål på dansk.",
-      ].join("\n");
+      ];
+      if (pdfUrl) {
+        lines.push(`Direkte PDF URL: ${pdfUrl}`);
+      }
+      lines.push(`Tekst URL: ${textUrl}`);
+      lines.push(`Original fil URL: ${fileUrl}`);
+      lines.push("Lav et kort resume i punktform og derefter 5 refleksionsspørgsmål på dansk.");
+      return lines.join("\n");
     };
 
     const copyToClipboard = async (value) => {
@@ -2096,13 +2101,18 @@
           return;
         }
         const readingTextUrlRaw = String(button.getAttribute("data-reading-text-url") || "").trim();
+        const readingPdfUrlRaw = String(button.getAttribute("data-reading-pdf-url") || "").trim();
 
         const readingUrl = new URL(readingUrlRaw, window.location.origin).href;
         const readingTextUrl = new URL(readingTextUrlRaw || readingUrlRaw, window.location.origin).href;
+        const readingPdfUrl = readingPdfUrlRaw
+          ? new URL(readingPdfUrlRaw, window.location.origin).href
+          : "";
         const prompt = buildPrompt({
           title: readingTitle,
           textUrl: readingTextUrl,
           fileUrl: readingUrl,
+          pdfUrl: readingPdfUrl,
         });
         const chatUrl = `${chatBaseUrl}?q=${encodeURIComponent(prompt)}`;
         await copyToClipboard(prompt);

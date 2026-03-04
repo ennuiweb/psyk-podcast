@@ -528,15 +528,14 @@
     margin: 0;
     padding: 0;
     list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-3);
+    display: grid;
+    gap: clamp(18px, 1.8vw, 28px);
   }
 
   .quiz-difficulty-row {
     margin: 0;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    gap: 6px;
     padding: 0;
     background: transparent;
   }
@@ -544,44 +543,45 @@
   .quiz-difficulty-header {
     display: flex;
     align-items: center;
-    gap: 8px;
-    margin: 0 0 4px;
+    gap: 10px;
+    margin: 0;
   }
 
   .quiz-difficulty-icon {
     font-family: 'Material Symbols Outlined';
-    font-size: 20px;
+    width: clamp(30px, 2.15vw, 36px);
+    font-size: clamp(24px, 1.95vw, 32px);
+    line-height: 1;
     color: var(--text-strong);
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+    flex: 0 0 auto;
+    font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 36;
   }
 
   .quiz-difficulty-title {
     margin: 0;
     color: var(--text-strong);
     font-family: var(--subject-font-editorial);
-    font-size: clamp(1rem, 1.7vw, 1.32rem);
-    font-weight: 600;
-    line-height: 1.14;
-    letter-spacing: -0.006em;
+    font-size: clamp(1.72rem, 2.05vw, 2.42rem);
+    font-weight: 700;
+    line-height: 1.04;
+    letter-spacing: -0.01em;
     text-decoration: none;
   }
 
   .quiz-difficulty-row.has-action .quiz-difficulty-title:hover {
-    text-decoration: underline;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 0.1em;
+    color: color-mix(in srgb, var(--text-strong) 84%, var(--muted));
   }
 
   .quiz-difficulty-meta {
     margin: 0;
-    padding-left: 28px;
-    color: color-mix(in srgb, var(--text-subtle-2) 72%, var(--muted));
+    padding-left: calc(clamp(30px, 2.15vw, 36px) + 10px);
+    color: color-mix(in srgb, var(--muted) 88%, #a19484);
     font-family: var(--font-mono);
-    font-size: clamp(0.9rem, 1.25vw, 1.08rem);
-    line-height: 1.24;
+    font-size: clamp(1.08rem, 1.45vw, 1.52rem);
+    line-height: 1.12;
     letter-spacing: 0.01em;
   }
 
@@ -1068,12 +1068,12 @@
 
   @media (min-width: 1181px) {
     .reading-side {
-      width: min(100%, 340px);
+      width: min(100%, 520px);
       flex-shrink: 0;
       border-top: none;
-      border-left: 1px solid color-mix(in srgb, var(--border-strong) 20%, transparent);
+      border-left: none;
       padding-top: 0;
-      padding-left: var(--space-4);
+      padding-left: 0;
     }
   }
 
@@ -1299,15 +1299,15 @@
     }
 
     .quiz-difficulty-list {
-      gap: var(--space-3);
+      gap: clamp(14px, 2.7vw, 22px);
     }
 
     .quiz-difficulty-title {
-      font-size: clamp(1.04rem, 2.3vw, 1.34rem);
+      font-size: clamp(1.26rem, 2.9vw, 1.72rem);
     }
 
     .quiz-difficulty-meta {
-      font-size: clamp(0.92rem, 1.6vw, 1.08rem);
+      font-size: clamp(0.96rem, 1.9vw, 1.22rem);
     }
 
     .podcast-list {
@@ -1548,16 +1548,21 @@
     }
 
     .quiz-difficulty-list {
-      gap: var(--space-3);
+      gap: 12px;
+    }
+
+    .quiz-difficulty-icon {
+      width: 24px;
+      font-size: 22px;
     }
 
     .quiz-difficulty-title {
-      font-size: clamp(0.98rem, 4.2vw, 1.14rem);
+      font-size: clamp(1rem, 4.5vw, 1.22rem);
     }
 
     .quiz-difficulty-meta {
-      padding-left: 28px;
-      font-size: clamp(0.82rem, 3.6vw, 0.98rem);
+      padding-left: 32px;
+      font-size: clamp(0.84rem, 3.8vw, 1rem);
     }
   }
 

@@ -1875,7 +1875,6 @@
                     <div class="reading-title-row">
                       <p class="reading-title"><strong>{{ reading.reading_title }}</strong></p>
                     </div>
-                    <p class="reading-meta">{{ reading.completed_quizzes }} / {{ reading.total_quizzes }}</p>
                     {% if reading.status == 'completed' or reading.status == 'no_quiz' %}
                     <p class="reading-meta">
                       {% if reading.status == 'completed' %}

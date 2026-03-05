@@ -28,7 +28,7 @@ from django.shortcuts import redirect, render
 from django.utils import timezone
 from django.utils.http import url_has_allowed_host_and_scheme
 from django.urls import reverse
-from django.views.decorators.http import require_GET, require_http_methods, require_POST
+from django.views.decorators.http import require_GET, require_http_methods, require_POST, require_safe
 from pypdf import PdfReader
 
 from .content_services import load_subject_content_manifest
@@ -1996,7 +1996,7 @@ def leaderboard_profile_view(request: HttpRequest) -> HttpResponse:
     )
 
 
-@require_GET
+@require_safe
 def subject_open_reading_view(request: HttpRequest, subject_slug: str, reading_key: str) -> HttpResponse:
     _, _, found_source_filename, file_path = _resolve_subject_reading_file_or_404(
         request,
@@ -2022,7 +2022,7 @@ def subject_open_reading_view(request: HttpRequest, subject_slug: str, reading_k
     )
 
 
-@require_GET
+@require_safe
 def subject_open_reading_pdf_view(request: HttpRequest, subject_slug: str, reading_key: str) -> HttpResponse:
     _, _, found_source_filename, file_path = _resolve_subject_reading_file_or_404(
         request,
@@ -2039,7 +2039,7 @@ def subject_open_reading_pdf_view(request: HttpRequest, subject_slug: str, readi
     )
 
 
-@require_GET
+@require_safe
 def subject_open_reading_text_view(request: HttpRequest, subject_slug: str, reading_key: str) -> HttpResponse:
     subject, normalized_reading_key, source_filename, file_path = _resolve_subject_reading_file_or_404(
         request,

@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=IBM+Plex+Mono:wght@500;600&family=Public+Sans:wght@400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=IBM+Plex+Mono:wght@500;600&family=Inter:wght@500&family=Public+Sans:wght@400;500;600;700&display=swap"
     rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
     rel="stylesheet" />
@@ -361,22 +361,58 @@
     }
 
     .nav-action-cup {
-      gap: 0.48rem;
-      padding-inline: calc(var(--space-2) + 2px) calc(var(--space-3) + 2px);
+      box-sizing: border-box;
+      display: inline-flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 24px;
+      width: 147.95px;
+      height: 42px;
+      min-height: 42px;
+      background: #ffffff;
+      border: 1px solid #e2ded4;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+      border-radius: 9999px;
+      color: #0f5279;
+      gap: 0;
     }
 
     .nav-action-cup svg {
-      width: 17px;
-      height: 17px;
-      stroke: currentColor;
+      width: 13.5px;
+      height: 13.5px;
+      margin-right: 8px;
+      stroke: #0f5279;
       stroke-width: 1.75;
       fill: none;
       stroke-linecap: round;
       stroke-linejoin: round;
+      flex: none;
+      order: 0;
+      flex-grow: 0;
     }
 
-    .nav-action-cup:hover {
-      border-color: color-mix(in srgb, var(--accent) 64%, var(--border-strong));
+    .nav-action-cup>span {
+      width: 76.45px;
+      height: 20px;
+      font-family: "Inter", "Public Sans", "Manrope", sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 20px;
+      display: inline-flex;
+      align-items: center;
+      text-align: center;
+      color: #0f5279;
+      flex: none;
+      order: 1;
+      flex-grow: 0;
+    }
+
+    .nav-action.nav-action-cup:hover {
+      background: #ffffff;
+      border-color: #d6d0c4;
+      color: #0f5279;
     }
 
     .nav-top-link {

@@ -64,61 +64,80 @@
   }
 
   .subject-cup-link {
-    min-height: 54px;
-    border-radius: 18px;
-    border-color: color-mix(in srgb, var(--accent) 44%, var(--border-strong));
-    background:
-      radial-gradient(circle at 14% 26%, color-mix(in srgb, var(--surface) 88%, #fff7d8), transparent 58%),
-      linear-gradient(140deg,
-        color-mix(in srgb, var(--accent-soft) 90%, var(--surface)),
-        color-mix(in srgb, var(--surface-soft) 92%, #faf4e4));
-    color: var(--accent-strong);
-    display: inline-flex;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
     align-items: center;
-    gap: 10px;
-    padding: 0 16px 0 12px;
-    box-shadow: 0 10px 18px -15px color-mix(in srgb, var(--accent) 44%, transparent);
-    font-family: var(--subject-font-ui);
+    justify-content: center;
+    padding: 10px 24px;
+    width: 147.95px;
+    height: 42px;
+    min-height: 42px;
+    background: #ffffff;
+    border: 1px solid #e2ded4;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    border-radius: 9999px;
+    color: #0f5279;
     text-decoration: none;
+    gap: 0;
+    transition: border-color 160ms ease;
+  }
+
+  .ghost-link.back-link.subject-cup-link {
+    min-width: 147.95px;
+    padding: 10px 24px;
   }
 
   .subject-cup-link:hover {
-    border-color: color-mix(in srgb, var(--accent) 66%, var(--border-strong));
-    background:
-      radial-gradient(circle at 14% 26%, color-mix(in srgb, var(--surface) 82%, #fff7d8), transparent 56%),
-      linear-gradient(140deg,
-        color-mix(in srgb, var(--accent-soft) 96%, var(--surface)),
-        color-mix(in srgb, var(--surface-soft) 95%, #faf4e4));
+    border-color: #d6d0c4;
+    background: #ffffff;
+    color: #0f5279;
   }
 
   .subject-cup-icon {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    border: 1px solid color-mix(in srgb, var(--accent) 32%, var(--border));
-    background: color-mix(in srgb, var(--surface) 90%, var(--warn-bg));
-    display: inline-flex;
-    align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     justify-content: center;
+    padding: 0 8px 0 0;
+    width: 21.5px;
+    height: 13.5px;
+    border: 0;
+    background: transparent;
+    border-radius: 0;
     flex: 0 0 auto;
   }
 
   .subject-cup-icon svg {
-    width: 17px;
-    height: 17px;
-    stroke: currentColor;
+    width: 13.5px;
+    height: 13.5px;
+    stroke: #0f5279;
     stroke-width: 1.75;
     fill: none;
     stroke-linecap: round;
     stroke-linejoin: round;
+    align-self: center;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
   }
 
   .subject-cup-link-label {
-    font-size: 0.95rem;
-    font-weight: 700;
-    letter-spacing: -0.004em;
-    line-height: 1.14;
+    width: 76.45px;
+    height: 20px;
+    font-family: "Inter", "Public Sans", "Manrope", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #0f5279;
     text-transform: lowercase;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
   }
 
   .subject-head-copy {
@@ -136,14 +155,6 @@
     font-weight: 700;
     letter-spacing: -0.012em;
     text-transform: lowercase;
-  }
-
-  .subject-cup-link {
-    transition: filter 160ms ease;
-  }
-
-  .subject-cup-link:hover {
-    filter: brightness(0.96);
   }
 
   .subject-path {

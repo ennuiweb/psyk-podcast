@@ -214,16 +214,14 @@ def _display_points_from_raw_score(*, raw_points: int, question_count: int) -> i
     return max(0, min(QUIZ_DISPLAY_POINTS_MAX, int(normalized)))
 
 
-def _build_chatgpt_prompt_for_reading(*, reading_title: object, pdf_url: object) -> str:
+def _build_chatgpt_prompt_for_reading(*, pdf_url: object) -> str:
     normalized_pdf_url = str(pdf_url or "").strip()
     if not normalized_pdf_url:
         return ""
-    normalized_title = str(reading_title or "").strip() or "Tekst"
     return "\n".join(
         (
             normalized_pdf_url,
             "Jeg studerer psykologi på universitetet. Hjælp mig med denne tekst.",
-            f"Titel: {normalized_title}",
         )
     )
 
@@ -2292,7 +2290,6 @@ def subject_detail_view(request: HttpRequest, subject_slug: str) -> HttpResponse
                 )
                 if reading["open_pdf_url"]:
                     reading["chatgpt_prompt"] = _build_chatgpt_prompt_for_reading(
-                        reading_title=reading.get("reading_title"),
                         pdf_url=request.build_absolute_uri(reading["open_pdf_url"]),
                     )
             else:

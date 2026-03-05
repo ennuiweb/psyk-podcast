@@ -1419,6 +1419,29 @@ class QuizPortalTests(TestCase):
         self.assertContains(response, '<span class="cup-tab-icon" aria-hidden="true">psychology</span>')
         self.assertContains(response, '<span class="cup-tab-icon" aria-hidden="true">memory</span>')
 
+    def test_leaderboard_page_keeps_topmenu_subjects_deselected(self) -> None:
+        self._write_subjects_file(
+            extra_subjects=[
+                {
+                    "slug": "bioneuro",
+                    "title": "Bioneuro",
+                    "description": "Bioneuro F26",
+                    "active": True,
+                }
+            ]
+        )
+        clear_subject_service_caches()
+        user = self._create_user(username="topmenu-user")
+        self.client.force_login(user)
+        SubjectEnrollment.objects.create(user=user, subject_slug="personlighedspsykologi")
+        SubjectEnrollment.objects.create(user=user, subject_slug="bioneuro")
+
+        response = self.client.get(reverse("leaderboard-subject", kwargs={"subject_slug": "bioneuro"}))
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'href="/subjects/personlighedspsykologi"')
+        self.assertContains(response, 'href="/subjects/bioneuro"')
+        self.assertNotContains(response, "nav-subject-tab is-active")
+
     def test_leaderboard_page_uses_podium_layout_and_correct_answer_badges(self) -> None:
         users = [
             self._create_user(username="rank-one"),

@@ -1056,11 +1056,12 @@
     <div class="header-inner">
       <a class="brand" href="{% url 'progress' %}">freudd</a>
       <div class="nav-links">
+        {% with topmenu_current_page=request.resolver_match.url_name|default:'' %}
         {% with topmenu_current_subject_slug=request.resolver_match.kwargs.subject_slug|default:'' %}
         {% if request.user.is_authenticated and topmenu_enrolled_subjects %}
         <div class="nav-group nav-group-subjects">
           {% for subject in topmenu_enrolled_subjects %}
-          <a class="nav-subject-tab {% if subject.slug == topmenu_current_subject_slug %}is-active{% endif %}"
+          <a class="nav-subject-tab {% if topmenu_current_page|slice:':8' == 'subject-' and subject.slug == topmenu_current_subject_slug %}is-active{% endif %}"
             href="{{ subject.detail_url }}">{{ subject.title }}</a>
           {% endfor %}
         </div>
@@ -1090,6 +1091,7 @@
           <a class="nav-top-link is-muted" href="{% url 'signup' %}">Opret konto</a>
           {% endif %}
         </div>
+        {% endwith %}
         {% endwith %}
       </div>
     </div>

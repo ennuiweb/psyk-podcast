@@ -1025,25 +1025,6 @@
     overflow: hidden;
   }
 
-  .reading-card.has-open-reading {
-    cursor: pointer;
-    transition:
-      background 160ms ease,
-      border-color 160ms ease,
-      box-shadow 160ms ease;
-  }
-
-  .reading-card.has-open-reading:hover {
-    background: #eaf4ff;
-    border-color: color-mix(in srgb, #4f8ddf 40%, var(--border));
-  }
-
-  .reading-card.has-open-reading:focus-visible {
-    outline: 2px solid rgba(53, 117, 206, 0.5);
-    outline-offset: 2px;
-    background: #eaf4ff;
-  }
-
   .reading-card.is-completed {
     border-color: color-mix(in srgb, var(--success) 38%, transparent);
     box-shadow: inset 3px 0 0 color-mix(in srgb, var(--success) 72%, transparent);
@@ -1925,9 +1906,7 @@
               {% for reading in active_lecture.readings %}
               {% with reading_open_url=reading.open_pdf_url|default:reading.open_url %}
               <li
-                class="reading-card {% if reading_open_url %}has-open-reading{% endif %} {% if reading.is_missing %}is-missing{% endif %} {% if reading.status == 'completed' %}is-completed{% endif %}"
-                {% if reading_open_url %} data-open-url="{{ reading_open_url }}" role="link" tabindex="0"
-                aria-label="åbn tekst: {{ reading.reading_title }}" {% endif %}>
+                class="reading-card {% if reading.is_missing %}is-missing{% endif %} {% if reading.status == 'completed' %}is-completed{% endif %}">
                 <div class="reading-top">
                   <div class="reading-main">
                     <div class="reading-title-row">
@@ -2275,40 +2254,6 @@
             button.dataset.chatgptLaunching = "0";
           }, 1200);
         }
-      });
-    });
-  })();
-
-  (() => {
-    const cards = Array.from(document.querySelectorAll(".reading-card[data-open-url]"));
-    if (!cards.length) {
-      return;
-    }
-
-    const interactiveSelector = "a, button, input, select, textarea, label, form";
-    const openReading = (card) => {
-      const url = String(card.getAttribute("data-open-url") || "").trim();
-      if (!url) {
-        return;
-      }
-      window.open(url, "_blank", "noopener");
-    };
-
-    cards.forEach((card) => {
-      card.addEventListener("click", (event) => {
-        const target = event.target;
-        if (target instanceof Element && target.closest(interactiveSelector)) {
-          return;
-        }
-        openReading(card);
-      });
-
-      card.addEventListener("keydown", (event) => {
-        if (event.key !== "Enter" && event.key !== " ") {
-          return;
-        }
-        event.preventDefault();
-        openReading(card);
       });
     });
   })();

@@ -2470,6 +2470,9 @@ class QuizPortalTests(TestCase):
         self.assertNotContains(response, "data-reading-text-url=")
         self.assertContains(response, f'data-reading-pdf-url="{expected_pdf_url}"')
         self.assertContains(response, f'data-chatgpt-prompt="{expected_absolute_pdf_url}')
+        self.assertContains(response, 'const openedWindow = window.open(chatUrl, "_blank");')
+        self.assertContains(response, "openedWindow.opener = null;")
+        self.assertNotContains(response, 'window.open(chatUrl, "_blank", "noopener");')
 
     def test_subject_detail_hides_chatgpt_for_non_pdf_readings(self) -> None:
         user = self._create_user()

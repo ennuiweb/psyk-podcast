@@ -3,15 +3,15 @@
   "subject_slug": "personlighedspsykologi",
   "source_meta": {
     "version": 1,
-    "generated_at": "2026-03-05T09:53:22.448031+00:00",
-    "reading_master_path": "/Users/oskar/repo/podcasts/.ai/worktrees/rename-grundbog-readings/shows/personlighedspsykologi-en/docs/reading-file-key.md",
-    "reading_fallback_path": "/Users/oskar/repo/podcasts/.ai/worktrees/rename-grundbog-readings/shows/personlighedspsykologi-en/docs/reading-file-key.md",
-    "reading_source_used": "/Users/oskar/repo/podcasts/.ai/worktrees/rename-grundbog-readings/shows/personlighedspsykologi-en/docs/reading-file-key.md",
+    "generated_at": "2026-03-05T09:57:18.172101+00:00",
+    "reading_master_path": "/home/runner/work/psyk-podcast/psyk-podcast/shows/personlighedspsykologi-en/docs/reading-file-key.md",
+    "reading_fallback_path": "/home/runner/work/psyk-podcast/psyk-podcast/shows/personlighedspsykologi-en/docs/reading-file-key.md",
+    "reading_source_used": "/home/runner/work/psyk-podcast/psyk-podcast/shows/personlighedspsykologi-en/docs/reading-file-key.md",
     "reading_fallback_used": false,
     "reading_error": null,
-    "quiz_links_path": "/Users/oskar/repo/podcasts/.ai/worktrees/rename-grundbog-readings/shows/personlighedspsykologi-en/quiz_links.json",
-    "rss_path": "/Users/oskar/repo/podcasts/.ai/worktrees/rename-grundbog-readings/shows/personlighedspsykologi-en/feeds/rss.xml",
-    "spotify_map_path": "/Users/oskar/repo/podcasts/.ai/worktrees/rename-grundbog-readings/shows/personlighedspsykologi-en/spotify_map.json"
+    "quiz_links_path": "/home/runner/work/psyk-podcast/psyk-podcast/shows/personlighedspsykologi-en/quiz_links.json",
+    "rss_path": "/home/runner/work/psyk-podcast/psyk-podcast/shows/personlighedspsykologi-en/feeds/rss.xml",
+    "spotify_map_path": "/home/runner/work/psyk-podcast/psyk-podcast/shows/personlighedspsykologi-en/spotify_map.json"
   },
   "lectures": [
     {
@@ -70,7 +70,7 @@
                 "title": "Uge 1, Forelæsning 1 · Kort podcast · Grundbog kapitel 1 - Introduktion til personlighedspsykologi",
                 "url": "https://open.spotify.com/episode/6WoVAgWlxD5MlaQUS1Wjdo",
                 "platform": "spotify",
-                "pub_date": "Mon, 02 Feb 2025 10:00:00 +0100",
+                "pub_date": "Mon, 02 Feb 2025 08:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1RO3W_711qYU1eFImLMQKdgjuEJaTaCCF",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -82,6 +82,16 @@
                 "platform": "spotify",
                 "pub_date": "Mon, 02 Feb 2025 12:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1DqVZz5NbB1MJ-bolQeiFYQk5pG3EdXpN",
+                "duration_seconds": null,
+                "duration_label": ""
+              },
+              {
+                "kind": "lydbog",
+                "title": "Uge 1, Forelæsning 1 · Lydbog · Grundbog kapitel 01 - Introduktion til personlighedspsykologi",
+                "url": "https://open.spotify.com/episode/6jc47a8BYkZ1KEpabJtTWL",
+                "platform": "spotify",
+                "pub_date": "Mon, 02 Feb 2025 10:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1DqieoSaivTQPIOwZgvQuBiPJdSO5iQhQ",
                 "duration_seconds": null,
                 "duration_label": ""
               },
@@ -948,7 +958,7 @@
                 "url": "https://open.spotify.com/episode/4k4QygJJBRkvMk5CPWddQG",
                 "platform": "spotify",
                 "pub_date": "Mon, 23 Feb 2025 12:00:00 +0100",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1Vva6YvRKkd6_RCxvPCvgL3jTLZ4K_qCY",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1Qa0pLmd-kmtSPWQ1tlaxqb_1giBWU69O",
                 "duration_seconds": null,
                 "duration_label": ""
               },
@@ -1181,6 +1191,18 @@
           "assets": {
             "quizzes": [
               {
+                "quiz_id": "42d6d9ec",
+                "difficulty": "easy",
+                "quiz_url": "/q/42d6d9ec.html",
+                "episode_title": "W5L1 - X Gammelgaard (2010) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "221af849",
+                "difficulty": "hard",
+                "quiz_url": "/q/221af849.html",
+                "episode_title": "W5L1 - X Gammelgaard (2010) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
                 "quiz_id": "1e310222",
                 "difficulty": "medium",
                 "quiz_url": "/q/1e310222.html",
@@ -1344,6 +1366,12 @@
                 "difficulty": "hard",
                 "quiz_url": "/q/b2a7194c.html",
                 "episode_title": "W5L2 - Køppe (1992) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "3153b98c",
+                "difficulty": "medium",
+                "quiz_url": "/q/3153b98c.html",
+                "episode_title": "W5L2 - Køppe (1992) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               }
             ],
             "podcasts": [
@@ -1372,6 +1400,30 @@
                 "quiz_id": "23f73fa8",
                 "difficulty": "easy",
                 "quiz_url": "/q/23f73fa8.html",
+                "episode_title": "W5L2 - Grundbog kapitel 07 - Nyere psykoanalytiske teorier [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "6f2d1c79",
+                "difficulty": "easy",
+                "quiz_url": "/q/6f2d1c79.html",
+                "episode_title": "[Brief] W5L2 - Grundbog kapitel 07 - Nyere psykoanalytiske teorier [EN] {type=audio lang=en format=brief length=default hash=7e1ef4f1}.mp3"
+              },
+              {
+                "quiz_id": "97310f89",
+                "difficulty": "hard",
+                "quiz_url": "/q/97310f89.html",
+                "episode_title": "[Brief] W5L2 - Grundbog kapitel 07 - Nyere psykoanalytiske teorier [EN] {type=audio lang=en format=brief length=default hash=7e1ef4f1}.mp3"
+              },
+              {
+                "quiz_id": "b0ee4f84",
+                "difficulty": "hard",
+                "quiz_url": "/q/b0ee4f84.html",
+                "episode_title": "W5L2 - Grundbog kapitel 07 - Nyere psykoanalytiske teorier [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "065cd7e6",
+                "difficulty": "medium",
+                "quiz_url": "/q/065cd7e6.html",
                 "episode_title": "W5L2 - Grundbog kapitel 07 - Nyere psykoanalytiske teorier [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               },
               {
@@ -1409,9 +1461,21 @@
       "lecture_assets": {
         "quizzes": [
           {
+            "quiz_id": "793d71fe",
+            "difficulty": "easy",
+            "quiz_url": "/q/793d71fe.html",
+            "episode_title": "W5L2 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=1b3d31bc}.mp3"
+          },
+          {
             "quiz_id": "9724408d",
             "difficulty": "hard",
             "quiz_url": "/q/9724408d.html",
+            "episode_title": "W5L2 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=1b3d31bc}.mp3"
+          },
+          {
+            "quiz_id": "a7768ff5",
+            "difficulty": "medium",
+            "quiz_url": "/q/a7768ff5.html",
             "episode_title": "W5L2 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=1b3d31bc}.mp3"
           }
         ],
@@ -1450,6 +1514,12 @@
                 "episode_title": "W6L1 - X Spinelli (2005) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               },
               {
+                "quiz_id": "ae7951e1",
+                "difficulty": "hard",
+                "quiz_url": "/q/ae7951e1.html",
+                "episode_title": "W6L1 - X Spinelli (2005) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
                 "quiz_id": "50b33bca",
                 "difficulty": "medium",
                 "quiz_url": "/q/50b33bca.html",
@@ -1485,6 +1555,12 @@
                 "episode_title": "W6L1 - X Moeskær Hansen & Roald (2022) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               },
               {
+                "quiz_id": "b8a205e0",
+                "difficulty": "hard",
+                "quiz_url": "/q/b8a205e0.html",
+                "episode_title": "W6L1 - X Moeskær Hansen & Roald (2022) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
                 "quiz_id": "ef4be650",
                 "difficulty": "medium",
                 "quiz_url": "/q/ef4be650.html",
@@ -1514,6 +1590,18 @@
           "assets": {
             "quizzes": [
               {
+                "quiz_id": "08504c77",
+                "difficulty": "easy",
+                "quiz_url": "/q/08504c77.html",
+                "episode_title": "W6L1 - Grundbog kapitel 4 - Fænomenologisk personlighedspsykologi [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "c0e5edfa",
+                "difficulty": "easy",
+                "quiz_url": "/q/c0e5edfa.html",
+                "episode_title": "[Brief] W6L1 - Grundbog kapitel 4 - Fænomenologisk personlighedspsykologi [EN] {type=audio lang=en format=brief length=default hash=7e1ef4f1}.mp3"
+              },
+              {
                 "quiz_id": "7c70988d",
                 "difficulty": "hard",
                 "quiz_url": "/q/7c70988d.html",
@@ -1523,6 +1611,12 @@
                 "quiz_id": "854f1b7b",
                 "difficulty": "hard",
                 "quiz_url": "/q/854f1b7b.html",
+                "episode_title": "[Brief] W6L1 - Grundbog kapitel 4 - Fænomenologisk personlighedspsykologi [EN] {type=audio lang=en format=brief length=default hash=7e1ef4f1}.mp3"
+              },
+              {
+                "quiz_id": "56fa0325",
+                "difficulty": "medium",
+                "quiz_url": "/q/56fa0325.html",
                 "episode_title": "[Brief] W6L1 - Grundbog kapitel 4 - Fænomenologisk personlighedspsykologi [EN] {type=audio lang=en format=brief length=default hash=7e1ef4f1}.mp3"
               },
               {
@@ -1538,7 +1632,7 @@
                 "title": "Uge 6, Forelæsning 1 · Kort podcast · Grundbog kapitel 4 - Fænomenologisk personlighedspsykologi",
                 "url": "https://open.spotify.com/episode/2nXHbB9WV6vcbBMgBU0v9K",
                 "platform": "spotify",
-                "pub_date": "Mon, 09 Mar 2025 10:00:00 +0100",
+                "pub_date": "Mon, 09 Mar 2025 08:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1DCSkfOEyJ7JG_mEZ52T4pRLHMwrxMk6w",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -1564,6 +1658,18 @@
             "difficulty": "easy",
             "quiz_url": "/q/50297a38.html",
             "episode_title": "W6L1 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=1b3d31bc}.mp3"
+          },
+          {
+            "quiz_id": "7cf81120",
+            "difficulty": "hard",
+            "quiz_url": "/q/7cf81120.html",
+            "episode_title": "W6L1 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=1b3d31bc}.mp3"
+          },
+          {
+            "quiz_id": "8b37a8e3",
+            "difficulty": "medium",
+            "quiz_url": "/q/8b37a8e3.html",
+            "episode_title": "W6L1 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=1b3d31bc}.mp3"
           }
         ],
         "podcasts": [
@@ -1580,6 +1686,7 @@
         ]
       },
       "warnings": [
+        "Spotify episode mapping missing for RSS item; skipping podcast asset: Uge 6, Forelæsning 1 · Lydbog · Grundbog kapitel 04 - Fænomenologisk personlighedspsykologi",
         "Spotify episode mapping missing for RSS item; skipping podcast asset: Uge 6, Forelæsning 1 · Lydbog · Grundbog kapitel 04 - Fænomenologisk personlighedspsykologi"
       ]
     },
@@ -1595,7 +1702,26 @@
           "source_filename": "Boss (1963) .pdf",
           "sequence_index": 1,
           "assets": {
-            "quizzes": [],
+            "quizzes": [
+              {
+                "quiz_id": "092d73b1",
+                "difficulty": "easy",
+                "quiz_url": "/q/092d73b1.html",
+                "episode_title": "W6L2 - Boss (1963) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "b74d489f",
+                "difficulty": "hard",
+                "quiz_url": "/q/b74d489f.html",
+                "episode_title": "W6L2 - Boss (1963) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "61ba062b",
+                "difficulty": "medium",
+                "quiz_url": "/q/61ba062b.html",
+                "episode_title": "W6L2 - Boss (1963) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              }
+            ],
             "podcasts": [
               {
                 "kind": "podcast",
@@ -1629,6 +1755,12 @@
                 "difficulty": "hard",
                 "quiz_url": "/q/b11229c2.html",
                 "episode_title": "W6L2 - May (1966) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "21be015e",
+                "difficulty": "medium",
+                "quiz_url": "/q/21be015e.html",
+                "episode_title": "W6L2 - May (1966) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               }
             ],
             "podcasts": [
@@ -1652,6 +1784,18 @@
             "quiz_id": "0351950a",
             "difficulty": "easy",
             "quiz_url": "/q/0351950a.html",
+            "episode_title": "W6L2 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3"
+          },
+          {
+            "quiz_id": "5b120971",
+            "difficulty": "hard",
+            "quiz_url": "/q/5b120971.html",
+            "episode_title": "W6L2 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3"
+          },
+          {
+            "quiz_id": "8a421a51",
+            "difficulty": "medium",
+            "quiz_url": "/q/8a421a51.html",
             "episode_title": "W6L2 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3"
           }
         ],
@@ -1682,7 +1826,26 @@
           "source_filename": "Cooper (2003) .pdf",
           "sequence_index": 1,
           "assets": {
-            "quizzes": [],
+            "quizzes": [
+              {
+                "quiz_id": "7c12b6b3",
+                "difficulty": "easy",
+                "quiz_url": "/q/7c12b6b3.html",
+                "episode_title": "W7L1 - Cooper (2003) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "8fef283c",
+                "difficulty": "hard",
+                "quiz_url": "/q/8fef283c.html",
+                "episode_title": "W7L1 - Cooper (2003) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "8757ead8",
+                "difficulty": "medium",
+                "quiz_url": "/q/8757ead8.html",
+                "episode_title": "W7L1 - Cooper (2003) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              }
+            ],
             "podcasts": [
               {
                 "kind": "podcast",
@@ -1715,6 +1878,12 @@
                 "quiz_id": "3e677dce",
                 "difficulty": "hard",
                 "quiz_url": "/q/3e677dce.html",
+                "episode_title": "W7L1 - Jacobsen (2021) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "311a094b",
+                "difficulty": "medium",
+                "quiz_url": "/q/311a094b.html",
                 "episode_title": "W7L1 - Jacobsen (2021) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               }
             ],
@@ -1783,6 +1952,12 @@
           "assets": {
             "quizzes": [
               {
+                "quiz_id": "981b5629",
+                "difficulty": "easy",
+                "quiz_url": "/q/981b5629.html",
+                "episode_title": "W7L2 - Evans (1975) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
                 "quiz_id": "ba1edf9d",
                 "difficulty": "hard",
                 "quiz_url": "/q/ba1edf9d.html",
@@ -1801,7 +1976,7 @@
                 "title": "Uge 7, Forelæsning 2 · Podcast · Evans (1975)",
                 "url": "https://open.spotify.com/episode/0mo2mcgt6w6hEIKa87KjYV",
                 "platform": "spotify",
-                "pub_date": "Tue, 17 Mar 2025 14:00:00 +0100",
+                "pub_date": "Tue, 17 Mar 2025 16:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1RMqBoGKmAFNQVsgnpe0bwff9LBMUb-Te",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -1824,6 +1999,12 @@
                 "episode_title": "W7L2 - Giorgi (2005) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               },
               {
+                "quiz_id": "97a7d7f5",
+                "difficulty": "hard",
+                "quiz_url": "/q/97a7d7f5.html",
+                "episode_title": "W7L2 - Giorgi (2005) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
                 "quiz_id": "e47d59da",
                 "difficulty": "medium",
                 "quiz_url": "/q/e47d59da.html",
@@ -1836,7 +2017,7 @@
                 "title": "Uge 7, Forelæsning 2 · Podcast · Giorgi (2005)",
                 "url": "https://open.spotify.com/episode/7lTEn0gSpSfQZzo3bEUu1L",
                 "platform": "spotify",
-                "pub_date": "Tue, 17 Mar 2025 12:00:00 +0100",
+                "pub_date": "Tue, 17 Mar 2025 14:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1_0kLQC9U3zJSXKkpLvlxPW0i4tX6ST8K",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -1851,14 +2032,33 @@
           "source_filename": "Maslow (1968).pdf",
           "sequence_index": 3,
           "assets": {
-            "quizzes": [],
+            "quizzes": [
+              {
+                "quiz_id": "27e47c27",
+                "difficulty": "easy",
+                "quiz_url": "/q/27e47c27.html",
+                "episode_title": "W7L2 - Maslow (1968) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "6668a138",
+                "difficulty": "hard",
+                "quiz_url": "/q/6668a138.html",
+                "episode_title": "W7L2 - Maslow (1968) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "afe0df9c",
+                "difficulty": "medium",
+                "quiz_url": "/q/afe0df9c.html",
+                "episode_title": "W7L2 - Maslow (1968) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              }
+            ],
             "podcasts": [
               {
                 "kind": "podcast",
                 "title": "Uge 7, Forelæsning 2 · Podcast · Maslow (1968)",
                 "url": "https://open.spotify.com/episode/04KJADc7Cf37VvuKxqDMTx",
                 "platform": "spotify",
-                "pub_date": "Tue, 17 Mar 2025 10:00:00 +0100",
+                "pub_date": "Tue, 17 Mar 2025 12:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1aCW61adoRFAyZNn3NTjE7FbDn2yzL97j",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -1868,8 +2068,38 @@
         }
       ],
       "lecture_assets": {
-        "quizzes": [],
-        "podcasts": []
+        "quizzes": [
+          {
+            "quiz_id": "c5334dab",
+            "difficulty": "easy",
+            "quiz_url": "/q/c5334dab.html",
+            "episode_title": "W7L2 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=1b3d31bc}.mp3"
+          },
+          {
+            "quiz_id": "1323b593",
+            "difficulty": "hard",
+            "quiz_url": "/q/1323b593.html",
+            "episode_title": "W7L2 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=1b3d31bc}.mp3"
+          },
+          {
+            "quiz_id": "72579575",
+            "difficulty": "medium",
+            "quiz_url": "/q/72579575.html",
+            "episode_title": "W7L2 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=1b3d31bc}.mp3"
+          }
+        ],
+        "podcasts": [
+          {
+            "kind": "podcast",
+            "title": "Uge 7, Forelæsning 2 · Podcast · Alle kilder",
+            "url": "https://open.spotify.com/episode/7fk6NaxCldcs7kY5iwB0A8",
+            "platform": "spotify",
+            "pub_date": "Tue, 17 Mar 2025 10:00:00 +0100",
+            "source_audio_url": "https://drive.google.com/uc?export=download&id=1vFnbGmx_aaNUJcVgVE1eBoT-K3--5sW4",
+            "duration_seconds": null,
+            "duration_label": ""
+          }
+        ]
       },
       "warnings": []
     },
@@ -1885,8 +2115,38 @@
           "source_filename": "Lamiell (2021).pdf",
           "sequence_index": 1,
           "assets": {
-            "quizzes": [],
-            "podcasts": []
+            "quizzes": [
+              {
+                "quiz_id": "26edbea7",
+                "difficulty": "easy",
+                "quiz_url": "/q/26edbea7.html",
+                "episode_title": "W8L1 - Lamiell, J.T. (2021) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "52c334b7",
+                "difficulty": "hard",
+                "quiz_url": "/q/52c334b7.html",
+                "episode_title": "W8L1 - Lamiell, J.T. (2021) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "bafe731e",
+                "difficulty": "medium",
+                "quiz_url": "/q/bafe731e.html",
+                "episode_title": "W8L1 - Lamiell, J.T. (2021) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              }
+            ],
+            "podcasts": [
+              {
+                "kind": "podcast",
+                "title": "Uge 8, Forelæsning 1 · Podcast · Lamiell, J.T. (2021)",
+                "url": "https://open.spotify.com/episode/0ed54mR7nbRrY3iszb162x",
+                "platform": "spotify",
+                "pub_date": "Mon, 23 Mar 2025 10:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1jLX0OSMT1P80CSDVsGgj_yqn_D4gt-cz",
+                "duration_seconds": null,
+                "duration_label": ""
+              }
+            ]
           }
         },
         {
@@ -1896,14 +2156,33 @@
           "source_filename": "Laux et al (2010).pdf",
           "sequence_index": 2,
           "assets": {
-            "quizzes": [],
+            "quizzes": [
+              {
+                "quiz_id": "f70677a7",
+                "difficulty": "easy",
+                "quiz_url": "/q/f70677a7.html",
+                "episode_title": "W8L1 - Laux et al. (2010) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "526be260",
+                "difficulty": "hard",
+                "quiz_url": "/q/526be260.html",
+                "episode_title": "W8L1 - Laux et al. (2010) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "38a34adf",
+                "difficulty": "medium",
+                "quiz_url": "/q/38a34adf.html",
+                "episode_title": "W8L1 - Laux et al. (2010) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              }
+            ],
             "podcasts": [
               {
                 "kind": "podcast",
                 "title": "Uge 8, Forelæsning 1 · Podcast · Laux et al. (2010)",
                 "url": "https://open.spotify.com/episode/7sHfc2UZ4E5u7WYYLrEd08",
                 "platform": "spotify",
-                "pub_date": "Mon, 23 Mar 2025 08:00:00 +0100",
+                "pub_date": "Mon, 23 Mar 2025 12:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1IUh1EtQG_mIiqlqGhmuKzQlDkZrtw0Qg",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -1913,8 +2192,38 @@
         }
       ],
       "lecture_assets": {
-        "quizzes": [],
-        "podcasts": []
+        "quizzes": [
+          {
+            "quiz_id": "6c427fd8",
+            "difficulty": "easy",
+            "quiz_url": "/q/6c427fd8.html",
+            "episode_title": "W8L1 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3"
+          },
+          {
+            "quiz_id": "766a596d",
+            "difficulty": "hard",
+            "quiz_url": "/q/766a596d.html",
+            "episode_title": "W8L1 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3"
+          },
+          {
+            "quiz_id": "b5935494",
+            "difficulty": "medium",
+            "quiz_url": "/q/b5935494.html",
+            "episode_title": "W8L1 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3"
+          }
+        ],
+        "podcasts": [
+          {
+            "kind": "podcast",
+            "title": "Uge 8, Forelæsning 1 · Podcast · Alle kilder",
+            "url": "https://open.spotify.com/episode/7qEGXbXsbUDJ8QMFhwuYof",
+            "platform": "spotify",
+            "pub_date": "Mon, 23 Mar 2025 08:00:00 +0100",
+            "source_audio_url": "https://drive.google.com/uc?export=download&id=1b2UuosAq2eW2VFqlcX7Awas1WuwH9rz3",
+            "duration_seconds": null,
+            "duration_label": ""
+          }
+        ]
       },
       "warnings": []
     },
@@ -1930,14 +2239,33 @@
           "source_filename": "Holzkamp (1982).pdf",
           "sequence_index": 1,
           "assets": {
-            "quizzes": [],
+            "quizzes": [
+              {
+                "quiz_id": "54f9bb12",
+                "difficulty": "easy",
+                "quiz_url": "/q/54f9bb12.html",
+                "episode_title": "W8L2 - Holzkamp (1982) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "c392c035",
+                "difficulty": "hard",
+                "quiz_url": "/q/c392c035.html",
+                "episode_title": "W8L2 - Holzkamp (1982) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "dd469b1d",
+                "difficulty": "medium",
+                "quiz_url": "/q/dd469b1d.html",
+                "episode_title": "W8L2 - Holzkamp (1982) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              }
+            ],
             "podcasts": [
               {
                 "kind": "podcast",
                 "title": "Uge 8, Forelæsning 2 · Podcast · Holzkamp (1982)",
                 "url": "https://open.spotify.com/episode/0gQnxPK3Fd4ghMhGBM9JXG",
                 "platform": "spotify",
-                "pub_date": "Tue, 24 Mar 2025 12:00:00 +0100",
+                "pub_date": "Tue, 24 Mar 2025 14:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=147Z-kXYiNHcqBS5NgK5kIuUORh0Lt2FQ",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -1952,14 +2280,33 @@
           "source_filename": "Tolman (2009).pdf",
           "sequence_index": 2,
           "assets": {
-            "quizzes": [],
+            "quizzes": [
+              {
+                "quiz_id": "daacdfcd",
+                "difficulty": "easy",
+                "quiz_url": "/q/daacdfcd.html",
+                "episode_title": "W8L2 - Tolman (2009) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "c9a555ce",
+                "difficulty": "hard",
+                "quiz_url": "/q/c9a555ce.html",
+                "episode_title": "W8L2 - Tolman (2009) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "e460b92b",
+                "difficulty": "medium",
+                "quiz_url": "/q/e460b92b.html",
+                "episode_title": "W8L2 - Tolman (2009) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              }
+            ],
             "podcasts": [
               {
                 "kind": "podcast",
                 "title": "Uge 8, Forelæsning 2 · Podcast · Tolman (2009)",
                 "url": "https://open.spotify.com/episode/3zbL5b1zhIZx67bYr9RHG9",
                 "platform": "spotify",
-                "pub_date": "Tue, 24 Mar 2025 10:00:00 +0100",
+                "pub_date": "Tue, 24 Mar 2025 12:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1znzxEW3hkDzjPsGgcDGytwITfdfd1Z0-",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -1969,8 +2316,38 @@
         }
       ],
       "lecture_assets": {
-        "quizzes": [],
-        "podcasts": []
+        "quizzes": [
+          {
+            "quiz_id": "d307efa3",
+            "difficulty": "easy",
+            "quiz_url": "/q/d307efa3.html",
+            "episode_title": "W8L2 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3"
+          },
+          {
+            "quiz_id": "b7b5c256",
+            "difficulty": "hard",
+            "quiz_url": "/q/b7b5c256.html",
+            "episode_title": "W8L2 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3"
+          },
+          {
+            "quiz_id": "52fc74b9",
+            "difficulty": "medium",
+            "quiz_url": "/q/52fc74b9.html",
+            "episode_title": "W8L2 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3"
+          }
+        ],
+        "podcasts": [
+          {
+            "kind": "podcast",
+            "title": "Uge 8, Forelæsning 2 · Podcast · Alle kilder",
+            "url": "https://open.spotify.com/episode/2pRtzCSAfYe5d1Ld7JVFMg",
+            "platform": "spotify",
+            "pub_date": "Tue, 24 Mar 2025 10:00:00 +0100",
+            "source_audio_url": "https://drive.google.com/uc?export=download&id=1JSVwl7PboZjTokxQ7U0PwFPPWxTb4Rh0",
+            "duration_seconds": null,
+            "duration_label": ""
+          }
+        ]
       },
       "warnings": []
     },
@@ -1986,14 +2363,33 @@
           "source_filename": "W09L1 Mørch & Hansen (2015).pdf",
           "sequence_index": 1,
           "assets": {
-            "quizzes": [],
+            "quizzes": [
+              {
+                "quiz_id": "114ab0be",
+                "difficulty": "easy",
+                "quiz_url": "/q/114ab0be.html",
+                "episode_title": "W9L1 - X Mørch & Hansen (2015) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "3e1e3654",
+                "difficulty": "hard",
+                "quiz_url": "/q/3e1e3654.html",
+                "episode_title": "W9L1 - X Mørch & Hansen (2015) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "054fcb0a",
+                "difficulty": "medium",
+                "quiz_url": "/q/054fcb0a.html",
+                "episode_title": "W9L1 - X Mørch & Hansen (2015) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              }
+            ],
             "podcasts": [
               {
                 "kind": "podcast",
                 "title": "Uge 9, Forelæsning 1 · Podcast · Mørch & Hansen (2015)",
                 "url": "https://open.spotify.com/episode/2Btzf4mgg3Ud7eE6MW7WLO",
                 "platform": "spotify",
-                "pub_date": "Tue, 07 Apr 2025 14:00:00 +0200",
+                "pub_date": "Tue, 07 Apr 2025 16:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1hMf8bASb3OKsMiV5MYSJe2NpQW1WOspr",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -2008,14 +2404,33 @@
           "source_filename": "Dreier (1999).pdf",
           "sequence_index": 2,
           "assets": {
-            "quizzes": [],
+            "quizzes": [
+              {
+                "quiz_id": "ef4f1669",
+                "difficulty": "easy",
+                "quiz_url": "/q/ef4f1669.html",
+                "episode_title": "W9L1 - Dreier (1999) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "94265d12",
+                "difficulty": "hard",
+                "quiz_url": "/q/94265d12.html",
+                "episode_title": "W9L1 - Dreier (1999) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "738ff056",
+                "difficulty": "medium",
+                "quiz_url": "/q/738ff056.html",
+                "episode_title": "W9L1 - Dreier (1999) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              }
+            ],
             "podcasts": [
               {
                 "kind": "podcast",
                 "title": "Uge 9, Forelæsning 1 · Podcast · Dreier (1999)",
                 "url": "https://open.spotify.com/episode/7yh4D8Qf2dywJHnUJXXbwy",
                 "platform": "spotify",
-                "pub_date": "Tue, 07 Apr 2025 20:00:00 +0200",
+                "pub_date": "Tue, 07 Apr 2025 22:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1dXzx1AkktLLTxqhdASW4vO0uqNDW5Fwj",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -2030,14 +2445,33 @@
           "source_filename": "Holzkamp (2013).pdf",
           "sequence_index": 3,
           "assets": {
-            "quizzes": [],
+            "quizzes": [
+              {
+                "quiz_id": "4041a628",
+                "difficulty": "easy",
+                "quiz_url": "/q/4041a628.html",
+                "episode_title": "W9L1 - Holzkamp (2013) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "51acbd3b",
+                "difficulty": "hard",
+                "quiz_url": "/q/51acbd3b.html",
+                "episode_title": "W9L1 - Holzkamp (2013) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "5cadebd5",
+                "difficulty": "medium",
+                "quiz_url": "/q/5cadebd5.html",
+                "episode_title": "W9L1 - Holzkamp (2013) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              }
+            ],
             "podcasts": [
               {
                 "kind": "podcast",
                 "title": "Uge 9, Forelæsning 1 · Podcast · Holzkamp (2013)",
                 "url": "https://open.spotify.com/episode/01wDBxAcqWGeV8Nhko0MLG",
                 "platform": "spotify",
-                "pub_date": "Tue, 07 Apr 2025 16:00:00 +0200",
+                "pub_date": "Tue, 07 Apr 2025 18:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1-vFK9KBIpi6ogHvN_mINdKihYcAZp2fy",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -2052,14 +2486,51 @@
           "source_filename": "Grundbog kapitel 10 - Kritisk psykologi.pdf",
           "sequence_index": 4,
           "assets": {
-            "quizzes": [],
+            "quizzes": [
+              {
+                "quiz_id": "de31f927",
+                "difficulty": "easy",
+                "quiz_url": "/q/de31f927.html",
+                "episode_title": "W9L1 - Grundbog kapitel 10 - Kritisk psykologi [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "f3c9f516",
+                "difficulty": "easy",
+                "quiz_url": "/q/f3c9f516.html",
+                "episode_title": "[Brief] W9L1 - Grundbog kapitel 10 - Kritisk psykologi [EN] {type=audio lang=en format=brief length=default hash=7e1ef4f1}.mp3"
+              },
+              {
+                "quiz_id": "1adaa120",
+                "difficulty": "hard",
+                "quiz_url": "/q/1adaa120.html",
+                "episode_title": "[Brief] W9L1 - Grundbog kapitel 10 - Kritisk psykologi [EN] {type=audio lang=en format=brief length=default hash=7e1ef4f1}.mp3"
+              },
+              {
+                "quiz_id": "397d8606",
+                "difficulty": "hard",
+                "quiz_url": "/q/397d8606.html",
+                "episode_title": "W9L1 - Grundbog kapitel 10 - Kritisk psykologi [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "6fba4991",
+                "difficulty": "medium",
+                "quiz_url": "/q/6fba4991.html",
+                "episode_title": "[Brief] W9L1 - Grundbog kapitel 10 - Kritisk psykologi [EN] {type=audio lang=en format=brief length=default hash=7e1ef4f1}.mp3"
+              },
+              {
+                "quiz_id": "7b111298",
+                "difficulty": "medium",
+                "quiz_url": "/q/7b111298.html",
+                "episode_title": "W9L1 - Grundbog kapitel 10 - Kritisk psykologi [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              }
+            ],
             "podcasts": [
               {
                 "kind": "short_podcast",
                 "title": "Uge 9, Forelæsning 1 · Kort podcast · Grundbog kapitel 10 - Kritisk psykologi",
                 "url": "https://open.spotify.com/episode/64ZLw1G0dKBGr2Cl8xWM9W",
                 "platform": "spotify",
-                "pub_date": "Tue, 07 Apr 2025 12:00:00 +0200",
+                "pub_date": "Tue, 07 Apr 2025 10:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1DArA5-NQtRSorBUmyjyQ2bS20GiqT19_",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -2069,7 +2540,7 @@
                 "title": "Uge 9, Forelæsning 1 · Podcast · Grundbog kapitel 10 - Kritisk psykologi",
                 "url": "https://open.spotify.com/episode/0SNoPkMPp7J51dI3KwpFuc",
                 "platform": "spotify",
-                "pub_date": "Tue, 07 Apr 2025 18:00:00 +0200",
+                "pub_date": "Tue, 07 Apr 2025 20:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1DHH3gOUbi5JfmyzMhGz4utxCrd_vYTxc",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -2079,7 +2550,26 @@
         }
       ],
       "lecture_assets": {
-        "quizzes": [],
+        "quizzes": [
+          {
+            "quiz_id": "d29022f1",
+            "difficulty": "easy",
+            "quiz_url": "/q/d29022f1.html",
+            "episode_title": "W9L1 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=4 hash=a7e138f5}.mp3"
+          },
+          {
+            "quiz_id": "b109ba97",
+            "difficulty": "hard",
+            "quiz_url": "/q/b109ba97.html",
+            "episode_title": "W9L1 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=4 hash=a7e138f5}.mp3"
+          },
+          {
+            "quiz_id": "1780e5fc",
+            "difficulty": "medium",
+            "quiz_url": "/q/1780e5fc.html",
+            "episode_title": "W9L1 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=4 hash=a7e138f5}.mp3"
+          }
+        ],
         "podcasts": [
           {
             "kind": "podcast",
@@ -2093,7 +2583,10 @@
           }
         ]
       },
-      "warnings": []
+      "warnings": [
+        "Spotify episode mapping missing for RSS item; skipping podcast asset: Uge 9, Forelæsning 1 · Lydbog · Grundbog kapitel 10 - Kritisk psykologi",
+        "Spotify episode mapping missing for RSS item; skipping podcast asset: Uge 9, Forelæsning 1 · Lydbog · Grundbog kapitel 10 - Kritisk psykologi"
+      ]
     },
     {
       "lecture_key": "W10L1",
@@ -2509,7 +3002,7 @@
                 "title": "Uge 11, Forelæsning 1 · Kort podcast · Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori",
                 "url": "https://open.spotify.com/episode/5x0Wllus3EWemcGgvKg2X9",
                 "platform": "spotify",
-                "pub_date": "Mon, 20 Apr 2025 10:00:00 +0200",
+                "pub_date": "Mon, 20 Apr 2025 08:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1HrdHbsDoTTJ3g8y0N65JIMlIYQKJ18EZ",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -2563,6 +3056,7 @@
         ]
       },
       "warnings": [
+        "Spotify episode mapping missing for RSS item; skipping podcast asset: Uge 11, Forelæsning 1 · Lydbog · Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori. Problemet med personligheden version 2.0",
         "Spotify episode mapping missing for RSS item; skipping podcast asset: Uge 11, Forelæsning 1 · Lydbog · Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori. Problemet med personligheden version 2.0"
       ]
     },
@@ -2786,7 +3280,7 @@
                 "title": "Uge 11, Forelæsning 2 · Kort podcast · Grundbog kapitel 9 - Narrative teorier",
                 "url": "https://open.spotify.com/episode/6IBSKF9n07vz8FiYJC0VJT",
                 "platform": "spotify",
-                "pub_date": "Tue, 21 Apr 2025 12:00:00 +0200",
+                "pub_date": "Tue, 21 Apr 2025 10:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1aFk0CJzqust-Wu1fxZ1S0rIU6KoW4i3X",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -2840,6 +3334,7 @@
         ]
       },
       "warnings": [
+        "Spotify episode mapping missing for RSS item; skipping podcast asset: Uge 11, Forelæsning 2 · Lydbog · Grundbog kapitel 09 - Narrative teorier",
         "Spotify episode mapping missing for RSS item; skipping podcast asset: Uge 11, Forelæsning 2 · Lydbog · Grundbog kapitel 09 - Narrative teorier"
       ]
     },
@@ -3025,6 +3520,16 @@
                 "duration_label": ""
               },
               {
+                "kind": "lydbog",
+                "title": "Uge 12, Forelæsning 1 · Lydbog · Grundbog kapitel 14 - Perspektiver på personlighedspsykologi",
+                "url": "https://open.spotify.com/episode/3OWYSZVFtJ2XBq8AXM2Jnq",
+                "platform": "spotify",
+                "pub_date": "Mon, 27 Apr 2025 10:00:00 +0200",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1xr26l9DdgJrV4j6NxO8g7js0vg4J-Km3",
+                "duration_seconds": null,
+                "duration_label": ""
+              },
+              {
                 "kind": "podcast",
                 "title": "Uge 12, Forelæsning 1 · Podcast · Grundbog kapitel 14 - Perspektiver på personlighedspsykologi",
                 "url": "https://open.spotify.com/episode/4WDTlgC1qr8iA6jZHxsN6u",
@@ -3079,12 +3584,20 @@
     }
   ],
   "warnings": [
+    "RSS item has unknown lecture mapping: [Lydbog] · Grundbog forord og resumé",
     "RSS item has unknown lecture mapping: [Lydbog] · Grundbog kapitel 01 - Introduktion til personlighedspsykologi",
+    "RSS item has unknown lecture mapping: [Lydbog] · Grundbog kapitel 02 - Trækpsykologi",
+    "RSS item has unknown lecture mapping: [Lydbog] · Grundbog kapitel 03 - Adfærdspsykologiske og kognitive teorier om personligheden",
     "RSS item has unknown lecture mapping: [Lydbog] · Grundbog kapitel 04 - Fænomenologisk personlighedspsykologi",
+    "RSS item has unknown lecture mapping: [Lydbog] · Grundbog kapitel 05 - Humanistiske og eksistentielle teorier om personligheden",
+    "RSS item has unknown lecture mapping: [Lydbog] · Grundbog kapitel 06 - Klassisk psykoanalyse, ego-psykologi og selv-psykologi",
     "RSS item has unknown lecture mapping: [Lydbog] · Grundbog kapitel 07 - Nyere psykoanalytiske teorier",
     "RSS item has unknown lecture mapping: [Lydbog] · Grundbog kapitel 08 - Personlighed, subjektivitet og historicitet",
     "RSS item has unknown lecture mapping: [Lydbog] · Grundbog kapitel 09 - Narrative teorier",
+    "RSS item has unknown lecture mapping: [Lydbog] · Grundbog kapitel 10 - Kritisk psykologi",
     "RSS item has unknown lecture mapping: [Lydbog] · Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori. Problemet med personligheden version 2.0",
+    "RSS item has unknown lecture mapping: [Lydbog] · Grundbog kapitel 12 - Evolutionspsykologi",
+    "RSS item has unknown lecture mapping: [Lydbog] · Grundbog kapitel 13 - Positiv psykologi",
     "RSS item has unknown lecture mapping: [Lydbog] · Grundbog kapitel 14 - Perspektiver på personlighedspsykologi"
   ]
 }

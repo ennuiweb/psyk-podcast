@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import re
 from pathlib import Path
 
 DEFAULT_ONEDRIVE_SOURCE = (
@@ -11,13 +12,18 @@ DEFAULT_ONEDRIVE_SOURCE = (
 )
 DEFAULT_PRIMARY_TARGET = "shows/personlighedspsykologi-en/docs/reading-file-key.md"
 DEFAULT_SECONDARY_TARGET = "notebooklm-podcast-auto/personlighedspsykologi/docs/reading-file-key.md"
+GRUNDBOG_CHAPTER_BULLET_RE = re.compile(
+    r"^(?P<prefix>\s*-\s*)(?P<title>.+?)\s*→\s*"
+    r"(?P<source>Grundbog\s+kapitel\s+\d+\s*-\s*[^.]+\.pdf)"
+    r"(?P<suffix>\s*\([^)]*\))?\s*$",
+    re.IGNORECASE,
+)
+BRIEF_AND_FULL_NOTE = "(brief + full)"
 
 
-def _sha256(path: Path) -> str:
+def _sha256_bytes(payload: bytes) -> str:
     digest = hashlib.sha256()
-    with path.open("rb") as handle:
-        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
-            digest.update(chunk)
+    digest.update(payload)
     return digest.hexdigest()
 
 
@@ -28,12 +34,61 @@ def _resolve_repo_root(script_path: Path) -> Path:
     return script_path.parents[1]
 
 
-def _status_for_target(source: Path, target: Path, *, label: str) -> str:
+def _normalize_grundbog_bullets(markdown_text: str) -> tuple[str, int]:
+    normalized_lines: list[str] = []
+    changed_count = 0
+    for raw_line in markdown_text.splitlines():
+        match = GRUNDBOG_CHAPTER_BULLET_RE.match(raw_line)
+        if not match:
+            normalized_lines.append(raw_line)
+            continue
+
+        source_filename = str(match.group("source") or "").strip()
+        if not source_filename.lower().endswith(".pdf"):
+            normalized_lines.append(raw_line)
+            continue
+
+        chapter_title = source_filename[:-4].strip()
+        suffix_text = str(match.group("suffix") or "").strip()
+        if not suffix_text:
+            normalized_suffix = BRIEF_AND_FULL_NOTE
+        elif "brief + full" in suffix_text.lower():
+            normalized_suffix = suffix_text
+        else:
+            normalized_suffix = f"{suffix_text} {BRIEF_AND_FULL_NOTE}"
+
+        rewritten = f"{match.group('prefix')}{chapter_title} → {source_filename}"
+        if normalized_suffix:
+            rewritten = f"{rewritten} {normalized_suffix}"
+        if rewritten != raw_line:
+            changed_count += 1
+        normalized_lines.append(rewritten)
+
+    normalized = "\n".join(normalized_lines)
+    if markdown_text.endswith("\n") and not normalized.endswith("\n"):
+        normalized += "\n"
+    return normalized, changed_count
+
+
+def _normalized_source_payload(source: Path) -> tuple[bytes, int]:
+    source_payload = source.read_bytes()
+    if source.suffix.lower() != ".md":
+        return source_payload, 0
+    try:
+        source_text = source_payload.decode("utf-8")
+    except UnicodeDecodeError:
+        return source_payload, 0
+    normalized_text, changed_count = _normalize_grundbog_bullets(source_text)
+    return normalized_text.encode("utf-8"), changed_count
+
+
+def _status_for_target(source_payload: bytes, target: Path, *, label: str) -> str:
     if not target.exists():
         print(f"{label}_STATUS=missing_target")
         return "missing_target"
-    src_hash = _sha256(source)
-    dst_hash = _sha256(target)
+    target_payload = target.read_bytes()
+    src_hash = _sha256_bytes(source_payload)
+    dst_hash = _sha256_bytes(target_payload)
     print(f"{label}_SOURCE_SHA256={src_hash}")
     print(f"{label}_TARGET_SHA256={dst_hash}")
     if src_hash == dst_hash:
@@ -43,9 +98,9 @@ def _status_for_target(source: Path, target: Path, *, label: str) -> str:
     return "out_of_sync"
 
 
-def _copy_file(source: Path, target: Path, *, label: str) -> None:
+def _copy_file(source_payload: bytes, target: Path, *, label: str) -> None:
     target.parent.mkdir(parents=True, exist_ok=True)
-    target.write_bytes(source.read_bytes())
+    target.write_bytes(source_payload)
     print(f"{label}_SYNCED={target}")
 
 
@@ -156,10 +211,14 @@ def main() -> int:
     print(f"SOURCE={source}")
     print(f"SOURCE_MODE={source_mode}")
 
+    source_payload, normalized_count = _normalized_source_payload(source)
+    if normalized_count > 0:
+        print(f"SOURCE_NORMALIZED_GRUNDBOG_LINES={normalized_count}")
+
     statuses: list[tuple[str, Path, str]] = []
     needs_sync = False
     for label, target in target_items:
-        status = _status_for_target(source, target, label=label)
+        status = _status_for_target(source_payload, target, label=label)
         statuses.append((label, target, status))
         if status in {"missing_target", "out_of_sync"}:
             needs_sync = True
@@ -174,7 +233,7 @@ def main() -> int:
     for label, target, status in statuses:
         if status not in {"missing_target", "out_of_sync"}:
             continue
-        _copy_file(source, target, label=label)
+        _copy_file(source_payload, target, label=label)
     return 0
 
 

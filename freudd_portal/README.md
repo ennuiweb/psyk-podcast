@@ -61,7 +61,7 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Quiz assets are surfaced only in `Quiz for alle kilder`, podcast assets only in `Podcasts`, and tekststatus/progress only in `Tekster`.
 - If no podcasts are available for the active lecture, the `Podcasts` section is hidden.
 - Tekstkort and `Quizzer` sections render quiz rows in mockup format (`<sværhedsgrad> quiz` + `<rigtige>/<total> rigtige • <point>/150 point`) when question counts are available.
-- Tekstkort include a `Send til ChatGPT` quick action that opens a new ChatGPT chat with a prefilled prompt (title + tekst text-URL + original file URL).
+- Tekstkort include a `Send til ChatGPT` quick action that opens a new ChatGPT chat with a prefilled prompt that always includes the absolute PDF URL plus reading title/context.
 - Lecture rail rows render extra-compact marker dots on mobile (without index numbers) plus lecture copy (week label + cleaned lecture title).
 - Module headers in subject detail are rendered as a combined headline (`Uge x, forelæsning x: <titel>`), with cleaned lecture title metadata.
 - Quiz labels are rendered from cleaned `episode_title` metadata (`modul` + `titel`) instead of raw file/tag strings.

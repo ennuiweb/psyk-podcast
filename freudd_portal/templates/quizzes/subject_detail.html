@@ -1884,6 +1884,7 @@
                       <button class="reading-action-button reading-action-chatgpt" type="button" data-chatgpt-reading
                         data-reading-title="{{ reading.reading_title }}"
                         data-reading-pdf-url="{{ reading.open_pdf_url }}"
+                        data-chatgpt-prompt="{{ reading.chatgpt_prompt }}"
                         aria-label="Send {{ reading.reading_title }} til ChatGPT">
                         Send til ChatGPT
                       </button>
@@ -2151,8 +2152,17 @@
     }
 
     const chatBaseUrl = "https://chatgpt.com/";
-    const buildPrompt = () => {
-      return "Jeg studerer psykologi på universitetet. Hjælp mig med denne tekst.";
+    const buildPrompt = ({ title, pdfUrl }) => {
+      const readingTitle = String(title || "").trim() || "Tekst";
+      const readingPdfUrl = String(pdfUrl || "").trim();
+      if (!readingPdfUrl) {
+        return "";
+      }
+      return [
+        readingPdfUrl,
+        "Jeg studerer psykologi på universitetet. Hjælp mig med denne tekst.",
+        `Titel: ${readingTitle}`,
+      ].join("\n");
     };
 
     const copyToClipboard = async (value) => {
@@ -2182,11 +2192,22 @@
         button.dataset.chatgptLaunching = "1";
 
         try {
+          const readingTitle = String(button.getAttribute("data-reading-title") || "").trim();
           const readingPdfUrlRaw = String(button.getAttribute("data-reading-pdf-url") || "").trim();
           if (!readingPdfUrlRaw) {
             return;
           }
-          const prompt = buildPrompt();
+          const readingPdfUrl = new URL(readingPdfUrlRaw, window.location.origin).href;
+          const promptFromDataset = String(button.getAttribute("data-chatgpt-prompt") || "").trim();
+          const prompt = promptFromDataset.includes(readingPdfUrl)
+            ? promptFromDataset
+            : buildPrompt({
+              title: readingTitle,
+              pdfUrl: readingPdfUrl,
+            });
+          if (!prompt) {
+            return;
+          }
           const chatUrl = `${chatBaseUrl}?q=${encodeURIComponent(prompt)}`;
           await copyToClipboard(prompt);
           const openedWindow = window.open(chatUrl, "_blank", "noopener");

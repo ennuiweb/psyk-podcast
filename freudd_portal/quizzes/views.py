@@ -214,6 +214,20 @@ def _display_points_from_raw_score(*, raw_points: int, question_count: int) -> i
     return max(0, min(QUIZ_DISPLAY_POINTS_MAX, int(normalized)))
 
 
+def _build_chatgpt_prompt_for_reading(*, reading_title: object, pdf_url: object) -> str:
+    normalized_pdf_url = str(pdf_url or "").strip()
+    if not normalized_pdf_url:
+        return ""
+    normalized_title = str(reading_title or "").strip() or "Tekst"
+    return "\n".join(
+        (
+            normalized_pdf_url,
+            "Jeg studerer psykologi på universitetet. Hjælp mig med denne tekst.",
+            f"Titel: {normalized_title}",
+        )
+    )
+
+
 def _annotate_quiz_difficulty_slots_for_user(
     *,
     user,
@@ -2247,6 +2261,7 @@ def subject_detail_view(request: HttpRequest, subject_slug: str) -> HttpResponse
             reading["difficulty_summary"] = annotated_summary
             reading["visible_difficulty_summary"] = _visible_quiz_difficulty_slots(annotated_summary)
             reading["primary_quiz_url"] = ""
+            reading["chatgpt_prompt"] = ""
             normalized_reading_key = str(reading.get("reading_key") or "").strip().lower()
             source_filename = _source_filename_or_none(reading.get("source_filename"))
             reading["download_excluded"] = (
@@ -2275,6 +2290,11 @@ def subject_detail_view(request: HttpRequest, subject_slug: str) -> HttpResponse
                     if Path(source_filename).suffix.lower() == ".pdf"
                     else ""
                 )
+                if reading["open_pdf_url"]:
+                    reading["chatgpt_prompt"] = _build_chatgpt_prompt_for_reading(
+                        reading_title=reading.get("reading_title"),
+                        pdf_url=request.build_absolute_uri(reading["open_pdf_url"]),
+                    )
             else:
                 reading["open_url"] = ""
                 reading["open_pdf_url"] = ""

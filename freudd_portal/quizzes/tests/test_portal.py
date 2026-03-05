@@ -2455,6 +2455,7 @@ class QuizPortalTests(TestCase):
                 "reading_key": reading["reading_key"],
             },
         )
+        expected_absolute_pdf_url = f"http://testserver{expected_pdf_url}"
         self.assertContains(response, f'data-open-url="{expected_pdf_url}"')
         self.assertContains(response, "Åben tekst")
         self.assertContains(response, "Send til ChatGPT")
@@ -2462,6 +2463,45 @@ class QuizPortalTests(TestCase):
         self.assertNotContains(response, "data-reading-url=")
         self.assertNotContains(response, "data-reading-text-url=")
         self.assertContains(response, f'data-reading-pdf-url="{expected_pdf_url}"')
+        self.assertContains(response, f'data-chatgpt-prompt="{expected_absolute_pdf_url}')
+
+    def test_subject_detail_hides_chatgpt_for_non_pdf_readings(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+        (self.reading_files_root / "W01L1" / "Custom.docx").write_bytes(b"DOCX")
+
+        with patch(
+            "quizzes.views.get_subject_learning_path_snapshot",
+            return_value={
+                "lectures": [
+                    {
+                        "lecture_key": "W01L1",
+                        "lecture_title": "W01L1 Intro",
+                        "status": "active",
+                        "completed_quizzes": 0,
+                        "total_quizzes": 0,
+                        "lecture_assets": {"quizzes": [], "podcasts": []},
+                        "readings": [
+                            {
+                                "reading_key": "w01l1-custom-1234",
+                                "reading_title": "Custom",
+                                "source_filename": "Custom.docx",
+                                "completed_quizzes": 0,
+                                "total_quizzes": 0,
+                                "status": "not_started",
+                            }
+                        ],
+                    }
+                ],
+                "source_meta": {},
+            },
+        ):
+            response = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Åben tekst")
+        self.assertNotContains(response, 'class="reading-action-button reading-action-chatgpt"')
+        self.assertNotContains(response, "Send til ChatGPT")
 
     def test_subject_open_reading_is_public(self) -> None:
         user = self._create_user()

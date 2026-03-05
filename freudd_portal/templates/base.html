@@ -265,11 +265,11 @@
     }
 
     .nav-links {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+      display: flex;
+      justify-content: space-between;
       flex: 1;
       min-width: 0;
-      gap: var(--space-3);
+      gap: var(--space-4);
       align-items: center;
     }
 
@@ -281,17 +281,16 @@
     }
 
     .nav-group-subjects {
-      justify-self: start;
-    }
-
-    .nav-group-cup {
-      justify-self: center;
+      justify-content: flex-start;
+      gap: var(--space-4);
+      flex-wrap: nowrap;
     }
 
     .nav-group-main {
-      margin-left: 0;
-      justify-self: end;
+      margin-left: auto;
       justify-content: flex-end;
+      gap: var(--space-4);
+      flex-wrap: nowrap;
     }
 
     .inline-form {
@@ -317,10 +316,10 @@
       align-items: center;
       justify-content: center;
       min-height: var(--control-min-height);
-      border: 1px solid var(--border-strong);
+      border: 1px solid color-mix(in srgb, var(--accent) 45%, var(--border-strong));
       background: var(--surface);
-      color: var(--ink);
-      border-radius: var(--radius-nav);
+      color: var(--accent-strong);
+      border-radius: var(--radius-pill);
       padding: 0 var(--space-3);
       text-decoration: none;
       font-size: 0.9rem;
@@ -330,46 +329,39 @@
     }
 
     .nav-action:hover {
-      border-color: color-mix(in srgb, var(--accent) 48%, var(--border-strong));
-      background: var(--accent-soft);
+      border-color: color-mix(in srgb, var(--accent) 62%, var(--border-strong));
+      background: color-mix(in srgb, var(--accent-soft) 72%, var(--surface));
       color: var(--accent-strong);
     }
 
-    .nav-action-subject {
-      --subject-chip-scale: 0.75;
-      min-height: calc(var(--control-min-height) * var(--subject-chip-scale));
-      padding-inline: calc(var(--space-3) * var(--subject-chip-scale));
-      font-size: calc(0.9rem * var(--subject-chip-scale));
-      border-radius: var(--radius-pill);
-      border-color: color-mix(in srgb, var(--accent) 32%, var(--border-strong));
-      background: linear-gradient(160deg,
-          color-mix(in srgb, var(--accent-soft) 76%, var(--surface)),
-          var(--surface-soft));
+    .nav-subject-tab {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--control-min-height);
+      border: 0;
+      border-radius: 0;
+      border-bottom: 2px solid transparent;
+      padding: 0 var(--space-1);
+      color: var(--text-subtle-2);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 600;
+      line-height: 1;
+      transition: border-color 160ms ease, color 160ms ease;
+    }
+
+    .nav-subject-tab:hover {
+      color: var(--ink);
+    }
+
+    .nav-subject-tab.is-active {
       color: var(--accent-strong);
-      font-weight: 700;
-    }
-
-    .nav-action-subject:hover {
-      border-color: color-mix(in srgb, var(--accent) 58%, var(--border-strong));
-      background: color-mix(in srgb, var(--accent-soft) 92%, var(--surface));
-    }
-
-    .nav-action-utility {
-      background: var(--surface-soft);
+      border-bottom-color: var(--accent);
     }
 
     .nav-action-cup {
-      border-radius: 999px;
-      border-color: color-mix(in srgb, var(--accent) 45%, var(--border-strong));
-      background:
-        radial-gradient(circle at 14% 25%, color-mix(in srgb, var(--surface) 92%, #fff7d8), transparent 58%),
-        linear-gradient(140deg,
-          color-mix(in srgb, var(--accent-soft) 86%, var(--surface)),
-          color-mix(in srgb, var(--surface-soft) 88%, #faf4e4));
-      color: var(--accent-strong);
       gap: 0.48rem;
       padding-inline: calc(var(--space-2) + 2px) calc(var(--space-3) + 2px);
-      box-shadow: 0 6px 16px -13px color-mix(in srgb, var(--accent) 42%, transparent);
     }
 
     .nav-action-cup svg {
@@ -384,11 +376,26 @@
 
     .nav-action-cup:hover {
       border-color: color-mix(in srgb, var(--accent) 64%, var(--border-strong));
-      background:
-        radial-gradient(circle at 16% 24%, color-mix(in srgb, var(--surface) 86%, #fff7d8), transparent 55%),
-        linear-gradient(140deg,
-          color-mix(in srgb, var(--accent-soft) 96%, var(--surface)),
-          color-mix(in srgb, var(--surface-soft) 94%, #faf4e4));
+    }
+
+    .nav-top-link {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--control-min-height);
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      line-height: 1;
+      transition: color 160ms ease;
+    }
+
+    .nav-top-link:hover {
+      color: var(--accent-strong);
+    }
+
+    .nav-top-link.is-muted {
+      color: var(--text-subtle-2);
     }
 
     .nav-text-button {
@@ -398,13 +405,14 @@
       font: inherit;
       font-size: 0.9rem;
       font-weight: 600;
+      min-height: var(--control-min-height);
       padding: 0;
       cursor: pointer;
+      transition: color 160ms ease;
     }
 
     .nav-text-button:hover {
-      color: var(--accent-strong);
-      text-decoration: underline;
+      color: var(--ink);
     }
 
     .mobile-tabbar {
@@ -910,7 +918,7 @@
         padding-bottom: 2px;
       }
 
-      .nav-group-subjects .nav-action {
+      .nav-group-subjects .nav-subject-tab {
         flex: 0 0 auto;
       }
 
@@ -1011,15 +1019,17 @@
     <div class="header-inner">
       <a class="brand" href="{% url 'progress' %}">freudd</a>
       <div class="nav-links">
+        {% with topmenu_current_subject_slug=request.resolver_match.kwargs.subject_slug|default:'' %}
         {% if request.user.is_authenticated and topmenu_enrolled_subjects %}
         <div class="nav-group nav-group-subjects">
           {% for subject in topmenu_enrolled_subjects %}
-          <a class="nav-action nav-action-subject" href="{{ subject.detail_url }}">{{ subject.title }}</a>
+          <a class="nav-subject-tab {% if subject.slug == topmenu_current_subject_slug %}is-active{% endif %}"
+            href="{{ subject.detail_url }}">{{ subject.title }}</a>
           {% endfor %}
         </div>
         {% endif %}
-        {% if leaderboard_default_subject_slug %}
-        <div class="nav-group nav-group-cup">
+        <div class="nav-group nav-group-main">
+          {% if leaderboard_default_subject_slug %}
           <a class="nav-action nav-action-cup"
             href="{% url 'leaderboard-subject' subject_slug=leaderboard_default_subject_slug %}">
             <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -1031,20 +1041,19 @@
             </svg>
             <span>scoreboard</span>
           </a>
-        </div>
-        {% endif %}
-        <div class="nav-group nav-group-main">
+          {% endif %}
           {% if request.user.is_authenticated %}
-          <a class="nav-action nav-action-utility" href="{% url 'progress' %}">Indstillinger</a>
+          <a class="nav-top-link" href="{% url 'progress' %}">Indstillinger</a>
           <form method="post" action="{% url 'logout' %}" class="inline-form">
             {% csrf_token %}
             <button class="nav-text-button" type="submit">Log ud</button>
           </form>
           {% else %}
-          <a class="nav-action nav-action-utility" href="{% url 'login' %}">Log ind</a>
-          <a class="nav-action nav-action-utility" href="{% url 'signup' %}">Opret konto</a>
+          <a class="nav-top-link" href="{% url 'login' %}">Log ind</a>
+          <a class="nav-top-link is-muted" href="{% url 'signup' %}">Opret konto</a>
           {% endif %}
         </div>
+        {% endwith %}
       </div>
     </div>
   </header>

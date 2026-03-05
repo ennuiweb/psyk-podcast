@@ -2214,8 +2214,10 @@
           }
           const chatUrl = `${chatBaseUrl}?q=${encodeURIComponent(prompt)}`;
           await copyToClipboard(prompt);
-          const openedWindow = window.open(chatUrl, "_blank", "noopener");
-          if (!openedWindow) {
+          const openedWindow = window.open(chatUrl, "_blank");
+          if (openedWindow) {
+            openedWindow.opener = null;
+          } else {
             window.location.assign(chatUrl);
           }
         } finally {

@@ -2552,6 +2552,26 @@ class QuizPortalTests(TestCase):
         self.assertEqual(response["Content-Type"], "application/pdf")
         self.assertIn("inline", response.get("Content-Disposition", ""))
 
+    def test_subject_open_reading_pdf_head_is_public(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+        detail = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
+        reading_key = detail.context["active_lecture"]["readings"][0]["reading_key"]
+        self.client.logout()
+
+        response = self.client.head(
+            reverse(
+                "subject-open-reading-pdf",
+                kwargs={
+                    "subject_slug": "personlighedspsykologi",
+                    "reading_key": reading_key,
+                },
+            )
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response["Content-Type"], "application/pdf")
+        self.assertIn("inline", response.get("Content-Disposition", ""))
+
     def test_subject_open_reading_serves_pdf_inline(self) -> None:
         user = self._create_user()
         self.client.force_login(user)

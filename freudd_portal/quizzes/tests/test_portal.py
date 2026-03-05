@@ -2456,6 +2456,12 @@ class QuizPortalTests(TestCase):
             },
         )
         expected_absolute_pdf_url = f"http://testserver{expected_pdf_url}"
+        expected_prompt = (
+            f"{expected_absolute_pdf_url}\n"
+            "Jeg studerer psykologi på universitetet. Hjælp mig med denne tekst."
+        )
+        self.assertEqual(reading["chatgpt_prompt"], expected_prompt)
+        self.assertNotIn("Titel:", reading["chatgpt_prompt"])
         self.assertContains(response, f'data-open-url="{expected_pdf_url}"')
         self.assertContains(response, "Åben tekst")
         self.assertContains(response, "Send til ChatGPT")

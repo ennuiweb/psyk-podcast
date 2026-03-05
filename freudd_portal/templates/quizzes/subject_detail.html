@@ -2160,8 +2160,7 @@
     }
 
     const chatBaseUrl = "https://chatgpt.com/";
-    const buildPrompt = ({ title, pdfUrl }) => {
-      const readingTitle = String(title || "").trim() || "Tekst";
+    const buildPrompt = ({ pdfUrl }) => {
       const readingPdfUrl = String(pdfUrl || "").trim();
       if (!readingPdfUrl) {
         return "";
@@ -2169,7 +2168,6 @@
       return [
         readingPdfUrl,
         "Jeg studerer psykologi på universitetet. Hjælp mig med denne tekst.",
-        `Titel: ${readingTitle}`,
       ].join("\n");
     };
 
@@ -2200,7 +2198,6 @@
         button.dataset.chatgptLaunching = "1";
 
         try {
-          const readingTitle = String(button.getAttribute("data-reading-title") || "").trim();
           const readingPdfUrlRaw = String(button.getAttribute("data-reading-pdf-url") || "").trim();
           if (!readingPdfUrlRaw) {
             return;
@@ -2210,7 +2207,6 @@
           const prompt = promptFromDataset.includes(readingPdfUrl)
             ? promptFromDataset
             : buildPrompt({
-              title: readingTitle,
               pdfUrl: readingPdfUrl,
             });
           if (!prompt) {

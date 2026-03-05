@@ -1144,10 +1144,18 @@
     .reading-side {
       width: min(100%, 420px);
       flex-shrink: 0;
+      margin-left: auto;
+      align-items: flex-end;
       border-top: none;
       border-left: none;
       padding-top: 0;
       padding-left: 0;
+    }
+
+    .reading-side .reading-actions,
+    .reading-side .reading-difficulties {
+      width: fit-content;
+      max-width: 100%;
     }
   }
 

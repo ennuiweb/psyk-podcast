@@ -258,6 +258,85 @@ class SubjectContentManifestTests(TestCase):
         reading = manifest["lectures"][0]["readings"][0]
         self.assertEqual(reading["reading_title"], "Gammelgaard (2010) (Øvelseshold)")
 
+    def test_build_manifest_maps_citation_descriptors_and_source_aliases(self) -> None:
+        self.primary_reading_file.write_text(
+            "\n".join(
+                [
+                    "# Reading File Key",
+                    "",
+                    "**W01L1 Intro (Forelaesning 1, 2026-02-02)**",
+                    "- Foucault (1997) → Excerpt-foucault.pdf",
+                    "- Andkjær Olsen & Køppe (1991a + 1991b) → Seminar-reading.pdf",
+                    "- Zeuthen & Køppe (2014) → Grundbog kapitel 07 - Nyere psykoanalytiske teorier.pdf",
+                ]
+            ),
+            encoding="utf-8",
+        )
+        self.fallback_reading_file.write_text(
+            self.primary_reading_file.read_text(encoding="utf-8"),
+            encoding="utf-8",
+        )
+        self.quiz_links_file.write_text(
+            json.dumps(
+                {
+                    "by_name": {
+                        "W1L1 - Foucault, M. (1997). s. 281-301 [EN].mp3": {
+                            "relative_path": "11111111.html",
+                            "difficulty": "medium",
+                            "subject_slug": "personlighedspsykologi",
+                        },
+                        "W1L1 - Andkjær Olsen & Køppe (1991a og b) [EN].mp3": {
+                            "relative_path": "22222222.html",
+                            "difficulty": "medium",
+                            "subject_slug": "personlighedspsykologi",
+                        },
+                        "W1L1 - Grundbog kapitel 07 - Nyere psykoanalytiske teorier [EN].mp3": {
+                            "relative_path": "33333333.html",
+                            "difficulty": "medium",
+                            "subject_slug": "personlighedspsykologi",
+                        },
+                    }
+                }
+            ),
+            encoding="utf-8",
+        )
+        self.rss_file.write_text(
+            "\n".join(
+                [
+                    '<?xml version="1.0" encoding="UTF-8"?>',
+                    "<rss version=\"2.0\">",
+                    "<channel>",
+                    "</channel>",
+                    "</rss>",
+                ]
+            ),
+            encoding="utf-8",
+        )
+        self.spotify_map_file.write_text(
+            json.dumps(
+                {
+                    "version": 1,
+                    "subject_slug": "personlighedspsykologi",
+                    "by_rss_title": {},
+                }
+            ),
+            encoding="utf-8",
+        )
+        clear_subject_service_caches()
+        clear_content_service_caches()
+
+        manifest = build_subject_content_manifest("personlighedspsykologi")
+        lecture = manifest["lectures"][0]
+        self.assertEqual(len(lecture["lecture_assets"]["quizzes"]), 0)
+        quizzes_by_reading = {
+            str(reading["reading_title"]): {str(asset["quiz_id"]) for asset in reading["assets"]["quizzes"]}
+            for reading in lecture["readings"]
+        }
+        self.assertEqual(quizzes_by_reading["Foucault (1997)"], {"11111111"})
+        self.assertEqual(quizzes_by_reading["Andkjær Olsen & Køppe (1991a + 1991b)"], {"22222222"})
+        self.assertEqual(quizzes_by_reading["Zeuthen & Køppe (2014)"], {"33333333"})
+        self.assertFalse(lecture["warnings"])
+
     def test_build_manifest_disambiguates_duplicate_reading_titles(self) -> None:
         self.primary_reading_file.write_text(
             "\n".join(

@@ -38,6 +38,8 @@ NON_ALNUM_RE = re.compile(r"[^a-z0-9]+")
 MULTISPACE_RE = re.compile(r"\s+")
 OVELSESHOLD_NOTE_RE = re.compile(r"\(\s*tekst\s+for\s+øvelseshold\s*\)", re.IGNORECASE)
 OVELSESHOLD_SHORT_NOTE = "(Øvelseshold)"
+SINGLE_LETTER_TOKEN_RE = re.compile(r"\b[a-z]\b")
+YEAR_SUFFIX_PAIR_RE = re.compile(r"\b(\d{4})([a-z])\s+(?:og|and)\s+([a-z])\b")
 SPOTIFY_EPISODE_URL_RE = re.compile(
     r"^https://open\.spotify\.com/episode/[A-Za-z0-9]+(?:[/?#].*)?$",
     re.IGNORECASE,
@@ -146,11 +148,11 @@ def _strip_cfg_tag_suffix(value: str) -> str:
 
 
 def _strip_episode_extension(value: str) -> str:
-    path = Path(value or "")
-    suffix = "".join(path.suffixes)
-    if not suffix:
+    text = str(value or "")
+    suffix = Path(text).suffix
+    if not suffix or not re.fullmatch(r"\.[a-z0-9]{2,5}", suffix, re.IGNORECASE):
         return value
-    return value[: -len(suffix)]
+    return text[: -len(suffix)]
 
 
 def _descriptor_from_episode_name(value: str) -> str:
@@ -178,6 +180,23 @@ def _normalize_title(value: str) -> str:
             normalized = normalized[len(token) :].strip()
     normalized = re.sub(r"^w\d{1,2}l\d+\s*", "", normalized)
     return normalized.strip()
+
+
+def _matching_key_from_normalized(normalized_value: str) -> str:
+    normalized = str(normalized_value or "").strip()
+    if not normalized:
+        return ""
+    normalized = YEAR_SUFFIX_PAIR_RE.sub(r"\1\2 \1\3", normalized)
+    normalized = SINGLE_LETTER_TOKEN_RE.sub(" ", normalized)
+    return MULTISPACE_RE.sub(" ", normalized).strip()
+
+
+def _append_lookup_index(lookup: dict[str, list[int]], key: str, reading_index: int) -> None:
+    if not key:
+        return
+    indexes = lookup.setdefault(key, [])
+    if reading_index not in indexes:
+        indexes.append(reading_index)
 
 
 def _display_reading_title(value: str) -> str:
@@ -267,21 +286,38 @@ def _find_reading_index(lecture_state: dict[str, Any], descriptor: str) -> int |
     if not normalized_descriptor:
         return None
 
-    lookup: dict[str, list[int]] = lecture_state["reading_lookup"]
-    exact_matches = lookup.get(normalized_descriptor, [])
-    if len(exact_matches) == 1:
-        return exact_matches[0]
-    if len(exact_matches) > 1:
+    def _resolve_lookup(
+        lookup: dict[str, list[int]],
+        normalized_needle: str,
+    ) -> int | None:
+        if not normalized_needle:
+            return None
+
+        exact_matches = lookup.get(normalized_needle, [])
+        if len(exact_matches) == 1:
+            return exact_matches[0]
+        if len(exact_matches) > 1:
+            return None
+
+        fuzzy_matches: list[int] = []
+        for normalized_title, indexes in lookup.items():
+            if normalized_needle in normalized_title or normalized_title in normalized_needle:
+                fuzzy_matches.extend(indexes)
+        fuzzy_matches = sorted(set(fuzzy_matches))
+        if len(fuzzy_matches) == 1:
+            return fuzzy_matches[0]
         return None
 
-    fuzzy_matches: list[int] = []
-    for normalized_title, indexes in lookup.items():
-        if normalized_descriptor in normalized_title or normalized_title in normalized_descriptor:
-            fuzzy_matches.extend(indexes)
-    fuzzy_matches = sorted(set(fuzzy_matches))
-    if len(fuzzy_matches) == 1:
-        return fuzzy_matches[0]
-    return None
+    lookup: dict[str, list[int]] = lecture_state["reading_lookup"]
+    resolved = _resolve_lookup(lookup, normalized_descriptor)
+    if resolved is not None:
+        return resolved
+
+    matching_lookup = lecture_state.get("reading_match_lookup")
+    if not isinstance(matching_lookup, dict):
+        return None
+    matching_descriptor = _matching_key_from_normalized(normalized_descriptor)
+    return _resolve_lookup(matching_lookup, matching_descriptor)
 
 
 def _load_quiz_links_by_name(path: Path) -> dict[str, Any]:
@@ -571,6 +607,7 @@ def build_subject_content_manifest(subject_slug: str) -> SubjectContentManifest:
         lecture_title = _lecture_title_from_heading(lecture_key, lecture.heading)
         readings: list[dict[str, Any]] = []
         reading_lookup: dict[str, list[int]] = {}
+        reading_match_lookup: dict[str, list[int]] = {}
         reading_key_counts: dict[str, int] = {}
         for reading_position, reading in enumerate(lecture.readings):
             normalized_title = _normalize_title(reading.title)
@@ -596,7 +633,21 @@ def build_subject_content_manifest(subject_slug: str) -> SubjectContentManifest:
             }
             readings.append(reading_item)
             if normalized_title:
-                reading_lookup.setdefault(normalized_title, []).append(reading_position)
+                _append_lookup_index(reading_lookup, normalized_title, reading_position)
+                _append_lookup_index(
+                    reading_match_lookup,
+                    _matching_key_from_normalized(normalized_title),
+                    reading_position,
+                )
+            if source_filename:
+                source_stem_normalized = _normalize_title(Path(source_filename).stem)
+                if source_stem_normalized:
+                    _append_lookup_index(reading_lookup, source_stem_normalized, reading_position)
+                    _append_lookup_index(
+                        reading_match_lookup,
+                        _matching_key_from_normalized(source_stem_normalized),
+                        reading_position,
+                    )
 
         lectures.append(
             {
@@ -605,6 +656,7 @@ def build_subject_content_manifest(subject_slug: str) -> SubjectContentManifest:
                 "sequence_index": sequence_index,
                 "readings": readings,
                 "reading_lookup": reading_lookup,
+                "reading_match_lookup": reading_match_lookup,
                 "lecture_assets": {
                     "quizzes": [],
                     "podcasts": [],
@@ -652,6 +704,7 @@ def build_subject_content_manifest(subject_slug: str) -> SubjectContentManifest:
                 key=lambda item: str(item.get("title") or "").casefold()
             )
         lecture_state.pop("reading_lookup", None)
+        lecture_state.pop("reading_match_lookup", None)
 
     reading_error = parse_result.error
     source_meta = {

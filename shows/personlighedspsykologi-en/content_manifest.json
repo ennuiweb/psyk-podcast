@@ -3,15 +3,15 @@
   "subject_slug": "personlighedspsykologi",
   "source_meta": {
     "version": 1,
-    "generated_at": "2026-03-05T06:33:51.151843+00:00",
-    "reading_master_path": "/home/runner/work/psyk-podcast/psyk-podcast/shows/personlighedspsykologi-en/docs/reading-file-key.md",
-    "reading_fallback_path": "/home/runner/work/psyk-podcast/psyk-podcast/shows/personlighedspsykologi-en/docs/reading-file-key.md",
-    "reading_source_used": "/home/runner/work/psyk-podcast/psyk-podcast/shows/personlighedspsykologi-en/docs/reading-file-key.md",
+    "generated_at": "2026-03-05T07:28:42.967517+00:00",
+    "reading_master_path": "/Users/oskar/repo/podcasts/.ai/worktrees/fix-reading-quiz-mapping/shows/personlighedspsykologi-en/docs/reading-file-key.md",
+    "reading_fallback_path": "/Users/oskar/repo/podcasts/.ai/worktrees/fix-reading-quiz-mapping/shows/personlighedspsykologi-en/docs/reading-file-key.md",
+    "reading_source_used": "/Users/oskar/repo/podcasts/.ai/worktrees/fix-reading-quiz-mapping/shows/personlighedspsykologi-en/docs/reading-file-key.md",
     "reading_fallback_used": false,
     "reading_error": null,
-    "quiz_links_path": "/home/runner/work/psyk-podcast/psyk-podcast/shows/personlighedspsykologi-en/quiz_links.json",
-    "rss_path": "/home/runner/work/psyk-podcast/psyk-podcast/shows/personlighedspsykologi-en/feeds/rss.xml",
-    "spotify_map_path": "/home/runner/work/psyk-podcast/psyk-podcast/shows/personlighedspsykologi-en/spotify_map.json"
+    "quiz_links_path": "/Users/oskar/repo/podcasts/.ai/worktrees/fix-reading-quiz-mapping/shows/personlighedspsykologi-en/quiz_links.json",
+    "rss_path": "/Users/oskar/repo/podcasts/.ai/worktrees/fix-reading-quiz-mapping/shows/personlighedspsykologi-en/feeds/rss.xml",
+    "spotify_map_path": "/Users/oskar/repo/podcasts/.ai/worktrees/fix-reading-quiz-mapping/shows/personlighedspsykologi-en/spotify_map.json"
   },
   "lectures": [
     {
@@ -466,6 +466,18 @@
                 "difficulty": "easy",
                 "quiz_url": "/q/39e3d7c3.html",
                 "episode_title": "W4L1 - Freud (1973-1933) DA [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "00fc90d7",
+                "difficulty": "hard",
+                "quiz_url": "/q/00fc90d7.html",
+                "episode_title": "W4L1 - Freud, S. (1973-1933) EN [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "493f9e46",
+                "difficulty": "medium",
+                "quiz_url": "/q/493f9e46.html",
+                "episode_title": "W4L1 - Freud, S. (1973-1933) EN [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               }
             ],
             "podcasts": [
@@ -476,6 +488,16 @@
                 "platform": "spotify",
                 "pub_date": "Mon, 23 Feb 2025 14:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1zGwTUO_q-QqVP-rLnmlauzn147twgrq2",
+                "duration_seconds": null,
+                "duration_label": ""
+              },
+              {
+                "kind": "podcast",
+                "title": "Uge 4, Forelæsning 1 · Podcast · Freud, S. (1973-1933) EN",
+                "url": "https://open.spotify.com/episode/5O9Lb9bVW636SdzzkbzXp5",
+                "platform": "spotify",
+                "pub_date": "Mon, 23 Feb 2025 12:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1oLotKYb2cETKuQTUU13i3zVl0pggcy3r",
                 "duration_seconds": null,
                 "duration_label": ""
               }
@@ -516,37 +538,10 @@
         }
       ],
       "lecture_assets": {
-        "quizzes": [
-          {
-            "quiz_id": "00fc90d7",
-            "difficulty": "hard",
-            "quiz_url": "/q/00fc90d7.html",
-            "episode_title": "W4L1 - Freud, S. (1973-1933) EN [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
-          },
-          {
-            "quiz_id": "493f9e46",
-            "difficulty": "medium",
-            "quiz_url": "/q/493f9e46.html",
-            "episode_title": "W4L1 - Freud, S. (1973-1933) EN [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
-          }
-        ],
-        "podcasts": [
-          {
-            "kind": "podcast",
-            "title": "Uge 4, Forelæsning 1 · Podcast · Freud, S. (1973-1933) EN",
-            "url": "https://open.spotify.com/episode/5O9Lb9bVW636SdzzkbzXp5",
-            "platform": "spotify",
-            "pub_date": "Mon, 23 Feb 2025 12:00:00 +0100",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1oLotKYb2cETKuQTUU13i3zVl0pggcy3r",
-            "duration_seconds": null,
-            "duration_label": ""
-          }
-        ]
+        "quizzes": [],
+        "podcasts": []
       },
-      "warnings": [
-        "Quiz entry could not map to reading; attached to lecture assets: W4L1 - Freud, S. (1973-1933) EN [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
-        "RSS item could not map to reading; attached to lecture assets: Uge 4, Forelæsning 1 · Podcast · Freud, S. (1973-1933) EN"
-      ]
+      "warnings": []
     },
     {
       "lecture_key": "W04L2",
@@ -595,8 +590,26 @@
           "source_filename": "Laplanche (1970).pdf",
           "sequence_index": 2,
           "assets": {
-            "quizzes": [],
-            "podcasts": []
+            "quizzes": [
+              {
+                "quiz_id": "cfa57b8f",
+                "difficulty": "medium",
+                "quiz_url": "/q/cfa57b8f.html",
+                "episode_title": "W4L2 - Laplanche, J. (1970). Liv og død i psykoanalysen (pp. 18‐38) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              }
+            ],
+            "podcasts": [
+              {
+                "kind": "podcast",
+                "title": "Uge 4, Forelæsning 2 · Podcast · Laplanche, J. (1970). Liv og død i psykoanalysen (pp. 18‐38)",
+                "url": "https://open.spotify.com/episode/2WKUEIHotmBGDfdS4vtF4r",
+                "platform": "spotify",
+                "pub_date": "Tue, 24 Feb 2025 12:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1qVhwMt0i8iaOx9F60jW0zhsECREO60zK",
+                "duration_seconds": null,
+                "duration_label": ""
+              }
+            ]
           }
         }
       ],
@@ -607,12 +620,6 @@
             "difficulty": "medium",
             "quiz_url": "/q/68635b0c.html",
             "episode_title": "W4L2 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3"
-          },
-          {
-            "quiz_id": "cfa57b8f",
-            "difficulty": "medium",
-            "quiz_url": "/q/cfa57b8f.html",
-            "episode_title": "W4L2 - Laplanche, J. (1970). Liv og død i psykoanalysen (pp. 18‐38) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
           }
         ],
         "podcasts": [
@@ -625,23 +632,10 @@
             "source_audio_url": "https://drive.google.com/uc?export=download&id=1lecFs5y4c5GM7RCgDrWLMIvCE6lDTkm3",
             "duration_seconds": null,
             "duration_label": ""
-          },
-          {
-            "kind": "podcast",
-            "title": "Uge 4, Forelæsning 2 · Podcast · Laplanche, J. (1970). Liv og død i psykoanalysen (pp. 18‐38)",
-            "url": "https://open.spotify.com/episode/2WKUEIHotmBGDfdS4vtF4r",
-            "platform": "spotify",
-            "pub_date": "Tue, 24 Feb 2025 12:00:00 +0100",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1qVhwMt0i8iaOx9F60jW0zhsECREO60zK",
-            "duration_seconds": null,
-            "duration_label": ""
           }
         ]
       },
-      "warnings": [
-        "Quiz entry could not map to reading; attached to lecture assets: W4L2 - Laplanche, J. (1970). Liv og død i psykoanalysen (pp. 18‐38) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
-        "RSS item could not map to reading; attached to lecture assets: Uge 4, Forelæsning 2 · Podcast · Laplanche, J. (1970). Liv og død i psykoanalysen (pp. 18‐38)"
-      ]
+      "warnings": []
     },
     {
       "lecture_key": "W05L1",
@@ -723,7 +717,18 @@
           "sequence_index": 1,
           "assets": {
             "quizzes": [],
-            "podcasts": []
+            "podcasts": [
+              {
+                "kind": "podcast",
+                "title": "Uge 5, Forelæsning 2 · Podcast · Andkjær Olsen & Køppe (1991a og b)",
+                "url": "https://open.spotify.com/episode/4o45xGRvx1w26I7w3Jqn5U",
+                "platform": "spotify",
+                "pub_date": "Tue, 03 Mar 2025 16:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1-MUzDHyTeCGnXPDXK16jJWp3sxBgmv7E",
+                "duration_seconds": null,
+                "duration_label": ""
+              }
+            ]
           }
         },
         {
@@ -756,23 +761,34 @@
           "sequence_index": 3,
           "assets": {
             "quizzes": [],
-            "podcasts": []
+            "podcasts": [
+              {
+                "kind": "short_podcast",
+                "title": "Uge 5, Forelæsning 2 · Kort podcast · Grundbog kapitel 07 - Nyere psykoanalytiske teorier",
+                "url": "https://open.spotify.com/episode/5bVYtRWHw4E6O6R1jB9PKA",
+                "platform": "spotify",
+                "pub_date": "Tue, 03 Mar 2025 12:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1Po7BaXnaFJ6mraTfjxBrL-DQPHKH3LYH",
+                "duration_seconds": null,
+                "duration_label": ""
+              },
+              {
+                "kind": "podcast",
+                "title": "Uge 5, Forelæsning 2 · Podcast · Grundbog kapitel 07 - Nyere psykoanalytiske teorier",
+                "url": "https://open.spotify.com/episode/3d0UzJp0jkJVhDXp3HfsXK",
+                "platform": "spotify",
+                "pub_date": "Tue, 03 Mar 2025 18:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1K4zibBYzW6XPM3cJin7nGHC-Bw_FPJXJ",
+                "duration_seconds": null,
+                "duration_label": ""
+              }
+            ]
           }
         }
       ],
       "lecture_assets": {
         "quizzes": [],
         "podcasts": [
-          {
-            "kind": "short_podcast",
-            "title": "Uge 5, Forelæsning 2 · Kort podcast · Grundbog kapitel 07 - Nyere psykoanalytiske teorier",
-            "url": "https://open.spotify.com/episode/5bVYtRWHw4E6O6R1jB9PKA",
-            "platform": "spotify",
-            "pub_date": "Tue, 03 Mar 2025 12:00:00 +0100",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1Po7BaXnaFJ6mraTfjxBrL-DQPHKH3LYH",
-            "duration_seconds": null,
-            "duration_label": ""
-          },
           {
             "kind": "podcast",
             "title": "Uge 5, Forelæsning 2 · Podcast · Alle kilder",
@@ -782,34 +798,10 @@
             "source_audio_url": "https://drive.google.com/uc?export=download&id=1SQltYmo2sel56_L7oSyHkMGnZ-bL4kOX",
             "duration_seconds": null,
             "duration_label": ""
-          },
-          {
-            "kind": "podcast",
-            "title": "Uge 5, Forelæsning 2 · Podcast · Andkjær Olsen & Køppe (1991a og b)",
-            "url": "https://open.spotify.com/episode/4o45xGRvx1w26I7w3Jqn5U",
-            "platform": "spotify",
-            "pub_date": "Tue, 03 Mar 2025 16:00:00 +0100",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1-MUzDHyTeCGnXPDXK16jJWp3sxBgmv7E",
-            "duration_seconds": null,
-            "duration_label": ""
-          },
-          {
-            "kind": "podcast",
-            "title": "Uge 5, Forelæsning 2 · Podcast · Grundbog kapitel 07 - Nyere psykoanalytiske teorier",
-            "url": "https://open.spotify.com/episode/3d0UzJp0jkJVhDXp3HfsXK",
-            "platform": "spotify",
-            "pub_date": "Tue, 03 Mar 2025 18:00:00 +0100",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1K4zibBYzW6XPM3cJin7nGHC-Bw_FPJXJ",
-            "duration_seconds": null,
-            "duration_label": ""
           }
         ]
       },
-      "warnings": [
-        "RSS item could not map to reading; attached to lecture assets: Uge 5, Forelæsning 2 · Kort podcast · Grundbog kapitel 07 - Nyere psykoanalytiske teorier",
-        "RSS item could not map to reading; attached to lecture assets: Uge 5, Forelæsning 2 · Podcast · Grundbog kapitel 07 - Nyere psykoanalytiske teorier",
-        "RSS item could not map to reading; attached to lecture assets: Uge 5, Forelæsning 2 · Podcast · Andkjær Olsen & Køppe (1991a og b)"
-      ]
+      "warnings": []
     },
     {
       "lecture_key": "W06L1",
@@ -1355,10 +1347,28 @@
                 "episode_title": "W10L1 - Bjerrum Nielsen & Rudberg (2006) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               },
               {
+                "quiz_id": "a7558ce7",
+                "difficulty": "easy",
+                "quiz_url": "/q/a7558ce7.html",
+                "episode_title": "W10L1 - Bjerrum Nielsen, H. & Rudberg, M. (2006). Ytre og indre kjønn i forandring. I Moderne jenter. 117-149. Oslo [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
                 "quiz_id": "81f914ee",
                 "difficulty": "hard",
                 "quiz_url": "/q/81f914ee.html",
                 "episode_title": "W10L1 - Bjerrum Nielsen & Rudberg (2006) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "f21faf27",
+                "difficulty": "hard",
+                "quiz_url": "/q/f21faf27.html",
+                "episode_title": "W10L1 - Bjerrum Nielsen, H. & Rudberg, M. (2006). Ytre og indre kjønn i forandring. I Moderne jenter. 117-149. Oslo [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "b4ac74e7",
+                "difficulty": "medium",
+                "quiz_url": "/q/b4ac74e7.html",
+                "episode_title": "W10L1 - Bjerrum Nielsen, H. & Rudberg, M. (2006). Ytre og indre kjønn i forandring. I Moderne jenter. 117-149. Oslo [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               },
               {
                 "quiz_id": "c9279a99",
@@ -1375,6 +1385,16 @@
                 "platform": "spotify",
                 "pub_date": "Mon, 13 Apr 2025 14:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1PBjLkriJXM8YEMoOAzK9qh1WPSedzic-",
+                "duration_seconds": null,
+                "duration_label": ""
+              },
+              {
+                "kind": "podcast",
+                "title": "Uge 10, Forelæsning 1 · Podcast · Bjerrum Nielsen, H. & Rudberg, M. (2006). Ytre og indre kjønn i forandring. I Moderne jenter. 117-149. Oslo",
+                "url": "https://open.spotify.com/episode/0R6GhnZAu85eUCQl5TXdZe",
+                "platform": "spotify",
+                "pub_date": "Mon, 13 Apr 2025 12:00:00 +0200",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1xmTlfNIPjRkE-J8HR4xXs30ZErUtFAUC",
                 "duration_seconds": null,
                 "duration_label": ""
               }
@@ -1426,12 +1446,6 @@
       "lecture_assets": {
         "quizzes": [
           {
-            "quiz_id": "a7558ce7",
-            "difficulty": "easy",
-            "quiz_url": "/q/a7558ce7.html",
-            "episode_title": "W10L1 - Bjerrum Nielsen, H. & Rudberg, M. (2006). Ytre og indre kjønn i forandring. I Moderne jenter. 117-149. Oslo [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
-          },
-          {
             "quiz_id": "ffc95eb1",
             "difficulty": "easy",
             "quiz_url": "/q/ffc95eb1.html",
@@ -1444,22 +1458,10 @@
             "episode_title": "W10L1 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=1b3d31bc}.mp3"
           },
           {
-            "quiz_id": "f21faf27",
-            "difficulty": "hard",
-            "quiz_url": "/q/f21faf27.html",
-            "episode_title": "W10L1 - Bjerrum Nielsen, H. & Rudberg, M. (2006). Ytre og indre kjønn i forandring. I Moderne jenter. 117-149. Oslo [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
-          },
-          {
             "quiz_id": "29ebcecd",
             "difficulty": "medium",
             "quiz_url": "/q/29ebcecd.html",
             "episode_title": "W10L1 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=1b3d31bc}.mp3"
-          },
-          {
-            "quiz_id": "b4ac74e7",
-            "difficulty": "medium",
-            "quiz_url": "/q/b4ac74e7.html",
-            "episode_title": "W10L1 - Bjerrum Nielsen, H. & Rudberg, M. (2006). Ytre og indre kjønn i forandring. I Moderne jenter. 117-149. Oslo [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
           }
         ],
         "podcasts": [
@@ -1472,23 +1474,10 @@
             "source_audio_url": "https://drive.google.com/uc?export=download&id=1M1mhvFEnBGsSpi-iUtUwmUkr3D5PjtdL",
             "duration_seconds": null,
             "duration_label": ""
-          },
-          {
-            "kind": "podcast",
-            "title": "Uge 10, Forelæsning 1 · Podcast · Bjerrum Nielsen, H. & Rudberg, M. (2006). Ytre og indre kjønn i forandring. I Moderne jenter. 117-149. Oslo",
-            "url": "https://open.spotify.com/episode/0R6GhnZAu85eUCQl5TXdZe",
-            "platform": "spotify",
-            "pub_date": "Mon, 13 Apr 2025 12:00:00 +0200",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1xmTlfNIPjRkE-J8HR4xXs30ZErUtFAUC",
-            "duration_seconds": null,
-            "duration_label": ""
           }
         ]
       },
-      "warnings": [
-        "Quiz entry could not map to reading; attached to lecture assets: W10L1 - Bjerrum Nielsen, H. & Rudberg, M. (2006). Ytre og indre kjønn i forandring. I Moderne jenter. 117-149. Oslo [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
-        "RSS item could not map to reading; attached to lecture assets: Uge 10, Forelæsning 1 · Podcast · Bjerrum Nielsen, H. & Rudberg, M. (2006). Ytre og indre kjønn i forandring. I Moderne jenter. 117-149. Oslo"
-      ]
+      "warnings": []
     },
     {
       "lecture_key": "W10L2",
@@ -1543,19 +1532,43 @@
           "source_filename": "Foucault (1997) .pdf",
           "sequence_index": 2,
           "assets": {
-            "quizzes": [],
-            "podcasts": []
+            "quizzes": [
+              {
+                "quiz_id": "03a9f921",
+                "difficulty": "easy",
+                "quiz_url": "/q/03a9f921.html",
+                "episode_title": "W10L2 - Foucault, M. (1997). s. 281-301 [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "85ac5916",
+                "difficulty": "hard",
+                "quiz_url": "/q/85ac5916.html",
+                "episode_title": "W10L2 - Foucault, M. (1997). s. 281-301 [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "78b2f7a7",
+                "difficulty": "medium",
+                "quiz_url": "/q/78b2f7a7.html",
+                "episode_title": "W10L2 - Foucault, M. (1997). s. 281-301 [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              }
+            ],
+            "podcasts": [
+              {
+                "kind": "podcast",
+                "title": "Uge 10, Forelæsning 2 · Podcast · Foucault, M. (1997). s. 281-301",
+                "url": "https://open.spotify.com/episode/0xdGjghUkkqP1z3ZniaK2T",
+                "platform": "spotify",
+                "pub_date": "Tue, 14 Apr 2025 14:00:00 +0200",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=16Z3YAYc27E7nfy-G4pIQOyQ0ZFcYhZXb",
+                "duration_seconds": null,
+                "duration_label": ""
+              }
+            ]
           }
         }
       ],
       "lecture_assets": {
         "quizzes": [
-          {
-            "quiz_id": "03a9f921",
-            "difficulty": "easy",
-            "quiz_url": "/q/03a9f921.html",
-            "episode_title": "W10L2 - Foucault, M. (1997). s. 281-301 [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
-          },
           {
             "quiz_id": "c64425d1",
             "difficulty": "easy",
@@ -1563,22 +1576,10 @@
             "episode_title": "W10L2 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3"
           },
           {
-            "quiz_id": "85ac5916",
-            "difficulty": "hard",
-            "quiz_url": "/q/85ac5916.html",
-            "episode_title": "W10L2 - Foucault, M. (1997). s. 281-301 [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
-          },
-          {
             "quiz_id": "8e81ffc2",
             "difficulty": "hard",
             "quiz_url": "/q/8e81ffc2.html",
             "episode_title": "W10L2 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3"
-          },
-          {
-            "quiz_id": "78b2f7a7",
-            "difficulty": "medium",
-            "quiz_url": "/q/78b2f7a7.html",
-            "episode_title": "W10L2 - Foucault, M. (1997). s. 281-301 [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
           },
           {
             "quiz_id": "fce66fd1",
@@ -1597,23 +1598,10 @@
             "source_audio_url": "https://drive.google.com/uc?export=download&id=1j-3bTzjIYzYYjmQAcLI7f9YgIys91l3J",
             "duration_seconds": null,
             "duration_label": ""
-          },
-          {
-            "kind": "podcast",
-            "title": "Uge 10, Forelæsning 2 · Podcast · Foucault, M. (1997). s. 281-301",
-            "url": "https://open.spotify.com/episode/0xdGjghUkkqP1z3ZniaK2T",
-            "platform": "spotify",
-            "pub_date": "Tue, 14 Apr 2025 14:00:00 +0200",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=16Z3YAYc27E7nfy-G4pIQOyQ0ZFcYhZXb",
-            "duration_seconds": null,
-            "duration_label": ""
           }
         ]
       },
-      "warnings": [
-        "Quiz entry could not map to reading; attached to lecture assets: W10L2 - Foucault, M. (1997). s. 281-301 [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
-        "RSS item could not map to reading; attached to lecture assets: Uge 10, Forelæsning 2 · Podcast · Foucault, M. (1997). s. 281-301"
-      ]
+      "warnings": []
     },
     {
       "lecture_key": "W11L1",
@@ -1863,8 +1851,38 @@
           "source_filename": "Bank, M. (2014). Narrative psykologier. I Køppe, S. & Dammeyer, J. (Red.).pdf",
           "sequence_index": 2,
           "assets": {
-            "quizzes": [],
-            "podcasts": []
+            "quizzes": [
+              {
+                "quiz_id": "70129442",
+                "difficulty": "easy",
+                "quiz_url": "/q/70129442.html",
+                "episode_title": "W11L2 - Bank, M. (2014). Narrative psykologier. I Køppe, S. & Dammeyer, J. (Red.) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "bfd24968",
+                "difficulty": "hard",
+                "quiz_url": "/q/bfd24968.html",
+                "episode_title": "W11L2 - Bank, M. (2014). Narrative psykologier. I Køppe, S. & Dammeyer, J. (Red.) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "a3b2075d",
+                "difficulty": "medium",
+                "quiz_url": "/q/a3b2075d.html",
+                "episode_title": "W11L2 - Bank, M. (2014). Narrative psykologier. I Køppe, S. & Dammeyer, J. (Red.) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              }
+            ],
+            "podcasts": [
+              {
+                "kind": "podcast",
+                "title": "Uge 11, Forelæsning 2 · Podcast · Bank, M. (2014). Narrative psykologier. I Køppe, S. & Dammeyer, J. (Red.)",
+                "url": "https://open.spotify.com/episode/3ACxbq99r2GMJpjH2d6cr4",
+                "platform": "spotify",
+                "pub_date": "Tue, 21 Apr 2025 16:00:00 +0200",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1zgT-nrRVIN5LQZPtm_7sDw95i1Beyvhr",
+                "duration_seconds": null,
+                "duration_label": ""
+              }
+            ]
           }
         },
         {
@@ -2028,34 +2046,16 @@
             "episode_title": "W11L2 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=5 hash=08b08aa7}.mp3"
           },
           {
-            "quiz_id": "70129442",
-            "difficulty": "easy",
-            "quiz_url": "/q/70129442.html",
-            "episode_title": "W11L2 - Bank, M. (2014). Narrative psykologier. I Køppe, S. & Dammeyer, J. (Red.) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
-          },
-          {
             "quiz_id": "6913b0bc",
             "difficulty": "hard",
             "quiz_url": "/q/6913b0bc.html",
             "episode_title": "W11L2 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=5 hash=08b08aa7}.mp3"
           },
           {
-            "quiz_id": "bfd24968",
-            "difficulty": "hard",
-            "quiz_url": "/q/bfd24968.html",
-            "episode_title": "W11L2 - Bank, M. (2014). Narrative psykologier. I Køppe, S. & Dammeyer, J. (Red.) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
-          },
-          {
             "quiz_id": "7fd183bf",
             "difficulty": "medium",
             "quiz_url": "/q/7fd183bf.html",
             "episode_title": "W11L2 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=5 hash=08b08aa7}.mp3"
-          },
-          {
-            "quiz_id": "a3b2075d",
-            "difficulty": "medium",
-            "quiz_url": "/q/a3b2075d.html",
-            "episode_title": "W11L2 - Bank, M. (2014). Narrative psykologier. I Køppe, S. & Dammeyer, J. (Red.) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
           }
         ],
         "podcasts": [
@@ -2068,23 +2068,11 @@
             "source_audio_url": "https://drive.google.com/uc?export=download&id=1v55vBQomzyLWgLwPR8pDERQJ7kwGApMT",
             "duration_seconds": null,
             "duration_label": ""
-          },
-          {
-            "kind": "podcast",
-            "title": "Uge 11, Forelæsning 2 · Podcast · Bank, M. (2014). Narrative psykologier. I Køppe, S. & Dammeyer, J. (Red.)",
-            "url": "https://open.spotify.com/episode/3ACxbq99r2GMJpjH2d6cr4",
-            "platform": "spotify",
-            "pub_date": "Tue, 21 Apr 2025 16:00:00 +0200",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1zgT-nrRVIN5LQZPtm_7sDw95i1Beyvhr",
-            "duration_seconds": null,
-            "duration_label": ""
           }
         ]
       },
       "warnings": [
-        "Quiz entry could not map to reading; attached to lecture assets: W11L2 - Bank, M. (2014). Narrative psykologier. I Køppe, S. & Dammeyer, J. (Red.) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
-        "Spotify episode mapping missing for RSS item; skipping podcast asset: Uge 11, Forelæsning 2 · Lydbog · Grundbog kapitel 09 - Narrative teorier",
-        "RSS item could not map to reading; attached to lecture assets: Uge 11, Forelæsning 2 · Podcast · Bank, M. (2014). Narrative psykologier. I Køppe, S. & Dammeyer, J. (Red.)"
+        "Spotify episode mapping missing for RSS item; skipping podcast asset: Uge 11, Forelæsning 2 · Lydbog · Grundbog kapitel 09 - Narrative teorier"
       ]
     },
     {

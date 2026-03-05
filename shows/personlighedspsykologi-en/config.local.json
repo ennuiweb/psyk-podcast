@@ -103,20 +103,28 @@
     },
     "description_blocks_by_kind": {
       "reading": [
+        "text_link",
         "quiz",
         "reading_summary",
         "reading_key_points"
       ],
       "brief": [
+        "text_link",
         "quiz",
         "reading_summary",
         "reading_key_points"
       ],
       "weekly_overview": [
+        "text_link",
         "quiz",
         "weekly_overview_summary",
         "weekly_overview_key_points"
       ]
+    },
+    "lecture_preview_link": {
+      "label": "Link til teksten",
+      "base_url": "https://freudd.dk/subjects/personlighedspsykologi",
+      "preview": true
     }
   },
   "filters": {

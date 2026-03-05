@@ -12,7 +12,7 @@ import sys
 import time
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Sequence, Set, Tuple
-from urllib.parse import quote
+from urllib.parse import quote, urlencode
 from zoneinfo import ZoneInfo
 
 try:
@@ -1663,6 +1663,7 @@ DESCRIPTION_BLOCKS_ALLOWED = {
     "topic",
     "lecture",
     "semester_week",
+    "text_link",
     "quiz",
     "quiz_url",
     "reading_summary",
@@ -2077,6 +2078,34 @@ def _apply_description_blank_line_marker(text: str, marker: str) -> str:
     if not resolved_marker:
         return text
     return re.sub(r"\n[ \t]*\n+", f"\n{resolved_marker}\n", text)
+
+
+def _render_description_text_link(
+    *,
+    feed_config: Dict[str, Any],
+    week_number: Optional[int],
+    lecture_number: Optional[int],
+) -> Optional[str]:
+    if not week_number or not lecture_number:
+        return None
+    raw_cfg = feed_config.get("lecture_preview_link")
+    if not isinstance(raw_cfg, dict):
+        return None
+    base_url = str(raw_cfg.get("base_url") or "").strip()
+    if not base_url:
+        return None
+    label = str(raw_cfg.get("label") or "").strip() or "Link til teksten"
+    include_preview_param = bool(raw_cfg.get("preview", True))
+    lecture_key = f"W{int(week_number):02d}L{int(lecture_number)}"
+    query_params = {"lecture": lecture_key}
+    if include_preview_param:
+        query_params["preview"] = "true"
+    query_text = urlencode(query_params)
+    if "?" in base_url:
+        joiner = "" if base_url.endswith("?") or base_url.endswith("&") else "&"
+    else:
+        joiner = "?"
+    return f"{label}: {base_url}{joiner}{query_text}"
 
 
 def _resolve_feed_sort_mode(feed_config: Dict[str, Any]) -> str:
@@ -2628,6 +2657,11 @@ def build_episode_entry(
 
     compact_week_number = sort_week_number if sort_week_number else week_number
     compact_lecture_number = lecture_number
+    description_text_link = _render_description_text_link(
+        feed_config=feed_config,
+        week_number=compact_week_number,
+        lecture_number=lecture_number,
+    )
     course_week_lecture = None
     if compact_week_number and compact_lecture_number:
         course_week_lecture = f"U{compact_week_number}F{compact_lecture_number}"
@@ -2859,6 +2893,7 @@ def build_episode_entry(
             "semester_week": (
                 f"{semester_week_description_label} {week_number}" if week_number else None
             ),
+            "text_link": description_text_link,
             "quiz": _render_quiz_block(
                 quiz_link_payloads,
                 singular_label=quiz_singular_label,

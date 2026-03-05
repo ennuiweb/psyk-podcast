@@ -1830,6 +1830,69 @@ class AutoSpecMatchingTests(unittest.TestCase):
         self.assertIn("Bank introducerer narrative psykologier.\n·\nKey points:", episode["description"])
         self.assertNotIn("\n\n", episode["description"])
 
+    def test_description_text_link_block_renders_preview_url(self):
+        mod = _load_feed_module()
+        file_entry = {
+            "id": "file1",
+            "name": "W09L1 - Foo [EN].mp3",
+            "createdTime": "2026-03-30T08:00:00+00:00",
+        }
+        episode = mod.build_episode_entry(
+            file_entry=file_entry,
+            feed_config={
+                "title": "Personlighedspsykologi (EN)",
+                "link": "https://example.com",
+                "description": "Test feed",
+                "language": "en",
+                "semester_week_start_date": "2026-02-02",
+                "semester_week_label": "Semesteruge",
+                "semester_week_description_label": "Semesteruge",
+                "description_prepend_semester_week_lecture": True,
+                "description_blank_line_marker": "·",
+                "lecture_preview_link": {
+                    "label": "Link til teksten",
+                    "base_url": "https://freudd.dk/subjects/personlighedspsykologi",
+                    "preview": True,
+                },
+                "description_blocks_by_kind": {
+                    "reading": ["text_link", "quiz"],
+                },
+            },
+            overrides={},
+            public_link_template="https://example.com/{file_id}",
+            quiz_cfg={
+                "base_url": "http://64.226.79.109/q/",
+                "labels": {
+                    "multiple": "Quizzer",
+                    "difficulty": {
+                        "easy": "Let",
+                        "medium": "Mellem",
+                        "hard": "Svær",
+                    },
+                },
+            },
+            quiz_links={
+                "by_name": {
+                    "W09L1 - Foo [EN].mp3": {
+                        "relative_path": "a3b2075d.html",
+                        "difficulty": "medium",
+                        "links": [
+                            {"relative_path": "70129442.html", "difficulty": "easy"},
+                            {"relative_path": "a3b2075d.html", "difficulty": "medium"},
+                            {"relative_path": "bfd24968.html", "difficulty": "hard"},
+                        ],
+                    }
+                }
+            },
+            folder_names=["W09L1"],
+        )
+        self.assertIn("Semesteruge 9, Forelæsning 1\n·\nLink til teksten:", episode["description"])
+        self.assertIn(
+            "https://freudd.dk/subjects/personlighedspsykologi?lecture=W09L1&preview=true",
+            episode["description"],
+        )
+        self.assertIn("\n·\nQuizzer:", episode["description"])
+
     def test_description_footer_appends_to_episode_description(self):
         mod = _load_feed_module()
         file_entry = {
@@ -2344,6 +2407,7 @@ class AutoSpecMatchingTests(unittest.TestCase):
         mod.validate_feed_block_config(
             {
                 "description_blocks": [
+                    "text_link",
                     "reading_summary",
                     "reading_key_points",
                     "weekly_overview_summary",

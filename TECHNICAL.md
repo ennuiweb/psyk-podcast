@@ -141,7 +141,7 @@ The repository includes a Django portal in `freudd_portal/` for hybrid auth (use
 - `GET/POST /api/quiz-state/<quiz_id>/raw` (login-required legacy raw state payload)
 - `GET /api/gamification/me` (login-required gamification snapshot)
 - `GET /progress` (login-required dashboard with `Mine fag`, personal tracking, quizliga, and optional `Quizhistorik` section controlled by `FREUDD_PROGRESS_QUIZ_HISTORY_ENABLED`)
-- `GET /subjects/<subject_slug>` (login-required subject detail with lecture-first path + nested readings/assets)
+- `GET /subjects/<subject_slug>` (subject detail with lecture-first path + nested readings/assets; supports anonymous access)
 - `GET /subjects/<subject_slug>/readings/open/<reading_key>` (public reading file access; blocked if excluded in config)
 - `GET /subjects/<subject_slug>/readings/open/<reading_key>/text` (public reading text extraction for ChatGPT; blocked if excluded in config)
 - `POST /subjects/<subject_slug>/enroll` (login-required)
@@ -165,6 +165,7 @@ The repository includes a Django portal in `freudd_portal/` for hybrid auth (use
 - UI: subject detail page is mobile-first and renders a left lecture rail with a single active lecture card (no multi-panel `<details>` accordion).
 - UI: subject detail page shows enrollment status only; enroll/unenroll actions live on `/progress` under `Mine fag`.
 - UI layout contract: lecture rail links use `GET /subjects/<subject_slug>?lecture=<lecture_key>` to switch active lecture on full-page reload.
+- UI preview contract: anonymous requests with `?preview=true&lecture=<lecture_key>` lock the active lecture; rail attempts to open other lectures are redirected to login.
 - UI section contract: active lecture card renders `Readings`, optional `Podcasts` (only when podcast rows exist), and `Quiz for alle kilder`; podcasts are flattened into one list and reading cards always show L/M/S difficulty indicators.
 - Podcast link policy (hard requirement): subject detail must only use Spotify URLs. Direct source/Drive audio links must never be exposed in UI.
 - Subject detail podcasts include inline Spotify embed playback (`open.spotify.com/embed/episode/...`) and external Spotify links for all visible podcast rows.

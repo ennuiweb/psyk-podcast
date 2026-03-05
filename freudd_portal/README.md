@@ -53,6 +53,7 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Subject detail header shows a desktop-only trophy CTA (`scoreboard for <fag>`) linking to the current subject leaderboard; header actions are hidden on compact layouts (`<=1180px`).
 - Subject detail removes KPI strip and global `Udvid alle`/`Luk alle`; lecture switching is via rail links (`?lecture=<lecture_key>`).
 - Subject detail remembers each user's last opened lecture per subject and uses it as default when `?lecture=` is omitted.
+- Anonymous users can open subject detail directly; adding `?preview=true&lecture=<lecture_key>` enables preview lock mode where rail links to other lectures redirect to login.
 - Subject detail spacing uses a local responsive scale (`section/block/tight`) to keep vertical rhythm consistent across rail, card header, and section blocks.
 - Subject detail supports desktop rail collapse/expand (`Skjul tidslinje` / `Vis tidslinje`); compact layouts (`<=1180px`) keep the rail visible.
 - Subject detail uses compact mobile density on small screens (`<=760px`) to reduce nested card padding/gaps for narrow devices.

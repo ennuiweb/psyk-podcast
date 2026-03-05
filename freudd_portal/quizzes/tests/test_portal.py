@@ -1897,6 +1897,22 @@ class QuizPortalTests(TestCase):
             SubjectEnrollment.objects.filter(user=user, subject_slug="personlighedspsykologi").exists()
         )
 
+    def test_subject_detail_is_accessible_for_anonymous(self) -> None:
+        detail_url = reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"})
+        response = self.client.get(detail_url)
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "data-active-lecture-key=\"W01L1\"")
+        self.assertContains(response, "Log ind")
+
+    def test_subject_detail_preview_mode_requires_lecture_for_anonymous(self) -> None:
+        detail_url = reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"})
+        response = self.client.get(f"{detail_url}?preview=true")
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(
+            response.url,
+            f"{reverse('login')}?{urlencode({'next': f'{detail_url}?preview=true'})}",
+        )
+
     def test_subject_detail_is_accessible_without_enrollment_and_lists_readings(self) -> None:
         user = self._create_user()
         self.client.force_login(user)
@@ -1989,6 +2005,28 @@ class QuizPortalTests(TestCase):
         self.assertTrue(response.context["lecture_rail_items"][0]["is_past"])
         self.assertFalse(response.context["lecture_rail_items"][1]["is_past"])
         self.assertContains(response, 'class="lecture-rail-item  is-past ')
+
+    def test_subject_detail_preview_mode_locks_anonymous_to_single_lecture(self) -> None:
+        detail_url = reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"})
+        response = self.client.get(f"{detail_url}?lecture=W01L1&preview=true")
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.context["active_lecture"]["lecture_key"], "W01L1")
+        rail_items = response.context["lecture_rail_items"]
+        self.assertEqual(rail_items[0]["lecture_url"], f"{detail_url}?lecture=W01L1&preview=true")
+        locked_target = f"{detail_url}?lecture=W01L2"
+        self.assertEqual(
+            rail_items[1]["lecture_url"],
+            f"{reverse('login')}?{urlencode({'next': locked_target})}",
+        )
+
+    def test_subject_detail_preview_mode_redirects_anonymous_when_switching_lecture(self) -> None:
+        detail_url = reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"})
+        response = self.client.get(f"{detail_url}?lecture=W99L9&preview=true")
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(
+            response.url,
+            f"{reverse('login')}?{urlencode({'next': f'{detail_url}?lecture=W99L9&preview=true'})}",
+        )
 
     def test_subject_detail_remembers_last_selected_lecture_per_subject(self) -> None:
         user = self._create_user()

@@ -85,6 +85,11 @@
     "audio_category_prefix_position": "after_first_block",
     "description_prepend_semester_week_lecture": true,
     "description_blank_line_marker": "·",
+    "lecture_preview_link": {
+      "label": "Link til teksten",
+      "base_url": "https://freudd.dk/subjects/personlighedspsykologi",
+      "preview": true
+    },
     "tail_grundbog_lydbog": {
       "enabled": true,
       "include_forord": true,
@@ -93,16 +98,19 @@
     },
     "description_blocks_by_kind": {
       "reading": [
+        "text_link",
         "reading_summary",
         "reading_key_points",
         "quiz"
       ],
       "brief": [
+        "text_link",
         "reading_summary",
         "reading_key_points",
         "quiz"
       ],
       "weekly_overview": [
+        "text_link",
         "weekly_overview_summary",
         "weekly_overview_key_points",
         "quiz"

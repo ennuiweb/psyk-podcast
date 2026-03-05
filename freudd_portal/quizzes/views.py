@@ -334,6 +334,37 @@ def _annotate_quiz_difficulty_slots_for_user(
     return enriched_slots
 
 
+def _annotate_quiz_difficulty_slots_for_anonymous(*, slots: list[dict[str, object]]) -> list[dict[str, object]]:
+    if not slots:
+        return []
+
+    enriched_slots: list[dict[str, object]] = []
+    for index, slot in enumerate(slots, start=1):
+        slot_copy = dict(slot)
+        difficulty_label = str(slot_copy.get("label") or "").strip() or "Quiz"
+        question_count = _safe_non_negative_int(slot_copy.get("question_count"))
+
+        slot_copy["display_index"] = index
+        slot_copy["title"] = f"{difficulty_label} quiz"
+        slot_copy["state_key"] = "not_started"
+        slot_copy["state_label"] = QUIZ_SLOT_STATE_LABELS_DA.get("not_started", "")
+        slot_copy["has_attempt"] = False
+        slot_copy["has_metrics"] = False
+        slot_copy["meta_line"] = slot_copy["state_label"]
+
+        if question_count > 0:
+            slot_copy["has_metrics"] = True
+            slot_copy["correct_answers"] = 0
+            slot_copy["question_count"] = question_count
+            slot_copy["display_points_earned"] = 0
+            slot_copy["display_points_total"] = QUIZ_DISPLAY_POINTS_MAX
+            slot_copy["meta_line"] = f"0/{question_count} rigtige • 0/{QUIZ_DISPLAY_POINTS_MAX} point"
+
+        enriched_slots.append(slot_copy)
+
+    return enriched_slots
+
+
 def _visible_quiz_difficulty_slots(slots: object) -> list[dict[str, object]]:
     if not isinstance(slots, list):
         return []
@@ -1311,15 +1342,24 @@ def _lecture_rail_items(
     subject_slug: str,
     lectures: list[dict[str, object]],
     active_index: int,
+    preview_mode: bool = False,
+    preview_locked_lecture_key: str = "",
 ) -> list[dict[str, object]]:
     detail_url = reverse("subject-detail", kwargs={"subject_slug": subject_slug})
+    locked_lecture_key = _normalize_subject_lecture_key(preview_locked_lecture_key) if preview_mode else ""
     items: list[dict[str, object]] = []
     for index, lecture in enumerate(lectures, start=1):
         lecture_key = str(lecture.get("lecture_key") or "").strip().upper()
-        if lecture_key:
-            lecture_url = f"{detail_url}?{urlencode({'lecture': lecture_key})}"
+        if preview_mode and locked_lecture_key and lecture_key and lecture_key != locked_lecture_key:
+            login_next_url = f"{detail_url}?{urlencode({'lecture': lecture_key})}"
+            lecture_url = _auth_url_with_next("login", login_next_url)
         else:
-            lecture_url = detail_url
+            query_params: dict[str, str] = {}
+            if lecture_key:
+                query_params["lecture"] = lecture_key
+            if preview_mode and locked_lecture_key:
+                query_params["preview"] = "true"
+            lecture_url = f"{detail_url}?{urlencode(query_params)}" if query_params else detail_url
         status = str(lecture.get("status") or "").strip().lower()
         items.append(
             {
@@ -1345,6 +1385,84 @@ def _lecture_rail_items(
             }
         )
     return items
+
+
+def _quiz_count_from_assets(assets: object) -> int:
+    if not isinstance(assets, dict):
+        return 0
+    quizzes = assets.get("quizzes") if isinstance(assets.get("quizzes"), list) else []
+    unique_quiz_ids: set[str] = set()
+    for quiz in quizzes:
+        if not isinstance(quiz, dict):
+            continue
+        quiz_id = str(quiz.get("quiz_id") or "").strip().lower()
+        quiz_url = str(quiz.get("quiz_url") or "").strip()
+        if quiz_id:
+            unique_quiz_ids.add(f"id:{quiz_id}")
+        elif quiz_url:
+            unique_quiz_ids.add(f"url:{quiz_url}")
+    return len(unique_quiz_ids)
+
+
+def _anonymous_subject_learning_path_snapshot(subject_slug: str) -> dict[str, object]:
+    slug = str(subject_slug or "").strip().lower()
+    manifest = load_subject_content_manifest(slug)
+    lecture_payload: list[dict[str, object]] = []
+    for lecture in manifest.get("lectures") or []:
+        if not isinstance(lecture, dict):
+            continue
+        lecture_key = str(lecture.get("lecture_key") or "").strip().upper()
+        if not lecture_key:
+            continue
+        lecture_assets = lecture.get("lecture_assets") if isinstance(lecture.get("lecture_assets"), dict) else {}
+        readings_payload: list[dict[str, object]] = []
+        for reading in lecture.get("readings") or []:
+            if not isinstance(reading, dict):
+                continue
+            reading_key = str(reading.get("reading_key") or "").strip()
+            if not reading_key:
+                continue
+            reading_assets = reading.get("assets") if isinstance(reading.get("assets"), dict) else {}
+            reading_quiz_count = _quiz_count_from_assets(reading_assets)
+            readings_payload.append(
+                {
+                    "reading_key": reading_key,
+                    "reading_title": str(reading.get("reading_title") or reading_key),
+                    "is_missing": bool(reading.get("is_missing", False)),
+                    "source_filename": str(reading.get("source_filename") or "").strip() or None,
+                    "sequence_index": int(reading.get("sequence_index") or 0),
+                    "status": "no_quiz" if reading_quiz_count == 0 else "active",
+                    "completed_quizzes": 0,
+                    "total_quizzes": reading_quiz_count,
+                    "assets": {
+                        "quizzes": list(reading_assets.get("quizzes") or []),
+                        "podcasts": list(reading_assets.get("podcasts") or []),
+                    },
+                }
+            )
+        lecture_payload.append(
+            {
+                "lecture_key": lecture_key,
+                "lecture_title": str(lecture.get("lecture_title") or lecture_key),
+                "sequence_index": int(lecture.get("sequence_index") or 0),
+                "status": "active",
+                "completed_quizzes": 0,
+                "total_quizzes": _quiz_count_from_assets(lecture_assets),
+                "warnings": list(lecture.get("warnings") or []),
+                "readings": readings_payload,
+                "lecture_assets": {
+                    "quizzes": list(lecture_assets.get("quizzes") or []),
+                    "podcasts": list(lecture_assets.get("podcasts") or []),
+                },
+            }
+        )
+    active_lecture = next((lecture for lecture in lecture_payload if lecture.get("status") == "active"), None)
+    return {
+        "lectures": lecture_payload,
+        "active_lecture": active_lecture,
+        "warnings": list(manifest.get("warnings") or []),
+        "source_meta": dict(manifest.get("source_meta") or {}),
+    }
 
 
 @require_http_methods(["GET", "POST"])
@@ -2190,17 +2308,27 @@ def subject_unenroll_view(request: HttpRequest, subject_slug: str) -> HttpRespon
     return redirect(_safe_next_redirect(request) or reverse("subject-detail", kwargs={"subject_slug": subject.slug}))
 
 
-@login_required
 @require_GET
 def subject_detail_view(request: HttpRequest, subject_slug: str) -> HttpResponse:
     catalog = load_subject_catalog()
     subject = _subject_or_404(catalog, subject_slug)
-    is_enrolled = SubjectEnrollment.objects.filter(
-        user=request.user,
-        subject_slug=subject.slug,
-    ).exists()
+    user_is_authenticated = bool(getattr(request.user, "is_authenticated", False))
+    preview_mode = (not user_is_authenticated) and _as_bool(request.GET.get("preview"))
+    requested_lecture_key = _normalize_subject_lecture_key(request.GET.get("lecture"))
+    if preview_mode and not requested_lecture_key:
+        return redirect(_auth_url_with_next("login", request.get_full_path()))
+
+    is_enrolled = False
+    if user_is_authenticated:
+        is_enrolled = SubjectEnrollment.objects.filter(
+            user=request.user,
+            subject_slug=subject.slug,
+        ).exists()
     try:
-        subject_path = get_subject_learning_path_snapshot(request.user, subject.slug)
+        if user_is_authenticated:
+            subject_path = get_subject_learning_path_snapshot(request.user, subject.slug)
+        else:
+            subject_path = _anonymous_subject_learning_path_snapshot(subject.slug)
     except Exception:
         logger.exception(
             "Failed to build subject learning path snapshot",
@@ -2216,14 +2344,14 @@ def subject_detail_view(request: HttpRequest, subject_slug: str) -> HttpResponse
         readings_error = str(source_meta.get("reading_error") or "").strip() or None
 
     lecture_payload = _enrich_subject_path_lectures(subject_path.get("lectures", []))
-    annotate_subject_lectures_with_marks(
-        user=request.user,
-        subject_slug=subject.slug,
-        lectures=lecture_payload,
-    )
-    requested_lecture_key = _normalize_subject_lecture_key(request.GET.get("lecture"))
+    if user_is_authenticated:
+        annotate_subject_lectures_with_marks(
+            user=request.user,
+            subject_slug=subject.slug,
+            lectures=lecture_payload,
+        )
     fallback_lecture_key = ""
-    if not requested_lecture_key:
+    if user_is_authenticated and not requested_lecture_key:
         fallback_lecture_key = _load_last_subject_lecture_key(
             user=request.user,
             subject_slug=subject.slug,
@@ -2232,15 +2360,28 @@ def subject_detail_view(request: HttpRequest, subject_slug: str) -> HttpResponse
         lecture_payload,
         requested_lecture_key=requested_lecture_key or fallback_lecture_key,
     )
+    if preview_mode and isinstance(active_lecture, dict):
+        active_lecture_key = _normalize_subject_lecture_key(active_lecture.get("lecture_key"))
+        if not active_lecture_key or active_lecture_key != requested_lecture_key:
+            return redirect(_auth_url_with_next("login", request.get_full_path()))
     if isinstance(active_lecture, dict):
-        _save_last_subject_lecture_key(
-            user=request.user,
-            subject_slug=subject.slug,
-            lecture_key=active_lecture.get("lecture_key"),
-        )
-        active_lecture["quiz_difficulty_slots"] = _annotate_quiz_difficulty_slots_for_user(
-            user=request.user,
-            slots=_quiz_difficulty_slots(active_lecture.get("lecture_assets")),
+        if user_is_authenticated:
+            _save_last_subject_lecture_key(
+                user=request.user,
+                subject_slug=subject.slug,
+                lecture_key=active_lecture.get("lecture_key"),
+            )
+
+            def slot_annotator(slots: list[dict[str, object]]) -> list[dict[str, object]]:
+                return _annotate_quiz_difficulty_slots_for_user(
+                    user=request.user,
+                    slots=slots,
+                )
+        else:
+            def slot_annotator(slots: list[dict[str, object]]) -> list[dict[str, object]]:
+                return _annotate_quiz_difficulty_slots_for_anonymous(slots=slots)
+        active_lecture["quiz_difficulty_slots"] = slot_annotator(
+            _quiz_difficulty_slots(active_lecture.get("lecture_assets")),
         )
         active_lecture["quiz_difficulty_visible_slots"] = _visible_quiz_difficulty_slots(
             active_lecture.get("quiz_difficulty_slots"),
@@ -2252,10 +2393,7 @@ def subject_detail_view(request: HttpRequest, subject_slug: str) -> HttpResponse
             if not isinstance(reading, dict):
                 continue
             summary = _reading_difficulty_summary(reading)
-            annotated_summary = _annotate_quiz_difficulty_slots_for_user(
-                user=request.user,
-                slots=summary,
-            )
+            annotated_summary = slot_annotator(summary)
             reading["difficulty_summary"] = annotated_summary
             reading["visible_difficulty_summary"] = _visible_quiz_difficulty_slots(annotated_summary)
             reading["primary_quiz_url"] = ""
@@ -2313,6 +2451,8 @@ def subject_detail_view(request: HttpRequest, subject_slug: str) -> HttpResponse
                 subject_slug=subject.slug,
                 lectures=lecture_payload,
                 active_index=active_index,
+                preview_mode=preview_mode,
+                preview_locked_lecture_key=requested_lecture_key,
             ),
             "active_lecture": active_lecture,
             "reading_tracking_url": reverse("subject-tracking-reading", kwargs={"subject_slug": subject.slug}),

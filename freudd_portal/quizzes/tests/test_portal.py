@@ -1991,9 +1991,10 @@ class QuizPortalTests(TestCase):
         self.assertContains(response, "Grundbog kapitel 01 - Introduktion til personlighedspsykologi")
         self.assertContains(response, "Uge 1, forelæsning 1: Introforelaesning")
         self.assertContains(response, "<h3 class=\"section-title\">slides</h3>", html=True)
-        self.assertContains(response, "slides fra forelæsning")
-        self.assertContains(response, "slides fra seminarhold")
-        self.assertContains(response, "slides fra øvelseshold")
+        self.assertNotContains(response, "slides fra forelæsning")
+        self.assertNotContains(response, "slides fra seminarhold")
+        self.assertNotContains(response, "slides fra øvelseshold")
+        self.assertContains(response, "Ingen slides registreret.")
         self.assertNotContains(response, "lecture-rail-copy-date")
         self.assertContains(response, "lecture-rail-mobile-copy")
         self.assertContains(response, "U1 · F1")
@@ -2073,7 +2074,7 @@ class QuizPortalTests(TestCase):
         self.assertContains(response, "Slides fra forelæsning W01L1")
         self.assertContains(response, "Slides fra seminarhold W01L1")
         self.assertContains(response, "Slides fra øvelseshold W01L1")
-        self.assertContains(response, "Åben slide", count=3)
+        self.assertContains(response, "Åben slide", count=1)
         self.assertNotContains(response, "Ingen slides registreret.")
 
     def test_subject_detail_uses_slide_catalog_and_open_slide_route(self) -> None:
@@ -2126,17 +2127,42 @@ class QuizPortalTests(TestCase):
         self.assertContains(response, "Forelæsning intro slides")
         self.assertContains(response, "Seminar intro slides")
         self.assertContains(response, "Øvelseshold intro slides")
+        self.assertContains(response, "Åben slide", count=1)
 
-        slide_open_url = reverse(
+        lecture_open_url = reverse(
             "subject-open-slide",
             kwargs={
                 "subject_slug": "personlighedspsykologi",
                 "slide_key": "w01l1-lecture-intro-aaaaaaaa",
             },
         )
-        open_response = self.client.get(slide_open_url)
+        seminar_open_url = reverse(
+            "subject-open-slide",
+            kwargs={
+                "subject_slug": "personlighedspsykologi",
+                "slide_key": "w01l1-seminar-intro-bbbbbbbb",
+            },
+        )
+        exercise_open_url = reverse(
+            "subject-open-slide",
+            kwargs={
+                "subject_slug": "personlighedspsykologi",
+                "slide_key": "w01l1-exercise-intro-cccccccc",
+            },
+        )
+
+        self.assertContains(response, f'href="{lecture_open_url}"')
+        self.assertNotContains(response, f'href="{seminar_open_url}"')
+        self.assertNotContains(response, f'href="{exercise_open_url}"')
+
+        open_response = self.client.get(lecture_open_url)
         self.assertEqual(open_response.status_code, 200)
         self.assertEqual(open_response["Content-Type"], "application/pdf")
+
+        blocked_seminar = self.client.get(seminar_open_url)
+        self.assertEqual(blocked_seminar.status_code, 404)
+        blocked_exercise = self.client.get(exercise_open_url)
+        self.assertEqual(blocked_exercise.status_code, 404)
 
     def test_subject_detail_query_param_selects_active_lecture(self) -> None:
         user = self._create_user()

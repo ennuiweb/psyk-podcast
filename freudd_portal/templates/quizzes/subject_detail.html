@@ -2085,11 +2085,11 @@
               </div>
             </div>
 
+            {% if active_lecture.slide_groups %}
             <ul class="slide-group-list">
               {% for slide_group in active_lecture.slide_groups %}
               <li class="slide-group">
                 <h4 class="slide-group-title">{{ slide_group.group_title }}</h4>
-                {% if slide_group.items %}
                 <ul class="slide-list">
                   {% for slide in slide_group.items %}
                   <li class="slide-row">
@@ -2108,12 +2108,12 @@
                   </li>
                   {% endfor %}
                 </ul>
-                {% else %}
-                <p class="slide-group-empty">Ingen slides registreret.</p>
-                {% endif %}
               </li>
               {% endfor %}
             </ul>
+            {% else %}
+            <p class="section-empty">Ingen slides registreret.</p>
+            {% endif %}
           </section>
 
           {% if active_lecture.podcast_rows %}

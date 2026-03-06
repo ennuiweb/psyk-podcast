@@ -1517,7 +1517,7 @@ def _slide_groups_for_lecture(lecture: object, *, subject_slug: str) -> list[dic
         },
     }
     if not isinstance(lecture, dict):
-        return [groups["lecture"], groups["seminar"], groups["exercise"]]
+        return []
 
     seen_catalog_keys: set[tuple[str, str]] = set()
     lecture_key = str(lecture.get("lecture_key") or "").strip().upper()
@@ -1575,7 +1575,8 @@ def _slide_groups_for_lecture(lecture: object, *, subject_slug: str) -> list[dic
         if isinstance(group_items, list):
             group_items.append(item)
 
-    for key in ("lecture", "seminar", "exercise"):
+    ordered_group_keys = ("lecture", "seminar", "exercise")
+    for key in ordered_group_keys:
         group = groups[key]
         items = group.get("items")
         if not isinstance(items, list):
@@ -1585,7 +1586,13 @@ def _slide_groups_for_lecture(lecture: object, *, subject_slug: str) -> list[dic
         items.sort(key=lambda item: str(item.get("reading_title") or "").casefold())
         group["count"] = len(items)
 
-    return [groups["lecture"], groups["seminar"], groups["exercise"]]
+    visible_groups: list[dict[str, object]] = []
+    for key in ordered_group_keys:
+        group = groups[key]
+        items = group.get("items")
+        if isinstance(items, list) and items:
+            visible_groups.append(group)
+    return visible_groups
 
 
 def _flatten_podcast_rows(lecture: object) -> list[dict[str, object]]:

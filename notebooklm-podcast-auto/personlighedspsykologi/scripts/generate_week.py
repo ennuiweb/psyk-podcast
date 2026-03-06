@@ -30,6 +30,7 @@ DEFAULT_SOURCES_ROOT = (
     "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/"
     "Mine dokumenter \U0001F4BE/psykologi/Personlighedspsykologi/Readings"
 )
+WEEKLY_OVERVIEW_TITLE = "Alle kilder (undtagen slides)"
 
 
 def parse_week_selector(value: str) -> tuple[int, int | None] | None:
@@ -1028,7 +1029,7 @@ def main() -> int:
 
             planned_lines: list[str] = []
             missing_outputs = 0
-            weekly_base = f"{week_label} - Alle kilder"
+            weekly_base = f"{week_label} - {WEEKLY_OVERVIEW_TITLE}"
             if generate_weekly_overview:
                 for content_type in content_types:
                     weekly_output = week_output_dir / f"{weekly_base}{output_extension(content_type, quiz_format=quiz_format)}"
@@ -1340,7 +1341,7 @@ def main() -> int:
                                     source_path=None,
                                     source_paths=sources,
                                     notebook_title=apply_suffix(
-                                        f"Personlighedspsykologi {week_label} Alle kilder",
+                                        f"Personlighedspsykologi {week_label} {WEEKLY_OVERVIEW_TITLE}",
                                         variant["title_suffix"],
                                     ),
                                     instructions=instructions,

@@ -64,6 +64,10 @@ LECTURE_SEMESTER_PAIR_PATTERN = re.compile(
     r"\b(?:forelæsning\s+\d+\s*·\s*semesteruge\s+\d+|semesteruge\s+\d+\s*·\s*forelæsning\s+\d+)\b",
     re.IGNORECASE,
 )
+WEEK_LECTURE_LABEL_PATTERN = re.compile(
+    r"\b(?:uge|semesteruge|week)\s+(\d+)\s*,\s*(?:forelæsning|lecture)\s+(\d+)\b",
+    re.IGNORECASE,
+)
 CFG_TAG_PATTERN = re.compile(
     r"(?:\s+\{[a-z0-9._:+-]+=[^{}\s]+(?:\s+[a-z0-9._:+-]+=[^{}\s]+)*\})+"
     r"(?:\s+\[[^\[\]]+\])?$",
@@ -1377,6 +1381,59 @@ def derive_week_label(
     return f"Week {week_number}"
 
 
+def _coerce_week_number(value: Any) -> Optional[int]:
+    if value is None:
+        return None
+    try:
+        week_number = int(value)
+    except (TypeError, ValueError):
+        return None
+    if week_number < 1:
+        return None
+    return week_number
+
+
+def _resolve_semester_week_number_source(feed_config: Dict[str, Any]) -> str:
+    raw_source = feed_config.get("semester_week_number_source")
+    if raw_source is None:
+        return DEFAULT_SEMESTER_WEEK_NUMBER_SOURCE
+    if not isinstance(raw_source, str) or not raw_source.strip():
+        raise ValueError("feed.semester_week_number_source must be a non-empty string.")
+    source = raw_source.strip().lower()
+    if source not in SEMESTER_WEEK_NUMBER_SOURCES:
+        allowed = ", ".join(sorted(SEMESTER_WEEK_NUMBER_SOURCES))
+        raise ValueError(
+            f"feed.semester_week_number_source has unknown source '{raw_source}'. "
+            f"Allowed sources: {allowed}"
+        )
+    return source
+
+
+def _resolve_semester_week_number(
+    semester_week_number_source: str,
+    lecture_key_week_number: Optional[int],
+    course_week_number: Optional[int],
+    published_week_number: Optional[int],
+) -> Optional[int]:
+    if semester_week_number_source == "lecture_key":
+        return lecture_key_week_number or course_week_number or published_week_number
+    if semester_week_number_source == "course_week":
+        return course_week_number or lecture_key_week_number or published_week_number
+    if semester_week_number_source == "published_at":
+        return published_week_number or lecture_key_week_number or course_week_number
+    return lecture_key_week_number or course_week_number or published_week_number
+
+
+def _extract_week_lecture_pair(value: Any) -> Optional[Tuple[int, int]]:
+    if not isinstance(value, str) or not value.strip():
+        return None
+    first_line = value.splitlines()[0].strip()
+    match = WEEK_LECTURE_LABEL_PATTERN.search(first_line)
+    if not match:
+        return None
+    return int(match.group(1)), int(match.group(2))
+
+
 def _tokenize_words(value: str) -> List[str]:
     if not value:
         return []
@@ -1644,6 +1701,11 @@ WEEK_PREFIX_TOKEN_PATTERN = re.compile(r"^w\s*\d{1,2}(?:\s*l\s*\d+)?\b", re.IGNO
 WEEK_PREFIX_SEPARATOR_PATTERN = re.compile(r"^[\s._\-–:]+")
 WEEK_X_PREFIX_TOKEN_PATTERN = re.compile(r"^x\b[\s._\-–:]*", re.IGNORECASE)
 EPISODE_KINDS = {"reading", "brief", "weekly_overview"}
+WEEKLY_OVERVIEW_LABEL = "Alle kilder (undtagen slides)"
+WEEKLY_OVERVIEW_SUBJECT_PATTERN = re.compile(
+    r"\b(?:alle kilder|all sources)\b(?:\s*\((?:undtagen slides|excluding slides)\))?",
+    re.IGNORECASE,
+)
 TITLE_BLOCKS_ALLOWED = {
     "semester_week_lecture",
     "course_week_lecture",
@@ -1675,6 +1737,8 @@ DEFAULT_TITLE_BLOCKS = ["semester_week_lecture", "subject_or_type", "week_range"
 DEFAULT_DESCRIPTION_BLOCKS = ["descriptor_subject", "topic", "lecture", "semester_week", "quiz"]
 FEED_SORT_MODES = {"published_at_desc", "wxlx_kind_priority"}
 DEFAULT_FEED_SORT_MODE = "published_at_desc"
+SEMESTER_WEEK_NUMBER_SOURCES = {"published_at", "lecture_key", "course_week", "auto"}
+DEFAULT_SEMESTER_WEEK_NUMBER_SOURCE = "published_at"
 TAIL_GRUNDBOG_GUID_PREFIX = "#tail-grundbog-"
 GRUNDBOG_PATTERN = re.compile(r"\bgrundbog\b", re.IGNORECASE)
 GRUNDBOG_FORORD_PATTERN = re.compile(r"\bforord\b", re.IGNORECASE)
@@ -1943,6 +2007,7 @@ def validate_feed_block_config(feed_config: Dict[str, Any]) -> None:
         raise ValueError("feed must be a JSON object.")
     _resolve_audio_category_prefix_position(feed_config)
     _resolve_audio_category_prefixes(feed_config)
+    _resolve_semester_week_number_source(feed_config)
     _resolve_pubdate_year_rewrite(feed_config)
     _resolve_tail_grundbog_lydbog_config(feed_config)
     if "reading_description_mode" in feed_config:
@@ -1977,6 +2042,11 @@ def validate_feed_block_config(feed_config: Dict[str, Any]) -> None:
         bool,
     ):
         raise ValueError("feed.description_prepend_semester_week_lecture must be a boolean.")
+    if "enforce_week_label_consistency" in feed_config and not isinstance(
+        feed_config.get("enforce_week_label_consistency"),
+        bool,
+    ):
+        raise ValueError("feed.enforce_week_label_consistency must be a boolean.")
     if "description_blank_line_marker" in feed_config:
         raw_blank_line_marker = feed_config.get("description_blank_line_marker")
         if not isinstance(raw_blank_line_marker, str) or not raw_blank_line_marker.strip():
@@ -2584,9 +2654,9 @@ def build_episode_entry(
     sort_week_number, lecture_number = extract_week_lecture(folder_names, file_entry.get("name"))
     semester_start = feed_config.get("semester_week_start_date")
     semester_info = semester_week_info(published_at, semester_start)
-    week_number = None
+    published_week_number = None
     if semester_info:
-        week_number, _, _ = semester_info
+        published_week_number, _, _ = semester_info
     week_year_token = meta.get("week_reference_year")
     try:
         week_year = int(week_year_token) if week_year_token is not None else None
@@ -2594,13 +2664,22 @@ def build_episode_entry(
         week_year = None
     week_range_label = format_week_range(published_at, week_year)
     week_date_range = format_week_date_range(published_at, week_year)
-    if week_range_label and week_number is None:
+    if week_range_label and published_week_number is None:
         match = re.search(r"Uge\s+(\d+)", week_range_label)
         if match:
-            week_number = int(match.group(1))
+            published_week_number = int(match.group(1))
+    course_week_number = _coerce_week_number(meta.get("course_week"))
+    semester_week_number_source = _resolve_semester_week_number_source(feed_config)
+    week_number = _resolve_semester_week_number(
+        semester_week_number_source=semester_week_number_source,
+        lecture_key_week_number=sort_week_number,
+        course_week_number=course_week_number,
+        published_week_number=published_week_number,
+    )
     is_unassigned_tail = bool(meta.get("unassigned_tail"))
     if is_unassigned_tail:
         week_number = None
+        published_week_number = None
         week_range_label = None
         week_date_range = None
 
@@ -2619,6 +2698,12 @@ def build_episode_entry(
     raw_description_prepend = feed_config.get("description_prepend_semester_week_lecture", False)
     description_prepend_semester_week_lecture = (
         raw_description_prepend if isinstance(raw_description_prepend, bool) else False
+    )
+    raw_enforce_week_label_consistency = feed_config.get("enforce_week_label_consistency", False)
+    enforce_week_label_consistency = (
+        raw_enforce_week_label_consistency
+        if isinstance(raw_enforce_week_label_consistency, bool)
+        else False
     )
     raw_description_blank_line_marker = feed_config.get("description_blank_line_marker")
     description_blank_line_marker = (
@@ -2683,7 +2768,7 @@ def build_episode_entry(
     cleaned_title = cleaned_title.strip()
 
     if is_weekly_overview:
-        cleaned_subject = re.sub(r"\b(alle kilder|all sources)\b", "", cleaned_title, flags=re.IGNORECASE)
+        cleaned_subject = WEEKLY_OVERVIEW_SUBJECT_PATTERN.sub("", cleaned_title)
         cleaned_subject = cleaned_subject.strip(" -–:")
     else:
         cleaned_subject = cleaned_title
@@ -2697,7 +2782,7 @@ def build_episode_entry(
     if is_brief:
         type_label = "Brief"
     elif is_weekly_overview:
-        type_label = "Alle kilder"
+        type_label = WEEKLY_OVERVIEW_LABEL
     else:
         type_label = "Reading"
     episode_kind = "brief" if is_brief else ("weekly_overview" if is_weekly_overview else "reading")
@@ -2805,7 +2890,7 @@ def build_episode_entry(
         if is_brief:
             descriptor = "Kapitel i grundbogen"
         elif is_weekly_overview:
-            descriptor = "Alle kilder"
+            descriptor = WEEKLY_OVERVIEW_LABEL
         else:
             descriptor = "Reading"
         descriptor_subject = f"{descriptor}: {text_label}" if text_label else descriptor
@@ -2962,6 +3047,22 @@ def build_episode_entry(
             )
         if description_footer and not meta["description"].endswith(description_footer):
             meta["description"] = f"{meta['description']}{description_footer}"
+    if (
+        description_prepend_semester_week_lecture
+        and isinstance(meta.get("title"), str)
+        and isinstance(meta.get("description"), str)
+    ):
+        title_pair = _extract_week_lecture_pair(meta["title"])
+        description_pair = _extract_week_lecture_pair(meta["description"])
+        if title_pair and description_pair and title_pair != description_pair:
+            mismatch_message = (
+                f"Week label mismatch for '{file_entry.get('name', '')}': "
+                f"title has week/lecture {title_pair[0]}/{title_pair[1]} but "
+                f"description has {description_pair[0]}/{description_pair[1]}."
+            )
+            if enforce_week_label_consistency:
+                raise ValueError(mismatch_message)
+            print(f"Warning: {mismatch_message}", file=sys.stderr)
 
     explicit_default = feed_config.get("default_explicit", False)
     duration = meta.get("duration")

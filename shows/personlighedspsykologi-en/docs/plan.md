@@ -31,7 +31,7 @@
 - Feed output (audio only): `gdrive_podcast_feed.py` strips `[EN]`; for `shows/personlighedspsykologi-en` it inserts `[Lydbog]`/`[Kort podcast]`/`[Podcast]` after the first title block (for other shows, default remains leading prefix), and falls back to `[Podcast]` for any other audio episode.
 - Feed copy cleanup removes `Reading:` and `Forelæsning x · Semesteruge x` patterns from episode titles/descriptions.
 - Feed ordering uses `feed.sort_mode: "wxlx_kind_priority"` and applies per-`W#L#` priority: `Brief -> Alle kilder -> Oplæst/TTS readings -> other readings` (block order remains recency-based).
-- Semester week alignment still follows `feed.semester_week_start_date` (2026-02-02), so lectures 1+2 are both Semesteruge 1. `Uge` labels reflect calendar weeks.
+- Semester week labels now follow lecture-key weeks via `feed.semester_week_number_source: "lecture_key"` to keep `Uge X` and prepended `Semesteruge X` aligned for each `W##L#` episode.
 - Filename hygiene: always keep week tokens zero-padded (`W##L#`). If outputs contain unpadded tokens (e.g. `W6L1`), normalize via:
   - `python3 scripts/rename_personlighedspsykologi_outputs.py --root notebooklm-podcast-auto/personlighedspsykologi/output --apply --rewrite-request-json`
 

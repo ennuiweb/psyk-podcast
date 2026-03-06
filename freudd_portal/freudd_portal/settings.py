@@ -127,6 +127,17 @@ AUTHENTICATION_BACKENDS = [
 LOGIN_URL = "/accounts/login"
 LOGIN_REDIRECT_URL = "/settings"
 LOGOUT_REDIRECT_URL = "/accounts/login"
+EMAIL_BACKEND = os.environ.get(
+    "FREUDD_EMAIL_BACKEND",
+    "django.core.mail.backends.smtp.EmailBackend",
+).strip()
+EMAIL_HOST = os.environ.get("FREUDD_EMAIL_HOST", "localhost").strip()
+EMAIL_PORT = int(os.environ.get("FREUDD_EMAIL_PORT", "25"))
+EMAIL_HOST_USER = os.environ.get("FREUDD_EMAIL_HOST_USER", "").strip()
+EMAIL_HOST_PASSWORD = os.environ.get("FREUDD_EMAIL_HOST_PASSWORD", "").strip()
+EMAIL_USE_TLS = _as_bool_env("FREUDD_EMAIL_USE_TLS", default="0")
+EMAIL_USE_SSL = _as_bool_env("FREUDD_EMAIL_USE_SSL", default="0")
+EMAIL_TIMEOUT = int(os.environ.get("FREUDD_EMAIL_TIMEOUT_SECONDS", "10"))
 DEFAULT_FROM_EMAIL = os.environ.get("FREUDD_DEFAULT_FROM_EMAIL", "noreply@freudd.dk")
 FREUDD_NEW_USER_NOTIFY_EMAIL = os.environ.get("FREUDD_NEW_USER_NOTIFY_EMAIL", "").strip()
 

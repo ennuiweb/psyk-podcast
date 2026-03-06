@@ -11,7 +11,7 @@ Scaffolding for the "Personlighedspsykologi" feed.
 - `docs/` - planning material and any "important text" docs.
 
 Feed note: generated episode `title` and `description` are block-composed. Use `feed.title_blocks` / `feed.description_blocks` (and optional `*_by_kind`) for formatting control.
-Block note: this show uses long title form `Uge X, Forelæsning Y · <kategori> · <emne>` via `course_week_lecture_long` + `audio_category_prefix_position: after_first_block`; `feed.description_prepend_semester_week_lecture: true` prepends `Semesteruge X, Forelæsning Y` as a heading with a blank line before the next description block.
+Block note: this show uses long title form `Uge X, Forelæsning Y · <kategori> · <emne>` via `course_week_lecture_long` + `audio_category_prefix_position: after_first_block`; `feed.description_prepend_semester_week_lecture: true` prepends `Semesteruge X, Forelæsning Y` as a heading with a blank line before the next description block. `feed.semester_week_number_source: "lecture_key"` keeps title/description week labels aligned to the `W##L#` token.
 Spotify note: `feed.description_blank_line_marker: "·"` converts blank lines in descriptions to a visible separator line (`·`) for apps that collapse empty lines.
 Description order note: for `reading`, `brief`, and `weekly_overview`, `feed.description_blocks_by_kind` is set to `quiz -> summary -> key points`; when no quiz link exists, the summary/key-points blocks render without the quiz block.
 Quiz localization note: `quiz.labels` controls heading and difficulty labels in descriptions (currently `Quizzer` with `Let/Mellem/Svær`).
@@ -71,3 +71,11 @@ Reading key sync note:
   - Stable fallback mode is default: if OneDrive source is unavailable, primary repo mirror is used as source.
   - Strict mode (fail when source missing): `python3 scripts/sync_personlighedspsykologi_reading_file_key.py --strict-source --apply`
   - One-time bootstrap source from current repo file: `python3 scripts/sync_personlighedspsykologi_reading_file_key.py --bootstrap-source-from-repo --apply`
+
+Slides mapping note (manual only):
+- Slide mapping til `W##L#` + underkategori skal udføres manuelt.
+- Automatisk mapping med script er ikke tilladt.
+- Fag-runbook: `shows/personlighedspsykologi-en/docs/slides-sync.md`
+- Global policy: `freudd_portal/docs/slides-mapping-policy.md`
+- Catalog: `shows/personlighedspsykologi-en/slides_catalog.json`
+- Upload target: `/var/www/slides/personlighedspsykologi`

@@ -144,6 +144,7 @@ The repository includes a Django portal in `freudd_portal/` for hybrid auth (use
 - `GET /subjects/<subject_slug>` (subject detail with lecture-first path + nested readings/assets; supports anonymous access)
 - `GET /subjects/<subject_slug>/readings/open/<reading_key>` (public reading file access; blocked if excluded in config)
 - `GET /subjects/<subject_slug>/readings/open/<reading_key>/text` (public reading text extraction for ChatGPT; blocked if excluded in config)
+- `GET /subjects/<subject_slug>/slides/open/<slide_key>` (public slide file access via slides catalog; lecture slides only, seminar/exercise blocked)
 - `POST /subjects/<subject_slug>/enroll` (login-required)
 - `POST /subjects/<subject_slug>/unenroll` (login-required)
 
@@ -166,7 +167,7 @@ The repository includes a Django portal in `freudd_portal/` for hybrid auth (use
 - UI: subject detail page shows enrollment status only; enroll/unenroll actions live on `/progress` under `Mine fag`.
 - UI layout contract: lecture rail links use `GET /subjects/<subject_slug>?lecture=<lecture_key>` to switch active lecture on full-page reload.
 - UI preview contract: anonymous requests with `?preview=true&lecture=<lecture_key>` lock the active lecture; rail attempts to open other lectures trigger a login-required popup and route to login when confirmed.
-- UI section contract: active lecture card renders `Readings`, `Slides` (with `slides fra forelæsning`, `slides fra seminarhold`, `slides fra øvelseshold`), optional `Podcasts` (only when podcast rows exist), and `Quiz for alle kilder`; podcasts are flattened into one list and reading cards always show L/M/S difficulty indicators.
+- UI section contract: active lecture card renders `Readings`, `Slides` (with only non-empty underkategorier among `slides fra forelæsning`, `slides fra seminarhold`, `slides fra øvelseshold`), optional `Podcasts` (only when podcast rows exist), and `Quiz for alle kilder`; podcasts are flattened into one list and reading cards always show L/M/S difficulty indicators.
 - Podcast link policy (hard requirement): subject detail must only use Spotify URLs. Direct source/Drive audio links must never be exposed in UI.
 - Subject detail podcasts include inline Spotify embed playback (`open.spotify.com/embed/episode/...`) and external Spotify links for all visible podcast rows.
 - Subject detail now degrades gracefully: if snapshot computation fails, route still returns 200 with a user-facing retry message instead of 500.
@@ -188,6 +189,7 @@ The repository includes a Django portal in `freudd_portal/` for hybrid auth (use
 - Manifest readings include optional `source_filename` so the portal can resolve and open local reading files.
 - Reading file downloads are governed by `reading_download_exclusions.json` (`excluded_reading_keys` per subject, matching manifest `readings[].reading_key`).
 - Spotify mapping source is `spotify_map.json` keyed by RSS item title; only direct Spotify episode URLs are valid (`platform=spotify`).
+- Slide mapping policy is manual-only for all subjects (`freudd_portal/docs/slides-mapping-policy.md`), with subject runbooks in `shows/personlighedspsykologi-en/docs/slides-sync.md` and `shows/bioneuro/docs/slides-mapping.md`.
 - `MISSING:` reading lines are preserved and rendered as missing reading cards in subject detail.
 
 ### Local setup
@@ -232,6 +234,9 @@ python3 manage.py test
 - `FREUDD_SUBJECT_FEED_RSS_PATH` (default: `shows/personlighedspsykologi-en/feeds/rss.xml`)
 - `FREUDD_SUBJECT_SPOTIFY_MAP_PATH` (default: `shows/personlighedspsykologi-en/spotify_map.json`)
 - `FREUDD_SUBJECT_CONTENT_MANIFEST_PATH` (default: `shows/personlighedspsykologi-en/content_manifest.json`)
+- `FREUDD_SUBJECT_SLIDES_CATALOG_PATH` (default: `shows/personlighedspsykologi-en/slides_catalog.json`)
+- `FREUDD_SUBJECT_SLIDES_FILES_ROOT` (default: `/var/www/slides/personlighedspsykologi`)
+- `FREUDD_SUBJECT_SLIDES_CATALOG_PATH` + `FREUDD_SUBJECT_SLIDES_FILES_ROOT` are currently global per deployment (not per-subject split).
 - `FREUDD_READING_FILES_ROOT` (default: `/var/www/readings/personlighedspsykologi`)
 - `FREUDD_READING_DOWNLOAD_EXCLUSIONS_PATH` (default: `shows/personlighedspsykologi-en/reading_download_exclusions.json`)
 - `FREUDD_GAMIFICATION_DAILY_GOAL` (default: `20`)
@@ -288,7 +293,7 @@ Quiz sync behavior (current):
 - Google account linking is explicit (`/accounts/3rdparty/`); implicit email-based social account takeover is disabled
 - Wrapper/raw quiz endpoints are public (`/q/*`, `/q/raw/*`) for anonymous play
 - Public quiz content API (`/api/quiz-content/<id>`) serves normalized quiz JSON to the portal UI
-- Login required on dashboard + state persistence + subject preference APIs (`/progress`, `/api/quiz-state/*`, `/subjects/*`, `/preferences/*`), except public reading endpoints (`/subjects/<subject_slug>/readings/open/<reading_key>`, `/subjects/<subject_slug>/readings/open/<reading_key>/text`, and equivalent `/tekster/open/*` routes)
+- Login required on dashboard + state persistence + subject preference APIs (`/progress`, `/api/quiz-state/*`, `/subjects/*`, `/preferences/*`), except public reading/slide endpoints (`/subjects/<subject_slug>/readings/open/<reading_key>`, `/subjects/<subject_slug>/readings/open/<reading_key>/text`, `/subjects/<subject_slug>/slides/open/<slide_key>`, and equivalent `/tekster/open/*` routes)
 - Login required on `/api/gamification/me`
 - Anonymous users are prompted to log in when they reach quiz summary/completion
 - Strict quiz ID regex (`^[0-9a-f]{8}$`) plus existence checks

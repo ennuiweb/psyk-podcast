@@ -3,7 +3,7 @@
   "subject_slug": "bioneuro",
   "source_meta": {
     "version": 1,
-    "generated_at": "2026-03-06T13:09:52.260588+00:00",
+    "generated_at": "2026-03-06T13:18:24.234788+00:00",
     "reading_master_path": "/home/runner/work/psyk-podcast/psyk-podcast/shows/bioneuro/docs/freudd-reading-file-key.md",
     "reading_fallback_path": "/home/runner/work/psyk-podcast/psyk-podcast/shows/bioneuro/docs/freudd-reading-file-key.md",
     "reading_source_used": "/home/runner/work/psyk-podcast/psyk-podcast/shows/bioneuro/docs/freudd-reading-file-key.md",
@@ -11,7 +11,8 @@
     "reading_error": null,
     "quiz_links_path": "/home/runner/work/psyk-podcast/psyk-podcast/shows/bioneuro/quiz_links.json",
     "rss_path": "/home/runner/work/psyk-podcast/psyk-podcast/shows/bioneuro/feeds/rss.xml",
-    "spotify_map_path": "/home/runner/work/psyk-podcast/psyk-podcast/shows/bioneuro/spotify_map.json"
+    "spotify_map_path": "/home/runner/work/psyk-podcast/psyk-podcast/shows/bioneuro/spotify_map.json",
+    "slides_catalog_path": "/home/runner/work/psyk-podcast/psyk-podcast/shows/bioneuro/slides_catalog.json"
   },
   "lectures": [
     {
@@ -58,6 +59,30 @@
                 "duration_label": ""
               }
             ]
+          }
+        }
+      ],
+      "slides": [
+        {
+          "slide_key": "w01l1-lecture-introduction-course-topic",
+          "subcategory": "lecture",
+          "title": "Introduction to course and topic",
+          "source_filename": "BioNeuroLecture1_2026.pdf",
+          "relative_path": "W01L1/lecture/BioNeuroLecture1_2026.pdf",
+          "assets": {
+            "quizzes": [],
+            "podcasts": []
+          }
+        },
+        {
+          "slide_key": "w01l1-exercise-class-1-introduction",
+          "subcategory": "exercise",
+          "title": "Class 1. Introduction to Biological Psychology and Neuropsychology",
+          "source_filename": "1 Introduktion - Hold 1.pdf",
+          "relative_path": "W01L1/exercise/1 Introduktion - Hold 1.pdf",
+          "assets": {
+            "quizzes": [],
+            "podcasts": []
           }
         }
       ],
@@ -113,6 +138,30 @@
                 "duration_label": ""
               }
             ]
+          }
+        }
+      ],
+      "slides": [
+        {
+          "slide_key": "w02l1-lecture-macro-micro-neuroanatomy",
+          "subcategory": "lecture",
+          "title": "The Macro- and Microscopic Anatomy of the Nervous System",
+          "source_filename": "BioNeuroLecture 2_2026_Neuroanatomy.pdf",
+          "relative_path": "W02L1/lecture/BioNeuroLecture 2_2026_Neuroanatomy.pdf",
+          "assets": {
+            "quizzes": [],
+            "podcasts": []
+          }
+        },
+        {
+          "slide_key": "w02l1-exercise-class-2-macroscopic-neuroanatomy",
+          "subcategory": "exercise",
+          "title": "Class 2. Macroscopic Neuroanatomy",
+          "source_filename": "2 Makroanatomi - Hold 1.pdf",
+          "relative_path": "W02L1/exercise/2 Makroanatomi - Hold 1.pdf",
+          "assets": {
+            "quizzes": [],
+            "podcasts": []
           }
         }
       ],
@@ -181,6 +230,19 @@
           }
         }
       ],
+      "slides": [
+        {
+          "slide_key": "w03l1-lecture-neurophysiology",
+          "subcategory": "lecture",
+          "title": "Neurophysiology",
+          "source_filename": "BioNeuroLecture3_2026-02-20-BasicNeurophysiol-MSC.pdf",
+          "relative_path": "W03L1/lecture/BioNeuroLecture3_2026-02-20-BasicNeurophysiol-MSC.pdf",
+          "assets": {
+            "quizzes": [],
+            "podcasts": []
+          }
+        }
+      ],
       "lecture_assets": {
         "quizzes": [],
         "podcasts": []
@@ -231,6 +293,19 @@
                 "duration_label": ""
               }
             ]
+          }
+        }
+      ],
+      "slides": [
+        {
+          "slide_key": "w04l1-lecture-neurochemistry-neuropharmacology",
+          "subcategory": "lecture",
+          "title": "Neurochemistry & Neuropharmacology",
+          "source_filename": "BioNeuroLecture4_2026_SV.pdf",
+          "relative_path": "W04L1/lecture/BioNeuroLecture4_2026_SV.pdf",
+          "assets": {
+            "quizzes": [],
+            "podcasts": []
           }
         }
       ],
@@ -296,6 +371,19 @@
                 "duration_label": ""
               }
             ]
+          }
+        }
+      ],
+      "slides": [
+        {
+          "slide_key": "w05l1-lecture-hormones-brain",
+          "subcategory": "lecture",
+          "title": "Hormones and the Brain",
+          "source_filename": "BioNeuroLecture 5 Hormones and the brain.pdf",
+          "relative_path": "W05L1/lecture/BioNeuroLecture 5 Hormones and the brain.pdf",
+          "assets": {
+            "quizzes": [],
+            "podcasts": []
           }
         }
       ],
@@ -487,6 +575,7 @@
           }
         }
       ],
+      "slides": [],
       "lecture_assets": {
         "quizzes": [
           {
@@ -574,6 +663,7 @@
           }
         }
       ],
+      "slides": [],
       "lecture_assets": {
         "quizzes": [],
         "podcasts": []
@@ -657,6 +747,7 @@
           }
         }
       ],
+      "slides": [],
       "lecture_assets": {
         "quizzes": [
           {
@@ -731,6 +822,7 @@
           }
         }
       ],
+      "slides": [],
       "lecture_assets": {
         "quizzes": [],
         "podcasts": []
@@ -857,6 +949,7 @@
           }
         }
       ],
+      "slides": [],
       "lecture_assets": {
         "quizzes": [
           {
@@ -983,6 +1076,7 @@
           }
         }
       ],
+      "slides": [],
       "lecture_assets": {
         "quizzes": [
           {
@@ -1055,6 +1149,7 @@
           }
         }
       ],
+      "slides": [],
       "lecture_assets": {
         "quizzes": [],
         "podcasts": []
@@ -1099,6 +1194,7 @@
           }
         }
       ],
+      "slides": [],
       "lecture_assets": {
         "quizzes": [],
         "podcasts": []

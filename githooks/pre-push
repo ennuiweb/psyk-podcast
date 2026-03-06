@@ -13,6 +13,7 @@ readings_sync_on_push="${FREUDD_READINGS_SYNC_ON_PUSH:-1}"
 readings_sync_script="${repo_root}/scripts/sync_personlighedspsykologi_readings_to_droplet.py"
 readings_sync_python="python3"
 output_dir_mirror_script="${repo_root}/scripts/mirror_output_dirs.py"
+apps_script_push_mode="${APPS_SCRIPT_PUSH_MODE:-}"
 
 if [[ -x "${repo_root}/.venv/bin/python" ]]; then
   reading_key_sync_python="${repo_root}/.venv/bin/python"
@@ -174,16 +175,28 @@ fi
 run_output_dir_mirror "bioneuro" "BIONEURO"
 run_output_dir_mirror "personlighedspsykologi" "PERSONLIGHEDSPSYKOLOGI"
 
-if [[ "${APPS_SCRIPT_PUSH_ON_PUSH:-1}" == "0" ]]; then
+if [[ -z "${apps_script_push_mode}" ]]; then
+  if [[ "${APPS_SCRIPT_PUSH_ON_PUSH:-1}" == "0" ]]; then
+    apps_script_push_mode="off"
+  else
+    apps_script_push_mode="best-effort"
+  fi
+fi
+
+if [[ "${apps_script_push_mode}" == "off" ]]; then
   exit 0
 fi
 
 if [[ -n "${log_file}" ]]; then
   printf '%s %s\n' "$(date +'%Y-%m-%d %H:%M:%S')" \
-    "pre-push: running apps-script push" >> "${log_file}"
+    "pre-push: running apps-script push (mode=${apps_script_push_mode})" >> "${log_file}"
 fi
 
-"${repo_root}/apps-script/push_drive_trigger.sh"
+if ! APPS_SCRIPT_PUSH_MODE="${apps_script_push_mode}" \
+  "${repo_root}/apps-script/push_drive_trigger.sh"; then
+  echo "pre-push: apps-script push failed (mode=${apps_script_push_mode}); aborting push" >&2
+  exit 1
+fi
 
 if [[ -n "${log_file}" ]]; then
   printf '%s %s\n' "$(date +'%Y-%m-%d %H:%M:%S')" \

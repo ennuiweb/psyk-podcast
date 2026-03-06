@@ -261,7 +261,7 @@ Operational behavior:
 - `FREUDD_SUBJECT_SLIDES_CATALOG_PATH` (default: `shows/personlighedspsykologi-en/slides_catalog.json`)
 - `FREUDD_SUBJECT_SLIDES_FILES_ROOT` (default: `/var/www/slides/personlighedspsykologi`)
 - Slide mapping policy: manual-only (`freudd_portal/docs/slides-mapping-policy.md`).
-- Slides env paths er aktuelt globale pr. deployment (ikke separate per subject): skift af fag kræver env-opdatering + redeploy.
+- Slides paths kan overrides per subject i `freudd_portal/subjects.json` via `slides_catalog_path` og `slides_files_root`.
 - `FREUDD_READING_FILES_ROOT` (default: `/var/www/readings/personlighedspsykologi`)
 - `FREUDD_READING_FILES_ROOT` must be traversable/readable by the portal service user (`www-data`) or tekst open/download routes will fail at runtime.
 - `FREUDD_READING_DOWNLOAD_EXCLUSIONS_PATH` (default: `shows/personlighedspsykologi-en/reading_download_exclusions.json`)

@@ -40,7 +40,7 @@ from quizzes.models import (
 )
 from quizzes.services import load_quiz_label_mapping
 from quizzes.subject_services import clear_subject_service_caches
-from quizzes.views import _enrich_subject_path_lectures
+from quizzes.views import _enrich_subject_path_lectures, _slide_catalog_entries_for_lecture
 
 
 class QuizPortalTests(TestCase):
@@ -2191,6 +2191,91 @@ class QuizPortalTests(TestCase):
         self.assertEqual(blocked_seminar.status_code, 404)
         blocked_exercise = self.client.get(exercise_open_url)
         self.assertEqual(blocked_exercise.status_code, 404)
+
+    def test_slide_catalog_entries_use_subject_specific_slide_paths(self) -> None:
+        self._write_slides_catalog_file(
+            slides=[
+                {
+                    "slide_key": "w01l1-lecture-personlighedspsykologi-intro",
+                    "lecture_key": "W01L1",
+                    "subcategory": "lecture",
+                    "title": "Forelæsning intro slides",
+                    "source_filename": "Forelaesning intro slides.pdf",
+                    "relative_path": "W01L1/lecture/Forelaesning intro slides.pdf",
+                },
+            ]
+        )
+        bioneuro_slides_catalog = Path(self.temp_dir.name) / "bioneuro_slides_catalog.json"
+        bioneuro_slides_catalog.write_text(
+            json.dumps(
+                {
+                    "version": 1,
+                    "subject_slug": "bioneuro",
+                    "slides": [
+                        {
+                            "slide_key": "w01l1-lecture-bioneuro-intro",
+                            "lecture_key": "W01L1",
+                            "subcategory": "lecture",
+                            "title": "Bioneuro intro slides",
+                            "source_filename": "Bioneuro intro slides.pdf",
+                            "relative_path": "W01L1/lecture/Bioneuro intro slides.pdf",
+                        }
+                    ],
+                    "unresolved": [],
+                },
+                ensure_ascii=False,
+            ),
+            encoding="utf-8",
+        )
+        bioneuro_slides_root = Path(self.temp_dir.name) / "bioneuro-slides-files"
+        (bioneuro_slides_root / "W01L1" / "lecture").mkdir(parents=True, exist_ok=True)
+        (bioneuro_slides_root / "W01L1" / "lecture" / "Bioneuro intro slides.pdf").write_bytes(
+            b"%PDF-1.4\n%bioneuro\n"
+        )
+        self._write_subjects_file(
+            extra_subjects=[
+                {
+                    "slug": "bioneuro",
+                    "title": "Bioneuro",
+                    "description": "Bio / Neuropsychology F26",
+                    "active": True,
+                    "paths": {
+                        "slides_catalog_path": str(bioneuro_slides_catalog),
+                        "slides_files_root": str(bioneuro_slides_root),
+                    },
+                }
+            ]
+        )
+        clear_subject_service_caches()
+
+        entries = _slide_catalog_entries_for_lecture(subject_slug="bioneuro", lecture_key="W01L1")
+        self.assertEqual(len(entries), 1)
+        self.assertEqual(entries[0]["title"], "Bioneuro intro slides")
+        self.assertEqual(entries[0]["source_filename"], "Bioneuro intro slides.pdf")
+
+        user = self._create_user(username="bioneuro-user")
+        self.client.force_login(user)
+        open_url = reverse(
+            "subject-open-slide",
+            kwargs={
+                "subject_slug": "bioneuro",
+                "slide_key": "w01l1-lecture-bioneuro-intro",
+            },
+        )
+        open_response = self.client.get(open_url)
+        self.assertEqual(open_response.status_code, 200)
+        self.assertEqual(open_response["Content-Type"], "application/pdf")
+
+        missing_response = self.client.get(
+            reverse(
+                "subject-open-slide",
+                kwargs={
+                    "subject_slug": "bioneuro",
+                    "slide_key": "w01l1-lecture-personlighedspsykologi-intro",
+                },
+            )
+        )
+        self.assertEqual(missing_response.status_code, 404)
 
     def test_subject_detail_and_open_slide_route_allow_all_slide_categories_for_elevated_user(self) -> None:
         self._write_slides_catalog_file(

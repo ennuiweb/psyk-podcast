@@ -510,23 +510,24 @@ def _is_direct_slide_open_allowed(subcategory: object, *, user: object | None = 
     return category in PUBLIC_OPEN_SLIDE_CATEGORIES or user_has_elevated_slide_access(user)
 
 
-def _slide_catalog_path() -> Path | None:
-    default_path = Path(__file__).resolve().parents[2] / "shows" / "personlighedspsykologi-en" / "slides_catalog.json"
-    raw_value = str(getattr(settings, "FREUDD_SUBJECT_SLIDES_CATALOG_PATH", default_path)).strip()
+def _slide_catalog_path(*, subject_slug: str) -> Path | None:
+    path = resolve_subject_paths(subject_slug).slides_catalog_path
+    raw_value = str(path).strip()
     if not raw_value:
         return None
     return Path(raw_value).expanduser()
 
 
-def _slide_files_root() -> Path | None:
-    raw_value = str(getattr(settings, "FREUDD_SUBJECT_SLIDES_FILES_ROOT", "/var/www/slides/personlighedspsykologi")).strip()
+def _slide_files_root(*, subject_slug: str) -> Path | None:
+    path = resolve_subject_paths(subject_slug).slides_files_root
+    raw_value = str(path).strip()
     if not raw_value:
         return None
     return Path(raw_value).expanduser()
 
 
-def _load_subject_slides_catalog() -> dict[str, object]:
-    path = _slide_catalog_path()
+def _load_subject_slides_catalog(*, subject_slug: str) -> dict[str, object]:
+    path = _slide_catalog_path(subject_slug=subject_slug)
     if path is None:
         return {}
     if not path.exists():
@@ -574,7 +575,7 @@ def _slide_catalog_entries_for_lecture(
     subject_slug: str,
     lecture_key: str,
 ) -> list[dict[str, str]]:
-    payload = _load_subject_slides_catalog()
+    payload = _load_subject_slides_catalog(subject_slug=subject_slug)
     if not payload:
         return []
 
@@ -621,6 +622,7 @@ def _slide_catalog_entries_for_lecture(
 
 def _slide_file_path_or_404(
     *,
+    subject_slug: str,
     lecture_key: str,
     subcategory: str,
     source_filename: str,
@@ -638,7 +640,7 @@ def _slide_file_path_or_404(
     if not normalized_source_filename:
         raise Http404("Slide-filen kunne ikke tilgås.")
 
-    root = _slide_files_root()
+    root = _slide_files_root(subject_slug=subject_slug)
     if root is None:
         raise Http404("Slide-filer kunne ikke tilgås.")
     try:
@@ -668,7 +670,7 @@ def _find_slide_catalog_entry(
     if not SUBJECT_SLIDE_KEY_RE.match(normalized_slide_key):
         return None
 
-    payload = _load_subject_slides_catalog()
+    payload = _load_subject_slides_catalog(subject_slug=subject_slug)
     if not payload:
         return None
     expected_subject_slug = str(payload.get("subject_slug") or "").strip().lower()
@@ -2512,6 +2514,7 @@ def subject_open_slide_view(request: HttpRequest, subject_slug: str, slide_key: 
     if entry is None:
         raise Http404("Slide ikke fundet i fagets læringssti.")
     file_path = _slide_file_path_or_404(
+        subject_slug=subject_slug,
         lecture_key=entry["lecture_key"],
         subcategory=entry["subcategory"],
         source_filename=entry["source_filename"],

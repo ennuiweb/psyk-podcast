@@ -33,7 +33,8 @@ Hvis feltet `matched_by` bruges, skal værdien være `manual`.
 - Personlighedspsykologi: `shows/personlighedspsykologi-en/docs/slides-sync.md`
 - Bioneuro: `shows/bioneuro/docs/slides-mapping.md`
 
-## Nuværende portal-begrænsning
+## Portal path-resolution
 
-Portalen læser aktuelt én global slides-katalogsti (`FREUDD_SUBJECT_SLIDES_CATALOG_PATH`) og én global slide-filroot (`FREUDD_SUBJECT_SLIDES_FILES_ROOT`) per deployment.
-Hvis der skiftes aktiv slide-kilde mellem fag, kræver det env-opdatering + redeploy.
+- Portalen resolver slides per subject via `freudd_portal/subjects.json`.
+- Hvert fag skal have sin egen `slides_catalog_path` og `slides_files_root`, hvis faget bruger slide-kataloget.
+- `FREUDD_SUBJECT_SLIDES_CATALOG_PATH` og `FREUDD_SUBJECT_SLIDES_FILES_ROOT` er kun default fallback for fag uden eksplicit override.

@@ -28,6 +28,8 @@ SUBJECT_PATH_KEYS = {
     "content_manifest_path",
     "reading_files_root",
     "reading_download_exclusions_path",
+    "slides_catalog_path",
+    "slides_files_root",
 }
 
 
@@ -51,6 +53,8 @@ class SubjectAssetPaths:
     content_manifest_path: Path
     reading_files_root: Path
     reading_download_exclusions_path: Path
+    slides_catalog_path: Path
+    slides_files_root: Path
 
 
 @dataclass(frozen=True)
@@ -149,6 +153,8 @@ def _default_subject_paths() -> SubjectAssetPaths:
         content_manifest_path=Path(settings.FREUDD_SUBJECT_CONTENT_MANIFEST_PATH),
         reading_files_root=Path(settings.FREUDD_READING_FILES_ROOT),
         reading_download_exclusions_path=Path(settings.FREUDD_READING_DOWNLOAD_EXCLUSIONS_PATH),
+        slides_catalog_path=Path(settings.FREUDD_SUBJECT_SLIDES_CATALOG_PATH),
+        slides_files_root=Path(settings.FREUDD_SUBJECT_SLIDES_FILES_ROOT),
     )
 
 
@@ -173,6 +179,8 @@ def resolve_subject_paths(subject_slug: str) -> SubjectAssetPaths:
         "content_manifest_path": defaults.content_manifest_path,
         "reading_files_root": defaults.reading_files_root,
         "reading_download_exclusions_path": defaults.reading_download_exclusions_path,
+        "slides_catalog_path": defaults.slides_catalog_path,
+        "slides_files_root": defaults.slides_files_root,
     }
     for key, raw_value in subject.paths.items():
         if key in values:
@@ -188,6 +196,8 @@ def resolve_subject_paths(subject_slug: str) -> SubjectAssetPaths:
         content_manifest_path=values["content_manifest_path"],
         reading_files_root=values["reading_files_root"],
         reading_download_exclusions_path=values["reading_download_exclusions_path"],
+        slides_catalog_path=values["slides_catalog_path"],
+        slides_files_root=values["slides_files_root"],
     )
 
 

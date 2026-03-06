@@ -3,7 +3,7 @@
   "subject_slug": "bioneuro",
   "source_meta": {
     "version": 1,
-    "generated_at": "2026-03-06T08:51:58.302790+00:00",
+    "generated_at": "2026-03-06T09:21:30.806778+00:00",
     "reading_master_path": "/home/runner/work/psyk-podcast/psyk-podcast/shows/bioneuro/docs/freudd-reading-file-key.md",
     "reading_fallback_path": "/home/runner/work/psyk-podcast/psyk-podcast/shows/bioneuro/docs/freudd-reading-file-key.md",
     "reading_source_used": "/home/runner/work/psyk-podcast/psyk-podcast/shows/bioneuro/docs/freudd-reading-file-key.md",
@@ -27,6 +27,18 @@
           "sequence_index": 1,
           "assets": {
             "quizzes": [
+              {
+                "quiz_id": "95d98d0c",
+                "difficulty": "easy",
+                "quiz_url": "/q/95d98d0c.html",
+                "episode_title": "W1L1 - Behavioral Neuroscience Kapitel 01 - Introduction Scope and Outlook [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "c4450e85",
+                "difficulty": "hard",
+                "quiz_url": "/q/c4450e85.html",
+                "episode_title": "W1L1 - Behavioral Neuroscience Kapitel 01 - Introduction Scope and Outlook [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
               {
                 "quiz_id": "f0657e64",
                 "difficulty": "medium",
@@ -68,6 +80,12 @@
                 "difficulty": "hard",
                 "quiz_url": "/q/f96faf88.html",
                 "episode_title": "W2L1 - Behavioral Neuroscience Kapitel 02 - Functional Neuroanatomy The Cells and Structures of the Nervous System [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "a28362c2",
+                "difficulty": "medium",
+                "quiz_url": "/q/a28362c2.html",
+                "episode_title": "W2L1 - Behavioral Neuroscience Kapitel 02 - Functional Neuroanatomy The Cells and Structures of the Nervous System [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               }
             ],
             "podcasts": []
@@ -103,6 +121,12 @@
                 "quiz_id": "ff770b99",
                 "difficulty": "hard",
                 "quiz_url": "/q/ff770b99.html",
+                "episode_title": "W3L1 - Behavioral Neuroscience Kapitel 03 - Neurophysiology The Generation Transmission and Integration of Neural Signals [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "1a665a75",
+                "difficulty": "medium",
+                "quiz_url": "/q/1a665a75.html",
                 "episode_title": "W3L1 - Behavioral Neuroscience Kapitel 03 - Neurophysiology The Generation Transmission and Integration of Neural Signals [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               }
             ],
@@ -171,6 +195,12 @@
           "sequence_index": 1,
           "assets": {
             "quizzes": [
+              {
+                "quiz_id": "8428950d",
+                "difficulty": "easy",
+                "quiz_url": "/q/8428950d.html",
+                "episode_title": "W5L1 - Behavioral Neuroscience Kapitel 05 - Hormones and the Brain [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
               {
                 "quiz_id": "0513dc15",
                 "difficulty": "hard",

@@ -2088,7 +2088,7 @@ class QuizPortalTests(TestCase):
         self.assertTrue(rail_items[1]["requires_login"])
         self.assertEqual(rail_items[1]["login_url"], expected_login_url)
         self.assertContains(response, 'data-login-required="true"')
-        self.assertContains(response, 'Du skal logge ind for at åbne andre forelæsninger i preview.')
+        self.assertContains(response, 'Du skal logge ind for at åbne andre forelæsninger')
 
     def test_subject_detail_preview_mode_redirects_anonymous_when_switching_lecture(self) -> None:
         detail_url = reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"})

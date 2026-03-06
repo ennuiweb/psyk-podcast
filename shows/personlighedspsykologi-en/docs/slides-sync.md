@@ -38,6 +38,7 @@ Hvis en fil ligger i "forkert" mappe ift. undervisningsplanen, er undervisningsp
    - `Seminarhold/Slides/<filnavn>`
    - `Øvelseshold/<filnavn>`
 6. Tilføj entry manuelt i `shows/personlighedspsykologi-en/slides_catalog.json`.
+7. Hvis en tidligere mappet slidefil slettes eller omdøbes i OneDrive-kilden, fjern eller ret den tilsvarende entry manuelt i kataloget og slet den gamle uploadede fil under `/var/www/slides/personlighedspsykologi/<W##L#>/<subcategory>/`.
 
 ## Hvad mappingen bruges til
 

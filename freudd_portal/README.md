@@ -222,6 +222,7 @@ Optional per-subject `paths` overrides let a subject use its own reading key, RS
 
 Operational behavior:
 - Mapped RSS titles render Spotify links on `/subjects/<subject_slug>`.
+- If an RSS item title lacks a lecture key, manifest build falls back to the RSS item quiz link (`/q/<id>.html`) to recover the target lecture/reading when that quiz is already mapped.
 - Unmapped RSS titles are skipped from manifest podcast assets and emit warnings until a direct episode mapping exists.
 - Inline embed playback is always enabled for visible podcast rows (because only episode URLs are accepted).
 - `scripts/sync_spotify_map.py` auto-syncs RSS titles into `spotify_map.json` with direct Spotify episode URLs only.

@@ -509,6 +509,88 @@ class SubjectContentManifestTests(TestCase):
         self.assertEqual(lecture["lecture_assets"]["podcasts"][0]["platform"], "spotify")
         self.assertFalse(any("unknown lecture mapping" in warning for warning in manifest["warnings"]))
 
+    def test_build_manifest_maps_reading_podcast_via_quiz_link_when_title_lacks_lecture_hint(self) -> None:
+        self.rss_file.write_text(
+            "\n".join(
+                [
+                    '<?xml version="1.0" encoding="UTF-8"?>',
+                    "<rss version=\"2.0\">",
+                    "<channel>",
+                    "<item>",
+                    "<title>[Podcast] · Lewis summary</title>",
+                    "<link>https://freudd.dk/q/bbbbbbbb.html</link>",
+                    "<pubDate>Mon, 02 Feb 2026 10:00:00 +0100</pubDate>",
+                    '<enclosure url="https://example.test/audio/lewis-summary.mp3" length="1" type="audio/mpeg" />',
+                    "</item>",
+                    "</channel>",
+                    "</rss>",
+                ]
+            ),
+            encoding="utf-8",
+        )
+        self.spotify_map_file.write_text(
+            json.dumps(
+                {
+                    "version": 1,
+                    "subject_slug": "personlighedspsykologi",
+                    "by_rss_title": {
+                        "[Podcast] · Lewis summary": "https://open.spotify.com/episode/4w4gHCXnQK5fjQdsxQO0XG",
+                    },
+                }
+            ),
+            encoding="utf-8",
+        )
+        clear_content_service_caches()
+
+        manifest = build_subject_content_manifest("personlighedspsykologi")
+        lecture = manifest["lectures"][0]
+        self.assertEqual(len(lecture["lecture_assets"]["podcasts"]), 0)
+        self.assertEqual(len(lecture["readings"][0]["assets"]["podcasts"]), 1)
+        self.assertEqual(
+            lecture["readings"][0]["assets"]["podcasts"][0]["source_audio_url"],
+            "https://example.test/audio/lewis-summary.mp3",
+        )
+        self.assertFalse(any("unknown lecture mapping" in warning for warning in manifest["warnings"]))
+
+    def test_build_manifest_maps_lecture_podcast_via_quiz_link_when_title_lacks_lecture_hint(self) -> None:
+        self.rss_file.write_text(
+            "\n".join(
+                [
+                    '<?xml version="1.0" encoding="UTF-8"?>',
+                    "<rss version=\"2.0\">",
+                    "<channel>",
+                    "<item>",
+                    "<title>[Podcast] · Alle kilder</title>",
+                    "<link>https://freudd.dk/q/cccccccc.html</link>",
+                    "<pubDate>Mon, 02 Feb 2026 08:00:00 +0100</pubDate>",
+                    '<enclosure url="https://example.test/audio/all-sources.mp3" length="1" type="audio/mpeg" />',
+                    "</item>",
+                    "</channel>",
+                    "</rss>",
+                ]
+            ),
+            encoding="utf-8",
+        )
+        self.spotify_map_file.write_text(
+            json.dumps(
+                {
+                    "version": 1,
+                    "subject_slug": "personlighedspsykologi",
+                    "by_rss_title": {
+                        "[Podcast] · Alle kilder": "https://open.spotify.com/episode/5m0hYfDU9ThM5qR2xMugr8",
+                    },
+                }
+            ),
+            encoding="utf-8",
+        )
+        clear_content_service_caches()
+
+        manifest = build_subject_content_manifest("personlighedspsykologi")
+        lecture = manifest["lectures"][0]
+        self.assertEqual(len(lecture["lecture_assets"]["podcasts"]), 1)
+        self.assertEqual(lecture["lecture_assets"]["podcasts"][0]["platform"], "spotify")
+        self.assertFalse(any("unknown lecture mapping" in warning for warning in manifest["warnings"]))
+
     def test_build_manifest_uses_fallback_when_primary_missing(self) -> None:
         self.primary_reading_file.unlink()
         clear_subject_service_caches()

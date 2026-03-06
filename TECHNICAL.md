@@ -283,6 +283,7 @@ Quiz sync behavior (current):
 - By default, unresolved RSS titles fail sync; with `--allow-unresolved`, resolved episode mappings are still written and unresolved titles are stored in `unresolved_rss_titles`.
 - Show lookup is driven by `--spotify-show-url https://open.spotify.com/show/<id>` plus credentials `SPOTIFY_CLIENT_ID` + `SPOTIFY_CLIENT_SECRET`.
 - GitHub Actions workflow `.github/workflows/sync-spotify-map.yml` runs every 6 hours (`17 */6 * * *`) and on manual dispatch to refresh `spotify_map.json`, rebuild `content_manifest.json`, and auto-commit only those generated files.
+- When an RSS title does not expose a lecture key, manifest build can still place the podcast by resolving the RSS item quiz link back to an already-mapped quiz asset.
 - If an RSS episode is missing from `spotify_map.json`, the manifest emits warnings and skips the podcast asset (no search fallback).
 - Mapped episode URLs in `spotify_map.json` enable inline embed playback on next manifest refresh.
 

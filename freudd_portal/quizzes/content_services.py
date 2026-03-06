@@ -265,6 +265,72 @@ def _quiz_asset_from_link(entry_name: str, link: dict[str, Any]) -> dict[str, An
     }
 
 
+def _quiz_id_from_value(value: object) -> str | None:
+    text = str(value or "").strip()
+    if not text:
+        return None
+    candidate = text
+    if "://" in text:
+        candidate = Path(text.split("?", 1)[0]).name
+    match = QUIZ_ID_RE.search(candidate)
+    if match:
+        return match.group("id").lower()
+    match = QUIZ_ID_RE.search(text.split("?", 1)[0])
+    if match:
+        return match.group("id").lower()
+    return None
+
+
+def _build_quiz_asset_location_lookup(
+    lectures: list[dict[str, Any]],
+) -> dict[str, tuple[int, int | None] | None]:
+    lookup: dict[str, tuple[int, int | None] | None] = {}
+
+    def _index_asset(
+        quiz_asset: dict[str, Any],
+        *,
+        lecture_position: int,
+        reading_position: int | None,
+    ) -> None:
+        quiz_id = _quiz_id_from_value(quiz_asset.get("quiz_id")) or _quiz_id_from_value(
+            quiz_asset.get("quiz_url")
+        )
+        if not quiz_id:
+            return
+        location = (lecture_position, reading_position)
+        if quiz_id not in lookup:
+            lookup[quiz_id] = location
+            return
+        existing = lookup[quiz_id]
+        if existing != location:
+            lookup[quiz_id] = None
+
+    for lecture_position, lecture_state in enumerate(lectures):
+        lecture_assets = lecture_state.get("lecture_assets")
+        if isinstance(lecture_assets, dict):
+            for quiz_asset in lecture_assets.get("quizzes") or []:
+                if isinstance(quiz_asset, dict):
+                    _index_asset(
+                        quiz_asset,
+                        lecture_position=lecture_position,
+                        reading_position=None,
+                    )
+        for reading_position, reading in enumerate(lecture_state.get("readings") or []):
+            if not isinstance(reading, dict):
+                continue
+            assets = reading.get("assets")
+            if not isinstance(assets, dict):
+                continue
+            for quiz_asset in assets.get("quizzes") or []:
+                if isinstance(quiz_asset, dict):
+                    _index_asset(
+                        quiz_asset,
+                        lecture_position=lecture_position,
+                        reading_position=reading_position,
+                    )
+    return lookup
+
+
 def _podcast_kind_from_token(value: str) -> str:
     token = str(value or "").strip().lower()
     token = token.strip("[]() ")
@@ -522,6 +588,7 @@ def _attach_podcasts(
     lecture_index: dict[str, int],
     rss_path: Path,
     spotify_by_title: dict[str, str],
+    quiz_asset_locations: dict[str, tuple[int, int | None] | None],
     manifest_warnings: list[str],
 ) -> None:
     if not rss_path.exists():
@@ -548,12 +615,17 @@ def _attach_podcasts(
         lecture_hint = title_parts[0] if title_parts else title_text
         descriptor = title_parts[2] if len(title_parts) >= 3 else title_text
         kind_hint = title_parts[1] if len(title_parts) >= 2 else ""
+        item_link = str(item.findtext("link") or "").strip()
+        quiz_location = quiz_asset_locations.get(_quiz_id_from_value(item_link) or "")
         lecture_key = _lecture_key_from_text(lecture_hint)
-        if not lecture_key or lecture_key not in lecture_index:
+        lecture_position = lecture_index.get(lecture_key) if lecture_key else None
+        if lecture_position is None and quiz_location is not None:
+            lecture_position = quiz_location[0]
+        if lecture_position is None:
             manifest_warnings.append(f"RSS item has unknown lecture mapping: {title_text}")
             continue
 
-        lecture_state = lectures[lecture_index[lecture_key]]
+        lecture_state = lectures[lecture_position]
         spotify_url = spotify_by_title.get(_normalize_rss_title_key(title_text))
         source_audio_url = _find_enclosure_url(item)
         if not spotify_url:
@@ -582,6 +654,8 @@ def _attach_podcasts(
             lecture_state["lecture_assets"]["podcasts"].append(podcast_asset)
             continue
         reading_index = _find_reading_index(lecture_state, descriptor)
+        if reading_index is None and quiz_location is not None and quiz_location[0] == lecture_position:
+            reading_index = quiz_location[1]
         if reading_index is None:
             lecture_state["warnings"].append(
                 f"RSS item could not map to reading; attached to lecture assets: {title_text}"
@@ -681,11 +755,13 @@ def build_subject_content_manifest(subject_slug: str) -> SubjectContentManifest:
         quiz_links_path=quiz_links_path,
         manifest_warnings=manifest_warnings,
     )
+    quiz_asset_locations = _build_quiz_asset_location_lookup(lectures)
     _attach_podcasts(
         lectures=lectures,
         lecture_index=lecture_index,
         rss_path=rss_path,
         spotify_by_title=spotify_by_title,
+        quiz_asset_locations=quiz_asset_locations,
         manifest_warnings=manifest_warnings,
     )
 

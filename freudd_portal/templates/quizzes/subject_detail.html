@@ -2076,6 +2076,7 @@
             {% endif %}
           </section>
 
+          {% if active_lecture.slide_groups %}
           <section class="lecture-section lecture-slides" id="subject-slides">
             <div class="lecture-section-head">
               <div class="section-title-wrap">
@@ -2090,7 +2091,6 @@
               </div>
             </div>
 
-            {% if active_lecture.slide_groups %}
             <ul class="slide-group-list">
               {% for slide_group in active_lecture.slide_groups %}
               <li class="slide-group">
@@ -2124,10 +2124,8 @@
               </li>
               {% endfor %}
             </ul>
-            {% else %}
-            <p class="section-empty">Ingen slides registreret.</p>
-            {% endif %}
           </section>
+          {% endif %}
 
           {% if active_lecture.podcast_rows %}
           <section class="lecture-section lecture-podcasts" id="subject-podcasts">

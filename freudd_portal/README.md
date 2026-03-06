@@ -60,7 +60,8 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Subject detail uses compact mobile density on small screens (`<=760px`) to reduce nested card padding/gaps for narrow devices.
 - Subject detail hides the card-to-rail pointer notch on responsive layouts (`<=1180px`) to keep alignment clean with compact rail widths.
 - Active lecture card renders sections in this order: `Tekster`, `Slides`, optional `Podcasts` (only when podcast rows exist), `Quiz for alle kilder`.
-- `Slides` always renders three underkategorier: `slides fra forelæsning`, `slides fra seminarhold`, `slides fra øvelseshold` (filled when matching slide-læsninger findes).
+- `Slides` viser kun underkategorier med mindst én slide (`slides fra forelæsning`, `slides fra seminarhold`, `slides fra øvelseshold`); hvis ingen slides findes for forelæsningen, skjules hele `Slides`-sektionen.
+- Slide mapping er manuel-only for alle fag; automatisk mapping med script er ikke tilladt (`freudd_portal/docs/slides-mapping-policy.md`).
 - Quiz assets are surfaced only in `Quiz for alle kilder`, podcast assets only in `Podcasts`, and tekststatus/progress only in `Tekster`.
 - If no podcasts are available for the active lecture, the `Podcasts` section is hidden.
 - Tekstkort and `Quizzer` sections render quiz rows in mockup format (`<sværhedsgrad> quiz` + `<rigtige>/<total> rigtige • <point>/150 point`) when question counts are available.
@@ -106,7 +107,7 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - `GET /subjects/<subject_slug>`
 - `GET /subjects/<subject_slug>/tekster/open/<reading_key>` (public tekst-fil adgang; blocked if excluded in config unless authenticated user has elevated reading access)
 - `GET /subjects/<subject_slug>/tekster/open/<reading_key>/text` (public tekstudtræk til ChatGPT; blocked if excluded in config unless authenticated user has elevated reading access)
-- `GET /subjects/<subject_slug>/slides/open/<slide_key>` (public slide-fil adgang via slides-katalog)
+- `GET /subjects/<subject_slug>/slides/open/<slide_key>` (public slide-fil adgang via slides-katalog; kun slides fra forelæsning, ikke seminar-/øvelseshold)
 - `POST /subjects/<subject_slug>/enroll`
 - `POST /subjects/<subject_slug>/unenroll`
 - `POST /subjects/<subject_slug>/tracking/tekst`
@@ -230,6 +231,17 @@ Operational behavior:
 
 ## New env configuration
 - `FREUDD_PORTAL_SITE_ID` (default: `1`)
+- `FREUDD_EMAIL_BACKEND` (default: `django.core.mail.backends.smtp.EmailBackend`)
+- `FREUDD_EMAIL_HOST` (default: `localhost`)
+- `FREUDD_EMAIL_PORT` (default: `25`)
+- `FREUDD_EMAIL_HOST_USER` (default: empty)
+- `FREUDD_EMAIL_HOST_PASSWORD` (default: empty)
+- `FREUDD_EMAIL_USE_TLS` (default: `0`)
+- `FREUDD_EMAIL_USE_SSL` (default: `0`)
+- `FREUDD_EMAIL_TIMEOUT_SECONDS` (default: `10`)
+- `FREUDD_RESEND_API_KEY` (default: empty; when set, new-user notifications are sent via Resend HTTP API)
+- `FREUDD_RESEND_API_URL` (default: `https://api.resend.com/emails`)
+- `FREUDD_RESEND_TIMEOUT_SECONDS` (default: `10`)
 - `FREUDD_DEFAULT_FROM_EMAIL` (default: `noreply@freudd.dk`)
 - `FREUDD_NEW_USER_NOTIFY_EMAIL` (default: empty; when set, receives an email whenever a new user is created)
 - `FREUDD_AUTH_GOOGLE_ENABLED` (default: `0`)
@@ -248,6 +260,8 @@ Operational behavior:
 - `FREUDD_SUBJECT_CONTENT_MANIFEST_PATH` (default: `shows/personlighedspsykologi-en/content_manifest.json`)
 - `FREUDD_SUBJECT_SLIDES_CATALOG_PATH` (default: `shows/personlighedspsykologi-en/slides_catalog.json`)
 - `FREUDD_SUBJECT_SLIDES_FILES_ROOT` (default: `/var/www/slides/personlighedspsykologi`)
+- Slide mapping policy: manual-only (`freudd_portal/docs/slides-mapping-policy.md`).
+- Slides env paths er aktuelt globale pr. deployment (ikke separate per subject): skift af fag kræver env-opdatering + redeploy.
 - `FREUDD_READING_FILES_ROOT` (default: `/var/www/readings/personlighedspsykologi`)
 - `FREUDD_READING_FILES_ROOT` must be traversable/readable by the portal service user (`www-data`) or tekst open/download routes will fail at runtime.
 - `FREUDD_READING_DOWNLOAD_EXCLUSIONS_PATH` (default: `shows/personlighedspsykologi-en/reading_download_exclusions.json`)

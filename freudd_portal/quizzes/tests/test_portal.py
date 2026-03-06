@@ -1963,12 +1963,16 @@ class QuizPortalTests(TestCase):
         self.assertNotContains(response, "timeline-item")
         self.assertNotContains(response, "Introforelaesning (Forelaesning 1, 2026-02-02)")
         self.assertNotContains(response, "(2026-02-02)")
-        self.assertContains(response, "Quiz for alle kilder")
+        self.assertContains(response, "quizzer for alle kilder til lektionen")
         self.assertContains(response, "reading-difficulties")
         self.assertNotContains(response, "Ikke startet endnu")
         self.assertNotContains(response, "I gang")
         self.assertContains(response, "Grundbog kapitel 01 - Introduktion til personlighedspsykologi")
         self.assertContains(response, "Uge 1, forelæsning 1: Introforelaesning")
+        self.assertContains(response, "<h3 class=\"section-title\">slides</h3>", html=True)
+        self.assertContains(response, "slides fra forelæsning")
+        self.assertContains(response, "slides fra seminarhold")
+        self.assertContains(response, "slides fra øvelseshold")
         self.assertNotContains(response, "lecture-rail-copy-date")
         self.assertContains(response, "lecture-rail-mobile-copy")
         self.assertContains(response, "U1 · F1")
@@ -1984,13 +1988,16 @@ class QuizPortalTests(TestCase):
 
         body = response.content.decode("utf-8")
         readings_pos = body.find('class="lecture-section lecture-readings"')
+        slides_pos = body.find('class="lecture-section lecture-slides"')
         podcasts_pos = body.find('class="lecture-section lecture-podcasts"')
-        quizzes_pos = body.find('class="lecture-section lecture-quizzes"')
+        quizzes_pos = body.find('id="subject-quizzes"')
         self.assertGreaterEqual(readings_pos, 0)
+        self.assertGreaterEqual(slides_pos, 0)
         self.assertGreaterEqual(podcasts_pos, 0)
         self.assertGreaterEqual(quizzes_pos, 0)
-        self.assertLess(readings_pos, podcasts_pos)
-        self.assertLess(podcasts_pos, quizzes_pos)
+        self.assertLess(quizzes_pos, readings_pos)
+        self.assertLess(readings_pos, slides_pos)
+        self.assertLess(slides_pos, podcasts_pos)
 
         self.assertEqual(response.context["active_lecture"]["lecture_key"], "W01L1")
         self.assertEqual(len(response.context["lecture_rail_items"]), 2)
@@ -2012,6 +2019,41 @@ class QuizPortalTests(TestCase):
         response = self.client.get(detail_url, HTTP_REFERER="https://example.com/not-allowed")
         self.assertEqual(response.status_code, 200)
         self.assertNotContains(response, "ghost-link back-link subject-back")
+
+    def test_subject_detail_groups_slide_readings_by_hold_type(self) -> None:
+        self.reading_master_file.write_text(
+            "\n".join(
+                [
+                    "# Reading File Key",
+                    "",
+                    "**W01L1 Introforelaesning (Forelaesning 1, 2026-02-02)**",
+                    "- Slides fra forelæsning W01L1 → Forelaesning slides W01L1.pdf",
+                    "- Slides fra seminarhold W01L1 → Seminarhold slides W01L1.pdf",
+                    "- Slides fra øvelseshold W01L1 → Oevelseshold slides W01L1.pdf",
+                ]
+            ),
+            encoding="utf-8",
+        )
+        self.reading_fallback_file.write_text(self.reading_master_file.read_text(encoding="utf-8"), encoding="utf-8")
+
+        w01l1 = self.reading_files_root / "W01L1"
+        w01l1.mkdir(parents=True, exist_ok=True)
+        (w01l1 / "Forelaesning slides W01L1.pdf").write_bytes(b"%PDF-1.4\n%test\n")
+        (w01l1 / "Seminarhold slides W01L1.pdf").write_bytes(b"%PDF-1.4\n%test\n")
+        (w01l1 / "Oevelseshold slides W01L1.pdf").write_bytes(b"%PDF-1.4\n%test\n")
+        clear_subject_service_caches()
+        clear_content_service_caches()
+
+        user = self._create_user()
+        self.client.force_login(user)
+        detail_url = reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"})
+        response = self.client.get(detail_url)
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Slides fra forelæsning W01L1")
+        self.assertContains(response, "Slides fra seminarhold W01L1")
+        self.assertContains(response, "Slides fra øvelseshold W01L1")
+        self.assertContains(response, "Åben slide", count=3)
+        self.assertNotContains(response, "Ingen slides registreret.")
 
     def test_subject_detail_query_param_selects_active_lecture(self) -> None:
         user = self._create_user()
@@ -2408,7 +2450,7 @@ class QuizPortalTests(TestCase):
             "0/0 quizzer perfekt gennemført • 0/0 quizzer taget • 0/0 rigtige svar • 0/0 point",
         )
         self.assertNotContains(response, 'class="lecture-section lecture-quizzes"')
-        self.assertNotContains(response, "Quiz for alle kilder")
+        self.assertNotContains(response, "quizzer for alle kilder til lektionen")
         self.assertNotContains(response, "Ingen aktivitet registreret")
         self.assertNotContains(response, "Let quiz")
 

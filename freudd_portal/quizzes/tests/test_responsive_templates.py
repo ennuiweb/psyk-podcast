@@ -117,8 +117,9 @@ class ResponsiveTemplateRulesTests(SimpleTestCase):
     def test_subject_detail_uses_desktop_section_order_on_compact_layout(self) -> None:
         body = self._template_text("quizzes/subject_detail.html")
         self.assertIn(".lecture-readings {\n      order: 1;", body)
-        self.assertIn(".lecture-podcasts {\n      order: 2;", body)
-        self.assertIn(".lecture-quizzes {\n      order: 3;", body)
+        self.assertIn(".lecture-slides {\n      order: 2;", body)
+        self.assertIn(".lecture-podcasts {\n      order: 3;", body)
+        self.assertIn(".lecture-quizzes {\n      order: 4;", body)
 
     def test_subject_detail_has_desktop_timeline_toggle_hook(self) -> None:
         body = self._template_text("quizzes/subject_detail.html")

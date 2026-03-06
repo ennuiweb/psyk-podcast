@@ -58,7 +58,8 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Subject detail supports desktop rail collapse/expand (`Skjul tidslinje` / `Vis tidslinje`); compact layouts (`<=1180px`) keep the rail visible.
 - Subject detail uses compact mobile density on small screens (`<=760px`) to reduce nested card padding/gaps for narrow devices.
 - Subject detail hides the card-to-rail pointer notch on responsive layouts (`<=1180px`) to keep alignment clean with compact rail widths.
-- Active lecture card renders sections in this order: `Tekster`, optional `Podcasts` (only when podcast rows exist), `Quiz for alle kilder`.
+- Active lecture card renders sections in this order: `Tekster`, `Slides`, optional `Podcasts` (only when podcast rows exist), `Quiz for alle kilder`.
+- `Slides` always renders three underkategorier: `slides fra forelæsning`, `slides fra seminarhold`, `slides fra øvelseshold` (filled when matching slide-læsninger findes).
 - Quiz assets are surfaced only in `Quiz for alle kilder`, podcast assets only in `Podcasts`, and tekststatus/progress only in `Tekster`.
 - If no podcasts are available for the active lecture, the `Podcasts` section is hidden.
 - Tekstkort and `Quizzer` sections render quiz rows in mockup format (`<sværhedsgrad> quiz` + `<rigtige>/<total> rigtige • <point>/150 point`) when question counts are available.

@@ -122,6 +122,16 @@ SOURCE_FILENAME_SEPARATORS_RE = re.compile(r"[\\/]+")
 QUIZ_BRIEF_PREFIX_RE = re.compile(r"^\s*\[brief\]\s*", re.IGNORECASE)
 QUIZ_LECTURE_KEY_RE = re.compile(r"\bW(?P<week>\d{1,2})L(?P<lecture>\d+)\b", re.IGNORECASE)
 MULTISPACE_RE = re.compile(r"\s+")
+SLIDE_HINT_RE = re.compile(
+    r"\b(?:slide|slides|powerpoint|pptx?|slidedeck|slide\s+deck)\b",
+    re.IGNORECASE,
+)
+SEMINARHOLD_HINT_RE = re.compile(r"\bseminar(?:hold)?\b", re.IGNORECASE)
+OVELSESHOLD_HINT_RE = re.compile(
+    r"\b(?:øvelseshold|ovelseshold|øvelse(?:shold)?|exercise(?:\s*group)?)\b",
+    re.IGNORECASE,
+)
+SLIDE_SOURCE_EXTENSIONS = {".ppt", ".pptx", ".key", ".odp"}
 SPOTIFY_EPISODE_ID_RE = re.compile(
     r"^https://open\.spotify\.com/episode/(?P<episode_id>[A-Za-z0-9]+)(?:[/?#].*)?$",
     re.IGNORECASE,
@@ -1221,6 +1231,91 @@ def _podcast_display_title(value: object) -> str:
     if len(parts) >= 3:
         return parts[2]
     return title_text
+
+
+def _slide_hint_text(*, reading_title: object, source_filename: object) -> str:
+    title_text = str(reading_title or "").strip()
+    source_text = str(source_filename or "").strip()
+    parts: list[str] = []
+    if title_text:
+        parts.append(title_text)
+    if source_text:
+        parts.append(source_text)
+        parts.append(Path(source_text).stem)
+    return " ".join(parts)
+
+
+def _is_slide_reading(*, reading_title: object, source_filename: object) -> bool:
+    hint_text = _slide_hint_text(reading_title=reading_title, source_filename=source_filename)
+    if hint_text and SLIDE_HINT_RE.search(hint_text):
+        return True
+    source_text = str(source_filename or "").strip()
+    if not source_text:
+        return False
+    return Path(source_text).suffix.lower() in SLIDE_SOURCE_EXTENSIONS
+
+
+def _slide_group_key(*, reading_title: object, source_filename: object) -> str:
+    hint_text = _slide_hint_text(reading_title=reading_title, source_filename=source_filename)
+    if SEMINARHOLD_HINT_RE.search(hint_text):
+        return "seminar"
+    if OVELSESHOLD_HINT_RE.search(hint_text):
+        return "exercise"
+    return "lecture"
+
+
+def _slide_groups_for_lecture(lecture: object) -> list[dict[str, object]]:
+    groups: dict[str, dict[str, object]] = {
+        "lecture": {
+            "group_key": "lecture",
+            "group_title": "slides fra forelæsning",
+            "items": [],
+        },
+        "seminar": {
+            "group_key": "seminar",
+            "group_title": "slides fra seminarhold",
+            "items": [],
+        },
+        "exercise": {
+            "group_key": "exercise",
+            "group_title": "slides fra øvelseshold",
+            "items": [],
+        },
+    }
+    if not isinstance(lecture, dict):
+        return [groups["lecture"], groups["seminar"], groups["exercise"]]
+
+    readings = lecture.get("readings") if isinstance(lecture.get("readings"), list) else []
+    for reading in readings:
+        if not isinstance(reading, dict):
+            continue
+        reading_title = str(reading.get("reading_title") or "").strip()
+        source_filename = _source_filename_or_none(reading.get("source_filename")) or ""
+        if not _is_slide_reading(reading_title=reading_title, source_filename=source_filename):
+            continue
+        item = {
+            "reading_key": str(reading.get("reading_key") or "").strip(),
+            "reading_title": reading_title or source_filename or "Slides",
+            "source_filename": source_filename,
+            "open_url": str(reading.get("open_pdf_url") or reading.get("open_url") or "").strip(),
+        }
+        group_key = _slide_group_key(reading_title=reading_title, source_filename=source_filename)
+        group = groups.get(group_key, groups["lecture"])
+        group_items = group.get("items")
+        if isinstance(group_items, list):
+            group_items.append(item)
+
+    for key in ("lecture", "seminar", "exercise"):
+        group = groups[key]
+        items = group.get("items")
+        if not isinstance(items, list):
+            group["items"] = []
+            group["count"] = 0
+            continue
+        items.sort(key=lambda item: str(item.get("reading_title") or "").casefold())
+        group["count"] = len(items)
+
+    return [groups["lecture"], groups["seminar"], groups["exercise"]]
 
 
 def _flatten_podcast_rows(lecture: object) -> list[dict[str, object]]:
@@ -2445,6 +2540,7 @@ def subject_detail_view(request: HttpRequest, subject_slug: str) -> HttpResponse
                 if quiz_url:
                     reading["primary_quiz_url"] = quiz_url
                     break
+        active_lecture["slide_groups"] = _slide_groups_for_lecture(active_lecture)
 
     return render(
         request,

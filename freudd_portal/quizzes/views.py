@@ -2842,6 +2842,8 @@ def subject_detail_view(request: HttpRequest, subject_slug: str) -> HttpResponse
     user_is_authenticated = bool(getattr(request.user, "is_authenticated", False))
     preview_mode = (not user_is_authenticated) and _as_bool(request.GET.get("preview"))
     requested_lecture_key = _normalize_subject_lecture_key(request.GET.get("lecture"))
+    if not user_is_authenticated and not preview_mode:
+        return redirect(_auth_url_with_next("login", request.get_full_path()))
     if preview_mode and not requested_lecture_key:
         return redirect(_auth_url_with_next("login", request.get_full_path()))
 

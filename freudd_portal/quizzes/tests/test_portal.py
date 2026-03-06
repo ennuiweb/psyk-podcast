@@ -1941,12 +1941,14 @@ class QuizPortalTests(TestCase):
             SubjectEnrollment.objects.filter(user=user, subject_slug="personlighedspsykologi").exists()
         )
 
-    def test_subject_detail_is_accessible_for_anonymous(self) -> None:
+    def test_subject_detail_requires_preview_for_anonymous(self) -> None:
         detail_url = reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"})
         response = self.client.get(detail_url)
-        self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "data-active-lecture-key=\"W01L1\"")
-        self.assertContains(response, "Log ind")
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(
+            response.url,
+            f"{reverse('login')}?{urlencode({'next': detail_url})}",
+        )
 
     def test_subject_detail_preview_mode_requires_lecture_for_anonymous(self) -> None:
         detail_url = reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"})

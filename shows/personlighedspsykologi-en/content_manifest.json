@@ -70,7 +70,7 @@
                 "title": "Uge 1, Forelæsning 1 · Kort podcast · Grundbog kapitel 1 - Introduktion til personlighedspsykologi",
                 "url": "https://open.spotify.com/episode/6WoVAgWlxD5MlaQUS1Wjdo",
                 "platform": "spotify",
-                "pub_date": "Mon, 02 Feb 2025 12:00:00 +0100",
+                "pub_date": "Mon, 02 Feb 2025 10:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1RO3W_711qYU1eFImLMQKdgjuEJaTaCCF",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -82,6 +82,16 @@
                 "platform": "spotify",
                 "pub_date": "Mon, 02 Feb 2025 14:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1DqVZz5NbB1MJ-bolQeiFYQk5pG3EdXpN",
+                "duration_seconds": null,
+                "duration_label": ""
+              },
+              {
+                "kind": "lydbog",
+                "title": "Uge 1, Forelæsning 1 · Lydbog · Grundbog kapitel 01 - Introduktion til personlighedspsykologi",
+                "url": "https://open.spotify.com/episode/6jc47a8BYkZ1KEpabJtTWL",
+                "platform": "spotify",
+                "pub_date": "Mon, 02 Feb 2025 12:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1xbABXSzXOvwNtEC2FFPhsio7N0v_DuqO",
                 "duration_seconds": null,
                 "duration_label": ""
               },
@@ -209,8 +219,8 @@
             "title": "Uge 1, Forelæsning 1 · Podcast · Alle kilder (undtagen slides)",
             "url": "https://open.spotify.com/episode/5kGQZr3R1KJnzligCBn4sJ",
             "platform": "spotify",
-            "pub_date": "Mon, 02 Feb 2025 10:00:00 +0100",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1HJsPPt2VcoQkwH6GbCvmeCvQzMl4jAbi",
+            "pub_date": "Mon, 02 Feb 2025 08:00:00 +0100",
+            "source_audio_url": "https://drive.google.com/uc?export=download&id=1pGv2tidOXw-44OmvCJhQajMLf3TLaY7n",
             "duration_seconds": null,
             "duration_label": ""
           },
@@ -220,7 +230,7 @@
             "url": "https://open.spotify.com/episode/5kGQZr3R1KJnzligCBn4sJ",
             "platform": "spotify",
             "pub_date": "Mon, 02 Feb 2025 08:00:00 +0100",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1pGv2tidOXw-44OmvCJhQajMLf3TLaY7n",
+            "source_audio_url": "https://drive.google.com/uc?export=download&id=1HJsPPt2VcoQkwH6GbCvmeCvQzMl4jAbi",
             "duration_seconds": null,
             "duration_label": ""
           }
@@ -266,7 +276,7 @@
                 "title": "Uge 1, Forelæsning 2 · Podcast · Mayer & Bryan (2024)",
                 "url": "https://open.spotify.com/episode/0mBIPpXYqCvvfoumb25TRk",
                 "platform": "spotify",
-                "pub_date": "Tue, 03 Feb 2025 14:00:00 +0100",
+                "pub_date": "Tue, 03 Feb 2025 16:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1BtAeGa8JaVwjOI6fav8WkVsv0EMuERqr",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -307,7 +317,7 @@
                 "title": "Uge 1, Forelæsning 2 · Podcast · Koutsoumpis (2025)",
                 "url": "https://open.spotify.com/episode/2wbokcccu32ON7tz6iX3j9",
                 "platform": "spotify",
-                "pub_date": "Tue, 03 Feb 2025 16:00:00 +0100",
+                "pub_date": "Tue, 03 Feb 2025 18:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1wDbZXC6i50q3KF9HJ1LNXjnx840SH7Md",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -348,7 +358,7 @@
                 "title": "Uge 1, Forelæsning 2 · Podcast · Phan et al. (2024)",
                 "url": "https://open.spotify.com/episode/5J1menwHuxAdF9FFUONQru",
                 "platform": "spotify",
-                "pub_date": "Tue, 03 Feb 2025 12:00:00 +0100",
+                "pub_date": "Tue, 03 Feb 2025 14:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1t5F_kodbdvgl5axnBGbz401zG9YE3J3A",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -395,6 +405,12 @@
       "lecture_assets": {
         "quizzes": [
           {
+            "quiz_id": "748f6156",
+            "difficulty": "easy",
+            "quiz_url": "/q/748f6156.html",
+            "episode_title": "W1L2 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=1b3d31bc}.mp3"
+          },
+          {
             "quiz_id": "8dd279b9",
             "difficulty": "easy",
             "quiz_url": "/q/8dd279b9.html",
@@ -407,13 +423,35 @@
             "episode_title": "W1L2 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=1b3d31bc}.mp3"
           },
           {
+            "quiz_id": "d2441f24",
+            "difficulty": "hard",
+            "quiz_url": "/q/d2441f24.html",
+            "episode_title": "W1L2 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=1b3d31bc}.mp3"
+          },
+          {
             "quiz_id": "7de1828a",
             "difficulty": "medium",
             "quiz_url": "/q/7de1828a.html",
             "episode_title": "W1L2 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=1b3d31bc}.mp3"
+          },
+          {
+            "quiz_id": "e82348d3",
+            "difficulty": "medium",
+            "quiz_url": "/q/e82348d3.html",
+            "episode_title": "W1L2 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=1b3d31bc}.mp3"
           }
         ],
         "podcasts": [
+          {
+            "kind": "podcast",
+            "title": "Uge 1, Forelæsning 2 · Podcast · Alle kilder (undtagen slides)",
+            "url": "https://open.spotify.com/episode/3v6y6wVIYvmslzdRqACZvY",
+            "platform": "spotify",
+            "pub_date": "Tue, 03 Feb 2025 12:00:00 +0100",
+            "source_audio_url": "https://drive.google.com/uc?export=download&id=1QEWZ3FanQcp2CbF0SgeKbHpcjlhHDYAN",
+            "duration_seconds": null,
+            "duration_label": ""
+          },
           {
             "kind": "podcast",
             "title": "Uge 1, Forelæsning 2 · Podcast · Alle kilder (undtagen slides)",
@@ -445,19 +483,19 @@
                 "quiz_id": "0b60d3e0",
                 "difficulty": "easy",
                 "quiz_url": "/q/0b60d3e0.html",
-                "episode_title": "W2L1 - X Zettler et al. (2020) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+                "episode_title": "W2L1 - Zettler et al. (2020) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               },
               {
                 "quiz_id": "0e078f5f",
                 "difficulty": "hard",
                 "quiz_url": "/q/0e078f5f.html",
-                "episode_title": "W2L1 - X Zettler et al. (2020) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+                "episode_title": "W2L1 - Zettler et al. (2020) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               },
               {
                 "quiz_id": "ffb41ec4",
                 "difficulty": "medium",
                 "quiz_url": "/q/ffb41ec4.html",
-                "episode_title": "W2L1 - X Zettler et al. (2020) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+                "episode_title": "W2L1 - Zettler et al. (2020) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               }
             ],
             "podcasts": [
@@ -466,8 +504,18 @@
                 "title": "Uge 2, Forelæsning 1 · Podcast · Zettler et al. (2020)",
                 "url": "https://open.spotify.com/episode/1RGvUIZxZUK4u1ZCzwuLze",
                 "platform": "spotify",
-                "pub_date": "Mon, 09 Feb 2025 12:00:00 +0100",
+                "pub_date": "Mon, 09 Feb 2025 14:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1AB9hzSXp6T6eC1VxKj14YqO-w2WvyOAY",
+                "duration_seconds": null,
+                "duration_label": ""
+              },
+              {
+                "kind": "podcast",
+                "title": "Uge 2, Forelæsning 1 · Podcast · Zettler et al. (2020)",
+                "url": "https://open.spotify.com/episode/1RGvUIZxZUK4u1ZCzwuLze",
+                "platform": "spotify",
+                "pub_date": "Mon, 09 Feb 2025 12:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1kqSX7aqO8TGfc3lI5xG4jFZXF-qyLe-g",
                 "duration_seconds": null,
                 "duration_label": ""
               }
@@ -507,7 +555,7 @@
                 "title": "Uge 2, Forelæsning 1 · Podcast · Columbus & Strandsbjerg (2025)",
                 "url": "https://open.spotify.com/episode/0eGcgI3zetWE2QdAcYiRos",
                 "platform": "spotify",
-                "pub_date": "Mon, 09 Feb 2025 14:00:00 +0100",
+                "pub_date": "Mon, 09 Feb 2025 16:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1n7I7v016c9FiLEkw1JEmzHl8NX_ELU8L",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -829,7 +877,7 @@
                 "title": "Uge 3, Forelæsning 1 · Podcast · Kandler & Instinske (2025)",
                 "url": "https://open.spotify.com/episode/47e1RFnGyJuNScWdepzTZJ",
                 "platform": "spotify",
-                "pub_date": "Mon, 16 Feb 2025 16:00:00 +0100",
+                "pub_date": "Mon, 16 Feb 2025 18:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1ro7EBLMeDKtOpXqFo27rliq5Zr94l0XP",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -870,7 +918,7 @@
                 "title": "Uge 3, Forelæsning 1 · Podcast · Lu, Benet-Martínez & Wang (2023)",
                 "url": "https://open.spotify.com/episode/7FcPT22rr8orfGiBvMOg89",
                 "platform": "spotify",
-                "pub_date": "Mon, 16 Feb 2025 14:00:00 +0100",
+                "pub_date": "Mon, 16 Feb 2025 16:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1NDdPZUVfHKjL4_mTUPnJM0RPs0muR6RT",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -911,7 +959,7 @@
                 "title": "Uge 3, Forelæsning 1 · Podcast · Volk & Puchalski (2025)",
                 "url": "https://open.spotify.com/episode/79W9KD8KLrH3UNXXyTsLGi",
                 "platform": "spotify",
-                "pub_date": "Mon, 16 Feb 2025 12:00:00 +0100",
+                "pub_date": "Mon, 16 Feb 2025 14:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1tTktR6RroP0hmVkErvEI9urHtXi2i_WP",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -952,7 +1000,7 @@
                 "title": "Uge 3, Forelæsning 1 · Podcast · Zettler et al. (2025)",
                 "url": "https://open.spotify.com/episode/2SmrTZbSxiYf9zWfxIoH8x",
                 "platform": "spotify",
-                "pub_date": "Mon, 16 Feb 2025 10:00:00 +0100",
+                "pub_date": "Mon, 16 Feb 2025 12:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1iD0BKyRvmY1HuCtmEpQn6TqHCUzb29u6",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -994,10 +1042,28 @@
             "episode_title": "W3L1 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=4 hash=a7e138f5}.mp3"
           },
           {
+            "quiz_id": "68b645c9",
+            "difficulty": "easy",
+            "quiz_url": "/q/68b645c9.html",
+            "episode_title": "W3L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=4 hash=a7e138f5}.mp3"
+          },
+          {
             "quiz_id": "7191d834",
             "difficulty": "hard",
             "quiz_url": "/q/7191d834.html",
             "episode_title": "W3L1 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=4 hash=a7e138f5}.mp3"
+          },
+          {
+            "quiz_id": "f74d8580",
+            "difficulty": "hard",
+            "quiz_url": "/q/f74d8580.html",
+            "episode_title": "W3L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=4 hash=a7e138f5}.mp3"
+          },
+          {
+            "quiz_id": "58afa134",
+            "difficulty": "medium",
+            "quiz_url": "/q/58afa134.html",
+            "episode_title": "W3L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=4 hash=a7e138f5}.mp3"
           },
           {
             "quiz_id": "efd4527e",
@@ -1007,6 +1073,16 @@
           }
         ],
         "podcasts": [
+          {
+            "kind": "podcast",
+            "title": "Uge 3, Forelæsning 1 · Podcast · Alle kilder (undtagen slides)",
+            "url": "https://open.spotify.com/episode/72onZO7pe2rWeDVE5DyQ42",
+            "platform": "spotify",
+            "pub_date": "Mon, 16 Feb 2025 10:00:00 +0100",
+            "source_audio_url": "https://drive.google.com/uc?export=download&id=1q6HMph6vn7YjnshjVHNwr9nsy4h7_kEH",
+            "duration_seconds": null,
+            "duration_label": ""
+          },
           {
             "kind": "podcast",
             "title": "Uge 3, Forelæsning 1 · Podcast · Alle kilder (undtagen slides)",
@@ -1154,7 +1230,7 @@
                 "title": "Uge 4, Forelæsning 1 · Podcast · Freud (1973-1933) DA",
                 "url": "https://open.spotify.com/episode/3GK0kYu8zSfRpMmNReUs5K",
                 "platform": "spotify",
-                "pub_date": "Mon, 23 Feb 2025 14:00:00 +0100",
+                "pub_date": "Mon, 23 Feb 2025 18:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1zGwTUO_q-QqVP-rLnmlauzn147twgrq2",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -1164,7 +1240,7 @@
                 "title": "Uge 4, Forelæsning 1 · Podcast · Freud, S. (1973-1933) EN",
                 "url": "https://open.spotify.com/episode/5O9Lb9bVW636SdzzkbzXp5",
                 "platform": "spotify",
-                "pub_date": "Mon, 23 Feb 2025 12:00:00 +0100",
+                "pub_date": "Mon, 23 Feb 2025 16:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1oLotKYb2cETKuQTUU13i3zVl0pggcy3r",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -1179,33 +1255,24 @@
           "source_filename": "W4L1 Gammelgaard (2007).pdf",
           "sequence_index": 2,
           "assets": {
-            "quizzes": [
-              {
-                "quiz_id": "8a9048d8",
-                "difficulty": "easy",
-                "quiz_url": "/q/8a9048d8.html",
-                "episode_title": "W4L1 - Gammelgaard (2007) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
-              },
-              {
-                "quiz_id": "eb9b6d1f",
-                "difficulty": "hard",
-                "quiz_url": "/q/eb9b6d1f.html",
-                "episode_title": "W4L1 - Gammelgaard (2007) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
-              },
-              {
-                "quiz_id": "cf07f890",
-                "difficulty": "medium",
-                "quiz_url": "/q/cf07f890.html",
-                "episode_title": "W4L1 - Gammelgaard (2007) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
-              }
-            ],
+            "quizzes": [],
             "podcasts": [
               {
                 "kind": "podcast",
                 "title": "Uge 4, Forelæsning 1 · Podcast · Gammelgaard (2007)",
                 "url": "https://open.spotify.com/episode/7385cf9km0bg5EkkJsYuSJ",
                 "platform": "spotify",
-                "pub_date": "Mon, 23 Feb 2025 10:00:00 +0100",
+                "pub_date": "Mon, 23 Feb 2025 14:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=11BXGpZnqrJMVQz4n7zX4S5-dLmYslHBY",
+                "duration_seconds": null,
+                "duration_label": ""
+              },
+              {
+                "kind": "podcast",
+                "title": "Uge 4, Forelæsning 1 · Podcast · Gammelgaard (2007)",
+                "url": "https://open.spotify.com/episode/7385cf9km0bg5EkkJsYuSJ",
+                "platform": "spotify",
+                "pub_date": "Mon, 23 Feb 2025 12:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=10-SJGYGZK8v61aK_4AkmVCb0Pa-uS2co",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -1236,10 +1303,28 @@
             "episode_title": "W4L1 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3"
           },
           {
+            "quiz_id": "9da67dcd",
+            "difficulty": "easy",
+            "quiz_url": "/q/9da67dcd.html",
+            "episode_title": "W4L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3"
+          },
+          {
+            "quiz_id": "7120c4d7",
+            "difficulty": "hard",
+            "quiz_url": "/q/7120c4d7.html",
+            "episode_title": "W4L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3"
+          },
+          {
             "quiz_id": "f9af2514",
             "difficulty": "hard",
             "quiz_url": "/q/f9af2514.html",
             "episode_title": "W4L1 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3"
+          },
+          {
+            "quiz_id": "47d12bdc",
+            "difficulty": "medium",
+            "quiz_url": "/q/47d12bdc.html",
+            "episode_title": "W4L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3"
           },
           {
             "quiz_id": "e077bf58",
@@ -1251,6 +1336,7 @@
         "podcasts": []
       },
       "warnings": [
+        "Spotify episode mapping missing for RSS item; skipping podcast asset: Uge 4, Forelæsning 1 · Podcast · Alle kilder (undtagen slides)",
         "Spotify episode mapping missing for RSS item; skipping podcast asset: Uge 4, Forelæsning 1 · Podcast · Alle kilder (undtagen slides)"
       ]
     },
@@ -1436,19 +1522,19 @@
                 "quiz_id": "88844730",
                 "difficulty": "easy",
                 "quiz_url": "/q/88844730.html",
-                "episode_title": "W5L1 - X Freud, S. (1984-1905). Brudstykke af en hysteri-analyse (pp. 9-62, pp. 96- [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+                "episode_title": "W5L1 - Freud, S. (1984-1905). Brudstykke af en hysteri-analyse (pp. 9-62, pp. 96- [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               },
               {
                 "quiz_id": "b0391606",
                 "difficulty": "hard",
                 "quiz_url": "/q/b0391606.html",
-                "episode_title": "W5L1 - X Freud, S. (1984-1905). Brudstykke af en hysteri-analyse (pp. 9-62, pp. 96- [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+                "episode_title": "W5L1 - Freud, S. (1984-1905). Brudstykke af en hysteri-analyse (pp. 9-62, pp. 96- [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               },
               {
                 "quiz_id": "a692bb8b",
                 "difficulty": "medium",
                 "quiz_url": "/q/a692bb8b.html",
-                "episode_title": "W5L1 - X Freud, S. (1984-1905). Brudstykke af en hysteri-analyse (pp. 9-62, pp. 96- [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+                "episode_title": "W5L1 - Freud, S. (1984-1905). Brudstykke af en hysteri-analyse (pp. 9-62, pp. 96- [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               }
             ],
             "podcasts": [
@@ -1457,8 +1543,18 @@
                 "title": "Uge 5, Forelæsning 1 · Podcast · Freud, S. (1984-1905). Brudstykke af en hysteri-analyse (pp. 9-62, pp. 96",
                 "url": "https://open.spotify.com/episode/2A2d30fCMnAmGpTFSITXQI",
                 "platform": "spotify",
-                "pub_date": "Mon, 02 Mar 2025 14:00:00 +0100",
+                "pub_date": "Mon, 02 Mar 2025 18:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1uAUOJEECokod5hvCsb8Sid1E8rX26rfa",
+                "duration_seconds": null,
+                "duration_label": ""
+              },
+              {
+                "kind": "podcast",
+                "title": "Uge 5, Forelæsning 1 · Podcast · Freud, S. (1984-1905). Brudstykke af en hysteri-analyse (pp. 9-62, pp. 96",
+                "url": "https://open.spotify.com/episode/2A2d30fCMnAmGpTFSITXQI",
+                "platform": "spotify",
+                "pub_date": "Mon, 02 Mar 2025 16:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=11_d3jFbcRqQpgOZMZoPXgbDbqQPCAQs2",
                 "duration_seconds": null,
                 "duration_label": ""
               }
@@ -1477,19 +1573,19 @@
                 "quiz_id": "42d6d9ec",
                 "difficulty": "easy",
                 "quiz_url": "/q/42d6d9ec.html",
-                "episode_title": "W5L1 - X Gammelgaard (2010) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+                "episode_title": "W5L1 - Gammelgaard (2010) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               },
               {
                 "quiz_id": "221af849",
                 "difficulty": "hard",
                 "quiz_url": "/q/221af849.html",
-                "episode_title": "W5L1 - X Gammelgaard (2010) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+                "episode_title": "W5L1 - Gammelgaard (2010) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               },
               {
                 "quiz_id": "1e310222",
                 "difficulty": "medium",
                 "quiz_url": "/q/1e310222.html",
-                "episode_title": "W5L1 - X Gammelgaard (2010) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+                "episode_title": "W5L1 - Gammelgaard (2010) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               }
             ],
             "podcasts": [
@@ -1498,8 +1594,18 @@
                 "title": "Uge 5, Forelæsning 1 · Podcast · Gammelgaard (2010)",
                 "url": "https://open.spotify.com/episode/2jN1gmVCGPFL6gncQKJZYJ",
                 "platform": "spotify",
-                "pub_date": "Mon, 02 Mar 2025 12:00:00 +0100",
+                "pub_date": "Mon, 02 Mar 2025 14:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=17mGg_aQnsvGE6oB9F2EpL6MRpil9a6hU",
+                "duration_seconds": null,
+                "duration_label": ""
+              },
+              {
+                "kind": "podcast",
+                "title": "Uge 5, Forelæsning 1 · Podcast · Gammelgaard (2010)",
+                "url": "https://open.spotify.com/episode/2jN1gmVCGPFL6gncQKJZYJ",
+                "platform": "spotify",
+                "pub_date": "Mon, 02 Mar 2025 12:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1aTU4XaUcJdvyWAmkaIpybutn9VYwwPVv",
                 "duration_seconds": null,
                 "duration_label": ""
               }
@@ -1539,7 +1645,7 @@
                 "title": "Uge 5, Forelæsning 1 · Podcast · Ricoeur (1981)",
                 "url": "https://open.spotify.com/episode/32BZjxWRFINREK3IZ6QIwq",
                 "platform": "spotify",
-                "pub_date": "Mon, 02 Mar 2025 16:00:00 +0100",
+                "pub_date": "Mon, 02 Mar 2025 20:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1p-3jISNjKyT1GgJGfnei4bFypObk_KAC",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -1674,7 +1780,7 @@
                 "title": "Uge 5, Forelæsning 2 · Podcast · Andkjær Olsen & Køppe (1991a og b)",
                 "url": "https://open.spotify.com/episode/4o45xGRvx1w26I7w3Jqn5U",
                 "platform": "spotify",
-                "pub_date": "Tue, 03 Mar 2025 16:00:00 +0100",
+                "pub_date": "Tue, 03 Mar 2025 18:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1-MUzDHyTeCGnXPDXK16jJWp3sxBgmv7E",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -1715,7 +1821,7 @@
                 "title": "Uge 5, Forelæsning 2 · Podcast · Køppe (1992)",
                 "url": "https://open.spotify.com/episode/1LECP6FrzfUufYbBZPtJs5",
                 "platform": "spotify",
-                "pub_date": "Tue, 03 Mar 2025 14:00:00 +0100",
+                "pub_date": "Tue, 03 Mar 2025 16:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1eDRw7XTHJgSM9lziaFT2KZULi3i8Xfcx",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -1774,7 +1880,7 @@
                 "title": "Uge 5, Forelæsning 2 · Kort podcast · Grundbog kapitel 07 - Nyere psykoanalytiske teorier",
                 "url": "https://open.spotify.com/episode/5bVYtRWHw4E6O6R1jB9PKA",
                 "platform": "spotify",
-                "pub_date": "Tue, 03 Mar 2025 12:00:00 +0100",
+                "pub_date": "Tue, 03 Mar 2025 14:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1Po7BaXnaFJ6mraTfjxBrL-DQPHKH3LYH",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -1784,7 +1890,7 @@
                 "title": "Uge 5, Forelæsning 2 · Podcast · Grundbog kapitel 07 - Nyere psykoanalytiske teorier",
                 "url": "https://open.spotify.com/episode/3d0UzJp0jkJVhDXp3HfsXK",
                 "platform": "spotify",
-                "pub_date": "Tue, 03 Mar 2025 18:00:00 +0100",
+                "pub_date": "Tue, 03 Mar 2025 20:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1K4zibBYzW6XPM3cJin7nGHC-Bw_FPJXJ",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -1809,10 +1915,22 @@
       "lecture_assets": {
         "quizzes": [
           {
+            "quiz_id": "6ea3d7fb",
+            "difficulty": "easy",
+            "quiz_url": "/q/6ea3d7fb.html",
+            "episode_title": "W5L2 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=1b3d31bc}.mp3"
+          },
+          {
             "quiz_id": "793d71fe",
             "difficulty": "easy",
             "quiz_url": "/q/793d71fe.html",
             "episode_title": "W5L2 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=1b3d31bc}.mp3"
+          },
+          {
+            "quiz_id": "70f1c20b",
+            "difficulty": "hard",
+            "quiz_url": "/q/70f1c20b.html",
+            "episode_title": "W5L2 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=1b3d31bc}.mp3"
           },
           {
             "quiz_id": "9724408d",
@@ -1825,6 +1943,12 @@
             "difficulty": "medium",
             "quiz_url": "/q/a7768ff5.html",
             "episode_title": "W5L2 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=1b3d31bc}.mp3"
+          },
+          {
+            "quiz_id": "b182936c",
+            "difficulty": "medium",
+            "quiz_url": "/q/b182936c.html",
+            "episode_title": "W5L2 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=1b3d31bc}.mp3"
           }
         ],
         "podcasts": [
@@ -1833,8 +1957,18 @@
             "title": "Uge 5, Forelæsning 2 · Podcast · Alle kilder (undtagen slides)",
             "url": "https://open.spotify.com/episode/3FxcTxGB8FXDEzui8StyeT",
             "platform": "spotify",
-            "pub_date": "Tue, 03 Mar 2025 10:00:00 +0100",
+            "pub_date": "Tue, 03 Mar 2025 12:00:00 +0100",
             "source_audio_url": "https://drive.google.com/uc?export=download&id=1SQltYmo2sel56_L7oSyHkMGnZ-bL4kOX",
+            "duration_seconds": null,
+            "duration_label": ""
+          },
+          {
+            "kind": "podcast",
+            "title": "Uge 5, Forelæsning 2 · Podcast · Alle kilder (undtagen slides)",
+            "url": "https://open.spotify.com/episode/3FxcTxGB8FXDEzui8StyeT",
+            "platform": "spotify",
+            "pub_date": "Tue, 03 Mar 2025 10:00:00 +0100",
+            "source_audio_url": "https://drive.google.com/uc?export=download&id=1PHe-dMOXLwgfwJ_9QW9n4k9l3Y9UzJIY",
             "duration_seconds": null,
             "duration_label": ""
           }
@@ -1859,19 +1993,19 @@
                 "quiz_id": "05ef9d43",
                 "difficulty": "easy",
                 "quiz_url": "/q/05ef9d43.html",
-                "episode_title": "W6L1 - X Spinelli (2005) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+                "episode_title": "W6L1 - Spinelli (2005) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               },
               {
                 "quiz_id": "ae7951e1",
                 "difficulty": "hard",
                 "quiz_url": "/q/ae7951e1.html",
-                "episode_title": "W6L1 - X Spinelli (2005) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+                "episode_title": "W6L1 - Spinelli (2005) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               },
               {
                 "quiz_id": "50b33bca",
                 "difficulty": "medium",
                 "quiz_url": "/q/50b33bca.html",
-                "episode_title": "W6L1 - X Spinelli (2005) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+                "episode_title": "W6L1 - Spinelli (2005) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               }
             ],
             "podcasts": [
@@ -1880,8 +2014,18 @@
                 "title": "Uge 6, Forelæsning 1 · Podcast · Spinelli (2005)",
                 "url": "https://open.spotify.com/episode/0BaiP8yi6GFhcx9nDvyljo",
                 "platform": "spotify",
-                "pub_date": "Mon, 09 Mar 2025 16:00:00 +0100",
+                "pub_date": "Mon, 09 Mar 2025 18:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=19mfFGKEf1HviGyOCjDRL4I4edh7Rd1aS",
+                "duration_seconds": null,
+                "duration_label": ""
+              },
+              {
+                "kind": "podcast",
+                "title": "Uge 6, Forelæsning 1 · Podcast · Spinelli (2005)",
+                "url": "https://open.spotify.com/episode/0BaiP8yi6GFhcx9nDvyljo",
+                "platform": "spotify",
+                "pub_date": "Mon, 09 Mar 2025 16:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1R31AKa5M84r-6j75eC37JLFsZdgYxacw",
                 "duration_seconds": null,
                 "duration_label": ""
               }
@@ -1900,19 +2044,19 @@
                 "quiz_id": "76f49ecd",
                 "difficulty": "easy",
                 "quiz_url": "/q/76f49ecd.html",
-                "episode_title": "W6L1 - X Moeskær Hansen & Roald (2022) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+                "episode_title": "W6L1 - Moeskær Hansen & Roald (2022) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               },
               {
                 "quiz_id": "b8a205e0",
                 "difficulty": "hard",
                 "quiz_url": "/q/b8a205e0.html",
-                "episode_title": "W6L1 - X Moeskær Hansen & Roald (2022) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+                "episode_title": "W6L1 - Moeskær Hansen & Roald (2022) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               },
               {
                 "quiz_id": "ef4be650",
                 "difficulty": "medium",
                 "quiz_url": "/q/ef4be650.html",
-                "episode_title": "W6L1 - X Moeskær Hansen & Roald (2022) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+                "episode_title": "W6L1 - Moeskær Hansen & Roald (2022) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               }
             ],
             "podcasts": [
@@ -1921,8 +2065,18 @@
                 "title": "Uge 6, Forelæsning 1 · Podcast · Moeskær Hansen & Roald (2022)",
                 "url": "https://open.spotify.com/episode/22tt5ixEEIwH8lCzvkGUNm",
                 "platform": "spotify",
-                "pub_date": "Mon, 09 Mar 2025 18:00:00 +0100",
+                "pub_date": "Mon, 09 Mar 2025 22:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1HYOsdxKOQ_GAT7ad2QIeXzyL5m-ZBu4u",
+                "duration_seconds": null,
+                "duration_label": ""
+              },
+              {
+                "kind": "podcast",
+                "title": "Uge 6, Forelæsning 1 · Podcast · Moeskær Hansen & Roald (2022)",
+                "url": "https://open.spotify.com/episode/22tt5ixEEIwH8lCzvkGUNm",
+                "platform": "spotify",
+                "pub_date": "Mon, 09 Mar 2025 20:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1krH_wyv2PfXRrFzNQRgzMKCv7R9Jfgl-",
                 "duration_seconds": null,
                 "duration_label": ""
               }
@@ -1990,7 +2144,7 @@
                 "title": "Uge 6, Forelæsning 1 · Podcast · Grundbog kapitel 4 - Fænomenologisk personlighedspsykologi",
                 "url": "https://open.spotify.com/episode/6djbgti1qSJlnnJ6BTEB3p",
                 "platform": "spotify",
-                "pub_date": "Mon, 09 Mar 2025 20:00:00 +0100",
+                "pub_date": "Tue, 10 Mar 2025 00:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1lSW0eVLjaU3Vceu255Zhqiv8egePPPtq",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -2043,7 +2197,7 @@
           {
             "kind": "podcast",
             "title": "Uge 6, Forelæsning 1 · Podcast · Alle kilder (undtagen slides)",
-            "url": "https://open.spotify.com/episode/1Il0giSFTtdSM2MzRObFVa",
+            "url": "https://open.spotify.com/episode/1gPV00rtppaRzngzoF7bEp",
             "platform": "spotify",
             "pub_date": "Mon, 09 Mar 2025 10:00:00 +0100",
             "source_audio_url": "https://drive.google.com/uc?export=download&id=1cHiImI4DzbbmimSX9XYXrZrbNkdkQvmz",
@@ -2053,7 +2207,7 @@
           {
             "kind": "podcast",
             "title": "Uge 6, Forelæsning 1 · Podcast · Alle kilder (undtagen slides)",
-            "url": "https://open.spotify.com/episode/1Il0giSFTtdSM2MzRObFVa",
+            "url": "https://open.spotify.com/episode/1gPV00rtppaRzngzoF7bEp",
             "platform": "spotify",
             "pub_date": "Mon, 09 Mar 2025 08:00:00 +0100",
             "source_audio_url": "https://drive.google.com/uc?export=download&id=1IJnfLUZ6iL1ajFsggOOouuzkvDXGUkuQ",
@@ -2104,7 +2258,7 @@
                 "title": "Uge 6, Forelæsning 2 · Podcast · Boss (1963)",
                 "url": "https://open.spotify.com/episode/3fcumkb5ablokz8SlWBHyV",
                 "platform": "spotify",
-                "pub_date": "Tue, 10 Mar 2025 14:00:00 +0100",
+                "pub_date": "Tue, 10 Mar 2025 16:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1d0G1Ir2ZAPUgLq5w1gHMmK_ireDY4oah",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -2145,7 +2299,7 @@
                 "title": "Uge 6, Forelæsning 2 · Podcast · May (1966)",
                 "url": "https://open.spotify.com/episode/1na2MnRa0SrkaNf8nruqSr",
                 "platform": "spotify",
-                "pub_date": "Tue, 10 Mar 2025 12:00:00 +0100",
+                "pub_date": "Tue, 10 Mar 2025 14:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1OWdxVkD_vgs52mOqEVydq2PdbmZ6UUMZ",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -2164,10 +2318,28 @@
             "episode_title": "W6L2 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3"
           },
           {
+            "quiz_id": "83dbea05",
+            "difficulty": "easy",
+            "quiz_url": "/q/83dbea05.html",
+            "episode_title": "W6L2 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3"
+          },
+          {
             "quiz_id": "5b120971",
             "difficulty": "hard",
             "quiz_url": "/q/5b120971.html",
             "episode_title": "W6L2 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3"
+          },
+          {
+            "quiz_id": "a4573eea",
+            "difficulty": "hard",
+            "quiz_url": "/q/a4573eea.html",
+            "episode_title": "W6L2 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3"
+          },
+          {
+            "quiz_id": "6c92d6ca",
+            "difficulty": "medium",
+            "quiz_url": "/q/6c92d6ca.html",
+            "episode_title": "W6L2 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3"
           },
           {
             "quiz_id": "8a421a51",
@@ -2182,8 +2354,18 @@
             "title": "Uge 6, Forelæsning 2 · Podcast · Alle kilder (undtagen slides)",
             "url": "https://open.spotify.com/episode/1FAU8BOoJsAbbu3KIIHdJY",
             "platform": "spotify",
-            "pub_date": "Tue, 10 Mar 2025 10:00:00 +0100",
+            "pub_date": "Tue, 10 Mar 2025 12:00:00 +0100",
             "source_audio_url": "https://drive.google.com/uc?export=download&id=1TS68MnhYfERSekLzhR4q8vxryp13FYGI",
+            "duration_seconds": null,
+            "duration_label": ""
+          },
+          {
+            "kind": "podcast",
+            "title": "Uge 6, Forelæsning 2 · Podcast · Alle kilder (undtagen slides)",
+            "url": "https://open.spotify.com/episode/1FAU8BOoJsAbbu3KIIHdJY",
+            "platform": "spotify",
+            "pub_date": "Tue, 10 Mar 2025 10:00:00 +0100",
+            "source_audio_url": "https://drive.google.com/uc?export=download&id=1OwvdBjchcbcqmttWMPkohK6sQPbppKHS",
             "duration_seconds": null,
             "duration_label": ""
           }
@@ -2229,7 +2411,7 @@
                 "title": "Uge 7, Forelæsning 1 · Podcast · Cooper (2003)",
                 "url": "https://open.spotify.com/episode/2xIxxFDdMlPLGvi0mkgvgU",
                 "platform": "spotify",
-                "pub_date": "Mon, 16 Mar 2025 12:00:00 +0100",
+                "pub_date": "Mon, 16 Mar 2025 14:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1oAQfCNyMdDR5RUzzkPriWS4uvP_j7LVd",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -2270,7 +2452,7 @@
                 "title": "Uge 7, Forelæsning 1 · Podcast · Jacobsen (2021)",
                 "url": "https://open.spotify.com/episode/2EuWZJ44cIcbVKjxEGLpK1",
                 "platform": "spotify",
-                "pub_date": "Mon, 16 Mar 2025 10:00:00 +0100",
+                "pub_date": "Mon, 16 Mar 2025 12:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=14kYOb10hX6ILQYfJxoxUtIiQ-fmTMpRL",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -2289,6 +2471,18 @@
             "episode_title": "W7L1 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3"
           },
           {
+            "quiz_id": "6810d102",
+            "difficulty": "easy",
+            "quiz_url": "/q/6810d102.html",
+            "episode_title": "W7L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3"
+          },
+          {
+            "quiz_id": "1e9816d2",
+            "difficulty": "hard",
+            "quiz_url": "/q/1e9816d2.html",
+            "episode_title": "W7L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3"
+          },
+          {
             "quiz_id": "d20fca7c",
             "difficulty": "hard",
             "quiz_url": "/q/d20fca7c.html",
@@ -2299,6 +2493,12 @@
             "difficulty": "medium",
             "quiz_url": "/q/2a6ca85b.html",
             "episode_title": "W7L1 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3"
+          },
+          {
+            "quiz_id": "e395378c",
+            "difficulty": "medium",
+            "quiz_url": "/q/e395378c.html",
+            "episode_title": "W7L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3"
           }
         ],
         "podcasts": [
@@ -2307,8 +2507,18 @@
             "title": "Uge 7, Forelæsning 1 · Podcast · Alle kilder (undtagen slides)",
             "url": "https://open.spotify.com/episode/3WpREOaIN9zMBhV6WtnFZD",
             "platform": "spotify",
-            "pub_date": "Mon, 16 Mar 2025 08:00:00 +0100",
+            "pub_date": "Mon, 16 Mar 2025 10:00:00 +0100",
             "source_audio_url": "https://drive.google.com/uc?export=download&id=1ILXN0Gcia5JUfBrbnFmGlKjl0ubhfkKh",
+            "duration_seconds": null,
+            "duration_label": ""
+          },
+          {
+            "kind": "podcast",
+            "title": "Uge 7, Forelæsning 1 · Podcast · Alle kilder (undtagen slides)",
+            "url": "https://open.spotify.com/episode/3WpREOaIN9zMBhV6WtnFZD",
+            "platform": "spotify",
+            "pub_date": "Mon, 16 Mar 2025 08:00:00 +0100",
+            "source_audio_url": "https://drive.google.com/uc?export=download&id=1yXiuWksZyrn1xqDhD9qL9jjQfmB9CsEU",
             "duration_seconds": null,
             "duration_label": ""
           }
@@ -2354,7 +2564,7 @@
                 "title": "Uge 7, Forelæsning 2 · Podcast · Evans (1975)",
                 "url": "https://open.spotify.com/episode/0mo2mcgt6w6hEIKa87KjYV",
                 "platform": "spotify",
-                "pub_date": "Tue, 17 Mar 2025 16:00:00 +0100",
+                "pub_date": "Tue, 17 Mar 2025 18:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1RMqBoGKmAFNQVsgnpe0bwff9LBMUb-Te",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -2395,7 +2605,7 @@
                 "title": "Uge 7, Forelæsning 2 · Podcast · Giorgi (2005)",
                 "url": "https://open.spotify.com/episode/7lTEn0gSpSfQZzo3bEUu1L",
                 "platform": "spotify",
-                "pub_date": "Tue, 17 Mar 2025 14:00:00 +0100",
+                "pub_date": "Tue, 17 Mar 2025 16:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1_0kLQC9U3zJSXKkpLvlxPW0i4tX6ST8K",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -2436,7 +2646,7 @@
                 "title": "Uge 7, Forelæsning 2 · Podcast · Maslow (1968)",
                 "url": "https://open.spotify.com/episode/04KJADc7Cf37VvuKxqDMTx",
                 "platform": "spotify",
-                "pub_date": "Tue, 17 Mar 2025 12:00:00 +0100",
+                "pub_date": "Tue, 17 Mar 2025 14:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1aCW61adoRFAyZNn3NTjE7FbDn2yzL97j",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -2448,6 +2658,12 @@
       "slides": [],
       "lecture_assets": {
         "quizzes": [
+          {
+            "quiz_id": "8f52d1cf",
+            "difficulty": "easy",
+            "quiz_url": "/q/8f52d1cf.html",
+            "episode_title": "W7L2 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=1b3d31bc}.mp3"
+          },
           {
             "quiz_id": "c5334dab",
             "difficulty": "easy",
@@ -2461,6 +2677,18 @@
             "episode_title": "W7L2 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=1b3d31bc}.mp3"
           },
           {
+            "quiz_id": "3aacda7e",
+            "difficulty": "hard",
+            "quiz_url": "/q/3aacda7e.html",
+            "episode_title": "W7L2 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=1b3d31bc}.mp3"
+          },
+          {
+            "quiz_id": "16c5e233",
+            "difficulty": "medium",
+            "quiz_url": "/q/16c5e233.html",
+            "episode_title": "W7L2 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=1b3d31bc}.mp3"
+          },
+          {
             "quiz_id": "72579575",
             "difficulty": "medium",
             "quiz_url": "/q/72579575.html",
@@ -2468,6 +2696,16 @@
           }
         ],
         "podcasts": [
+          {
+            "kind": "podcast",
+            "title": "Uge 7, Forelæsning 2 · Podcast · Alle kilder (undtagen slides)",
+            "url": "https://open.spotify.com/episode/1jvcNlbIYzu8yGAz34fA5o",
+            "platform": "spotify",
+            "pub_date": "Tue, 17 Mar 2025 12:00:00 +0100",
+            "source_audio_url": "https://drive.google.com/uc?export=download&id=1OnEBWbt3uSxPklmcYJ5iwKdiasA49PhK",
+            "duration_seconds": null,
+            "duration_label": ""
+          },
           {
             "kind": "podcast",
             "title": "Uge 7, Forelæsning 2 · Podcast · Alle kilder (undtagen slides)",
@@ -2520,7 +2758,7 @@
                 "title": "Uge 8, Forelæsning 1 · Podcast · Lamiell, J.T. (2021)",
                 "url": "https://open.spotify.com/episode/0z2E73BauywvI9sMJMLBR4",
                 "platform": "spotify",
-                "pub_date": "Mon, 23 Mar 2025 10:00:00 +0100",
+                "pub_date": "Mon, 23 Mar 2025 12:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1jLX0OSMT1P80CSDVsGgj_yqn_D4gt-cz",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -2561,7 +2799,7 @@
                 "title": "Uge 8, Forelæsning 1 · Podcast · Laux et al. (2010)",
                 "url": "https://open.spotify.com/episode/7sHfc2UZ4E5u7WYYLrEd08",
                 "platform": "spotify",
-                "pub_date": "Mon, 23 Mar 2025 12:00:00 +0100",
+                "pub_date": "Mon, 23 Mar 2025 14:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1IUh1EtQG_mIiqlqGhmuKzQlDkZrtw0Qg",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -2580,10 +2818,28 @@
             "episode_title": "W8L1 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3"
           },
           {
+            "quiz_id": "9fb8e6ce",
+            "difficulty": "easy",
+            "quiz_url": "/q/9fb8e6ce.html",
+            "episode_title": "W8L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3"
+          },
+          {
+            "quiz_id": "397f1435",
+            "difficulty": "hard",
+            "quiz_url": "/q/397f1435.html",
+            "episode_title": "W8L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3"
+          },
+          {
             "quiz_id": "766a596d",
             "difficulty": "hard",
             "quiz_url": "/q/766a596d.html",
             "episode_title": "W8L1 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3"
+          },
+          {
+            "quiz_id": "5e5de3ee",
+            "difficulty": "medium",
+            "quiz_url": "/q/5e5de3ee.html",
+            "episode_title": "W8L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3"
           },
           {
             "quiz_id": "b5935494",
@@ -2598,8 +2854,18 @@
             "title": "Uge 8, Forelæsning 1 · Podcast · Alle kilder (undtagen slides)",
             "url": "https://open.spotify.com/episode/1UqmWXYygfkwS6V9jn99iO",
             "platform": "spotify",
-            "pub_date": "Mon, 23 Mar 2025 08:00:00 +0100",
+            "pub_date": "Mon, 23 Mar 2025 10:00:00 +0100",
             "source_audio_url": "https://drive.google.com/uc?export=download&id=1b2UuosAq2eW2VFqlcX7Awas1WuwH9rz3",
+            "duration_seconds": null,
+            "duration_label": ""
+          },
+          {
+            "kind": "podcast",
+            "title": "Uge 8, Forelæsning 1 · Podcast · Alle kilder (undtagen slides)",
+            "url": "https://open.spotify.com/episode/1UqmWXYygfkwS6V9jn99iO",
+            "platform": "spotify",
+            "pub_date": "Mon, 23 Mar 2025 08:00:00 +0100",
+            "source_audio_url": "https://drive.google.com/uc?export=download&id=1J6ADqmabVYHMzaSRUMFjnoHW-bJq1PQn",
             "duration_seconds": null,
             "duration_label": ""
           }
@@ -2645,7 +2911,7 @@
                 "title": "Uge 8, Forelæsning 2 · Podcast · Holzkamp (1982)",
                 "url": "https://open.spotify.com/episode/0gQnxPK3Fd4ghMhGBM9JXG",
                 "platform": "spotify",
-                "pub_date": "Tue, 24 Mar 2025 14:00:00 +0100",
+                "pub_date": "Tue, 24 Mar 2025 16:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=147Z-kXYiNHcqBS5NgK5kIuUORh0Lt2FQ",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -2686,7 +2952,7 @@
                 "title": "Uge 8, Forelæsning 2 · Podcast · Tolman (2009)",
                 "url": "https://open.spotify.com/episode/3zbL5b1zhIZx67bYr9RHG9",
                 "platform": "spotify",
-                "pub_date": "Tue, 24 Mar 2025 12:00:00 +0100",
+                "pub_date": "Tue, 24 Mar 2025 14:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1znzxEW3hkDzjPsGgcDGytwITfdfd1Z0-",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -2699,16 +2965,34 @@
       "lecture_assets": {
         "quizzes": [
           {
+            "quiz_id": "aff0aaa2",
+            "difficulty": "easy",
+            "quiz_url": "/q/aff0aaa2.html",
+            "episode_title": "W8L2 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3"
+          },
+          {
             "quiz_id": "d307efa3",
             "difficulty": "easy",
             "quiz_url": "/q/d307efa3.html",
             "episode_title": "W8L2 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3"
           },
           {
+            "quiz_id": "6331e496",
+            "difficulty": "hard",
+            "quiz_url": "/q/6331e496.html",
+            "episode_title": "W8L2 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3"
+          },
+          {
             "quiz_id": "b7b5c256",
             "difficulty": "hard",
             "quiz_url": "/q/b7b5c256.html",
             "episode_title": "W8L2 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3"
+          },
+          {
+            "quiz_id": "3ac83475",
+            "difficulty": "medium",
+            "quiz_url": "/q/3ac83475.html",
+            "episode_title": "W8L2 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3"
           },
           {
             "quiz_id": "52fc74b9",
@@ -2718,6 +3002,16 @@
           }
         ],
         "podcasts": [
+          {
+            "kind": "podcast",
+            "title": "Uge 8, Forelæsning 2 · Podcast · Alle kilder (undtagen slides)",
+            "url": "https://open.spotify.com/episode/5nWHdM5ijf9JMCnGfhBVNH",
+            "platform": "spotify",
+            "pub_date": "Tue, 24 Mar 2025 12:00:00 +0100",
+            "source_audio_url": "https://drive.google.com/uc?export=download&id=1HlVbYAaV4_wonzht6l4TL15g6e_PKpsZ",
+            "duration_seconds": null,
+            "duration_label": ""
+          },
           {
             "kind": "podcast",
             "title": "Uge 8, Forelæsning 2 · Podcast · Alle kilder (undtagen slides)",
@@ -2749,19 +3043,19 @@
                 "quiz_id": "114ab0be",
                 "difficulty": "easy",
                 "quiz_url": "/q/114ab0be.html",
-                "episode_title": "W9L1 - X Mørch & Hansen (2015) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+                "episode_title": "W9L1 - Mørch & Hansen (2015) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               },
               {
                 "quiz_id": "3e1e3654",
                 "difficulty": "hard",
                 "quiz_url": "/q/3e1e3654.html",
-                "episode_title": "W9L1 - X Mørch & Hansen (2015) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+                "episode_title": "W9L1 - Mørch & Hansen (2015) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               },
               {
                 "quiz_id": "054fcb0a",
                 "difficulty": "medium",
                 "quiz_url": "/q/054fcb0a.html",
-                "episode_title": "W9L1 - X Mørch & Hansen (2015) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+                "episode_title": "W9L1 - Mørch & Hansen (2015) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               }
             ],
             "podcasts": [
@@ -2770,8 +3064,18 @@
                 "title": "Uge 9, Forelæsning 1 · Podcast · Mørch & Hansen (2015)",
                 "url": "https://open.spotify.com/episode/2Btzf4mgg3Ud7eE6MW7WLO",
                 "platform": "spotify",
-                "pub_date": "Tue, 07 Apr 2025 16:00:00 +0200",
+                "pub_date": "Tue, 07 Apr 2025 20:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1hMf8bASb3OKsMiV5MYSJe2NpQW1WOspr",
+                "duration_seconds": null,
+                "duration_label": ""
+              },
+              {
+                "kind": "podcast",
+                "title": "Uge 9, Forelæsning 1 · Podcast · Mørch & Hansen (2015)",
+                "url": "https://open.spotify.com/episode/2Btzf4mgg3Ud7eE6MW7WLO",
+                "platform": "spotify",
+                "pub_date": "Tue, 07 Apr 2025 18:00:00 +0200",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1tVLt08w4AGpvC4MGK6Ui4PWGDTjQS9Mj",
                 "duration_seconds": null,
                 "duration_label": ""
               }
@@ -2811,7 +3115,7 @@
                 "title": "Uge 9, Forelæsning 1 · Podcast · Dreier (1999)",
                 "url": "https://open.spotify.com/episode/7yh4D8Qf2dywJHnUJXXbwy",
                 "platform": "spotify",
-                "pub_date": "Tue, 07 Apr 2025 22:00:00 +0200",
+                "pub_date": "Wed, 08 Apr 2025 02:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1dXzx1AkktLLTxqhdASW4vO0uqNDW5Fwj",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -2852,7 +3156,7 @@
                 "title": "Uge 9, Forelæsning 1 · Podcast · Holzkamp (2013)",
                 "url": "https://open.spotify.com/episode/01wDBxAcqWGeV8Nhko0MLG",
                 "platform": "spotify",
-                "pub_date": "Tue, 07 Apr 2025 18:00:00 +0200",
+                "pub_date": "Tue, 07 Apr 2025 22:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1-vFK9KBIpi6ogHvN_mINdKihYcAZp2fy",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -2911,7 +3215,7 @@
                 "title": "Uge 9, Forelæsning 1 · Kort podcast · Grundbog kapitel 10 - Kritisk psykologi",
                 "url": "https://open.spotify.com/episode/64ZLw1G0dKBGr2Cl8xWM9W",
                 "platform": "spotify",
-                "pub_date": "Tue, 07 Apr 2025 12:00:00 +0200",
+                "pub_date": "Tue, 07 Apr 2025 14:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1DArA5-NQtRSorBUmyjyQ2bS20GiqT19_",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -2921,7 +3225,7 @@
                 "title": "Uge 9, Forelæsning 1 · Podcast · Grundbog kapitel 10 - Kritisk psykologi",
                 "url": "https://open.spotify.com/episode/0SNoPkMPp7J51dI3KwpFuc",
                 "platform": "spotify",
-                "pub_date": "Tue, 07 Apr 2025 20:00:00 +0200",
+                "pub_date": "Wed, 08 Apr 2025 00:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1DHH3gOUbi5JfmyzMhGz4utxCrd_vYTxc",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -2934,6 +3238,12 @@
       "lecture_assets": {
         "quizzes": [
           {
+            "quiz_id": "03add03c",
+            "difficulty": "easy",
+            "quiz_url": "/q/03add03c.html",
+            "episode_title": "W9L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=4 hash=a7e138f5}.mp3"
+          },
+          {
             "quiz_id": "d29022f1",
             "difficulty": "easy",
             "quiz_url": "/q/d29022f1.html",
@@ -2944,6 +3254,18 @@
             "difficulty": "hard",
             "quiz_url": "/q/b109ba97.html",
             "episode_title": "W9L1 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=4 hash=a7e138f5}.mp3"
+          },
+          {
+            "quiz_id": "d032231e",
+            "difficulty": "hard",
+            "quiz_url": "/q/d032231e.html",
+            "episode_title": "W9L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=4 hash=a7e138f5}.mp3"
+          },
+          {
+            "quiz_id": "05a1adf1",
+            "difficulty": "medium",
+            "quiz_url": "/q/05a1adf1.html",
+            "episode_title": "W9L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=4 hash=a7e138f5}.mp3"
           },
           {
             "quiz_id": "1780e5fc",
@@ -2958,8 +3280,18 @@
             "title": "Uge 9, Forelæsning 1 · Podcast · Alle kilder (undtagen slides)",
             "url": "https://open.spotify.com/episode/4VSUEDPtQX9NA9cxsvsJAG",
             "platform": "spotify",
-            "pub_date": "Tue, 07 Apr 2025 10:00:00 +0200",
+            "pub_date": "Tue, 07 Apr 2025 12:00:00 +0200",
             "source_audio_url": "https://drive.google.com/uc?export=download&id=18r7VH9UHssSMJm81STmeNZgWelngMl0z",
+            "duration_seconds": null,
+            "duration_label": ""
+          },
+          {
+            "kind": "podcast",
+            "title": "Uge 9, Forelæsning 1 · Podcast · Alle kilder (undtagen slides)",
+            "url": "https://open.spotify.com/episode/4VSUEDPtQX9NA9cxsvsJAG",
+            "platform": "spotify",
+            "pub_date": "Tue, 07 Apr 2025 10:00:00 +0200",
+            "source_audio_url": "https://drive.google.com/uc?export=download&id=1pTjzfUmOxCiCzE-IeCQLOXzdn6y0PN3q",
             "duration_seconds": null,
             "duration_label": ""
           }
@@ -3007,7 +3339,7 @@
                 "title": "Uge 10, Forelæsning 1 · Podcast · Bjerrum Nielsen & Rudberg (2006)",
                 "url": "https://open.spotify.com/episode/7DNhlSZxMgkxmE9j2yHFsQ",
                 "platform": "spotify",
-                "pub_date": "Mon, 13 Apr 2025 14:00:00 +0200",
+                "pub_date": "Mon, 13 Apr 2025 16:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1PBjLkriJXM8YEMoOAzK9qh1WPSedzic-",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -3048,7 +3380,7 @@
                 "title": "Uge 10, Forelæsning 1 · Podcast · Bjerrum Nielsen, H. & Rudberg, M. (2006). Ytre og indre kjønn i forandring. I Moderne jenter. 117-149. Oslo",
                 "url": "https://open.spotify.com/episode/0R6GhnZAu85eUCQl5TXdZe",
                 "platform": "spotify",
-                "pub_date": "Mon, 13 Apr 2025 12:00:00 +0200",
+                "pub_date": "Mon, 13 Apr 2025 14:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1xmTlfNIPjRkE-J8HR4xXs30ZErUtFAUC",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -3089,7 +3421,7 @@
                 "title": "Uge 10, Forelæsning 1 · Podcast · Mitchell (2015)",
                 "url": "https://open.spotify.com/episode/2pBjgi36blf0GO6AtPNITO",
                 "platform": "spotify",
-                "pub_date": "Mon, 13 Apr 2025 10:00:00 +0200",
+                "pub_date": "Mon, 13 Apr 2025 12:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1i1jl59BjirLgvJTlOrXnYfZQZ8ZiNx_w",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -3101,6 +3433,12 @@
       "slides": [],
       "lecture_assets": {
         "quizzes": [
+          {
+            "quiz_id": "dc2a5704",
+            "difficulty": "easy",
+            "quiz_url": "/q/dc2a5704.html",
+            "episode_title": "W10L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=1b3d31bc}.mp3"
+          },
           {
             "quiz_id": "ffc95eb1",
             "difficulty": "easy",
@@ -3114,10 +3452,22 @@
             "episode_title": "W10L1 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=1b3d31bc}.mp3"
           },
           {
+            "quiz_id": "9e5d67d3",
+            "difficulty": "hard",
+            "quiz_url": "/q/9e5d67d3.html",
+            "episode_title": "W10L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=1b3d31bc}.mp3"
+          },
+          {
             "quiz_id": "29ebcecd",
             "difficulty": "medium",
             "quiz_url": "/q/29ebcecd.html",
             "episode_title": "W10L1 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=1b3d31bc}.mp3"
+          },
+          {
+            "quiz_id": "c1e1e867",
+            "difficulty": "medium",
+            "quiz_url": "/q/c1e1e867.html",
+            "episode_title": "W10L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=1b3d31bc}.mp3"
           }
         ],
         "podcasts": [
@@ -3126,8 +3476,18 @@
             "title": "Uge 10, Forelæsning 1 · Podcast · Alle kilder (undtagen slides)",
             "url": "https://open.spotify.com/episode/5Tv5bfv3K9nAzZSVcvRMM5",
             "platform": "spotify",
-            "pub_date": "Mon, 13 Apr 2025 08:00:00 +0200",
+            "pub_date": "Mon, 13 Apr 2025 10:00:00 +0200",
             "source_audio_url": "https://drive.google.com/uc?export=download&id=1M1mhvFEnBGsSpi-iUtUwmUkr3D5PjtdL",
+            "duration_seconds": null,
+            "duration_label": ""
+          },
+          {
+            "kind": "podcast",
+            "title": "Uge 10, Forelæsning 1 · Podcast · Alle kilder (undtagen slides)",
+            "url": "https://open.spotify.com/episode/5Tv5bfv3K9nAzZSVcvRMM5",
+            "platform": "spotify",
+            "pub_date": "Mon, 13 Apr 2025 08:00:00 +0200",
+            "source_audio_url": "https://drive.google.com/uc?export=download&id=1zf23jMV-pO1mQpGiSgMbgFfaDAa4gsnG",
             "duration_seconds": null,
             "duration_label": ""
           }
@@ -3152,19 +3512,19 @@
                 "quiz_id": "d0388506",
                 "difficulty": "easy",
                 "quiz_url": "/q/d0388506.html",
-                "episode_title": "W10L2 - X Davies (1990) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+                "episode_title": "W10L2 - Davies (1990) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               },
               {
                 "quiz_id": "e70a6dd4",
                 "difficulty": "hard",
                 "quiz_url": "/q/e70a6dd4.html",
-                "episode_title": "W10L2 - X Davies (1990) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+                "episode_title": "W10L2 - Davies (1990) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               },
               {
                 "quiz_id": "333f4d1f",
                 "difficulty": "medium",
                 "quiz_url": "/q/333f4d1f.html",
-                "episode_title": "W10L2 - X Davies (1990) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+                "episode_title": "W10L2 - Davies (1990) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               }
             ],
             "podcasts": [
@@ -3173,8 +3533,18 @@
                 "title": "Uge 10, Forelæsning 2 · Podcast · Davies (1990)",
                 "url": "https://open.spotify.com/episode/2HwzXttHo9pDsM3ehjRCAm",
                 "platform": "spotify",
-                "pub_date": "Tue, 14 Apr 2025 14:00:00 +0200",
+                "pub_date": "Tue, 14 Apr 2025 16:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1n2skmZfHj4Ko3ZepTQ7NxA2fijyMoknj",
+                "duration_seconds": null,
+                "duration_label": ""
+              },
+              {
+                "kind": "podcast",
+                "title": "Uge 10, Forelæsning 2 · Podcast · Davies (1990)",
+                "url": "https://open.spotify.com/episode/2HwzXttHo9pDsM3ehjRCAm",
+                "platform": "spotify",
+                "pub_date": "Tue, 14 Apr 2025 14:00:00 +0200",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=19rgoPQLdcYFh9m2m2X0ylvTWsku00OnS",
                 "duration_seconds": null,
                 "duration_label": ""
               }
@@ -3214,7 +3584,7 @@
                 "title": "Uge 10, Forelæsning 2 · Podcast · Foucault, M. (1997). s. 281-301",
                 "url": "https://open.spotify.com/episode/0xdGjghUkkqP1z3ZniaK2T",
                 "platform": "spotify",
-                "pub_date": "Tue, 14 Apr 2025 16:00:00 +0200",
+                "pub_date": "Tue, 14 Apr 2025 18:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=16Z3YAYc27E7nfy-G4pIQOyQ0ZFcYhZXb",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -3326,7 +3696,7 @@
                 "title": "Uge 11, Forelæsning 1 · Podcast · Gergen (1999)",
                 "url": "https://open.spotify.com/episode/7FGSheLsnt2L4rABw5ZkOq",
                 "platform": "spotify",
-                "pub_date": "Mon, 20 Apr 2025 18:00:00 +0200",
+                "pub_date": "Mon, 20 Apr 2025 20:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1-JLiwr1kaQEmCz1K3FIqBojt4ilrYSyn",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -3367,7 +3737,7 @@
                 "title": "Uge 11, Forelæsning 1 · Podcast · Hacking (2007)",
                 "url": "https://open.spotify.com/episode/6Su1vn0bGEFXp9x99IrWJM",
                 "platform": "spotify",
-                "pub_date": "Mon, 20 Apr 2025 14:00:00 +0200",
+                "pub_date": "Mon, 20 Apr 2025 16:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1MA69DT7X1PTSu8BNJkTKdr_YbdHVg4Xu",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -3426,7 +3796,7 @@
                 "title": "Uge 11, Forelæsning 1 · Kort podcast · Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori",
                 "url": "https://open.spotify.com/episode/5x0Wllus3EWemcGgvKg2X9",
                 "platform": "spotify",
-                "pub_date": "Mon, 20 Apr 2025 10:00:00 +0200",
+                "pub_date": "Mon, 20 Apr 2025 12:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1HrdHbsDoTTJ3g8y0N65JIMlIYQKJ18EZ",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -3436,7 +3806,7 @@
                 "title": "Uge 11, Forelæsning 1 · Podcast · Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori",
                 "url": "https://open.spotify.com/episode/38hhPRiaXLzKRocCSWPlHc",
                 "platform": "spotify",
-                "pub_date": "Mon, 20 Apr 2025 16:00:00 +0200",
+                "pub_date": "Mon, 20 Apr 2025 18:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1PqewEZpZ75-vMqeM9G6A_tSn1eNmlu0w",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -3448,6 +3818,12 @@
       "slides": [],
       "lecture_assets": {
         "quizzes": [
+          {
+            "quiz_id": "9397e003",
+            "difficulty": "easy",
+            "quiz_url": "/q/9397e003.html",
+            "episode_title": "W11L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=1b3d31bc}.mp3"
+          },
           {
             "quiz_id": "e60a6f7e",
             "difficulty": "easy",
@@ -3461,6 +3837,18 @@
             "episode_title": "W11L1 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=1b3d31bc}.mp3"
           },
           {
+            "quiz_id": "2c407501",
+            "difficulty": "hard",
+            "quiz_url": "/q/2c407501.html",
+            "episode_title": "W11L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=1b3d31bc}.mp3"
+          },
+          {
+            "quiz_id": "80334b0b",
+            "difficulty": "medium",
+            "quiz_url": "/q/80334b0b.html",
+            "episode_title": "W11L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=1b3d31bc}.mp3"
+          },
+          {
             "quiz_id": "d573be3e",
             "difficulty": "medium",
             "quiz_url": "/q/d573be3e.html",
@@ -3468,6 +3856,16 @@
           }
         ],
         "podcasts": [
+          {
+            "kind": "podcast",
+            "title": "Uge 11, Forelæsning 1 · Podcast · Alle kilder (undtagen slides)",
+            "url": "https://open.spotify.com/episode/6C0ysjHxOE9pBlE0UW0I9r",
+            "platform": "spotify",
+            "pub_date": "Mon, 20 Apr 2025 10:00:00 +0200",
+            "source_audio_url": "https://drive.google.com/uc?export=download&id=12LL-rXCG97TffUCpN1R7q0AnYrXPrliI",
+            "duration_seconds": null,
+            "duration_label": ""
+          },
           {
             "kind": "podcast",
             "title": "Uge 11, Forelæsning 1 · Podcast · Alle kilder (undtagen slides)",
@@ -3501,19 +3899,19 @@
                 "quiz_id": "acbf023e",
                 "difficulty": "easy",
                 "quiz_url": "/q/acbf023e.html",
-                "episode_title": "W11L2 - X Raggatt (2002) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+                "episode_title": "W11L2 - Raggatt (2002) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               },
               {
                 "quiz_id": "e7e92180",
                 "difficulty": "hard",
                 "quiz_url": "/q/e7e92180.html",
-                "episode_title": "W11L2 - X Raggatt (2002) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+                "episode_title": "W11L2 - Raggatt (2002) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               },
               {
                 "quiz_id": "bf898f8c",
                 "difficulty": "medium",
                 "quiz_url": "/q/bf898f8c.html",
-                "episode_title": "W11L2 - X Raggatt (2002) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+                "episode_title": "W11L2 - Raggatt (2002) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               }
             ],
             "podcasts": [
@@ -3522,8 +3920,18 @@
                 "title": "Uge 11, Forelæsning 2 · Podcast · Raggatt (2002)",
                 "url": "https://open.spotify.com/episode/6PnPoWZTKnlKb8U0laeRc8",
                 "platform": "spotify",
-                "pub_date": "Tue, 21 Apr 2025 18:00:00 +0200",
+                "pub_date": "Tue, 21 Apr 2025 22:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1dwbOzlN3NOJZtHTUmUf1kcSKYS3MpHGn",
+                "duration_seconds": null,
+                "duration_label": ""
+              },
+              {
+                "kind": "podcast",
+                "title": "Uge 11, Forelæsning 2 · Podcast · Raggatt (2002)",
+                "url": "https://open.spotify.com/episode/6PnPoWZTKnlKb8U0laeRc8",
+                "platform": "spotify",
+                "pub_date": "Tue, 21 Apr 2025 20:00:00 +0200",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1SMBgOFxKOsGnoCu3AK4kovXE-Pgw7Pc3",
                 "duration_seconds": null,
                 "duration_label": ""
               }
@@ -3563,7 +3971,7 @@
                 "title": "Uge 11, Forelæsning 2 · Podcast · Bank, M. (2014). Narrative psykologier. I Køppe, S. & Dammeyer, J. (Red.)",
                 "url": "https://open.spotify.com/episode/3ACxbq99r2GMJpjH2d6cr4",
                 "platform": "spotify",
-                "pub_date": "Tue, 21 Apr 2025 16:00:00 +0200",
+                "pub_date": "Tue, 21 Apr 2025 18:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1zgT-nrRVIN5LQZPtm_7sDw95i1Beyvhr",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -3604,7 +4012,7 @@
                 "title": "Uge 11, Forelæsning 2 · Podcast · Bruner (1999)",
                 "url": "https://open.spotify.com/episode/30Dtt3skOR4YinX9szZcCV",
                 "platform": "spotify",
-                "pub_date": "Wed, 22 Apr 2025 00:00:00 +0200",
+                "pub_date": "Wed, 22 Apr 2025 04:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1XzrqfE3Kyc96dpAR5fhRRnlL2dzIO6gt",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -3645,7 +4053,7 @@
                 "title": "Uge 11, Forelæsning 2 · Podcast · McAdams & Pals (2006)",
                 "url": "https://open.spotify.com/episode/1TzpDpaEFtCeqw8DqDrvfk",
                 "platform": "spotify",
-                "pub_date": "Tue, 21 Apr 2025 20:00:00 +0200",
+                "pub_date": "Wed, 22 Apr 2025 00:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=10L4f864nmWS_Tk_0N6EJsiht72faUBd-",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -3704,7 +4112,7 @@
                 "title": "Uge 11, Forelæsning 2 · Kort podcast · Grundbog kapitel 9 - Narrative teorier",
                 "url": "https://open.spotify.com/episode/6IBSKF9n07vz8FiYJC0VJT",
                 "platform": "spotify",
-                "pub_date": "Tue, 21 Apr 2025 12:00:00 +0200",
+                "pub_date": "Tue, 21 Apr 2025 14:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1aFk0CJzqust-Wu1fxZ1S0rIU6KoW4i3X",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -3714,7 +4122,7 @@
                 "title": "Uge 11, Forelæsning 2 · Podcast · Grundbog kapitel 9 - Narrative teorier",
                 "url": "https://open.spotify.com/episode/4h0RQ3EHYHq2uhCUcKIKkA",
                 "platform": "spotify",
-                "pub_date": "Tue, 21 Apr 2025 22:00:00 +0200",
+                "pub_date": "Wed, 22 Apr 2025 02:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1Ep2OfHlvcg5dRpLe-YUcGsJgNaAlloy1",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -3733,10 +4141,28 @@
             "episode_title": "W11L2 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=5 hash=08b08aa7}.mp3"
           },
           {
+            "quiz_id": "d1fec226",
+            "difficulty": "easy",
+            "quiz_url": "/q/d1fec226.html",
+            "episode_title": "W11L2 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=5 hash=08b08aa7}.mp3"
+          },
+          {
+            "quiz_id": "014640bc",
+            "difficulty": "hard",
+            "quiz_url": "/q/014640bc.html",
+            "episode_title": "W11L2 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=5 hash=08b08aa7}.mp3"
+          },
+          {
             "quiz_id": "6913b0bc",
             "difficulty": "hard",
             "quiz_url": "/q/6913b0bc.html",
             "episode_title": "W11L2 - Alle kilder [EN] {type=audio lang=en format=deep-dive length=long sources=5 hash=08b08aa7}.mp3"
+          },
+          {
+            "quiz_id": "2776e7cd",
+            "difficulty": "medium",
+            "quiz_url": "/q/2776e7cd.html",
+            "episode_title": "W11L2 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=5 hash=08b08aa7}.mp3"
           },
           {
             "quiz_id": "7fd183bf",
@@ -3751,8 +4177,18 @@
             "title": "Uge 11, Forelæsning 2 · Podcast · Alle kilder (undtagen slides)",
             "url": "https://open.spotify.com/episode/48PfAIpU8crIFk7STcP72n",
             "platform": "spotify",
-            "pub_date": "Tue, 21 Apr 2025 10:00:00 +0200",
+            "pub_date": "Tue, 21 Apr 2025 12:00:00 +0200",
             "source_audio_url": "https://drive.google.com/uc?export=download&id=1v55vBQomzyLWgLwPR8pDERQJ7kwGApMT",
+            "duration_seconds": null,
+            "duration_label": ""
+          },
+          {
+            "kind": "podcast",
+            "title": "Uge 11, Forelæsning 2 · Podcast · Alle kilder (undtagen slides)",
+            "url": "https://open.spotify.com/episode/48PfAIpU8crIFk7STcP72n",
+            "platform": "spotify",
+            "pub_date": "Tue, 21 Apr 2025 10:00:00 +0200",
+            "source_audio_url": "https://drive.google.com/uc?export=download&id=10NoXD3oRCU7f75bF8eSJhSLA0viW5GfI",
             "duration_seconds": null,
             "duration_label": ""
           }
@@ -3859,7 +4295,7 @@
                 "title": "Uge 12, Forelæsning 1 · Kort podcast · Grundbog kapitel 8 - Personlighed, subjektivitet og historicitet",
                 "url": "https://open.spotify.com/episode/0NM6zdgY9V8bIra4dDwtL0",
                 "platform": "spotify",
-                "pub_date": "Mon, 27 Apr 2025 12:00:00 +0200",
+                "pub_date": "Mon, 27 Apr 2025 10:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1DKRKgpjVK7lJNX-sFVOILZIoJ0uulXkY",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -3928,7 +4364,7 @@
                 "title": "Uge 12, Forelæsning 1 · Kort podcast · Grundbog kapitel 14 - Perspektiver på personlighedspsykologi",
                 "url": "https://open.spotify.com/episode/76gJXJVfzXNmNdUZx60RmG",
                 "platform": "spotify",
-                "pub_date": "Mon, 27 Apr 2025 14:00:00 +0200",
+                "pub_date": "Mon, 27 Apr 2025 12:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1kdGeiQGwrSae4ZkqQdxNhWlGeuo23xm3",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -3940,6 +4376,16 @@
                 "platform": "spotify",
                 "pub_date": "Mon, 27 Apr 2025 16:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1bzg6Izhy41VC2sK8vrs3OMK8k1OOcL6y",
+                "duration_seconds": null,
+                "duration_label": ""
+              },
+              {
+                "kind": "lydbog",
+                "title": "Uge 12, Forelæsning 1 · Lydbog · Grundbog kapitel 14 - Perspektiver på personlighedspsykologi",
+                "url": "https://open.spotify.com/episode/3OWYSZVFtJ2XBq8AXM2Jnq",
+                "platform": "spotify",
+                "pub_date": "Mon, 27 Apr 2025 14:00:00 +0200",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1-xL67W8umtRM2UJA3XvVp-fd5ZL4s2vJ",
                 "duration_seconds": null,
                 "duration_label": ""
               },
@@ -4001,20 +4447,20 @@
           {
             "kind": "podcast",
             "title": "Uge 12, Forelæsning 1 · Podcast · Alle kilder (undtagen slides)",
-            "url": "https://open.spotify.com/episode/61y7kUZ2Ve165dPPk22TjR",
+            "url": "https://open.spotify.com/episode/3jJI2nU6cUWJSaceN7odNy",
             "platform": "spotify",
-            "pub_date": "Mon, 27 Apr 2025 10:00:00 +0200",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1YQO0WMrjoE9R0tEiz7BDo8N5_IDRUAo1",
+            "pub_date": "Mon, 27 Apr 2025 08:00:00 +0200",
+            "source_audio_url": "https://drive.google.com/uc?export=download&id=1dEQObDVi6GwUbgXqq1k3hOWfuolA-Qcw",
             "duration_seconds": null,
             "duration_label": ""
           },
           {
             "kind": "podcast",
             "title": "Uge 12, Forelæsning 1 · Podcast · Alle kilder (undtagen slides)",
-            "url": "https://open.spotify.com/episode/61y7kUZ2Ve165dPPk22TjR",
+            "url": "https://open.spotify.com/episode/3jJI2nU6cUWJSaceN7odNy",
             "platform": "spotify",
             "pub_date": "Mon, 27 Apr 2025 08:00:00 +0200",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1dEQObDVi6GwUbgXqq1k3hOWfuolA-Qcw",
+            "source_audio_url": "https://drive.google.com/uc?export=download&id=1YQO0WMrjoE9R0tEiz7BDo8N5_IDRUAo1",
             "duration_seconds": null,
             "duration_label": ""
           }
@@ -4026,12 +4472,16 @@
     }
   ],
   "warnings": [
+    "RSS item has unknown lecture mapping: [Lydbog] · Grundbog forord og resumé",
     "RSS item has unknown lecture mapping: [Lydbog] · Grundbog kapitel 01 - Introduktion til personlighedspsykologi",
+    "RSS item has unknown lecture mapping: [Lydbog] · Grundbog kapitel 02 - Trækpsykologi",
     "RSS item has unknown lecture mapping: [Lydbog] · Grundbog kapitel 04 - Fænomenologisk personlighedspsykologi",
     "RSS item has unknown lecture mapping: [Lydbog] · Grundbog kapitel 08 - Personlighed, subjektivitet og historicitet",
     "RSS item has unknown lecture mapping: [Lydbog] · Grundbog kapitel 09 - Narrative teorier",
     "RSS item has unknown lecture mapping: [Lydbog] · Grundbog kapitel 10 - Kritisk psykologi",
     "RSS item has unknown lecture mapping: [Lydbog] · Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori. Problemet med personligheden version 2.0",
+    "RSS item has unknown lecture mapping: [Lydbog] · Grundbog kapitel 12 - Evolutionspsykologi",
+    "RSS item has unknown lecture mapping: [Lydbog] · Grundbog kapitel 13 - Positiv psykologi",
     "RSS item has unknown lecture mapping: [Lydbog] · Grundbog kapitel 14 - Perspektiver på personlighedspsykologi"
   ]
 }

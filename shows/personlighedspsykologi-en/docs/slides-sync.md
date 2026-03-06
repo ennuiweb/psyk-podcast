@@ -34,6 +34,37 @@ Hvis en fil ligger i "forkert" mappe ift. undervisningsplanen, er undervisningsp
 4. Fastlæg `source_filename` (filnavn som uploades under slide-rooten).
 5. Tilføj entry manuelt i `shows/personlighedspsykologi-en/slides_catalog.json`.
 
+## Personlighedspsykologi-specifik regel
+
+Mapping skal laves forskelligt per underkategori:
+
+- `lecture`:
+  Brug `Forelæsnings- og seminarholdsplan 2026.pdf` plus `reading-file-key.md`.
+  Filnavne med forelæsningsnummer kan bruges som hint, men planen er facit.
+- `seminar`:
+  Brug `Forelæsnings- og seminarholdsplan 2026.pdf` plus `reading-file-key.md`.
+  Match seminar-emne til den tilhørende Freudd-forelæsning manuelt.
+- `exercise`:
+  Brug altid `Semesterplan for øvelseshold - opdateret d. 03.02.pdf` som primær facitliste.
+  Match øvelses-emne og/eller angivne tekster i planen til `reading-file-key.md`.
+  Filnavne og løbenumre i øvelses-slides må ikke bruges som selvstændig mapping-kilde.
+
+## Kendte exercise-mappings
+
+Følgende mappings er verificeret mod øvelsesplanen:
+
+- `1. Intro og træk.pdf` -> `W02L1`
+  Begrundelse: øvelsesplanen angiver `Introduktion & Trækteori` med `Zettler et al. (2020)`, og `Zettler et al. (2020)` ligger i `reading-file-key.md` under `W02L1`.
+- `2. Psykoanalyse 1 og intro (1).pdf` -> `W05L1`
+  Begrundelse: slide-indholdet er `Psykoanalyse I`/`Gammelgaard (2010)`, og `Gammelgaard (2010)` ligger i `reading-file-key.md` under `W05L1`.
+
+Når nye øvelses-slides kommer:
+
+1. Find emnet/teksten i øvelsesplanen.
+2. Find samme tekst/emne i `reading-file-key.md`.
+3. Brug den `W##L#` som lecture mapping.
+4. Sæt `matched_by` til `manual`.
+
 Eksempel:
 
 ```json

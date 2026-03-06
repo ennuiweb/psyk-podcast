@@ -786,6 +786,11 @@
     flex-shrink: 0;
   }
 
+  .slide-actions {
+    justify-content: flex-end;
+    justify-self: end;
+  }
+
   .slide-group-empty {
     margin: 0;
     border: 1px dashed var(--border-strong);
@@ -2100,10 +2105,18 @@
                       {% endif %}
                     </div>
                     {% if slide.open_url %}
-                    <a class="reading-action-button reading-action-open" href="{{ slide.open_url }}" target="_blank"
-                      rel="noopener noreferrer" aria-label="Åbn {{ slide.reading_title }}">
-                      Åben slide
-                    </a>
+                    <div class="reading-actions slide-actions">
+                      <button class="reading-action-button reading-action-chatgpt" type="button" data-chatgpt-reading
+                        data-reading-title="{{ slide.reading_title }}"
+                        data-reading-pdf-url="{{ slide.open_url }}"
+                        aria-label="Send {{ slide.reading_title }} til ChatGPT">
+                        Send til ChatGPT
+                      </button>
+                      <a class="reading-action-button reading-action-open" href="{{ slide.open_url }}" target="_blank"
+                        rel="noopener noreferrer" aria-label="Åbn {{ slide.reading_title }}">
+                        Åben slide
+                      </a>
+                    </div>
                     {% endif %}
                   </li>
                   {% endfor %}

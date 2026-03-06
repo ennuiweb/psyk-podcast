@@ -2152,6 +2152,8 @@ class QuizPortalTests(TestCase):
         )
 
         self.assertContains(response, f'href="{lecture_open_url}"')
+        self.assertContains(response, f'data-reading-pdf-url="{lecture_open_url}"')
+        self.assertContains(response, 'aria-label="Send Forelæsning intro slides til ChatGPT"')
         self.assertNotContains(response, f'href="{seminar_open_url}"')
         self.assertNotContains(response, f'href="{exercise_open_url}"')
 
@@ -2728,8 +2730,8 @@ class QuizPortalTests(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Åben tekst")
-        self.assertNotContains(response, 'class="reading-action-button reading-action-chatgpt"')
-        self.assertNotContains(response, "Send til ChatGPT")
+        self.assertEqual(response.context["active_lecture"]["readings"][0]["chatgpt_prompt"], "")
+        self.assertNotContains(response, 'aria-label="Send Custom til ChatGPT"')
 
     def test_subject_open_reading_is_public(self) -> None:
         user = self._create_user()

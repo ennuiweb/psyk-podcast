@@ -57,3 +57,9 @@ python3 scripts/mirror_bioneuro_audio.py
 Setup notes:
 - `drive_folder_id` is intentionally left as `__DRIVE_FOLDER_ID__` in all config variants.
 - Current matching expectation is plain `W#` tokens in Drive folder/file names (for example `W1`, `W2`, ...).
+
+Slides mapping note (manual only):
+- Slide mapping til `W##L#` + underkategori skal udføres manuelt.
+- Automatisk mapping med script er ikke tilladt.
+- Fag-runbook: `shows/bioneuro/docs/slides-mapping.md`
+- Global policy: `freudd_portal/docs/slides-mapping-policy.md`

@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Sync Personlighedspsykologi slide files from OneDrive to droplet + catalog."""
+"""Legacy slide sync helper.
+
+Automatic slide mapping is policy-forbidden. Keep slide-to-lecture/subcategory mapping
+manual as documented in `freudd_portal/docs/slides-mapping-policy.md`.
+"""
 
 from __future__ import annotations
 

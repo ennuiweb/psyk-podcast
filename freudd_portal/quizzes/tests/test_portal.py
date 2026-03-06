@@ -2036,11 +2036,17 @@ class QuizPortalTests(TestCase):
         self.assertEqual(response.context["active_lecture"]["lecture_key"], "W01L1")
         rail_items = response.context["lecture_rail_items"]
         self.assertEqual(rail_items[0]["lecture_url"], f"{detail_url}?lecture=W01L1&preview=true")
+        self.assertFalse(rail_items[0]["requires_login"])
         locked_target = f"{detail_url}?lecture=W01L2"
+        expected_login_url = f"{reverse('login')}?{urlencode({'next': locked_target})}"
         self.assertEqual(
             rail_items[1]["lecture_url"],
-            f"{reverse('login')}?{urlencode({'next': locked_target})}",
+            expected_login_url,
         )
+        self.assertTrue(rail_items[1]["requires_login"])
+        self.assertEqual(rail_items[1]["login_url"], expected_login_url)
+        self.assertContains(response, 'data-login-required="true"')
+        self.assertContains(response, 'Du skal logge ind for at åbne andre forelæsninger i preview.')
 
     def test_subject_detail_preview_mode_redirects_anonymous_when_switching_lecture(self) -> None:
         detail_url = reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"})

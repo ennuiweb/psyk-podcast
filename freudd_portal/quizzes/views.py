@@ -1350,9 +1350,14 @@ def _lecture_rail_items(
     items: list[dict[str, object]] = []
     for index, lecture in enumerate(lectures, start=1):
         lecture_key = str(lecture.get("lecture_key") or "").strip().upper()
-        if preview_mode and locked_lecture_key and lecture_key and lecture_key != locked_lecture_key:
+        requires_login = bool(
+            preview_mode and locked_lecture_key and lecture_key and lecture_key != locked_lecture_key
+        )
+        login_url = ""
+        if requires_login:
             login_next_url = f"{detail_url}?{urlencode({'lecture': lecture_key})}"
             lecture_url = _auth_url_with_next("login", login_next_url)
+            login_url = lecture_url
         else:
             query_params: dict[str, str] = {}
             if lecture_key:
@@ -1366,6 +1371,8 @@ def _lecture_rail_items(
                 "index": index,
                 "lecture_key": lecture_key,
                 "lecture_url": lecture_url,
+                "requires_login": requires_login,
+                "login_url": login_url,
                 "is_active": (index - 1) == active_index,
                 "is_past": (index - 1) < active_index,
                 "is_completed": status == "completed",

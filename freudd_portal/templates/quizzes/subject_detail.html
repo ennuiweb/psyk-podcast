@@ -1826,13 +1826,16 @@
           <li
             class="lecture-rail-item {% if rail.is_active %}is-active{% endif %} {% if rail.is_past %}is-past{% endif %} {% if rail.is_completed %}is-completed{% endif %}">
             <a class="lecture-rail-link" href="{{ rail.lecture_url }}"
+              {% if rail.requires_login %}data-login-required="true" data-login-url="{{ rail.login_url }}"{% endif %}
               aria-current="{% if rail.is_active %}step{% else %}false{% endif %}"
               aria-label="{{ rail.lecture_display_title|default:rail.lecture_key }}"></a>
             <a class="lecture-rail-mobile-copy" href="{{ rail.lecture_url }}"
+              {% if rail.requires_login %}data-login-required="true" data-login-url="{{ rail.login_url }}"{% endif %}
               aria-label="{{ rail.lecture_display_title|default:rail.lecture_key }}">
               {{ rail.mobile_rail_label|default:rail.lecture_display_label|default:rail.index }}
             </a>
             <a class="lecture-rail-copy" href="{{ rail.lecture_url }}"
+              {% if rail.requires_login %}data-login-required="true" data-login-url="{{ rail.login_url }}"{% endif %}
               aria-label="{{ rail.lecture_display_title|default:rail.lecture_key }}">
               <span class="lecture-rail-copy-title">{{ rail.rail_copy|default:rail.lecture_display_title }}</span>
             </a>
@@ -2057,6 +2060,27 @@
   {% endif %}
 </div>
 <script>
+  (() => {
+    const loginRequiredLinks = Array.from(document.querySelectorAll("a[data-login-required='true']"));
+    if (!loginRequiredLinks.length) {
+      return;
+    }
+    const popupMessage = "Du skal logge ind for at åbne andre forelæsninger i preview.";
+    loginRequiredLinks.forEach((link) => {
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+        const loginUrl = String(link.getAttribute("data-login-url") || link.getAttribute("href") || "").trim();
+        if (!loginUrl) {
+          return;
+        }
+        const shouldLogin = window.confirm(`${popupMessage}\n\nTryk OK for at logge ind.`);
+        if (shouldLogin) {
+          window.location.assign(loginUrl);
+        }
+      });
+    });
+  })();
+
   (() => {
     const section = document.querySelector("[data-subject-path]");
     if (!section) {

@@ -2042,6 +2042,33 @@ class QuizPortalTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertNotContains(response, "ghost-link back-link subject-back")
 
+    def test_subject_detail_hides_plain_date_suffix_in_lecture_title(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+
+        with patch(
+            "quizzes.views.get_subject_learning_path_snapshot",
+            return_value={
+                "lectures": [
+                    {
+                        "lecture_key": "W01L1",
+                        "lecture_title": "W01L1 Introduktion (2026-02-06)",
+                        "status": "active",
+                        "completed_quizzes": 0,
+                        "total_quizzes": 0,
+                        "lecture_assets": {"quizzes": [], "podcasts": []},
+                        "readings": [],
+                    }
+                ],
+                "source_meta": {},
+            },
+        ):
+            response = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Uge 1, forelæsning 1: Introduktion")
+        self.assertNotContains(response, "(2026-02-06)")
+
     def test_subject_detail_groups_slide_readings_by_hold_type(self) -> None:
         self.reading_master_file.write_text(
             "\n".join(

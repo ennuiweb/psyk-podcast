@@ -115,6 +115,7 @@ LECTURE_META_SUFFIX_RE = re.compile(
     r"\s*\((?:forelæsning|forelaesning)\s+\d+(?:\s*,\s*\d{4}-\d{2}-\d{2})?\)\s*$",
     re.IGNORECASE,
 )
+LECTURE_DATE_SUFFIX_RE = re.compile(r"\s*\(\d{4}-\d{2}-\d{2}\)\s*$")
 QUIZ_CFG_BLOCK_RE = re.compile(r"\{(?P<body>[^{}]+)\}")
 QUIZ_CFG_PAIR_RE = re.compile(r"(?P<key>[a-z0-9._:+-]+)=(?P<value>[^{}\s]+)", re.IGNORECASE)
 QUIZ_FILE_SUFFIX_RE = re.compile(r"\.(?:mp3|m4a|wav|aac|flac|ogg|json|html)$", re.IGNORECASE)
@@ -1126,6 +1127,7 @@ def _lecture_display_parts(*, lecture_key: object, lecture_title: object) -> tup
     if raw_key and cleaned_title.upper().startswith(raw_key):
         cleaned_title = cleaned_title[len(raw_key) :].lstrip(" -·").strip()
     cleaned_title = LECTURE_META_SUFFIX_RE.sub("", cleaned_title).strip()
+    cleaned_title = LECTURE_DATE_SUFFIX_RE.sub("", cleaned_title).strip()
     if cleaned_title:
         return label, cleaned_title
     if label:

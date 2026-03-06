@@ -3,7 +3,7 @@
   "subject_slug": "personlighedspsykologi",
   "source_meta": {
     "version": 1,
-    "generated_at": "2026-03-06T13:12:41.240123+00:00",
+    "generated_at": "2026-03-06T13:19:57.081232+00:00",
     "reading_master_path": "/home/runner/work/psyk-podcast/psyk-podcast/shows/personlighedspsykologi-en/docs/reading-file-key.md",
     "reading_fallback_path": "/home/runner/work/psyk-podcast/psyk-podcast/shows/personlighedspsykologi-en/docs/reading-file-key.md",
     "reading_source_used": "/home/runner/work/psyk-podcast/psyk-podcast/shows/personlighedspsykologi-en/docs/reading-file-key.md",
@@ -11,7 +11,8 @@
     "reading_error": null,
     "quiz_links_path": "/home/runner/work/psyk-podcast/psyk-podcast/shows/personlighedspsykologi-en/quiz_links.json",
     "rss_path": "/home/runner/work/psyk-podcast/psyk-podcast/shows/personlighedspsykologi-en/feeds/rss.xml",
-    "spotify_map_path": "/home/runner/work/psyk-podcast/psyk-podcast/shows/personlighedspsykologi-en/spotify_map.json"
+    "spotify_map_path": "/home/runner/work/psyk-podcast/psyk-podcast/shows/personlighedspsykologi-en/spotify_map.json",
+    "slides_catalog_path": "/home/runner/work/psyk-podcast/psyk-podcast/shows/personlighedspsykologi-en/slides_catalog.json"
   },
   "lectures": [
     {
@@ -147,6 +148,30 @@
                 "duration_label": ""
               }
             ]
+          }
+        }
+      ],
+      "slides": [
+        {
+          "slide_key": "w01l1-lecture-1-gang-introduktin-pp-2026-e5a501d8",
+          "subcategory": "lecture",
+          "title": "1. gang . Introduktin PP 2026",
+          "source_filename": "1. gang . Introduktin PP 2026.pdf",
+          "relative_path": "W01L1/lecture/1. gang . Introduktin PP 2026.pdf",
+          "assets": {
+            "quizzes": [],
+            "podcasts": []
+          }
+        },
+        {
+          "slide_key": "w01l1-seminar-1-introduktion-9fe382c8",
+          "subcategory": "seminar",
+          "title": "1. Introduktion",
+          "source_filename": "1. Introduktion.pdf",
+          "relative_path": "W01L1/seminar/1. Introduktion.pdf",
+          "assets": {
+            "quizzes": [],
+            "podcasts": []
           }
         }
       ],
@@ -315,6 +340,52 @@
           }
         }
       ],
+      "slides": [
+        {
+          "slide_key": "w01l2-lecture-2-gang-perspsy-2-260203-edbe52ab",
+          "subcategory": "lecture",
+          "title": "2. gang PersPsy 2 260203",
+          "source_filename": "2. gang PersPsy_2_260203.pdf",
+          "relative_path": "W01L2/lecture/2. gang PersPsy_2_260203.pdf",
+          "assets": {
+            "quizzes": [],
+            "podcasts": []
+          }
+        },
+        {
+          "slide_key": "w01l2-lecture-perspsy-2-260203-1f7b576a",
+          "subcategory": "lecture",
+          "title": "PersPsy 2 260203",
+          "source_filename": "PersPsy_2_260203.pdf",
+          "relative_path": "W01L2/lecture/PersPsy_2_260203.pdf",
+          "assets": {
+            "quizzes": [],
+            "podcasts": []
+          }
+        },
+        {
+          "slide_key": "w01l2-seminar-2-tr-kpsykologi-i-22e18840",
+          "subcategory": "seminar",
+          "title": "2. Trækpsykologi I",
+          "source_filename": "2. Trækpsykologi I.pdf",
+          "relative_path": "W01L2/seminar/2. Trækpsykologi I.pdf",
+          "assets": {
+            "quizzes": [],
+            "podcasts": []
+          }
+        },
+        {
+          "slide_key": "w01l2-seminar-2-tr-kteori-i-0b71f996",
+          "subcategory": "seminar",
+          "title": "2. Trækteori I",
+          "source_filename": "2. Trækteori I.pdf",
+          "relative_path": "W01L2/seminar/2. Trækteori I.pdf",
+          "assets": {
+            "quizzes": [],
+            "podcasts": []
+          }
+        }
+      ],
       "lecture_assets": {
         "quizzes": [
           {
@@ -439,6 +510,52 @@
           }
         }
       ],
+      "slides": [
+        {
+          "slide_key": "w02l1-exercise-1-intro-og-tr-k-93aadd03",
+          "subcategory": "exercise",
+          "title": "1. Trækteori",
+          "source_filename": "1. Intro og træk.pdf",
+          "relative_path": "W02L1/exercise/1. Intro og træk.pdf",
+          "assets": {
+            "quizzes": [],
+            "podcasts": []
+          }
+        },
+        {
+          "slide_key": "w02l1-lecture-3-gang-perspsy-3-260209-08cbaee1",
+          "subcategory": "lecture",
+          "title": "3. gang PersPsy 3 260209",
+          "source_filename": "3. gang PersPsy_3_260209.pdf",
+          "relative_path": "W02L1/lecture/3. gang PersPsy_3_260209.pdf",
+          "assets": {
+            "quizzes": [],
+            "podcasts": []
+          }
+        },
+        {
+          "slide_key": "w02l1-lecture-perspsy-3-260209-a29b55de",
+          "subcategory": "lecture",
+          "title": "PersPsy 3 260209",
+          "source_filename": "PersPsy_3_260209.pdf",
+          "relative_path": "W02L1/lecture/PersPsy_3_260209.pdf",
+          "assets": {
+            "quizzes": [],
+            "podcasts": []
+          }
+        },
+        {
+          "slide_key": "w02l1-seminar-3-tr-kpsykologi-ii-d7ebc130",
+          "subcategory": "seminar",
+          "title": "3. Trækpsykologi II",
+          "source_filename": "3. Trækpsykologi II.pdf",
+          "relative_path": "W02L1/seminar/3. Trækpsykologi II.pdf",
+          "assets": {
+            "quizzes": [],
+            "podcasts": []
+          }
+        }
+      ],
       "lecture_assets": {
         "quizzes": [
           {
@@ -560,6 +677,41 @@
                 "duration_label": ""
               }
             ]
+          }
+        }
+      ],
+      "slides": [
+        {
+          "slide_key": "w02l2-lecture-4-gang-perspsy-4-260210-ce33366f",
+          "subcategory": "lecture",
+          "title": "4. gang PersPsy 4 260210",
+          "source_filename": "4. gang PersPsy_4_260210.pdf",
+          "relative_path": "W02L2/lecture/4. gang PersPsy_4_260210.pdf",
+          "assets": {
+            "quizzes": [],
+            "podcasts": []
+          }
+        },
+        {
+          "slide_key": "w02l2-lecture-perspsy-4-260210-3c9dae62",
+          "subcategory": "lecture",
+          "title": "PersPsy 4 260210",
+          "source_filename": "PersPsy_4_260210.pdf",
+          "relative_path": "W02L2/lecture/PersPsy_4_260210.pdf",
+          "assets": {
+            "quizzes": [],
+            "podcasts": []
+          }
+        },
+        {
+          "slide_key": "w02l2-seminar-4-psykoanalyse-i-94151a16",
+          "subcategory": "seminar",
+          "title": "4. Psykoanalyse I",
+          "source_filename": "4. Psykoanalyse I.pdf",
+          "relative_path": "W02L2/seminar/4. Psykoanalyse I.pdf",
+          "assets": {
+            "quizzes": [],
+            "podcasts": []
           }
         }
       ],
@@ -769,6 +921,41 @@
           }
         }
       ],
+      "slides": [
+        {
+          "slide_key": "w03l1-lecture-5-gang-perspsy-5-260216-c7e4dd91",
+          "subcategory": "lecture",
+          "title": "5. gang PersPsy 5 260216",
+          "source_filename": "5. gang PersPsy_5_260216.pdf",
+          "relative_path": "W03L1/lecture/5. gang PersPsy_5_260216.pdf",
+          "assets": {
+            "quizzes": [],
+            "podcasts": []
+          }
+        },
+        {
+          "slide_key": "w03l1-lecture-perspsy-5-260216-7d17829e",
+          "subcategory": "lecture",
+          "title": "PersPsy 5 260216",
+          "source_filename": "PersPsy_5_260216.pdf",
+          "relative_path": "W03L1/lecture/PersPsy_5_260216.pdf",
+          "assets": {
+            "quizzes": [],
+            "podcasts": []
+          }
+        },
+        {
+          "slide_key": "w03l1-seminar-5-psykoanalyse-ii-4354fbb7",
+          "subcategory": "seminar",
+          "title": "5. Psykoanalyse II",
+          "source_filename": "5. Psykoanalyse II.pdf",
+          "relative_path": "W03L1/seminar/5. Psykoanalyse II.pdf",
+          "assets": {
+            "quizzes": [],
+            "podcasts": []
+          }
+        }
+      ],
       "lecture_assets": {
         "quizzes": [
           {
@@ -860,6 +1047,19 @@
                 "duration_label": ""
               }
             ]
+          }
+        }
+      ],
+      "slides": [
+        {
+          "slide_key": "w03l2-lecture-6-gang-personality-functioning-2026-bo-bach-542bbd7e",
+          "subcategory": "lecture",
+          "title": "6. gang Personality Functioning 2026 (Bo Bach)",
+          "source_filename": "6. gang Personality Functioning 2026 (Bo Bach).pdf",
+          "relative_path": "W03L2/lecture/6. gang Personality Functioning 2026 (Bo Bach).pdf",
+          "assets": {
+            "quizzes": [],
+            "podcasts": []
           }
         }
       ],
@@ -958,7 +1158,7 @@
                 "url": "https://open.spotify.com/episode/1QrhdKSmbYViAEdHJsqf3N",
                 "platform": "spotify",
                 "pub_date": "Mon, 23 Feb 2025 12:00:00 +0100",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1Z8fP-C_NbW5bePB25mFU-zOUPGCWzmPC",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1KJSgK_NzkLsteS0Ecy_LayVNGv0jlaXY",
                 "duration_seconds": null,
                 "duration_label": ""
               },
@@ -973,6 +1173,19 @@
                 "duration_label": ""
               }
             ]
+          }
+        }
+      ],
+      "slides": [
+        {
+          "slide_key": "w04l1-lecture-7-psykoanalysens-personbegreb-1e91ce22",
+          "subcategory": "lecture",
+          "title": "7. Psykoanalysens personbegreb",
+          "source_filename": "7. Psykoanalysens personbegreb.pdf",
+          "relative_path": "W04L1/lecture/7. Psykoanalysens personbegreb.pdf",
+          "assets": {
+            "quizzes": [],
+            "podcasts": []
           }
         }
       ],
@@ -1088,6 +1301,19 @@
                 "duration_label": ""
               }
             ]
+          }
+        }
+      ],
+      "slides": [
+        {
+          "slide_key": "w04l2-lecture-8-psykoanalytisk-personlighedsstruktur-1e653ba9",
+          "subcategory": "lecture",
+          "title": "8. Psykoanalytisk personlighedsstruktur",
+          "source_filename": "8. Psykoanalytisk personlighedsstruktur.pdf",
+          "relative_path": "W04L2/lecture/8. Psykoanalytisk personlighedsstruktur.pdf",
+          "assets": {
+            "quizzes": [],
+            "podcasts": []
           }
         }
       ],
@@ -1253,6 +1479,30 @@
                 "duration_label": ""
               }
             ]
+          }
+        }
+      ],
+      "slides": [
+        {
+          "slide_key": "w05l1-exercise-2-psykoanalyse-1-og-intro-1-d9bc77f5",
+          "subcategory": "exercise",
+          "title": "1. Psykoanalyse",
+          "source_filename": "2. Psykoanalyse 1 og intro (1).pdf",
+          "relative_path": "W05L1/exercise/2. Psykoanalyse 1 og intro (1).pdf",
+          "assets": {
+            "quizzes": [],
+            "podcasts": []
+          }
+        },
+        {
+          "slide_key": "w05l1-lecture-9-psykoanalysens-empiri-og-metode-f8e26ec5",
+          "subcategory": "lecture",
+          "title": "9. Psykoanalysens empiri og metode",
+          "source_filename": "9. Psykoanalysens empiri og metode.pdf",
+          "relative_path": "W05L1/lecture/9. Psykoanalysens empiri og metode.pdf",
+          "assets": {
+            "quizzes": [],
+            "podcasts": []
           }
         }
       ],
@@ -1449,6 +1699,19 @@
           }
         }
       ],
+      "slides": [
+        {
+          "slide_key": "w05l2-lecture-10-psykoanalysens-konstituering-513290eb",
+          "subcategory": "lecture",
+          "title": "10. Psykoanalysens konstituering",
+          "source_filename": "10. Psykoanalysens konstituering.pdf",
+          "relative_path": "W05L2/lecture/10. Psykoanalysens konstituering.pdf",
+          "assets": {
+            "quizzes": [],
+            "podcasts": []
+          }
+        }
+      ],
       "lecture_assets": {
         "quizzes": [
           {
@@ -1642,6 +1905,7 @@
           }
         }
       ],
+      "slides": [],
       "lecture_assets": {
         "quizzes": [
           {
@@ -1769,6 +2033,7 @@
           }
         }
       ],
+      "slides": [],
       "lecture_assets": {
         "quizzes": [
           {
@@ -1893,6 +2158,7 @@
           }
         }
       ],
+      "slides": [],
       "lecture_assets": {
         "quizzes": [
           {
@@ -2058,6 +2324,7 @@
           }
         }
       ],
+      "slides": [],
       "lecture_assets": {
         "quizzes": [
           {
@@ -2182,6 +2449,7 @@
           }
         }
       ],
+      "slides": [],
       "lecture_assets": {
         "quizzes": [
           {
@@ -2306,6 +2574,7 @@
           }
         }
       ],
+      "slides": [],
       "lecture_assets": {
         "quizzes": [
           {
@@ -2540,6 +2809,7 @@
           }
         }
       ],
+      "slides": [],
       "lecture_assets": {
         "quizzes": [
           {
@@ -2695,6 +2965,7 @@
           }
         }
       ],
+      "slides": [],
       "lecture_assets": {
         "quizzes": [
           {
@@ -2819,6 +3090,7 @@
           }
         }
       ],
+      "slides": [],
       "lecture_assets": {
         "quizzes": [
           {
@@ -3012,6 +3284,7 @@
           }
         }
       ],
+      "slides": [],
       "lecture_assets": {
         "quizzes": [
           {
@@ -3290,6 +3563,7 @@
           }
         }
       ],
+      "slides": [],
       "lecture_assets": {
         "quizzes": [
           {
@@ -3534,6 +3808,7 @@
           }
         }
       ],
+      "slides": [],
       "lecture_assets": {
         "quizzes": [
           {

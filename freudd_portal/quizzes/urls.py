@@ -39,6 +39,11 @@ urlpatterns = [
         name="subject-tracking-reading",
     ),
     re_path(
+        r"^subjects/(?P<subject_slug>[a-z0-9-]+)/slides/open/(?P<slide_key>[a-z0-9-]+)$",
+        views.subject_open_slide_view,
+        name="subject-open-slide",
+    ),
+    re_path(
         r"^subjects/(?P<subject_slug>[a-z0-9-]+)/tekster/open/(?P<reading_key>[a-z0-9-]+)$",
         views.subject_open_reading_view,
         name="subject-open-reading",

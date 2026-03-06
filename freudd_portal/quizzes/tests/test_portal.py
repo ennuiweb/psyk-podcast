@@ -58,7 +58,9 @@ class QuizPortalTests(TestCase):
         self.rss_file = root / "rss.xml"
         self.spotify_map_file = root / "spotify_map.json"
         self.content_manifest_file = root / "content_manifest.json"
+        self.slides_catalog_file = root / "slides_catalog.json"
         self.reading_files_root = root / "reading-files"
+        self.slides_files_root = root / "slides-files"
         self.reading_exclusions_file = root / "reading_download_exclusions.json"
 
         self.override = override_settings(
@@ -70,6 +72,8 @@ class QuizPortalTests(TestCase):
             FREUDD_SUBJECT_FEED_RSS_PATH=self.rss_file,
             FREUDD_SUBJECT_SPOTIFY_MAP_PATH=self.spotify_map_file,
             FREUDD_SUBJECT_CONTENT_MANIFEST_PATH=self.content_manifest_file,
+            FREUDD_SUBJECT_SLIDES_CATALOG_PATH=self.slides_catalog_file,
+            FREUDD_SUBJECT_SLIDES_FILES_ROOT=self.slides_files_root,
             FREUDD_READING_FILES_ROOT=self.reading_files_root,
             FREUDD_READING_DOWNLOAD_EXCLUSIONS_PATH=self.reading_exclusions_file,
             FREUDD_CREDENTIALS_MASTER_KEY="MDEyMzQ1Njc4OWFiY2RlZjAxMjM0NTY3ODlhYmNkZWY=",
@@ -107,6 +111,7 @@ class QuizPortalTests(TestCase):
         self._write_rss_file()
         self._write_spotify_map()
         self._write_reading_files()
+        self._write_slides_catalog_file()
         self._write_reading_download_exclusions([])
 
     def _write_quiz_file(self, quiz_id: str, *, question_count: int) -> None:
@@ -257,6 +262,22 @@ class QuizPortalTests(TestCase):
         (w01l1 / "Grundbog kapitel 01 - Introduktion.pdf").write_bytes(b"%PDF-1.4\n%test\n")
         (w01l1 / "Lewis (1999).pdf").write_bytes(b"%PDF-1.4\n%test\n")
         (w01l2 / "Mayer & Bryan (2024).pdf").write_bytes(b"%PDF-1.4\n%test\n")
+
+    def _write_slides_catalog_file(
+        self,
+        *,
+        slides: list[dict[str, object]] | None = None,
+    ) -> None:
+        payload = {
+            "version": 1,
+            "subject_slug": "personlighedspsykologi",
+            "slides": slides or [],
+            "unresolved": [],
+        }
+        self.slides_catalog_file.write_text(
+            json.dumps(payload, ensure_ascii=False),
+            encoding="utf-8",
+        )
 
     def _write_reading_download_exclusions(self, reading_keys: list[str]) -> None:
         self.reading_exclusions_file.write_text(
@@ -2054,6 +2075,68 @@ class QuizPortalTests(TestCase):
         self.assertContains(response, "Slides fra øvelseshold W01L1")
         self.assertContains(response, "Åben slide", count=3)
         self.assertNotContains(response, "Ingen slides registreret.")
+
+    def test_subject_detail_uses_slide_catalog_and_open_slide_route(self) -> None:
+        self._write_slides_catalog_file(
+            slides=[
+                {
+                    "slide_key": "w01l1-lecture-intro-aaaaaaaa",
+                    "lecture_key": "W01L1",
+                    "subcategory": "lecture",
+                    "title": "Forelæsning intro slides",
+                    "source_filename": "Forelaesning intro slides.pdf",
+                    "relative_path": "W01L1/lecture/Forelaesning intro slides.pdf",
+                },
+                {
+                    "slide_key": "w01l1-seminar-intro-bbbbbbbb",
+                    "lecture_key": "W01L1",
+                    "subcategory": "seminar",
+                    "title": "Seminar intro slides",
+                    "source_filename": "Seminar intro slides.pdf",
+                    "relative_path": "W01L1/seminar/Seminar intro slides.pdf",
+                },
+                {
+                    "slide_key": "w01l1-exercise-intro-cccccccc",
+                    "lecture_key": "W01L1",
+                    "subcategory": "exercise",
+                    "title": "Øvelseshold intro slides",
+                    "source_filename": "Oevelseshold intro slides.pdf",
+                    "relative_path": "W01L1/exercise/Oevelseshold intro slides.pdf",
+                },
+            ]
+        )
+        (self.slides_files_root / "W01L1" / "lecture").mkdir(parents=True, exist_ok=True)
+        (self.slides_files_root / "W01L1" / "seminar").mkdir(parents=True, exist_ok=True)
+        (self.slides_files_root / "W01L1" / "exercise").mkdir(parents=True, exist_ok=True)
+        (self.slides_files_root / "W01L1" / "lecture" / "Forelaesning intro slides.pdf").write_bytes(
+            b"%PDF-1.4\n%test\n"
+        )
+        (self.slides_files_root / "W01L1" / "seminar" / "Seminar intro slides.pdf").write_bytes(
+            b"%PDF-1.4\n%test\n"
+        )
+        (self.slides_files_root / "W01L1" / "exercise" / "Oevelseshold intro slides.pdf").write_bytes(
+            b"%PDF-1.4\n%test\n"
+        )
+
+        user = self._create_user()
+        self.client.force_login(user)
+        detail_url = reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"})
+        response = self.client.get(detail_url)
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Forelæsning intro slides")
+        self.assertContains(response, "Seminar intro slides")
+        self.assertContains(response, "Øvelseshold intro slides")
+
+        slide_open_url = reverse(
+            "subject-open-slide",
+            kwargs={
+                "subject_slug": "personlighedspsykologi",
+                "slide_key": "w01l1-lecture-intro-aaaaaaaa",
+            },
+        )
+        open_response = self.client.get(slide_open_url)
+        self.assertEqual(open_response.status_code, 200)
+        self.assertEqual(open_response["Content-Type"], "application/pdf")
 
     def test_subject_detail_query_param_selects_active_lecture(self) -> None:
         user = self._create_user()

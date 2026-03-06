@@ -137,10 +137,21 @@ SPOTIFY_EPISODE_ID_RE = re.compile(
     re.IGNORECASE,
 )
 SUBJECT_READING_KEY_RE = re.compile(r"^[a-z0-9-]+$")
+SUBJECT_SLIDE_KEY_RE = re.compile(r"^[a-z0-9-]+$")
 SUBJECT_LECTURE_KEY_RE = re.compile(r"^W\d{2}L\d+$", re.IGNORECASE)
 SUBJECT_SLUG_RE = re.compile(r"^[a-z0-9-]+$")
 LEADERBOARD_RANK_LOOKUP_LIMIT = 5000
+SLIDE_GROUP_TITLES = {
+    "lecture": "slides fra forelæsning",
+    "seminar": "slides fra seminarhold",
+    "exercise": "slides fra øvelseshold",
+}
 _READING_EXCLUSION_CACHE: dict[str, object] = {
+    "path": None,
+    "mtime": None,
+    "data": {},
+}
+_SLIDES_CATALOG_CACHE: dict[str, object] = {
     "path": None,
     "mtime": None,
     "data": {},
@@ -478,6 +489,208 @@ def _source_filename_or_none(value: object) -> str | None:
     if ".." in candidate.parts:
         return None
     return text
+
+
+def _slide_category_key(value: object) -> str:
+    raw = str(value or "").strip().lower()
+    if raw in {"lecture", "forelaesning", "forelæsning"}:
+        return "lecture"
+    if raw in {"seminar", "seminarhold"}:
+        return "seminar"
+    if raw in {"exercise", "ovelse", "øvelse", "ovelseshold", "øvelseshold"}:
+        return "exercise"
+    return ""
+
+
+def _slide_catalog_path() -> Path | None:
+    default_path = Path(__file__).resolve().parents[2] / "shows" / "personlighedspsykologi-en" / "slides_catalog.json"
+    raw_value = str(getattr(settings, "FREUDD_SUBJECT_SLIDES_CATALOG_PATH", default_path)).strip()
+    if not raw_value:
+        return None
+    return Path(raw_value).expanduser()
+
+
+def _slide_files_root() -> Path | None:
+    raw_value = str(getattr(settings, "FREUDD_SUBJECT_SLIDES_FILES_ROOT", "/var/www/slides/personlighedspsykologi")).strip()
+    if not raw_value:
+        return None
+    return Path(raw_value).expanduser()
+
+
+def _load_subject_slides_catalog() -> dict[str, object]:
+    path = _slide_catalog_path()
+    if path is None:
+        return {}
+    if not path.exists():
+        return {}
+
+    try:
+        mtime = path.stat().st_mtime_ns
+    except OSError:
+        logger.warning("Unable to stat slides catalog: %s", path, exc_info=True)
+        return {}
+
+    cache_hit = (
+        _SLIDES_CATALOG_CACHE.get("path") == str(path)
+        and _SLIDES_CATALOG_CACHE.get("mtime") == mtime
+        and isinstance(_SLIDES_CATALOG_CACHE.get("data"), dict)
+    )
+    if cache_hit:
+        return dict(_SLIDES_CATALOG_CACHE["data"])
+
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError):
+        logger.warning("Unable to read slides catalog: %s", path, exc_info=True)
+        return {}
+    if not isinstance(payload, dict):
+        return {}
+
+    _SLIDES_CATALOG_CACHE["path"] = str(path)
+    _SLIDES_CATALOG_CACHE["mtime"] = mtime
+    _SLIDES_CATALOG_CACHE["data"] = payload
+    return dict(payload)
+
+
+def _slide_title_from_source_filename(value: object) -> str:
+    source_filename = _source_filename_or_none(value)
+    if not source_filename:
+        return "Slides"
+    stem = Path(source_filename).stem
+    title = MULTISPACE_RE.sub(" ", stem.replace("_", " ").replace("-", " ")).strip()
+    return title or source_filename
+
+
+def _slide_catalog_entries_for_lecture(
+    *,
+    subject_slug: str,
+    lecture_key: str,
+) -> list[dict[str, str]]:
+    payload = _load_subject_slides_catalog()
+    if not payload:
+        return []
+
+    expected_subject_slug = str(payload.get("subject_slug") or "").strip().lower()
+    if expected_subject_slug and expected_subject_slug != str(subject_slug or "").strip().lower():
+        return []
+
+    normalized_lecture_key = str(lecture_key or "").strip().upper()
+    if not SUBJECT_LECTURE_KEY_RE.match(normalized_lecture_key):
+        return []
+
+    raw_slides = payload.get("slides")
+    if not isinstance(raw_slides, list):
+        return []
+
+    entries: list[dict[str, str]] = []
+    for raw_slide in raw_slides:
+        if not isinstance(raw_slide, dict):
+            continue
+        raw_lecture_key = str(raw_slide.get("lecture_key") or "").strip().upper()
+        if raw_lecture_key != normalized_lecture_key:
+            continue
+        slide_key = str(raw_slide.get("slide_key") or "").strip().lower()
+        if not SUBJECT_SLIDE_KEY_RE.match(slide_key):
+            continue
+        category = _slide_category_key(raw_slide.get("subcategory"))
+        if not category:
+            continue
+        source_filename = _source_filename_or_none(raw_slide.get("source_filename"))
+        if not source_filename:
+            continue
+        title = str(raw_slide.get("title") or "").strip() or _slide_title_from_source_filename(source_filename)
+        entries.append(
+            {
+                "slide_key": slide_key,
+                "lecture_key": raw_lecture_key,
+                "subcategory": category,
+                "source_filename": source_filename,
+                "title": title,
+            }
+        )
+    return entries
+
+
+def _slide_file_path_or_404(
+    *,
+    lecture_key: str,
+    subcategory: str,
+    source_filename: str,
+) -> Path:
+    lecture = str(lecture_key or "").strip().upper()
+    if not SUBJECT_LECTURE_KEY_RE.match(lecture):
+        raise Http404("Slide ikke fundet i fagets læringssti.")
+    category = _slide_category_key(subcategory)
+    if not category:
+        raise Http404("Slide ikke fundet i fagets læringssti.")
+    normalized_source_filename = _source_filename_or_none(source_filename)
+    if not normalized_source_filename:
+        raise Http404("Slide-filen kunne ikke tilgås.")
+
+    root = _slide_files_root()
+    if root is None:
+        raise Http404("Slide-filer kunne ikke tilgås.")
+    try:
+        resolved_root = root.resolve()
+    except OSError as exc:
+        raise Http404("Slide-filer kunne ikke tilgås.") from exc
+
+    candidate = resolved_root / lecture / category / normalized_source_filename
+    try:
+        resolved_candidate = candidate.resolve()
+    except OSError as exc:
+        raise Http404("Slide-filen kunne ikke tilgås.") from exc
+
+    if resolved_root not in resolved_candidate.parents:
+        raise Http404("Slide-filen kunne ikke tilgås.")
+    if not resolved_candidate.is_file():
+        raise Http404("Slide-filen blev ikke fundet.")
+    return resolved_candidate
+
+
+def _find_slide_catalog_entry(
+    *,
+    subject_slug: str,
+    slide_key: str,
+) -> dict[str, str] | None:
+    normalized_slide_key = str(slide_key or "").strip().lower()
+    if not SUBJECT_SLIDE_KEY_RE.match(normalized_slide_key):
+        return None
+
+    payload = _load_subject_slides_catalog()
+    if not payload:
+        return None
+    expected_subject_slug = str(payload.get("subject_slug") or "").strip().lower()
+    if expected_subject_slug and expected_subject_slug != str(subject_slug or "").strip().lower():
+        return None
+
+    raw_slides = payload.get("slides")
+    if not isinstance(raw_slides, list):
+        return None
+
+    for raw_slide in raw_slides:
+        if not isinstance(raw_slide, dict):
+            continue
+        candidate_slide_key = str(raw_slide.get("slide_key") or "").strip().lower()
+        if candidate_slide_key != normalized_slide_key:
+            continue
+        lecture_key = str(raw_slide.get("lecture_key") or "").strip().upper()
+        if not SUBJECT_LECTURE_KEY_RE.match(lecture_key):
+            continue
+        category = _slide_category_key(raw_slide.get("subcategory"))
+        if not category:
+            continue
+        source_filename = _source_filename_or_none(raw_slide.get("source_filename"))
+        if not source_filename:
+            continue
+        return {
+            "slide_key": candidate_slide_key,
+            "lecture_key": lecture_key,
+            "subcategory": category,
+            "source_filename": source_filename,
+            "title": str(raw_slide.get("title") or "").strip() or _slide_title_from_source_filename(source_filename),
+        }
+    return None
 
 
 def _reading_file_path_or_404(*, subject_slug: str, lecture_key: str, source_filename: str) -> Path:
@@ -1264,27 +1477,54 @@ def _slide_group_key(*, reading_title: object, source_filename: object) -> str:
     return "lecture"
 
 
-def _slide_groups_for_lecture(lecture: object) -> list[dict[str, object]]:
+def _slide_groups_for_lecture(lecture: object, *, subject_slug: str) -> list[dict[str, object]]:
     groups: dict[str, dict[str, object]] = {
         "lecture": {
             "group_key": "lecture",
-            "group_title": "slides fra forelæsning",
+            "group_title": SLIDE_GROUP_TITLES["lecture"],
             "items": [],
         },
         "seminar": {
             "group_key": "seminar",
-            "group_title": "slides fra seminarhold",
+            "group_title": SLIDE_GROUP_TITLES["seminar"],
             "items": [],
         },
         "exercise": {
             "group_key": "exercise",
-            "group_title": "slides fra øvelseshold",
+            "group_title": SLIDE_GROUP_TITLES["exercise"],
             "items": [],
         },
     }
     if not isinstance(lecture, dict):
         return [groups["lecture"], groups["seminar"], groups["exercise"]]
 
+    seen_catalog_keys: set[tuple[str, str]] = set()
+    lecture_key = str(lecture.get("lecture_key") or "").strip().upper()
+    for slide in _slide_catalog_entries_for_lecture(subject_slug=subject_slug, lecture_key=lecture_key):
+        group_key = _slide_category_key(slide.get("subcategory"))
+        if not group_key:
+            continue
+        source_filename = str(slide.get("source_filename") or "").strip()
+        seen_catalog_keys.add((group_key, source_filename.casefold()))
+        item = {
+            "slide_key": str(slide.get("slide_key") or "").strip(),
+            "reading_key": "",
+            "reading_title": str(slide.get("title") or "").strip() or _slide_title_from_source_filename(source_filename),
+            "source_filename": source_filename,
+            "open_url": reverse(
+                "subject-open-slide",
+                kwargs={
+                    "subject_slug": str(subject_slug or "").strip().lower(),
+                    "slide_key": str(slide.get("slide_key") or "").strip(),
+                },
+            ),
+        }
+        group = groups.get(group_key, groups["lecture"])
+        group_items = group.get("items")
+        if isinstance(group_items, list):
+            group_items.append(item)
+
+    # Fallback: preserve support for legacy slide detection from reading rows.
     readings = lecture.get("readings") if isinstance(lecture.get("readings"), list) else []
     for reading in readings:
         if not isinstance(reading, dict):
@@ -1293,13 +1533,16 @@ def _slide_groups_for_lecture(lecture: object) -> list[dict[str, object]]:
         source_filename = _source_filename_or_none(reading.get("source_filename")) or ""
         if not _is_slide_reading(reading_title=reading_title, source_filename=source_filename):
             continue
+        group_key = _slide_group_key(reading_title=reading_title, source_filename=source_filename)
+        if source_filename and (group_key, source_filename.casefold()) in seen_catalog_keys:
+            continue
         item = {
+            "slide_key": "",
             "reading_key": str(reading.get("reading_key") or "").strip(),
             "reading_title": reading_title or source_filename or "Slides",
             "source_filename": source_filename,
             "open_url": str(reading.get("open_pdf_url") or reading.get("open_url") or "").strip(),
         }
-        group_key = _slide_group_key(reading_title=reading_title, source_filename=source_filename)
         group = groups.get(group_key, groups["lecture"])
         group_items = group.get("items")
         if isinstance(group_items, list):
@@ -2217,6 +2460,46 @@ def leaderboard_profile_view(request: HttpRequest) -> HttpResponse:
 
 
 @require_safe
+def subject_open_slide_view(request: HttpRequest, subject_slug: str, slide_key: str) -> HttpResponse:
+    catalog = load_subject_catalog()
+    _subject_or_404(catalog, subject_slug)
+    entry = _find_slide_catalog_entry(
+        subject_slug=subject_slug,
+        slide_key=slide_key,
+    )
+    if entry is None:
+        raise Http404("Slide ikke fundet i fagets læringssti.")
+    file_path = _slide_file_path_or_404(
+        lecture_key=entry["lecture_key"],
+        subcategory=entry["subcategory"],
+        source_filename=entry["source_filename"],
+    )
+    suffix = file_path.suffix.lower()
+    if suffix == ".pdf":
+        content_type = "application/pdf"
+        as_attachment = False
+    elif suffix == ".docx":
+        content_type = "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        as_attachment = True
+    elif suffix == ".pptx":
+        content_type = "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        as_attachment = True
+    elif suffix == ".ppt":
+        content_type = "application/vnd.ms-powerpoint"
+        as_attachment = True
+    else:
+        content_type = "application/octet-stream"
+        as_attachment = True
+
+    return FileResponse(
+        file_path.open("rb"),
+        content_type=content_type,
+        as_attachment=as_attachment,
+        filename=entry["source_filename"],
+    )
+
+
+@require_safe
 def subject_open_reading_view(request: HttpRequest, subject_slug: str, reading_key: str) -> HttpResponse:
     _, _, found_source_filename, file_path = _resolve_subject_reading_file_or_404(
         request,
@@ -2540,7 +2823,10 @@ def subject_detail_view(request: HttpRequest, subject_slug: str) -> HttpResponse
                 if quiz_url:
                     reading["primary_quiz_url"] = quiz_url
                     break
-        active_lecture["slide_groups"] = _slide_groups_for_lecture(active_lecture)
+        active_lecture["slide_groups"] = _slide_groups_for_lecture(
+            active_lecture,
+            subject_slug=subject.slug,
+        )
 
     return render(
         request,

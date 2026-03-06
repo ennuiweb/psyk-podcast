@@ -100,6 +100,58 @@ class GenerateWeekTests(unittest.TestCase):
                 ).exists()
             )
 
+    def test_should_skip_generation_accepts_legacy_prefixed_reading_output(self):
+        mod = _load_module()
+        with tempfile.TemporaryDirectory() as tmpdir:
+            week_dir = Path(tmpdir) / "W2L1"
+            legacy_output = (
+                week_dir
+                / "W2L1 - X Zettler et al. (2020) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json"
+            )
+            _touch(legacy_output, b"{}")
+
+            canonical_output = (
+                week_dir
+                / "W2L1 - Zettler et al. (2020) [EN] {type=quiz lang=en quantity=standard difficulty=easy download=json hash=0aa8e6f0}.json"
+            )
+            should_skip, reason = mod.should_skip_generation(canonical_output, True)
+
+            self.assertTrue(should_skip)
+            self.assertEqual(reason, "output exists")
+
+    def test_migrate_legacy_prefixed_reading_outputs_renames_files(self):
+        mod = _load_module()
+        with tempfile.TemporaryDirectory() as tmpdir:
+            week_dir = Path(tmpdir) / "W2L1"
+            legacy_audio = (
+                week_dir
+                / "W2L1 - X Zettler et al. (2020) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+            )
+            legacy_quiz = (
+                week_dir
+                / "W2L1 - X Zettler et al. (2020) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json"
+            )
+            _touch(legacy_audio)
+            _touch(legacy_quiz, b"{}")
+
+            migrated = mod.migrate_legacy_prefixed_reading_outputs(week_dir)
+
+            self.assertEqual(len(migrated), 2)
+            self.assertFalse(legacy_audio.exists())
+            self.assertFalse(legacy_quiz.exists())
+            self.assertTrue(
+                (
+                    week_dir
+                    / "W2L1 - Zettler et al. (2020) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+                ).exists()
+            )
+            self.assertTrue(
+                (
+                    week_dir
+                    / "W2L1 - Zettler et al. (2020) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=05f7d73e}.json"
+                ).exists()
+            )
+
 
 if __name__ == "__main__":
     unittest.main()

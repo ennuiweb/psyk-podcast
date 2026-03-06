@@ -21,6 +21,7 @@ def read_json(path: Path) -> dict:
 
 WEEK_SELECTOR_PATTERN = re.compile(r"^(?:W)?0*(\d{1,2})(?:L0*(\d{1,2}))?$", re.IGNORECASE)
 WEEK_DIR_PATTERN = re.compile(r"^W0*(\d{1,2})(?:L0*(\d{1,2}))?\b", re.IGNORECASE)
+OUTPUT_TITLE_PREFIX_PATTERN = re.compile(r"^((?:\[Brief\]\s+)?W\d+L\d+\s+-\s+)(.+)$", re.IGNORECASE)
 CFG_TAG_PATTERN = re.compile(
     r"(?:\s+\{[a-z0-9._:+-]+=[^{}\s]+(?:\s+[a-z0-9._:+-]+=[^{}\s]+)*\})+"
     r"(?:\s+\[[^\[\]]+\])?$",
@@ -748,10 +749,26 @@ def legacy_weekly_overview_aliases(output_path: Path) -> list[Path]:
     return aliases
 
 
+def legacy_prefixed_reading_aliases(output_path: Path) -> list[Path]:
+    match = OUTPUT_TITLE_PREFIX_PATTERN.match(output_path.name)
+    if not match:
+        return []
+    prefix, remainder = match.groups()
+    if remainder.startswith("X "):
+        return []
+    if remainder.startswith(WEEKLY_OVERVIEW_TITLE) or any(
+        remainder.startswith(title) for title in LEGACY_WEEKLY_OVERVIEW_TITLES
+    ):
+        return []
+    if any(remainder.startswith(f"{label}: ") for label in SLIDE_SUBCATEGORY_LABELS.values()):
+        return []
+    return [output_path.with_name(f"{prefix}X {remainder}")]
+
+
 def iter_output_aliases(output_path: Path) -> list[Path]:
     candidates = [output_path]
     seen = {output_path.name}
-    for alias in legacy_weekly_overview_aliases(output_path):
+    for alias in [*legacy_weekly_overview_aliases(output_path), *legacy_prefixed_reading_aliases(output_path)]:
         if alias.name in seen:
             continue
         seen.add(alias.name)
@@ -789,6 +806,34 @@ def migrate_legacy_weekly_overview_outputs(week_output_dir: Path) -> list[tuple[
                 target = candidate
                 break
         if target is None or target.exists():
+            continue
+        entry.rename(target)
+        migrated.append((entry, target))
+    return migrated
+
+
+def migrate_legacy_prefixed_reading_outputs(week_output_dir: Path) -> list[tuple[Path, Path]]:
+    if not week_output_dir.exists():
+        return []
+
+    migrated: list[tuple[Path, Path]] = []
+    for entry in sorted(week_output_dir.iterdir(), key=lambda path: path.name):
+        if not entry.is_file():
+            continue
+        match = OUTPUT_TITLE_PREFIX_PATTERN.match(entry.name)
+        if not match:
+            continue
+        prefix, remainder = match.groups()
+        if not remainder.startswith("X "):
+            continue
+        if any(remainder.startswith(f"X {title}") for title in LEGACY_WEEKLY_OVERVIEW_TITLES):
+            continue
+        if remainder.startswith(f"X {WEEKLY_OVERVIEW_TITLE}"):
+            continue
+        if any(remainder.startswith(f"X {label}: ") for label in SLIDE_SUBCATEGORY_LABELS.values()):
+            continue
+        target = entry.with_name(f"{prefix}{remainder[2:]}")
+        if target.exists():
             continue
         entry.rename(target)
         migrated.append((entry, target))
@@ -1220,6 +1265,12 @@ def main() -> int:
                     print(
                         f"{week_label}: renamed {len(migrated_outputs)} legacy "
                         "Alle kilder outputs to the canonical '(undtagen slides)' title"
+                    )
+                migrated_prefixed_outputs = migrate_legacy_prefixed_reading_outputs(week_output_dir)
+                if migrated_prefixed_outputs:
+                    print(
+                        f"{week_label}: renamed {len(migrated_prefixed_outputs)} legacy "
+                        "reading outputs that still used a leading 'X ' prefix"
                     )
 
             reading_sources, generation_sources = build_source_items(

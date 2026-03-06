@@ -104,8 +104,8 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - `GET /leaderboard/<subject_slug>`
 - `POST /leaderboard/profile`
 - `GET /subjects/<subject_slug>`
-- `GET /subjects/<subject_slug>/tekster/open/<reading_key>` (public tekst-fil adgang; blocked if excluded in config)
-- `GET /subjects/<subject_slug>/tekster/open/<reading_key>/text` (public tekstudtræk til ChatGPT; blocked if excluded in config)
+- `GET /subjects/<subject_slug>/tekster/open/<reading_key>` (public tekst-fil adgang; blocked if excluded in config unless authenticated user has elevated reading access)
+- `GET /subjects/<subject_slug>/tekster/open/<reading_key>/text` (public tekstudtræk til ChatGPT; blocked if excluded in config unless authenticated user has elevated reading access)
 - `GET /subjects/<subject_slug>/slides/open/<slide_key>` (public slide-fil adgang via slides-katalog)
 - `POST /subjects/<subject_slug>/enroll`
 - `POST /subjects/<subject_slug>/unenroll`
@@ -188,6 +188,7 @@ Optional per-subject `paths` overrides let a subject use its own reading key, RS
 - Used by `GET /subjects/<subject_slug>/tekster/open/<reading_key>` and subject detail link rendering.
 - `excluded_reading_keys` blocks selected `reading_key` values from being opened/downloaded.
 - Keys must match the manifest `readings[].reading_key` values exactly.
+- Elevated access override: authenticated users in group `elevated-reading-access` (or `is_staff`/`is_superuser`) can still open excluded readings.
 
 ```json
 {
@@ -281,6 +282,9 @@ Prerequisite: der skal eksistere en brugerkonto (via signup eller `createsuperus
 cd /Users/oskar/repo/podcasts/freudd_portal
 ../.venv/bin/python manage.py extension_access --user <username> --extension <habitica|anki> --enable
 ../.venv/bin/python manage.py extension_access --user <username> --extension <habitica|anki> --disable
+../.venv/bin/python manage.py elevated_reading_access --user <username> --enable
+../.venv/bin/python manage.py elevated_reading_access --user <username> --disable
+../.venv/bin/python manage.py elevated_reading_access --user <username> --show
 ../.venv/bin/python manage.py extension_credentials --user <username> --extension habitica --set --habitica-user-id <id> --habitica-api-token <token> --habitica-task-id <task_id>
 ../.venv/bin/python manage.py extension_credentials --user <username> --extension habitica --show-meta
 ../.venv/bin/python manage.py extension_credentials --user <username> --extension habitica --rotate-key-version

@@ -3082,6 +3082,53 @@ class QuizPortalTests(TestCase):
         blocked_open = self.client.get(open_url)
         self.assertEqual(blocked_open.status_code, 404)
 
+    def test_subject_open_reading_allows_excluded_for_elevated_access_user(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+        detail = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
+        reading_key = detail.context["active_lecture"]["readings"][0]["reading_key"]
+        open_url = reverse(
+            "subject-open-reading",
+            kwargs={
+                "subject_slug": "personlighedspsykologi",
+                "reading_key": reading_key,
+            },
+        )
+        text_url = reverse(
+            "subject-open-reading-text",
+            kwargs={
+                "subject_slug": "personlighedspsykologi",
+                "reading_key": reading_key,
+            },
+        )
+
+        self._write_reading_download_exclusions([reading_key])
+        from quizzes import views as quiz_views
+
+        quiz_views._READING_EXCLUSION_CACHE["path"] = None
+        quiz_views._READING_EXCLUSION_CACHE["mtime"] = None
+        quiz_views._READING_EXCLUSION_CACHE["data"] = {}
+
+        call_command(
+            "elevated_reading_access",
+            "--user",
+            user.username,
+            "--enable",
+            stdout=io.StringIO(),
+        )
+
+        allowed_detail = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
+        readings = allowed_detail.context["active_lecture"]["readings"]
+        reading = next(item for item in readings if item.get("reading_key") == reading_key)
+        self.assertFalse(reading["download_excluded"])
+        self.assertEqual(reading["open_url"], open_url)
+
+        allowed_open = self.client.get(open_url)
+        self.assertEqual(allowed_open.status_code, 200)
+
+        allowed_text = self.client.get(text_url)
+        self.assertEqual(allowed_text.status_code, 200)
+
     def test_subject_reading_tracking_toggle_is_idempotent(self) -> None:
         user = self._create_user()
         self.client.force_login(user)
@@ -3577,6 +3624,48 @@ class QuizPortalTests(TestCase):
         self.assertFalse(
             UserExtensionAccess.objects.get(user=user, extension="anki").enabled
         )
+
+    def test_elevated_reading_access_command_enable_disable_show(self) -> None:
+        user = self._create_user(username="reader-admin")
+
+        call_command(
+            "elevated_reading_access",
+            "--user",
+            user.username,
+            "--enable",
+            stdout=io.StringIO(),
+        )
+        call_command(
+            "elevated_reading_access",
+            "--user",
+            user.username,
+            "--enable",
+            stdout=io.StringIO(),
+        )
+        refreshed = User.objects.get(pk=user.pk)
+        self.assertEqual(refreshed.groups.filter(name="elevated-reading-access").count(), 1)
+
+        show_output = io.StringIO()
+        call_command(
+            "elevated_reading_access",
+            "--user",
+            user.username,
+            "--show",
+            stdout=show_output,
+        )
+        payload = json.loads(show_output.getvalue().strip())
+        self.assertTrue(payload["effective_access"])
+        self.assertTrue(payload["group_access"])
+
+        call_command(
+            "elevated_reading_access",
+            "--user",
+            user.username,
+            "--disable",
+            stdout=io.StringIO(),
+        )
+        refreshed = User.objects.get(pk=user.pk)
+        self.assertFalse(refreshed.groups.filter(name="elevated-reading-access").exists())
 
     def test_extension_credentials_commands_store_encrypted_payload(self) -> None:
         user = self._create_user()

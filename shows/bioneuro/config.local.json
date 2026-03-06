@@ -41,6 +41,12 @@
     "title": "Bio / Neuropsychology",
     "link": "https://github.com/ennuiweb/psyk-podcast",
     "self_link": "https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/bioneuro/feeds/rss.xml",
+    "audio_category_prefix_position": "after_first_block",
+    "semester_week_number_source": "lecture_key",
+    "title_blocks": [
+      "course_week_lecture",
+      "subject_or_type"
+    ],
     "description": "Personlighedspsykologi: https://open.spotify.com/show/0jAvkPCcZ1x98lIMno1oqv\nBioneuro: https://open.spotify.com/show/5QIHRkc1N6xuCqtnfmsPfN\nSocialpsykologi: https://open.spotify.com/show/08cv2AZyBv2W9S8GiAysVP",
     "description_footer": "\n·\n·\n·\nPersonlighedspsykologi: https://open.spotify.com/show/0jAvkPCcZ1x98lIMno1oqv\nBioneuro: https://open.spotify.com/show/5QIHRkc1N6xuCqtnfmsPfN\nSocialpsykologi: https://open.spotify.com/show/08cv2AZyBv2W9S8GiAysVP",
     "language": "en",

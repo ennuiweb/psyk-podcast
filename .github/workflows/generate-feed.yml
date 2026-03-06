@@ -217,7 +217,7 @@ jobs:
         run: python podcast-tools/gdrive_podcast_feed.py --config shows/${SHOW}/config.runtime.json
 
       - name: Sync Spotify map
-        if: matrix.show == 'personlighedspsykologi-en'
+        if: contains(fromJSON('["personlighedspsykologi-en","bioneuro"]'), matrix.show)
         env:
           SHOW: ${{ matrix.show }}
           SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
@@ -227,11 +227,25 @@ jobs:
             echo "::error::SPOTIFY_CLIENT_ID and SPOTIFY_CLIENT_SECRET are required for direct Spotify episode mapping."
             exit 1
           fi
+          case "${SHOW}" in
+            personlighedspsykologi-en)
+              subject_slug="personlighedspsykologi"
+              spotify_show_url="https://open.spotify.com/show/0jAvkPCcZ1x98lIMno1oqv"
+              ;;
+            bioneuro)
+              subject_slug="bioneuro"
+              spotify_show_url="https://open.spotify.com/show/5QIHRkc1N6xuCqtnfmsPfN"
+              ;;
+            *)
+              echo "::error::Unexpected show for Spotify sync: ${SHOW}"
+              exit 1
+              ;;
+          esac
           python scripts/sync_spotify_map.py \
             --rss shows/${SHOW}/feeds/rss.xml \
             --spotify-map shows/${SHOW}/spotify_map.json \
-            --subject-slug personlighedspsykologi \
-            --spotify-show-url https://open.spotify.com/show/0jAvkPCcZ1x98lIMno1oqv \
+            --subject-slug "${subject_slug}" \
+            --spotify-show-url "${spotify_show_url}" \
             --spotify-market DK \
             --allow-unresolved
 

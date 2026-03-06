@@ -15,10 +15,20 @@ concurrency:
 jobs:
   sync:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - show: personlighedspsykologi-en
+            subject_slug: personlighedspsykologi
+            spotify_show_url: https://open.spotify.com/show/0jAvkPCcZ1x98lIMno1oqv
+          - show: bioneuro
+            subject_slug: bioneuro
+            spotify_show_url: https://open.spotify.com/show/5QIHRkc1N6xuCqtnfmsPfN
     env:
-      SHOW: personlighedspsykologi-en
-      SUBJECT_SLUG: personlighedspsykologi
-      SPOTIFY_SHOW_URL: https://open.spotify.com/show/0jAvkPCcZ1x98lIMno1oqv
+      SHOW: ${{ matrix.show }}
+      SUBJECT_SLUG: ${{ matrix.subject_slug }}
+      SPOTIFY_SHOW_URL: ${{ matrix.spotify_show_url }}
       SPOTIFY_MARKET: DK
       SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
       SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}

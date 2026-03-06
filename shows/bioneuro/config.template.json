@@ -41,6 +41,12 @@
     "title": "Bio / Neuropsychology",
     "link": "https://github.com/ennuiweb/psyk-podcast",
     "self_link": "https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/bioneuro/feeds/rss.xml",
+    "audio_category_prefix_position": "after_first_block",
+    "semester_week_number_source": "lecture_key",
+    "title_blocks": [
+      "course_week_lecture",
+      "subject_or_type"
+    ],
     "description": "Bio / Neuropsychology podcast feed.",
     "language": "en",
     "author": "Bio / Neuropsychology",

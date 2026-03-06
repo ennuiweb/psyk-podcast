@@ -1996,6 +1996,75 @@ class AutoSpecMatchingTests(unittest.TestCase):
             "Foo · Forelæsning 1" + footer,
         )
 
+    def test_title_uses_quiz_link_key_when_file_name_lacks_week_lecture(self):
+        mod = _load_feed_module()
+        file_entry = {
+            "id": "file1",
+            "name": "Grundbog Kapitel 1.mp3",
+            "createdTime": "2026-02-02T08:00:00+00:00",
+        }
+        episode = mod.build_episode_entry(
+            file_entry=file_entry,
+            feed_config={
+                "title": "Bioneuro",
+                "link": "https://example.com",
+                "description": "Test feed",
+                "language": "en",
+                "audio_category_prefix_position": "after_first_block",
+                "semester_week_number_source": "lecture_key",
+                "title_blocks": ["course_week_lecture", "subject_or_type"],
+            },
+            overrides={},
+            public_link_template="https://example.com/{file_id}",
+            quiz_cfg={"base_url": "https://freudd.dk/q/"},
+            quiz_links={
+                "by_name": {
+                    "W01L1 - Grundbog Kapitel 1 [EN] {type=audio lang=en format=deep-dive}.mp3": {
+                        "relative_path": "abc12345.html",
+                        "difficulty": "medium",
+                    }
+                }
+            },
+        )
+        self.assertEqual(
+            episode["title"],
+            "U1F1 · [Podcast] · Grundbog Kapitel 1",
+        )
+
+    def test_title_uses_manual_source_folder_when_file_name_lacks_week_lecture(self):
+        mod = _load_feed_module()
+        file_entry = {
+            "id": "file1",
+            "name": "Grundbog Kapitel 1.mp3",
+            "createdTime": "2026-02-02T08:00:00+00:00",
+        }
+        episode = mod.build_episode_entry(
+            file_entry=file_entry,
+            feed_config={
+                "title": "Bioneuro",
+                "link": "https://example.com",
+                "description": "Test feed",
+                "language": "en",
+                "audio_category_prefix_position": "after_first_block",
+                "semester_week_number_source": "lecture_key",
+                "title_blocks": ["course_week_lecture", "subject_or_type"],
+            },
+            overrides={
+                "by_name": {
+                    "Grundbog Kapitel 1.mp3": {
+                        "meta": {
+                            "source_folder": "W01L1 Introduktion (2026-02-06)",
+                        }
+                    }
+                }
+            },
+            public_link_template="https://example.com/{file_id}",
+        )
+        self.assertEqual(
+            episode["title"],
+            "U1F1 · [Podcast] · Grundbog Kapitel 1",
+        )
+
     def test_description_quiz_block_renders_all_difficulties_with_short_ids(self):
         mod = _load_feed_module()
         file_entry = {

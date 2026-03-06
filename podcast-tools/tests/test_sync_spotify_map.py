@@ -100,6 +100,23 @@ class SyncSpotifyMapTests(unittest.TestCase):
         self.assertEqual(stats["matched_show_episode"], 1)
         self.assertEqual(stats["unresolved"], 0)
 
+    def test_build_spotify_map_matches_normalized_show_titles(self):
+        by_title, unresolved, stats = self.mod.build_spotify_map(
+            rss_titles=["U1F1 · [Podcast] · Alle kilder"],
+            existing_payload={},
+            spotify_episode_by_title={
+                "[Podcast] · Alle kilder": "https://open.spotify.com/episode/5m0hYfDU9ThM5qR2xMugr8"
+            },
+            prune_stale=False,
+        )
+        self.assertEqual(
+            by_title["U1F1 · [Podcast] · Alle kilder"],
+            "https://open.spotify.com/episode/5m0hYfDU9ThM5qR2xMugr8",
+        )
+        self.assertEqual(unresolved, [])
+        self.assertEqual(stats["matched_show_episode"], 1)
+        self.assertEqual(stats["unresolved"], 0)
+
     def test_build_spotify_map_refreshes_existing_episode_with_show_match(self):
         by_title, unresolved, stats = self.mod.build_spotify_map(
             rss_titles=["Uge 1, Forelæsning 1 · Podcast · Alle kilder"],

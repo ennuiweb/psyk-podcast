@@ -389,6 +389,8 @@ def _normalize_name_for_lookup(name: str) -> str:
     path = Path(stripped)
     suffix = "".join(path.suffixes)
     stem = stripped[: -len(suffix)] if suffix else stripped
+    stem = LANGUAGE_TAG_PATTERN.sub("", stem)
+    stem = BRIEF_TAG_PATTERN.sub("", stem)
     stem = strip_week_prefix(stem)
     stem = LEADING_EXERCISE_X_PATTERN.sub("", stem).strip()
     stem = re.sub(r"\s+", " ", stem).strip()
@@ -410,6 +412,22 @@ def _lookup_by_name_with_cfg_fallback(mapping: Dict[str, Any], name: str) -> Any
     for key, value in mapping.items():
         if isinstance(key, str) and _strip_cfg_tag_from_filename(key) == stripped:
             return value
+    return None
+
+
+def _lookup_key_with_cfg_fallback(mapping: Dict[str, Any], name: str) -> Optional[str]:
+    if name in mapping:
+        return name
+    stripped = _strip_cfg_tag_from_filename(name)
+    if stripped in mapping:
+        return stripped
+    normalized = _normalize_name_for_lookup(name)
+    for key in mapping:
+        if isinstance(key, str) and _normalize_name_for_lookup(key) == normalized:
+            return key
+    for key in mapping:
+        if isinstance(key, str) and _strip_cfg_tag_from_filename(key) == stripped:
+            return key
     return None
 
 
@@ -1436,6 +1454,21 @@ def _extract_week_lecture_pair(value: Any) -> Optional[Tuple[int, int]]:
     return int(match.group(1)), int(match.group(2))
 
 
+def _extract_source_folder(value: Any) -> Optional[str]:
+    if not isinstance(value, dict):
+        return None
+    direct = value.get("source_folder")
+    if isinstance(direct, str) and direct.strip():
+        return direct.strip()
+    nested_meta = value.get("meta")
+    if not isinstance(nested_meta, dict):
+        return None
+    nested = nested_meta.get("source_folder")
+    if isinstance(nested, str) and nested.strip():
+        return nested.strip()
+    return None
+
+
 def _tokenize_words(value: str) -> List[str]:
     if not value:
         return []
@@ -1751,20 +1784,28 @@ TRAILING_WEEK_RANGE_PATTERN = re.compile(
 )
 
 
-def extract_week_lecture(
-    folder_names: Optional[List[str]],
-    file_name: Optional[str],
+def extract_week_lecture_from_candidates(
+    candidates: Iterable[Any],
 ) -> Tuple[Optional[int], Optional[int]]:
-    candidates = []
-    if folder_names:
-        candidates.extend(folder_names)
-    if file_name:
-        candidates.append(file_name)
     for candidate in candidates:
+        if not isinstance(candidate, str) or not candidate.strip():
+            continue
         match = WEEK_LECTURE_PATTERN.search(candidate)
         if match:
             return int(match.group(1)), int(match.group(2))
     return None, None
+
+
+def extract_week_lecture(
+    folder_names: Optional[List[str]],
+    file_name: Optional[str],
+) -> Tuple[Optional[int], Optional[int]]:
+    candidates: List[str] = []
+    if folder_names:
+        candidates.extend(folder_names)
+    if file_name:
+        candidates.append(file_name)
+    return extract_week_lecture_from_candidates(candidates)
 
 
 def strip_week_prefix(value: str) -> str:
@@ -2633,6 +2674,13 @@ def build_episode_entry(
         suffix = f" - {narrator}"
         if base_title.lower().endswith(suffix.lower()):
             base_title = base_title[: -len(suffix)].rstrip()
+    quiz_links_map = quiz_links.get("by_name") if isinstance(quiz_links, dict) else None
+    matched_quiz_entry: Any = None
+    matched_quiz_key: Optional[str] = None
+    if quiz_cfg and isinstance(quiz_links_map, dict) and file_entry.get("name"):
+        matched_quiz_key = _lookup_key_with_cfg_fallback(quiz_links_map, file_entry["name"])
+        if matched_quiz_key is not None:
+            matched_quiz_entry = quiz_links_map.get(matched_quiz_key)
     important = is_marked_important(
         file_entry,
         doc_marked_titles,
@@ -2651,7 +2699,18 @@ def build_episode_entry(
         )
     published_at = parse_datetime(pubdate_source)
 
-    sort_week_number, lecture_number = extract_week_lecture(folder_names, file_entry.get("name"))
+    week_lecture_candidates: List[str] = []
+    if folder_names:
+        week_lecture_candidates.extend(folder_names)
+    file_name = file_entry.get("name")
+    if isinstance(file_name, str) and file_name.strip():
+        week_lecture_candidates.append(file_name)
+    if matched_quiz_key:
+        week_lecture_candidates.append(matched_quiz_key)
+    manual_source_folder = _extract_source_folder(manual_meta)
+    if manual_source_folder:
+        week_lecture_candidates.append(manual_source_folder)
+    sort_week_number, lecture_number = extract_week_lecture_from_candidates(week_lecture_candidates)
     semester_start = feed_config.get("semester_week_start_date")
     semester_info = semester_week_info(published_at, semester_start)
     published_week_number = None
@@ -2794,15 +2853,11 @@ def build_episode_entry(
     quiz_singular_label, quiz_plural_label, quiz_difficulty_labels = _resolve_quiz_display_labels(
         quiz_cfg
     )
-    if quiz_cfg and quiz_links and file_entry.get("name"):
+    if quiz_cfg and matched_quiz_entry is not None:
         base_url = quiz_cfg.get("base_url")
-        links_map = quiz_links.get("by_name") if isinstance(quiz_links, dict) else None
-        if isinstance(links_map, dict):
-            entry = _lookup_by_name_with_cfg_fallback(links_map, file_entry["name"])
-            if entry is not None:
-                quiz_link_payloads = _resolve_quiz_link_payloads(base_url, entry)
-                if quiz_link_payloads:
-                    quiz_url = sorted(quiz_link_payloads, key=_quiz_primary_sort_key)[0]["url"]
+        quiz_link_payloads = _resolve_quiz_link_payloads(base_url, matched_quiz_entry)
+        if quiz_link_payloads:
+            quiz_url = sorted(quiz_link_payloads, key=_quiz_primary_sort_key)[0]["url"]
 
     if is_unassigned_tail and not meta.get("title"):
         subject = (display_subject or cleaned_title or raw_title).strip()

@@ -19,6 +19,14 @@ from xml.etree import ElementTree
 
 MULTISPACE_RE = re.compile(r"\s+")
 SUBJECT_SLUG_RE = re.compile(r"^[a-z0-9-]+$")
+LECTURE_PREFIX_RE = re.compile(
+    r"^(?:W\d{1,2}L\d+|U\d{1,2}F\d+|(?:Uge|Week)\s+\d+\s*,\s*(?:Forelæsning|Lecture)\s+\d+)\s*(?:·\s*)?",
+    re.IGNORECASE,
+)
+CATEGORY_PREFIX_RE = re.compile(
+    r"^(?:\[\s*(?:podcast|lydbog|kort\s+podcast)\s*\]|podcast|lydbog|kort\s+podcast)\s*(?:·\s*)?",
+    re.IGNORECASE,
+)
 SPOTIFY_EPISODE_URL_RE = re.compile(
     r"^https://open\.spotify\.com/episode/[A-Za-z0-9]+(?:[/?#].*)?$",
     re.IGNORECASE,
@@ -31,6 +39,18 @@ SPOTIFY_SHOW_URL_RE = re.compile(
 
 def normalize_title_key(value: str) -> str:
     return MULTISPACE_RE.sub(" ", str(value or "")).strip()
+
+
+def normalize_match_title(value: str) -> str:
+    text = normalize_title_key(value).replace("–", "-").replace("—", "-")
+    while text:
+        updated = CATEGORY_PREFIX_RE.sub("", text).strip()
+        updated = LECTURE_PREFIX_RE.sub("", updated).strip()
+        updated = normalize_title_key(updated)
+        if updated == text:
+            break
+        text = updated
+    return normalize_title_key(text).casefold()
 
 
 def is_episode_spotify_url(value: str) -> bool:
@@ -172,6 +192,26 @@ def fetch_spotify_show_episode_urls(*, show_id: str, client_id: str, client_secr
     return by_title
 
 
+def _build_normalized_title_index(spotify_episode_by_title: Dict[str, str]) -> Dict[str, str]:
+    normalized: Dict[str, str] = {}
+    ambiguous: set[str] = set()
+    for raw_title, raw_url in spotify_episode_by_title.items():
+        title = normalize_title_key(raw_title)
+        if not title or not is_episode_spotify_url(raw_url):
+            continue
+        key = normalize_match_title(title)
+        if not key:
+            continue
+        existing = normalized.get(key)
+        if existing and normalize_title_key(existing) != normalize_title_key(raw_url):
+            ambiguous.add(key)
+            normalized.pop(key, None)
+            continue
+        if key not in ambiguous:
+            normalized[key] = raw_url
+    return normalized
+
+
 def build_spotify_map(
     *,
     rss_titles: Iterable[str],
@@ -193,6 +233,7 @@ def build_spotify_map(
         "unresolved": 0,
     }
     spotify_episode_by_title = spotify_episode_by_title or {}
+    normalized_spotify_episode_by_title = _build_normalized_title_index(spotify_episode_by_title)
 
     for rss_title in rss_titles:
         title = normalize_title_key(rss_title)
@@ -207,6 +248,8 @@ def build_spotify_map(
         existing_is_episode = is_episode_spotify_url(existing_url)
 
         mapped_episode_url = spotify_episode_by_title.get(key)
+        if not mapped_episode_url:
+            mapped_episode_url = normalized_spotify_episode_by_title.get(normalize_match_title(title))
         if mapped_episode_url and is_episode_spotify_url(mapped_episode_url):
             updated[title] = mapped_episode_url
             if existing and existing_is_episode and normalize_title_key(existing[1]) != normalize_title_key(mapped_episode_url):

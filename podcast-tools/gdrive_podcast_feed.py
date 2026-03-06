@@ -381,6 +381,7 @@ def _strip_cfg_tag_from_filename(name: str) -> str:
 
 
 WEEK_X_IN_STEM_PATTERN = re.compile(r"^(W\d{1,2}L\d+)\s*(?:-\s*)?X\s+", re.IGNORECASE)
+LEADING_EXERCISE_X_PATTERN = re.compile(r"^x\b[\s._\-–:]*", re.IGNORECASE)
 
 
 def _normalize_name_for_lookup(name: str) -> str:
@@ -389,6 +390,7 @@ def _normalize_name_for_lookup(name: str) -> str:
     suffix = "".join(path.suffixes)
     stem = stripped[: -len(suffix)] if suffix else stripped
     stem = strip_week_prefix(stem)
+    stem = LEADING_EXERCISE_X_PATTERN.sub("", stem).strip()
     stem = re.sub(r"\s+", " ", stem).strip()
     stem = WEEK_X_IN_STEM_PATTERN.sub(r"\1 ", stem).strip()
     stem = re.sub(r"\s+", " ", stem).strip()
@@ -1699,7 +1701,6 @@ WEEK_LECTURE_PATTERN = re.compile(r"\bw\s*(\d{1,2})\s*l\s*(\d+)\b", re.IGNORECAS
 BRIEF_PREFIX_PATTERN = re.compile(r"^\[\s*brief\s*\]\s*", re.IGNORECASE)
 WEEK_PREFIX_TOKEN_PATTERN = re.compile(r"^w\s*\d{1,2}(?:\s*l\s*\d+)?\b", re.IGNORECASE)
 WEEK_PREFIX_SEPARATOR_PATTERN = re.compile(r"^[\s._\-–:]+")
-WEEK_X_PREFIX_TOKEN_PATTERN = re.compile(r"^x\b[\s._\-–:]*", re.IGNORECASE)
 EPISODE_KINDS = {"reading", "brief", "weekly_overview"}
 WEEKLY_OVERVIEW_LABEL = "Alle kilder (undtagen slides)"
 WEEKLY_OVERVIEW_SUBJECT_PATTERN = re.compile(
@@ -1776,7 +1777,6 @@ def strip_week_prefix(value: str) -> str:
             break
         cleaned = cleaned[token_match.end() :]
         cleaned = WEEK_PREFIX_SEPARATOR_PATTERN.sub("", cleaned)
-    cleaned = WEEK_X_PREFIX_TOKEN_PATTERN.sub("", cleaned).strip()
     return cleaned.strip()
 
 
@@ -2765,6 +2765,7 @@ def build_episode_entry(
     cleaned_title = BRIEF_TAG_PATTERN.sub("", cleaned_title).strip()
     cleaned_title = DEEP_DIVE_TAG_PATTERN.sub("", cleaned_title).strip()
     cleaned_title = strip_week_prefix(cleaned_title)
+    cleaned_title = LEADING_EXERCISE_X_PATTERN.sub("", cleaned_title).strip()
     cleaned_title = cleaned_title.strip()
 
     if is_weekly_overview:

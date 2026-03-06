@@ -54,7 +54,8 @@ python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_week.py 
 - `Alle kilder` audio outputs additionally include `sources=<n>` (number of uploaded sources in the lecture notebook).
 - Output filenames never append profile collision suffixes like `[default]` or `[default-2]`; canonical paths are always used.
 - Reading filenames are normalized to a single leading week token (`W#L# - ...`) even when source PDFs include repeated week labels.
-- Legacy files generated before this normalization fix are not auto-renamed; you can keep them as-is or run a one-time cleanup.
+- Legacy `Alle kilder` weekly-overview files using the old basename are treated as existing outputs during skip checks.
+- On non-dry runs, `generate_week.py` auto-renames legacy weekly-overview files from `Alle kilder` to `Alle kilder (undtagen slides)` when the canonical target path is free.
 - Example: `W11L2 - X Raggatt (2006) [EN] {type=audio lang=en format=deep-dive length=long hash=7f1bf8c4}.mp3`
 - Tag regex contract (case-insensitive in parsers):
   - `\s\{[a-z0-9._:+-]+=[^{}\s]+(?:\s+[a-z0-9._:+-]+=[^{}\s]+)*\}`
@@ -157,6 +158,7 @@ python3 podcast-tools/gdrive_podcast_feed.py --config shows/personlighedspsykolo
   - Legacy `download=html`-tagged quiz JSON names (from older extraction runs) should be renamed or re-extracted to avoid duplicate generation.
   - Quick check: `./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_week.py --week W1 --content-types quiz --dry-run`
   - Keep `quiz.format` in `prompt_config.json` aligned with expected filenames (`json` for canonical JSON outputs).
+- If weekly `Alle kilder (undtagen slides)` files were previously generated as `Alle kilder`, dry-run now still counts the legacy files as existing, and non-dry runs will rename them into the canonical basename before continuing.
 - If both `<output>.request.json` and `<output>.request.error.json` exist, `generate_week.py` now trusts the newest log:
   - newer `.request.json` (with `artifact_id`) means the job is already queued, so it is skipped.
   - newer `.request.error.json` means the latest attempt failed, so it is retried.

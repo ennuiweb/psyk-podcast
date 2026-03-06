@@ -32,6 +32,7 @@ DEFAULT_SOURCES_ROOT = (
     "Mine dokumenter \U0001F4BE/psykologi/Personlighedspsykologi/Readings"
 )
 WEEKLY_OVERVIEW_TITLE = "Alle kilder (undtagen slides)"
+LEGACY_WEEKLY_OVERVIEW_TITLES = ("Alle kilder",)
 SLIDE_SUBCATEGORY_ORDER = {"lecture": 0, "seminar": 1, "exercise": 2}
 SLIDE_SUBCATEGORY_LABELS = {
     "lecture": "Slide lecture",
@@ -703,15 +704,18 @@ def auto_profile_from_profiles(
     return name, profiles_path
 
 def load_request_auth(output_path: Path) -> dict | None:
-    log_path = output_path.with_suffix(output_path.suffix + ".request.json")
-    if not log_path.exists():
-        return None
-    try:
-        payload = json.loads(log_path.read_text(encoding="utf-8"))
-    except json.JSONDecodeError:
-        return None
-    auth = payload.get("auth")
-    return auth if isinstance(auth, dict) else None
+    for candidate in iter_output_aliases(output_path):
+        log_path = candidate.with_suffix(candidate.suffix + ".request.json")
+        if not log_path.exists():
+            continue
+        try:
+            payload = json.loads(log_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            continue
+        auth = payload.get("auth")
+        if isinstance(auth, dict):
+            return auth
+    return None
 
 
 def update_preferred_profile(output_path: Path, current: str | None) -> str | None:
@@ -725,6 +729,37 @@ def update_preferred_profile(output_path: Path, current: str | None) -> str | No
 
 
 def load_request_payload(output_path: Path) -> dict | None:
+    for candidate in iter_output_aliases(output_path):
+        payload = _load_request_payload_for_candidate(candidate)
+        if payload:
+            return payload
+    return None
+
+
+def legacy_weekly_overview_aliases(output_path: Path) -> list[Path]:
+    new_marker = f" - {WEEKLY_OVERVIEW_TITLE}"
+    if new_marker not in output_path.name:
+        return []
+    aliases: list[Path] = []
+    for legacy_title in LEGACY_WEEKLY_OVERVIEW_TITLES:
+        legacy_name = output_path.name.replace(new_marker, f" - {legacy_title}", 1)
+        if legacy_name != output_path.name:
+            aliases.append(output_path.with_name(legacy_name))
+    return aliases
+
+
+def iter_output_aliases(output_path: Path) -> list[Path]:
+    candidates = [output_path]
+    seen = {output_path.name}
+    for alias in legacy_weekly_overview_aliases(output_path):
+        if alias.name in seen:
+            continue
+        seen.add(alias.name)
+        candidates.append(alias)
+    return candidates
+
+
+def _load_request_payload_for_candidate(output_path: Path) -> dict | None:
     log_path = output_path.with_suffix(output_path.suffix + ".request.json")
     if not log_path.exists():
         return None
@@ -735,31 +770,64 @@ def load_request_payload(output_path: Path) -> dict | None:
     return payload if isinstance(payload, dict) else None
 
 
+def migrate_legacy_weekly_overview_outputs(week_output_dir: Path) -> list[tuple[Path, Path]]:
+    if not week_output_dir.exists():
+        return []
+
+    migrated: list[tuple[Path, Path]] = []
+    new_marker = f" - {WEEKLY_OVERVIEW_TITLE}"
+    for entry in sorted(week_output_dir.iterdir(), key=lambda path: path.name):
+        if not entry.is_file() or new_marker in entry.name:
+            continue
+        target: Path | None = None
+        for legacy_title in LEGACY_WEEKLY_OVERVIEW_TITLES:
+            legacy_marker = f" - {legacy_title}"
+            if legacy_marker not in entry.name:
+                continue
+            candidate = entry.with_name(entry.name.replace(legacy_marker, new_marker, 1))
+            if candidate != entry:
+                target = candidate
+                break
+        if target is None or target.exists():
+            continue
+        entry.rename(target)
+        migrated.append((entry, target))
+    return migrated
+
+
 def should_skip_generation(output_path: Path, skip_existing: bool) -> tuple[bool, str | None]:
-    if output_path.exists() and output_path.stat().st_size > 0:
-        return True, "output exists"
+    for candidate in iter_output_aliases(output_path):
+        if candidate.exists() and candidate.stat().st_size > 0:
+            return True, "output exists"
     if not skip_existing:
         return False, None
-    request_log = output_path.with_suffix(output_path.suffix + ".request.json")
-    error_log = output_path.with_suffix(output_path.suffix + ".request.error.json")
-    payload = load_request_payload(output_path)
-    artifact_id = payload.get("artifact_id") if payload else None
-    has_request = bool(artifact_id)
-    has_error = error_log.exists()
 
-    if has_request and has_error:
-        # Keep the newest status signal: a newer request means "already queued",
-        # while a newer error means "last attempt failed; retry".
-        request_mtime = request_log.stat().st_mtime if request_log.exists() else 0.0
-        error_mtime = error_log.stat().st_mtime
-        if request_mtime >= error_mtime:
-            return True, "newer request log exists"
-        return False, None
+    saw_error = False
+    for candidate in iter_output_aliases(output_path):
+        request_log = candidate.with_suffix(candidate.suffix + ".request.json")
+        error_log = candidate.with_suffix(candidate.suffix + ".request.error.json")
+        payload = _load_request_payload_for_candidate(candidate)
+        artifact_id = payload.get("artifact_id") if payload else None
+        has_request = bool(artifact_id)
+        has_error = error_log.exists()
 
-    if has_request:
-        return True, "request log exists"
+        if has_request and has_error:
+            # Keep the newest status signal: a newer request means "already queued",
+            # while a newer error means "last attempt failed; retry".
+            request_mtime = request_log.stat().st_mtime if request_log.exists() else 0.0
+            error_mtime = error_log.stat().st_mtime
+            if request_mtime >= error_mtime:
+                return True, "newer request log exists"
+            saw_error = True
+            continue
 
-    if has_error:
+        if has_request:
+            return True, "request log exists"
+
+        if has_error:
+            saw_error = True
+
+    if saw_error:
         return False, None
 
     return False, None
@@ -1146,6 +1214,13 @@ def main() -> int:
 
             week_output_dir = output_root / week_label
             week_output_dir.mkdir(parents=True, exist_ok=True)
+            if not args.dry_run:
+                migrated_outputs = migrate_legacy_weekly_overview_outputs(week_output_dir)
+                if migrated_outputs:
+                    print(
+                        f"{week_label}: renamed {len(migrated_outputs)} legacy "
+                        "Alle kilder outputs to the canonical '(undtagen slides)' title"
+                    )
 
             reading_sources, generation_sources = build_source_items(
                 week_dir=week_dir,

@@ -2192,6 +2192,149 @@ class QuizPortalTests(TestCase):
         blocked_exercise = self.client.get(exercise_open_url)
         self.assertEqual(blocked_exercise.status_code, 404)
 
+    def test_subject_detail_renders_slide_quizzes_and_slide_podcasts(self) -> None:
+        self._write_slides_catalog_file(
+            slides=[
+                {
+                    "slide_key": "w01l1-lecture-intro-aaaaaaaa",
+                    "lecture_key": "W01L1",
+                    "subcategory": "lecture",
+                    "title": "Forelæsning intro slides",
+                    "source_filename": "Forelaesning intro slides.pdf",
+                    "relative_path": "W01L1/lecture/Forelaesning intro slides.pdf",
+                },
+            ]
+        )
+        (self.slides_files_root / "W01L1" / "lecture").mkdir(parents=True, exist_ok=True)
+        (self.slides_files_root / "W01L1" / "lecture" / "Forelaesning intro slides.pdf").write_bytes(
+            b"%PDF-1.4\n%test\n"
+        )
+        self._write_quiz_file("dddddddd", question_count=8)
+        self._write_quiz_json_file("dddddddd", question_count=8)
+        self._write_links_file(
+            {
+                "dddddddd": {
+                    "title": "W01L1 - Slide lecture: Forelæsning intro slides [EN].mp3",
+                    "difficulty": "medium",
+                }
+            }
+        )
+        self.rss_file.write_text(
+            "\n".join(
+                [
+                    '<?xml version="1.0" encoding="UTF-8"?>',
+                    "<rss version=\"2.0\">",
+                    "<channel>",
+                    "<item>",
+                    "<title>U1F1 · [Podcast] · Slide lecture: Forelæsning intro slides · 02/02 - 08/02</title>",
+                    "<pubDate>Mon, 02 Feb 2026 11:00:00 +0100</pubDate>",
+                    '<enclosure url="https://example.test/podcast/w01l1-slide-intro.mp3" length="1" type="audio/mpeg" />',
+                    "</item>",
+                    "</channel>",
+                    "</rss>",
+                ]
+            ),
+            encoding="utf-8",
+        )
+        self._write_spotify_map(
+            {
+                "U1F1 · [Podcast] · Slide lecture: Forelæsning intro slides · 02/02 - 08/02": (
+                    "https://open.spotify.com/episode/6m0hYfDU9ThM5qR2xMugr8"
+                ),
+            }
+        )
+        clear_content_service_caches()
+
+        user = self._create_user()
+        self.client.force_login(user)
+        response = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Forelæsning intro slides")
+        self.assertContains(response, "Mellem quiz")
+        self.assertContains(response, "/q/dddddddd.html")
+        self.assertContains(response, "Slide lecture: Forelæsning intro slides")
+        self.assertContains(
+            response,
+            "data-spotify-embed-url=\"https://open.spotify.com/embed/episode/6m0hYfDU9ThM5qR2xMugr8?utm_source=generator\"",
+        )
+        self.assertNotContains(response, "Alle kilder (undtagen slides)")
+
+    def test_subject_podcast_tracking_accepts_slide_podcast_keys(self) -> None:
+        self._write_slides_catalog_file(
+            slides=[
+                {
+                    "slide_key": "w01l1-lecture-intro-aaaaaaaa",
+                    "lecture_key": "W01L1",
+                    "subcategory": "lecture",
+                    "title": "Forelæsning intro slides",
+                    "source_filename": "Forelaesning intro slides.pdf",
+                    "relative_path": "W01L1/lecture/Forelaesning intro slides.pdf",
+                },
+            ]
+        )
+        (self.slides_files_root / "W01L1" / "lecture").mkdir(parents=True, exist_ok=True)
+        (self.slides_files_root / "W01L1" / "lecture" / "Forelaesning intro slides.pdf").write_bytes(
+            b"%PDF-1.4\n%test\n"
+        )
+        self.rss_file.write_text(
+            "\n".join(
+                [
+                    '<?xml version="1.0" encoding="UTF-8"?>',
+                    "<rss version=\"2.0\">",
+                    "<channel>",
+                    "<item>",
+                    "<title>U1F1 · [Podcast] · Slide lecture: Forelæsning intro slides · 02/02 - 08/02</title>",
+                    "<pubDate>Mon, 02 Feb 2026 11:00:00 +0100</pubDate>",
+                    '<enclosure url="https://example.test/podcast/w01l1-slide-intro.mp3" length="1" type="audio/mpeg" />',
+                    "</item>",
+                    "</channel>",
+                    "</rss>",
+                ]
+            ),
+            encoding="utf-8",
+        )
+        self._write_spotify_map(
+            {
+                "U1F1 · [Podcast] · Slide lecture: Forelæsning intro slides · 02/02 - 08/02": (
+                    "https://open.spotify.com/episode/6m0hYfDU9ThM5qR2xMugr8"
+                ),
+            }
+        )
+        clear_content_service_caches()
+
+        user = self._create_user()
+        self.client.force_login(user)
+        detail_url = reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"})
+        response = self.client.get(detail_url)
+        lecture = response.context["subject_path_lectures"][0]
+        slide = lecture["slides"][0]
+        podcast = slide["assets"]["podcasts"][0]
+        slide_reading_key = f"slide:{slide['slide_key']}"
+
+        track_url = reverse("subject-tracking-podcast", kwargs={"subject_slug": "personlighedspsykologi"})
+        track_response = self.client.post(
+            track_url,
+            {
+                "next": detail_url,
+                "lecture_key": lecture["lecture_key"],
+                "reading_key": slide_reading_key,
+                "podcast_key": podcast["podcast_key"],
+                "action": "mark",
+            },
+        )
+
+        self.assertEqual(track_response.status_code, 302)
+        self.assertTrue(
+            UserPodcastMark.objects.filter(
+                user=user,
+                subject_slug="personlighedspsykologi",
+                lecture_key="W01L1",
+                reading_key=slide_reading_key,
+                podcast_key=podcast["podcast_key"],
+            ).exists()
+        )
+
     def test_slide_catalog_entries_use_subject_specific_slide_paths(self) -> None:
         self._write_slides_catalog_file(
             slides=[

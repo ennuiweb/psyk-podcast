@@ -2103,6 +2103,11 @@
                       {% if slide.source_filename %}
                       <p class="slide-meta">{{ slide.source_filename }}</p>
                       {% endif %}
+                      {% if slide.visible_difficulty_summary %}
+                      <div class="reading-difficulties">
+                        {% include "quizzes/_quiz_difficulty_rows.html" with slots=slide.visible_difficulty_summary %}
+                      </div>
+                      {% endif %}
                     </div>
                     {% if slide.open_url %}
                     <div class="reading-actions slide-actions">

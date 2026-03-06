@@ -1406,10 +1406,32 @@ def _enrich_subject_path_lectures(lectures: object) -> list[dict[str, object]]:
                     has_reading_podcasts = True
                 reading_payload.append(reading_copy)
         lecture_copy["readings"] = reading_payload
+        slides_payload: list[dict[str, object]] = []
+        has_slide_quizzes = False
+        has_slide_podcasts = False
+        slides = lecture_copy.get("slides")
+        if isinstance(slides, list):
+            for slide in slides:
+                if not isinstance(slide, dict):
+                    continue
+                slide_copy = dict(slide)
+                slide_copy["assets"] = _compact_asset_links(
+                    slide_copy.get("assets"),
+                    question_count_by_quiz_id=question_count_by_quiz_id,
+                )
+                assets = slide_copy.get("assets") if isinstance(slide_copy.get("assets"), dict) else {}
+                if assets.get("quizzes"):
+                    has_slide_quizzes = True
+                if assets.get("podcasts"):
+                    has_slide_podcasts = True
+                slides_payload.append(slide_copy)
+        lecture_copy["slides"] = slides_payload
         lecture_copy["has_reading_quizzes"] = has_reading_quizzes
         lecture_copy["has_reading_podcasts"] = has_reading_podcasts
-        lecture_copy["has_any_quizzes"] = has_lecture_quizzes or has_reading_quizzes
-        lecture_copy["has_any_podcasts"] = has_lecture_podcasts or has_reading_podcasts
+        lecture_copy["has_slide_quizzes"] = has_slide_quizzes
+        lecture_copy["has_slide_podcasts"] = has_slide_podcasts
+        lecture_copy["has_any_quizzes"] = has_lecture_quizzes or has_reading_quizzes or has_slide_quizzes
+        lecture_copy["has_any_podcasts"] = has_lecture_podcasts or has_reading_podcasts or has_slide_podcasts
         enriched.append(lecture_copy)
     return enriched
 
@@ -1459,6 +1481,13 @@ def _reading_difficulty_summary(reading: object) -> list[dict[str, object]]:
     if not isinstance(reading, dict):
         return _quiz_difficulty_slots({})
     assets = reading.get("assets") if isinstance(reading.get("assets"), dict) else {}
+    return _quiz_difficulty_slots(assets)
+
+
+def _slide_difficulty_summary(slide: object) -> list[dict[str, object]]:
+    if not isinstance(slide, dict):
+        return _quiz_difficulty_slots({})
+    assets = slide.get("assets") if isinstance(slide.get("assets"), dict) else {}
     return _quiz_difficulty_slots(assets)
 
 
@@ -1531,12 +1560,22 @@ def _slide_groups_for_lecture(
 
     seen_catalog_keys: set[tuple[str, str]] = set()
     lecture_key = str(lecture.get("lecture_key") or "").strip().upper()
+    slide_manifest_by_key: dict[str, dict[str, object]] = {}
+    lecture_slides = lecture.get("slides") if isinstance(lecture.get("slides"), list) else []
+    for slide_item in lecture_slides:
+        if not isinstance(slide_item, dict):
+            continue
+        slide_key = str(slide_item.get("slide_key") or "").strip().lower()
+        if not slide_key:
+            continue
+        slide_manifest_by_key[slide_key] = slide_item
     for slide in _slide_catalog_entries_for_lecture(subject_slug=subject_slug, lecture_key=lecture_key):
         group_key = _slide_category_key(slide.get("subcategory"))
         if not group_key:
             continue
         source_filename = str(slide.get("source_filename") or "").strip()
         seen_catalog_keys.add((group_key, source_filename.casefold()))
+        manifest_slide = slide_manifest_by_key.get(str(slide.get("slide_key") or "").strip().lower(), {})
         open_url = ""
         if _is_direct_slide_open_allowed(group_key, user=user):
             open_url = reverse(
@@ -1546,12 +1585,18 @@ def _slide_groups_for_lecture(
                     "slide_key": str(slide.get("slide_key") or "").strip(),
                 },
             )
+        slide_summary = _slide_difficulty_summary(manifest_slide)
+        if user is not None and getattr(user, "is_authenticated", False):
+            slide_summary = _annotate_quiz_difficulty_slots_for_user(user=user, slots=slide_summary)
+        else:
+            slide_summary = _annotate_quiz_difficulty_slots_for_anonymous(slots=slide_summary)
         item = {
             "slide_key": str(slide.get("slide_key") or "").strip(),
             "reading_key": "",
             "reading_title": str(slide.get("title") or "").strip() or _slide_title_from_source_filename(source_filename),
             "source_filename": source_filename,
             "open_url": open_url,
+            "visible_difficulty_summary": _visible_quiz_difficulty_slots(slide_summary),
         }
         group = groups.get(group_key, groups["lecture"])
         group_items = group.get("items")
@@ -1579,6 +1624,7 @@ def _slide_groups_for_lecture(
             "reading_title": reading_title or source_filename or "Slides",
             "source_filename": source_filename,
             "open_url": open_url,
+            "visible_difficulty_summary": [],
         }
         group = groups.get(group_key, groups["lecture"])
         group_items = group.get("items")
@@ -1652,6 +1698,28 @@ def _flatten_podcast_rows(lecture: object) -> list[dict[str, object]]:
                     "lecture_key": lecture_key,
                     "reading_key": reading_key,
                     "source_label": reading_title,
+                    "display_title": _podcast_display_title(podcast.get("title")),
+                    "duration_label": str(podcast.get("duration_label") or "").strip(),
+                }
+            )
+
+    slides = lecture.get("slides") if isinstance(lecture.get("slides"), list) else []
+    for slide in slides:
+        if not isinstance(slide, dict):
+            continue
+        slide_title = str(slide.get("title") or "").strip() or "Slides"
+        slide_key = str(slide.get("slide_key") or "").strip().lower()
+        assets = slide.get("assets") if isinstance(slide.get("assets"), dict) else {}
+        slide_podcasts = assets.get("podcasts") if isinstance(assets.get("podcasts"), list) else []
+        for podcast in slide_podcasts:
+            if not isinstance(podcast, dict):
+                continue
+            rows.append(
+                {
+                    **podcast,
+                    "lecture_key": lecture_key,
+                    "reading_key": f"slide:{slide_key}" if slide_key else None,
+                    "source_label": slide_title,
                     "display_title": _podcast_display_title(podcast.get("title")),
                     "duration_label": str(podcast.get("duration_label") or "").strip(),
                 }
@@ -1805,6 +1873,8 @@ def _anonymous_subject_learning_path_snapshot(subject_slug: str) -> dict[str, ob
             continue
         lecture_assets = lecture.get("lecture_assets") if isinstance(lecture.get("lecture_assets"), dict) else {}
         readings_payload: list[dict[str, object]] = []
+        slide_payload: list[dict[str, object]] = []
+        slide_quiz_count = 0
         for reading in lecture.get("readings") or []:
             if not isinstance(reading, dict):
                 continue
@@ -1829,6 +1899,26 @@ def _anonymous_subject_learning_path_snapshot(subject_slug: str) -> dict[str, ob
                     },
                 }
             )
+        for slide in lecture.get("slides") or []:
+            if not isinstance(slide, dict):
+                continue
+            slide_assets = slide.get("assets") if isinstance(slide.get("assets"), dict) else {}
+            slide_count = _quiz_count_from_assets(slide_assets)
+            slide_quiz_count += slide_count
+            slide_payload.append(
+                {
+                    "slide_key": str(slide.get("slide_key") or "").strip().lower(),
+                    "subcategory": str(slide.get("subcategory") or "").strip().lower(),
+                    "title": str(slide.get("title") or "Slides"),
+                    "source_filename": str(slide.get("source_filename") or "").strip() or None,
+                    "relative_path": str(slide.get("relative_path") or "").strip() or None,
+                    "assets": {
+                        "quizzes": list(slide_assets.get("quizzes") or []),
+                        "podcasts": list(slide_assets.get("podcasts") or []),
+                    },
+                    "total_quizzes": slide_count,
+                }
+            )
         lecture_payload.append(
             {
                 "lecture_key": lecture_key,
@@ -1836,9 +1926,15 @@ def _anonymous_subject_learning_path_snapshot(subject_slug: str) -> dict[str, ob
                 "sequence_index": int(lecture.get("sequence_index") or 0),
                 "status": "active",
                 "completed_quizzes": 0,
-                "total_quizzes": _quiz_count_from_assets(lecture_assets),
+                "total_quizzes": _quiz_count_from_assets(lecture_assets) + sum(
+                    _quiz_count_from_assets(
+                        reading.get("assets") if isinstance(reading, dict) else {}
+                    )
+                    for reading in readings_payload
+                ) + slide_quiz_count,
                 "warnings": list(lecture.get("warnings") or []),
                 "readings": readings_payload,
+                "slides": slide_payload,
                 "lecture_assets": {
                     "quizzes": list(lecture_assets.get("quizzes") or []),
                     "podcasts": list(lecture_assets.get("podcasts") or []),

@@ -252,6 +252,12 @@ def recompute_subject_progress(user, subject_slug: str) -> dict[str, Any]:
                 continue
             reading_assets = reading.get("assets") if isinstance(reading.get("assets"), dict) else {}
             lecture_quiz_ids.update(_quiz_ids_from_assets(reading_assets))
+        slides = lecture.get("slides") if isinstance(lecture.get("slides"), list) else []
+        for slide in slides:
+            if not isinstance(slide, dict):
+                continue
+            slide_assets = slide.get("assets") if isinstance(slide.get("assets"), dict) else {}
+            lecture_quiz_ids.update(_quiz_ids_from_assets(slide_assets))
 
         total_quizzes = len(lecture_quiz_ids)
         completed_quizzes = len(lecture_quiz_ids.intersection(completed_ids))
@@ -521,6 +527,8 @@ def get_subject_learning_path_snapshot(user, subject_slug: str) -> dict[str, Any
         lecture_row = lecture_rows.get(lecture_key)
         lecture_assets = lecture.get("lecture_assets") if isinstance(lecture.get("lecture_assets"), dict) else {}
         readings_payload: list[dict[str, Any]] = []
+        slides_payload: list[dict[str, Any]] = []
+        slide_quiz_count = 0
         for reading in lecture.get("readings") or []:
             if not isinstance(reading, dict):
                 continue
@@ -552,6 +560,26 @@ def get_subject_learning_path_snapshot(user, subject_slug: str) -> dict[str, Any
                     },
                 }
             )
+        for slide in lecture.get("slides") or []:
+            if not isinstance(slide, dict):
+                continue
+            slide_assets = slide.get("assets") if isinstance(slide.get("assets"), dict) else {}
+            slide_count = len(_quiz_ids_from_assets(slide_assets))
+            slide_quiz_count += slide_count
+            slides_payload.append(
+                {
+                    "slide_key": str(slide.get("slide_key") or "").strip().lower(),
+                    "subcategory": str(slide.get("subcategory") or "").strip().lower(),
+                    "title": str(slide.get("title") or "Slides"),
+                    "source_filename": str(slide.get("source_filename") or "").strip() or None,
+                    "relative_path": str(slide.get("relative_path") or "").strip() or None,
+                    "total_quizzes": slide_count,
+                    "assets": {
+                        "quizzes": list(slide_assets.get("quizzes") or []),
+                        "podcasts": list(slide_assets.get("podcasts") or []),
+                    },
+                }
+            )
         lecture_payload.append(
             {
                 "lecture_key": lecture_key,
@@ -559,9 +587,14 @@ def get_subject_learning_path_snapshot(user, subject_slug: str) -> dict[str, Any
                 "sequence_index": int(lecture.get("sequence_index") or 0),
                 "status": lecture_row.status if lecture_row else UserLectureProgress.Status.ACTIVE,
                 "completed_quizzes": int(lecture_row.completed_quizzes) if lecture_row else 0,
-                "total_quizzes": int(lecture_row.total_quizzes) if lecture_row else len(_quiz_ids_from_assets(lecture_assets)),
+                "total_quizzes": int(lecture_row.total_quizzes) if lecture_row else (
+                    len(_quiz_ids_from_assets(lecture_assets))
+                    + sum(len(_quiz_ids_from_assets(reading.get("assets") if isinstance(reading, dict) else {})) for reading in readings_payload)
+                    + slide_quiz_count
+                ),
                 "warnings": list(lecture.get("warnings") or []),
                 "readings": readings_payload,
+                "slides": slides_payload,
                 "lecture_assets": {
                     "quizzes": list(lecture_assets.get("quizzes") or []),
                     "podcasts": list(lecture_assets.get("podcasts") or []),

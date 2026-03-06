@@ -32,7 +32,18 @@ Hvis en fil ligger i "forkert" mappe ift. undervisningsplanen, er undervisningsp
 2. Fastlæg `subcategory` (`lecture|seminar|exercise`) manuelt.
 3. Fastlæg `title` (kort, læsbar titel i UI).
 4. Fastlæg `source_filename` (filnavn som uploades under slide-rooten).
-5. Tilføj entry manuelt i `shows/personlighedspsykologi-en/slides_catalog.json`.
+5. Fastlæg `local_relative_path` relativt til den lokale fagmappe:
+   - `Forelæsningsrækken/<filnavn>`
+   - `Seminarhold/Slides/<filnavn>`
+   - `Øvelseshold/<filnavn>`
+6. Tilføj entry manuelt i `shows/personlighedspsykologi-en/slides_catalog.json`.
+
+## Hvad mappingen bruges til
+
+- Hver slide-entry kan generere sin egen podcast og sine egne quizzer.
+- Disse slide-artifacts knyttes til slidekortet i portalen via descriptor-formatet `Slide <subcategory>: <title>`.
+- Slides tæller som kilder for per-slide podcasts og quizzer.
+- Slides tæller ikke med i `Alle kilder (undtagen slides)` for samme forelæsning.
 
 ## Personlighedspsykologi-specifik regel
 
@@ -74,6 +85,7 @@ Eksempel:
   "subcategory": "seminar",
   "title": "Seminar: Forsvarsmekanismer",
   "source_filename": "Seminar Forsvarsmekanismer.pdf",
+  "local_relative_path": "Seminarhold/Slides/Seminar Forsvarsmekanismer.pdf",
   "relative_path": "W11L2/seminar/Seminar Forsvarsmekanismer.pdf",
   "matched_by": "manual"
 }

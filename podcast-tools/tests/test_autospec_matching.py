@@ -2208,6 +2208,28 @@ class AutoSpecMatchingTests(unittest.TestCase):
         )
         self.assertEqual(episode["title"], "[Podcast] Foo")
 
+    def test_build_episode_entry_marks_slide_descriptor_as_slide_kind(self):
+        mod = _load_feed_module()
+        file_entry = {
+            "id": "file1",
+            "name": "W01L1 - Slide lecture: Forelæsning intro slides [EN].mp3",
+            "createdTime": "2026-02-02T08:00:00+00:00",
+        }
+        episode = mod.build_episode_entry(
+            file_entry=file_entry,
+            feed_config={
+                "title": "Personlighedspsykologi (EN)",
+                "link": "https://example.com",
+                "description": "Test feed",
+                "language": "en",
+            },
+            overrides={},
+            public_link_template="https://example.com/{file_id}",
+        )
+        self.assertEqual(episode["episode_kind"], "slide")
+        self.assertIn("Slide", episode["description"])
+        self.assertIn("Forelæsning intro slides", episode["description"])
+
     def test_missing_topic_with_topic_only_block_falls_back_to_descriptor_subject(self):
         mod = _load_feed_module()
         file_entry = {

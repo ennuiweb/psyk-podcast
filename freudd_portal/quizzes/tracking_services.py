@@ -27,6 +27,13 @@ def podcast_key_for_asset(*, lecture_key: str, reading_key: str | None, asset: d
     return hashlib.sha1(payload.encode("utf-8")).hexdigest()
 
 
+def _slide_tracking_key(slide: dict[str, Any]) -> str | None:
+    slide_key = str(slide.get("slide_key") or "").strip().lower()
+    if not slide_key:
+        return None
+    return f"slide:{slide_key}"
+
+
 def subject_tracking_index(subject_slug: str) -> dict[str, set[tuple[str, str | None, str]]]:
     manifest = load_subject_content_manifest(subject_slug)
     reading_keys: set[tuple[str, str | None, str]] = set()
@@ -56,6 +63,28 @@ def subject_tracking_index(subject_slug: str) -> dict[str, set[tuple[str, str | 
                         podcast_key_for_asset(
                             lecture_key=lecture_key,
                             reading_key=reading_key,
+                            asset=podcast,
+                        ),
+                    )
+                )
+
+        for slide in lecture.get("slides") or []:
+            if not isinstance(slide, dict):
+                continue
+            slide_tracking_key = _slide_tracking_key(slide)
+            if not slide_tracking_key:
+                continue
+            assets = slide.get("assets") if isinstance(slide.get("assets"), dict) else {}
+            for podcast in assets.get("podcasts") or []:
+                if not isinstance(podcast, dict):
+                    continue
+                podcast_keys.add(
+                    (
+                        lecture_key,
+                        slide_tracking_key,
+                        podcast_key_for_asset(
+                            lecture_key=lecture_key,
+                            reading_key=slide_tracking_key,
                             asset=podcast,
                         ),
                     )
@@ -217,6 +246,30 @@ def annotate_subject_lectures_with_marks(
                     podcast_key,
                 ) in podcast_mark_set
 
+        slides = lecture.get("slides") if isinstance(lecture.get("slides"), list) else []
+        for slide in slides:
+            if not isinstance(slide, dict):
+                continue
+            slide_tracking_key = _slide_tracking_key(slide)
+            if not slide_tracking_key:
+                continue
+            assets = slide.get("assets") if isinstance(slide.get("assets"), dict) else {}
+            slide_podcasts = assets.get("podcasts") if isinstance(assets.get("podcasts"), list) else []
+            for podcast in slide_podcasts:
+                if not isinstance(podcast, dict):
+                    continue
+                podcast_key = podcast_key_for_asset(
+                    lecture_key=lecture_key,
+                    reading_key=slide_tracking_key,
+                    asset=podcast,
+                )
+                podcast["podcast_key"] = podcast_key
+                podcast["is_marked_listened"] = (
+                    lecture_key,
+                    slide_tracking_key,
+                    podcast_key,
+                ) in podcast_mark_set
+
 
 def personal_tracking_summary_for_user(*, user, subjects: list[dict[str, str]]) -> list[dict[str, Any]]:
     subject_slugs = [str(item.get("slug") or "").strip().lower() for item in subjects]
@@ -306,6 +359,28 @@ def personal_tracking_summary_for_user(*, user, subjects: list[dict[str, str]]) 
                             podcast_key_for_asset(
                                 lecture_key=lecture_key,
                                 reading_key=reading_key,
+                                asset=podcast,
+                            ),
+                        )
+                    )
+            for slide in lecture.get("slides") or []:
+                if not isinstance(slide, dict):
+                    continue
+                slide_tracking_key = _slide_tracking_key(slide)
+                if not slide_tracking_key:
+                    continue
+                assets = slide.get("assets") if isinstance(slide.get("assets"), dict) else {}
+                slide_podcasts = assets.get("podcasts") if isinstance(assets.get("podcasts"), list) else []
+                for podcast in slide_podcasts:
+                    if not isinstance(podcast, dict):
+                        continue
+                    podcast_keys.add(
+                        (
+                            lecture_key,
+                            slide_tracking_key,
+                            podcast_key_for_asset(
+                                lecture_key=lecture_key,
+                                reading_key=slide_tracking_key,
                                 asset=podcast,
                             ),
                         )

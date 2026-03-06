@@ -34,6 +34,10 @@ CFG_TAG_RE = re.compile(
 READING_PREFIX_RE = re.compile(r"^(?:W\d{1,2}L\d+\s*(?:-|X)?\s*)", re.IGNORECASE)
 LANGUAGE_TAG_RE = re.compile(r"\[[^\]]+\]")
 ALL_SOURCES_RE = re.compile(r"\b(?:alle kilder|all sources)\b", re.IGNORECASE)
+SLIDE_DESCRIPTOR_RE = re.compile(
+    r"^slide\s+(?P<subcategory>lecture|seminar|exercise)\s*:\s*(?P<title>.+?)\s*$",
+    re.IGNORECASE,
+)
 NON_ALNUM_RE = re.compile(r"[^a-z0-9]+")
 MULTISPACE_RE = re.compile(r"\s+")
 OVELSESHOLD_NOTE_RE = re.compile(r"\(\s*tekst\s+for\s+øvelseshold\s*\)", re.IGNORECASE)
@@ -88,6 +92,7 @@ def _manifest_source_paths(
         subject_paths.quiz_links_path,
         subject_paths.feed_rss_path,
         subject_paths.spotify_map_path,
+        subject_paths.slides_catalog_path,
     ]
     if isinstance(payload, dict):
         source_meta = payload.get("source_meta")
@@ -386,6 +391,57 @@ def _find_reading_index(lecture_state: dict[str, Any], descriptor: str) -> int |
     return _resolve_lookup(matching_lookup, matching_descriptor)
 
 
+def _load_slide_catalog_entries(subject_slug: str) -> list[dict[str, Any]]:
+    path = resolve_subject_paths(subject_slug).slides_catalog_path
+    if not path.exists():
+        return []
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError):
+        logger.warning("Unable to parse slide catalog for manifest build: %s", path, exc_info=True)
+        return []
+    raw_slides = payload.get("slides")
+    if not isinstance(raw_slides, list):
+        return []
+    return [item for item in raw_slides if isinstance(item, dict)]
+
+
+def _build_slide_lookup(
+    slide_items: list[dict[str, Any]],
+) -> dict[str, int | None]:
+    lookup: dict[str, int | None] = {}
+    for index, slide in enumerate(slide_items):
+        subcategory = str(slide.get("subcategory") or "").strip().lower()
+        title = str(slide.get("title") or "").strip()
+        if not subcategory or not title:
+            continue
+        key = f"{subcategory}|{_normalize_title(title)}"
+        existing = lookup.get(key)
+        if existing is None and key in lookup:
+            continue
+        if existing is not None:
+            lookup[key] = None
+            continue
+        lookup[key] = index
+    return lookup
+
+
+def _find_slide_index(lecture_state: dict[str, Any], descriptor: str) -> int | None:
+    match = SLIDE_DESCRIPTOR_RE.match(str(descriptor or "").strip())
+    if not match:
+        return None
+    subcategory = str(match.group("subcategory") or "").strip().lower()
+    title = str(match.group("title") or "").strip()
+    if not subcategory or not title:
+        return None
+    slide_lookup = lecture_state.get("slide_lookup")
+    if not isinstance(slide_lookup, dict):
+        return None
+    lookup_key = f"{subcategory}|{_normalize_title(title)}"
+    resolved = slide_lookup.get(lookup_key)
+    return resolved if isinstance(resolved, int) else None
+
+
 def _load_quiz_links_by_name(path: Path) -> dict[str, Any]:
     if not path.exists():
         return {}
@@ -445,6 +501,11 @@ def _attach_quizzes(
 
         if _is_lecture_level_descriptor(descriptor):
             lecture_state["lecture_assets"]["quizzes"].extend(quiz_assets)
+            continue
+
+        slide_index = _find_slide_index(lecture_state, descriptor)
+        if slide_index is not None:
+            lecture_state["slides"][slide_index]["assets"]["quizzes"].extend(quiz_assets)
             continue
 
         reading_index = _find_reading_index(lecture_state, descriptor)
@@ -653,6 +714,10 @@ def _attach_podcasts(
         if _is_lecture_level_descriptor(descriptor):
             lecture_state["lecture_assets"]["podcasts"].append(podcast_asset)
             continue
+        slide_index = _find_slide_index(lecture_state, descriptor)
+        if slide_index is not None:
+            lecture_state["slides"][slide_index]["assets"]["podcasts"].append(podcast_asset)
+            continue
         reading_index = _find_reading_index(lecture_state, descriptor)
         if reading_index is None and quiz_location is not None and quiz_location[0] == lecture_position:
             reading_index = quiz_location[1]
@@ -673,6 +738,7 @@ def build_subject_content_manifest(subject_slug: str) -> SubjectContentManifest:
     subject_paths = resolve_subject_paths(slug)
     parse_result, reading_source_path, used_fallback = _reading_source_with_fallback(slug)
     manifest_warnings: list[str] = []
+    slide_catalog_entries = _load_slide_catalog_entries(slug)
 
     lectures: list[dict[str, Any]] = []
     lecture_index: dict[str, int] = {}
@@ -721,7 +787,31 @@ def build_subject_content_manifest(subject_slug: str) -> SubjectContentManifest:
                         reading_match_lookup,
                         _matching_key_from_normalized(source_stem_normalized),
                         reading_position,
-                    )
+                )
+
+        slide_items: list[dict[str, Any]] = []
+        for raw_slide in slide_catalog_entries:
+            raw_lecture_key = str(raw_slide.get("lecture_key") or "").strip().upper()
+            if raw_lecture_key != lecture_key:
+                continue
+            source_filename = (
+                str(raw_slide.get("source_filename") or "").strip()
+                if isinstance(raw_slide.get("source_filename"), str) and str(raw_slide.get("source_filename") or "").strip()
+                else None
+            )
+            slide_items.append(
+                {
+                    "slide_key": str(raw_slide.get("slide_key") or "").strip().lower(),
+                    "subcategory": str(raw_slide.get("subcategory") or "").strip().lower(),
+                    "title": str(raw_slide.get("title") or "").strip() or (source_filename or "Slides"),
+                    "source_filename": source_filename,
+                    "relative_path": str(raw_slide.get("relative_path") or "").strip() or None,
+                    "assets": {
+                        "quizzes": [],
+                        "podcasts": [],
+                    },
+                }
+            )
 
         lectures.append(
             {
@@ -729,8 +819,10 @@ def build_subject_content_manifest(subject_slug: str) -> SubjectContentManifest:
                 "lecture_title": lecture_title,
                 "sequence_index": sequence_index,
                 "readings": readings,
+                "slides": slide_items,
                 "reading_lookup": reading_lookup,
                 "reading_match_lookup": reading_match_lookup,
+                "slide_lookup": _build_slide_lookup(slide_items),
                 "lecture_assets": {
                     "quizzes": [],
                     "podcasts": [],
@@ -779,8 +871,21 @@ def build_subject_content_manifest(subject_slug: str) -> SubjectContentManifest:
             reading["assets"]["podcasts"].sort(
                 key=lambda item: str(item.get("title") or "").casefold()
             )
+        for slide in lecture_state.get("slides") or []:
+            if not isinstance(slide, dict):
+                continue
+            slide_assets = slide.get("assets") if isinstance(slide.get("assets"), dict) else {}
+            slide_assets.setdefault("quizzes", [])
+            slide_assets.setdefault("podcasts", [])
+            slide_assets["quizzes"].sort(
+                key=lambda item: (str(item.get("difficulty") or "medium"), str(item.get("quiz_id") or ""))
+            )
+            slide_assets["podcasts"].sort(
+                key=lambda item: str(item.get("title") or "").casefold()
+            )
         lecture_state.pop("reading_lookup", None)
         lecture_state.pop("reading_match_lookup", None)
+        lecture_state.pop("slide_lookup", None)
 
     reading_error = parse_result.error
     source_meta = {
@@ -794,6 +899,7 @@ def build_subject_content_manifest(subject_slug: str) -> SubjectContentManifest:
         "quiz_links_path": str(quiz_links_path),
         "rss_path": str(rss_path),
         "spotify_map_path": str(spotify_map_path),
+        "slides_catalog_path": str(subject_paths.slides_catalog_path),
     }
 
     return {

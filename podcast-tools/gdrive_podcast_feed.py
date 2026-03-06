@@ -1734,7 +1734,11 @@ WEEK_LECTURE_PATTERN = re.compile(r"\bw\s*(\d{1,2})\s*l\s*(\d+)\b", re.IGNORECAS
 BRIEF_PREFIX_PATTERN = re.compile(r"^\[\s*brief\s*\]\s*", re.IGNORECASE)
 WEEK_PREFIX_TOKEN_PATTERN = re.compile(r"^w\s*\d{1,2}(?:\s*l\s*\d+)?\b", re.IGNORECASE)
 WEEK_PREFIX_SEPARATOR_PATTERN = re.compile(r"^[\s._\-–:]+")
-EPISODE_KINDS = {"reading", "brief", "weekly_overview"}
+SLIDE_DESCRIPTOR_PATTERN = re.compile(
+    r"^slide\s+(?:lecture|seminar|exercise)\s*:\s*(?P<title>.+)$",
+    re.IGNORECASE,
+)
+EPISODE_KINDS = {"reading", "brief", "weekly_overview", "slide"}
 WEEKLY_OVERVIEW_LABEL = "Alle kilder (undtagen slides)"
 WEEKLY_OVERVIEW_SUBJECT_PATTERN = re.compile(
     r"\b(?:alle kilder|all sources)\b(?:\s*\((?:undtagen slides|excluding slides)\))?",
@@ -2826,6 +2830,7 @@ def build_episode_entry(
     cleaned_title = strip_week_prefix(cleaned_title)
     cleaned_title = LEADING_EXERCISE_X_PATTERN.sub("", cleaned_title).strip()
     cleaned_title = cleaned_title.strip()
+    is_slide = bool(SLIDE_DESCRIPTOR_PATTERN.match(cleaned_title))
 
     if is_weekly_overview:
         cleaned_subject = WEEKLY_OVERVIEW_SUBJECT_PATTERN.sub("", cleaned_title)
@@ -2843,9 +2848,15 @@ def build_episode_entry(
         type_label = "Brief"
     elif is_weekly_overview:
         type_label = WEEKLY_OVERVIEW_LABEL
+    elif is_slide:
+        type_label = "Slide"
     else:
         type_label = "Reading"
-    episode_kind = "brief" if is_brief else ("weekly_overview" if is_weekly_overview else "reading")
+    episode_kind = (
+        "brief"
+        if is_brief
+        else ("weekly_overview" if is_weekly_overview else ("slide" if is_slide else "reading"))
+    )
     skip_audio_category_prefix = False
 
     quiz_link_payloads: List[Dict[str, str]] = []
@@ -2947,6 +2958,8 @@ def build_episode_entry(
             descriptor = "Kapitel i grundbogen"
         elif is_weekly_overview:
             descriptor = WEEKLY_OVERVIEW_LABEL
+        elif is_slide:
+            descriptor = "Slide"
         else:
             descriptor = "Reading"
         descriptor_subject = f"{descriptor}: {text_label}" if text_label else descriptor

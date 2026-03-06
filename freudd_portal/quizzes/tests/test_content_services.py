@@ -29,6 +29,7 @@ class SubjectContentManifestTests(TestCase):
         self.rss_file = root / "rss.xml"
         self.spotify_map_file = root / "spotify_map.json"
         self.manifest_file = root / "content_manifest.json"
+        self.slides_catalog_file = root / "slides_catalog.json"
 
         self.primary_reading_file.write_text(
             "\n".join(
@@ -130,6 +131,17 @@ class SubjectContentManifestTests(TestCase):
             ),
             encoding="utf-8",
         )
+        self.slides_catalog_file.write_text(
+            json.dumps(
+                {
+                    "version": 1,
+                    "subject_slug": "personlighedspsykologi",
+                    "slides": [],
+                    "unresolved": [],
+                }
+            ),
+            encoding="utf-8",
+        )
 
         self.override = override_settings(
             FREUDD_SUBJECTS_JSON_PATH=self.subjects_file,
@@ -139,6 +151,7 @@ class SubjectContentManifestTests(TestCase):
             FREUDD_SUBJECT_FEED_RSS_PATH=self.rss_file,
             FREUDD_SUBJECT_SPOTIFY_MAP_PATH=self.spotify_map_file,
             FREUDD_SUBJECT_CONTENT_MANIFEST_PATH=self.manifest_file,
+            FREUDD_SUBJECT_SLIDES_CATALOG_PATH=self.slides_catalog_file,
         )
         self.override.enable()
         self.addCleanup(self.override.disable)
@@ -187,6 +200,85 @@ class SubjectContentManifestTests(TestCase):
         self.assertEqual(reading["assets"]["podcasts"][0]["duration_label"], "")
         self.assertIsNone(reading["assets"]["podcasts"][0]["duration_seconds"])
         self.assertFalse(manifest["warnings"])
+
+    def test_build_manifest_maps_slide_assets_from_explicit_slide_descriptor(self) -> None:
+        self.slides_catalog_file.write_text(
+            json.dumps(
+                {
+                    "version": 1,
+                    "subject_slug": "personlighedspsykologi",
+                    "slides": [
+                        {
+                            "slide_key": "w01l1-lecture-intro-slides",
+                            "lecture_key": "W01L1",
+                            "subcategory": "lecture",
+                            "title": "Forelæsning intro slides",
+                            "source_filename": "Forelaesning intro slides.pdf",
+                            "relative_path": "W01L1/lecture/Forelaesning intro slides.pdf",
+                        }
+                    ],
+                    "unresolved": [],
+                }
+            ),
+            encoding="utf-8",
+        )
+        self.quiz_links_file.write_text(
+            json.dumps(
+                {
+                    "by_name": {
+                        "W01L1 - Slide lecture: Forelæsning intro slides [EN].mp3": {
+                            "relative_path": "dddddddd.html",
+                            "difficulty": "medium",
+                            "subject_slug": "personlighedspsykologi",
+                        }
+                    }
+                }
+            ),
+            encoding="utf-8",
+        )
+        self.rss_file.write_text(
+            "\n".join(
+                [
+                    '<?xml version="1.0" encoding="UTF-8"?>',
+                    "<rss version=\"2.0\">",
+                    "<channel>",
+                    "<item>",
+                    "<title>U1F1 · [Podcast] · Slide lecture: Forelæsning intro slides · 02/02 - 08/02</title>",
+                    "<pubDate>Mon, 02 Feb 2026 11:00:00 +0100</pubDate>",
+                    '<enclosure url="https://example.test/audio/slide-intro.mp3" length="1" type="audio/mpeg" />',
+                    "</item>",
+                    "</channel>",
+                    "</rss>",
+                ]
+            ),
+            encoding="utf-8",
+        )
+        self.spotify_map_file.write_text(
+            json.dumps(
+                {
+                    "version": 1,
+                    "subject_slug": "personlighedspsykologi",
+                    "by_rss_title": {
+                        "U1F1 · [Podcast] · Slide lecture: Forelæsning intro slides · 02/02 - 08/02": "https://open.spotify.com/episode/6m0hYfDU9ThM5qR2xMugr8",
+                    },
+                }
+            ),
+            encoding="utf-8",
+        )
+        clear_content_service_caches()
+
+        manifest = build_subject_content_manifest("personlighedspsykologi")
+        lecture = manifest["lectures"][0]
+        self.assertEqual(len(lecture["slides"]), 1)
+        slide = lecture["slides"][0]
+        self.assertEqual(slide["slide_key"], "w01l1-lecture-intro-slides")
+        self.assertEqual(len(slide["assets"]["quizzes"]), 1)
+        self.assertEqual(slide["assets"]["quizzes"][0]["quiz_id"], "dddddddd")
+        self.assertEqual(len(slide["assets"]["podcasts"]), 1)
+        self.assertEqual(
+            slide["assets"]["podcasts"][0]["source_audio_url"],
+            "https://example.test/audio/slide-intro.mp3",
+        )
 
     def test_build_manifest_sets_source_filename_none_for_missing_readings(self) -> None:
         self.primary_reading_file.write_text(

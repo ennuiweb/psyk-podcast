@@ -11,6 +11,7 @@ import sys
 import time
 from pathlib import Path
 import shlex
+from typing import NamedTuple
 
 
 def read_json(path: Path) -> dict:
@@ -31,6 +32,20 @@ DEFAULT_SOURCES_ROOT = (
     "Mine dokumenter \U0001F4BE/psykologi/Personlighedspsykologi/Readings"
 )
 WEEKLY_OVERVIEW_TITLE = "Alle kilder (undtagen slides)"
+SLIDE_SUBCATEGORY_ORDER = {"lecture": 0, "seminar": 1, "exercise": 2}
+SLIDE_SUBCATEGORY_LABELS = {
+    "lecture": "Slide lecture",
+    "seminar": "Slide seminar",
+    "exercise": "Slide exercise",
+}
+
+
+class SourceItem(NamedTuple):
+    path: Path
+    base_name: str
+    source_type: str
+    slide_key: str | None = None
+    slide_subcategory: str | None = None
 
 
 def parse_week_selector(value: str) -> tuple[int, int | None] | None:
@@ -96,6 +111,105 @@ def list_source_files(week_dir: Path) -> list[Path]:
         if entry.is_file():
             files.append(entry)
     return files
+
+
+def _slides_catalog_entries_for_lecture(
+    *,
+    slides_catalog_path: Path | None,
+    slides_source_root: Path | None,
+    lecture_key: str,
+) -> list[SourceItem]:
+    if slides_catalog_path is None or slides_source_root is None:
+        return []
+    if not slides_catalog_path.exists():
+        return []
+
+    try:
+        payload = read_json(slides_catalog_path)
+    except (OSError, json.JSONDecodeError):
+        print(f"Warning: unable to read slides catalog: {slides_catalog_path}")
+        return []
+
+    expected_subject_slug = str(payload.get("subject_slug") or "").strip().lower()
+    if expected_subject_slug:
+        _ = expected_subject_slug
+
+    raw_slides = payload.get("slides")
+    if not isinstance(raw_slides, list):
+        return []
+
+    items: list[SourceItem] = []
+    for raw_slide in raw_slides:
+        if not isinstance(raw_slide, dict):
+            continue
+        raw_lecture_key = str(raw_slide.get("lecture_key") or "").strip().upper()
+        if raw_lecture_key != lecture_key:
+            continue
+        subcategory = str(raw_slide.get("subcategory") or "").strip().lower()
+        if subcategory not in SLIDE_SUBCATEGORY_LABELS:
+            continue
+        title = str(raw_slide.get("title") or "").strip()
+        source_filename = str(raw_slide.get("source_filename") or "").strip()
+        if not title and not source_filename:
+            continue
+        local_source_path = str(raw_slide.get("local_source_path") or "").strip()
+        local_relative_path = str(raw_slide.get("local_relative_path") or "").strip()
+        if local_source_path:
+            slide_path = Path(local_source_path).expanduser()
+        elif local_relative_path:
+            slide_path = (slides_source_root / local_relative_path).resolve()
+        else:
+            relative_path = str(raw_slide.get("relative_path") or "").strip()
+            candidate = local_relative_path or relative_path or source_filename
+            slide_path = (slides_source_root / candidate).resolve()
+        if not slide_path.exists() or not slide_path.is_file():
+            print(
+                f"Warning: skipping slide source for {lecture_key} because file is missing: {slide_path}"
+            )
+            continue
+        display_title = title or slide_path.stem
+        base_name = f"{SLIDE_SUBCATEGORY_LABELS[subcategory]}: {display_title}"
+        items.append(
+            SourceItem(
+                path=slide_path,
+                base_name=base_name,
+                source_type="slide",
+                slide_key=str(raw_slide.get("slide_key") or "").strip().lower() or None,
+                slide_subcategory=subcategory,
+            )
+        )
+
+    return sorted(
+        items,
+        key=lambda item: (
+            SLIDE_SUBCATEGORY_ORDER.get(str(item.slide_subcategory or ""), 99),
+            item.base_name.casefold(),
+            str(item.path),
+        ),
+    )
+
+
+def build_source_items(
+    *,
+    week_dir: Path,
+    week_label: str,
+    slides_catalog_path: Path | None,
+    slides_source_root: Path | None,
+) -> tuple[list[SourceItem], list[SourceItem]]:
+    reading_sources = [
+        SourceItem(
+            path=path,
+            base_name=normalize_episode_title(path.stem, week_label),
+            source_type="reading",
+        )
+        for path in list_source_files(week_dir)
+    ]
+    slide_sources = _slides_catalog_entries_for_lecture(
+        slides_catalog_path=slides_catalog_path,
+        slides_source_root=slides_source_root,
+        lecture_key=week_label,
+    )
+    return reading_sources, [*reading_sources, *slide_sources]
 
 
 def should_generate_weekly_overview(source_count: int) -> bool:
@@ -970,6 +1084,16 @@ def main() -> int:
     config = read_json(prompt_config)
     if args.config_tag_len < 1:
         raise SystemExit("--config-tag-len must be >= 1.")
+    course_title = str(config.get("course_title") or "Personlighedspsykologi").strip() or "Personlighedspsykologi"
+    slides_catalog_raw = str(config.get("slides_catalog") or "").strip()
+    slides_source_root_raw = str(config.get("slides_source_root") or "").strip()
+    slides_catalog_path = (repo_root / slides_catalog_raw) if slides_catalog_raw else None
+    slides_source_root = None
+    if slides_source_root_raw:
+        slide_root_candidate = Path(slides_source_root_raw).expanduser()
+        if not slide_root_candidate.is_absolute():
+            slide_root_candidate = repo_root / slide_root_candidate
+        slides_source_root = slide_root_candidate.resolve()
     content_types = parse_content_types(args.content_types)
     language_variants = build_language_variants(config)
     weekly_cfg = config.get("weekly_overview", {})
@@ -1015,16 +1139,22 @@ def main() -> int:
             week_output_dir = output_root / week_label
             week_output_dir.mkdir(parents=True, exist_ok=True)
 
-            sources = list_source_files(week_dir)
-            if not sources:
+            reading_sources, generation_sources = build_source_items(
+                week_dir=week_dir,
+                week_label=week_label,
+                slides_catalog_path=slides_catalog_path,
+                slides_source_root=slides_source_root,
+            )
+            if not generation_sources:
                 raise SystemExit(f"No source files found in {week_dir}")
-            source_count = len(sources)
-            total_sources_read += source_count
-            generate_weekly_overview = should_generate_weekly_overview(source_count)
+            reading_source_count = len(reading_sources)
+            generation_source_count = len(generation_sources)
+            total_sources_read += generation_source_count
+            generate_weekly_overview = should_generate_weekly_overview(reading_source_count)
             if not generate_weekly_overview:
                 print(
                     f"{week_label}: skipping Alle kilder generation "
-                    f"(only {source_count} source file)"
+                    f"(only {reading_source_count} reading source file)"
                 )
 
             planned_lines: list[str] = []
@@ -1050,7 +1180,7 @@ def main() -> int:
                                     quiz_quantity=None,
                                     quiz_difficulty=None,
                                     quiz_format=None,
-                                    source_count=source_count,
+                                    source_count=reading_source_count,
                                     hash_len=args.config_tag_len,
                                 )
                             elif content_type == "infographic":
@@ -1102,8 +1232,9 @@ def main() -> int:
                             if not should_skip:
                                 missing_outputs += 1
 
-            for source in sources:
-                base_name = normalize_episode_title(source.stem, week_label)
+            for source_item in generation_sources:
+                source = source_item.path
+                base_name = source_item.base_name
                 per_base = f"{week_label} - {base_name}"
                 for content_type in content_types:
                     per_output = week_output_dir / f"{per_base}{output_extension(content_type, quiz_format=quiz_format)}"
@@ -1175,7 +1306,7 @@ def main() -> int:
                             should_skip, _ = should_skip_generation(planned_path, args.skip_existing)
                             if not should_skip:
                                 missing_outputs += 1
-                if "Grundbog kapitel" in source.name:
+                if source_item.source_type == "reading" and "Grundbog kapitel" in source.name:
                     title_prefix = brief_cfg.get("title_prefix", "[Brief]")
                     brief_base = f"{title_prefix} {week_label} - {base_name}"
                     for content_type in content_types:
@@ -1249,7 +1380,7 @@ def main() -> int:
 
             total_missing_outputs += missing_outputs
             print(
-                f"{week_label}: read {len(sources)} sources, found {missing_outputs} missing outputs"
+                f"{week_label}: read {generation_source_count} sources ({reading_source_count} readings, {generation_source_count - reading_source_count} slides), found {missing_outputs} missing outputs"
             )
 
             if args.dry_run:
@@ -1306,7 +1437,7 @@ def main() -> int:
                                     quiz_quantity=quiz_quantity_arg,
                                     quiz_difficulty=quiz_difficulty_arg,
                                     quiz_format=quiz_format_arg,
-                                    source_count=source_count,
+                                    source_count=reading_source_count,
                                     hash_len=args.config_tag_len,
                                 )
                                 if args.config_tagging
@@ -1339,9 +1470,9 @@ def main() -> int:
                                     generator_script,
                                     sources_file=None,
                                     source_path=None,
-                                    source_paths=sources,
+                                    source_paths=[item.path for item in reading_sources],
                                     notebook_title=apply_suffix(
-                                        f"Personlighedspsykologi {week_label} {WEEKLY_OVERVIEW_TITLE}",
+                                        f"{course_title} {week_label} {WEEKLY_OVERVIEW_TITLE}",
                                         variant["title_suffix"],
                                     ),
                                     instructions=instructions,
@@ -1393,8 +1524,9 @@ def main() -> int:
                                 output_path.with_suffix(output_path.suffix + ".request.json")
                             )
 
-            for source in sources:
-                base_name = normalize_episode_title(source.stem, week_label)
+            for source_item in generation_sources:
+                source = source_item.path
+                base_name = source_item.base_name
                 per_base = f"{week_label} - {base_name}"
                 for content_type in content_types:
                     per_output = week_output_dir / f"{per_base}{output_extension(content_type, quiz_format=quiz_format)}"
@@ -1475,7 +1607,7 @@ def main() -> int:
                                     sources_file=None,
                                     source_path=source,
                                     notebook_title=apply_suffix(
-                                        f"Personlighedspsykologi {week_label} {base_name}",
+                                        f"{course_title} {week_label} {base_name}",
                                         variant["title_suffix"],
                                     ),
                                     instructions=instructions,
@@ -1525,7 +1657,7 @@ def main() -> int:
                                 maybe_sleep(args.sleep_between)
                             request_logs.append(output_path.with_suffix(output_path.suffix + ".request.json"))
 
-                if "Grundbog kapitel" in source.name:
+                if source_item.source_type == "reading" and "Grundbog kapitel" in source.name:
                     title_prefix = brief_cfg.get("title_prefix", "[Brief]")
                     brief_base = f"{title_prefix} {week_label} - {base_name}"
                     for content_type in content_types:
@@ -1607,7 +1739,7 @@ def main() -> int:
                                         sources_file=None,
                                         source_path=source,
                                         notebook_title=apply_suffix(
-                                            f"Personlighedspsykologi {week_label} [Brief] {base_name}",
+                                            f"{course_title} {week_label} [Brief] {base_name}",
                                             variant["title_suffix"],
                                         ),
                                         instructions=instructions,

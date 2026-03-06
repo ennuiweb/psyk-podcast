@@ -54,6 +54,14 @@ Alle entries i `shows/bioneuro/slides_catalog.json` skal have `matched_by: "manu
 5. Upload filen til `/var/www/slides/bioneuro/<W##L#>/<subcategory>/<source_filename>`.
 6. Verificér at portal-UI kun viser de underkategorier, der har mindst én slide.
 
+Hver entry skal også have `local_relative_path`, fx:
+
+- `Lectures/<filnavn>` for `lecture`
+- `Holdundervisning/<filnavn>` for `exercise`
+- `Seminar/<filnavn>` for `seminar`, hvis den kategori senere tages i brug
+
+Generatoren bruger `local_relative_path` til per-slide podcasts og per-slide quizzer. Slides tæller som kilder for disse per-slide artifacts, men indgår ikke i `Alle kilder (undtagen slides)`.
+
 ## Drift
 
 - Catalog: `shows/bioneuro/slides_catalog.json`

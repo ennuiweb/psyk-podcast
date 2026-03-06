@@ -120,16 +120,40 @@ class CfgTagFilenameHelpersTests(unittest.TestCase):
 
     def test_local_build_flat_quiz_relative_path_is_deterministic(self):
         mod = self.local_sync
-        rel_a, seed_a = mod.build_flat_quiz_relative_path("W01L1 - Foo [EN].mp3", "medium", 8)
-        rel_b, seed_b = mod.build_flat_quiz_relative_path("W01L1 - Foo [EN].mp3", "medium", 8)
+        rel_a, seed_a = mod.build_flat_quiz_relative_path(
+            "W01L1 - Foo [EN].mp3",
+            "medium",
+            8,
+            include_subject=False,
+            subject_slug="personlighedspsykologi",
+        )
+        rel_b, seed_b = mod.build_flat_quiz_relative_path(
+            "W01L1 - Foo [EN].mp3",
+            "medium",
+            8,
+            include_subject=False,
+            subject_slug="personlighedspsykologi",
+        )
         self.assertEqual(rel_a, rel_b)
         self.assertEqual(seed_a, seed_b)
         self.assertRegex(rel_a, r"^[0-9a-f]{8}\.html$")
 
     def test_local_build_flat_quiz_relative_path_changes_with_difficulty(self):
         mod = self.local_sync
-        rel_easy, _ = mod.build_flat_quiz_relative_path("W01L1 - Foo [EN].mp3", "easy", 8)
-        rel_medium, _ = mod.build_flat_quiz_relative_path("W01L1 - Foo [EN].mp3", "medium", 8)
+        rel_easy, _ = mod.build_flat_quiz_relative_path(
+            "W01L1 - Foo [EN].mp3",
+            "easy",
+            8,
+            include_subject=False,
+            subject_slug="personlighedspsykologi",
+        )
+        rel_medium, _ = mod.build_flat_quiz_relative_path(
+            "W01L1 - Foo [EN].mp3",
+            "medium",
+            8,
+            include_subject=False,
+            subject_slug="personlighedspsykologi",
+        )
         self.assertNotEqual(rel_easy, rel_medium)
 
     def test_local_ensure_unique_flat_quiz_relative_path_detects_collisions(self):
@@ -337,11 +361,15 @@ class CfgTagFilenameHelpersTests(unittest.TestCase):
             "W01L1 - Foo [EN].mp3",
             "hard",
             8,
+            include_subject=False,
+            subject_slug="personlighedspsykologi",
         )
         drive_rel, drive_seed = self.drive_sync.build_flat_quiz_relative_path(
             "W01L1 - Foo [EN].mp3",
             "hard",
             8,
+            include_subject=False,
+            subject_slug="personlighedspsykologi",
         )
         self.assertEqual(local_rel, drive_rel)
         self.assertEqual(local_seed, drive_seed)
@@ -591,6 +619,107 @@ class CfgTagFilenameHelpersTests(unittest.TestCase):
         mod = self.generate_week
         self.assertEqual(mod.quiz_difficulty_values("quiz", "all"), ["easy", "medium", "hard"])
         self.assertEqual(mod.quiz_difficulty_values("audio", "all"), [None])
+
+    def test_generate_week_build_source_items_includes_manual_slides(self):
+        mod = self.generate_week
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            week_dir = root / "W01L1"
+            week_dir.mkdir(parents=True, exist_ok=True)
+            (week_dir / "Lewis (1999).pdf").write_bytes(b"%PDF-1.4\n%reading\n")
+
+            slides_root = root / "slides-root"
+            (slides_root / "Forelaesningsraekken").mkdir(parents=True, exist_ok=True)
+            (slides_root / "Forelaesningsraekken" / "Forelaesning intro slides.pdf").write_bytes(
+                b"%PDF-1.4\n%slide\n"
+            )
+            slides_catalog = root / "slides_catalog.json"
+            slides_catalog.write_text(
+                json.dumps(
+                    {
+                        "version": 1,
+                        "subject_slug": "personlighedspsykologi",
+                        "slides": [
+                            {
+                                "slide_key": "w01l1-lecture-intro-slides",
+                                "lecture_key": "W01L1",
+                                "subcategory": "lecture",
+                                "title": "Forelæsning intro slides",
+                                "source_filename": "Forelaesning intro slides.pdf",
+                                "local_relative_path": "Forelaesningsraekken/Forelaesning intro slides.pdf",
+                                "relative_path": "W01L1/lecture/Forelaesning intro slides.pdf",
+                            }
+                        ],
+                        "unresolved": [],
+                    },
+                    ensure_ascii=False,
+                ),
+                encoding="utf-8",
+            )
+
+            reading_sources, generation_sources = mod.build_source_items(
+                week_dir=week_dir,
+                week_label="W01L1",
+                slides_catalog_path=slides_catalog,
+                slides_source_root=slides_root,
+            )
+
+        self.assertEqual(len(reading_sources), 1)
+        self.assertEqual(len(generation_sources), 2)
+        self.assertEqual([item.source_type for item in generation_sources], ["reading", "slide"])
+        self.assertEqual(generation_sources[0].base_name, "Lewis (1999)")
+        self.assertEqual(generation_sources[1].base_name, "Slide lecture: Forelæsning intro slides")
+        self.assertEqual(generation_sources[1].slide_key, "w01l1-lecture-intro-slides")
+
+    def test_generate_week_weekly_overview_count_excludes_slides(self):
+        mod = self.generate_week
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            week_dir = root / "W01L1"
+            week_dir.mkdir(parents=True, exist_ok=True)
+            (week_dir / "Only reading.pdf").write_bytes(b"%PDF-1.4\n%reading\n")
+
+            slides_root = root / "slides-root"
+            (slides_root / "Forelaesningsraekken").mkdir(parents=True, exist_ok=True)
+            (slides_root / "Forelaesningsraekken" / "Only slide.pdf").write_bytes(b"%PDF-1.4\n%slide\n")
+            slides_catalog = root / "slides_catalog.json"
+            slides_catalog.write_text(
+                json.dumps(
+                    {
+                        "version": 1,
+                        "subject_slug": "personlighedspsykologi",
+                        "slides": [
+                            {
+                                "slide_key": "w01l1-lecture-only-slide",
+                                "lecture_key": "W01L1",
+                                "subcategory": "lecture",
+                                "title": "Only slide",
+                                "source_filename": "Only slide.pdf",
+                                "local_relative_path": "Forelaesningsraekken/Only slide.pdf",
+                                "relative_path": "W01L1/lecture/Only slide.pdf",
+                            }
+                        ],
+                        "unresolved": [],
+                    },
+                    ensure_ascii=False,
+                ),
+                encoding="utf-8",
+            )
+
+            reading_sources, generation_sources = mod.build_source_items(
+                week_dir=week_dir,
+                week_label="W01L1",
+                slides_catalog_path=slides_catalog,
+                slides_source_root=slides_root,
+            )
+
+        reading_count = len(reading_sources)
+        slide_count = sum(1 for item in generation_sources if item.source_type == "slide")
+
+        self.assertEqual(reading_count, 1)
+        self.assertEqual(slide_count, 1)
+        self.assertFalse(mod.should_generate_weekly_overview(reading_count))
+        self.assertGreater(len(generation_sources), reading_count)
 
     def test_generate_podcast_output_path_for_quiz_difficulty_rewrites_cfg_tag(self):
         if self.generate_podcast is None:

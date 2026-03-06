@@ -2065,6 +2065,45 @@ class AutoSpecMatchingTests(unittest.TestCase):
             "U1F1 · [Podcast] · Grundbog Kapitel 1",
         )
 
+    def test_by_id_override_can_supply_source_folder_and_quiz_link(self):
+        mod = _load_feed_module()
+        file_entry = {
+            "id": "drive-file-1",
+            "name": "Unhelpful upload name.mp3",
+            "createdTime": "2026-02-02T08:00:00+00:00",
+        }
+        episode = mod.build_episode_entry(
+            file_entry=file_entry,
+            feed_config={
+                "title": "Bioneuro",
+                "link": "https://example.com",
+                "description": "Test feed",
+                "language": "en",
+                "audio_category_prefix_position": "after_first_block",
+                "semester_week_number_source": "lecture_key",
+                "title_blocks": ["course_week_lecture", "subject_or_type"],
+            },
+            overrides={
+                "by_id": {
+                    "drive-file-1": {
+                        "link": "https://freudd.dk/q/f0657e64.html",
+                        "meta": {
+                            "source_folder": "W01L1 Introduktion (2026-02-06)",
+                        },
+                    }
+                }
+            },
+            public_link_template="https://example.com/{file_id}",
+        )
+        self.assertEqual(
+            episode["title"],
+            "U1F1 · [Podcast] · Unhelpful upload name",
+        )
+        self.assertEqual(
+            episode["link"],
+            "https://freudd.dk/q/f0657e64.html",
+        )
+
     def test_description_quiz_block_renders_all_difficulties_with_short_ids(self):
         mod = _load_feed_module()
         file_entry = {

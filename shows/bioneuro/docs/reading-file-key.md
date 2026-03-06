@@ -17,4 +17,5 @@ Seedet mapping fra Readings-foldere:
 
 Manuel udvidelse:
 - Hvis nye kapitler/lydfiler tilføjes, opdatér både `episode_metadata.json` og `reading_summaries.json` med samme `by_name`-nøgle.
+- Hvis eksisterende Drive uploads ikke matcher de seedede filnavne præcist, pin dem i `episode_metadata.json` under `by_id` med både `meta.source_folder` og korrekt Freudd-quizlink.
 - Hold ugehenvisninger i navne/mapper konsistente med `auto_spec.json` aliases (`w1`..`w13`).

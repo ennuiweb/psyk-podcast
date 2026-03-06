@@ -87,5 +87,5 @@ Eksempel:
 ## Vigtige driftsregler
 
 - `scripts/sync_personlighedspsykologi_slides_to_droplet.py` må ikke bruges til automatisk mapping.
-- Portalen tillader kun direkte `Åben slide` for `lecture`-slides; `seminar`/`exercise` vises uden direkte filåbning.
+- Portalen tillader direkte `Åben slide` for `lecture`-slides offentligt; `seminar`/`exercise` kræver elevated access eller `is_staff`/`is_superuser`.
 - Hvis en underkategori ikke har slides for den aktive forelæsning, skal den ikke vises i UI.

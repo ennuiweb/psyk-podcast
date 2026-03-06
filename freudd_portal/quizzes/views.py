@@ -31,7 +31,7 @@ from django.urls import reverse
 from django.views.decorators.http import require_GET, require_http_methods, require_POST, require_safe
 from pypdf import PdfReader
 
-from .access_services import user_has_elevated_reading_access
+from .access_services import user_has_elevated_reading_access, user_has_elevated_slide_access
 from .content_services import load_subject_content_manifest
 from .forms import SignupForm
 from .gamification_services import (
@@ -148,7 +148,7 @@ SLIDE_GROUP_TITLES = {
     "seminar": "slides fra seminarhold",
     "exercise": "slides fra øvelseshold",
 }
-DIRECT_OPEN_SLIDE_CATEGORIES = {"lecture"}
+PUBLIC_OPEN_SLIDE_CATEGORIES = {"lecture"}
 _READING_EXCLUSION_CACHE: dict[str, object] = {
     "path": None,
     "mtime": None,
@@ -505,9 +505,9 @@ def _slide_category_key(value: object) -> str:
     return ""
 
 
-def _is_direct_slide_open_allowed(subcategory: object) -> bool:
+def _is_direct_slide_open_allowed(subcategory: object, *, user: object | None = None) -> bool:
     category = _slide_category_key(subcategory)
-    return category in DIRECT_OPEN_SLIDE_CATEGORIES
+    return category in PUBLIC_OPEN_SLIDE_CATEGORIES or user_has_elevated_slide_access(user)
 
 
 def _slide_catalog_path() -> Path | None:
@@ -624,6 +624,7 @@ def _slide_file_path_or_404(
     lecture_key: str,
     subcategory: str,
     source_filename: str,
+    user: object | None = None,
 ) -> Path:
     lecture = str(lecture_key or "").strip().upper()
     if not SUBJECT_LECTURE_KEY_RE.match(lecture):
@@ -631,7 +632,7 @@ def _slide_file_path_or_404(
     category = _slide_category_key(subcategory)
     if not category:
         raise Http404("Slide ikke fundet i fagets læringssti.")
-    if not _is_direct_slide_open_allowed(category):
+    if not _is_direct_slide_open_allowed(category, user=user):
         raise Http404("Slide-filen kunne ikke tilgås.")
     normalized_source_filename = _source_filename_or_none(source_filename)
     if not normalized_source_filename:
@@ -1500,7 +1501,12 @@ def _slide_group_key(*, reading_title: object, source_filename: object) -> str:
     return "lecture"
 
 
-def _slide_groups_for_lecture(lecture: object, *, subject_slug: str) -> list[dict[str, object]]:
+def _slide_groups_for_lecture(
+    lecture: object,
+    *,
+    subject_slug: str,
+    user: object | None = None,
+) -> list[dict[str, object]]:
     groups: dict[str, dict[str, object]] = {
         "lecture": {
             "group_key": "lecture",
@@ -1530,7 +1536,7 @@ def _slide_groups_for_lecture(lecture: object, *, subject_slug: str) -> list[dic
         source_filename = str(slide.get("source_filename") or "").strip()
         seen_catalog_keys.add((group_key, source_filename.casefold()))
         open_url = ""
-        if _is_direct_slide_open_allowed(group_key):
+        if _is_direct_slide_open_allowed(group_key, user=user):
             open_url = reverse(
                 "subject-open-slide",
                 kwargs={
@@ -1563,7 +1569,7 @@ def _slide_groups_for_lecture(lecture: object, *, subject_slug: str) -> list[dic
         if source_filename and (group_key, source_filename.casefold()) in seen_catalog_keys:
             continue
         open_url = ""
-        if _is_direct_slide_open_allowed(group_key):
+        if _is_direct_slide_open_allowed(group_key, user=user):
             open_url = str(reading.get("open_pdf_url") or reading.get("open_url") or "").strip()
         item = {
             "slide_key": "",
@@ -2509,6 +2515,7 @@ def subject_open_slide_view(request: HttpRequest, subject_slug: str, slide_key: 
         lecture_key=entry["lecture_key"],
         subcategory=entry["subcategory"],
         source_filename=entry["source_filename"],
+        user=request.user,
     )
     suffix = file_path.suffix.lower()
     if suffix == ".pdf":
@@ -2864,6 +2871,7 @@ def subject_detail_view(request: HttpRequest, subject_slug: str) -> HttpResponse
         active_lecture["slide_groups"] = _slide_groups_for_lecture(
             active_lecture,
             subject_slug=subject.slug,
+            user=request.user,
         )
 
     return render(

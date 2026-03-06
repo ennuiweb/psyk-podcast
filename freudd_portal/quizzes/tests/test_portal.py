@@ -2192,6 +2192,161 @@ class QuizPortalTests(TestCase):
         blocked_exercise = self.client.get(exercise_open_url)
         self.assertEqual(blocked_exercise.status_code, 404)
 
+    def test_subject_detail_and_open_slide_route_allow_all_slide_categories_for_elevated_user(self) -> None:
+        self._write_slides_catalog_file(
+            slides=[
+                {
+                    "slide_key": "w01l1-lecture-intro-aaaaaaaa",
+                    "lecture_key": "W01L1",
+                    "subcategory": "lecture",
+                    "title": "Forelæsning intro slides",
+                    "source_filename": "Forelaesning intro slides.pdf",
+                    "relative_path": "W01L1/lecture/Forelaesning intro slides.pdf",
+                },
+                {
+                    "slide_key": "w01l1-seminar-intro-bbbbbbbb",
+                    "lecture_key": "W01L1",
+                    "subcategory": "seminar",
+                    "title": "Seminar intro slides",
+                    "source_filename": "Seminar intro slides.pdf",
+                    "relative_path": "W01L1/seminar/Seminar intro slides.pdf",
+                },
+                {
+                    "slide_key": "w01l1-exercise-intro-cccccccc",
+                    "lecture_key": "W01L1",
+                    "subcategory": "exercise",
+                    "title": "Øvelseshold intro slides",
+                    "source_filename": "Oevelseshold intro slides.pdf",
+                    "relative_path": "W01L1/exercise/Oevelseshold intro slides.pdf",
+                },
+            ]
+        )
+        (self.slides_files_root / "W01L1" / "lecture").mkdir(parents=True, exist_ok=True)
+        (self.slides_files_root / "W01L1" / "seminar").mkdir(parents=True, exist_ok=True)
+        (self.slides_files_root / "W01L1" / "exercise").mkdir(parents=True, exist_ok=True)
+        (self.slides_files_root / "W01L1" / "lecture" / "Forelaesning intro slides.pdf").write_bytes(
+            b"%PDF-1.4\n%test\n"
+        )
+        (self.slides_files_root / "W01L1" / "seminar" / "Seminar intro slides.pdf").write_bytes(
+            b"%PDF-1.4\n%test\n"
+        )
+        (self.slides_files_root / "W01L1" / "exercise" / "Oevelseshold intro slides.pdf").write_bytes(
+            b"%PDF-1.4\n%test\n"
+        )
+
+        user = self._create_user()
+        call_command(
+            "elevated_reading_access",
+            "--user",
+            user.username,
+            "--enable",
+            stdout=io.StringIO(),
+        )
+        self.client.force_login(user)
+        detail_url = reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"})
+        response = self.client.get(detail_url)
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Åben slide", count=3)
+
+        lecture_open_url = reverse(
+            "subject-open-slide",
+            kwargs={
+                "subject_slug": "personlighedspsykologi",
+                "slide_key": "w01l1-lecture-intro-aaaaaaaa",
+            },
+        )
+        seminar_open_url = reverse(
+            "subject-open-slide",
+            kwargs={
+                "subject_slug": "personlighedspsykologi",
+                "slide_key": "w01l1-seminar-intro-bbbbbbbb",
+            },
+        )
+        exercise_open_url = reverse(
+            "subject-open-slide",
+            kwargs={
+                "subject_slug": "personlighedspsykologi",
+                "slide_key": "w01l1-exercise-intro-cccccccc",
+            },
+        )
+
+        self.assertContains(response, f'href="{lecture_open_url}"')
+        self.assertContains(response, f'href="{seminar_open_url}"')
+        self.assertContains(response, f'href="{exercise_open_url}"')
+
+        self.assertEqual(self.client.get(lecture_open_url).status_code, 200)
+        self.assertEqual(self.client.get(seminar_open_url).status_code, 200)
+        self.assertEqual(self.client.get(exercise_open_url).status_code, 200)
+
+    def test_subject_detail_and_open_slide_route_allow_all_slide_categories_for_staff_user(self) -> None:
+        self._write_slides_catalog_file(
+            slides=[
+                {
+                    "slide_key": "w01l1-lecture-intro-aaaaaaaa",
+                    "lecture_key": "W01L1",
+                    "subcategory": "lecture",
+                    "title": "Forelæsning intro slides",
+                    "source_filename": "Forelaesning intro slides.pdf",
+                    "relative_path": "W01L1/lecture/Forelaesning intro slides.pdf",
+                },
+                {
+                    "slide_key": "w01l1-seminar-intro-bbbbbbbb",
+                    "lecture_key": "W01L1",
+                    "subcategory": "seminar",
+                    "title": "Seminar intro slides",
+                    "source_filename": "Seminar intro slides.pdf",
+                    "relative_path": "W01L1/seminar/Seminar intro slides.pdf",
+                },
+                {
+                    "slide_key": "w01l1-exercise-intro-cccccccc",
+                    "lecture_key": "W01L1",
+                    "subcategory": "exercise",
+                    "title": "Øvelseshold intro slides",
+                    "source_filename": "Oevelseshold intro slides.pdf",
+                    "relative_path": "W01L1/exercise/Oevelseshold intro slides.pdf",
+                },
+            ]
+        )
+        (self.slides_files_root / "W01L1" / "lecture").mkdir(parents=True, exist_ok=True)
+        (self.slides_files_root / "W01L1" / "seminar").mkdir(parents=True, exist_ok=True)
+        (self.slides_files_root / "W01L1" / "exercise").mkdir(parents=True, exist_ok=True)
+        (self.slides_files_root / "W01L1" / "lecture" / "Forelaesning intro slides.pdf").write_bytes(
+            b"%PDF-1.4\n%test\n"
+        )
+        (self.slides_files_root / "W01L1" / "seminar" / "Seminar intro slides.pdf").write_bytes(
+            b"%PDF-1.4\n%test\n"
+        )
+        (self.slides_files_root / "W01L1" / "exercise" / "Oevelseshold intro slides.pdf").write_bytes(
+            b"%PDF-1.4\n%test\n"
+        )
+
+        user = self._create_user(username="staff-user")
+        user.is_staff = True
+        user.save(update_fields=["is_staff"])
+        self.client.force_login(user)
+        detail_url = reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"})
+        response = self.client.get(detail_url)
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Åben slide", count=3)
+
+        seminar_open_url = reverse(
+            "subject-open-slide",
+            kwargs={
+                "subject_slug": "personlighedspsykologi",
+                "slide_key": "w01l1-seminar-intro-bbbbbbbb",
+            },
+        )
+        exercise_open_url = reverse(
+            "subject-open-slide",
+            kwargs={
+                "subject_slug": "personlighedspsykologi",
+                "slide_key": "w01l1-exercise-intro-cccccccc",
+            },
+        )
+
+        self.assertEqual(self.client.get(seminar_open_url).status_code, 200)
+        self.assertEqual(self.client.get(exercise_open_url).status_code, 200)
+
     def test_subject_detail_query_param_selects_active_lecture(self) -> None:
         user = self._create_user()
         self.client.force_login(user)

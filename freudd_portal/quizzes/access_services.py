@@ -26,6 +26,11 @@ def user_has_elevated_reading_access(user: object | None) -> bool:
     return has_access
 
 
+def user_has_elevated_slide_access(user: object | None) -> bool:
+    # Slide downloads reuse the same elevated access model as reading downloads.
+    return user_has_elevated_reading_access(user)
+
+
 def set_user_elevated_reading_access(*, user: object, enabled: bool) -> bool:
     group, _ = Group.objects.get_or_create(name=ELEVATED_READING_ACCESS_GROUP_NAME)
     if enabled:

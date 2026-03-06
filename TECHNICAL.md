@@ -144,7 +144,7 @@ The repository includes a Django portal in `freudd_portal/` for hybrid auth (use
 - `GET /subjects/<subject_slug>` (subject detail with lecture-first path + nested readings/assets; supports anonymous access)
 - `GET /subjects/<subject_slug>/readings/open/<reading_key>` (public reading file access; blocked if excluded in config)
 - `GET /subjects/<subject_slug>/readings/open/<reading_key>/text` (public reading text extraction for ChatGPT; blocked if excluded in config)
-- `GET /subjects/<subject_slug>/slides/open/<slide_key>` (public slide file access via slides catalog; lecture slides only, seminar/exercise blocked)
+- `GET /subjects/<subject_slug>/slides/open/<slide_key>` (public for `lecture` slides; `seminar`/`exercise` require authenticated elevated access or `is_staff`/`is_superuser`)
 - `POST /subjects/<subject_slug>/enroll` (login-required)
 - `POST /subjects/<subject_slug>/unenroll` (login-required)
 
@@ -293,7 +293,7 @@ Quiz sync behavior (current):
 - Google account linking is explicit (`/accounts/3rdparty/`); implicit email-based social account takeover is disabled
 - Wrapper/raw quiz endpoints are public (`/q/*`, `/q/raw/*`) for anonymous play
 - Public quiz content API (`/api/quiz-content/<id>`) serves normalized quiz JSON to the portal UI
-- Login required on dashboard + state persistence + subject preference APIs (`/progress`, `/api/quiz-state/*`, `/subjects/*`, `/preferences/*`), except public reading/slide endpoints (`/subjects/<subject_slug>/readings/open/<reading_key>`, `/subjects/<subject_slug>/readings/open/<reading_key>/text`, `/subjects/<subject_slug>/slides/open/<slide_key>`, and equivalent `/tekster/open/*` routes)
+- Login required on dashboard + state persistence + subject preference APIs (`/progress`, `/api/quiz-state/*`, `/subjects/*`, `/preferences/*`), except public reading/slide endpoints (`/subjects/<subject_slug>/readings/open/<reading_key>`, `/subjects/<subject_slug>/readings/open/<reading_key>/text`, `/subjects/<subject_slug>/slides/open/<slide_key>`, and equivalent `/tekster/open/*` routes). Note: `slides/open` stays public for `lecture` slides only; `seminar`/`exercise` still require elevated authenticated access.
 - Login required on `/api/gamification/me`
 - Anonymous users are prompted to log in when they reach quiz summary/completion
 - Strict quiz ID regex (`^[0-9a-f]{8}$`) plus existence checks

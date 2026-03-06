@@ -147,6 +147,7 @@ SLIDE_GROUP_TITLES = {
     "seminar": "slides fra seminarhold",
     "exercise": "slides fra øvelseshold",
 }
+DIRECT_OPEN_SLIDE_CATEGORIES = {"lecture"}
 _READING_EXCLUSION_CACHE: dict[str, object] = {
     "path": None,
     "mtime": None,
@@ -503,6 +504,11 @@ def _slide_category_key(value: object) -> str:
     return ""
 
 
+def _is_direct_slide_open_allowed(subcategory: object) -> bool:
+    category = _slide_category_key(subcategory)
+    return category in DIRECT_OPEN_SLIDE_CATEGORIES
+
+
 def _slide_catalog_path() -> Path | None:
     default_path = Path(__file__).resolve().parents[2] / "shows" / "personlighedspsykologi-en" / "slides_catalog.json"
     raw_value = str(getattr(settings, "FREUDD_SUBJECT_SLIDES_CATALOG_PATH", default_path)).strip()
@@ -624,6 +630,8 @@ def _slide_file_path_or_404(
     category = _slide_category_key(subcategory)
     if not category:
         raise Http404("Slide ikke fundet i fagets læringssti.")
+    if not _is_direct_slide_open_allowed(category):
+        raise Http404("Slide-filen kunne ikke tilgås.")
     normalized_source_filename = _source_filename_or_none(source_filename)
     if not normalized_source_filename:
         raise Http404("Slide-filen kunne ikke tilgås.")
@@ -1519,18 +1527,21 @@ def _slide_groups_for_lecture(lecture: object, *, subject_slug: str) -> list[dic
             continue
         source_filename = str(slide.get("source_filename") or "").strip()
         seen_catalog_keys.add((group_key, source_filename.casefold()))
-        item = {
-            "slide_key": str(slide.get("slide_key") or "").strip(),
-            "reading_key": "",
-            "reading_title": str(slide.get("title") or "").strip() or _slide_title_from_source_filename(source_filename),
-            "source_filename": source_filename,
-            "open_url": reverse(
+        open_url = ""
+        if _is_direct_slide_open_allowed(group_key):
+            open_url = reverse(
                 "subject-open-slide",
                 kwargs={
                     "subject_slug": str(subject_slug or "").strip().lower(),
                     "slide_key": str(slide.get("slide_key") or "").strip(),
                 },
-            ),
+            )
+        item = {
+            "slide_key": str(slide.get("slide_key") or "").strip(),
+            "reading_key": "",
+            "reading_title": str(slide.get("title") or "").strip() or _slide_title_from_source_filename(source_filename),
+            "source_filename": source_filename,
+            "open_url": open_url,
         }
         group = groups.get(group_key, groups["lecture"])
         group_items = group.get("items")
@@ -1549,12 +1560,15 @@ def _slide_groups_for_lecture(lecture: object, *, subject_slug: str) -> list[dic
         group_key = _slide_group_key(reading_title=reading_title, source_filename=source_filename)
         if source_filename and (group_key, source_filename.casefold()) in seen_catalog_keys:
             continue
+        open_url = ""
+        if _is_direct_slide_open_allowed(group_key):
+            open_url = str(reading.get("open_pdf_url") or reading.get("open_url") or "").strip()
         item = {
             "slide_key": "",
             "reading_key": str(reading.get("reading_key") or "").strip(),
             "reading_title": reading_title or source_filename or "Slides",
             "source_filename": source_filename,
-            "open_url": str(reading.get("open_pdf_url") or reading.get("open_url") or "").strip(),
+            "open_url": open_url,
         }
         group = groups.get(group_key, groups["lecture"])
         group_items = group.get("items")

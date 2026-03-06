@@ -278,6 +278,7 @@ Quiz sync behavior (current):
 - For subjects that may share episode titles, use `--flat-id-include-subject` when generating flat quiz IDs to avoid cross-subject ID collisions.
 - `manage.py rebuild_content_manifest --subject <slug>` regenerates lecture-first manifest and validates source merges.
 - `load_subject_content_manifest()` auto-detects stale manifests by comparing source mtimes (`reading key`, `quiz_links.json`, `rss.xml`, `spotify_map.json`) and rebuilds on-demand.
+- `content_manifest.json` source metadata is deterministic by design: repo-internal paths are stored repo-relatively, and volatile timestamps are omitted so runner/droplet rebuilds do not create meaningless diffs.
 - `scripts/sync_spotify_map.py` auto-syncs RSS titles into `spotify_map.json` with direct episode URLs only.
 - When show API results exist for an RSS title, they take precedence over existing map entries (stale episode IDs are refreshed automatically).
 - By default, unresolved RSS titles fail sync; with `--allow-unresolved`, resolved episode mappings are still written and unresolved titles are stored in `unresolved_rss_titles`.

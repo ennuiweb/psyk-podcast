@@ -280,6 +280,19 @@ class SubjectContentManifestTests(TestCase):
             "https://example.test/audio/slide-intro.mp3",
         )
 
+    def test_build_manifest_source_meta_is_stable_and_omits_generated_at(self) -> None:
+        manifest = build_subject_content_manifest("personlighedspsykologi")
+
+        source_meta = manifest["source_meta"]
+        self.assertNotIn("generated_at", source_meta)
+        self.assertEqual(source_meta["reading_master_path"], str(self.primary_reading_file))
+        self.assertEqual(source_meta["reading_fallback_path"], str(self.fallback_reading_file))
+        self.assertEqual(source_meta["reading_source_used"], str(self.primary_reading_file))
+        self.assertEqual(source_meta["quiz_links_path"], str(self.quiz_links_file))
+        self.assertEqual(source_meta["rss_path"], str(self.rss_file))
+        self.assertEqual(source_meta["spotify_map_path"], str(self.spotify_map_file))
+        self.assertEqual(source_meta["slides_catalog_path"], str(self.slides_catalog_file))
+
     def test_build_manifest_sets_source_filename_none_for_missing_readings(self) -> None:
         self.primary_reading_file.write_text(
             "\n".join(

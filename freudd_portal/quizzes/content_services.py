@@ -11,8 +11,6 @@ from pathlib import Path
 from typing import Any
 from xml.etree import ElementTree
 
-from django.utils import timezone
-
 from .subject_services import parse_master_readings, resolve_subject_paths
 
 logger = logging.getLogger(__name__)
@@ -51,6 +49,7 @@ SPOTIFY_EPISODE_URL_RE = re.compile(
 HUMAN_MINUTES_RE = re.compile(r"(?P<minutes>\d+)\s*(?:min(?:ute)?s?|minutter)\b", re.IGNORECASE)
 ITUNES_NS = "http://www.itunes.com/dtds/podcast-1.0.dtd"
 MANIFEST_VERSION = 1
+REPO_ROOT = Path(__file__).resolve().parents[2]
 
 _MANIFEST_CACHE: dict[str, Any] = {
     "path": None,
@@ -97,9 +96,9 @@ def _manifest_source_paths(
     if isinstance(payload, dict):
         source_meta = payload.get("source_meta")
         if isinstance(source_meta, dict):
-            reading_source_used = str(source_meta.get("reading_source_used") or "").strip()
-            if reading_source_used:
-                candidates.append(Path(reading_source_used))
+            reading_source_used = _source_meta_path_to_path(source_meta.get("reading_source_used"))
+            if reading_source_used is not None:
+                candidates.append(reading_source_used)
 
     unique_paths: list[Path] = []
     seen_paths: set[str] = set()
@@ -254,6 +253,26 @@ def _reading_source_with_fallback(subject_slug: str) -> tuple[Any, Path | None, 
             return fallback_result, fallback, True
 
     return primary_result, primary if primary.exists() else None, False
+
+
+def _stable_manifest_path_value(path: Path | None) -> str | None:
+    if path is None:
+        return None
+    candidate = Path(path)
+    try:
+        return candidate.resolve().relative_to(REPO_ROOT).as_posix()
+    except (OSError, ValueError):
+        return str(candidate)
+
+
+def _source_meta_path_to_path(value: object) -> Path | None:
+    text = str(value or "").strip()
+    if not text:
+        return None
+    candidate = Path(text)
+    if candidate.is_absolute():
+        return candidate
+    return REPO_ROOT / candidate
 
 
 def _quiz_asset_from_link(entry_name: str, link: dict[str, Any]) -> dict[str, Any] | None:
@@ -890,16 +909,15 @@ def build_subject_content_manifest(subject_slug: str) -> SubjectContentManifest:
     reading_error = parse_result.error
     source_meta = {
         "version": MANIFEST_VERSION,
-        "generated_at": timezone.now().isoformat(),
-        "reading_master_path": str(subject_paths.reading_master_path),
-        "reading_fallback_path": str(subject_paths.reading_fallback_path),
-        "reading_source_used": str(reading_source_path) if reading_source_path else None,
+        "reading_master_path": _stable_manifest_path_value(subject_paths.reading_master_path),
+        "reading_fallback_path": _stable_manifest_path_value(subject_paths.reading_fallback_path),
+        "reading_source_used": _stable_manifest_path_value(reading_source_path),
         "reading_fallback_used": used_fallback,
         "reading_error": reading_error,
-        "quiz_links_path": str(quiz_links_path),
-        "rss_path": str(rss_path),
-        "spotify_map_path": str(spotify_map_path),
-        "slides_catalog_path": str(subject_paths.slides_catalog_path),
+        "quiz_links_path": _stable_manifest_path_value(quiz_links_path),
+        "rss_path": _stable_manifest_path_value(rss_path),
+        "spotify_map_path": _stable_manifest_path_value(spotify_map_path),
+        "slides_catalog_path": _stable_manifest_path_value(subject_paths.slides_catalog_path),
     }
 
     return {

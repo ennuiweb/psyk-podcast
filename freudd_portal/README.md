@@ -11,6 +11,7 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Multi-language readiness: internal IDs/status codes remain language-neutral (`quiz_id`, `completed`) so additional UI languages can be added later without data migration.
 - Runtime naming: service/env/config namespace is `freudd` (`freudd-portal.service`, `/etc/freudd-portal.env`, `FREUDD_PORTAL_*`).
 - Rollout compatibility: old `QUIZ_PORTAL_*` env names are still accepted temporarily.
+- New user notification: optional email alert on every `auth.User` create via `FREUDD_NEW_USER_NOTIFY_EMAIL`.
 - Locale stack is active (`LocaleMiddleware` + `LOCALE_PATHS`) but currently constrained to Danish in `LANGUAGES`.
 - Quiz access: `/q/<id>.html` is public and renders a JSON-driven quiz UI (NotebookLM-like flow).
 - Raw quiz HTML: served publicly via `/q/raw/<id>.html`.
@@ -105,6 +106,7 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - `GET /subjects/<subject_slug>`
 - `GET /subjects/<subject_slug>/tekster/open/<reading_key>` (public tekst-fil adgang; blocked if excluded in config)
 - `GET /subjects/<subject_slug>/tekster/open/<reading_key>/text` (public tekstudtræk til ChatGPT; blocked if excluded in config)
+- `GET /subjects/<subject_slug>/slides/open/<slide_key>` (public slide-fil adgang via slides-katalog)
 - `POST /subjects/<subject_slug>/enroll`
 - `POST /subjects/<subject_slug>/unenroll`
 - `POST /subjects/<subject_slug>/tracking/tekst`
@@ -227,6 +229,8 @@ Operational behavior:
 
 ## New env configuration
 - `FREUDD_PORTAL_SITE_ID` (default: `1`)
+- `FREUDD_DEFAULT_FROM_EMAIL` (default: `noreply@freudd.dk`)
+- `FREUDD_NEW_USER_NOTIFY_EMAIL` (default: empty; when set, receives an email whenever a new user is created)
 - `FREUDD_AUTH_GOOGLE_ENABLED` (default: `0`)
 - `FREUDD_GOOGLE_CLIENT_ID` (required when `FREUDD_AUTH_GOOGLE_ENABLED=1`)
 - `FREUDD_GOOGLE_CLIENT_SECRET` (required when `FREUDD_AUTH_GOOGLE_ENABLED=1`)
@@ -241,6 +245,8 @@ Operational behavior:
 - `FREUDD_SUBJECT_FEED_RSS_PATH` (default: `shows/personlighedspsykologi-en/feeds/rss.xml`)
 - `FREUDD_SUBJECT_SPOTIFY_MAP_PATH` (default: `shows/personlighedspsykologi-en/spotify_map.json`)
 - `FREUDD_SUBJECT_CONTENT_MANIFEST_PATH` (default: `shows/personlighedspsykologi-en/content_manifest.json`)
+- `FREUDD_SUBJECT_SLIDES_CATALOG_PATH` (default: `shows/personlighedspsykologi-en/slides_catalog.json`)
+- `FREUDD_SUBJECT_SLIDES_FILES_ROOT` (default: `/var/www/slides/personlighedspsykologi`)
 - `FREUDD_READING_FILES_ROOT` (default: `/var/www/readings/personlighedspsykologi`)
 - `FREUDD_READING_FILES_ROOT` must be traversable/readable by the portal service user (`www-data`) or tekst open/download routes will fail at runtime.
 - `FREUDD_READING_DOWNLOAD_EXCLUSIONS_PATH` (default: `shows/personlighedspsykologi-en/reading_download_exclusions.json`)

@@ -127,6 +127,8 @@ AUTHENTICATION_BACKENDS = [
 LOGIN_URL = "/accounts/login"
 LOGIN_REDIRECT_URL = "/settings"
 LOGOUT_REDIRECT_URL = "/accounts/login"
+DEFAULT_FROM_EMAIL = os.environ.get("FREUDD_DEFAULT_FROM_EMAIL", "noreply@freudd.dk")
+FREUDD_NEW_USER_NOTIFY_EMAIL = os.environ.get("FREUDD_NEW_USER_NOTIFY_EMAIL", "").strip()
 
 SOCIALACCOUNT_LOGIN_ON_GET = False
 SOCIALACCOUNT_AUTO_SIGNUP = True
@@ -213,6 +215,18 @@ FREUDD_READING_DOWNLOAD_EXCLUSIONS_PATH = Path(
     os.environ.get(
         "FREUDD_READING_DOWNLOAD_EXCLUSIONS_PATH",
         BASE_DIR.parent / "shows" / "personlighedspsykologi-en" / "reading_download_exclusions.json",
+    )
+)
+FREUDD_SUBJECT_SLIDES_CATALOG_PATH = Path(
+    os.environ.get(
+        "FREUDD_SUBJECT_SLIDES_CATALOG_PATH",
+        BASE_DIR.parent / "shows" / "personlighedspsykologi-en" / "slides_catalog.json",
+    )
+)
+FREUDD_SUBJECT_SLIDES_FILES_ROOT = Path(
+    os.environ.get(
+        "FREUDD_SUBJECT_SLIDES_FILES_ROOT",
+        "/var/www/slides/personlighedspsykologi",
     )
 )
 

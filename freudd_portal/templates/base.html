@@ -12,6 +12,9 @@
     rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
     rel="stylesheet" />
+  {% if plausible_domain %}
+  <script defer data-domain="{{ plausible_domain }}" src="{{ plausible_src }}"></script>
+  {% endif %}
   <style>
     :root {
       --space-1: 4px;

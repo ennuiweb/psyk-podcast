@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import os
+
 from django.conf import settings
 from django.urls import reverse
 
@@ -40,6 +42,16 @@ def design_system_context(request):
     catalog = load_subject_catalog()
     default_subject = catalog.active_subjects[0].slug if catalog.active_subjects else ""
     enrolled_subjects = _topmenu_enrolled_subjects(request, catalog=catalog)
+    plausible_domain = getattr(
+        settings,
+        "FREUDD_ANALYTICS_PLAUSIBLE_DOMAIN",
+        os.environ.get("FREUDD_ANALYTICS_PLAUSIBLE_DOMAIN", ""),
+    ).strip()
+    plausible_src = getattr(
+        settings,
+        "FREUDD_ANALYTICS_PLAUSIBLE_SRC",
+        os.environ.get("FREUDD_ANALYTICS_PLAUSIBLE_SRC", "https://plausible.io/js/script.js"),
+    ).strip()
     return {
         "design_systems": list(iter_design_system_payload()),
         "active_design_system": {
@@ -53,4 +65,6 @@ def design_system_context(request):
         "leaderboard_default_subject_slug": default_subject,
         "topmenu_enrolled_subjects": enrolled_subjects,
         "google_auth_enabled": bool(getattr(settings, "FREUDD_AUTH_GOOGLE_ENABLED", False)),
+        "plausible_domain": plausible_domain,
+        "plausible_src": plausible_src,
     }

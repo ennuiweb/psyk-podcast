@@ -3,7 +3,7 @@
   "subject_slug": "personlighedspsykologi",
   "source_meta": {
     "version": 1,
-    "generated_at": "2026-03-06T09:34:59.576881+00:00",
+    "generated_at": "2026-03-06T09:40:41.440987+00:00",
     "reading_master_path": "/home/runner/work/psyk-podcast/psyk-podcast/shows/personlighedspsykologi-en/docs/reading-file-key.md",
     "reading_fallback_path": "/home/runner/work/psyk-podcast/psyk-podcast/shows/personlighedspsykologi-en/docs/reading-file-key.md",
     "reading_source_used": "/home/runner/work/psyk-podcast/psyk-podcast/shows/personlighedspsykologi-en/docs/reading-file-key.md",
@@ -925,7 +925,7 @@
                 "title": "Uge 4, Forelæsning 1 · Podcast · Freud (1973-1933) DA",
                 "url": "https://open.spotify.com/episode/3GK0kYu8zSfRpMmNReUs5K",
                 "platform": "spotify",
-                "pub_date": "Mon, 23 Feb 2025 16:00:00 +0100",
+                "pub_date": "Mon, 23 Feb 2025 14:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1zGwTUO_q-QqVP-rLnmlauzn147twgrq2",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -935,7 +935,7 @@
                 "title": "Uge 4, Forelæsning 1 · Podcast · Freud, S. (1973-1933) EN",
                 "url": "https://open.spotify.com/episode/5O9Lb9bVW636SdzzkbzXp5",
                 "platform": "spotify",
-                "pub_date": "Mon, 23 Feb 2025 14:00:00 +0100",
+                "pub_date": "Mon, 23 Feb 2025 12:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1oLotKYb2cETKuQTUU13i3zVl0pggcy3r",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -950,18 +950,27 @@
           "source_filename": "Gammelgaard (2007).pdf",
           "sequence_index": 2,
           "assets": {
-            "quizzes": [],
-            "podcasts": [
+            "quizzes": [
               {
-                "kind": "podcast",
-                "title": "Uge 4, Forelæsning 1 · Podcast · Gammelgaard (2007)",
-                "url": "https://open.spotify.com/episode/3S4r0di2eiifTwSfD86sqO",
-                "platform": "spotify",
-                "pub_date": "Mon, 23 Feb 2025 12:00:00 +0100",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1Qa0pLmd-kmtSPWQ1tlaxqb_1giBWU69O",
-                "duration_seconds": null,
-                "duration_label": ""
+                "quiz_id": "8a9048d8",
+                "difficulty": "easy",
+                "quiz_url": "/q/8a9048d8.html",
+                "episode_title": "W4L1 - Gammelgaard (2007) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               },
+              {
+                "quiz_id": "eb9b6d1f",
+                "difficulty": "hard",
+                "quiz_url": "/q/eb9b6d1f.html",
+                "episode_title": "W4L1 - Gammelgaard (2007) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "cf07f890",
+                "difficulty": "medium",
+                "quiz_url": "/q/cf07f890.html",
+                "episode_title": "W4L1 - Gammelgaard (2007) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              }
+            ],
+            "podcasts": [
               {
                 "kind": "podcast",
                 "title": "Uge 4, Forelæsning 1 · Podcast · Gammelgaard (2007)",

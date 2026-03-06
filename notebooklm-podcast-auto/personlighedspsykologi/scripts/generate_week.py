@@ -48,6 +48,13 @@ class SourceItem(NamedTuple):
     slide_subcategory: str | None = None
 
 
+def canonicalize_lecture_key(value: str) -> str:
+    match = re.fullmatch(r"\s*W?0*(\d{1,2})L0*(\d{1,2})\s*", value, re.IGNORECASE)
+    if not match:
+        return value.strip().upper()
+    return f"W{int(match.group(1)):02d}L{int(match.group(2))}"
+
+
 def parse_week_selector(value: str) -> tuple[int, int | None] | None:
     match = WEEK_SELECTOR_PATTERN.fullmatch(value.strip())
     if not match:
@@ -138,12 +145,13 @@ def _slides_catalog_entries_for_lecture(
     if not isinstance(raw_slides, list):
         return []
 
+    requested_lecture_key = canonicalize_lecture_key(lecture_key)
     items: list[SourceItem] = []
     for raw_slide in raw_slides:
         if not isinstance(raw_slide, dict):
             continue
-        raw_lecture_key = str(raw_slide.get("lecture_key") or "").strip().upper()
-        if raw_lecture_key != lecture_key:
+        raw_lecture_key = canonicalize_lecture_key(str(raw_slide.get("lecture_key") or ""))
+        if raw_lecture_key != requested_lecture_key:
             continue
         subcategory = str(raw_slide.get("subcategory") or "").strip().lower()
         if subcategory not in SLIDE_SUBCATEGORY_LABELS:

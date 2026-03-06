@@ -29,6 +29,7 @@ Hvis en fil ligger i "forkert" mappe ift. undervisningsplanen, er undervisningsp
 ## Sådan mappes en fil
 
 1. Fastlæg `lecture_key` (`W##L#`) ved at krydstjekke undervisningsplan/PDF og `reading-file-key.md`.
+   Generatoren accepterer både `W1L1` og `W01L1` fra source-folders, men kataloget skal stadig skrives i kanonisk form `W##L#`.
 2. Fastlæg `subcategory` (`lecture|seminar|exercise`) manuelt.
 3. Fastlæg `title` (kort, læsbar titel i UI).
 4. Fastlæg `source_filename` (filnavn som uploades under slide-rooten).

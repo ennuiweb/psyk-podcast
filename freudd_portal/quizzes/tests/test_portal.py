@@ -2102,7 +2102,7 @@ class QuizPortalTests(TestCase):
         self.assertContains(response, "Slides fra forelæsning W01L1")
         self.assertContains(response, "Slides fra seminarhold W01L1")
         self.assertContains(response, "Slides fra øvelseshold W01L1")
-        self.assertContains(response, "Åben slide", count=1)
+        self.assertContains(response, "Åben slides", count=1)
         self.assertNotContains(response, "Ingen slides registreret.")
 
     def test_subject_detail_uses_slide_catalog_and_open_slide_route(self) -> None:
@@ -2155,7 +2155,7 @@ class QuizPortalTests(TestCase):
         self.assertContains(response, "Forelæsning intro slides")
         self.assertContains(response, "Seminar intro slides")
         self.assertContains(response, "Øvelseshold intro slides")
-        self.assertContains(response, "Åben slide", count=1)
+        self.assertContains(response, "Åben slides", count=1)
 
         lecture_open_url = reverse(
             "subject-open-slide",
@@ -2476,7 +2476,7 @@ class QuizPortalTests(TestCase):
         detail_url = reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"})
         response = self.client.get(detail_url)
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "Åben slide", count=3)
+        self.assertContains(response, "Åben slides", count=3)
 
         lecture_open_url = reverse(
             "subject-open-slide",
@@ -2557,7 +2557,7 @@ class QuizPortalTests(TestCase):
         detail_url = reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"})
         response = self.client.get(detail_url)
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "Åben slide", count=3)
+        self.assertContains(response, "Åben slides", count=3)
 
         seminar_open_url = reverse(
             "subject-open-slide",

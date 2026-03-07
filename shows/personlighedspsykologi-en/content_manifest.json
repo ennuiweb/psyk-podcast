@@ -1106,16 +1106,6 @@
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=11BXGpZnqrJMVQz4n7zX4S5-dLmYslHBY",
                 "duration_seconds": null,
                 "duration_label": ""
-              },
-              {
-                "kind": "podcast",
-                "title": "Uge 4, Forelæsning 1 · Podcast · Gammelgaard (2007)",
-                "url": "https://open.spotify.com/episode/5wNHvs3mogRHfBMDzsQyN0",
-                "platform": "spotify",
-                "pub_date": "Mon, 23 Feb 2025 10:00:00 +0100",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=10-SJGYGZK8v61aK_4AkmVCb0Pa-uS2co",
-                "duration_seconds": null,
-                "duration_label": ""
               }
             ]
           }
@@ -1158,7 +1148,8 @@
         "podcasts": []
       },
       "warnings": [
-        "Spotify episode mapping missing for RSS item; skipping podcast asset: Uge 4, Forelæsning 1 · Podcast · Alle kilder (undtagen slides)"
+        "Spotify episode mapping missing for RSS item; skipping podcast asset: Uge 4, Forelæsning 1 · Podcast · Alle kilder (undtagen slides)",
+        "Duplicate podcast asset detected; ignored older RSS item for: Uge 4, Forelæsning 1 · Podcast · Gammelgaard (2007)"
       ]
     },
     {

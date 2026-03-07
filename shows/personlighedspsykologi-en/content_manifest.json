@@ -1516,7 +1516,7 @@
                 "title": "Uge 5, Forelæsning 2 · Podcast · Andkjær Olsen & Køppe (1991a og b)",
                 "url": "https://open.spotify.com/episode/4o45xGRvx1w26I7w3Jqn5U",
                 "platform": "spotify",
-                "pub_date": "Tue, 03 Mar 2025 16:00:00 +0100",
+                "pub_date": "Tue, 03 Mar 2025 18:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1-MUzDHyTeCGnXPDXK16jJWp3sxBgmv7E",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -1557,7 +1557,7 @@
                 "title": "Uge 5, Forelæsning 2 · Podcast · Køppe (1992)",
                 "url": "https://open.spotify.com/episode/1LECP6FrzfUufYbBZPtJs5",
                 "platform": "spotify",
-                "pub_date": "Tue, 03 Mar 2025 14:00:00 +0100",
+                "pub_date": "Tue, 03 Mar 2025 16:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1eDRw7XTHJgSM9lziaFT2KZULi3i8Xfcx",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -1626,7 +1626,7 @@
                 "title": "Uge 5, Forelæsning 2 · Podcast · Grundbog kapitel 07 - Nyere psykoanalytiske teorier",
                 "url": "https://open.spotify.com/episode/3d0UzJp0jkJVhDXp3HfsXK",
                 "platform": "spotify",
-                "pub_date": "Tue, 03 Mar 2025 18:00:00 +0100",
+                "pub_date": "Tue, 03 Mar 2025 20:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1K4zibBYzW6XPM3cJin7nGHC-Bw_FPJXJ",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -1682,7 +1682,9 @@
           }
         ]
       },
-      "warnings": []
+      "warnings": [
+        "Spotify episode mapping missing for RSS item; skipping podcast asset: Uge 5, Forelæsning 2 · Lydbog · Grundbog kapitel 07 - Nyere psykoanalytiske teorier"
+      ]
     },
     {
       "lecture_key": "W06L1",
@@ -3112,7 +3114,7 @@
                 "title": "Uge 11, Forelæsning 1 · Podcast · Gergen (1999)",
                 "url": "https://open.spotify.com/episode/7FGSheLsnt2L4rABw5ZkOq",
                 "platform": "spotify",
-                "pub_date": "Mon, 20 Apr 2025 18:00:00 +0200",
+                "pub_date": "Mon, 20 Apr 2025 20:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1-JLiwr1kaQEmCz1K3FIqBojt4ilrYSyn",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -3153,7 +3155,7 @@
                 "title": "Uge 11, Forelæsning 1 · Podcast · Hacking (2007)",
                 "url": "https://open.spotify.com/episode/6Su1vn0bGEFXp9x99IrWJM",
                 "platform": "spotify",
-                "pub_date": "Mon, 20 Apr 2025 14:00:00 +0200",
+                "pub_date": "Mon, 20 Apr 2025 16:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1MA69DT7X1PTSu8BNJkTKdr_YbdHVg4Xu",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -3222,7 +3224,7 @@
                 "title": "Uge 11, Forelæsning 1 · Podcast · Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori",
                 "url": "https://open.spotify.com/episode/38hhPRiaXLzKRocCSWPlHc",
                 "platform": "spotify",
-                "pub_date": "Mon, 20 Apr 2025 16:00:00 +0200",
+                "pub_date": "Mon, 20 Apr 2025 18:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1PqewEZpZ75-vMqeM9G6A_tSn1eNmlu0w",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -3267,7 +3269,8 @@
         ]
       },
       "warnings": [
-        "Spotify episode mapping missing for RSS item; skipping podcast asset: Uge 11, Forelæsning 1 · Lydbog · Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori. Problemet med personligheden version 2.0"
+        "Spotify episode mapping missing for RSS item; skipping podcast asset: Uge 11, Forelæsning 1 · Lydbog · Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori. Problemet med personligheden version 2.0",
+        "Spotify episode mapping missing for RSS item; skipping podcast asset: Uge 11, Forelæsning 1 · Lydbog · Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori"
       ]
     },
     {
@@ -3786,6 +3789,7 @@
   "warnings": [
     "RSS item has unknown lecture mapping: [Lydbog] · Grundbog kapitel 01 - Introduktion til personlighedspsykologi",
     "RSS item has unknown lecture mapping: [Lydbog] · Grundbog kapitel 04 - Fænomenologisk personlighedspsykologi",
+    "RSS item has unknown lecture mapping: [Lydbog] · Grundbog kapitel 07 - Nyere psykoanalytiske teorier",
     "RSS item has unknown lecture mapping: [Lydbog] · Grundbog kapitel 08 - Personlighed, subjektivitet og historicitet",
     "RSS item has unknown lecture mapping: [Lydbog] · Grundbog kapitel 09 - Narrative teorier",
     "RSS item has unknown lecture mapping: [Lydbog] · Grundbog kapitel 10 - Kritisk psykologi",

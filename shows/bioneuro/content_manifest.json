@@ -358,16 +358,6 @@
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=189B7vQVxERWewc34U-QkTNGAG1Kl9yXy",
                 "duration_seconds": null,
                 "duration_label": ""
-              },
-              {
-                "kind": "audio",
-                "title": "[Podcast] · Grundbog Kapitel 5",
-                "url": "https://open.spotify.com/episode/3qbWYE02v4N0rgZIAJepVU",
-                "platform": "spotify",
-                "pub_date": "Fri, 31 Jul 2026 00:00:00 +0200",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1wY06kIxUd_5Pv5dPc0rJmkiO40aCOFf7",
-                "duration_seconds": null,
-                "duration_label": ""
               }
             ]
           }
@@ -391,7 +381,8 @@
         "podcasts": []
       },
       "warnings": [
-        "Spotify episode mapping missing for RSS item; skipping podcast asset: [Podcast] · Behavioral Neuroscience Kapitel 05 - Hormones and the Brain"
+        "Spotify episode mapping missing for RSS item; skipping podcast asset: [Podcast] · Behavioral Neuroscience Kapitel 05 - Hormones and the Brain",
+        "Duplicate podcast asset detected; ignored older RSS item for: [Podcast] · Grundbog Kapitel 5"
       ]
     },
     {

@@ -43,7 +43,7 @@ Bemærk:
   - Manuelt mappede slides fra `shows/bioneuro/slides_catalog.json` tæller som egne kildefiler for per-slide podcasts og quizzer, når entryen har korrekt `local_relative_path`.
   - Slides udelades fra lecture-level `Alle kilder (undtagen slides)`.
   - `generate_week.py` skip-logic håndterer konflikt mellem `.request.json` og `.request.error.json` ved at stole på nyeste log.
-  - `download_week.py` rydder request-logs op som default (`.request.json`, `.request.error.json`, `.request.done.json`), inkl. orphan `.request.done.json` i valgte uge-mapper.
+  - `download_week.py` rydder request-logs op som default (`.request.json`, `.request.error.json`) for outputs, der er downloadet succesfuldt eller allerede findes.
   - Brug `--no-cleanup-requests` (eller `--no-archive-requests`) for at beholde logs.
 
 ## Quiz sync/hosting

@@ -95,8 +95,7 @@ python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_week.py 
 ./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/download_week.py --weeks W2L1
 ```
 
-- Request-log cleanup behavior (default): after a successful download (or when output already exists), `download_week.py` removes matching `*.request.json`, `*.request.error.json`, and `*.request.done.json` files for that output.
-  - It also removes stale `*.request.done.json` logs found in the selected week folders, even when there is no matching active `*.request.json`.
+- Request-log cleanup behavior (default): after a successful download (or when output already exists), `download_week.py` removes matching `*.request.json` and `*.request.error.json` files for that output.
   - Use `--no-cleanup-requests` to keep logs.
   - Backward-compatible aliases still work: `--archive-requests` / `--no-archive-requests`.
 

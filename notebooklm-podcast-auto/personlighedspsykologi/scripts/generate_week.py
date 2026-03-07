@@ -481,6 +481,11 @@ AUTH_TOKENS = (
     "redirected to",
     "403",
 )
+PROFILE_ERROR_TOKENS = (
+    "no result found for rpc id: ccqfvf",
+    "rpc ccqfvf returned null result data",
+    "profile-scoped notebook creation failure",
+)
 AUTH_COOLDOWN_SECONDS = 3600
 
 
@@ -492,6 +497,11 @@ def is_rate_limit_error(message: str) -> bool:
 def is_auth_error(message: str) -> bool:
     lowered = message.lower()
     return any(token in lowered for token in AUTH_TOKENS)
+
+
+def is_profile_error(message: str) -> bool:
+    lowered = message.lower()
+    return any(token in lowered for token in PROFILE_ERROR_TOKENS)
 
 
 def update_profile_cooldowns(
@@ -525,15 +535,22 @@ def update_profile_cooldowns(
                     cooldowns[profile] = max(
                         cooldowns.get(profile, 0), now + auth_seconds
                     )
+                if profile and (error_type == "profile_error" or is_profile_error(error)):
+                    cooldowns[profile] = max(
+                        cooldowns.get(profile, 0), now + auth_seconds
+                    )
 
         error = str(payload.get("error", ""))
+        error_type = str(payload.get("error_type", ""))
         auth = payload.get("auth") if isinstance(payload.get("auth"), dict) else {}
         profile = auth.get("profile") if isinstance(auth, dict) else None
-        if profile and is_rate_limit_error(error):
+        if profile and (error_type == "rate_limit" or is_rate_limit_error(error)):
             cooldowns[profile] = max(
                 cooldowns.get(profile, 0), now + rate_limit_seconds
             )
-        if profile and is_auth_error(error):
+        if profile and (error_type == "auth" or is_auth_error(error)):
+            cooldowns[profile] = max(cooldowns.get(profile, 0), now + auth_seconds)
+        if profile and (error_type == "profile_error" or is_profile_error(error)):
             cooldowns[profile] = max(cooldowns.get(profile, 0), now + auth_seconds)
         break
 
@@ -1955,7 +1972,7 @@ def main() -> int:
             for cmd in commands:
                 print(cmd)
         else:
-            print("\nNo request logs found. Run without --wait to generate them.")
+            print("\nNo successful request logs were written during this run.")
 
     if len(processed_dirs) > 1:
         print(

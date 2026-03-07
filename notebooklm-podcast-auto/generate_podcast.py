@@ -10,7 +10,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Iterable
 
-from notebooklm import NotebookLMClient
+from notebooklm import NotebookLMClient, RPCError
 from notebooklm.paths import get_storage_path
 from notebooklm.rpc.types import (
     AudioFormat,
@@ -19,6 +19,7 @@ from notebooklm.rpc.types import (
     InfographicOrientation,
     QuizDifficulty,
     QuizQuantity,
+    RPCMethod,
 )
 
 RATE_LIMIT_TOKENS = (
@@ -40,6 +41,7 @@ AUTH_TOKENS = (
 )
 RATE_LIMIT_COOLDOWN_SECONDS = 300
 AUTH_COOLDOWN_SECONDS = 3600
+PROFILE_ERROR_COOLDOWN_SECONDS = 3600
 QUIZ_DIFFICULTIES = ("easy", "medium", "hard")
 QUIZ_CFG_DIFFICULTY_PATTERN = re.compile(
     r"(\{[^{}]*\btype=quiz\b[^{}]*\bdifficulty=)([a-z0-9._:+-]+)",
@@ -238,8 +240,37 @@ def _is_rate_limit_error(exc: Exception) -> bool:
 
 
 def _is_auth_error(exc: Exception) -> bool:
+    if isinstance(exc, RPCError):
+        rpc_code = getattr(exc, "rpc_code", None)
+        if rpc_code in (401, 403):
+            return True
     message = str(exc).lower()
     return any(token in message for token in AUTH_TOKENS)
+
+
+def _is_profile_rotation_error(exc: Exception) -> bool:
+    if not isinstance(exc, RPCError):
+        return False
+
+    if exc.method_id != RPCMethod.CREATE_NOTEBOOK.value:
+        return False
+
+    if exc.rpc_code is not None:
+        return True
+
+    message = str(exc).lower()
+    return (
+        "null result data" in message
+        or "no result found for rpc id" in message
+    )
+
+
+def _should_rotate_profile(exc: Exception) -> bool:
+    return (
+        _is_rate_limit_error(exc)
+        or _is_auth_error(exc)
+        or _is_profile_rotation_error(exc)
+    )
 
 
 def _order_profile_names(profiles: dict[str, str], preferred: str | None) -> list[str]:
@@ -340,7 +371,21 @@ def _classify_error(exc: Exception) -> str:
         return "rate_limit"
     if _is_auth_error(exc):
         return "auth"
+    if _is_profile_rotation_error(exc):
+        return "profile_error"
     return "other"
+
+
+def _error_details(exc: Exception) -> dict[str, object]:
+    details: dict[str, object] = {}
+    if isinstance(exc, RPCError):
+        if exc.method_id is not None:
+            details["rpc_method_id"] = exc.method_id
+        if exc.rpc_code is not None:
+            details["rpc_code"] = exc.rpc_code
+        if exc.found_ids:
+            details["rpc_found_ids"] = exc.found_ids
+    return details
 
 
 def _parse_profile_list(value: str | None) -> set[str]:
@@ -1056,6 +1101,8 @@ async def _generate_podcast(args: argparse.Namespace) -> int:
                 if error_type == "rate_limit"
                 else AUTH_COOLDOWN_SECONDS
                 if error_type == "auth"
+                else PROFILE_ERROR_COOLDOWN_SECONDS
+                if error_type == "profile_error"
                 else None
             )
             if last_used_profile:
@@ -1066,9 +1113,7 @@ async def _generate_podcast(args: argparse.Namespace) -> int:
                     error_type=error_type,
                     cooldown_seconds=cooldown,
                 )
-            retryable = args.rotate_on_rate_limit and (
-                _is_rate_limit_error(exc) or _is_auth_error(exc)
-            )
+            retryable = args.rotate_on_rate_limit and _should_rotate_profile(exc)
             if retryable and idx < len(candidates):
                 rotation_attempts.append(
                     {
@@ -1079,7 +1124,12 @@ async def _generate_podcast(args: argparse.Namespace) -> int:
                         "error_type": error_type,
                     }
                 )
-                reason = "rate limit" if _is_rate_limit_error(exc) else "auth"
+                if _is_rate_limit_error(exc):
+                    reason = "rate limit"
+                elif _is_auth_error(exc):
+                    reason = "auth"
+                else:
+                    reason = "profile-scoped notebook creation failure"
                 print(
                     f"Generation failed due to {reason} on "
                     f"{label or auth_meta.get('source')}; trying next profile."
@@ -1099,7 +1149,9 @@ async def _generate_podcast(args: argparse.Namespace) -> int:
             )
             if rotation_attempts:
                 payload["rotation_attempts"] = rotation_attempts
+            payload["error_type"] = error_type
             payload["error"] = str(exc)
+            payload.update(_error_details(exc))
             error_log.write_text(
                 json.dumps(payload, indent=2) + "\n",
                 encoding="utf-8",
@@ -1237,7 +1289,9 @@ async def _generate_podcast(args: argparse.Namespace) -> int:
         )
         if rotation_attempts:
             payload["rotation_attempts"] = rotation_attempts
+        payload["error_type"] = _classify_error(last_exc)
         payload["error"] = str(last_exc)
+        payload.update(_error_details(last_exc))
         error_log.write_text(
             json.dumps(payload, indent=2) + "\n",
             encoding="utf-8",

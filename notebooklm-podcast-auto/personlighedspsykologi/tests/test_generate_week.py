@@ -152,6 +152,28 @@ class GenerateWeekTests(unittest.TestCase):
                 ).exists()
             )
 
+    def test_update_profile_cooldowns_handles_profile_error_logs(self):
+        mod = _load_module()
+        with tempfile.TemporaryDirectory() as tmpdir:
+            output_path = Path(tmpdir) / "W6L1 - Spinelli.mp3"
+            error_log = output_path.with_suffix(".mp3.request.error.json")
+            error_log.write_text(
+                json.dumps(
+                    {
+                        "auth": {"profile": "default"},
+                        "error_type": "profile_error",
+                        "error": "No result found for RPC ID: CCqFvf",
+                    }
+                ),
+                encoding="utf-8",
+            )
+
+            cooldowns: dict[str, float] = {}
+            mod.update_profile_cooldowns(output_path, cooldowns, 300, 3600)
+
+            self.assertIn("default", cooldowns)
+            self.assertGreater(cooldowns["default"], 0)
+
 
 if __name__ == "__main__":
     unittest.main()

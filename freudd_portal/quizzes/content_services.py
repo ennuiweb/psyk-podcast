@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from email.utils import parsedate_to_datetime
 import hashlib
 import json
 import logging
@@ -367,6 +368,61 @@ def _podcast_kind_from_token(value: str) -> str:
     return "audio"
 
 
+def _podcast_dedupe_descriptor(*, descriptor: str, lecture_level: bool) -> str:
+    if lecture_level:
+        return "all-sources"
+    normalized = _normalize_title(descriptor)
+    return _matching_key_from_normalized(normalized) or normalized
+
+
+def _podcast_pubdate_timestamp(value: object) -> float:
+    text = str(value or "").strip()
+    if not text:
+        return float("-inf")
+    try:
+        return parsedate_to_datetime(text).timestamp()
+    except (TypeError, ValueError, OverflowError):
+        return float("-inf")
+
+
+def _should_replace_podcast_asset(
+    *,
+    existing_asset: dict[str, Any],
+    incoming_asset: dict[str, Any],
+) -> bool:
+    return _podcast_pubdate_timestamp(incoming_asset.get("pub_date")) > _podcast_pubdate_timestamp(
+        existing_asset.get("pub_date")
+    )
+
+
+def _append_deduped_podcast_asset(
+    *,
+    target_assets: list[dict[str, Any]],
+    seen_assets: dict[tuple[Any, ...], dict[str, Any]],
+    dedupe_key: tuple[Any, ...],
+    lecture_state: dict[str, Any],
+    podcast_asset: dict[str, Any],
+) -> None:
+    existing_asset = seen_assets.get(dedupe_key)
+    if existing_asset is None:
+        target_assets.append(podcast_asset)
+        seen_assets[dedupe_key] = podcast_asset
+        return
+
+    duplicate_title = str(podcast_asset.get("title") or "").strip() or "Podcast episode"
+    if _should_replace_podcast_asset(existing_asset=existing_asset, incoming_asset=podcast_asset):
+        existing_asset.clear()
+        existing_asset.update(podcast_asset)
+        lecture_state["warnings"].append(
+            f"Duplicate podcast asset detected; kept newest RSS item for: {duplicate_title}"
+        )
+        return
+
+    lecture_state["warnings"].append(
+        f"Duplicate podcast asset detected; ignored older RSS item for: {duplicate_title}"
+    )
+
+
 def _is_lecture_level_descriptor(value: str) -> bool:
     return bool(ALL_SOURCES_RE.search(value or ""))
 
@@ -687,6 +743,7 @@ def _attach_podcasts(
         manifest_warnings.append(f"RSS source missing channel node: {rss_path}")
         return
 
+    seen_assets: dict[tuple[Any, ...], dict[str, Any]] = {}
     for item in channel.findall("item"):
         title_text = str(item.findtext("title") or "").strip()
         if not title_text:
@@ -730,12 +787,27 @@ def _attach_podcasts(
             "duration_seconds": duration_seconds,
             "duration_label": duration_label,
         }
-        if _is_lecture_level_descriptor(descriptor):
-            lecture_state["lecture_assets"]["podcasts"].append(podcast_asset)
+        lecture_level = _is_lecture_level_descriptor(descriptor)
+        descriptor_key = _podcast_dedupe_descriptor(descriptor=descriptor, lecture_level=lecture_level)
+        podcast_kind = str(podcast_asset.get("kind") or "").strip().lower()
+        if lecture_level:
+            _append_deduped_podcast_asset(
+                target_assets=lecture_state["lecture_assets"]["podcasts"],
+                seen_assets=seen_assets,
+                dedupe_key=(lecture_position, "lecture", None, podcast_kind, descriptor_key),
+                lecture_state=lecture_state,
+                podcast_asset=podcast_asset,
+            )
             continue
         slide_index = _find_slide_index(lecture_state, descriptor)
         if slide_index is not None:
-            lecture_state["slides"][slide_index]["assets"]["podcasts"].append(podcast_asset)
+            _append_deduped_podcast_asset(
+                target_assets=lecture_state["slides"][slide_index]["assets"]["podcasts"],
+                seen_assets=seen_assets,
+                dedupe_key=(lecture_position, "slide", slide_index, podcast_kind, descriptor_key),
+                lecture_state=lecture_state,
+                podcast_asset=podcast_asset,
+            )
             continue
         reading_index = _find_reading_index(lecture_state, descriptor)
         if reading_index is None and quiz_location is not None and quiz_location[0] == lecture_position:
@@ -744,9 +816,21 @@ def _attach_podcasts(
             lecture_state["warnings"].append(
                 f"RSS item could not map to reading; attached to lecture assets: {title_text}"
             )
-            lecture_state["lecture_assets"]["podcasts"].append(podcast_asset)
+            _append_deduped_podcast_asset(
+                target_assets=lecture_state["lecture_assets"]["podcasts"],
+                seen_assets=seen_assets,
+                dedupe_key=(lecture_position, "lecture", None, podcast_kind, descriptor_key),
+                lecture_state=lecture_state,
+                podcast_asset=podcast_asset,
+            )
             continue
-        lecture_state["readings"][reading_index]["assets"]["podcasts"].append(podcast_asset)
+        _append_deduped_podcast_asset(
+            target_assets=lecture_state["readings"][reading_index]["assets"]["podcasts"],
+            seen_assets=seen_assets,
+            dedupe_key=(lecture_position, "reading", reading_index, podcast_kind, descriptor_key),
+            lecture_state=lecture_state,
+            podcast_asset=podcast_asset,
+        )
 
 
 def build_subject_content_manifest(subject_slug: str) -> SubjectContentManifest:

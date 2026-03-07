@@ -3062,6 +3062,55 @@ class QuizPortalTests(TestCase):
             "data-spotify-embed-url=\"https://open.spotify.com/embed/episode/5m0hYfDU9ThM5qR2xMugr8?utm_source=generator\"",
         )
 
+    def test_subject_detail_distinguishes_short_podcast_and_lydbog_titles(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+
+        with patch(
+            "quizzes.views.get_subject_learning_path_snapshot",
+            return_value={
+                "lectures": [
+                    {
+                        "lecture_key": "W01L1",
+                        "lecture_title": "W01L1 Intro",
+                        "status": "active",
+                        "completed_quizzes": 0,
+                        "total_quizzes": 1,
+                        "lecture_assets": {
+                            "quizzes": [
+                                {"quiz_id": "aaaaaaaa", "difficulty": "easy", "quiz_url": "/q/aaaaaaaa.html"},
+                            ],
+                            "podcasts": [
+                                {
+                                    "kind": "short_podcast",
+                                    "title": "U1F1 · [Kort podcast] · Grundbog kapitel 01",
+                                    "url": "https://open.spotify.com/episode/5m0hYfDU9ThM5qR2xMugr8",
+                                },
+                                {
+                                    "kind": "podcast",
+                                    "title": "U1F1 · [Podcast] · Grundbog kapitel 01",
+                                    "url": "https://open.spotify.com/episode/4w4gHCXnQK5fjQdsxQO0XG",
+                                },
+                                {
+                                    "kind": "lydbog",
+                                    "title": "U1F1 · [Lydbog] · Grundbog kapitel 01",
+                                    "url": "https://open.spotify.com/episode/6m0hYfDU9ThM5qR2xMugr8",
+                                },
+                            ],
+                        },
+                        "readings": [],
+                    }
+                ],
+                "source_meta": {},
+            },
+        ):
+            response = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Ep. 1: Kort podcast: Grundbog kapitel 01")
+        self.assertContains(response, "Ep. 2: Grundbog kapitel 01")
+        self.assertContains(response, "Ep. 3: Lydbog: Grundbog kapitel 01")
+
     def test_subject_detail_shows_private_tracking_controls(self) -> None:
         user = self._create_user()
         self.client.force_login(user)

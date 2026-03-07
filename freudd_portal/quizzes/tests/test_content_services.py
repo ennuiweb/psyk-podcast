@@ -696,6 +696,87 @@ class SubjectContentManifestTests(TestCase):
         self.assertEqual(lecture["lecture_assets"]["podcasts"][0]["platform"], "spotify")
         self.assertFalse(any("unknown lecture mapping" in warning for warning in manifest["warnings"]))
 
+    def test_build_manifest_deduplicates_weekly_overview_title_variants(self) -> None:
+        self.rss_file.write_text(
+            "\n".join(
+                [
+                    '<?xml version="1.0" encoding="UTF-8"?>',
+                    "<rss version=\"2.0\">",
+                    "<channel>",
+                    "<item>",
+                    "<title>Uge 1, Forelæsning 1 · Podcast · Alle kilder</title>",
+                    "<pubDate>Mon, 02 Feb 2026 08:00:00 +0100</pubDate>",
+                    '<enclosure url="https://example.test/audio/all-sources-older.mp3" length="1" type="audio/mpeg" />',
+                    "</item>",
+                    "<item>",
+                    "<title>Uge 1, Forelæsning 1 · Podcast · Alle kilder (undtagen slides)</title>",
+                    "<pubDate>Mon, 02 Feb 2026 09:00:00 +0100</pubDate>",
+                    '<enclosure url="https://example.test/audio/all-sources-newer.mp3" length="1" type="audio/mpeg" />',
+                    "</item>",
+                    "</channel>",
+                    "</rss>",
+                ]
+            ),
+            encoding="utf-8",
+        )
+        self.spotify_map_file.write_text(
+            json.dumps(
+                {
+                    "version": 1,
+                    "subject_slug": "personlighedspsykologi",
+                    "by_rss_title": {
+                        "Uge 1, Forelæsning 1 · Podcast · Alle kilder": "https://open.spotify.com/episode/5m0hYfDU9ThM5qR2xMugr8",
+                        "Uge 1, Forelæsning 1 · Podcast · Alle kilder (undtagen slides)": "https://open.spotify.com/episode/5m0hYfDU9ThM5qR2xMugr8",
+                    },
+                }
+            ),
+            encoding="utf-8",
+        )
+        clear_content_service_caches()
+
+        manifest = build_subject_content_manifest("personlighedspsykologi")
+        lecture = manifest["lectures"][0]
+        self.assertEqual(len(lecture["lecture_assets"]["podcasts"]), 1)
+        self.assertEqual(
+            lecture["lecture_assets"]["podcasts"][0]["source_audio_url"],
+            "https://example.test/audio/all-sources-newer.mp3",
+        )
+        warnings = lecture.get("warnings") or []
+        self.assertTrue(any("Duplicate podcast asset detected" in warning for warning in warnings))
+
+    def test_build_manifest_deduplicates_duplicate_reading_podcasts_and_keeps_newest(self) -> None:
+        self.rss_file.write_text(
+            "\n".join(
+                [
+                    '<?xml version="1.0" encoding="UTF-8"?>',
+                    "<rss version=\"2.0\">",
+                    "<channel>",
+                    "<item>",
+                    "<title>U1F1 · [Podcast] · Lewis (1999) · 02/02 - 08/02</title>",
+                    "<pubDate>Mon, 02 Feb 2026 10:00:00 +0100</pubDate>",
+                    '<enclosure url="https://example.test/audio/lewis-older.mp3" length="1" type="audio/mpeg" />',
+                    "</item>",
+                    "<item>",
+                    "<title>U1F1 · [Podcast] · Lewis (1999) · 02/02 - 08/02</title>",
+                    "<pubDate>Mon, 02 Feb 2026 11:00:00 +0100</pubDate>",
+                    '<enclosure url="https://example.test/audio/lewis-newer.mp3" length="1" type="audio/mpeg" />',
+                    "</item>",
+                    "</channel>",
+                    "</rss>",
+                ]
+            ),
+            encoding="utf-8",
+        )
+        clear_content_service_caches()
+
+        manifest = build_subject_content_manifest("personlighedspsykologi")
+        lecture = manifest["lectures"][0]
+        reading_podcasts = lecture["readings"][0]["assets"]["podcasts"]
+        self.assertEqual(len(reading_podcasts), 1)
+        self.assertEqual(reading_podcasts[0]["source_audio_url"], "https://example.test/audio/lewis-newer.mp3")
+        warnings = lecture.get("warnings") or []
+        self.assertTrue(any("Duplicate podcast asset detected" in warning for warning in warnings))
+
     def test_build_manifest_uses_fallback_when_primary_missing(self) -> None:
         self.primary_reading_file.unlink()
         clear_subject_service_caches()

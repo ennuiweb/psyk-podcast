@@ -1491,14 +1491,40 @@ def _slide_difficulty_summary(slide: object) -> list[dict[str, object]]:
     return _quiz_difficulty_slots(assets)
 
 
+def _podcast_kind_display_prefix(value: object) -> str:
+    token = str(value or "").strip().lower()
+    if token == "short_podcast":
+        return "Kort podcast"
+    if token == "lydbog":
+        return "Lydbog"
+    return ""
+
+
+def _podcast_kind_from_title_token(value: object) -> str:
+    token = str(value or "").strip().lower().strip("[]() ")
+    if "kort podcast" in token:
+        return "short_podcast"
+    if "lydbog" in token:
+        return "lydbog"
+    if "podcast" in token:
+        return "podcast"
+    return ""
+
+
 def _podcast_display_title(value: object) -> str:
-    title_text = str(value or "").strip()
+    podcast = value if isinstance(value, dict) else {}
+    title_text = str(podcast.get("title") if isinstance(podcast, dict) else value or "").strip()
     if not title_text:
         return "Podcast episode"
     parts = [part.strip() for part in title_text.split("·") if part.strip()]
-    if len(parts) >= 3:
-        return parts[2]
-    return title_text
+    descriptor = parts[2] if len(parts) >= 3 else title_text
+    kind_token = podcast.get("kind") if isinstance(podcast, dict) else ""
+    if not kind_token and len(parts) >= 2:
+        kind_token = _podcast_kind_from_title_token(parts[1])
+    prefix = _podcast_kind_display_prefix(kind_token)
+    if prefix:
+        return f"{prefix}: {descriptor}"
+    return descriptor
 
 
 def _slide_hint_text(*, reading_title: object, source_filename: object) -> str:
@@ -1672,7 +1698,7 @@ def _flatten_podcast_rows(lecture: object) -> list[dict[str, object]]:
                 "lecture_key": lecture_key,
                 "reading_key": None,
                 "source_label": "Forelæsning",
-                "display_title": _podcast_display_title(podcast.get("title")),
+                "display_title": _podcast_display_title(podcast),
                 "duration_label": str(podcast.get("duration_label") or "").strip(),
             }
         )
@@ -1698,7 +1724,7 @@ def _flatten_podcast_rows(lecture: object) -> list[dict[str, object]]:
                     "lecture_key": lecture_key,
                     "reading_key": reading_key,
                     "source_label": reading_title,
-                    "display_title": _podcast_display_title(podcast.get("title")),
+                    "display_title": _podcast_display_title(podcast),
                     "duration_label": str(podcast.get("duration_label") or "").strip(),
                 }
             )
@@ -1720,7 +1746,7 @@ def _flatten_podcast_rows(lecture: object) -> list[dict[str, object]]:
                     "lecture_key": lecture_key,
                     "reading_key": f"slide:{slide_key}" if slide_key else None,
                     "source_label": slide_title,
-                    "display_title": _podcast_display_title(podcast.get("title")),
+                    "display_title": _podcast_display_title(podcast),
                     "duration_label": str(podcast.get("duration_label") or "").strip(),
                 }
             )

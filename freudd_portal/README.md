@@ -182,6 +182,7 @@ Optional per-subject `paths` overrides let a subject use its own reading key, RS
 - `readings[]`: each tekst has deterministic `reading_key`, `reading_title`, optional `source_filename`, `is_missing`, and `assets` (`quizzes[]`, `podcasts[]`). Duplicate tekst titles in the same lecture are disambiguated with `-2`, `-3`, etc.
 - `lecture_assets`: lecture-level assets for items like `Alle kilder`.
 - `podcasts[]`: Spotify-only episode assets with `url`, `platform`, and `source_audio_url` (original RSS enclosure/link).
+- Duplicate RSS podcast items are deduplicated per scope (`lecture` / `reading` / `slide`) by normalized descriptor + podcast kind; when duplicates exist, the newest `pubDate` wins and a manifest warning is emitted.
 - `platform`: always `spotify` (`url` must be a Spotify episode URL).
 
 ## Tekst download exclusions contract (`reading_download_exclusions.json`)
@@ -224,6 +225,7 @@ Operational behavior:
 - Mapped RSS titles render Spotify links on `/subjects/<subject_slug>`.
 - If an RSS item title lacks a lecture key, manifest build falls back to the RSS item quiz link (`/q/<id>.html`) to recover the target lecture/reading when that quiz is already mapped.
 - Unmapped RSS titles are skipped from manifest podcast assets and emit warnings until a direct episode mapping exists.
+- Subject detail preserves special audio labels in visible rows (`Kort podcast`, `Lydbog`) so short/full variants do not collapse into identical titles.
 - Inline embed playback is always enabled for visible podcast rows (because only episode URLs are accepted).
 - `scripts/sync_spotify_map.py` auto-syncs RSS titles into `spotify_map.json` with direct Spotify episode URLs only.
 - Default behavior fails when unresolved titles remain; use `--allow-unresolved` to persist resolved episode URLs and list unresolved titles in `unresolved_rss_titles`.

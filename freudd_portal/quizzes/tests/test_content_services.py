@@ -294,6 +294,42 @@ class SubjectContentManifestTests(TestCase):
             "https://example.test/audio/slide-intro.mp3",
         )
 
+    def test_build_manifest_includes_slide_for_secondary_lecture_key(self) -> None:
+        self.slides_catalog_file.write_text(
+            json.dumps(
+                {
+                    "version": 1,
+                    "subject_slug": "personlighedspsykologi",
+                    "slides": [
+                        {
+                            "slide_key": "w01l1-seminar-composite",
+                            "lecture_key": "W01L1",
+                            "lecture_keys": ["W01L1", "W01L2"],
+                            "subcategory": "seminar",
+                            "title": "Composite seminar slides",
+                            "source_filename": "Composite seminar slides.pdf",
+                            "relative_path": "W01L1/seminar/Composite seminar slides.pdf",
+                        }
+                    ],
+                    "unresolved": [],
+                }
+            ),
+            encoding="utf-8",
+        )
+        clear_content_service_caches()
+
+        manifest = build_subject_content_manifest("personlighedspsykologi")
+        self.assertEqual(len(manifest["lectures"][0]["slides"]), 1)
+        self.assertEqual(len(manifest["lectures"][1]["slides"]), 1)
+        self.assertEqual(
+            manifest["lectures"][0]["slides"][0]["slide_key"],
+            "w01l1-seminar-composite",
+        )
+        self.assertEqual(
+            manifest["lectures"][1]["slides"][0]["slide_key"],
+            "w01l1-seminar-composite",
+        )
+
     def test_build_manifest_source_meta_is_stable_and_omits_generated_at(self) -> None:
         manifest = build_subject_content_manifest("personlighedspsykologi")
 

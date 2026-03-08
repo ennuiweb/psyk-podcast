@@ -803,6 +803,55 @@ class CfgTagFilenameHelpersTests(unittest.TestCase):
         self.assertEqual(generation_sources[1].slide_key, "w01l1-seminar-intro")
         self.assertEqual(generation_sources[1].slide_subcategory, "seminar")
 
+    def test_generate_week_build_source_items_matches_secondary_lecture_key_in_catalog(self):
+        mod = self.generate_week
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            week_dir = root / "W01L2"
+            week_dir.mkdir(parents=True, exist_ok=True)
+            (week_dir / "Mayer & Bryan (2024).pdf").write_bytes(b"%PDF-1.4\n%reading\n")
+
+            slides_root = root / "slides-root"
+            (slides_root / "Seminarhold" / "Slides").mkdir(parents=True, exist_ok=True)
+            (slides_root / "Seminarhold" / "Slides" / "4. Psykoanalyse I.pdf").write_bytes(
+                b"%PDF-1.4\n%slide\n"
+            )
+            slides_catalog = root / "slides_catalog.json"
+            slides_catalog.write_text(
+                json.dumps(
+                    {
+                        "version": 1,
+                        "subject_slug": "personlighedspsykologi",
+                        "slides": [
+                            {
+                                "slide_key": "w04l1-seminar-psykoanalyse-i",
+                                "lecture_key": "W04L1",
+                                "lecture_keys": ["W04L1", "W01L2"],
+                                "subcategory": "seminar",
+                                "title": "Psykoanalyse I",
+                                "source_filename": "4. Psykoanalyse I.pdf",
+                                "local_relative_path": "Seminarhold/Slides/4. Psykoanalyse I.pdf",
+                                "relative_path": "W04L1/seminar/4. Psykoanalyse I.pdf",
+                            }
+                        ],
+                        "unresolved": [],
+                    },
+                    ensure_ascii=False,
+                ),
+                encoding="utf-8",
+            )
+
+            _, generation_sources = mod.build_source_items(
+                week_dir=week_dir,
+                week_label="W01L2",
+                slides_catalog_path=slides_catalog,
+                slides_source_root=slides_root,
+            )
+
+        self.assertEqual([item.source_type for item in generation_sources], ["reading", "slide"])
+        self.assertEqual(generation_sources[1].slide_key, "w04l1-seminar-psykoanalyse-i")
+        self.assertEqual(generation_sources[1].base_name, "Slide seminar: Psykoanalyse I")
+
     def test_generate_week_weekly_overview_count_excludes_slides(self):
         mod = self.generate_week
         with tempfile.TemporaryDirectory() as tmp_dir:

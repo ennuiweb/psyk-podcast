@@ -54,16 +54,6 @@
       "local_relative_path": "Forelæsningsrækken/2. gang PersPsy_2_260203.pdf"
     },
     {
-      "slide_key": "w01l2-seminar-2-tr-kpsykologi-i-22e18840",
-      "lecture_key": "W01L2",
-      "subcategory": "seminar",
-      "title": "2. Trækpsykologi I",
-      "source_filename": "2. Trækpsykologi I.pdf",
-      "relative_path": "W01L2/seminar/2. Trækpsykologi I.pdf",
-      "matched_by": "manual",
-      "local_relative_path": "Seminarhold/Slides/2. Trækpsykologi I.pdf"
-    },
-    {
       "slide_key": "w01l2-seminar-2-tr-kteori-i-0b71f996",
       "lecture_key": "W01L2",
       "subcategory": "seminar",
@@ -104,12 +94,13 @@
       "local_relative_path": "Forelæsningsrækken/4. gang PersPsy_4_260210.pdf"
     },
     {
-      "slide_key": "w02l2-seminar-4-psykoanalyse-i-94151a16",
-      "lecture_key": "W02L2",
+      "slide_key": "w04l1-seminar-4-psykoanalyse-i-94151a16",
+      "lecture_key": "W04L1",
+      "lecture_keys": ["W04L1", "W04L2"],
       "subcategory": "seminar",
       "title": "4. Psykoanalyse I",
       "source_filename": "4. Psykoanalyse I.pdf",
-      "relative_path": "W02L2/seminar/4. Psykoanalyse I.pdf",
+      "relative_path": "W04L1/seminar/4. Psykoanalyse I.pdf",
       "matched_by": "manual",
       "local_relative_path": "Seminarhold/Slides/4. Psykoanalyse I.pdf"
     },

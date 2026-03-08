@@ -2194,6 +2194,55 @@ class QuizPortalTests(TestCase):
         blocked_exercise = self.client.get(exercise_open_url)
         self.assertEqual(blocked_exercise.status_code, 404)
 
+    def test_subject_detail_renders_slide_from_secondary_lecture_key(self) -> None:
+        self._write_slides_catalog_file(
+            slides=[
+                {
+                    "slide_key": "w01l1-seminar-composite-aaaaaaaa",
+                    "lecture_key": "W01L1",
+                    "lecture_keys": ["W01L1", "W01L2"],
+                    "subcategory": "seminar",
+                    "title": "Seminar psychoanalysis slides",
+                    "source_filename": "Seminar psychoanalysis slides.pdf",
+                    "relative_path": "W01L1/seminar/Seminar psychoanalysis slides.pdf",
+                }
+            ]
+        )
+        (self.slides_files_root / "W01L1" / "seminar").mkdir(parents=True, exist_ok=True)
+        (self.slides_files_root / "W01L1" / "seminar" / "Seminar psychoanalysis slides.pdf").write_bytes(
+            b"%PDF-1.4\n%test\n"
+        )
+
+        entries = _slide_catalog_entries_for_lecture(
+            subject_slug="personlighedspsykologi",
+            lecture_key="W01L2",
+        )
+        self.assertEqual(len(entries), 1)
+        self.assertEqual(entries[0]["slide_key"], "w01l1-seminar-composite-aaaaaaaa")
+        self.assertEqual(entries[0]["lecture_key"], "W01L1")
+
+        user = self._create_user(username="slide-staff")
+        user.is_staff = True
+        user.save(update_fields=["is_staff"])
+        self.client.force_login(user)
+
+        detail_url = reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"})
+        response = self.client.get(f"{detail_url}?lecture=W01L2")
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Seminar psychoanalysis slides")
+
+        open_url = reverse(
+            "subject-open-slide",
+            kwargs={
+                "subject_slug": "personlighedspsykologi",
+                "slide_key": "w01l1-seminar-composite-aaaaaaaa",
+            },
+        )
+        self.assertContains(response, f'href="{open_url}"')
+        open_response = self.client.get(open_url)
+        self.assertEqual(open_response.status_code, 200)
+        self.assertEqual(open_response["Content-Type"], "application/pdf")
+
     def test_subject_detail_renders_slide_quizzes_and_slide_podcasts(self) -> None:
         self._write_slides_catalog_file(
             slides=[

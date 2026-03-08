@@ -57,6 +57,23 @@ def canonicalize_lecture_key(value: str) -> str:
     return f"W{int(match.group(1)):02d}L{int(match.group(2))}"
 
 
+def slide_catalog_lecture_keys(raw_slide: dict[str, object]) -> list[str]:
+    lecture_keys: list[str] = []
+
+    primary_lecture_key = canonicalize_lecture_key(str(raw_slide.get("lecture_key") or ""))
+    if re.fullmatch(r"W\d{2}L\d+", primary_lecture_key):
+        lecture_keys.append(primary_lecture_key)
+
+    raw_lecture_keys = raw_slide.get("lecture_keys")
+    if isinstance(raw_lecture_keys, list):
+        for value in raw_lecture_keys:
+            lecture_key = canonicalize_lecture_key(str(value or ""))
+            if re.fullmatch(r"W\d{2}L\d+", lecture_key) and lecture_key not in lecture_keys:
+                lecture_keys.append(lecture_key)
+
+    return lecture_keys
+
+
 def parse_week_selector(value: str) -> tuple[int, int | None] | None:
     match = WEEK_SELECTOR_PATTERN.fullmatch(value.strip())
     if not match:
@@ -152,8 +169,8 @@ def _slides_catalog_entries_for_lecture(
     for raw_slide in raw_slides:
         if not isinstance(raw_slide, dict):
             continue
-        raw_lecture_key = canonicalize_lecture_key(str(raw_slide.get("lecture_key") or ""))
-        if raw_lecture_key != requested_lecture_key:
+        raw_lecture_keys = slide_catalog_lecture_keys(raw_slide)
+        if requested_lecture_key not in raw_lecture_keys:
             continue
         subcategory = str(raw_slide.get("subcategory") or "").strip().lower()
         if subcategory not in SLIDE_SUBCATEGORY_LABELS:

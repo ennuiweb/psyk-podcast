@@ -14,6 +14,7 @@ Denne policy er bindende for alle fag i repoet.
 
 - `slide_key`
 - `lecture_key`
+- valgfrit `lecture_keys` når samme slide skal vises under flere forelæsninger
 - `subcategory` (`lecture`, `seminar`, `exercise`)
 - `title`
 - `source_filename`
@@ -21,6 +22,12 @@ Denne policy er bindende for alle fag i repoet.
 - `relative_path`
 
 Hvis feltet `matched_by` bruges, skal værdien være `manual`.
+
+Hvis `lecture_keys` bruges:
+
+- `lecture_key` er den primære lagrings-/åbningssti for filen.
+- `lecture_keys` er listen over forelæsninger hvor samme slide skal vises i portal/generering.
+- `lecture_key` skal også være med i `lecture_keys`.
 
 `local_relative_path` er den manuelle sti fra fagets lokale slide-root til kilde-PDF'en og bruges af generatoren til at oprette per-slide podcasts og quizzer. `relative_path` er serverstien under `/var/www/slides/<subject>/...` og bruges af portalen.
 

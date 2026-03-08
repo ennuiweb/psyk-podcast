@@ -485,6 +485,23 @@ def _load_slide_catalog_entries(subject_slug: str) -> list[dict[str, Any]]:
     return [item for item in raw_slides if isinstance(item, dict)]
 
 
+def _slide_catalog_lecture_keys(raw_slide: dict[str, Any]) -> list[str]:
+    lecture_keys: list[str] = []
+
+    primary_lecture_key = _lecture_key_from_text(str(raw_slide.get("lecture_key") or "").strip())
+    if primary_lecture_key:
+        lecture_keys.append(primary_lecture_key)
+
+    raw_lecture_keys = raw_slide.get("lecture_keys")
+    if isinstance(raw_lecture_keys, list):
+        for value in raw_lecture_keys:
+            lecture_key = _lecture_key_from_text(str(value or "").strip())
+            if lecture_key and lecture_key not in lecture_keys:
+                lecture_keys.append(lecture_key)
+
+    return lecture_keys
+
+
 def _build_slide_lookup(
     slide_items: list[dict[str, Any]],
 ) -> dict[str, int | None]:
@@ -1074,8 +1091,8 @@ def build_subject_content_manifest(subject_slug: str) -> SubjectContentManifest:
 
         slide_items: list[dict[str, Any]] = []
         for raw_slide in slide_catalog_entries:
-            raw_lecture_key = str(raw_slide.get("lecture_key") or "").strip().upper()
-            if raw_lecture_key != lecture_key:
+            slide_lecture_keys = _slide_catalog_lecture_keys(raw_slide)
+            if lecture_key not in slide_lecture_keys:
                 continue
             source_filename = (
                 str(raw_slide.get("source_filename") or "").strip()

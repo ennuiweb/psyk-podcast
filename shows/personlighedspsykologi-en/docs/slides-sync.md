@@ -30,6 +30,7 @@ Hvis en fil ligger i "forkert" mappe ift. undervisningsplanen, er undervisningsp
 
 1. Fastlæg `lecture_key` (`W##L#`) ved at krydstjekke undervisningsplan/PDF og `reading-file-key.md`.
    Generatoren accepterer både `W1L1` og `W01L1` fra source-folders, men kataloget skal stadig skrives i kanonisk form `W##L#`.
+   Hvis samme slide skal vises under flere forelæsninger, vælg én primær `lecture_key` til filstien og tilføj også `lecture_keys` med alle relevante forelæsninger.
 2. Fastlæg `subcategory` (`lecture|seminar|exercise`) manuelt.
 3. Fastlæg `title` (kort, læsbar titel i UI).
 4. Fastlæg `source_filename` (filnavn som uploades under slide-rooten).
@@ -57,6 +58,7 @@ Mapping skal laves forskelligt per underkategori:
 - `seminar`:
   Brug `Forelæsnings- og seminarholdsplan 2026.pdf` plus `reading-file-key.md`.
   Match seminar-emne til den tilhørende Freudd-forelæsning manuelt.
+  Hvis seminaret eksplicit arbejder med tekster fra flere forelæsninger, brug `lecture_keys` til at vise samme slide under alle de relevante forelæsninger.
 - `exercise`:
   Brug altid `Semesterplan for øvelseshold - opdateret d. 03.02.pdf` som primær facitliste.
   Match øvelses-emne og/eller angivne tekster i planen til `reading-file-key.md`.
@@ -71,6 +73,11 @@ Følgende mappings er verificeret mod øvelsesplanen:
 - `2. Psykoanalyse 1 og intro (1).pdf` -> `W05L1`
   Begrundelse: slide-indholdet er `Psykoanalyse I`/`Gammelgaard (2010)`, og `Gammelgaard (2010)` ligger i `reading-file-key.md` under `W05L1`.
 
+## Kendt multi-lecture-mapping
+
+- `Seminarhold/Slides/4. Psykoanalyse I.pdf` -> `lecture_key: W04L1`, `lecture_keys: [W04L1, W04L2]`
+  Begrundelse: slide-indholdet arbejder direkte med `Freud (1973/1933)` og `Laplanche (1970)`, som ligger under henholdsvis `W04L1` og `W04L2` i `reading-file-key.md`.
+
 Når nye øvelses-slides kommer:
 
 1. Find emnet/teksten i øvelsesplanen.
@@ -84,6 +91,7 @@ Eksempel:
 {
   "slide_key": "w11l2-seminar-forsvarsmekanismer-1234abcd",
   "lecture_key": "W11L2",
+  "lecture_keys": ["W11L2", "W12L1"],
   "subcategory": "seminar",
   "title": "Seminar: Forsvarsmekanismer",
   "source_filename": "Seminar Forsvarsmekanismer.pdf",

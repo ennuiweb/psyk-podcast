@@ -570,6 +570,23 @@ def _slide_title_from_source_filename(value: object) -> str:
     return title or source_filename
 
 
+def _slide_catalog_lecture_keys(raw_slide: dict[str, object]) -> list[str]:
+    lecture_keys: list[str] = []
+
+    primary_lecture_key = _normalize_subject_lecture_key(raw_slide.get("lecture_key"))
+    if primary_lecture_key:
+        lecture_keys.append(primary_lecture_key)
+
+    raw_lecture_keys = raw_slide.get("lecture_keys")
+    if isinstance(raw_lecture_keys, list):
+        for value in raw_lecture_keys:
+            lecture_key = _normalize_subject_lecture_key(value)
+            if lecture_key and lecture_key not in lecture_keys:
+                lecture_keys.append(lecture_key)
+
+    return lecture_keys
+
+
 def _slide_catalog_entries_for_lecture(
     *,
     subject_slug: str,
@@ -595,8 +612,11 @@ def _slide_catalog_entries_for_lecture(
     for raw_slide in raw_slides:
         if not isinstance(raw_slide, dict):
             continue
-        raw_lecture_key = str(raw_slide.get("lecture_key") or "").strip().upper()
-        if raw_lecture_key != normalized_lecture_key:
+        lecture_keys = _slide_catalog_lecture_keys(raw_slide)
+        if normalized_lecture_key not in lecture_keys:
+            continue
+        primary_lecture_key = lecture_keys[0] if lecture_keys else ""
+        if not primary_lecture_key:
             continue
         slide_key = str(raw_slide.get("slide_key") or "").strip().lower()
         if not SUBJECT_SLIDE_KEY_RE.match(slide_key):
@@ -611,7 +631,7 @@ def _slide_catalog_entries_for_lecture(
         entries.append(
             {
                 "slide_key": slide_key,
-                "lecture_key": raw_lecture_key,
+                "lecture_key": primary_lecture_key,
                 "subcategory": category,
                 "source_filename": source_filename,
                 "title": title,
@@ -687,8 +707,9 @@ def _find_slide_catalog_entry(
         candidate_slide_key = str(raw_slide.get("slide_key") or "").strip().lower()
         if candidate_slide_key != normalized_slide_key:
             continue
-        lecture_key = str(raw_slide.get("lecture_key") or "").strip().upper()
-        if not SUBJECT_LECTURE_KEY_RE.match(lecture_key):
+        lecture_keys = _slide_catalog_lecture_keys(raw_slide)
+        lecture_key = lecture_keys[0] if lecture_keys else ""
+        if not lecture_key:
             continue
         category = _slide_category_key(raw_slide.get("subcategory"))
         if not category:

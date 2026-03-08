@@ -49,7 +49,7 @@ SPOTIFY_EPISODE_URL_RE = re.compile(
 )
 HUMAN_MINUTES_RE = re.compile(r"(?P<minutes>\d+)\s*(?:min(?:ute)?s?|minutter)\b", re.IGNORECASE)
 ITUNES_NS = "http://www.itunes.com/dtds/podcast-1.0.dtd"
-MANIFEST_VERSION = 1
+MANIFEST_VERSION = 2
 REPO_ROOT = Path(__file__).resolve().parents[2]
 
 _MANIFEST_CACHE: dict[str, Any] = {
@@ -94,6 +94,10 @@ def _manifest_source_paths(
         subject_paths.spotify_map_path,
         subject_paths.slides_catalog_path,
     ]
+    if subject_paths.reading_summaries_path is not None:
+        candidates.append(subject_paths.reading_summaries_path)
+    if subject_paths.weekly_overview_summaries_path is not None:
+        candidates.append(subject_paths.weekly_overview_summaries_path)
     if isinstance(payload, dict):
         source_meta = payload.get("source_meta")
         if isinstance(source_meta, dict):
@@ -533,6 +537,181 @@ def _load_quiz_links_by_name(path: Path) -> dict[str, Any]:
     return by_name
 
 
+def _load_summary_entries(
+    *,
+    path: Path | None,
+    label: str,
+    manifest_warnings: list[str],
+) -> dict[str, Any]:
+    if path is None:
+        return {}
+    if not path.exists():
+        manifest_warnings.append(f"{label} source missing: {path}")
+        return {}
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError):
+        logger.warning("Unable to parse %s for manifest build: %s", label, path, exc_info=True)
+        manifest_warnings.append(f"{label} source could not be parsed: {path}")
+        return {}
+    if not isinstance(payload, dict):
+        manifest_warnings.append(f"{label} source must be a JSON object: {path}")
+        return {}
+    by_name = payload.get("by_name")
+    if not isinstance(by_name, dict):
+        manifest_warnings.append(f"{label} source missing by_name object: {path}")
+        return {}
+    return by_name
+
+
+def _summary_payload_from_entry(entry_name: str, raw_entry: Any) -> dict[str, Any] | None:
+    if not isinstance(raw_entry, dict):
+        return None
+
+    summary_lines: list[str] = []
+    raw_summary_lines = raw_entry.get("summary_lines")
+    if isinstance(raw_summary_lines, list):
+        for value in raw_summary_lines:
+            cleaned = str(value or "").strip()
+            if cleaned:
+                summary_lines.append(cleaned)
+
+    key_points: list[str] = []
+    raw_key_points = raw_entry.get("key_points")
+    if isinstance(raw_key_points, list):
+        for value in raw_key_points:
+            cleaned = str(value or "").strip()
+            if cleaned:
+                key_points.append(cleaned)
+
+    if not summary_lines and not key_points:
+        return None
+
+    raw_meta = raw_entry.get("meta")
+    meta = raw_meta if isinstance(raw_meta, dict) else {}
+    source_file = str(meta.get("source_file") or "").strip() or None
+    lecture_key = (
+        _lecture_key_from_text(str(meta.get("lecture_key") or ""))
+        or str(meta.get("lecture_key") or "").strip().upper()
+        or None
+    )
+    return {
+        "summary_lines": summary_lines,
+        "key_points": key_points,
+        "cache_key": entry_name,
+        "source_file": source_file,
+        "lecture_key": lecture_key,
+        "status": str(meta.get("status") or "").strip() or None,
+        "language": str(meta.get("language") or "").strip() or None,
+    }
+
+
+def _summary_candidate_score(entry_name: str, payload: dict[str, Any]) -> tuple[int, int, int]:
+    cleaned_name = str(entry_name or "").strip()
+    upper_name = cleaned_name.upper()
+    standard_variant = 0 if upper_name.startswith("[BRIEF]") or upper_name.startswith("[TTS]") else 1
+    richness = len(payload.get("summary_lines") or []) + len(payload.get("key_points") or [])
+    text_weight = sum(len(str(value)) for value in (payload.get("summary_lines") or [])) + sum(
+        len(str(value)) for value in (payload.get("key_points") or [])
+    )
+    return (standard_variant, richness, text_weight)
+
+
+def _attach_summaries(
+    *,
+    lectures: list[dict[str, Any]],
+    lecture_index: dict[str, int],
+    subject_slug: str,
+    manifest_warnings: list[str],
+) -> None:
+    subject_paths = resolve_subject_paths(subject_slug)
+    lecture_scores: dict[int, tuple[int, int, int]] = {}
+    reading_scores: dict[tuple[int, int], tuple[int, int, int]] = {}
+
+    weekly_entries = _load_summary_entries(
+        path=subject_paths.weekly_overview_summaries_path,
+        label="Weekly overview summaries",
+        manifest_warnings=manifest_warnings,
+    )
+    for entry_name, raw_entry in weekly_entries.items():
+        if not isinstance(entry_name, str):
+            continue
+        payload = _summary_payload_from_entry(entry_name, raw_entry)
+        if payload is None:
+            continue
+        lecture_key = payload.get("lecture_key") or _lecture_key_from_text(entry_name)
+        if not lecture_key or lecture_key not in lecture_index:
+            manifest_warnings.append(f"Weekly overview summary has unknown lecture mapping: {entry_name}")
+            continue
+        lecture_position = lecture_index[lecture_key]
+        score = _summary_candidate_score(entry_name, payload)
+        if score <= lecture_scores.get(lecture_position, (-1, -1, -1)):
+            continue
+        lectures[lecture_position]["summary"] = {
+            "summary_lines": list(payload.get("summary_lines") or []),
+            "key_points": list(payload.get("key_points") or []),
+        }
+        lecture_scores[lecture_position] = score
+
+    reading_entries = _load_summary_entries(
+        path=subject_paths.reading_summaries_path,
+        label="Reading summaries",
+        manifest_warnings=manifest_warnings,
+    )
+    for entry_name, raw_entry in reading_entries.items():
+        if not isinstance(entry_name, str):
+            continue
+        payload = _summary_payload_from_entry(entry_name, raw_entry)
+        if payload is None:
+            continue
+        lecture_key = (
+            _lecture_key_from_text(str(payload.get("source_file") or ""))
+            or payload.get("lecture_key")
+            or _lecture_key_from_text(entry_name)
+        )
+        if not lecture_key or lecture_key not in lecture_index:
+            manifest_warnings.append(f"Reading summary has unknown lecture mapping: {entry_name}")
+            continue
+        lecture_position = lecture_index[lecture_key]
+        lecture_state = lectures[lecture_position]
+        descriptor_candidates: list[str] = []
+        source_file = str(payload.get("source_file") or "").strip()
+        if source_file:
+            descriptor_candidates.append(Path(source_file).stem)
+        descriptor = _descriptor_from_episode_name(entry_name)
+        if descriptor:
+            descriptor_candidates.append(descriptor)
+
+        reading_index: int | None = None
+        seen_descriptors: set[str] = set()
+        for candidate in descriptor_candidates:
+            candidate_text = str(candidate or "").strip()
+            if not candidate_text or candidate_text in seen_descriptors:
+                continue
+            seen_descriptors.add(candidate_text)
+            if _is_lecture_level_descriptor(candidate_text):
+                continue
+            reading_index = _find_reading_index(lecture_state, candidate_text)
+            if reading_index is not None:
+                break
+
+        if reading_index is None:
+            lecture_state["warnings"].append(
+                f"Reading summary could not map to reading: {entry_name}"
+            )
+            continue
+
+        score = _summary_candidate_score(entry_name, payload)
+        reading_score_key = (lecture_position, reading_index)
+        if score <= reading_scores.get(reading_score_key, (-1, -1, -1)):
+            continue
+        lecture_state["readings"][reading_index]["summary"] = {
+            "summary_lines": list(payload.get("summary_lines") or []),
+            "key_points": list(payload.get("key_points") or []),
+        }
+        reading_scores[reading_score_key] = score
+
+
 def _attach_quizzes(
     *,
     lectures: list[dict[str, Any]],
@@ -869,6 +1048,7 @@ def build_subject_content_manifest(subject_slug: str) -> SubjectContentManifest:
                 "is_missing": bool(reading.is_missing),
                 "source_filename": source_filename,
                 "sequence_index": reading_position + 1,
+                "summary": None,
                 "assets": {
                     "quizzes": [],
                     "podcasts": [],
@@ -921,6 +1101,7 @@ def build_subject_content_manifest(subject_slug: str) -> SubjectContentManifest:
                 "lecture_key": lecture_key,
                 "lecture_title": lecture_title,
                 "sequence_index": sequence_index,
+                "summary": None,
                 "readings": readings,
                 "slides": slide_items,
                 "reading_lookup": reading_lookup,
@@ -957,6 +1138,12 @@ def build_subject_content_manifest(subject_slug: str) -> SubjectContentManifest:
         rss_path=rss_path,
         spotify_by_title=spotify_by_title,
         quiz_asset_locations=quiz_asset_locations,
+        manifest_warnings=manifest_warnings,
+    )
+    _attach_summaries(
+        lectures=lectures,
+        lecture_index=lecture_index,
+        subject_slug=slug,
         manifest_warnings=manifest_warnings,
     )
 
@@ -998,6 +1185,10 @@ def build_subject_content_manifest(subject_slug: str) -> SubjectContentManifest:
         "reading_source_used": _stable_manifest_path_value(reading_source_path),
         "reading_fallback_used": used_fallback,
         "reading_error": reading_error,
+        "reading_summaries_path": _stable_manifest_path_value(subject_paths.reading_summaries_path),
+        "weekly_overview_summaries_path": _stable_manifest_path_value(
+            subject_paths.weekly_overview_summaries_path
+        ),
         "quiz_links_path": _stable_manifest_path_value(quiz_links_path),
         "rss_path": _stable_manifest_path_value(rss_path),
         "spotify_map_path": _stable_manifest_path_value(spotify_map_path),
@@ -1058,6 +1249,37 @@ def load_subject_content_manifest(subject_slug: str) -> SubjectContentManifest:
                     and payload.get("subject_slug") == slug
                     and isinstance(payload.get("lectures"), list)
                 ):
+                    if payload.get("version") != MANIFEST_VERSION:
+                        logger.info(
+                            "Detected outdated content manifest schema; rebuilding from source files.",
+                            extra={
+                                "subject_slug": slug,
+                                "manifest_path": str(path),
+                                "manifest_version": payload.get("version"),
+                                "expected_version": MANIFEST_VERSION,
+                            },
+                        )
+                        refreshed_manifest = build_subject_content_manifest(slug)
+                        try:
+                            write_subject_content_manifest(refreshed_manifest, path=path)
+                        except Exception:
+                            logger.exception(
+                                "Failed to persist rebuilt manifest after schema update.",
+                                extra={
+                                    "subject_slug": slug,
+                                    "manifest_path": str(path),
+                                },
+                            )
+                        try:
+                            refreshed_mtime = path.stat().st_mtime_ns
+                        except OSError:
+                            refreshed_mtime = None
+                        return _set_manifest_cache(
+                            path=path,
+                            mtime_ns=refreshed_mtime,
+                            subject_slug=slug,
+                            data=refreshed_manifest,
+                        )
                     stale_sources = _stale_manifest_sources(
                         manifest_mtime_ns=mtime,
                         subject_slug=slug,

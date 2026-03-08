@@ -1916,6 +1916,7 @@ def _anonymous_subject_learning_path_snapshot(subject_slug: str) -> dict[str, ob
                     "is_missing": bool(reading.get("is_missing", False)),
                     "source_filename": str(reading.get("source_filename") or "").strip() or None,
                     "sequence_index": int(reading.get("sequence_index") or 0),
+                    "summary": reading.get("summary") if isinstance(reading.get("summary"), dict) else None,
                     "status": "no_quiz" if reading_quiz_count == 0 else "active",
                     "completed_quizzes": 0,
                     "total_quizzes": reading_quiz_count,
@@ -1958,6 +1959,7 @@ def _anonymous_subject_learning_path_snapshot(subject_slug: str) -> dict[str, ob
                     )
                     for reading in readings_payload
                 ) + slide_quiz_count,
+                "summary": lecture.get("summary") if isinstance(lecture.get("summary"), dict) else None,
                 "warnings": list(lecture.get("warnings") or []),
                 "readings": readings_payload,
                 "slides": slide_payload,

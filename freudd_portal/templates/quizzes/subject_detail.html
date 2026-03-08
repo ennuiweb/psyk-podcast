@@ -1181,6 +1181,81 @@
     font-size: 0.88rem;
   }
 
+  .lecture-summary,
+  .reading-summary {
+    display: grid;
+    gap: 12px;
+  }
+
+  .lecture-summary {
+    margin-top: var(--space-4);
+    padding: clamp(16px, 1.8vw, 22px);
+    border: 1px solid color-mix(in srgb, var(--accent) 20%, var(--border));
+    border-radius: 24px;
+    background: color-mix(in srgb, var(--accent-soft) 20%, var(--surface));
+  }
+
+  .lecture-summary-title,
+  .reading-summary-title {
+    margin: 0;
+    font-family: var(--subject-font-ui);
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent-strong);
+  }
+
+  .lecture-summary-lines,
+  .reading-summary-lines,
+  .lecture-summary-points,
+  .reading-summary-points {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 8px;
+  }
+
+  .lecture-summary-line,
+  .reading-summary-line {
+    margin: 0;
+    color: var(--text);
+    font-family: var(--subject-font-ui);
+    font-size: 0.96rem;
+    line-height: 1.55;
+  }
+
+  .lecture-summary-points,
+  .reading-summary-points {
+    gap: 6px;
+  }
+
+  .lecture-summary-point,
+  .reading-summary-point {
+    margin: 0;
+    padding-left: 1.05rem;
+    position: relative;
+    color: var(--text);
+    font-family: var(--subject-font-ui);
+    font-size: 0.92rem;
+    line-height: 1.5;
+  }
+
+  .lecture-summary-point::before,
+  .reading-summary-point::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--accent-strong);
+    font-weight: 800;
+  }
+
+  .reading-summary {
+    margin-top: 4px;
+  }
+
   .reading-actions {
     display: inline-flex;
     align-items: center;
@@ -1995,6 +2070,26 @@
         </div>
         {% endif %}
 
+        {% if active_lecture.summary and active_lecture.summary.summary_lines %}
+        <section class="lecture-summary" aria-label="opsummering af forelæsningen">
+          <p class="lecture-summary-title">Forelæsningsoversigt</p>
+          <div class="lecture-summary-copy">
+            <ul class="lecture-summary-lines">
+              {% for line in active_lecture.summary.summary_lines %}
+              <li class="lecture-summary-line">{{ line }}</li>
+              {% endfor %}
+            </ul>
+            {% if active_lecture.summary.key_points %}
+            <ul class="lecture-summary-points">
+              {% for point in active_lecture.summary.key_points %}
+              <li class="lecture-summary-point">{{ point }}</li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+          </div>
+        </section>
+        {% endif %}
+
         <div class="active-lecture-sections">
           <section class="lecture-section lecture-readings" id="subject-library">
             <div class="lecture-section-head">
@@ -2030,6 +2125,23 @@
                       Ingen quiz
                       {% endif %}
                     </p>
+                    {% endif %}
+                    {% if reading.summary and reading.summary.summary_lines %}
+                    <div class="reading-summary">
+                      <p class="reading-summary-title">Kort overblik</p>
+                      <ul class="reading-summary-lines">
+                        {% for line in reading.summary.summary_lines %}
+                        <li class="reading-summary-line">{{ line }}</li>
+                        {% endfor %}
+                      </ul>
+                      {% if reading.summary.key_points %}
+                      <ul class="reading-summary-points">
+                        {% for point in reading.summary.key_points %}
+                        <li class="reading-summary-point">{{ point }}</li>
+                        {% endfor %}
+                      </ul>
+                      {% endif %}
+                    </div>
                     {% endif %}
                   </div>
                   <div class="reading-side {% if reading.visible_difficulty_summary %}has-difficulties{% endif %}">

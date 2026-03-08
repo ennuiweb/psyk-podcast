@@ -21,6 +21,8 @@ PATH_SEPARATORS_RE = re.compile(r"[\\/]+")
 SUBJECT_PATH_KEYS = {
     "reading_master_path",
     "reading_fallback_path",
+    "reading_summaries_path",
+    "weekly_overview_summaries_path",
     "quiz_links_path",
     "quiz_files_root",
     "feed_rss_path",
@@ -46,6 +48,8 @@ class SubjectDefinition:
 class SubjectAssetPaths:
     reading_master_path: Path
     reading_fallback_path: Path
+    reading_summaries_path: Path | None
+    weekly_overview_summaries_path: Path | None
     quiz_links_path: Path
     quiz_files_root: Path
     feed_rss_path: Path
@@ -146,6 +150,8 @@ def _default_subject_paths() -> SubjectAssetPaths:
     return SubjectAssetPaths(
         reading_master_path=Path(settings.FREUDD_READING_MASTER_KEY_PATH),
         reading_fallback_path=Path(settings.FREUDD_READING_MASTER_KEY_FALLBACK_PATH),
+        reading_summaries_path=None,
+        weekly_overview_summaries_path=None,
         quiz_links_path=Path(settings.QUIZ_LINKS_JSON_PATH),
         quiz_files_root=Path(settings.QUIZ_FILES_ROOT),
         feed_rss_path=Path(settings.FREUDD_SUBJECT_FEED_RSS_PATH),
@@ -172,6 +178,8 @@ def resolve_subject_paths(subject_slug: str) -> SubjectAssetPaths:
     values = {
         "reading_master_path": defaults.reading_master_path,
         "reading_fallback_path": defaults.reading_fallback_path,
+        "reading_summaries_path": defaults.reading_summaries_path,
+        "weekly_overview_summaries_path": defaults.weekly_overview_summaries_path,
         "quiz_links_path": defaults.quiz_links_path,
         "quiz_files_root": defaults.quiz_files_root,
         "feed_rss_path": defaults.feed_rss_path,
@@ -189,6 +197,8 @@ def resolve_subject_paths(subject_slug: str) -> SubjectAssetPaths:
     return SubjectAssetPaths(
         reading_master_path=values["reading_master_path"],
         reading_fallback_path=values["reading_fallback_path"],
+        reading_summaries_path=values["reading_summaries_path"],
+        weekly_overview_summaries_path=values["weekly_overview_summaries_path"],
         quiz_links_path=values["quiz_links_path"],
         quiz_files_root=values["quiz_files_root"],
         feed_rss_path=values["feed_rss_path"],

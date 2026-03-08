@@ -3193,6 +3193,67 @@ class QuizPortalTests(TestCase):
         self.assertEqual(response.context["active_lecture"]["readings"][0]["chatgpt_prompt"], "")
         self.assertNotContains(response, 'aria-label="Send Custom til ChatGPT"')
 
+    def test_subject_detail_renders_lecture_and_reading_summaries(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+
+        with patch(
+            "quizzes.views.get_subject_learning_path_snapshot",
+            return_value={
+                "lectures": [
+                    {
+                        "lecture_key": "W01L1",
+                        "lecture_title": "W01L1 Intro",
+                        "status": "active",
+                        "completed_quizzes": 0,
+                        "total_quizzes": 0,
+                        "summary": {
+                            "summary_lines": [
+                                "Forelæsningen introducerer personlighed som et spænd mellem struktur og forandring.",
+                            ],
+                            "key_points": [
+                                "Stabilitet og udvikling må analyseres sammen.",
+                            ],
+                        },
+                        "lecture_assets": {"quizzes": [], "podcasts": []},
+                        "readings": [
+                            {
+                                "reading_key": "w01l1-lewis-1234",
+                                "reading_title": "Lewis (1999)",
+                                "source_filename": None,
+                                "completed_quizzes": 0,
+                                "total_quizzes": 0,
+                                "status": "not_started",
+                                "summary": {
+                                    "summary_lines": [
+                                        "Lewis beskriver personlighed som et historisk udviklingsforløb.",
+                                    ],
+                                    "key_points": [
+                                        "Tidlige relationer får betydning for senere selvorganisering.",
+                                    ],
+                                },
+                                "assets": {"quizzes": [], "podcasts": []},
+                            }
+                        ],
+                        "slides": [],
+                        "warnings": [],
+                    }
+                ],
+                "source_meta": {},
+            },
+        ):
+            response = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Forelæsningsoversigt")
+        self.assertContains(
+            response,
+            "Forelæsningen introducerer personlighed som et spænd mellem struktur og forandring.",
+        )
+        self.assertContains(response, "Kort overblik")
+        self.assertContains(response, "Lewis beskriver personlighed som et historisk udviklingsforløb.")
+        self.assertContains(response, "Tidlige relationer får betydning for senere selvorganisering.")
+
     def test_subject_open_reading_is_public(self) -> None:
         user = self._create_user()
         self.client.force_login(user)

@@ -28,6 +28,8 @@ class SubjectContentManifestTests(TestCase):
         self.quiz_links_file = root / "quiz_links.json"
         self.rss_file = root / "rss.xml"
         self.spotify_map_file = root / "spotify_map.json"
+        self.reading_summaries_file = root / "reading_summaries.json"
+        self.weekly_overview_summaries_file = root / "weekly_overview_summaries.json"
         self.manifest_file = root / "content_manifest.json"
         self.slides_catalog_file = root / "slides_catalog.json"
 
@@ -115,6 +117,14 @@ class SubjectContentManifestTests(TestCase):
             ),
             encoding="utf-8",
         )
+        self.reading_summaries_file.write_text(
+            json.dumps({"by_name": {}}, ensure_ascii=False),
+            encoding="utf-8",
+        )
+        self.weekly_overview_summaries_file.write_text(
+            json.dumps({"by_name": {}}, ensure_ascii=False),
+            encoding="utf-8",
+        )
         self.subjects_file.write_text(
             json.dumps(
                 {
@@ -125,6 +135,10 @@ class SubjectContentManifestTests(TestCase):
                             "title": "Personlighedspsykologi",
                             "description": "Personlighedspsykologi F26",
                             "active": True,
+                            "paths": {
+                                "reading_summaries_path": str(self.reading_summaries_file),
+                                "weekly_overview_summaries_path": str(self.weekly_overview_summaries_file),
+                            },
                         }
                     ],
                 }
@@ -288,10 +302,118 @@ class SubjectContentManifestTests(TestCase):
         self.assertEqual(source_meta["reading_master_path"], str(self.primary_reading_file))
         self.assertEqual(source_meta["reading_fallback_path"], str(self.fallback_reading_file))
         self.assertEqual(source_meta["reading_source_used"], str(self.primary_reading_file))
+        self.assertEqual(source_meta["reading_summaries_path"], str(self.reading_summaries_file))
+        self.assertEqual(
+            source_meta["weekly_overview_summaries_path"],
+            str(self.weekly_overview_summaries_file),
+        )
         self.assertEqual(source_meta["quiz_links_path"], str(self.quiz_links_file))
         self.assertEqual(source_meta["rss_path"], str(self.rss_file))
         self.assertEqual(source_meta["spotify_map_path"], str(self.spotify_map_file))
         self.assertEqual(source_meta["slides_catalog_path"], str(self.slides_catalog_file))
+
+    def test_build_manifest_maps_lecture_and_reading_summaries(self) -> None:
+        self.reading_summaries_file.write_text(
+            json.dumps(
+                {
+                    "by_name": {
+                        "[Brief] W01L1 - Lewis (1999) [EN].mp3": {
+                            "summary_lines": [
+                                "Lewis beskriver personlighed som et udviklingsforløb med relationelle vendepunkter.",
+                                "Teksten forbinder tidlige erfaringer med senere mønstre i selvforståelse.",
+                            ],
+                            "key_points": [
+                                "Udvikling forstås som historisk og relationel.",
+                                "Personlighed formes gennem tilbagevendende konflikter og reorganiseringer.",
+                            ],
+                            "meta": {
+                                "source_file": str(self.primary_reading_file.parent / "Lewis (1999).pdf"),
+                            },
+                        }
+                    }
+                },
+                ensure_ascii=False,
+            ),
+            encoding="utf-8",
+        )
+        self.weekly_overview_summaries_file.write_text(
+            json.dumps(
+                {
+                    "by_name": {
+                        "W01L1 - Alle kilder (undtagen slides) [EN].mp3": {
+                            "summary_lines": [
+                                "Forelæsningen samler de centrale personlighedspsykologiske grundspørgsmål i et udviklingsperspektiv.",
+                                "Teksterne peger samlet på, at personlighed må forstås i spændet mellem stabilitet og forandring.",
+                            ],
+                            "key_points": [
+                                "Relationelle erfaringer er centrale for personlig udvikling.",
+                                "Stabilitet og forandring må tænkes sammen analytisk.",
+                            ],
+                            "meta": {
+                                "lecture_key": "W01L1",
+                            },
+                        }
+                    }
+                },
+                ensure_ascii=False,
+            ),
+            encoding="utf-8",
+        )
+        clear_content_service_caches()
+
+        manifest = build_subject_content_manifest("personlighedspsykologi")
+        lecture = manifest["lectures"][0]
+        self.assertEqual(
+            lecture["summary"]["summary_lines"][0],
+            "Forelæsningen samler de centrale personlighedspsykologiske grundspørgsmål i et udviklingsperspektiv.",
+        )
+        self.assertEqual(
+            lecture["readings"][0]["summary"]["summary_lines"][0],
+            "Lewis beskriver personlighed som et udviklingsforløb med relationelle vendepunkter.",
+        )
+        self.assertEqual(
+            lecture["readings"][0]["summary"]["key_points"][0],
+            "Udvikling forstås som historisk og relationel.",
+        )
+
+    def test_load_manifest_rebuilds_when_summary_file_is_newer_than_manifest(self) -> None:
+        manifest = build_subject_content_manifest("personlighedspsykologi")
+        self.assertIsNone(manifest["lectures"][0]["summary"])
+        write_subject_content_manifest(manifest, path=self.manifest_file)
+
+        clear_content_service_caches()
+        time.sleep(0.02)
+        self.weekly_overview_summaries_file.write_text(
+            json.dumps(
+                {
+                    "by_name": {
+                        "W01L1 - Alle kilder [EN].mp3": {
+                            "summary_lines": ["Opdateret forelæsningsresume."],
+                            "key_points": ["Nyt nøglepunkt."],
+                            "meta": {"lecture_key": "W01L1"},
+                        }
+                    }
+                },
+                ensure_ascii=False,
+            ),
+            encoding="utf-8",
+        )
+
+        refreshed = load_subject_content_manifest("personlighedspsykologi")
+        self.assertEqual(refreshed["lectures"][0]["summary"]["summary_lines"], ["Opdateret forelæsningsresume."])
+        persisted = json.loads(self.manifest_file.read_text(encoding="utf-8"))
+        self.assertEqual(persisted["lectures"][0]["summary"]["key_points"], ["Nyt nøglepunkt."])
+
+    def test_load_manifest_rebuilds_when_manifest_version_is_outdated(self) -> None:
+        manifest = build_subject_content_manifest("personlighedspsykologi")
+        manifest["version"] = 1
+        write_subject_content_manifest(manifest, path=self.manifest_file)
+        clear_content_service_caches()
+
+        refreshed = load_subject_content_manifest("personlighedspsykologi")
+        self.assertEqual(refreshed["version"], 2)
+        persisted = json.loads(self.manifest_file.read_text(encoding="utf-8"))
+        self.assertEqual(persisted["version"], 2)
 
     def test_build_manifest_sets_source_filename_none_for_missing_readings(self) -> None:
         self.primary_reading_file.write_text(

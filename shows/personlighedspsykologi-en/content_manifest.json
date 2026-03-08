@@ -1,13 +1,15 @@
 {
-  "version": 1,
+  "version": 2,
   "subject_slug": "personlighedspsykologi",
   "source_meta": {
-    "version": 1,
+    "version": 2,
     "reading_master_path": "shows/personlighedspsykologi-en/docs/reading-file-key.md",
     "reading_fallback_path": "shows/personlighedspsykologi-en/docs/reading-file-key.md",
     "reading_source_used": "shows/personlighedspsykologi-en/docs/reading-file-key.md",
     "reading_fallback_used": false,
     "reading_error": null,
+    "reading_summaries_path": "shows/personlighedspsykologi-en/reading_summaries.json",
+    "weekly_overview_summaries_path": "shows/personlighedspsykologi-en/weekly_overview_summaries.json",
     "quiz_links_path": "shows/personlighedspsykologi-en/quiz_links.json",
     "rss_path": "shows/personlighedspsykologi-en/feeds/rss.xml",
     "spotify_map_path": "shows/personlighedspsykologi-en/spotify_map.json",
@@ -18,6 +20,19 @@
       "lecture_key": "W01L1",
       "lecture_title": "Introforelæsning og nøglebegreber i personlighedspsykologien (Forelæsning 1, 2026-02-02)",
       "sequence_index": 1,
+      "summary": {
+        "summary_lines": [
+          "Forelæsningen introducerer personlighedspsykologiens kernebegreber og viser, hvordan forskellige teorier afgrænser personlighed forskelligt.",
+          "Grundbogsteksten samler de centrale faglige stridspunkter om stabilitet, forandring og forklaringsniveau.",
+          "Lewis supplerer med et udviklingsperspektiv, hvor selvbevidste følelser kobles til selvet og personlighedsorganisering."
+        ],
+        "key_points": [
+          "Valg af personlighedsdefinition styrer både metodevalg og tolkning af data.",
+          "Kontinuitet og forandring bør forstås som samtidige processer.",
+          "Teorier prioriterer biologiske, sociale og erfaringsnære forklaringer forskelligt.",
+          "Selvbevidste følelser er centrale for udviklingen af et reflekteret selv."
+        ]
+      },
       "readings": [
         {
           "reading_key": "w01l1-grundbog-kapitel-1-introduktion-til-personlighed-1e727647",
@@ -25,6 +40,19 @@
           "is_missing": false,
           "source_filename": "W1L1 Grundbog kapitel 1 - Introduktion til personlighedspsykologi.pdf",
           "sequence_index": 1,
+          "summary": {
+            "summary_lines": [
+              "Introduktionskapitlet kortlægger centrale spørgsmål, begreber og stridspunkter i personlighedspsykologi.",
+              "Det sammenholder hovedtraditioner og viser, hvordan antagelser former metoder og resultater.",
+              "Personlighed fremstilles både som mønstret kontinuitet og kontekstfølsom forandring."
+            ],
+            "key_points": [
+              "Definitioner af personlighed bestemmer, hvad der tæller som evidens.",
+              "Forskellige paradigmer prioriterer forskellige forklaringsniveauer.",
+              "Kontinuitet og forandring er begge grundproblemer i forskningen.",
+              "Teorivalg har både praktiske og etiske konsekvenser."
+            ]
+          },
           "assets": {
             "quizzes": [
               {
@@ -104,6 +132,19 @@
           "is_missing": false,
           "source_filename": "W1L1 Lewis (1999).pdf",
           "sequence_index": 2,
+          "summary": {
+            "summary_lines": [
+              "Lewis examines the development of self-conscious emotions and their role in personality organization.",
+              "The text connects emotion, self-evaluation, and socialization processes in early development.",
+              "It argues that emotions like shame, guilt, and pride depend on emerging self-representational capacities."
+            ],
+            "key_points": [
+              "Self-conscious emotions require reflexive awareness of self.",
+              "Social norms and feedback shape emotional differentiation.",
+              "Emotion development contributes to self-regulation and identity.",
+              "Early relational contexts influence later personality pathways."
+            ]
+          },
           "assets": {
             "quizzes": [
               {
@@ -242,6 +283,19 @@
       "lecture_key": "W01L2",
       "lecture_title": "Personality assessment (Forelæsning 2, 2026-02-03)",
       "sequence_index": 2,
+      "summary": {
+        "summary_lines": [
+          "Kilderne behandler personlighedsvurdering som et teoretisk valg, ikke kun en teknisk måleopgave.",
+          "Fokus er på, hvordan instrumentdesign og konstruktafgrænsning påvirker validitet og sammenlignelighed.",
+          "Samlet peger teksterne på, at vurderingskvalitet kræver tydelig kobling mellem måling, teori og inferens."
+        ],
+        "key_points": [
+          "Personlighedsmåling er teori-afhængig fra start til slut.",
+          "Konstruktvaliditet kræver præcis operationalisering af begreber.",
+          "Forskellige tests kan implicit bygge på forskellige personmodeller.",
+          "Tydelige inferenskriterier gør resultater mere fortolkelige og anvendelige."
+        ]
+      },
       "readings": [
         {
           "reading_key": "w01l2-mayer-and-bryan-2024-07faf915",
@@ -249,6 +303,19 @@
           "is_missing": false,
           "source_filename": "W1L2 Mayer & Bryan (2024).pdf",
           "sequence_index": 1,
+          "summary": {
+            "summary_lines": [
+              "Mayer and Bryan discuss frameworks for evaluating personality assessment quality and scope.",
+              "They compare conceptual and psychometric criteria for deciding what an assessment can legitimately claim.",
+              "The paper emphasizes explicit linkage between model assumptions and use contexts."
+            ],
+            "key_points": [
+              "Assessment quality includes conceptual as well as statistical adequacy.",
+              "Use-case boundaries should be specified in advance.",
+              "Inference validity depends on model-fit to target questions.",
+              "Evaluation standards should be transparent and replicable."
+            ]
+          },
           "assets": {
             "quizzes": [
               {
@@ -290,6 +357,19 @@
           "is_missing": false,
           "source_filename": "W1L2 Koutsoumpis (2025).pdf",
           "sequence_index": 2,
+          "summary": {
+            "summary_lines": [
+              "This article addresses contemporary challenges in personality assessment and construct interpretation.",
+              "It examines how measurement choices affect validity, comparability, and theoretical conclusions.",
+              "The argument stresses tighter alignment between assessment design and inferential goals."
+            ],
+            "key_points": [
+              "Assessment is theory-laden and not method-neutral.",
+              "Construct validity depends on clear conceptual operationalization.",
+              "Different instruments can imply different models of personhood.",
+              "Transparent inference criteria improve interpretability."
+            ]
+          },
           "assets": {
             "quizzes": [
               {
@@ -331,6 +411,19 @@
           "is_missing": false,
           "source_filename": "W1L2 Phan et al. (2024).pdf",
           "sequence_index": 3,
+          "summary": {
+            "summary_lines": [
+              "Phan et al. argue that the nomothetic-idiographic distinction alone is too coarse to organize contemporary personality research.",
+              "They propose a 2x3 framework based on focal entity (person vs population) and type of generalization (none, entity-specific, cross-entity).",
+              "The paper aims to improve conceptual precision so research questions, methods, and inferences are better aligned."
+            ],
+            "key_points": [
+              "Nomothetic and idiographic labels are often conflated with unrelated methodological choices.",
+              "A matrix-based taxonomy clarifies inferential goals across study designs.",
+              "Generalization targets should be specified explicitly at design stage.",
+              "The framework is intended as a decision aid across the empirical workflow."
+            ]
+          },
           "assets": {
             "quizzes": [
               {
@@ -480,6 +573,19 @@
       "lecture_key": "W02L1",
       "lecture_title": "Personality traits, personality states, and personality dimensions (Forelæsning 3, 2026-02-09)",
       "sequence_index": 3,
+      "summary": {
+        "summary_lines": [
+          "Forelæsningen afklarer forholdet mellem træk, tilstande og overordnede personlighedsdimensioner.",
+          "Kilderne viser, at stabilitet afhænger af tidsskala og kontekst frem for én fast antagelse.",
+          "En integreret model foreslås, hvor varige mønstre og situationsvariation analyseres samlet."
+        ],
+        "key_points": [
+          "Træk og tilstande bør modelleres som forbundne niveauer.",
+          "Tidsvindue har stor betydning for, hvordan stabilitet vurderes.",
+          "Situationer påvirker systematisk, hvordan træk kommer til udtryk.",
+          "Dimensionelle modeller kræver tydelige valg af analyseniveau."
+        ]
+      },
       "readings": [
         {
           "reading_key": "w02l1-zettler-et-al-2020-0c54e6e4",
@@ -487,6 +593,19 @@
           "is_missing": false,
           "source_filename": "W2L1 Zettler et al. (2020).pdf",
           "sequence_index": 1,
+          "summary": {
+            "summary_lines": [
+              "The article evaluates trait structure and explanatory models in contemporary differential psychology.",
+              "It discusses how latent dimensions are inferred and what kinds of behavioral regularities they capture.",
+              "A key point is balancing parsimonious structure with substantive interpretability."
+            ],
+            "key_points": [
+              "Trait models depend on assumptions about covariance structure.",
+              "Measurement decisions influence apparent dimensionality.",
+              "Interpretation should distinguish statistical fit from explanatory depth.",
+              "Replication and cross-context robustness are central quality criteria."
+            ]
+          },
           "assets": {
             "quizzes": [
               {
@@ -528,6 +647,19 @@
           "is_missing": false,
           "source_filename": "W2L1 Columbus & Strandsbjerg (2025).pdf",
           "sequence_index": 2,
+          "summary": {
+            "summary_lines": [
+              "This text examines distinctions and relations between personality traits, states, and broader dimensions.",
+              "It clarifies temporal stability assumptions and context sensitivity in trait-state modeling.",
+              "The authors argue for integrative measurement strategies that capture both enduring and situational variability."
+            ],
+            "key_points": [
+              "Traits and states should be modeled as connected, not opposed.",
+              "Temporal scale matters for interpreting stability.",
+              "Context can systematically shape state expression.",
+              "Dimensional models require explicit level-of-analysis choices."
+            ]
+          },
           "assets": {
             "quizzes": [
               {
@@ -696,6 +828,19 @@
       "lecture_key": "W02L2",
       "lecture_title": "Person-situation interplay - stability and change of individual differences (Forelæsning 4, 2026-02-10)",
       "sequence_index": 4,
+      "summary": {
+        "summary_lines": [
+          "Kilderne samler evidens for både høj rangordensstabilitet og systematiske gennemsnitsændringer gennem livet.",
+          "Meta-analytiske resultater nuancerer tidligere antagelser om, hvornår personlighed ændrer sig mest.",
+          "Person-situation-perspektivet viser, at adfærd opstår i koblingen mellem disposition og kontekst."
+        ],
+        "key_points": [
+          "Rangordensstabilitet stiger typisk ind i voksenlivet og flader derefter ud.",
+          "Flere træk bevæger sig i retning af modenhed på gennemsnitsniveau.",
+          "Effektstørrelser varierer med trækniveau og målemetode.",
+          "Udvikling forstås bedst som et samspil mellem person og situation."
+        ]
+      },
       "readings": [
         {
           "reading_key": "w02l2-bleidorn-et-al-2022-25c2d2de",
@@ -703,6 +848,19 @@
           "is_missing": false,
           "source_filename": "W2L2 Bleidorn et al. (2022).pdf",
           "sequence_index": 1,
+          "summary": {
+            "summary_lines": [
+              "This meta-analysis synthesizes longitudinal evidence on personality stability and mean-level change across the lifespan.",
+              "It confirms substantial rank-order stability while documenting systematic maturation-linked change patterns.",
+              "Findings refine earlier estimates and highlight developmental periods with stronger change dynamics."
+            ],
+            "key_points": [
+              "Rank-order stability increases into adulthood and then plateaus.",
+              "Mean-level change tends toward greater maturity on several traits.",
+              "Effect sizes vary by trait breadth and measurement level.",
+              "Large-scale longitudinal synthesis improves precision of lifespan claims."
+            ]
+          },
           "assets": {
             "quizzes": [
               {
@@ -744,6 +902,19 @@
           "is_missing": false,
           "source_filename": "W2L2 Li & Wilt (2025).pdf",
           "sequence_index": 2,
+          "summary": {
+            "summary_lines": [
+              "Li and Wilt analyze person-situation interplay in the expression and development of individual differences.",
+              "They show how stable tendencies and situational affordances jointly produce behavior patterns.",
+              "The paper argues for models that explicitly capture reciprocal dynamics over time."
+            ],
+            "key_points": [
+              "Behavior emerges from trait-situation coupling rather than either alone.",
+              "Situational selection and evocation can reinforce personality patterns.",
+              "Development involves feedback loops between persons and contexts.",
+              "Process-oriented designs are needed for causal claims."
+            ]
+          },
           "assets": {
             "quizzes": [
               {
@@ -882,6 +1053,19 @@
       "lecture_key": "W03L1",
       "lecture_title": "Culture, evolution, genetics, and personality (Forelæsning 5, 2026-02-16)",
       "sequence_index": 5,
+      "summary": {
+        "summary_lines": [
+          "Forelæsningen forbinder kultur, evolution og genetik i en flerfaktoriel forståelse af personlighed.",
+          "Kilderne peger på, at personlighedsforskelle typisk skyldes mange små påvirkninger frem for enkelte hovedårsager.",
+          "Der argumenteres for multimodale designs, som bedre kan fange gen-miljø-samspil og kulturel variation."
+        ],
+        "key_points": [
+          "Personlighedens arkitektur fremstår polygen og poly-miljømæssig.",
+          "Enkeltfaktor-forklaringer har begrænset forklaringskraft.",
+          "Målestrategi påvirker, hvilke genetiske og miljømæssige effekter der kan ses.",
+          "Kulturel kontekst former både udtryk, fortolkning og værdi af træk."
+        ]
+      },
       "readings": [
         {
           "reading_key": "w03l1-kandler-and-instinske-2025-01535a8e",
@@ -889,6 +1073,19 @@
           "is_missing": false,
           "source_filename": "W3L1 Kandler & Instinske (2025).pdf",
           "sequence_index": 1,
+          "summary": {
+            "summary_lines": [
+              "This review synthesizes evidence that personality differences are shaped by many small genetic and environmental influences rather than single dominant causes.",
+              "It emphasizes that broad trait scores can hide specific mechanisms and that measurement strategy strongly affects what effects are detected.",
+              "The authors call for multimodal, multi-perspective designs that model gene-environment interplay more directly."
+            ],
+            "key_points": [
+              "Personality architecture appears polygenic and poly-environmental.",
+              "Single-factor explanations have weak explanatory power for trait variance.",
+              "Operationalization choices influence observed genetic and environmental effects.",
+              "Future research should target interaction effects and person-specific pathways."
+            ]
+          },
           "assets": {
             "quizzes": [
               {
@@ -930,6 +1127,19 @@
           "is_missing": false,
           "source_filename": "W3L1 Lu, Benet-Martínez & Wang (2023).pdf",
           "sequence_index": 2,
+          "summary": {
+            "summary_lines": [
+              "This article investigates how culture shapes personality structure, expression, and adaptation.",
+              "It highlights that trait manifestations depend on cultural meaning systems and social ecologies.",
+              "Cross-cultural comparison is used to separate universal from context-specific processes."
+            ],
+            "key_points": [
+              "Cultural context conditions trait expression and interpretation.",
+              "Equivalent labels may map onto different lived practices across settings.",
+              "Cross-cultural methods require careful construct comparability checks.",
+              "Personality theory benefits from culturally plural evidence bases."
+            ]
+          },
           "assets": {
             "quizzes": [
               {
@@ -971,6 +1181,19 @@
           "is_missing": false,
           "source_filename": "W3L1 Volk & Puchalski (2025).pdf",
           "sequence_index": 3,
+          "summary": {
+            "summary_lines": [
+              "Volk and Puchalski discuss evolutionary perspectives on personality variation and adaptive trade-offs.",
+              "They frame individual differences as potentially functional responses to recurrent ecological and social demands.",
+              "The argument integrates evolutionary logic with contemporary personality measurement."
+            ],
+            "key_points": [
+              "Variation can be maintained through context-dependent fitness trade-offs.",
+              "Adaptive value is conditional rather than universally optimal.",
+              "Evolutionary accounts should be tested against developmental and cultural evidence.",
+              "Trait interpretation gains depth when linked to ecological function."
+            ]
+          },
           "assets": {
             "quizzes": [
               {
@@ -1012,6 +1235,19 @@
           "is_missing": false,
           "source_filename": "W3L1 Zettler et al. (2025).pdf",
           "sequence_index": 4,
+          "summary": {
+            "summary_lines": [
+              "This paper revisits trait dimensions and their explanatory role using contemporary integrative evidence.",
+              "It evaluates links between structure, prediction, and underlying mechanisms in personality research.",
+              "The authors call for clearer theory-to-measurement alignment in trait science."
+            ],
+            "key_points": [
+              "Trait dimensions need both statistical and substantive justification.",
+              "Predictive success does not automatically identify mechanisms.",
+              "Model comparisons should include interpretability criteria.",
+              "Cumulative progress depends on explicit conceptual commitments."
+            ]
+          },
           "assets": {
             "quizzes": [
               {
@@ -1150,6 +1386,7 @@
       "lecture_key": "W03L2",
       "lecture_title": "Personlighedsfunktion og forstyrrelse (Forelæsning 6, 2026-02-17)",
       "sequence_index": 6,
+      "summary": null,
       "readings": [
         {
           "reading_key": "w03l2-bach-and-simonsen-2023-d58362ff",
@@ -1157,6 +1394,7 @@
           "is_missing": true,
           "source_filename": null,
           "sequence_index": 1,
+          "summary": null,
           "assets": {
             "quizzes": [],
             "podcasts": []
@@ -1168,6 +1406,19 @@
           "is_missing": false,
           "source_filename": "W3L2 Sharp & Wall (2021).pdf",
           "sequence_index": 2,
+          "summary": {
+            "summary_lines": [
+              "Sharp and Wall examine personality functioning and disturbance through dimensional, developmental lenses.",
+              "They discuss how impairments in self and interpersonal functioning relate to personality pathology.",
+              "The text emphasizes integrating clinical utility with theoretically coherent models of dysfunction."
+            ],
+            "key_points": [
+              "Personality pathology is better treated dimensionally than categorically.",
+              "Self-function and interpersonal function are core diagnostic anchors.",
+              "Developmental trajectories help explain heterogeneity in presentation.",
+              "Assessment should connect symptom profiles with underlying functioning."
+            ]
+          },
           "assets": {
             "quizzes": [
               {
@@ -1227,6 +1478,19 @@
       "lecture_key": "W04L1",
       "lecture_title": "Psykoanalysens personlighedsbegreb (Forelæsning 7, 2026-02-23)",
       "sequence_index": 7,
+      "summary": {
+        "summary_lines": [
+          "Kilderne samler klassiske psykoanalytiske formuleringer om drift, konflikt og personlighedsstruktur.",
+          "Freudianske tekster læses som en dynamisk model, hvor ubevidste processer organiserer symptomer og handling.",
+          "Materialet kobler metapsykologiske begreber til klinisk fortolkning af kompromisdannelser."
+        ],
+        "key_points": [
+          "Ubevidst konflikt er central for symptomers form og betydning.",
+          "Psykens instanser forstås gennem funktionelle spændinger.",
+          "Fortolkning forbinder manifeste fænomener med latente processer.",
+          "Teori og kliniske observationer udvikles i et gensidigt samspil."
+        ]
+      },
       "readings": [
         {
           "reading_key": "w04l1-freud-1973-1933-98cd9920",
@@ -1234,6 +1498,19 @@
           "is_missing": false,
           "source_filename": "W4L1 Freud (1973-1933) DA.pdf",
           "sequence_index": 1,
+          "summary": {
+            "summary_lines": [
+              "Udvalget samler centrale freudianske formuleringer om psykisk konflikt, symptomdannelse og personlighedsstruktur.",
+              "En dynamisk model udvikles, hvor ubevidste processer præger bevidst oplevelse og handling.",
+              "Teksten forbinder metapsykologiske begreber med klinisk tolkning af kompromisdannelser."
+            ],
+            "key_points": [
+              "Ubevidst konflikt organiserer symptomers form og mening.",
+              "Psykens instanser forstås gennem funktionelle spændinger.",
+              "Tolkning søger forbindelsen mellem manifeste fænomener og latente processer.",
+              "Kliniske observationer og teoriudvikling belyser hinanden gensidigt."
+            ]
+          },
           "assets": {
             "quizzes": [
               {
@@ -1303,6 +1580,19 @@
           "is_missing": false,
           "source_filename": "W4L1 Gammelgaard (2007).pdf",
           "sequence_index": 2,
+          "summary": {
+            "summary_lines": [
+              "Gammelgaard diskuterer psykoanalytiske forståelser af personlighed med vægt på subjektivitet og relationel dynamik.",
+              "Kapitlet præciserer centrale begreber og deres betydning for udvikling og organisering af personligheden.",
+              "Psykoanalyse positioneres som en meningsorienteret ramme for fortolkning af psykiske konflikter."
+            ],
+            "key_points": [
+              "Personlighed formes i tidlige relationelle konfigurationer.",
+              "Konflikt, forsvar og fantasi strukturerer subjektiviteten.",
+              "Fortolkningsbegreber skal forankres udviklingspsykologisk.",
+              "Kliniske og teoretiske niveauer må læses i sammenhæng."
+            ]
+          },
           "assets": {
             "quizzes": [],
             "podcasts": [
@@ -1384,6 +1674,19 @@
       "lecture_key": "W04L2",
       "lecture_title": "Psykoanalytisk personlighedsstruktur (Forelæsning 8, 2026-02-24)",
       "sequence_index": 8,
+      "summary": {
+        "summary_lines": [
+          "Forelæsningen flytter fokus fra ego-centrerede modeller til et strukturelt syn på subjektivitet.",
+          "Lacan læser personlighed gennem sprog, begær og den symbolske orden.",
+          "Laplanche viser, hvordan teoretiske spændinger hos Freud kan bruges produktivt i analysen."
+        ],
+        "key_points": [
+          "Subjektet konstitueres i sproglige og symbolske relationer.",
+          "Ego-sammenhæng kan dække over dybere splittelser i subjektet.",
+          "Begær forstås som medieret af den Anden og betydningsdannelse.",
+          "Begrebslige modsætninger kan være analytiske resurser frem for fejl."
+        ]
+      },
       "readings": [
         {
           "reading_key": "w04l2-lacan-1966-2d720f56",
@@ -1391,6 +1694,19 @@
           "is_missing": false,
           "source_filename": "W4L2 Lacan (1966).pdf",
           "sequence_index": 1,
+          "summary": {
+            "summary_lines": [
+              "Lacan analyzes subjectivity through language, symbolic structure, and desire.",
+              "The text challenges ego-centered models by emphasizing the split subject and structural determination.",
+              "Personality organization is treated as effects of symbolic positioning and identification."
+            ],
+            "key_points": [
+              "The subject is constituted in and by language.",
+              "Ego coherence can mask deeper symbolic divisions.",
+              "Desire is mediated through signification and the Other.",
+              "Structural reading reframes symptoms as signifying formations."
+            ]
+          },
           "assets": {
             "quizzes": [
               {
@@ -1432,6 +1748,19 @@
           "is_missing": false,
           "source_filename": "W4L2 Laplanche, J. (1970). Liv og død i psykoanalysen (pp. 18‐38).pdf",
           "sequence_index": 2,
+          "summary": {
+            "summary_lines": [
+              "Laplanche introduces a historical-structural reading of Freud that treats contradictions in psychoanalytic theory as theoretically productive rather than accidental.",
+              "He argues that tensions in concepts like drive, ego, and object should be interpreted dialectically as clues to the object of psychoanalysis.",
+              "The text positions psychoanalytic theory as evolving through conceptual crises tied to both clinical and metapsychological problems."
+            ],
+            "key_points": [
+              "Freud is read through latent structural contradictions, not only explicit doctrine.",
+              "Contradictions can signal deeper problems in the theory of the object.",
+              "Drive theory is examined through the relation between aim, object, and process.",
+              "Methodologically, interpretation requires sustained attention to conceptual reversals."
+            ]
+          },
           "assets": {
             "quizzes": [
               {
@@ -1540,6 +1869,19 @@
       "lecture_key": "W05L1",
       "lecture_title": "Empiri og metode i psykoanalysen (Forelæsning 9, 2026-03-02)",
       "sequence_index": 9,
+      "summary": {
+        "summary_lines": [
+          "Forelæsningen samler klassiske og nyere diskussioner af, hvad der kan tælle som empiri i psykoanalysen.",
+          "Kilderne viser, at kliniske fortællinger, overføring, fortolkning og psykisk realitet ikke kan adskilles skarpt fra teoridannelse.",
+          "Psykoanalysens metode fremstilles derfor som en fortolkende praksis, der må begrunde sine sandhedskrav uden at reducere subjektet til målbare størrelser."
+        ],
+        "key_points": [
+          "Det kliniske materiale er meningsfuldt og relationelt, ikke blot observationsdata.",
+          "Psykisk realitet og fortælling er centrale elementer i psykoanalytisk evidens.",
+          "Metodekritik handler om, hvordan fortolkning kan gøres fagligt ansvarlig.",
+          "Spændingen mellem videnskabelighed og klinisk singularitet er konstitutiv for feltet."
+        ]
+      },
       "readings": [
         {
           "reading_key": "w05l1-freud-s-1984-1905-brudstykke-af-en-hysteri-analy-df466bb5",
@@ -1547,6 +1889,19 @@
           "is_missing": false,
           "source_filename": "W5L1 Freud, S. (1984-1905). Brudstykke af en hysteri-analyse (pp. 9-62, pp. 96-.pdf",
           "sequence_index": 1,
+          "summary": {
+            "summary_lines": [
+              "This case fragment illustrates Freud’s method of interpreting symptom meaning through transferential clinical material.",
+              "It presents hysterical formation as compromise between unconscious desire, defense, and relational conflict.",
+              "The text also exposes methodological and ethical tensions in early psychoanalytic case construction."
+            ],
+            "key_points": [
+              "Case interpretation links symptom form to conflict history.",
+              "Transference is central to both evidence and treatment process.",
+              "Narrative reconstruction is theory-guided and contestable.",
+              "The case highlights limits of early analytic authority and method."
+            ]
+          },
           "assets": {
             "quizzes": [
               {
@@ -1588,6 +1943,19 @@
           "is_missing": false,
           "source_filename": "W5L1 Gammelgaard (2010).pdf",
           "sequence_index": 2,
+          "summary": {
+            "summary_lines": [
+              "Teksten diskuterer psykoanalysens videnskabelighed ved at afgrænse dens empiri til tale, intentionalitet, psykisk realitet og den fortalte historie.",
+              "I stedet for at efterligne naturvidenskabelig måling argumenteres der for, at psykoanalytisk viden må udvikles gennem fortolkning af meningsfulde, relationelle og historisk situerede fænomener.",
+              "Psykoanalysens styrke ligger derfor i en metodisk kobling mellem klinisk materiale, teoridannelse og refleksion over subjektets særlige værensmåde."
+            ],
+            "key_points": [
+              "Psykoanalytisk empiri er ikke rå data, men fortolkbare ytringer og handlingsformer.",
+              "Psykisk realitet må behandles som et legitimt vidensobjekt.",
+              "Fortælling, overføring og kontekst er en del af evidensen, ikke støj omkring den.",
+              "Teoridannelse og empirisk analyse er gensidigt afhængige i psykoanalysen."
+            ]
+          },
           "assets": {
             "quizzes": [
               {
@@ -1629,6 +1997,19 @@
           "is_missing": false,
           "source_filename": "W5L1 Ricoeur (1981).pdf",
           "sequence_index": 3,
+          "summary": {
+            "summary_lines": [
+              "Ricoeur examines how psychoanalysis can justify truth claims when its data are interpretive, transferential, and bound to the analytic situation.",
+              "He argues that standard natural-science verification models are insufficient for psychoanalytic theory and practice.",
+              "The chapter reframes proof through the relation between interpretation, treatment process, and the specific kinds of facts analytic work can produce."
+            ],
+            "key_points": [
+              "The central issue is what counts as a fact in psychoanalysis.",
+              "Theory, investigation, and treatment are epistemically intertwined.",
+              "Transference and interpretation are not noise but part of the evidential structure.",
+              "Psychoanalytic validation requires criteria beyond simple falsification models."
+            ]
+          },
           "assets": {
             "quizzes": [
               {
@@ -1767,6 +2148,19 @@
       "lecture_key": "W05L2",
       "lecture_title": "Psykoanalysens konstituering (Forelæsning 10, 2026-03-03)",
       "sequence_index": 10,
+      "summary": {
+        "summary_lines": [
+          "Forelæsningen samler nyere psykoanalytiske teorier om, hvordan subjektet konstitueres gennem drifter, objektrelationer og det ubevidste.",
+          "Kilderne viser både, hvordan Freuds metapsykologi videreudvikles, og hvordan spørgsmålet om det ubevidstes status fortsat organiserer teoridannelsen.",
+          "På tværs af teksterne fremstilles psykoanalysen som et felt, hvor konstitutionen af personlighed må tænkes relationelt, strukturelt og historisk."
+        ],
+        "key_points": [
+          "Objekt, drift og det ubevidste er fortsat bærende nøglebegreber.",
+          "Nyere teorier omarbejder Freuds modeller snarere end blot at gentage dem.",
+          "Subjektet forstås som decentreret og formet gennem relationer og repræsentationer.",
+          "Psykoanalytisk konstitution kræver både klinisk og metapsykologisk analyse."
+        ]
+      },
       "readings": [
         {
           "reading_key": "w05l2-andkj-r-olsen-and-k-ppe-1991a-1991b-720b5d8e",
@@ -1774,6 +2168,19 @@
           "is_missing": false,
           "source_filename": "W5L2 Andkjær Olsen & Køppe (1991a og b).pdf",
           "sequence_index": 1,
+          "summary": {
+            "summary_lines": [
+              "Teksten genlæser Freuds metapsykologi og viser, at hans kliniske erfaringer presser de klassiske topiske modeller ud over deres oprindelige associationistiske ramme.",
+              "Forfatterne argumenterer for, at forestillinger, fantasier og affekter må forstås strukturelt og relationelt frem for som isolerede elementer i psyken.",
+              "Driftsteorien fremstilles som et forsøg på at forbinde organiske spændinger, psykisk energi og meningsdannelse i én samlet model af subjektets konstituering."
+            ],
+            "key_points": [
+              "Freuds topiske modeller rummer spændinger mellem kliniske observationer og teoretiske skemaer.",
+              "Forestillinger fungerer som strukturelle knudepunkter snarere end lukkede mentale enheder.",
+              "Drifter beskriver, hvordan kropslige spændinger organiseres som psykiske processer.",
+              "Metapsykologi må læses i lyset af både økonomiske, dynamiske og topiske niveauer."
+            ]
+          },
           "assets": {
             "quizzes": [
               {
@@ -1815,6 +2222,19 @@
           "is_missing": false,
           "source_filename": "W5L2 Køppe (1992).pdf",
           "sequence_index": 2,
+          "summary": {
+            "summary_lines": [
+              "Køppe undersøger forskellige historiske definitioner af det ubevidste og skelner mellem neurofysiologiske, psykiske og subjekt-transcenderende forståelser.",
+              "Artiklen fremhæver, at Freuds pointe ikke er en ekstern determinisme, men at psyken er internt decentreret, fordi det ubevidste er en del af selve psyken.",
+              "Dermed bliver det ubevidste afgørende for menneskelig subjektivitet, selvrefleksion og psykoanalysens særlige genstandsfelt."
+            ],
+            "key_points": [
+              "Begrebet om det ubevidste ændrer selve definitionen af psykologiens genstand.",
+              "Freuds model undgår klassisk ekstern determinisme ved at gøre det ubevidste systeminternt.",
+              "Bevidstheden er ikke centrum i psyken, men én instans blandt flere.",
+              "Subjektets artsdefinerende træk knyttes til relationen mellem ubevidsthed og selvbevidsthed."
+            ]
+          },
           "assets": {
             "quizzes": [
               {
@@ -1856,6 +2276,19 @@
           "is_missing": false,
           "source_filename": "Grundbog kapitel 07 - Nyere psykoanalytiske teorier.pdf",
           "sequence_index": 3,
+          "summary": {
+            "summary_lines": [
+              "Kapitlet kortlægger nyere psykoanalytiske teorier ved at sammenligne deres forskellige forståelser af subjekt, objekt og det ubevidste.",
+              "Det peger på tre dominerende udviklingsspor: teorier der fremhæver kognition, teorier der fremhæver den anden og det symbolske, og teorier der fremhæver kultur og samfund.",
+              "Samtidig fastholdes infantil seksualitet og det ubevidste som centrale kerneantagelser, selv om nyere retninger omorganiserer psykoanalysens begreber og metoder."
+            ],
+            "key_points": [
+              "Psykoanalysens mangfoldighed kan beskrives både historisk, nationalt og tematisk.",
+              "Objekt, drift, interaktion og subjekt fungerer som centrale tværgående begreber.",
+              "Nyere teorier omfordeler vægten mellem kognition, det ubevidste og sociale/kulturelle forhold.",
+              "Freuds kernebegreber bevares, men videreudvikles i forskellige skoledannelser."
+            ]
+          },
           "assets": {
             "quizzes": [
               {
@@ -1994,6 +2427,19 @@
       "lecture_key": "W06L1",
       "lecture_title": "Fænomenologi (Forelæsning 11, 2026-03-09)",
       "sequence_index": 11,
+      "summary": {
+        "summary_lines": [
+          "Kilderne udvikler en fænomenologisk tilgang til personlighed med udgangspunkt i levet erfaring.",
+          "Analysen flyttes fra abstrakte variabler til personens konkrete relation til verden, krop og mening.",
+          "Forelæsningen fremhæver personlighed som situeret organisering af erfaring på tværs af sammenhænge."
+        ],
+        "key_points": [
+          "Førstepersonsperspektivet er en legitim og nødvendig videnskilde.",
+          "Mening opstår i personens praktiske engagement i verden.",
+          "Metoden prioriterer deskriptiv og fortolkende stringens.",
+          "Handlekraft og sårbarhed analyseres som samtidige vilkår."
+        ]
+      },
       "readings": [
         {
           "reading_key": "w06l1-spinelli-2005-b2f76e93",
@@ -2001,6 +2447,19 @@
           "is_missing": false,
           "source_filename": "W6L1 Spinelli (2005).pdf",
           "sequence_index": 1,
+          "summary": {
+            "summary_lines": [
+              "Spinelli presents an existential-phenomenological framework for understanding personhood and therapeutic encounter.",
+              "The text examines anxiety, meaning, and freedom as basic dimensions of lived existence.",
+              "It argues for dialogical, descriptive engagement rather than pathologizing reduction."
+            ],
+            "key_points": [
+              "Existential themes organize many forms of distress and growth.",
+              "Therapeutic understanding requires bracketed attention to lived world.",
+              "Meaning is co-constructed in relational dialogue.",
+              "Methodological stance shapes what can become psychologically visible."
+            ]
+          },
           "assets": {
             "quizzes": [
               {
@@ -2042,6 +2501,19 @@
           "is_missing": false,
           "source_filename": "W6L1 Moeskær Hansen & Roald (2022).pdf",
           "sequence_index": 2,
+          "summary": {
+            "summary_lines": [
+              "This text applies phenomenological analysis to contemporary questions of selfhood and psychological understanding.",
+              "It emphasizes experiential structure, embodied perspective, and contextual meaning-making.",
+              "The argument supports non-reductionist methods for studying persons in lived situations."
+            ],
+            "key_points": [
+              "Experience is structured and analyzable without reducing it to variables alone.",
+              "Embodiment is central for understanding affect and orientation.",
+              "Interpretation must remain close to concrete life-world contexts.",
+              "Phenomenological method complements but does not mirror natural-science designs."
+            ]
+          },
           "assets": {
             "quizzes": [
               {
@@ -2083,6 +2555,19 @@
           "is_missing": false,
           "source_filename": "W6L1 Grundbog kapitel 4 - Fænomenologisk personlighedspsykologi.pdf",
           "sequence_index": 3,
+          "summary": {
+            "summary_lines": [
+              "Kapitlet udvikler en fænomenologisk tilgang til personlighed med udgangspunkt i levet erfaring og mening.",
+              "Analysen flyttes fra abstrakte træk til person-verdensrelationer, krop og intentionalitet.",
+              "Personlighed forstås som en situeret organisering af erfaring på tværs af konkrete livssammenhænge."
+            ],
+            "key_points": [
+              "Førstepersonsperspektivet er en central kilde til psykologisk viden.",
+              "Mening dannes relationelt i personens engagement i verden.",
+              "Metoden prioriterer deskriptiv og fortolkende stringens frem for reduktionisme.",
+              "Handlekraft og sårbarhed analyseres som samtidige vilkår."
+            ]
+          },
           "assets": {
             "quizzes": [
               {
@@ -2190,6 +2675,19 @@
       "lecture_key": "W06L2",
       "lecture_title": "Eksistentiel personlighedspsykologi I (Funch) (Forelæsning 12, 2026-03-10)",
       "sequence_index": 12,
+      "summary": {
+        "summary_lines": [
+          "Forelæsningen samler eksistentielle perspektiver på personlighed, angst og frihed.",
+          "Boss og May forstår psykiske vanskeligheder som indskrænkninger i måder at være-i-verden på.",
+          "Kilderne forbinder ontologiske antagelser direkte med klinisk praksis og fortolkning."
+        ],
+        "key_points": [
+          "Lidelse kan beskrives som begrænsede eksistentielle muligheder.",
+          "Analyse af verdensforhold prioriteres over rene intrapsykiske mekanismer.",
+          "Klinisk arbejde følger levet struktur frem for symptomoptælling alene.",
+          "Angst forstås som et grundvilkår ved frihed og ansvar."
+        ]
+      },
       "readings": [
         {
           "reading_key": "w06l2-boss-1963-1feb5a5f",
@@ -2197,6 +2695,19 @@
           "is_missing": false,
           "source_filename": "W6L2 Boss (1963).pdf",
           "sequence_index": 1,
+          "summary": {
+            "summary_lines": [
+              "Boss develops Daseinsanalytic perspectives that reinterpret psychopathology through modes of being-in-the-world.",
+              "He critiques mechanistic explanatory models and emphasizes existential openness and restriction.",
+              "Personality understanding is grounded in how existence is disclosed in concrete situations."
+            ],
+            "key_points": [
+              "Psychological suffering can be read as constricted possibilities of being.",
+              "Existential analysis prioritizes world-relation over intrapsychic mechanics alone.",
+              "Clinical interpretation tracks lived structure rather than symptom counting.",
+              "Ontology and therapy are methodologically connected."
+            ]
+          },
           "assets": {
             "quizzes": [
               {
@@ -2238,6 +2749,19 @@
           "is_missing": false,
           "source_filename": "W6L2 May (1966).pdf",
           "sequence_index": 2,
+          "summary": {
+            "summary_lines": [
+              "May articulates existential psychology around anxiety, freedom, responsibility, and meaning.",
+              "He treats personality development as confrontation with existential givens rather than linear adjustment alone.",
+              "The text links psychological vitality to courage in the face of uncertainty and conflict."
+            ],
+            "key_points": [
+              "Anxiety is a structural feature of freedom, not merely pathology.",
+              "Responsibility and choice are central developmental tasks.",
+              "Meaning crises can be sources of transformation.",
+              "Existential analysis reframes symptoms within broader life projects."
+            ]
+          },
           "assets": {
             "quizzes": [
               {
@@ -2315,6 +2839,19 @@
       "lecture_key": "W07L1",
       "lecture_title": "Eksistentiel personlighedspsykologi II (Bjerregaard-Nielsen) (Forelæsning 13, 2026-03-16)",
       "sequence_index": 13,
+      "summary": {
+        "summary_lines": [
+          "Kilderne samler eksistentielle og fænomenologiske bidrag til moderne personlighedsforståelse.",
+          "Fokus er på valg, mening, relationel tilstedeværelse og personens mulighedsrum.",
+          "Forelæsningen kobler disse perspektiver til konkret terapeutisk praksis og metode."
+        ],
+        "key_points": [
+          "Terapi forstås som et samarbejde om meningsafklaring.",
+          "Eksistentielle temaer organiserer mange kliniske problemstillinger.",
+          "Personens handlekraft fremhæves inden for reelle kontekstbegrænsninger.",
+          "Dialogisk undersøgelse prioriteres over standardiseret teknik."
+        ]
+      },
       "readings": [
         {
           "reading_key": "w07l1-cooper-2003-ee3c34b7",
@@ -2322,6 +2859,19 @@
           "is_missing": false,
           "source_filename": "W7L1 Cooper (2003).pdf",
           "sequence_index": 1,
+          "summary": {
+            "summary_lines": [
+              "Cooper presents existential therapeutic perspectives focused on lived choice, meaning, and relational presence.",
+              "The text integrates phenomenological description with clinical practice principles.",
+              "It emphasizes collaborative inquiry into how persons inhabit possibilities and constraints."
+            ],
+            "key_points": [
+              "Therapy is an encounter oriented to meaning clarification.",
+              "Existential concerns organize many presenting problems.",
+              "Client agency is foregrounded within contextual limits.",
+              "Method favors dialogical exploration over prescriptive technique."
+            ]
+          },
           "assets": {
             "quizzes": [
               {
@@ -2363,6 +2913,19 @@
           "is_missing": false,
           "source_filename": "W7L1 Jacobsen (2021).pdf",
           "sequence_index": 2,
+          "summary": {
+            "summary_lines": [
+              "Jacobsen diskuterer eksistentielle og fænomenologiske bidrag til moderne personligheds- og klinisk psykologi.",
+              "Teksten præciserer begreber til analyse af selvforhold, lidelse og forandring.",
+              "Der argumenteres for metodisk pluralisme med afsæt i menneskers levede erfaringer."
+            ],
+            "key_points": [
+              "Eksistentiel analyse supplerer træk- og symptomorienterede modeller.",
+              "Begrebslig klarhed styrker både klinisk og forskningsmæssig inferens.",
+              "Mening, relation og temporalitet er centrale analysekategorier.",
+              "Psykologisk metode bør svare til sit ontologiske genstandsfelt."
+            ]
+          },
           "assets": {
             "quizzes": [
               {
@@ -2440,6 +3003,19 @@
       "lecture_key": "W07L2",
       "lecture_title": "Humanistisk psykologi (Forelæsning 14, 2026-03-17)",
       "sequence_index": 14,
+      "summary": {
+        "summary_lines": [
+          "Forelæsningen behandler humanistisk psykologi som et alternativ til reduktionistiske personmodeller.",
+          "Kilderne fremhæver vækst, autenticitet og relationelle betingelser for udvikling.",
+          "Det humanistiske perspektiv placerer levet erfaring og agenthed centralt i personlighedsteori."
+        ],
+        "key_points": [
+          "Personcentrerede perspektiver prioriterer erfaring, mening og valg.",
+          "Relationelt klima har stor betydning for udviklingsforløb.",
+          "Humanistisk psykologi udfordrer underskuds- og kontrolmodeller.",
+          "Udvikling ses som kontekstafhængig udfoldelse af potentiale."
+        ]
+      },
       "readings": [
         {
           "reading_key": "w07l2-evans-1975-8e8a9d79",
@@ -2447,6 +3023,19 @@
           "is_missing": false,
           "source_filename": "W7L2 Evans (1975).pdf",
           "sequence_index": 1,
+          "summary": {
+            "summary_lines": [
+              "This text engages humanistic psychology through person-centered themes such as growth, authenticity, and relationship.",
+              "It critiques restrictive models of the person and argues for experiential depth in psychological theory.",
+              "Human development is framed as unfolding potential under supportive relational conditions."
+            ],
+            "key_points": [
+              "Person-centered perspectives prioritize lived experience and agency.",
+              "Relational climate strongly influences development trajectories.",
+              "Humanistic models challenge deficit-focused frameworks.",
+              "Growth is understood as contextually enabled, not automatic."
+            ]
+          },
           "assets": {
             "quizzes": [
               {
@@ -2488,6 +3077,19 @@
           "is_missing": false,
           "source_filename": "W7L2 Giorgi (2005).pdf",
           "sequence_index": 2,
+          "summary": {
+            "summary_lines": [
+              "Giorgi argues that humanistic psychology was a necessary correction to reductionist behaviorist and orthodox psychoanalytic models.",
+              "He claims the field still relies too heavily on natural-science assumptions and needs methods that fit lived human meaning.",
+              "The essay proposes a stronger alliance between humanistic psychology and phenomenology to study persons nonreductionistically."
+            ],
+            "key_points": [
+              "Humanistic psychology restored the person as a central unit of analysis.",
+              "Mainstream psychological methods can miss specifically human meanings and contexts.",
+              "Phenomenology offers methodical tools for rigorous, person-centered inquiry.",
+              "A core challenge is building human-science methods with epistemic credibility."
+            ]
+          },
           "assets": {
             "quizzes": [
               {
@@ -2529,6 +3131,19 @@
           "is_missing": false,
           "source_filename": "W7L2 Maslow (1968).pdf",
           "sequence_index": 3,
+          "summary": {
+            "summary_lines": [
+              "Maslow outlines a humanistic theory of motivation and self-actualization.",
+              "He argues that higher-order growth tendencies emerge when basic needs are sufficiently secured.",
+              "The text frames personality development as an ongoing process of becoming rather than fixed structure."
+            ],
+            "key_points": [
+              "Need hierarchies organize motivational priorities.",
+              "Self-actualization involves integration, creativity, and realism.",
+              "Pathology can reflect blocked growth conditions.",
+              "Human nature includes developmental potentials, not only deficits."
+            ]
+          },
           "assets": {
             "quizzes": [
               {
@@ -2606,6 +3221,19 @@
       "lecture_key": "W08L1",
       "lecture_title": "Critical personalism (Forelæsning 15, 2026-03-23)",
       "sequence_index": 15,
+      "summary": {
+        "summary_lines": [
+          "Kilderne introducerer kritisk personalisme som opgør med reificerede trækbegreber.",
+          "Personen forstås som historisk situeret aktør frem for en stabil variabelprofil.",
+          "Forelæsningen argumenterer for større epistemisk forsigtighed i fortolkning af personlighedsmålinger."
+        ],
+        "key_points": [
+          "Personniveau kan ikke reduceres til abstrakte skalaresultater.",
+          "Metodisk individualisme kræver også begrebslig præcision.",
+          "Populationsmønstre forklarer ikke automatisk den enkelte person.",
+          "Handling er en nøgleenhed til at forbinde person og kontekst."
+        ]
+      },
       "readings": [
         {
           "reading_key": "w08l1-lamiell-2021-be79d36e",
@@ -2613,6 +3241,19 @@
           "is_missing": false,
           "source_filename": "Lamiell, J.T. (2021).pdf",
           "sequence_index": 1,
+          "summary": {
+            "summary_lines": [
+              "Lamiell advances a critical personalist perspective that questions reified trait entities and abstracted population claims.",
+              "He emphasizes persons as concrete, historically situated agents rather than variable bundles.",
+              "The argument calls for epistemic caution about what personality measures can legitimately represent."
+            ],
+            "key_points": [
+              "Person-level reality cannot be reduced to abstract trait scores.",
+              "Methodological individualism requires conceptual, not only statistical, rigor.",
+              "Population regularities do not automatically explain singular persons.",
+              "Critical personalism re-centers agency and context in personality theory."
+            ]
+          },
           "assets": {
             "quizzes": [
               {
@@ -2654,6 +3295,19 @@
           "is_missing": false,
           "source_filename": "W8L1 Laux et al. (2010).pdf",
           "sequence_index": 2,
+          "summary": {
+            "summary_lines": [
+              "Laux and colleagues discuss critical personalism as a framework for integrating person, action, and context.",
+              "The text critiques over-abstract trait approaches and emphasizes situated intentional conduct.",
+              "It proposes conceptual bridges between differential psychology and interpretive person science."
+            ],
+            "key_points": [
+              "Action is a key unit for linking person and environment.",
+              "Conceptual clarity is needed beyond measurement convenience.",
+              "Personality explanation should include meaning and purpose.",
+              "Critical personalism supports multi-level theoretical integration."
+            ]
+          },
           "assets": {
             "quizzes": [
               {
@@ -2731,6 +3385,19 @@
       "lecture_key": "W08L2",
       "lecture_title": "Critical psychology (Forelæsning 16, 2026-03-24)",
       "sequence_index": 16,
+      "summary": {
+        "summary_lines": [
+          "Forelæsningen samler kritisk psykologi med fokus på subjektivitet, samfundsforhold og handlemuligheder.",
+          "Kilderne kritiserer individualiserende forklaringer, der skjuler strukturelle betingelser for problemer.",
+          "Analysen orienteres mod, hvordan psykologi kan understøtte handlekraft og kollektiv forandring."
+        ],
+        "key_points": [
+          "Subjektivitet er socialt medieret og historisk formet.",
+          "Psykologisk analyse bør omfatte både handlebegrænsninger og handlemuligheder.",
+          "Strukturelle modsætninger må ikke reduceres til private mangler.",
+          "Kritisk teori og empirisk arbejde bør udvikles i gensidig dialog."
+        ]
+      },
       "readings": [
         {
           "reading_key": "w08l2-holzkamp-1982-845aafd2",
@@ -2738,6 +3405,19 @@
           "is_missing": false,
           "source_filename": "W8L2 Holzkamp (1982).pdf",
           "sequence_index": 1,
+          "summary": {
+            "summary_lines": [
+              "Holzkamp udvikler et grundlag for kritisk psykologi ved at sætte subjektivitet, samfundsmæssige vilkår og handlemuligheder i centrum.",
+              "Han kritiserer individualiserende forklaringer, som løsriver problemer fra menneskers levede sociale relationer.",
+              "Psykologisk analyse omorienteres mod betingelser for handlekraft og frigørelse."
+            ],
+            "key_points": [
+              "Subjektivitet er socialt medieret og historisk formet.",
+              "Analysen retter sig mod handlebegrænsninger og handlemuligheder i kontekst.",
+              "Psykologi bør undgå at reducere strukturelle modsætninger til private mangler.",
+              "Kritisk teori og empirisk arbejde skal informere hinanden gensidigt."
+            ]
+          },
           "assets": {
             "quizzes": [
               {
@@ -2779,6 +3459,19 @@
           "is_missing": false,
           "source_filename": "W8L2 Tolman (2009).pdf",
           "sequence_index": 2,
+          "summary": {
+            "summary_lines": [
+              "Tolman reviews key commitments of critical psychology and its implications for theory and method.",
+              "The text emphasizes praxis, social critique, and the standpoint of subjects in concrete life conditions.",
+              "It positions psychology as a discipline that should illuminate and transform restrictive social arrangements."
+            ],
+            "key_points": [
+              "Standpoint and context are constitutive for psychological explanation.",
+              "Method should track lived practice rather than decontextualized variables alone.",
+              "Critical psychology links diagnosis with transformative possibility.",
+              "Theory is evaluated by explanatory and practical relevance."
+            ]
+          },
           "assets": {
             "quizzes": [
               {
@@ -2856,6 +3549,19 @@
       "lecture_key": "W09L1",
       "lecture_title": "Kritisk psykologi (Forelæsning 17, 2026-04-07)",
       "sequence_index": 17,
+      "summary": {
+        "summary_lines": [
+          "Kilderne analyserer personer gennem deltagelsesbaner på tværs af sociale praksisser.",
+          "Psykologiske fænomener placeres i bevægelsen mellem kontekster frem for inde i individet alene.",
+          "Forelæsningen kobler praksisteori med kritisk psykologi i en relationel forståelse af subjektivitet og forandring."
+        ],
+        "key_points": [
+          "Personer indgår i flere praksissammenhænge med skiftende positioner.",
+          "Mening og kompetence samskabes i deltagelse.",
+          "Udvikling bør analyseres som tværkontekstuel bevægelse over tid.",
+          "Subjektivitet organiseres gennem sociale relationer og historiske vilkår."
+        ]
+      },
       "readings": [
         {
           "reading_key": "w09l1-m-rch-and-hansen-2015-b1dbfc5f",
@@ -2863,6 +3569,19 @@
           "is_missing": false,
           "source_filename": "W9L1 Mørch & Hansen (2015).pdf",
           "sequence_index": 1,
+          "summary": {
+            "summary_lines": [
+              "Teksten anvender kritisk-psykologiske perspektiver på aktuelle danske diskussioner om subjektivitet og praksis.",
+              "Den viser, hvordan institutionelle ordninger former muligheder for handling og selvforståelse.",
+              "Analysen kobler samfundskritik til konsekvenser for psykologisk arbejde."
+            ],
+            "key_points": [
+              "Institutionelle kontekster skaber både begrænsninger og muligheder.",
+              "Subjektivitet medskabes i deltagelse og magtrelationer.",
+              "Psykologisk fortolkning bør inkludere sociale og politiske dimensioner.",
+              "Kritisk analyse sigter mod udvidet handleevne."
+            ]
+          },
           "assets": {
             "quizzes": [
               {
@@ -2904,6 +3623,19 @@
           "is_missing": false,
           "source_filename": "W9L1 Dreier (1999).pdf",
           "sequence_index": 2,
+          "summary": {
+            "summary_lines": [
+              "Dreier analyzes persons through trajectories of participation across social practices.",
+              "He argues that psychological phenomena are distributed across contexts rather than localized inside individuals.",
+              "The text develops a practice-based account of subjectivity, learning, and change."
+            ],
+            "key_points": [
+              "Persons move through multiple practice contexts with shifting positions.",
+              "Meaning and competence are co-produced in participation.",
+              "Analysis must follow cross-context movement over time.",
+              "Subjectivity is organized through practical social relations."
+            ]
+          },
           "assets": {
             "quizzes": [
               {
@@ -2945,6 +3677,19 @@
           "is_missing": false,
           "source_filename": "W9L1 Holzkamp (2013).pdf",
           "sequence_index": 3,
+          "summary": {
+            "summary_lines": [
+              "Holzkamp elaborates psychology from the standpoint of the subject and critiques objectivist methodological reductions.",
+              "He argues for concepts that preserve first-person relevance while remaining theoretically robust.",
+              "The chapter reframes method as accountable to lived agency and social mediation."
+            ],
+            "key_points": [
+              "Subject science centers participants’ own reasons and conditions for action.",
+              "Methodological choices must match the ontology of subjectivity.",
+              "Qualitative and interpretive approaches gain systematic justification.",
+              "Critical reflection on abstraction is necessary for valid inference."
+            ]
+          },
           "assets": {
             "quizzes": [
               {
@@ -2986,6 +3731,19 @@
           "is_missing": false,
           "source_filename": "W9L1 Grundbog kapitel 10 - Kritisk psykologi.pdf",
           "sequence_index": 4,
+          "summary": {
+            "summary_lines": [
+              "Kapitlet introducerer kritisk psykologi som en ramme, der forbinder personlighed med samfundsmæssige betingelser og magt.",
+              "Det kritiserer individforklaringer, der overser modsætninger i menneskers hverdagsliv.",
+              "Personlig udvikling analyseres gennem deltagelse, begrænsninger og muligheder for forandring."
+            ],
+            "key_points": [
+              "Subjektivitet er socialt produceret og historisk foranderlig.",
+              "Problemer kan forstås som effekter af modstridende livsbetingelser.",
+              "Metoden bør følge konkrete handlemuligheder i praksis.",
+              "Kritik retter sig både mod forståelse og social forandring."
+            ]
+          },
           "assets": {
             "quizzes": [
               {
@@ -3093,6 +3851,19 @@
       "lecture_key": "W10L1",
       "lecture_title": "Køn (Forelæsning 18, 2026-04-13)",
       "sequence_index": 18,
+      "summary": {
+        "summary_lines": [
+          "Forelæsningen behandler køn som en psykosocial proces frem for et fast persontræk.",
+          "Kilderne viser, hvordan femininitet og maskulinitet formes i samspillet mellem intime erfaringer og institutionelle rammer.",
+          "Identitet forstås som noget, der forhandles gennem livsforløb, generation og historiske forandringer."
+        ],
+        "key_points": [
+          "Kønnet subjektivitet udvikles i relation mellem indre erfaring og sociale forventninger.",
+          "Normer for køn er historisk foranderlige og kulturelt organiserede.",
+          "Udviklingsbaner varierer med generation, klasse og institutionskontekst.",
+          "Identitetsarbejde rummer konflikt, ambivalens og løbende omfortolkning."
+        ]
+      },
       "readings": [
         {
           "reading_key": "w10l1-bjerrum-nielsen-and-rudberg-2006-39335ee6",
@@ -3100,6 +3871,19 @@
           "is_missing": false,
           "source_filename": "W10L1 Bjerrum Nielsen & Rudberg (2006).pdf",
           "sequence_index": 1,
+          "summary": {
+            "summary_lines": [
+              "Teksten analyserer køn som en psykosocial proces, der formes i samspillet mellem intime erfaringer og sociale institutioner.",
+              "Feminitet og maskulinitet fremstilles som noget, der forhandles gennem livsforløb og historiske skift, ikke som faste træk.",
+              "Analysen kobler identitetsudvikling til ændringer i familie, uddannelse og offentlig kultur."
+            ],
+            "key_points": [
+              "Kønnet subjektivitet dannes i mødet mellem indre liv og sociale forventninger.",
+              "Udviklingsbaner varierer på tværs af generation og klasse.",
+              "Normer for femininitet og maskulinitet er historisk foranderlige.",
+              "Identitetsarbejde rummer konflikt, ambivalens og løbende omfortolkning."
+            ]
+          },
           "assets": {
             "quizzes": [
               {
@@ -3141,6 +3925,19 @@
           "is_missing": false,
           "source_filename": "W10L1 Bjerrum Nielsen, H. & Rudberg, M. (2006). Ytre og indre kjønn i forandring. I Moderne jenter. 117-149. Oslo.pdf",
           "sequence_index": 2,
+          "summary": {
+            "summary_lines": [
+              "The chapter analyzes transformations in gender identity by distinguishing outer social positioning from inner lived experience.",
+              "It argues that contemporary gender formations emerge through tensions between institutional norms and personal meaning-making.",
+              "A central claim is that modern gender development is plural, negotiated, and historically contingent."
+            ],
+            "key_points": [
+              "Outer and inner gender dimensions may diverge and be reworked across development.",
+              "Gender identity is shaped by family relations, peer cultures, and broader social change.",
+              "Normative frameworks regulate possible identities while leaving room for agency.",
+              "Psychological analysis must include both structure and biography."
+            ]
+          },
           "assets": {
             "quizzes": [
               {
@@ -3182,6 +3979,19 @@
           "is_missing": false,
           "source_filename": "W10L1 Mitchell (2015).pdf",
           "sequence_index": 3,
+          "summary": {
+            "summary_lines": [
+              "Mitchell revisits psychoanalytic feminism by clarifying how symbolic, social, and psychic processes interact in gender formation.",
+              "She responds to poststructural critiques while defending the explanatory value of psychoanalytic concepts.",
+              "The text argues for a non-reductionist account where desire, power, and culture jointly shape subjectivity."
+            ],
+            "key_points": [
+              "Psychoanalysis is used as a theory of subject formation, not biological destiny.",
+              "Gendered positions are reproduced through symbolic structures and social practices.",
+              "Feminist critique and psychoanalytic theory can be combined rather than opposed.",
+              "Political analysis needs to include unconscious dynamics as well as discourse."
+            ]
+          },
           "assets": {
             "quizzes": [
               {
@@ -3259,6 +4069,19 @@
       "lecture_key": "W10L2",
       "lecture_title": "Sociokulturelle teorier - socialkonstruktionisme og poststrukturalisme (Forelæsning 19, 2026-04-14)",
       "sequence_index": 19,
+      "summary": {
+        "summary_lines": [
+          "Kilderne samler poststrukturalistiske perspektiver på etik, subjektivering og magt.",
+          "Foucault omformulerer etik som praksisser for selvforhold i historiske magtrelationer.",
+          "Davies viser, hvordan subjektet bliver til gennem diskurser og positionering i sociale praksisser."
+        ],
+        "key_points": [
+          "Subjektivitet skabes gennem praksis og diskurs, ikke som en fast indre essens.",
+          "Selvomsorg er en relationel og politisk praksis, ikke privat selvoptimering.",
+          "Frihed udøves inden for magtrelationer gennem refleksiv transformation.",
+          "Etik handler om livsform og selvstyring i konkrete historiske kontekster."
+        ]
+      },
       "readings": [
         {
           "reading_key": "w10l2-davies-1990-65185910",
@@ -3266,6 +4089,19 @@
           "is_missing": false,
           "source_filename": "W10L2 Davies (1990).pdf",
           "sequence_index": 1,
+          "summary": {
+            "summary_lines": [
+              "Davies develops a feminist poststructural account of the subject as discursively produced and positioned.",
+              "She shows how language and social practices open and constrain available identity positions.",
+              "Agency is treated as situated repositioning within, and sometimes against, normative discourse."
+            ],
+            "key_points": [
+              "Subjects are constituted through discourse rather than pre-social interiors.",
+              "Power operates through ordinary meaning practices and category systems.",
+              "Positioning can be resisted, revised, or strategically inhabited.",
+              "Gendered subjectivity is continuously negotiated in interaction."
+            ]
+          },
           "assets": {
             "quizzes": [
               {
@@ -3307,6 +4143,19 @@
           "is_missing": false,
           "source_filename": "W10L2 Foucault, M. (1997). s. 281-301 .pdf",
           "sequence_index": 2,
+          "summary": {
+            "summary_lines": [
+              "Foucault reframes ethics as a practice of freedom rooted in the active care of the self.",
+              "Rather than universal moral law, he emphasizes historically situated practices through which subjects constitute themselves.",
+              "The interview links truth, power, and subjectivation to everyday ethical work on conduct."
+            ],
+            "key_points": [
+              "Subjectivity is formed through practices, not simply discovered as an inner essence.",
+              "Care of the self is relational and political, not merely individual self-help.",
+              "Freedom is exercised within power relations through reflective transformation.",
+              "Ethics concerns style of life and practices of self-government."
+            ]
+          },
           "assets": {
             "quizzes": [
               {
@@ -3384,6 +4233,19 @@
       "lecture_key": "W11L1",
       "lecture_title": "Poststrukturalisme, diskursiv psykologi og feministisk teori (Forelæsning 20, 2026-04-20)",
       "sequence_index": 20,
+      "summary": {
+        "summary_lines": [
+          "Forelæsningen samler socialkonstruktionistiske bidrag til personlighedsforståelse.",
+          "Kilderne kritiserer individualistiske modeller og fremhæver, at psykologiske realiteter skabes relationelt i sprog og praksis.",
+          "Personlighed beskrives som løbende subjektivering, historisk organiseret gennem sociale og politiske ordener."
+        ],
+        "key_points": [
+          "Psykologisk viden formes i fælles diskursive praksisser.",
+          "Selvet er relationelt konstitueret frem for selvindesluttet.",
+          "Psykologiske kategorier er kulturelt og historisk betingede.",
+          "Analyse bør følge de praksisser, der producerer delte virkeligheder."
+        ]
+      },
       "readings": [
         {
           "reading_key": "w11l1-gergen-1999-73c2217e",
@@ -3391,6 +4253,19 @@
           "is_missing": false,
           "source_filename": "W11L1 Gergen (1999).pdf",
           "sequence_index": 1,
+          "summary": {
+            "summary_lines": [
+              "Gergen presents a social constructionist view in which psychological realities are generated in relational processes.",
+              "He challenges individualist models by emphasizing language, culture, and coordinated action.",
+              "The text argues that personhood is historically variable and pragmatically sustained in social life."
+            ],
+            "key_points": [
+              "Knowledge claims are shaped by communal practices and discourse.",
+              "The self is relationally constituted rather than self-contained.",
+              "Psychological categories are culturally contingent and revisable.",
+              "Theory should track practices that create shared realities."
+            ]
+          },
           "assets": {
             "quizzes": [
               {
@@ -3432,6 +4307,19 @@
           "is_missing": false,
           "source_filename": "W11L1 Hacking (2007).pdf",
           "sequence_index": 2,
+          "summary": {
+            "summary_lines": [
+              "Hacking analyzes how human classifications interact with the people classified, producing looping effects.",
+              "Categories in the human sciences can change behavior, self-understanding, and institutional responses.",
+              "The text highlights the dynamic co-production of kinds, knowledge, and persons."
+            ],
+            "key_points": [
+              "Human kinds are interactive rather than merely natural descriptors.",
+              "Classification practices can reshape the classified population.",
+              "Institutional uptake stabilizes some categories and destabilizes others.",
+              "Ontology and politics of categories are tightly connected."
+            ]
+          },
           "assets": {
             "quizzes": [
               {
@@ -3473,6 +4361,19 @@
           "is_missing": false,
           "source_filename": "W11L1 Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori.pdf",
           "sequence_index": 3,
+          "summary": {
+            "summary_lines": [
+              "Kapitlet omformulerer personlighed som løbende subjektivering frem for en fast indre kerne.",
+              "Det analyserer, hvordan institutioner, normer og diskurser producerer bestemte subjektpositioner.",
+              "Handlekraft forstås som situeret forhandling af positioner med mulighed for modstand og forskydning."
+            ],
+            "key_points": [
+              "Subjektpositioner er historisk og politisk organiserede.",
+              "Identitet er processuel og skabes i praksis.",
+              "Normalisering regulerer adfærd gennem personkategorier.",
+              "Forandring sker ved ompositionering i magtrelationer."
+            ]
+          },
           "assets": {
             "quizzes": [
               {
@@ -3580,6 +4481,19 @@
       "lecture_key": "W11L2",
       "lecture_title": "Narrativitet, kultur og mening (Forelæsning 21, 2026-04-21)",
       "sequence_index": 21,
+      "summary": {
+        "summary_lines": [
+          "Kilderne introducerer narrativ psykologi, hvor personlighed forstås gennem fortælling, tid og kulturel meningsdannelse.",
+          "Forelæsningen kontrasterer narrative perspektiver med træk- og mekanismeorienterede modeller.",
+          "Identitet fremstilles som noget, der løbende skabes og omskrives i sociale fortællepraksisser."
+        ],
+        "key_points": [
+          "Narrativer organiserer hukommelse, motivforståelse og oplevet kontinuitet.",
+          "Livsfortællinger samskabes i kulturelle og relationelle sammenhænge.",
+          "Analyse af plot, stemme og positionering er central i narrativ metode.",
+          "Forandring kan beskrives som narrativ revision over tid."
+        ]
+      },
       "readings": [
         {
           "reading_key": "w11l2-raggatt-2002-d15129af",
@@ -3587,6 +4501,19 @@
           "is_missing": false,
           "source_filename": "W11L2 Raggatt (2002).pdf",
           "sequence_index": 1,
+          "summary": {
+            "summary_lines": [
+              "Raggatt develops a dialogical approach in which personality is organized through multiple internal and social voices.",
+              "The perspective treats identity as polyphonic, contested, and situated in communicative relations.",
+              "Personality is therefore understood as dynamic positioning rather than singular essence."
+            ],
+            "key_points": [
+              "Selfhood contains multiple positionings that may conflict or cooperate.",
+              "Dialogue is both intrapsychic and interpersonal.",
+              "Identity stability is achieved through ongoing coordination work.",
+              "Methodologically, analysis tracks voice, position, and relation."
+            ]
+          },
           "assets": {
             "quizzes": [
               {
@@ -3628,6 +4555,19 @@
           "is_missing": false,
           "source_filename": "W11L2 Bank, M. (2014). Narrative psykologier. I Køppe, S. & Dammeyer, J. (Red.).pdf",
           "sequence_index": 2,
+          "summary": {
+            "summary_lines": [
+              "Bank introducerer narrative psykologier, hvor personen forstås gennem fortælling, tid og meningsdannelse.",
+              "Kapitlet kontrasterer narrative perspektiver med træk- og mekanismeorienterede personlighedsmodeller.",
+              "Identitet fremstilles som noget, der skabes i kulturelt medierede fortællepraksisser."
+            ],
+            "key_points": [
+              "Narrativer organiserer hukommelse, motiver og oplevet kontinuitet.",
+              "Livsfortællinger samskabes i sociale og kulturelle sammenhænge.",
+              "Analysen retter sig mod plot, stemme og positionering.",
+              "Psykologisk forandring kan beskrives som narrativ revision over tid."
+            ]
+          },
           "assets": {
             "quizzes": [
               {
@@ -3669,6 +4609,19 @@
           "is_missing": false,
           "source_filename": "W11L2 Bruner (1999).pdf",
           "sequence_index": 3,
+          "summary": {
+            "summary_lines": [
+              "Bruner argues that human meaning is fundamentally narrative and culturally organized.",
+              "He links everyday folk psychology to how people interpret action, intention, and disruption.",
+              "Narrative framing is presented as central for making persons intelligible in social life."
+            ],
+            "key_points": [
+              "Meaning-making depends on culturally shared narrative forms.",
+              "Folk psychology provides interpretive background for agency and motive.",
+              "Narratives normalize and problematize conduct through plot structures.",
+              "Identity emerges through storied interpretation of experience."
+            ]
+          },
           "assets": {
             "quizzes": [
               {
@@ -3710,6 +4663,19 @@
           "is_missing": false,
           "source_filename": "W11L2 McAdams & Pals (2006).pdf",
           "sequence_index": 4,
+          "summary": {
+            "summary_lines": [
+              "McAdams and Pals propose an integrative model that combines dispositional traits, characteristic adaptations, and life narratives.",
+              "They argue that personality science advances by linking universal tendencies to contextualized individual lives.",
+              "The article offers a synthesis across biological, developmental, and cultural levels of analysis."
+            ],
+            "key_points": [
+              "Traits, adaptations, and narratives represent distinct but connected levels.",
+              "Personality explanation requires both structure and process.",
+              "Culture and development shape how dispositional potentials are expressed.",
+              "Integration across levels is a core theoretical task."
+            ]
+          },
           "assets": {
             "quizzes": [
               {
@@ -3751,6 +4717,19 @@
           "is_missing": false,
           "source_filename": "W11L2 Grundbog kapitel 9 - Narrative teorier.pdf",
           "sequence_index": 5,
+          "summary": {
+            "summary_lines": [
+              "Kapitlet forklarer personlighed via narrativ identitet på tværs af fortid, nutid og forventet fremtid.",
+              "Fortællinger skaber sammenhæng, men synliggør også brud, konflikter og vendepunkter.",
+              "Kulturelle fortælleskabeloner både åbner og begrænser mulige selvforståelser."
+            ],
+            "key_points": [
+              "Selvet opretholdes gennem kontinuerligt narrativt arbejde.",
+              "Narrativ analyse fokuserer på genre, plot og positionering.",
+              "Kollektive fortællinger former individuelle identitetsmuligheder.",
+              "Forandring kan forstås som omorganisering af livsfortællingen."
+            ]
+          },
           "assets": {
             "quizzes": [
               {
@@ -3858,6 +4837,19 @@
       "lecture_key": "W12L1",
       "lecture_title": "Sammenligning af teorier og subjektets historie og eksamen (Forelæsning 22, 2026-04-27)",
       "sequence_index": 22,
+      "summary": {
+        "summary_lines": [
+          "Forelæsningen forbinder Elias’ civilisationsperspektiv med en tværgående sammenligning af personlighedsteorier.",
+          "Kilderne viser, hvordan selvregulering og følelsesstandarder udvikles historisk gennem ændrede interdependensforhold.",
+          "Afslutningsvis vurderes teoriernes forklaringskraft og begrænsninger i relation til eksamensfagets kerneproblemer."
+        ],
+        "key_points": [
+          "Selvkontrol er historisk produceret og socialt indlejret.",
+          "Psykogenese og sociogenese bør analyseres i sammenhæng.",
+          "Ingen enkelt teori kan dække alle personlighedsfænomener.",
+          "Teorisammenligning styrker begrundet valg af begreber og metoder."
+        ]
+      },
       "readings": [
         {
           "reading_key": "w12l1-elias-2000-f9176ae8",
@@ -3865,6 +4857,19 @@
           "is_missing": false,
           "source_filename": "W12L1 Elias (2000).pdf",
           "sequence_index": 1,
+          "summary": {
+            "summary_lines": [
+              "Elias links personality formation to long-term civilizing processes and changing social interdependencies.",
+              "He argues that self-regulation develops historically with transformations in power, institutions, and everyday manners.",
+              "The text situates psychological development within macro-sociological change."
+            ],
+            "key_points": [
+              "Subjective self-control is historically produced, not timeless.",
+              "Interdependence chains shape emotional standards and conduct.",
+              "Personality development is tied to social figurations.",
+              "Sociogenesis and psychogenesis must be analyzed together."
+            ]
+          },
           "assets": {
             "quizzes": [
               {
@@ -3906,6 +4911,19 @@
           "is_missing": false,
           "source_filename": "W12L1 Grundbog kapitel 8 - Personlighed, subjektivitet og historicitet.pdf",
           "sequence_index": 2,
+          "summary": {
+            "summary_lines": [
+              "Kapitlet viser, at personlighed og subjektivitet er historisk situerede dannelser.",
+              "Det kritiserer ahistorisk individualisme ved at forankre psykologisk liv i institutioner, sprog og praksis.",
+              "Udvikling beskrives som socialt medieret under skiftende kulturelle betingelser."
+            ],
+            "key_points": [
+              "Historicitet er konstituerende for subjektets dannelse.",
+              "Psykologiske kategorier ændrer sig med sociale og kulturelle regimer.",
+              "Personlighed medieres gennem diskurs og institutionel praksis.",
+              "Analyse bør forbinde biografi med historisk forandring."
+            ]
+          },
           "assets": {
             "quizzes": [
               {
@@ -3975,6 +4993,19 @@
           "is_missing": false,
           "source_filename": "W12L1 Grundbog kapitel 14 - Perspektiver på personlighedspsykologi.pdf",
           "sequence_index": 3,
+          "summary": {
+            "summary_lines": [
+              "Kapitlet sammenligner centrale personlighedsteorier og vurderer deres styrker og begrænsninger.",
+              "Det argumenterer for en pluralistisk, problemstyret brug af begreber og metoder.",
+              "Hovedpointen er, at integration på tværs af forklaringsniveauer fortsat er fagets store udfordring."
+            ],
+            "key_points": [
+              "Intet enkelt paradigme kan forklare alle personlighedsfænomener.",
+              "Metodevalg bør følge problemstilling og analytisk niveau.",
+              "Dialog mellem teoriretninger øger begrebslig præcision.",
+              "Teoriers etiske og samfundsmæssige implikationer bør gøres eksplicitte."
+            ]
+          },
           "assets": {
             "quizzes": [
               {

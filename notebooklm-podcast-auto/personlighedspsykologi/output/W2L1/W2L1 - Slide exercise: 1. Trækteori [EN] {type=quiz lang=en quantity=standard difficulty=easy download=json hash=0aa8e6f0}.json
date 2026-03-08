@@ -1,0 +1,255 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "According to the course material, what is the primary focus of the 'exercise classes' (\u00f8velseshold) in personality psychology?",
+      "answerOptions": [
+        {
+          "text": "Concrete empirical and methodical work",
+          "isCorrect": true,
+          "rationale": "The material states that these sessions involve personality tests, investigations, and experiments to provide practical methodical knowledge."
+        },
+        {
+          "text": "Memorizing historical dates of psychological theories",
+          "isCorrect": false,
+          "rationale": "While history is part of psychology, the specific purpose of these exercise classes is defined as practical and methodical rather than purely historical."
+        },
+        {
+          "text": "Purely theoretical analysis without data",
+          "isCorrect": false,
+          "rationale": "The source explicitly says it is only analytically possible to separate theory and method, and the goal here is to work with concrete methods."
+        },
+        {
+          "text": "Clinical diagnosis of fellow students",
+          "isCorrect": false,
+          "rationale": "The classes use personality tests for educational purposes to understand method, not for clinical diagnostic practice on students."
+        }
+      ],
+      "hint": "Consider the distinction between learning about theories and actually performing tests or experiments."
+    },
+    {
+      "question": "Which specific personality test is introduced as an exercise in the first session's program?",
+      "answerOptions": [
+        {
+          "text": "The HEXACO personality test",
+          "isCorrect": true,
+          "rationale": "The 'Dagens program' slide explicitly lists the HEXACO personality test as part of the first hour's activities."
+        },
+        {
+          "text": "The Rorschach inkblot test",
+          "isCorrect": false,
+          "rationale": "This is a projective test often associated with psychoanalysis, which is listed as a later topic in the course schedule, not the first session's exercise."
+        },
+        {
+          "text": "The MMPI-2 clinical inventory",
+          "isCorrect": false,
+          "rationale": "The MMPI is a clinical tool, whereas the session focuses on trait psychology through a specific six-factor model."
+        },
+        {
+          "text": "The Myers-Briggs Type Indicator (MBTI)",
+          "isCorrect": false,
+          "rationale": "Although popular, the MBTI is not mentioned in the slides as the methodical exercise for the trait theory session."
+        }
+      ],
+      "hint": "The name of this test is an acronym often associated with six major dimensions of personality."
+    },
+    {
+      "question": "What does the 'Lexical Hypothesis' suggest about significant individual differences?",
+      "answerOptions": [
+        {
+          "text": "They are eventually encoded into natural language",
+          "isCorrect": true,
+          "rationale": "The material quotes Goldberg and Ashton, stating that the most significant daily transactions between persons will become encoded in their language."
+        },
+        {
+          "text": "They can only be understood through brain imaging",
+          "isCorrect": false,
+          "rationale": "The lexical hypothesis focuses on linguistic representation of traits rather than biological or neurological measurement."
+        },
+        {
+          "text": "They are purely social constructs with no underlying traits",
+          "isCorrect": false,
+          "rationale": "The lexical strategy is used specifically to identify major dimensions of personality variation, often viewed as traits."
+        },
+        {
+          "text": "Language is too ambiguous to capture personality accurately",
+          "isCorrect": false,
+          "rationale": "This contradicts the lexical hypothesis, which assumes that natural language is the primary repository for personality descriptors."
+        }
+      ],
+      "hint": "Think about where we find the words we use to describe people's character."
+    },
+    {
+      "question": "According to the flowchart 'Tr\u00e6kpsykologiens Fundament,' what is the final step in identifying personality traits?",
+      "answerOptions": [
+        {
+          "text": "Factor analysis to find major categories",
+          "isCorrect": true,
+          "rationale": "The final box in the sequence shows that factor analysis is used to distill rater data into large categories of personality traits."
+        },
+        {
+          "text": "Selecting adjectives from a dictionary",
+          "isCorrect": false,
+          "rationale": "Selecting adjectives is the very first step in the lexical approach, not the final conclusion."
+        },
+        {
+          "text": "Asking subjects to rate themselves on a scale",
+          "isCorrect": false,
+          "rationale": "This is an intermediary data collection step that happens before correlations and factor analysis."
+        },
+        {
+          "text": "Filtering out words that people do not use",
+          "isCorrect": false,
+          "rationale": "This is an early refinement step to ensure the adjectives used in the study are understood by the general population."
+        }
+      ],
+      "hint": "Look for the statistical method used to group related descriptors into broader dimensions."
+    },
+    {
+      "question": "How does K\u00f8ppe (2015) define 'methodological reduction' in the provided text?",
+      "answerOptions": [
+        {
+          "text": "Specifying which aspects of a phenomenon function as data",
+          "isCorrect": true,
+          "rationale": "The quote defines it as a precision of which aspects of an object can serve as data for a given scientific investigation."
+        },
+        {
+          "text": "Reducing the number of participants in a study",
+          "isCorrect": false,
+          "rationale": "Methodological reduction refers to the conceptual filtering of data types, not the sample size of the population."
+        },
+        {
+          "text": "Ignoring theory to focus solely on raw numbers",
+          "isCorrect": false,
+          "rationale": "The text explains that this process is a part of the research process where data is justified based on the research project's goals."
+        },
+        {
+          "text": "Simplifying a theory so it is easier for students to learn",
+          "isCorrect": false,
+          "rationale": "The reduction refers to the empirical focus of the research, not the pedagogical simplification of the content."
+        }
+      ],
+      "hint": "It involves the transition from a real-world 'object' to scientific 'data'."
+    },
+    {
+      "question": "In the sequence of Trait Psychology research, what is calculated immediately after participants rate themselves on adjectives?",
+      "answerOptions": [
+        {
+          "text": "Correlations between the adjectives",
+          "isCorrect": true,
+          "rationale": "According to the flowchart, calculating correlations is the step that follows rater input and precedes factor analysis."
+        },
+        {
+          "text": "The publication of the personality test",
+          "isCorrect": false,
+          "rationale": "Publication would occur after the entire statistical analysis and validation process is complete."
+        },
+        {
+          "text": "The removal of difficult words from the dictionary",
+          "isCorrect": false,
+          "rationale": "The filtering of unused words happens before participants ever see the adjectives for rating."
+        },
+        {
+          "text": "The determination of the participant's clinical diagnosis",
+          "isCorrect": false,
+          "rationale": "Trait psychology in this context focuses on identifying general dimensions of personality variation, not individual clinical diagnosis."
+        }
+      ],
+      "hint": "Think about the statistical step required to see which adjectives tend to 'go together'."
+    },
+    {
+      "question": "Which of the following is listed as one of the 'four orientation points' for reflection in the group exercise?",
+      "answerOptions": [
+        {
+          "text": "Historicity",
+          "isCorrect": true,
+          "rationale": "The slides explicitly list 'Historicity, Agency, Essence/Context, Determination' as the four orientation points."
+        },
+        {
+          "text": "Introversion",
+          "isCorrect": false,
+          "rationale": "While a common trait, this is not listed as one of the four broad philosophical orientation points for the exercise."
+        },
+        {
+          "text": "Reliability",
+          "isCorrect": false,
+          "rationale": "Reliability is a psychometric property, but it is not one of the specific reflection points mentioned in the exercise instructions."
+        },
+        {
+          "text": "Biological Basis",
+          "isCorrect": false,
+          "rationale": "The slides focus on essence/context and determination rather than specifically naming 'Biological Basis' as an orientation point."
+        }
+      ],
+      "hint": "This point refers to how personality concepts might change over time or be rooted in a specific era."
+    },
+    {
+      "question": "The slides state that your theoretical understanding of a phenomenon is crucial for what?",
+      "answerOptions": [
+        {
+          "text": "Your choice of method",
+          "isCorrect": true,
+          "rationale": "The material notes that 'Your theoretical understanding of the phenomenon is decisive for your choice of method.'"
+        },
+        {
+          "text": "Passing the final exam easily",
+          "isCorrect": false,
+          "rationale": "While theory helps for exams, the slide specifically links the choice of theory to the selection of a research method."
+        },
+        {
+          "text": "Ignoring empirical data entirely",
+          "isCorrect": false,
+          "rationale": "Theory and method are linked in the research process; the text emphasizes how theory guides the collection of data."
+        },
+        {
+          "text": "Establishing the instructor's authority",
+          "isCorrect": false,
+          "rationale": "The focus is on the scientific relationship between theoretical frameworks and methodological rigor."
+        }
+      ],
+      "hint": "Consider how a scientist decides whether to use a survey versus an interview."
+    },
+    {
+      "question": "Based on the instructor's introduction, what was Lou's previous field of study before Psychology?",
+      "answerOptions": [
+        {
+          "text": "Art History",
+          "isCorrect": true,
+          "rationale": "The 'Lou (Han/Ham)' slide mentions that he 'Tidligere l\u00e6st kunsthistorie' (Previously studied art history)."
+        },
+        {
+          "text": "Statistics",
+          "isCorrect": false,
+          "rationale": "Although relevant to traits, Art History is the specific field listed as his prior area of study."
+        },
+        {
+          "text": "Philosophy",
+          "isCorrect": false,
+          "rationale": "Philosophy is not mentioned in the instructor's background slide; Art History and Psychology are the primary academic fields noted."
+        },
+        {
+          "text": "Medicine",
+          "isCorrect": false,
+          "rationale": "The instructor is a graduate student in Psychology with a past in Art History, not medicine."
+        }
+      ],
+      "hint": "This subject often involves analyzing visual works and cultural periods."
+    },
+    {
+      "question": "True or False: The lexical perspective requires the assumption that personality attributes must represent internal traits.",
+      "answerOptions": [
+        {
+          "text": "False",
+          "isCorrect": true,
+          "rationale": "The text states, 'the lexical perspective itself does not require this assumption,' even if many researchers believe they represent traits."
+        },
+        {
+          "text": "True",
+          "isCorrect": false,
+          "rationale": "While it provides a strategy to identify traits, the slide explicitly notes that the assumption of internal traits is not strictly required by the perspective itself."
+        }
+      ],
+      "hint": "Look closely at the quote regarding what researchers agree on versus what the perspective 'requires'."
+    }
+  ]
+}

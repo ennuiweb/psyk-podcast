@@ -1,0 +1,265 @@
+{
+  "title": "Psychoanalysis Quiz",
+  "questions": [
+    {
+      "question": "According to the lecture, who is the founder of psychoanalysis?",
+      "answerOptions": [
+        {
+          "text": "Sigmund Freud",
+          "isCorrect": true,
+          "rationale": "He is historically credited with establishing the theory as part of the 'modern breakthrough' in psychology."
+        },
+        {
+          "text": "Carl Jung",
+          "isCorrect": false,
+          "rationale": "While a major figure in psychology, he was a contemporary who later broke away from the core tenets established by the founder."
+        },
+        {
+          "text": "Svend Brinkmann",
+          "isCorrect": false,
+          "rationale": "He is a contemporary Danish psychologist mentioned in the source as an editor, not the historical founder of the field."
+        },
+        {
+          "text": "Jean-Paul Sartre",
+          "isCorrect": false,
+          "rationale": "He was an existential philosopher, and while psychoanalysis has philosophical roots, he did not found the clinical practice."
+        }
+      ],
+      "hint": "Consider the individual often associated with the 'third blow' to human self-importance, following Copernicus and Darwin."
+    },
+    {
+      "question": "What does the term 'psychic reality' refer to in a psychoanalytic context?",
+      "answerOptions": [
+        {
+          "text": "The subjective meaning and fantasies an individual gives to their experiences.",
+          "isCorrect": true,
+          "rationale": "Psychoanalysis focuses on how the mind interprets events, regardless of whether those events are factually or materially accurate."
+        },
+        {
+          "text": "The objective, material facts of a person's life story.",
+          "isCorrect": false,
+          "rationale": "This reflects 'material reality', which Freud eventually moved away from in favour of internal meanings."
+        },
+        {
+          "text": "The purely biological functions of the brain's neurological system.",
+          "isCorrect": false,
+          "rationale": "While the Id has somatic roots, psychoanalysis is a psychological theory of meaning rather than a purely biological one."
+        },
+        {
+          "text": "The shared social norms of the society the individual lives in.",
+          "isCorrect": false,
+          "rationale": "This describes external social reality rather than the unique internal world of the subject."
+        }
+      ],
+      "hint": "Think about whether a therapist is more interested in the 'truth' of a memory or the 'feeling' and 'fantasy' behind it."
+    },
+    {
+      "question": "Which principle governs the 'Id' (Det'et) in the structural model of the personality?",
+      "answerOptions": [
+        {
+          "text": "The pleasure principle",
+          "isCorrect": true,
+          "rationale": "The Id seeks immediate satisfaction of drive-based needs without regard for logic or social consequences."
+        },
+        {
+          "text": "The reality principle",
+          "isCorrect": false,
+          "rationale": "This principle belongs to the Ego, which seeks to mediate between internal desires and the external world."
+        },
+        {
+          "text": "The morality principle",
+          "isCorrect": false,
+          "rationale": "This would be the domain of the Super-ego, which imposes ethical standards and ideals."
+        },
+        {
+          "text": "The secondary process",
+          "isCorrect": false,
+          "rationale": "This refers to rational, logical thinking, whereas the Id operates via the chaotic primary process."
+        }
+      ],
+      "hint": "This part of the psyche is described as having no organisation and only striving to satisfy drive-based needs."
+    },
+    {
+      "question": "How does Freud metaphorically describe the relationship between the Ego and the Id?",
+      "answerOptions": [
+        {
+          "text": "A rider and a horse",
+          "isCorrect": true,
+          "rationale": "The horse provides the energy (Id), while the rider (Ego) tries to direct the movement, though sometimes the rider must go where the horse wants."
+        },
+        {
+          "text": "A judge and a criminal",
+          "isCorrect": false,
+          "rationale": "This is more representative of the harsh relationship between the Super-ego and the Ego."
+        },
+        {
+          "text": "A captain and a ship",
+          "isCorrect": false,
+          "rationale": "This implies a level of total control and mechanical obedience that doesn't reflect the struggle against the Unconscious."
+        },
+        {
+          "text": "A gardener and a wild forest",
+          "isCorrect": false,
+          "rationale": "While descriptive of order versus chaos, it misses the specific dynamic of provided energy versus directed guidance."
+        }
+      ],
+      "hint": "Think of a dynamic where one provides the physical power and the other provides the steering."
+    },
+    {
+      "question": "In the structural model, which part of the personality is responsible for internalising parental authority and social norms?",
+      "answerOptions": [
+        {
+          "text": "The Super-ego",
+          "isCorrect": true,
+          "rationale": "It acts as the seat of conscience, self-observation, and ideals, often being more demanding than the original external authorities."
+        },
+        {
+          "text": "The Id",
+          "isCorrect": false,
+          "rationale": "This province is 'ego-alien' and knows no values, morality, or distinction between good and evil."
+        },
+        {
+          "text": "The Preconscious",
+          "isCorrect": false,
+          "rationale": "This is a layer of the topological model referring to accessible memories, not a structural entity defined by morality."
+        },
+        {
+          "text": "The Primary Process",
+          "isCorrect": false,
+          "rationale": "This is a mode of operation for mental energy, not a structural component that holds social values."
+        }
+      ],
+      "hint": "This province is the one that causes feelings of guilt when its strict moral standards are not met."
+    },
+    {
+      "question": "What is meant by the psychoanalytic concept of 'the decentred subject'?",
+      "answerOptions": [
+        {
+          "text": "That we do not have full conscious access to the intentions that drive our actions.",
+          "isCorrect": true,
+          "rationale": "Psychoanalysis suggests the 'I' is not master of its own house because of the influence of the Unconscious."
+        },
+        {
+          "text": "That modern people are no longer the centre of the solar system.",
+          "isCorrect": false,
+          "rationale": "This refers to the Copernican revolution, which Freud used as a comparison but is not the definition of the psychological subject."
+        },
+        {
+          "text": "That the personality is equally balanced between all three provinces.",
+          "isCorrect": false,
+          "rationale": "The psyche is usually described as being in conflict or split, rather than being perfectly balanced or centred."
+        },
+        {
+          "text": "That human beings have lost their moral centre in modern society.",
+          "isCorrect": false,
+          "rationale": "This is a sociological or philosophical critique rather than the specific psychoanalytic definition of the subject."
+        }
+      ],
+      "hint": "It relates to the idea that 'we do not know ourselves' as well as we think we do."
+    },
+    {
+      "question": "What does the concept of 'Nachtr\u00e4glichkeit' (deferred action) suggest about human experience?",
+      "answerOptions": [
+        {
+          "text": "Past events gain new meaning and psychological effect based on later experiences.",
+          "isCorrect": true,
+          "rationale": "Our self-narratives and the impact of childhood events are constantly revised as we age and new events occur."
+        },
+        {
+          "text": "That we must always wait for a doctor's diagnosis before we can heal.",
+          "isCorrect": false,
+          "rationale": "The term refers to the internal temporal processing of memory, not the clinical timeline of a medical consultation."
+        },
+        {
+          "text": "That the Unconscious is stuck in time and never changes.",
+          "isCorrect": false,
+          "rationale": "While the Id is described as timeless, this specific term refers to how the psyche gives 'after-effect' meaning to events."
+        },
+        {
+          "text": "That childhood traumas are immediately understood by the child.",
+          "isCorrect": false,
+          "rationale": "The concept argues the opposite: that the significance of an event is often only realised much later in life."
+        }
+      ],
+      "hint": "Think about the phrase 'after-the-fact' or how a memory might only become 'traumatic' after a second event happens years later."
+    },
+    {
+      "question": "How does 'the secondary process' differ from 'the primary process'?",
+      "answerOptions": [
+        {
+          "text": "It is rational, follows the laws of logic, and uses narrative structure.",
+          "isCorrect": true,
+          "rationale": "The secondary process is associated with the Ego and its efforts to organise thoughts into a coherent reality."
+        },
+        {
+          "text": "It is driven by the immediate discharge of energy and ignores time.",
+          "isCorrect": false,
+          "rationale": "This describes the primary process, which is characteristic of the Id and dreams."
+        },
+        {
+          "text": "It is the process by which a person internalises their parents' morals.",
+          "isCorrect": false,
+          "rationale": "This refers to the formation of the Super-ego, not the specific cognitive mode of the secondary process."
+        },
+        {
+          "text": "It is only active during deep sleep and dream states.",
+          "isCorrect": false,
+          "rationale": "Dreaming is typically associated with the primary process; the secondary process is more typical of waking, rational thought."
+        }
+      ],
+      "hint": "One is like the logic of a dream, while the other is like the logic of a clear, told story."
+    },
+    {
+      "question": "Freud's famous dictum 'Wo Es war, soll Ich werden' (Where Id was, there shall Ego be) is interpreted in the lecture as:",
+      "answerOptions": [
+        {
+          "text": "Expanding self-conscious awareness and understanding to inform the mind's workings.",
+          "isCorrect": true,
+          "rationale": "It isn't about destroying the Id, but about the human flourishing that comes from thoughtfully appropriating the non-rational parts of ourselves."
+        },
+        {
+          "text": "The total elimination of the unconscious mind.",
+          "isCorrect": false,
+          "rationale": "The Unconscious is a constituent part of being human and cannot be simply deleted or fully replaced."
+        },
+        {
+          "text": "A command to always follow one's instincts without question.",
+          "isCorrect": false,
+          "rationale": "This would be the opposite of the Ego taking the place of the Id; it would be the Id 'winning' the conflict."
+        },
+        {
+          "text": "That the Super-ego should take over the role of the parents.",
+          "isCorrect": false,
+          "rationale": "The quote specifically refers to the Ego (the 'I') and the Id (the 'It'), not the Super-ego."
+        }
+      ],
+      "hint": "Consider the goal of therapy: taking responsibility for unconscious patterns to live a better life."
+    },
+    {
+      "question": "In the structural model, which province is described as being 'helplessly at the mercy' of the Super-ego's harsh moral standards?",
+      "answerOptions": [
+        {
+          "text": "The Ego",
+          "isCorrect": true,
+          "rationale": "The Ego must mediate the demands of the Super-ego, the Id, and external reality, often feeling inadequate in the face of the Super-ego's ideals."
+        },
+        {
+          "text": "The Id",
+          "isCorrect": false,
+          "rationale": "The Id is 'beyond good and evil' and does not recognise the morality that the Super-ego represents."
+        },
+        {
+          "text": "The Preconscious",
+          "isCorrect": false,
+          "rationale": "The Preconscious is a descriptive area of the mind, not a structural agent involved in moral conflict."
+        },
+        {
+          "text": "The Somatic",
+          "isCorrect": false,
+          "rationale": "The somatic refers to the body, whereas the tension described is an intra-psychic conflict between mental provinces."
+        }
+      ],
+      "hint": "This 'poor' province serves three strict masters and struggles to keep them in harmony."
+    }
+  ]
+}

@@ -1,0 +1,265 @@
+{
+  "title": "Psychoanalysis Quiz",
+  "questions": [
+    {
+      "question": "In the late 19th century, how were 'functional nerve disorders' distinguished from other neurological conditions?",
+      "answerOptions": [
+        {
+          "text": "They were caused by visible lesions in the central nervous system.",
+          "isCorrect": false,
+          "rationale": "Conditions with a detectable anatomical or organic basis were categorized as standard neurological diseases, not functional ones."
+        },
+        {
+          "text": "They lacked a detectable anatomical or organic basis.",
+          "isCorrect": true,
+          "rationale": "Functional disorders referred to symptoms like paralysis or tremors that occurred without any observable physical damage to the nerves."
+        },
+        {
+          "text": "They were treated exclusively through surgical intervention.",
+          "isCorrect": false,
+          "rationale": "Because there was no organic cause to operate on, these patients were typically sent to sanitariums or treated with rest cures."
+        },
+        {
+          "text": "They only affected the motor functions, never the sensory functions.",
+          "isCorrect": false,
+          "rationale": "Functional disorders could involve a wide range of symptoms, including sensory disturbances like vision loss and somatic complaints."
+        }
+      ],
+      "hint": "Consider the meaning of 'functional' in a medical context where no physical damage is found."
+    },
+    {
+      "question": "What did Jean-Martin Charcot demonstrate regarding hysterical symptoms through the use of hypnosis?",
+      "answerOptions": [
+        {
+          "text": "Symptoms were permanent and could never be altered.",
+          "isCorrect": false,
+          "rationale": "Charcot's work was famous specifically because he showed that symptoms were not fixed but could be manipulated."
+        },
+        {
+          "text": "Symptoms were purely a result of physical malingering or faking.",
+          "isCorrect": false,
+          "rationale": "Charcot took hysteria seriously as a neurological condition, even if the cause was psychological suggestion rather than a lesion."
+        },
+        {
+          "text": "Hysterical symptoms could be moved or induced via suggestion.",
+          "isCorrect": true,
+          "rationale": "Charcot proved that hypnosis could shift symptoms, suggesting that they were based on 'autosuggestion' and a splitting of consciousness."
+        },
+        {
+          "text": "Hypnosis was a definitive cure for all neurological diseases.",
+          "isCorrect": false,
+          "rationale": "Hypnosis was used as an experimental tool and a specific treatment for hysteria, not as a universal cure for all nerve diseases."
+        }
+      ],
+      "hint": "Think about how hypnosis interacts with the idea of 'suggestion'."
+    },
+    {
+      "question": "What is the core principle of the 'Cathartic method' as developed by Breuer and Anna O.?",
+      "answerOptions": [
+        {
+          "text": "Using physical exercise to exhaust the nervous system.",
+          "isCorrect": false,
+          "rationale": "This describes a physiological approach, whereas the cathartic method focused on psychological expression."
+        },
+        {
+          "text": "Removing symptoms by talking about the original psychological trauma.",
+          "isCorrect": true,
+          "rationale": "The method aimed to uncover the original 'psychic shock' and resolve the 'splitting' of ideas by bringing them to verbal expression."
+        },
+        {
+          "text": "Suppressing memories of the trauma to prevent emotional distress.",
+          "isCorrect": false,
+          "rationale": "The method actually sought to uncover and face the memories rather than suppress them."
+        },
+        {
+          "text": "Treating the symptoms through chemical sedation.",
+          "isCorrect": false,
+          "rationale": "The cathartic method was a 'talking cure,' focusing on the psychical rather than the pharmaceutical."
+        }
+      ],
+      "hint": "The term 'catharsis' relates to a release of emotional tension."
+    },
+    {
+      "question": "In Freud's second phase (1892\u20131895), what 'discovery' did he make when patients showed resistance in therapy?",
+      "answerOptions": [
+        {
+          "text": "The patient was simply being uncooperative.",
+          "isCorrect": false,
+          "rationale": "Freud viewed resistance not as a personality flaw but as a significant clinical indicator of a psychological defense."
+        },
+        {
+          "text": "The importance of childhood nutrition on adult health.",
+          "isCorrect": false,
+          "rationale": "Freud's focus shifted toward psychological and sexual factors rather than biological maintenance."
+        },
+        {
+          "text": "The role of sexuality as a socially taboo source of conflict.",
+          "isCorrect": true,
+          "rationale": "Resistance signaled a defense against ideas that were socially or ethically unacceptable, which Freud identified as being sexual in nature."
+        },
+        {
+          "text": "That neuroses were strictly hereditary and unchangeable.",
+          "isCorrect": false,
+          "rationale": "Freud moved away from the 'neuropathic constitution' theory toward a dynamic psychological model."
+        }
+      ],
+      "hint": "Think about what kind of topics were most likely to be 'socially taboo' during the Victorian era."
+    },
+    {
+      "question": "According to the 'Seduction Theory' (later abandoned), what was the cause of hysteria?",
+      "answerOptions": [
+        {
+          "text": "A purely biological defect in the neurons.",
+          "isCorrect": false,
+          "rationale": "This theory was specifically psychological, moving away from his earlier purely reductive neurological models."
+        },
+        {
+          "text": "The emergence of puberty without proper social guidance.",
+          "isCorrect": false,
+          "rationale": "While puberty played a role in the 'Nachtr\u00e4glichkeit' interpretation, it was not the initial cause in the seduction theory."
+        },
+        {
+          "text": "A real external event involving a sexual assault or trauma in childhood.",
+          "isCorrect": true,
+          "rationale": "The seduction theory originally posited that neurosis resulted from an actual traumatic sexual event experienced by the child."
+        },
+        {
+          "text": "A lack of physical exercise and sunlight.",
+          "isCorrect": false,
+          "rationale": "Freud's theories focused on the internal psychical world and interpersonal experiences rather than environmental hygiene."
+        }
+      ],
+      "hint": "Consider the literal meaning of the word 'seduction' in a traumatic context."
+    },
+    {
+      "question": "The case of 'Emma' illustrates the concept of 'Nachtr\u00e4glichkeit.' How does this concept work?",
+      "answerOptions": [
+        {
+          "text": "A trauma is forgotten and has no further impact on the individual.",
+          "isCorrect": false,
+          "rationale": "The concept explains why a trauma *does* have an impact, rather than why it is forgotten."
+        },
+        {
+          "text": "A child understands the sexual nature of an event the moment it happens.",
+          "isCorrect": false,
+          "rationale": "In Emma's case, the 8-year-old did not understand the event as sexual; the meaning only changed later."
+        },
+        {
+          "text": "An earlier event is retroactively reinterpreted as sexual during or after puberty.",
+          "isCorrect": true,
+          "rationale": "The memory of an event (like the shopkeeper touching Emma) only becomes traumatic when re-evaluated through the lens of post-pubertal sexuality."
+        },
+        {
+          "text": "Symptoms of neurosis appear immediately after a traumatic accident.",
+          "isCorrect": false,
+          "rationale": "Nachtr\u00e4glichkeit specifically involves a delay and a reinterpretation, not an immediate reaction."
+        }
+      ],
+      "hint": "Focus on the idea of 'after-the-fact' meaning."
+    },
+    {
+      "question": "How did Freud's view of 'Obsessional Neurosis' (Tvangsneurose) differ from Hysteria in his third phase?",
+      "answerOptions": [
+        {
+          "text": "It was caused by physical injury rather than psychological trauma.",
+          "isCorrect": false,
+          "rationale": "Both were viewed as psychological, but the internal mechanism of the affect was different."
+        },
+        {
+          "text": "It involved an original experience of pleasure that was later transformed into unpleasure.",
+          "isCorrect": true,
+          "rationale": "Freud noted that while Hysteria involved traumatic 'unpleasure,' Obsessional Neurosis involved an active 'pleasure' that the person later felt guilty about."
+        },
+        {
+          "text": "It was easier to treat because it did not involve the unconscious.",
+          "isCorrect": false,
+          "rationale": "Both conditions were considered rooted in the unconscious and required deep analysis."
+        },
+        {
+          "text": "It only occurred in adult men, whereas hysteria only occurred in women.",
+          "isCorrect": false,
+          "rationale": "While gender was discussed in early psychiatry, Freud's distinction here was based on the 'affect transformation' rather than patient gender."
+        }
+      ],
+      "hint": "Think about the shift from being a 'victim' of trauma to having an 'active' role in a pleasurable experience."
+    },
+    {
+      "question": "What was the major consequence of Freud abandoning the 'Seduction Theory' in 1896\u20131897?",
+      "answerOptions": [
+        {
+          "text": "He decided that childhood experiences had no impact on adult life.",
+          "isCorrect": false,
+          "rationale": "Childhood remained central, but the focus shifted from external events to internal psychological life."
+        },
+        {
+          "text": "He concluded that neuroses were purely biological after all.",
+          "isCorrect": false,
+          "rationale": "Abandoning the theory actually pushed him further into the 'metapsychological' realm of fantasies and drives."
+        },
+        {
+          "text": "The discovery of infantile sexuality and the role of unconscious fantasies.",
+          "isCorrect": true,
+          "rationale": "Instead of blaming real external trauma, Freud realized that children have their own sexual fantasies and internal drives."
+        },
+        {
+          "text": "He stopped practicing psychoanalysis and returned to neurology.",
+          "isCorrect": false,
+          "rationale": "This was the period when psychoanalysis was truly founded and expanded, not abandoned."
+        }
+      ],
+      "hint": "Consider the shift from 'what happened to the child' to 'what the child imagined'."
+    },
+    {
+      "question": "How does Freud define a 'Drive' (Trieb) in psychoanalytic theory?",
+      "answerOptions": [
+        {
+          "text": "A fixed biological instinct that is the same for all mammals.",
+          "isCorrect": false,
+          "rationale": "Freud distinguished human 'drives' from animal 'instincts,' noting that drives are more psychologically complex and individual."
+        },
+        {
+          "text": "A psychic representation of an internal somatic source of tension.",
+          "isCorrect": true,
+          "rationale": "A drive is the bridge between the physical body (somatic tension) and the mind (psychic representation)."
+        },
+        {
+          "text": "A social pressure to conform to cultural norms.",
+          "isCorrect": false,
+          "rationale": "While society restricts drives, the drive itself originates from internal somatic sources."
+        },
+        {
+          "text": "A conscious decision to seek out specific rewards.",
+          "isCorrect": false,
+          "rationale": "Drives operate largely on an unconscious level and are not simple 'decisions' but internal pressures."
+        }
+      ],
+      "hint": "Think of the drive as a link between the body and the mind."
+    },
+    {
+      "question": "According to the source material, what is the 'correct' order of priority in the development of gender identity?",
+      "answerOptions": [
+        {
+          "text": "Biological $\\rightarrow$ Sociological $\\rightarrow$ Psychological",
+          "isCorrect": false,
+          "rationale": "This represents a traditional biological view, which Freud's psychoanalysis challenged."
+        },
+        {
+          "text": "Sociological $\\rightarrow$ Biological $\\rightarrow$ Psychological",
+          "isCorrect": false,
+          "rationale": "While society is important, the source emphasizes the internal psychological process as the starting point for identity."
+        },
+        {
+          "text": "Psychological $\\rightarrow$ Sociological $\\rightarrow$ Biological",
+          "isCorrect": true,
+          "rationale": "The source explicitly states the sequence is 'psy - soc - bio,' meaning identity is constructed psychologically first (e.g., Oedipus complex)."
+        },
+        {
+          "text": "Biological $\\rightarrow$ Psychological $\\rightarrow$ Sociological",
+          "isCorrect": false,
+          "rationale": "Freud argued that humans are essentially born 'bisexual' or neutral, meaning the biological sex does not immediately dictate psychological identity."
+        }
+      ],
+      "hint": "Look for the sequence that puts the 'mind' (psycho-) before the 'body' (bio-)."
+    }
+  ]
+}

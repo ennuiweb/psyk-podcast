@@ -1,0 +1,255 @@
+{
+  "title": "Psychology Quiz",
+  "questions": [
+    {
+      "question": "What is the primary assumption underlying the lexical hypothesis in trait psychology?",
+      "answerOptions": [
+        {
+          "text": "The most significant individual differences in daily human interactions will eventually be encoded into natural language.",
+          "isCorrect": true,
+          "rationale": "This aligns with the idea that language adapts to describe the personality variations that matter most in social life."
+        },
+        {
+          "text": "Personality is fundamentally a biological construct that cannot be accurately captured by common adjectives.",
+          "isCorrect": false,
+          "rationale": "This contradicts the lexical strategy, which relies specifically on the descriptive power of common language."
+        },
+        {
+          "text": "Every person possesses a unique set of traits that are completely independent of cultural or linguistic influences.",
+          "isCorrect": false,
+          "rationale": "The lexical hypothesis suggests that language is the primary vehicle through which we identify and organize shared trait dimensions."
+        },
+        {
+          "text": "Human behavior is dictated by unconscious drives that adjectives in dictionaries are unable to reflect.",
+          "isCorrect": false,
+          "rationale": "This reflects a psychoanalytic perspective rather than the trait-based lexical approach described in the source."
+        }
+      ],
+      "hint": "Consider how human communication evolves to describe important social characteristics."
+    },
+    {
+      "question": "In the five-step research process for trait psychology, what is the purpose of factor analysis?",
+      "answerOptions": [
+        {
+          "text": "To filter out adjectives that participants do not commonly understand or use.",
+          "isCorrect": false,
+          "rationale": "Filtering occurs in the second step of the process, prior to data collection and analysis."
+        },
+        {
+          "text": "To identify large, overarching categories of personality traits from the patterns of correlation between adjectives.",
+          "isCorrect": true,
+          "rationale": "Factor analysis is the mathematical step used to condense many specific descriptors into broader personality dimensions."
+        },
+        {
+          "text": "To allow participants to rate themselves on a scale from $1$ to $5$ regarding specific behaviors.",
+          "isCorrect": false,
+          "rationale": "Self-rating is a data collection method, not the statistical analysis used to find categories."
+        },
+        {
+          "text": "To translate personality-descriptive adjectives from foreign languages into the researcher's native tongue.",
+          "isCorrect": false,
+          "rationale": "The lexical strategy uses the adjectives already present in the 'natural language' of the culture being studied."
+        }
+      ],
+      "hint": "Think about a statistical method used to group related variables together."
+    },
+    {
+      "question": "According to K\u00f8ppe (2015), what does the term 'methodological reduction' entail in the scientific process?",
+      "answerOptions": [
+        {
+          "text": "Defining which specific aspects of a phenomenon serve as empirical data for a particular study.",
+          "isCorrect": true,
+          "rationale": "This process involves justifying what qualifies as valid evidence for the research question at hand."
+        },
+        {
+          "text": "Reducing the sample size of a study to ensure the results are statistically significant.",
+          "isCorrect": false,
+          "rationale": "Methodological reduction refers to the selection of data types, not the number of participants."
+        },
+        {
+          "text": "Simplifying complex personality theories so they can be understood by the general public.",
+          "isCorrect": false,
+          "rationale": "This term relates to the relationship between the real object and the object of knowledge in research, not public communication."
+        },
+        {
+          "text": "The elimination of all theoretical bias before beginning empirical observations.",
+          "isCorrect": false,
+          "rationale": "The source suggests theory and method are analytically linked, making total elimination of theory impossible."
+        }
+      ],
+      "hint": "It involves the transformation of a 'real object' into an 'object of knowledge'."
+    },
+    {
+      "question": "What is the relationship between theory and method as presented in the source material?",
+      "answerOptions": [
+        {
+          "text": "Method and theory are entirely independent and should be selected separately to avoid bias.",
+          "isCorrect": false,
+          "rationale": "The text argues that it is only 'analytically possible' to separate them, implying they are deeply intertwined in practice."
+        },
+        {
+          "text": "The choice of method is fundamentally determined by the theoretical understanding of the phenomenon.",
+          "isCorrect": true,
+          "rationale": "The slides explicitly state that your theoretical understanding is decisive for your choice of method."
+        },
+        {
+          "text": "Quantitative methods are inherently theoretical, while qualitative methods are purely empirical.",
+          "isCorrect": false,
+          "rationale": "The source does not make this distinction; rather, it suggests both require theoretical grounding."
+        },
+        {
+          "text": "Theoretical frameworks are only necessary when experimental results are ambiguous.",
+          "isCorrect": false,
+          "rationale": "Theory precedes and guides the methodology from the start of the research process."
+        }
+      ],
+      "hint": "Consider which of these two concepts acts as a foundation for the other."
+    },
+    {
+      "text": "True or False: The lexical perspective requires the fundamental assumption that personality attributes represent internal, biological traits.",
+      "answerOptions": [
+        {
+          "text": "True",
+          "isCorrect": false,
+          "rationale": "While many researchers assume this, the lexical perspective itself does not strictly require this assumption according to the source."
+        },
+        {
+          "text": "False",
+          "isCorrect": true,
+          "rationale": "The provided quote notes that the lexical perspective provides a strategy for research but does not mandate the assumption of underlying traits."
+        }
+      ],
+      "hint": "Check the specific quote regarding the 'primary significance' of the lexical hypothesis."
+    },
+    {
+      "question": "Which specific personality test is identified in the course schedule for students to complete as an exercise?",
+      "answerOptions": [
+        {
+          "text": "Big Five (NEO-PI-R)",
+          "isCorrect": false,
+          "rationale": "While the Big Five is related to trait theory, it is not the specific test mentioned in the program."
+        },
+        {
+          "text": "HEXACO",
+          "isCorrect": true,
+          "rationale": "The HEXACO personality test is listed explicitly as an exercise in the 'Dagens program' slide."
+        },
+        {
+          "text": "MBTI (Myers-Briggs)",
+          "isCorrect": false,
+          "rationale": "The MBTI is a type-based indicator and is not part of the trait psychology exercises described."
+        },
+        {
+          "text": "MMPI-2",
+          "isCorrect": false,
+          "rationale": "This is a clinical assessment tool and is not mentioned in the introductory trait psychology slides."
+        }
+      ],
+      "hint": "It is a six-factor model often used as an alternative to the Big Five."
+    },
+    {
+      "question": "In the context of the classroom exercises, which four orientation points are students asked to reflect upon?",
+      "answerOptions": [
+        {
+          "text": "Validity, Reliability, Objectivity, Generalizability",
+          "isCorrect": false,
+          "rationale": "These are general scientific criteria, but not the specific reflection points listed on slide 21."
+        },
+        {
+          "text": "Historicity, Agency, Essence/Context, Determination",
+          "isCorrect": true,
+          "rationale": "These four points are explicitly listed for group reflection regarding the ambiguity of test questions."
+        },
+        {
+          "text": "Openness, Conscientiousness, Extraversion, Agreeableness",
+          "isCorrect": false,
+          "rationale": "These are dimensions of the Big Five, not the theoretical orientation points for the exercise."
+        },
+        {
+          "text": "Real Object, Object of Knowledge, Data, Theory",
+          "isCorrect": false,
+          "rationale": "These are parts of the 'methodological reduction' diagram, not the reflection points for the personality test questions."
+        }
+      ],
+      "hint": "These points help analyze the underlying philosophical assumptions of personality questions."
+    },
+    {
+      "question": "What is the instructor's recommendation regarding the use of computers in the classroom?",
+      "answerOptions": [
+        {
+          "text": "Computers should be kept open at all times to facilitate rapid note-taking.",
+          "isCorrect": false,
+          "rationale": "The instructor specifically recommends against having computers out during general instruction."
+        },
+        {
+          "text": "Computers are only allowed for graduate students (Kandidatstuderende).",
+          "isCorrect": false,
+          "rationale": "There is no distinction made between student levels regarding computer use in the expectations slide."
+        },
+        {
+          "text": "Computers should not be out, except during specific exercises where they are required.",
+          "isCorrect": true,
+          "rationale": "The instructor expects students to listen to peers and only use devices when the task demands it."
+        },
+        {
+          "text": "Students are encouraged to use computers to verify the lexical origins of adjectives in real-time.",
+          "isCorrect": false,
+          "rationale": "While related to the topic, this is not part of the classroom behavior expectations."
+        }
+      ],
+      "hint": "The goal is to foster a learning environment based on listening and active participation."
+    },
+    {
+      "question": "Why are certain personality-descriptive adjectives removed from consideration after being pulled from a dictionary?",
+      "answerOptions": [
+        {
+          "text": "They are too emotionally charged for objective scientific research.",
+          "isCorrect": false,
+          "rationale": "Trait psychology often studies emotional descriptors; frequency of use is the primary filter mentioned."
+        },
+        {
+          "text": "They represent words that common people do not use or understand.",
+          "isCorrect": true,
+          "rationale": "The research process involves sorting out words that are not part of common transactions between people."
+        },
+        {
+          "text": "They describe physical appearance rather than psychological traits.",
+          "isCorrect": false,
+          "rationale": "While true in some methodologies, the slide specifically emphasizes removing words that people don't use/understand."
+        },
+        {
+          "text": "They are too similar to words already included in the Big Five model.",
+          "isCorrect": false,
+          "rationale": "The filtering happens at the initial stage of building a model, not by comparing it to existing ones like the Big Five."
+        }
+      ],
+      "hint": "The lexical strategy relies on words used in 'daily transactions'."
+    },
+    {
+      "question": "What is the 'Object of Knowledge' (Erkendelsesobjekt) in the research model provided?",
+      "answerOptions": [
+        {
+          "text": "The objective reality of a person's character before it is measured.",
+          "isCorrect": false,
+          "rationale": "This describes the 'Real Object' (Realobjekt), not the version processed through a scientific lens."
+        },
+        {
+          "text": "The specific version of the phenomenon that is constructed through a theoretical and methodological framework.",
+          "isCorrect": true,
+          "rationale": "The object of knowledge is what remains after methodological reduction has been applied to the real object."
+        },
+        {
+          "text": "The raw statistical data generated by a personality test.",
+          "isCorrect": false,
+          "rationale": "Data is the output of the interaction with the object of knowledge, rather than the object itself."
+        },
+        {
+          "text": "The subjective interpretation of the participant taking the test.",
+          "isCorrect": false,
+          "rationale": "The model focuses on how science defines its objects, rather than the participant's inner experience."
+        }
+      ],
+      "hint": "It is the 'scientific' representation of a 'real-world' phenomenon."
+    }
+  ]
+}

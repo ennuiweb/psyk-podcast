@@ -1,0 +1,265 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "Which of the following best describes the primary limitation attributed to Machine Learning approaches in personality assessment according to the provided lecture material?",
+      "answerOptions": [
+        {
+          "text": "The risk of overfitting to specific samples, which compromises generalizability to new data.",
+          "isCorrect": true,
+          "rationale": "Machine learning is powerful for in-sample predictions but often struggles with 'overfitting,' where the model captures noise as if it were a signal, failing when applied to independent datasets."
+        },
+        {
+          "text": "A fundamental lack of ecological validity in the data collection process.",
+          "isCorrect": false,
+          "rationale": "This limitation is specifically associated with behavioral and experimental data rather than the computational processing of that data."
+        },
+        {
+          "text": "The systematic bias inherent in reporting practices and record-keeping.",
+          "isCorrect": false,
+          "rationale": "Systematic reporting bias is identified as a limitation of register data, not specifically machine learning algorithms."
+        },
+        {
+          "text": "An inability to measure underlying psychological constructs directly.",
+          "isCorrect": false,
+          "rationale": "The failure to capture direct 'psychological constructs' is highlighted as a concern for physio-biological measures."
+        }
+      ],
+      "hint": "Consider the trade-off between strong internal performance and external applicability."
+    },
+    {
+      "question": "In the debate over the existence of traits, what statistical evidence is typically cited by proponents who argue that personality traits *do* matter?",
+      "answerOptions": [
+        {
+          "text": "A correlation of $r \\approx .20$ between behavior in two single, isolated situations.",
+          "isCorrect": false,
+          "rationale": "This low correlation is actually used as an argument against the existence or importance of stable traits."
+        },
+        {
+          "text": "A correlation of $r \\approx .50$ when behavior is averaged across multiple sets of situations.",
+          "isCorrect": true,
+          "rationale": "Aggregation reduces situational 'noise,' revealing a more stable underlying pattern that demonstrates the influence of traits."
+        },
+        {
+          "text": "The discovery of a perfectly normal distribution of behavior across twenty random situations.",
+          "isCorrect": false,
+          "rationale": "While traits follow a normal distribution, the argument for trait existence relies on cross-situational consistency, not just distribution shape."
+        },
+        {
+          "text": "The fact that most people score at the extreme ends of any given personality dimension.",
+          "isCorrect": false,
+          "rationale": "The source material states that most people actually score near the average, rather than at the extremes."
+        }
+      ],
+      "hint": "Think about the effect of 'aggregation' or averaging behaviors over time."
+    },
+    {
+      "question": "When using an inductive approach to find basic personality dimensions, what is the primary goal of conducting an Exploratory Factor Analysis (EFA)?",
+      "answerOptions": [
+        {
+          "text": "To identify groups of traits that are highly correlated with one another but uncorrelated with other groups.",
+          "isCorrect": true,
+          "rationale": "The goal is to find 'factors' that capture distinct, independent variances in a large pool of items."
+        },
+        {
+          "text": "To verify if a pre-specified theoretical model correctly predicts participant responses.",
+          "isCorrect": false,
+          "rationale": "This describes a deductive approach; the inductive approach lets the data 'decide' the structure without pre-specification."
+        },
+        {
+          "text": "To determine the causal biological origin of specific behavioral tendencies.",
+          "isCorrect": false,
+          "rationale": "EFA is a statistical method for identifying structure in observed data, not for determining biological causality."
+        },
+        {
+          "text": "To rank traits by their social desirability across different cultures.",
+          "isCorrect": false,
+          "rationale": "While desirability is mentioned as a feature of labels, EFA focuses on the statistical patterns of co-occurrence between traits."
+        }
+      ],
+      "hint": "Consider the relationship between dimensions and the items that define them."
+    },
+    {
+      "question": "What is a major limitation of the lexical hypothesis as a starting point for personality research?",
+      "answerOptions": [
+        {
+          "text": "It assumes that all important personality traits have been encoded into common language adjectives.",
+          "isCorrect": true,
+          "rationale": "The lexical hypothesis relies on the assumption that helpful descriptors for personality naturally become established in dictionaries over time."
+        },
+        {
+          "text": "It ignores the use of self-report and observer report questionnaires.",
+          "isCorrect": false,
+          "rationale": "Lexical studies frequently use self- and observer reports to measure the adjectives identified from dictionaries."
+        },
+        {
+          "text": "It requires the use of categorical rather than dimensional approaches to personality.",
+          "isCorrect": false,
+          "rationale": "Lexical studies are the foundation for the dimensional models like the Big Five and HEXACO."
+        },
+        {
+          "text": "It is unable to account for culture-specific personality structures.",
+          "isCorrect": false,
+          "rationale": "A strength of the lexical approach is that it allows for culture-specific structures by using that culture's own dictionary."
+        }
+      ],
+      "hint": "Think about the source material used (dictionaries) and what might be left out."
+    },
+    {
+      "question": "According to the HEXACO model, which dimension specifically describes the tendency to be fair and genuine, even when exploitation would not be punished?",
+      "answerOptions": [
+        {
+          "text": "Agreeableness",
+          "isCorrect": false,
+          "rationale": "In the HEXACO model, Agreeableness focuses on being forgiving and tolerant when one *is* being exploited."
+        },
+        {
+          "text": "Honesty-Humility",
+          "isCorrect": true,
+          "rationale": "Honesty-Humility is defined by sincerity and fairness in dealing with others, even in the absence of retaliation risks."
+        },
+        {
+          "text": "Conscientiousness",
+          "isCorrect": false,
+          "rationale": "This dimension concerns engagement in task-related endeavors like organization and diligence, not interpersonal ethics."
+        },
+        {
+          "text": "Emotionality",
+          "isCorrect": false,
+          "rationale": "Emotionality involves empathic concern and attachment, but the ethics of non-exploitation are central to Honesty-Humility."
+        }
+      ],
+      "hint": "Focus on the distinction between sincerity/fairness and forgiveness/tolerance."
+    },
+    {
+      "question": "In the study by Hilbig and Zettler (2015) involving a secret die-roll task, what was the observed relationship between Honesty-Humility and behavior?",
+      "answerOptions": [
+        {
+          "text": "Higher levels of Honesty-Humility were associated with a lower probability of reporting a 'winning' number.",
+          "isCorrect": true,
+          "rationale": "Participants lower in H-H were more likely to lie about their secret roll to gain a reward, while those higher in H-H reported numbers closer to the expected baseline of chance."
+        },
+        {
+          "text": "Honesty-Humility had no significant effect on behavior when the die-roll was performed in secret.",
+          "isCorrect": false,
+          "rationale": "The study specifically used the secret nature of the task to show that internal traits (H-H) predict behavior when there is no external monitoring."
+        },
+        {
+          "text": "Honesty-Humility predicted reporting accuracy only for female participants.",
+          "isCorrect": false,
+          "rationale": "While gender differences in H-H exist, the study demonstrates H-H as a general predictor of honest behavior across the sample."
+        },
+        {
+          "text": "Low Honesty-Humility participants only lied when the potential reward was above 5 Euros.",
+          "isCorrect": false,
+          "rationale": "The study showed a continuous probabilistic relationship between the trait and the likelihood of reporting a win, regardless of specific variable thresholds."
+        }
+      ],
+      "hint": "Consider how the trait would influence reporting when someone thinks they aren't being watched."
+    },
+    {
+      "question": "How does the HEXACO model's 'Emotionality' factor differ conceptually from the 'Neuroticism' factor in most Big Five models?",
+      "answerOptions": [
+        {
+          "text": "HEXACO Emotionality includes aspects of sentimentality and attachment that are often excluded from Big Five Neuroticism.",
+          "isCorrect": true,
+          "rationale": "The HEXACO Emotionality factor incorporates kin altruism and emotional attachment, whereas Big Five Neuroticism often focuses more on anger and irritability (which move to Agreeableness in HEXACO)."
+        },
+        {
+          "text": "HEXACO Emotionality is a categorical state, whereas Neuroticism is a stable dimension.",
+          "isCorrect": false,
+          "rationale": "Both are treated as dimensional personality traits in their respective models."
+        },
+        {
+          "text": "Neuroticism is considered a 'basic' dimension, while Emotionality is considered a 'secondary' factor.",
+          "isCorrect": false,
+          "rationale": "Both models treat these as primary/basic factors within their own structural hierarchies."
+        },
+        {
+          "text": "Emotionality describes task-related stress, while Neuroticism describes social anxiety.",
+          "isCorrect": false,
+          "rationale": "The distinction is more about the inclusion of sentimentality versus the location of anger/irritability."
+        }
+      ],
+      "hint": "Look at the specific traits listed under 'E' in the HEXACO model vs the typical 'N' traits."
+    },
+    {
+      "question": "The 'Nomological Net' of a construct, such as Extraversion, is established by demonstrating which of the following?",
+      "answerOptions": [
+        {
+          "text": "The construct's pattern of correlations with theoretically related behaviors and outcomes.",
+          "isCorrect": true,
+          "rationale": "A nomological net is built by showing that a trait relates to outcomes (like Facebook friends or leadership) in a way that matches theoretical expectations."
+        },
+        {
+          "text": "The stability of the construct's measurement across the lifespan of a single individual.",
+          "isCorrect": false,
+          "rationale": "This refers to test-retest reliability or rank-order stability, which is different from the construct's network of external relations."
+        },
+        {
+          "text": "The precise geographical and cultural origin of the trait's linguistic descriptor.",
+          "isCorrect": false,
+          "rationale": "While lexical studies look at language, the nomological net is about the relationships between psychological variables."
+        },
+        {
+          "text": "The mathematical proof that the factor structure is perfectly orthogonal.",
+          "isCorrect": false,
+          "rationale": "Orthogonality (being uncorrelated) is a goal for factors, but the 'net' refers to the broader context of external validity and real-world links."
+        }
+      ],
+      "hint": "Consider how researchers prove a trait represents something real in the world."
+    },
+    {
+      "question": "Based on the meta-analytic data (Moshagen et al., 2019), what is the observed gender difference ($\\\\hat{\\\\delta}$) regarding the Emotionality (E) and Honesty-Humility (H) dimensions?",
+      "answerOptions": [
+        {
+          "text": "Women generally score significantly higher than men on both Emotionality and Honesty-Humility.",
+          "isCorrect": true,
+          "rationale": "The data shows $\\\\hat{\\\\delta} = 1.03$ for Emotionality and $\\\\hat{\\\\delta} = 0.46$ for Honesty-Humility, with positive values indicating higher scores for women."
+        },
+        {
+          "text": "Men generally score higher on Honesty-Humility, while women score higher on Emotionality.",
+          "isCorrect": false,
+          "rationale": "The meta-analysis indicates that women score higher on both of these specific HEXACO dimensions."
+        },
+        {
+          "text": "There are no statistically significant gender differences in the HEXACO dimensions.",
+          "isCorrect": false,
+          "rationale": "The study found significant differences, particularly a very large effect size for Emotionality."
+        },
+        {
+          "text": "Women score higher on Extraversion and Openness, but lower on Emotionality.",
+          "isCorrect": false,
+          "rationale": "The data shows near-zero or negative differences for Extraversion and Openness, but a strong positive difference for Emotionality in women."
+        }
+      ],
+      "hint": "Check the Table 4 values for Gender, where positive values indicate higher levels for women."
+    },
+    {
+      "question": "DeYoung (2015) defines personality traits as 'probabilistic descriptions.' What is the implication of this phrasing?",
+      "answerOptions": [
+        {
+          "text": "Traits do not dictate exact behavior in every instance but describe the likelihood of certain patterns occurring.",
+          "isCorrect": true,
+          "rationale": "Because behavior is influenced by both person and situation factors, traits represent a 'typical tendency' or probability rather than a deterministic rule."
+        },
+        {
+          "text": "Traits are essentially random and cannot be used to predict future behavior.",
+          "isCorrect": false,
+          "rationale": "Probabilistic models are used specifically for prediction; they are the opposite of claiming behavior is random."
+        },
+        {
+          "text": "Personality is a categorical state that people cycle through periodically.",
+          "isCorrect": false,
+          "rationale": "Traits are defined as relatively stable patterns, while 'states' are the transient manifestations."
+        },
+        {
+          "text": "The measurement of traits is always subject to $50\\\\%$ error margin.",
+          "isCorrect": false,
+          "rationale": "Probabilistic refers to the nature of the construct's relationship with behavior, not a fixed measurement error percentage."
+        }
+      ],
+      "hint": "Think about whether a person's trait score means they *always* act that way or *usually* act that way."
+    }
+  ]
+}

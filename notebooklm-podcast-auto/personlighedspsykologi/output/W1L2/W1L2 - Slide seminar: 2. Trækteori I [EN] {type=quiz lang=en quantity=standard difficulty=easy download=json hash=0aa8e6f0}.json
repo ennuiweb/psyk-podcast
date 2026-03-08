@@ -1,0 +1,265 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "According to the scientific positioning presented in the materials, which approach is most characteristic of trait theory?",
+      "answerOptions": [
+        {
+          "text": "Natural scientific",
+          "isCorrect": true,
+          "rationale": "Trait theory relies on quantitative, objective methods to measure and weigh personality, aiming to control, predict, and explain behavior."
+        },
+        {
+          "text": "Humanistic",
+          "isCorrect": false,
+          "rationale": "This approach focuses more on understanding, empathy, and finding meaning rather than objective measurement and prediction."
+        },
+        {
+          "text": "Social scientific",
+          "isCorrect": false,
+          "rationale": "While related, this branch typically focuses on changing and developing through critique rather than strictly measuring inherent individual traits."
+        },
+        {
+          "text": "Phenomenological",
+          "isCorrect": false,
+          "rationale": "This perspective prioritizes subjective experience and consciousness over the objective measurement of stable traits."
+        }
+      ],
+      "hint": "Consider the goal of using objective methods to 'measure and weigh' personality."
+    },
+    {
+      "question": "What is the primary distinction between a personality 'trait' and a personality 'state'?",
+      "answerOptions": [
+        {
+          "text": "Traits are long-term patterns, while states are temporary and contextual.",
+          "isCorrect": true,
+          "rationale": "Traits represent enduring characteristics, whereas states refer to how an individual feels or acts in a specific, transient moment."
+        },
+        {
+          "text": "Traits are qualitative descriptions, while states are quantitative measurements.",
+          "isCorrect": false,
+          "rationale": "Both can be measured quantitatively, but the difference lies in their temporal stability and situational dependence."
+        },
+        {
+          "text": "States are biological, whereas traits are purely environmental.",
+          "isCorrect": false,
+          "rationale": "Both constructs can have biological and environmental influences, but they differ in their duration and consistency."
+        },
+        {
+          "text": "Traits only appear in adulthood, while states are present from birth.",
+          "isCorrect": false,
+          "rationale": "Both traits and states can be observed across various stages of life, including childhood."
+        }
+      ],
+      "hint": "Think about the duration and consistency of the behavior or feeling."
+    },
+    {
+      "text": "In the meta-analysis by Bleidorn et al. (2022), what was the average rank-order stability coefficient ($r$) found across studies?",
+      "answerOptions": [
+        {
+          "text": "$r = .60$",
+          "isCorrect": true,
+          "rationale": "This value was the mean test-retest correlation found in the study, indicating a significant degree of consistency in relative ordering over time."
+        },
+        {
+          "text": "$r = .15$",
+          "isCorrect": false,
+          "rationale": "Such a low correlation would suggest almost no stability in how individuals are ranked compared to their peers over time."
+        },
+        {
+          "text": "$r = .95$",
+          "isCorrect": false,
+          "rationale": "This would indicate near-perfect stability, which is rarely found in psychological traits across the lifespan."
+        },
+        {
+          "text": "$r = -0.60$",
+          "isCorrect": false,
+          "rationale": "A negative correlation would imply that the relative ordering of individuals completely reverses over time, which contradicts trait theory findings."
+        }
+      ],
+      "hint": "The value represents a moderate-to-high level of stability often found in personality research."
+    },
+    {
+      "question": "Which term refers to the average change in a specific trait for an entire population as they age?",
+      "answerOptions": [
+        {
+          "text": "Mean-level change",
+          "isCorrect": true,
+          "rationale": "This metric tracks whether a population, on average, increases or decreases in a trait (like Agreeableness) over time."
+        },
+        {
+          "text": "Rank-order stability",
+          "isCorrect": false,
+          "rationale": "This concept focuses on the relative position of individuals within a group rather than the population's absolute average level."
+        },
+        {
+          "text": "Test-retest reliability",
+          "isCorrect": false,
+          "rationale": "While related to measurement consistency, this is a broader psychometric term and not the specific name for population-level developmental shifts."
+        },
+        {
+          "text": "State-trait variance",
+          "isCorrect": false,
+          "rationale": "This refers to the proportion of behavior attributed to stable characteristics versus temporary situations."
+        }
+      ],
+      "hint": "Focus on the 'average' or 'mean' level of a group."
+    },
+    {
+      "question": "According to the findings of Bleidorn et al. (2022), how does the stability of personality traits typically progress through adulthood?",
+      "answerOptions": [
+        {
+          "text": "It increases throughout adulthood, but at a slower pace than previously thought.",
+          "isCorrect": true,
+          "rationale": "The study supported age-graded increases in stability but noted that the rate of increase is more gradual than suggested by older models."
+        },
+        {
+          "text": "It declines sharply after young adulthood.",
+          "isCorrect": false,
+          "rationale": "Stability generally increases or plateaus in adulthood rather than showing a sharp decline."
+        },
+        {
+          "text": "It remains perfectly static from age 18 onwards.",
+          "isCorrect": false,
+          "rationale": "Evidence shows that traits continue to evolve and their stability levels fluctuate across the entire lifespan."
+        },
+        {
+          "text": "It is only stable in childhood and becomes chaotic in old age.",
+          "isCorrect": false,
+          "rationale": "Stability actually tends to be lower in childhood and increases as individuals move into adulthood and middle age."
+        }
+      ],
+      "hint": "Look for a trend that involves continued growth but at a 'slower pace'."
+    },
+    {
+      "question": "Phan et al. (2025) describe psychological laws as being different from physical sciences because they are:",
+      "answerOptions": [
+        {
+          "text": "Probabilistic rather than deterministic",
+          "isCorrect": true,
+          "rationale": "Psychological laws provide likelihoods of behavior rather than absolute, fixed outcomes for every individual."
+        },
+        {
+          "text": "Purely random and unpredictable",
+          "isCorrect": false,
+          "rationale": "If behavior were purely random, it would be impossible to formulate any 'laws' or models in the first place."
+        },
+        {
+          "text": "Universal and identical for every entity",
+          "isCorrect": false,
+          "rationale": "The source notes that at high resolution, every focal entity is inherently unique, requiring abstraction to find general patterns."
+        },
+        {
+          "text": "Based only on subjective intuition",
+          "isCorrect": false,
+          "rationale": "The trait theory approach mentioned in the text emphasizes objective methods and quantitative data."
+        }
+      ],
+      "hint": "Consider if psychology offers absolute certainties or likely patterns."
+    },
+    {
+      "question": "Which of the following is NOT one of the 'Big Five' personality traits listed in the source material?",
+      "answerOptions": [
+        {
+          "text": "Self-actualization",
+          "isCorrect": true,
+          "rationale": "Self-actualization is a concept primarily associated with humanistic psychology (like Maslow's hierarchy) rather than the Big Five trait model."
+        },
+        {
+          "text": "Extraversion",
+          "isCorrect": false,
+          "rationale": "Extraversion is a core component of the Big Five, measuring outgoingness and social energy."
+        },
+        {
+          "text": "Neuroticism",
+          "isCorrect": false,
+          "rationale": "Neuroticism, often discussed as Emotional Stability in the slides, is one of the five foundational traits."
+        },
+        {
+          "text": "Conscientiousness",
+          "isCorrect": false,
+          "rationale": "This trait measures organization, dependability, and discipline, and is a standard part of the Five-Factor Model."
+        }
+      ],
+      "hint": "Identify the term that is more associated with human potential and needs rather than stable trait dimensions."
+    },
+    {
+      "question": "According to Phan et al. (2025), why is a degree of abstraction necessary to arrive at general psychological laws?",
+      "answerOptions": [
+        {
+          "text": "Because each individual is inherently and necessarily unique.",
+          "isCorrect": true,
+          "rationale": "Since no two people are identical at a high resolution, laws must abstract away from individual uniqueness to find shared patterns."
+        },
+        {
+          "text": "Because human behavior is too simple to require detailed study.",
+          "isCorrect": false,
+          "rationale": "The complexity and uniqueness of individuals are exactly what make simple laws difficult to apply without abstraction."
+        },
+        {
+          "text": "Because quantitative data is always inaccurate.",
+          "isCorrect": false,
+          "rationale": "The text does not claim data is inaccurate, but rather that models are 'useful' despite being simplified versions of reality."
+        },
+        {
+          "text": "Because traits do not actually exist in reality.",
+          "isCorrect": false,
+          "rationale": "The material discusses traits as useful models for understanding personality, even if they require abstraction."
+        }
+      ],
+      "hint": "Think about how 'high resolution' details might interfere with seeing general patterns."
+    },
+    {
+      "question": "Which orientation point from K\u00f8ppe and Dammeyer (2014) is mentioned specifically in the context of discussing change and stability?",
+      "answerOptions": [
+        {
+          "text": "Historicity",
+          "isCorrect": true,
+          "rationale": "Historicity refers to the understanding of personality development over time and is a key orientation point for discussing change."
+        },
+        {
+          "text": "Spirituality",
+          "isCorrect": false,
+          "rationale": "This is not listed as one of the four scientific orientation points for understanding personality in the provided trait theory slides."
+        },
+        {
+          "text": "Financial status",
+          "isCorrect": false,
+          "rationale": "Sociodemographic factors like wealth are variables studied by psychologists but are not fundamental scientific 'orientation points' in this context."
+        },
+        {
+          "text": "Biological reflex",
+          "isCorrect": false,
+          "rationale": "While biology is relevant, 'historicity' and 'determination' are the specific theoretical orientation points highlighted for discussion in the slides."
+        }
+      ],
+      "hint": "This term relates to the historical development and temporal nature of the person."
+    },
+    {
+      "question": "What does 'Rank-order stability' primarily indicate when expressed as a correlation coefficient $r$?",
+      "answerOptions": [
+        {
+          "text": "The degree to which the relative ordering of individuals is maintained.",
+          "isCorrect": true,
+          "rationale": "A high $r$ means that the person who was most extroverted at time 1 is still likely the most extroverted at time 2 relative to the group."
+        },
+        {
+          "text": "The exact total score of every participant in the group.",
+          "isCorrect": false,
+          "rationale": "Correlation measures relationship and ordering, not the absolute raw scores or the specific values of individuals."
+        },
+        {
+          "text": "The probability that a person will change their personality overnight.",
+          "isCorrect": false,
+          "rationale": "Stability coefficients measure consistency over defined intervals (often years), not short-term likelihood of sudden change."
+        },
+        {
+          "text": "The number of traits a person possesses.",
+          "isCorrect": false,
+          "rationale": "The number of traits (e.g., five in the Big Five) is a structural feature of a model, not what a stability correlation measures."
+        }
+      ],
+      "hint": "Think about 'positioning' or 'ranking' within a group."
+    }
+  ]
+}

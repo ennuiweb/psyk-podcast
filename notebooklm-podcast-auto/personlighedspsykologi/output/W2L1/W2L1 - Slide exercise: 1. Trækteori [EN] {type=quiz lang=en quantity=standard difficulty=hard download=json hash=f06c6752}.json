@@ -1,0 +1,265 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "According to the excerpts regarding the foundation of trait psychology, what is the final step in identifying the major categories of personality traits?",
+      "answerOptions": [
+        {
+          "text": "Calculating correlations between various adjectives.",
+          "isCorrect": false,
+          "rationale": "Calculating correlations is a necessary mathematical precursor, but it is not the final step that synthesizes the data into overarching categories."
+        },
+        {
+          "text": "Factor analysis to find the major categories of personality traits.",
+          "isCorrect": true,
+          "rationale": "Factor analysis is the statistical method used to reduce a large number of correlated variables into a smaller set of underlying dimensions or 'factors'."
+        },
+        {
+          "text": "Removing adjectives that are rarely used or misunderstood by the public.",
+          "isCorrect": false,
+          "rationale": "This is an early-stage data-cleaning process to ensure the vocabulary used is relevant and understood by participants."
+        },
+        {
+          "text": "Assigning participants to rate themselves on a scale from $1$ to $5$.",
+          "isCorrect": false,
+          "rationale": "This is the data collection phase, which provides the raw material for later statistical analysis rather than being the final categorization."
+        }
+      ],
+      "hint": "Think about the statistical technique used to group many specific descriptors into a few broad dimensions."
+    },
+    {
+      "question": "Based on the definition of 'methodological reduction' (metodisk reduktion) by K\u00f8ppe (2015), what is the primary purpose of this process in a scientific study?",
+      "answerOptions": [
+        {
+          "text": "To simplify the theoretical framework so it is easier for students to understand.",
+          "isCorrect": false,
+          "rationale": "While simplification occurs, the term specifically refers to the selection of data types rather than the pedagogical simplification of theory."
+        },
+        {
+          "text": "To specify which aspects of an object or phenomenon function as valid data for investigation.",
+          "isCorrect": true,
+          "rationale": "Methodological reduction involves justifying and defining what constitutes empirically valid data within a specific research project."
+        },
+        {
+          "text": "To reduce the number of participants in a study to ensure a more controlled environment.",
+          "isCorrect": false,
+          "rationale": "This describes sample size reduction, whereas methodological reduction focuses on the qualitative definition of data categories."
+        },
+        {
+          "text": "To eliminate all subjective biases from the researcher before the study begins.",
+          "isCorrect": false,
+          "rationale": "Eliminating bias is a general scientific goal, but this term specifically addresses the precise definition of empirical data points."
+        }
+      ],
+      "hint": "Consider how a researcher decides which parts of a complex reality are actually relevant to their specific measurement."
+    },
+    {
+      "question": "According to the lexical strategy described by Goldberg and Ashton (2004), why are significant personality differences expected to be found in natural language?",
+      "answerOptions": [
+        {
+          "text": "Language is biologically hardwired to reflect the $5$ major brain regions associated with personality.",
+          "isCorrect": false,
+          "rationale": "The lexical hypothesis focuses on social encoding and linguistics rather than direct neurobiological mapping."
+        },
+        {
+          "text": "Important individual differences in daily social transactions will eventually be encoded into common language.",
+          "isCorrect": true,
+          "rationale": "The hypothesis posits that if a trait is socially relevant, people will create words to describe it to facilitate communication about others."
+        },
+        {
+          "text": "Dictionaries are intentionally designed by psychologists to categorize human behavior.",
+          "isCorrect": false,
+          "rationale": "Dictionaries reflect common usage over time; they are not typically constructed by psychologists as behavioral tools."
+        },
+        {
+          "text": "Adjectives are the only grammatical category capable of describing stable psychological states.",
+          "isCorrect": false,
+          "rationale": "While adjectives are the focus of this strategy, the theory emphasizes the social utility of the descriptors rather than a grammatical limitation."
+        }
+      ],
+      "hint": "Think about how societies adapt their vocabulary to talk about things that matter most in their interactions with others."
+    },
+    {
+      "question": "The source material discusses the lexical tradition's relationship with the concept of 'traits'. Which statement best reflects the lexical perspective on this relationship?",
+      "answerOptions": [
+        {
+          "text": "The lexical perspective is fundamentally dependent on the assumption that adjectives represent internal biological traits.",
+          "isCorrect": false,
+          "rationale": "The material notes that while many researchers make this link, the lexical perspective itself does not strictly require this assumption."
+        },
+        {
+          "text": "The lexical strategy is a research tool that identifies dimensions of variation without necessitating a specific 'trait' assumption.",
+          "isCorrect": true,
+          "rationale": "The text clarifies that the lexical strategy provides a way to identify dimensions of personality variation regardless of whether one assumes they are 'traits' in a traditional sense."
+        },
+        {
+          "text": "The lexical hypothesis was created specifically to disprove the existence of stable personality traits.",
+          "isCorrect": false,
+          "rationale": "The hypothesis is a method for identifying dimensions of personality, not a tool for disproving the existence of traits."
+        },
+        {
+          "text": "The lexical perspective assumes that language is an unreliable indicator of actual personality traits.",
+          "isCorrect": false,
+          "rationale": "This contradicts the core premise of the hypothesis, which views language as a primary and significant source for identifying personality dimensions."
+        }
+      ],
+      "hint": "Consider whether a research strategy and the ontological status of what it measures are always the same thing."
+    },
+    {
+      "question": "In the context of the exercise group's requirements (aktivitetskrav), what specific task must students complete in their exam groups?",
+      "answerOptions": [
+        {
+          "text": "A quantitative factor analysis of the HEXACO test results.",
+          "isCorrect": false,
+          "rationale": "While the HEXACO test is discussed, the mandatory written requirement specified is a report on a different methodology."
+        },
+        {
+          "text": "A written exercise report using phenomenological method.",
+          "isCorrect": true,
+          "rationale": "The slides explicitly state the 'aktivitetskrav' involves submitting one exercise report in phenomenological method."
+        },
+        {
+          "text": "A comparative essay between Freud's psychoanalysis and trait theory.",
+          "isCorrect": false,
+          "rationale": "These theories are part of the syllabus, but they are not listed as the specific subject of the mandatory exercise report."
+        },
+        {
+          "text": "An oral presentation on the historical development of the Big Five.",
+          "isCorrect": false,
+          "rationale": "There is a mandatory oral presentation, but it is tied to the exam groups and is distinct from the written phenomenological report."
+        }
+      ],
+      "hint": "Look for the specific 'aktivitetskrav' related to a written report."
+    },
+    {
+      "question": "Students were asked to reflect on four specific orientation points. Which of the following is NOT one of the four points mentioned in the material?",
+      "answerOptions": [
+        {
+          "text": "Historicity (Historicitet)",
+          "isCorrect": false,
+          "rationale": "Historicity is explicitly listed as one of the four points for reflection in the group work section."
+        },
+        {
+          "text": "Agency (Agens)",
+          "isCorrect": false,
+          "rationale": "Agency is listed as one of the four points students should use to reflect on their questions."
+        },
+        {
+          "text": "Cognitive Load (Kognitiv belastning)",
+          "isCorrect": true,
+          "rationale": "Cognitive Load is not mentioned; the four points are Historicity, Agency, Essence/Context, and Determination."
+        },
+        {
+          "text": "Determination",
+          "isCorrect": false,
+          "rationale": "Determination is one of the four orientation points provided for the student reflection exercise."
+        }
+      ],
+      "hint": "Identify the concept that focuses on mental effort during tasks, which is absent from the listed four-point reflection framework."
+    },
+    {
+      "question": "How does Lou (the instructor) define his role and the relationship between theory and method in the exercise classes?",
+      "answerOptions": [
+        {
+          "text": "His role is to provide new theoretical frameworks that contradict the main seminar lectures.",
+          "isCorrect": false,
+          "rationale": "He describes himself as an experienced student facilitator and emphasizes that the seminar teacher's word is final."
+        },
+        {
+          "text": "Theory and method can only be separated analytically; the goal is to practice working with concrete methods.",
+          "isCorrect": true,
+          "rationale": "The material states that it is only analytically possible to separate the two, and the exercise class aims to bridge that gap through practice."
+        },
+        {
+          "text": "The exercise classes focus strictly on theory, while methodology is reserved for the final exam.",
+          "isCorrect": false,
+          "rationale": "The explicitly stated goal of the exercise classes is to have a focus on methodology and empirical work."
+        },
+        {
+          "text": "Method is considered superior to theory in this course, as it provides objective results.",
+          "isCorrect": false,
+          "rationale": "The text suggests they are intertwined and that theoretical understanding is decisive for the choice of method."
+        }
+      ],
+      "hint": "Think about whether it's actually possible to do research without a theoretical lens, or if the two are joined in practice."
+    },
+    {
+      "question": "The material cites a quote: 'Before we can really begin to understand personality, we need to figure out how to measure it.' What is the implication of this statement in the context of the lexical hypothesis?",
+      "answerOptions": [
+        {
+          "text": "Measuring personality is an impossible task because language is too subjective.",
+          "isCorrect": false,
+          "rationale": "The quote argues for the necessity of measurement as a starting point, not its impossibility."
+        },
+        {
+          "text": "Scientific understanding of personality is predicated on establishing reliable dimensions of variation through measurement.",
+          "isCorrect": true,
+          "rationale": "The lexical hypothesis provides the 'how' for this measurement by using natural language as a dataset to find axes of variation."
+        },
+        {
+          "text": "Understanding must always come before measurement in the scientific process.",
+          "isCorrect": false,
+          "rationale": "The quote explicitly suggests the opposite\u2014that measurement is the prerequisite for understanding."
+        },
+        {
+          "text": "Measurement is only useful for clinical settings, not for general personality psychology.",
+          "isCorrect": false,
+          "rationale": "The lexical hypothesis is aimed at identifying the major dimensions of personality variation in general, not just clinical contexts."
+        }
+      ],
+      "hint": "Consider which comes first in the scientific method according to the provided quote: quantification or conceptual comprehension."
+    },
+    {
+      "question": "In the workflow of the Lexical Hypothesis, what immediately follows the 'Filtering/Sorting of words that people do not use'?",
+      "answerOptions": [
+        {
+          "text": "Researchers look through dictionaries for adjectives.",
+          "isCorrect": false,
+          "rationale": "This is the very first step of the process, which provides the initial list of words before they are filtered."
+        },
+        {
+          "text": "Test subjects rate themselves in relation to a given adjective.",
+          "isCorrect": true,
+          "rationale": "Once the list of words is refined and understood by the public, it is used as a scale for self-rating by subjects."
+        },
+        {
+          "text": "The computer calculates correlations between the words.",
+          "isCorrect": false,
+          "rationale": "Correlation calculations occur after the data (the ratings) has been collected from the subjects."
+        },
+        {
+          "text": "The HEXACO test is administered to the students.",
+          "isCorrect": false,
+          "rationale": "The HEXACO test is a specific exercise in the class, not a general step in the theoretical 'foundation' flow described in the chart."
+        }
+      ],
+      "hint": "Think about the point in a research project where actual human participants provide their input after the survey instrument is finalized."
+    },
+    {
+      "question": "What is Lou's recommendation for students regarding technology use in the classroom?",
+      "answerOptions": [
+        {
+          "text": "Computers should be open at all times to take meticulous notes on theory.",
+          "isCorrect": false,
+          "rationale": "Lou specifically recommends against having computers out during regular instruction."
+        },
+        {
+          "text": "He recommends not having computers out except when they are needed for specific exercises.",
+          "isCorrect": true,
+          "rationale": "He explicitly suggests students keep computers away to encourage better participation, unless the exercise requires them."
+        },
+        {
+          "text": "Students must use tablets instead of laptops to minimize desk space.",
+          "isCorrect": false,
+          "rationale": "The distinction is between technology use and active participation, not the specific type of hardware."
+        },
+        {
+          "text": "Recording the lecture on phones is encouraged for those who missed the reading.",
+          "isCorrect": false,
+          "rationale": "Lou emphasizes active participation and having read the text rather than passive recording."
+        }
+      ],
+      "hint": "Consider how the instructor wants to balance the use of digital tools with active classroom engagement."
+    }
+  ]
+}

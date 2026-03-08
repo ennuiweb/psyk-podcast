@@ -1,0 +1,395 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "According to the definition by Zettler et al. (2020), which component is essential to the 'nomological net' of a personality construct?",
+      "answerOptions": [
+        {
+          "text": "The internal consistency of the items used to measure the construct.",
+          "isCorrect": false,
+          "rationale": "Internal consistency refers to reliability within a test, whereas the nomological net focuses on relationships between different constructs."
+        },
+        {
+          "text": "The interrelations with other theoretically related constructs and outcomes.",
+          "isCorrect": true,
+          "rationale": "A nomological net establishes validity by showing how a construct behaves in relation to other variables it should theoretically be associated with."
+        },
+        {
+          "text": "The stability of the construct's rank-order across at least two time points.",
+          "isCorrect": false,
+          "rationale": "Rank-order stability describes the persistence of individual differences over time rather than the network of relationships between different variables."
+        },
+        {
+          "text": "The biological basis and genetic heritability of the traits within the model.",
+          "isCorrect": false,
+          "rationale": "While heritability is a trait characteristic, the nomological net specifically refers to the pattern of correlations with external behaviors and other psychological constructs."
+        }
+      ],
+      "hint": "Consider how a construct is 'validated' by looking at its external associations."
+    },
+    {
+      "question": "In the study by L\u00f6nnqvist & gro\u00dfe Deters (2016) regarding the Big Five and social media, which trait showed the strongest correlation ($r = .42$) with the number of Facebook friends?",
+      "answerOptions": [
+        {
+          "text": "Openness/Intellect",
+          "isCorrect": false,
+          "rationale": "This trait showed a weak negative correlation of $-.09$, suggesting it is not a primary driver of social network size in this study."
+        },
+        {
+          "text": "Agreeableness",
+          "isCorrect": false,
+          "rationale": "Agreeableness had a very low correlation of $.08$, indicating that being likeable is less predictive of friend count than being outgoing."
+        },
+        {
+          "text": "Extraversion",
+          "isCorrect": true,
+          "rationale": "Extraversion involves sociability and being active, which logically translates to higher social activity and a larger number of digital social connections."
+        },
+        {
+          "text": "Conscientiousness",
+          "isCorrect": false,
+          "rationale": "Conscientiousness showed a weak negative correlation of $-.09$, as its focus on order and duty does not necessarily increase the volume of social ties."
+        }
+      ],
+      "hint": "Identify the trait characterized by being talkative, energetic, and socially active."
+    },
+    {
+      "question": "How does the HEXACO model specifically distinguish its 'Honesty-Humility' (H) dimension from the Big Five's 'Agreeableness' (A) dimension in terms of social behavior?",
+      "answerOptions": [
+        {
+          "text": "H relates to cooperation in the face of exploitation, whereas A relates to social dominance.",
+          "isCorrect": false,
+          "rationale": "Social dominance is typically associated with Extraversion or low Agreeableness, but does not define the core distinction between H and A."
+        },
+        {
+          "text": "H represents the tendency to be fair even when one could exploit others, whereas A involves reacting to being exploited.",
+          "isCorrect": true,
+          "rationale": "Honesty-Humility is associated with active cooperation (not exploiting), while HEXACO Agreeableness is more about reactive cooperation (forgiveness vs. anger)."
+        },
+        {
+          "text": "H is entirely based on biological temperament, while A is purely a product of environmental social roles.",
+          "isCorrect": false,
+          "rationale": "Both traits are considered to have biological and environmental influences within modern personality theories."
+        },
+        {
+          "text": "H focuses on being cheerful and lively, while A focuses on being organized and punctual.",
+          "isCorrect": false,
+          "rationale": "Liveliness belongs to Extraversion and organization belongs to Conscientiousness."
+        }
+      ],
+      "hint": "Think about the difference between 'active' exploitation and 'reactive' cooperation."
+    },
+    {
+      "question": "In the context of the Dictator Game (DG) and Ultimatum Game (UG), why do individuals with low Honesty-Humility behave differently across these two scenarios?",
+      "answerOptions": [
+        {
+          "text": "They fear social exclusion in the DG but not in the UG.",
+          "isCorrect": false,
+          "rationale": "The DG is anonymous and lacks a mechanism for social exclusion or retaliation, unlike the UG."
+        },
+        {
+          "text": "They only cooperate in the UG because of the threat of retaliation through rejection.",
+          "isCorrect": true,
+          "rationale": "Low H individuals are exploitative when they won't suffer consequences (DG), but act 'fair' strategically when the other party can punish them (UG)."
+        },
+        {
+          "text": "They value fairness inherently and thus allocate points equally in both games.",
+          "isCorrect": false,
+          "rationale": "This behavior describes high Honesty-Humility individuals who cooperate even without the threat of retaliation."
+        },
+        {
+          "text": "They allocate fewer points in the UG because the recipient has more power.",
+          "isCorrect": false,
+          "rationale": "Actually, they allocate more points in the UG because the recipient's power to reject the offer forces a more strategic allocation."
+        }
+      ],
+      "hint": "Consider which game allows for 'exploitation without suffering retaliation'."
+    },
+    {
+      "question": "Stoffregen (2004) defines 'affordances' in a way that is critical to the person-situation interplay. Which of the following best exemplifies an affordance?",
+      "answerOptions": [
+        {
+          "text": "A person's internal motivation to achieve a specific long-term career goal.",
+          "isCorrect": false,
+          "rationale": "This is an internal state or 'agentic' striving, rather than a feature of the environment."
+        },
+        {
+          "text": "A situation that either constrains or allows for the expression of a specific trait like extraversion.",
+          "isCorrect": true,
+          "rationale": "Affordances refer to the possibilities for action or behavior provided by a specific environment or situation."
+        },
+        {
+          "text": "The statistical probability that a person's behavior will remain stable over a ten-year period.",
+          "isCorrect": false,
+          "rationale": "This refers to rank-order stability, a measurement of consistency rather than a situational feature."
+        },
+        {
+          "text": "The genetic overlap between a parent's personality and their child's environment.",
+          "isCorrect": false,
+          "rationale": "This refers to passive genotype-environment correlations."
+        }
+      ],
+      "hint": "Think about what an environment 'provides' or 'allows' an individual to do."
+    },
+    {
+      "question": "Based on the research by Hilbig & Zettler (2015), what is the relationship between Honesty-Humility and the reporting of an individual target number in a secret die-rolling task?",
+      "answerOptions": [
+        {
+          "text": "High H-H individuals are more likely to report winning numbers to ensure social approval.",
+          "isCorrect": false,
+          "rationale": "High H-H individuals value genuineness over self-gain or deceptive social approval."
+        },
+        {
+          "text": "As Honesty-Humility increases, the probability of reporting a 'winning' (potentially cheated) number decreases.",
+          "isCorrect": true,
+          "rationale": "Honesty-Humility represents the tendency to be fair and genuine, which correlates negatively with cheating for personal gain."
+        },
+        {
+          "text": "Low H-H individuals only report winning numbers if they believe they are being watched.",
+          "isCorrect": false,
+          "rationale": "The study specifically utilized secret rolling to demonstrate that low H-H individuals exploit situations even when retaliation is unlikely."
+        },
+        {
+          "text": "There is no significant correlation because die-rolling is a task of pure chance.",
+          "isCorrect": false,
+          "rationale": "While the roll is chance, the *report* is a behavioral choice influenced by personality traits."
+        }
+      ],
+      "hint": "Recall the graph showing the probability of winning relative to the H-H score."
+    },
+    {
+      "question": "How does 'rank-order stability' differ from 'mean-level change' in personality research?",
+      "answerOptions": [
+        {
+          "text": "Rank-order stability measures typical population increases, while mean-level change measures relative positions.",
+          "isCorrect": false,
+          "rationale": "The definitions are reversed; rank-order is about relative position, and mean-level is about population averages."
+        },
+        {
+          "text": "Rank-order stability uses correlations to see if the 'most extraverted' person stays 'most extraverted', whereas mean-level change looks at average scores over time.",
+          "isCorrect": true,
+          "rationale": "Rank-order stability is about the consistency of individual differences, while mean-level change is about normative developmental trends."
+        },
+        {
+          "text": "Rank-order stability is only relevant for children, while mean-level change only occurs in adulthood.",
+          "isCorrect": false,
+          "rationale": "Both types of change and stability are studied across the entire lifespan."
+        },
+        {
+          "text": "Rank-order stability is influenced by environment, while mean-level change is purely biological.",
+          "isCorrect": false,
+          "rationale": "Both are influenced by a complex interplay of biology and environment, as seen in the Neo-Socioanalytic theory."
+        }
+      ],
+      "hint": "Think about whether you are comparing an individual to their peers or comparing the whole group's average to a previous time."
+    },
+    {
+      "question": "In the Theory of Genotype $\\rightarrow$ Environment Effects, which mechanism describes a child with a genetic disposition for athleticism being encouraged by a coach to join a sports team?",
+      "answerOptions": [
+        {
+          "text": "Active Genotype-Environment Correlation",
+          "isCorrect": false,
+          "rationale": "Active correlation involves the individual themselves seeking out the environment, not a reaction from others."
+        },
+        {
+          "text": "Passive Genotype-Environment Correlation",
+          "isCorrect": false,
+          "rationale": "Passive correlation involves the environment provided by parents based on shared genes, without specific behavioral triggers from the child."
+        },
+        {
+          "text": "Reactive (or Evocative) Genotype-Environment Correlation",
+          "isCorrect": true,
+          "rationale": "This occurs when an individual's genetically influenced behavior or traits evoke a specific response or environment from others."
+        },
+        {
+          "text": "Identity-development Principle",
+          "isCorrect": false,
+          "rationale": "This is a principle from Neo-Socioanalytic theory related to commitment to one's identity, not a genetic correlation mechanism."
+        }
+      ],
+      "hint": "Focus on how the environment 'responds' to the child's inherited traits."
+    },
+    {
+      "question": "According to Neo-Socioanalytic Theory, the 'Social-investment principle' suggests that personality change in adulthood is primarily driven by:",
+      "answerOptions": [
+        {
+          "text": "Natural biological maturation of the prefrontal cortex.",
+          "isCorrect": false,
+          "rationale": "This is a biological explanation, whereas social-investment focuses on the impact of social roles."
+        },
+        {
+          "text": "Investment in age-related social roles such as starting a career or a serious relationship.",
+          "isCorrect": true,
+          "rationale": "This principle posits that adopting social roles (e.g., being a reliable employee) forces individuals to act in ways that eventually become stable traits."
+        },
+        {
+          "text": "The active selection of environments that match existing genetic predispositions.",
+          "isCorrect": false,
+          "rationale": "This describes active genotype-environment correlations rather than the social-investment principle."
+        },
+        {
+          "text": "A sudden and permanent shift in identity occurring during the mid-life crisis.",
+          "isCorrect": false,
+          "rationale": "The theory focuses on gradual changes through consistent social role demands rather than crisis-driven shifts."
+        }
+      ],
+      "hint": "Consider the impact of 'striving' in adult life roles like work and family."
+    },
+    {
+      "question": "The research by Jackson et al. (2012) on military service demonstrated which of the following regarding mean-level change in Agreeableness?",
+      "answerOptions": [
+        {
+          "text": "Both military and civilian groups showed identical steep increases in Agreeableness over time.",
+          "isCorrect": false,
+          "rationale": "The groups showed different trajectories, with the civilian group increasing significantly more."
+        },
+        {
+          "text": "The military-service group showed a significantly lower increase in Agreeableness compared to the civilian-community-service group.",
+          "isCorrect": true,
+          "rationale": "The study found that the environment of military service may suppress the normative increase in Agreeableness typically seen in young adulthood."
+        },
+        {
+          "text": "Military service caused a drastic decline in Agreeableness, while civilian service had no effect.",
+          "isCorrect": false,
+          "rationale": "The data showed a slower rate of increase for the military group, not necessarily an absolute decline."
+        },
+        {
+          "text": "Agreeableness is purely biological and was unaffected by the type of service performed.",
+          "isCorrect": false,
+          "rationale": "The study used these findings to argue that life experiences and environmental factors do affect personality development."
+        }
+      ],
+      "hint": "Look for a comparison between the growth curves of the two service groups."
+    },
+    {
+      "question": "In personality research, what defines a 'personality state' as opposed to a 'personality trait'?",
+      "answerOptions": [
+        {
+          "text": "States are long-term averages, while traits are momentary fluctuations.",
+          "isCorrect": false,
+          "rationale": "This is the reverse of the actual definitions; traits are long-term, and states are momentary."
+        },
+        {
+          "text": "A state is a quantitative dimension describing behavior, thoughts, and feelings at a particular time.",
+          "isCorrect": true,
+          "rationale": "States refer to how someone is thinking, feeling, or behaving in the 'here and now', often influenced by the situation."
+        },
+        {
+          "text": "States are purely biological, whereas traits are purely environmental.",
+          "isCorrect": false,
+          "rationale": "Both constructs involve complex biological and situational components."
+        },
+        {
+          "text": "Traits can be measured, but states are hypothetical constructs that cannot be quantified.",
+          "isCorrect": false,
+          "rationale": "Both traits and states are hypothetical constructs that researchers attempt to measure quantitatively."
+        }
+      ],
+      "hint": "Focus on the 'temporal' (time-related) aspect of the description."
+    },
+    {
+      "question": "Which principle from the Neo-Socioanalytic Theory explains why people tend to seek out and remain in environments that reinforce their existing traits, leading to increased stability?",
+      "answerOptions": [
+        {
+          "text": "Plasticity principle",
+          "isCorrect": false,
+          "rationale": "The plasticity principle explains change in response to the environment, not stability."
+        },
+        {
+          "text": "Corresponsive principle",
+          "isCorrect": true,
+          "rationale": "The corresponsive principle states that the traits that lead people to certain environments are often the ones that are further strengthened by those environments."
+        },
+        {
+          "text": "Social-investment principle",
+          "isCorrect": false,
+          "rationale": "This principle is primarily concerned with personality change through the adoption of new social roles."
+        },
+        {
+          "text": "Active mechanisms of heritability",
+          "isCorrect": false,
+          "rationale": "This is a term from the Genotype $\\rightarrow$ Environment theory, not Neo-Socioanalytic theory."
+        }
+      ],
+      "hint": "Look for the principle describing the 'reinforcing' loop between person and environment."
+    },
+    {
+      "question": "Bleidorn et al. (2022) examined life span trends in rank-order stability. What is a general finding regarding the stability of traits like Conscientiousness and Agreeableness as individuals age from childhood into mid-adulthood?",
+      "answerOptions": [
+        {
+          "text": "Stability is highest in early childhood and drops to zero by age 30.",
+          "isCorrect": false,
+          "rationale": "Stability actually tends to increase as individuals move from childhood into adulthood."
+        },
+        {
+          "text": "Rank-order stability increases significantly through adolescence and young adulthood, eventually reaching a relatively high plateau.",
+          "isCorrect": true,
+          "rationale": "Consistency in relative differences between people becomes more 'set' as they enter and progress through adulthood."
+        },
+        {
+          "text": "Rank-order stability is perfectly constant ($r = 1.0$) across the entire lifespan.",
+          "isCorrect": false,
+          "rationale": "While traits are stable, they are not perfectly so; correlations typically peak between $.70$ and $.80$ in adulthood."
+        },
+        {
+          "text": "Stability only exists for Extraversion, while other traits are completely random throughout life.",
+          "isCorrect": false,
+          "rationale": "The Big Five traits all show similar patterns of increasing and then stabilizing rank-order consistency."
+        }
+      ],
+      "hint": "Consider how the 'retest correlation' changes as people get older."
+    },
+    {
+      "question": "According to the Big Two model of personality structure, what are the two higher-order dimensions?",
+      "answerOptions": [
+        {
+          "text": "$\\\\alpha$ (Stability) and $\\\\beta$ (Plasticity)",
+          "isCorrect": true,
+          "rationale": "These two factors represent the shared variance among the Big Five: Stability (A, C, ES) and Plasticity (E, O)."
+        },
+        {
+          "text": "Internalizing and Externalizing",
+          "isCorrect": false,
+          "rationale": "These are common dimensions in clinical or developmental psychopathology, but they are not the 'Big Two' in the basic personality structure described."
+        },
+        {
+          "text": "Nature and Nurture",
+          "isCorrect": false,
+          "rationale": "These are sources of influence, not dimensions of personality traits."
+        },
+        {
+          "text": "Honesty and Humility",
+          "isCorrect": false,
+          "rationale": "These are two halves of a single sixth factor in the HEXACO model."
+        }
+      ],
+      "hint": "Recall the greek letters used to denote these overarching meta-traits."
+    },
+    {
+      "question": "When examining the mean-level change of Openness after retirement, what did Schwaba & Bleidorn (2019) observe?",
+      "answerOptions": [
+        {
+          "text": "Openness increases steadily for sixty months after the retirement date.",
+          "isCorrect": false,
+          "rationale": "The data generally shows a slight decline or stability in Openness as people age after retirement."
+        },
+        {
+          "text": "There is a slight decline in Openness leading up to retirement, with continued gradual decline afterward.",
+          "isCorrect": true,
+          "rationale": "The graph shows that the environmental 'narrowing' that often accompanies retirement can lead to lower levels of curiosity and exploration."
+        },
+        {
+          "text": "Openness immediately spikes to its highest lifetime level on the day of retirement.",
+          "isCorrect": false,
+          "rationale": "The data shows more complex, subtle trends rather than a sudden positive spike."
+        },
+        {
+          "text": "Openness is the only trait that shows no mean-level change whatsoever throughout the lifespan.",
+          "isCorrect": false,
+          "rationale": "Openness, like all Big Five traits, shows normative patterns of change across various life stages."
+        }
+      ],
+      "hint": "Think about the impact of leaving a mentally stimulating work environment."
+    }
+  ]
+}

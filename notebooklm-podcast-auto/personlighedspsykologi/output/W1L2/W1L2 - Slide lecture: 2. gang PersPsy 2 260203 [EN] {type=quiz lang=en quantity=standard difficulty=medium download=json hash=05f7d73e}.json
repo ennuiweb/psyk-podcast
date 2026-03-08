@@ -1,0 +1,265 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "According to the framework by Kluckhohn and Murray (1953), in which respect is every person like 'no other person'?",
+      "answerOptions": [
+        {
+          "text": "Universal human nature",
+          "isCorrect": false,
+          "rationale": "This level refers to ways in which a person is like all other persons."
+        },
+        {
+          "text": "Group membership and shared traits",
+          "isCorrect": false,
+          "rationale": "This level refers to ways in which a person is like some other persons, such as belonging to a specific population."
+        },
+        {
+          "text": "Individual uniqueness",
+          "isCorrect": true,
+          "rationale": "The third level of the Kluckhohn and Murray framework posits that every individual possesses unique characteristics that distinguish them from every other human."
+        },
+        {
+          "text": "Cultural affiliation",
+          "isCorrect": false,
+          "rationale": "Culture is typically viewed as a factor that makes people like 'some other persons' rather than being the source of absolute individual uniqueness."
+        }
+      ],
+      "hint": "Consider the three levels of personality study mentioned in the introductory slides."
+    },
+    {
+      "question": "In the context of personality assessment, how is a 'bias' distinguished from an 'error'?",
+      "answerOptions": [
+        {
+          "text": "A bias is a random mistake, whereas an error is systematic.",
+          "isCorrect": false,
+          "rationale": "This reverses the definitions; random mistakes are characterized as errors."
+        },
+        {
+          "text": "A bias is a systematic non-appropriate tendency, while an error occurs more or less randomly.",
+          "isCorrect": true,
+          "rationale": "Scientific approaches aim to mitigate both, but distinguish between consistent distortions (bias) and random fluctuations (error)."
+        },
+        {
+          "text": "Errors only occur in self-reports, while biases only occur in observer reports.",
+          "isCorrect": false,
+          "rationale": "Both errors and biases can manifest across various assessment methods, including self, observer, and behavioral data."
+        },
+        {
+          "text": "Biases are intentional lies, while errors are unintentional omissions.",
+          "isCorrect": false,
+          "rationale": "While a bias like social desirability can be intentional, biases are often unconscious systematic tendencies rather than just explicit lies."
+        }
+      ],
+      "hint": "Think about which one represents a 'systematic' tendency versus a 'random' occurrence."
+    },
+    {
+      "question": "Which approach to personality focuses on the person as an 'agent'?",
+      "answerOptions": [
+        {
+          "text": "Focusing on dispositional traits and acting",
+          "isCorrect": false,
+          "rationale": "The 'actor' perspective is the one that focuses on dispositional traits and how one behaves."
+        },
+        {
+          "text": "Focusing on motivational aspects and striving",
+          "isCorrect": true,
+          "rationale": "The 'agent' perspective views personality through the lens of goals, intentions, and what the person is striving to achieve."
+        },
+        {
+          "text": "Focusing on the integrative life narrative",
+          "isCorrect": false,
+          "rationale": "The 'author' perspective is the one concerned with the narrative and storytelling aspects of self."
+        },
+        {
+          "text": "Focusing on physiological markers like heart rate",
+          "isCorrect": false,
+          "rationale": "Physiological markers are part of biological assessment and do not align with the agent/striving metaphor."
+        }
+      ],
+      "hint": "Consider the three metaphors: actor, agent, and author."
+    },
+    {
+      "question": "In the Trait-Reputation-Identity (TRI) Model, what does 'Reputation' specifically represent?",
+      "answerOptions": [
+        {
+          "text": "The part of a trait known only to the self",
+          "isCorrect": false,
+          "rationale": "This describes 'Identity' or the 'Fa\u00e7ade' in the Johari Window context."
+        },
+        {
+          "text": "The part of a trait known to others but unknown to the self",
+          "isCorrect": true,
+          "rationale": "Reputation corresponds to the 'Blind Spot' where observers agree on a trait that the individual does not acknowledge."
+        },
+        {
+          "text": "The underlying genetic biological marker",
+          "isCorrect": false,
+          "rationale": "The TRI model focuses on the consensus and divergence between self and observer perceptions rather than biological markers."
+        },
+        {
+          "text": "A random mistake made by observers",
+          "isCorrect": false,
+          "rationale": "Reputation is treated as a systematic component of personality judgment, not a random error."
+        }
+      ],
+      "hint": "Look at the Johari Window quadrants and how they map to the TRI model."
+    },
+    {
+      "question": "When assessing the correlation between personality 'predictors' and actual 'criteria' behavior, what range is typical for the effect size in Personality Psychology?",
+      "answerOptions": [
+        {
+          "text": "$|.15| \\le r \\le |.40|$",
+          "isCorrect": true,
+          "rationale": "The source material notes that correlations in this field typically fall within this range, often on the lower end for self-reports vs. behavior."
+        },
+        {
+          "text": "$|.70| \\le r \\le |.95|$",
+          "isCorrect": false,
+          "rationale": "These are extremely high correlations rarely found in the prediction of complex human behavior from personality traits."
+        },
+        {
+          "text": "$|.01| \\le r \\le |.05|$",
+          "isCorrect": false,
+          "rationale": "While significant, these values are lower than the typical range cited for predictors and criteria in the material."
+        },
+        {
+          "text": "$|.50| \\le r \\le |.65|$",
+          "isCorrect": false,
+          "rationale": "While these correlations exist, the material highlights the $|.15|$ to $|.40|$ range as the most frequent standard."
+        }
+      ],
+      "hint": "Recall the 'Early note on effect sizes' slide regarding correlations."
+    },
+    {
+      "question": "Regarding interview-based assessments, what is the general relationship between 'structure' and quality (reliability/validity)?",
+      "answerOptions": [
+        {
+          "text": "Quality decreases as structure increases.",
+          "isCorrect": false,
+          "rationale": "Increased structure generally reduces bias and inconsistency, leading to higher quality."
+        },
+        {
+          "text": "Quality typically increases with higher structure.",
+          "isCorrect": true,
+          "rationale": "Structured interviews standardize questions and scoring, which usually improves both reliability and validity."
+        },
+        {
+          "text": "There is no known relationship between structure and quality.",
+          "isCorrect": false,
+          "rationale": "Psychological research clearly indicates that the degree of structure is a major determinant of an interview's psychometric quality."
+        },
+        {
+          "text": "Unstructured interviews are always more valid for hiring decisions.",
+          "isCorrect": false,
+          "rationale": "In practice, structured interviews are typically superior to unstructured ones for making accurate hiring predictions."
+        }
+      ],
+      "hint": "Think about the effects of standardized questions and scoring."
+    },
+    {
+      "question": "Which of the following is considered a 'tricky' aspect of using register data (such as income or marital status) for personality research?",
+      "answerOptions": [
+        {
+          "text": "It is impossible to verify register data accuracy.",
+          "isCorrect": false,
+          "rationale": "Register data is often highly accurate because it is maintained by official institutions like Denmark Statistics."
+        },
+        {
+          "text": "Register data can reflect both the results and the descriptions of personality.",
+          "isCorrect": true,
+          "rationale": "A life event like being married might describe a person's role while simultaneously being a result of high agreeableness."
+        },
+        {
+          "text": "Register data only collects information about children.",
+          "isCorrect": false,
+          "rationale": "Registers include a wide range of adult life events including employment, education, and police records."
+        },
+        {
+          "text": "Machine Learning cannot be applied to register data.",
+          "isCorrect": false,
+          "rationale": "Register data is actually highly suitable for Machine Learning due to its large scale and structured nature."
+        }
+      ],
+      "hint": "Review the slide titled 'What is tricky' under the register data section."
+    },
+    {
+      "question": "Based on the comparison chart of assessment accuracy, which method tends to have the highest accuracy across the Big Five traits?",
+      "answerOptions": [
+        {
+          "text": "Facebook Likes",
+          "isCorrect": false,
+          "rationale": "While modern and innovative, Facebook likes generally show lower accuracy than traditional self-reports in the provided data."
+        },
+        {
+          "text": "Smartphone Sensors",
+          "isCorrect": false,
+          "rationale": "Smartphone sensors show relatively low accuracy compared to other methods on the chart."
+        },
+        {
+          "text": "Long Self-Report",
+          "isCorrect": true,
+          "rationale": "The chart illustrates that long self-report measures consistently outperform other listed methods, including most digital footprints."
+        },
+        {
+          "text": "Music Preferences",
+          "isCorrect": false,
+          "rationale": "Music preferences have some predictive power but are significantly less accurate than self-report questionnaires."
+        }
+      ],
+      "hint": "Look at the 'Machine Learning approaches' slide showing a forest plot of various data sources."
+    },
+    {
+      "question": "What is the primary purpose of using 'implicit measures' like the Picture Story Exercise in personality psychology?",
+      "answerOptions": [
+        {
+          "text": "To measure intelligence through visual patterns",
+          "isCorrect": false,
+          "rationale": "Intelligence tests are typically behavioral/experimental, while the Picture Story Exercise focuses on motivational themes."
+        },
+        {
+          "text": "To reveal feelings and motives that a respondent might not report explicitly",
+          "isCorrect": true,
+          "rationale": "Implicit measures are designed to bypass conscious self-reflection and reveal underlying strivings like affiliation or achievement."
+        },
+        {
+          "text": "To provide a faster alternative to self-report questionnaires",
+          "isCorrect": false,
+          "rationale": "These measures are often more time-consuming to score and administer than standard questionnaires."
+        },
+        {
+          "text": "To measure a person's physical reaction to stress",
+          "isCorrect": false,
+          "rationale": "Physical reactions are the focus of physio-biological measures, not thematic storytelling exercises."
+        }
+      ],
+      "hint": "Consider why a researcher would ask someone to tell a story about a picture instead of asking them a direct question."
+    },
+    {
+      "question": "In behavioral/experimental data, what trait might a task asking for 'original uses for a remote control' be attempting to measure?",
+      "answerOptions": [
+        {
+          "text": "Extraversion",
+          "isCorrect": false,
+          "rationale": "Extraversion is more commonly measured through social interactions or reports rather than divergent thinking tasks."
+        },
+        {
+          "text": "Creativity",
+          "isCorrect": true,
+          "rationale": "Generating original and varied uses for a common object is a standard way to assess divergent thinking and creative potential."
+        },
+        {
+          "text": "Neuroticism",
+          "isCorrect": false,
+          "rationale": "Neuroticism relates to emotional stability, which is not directly tested by a creative use generation task."
+        },
+        {
+          "text": "Conscientiousness",
+          "isCorrect": false,
+          "rationale": "This task measures the ability to think 'outside the box' rather than orderliness or dutifulness."
+        }
+      ],
+      "hint": "This refers to the 'generate as many original uses as possible' slide."
+    }
+  ]
+}

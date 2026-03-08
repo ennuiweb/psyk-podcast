@@ -1,0 +1,265 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "In the historical classification of psychological disciplines presented, which of the following is categorized as an 'applied' discipline rather than a 'basic' discipline?",
+      "answerOptions": [
+        {
+          "text": "Developmental Psychology (Udviklingspsykologi)",
+          "isCorrect": false,
+          "rationale": "This field is listed under basic disciplines as it focuses on the fundamental processes of human growth and change across the lifespan."
+        },
+        {
+          "text": "Social Psychology (Socialpsykologi)",
+          "isCorrect": false,
+          "rationale": "Social psychology is considered a basic discipline because it studies the fundamental ways individuals interact and influence one another."
+        },
+        {
+          "text": "Educational Psychology (P\u00e6dagogisk psykologi)",
+          "isCorrect": true,
+          "rationale": "Applied disciplines like educational psychology use basic psychological principles to address practical issues within specific societal institutions."
+        },
+        {
+          "text": "Cognitive Psychology (Kognitionspsykologi)",
+          "isCorrect": false,
+          "rationale": "As a study of fundamental mental processes like memory and perception, this is categorized as a basic discipline."
+        }
+      ],
+      "hint": "Think about whether the discipline's primary goal is to uncover general laws of the mind or to apply knowledge to specific professional fields."
+    },
+    {
+      "question": "The term 'persona' originates from Etruscan and Greek roots. What specific premise does this etymological origin imply about human personality?",
+      "answerOptions": [
+        {
+          "text": "Personality is a biological essence that is visible to all.",
+          "isCorrect": false,
+          "rationale": "The concept of a 'mask' suggests a distinction between what is shown and what is hidden, rather than a transparent biological reality."
+        },
+        {
+          "text": "There exists something 'inner' behind the social roles an individual performs.",
+          "isCorrect": true,
+          "rationale": "The metaphor of a mask (persona) necessitates the existence of an 'actor' or an inner self that resides behind the agerated social role."
+        },
+        {
+          "text": "Social roles are the only authentic expression of the self.",
+          "isCorrect": false,
+          "rationale": "This contradicts the source, which notes that the 'mask' distinction creates a problem regarding the existence of an inner reality separate from the role."
+        },
+        {
+          "text": "The persona is a fixed genetic blueprint that cannot be changed.",
+          "isCorrect": false,
+          "rationale": "The idea of a mask or role suggests acting and performance in a social space, which implies a level of agency or context rather than just genetics."
+        }
+      ],
+      "hint": "Focus on the literal meaning of a mask used by an actor in a play."
+    },
+    {
+      "question": "How did differential psychology define personality when it was established as an academic discipline?",
+      "answerOptions": [
+        {
+          "text": "As a dynamic narrative constructed through life history.",
+          "isCorrect": false,
+          "rationale": "Narrative construction is a more modern or sociocultural view, whereas differential psychology focused on measurable, static units."
+        },
+        {
+          "text": "As a specific set of individual properties or traits.",
+          "isCorrect": true,
+          "rationale": "Differential psychology seeks to determine differences between people by isolating and measuring specific properties or single traits."
+        },
+        {
+          "text": "As the subjective experience of a coherent consciousness.",
+          "isCorrect": false,
+          "rationale": "This definition aligns more with the concept of subjectivity than with the trait-based approach of differential psychology."
+        },
+        {
+          "text": "As a purely biological reaction to environmental stimuli.",
+          "isCorrect": false,
+          "rationale": "While related to biology, differential psychology specifically views the sum of traits as the definition of personality itself."
+        }
+      ],
+      "hint": "Consider the approach that looks at individual 'building blocks' or characteristics to explain human differences."
+    },
+    {
+      "question": "According to the source, what is the criteria for stating that animals, such as sea anemones, possess a 'personality'?",
+      "answerOptions": [
+        {
+          "text": "They exhibit complex and nuanced behavior in a human sense.",
+          "isCorrect": false,
+          "rationale": "The text explicitly states it is 'strange' to talk about animal personality if defined by complex human standards."
+        },
+        {
+          "text": "They possess a conscious awareness of their own social roles.",
+          "isCorrect": false,
+          "rationale": "There is no evidence provided that sea anemones have conscious self-awareness or social role recognition."
+        },
+        {
+          "text": "Individuals behave in ways that are consistently different from others over time.",
+          "isCorrect": true,
+          "rationale": "The specific scientific definition of animal personality used here is consistent behavioral variance between individuals over a duration of time."
+        },
+        {
+          "text": "Their behavior is determined entirely by a unique genetic sequence.",
+          "isCorrect": false,
+          "rationale": "The text notes that the differences in sea anemones are apparently not genetically determined but arise in relation to the environment."
+        }
+      ],
+      "hint": "Look for a definition based on observable patterns of behavioral consistency and variation."
+    },
+    {
+      "question": "The text discusses 'Fortidsturisme' (historical tourism). What psychological phenomenon does this example primarily illustrate regarding identity?",
+      "answerOptions": [
+        {
+          "text": "Identity is a fixed set of traits that remain stable regardless of the era.",
+          "isCorrect": false,
+          "rationale": "The example shows people actively adopting 'better' identities in different historical contexts, suggesting identity is not fixed."
+        },
+        {
+          "text": "Identity involves playing roles and adopting narratives that transcend simple biological traits.",
+          "isCorrect": true,
+          "rationale": "The desire to 'be' a Viking or a soldier involves context, discourse, and narratives that cannot be reduced to just biology or a set of traits."
+        },
+        {
+          "text": "Humans have an 'urinstinkt' (primal instinct) that is only accessible through biological research.",
+          "isCorrect": false,
+          "rationale": "While the participants might feel in touch with 'primal instincts,' the text uses this to show how they construct a 'better self' through historical context."
+        },
+        {
+          "text": "Identity is solely determined by the historical period in which one is born.",
+          "isCorrect": false,
+          "rationale": "The fact that people in the modern Western world choose to adopt past identities suggests identity is more fluid and chosen than strictly determined by birth era."
+        }
+      ],
+      "hint": "Consider why someone would want to leave their 'modern' self to become someone else in a reenactment."
+    },
+    {
+      "question": "Within the 'Orientation Points' (orienteringspunkter), what does the distinction between 'Essence versus Context' examine?",
+      "answerOptions": [
+        {
+          "text": "Whether personality is determined by the unconscious or the nervous system.",
+          "isCorrect": false,
+          "rationale": "This question refers more to the orientation point of 'determination' rather than the nature of the person's 'being'."
+        },
+        {
+          "text": "Whether we are defined by an inner core or by the extended environment we exist in.",
+          "isCorrect": true,
+          "rationale": "This orientation point asks if the person is a bounded internal essence or a subject existing within and defined by their context."
+        },
+        {
+          "text": "The degree to which an individual has agency over their own life history.",
+          "isCorrect": false,
+          "rationale": "Agency is a separate orientation point that deals with the active, acting part of the human."
+        },
+        {
+          "text": "The difference between traits that are common and traits that are rare in a population.",
+          "isCorrect": false,
+          "rationale": "This is a statistical concern of differential psychology, not the fundamental philosophical question of essence vs. context."
+        }
+      ],
+      "hint": "Focus on where the 'weight' of being a person is placed: inside the body or in the surrounding world."
+    },
+    {
+      "question": "In the context of the course, why was 'Almen psykologi' (General Psychology) described as having 'disappeared'?",
+      "answerOptions": [
+        {
+          "text": "It was deemed scientifically invalid due to a lack of empirical data.",
+          "isCorrect": false,
+          "rationale": "The text does not claim it was invalid, but rather that it was the subject for the Bachelor assignment and has since been removed as a separate basic discipline."
+        },
+        {
+          "text": "It was merged into clinical psychology to improve practitioner training.",
+          "isCorrect": false,
+          "rationale": "The text categorizes Clinical as an applied discipline and does not mention a merger with General Psychology."
+        },
+        {
+          "text": "It represented the most philosophical and abstract part of the field that is no longer a distinct basic discipline.",
+          "isCorrect": true,
+          "rationale": "The source identifies General Psychology as the most philosophical and abstract part of psychology and notes its absence from the current list of basic disciplines."
+        },
+        {
+          "text": "It was replaced by neuropsykologi to provide a more biological foundation.",
+          "isCorrect": false,
+          "rationale": "While Neuropsychology is listed as an applied discipline, the text does not state it replaced General Psychology."
+        }
+      ],
+      "hint": "Think about the level of abstraction and the historical placement of the Bachelor project."
+    },
+    {
+      "question": "The orientation point of 'Agency' focuses on which of the following questions?",
+      "answerOptions": [
+        {
+          "text": "What are the traumatic memories that block an individual's progress?",
+          "isCorrect": false,
+          "rationale": "This is more closely related to life history and determination than the core concept of agency."
+        },
+        {
+          "text": "How does the nervous system determine our perception of reality?",
+          "isCorrect": false,
+          "rationale": "This is a question of determination, not agency."
+        },
+        {
+          "text": "What is it that controls us, and what is the active, acting element in a person?",
+          "isCorrect": true,
+          "rationale": "Agency refers to the capacity of the individual to act and the forces that drive or determine those actions, often linked to the 'I'."
+        },
+        {
+          "text": "Is the personality consistent over a period of $10$ years?",
+          "isCorrect": false,
+          "rationale": "Temporal consistency is a measure of personality traits, while agency explores the source of action itself."
+        }
+      ],
+      "hint": "Think about the 'acting' part of being a person and the feeling of 'I am...'"
+    },
+    {
+      "question": "According to the source material, what is a central limitation of defining personality strictly through biological determination?",
+      "answerOptions": [
+        {
+          "text": "Biological mutation is too random to create consistent personality traits.",
+          "isCorrect": false,
+          "rationale": "Random mutation is actually what provides the variation that defines species development, according to the text."
+        },
+        {
+          "text": "It fails to account for the experience of being a coherent subject with a life history.",
+          "isCorrect": true,
+          "rationale": "The text argues that biological determination is insufficient because it cannot fully capture subjectivity, continuity, and the impact of personal narratives."
+        },
+        {
+          "text": "Genes have been proven to have no influence on behavioral variation.",
+          "isCorrect": false,
+          "rationale": "The text acknowledges that variation is a 'nature law' in biology; it just argues that biology alone is not 'enough' to explain the subject."
+        },
+        {
+          "text": "It cannot explain why sea anemones exhibit different behaviors.",
+          "isCorrect": false,
+          "rationale": "The text uses sea anemones to show that even in simple organisms, differences exist that might be environmental, but this is an example rather than the primary theoretical limitation of biology for humans."
+        }
+      ],
+      "hint": "Consider the concepts of self-awareness, memories, and 'the subject' mentioned toward the end of the material."
+    },
+    {
+      "question": "The orientation point regarding 'Life history and historicity' suggests that some theories view the individual as more than just a presence in the 'now'. What does this involve?",
+      "answerOptions": [
+        {
+          "text": "The individual is a static product of their genetic ancestry.",
+          "isCorrect": false,
+          "rationale": "This view ignores the 'dynamic' and 'retrospective' nature of life history described in the text."
+        },
+        {
+          "text": "The individual is a dynamic product of a life path that they actively recount and adjust.",
+          "isCorrect": true,
+          "rationale": "This orientation point emphasizes that we are products of our history (trajectories, memories) and that we interact with that history by retelling or adjusting it."
+        },
+        {
+          "text": "Life history is a simple straight line of cause and effect from childhood.",
+          "isCorrect": false,
+          "rationale": "The text explicitly states that only the most 'banal' versions of life history see it as a straight line."
+        },
+        {
+          "text": "Historicity refers only to the historical era (e.g., the Middle Ages) an individual studies.",
+          "isCorrect": false,
+          "rationale": "While related to the tourism example, 'historicity' in this orientation point refers to the subjective life-history of the person."
+        }
+      ],
+      "hint": "Look for terms like 'trajectories,' 'retelling,' and the interaction between the past and the present self."
+    }
+  ]
+}

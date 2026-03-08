@@ -1,0 +1,255 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "According to the scientific framework provided by K\u00f8ppe and Dammeyer (2014), which scientific paradigm is Trait Theory situated within, and what is its primary objective?",
+      "answerOptions": [
+        {
+          "text": "Natural Science; to measure, predict, and explain through objective methods.",
+          "isCorrect": true,
+          "rationale": "Trait theory is defined by a classical quantitative approach that treats personality as something that can be measured and weighed using objective methodology to establish general laws."
+        },
+        {
+          "text": "Humanities; to understand, empathize, and find meaning in individual experience.",
+          "isCorrect": false,
+          "rationale": "This approach describes phenomenology or psychoanalysis rather than the quantitative focus of trait psychology."
+        },
+        {
+          "text": "Social Science; to criticize and change social structures through development.",
+          "isCorrect": false,
+          "rationale": "Critical and socio-cultural theories focus on social change, whereas trait theory focuses on stable individual differences."
+        },
+        {
+          "text": "Post-structuralism; to deconstruct the narrative identity of the individual.",
+          "isCorrect": false,
+          "rationale": "Post-structuralism is mentioned as a separate category in the curriculum that focuses on discourse rather than objective measurement."
+        }
+      ],
+      "hint": "Consider the slide that positions theories in relation to 'naturvidenskabelig', 'humanvidenskabelig', and 'samfundsvidenskabelig' goals."
+    },
+    {
+      "question": "How does the source material distinguish between 'personality trait' and 'personality state'?",
+      "answerOptions": [
+        {
+          "text": "Traits are stable over time and across situations, while states are temporary and context-dependent.",
+          "isCorrect": true,
+          "rationale": "A trait represents a consistent pattern of behavior, whereas a state refers to a specific, transitory psychological condition triggered by a situation."
+        },
+        {
+          "text": "Traits refer to cognitive abilities, while states refer to emotional reactions.",
+          "isCorrect": false,
+          "rationale": "Both traits and states can involve emotions and behaviors; the distinction is based on duration and consistency rather than the type of psychological content."
+        },
+        {
+          "text": "Traits are purely biological, whereas states are entirely socially constructed.",
+          "isCorrect": false,
+          "rationale": "While traits have biological components, the distinction focuses on temporal stability rather than the origin of the construct."
+        },
+        {
+          "text": "States are measured by rank-order stability, while traits are measured by mean-level change.",
+          "isCorrect": false,
+          "rationale": "Both types of change can be measured for traits; states are too fleeting to be the primary focus of long-term rank-order stability studies."
+        }
+      ],
+      "hint": "Think about which concept describes who you 'are' generally versus how you feel 'right now'."
+    },
+    {
+      "question": "In the meta-analysis by Bleidorn et al. (2022), what was the found average rank-order stability ($r$) across studies?",
+      "answerOptions": [
+        {
+          "text": "$r = 0.60$",
+          "isCorrect": true,
+          "rationale": "The meta-analysis identified a mean stability coefficient of $r = 0.60$, though it noted considerable heterogeneity across different studies."
+        },
+        {
+          "text": "$r = 0.40$",
+          "isCorrect": false,
+          "rationale": "This value would suggest much lower stability than what was actually observed in the meta-analysis of personality traits."
+        },
+        {
+          "text": "$r = 0.85$",
+          "isCorrect": false,
+          "rationale": "While stability increases with age, a mean value of $r = 0.85$ across the entire life span would overstate the consistency of traits."
+        },
+        {
+          "text": "$r = 0.15$",
+          "isCorrect": false,
+          "rationale": "An $r$ of $0.15$ would indicate that personality is almost entirely unstable and changes randomly over time."
+        }
+      ],
+      "hint": "The value is a specific correlation coefficient mentioned in the results section of the Bleidorn et al. summary."
+    },
+    {
+      "question": "What does 'Rank-order stability' measure in the context of personality development?",
+      "answerOptions": [
+        {
+          "text": "The consistency of an individual's relative position within a group over time.",
+          "isCorrect": true,
+          "rationale": "It indicates whether the 'most extraverted' person remains the 'most extraverted' relative to their peers, regardless of whether their absolute level of extraversion changes."
+        },
+        {
+          "text": "The absolute average change of a specific trait within an entire population.",
+          "isCorrect": false,
+          "rationale": "This describes 'mean-level change', which looks at the population average rather than individual relative positions."
+        },
+        {
+          "text": "The degree to which an individual's trait matches their self-perceived identity.",
+          "isCorrect": false,
+          "rationale": "Rank-order stability is a statistical measure of longitudinal consistency compared to a cohort, not a measure of self-identity accuracy."
+        },
+        {
+          "text": "The hierarchy of the Big Five traits within a single person's profile.",
+          "isCorrect": false,
+          "rationale": "This refers to ipsative stability or trait profiles rather than rank-order stability across individuals."
+        }
+      ],
+      "hint": "Think about a race where everyone gets faster, but the person in first place stays in first place."
+    },
+    {
+      "question": "According to the findings of Bleidorn et al. (2022), how does trait stability change across the lifespan?",
+      "answerOptions": [
+        {
+          "text": "Stability increases through childhood and adulthood, but at a slower pace than previous work suggested.",
+          "isCorrect": true,
+          "rationale": "The study confirmed age-graded increases in stability but found that this stabilization occurs more gradually than earlier theories implied."
+        },
+        {
+          "text": "Stability peaks in early adolescence and then sharply declines in late adulthood.",
+          "isCorrect": false,
+          "rationale": "The data actually shows that stability tends to increase or remain high through middle and late adulthood rather than declining sharply."
+        },
+        {
+          "text": "Stability is perfectly constant from birth until the age of $80$.",
+          "isCorrect": false,
+          "rationale": "Stability coefficients are shown to be much lower in childhood and increase significantly as individuals age."
+        },
+        {
+          "text": "Stability only increases if the individual experiences significant life events.",
+          "isCorrect": false,
+          "rationale": "The meta-analysis identifies a general age-graded trend in stability that occurs across populations regardless of specific idiosyncratic events."
+        }
+      ],
+      "hint": "The researchers compared their findings to 'previous work' regarding the speed of trait crystallization."
+    },
+    {
+      "question": "Based on Figure 5 regarding Cumulative Mean-Level Change, which trait shows the most consistent and significant increase throughout the entire lifespan (from age $0$ to $80$)?",
+      "answerOptions": [
+        {
+          "text": "Emotional Stability",
+          "isCorrect": true,
+          "rationale": "The graph for Emotional Stability (the inverse of Neuroticism) shows a steady, upward trajectory across the lifespan, indicating people generally become more stable as they age."
+        },
+        {
+          "text": "Extraversion",
+          "isCorrect": false,
+          "rationale": "Extraversion actually shows a downward trend in later adulthood, suggesting a decrease in cumulative levels after middle age."
+        },
+        {
+          "text": "Openness to Experience",
+          "isCorrect": false,
+          "rationale": "Openness typically peaks in young adulthood and shows a notable decline in cumulative mean-level change in older age."
+        },
+        {
+          "text": "Conscientiousness",
+          "isCorrect": false,
+          "rationale": "While Conscientiousness increases significantly in middle age, Figure 5 shows it eventually levels off and begins to decrease in very late adulthood."
+        }
+      ],
+      "hint": "Look for the graph in the source material where the line continues to rise almost linearly into old age."
+    },
+    {
+      "question": "Phan et al. (2025) argue that psychological laws differ from physical sciences in which primary way?",
+      "answerOptions": [
+        {
+          "text": "Psychological laws are typically probabilistic rather than deterministic.",
+          "isCorrect": true,
+          "rationale": "Because every individual is unique at a high resolution, psychological theories provide probabilities of behavior rather than absolute certainties."
+        },
+        {
+          "text": "Psychological laws are derived from qualitative intuition rather than data.",
+          "isCorrect": false,
+          "rationale": "The source emphasizes that trait psychology remains within the natural science tradition using quantitative data, even if the laws are probabilistic."
+        },
+        {
+          "text": "Psychological laws are universal and apply to all biological entities equally.",
+          "isCorrect": false,
+          "rationale": "The authors state that laws require abstraction because each entity is inherently and necessarily unique."
+        },
+        {
+          "text": "Psychological laws are immutable and do not change with cultural shifts.",
+          "isCorrect": false,
+          "rationale": "The text suggests that the complexity and uniqueness of psychological entities make them fundamentally different from the formal laws of physical sciences."
+        }
+      ],
+      "hint": "Consider the distinction between 'certainty' in physics and 'likelihood' in human behavior."
+    },
+    {
+      "question": "Which of the following is an orientation point from K\u00f8ppe and Dammeyer (2014) used to analyze personality understanding?",
+      "answerOptions": [
+        {
+          "text": "Historicity",
+          "isCorrect": true,
+          "rationale": "Historicity, along with determination and agency, is mentioned as a key lens through which different personality theories can be analyzed and compared."
+        },
+        {
+          "text": "The Big Five",
+          "isCorrect": false,
+          "rationale": "The Big Five is a model within trait psychology, not one of the four broad metatheoretical 'orientation points' used for analysis."
+        },
+        {
+          "text": "Factor Analysis",
+          "isCorrect": false,
+          "rationale": "Factor analysis is a statistical tool used in trait psychology but is not an orientation point for understanding personality definitions."
+        },
+        {
+          "text": "Mean-level change",
+          "isCorrect": false,
+          "rationale": "This is a method for measuring trait development rather than an overarching orientation point for a personality understanding."
+        }
+      ],
+      "hint": "These points are metatheoretical categories like 'Determination' or 'Agency' used to evaluate theories."
+    },
+    {
+      "question": "True or False: Trait psychology assumes that personality must be measurable using objective methods.",
+      "answerOptions": [
+        {
+          "text": "True",
+          "isCorrect": true,
+          "rationale": "The source explicitly states that for these theories, personality must be able to be 'measured and weighed' (m\u00e5les og vejes) with objective methods."
+        },
+        {
+          "text": "False",
+          "isCorrect": false,
+          "rationale": "The quantitative and natural science foundation of trait theory necessitates objective measurement as a core principle."
+        }
+      ],
+      "hint": "Think about the quote regarding 'measuring and weighing' personality."
+    },
+    {
+      "question": "What is meant by the quote 'All models are wrong, but some are useful' in the context of the lecture?",
+      "answerOptions": [
+        {
+          "text": "Models are simplified abstractions that can never capture the full complexity of an individual but still offer predictive value.",
+          "isCorrect": true,
+          "rationale": "This aligns with Phan et al.'s argument that abstraction is required for general laws, acknowledging the inherent uniqueness of every person."
+        },
+        {
+          "text": "Statistical models in psychology are intentionally deceptive to support specific theories.",
+          "isCorrect": false,
+          "rationale": "The quote refers to the limitations of scientific modeling and abstraction, not to ethical misconduct or deception."
+        },
+        {
+          "text": "Trait models are only useful if they can perfectly predict behavior in $100\\%$ of cases.",
+          "isCorrect": false,
+          "rationale": "The source notes that psychological laws are probabilistic, meaning they are useful even without $100\\%$ deterministic accuracy."
+        },
+        {
+          "text": "The Big Five model has been proven incorrect and should be replaced by qualitative methods.",
+          "isCorrect": false,
+          "rationale": "The quote suggests that despite being 'wrong' (incomplete/simplified), models like the Big Five remain highly 'useful' in scientific practice."
+        }
+      ],
+      "hint": "Focus on the balance between the 'uniqueness' of individuals and the need for 'general laws'."
+    }
+  ]
+}

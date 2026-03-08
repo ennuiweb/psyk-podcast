@@ -1,0 +1,343 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "According to the source material, which of the following is a defining characteristic of personality traits?",
+      "answerOptions": [
+        {
+          "text": "They describe differences between individuals on a dichotomized level.",
+          "isCorrect": false,
+          "rationale": "Traits are defined as existing on a continuous spectrum rather than being split into two distinct categories."
+        },
+        {
+          "text": "They represent hypothetical constructs describing typical tendencies.",
+          "isCorrect": true,
+          "rationale": "Personality traits are theoretical frameworks used to explain and predict an individual's consistent patterns of thought, feeling, and behavior."
+        },
+        {
+          "text": "They refer only to behaviors that occur within a specific, single situation.",
+          "isCorrect": false,
+          "rationale": "Traits are characterized by their stability and consistency across a variety of relevant situations."
+        },
+        {
+          "text": "They are directly observable physical structures in the brain.",
+          "isCorrect": false,
+          "rationale": "Traits are considered hypothetical constructs rather than directly observable biological entities."
+        }
+      ],
+      "hint": "Consider whether traits are viewed as categories or as varying degrees of a tendency."
+    },
+    {
+      "question": "What does the 'nomological net' of a construct primarily comprise?",
+      "answerOptions": [
+        {
+          "text": "The neurological pathways that determine a specific personality dimension.",
+          "isCorrect": false,
+          "rationale": "While biology is relevant, the nomological net specifically refers to the pattern of associations between different psychological concepts."
+        },
+        {
+          "text": "A set of rules for dichotomizing continuous personality data.",
+          "isCorrect": false,
+          "rationale": "Dichotomization is contrary to how traits are measured, and the net focuses on interrelations rather than data splitting."
+        },
+        {
+          "text": "Its interrelations with other related constructs and outcomes.",
+          "isCorrect": true,
+          "rationale": "The nomological net helps validate a construct by showing it correlates with theoretically relevant variables, such as Extraversion correlating with social activity."
+        },
+        {
+          "text": "The evolutionary history of a specific trait across different species.",
+          "isCorrect": false,
+          "rationale": "This describes an evolutionary perspective rather than the network of statistical interrelations used for construct validation."
+        }
+      ],
+      "hint": "Think about how researchers prove a concept like 'Extraversion' is valid by looking at how it connects to other things."
+    },
+    {
+      "question": "In the study by L\u00f6nnqvist & gro\u00dfe Deters (2016), which Big Five trait showed the strongest positive correlation with the number of Facebook friends?",
+      "answerOptions": [
+        {
+          "text": "Openness/Intellect",
+          "isCorrect": false,
+          "rationale": "Openness had a very low negative correlation of $-.09$ in this specific study."
+        },
+        {
+          "text": "Extraversion",
+          "isCorrect": true,
+          "rationale": "Extraversion showed a significant positive correlation of $.42$, aligning with the idea that extraverts are more socially active."
+        },
+        {
+          "text": "Agreeableness",
+          "isCorrect": false,
+          "rationale": "Agreeableness had a negligible correlation of $.08$ with the number of Facebook friends."
+        },
+        {
+          "text": "Neuroticism",
+          "isCorrect": false,
+          "rationale": "Neuroticism showed almost no relationship to the outcome, with a correlation of $-.02$."
+        }
+      ],
+      "hint": "Consider which trait is most closely linked to being 'outgoing' and 'sociable' in the source's illustration."
+    },
+    {
+      "question": "In the context of the HEXACO model, how is Honesty-Humility defined regarding the exploitation of others?",
+      "answerOptions": [
+        {
+          "text": "The tendency to cooperate only when there is a high risk of retaliation.",
+          "isCorrect": false,
+          "rationale": "This behavior is more characteristic of individuals low in Honesty-Humility who are motivated by fear of punishment."
+        },
+        {
+          "text": "The tendency to be fair and genuine even when one could exploit others without retaliation.",
+          "isCorrect": true,
+          "rationale": "Honesty-Humility represents a sincere disposition toward fairness that does not depend on the threat of being caught or punished."
+        },
+        {
+          "text": "The inability to recognize opportunities for personal gain in social games.",
+          "isCorrect": false,
+          "rationale": "It is a tendency toward fairness, not a cognitive deficit in identifying potential rewards."
+        },
+        {
+          "text": "The drive to achieve leadership positions through modest and sincere behavior.",
+          "isCorrect": false,
+          "rationale": "While sincere, the core definition centers on the lack of exploitative behavior rather than the pursuit of leadership."
+        }
+      ],
+      "hint": "Look for a definition that emphasizes acting fairly even when no one is watching or able to fight back."
+    },
+    {
+      "question": "Why do individuals with low Honesty-Humility tend to cooperate in the Ultimatum Game but not in the Dictator Game?",
+      "answerOptions": [
+        {
+          "text": "The Dictator Game offers a higher financial reward for cooperation than the Ultimatum Game.",
+          "isCorrect": false,
+          "rationale": "Rewards are generally similar, but the social dynamics regarding power and retaliation differ between the games."
+        },
+        {
+          "text": "The Ultimatum Game allows for retaliation by the recipient, whereas the Dictator Game does not.",
+          "isCorrect": true,
+          "rationale": "Low H-H individuals are strategically cooperative; they behave fairly only when the other person has the power to reject the offer and leave them with nothing."
+        },
+        {
+          "text": "Individuals with low H-H are inherently more generous when they are in a 'Dictator' role.",
+          "isCorrect": false,
+          "rationale": "The results show the opposite: they allocate significantly more points to themselves in the Dictator Game where there is no retaliation."
+        },
+        {
+          "text": "The social norms in the Dictator Game are more strictly enforced than in the Ultimatum Game.",
+          "isCorrect": false,
+          "rationale": "The Dictator Game actually removes the enforcement mechanism (the recipient's veto), which allows low H-H individuals to act on exploitative tendencies."
+        }
+      ],
+      "hint": "Think about which game gives the 'Recipient' the power to punish the 'Allocator'."
+    },
+    {
+      "question": "What is meant by the term 'affordances' in the person-situation interplay?",
+      "answerOptions": [
+        {
+          "text": "The financial cost associated with maintaining certain personality states.",
+          "isCorrect": false,
+          "rationale": "Affordances refer to situational possibilities and constraints, not monetary value."
+        },
+        {
+          "text": "The genetic predispositions that allow for the expression of certain traits.",
+          "isCorrect": false,
+          "rationale": "This describes biological factors rather than the environmental opportunities or limitations mentioned in the source."
+        },
+        {
+          "text": "Everything a given environment or situation allows an animal or human to do.",
+          "isCorrect": true,
+          "rationale": "Affordances represent the situational cues that either constrain or permit the expression of specific traits, such as a party allowing for extraversion."
+        },
+        {
+          "text": "The statistical probability that a trait will change over a ten-year interval.",
+          "isCorrect": false,
+          "rationale": "This refers to the rate of mean-level change or rank-order stability, not situational affordances."
+        }
+      ],
+      "hint": "Consider what an environment 'provides' or 'allows' an individual to do."
+    },
+    {
+      "question": "How do personality 'states' differ from personality 'traits'?",
+      "answerOptions": [
+        {
+          "text": "States are long-term averages, while traits are transient behaviors.",
+          "isCorrect": false,
+          "rationale": "The definitions are actually the reverse: traits are stable and states are transient."
+        },
+        {
+          "text": "States are quantitative dimensions of behavior, thoughts, and feelings at a particular time.",
+          "isCorrect": true,
+          "rationale": "Unlike traits, which describe typical tendencies across time, states focus on what an individual is experiencing or doing in a specific moment."
+        },
+        {
+          "text": "Traits are affected by situational cues, whereas states are entirely determined by genetics.",
+          "isCorrect": false,
+          "rationale": "States are highly sensitive to situational inputs and internal cognitive-affective processes."
+        },
+        {
+          "text": "There is no functional difference; the terms are used interchangeably in modern psychology.",
+          "isCorrect": false,
+          "rationale": "The source explicitly distinguishes between the stability of traits and the situational variation of states."
+        }
+      ],
+      "hint": "One describes who you are 'usually,' while the other describes who you are 'right now'."
+    },
+    {
+      "question": "Rank-order stability is typically measured using which statistical method?",
+      "answerOptions": [
+        {
+          "text": "Comparing the mean levels of a trait between two different age groups.",
+          "isCorrect": false,
+          "rationale": "This describes the measurement of mean-level change, not rank-order stability."
+        },
+        {
+          "text": "A correlation of the same trait in the same sample across two measurement times.",
+          "isCorrect": true,
+          "rationale": "Rank-order stability assesses whether individuals maintain their relative standing compared to others over time, regardless of whether the whole group's average changes."
+        },
+        {
+          "text": "Calculating the standard deviation of a single trait within a cross-sectional study.",
+          "isCorrect": false,
+          "rationale": "Standard deviation measures variance at one point in time, not the stability of individual differences over a duration."
+        },
+        {
+          "text": "Performing a factor analysis on the Big Five dimensions to find a General Factor of Personality.",
+          "isCorrect": false,
+          "rationale": "Factor analysis explores the structure of dimensions, not their stability across the lifespan."
+        }
+      ],
+      "hint": "Think about how we track if the 'most extraverted' person at Time 1 is still the 'most extraverted' at Time 2."
+    },
+    {
+      "question": "What is a primary disadvantage of using cross-sectional data to investigate personality change?",
+      "answerOptions": [
+        {
+          "text": "It is too expensive and time-consuming compared to longitudinal studies.",
+          "isCorrect": false,
+          "rationale": "Cross-sectional studies are generally faster and cheaper because they don't require following people for years."
+        },
+        {
+          "text": "It cannot account for 'cohort effects' where differences are due to the era of birth rather than aging.",
+          "isCorrect": true,
+          "rationale": "Differences between a 20-year-old and a 60-year-old in 2026 might be due to their different life experiences and cultural upbringing rather than the process of getting older."
+        },
+        {
+          "text": "It only measures personality states and cannot capture personality traits.",
+          "isCorrect": false,
+          "rationale": "Cross-sectional data can measure traits; the issue lies in interpreting the source of differences between age groups."
+        },
+        {
+          "text": "It requires a much larger sample size ($N > 1000$) to be considered valid.",
+          "isCorrect": false,
+          "rationale": "Sample size is a separate issue from the methodological limitation of cohort effects."
+        }
+      ],
+      "hint": "Consider how growing up in the 1950s vs. the 2000s might affect someone's personality regardless of their current age."
+    },
+    {
+      "question": "According to the Theory of Genotype $\\rightarrow$ Environment Effects, what characterizes a 'Passive' correlation?",
+      "answerOptions": [
+        {
+          "text": "Individuals actively seeking out environments that match their genetic makeup.",
+          "isCorrect": false,
+          "rationale": "This describes an 'Active' genotype-environment correlation."
+        },
+        {
+          "text": "Children experiencing environments provided by parents based on the parents' own genetic traits.",
+          "isCorrect": true,
+          "rationale": "In a passive correlation, the child doesn't 'do' anything to create the environment; it is provided by parents who share the child's genetic predispositions."
+        },
+        {
+          "text": "Other people reacting to a child's genetically-driven behaviors by changing the environment.",
+          "isCorrect": false,
+          "rationale": "This describes a 'Reactive' or 'Evocative' genotype-environment correlation."
+        },
+        {
+          "text": "The direct, unmediated effect of genes on the physical structures of the brain.",
+          "isCorrect": false,
+          "rationale": "Genotype-environment correlations specifically involve the interplay between genes and the external world, not just internal biology."
+        }
+      ],
+      "hint": "Focus on the role of parents providing an environment that happens to align with the child's inherited genes."
+    },
+    {
+      "question": "In the Neo-Socioanalytic Theory, the 'Social-investment principle' suggests that personality change is driven by:",
+      "answerOptions": [
+        {
+          "text": "Biological maturation of the prefrontal cortex during adolescence.",
+          "isCorrect": false,
+          "rationale": "This emphasizes biological factors, whereas the social-investment principle focuses on environmental and social factors."
+        },
+        {
+          "text": "The financial investments individuals make in their social networks.",
+          "isCorrect": false,
+          "rationale": "Investment here refers to psychological and behavioral commitment to social roles, not monetary assets."
+        },
+        {
+          "text": "Adopting age-related social roles, such as starting a career or a serious relationship.",
+          "isCorrect": true,
+          "rationale": "Committing to roles like 'employee' or 'partner' requires and encourages changes in traits like Conscientiousness or Agreeableness."
+        },
+        {
+          "text": "A conscious, self-directed desire to change one's rank-order position.",
+          "isCorrect": false,
+          "rationale": "While people do have change goals, the social-investment principle specifically highlights the pressure of societal roles."
+        }
+      ],
+      "hint": "Think about how becoming a parent or starting a full-time job might force someone to change their habits."
+    },
+    {
+      "question": "Based on the research by Jackson et al. (2012) cited in the slides, how did military service affect the trait of Agreeableness?",
+      "answerOptions": [
+        {
+          "text": "Military service led to a significant increase in Agreeableness compared to civilian service.",
+          "isCorrect": false,
+          "rationale": "The data showed that those in the military group actually had lower levels of Agreeableness growth over time compared to the civilian group."
+        },
+        {
+          "text": "Agreeableness remained perfectly stable for both military and civilian groups.",
+          "isCorrect": false,
+          "rationale": "Both groups showed some change, but the trajectory was significantly different between them."
+        },
+        {
+          "text": "The military-service group showed lower levels of Agreeableness growth over time than the civilian-service group.",
+          "isCorrect": true,
+          "rationale": "The environmental demands of military service appeared to suppress the typical increase in Agreeableness seen in young adulthood."
+        },
+        {
+          "text": "Agreeableness only changed for female recruits, while remaining stable for males.",
+          "isCorrect": false,
+          "rationale": "The source material focuses on the service-type group differences rather than gender interactions."
+        }
+      ],
+      "hint": "Look at the graph comparing 'Civilian-Community-Service' and 'Military-Service' groups."
+    },
+    {
+      "question": "What does the 'Corresponsive principle' in the Neo-Socioanalytic Theory propose?",
+      "answerOptions": [
+        {
+          "text": "That personality change only occurs when an individual's genes and environment are in conflict.",
+          "isCorrect": false,
+          "rationale": "The principle actually suggests that traits and environments often reinforce each other."
+        },
+        {
+          "text": "That the traits that lead people into certain environments are the ones further strengthened by those environments.",
+          "isCorrect": true,
+          "rationale": "This explains personality stability; for example, a conscientious person chooses a demanding job, which then requires them to become even more conscientious."
+        },
+        {
+          "text": "That mean-level change and rank-order stability are unrelated mathematical concepts.",
+          "isCorrect": false,
+          "rationale": "This is a statement about statistics, not a theoretical principle regarding person-environment interplay."
+        },
+        {
+          "text": "That social roles are the only factor that can cause a change in trait levels.",
+          "isCorrect": false,
+          "rationale": "The theory acknowledges multiple factors, including biological influences and identity commitment."
+        }
+      ],
+      "hint": "Think about a 'cycle' where your traits lead you to a situation, and that situation makes those traits even stronger."
+    }
+  ]
+}

@@ -1,0 +1,265 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "In the context of personality psychology's typical effect sizes, which range best represents the correlation ($r$) often found between 'predictors' and 'criteria'?",
+      "answerOptions": [
+        {
+          "text": "$|.15| \\le r \\le |.40|$",
+          "isCorrect": true,
+          "rationale": "This range reflects the common strength of associations in personality psychology, particularly when predicting behavior from traits."
+        },
+        {
+          "text": "$|.50| \\le r \\le |.75|$",
+          "isCorrect": false,
+          "rationale": "Correlations of this magnitude are rare in personality psychology and would represent extremely high predictive power seldom seen in the field."
+        },
+        {
+          "text": "$|.05| \\le r \\le |.10|$",
+          "isCorrect": false,
+          "rationale": "While significant, these values are on the lower end and are typically surpassed by the standard predictive correlations discussed in the lecture."
+        },
+        {
+          "text": "$|.80| \\le r \\le |1.0|$",
+          "isCorrect": false,
+          "rationale": "Such high correlations would imply nearly perfect prediction, which is unrealistic given the complexity of human behavior and measurement error."
+        }
+      ],
+      "hint": "Consider the slide regarding 'Early notes on effect sizes' and the specific range provided for personality psychology."
+    },
+    {
+      "question": "According to the framework provided by McAbee & Connelly (2016), which component of the Trait-Reputation-Identity (TRI) model corresponds to the 'Identity' of the person?",
+      "answerOptions": [
+        {
+          "text": "Self-report data",
+          "isCorrect": true,
+          "rationale": "Identity reflects how individuals perceive and narrate their own personalities, which is primarily captured via self-reports."
+        },
+        {
+          "text": "Observer report data",
+          "isCorrect": false,
+          "rationale": "Observer reports capture 'Reputation'\u2014how others perceive the person\u2014rather than the internal 'Identity'."
+        },
+        {
+          "text": "Objective behavioral data",
+          "isCorrect": false,
+          "rationale": "Behavioral data might reveal the 'Trait' or outward 'Actor' aspect, but the TRI model specifically links Identity to the self-perception system."
+        },
+        {
+          "text": "Physiological markers",
+          "isCorrect": false,
+          "rationale": "Physio-biological measures typically target the underlying biological trait rather than the subjective Identity or social Reputation."
+        }
+      ],
+      "hint": "Think about which data source involves the individual narrating or describing their own self-concept."
+    },
+    {
+      "question": "When comparing the accuracy of different personality assessment methods using Machine Learning, which source typically yields the highest accuracy for traits like Extraversion and Openness?",
+      "answerOptions": [
+        {
+          "text": "Long Self-Report (e.g., Soto & John, 2017)",
+          "isCorrect": true,
+          "rationale": "The source material indicates that comprehensive self-reports remain the most accurate tool for assessing these specific personality dimensions."
+        },
+        {
+          "text": "Facebook Likes (e.g., Youyou et al., 2015)",
+          "isCorrect": false,
+          "rationale": "While surprisingly effective, digital footprints like Facebook Likes generally show lower accuracy than traditional long-form self-reports."
+        },
+        {
+          "text": "Smartphone Sensors (e.g., Stachl et al., 2019)",
+          "isCorrect": false,
+          "rationale": "Sensor data provides high-frequency behavioral snapshots but currently trails behind self-report questionnaires in overall trait accuracy."
+        },
+        {
+          "text": "Music Preferences (e.g., Nave et al., 2019)",
+          "isCorrect": false,
+          "rationale": "Music preferences offer insights into personality but are shown to have lower accuracy compared to most other Machine Learning sources listed."
+        }
+      ],
+      "hint": "Review the bar chart comparing assessment methods; notice which method is positioned furthest to the right on the accuracy scale."
+    },
+    {
+      "question": "A researcher notes that a person is married and uses this 'register data' to infer higher levels of Agreeableness. In this scenario, the marital status is being used as a:",
+      "answerOptions": [
+        {
+          "text": "Reflection of one's personality",
+          "isCorrect": true,
+          "rationale": "Register data such as marital status can be viewed as the outcome or result of personality traits influencing life events."
+        },
+        {
+          "text": "Description of one's personality",
+          "isCorrect": false,
+          "rationale": "A description would refer to the data being part of the personality itself (e.g., 'I am a social worker') rather than a consequence of it."
+        },
+        {
+          "text": "Systematic bias in assessment",
+          "isCorrect": false,
+          "rationale": "While inferences can be biased, the specific term used in the material for results of personality (like marriage) is 'reflecting' personality."
+        },
+        {
+          "text": "Random error in data collection",
+          "isCorrect": false,
+          "rationale": "Life event facts in register data are generally accurate records and do not represent random mistakes in the assessment process."
+        }
+      ],
+      "hint": "The material distinguishes between data that 'describes parts' of personality and data that 'reflects results' of personality."
+    },
+    {
+      "question": "The lecture identifies three approaches to personality: the person as actor, agent, and author. Which focus is correctly paired with the 'Agent' approach?",
+      "answerOptions": [
+        {
+          "text": "Striving (motivational aspects)",
+          "isCorrect": true,
+          "rationale": "The 'Agent' perspective focuses on the goals and motivations that drive a person's strivings."
+        },
+        {
+          "text": "Behaving (dispositional perspective)",
+          "isCorrect": false,
+          "rationale": "Behaving is the focus of the 'Actor' perspective, which looks at consistent patterns of action."
+        },
+        {
+          "text": "Narrating (integrative life narrative)",
+          "isCorrect": false,
+          "rationale": "Narrating belongs to the 'Author' perspective, where the individual creates a cohesive story of their life."
+        },
+        {
+          "text": "Physiological (biological markers)",
+          "isCorrect": false,
+          "rationale": "Biological markers are a data source but are not one of the three primary psychological approaches (Actor, Agent, Author) described."
+        }
+      ],
+      "hint": "This approach is associated with the active pursuit of goals and desires."
+    },
+    {
+      "question": "What is the primary scientific purpose for using higher levels of structure in personality interviews?",
+      "answerOptions": [
+        {
+          "text": "To increase reliability and validity",
+          "isCorrect": true,
+          "rationale": "Standardizing questions and scoring methods reduces random error and bias, leading to more consistent and accurate measurements."
+        },
+        {
+          "text": "To allow for deeper exploration of new phenomena",
+          "isCorrect": false,
+          "rationale": "Highly structured interviews are less flexible; unstructured formats are actually better for exploring previously unknown phenomena."
+        },
+        {
+          "text": "To make the interview feel more natural for the respondent",
+          "isCorrect": false,
+          "rationale": "Structure often makes interviews feel more formal and less like a natural conversation, which can be a trade-off for scientific rigors."
+        },
+        {
+          "text": "To decrease the time required for the interview",
+          "isCorrect": false,
+          "rationale": "Structure doesn't necessarily shorten an interview; it primarily dictates the consistency of the process and interpretation."
+        }
+      ],
+      "hint": "Consider the quality indicators mentioned in the 'Interview guide' slide."
+    },
+    {
+      "question": "In the Picture Story Exercise (PSE), a response such as 'She reveals her feelings and wishes to share them with others' is typically coded as reflecting which motive?",
+      "answerOptions": [
+        {
+          "text": "Affiliation",
+          "isCorrect": true,
+          "rationale": "The desire to share feelings and connect with others is a hallmark of the affiliation motive in thematic approaches."
+        },
+        {
+          "text": "Achievement",
+          "isCorrect": false,
+          "rationale": "Achievement motives focus on mastering challenges or reaching high standards of excellence rather than social connection."
+        },
+        {
+          "text": "Power",
+          "isCorrect": false,
+          "rationale": "Power motives concern influence, control, or having an impact on others, which is not the focus of sharing feelings."
+        },
+        {
+          "text": "Openness",
+          "isCorrect": false,
+          "rationale": "While related to being 'open,' Openness is a trait dimension; thematic coding typically focuses on motives like achievement, power, and affiliation."
+        }
+      ],
+      "hint": "This motive relates to the social need for belonging and emotional intimacy."
+    },
+    {
+      "question": "Which statement best summarizes Kluckhohn & Murray's (1953) view on human personality as presented in the lecture?",
+      "answerOptions": [
+        {
+          "text": "Every person is like all others, some others, and no other person.",
+          "isCorrect": true,
+          "rationale": "This captures the universal, group-level (typological), and individual-level (idiographic) aspects of personality psychology."
+        },
+        {
+          "text": "Personality is entirely unique to each individual.",
+          "isCorrect": false,
+          "rationale": "While the quote mentions that every person is like 'no other,' it also emphasizes similarities to all and some other people."
+        },
+        {
+          "text": "Human behavior is dictated primarily by universal evolutionary laws.",
+          "isCorrect": false,
+          "rationale": "This focuses only on the 'like all persons' aspect and ignores the group-specific and individual-specific levels."
+        },
+        {
+          "text": "Personality is a social construct with no 'true' underlying reality.",
+          "isCorrect": false,
+          "rationale": "The material suggests that while complex, data can unveil patterns to approximate a 'true' personality."
+        }
+      ],
+      "hint": "Look for the slide titled 'What is personality psychology all about?' which uses three specific comparative categories."
+    },
+    {
+      "question": "A systematic non-appropriate tendency in an assessment, such as viewing oneself more favorably than one actually is, is defined as a(n):",
+      "answerOptions": [
+        {
+          "text": "Bias",
+          "isCorrect": true,
+          "rationale": "A bias represents a systematic, non-random distortion in how information is processed or reported."
+        },
+        {
+          "text": "Error",
+          "isCorrect": false,
+          "rationale": "In this context, 'Error' refers to random mistakes, such as forgetting a specific behavior, rather than a systematic tendency."
+        },
+        {
+          "text": "State",
+          "isCorrect": false,
+          "rationale": "A 'state' is a temporary condition, whereas the prompt describes a systematic tendency in the assessment process itself."
+        },
+        {
+          "text": "Inference",
+          "isCorrect": false,
+          "rationale": "An inference is the conclusion drawn from data; the bias is the systematic flaw within the data or the way it was generated."
+        }
+      ],
+      "hint": "The lecture contrasts random mistakes with systematic tendencies."
+    },
+    {
+      "question": "According to the slide titled 'BTW', what was the critical argument made in the study involving a post-mortem Atlantic Salmon and fMRI data?",
+      "answerOptions": [
+        {
+          "text": "The necessity of multiple comparisons correction",
+          "isCorrect": true,
+          "rationale": "The study demonstrated that without proper statistical correction, random noise in large datasets (like fMRI) can produce 'significant' but false results."
+        },
+        {
+          "text": "The efficacy of fMRI in interspecies perspective taking",
+          "isCorrect": false,
+          "rationale": "The study was actually a cautionary tale against taking such results at face value without statistical rigors."
+        },
+        {
+          "text": "Salmon possess complex social cognition after death",
+          "isCorrect": false,
+          "rationale": "This was the absurd 'finding' resulting from a lack of statistical correction, used to illustrate a methodological problem."
+        },
+        {
+          "text": "Biological markers are more valid than self-reports",
+          "isCorrect": false,
+          "rationale": "The study highlighted potential flaws in biological measurement interpretation rather than promoting its superiority."
+        }
+      ],
+      "hint": "Look at the subtitle of the Salmon poster: 'An argument for...' something related to statistical methodology."
+    }
+  ]
+}

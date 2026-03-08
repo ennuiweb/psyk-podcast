@@ -1,0 +1,317 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "According to the lecture, what is the standard definition of personality traits?",
+      "answerOptions": [
+        {
+          "text": "Probabilistic descriptions of relatively stable patterns of emotion, motivation, cognition, and behavior.",
+          "isCorrect": true,
+          "rationale": "This definition emphasizes that traits are stable patterns that influence how individuals typically interact with the world."
+        },
+        {
+          "text": "Fleeting emotional responses to specific environmental stimuli.",
+          "isCorrect": false,
+          "rationale": "Fleeting responses are considered personality states rather than stable traits."
+        },
+        {
+          "text": "Physical characteristics and biological reflexes that remain unchanged from birth.",
+          "isCorrect": false,
+          "rationale": "While traits may have biological roots, they are psychological constructs involving patterns of thought and behavior."
+        },
+        {
+          "text": "Categorical labels used to sort people into distinct, non-overlapping groups.",
+          "isCorrect": false,
+          "rationale": "Personality psychology typically adopts a dimensional approach rather than a categorical one."
+        }
+      ],
+      "hint": "Consider the long-term consistency of a person's psychological characteristics."
+    },
+    {
+      "question": "Personality Psychology has largely adopted which approach to describing individual differences?",
+      "answerOptions": [
+        {
+          "text": "Categorical approach",
+          "isCorrect": false,
+          "rationale": "Categorical approaches treat differences as distinct types, which is less common in modern personality research."
+        },
+        {
+          "text": "Dimensional approach",
+          "isCorrect": true,
+          "rationale": "A dimensional approach views traits as continuous spectrums where most people fall near the average."
+        },
+        {
+          "text": "Binary approach",
+          "isCorrect": false,
+          "rationale": "Binary systems only allow for two states, which fails to capture the complexity of human personality."
+        },
+        {
+          "text": "Narrative-only approach",
+          "isCorrect": false,
+          "rationale": "While narratives are one of the three approaches, the field largely relies on trait dimensions for measurement."
+        }
+      ],
+      "hint": "Think about whether personality is measured on a spectrum or in separate boxes."
+    },
+    {
+      "question": "What does the Lexical Hypothesis suggest about personality traits?",
+      "answerOptions": [
+        {
+          "text": "Traits are best identified by analyzing personality-descriptive adjectives found in a dictionary.",
+          "isCorrect": true,
+          "rationale": "This hypothesis assumes that important social differences will eventually be encoded into language."
+        },
+        {
+          "text": "Personality is determined primarily by the speed of a person's verbal processing.",
+          "isCorrect": false,
+          "rationale": "The lexical hypothesis focuses on the content of language (vocabulary), not processing speed."
+        },
+        {
+          "text": "Vocabulary size is the most accurate predictor of a person's intelligence and personality.",
+          "isCorrect": false,
+          "rationale": "While vocabulary is a trait, the hypothesis is a method for finding personality structures, not a direct claim about intelligence."
+        },
+        {
+          "text": "Language is a barrier that prevents us from truly understanding personality.",
+          "isCorrect": false,
+          "rationale": "The hypothesis views language as a useful tool and archive for identifying human traits."
+        }
+      ],
+      "hint": "Consider how human communication over centuries might store information about human nature."
+    },
+    {
+      "question": "In the debate about whether personality traits exist, what is the typical correlation ($r$) of behavior between two single situations?",
+      "answerOptions": [
+        {
+          "text": "$r \\approx 0.00$",
+          "isCorrect": false,
+          "rationale": "A zero correlation would mean behavior is completely random, which is not supported by the data."
+        },
+        {
+          "text": "$r \\approx 0.20$",
+          "isCorrect": true,
+          "rationale": "Individual behaviors in single instances often show weak correlations, leading some to argue traits don't matter."
+        },
+        {
+          "text": "$r \\approx 0.50$",
+          "isCorrect": false,
+          "rationale": "This higher correlation is typically found when averaging behaviors across multiple situations, not between just two single instances."
+        },
+        {
+          "text": "$r \\approx 0.90$",
+          "isCorrect": false,
+          "rationale": "Correlations this high are rarely seen in behavioral consistency studies."
+        }
+      ],
+      "hint": "The value represents a relatively weak link often cited by skeptics of trait theory."
+    },
+    {
+      "question": "Which of the following is NOT one of the 'Big Five' personality dimensions?",
+      "answerOptions": [
+        {
+          "text": "Neuroticism",
+          "isCorrect": false,
+          "rationale": "Neuroticism is a core dimension of the Big Five, often contrasted with Emotional Stability."
+        },
+        {
+          "text": "Conscientiousness",
+          "isCorrect": false,
+          "rationale": "This dimension is a standard part of both the Big Five and HEXACO models."
+        },
+        {
+          "text": "Honesty-Humility",
+          "isCorrect": true,
+          "rationale": "Honesty-Humility is the unique sixth dimension introduced by the HEXACO model."
+        },
+        {
+          "text": "Extraversion",
+          "isCorrect": false,
+          "rationale": "Extraversion is one of the most widely recognized dimensions in the Big Five model."
+        }
+      ],
+      "hint": "One of these options belongs to a six-factor model rather than the five-factor model."
+    },
+    {
+      "question": "Which dimension in the HEXACO model describes the tendency to be fair and genuine, even when one could exploit others?",
+      "answerOptions": [
+        {
+          "text": "Agreeableness",
+          "isCorrect": false,
+          "rationale": "In HEXACO, Agreeableness is more specifically related to forgiveness and tolerance of others' behavior."
+        },
+        {
+          "text": "Honesty-Humility",
+          "isCorrect": true,
+          "rationale": "This trait involves sincerity, fairness, and a lack of greed or boastfulness."
+        },
+        {
+          "text": "Emotionality",
+          "isCorrect": false,
+          "rationale": "Emotionality relates to anxiety, sentimentality, and harm-avoidance."
+        },
+        {
+          "text": "Conscientiousness",
+          "isCorrect": false,
+          "rationale": "This refers to task-related behaviors like diligence and organization."
+        }
+      ],
+      "hint": "This factor is associated with avoiding exploitation and being modest."
+    },
+    {
+      "question": "When finding personality dimensions via an 'inductive approach,' what is the primary statistical tool used?",
+      "answerOptions": [
+        {
+          "text": "Linear Regression",
+          "isCorrect": false,
+          "rationale": "Regression is used to predict outcomes, not to find the underlying structure of a group of items."
+        },
+        {
+          "text": "Factor Analysis",
+          "isCorrect": true,
+          "rationale": "Factor analysis identifies groups of correlated items to determine the dimensions they represent."
+        },
+        {
+          "text": "Qualitative Interviewing",
+          "isCorrect": false,
+          "rationale": "The inductive approach described is quantitative and based on large datasets of ratings."
+        },
+        {
+          "text": "Standard Deviation Analysis",
+          "isCorrect": false,
+          "rationale": "Standard deviation measures spread, but it cannot identify relationships between multiple different variables."
+        }
+      ],
+      "hint": "This method looks for 'clusters' of traits that vary together."
+    },
+    {
+      "question": "In the context of personality dimensions, what does 'bipolar' mean?",
+      "answerOptions": [
+        {
+          "text": "A person has two completely different personalities depending on the day.",
+          "isCorrect": false,
+          "rationale": "This describes a clinical condition or state change, not a standard trait dimension."
+        },
+        {
+          "text": "Dimensions have two ends or poles, such as introversion versus extraversion.",
+          "isCorrect": true,
+          "rationale": "Personality dimensions are scales where the low and high poles represent opposite tendencies."
+        },
+        {
+          "text": "Traits can only be measured if a person has experienced two major life events.",
+          "isCorrect": false,
+          "rationale": "The term bipolar refers to the structure of the measurement scale, not life experiences."
+        },
+        {
+          "text": "People always score at either the very high or very low end of a scale.",
+          "isCorrect": false,
+          "rationale": "Most people score near the middle of dimensions, even though they have two poles."
+        }
+      ],
+      "hint": "Think about the layout of a scale and the labels at each end."
+    },
+    {
+      "question": "What is a 'nomological net' in personality psychology?",
+      "answerOptions": [
+        {
+          "text": "The interrelations of a construct with other related constructs and outcomes.",
+          "isCorrect": true,
+          "rationale": "It describes how a specific trait (like Extraversion) correlates with predicted real-world behaviors (like having more friends)."
+        },
+        {
+          "text": "A physical network of neurons in the brain that creates a trait.",
+          "isCorrect": false,
+          "rationale": "The nomological net is a conceptual framework of correlations, not a biological structure."
+        },
+        {
+          "text": "A technique for catching participants who are lying on surveys.",
+          "isCorrect": false,
+          "rationale": "While related to validation, its primary purpose is to map the meaning of a construct through relationships."
+        },
+        {
+          "text": "The set of all possible personality-descriptive adjectives in a language.",
+          "isCorrect": false,
+          "rationale": "This is related to the lexical hypothesis, not the nomological net."
+        }
+      ],
+      "hint": "It involves the 'laws' or patterns governing how different psychological concepts connect."
+    },
+    {
+      "question": "Which of the following describes the person as an 'author'?",
+      "answerOptions": [
+        {
+          "text": "The focus on dispositional traits and acting in the moment.",
+          "isCorrect": false,
+          "rationale": "This describes the 'actor' perspective, focusing on behavior."
+        },
+        {
+          "text": "The focus on goals, striving, and motivational aspects.",
+          "isCorrect": false,
+          "rationale": "This describes the 'agent' perspective."
+        },
+        {
+          "text": "The focus on an integrative life narrative.",
+          "isCorrect": true,
+          "rationale": "The 'author' perspective looks at how individuals tell the story of their own lives."
+        },
+        {
+          "text": "The focus on biological and genetic prerequisites for personality.",
+          "isCorrect": false,
+          "rationale": "Narrative approaches are more psychological and constructive than purely biological."
+        }
+      ],
+      "hint": "Think about how someone might write the story of their life."
+    },
+    {
+      "question": "In the study by Hilbig & Zettler (2015) involving rolling a die in secret, what was the behavior of participants with high Honesty-Humility scores?",
+      "answerOptions": [
+        {
+          "text": "They reported winning numbers significantly more often than the laws of chance allow.",
+          "isCorrect": false,
+          "rationale": "Reporting excessive wins was characteristic of those with low Honesty-Humility scores."
+        },
+        {
+          "text": "They reported winning numbers at a rate close to the expected probability of chance.",
+          "isCorrect": true,
+          "rationale": "High Honesty-Humility individuals were more likely to report the outcome truthfully, even when cheating was possible."
+        },
+        {
+          "text": "They refused to report their scores to the researchers.",
+          "isCorrect": false,
+          "rationale": "The study design required reporting, and the focus was on the honesty of those reports."
+        },
+        {
+          "text": "They consistently reported losing even when they actually won.",
+          "isCorrect": false,
+          "rationale": "The study did not find a tendency for 'reverse cheating' or false modesty among high-scoring individuals."
+        }
+      ],
+      "hint": "High scores on this trait are associated with genuine behavior and fairness."
+    },
+    {
+      "question": "Which limitation is specifically associated with Machine Learning approaches to personality assessment?",
+      "answerOptions": [
+        {
+          "text": "Social desirability bias",
+          "isCorrect": false,
+          "rationale": "Social desirability is a major concern for self-reports and interviews, but ML often uses different types of data."
+        },
+        {
+          "text": "False memories",
+          "isCorrect": false,
+          "rationale": "This is a limitation of questionnaires or interviews that rely on recall."
+        },
+        {
+          "text": "Risk of overfitting",
+          "isCorrect": true,
+          "rationale": "ML models can become too specialized to a specific dataset and fail to generalize to new data."
+        },
+        {
+          "text": "Low feasibility and high resources",
+          "isCorrect": false,
+          "rationale": "While resource-intensive, these are more commonly cited as limitations for biological or experimental data."
+        }
+      ],
+      "hint": "Think about what happens when a computer model works too well on one specific sample."
+    }
+  ]
+}

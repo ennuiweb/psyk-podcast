@@ -1,0 +1,265 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "In behavioral genetics, what does the term heritability ($h^2$) specifically refer to?",
+      "answerOptions": [
+        {
+          "text": "The proportion of phenotypic variance in a population that is attributable to genotypic variance.",
+          "isCorrect": true,
+          "rationale": "Heritability is a statistical estimate of how much of the observed differences between people are due to differences in their genes."
+        },
+        {
+          "text": "The absolute percentage of a specific individual's trait that is determined by their DNA.",
+          "isCorrect": false,
+          "rationale": "Heritability refers to variance within a population, not the absolute level of a trait within a single individual."
+        },
+        {
+          "text": "The likelihood that a parent will pass a specific personality disorder to their biological offspring.",
+          "isCorrect": false,
+          "rationale": "While related to inheritance, heritability is a broader measure of variance in any trait across a group rather than a specific risk of disorder transmission."
+        },
+        {
+          "text": "The degree to which the environment suppresses the expression of certain genetic sequences.",
+          "isCorrect": false,
+          "rationale": "This describes gene-environment interaction or epigenetics rather than the proportion of variance explained by genetics."
+        }
+      ],
+      "hint": "Think about whether this measure applies to the origins of a single person's traits or the differences observed across a whole group."
+    },
+    {
+      "question": "According to the formula used in twin studies, how is heritability ($h^2$) calculated?",
+      "answerOptions": [
+        {
+          "text": "$h^2 = 2(r_{mz} - r_{dz})$",
+          "isCorrect": true,
+          "rationale": "This formula estimates heritability by doubling the difference between the correlations of monozygotic and dizygotic twins."
+        },
+        {
+          "text": "$h^2 = r_{mz} + r_{dz}$",
+          "isCorrect": false,
+          "rationale": "Simply adding the correlations does not account for the shared environment or the genetic difference between the two types of twins."
+        },
+        {
+          "text": "$h^2 = \\frac{r_{mz}}{r_{dz}}$",
+          "isCorrect": false,
+          "rationale": "Using a ratio of correlations is not the standard method for calculating heritability in quantitative genetics."
+        },
+        {
+          "text": "$h^2 = (r_{mz})^2 - (r_{dz})^2$",
+          "isCorrect": false,
+          "rationale": "Squaring the correlations is common in other statistical contexts but is not the specific formula for $h^2$ provided in the material."
+        }
+      ],
+      "hint": "The calculation relies on doubling the difference between the correlation coefficients of identical and fraternal twins."
+    },
+    {
+      "question": "In the context of personality development, which term describes the common influences that make individuals living in the same household more similar to one another?",
+      "answerOptions": [
+        {
+          "text": "Unique environment",
+          "isCorrect": false,
+          "rationale": "Unique environments refer to individual experiences, such as different friend groups, that make relatives less similar."
+        },
+        {
+          "text": "Shared environment",
+          "isCorrect": true,
+          "rationale": "Shared environments include factors like socioeconomic status or parenting styles that siblings experience together."
+        },
+        {
+          "text": "Non-additive genetic effect",
+          "isCorrect": false,
+          "rationale": "This refers to complex genetic interactions rather than external environmental influences."
+        },
+        {
+          "text": "Genotype-environment interaction",
+          "isCorrect": false,
+          "rationale": "This describes how individuals with different genes respond differently to the same environment."
+        }
+      ],
+      "hint": "Focus on the type of environmental factor that reduces differences between people raised together."
+    },
+    {
+      "question": "Based on the research by Jackson et al. (2012), what was a significant finding regarding the mean-level change of Agreeableness in young adults?",
+      "answerOptions": [
+        {
+          "text": "Agreeableness increased more significantly in the civilian-community-service group than in the military-service group.",
+          "isCorrect": true,
+          "rationale": "The study showed that those in civilian service experienced a steeper increase in Agreeableness over time compared to those in the military."
+        },
+        {
+          "text": "Military service caused a sharp decrease in Agreeableness due to high-stress environments.",
+          "isCorrect": false,
+          "rationale": "The military group's Agreeableness remained relatively stable rather than showing a significant decrease."
+        },
+        {
+          "text": "Both groups showed no change in Agreeableness, supporting the 'set in plaster' hypothesis.",
+          "isCorrect": false,
+          "rationale": "The findings showed that Agreeableness is subject to mean-level changes influenced by life paths."
+        },
+        {
+          "text": "Agreeableness only increased for those who remained living with their parents during their service.",
+          "isCorrect": false,
+          "rationale": "The study focused on the type of service performed rather than the living situation with parents."
+        }
+      ],
+      "hint": "Consider how different life paths, such as military versus civilian service, influence the growth of pro-social traits."
+    },
+    {
+      "question": "What does the 'Niche Diversity Hypothesis' predict about personality in more complex or urbanized societies?",
+      "answerOptions": [
+        {
+          "text": "Societies with higher niche diversity will show greater personality dimensionality and lower interfactor covariance.",
+          "isCorrect": true,
+          "rationale": "The hypothesis suggests that diverse societal roles allow for more independent and varied personality structures."
+        },
+        {
+          "text": "Increasing niche diversity leads to a single 'universal' personality profile due to globalized culture.",
+          "isCorrect": false,
+          "rationale": "The hypothesis predicts the opposite: more diversity in roles leads to more complex and varied personality structures."
+        },
+        {
+          "text": "Urbanization decreases the variance of personality traits because people must conform to city life.",
+          "isCorrect": false,
+          "rationale": "The theory suggests that urban environments offer more 'niches,' which actually increases trait variance."
+        },
+        {
+          "text": "Personality traits become more correlated (higher covariance) as the number of occupations increases.",
+          "isCorrect": false,
+          "rationale": "The theory predicts lower covariance, meaning traits become more distinct from one another as niches increase."
+        }
+      ],
+      "hint": "Think about how a wider variety of social roles or 'slots' in a society affects the complexity and independence of personality traits."
+    },
+    {
+      "question": "Which type of study is best suited for separating the effects of genes and environment by looking at relatives who share either 100% of their genes or 0% of their environment?",
+      "answerOptions": [
+        {
+          "text": "Adoption studies",
+          "isCorrect": true,
+          "rationale": "Adoption studies allow researchers to compare children with biological parents (shared genes) and adoptive parents (shared environment)."
+        },
+        {
+          "text": "Family studies",
+          "isCorrect": false,
+          "rationale": "Family studies often confound genes and environment because relatives usually live together."
+        },
+        {
+          "text": "Longitudinal mean-level studies",
+          "isCorrect": false,
+          "rationale": "These studies track changes over time but do not specifically isolate genetic versus environmental variance."
+        },
+        {
+          "text": "Selective breeding studies",
+          "isCorrect": false,
+          "rationale": "While effective for heritability, these are unethical and not conducted on human populations."
+        }
+      ],
+      "hint": "Consider a research design that involves siblings or parents who do not live in the same household."
+    },
+    {
+      "question": "According to evolutionary psychology, why might individual differences in personality persist rather than everyone evolving toward a single 'ideal' trait level?",
+      "answerOptions": [
+        {
+          "text": "Balancing selection, such as a fluctuating optimum, means different trait levels are adaptive at different times or places.",
+          "isCorrect": true,
+          "rationale": "Environmental changes ensure that no single trait level is always the most successful, preserving variation in the population."
+        },
+        {
+          "text": "Personality traits are not subject to natural selection because they do not affect survival or reproduction.",
+          "isCorrect": false,
+          "rationale": "Evolutionary psychology assumes personality traits are probabilistic descriptions of behaviors that were fitness-relevant over time."
+        },
+        {
+          "text": "Genetic mutations occur so slowly that unfavorable traits cannot be eliminated by selection.",
+          "isCorrect": false,
+          "rationale": "While mutations occur, the persistence of large variations is better explained by mechanisms like balancing selection."
+        },
+        {
+          "text": "Personality is 100% determined by the environment, so evolution plays no role in trait variation.",
+          "isCorrect": false,
+          "rationale": "Meta-analyses show that personality traits have a significant heritable component, typically around 40% to 50%."
+        }
+      ],
+      "hint": "Reflect on the idea that what is 'best' for survival might change depending on the current environment or the behavior of others."
+    },
+    {
+      "question": "Which of the following describes 'rank-order stability' in personality research?",
+      "answerOptions": [
+        {
+          "text": "The maintenance of an individual's relative position within a group over time.",
+          "isCorrect": true,
+          "rationale": "Rank-order stability measures if the most extraverted person in a group at age 20 is still the most extraverted at age 30."
+        },
+        {
+          "text": "The average increase or decrease in a trait score for an entire population as they age.",
+          "isCorrect": false,
+          "rationale": "This describes mean-level change, which looks at group averages rather than relative standing."
+        },
+        {
+          "text": "The degree to which an individual's personality changes in response to a specific life event like marriage.",
+          "isCorrect": false,
+          "rationale": "This refers to individual-level change or responsiveness to environment, not rank-order consistency."
+        },
+        {
+          "text": "The correlation between a person's genes and the environments they select for themselves.",
+          "isCorrect": false,
+          "rationale": "This describes genotype-environment correlation, not the stability of trait rankings."
+        }
+      ],
+      "hint": "Think about whether a person stays 'above average' compared to their peers as they grow older."
+    },
+    {
+      "question": "In the 'Person-Situation Interplay' model, what occurs during the 'Situation Selection' phase?",
+      "answerOptions": [
+        {
+          "text": "Individuals consciously choose to enter environments that align with their dispositional tendencies.",
+          "isCorrect": true,
+          "rationale": "Situation selection involves choosing contexts (like a party vs. a library) that match one's existing personality traits."
+        },
+        {
+          "text": "The environment forces a person to change their personality traits to fit social constraints.",
+          "isCorrect": false,
+          "rationale": "This would be an example of environmental influence or outcome activation rather than the proactive selection of the situation."
+        },
+        {
+          "text": "Individuals interpret situational cues and integrate perceptions about themselves.",
+          "isCorrect": false,
+          "rationale": "This describes 'Situation Experience,' which happens once the individual is already in the situation."
+        },
+        {
+          "text": "Personality traits are activated in response to situational features, leading to behavioral states.",
+          "isCorrect": false,
+          "rationale": "This describes 'Behavioral State Expression,' the step following the experience of the situation."
+        }
+      ],
+      "hint": "Think about the proactive step an individual takes before they are actually in a context."
+    },
+    {
+      "question": "Is heritability ($h^2$) a constant value that remains the same across all populations and time periods?",
+      "answerOptions": [
+        {
+          "text": "No, it can differ between populations and change over time as environmental conditions vary.",
+          "isCorrect": true,
+          "rationale": "Since heritability depends on the total variance in a population, changes in environmental equality or diversity will shift the $h^2$ estimate."
+        },
+        {
+          "text": "Yes, because the genetic code of a species does not change rapidly enough to alter heritability statistics.",
+          "isCorrect": false,
+          "rationale": "Even if genes are stable, heritability is a population statistic influenced by how much the environment varies in that specific group."
+        },
+        {
+          "text": "Yes, heritability for traits like intelligence is fixed at 0.50 regardless of the culture.",
+          "isCorrect": false,
+          "rationale": "Studies show heritability for intelligence and other traits can fluctuate significantly based on age and environmental factors."
+        },
+        {
+          "text": "No, because the percentage of genes shared by monozygotic twins changes as they age.",
+          "isCorrect": false,
+          "rationale": "The genetic sharing between identical twins remains 100% throughout their lives; heritability changes due to variance shifts."
+        }
+      ],
+      "hint": "Recall if a statistic based on population variance would stay the same if the environment became much more or much less diverse."
+    }
+  ]
+}

@@ -1,0 +1,265 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "According to the course syllabus (Studieordning), which of the following is categorized specifically as a 'Competency' that students must acquire?",
+      "answerOptions": [
+        {
+          "text": "The ability to critically take a position on the explanatory power of theories and methods.",
+          "isCorrect": true,
+          "rationale": "Competencies in this framework involve high-level evaluative capacities and the ability to critically reflect on the utility of academic tools."
+        },
+        {
+          "text": "The ability to describe the historical traditions of personality psychology theories.",
+          "isCorrect": false,
+          "rationale": "This falls under the 'Knowledge' category, as it relates to the recall and explanation of factual historical information."
+        },
+        {
+          "text": "The ability to analyze the possibilities and limitations of methods in relation to a specific problem.",
+          "isCorrect": false,
+          "rationale": "This is defined as a 'Skill' rather than a competency, focusing on the application of analysis to a concrete task."
+        },
+        {
+          "text": "Demonstrating broad and deep knowledge of selected personality psychology concepts.",
+          "isCorrect": false,
+          "rationale": "Demonstrating knowledge is the primary requirement of the 'Knowledge' domain, not the 'Competency' domain."
+        }
+      ],
+      "hint": "Consider which option describes a meta-level evaluation of the field rather than just technical application or factual recall."
+    },
+    {
+      "question": "In the scientific classification diagram (Figure 1), which psychological theory is positioned as most aligned with the 'Natural Science' (Naturvidenskabelig) goal of control and prediction?",
+      "answerOptions": [
+        {
+          "text": "Trait Theory (Tr\u00e6kteori)",
+          "isCorrect": true,
+          "rationale": "Trait theory historically utilizes quantitative methods and seeks to identify stable variables that allow for the prediction of behavior, aligning it with natural science paradigms."
+        },
+        {
+          "text": "Psychoanalysis (Psykoanalyse)",
+          "isCorrect": false,
+          "rationale": "Psychoanalysis is placed further toward the 'Human Science' side, focusing on meaning-making and the unconscious rather than predictive control."
+        },
+        {
+          "text": "Socio-cultural Theories (Sociokulturelle teorier)",
+          "isCorrect": false,
+          "rationale": "These theories are located on the 'Social Science' end of the spectrum, aiming to understand the individual through societal criticism and change."
+        },
+        {
+          "text": "Phenomenology (F\u00e6nomenologi)",
+          "isCorrect": false,
+          "rationale": "Phenomenology is a core 'Human Science' approach that prioritizes subjective experience and understanding over naturalistic explanation."
+        }
+      ],
+      "hint": "Think about which model relies most heavily on measurable, stable attributes often associated with biological or statistical rigor."
+    },
+    {
+      "question": "What are the specific cumulative prerequisites regarding 'Seminar' and 'Exercise' assignments that a student must meet to be eligible for the final exam?",
+      "answerOptions": [
+        {
+          "text": "Approval of 3 seminar assignments and 2 exercise assignments.",
+          "isCorrect": true,
+          "rationale": "The exam requirements explicitly state that five total tasks across the two types of classes must be approved for participation."
+        },
+        {
+          "text": "Approval of 2 seminar assignments and 3 exercise assignments.",
+          "isCorrect": false,
+          "rationale": "This reverses the required ratio between the seminar-based and exercise-based tasks mentioned in the presentation."
+        },
+        {
+          "text": "Submission of 1 individual paper and 1 oral group presentation only.",
+          "isCorrect": false,
+          "rationale": "While these are parts of the seminar requirements, they do not account for the additional exercise tasks needed for eligibility."
+        },
+        {
+          "text": "Completion of 3 written assignments and 3 oral presentations.",
+          "isCorrect": false,
+          "rationale": "This exceeds the total number of required approvals and incorrectly identifies the split between formats."
+        }
+      ],
+      "hint": "The total number of approved tasks required is five, split between two different types of class groups."
+    },
+    {
+      "question": "Based on the work of K\u00f8ppe & Dammeyer (2014a), why is personality psychology described as a 'virvar' (jumble) of theories?",
+      "answerOptions": [
+        {
+          "text": "Because there is no consensus on what personality is or the appropriate methods to investigate it.",
+          "isCorrect": true,
+          "rationale": "The source emphasizes that the field lacks a unified definition and even debates whether 'personality' as a construct actually exists."
+        },
+        {
+          "text": "Because the field has completely abandoned its original roots in medical science.",
+          "isCorrect": false,
+          "rationale": "The field has not abandoned these roots but rather expanded by drawing on philosophy and social sciences to address complexity."
+        },
+        {
+          "text": "Because the various theories are all based on the same natural science foundations.",
+          "isCorrect": false,
+          "rationale": "The 'jumble' exists precisely because the theories draw from vastly different scientific traditions, including human and social sciences."
+        },
+        {
+          "text": "Because personality is considered a simple construct that requires too many overlapping definitions.",
+          "isCorrect": false,
+          "rationale": "The move toward complexity and multiple theories was a response to the perceived difficulty of capturing personality through simple methods."
+        }
+      ],
+      "hint": "Consider whether there is a single, universally accepted agreement on the core subject matter of the course."
+    },
+    {
+      "question": "In the context of the introductory 'summing' exercise, what does the term 'Historicity' (Historicitet) refer to regarding personality?",
+      "answerOptions": [
+        {
+          "text": "The significance of human evolution, individual life history, and societal development for understanding the person.",
+          "isCorrect": true,
+          "rationale": "Historicity encompasses phylogenesis (species), ontogenesis (individual), and sociogenesis (society) as factors that shape personality."
+        },
+        {
+          "text": "The specific chronological order in which different psychological theories were historically developed.",
+          "isCorrect": false,
+          "rationale": "While related to history, the concept here specifically refers to the developmental layers of the human being rather than the timeline of the academic field."
+        },
+        {
+          "text": "The belief that personality is entirely static and does not change once an individual reaches adulthood.",
+          "isCorrect": false,
+          "rationale": "Historicity implies a process of change and development over time, which contradicts the idea of a completely static personality."
+        },
+        {
+          "text": "The documentation of a patient's medical history as used in early clinical psychology.",
+          "isCorrect": false,
+          "rationale": "While medical history is a part of ontogenesis, the term 'historicity' in this context is much broader and includes species and societal evolution."
+        }
+      ],
+      "hint": "Think about the three 'genesis' terms mentioned: species, individual, and society."
+    },
+    {
+      "question": "How does the second activity requirement (Aktivitetskrav 2) relate to the first activity requirement (Aktivitetskrav 1)?",
+      "answerOptions": [
+        {
+          "text": "It is a continuation of the individual assignment, requiring groups to add approximately 6400 characters of new text.",
+          "isCorrect": true,
+          "rationale": "The group task is explicitly described as further work on the initial individual submission, reaching a total of 9600 characters."
+        },
+        {
+          "text": "It is a completely new topic that must be chosen to ensure breadth in the syllabus.",
+          "isCorrect": false,
+          "rationale": "The instructions state that it is 'videre arbejde' (further work) on the same topic from the first assignment."
+        },
+        {
+          "text": "It requires the group to discard the first assignment and rewrite it from a different scientific perspective.",
+          "isCorrect": false,
+          "rationale": "The assignment is additive and integrative rather than a replacement or a total rewrite from a new perspective."
+        },
+        {
+          "text": "It changes the format from a written paper to a visual presentation of the individual findings.",
+          "isCorrect": false,
+          "rationale": "Activity 2 remains a written group assignment (Skriftlig gruppeopgave); the presentation format is reserved for Activity 3."
+        }
+      ],
+      "hint": "Consider the character counts: the first is 3600, the second is 9600 in total."
+    },
+    {
+      "question": "According to the development models by Lewis (1999), which model focuses on the process of 'Accretion' (Accretional model)?",
+      "answerOptions": [
+        {
+          "text": "A model where development is seen as the gradual accumulation of skills or behaviors over time.",
+          "isCorrect": true,
+          "rationale": "The term 'accretion' refers to growth by gradual accumulation or buildup, suggesting a quantitative increase in personality components."
+        },
+        {
+          "text": "A model where the environment is the only factor determining the trajectory of the personality.",
+          "isCorrect": false,
+          "rationale": "While the environment is key in many models, accretion specifically emphasizes the 'how' of growth (accumulation) rather than just the 'where' (environment)."
+        },
+        {
+          "text": "A model that views personality as undergoing radical, qualitative shifts at specific stages.",
+          "isCorrect": false,
+          "rationale": "Radical qualitative shifts are more characteristic of transformational or organismic models rather than simple accretion."
+        },
+        {
+          "text": "A model where personality is predetermined by genetic factors from birth.",
+          "isCorrect": false,
+          "rationale": "Predetermination is a separate concept from the process of accumulation described in the accretional model."
+        }
+      ],
+      "hint": "Think of the word 'accretion' as similar to how a snowball gains mass as it rolls."
+    },
+    {
+      "question": "Regarding the goal of the 'Social Science' (Samfundsvidenskabelig) approach in personality psychology, which objective is highlighted in the slides?",
+      "answerOptions": [
+        {
+          "text": "To comprehend, change, and develop through critique.",
+          "isCorrect": true,
+          "rationale": "Social science approaches in this context often aim at liberation or social change by critiquing existing structures that shape personality."
+        },
+        {
+          "text": "To identify universal laws that govern human behavior across all cultures.",
+          "isCorrect": false,
+          "rationale": "Identifying universal laws is a hallmark of the natural science approach, whereas social science often focuses on specific societal contexts."
+        },
+        {
+          "text": "To find deep individual meaning and achieve self-actualization.",
+          "isCorrect": false,
+          "rationale": "This is more closely aligned with the human science (Humanvidenskabelig) goal of 'finding meaning and raising consciousness'."
+        },
+        {
+          "text": "To observe and record behavior without any intention of influencing it.",
+          "isCorrect": false,
+          "rationale": "The social science approach explicitly mentions 'change' and 'critique', which are active rather than purely observational goals."
+        }
+      ],
+      "hint": "Look for keywords that suggest an active role in societal transformation and critical analysis."
+    },
+    {
+      "question": "During the third activity requirement (Aktivitetskrav 3), what is the specific individual requirement for each group member during the presentation?",
+      "answerOptions": [
+        {
+          "text": "Each member must perform exactly three minutes of the oral presentation.",
+          "isCorrect": true,
+          "rationale": "The instructions specify that a core part of the requirement is for every member to contribute a three-minute segment to the group effort."
+        },
+        {
+          "text": "Each member must submit a separate written reflection after the group talk.",
+          "isCorrect": false,
+          "rationale": "Activity 3 is described strictly as an oral group presentation (mundtlig gruppeopgave) with mandatory attendance."
+        },
+        {
+          "text": "Each member must answer at least one question from the instructor during the Q&A.",
+          "isCorrect": false,
+          "rationale": "While Q&A occurs at the exam, the specific requirement for Activity 3 focuses on the delivery of the prepared presentation content."
+        },
+        {
+          "text": "Each member must use a different psychological theory to explain the group's case.",
+          "isCorrect": false,
+          "rationale": "The group presents on a self-chosen theory together; individual theory assignments are not a specified requirement for this task."
+        }
+      ],
+      "hint": "The requirement focuses on the duration of speaking time allotted to each individual student."
+    },
+    {
+      "question": "What does the dimension of 'Agency' refer to in the summe-exercise 'What is personality?'",
+      "answerOptions": [
+        {
+          "text": "The actively controlling element in personality, such as consciousness, language, or actions.",
+          "isCorrect": true,
+          "rationale": "Agency concerns the degree to which a person is an active 'doer' or initiator of their own life and personality."
+        },
+        {
+          "text": "The extent to which external societal forces dictate an individual's career path.",
+          "isCorrect": false,
+          "rationale": "This describes external determination or sociogenesis rather than the internal capacity for agency."
+        },
+        {
+          "text": "The genetic inheritance that predisposes an individual to certain temperaments.",
+          "isCorrect": false,
+          "rationale": "Genetic factors are usually discussed under 'Determination' rather than the active control implied by agency."
+        },
+        {
+          "text": "The collection of personality traits that remain stable from childhood to adulthood.",
+          "isCorrect": false,
+          "rationale": "Stability is a separate question from agency; agency asks who or what is 'in the driver's seat' of the personality."
+        }
+      ],
+      "hint": "Think about the capacity for intentional action and self-direction."
+    }
+  ]
+}

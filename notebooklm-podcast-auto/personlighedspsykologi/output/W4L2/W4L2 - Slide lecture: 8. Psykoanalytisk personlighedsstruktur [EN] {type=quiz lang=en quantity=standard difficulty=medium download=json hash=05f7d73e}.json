@@ -1,0 +1,395 @@
+{
+  "title": "Psychoanalysis Quiz",
+  "questions": [
+    {
+      "question": "According to the lecture material, why is the human infant described as being born 'too early' compared to other animals like the horse?",
+      "answerOptions": [
+        {
+          "text": "The human brain lacks the basic biological conglomerate of a proto-self at birth.",
+          "isCorrect": false,
+          "rationale": "The source states that a rudimentary proto-self does exist, but the infant remains physically incapable of independent survival."
+        },
+        {
+          "text": "Humans require a significantly longer period of external support to survive and develop a functional psyche.",
+          "isCorrect": true,
+          "rationale": "Humans are born in a state of 'motor incapacity' and 'nursling dependence', meaning their survival and psychological development are contingent on a nurturing social world."
+        },
+        {
+          "text": "Biological development in humans is entirely independent of social and psychological interaction.",
+          "isCorrect": false,
+          "rationale": "The material emphasises that biological, social, and psychological developments are deeply interconnected and interact throughout childhood."
+        },
+        {
+          "text": "The human infant is born with a fully formed 'I' that is immediately overwhelmed by the social world.",
+          "isCorrect": false,
+          "rationale": "The 'I' or 'Ego' is not born fully formed; it is a result of development and social reflection over time."
+        }
+      ],
+      "hint": "Consider the relationship between physical helplessness and the need for a social environment."
+    },
+    {
+      "question": "In psychoanalytic theory, how is the term $\\text{Libido}$ (or $\\text{Eros}$) most accurately defined?",
+      "answerOptions": [
+        {
+          "text": "A purely biological reproductive instinct similar to those found in the animal kingdom.",
+          "isCorrect": false,
+          "rationale": "Psychoanalysis distinguishes between animal instinct and the psychological concept of drive."
+        },
+        {
+          "text": "The quantitative energy of instincts associated with all forms of love and connection to the world.",
+          "isCorrect": true,
+          "rationale": "Freud defines it as the energy of those instincts comprised under 'love', including self-love, friendship, and devotion to ideas, as well as sexual union."
+        },
+        {
+          "text": "The destructive force that seeks to return the organism to an inorganic state.",
+          "isCorrect": false,
+          "rationale": "This describes $\\text{Thanatos}$ (the death drive), which is the opposite of $\\text{Libido}$ or $\\text{Eros}$."
+        },
+        {
+          "text": "A measurable neurological response to physical touch during infancy.",
+          "isCorrect": false,
+          "rationale": "While it has a somatic source, $\\text{Libido}$ is described as a 'quantitative magnitude' that is not currently actually measurable."
+        }
+      ],
+      "hint": "Think about the broader 'striving to belong' rather than just biological reproduction."
+    },
+    {
+      "question": "According to the four components of a drive (Trieb), what does the 'object' represent?",
+      "answerOptions": [
+        {
+          "text": "The internal somatic stimulus that serves as the point of origin for the drive.",
+          "isCorrect": false,
+          "rationale": "The somatic point of origin refers to the 'source' (Quelle) of the drive, not the object."
+        },
+        {
+          "text": "The specific motor pressure or 'work requirement' that the drive places on the psyche.",
+          "isCorrect": false,
+          "rationale": "This represents the 'pressure' or 'urge' (Drang) of the drive."
+        },
+        {
+          "text": "The thing or person through which the drive is able to achieve its aim of satisfaction.",
+          "isCorrect": true,
+          "rationale": "The object is described as the medium through which the drive reaches its goal, and it can often be a fantasy rather than a real entity."
+        },
+        {
+          "text": "The act of tension reduction that serves as the ultimate goal of the drive.",
+          "isCorrect": false,
+          "rationale": "Reducing tension is defined as the 'aim' (Ziel) of the drive."
+        }
+      ],
+      "hint": "Focus on the 'means' by which a desire is fulfilled."
+    },
+    {
+      "question": "Why does Laplanche argue that all human sexuality is essentially 'perverse' or 'polymorphous'?",
+      "answerOptions": [
+        {
+          "text": "Because it is naturally oriented towards reproduction from the moment of birth.",
+          "isCorrect": false,
+          "rationale": "Laplanche argues the opposite: that human sexuality is detached from a purely biological reproductive norm."
+        },
+        {
+          "text": "Because it arises from biological instincts but quickly detaches itself from a singular 'natural' norm or aim.",
+          "isCorrect": true,
+          "rationale": "Infantile sexuality is 'polymorphous', meaning it is not bound to a specific biological function or reproductive goal, thus undermining the idea of a 'natural' sexual norm."
+        },
+        {
+          "text": "Because it is strictly limited to the genital zones and adult sexual behaviour.",
+          "isCorrect": false,
+          "rationale": "The theory explicitly states that sexuality is not synonymous with genitality and is present throughout the body from infancy."
+        },
+        {
+          "text": "Because it is a pathological deviation from the healthy development of the horse-like instinct.",
+          "isCorrect": false,
+          "rationale": "The comparison with the horse shows that humans differ from animals precisely because their drives are not fixed instincts."
+        }
+      ],
+      "hint": "Reflect on whether human sexuality follows a rigid biological script."
+    },
+    {
+      "question": "Which of the following best describes the psychoanalytic view of breastfeeding as an 'oral drive'?",
+      "answerOptions": [
+        {
+          "text": "It is a purely physiological process for nutrition with no psychological residue.",
+          "isCorrect": false,
+          "rationale": "Psychoanalysis views the secondary sensations of breastfeeding as the foundation for the psyche."
+        },
+        {
+          "text": "The sexual drive 'leans' on the self-preservation function of feeding before becoming independent.",
+          "isCorrect": true,
+          "rationale": "Freud and Zeuthen/K\u00f8ppe explain that while amning serves nutrition, the pleasure derived from it establishes the first oral sexual drive as a separate psychological desire."
+        },
+        {
+          "text": "It represents the child's attempt to dominate the mother through aggression.",
+          "isCorrect": false,
+          "rationale": "While aggression can exist, the specific example of amning highlights the transition from physical need to autoerotic pleasure."
+        },
+        {
+          "text": "It is the moment the child first recognises the mother as a separate 'whole object'.",
+          "isCorrect": false,
+          "rationale": "In early oral stages, the breast is typically seen as a 'partial object' rather than a whole person."
+        }
+      ],
+      "hint": "Think about the relationship between survival needs and the birth of pleasure."
+    },
+    {
+      "question": "According to Lacan, what is the significance of the 'Mirror Stage' for the development of the $I$?",
+      "answerOptions": [
+        {
+          "text": "It marks the moment the child accurately perceives their own internal reality for the first time.",
+          "isCorrect": false,
+          "rationale": "Lacan argues the mirror stage involves 'm\u00e9connaissance' (misrecognition) because the image is more stable and unified than the child's actual motor experience."
+        },
+        {
+          "text": "The child identifies with an external image, creating an 'Ideal-Ego' that provides a sense of unity they do not yet possess.",
+          "isCorrect": true,
+          "rationale": "The 'jubilant assumption' of the specular image allows the child to perceive themselves as a whole entity, despite their actual motor incapacity."
+        },
+        {
+          "text": "It is a biological milestone where the visual cortex reaches maturity.",
+          "isCorrect": false,
+          "rationale": "While it involves vision, it is primarily a symbolic and psychological milestone for identity formation."
+        },
+        {
+          "text": "It resolves the Oedipus complex by allowing the child to see themselves as separate from the father.",
+          "isCorrect": false,
+          "rationale": "The mirror stage typically occurs before the triangulation of the Oedipus complex."
+        }
+      ],
+      "hint": "Consider the difference between how a child feels 'inside' versus what they see in the reflection."
+    },
+    {
+      "question": "How does McWilliams distinguish between 'primary' and 'secondary' defence mechanisms?",
+      "answerOptions": [
+        {
+          "text": "Primary defences are used by healthy adults, while secondary defences are only seen in pathology.",
+          "isCorrect": false,
+          "rationale": "Secondary defences are actually considered more mature and are characteristic of healthy or 'neurotic' functioning."
+        },
+        {
+          "text": "Primary defences deal with the boundary between the self and the outside world, while secondary defences deal with internal boundaries.",
+          "isCorrect": true,
+          "rationale": "Primary defences (like denial) involve pre-verbal global experiences of the world, whereas secondary ones (like repression) manage internal conflicts between the Ego, Id, and Superego."
+        },
+        {
+          "text": "Secondary defences appear in infancy, whereas primary defences develop after the acquisition of language.",
+          "isCorrect": false,
+          "rationale": "Primary defences are associated with the pre-verbal phase of development."
+        },
+        {
+          "text": "Primary defences rely on the 'reality principle', while secondary defences rely on the 'pleasure principle'.",
+          "isCorrect": false,
+          "rationale": "Primary defences are specifically noted for their lack of attainment of the reality principle."
+        }
+      ],
+      "hint": "Look at where the psychological 'border' is located\u2014either outside the person or inside the mind."
+    },
+    {
+      "question": "In the context of personality structure, how does a 'neurotic' individual typically differ from a 'psychotic' individual regarding defence mechanisms?",
+      "answerOptions": [
+        {
+          "text": "The neurotic person lacks any defences, while the psychotic person is over-defended.",
+          "isCorrect": false,
+          "rationale": "Neurotics have defences; the issue is that they may be too rigid or 'tight', like a lid on a pot."
+        },
+        {
+          "text": "The neurotic person suffers because their defences are too weak, while the psychotic person's defences are too strong.",
+          "isCorrect": false,
+          "rationale": "It is the opposite: psychotic suffering is often due to 'weak' or underdeveloped structures failing to manage stimuli."
+        },
+        {
+          "text": "The neurotic person uses mature defences like repression, while the psychotic person relies on primitive ones like denial or splitting.",
+          "isCorrect": true,
+          "rationale": "Neurotics have integrated identities and use 'higher-order' defences, whereas psychotics use 'lower-order' defences to protect against disorganisation."
+        },
+        {
+          "text": "The neurotic person cannot monitor their own behaviour, whereas the psychotic person has high self-awareness.",
+          "isCorrect": false,
+          "rationale": "Neurotics typically possess an 'observing ego' and the ability for self-monitoring, which is often compromised in psychotic structures."
+        }
+      ],
+      "hint": "Think about the 'pot on the stove' analogy used by McWilliams."
+    },
+    {
+      "question": "Which defence mechanism is defined by assigning rational, logical reasons to justify behaviour that is actually driven by unconscious or unpleasant motives?",
+      "answerOptions": [
+        {
+          "text": "Regression",
+          "isCorrect": false,
+          "rationale": "Regression involves returning to an earlier developmental stage to cope with stress."
+        },
+        {
+          "text": "Rationalisation",
+          "isCorrect": true,
+          "rationale": "Rationalisation allows a person to avoid confrontation with their true feelings by providing 'good' but false excuses for their actions."
+        },
+        {
+          "text": "Projection",
+          "isCorrect": false,
+          "rationale": "Projection involves attributing one's own unacceptable feelings or impulses to someone else."
+        },
+        {
+          "text": "Sublimation",
+          "isCorrect": false,
+          "rationale": "Sublimation is the redirection of socially unacceptable impulses into productive, creative, or socially acceptable outlets."
+        }
+      ],
+      "hint": "This mechanism is often called making 'excuses' for oneself."
+    },
+    {
+      "question": "What is meant by the 'repetition compulsion' (gentagelsestvang) in psychoanalytic therapy?",
+      "answerOptions": [
+        {
+          "text": "The therapist's requirement that the patient repeats the same dream every session.",
+          "isCorrect": false,
+          "rationale": "Repetition compulsion is a psychological phenomenon in the patient, not a clinical rule for the therapist."
+        },
+        {
+          "text": "A conscious decision to relive positive memories to improve one's mood.",
+          "isCorrect": false,
+          "rationale": "This mechanism is typically unconscious and often involves the repetition of destructive or painful patterns."
+        },
+        {
+          "text": "The tendency of the unconscious to insist on repeating self-destructive patterns that have not been linguistically processed.",
+          "isCorrect": true,
+          "rationale": "Gammelgaard notes that certain phenomena do not find their way into language and instead manifest as actions or patterns that the individual repeats despite their destructiveness."
+        },
+        {
+          "text": "A biological reflex that ensures the infant returns to the mother for nourishment.",
+          "isCorrect": false,
+          "rationale": "While rooted in early experience, repetition compulsion is a complex psychological resistance rather than a simple biological reflex."
+        }
+      ],
+      "hint": "Consider why someone might keep dating the 'wrong' type of person or sabotaging their success."
+    },
+    {
+      "question": "How does Freud's 'crystal' analogy explain the relationship between pathology and normality?",
+      "answerOptions": [
+        {
+          "text": "Normal personality is like a solid crystal, while pathology is like a liquid that cannot be structured.",
+          "isCorrect": false,
+          "rationale": "Freud uses the crystal to show that both normality and pathology share the same underlying structure."
+        },
+        {
+          "text": "When a crystal breaks, it does so along invisible lines of its internal structure, just as mental illness reveals the pre-existing structure of the mind.",
+          "isCorrect": true,
+          "rationale": "Freud argues that pathology 'magnifies and coarsens' normal conditions, showing where the internal 'seams' or structures were all along."
+        },
+        {
+          "text": "Pathology is a random shattering of the mind with no relation to one's previous personality.",
+          "isCorrect": false,
+          "rationale": "The analogy suggests that the break is not random but follows the specific internal 'fault lines' of the individual's personality."
+        },
+        {
+          "text": "The 'crystal' refers to the clarity of thought found only in individuals with a neurotic personality structure.",
+          "isCorrect": false,
+          "rationale": "The analogy applies to the study of all mental life, including the most severe 'shatterings' seen in psychosis."
+        }
+      ],
+      "hint": "Think about what happens to a structured object when it is put under enough pressure to crack."
+    },
+    {
+      "question": "Which of the following is considered a prerequisite for the defence mechanism of 'Repression' (fortr\u00e6ngning)?",
+      "answerOptions": [
+        {
+          "text": "A lack of identity integration.",
+          "isCorrect": false,
+          "rationale": "Identity integration is actually required to successfully use repression."
+        },
+        {
+          "text": "A sense of the wholeness and continuity of the self.",
+          "isCorrect": true,
+          "rationale": "McWilliams states that one must have attained a sense of self-continuity before they are capable of handling disturbing impulses through repression rather than more primitive means."
+        },
+        {
+          "text": "The presence of hallucinations or delusions.",
+          "isCorrect": false,
+          "rationale": "These are associated with psychotic structures, which typically use primitive defences rather than repression."
+        },
+        {
+          "text": "A complete absence of an 'observing ego'.",
+          "isCorrect": false,
+          "rationale": "An observing ego is part of the mature structure that allows for the monitoring and eventual repression of impulses."
+        }
+      ],
+      "hint": "Consider the developmental 'maturity' required to push a thought out of awareness without shattering the self."
+    },
+    {
+      "question": "In the context of Lacan's orders, what is the role of the caregivers in the 'Mirror Stage'?",
+      "answerOptions": [
+        {
+          "text": "They act as a 'living mirror' and representatives of the 'Symbolic' order.",
+          "isCorrect": true,
+          "rationale": "The caregivers reflect the child's emerging mentality and help integrate them into the world of language and social symbols."
+        },
+        {
+          "text": "They prevent the child from seeing their reflection to avoid narcissism.",
+          "isCorrect": false,
+          "rationale": "Reflection\u2014both literal and psychological\u2014is necessary for the child simply to survive as a functioning organism."
+        },
+        {
+          "text": "They provide the 'Real' order that disrupts the child's 'Imaginary' fantasies.",
+          "isCorrect": false,
+          "rationale": "While the Real is an order, the primary role of the caregiver described here is the reflective and socialising function of the Symbolic."
+        },
+        {
+          "text": "They facilitate the 'Oceanic feeling' by removing all boundaries between the child and the world.",
+          "isCorrect": false,
+          "rationale": "The caregivers actually help the child transition away from the 'oceanic feeling' as the division between self and other begins to take shape."
+        }
+      ],
+      "hint": "Think about how a child 'sees' themselves in the eyes and reactions of their parents."
+    },
+    {
+      "question": "What does the 'economic' point of view in psychoanalytic drive theory refer to?",
+      "answerOptions": [
+        {
+          "text": "The cost of psychoanalytic treatment for the patient.",
+          "isCorrect": false,
+          "rationale": "The 'economic' perspective refers to the distribution and quantity of psychic energy, not money."
+        },
+        {
+          "text": "The amount of force or 'work demand' that a drive places on the psyche.",
+          "isCorrect": true,
+          "rationale": "The 'economic' factor is described by Laplanche as the sum of force or the quantity of energy that forces the mind into activity."
+        },
+        {
+          "text": "The social status of the person acting as the drive's object.",
+          "isCorrect": false,
+          "rationale": "Social status is irrelevant to the 'economic' quantitative energy of the drive itself."
+        },
+        {
+          "text": "The efficiency with which a person can suppress their biological instincts.",
+          "isCorrect": false,
+          "rationale": "While related to management of energy, the economic view specifically focuses on the 'work requirement' created by the drive's pressure."
+        }
+      ],
+      "hint": "Focus on the concepts of 'energy', 'force', and 'quantity' within the mind."
+    },
+    {
+      "question": "In narcissism, what is the primary 'object' that the individual's $\\text{Libido}$ is directed towards?",
+      "answerOptions": [
+        {
+          "text": "The actual person of the caregiver.",
+          "isCorrect": false,
+          "rationale": "In primary narcissism, the energy is directed inward rather than toward an external person."
+        },
+        {
+          "text": "The individual's own specular image or 'self-as-object'.",
+          "isCorrect": true,
+          "rationale": "Narcissistic libido involves the child (or adult) taking their own ego or image as the primary love object."
+        },
+        {
+          "text": "Abstract ideals of social justice and humanity.",
+          "isCorrect": false,
+          "rationale": "While libido can be directed here, narcissism specifically refers to the investment in the self."
+        },
+        {
+          "text": "The 'partial object' that provides nourishment.",
+          "isCorrect": false,
+          "rationale": "This describes the early 'anaclitic' relationship, whereas narcissism is defined by the self-investment."
+        }
+      ],
+      "hint": "Recall the myth of Narcissus and what he was looking at in the water."
+    }
+  ]
+}

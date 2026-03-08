@@ -1,0 +1,265 @@
+{
+  "title": "Personality Quiz",
+  "questions": [
+    {
+      "question": "According to the model of person-situation interplay, which stage involves individuals interpreting situational cues like opportunities and constraints?",
+      "answerOptions": [
+        {
+          "text": "Situation Experience",
+          "isCorrect": true,
+          "rationale": "This stage involves the integration of perceptions about oneself in relation to environmental cues and situational affordances."
+        },
+        {
+          "text": "Situation Selection",
+          "isCorrect": false,
+          "rationale": "This stage occurs earlier and involves the conscious choice to enter specific environments that align with dispositional tendencies."
+        },
+        {
+          "text": "Behavioral State Expression",
+          "isCorrect": false,
+          "rationale": "This stage refers to the activation of personality traits into context-sensitive patterns of affect and behavior rather than the interpretation of cues."
+        },
+        {
+          "text": "Outcome Activation",
+          "isCorrect": false,
+          "rationale": "This stage focuses on the results of behavioral expression that feed back into future interpretations and selections."
+        }
+      ],
+      "hint": "Think about the cognitive-affective mapping of a context once a person is already in it."
+    },
+    {
+      "question": "Based on the findings of Jackson et al. (2012), how does military service specifically influence the development of Agreeableness compared to civilian service?",
+      "answerOptions": [
+        {
+          "text": "Military service leads to a slower increase in Agreeableness over time.",
+          "isCorrect": true,
+          "rationale": "The study illustrated that while Agreeableness generally increases, the military-service group showed a flatter trajectory compared to the civilian group."
+        },
+        {
+          "text": "Military service causes a significant mean-level decrease in Agreeableness.",
+          "isCorrect": false,
+          "rationale": "The data showed a slower rate of growth rather than a direct decline in absolute levels."
+        },
+        {
+          "text": "Both groups show identical rates of change because personality is purely genetic.",
+          "isCorrect": false,
+          "rationale": "Environmental factors and life events like conscription are shown to create divergent developmental paths."
+        },
+        {
+          "text": "Military service accelerates the increase of Agreeableness due to forced cooperation.",
+          "isCorrect": false,
+          "rationale": "Counter-intuitively, the data suggests that the structured military environment suppresses the typical upward trend seen in civilian peers."
+        }
+      ],
+      "hint": "Consider the slopes of the growth-model estimates for both groups in the provided figure."
+    },
+    {
+      "question": "In behavioral genetics, how is heritability ($h^2$) precisely defined?",
+      "answerOptions": [
+        {
+          "text": "The proportion of phenotypic variance attributable to genotypic variance.",
+          "isCorrect": true,
+          "rationale": "Heritability measures how much of the observed differences in a population can be explained by differences in genes."
+        },
+        {
+          "text": "The percentage of a single individual's personality trait that is caused by their DNA.",
+          "isCorrect": false,
+          "rationale": "Heritability refers to variability within a population, not the origins of a specific individual's absolute level."
+        },
+        {
+          "text": "The constant biological process that determines the development of traits from birth to death.",
+          "isCorrect": false,
+          "rationale": "Heritability is a statistic that can change across different populations and over time."
+        },
+        {
+          "text": "The degree of similarity between parents and children regarding shared environmental factors.",
+          "isCorrect": false,
+          "rationale": "This definition describes environmental influence rather than the genetic proportion of variance."
+        }
+      ],
+      "hint": "It focuses on the origin of variability in a population rather than an individual's trait level."
+    },
+    {
+      "question": "If a researcher finds that the correlation for a trait is $r = 0.80$ in monozygotic (MZ) twins and $r = 0.50$ in dizygotic (DZ) twins, what is the estimated heritability ($h^2$) using the standard formula?",
+      "answerOptions": [
+        {
+          "text": "$0.60$",
+          "isCorrect": true,
+          "rationale": "Applying the formula $h^2 = 2(r_{mz} - r_{dz})$, we get $2(0.80 - 0.50) = 2(0.30) = 0.60$."
+        },
+        {
+          "text": "$0.30$",
+          "isCorrect": false,
+          "rationale": "This value represents the difference between the correlations, but the formula requires doubling this difference to account for genetic relatedness."
+        },
+        {
+          "text": "$0.80$",
+          "isCorrect": false,
+          "rationale": "This is simply the MZ correlation, which overestimates heritability by not accounting for shared environmental factors."
+        },
+        {
+          "text": "$1.30$",
+          "isCorrect": false,
+          "rationale": "This is the result of adding the correlations, which is not a valid method for calculating heritability."
+        }
+      ],
+      "hint": "The calculation involves doubling the difference between the MZ and DZ correlations."
+    },
+    {
+      "question": "Which potential limitation of adoption studies occurs when children are placed with adoptive parents who are similar to their biological parents?",
+      "answerOptions": [
+        {
+          "text": "Selective placement",
+          "isCorrect": true,
+          "rationale": "Selective placement can inflate correlations between children and adoptive parents, making environmental effects appear stronger than they are."
+        },
+        {
+          "text": "Equal environment assumption",
+          "isCorrect": false,
+          "rationale": "This is a primary concern for twin studies, suggesting that MZ and DZ twins share similar levels of environmental exposure."
+        },
+        {
+          "text": "Representativeness",
+          "isCorrect": false,
+          "rationale": "This refers to whether the sample of birth parents and adoptive parents is reflective of the general population."
+        },
+        {
+          "text": "Non-additive genetic effects",
+          "isCorrect": false,
+          "rationale": "This refers to complex gene combinations rather than the process of matching children to specific homes."
+        }
+      ],
+      "hint": "Think about the criteria used by agencies to assign children to specific households."
+    },
+    {
+      "question": "In the context of environmental influences, how does the 'unique environment' differ from the 'shared environment'?",
+      "answerOptions": [
+        {
+          "text": "The unique environment consists of influences that make relatives less similar to each other.",
+          "isCorrect": true,
+          "rationale": "Unique environmental factors, such as different friends or treatment, cause individuals raised together to diverge."
+        },
+        {
+          "text": "The unique environment includes common factors like socioeconomic status and parental education.",
+          "isCorrect": false,
+          "rationale": "These are examples of shared environment, which act to make individuals living together more similar."
+        },
+        {
+          "text": "The unique environment is easier to measure quantitatively than the shared environment.",
+          "isCorrect": false,
+          "rationale": "The material notes that considering unique environment is important but often difficult to measure directly."
+        },
+        {
+          "text": "The unique environment only applies to dizygotic twins and not monozygotic twins.",
+          "isCorrect": false,
+          "rationale": "Even identical twins experience unique environmental influences that prevent them from being perfectly similar."
+        }
+      ],
+      "hint": "Consider which type of environment accounts for the differences found between siblings raised in the same house."
+    },
+    {
+      "question": "What is the primary prediction of the 'fluctuating optimum' in evolutionary psychology regarding personality variation?",
+      "answerOptions": [
+        {
+          "text": "Ideal trait levels change over time and place, preventing the elimination of variation.",
+          "isCorrect": true,
+          "rationale": "Because different levels of a trait are adaptive in different environments or eras, natural selection maintains a range of individual differences."
+        },
+        {
+          "text": "Natural selection eventually eliminates all variations to create a 'perfect' personality level.",
+          "isCorrect": false,
+          "rationale": "This is the opposite of the theory, which explains why variation *persists* despite selective pressures."
+        },
+        {
+          "text": "Trait variation is purely a result of random mutations that have no adaptive value.",
+          "isCorrect": false,
+          "rationale": "While mutations occur, the fluctuating optimum suggests variation is maintained because of its shifting utility."
+        },
+        {
+          "text": "Variation is maintained because high levels of all Big Five traits are always the most successful.",
+          "isCorrect": false,
+          "rationale": "The theory argues that the 'ideal' level is not fixed and depends on environmental context, such as climate or rivals."
+        }
+      ],
+      "hint": "Think about how an changing environment affects which traits are considered 'successful'."
+    },
+    {
+      "question": "According to the Niche Diversity Hypothesis, how does increasing niche diversity within a population affect personality dimensions?",
+      "answerOptions": [
+        {
+          "text": "It leads to greater personality dimensionality and lower interfactor covariance.",
+          "isCorrect": true,
+          "rationale": "Higher niche diversity allows for more specialized 'micropopulations,' resulting in more distinct and less correlated trait factors."
+        },
+        {
+          "text": "It results in higher correlations between traits, simplifying the personality structure.",
+          "isCorrect": false,
+          "rationale": "The hypothesis predicts the opposite: that diverse niches allow traits to vary more independently."
+        },
+        {
+          "text": "It decreases the overall variance in traits as everyone adapts to the same city life.",
+          "isCorrect": false,
+          "rationale": "Niche diversity is associated with *greater* variance because of the wide variety of affordances available."
+        },
+        {
+          "text": "It has no measurable impact on the structure of personality across different nations.",
+          "isCorrect": false,
+          "rationale": "The provided research by Durkee et al. (2022) used metrics like HDI and urbanization to demonstrate significant effects."
+        }
+      ],
+      "hint": "Consider the relationship between the complexity of a society's roles and the complexity of personality models."
+    },
+    {
+      "question": "Rank-order stability estimates for the Big Five traits generally follow which lifespan trend?",
+      "answerOptions": [
+        {
+          "text": "Stability increases significantly during childhood and young adulthood before plateauing.",
+          "isCorrect": true,
+          "rationale": "Data from Bleidorn et al. (2022) shows that the correlation between trait scores over time becomes higher as individuals age into adulthood."
+        },
+        {
+          "text": "Stability is highest in early childhood and decreases as people experience life transitions.",
+          "isCorrect": false,
+          "rationale": "Personality is actually most malleable in childhood and becomes more set as people reach maturity."
+        },
+        {
+          "text": "Stability remains constant at approximately $r = 0.50$ regardless of age.",
+          "isCorrect": false,
+          "rationale": "The figures show clear age-related increases in stability coefficients across all traits."
+        },
+        {
+          "text": "Stability peaks in middle age and then drops to near zero in late adulthood.",
+          "isCorrect": false,
+          "rationale": "Stability remains relatively high and consistent once it reaches its plateau in adulthood."
+        }
+      ],
+      "hint": "Look at the direction of the lines in the provided graphs from baseline age 0 to 80."
+    },
+    {
+      "question": "When the combined effect of multiple genes is complex or multiplicative rather than a simple addition, it is referred to as a(n):",
+      "answerOptions": [
+        {
+          "text": "Non-additive genetic effect",
+          "isCorrect": true,
+          "rationale": "Non-additive effects occur when traits depend on specific combinations of genes, often leading to underestimations of heritability in non-MZ relatives."
+        },
+        {
+          "text": "Additive genetic effect",
+          "isCorrect": false,
+          "rationale": "Additive effects are the result of genes contributing independently and linearly to a trait's development."
+        },
+        {
+          "text": "Genotype-environment interaction",
+          "isCorrect": false,
+          "rationale": "This refers to how different genotypes respond differently to the same environment, not the interaction between genes themselves."
+        },
+        {
+          "text": "Phenotypic variance",
+          "isCorrect": false,
+          "rationale": "This is the observed individual difference rather than the specific genetic mechanism causing it."
+        }
+      ],
+      "hint": "This effect involves genes contributing in certain specific combinations."
+    }
+  ]
+}

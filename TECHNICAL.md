@@ -496,6 +496,11 @@ python3 scripts/sync_personlighedspsykologi_readings_to_droplet.py --dry-run
 python3 scripts/sync_personlighedspsykologi_readings_to_droplet.py
 ```
 
+Manual summary policy:
+- `shows/personlighedspsykologi-en/reading_summaries.json` and `shows/personlighedspsykologi-en/weekly_overview_summaries.json` are hand-authored content files.
+- `sync_reading_summaries.py` may scaffold placeholders, migrate stale keys, build weekly drafts from existing manual summaries, and validate coverage, but it is not the source of the summary prose itself.
+- Operational expectation: write missing `summary_lines` and `key_points` manually, then validate, regenerate feed, commit, push, and run `gh workflow run generate-feed.yml --ref main`.
+
 Default reading sync behavior:
 - Sync reads exclusions from `shows/personlighedspsykologi-en/reading_download_exclusions.json` and skips excluded `reading_key` values.
 - Use `--exclusions-config ''` to disable exclusions for a manual run.

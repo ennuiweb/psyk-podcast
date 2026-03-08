@@ -20,12 +20,16 @@ Unassigned TTS note: audio files without week tokens (for example in Drive folde
 Feed pubDate note: `feed.pubdate_year_rewrite` rewrites only item `<pubDate>` year tokens during generation (for this show: `2026 -> 2025`) and does not change channel `<lastBuildDate>`.
 
 Reading-summary workflow:
+- Policy: all `summary_lines` and `key_points` content in this show is written manually. No auto-summary generation step is used or permitted in the normal workflow.
+- Script scope: `sync_reading_summaries.py` is only for scaffolding missing entries, migrating stale keys, building weekly overview drafts from existing manual reading summaries, and validating coverage.
 - Scaffold/update cached entries from local episodes:
   - `./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/sync_reading_summaries.py --dry-run`
   - `./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/sync_reading_summaries.py`
+- Manually write the missing prose directly in `shows/personlighedspsykologi-en/reading_summaries.json`.
 - Scaffold/update per-lecture `Alle kilder` cache from reading-summary coverage + draft aggregate:
   - `./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/sync_reading_summaries.py --sync-weekly-overview --dry-run`
   - `./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/sync_reading_summaries.py --sync-weekly-overview`
+- Manually finalize the weekly overview prose directly in `shows/personlighedspsykologi-en/weekly_overview_summaries.json`.
 - Validate completeness (warn-only):
   - `./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/sync_reading_summaries.py --validate-only`
   - `./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/sync_reading_summaries.py --validate-only --validate-weekly`
@@ -36,6 +40,7 @@ Reading-summary workflow:
   - excludes `Alle kilder` / `All sources` files from the reading summary inventory.
   - preserves existing filled entries and only adds missing placeholders in `reading_summaries.json`.
   - auto-migrates stale cache keys when episode filenames change but the lecture/title identity is still the same (for example `Alle kilder` -> `Alle kilder (undtagen slides)` or long-title -> short-title reading renames).
+  - does not generate summary prose; placeholder rows must be filled by hand.
   - run scaffold/update before validation when checking a fresh cache (`--validate-only` reads current file contents only).
   - manual fill targets are `2-4` summary lines and `3-5` key points per entry.
   - language rule: when the source text is Danish, write both `summary_lines` and `key_points` in Danish (otherwise keep English).

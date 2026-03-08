@@ -383,6 +383,50 @@ class SyncReadingSummariesTests(unittest.TestCase):
         self.assertIn("W01L2 - Alle kilder [EN].mp3 (2/4)", report["weekly_source_coverage_gap"])
         self.assertIn("W01L3 - Alle kilder [EN].mp3", report["weekly_non_danish"])
 
+    def test_alias_migration_promotes_long_title_entry_to_current_episode_key(self):
+        mod = _load_module()
+        mapping = {
+            "W10L2 - Foucault, M. (1997). The Ethics of the Concern of the Self as a Practice of Freedom - Essential Works 1954-1984, Penguin Books. Vol. 1, s. 281-301 [EN].mp3": {
+                "summary_lines": ["L1", "L2"],
+                "key_points": ["A", "B", "C"],
+            }
+        }
+
+        migrated = mod._migrate_alias_keys(
+            mapping,
+            ["W10L2 - Foucault, M. (1997). s. 281-301 [EN].mp3"],
+        )
+
+        self.assertEqual(
+            migrated,
+            [
+                "W10L2 - Foucault, M. (1997). The Ethics of the Concern of the Self as a Practice of Freedom - Essential Works 1954-1984, Penguin Books. Vol. 1, s. 281-301 [EN].mp3 -> W10L2 - Foucault, M. (1997). s. 281-301 [EN].mp3"
+            ],
+        )
+        self.assertIn("W10L2 - Foucault, M. (1997). s. 281-301 [EN].mp3", mapping)
+
+    def test_alias_migration_promotes_legacy_weekly_overview_key(self):
+        mod = _load_module()
+        mapping = {
+            "W05L1 - Alle kilder [EN].mp3": {
+                "summary_lines": ["Manuel linje 1", "Manuel linje 2"],
+                "key_points": ["A", "B", "C"],
+            }
+        }
+
+        migrated = mod._migrate_alias_keys(
+            mapping,
+            ["W05L1 - Alle kilder (undtagen slides) [EN].mp3"],
+        )
+
+        self.assertEqual(
+            migrated,
+            [
+                "W05L1 - Alle kilder [EN].mp3 -> W05L1 - Alle kilder (undtagen slides) [EN].mp3"
+            ],
+        )
+        self.assertIn("W05L1 - Alle kilder (undtagen slides) [EN].mp3", mapping)
+
     def test_sync_weekly_overview_dry_run_does_not_write_weekly_cache(self):
         mod = _load_module()
         with tempfile.TemporaryDirectory() as tmpdir:

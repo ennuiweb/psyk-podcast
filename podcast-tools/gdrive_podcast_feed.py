@@ -375,28 +375,47 @@ def _strip_cfg_tag_from_filename(name: str) -> str:
     if not name:
         return name
     path = Path(name)
-    suffix = "".join(path.suffixes)
+    suffix = path.suffix
     stem = name[: -len(suffix)] if suffix else name
     return f"{_strip_cfg_tag_suffix(stem)}{suffix}"
 
 
 WEEK_X_IN_STEM_PATTERN = re.compile(r"^(W\d{1,2}L\d+)\s*(?:-\s*)?X\s+", re.IGNORECASE)
 LEADING_EXERCISE_X_PATTERN = re.compile(r"^x\b[\s._\-–:]*", re.IGNORECASE)
+LOOKUP_LECTURE_KEY_PATTERN = re.compile(r"\bW0*(\d{1,2})L0*(\d{1,2})\b", re.IGNORECASE)
+LOOKUP_PAGENUM_PATTERN = re.compile(r"\b(?:s\.|pp?\.)\s*[\d, \-–]+", re.IGNORECASE)
 
 
 def _normalize_name_for_lookup(name: str) -> str:
-    stripped = _strip_cfg_tag_from_filename(name)
+    stripped = _strip_cfg_tags(name)
     path = Path(stripped)
-    suffix = "".join(path.suffixes)
+    suffix = path.suffix
     stem = stripped[: -len(suffix)] if suffix else stripped
+    lecture_match = LOOKUP_LECTURE_KEY_PATTERN.search(stem)
+    lecture_key = (
+        f"W{int(lecture_match.group(1))}L{int(lecture_match.group(2))}" if lecture_match else ""
+    )
+    stem = re.sub(r"\s+\[(?:en|da|dk|tts|brief)\]\s*$", "", stem, flags=re.IGNORECASE)
     stem = LANGUAGE_TAG_PATTERN.sub("", stem)
     stem = BRIEF_TAG_PATTERN.sub("", stem)
+    if WEEKLY_OVERVIEW_SUBJECT_PATTERN.search(stem):
+        return f"{lecture_key}|weekly{suffix}".casefold()
     stem = strip_week_prefix(stem)
     stem = LEADING_EXERCISE_X_PATTERN.sub("", stem).strip()
     stem = re.sub(r"\s+", " ", stem).strip()
     stem = WEEK_X_IN_STEM_PATTERN.sub(r"\1 ", stem).strip()
     stem = re.sub(r"\s+", " ", stem).strip()
-    return f"{stem}{suffix}".casefold()
+    page_match = LOOKUP_PAGENUM_PATTERN.search(stem)
+    author_year_match = re.match(r"^(.*?\(\d{4}(?:[-–]\d{4})?\))", stem)
+    if author_year_match:
+        subject = author_year_match.group(1).strip(" .")
+        if page_match:
+            pages = re.sub(r"\s+", " ", page_match.group(0).lower()).strip()
+            stem = f"{subject} {pages}"
+        elif len(stem) > len(subject) + 24:
+            stem = subject
+    normalized = f"{lecture_key}|{stem}" if lecture_key else stem
+    return f"{normalized}{suffix}".casefold()
 
 
 def _lookup_by_name_with_cfg_fallback(mapping: Dict[str, Any], name: str) -> Any:

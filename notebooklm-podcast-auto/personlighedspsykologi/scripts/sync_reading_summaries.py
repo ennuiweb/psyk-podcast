@@ -18,6 +18,8 @@ CFG_TAG_PATTERN = re.compile(
 WEEKLY_OVERVIEW_PATTERN = re.compile(r"\b(alle kilder|all sources)\b", re.IGNORECASE)
 BRIEF_PATTERN = re.compile(r"^\[\s*brief\s*\]\s*", re.IGNORECASE)
 TTS_PATTERN = re.compile(r"^\[\s*tts\s*\]\s*|\boplæst\b", re.IGNORECASE)
+LANGUAGE_TAG_PATTERN = re.compile(r"\s+\[(?:EN|DA|DK|TTS|BRIEF)\]\s*$", re.IGNORECASE)
+PAGENUM_PATTERN = re.compile(r"\b(?:s\.|pp?\.)\s*[\d, \-–]+", re.IGNORECASE)
 AUDIO_EXTENSIONS = {".mp3", ".wav"}
 DEFAULT_SOURCES_ROOT = (
     "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/"
@@ -129,7 +131,7 @@ def strip_cfg_tag_from_filename(name: str) -> str:
     if not name:
         return name
     path = Path(name)
-    suffix = "".join(path.suffixes)
+    suffix = path.suffix
     stem = name[: -len(suffix)] if suffix else name
     return f"{_strip_cfg_tag_suffix(stem)}{suffix}"
 
@@ -146,6 +148,64 @@ def extract_lecture_key(value: str) -> str | None:
     week_num = int(match.group(1))
     lecture_num = int(match.group(2))
     return f"W{week_num}L{lecture_num}"
+
+
+def _normalize_whitespace(value: str) -> str:
+    return re.sub(r"\s+", " ", value).strip()
+
+
+def _reading_alias_subject(name: str) -> str:
+    stripped = strip_cfg_tag_from_filename(name)
+    path = Path(stripped)
+    suffix = path.suffix
+    stem = stripped[: -len(suffix)] if suffix else stripped
+    lecture_key = extract_lecture_key(stem) or ""
+    stem = re.sub(rf"^\s*{re.escape(lecture_key)}\s*-\s*", "", stem, flags=re.IGNORECASE) if lecture_key else stem
+    stem = BRIEF_PATTERN.sub("", stem)
+    stem = TTS_PATTERN.sub("", stem)
+    stem = LANGUAGE_TAG_PATTERN.sub("", stem)
+    stem = _normalize_whitespace(stem)
+    if is_weekly_overview_name(name):
+        return f"{lecture_key}|weekly"
+
+    page_match = PAGENUM_PATTERN.search(stem)
+    prefix_match = re.match(r"^(.*?\(\d{4}(?:[-–]\d{4})?\))", stem)
+    if prefix_match:
+        subject = prefix_match.group(1).strip(" .")
+        if page_match:
+            pages = _normalize_whitespace(page_match.group(0).lower())
+            return f"{lecture_key}|{subject}|{pages}"
+        if len(stem) > len(subject) + 24:
+            return f"{lecture_key}|{subject}"
+    return f"{lecture_key}|{stem}"
+
+
+def _find_alias_key(mapping: dict[str, Any], target_key: str) -> str | None:
+    target_alias = _reading_alias_subject(target_key)
+    for existing_key in mapping:
+        if isinstance(existing_key, str) and _reading_alias_subject(existing_key) == target_alias:
+            return existing_key
+    return None
+
+
+def _migrate_alias_keys(
+    mapping: dict[str, Any],
+    current_keys: list[str],
+    *,
+    prefer_current_key: bool = True,
+) -> list[str]:
+    migrated: list[str] = []
+    for current_key in current_keys:
+        if current_key in mapping:
+            continue
+        alias_key = _find_alias_key(mapping, current_key)
+        if alias_key is None or alias_key == current_key:
+            continue
+        if not prefer_current_key and alias_key in mapping:
+            continue
+        mapping[current_key] = mapping.pop(alias_key)
+        migrated.append(f"{alias_key} -> {current_key}")
+    return sorted(migrated, key=str.casefold)
 
 
 def _load_json_file(path: Path) -> dict[str, Any]:
@@ -365,6 +425,9 @@ def _build_validation_report(
     for key in episode_keys:
         entry = by_name.get(key)
         if not isinstance(entry, dict):
+            alias_key = _find_alias_key(by_name, key)
+            entry = by_name.get(alias_key) if alias_key else None
+        if not isinstance(entry, dict):
             missing_entry.append(key)
             continue
         summary_lines = _extract_non_empty_text_list(entry, "summary_lines")
@@ -541,6 +604,10 @@ def sync_weekly_overview_cache(
         missing_source_files = sorted(expected_set - covered_set, key=str.casefold)
 
         existing_entry = weekly_by_name.get(weekly_key)
+        if not isinstance(existing_entry, dict):
+            alias_key = _find_alias_key(weekly_by_name, weekly_key)
+            if alias_key and alias_key != weekly_key:
+                existing_entry = weekly_by_name.pop(alias_key)
         was_new = not isinstance(existing_entry, dict)
         if not isinstance(existing_entry, dict):
             existing_entry = {}
@@ -624,6 +691,9 @@ def _build_weekly_validation_report(
 
     for key in weekly_keys:
         entry = weekly_by_name.get(key)
+        if not isinstance(entry, dict):
+            alias_key = _find_alias_key(weekly_by_name, key)
+            entry = weekly_by_name.get(alias_key) if alias_key else None
         if not isinstance(entry, dict):
             weekly_missing_entry.append(key)
             continue
@@ -757,9 +827,11 @@ def main() -> int:
     except RuntimeError as exc:
         raise SystemExit(str(exc))
     by_name = summaries_payload["by_name"]
+    migrated_reading_aliases = _migrate_alias_keys(by_name, episode_keys)
 
     weekly_payload: dict[str, Any] = {"by_name": {}}
     weekly_by_name: dict[str, Any] = {}
+    migrated_weekly_aliases: list[str] = []
     if args.sync_weekly_overview or args.validate_weekly:
         try:
             weekly_payload = _validate_weekly_summaries_schema(
@@ -768,6 +840,7 @@ def main() -> int:
         except RuntimeError as exc:
             raise SystemExit(str(exc))
         weekly_by_name = weekly_payload["by_name"]
+        migrated_weekly_aliases = _migrate_alias_keys(weekly_by_name, weekly_keys)
 
     if args.validate_only:
         if episode_keys:
@@ -815,9 +888,11 @@ def main() -> int:
         weekly_payload["by_name"] = dict(sorted(weekly_by_name.items(), key=lambda item: item[0].casefold()))
 
     print(f"Episodes discovered: {len(episode_keys)}")
+    print(f"Reading alias migrations applied: {len(migrated_reading_aliases)}")
     print(f"Missing reading entries added: {len(added_keys)}")
     if args.sync_weekly_overview:
         print(f"Alle kilder episodes discovered: {len(weekly_keys)}")
+        print(f"Alle kilder alias migrations applied: {len(migrated_weekly_aliases)}")
         print(f"Alle kilder entries added: {len(added_weekly)}")
         print(f"Alle kilder entries metadata refreshed: {len(updated_weekly)}")
         if missing_weekly_lecture_key:

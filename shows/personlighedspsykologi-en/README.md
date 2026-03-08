@@ -30,11 +30,12 @@ Reading-summary workflow:
   - `./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/sync_reading_summaries.py --validate-only`
   - `./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/sync_reading_summaries.py --validate-only --validate-weekly`
 - Build feed after sync:
-  - `python3 podcast-tools/gdrive_podcast_feed.py --config shows/personlighedspsykologi-en/config.local.json`
+  - `./notebooklm-podcast-auto/.venv/bin/python podcast-tools/gdrive_podcast_feed.py --config shows/personlighedspsykologi-en/config.local.json`
 - Sync behavior:
   - uses local audio files (`.mp3`/`.wav`) to discover `reading`, `brief`, and `TTS` episode keys.
   - excludes `Alle kilder` / `All sources` files from the reading summary inventory.
   - preserves existing filled entries and only adds missing placeholders in `reading_summaries.json`.
+  - auto-migrates stale cache keys when episode filenames change but the lecture/title identity is still the same (for example `Alle kilder` -> `Alle kilder (undtagen slides)` or long-title -> short-title reading renames).
   - run scaffold/update before validation when checking a fresh cache (`--validate-only` reads current file contents only).
   - manual fill targets are `2-4` summary lines and `3-5` key points per entry.
   - language rule: when the source text is Danish, write both `summary_lines` and `key_points` in Danish (otherwise keep English).

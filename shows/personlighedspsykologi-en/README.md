@@ -55,6 +55,7 @@ Update the Drive folder ID, owner email, and upload service account credentials 
 
 Quiz link sync note:
 - `scripts/sync_quiz_links.py` and `podcast-tools/sync_drive_quiz_links.py` use quiz JSON exports as the source of truth.
+- Slide-only quiz exports should be synced with fallback-derived names so they still get quiz IDs and appear on Freudd even when no matching MP3 exists (`--fallback-derive-mp3-names` for sync workflows).
 - `shows/personlighedspsykologi-en/quiz_links.json` intentionally keeps `.html` relative paths so public links remain `/q/<id>.html`, and all entries include `subject_slug`.
 - Feed generation uses `quiz.base_url = https://freudd.dk/q/` so podcast descriptions link to the domain (not raw IP).
 

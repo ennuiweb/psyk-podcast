@@ -77,6 +77,13 @@ class CfgTagFilenameHelpersTests(unittest.TestCase):
         plain = "W01L1 - W1L1 Foo [EN]"
         self.assertEqual(mod.canonical_key(tagged), mod.canonical_key(plain))
 
+    def test_drive_derive_mp3_name_ignores_cfg_tag(self):
+        if self.drive_sync is None:
+            self.skipTest("google-api dependencies unavailable for sync_drive_quiz_links import")
+        mod = self.drive_sync
+        stem = "W01L1 - W1L1 Foo [EN] {type=audio lang=en format=deep-dive length=long hash=deadbeef}"
+        self.assertEqual(mod.derive_mp3_name_from_html(stem), "W01L1 - Foo [EN].mp3")
+
     def test_local_select_audio_candidate_prefers_non_double_prefixed_week_name(self):
         mod = self.local_sync
         candidates = [
@@ -353,6 +360,83 @@ class CfgTagFilenameHelpersTests(unittest.TestCase):
             ["easy", "medium", "hard"],
         )
         self.assertTrue(all(item["subject_slug"] == "personlighedspsykologi" for item in entry["links"]))
+
+    def test_local_sync_fallback_derive_mp3_names_maps_quiz_without_audio_file(self):
+        script_path = _repo_root() / "scripts" / "sync_quiz_links.py"
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            quiz_file = (
+                root
+                / "W01L1 - Slide lecture: Intro [EN] {type=quiz lang=en quantity=standard difficulty=medium hash=beef1234}.json"
+            )
+            quiz_file.write_text(json.dumps({"questions": []}), encoding="utf-8")
+            links_file = root / "quiz_links.json"
+            result = subprocess.run(
+                [
+                    sys.executable,
+                    str(script_path),
+                    "--output-root",
+                    str(root),
+                    "--links-file",
+                    str(links_file),
+                    "--subject-slug",
+                    "personlighedspsykologi",
+                    "--fallback-derive-mp3-names",
+                    "--no-upload",
+                ],
+                text=True,
+                capture_output=True,
+            )
+            self.assertEqual(result.returncode, 0, result.stderr + result.stdout)
+            payload = json.loads(links_file.read_text(encoding="utf-8"))
+        self.assertIn("W01L1 - Slide lecture: Intro [EN].mp3", payload["by_name"])
+
+    def test_drive_sync_fallback_derive_mp3_names_maps_quiz_without_audio_file(self):
+        if self.drive_sync is None:
+            self.skipTest("google-api dependencies unavailable for sync_drive_quiz_links import")
+        mod = self.drive_sync
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            config_path = Path(tmp_dir) / "config.json"
+            links_path = Path(tmp_dir) / "quiz_links.json"
+            config_path.write_text(
+                json.dumps(
+                    {
+                        "service_account_file": str(Path(tmp_dir) / "service-account.json"),
+                        "drive_folder_id": "folder-123",
+                        "quiz": {
+                            "links_file": str(links_path),
+                        },
+                    }
+                ),
+                encoding="utf-8",
+            )
+            side_effect = [
+                [],
+                [
+                    {
+                        "id": "quiz-1",
+                        "name": (
+                            "W01L1 - Slide lecture: Intro [EN] "
+                            "{type=quiz lang=en quantity=standard difficulty=medium hash=beef1234}.json"
+                        ),
+                    }
+                ],
+            ]
+            with mock.patch.object(mod, "build_drive_service", return_value=object()):
+                with mock.patch.object(mod, "list_drive_files", side_effect=side_effect):
+                    with mock.patch.object(
+                        sys,
+                        "argv",
+                        [
+                            "sync_drive_quiz_links.py",
+                            "--config",
+                            str(config_path),
+                            "--fallback-derive-mp3-names",
+                        ],
+                    ):
+                        self.assertEqual(mod.main(), 0)
+            payload = json.loads(links_path.read_text(encoding="utf-8"))
+        self.assertIn("W01L1 - Slide lecture: Intro [EN].mp3", payload["by_name"])
 
     def test_flat_quiz_relative_path_matches_between_local_and_drive_sync(self):
         if self.drive_sync is None:

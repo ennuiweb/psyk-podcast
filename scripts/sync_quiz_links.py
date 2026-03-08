@@ -460,6 +460,14 @@ def main() -> int:
         help="Derive MP3 names directly from quiz JSON filenames (no MP3 scan).",
     )
     parser.add_argument(
+        "--fallback-derive-mp3-names",
+        action="store_true",
+        help=(
+            "When a quiz JSON has no matching MP3, derive its mapping name directly "
+            "from the quiz filename instead of dropping it."
+        ),
+    )
+    parser.add_argument(
         "--remote-root",
         default="/var/www/quizzes",
         help=(
@@ -545,7 +553,7 @@ def main() -> int:
 
     if not args.derive_mp3_names:
         mp3_files = [p for p in find_files(output_root, ".mp3") if language_tag in p.stem]
-        if not mp3_files:
+        if not mp3_files and not args.fallback_derive_mp3_names:
             raise SystemExit(f"No MP3 files found under {output_root}")
         mp3_index = build_mp3_index(mp3_files, language_tag)
 
@@ -557,13 +565,17 @@ def main() -> int:
             key = canonical_key(json_file.stem)
             candidates = mp3_index.get(key, [])
             if len(candidates) == 0:
-                unmatched.append(json_file)
-                continue
+                if args.fallback_derive_mp3_names:
+                    mp3_name = derive_mp3_name_from_html(json_file.stem)
+                else:
+                    unmatched.append(json_file)
+                    continue
             selected_candidate = select_audio_candidate(candidates)
-            if selected_candidate is None:
+            if len(candidates) > 0 and selected_candidate is None:
                 ambiguous.append(json_file)
                 continue
-            mp3_name = selected_candidate.name
+            if len(candidates) > 0:
+                mp3_name = selected_candidate.name
         if args.quiz_path_mode == "flat-id":
             try:
                 relative_path, flat_seed = build_flat_quiz_relative_path(

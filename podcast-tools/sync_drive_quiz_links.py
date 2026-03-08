@@ -473,6 +473,38 @@ def build_mapping_entry(links: List[Dict[str, str]], subject_slug: str) -> Dict[
     return mapping_entry
 
 
+def derive_mp3_name_from_html(stem: str) -> str:
+    name = stem.replace("–", "-").replace("—", "-")
+    name = strip_cfg_tag_suffix(name)
+    name = normalize_week_tokens(name)
+    name = re.sub(r"\s+", " ", name).strip()
+    name = re.sub(r"\.{2,}", ".", name)
+    prefix = ""
+    if name.lower().startswith("[brief]"):
+        prefix = "[Brief] "
+        name = name[len("[brief]") :].lstrip()
+    match = re.match(r"^(W\d{2}L\d+)\s*-\s*(.*)$", name, re.IGNORECASE)
+    if not match:
+        return f"{prefix}{name}.mp3".strip()
+    week = match.group(1).upper()
+    rest = match.group(2).strip()
+    if rest:
+        rest = re.sub(
+            rf"^{re.escape(week)}\b\s*-?\s*",
+            "",
+            rest,
+            flags=re.IGNORECASE,
+        ).strip()
+    if rest:
+        if rest.startswith("X "):
+            base = f"{prefix}{week} {rest}"
+        else:
+            base = f"{prefix}{week} - {rest}"
+    else:
+        base = f"{prefix}{week}"
+    return f"{base}.mp3".strip()
+
+
 def matches_language(name: str, tag: Optional[str]) -> bool:
     if not tag:
         return True
@@ -626,6 +658,14 @@ def main() -> int:
         help="Salt flat quiz IDs with --subject-slug to avoid cross-subject ID collisions.",
     )
     parser.add_argument(
+        "--fallback-derive-mp3-names",
+        action="store_true",
+        help=(
+            "When a quiz JSON has no matching audio file in Drive, derive its mapping "
+            "name directly from the quiz filename instead of dropping it."
+        ),
+    )
+    parser.add_argument(
         "--upload",
         action="store_true",
         help="Upload downloaded quizzes to the droplet.",
@@ -712,7 +752,7 @@ def main() -> int:
             "No valid quiz JSON files found in Drive "
             f"(difficulty={quiz_difficulty or 'any'})."
         )
-    if not audio_files:
+    if not audio_files and not args.fallback_derive_mp3_names:
         print("No audio files found in Drive; skipping quiz mapping.")
         return 0
 
@@ -733,13 +773,17 @@ def main() -> int:
         key = canonical_key(Path(name).stem)
         candidates = audio_index.get(key, [])
         if len(candidates) == 0:
-            unmatched.append(name)
-            continue
-        selected_candidate = select_audio_candidate(candidates)
-        if selected_candidate is None:
-            ambiguous.append(name)
-            continue
-        audio_name = selected_candidate
+            if args.fallback_derive_mp3_names:
+                audio_name = derive_mp3_name_from_html(Path(name).stem)
+            else:
+                unmatched.append(name)
+                continue
+        else:
+            selected_candidate = select_audio_candidate(candidates)
+            if selected_candidate is None:
+                ambiguous.append(name)
+                continue
+            audio_name = selected_candidate
         if args.quiz_path_mode == "flat-id":
             try:
                 relative_path, flat_seed = build_flat_quiz_relative_path(

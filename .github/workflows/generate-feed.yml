@@ -177,6 +177,7 @@ jobs:
             --quiz-path-mode flat-id
             --flat-id-len 8
             --quiz-difficulty any
+            --fallback-derive-mp3-names
             --remote-root "${remote_root}"
           )
           if [[ -n "${flat_id_include_subject}" ]]; then

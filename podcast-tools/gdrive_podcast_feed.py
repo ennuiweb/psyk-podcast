@@ -47,6 +47,7 @@ CFG_AUDIO_DEEP_DIVE_PATTERN = re.compile(
     re.IGNORECASE,
 )
 AUDIO_FILE_EXTENSIONS = {".mp3", ".m4a", ".wav", ".aac", ".flac"}
+PREFERRED_AUDIO_EXTENSIONS = (".mp3", ".m4a", ".aac", ".wav", ".flac")
 AUDIO_CATEGORY_PREFIXES = {
     "lydbog": "[Lydbog]",
     "kort_podcast": "[Kort podcast]",
@@ -637,6 +638,90 @@ def _canonicalize_episode_stem(name: str) -> str:
         stem = canonical_week
     stem = re.sub(r"\s+", " ", stem).strip()
     return stem.casefold()
+
+
+def _drive_file_size_bytes(file_entry: Dict[str, Any]) -> int:
+    raw_value = file_entry.get("size")
+    if isinstance(raw_value, bool):
+        return 0
+    try:
+        return max(0, int(raw_value))
+    except (TypeError, ValueError):
+        return 0
+
+
+def _drive_file_extension_rank(file_entry: Dict[str, Any]) -> int:
+    ext = Path(str(file_entry.get("name") or "")).suffix.casefold()
+    try:
+        return PREFERRED_AUDIO_EXTENSIONS.index(ext)
+    except ValueError:
+        return len(PREFERRED_AUDIO_EXTENSIONS)
+
+
+def _drive_file_preference_key(file_entry: Dict[str, Any]) -> Tuple[int, int, int, str, str, str]:
+    size_bytes = _drive_file_size_bytes(file_entry)
+    mime_type = str(file_entry.get("mimeType") or "").casefold()
+    ext_rank = _drive_file_extension_rank(file_entry)
+    modified = str(file_entry.get("modifiedTime") or file_entry.get("createdTime") or "")
+    name = str(file_entry.get("name") or "")
+    file_id = str(file_entry.get("id") or "")
+    return (
+        1 if size_bytes > 0 else 0,
+        1 if mime_type == "audio/mpeg" else 0,
+        -ext_rank,
+        modified,
+        name,
+        file_id,
+    )
+
+
+def _collapse_duplicate_drive_files(files: Sequence[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    grouped: Dict[Tuple[Tuple[str, ...], str], List[Tuple[int, Dict[str, Any]]]] = {}
+    passthrough: Dict[int, Dict[str, Any]] = {}
+
+    for index, file_entry in enumerate(files):
+        parents = tuple(str(parent) for parent in (file_entry.get("parents") or []) if parent)
+        canonical_stem = _canonicalize_episode_stem(str(file_entry.get("name") or ""))
+        if not parents or not canonical_stem:
+            passthrough[index] = file_entry
+            continue
+        grouped.setdefault((parents, canonical_stem), []).append((index, file_entry))
+
+    chosen_by_key: Dict[Tuple[Tuple[str, ...], str], Dict[str, Any]] = {}
+    for key, entries in grouped.items():
+        if len(entries) == 1:
+            chosen_by_key[key] = entries[0][1]
+            continue
+        choice = max((entry for _, entry in entries), key=_drive_file_preference_key)
+        chosen_by_key[key] = choice
+        choice_size = _drive_file_size_bytes(choice)
+        candidate_labels = ", ".join(
+            f"{entry.get('name', '')} ({entry.get('id', '')}, {_drive_file_size_bytes(entry)} bytes)"
+            for _, entry in entries
+        )
+        print(
+            "Warning: collapsed duplicate Drive audio sources for "
+            f"'{choice.get('name', '')}' using {choice.get('id', '')} ({choice_size} bytes). "
+            f"Candidates: {candidate_labels}",
+            file=sys.stderr,
+        )
+
+    collapsed: List[Dict[str, Any]] = []
+    emitted_keys: Set[Tuple[Tuple[str, ...], str]] = set()
+    for index, file_entry in enumerate(files):
+        passthrough_entry = passthrough.get(index)
+        if passthrough_entry is not None:
+            collapsed.append(passthrough_entry)
+            continue
+        parents = tuple(str(parent) for parent in (file_entry.get("parents") or []) if parent)
+        canonical_stem = _canonicalize_episode_stem(str(file_entry.get("name") or ""))
+        key = (parents, canonical_stem)
+        if key in emitted_keys:
+            continue
+        collapsed.append(chosen_by_key[key])
+        emitted_keys.add(key)
+
+    return collapsed
 
 
 def _folder_key(folder_names: List[str]) -> Tuple[str, ...]:
@@ -3582,6 +3667,7 @@ def main() -> None:
         supports_all_drives=supports_all_drives,
         mime_type_filters=allowed_mime_types,
     )
+    drive_files = _collapse_duplicate_drive_files(drive_files)
 
     artwork_stats = {"matched": 0, "missing": 0, "ambiguous": 0}
     artwork_unmatched: List[str] = []

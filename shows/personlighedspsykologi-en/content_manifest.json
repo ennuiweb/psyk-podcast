@@ -108,7 +108,7 @@
                 "title": "Uge 1, Forelæsning 1 · Lydbog · Grundbog kapitel 01 - Introduktion til personlighedspsykologi",
                 "url": "https://open.spotify.com/episode/3B1Aj7MgBraYQt96Fos6yM",
                 "platform": "spotify",
-                "pub_date": "Mon, 02 Feb 2025 12:00:00 +0100",
+                "pub_date": "Mon, 02 Feb 2025 14:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1c3T8tFVOObJjDVk0u3YHHGTAOWmCfwVy",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -118,7 +118,7 @@
                 "title": "Uge 1, Forelæsning 1 · Podcast · Grundbog kapitel 1 - Introduktion til personlighedspsykologi",
                 "url": "https://open.spotify.com/episode/2vd4ZuglwjedADB0vBxYdo",
                 "platform": "spotify",
-                "pub_date": "Mon, 02 Feb 2025 16:00:00 +0100",
+                "pub_date": "Mon, 02 Feb 2025 18:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1fo_XlTUUpcZYs-55hOLJlHvDcoKgYj7J",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -172,7 +172,7 @@
                 "title": "Uge 1, Forelæsning 1 · Podcast · Lewis (1999)",
                 "url": "https://open.spotify.com/episode/01bVsTBzhbPkWJ3SR1cCf0",
                 "platform": "spotify",
-                "pub_date": "Mon, 02 Feb 2025 14:00:00 +0100",
+                "pub_date": "Mon, 02 Feb 2025 16:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1WcIqpIA9Wpa7tZpbAbur0G4KzhZr-YYI",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -277,7 +277,9 @@
           }
         ]
       },
-      "warnings": []
+      "warnings": [
+        "Duplicate podcast asset detected; ignored older RSS item for: Uge 1, Forelæsning 1 · Lydbog · Grundbog kapitel 01 - Introduktion til personlighedspsykologi"
+      ]
     },
     {
       "lecture_key": "W01L2",
@@ -2489,7 +2491,7 @@
                 "title": "Uge 6, Forelæsning 1 · Podcast · Spinelli (2005)",
                 "url": "https://open.spotify.com/episode/6EhQM6Z2Qy8PdvnMMKWogc",
                 "platform": "spotify",
-                "pub_date": "Mon, 09 Mar 2025 12:00:00 +0100",
+                "pub_date": "Mon, 09 Mar 2025 16:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1MWXqGmlfu9tzMw4qklzYJ_HJ1M4uvOmx",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -2543,7 +2545,7 @@
                 "title": "Uge 6, Forelæsning 1 · Podcast · Moeskær Hansen & Roald (2022)",
                 "url": "https://open.spotify.com/episode/0ciUgOcd0g5THbIsLNwvEe",
                 "platform": "spotify",
-                "pub_date": "Mon, 09 Mar 2025 14:00:00 +0100",
+                "pub_date": "Mon, 09 Mar 2025 18:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1E7iYHGgxV6u6D_FIl0LOWIlnWF2RD2YY",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -2625,7 +2627,7 @@
                 "title": "Uge 6, Forelæsning 1 · Podcast · Grundbog kapitel 4 - Fænomenologisk personlighedspsykologi",
                 "url": "https://open.spotify.com/episode/5hxPrTfHNywc4LgErmBdS9",
                 "platform": "spotify",
-                "pub_date": "Mon, 09 Mar 2025 16:00:00 +0100",
+                "pub_date": "Mon, 09 Mar 2025 20:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1kAbix_21QhvX2cL4p3lcw7OUKyn8ekwI",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -2669,7 +2671,10 @@
           }
         ]
       },
-      "warnings": []
+      "warnings": [
+        "Spotify episode mapping missing for RSS item; skipping podcast asset: Uge 6, Forelæsning 1 · Lydbog · Grundbog kapitel 04 - Fænomenologisk personlighedspsykologi",
+        "Spotify episode mapping missing for RSS item; skipping podcast asset: Uge 6, Forelæsning 1 · Lydbog · Grundbog kapitel 04 - Fænomenologisk personlighedspsykologi"
+      ]
     },
     {
       "lecture_key": "W06L2",
@@ -2735,7 +2740,7 @@
                 "title": "Uge 6, Forelæsning 2 · Podcast · Boss (1963)",
                 "url": "https://open.spotify.com/episode/2s7n91L5gZAN5l5pOUcwXh",
                 "platform": "spotify",
-                "pub_date": "Tue, 10 Mar 2025 12:00:00 +0100",
+                "pub_date": "Tue, 10 Mar 2025 16:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=11JJ4Pop8yJl-lvwXAG47uP25BjCUPOR8",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -2789,7 +2794,7 @@
                 "title": "Uge 6, Forelæsning 2 · Podcast · May (1966)",
                 "url": "https://open.spotify.com/episode/6dOfJ54pgowfbvlIMZO8M7",
                 "platform": "spotify",
-                "pub_date": "Tue, 10 Mar 2025 10:00:00 +0100",
+                "pub_date": "Tue, 10 Mar 2025 14:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1iW6anmZL-B4FblMTyhe_nmQc7hQzOHyr",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -2800,29 +2805,23 @@
       ],
       "slides": [],
       "lecture_assets": {
-        "quizzes": [
+        "quizzes": [],
+        "podcasts": [
           {
-            "quiz_id": "83dbea05",
-            "difficulty": "easy",
-            "quiz_url": "/q/83dbea05.html",
-            "episode_title": "W06L2 - Alle kilder (undtagen slides) [EN].mp3"
-          },
-          {
-            "quiz_id": "a4573eea",
-            "difficulty": "hard",
-            "quiz_url": "/q/a4573eea.html",
-            "episode_title": "W06L2 - Alle kilder (undtagen slides) [EN].mp3"
-          },
-          {
-            "quiz_id": "6c92d6ca",
-            "difficulty": "medium",
-            "quiz_url": "/q/6c92d6ca.html",
-            "episode_title": "W06L2 - Alle kilder (undtagen slides) [EN].mp3"
+            "kind": "podcast",
+            "title": "Uge 6, Forelæsning 2 · Podcast · Alle kilder (undtagen slides)",
+            "url": "https://open.spotify.com/episode/1D5AIlFY5weIIAOyuTy7Dk",
+            "platform": "spotify",
+            "pub_date": "Tue, 10 Mar 2025 12:00:00 +0100",
+            "source_audio_url": "https://drive.google.com/uc?export=download&id=1jRVz2oSE8hCT6_KB_H0yUh5tw-ec5dBS",
+            "duration_seconds": null,
+            "duration_label": ""
           }
-        ],
-        "podcasts": []
+        ]
       },
-      "warnings": []
+      "warnings": [
+        "Duplicate podcast asset detected; ignored older RSS item for: Uge 6, Forelæsning 2 · Podcast · Alle kilder (undtagen slides)"
+      ]
     },
     {
       "lecture_key": "W07L1",
@@ -4888,7 +4887,7 @@
                 "title": "Uge 12, Forelæsning 1 · Podcast · Elias (2000)",
                 "url": "https://open.spotify.com/episode/713dxOnQHkwL6qHrNG8HcJ",
                 "platform": "spotify",
-                "pub_date": "Tue, 28 Apr 2025 00:00:00 +0200",
+                "pub_date": "Tue, 28 Apr 2025 02:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1eiTP7AbshqslclR6js4az2mDxZpncF0x",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -4970,7 +4969,7 @@
                 "title": "Uge 12, Forelæsning 1 · Podcast · Grundbog kapitel 8 - Personlighed, subjektivitet og historicitet",
                 "url": "https://open.spotify.com/episode/2FPojjSAnyupsTap38F4Aj",
                 "platform": "spotify",
-                "pub_date": "Mon, 27 Apr 2025 18:00:00 +0200",
+                "pub_date": "Mon, 27 Apr 2025 20:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1PnBmGOliDSld_R2_3hRsQzPWOV-Ez-4Z",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -5042,7 +5041,7 @@
                 "title": "[Lydbog] · Grundbog kapitel 14 - Perspektiver på personlighedspsykologi",
                 "url": "https://open.spotify.com/episode/6pKeAvfNMEflIuqkMR5DKR",
                 "platform": "spotify",
-                "pub_date": "Mon, 27 Apr 2025 10:00:00 +0200",
+                "pub_date": "Mon, 27 Apr 2025 12:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1FbS7n8lKcepk3fAGP18ctnaEslm_SZMf",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -5062,7 +5061,7 @@
                 "title": "Uge 12, Forelæsning 1 · Lydbog · Grundbog kapitel 14 - Perspektiver på personlighedspsykologi",
                 "url": "https://open.spotify.com/episode/2BMbWVZI123XKUyEnIAa8C",
                 "platform": "spotify",
-                "pub_date": "Mon, 27 Apr 2025 14:00:00 +0200",
+                "pub_date": "Mon, 27 Apr 2025 16:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1FbS7n8lKcepk3fAGP18ctnaEslm_SZMf",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -5072,7 +5071,7 @@
                 "title": "Uge 12, Forelæsning 1 · Podcast · Grundbog kapitel 14 - Perspektiver på personlighedspsykologi",
                 "url": "https://open.spotify.com/episode/2jRVYbSGMW3fSd8y6RnuEA",
                 "platform": "spotify",
-                "pub_date": "Mon, 27 Apr 2025 22:00:00 +0200",
+                "pub_date": "Tue, 28 Apr 2025 00:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1L_xAM-RU20fdpAyJGzi1zzDGRAZdfgmC",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -5082,7 +5081,7 @@
                 "title": "Uge 12, Forelæsning 1 · Podcast · Grundbog kapitel 14 - Perspektiver på personlighedspsykologi 2",
                 "url": "https://open.spotify.com/episode/7bVl5TUxICjhBINg7vj33C",
                 "platform": "spotify",
-                "pub_date": "Mon, 27 Apr 2025 20:00:00 +0200",
+                "pub_date": "Mon, 27 Apr 2025 22:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1JFkU4WxPXBtXvt3gTqhmTBepbYhL7-8W",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -5127,12 +5126,14 @@
         ]
       },
       "warnings": [
-        "Spotify episode mapping missing for RSS item; skipping podcast asset: Uge 12, Forelæsning 1 · Lydbog · Grundbog kapitel 08 - Personlighed, subjektivitet og historicitet"
+        "Spotify episode mapping missing for RSS item; skipping podcast asset: Uge 12, Forelæsning 1 · Lydbog · Grundbog kapitel 08 - Personlighed, subjektivitet og historicitet",
+        "Duplicate podcast asset detected; ignored older RSS item for: Uge 12, Forelæsning 1 · Lydbog · Grundbog kapitel 14 - Perspektiver på personlighedspsykologi"
       ]
     }
   ],
   "warnings": [
     "RSS item has unknown lecture mapping: [Lydbog] · Grundbog kapitel 01 - Introduktion til personlighedspsykologi",
+    "RSS item has unknown lecture mapping: [Lydbog] · Grundbog kapitel 04 - Fænomenologisk personlighedspsykologi",
     "RSS item has unknown lecture mapping: [Lydbog] · Grundbog kapitel 08 - Personlighed, subjektivitet og historicitet",
     "RSS item has unknown lecture mapping: [Lydbog] · Grundbog kapitel 09 - Narrative teorier"
   ]

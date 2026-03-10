@@ -61,6 +61,7 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Subject detail hides the card-to-rail pointer notch on responsive layouts (`<=1180px`) to keep alignment clean with compact rail widths.
 - Active lecture card renders sections in this order: `Tekster`, `Slides`, optional `Podcasts` (only when podcast rows exist), `Quiz for alle kilder`.
 - Subject detail can render optional manually authored summaries from the show summary caches: lecture-level overviews above the content sections and per-tekst summaries inside each reading card.
+- Authenticated and anonymous subject-detail snapshots both preserve manifest-backed lecture and reading summaries.
 - `Slides` viser kun underkategorier med mindst én slide (`slides fra forelæsning`, `slides fra seminarhold`, `slides fra øvelseshold`); hvis ingen slides findes for forelæsningen, skjules hele `Slides`-sektionen.
 - Slide mapping er manuel-only for alle fag; automatisk mapping med script er ikke tilladt (`freudd_portal/docs/slides-mapping-policy.md`).
 - Quiz assets are surfaced only in `Quiz for alle kilder`, podcast assets only in `Podcasts`, and tekststatus/progress only in `Tekster`.

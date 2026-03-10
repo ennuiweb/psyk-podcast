@@ -213,6 +213,35 @@ def _quiz_ids_from_assets(assets: dict[str, Any]) -> set[str]:
     return quiz_ids
 
 
+def _summary_payload(raw_summary: object) -> dict[str, Any] | None:
+    if not isinstance(raw_summary, dict):
+        return None
+
+    summary_lines: list[str] = []
+    raw_summary_lines = raw_summary.get("summary_lines")
+    if isinstance(raw_summary_lines, list):
+        for value in raw_summary_lines:
+            cleaned = str(value or "").strip()
+            if cleaned:
+                summary_lines.append(cleaned)
+
+    key_points: list[str] = []
+    raw_key_points = raw_summary.get("key_points")
+    if isinstance(raw_key_points, list):
+        for value in raw_key_points:
+            cleaned = str(value or "").strip()
+            if cleaned:
+                key_points.append(cleaned)
+
+    if not summary_lines and not key_points:
+        return None
+
+    return {
+        "summary_lines": summary_lines,
+        "key_points": key_points,
+    }
+
+
 def recompute_subject_progress(user, subject_slug: str) -> dict[str, Any]:
     slug = (subject_slug or "").strip().lower()
     if not slug:
@@ -554,6 +583,7 @@ def get_subject_learning_path_snapshot(user, subject_slug: str) -> dict[str, Any
                     "status": reading_row.status if reading_row else default_status,
                     "completed_quizzes": int(reading_row.completed_quizzes) if reading_row else 0,
                     "total_quizzes": int(reading_row.total_quizzes) if reading_row else len(_quiz_ids_from_assets(reading_assets)),
+                    "summary": _summary_payload(reading.get("summary")),
                     "assets": {
                         "quizzes": list(reading_assets.get("quizzes") or []),
                         "podcasts": list(reading_assets.get("podcasts") or []),
@@ -592,6 +622,7 @@ def get_subject_learning_path_snapshot(user, subject_slug: str) -> dict[str, Any
                     + sum(len(_quiz_ids_from_assets(reading.get("assets") if isinstance(reading, dict) else {})) for reading in readings_payload)
                     + slide_quiz_count
                 ),
+                "summary": _summary_payload(lecture.get("summary")),
                 "warnings": list(lecture.get("warnings") or []),
                 "readings": readings_payload,
                 "slides": slides_payload,

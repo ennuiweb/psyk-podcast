@@ -21,6 +21,7 @@ from django.utils import timezone
 
 from quizzes import services as quiz_services
 from quizzes.content_services import clear_content_service_caches
+from quizzes.gamification_services import get_subject_learning_path_snapshot
 from quizzes.leaderboard_services import active_half_year_semester
 from quizzes.models import (
     DailyGamificationStat,
@@ -62,6 +63,8 @@ class QuizPortalTests(TestCase):
         self.reading_files_root = root / "reading-files"
         self.slides_files_root = root / "slides-files"
         self.reading_exclusions_file = root / "reading_download_exclusions.json"
+        self.reading_summaries_file = root / "reading_summaries.json"
+        self.weekly_overview_summaries_file = root / "weekly_overview_summaries.json"
 
         self.override = override_settings(
             QUIZ_FILES_ROOT=self.quiz_root,
@@ -110,6 +113,7 @@ class QuizPortalTests(TestCase):
         self.reading_fallback_file.write_text(self.reading_master_file.read_text(encoding="utf-8"), encoding="utf-8")
         self._write_rss_file()
         self._write_spotify_map()
+        self._write_summary_files()
         self._write_reading_files()
         self._write_slides_catalog_file()
         self._write_reading_download_exclusions([])
@@ -184,9 +188,13 @@ class QuizPortalTests(TestCase):
                 "title": "Personlighedspsykologi",
                 "description": "Personlighedspsykologi F26",
                 "active": True,
+                "paths": {
+                    "reading_summaries_path": str(self.reading_summaries_file),
+                    "weekly_overview_summaries_path": str(self.weekly_overview_summaries_file),
+                },
             }
             if personlighedspsykologi_paths:
-                subject_payload["paths"] = dict(personlighedspsykologi_paths)
+                subject_payload["paths"].update(dict(personlighedspsykologi_paths))
             payload["subjects"] = [
                 subject_payload
             ]
@@ -251,6 +259,21 @@ class QuizPortalTests(TestCase):
                     "by_rss_title": mapping,
                 }
             ),
+            encoding="utf-8",
+        )
+
+    def _write_summary_files(
+        self,
+        *,
+        reading_entries: dict[str, object] | None = None,
+        weekly_entries: dict[str, object] | None = None,
+    ) -> None:
+        self.reading_summaries_file.write_text(
+            json.dumps({"by_name": reading_entries or {}}, ensure_ascii=False),
+            encoding="utf-8",
+        )
+        self.weekly_overview_summaries_file.write_text(
+            json.dumps({"by_name": weekly_entries or {}}, ensure_ascii=False),
             encoding="utf-8",
         )
 
@@ -3292,6 +3315,100 @@ class QuizPortalTests(TestCase):
             },
         ):
             response = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Forelæsningsoversigt")
+        self.assertContains(
+            response,
+            "Forelæsningen introducerer personlighed som et spænd mellem struktur og forandring.",
+        )
+        self.assertContains(response, "Kort overblik")
+        self.assertContains(response, "Lewis beskriver personlighed som et historisk udviklingsforløb.")
+        self.assertContains(response, "Tidlige relationer får betydning for senere selvorganisering.")
+
+    def test_authenticated_subject_learning_path_snapshot_preserves_manifest_summaries(self) -> None:
+        self._write_summary_files(
+            reading_entries={
+                "W01L1 - Lewis (1999) [EN].mp3": {
+                    "summary_lines": [
+                        "Lewis beskriver personlighed som et historisk udviklingsforløb.",
+                    ],
+                    "key_points": [
+                        "Tidlige relationer får betydning for senere selvorganisering.",
+                    ],
+                    "meta": {
+                        "source_file": str(self.reading_files_root / "W01L1" / "Lewis (1999).pdf"),
+                    },
+                }
+            },
+            weekly_entries={
+                "W01L1 - Alle kilder [EN].mp3": {
+                    "summary_lines": [
+                        "Forelæsningen introducerer personlighed som et spænd mellem struktur og forandring.",
+                    ],
+                    "key_points": [
+                        "Stabilitet og udvikling må analyseres sammen.",
+                    ],
+                    "meta": {
+                        "lecture_key": "W01L1",
+                    },
+                }
+            },
+        )
+        clear_content_service_caches()
+
+        user = self._create_user()
+        snapshot = get_subject_learning_path_snapshot(user, "personlighedspsykologi")
+
+        lecture = snapshot["lectures"][0]
+        self.assertEqual(
+            lecture["summary"]["summary_lines"][0],
+            "Forelæsningen introducerer personlighed som et spænd mellem struktur og forandring.",
+        )
+        self.assertEqual(
+            lecture["readings"][1]["summary"]["summary_lines"][0],
+            "Lewis beskriver personlighed som et historisk udviklingsforløb.",
+        )
+        self.assertEqual(
+            lecture["readings"][1]["summary"]["key_points"][0],
+            "Tidlige relationer får betydning for senere selvorganisering.",
+        )
+
+    def test_subject_detail_renders_manifest_summaries_for_authenticated_user(self) -> None:
+        self._write_summary_files(
+            reading_entries={
+                "W01L1 - Lewis (1999) [EN].mp3": {
+                    "summary_lines": [
+                        "Lewis beskriver personlighed som et historisk udviklingsforløb.",
+                    ],
+                    "key_points": [
+                        "Tidlige relationer får betydning for senere selvorganisering.",
+                    ],
+                    "meta": {
+                        "source_file": str(self.reading_files_root / "W01L1" / "Lewis (1999).pdf"),
+                    },
+                }
+            },
+            weekly_entries={
+                "W01L1 - Alle kilder [EN].mp3": {
+                    "summary_lines": [
+                        "Forelæsningen introducerer personlighed som et spænd mellem struktur og forandring.",
+                    ],
+                    "key_points": [
+                        "Stabilitet og udvikling må analyseres sammen.",
+                    ],
+                    "meta": {
+                        "lecture_key": "W01L1",
+                    },
+                }
+            },
+        )
+        clear_content_service_caches()
+
+        user = self._create_user()
+        self.client.force_login(user)
+
+        response = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
 
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Forelæsningsoversigt")

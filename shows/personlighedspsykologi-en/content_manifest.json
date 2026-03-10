@@ -4423,12 +4423,32 @@
             ],
             "podcasts": [
               {
+                "kind": "audio",
+                "title": "[Lydbog] · Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori",
+                "url": "https://open.spotify.com/episode/0iCMf0tA8aR0brxs7otYoH",
+                "platform": "spotify",
+                "pub_date": "Mon, 20 Apr 2025 10:00:00 +0200",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1NlVmtO2fX5twpywcDyFN47iYLs0lT5iW",
+                "duration_seconds": null,
+                "duration_label": ""
+              },
+              {
                 "kind": "short_podcast",
                 "title": "Uge 11, Forelæsning 1 · Kort podcast · Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori",
                 "url": "https://open.spotify.com/episode/5mKkth4i6IgZce7lwlZQf0",
                 "platform": "spotify",
                 "pub_date": "Mon, 20 Apr 2025 10:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1ZcAhGfQQzI0Bi7ko_fVwXSbRqvU9Ay13",
+                "duration_seconds": null,
+                "duration_label": ""
+              },
+              {
+                "kind": "lydbog",
+                "title": "Uge 11, Forelæsning 1 · Lydbog · Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori",
+                "url": "https://open.spotify.com/episode/2eOmbjLMZhjX4jS9hHkXcH",
+                "platform": "spotify",
+                "pub_date": "Mon, 20 Apr 2025 12:00:00 +0200",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1NlVmtO2fX5twpywcDyFN47iYLs0lT5iW",
                 "duration_seconds": null,
                 "duration_label": ""
               },
@@ -4481,10 +4501,7 @@
           }
         ]
       },
-      "warnings": [
-        "Spotify episode mapping missing for RSS item; skipping podcast asset: Uge 11, Forelæsning 1 · Lydbog · Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori",
-        "Spotify episode mapping missing for RSS item; skipping podcast asset: [Lydbog] · Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori"
-      ]
+      "warnings": []
     },
     {
       "lecture_key": "W11L2",

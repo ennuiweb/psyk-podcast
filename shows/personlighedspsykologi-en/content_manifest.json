@@ -2421,7 +2421,8 @@
         ]
       },
       "warnings": [
-        "Spotify episode mapping missing for RSS item; skipping podcast asset: Uge 5, Forelæsning 2 · Lydbog · Grundbog kapitel 07 - Nyere psykoanalytiske teorier"
+        "Spotify episode mapping missing for RSS item; skipping podcast asset: Uge 5, Forelæsning 2 · Lydbog · Grundbog kapitel 07 - Nyere psykoanalytiske teorier",
+        "Spotify episode mapping missing for RSS item; skipping podcast asset: [Lydbog] · Grundbog kapitel 07 - Nyere psykoanalytiske teorier"
       ]
     },
     {
@@ -2488,7 +2489,7 @@
                 "title": "Uge 6, Forelæsning 1 · Podcast · Spinelli (2005)",
                 "url": "https://open.spotify.com/episode/6EhQM6Z2Qy8PdvnMMKWogc",
                 "platform": "spotify",
-                "pub_date": "Mon, 09 Mar 2025 14:00:00 +0100",
+                "pub_date": "Mon, 09 Mar 2025 12:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1MWXqGmlfu9tzMw4qklzYJ_HJ1M4uvOmx",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -2542,7 +2543,7 @@
                 "title": "Uge 6, Forelæsning 1 · Podcast · Moeskær Hansen & Roald (2022)",
                 "url": "https://open.spotify.com/episode/0ciUgOcd0g5THbIsLNwvEe",
                 "platform": "spotify",
-                "pub_date": "Mon, 09 Mar 2025 16:00:00 +0100",
+                "pub_date": "Mon, 09 Mar 2025 14:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1E7iYHGgxV6u6D_FIl0LOWIlnWF2RD2YY",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -2624,7 +2625,7 @@
                 "title": "Uge 6, Forelæsning 1 · Podcast · Grundbog kapitel 4 - Fænomenologisk personlighedspsykologi",
                 "url": "https://open.spotify.com/episode/5hxPrTfHNywc4LgErmBdS9",
                 "platform": "spotify",
-                "pub_date": "Mon, 09 Mar 2025 18:00:00 +0100",
+                "pub_date": "Mon, 09 Mar 2025 16:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1kAbix_21QhvX2cL4p3lcw7OUKyn8ekwI",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -2668,9 +2669,7 @@
           }
         ]
       },
-      "warnings": [
-        "Spotify episode mapping missing for RSS item; skipping podcast asset: Uge 6, Forelæsning 1 · Lydbog · Grundbog kapitel 04 - Fænomenologisk personlighedspsykologi"
-      ]
+      "warnings": []
     },
     {
       "lecture_key": "W06L2",
@@ -2736,7 +2735,7 @@
                 "title": "Uge 6, Forelæsning 2 · Podcast · Boss (1963)",
                 "url": "https://open.spotify.com/episode/2s7n91L5gZAN5l5pOUcwXh",
                 "platform": "spotify",
-                "pub_date": "Tue, 10 Mar 2025 14:00:00 +0100",
+                "pub_date": "Tue, 10 Mar 2025 12:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=11JJ4Pop8yJl-lvwXAG47uP25BjCUPOR8",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -2790,7 +2789,7 @@
                 "title": "Uge 6, Forelæsning 2 · Podcast · May (1966)",
                 "url": "https://open.spotify.com/episode/6dOfJ54pgowfbvlIMZO8M7",
                 "platform": "spotify",
-                "pub_date": "Tue, 10 Mar 2025 12:00:00 +0100",
+                "pub_date": "Tue, 10 Mar 2025 10:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1iW6anmZL-B4FblMTyhe_nmQc7hQzOHyr",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -2806,33 +2805,22 @@
             "quiz_id": "83dbea05",
             "difficulty": "easy",
             "quiz_url": "/q/83dbea05.html",
-            "episode_title": "W6L2 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3"
+            "episode_title": "W06L2 - Alle kilder (undtagen slides) [EN].mp3"
           },
           {
             "quiz_id": "a4573eea",
             "difficulty": "hard",
             "quiz_url": "/q/a4573eea.html",
-            "episode_title": "W6L2 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3"
+            "episode_title": "W06L2 - Alle kilder (undtagen slides) [EN].mp3"
           },
           {
             "quiz_id": "6c92d6ca",
             "difficulty": "medium",
             "quiz_url": "/q/6c92d6ca.html",
-            "episode_title": "W6L2 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3"
+            "episode_title": "W06L2 - Alle kilder (undtagen slides) [EN].mp3"
           }
         ],
-        "podcasts": [
-          {
-            "kind": "podcast",
-            "title": "Uge 6, Forelæsning 2 · Podcast · Alle kilder (undtagen slides)",
-            "url": "https://open.spotify.com/episode/1D5AIlFY5weIIAOyuTy7Dk",
-            "platform": "spotify",
-            "pub_date": "Tue, 10 Mar 2025 10:00:00 +0100",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1DQOQ55z75Pmj4ixAX2kUY9dRPHTaRnQu",
-            "duration_seconds": null,
-            "duration_label": ""
-          }
-        ]
+        "podcasts": []
       },
       "warnings": []
     },
@@ -3845,7 +3833,8 @@
         ]
       },
       "warnings": [
-        "Spotify episode mapping missing for RSS item; skipping podcast asset: Uge 9, Forelæsning 1 · Lydbog · Grundbog kapitel 10 - Kritisk psykologi"
+        "Spotify episode mapping missing for RSS item; skipping podcast asset: Uge 9, Forelæsning 1 · Lydbog · Grundbog kapitel 10 - Kritisk psykologi",
+        "Spotify episode mapping missing for RSS item; skipping podcast asset: [Lydbog] · Grundbog kapitel 10 - Kritisk psykologi"
       ]
     },
     {
@@ -4475,7 +4464,8 @@
         ]
       },
       "warnings": [
-        "Spotify episode mapping missing for RSS item; skipping podcast asset: Uge 11, Forelæsning 1 · Lydbog · Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori"
+        "Spotify episode mapping missing for RSS item; skipping podcast asset: Uge 11, Forelæsning 1 · Lydbog · Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori",
+        "Spotify episode mapping missing for RSS item; skipping podcast asset: [Lydbog] · Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori"
       ]
     },
     {
@@ -5048,6 +5038,16 @@
             ],
             "podcasts": [
               {
+                "kind": "audio",
+                "title": "[Lydbog] · Grundbog kapitel 14 - Perspektiver på personlighedspsykologi",
+                "url": "https://open.spotify.com/episode/6pKeAvfNMEflIuqkMR5DKR",
+                "platform": "spotify",
+                "pub_date": "Mon, 27 Apr 2025 10:00:00 +0200",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1FbS7n8lKcepk3fAGP18ctnaEslm_SZMf",
+                "duration_seconds": null,
+                "duration_label": ""
+              },
+              {
                 "kind": "short_podcast",
                 "title": "Uge 12, Forelæsning 1 · Kort podcast · Grundbog kapitel 14 - Perspektiver på personlighedspsykologi",
                 "url": "https://open.spotify.com/episode/6vGbD1xIgYnlgzYqWFHgrG",
@@ -5133,12 +5133,7 @@
   ],
   "warnings": [
     "RSS item has unknown lecture mapping: [Lydbog] · Grundbog kapitel 01 - Introduktion til personlighedspsykologi",
-    "RSS item has unknown lecture mapping: [Lydbog] · Grundbog kapitel 04 - Fænomenologisk personlighedspsykologi",
-    "RSS item has unknown lecture mapping: [Lydbog] · Grundbog kapitel 07 - Nyere psykoanalytiske teorier",
     "RSS item has unknown lecture mapping: [Lydbog] · Grundbog kapitel 08 - Personlighed, subjektivitet og historicitet",
-    "RSS item has unknown lecture mapping: [Lydbog] · Grundbog kapitel 09 - Narrative teorier",
-    "RSS item has unknown lecture mapping: [Lydbog] · Grundbog kapitel 10 - Kritisk psykologi",
-    "RSS item has unknown lecture mapping: [Lydbog] · Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori",
-    "RSS item has unknown lecture mapping: [Lydbog] · Grundbog kapitel 14 - Perspektiver på personlighedspsykologi"
+    "RSS item has unknown lecture mapping: [Lydbog] · Grundbog kapitel 09 - Narrative teorier"
   ]
 }

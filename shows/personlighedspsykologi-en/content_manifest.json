@@ -2330,12 +2330,32 @@
             ],
             "podcasts": [
               {
+                "kind": "audio",
+                "title": "[Lydbog] · Grundbog kapitel 07 - Nyere psykoanalytiske teorier",
+                "url": "https://open.spotify.com/episode/46fLdwKrLD1B0Uy2egdkrf",
+                "platform": "spotify",
+                "pub_date": "Tue, 03 Mar 2025 10:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1DS8OjuKG8T5TGxw-dSzsrfPEpteYimbf",
+                "duration_seconds": null,
+                "duration_label": ""
+              },
+              {
                 "kind": "short_podcast",
                 "title": "Uge 5, Forelæsning 2 · Kort podcast · Grundbog kapitel 07 - Nyere psykoanalytiske teorier",
                 "url": "https://open.spotify.com/episode/0O5RAiZk8QaxLnTBPXLl4D",
                 "platform": "spotify",
                 "pub_date": "Tue, 03 Mar 2025 12:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1CyR5dstDoHq2VHbQH_JePhSYOJaD2s2t",
+                "duration_seconds": null,
+                "duration_label": ""
+              },
+              {
+                "kind": "lydbog",
+                "title": "Uge 5, Forelæsning 2 · Lydbog · Grundbog kapitel 07 - Nyere psykoanalytiske teorier",
+                "url": "https://open.spotify.com/episode/7AwZNnk7mCAscueWqUOHl7",
+                "platform": "spotify",
+                "pub_date": "Tue, 03 Mar 2025 14:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1DS8OjuKG8T5TGxw-dSzsrfPEpteYimbf",
                 "duration_seconds": null,
                 "duration_label": ""
               },
@@ -2419,10 +2439,7 @@
           }
         ]
       },
-      "warnings": [
-        "Spotify episode mapping missing for RSS item; skipping podcast asset: Uge 5, Forelæsning 2 · Lydbog · Grundbog kapitel 07 - Nyere psykoanalytiske teorier",
-        "Spotify episode mapping missing for RSS item; skipping podcast asset: [Lydbog] · Grundbog kapitel 07 - Nyere psykoanalytiske teorier"
-      ]
+      "warnings": []
     },
     {
       "lecture_key": "W06L1",

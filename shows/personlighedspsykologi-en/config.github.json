@@ -18,7 +18,9 @@
     "source_mime_types": [
       "video/mp4",
       "audio/mp4",
-      "audio/x-m4a"
+      "audio/x-m4a",
+      "audio/wav",
+      "audio/x-wav"
     ],
     "target_extension": "mp3",
     "target_mime_type": "audio/mpeg",

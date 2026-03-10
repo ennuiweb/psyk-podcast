@@ -58,6 +58,7 @@ Quiz link sync note:
 - Slide-only quiz exports should be synced with fallback-derived names so they still get quiz IDs and appear on Freudd even when no matching MP3 exists (`--fallback-derive-mp3-names` for sync workflows).
 - `shows/personlighedspsykologi-en/quiz_links.json` intentionally keeps `.html` relative paths so public links remain `/q/<id>.html`, and all entries include `subject_slug`.
 - Feed generation uses `quiz.base_url = https://freudd.dk/q/` so podcast descriptions link to the domain (not raw IP).
+- Feed transcode now also covers `audio/wav` and `audio/x-wav`, so lydbog/TTS uploads are converted to MP3 before RSS generation instead of being published as raw WAV files.
 
 Spotify map sync note:
 - `scripts/sync_spotify_map.py` auto-fills `shows/personlighedspsykologi-en/spotify_map.json` from RSS titles.

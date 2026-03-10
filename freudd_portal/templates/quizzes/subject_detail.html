@@ -1181,79 +1181,63 @@
     font-size: 0.88rem;
   }
 
-  .lecture-summary,
-  .reading-summary {
-    display: grid;
-    gap: 12px;
-  }
-
-  .lecture-summary {
-    margin-top: var(--space-4);
-    padding: clamp(16px, 1.8vw, 22px);
-    border: 1px solid color-mix(in srgb, var(--accent) 20%, var(--border));
-    border-radius: 24px;
-    background: color-mix(in srgb, var(--accent-soft) 20%, var(--surface));
-  }
-
-  .lecture-summary-title,
-  .reading-summary-title {
+  .summary-foldout {
     margin: 0;
-    font-family: var(--subject-font-ui);
-    font-size: 0.8rem;
-    font-weight: 800;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--accent-strong);
   }
 
-  .lecture-summary-lines,
-  .reading-summary-lines,
-  .lecture-summary-points,
-  .reading-summary-points {
+  .lecture-summary-foldout {
+    margin-top: var(--space-4);
+  }
+
+  .reading-summary-foldout {
+    margin-top: 6px;
+  }
+
+  .summary-foldout>summary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     margin: 0;
     padding: 0;
-    list-style: none;
-    display: grid;
-    gap: 8px;
-  }
-
-  .lecture-summary-line,
-  .reading-summary-line {
-    margin: 0;
-    color: var(--text);
-    font-family: var(--subject-font-ui);
-    font-size: 0.96rem;
-    line-height: 1.55;
-  }
-
-  .lecture-summary-points,
-  .reading-summary-points {
-    gap: 6px;
-  }
-
-  .lecture-summary-point,
-  .reading-summary-point {
-    margin: 0;
-    padding-left: 1.05rem;
-    position: relative;
-    color: var(--text);
+    border: 0;
+    background: transparent;
+    color: var(--muted);
     font-family: var(--subject-font-ui);
     font-size: 0.92rem;
-    line-height: 1.5;
+    font-weight: 600;
+    line-height: 1.4;
+    cursor: pointer;
+    list-style: none;
   }
 
-  .lecture-summary-point::before,
-  .reading-summary-point::before {
-    content: "•";
-    position: absolute;
-    left: 0;
-    top: 0;
+  .summary-foldout>summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .summary-foldout>summary::before {
+    content: "+";
     color: var(--accent-strong);
-    font-weight: 800;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1;
   }
 
-  .reading-summary {
-    margin-top: 4px;
+  .summary-foldout[open]>summary::before {
+    content: "−";
+  }
+
+  .summary-foldout-copy {
+    display: grid;
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  .summary-foldout-line {
+    margin: 0;
+    color: var(--text);
+    font-family: var(--subject-font-ui);
+    font-size: 0.95rem;
+    line-height: 1.6;
   }
 
   .reading-actions {
@@ -2070,24 +2054,18 @@
         </div>
         {% endif %}
 
-        {% if active_lecture.summary and active_lecture.summary.summary_lines %}
-        <section class="lecture-summary" aria-label="opsummering af forelæsningen">
-          <p class="lecture-summary-title">Forelæsningsoversigt</p>
-          <div class="lecture-summary-copy">
-            <ul class="lecture-summary-lines">
-              {% for line in active_lecture.summary.summary_lines %}
-              <li class="lecture-summary-line">{{ line }}</li>
-              {% endfor %}
-            </ul>
-            {% if active_lecture.summary.key_points %}
-            <ul class="lecture-summary-points">
-              {% for point in active_lecture.summary.key_points %}
-              <li class="lecture-summary-point">{{ point }}</li>
-              {% endfor %}
-            </ul>
-            {% endif %}
+        {% if active_lecture.summary and active_lecture.summary.summary_lines or active_lecture.summary and active_lecture.summary.key_points %}
+        <details class="summary-foldout lecture-summary-foldout" aria-label="opsummering af forelæsningen">
+          <summary>Resumé</summary>
+          <div class="summary-foldout-copy">
+            {% for line in active_lecture.summary.summary_lines %}
+            <p class="summary-foldout-line">{{ line }}</p>
+            {% endfor %}
+            {% for point in active_lecture.summary.key_points %}
+            <p class="summary-foldout-line">{{ point }}</p>
+            {% endfor %}
           </div>
-        </section>
+        </details>
         {% endif %}
 
         <div class="active-lecture-sections">
@@ -2126,22 +2104,18 @@
                       {% endif %}
                     </p>
                     {% endif %}
-                    {% if reading.summary and reading.summary.summary_lines %}
-                    <div class="reading-summary">
-                      <p class="reading-summary-title">Kort overblik</p>
-                      <ul class="reading-summary-lines">
+                    {% if reading.summary and reading.summary.summary_lines or reading.summary and reading.summary.key_points %}
+                    <details class="summary-foldout reading-summary-foldout">
+                      <summary>Resumé</summary>
+                      <div class="summary-foldout-copy">
                         {% for line in reading.summary.summary_lines %}
-                        <li class="reading-summary-line">{{ line }}</li>
+                        <p class="summary-foldout-line">{{ line }}</p>
                         {% endfor %}
-                      </ul>
-                      {% if reading.summary.key_points %}
-                      <ul class="reading-summary-points">
                         {% for point in reading.summary.key_points %}
-                        <li class="reading-summary-point">{{ point }}</li>
+                        <p class="summary-foldout-line">{{ point }}</p>
                         {% endfor %}
-                      </ul>
-                      {% endif %}
-                    </div>
+                      </div>
+                    </details>
                     {% endif %}
                   </div>
                   <div class="reading-side {% if reading.visible_difficulty_summary %}has-difficulties{% endif %}">

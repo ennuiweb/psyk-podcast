@@ -3317,14 +3317,16 @@ class QuizPortalTests(TestCase):
             response = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
 
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "Forelæsningsoversigt")
+        self.assertContains(response, 'class="summary-foldout lecture-summary-foldout"')
         self.assertContains(
             response,
             "Forelæsningen introducerer personlighed som et spænd mellem struktur og forandring.",
         )
-        self.assertContains(response, "Kort overblik")
+        self.assertContains(response, 'class="summary-foldout reading-summary-foldout"')
         self.assertContains(response, "Lewis beskriver personlighed som et historisk udviklingsforløb.")
         self.assertContains(response, "Tidlige relationer får betydning for senere selvorganisering.")
+        self.assertNotContains(response, "Forelæsningsoversigt")
+        self.assertNotContains(response, "Kort overblik")
 
     def test_authenticated_subject_learning_path_snapshot_preserves_manifest_summaries(self) -> None:
         self._write_summary_files(
@@ -3411,14 +3413,16 @@ class QuizPortalTests(TestCase):
         response = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
 
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "Forelæsningsoversigt")
+        self.assertContains(response, 'class="summary-foldout lecture-summary-foldout"')
         self.assertContains(
             response,
             "Forelæsningen introducerer personlighed som et spænd mellem struktur og forandring.",
         )
-        self.assertContains(response, "Kort overblik")
+        self.assertContains(response, 'class="summary-foldout reading-summary-foldout"')
         self.assertContains(response, "Lewis beskriver personlighed som et historisk udviklingsforløb.")
         self.assertContains(response, "Tidlige relationer får betydning for senere selvorganisering.")
+        self.assertNotContains(response, "Forelæsningsoversigt")
+        self.assertNotContains(response, "Kort overblik")
 
     def test_subject_open_reading_is_public(self) -> None:
         user = self._create_user()

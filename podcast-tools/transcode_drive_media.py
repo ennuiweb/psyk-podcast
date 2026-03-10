@@ -6,12 +6,13 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 import subprocess
 import sys
 import tempfile
 import time
 from pathlib import Path
-from typing import Any, Dict, Iterable, List, Optional
+from typing import Any, Dict, Iterable, List, Optional, Sequence, Tuple
 
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
@@ -28,11 +29,90 @@ RETRYABLE_REASONS = {
     "rateLimitExceeded",
     "userRateLimitExceeded",
 }
+CFG_TAG_PATTERN = re.compile(
+    r"(?:\s+\{[a-z0-9._:+-]+=[^{}\s]+(?:\s+[a-z0-9._:+-]+=[^{}\s]+)*\})+"
+    r"(?:\s+\[[^\[\]]+\])?$",
+    re.IGNORECASE,
+)
 
 
 def load_json(path: Path) -> Dict[str, Any]:
     with path.open("r", encoding="utf-8") as handle:
         return json.load(handle)
+
+
+def _strip_cfg_tag_suffix(value: str) -> str:
+    if not value:
+        return ""
+    return CFG_TAG_PATTERN.sub("", value).strip()
+
+
+def _normalize_media_stem(name: str) -> str:
+    return _strip_cfg_tag_suffix(Path(name).stem).casefold().strip()
+
+
+def _file_size_bytes(file_entry: Dict[str, Any]) -> int:
+    raw_value = file_entry.get("size")
+    if isinstance(raw_value, bool):
+        return 0
+    try:
+        return max(0, int(raw_value))
+    except (TypeError, ValueError):
+        return 0
+
+
+def _media_group_key(file_entry: Dict[str, Any]) -> Optional[Tuple[Tuple[str, ...], str]]:
+    parents = tuple(str(parent) for parent in (file_entry.get("parents") or []) if parent)
+    stem = _normalize_media_stem(str(file_entry.get("name") or ""))
+    if not parents or not stem:
+        return None
+    return parents, stem
+
+
+def _is_healthy_transcode_target(
+    file_entry: Dict[str, Any],
+    *,
+    target_extension: str,
+    target_mime_type: str,
+) -> bool:
+    if _file_size_bytes(file_entry) <= 0:
+        return False
+    mime_type = str(file_entry.get("mimeType") or "").casefold()
+    if mime_type == target_mime_type.casefold():
+        return True
+    return Path(str(file_entry.get("name") or "")).suffix.casefold() == f".{target_extension.lstrip('.').casefold()}"
+
+
+def filter_source_files_for_transcode(
+    source_files: Sequence[Dict[str, Any]],
+    *,
+    existing_target_files: Sequence[Dict[str, Any]],
+    target_extension: str,
+    target_mime_type: str,
+) -> List[Dict[str, Any]]:
+    healthy_target_keys = {
+        key
+        for file_entry in existing_target_files
+        if (key := _media_group_key(file_entry)) is not None
+        and _is_healthy_transcode_target(
+            file_entry,
+            target_extension=target_extension,
+            target_mime_type=target_mime_type,
+        )
+    }
+
+    filtered: List[Dict[str, Any]] = []
+    for file_entry in source_files:
+        key = _media_group_key(file_entry)
+        if key is not None and key in healthy_target_keys:
+            print(
+                "Skipping transcode for "
+                f"{file_entry.get('name', '')}: healthy {target_extension} duplicate already exists.",
+                file=sys.stderr,
+            )
+            continue
+        filtered.append(file_entry)
+    return filtered
 
 
 def build_drive_service(credentials_path: Path):
@@ -284,6 +364,19 @@ def main() -> None:
         drive_id=shared_drive_id,
         supports_all_drives=supports_all_drives,
         mime_type_filters=transcode_cfg["source_mime_types"],
+    )
+    existing_target_files = list_media_files(
+        drive_service,
+        folder_id,
+        drive_id=shared_drive_id,
+        supports_all_drives=supports_all_drives,
+        mime_type_filters=[transcode_cfg["target_mime_type"]],
+    )
+    source_files = filter_source_files_for_transcode(
+        source_files,
+        existing_target_files=existing_target_files,
+        target_extension=transcode_cfg["target_extension"],
+        target_mime_type=transcode_cfg["target_mime_type"],
     )
 
     needs_transcode = bool(source_files)

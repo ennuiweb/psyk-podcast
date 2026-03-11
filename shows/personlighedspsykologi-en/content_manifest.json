@@ -3792,12 +3792,32 @@
             ],
             "podcasts": [
               {
+                "kind": "audio",
+                "title": "[Lydbog] · Grundbog kapitel 10 - Kritisk psykologi",
+                "url": "https://open.spotify.com/episode/5hXfq4vyxX5keQB2TOilIH",
+                "platform": "spotify",
+                "pub_date": "Tue, 07 Apr 2025 12:00:00 +0200",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1YZpQUebeocAc3wSnA8xgObRCDSVzaZ3Z",
+                "duration_seconds": null,
+                "duration_label": ""
+              },
+              {
                 "kind": "short_podcast",
                 "title": "Uge 9, Forelæsning 1 · Kort podcast · Grundbog kapitel 10 - Kritisk psykologi",
                 "url": "https://open.spotify.com/episode/2xKMuApivRF3f7qe93bpU4",
                 "platform": "spotify",
                 "pub_date": "Tue, 07 Apr 2025 12:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1d9D4AspAzADTkr2PS2KojBYOqpFtN7t5",
+                "duration_seconds": null,
+                "duration_label": ""
+              },
+              {
+                "kind": "lydbog",
+                "title": "Uge 9, Forelæsning 1 · Lydbog · Grundbog kapitel 10 - Kritisk psykologi",
+                "url": "https://open.spotify.com/episode/2IEqJEG9wNPBySsbHO5boj",
+                "platform": "spotify",
+                "pub_date": "Tue, 07 Apr 2025 14:00:00 +0200",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1YZpQUebeocAc3wSnA8xgObRCDSVzaZ3Z",
                 "duration_seconds": null,
                 "duration_label": ""
               },
@@ -3850,10 +3870,7 @@
           }
         ]
       },
-      "warnings": [
-        "Spotify episode mapping missing for RSS item; skipping podcast asset: Uge 9, Forelæsning 1 · Lydbog · Grundbog kapitel 10 - Kritisk psykologi",
-        "Spotify episode mapping missing for RSS item; skipping podcast asset: [Lydbog] · Grundbog kapitel 10 - Kritisk psykologi"
-      ]
+      "warnings": []
     },
     {
       "lecture_key": "W10L1",

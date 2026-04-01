@@ -1,6 +1,7 @@
 # Apps Script Sync
 
 Use `push_drive_trigger.sh` to push `drive_change_trigger.gs` + `appsscript.json` with `clasp`.
+The current helper retries transient Drive API failures like `Internal Error` and `Empty response` before it lets the trigger fail.
 
 ## Setup
 

@@ -26,6 +26,9 @@ const CONFIG = {
     includeSubfolders: true,
     mimePrefixes: ['audio/', 'image/', 'text/'],   // Set to [] to react to every file type.
     sharedDriveId: null,        // Leave null for shared folders in "My Drive".
+    apiMaxAttempts: 5,
+    apiInitialBackoffMs: 1000,
+    apiMaxBackoffMs: 16000,
   },
   github: {
     owner: 'ennuiweb',
@@ -251,6 +254,50 @@ function normaliseDriveItem(item) {
   return item;
 }
 
+function describeError(error) {
+  if (!error) return 'Unknown error';
+  if (error.message) return String(error.message);
+  return String(error);
+}
+
+function isRetryableDriveError(error) {
+  const message = describeError(error);
+  return /Empty response|Internal Error|Backend Error|Service unavailable|Rate Limit Exceeded|Timed out|try again|Exception: Service error: Drive|429|500|502|503|504/i
+    .test(message);
+}
+
+function computeRetryDelayMs(attempt) {
+  const initialBackoffMs = Math.max(250, Number(CONFIG.drive.apiInitialBackoffMs) || 1000);
+  const maxBackoffMs = Math.max(initialBackoffMs, Number(CONFIG.drive.apiMaxBackoffMs) || initialBackoffMs);
+  const exponentialDelay = initialBackoffMs * Math.pow(2, Math.max(0, attempt - 1));
+  const cappedDelay = Math.min(maxBackoffMs, exponentialDelay);
+  const jitter = Math.floor(Math.random() * 250);
+  return cappedDelay + jitter;
+}
+
+function withDriveRetry(operationLabel, fn) {
+  const maxAttempts = Math.max(1, Number(CONFIG.drive.apiMaxAttempts) || 1);
+
+  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+    try {
+      return fn();
+    } catch (error) {
+      const message = describeError(error);
+      const shouldRetry = attempt < maxAttempts && isRetryableDriveError(error);
+      if (!shouldRetry) {
+        throw new Error(`${operationLabel} failed after ${attempt} attempt(s): ${message}`);
+      }
+
+      const delayMs = computeRetryDelayMs(attempt);
+      console.warn(
+        `[Drive Retry] ${operationLabel} failed on attempt ${attempt}/${maxAttempts}: ${message}. `
+        + `Retrying in ${delayMs} ms.`,
+      );
+      Utilities.sleep(delayMs);
+    }
+  }
+}
+
 function listChildren(parentId) {
   const items = [];
   let pageToken;
@@ -269,7 +316,10 @@ function listChildren(parentId) {
       params.corpora = 'drive';
     }
 
-    const response = Drive.Files.list(params);
+    const response = withDriveRetry(
+      `Drive.Files.list for folder ${parentId}`,
+      () => Drive.Files.list(params),
+    );
     (response.items || []).forEach((item) => {
       normaliseDriveItem(item);
       item.parents = normaliseParents(item.parents);
@@ -286,7 +336,10 @@ function getFileMetadata(fileId) {
     fields: 'id,title,mimeType,parents/id,modifiedDate',
     supportsAllDrives: Boolean(CONFIG.drive.sharedDriveId),
   };
-  const file = normaliseDriveItem(Drive.Files.get(fileId, params));
+  const file = normaliseDriveItem(withDriveRetry(
+    `Drive.Files.get for file ${fileId}`,
+    () => Drive.Files.get(fileId, params),
+  ));
   file.parents = normaliseParents(file.parents);
   return file;
 }

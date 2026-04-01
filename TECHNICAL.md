@@ -359,6 +359,7 @@ If you want the GitHub workflow to fire whenever fresh audio appears in Drive, a
 6. Open the clock icon (**Triggers**) → **Add trigger**, select `checkDriveAndTrigger`, choose a time-driven interval (for example every 15 minutes), and save.
 
 The repository keeps this helper at `apps-script/drive_change_trigger.gs` so you can copy/paste the latest version straight into Apps Script without hunting through the docs.
+The helper now retries transient Drive API failures such as `Internal Error` and `Empty response` with exponential backoff before the trigger run is marked failed.
 
 ### Automating Apps Script updates (clasp)
 If you want the Apps Script file to update without manual pasting, use the `clasp` CLI to push changes from this repo:

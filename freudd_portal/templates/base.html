@@ -281,13 +281,13 @@
 
     .stat-users-badge {
       font-family: var(--font-mono);
-      font-size: 0.78rem;
+      font-size: 0.585rem;
       font-weight: 500;
       color: var(--text-subtle);
       background: color-mix(in srgb, var(--surface-strong) 60%, var(--surface));
       border: 1px solid var(--border);
       border-radius: var(--radius-pill);
-      padding: 3px 10px;
+      padding: 2px 7px;
       white-space: nowrap;
       flex-shrink: 0;
       letter-spacing: 0.01em;
@@ -1030,6 +1030,10 @@
     }
 
     @media (max-width: 640px) {
+      .site-footer {
+        display: none;
+      }
+
       .page-shell {
         margin-top: var(--space-4);
         padding-bottom: var(--space-5);

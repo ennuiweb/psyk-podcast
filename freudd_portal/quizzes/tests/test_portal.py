@@ -4626,7 +4626,7 @@ class QuizPortalTests(TestCase):
     @override_settings(
         EMAIL_BACKEND="django.core.mail.backends.locmem.EmailBackend",
         DEFAULT_FROM_EMAIL="noreply@test.freudd.dk",
-        FREUDD_ACTIVITY_NOTIFY_EMAILS=["alerts@test.freudd.dk"],
+        FREUDD_NEW_USER_NOTIFY_EMAIL="alerts@test.freudd.dk",
         FREUDD_ACTIVITY_NOTIFY_EVENTS=["subject_enrolled"],
     )
     def test_subject_enroll_notification_sent_only_on_first_enroll(self) -> None:
@@ -4650,7 +4650,7 @@ class QuizPortalTests(TestCase):
     @override_settings(
         EMAIL_BACKEND="django.core.mail.backends.locmem.EmailBackend",
         DEFAULT_FROM_EMAIL="noreply@test.freudd.dk",
-        FREUDD_ACTIVITY_NOTIFY_EMAILS=["alerts@test.freudd.dk"],
+        FREUDD_NEW_USER_NOTIFY_EMAIL="alerts@test.freudd.dk",
         FREUDD_ACTIVITY_NOTIFY_EVENTS=["reading_marked"],
     )
     def test_subject_reading_mark_notification_sent_only_on_first_mark(self) -> None:
@@ -4685,7 +4685,7 @@ class QuizPortalTests(TestCase):
     @override_settings(
         EMAIL_BACKEND="django.core.mail.backends.locmem.EmailBackend",
         DEFAULT_FROM_EMAIL="noreply@test.freudd.dk",
-        FREUDD_ACTIVITY_NOTIFY_EMAILS=["alerts@test.freudd.dk"],
+        FREUDD_NEW_USER_NOTIFY_EMAIL="alerts@test.freudd.dk",
         FREUDD_ACTIVITY_NOTIFY_EVENTS=["podcast_marked"],
     )
     def test_subject_podcast_mark_notification_sent_only_on_first_mark(self) -> None:
@@ -4720,7 +4720,7 @@ class QuizPortalTests(TestCase):
     @override_settings(
         EMAIL_BACKEND="django.core.mail.backends.locmem.EmailBackend",
         DEFAULT_FROM_EMAIL="noreply@test.freudd.dk",
-        FREUDD_ACTIVITY_NOTIFY_EMAILS=["alerts@test.freudd.dk"],
+        FREUDD_NEW_USER_NOTIFY_EMAIL="alerts@test.freudd.dk",
         FREUDD_ACTIVITY_NOTIFY_EVENTS=["reading_opened"],
     )
     def test_subject_open_reading_notifies_once_for_get_and_skips_head(self) -> None:
@@ -4752,7 +4752,7 @@ class QuizPortalTests(TestCase):
     @override_settings(
         EMAIL_BACKEND="django.core.mail.backends.locmem.EmailBackend",
         DEFAULT_FROM_EMAIL="noreply@test.freudd.dk",
-        FREUDD_ACTIVITY_NOTIFY_EMAILS=["alerts@test.freudd.dk"],
+        FREUDD_NEW_USER_NOTIFY_EMAIL="alerts@test.freudd.dk",
         FREUDD_ACTIVITY_NOTIFY_EVENTS=["reading_sent_to_chatgpt"],
     )
     def test_subject_chatgpt_reading_redirects_and_notifies_once(self) -> None:
@@ -4781,7 +4781,7 @@ class QuizPortalTests(TestCase):
     @override_settings(
         EMAIL_BACKEND="django.core.mail.backends.locmem.EmailBackend",
         DEFAULT_FROM_EMAIL="noreply@test.freudd.dk",
-        FREUDD_ACTIVITY_NOTIFY_EMAILS=["alerts@test.freudd.dk"],
+        FREUDD_NEW_USER_NOTIFY_EMAIL="alerts@test.freudd.dk",
         FREUDD_ACTIVITY_NOTIFY_EVENTS=["quiz_completed"],
     )
     def test_quiz_completion_notification_sent_once(self) -> None:

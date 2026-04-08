@@ -71,13 +71,11 @@ def _normalize_setting_list(value: object) -> list[str]:
     return normalized
 
 
-def _activity_recipient_list(event_key: str) -> list[str]:
-    recipients = _normalize_setting_list(getattr(settings, "FREUDD_ACTIVITY_NOTIFY_EMAILS", ()))
-    if event_key == "signup":
-        legacy_notify_email = str(getattr(settings, "FREUDD_NEW_USER_NOTIFY_EMAIL", "") or "").strip()
-        if legacy_notify_email:
-            recipients = _normalize_setting_list([*recipients, legacy_notify_email])
-    return recipients
+def _activity_recipient_list() -> list[str]:
+    primary_notify_email = str(getattr(settings, "FREUDD_NEW_USER_NOTIFY_EMAIL", "") or "").strip()
+    if primary_notify_email:
+        return [primary_notify_email]
+    return _normalize_setting_list(getattr(settings, "FREUDD_ACTIVITY_NOTIFY_EMAILS", ()))
 
 
 def _activity_event_keys() -> set[str]:
@@ -208,7 +206,7 @@ def notify_activity(
     if not _activity_enabled(event_key):
         return False
 
-    recipients = _activity_recipient_list(event_key)
+    recipients = _activity_recipient_list()
     if not recipients:
         return False
 

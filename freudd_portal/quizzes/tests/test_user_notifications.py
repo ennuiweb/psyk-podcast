@@ -14,10 +14,10 @@ from django.test import TestCase, override_settings
 )
 class NewUserNotificationTests(TestCase):
     @override_settings(
-        FREUDD_ACTIVITY_NOTIFY_EMAILS=["alerts@tjekdepot.dk"],
-        FREUDD_NEW_USER_NOTIFY_EMAIL="",
+        FREUDD_ACTIVITY_NOTIFY_EMAILS=["legacy-alerts@tjekdepot.dk"],
+        FREUDD_NEW_USER_NOTIFY_EMAIL="admin@tjekdepot.dk",
     )
-    def test_signup_uses_generic_activity_recipient_list(self) -> None:
+    def test_signup_prefers_new_user_notification_recipient(self) -> None:
         User.objects.create_user(
             username="new-user",
             email="new-user@example.com",
@@ -26,7 +26,22 @@ class NewUserNotificationTests(TestCase):
 
         self.assertEqual(len(mail.outbox), 1)
         message = mail.outbox[0]
-        self.assertEqual(message.to, ["alerts@tjekdepot.dk"])
+        self.assertEqual(message.to, ["admin@tjekdepot.dk"])
+
+    @override_settings(
+        FREUDD_ACTIVITY_NOTIFY_EMAILS=["legacy-alerts@tjekdepot.dk"],
+        FREUDD_NEW_USER_NOTIFY_EMAIL="",
+    )
+    def test_signup_falls_back_to_legacy_activity_recipient_list(self) -> None:
+        User.objects.create_user(
+            username="new-user",
+            email="new-user@example.com",
+            password="Secret123!!",
+        )
+
+        self.assertEqual(len(mail.outbox), 1)
+        message = mail.outbox[0]
+        self.assertEqual(message.to, ["legacy-alerts@tjekdepot.dk"])
 
     @override_settings(FREUDD_NEW_USER_NOTIFY_EMAIL="admin@tjekdepot.dk")
     def test_sends_email_when_user_is_created(self) -> None:
@@ -44,7 +59,7 @@ class NewUserNotificationTests(TestCase):
         self.assertIn("username: new-user", message.body)
         self.assertIn("email: new-user@example.com", message.body)
 
-    @override_settings(FREUDD_NEW_USER_NOTIFY_EMAIL="")
+    @override_settings(FREUDD_NEW_USER_NOTIFY_EMAIL="", FREUDD_ACTIVITY_NOTIFY_EMAILS=[])
     def test_does_not_send_email_when_notify_email_not_set(self) -> None:
         User.objects.create_user(
             username="new-user",

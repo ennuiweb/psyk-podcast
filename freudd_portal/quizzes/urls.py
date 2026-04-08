@@ -58,6 +58,11 @@ urlpatterns = [
         views.subject_open_reading_text_view,
         name="subject-open-reading-text",
     ),
+    re_path(
+        r"^subjects/(?P<subject_slug>[a-z0-9-]+)/tekster/chatgpt/(?P<reading_key>[a-z0-9-]+)$",
+        views.subject_chatgpt_reading_view,
+        name="subject-chatgpt-reading",
+    ),
     # Legacy aliases kept for backward compatibility with existing deep links.
     re_path(
         r"^subjects/(?P<subject_slug>[a-z0-9-]+)/tracking/reading$",
@@ -78,6 +83,11 @@ urlpatterns = [
         r"^subjects/(?P<subject_slug>[a-z0-9-]+)/readings/open/(?P<reading_key>[a-z0-9-]+)/text$",
         views.subject_open_reading_text_view,
         name="subject-open-reading-text-legacy",
+    ),
+    re_path(
+        r"^subjects/(?P<subject_slug>[a-z0-9-]+)/readings/chatgpt/(?P<reading_key>[a-z0-9-]+)$",
+        views.subject_chatgpt_reading_view,
+        name="subject-chatgpt-reading-legacy",
     ),
     re_path(
         r"^subjects/(?P<subject_slug>[a-z0-9-]+)/tracking/podcast$",

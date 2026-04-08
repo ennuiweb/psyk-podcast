@@ -119,25 +119,25 @@ def set_reading_mark(
     lecture_key: str,
     reading_key: str,
     marked: bool,
-) -> bool:
+) -> tuple[bool, bool]:
     slug = str(subject_slug or "").strip().lower()
     lecture = str(lecture_key or "").strip().upper()
     reading = str(reading_key or "").strip()
     if marked:
-        UserReadingMark.objects.get_or_create(
+        _, created = UserReadingMark.objects.get_or_create(
             user=user,
             subject_slug=slug,
             lecture_key=lecture,
             reading_key=reading,
         )
-        return True
-    UserReadingMark.objects.filter(
+        return True, created
+    deleted_count, _ = UserReadingMark.objects.filter(
         user=user,
         subject_slug=slug,
         lecture_key=lecture,
         reading_key=reading,
     ).delete()
-    return False
+    return False, bool(deleted_count)
 
 
 def set_podcast_mark(
@@ -148,28 +148,28 @@ def set_podcast_mark(
     reading_key: str | None,
     podcast_key: str,
     marked: bool,
-) -> bool:
+) -> tuple[bool, bool]:
     slug = str(subject_slug or "").strip().lower()
     lecture = str(lecture_key or "").strip().upper()
     reading = str(reading_key or "").strip() or None
     key = str(podcast_key or "").strip().lower()
     if marked:
-        UserPodcastMark.objects.get_or_create(
+        _, created = UserPodcastMark.objects.get_or_create(
             user=user,
             subject_slug=slug,
             lecture_key=lecture,
             reading_key=reading,
             podcast_key=key,
         )
-        return True
-    UserPodcastMark.objects.filter(
+        return True, created
+    deleted_count, _ = UserPodcastMark.objects.filter(
         user=user,
         subject_slug=slug,
         lecture_key=lecture,
         reading_key=reading,
         podcast_key=key,
     ).delete()
-    return False
+    return False, bool(deleted_count)
 
 
 def mark_sets_for_subject(*, user, subject_slug: str) -> dict[str, set[tuple[str, str | None, str]]]:

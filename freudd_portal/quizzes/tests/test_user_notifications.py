@@ -13,6 +13,21 @@ from django.test import TestCase, override_settings
     DEFAULT_FROM_EMAIL="noreply@test.freudd.dk",
 )
 class NewUserNotificationTests(TestCase):
+    @override_settings(
+        FREUDD_ACTIVITY_NOTIFY_EMAILS=["alerts@tjekdepot.dk"],
+        FREUDD_NEW_USER_NOTIFY_EMAIL="",
+    )
+    def test_signup_uses_generic_activity_recipient_list(self) -> None:
+        User.objects.create_user(
+            username="new-user",
+            email="new-user@example.com",
+            password="Secret123!!",
+        )
+
+        self.assertEqual(len(mail.outbox), 1)
+        message = mail.outbox[0]
+        self.assertEqual(message.to, ["alerts@tjekdepot.dk"])
+
     @override_settings(FREUDD_NEW_USER_NOTIFY_EMAIL="admin@tjekdepot.dk")
     def test_sends_email_when_user_is_created(self) -> None:
         User.objects.create_user(
@@ -63,7 +78,7 @@ class NewUserNotificationTests(TestCase):
         },
         clear=False,
     )
-    @patch("quizzes.signals.requests.post")
+    @patch("quizzes.activity_notifications.requests.post")
     def test_uses_resend_when_api_key_is_present(self, post_mock: Mock) -> None:
         response = Mock()
         response.raise_for_status.return_value = None
@@ -94,7 +109,7 @@ class NewUserNotificationTests(TestCase):
         },
         clear=False,
     )
-    @patch("quizzes.signals.requests.post", side_effect=requests.Timeout("resend timeout"))
+    @patch("quizzes.activity_notifications.requests.post", side_effect=requests.Timeout("resend timeout"))
     def test_falls_back_to_django_email_when_resend_fails(self, _: Mock) -> None:
         User.objects.create_user(
             username="new-user",

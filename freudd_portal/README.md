@@ -12,6 +12,7 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Runtime naming: service/env/config namespace is `freudd` (`freudd-portal.service`, `/etc/freudd-portal.env`, `FREUDD_PORTAL_*`).
 - Rollout compatibility: old `QUIZ_PORTAL_*` env names are still accepted temporarily.
 - New user notification: optional email alert on every `auth.User` create via `FREUDD_NEW_USER_NOTIFY_EMAIL`.
+- Activity notifications: optional server-side email alerts can be enabled for signup, quiz completion, subject enrollment, reading/podcast marks, reading opens, and `Send til ChatGPT` launches via `FREUDD_ACTIVITY_NOTIFY_EMAILS`.
 - Locale stack is active (`LocaleMiddleware` + `LOCALE_PATHS`) but currently constrained to Danish in `LANGUAGES`.
 - Quiz access: `/q/<id>.html` is public and renders a JSON-driven quiz UI (NotebookLM-like flow).
 - Raw quiz HTML: served publicly via `/q/raw/<id>.html`.
@@ -67,7 +68,7 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Quiz assets are surfaced only in `Quiz for alle kilder`, podcast assets only in `Podcasts`, and tekststatus/progress only in `Tekster`.
 - If no podcasts are available for the active lecture, the `Podcasts` section is hidden.
 - Tekstkort and `Quizzer` sections render quiz rows in mockup format (`<sværhedsgrad> quiz` + `<rigtige>/<total> rigtige • <point>/150 point`) when question counts are available.
-- Tekstkort include a `Send til ChatGPT` quick action that opens a new ChatGPT chat with a prefilled prompt that includes the absolute PDF URL plus fixed study-context guidance.
+- Tekstkort include a `Send til ChatGPT` quick action that routes through a server-side Freudd launch URL, emits an activity notification when enabled, and then opens a new ChatGPT chat with a prefilled prompt that includes the absolute PDF URL plus fixed study-context guidance.
 - Lecture rail rows render extra-compact marker dots on mobile (without index numbers) plus lecture copy (week label + cleaned lecture title).
 - Module headers in subject detail are rendered as a combined headline (`Uge x, forelæsning x: <titel>`), with cleaned lecture title metadata.
 - Quiz labels are rendered from cleaned `episode_title` metadata (`modul` + `titel`) instead of raw file/tag strings.
@@ -109,6 +110,7 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - `GET /subjects/<subject_slug>`
 - `GET /subjects/<subject_slug>/tekster/open/<reading_key>` (public tekst-fil adgang; blocked if excluded in config unless authenticated user has elevated reading access)
 - `GET /subjects/<subject_slug>/tekster/open/<reading_key>/text` (public tekstudtræk til ChatGPT; blocked if excluded in config unless authenticated user has elevated reading access)
+- `GET /subjects/<subject_slug>/tekster/chatgpt/<reading_key>` (server-side tracked ChatGPT launch for PDF tekster; redirects to ChatGPT)
 - `GET /subjects/<subject_slug>/slides/open/<slide_key>` (public adgang for `lecture`-slides; `seminar`/`exercise` kræver autentificeret elevated access eller `is_staff`/`is_superuser`)
 - `POST /subjects/<subject_slug>/enroll`
 - `POST /subjects/<subject_slug>/unenroll`
@@ -249,6 +251,8 @@ Operational behavior:
 - `FREUDD_RESEND_API_URL` (default: `https://api.resend.com/emails`)
 - `FREUDD_RESEND_TIMEOUT_SECONDS` (default: `10`)
 - `FREUDD_DEFAULT_FROM_EMAIL` (default: `noreply@freudd.dk`)
+- `FREUDD_ACTIVITY_NOTIFY_EMAILS` (default: empty; comma-separated recipients for server-side activity alerts)
+- `FREUDD_ACTIVITY_NOTIFY_EVENTS` (default: `signup,quiz_completed,subject_enrolled,reading_marked,podcast_marked,reading_opened,reading_sent_to_chatgpt`)
 - `FREUDD_NEW_USER_NOTIFY_EMAIL` (default: empty; when set, receives an email whenever a new user is created)
 - `FREUDD_AUTH_GOOGLE_ENABLED` (default: `0`)
 - `FREUDD_GOOGLE_CLIENT_ID` (required when `FREUDD_AUTH_GOOGLE_ENABLED=1`)

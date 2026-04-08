@@ -6,6 +6,7 @@ import json
 import logging
 import re
 import zipfile
+from dataclasses import dataclass
 from xml.etree import ElementTree
 from pathlib import Path
 from urllib.parse import urlencode
@@ -16,6 +17,7 @@ from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from django.core.exceptions import ValidationError
+from django.db import transaction
 from django.http import (
     FileResponse,
     Http404,
@@ -32,6 +34,14 @@ from django.views.decorators.http import require_GET, require_http_methods, requ
 from pypdf import PdfReader
 
 from .access_services import user_has_elevated_reading_access, user_has_elevated_slide_access
+from .activity_notifications import (
+    notify_podcast_marked,
+    notify_quiz_completed,
+    notify_reading_marked,
+    notify_reading_opened,
+    notify_reading_sent_to_chatgpt,
+    notify_subject_enrolled,
+)
 from .content_services import load_subject_content_manifest
 from .forms import SignupForm
 from .gamification_services import (
@@ -161,6 +171,15 @@ _SLIDES_CATALOG_CACHE: dict[str, object] = {
 }
 READING_TEXT_CHAR_LIMIT = 200_000
 READING_TEXT_PAGE_LIMIT = 60
+
+
+@dataclass(frozen=True)
+class ResolvedReadingFile:
+    subject: object
+    lecture_key: str
+    reading_key: str
+    source_filename: str
+    file_path: Path
 
 
 def _is_http_insecure(request: HttpRequest) -> bool:
@@ -780,7 +799,7 @@ def _resolve_subject_reading_file_or_404(
     *,
     subject_slug: str,
     reading_key: str,
-) -> tuple[object, str, str, Path]:
+) -> ResolvedReadingFile:
     catalog = load_subject_catalog()
     subject = _subject_or_404(catalog, subject_slug)
 
@@ -813,7 +832,13 @@ def _resolve_subject_reading_file_or_404(
         lecture_key=found_lecture_key,
         source_filename=found_source_filename,
     )
-    return subject, normalized_reading_key, found_source_filename, file_path
+    return ResolvedReadingFile(
+        subject=subject,
+        lecture_key=found_lecture_key,
+        reading_key=normalized_reading_key,
+        source_filename=found_source_filename,
+        file_path=file_path,
+    )
 
 
 def _extract_pdf_text_for_chatgpt(path: Path) -> tuple[str, bool]:
@@ -2338,6 +2363,23 @@ def quiz_state_view(request: HttpRequest, quiz_id: str) -> HttpResponse:
                     "participant_count": participant_count,
                 }
             )
+        transaction.on_commit(
+            lambda request=request,
+            quiz_id=quiz_id,
+            quiz_subject_slug=quiz_subject_slug,
+            correct_answers=outcome.correct_answers,
+            question_count=outcome.question_count,
+            score_points=score_points,
+            duration_ms=duration_ms: notify_quiz_completed(
+                request=request,
+                quiz_id=quiz_id,
+                subject_slug=quiz_subject_slug,
+                correct_answers=correct_answers,
+                question_count=question_count,
+                score_points=score_points,
+                duration_ms=duration_ms,
+            )
+        )
 
     try:
         record_quiz_progress_delta(
@@ -2692,12 +2734,12 @@ def subject_open_slide_view(request: HttpRequest, subject_slug: str, slide_key: 
 
 @require_safe
 def subject_open_reading_view(request: HttpRequest, subject_slug: str, reading_key: str) -> HttpResponse:
-    _, _, found_source_filename, file_path = _resolve_subject_reading_file_or_404(
+    resolved = _resolve_subject_reading_file_or_404(
         request,
         subject_slug=subject_slug,
         reading_key=reading_key,
     )
-    suffix = file_path.suffix.lower()
+    suffix = resolved.file_path.suffix.lower()
     if suffix == ".pdf":
         content_type = "application/pdf"
         as_attachment = False
@@ -2708,43 +2750,60 @@ def subject_open_reading_view(request: HttpRequest, subject_slug: str, reading_k
         content_type = "application/octet-stream"
         as_attachment = True
 
+    if request.method == "GET":
+        notify_reading_opened(
+            request=request,
+            subject_slug=resolved.subject.slug,
+            lecture_key=resolved.lecture_key,
+            reading_key=resolved.reading_key,
+            source_filename=resolved.source_filename,
+        )
+
     return FileResponse(
-        file_path.open("rb"),
+        resolved.file_path.open("rb"),
         content_type=content_type,
         as_attachment=as_attachment,
-        filename=found_source_filename,
+        filename=resolved.source_filename,
     )
 
 
 @require_safe
 def subject_open_reading_pdf_view(request: HttpRequest, subject_slug: str, reading_key: str) -> HttpResponse:
-    _, _, found_source_filename, file_path = _resolve_subject_reading_file_or_404(
+    resolved = _resolve_subject_reading_file_or_404(
         request,
         subject_slug=subject_slug,
         reading_key=reading_key,
     )
-    if file_path.suffix.lower() != ".pdf":
+    if resolved.file_path.suffix.lower() != ".pdf":
         raise Http404("PDF ikke fundet for teksten.")
+    if request.method == "GET":
+        notify_reading_opened(
+            request=request,
+            subject_slug=resolved.subject.slug,
+            lecture_key=resolved.lecture_key,
+            reading_key=resolved.reading_key,
+            source_filename=resolved.source_filename,
+        )
     return FileResponse(
-        file_path.open("rb"),
+        resolved.file_path.open("rb"),
         content_type="application/pdf",
         as_attachment=False,
-        filename=found_source_filename,
+        filename=resolved.source_filename,
     )
 
 
 @require_safe
 def subject_open_reading_text_view(request: HttpRequest, subject_slug: str, reading_key: str) -> HttpResponse:
-    subject, normalized_reading_key, source_filename, file_path = _resolve_subject_reading_file_or_404(
+    resolved = _resolve_subject_reading_file_or_404(
         request,
         subject_slug=subject_slug,
         reading_key=reading_key,
     )
-    suffix = file_path.suffix.lower()
+    suffix = resolved.file_path.suffix.lower()
     if suffix == ".pdf":
-        extracted_text, truncated = _extract_pdf_text_for_chatgpt(file_path)
+        extracted_text, truncated = _extract_pdf_text_for_chatgpt(resolved.file_path)
     elif suffix == ".docx":
-        extracted_text, truncated = _extract_docx_text_for_chatgpt(file_path)
+        extracted_text, truncated = _extract_docx_text_for_chatgpt(resolved.file_path)
     else:
         extracted_text, truncated = "", False
 
@@ -2752,20 +2811,55 @@ def subject_open_reading_text_view(request: HttpRequest, subject_slug: str, read
         reverse(
             "subject-open-reading",
             kwargs={
-                "subject_slug": subject.slug,
-                "reading_key": normalized_reading_key,
+                "subject_slug": resolved.subject.slug,
+                "reading_key": resolved.reading_key,
             },
         )
     )
     payload = _text_payload_for_chatgpt_reading(
-        title=source_filename,
+        title=resolved.source_filename,
         text=extracted_text,
         source_url=source_url,
         truncated=truncated,
     )
     response = HttpResponse(payload, content_type="text/plain; charset=utf-8")
-    response["Content-Disposition"] = f'inline; filename="{source_filename}.txt"'
+    response["Content-Disposition"] = f'inline; filename="{resolved.source_filename}.txt"'
     return response
+
+
+@require_safe
+def subject_chatgpt_reading_view(request: HttpRequest, subject_slug: str, reading_key: str) -> HttpResponse:
+    resolved = _resolve_subject_reading_file_or_404(
+        request,
+        subject_slug=subject_slug,
+        reading_key=reading_key,
+    )
+    if resolved.file_path.suffix.lower() != ".pdf":
+        raise Http404("PDF ikke fundet for teksten.")
+
+    pdf_url = request.build_absolute_uri(
+        reverse(
+            "subject-open-reading-pdf",
+            kwargs={
+                "subject_slug": resolved.subject.slug,
+                "reading_key": resolved.reading_key,
+            },
+        )
+    )
+    prompt = _build_chatgpt_prompt_for_reading(pdf_url=pdf_url)
+    if not prompt:
+        raise Http404("Teksten kunne ikke sendes til ChatGPT.")
+
+    if request.method == "GET":
+        notify_reading_sent_to_chatgpt(
+            request=request,
+            subject_slug=resolved.subject.slug,
+            lecture_key=resolved.lecture_key,
+            reading_key=resolved.reading_key,
+            source_filename=resolved.source_filename,
+        )
+
+    return redirect(f"https://chatgpt.com/?{urlencode({'q': prompt})}")
 
 
 @login_required
@@ -2796,13 +2890,25 @@ def subject_tracking_reading_view(request: HttpRequest, subject_slug: str) -> Ht
             reading_key=reading_key,
         ).exists()
 
-    set_reading_mark(
+    marked_state, state_changed = set_reading_mark(
         user=request.user,
         subject_slug=subject.slug,
         lecture_key=lecture_key,
         reading_key=reading_key,
         marked=marked,
     )
+    if marked_state and state_changed:
+        transaction.on_commit(
+            lambda request=request,
+            subject_slug=subject.slug,
+            lecture_key=lecture_key,
+            reading_key=reading_key: notify_reading_marked(
+                request=request,
+                subject_slug=subject_slug,
+                lecture_key=lecture_key,
+                reading_key=reading_key,
+            )
+        )
 
     return redirect(
         _safe_next_redirect(request)
@@ -2842,7 +2948,7 @@ def subject_tracking_podcast_view(request: HttpRequest, subject_slug: str) -> Ht
             podcast_key=podcast_key,
         ).exists()
 
-    set_podcast_mark(
+    marked_state, state_changed = set_podcast_mark(
         user=request.user,
         subject_slug=subject.slug,
         lecture_key=lecture_key,
@@ -2850,6 +2956,20 @@ def subject_tracking_podcast_view(request: HttpRequest, subject_slug: str) -> Ht
         podcast_key=podcast_key,
         marked=marked,
     )
+    if marked_state and state_changed:
+        transaction.on_commit(
+            lambda request=request,
+            subject_slug=subject.slug,
+            lecture_key=lecture_key,
+            reading_key=reading_key,
+            podcast_key=podcast_key: notify_podcast_marked(
+                request=request,
+                subject_slug=subject_slug,
+                lecture_key=lecture_key,
+                reading_key=reading_key,
+                podcast_key=podcast_key,
+            )
+        )
 
     return redirect(
         _safe_next_redirect(request)
@@ -2863,10 +2983,20 @@ def subject_tracking_podcast_view(request: HttpRequest, subject_slug: str) -> Ht
 def subject_enroll_view(request: HttpRequest, subject_slug: str) -> HttpResponse:
     catalog = load_subject_catalog()
     subject = _subject_or_404(catalog, subject_slug)
-    SubjectEnrollment.objects.get_or_create(
+    _, created = SubjectEnrollment.objects.get_or_create(
         user=request.user,
         subject_slug=subject.slug,
     )
+    if created:
+        transaction.on_commit(
+            lambda request=request,
+            subject_slug=subject.slug,
+            subject_title=subject.title: notify_subject_enrolled(
+                request=request,
+                subject_slug=subject_slug,
+                subject_title=subject_title,
+            )
+        )
     messages.success(request, f"Du er nu tilmeldt {subject.title}.")
     return redirect(_safe_next_redirect(request) or reverse("subject-detail", kwargs={"subject_slug": subject.slug}))
 
@@ -2977,6 +3107,7 @@ def subject_detail_view(request: HttpRequest, subject_slug: str) -> HttpResponse
             reading["visible_difficulty_summary"] = _visible_quiz_difficulty_slots(annotated_summary)
             reading["primary_quiz_url"] = ""
             reading["chatgpt_prompt"] = ""
+            reading["chatgpt_launch_url"] = ""
             normalized_reading_key = str(reading.get("reading_key") or "").strip().lower()
             source_filename = _source_filename_or_none(reading.get("source_filename"))
             reading["download_excluded"] = (
@@ -3009,6 +3140,13 @@ def subject_detail_view(request: HttpRequest, subject_slug: str) -> HttpResponse
                 if reading["open_pdf_url"]:
                     reading["chatgpt_prompt"] = _build_chatgpt_prompt_for_reading(
                         pdf_url=request.build_absolute_uri(reading["open_pdf_url"]),
+                    )
+                    reading["chatgpt_launch_url"] = reverse(
+                        "subject-chatgpt-reading",
+                        kwargs={
+                            "subject_slug": subject.slug,
+                            "reading_key": normalized_reading_key,
+                        },
                     )
             else:
                 reading["open_url"] = ""

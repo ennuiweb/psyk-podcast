@@ -13,6 +13,8 @@ from urllib.parse import urlencode
 
 from django.conf import settings
 from django.contrib.auth.models import User
+from django.core import mail
+from django.core.cache import cache
 from django.core.management import call_command
 from django.core.management.base import CommandError
 from django.test import Client, TestCase, override_settings
@@ -94,6 +96,7 @@ class QuizPortalTests(TestCase):
         self.addCleanup(clear_subject_service_caches)
         clear_content_service_caches()
         self.addCleanup(clear_content_service_caches)
+        cache.clear()
         quiz_services._METADATA_CACHE["mtime"] = None
         quiz_services._METADATA_CACHE["data"] = {}
 
@@ -3208,6 +3211,13 @@ class QuizPortalTests(TestCase):
             },
         )
         expected_absolute_pdf_url = f"http://testserver{expected_pdf_url}"
+        expected_chatgpt_launch_url = reverse(
+            "subject-chatgpt-reading",
+            kwargs={
+                "subject_slug": "personlighedspsykologi",
+                "reading_key": reading["reading_key"],
+            },
+        )
         expected_prompt = (
             f"{expected_absolute_pdf_url}\n"
             "Jeg studerer psykologi på universitetet. Hjælp mig med denne tekst."
@@ -3222,6 +3232,7 @@ class QuizPortalTests(TestCase):
         self.assertNotContains(response, "data-reading-url=")
         self.assertNotContains(response, "data-reading-text-url=")
         self.assertContains(response, f'data-reading-pdf-url="{expected_pdf_url}"')
+        self.assertContains(response, f'data-chatgpt-launch-url="{expected_chatgpt_launch_url}"')
         self.assertContains(response, f'data-chatgpt-prompt="{expected_absolute_pdf_url}')
         self.assertContains(response, 'const openedWindow = window.open(chatUrl, "_blank");')
         self.assertContains(response, "openedWindow.opener = null;")
@@ -4611,6 +4622,209 @@ class QuizPortalTests(TestCase):
         output = io.StringIO()
         call_command("gamification_recompute", "--user", user.username, stdout=output)
         self.assertIn("Recomputed gamification", output.getvalue())
+
+    @override_settings(
+        EMAIL_BACKEND="django.core.mail.backends.locmem.EmailBackend",
+        DEFAULT_FROM_EMAIL="noreply@test.freudd.dk",
+        FREUDD_ACTIVITY_NOTIFY_EMAILS=["alerts@test.freudd.dk"],
+        FREUDD_ACTIVITY_NOTIFY_EVENTS=["subject_enrolled"],
+    )
+    def test_subject_enroll_notification_sent_only_on_first_enroll(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+        mail.outbox.clear()
+
+        enroll_url = reverse("subject-enroll", kwargs={"subject_slug": "personlighedspsykologi"})
+
+        with self.captureOnCommitCallbacks(execute=True):
+            first_response = self.client.post(enroll_url, {"next": reverse("progress")})
+            self.assertEqual(first_response.status_code, 302)
+            second_response = self.client.post(enroll_url, {"next": reverse("progress")})
+            self.assertEqual(second_response.status_code, 302)
+
+        self.assertEqual(len(mail.outbox), 1)
+        message = mail.outbox[0]
+        self.assertEqual(message.subject, "Freudd activity: Subject enrolled")
+        self.assertIn("subject_slug: personlighedspsykologi", message.body)
+
+    @override_settings(
+        EMAIL_BACKEND="django.core.mail.backends.locmem.EmailBackend",
+        DEFAULT_FROM_EMAIL="noreply@test.freudd.dk",
+        FREUDD_ACTIVITY_NOTIFY_EMAILS=["alerts@test.freudd.dk"],
+        FREUDD_ACTIVITY_NOTIFY_EVENTS=["reading_marked"],
+    )
+    def test_subject_reading_mark_notification_sent_only_on_first_mark(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+
+        detail_url = reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"})
+        detail_response = self.client.get(detail_url)
+        lecture = detail_response.context["subject_path_lectures"][0]
+        reading = lecture["readings"][0]
+        mail.outbox.clear()
+
+        track_url = reverse("subject-tracking-reading", kwargs={"subject_slug": "personlighedspsykologi"})
+        payload = {
+            "next": detail_url,
+            "lecture_key": lecture["lecture_key"],
+            "reading_key": reading["reading_key"],
+            "action": "mark",
+        }
+
+        with self.captureOnCommitCallbacks(execute=True):
+            first_response = self.client.post(track_url, payload)
+            self.assertEqual(first_response.status_code, 302)
+            second_response = self.client.post(track_url, payload)
+            self.assertEqual(second_response.status_code, 302)
+
+        self.assertEqual(len(mail.outbox), 1)
+        message = mail.outbox[0]
+        self.assertEqual(message.subject, "Freudd activity: Reading marked")
+        self.assertIn(f"reading_key: {reading['reading_key']}", message.body)
+
+    @override_settings(
+        EMAIL_BACKEND="django.core.mail.backends.locmem.EmailBackend",
+        DEFAULT_FROM_EMAIL="noreply@test.freudd.dk",
+        FREUDD_ACTIVITY_NOTIFY_EMAILS=["alerts@test.freudd.dk"],
+        FREUDD_ACTIVITY_NOTIFY_EVENTS=["podcast_marked"],
+    )
+    def test_subject_podcast_mark_notification_sent_only_on_first_mark(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+
+        detail_url = reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"})
+        detail_response = self.client.get(detail_url)
+        lecture = detail_response.context["subject_path_lectures"][0]
+        podcast_key = lecture["lecture_assets"]["podcasts"][0]["podcast_key"]
+        mail.outbox.clear()
+
+        track_url = reverse("subject-tracking-podcast", kwargs={"subject_slug": "personlighedspsykologi"})
+        payload = {
+            "next": detail_url,
+            "lecture_key": lecture["lecture_key"],
+            "podcast_key": podcast_key,
+            "action": "mark",
+        }
+
+        with self.captureOnCommitCallbacks(execute=True):
+            first_response = self.client.post(track_url, payload)
+            self.assertEqual(first_response.status_code, 302)
+            second_response = self.client.post(track_url, payload)
+            self.assertEqual(second_response.status_code, 302)
+
+        self.assertEqual(len(mail.outbox), 1)
+        message = mail.outbox[0]
+        self.assertEqual(message.subject, "Freudd activity: Podcast marked")
+        self.assertIn(f"podcast_key: {podcast_key}", message.body)
+
+    @override_settings(
+        EMAIL_BACKEND="django.core.mail.backends.locmem.EmailBackend",
+        DEFAULT_FROM_EMAIL="noreply@test.freudd.dk",
+        FREUDD_ACTIVITY_NOTIFY_EMAILS=["alerts@test.freudd.dk"],
+        FREUDD_ACTIVITY_NOTIFY_EVENTS=["reading_opened"],
+    )
+    def test_subject_open_reading_notifies_once_for_get_and_skips_head(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+        detail_response = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
+        reading_key = detail_response.context["active_lecture"]["readings"][0]["reading_key"]
+        open_url = reverse(
+            "subject-open-reading-pdf",
+            kwargs={"subject_slug": "personlighedspsykologi", "reading_key": reading_key},
+        )
+        mail.outbox.clear()
+
+        head_response = self.client.head(open_url)
+        self.assertEqual(head_response.status_code, 200)
+        self.assertEqual(len(mail.outbox), 0)
+
+        self.client.logout()
+        first_response = self.client.get(open_url)
+        self.assertEqual(first_response.status_code, 200)
+        second_response = self.client.get(open_url)
+        self.assertEqual(second_response.status_code, 200)
+
+        self.assertEqual(len(mail.outbox), 1)
+        message = mail.outbox[0]
+        self.assertEqual(message.subject, "Freudd activity: Reading opened")
+        self.assertIn(f"reading_key: {reading_key}", message.body)
+
+    @override_settings(
+        EMAIL_BACKEND="django.core.mail.backends.locmem.EmailBackend",
+        DEFAULT_FROM_EMAIL="noreply@test.freudd.dk",
+        FREUDD_ACTIVITY_NOTIFY_EMAILS=["alerts@test.freudd.dk"],
+        FREUDD_ACTIVITY_NOTIFY_EVENTS=["reading_sent_to_chatgpt"],
+    )
+    def test_subject_chatgpt_reading_redirects_and_notifies_once(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+        detail_response = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
+        reading_key = detail_response.context["active_lecture"]["readings"][0]["reading_key"]
+        launch_url = reverse(
+            "subject-chatgpt-reading",
+            kwargs={"subject_slug": "personlighedspsykologi", "reading_key": reading_key},
+        )
+        mail.outbox.clear()
+
+        first_response = self.client.get(launch_url, follow=False)
+        self.assertEqual(first_response.status_code, 302)
+        self.assertTrue(first_response["Location"].startswith("https://chatgpt.com/?q="))
+
+        second_response = self.client.get(launch_url, follow=False)
+        self.assertEqual(second_response.status_code, 302)
+
+        self.assertEqual(len(mail.outbox), 1)
+        message = mail.outbox[0]
+        self.assertEqual(message.subject, "Freudd activity: Reading sent to ChatGPT")
+        self.assertIn(f"reading_key: {reading_key}", message.body)
+
+    @override_settings(
+        EMAIL_BACKEND="django.core.mail.backends.locmem.EmailBackend",
+        DEFAULT_FROM_EMAIL="noreply@test.freudd.dk",
+        FREUDD_ACTIVITY_NOTIFY_EMAILS=["alerts@test.freudd.dk"],
+        FREUDD_ACTIVITY_NOTIFY_EVENTS=["quiz_completed"],
+    )
+    def test_quiz_completion_notification_sent_once(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+        state_url = reverse("quiz-state", kwargs={"quiz_id": self.quiz_id})
+        mail.outbox.clear()
+
+        first_payload = {
+            "userAnswers": {"0": 1},
+            "currentQuestionIndex": 0,
+            "hiddenQuestionIndices": [],
+            "currentView": "question",
+        }
+        first_response = self.client.post(state_url, data=json.dumps(first_payload), content_type="application/json")
+        self.assertEqual(first_response.status_code, 200)
+        self.assertEqual(len(mail.outbox), 0)
+
+        completed_payload = {
+            "userAnswers": {"0": 1, "1": 2},
+            "currentQuestionIndex": 1,
+            "hiddenQuestionIndices": [],
+            "currentView": "summary",
+        }
+        with self.captureOnCommitCallbacks(execute=True):
+            completed_response = self.client.post(
+                state_url,
+                data=json.dumps(completed_payload),
+                content_type="application/json",
+            )
+            self.assertEqual(completed_response.status_code, 200)
+
+            repeated_response = self.client.post(
+                state_url,
+                data=json.dumps(completed_payload),
+                content_type="application/json",
+            )
+            self.assertEqual(repeated_response.status_code, 200)
+
+        self.assertEqual(len(mail.outbox), 1)
+        message = mail.outbox[0]
+        self.assertEqual(message.subject, "Freudd activity: Quiz completed")
+        self.assertIn(f"quiz_id: {self.quiz_id}", message.body)
 
     def test_language_configuration_is_danish_only(self) -> None:
         self.assertEqual(settings.LANGUAGE_CODE, "da")

@@ -139,6 +139,11 @@ EMAIL_USE_TLS = _as_bool_env("FREUDD_EMAIL_USE_TLS", default="0")
 EMAIL_USE_SSL = _as_bool_env("FREUDD_EMAIL_USE_SSL", default="0")
 EMAIL_TIMEOUT = int(os.environ.get("FREUDD_EMAIL_TIMEOUT_SECONDS", "10"))
 DEFAULT_FROM_EMAIL = os.environ.get("FREUDD_DEFAULT_FROM_EMAIL", "noreply@freudd.dk")
+FREUDD_ACTIVITY_NOTIFY_EMAILS = _as_csv_env("FREUDD_ACTIVITY_NOTIFY_EMAILS")
+FREUDD_ACTIVITY_NOTIFY_EVENTS = _as_csv_env(
+    "FREUDD_ACTIVITY_NOTIFY_EVENTS",
+    default="signup,quiz_completed,subject_enrolled,reading_marked,podcast_marked,reading_opened,reading_sent_to_chatgpt",
+)
 FREUDD_NEW_USER_NOTIFY_EMAIL = os.environ.get("FREUDD_NEW_USER_NOTIFY_EMAIL", "").strip()
 
 SOCIALACCOUNT_LOGIN_ON_GET = False

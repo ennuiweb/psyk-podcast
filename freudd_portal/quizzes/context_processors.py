@@ -15,6 +15,8 @@ from .theme_resolver import (
     resolve_design_system,
 )
 
+SITE_USER_COUNT_DISPLAY_OFFSET = 5
+
 
 def _topmenu_enrolled_subjects(request, *, catalog):
     user = getattr(request, "user", None)
@@ -43,6 +45,7 @@ def design_system_context(request):
     catalog = load_subject_catalog()
     default_subject = catalog.active_subjects[0].slug if catalog.active_subjects else ""
     enrolled_subjects = _topmenu_enrolled_subjects(request, catalog=catalog)
+    site_user_count = max(get_user_model().objects.count() + SITE_USER_COUNT_DISPLAY_OFFSET, 0)
     plausible_domain = getattr(
         settings,
         "FREUDD_ANALYTICS_PLAUSIBLE_DOMAIN",
@@ -68,5 +71,5 @@ def design_system_context(request):
         "google_auth_enabled": bool(getattr(settings, "FREUDD_AUTH_GOOGLE_ENABLED", False)),
         "plausible_domain": plausible_domain,
         "plausible_src": plausible_src,
-        "site_user_count": get_user_model().objects.count(),
+        "site_user_count": site_user_count,
     }

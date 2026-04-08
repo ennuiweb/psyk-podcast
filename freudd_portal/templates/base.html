@@ -197,6 +197,8 @@
       background: var(--bg-layer-1), var(--bg-layer-2), var(--bg-layer-3);
       color: var(--ink);
       line-height: 1.56;
+      display: flex;
+      flex-direction: column;
     }
 
     @supports not (overflow: clip) {
@@ -265,6 +267,30 @@
 
     .brand:hover {
       color: var(--header-brand-hover);
+    }
+
+    .site-footer {
+      background: #0d0d0d;
+      color: rgba(255, 255, 255, 0.42);
+      text-align: center;
+      padding: var(--space-5) var(--space-4);
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+    }
+
+    .stat-users-badge {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--text-subtle);
+      background: color-mix(in srgb, var(--surface-strong) 60%, var(--surface));
+      border: 1px solid var(--border);
+      border-radius: var(--radius-pill);
+      padding: 3px 10px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      letter-spacing: 0.01em;
     }
 
     .nav-links {
@@ -621,6 +647,7 @@
     }
 
     .page-shell {
+      flex: 1;
       position: relative;
       z-index: 1;
       max-width: 1120px;
@@ -1058,6 +1085,7 @@
   <header class="site-header">
     <div class="header-inner">
       <a class="brand" href="{% url 'progress' %}">freudd</a>
+      <span class="stat-users-badge">{{ site_user_count|add:5 }} brugere 🎉</span>
       <div class="nav-links">
         {% with topmenu_current_page=request.resolver_match.url_name|default:'' %}
         {% with topmenu_current_subject_slug=request.resolver_match.kwargs.subject_slug|default:'' %}
@@ -1109,6 +1137,7 @@
     {% endif %}
     {% block content %}{% endblock %}
   </main>
+  <footer class="site-footer">shh <span style="color: initial;">🤫</span></footer>
   {% if request.user.is_authenticated %}
   {% with current_page=request.resolver_match.url_name|default:'' %}
   {% with current_subject_slug=request.resolver_match.kwargs.subject_slug|default:'' %}

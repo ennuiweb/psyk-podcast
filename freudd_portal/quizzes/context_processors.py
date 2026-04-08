@@ -5,6 +5,7 @@ from __future__ import annotations
 import os
 
 from django.conf import settings
+from django.contrib.auth import get_user_model
 from django.urls import reverse
 
 from .models import SubjectEnrollment
@@ -67,4 +68,5 @@ def design_system_context(request):
         "google_auth_enabled": bool(getattr(settings, "FREUDD_AUTH_GOOGLE_ENABLED", False)),
         "plausible_domain": plausible_domain,
         "plausible_src": plausible_src,
+        "site_user_count": get_user_model().objects.count(),
     }

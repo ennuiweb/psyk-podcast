@@ -360,6 +360,20 @@ def _build_quiz_asset_location_lookup(
     return lookup
 
 
+def _parse_rss_title_parts(title_text: str) -> tuple[str, str, str]:
+    parts = [part.strip() for part in str(title_text or "").split("·") if part.strip()]
+    if len(parts) >= 3:
+        return parts[0], parts[1], parts[2]
+    if len(parts) == 2:
+        first, second = parts
+        if _podcast_kind_from_token(first) != "audio":
+            return "", first, second
+        return first, "", second
+    if len(parts) == 1:
+        return parts[0], "", parts[0]
+    return "", "", ""
+
+
 def _podcast_kind_from_token(value: str) -> str:
     token = str(value or "").strip().lower()
     token = token.strip("[]() ")
@@ -536,6 +550,21 @@ def _find_reading_index(lecture_state: dict[str, Any], descriptor: str) -> int |
         return None
     matching_descriptor = _matching_key_from_normalized(normalized_descriptor)
     return _resolve_lookup(matching_lookup, matching_descriptor)
+
+
+def _find_unique_reading_location(
+    lectures: list[dict[str, Any]],
+    descriptor: str,
+) -> tuple[int, int] | None:
+    candidates: list[tuple[int, int]] = []
+    for lecture_position, lecture_state in enumerate(lectures):
+        reading_index = _find_reading_index(lecture_state, descriptor)
+        if reading_index is not None:
+            candidates.append((lecture_position, reading_index))
+    unique_candidates = sorted(set(candidates))
+    if len(unique_candidates) == 1:
+        return unique_candidates[0]
+    return None
 
 
 def _load_slide_catalog_entries(subject_slug: str) -> list[dict[str, Any]]:
@@ -1013,16 +1042,18 @@ def _attach_podcasts(
         title_text = str(item.findtext("title") or "").strip()
         if not title_text:
             continue
-        title_parts = [part.strip() for part in title_text.split("·") if part.strip()]
-        lecture_hint = title_parts[0] if title_parts else title_text
-        descriptor = title_parts[2] if len(title_parts) >= 3 else title_text
-        kind_hint = title_parts[1] if len(title_parts) >= 2 else ""
+        lecture_hint, kind_hint, descriptor = _parse_rss_title_parts(title_text)
         item_link = str(item.findtext("link") or "").strip()
         quiz_location = quiz_asset_locations.get(_quiz_id_from_value(item_link) or "")
         lecture_key = _lecture_key_from_text(lecture_hint)
         lecture_position = lecture_index.get(lecture_key) if lecture_key else None
+        fallback_reading_location: tuple[int, int] | None = None
         if lecture_position is None and quiz_location is not None:
             lecture_position = quiz_location[0]
+        if lecture_position is None and quiz_location is None:
+            fallback_reading_location = _find_unique_reading_location(lectures, descriptor)
+            if fallback_reading_location is not None:
+                lecture_position = fallback_reading_location[0]
         if lecture_position is None:
             manifest_warnings.append(f"RSS item has unknown lecture mapping: {title_text}")
             continue
@@ -1091,7 +1122,11 @@ def _attach_podcasts(
                 podcast_asset=podcast_asset,
             )
             continue
-        reading_index = _find_reading_index(lecture_state, descriptor)
+        reading_index = (
+            fallback_reading_location[1]
+            if fallback_reading_location is not None and fallback_reading_location[0] == lecture_position
+            else _find_reading_index(lecture_state, descriptor)
+        )
         if reading_index is None and quiz_location is not None and quiz_location[0] == lecture_position:
             reading_index = quiz_location[1]
         if reading_index is None:

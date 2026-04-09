@@ -277,7 +277,9 @@
           }
         ]
       },
-      "warnings": []
+      "warnings": [
+        "Duplicate podcast asset detected; ignored source-equivalent RSS item for: [Lydbog] · Grundbog kapitel 01 - Introduktion til personlighedspsykologi"
+      ]
     },
     {
       "lecture_key": "W01L2",
@@ -2687,7 +2689,9 @@
           }
         ]
       },
-      "warnings": []
+      "warnings": [
+        "Duplicate podcast asset detected; ignored source-equivalent RSS item for: [Lydbog] · Grundbog kapitel 04 - Fænomenologisk personlighedspsykologi"
+      ]
     },
     {
       "lecture_key": "W06L2",
@@ -4832,7 +4836,9 @@
           }
         ]
       },
-      "warnings": []
+      "warnings": [
+        "Duplicate podcast asset detected; ignored source-equivalent RSS item for: [Lydbog] · Grundbog kapitel 09 - Narrative teorier"
+      ]
     },
     {
       "lecture_key": "W12L1",
@@ -5128,14 +5134,10 @@
       },
       "warnings": [
         "Duplicate podcast asset detected; ignored older RSS item for: Uge 12, Forelæsning 1 · Podcast · Grundbog kapitel 14 - Perspektiver på personlighedspsykologi 2",
+        "Duplicate podcast asset detected; ignored source-equivalent RSS item for: [Lydbog] · Grundbog kapitel 08 - Personlighed, subjektivitet og historicitet",
         "Duplicate podcast asset detected; ignored source-equivalent RSS item for: [Lydbog] · Grundbog kapitel 14 - Perspektiver på personlighedspsykologi"
       ]
     }
   ],
-  "warnings": [
-    "RSS item has unknown lecture mapping: [Lydbog] · Grundbog kapitel 01 - Introduktion til personlighedspsykologi",
-    "RSS item has unknown lecture mapping: [Lydbog] · Grundbog kapitel 04 - Fænomenologisk personlighedspsykologi",
-    "RSS item has unknown lecture mapping: [Lydbog] · Grundbog kapitel 08 - Personlighed, subjektivitet og historicitet",
-    "RSS item has unknown lecture mapping: [Lydbog] · Grundbog kapitel 09 - Narrative teorier"
-  ]
+  "warnings": []
 }

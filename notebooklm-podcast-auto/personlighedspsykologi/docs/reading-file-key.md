@@ -94,7 +94,6 @@ Sources used for this mapping:
 
 **W10L1 Køn (Forelæsning 18, 2026-04-13)**
 - Bjerrum Nielsen & Rudberg (2006) → W10L1 Bjerrum Nielsen & Rudberg (2006).pdf
-- Bjerrum Nielsen, H. & Rudberg, M. (2006). Ytre og indre kjønn i forandring. I Moderne jenter. 117-149. Oslo → W10L1 Bjerrum Nielsen, H. & Rudberg, M. (2006). Ytre og indre kjønn i forandring. I Moderne jenter. 117-149. Oslo.pdf
 - Mitchell (2015) → W10L1 Mitchell (2015).pdf
 
 **W10L2 Sociokulturelle teorier - socialkonstruktionisme og poststrukturalisme (Forelæsning 19, 2026-04-14)**

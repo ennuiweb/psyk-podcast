@@ -2330,16 +2330,6 @@
             ],
             "podcasts": [
               {
-                "kind": "audio",
-                "title": "[Lydbog] · Grundbog kapitel 07 - Nyere psykoanalytiske teorier",
-                "url": "https://open.spotify.com/episode/46fLdwKrLD1B0Uy2egdkrf",
-                "platform": "spotify",
-                "pub_date": "Tue, 03 Mar 2025 10:00:00 +0100",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1DS8OjuKG8T5TGxw-dSzsrfPEpteYimbf",
-                "duration_seconds": null,
-                "duration_label": ""
-              },
-              {
                 "kind": "short_podcast",
                 "title": "Uge 5, Forelæsning 2 · Kort podcast · Grundbog kapitel 07 - Nyere psykoanalytiske teorier",
                 "url": "https://open.spotify.com/episode/0O5RAiZk8QaxLnTBPXLl4D",
@@ -2439,7 +2429,9 @@
           }
         ]
       },
-      "warnings": []
+      "warnings": [
+        "Duplicate podcast asset detected; ignored source-equivalent RSS item for: [Lydbog] · Grundbog kapitel 07 - Nyere psykoanalytiske teorier"
+      ]
     },
     {
       "lecture_key": "W06L1",
@@ -3792,16 +3784,6 @@
             ],
             "podcasts": [
               {
-                "kind": "audio",
-                "title": "[Lydbog] · Grundbog kapitel 10 - Kritisk psykologi",
-                "url": "https://open.spotify.com/episode/5hXfq4vyxX5keQB2TOilIH",
-                "platform": "spotify",
-                "pub_date": "Tue, 07 Apr 2025 12:00:00 +0200",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1YZpQUebeocAc3wSnA8xgObRCDSVzaZ3Z",
-                "duration_seconds": null,
-                "duration_label": ""
-              },
-              {
                 "kind": "short_podcast",
                 "title": "Uge 9, Forelæsning 1 · Kort podcast · Grundbog kapitel 10 - Kritisk psykologi",
                 "url": "https://open.spotify.com/episode/2xKMuApivRF3f7qe93bpU4",
@@ -3870,7 +3852,9 @@
           }
         ]
       },
-      "warnings": []
+      "warnings": [
+        "Duplicate podcast asset detected; ignored source-equivalent RSS item for: [Lydbog] · Grundbog kapitel 10 - Kritisk psykologi"
+      ]
     },
     {
       "lecture_key": "W10L1",
@@ -4440,16 +4424,6 @@
             ],
             "podcasts": [
               {
-                "kind": "audio",
-                "title": "[Lydbog] · Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori",
-                "url": "https://open.spotify.com/episode/0iCMf0tA8aR0brxs7otYoH",
-                "platform": "spotify",
-                "pub_date": "Mon, 20 Apr 2025 10:00:00 +0200",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1NlVmtO2fX5twpywcDyFN47iYLs0lT5iW",
-                "duration_seconds": null,
-                "duration_label": ""
-              },
-              {
                 "kind": "short_podcast",
                 "title": "Uge 11, Forelæsning 1 · Kort podcast · Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori",
                 "url": "https://open.spotify.com/episode/5mKkth4i6IgZce7lwlZQf0",
@@ -4518,7 +4492,9 @@
           }
         ]
       },
-      "warnings": []
+      "warnings": [
+        "Duplicate podcast asset detected; ignored source-equivalent RSS item for: [Lydbog] · Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori"
+      ]
     },
     {
       "lecture_key": "W11L2",
@@ -5108,16 +5084,6 @@
             ],
             "podcasts": [
               {
-                "kind": "audio",
-                "title": "[Lydbog] · Grundbog kapitel 14 - Perspektiver på personlighedspsykologi",
-                "url": "https://open.spotify.com/episode/6a6yr1hEeM0W5n8wqS7Usj",
-                "platform": "spotify",
-                "pub_date": "Mon, 27 Apr 2025 10:00:00 +0200",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1lu6hTBVumC-G1DF_YXwFrAMLqxqqpz5y",
-                "duration_seconds": null,
-                "duration_label": ""
-              },
-              {
                 "kind": "short_podcast",
                 "title": "Uge 12, Forelæsning 1 · Kort podcast · Grundbog kapitel 14 - Perspektiver på personlighedspsykologi",
                 "url": "https://open.spotify.com/episode/6vGbD1xIgYnlgzYqWFHgrG",
@@ -5144,16 +5110,6 @@
                 "platform": "spotify",
                 "pub_date": "Mon, 27 Apr 2025 22:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1L_xAM-RU20fdpAyJGzi1zzDGRAZdfgmC",
-                "duration_seconds": null,
-                "duration_label": ""
-              },
-              {
-                "kind": "podcast",
-                "title": "Uge 12, Forelæsning 1 · Podcast · Grundbog kapitel 14 - Perspektiver på personlighedspsykologi 2",
-                "url": "https://open.spotify.com/episode/7bVl5TUxICjhBINg7vj33C",
-                "platform": "spotify",
-                "pub_date": "Mon, 27 Apr 2025 20:00:00 +0200",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1JFkU4WxPXBtXvt3gTqhmTBepbYhL7-8W",
                 "duration_seconds": null,
                 "duration_label": ""
               }
@@ -5196,7 +5152,10 @@
           }
         ]
       },
-      "warnings": []
+      "warnings": [
+        "Duplicate podcast asset detected; ignored older RSS item for: Uge 12, Forelæsning 1 · Podcast · Grundbog kapitel 14 - Perspektiver på personlighedspsykologi 2",
+        "Duplicate podcast asset detected; ignored source-equivalent RSS item for: [Lydbog] · Grundbog kapitel 14 - Perspektiver på personlighedspsykologi"
+      ]
     }
   ],
   "warnings": [

@@ -935,6 +935,116 @@ class SubjectContentManifestTests(TestCase):
         warnings = lecture.get("warnings") or []
         self.assertTrue(any("Duplicate podcast asset detected" in warning for warning in warnings))
 
+    def test_build_manifest_deduplicates_same_source_reading_podcasts_and_prefers_specific_kind(self) -> None:
+        self.rss_file.write_text(
+            "\n".join(
+                [
+                    '<?xml version="1.0" encoding="UTF-8"?>',
+                    "<rss version=\"2.0\">",
+                    "<channel>",
+                    "<item>",
+                    "<title>[Lydbog] · Lewis (1999)</title>",
+                    "<link>https://freudd.dk/q/bbbbbbbb.html</link>",
+                    "<pubDate>Mon, 02 Feb 2026 10:00:00 +0100</pubDate>",
+                    '<enclosure url="https://example.test/audio/lewis-lydbog.mp3" length="1" type="audio/mpeg" />',
+                    "</item>",
+                    "<item>",
+                    "<title>U1F1 · [Lydbog] · Lewis (1999) · 02/02 - 08/02</title>",
+                    "<pubDate>Mon, 02 Feb 2026 11:00:00 +0100</pubDate>",
+                    '<enclosure url="https://example.test/audio/lewis-lydbog.mp3" length="1" type="audio/mpeg" />',
+                    "</item>",
+                    "</channel>",
+                    "</rss>",
+                ]
+            ),
+            encoding="utf-8",
+        )
+        self.spotify_map_file.write_text(
+            json.dumps(
+                {
+                    "version": 1,
+                    "subject_slug": "personlighedspsykologi",
+                    "by_rss_title": {
+                        "[Lydbog] · Lewis (1999)": "https://open.spotify.com/episode/1m0hYfDU9ThM5qR2xMugr8",
+                        "U1F1 · [Lydbog] · Lewis (1999) · 02/02 - 08/02": "https://open.spotify.com/episode/2m0hYfDU9ThM5qR2xMugr8",
+                    },
+                }
+            ),
+            encoding="utf-8",
+        )
+        clear_content_service_caches()
+
+        manifest = build_subject_content_manifest("personlighedspsykologi")
+        lecture = manifest["lectures"][0]
+        reading_podcasts = lecture["readings"][0]["assets"]["podcasts"]
+        self.assertEqual(len(reading_podcasts), 1)
+        self.assertEqual(reading_podcasts[0]["kind"], "lydbog")
+        self.assertEqual(
+            reading_podcasts[0]["title"],
+            "U1F1 · [Lydbog] · Lewis (1999) · 02/02 - 08/02",
+        )
+        self.assertEqual(
+            reading_podcasts[0]["source_audio_url"],
+            "https://example.test/audio/lewis-lydbog.mp3",
+        )
+        warnings = lecture.get("warnings") or []
+        self.assertTrue(any("Duplicate podcast asset detected" in warning for warning in warnings))
+
+    def test_build_manifest_deduplicates_fallback_mapped_numbered_title_variants(self) -> None:
+        self.rss_file.write_text(
+            "\n".join(
+                [
+                    '<?xml version="1.0" encoding="UTF-8"?>',
+                    "<rss version=\"2.0\">",
+                    "<channel>",
+                    "<item>",
+                    "<title>U1F1 · [Podcast] · Lewis (1999) · 02/02 - 08/02</title>",
+                    "<link>https://freudd.dk/q/bbbbbbbb.html</link>",
+                    "<pubDate>Mon, 02 Feb 2026 11:00:00 +0100</pubDate>",
+                    '<enclosure url="https://example.test/audio/lewis-primary.mp3" length="1" type="audio/mpeg" />',
+                    "</item>",
+                    "<item>",
+                    "<title>U1F1 · [Podcast] · Lewis (1999) 2 · 02/02 - 08/02</title>",
+                    "<link>https://github.com/ennuiweb/psyk-podcast</link>",
+                    "<pubDate>Mon, 02 Feb 2026 10:00:00 +0100</pubDate>",
+                    '<enclosure url="https://example.test/audio/lewis-duplicate.mp3" length="1" type="audio/mpeg" />',
+                    "</item>",
+                    "</channel>",
+                    "</rss>",
+                ]
+            ),
+            encoding="utf-8",
+        )
+        self.spotify_map_file.write_text(
+            json.dumps(
+                {
+                    "version": 1,
+                    "subject_slug": "personlighedspsykologi",
+                    "by_rss_title": {
+                        "U1F1 · [Podcast] · Lewis (1999) · 02/02 - 08/02": "https://open.spotify.com/episode/4w4gHCXnQK5fjQdsxQO0XG",
+                        "U1F1 · [Podcast] · Lewis (1999) 2 · 02/02 - 08/02": "https://open.spotify.com/episode/5m0hYfDU9ThM5qR2xMugr8",
+                    },
+                }
+            ),
+            encoding="utf-8",
+        )
+        clear_content_service_caches()
+
+        manifest = build_subject_content_manifest("personlighedspsykologi")
+        lecture = manifest["lectures"][0]
+        reading_podcasts = lecture["readings"][0]["assets"]["podcasts"]
+        self.assertEqual(len(reading_podcasts), 1)
+        self.assertEqual(
+            reading_podcasts[0]["title"],
+            "U1F1 · [Podcast] · Lewis (1999) · 02/02 - 08/02",
+        )
+        self.assertEqual(
+            reading_podcasts[0]["source_audio_url"],
+            "https://example.test/audio/lewis-primary.mp3",
+        )
+        warnings = lecture.get("warnings") or []
+        self.assertTrue(any("Duplicate podcast asset detected" in warning for warning in warnings))
+
     def test_build_manifest_uses_fallback_when_primary_missing(self) -> None:
         self.primary_reading_file.unlink()
         clear_subject_service_caches()

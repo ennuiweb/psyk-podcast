@@ -372,10 +372,17 @@ def _podcast_kind_from_token(value: str) -> str:
     return "audio"
 
 
-def _podcast_dedupe_descriptor(*, descriptor: str, lecture_level: bool) -> str:
+def _podcast_dedupe_descriptor(
+    *,
+    descriptor: str,
+    lecture_level: bool,
+    fallback_mapped: bool = False,
+) -> str:
     if lecture_level:
         return "all-sources"
     normalized = _normalize_title(descriptor)
+    if fallback_mapped:
+        normalized = re.sub(r"\s+\d+$", "", normalized).strip()
     return _matching_key_from_normalized(normalized) or normalized
 
 
@@ -399,29 +406,90 @@ def _should_replace_podcast_asset(
     )
 
 
+def _podcast_kind_priority(value: object) -> int:
+    token = str(value or "").strip().lower()
+    if token == "lydbog":
+        return 3
+    if token == "short_podcast":
+        return 2
+    if token == "podcast":
+        return 1
+    return 0
+
+
+def _should_replace_source_equivalent_podcast_asset(
+    *,
+    existing_asset: dict[str, Any],
+    incoming_asset: dict[str, Any],
+) -> bool:
+    existing_priority = _podcast_kind_priority(existing_asset.get("kind"))
+    incoming_priority = _podcast_kind_priority(incoming_asset.get("kind"))
+    if incoming_priority != existing_priority:
+        return incoming_priority > existing_priority
+    return _should_replace_podcast_asset(existing_asset=existing_asset, incoming_asset=incoming_asset)
+
+
+def _podcast_source_identity(podcast_asset: dict[str, Any]) -> tuple[str, str] | None:
+    source_audio_url = str(podcast_asset.get("source_audio_url") or "").strip()
+    if source_audio_url:
+        return ("source_audio_url", source_audio_url)
+    platform_url = str(podcast_asset.get("url") or "").strip()
+    if platform_url:
+        return ("url", platform_url)
+    return None
+
+
 def _append_deduped_podcast_asset(
     *,
     target_assets: list[dict[str, Any]],
     seen_assets: dict[tuple[Any, ...], dict[str, Any]],
+    seen_source_assets: dict[tuple[Any, ...], dict[str, Any]],
     dedupe_key: tuple[Any, ...],
+    source_dedupe_key: tuple[Any, ...] | None,
     lecture_state: dict[str, Any],
     podcast_asset: dict[str, Any],
 ) -> None:
+    duplicate_title = str(podcast_asset.get("title") or "").strip() or "Podcast episode"
+    if source_dedupe_key is not None:
+        existing_source_asset = seen_source_assets.get(source_dedupe_key)
+        if existing_source_asset is not None:
+            if _should_replace_source_equivalent_podcast_asset(
+                existing_asset=existing_source_asset,
+                incoming_asset=podcast_asset,
+            ):
+                existing_source_asset.clear()
+                existing_source_asset.update(podcast_asset)
+                lecture_state["warnings"].append(
+                    f"Duplicate podcast asset detected; kept preferred source-equivalent RSS item for: {duplicate_title}"
+                )
+            else:
+                lecture_state["warnings"].append(
+                    f"Duplicate podcast asset detected; ignored source-equivalent RSS item for: {duplicate_title}"
+                )
+            seen_assets[dedupe_key] = existing_source_asset
+            seen_source_assets[source_dedupe_key] = existing_source_asset
+            return
+
     existing_asset = seen_assets.get(dedupe_key)
     if existing_asset is None:
         target_assets.append(podcast_asset)
         seen_assets[dedupe_key] = podcast_asset
+        if source_dedupe_key is not None:
+            seen_source_assets[source_dedupe_key] = podcast_asset
         return
 
-    duplicate_title = str(podcast_asset.get("title") or "").strip() or "Podcast episode"
     if _should_replace_podcast_asset(existing_asset=existing_asset, incoming_asset=podcast_asset):
         existing_asset.clear()
         existing_asset.update(podcast_asset)
+        if source_dedupe_key is not None:
+            seen_source_assets[source_dedupe_key] = existing_asset
         lecture_state["warnings"].append(
             f"Duplicate podcast asset detected; kept newest RSS item for: {duplicate_title}"
         )
         return
 
+    if source_dedupe_key is not None:
+        seen_source_assets[source_dedupe_key] = existing_asset
     lecture_state["warnings"].append(
         f"Duplicate podcast asset detected; ignored older RSS item for: {duplicate_title}"
     )
@@ -940,6 +1008,7 @@ def _attach_podcasts(
         return
 
     seen_assets: dict[tuple[Any, ...], dict[str, Any]] = {}
+    seen_source_assets: dict[tuple[Any, ...], dict[str, Any]] = {}
     for item in channel.findall("item"):
         title_text = str(item.findtext("title") or "").strip()
         if not title_text:
@@ -984,13 +1053,24 @@ def _attach_podcasts(
             "duration_label": duration_label,
         }
         lecture_level = _is_lecture_level_descriptor(descriptor)
-        descriptor_key = _podcast_dedupe_descriptor(descriptor=descriptor, lecture_level=lecture_level)
         podcast_kind = str(podcast_asset.get("kind") or "").strip().lower()
+        source_identity = _podcast_source_identity(podcast_asset)
+        descriptor_key = _podcast_dedupe_descriptor(
+            descriptor=descriptor,
+            lecture_level=lecture_level,
+            fallback_mapped=quiz_location is None,
+        )
         if lecture_level:
             _append_deduped_podcast_asset(
                 target_assets=lecture_state["lecture_assets"]["podcasts"],
                 seen_assets=seen_assets,
+                seen_source_assets=seen_source_assets,
                 dedupe_key=(lecture_position, "lecture", None, podcast_kind, descriptor_key),
+                source_dedupe_key=(
+                    (lecture_position, "lecture", None, source_identity[0], source_identity[1])
+                    if source_identity is not None
+                    else None
+                ),
                 lecture_state=lecture_state,
                 podcast_asset=podcast_asset,
             )
@@ -1000,7 +1080,13 @@ def _attach_podcasts(
             _append_deduped_podcast_asset(
                 target_assets=lecture_state["slides"][slide_index]["assets"]["podcasts"],
                 seen_assets=seen_assets,
+                seen_source_assets=seen_source_assets,
                 dedupe_key=(lecture_position, "slide", slide_index, podcast_kind, descriptor_key),
+                source_dedupe_key=(
+                    (lecture_position, "slide", slide_index, source_identity[0], source_identity[1])
+                    if source_identity is not None
+                    else None
+                ),
                 lecture_state=lecture_state,
                 podcast_asset=podcast_asset,
             )
@@ -1015,7 +1101,13 @@ def _attach_podcasts(
             _append_deduped_podcast_asset(
                 target_assets=lecture_state["lecture_assets"]["podcasts"],
                 seen_assets=seen_assets,
+                seen_source_assets=seen_source_assets,
                 dedupe_key=(lecture_position, "lecture", None, podcast_kind, descriptor_key),
+                source_dedupe_key=(
+                    (lecture_position, "lecture", None, source_identity[0], source_identity[1])
+                    if source_identity is not None
+                    else None
+                ),
                 lecture_state=lecture_state,
                 podcast_asset=podcast_asset,
             )
@@ -1023,7 +1115,13 @@ def _attach_podcasts(
         _append_deduped_podcast_asset(
             target_assets=lecture_state["readings"][reading_index]["assets"]["podcasts"],
             seen_assets=seen_assets,
+            seen_source_assets=seen_source_assets,
             dedupe_key=(lecture_position, "reading", reading_index, podcast_kind, descriptor_key),
+            source_dedupe_key=(
+                (lecture_position, "reading", reading_index, source_identity[0], source_identity[1])
+                if source_identity is not None
+                else None
+            ),
             lecture_state=lecture_state,
             podcast_asset=podcast_asset,
         )

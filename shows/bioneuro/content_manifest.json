@@ -393,8 +393,7 @@
         "podcasts": []
       },
       "warnings": [
-        "Spotify episode mapping missing for RSS item; skipping podcast asset: [Podcast] · Behavioral Neuroscience Kapitel 05 - Hormones and the Brain",
-        "Duplicate podcast asset detected; ignored older RSS item for: [Podcast] · Grundbog Kapitel 5"
+        "Spotify episode mapping missing for RSS item; skipping podcast asset: [Podcast] · Behavioral Neuroscience Kapitel 05 - Hormones and the Brain"
       ]
     },
     {
@@ -431,18 +430,7 @@
                 "episode_title": "W6L1 - Behavioral Neuroscience Kapitel 01 - Introduction Scope and Outlook [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               }
             ],
-            "podcasts": [
-              {
-                "kind": "podcast",
-                "title": "[Podcast] · Grundbog Kapitel 1",
-                "url": "https://open.spotify.com/episode/6aJ5Sj1KhvZRFWONrefr1o",
-                "platform": "spotify",
-                "pub_date": "Sat, 01 Aug 2026 08:00:00 +0200",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=17JDA4pHscCDlpq_slk4VyrR_e3YFPNkb",
-                "duration_seconds": null,
-                "duration_label": ""
-              }
-            ]
+            "podcasts": []
           }
         },
         {
@@ -473,18 +461,7 @@
                 "episode_title": "W6L1 - Behavioral Neuroscience Kapitel 02 - Functional Neuroanatomy The Cells and Structures of the Nervous System [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               }
             ],
-            "podcasts": [
-              {
-                "kind": "podcast",
-                "title": "[Podcast] · Grundbog Kapitel 2",
-                "url": "https://open.spotify.com/episode/3oGYYaDwlpjPS96bJadU7D",
-                "platform": "spotify",
-                "pub_date": "Sat, 01 Aug 2026 00:00:00 +0200",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1mTx73kOe2-z5XOYXCVH_kjIydEZfnczQ",
-                "duration_seconds": null,
-                "duration_label": ""
-              }
-            ]
+            "podcasts": []
           }
         },
         {
@@ -525,16 +502,6 @@
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=14oZHixkuQwzmZyfs6ZQh2eX2uVujxbc3",
                 "duration_seconds": null,
                 "duration_label": ""
-              },
-              {
-                "kind": "podcast",
-                "title": "[Podcast] · Grundbog Kapitel 3",
-                "url": "https://open.spotify.com/episode/6RzgePgLQgayBC3G62JDQU",
-                "platform": "spotify",
-                "pub_date": "Fri, 31 Jul 2026 16:00:00 +0200",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1xe3Fjs1OosGlpIT2hfY8k8V-7TQLAY7h",
-                "duration_seconds": null,
-                "duration_label": ""
               }
             ]
           }
@@ -567,18 +534,7 @@
                 "episode_title": "W6L1 - Behavioral Neuroscience Kapitel 04 - The Chemistry of Behavior Neurotransmitters and Neuropharmacology [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               }
             ],
-            "podcasts": [
-              {
-                "kind": "podcast",
-                "title": "[Podcast] · Grundbog Kapitel 4",
-                "url": "https://open.spotify.com/episode/7HWW4s54nOkczSdXD1Na3Y",
-                "platform": "spotify",
-                "pub_date": "Fri, 31 Jul 2026 08:00:00 +0200",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1aBLzehaafdpbHIuzgXEZaPegiCcsLQCl",
-                "duration_seconds": null,
-                "duration_label": ""
-              }
-            ]
+            "podcasts": []
           }
         }
       ],

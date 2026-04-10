@@ -1842,6 +1842,12 @@ SLIDE_DESCRIPTOR_PATTERN = re.compile(
     r"^slide\s+(?:lecture|seminar|exercise)\s*:\s*(?P<title>.+)$",
     re.IGNORECASE,
 )
+SLIDE_LEADING_NUMBER_PATTERN = re.compile(r"^\s*\d+\s*\.\s*")
+SLIDE_LEADING_LABEL_PATTERN = re.compile(
+    r"^\s*gang\b(?:\s+\d+)?\s*",
+    re.IGNORECASE,
+)
+SLIDE_DISPLAY_LABEL = "Forelæsningsslides"
 EPISODE_KINDS = {"reading", "brief", "weekly_overview", "slide"}
 WEEKLY_OVERVIEW_LABEL = "Alle kilder (undtagen slides)"
 WEEKLY_OVERVIEW_SUBJECT_PATTERN = re.compile(
@@ -1890,6 +1896,24 @@ TRAILING_WEEK_RANGE_PATTERN = re.compile(
     r"(?:\s*·\s*)?\((?:uge|week)\s+[^)]*\)\s*$",
     re.IGNORECASE,
 )
+
+
+def _normalize_slide_subject(value: str) -> str:
+    subject = value.strip()
+    subject = SLIDE_LEADING_NUMBER_PATTERN.sub("", subject)
+    subject = SLIDE_LEADING_LABEL_PATTERN.sub("", subject)
+    subject = re.sub(r"^[\s._\-–:]+", "", subject)
+    subject = re.sub(r"\s+", " ", subject).strip()
+    return subject
+
+
+def _extract_slide_subject(value: str) -> Optional[str]:
+    match = SLIDE_DESCRIPTOR_PATTERN.match(value.strip())
+    if not match:
+        return None
+    raw_subject = match.group("title").strip()
+    normalized = _normalize_slide_subject(raw_subject)
+    return normalized or raw_subject
 
 
 def extract_week_lecture_from_candidates(
@@ -2934,17 +2958,25 @@ def build_episode_entry(
     cleaned_title = strip_week_prefix(cleaned_title)
     cleaned_title = LEADING_EXERCISE_X_PATTERN.sub("", cleaned_title).strip()
     cleaned_title = cleaned_title.strip()
-    is_slide = bool(SLIDE_DESCRIPTOR_PATTERN.match(cleaned_title))
+    slide_subject = _extract_slide_subject(cleaned_title)
+    is_slide = slide_subject is not None
 
     if is_weekly_overview:
         cleaned_subject = WEEKLY_OVERVIEW_SUBJECT_PATTERN.sub("", cleaned_title)
         cleaned_subject = cleaned_subject.strip(" -–:")
+    elif is_slide:
+        cleaned_subject = slide_subject or cleaned_title
     else:
         cleaned_subject = cleaned_title
 
     topic = extract_topic(meta)
     if is_weekly_overview:
         display_subject = topic or cleaned_subject or cleaned_title or raw_title
+    elif is_slide:
+        if cleaned_subject:
+            display_subject = f"{SLIDE_DISPLAY_LABEL} - {cleaned_subject}"
+        else:
+            display_subject = SLIDE_DISPLAY_LABEL
     else:
         display_subject = cleaned_subject or cleaned_title or raw_title
 
@@ -2953,7 +2985,7 @@ def build_episode_entry(
     elif is_weekly_overview:
         type_label = WEEKLY_OVERVIEW_LABEL
     elif is_slide:
-        type_label = "Slide"
+        type_label = SLIDE_DISPLAY_LABEL
     else:
         type_label = "Reading"
     episode_kind = (
@@ -3057,13 +3089,16 @@ def build_episode_entry(
     description = meta.get("description")
     summary = meta.get("summary")
     if not description:
-        text_label = display_subject or cleaned_title or raw_title
+        if is_slide:
+            text_label = cleaned_subject or cleaned_title or raw_title
+        else:
+            text_label = display_subject or cleaned_title or raw_title
         if is_brief:
             descriptor = "Kapitel i grundbogen"
         elif is_weekly_overview:
             descriptor = WEEKLY_OVERVIEW_LABEL
         elif is_slide:
-            descriptor = "Slide"
+            descriptor = SLIDE_DISPLAY_LABEL
         else:
             descriptor = "Reading"
         descriptor_subject = f"{descriptor}: {text_label}" if text_label else descriptor

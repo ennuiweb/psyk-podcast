@@ -2303,7 +2303,7 @@ class QuizPortalTests(TestCase):
                     "<rss version=\"2.0\">",
                     "<channel>",
                     "<item>",
-                    "<title>U1F1 · [Podcast] · Slide lecture: Forelæsning intro slides · 02/02 - 08/02</title>",
+                    "<title>U1F1 · [Podcast] · Forelæsningsslides - Forelæsning intro slides · 02/02 - 08/02</title>",
                     "<pubDate>Mon, 02 Feb 2026 11:00:00 +0100</pubDate>",
                     '<enclosure url="https://example.test/podcast/w01l1-slide-intro.mp3" length="1" type="audio/mpeg" />',
                     "</item>",
@@ -2315,7 +2315,7 @@ class QuizPortalTests(TestCase):
         )
         self._write_spotify_map(
             {
-                "U1F1 · [Podcast] · Slide lecture: Forelæsning intro slides · 02/02 - 08/02": (
+                "U1F1 · [Podcast] · Forelæsningsslides - Forelæsning intro slides · 02/02 - 08/02": (
                     "https://open.spotify.com/episode/6m0hYfDU9ThM5qR2xMugr8"
                 ),
             }
@@ -2330,7 +2330,7 @@ class QuizPortalTests(TestCase):
         self.assertContains(response, "Forelæsning intro slides")
         self.assertContains(response, "Mellem quiz")
         self.assertContains(response, "/q/dddddddd.html")
-        self.assertContains(response, "Slide lecture: Forelæsning intro slides")
+        self.assertContains(response, "Forelæsningsslides - Forelæsning intro slides")
         self.assertContains(
             response,
             "data-spotify-embed-url=\"https://open.spotify.com/embed/episode/6m0hYfDU9ThM5qR2xMugr8?utm_source=generator\"",
@@ -2361,7 +2361,7 @@ class QuizPortalTests(TestCase):
                     "<rss version=\"2.0\">",
                     "<channel>",
                     "<item>",
-                    "<title>U1F1 · [Podcast] · Slide lecture: Forelæsning intro slides · 02/02 - 08/02</title>",
+                    "<title>U1F1 · [Podcast] · Forelæsningsslides - Forelæsning intro slides · 02/02 - 08/02</title>",
                     "<pubDate>Mon, 02 Feb 2026 11:00:00 +0100</pubDate>",
                     '<enclosure url="https://example.test/podcast/w01l1-slide-intro.mp3" length="1" type="audio/mpeg" />',
                     "</item>",
@@ -2373,7 +2373,7 @@ class QuizPortalTests(TestCase):
         )
         self._write_spotify_map(
             {
-                "U1F1 · [Podcast] · Slide lecture: Forelæsning intro slides · 02/02 - 08/02": (
+                "U1F1 · [Podcast] · Forelæsningsslides - Forelæsning intro slides · 02/02 - 08/02": (
                     "https://open.spotify.com/episode/6m0hYfDU9ThM5qR2xMugr8"
                 ),
             }

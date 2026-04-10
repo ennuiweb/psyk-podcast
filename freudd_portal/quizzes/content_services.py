@@ -37,6 +37,10 @@ SLIDE_DESCRIPTOR_RE = re.compile(
     r"^slide\s+(?P<subcategory>lecture|seminar|exercise)\s*:\s*(?P<title>.+?)\s*$",
     re.IGNORECASE,
 )
+SLIDE_DISPLAY_DESCRIPTOR_RE = re.compile(
+    r"^(?P<label>forel(?:æ|ae)sningsslides)\s*-\s*(?P<title>.+?)\s*$",
+    re.IGNORECASE,
+)
 NON_ALNUM_RE = re.compile(r"[^a-z0-9]+")
 MULTISPACE_RE = re.compile(r"\s+")
 OVELSESHOLD_NOTE_RE = re.compile(r"\(\s*tekst\s+for\s+øvelseshold\s*\)", re.IGNORECASE)
@@ -620,11 +624,18 @@ def _build_slide_lookup(
 
 
 def _find_slide_index(lecture_state: dict[str, Any], descriptor: str) -> int | None:
-    match = SLIDE_DESCRIPTOR_RE.match(str(descriptor or "").strip())
-    if not match:
-        return None
-    subcategory = str(match.group("subcategory") or "").strip().lower()
-    title = str(match.group("title") or "").strip()
+    text = str(descriptor or "").strip()
+    match = SLIDE_DESCRIPTOR_RE.match(text)
+    subcategory = ""
+    title = ""
+    if match:
+        subcategory = str(match.group("subcategory") or "").strip().lower()
+        title = str(match.group("title") or "").strip()
+    else:
+        display_match = SLIDE_DISPLAY_DESCRIPTOR_RE.match(text)
+        if display_match:
+            subcategory = "lecture"
+            title = str(display_match.group("title") or "").strip()
     if not subcategory or not title:
         return None
     slide_lookup = lecture_state.get("slide_lookup")

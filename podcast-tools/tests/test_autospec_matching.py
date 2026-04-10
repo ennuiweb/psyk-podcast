@@ -2222,13 +2222,50 @@ class AutoSpecMatchingTests(unittest.TestCase):
                 "link": "https://example.com",
                 "description": "Test feed",
                 "language": "en",
+                "title_blocks": ["subject"],
             },
             overrides={},
             public_link_template="https://example.com/{file_id}",
         )
         self.assertEqual(episode["episode_kind"], "slide")
-        self.assertIn("Slide", episode["description"])
+        self.assertEqual(episode["title"], "[Podcast] Forelæsningsslides - Forelæsning intro slides")
+        self.assertIn("Forelæsningsslides", episode["description"])
         self.assertIn("Forelæsning intro slides", episode["description"])
+
+    def test_build_episode_entry_rewrites_slide_title_to_forelaesningsslides_subject(self):
+        mod = _load_feed_module()
+        file_entry = {
+            "id": "file1",
+            "name": "W10L2 - Slide lecture: 19. gang Sociokulturelle teorier [EN].mp3",
+            "createdTime": "2026-04-07T08:00:00+00:00",
+        }
+        episode = mod.build_episode_entry(
+            file_entry=file_entry,
+            feed_config={
+                "title": "Personlighedspsykologi (EN)",
+                "link": "https://example.com",
+                "description": "Test feed",
+                "language": "en",
+                "semester_week_start_date": "2026-02-02",
+                "semester_week_title_label": "Uge",
+                "semester_week_description_label": "Semesteruge",
+                "title_blocks": ["course_week_lecture_long", "subject"],
+                "audio_category_prefix_position": "after_first_block",
+                "audio_category_prefixes": {
+                    "lydbog": "Lydbog",
+                    "kort_podcast": "Kort podcast",
+                    "podcast": "Podcast",
+                },
+            },
+            overrides={},
+            public_link_template="https://example.com/{file_id}",
+            auto_meta={"week_reference_year": 2026},
+            folder_names=["W10L2"],
+        )
+        self.assertEqual(
+            episode["title"],
+            "Uge 10, Forelæsning 2 · Podcast · Forelæsningsslides - Sociokulturelle teorier",
+        )
 
     def test_missing_topic_with_topic_only_block_falls_back_to_descriptor_subject(self):
         mod = _load_feed_module()

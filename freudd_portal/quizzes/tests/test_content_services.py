@@ -257,7 +257,7 @@ class SubjectContentManifestTests(TestCase):
                     "<rss version=\"2.0\">",
                     "<channel>",
                     "<item>",
-                    "<title>U1F1 · [Podcast] · Slide lecture: Forelæsning intro slides · 02/02 - 08/02</title>",
+                    "<title>U1F1 · [Podcast] · Forelæsningsslides - Forelæsning intro slides · 02/02 - 08/02</title>",
                     "<pubDate>Mon, 02 Feb 2026 11:00:00 +0100</pubDate>",
                     '<enclosure url="https://example.test/audio/slide-intro.mp3" length="1" type="audio/mpeg" />',
                     "</item>",
@@ -273,7 +273,7 @@ class SubjectContentManifestTests(TestCase):
                     "version": 1,
                     "subject_slug": "personlighedspsykologi",
                     "by_rss_title": {
-                        "U1F1 · [Podcast] · Slide lecture: Forelæsning intro slides · 02/02 - 08/02": "https://open.spotify.com/episode/6m0hYfDU9ThM5qR2xMugr8",
+                        "U1F1 · [Podcast] · Forelæsningsslides - Forelæsning intro slides · 02/02 - 08/02": "https://open.spotify.com/episode/6m0hYfDU9ThM5qR2xMugr8",
                     },
                 }
             ),

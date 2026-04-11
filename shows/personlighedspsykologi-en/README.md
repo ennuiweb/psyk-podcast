@@ -17,6 +17,7 @@ Description order note: for `reading`, `brief`, and `weekly_overview`, `feed.des
 Quiz localization note: `quiz.labels` controls heading and difficulty labels in descriptions (currently `Quizzer` with `Let/Mellem/Svær`).
 Feed ordering note: `feed.sort_mode: "wxlx_kind_priority"` groups by `W#L#` and orders each block as `Brief -> Alle kilder -> Oplæst/TTS readings -> other readings`; blocks are still ordered by newest publish timestamp.
 Unassigned TTS note: audio files without week tokens (for example in Drive folder `grundbog-tts/`) are auto-scheduled before week 1 and therefore render at the end of the feed.
+Grundbog tail note: `feed.tail_grundbog_lydbog` is enabled for this show and synthesizes a canonical tail block of `[Lydbog]` entries for `forord` plus configured Grundbog chapters. These are intentional extra RSS items, not extra Drive uploads: each tail item reuses the underlying Drive enclosure URL but gets a synthetic GUID suffix like `<drive-id>#tail-grundbog-chapter-8` so podcast clients treat the tail entry as a distinct feed item.
 Feed pubDate note: `feed.pubdate_year_rewrite` rewrites only item `<pubDate>` year tokens during generation (for this show: `2026 -> 2025`) and does not change channel `<lastBuildDate>`.
 
 Reading-summary workflow:
@@ -51,6 +52,7 @@ Reading-summary workflow:
 Feed build prerequisites: install `google-auth` + `google-api-python-client`, then provide `shows/personlighedspsykologi-en/service-account.json`.
 Troubleshooting: if system Python shows `Missing Google API dependencies`, run with `./notebooklm-podcast-auto/.venv/bin/python` or install deps via `pip install -r requirements.txt`.
 Troubleshooting: warning `missing Grundbog lydbog tail source(s)` means one or more expected tail chapters are absent in Drive; feed generation still completes, but those tail entries are skipped.
+Troubleshooting: when comparing RSS items to Drive files, expect the synthetic Grundbog tail items to look like feed-only entries because their GUIDs append `#tail-grundbog-*` to the base Drive file ID by design.
 Update the Drive folder ID, owner email, and upload service account credentials before enabling automation.
 
 Quiz link sync note:

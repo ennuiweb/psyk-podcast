@@ -48,6 +48,14 @@ class CfgTagFilenameHelpersTests(unittest.TestCase):
             )
         except ModuleNotFoundError:
             cls.generate_podcast = None
+        cls.rename_outputs = _load_module(
+            root / "scripts" / "rename_personlighedspsykologi_outputs.py",
+            "rename_personlighedspsykologi_outputs",
+        )
+        cls.mirror_outputs = _load_module(
+            root / "scripts" / "mirror_output_dirs.py",
+            "mirror_output_dirs",
+        )
 
     def test_local_canonical_key_ignores_cfg_tag(self):
         mod = self.local_sync
@@ -803,6 +811,23 @@ class CfgTagFilenameHelpersTests(unittest.TestCase):
         self.assertEqual(generation_sources[1].slide_key, "w01l1-seminar-intro")
         self.assertEqual(generation_sources[1].slide_subcategory, "seminar")
 
+    def test_generate_week_canonical_week_label_from_dir_pads_week_numbers(self):
+        mod = self.generate_week
+        self.assertEqual(mod.canonical_week_label_from_dir(Path("W1L1 Intro")), "W01L1")
+        self.assertEqual(mod.canonical_week_label_from_dir(Path("W01L1 Intro")), "W01L1")
+
+    def test_generate_week_rejects_duplicate_canonical_week_dirs(self):
+        mod = self.generate_week
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            week_a = root / "W1L1 Intro"
+            week_b = root / "W01L1 Intro"
+            week_a.mkdir()
+            week_b.mkdir()
+            with self.assertRaises(SystemExit) as exc:
+                mod.ensure_unique_canonical_week_dirs([week_a, week_b], week_input="W1L1")
+        self.assertIn("collapse to the same canonical lecture key", str(exc.exception))
+
     def test_generate_week_build_source_items_matches_secondary_lecture_key_in_catalog(self):
         mod = self.generate_week
         with tempfile.TemporaryDirectory() as tmp_dir:
@@ -901,6 +926,75 @@ class CfgTagFilenameHelpersTests(unittest.TestCase):
         self.assertEqual(slide_count, 1)
         self.assertFalse(mod.should_generate_weekly_overview(reading_count))
         self.assertGreater(len(generation_sources), reading_count)
+
+    def test_rename_outputs_plan_file_moves_merges_unpadded_week_dir(self):
+        mod = self.rename_outputs
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            old_path = root / "W1L1" / "W1L1 - Foo [EN].mp3"
+            old_path.parent.mkdir(parents=True, exist_ok=True)
+            old_path.write_bytes(b"audio")
+            planned = mod.plan_file_moves(root)
+
+        self.assertEqual(len(planned), 1)
+        self.assertEqual(planned[0].destination.relative_to(root), Path("W01L1/W01L1 - Foo [EN].mp3"))
+        self.assertFalse(planned[0].identical)
+
+    def test_rename_outputs_apply_moves_removes_legacy_dir_and_rewrites_request_json(self):
+        mod = self.rename_outputs
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            legacy_dir = root / "W1L1"
+            canonical_dir = root / "W01L1"
+            legacy_dir.mkdir(parents=True, exist_ok=True)
+            canonical_dir.mkdir(parents=True, exist_ok=True)
+            source = legacy_dir / "W1L1 - Foo [EN].mp3"
+            source.write_bytes(b"audio")
+            request_json = legacy_dir / "W1L1 - Foo [EN].mp3.request.json"
+            request_json.write_text(
+                json.dumps({"output_path": str(source.resolve())}, ensure_ascii=False),
+                encoding="utf-8",
+            )
+
+            planned = mod.plan_file_moves(root)
+            moved, removed_duplicates, removed_dirs = mod.apply_planned_moves(root, planned)
+            rewritten = mod.rewrite_request_json_paths(root)
+
+            migrated_audio = canonical_dir / "W01L1 - Foo [EN].mp3"
+            migrated_request = canonical_dir / "W01L1 - Foo [EN].mp3.request.json"
+
+            self.assertTrue(migrated_audio.exists())
+            self.assertTrue(migrated_request.exists())
+            self.assertFalse(legacy_dir.exists())
+            self.assertEqual(moved, 2)
+            self.assertEqual(removed_duplicates, 0)
+            self.assertGreaterEqual(removed_dirs, 1)
+            self.assertEqual(rewritten, 1)
+            payload = json.loads(migrated_request.read_text(encoding="utf-8"))
+            self.assertTrue(payload["output_path"].endswith("W01L1/W01L1 - Foo [EN].mp3"))
+
+    def test_rename_outputs_rejects_conflicting_canonical_destination(self):
+        mod = self.rename_outputs
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            source = root / "W1L1" / "W1L1 - Foo [EN].mp3"
+            destination = root / "W01L1" / "W01L1 - Foo [EN].mp3"
+            source.parent.mkdir(parents=True, exist_ok=True)
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            source.write_bytes(b"left")
+            destination.write_bytes(b"right")
+            with self.assertRaises(SystemExit) as exc:
+                mod.plan_file_moves(root)
+        self.assertIn("different content", str(exc.exception))
+
+    def test_mirror_outputs_rejects_non_canonical_week_layout_for_personlighedspsykologi(self):
+        mod = self.mirror_outputs
+        with self.assertRaises(SystemExit) as exc:
+            mod.validate_canonical_week_layout(
+                "personlighedspsykologi",
+                [Path("W1L1/W1L1 - Foo [EN].mp3"), Path("W01L2/W01L2 - Bar [EN].mp3")],
+            )
+        self.assertIn("non-canonical week directories", str(exc.exception))
 
     def test_generate_podcast_output_path_for_quiz_difficulty_rewrites_cfg_tag(self):
         if self.generate_podcast is None:

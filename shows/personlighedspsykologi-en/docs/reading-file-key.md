@@ -6,7 +6,7 @@
 ## Episode output policy
 - Weekly overview kind (`W#L#` lecture-level): `Alle kilder` (deep-dive, long).
 - Per-reading episodes: deep-dive, default length.
-- Brief versions: any `Grundbog kapitel` gets an extra `[Brief]` version (brief, no length toggle).
+- Brief versions: every reading gets an extra `[Brief]` version (brief, no length toggle). Controlled by `brief.apply_to = "all"` in `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json`.
 - Prompts are configured in `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json`.
 
 Sources used for this mapping:

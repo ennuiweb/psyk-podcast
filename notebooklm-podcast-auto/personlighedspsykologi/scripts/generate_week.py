@@ -57,6 +57,43 @@ def canonicalize_lecture_key(value: str) -> str:
     return f"W{int(match.group(1)):02d}L{int(match.group(2))}"
 
 
+def canonical_week_label_from_dir(week_dir: Path) -> str:
+    raw_label = week_dir.name.split(" ", 1)[0].upper()
+    return canonicalize_lecture_key(raw_label)
+
+
+def ensure_unique_canonical_week_dirs(week_dirs: list[Path], *, week_input: str) -> list[Path]:
+    grouped: dict[str, list[Path]] = {}
+    for week_dir in week_dirs:
+        canonical_label = canonical_week_label_from_dir(week_dir)
+        grouped.setdefault(canonical_label, []).append(week_dir)
+
+    duplicates = {
+        label: paths
+        for label, paths in grouped.items()
+        if len({path.resolve() for path in paths}) > 1
+    }
+    if duplicates:
+        details = "; ".join(
+            f"{label}: {', '.join(path.name for path in sorted(paths, key=lambda item: item.name.casefold()))}"
+            for label, paths in sorted(duplicates.items())
+        )
+        raise SystemExit(
+            "Multiple source week folders collapse to the same canonical lecture key "
+            f"for {week_input}: {details}"
+        )
+
+    unique: list[Path] = []
+    seen: set[Path] = set()
+    for week_dir in sorted(week_dirs, key=lambda item: item.name.casefold()):
+        resolved = week_dir.resolve()
+        if resolved in seen:
+            continue
+        seen.add(resolved)
+        unique.append(week_dir)
+    return unique
+
+
 def slide_catalog_lecture_keys(raw_slide: dict[str, object]) -> list[str]:
     lecture_keys: list[str] = []
 
@@ -223,10 +260,11 @@ def build_source_items(
     slides_catalog_path: Path | None,
     slides_source_root: Path | None,
 ) -> tuple[list[SourceItem], list[SourceItem]]:
+    canonical_week_label = canonicalize_lecture_key(week_label)
     reading_sources = [
         SourceItem(
             path=path,
-            base_name=normalize_episode_title(path.stem, week_label),
+            base_name=normalize_episode_title(path.stem, canonical_week_label),
             source_type="reading",
         )
         for path in list_source_files(week_dir)
@@ -234,7 +272,7 @@ def build_source_items(
     slide_sources = _slides_catalog_entries_for_lecture(
         slides_catalog_path=slides_catalog_path,
         slides_source_root=slides_source_root,
-        lecture_key=week_label,
+        lecture_key=canonical_week_label,
     )
     return reading_sources, [*reading_sources, *slide_sources]
 
@@ -1282,6 +1320,7 @@ def main() -> int:
         week_dirs = find_week_dirs(sources_root, week_input)
         if not week_dirs:
             raise SystemExit(f"No week folder found for {week_input} under {sources_root}")
+        week_dirs = ensure_unique_canonical_week_dirs(week_dirs, week_input=week_input)
         if len(week_dirs) > 1 and not re.fullmatch(r"(?:W)?0*\d{1,2}", week_input.upper()):
             names = ", ".join(path.name for path in week_dirs)
             raise SystemExit(f"Multiple week folders match {week_input}: {names}")
@@ -1289,7 +1328,7 @@ def main() -> int:
             if week_dir in processed_dirs:
                 continue
             processed_dirs.add(week_dir)
-            week_label = week_dir.name.split(" ", 1)[0].upper()
+            week_label = canonical_week_label_from_dir(week_dir)
 
             week_output_dir = output_root / week_label
             week_output_dir.mkdir(parents=True, exist_ok=True)
@@ -1474,7 +1513,11 @@ def main() -> int:
                             should_skip, _ = should_skip_generation(planned_path, args.skip_existing)
                             if not should_skip:
                                 missing_outputs += 1
-                if source_item.source_type == "reading" and "Grundbog kapitel" in source.name:
+                _brief_apply_to = str(brief_cfg.get("apply_to") or "grundbog_only").strip().lower()
+                _brief_ok = _brief_apply_to == "all" or (
+                    _brief_apply_to != "none" and "Grundbog kapitel" in source.name
+                )
+                if source_item.source_type == "reading" and _brief_ok:
                     title_prefix = brief_cfg.get("title_prefix", "[Brief]")
                     brief_base = f"{title_prefix} {week_label} - {base_name}"
                     for content_type in content_types:
@@ -1825,7 +1868,11 @@ def main() -> int:
                                 maybe_sleep(args.sleep_between)
                             request_logs.append(output_path.with_suffix(output_path.suffix + ".request.json"))
 
-                if source_item.source_type == "reading" and "Grundbog kapitel" in source.name:
+                _brief_apply_to = str(brief_cfg.get("apply_to") or "grundbog_only").strip().lower()
+                _brief_ok = _brief_apply_to == "all" or (
+                    _brief_apply_to != "none" and "Grundbog kapitel" in source.name
+                )
+                if source_item.source_type == "reading" and _brief_ok:
                     title_prefix = brief_cfg.get("title_prefix", "[Brief]")
                     brief_base = f"{title_prefix} {week_label} - {base_name}"
                     for content_type in content_types:

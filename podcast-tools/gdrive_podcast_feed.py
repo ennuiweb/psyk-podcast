@@ -3094,7 +3094,7 @@ def build_episode_entry(
         else:
             text_label = display_subject or cleaned_title or raw_title
         if is_brief:
-            descriptor = "Kapitel i grundbogen"
+            descriptor = "Kort podcast"
         elif is_weekly_overview:
             descriptor = WEEKLY_OVERVIEW_LABEL
         elif is_slide:

@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import re
 import sys
 from pathlib import Path
 from typing import List
@@ -40,6 +41,28 @@ def list_relative_dirs(root: Path) -> List[Path]:
     return directories
 
 
+def canonicalize_week_token(value: str) -> str:
+    match = re.fullmatch(r"W(?P<week>\d{1,2})L(?P<lecture>\d+)", value, re.IGNORECASE)
+    if not match:
+        return value
+    return f"W{int(match.group('week')):02d}L{int(match.group('lecture'))}"
+
+
+def validate_canonical_layout(relative_dirs: List[Path]) -> None:
+    invalid = []
+    for rel in relative_dirs:
+        top_level = rel.parts[0] if rel.parts else ""
+        if top_level and canonicalize_week_token(top_level) != top_level:
+            invalid.append(rel.as_posix())
+    if invalid:
+        preview = "\n".join(f"  - {path}" for path in invalid[:20])
+        more = f"\n  ... and {len(invalid) - 20} more" if len(invalid) > 20 else ""
+        raise SystemExit(
+            "Source tree contains non-canonical week directories. Normalize it before mirroring.\n"
+            f"{preview}{more}"
+        )
+
+
 def main() -> int:
     args = parse_args()
     repo_root = Path(__file__).resolve().parents[1]
@@ -62,6 +85,7 @@ def main() -> int:
         print("Mode: dry-run")
 
     relative_dirs = list_relative_dirs(source_root)
+    validate_canonical_layout(relative_dirs)
 
     root_created = False
     if not dest_root.exists():

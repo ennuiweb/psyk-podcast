@@ -5,9 +5,9 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import re
 import shutil
 import sys
-from dataclasses import dataclass
 from pathlib import Path
 from typing import Dict, Iterable, List, TextIO
 
@@ -31,23 +31,24 @@ SUBJECT_DEFAULTS: Dict[str, Dict[str, str]] = {
 
 REQUEST_JSON_TOKEN = ".request"
 REQUEST_JSON_SUFFIX = ".json"
+CFG_HASH_TOKEN_RE = re.compile(r"\{[^{}]*\bhash=[^{}\s]+\b[^{}]*\}")
 
 
-@dataclass
 class SyncSummary:
-    subject: str
-    source_files: int = 0
-    dest_files_seen: int = 0
-    ignored_source: int = 0
-    ignored_dest: int = 0
-    copied: int = 0
-    updated: int = 0
-    unchanged: int = 0
-    deleted: int = 0
-    dirs_created: int = 0
-    dirs_removed: int = 0
-    root_created: bool = False
-    collisions: int = 0
+    def __init__(self, subject: str) -> None:
+        self.subject = subject
+        self.source_files = 0
+        self.dest_files_seen = 0
+        self.ignored_source = 0
+        self.ignored_dest = 0
+        self.copied = 0
+        self.updated = 0
+        self.unchanged = 0
+        self.deleted = 0
+        self.dirs_created = 0
+        self.dirs_removed = 0
+        self.root_created = False
+        self.collisions = 0
 
 
 def parse_args() -> argparse.Namespace:
@@ -93,11 +94,47 @@ def list_files(root: Path) -> tuple[Dict[Path, Path], int]:
         if not path.is_file():
             continue
         rel = path.relative_to(root)
+        if rel.name == ".DS_Store":
+            ignored += 1
+            continue
+        if rel.name == "quiz_json_manifest.json":
+            ignored += 1
+            continue
         if is_request_json(rel):
             ignored += 1
             continue
         files[rel] = path
     return files, ignored
+
+
+def canonicalize_week_token(value: str) -> str:
+    match = re.fullmatch(r"W(?P<week>\d{1,2})L(?P<lecture>\d+)", value, re.IGNORECASE)
+    if not match:
+        return value
+    return f"W{int(match.group('week')):02d}L{int(match.group('lecture'))}"
+
+
+def validate_canonical_week_layout(subject: str, source_files: Iterable[Path]) -> None:
+    if subject != "personlighedspsykologi":
+        return
+
+    invalid: list[str] = []
+    for rel in source_files:
+        top_level = rel.parts[0] if rel.parts else ""
+        canonical = canonicalize_week_token(top_level)
+        if canonical != top_level:
+            invalid.append(rel.as_posix())
+
+    if invalid:
+        preview = "\n".join(f"  - {path}" for path in invalid[:20])
+        more = ""
+        if len(invalid) > 20:
+            more = f"\n  ... and {len(invalid) - 20} more"
+        raise SystemExit(
+            "Source tree contains non-canonical week directories. "
+            "Normalize notebooklm-podcast-auto/personlighedspsykologi/output before mirroring.\n"
+            f"{preview}{more}"
+        )
 
 
 def sha256_file(path: Path) -> str:
@@ -108,11 +145,17 @@ def sha256_file(path: Path) -> str:
     return digest.hexdigest()
 
 
+def has_cfg_hash_token(path: Path) -> bool:
+    return CFG_HASH_TOKEN_RE.search(path.name) is not None
+
+
 def files_identical(src: Path, dest: Path, use_checksum: bool) -> bool:
     src_stat = src.stat()
     dest_stat = dest.stat()
     if src_stat.st_size != dest_stat.st_size:
         return False
+    if not use_checksum and src.name == dest.name and has_cfg_hash_token(src):
+        return True
     if not use_checksum and src_stat.st_mtime_ns == dest_stat.st_mtime_ns:
         return True
     if use_checksum:
@@ -190,18 +233,17 @@ def run_subject(
         return 1
 
     source_files, ignored_source = list_files(source_root)
+    validate_canonical_week_layout(subject, source_files.keys())
     if dest_root.exists():
         dest_files, ignored_dest = list_files(dest_root)
     else:
         dest_files, ignored_dest = {}, 0
 
-    summary = SyncSummary(
-        subject=subject,
-        source_files=len(source_files),
-        dest_files_seen=len(dest_files),
-        ignored_source=ignored_source,
-        ignored_dest=ignored_dest,
-    )
+    summary = SyncSummary(subject=subject)
+    summary.source_files = len(source_files)
+    summary.dest_files_seen = len(dest_files)
+    summary.ignored_source = ignored_source
+    summary.ignored_dest = ignored_dest
 
     print(f"\nSubject: {subject}")
     print(f"Source: {source_root}")

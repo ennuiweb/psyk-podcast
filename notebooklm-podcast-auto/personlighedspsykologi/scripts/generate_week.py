@@ -294,6 +294,27 @@ def build_source_items(
     return reading_sources, [*reading_sources, *slide_sources]
 
 
+def per_source_audio_settings(
+    source_item: SourceItem,
+    *,
+    per_reading_cfg: dict,
+    per_slide_cfg: dict,
+) -> tuple[str, str, str, str]:
+    if source_item.source_type == "slide":
+        return (
+            "per_slide",
+            ensure_prompt("per_slide", per_slide_cfg.get("prompt", "")),
+            per_slide_cfg.get("format", "deep-dive"),
+            per_slide_cfg.get("length", "default"),
+        )
+    return (
+        "per_reading",
+        ensure_prompt("per_reading", per_reading_cfg.get("prompt", "")),
+        per_reading_cfg.get("format", "deep-dive"),
+        per_reading_cfg.get("length", "default"),
+    )
+
+
 def should_generate_weekly_overview(source_count: int) -> bool:
     if source_count < 0:
         raise ValueError("source_count must be >= 0")
@@ -1308,6 +1329,7 @@ def main() -> int:
     language_variants = build_language_variants(config)
     weekly_cfg = config.get("weekly_overview", {})
     per_cfg = config.get("per_reading", {})
+    per_slide_cfg = ensure_dict(config.get("per_slide", per_cfg))
     brief_cfg = config.get("brief", {})
     infographic_defaults = ensure_dict(config.get("infographic"))
     weekly_infographic_cfg = ensure_dict(config.get("weekly_infographic", infographic_defaults))
@@ -1471,15 +1493,17 @@ def main() -> int:
                     for variant in language_variants:
                         for quiz_difficulty_value in quiz_difficulty_values(content_type, quiz_difficulty):
                             if content_type == "audio":
-                                planned_instructions = ensure_prompt(
-                                    "per_reading", per_cfg.get("prompt", "")
+                                _, planned_instructions, per_audio_format, per_audio_length = per_source_audio_settings(
+                                    source_item,
+                                    per_reading_cfg=per_cfg,
+                                    per_slide_cfg=per_slide_cfg,
                                 )
                                 planned_tag = build_output_cfg_tag_token(
                                     content_type=content_type,
                                     language=variant["code"],
                                     instructions=planned_instructions,
-                                    audio_format=per_cfg.get("format", "deep-dive"),
-                                    audio_length=per_cfg.get("length", "default"),
+                                    audio_format=per_audio_format,
+                                    audio_length=per_audio_length,
                                     infographic_orientation=None,
                                     infographic_detail=None,
                                     quiz_quantity=None,
@@ -1767,9 +1791,11 @@ def main() -> int:
                     for variant in language_variants:
                         for quiz_difficulty_value in quiz_difficulty_values(content_type, quiz_difficulty):
                             if content_type == "audio":
-                                instructions = ensure_prompt("per_reading", per_cfg.get("prompt", ""))
-                                audio_format = per_cfg.get("format", "deep-dive")
-                                audio_length = per_cfg.get("length", "default")
+                                _, instructions, audio_format, audio_length = per_source_audio_settings(
+                                    source_item,
+                                    per_reading_cfg=per_cfg,
+                                    per_slide_cfg=per_slide_cfg,
+                                )
                                 infographic_orientation = None
                                 infographic_detail = None
                                 quiz_quantity_arg = None

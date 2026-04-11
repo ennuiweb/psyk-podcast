@@ -27,6 +27,37 @@ def _touch(path: Path, payload: bytes = b"data") -> None:
 
 
 class GenerateWeekTests(unittest.TestCase):
+    def test_per_source_audio_settings_use_per_slide_defaults_for_slides(self):
+        mod = _load_module()
+        slide_item = mod.SourceItem(
+            path=Path("/tmp/lecture.pdf"),
+            base_name="Slide lecture: Example",
+            source_type="slide",
+            slide_subcategory="lecture",
+        )
+        reading_item = mod.SourceItem(
+            path=Path("/tmp/reading.pdf"),
+            base_name="Grundbog kapitel 1",
+            source_type="reading",
+        )
+
+        self.assertEqual(
+            mod.per_source_audio_settings(
+                slide_item,
+                per_reading_cfg={"format": "deep-dive", "length": "long", "prompt": ""},
+                per_slide_cfg={"format": "deep-dive", "length": "default", "prompt": ""},
+            ),
+            ("per_slide", "", "deep-dive", "default"),
+        )
+        self.assertEqual(
+            mod.per_source_audio_settings(
+                reading_item,
+                per_reading_cfg={"format": "deep-dive", "length": "long", "prompt": ""},
+                per_slide_cfg={"format": "deep-dive", "length": "default", "prompt": ""},
+            ),
+            ("per_reading", "", "deep-dive", "long"),
+        )
+
     def test_build_source_items_excludes_seminar_slides(self):
         mod = _load_module()
         with tempfile.TemporaryDirectory() as tmpdir:

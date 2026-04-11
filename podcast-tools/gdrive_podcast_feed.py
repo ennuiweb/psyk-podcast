@@ -48,6 +48,7 @@ CFG_AUDIO_DEEP_DIVE_PATTERN = re.compile(
 )
 AUDIO_FILE_EXTENSIONS = {".mp3", ".m4a", ".wav", ".aac", ".flac"}
 PREFERRED_AUDIO_EXTENSIONS = (".mp3", ".m4a", ".aac", ".wav", ".flac")
+AUDIO_COPY_SUFFIX_PATTERN = re.compile(r"(?<=[}\]])\s+\d+$")
 AUDIO_CATEGORY_PREFIXES = {
     "lydbog": "[Lydbog]",
     "kort_podcast": "[Kort podcast]",
@@ -609,11 +610,13 @@ CANONICAL_WEEK_LECTURE_PREFIX_PATTERN = re.compile(
 
 
 def _normalize_stem(name: str) -> str:
-    return _strip_cfg_tag_suffix(Path(name).stem).casefold().strip()
+    stem = AUDIO_COPY_SUFFIX_PATTERN.sub("", Path(name).stem).strip()
+    return _strip_cfg_tag_suffix(stem).casefold().strip()
 
 
 def _canonicalize_episode_stem(name: str) -> str:
-    stem = _strip_cfg_tag_suffix(Path(name).stem)
+    stem = AUDIO_COPY_SUFFIX_PATTERN.sub("", Path(name).stem).strip()
+    stem = _strip_cfg_tag_suffix(stem)
     if not stem:
         return ""
     stem = stem.replace("–", "-").replace("—", "-")
@@ -658,6 +661,11 @@ def _drive_file_extension_rank(file_entry: Dict[str, Any]) -> int:
         return len(PREFERRED_AUDIO_EXTENSIONS)
 
 
+def _looks_like_copy_suffix(file_entry: Dict[str, Any]) -> bool:
+    stem = Path(str(file_entry.get("name") or "")).stem
+    return bool(AUDIO_COPY_SUFFIX_PATTERN.search(stem))
+
+
 def _drive_file_preference_key(file_entry: Dict[str, Any]) -> Tuple[int, int, int, str, str, str]:
     size_bytes = _drive_file_size_bytes(file_entry)
     mime_type = str(file_entry.get("mimeType") or "").casefold()
@@ -669,6 +677,7 @@ def _drive_file_preference_key(file_entry: Dict[str, Any]) -> Tuple[int, int, in
         1 if size_bytes > 0 else 0,
         1 if mime_type == "audio/mpeg" else 0,
         -ext_rank,
+        0 if _looks_like_copy_suffix(file_entry) else 1,
         modified,
         name,
         file_id,

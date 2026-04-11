@@ -68,6 +68,31 @@ class GDriveDuplicateCollapseTests(unittest.TestCase):
         self.assertEqual(len(collapsed), 2)
         self.assertEqual([entry["id"] for entry in collapsed], ["folder-a", "folder-b"])
 
+    def test_collapse_prefers_canonical_name_over_newer_copy_suffix(self):
+        files = [
+            {
+                "id": "canonical",
+                "name": "W6L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=1b3d31bc}.mp3",
+                "mimeType": "audio/mpeg",
+                "size": "66384964",
+                "modifiedTime": "2026-03-02T16:34:33.880Z",
+                "parents": ["folder-a"],
+            },
+            {
+                "id": "finder-copy",
+                "name": "W6L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=1b3d31bc} 2.mp3",
+                "mimeType": "audio/mpeg",
+                "size": "66384964",
+                "modifiedTime": "2026-04-10T21:09:43.766Z",
+                "parents": ["folder-a"],
+            },
+        ]
+
+        collapsed = self.mod._collapse_duplicate_drive_files(files)
+
+        self.assertEqual(len(collapsed), 1)
+        self.assertEqual(collapsed[0]["id"], "canonical")
+
 
 if __name__ == "__main__":
     unittest.main()

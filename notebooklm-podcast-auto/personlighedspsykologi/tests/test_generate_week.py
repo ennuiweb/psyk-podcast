@@ -27,6 +27,99 @@ def _touch(path: Path, payload: bytes = b"data") -> None:
 
 
 class GenerateWeekTests(unittest.TestCase):
+    def test_build_source_items_excludes_seminar_slides(self):
+        mod = _load_module()
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            week_dir = root / "W1L1"
+            week_dir.mkdir(parents=True, exist_ok=True)
+            _touch(week_dir / "Grundbog kapitel 1.pdf")
+
+            slides_root = root / "slides"
+            lecture_slide = slides_root / "lecture.pdf"
+            seminar_slide = slides_root / "seminar.pdf"
+            exercise_slide = slides_root / "exercise.pdf"
+            _touch(lecture_slide)
+            _touch(seminar_slide)
+            _touch(exercise_slide)
+
+            slides_catalog = root / "slides_catalog.json"
+            slides_catalog.write_text(
+                json.dumps(
+                    {
+                        "slides": [
+                            {
+                                "lecture_key": "W01L1",
+                                "subcategory": "lecture",
+                                "title": "Lecture title",
+                                "local_relative_path": lecture_slide.name,
+                            },
+                            {
+                                "lecture_key": "W01L1",
+                                "subcategory": "seminar",
+                                "title": "Seminar title",
+                                "local_relative_path": seminar_slide.name,
+                            },
+                            {
+                                "lecture_key": "W01L1",
+                                "subcategory": "exercise",
+                                "title": "Exercise title",
+                                "local_relative_path": exercise_slide.name,
+                            },
+                        ]
+                    }
+                ),
+                encoding="utf-8",
+            )
+
+            reading_sources, generation_sources = mod.build_source_items(
+                week_dir=week_dir,
+                week_label="W01L1",
+                slides_catalog_path=slides_catalog,
+                slides_source_root=slides_root,
+            )
+
+            self.assertEqual([item.base_name for item in reading_sources], ["Grundbog kapitel 1"])
+            self.assertEqual(
+                [item.base_name for item in generation_sources],
+                [
+                    "Grundbog kapitel 1",
+                    "Slide lecture: Lecture title",
+                    "Slide exercise: Exercise title",
+                ],
+            )
+            self.assertEqual(
+                [item.slide_subcategory for item in generation_sources if item.source_type == "slide"],
+                ["lecture", "exercise"],
+            )
+
+    def test_cleanup_disallowed_slide_outputs_removes_seminar_artifacts(self):
+        mod = _load_module()
+        with tempfile.TemporaryDirectory() as tmpdir:
+            week_dir = Path(tmpdir) / "W1L1"
+            seminar_audio = (
+                week_dir
+                / "W1L1 - Slide seminar: 1. Introduktion [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+            )
+            seminar_request = seminar_audio.with_suffix(".mp3.request.json")
+            lecture_audio = (
+                week_dir
+                / "W1L1 - Slide lecture: 1. gang [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+            )
+            _touch(seminar_audio)
+            _touch(seminar_request, b"{}")
+            _touch(lecture_audio)
+
+            removed = mod.cleanup_disallowed_slide_outputs(week_dir)
+
+            self.assertEqual(
+                {path.name for path in removed},
+                {seminar_audio.name, seminar_request.name},
+            )
+            self.assertFalse(seminar_audio.exists())
+            self.assertFalse(seminar_request.exists())
+            self.assertTrue(lecture_audio.exists())
+
     def test_should_skip_generation_accepts_legacy_weekly_overview_output(self):
         mod = _load_module()
         with tempfile.TemporaryDirectory() as tmpdir:

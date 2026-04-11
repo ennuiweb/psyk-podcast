@@ -40,6 +40,7 @@ SLIDE_SUBCATEGORY_LABELS = {
     "seminar": "Slide seminar",
     "exercise": "Slide exercise",
 }
+INCLUDED_SLIDE_SUBCATEGORIES = {"lecture", "exercise"}
 
 
 class SourceItem(NamedTuple):
@@ -210,7 +211,7 @@ def _slides_catalog_entries_for_lecture(
         if requested_lecture_key not in raw_lecture_keys:
             continue
         subcategory = str(raw_slide.get("subcategory") or "").strip().lower()
-        if subcategory not in SLIDE_SUBCATEGORY_LABELS:
+        if subcategory not in INCLUDED_SLIDE_SUBCATEGORIES:
             continue
         title = str(raw_slide.get("title") or "").strip()
         source_filename = str(raw_slide.get("source_filename") or "").strip()
@@ -251,6 +252,22 @@ def _slides_catalog_entries_for_lecture(
             str(item.path),
         ),
     )
+
+
+def cleanup_disallowed_slide_outputs(week_output_dir: Path) -> list[Path]:
+    if not week_output_dir.exists():
+        return []
+
+    removed: list[Path] = []
+    for subcategory, label in SLIDE_SUBCATEGORY_LABELS.items():
+        if subcategory in INCLUDED_SLIDE_SUBCATEGORIES:
+            continue
+        for entry in sorted(week_output_dir.glob(f"* - {label}: *"), key=lambda path: path.name):
+            if not entry.is_file():
+                continue
+            entry.unlink()
+            removed.append(entry)
+    return removed
 
 
 def build_source_items(
@@ -1333,6 +1350,12 @@ def main() -> int:
             week_output_dir = output_root / week_label
             week_output_dir.mkdir(parents=True, exist_ok=True)
             if not args.dry_run:
+                removed_disallowed_slide_outputs = cleanup_disallowed_slide_outputs(week_output_dir)
+                if removed_disallowed_slide_outputs:
+                    print(
+                        f"{week_label}: deleted {len(removed_disallowed_slide_outputs)} stale "
+                        "seminar-slide outputs"
+                    )
                 migrated_outputs = migrate_legacy_weekly_overview_outputs(week_output_dir)
                 if migrated_outputs:
                     print(

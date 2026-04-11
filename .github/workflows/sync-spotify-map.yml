@@ -61,6 +61,7 @@ jobs:
             --subject-slug "${SUBJECT_SLUG}" \
             --spotify-show-url "${SPOTIFY_SHOW_URL}" \
             --spotify-market "${SPOTIFY_MARKET}" \
+            --prune-stale \
             --allow-unresolved
 
       - name: Rebuild subject content manifest

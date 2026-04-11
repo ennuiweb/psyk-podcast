@@ -2142,6 +2142,7 @@ def _resolve_tail_grundbog_lydbog_config(feed_config: Dict[str, Any]) -> Dict[st
         "include_forord": True,
         "chapter_start": 1,
         "chapter_end": 14,
+        "drop_source_lydbog_items": False,
     }
     raw_value = feed_config.get("tail_grundbog_lydbog")
     if raw_value is None:
@@ -2149,11 +2150,12 @@ def _resolve_tail_grundbog_lydbog_config(feed_config: Dict[str, Any]) -> Dict[st
     if not isinstance(raw_value, dict):
         raise ValueError(
             "feed.tail_grundbog_lydbog must be an object with "
-            "'enabled', 'include_forord', 'chapter_start', and 'chapter_end'."
+            "'enabled', 'include_forord', 'chapter_start', 'chapter_end', "
+            "and 'drop_source_lydbog_items'."
         )
 
     resolved = dict(defaults)
-    bool_fields = ("enabled", "include_forord")
+    bool_fields = ("enabled", "include_forord", "drop_source_lydbog_items")
     for key in bool_fields:
         if key not in raw_value:
             continue
@@ -2533,6 +2535,7 @@ def _synthesize_tail_grundbog_lydbog_block(
     tail_cfg = _resolve_tail_grundbog_lydbog_config(feed_config)
     if not tail_cfg.get("enabled"):
         return items
+    drop_source_lydbog_items = bool(tail_cfg.get("drop_source_lydbog_items"))
 
     required_keys: List[str] = []
     if tail_cfg.get("include_forord"):
@@ -2546,7 +2549,7 @@ def _synthesize_tail_grundbog_lydbog_block(
     )
 
     candidates_by_key: Dict[str, Dict[str, List[Tuple[int, Dict[str, Any]]]]] = {}
-    passthrough_items: List[Dict[str, Any]] = []
+    passthrough_candidates: List[Tuple[Dict[str, Any], Optional[str]]] = []
 
     for index, item in enumerate(items):
         key = _extract_tail_grundbog_lydbog_key(item)
@@ -2557,10 +2560,11 @@ def _synthesize_tail_grundbog_lydbog_block(
         if bool(item.get("sort_tail")) and key:
             # Replace all existing Grundbog tail items with a canonical rebuilt block.
             continue
-        passthrough_items.append(item)
+        passthrough_candidates.append((item, key))
 
     tail_block: List[Dict[str, Any]] = []
     missing_keys: List[str] = []
+    resolved_keys: Set[str] = set()
     for tail_index, key in enumerate(required_keys):
         buckets = candidates_by_key.get(key) or {"tail": [], "other": []}
         tail_candidates = buckets.get("tail") or []
@@ -2583,12 +2587,23 @@ def _synthesize_tail_grundbog_lydbog_block(
             key=lambda pair: (_published_sort_value(pair[1]), -pair[0]),
         )
         tail_block.append(_build_tail_grundbog_episode(source_item, key=key, tail_index=tail_index))
+        resolved_keys.add(key)
 
     if missing_keys:
         print(
             "Warning: missing Grundbog lydbog tail source(s): " + ", ".join(missing_keys),
             file=sys.stderr,
         )
+
+    passthrough_items: List[Dict[str, Any]] = []
+    for item, key in passthrough_candidates:
+        if (
+            drop_source_lydbog_items
+            and key in resolved_keys
+            and bool(item.get("is_tts"))
+        ):
+            continue
+        passthrough_items.append(item)
 
     return passthrough_items + tail_block
 

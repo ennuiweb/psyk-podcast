@@ -971,6 +971,94 @@ class AutoSpecMatchingTests(unittest.TestCase):
         )
         self.assertEqual(chapter_1_tail["guid"], "week-1#tail-grundbog-chapter-1")
 
+    def test_synthesize_tail_grundbog_lydbog_can_drop_source_lydbog_items(self):
+        mod = _load_feed_module()
+        episodes = [
+            dict(
+                guid="chapter-1-short",
+                title="Uge 1, Forelæsning 1 · Kort podcast · Grundbog kapitel 01 - Intro",
+                description="Grundbog kapitel 01 - Intro",
+                published_at="2026-02-02T08:00:00+00:00",
+                sort_tail=False,
+                is_tts=False,
+                audio_url="https://example.test/audio/chapter-1-short.mp3",
+            ),
+            dict(
+                guid="chapter-1-podcast",
+                title="Uge 1, Forelæsning 1 · Podcast · Grundbog kapitel 01 - Intro",
+                description="Grundbog kapitel 01 - Intro",
+                published_at="2026-02-02T09:00:00+00:00",
+                sort_tail=False,
+                is_tts=False,
+                audio_url="https://example.test/audio/chapter-1-podcast.mp3",
+            ),
+            dict(
+                guid="chapter-1-lydbog",
+                title="Uge 1, Forelæsning 1 · Lydbog · Grundbog kapitel 01 - Intro",
+                description="Grundbog kapitel 01 - Intro",
+                published_at="2026-02-02T10:00:00+00:00",
+                sort_tail=False,
+                is_tts=True,
+                audio_url="https://example.test/audio/chapter-1-lydbog.mp3",
+            ),
+            dict(
+                guid="chapter-2-short",
+                title="Uge 1, Forelæsning 2 · Kort podcast · Grundbog kapitel 02 - Outro",
+                description="Grundbog kapitel 02 - Outro",
+                published_at="2026-02-03T08:00:00+00:00",
+                sort_tail=False,
+                is_tts=False,
+                audio_url="https://example.test/audio/chapter-2-short.mp3",
+            ),
+            dict(
+                guid="chapter-2-podcast",
+                title="Uge 1, Forelæsning 2 · Podcast · Grundbog kapitel 02 - Outro",
+                description="Grundbog kapitel 02 - Outro",
+                published_at="2026-02-03T09:00:00+00:00",
+                sort_tail=False,
+                is_tts=False,
+                audio_url="https://example.test/audio/chapter-2-podcast.mp3",
+            ),
+            dict(
+                guid="chapter-2-lydbog",
+                title="Uge 1, Forelæsning 2 · Lydbog · Grundbog kapitel 02 - Outro",
+                description="Grundbog kapitel 02 - Outro",
+                published_at="2026-02-03T10:00:00+00:00",
+                sort_tail=False,
+                is_tts=True,
+                audio_url="https://example.test/audio/chapter-2-lydbog.mp3",
+            ),
+        ]
+
+        result = mod._synthesize_tail_grundbog_lydbog_block(
+            episodes,
+            {
+                "tail_grundbog_lydbog": {
+                    "enabled": True,
+                    "include_forord": False,
+                    "chapter_start": 1,
+                    "chapter_end": 1,
+                    "drop_source_lydbog_items": True,
+                }
+            },
+        )
+
+        titles = [item["title"] for item in result]
+        self.assertIn("Uge 1, Forelæsning 1 · Kort podcast · Grundbog kapitel 01 - Intro", titles)
+        self.assertIn("Uge 1, Forelæsning 1 · Podcast · Grundbog kapitel 01 - Intro", titles)
+        self.assertNotIn("Uge 1, Forelæsning 1 · Lydbog · Grundbog kapitel 01 - Intro", titles)
+        self.assertIn("[Lydbog] · Grundbog kapitel 01 - Intro", titles)
+        self.assertIn("Uge 1, Forelæsning 2 · Lydbog · Grundbog kapitel 02 - Outro", titles)
+
+        tail_titles = [item["title"] for item in result if item.get("sort_tail")]
+        self.assertEqual(tail_titles, ["[Lydbog] · Grundbog kapitel 01 - Intro"])
+        chapter_1_audio = [
+            item["audio_url"]
+            for item in result
+            if "Grundbog kapitel 01" in item["title"] and "Lydbog" in item["title"]
+        ]
+        self.assertEqual(chapter_1_audio, ["https://example.test/audio/chapter-1-lydbog.mp3"])
+
     def test_extract_sequence_number_prefers_chapter_and_ignores_cfg_digits(self):
         mod = _load_feed_module()
         chapter_file = (
@@ -2691,9 +2779,25 @@ class AutoSpecMatchingTests(unittest.TestCase):
                     "include_forord": True,
                     "chapter_start": 1,
                     "chapter_end": 14,
+                    "drop_source_lydbog_items": True,
                 }
             }
         )
+
+    def test_validate_feed_block_config_rejects_non_bool_drop_source_lydbog_items(self):
+        mod = _load_feed_module()
+        with self.assertRaisesRegex(
+            ValueError,
+            r"feed\.tail_grundbog_lydbog\.drop_source_lydbog_items must be a boolean",
+        ):
+            mod.validate_feed_block_config(
+                {
+                    "tail_grundbog_lydbog": {
+                        "enabled": True,
+                        "drop_source_lydbog_items": "yes",
+                    }
+                }
+            )
 
     def test_validate_feed_block_config_rejects_invalid_tail_grundbog_range(self):
         mod = _load_feed_module()

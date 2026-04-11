@@ -235,6 +235,33 @@ class SyncSpotifyMapTests(unittest.TestCase):
                 ["Uge 1, Forelæsning 1 · Podcast · Alle kilder"],
             )
 
+    def test_build_spotify_map_prunes_stale_entries_when_requested(self):
+        by_title, unresolved, stats = self.mod.build_spotify_map(
+            rss_titles=["Uge 1, Forelæsning 1 · Podcast · Lewis (1999)"],
+            existing_payload={
+                "by_rss_title": {
+                    "Uge 1, Forelæsning 1 · Podcast · Lewis (1999)": (
+                        "https://open.spotify.com/episode/5m0hYfDU9ThM5qR2xMugr8"
+                    ),
+                    "Uge 1, Forelæsning 1 · Lydbog · Grundbog kapitel 01": (
+                        "https://open.spotify.com/episode/0Yqa6gY5GJfNfQfY7wsY5Y"
+                    ),
+                }
+            },
+            spotify_episode_by_title={},
+            prune_stale=True,
+        )
+        self.assertEqual(
+            by_title,
+            {
+                "Uge 1, Forelæsning 1 · Podcast · Lewis (1999)": (
+                    "https://open.spotify.com/episode/5m0hYfDU9ThM5qR2xMugr8"
+                )
+            },
+        )
+        self.assertEqual(unresolved, [])
+        self.assertEqual(stats["carried_stale"], 0)
+
 
 if __name__ == "__main__":
     unittest.main()

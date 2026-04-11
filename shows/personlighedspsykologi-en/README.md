@@ -17,7 +17,7 @@ Description order note: for `reading`, `brief`, and `weekly_overview`, `feed.des
 Quiz localization note: `quiz.labels` controls heading and difficulty labels in descriptions (currently `Quizzer` with `Let/Mellem/Svær`).
 Feed ordering note: `feed.sort_mode: "wxlx_kind_priority"` groups by `W#L#` and orders each block as `Brief -> Alle kilder -> Oplæst/TTS readings -> other readings`; blocks are still ordered by newest publish timestamp.
 Unassigned TTS note: audio files without week tokens (for example in Drive folder `grundbog-tts/`) are auto-scheduled before week 1 and therefore render at the end of the feed.
-Grundbog tail note: `feed.tail_grundbog_lydbog` is enabled for this show and synthesizes a canonical tail block of `[Lydbog]` entries for `forord` plus configured Grundbog chapters. These are intentional extra RSS items, not extra Drive uploads: each tail item reuses the underlying Drive enclosure URL but gets a synthetic GUID suffix like `<drive-id>#tail-grundbog-chapter-8` so podcast clients treat the tail entry as a distinct feed item.
+Grundbog tail note: `feed.tail_grundbog_lydbog` is enabled for this show and synthesizes a canonical tail block of `[Lydbog]` entries for `forord` plus configured Grundbog chapters. `drop_source_lydbog_items: true` keeps the canonical `[Lydbog]` RSS items and suppresses the redundant lecture-context `Lydbog` items for the same Grundbog sources. These tail items are feed-level constructs, not extra Drive uploads: each item reuses the underlying Drive enclosure URL but gets a synthetic GUID suffix like `<drive-id>#tail-grundbog-chapter-8` so podcast clients treat the tail entry as a distinct feed item.
 Feed pubDate note: `feed.pubdate_year_rewrite` rewrites only item `<pubDate>` year tokens during generation (for this show: `2026 -> 2025`) and does not change channel `<lastBuildDate>`.
 
 Reading-summary workflow:
@@ -69,6 +69,7 @@ Spotify map sync note:
 - Non-episode mappings are rejected.
 - Unresolved RSS titles fail sync by default (no Spotify search fallback is allowed).
 - With `--allow-unresolved`, sync writes resolved episode URLs and records unresolved titles under `unresolved_rss_titles`.
+- Workflow sync runs with `--prune-stale`, so titles removed from the RSS are also removed from `by_rss_title`.
 - Workflow `generate-feed.yml` runs this sync automatically for `personlighedspsykologi-en`.
 
 Reading key sync note:

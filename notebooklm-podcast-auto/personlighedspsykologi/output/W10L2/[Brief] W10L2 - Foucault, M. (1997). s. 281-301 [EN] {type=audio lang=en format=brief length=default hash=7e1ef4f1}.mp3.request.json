@@ -1,0 +1,41 @@
+{
+  "created_at": "2026-04-14T08:37:05.910753+00:00",
+  "notebook_id": "6a939f1a-04b0-45c7-9294-02ee8597b0d4",
+  "notebook_title": "Personlighedspsykologi W10L2 [Brief] Foucault, M. (1997). s. 281-301 [EN] [psykku]",
+  "artifact_id": "0538f751-4c37-47db-8adc-8e3d8fdac83e",
+  "output_path": "/Users/oskar/repo/podcasts/notebooklm-podcast-auto/personlighedspsykologi/output/W10L2/[Brief] W10L2 - Foucault, M. (1997). s. 281-301 [EN] {type=audio lang=en format=brief length=default hash=7e1ef4f1}.mp3",
+  "artifact_type": "audio",
+  "instructions": "",
+  "language": "en",
+  "sources": [
+    {
+      "kind": "file",
+      "value": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter \ud83d\udcbe/psykologi/Personlighedspsykologi/Readings/W10L2 Sociokulturelle teorier - socialkonstruktionisme og poststrukturalisme/W10L2 Foucault, M. (1997). s. 281-301 .pdf"
+    }
+  ],
+  "sources_file": null,
+  "auth": {
+    "profile": "psykku",
+    "profiles_file": "/Users/oskar/repo/podcasts/notebooklm-podcast-auto/profiles.json",
+    "storage_path": "/Users/oskar/repo/podcasts/notebooklm-podcast-auto/profiles/psykku_profile_storage_state.json",
+    "source": "profile-rotation"
+  },
+  "audio_format": "brief",
+  "audio_length": "default",
+  "rotation_attempts": [
+    {
+      "profile": "freudagsbaren",
+      "storage_path": "/Users/oskar/.notebooklm/storage_state.json",
+      "source": "auto-profile",
+      "error": "API rate limit or quota exceeded. Please wait before retrying.",
+      "error_type": "rate_limit"
+    },
+    {
+      "profile": "oskarvedel",
+      "storage_path": "/Users/oskar/repo/podcasts/notebooklm-podcast-auto/profiles/oskarvedel_storage_state.json",
+      "source": "profile-rotation",
+      "error": "No result found for RPC ID: CCqFvf",
+      "error_type": "profile_error"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "created_at": "2026-04-14T08:35:28.360957+00:00",
+  "notebook_id": "25152839-c865-4211-a88a-d5e24e4f22e1",
+  "notebook_title": "Personlighedspsykologi W10L1 [Brief] Bjerrum Nielsen & Rudberg (2006) [EN] [freudagsbaren]",
+  "artifact_id": "f4b14e93-c6d0-40ae-967c-edd34d9e55f4",
+  "output_path": "/Users/oskar/repo/podcasts/notebooklm-podcast-auto/personlighedspsykologi/output/W10L1/[Brief] W10L1 - Bjerrum Nielsen & Rudberg (2006) [EN] {type=audio lang=en format=brief length=default hash=7e1ef4f1}.mp3",
+  "artifact_type": "audio",
+  "instructions": "",
+  "language": "en",
+  "sources": [
+    {
+      "kind": "file",
+      "value": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter \ud83d\udcbe/psykologi/Personlighedspsykologi/Readings/W10L1 K\u00f8n/W10L1 Bjerrum Nielsen & Rudberg (2006).pdf"
+    }
+  ],
+  "sources_file": null,
+  "auth": {
+    "profile": "freudagsbaren",
+    "profiles_file": "/Users/oskar/repo/podcasts/notebooklm-podcast-auto/profiles.json",
+    "storage_path": "/Users/oskar/.notebooklm/storage_state.json",
+    "source": "profile-rotation"
+  },
+  "audio_format": "brief",
+  "audio_length": "default",
+  "rotation_attempts": [
+    {
+      "profile": "tjekdepotadmin",
+      "storage_path": "/Users/oskar/repo/podcasts/notebooklm-podcast-auto/profiles/tjekdepotadmin_storage_state.json",
+      "source": "auto-profile",
+      "error": "API rate limit or quota exceeded. Please wait before retrying.",
+      "error_type": "rate_limit"
+    }
+  ]
+}

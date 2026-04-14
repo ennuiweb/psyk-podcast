@@ -27,6 +27,73 @@ def _touch(path: Path, payload: bytes = b"data") -> None:
 
 
 class GenerateWeekTests(unittest.TestCase):
+    def test_should_generate_brief_for_source_respects_apply_to_modes(self):
+        mod = _load_module()
+        slide_item = mod.SourceItem(
+            path=Path("/tmp/lecture.pdf"),
+            base_name="Slide lecture: Example",
+            source_type="slide",
+            slide_subcategory="lecture",
+        )
+        grundbog_item = mod.SourceItem(
+            path=Path("/tmp/Grundbog kapitel 1.pdf"),
+            base_name="Grundbog kapitel 1",
+            source_type="reading",
+        )
+        article_item = mod.SourceItem(
+            path=Path("/tmp/Lewis (1999).pdf"),
+            base_name="Lewis (1999)",
+            source_type="reading",
+        )
+
+        self.assertTrue(mod.should_generate_brief_for_source(slide_item, brief_cfg={"apply_to": "all"}))
+        self.assertTrue(
+            mod.should_generate_brief_for_source(grundbog_item, brief_cfg={"apply_to": "all"})
+        )
+        self.assertFalse(mod.should_generate_brief_for_source(slide_item, brief_cfg={"apply_to": "none"}))
+        self.assertTrue(
+            mod.should_generate_brief_for_source(
+                grundbog_item,
+                brief_cfg={"apply_to": "grundbog_only"},
+            )
+        )
+        self.assertFalse(
+            mod.should_generate_brief_for_source(
+                article_item,
+                brief_cfg={"apply_to": "grundbog_only"},
+            )
+        )
+        self.assertFalse(
+            mod.should_generate_brief_for_source(
+                slide_item,
+                brief_cfg={"apply_to": "grundbog_only"},
+            )
+        )
+        self.assertTrue(
+            mod.should_generate_brief_for_source(
+                article_item,
+                brief_cfg={"apply_to": "reading_only"},
+            )
+        )
+        self.assertFalse(
+            mod.should_generate_brief_for_source(
+                slide_item,
+                brief_cfg={"apply_to": "reading_only"},
+            )
+        )
+        self.assertTrue(
+            mod.should_generate_brief_for_source(
+                slide_item,
+                brief_cfg={"apply_to": "slides_only"},
+            )
+        )
+        self.assertFalse(
+            mod.should_generate_brief_for_source(
+                article_item,
+                brief_cfg={"apply_to": "slides_only"},
+            )
+        )
+
     def test_per_source_audio_settings_use_per_slide_defaults_for_slides(self):
         mod = _load_module()
         slide_item = mod.SourceItem(

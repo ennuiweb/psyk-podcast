@@ -2320,6 +2320,32 @@ class AutoSpecMatchingTests(unittest.TestCase):
         self.assertIn("Forelæsningsslides", episode["description"])
         self.assertIn("Forelæsning intro slides", episode["description"])
 
+    def test_build_episode_entry_maps_slide_brief_to_kort_podcast_forelaesningsslides(self):
+        mod = _load_feed_module()
+        file_entry = {
+            "id": "file1",
+            "name": "[Brief] W01L1 - Slide lecture: Forelæsning intro slides [EN].mp3",
+            "createdTime": "2026-02-02T08:00:00+00:00",
+        }
+        episode = mod.build_episode_entry(
+            file_entry=file_entry,
+            feed_config={
+                "title": "Personlighedspsykologi (EN)",
+                "link": "https://example.com",
+                "description": "Test feed",
+                "language": "en",
+                "title_blocks": ["subject"],
+            },
+            overrides={},
+            public_link_template="https://example.com/{file_id}",
+        )
+        self.assertEqual(episode["episode_kind"], "brief")
+        self.assertEqual(
+            episode["title"],
+            "[Kort podcast] Forelæsningsslides - Forelæsning intro slides",
+        )
+        self.assertIn("Kort podcast: Forelæsning intro slides", episode["description"])
+
     def test_build_episode_entry_rewrites_slide_title_to_forelaesningsslides_subject(self):
         mod = _load_feed_module()
         file_entry = {

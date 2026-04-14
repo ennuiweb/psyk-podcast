@@ -294,6 +294,67 @@ class SubjectContentManifestTests(TestCase):
             "https://example.test/audio/slide-intro.mp3",
         )
 
+    def test_build_manifest_maps_slide_brief_assets_from_explicit_slide_descriptor(self) -> None:
+        self.slides_catalog_file.write_text(
+            json.dumps(
+                {
+                    "version": 1,
+                    "subject_slug": "personlighedspsykologi",
+                    "slides": [
+                        {
+                            "slide_key": "w01l1-lecture-intro-slides",
+                            "lecture_key": "W01L1",
+                            "subcategory": "lecture",
+                            "title": "Forelæsning intro slides",
+                            "source_filename": "Forelæsning intro slides.pdf",
+                            "relative_path": "W01L1/lecture/Forelæsning intro slides.pdf",
+                        }
+                    ],
+                    "unresolved": [],
+                }
+            ),
+            encoding="utf-8",
+        )
+        self.rss_file.write_text(
+            "\n".join(
+                [
+                    '<?xml version="1.0" encoding="UTF-8"?>',
+                    "<rss version=\"2.0\">",
+                    "<channel>",
+                    "<item>",
+                    "<title>U1F1 · [Kort podcast] · Forelæsningsslides - Forelæsning intro slides · 02/02 - 08/02</title>",
+                    "<pubDate>Mon, 02 Feb 2026 11:30:00 +0100</pubDate>",
+                    '<enclosure url="https://example.test/audio/slide-intro-brief.mp3" length="1" type="audio/mpeg" />',
+                    "</item>",
+                    "</channel>",
+                    "</rss>",
+                ]
+            ),
+            encoding="utf-8",
+        )
+        self.spotify_map_file.write_text(
+            json.dumps(
+                {
+                    "version": 1,
+                    "subject_slug": "personlighedspsykologi",
+                    "by_rss_title": {
+                        "U1F1 · [Kort podcast] · Forelæsningsslides - Forelæsning intro slides · 02/02 - 08/02": "https://open.spotify.com/episode/1m0hYfDU9ThM5qR2xMugr8",
+                    },
+                }
+            ),
+            encoding="utf-8",
+        )
+        clear_content_service_caches()
+
+        manifest = build_subject_content_manifest("personlighedspsykologi")
+        slide = manifest["lectures"][0]["slides"][0]
+        self.assertEqual(len(slide["assets"]["podcasts"]), 1)
+        self.assertEqual(slide["assets"]["podcasts"][0]["kind"], "short_podcast")
+        self.assertEqual(
+            slide["assets"]["podcasts"][0]["source_audio_url"],
+            "https://example.test/audio/slide-intro-brief.mp3",
+        )
+
     def test_build_manifest_includes_slide_for_secondary_lecture_key(self) -> None:
         self.slides_catalog_file.write_text(
             json.dumps(

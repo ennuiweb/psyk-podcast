@@ -41,6 +41,7 @@ SLIDE_SUBCATEGORY_LABELS = {
     "exercise": "Slide exercise",
 }
 INCLUDED_SLIDE_SUBCATEGORIES = {"lecture", "exercise"}
+BRIEF_APPLY_TO_VALUES = {"all", "none", "grundbog_only", "reading_only", "slides_only"}
 BRIEF_SUPPORTED_CONTENT_TYPES = {"audio", "infographic"}
 
 
@@ -333,6 +334,26 @@ def per_source_audio_settings(
         per_reading_cfg.get("format", "deep-dive"),
         per_reading_cfg.get("length", "default"),
     )
+
+
+def resolve_brief_apply_to(brief_cfg: dict) -> str:
+    raw_value = str(brief_cfg.get("apply_to") or "grundbog_only").strip().lower()
+    if raw_value in BRIEF_APPLY_TO_VALUES:
+        return raw_value
+    return "grundbog_only"
+
+
+def should_generate_brief_for_source(source_item: SourceItem, *, brief_cfg: dict) -> bool:
+    apply_to = resolve_brief_apply_to(brief_cfg)
+    if apply_to == "none":
+        return False
+    if apply_to == "all":
+        return True
+    if apply_to == "slides_only":
+        return source_item.source_type == "slide"
+    if apply_to == "reading_only":
+        return source_item.source_type == "reading"
+    return source_item.source_type == "reading" and "grundbog kapitel" in source_item.path.name.casefold()
 
 
 def should_generate_weekly_overview(source_count: int) -> bool:
@@ -1589,11 +1610,7 @@ def main() -> int:
                             should_skip, _ = should_skip_generation(planned_path, args.skip_existing)
                             if not should_skip:
                                 missing_outputs += 1
-                _brief_apply_to = str(brief_cfg.get("apply_to") or "grundbog_only").strip().lower()
-                _brief_ok = _brief_apply_to == "all" or (
-                    _brief_apply_to != "none" and "Grundbog kapitel" in source.name
-                )
-                if source_item.source_type == "reading" and _brief_ok:
+                if should_generate_brief_for_source(source_item, brief_cfg=brief_cfg):
                     title_prefix = brief_cfg.get("title_prefix", "[Brief]")
                     brief_base = f"{title_prefix} {week_label} - {base_name}"
                     for content_type in brief_types:
@@ -1946,11 +1963,7 @@ def main() -> int:
                                 maybe_sleep(args.sleep_between)
                             request_logs.append(output_path.with_suffix(output_path.suffix + ".request.json"))
 
-                _brief_apply_to = str(brief_cfg.get("apply_to") or "grundbog_only").strip().lower()
-                _brief_ok = _brief_apply_to == "all" or (
-                    _brief_apply_to != "none" and "Grundbog kapitel" in source.name
-                )
-                if source_item.source_type == "reading" and _brief_ok:
+                if should_generate_brief_for_source(source_item, brief_cfg=brief_cfg):
                     title_prefix = brief_cfg.get("title_prefix", "[Brief]")
                     brief_base = f"{title_prefix} {week_label} - {base_name}"
                     for content_type in brief_types:

@@ -19,12 +19,13 @@
   - Length: `default`
   - Prompt: from `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json`
   - Language: from `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json`
-- Brief variants: every **Grundbog kapitel** gets an extra brief version.
+- Brief variants: all readings and included slide sources get an extra brief version.
   - Format: `brief`
   - Length: not set (UI does not expose length for brief; config value is ignored)
   - Prompt: from `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json`
   - Language: from `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json`
   - Source filename marker: `[Brief]`
+  - Included slide sources follow the current generation policy: `lecture` + `exercise` slides are included, `seminar` slides are excluded.
 - Language variants: generate **Danish + English** for all episodes.
    - Config: `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json` → `languages`
    - English naming: adds suffix ` [EN]` to file names and notebook titles.
@@ -42,7 +43,7 @@
 ## Reading summaries (decisions)
 - Source of truth is manual `shows/personlighedspsykologi-en/reading_summaries.json` (`by_name` map keyed by filename).
 - Summary maintenance is local-only via `notebooklm-podcast-auto/personlighedspsykologi/scripts/sync_reading_summaries.py` (no request-log/NotebookLM summary generation path).
-- Local inventory includes reading/brief/TTS audio files (`.mp3` + `.wav`) and excludes weekly overview files matching `Alle kilder` / `All sources`.
+- Local inventory includes non-weekly reading/slide/brief/TTS audio files (`.mp3` + `.wav`) and excludes weekly overview files matching `Alle kilder` / `All sources`.
 - Workflow order is scaffold/update first, then `--validate-only`; coverage validation is warn-only for missing/incomplete entries.
 - Target fill levels are 2-4 `summary_lines` and 3-5 `key_points` per episode.
 - Language rule: if a source text is Danish, keep both `summary_lines` and `key_points` in Danish (otherwise keep English).

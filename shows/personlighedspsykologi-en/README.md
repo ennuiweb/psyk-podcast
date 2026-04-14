@@ -37,7 +37,7 @@ Reading-summary workflow:
 - Build feed after sync:
   - `./notebooklm-podcast-auto/.venv/bin/python podcast-tools/gdrive_podcast_feed.py --config shows/personlighedspsykologi-en/config.local.json`
 - Sync behavior:
-  - uses local audio files (`.mp3`/`.wav`) to discover `reading`, `brief`, and `TTS` episode keys.
+  - uses local audio files (`.mp3`/`.wav`) to discover non-weekly episode keys, including reading, slide, brief, and `TTS` variants.
   - excludes `Alle kilder` / `All sources` files from the reading summary inventory.
   - preserves existing filled entries and only adds missing placeholders in `reading_summaries.json`.
   - auto-migrates stale cache keys when episode filenames change but the lecture/title identity is still the same (for example `Alle kilder` -> `Alle kilder (undtagen slides)` or long-title -> short-title reading renames).

@@ -217,6 +217,10 @@ jobs:
           SHOW: ${{ matrix.show }}
         run: python podcast-tools/gdrive_podcast_feed.py --config shows/${SHOW}/config.runtime.json
 
+      - name: Audit lecture slide brief coverage
+        if: matrix.show == 'personlighedspsykologi-en'
+        run: python scripts/audit_personlighedspsykologi_slide_briefs.py
+
       - name: Sync Spotify map
         if: contains(fromJSON('["personlighedspsykologi-en","bioneuro"]'), matrix.show)
         env:

@@ -41,7 +41,15 @@ SLIDE_SUBCATEGORY_LABELS = {
     "exercise": "Slide exercise",
 }
 INCLUDED_SLIDE_SUBCATEGORIES = {"lecture", "exercise"}
-BRIEF_APPLY_TO_VALUES = {"all", "none", "grundbog_only", "reading_only", "slides_only"}
+BRIEF_APPLY_TO_VALUES = {
+    "all",
+    "none",
+    "grundbog_only",
+    "reading_only",
+    "slides_only",
+    "lecture_slides_only",
+    "readings_and_lecture_slides",
+}
 BRIEF_SUPPORTED_CONTENT_TYPES = {"audio", "infographic"}
 
 
@@ -272,8 +280,35 @@ def cleanup_disallowed_slide_outputs(week_output_dir: Path) -> list[Path]:
     return removed
 
 
+def slide_brief_subcategory_allowed(subcategory: str, *, brief_cfg: dict) -> bool:
+    apply_to = resolve_brief_apply_to(brief_cfg)
+    if subcategory == "seminar":
+        return False
+    if apply_to in {"all", "slides_only"}:
+        return subcategory == "lecture" or subcategory == "exercise"
+    if apply_to in {"lecture_slides_only", "readings_and_lecture_slides"}:
+        return subcategory == "lecture"
+    return False
+
+
 def brief_content_types(content_types: list[str]) -> list[str]:
     return [item for item in content_types if item in BRIEF_SUPPORTED_CONTENT_TYPES]
+
+
+def cleanup_disallowed_slide_brief_outputs(week_output_dir: Path, *, brief_cfg: dict) -> list[Path]:
+    if not week_output_dir.exists():
+        return []
+
+    removed: list[Path] = []
+    for subcategory, label in SLIDE_SUBCATEGORY_LABELS.items():
+        if slide_brief_subcategory_allowed(subcategory, brief_cfg=brief_cfg):
+            continue
+        for entry in sorted(week_output_dir.glob(f"[[]Brief[]]* - {label}: *"), key=lambda path: path.name):
+            if not entry.is_file():
+                continue
+            entry.unlink()
+            removed.append(entry)
+    return removed
 
 
 def cleanup_disallowed_brief_quiz_outputs(week_output_dir: Path) -> list[Path]:
@@ -340,7 +375,14 @@ def resolve_brief_apply_to(brief_cfg: dict) -> str:
     raw_value = str(brief_cfg.get("apply_to") or "grundbog_only").strip().lower()
     if raw_value in BRIEF_APPLY_TO_VALUES:
         return raw_value
-    return "grundbog_only"
+    allowed = ", ".join(sorted(BRIEF_APPLY_TO_VALUES))
+    raise SystemExit(
+        f"Unknown brief.apply_to '{raw_value}'. Allowed values: {allowed}."
+    )
+
+
+def is_lecture_slide_source(source_item: SourceItem) -> bool:
+    return source_item.source_type == "slide" and source_item.slide_subcategory == "lecture"
 
 
 def should_generate_brief_for_source(source_item: SourceItem, *, brief_cfg: dict) -> bool:
@@ -351,8 +393,12 @@ def should_generate_brief_for_source(source_item: SourceItem, *, brief_cfg: dict
         return True
     if apply_to == "slides_only":
         return source_item.source_type == "slide"
+    if apply_to == "lecture_slides_only":
+        return is_lecture_slide_source(source_item)
     if apply_to == "reading_only":
         return source_item.source_type == "reading"
+    if apply_to == "readings_and_lecture_slides":
+        return source_item.source_type == "reading" or is_lecture_slide_source(source_item)
     return source_item.source_type == "reading" and "grundbog kapitel" in source_item.path.name.casefold()
 
 
@@ -1419,6 +1465,15 @@ def main() -> int:
                     print(
                         f"{week_label}: deleted {len(removed_disallowed_slide_outputs)} stale "
                         "seminar-slide outputs"
+                    )
+                removed_disallowed_slide_briefs = cleanup_disallowed_slide_brief_outputs(
+                    week_output_dir,
+                    brief_cfg=brief_cfg,
+                )
+                if removed_disallowed_slide_briefs:
+                    print(
+                        f"{week_label}: deleted {len(removed_disallowed_slide_briefs)} stale "
+                        "slide brief outputs"
                     )
                 removed_disallowed_brief_quiz_outputs = cleanup_disallowed_brief_quiz_outputs(
                     week_output_dir

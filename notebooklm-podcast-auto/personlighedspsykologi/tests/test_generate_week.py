@@ -29,11 +29,17 @@ def _touch(path: Path, payload: bytes = b"data") -> None:
 class GenerateWeekTests(unittest.TestCase):
     def test_should_generate_brief_for_source_respects_apply_to_modes(self):
         mod = _load_module()
-        slide_item = mod.SourceItem(
+        lecture_slide_item = mod.SourceItem(
             path=Path("/tmp/lecture.pdf"),
             base_name="Slide lecture: Example",
             source_type="slide",
             slide_subcategory="lecture",
+        )
+        exercise_slide_item = mod.SourceItem(
+            path=Path("/tmp/exercise.pdf"),
+            base_name="Slide exercise: Example",
+            source_type="slide",
+            slide_subcategory="exercise",
         )
         grundbog_item = mod.SourceItem(
             path=Path("/tmp/Grundbog kapitel 1.pdf"),
@@ -46,11 +52,27 @@ class GenerateWeekTests(unittest.TestCase):
             source_type="reading",
         )
 
-        self.assertTrue(mod.should_generate_brief_for_source(slide_item, brief_cfg={"apply_to": "all"}))
+        self.assertTrue(
+            mod.should_generate_brief_for_source(
+                lecture_slide_item,
+                brief_cfg={"apply_to": "all"},
+            )
+        )
+        self.assertTrue(
+            mod.should_generate_brief_for_source(
+                exercise_slide_item,
+                brief_cfg={"apply_to": "all"},
+            )
+        )
         self.assertTrue(
             mod.should_generate_brief_for_source(grundbog_item, brief_cfg={"apply_to": "all"})
         )
-        self.assertFalse(mod.should_generate_brief_for_source(slide_item, brief_cfg={"apply_to": "none"}))
+        self.assertFalse(
+            mod.should_generate_brief_for_source(
+                lecture_slide_item,
+                brief_cfg={"apply_to": "none"},
+            )
+        )
         self.assertTrue(
             mod.should_generate_brief_for_source(
                 grundbog_item,
@@ -65,7 +87,7 @@ class GenerateWeekTests(unittest.TestCase):
         )
         self.assertFalse(
             mod.should_generate_brief_for_source(
-                slide_item,
+                lecture_slide_item,
                 brief_cfg={"apply_to": "grundbog_only"},
             )
         )
@@ -77,13 +99,19 @@ class GenerateWeekTests(unittest.TestCase):
         )
         self.assertFalse(
             mod.should_generate_brief_for_source(
-                slide_item,
+                lecture_slide_item,
                 brief_cfg={"apply_to": "reading_only"},
             )
         )
         self.assertTrue(
             mod.should_generate_brief_for_source(
-                slide_item,
+                lecture_slide_item,
+                brief_cfg={"apply_to": "slides_only"},
+            )
+        )
+        self.assertTrue(
+            mod.should_generate_brief_for_source(
+                exercise_slide_item,
                 brief_cfg={"apply_to": "slides_only"},
             )
         )
@@ -93,6 +121,42 @@ class GenerateWeekTests(unittest.TestCase):
                 brief_cfg={"apply_to": "slides_only"},
             )
         )
+        self.assertTrue(
+            mod.should_generate_brief_for_source(
+                lecture_slide_item,
+                brief_cfg={"apply_to": "lecture_slides_only"},
+            )
+        )
+        self.assertFalse(
+            mod.should_generate_brief_for_source(
+                exercise_slide_item,
+                brief_cfg={"apply_to": "lecture_slides_only"},
+            )
+        )
+        self.assertTrue(
+            mod.should_generate_brief_for_source(
+                lecture_slide_item,
+                brief_cfg={"apply_to": "readings_and_lecture_slides"},
+            )
+        )
+        self.assertFalse(
+            mod.should_generate_brief_for_source(
+                exercise_slide_item,
+                brief_cfg={"apply_to": "readings_and_lecture_slides"},
+            )
+        )
+        self.assertTrue(
+            mod.should_generate_brief_for_source(
+                article_item,
+                brief_cfg={"apply_to": "readings_and_lecture_slides"},
+            )
+        )
+
+    def test_resolve_brief_apply_to_rejects_unknown_values(self):
+        mod = _load_module()
+
+        with self.assertRaises(SystemExit):
+            mod.resolve_brief_apply_to({"apply_to": "lectureish"})
 
     def test_per_source_audio_settings_use_per_slide_defaults_for_slides(self):
         mod = _load_module()
@@ -217,6 +281,42 @@ class GenerateWeekTests(unittest.TestCase):
             self.assertFalse(seminar_audio.exists())
             self.assertFalse(seminar_request.exists())
             self.assertTrue(lecture_audio.exists())
+
+    def test_cleanup_disallowed_slide_brief_outputs_respects_brief_scope(self):
+        mod = _load_module()
+        with tempfile.TemporaryDirectory() as tmpdir:
+            week_dir = Path(tmpdir) / "W1L1"
+            lecture_brief = (
+                week_dir
+                / "[Brief] W1L1 - Slide lecture: 1. gang [EN] {type=audio lang=en format=brief length=default hash=fa9adbcf}.mp3"
+            )
+            exercise_brief = (
+                week_dir
+                / "[Brief] W1L1 - Slide exercise: 1. Intro [EN] {type=audio lang=en format=brief length=default hash=fa9adbcf}.mp3"
+            )
+            seminar_brief = (
+                week_dir
+                / "[Brief] W1L1 - Slide seminar: 1. Seminar [EN] {type=audio lang=en format=brief length=default hash=fa9adbcf}.mp3"
+            )
+            exercise_request = exercise_brief.with_suffix(".mp3.request.json")
+            _touch(lecture_brief)
+            _touch(exercise_brief)
+            _touch(seminar_brief)
+            _touch(exercise_request, b"{}")
+
+            removed = mod.cleanup_disallowed_slide_brief_outputs(
+                week_dir,
+                brief_cfg={"apply_to": "readings_and_lecture_slides"},
+            )
+
+            self.assertEqual(
+                {path.name for path in removed},
+                {exercise_brief.name, seminar_brief.name, exercise_request.name},
+            )
+            self.assertTrue(lecture_brief.exists())
+            self.assertFalse(exercise_brief.exists())
+            self.assertFalse(seminar_brief.exists())
+            self.assertFalse(exercise_request.exists())
 
     def test_brief_content_types_excludes_quiz_and_preserves_supported_order(self):
         mod = _load_module()

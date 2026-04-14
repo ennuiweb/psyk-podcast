@@ -45,9 +45,10 @@ python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_week.py 
 - This guarantees the run re-uploads the full lecture source list instead of relying on existing notebook sources.
 - `Alle kilder` is skipped automatically for lecture folders that contain only one source file.
 - Manual slide entries from `shows/personlighedspsykologi-en/slides_catalog.json` are included as per-slide sources for reading-level generation when they are lecture or exercise slides and have a valid `local_relative_path`.
-- Slide sources generate their own per-source podcasts/quizzes, and when `brief.apply_to` includes slides they also generate `[Brief]` variants, with descriptor titles like `Slide lecture: <title>`.
+- Slide sources generate their own per-source podcasts/quizzes. Briefs are currently configured for all readings plus lecture slides only via `brief.apply_to: "readings_and_lecture_slides"`, with descriptor titles like `Slide lecture: <title>`.
 - Slide audio settings come from `per_slide` in `prompt_config.json`; reading audio settings stay under `per_reading`.
 - Seminar slides are excluded from generation, and non-dry runs auto-delete any stale `Slide seminar: ...` outputs in the target week folder before planning new artifacts.
+- Non-dry runs also delete stale slide brief outputs that fall outside the configured brief scope (for example old `Slide exercise: ...` briefs when `brief.apply_to` is lecture-only for slides).
 - Slides are excluded from the notebook source set for `Alle kilder (undtagen slides)` and therefore also excluded from its `sources=<n>` tag.
 
 ## Output filename config tags

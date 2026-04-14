@@ -18,7 +18,7 @@
   - Length: `default`
   - Prompt: from `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json`
   - Language: from `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json`
-- Brief variants: every **Grundbog kapitel** gets an extra brief version.
+- Brief variants: all readings and lecture slides get an extra brief version.
   - Format: `brief`
   - Length: not set (UI does not expose length for brief; config value is ignored)
   - Prompt: from `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json`
@@ -139,7 +139,7 @@ Optional flags:
 ## Output placement
 - Weekly overview: `notebooklm-podcast-auto/personlighedspsykologi/output/W##/W## - Alle kilder {type=audio lang=en format=deep-dive length=long sources=NN hash=xxxxxxxx}.mp3`
 - Per-reading: `notebooklm-podcast-auto/personlighedspsykologi/output/W##/W## - <reading> {type=audio lang=en format=deep-dive length=default hash=xxxxxxxx}.mp3`
-- Brief (Grundbog): `notebooklm-podcast-auto/personlighedspsykologi/output/W##/[Brief] W## - <reading> {type=audio lang=en format=brief length=default hash=xxxxxxxx}.mp3`
+- Brief (reading or lecture slide): `notebooklm-podcast-auto/personlighedspsykologi/output/W##/[Brief] W## - <reading-or-slide> {type=audio lang=en format=brief length=default hash=xxxxxxxx}.mp3`
 - Infographics use the same base names with `.png`.
 - Quizzes use the same base names with `.json` (or `.md` / `.html` based on `quiz.format`).
 - English variants add ` [EN]` before the extension.

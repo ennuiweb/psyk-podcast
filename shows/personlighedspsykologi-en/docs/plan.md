@@ -19,7 +19,7 @@
   - Length: `default`
   - Prompt: from `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json`
   - Language: from `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json`
-- Brief variants: all readings and included slide sources get an extra brief version.
+- Brief variants: all readings and lecture slides get an extra brief version.
   - Format: `brief`
   - Length: not set (UI does not expose length for brief; config value is ignored)
   - Prompt: from `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json`
@@ -163,7 +163,7 @@ Optional flags:
 ## Output placement
 - Weekly overview kind (lecture-level): `notebooklm-podcast-auto/personlighedspsykologi/output/W##L#/W##L# - Alle kilder.mp3`
 - Per-reading: `notebooklm-podcast-auto/personlighedspsykologi/output/W##L#/W##L# - <reading>.mp3`
-- Brief (Grundbog): `notebooklm-podcast-auto/personlighedspsykologi/output/W##L#/[Brief] W##L# - <reading>.mp3`
+- Brief (reading or lecture slide): `notebooklm-podcast-auto/personlighedspsykologi/output/W##L#/[Brief] W##L# - <reading-or-slide>.mp3`
 - English variants add ` [EN]` before `.mp3`.
 - Non-blocking request log: `notebooklm-podcast-auto/personlighedspsykologi/output/W##L#/*.mp3.request.json`
 - Failed generation error log: `notebooklm-podcast-auto/personlighedspsykologi/output/W##L#/*.mp3.request.error.json`

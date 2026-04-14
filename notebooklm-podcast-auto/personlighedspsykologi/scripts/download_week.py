@@ -330,6 +330,36 @@ def cleanup_request_logs(log_path: Path) -> None:
             print(f"Removed request log: {candidate}")
 
 
+def detect_existing_artifact_type(path: Path) -> str | None:
+    if path.name.endswith(".request.json") or path.name.endswith(".request.error.json"):
+        return None
+    if path.suffix == ".mp3":
+        return "audio"
+    if path.suffix == ".png":
+        return "infographic"
+    if path.suffix == ".json":
+        return "quiz"
+    return None
+
+
+def count_existing_outputs(week_dirs: list[Path], content_types: list[str]) -> dict[str, int]:
+    counts = {artifact_type: 0 for artifact_type in content_types}
+    for week_dir in week_dirs:
+        for entry in week_dir.iterdir():
+            if not entry.is_file():
+                continue
+            artifact_type = detect_existing_artifact_type(entry)
+            if artifact_type not in counts:
+                continue
+            counts[artifact_type] += 1
+    return counts
+
+
+def format_existing_output_counts(counts: dict[str, int]) -> str:
+    parts = [f"{artifact_type}={count}" for artifact_type, count in counts.items() if count > 0]
+    return ", ".join(parts)
+
+
 def is_auth_error(output: str) -> bool:
     lowered = output.lower()
     return "authentication expired" in lowered or "received html instead of media file" in lowered
@@ -568,12 +598,27 @@ def main() -> int:
         error_logs = sorted(error_logs_set)
 
         if not request_logs:
+            existing_counts = count_existing_outputs(week_dirs, content_types)
+            existing_summary = format_existing_output_counts(existing_counts)
             if error_logs:
-                print(f"No request logs found for {week_input} (found error logs).")
+                if existing_summary:
+                    print(
+                        f"No pending request logs found for {week_input}; "
+                        f"existing outputs: {existing_summary}; found error logs."
+                    )
+                else:
+                    print(f"No pending request logs found for {week_input} (found error logs).")
                 for log_path in error_logs:
                     print(f"- {log_path}")
             else:
-                print(f"No request logs found for {week_input}")
+                if existing_summary:
+                    print(
+                        f"No pending request logs found for {week_input}; "
+                        f"existing outputs: {existing_summary}. "
+                        "Successful downloads clean up request logs by default."
+                    )
+                else:
+                    print(f"No request logs found for {week_input}")
             continue
 
         print(f"## {week_input.upper()}")

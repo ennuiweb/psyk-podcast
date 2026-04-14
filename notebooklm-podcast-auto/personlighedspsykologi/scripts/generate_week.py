@@ -41,6 +41,7 @@ SLIDE_SUBCATEGORY_LABELS = {
     "exercise": "Slide exercise",
 }
 INCLUDED_SLIDE_SUBCATEGORIES = {"lecture", "exercise"}
+BRIEF_SUPPORTED_CONTENT_TYPES = {"audio", "infographic"}
 
 
 class SourceItem(NamedTuple):
@@ -267,6 +268,25 @@ def cleanup_disallowed_slide_outputs(week_output_dir: Path) -> list[Path]:
                 continue
             entry.unlink()
             removed.append(entry)
+    return removed
+
+
+def brief_content_types(content_types: list[str]) -> list[str]:
+    return [item for item in content_types if item in BRIEF_SUPPORTED_CONTENT_TYPES]
+
+
+def cleanup_disallowed_brief_quiz_outputs(week_output_dir: Path) -> list[Path]:
+    if not week_output_dir.exists():
+        return []
+
+    removed: list[Path] = []
+    for entry in sorted(week_output_dir.glob("[[]Brief[]]*"), key=lambda path: path.name):
+        if not entry.is_file():
+            continue
+        if "type=quiz" not in entry.name.lower():
+            continue
+        entry.unlink()
+        removed.append(entry)
     return removed
 
 
@@ -1326,6 +1346,7 @@ def main() -> int:
             slide_root_candidate = repo_root / slide_root_candidate
         slides_source_root = slide_root_candidate.resolve()
     content_types = parse_content_types(args.content_types)
+    brief_types = brief_content_types(content_types)
     language_variants = build_language_variants(config)
     weekly_cfg = config.get("weekly_overview", {})
     per_cfg = config.get("per_reading", {})
@@ -1377,6 +1398,14 @@ def main() -> int:
                     print(
                         f"{week_label}: deleted {len(removed_disallowed_slide_outputs)} stale "
                         "seminar-slide outputs"
+                    )
+                removed_disallowed_brief_quiz_outputs = cleanup_disallowed_brief_quiz_outputs(
+                    week_output_dir
+                )
+                if removed_disallowed_brief_quiz_outputs:
+                    print(
+                        f"{week_label}: deleted {len(removed_disallowed_brief_quiz_outputs)} stale "
+                        "brief quiz outputs"
                     )
                 migrated_outputs = migrate_legacy_weekly_overview_outputs(week_output_dir)
                 if migrated_outputs:
@@ -1567,7 +1596,7 @@ def main() -> int:
                 if source_item.source_type == "reading" and _brief_ok:
                     title_prefix = brief_cfg.get("title_prefix", "[Brief]")
                     brief_base = f"{title_prefix} {week_label} - {base_name}"
-                    for content_type in content_types:
+                    for content_type in brief_types:
                         brief_output = week_output_dir / f"{brief_base}{output_extension(content_type, quiz_format=quiz_format)}"
                         for variant in language_variants:
                             for quiz_difficulty_value in quiz_difficulty_values(content_type, quiz_difficulty):
@@ -1924,7 +1953,7 @@ def main() -> int:
                 if source_item.source_type == "reading" and _brief_ok:
                     title_prefix = brief_cfg.get("title_prefix", "[Brief]")
                     brief_base = f"{title_prefix} {week_label} - {base_name}"
-                    for content_type in content_types:
+                    for content_type in brief_types:
                         brief_output = week_output_dir / f"{brief_base}{output_extension(content_type, quiz_format=quiz_format)}"
                         for variant in language_variants:
                             for quiz_difficulty_value in quiz_difficulty_values(content_type, quiz_difficulty):

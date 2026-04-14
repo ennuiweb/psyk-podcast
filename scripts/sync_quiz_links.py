@@ -76,6 +76,8 @@ def is_excluded_quiz_json_name(name: str) -> bool:
         return True
     if normalized == "quiz_json_manifest.json":
         return True
+    if normalized.startswith("[brief]") and "type=quiz" in normalized:
+        return True
     return normalized.endswith(("-manifest.json", "_manifest.json"))
 
 

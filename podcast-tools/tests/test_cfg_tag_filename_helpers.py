@@ -215,6 +215,11 @@ class CfgTagFilenameHelpersTests(unittest.TestCase):
         self.assertTrue(mod.is_excluded_quiz_json_name("quiz_json_manifest.json"))
         self.assertTrue(mod.is_excluded_quiz_json_name("foo.html.request.json"))
         self.assertTrue(mod.is_excluded_quiz_json_name("foo.html.request.done.json"))
+        self.assertTrue(
+            mod.is_excluded_quiz_json_name(
+                "[Brief] W01L1 - Foo [EN] {type=quiz lang=en quantity=standard difficulty=easy hash=beef1234}.json"
+            )
+        )
         self.assertFalse(
             mod.is_excluded_quiz_json_name(
                 "W01L1 - Foo [EN] {type=quiz lang=en quantity=standard difficulty=easy hash=beef1234}.json"
@@ -285,6 +290,11 @@ class CfgTagFilenameHelpersTests(unittest.TestCase):
         self.assertTrue(mod.is_excluded_quiz_json_name("quiz_json_manifest.json"))
         self.assertTrue(mod.is_excluded_quiz_json_name("foo.html.request.json"))
         self.assertTrue(mod.is_excluded_quiz_json_name("foo.html.request.done.json"))
+        self.assertTrue(
+            mod.is_excluded_quiz_json_name(
+                "[Brief] W01L1 - Foo [EN] {type=quiz lang=en quantity=standard difficulty=hard hash=beef1234}.json"
+            )
+        )
         self.assertFalse(
             mod.is_excluded_quiz_json_name(
                 "W01L1 - Foo [EN] {type=quiz lang=en quantity=standard difficulty=hard hash=beef1234}.json"

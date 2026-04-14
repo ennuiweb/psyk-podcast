@@ -21,6 +21,22 @@ def _load_module():
 
 
 class DownloadWeekTests(unittest.TestCase):
+    def test_disallowed_brief_quiz_request_log_is_skipped(self):
+        mod = _load_module()
+
+        self.assertTrue(
+            mod.is_disallowed_brief_quiz_request_log(
+                "/tmp/[Brief] W01L1 - Foo [EN] {type=quiz lang=en quantity=standard difficulty=easy hash=beef1234}.json",
+                "quiz",
+            )
+        )
+        self.assertFalse(
+            mod.is_disallowed_brief_quiz_request_log(
+                "/tmp/[Brief] W01L1 - Foo [EN] {type=audio lang=en format=brief hash=beef1234}.mp3",
+                "audio",
+            )
+        )
+
     def test_cleanup_request_logs_removes_request_and_error_only(self):
         mod = _load_module()
         with tempfile.TemporaryDirectory() as tmpdir:

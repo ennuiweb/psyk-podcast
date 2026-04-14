@@ -151,6 +151,38 @@ class GenerateWeekTests(unittest.TestCase):
             self.assertFalse(seminar_request.exists())
             self.assertTrue(lecture_audio.exists())
 
+    def test_brief_content_types_excludes_quiz_and_preserves_supported_order(self):
+        mod = _load_module()
+
+        self.assertEqual(
+            mod.brief_content_types(["quiz", "audio", "infographic"]),
+            ["audio", "infographic"],
+        )
+
+    def test_cleanup_disallowed_brief_quiz_outputs_removes_brief_quiz_artifacts(self):
+        mod = _load_module()
+        with tempfile.TemporaryDirectory() as tmpdir:
+            week_dir = Path(tmpdir) / "W1L1"
+            brief_quiz = (
+                week_dir
+                / "[Brief] W1L1 - Foo [EN] {type=quiz lang=en quantity=standard difficulty=easy hash=beef1234}.json"
+            )
+            brief_request = brief_quiz.with_suffix(".json.request.json")
+            brief_audio = (
+                week_dir
+                / "[Brief] W1L1 - Foo [EN] {type=audio lang=en format=brief length=default hash=fa9adbcf}.mp3"
+            )
+            _touch(brief_quiz, b"{}")
+            _touch(brief_request, b"{}")
+            _touch(brief_audio)
+
+            removed = mod.cleanup_disallowed_brief_quiz_outputs(week_dir)
+
+            self.assertEqual({path.name for path in removed}, {brief_quiz.name, brief_request.name})
+            self.assertFalse(brief_quiz.exists())
+            self.assertFalse(brief_request.exists())
+            self.assertTrue(brief_audio.exists())
+
     def test_should_skip_generation_accepts_legacy_weekly_overview_output(self):
         mod = _load_module()
         with tempfile.TemporaryDirectory() as tmpdir:

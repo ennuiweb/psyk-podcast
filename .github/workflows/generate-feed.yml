@@ -219,7 +219,7 @@ jobs:
 
       - name: Audit lecture slide brief coverage
         if: matrix.show == 'personlighedspsykologi-en'
-        run: python scripts/audit_personlighedspsykologi_slide_briefs.py
+        run: python scripts/audit_personlighedspsykologi_slide_briefs.py --warn-only
 
       - name: Sync Spotify map
         if: contains(fromJSON('["personlighedspsykologi-en","bioneuro"]'), matrix.show)

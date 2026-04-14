@@ -1,9 +1,11 @@
 import importlib.util
 import json
+import sys
 import tempfile
 import unittest
 import xml.etree.ElementTree as ET
 from pathlib import Path
+from unittest import mock
 
 
 def _load_module():
@@ -88,3 +90,13 @@ class PersonlighedspsykologiSlideBriefAuditTests(unittest.TestCase):
             brief_title,
             "Uge 2, Forelæsning 1 · Kort podcast · Forelæsningsslides - Trækteori",
         )
+
+    def test_parse_args_accepts_warn_only(self):
+        mod = _load_module()
+        with mock.patch.object(
+            sys,
+            "argv",
+            ["audit_personlighedspsykologi_slide_briefs.py", "--warn-only"],
+        ):
+            args = mod.parse_args()
+        self.assertTrue(args.warn_only)

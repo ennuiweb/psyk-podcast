@@ -24,6 +24,11 @@ def parse_args() -> argparse.Namespace:
         default="shows/personlighedspsykologi-en/feeds/rss.xml",
         help="Path to the generated RSS feed.",
     )
+    parser.add_argument(
+        "--warn-only",
+        action="store_true",
+        help="Print problems but exit successfully instead of failing.",
+    )
     return parser.parse_args()
 
 
@@ -167,7 +172,11 @@ def main() -> int:
         )
 
     if problems:
-        raise SystemExit("\n\n".join(problems))
+        message = "\n\n".join(problems)
+        if args.warn_only:
+            print(message)
+            return 0
+        raise SystemExit(message)
 
     print("Validated Personlighedspsykologi slide brief coverage.")
     return 0

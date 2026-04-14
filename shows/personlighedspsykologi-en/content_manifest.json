@@ -80,7 +80,7 @@
                 "title": "[Lydbog] · Grundbog kapitel 01 - Introduktion til personlighedspsykologi",
                 "url": "https://open.spotify.com/episode/5Br5kLFJ8XwOu7I587Zs68",
                 "platform": "spotify",
-                "pub_date": "Mon, 02 Feb 2025 16:00:00 +0100",
+                "pub_date": "Mon, 02 Feb 2025 18:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1uo9rYlGy-enjYXGV_HUsdNclr2Xl5V0j",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -90,7 +90,7 @@
                 "title": "Uge 1, Forelæsning 1 · Kort podcast · Grundbog kapitel 1 - Introduktion til personlighedspsykologi",
                 "url": "https://open.spotify.com/episode/68nz4QcRyuqCVv92gJ38bW",
                 "platform": "spotify",
-                "pub_date": "Mon, 02 Feb 2025 12:00:00 +0100",
+                "pub_date": "Mon, 02 Feb 2025 14:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1xtyyUFnxvrRW0IpyWPmrX8YVqB40Imel",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -100,7 +100,7 @@
                 "title": "Uge 1, Forelæsning 1 · Podcast · Grundbog kapitel 1 - Introduktion til personlighedspsykologi",
                 "url": "https://open.spotify.com/episode/1iWhoVK0Pxrrw3XbmeSYRP",
                 "platform": "spotify",
-                "pub_date": "Mon, 02 Feb 2025 22:00:00 +0100",
+                "pub_date": "Tue, 03 Feb 2025 00:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1AdKYWfWBrCMJFT9k1d1XT93-9MPy1uQf",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -154,7 +154,7 @@
                 "title": "Uge 1, Forelæsning 1 · Kort podcast · Lewis (1999)",
                 "url": "https://open.spotify.com/episode/1zUsVDrn2CLaG99oDVWsMp",
                 "platform": "spotify",
-                "pub_date": "Mon, 02 Feb 2025 10:00:00 +0100",
+                "pub_date": "Mon, 02 Feb 2025 12:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=14SDZRn3dYpliUPiVqXgvD_C547W4VveL",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -164,7 +164,7 @@
                 "title": "Uge 1, Forelæsning 1 · Podcast · Lewis (1999)",
                 "url": "https://open.spotify.com/episode/3aC5qjeMPXMmtlemfsOKP4",
                 "platform": "spotify",
-                "pub_date": "Mon, 02 Feb 2025 20:00:00 +0100",
+                "pub_date": "Mon, 02 Feb 2025 22:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1IGkUtZQFekQvYfhN884NU-O2wNXWxQ0g",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -258,6 +258,16 @@
         ],
         "podcasts": [
           {
+            "kind": "short_podcast",
+            "title": "Uge 1, Forelæsning 1 · Kort podcast · Forelæsningsslides - Introduktin PP 2026",
+            "url": "https://open.spotify.com/episode/4vf4qd5sXfvfpqE2oM9Sme",
+            "platform": "spotify",
+            "pub_date": "Mon, 02 Feb 2025 10:00:00 +0100",
+            "source_audio_url": "https://drive.google.com/uc?export=download&id=13b4LJT3HKgBYZM-gUxveh0E5LG92IJzg",
+            "duration_seconds": null,
+            "duration_label": ""
+          },
+          {
             "kind": "podcast",
             "title": "Uge 1, Forelæsning 1 · Podcast · Alle kilder (undtagen slides)",
             "url": "https://open.spotify.com/episode/4HYTfEfi30fpk9zwlTSlJB",
@@ -272,7 +282,7 @@
             "title": "Uge 1, Forelæsning 1 · Podcast · Forelæsningsslides - Introduktin PP 2026",
             "url": "https://open.spotify.com/episode/4vf4qd5sXfvfpqE2oM9Sme",
             "platform": "spotify",
-            "pub_date": "Mon, 02 Feb 2025 18:00:00 +0100",
+            "pub_date": "Mon, 02 Feb 2025 20:00:00 +0100",
             "source_audio_url": "https://drive.google.com/uc?export=download&id=1h_u2Pn3zgLOrM-3GgaFZunTV4mCSw9Wz",
             "duration_seconds": null,
             "duration_label": ""
@@ -282,7 +292,7 @@
             "title": "Uge 1, Forelæsning 1 · Podcast · Forelæsningsslides - Introduktion",
             "url": "https://open.spotify.com/episode/0i59G9FkRCbIqg80QfP0lL",
             "platform": "spotify",
-            "pub_date": "Mon, 02 Feb 2025 14:00:00 +0100",
+            "pub_date": "Mon, 02 Feb 2025 16:00:00 +0100",
             "source_audio_url": "https://drive.google.com/uc?export=download&id=1rjbnyZ__A_dDBvHIB73WcQFNBaT7d9p9",
             "duration_seconds": null,
             "duration_label": ""
@@ -290,6 +300,7 @@
         ]
       },
       "warnings": [
+        "RSS item could not map to reading; attached to lecture assets: Uge 1, Forelæsning 1 · Kort podcast · Forelæsningsslides - Introduktin PP 2026",
         "RSS item could not map to reading; attached to lecture assets: Uge 1, Forelæsning 1 · Podcast · Forelæsningsslides - Introduktin PP 2026",
         "RSS item could not map to reading; attached to lecture assets: Uge 1, Forelæsning 1 · Podcast · Forelæsningsslides - Introduktion"
       ]
@@ -690,7 +701,7 @@
                 "title": "Uge 2, Forelæsning 1 · Kort podcast · Zettler et al. (2020)",
                 "url": "https://open.spotify.com/episode/2kDYuEcspU5X68rxz1a8Fe",
                 "platform": "spotify",
-                "pub_date": "Mon, 09 Feb 2025 10:00:00 +0100",
+                "pub_date": "Mon, 09 Feb 2025 12:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=13rrJ2zIjZt0-lDAn9le4hbm8wNIrRlau",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -700,7 +711,7 @@
                 "title": "Uge 2, Forelæsning 1 · Podcast · Zettler et al. (2020)",
                 "url": "https://open.spotify.com/episode/6YsNRUoyV8LMvNqLKhzpqy",
                 "platform": "spotify",
-                "pub_date": "Mon, 09 Feb 2025 20:00:00 +0100",
+                "pub_date": "Mon, 09 Feb 2025 22:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=17y-cgDNN7bNCJPXu458GOgb6r1N6_WlL",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -754,7 +765,7 @@
                 "title": "Uge 2, Forelæsning 1 · Kort podcast · Columbus & Strandsbjerg (2025)",
                 "url": "https://open.spotify.com/episode/3lQDL8C1f46ty3MJcOw2kr",
                 "platform": "spotify",
-                "pub_date": "Mon, 09 Feb 2025 12:00:00 +0100",
+                "pub_date": "Mon, 09 Feb 2025 14:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1WpbD0CCsmlIpoNrjWlYwHcjW9ddFzqip",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -764,7 +775,7 @@
                 "title": "Uge 2, Forelæsning 1 · Podcast · Columbus & Strandsbjerg (2025)",
                 "url": "https://open.spotify.com/episode/1qhsrAtYtLAk5CrXmd1kdZ",
                 "platform": "spotify",
-                "pub_date": "Mon, 09 Feb 2025 22:00:00 +0100",
+                "pub_date": "Tue, 10 Feb 2025 00:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1vhafYsaUPR9CdbyfvOoGBQgTOTyGOvud",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -888,6 +899,16 @@
         ],
         "podcasts": [
           {
+            "kind": "short_podcast",
+            "title": "Uge 2, Forelæsning 1 · Kort podcast · Forelæsningsslides - Trækteori",
+            "url": "https://open.spotify.com/episode/7dt3r98gBlry03lDEMtONU",
+            "platform": "spotify",
+            "pub_date": "Mon, 09 Feb 2025 10:00:00 +0100",
+            "source_audio_url": "https://drive.google.com/uc?export=download&id=1En_7yxeDqRc2q1RrQwQwVCjW5940n7Fe",
+            "duration_seconds": null,
+            "duration_label": ""
+          },
+          {
             "kind": "podcast",
             "title": "Uge 2, Forelæsning 1 · Podcast · Alle kilder (undtagen slides)",
             "url": "https://open.spotify.com/episode/4jpu3mVwJCLe8yOttxW6NO",
@@ -902,7 +923,7 @@
             "title": "Uge 2, Forelæsning 1 · Podcast · Forelæsningsslides - PersPsy 3 260209",
             "url": "https://open.spotify.com/episode/0XJkFkAGLkVXBoj4vWoW3B",
             "platform": "spotify",
-            "pub_date": "Mon, 09 Feb 2025 18:00:00 +0100",
+            "pub_date": "Mon, 09 Feb 2025 20:00:00 +0100",
             "source_audio_url": "https://drive.google.com/uc?export=download&id=14NFzyU46SLxg2HMDvv3kKhkXFaenX8OU",
             "duration_seconds": null,
             "duration_label": ""
@@ -912,7 +933,7 @@
             "title": "Uge 2, Forelæsning 1 · Podcast · Forelæsningsslides - Trækpsykologi II",
             "url": "https://open.spotify.com/episode/276wFNmsgr7fjW9JOMXoco",
             "platform": "spotify",
-            "pub_date": "Mon, 09 Feb 2025 16:00:00 +0100",
+            "pub_date": "Mon, 09 Feb 2025 18:00:00 +0100",
             "source_audio_url": "https://drive.google.com/uc?export=download&id=1aQnCCpUhg3sUG6kS83bOu0KNBN6sp6_W",
             "duration_seconds": null,
             "duration_label": ""
@@ -922,7 +943,7 @@
             "title": "Uge 2, Forelæsning 1 · Podcast · Forelæsningsslides - Trækteori",
             "url": "https://open.spotify.com/episode/7dt3r98gBlry03lDEMtONU",
             "platform": "spotify",
-            "pub_date": "Mon, 09 Feb 2025 14:00:00 +0100",
+            "pub_date": "Mon, 09 Feb 2025 16:00:00 +0100",
             "source_audio_url": "https://drive.google.com/uc?export=download&id=1Q9hETtjaycAfH7VE96LjTvN3k3kA41M2",
             "duration_seconds": null,
             "duration_label": ""
@@ -930,6 +951,7 @@
         ]
       },
       "warnings": [
+        "RSS item could not map to reading; attached to lecture assets: Uge 2, Forelæsning 1 · Kort podcast · Forelæsningsslides - Trækteori",
         "RSS item could not map to reading; attached to lecture assets: Uge 2, Forelæsning 1 · Podcast · Forelæsningsslides - PersPsy 3 260209",
         "RSS item could not map to reading; attached to lecture assets: Uge 2, Forelæsning 1 · Podcast · Forelæsningsslides - Trækpsykologi II",
         "RSS item could not map to reading; attached to lecture assets: Uge 2, Forelæsning 1 · Podcast · Forelæsningsslides - Trækteori"
@@ -1226,7 +1248,7 @@
                 "title": "Uge 3, Forelæsning 1 · Kort podcast · Kandler & Instinske (2025)",
                 "url": "https://open.spotify.com/episode/7Enl5Z1ssEQu41ZFILMGD3",
                 "platform": "spotify",
-                "pub_date": "Mon, 16 Feb 2025 10:00:00 +0100",
+                "pub_date": "Mon, 16 Feb 2025 16:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=16-9gIKhQNuid00TFkYKDOMr5Nwn-qou0",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -1236,7 +1258,7 @@
                 "title": "Uge 3, Forelæsning 1 · Podcast · Kandler & Instinske (2025)",
                 "url": "https://open.spotify.com/episode/5O4VRw27gd7eVEwLuht55V",
                 "platform": "spotify",
-                "pub_date": "Mon, 16 Feb 2025 20:00:00 +0100",
+                "pub_date": "Tue, 17 Feb 2025 02:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1aWpc6yeG9iRqEutYT802ViD8NeEDRQOP",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -1286,11 +1308,21 @@
             ],
             "podcasts": [
               {
+                "kind": "short_podcast",
+                "title": "Uge 3, Forelæsning 1 · Kort podcast · Lu, Benet-Martínez & Wang (2023)",
+                "url": "https://open.spotify.com/episode/2gPgQrKvQHxwA80jsUHB50",
+                "platform": "spotify",
+                "pub_date": "Mon, 16 Feb 2025 14:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=18BtY3AAzz7cOevj2OPQyk4dBhhgb8QTC",
+                "duration_seconds": null,
+                "duration_label": ""
+              },
+              {
                 "kind": "podcast",
                 "title": "Uge 3, Forelæsning 1 · Podcast · Lu, Benet-Martínez & Wang (2023)",
                 "url": "https://open.spotify.com/episode/2gPgQrKvQHxwA80jsUHB50",
                 "platform": "spotify",
-                "pub_date": "Mon, 16 Feb 2025 18:00:00 +0100",
+                "pub_date": "Tue, 17 Feb 2025 00:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1rIxC-4gikram9dpdHUxwdrwj1Q7U3TC6",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -1340,11 +1372,21 @@
             ],
             "podcasts": [
               {
+                "kind": "short_podcast",
+                "title": "Uge 3, Forelæsning 1 · Kort podcast · Volk & Puchalski (2025)",
+                "url": "https://open.spotify.com/episode/2e2dav65I43uFg1aGiooxy",
+                "platform": "spotify",
+                "pub_date": "Mon, 16 Feb 2025 12:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=138XCY2CHvYp2i6wxlCkELS1Kv872HKLT",
+                "duration_seconds": null,
+                "duration_label": ""
+              },
+              {
                 "kind": "podcast",
                 "title": "Uge 3, Forelæsning 1 · Podcast · Volk & Puchalski (2025)",
                 "url": "https://open.spotify.com/episode/2e2dav65I43uFg1aGiooxy",
                 "platform": "spotify",
-                "pub_date": "Mon, 16 Feb 2025 16:00:00 +0100",
+                "pub_date": "Mon, 16 Feb 2025 22:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1MUsp_Xiw0xyZR3pl2YAxO2ZUcbTRfcXK",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -1394,11 +1436,21 @@
             ],
             "podcasts": [
               {
+                "kind": "short_podcast",
+                "title": "Uge 3, Forelæsning 1 · Kort podcast · Zettler et al. (2025)",
+                "url": "https://open.spotify.com/episode/1nNBWBLdEsgB94aWCL3OGy",
+                "platform": "spotify",
+                "pub_date": "Mon, 16 Feb 2025 10:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1Bt5O91fsKkA3icKZmmf0Gmvnj-1WaPf7",
+                "duration_seconds": null,
+                "duration_label": ""
+              },
+              {
                 "kind": "podcast",
                 "title": "Uge 3, Forelæsning 1 · Podcast · Zettler et al. (2025)",
                 "url": "https://open.spotify.com/episode/1nNBWBLdEsgB94aWCL3OGy",
                 "platform": "spotify",
-                "pub_date": "Mon, 16 Feb 2025 14:00:00 +0100",
+                "pub_date": "Mon, 16 Feb 2025 20:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1RSAi0YF-0qg9MaEKJgno2m7qtJt1TERm",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -1506,7 +1558,7 @@
             "title": "Uge 3, Forelæsning 1 · Podcast · Forelæsningsslides - PersPsy 5 260216",
             "url": "https://open.spotify.com/episode/2Kp6OBVzsyRkjGetKiHv5b",
             "platform": "spotify",
-            "pub_date": "Mon, 16 Feb 2025 12:00:00 +0100",
+            "pub_date": "Mon, 16 Feb 2025 18:00:00 +0100",
             "source_audio_url": "https://drive.google.com/uc?export=download&id=1wrAR2A7bh-3yXEEaSQUbrG77ddM8afor",
             "duration_seconds": null,
             "duration_label": ""
@@ -1700,11 +1752,21 @@
             ],
             "podcasts": [
               {
+                "kind": "short_podcast",
+                "title": "Uge 4, Forelæsning 1 · Kort podcast · Freud (1973-1933) DA",
+                "url": "https://open.spotify.com/episode/4gpzO2QVNjdXrutr6fNld8",
+                "platform": "spotify",
+                "pub_date": "Mon, 23 Feb 2025 12:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1PPDwihwvyE5ysKHq4KebemmkLuaAG0v6",
+                "duration_seconds": null,
+                "duration_label": ""
+              },
+              {
                 "kind": "podcast",
                 "title": "Uge 4, Forelæsning 1 · Podcast · Freud (1973-1933) DA",
                 "url": "https://open.spotify.com/episode/4gpzO2QVNjdXrutr6fNld8",
                 "platform": "spotify",
-                "pub_date": "Mon, 23 Feb 2025 16:00:00 +0100",
+                "pub_date": "Mon, 23 Feb 2025 20:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1AeXAVGCkZ0nfzGqRQYMYxA4KKk1WNVkl",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -1714,7 +1776,7 @@
                 "title": "Uge 4, Forelæsning 1 · Podcast · Freud, S. (1973-1933) EN",
                 "url": "https://open.spotify.com/episode/4neTsg6C6eqFExPRv7pCbH",
                 "platform": "spotify",
-                "pub_date": "Mon, 23 Feb 2025 14:00:00 +0100",
+                "pub_date": "Mon, 23 Feb 2025 18:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1eTY3-1_y0vrz_5hNKbu5PCLUIYIWAcQB",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -1745,11 +1807,21 @@
             "quizzes": [],
             "podcasts": [
               {
+                "kind": "short_podcast",
+                "title": "Uge 4, Forelæsning 1 · Kort podcast · Gammelgaard (2007)",
+                "url": "https://open.spotify.com/episode/2ohEuB2pbtsXFY2DIai6R5",
+                "platform": "spotify",
+                "pub_date": "Mon, 23 Feb 2025 10:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1KY-f_WjopJJcR_XNSWTcGwyeYfnqA7kj",
+                "duration_seconds": null,
+                "duration_label": ""
+              },
+              {
                 "kind": "podcast",
                 "title": "Uge 4, Forelæsning 1 · Podcast · Gammelgaard (2007)",
                 "url": "https://open.spotify.com/episode/2ohEuB2pbtsXFY2DIai6R5",
                 "platform": "spotify",
-                "pub_date": "Mon, 23 Feb 2025 12:00:00 +0100",
+                "pub_date": "Mon, 23 Feb 2025 16:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1mSGGOarvs2TXoUZPvgDjHzuIq7KqB9W1",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -1828,7 +1900,7 @@
             "title": "Uge 4, Forelæsning 1 · Podcast · Forelæsningsslides - Psykoanalysens personbegreb",
             "url": "https://open.spotify.com/episode/689OiHFAf8vmnh7zoMH0ny",
             "platform": "spotify",
-            "pub_date": "Mon, 23 Feb 2025 10:00:00 +0100",
+            "pub_date": "Mon, 23 Feb 2025 14:00:00 +0100",
             "source_audio_url": "https://drive.google.com/uc?export=download&id=1s9mTefDUyeVwNyc5uoY33aI8qZYIfeZ6",
             "duration_seconds": null,
             "duration_label": ""
@@ -1900,11 +1972,21 @@
             ],
             "podcasts": [
               {
+                "kind": "short_podcast",
+                "title": "Uge 4, Forelæsning 2 · Kort podcast · Lacan (1966)",
+                "url": "https://open.spotify.com/episode/2klm6uupWbQ8iiJY5fs1zx",
+                "platform": "spotify",
+                "pub_date": "Tue, 24 Feb 2025 14:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=114zcrtEpORve3j-xsMmTBqytJUhRk_i2",
+                "duration_seconds": null,
+                "duration_label": ""
+              },
+              {
                 "kind": "podcast",
                 "title": "Uge 4, Forelæsning 2 · Podcast · Lacan (1966)",
                 "url": "https://open.spotify.com/episode/2klm6uupWbQ8iiJY5fs1zx",
                 "platform": "spotify",
-                "pub_date": "Tue, 24 Feb 2025 16:00:00 +0100",
+                "pub_date": "Tue, 24 Feb 2025 20:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1_O-ON47oWkPaZB790ifDcyJibr22mgD9",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -1954,11 +2036,21 @@
             ],
             "podcasts": [
               {
+                "kind": "short_podcast",
+                "title": "Uge 4, Forelæsning 2 · Kort podcast · Laplanche, J. (1970). Liv og død i psykoanalysen (pp. 18‐38)",
+                "url": "https://open.spotify.com/episode/3914Ge4NBnDYgy33uULU11",
+                "platform": "spotify",
+                "pub_date": "Tue, 24 Feb 2025 12:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1d2hwMiSytvdeA2B1oSd28vZbsRWAHulE",
+                "duration_seconds": null,
+                "duration_label": ""
+              },
+              {
                 "kind": "podcast",
                 "title": "Uge 4, Forelæsning 2 · Podcast · Laplanche, J. (1970). Liv og død i psykoanalysen (pp. 18‐38)",
                 "url": "https://open.spotify.com/episode/3914Ge4NBnDYgy33uULU11",
                 "platform": "spotify",
-                "pub_date": "Tue, 24 Feb 2025 14:00:00 +0100",
+                "pub_date": "Tue, 24 Feb 2025 18:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1Fbcl0T6L2BPlLH8kjU_ERsh8soYGZupP",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -2047,7 +2139,7 @@
             "title": "Uge 4, Forelæsning 2 · Podcast · Forelæsningsslides - Psykoanalytisk personlighedsstruktur",
             "url": "https://open.spotify.com/episode/59uT83Erpuuw3461HasaMR",
             "platform": "spotify",
-            "pub_date": "Tue, 24 Feb 2025 12:00:00 +0100",
+            "pub_date": "Tue, 24 Feb 2025 16:00:00 +0100",
             "source_audio_url": "https://drive.google.com/uc?export=download&id=1V2TOEHb1D2IEqFwKjq-tl5YNHFKNZb0i",
             "duration_seconds": null,
             "duration_label": ""
@@ -2118,11 +2210,21 @@
             ],
             "podcasts": [
               {
+                "kind": "short_podcast",
+                "title": "Uge 5, Forelæsning 1 · Kort podcast · Freud, S. (1984-1905). Brudstykke af en hysteri-analyse (pp. 9-62, pp. 96",
+                "url": "https://open.spotify.com/episode/7gC5FBFT9MZ9kjTUNIytuP",
+                "platform": "spotify",
+                "pub_date": "Mon, 02 Mar 2025 14:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1LO36MaPO1bQ9y_uGKpL2mdcH_LWlJxOw",
+                "duration_seconds": null,
+                "duration_label": ""
+              },
+              {
                 "kind": "podcast",
                 "title": "Uge 5, Forelæsning 1 · Podcast · Freud, S. (1984-1905). Brudstykke af en hysteri-analyse (pp. 9-62, pp. 96",
                 "url": "https://open.spotify.com/episode/7gC5FBFT9MZ9kjTUNIytuP",
                 "platform": "spotify",
-                "pub_date": "Mon, 02 Mar 2025 14:00:00 +0100",
+                "pub_date": "Mon, 02 Mar 2025 22:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1iR1DJMyES3FG_uMeZzaB1UneS9LOcoia",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -2172,11 +2274,21 @@
             ],
             "podcasts": [
               {
+                "kind": "short_podcast",
+                "title": "Uge 5, Forelæsning 1 · Kort podcast · Gammelgaard (2010)",
+                "url": "https://open.spotify.com/episode/4pOp1kKxgkapA4hJYorPfD",
+                "platform": "spotify",
+                "pub_date": "Mon, 02 Mar 2025 12:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1oFNidGnqvqPs8H5u6sXI6sYM4CN5pz2V",
+                "duration_seconds": null,
+                "duration_label": ""
+              },
+              {
                 "kind": "podcast",
                 "title": "Uge 5, Forelæsning 1 · Podcast · Gammelgaard (2010)",
                 "url": "https://open.spotify.com/episode/4pOp1kKxgkapA4hJYorPfD",
                 "platform": "spotify",
-                "pub_date": "Mon, 02 Mar 2025 12:00:00 +0100",
+                "pub_date": "Mon, 02 Mar 2025 20:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1HlHXdhbbedsyofwHMLW4QTDAVWWId5NQ",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -2226,11 +2338,21 @@
             ],
             "podcasts": [
               {
+                "kind": "short_podcast",
+                "title": "Uge 5, Forelæsning 1 · Kort podcast · Ricoeur (1981)",
+                "url": "https://open.spotify.com/episode/1nmkF6uJnNpRNiYXdUxpEO",
+                "platform": "spotify",
+                "pub_date": "Mon, 02 Mar 2025 10:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1wzLmKDF3xKzFd0ZJbDUBCOw1jFqRX7WU",
+                "duration_seconds": null,
+                "duration_label": ""
+              },
+              {
                 "kind": "podcast",
                 "title": "Uge 5, Forelæsning 1 · Podcast · Ricoeur (1981)",
                 "url": "https://open.spotify.com/episode/1nmkF6uJnNpRNiYXdUxpEO",
                 "platform": "spotify",
-                "pub_date": "Mon, 02 Mar 2025 16:00:00 +0100",
+                "pub_date": "Tue, 03 Mar 2025 00:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1FWbfdyZbNay121b1tfQu7i4sEvqSHnzs",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -2252,19 +2374,19 @@
                 "quiz_id": "0343035e",
                 "difficulty": "easy",
                 "quiz_url": "/q/0343035e.html",
-                "episode_title": "W05L1 - Slide exercise: 1. Psykoanalyse [EN].mp3"
+                "episode_title": "W05L1 - Slide exercise: 1. Psykoanalyse [EN] {type=audio lang=en format=deep-dive length=default hash=973c491c}.mp3"
               },
               {
                 "quiz_id": "260ab7ed",
                 "difficulty": "hard",
                 "quiz_url": "/q/260ab7ed.html",
-                "episode_title": "W05L1 - Slide exercise: 1. Psykoanalyse [EN].mp3"
+                "episode_title": "W05L1 - Slide exercise: 1. Psykoanalyse [EN] {type=audio lang=en format=deep-dive length=default hash=973c491c}.mp3"
               },
               {
                 "quiz_id": "e8387155",
                 "difficulty": "medium",
                 "quiz_url": "/q/e8387155.html",
-                "episode_title": "W05L1 - Slide exercise: 1. Psykoanalyse [EN].mp3"
+                "episode_title": "W05L1 - Slide exercise: 1. Psykoanalyse [EN] {type=audio lang=en format=deep-dive length=default hash=973c491c}.mp3"
               }
             ],
             "podcasts": []
@@ -2338,7 +2460,7 @@
             "title": "Uge 5, Forelæsning 1 · Podcast · Forelæsningsslides - Psykoanalysens empiri og metode",
             "url": "https://open.spotify.com/episode/5VRkPWIYWkSj8SqvD5J2MM",
             "platform": "spotify",
-            "pub_date": "Mon, 02 Mar 2025 10:00:00 +0100",
+            "pub_date": "Mon, 02 Mar 2025 18:00:00 +0100",
             "source_audio_url": "https://drive.google.com/uc?export=download&id=1z32FCFKLLHi73hvy_EMMEZsIi4_-tKl4",
             "duration_seconds": null,
             "duration_label": ""
@@ -2346,7 +2468,8 @@
         ]
       },
       "warnings": [
-        "RSS item could not map to reading; attached to lecture assets: Uge 5, Forelæsning 1 · Podcast · Forelæsningsslides - Psykoanalysens empiri og metode"
+        "RSS item could not map to reading; attached to lecture assets: Uge 5, Forelæsning 1 · Podcast · Forelæsningsslides - Psykoanalysens empiri og metode",
+        "Spotify episode mapping missing for RSS item; skipping podcast asset: Uge 5, Forelæsning 1 · Podcast · Forelæsningsslides - Psykoanalyse"
       ]
     },
     {
@@ -2409,11 +2532,21 @@
             ],
             "podcasts": [
               {
+                "kind": "short_podcast",
+                "title": "Uge 5, Forelæsning 2 · Kort podcast · Andkjær Olsen & Køppe (1991a og b)",
+                "url": "https://open.spotify.com/episode/6dKe2DKLdDmvwHcBtsGK26",
+                "platform": "spotify",
+                "pub_date": "Tue, 03 Mar 2025 14:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1Fq05PO9_hc0Q-mqdYDGOaQkFXURVvue2",
+                "duration_seconds": null,
+                "duration_label": ""
+              },
+              {
                 "kind": "podcast",
                 "title": "Uge 5, Forelæsning 2 · Podcast · Andkjær Olsen & Køppe (1991a og b)",
                 "url": "https://open.spotify.com/episode/6dKe2DKLdDmvwHcBtsGK26",
                 "platform": "spotify",
-                "pub_date": "Tue, 03 Mar 2025 20:00:00 +0100",
+                "pub_date": "Wed, 04 Mar 2025 00:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1YTe29TNTN0IxglYJ0XPub5eHpqAXXUHM",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -2463,11 +2596,21 @@
             ],
             "podcasts": [
               {
+                "kind": "short_podcast",
+                "title": "Uge 5, Forelæsning 2 · Kort podcast · Køppe (1992)",
+                "url": "https://open.spotify.com/episode/2TKdUSqcWdJCXJNQlwjcNh",
+                "platform": "spotify",
+                "pub_date": "Tue, 03 Mar 2025 12:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1qznuSB5R7fov4GY_jJfhGMj3Q-LK18cY",
+                "duration_seconds": null,
+                "duration_label": ""
+              },
+              {
                 "kind": "podcast",
                 "title": "Uge 5, Forelæsning 2 · Podcast · Køppe (1992)",
                 "url": "https://open.spotify.com/episode/2TKdUSqcWdJCXJNQlwjcNh",
                 "platform": "spotify",
-                "pub_date": "Tue, 03 Mar 2025 18:00:00 +0100",
+                "pub_date": "Tue, 03 Mar 2025 22:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1fC2UYNVZA86O5dPLumapdJMpm0dCibQH",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -2521,7 +2664,7 @@
                 "title": "[Lydbog] · Grundbog kapitel 07 - Nyere psykoanalytiske teorier",
                 "url": "https://open.spotify.com/episode/7g01gQ872DvFlQ40sM4B15",
                 "platform": "spotify",
-                "pub_date": "Tue, 03 Mar 2025 12:00:00 +0100",
+                "pub_date": "Tue, 03 Mar 2025 16:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1zH_wN4a73fIVqO49qzmB-2uVemzsTpyP",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -2531,7 +2674,7 @@
                 "title": "Uge 5, Forelæsning 2 · Kort podcast · Grundbog kapitel 07 - Nyere psykoanalytiske teorier",
                 "url": "https://open.spotify.com/episode/1g64mG9XUOUSvKcOsZVrEi",
                 "platform": "spotify",
-                "pub_date": "Tue, 03 Mar 2025 14:00:00 +0100",
+                "pub_date": "Tue, 03 Mar 2025 18:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1Eoc4S057CEVcdyNljzSlKEIhzSOvEBNO",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -2541,7 +2684,7 @@
                 "title": "Uge 5, Forelæsning 2 · Podcast · Grundbog kapitel 07 - Nyere psykoanalytiske teorier",
                 "url": "https://open.spotify.com/episode/7C7xtMQn5mG3uk6zpapB2b",
                 "platform": "spotify",
-                "pub_date": "Tue, 03 Mar 2025 22:00:00 +0100",
+                "pub_date": "Wed, 04 Mar 2025 02:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1sTDWS_ZtybXEupv_k5H5WMnb5B9smwpG",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -2619,7 +2762,7 @@
             "title": "Uge 5, Forelæsning 2 · Podcast · Forelæsningsslides - Psykoanalysens konstituering",
             "url": "https://open.spotify.com/episode/32neBO681Qw2T3COZ93XRT",
             "platform": "spotify",
-            "pub_date": "Tue, 03 Mar 2025 16:00:00 +0100",
+            "pub_date": "Tue, 03 Mar 2025 20:00:00 +0100",
             "source_audio_url": "https://drive.google.com/uc?export=download&id=1EwKQ3KfkzyURddgT4JKHHD3VFwTHoV1V",
             "duration_seconds": null,
             "duration_label": ""
@@ -2690,11 +2833,21 @@
             ],
             "podcasts": [
               {
+                "kind": "short_podcast",
+                "title": "Uge 6, Forelæsning 1 · Kort podcast · Spinelli (2005)",
+                "url": "https://open.spotify.com/episode/4trKMpssaXeHbTp4WhaS14",
+                "platform": "spotify",
+                "pub_date": "Mon, 09 Mar 2025 10:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1bPmT1gxBznLgsyHCycT-tFgwzAqfmBKE",
+                "duration_seconds": null,
+                "duration_label": ""
+              },
+              {
                 "kind": "podcast",
                 "title": "Uge 6, Forelæsning 1 · Podcast · Spinelli (2005)",
                 "url": "https://open.spotify.com/episode/4trKMpssaXeHbTp4WhaS14",
                 "platform": "spotify",
-                "pub_date": "Mon, 09 Mar 2025 16:00:00 +0100",
+                "pub_date": "Mon, 09 Mar 2025 20:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1o_5v_JxAQOvnWuFqL3QWZ25yozVoKFys",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -2744,11 +2897,21 @@
             ],
             "podcasts": [
               {
+                "kind": "short_podcast",
+                "title": "Uge 6, Forelæsning 1 · Kort podcast · Moeskær Hansen & Roald (2022)",
+                "url": "https://open.spotify.com/episode/3tT8Xffcqf6GM758AuxiP1",
+                "platform": "spotify",
+                "pub_date": "Mon, 09 Mar 2025 12:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1RTodBPdrySzfIM-JcNUBDLoz8_-gf2HV",
+                "duration_seconds": null,
+                "duration_label": ""
+              },
+              {
                 "kind": "podcast",
                 "title": "Uge 6, Forelæsning 1 · Podcast · Moeskær Hansen & Roald (2022)",
                 "url": "https://open.spotify.com/episode/3tT8Xffcqf6GM758AuxiP1",
                 "platform": "spotify",
-                "pub_date": "Mon, 09 Mar 2025 18:00:00 +0100",
+                "pub_date": "Mon, 09 Mar 2025 22:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1KGUPsUftMm-l7qdV5QmGOmCvmMc3jo5-",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -2802,7 +2965,7 @@
                 "title": "[Lydbog] · Grundbog kapitel 04 - Fænomenologisk personlighedspsykologi",
                 "url": "https://open.spotify.com/episode/3wGwg43CLt7nblUXqtLCmx",
                 "platform": "spotify",
-                "pub_date": "Mon, 09 Mar 2025 14:00:00 +0100",
+                "pub_date": "Mon, 09 Mar 2025 18:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=10217c0A44CfNLTpw_wPMl-upzgmTm-Jh",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -2812,7 +2975,7 @@
                 "title": "Uge 6, Forelæsning 1 · Kort podcast · Grundbog kapitel 4 - Fænomenologisk personlighedspsykologi",
                 "url": "https://open.spotify.com/episode/3yBiYMzbaPcFiOzVE3ac20",
                 "platform": "spotify",
-                "pub_date": "Mon, 09 Mar 2025 10:00:00 +0100",
+                "pub_date": "Mon, 09 Mar 2025 14:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1yv1B2wEF-qBsWhObJoCNWp0whMdkR1zP",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -2822,7 +2985,7 @@
                 "title": "Uge 6, Forelæsning 1 · Podcast · Grundbog kapitel 4 - Fænomenologisk personlighedspsykologi",
                 "url": "https://open.spotify.com/episode/7HAIg4PkjN8Bvv4Zvoz7et",
                 "platform": "spotify",
-                "pub_date": "Mon, 09 Mar 2025 20:00:00 +0100",
+                "pub_date": "Tue, 10 Mar 2025 00:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1ovHuc3DVXRE9poYbCPUxBdNxYrxRWhbG",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -2881,7 +3044,7 @@
             "title": "Uge 6, Forelæsning 1 · Podcast · Forelæsningsslides - Fænomenologisk personlighedspsykologi2026",
             "url": "https://open.spotify.com/episode/0lzyS01uChYUzfYKGGmeJs",
             "platform": "spotify",
-            "pub_date": "Mon, 09 Mar 2025 12:00:00 +0100",
+            "pub_date": "Mon, 09 Mar 2025 16:00:00 +0100",
             "source_audio_url": "https://drive.google.com/uc?export=download&id=1r4zeMKZ2rovXD0wiZZ6wZgNYpJkw3rs5",
             "duration_seconds": null,
             "duration_label": ""
@@ -2952,11 +3115,21 @@
             ],
             "podcasts": [
               {
+                "kind": "short_podcast",
+                "title": "Uge 6, Forelæsning 2 · Kort podcast · Boss (1963)",
+                "url": "https://open.spotify.com/episode/5S4dUT3R8bzyHoTWh0rkNr",
+                "platform": "spotify",
+                "pub_date": "Tue, 10 Mar 2025 14:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1yTQeankUKfWqjBC2-bWViZHZqcDVbv0o",
+                "duration_seconds": null,
+                "duration_label": ""
+              },
+              {
                 "kind": "podcast",
                 "title": "Uge 6, Forelæsning 2 · Podcast · Boss (1963)",
                 "url": "https://open.spotify.com/episode/5S4dUT3R8bzyHoTWh0rkNr",
                 "platform": "spotify",
-                "pub_date": "Tue, 10 Mar 2025 14:00:00 +0100",
+                "pub_date": "Tue, 10 Mar 2025 18:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1T3DRlXScJVtiZJDsmd8Nu1iUHnPuhVFz",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -3006,11 +3179,21 @@
             ],
             "podcasts": [
               {
+                "kind": "short_podcast",
+                "title": "Uge 6, Forelæsning 2 · Kort podcast · May (1966)",
+                "url": "https://open.spotify.com/episode/7ziOUYkGAFmHbPmBImmr57",
+                "platform": "spotify",
+                "pub_date": "Tue, 10 Mar 2025 12:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1hqgtHYTmE-zAeOIUOSHKQZO2nF3v4bVc",
+                "duration_seconds": null,
+                "duration_label": ""
+              },
+              {
                 "kind": "podcast",
                 "title": "Uge 6, Forelæsning 2 · Podcast · May (1966)",
                 "url": "https://open.spotify.com/episode/7ziOUYkGAFmHbPmBImmr57",
                 "platform": "spotify",
-                "pub_date": "Tue, 10 Mar 2025 12:00:00 +0100",
+                "pub_date": "Tue, 10 Mar 2025 16:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1J7BTgYAoPkU45XmnC3uNAkowXX7wROs5",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -3116,11 +3299,21 @@
             ],
             "podcasts": [
               {
+                "kind": "short_podcast",
+                "title": "Uge 7, Forelæsning 1 · Kort podcast · Cooper (2003)",
+                "url": "https://open.spotify.com/episode/3ESGEgV3rRh32E4HmKh7vK",
+                "platform": "spotify",
+                "pub_date": "Mon, 16 Mar 2025 12:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1s8zIWpHfqfzaX74TR4CdXZbIYPVPshom",
+                "duration_seconds": null,
+                "duration_label": ""
+              },
+              {
                 "kind": "podcast",
                 "title": "Uge 7, Forelæsning 1 · Podcast · Cooper (2003)",
                 "url": "https://open.spotify.com/episode/3ESGEgV3rRh32E4HmKh7vK",
                 "platform": "spotify",
-                "pub_date": "Mon, 16 Mar 2025 14:00:00 +0100",
+                "pub_date": "Mon, 16 Mar 2025 18:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1Mc_xHwsqEWUQeyyhrCKrlBVLHyMF1Z_y",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -3170,11 +3363,21 @@
             ],
             "podcasts": [
               {
+                "kind": "short_podcast",
+                "title": "Uge 7, Forelæsning 1 · Kort podcast · Jacobsen (2021)",
+                "url": "https://open.spotify.com/episode/3ZgotjNg6C1vQ9angYmRNm",
+                "platform": "spotify",
+                "pub_date": "Mon, 16 Mar 2025 10:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1tmrudBSlH_Qgj6YmW3aR7BNc3nB5xauL",
+                "duration_seconds": null,
+                "duration_label": ""
+              },
+              {
                 "kind": "podcast",
                 "title": "Uge 7, Forelæsning 1 · Podcast · Jacobsen (2021)",
                 "url": "https://open.spotify.com/episode/3ZgotjNg6C1vQ9angYmRNm",
                 "platform": "spotify",
-                "pub_date": "Mon, 16 Mar 2025 12:00:00 +0100",
+                "pub_date": "Mon, 16 Mar 2025 16:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1Mw7vKq83Ni51Y7feUjx8n6DbezUU-xlb",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -3233,7 +3436,7 @@
             "title": "Uge 7, Forelæsning 1 · Podcast · Forelæsningsslides - Eksistens II. 2026",
             "url": "https://open.spotify.com/episode/60su7rHpHUJPBXbYB6N0Jo",
             "platform": "spotify",
-            "pub_date": "Mon, 16 Mar 2025 10:00:00 +0100",
+            "pub_date": "Mon, 16 Mar 2025 14:00:00 +0100",
             "source_audio_url": "https://drive.google.com/uc?export=download&id=1SgRo_3aeK9EE4xGpKDBRlW7o3Yl-E9z6",
             "duration_seconds": null,
             "duration_label": ""
@@ -3304,11 +3507,21 @@
             ],
             "podcasts": [
               {
+                "kind": "short_podcast",
+                "title": "Uge 7, Forelæsning 2 · Kort podcast · Evans (1975)",
+                "url": "https://open.spotify.com/episode/7AciVflbeJ8Kw88i5W4wsb",
+                "platform": "spotify",
+                "pub_date": "Tue, 17 Mar 2025 16:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1c_Uae3N2XuSZM0k1QwLxbLvCoUy6chkQ",
+                "duration_seconds": null,
+                "duration_label": ""
+              },
+              {
                 "kind": "podcast",
                 "title": "Uge 7, Forelæsning 2 · Podcast · Evans (1975)",
                 "url": "https://open.spotify.com/episode/7AciVflbeJ8Kw88i5W4wsb",
                 "platform": "spotify",
-                "pub_date": "Tue, 17 Mar 2025 18:00:00 +0100",
+                "pub_date": "Wed, 18 Mar 2025 00:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=19flyPBTWwfGGAXoXuWPt8ICOzU7eL8mA",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -3358,11 +3571,21 @@
             ],
             "podcasts": [
               {
+                "kind": "short_podcast",
+                "title": "Uge 7, Forelæsning 2 · Kort podcast · Giorgi (2005)",
+                "url": "https://open.spotify.com/episode/0cK6PdQZrQu10NiAjYkj05",
+                "platform": "spotify",
+                "pub_date": "Tue, 17 Mar 2025 14:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1OO-81Mfoz0V2W0qXnLLHFAfJzV9aQ9-I",
+                "duration_seconds": null,
+                "duration_label": ""
+              },
+              {
                 "kind": "podcast",
                 "title": "Uge 7, Forelæsning 2 · Podcast · Giorgi (2005)",
                 "url": "https://open.spotify.com/episode/0cK6PdQZrQu10NiAjYkj05",
                 "platform": "spotify",
-                "pub_date": "Tue, 17 Mar 2025 16:00:00 +0100",
+                "pub_date": "Tue, 17 Mar 2025 22:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1QVQtXyZi7hyD_-WQmVPLAGGftQ2IDf-1",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -3412,11 +3635,21 @@
             ],
             "podcasts": [
               {
+                "kind": "short_podcast",
+                "title": "Uge 7, Forelæsning 2 · Kort podcast · Maslow (1968)",
+                "url": "https://open.spotify.com/episode/0kdHfhP4CTfVFnF15GOCAS",
+                "platform": "spotify",
+                "pub_date": "Tue, 17 Mar 2025 12:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=18cWWAUlBW79m-3Pco6rlqegB_Io-R-mT",
+                "duration_seconds": null,
+                "duration_label": ""
+              },
+              {
                 "kind": "podcast",
                 "title": "Uge 7, Forelæsning 2 · Podcast · Maslow (1968)",
                 "url": "https://open.spotify.com/episode/0kdHfhP4CTfVFnF15GOCAS",
                 "platform": "spotify",
-                "pub_date": "Tue, 17 Mar 2025 14:00:00 +0100",
+                "pub_date": "Tue, 17 Mar 2025 20:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1so2cOWblNUC2_d3QeEpfYFTKn_eH9m-i",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -3475,7 +3708,7 @@
             "title": "Uge 7, Forelæsning 2 · Podcast · Forelæsningsslides - Humanistisk psykologi20",
             "url": "https://open.spotify.com/episode/2on71x7ORD5V9DkVhBNidF",
             "platform": "spotify",
-            "pub_date": "Tue, 17 Mar 2025 12:00:00 +0100",
+            "pub_date": "Tue, 17 Mar 2025 18:00:00 +0100",
             "source_audio_url": "https://drive.google.com/uc?export=download&id=1k2m5-oHOvtLknI_mzXTHfWvmEPVdMH2f",
             "duration_seconds": null,
             "duration_label": ""
@@ -4238,11 +4471,21 @@
             ],
             "podcasts": [
               {
+                "kind": "short_podcast",
+                "title": "Uge 10, Forelæsning 1 · Kort podcast · Bjerrum Nielsen & Rudberg (2006)",
+                "url": "https://open.spotify.com/episode/6NRr9gdgjSkObPDZSQVB4c",
+                "platform": "spotify",
+                "pub_date": "Mon, 13 Apr 2025 12:00:00 +0200",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1YZ6bBzzPPZ2ByDk7Eqi4MC-aTND8jBQr",
+                "duration_seconds": null,
+                "duration_label": ""
+              },
+              {
                 "kind": "podcast",
                 "title": "Uge 10, Forelæsning 1 · Podcast · Bjerrum Nielsen & Rudberg (2006)",
                 "url": "https://open.spotify.com/episode/6NRr9gdgjSkObPDZSQVB4c",
                 "platform": "spotify",
-                "pub_date": "Mon, 13 Apr 2025 12:00:00 +0200",
+                "pub_date": "Mon, 13 Apr 2025 16:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1ROTyOjFUuoa9x3_9iO02sDkkxJybJ5Q1",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -4292,11 +4535,21 @@
             ],
             "podcasts": [
               {
+                "kind": "short_podcast",
+                "title": "Uge 10, Forelæsning 1 · Kort podcast · Mitchell (2015)",
+                "url": "https://open.spotify.com/episode/5rK61yjBTzjQNqY9Fcjvxg",
+                "platform": "spotify",
+                "pub_date": "Mon, 13 Apr 2025 10:00:00 +0200",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=18JMSg5nndP9jwXumG_rOrKhiN-g_qjmX",
+                "duration_seconds": null,
+                "duration_label": ""
+              },
+              {
                 "kind": "podcast",
                 "title": "Uge 10, Forelæsning 1 · Podcast · Mitchell (2015)",
                 "url": "https://open.spotify.com/episode/5rK61yjBTzjQNqY9Fcjvxg",
                 "platform": "spotify",
-                "pub_date": "Mon, 13 Apr 2025 10:00:00 +0200",
+                "pub_date": "Mon, 13 Apr 2025 14:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1oUv309xHegJwxCSN6l6GajcfVV6c_ofb",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -4402,11 +4655,21 @@
             ],
             "podcasts": [
               {
+                "kind": "short_podcast",
+                "title": "Uge 10, Forelæsning 2 · Kort podcast · Davies (1990)",
+                "url": "https://open.spotify.com/episode/6Cx1QwK8lXsBebYnJ7hNz6",
+                "platform": "spotify",
+                "pub_date": "Tue, 14 Apr 2025 12:00:00 +0200",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1FizddlQBtgJFLTlySwJFQaqmjgsJwZTf",
+                "duration_seconds": null,
+                "duration_label": ""
+              },
+              {
                 "kind": "podcast",
                 "title": "Uge 10, Forelæsning 2 · Podcast · Davies (1990)",
                 "url": "https://open.spotify.com/episode/6Cx1QwK8lXsBebYnJ7hNz6",
                 "platform": "spotify",
-                "pub_date": "Tue, 14 Apr 2025 14:00:00 +0200",
+                "pub_date": "Tue, 14 Apr 2025 16:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=17Dy3PhWnv9khx2_9sY223JfeTYMlDRU2",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -4460,7 +4723,7 @@
                 "title": "Uge 10, Forelæsning 2 · Podcast · Foucault, M. (1997). s. 281-301",
                 "url": "https://open.spotify.com/episode/3GQDei4V3jgRo6mb6RI12c",
                 "platform": "spotify",
-                "pub_date": "Tue, 14 Apr 2025 16:00:00 +0200",
+                "pub_date": "Tue, 14 Apr 2025 18:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1HtnXINp-PNAb8ZqbbPQf4nKrQvg5mjEX",
                 "duration_seconds": null,
                 "duration_label": ""
@@ -4519,7 +4782,7 @@
             "title": "Uge 10, Forelæsning 2 · Podcast · Forelæsningsslides - Sociokulturelle teorier",
             "url": "https://open.spotify.com/episode/3EoL3pXNRddihOZA9HmH1r",
             "platform": "spotify",
-            "pub_date": "Tue, 14 Apr 2025 12:00:00 +0200",
+            "pub_date": "Tue, 14 Apr 2025 14:00:00 +0200",
             "source_audio_url": "https://drive.google.com/uc?export=download&id=1M1QSrr7WQeyBuRptuKdmXmnCN1vz-hjw",
             "duration_seconds": null,
             "duration_label": ""

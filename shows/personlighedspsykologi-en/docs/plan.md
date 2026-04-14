@@ -25,7 +25,9 @@
   - Prompt: from `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json`
   - Language: from `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json`
   - Source filename marker: `[Brief]`
-  - Included slide sources follow the current generation policy: `lecture` + `exercise` slides are included, `seminar` slides are excluded.
+  - Feed-visible slide briefs follow the current public policy: lecture slides only.
+  - Exercise slides may still exist as local generation inputs, but they must not surface as `Kort podcast · Forelæsningsslides` items in RSS.
+  - The RSS audit validates built feed output against the Drive-backed source, so backfill is not complete until the MP3 artifacts have been generated, downloaded, and mirrored/uploaded.
 - Language variants: generate **Danish + English** for all episodes.
    - Config: `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json` → `languages`
    - English naming: adds suffix ` [EN]` to file names and notebook titles.

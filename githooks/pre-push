@@ -33,7 +33,9 @@ run_output_dir_mirror() {
   local on_push_var="${env_prefix}_MIRROR_ON_PUSH"
   local src_var="${env_prefix}_MIRROR_SRC"
   local dst_var="${env_prefix}_MIRROR_DST"
+  local delete_var="${env_prefix}_MIRROR_DELETE_ON_PUSH"
   local on_push="${!on_push_var:-1}"
+  local delete_on_push="${!delete_var:-0}"
 
   if [[ "${on_push}" == "0" ]]; then
     return 0
@@ -47,14 +49,24 @@ run_output_dir_mirror() {
   local mirror_cmd=("python3" "${output_dir_mirror_script}" --subject "${subject}")
   local src_override="${!src_var:-}"
   local dst_override="${!dst_var:-}"
+  if [[ "${subject}" == "personlighedspsykologi" && -z "${!delete_var:-}" ]]; then
+    delete_on_push="1"
+  fi
   if [[ -n "${src_override}" ]]; then
     mirror_cmd+=(--source "${src_override}")
   fi
   if [[ -n "${dst_override}" ]]; then
     mirror_cmd+=(--dest "${dst_override}")
   fi
+  if [[ "${delete_on_push}" != "0" ]]; then
+    mirror_cmd+=(--delete)
+  fi
 
-  echo "pre-push: running ${subject} output directory mirror"
+  if [[ "${delete_on_push}" != "0" ]]; then
+    echo "pre-push: running ${subject} output directory mirror with deletions"
+  else
+    echo "pre-push: running ${subject} output directory mirror"
+  fi
   if ! "${mirror_cmd[@]}"; then
     echo "pre-push: warning: ${subject} output directory mirror failed; continuing push" >&2
   fi

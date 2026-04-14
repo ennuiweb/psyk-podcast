@@ -49,9 +49,6 @@ run_output_dir_mirror() {
   local mirror_cmd=("python3" "${output_dir_mirror_script}" --subject "${subject}")
   local src_override="${!src_var:-}"
   local dst_override="${!dst_var:-}"
-  if [[ "${subject}" == "personlighedspsykologi" && -z "${!delete_var:-}" ]]; then
-    delete_on_push="1"
-  fi
   if [[ -n "${src_override}" ]]; then
     mirror_cmd+=(--source "${src_override}")
   fi

@@ -377,7 +377,7 @@ To push the Apps Script file whenever you run `git push`, install the repository
    - OneDrive reading-key mirror sync (`sync_personlighedspsykologi_reading_file_key.py --apply`)
    - blocking reading-file sync to droplet (`sync_personlighedspsykologi_readings_to_droplet.py`)
    - warning-only Bioneuro output directory mirror (`mirror_output_dirs.py --subject bioneuro`)
-   - warning-only Personlighedspsykologi output directory mirror with destination deletions (`mirror_output_dirs.py --subject personlighedspsykologi --delete`)
+   - warning-only Personlighedspsykologi output directory mirror (`mirror_output_dirs.py --subject personlighedspsykologi`)
    - Apps Script push (`apps-script/push_drive_trigger.sh`)
 3. If mirror sync updates tracked files, push is aborted so you can commit mirror changes first (prevents stale mirror state on remote).
 4. Quiz extraction is disabled by default; set `QUIZ_JSON_EXTRACT_ON_PUSH=1` to enable it when the extractor script is present.
@@ -393,7 +393,7 @@ To push the Apps Script file whenever you run `git push`, install the repository
 9. Set `BIONEURO_MIRROR_ON_PUSH=0` to disable the Bioneuro output-directory mirror step on demand.
 10. Optional Bioneuro mirror overrides: `BIONEURO_MIRROR_SRC`, `BIONEURO_MIRROR_DST`.
 11. Set `PERSONLIGHEDSPSYKOLOGI_MIRROR_ON_PUSH=0` to disable the Personlighedspsykologi output directory mirror step on demand.
-12. Optional Personlighedspsykologi mirror overrides: `PERSONLIGHEDSPSYKOLOGI_MIRROR_SRC`, `PERSONLIGHEDSPSYKOLOGI_MIRROR_DST`, `PERSONLIGHEDSPSYKOLOGI_MIRROR_DELETE_ON_PUSH=0|1` (default: `1`).
+12. Optional Personlighedspsykologi mirror overrides: `PERSONLIGHEDSPSYKOLOGI_MIRROR_SRC`, `PERSONLIGHEDSPSYKOLOGI_MIRROR_DST`, `PERSONLIGHEDSPSYKOLOGI_MIRROR_DELETE_ON_PUSH=0|1` (default: `0`).
 13. Set `APPS_SCRIPT_PUSH_ON_PUSH=0` in your environment to skip the Apps Script push step on demand.
 14. (Optional) Set `PRE_PUSH_LOG_FILE=/path/to/pre-push.log` to enable logging; by default no log file is written.
 
@@ -404,7 +404,7 @@ The same `pre-push` hook now uses one shared script for both subjects:
 python3 scripts/mirror_output_dirs.py --subject bioneuro --dry-run
 python3 scripts/mirror_output_dirs.py --subject bioneuro
 python3 scripts/mirror_output_dirs.py --subject personlighedspsykologi --dry-run
-python3 scripts/mirror_output_dirs.py --subject personlighedspsykologi --delete
+python3 scripts/mirror_output_dirs.py --subject personlighedspsykologi
 # optional one-shot for both:
 python3 scripts/mirror_output_dirs.py --subject all
 ```
@@ -429,7 +429,8 @@ Behavior:
 - fails the mirror step on path collisions (destination file/dir conflict).
 - pre-push defaults:
   - `bioneuro`: mirror without `--delete`
-  - `personlighedspsykologi`: mirror with `--delete` unless `PERSONLIGHEDSPSYKOLOGI_MIRROR_DELETE_ON_PUSH=0`
+  - `personlighedspsykologi`: mirror without `--delete`
+  - set `PERSONLIGHEDSPSYKOLOGI_MIRROR_DELETE_ON_PUSH=1` only for deliberate cleanup pushes when the local output tree is known-complete enough for destructive sync
 
 Pre-push environment controls (`bioneuro`):
 - `BIONEURO_MIRROR_ON_PUSH=0` to disable mirror on push.

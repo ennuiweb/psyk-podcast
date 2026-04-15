@@ -158,3 +158,80 @@ test('listChildren does not retry non-transient Drive failures', () => {
   assert.equal(attempts, 1);
   assert.deepEqual(sleeps, []);
 });
+
+test('checkDriveAndTrigger skips unavailable roots without creating false removals', () => {
+  let storedSnapshot;
+  const dispatched = [];
+  const { context, warnings } = loadHarness({
+    get(fileId) {
+      if (fileId === '1hZDV24e4V4ygo_Ye30zzRwInkgIyfgzi') {
+        throw new Error(
+          'GoogleJsonResponseException: API call to drive.files.get failed with error: File not found: 1hZDV24e4V4ygo_Ye30zzRwInkgIyfgzi',
+        );
+      }
+      return {
+        id: fileId,
+        title: `Root ${fileId}`,
+        mimeType: 'application/vnd.google-apps.folder',
+        parents: [],
+        modifiedDate: '2026-01-01T00:00:00.000Z',
+      };
+    },
+  });
+  new vm.Script(
+    "CONFIG.drive.folderIds = ['1hZDV24e4V4ygo_Ye30zzRwInkgIyfgzi'];",
+  ).runInContext(context);
+
+  const previousSnapshot = {
+    folders: {
+      '1hZDV24e4V4ygo_Ye30zzRwInkgIyfgzi': {
+        id: '1hZDV24e4V4ygo_Ye30zzRwInkgIyfgzi',
+        name: 'bioneuro',
+        mimeType: 'application/vnd.google-apps.folder',
+        parents: [],
+        modifiedTime: '2026-01-01T00:00:00.000Z',
+      },
+    },
+    files: {
+      'episode-1': {
+        id: 'episode-1',
+        name: 'Episode 1.mp3',
+        mimeType: 'audio/mpeg',
+        parents: ['1hZDV24e4V4ygo_Ye30zzRwInkgIyfgzi'],
+        modifiedTime: '2026-01-01T00:00:00.000Z',
+      },
+    },
+  };
+
+  context.PropertiesService.getScriptProperties = () => ({
+    getProperty() {
+      return JSON.stringify(previousSnapshot);
+    },
+    setProperty(key, value) {
+      storedSnapshot = { key, value: JSON.parse(value) };
+    },
+  });
+
+  context.UrlFetchApp.fetch = () => {
+    dispatched.push(true);
+    return {
+      getResponseCode() {
+        return 204;
+      },
+      getContentText() {
+        return '';
+      },
+    };
+  };
+
+  context.checkDriveAndTrigger();
+
+  assert.equal(dispatched.length, 0);
+  assert.ok(storedSnapshot);
+  assert.equal(storedSnapshot.key, 'DRIVE_TREE_SNAPSHOT');
+  assert.deepEqual(storedSnapshot.value.unavailableRootIds, ['1hZDV24e4V4ygo_Ye30zzRwInkgIyfgzi']);
+  assert.equal(
+    warnings.some((message) => message.includes('[Drive Root Skipped] 1hZDV24e4V4ygo_Ye30zzRwInkgIyfgzi')),
+    true,
+  );
+});

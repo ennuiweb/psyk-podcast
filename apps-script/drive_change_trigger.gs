@@ -69,8 +69,12 @@ function checkDriveAndTrigger() {
 
   const previousSnapshot = JSON.parse(rawSnapshot);
   const currentSnapshot = snapshotCurrentTree();
+  const unavailableRootIds = currentSnapshot.unavailableRootIds || [];
 
-  const diff = detectChanges(previousSnapshot, currentSnapshot);
+  const previousComparableSnapshot = pruneUnavailableRoots(previousSnapshot, unavailableRootIds);
+  const currentComparableSnapshot = pruneUnavailableRoots(currentSnapshot, unavailableRootIds);
+
+  const diff = detectChanges(previousComparableSnapshot, currentComparableSnapshot);
 
   props.setProperty(CONFIG.state.snapshotKey, JSON.stringify(currentSnapshot));
 
@@ -104,6 +108,63 @@ function detectChanges(previous, current) {
     folders: folderChanges,
     files: fileChanges,
   };
+}
+
+function pruneUnavailableRoots(snapshot, unavailableRootIds) {
+  const normalizedSnapshot = snapshot || { folders: {}, files: {} };
+  const unavailableSet = new Set((unavailableRootIds || []).filter(Boolean));
+  if (!unavailableSet.size) return normalizedSnapshot;
+
+  const folders = normalizedSnapshot.folders || {};
+  const files = normalizedSnapshot.files || {};
+  const prunedFolders = {};
+  const prunedFiles = {};
+
+  Object.keys(folders).forEach((id) => {
+    if (!isWithinUnavailableRoot(id, folders, unavailableSet)) {
+      prunedFolders[id] = folders[id];
+    }
+  });
+
+  Object.keys(files).forEach((id) => {
+    if (!isWithinUnavailableRoot(id, folders, unavailableSet, files)) {
+      prunedFiles[id] = files[id];
+    }
+  });
+
+  return Object.assign({}, normalizedSnapshot, {
+    folders: prunedFolders,
+    files: prunedFiles,
+  });
+}
+
+function isWithinUnavailableRoot(itemId, folders, unavailableRootIds, files) {
+  if (unavailableRootIds.has(itemId)) return true;
+
+  const visited = new Set();
+  let currentId = itemId;
+
+  while (currentId && !visited.has(currentId)) {
+    visited.add(currentId);
+
+    if (unavailableRootIds.has(currentId)) return true;
+
+    const folderMeta = folders[currentId];
+    if (folderMeta && folderMeta.parents && folderMeta.parents.length) {
+      currentId = folderMeta.parents[0];
+      continue;
+    }
+
+    const fileMeta = files && files[currentId];
+    if (fileMeta && fileMeta.parents && fileMeta.parents.length) {
+      currentId = fileMeta.parents[0];
+      continue;
+    }
+
+    currentId = null;
+  }
+
+  return false;
 }
 
 function metadataEqual(a, b) {
@@ -200,10 +261,25 @@ function snapshotCurrentTree() {
   const files = {};
   const seenFolderIds = new Set();
   const queue = [];
+  const unavailableRootIds = [];
 
   const rootIds = configuredRootFolderIds();
   rootIds.forEach((rootId) => {
-    const rootMeta = getFileMetadata(rootId);
+    let rootMeta;
+    try {
+      rootMeta = getFileMetadata(rootId);
+    } catch (error) {
+      if (isSkippableRootMetadataError(error)) {
+        unavailableRootIds.push(rootId);
+        console.warn(
+          `[Drive Root Skipped] ${rootId}: ${describeError(error)}. `
+          + 'The trigger will continue without this root until access is restored.',
+        );
+        return;
+      }
+      throw error;
+    }
+
     folders[rootMeta.id] = rootMeta;
     if (!seenFolderIds.has(rootMeta.id)) {
       seenFolderIds.add(rootMeta.id);
@@ -237,7 +313,14 @@ function snapshotCurrentTree() {
   return {
     folders,
     files,
+    unavailableRootIds,
   };
+}
+
+function isSkippableRootMetadataError(error) {
+  const message = describeError(error);
+  return /File not found|does not exist|insufficient permissions|permission denied|not have permission|access denied/i
+    .test(message);
 }
 
 function normaliseDriveItem(item) {

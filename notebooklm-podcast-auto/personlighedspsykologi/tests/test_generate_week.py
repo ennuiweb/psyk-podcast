@@ -288,15 +288,15 @@ class GenerateWeekTests(unittest.TestCase):
             week_dir = Path(tmpdir) / "W1L1"
             lecture_brief = (
                 week_dir
-                / "[Brief] W1L1 - Slide lecture: 1. gang [EN] {type=audio lang=en format=brief length=default hash=fa9adbcf}.mp3"
+                / "[Brief] W1L1 - Slide lecture: 1. gang [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
             )
             exercise_brief = (
                 week_dir
-                / "[Brief] W1L1 - Slide exercise: 1. Intro [EN] {type=audio lang=en format=brief length=default hash=fa9adbcf}.mp3"
+                / "[Brief] W1L1 - Slide exercise: 1. Intro [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
             )
             seminar_brief = (
                 week_dir
-                / "[Brief] W1L1 - Slide seminar: 1. Seminar [EN] {type=audio lang=en format=brief length=default hash=fa9adbcf}.mp3"
+                / "[Brief] W1L1 - Slide seminar: 1. Seminar [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
             )
             exercise_request = exercise_brief.with_suffix(".mp3.request.json")
             _touch(lecture_brief)
@@ -337,7 +337,7 @@ class GenerateWeekTests(unittest.TestCase):
             brief_request = brief_quiz.with_suffix(".json.request.json")
             brief_audio = (
                 week_dir
-                / "[Brief] W1L1 - Foo [EN] {type=audio lang=en format=brief length=default hash=fa9adbcf}.mp3"
+                / "[Brief] W1L1 - Foo [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
             )
             _touch(brief_quiz, b"{}")
             _touch(brief_request, b"{}")

@@ -1678,8 +1678,8 @@ def main() -> int:
                                         content_type=content_type,
                                         language=variant["code"],
                                         instructions=planned_instructions,
-                                        audio_format=brief_cfg.get("format", "brief"),
-                                        audio_length=None,
+                                        audio_format=brief_cfg.get("format", "deep-dive"),
+                                        audio_length=brief_cfg.get("length", "long"),
                                         infographic_orientation=None,
                                         infographic_detail=None,
                                         quiz_quantity=None,
@@ -2027,8 +2027,8 @@ def main() -> int:
                             for quiz_difficulty_value in quiz_difficulty_values(content_type, quiz_difficulty):
                                 if content_type == "audio":
                                     instructions = ensure_prompt("brief", brief_cfg.get("prompt", ""))
-                                    audio_format = brief_cfg.get("format", "brief")
-                                    audio_length = None
+                                    audio_format = brief_cfg.get("format", "deep-dive")
+                                    audio_length = brief_cfg.get("length", "long")
                                     infographic_orientation = None
                                     infographic_detail = None
                                     quiz_quantity_arg = None

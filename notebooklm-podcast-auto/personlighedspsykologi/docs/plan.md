@@ -139,7 +139,7 @@ Optional flags:
 ## Output placement
 - Weekly overview: `notebooklm-podcast-auto/personlighedspsykologi/output/W##/W## - Alle kilder {type=audio lang=en format=deep-dive length=long sources=NN hash=xxxxxxxx}.mp3`
 - Per-reading: `notebooklm-podcast-auto/personlighedspsykologi/output/W##/W## - <reading> {type=audio lang=en format=deep-dive length=default hash=xxxxxxxx}.mp3`
-- Brief (reading or lecture slide): `notebooklm-podcast-auto/personlighedspsykologi/output/W##/[Brief] W## - <reading-or-slide> {type=audio lang=en format=brief length=default hash=xxxxxxxx}.mp3`
+- Brief (reading or lecture slide): `notebooklm-podcast-auto/personlighedspsykologi/output/W##/[Brief] W## - <reading-or-slide> {type=audio lang=en format=deep-dive length=long hash=xxxxxxxx}.mp3`
 - Infographics use the same base names with `.png`.
 - Quizzes use the same base names with `.json` (or `.md` / `.html` based on `quiz.format`).
 - English variants add ` [EN]` before the extension.

@@ -21,7 +21,7 @@
   - Language: from `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json`
 - Short variants: all readings and lecture slides get an extra short version.
   - Format: `deep-dive`
-  - Length: `long`
+  - Length: `short`
   - Prompt: from `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json`
   - Language: from `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json`
   - Source filename marker: `[Short]`

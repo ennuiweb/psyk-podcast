@@ -20,7 +20,7 @@
   - Language: from `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json`
 - Short variants: all readings and lecture slides get an extra short version.
   - Format: `deep-dive`
-  - Length: `long`
+  - Length: `short`
   - Prompt: from `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json`
   - Language: from `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json`
   - Source filename marker: `[Short]`
@@ -139,7 +139,7 @@ Optional flags:
 ## Output placement
 - Weekly overview: `notebooklm-podcast-auto/personlighedspsykologi/output/W##/W## - Alle kilder {type=audio lang=en format=deep-dive length=long sources=NN hash=xxxxxxxx}.mp3`
 - Per-reading: `notebooklm-podcast-auto/personlighedspsykologi/output/W##/W## - <reading> {type=audio lang=en format=deep-dive length=default hash=xxxxxxxx}.mp3`
-- Short (reading or lecture slide): `notebooklm-podcast-auto/personlighedspsykologi/output/W##/[Short] W## - <reading-or-slide> {type=audio lang=en format=deep-dive length=long hash=xxxxxxxx}.mp3`
+- Short (reading or lecture slide): `notebooklm-podcast-auto/personlighedspsykologi/output/W##/[Short] W## - <reading-or-slide> {type=audio lang=en format=deep-dive length=short hash=xxxxxxxx}.mp3`
 - Infographics use the same base names with `.png`.
 - Quizzes use the same base names with `.json` (or `.md` / `.html` based on `quiz.format`).
 - English variants add ` [EN]` before the extension.

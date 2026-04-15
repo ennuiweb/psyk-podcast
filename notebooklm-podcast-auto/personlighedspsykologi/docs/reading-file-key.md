@@ -6,7 +6,7 @@
 ## Episode output policy
 - Weekly overview kind (`W#L#` lecture-level): `Alle kilder` (deep-dive, long).
 - Per-reading episodes: deep-dive, default length.
-- Short versions: `[Short]` variants are generated as deep-dive, long audio and still appear as `[Kort]` in the feed.
+- Short versions: `[Short]` variants are generated as deep-dive, short audio and still appear as `[Kort]` in the feed.
 - Prompts are configured in `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json`.
 
 Sources used for this mapping:

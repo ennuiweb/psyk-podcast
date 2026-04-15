@@ -292,6 +292,153 @@ class AutoSpecMatchingTests(unittest.TestCase):
         titles = [el.text for el in root.findall("./channel/item/title")]
         self.assertEqual(titles, ["Brief", "Alle kilder", "TTS", "Reading latest"])
 
+    def test_build_feed_document_wxlx_source_pair_priority_pairs_short_and_full_sources(self):
+        mod = _load_feed_module()
+
+        def make_episode(
+            *,
+            guid: str,
+            title: str,
+            published_at: str,
+            episode_kind: str,
+            podcast_kind: str,
+            sort_source_kind: str,
+            sort_subject_key: str,
+            sort_tail: bool = False,
+            sort_tail_index: int | None = None,
+        ):
+            published_dt = mod.parse_datetime(published_at)
+            payload = {
+                "guid": guid,
+                "title": title,
+                "description": title,
+                "link": "https://example.com",
+                "published_at": published_dt,
+                "pubDate": mod.format_rfc2822(published_dt),
+                "mimeType": "audio/mpeg",
+                "size": 123,
+                "duration": None,
+                "explicit": "false",
+                "image": None,
+                "episode_kind": episode_kind,
+                "podcast_kind": podcast_kind,
+                "is_tts": podcast_kind == "lydbog",
+                "sort_week": None if sort_tail else 12,
+                "sort_lecture": None if sort_tail else 1,
+                "sort_tail": sort_tail,
+                "sort_source_kind": sort_source_kind,
+                "sort_subject_key": sort_subject_key,
+                "audio_url": f"https://example.com/{guid}.mp3",
+            }
+            if sort_tail_index is not None:
+                payload["sort_tail_index"] = sort_tail_index
+            return payload
+
+        episodes = [
+            make_episode(
+                guid="grund-full",
+                title="U12F1 · Grundbog 8: Historicitet",
+                published_at="2026-04-15T10:00:00+00:00",
+                episode_kind="reading",
+                podcast_kind="podcast",
+                sort_source_kind="reading",
+                sort_subject_key="Grundbog 8: Historicitet",
+            ),
+            make_episode(
+                guid="slides-full",
+                title="U12F1 · Forelæsningsslides · Personlighed og historicitet",
+                published_at="2026-04-15T08:00:00+00:00",
+                episode_kind="slide",
+                podcast_kind="podcast",
+                sort_source_kind="slide",
+                sort_subject_key="Personlighed og historicitet",
+            ),
+            make_episode(
+                guid="elias-brief",
+                title="U12F1 · [Kort] · Elias (2000)",
+                published_at="2026-04-15T12:00:00+00:00",
+                episode_kind="brief",
+                podcast_kind="kort_podcast",
+                sort_source_kind="reading",
+                sort_subject_key="Elias (2000)",
+            ),
+            make_episode(
+                guid="weekly",
+                title="U12F1 · Alle kilder",
+                published_at="2026-04-15T07:00:00+00:00",
+                episode_kind="weekly_overview",
+                podcast_kind="podcast",
+                sort_source_kind="weekly_overview",
+                sort_subject_key="Alle kilder",
+            ),
+            make_episode(
+                guid="tail-grund",
+                title="U12F1 · [Lydbog] · Grundbog 8: Historicitet",
+                published_at="2026-04-16T08:00:00+00:00",
+                episode_kind="reading",
+                podcast_kind="lydbog",
+                sort_source_kind="reading",
+                sort_subject_key="Grundbog 8: Historicitet",
+                sort_tail=True,
+                sort_tail_index=8,
+            ),
+            make_episode(
+                guid="slides-brief",
+                title="U12F1 · [Kort] · Forelæsningsslides · Personlighed og historicitet",
+                published_at="2026-04-15T09:00:00+00:00",
+                episode_kind="brief",
+                podcast_kind="kort_podcast",
+                sort_source_kind="slide",
+                sort_subject_key="Personlighed og historicitet",
+            ),
+            make_episode(
+                guid="elias-full",
+                title="U12F1 · Elias (2000)",
+                published_at="2026-04-15T11:00:00+00:00",
+                episode_kind="reading",
+                podcast_kind="podcast",
+                sort_source_kind="reading",
+                sort_subject_key="Elias (2000)",
+            ),
+            make_episode(
+                guid="grund-brief",
+                title="U12F1 · [Kort] · Grundbog 8: Historicitet",
+                published_at="2026-04-15T10:30:00+00:00",
+                episode_kind="brief",
+                podcast_kind="kort_podcast",
+                sort_source_kind="reading",
+                sort_subject_key="Grundbog 8: Historicitet",
+            ),
+        ]
+        feed = mod.build_feed_document(
+            episodes=episodes,
+            feed_config={
+                "title": "Personlighedspsykologi",
+                "link": "https://example.com",
+                "description": "Test feed",
+                "language": "en",
+                "sort_mode": "wxlx_source_pair_priority",
+            },
+            last_build=mod.parse_datetime("2026-04-16T00:00:00+00:00"),
+        )
+        from xml.etree import ElementTree as ET
+
+        root = ET.fromstring(ET.tostring(feed, encoding="unicode"))
+        titles = [el.text for el in root.findall("./channel/item/title")]
+        self.assertEqual(
+            titles,
+            [
+                "U12F1 · Alle kilder",
+                "U12F1 · [Kort] · Elias (2000)",
+                "U12F1 · Elias (2000)",
+                "U12F1 · [Kort] · Grundbog 8: Historicitet",
+                "U12F1 · Grundbog 8: Historicitet",
+                "U12F1 · [Kort] · Forelæsningsslides · Personlighed og historicitet",
+                "U12F1 · Forelæsningsslides · Personlighed og historicitet",
+                "U12F1 · [Lydbog] · Grundbog 8: Historicitet",
+            ],
+        )
+
     def test_build_feed_document_wxlx_sort_uses_group_recency(self):
         mod = _load_feed_module()
 

@@ -2609,14 +2609,13 @@ def _wxlx_source_pair_category_rank(item: Dict[str, Any]) -> int:
 
 
 def _wxlx_source_pair_variant_rank(item: Dict[str, Any]) -> int:
+    episode_kind = str(item.get("episode_kind") or "").strip().lower()
     podcast_kind = str(item.get("podcast_kind") or "").strip().lower()
-    if podcast_kind == "kort_podcast":
+    if episode_kind == "brief" or podcast_kind in {"kort_podcast", "short_podcast"}:
         return 0
-    if podcast_kind == "podcast":
-        return 1
-    if podcast_kind == "lydbog":
+    if bool(item.get("is_tts")) or podcast_kind == "lydbog":
         return 2
-    return 3
+    return 1
 
 
 def _order_wxlx_block_pairs(
@@ -2642,7 +2641,9 @@ def _order_wxlx_block_pairs(
         )
         grouped_pairs.setdefault(group_key, []).append((index, item))
 
-    ordered_groups: List[Tuple[int, float, int, Tuple[int, str], List[Tuple[int, Dict[str, Any]]]]] = []
+    ordered_groups: List[
+        Tuple[int, float, int, Tuple[int, str], List[Tuple[int, Dict[str, Any]]]]
+    ] = []
     for group_key, grouped_values in grouped_pairs.items():
         anchor = max(_published_sort_value(item) for _, item in grouped_values)
         first_seen_index = min(index for index, _ in grouped_values)

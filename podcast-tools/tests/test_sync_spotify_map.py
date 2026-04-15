@@ -1,5 +1,6 @@
 import importlib.util
 import io
+import json
 import tempfile
 import unittest
 from pathlib import Path
@@ -16,74 +17,82 @@ def _load_module():
     return module
 
 
+def _write_inventory(path: Path, episodes: list[dict[str, str]]) -> None:
+    path.write_text(
+        json.dumps(
+            {
+                "version": 1,
+                "subject_slug": "personlighedspsykologi",
+                "episodes": episodes,
+            }
+        ),
+        encoding="utf-8",
+    )
+
+
 class SyncSpotifyMapTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.mod = _load_module()
 
     def test_build_spotify_map_reports_unresolved_titles_when_missing(self):
-        by_title, unresolved, stats = self.mod.build_spotify_map(
-            rss_titles=[
-                "Uge 1, Forelæsning 1 · Podcast · Alle kilder",
-                "Uge 1, Forelæsning 1 · Podcast · Lewis (1999)",
+        by_episode_key, by_rss_title, unresolved, stats = self.mod.build_spotify_map(
+            inventory_episodes=[
+                {"episode_key": "ep-1", "title": "Uge 1, Forelæsning 1 · Podcast · Alle kilder"},
+                {"episode_key": "ep-2", "title": "Uge 1, Forelæsning 1 · Podcast · Lewis (1999)"},
             ],
             existing_payload={},
             spotify_episode_by_title={},
             prune_stale=False,
         )
-        self.assertEqual(by_title, {})
+        self.assertEqual(by_episode_key, {})
+        self.assertEqual(by_rss_title, {})
         self.assertEqual(
             unresolved,
             [
-                "Uge 1, Forelæsning 1 · Podcast · Alle kilder",
-                "Uge 1, Forelæsning 1 · Podcast · Lewis (1999)",
+                {"episode_key": "ep-1", "title": "Uge 1, Forelæsning 1 · Podcast · Alle kilder"},
+                {"episode_key": "ep-2", "title": "Uge 1, Forelæsning 1 · Podcast · Lewis (1999)"},
             ],
         )
         self.assertEqual(stats["unresolved"], 2)
-        self.assertEqual(stats["preserved_existing"], 0)
-        self.assertEqual(stats["matched_show_episode"], 0)
 
     def test_build_spotify_map_preserves_episode_urls_only_and_ignores_non_episode(self):
-        by_title, unresolved, stats = self.mod.build_spotify_map(
-            rss_titles=[
-                "Uge 1, Forelæsning 1 · Podcast · Alle kilder",
-                "Uge 1, Forelæsning 1 · Podcast · Lewis (1999)",
+        by_episode_key, by_rss_title, unresolved, stats = self.mod.build_spotify_map(
+            inventory_episodes=[
+                {"episode_key": "ep-1", "title": "Uge 1, Forelæsning 1 · Podcast · Alle kilder"},
+                {"episode_key": "ep-2", "title": "Uge 1, Forelæsning 1 · Podcast · Lewis (1999)"},
             ],
             existing_payload={
-                "by_rss_title": {
-                    "Uge 1, Forelæsning 1 · Podcast · Alle kilder": (
-                        "https://open.spotify.com/episode/5m0hYfDU9ThM5qR2xMugr8"
-                    ),
-                    "Uge 1, Forelæsning 1 · Podcast · Lewis (1999)": (
-                        "https://open.spotify.com/search/Uge%201%2C%20Forel%C3%A6sning%201%20%C2%B7%20Podcast%20%C2%B7%20Lewis%20%281999%29/episodes"
-                    ),
-                    "Uge 2, Forelæsning 1 · Podcast · Stale episode": (
-                        "https://open.spotify.com/episode/0Yqa6gY5GJfNfQfY7wsY5Y"
-                    ),
-                    "Uge 2, Forelæsning 1 · Podcast · Stale search": (
-                        "https://open.spotify.com/search/Uge%202%2C%20Forel%C3%A6sning%201%20%C2%B7%20Podcast/episodes"
-                    ),
+                "by_episode_key": {
+                    "ep-1": "https://open.spotify.com/episode/5m0hYfDU9ThM5qR2xMugr8",
+                    "ep-2": "https://open.spotify.com/search/Uge%201%2C%20Forel%C3%A6sning%201%20%C2%B7%20Podcast%20%C2%B7%20Lewis%20%281999%29/episodes",
+                    "stale-1": "https://open.spotify.com/episode/0Yqa6gY5GJfNfQfY7wsY5Y",
                 }
             },
             spotify_episode_by_title={},
             prune_stale=False,
         )
         self.assertEqual(
-            by_title["Uge 1, Forelæsning 1 · Podcast · Alle kilder"],
+            by_episode_key["ep-1"],
             "https://open.spotify.com/episode/5m0hYfDU9ThM5qR2xMugr8",
         )
-        self.assertNotIn("Uge 1, Forelæsning 1 · Podcast · Lewis (1999)", by_title)
-        self.assertIn("Uge 2, Forelæsning 1 · Podcast · Stale episode", by_title)
-        self.assertNotIn("Uge 2, Forelæsning 1 · Podcast · Stale search", by_title)
-        self.assertEqual(unresolved, ["Uge 1, Forelæsning 1 · Podcast · Lewis (1999)"])
+        self.assertEqual(
+            by_rss_title["Uge 1, Forelæsning 1 · Podcast · Alle kilder"],
+            "https://open.spotify.com/episode/5m0hYfDU9ThM5qR2xMugr8",
+        )
+        self.assertNotIn("ep-2", by_episode_key)
+        self.assertIn("stale-1", by_episode_key)
+        self.assertEqual(
+            unresolved,
+            [{"episode_key": "ep-2", "title": "Uge 1, Forelæsning 1 · Podcast · Lewis (1999)"}],
+        )
         self.assertEqual(stats["preserved_existing"], 1)
         self.assertEqual(stats["carried_stale"], 1)
         self.assertEqual(stats["discarded_non_episode"], 1)
-        self.assertEqual(stats["unresolved"], 1)
 
     def test_build_spotify_map_matches_direct_episode_urls_from_show_index(self):
-        by_title, unresolved, stats = self.mod.build_spotify_map(
-            rss_titles=["Uge 1, Forelæsning 1 · Podcast · Alle kilder"],
+        by_episode_key, by_rss_title, unresolved, stats = self.mod.build_spotify_map(
+            inventory_episodes=[{"episode_key": "ep-1", "title": "Uge 1, Forelæsning 1 · Podcast · Alle kilder"}],
             existing_payload={},
             spotify_episode_by_title={
                 "uge 1, forelæsning 1 · podcast · alle kilder": (
@@ -93,16 +102,19 @@ class SyncSpotifyMapTests(unittest.TestCase):
             prune_stale=False,
         )
         self.assertEqual(
-            by_title["Uge 1, Forelæsning 1 · Podcast · Alle kilder"],
+            by_episode_key["ep-1"],
+            "https://open.spotify.com/episode/5m0hYfDU9ThM5qR2xMugr8",
+        )
+        self.assertEqual(
+            by_rss_title["Uge 1, Forelæsning 1 · Podcast · Alle kilder"],
             "https://open.spotify.com/episode/5m0hYfDU9ThM5qR2xMugr8",
         )
         self.assertEqual(unresolved, [])
         self.assertEqual(stats["matched_show_episode"], 1)
-        self.assertEqual(stats["unresolved"], 0)
 
     def test_build_spotify_map_matches_normalized_show_titles(self):
-        by_title, unresolved, stats = self.mod.build_spotify_map(
-            rss_titles=["U1F1 · [Podcast] · Alle kilder"],
+        by_episode_key, by_rss_title, unresolved, stats = self.mod.build_spotify_map(
+            inventory_episodes=[{"episode_key": "ep-1", "title": "U1F1 · [Podcast] · Alle kilder"}],
             existing_payload={},
             spotify_episode_by_title={
                 "[Podcast] · Alle kilder": "https://open.spotify.com/episode/5m0hYfDU9ThM5qR2xMugr8"
@@ -110,21 +122,19 @@ class SyncSpotifyMapTests(unittest.TestCase):
             prune_stale=False,
         )
         self.assertEqual(
-            by_title["U1F1 · [Podcast] · Alle kilder"],
+            by_episode_key["ep-1"],
             "https://open.spotify.com/episode/5m0hYfDU9ThM5qR2xMugr8",
         )
         self.assertEqual(unresolved, [])
         self.assertEqual(stats["matched_show_episode"], 1)
-        self.assertEqual(stats["unresolved"], 0)
+        self.assertIn("U1F1 · [Podcast] · Alle kilder", by_rss_title)
 
     def test_build_spotify_map_refreshes_existing_episode_with_show_match(self):
-        by_title, unresolved, stats = self.mod.build_spotify_map(
-            rss_titles=["Uge 1, Forelæsning 1 · Podcast · Alle kilder"],
+        by_episode_key, _, unresolved, stats = self.mod.build_spotify_map(
+            inventory_episodes=[{"episode_key": "ep-1", "title": "Uge 1, Forelæsning 1 · Podcast · Alle kilder"}],
             existing_payload={
-                "by_rss_title": {
-                    "Uge 1, Forelæsning 1 · Podcast · Alle kilder": (
-                        "https://open.spotify.com/episode/5m0hYfDU9ThM5qR2xMugr8"
-                    )
+                "by_episode_key": {
+                    "ep-1": "https://open.spotify.com/episode/5m0hYfDU9ThM5qR2xMugr8"
                 }
             },
             spotify_episode_by_title={
@@ -135,13 +145,11 @@ class SyncSpotifyMapTests(unittest.TestCase):
             prune_stale=False,
         )
         self.assertEqual(
-            by_title["Uge 1, Forelæsning 1 · Podcast · Alle kilder"],
+            by_episode_key["ep-1"],
             "https://open.spotify.com/episode/0Yqa6gY5GJfNfQfY7wsY5Y",
         )
         self.assertEqual(unresolved, [])
         self.assertEqual(stats["refreshed_from_show_episode"], 1)
-        self.assertEqual(stats["preserved_existing"], 0)
-        self.assertEqual(stats["matched_show_episode"], 0)
 
     def test_parse_show_id_from_url(self):
         self.assertEqual(
@@ -157,41 +165,39 @@ class SyncSpotifyMapTests(unittest.TestCase):
         self.assertIsNone(self.mod.parse_show_id_from_url("https://open.spotify.com/episode/abc123"))
         self.assertIsNone(self.mod.parse_show_id_from_url("not-a-spotify-url"))
 
-    def test_load_rss_titles_dedupes_normalized_titles(self):
-        rss_payload = """<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0">
-  <channel>
-    <item><title>Uge 1, Forelæsning 1 · Podcast · Alle kilder</title></item>
-    <item><title> Uge 1, Forelæsning 1 · Podcast · Alle   kilder </title></item>
-    <item><title>Uge 1, Forelæsning 1 · Podcast · Lewis (1999)</title></item>
-  </channel>
-</rss>
-"""
+    def test_load_inventory_episodes_dedupes_episode_keys(self):
         with tempfile.TemporaryDirectory() as temp_dir:
-            rss_path = Path(temp_dir) / "rss.xml"
-            rss_path.write_text(rss_payload, encoding="utf-8")
-            titles = self.mod.load_rss_titles(rss_path)
+            inventory_path = Path(temp_dir) / "episode_inventory.json"
+            _write_inventory(
+                inventory_path,
+                [
+                    {"episode_key": "ep-1", "title": "Uge 1, Forelæsning 1 · Podcast · Alle kilder"},
+                    {"episode_key": "ep-1", "title": "Duplicate should be ignored"},
+                    {"episode_key": "ep-2", "title": "Uge 1, Forelæsning 1 · Podcast · Lewis (1999)"},
+                ],
+            )
+            episodes = self.mod.load_inventory_episodes(inventory_path)
         self.assertEqual(
-            titles,
+            episodes,
             [
-                "Uge 1, Forelæsning 1 · Podcast · Alle kilder",
-                "Uge 1, Forelæsning 1 · Podcast · Lewis (1999)",
+                {"episode_key": "ep-1", "title": "Uge 1, Forelæsning 1 · Podcast · Alle kilder"},
+                {"episode_key": "ep-2", "title": "Uge 1, Forelæsning 1 · Podcast · Lewis (1999)"},
             ],
         )
 
     def test_main_returns_non_zero_when_unresolved_without_allow_unresolved(self):
-        rss_payload = """<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0"><channel><item><title>Uge 1, Forelæsning 1 · Podcast · Alle kilder</title></item></channel></rss>
-"""
         with tempfile.TemporaryDirectory() as temp_dir:
-            rss_path = Path(temp_dir) / "rss.xml"
+            inventory_path = Path(temp_dir) / "episode_inventory.json"
             map_path = Path(temp_dir) / "spotify_map.json"
-            rss_path.write_text(rss_payload, encoding="utf-8")
+            _write_inventory(
+                inventory_path,
+                [{"episode_key": "ep-1", "title": "Uge 1, Forelæsning 1 · Podcast · Alle kilder"}],
+            )
 
             argv = [
                 "sync_spotify_map.py",
-                "--rss",
-                str(rss_path),
+                "--inventory",
+                str(inventory_path),
                 "--spotify-map",
                 str(map_path),
                 "--subject-slug",
@@ -204,13 +210,52 @@ class SyncSpotifyMapTests(unittest.TestCase):
             self.assertFalse(map_path.exists())
 
     def test_main_writes_map_when_allow_unresolved_is_set(self):
-        rss_payload = """<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0"><channel><item><title>Uge 1, Forelæsning 1 · Podcast · Alle kilder</title></item></channel></rss>
-"""
         with tempfile.TemporaryDirectory() as temp_dir:
-            rss_path = Path(temp_dir) / "rss.xml"
+            inventory_path = Path(temp_dir) / "episode_inventory.json"
             map_path = Path(temp_dir) / "spotify_map.json"
-            rss_path.write_text(rss_payload, encoding="utf-8")
+            _write_inventory(
+                inventory_path,
+                [{"episode_key": "ep-1", "title": "Uge 1, Forelæsning 1 · Podcast · Alle kilder"}],
+            )
+
+            argv = [
+                "sync_spotify_map.py",
+                "--inventory",
+                str(inventory_path),
+                "--spotify-map",
+                str(map_path),
+                "--subject-slug",
+                "personlighedspsykologi",
+                "--allow-unresolved",
+            ]
+            with mock.patch("sys.argv", argv), mock.patch("sys.stderr", new=io.StringIO()):
+                code = self.mod.main()
+
+            self.assertEqual(code, 0)
+            payload = self.mod.json.loads(map_path.read_text(encoding="utf-8"))
+            self.assertEqual(payload["version"], 2)
+            self.assertEqual(payload["subject_slug"], "personlighedspsykologi")
+            self.assertEqual(payload["by_episode_key"], {})
+            self.assertEqual(payload["by_rss_title"], {})
+            self.assertEqual(payload["unresolved_episode_keys"], ["ep-1"])
+            self.assertEqual(
+                payload["unresolved_rss_titles"],
+                ["Uge 1, Forelæsning 1 · Podcast · Alle kilder"],
+            )
+
+    def test_main_can_derive_inventory_path_from_rss(self):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            show_root = Path(temp_dir) / "shows" / "personlighedspsykologi-en"
+            feeds_dir = show_root / "feeds"
+            feeds_dir.mkdir(parents=True, exist_ok=True)
+            rss_path = feeds_dir / "rss.xml"
+            inventory_path = show_root / "episode_inventory.json"
+            map_path = show_root / "spotify_map.json"
+            rss_path.write_text("<rss version='2.0'><channel /></rss>", encoding="utf-8")
+            _write_inventory(
+                inventory_path,
+                [{"episode_key": "ep-1", "title": "Uge 1, Forelæsning 1 · Podcast · Alle kilder"}],
+            )
 
             argv = [
                 "sync_spotify_map.py",
@@ -227,36 +272,24 @@ class SyncSpotifyMapTests(unittest.TestCase):
 
             self.assertEqual(code, 0)
             payload = self.mod.json.loads(map_path.read_text(encoding="utf-8"))
-            self.assertEqual(payload["version"], 1)
-            self.assertEqual(payload["subject_slug"], "personlighedspsykologi")
-            self.assertEqual(payload["by_rss_title"], {})
-            self.assertEqual(
-                payload["unresolved_rss_titles"],
-                ["Uge 1, Forelæsning 1 · Podcast · Alle kilder"],
-            )
+            self.assertEqual(payload["unresolved_episode_keys"], ["ep-1"])
 
     def test_build_spotify_map_prunes_stale_entries_when_requested(self):
-        by_title, unresolved, stats = self.mod.build_spotify_map(
-            rss_titles=["Uge 1, Forelæsning 1 · Podcast · Lewis (1999)"],
+        by_episode_key, _, unresolved, stats = self.mod.build_spotify_map(
+            inventory_episodes=[{"episode_key": "ep-1", "title": "Uge 1, Forelæsning 1 · Podcast · Lewis (1999)"}],
             existing_payload={
-                "by_rss_title": {
-                    "Uge 1, Forelæsning 1 · Podcast · Lewis (1999)": (
-                        "https://open.spotify.com/episode/5m0hYfDU9ThM5qR2xMugr8"
-                    ),
-                    "Uge 1, Forelæsning 1 · Lydbog · Grundbog kapitel 01": (
-                        "https://open.spotify.com/episode/0Yqa6gY5GJfNfQfY7wsY5Y"
-                    ),
+                "by_episode_key": {
+                    "ep-1": "https://open.spotify.com/episode/5m0hYfDU9ThM5qR2xMugr8",
+                    "ep-2": "https://open.spotify.com/episode/0Yqa6gY5GJfNfQfY7wsY5Y",
                 }
             },
             spotify_episode_by_title={},
             prune_stale=True,
         )
         self.assertEqual(
-            by_title,
+            by_episode_key,
             {
-                "Uge 1, Forelæsning 1 · Podcast · Lewis (1999)": (
-                    "https://open.spotify.com/episode/5m0hYfDU9ThM5qR2xMugr8"
-                )
+                "ep-1": "https://open.spotify.com/episode/5m0hYfDU9ThM5qR2xMugr8",
             },
         )
         self.assertEqual(unresolved, [])

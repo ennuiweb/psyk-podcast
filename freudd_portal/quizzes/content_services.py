@@ -53,7 +53,7 @@ SPOTIFY_EPISODE_URL_RE = re.compile(
 )
 HUMAN_MINUTES_RE = re.compile(r"(?P<minutes>\d+)\s*(?:min(?:ute)?s?|minutter)\b", re.IGNORECASE)
 ITUNES_NS = "http://www.itunes.com/dtds/podcast-1.0.dtd"
-MANIFEST_VERSION = 2
+MANIFEST_VERSION = 3
 REPO_ROOT = Path(__file__).resolve().parents[2]
 
 _MANIFEST_CACHE: dict[str, Any] = {
@@ -94,6 +94,7 @@ def _manifest_source_paths(
         subject_paths.reading_master_path,
         subject_paths.reading_fallback_path,
         subject_paths.quiz_links_path,
+        subject_paths.episode_inventory_path,
         subject_paths.feed_rss_path,
         subject_paths.spotify_map_path,
         subject_paths.slides_catalog_path,
@@ -381,6 +382,8 @@ def _parse_rss_title_parts(title_text: str) -> tuple[str, str, str]:
 def _podcast_kind_from_token(value: str) -> str:
     token = str(value or "").strip().lower()
     token = token.strip("[]() ")
+    if token == "short_podcast":
+        return "short_podcast"
     if "kort podcast" in token:
         return "short_podcast"
     if "lydbog" in token:
@@ -963,29 +966,34 @@ def _duration_payload_from_item(item_node: ElementTree.Element) -> tuple[int | N
 def _normalize_rss_title_key(value: str) -> str:
     return MULTISPACE_RE.sub(" ", str(value or "")).strip()
 
+
+def _normalize_episode_key(value: object) -> str:
+    return str(value or "").strip()
+
+
 def _load_spotify_map(
     *,
     path: Path,
     subject_slug: str,
     manifest_warnings: list[str],
-) -> dict[str, str]:
+) -> dict[str, dict[str, str]]:
     if not path.exists():
         manifest_warnings.append(f"Spotify map source missing: {path}")
-        return {}
+        return {"by_episode_key": {}, "by_rss_title": {}}
 
     try:
         payload = json.loads(path.read_text(encoding="utf-8"))
     except (OSError, UnicodeDecodeError, json.JSONDecodeError):
         logger.warning("Unable to parse Spotify map for manifest build: %s", path, exc_info=True)
         manifest_warnings.append(f"Spotify map source could not be parsed: {path}")
-        return {}
+        return {"by_episode_key": {}, "by_rss_title": {}}
 
     if not isinstance(payload, dict):
         manifest_warnings.append(f"Spotify map source must be a JSON object: {path}")
-        return {}
+        return {"by_episode_key": {}, "by_rss_title": {}}
 
     raw_version = payload.get("version")
-    if raw_version != 1:
+    if raw_version not in {1, 2}:
         manifest_warnings.append(f"Spotify map has unsupported version ({raw_version!r}): {path}")
 
     map_subject_slug = str(payload.get("subject_slug") or "").strip().lower()
@@ -994,12 +1002,13 @@ def _load_spotify_map(
             f"Spotify map subject_slug mismatch: expected {subject_slug}, got {map_subject_slug}"
         )
 
-    raw_by_title = payload.get("by_rss_title")
-    if not isinstance(raw_by_title, dict):
-        manifest_warnings.append(f"Spotify map missing by_rss_title object: {path}")
-        return {}
-
     by_title: dict[str, str] = {}
+    raw_by_title = payload.get("by_rss_title")
+    if raw_by_title is not None and not isinstance(raw_by_title, dict):
+        manifest_warnings.append(f"Spotify map missing by_rss_title object: {path}")
+        raw_by_title = {}
+    if raw_by_title is None:
+        raw_by_title = {}
     for raw_title, raw_url in raw_by_title.items():
         if not isinstance(raw_title, str):
             manifest_warnings.append("Spotify map contains non-string RSS title key.")
@@ -1019,42 +1028,98 @@ def _load_spotify_map(
             manifest_warnings.append(f"Spotify map URL must be an episode URL for title: {raw_title}")
             continue
         by_title[normalized_title] = spotify_url
-    return by_title
+
+    by_episode_key: dict[str, str] = {}
+    raw_by_episode_key = payload.get("by_episode_key")
+    if raw_by_episode_key is not None and not isinstance(raw_by_episode_key, dict):
+        manifest_warnings.append(f"Spotify map missing by_episode_key object: {path}")
+        raw_by_episode_key = {}
+    if raw_by_episode_key is None:
+        raw_by_episode_key = {}
+    for raw_episode_key, raw_url in raw_by_episode_key.items():
+        episode_key = _normalize_episode_key(raw_episode_key)
+        if not episode_key:
+            manifest_warnings.append("Spotify map contains empty episode_key.")
+            continue
+        if not isinstance(raw_url, str):
+            manifest_warnings.append(f"Spotify map URL must be a string for episode_key: {episode_key}")
+            continue
+        spotify_url = raw_url.strip()
+        if not SPOTIFY_EPISODE_URL_RE.match(spotify_url):
+            manifest_warnings.append(f"Spotify map URL must be an episode URL for episode_key: {episode_key}")
+            continue
+        by_episode_key[episode_key] = spotify_url
+
+    return {
+        "by_episode_key": by_episode_key,
+        "by_rss_title": by_title,
+    }
 
 
-def _attach_podcasts(
+def _load_episode_inventory(
+    *,
+    path: Path,
+    subject_slug: str,
+    manifest_warnings: list[str],
+) -> list[dict[str, Any]] | None:
+    if not path.exists():
+        return None
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError):
+        logger.warning("Unable to parse episode inventory for manifest build: %s", path, exc_info=True)
+        manifest_warnings.append(f"Episode inventory source could not be parsed: {path}")
+        return None
+    if not isinstance(payload, dict):
+        manifest_warnings.append(f"Episode inventory source must be a JSON object: {path}")
+        return None
+    inventory_subject_slug = str(payload.get("subject_slug") or "").strip().lower()
+    if inventory_subject_slug and inventory_subject_slug != subject_slug:
+        manifest_warnings.append(
+            f"Episode inventory subject_slug mismatch: expected {subject_slug}, got {inventory_subject_slug}"
+        )
+    raw_episodes = payload.get("episodes")
+    if not isinstance(raw_episodes, list):
+        manifest_warnings.append(f"Episode inventory missing episodes list: {path}")
+        return None
+    return [item for item in raw_episodes if isinstance(item, dict)]
+
+
+def _spotify_url_for_podcast_item(
+    *,
+    podcast_entry: dict[str, Any],
+    spotify_map: dict[str, dict[str, str]],
+) -> str:
+    episode_key = _normalize_episode_key(podcast_entry.get("episode_key"))
+    if episode_key:
+        spotify_url = spotify_map.get("by_episode_key", {}).get(episode_key)
+        if spotify_url:
+            return spotify_url
+    normalized_title = _normalize_rss_title_key(podcast_entry.get("title"))
+    if normalized_title:
+        return spotify_map.get("by_rss_title", {}).get(normalized_title, "")
+    return ""
+
+
+def _attach_podcasts_from_inventory(
     *,
     lectures: list[dict[str, Any]],
     lecture_index: dict[str, int],
-    rss_path: Path,
-    spotify_by_title: dict[str, str],
+    inventory_entries: list[dict[str, Any]],
+    spotify_map: dict[str, dict[str, str]],
     quiz_asset_locations: dict[str, tuple[int, int | None] | None],
     manifest_warnings: list[str],
 ) -> None:
-    if not rss_path.exists():
-        manifest_warnings.append(f"RSS source missing: {rss_path}")
-        return
-
-    try:
-        root = ElementTree.fromstring(rss_path.read_text(encoding="utf-8"))
-    except (OSError, UnicodeDecodeError, ElementTree.ParseError):
-        logger.warning("Unable to parse RSS for manifest build: %s", rss_path, exc_info=True)
-        manifest_warnings.append(f"RSS source could not be parsed: {rss_path}")
-        return
-
-    channel = root.find("channel")
-    if channel is None:
-        manifest_warnings.append(f"RSS source missing channel node: {rss_path}")
-        return
-
     seen_assets: dict[tuple[Any, ...], dict[str, Any]] = {}
     seen_source_assets: dict[tuple[Any, ...], dict[str, Any]] = {}
-    for item in channel.findall("item"):
-        title_text = str(item.findtext("title") or "").strip()
+    for item in inventory_entries:
+        title_text = str(item.get("title") or "").strip()
         if not title_text:
             continue
-        lecture_hint, kind_hint, descriptor = _parse_rss_title_parts(title_text)
-        item_link = str(item.findtext("link") or "").strip()
+        lecture_hint = str(item.get("lecture_key") or "").strip()
+        kind_hint = str(item.get("podcast_kind") or "").strip()
+        descriptor = _descriptor_from_episode_name(item.get("source_name") or title_text) or title_text
+        item_link = str(item.get("link") or "").strip()
         quiz_location = quiz_asset_locations.get(_quiz_id_from_value(item_link) or "")
         lecture_key = _lecture_key_from_text(lecture_hint)
         lecture_position = lecture_index.get(lecture_key) if lecture_key else None
@@ -1070,31 +1135,32 @@ def _attach_podcasts(
             continue
 
         lecture_state = lectures[lecture_position]
-        spotify_url = spotify_by_title.get(_normalize_rss_title_key(title_text))
-        source_audio_url = _find_enclosure_url(item)
-        if not spotify_url:
+        spotify_url = _spotify_url_for_podcast_item(podcast_entry=item, spotify_map=spotify_map)
+        source_audio_url = str(item.get("audio_url") or "").strip()
+        duration_seconds = _duration_seconds_from_text(item.get("duration"))
+        duration_label = _duration_label_from_seconds(duration_seconds)
+        preferred_url = spotify_url or source_audio_url
+        if not preferred_url:
             lecture_state["warnings"].append(
-                f"Spotify episode mapping missing for RSS item; skipping podcast asset: {title_text}"
+                f"Podcast inventory entry is missing all playable URLs; skipping podcast asset: {title_text}"
             )
             continue
-        if not SPOTIFY_EPISODE_URL_RE.match(spotify_url):
-            lecture_state["warnings"].append(
-                f"Spotify mapping is not an episode URL; skipping podcast asset: {title_text}"
-            )
-            manifest_warnings.append(f"Spotify mapping is not an episode URL for RSS item: {title_text}")
-            continue
-        duration_seconds, duration_label = _duration_payload_from_item(item)
         podcast_asset = {
             "kind": _podcast_kind_from_token(kind_hint),
             "title": title_text,
-            "url": spotify_url,
-            "platform": "spotify",
-            "pub_date": str(item.findtext("pubDate") or "").strip(),
+            "url": preferred_url,
+            "platform": "spotify" if spotify_url else "direct_audio",
+            "spotify_url": spotify_url or None,
+            "pub_date": str(item.get("pub_date") or "").strip(),
             "source_audio_url": source_audio_url,
             "duration_seconds": duration_seconds,
             "duration_label": duration_label,
+            "episode_key": _normalize_episode_key(item.get("episode_key")) or None,
         }
-        lecture_level = _is_lecture_level_descriptor(descriptor)
+        lecture_level = (
+            str(item.get("episode_kind") or "").strip().lower() == "weekly_overview"
+            or _is_lecture_level_descriptor(descriptor)
+        )
         podcast_kind = str(podcast_asset.get("kind") or "").strip().lower()
         source_identity = _podcast_source_identity(podcast_asset)
         descriptor_key = _podcast_dedupe_descriptor(
@@ -1117,7 +1183,14 @@ def _attach_podcasts(
                 podcast_asset=podcast_asset,
             )
             continue
-        slide_index = _find_slide_index(lecture_state, descriptor)
+        slide_index = (
+            _find_slide_index(lecture_state, descriptor)
+            if str(item.get("episode_kind") or "").strip().lower() == "slide"
+            or descriptor.lower().startswith("slide ")
+            or descriptor.lower().startswith("forelæsningsslides")
+            or descriptor.lower().startswith("forelaesningsslides")
+            else _find_slide_index(lecture_state, descriptor)
+        )
         if slide_index is not None:
             _append_deduped_podcast_asset(
                 target_assets=lecture_state["slides"][slide_index]["assets"]["podcasts"],
@@ -1171,6 +1244,95 @@ def _attach_podcasts(
             lecture_state=lecture_state,
             podcast_asset=podcast_asset,
         )
+
+
+def _attach_podcasts_from_rss(
+    *,
+    lectures: list[dict[str, Any]],
+    lecture_index: dict[str, int],
+    rss_path: Path,
+    spotify_map: dict[str, dict[str, str]],
+    quiz_asset_locations: dict[str, tuple[int, int | None] | None],
+    manifest_warnings: list[str],
+) -> None:
+    if not rss_path.exists():
+        manifest_warnings.append(f"RSS source missing: {rss_path}")
+        return
+
+    try:
+        root = ElementTree.fromstring(rss_path.read_text(encoding="utf-8"))
+    except (OSError, UnicodeDecodeError, ElementTree.ParseError):
+        logger.warning("Unable to parse RSS for manifest build: %s", rss_path, exc_info=True)
+        manifest_warnings.append(f"RSS source could not be parsed: {rss_path}")
+        return
+
+    channel = root.find("channel")
+    if channel is None:
+        manifest_warnings.append(f"RSS source missing channel node: {rss_path}")
+        return
+
+    legacy_entries: list[dict[str, Any]] = []
+    for item in channel.findall("item"):
+        title_text = str(item.findtext("title") or "").strip()
+        lecture_hint, kind_hint, descriptor = _parse_rss_title_parts(title_text)
+        legacy_entries.append(
+            {
+                "title": title_text,
+                "lecture_key": lecture_hint,
+                "podcast_kind": kind_hint,
+                "source_name": descriptor,
+                "link": str(item.findtext("link") or "").strip(),
+                "pub_date": str(item.findtext("pubDate") or "").strip(),
+                "duration": item.findtext(f"{{{ITUNES_NS}}}duration") or item.findtext("duration") or "",
+                "audio_url": _find_enclosure_url(item),
+            }
+        )
+
+    _attach_podcasts_from_inventory(
+        lectures=lectures,
+        lecture_index=lecture_index,
+        inventory_entries=legacy_entries,
+        spotify_map=spotify_map,
+        quiz_asset_locations=quiz_asset_locations,
+        manifest_warnings=manifest_warnings,
+    )
+
+
+def _attach_podcasts(
+    *,
+    lectures: list[dict[str, Any]],
+    lecture_index: dict[str, int],
+    subject_slug: str,
+    rss_path: Path,
+    spotify_map: dict[str, dict[str, str]],
+    quiz_asset_locations: dict[str, tuple[int, int | None] | None],
+    manifest_warnings: list[str],
+) -> None:
+    subject_paths = resolve_subject_paths(subject_slug)
+    inventory_entries = _load_episode_inventory(
+        path=subject_paths.episode_inventory_path,
+        subject_slug=subject_slug,
+        manifest_warnings=manifest_warnings,
+    )
+    if inventory_entries is not None:
+        _attach_podcasts_from_inventory(
+            lectures=lectures,
+            lecture_index=lecture_index,
+            inventory_entries=inventory_entries,
+            spotify_map=spotify_map,
+            quiz_asset_locations=quiz_asset_locations,
+            manifest_warnings=manifest_warnings,
+        )
+        return
+
+    _attach_podcasts_from_rss(
+        lectures=lectures,
+        lecture_index=lecture_index,
+        rss_path=rss_path,
+        spotify_map=spotify_map,
+        quiz_asset_locations=quiz_asset_locations,
+        manifest_warnings=manifest_warnings,
+    )
 
 
 def build_subject_content_manifest(subject_slug: str) -> SubjectContentManifest:
@@ -1280,7 +1442,7 @@ def build_subject_content_manifest(subject_slug: str) -> SubjectContentManifest:
     quiz_links_path = subject_paths.quiz_links_path
     rss_path = subject_paths.feed_rss_path
     spotify_map_path = subject_paths.spotify_map_path
-    spotify_by_title = _load_spotify_map(
+    spotify_map = _load_spotify_map(
         path=spotify_map_path,
         subject_slug=slug,
         manifest_warnings=manifest_warnings,
@@ -1296,8 +1458,9 @@ def build_subject_content_manifest(subject_slug: str) -> SubjectContentManifest:
     _attach_podcasts(
         lectures=lectures,
         lecture_index=lecture_index,
+        subject_slug=slug,
         rss_path=rss_path,
-        spotify_by_title=spotify_by_title,
+        spotify_map=spotify_map,
         quiz_asset_locations=quiz_asset_locations,
         manifest_warnings=manifest_warnings,
     )
@@ -1351,6 +1514,7 @@ def build_subject_content_manifest(subject_slug: str) -> SubjectContentManifest:
             subject_paths.weekly_overview_summaries_path
         ),
         "quiz_links_path": _stable_manifest_path_value(quiz_links_path),
+        "episode_inventory_path": _stable_manifest_path_value(subject_paths.episode_inventory_path),
         "rss_path": _stable_manifest_path_value(rss_path),
         "spotify_map_path": _stable_manifest_path_value(spotify_map_path),
         "slides_catalog_path": _stable_manifest_path_value(subject_paths.slides_catalog_path),

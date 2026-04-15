@@ -1,8 +1,8 @@
 {
-  "version": 2,
+  "version": 3,
   "subject_slug": "bioneuro",
   "source_meta": {
-    "version": 2,
+    "version": 3,
     "reading_master_path": "shows/bioneuro/docs/freudd-reading-file-key.md",
     "reading_fallback_path": "shows/bioneuro/docs/freudd-reading-file-key.md",
     "reading_source_used": "shows/bioneuro/docs/freudd-reading-file-key.md",
@@ -11,6 +11,7 @@
     "reading_summaries_path": null,
     "weekly_overview_summaries_path": null,
     "quiz_links_path": "shows/bioneuro/quiz_links.json",
+    "episode_inventory_path": "shows/bioneuro/episode_inventory.json",
     "rss_path": "shows/bioneuro/feeds/rss.xml",
     "spotify_map_path": "shows/bioneuro/spotify_map.json",
     "slides_catalog_path": "shows/bioneuro/slides_catalog.json"
@@ -53,13 +54,27 @@
             "podcasts": [
               {
                 "kind": "podcast",
+                "title": "[Podcast] · Behavioral Neuroscience Kapitel 01 - Introduction Scope and Outlook",
+                "url": "https://drive.google.com/uc?export=download&id=132uHT9MKi_3LuCi9UyUrntNyWBzZEYae",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Sat, 01 Aug 2026 08:00:00 +0200",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=132uHT9MKi_3LuCi9UyUrntNyWBzZEYae",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "132uHT9MKi_3LuCi9UyUrntNyWBzZEYae"
+              },
+              {
+                "kind": "podcast",
                 "title": "[Podcast] · Grundbog Kapitel 1",
                 "url": "https://open.spotify.com/episode/6aJ5Sj1KhvZRFWONrefr1o",
                 "platform": "spotify",
+                "spotify_url": "https://open.spotify.com/episode/6aJ5Sj1KhvZRFWONrefr1o",
                 "pub_date": "Sat, 01 Aug 2026 08:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1OiRyFslV6hlC39P-rvcSmJzAKmhzkKre",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1OiRyFslV6hlC39P-rvcSmJzAKmhzkKre"
               }
             ]
           }
@@ -93,9 +108,7 @@
         "quizzes": [],
         "podcasts": []
       },
-      "warnings": [
-        "Spotify episode mapping missing for RSS item; skipping podcast asset: [Podcast] · Behavioral Neuroscience Kapitel 01 - Introduction Scope and Outlook"
-      ]
+      "warnings": []
     },
     {
       "lecture_key": "W02L1",
@@ -134,13 +147,27 @@
             "podcasts": [
               {
                 "kind": "podcast",
+                "title": "[Podcast] · Behavioral Neuroscience Kapitel 02 - Functional Neuroanatomy The Cells and Structures of the Nervous System",
+                "url": "https://drive.google.com/uc?export=download&id=1BARiDlUKkOGYvJ8tkyLbqOAgJnftwy6v",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Sat, 01 Aug 2026 00:00:00 +0200",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1BARiDlUKkOGYvJ8tkyLbqOAgJnftwy6v",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1BARiDlUKkOGYvJ8tkyLbqOAgJnftwy6v"
+              },
+              {
+                "kind": "podcast",
                 "title": "[Podcast] · Grundbog Kapitel 2",
                 "url": "https://open.spotify.com/episode/3oGYYaDwlpjPS96bJadU7D",
                 "platform": "spotify",
+                "spotify_url": "https://open.spotify.com/episode/3oGYYaDwlpjPS96bJadU7D",
                 "pub_date": "Sat, 01 Aug 2026 00:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1E8DfrAJOlk2cWkd50pSuWXqMNSOWCv9T",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1E8DfrAJOlk2cWkd50pSuWXqMNSOWCv9T"
               }
             ]
           }
@@ -174,9 +201,7 @@
         "quizzes": [],
         "podcasts": []
       },
-      "warnings": [
-        "Spotify episode mapping missing for RSS item; skipping podcast asset: [Podcast] · Behavioral Neuroscience Kapitel 02 - Functional Neuroanatomy The Cells and Structures of the Nervous System"
-      ]
+      "warnings": []
     },
     {
       "lecture_key": "W03L1",
@@ -218,20 +243,24 @@
                 "title": "[Podcast] · Behavioral Neuroscience Kapitel 03 - Neurophysiology The Generation Transmission and Integration of Neural Signals",
                 "url": "https://open.spotify.com/episode/4W7O8lW6ONJQDQl6NcIAzc",
                 "platform": "spotify",
+                "spotify_url": "https://open.spotify.com/episode/4W7O8lW6ONJQDQl6NcIAzc",
                 "pub_date": "Fri, 31 Jul 2026 16:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1aLWiLTK9kNEEwE5VNfL-YFi6NMHfCk2P",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1aLWiLTK9kNEEwE5VNfL-YFi6NMHfCk2P"
               },
               {
                 "kind": "podcast",
                 "title": "[Podcast] · Grundbog Kapitel 3",
                 "url": "https://open.spotify.com/episode/6RzgePgLQgayBC3G62JDQU",
                 "platform": "spotify",
+                "spotify_url": "https://open.spotify.com/episode/6RzgePgLQgayBC3G62JDQU",
                 "pub_date": "Fri, 31 Jul 2026 16:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1YflTtWf5zF7M-6RoodT3PE0dED2mEz8d",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1YflTtWf5zF7M-6RoodT3PE0dED2mEz8d"
               }
             ]
           }
@@ -293,13 +322,27 @@
             "podcasts": [
               {
                 "kind": "podcast",
+                "title": "[Podcast] · Behavioral Neuroscience Kapitel 04 - The Chemistry of Behavior Neurotransmitters and Neuropharmacology",
+                "url": "https://drive.google.com/uc?export=download&id=1NRVQBQOEWIlbEcTvzMGU_MC-TNNwhyfR",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Fri, 31 Jul 2026 08:00:00 +0200",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1NRVQBQOEWIlbEcTvzMGU_MC-TNNwhyfR",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1NRVQBQOEWIlbEcTvzMGU_MC-TNNwhyfR"
+              },
+              {
+                "kind": "podcast",
                 "title": "[Podcast] · Grundbog Kapitel 4",
                 "url": "https://open.spotify.com/episode/7HWW4s54nOkczSdXD1Na3Y",
                 "platform": "spotify",
+                "spotify_url": "https://open.spotify.com/episode/7HWW4s54nOkczSdXD1Na3Y",
                 "pub_date": "Fri, 31 Jul 2026 08:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1G17GkgOCYxsc7Dg5Rpch9PSJimqcxu5q",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1G17GkgOCYxsc7Dg5Rpch9PSJimqcxu5q"
               }
             ]
           }
@@ -322,9 +365,7 @@
         "quizzes": [],
         "podcasts": []
       },
-      "warnings": [
-        "Spotify episode mapping missing for RSS item; skipping podcast asset: [Podcast] · Behavioral Neuroscience Kapitel 04 - The Chemistry of Behavior Neurotransmitters and Neuropharmacology"
-      ]
+      "warnings": []
     },
     {
       "lecture_key": "W05L1",
@@ -363,13 +404,27 @@
             "podcasts": [
               {
                 "kind": "podcast",
+                "title": "[Podcast] · Behavioral Neuroscience Kapitel 05 - Hormones and the Brain",
+                "url": "https://drive.google.com/uc?export=download&id=1RJXhAl1AC5voi_3e3N48_kdq_zxDbVV9",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Fri, 31 Jul 2026 00:00:00 +0200",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1RJXhAl1AC5voi_3e3N48_kdq_zxDbVV9",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1RJXhAl1AC5voi_3e3N48_kdq_zxDbVV9"
+              },
+              {
+                "kind": "podcast",
                 "title": "[Podcast] · Grundbog Kapitel 5",
                 "url": "https://open.spotify.com/episode/3qbWYE02v4N0rgZIAJepVU",
                 "platform": "spotify",
+                "spotify_url": "https://open.spotify.com/episode/3qbWYE02v4N0rgZIAJepVU",
                 "pub_date": "Fri, 31 Jul 2026 00:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=189B7vQVxERWewc34U-QkTNGAG1Kl9yXy",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "189B7vQVxERWewc34U-QkTNGAG1Kl9yXy"
               }
             ]
           }
@@ -392,9 +447,7 @@
         "quizzes": [],
         "podcasts": []
       },
-      "warnings": [
-        "Spotify episode mapping missing for RSS item; skipping podcast asset: [Podcast] · Behavioral Neuroscience Kapitel 05 - Hormones and the Brain"
-      ]
+      "warnings": []
     },
     {
       "lecture_key": "W06L1",
@@ -430,7 +483,20 @@
                 "episode_title": "W6L1 - Behavioral Neuroscience Kapitel 01 - Introduction Scope and Outlook [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               }
             ],
-            "podcasts": []
+            "podcasts": [
+              {
+                "kind": "podcast",
+                "title": "[Podcast] · Behavioral Neuroscience Kapitel 01 - Introduction Scope and Outlook",
+                "url": "https://drive.google.com/uc?export=download&id=1h6U3bG9jZJwHWaSDVj00Sbk4_PVBWFAA",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Sat, 01 Aug 2026 08:00:00 +0200",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1h6U3bG9jZJwHWaSDVj00Sbk4_PVBWFAA",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1h6U3bG9jZJwHWaSDVj00Sbk4_PVBWFAA"
+              }
+            ]
           }
         },
         {
@@ -461,7 +527,20 @@
                 "episode_title": "W6L1 - Behavioral Neuroscience Kapitel 02 - Functional Neuroanatomy The Cells and Structures of the Nervous System [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               }
             ],
-            "podcasts": []
+            "podcasts": [
+              {
+                "kind": "podcast",
+                "title": "[Podcast] · Behavioral Neuroscience Kapitel 02 - Functional Neuroanatomy The Cells and Structures of the Nervous System",
+                "url": "https://drive.google.com/uc?export=download&id=1R3Je9LANSTg6g6oR5TboWlvjl0wzuund",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Sat, 01 Aug 2026 00:00:00 +0200",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1R3Je9LANSTg6g6oR5TboWlvjl0wzuund",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1R3Je9LANSTg6g6oR5TboWlvjl0wzuund"
+              }
+            ]
           }
         },
         {
@@ -498,10 +577,12 @@
                 "title": "[Podcast] · Behavioral Neuroscience Kapitel 03 - Neurophysiology The Generation Transmission and Integration of Neural Signals",
                 "url": "https://open.spotify.com/episode/4W7O8lW6ONJQDQl6NcIAzc",
                 "platform": "spotify",
+                "spotify_url": "https://open.spotify.com/episode/4W7O8lW6ONJQDQl6NcIAzc",
                 "pub_date": "Fri, 31 Jul 2026 16:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=14oZHixkuQwzmZyfs6ZQh2eX2uVujxbc3",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "14oZHixkuQwzmZyfs6ZQh2eX2uVujxbc3"
               }
             ]
           }
@@ -534,7 +615,20 @@
                 "episode_title": "W6L1 - Behavioral Neuroscience Kapitel 04 - The Chemistry of Behavior Neurotransmitters and Neuropharmacology [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               }
             ],
-            "podcasts": []
+            "podcasts": [
+              {
+                "kind": "podcast",
+                "title": "[Podcast] · Behavioral Neuroscience Kapitel 04 - The Chemistry of Behavior Neurotransmitters and Neuropharmacology",
+                "url": "https://drive.google.com/uc?export=download&id=1lw8JCrM-FGGGOjYHR7T4eExU71ex5fh1",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Fri, 31 Jul 2026 08:00:00 +0200",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1lw8JCrM-FGGGOjYHR7T4eExU71ex5fh1",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1lw8JCrM-FGGGOjYHR7T4eExU71ex5fh1"
+              }
+            ]
           }
         }
       ],
@@ -566,18 +660,16 @@
             "title": "[Podcast] · Alle kilder",
             "url": "https://open.spotify.com/episode/2Pef4sUHPSNIF7gAR8akSW",
             "platform": "spotify",
+            "spotify_url": "https://open.spotify.com/episode/2Pef4sUHPSNIF7gAR8akSW",
             "pub_date": "Sat, 01 Aug 2026 16:00:00 +0200",
             "source_audio_url": "https://drive.google.com/uc?export=download&id=1gD22PxEoXeQKjBEeZ95AIzD7MpTeBjWe",
             "duration_seconds": null,
-            "duration_label": ""
+            "duration_label": "",
+            "episode_key": "1gD22PxEoXeQKjBEeZ95AIzD7MpTeBjWe"
           }
         ]
       },
-      "warnings": [
-        "Spotify episode mapping missing for RSS item; skipping podcast asset: [Podcast] · Behavioral Neuroscience Kapitel 01 - Introduction Scope and Outlook",
-        "Spotify episode mapping missing for RSS item; skipping podcast asset: [Podcast] · Behavioral Neuroscience Kapitel 02 - Functional Neuroanatomy The Cells and Structures of the Nervous System",
-        "Spotify episode mapping missing for RSS item; skipping podcast asset: [Podcast] · Behavioral Neuroscience Kapitel 04 - The Chemistry of Behavior Neurotransmitters and Neuropharmacology"
-      ]
+      "warnings": []
     },
     {
       "lecture_key": "W07L1",
@@ -619,10 +711,12 @@
                 "title": "[Podcast] · Behavioral Neuroscience Kapitel 07 - Life Span Development of the Brain and Behavior",
                 "url": "https://open.spotify.com/episode/0wLRq4pxwprNCnRRRGrb6r",
                 "platform": "spotify",
+                "spotify_url": "https://open.spotify.com/episode/0wLRq4pxwprNCnRRRGrb6r",
                 "pub_date": "Thu, 30 Jul 2026 08:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1m2pnGMr6HHg4hYqo6T257f2882RsVGlg",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1m2pnGMr6HHg4hYqo6T257f2882RsVGlg"
               }
             ]
           }
@@ -669,7 +763,20 @@
                 "episode_title": "W8L1 - Behavioral Neuroscience Kapitel 11 - Motor Control and Plasticity [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               }
             ],
-            "podcasts": []
+            "podcasts": [
+              {
+                "kind": "podcast",
+                "title": "[Podcast] · Behavioral Neuroscience Kapitel 11 - Motor Control and Plasticity",
+                "url": "https://drive.google.com/uc?export=download&id=1GzaaPe0lN6eIpMxOVt9EsOcdYzd537KH",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Wed, 29 Jul 2026 00:00:00 +0200",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1GzaaPe0lN6eIpMxOVt9EsOcdYzd537KH",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1GzaaPe0lN6eIpMxOVt9EsOcdYzd537KH"
+              }
+            ]
           }
         },
         {
@@ -706,10 +813,12 @@
                 "title": "[Podcast] · KolbWishawTeskey2023Chapter16",
                 "url": "https://open.spotify.com/episode/1l6YDuv0OM9MwWJn5ILLhF",
                 "platform": "spotify",
+                "spotify_url": "https://open.spotify.com/episode/1l6YDuv0OM9MwWJn5ILLhF",
                 "pub_date": "Sat, 01 Aug 2026 12:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1BEtrKnhtGmeb3dx6qdgvysX-5AufPrPA",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1BEtrKnhtGmeb3dx6qdgvysX-5AufPrPA"
               }
             ]
           }
@@ -743,16 +852,16 @@
             "title": "[Podcast] · Alle kilder",
             "url": "https://open.spotify.com/episode/2Pef4sUHPSNIF7gAR8akSW",
             "platform": "spotify",
+            "spotify_url": "https://open.spotify.com/episode/2Pef4sUHPSNIF7gAR8akSW",
             "pub_date": "Sat, 01 Aug 2026 14:00:00 +0200",
             "source_audio_url": "https://drive.google.com/uc?export=download&id=1PzS_rLOCNn6l0Sv73KixqKGAJHenthUK",
             "duration_seconds": null,
-            "duration_label": ""
+            "duration_label": "",
+            "episode_key": "1PzS_rLOCNn6l0Sv73KixqKGAJHenthUK"
           }
         ]
       },
-      "warnings": [
-        "Spotify episode mapping missing for RSS item; skipping podcast asset: [Podcast] · Behavioral Neuroscience Kapitel 11 - Motor Control and Plasticity"
-      ]
+      "warnings": []
     },
     {
       "lecture_key": "W09L1",
@@ -788,7 +897,20 @@
                 "episode_title": "W9L1 - Behavioral Neuroscience Kapitel 15 - Emotions Aggression and Stress [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               }
             ],
-            "podcasts": []
+            "podcasts": [
+              {
+                "kind": "podcast",
+                "title": "[Podcast] · Behavioral Neuroscience Kapitel 15 - Emotions Aggression and Stress",
+                "url": "https://drive.google.com/uc?export=download&id=1Z9KZxjXfD1c7UddS3OZPnfzsoyA24q7K",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Mon, 27 Jul 2026 16:00:00 +0200",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1Z9KZxjXfD1c7UddS3OZPnfzsoyA24q7K",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1Z9KZxjXfD1c7UddS3OZPnfzsoyA24q7K"
+              }
+            ]
           }
         }
       ],
@@ -797,9 +919,7 @@
         "quizzes": [],
         "podcasts": []
       },
-      "warnings": [
-        "Spotify episode mapping missing for RSS item; skipping podcast asset: [Podcast] · Behavioral Neuroscience Kapitel 15 - Emotions Aggression and Stress"
-      ]
+      "warnings": []
     },
     {
       "lecture_key": "W10L1",
@@ -835,7 +955,20 @@
                 "episode_title": "W10L1 - Behavioral Neuroscience Kapitel 08 - General Principles of Sensory Processing Touch and Pain [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               }
             ],
-            "podcasts": []
+            "podcasts": [
+              {
+                "kind": "podcast",
+                "title": "[Podcast] · Behavioral Neuroscience Kapitel 08 - General Principles of Sensory Processing Touch and Pain",
+                "url": "https://drive.google.com/uc?export=download&id=1vw4Vbw3sKp0TnQTgspE1eiFuqv6xecXJ",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Thu, 30 Jul 2026 00:00:00 +0200",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1vw4Vbw3sKp0TnQTgspE1eiFuqv6xecXJ",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1vw4Vbw3sKp0TnQTgspE1eiFuqv6xecXJ"
+              }
+            ]
           }
         },
         {
@@ -872,10 +1005,12 @@
                 "title": "[Podcast] · Behavioral Neuroscience Kapitel 09 - Hearing Balance Taste and Smell",
                 "url": "https://open.spotify.com/episode/1OR40JwFhkBYFqa72loG6V",
                 "platform": "spotify",
+                "spotify_url": "https://open.spotify.com/episode/1OR40JwFhkBYFqa72loG6V",
                 "pub_date": "Wed, 29 Jul 2026 16:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1MI1EFRcdU_3e4RpvjqazHLBMXMAPltVd",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1MI1EFRcdU_3e4RpvjqazHLBMXMAPltVd"
               }
             ]
           }
@@ -914,10 +1049,12 @@
                 "title": "[Podcast] · Behavioral Neuroscience Kapitel 10 - Vision From Eye to Brain",
                 "url": "https://open.spotify.com/episode/24Zy0uClWmScI2jE9190Ox",
                 "platform": "spotify",
+                "spotify_url": "https://open.spotify.com/episode/24Zy0uClWmScI2jE9190Ox",
                 "pub_date": "Wed, 29 Jul 2026 08:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1zqU4qUFqHUKbL-2wF4KHBd4Hs_B7gW3D",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1zqU4qUFqHUKbL-2wF4KHBd4Hs_B7gW3D"
               }
             ]
           }
@@ -951,16 +1088,16 @@
             "title": "[Podcast] · Alle kilder",
             "url": "https://open.spotify.com/episode/2Pef4sUHPSNIF7gAR8akSW",
             "platform": "spotify",
+            "spotify_url": "https://open.spotify.com/episode/2Pef4sUHPSNIF7gAR8akSW",
             "pub_date": "Sat, 01 Aug 2026 10:00:00 +0200",
             "source_audio_url": "https://drive.google.com/uc?export=download&id=12ulD_6vvP6hQy--iq-pXsAaJHTlIAUim",
             "duration_seconds": null,
-            "duration_label": ""
+            "duration_label": "",
+            "episode_key": "12ulD_6vvP6hQy--iq-pXsAaJHTlIAUim"
           }
         ]
       },
-      "warnings": [
-        "Spotify episode mapping missing for RSS item; skipping podcast asset: [Podcast] · Behavioral Neuroscience Kapitel 08 - General Principles of Sensory Processing Touch and Pain"
-      ]
+      "warnings": []
     },
     {
       "lecture_key": "W11L1",
@@ -1002,10 +1139,12 @@
                 "title": "[Podcast] · Behavioral Neuroscience Kapitel 13 - Homeostasis Active Regulation of the Internal Environment",
                 "url": "https://open.spotify.com/episode/68hp8aekjlQLIrUY4Vip25",
                 "platform": "spotify",
+                "spotify_url": "https://open.spotify.com/episode/68hp8aekjlQLIrUY4Vip25",
                 "pub_date": "Tue, 28 Jul 2026 08:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=19jT8ZmMETg7DcdOIfEC55rdsvHTJ7hrx",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "19jT8ZmMETg7DcdOIfEC55rdsvHTJ7hrx"
               }
             ]
           }
@@ -1044,10 +1183,12 @@
                 "title": "[Podcast] · Behavioral Neuroscience Kapitel 14 - Biological Rhythms Sleep and Dreaming",
                 "url": "https://open.spotify.com/episode/4bPaXyq5A3JuZbvEW71UkF",
                 "platform": "spotify",
+                "spotify_url": "https://open.spotify.com/episode/4bPaXyq5A3JuZbvEW71UkF",
                 "pub_date": "Tue, 28 Jul 2026 00:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1YPgrdWoQt3GF-awHI5cCaE2Donet8DFK",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1YPgrdWoQt3GF-awHI5cCaE2Donet8DFK"
               }
             ]
           }
@@ -1081,10 +1222,12 @@
             "title": "[Podcast] · Alle kilder",
             "url": "https://open.spotify.com/episode/2Pef4sUHPSNIF7gAR8akSW",
             "platform": "spotify",
+            "spotify_url": "https://open.spotify.com/episode/2Pef4sUHPSNIF7gAR8akSW",
             "pub_date": "Sat, 01 Aug 2026 08:00:00 +0200",
             "source_audio_url": "https://drive.google.com/uc?export=download&id=1M-oxT4nviH8Dkbj9cT5-DH9eFBcAa6V9",
             "duration_seconds": null,
-            "duration_label": ""
+            "duration_label": "",
+            "episode_key": "1M-oxT4nviH8Dkbj9cT5-DH9eFBcAa6V9"
           }
         ]
       },
@@ -1124,7 +1267,20 @@
                 "episode_title": "W12L1 - Behavioral Neuroscience Kapitel 12 - Sex Evolutionary Hormonal and Neural Bases [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               }
             ],
-            "podcasts": []
+            "podcasts": [
+              {
+                "kind": "podcast",
+                "title": "[Podcast] · Behavioral Neuroscience Kapitel 12 - Sex Evolutionary Hormonal and Neural Bases",
+                "url": "https://drive.google.com/uc?export=download&id=1b-AxrVdsapj3OhuEnVY0WZbnrDWI0ZQ8",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Tue, 28 Jul 2026 16:00:00 +0200",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1b-AxrVdsapj3OhuEnVY0WZbnrDWI0ZQ8",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1b-AxrVdsapj3OhuEnVY0WZbnrDWI0ZQ8"
+              }
+            ]
           }
         }
       ],
@@ -1133,9 +1289,7 @@
         "quizzes": [],
         "podcasts": []
       },
-      "warnings": [
-        "Spotify episode mapping missing for RSS item; skipping podcast asset: [Podcast] · Behavioral Neuroscience Kapitel 12 - Sex Evolutionary Hormonal and Neural Bases"
-      ]
+      "warnings": []
     },
     {
       "lecture_key": "W13L1",
@@ -1171,7 +1325,20 @@
                 "episode_title": "W13L1 - Behavioral Neuroscience Kapitel 16 - Psychopathology Biological Basis of Behavioral Disorders [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
               }
             ],
-            "podcasts": []
+            "podcasts": [
+              {
+                "kind": "podcast",
+                "title": "[Podcast] · Behavioral Neuroscience Kapitel 16 - Psychopathology Biological Basis of Behavioral Disorders",
+                "url": "https://drive.google.com/uc?export=download&id=1xKAn4iOoExtYgxC7fWZZnqpEZOPebPn-",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Mon, 27 Jul 2026 08:00:00 +0200",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1xKAn4iOoExtYgxC7fWZZnqpEZOPebPn-",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1xKAn4iOoExtYgxC7fWZZnqpEZOPebPn-"
+              }
+            ]
           }
         }
       ],
@@ -1180,9 +1347,7 @@
         "quizzes": [],
         "podcasts": []
       },
-      "warnings": [
-        "Spotify episode mapping missing for RSS item; skipping podcast asset: [Podcast] · Behavioral Neuroscience Kapitel 16 - Psychopathology Biological Basis of Behavioral Disorders"
-      ]
+      "warnings": []
     }
   ],
   "warnings": []

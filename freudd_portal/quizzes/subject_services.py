@@ -26,6 +26,7 @@ SUBJECT_PATH_KEYS = {
     "quiz_links_path",
     "quiz_files_root",
     "feed_rss_path",
+    "episode_inventory_path",
     "spotify_map_path",
     "content_manifest_path",
     "reading_files_root",
@@ -53,6 +54,7 @@ class SubjectAssetPaths:
     quiz_links_path: Path
     quiz_files_root: Path
     feed_rss_path: Path
+    episode_inventory_path: Path
     spotify_map_path: Path
     content_manifest_path: Path
     reading_files_root: Path
@@ -155,6 +157,7 @@ def _default_subject_paths() -> SubjectAssetPaths:
         quiz_links_path=Path(settings.QUIZ_LINKS_JSON_PATH),
         quiz_files_root=Path(settings.QUIZ_FILES_ROOT),
         feed_rss_path=Path(settings.FREUDD_SUBJECT_FEED_RSS_PATH),
+        episode_inventory_path=Path(settings.FREUDD_SUBJECT_EPISODE_INVENTORY_PATH),
         spotify_map_path=Path(settings.FREUDD_SUBJECT_SPOTIFY_MAP_PATH),
         content_manifest_path=Path(settings.FREUDD_SUBJECT_CONTENT_MANIFEST_PATH),
         reading_files_root=Path(settings.FREUDD_READING_FILES_ROOT),
@@ -183,6 +186,7 @@ def resolve_subject_paths(subject_slug: str) -> SubjectAssetPaths:
         "quiz_links_path": defaults.quiz_links_path,
         "quiz_files_root": defaults.quiz_files_root,
         "feed_rss_path": defaults.feed_rss_path,
+        "episode_inventory_path": defaults.episode_inventory_path,
         "spotify_map_path": defaults.spotify_map_path,
         "content_manifest_path": defaults.content_manifest_path,
         "reading_files_root": defaults.reading_files_root,
@@ -194,6 +198,11 @@ def resolve_subject_paths(subject_slug: str) -> SubjectAssetPaths:
         if key in values:
             values[key] = _resolve_subject_path(raw_value)
 
+    if "episode_inventory_path" not in subject.paths:
+        feed_rss_path = Path(values["feed_rss_path"])
+        if feed_rss_path.parent.name == "feeds":
+            values["episode_inventory_path"] = feed_rss_path.parent.parent / "episode_inventory.json"
+
     return SubjectAssetPaths(
         reading_master_path=values["reading_master_path"],
         reading_fallback_path=values["reading_fallback_path"],
@@ -202,6 +211,7 @@ def resolve_subject_paths(subject_slug: str) -> SubjectAssetPaths:
         quiz_links_path=values["quiz_links_path"],
         quiz_files_root=values["quiz_files_root"],
         feed_rss_path=values["feed_rss_path"],
+        episode_inventory_path=values["episode_inventory_path"],
         spotify_map_path=values["spotify_map_path"],
         content_manifest_path=values["content_manifest_path"],
         reading_files_root=values["reading_files_root"],

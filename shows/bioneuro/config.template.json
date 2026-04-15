@@ -19,7 +19,9 @@
     "bitrate": "160k"
   },
   "skip_permission_updates": false,
+  "subject_slug": "bioneuro",
   "output_feed": "shows/bioneuro/feeds/rss.xml",
+  "output_inventory": "shows/bioneuro/episode_inventory.json",
   "public_link_template": "https://drive.google.com/uc?export=download&id={file_id}",
   "episode_metadata": "shows/bioneuro/episode_metadata.json",
   "auto_spec": "shows/bioneuro/auto_spec.json",

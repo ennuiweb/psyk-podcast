@@ -1378,7 +1378,12 @@ def _compact_asset_links(
         for podcast in podcasts:
             if not isinstance(podcast, dict):
                 continue
-            podcast_url = str(podcast.get("url") or "").strip()
+            podcast_url = str(
+                podcast.get("spotify_url")
+                or podcast.get("url")
+                or podcast.get("source_audio_url")
+                or ""
+            ).strip()
             if not podcast_url:
                 continue
             match = SPOTIFY_EPISODE_ID_RE.match(podcast_url)
@@ -1388,7 +1393,10 @@ def _compact_asset_links(
                 podcast_copy["spotify_embed_url"] = (
                     f"https://open.spotify.com/embed/episode/{episode_id}?utm_source=generator"
                 )
-                compact_podcasts.append(podcast_copy)
+            source_audio_url = str(podcast_copy.get("source_audio_url") or "").strip()
+            if source_audio_url:
+                podcast_copy["listen_url"] = source_audio_url
+            compact_podcasts.append(podcast_copy)
 
     return {
         "quizzes": compact_quizzes,

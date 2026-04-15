@@ -247,7 +247,7 @@ jobs:
               ;;
           esac
           python scripts/sync_spotify_map.py \
-            --rss shows/${SHOW}/feeds/rss.xml \
+            --inventory shows/${SHOW}/episode_inventory.json \
             --spotify-map shows/${SHOW}/spotify_map.json \
             --subject-slug "${subject_slug}" \
             --spotify-show-url "${spotify_show_url}" \
@@ -322,10 +322,11 @@ jobs:
         run: |
           set -euo pipefail
           feed_path="shows/${SHOW}/feeds/rss.xml"
+          inventory_path="shows/${SHOW}/episode_inventory.json"
           quiz_path="shows/${SHOW}/quiz_links.json"
           spotify_map_path="shows/${SHOW}/spotify_map.json"
           manifest_path="shows/${SHOW}/content_manifest.json"
-          safe_rebase_paths=("$feed_path" "$quiz_path" "$spotify_map_path" "$manifest_path")
+          safe_rebase_paths=("$feed_path" "$inventory_path" "$quiz_path" "$spotify_map_path" "$manifest_path")
 
           resolve_rebase_conflicts() {
             mapfile -t conflicted_files < <(git diff --name-only --diff-filter=U)
@@ -359,6 +360,9 @@ jobs:
           files=()
           if [[ -n "$(git status --porcelain "$feed_path")" ]]; then
             files+=("$feed_path")
+          fi
+          if [[ -f "$inventory_path" && -n "$(git status --porcelain "$inventory_path")" ]]; then
+            files+=("$inventory_path")
           fi
           if [[ -f "$quiz_path" && -n "$(git status --porcelain "$quiz_path")" ]]; then
             files+=("$quiz_path")

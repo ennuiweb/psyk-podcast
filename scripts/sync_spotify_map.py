@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Auto-populate spotify_map.json from RSS titles."""
+"""Auto-populate spotify_map.json from episode inventory."""
 
 from __future__ import annotations
 
@@ -14,7 +14,6 @@ from typing import Any, Dict, Iterable, Tuple
 from urllib.error import HTTPError, URLError
 from urllib.parse import quote, urlencode
 from urllib.request import Request, urlopen
-from xml.etree import ElementTree
 
 
 MULTISPACE_RE = re.compile(r"\s+")
@@ -60,33 +59,49 @@ def is_episode_spotify_url(value: str) -> bool:
     return bool(SPOTIFY_EPISODE_URL_RE.match(url))
 
 
-def load_rss_titles(rss_path: Path) -> list[str]:
+def _inventory_path_from_rss_path(rss_path: Path) -> Path:
+    if rss_path.parent.name == "feeds":
+        return rss_path.parent.parent / "episode_inventory.json"
+    return rss_path.with_name("episode_inventory.json")
+
+
+def normalize_episode_key(value: object) -> str:
+    return str(value or "").strip()
+
+
+def load_inventory_episodes(path: Path) -> list[dict[str, str]]:
     try:
-        payload = rss_path.read_text(encoding="utf-8")
+        payload = json.loads(path.read_text(encoding="utf-8"))
     except OSError as exc:
-        raise SystemExit(f"Unable to read RSS source: {rss_path} ({exc})")
+        raise SystemExit(f"Unable to read episode inventory: {path} ({exc})")
+    except (UnicodeDecodeError, json.JSONDecodeError) as exc:
+        raise SystemExit(f"Unable to parse episode inventory: {path} ({exc})")
 
-    try:
-        root = ElementTree.fromstring(payload)
-    except ElementTree.ParseError as exc:
-        raise SystemExit(f"Unable to parse RSS source: {rss_path} ({exc})")
+    if not isinstance(payload, dict):
+        raise SystemExit(f"Episode inventory must be a JSON object: {path}")
+    raw_episodes = payload.get("episodes")
+    if not isinstance(raw_episodes, list):
+        raise SystemExit(f"Episode inventory missing episodes list: {path}")
 
-    channel = root.find("channel")
-    if channel is None:
-        raise SystemExit(f"RSS source missing <channel>: {rss_path}")
-
-    titles: list[str] = []
-    seen: set[str] = set()
-    for item in channel.findall("item"):
-        title = normalize_title_key(str(item.findtext("title") or ""))
-        if not title:
+    episodes: list[dict[str, str]] = []
+    seen_episode_keys: set[str] = set()
+    for raw_episode in raw_episodes:
+        if not isinstance(raw_episode, dict):
             continue
-        normalized = normalize_title_key(title).casefold()
-        if normalized in seen:
+        episode_key = normalize_episode_key(raw_episode.get("episode_key") or raw_episode.get("guid"))
+        title = normalize_title_key(str(raw_episode.get("title") or ""))
+        if not episode_key or not title:
             continue
-        seen.add(normalized)
-        titles.append(title)
-    return titles
+        if episode_key in seen_episode_keys:
+            continue
+        seen_episode_keys.add(episode_key)
+        episodes.append(
+            {
+                "episode_key": episode_key,
+                "title": title,
+            }
+        )
+    return episodes
 
 
 def load_existing_map(path: Path) -> Dict[str, Any]:
@@ -118,6 +133,21 @@ def _normalize_existing_by_title(raw_by_title: Any) -> Dict[str, Tuple[str, str]
         key = title.casefold()
         if key not in normalized:
             normalized[key] = (title, raw_url.strip())
+    return normalized
+
+
+def _normalize_existing_by_episode_key(raw_by_episode_key: Any) -> Dict[str, str]:
+    normalized: Dict[str, str] = {}
+    if not isinstance(raw_by_episode_key, dict):
+        return normalized
+    for raw_key, raw_url in raw_by_episode_key.items():
+        episode_key = normalize_episode_key(raw_key)
+        if not episode_key or not isinstance(raw_url, str):
+            continue
+        spotify_url = raw_url.strip()
+        if not spotify_url:
+            continue
+        normalized[episode_key] = spotify_url
     return normalized
 
 
@@ -214,15 +244,17 @@ def _build_normalized_title_index(spotify_episode_by_title: Dict[str, str]) -> D
 
 def build_spotify_map(
     *,
-    rss_titles: Iterable[str],
+    inventory_episodes: Iterable[dict[str, str]],
     existing_payload: Dict[str, Any],
     spotify_episode_by_title: Dict[str, str] | None,
     prune_stale: bool,
-) -> tuple[Dict[str, str], list[str], Dict[str, int]]:
+) -> tuple[Dict[str, str], Dict[str, str], list[dict[str, str]], Dict[str, int]]:
+    existing_by_episode_key = _normalize_existing_by_episode_key(existing_payload.get("by_episode_key"))
     existing_by_title = _normalize_existing_by_title(existing_payload.get("by_rss_title"))
-    updated: Dict[str, str] = {}
-    unresolved_titles: list[str] = []
-    seen_keys: set[str] = set()
+    updated_by_episode_key: Dict[str, str] = {}
+    updated_by_rss_title: Dict[str, str] = {}
+    unresolved_episodes: list[dict[str, str]] = []
+    seen_episode_keys: set[str] = set()
     stats = {
         "preserved_existing": 0,
         "matched_show_episode": 0,
@@ -235,58 +267,64 @@ def build_spotify_map(
     spotify_episode_by_title = spotify_episode_by_title or {}
     normalized_spotify_episode_by_title = _build_normalized_title_index(spotify_episode_by_title)
 
-    for rss_title in rss_titles:
-        title = normalize_title_key(rss_title)
-        if not title:
+    for episode in inventory_episodes:
+        if not isinstance(episode, dict):
             continue
-        key = title.casefold()
-        if key in seen_keys:
+        episode_key = normalize_episode_key(episode.get("episode_key"))
+        title = normalize_title_key(episode.get("title") or "")
+        if not episode_key or not title:
             continue
-        seen_keys.add(key)
-        existing = existing_by_title.get(key)
-        existing_url = existing[1] if existing else ""
+        if episode_key in seen_episode_keys:
+            continue
+        seen_episode_keys.add(episode_key)
+
+        title_key = title.casefold()
+        existing_url = existing_by_episode_key.get(episode_key, "")
+        existing_from_title = existing_by_title.get(title_key)
+        if not existing_url and existing_from_title:
+            existing_url = existing_from_title[1]
         existing_is_episode = is_episode_spotify_url(existing_url)
 
-        mapped_episode_url = spotify_episode_by_title.get(key)
+        mapped_episode_url = spotify_episode_by_title.get(title_key)
         if not mapped_episode_url:
             mapped_episode_url = normalized_spotify_episode_by_title.get(normalize_match_title(title))
         if mapped_episode_url and is_episode_spotify_url(mapped_episode_url):
-            updated[title] = mapped_episode_url
-            if existing and existing_is_episode and normalize_title_key(existing[1]) != normalize_title_key(mapped_episode_url):
+            updated_by_episode_key[episode_key] = mapped_episode_url
+            updated_by_rss_title[title] = mapped_episode_url
+            if existing_is_episode and normalize_title_key(existing_url) != normalize_title_key(mapped_episode_url):
                 stats["refreshed_from_show_episode"] += 1
-            elif existing and existing_is_episode:
+            elif existing_is_episode:
                 stats["preserved_existing"] += 1
             else:
                 stats["matched_show_episode"] += 1
             continue
 
-        if existing and existing_is_episode:
-            updated[title] = existing[1]
+        if existing_is_episode:
+            updated_by_episode_key[episode_key] = existing_url
+            updated_by_rss_title[title] = existing_url
             stats["preserved_existing"] += 1
             continue
 
-        if existing and existing[1]:
-            if existing_is_episode:
-                pass
-            elif existing_url:
-                if existing_url.startswith("https://open.spotify.com/"):
-                    stats["discarded_non_episode"] += 1
-                else:
-                    stats["repaired_invalid"] += 1
-        unresolved_titles.append(title)
+        if existing_url:
+            if existing_url.startswith("https://open.spotify.com/"):
+                stats["discarded_non_episode"] += 1
+            else:
+                stats["repaired_invalid"] += 1
+        unresolved_episodes.append({"episode_key": episode_key, "title": title})
         stats["unresolved"] += 1
 
     if not prune_stale:
-        for key, (title, url) in existing_by_title.items():
-            if key in seen_keys:
+        for episode_key, url in existing_by_episode_key.items():
+            if episode_key in seen_episode_keys:
                 continue
             if not is_episode_spotify_url(url):
                 continue
-            updated[title] = url
+            updated_by_episode_key[episode_key] = url
             stats["carried_stale"] += 1
 
-    ordered = dict(sorted(updated.items(), key=lambda item: item[0].casefold()))
-    return ordered, unresolved_titles, stats
+    ordered_by_episode_key = dict(sorted(updated_by_episode_key.items(), key=lambda item: item[0]))
+    ordered_by_rss_title = dict(sorted(updated_by_rss_title.items(), key=lambda item: item[0].casefold()))
+    return ordered_by_episode_key, ordered_by_rss_title, unresolved_episodes, stats
 
 
 def write_spotify_map(path: Path, payload: Dict[str, Any], *, dry_run: bool) -> bool:
@@ -304,7 +342,16 @@ def write_spotify_map(path: Path, payload: Dict[str, Any], *, dry_run: bool) -> 
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--rss", required=True, type=Path, help="Source RSS file path.")
+    parser.add_argument(
+        "--inventory",
+        type=Path,
+        help="Source episode_inventory.json path. If omitted, derive from --rss.",
+    )
+    parser.add_argument(
+        "--rss",
+        type=Path,
+        help="Legacy source RSS path used only to derive the sibling episode inventory path.",
+    )
     parser.add_argument("--spotify-map", required=True, type=Path, help="spotify_map.json path.")
     parser.add_argument(
         "--subject-slug",
@@ -348,10 +395,14 @@ def main() -> int:
     if not SUBJECT_SLUG_RE.match(subject_slug):
         raise SystemExit("--subject-slug must match ^[a-z0-9-]+$")
 
-    rss_path = args.rss.expanduser().resolve()
+    inventory_arg = args.inventory.expanduser().resolve() if args.inventory else None
+    rss_arg = args.rss.expanduser().resolve() if args.rss else None
+    if inventory_arg is None and rss_arg is None:
+        raise SystemExit("Either --inventory or --rss must be provided.")
+    inventory_path = inventory_arg or _inventory_path_from_rss_path(rss_arg)
     spotify_map_path = args.spotify_map.expanduser().resolve()
 
-    rss_titles = load_rss_titles(rss_path)
+    inventory_episodes = load_inventory_episodes(inventory_path)
     existing_payload = load_existing_map(spotify_map_path)
     spotify_episode_by_title: Dict[str, str] = {}
     show_url = str(args.spotify_show_url or "").strip()
@@ -378,46 +429,49 @@ def main() -> int:
                 "Spotify show URL provided but API credentials are missing; "
                 "set --spotify-client-id/--spotify-client-secret or env vars."
             )
-    by_rss_title, unresolved_titles, stats = build_spotify_map(
-        rss_titles=rss_titles,
+    by_episode_key, by_rss_title, unresolved_episodes, stats = build_spotify_map(
+        inventory_episodes=inventory_episodes,
         existing_payload=existing_payload,
         spotify_episode_by_title=spotify_episode_by_title,
         prune_stale=bool(args.prune_stale),
     )
 
-    if unresolved_titles:
+    if unresolved_episodes:
         print(
-            "Error: could not map all RSS titles to direct Spotify episode URLs. "
+            "Error: could not map all inventory episodes to direct Spotify episode URLs. "
             "No search fallback is allowed.",
             file=sys.stderr,
         )
         preview_limit = 30
-        for title in unresolved_titles[:preview_limit]:
-            print(f"- {title}", file=sys.stderr)
-        remaining = len(unresolved_titles) - preview_limit
+        for episode in unresolved_episodes[:preview_limit]:
+            print(f"- {episode['episode_key']}: {episode['title']}", file=sys.stderr)
+        remaining = len(unresolved_episodes) - preview_limit
         if remaining > 0:
             print(f"... and {remaining} more", file=sys.stderr)
         if not args.allow_unresolved:
             return 2
         print(
-            "Continuing because --allow-unresolved is set; unresolved titles were omitted from by_rss_title.",
+            "Continuing because --allow-unresolved is set; unresolved episodes were omitted from by_episode_key.",
             file=sys.stderr,
         )
 
     payload = {
-        "version": 1,
+        "version": 2,
         "subject_slug": subject_slug,
+        "by_episode_key": by_episode_key,
         "by_rss_title": by_rss_title,
-        "unresolved_rss_titles": unresolved_titles,
+        "unresolved_episode_keys": [episode["episode_key"] for episode in unresolved_episodes],
+        "unresolved_rss_titles": [episode["title"] for episode in unresolved_episodes],
     }
     changed = write_spotify_map(spotify_map_path, payload, dry_run=bool(args.dry_run))
 
-    print(f"RSS titles: {len(rss_titles)}")
-    print(f"Map entries: {len(by_rss_title)}")
+    print(f"Inventory path: {inventory_path}")
+    print(f"Inventory episodes: {len(inventory_episodes)}")
+    print(f"Map entries: {len(by_episode_key)}")
     print(f"Preserved existing: {stats['preserved_existing']}")
     print(f"Matched show episodes: {stats['matched_show_episode']}")
     print(f"Refreshed from show episodes: {stats['refreshed_from_show_episode']}")
-    print(f"Unresolved RSS titles: {stats['unresolved']}")
+    print(f"Unresolved episodes: {stats['unresolved']}")
     print(f"Repaired invalid links: {stats['repaired_invalid']}")
     print(f"Discarded non-episode Spotify links: {stats['discarded_non_episode']}")
     print(f"Carried stale entries: {stats['carried_stale']}")

@@ -16,7 +16,7 @@ Title alias note: `feed.compact_grundbog_subjects: true` first rewrites `Grundbo
 Spotify note: `feed.description_blank_line_marker: "·"` converts blank lines in descriptions to a visible separator line (`·`) for apps that collapse empty lines.
 Description order note: for `reading`, `brief`, and `weekly_overview`, `feed.description_blocks_by_kind` is set to `quiz -> summary -> key points`; when no quiz link exists, the summary/key-points blocks render without the quiz block.
 Quiz localization note: `quiz.labels` controls heading and difficulty labels in descriptions (currently `Quizzer` with `Let/Mellem/Svær`).
-Feed ordering note: `feed.sort_mode: "wxlx_kind_priority"` groups by `W#L#` and orders each block as `Brief -> Alle kilder -> Oplæst/TTS readings -> other readings`; blocks are still ordered by newest publish timestamp.
+Feed ordering note: `feed.sort_mode: "wxlx_source_pair_priority"` groups by `W#L#` and orders each lecture block as `Alle kilder -> [Kort] + full reading pairs -> [Kort] + full Forelæsningsslides pair -> [Lydbog] tail`; source pairs are ordered by newest source timestamp within each lecture block.
 Slide brief note: brief generation is intentionally limited to all readings plus lecture slides (`brief.apply_to: "readings_and_lecture_slides"`). Exercise slides keep their full podcast variants but do not get `Kort podcast` entries under the shared `Forelæsningsslides` label.
 Slide brief audit note: the CI audit checks the built RSS against the Drive-backed show source, so code changes alone do not make the feed compliant. Missing lecture-slide brief MP3s must still be generated, downloaded, and mirrored/uploaded before `generate-feed.yml` can pass the audit and publish the expected `Kort podcast · Forelæsningsslides` entries.
 Unassigned TTS note: audio files without week tokens (for example in Drive folder `grundbog-tts/`) are auto-scheduled before week 1 and therefore render at the end of the feed.
@@ -58,6 +58,11 @@ Troubleshooting: warning `missing Grundbog lydbog tail source(s)` means one or m
 Troubleshooting: when comparing RSS items to Drive files, expect the synthetic Grundbog tail items to look like feed-only entries because their GUIDs append `#tail-grundbog-*` to the base Drive file ID by design.
 Update the Drive folder ID, owner email, and upload service account credentials before enabling automation.
 
+Inventory-first note:
+- Feed generation now writes both `feeds/rss.xml` and `episode_inventory.json`.
+- Freudd manifest rebuilds consume `episode_inventory.json` as the primary podcast source and only fall back to RSS if the inventory file is unavailable.
+- This keeps manifest generation aligned with Drive files even when Spotify mappings are incomplete.
+
 Quiz link sync note:
 - `scripts/sync_quiz_links.py` and `podcast-tools/sync_drive_quiz_links.py` use quiz JSON exports as the source of truth.
 - Slide-only quiz exports should be synced with fallback-derived names so they still get quiz IDs and appear on Freudd even when no matching MP3 exists (`--fallback-derive-mp3-names` for sync workflows).
@@ -66,13 +71,14 @@ Quiz link sync note:
 - Feed transcode now also covers `audio/wav` and `audio/x-wav`, so lydbog/TTS uploads are converted to MP3 before RSS generation instead of being published as raw WAV files.
 
 Spotify map sync note:
-- `scripts/sync_spotify_map.py` auto-fills `shows/personlighedspsykologi-en/spotify_map.json` from RSS titles.
-- Existing valid Spotify mappings are preserved.
-- If Spotify show lookup succeeds (`--spotify-show-url` + `SPOTIFY_CLIENT_ID`/`SPOTIFY_CLIENT_SECRET`), matching RSS titles are mapped to direct episode URLs.
+- `scripts/sync_spotify_map.py` syncs `shows/personlighedspsykologi-en/spotify_map.json` from `episode_inventory.json`.
+- The file format is version `2` with `by_episode_key` as the primary map and `by_rss_title` retained as a compatibility fallback.
+- Existing valid Spotify episode mappings are preserved.
+- If Spotify show lookup succeeds (`--spotify-show-url` + `SPOTIFY_CLIENT_ID`/`SPOTIFY_CLIENT_SECRET`), matching inventory episodes are mapped to direct episode URLs.
 - Non-episode mappings are rejected.
-- Unresolved RSS titles fail sync by default (no Spotify search fallback is allowed).
-- With `--allow-unresolved`, sync writes resolved episode URLs and records unresolved titles under `unresolved_rss_titles`.
-- Workflow sync runs with `--prune-stale`, so titles removed from the RSS are also removed from `by_rss_title`.
+- Unresolved inventory episodes fail sync by default (no Spotify search fallback is allowed).
+- With `--allow-unresolved`, sync writes resolved episode URLs and records unresolved entries under `unresolved_episode_keys` / `unresolved_rss_titles`.
+- Workflow sync runs with `--prune-stale`, so removed inventory episodes are also removed from `by_episode_key`.
 - Workflow `generate-feed.yml` runs this sync automatically for `personlighedspsykologi-en`.
 
 Reading key sync note:

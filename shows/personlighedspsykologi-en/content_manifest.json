@@ -1,8 +1,8 @@
 {
-  "version": 2,
+  "version": 3,
   "subject_slug": "personlighedspsykologi",
   "source_meta": {
-    "version": 2,
+    "version": 3,
     "reading_master_path": "shows/personlighedspsykologi-en/docs/reading-file-key.md",
     "reading_fallback_path": "shows/personlighedspsykologi-en/docs/reading-file-key.md",
     "reading_source_used": "shows/personlighedspsykologi-en/docs/reading-file-key.md",
@@ -11,6 +11,7 @@
     "reading_summaries_path": "shows/personlighedspsykologi-en/reading_summaries.json",
     "weekly_overview_summaries_path": "shows/personlighedspsykologi-en/weekly_overview_summaries.json",
     "quiz_links_path": "shows/personlighedspsykologi-en/quiz_links.json",
+    "episode_inventory_path": "shows/personlighedspsykologi-en/episode_inventory.json",
     "rss_path": "shows/personlighedspsykologi-en/feeds/rss.xml",
     "spotify_map_path": "shows/personlighedspsykologi-en/spotify_map.json",
     "slides_catalog_path": "shows/personlighedspsykologi-en/slides_catalog.json"
@@ -76,24 +77,40 @@
             ],
             "podcasts": [
               {
-                "kind": "audio",
-                "title": "U1F1 · Forelæsningsslides · Introduktion",
-                "url": "https://open.spotify.com/episode/4vf4qd5sXfvfpqE2oM9Sme",
-                "platform": "spotify",
-                "pub_date": "Mon, 02 Feb 2025 18:00:00 +0100",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1h_u2Pn3zgLOrM-3GgaFZunTV4mCSw9Wz",
+                "kind": "short_podcast",
+                "title": "U1F1 · [Kort] · Grundbog 1: Introduktion",
+                "url": "https://drive.google.com/uc?export=download&id=1xtyyUFnxvrRW0IpyWPmrX8YVqB40Imel",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Mon, 02 Feb 2025 14:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1xtyyUFnxvrRW0IpyWPmrX8YVqB40Imel",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1xtyyUFnxvrRW0IpyWPmrX8YVqB40Imel"
               },
               {
-                "kind": "audio",
+                "kind": "lydbog",
+                "title": "U1F1 · [Lydbog] · Grundbog 1: Introduktion",
+                "url": "https://drive.google.com/uc?export=download&id=1eDOZqPcx2lOZUferK8EprU81E4Fu-dco",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Mon, 02 Feb 2025 16:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1eDOZqPcx2lOZUferK8EprU81E4Fu-dco",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1eDOZqPcx2lOZUferK8EprU81E4Fu-dco"
+              },
+              {
+                "kind": "podcast",
                 "title": "U1F1 · Grundbog 1: Introduktion",
-                "url": "https://open.spotify.com/episode/1iWhoVK0Pxrrw3XbmeSYRP",
-                "platform": "spotify",
+                "url": "https://drive.google.com/uc?export=download&id=1AdKYWfWBrCMJFT9k1d1XT93-9MPy1uQf",
+                "platform": "direct_audio",
+                "spotify_url": null,
                 "pub_date": "Mon, 02 Feb 2025 22:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1AdKYWfWBrCMJFT9k1d1XT93-9MPy1uQf",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1AdKYWfWBrCMJFT9k1d1XT93-9MPy1uQf"
               }
             ]
           }
@@ -140,14 +157,28 @@
             ],
             "podcasts": [
               {
-                "kind": "audio",
+                "kind": "short_podcast",
+                "title": "U1F1 · [Kort] · Lewis (1999)",
+                "url": "https://drive.google.com/uc?export=download&id=14SDZRn3dYpliUPiVqXgvD_C547W4VveL",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Mon, 02 Feb 2025 12:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=14SDZRn3dYpliUPiVqXgvD_C547W4VveL",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "14SDZRn3dYpliUPiVqXgvD_C547W4VveL"
+              },
+              {
+                "kind": "podcast",
                 "title": "U1F1 · Lewis (1999)",
-                "url": "https://open.spotify.com/episode/3aC5qjeMPXMmtlemfsOKP4",
-                "platform": "spotify",
+                "url": "https://drive.google.com/uc?export=download&id=1IGkUtZQFekQvYfhN884NU-O2wNXWxQ0g",
+                "platform": "direct_audio",
+                "spotify_url": null,
                 "pub_date": "Mon, 02 Feb 2025 20:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1IGkUtZQFekQvYfhN884NU-O2wNXWxQ0g",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1IGkUtZQFekQvYfhN884NU-O2wNXWxQ0g"
               }
             ]
           }
@@ -181,7 +212,32 @@
                 "episode_title": "W01L1 - Slide lecture: 1. gang . Introduktin PP 2026 [EN] {type=audio lang=en format=deep-dive length=default hash=973c491c}.mp3"
               }
             ],
-            "podcasts": []
+            "podcasts": [
+              {
+                "kind": "short_podcast",
+                "title": "U1F1 · [Kort] · Forelæsningsslides · Introduktion",
+                "url": "https://drive.google.com/uc?export=download&id=13b4LJT3HKgBYZM-gUxveh0E5LG92IJzg",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Mon, 02 Feb 2025 10:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=13b4LJT3HKgBYZM-gUxveh0E5LG92IJzg",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "13b4LJT3HKgBYZM-gUxveh0E5LG92IJzg"
+              },
+              {
+                "kind": "podcast",
+                "title": "U1F1 · Forelæsningsslides · Introduktion",
+                "url": "https://drive.google.com/uc?export=download&id=1h_u2Pn3zgLOrM-3GgaFZunTV4mCSw9Wz",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Mon, 02 Feb 2025 18:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1h_u2Pn3zgLOrM-3GgaFZunTV4mCSw9Wz",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1h_u2Pn3zgLOrM-3GgaFZunTV4mCSw9Wz"
+              }
+            ]
           }
         },
         {
@@ -191,7 +247,26 @@
           "source_filename": "1. Introduktion.pdf",
           "relative_path": "W01L1/seminar/1. Introduktion.pdf",
           "assets": {
-            "quizzes": [],
+            "quizzes": [
+              {
+                "quiz_id": "ddab783a",
+                "difficulty": "easy",
+                "quiz_url": "/q/ddab783a.html",
+                "episode_title": "W01L1 - Slide seminar: 1. Introduktion [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "bb345586",
+                "difficulty": "hard",
+                "quiz_url": "/q/bb345586.html",
+                "episode_title": "W01L1 - Slide seminar: 1. Introduktion [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "9aa04730",
+                "difficulty": "medium",
+                "quiz_url": "/q/9aa04730.html",
+                "episode_title": "W01L1 - Slide seminar: 1. Introduktion [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              }
+            ],
             "podcasts": []
           }
         }
@@ -219,43 +294,20 @@
         ],
         "podcasts": [
           {
-            "kind": "audio",
-            "title": "U1F1 · [Kort] · Forelæsningsslides · Introduktion",
-            "url": "https://open.spotify.com/episode/67ZrcJG7Oxkw8rILLxxizj",
-            "platform": "spotify",
-            "pub_date": "Mon, 02 Feb 2025 10:00:00 +0100",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=13b4LJT3HKgBYZM-gUxveh0E5LG92IJzg",
-            "duration_seconds": null,
-            "duration_label": ""
-          },
-          {
-            "kind": "lydbog",
-            "title": "U1F1 · [Lydbog] · Grundbog 1: Introduktion",
-            "url": "https://open.spotify.com/episode/6sMdVQneXZbGptq7Isyt5Y",
-            "platform": "spotify",
-            "pub_date": "Mon, 02 Feb 2025 16:00:00 +0100",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1eDOZqPcx2lOZUferK8EprU81E4Fu-dco",
-            "duration_seconds": null,
-            "duration_label": ""
-          },
-          {
-            "kind": "audio",
+            "kind": "podcast",
             "title": "U1F1 · Alle kilder",
-            "url": "https://open.spotify.com/episode/4HYTfEfi30fpk9zwlTSlJB",
-            "platform": "spotify",
+            "url": "https://drive.google.com/uc?export=download&id=1mez9fw3uU31ek3nsuGA3LeBmvV25aKDv",
+            "platform": "direct_audio",
+            "spotify_url": null,
             "pub_date": "Mon, 02 Feb 2025 08:00:00 +0100",
             "source_audio_url": "https://drive.google.com/uc?export=download&id=1mez9fw3uU31ek3nsuGA3LeBmvV25aKDv",
             "duration_seconds": null,
-            "duration_label": ""
+            "duration_label": "",
+            "episode_key": "1mez9fw3uU31ek3nsuGA3LeBmvV25aKDv"
           }
         ]
       },
-      "warnings": [
-        "RSS item could not map to reading; attached to lecture assets: U1F1 · [Kort] · Forelæsningsslides · Introduktion",
-        "RSS item could not map to reading; attached to lecture assets: U1F1 · [Lydbog] · Grundbog 1: Introduktion",
-        "Duplicate podcast asset detected; kept newest RSS item for: U1F1 · Grundbog 1: Introduktion",
-        "Duplicate podcast asset detected; kept newest RSS item for: U1F1 · Lewis (1999)"
-      ]
+      "warnings": []
     },
     {
       "lecture_key": "W01L2",
@@ -317,14 +369,28 @@
             ],
             "podcasts": [
               {
-                "kind": "audio",
+                "kind": "short_podcast",
+                "title": "U1F2 · [Kort] · Mayer & Bryan (2024)",
+                "url": "https://drive.google.com/uc?export=download&id=1VPvPCLFsDnsr1jWfxaG4k-NJBSyyZkF2",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Tue, 03 Feb 2025 16:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1VPvPCLFsDnsr1jWfxaG4k-NJBSyyZkF2",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1VPvPCLFsDnsr1jWfxaG4k-NJBSyyZkF2"
+              },
+              {
+                "kind": "podcast",
                 "title": "U1F2 · Mayer & Bryan (2024)",
-                "url": "https://open.spotify.com/episode/7MO3xqPb5IjDMXcCs95wEi",
-                "platform": "spotify",
+                "url": "https://drive.google.com/uc?export=download&id=1GXS2P3cHE1s842PTkOH1Hs4uHjXKFBq8",
+                "platform": "direct_audio",
+                "spotify_url": null,
                 "pub_date": "Wed, 04 Feb 2025 00:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1GXS2P3cHE1s842PTkOH1Hs4uHjXKFBq8",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1GXS2P3cHE1s842PTkOH1Hs4uHjXKFBq8"
               }
             ]
           }
@@ -371,14 +437,28 @@
             ],
             "podcasts": [
               {
-                "kind": "audio",
+                "kind": "short_podcast",
+                "title": "U1F2 · [Kort] · Koutsoumpis (2025)",
+                "url": "https://drive.google.com/uc?export=download&id=1wsrSbiXB3_i9YestJc_vm0dn56bORHMs",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Tue, 03 Feb 2025 18:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1wsrSbiXB3_i9YestJc_vm0dn56bORHMs",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1wsrSbiXB3_i9YestJc_vm0dn56bORHMs"
+              },
+              {
+                "kind": "podcast",
                 "title": "U1F2 · Koutsoumpis (2025)",
-                "url": "https://open.spotify.com/episode/76quzzhWUnyQjktuS6Re1g",
-                "platform": "spotify",
+                "url": "https://drive.google.com/uc?export=download&id=1jpb2bBAtwisRIjsXSNxSEstTm_89G43p",
+                "platform": "direct_audio",
+                "spotify_url": null,
                 "pub_date": "Wed, 04 Feb 2025 02:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1jpb2bBAtwisRIjsXSNxSEstTm_89G43p",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1jpb2bBAtwisRIjsXSNxSEstTm_89G43p"
               }
             ]
           }
@@ -425,14 +505,28 @@
             ],
             "podcasts": [
               {
-                "kind": "audio",
+                "kind": "short_podcast",
+                "title": "U1F2 · [Kort] · Phan et al. (2024)",
+                "url": "https://drive.google.com/uc?export=download&id=1ce5g3ivEi-pXh0ign-cH7ynq44JzHkWb",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Tue, 03 Feb 2025 14:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1ce5g3ivEi-pXh0ign-cH7ynq44JzHkWb",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1ce5g3ivEi-pXh0ign-cH7ynq44JzHkWb"
+              },
+              {
+                "kind": "podcast",
                 "title": "U1F2 · Phan et al. (2024)",
-                "url": "https://open.spotify.com/episode/3njRDHTkNV2b98DMTlpFGR",
-                "platform": "spotify",
+                "url": "https://drive.google.com/uc?export=download&id=1W8Yvh5biopggfGclBOUhP78035u2QWCE",
+                "platform": "direct_audio",
+                "spotify_url": null,
                 "pub_date": "Tue, 03 Feb 2025 22:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1W8Yvh5biopggfGclBOUhP78035u2QWCE",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1W8Yvh5biopggfGclBOUhP78035u2QWCE"
               }
             ]
           }
@@ -466,7 +560,32 @@
                 "episode_title": "W01L2 - Slide lecture: 2. gang PersPsy 2 260203 [EN] {type=audio lang=en format=deep-dive length=default hash=973c491c}.mp3"
               }
             ],
-            "podcasts": []
+            "podcasts": [
+              {
+                "kind": "short_podcast",
+                "title": "U1F2 · [Kort] · Forelæsningsslides · PersPsy 2 260203",
+                "url": "https://drive.google.com/uc?export=download&id=1jr-KXre9lpd0JFkShyrlsPotLH7FwhHb",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Tue, 03 Feb 2025 12:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1jr-KXre9lpd0JFkShyrlsPotLH7FwhHb",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1jr-KXre9lpd0JFkShyrlsPotLH7FwhHb"
+              },
+              {
+                "kind": "podcast",
+                "title": "U1F2 · Forelæsningsslides · PersPsy 2 260203",
+                "url": "https://drive.google.com/uc?export=download&id=1LaqwKoXVZFqthcf0umQbN0kxhMsOCu5s",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Tue, 03 Feb 2025 20:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1LaqwKoXVZFqthcf0umQbN0kxhMsOCu5s",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1LaqwKoXVZFqthcf0umQbN0kxhMsOCu5s"
+              }
+            ]
           }
         },
         {
@@ -476,7 +595,26 @@
           "source_filename": "2. Trækteori I.pdf",
           "relative_path": "W01L2/seminar/2. Trækteori I.pdf",
           "assets": {
-            "quizzes": [],
+            "quizzes": [
+              {
+                "quiz_id": "84e503e1",
+                "difficulty": "easy",
+                "quiz_url": "/q/84e503e1.html",
+                "episode_title": "W01L2 - Slide seminar: 2. Trækteori I [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "d5001f6b",
+                "difficulty": "hard",
+                "quiz_url": "/q/d5001f6b.html",
+                "episode_title": "W01L2 - Slide seminar: 2. Trækteori I [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "8f33934e",
+                "difficulty": "medium",
+                "quiz_url": "/q/8f33934e.html",
+                "episode_title": "W01L2 - Slide seminar: 2. Trækteori I [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              }
+            ],
             "podcasts": []
           }
         }
@@ -504,44 +642,20 @@
         ],
         "podcasts": [
           {
-            "kind": "audio",
-            "title": "U1F2 · [Kort] · Forelæsningsslides · PersPsy 2 260203",
-            "url": "https://open.spotify.com/episode/1jeGzxvswfoLZBN2qMfe02",
-            "platform": "spotify",
-            "pub_date": "Tue, 03 Feb 2025 12:00:00 +0100",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1jr-KXre9lpd0JFkShyrlsPotLH7FwhHb",
-            "duration_seconds": null,
-            "duration_label": ""
-          },
-          {
-            "kind": "audio",
+            "kind": "podcast",
             "title": "U1F2 · Alle kilder",
-            "url": "https://open.spotify.com/episode/6XNuKI4142Os88xj3BPwAi",
-            "platform": "spotify",
+            "url": "https://drive.google.com/uc?export=download&id=14vLOunLmHTnFhb8aQxkXZoFTFgdRyC85",
+            "platform": "direct_audio",
+            "spotify_url": null,
             "pub_date": "Tue, 03 Feb 2025 10:00:00 +0100",
             "source_audio_url": "https://drive.google.com/uc?export=download&id=14vLOunLmHTnFhb8aQxkXZoFTFgdRyC85",
             "duration_seconds": null,
-            "duration_label": ""
-          },
-          {
-            "kind": "audio",
-            "title": "U1F2 · Forelæsningsslides · PersPsy 2 260203",
-            "url": "https://open.spotify.com/episode/62SZQyUlXuxP79yosHxXTE",
-            "platform": "spotify",
-            "pub_date": "Tue, 03 Feb 2025 20:00:00 +0100",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1LaqwKoXVZFqthcf0umQbN0kxhMsOCu5s",
-            "duration_seconds": null,
-            "duration_label": ""
+            "duration_label": "",
+            "episode_key": "14vLOunLmHTnFhb8aQxkXZoFTFgdRyC85"
           }
         ]
       },
-      "warnings": [
-        "RSS item could not map to reading; attached to lecture assets: U1F2 · [Kort] · Forelæsningsslides · PersPsy 2 260203",
-        "Duplicate podcast asset detected; kept newest RSS item for: U1F2 · Koutsoumpis (2025)",
-        "Duplicate podcast asset detected; kept newest RSS item for: U1F2 · Mayer & Bryan (2024)",
-        "Duplicate podcast asset detected; kept newest RSS item for: U1F2 · Phan et al. (2024)",
-        "RSS item could not map to reading; attached to lecture assets: U1F2 · Forelæsningsslides · PersPsy 2 260203"
-      ]
+      "warnings": []
     },
     {
       "lecture_key": "W02L1",
@@ -603,14 +717,28 @@
             ],
             "podcasts": [
               {
-                "kind": "audio",
+                "kind": "short_podcast",
+                "title": "U2F1 · [Kort] · Zettler et al. (2020)",
+                "url": "https://drive.google.com/uc?export=download&id=13rrJ2zIjZt0-lDAn9le4hbm8wNIrRlau",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Mon, 09 Feb 2025 12:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=13rrJ2zIjZt0-lDAn9le4hbm8wNIrRlau",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "13rrJ2zIjZt0-lDAn9le4hbm8wNIrRlau"
+              },
+              {
+                "kind": "podcast",
                 "title": "U2F1 · Zettler et al. (2020)",
-                "url": "https://open.spotify.com/episode/6YsNRUoyV8LMvNqLKhzpqy",
-                "platform": "spotify",
+                "url": "https://drive.google.com/uc?export=download&id=17y-cgDNN7bNCJPXu458GOgb6r1N6_WlL",
+                "platform": "direct_audio",
+                "spotify_url": null,
                 "pub_date": "Mon, 09 Feb 2025 20:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=17y-cgDNN7bNCJPXu458GOgb6r1N6_WlL",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "17y-cgDNN7bNCJPXu458GOgb6r1N6_WlL"
               }
             ]
           }
@@ -657,14 +785,28 @@
             ],
             "podcasts": [
               {
-                "kind": "audio",
+                "kind": "short_podcast",
+                "title": "U2F1 · [Kort] · Columbus & Strandsbjerg (2025)",
+                "url": "https://drive.google.com/uc?export=download&id=1WpbD0CCsmlIpoNrjWlYwHcjW9ddFzqip",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Mon, 09 Feb 2025 14:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1WpbD0CCsmlIpoNrjWlYwHcjW9ddFzqip",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1WpbD0CCsmlIpoNrjWlYwHcjW9ddFzqip"
+              },
+              {
+                "kind": "podcast",
                 "title": "U2F1 · Columbus & Strandsbjerg (2025)",
-                "url": "https://open.spotify.com/episode/1qhsrAtYtLAk5CrXmd1kdZ",
-                "platform": "spotify",
+                "url": "https://drive.google.com/uc?export=download&id=1vhafYsaUPR9CdbyfvOoGBQgTOTyGOvud",
+                "platform": "direct_audio",
+                "spotify_url": null,
                 "pub_date": "Mon, 09 Feb 2025 22:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1vhafYsaUPR9CdbyfvOoGBQgTOTyGOvud",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1vhafYsaUPR9CdbyfvOoGBQgTOTyGOvud"
               }
             ]
           }
@@ -698,7 +840,20 @@
                 "episode_title": "W02L1 - Slide exercise: 1. Trækteori [EN] {type=audio lang=en format=deep-dive length=default hash=973c491c}.mp3"
               }
             ],
-            "podcasts": []
+            "podcasts": [
+              {
+                "kind": "podcast",
+                "title": "U2F1 · Forelæsningsslides · Trækteori",
+                "url": "https://drive.google.com/uc?export=download&id=1Q9hETtjaycAfH7VE96LjTvN3k3kA41M2",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Mon, 09 Feb 2025 16:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1Q9hETtjaycAfH7VE96LjTvN3k3kA41M2",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1Q9hETtjaycAfH7VE96LjTvN3k3kA41M2"
+              }
+            ]
           }
         },
         {
@@ -728,7 +883,32 @@
                 "episode_title": "W02L1 - Slide lecture: 3. gang PersPsy 3 260209 [EN] {type=audio lang=en format=deep-dive length=default hash=973c491c}.mp3"
               }
             ],
-            "podcasts": []
+            "podcasts": [
+              {
+                "kind": "short_podcast",
+                "title": "U2F1 · [Kort] · Forelæsningsslides · PersPsy 3 260209",
+                "url": "https://drive.google.com/uc?export=download&id=1eimCkrTp9Doirur7ekr1DkU91CZyXlzQ",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Mon, 09 Feb 2025 10:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1eimCkrTp9Doirur7ekr1DkU91CZyXlzQ",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1eimCkrTp9Doirur7ekr1DkU91CZyXlzQ"
+              },
+              {
+                "kind": "podcast",
+                "title": "U2F1 · Forelæsningsslides · PersPsy 3 260209",
+                "url": "https://drive.google.com/uc?export=download&id=14NFzyU46SLxg2HMDvv3kKhkXFaenX8OU",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Mon, 09 Feb 2025 18:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=14NFzyU46SLxg2HMDvv3kKhkXFaenX8OU",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "14NFzyU46SLxg2HMDvv3kKhkXFaenX8OU"
+              }
+            ]
           }
         },
         {
@@ -738,7 +918,26 @@
           "source_filename": "3. Trækpsykologi II.pdf",
           "relative_path": "W02L1/seminar/3. Trækpsykologi II.pdf",
           "assets": {
-            "quizzes": [],
+            "quizzes": [
+              {
+                "quiz_id": "e48ce341",
+                "difficulty": "easy",
+                "quiz_url": "/q/e48ce341.html",
+                "episode_title": "W02L1 - Slide seminar: 3. Trækpsykologi II [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "90e3861c",
+                "difficulty": "hard",
+                "quiz_url": "/q/90e3861c.html",
+                "episode_title": "W02L1 - Slide seminar: 3. Trækpsykologi II [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              },
+              {
+                "quiz_id": "41570de5",
+                "difficulty": "medium",
+                "quiz_url": "/q/41570de5.html",
+                "episode_title": "W02L1 - Slide seminar: 3. Trækpsykologi II [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+              }
+            ],
             "podcasts": []
           }
         }
@@ -766,54 +965,20 @@
         ],
         "podcasts": [
           {
-            "kind": "audio",
-            "title": "U2F1 · [Kort] · Forelæsningsslides · PersPsy 3 260209",
-            "url": "https://open.spotify.com/episode/1KjczeN0FniMI0CPycO6A2",
-            "platform": "spotify",
-            "pub_date": "Mon, 09 Feb 2025 10:00:00 +0100",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1eimCkrTp9Doirur7ekr1DkU91CZyXlzQ",
-            "duration_seconds": null,
-            "duration_label": ""
-          },
-          {
-            "kind": "audio",
+            "kind": "podcast",
             "title": "U2F1 · Alle kilder",
-            "url": "https://open.spotify.com/episode/4jpu3mVwJCLe8yOttxW6NO",
-            "platform": "spotify",
+            "url": "https://drive.google.com/uc?export=download&id=1aG_czSoni1Sx17jZ_zdTdKfZF49Begyv",
+            "platform": "direct_audio",
+            "spotify_url": null,
             "pub_date": "Mon, 09 Feb 2025 08:00:00 +0100",
             "source_audio_url": "https://drive.google.com/uc?export=download&id=1aG_czSoni1Sx17jZ_zdTdKfZF49Begyv",
             "duration_seconds": null,
-            "duration_label": ""
-          },
-          {
-            "kind": "audio",
-            "title": "U2F1 · Forelæsningsslides · PersPsy 3 260209",
-            "url": "https://open.spotify.com/episode/0XJkFkAGLkVXBoj4vWoW3B",
-            "platform": "spotify",
-            "pub_date": "Mon, 09 Feb 2025 18:00:00 +0100",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=14NFzyU46SLxg2HMDvv3kKhkXFaenX8OU",
-            "duration_seconds": null,
-            "duration_label": ""
-          },
-          {
-            "kind": "audio",
-            "title": "U2F1 · Forelæsningsslides · Trækteori",
-            "url": "https://open.spotify.com/episode/7dt3r98gBlry03lDEMtONU",
-            "platform": "spotify",
-            "pub_date": "Mon, 09 Feb 2025 16:00:00 +0100",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1Q9hETtjaycAfH7VE96LjTvN3k3kA41M2",
-            "duration_seconds": null,
-            "duration_label": ""
+            "duration_label": "",
+            "episode_key": "1aG_czSoni1Sx17jZ_zdTdKfZF49Begyv"
           }
         ]
       },
-      "warnings": [
-        "RSS item could not map to reading; attached to lecture assets: U2F1 · [Kort] · Forelæsningsslides · PersPsy 3 260209",
-        "Duplicate podcast asset detected; kept newest RSS item for: U2F1 · Columbus & Strandsbjerg (2025)",
-        "Duplicate podcast asset detected; kept newest RSS item for: U2F1 · Zettler et al. (2020)",
-        "RSS item could not map to reading; attached to lecture assets: U2F1 · Forelæsningsslides · PersPsy 3 260209",
-        "RSS item could not map to reading; attached to lecture assets: U2F1 · Forelæsningsslides · Trækteori"
-      ]
+      "warnings": []
     },
     {
       "lecture_key": "W02L2",
@@ -875,14 +1040,28 @@
             ],
             "podcasts": [
               {
-                "kind": "audio",
+                "kind": "short_podcast",
+                "title": "U2F2 · [Kort] · Bleidorn et al. (2022)",
+                "url": "https://drive.google.com/uc?export=download&id=1L_BBehCAe6dfCQn_30cgY0h_pLdGwDjS",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Tue, 10 Feb 2025 16:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1L_BBehCAe6dfCQn_30cgY0h_pLdGwDjS",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1L_BBehCAe6dfCQn_30cgY0h_pLdGwDjS"
+              },
+              {
+                "kind": "podcast",
                 "title": "U2F2 · Bleidorn et al. (2022)",
-                "url": "https://open.spotify.com/episode/5a2AcjlSKEyincxJvcaGjv",
-                "platform": "spotify",
+                "url": "https://drive.google.com/uc?export=download&id=1fyZ_W63gQd19LRG6O9ZEvoeNkZLXIDvf",
+                "platform": "direct_audio",
+                "spotify_url": null,
                 "pub_date": "Tue, 10 Feb 2025 22:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1fyZ_W63gQd19LRG6O9ZEvoeNkZLXIDvf",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1fyZ_W63gQd19LRG6O9ZEvoeNkZLXIDvf"
               }
             ]
           }
@@ -929,14 +1108,28 @@
             ],
             "podcasts": [
               {
-                "kind": "audio",
+                "kind": "short_podcast",
+                "title": "U2F2 · [Kort] · Li & Wilt (2025)",
+                "url": "https://drive.google.com/uc?export=download&id=1u0VAo7AySTH0alxTu_Sh_IbZeIsG98Hn",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Tue, 10 Feb 2025 14:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1u0VAo7AySTH0alxTu_Sh_IbZeIsG98Hn",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1u0VAo7AySTH0alxTu_Sh_IbZeIsG98Hn"
+              },
+              {
+                "kind": "podcast",
                 "title": "U2F2 · Li & Wilt (2025)",
-                "url": "https://open.spotify.com/episode/4MNMWAuVzgIwJNfU3aU1Ob",
-                "platform": "spotify",
+                "url": "https://drive.google.com/uc?export=download&id=1lg3Mu80y9sm--AVw79w4wnTDhBbL87sF",
+                "platform": "direct_audio",
+                "spotify_url": null,
                 "pub_date": "Tue, 10 Feb 2025 20:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1lg3Mu80y9sm--AVw79w4wnTDhBbL87sF",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1lg3Mu80y9sm--AVw79w4wnTDhBbL87sF"
               }
             ]
           }
@@ -970,7 +1163,32 @@
                 "episode_title": "W02L2 - Slide lecture: 4. gang PersPsy 4 260210 [EN] {type=audio lang=en format=deep-dive length=default hash=973c491c}.mp3"
               }
             ],
-            "podcasts": []
+            "podcasts": [
+              {
+                "kind": "short_podcast",
+                "title": "U2F2 · [Kort] · Forelæsningsslides · PersPsy 4 260210",
+                "url": "https://drive.google.com/uc?export=download&id=1fWk8If68w9iKPTTyHEVYv093jsudYJrx",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Tue, 10 Feb 2025 12:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1fWk8If68w9iKPTTyHEVYv093jsudYJrx",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1fWk8If68w9iKPTTyHEVYv093jsudYJrx"
+              },
+              {
+                "kind": "podcast",
+                "title": "U2F2 · Forelæsningsslides · PersPsy 4 260210",
+                "url": "https://drive.google.com/uc?export=download&id=1wAWczreMHtLtlnsFk0T5vogY2UWkFSNV",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Tue, 10 Feb 2025 18:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1wAWczreMHtLtlnsFk0T5vogY2UWkFSNV",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1wAWczreMHtLtlnsFk0T5vogY2UWkFSNV"
+              }
+            ]
           }
         }
       ],
@@ -997,43 +1215,20 @@
         ],
         "podcasts": [
           {
-            "kind": "audio",
-            "title": "U2F2 · [Kort] · Forelæsningsslides · PersPsy 4 260210",
-            "url": "https://open.spotify.com/episode/0ELeX5ATSZrbmjhEQFNucB",
-            "platform": "spotify",
-            "pub_date": "Tue, 10 Feb 2025 12:00:00 +0100",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1fWk8If68w9iKPTTyHEVYv093jsudYJrx",
-            "duration_seconds": null,
-            "duration_label": ""
-          },
-          {
-            "kind": "audio",
+            "kind": "podcast",
             "title": "U2F2 · Alle kilder",
-            "url": "https://open.spotify.com/episode/67na0UUGGefEIGNV7a5X5P",
-            "platform": "spotify",
+            "url": "https://drive.google.com/uc?export=download&id=1tQlDhuzmaFb_yyovSC2r1Sym3K7X9ADA",
+            "platform": "direct_audio",
+            "spotify_url": null,
             "pub_date": "Tue, 10 Feb 2025 10:00:00 +0100",
             "source_audio_url": "https://drive.google.com/uc?export=download&id=1tQlDhuzmaFb_yyovSC2r1Sym3K7X9ADA",
             "duration_seconds": null,
-            "duration_label": ""
-          },
-          {
-            "kind": "audio",
-            "title": "U2F2 · Forelæsningsslides · PersPsy 4 260210",
-            "url": "https://open.spotify.com/episode/071eEUbdNATzG6F5WQhniQ",
-            "platform": "spotify",
-            "pub_date": "Tue, 10 Feb 2025 18:00:00 +0100",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1wAWczreMHtLtlnsFk0T5vogY2UWkFSNV",
-            "duration_seconds": null,
-            "duration_label": ""
+            "duration_label": "",
+            "episode_key": "1tQlDhuzmaFb_yyovSC2r1Sym3K7X9ADA"
           }
         ]
       },
-      "warnings": [
-        "RSS item could not map to reading; attached to lecture assets: U2F2 · [Kort] · Forelæsningsslides · PersPsy 4 260210",
-        "Duplicate podcast asset detected; kept newest RSS item for: U2F2 · Bleidorn et al. (2022)",
-        "Duplicate podcast asset detected; kept newest RSS item for: U2F2 · Li & Wilt (2025)",
-        "RSS item could not map to reading; attached to lecture assets: U2F2 · Forelæsningsslides · PersPsy 4 260210"
-      ]
+      "warnings": []
     },
     {
       "lecture_key": "W03L1",
@@ -1095,14 +1290,28 @@
             ],
             "podcasts": [
               {
-                "kind": "audio",
+                "kind": "short_podcast",
+                "title": "U3F1 · [Kort] · Kandler & Instinske (2025)",
+                "url": "https://drive.google.com/uc?export=download&id=16-9gIKhQNuid00TFkYKDOMr5Nwn-qou0",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Mon, 16 Feb 2025 18:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=16-9gIKhQNuid00TFkYKDOMr5Nwn-qou0",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "16-9gIKhQNuid00TFkYKDOMr5Nwn-qou0"
+              },
+              {
+                "kind": "podcast",
                 "title": "U3F1 · Kandler & Instinske (2025)",
-                "url": "https://open.spotify.com/episode/5O4VRw27gd7eVEwLuht55V",
-                "platform": "spotify",
+                "url": "https://drive.google.com/uc?export=download&id=1aWpc6yeG9iRqEutYT802ViD8NeEDRQOP",
+                "platform": "direct_audio",
+                "spotify_url": null,
                 "pub_date": "Tue, 17 Feb 2025 04:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1aWpc6yeG9iRqEutYT802ViD8NeEDRQOP",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1aWpc6yeG9iRqEutYT802ViD8NeEDRQOP"
               }
             ]
           }
@@ -1149,14 +1358,28 @@
             ],
             "podcasts": [
               {
-                "kind": "audio",
+                "kind": "short_podcast",
+                "title": "U3F1 · [Kort] · Lu, Benet-Martínez & Wang (2023)",
+                "url": "https://drive.google.com/uc?export=download&id=18BtY3AAzz7cOevj2OPQyk4dBhhgb8QTC",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Mon, 16 Feb 2025 16:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=18BtY3AAzz7cOevj2OPQyk4dBhhgb8QTC",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "18BtY3AAzz7cOevj2OPQyk4dBhhgb8QTC"
+              },
+              {
+                "kind": "podcast",
                 "title": "U3F1 · Lu, Benet-Martínez & Wang (2023)",
-                "url": "https://open.spotify.com/episode/2gPgQrKvQHxwA80jsUHB50",
-                "platform": "spotify",
+                "url": "https://drive.google.com/uc?export=download&id=1rIxC-4gikram9dpdHUxwdrwj1Q7U3TC6",
+                "platform": "direct_audio",
+                "spotify_url": null,
                 "pub_date": "Tue, 17 Feb 2025 02:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1rIxC-4gikram9dpdHUxwdrwj1Q7U3TC6",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1rIxC-4gikram9dpdHUxwdrwj1Q7U3TC6"
               }
             ]
           }
@@ -1203,14 +1426,28 @@
             ],
             "podcasts": [
               {
-                "kind": "audio",
+                "kind": "short_podcast",
+                "title": "U3F1 · [Kort] · Volk & Puchalski (2025)",
+                "url": "https://drive.google.com/uc?export=download&id=138XCY2CHvYp2i6wxlCkELS1Kv872HKLT",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Mon, 16 Feb 2025 14:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=138XCY2CHvYp2i6wxlCkELS1Kv872HKLT",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "138XCY2CHvYp2i6wxlCkELS1Kv872HKLT"
+              },
+              {
+                "kind": "podcast",
                 "title": "U3F1 · Volk & Puchalski (2025)",
-                "url": "https://open.spotify.com/episode/2e2dav65I43uFg1aGiooxy",
-                "platform": "spotify",
+                "url": "https://drive.google.com/uc?export=download&id=1MUsp_Xiw0xyZR3pl2YAxO2ZUcbTRfcXK",
+                "platform": "direct_audio",
+                "spotify_url": null,
                 "pub_date": "Tue, 17 Feb 2025 00:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1MUsp_Xiw0xyZR3pl2YAxO2ZUcbTRfcXK",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1MUsp_Xiw0xyZR3pl2YAxO2ZUcbTRfcXK"
               }
             ]
           }
@@ -1257,14 +1494,28 @@
             ],
             "podcasts": [
               {
-                "kind": "audio",
+                "kind": "short_podcast",
+                "title": "U3F1 · [Kort] · Zettler et al. (2025)",
+                "url": "https://drive.google.com/uc?export=download&id=1Bt5O91fsKkA3icKZmmf0Gmvnj-1WaPf7",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Mon, 16 Feb 2025 12:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1Bt5O91fsKkA3icKZmmf0Gmvnj-1WaPf7",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1Bt5O91fsKkA3icKZmmf0Gmvnj-1WaPf7"
+              },
+              {
+                "kind": "podcast",
                 "title": "U3F1 · Zettler et al. (2025)",
-                "url": "https://open.spotify.com/episode/1nNBWBLdEsgB94aWCL3OGy",
-                "platform": "spotify",
+                "url": "https://drive.google.com/uc?export=download&id=1RSAi0YF-0qg9MaEKJgno2m7qtJt1TERm",
+                "platform": "direct_audio",
+                "spotify_url": null,
                 "pub_date": "Mon, 16 Feb 2025 22:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1RSAi0YF-0qg9MaEKJgno2m7qtJt1TERm",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1RSAi0YF-0qg9MaEKJgno2m7qtJt1TERm"
               }
             ]
           }
@@ -1298,7 +1549,32 @@
                 "episode_title": "W03L1 - Slide lecture: 5. gang PersPsy 5 260216 [EN] {type=audio lang=en format=deep-dive length=default hash=973c491c}.mp3"
               }
             ],
-            "podcasts": []
+            "podcasts": [
+              {
+                "kind": "short_podcast",
+                "title": "U3F1 · [Kort] · Forelæsningsslides · PersPsy 5 260216",
+                "url": "https://drive.google.com/uc?export=download&id=1O658DgeGMyNuQQuCQ2jaGVNkJJ49B5K4",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Mon, 16 Feb 2025 10:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1O658DgeGMyNuQQuCQ2jaGVNkJJ49B5K4",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1O658DgeGMyNuQQuCQ2jaGVNkJJ49B5K4"
+              },
+              {
+                "kind": "podcast",
+                "title": "U3F1 · Forelæsningsslides · PersPsy 5 260216",
+                "url": "https://drive.google.com/uc?export=download&id=1wrAR2A7bh-3yXEEaSQUbrG77ddM8afor",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Mon, 16 Feb 2025 20:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1wrAR2A7bh-3yXEEaSQUbrG77ddM8afor",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1wrAR2A7bh-3yXEEaSQUbrG77ddM8afor"
+              }
+            ]
           }
         },
         {
@@ -1308,7 +1584,26 @@
           "source_filename": "5. Psykoanalyse II.pdf",
           "relative_path": "W03L1/seminar/5. Psykoanalyse II.pdf",
           "assets": {
-            "quizzes": [],
+            "quizzes": [
+              {
+                "quiz_id": "788f439d",
+                "difficulty": "easy",
+                "quiz_url": "/q/788f439d.html",
+                "episode_title": "W03L1 - Slide seminar: 5. Psykoanalyse II [EN].mp3"
+              },
+              {
+                "quiz_id": "9b3e17fd",
+                "difficulty": "hard",
+                "quiz_url": "/q/9b3e17fd.html",
+                "episode_title": "W03L1 - Slide seminar: 5. Psykoanalyse II [EN].mp3"
+              },
+              {
+                "quiz_id": "1ad8d9c5",
+                "difficulty": "medium",
+                "quiz_url": "/q/1ad8d9c5.html",
+                "episode_title": "W03L1 - Slide seminar: 5. Psykoanalyse II [EN].mp3"
+              }
+            ],
             "podcasts": []
           }
         }
@@ -1336,45 +1631,20 @@
         ],
         "podcasts": [
           {
-            "kind": "audio",
-            "title": "U3F1 · [Kort] · Forelæsningsslides · PersPsy 5 260216",
-            "url": "https://open.spotify.com/episode/6qFqiPmJwxNDV7f9ZRq2Ab",
-            "platform": "spotify",
-            "pub_date": "Mon, 16 Feb 2025 10:00:00 +0100",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1O658DgeGMyNuQQuCQ2jaGVNkJJ49B5K4",
-            "duration_seconds": null,
-            "duration_label": ""
-          },
-          {
-            "kind": "audio",
+            "kind": "podcast",
             "title": "U3F1 · Alle kilder",
-            "url": "https://open.spotify.com/episode/1u16jrDLiJ6FqTkmpK1y8A",
-            "platform": "spotify",
+            "url": "https://drive.google.com/uc?export=download&id=1QogySgmAjaZZYWRFUubYy6UwmaEfCTwa",
+            "platform": "direct_audio",
+            "spotify_url": null,
             "pub_date": "Mon, 16 Feb 2025 08:00:00 +0100",
             "source_audio_url": "https://drive.google.com/uc?export=download&id=1QogySgmAjaZZYWRFUubYy6UwmaEfCTwa",
             "duration_seconds": null,
-            "duration_label": ""
-          },
-          {
-            "kind": "audio",
-            "title": "U3F1 · Forelæsningsslides · PersPsy 5 260216",
-            "url": "https://open.spotify.com/episode/2Kp6OBVzsyRkjGetKiHv5b",
-            "platform": "spotify",
-            "pub_date": "Mon, 16 Feb 2025 20:00:00 +0100",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1wrAR2A7bh-3yXEEaSQUbrG77ddM8afor",
-            "duration_seconds": null,
-            "duration_label": ""
+            "duration_label": "",
+            "episode_key": "1QogySgmAjaZZYWRFUubYy6UwmaEfCTwa"
           }
         ]
       },
-      "warnings": [
-        "RSS item could not map to reading; attached to lecture assets: U3F1 · [Kort] · Forelæsningsslides · PersPsy 5 260216",
-        "Duplicate podcast asset detected; kept newest RSS item for: U3F1 · Kandler & Instinske (2025)",
-        "Duplicate podcast asset detected; kept newest RSS item for: U3F1 · Lu, Benet-Martínez & Wang (2023)",
-        "Duplicate podcast asset detected; kept newest RSS item for: U3F1 · Volk & Puchalski (2025)",
-        "Duplicate podcast asset detected; kept newest RSS item for: U3F1 · Zettler et al. (2025)",
-        "RSS item could not map to reading; attached to lecture assets: U3F1 · Forelæsningsslides · PersPsy 5 260216"
-      ]
+      "warnings": []
     },
     {
       "lecture_key": "W03L2",
@@ -1436,14 +1706,16 @@
             ],
             "podcasts": [
               {
-                "kind": "audio",
+                "kind": "podcast",
                 "title": "U3F2 · Sharp & Wall (2021)",
                 "url": "https://open.spotify.com/episode/4DyxzfCZRIxT8I3aBbIVDq",
                 "platform": "spotify",
+                "spotify_url": "https://open.spotify.com/episode/4DyxzfCZRIxT8I3aBbIVDq",
                 "pub_date": "Tue, 17 Feb 2025 12:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1YoJ53PWInYIt966VrgwQvKiXLdCx_g47",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1YoJ53PWInYIt966VrgwQvKiXLdCx_g47"
               }
             ]
           }
@@ -1458,28 +1730,28 @@
           "relative_path": "W03L2/lecture/6. gang Personality Functioning 2026 (Bo Bach).pdf",
           "assets": {
             "quizzes": [],
-            "podcasts": []
+            "podcasts": [
+              {
+                "kind": "podcast",
+                "title": "U3F2 · Forelæsningsslides · Personality Functioning 2026 (Bo Bach)",
+                "url": "https://drive.google.com/uc?export=download&id=14rVN-ihuNLPpXswAQm6bPYUk-MkwB6YT",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Tue, 17 Feb 2025 10:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=14rVN-ihuNLPpXswAQm6bPYUk-MkwB6YT",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "14rVN-ihuNLPpXswAQm6bPYUk-MkwB6YT"
+              }
+            ]
           }
         }
       ],
       "lecture_assets": {
         "quizzes": [],
-        "podcasts": [
-          {
-            "kind": "audio",
-            "title": "U3F2 · Forelæsningsslides · Personality Functioning 2026 (Bo Bach)",
-            "url": "https://open.spotify.com/episode/2L9Wr9fZACz0ENlJtYHBvJ",
-            "platform": "spotify",
-            "pub_date": "Tue, 17 Feb 2025 10:00:00 +0100",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=14rVN-ihuNLPpXswAQm6bPYUk-MkwB6YT",
-            "duration_seconds": null,
-            "duration_label": ""
-          }
-        ]
+        "podcasts": []
       },
-      "warnings": [
-        "RSS item could not map to reading; attached to lecture assets: U3F2 · Forelæsningsslides · Personality Functioning 2026 (Bo Bach)"
-      ]
+      "warnings": []
     },
     {
       "lecture_key": "W04L1",
@@ -1559,24 +1831,40 @@
             ],
             "podcasts": [
               {
-                "kind": "audio",
+                "kind": "short_podcast",
+                "title": "U4F1 · [Kort] · Freud (1973-1933) DA",
+                "url": "https://drive.google.com/uc?export=download&id=1PPDwihwvyE5ysKHq4KebemmkLuaAG0v6",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Mon, 23 Feb 2025 14:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1PPDwihwvyE5ysKHq4KebemmkLuaAG0v6",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1PPDwihwvyE5ysKHq4KebemmkLuaAG0v6"
+              },
+              {
+                "kind": "podcast",
                 "title": "U4F1 · Freud (1973-1933) DA",
-                "url": "https://open.spotify.com/episode/4gpzO2QVNjdXrutr6fNld8",
-                "platform": "spotify",
+                "url": "https://drive.google.com/uc?export=download&id=1AeXAVGCkZ0nfzGqRQYMYxA4KKk1WNVkl",
+                "platform": "direct_audio",
+                "spotify_url": null,
                 "pub_date": "Mon, 23 Feb 2025 22:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1AeXAVGCkZ0nfzGqRQYMYxA4KKk1WNVkl",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1AeXAVGCkZ0nfzGqRQYMYxA4KKk1WNVkl"
               },
               {
-                "kind": "audio",
+                "kind": "podcast",
                 "title": "U4F1 · Freud, S. (1973-1933) EN",
                 "url": "https://open.spotify.com/episode/4neTsg6C6eqFExPRv7pCbH",
                 "platform": "spotify",
+                "spotify_url": "https://open.spotify.com/episode/4neTsg6C6eqFExPRv7pCbH",
                 "pub_date": "Mon, 23 Feb 2025 20:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1eTY3-1_y0vrz_5hNKbu5PCLUIYIWAcQB",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1eTY3-1_y0vrz_5hNKbu5PCLUIYIWAcQB"
               }
             ]
           }
@@ -1604,14 +1892,28 @@
             "quizzes": [],
             "podcasts": [
               {
-                "kind": "audio",
+                "kind": "short_podcast",
+                "title": "U4F1 · [Kort] · Gammelgaard (2007)",
+                "url": "https://drive.google.com/uc?export=download&id=1KY-f_WjopJJcR_XNSWTcGwyeYfnqA7kj",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Mon, 23 Feb 2025 12:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1KY-f_WjopJJcR_XNSWTcGwyeYfnqA7kj",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1KY-f_WjopJJcR_XNSWTcGwyeYfnqA7kj"
+              },
+              {
+                "kind": "podcast",
                 "title": "U4F1 · Gammelgaard (2007)",
-                "url": "https://open.spotify.com/episode/2ohEuB2pbtsXFY2DIai6R5",
-                "platform": "spotify",
+                "url": "https://drive.google.com/uc?export=download&id=1mSGGOarvs2TXoUZPvgDjHzuIq7KqB9W1",
+                "platform": "direct_audio",
+                "spotify_url": null,
                 "pub_date": "Mon, 23 Feb 2025 18:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1mSGGOarvs2TXoUZPvgDjHzuIq7KqB9W1",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1mSGGOarvs2TXoUZPvgDjHzuIq7KqB9W1"
               }
             ]
           }
@@ -1656,7 +1958,32 @@
                 "episode_title": "W04L1 - Slide lecture: 7. Psykoanalysens personbegreb [EN] {type=audio lang=en format=deep-dive length=default hash=973c491c}.mp3"
               }
             ],
-            "podcasts": []
+            "podcasts": [
+              {
+                "kind": "short_podcast",
+                "title": "U4F1 · [Kort] · Forelæsningsslides · Psykoanalysens personbegreb",
+                "url": "https://drive.google.com/uc?export=download&id=1r-pAV-mKCTQ4LKHDV-RYrf8ZCZO9F-qO",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Mon, 23 Feb 2025 10:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1r-pAV-mKCTQ4LKHDV-RYrf8ZCZO9F-qO",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1r-pAV-mKCTQ4LKHDV-RYrf8ZCZO9F-qO"
+              },
+              {
+                "kind": "podcast",
+                "title": "U4F1 · Forelæsningsslides · Psykoanalysens personbegreb",
+                "url": "https://drive.google.com/uc?export=download&id=1s9mTefDUyeVwNyc5uoY33aI8qZYIfeZ6",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Mon, 23 Feb 2025 16:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1s9mTefDUyeVwNyc5uoY33aI8qZYIfeZ6",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1s9mTefDUyeVwNyc5uoY33aI8qZYIfeZ6"
+              }
+            ]
           }
         }
       ],
@@ -1683,34 +2010,20 @@
         ],
         "podcasts": [
           {
-            "kind": "audio",
-            "title": "U4F1 · [Kort] · Forelæsningsslides · Psykoanalysens personbegreb",
-            "url": "https://open.spotify.com/episode/5j0dxOOvICiFXqFTfNc6Ol",
-            "platform": "spotify",
-            "pub_date": "Mon, 23 Feb 2025 10:00:00 +0100",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1r-pAV-mKCTQ4LKHDV-RYrf8ZCZO9F-qO",
+            "kind": "podcast",
+            "title": "U4F1 · Alle kilder",
+            "url": "https://drive.google.com/uc?export=download&id=1yFF6sh0yojfoTV1j8xFI-PAplHueEuAK",
+            "platform": "direct_audio",
+            "spotify_url": null,
+            "pub_date": "Mon, 23 Feb 2025 08:00:00 +0100",
+            "source_audio_url": "https://drive.google.com/uc?export=download&id=1yFF6sh0yojfoTV1j8xFI-PAplHueEuAK",
             "duration_seconds": null,
-            "duration_label": ""
-          },
-          {
-            "kind": "audio",
-            "title": "U4F1 · Forelæsningsslides · Psykoanalysens personbegreb",
-            "url": "https://open.spotify.com/episode/689OiHFAf8vmnh7zoMH0ny",
-            "platform": "spotify",
-            "pub_date": "Mon, 23 Feb 2025 16:00:00 +0100",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1s9mTefDUyeVwNyc5uoY33aI8qZYIfeZ6",
-            "duration_seconds": null,
-            "duration_label": ""
+            "duration_label": "",
+            "episode_key": "1yFF6sh0yojfoTV1j8xFI-PAplHueEuAK"
           }
         ]
       },
-      "warnings": [
-        "RSS item could not map to reading; attached to lecture assets: U4F1 · [Kort] · Forelæsningsslides · Psykoanalysens personbegreb",
-        "Spotify episode mapping missing for RSS item; skipping podcast asset: U4F1 · Alle kilder",
-        "Duplicate podcast asset detected; kept newest RSS item for: U4F1 · Freud (1973-1933) DA",
-        "Duplicate podcast asset detected; kept newest RSS item for: U4F1 · Gammelgaard (2007)",
-        "RSS item could not map to reading; attached to lecture assets: U4F1 · Forelæsningsslides · Psykoanalysens personbegreb"
-      ]
+      "warnings": []
     },
     {
       "lecture_key": "W04L2",
@@ -1772,14 +2085,28 @@
             ],
             "podcasts": [
               {
-                "kind": "audio",
+                "kind": "short_podcast",
+                "title": "U4F2 · [Kort] · Lacan (1966)",
+                "url": "https://drive.google.com/uc?export=download&id=114zcrtEpORve3j-xsMmTBqytJUhRk_i2",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Tue, 24 Feb 2025 16:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=114zcrtEpORve3j-xsMmTBqytJUhRk_i2",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "114zcrtEpORve3j-xsMmTBqytJUhRk_i2"
+              },
+              {
+                "kind": "podcast",
                 "title": "U4F2 · Lacan (1966)",
-                "url": "https://open.spotify.com/episode/2klm6uupWbQ8iiJY5fs1zx",
-                "platform": "spotify",
+                "url": "https://drive.google.com/uc?export=download&id=1_O-ON47oWkPaZB790ifDcyJibr22mgD9",
+                "platform": "direct_audio",
+                "spotify_url": null,
                 "pub_date": "Tue, 24 Feb 2025 22:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1_O-ON47oWkPaZB790ifDcyJibr22mgD9",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1_O-ON47oWkPaZB790ifDcyJibr22mgD9"
               }
             ]
           }
@@ -1826,14 +2153,28 @@
             ],
             "podcasts": [
               {
-                "kind": "audio",
+                "kind": "short_podcast",
+                "title": "U4F2 · [Kort] · Laplanche, J. (1970). Liv og død i psykoanalysen (pp. 18‐38)",
+                "url": "https://drive.google.com/uc?export=download&id=1d2hwMiSytvdeA2B1oSd28vZbsRWAHulE",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Tue, 24 Feb 2025 14:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1d2hwMiSytvdeA2B1oSd28vZbsRWAHulE",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1d2hwMiSytvdeA2B1oSd28vZbsRWAHulE"
+              },
+              {
+                "kind": "podcast",
                 "title": "U4F2 · Laplanche, J. (1970). Liv og død i psykoanalysen (pp. 18‐38)",
-                "url": "https://open.spotify.com/episode/3914Ge4NBnDYgy33uULU11",
-                "platform": "spotify",
+                "url": "https://drive.google.com/uc?export=download&id=1Fbcl0T6L2BPlLH8kjU_ERsh8soYGZupP",
+                "platform": "direct_audio",
+                "spotify_url": null,
                 "pub_date": "Tue, 24 Feb 2025 20:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1Fbcl0T6L2BPlLH8kjU_ERsh8soYGZupP",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1Fbcl0T6L2BPlLH8kjU_ERsh8soYGZupP"
               }
             ]
           }
@@ -1878,7 +2219,32 @@
                 "episode_title": "W04L2 - Slide lecture: 8. Psykoanalytisk personlighedsstruktur [EN] {type=audio lang=en format=deep-dive length=default hash=973c491c}.mp3"
               }
             ],
-            "podcasts": []
+            "podcasts": [
+              {
+                "kind": "short_podcast",
+                "title": "U4F2 · [Kort] · Forelæsningsslides · Psykoanalytisk personlighedsstruktur",
+                "url": "https://drive.google.com/uc?export=download&id=192OGK1yFBUut96WgpaBR5_LAGQ2ryrEa",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Tue, 24 Feb 2025 12:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=192OGK1yFBUut96WgpaBR5_LAGQ2ryrEa",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "192OGK1yFBUut96WgpaBR5_LAGQ2ryrEa"
+              },
+              {
+                "kind": "podcast",
+                "title": "U4F2 · Forelæsningsslides · Psykoanalytisk personlighedsstruktur",
+                "url": "https://drive.google.com/uc?export=download&id=1V2TOEHb1D2IEqFwKjq-tl5YNHFKNZb0i",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Tue, 24 Feb 2025 18:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1V2TOEHb1D2IEqFwKjq-tl5YNHFKNZb0i",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1V2TOEHb1D2IEqFwKjq-tl5YNHFKNZb0i"
+              }
+            ]
           }
         }
       ],
@@ -1905,43 +2271,20 @@
         ],
         "podcasts": [
           {
-            "kind": "audio",
-            "title": "U4F2 · [Kort] · Forelæsningsslides · Psykoanalytisk personlighedsstruktur",
-            "url": "https://open.spotify.com/episode/7plHDS76d2DBXCEddLDOj0",
-            "platform": "spotify",
-            "pub_date": "Tue, 24 Feb 2025 12:00:00 +0100",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=192OGK1yFBUut96WgpaBR5_LAGQ2ryrEa",
-            "duration_seconds": null,
-            "duration_label": ""
-          },
-          {
-            "kind": "audio",
+            "kind": "podcast",
             "title": "U4F2 · Alle kilder",
-            "url": "https://open.spotify.com/episode/1WwQNTYdvk0WDwbVo6KpxD",
-            "platform": "spotify",
+            "url": "https://drive.google.com/uc?export=download&id=1J3__cQhTdBM0X7vtDaI3-_cy4UbQyqEO",
+            "platform": "direct_audio",
+            "spotify_url": null,
             "pub_date": "Tue, 24 Feb 2025 10:00:00 +0100",
             "source_audio_url": "https://drive.google.com/uc?export=download&id=1J3__cQhTdBM0X7vtDaI3-_cy4UbQyqEO",
             "duration_seconds": null,
-            "duration_label": ""
-          },
-          {
-            "kind": "audio",
-            "title": "U4F2 · Forelæsningsslides · Psykoanalytisk personlighedsstruktur",
-            "url": "https://open.spotify.com/episode/59uT83Erpuuw3461HasaMR",
-            "platform": "spotify",
-            "pub_date": "Tue, 24 Feb 2025 18:00:00 +0100",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1V2TOEHb1D2IEqFwKjq-tl5YNHFKNZb0i",
-            "duration_seconds": null,
-            "duration_label": ""
+            "duration_label": "",
+            "episode_key": "1J3__cQhTdBM0X7vtDaI3-_cy4UbQyqEO"
           }
         ]
       },
-      "warnings": [
-        "RSS item could not map to reading; attached to lecture assets: U4F2 · [Kort] · Forelæsningsslides · Psykoanalytisk personlighedsstruktur",
-        "Duplicate podcast asset detected; kept newest RSS item for: U4F2 · Lacan (1966)",
-        "Duplicate podcast asset detected; kept newest RSS item for: U4F2 · Laplanche, J. (1970). Liv og død i psykoanalysen (pp. 18‐38)",
-        "RSS item could not map to reading; attached to lecture assets: U4F2 · Forelæsningsslides · Psykoanalytisk personlighedsstruktur"
-      ]
+      "warnings": []
     },
     {
       "lecture_key": "W05L1",
@@ -2003,14 +2346,28 @@
             ],
             "podcasts": [
               {
-                "kind": "audio",
+                "kind": "short_podcast",
+                "title": "U5F1 · [Kort] · Freud, S. (1984-1905). Brudstykke af en hysteri-analyse (pp. 9-62, pp. 96",
+                "url": "https://drive.google.com/uc?export=download&id=1LO36MaPO1bQ9y_uGKpL2mdcH_LWlJxOw",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Mon, 02 Mar 2025 16:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1LO36MaPO1bQ9y_uGKpL2mdcH_LWlJxOw",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1LO36MaPO1bQ9y_uGKpL2mdcH_LWlJxOw"
+              },
+              {
+                "kind": "podcast",
                 "title": "U5F1 · Freud, S. (1984-1905). Brudstykke af en hysteri-analyse (pp. 9-62, pp. 96",
-                "url": "https://open.spotify.com/episode/7gC5FBFT9MZ9kjTUNIytuP",
-                "platform": "spotify",
+                "url": "https://drive.google.com/uc?export=download&id=1iR1DJMyES3FG_uMeZzaB1UneS9LOcoia",
+                "platform": "direct_audio",
+                "spotify_url": null,
                 "pub_date": "Tue, 03 Mar 2025 00:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1iR1DJMyES3FG_uMeZzaB1UneS9LOcoia",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1iR1DJMyES3FG_uMeZzaB1UneS9LOcoia"
               }
             ]
           }
@@ -2057,14 +2414,28 @@
             ],
             "podcasts": [
               {
-                "kind": "audio",
+                "kind": "short_podcast",
+                "title": "U5F1 · [Kort] · Gammelgaard (2010)",
+                "url": "https://drive.google.com/uc?export=download&id=1oFNidGnqvqPs8H5u6sXI6sYM4CN5pz2V",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Mon, 02 Mar 2025 14:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1oFNidGnqvqPs8H5u6sXI6sYM4CN5pz2V",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1oFNidGnqvqPs8H5u6sXI6sYM4CN5pz2V"
+              },
+              {
+                "kind": "podcast",
                 "title": "U5F1 · Gammelgaard (2010)",
-                "url": "https://open.spotify.com/episode/4pOp1kKxgkapA4hJYorPfD",
-                "platform": "spotify",
+                "url": "https://drive.google.com/uc?export=download&id=1HlHXdhbbedsyofwHMLW4QTDAVWWId5NQ",
+                "platform": "direct_audio",
+                "spotify_url": null,
                 "pub_date": "Mon, 02 Mar 2025 22:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1HlHXdhbbedsyofwHMLW4QTDAVWWId5NQ",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1HlHXdhbbedsyofwHMLW4QTDAVWWId5NQ"
               }
             ]
           }
@@ -2111,14 +2482,28 @@
             ],
             "podcasts": [
               {
-                "kind": "audio",
+                "kind": "short_podcast",
+                "title": "U5F1 · [Kort] · Ricoeur (1981)",
+                "url": "https://drive.google.com/uc?export=download&id=1wzLmKDF3xKzFd0ZJbDUBCOw1jFqRX7WU",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Mon, 02 Mar 2025 12:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1wzLmKDF3xKzFd0ZJbDUBCOw1jFqRX7WU",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1wzLmKDF3xKzFd0ZJbDUBCOw1jFqRX7WU"
+              },
+              {
+                "kind": "podcast",
                 "title": "U5F1 · Ricoeur (1981)",
-                "url": "https://open.spotify.com/episode/1nmkF6uJnNpRNiYXdUxpEO",
-                "platform": "spotify",
+                "url": "https://drive.google.com/uc?export=download&id=1FWbfdyZbNay121b1tfQu7i4sEvqSHnzs",
+                "platform": "direct_audio",
+                "spotify_url": null,
                 "pub_date": "Tue, 03 Mar 2025 02:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1FWbfdyZbNay121b1tfQu7i4sEvqSHnzs",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1FWbfdyZbNay121b1tfQu7i4sEvqSHnzs"
               }
             ]
           }
@@ -2152,7 +2537,20 @@
                 "episode_title": "W05L1 - Slide exercise: 1. Psykoanalyse [EN] {type=audio lang=en format=deep-dive length=default hash=973c491c}.mp3"
               }
             ],
-            "podcasts": []
+            "podcasts": [
+              {
+                "kind": "podcast",
+                "title": "U5F1 · Forelæsningsslides · Psykoanalyse",
+                "url": "https://drive.google.com/uc?export=download&id=1RoomeuQM0CJvVgBvPelApPpiftsm_lfx",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Mon, 02 Mar 2025 18:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1RoomeuQM0CJvVgBvPelApPpiftsm_lfx",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1RoomeuQM0CJvVgBvPelApPpiftsm_lfx"
+              }
+            ]
           }
         },
         {
@@ -2182,7 +2580,32 @@
                 "episode_title": "W05L1 - Slide lecture: 9. Psykoanalysens empiri og metode [EN] {type=audio lang=en format=deep-dive length=default hash=973c491c}.mp3"
               }
             ],
-            "podcasts": []
+            "podcasts": [
+              {
+                "kind": "short_podcast",
+                "title": "U5F1 · [Kort] · Forelæsningsslides · Psykoanalysens empiri og metode",
+                "url": "https://drive.google.com/uc?export=download&id=1EJdt2MYqnn2jFDzusVA_GTp54Z-09Atv",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Mon, 02 Mar 2025 10:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1EJdt2MYqnn2jFDzusVA_GTp54Z-09Atv",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1EJdt2MYqnn2jFDzusVA_GTp54Z-09Atv"
+              },
+              {
+                "kind": "podcast",
+                "title": "U5F1 · Forelæsningsslides · Psykoanalysens empiri og metode",
+                "url": "https://drive.google.com/uc?export=download&id=1z32FCFKLLHi73hvy_EMMEZsIi4_-tKl4",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Mon, 02 Mar 2025 20:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1z32FCFKLLHi73hvy_EMMEZsIi4_-tKl4",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1z32FCFKLLHi73hvy_EMMEZsIi4_-tKl4"
+              }
+            ]
           }
         }
       ],
@@ -2209,55 +2632,20 @@
         ],
         "podcasts": [
           {
-            "kind": "audio",
-            "title": "U5F1 · [Kort] · Forelæsningsslides · Psykoanalysens empiri og metode",
-            "url": "https://open.spotify.com/episode/0jfG7xyT0CR5h2Fsy4Fc9e",
-            "platform": "spotify",
-            "pub_date": "Mon, 02 Mar 2025 10:00:00 +0100",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1EJdt2MYqnn2jFDzusVA_GTp54Z-09Atv",
-            "duration_seconds": null,
-            "duration_label": ""
-          },
-          {
-            "kind": "audio",
+            "kind": "podcast",
             "title": "U5F1 · Alle kilder",
-            "url": "https://open.spotify.com/episode/6CRGeEuFYbifuHUw8Qq5a1",
-            "platform": "spotify",
+            "url": "https://drive.google.com/uc?export=download&id=1TCuwtYzU7p2NP9m-BlYlojZRr17t0doA",
+            "platform": "direct_audio",
+            "spotify_url": null,
             "pub_date": "Mon, 02 Mar 2025 08:00:00 +0100",
             "source_audio_url": "https://drive.google.com/uc?export=download&id=1TCuwtYzU7p2NP9m-BlYlojZRr17t0doA",
             "duration_seconds": null,
-            "duration_label": ""
-          },
-          {
-            "kind": "audio",
-            "title": "U5F1 · Forelæsningsslides · Psykoanalyse",
-            "url": "https://open.spotify.com/episode/4KVRizlnnHddc8XF7L48F8",
-            "platform": "spotify",
-            "pub_date": "Mon, 02 Mar 2025 18:00:00 +0100",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1RoomeuQM0CJvVgBvPelApPpiftsm_lfx",
-            "duration_seconds": null,
-            "duration_label": ""
-          },
-          {
-            "kind": "audio",
-            "title": "U5F1 · Forelæsningsslides · Psykoanalysens empiri og metode",
-            "url": "https://open.spotify.com/episode/5VRkPWIYWkSj8SqvD5J2MM",
-            "platform": "spotify",
-            "pub_date": "Mon, 02 Mar 2025 20:00:00 +0100",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1z32FCFKLLHi73hvy_EMMEZsIi4_-tKl4",
-            "duration_seconds": null,
-            "duration_label": ""
+            "duration_label": "",
+            "episode_key": "1TCuwtYzU7p2NP9m-BlYlojZRr17t0doA"
           }
         ]
       },
-      "warnings": [
-        "RSS item could not map to reading; attached to lecture assets: U5F1 · [Kort] · Forelæsningsslides · Psykoanalysens empiri og metode",
-        "Duplicate podcast asset detected; kept newest RSS item for: U5F1 · Ricoeur (1981)",
-        "Duplicate podcast asset detected; kept newest RSS item for: U5F1 · Freud, S. (1984-1905). Brudstykke af en hysteri-analyse (pp. 9-62, pp. 96",
-        "Duplicate podcast asset detected; kept newest RSS item for: U5F1 · Gammelgaard (2010)",
-        "RSS item could not map to reading; attached to lecture assets: U5F1 · Forelæsningsslides · Psykoanalysens empiri og metode",
-        "RSS item could not map to reading; attached to lecture assets: U5F1 · Forelæsningsslides · Psykoanalyse"
-      ]
+      "warnings": []
     },
     {
       "lecture_key": "W05L2",
@@ -2319,14 +2707,28 @@
             ],
             "podcasts": [
               {
-                "kind": "audio",
+                "kind": "short_podcast",
+                "title": "U5F2 · [Kort] · Andkjær Olsen & Køppe (1991a og b)",
+                "url": "https://drive.google.com/uc?export=download&id=1Fq05PO9_hc0Q-mqdYDGOaQkFXURVvue2",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Tue, 03 Mar 2025 16:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1Fq05PO9_hc0Q-mqdYDGOaQkFXURVvue2",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1Fq05PO9_hc0Q-mqdYDGOaQkFXURVvue2"
+              },
+              {
+                "kind": "podcast",
                 "title": "U5F2 · Andkjær Olsen & Køppe (1991a og b)",
-                "url": "https://open.spotify.com/episode/6dKe2DKLdDmvwHcBtsGK26",
-                "platform": "spotify",
+                "url": "https://drive.google.com/uc?export=download&id=1YTe29TNTN0IxglYJ0XPub5eHpqAXXUHM",
+                "platform": "direct_audio",
+                "spotify_url": null,
                 "pub_date": "Wed, 04 Mar 2025 02:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1YTe29TNTN0IxglYJ0XPub5eHpqAXXUHM",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1YTe29TNTN0IxglYJ0XPub5eHpqAXXUHM"
               }
             ]
           }
@@ -2373,14 +2775,28 @@
             ],
             "podcasts": [
               {
-                "kind": "audio",
+                "kind": "short_podcast",
+                "title": "U5F2 · [Kort] · Køppe (1992)",
+                "url": "https://drive.google.com/uc?export=download&id=1qznuSB5R7fov4GY_jJfhGMj3Q-LK18cY",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Tue, 03 Mar 2025 14:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1qznuSB5R7fov4GY_jJfhGMj3Q-LK18cY",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1qznuSB5R7fov4GY_jJfhGMj3Q-LK18cY"
+              },
+              {
+                "kind": "podcast",
                 "title": "U5F2 · Køppe (1992)",
-                "url": "https://open.spotify.com/episode/2TKdUSqcWdJCXJNQlwjcNh",
-                "platform": "spotify",
+                "url": "https://drive.google.com/uc?export=download&id=1fC2UYNVZA86O5dPLumapdJMpm0dCibQH",
+                "platform": "direct_audio",
+                "spotify_url": null,
                 "pub_date": "Wed, 04 Mar 2025 00:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1fC2UYNVZA86O5dPLumapdJMpm0dCibQH",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1fC2UYNVZA86O5dPLumapdJMpm0dCibQH"
               }
             ]
           }
@@ -2427,24 +2843,40 @@
             ],
             "podcasts": [
               {
+                "kind": "short_podcast",
+                "title": "U5F2 · [Kort] · Grundbog 7: Nyere psykoanalytiske teorier",
+                "url": "https://drive.google.com/uc?export=download&id=1Eoc4S057CEVcdyNljzSlKEIhzSOvEBNO",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Tue, 03 Mar 2025 18:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1Eoc4S057CEVcdyNljzSlKEIhzSOvEBNO",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1Eoc4S057CEVcdyNljzSlKEIhzSOvEBNO"
+              },
+              {
                 "kind": "lydbog",
                 "title": "U5F2 · [Lydbog] · Grundbog 7: Nyere psykoanalytiske teorier",
-                "url": "https://open.spotify.com/episode/27H0IzCOivuKGu12FMBIRI",
-                "platform": "spotify",
+                "url": "https://drive.google.com/uc?export=download&id=1XkFLOjCfYNRJ01wONIg83f6ecWMKQ-I2",
+                "platform": "direct_audio",
+                "spotify_url": null,
                 "pub_date": "Tue, 03 Mar 2025 20:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1XkFLOjCfYNRJ01wONIg83f6ecWMKQ-I2",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1XkFLOjCfYNRJ01wONIg83f6ecWMKQ-I2"
               },
               {
-                "kind": "audio",
+                "kind": "podcast",
                 "title": "U5F2 · Grundbog 7: Nyere psykoanalytiske teorier",
-                "url": "https://open.spotify.com/episode/7C7xtMQn5mG3uk6zpapB2b",
-                "platform": "spotify",
+                "url": "https://drive.google.com/uc?export=download&id=1sTDWS_ZtybXEupv_k5H5WMnb5B9smwpG",
+                "platform": "direct_audio",
+                "spotify_url": null,
                 "pub_date": "Wed, 04 Mar 2025 04:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1sTDWS_ZtybXEupv_k5H5WMnb5B9smwpG",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1sTDWS_ZtybXEupv_k5H5WMnb5B9smwpG"
               }
             ]
           }
@@ -2478,7 +2910,32 @@
                 "episode_title": "W05L2 - Slide lecture: 10. Psykoanalysens konstituering [EN] {type=audio lang=en format=deep-dive length=default hash=973c491c}.mp3"
               }
             ],
-            "podcasts": []
+            "podcasts": [
+              {
+                "kind": "short_podcast",
+                "title": "U5F2 · [Kort] · Forelæsningsslides · Psykoanalysens konstituering",
+                "url": "https://drive.google.com/uc?export=download&id=1_tNfYXzg0fFgUBvZeTfRc6bu9gtVeKDS",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Tue, 03 Mar 2025 12:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1_tNfYXzg0fFgUBvZeTfRc6bu9gtVeKDS",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1_tNfYXzg0fFgUBvZeTfRc6bu9gtVeKDS"
+              },
+              {
+                "kind": "podcast",
+                "title": "U5F2 · Forelæsningsslides · Psykoanalysens konstituering",
+                "url": "https://drive.google.com/uc?export=download&id=1EwKQ3KfkzyURddgT4JKHHD3VFwTHoV1V",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Tue, 03 Mar 2025 22:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1EwKQ3KfkzyURddgT4JKHHD3VFwTHoV1V",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1EwKQ3KfkzyURddgT4JKHHD3VFwTHoV1V"
+              }
+            ]
           }
         }
       ],
@@ -2505,44 +2962,20 @@
         ],
         "podcasts": [
           {
-            "kind": "audio",
-            "title": "U5F2 · [Kort] · Forelæsningsslides · Psykoanalysens konstituering",
-            "url": "https://open.spotify.com/episode/6qMx2YetRZH2hkASCOYJOO",
-            "platform": "spotify",
-            "pub_date": "Tue, 03 Mar 2025 12:00:00 +0100",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1_tNfYXzg0fFgUBvZeTfRc6bu9gtVeKDS",
-            "duration_seconds": null,
-            "duration_label": ""
-          },
-          {
-            "kind": "audio",
+            "kind": "podcast",
             "title": "U5F2 · Alle kilder",
-            "url": "https://open.spotify.com/episode/6mfWVsrh5xIF52B8FCV3u9",
-            "platform": "spotify",
+            "url": "https://drive.google.com/uc?export=download&id=1h-Vf1K0FaC3Ra-WFSeypHHcssBgbGyvZ",
+            "platform": "direct_audio",
+            "spotify_url": null,
             "pub_date": "Tue, 03 Mar 2025 10:00:00 +0100",
             "source_audio_url": "https://drive.google.com/uc?export=download&id=1h-Vf1K0FaC3Ra-WFSeypHHcssBgbGyvZ",
             "duration_seconds": null,
-            "duration_label": ""
-          },
-          {
-            "kind": "audio",
-            "title": "U5F2 · Forelæsningsslides · Psykoanalysens konstituering",
-            "url": "https://open.spotify.com/episode/32neBO681Qw2T3COZ93XRT",
-            "platform": "spotify",
-            "pub_date": "Tue, 03 Mar 2025 22:00:00 +0100",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1EwKQ3KfkzyURddgT4JKHHD3VFwTHoV1V",
-            "duration_seconds": null,
-            "duration_label": ""
+            "duration_label": "",
+            "episode_key": "1h-Vf1K0FaC3Ra-WFSeypHHcssBgbGyvZ"
           }
         ]
       },
-      "warnings": [
-        "RSS item could not map to reading; attached to lecture assets: U5F2 · [Kort] · Forelæsningsslides · Psykoanalysens konstituering",
-        "Duplicate podcast asset detected; kept newest RSS item for: U5F2 · Grundbog 7: Nyere psykoanalytiske teorier",
-        "Duplicate podcast asset detected; kept newest RSS item for: U5F2 · Andkjær Olsen & Køppe (1991a og b)",
-        "Duplicate podcast asset detected; kept newest RSS item for: U5F2 · Køppe (1992)",
-        "RSS item could not map to reading; attached to lecture assets: U5F2 · Forelæsningsslides · Psykoanalysens konstituering"
-      ]
+      "warnings": []
     },
     {
       "lecture_key": "W06L1",
@@ -2604,14 +3037,28 @@
             ],
             "podcasts": [
               {
-                "kind": "audio",
+                "kind": "short_podcast",
+                "title": "U6F1 · [Kort] · Spinelli (2005)",
+                "url": "https://drive.google.com/uc?export=download&id=1bPmT1gxBznLgsyHCycT-tFgwzAqfmBKE",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Mon, 09 Mar 2025 12:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1bPmT1gxBznLgsyHCycT-tFgwzAqfmBKE",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1bPmT1gxBznLgsyHCycT-tFgwzAqfmBKE"
+              },
+              {
+                "kind": "podcast",
                 "title": "U6F1 · Spinelli (2005)",
-                "url": "https://open.spotify.com/episode/4trKMpssaXeHbTp4WhaS14",
-                "platform": "spotify",
+                "url": "https://drive.google.com/uc?export=download&id=1o_5v_JxAQOvnWuFqL3QWZ25yozVoKFys",
+                "platform": "direct_audio",
+                "spotify_url": null,
                 "pub_date": "Mon, 09 Mar 2025 22:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1o_5v_JxAQOvnWuFqL3QWZ25yozVoKFys",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1o_5v_JxAQOvnWuFqL3QWZ25yozVoKFys"
               }
             ]
           }
@@ -2658,14 +3105,28 @@
             ],
             "podcasts": [
               {
-                "kind": "audio",
+                "kind": "short_podcast",
+                "title": "U6F1 · [Kort] · Moeskær Hansen & Roald (2022)",
+                "url": "https://drive.google.com/uc?export=download&id=1RTodBPdrySzfIM-JcNUBDLoz8_-gf2HV",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Mon, 09 Mar 2025 14:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1RTodBPdrySzfIM-JcNUBDLoz8_-gf2HV",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1RTodBPdrySzfIM-JcNUBDLoz8_-gf2HV"
+              },
+              {
+                "kind": "podcast",
                 "title": "U6F1 · Moeskær Hansen & Roald (2022)",
-                "url": "https://open.spotify.com/episode/3tT8Xffcqf6GM758AuxiP1",
-                "platform": "spotify",
+                "url": "https://drive.google.com/uc?export=download&id=1KGUPsUftMm-l7qdV5QmGOmCvmMc3jo5-",
+                "platform": "direct_audio",
+                "spotify_url": null,
                 "pub_date": "Tue, 10 Mar 2025 00:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1KGUPsUftMm-l7qdV5QmGOmCvmMc3jo5-",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1KGUPsUftMm-l7qdV5QmGOmCvmMc3jo5-"
               }
             ]
           }
@@ -2712,24 +3173,40 @@
             ],
             "podcasts": [
               {
-                "kind": "audio",
-                "title": "U6F1 · Forelæsningsslides · Fænomenologisk personlighedspsykologi",
-                "url": "https://open.spotify.com/episode/0lzyS01uChYUzfYKGGmeJs",
-                "platform": "spotify",
-                "pub_date": "Mon, 09 Mar 2025 20:00:00 +0100",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1r4zeMKZ2rovXD0wiZZ6wZgNYpJkw3rs5",
+                "kind": "short_podcast",
+                "title": "U6F1 · [Kort] · Grundbog 4: Fænomenologisk personlighedspsykologi",
+                "url": "https://drive.google.com/uc?export=download&id=1yv1B2wEF-qBsWhObJoCNWp0whMdkR1zP",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Mon, 09 Mar 2025 16:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1yv1B2wEF-qBsWhObJoCNWp0whMdkR1zP",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1yv1B2wEF-qBsWhObJoCNWp0whMdkR1zP"
               },
               {
-                "kind": "audio",
+                "kind": "lydbog",
+                "title": "U6F1 · [Lydbog] · Grundbog 4: Fænomenologisk personlighedspsykologi",
+                "url": "https://drive.google.com/uc?export=download&id=1Do9amY9idSqyH522QeEi-zjE3kV0TpL6",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Mon, 09 Mar 2025 18:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1Do9amY9idSqyH522QeEi-zjE3kV0TpL6",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1Do9amY9idSqyH522QeEi-zjE3kV0TpL6"
+              },
+              {
+                "kind": "podcast",
                 "title": "U6F1 · Grundbog 4: Fænomenologisk personlighedspsykologi",
-                "url": "https://open.spotify.com/episode/7HAIg4PkjN8Bvv4Zvoz7et",
-                "platform": "spotify",
+                "url": "https://drive.google.com/uc?export=download&id=1ovHuc3DVXRE9poYbCPUxBdNxYrxRWhbG",
+                "platform": "direct_audio",
+                "spotify_url": null,
                 "pub_date": "Tue, 10 Mar 2025 02:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1ovHuc3DVXRE9poYbCPUxBdNxYrxRWhbG",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1ovHuc3DVXRE9poYbCPUxBdNxYrxRWhbG"
               }
             ]
           }
@@ -2744,7 +3221,32 @@
           "relative_path": "W06L1/lecture/11. Fænomenologisk personlighedspsykologi2026.pdf",
           "assets": {
             "quizzes": [],
-            "podcasts": []
+            "podcasts": [
+              {
+                "kind": "short_podcast",
+                "title": "U6F1 · [Kort] · Forelæsningsslides · Fænomenologisk personlighedspsykologi",
+                "url": "https://drive.google.com/uc?export=download&id=1Knt4U9XHoeZUN2wYyZaGHmE0ZK6hnw97",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Mon, 09 Mar 2025 10:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1Knt4U9XHoeZUN2wYyZaGHmE0ZK6hnw97",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1Knt4U9XHoeZUN2wYyZaGHmE0ZK6hnw97"
+              },
+              {
+                "kind": "podcast",
+                "title": "U6F1 · Forelæsningsslides · Fænomenologisk personlighedspsykologi",
+                "url": "https://drive.google.com/uc?export=download&id=1r4zeMKZ2rovXD0wiZZ6wZgNYpJkw3rs5",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Mon, 09 Mar 2025 20:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1r4zeMKZ2rovXD0wiZZ6wZgNYpJkw3rs5",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1r4zeMKZ2rovXD0wiZZ6wZgNYpJkw3rs5"
+              }
+            ]
           }
         }
       ],
@@ -2771,44 +3273,20 @@
         ],
         "podcasts": [
           {
-            "kind": "audio",
-            "title": "U6F1 · [Kort] · Forelæsningsslides · Fænomenologisk personlighedspsykologi",
-            "url": "https://open.spotify.com/episode/0OjFS6e5RpXPIgK3tTYXWU",
-            "platform": "spotify",
-            "pub_date": "Mon, 09 Mar 2025 10:00:00 +0100",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1Knt4U9XHoeZUN2wYyZaGHmE0ZK6hnw97",
-            "duration_seconds": null,
-            "duration_label": ""
-          },
-          {
-            "kind": "lydbog",
-            "title": "U6F1 · [Lydbog] · Grundbog 4: Fænomenologisk personlighedspsykologi",
-            "url": "https://open.spotify.com/episode/1y9wOb8ZjJ1cy2HLVO0WJ0",
-            "platform": "spotify",
-            "pub_date": "Mon, 09 Mar 2025 18:00:00 +0100",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1Do9amY9idSqyH522QeEi-zjE3kV0TpL6",
-            "duration_seconds": null,
-            "duration_label": ""
-          },
-          {
-            "kind": "audio",
+            "kind": "podcast",
             "title": "U6F1 · Alle kilder",
-            "url": "https://open.spotify.com/episode/11p1puXLdOI6d2JuFYneDC",
-            "platform": "spotify",
+            "url": "https://drive.google.com/uc?export=download&id=18q0opBH8X0jrTVQ14NJ_JLaPq-_GX90K",
+            "platform": "direct_audio",
+            "spotify_url": null,
             "pub_date": "Mon, 09 Mar 2025 08:00:00 +0100",
             "source_audio_url": "https://drive.google.com/uc?export=download&id=18q0opBH8X0jrTVQ14NJ_JLaPq-_GX90K",
             "duration_seconds": null,
-            "duration_label": ""
+            "duration_label": "",
+            "episode_key": "18q0opBH8X0jrTVQ14NJ_JLaPq-_GX90K"
           }
         ]
       },
-      "warnings": [
-        "RSS item could not map to reading; attached to lecture assets: U6F1 · [Kort] · Forelæsningsslides · Fænomenologisk personlighedspsykologi",
-        "RSS item could not map to reading; attached to lecture assets: U6F1 · [Lydbog] · Grundbog 4: Fænomenologisk personlighedspsykologi",
-        "Duplicate podcast asset detected; kept newest RSS item for: U6F1 · Grundbog 4: Fænomenologisk personlighedspsykologi",
-        "Duplicate podcast asset detected; kept newest RSS item for: U6F1 · Moeskær Hansen & Roald (2022)",
-        "Duplicate podcast asset detected; kept newest RSS item for: U6F1 · Spinelli (2005)"
-      ]
+      "warnings": []
     },
     {
       "lecture_key": "W06L2",
@@ -2870,14 +3348,28 @@
             ],
             "podcasts": [
               {
-                "kind": "audio",
+                "kind": "short_podcast",
+                "title": "U6F2 · [Kort] · Boss (1963)",
+                "url": "https://drive.google.com/uc?export=download&id=1yTQeankUKfWqjBC2-bWViZHZqcDVbv0o",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Tue, 10 Mar 2025 14:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1yTQeankUKfWqjBC2-bWViZHZqcDVbv0o",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1yTQeankUKfWqjBC2-bWViZHZqcDVbv0o"
+              },
+              {
+                "kind": "podcast",
                 "title": "U6F2 · Boss (1963)",
-                "url": "https://open.spotify.com/episode/5S4dUT3R8bzyHoTWh0rkNr",
-                "platform": "spotify",
+                "url": "https://drive.google.com/uc?export=download&id=1T3DRlXScJVtiZJDsmd8Nu1iUHnPuhVFz",
+                "platform": "direct_audio",
+                "spotify_url": null,
                 "pub_date": "Tue, 10 Mar 2025 18:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1T3DRlXScJVtiZJDsmd8Nu1iUHnPuhVFz",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1T3DRlXScJVtiZJDsmd8Nu1iUHnPuhVFz"
               }
             ]
           }
@@ -2924,14 +3416,28 @@
             ],
             "podcasts": [
               {
-                "kind": "audio",
+                "kind": "short_podcast",
+                "title": "U6F2 · [Kort] · May (1966)",
+                "url": "https://drive.google.com/uc?export=download&id=1hqgtHYTmE-zAeOIUOSHKQZO2nF3v4bVc",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Tue, 10 Mar 2025 12:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1hqgtHYTmE-zAeOIUOSHKQZO2nF3v4bVc",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1hqgtHYTmE-zAeOIUOSHKQZO2nF3v4bVc"
+              },
+              {
+                "kind": "podcast",
                 "title": "U6F2 · May (1966)",
-                "url": "https://open.spotify.com/episode/7ziOUYkGAFmHbPmBImmr57",
-                "platform": "spotify",
+                "url": "https://drive.google.com/uc?export=download&id=1J7BTgYAoPkU45XmnC3uNAkowXX7wROs5",
+                "platform": "direct_audio",
+                "spotify_url": null,
                 "pub_date": "Tue, 10 Mar 2025 16:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1J7BTgYAoPkU45XmnC3uNAkowXX7wROs5",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1J7BTgYAoPkU45XmnC3uNAkowXX7wROs5"
               }
             ]
           }
@@ -2961,21 +3467,20 @@
         ],
         "podcasts": [
           {
-            "kind": "audio",
+            "kind": "podcast",
             "title": "U6F2 · Alle kilder",
-            "url": "https://open.spotify.com/episode/5eX7KpyVJxjKlXdh0fWZMy",
-            "platform": "spotify",
+            "url": "https://drive.google.com/uc?export=download&id=1X8HUxx7yq7Bbar2b0-eoArXU7f-NfFc2",
+            "platform": "direct_audio",
+            "spotify_url": null,
             "pub_date": "Tue, 10 Mar 2025 10:00:00 +0100",
             "source_audio_url": "https://drive.google.com/uc?export=download&id=1X8HUxx7yq7Bbar2b0-eoArXU7f-NfFc2",
             "duration_seconds": null,
-            "duration_label": ""
+            "duration_label": "",
+            "episode_key": "1X8HUxx7yq7Bbar2b0-eoArXU7f-NfFc2"
           }
         ]
       },
-      "warnings": [
-        "Duplicate podcast asset detected; kept newest RSS item for: U6F2 · Boss (1963)",
-        "Duplicate podcast asset detected; kept newest RSS item for: U6F2 · May (1966)"
-      ]
+      "warnings": []
     },
     {
       "lecture_key": "W07L1",
@@ -3037,14 +3542,28 @@
             ],
             "podcasts": [
               {
-                "kind": "audio",
+                "kind": "short_podcast",
+                "title": "U7F1 · [Kort] · Cooper (2003)",
+                "url": "https://drive.google.com/uc?export=download&id=1s8zIWpHfqfzaX74TR4CdXZbIYPVPshom",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Mon, 16 Mar 2025 14:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1s8zIWpHfqfzaX74TR4CdXZbIYPVPshom",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1s8zIWpHfqfzaX74TR4CdXZbIYPVPshom"
+              },
+              {
+                "kind": "podcast",
                 "title": "U7F1 · Cooper (2003)",
-                "url": "https://open.spotify.com/episode/3ESGEgV3rRh32E4HmKh7vK",
-                "platform": "spotify",
+                "url": "https://drive.google.com/uc?export=download&id=1Mc_xHwsqEWUQeyyhrCKrlBVLHyMF1Z_y",
+                "platform": "direct_audio",
+                "spotify_url": null,
                 "pub_date": "Mon, 16 Mar 2025 20:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1Mc_xHwsqEWUQeyyhrCKrlBVLHyMF1Z_y",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1Mc_xHwsqEWUQeyyhrCKrlBVLHyMF1Z_y"
               }
             ]
           }
@@ -3091,14 +3610,28 @@
             ],
             "podcasts": [
               {
-                "kind": "audio",
+                "kind": "short_podcast",
+                "title": "U7F1 · [Kort] · Jacobsen (2021)",
+                "url": "https://drive.google.com/uc?export=download&id=1tmrudBSlH_Qgj6YmW3aR7BNc3nB5xauL",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Mon, 16 Mar 2025 12:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1tmrudBSlH_Qgj6YmW3aR7BNc3nB5xauL",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1tmrudBSlH_Qgj6YmW3aR7BNc3nB5xauL"
+              },
+              {
+                "kind": "podcast",
                 "title": "U7F1 · Jacobsen (2021)",
-                "url": "https://open.spotify.com/episode/3ZgotjNg6C1vQ9angYmRNm",
-                "platform": "spotify",
+                "url": "https://drive.google.com/uc?export=download&id=1Mw7vKq83Ni51Y7feUjx8n6DbezUU-xlb",
+                "platform": "direct_audio",
+                "spotify_url": null,
                 "pub_date": "Mon, 16 Mar 2025 18:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1Mw7vKq83Ni51Y7feUjx8n6DbezUU-xlb",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1Mw7vKq83Ni51Y7feUjx8n6DbezUU-xlb"
               }
             ]
           }
@@ -3113,7 +3646,32 @@
           "relative_path": "W07L1/lecture/13. Eksistens II. 2026.pdf",
           "assets": {
             "quizzes": [],
-            "podcasts": []
+            "podcasts": [
+              {
+                "kind": "short_podcast",
+                "title": "U7F1 · [Kort] · Forelæsningsslides · Eksistens II. 2026",
+                "url": "https://drive.google.com/uc?export=download&id=1tIWbKRiKPGOprqov8nTHJwiIL9PTGd5q",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Mon, 16 Mar 2025 10:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1tIWbKRiKPGOprqov8nTHJwiIL9PTGd5q",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1tIWbKRiKPGOprqov8nTHJwiIL9PTGd5q"
+              },
+              {
+                "kind": "podcast",
+                "title": "U7F1 · Forelæsningsslides · Eksistens II. 2026",
+                "url": "https://drive.google.com/uc?export=download&id=1SgRo_3aeK9EE4xGpKDBRlW7o3Yl-E9z6",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Mon, 16 Mar 2025 16:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1SgRo_3aeK9EE4xGpKDBRlW7o3Yl-E9z6",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1SgRo_3aeK9EE4xGpKDBRlW7o3Yl-E9z6"
+              }
+            ]
           }
         }
       ],
@@ -3140,43 +3698,20 @@
         ],
         "podcasts": [
           {
-            "kind": "audio",
-            "title": "U7F1 · [Kort] · Forelæsningsslides · Eksistens II. 2026",
-            "url": "https://open.spotify.com/episode/6AnRa8sOQaqHaV5nVcjhsq",
-            "platform": "spotify",
-            "pub_date": "Mon, 16 Mar 2025 10:00:00 +0100",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1tIWbKRiKPGOprqov8nTHJwiIL9PTGd5q",
-            "duration_seconds": null,
-            "duration_label": ""
-          },
-          {
-            "kind": "audio",
+            "kind": "podcast",
             "title": "U7F1 · Alle kilder",
-            "url": "https://open.spotify.com/episode/5b1xKBKeEohqSgytJP5aG9",
-            "platform": "spotify",
+            "url": "https://drive.google.com/uc?export=download&id=1mnzxcLwrAgc72drrYycp5gUkDd0hhatB",
+            "platform": "direct_audio",
+            "spotify_url": null,
             "pub_date": "Mon, 16 Mar 2025 08:00:00 +0100",
             "source_audio_url": "https://drive.google.com/uc?export=download&id=1mnzxcLwrAgc72drrYycp5gUkDd0hhatB",
             "duration_seconds": null,
-            "duration_label": ""
-          },
-          {
-            "kind": "audio",
-            "title": "U7F1 · Forelæsningsslides · Eksistens II. 2026",
-            "url": "https://open.spotify.com/episode/60su7rHpHUJPBXbYB6N0Jo",
-            "platform": "spotify",
-            "pub_date": "Mon, 16 Mar 2025 16:00:00 +0100",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1SgRo_3aeK9EE4xGpKDBRlW7o3Yl-E9z6",
-            "duration_seconds": null,
-            "duration_label": ""
+            "duration_label": "",
+            "episode_key": "1mnzxcLwrAgc72drrYycp5gUkDd0hhatB"
           }
         ]
       },
-      "warnings": [
-        "RSS item could not map to reading; attached to lecture assets: U7F1 · [Kort] · Forelæsningsslides · Eksistens II. 2026",
-        "Duplicate podcast asset detected; kept newest RSS item for: U7F1 · Cooper (2003)",
-        "Duplicate podcast asset detected; kept newest RSS item for: U7F1 · Jacobsen (2021)",
-        "RSS item could not map to reading; attached to lecture assets: U7F1 · Forelæsningsslides · Eksistens II. 2026"
-      ]
+      "warnings": []
     },
     {
       "lecture_key": "W07L2",
@@ -3238,14 +3773,28 @@
             ],
             "podcasts": [
               {
-                "kind": "audio",
+                "kind": "short_podcast",
+                "title": "U7F2 · [Kort] · Evans (1975)",
+                "url": "https://drive.google.com/uc?export=download&id=1c_Uae3N2XuSZM0k1QwLxbLvCoUy6chkQ",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Tue, 17 Mar 2025 18:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1c_Uae3N2XuSZM0k1QwLxbLvCoUy6chkQ",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1c_Uae3N2XuSZM0k1QwLxbLvCoUy6chkQ"
+              },
+              {
+                "kind": "podcast",
                 "title": "U7F2 · Evans (1975)",
-                "url": "https://open.spotify.com/episode/7AciVflbeJ8Kw88i5W4wsb",
-                "platform": "spotify",
+                "url": "https://drive.google.com/uc?export=download&id=19flyPBTWwfGGAXoXuWPt8ICOzU7eL8mA",
+                "platform": "direct_audio",
+                "spotify_url": null,
                 "pub_date": "Wed, 18 Mar 2025 02:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=19flyPBTWwfGGAXoXuWPt8ICOzU7eL8mA",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "19flyPBTWwfGGAXoXuWPt8ICOzU7eL8mA"
               }
             ]
           }
@@ -3292,14 +3841,28 @@
             ],
             "podcasts": [
               {
-                "kind": "audio",
+                "kind": "short_podcast",
+                "title": "U7F2 · [Kort] · Giorgi (2005)",
+                "url": "https://drive.google.com/uc?export=download&id=1OO-81Mfoz0V2W0qXnLLHFAfJzV9aQ9-I",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Tue, 17 Mar 2025 16:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1OO-81Mfoz0V2W0qXnLLHFAfJzV9aQ9-I",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1OO-81Mfoz0V2W0qXnLLHFAfJzV9aQ9-I"
+              },
+              {
+                "kind": "podcast",
                 "title": "U7F2 · Giorgi (2005)",
-                "url": "https://open.spotify.com/episode/0cK6PdQZrQu10NiAjYkj05",
-                "platform": "spotify",
+                "url": "https://drive.google.com/uc?export=download&id=1QVQtXyZi7hyD_-WQmVPLAGGftQ2IDf-1",
+                "platform": "direct_audio",
+                "spotify_url": null,
                 "pub_date": "Wed, 18 Mar 2025 00:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1QVQtXyZi7hyD_-WQmVPLAGGftQ2IDf-1",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1QVQtXyZi7hyD_-WQmVPLAGGftQ2IDf-1"
               }
             ]
           }
@@ -3346,14 +3909,28 @@
             ],
             "podcasts": [
               {
-                "kind": "audio",
+                "kind": "short_podcast",
+                "title": "U7F2 · [Kort] · Maslow (1968)",
+                "url": "https://drive.google.com/uc?export=download&id=18cWWAUlBW79m-3Pco6rlqegB_Io-R-mT",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Tue, 17 Mar 2025 14:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=18cWWAUlBW79m-3Pco6rlqegB_Io-R-mT",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "18cWWAUlBW79m-3Pco6rlqegB_Io-R-mT"
+              },
+              {
+                "kind": "podcast",
                 "title": "U7F2 · Maslow (1968)",
-                "url": "https://open.spotify.com/episode/0kdHfhP4CTfVFnF15GOCAS",
-                "platform": "spotify",
+                "url": "https://drive.google.com/uc?export=download&id=1so2cOWblNUC2_d3QeEpfYFTKn_eH9m-i",
+                "platform": "direct_audio",
+                "spotify_url": null,
                 "pub_date": "Tue, 17 Mar 2025 22:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1so2cOWblNUC2_d3QeEpfYFTKn_eH9m-i",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1so2cOWblNUC2_d3QeEpfYFTKn_eH9m-i"
               }
             ]
           }
@@ -3368,7 +3945,32 @@
           "relative_path": "W07L2/lecture/14. Humanistisk psykologi20.pdf",
           "assets": {
             "quizzes": [],
-            "podcasts": []
+            "podcasts": [
+              {
+                "kind": "short_podcast",
+                "title": "U7F2 · [Kort] · Forelæsningsslides · Humanistisk psykologi",
+                "url": "https://drive.google.com/uc?export=download&id=1rCMTP5xaLoie7CVTRU8DIVJygmCK-4qq",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Tue, 17 Mar 2025 12:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1rCMTP5xaLoie7CVTRU8DIVJygmCK-4qq",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1rCMTP5xaLoie7CVTRU8DIVJygmCK-4qq"
+              },
+              {
+                "kind": "podcast",
+                "title": "U7F2 · Forelæsningsslides · Humanistisk psykologi",
+                "url": "https://drive.google.com/uc?export=download&id=1k2m5-oHOvtLknI_mzXTHfWvmEPVdMH2f",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Tue, 17 Mar 2025 20:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1k2m5-oHOvtLknI_mzXTHfWvmEPVdMH2f",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1k2m5-oHOvtLknI_mzXTHfWvmEPVdMH2f"
+              }
+            ]
           }
         }
       ],
@@ -3395,44 +3997,20 @@
         ],
         "podcasts": [
           {
-            "kind": "audio",
-            "title": "U7F2 · [Kort] · Forelæsningsslides · Humanistisk psykologi",
-            "url": "https://open.spotify.com/episode/77hS7nD4845wJT06IdwpBB",
-            "platform": "spotify",
-            "pub_date": "Tue, 17 Mar 2025 12:00:00 +0100",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1rCMTP5xaLoie7CVTRU8DIVJygmCK-4qq",
-            "duration_seconds": null,
-            "duration_label": ""
-          },
-          {
-            "kind": "audio",
+            "kind": "podcast",
             "title": "U7F2 · Alle kilder",
-            "url": "https://open.spotify.com/episode/1mDcPcqzcAXhirKTFUWLG8",
-            "platform": "spotify",
+            "url": "https://drive.google.com/uc?export=download&id=1xpKtHjUM_6HBMbVeVMoLoV5tvzpOQnxu",
+            "platform": "direct_audio",
+            "spotify_url": null,
             "pub_date": "Tue, 17 Mar 2025 10:00:00 +0100",
             "source_audio_url": "https://drive.google.com/uc?export=download&id=1xpKtHjUM_6HBMbVeVMoLoV5tvzpOQnxu",
             "duration_seconds": null,
-            "duration_label": ""
-          },
-          {
-            "kind": "audio",
-            "title": "U7F2 · Forelæsningsslides · Humanistisk psykologi",
-            "url": "https://open.spotify.com/episode/2on71x7ORD5V9DkVhBNidF",
-            "platform": "spotify",
-            "pub_date": "Tue, 17 Mar 2025 20:00:00 +0100",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1k2m5-oHOvtLknI_mzXTHfWvmEPVdMH2f",
-            "duration_seconds": null,
-            "duration_label": ""
+            "duration_label": "",
+            "episode_key": "1xpKtHjUM_6HBMbVeVMoLoV5tvzpOQnxu"
           }
         ]
       },
-      "warnings": [
-        "RSS item could not map to reading; attached to lecture assets: U7F2 · [Kort] · Forelæsningsslides · Humanistisk psykologi",
-        "Duplicate podcast asset detected; kept newest RSS item for: U7F2 · Evans (1975)",
-        "Duplicate podcast asset detected; kept newest RSS item for: U7F2 · Giorgi (2005)",
-        "Duplicate podcast asset detected; kept newest RSS item for: U7F2 · Maslow (1968)",
-        "RSS item could not map to reading; attached to lecture assets: U7F2 · Forelæsningsslides · Humanistisk psykologi"
-      ]
+      "warnings": []
     },
     {
       "lecture_key": "W08L1",
@@ -3494,14 +4072,28 @@
             ],
             "podcasts": [
               {
-                "kind": "audio",
+                "kind": "short_podcast",
+                "title": "U8F1 · [Kort] · Lamiell, J.T. (2021)",
+                "url": "https://drive.google.com/uc?export=download&id=1FoMLrghuKgUrGsNFa7_oj_627zx_SpAn",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Mon, 23 Mar 2025 14:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1FoMLrghuKgUrGsNFa7_oj_627zx_SpAn",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1FoMLrghuKgUrGsNFa7_oj_627zx_SpAn"
+              },
+              {
+                "kind": "podcast",
                 "title": "U8F1 · Lamiell, J.T. (2021)",
-                "url": "https://open.spotify.com/episode/7qSprFdB4yn2QKmPTnasPJ",
-                "platform": "spotify",
+                "url": "https://drive.google.com/uc?export=download&id=1JIfRhundgFHgrFs7_dulbfE5U9W8euMm",
+                "platform": "direct_audio",
+                "spotify_url": null,
                 "pub_date": "Mon, 23 Mar 2025 18:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1JIfRhundgFHgrFs7_dulbfE5U9W8euMm",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1JIfRhundgFHgrFs7_dulbfE5U9W8euMm"
               }
             ]
           }
@@ -3548,14 +4140,28 @@
             ],
             "podcasts": [
               {
-                "kind": "audio",
+                "kind": "short_podcast",
+                "title": "U8F1 · [Kort] · Laux et al. (2010)",
+                "url": "https://drive.google.com/uc?export=download&id=1ifOaBA7E_NP7XiKJCyfxVG_vreb_cJZB",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Mon, 23 Mar 2025 12:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1ifOaBA7E_NP7XiKJCyfxVG_vreb_cJZB",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1ifOaBA7E_NP7XiKJCyfxVG_vreb_cJZB"
+              },
+              {
+                "kind": "podcast",
                 "title": "U8F1 · Laux et al. (2010)",
-                "url": "https://open.spotify.com/episode/62CBIi2ZXZEzSrsa73c38n",
-                "platform": "spotify",
+                "url": "https://drive.google.com/uc?export=download&id=1XXh77LhdjI6h3Lw7X8s_l5H6rURZ_xNJ",
+                "platform": "direct_audio",
+                "spotify_url": null,
                 "pub_date": "Mon, 23 Mar 2025 20:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1XXh77LhdjI6h3Lw7X8s_l5H6rURZ_xNJ",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1XXh77LhdjI6h3Lw7X8s_l5H6rURZ_xNJ"
               }
             ]
           }
@@ -3570,7 +4176,32 @@
           "relative_path": "W08L1/lecture/15. gang Critical personalism 2026.pdf",
           "assets": {
             "quizzes": [],
-            "podcasts": []
+            "podcasts": [
+              {
+                "kind": "short_podcast",
+                "title": "U8F1 · [Kort] · Forelæsningsslides · Critical personalism 2026",
+                "url": "https://drive.google.com/uc?export=download&id=1U_YTlX3oiVgQ1XLov1rTwdqa9_HayxDP",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Mon, 23 Mar 2025 10:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1U_YTlX3oiVgQ1XLov1rTwdqa9_HayxDP",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1U_YTlX3oiVgQ1XLov1rTwdqa9_HayxDP"
+              },
+              {
+                "kind": "podcast",
+                "title": "U8F1 · Forelæsningsslides · Critical personalism 2026",
+                "url": "https://drive.google.com/uc?export=download&id=1OQtSYxWAxQASfNkZMUhjkDGIM6aw48ng",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Mon, 23 Mar 2025 16:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1OQtSYxWAxQASfNkZMUhjkDGIM6aw48ng",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1OQtSYxWAxQASfNkZMUhjkDGIM6aw48ng"
+              }
+            ]
           }
         }
       ],
@@ -3597,43 +4228,20 @@
         ],
         "podcasts": [
           {
-            "kind": "audio",
-            "title": "U8F1 · [Kort] · Forelæsningsslides · Critical personalism 2026",
-            "url": "https://open.spotify.com/episode/7DqwhbkQbqTIfh6TxXJ7hw",
-            "platform": "spotify",
-            "pub_date": "Mon, 23 Mar 2025 10:00:00 +0100",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1U_YTlX3oiVgQ1XLov1rTwdqa9_HayxDP",
-            "duration_seconds": null,
-            "duration_label": ""
-          },
-          {
-            "kind": "audio",
+            "kind": "podcast",
             "title": "U8F1 · Alle kilder",
-            "url": "https://open.spotify.com/episode/6MZfCXONB8us8CwQRTxoWt",
-            "platform": "spotify",
+            "url": "https://drive.google.com/uc?export=download&id=1NJf0YzuCCpSTh5PKG-CYPw2Qd8lCAE1Q",
+            "platform": "direct_audio",
+            "spotify_url": null,
             "pub_date": "Mon, 23 Mar 2025 08:00:00 +0100",
             "source_audio_url": "https://drive.google.com/uc?export=download&id=1NJf0YzuCCpSTh5PKG-CYPw2Qd8lCAE1Q",
             "duration_seconds": null,
-            "duration_label": ""
-          },
-          {
-            "kind": "audio",
-            "title": "U8F1 · Forelæsningsslides · Critical personalism 2026",
-            "url": "https://open.spotify.com/episode/0o2De6bvCIXofKwAr1EreT",
-            "platform": "spotify",
-            "pub_date": "Mon, 23 Mar 2025 16:00:00 +0100",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1OQtSYxWAxQASfNkZMUhjkDGIM6aw48ng",
-            "duration_seconds": null,
-            "duration_label": ""
+            "duration_label": "",
+            "episode_key": "1NJf0YzuCCpSTh5PKG-CYPw2Qd8lCAE1Q"
           }
         ]
       },
-      "warnings": [
-        "RSS item could not map to reading; attached to lecture assets: U8F1 · [Kort] · Forelæsningsslides · Critical personalism 2026",
-        "Duplicate podcast asset detected; kept newest RSS item for: U8F1 · Laux et al. (2010)",
-        "Duplicate podcast asset detected; kept newest RSS item for: U8F1 · Lamiell, J.T. (2021)",
-        "RSS item could not map to reading; attached to lecture assets: U8F1 · Forelæsningsslides · Critical personalism 2026"
-      ]
+      "warnings": []
     },
     {
       "lecture_key": "W08L2",
@@ -3695,14 +4303,28 @@
             ],
             "podcasts": [
               {
-                "kind": "audio",
+                "kind": "short_podcast",
+                "title": "U8F2 · [Kort] · Holzkamp (1982)",
+                "url": "https://drive.google.com/uc?export=download&id=1_tb2Lrysg7poQw9WKubOWWNwUqFuLFQf",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Tue, 24 Mar 2025 14:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1_tb2Lrysg7poQw9WKubOWWNwUqFuLFQf",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1_tb2Lrysg7poQw9WKubOWWNwUqFuLFQf"
+              },
+              {
+                "kind": "podcast",
                 "title": "U8F2 · Holzkamp (1982)",
-                "url": "https://open.spotify.com/episode/0FQsqt1BMPJnq8wISuzpG6",
-                "platform": "spotify",
+                "url": "https://drive.google.com/uc?export=download&id=164w1cKsuRZA5DnmyCR12JAOdSBkhp_IE",
+                "platform": "direct_audio",
+                "spotify_url": null,
                 "pub_date": "Tue, 24 Mar 2025 20:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=164w1cKsuRZA5DnmyCR12JAOdSBkhp_IE",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "164w1cKsuRZA5DnmyCR12JAOdSBkhp_IE"
               }
             ]
           }
@@ -3749,14 +4371,28 @@
             ],
             "podcasts": [
               {
-                "kind": "audio",
+                "kind": "short_podcast",
+                "title": "U8F2 · [Kort] · Tolman (2009)",
+                "url": "https://drive.google.com/uc?export=download&id=1roeda4PvIgK8GcBaTRWYVxWz-wJ6FywK",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Tue, 24 Mar 2025 12:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1roeda4PvIgK8GcBaTRWYVxWz-wJ6FywK",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1roeda4PvIgK8GcBaTRWYVxWz-wJ6FywK"
+              },
+              {
+                "kind": "podcast",
                 "title": "U8F2 · Tolman (2009)",
-                "url": "https://open.spotify.com/episode/28SIpkn7lE3MByBETnR3XW",
-                "platform": "spotify",
+                "url": "https://drive.google.com/uc?export=download&id=1RS3wycyDFIUrTb0y5dYOQ3XPJ4gE7gH2",
+                "platform": "direct_audio",
+                "spotify_url": null,
                 "pub_date": "Tue, 24 Mar 2025 18:00:00 +0100",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1RS3wycyDFIUrTb0y5dYOQ3XPJ4gE7gH2",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1RS3wycyDFIUrTb0y5dYOQ3XPJ4gE7gH2"
               }
             ]
           }
@@ -3771,7 +4407,20 @@
           "relative_path": "W08L2/lecture/16. gang Critical psych 2026.pdf",
           "assets": {
             "quizzes": [],
-            "podcasts": []
+            "podcasts": [
+              {
+                "kind": "podcast",
+                "title": "U8F2 · Forelæsningsslides · Critical psych 2026",
+                "url": "https://drive.google.com/uc?export=download&id=11vEW7rOoJf2zIiT1-de-6oHwRPX-K6yr",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Tue, 24 Mar 2025 16:00:00 +0100",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=11vEW7rOoJf2zIiT1-de-6oHwRPX-K6yr",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "11vEW7rOoJf2zIiT1-de-6oHwRPX-K6yr"
+              }
+            ]
           }
         }
       ],
@@ -3798,32 +4447,20 @@
         ],
         "podcasts": [
           {
-            "kind": "audio",
+            "kind": "podcast",
             "title": "U8F2 · Alle kilder",
-            "url": "https://open.spotify.com/episode/5Lkbykbj97T3LNzTF9Pa4y",
-            "platform": "spotify",
+            "url": "https://drive.google.com/uc?export=download&id=12rbb1GXQgLcjUwWpzkbNNExJFByFPtGv",
+            "platform": "direct_audio",
+            "spotify_url": null,
             "pub_date": "Tue, 24 Mar 2025 10:00:00 +0100",
             "source_audio_url": "https://drive.google.com/uc?export=download&id=12rbb1GXQgLcjUwWpzkbNNExJFByFPtGv",
             "duration_seconds": null,
-            "duration_label": ""
-          },
-          {
-            "kind": "audio",
-            "title": "U8F2 · Forelæsningsslides · Critical psych 2026",
-            "url": "https://open.spotify.com/episode/0sSo7AB1jtQQ3OvvY1lGDu",
-            "platform": "spotify",
-            "pub_date": "Tue, 24 Mar 2025 16:00:00 +0100",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=11vEW7rOoJf2zIiT1-de-6oHwRPX-K6yr",
-            "duration_seconds": null,
-            "duration_label": ""
+            "duration_label": "",
+            "episode_key": "12rbb1GXQgLcjUwWpzkbNNExJFByFPtGv"
           }
         ]
       },
-      "warnings": [
-        "Duplicate podcast asset detected; kept newest RSS item for: U8F2 · Holzkamp (1982)",
-        "Duplicate podcast asset detected; kept newest RSS item for: U8F2 · Tolman (2009)",
-        "RSS item could not map to reading; attached to lecture assets: U8F2 · Forelæsningsslides · Critical psych 2026"
-      ]
+      "warnings": []
     },
     {
       "lecture_key": "W09L1",
@@ -3885,14 +4522,28 @@
             ],
             "podcasts": [
               {
-                "kind": "audio",
+                "kind": "short_podcast",
+                "title": "U9F1 · [Kort] · Mørch & Hansen (2015)",
+                "url": "https://drive.google.com/uc?export=download&id=1shZJi95A0kE2JzE_pl0rx0JoxhH9Zy5Z",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Tue, 07 Apr 2025 12:00:00 +0200",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1shZJi95A0kE2JzE_pl0rx0JoxhH9Zy5Z",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1shZJi95A0kE2JzE_pl0rx0JoxhH9Zy5Z"
+              },
+              {
+                "kind": "podcast",
                 "title": "U9F1 · Mørch & Hansen (2015)",
-                "url": "https://open.spotify.com/episode/2RulVMszKRmptA7ct5ChfA",
-                "platform": "spotify",
+                "url": "https://drive.google.com/uc?export=download&id=1JWTi0oF_fgjVyf4OJsh4CqE3nS2ebpmg",
+                "platform": "direct_audio",
+                "spotify_url": null,
                 "pub_date": "Wed, 08 Apr 2025 00:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1JWTi0oF_fgjVyf4OJsh4CqE3nS2ebpmg",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1JWTi0oF_fgjVyf4OJsh4CqE3nS2ebpmg"
               }
             ]
           }
@@ -3939,14 +4590,28 @@
             ],
             "podcasts": [
               {
-                "kind": "audio",
+                "kind": "short_podcast",
+                "title": "U9F1 · [Kort] · Dreier (1999)",
+                "url": "https://drive.google.com/uc?export=download&id=1QOgw8Jk__c3MjQZPuGiIIYtTO_V4BRjZ",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Tue, 07 Apr 2025 16:00:00 +0200",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1QOgw8Jk__c3MjQZPuGiIIYtTO_V4BRjZ",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1QOgw8Jk__c3MjQZPuGiIIYtTO_V4BRjZ"
+              },
+              {
+                "kind": "podcast",
                 "title": "U9F1 · Dreier (1999)",
-                "url": "https://open.spotify.com/episode/311D5Ncb8ABA47FWENzIyh",
-                "platform": "spotify",
+                "url": "https://drive.google.com/uc?export=download&id=1RVZHfiYxPe17tiwPlTEgxFzo_8En8DXT",
+                "platform": "direct_audio",
+                "spotify_url": null,
                 "pub_date": "Wed, 08 Apr 2025 06:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1RVZHfiYxPe17tiwPlTEgxFzo_8En8DXT",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1RVZHfiYxPe17tiwPlTEgxFzo_8En8DXT"
               }
             ]
           }
@@ -3993,14 +4658,28 @@
             ],
             "podcasts": [
               {
-                "kind": "audio",
+                "kind": "short_podcast",
+                "title": "U9F1 · [Kort] · Holzkamp (2013)",
+                "url": "https://drive.google.com/uc?export=download&id=1pEnlsXruyx574BWjKn9yV9MbMzEsbKu6",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Tue, 07 Apr 2025 14:00:00 +0200",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1pEnlsXruyx574BWjKn9yV9MbMzEsbKu6",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1pEnlsXruyx574BWjKn9yV9MbMzEsbKu6"
+              },
+              {
+                "kind": "podcast",
                 "title": "U9F1 · Holzkamp (2013)",
-                "url": "https://open.spotify.com/episode/6oxrW2YYBHBvultPFEz6zA",
-                "platform": "spotify",
+                "url": "https://drive.google.com/uc?export=download&id=1DNLQCvWH6vdD8FsBS9nlWWDh1ujygKzZ",
+                "platform": "direct_audio",
+                "spotify_url": null,
                 "pub_date": "Wed, 08 Apr 2025 02:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1DNLQCvWH6vdD8FsBS9nlWWDh1ujygKzZ",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1DNLQCvWH6vdD8FsBS9nlWWDh1ujygKzZ"
               }
             ]
           }
@@ -4047,34 +4726,40 @@
             ],
             "podcasts": [
               {
+                "kind": "short_podcast",
+                "title": "U9F1 · [Kort] · Grundbog 10: Kritisk psykologi",
+                "url": "https://drive.google.com/uc?export=download&id=1Ugn1IyV7gMqih2aHtaU70jtIsHB0n6cz",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Tue, 07 Apr 2025 18:00:00 +0200",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1Ugn1IyV7gMqih2aHtaU70jtIsHB0n6cz",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1Ugn1IyV7gMqih2aHtaU70jtIsHB0n6cz"
+              },
+              {
                 "kind": "lydbog",
                 "title": "U9F1 · [Lydbog] · Grundbog 10: Kritisk psykologi",
-                "url": "https://open.spotify.com/episode/1u6ZSZk41KDSed2BfDSpi7",
-                "platform": "spotify",
+                "url": "https://drive.google.com/uc?export=download&id=1Zmppaac88IAEyZjDVolNFyJo87hMg2Dd",
+                "platform": "direct_audio",
+                "spotify_url": null,
                 "pub_date": "Tue, 07 Apr 2025 20:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1Zmppaac88IAEyZjDVolNFyJo87hMg2Dd",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1Zmppaac88IAEyZjDVolNFyJo87hMg2Dd"
               },
               {
-                "kind": "audio",
-                "title": "U9F1 · Forelæsningsslides · Kritisk psykologi",
-                "url": "https://open.spotify.com/episode/4Ka5bQxaaRdaBJJ35Aowmn",
-                "platform": "spotify",
-                "pub_date": "Tue, 07 Apr 2025 22:00:00 +0200",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1RXrtetWVtLcH1k1Vyi5uoGhogigTdQB1",
-                "duration_seconds": null,
-                "duration_label": ""
-              },
-              {
-                "kind": "audio",
+                "kind": "podcast",
                 "title": "U9F1 · Grundbog 10: Kritisk psykologi",
-                "url": "https://open.spotify.com/episode/2332d1q8g4nwpKxEyfAAOz",
-                "platform": "spotify",
+                "url": "https://drive.google.com/uc?export=download&id=1ScnElqFnmHOwChwMl_2RswSLvjsfmE-L",
+                "platform": "direct_audio",
+                "spotify_url": null,
                 "pub_date": "Wed, 08 Apr 2025 04:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1ScnElqFnmHOwChwMl_2RswSLvjsfmE-L",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1ScnElqFnmHOwChwMl_2RswSLvjsfmE-L"
               }
             ]
           }
@@ -4089,7 +4774,20 @@
           "relative_path": "W09L1/lecture/17. Kritisk psykologi.pdf",
           "assets": {
             "quizzes": [],
-            "podcasts": []
+            "podcasts": [
+              {
+                "kind": "podcast",
+                "title": "U9F1 · Forelæsningsslides · Kritisk psykologi",
+                "url": "https://drive.google.com/uc?export=download&id=1RXrtetWVtLcH1k1Vyi5uoGhogigTdQB1",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Tue, 07 Apr 2025 22:00:00 +0200",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1RXrtetWVtLcH1k1Vyi5uoGhogigTdQB1",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1RXrtetWVtLcH1k1Vyi5uoGhogigTdQB1"
+              }
+            ]
           }
         }
       ],
@@ -4116,23 +4814,20 @@
         ],
         "podcasts": [
           {
-            "kind": "audio",
+            "kind": "podcast",
             "title": "U9F1 · Alle kilder",
-            "url": "https://open.spotify.com/episode/7KWBgZYfXQAcAZzVokmwIh",
-            "platform": "spotify",
+            "url": "https://drive.google.com/uc?export=download&id=1-MXkUCm_eduHtEH8JCQWY_SI3LBrCbGB",
+            "platform": "direct_audio",
+            "spotify_url": null,
             "pub_date": "Tue, 07 Apr 2025 10:00:00 +0200",
             "source_audio_url": "https://drive.google.com/uc?export=download&id=1-MXkUCm_eduHtEH8JCQWY_SI3LBrCbGB",
             "duration_seconds": null,
-            "duration_label": ""
+            "duration_label": "",
+            "episode_key": "1-MXkUCm_eduHtEH8JCQWY_SI3LBrCbGB"
           }
         ]
       },
-      "warnings": [
-        "Duplicate podcast asset detected; kept newest RSS item for: U9F1 · Dreier (1999)",
-        "Duplicate podcast asset detected; kept newest RSS item for: U9F1 · Grundbog 10: Kritisk psykologi",
-        "Duplicate podcast asset detected; kept newest RSS item for: U9F1 · Holzkamp (2013)",
-        "Duplicate podcast asset detected; kept newest RSS item for: U9F1 · Mørch & Hansen (2015)"
-      ]
+      "warnings": []
     },
     {
       "lecture_key": "W10L1",
@@ -4194,14 +4889,28 @@
             ],
             "podcasts": [
               {
-                "kind": "audio",
+                "kind": "short_podcast",
+                "title": "U10F1 · [Kort] · Bjerrum Nielsen & Rudberg (2006)",
+                "url": "https://drive.google.com/uc?export=download&id=1YZ6bBzzPPZ2ByDk7Eqi4MC-aTND8jBQr",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Mon, 13 Apr 2025 12:00:00 +0200",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1YZ6bBzzPPZ2ByDk7Eqi4MC-aTND8jBQr",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1YZ6bBzzPPZ2ByDk7Eqi4MC-aTND8jBQr"
+              },
+              {
+                "kind": "podcast",
                 "title": "U10F1 · Bjerrum Nielsen & Rudberg (2006)",
-                "url": "https://open.spotify.com/episode/6NRr9gdgjSkObPDZSQVB4c",
-                "platform": "spotify",
+                "url": "https://drive.google.com/uc?export=download&id=1ROTyOjFUuoa9x3_9iO02sDkkxJybJ5Q1",
+                "platform": "direct_audio",
+                "spotify_url": null,
                 "pub_date": "Mon, 13 Apr 2025 16:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1ROTyOjFUuoa9x3_9iO02sDkkxJybJ5Q1",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1ROTyOjFUuoa9x3_9iO02sDkkxJybJ5Q1"
               }
             ]
           }
@@ -4248,14 +4957,28 @@
             ],
             "podcasts": [
               {
-                "kind": "audio",
+                "kind": "short_podcast",
+                "title": "U10F1 · [Kort] · Mitchell (2015)",
+                "url": "https://drive.google.com/uc?export=download&id=18JMSg5nndP9jwXumG_rOrKhiN-g_qjmX",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Mon, 13 Apr 2025 10:00:00 +0200",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=18JMSg5nndP9jwXumG_rOrKhiN-g_qjmX",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "18JMSg5nndP9jwXumG_rOrKhiN-g_qjmX"
+              },
+              {
+                "kind": "podcast",
                 "title": "U10F1 · Mitchell (2015)",
-                "url": "https://open.spotify.com/episode/5rK61yjBTzjQNqY9Fcjvxg",
-                "platform": "spotify",
+                "url": "https://drive.google.com/uc?export=download&id=1oUv309xHegJwxCSN6l6GajcfVV6c_ofb",
+                "platform": "direct_audio",
+                "spotify_url": null,
                 "pub_date": "Mon, 13 Apr 2025 14:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1oUv309xHegJwxCSN6l6GajcfVV6c_ofb",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1oUv309xHegJwxCSN6l6GajcfVV6c_ofb"
               }
             ]
           }
@@ -4285,21 +5008,20 @@
         ],
         "podcasts": [
           {
-            "kind": "audio",
+            "kind": "podcast",
             "title": "U10F1 · Alle kilder",
-            "url": "https://open.spotify.com/episode/5Xf7eesEty4YJzg6C30ZpR",
-            "platform": "spotify",
+            "url": "https://drive.google.com/uc?export=download&id=1fe8lG4IS0foT8V8rLLTs1nJYZBFNxNmQ",
+            "platform": "direct_audio",
+            "spotify_url": null,
             "pub_date": "Mon, 13 Apr 2025 08:00:00 +0200",
             "source_audio_url": "https://drive.google.com/uc?export=download&id=1fe8lG4IS0foT8V8rLLTs1nJYZBFNxNmQ",
             "duration_seconds": null,
-            "duration_label": ""
+            "duration_label": "",
+            "episode_key": "1fe8lG4IS0foT8V8rLLTs1nJYZBFNxNmQ"
           }
         ]
       },
-      "warnings": [
-        "Duplicate podcast asset detected; kept newest RSS item for: U10F1 · Bjerrum Nielsen & Rudberg (2006)",
-        "Duplicate podcast asset detected; kept newest RSS item for: U10F1 · Mitchell (2015)"
-      ]
+      "warnings": []
     },
     {
       "lecture_key": "W10L2",
@@ -4361,14 +5083,28 @@
             ],
             "podcasts": [
               {
-                "kind": "audio",
+                "kind": "short_podcast",
+                "title": "U10F2 · [Kort] · Davies (1990)",
+                "url": "https://drive.google.com/uc?export=download&id=1FizddlQBtgJFLTlySwJFQaqmjgsJwZTf",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Tue, 14 Apr 2025 14:00:00 +0200",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1FizddlQBtgJFLTlySwJFQaqmjgsJwZTf",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1FizddlQBtgJFLTlySwJFQaqmjgsJwZTf"
+              },
+              {
+                "kind": "podcast",
                 "title": "U10F2 · Davies (1990)",
-                "url": "https://open.spotify.com/episode/6Cx1QwK8lXsBebYnJ7hNz6",
-                "platform": "spotify",
+                "url": "https://drive.google.com/uc?export=download&id=17Dy3PhWnv9khx2_9sY223JfeTYMlDRU2",
+                "platform": "direct_audio",
+                "spotify_url": null,
                 "pub_date": "Tue, 14 Apr 2025 18:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=17Dy3PhWnv9khx2_9sY223JfeTYMlDRU2",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "17Dy3PhWnv9khx2_9sY223JfeTYMlDRU2"
               }
             ]
           }
@@ -4415,14 +5151,28 @@
             ],
             "podcasts": [
               {
-                "kind": "audio",
+                "kind": "short_podcast",
+                "title": "U10F2 · [Kort] · Foucault, M. (1997). s. 281-301",
+                "url": "https://drive.google.com/uc?export=download&id=1J9CxJrWChpX5sIPlcI0jnlR2vSDIlxzh",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Tue, 14 Apr 2025 12:00:00 +0200",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1J9CxJrWChpX5sIPlcI0jnlR2vSDIlxzh",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1J9CxJrWChpX5sIPlcI0jnlR2vSDIlxzh"
+              },
+              {
+                "kind": "podcast",
                 "title": "U10F2 · Foucault, M. (1997). s. 281-301",
-                "url": "https://open.spotify.com/episode/3GQDei4V3jgRo6mb6RI12c",
-                "platform": "spotify",
+                "url": "https://drive.google.com/uc?export=download&id=1HtnXINp-PNAb8ZqbbPQf4nKrQvg5mjEX",
+                "platform": "direct_audio",
+                "spotify_url": null,
                 "pub_date": "Tue, 14 Apr 2025 20:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1HtnXINp-PNAb8ZqbbPQf4nKrQvg5mjEX",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1HtnXINp-PNAb8ZqbbPQf4nKrQvg5mjEX"
               }
             ]
           }
@@ -4437,7 +5187,20 @@
           "relative_path": "W10L2/lecture/19. gang Sociokulturelle teorier.pdf",
           "assets": {
             "quizzes": [],
-            "podcasts": []
+            "podcasts": [
+              {
+                "kind": "podcast",
+                "title": "U10F2 · Forelæsningsslides · Sociokulturelle teorier",
+                "url": "https://drive.google.com/uc?export=download&id=1M1QSrr7WQeyBuRptuKdmXmnCN1vz-hjw",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Tue, 14 Apr 2025 16:00:00 +0200",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1M1QSrr7WQeyBuRptuKdmXmnCN1vz-hjw",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1M1QSrr7WQeyBuRptuKdmXmnCN1vz-hjw"
+              }
+            ]
           }
         }
       ],
@@ -4464,32 +5227,20 @@
         ],
         "podcasts": [
           {
-            "kind": "audio",
+            "kind": "podcast",
             "title": "U10F2 · Alle kilder",
-            "url": "https://open.spotify.com/episode/0dxz8xC1MnLzm8Eq4Mk7bV",
-            "platform": "spotify",
+            "url": "https://drive.google.com/uc?export=download&id=1qZY4h0AQ_WKNlRPymLEbtrDgqLX-3QZo",
+            "platform": "direct_audio",
+            "spotify_url": null,
             "pub_date": "Tue, 14 Apr 2025 10:00:00 +0200",
             "source_audio_url": "https://drive.google.com/uc?export=download&id=1qZY4h0AQ_WKNlRPymLEbtrDgqLX-3QZo",
             "duration_seconds": null,
-            "duration_label": ""
-          },
-          {
-            "kind": "audio",
-            "title": "U10F2 · Forelæsningsslides · Sociokulturelle teorier",
-            "url": "https://open.spotify.com/episode/3EoL3pXNRddihOZA9HmH1r",
-            "platform": "spotify",
-            "pub_date": "Tue, 14 Apr 2025 16:00:00 +0200",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1M1QSrr7WQeyBuRptuKdmXmnCN1vz-hjw",
-            "duration_seconds": null,
-            "duration_label": ""
+            "duration_label": "",
+            "episode_key": "1qZY4h0AQ_WKNlRPymLEbtrDgqLX-3QZo"
           }
         ]
       },
-      "warnings": [
-        "Duplicate podcast asset detected; kept newest RSS item for: U10F2 · Foucault, M. (1997). s. 281-301",
-        "Duplicate podcast asset detected; kept newest RSS item for: U10F2 · Davies (1990)",
-        "RSS item could not map to reading; attached to lecture assets: U10F2 · Forelæsningsslides · Sociokulturelle teorier"
-      ]
+      "warnings": []
     },
     {
       "lecture_key": "W11L1",
@@ -4551,14 +5302,28 @@
             ],
             "podcasts": [
               {
-                "kind": "audio",
+                "kind": "short_podcast",
+                "title": "U11F1 · [Kort] · Gergen (1999)",
+                "url": "https://drive.google.com/uc?export=download&id=199jn8Ql9FfGx1Ki8B2EApd9e6ROFkZ62",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Mon, 20 Apr 2025 12:00:00 +0200",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=199jn8Ql9FfGx1Ki8B2EApd9e6ROFkZ62",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "199jn8Ql9FfGx1Ki8B2EApd9e6ROFkZ62"
+              },
+              {
+                "kind": "podcast",
                 "title": "U11F1 · Gergen (1999)",
-                "url": "https://open.spotify.com/episode/7fgg8FRpc5yKZnxeM971Ka",
-                "platform": "spotify",
+                "url": "https://drive.google.com/uc?export=download&id=1h6sJ3snWal1zkmr0BJgL47Nrh61XFYGw",
+                "platform": "direct_audio",
+                "spotify_url": null,
                 "pub_date": "Mon, 20 Apr 2025 22:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1h6sJ3snWal1zkmr0BJgL47Nrh61XFYGw",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1h6sJ3snWal1zkmr0BJgL47Nrh61XFYGw"
               }
             ]
           }
@@ -4605,14 +5370,28 @@
             ],
             "podcasts": [
               {
-                "kind": "audio",
+                "kind": "short_podcast",
+                "title": "U11F1 · [Kort] · Hacking (2007)",
+                "url": "https://drive.google.com/uc?export=download&id=1cA-6t7nYX1ovBPZP9znzEU4ATgNt6w-p",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Mon, 20 Apr 2025 10:00:00 +0200",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1cA-6t7nYX1ovBPZP9znzEU4ATgNt6w-p",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1cA-6t7nYX1ovBPZP9znzEU4ATgNt6w-p"
+              },
+              {
+                "kind": "podcast",
                 "title": "U11F1 · Hacking (2007)",
-                "url": "https://open.spotify.com/episode/6WEoc5hYRbKIxLQ0oFge8l",
-                "platform": "spotify",
+                "url": "https://drive.google.com/uc?export=download&id=1IEc2m2i74SmIY-g1xaI7tibhxiZg3rIO",
+                "platform": "direct_audio",
+                "spotify_url": null,
                 "pub_date": "Mon, 20 Apr 2025 18:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1IEc2m2i74SmIY-g1xaI7tibhxiZg3rIO",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1IEc2m2i74SmIY-g1xaI7tibhxiZg3rIO"
               }
             ]
           }
@@ -4659,24 +5438,40 @@
             ],
             "podcasts": [
               {
+                "kind": "short_podcast",
+                "title": "U11F1 · [Kort] · Grundbog 11: Postpsykologisk subjektiveringsteori",
+                "url": "https://drive.google.com/uc?export=download&id=1gCDpAkBLOkS6qfneYULcXmIDgdzxiSto",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Mon, 20 Apr 2025 14:00:00 +0200",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1gCDpAkBLOkS6qfneYULcXmIDgdzxiSto",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1gCDpAkBLOkS6qfneYULcXmIDgdzxiSto"
+              },
+              {
                 "kind": "lydbog",
                 "title": "U11F1 · [Lydbog] · Grundbog 11: Postpsykologisk subjektiveringsteori",
-                "url": "https://open.spotify.com/episode/01ABibCEeeCgrD0XIaktQ7",
-                "platform": "spotify",
+                "url": "https://drive.google.com/uc?export=download&id=12VY7fppO25ZfJ9JZHWd8jZL5QRXRGJQv",
+                "platform": "direct_audio",
+                "spotify_url": null,
                 "pub_date": "Mon, 20 Apr 2025 16:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=12VY7fppO25ZfJ9JZHWd8jZL5QRXRGJQv",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "12VY7fppO25ZfJ9JZHWd8jZL5QRXRGJQv"
               },
               {
-                "kind": "audio",
+                "kind": "podcast",
                 "title": "U11F1 · Grundbog 11: Postpsykologisk subjektiveringsteori",
-                "url": "https://open.spotify.com/episode/6AcffOFLVQp2fo44lsCUIs",
-                "platform": "spotify",
+                "url": "https://drive.google.com/uc?export=download&id=1MosIEhgOfScp2d7UhQMgxZR3f4rJCmHz",
+                "platform": "direct_audio",
+                "spotify_url": null,
                 "pub_date": "Mon, 20 Apr 2025 20:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1MosIEhgOfScp2d7UhQMgxZR3f4rJCmHz",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1MosIEhgOfScp2d7UhQMgxZR3f4rJCmHz"
               }
             ]
           }
@@ -4706,22 +5501,20 @@
         ],
         "podcasts": [
           {
-            "kind": "audio",
+            "kind": "podcast",
             "title": "U11F1 · Alle kilder",
-            "url": "https://open.spotify.com/episode/3AGh7c4SMAxxkLHnhCXXYh",
-            "platform": "spotify",
+            "url": "https://drive.google.com/uc?export=download&id=1vz4ZQ9axryWHpUeb5mHt9MXGCeZoc4SI",
+            "platform": "direct_audio",
+            "spotify_url": null,
             "pub_date": "Mon, 20 Apr 2025 08:00:00 +0200",
             "source_audio_url": "https://drive.google.com/uc?export=download&id=1vz4ZQ9axryWHpUeb5mHt9MXGCeZoc4SI",
             "duration_seconds": null,
-            "duration_label": ""
+            "duration_label": "",
+            "episode_key": "1vz4ZQ9axryWHpUeb5mHt9MXGCeZoc4SI"
           }
         ]
       },
-      "warnings": [
-        "Duplicate podcast asset detected; kept newest RSS item for: U11F1 · Gergen (1999)",
-        "Duplicate podcast asset detected; kept newest RSS item for: U11F1 · Grundbog 11: Postpsykologisk subjektiveringsteori",
-        "Duplicate podcast asset detected; kept newest RSS item for: U11F1 · Hacking (2007)"
-      ]
+      "warnings": []
     },
     {
       "lecture_key": "W11L2",
@@ -4783,14 +5576,28 @@
             ],
             "podcasts": [
               {
-                "kind": "audio",
+                "kind": "short_podcast",
+                "title": "U11F2 · [Kort] · Raggatt (2002)",
+                "url": "https://drive.google.com/uc?export=download&id=1kSz0SJTFkflGuuGfkBSu64gHOlL30F-T",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Tue, 21 Apr 2025 12:00:00 +0200",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1kSz0SJTFkflGuuGfkBSu64gHOlL30F-T",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1kSz0SJTFkflGuuGfkBSu64gHOlL30F-T"
+              },
+              {
+                "kind": "podcast",
                 "title": "U11F2 · Raggatt (2002)",
-                "url": "https://open.spotify.com/episode/2koT7vhq4BZXI9NOozJsIY",
-                "platform": "spotify",
+                "url": "https://drive.google.com/uc?export=download&id=166tosLmcP5APDj6mqpON2tb5PACz8FsG",
+                "platform": "direct_audio",
+                "spotify_url": null,
                 "pub_date": "Wed, 22 Apr 2025 02:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=166tosLmcP5APDj6mqpON2tb5PACz8FsG",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "166tosLmcP5APDj6mqpON2tb5PACz8FsG"
               }
             ]
           }
@@ -4837,14 +5644,28 @@
             ],
             "podcasts": [
               {
-                "kind": "audio",
+                "kind": "short_podcast",
+                "title": "U11F2 · [Kort] · Bank, M. (2014). Narrative psykologier. I Køppe, S. & Dammeyer, J. (Red.)",
+                "url": "https://drive.google.com/uc?export=download&id=1QffXMehXqtrAA1bGQNNl71n-iJqgifWo",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Tue, 21 Apr 2025 18:00:00 +0200",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1QffXMehXqtrAA1bGQNNl71n-iJqgifWo",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1QffXMehXqtrAA1bGQNNl71n-iJqgifWo"
+              },
+              {
+                "kind": "podcast",
                 "title": "U11F2 · Bank, M. (2014). Narrative psykologier. I Køppe, S. & Dammeyer, J. (Red.)",
-                "url": "https://open.spotify.com/episode/6P38dK7sNOioZXn0UZ6igD",
-                "platform": "spotify",
+                "url": "https://drive.google.com/uc?export=download&id=10x-OLzGj8fW4v-A6nmVMQSEdRGe20aDA",
+                "platform": "direct_audio",
+                "spotify_url": null,
                 "pub_date": "Wed, 22 Apr 2025 00:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=10x-OLzGj8fW4v-A6nmVMQSEdRGe20aDA",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "10x-OLzGj8fW4v-A6nmVMQSEdRGe20aDA"
               }
             ]
           }
@@ -4891,14 +5712,28 @@
             ],
             "podcasts": [
               {
-                "kind": "audio",
+                "kind": "short_podcast",
+                "title": "U11F2 · [Kort] · Bruner (1999)",
+                "url": "https://drive.google.com/uc?export=download&id=125LsPeCPrg6WYwHJEPBKLKKM0i1mhXY6",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Tue, 21 Apr 2025 16:00:00 +0200",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=125LsPeCPrg6WYwHJEPBKLKKM0i1mhXY6",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "125LsPeCPrg6WYwHJEPBKLKKM0i1mhXY6"
+              },
+              {
+                "kind": "podcast",
                 "title": "U11F2 · Bruner (1999)",
-                "url": "https://open.spotify.com/episode/3ZI6jN4YzC4xbs2C4YoqNd",
-                "platform": "spotify",
+                "url": "https://drive.google.com/uc?export=download&id=1ojBt0-ooiWqwpREPu5EHlf6bqaPwMbox",
+                "platform": "direct_audio",
+                "spotify_url": null,
                 "pub_date": "Wed, 22 Apr 2025 08:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1ojBt0-ooiWqwpREPu5EHlf6bqaPwMbox",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1ojBt0-ooiWqwpREPu5EHlf6bqaPwMbox"
               }
             ]
           }
@@ -4945,14 +5780,28 @@
             ],
             "podcasts": [
               {
-                "kind": "audio",
+                "kind": "short_podcast",
+                "title": "U11F2 · [Kort] · McAdams & Pals (2006)",
+                "url": "https://drive.google.com/uc?export=download&id=1yOEcNOrkyq-gQ6xZaWiSGl8oS5qperBP",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Tue, 21 Apr 2025 14:00:00 +0200",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1yOEcNOrkyq-gQ6xZaWiSGl8oS5qperBP",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1yOEcNOrkyq-gQ6xZaWiSGl8oS5qperBP"
+              },
+              {
+                "kind": "podcast",
                 "title": "U11F2 · McAdams & Pals (2006)",
-                "url": "https://open.spotify.com/episode/7HHpaUPSEIBLXHrhzvRLgn",
-                "platform": "spotify",
+                "url": "https://drive.google.com/uc?export=download&id=1YARg7OJD9jkxCTQPwwPdt9yN3_icA7pM",
+                "platform": "direct_audio",
+                "spotify_url": null,
                 "pub_date": "Wed, 22 Apr 2025 04:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1YARg7OJD9jkxCTQPwwPdt9yN3_icA7pM",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1YARg7OJD9jkxCTQPwwPdt9yN3_icA7pM"
               }
             ]
           }
@@ -4999,14 +5848,40 @@
             ],
             "podcasts": [
               {
-                "kind": "audio",
+                "kind": "short_podcast",
+                "title": "U11F2 · [Kort] · Grundbog 9: Narrative teorier",
+                "url": "https://drive.google.com/uc?export=download&id=12iACan0q-VqO6Rx_7UmDlCDd5aIjrbLE",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Tue, 21 Apr 2025 20:00:00 +0200",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=12iACan0q-VqO6Rx_7UmDlCDd5aIjrbLE",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "12iACan0q-VqO6Rx_7UmDlCDd5aIjrbLE"
+              },
+              {
+                "kind": "lydbog",
+                "title": "U11F2 · [Lydbog] · Grundbog 9: Narrative teorier",
+                "url": "https://drive.google.com/uc?export=download&id=1XM8t0OiWsqDXi62IuH_jy_1jPFiDGmEp",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Tue, 21 Apr 2025 22:00:00 +0200",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1XM8t0OiWsqDXi62IuH_jy_1jPFiDGmEp",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1XM8t0OiWsqDXi62IuH_jy_1jPFiDGmEp"
+              },
+              {
+                "kind": "podcast",
                 "title": "U11F2 · Grundbog 9: Narrative teorier",
-                "url": "https://open.spotify.com/episode/0rwskKRjYOP6KOxCMbGTrO",
-                "platform": "spotify",
+                "url": "https://drive.google.com/uc?export=download&id=1-TPQAjGmKnEedRtQyT_XM0sblN1sER23",
+                "platform": "direct_audio",
+                "spotify_url": null,
                 "pub_date": "Wed, 22 Apr 2025 06:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1-TPQAjGmKnEedRtQyT_XM0sblN1sER23",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1-TPQAjGmKnEedRtQyT_XM0sblN1sER23"
               }
             ]
           }
@@ -5036,35 +5911,20 @@
         ],
         "podcasts": [
           {
-            "kind": "lydbog",
-            "title": "U11F2 · [Lydbog] · Grundbog 9: Narrative teorier",
-            "url": "https://open.spotify.com/episode/1GGyQsSWkTdiWFCfYdgRY3",
-            "platform": "spotify",
-            "pub_date": "Tue, 21 Apr 2025 22:00:00 +0200",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1XM8t0OiWsqDXi62IuH_jy_1jPFiDGmEp",
-            "duration_seconds": null,
-            "duration_label": ""
-          },
-          {
-            "kind": "audio",
+            "kind": "podcast",
             "title": "U11F2 · Alle kilder",
-            "url": "https://open.spotify.com/episode/7HZ7vmCS09NUpALAJvwpfh",
-            "platform": "spotify",
+            "url": "https://drive.google.com/uc?export=download&id=1LbMNOprOH8c37ZPHSEs6rXdr8XonJ-Us",
+            "platform": "direct_audio",
+            "spotify_url": null,
             "pub_date": "Tue, 21 Apr 2025 10:00:00 +0200",
             "source_audio_url": "https://drive.google.com/uc?export=download&id=1LbMNOprOH8c37ZPHSEs6rXdr8XonJ-Us",
             "duration_seconds": null,
-            "duration_label": ""
+            "duration_label": "",
+            "episode_key": "1LbMNOprOH8c37ZPHSEs6rXdr8XonJ-Us"
           }
         ]
       },
-      "warnings": [
-        "RSS item could not map to reading; attached to lecture assets: U11F2 · [Lydbog] · Grundbog 9: Narrative teorier",
-        "Duplicate podcast asset detected; kept newest RSS item for: U11F2 · Bruner (1999)",
-        "Duplicate podcast asset detected; kept newest RSS item for: U11F2 · Grundbog 9: Narrative teorier",
-        "Duplicate podcast asset detected; kept newest RSS item for: U11F2 · McAdams & Pals (2006)",
-        "Duplicate podcast asset detected; kept newest RSS item for: U11F2 · Raggatt (2002)",
-        "Duplicate podcast asset detected; kept newest RSS item for: U11F2 · Bank, M. (2014). Narrative psykologier. I Køppe, S. & Dammeyer, J. (Red.)"
-      ]
+      "warnings": []
     },
     {
       "lecture_key": "W12L1",
@@ -5126,14 +5986,28 @@
             ],
             "podcasts": [
               {
-                "kind": "audio",
+                "kind": "short_podcast",
+                "title": "U12F1 · [Kort] · Elias (2000)",
+                "url": "https://drive.google.com/uc?export=download&id=1d4gvrJ-V6N65IkSi5MrvgMgQNOLXhLw1",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Mon, 27 Apr 2025 10:00:00 +0200",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1d4gvrJ-V6N65IkSi5MrvgMgQNOLXhLw1",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1d4gvrJ-V6N65IkSi5MrvgMgQNOLXhLw1"
+              },
+              {
+                "kind": "podcast",
                 "title": "U12F1 · Elias (2000)",
-                "url": "https://open.spotify.com/episode/1sjJnn68l0U9vaTGqGPliU",
-                "platform": "spotify",
+                "url": "https://drive.google.com/uc?export=download&id=1iiZXqVj7JpIgoJJFjH2lnkbNMsq78Eo0",
+                "platform": "direct_audio",
+                "spotify_url": null,
                 "pub_date": "Tue, 28 Apr 2025 00:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1iiZXqVj7JpIgoJJFjH2lnkbNMsq78Eo0",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1iiZXqVj7JpIgoJJFjH2lnkbNMsq78Eo0"
               }
             ]
           }
@@ -5180,14 +6054,40 @@
             ],
             "podcasts": [
               {
-                "kind": "audio",
+                "kind": "short_podcast",
+                "title": "U12F1 · [Kort] · Grundbog 8: Historicitet",
+                "url": "https://drive.google.com/uc?export=download&id=1R9eyoCKZukSL7ACCH2agn7wjaj6bZ6Pb",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Mon, 27 Apr 2025 12:00:00 +0200",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1R9eyoCKZukSL7ACCH2agn7wjaj6bZ6Pb",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1R9eyoCKZukSL7ACCH2agn7wjaj6bZ6Pb"
+              },
+              {
+                "kind": "lydbog",
+                "title": "U12F1 · [Lydbog] · Grundbog 8: Historicitet",
+                "url": "https://drive.google.com/uc?export=download&id=1OWFZGZEE34QTtPNPcawzIcZBv_M155QD",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Mon, 27 Apr 2025 18:00:00 +0200",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1OWFZGZEE34QTtPNPcawzIcZBv_M155QD",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1OWFZGZEE34QTtPNPcawzIcZBv_M155QD"
+              },
+              {
+                "kind": "podcast",
                 "title": "U12F1 · Grundbog 8: Historicitet",
-                "url": "https://open.spotify.com/episode/6w9vHs7jIp9NljE6uvWYuR",
-                "platform": "spotify",
+                "url": "https://drive.google.com/uc?export=download&id=1JO24eJdCVY0YxctEYqcZWqbb8XTMXW-3",
+                "platform": "direct_audio",
+                "spotify_url": null,
                 "pub_date": "Mon, 27 Apr 2025 20:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1JO24eJdCVY0YxctEYqcZWqbb8XTMXW-3",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1JO24eJdCVY0YxctEYqcZWqbb8XTMXW-3"
               }
             ]
           }
@@ -5234,24 +6134,40 @@
             ],
             "podcasts": [
               {
+                "kind": "short_podcast",
+                "title": "U12F1 · [Kort] · Grundbog 14: Perspektiver",
+                "url": "https://drive.google.com/uc?export=download&id=1twiAtdb_MNVuW2mWAOW1c7HLaAhFY4Fq",
+                "platform": "direct_audio",
+                "spotify_url": null,
+                "pub_date": "Mon, 27 Apr 2025 14:00:00 +0200",
+                "source_audio_url": "https://drive.google.com/uc?export=download&id=1twiAtdb_MNVuW2mWAOW1c7HLaAhFY4Fq",
+                "duration_seconds": null,
+                "duration_label": "",
+                "episode_key": "1twiAtdb_MNVuW2mWAOW1c7HLaAhFY4Fq"
+              },
+              {
                 "kind": "lydbog",
                 "title": "U12F1 · [Lydbog] · Grundbog 14: Perspektiver",
-                "url": "https://open.spotify.com/episode/7dw4PweI0UTBbr9sBsTvdj",
-                "platform": "spotify",
+                "url": "https://drive.google.com/uc?export=download&id=1TjlJsJiqjOhn8LIT3UiDSns5bD9iEI_2",
+                "platform": "direct_audio",
+                "spotify_url": null,
                 "pub_date": "Mon, 27 Apr 2025 16:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1TjlJsJiqjOhn8LIT3UiDSns5bD9iEI_2",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1TjlJsJiqjOhn8LIT3UiDSns5bD9iEI_2"
               },
               {
-                "kind": "audio",
+                "kind": "podcast",
                 "title": "U12F1 · Grundbog 14: Perspektiver",
-                "url": "https://open.spotify.com/episode/7LWQKk75Ni7W3qDVNzG6y2",
-                "platform": "spotify",
+                "url": "https://drive.google.com/uc?export=download&id=1BigIglpbdkHe14fcNUcgWAfWHGB1lmMd",
+                "platform": "direct_audio",
+                "spotify_url": null,
                 "pub_date": "Mon, 27 Apr 2025 22:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1BigIglpbdkHe14fcNUcgWAfWHGB1lmMd",
                 "duration_seconds": null,
-                "duration_label": ""
+                "duration_label": "",
+                "episode_key": "1BigIglpbdkHe14fcNUcgWAfWHGB1lmMd"
               }
             ]
           }
@@ -5281,33 +6197,20 @@
         ],
         "podcasts": [
           {
-            "kind": "lydbog",
-            "title": "U12F1 · [Lydbog] · Grundbog 8: Historicitet",
-            "url": "https://open.spotify.com/episode/6Gc6H3MVrWELKhxUeGGyZ4",
-            "platform": "spotify",
-            "pub_date": "Mon, 27 Apr 2025 18:00:00 +0200",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1OWFZGZEE34QTtPNPcawzIcZBv_M155QD",
-            "duration_seconds": null,
-            "duration_label": ""
-          },
-          {
-            "kind": "audio",
+            "kind": "podcast",
             "title": "U12F1 · Alle kilder",
-            "url": "https://open.spotify.com/episode/7mCCM5rcTrcWzKNJcpkfGx",
-            "platform": "spotify",
+            "url": "https://drive.google.com/uc?export=download&id=1nVb_5XxJnzYt3erQWcjmgsD_PuKB6Gm-",
+            "platform": "direct_audio",
+            "spotify_url": null,
             "pub_date": "Mon, 27 Apr 2025 08:00:00 +0200",
             "source_audio_url": "https://drive.google.com/uc?export=download&id=1nVb_5XxJnzYt3erQWcjmgsD_PuKB6Gm-",
             "duration_seconds": null,
-            "duration_label": ""
+            "duration_label": "",
+            "episode_key": "1nVb_5XxJnzYt3erQWcjmgsD_PuKB6Gm-"
           }
         ]
       },
-      "warnings": [
-        "RSS item could not map to reading; attached to lecture assets: U12F1 · [Lydbog] · Grundbog 8: Historicitet",
-        "Duplicate podcast asset detected; kept newest RSS item for: U12F1 · Elias (2000)",
-        "Duplicate podcast asset detected; kept newest RSS item for: U12F1 · Grundbog 14: Perspektiver",
-        "Duplicate podcast asset detected; kept newest RSS item for: U12F1 · Grundbog 8: Historicitet"
-      ]
+      "warnings": []
     }
   ],
   "warnings": []

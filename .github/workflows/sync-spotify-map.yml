@@ -56,7 +56,7 @@ jobs:
       - name: Sync Spotify map
         run: |
           python scripts/sync_spotify_map.py \
-            --rss "shows/${SHOW}/feeds/rss.xml" \
+            --inventory "shows/${SHOW}/episode_inventory.json" \
             --spotify-map "shows/${SHOW}/spotify_map.json" \
             --subject-slug "${SUBJECT_SLUG}" \
             --spotify-show-url "${SPOTIFY_SHOW_URL}" \

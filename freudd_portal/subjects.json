@@ -10,6 +10,7 @@
         "reading_summaries_path": "shows/personlighedspsykologi-en/reading_summaries.json",
         "weekly_overview_summaries_path": "shows/personlighedspsykologi-en/weekly_overview_summaries.json",
         "quiz_files_root": "/var/www/quizzes/personlighedspsykologi",
+        "episode_inventory_path": "shows/personlighedspsykologi-en/episode_inventory.json",
         "slides_catalog_path": "shows/personlighedspsykologi-en/slides_catalog.json",
         "slides_files_root": "/var/www/slides/personlighedspsykologi"
       }
@@ -25,6 +26,7 @@
         "quiz_links_path": "shows/bioneuro/quiz_links.json",
         "quiz_files_root": "/var/www/quizzes/bioneuro",
         "feed_rss_path": "shows/bioneuro/feeds/rss.xml",
+        "episode_inventory_path": "shows/bioneuro/episode_inventory.json",
         "spotify_map_path": "shows/bioneuro/spotify_map.json",
         "content_manifest_path": "shows/bioneuro/content_manifest.json",
         "reading_files_root": "/var/www/readings/bioneuro",

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate lecture-slide podcast coverage in the Personlighedspsykologi RSS feed."""
+"""Validate lecture-slide podcast coverage in the Personlighedspsykologi episode inventory."""
 
 from __future__ import annotations
 
@@ -20,9 +20,14 @@ def parse_args() -> argparse.Namespace:
         help="Path to slides_catalog.json.",
     )
     parser.add_argument(
+        "--inventory",
+        default="shows/personlighedspsykologi-en/episode_inventory.json",
+        help="Path to the generated episode inventory.",
+    )
+    parser.add_argument(
         "--rss",
         default="shows/personlighedspsykologi-en/feeds/rss.xml",
-        help="Path to the generated RSS feed.",
+        help="Legacy fallback path to the generated RSS feed.",
     )
     parser.add_argument(
         "--warn-only",
@@ -94,6 +99,21 @@ def iter_slide_expectations(
             yield lecture_key, subcategory, subject
 
 
+def inventory_titles(path: Path) -> set[str]:
+    payload = load_json(path)
+    raw_episodes = payload.get("episodes")
+    if not isinstance(raw_episodes, list):
+        raise SystemExit(f"Invalid episode inventory: missing episodes list in {path}")
+    titles: set[str] = set()
+    for item in raw_episodes:
+        if not isinstance(item, dict):
+            continue
+        title = str(item.get("title") or "").strip()
+        if title:
+            titles.add(title)
+    return titles
+
+
 def rss_titles(path: Path) -> set[str]:
     tree = ET.parse(path)
     channel = tree.getroot().find("channel")
@@ -124,10 +144,14 @@ def main() -> int:
     args = parse_args()
     root = repo_root()
     slides_catalog_path = (root / args.slides_catalog).resolve()
+    inventory_path = (root / args.inventory).resolve()
     rss_path = (root / args.rss).resolve()
     feed_module = load_feed_module(root)
     slide_payload = load_json(slides_catalog_path)
-    titles = rss_titles(rss_path)
+    if inventory_path.exists():
+        titles = inventory_titles(inventory_path)
+    else:
+        titles = rss_titles(rss_path)
 
     missing_full: list[str] = []
     missing_brief: list[str] = []

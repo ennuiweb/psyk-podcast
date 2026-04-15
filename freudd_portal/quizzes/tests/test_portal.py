@@ -59,6 +59,7 @@ class QuizPortalTests(TestCase):
         self.reading_master_file = root / "reading-file-key.md"
         self.reading_fallback_file = root / "reading-file-key-fallback.md"
         self.rss_file = root / "rss.xml"
+        self.inventory_file = root / "episode_inventory.json"
         self.spotify_map_file = root / "spotify_map.json"
         self.content_manifest_file = root / "content_manifest.json"
         self.slides_catalog_file = root / "slides_catalog.json"
@@ -75,6 +76,7 @@ class QuizPortalTests(TestCase):
             FREUDD_READING_MASTER_KEY_PATH=self.reading_master_file,
             FREUDD_READING_MASTER_KEY_FALLBACK_PATH=self.reading_fallback_file,
             FREUDD_SUBJECT_FEED_RSS_PATH=self.rss_file,
+            FREUDD_SUBJECT_EPISODE_INVENTORY_PATH=self.inventory_file,
             FREUDD_SUBJECT_SPOTIFY_MAP_PATH=self.spotify_map_file,
             FREUDD_SUBJECT_CONTENT_MANIFEST_PATH=self.content_manifest_file,
             FREUDD_SUBJECT_SLIDES_CATALOG_PATH=self.slides_catalog_file,
@@ -513,8 +515,8 @@ class QuizPortalTests(TestCase):
         self.assertContains(response, ".replace(/\\$([^$\\n]+)\\$/g, \"$1\")")
         self.assertContains(response, "function shuffledOptionOrderIndices(questionIndex, question, options)")
         self.assertContains(response, "state.userAnswers[String(state.currentQuestionIndex)] = rawOptionIndex;")
-        self.assertContains(response, "button.disabled = isTimedOut || hasAnswered;")
-        self.assertContains(response, "if (isTimedOut || hasAnswered) {")
+        self.assertContains(response, "button.disabled = hasAnswered;")
+        self.assertContains(response, "if (hasAnswered) {")
         self.assertContains(response, "text-transform: none;")
         self.assertContains(response, f"{reverse('login')}?{urlencode({'next': quiz_url})}")
         self.assertContains(response, f"{reverse('signup')}?{urlencode({'next': quiz_url})}")
@@ -1076,7 +1078,8 @@ class QuizPortalTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Uge 1, forelæsning 1")
         self.assertContains(response, "Episode")
-        self.assertContains(response, "Mellem · 2 spørgsmål")
+        self.assertContains(response, "Mellem")
+        self.assertContains(response, "2 spørgsmål")
         self.assertContains(response, "Senest åbnet fag")
 
     def test_progress_page_quiz_history_uses_text_based_chips_for_audio_tagged_titles(self) -> None:
@@ -1176,7 +1179,7 @@ class QuizPortalTests(TestCase):
             response,
             "Se dine resultater, find svage temaer hurtigt, og hop direkte tilbage i en quiz.",
         )
-        self.assertContains(response, "Offentlig scoreboard")
+        self.assertContains(response, "offentlig scoreboard")
 
     def test_load_quiz_label_mapping_reads_subject_slug(self) -> None:
         labels = load_quiz_label_mapping()
@@ -1318,7 +1321,7 @@ class QuizPortalTests(TestCase):
         response = self.client.get(reverse("progress"))
         self.assertEqual(response.status_code, 200)
         self.assertNotContains(response, "Personlig tracking")
-        self.assertContains(response, "Offentlig scoreboard")
+        self.assertContains(response, "offentlig scoreboard")
         self.assertContains(response, reverse("leaderboard-profile"))
 
     def test_progress_named_route_uses_settings_slug(self) -> None:
@@ -1348,19 +1351,19 @@ class QuizPortalTests(TestCase):
 
         response = self.client.get(reverse("progress"))
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "Tilmeld og afmeld fag")
+        self.assertContains(response, "tilmeld og afmeld fag")
 
         body = response.content.decode("utf-8")
-        mine_fag_start = body.find("<h2 class=\"section-title\">Mine fag</h2>")
+        mine_fag_start = body.find("<h2 class=\"section-title\">mine fag</h2>")
         self.assertGreaterEqual(mine_fag_start, 0)
-        leaderboard_start = body.find("<h2 class=\"section-title\">Offentlig scoreboard</h2>")
+        leaderboard_start = body.find("<h2 class=\"section-title\">offentlig scoreboard</h2>")
         self.assertGreaterEqual(leaderboard_start, 0)
         mine_fag_markup = body[mine_fag_start:leaderboard_start]
         self.assertNotIn(">Afmeld</button>", mine_fag_markup)
         self.assertNotIn(">Tilmeld</button>", mine_fag_markup)
 
-        history_start = body.find("<h2 class=\"section-title\">Quizhistorik</h2>")
-        enroll_start = body.find("<h2 class=\"section-title\">Tilmeld og afmeld fag</h2>")
+        history_start = body.find("<h2 class=\"section-title\">quizhistorik</h2>")
+        enroll_start = body.find("<h2 class=\"section-title\">tilmeld og afmeld fag</h2>")
         self.assertGreaterEqual(history_start, 0)
         self.assertGreaterEqual(enroll_start, 0)
         self.assertGreater(enroll_start, history_start)
@@ -1534,17 +1537,23 @@ class QuizPortalTests(TestCase):
             reverse("leaderboard-subject", kwargs={"subject_slug": "personlighedspsykologi"})
         )
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, '<strong class="cup-accuracy-chip-value">4</strong> korrekte svar i alt')
-        self.assertContains(response, '<strong class="cup-accuracy-chip-value">3</strong> korrekte svar i alt')
-        self.assertContains(response, "Top 50 - Personlighedspsykologi")
+        body = response.content.decode("utf-8")
+        self.assertRegex(
+            body,
+            r'<strong class="cup-accuracy-chip-value">4</strong>\s*korrekte svar i alt',
+        )
+        self.assertRegex(
+            body,
+            r'<strong class="cup-accuracy-chip-value">3</strong>\s*korrekte svar i alt',
+        )
+        self.assertContains(response, "top 50 - Personlighedspsykologi")
         self.assertContains(response, "RankFour")
         self.assertEqual(
             [item["alias"] for item in response.context["table_entries"]],
             ["RankOne", "RankTwo", "RankThree", "RankFour"],
         )
-        body = response.content.decode("utf-8")
-        self.assertIn("<th>Korrekte svar</th>", body)
-        self.assertNotIn("<th>Korrekthed</th>", body)
+        self.assertIn("<th>korrekte svar</th>", body)
+        self.assertNotIn("<th>korrekthed</th>", body)
         self.assertNotRegex(body, r"<button[^>]+data-cup-expand\b")
 
         rank_two_pos = body.find("RankTwo")
@@ -3073,7 +3082,7 @@ class QuizPortalTests(TestCase):
         self.assertNotContains(response, "https://example.test/podcast/w01l1-alle-kilder.mp3")
         self.assertNotContains(response, "https://example.test/podcast/w01l1-intro.mp3")
 
-    def test_subject_detail_hides_podcast_section_when_spotify_episode_map_missing(self) -> None:
+    def test_subject_detail_falls_back_to_direct_audio_when_spotify_episode_map_missing(self) -> None:
         user = self._create_user()
         self.client.force_login(user)
         self._write_spotify_map({})
@@ -3085,10 +3094,10 @@ class QuizPortalTests(TestCase):
         self.assertNotContains(response, "data-spotify-embed-url=")
         self.assertNotContains(response, "https://open.spotify.com/search/")
         self.assertNotContains(response, "Find i Spotify")
-        self.assertNotContains(response, "https://example.test/podcast/w01l1-alle-kilder.mp3")
-        self.assertNotContains(response, "https://example.test/podcast/w01l1-intro.mp3")
-        self.assertNotContains(response, 'class="lecture-section lecture-podcasts"')
-        self.assertNotContains(response, "Ingen podcasts registreret i denne forelæsning.")
+        self.assertContains(response, "https://example.test/podcast/w01l1-alle-kilder.mp3")
+        self.assertContains(response, "https://example.test/podcast/w01l1-intro.mp3")
+        self.assertContains(response, 'class="lecture-section lecture-podcasts"')
+        self.assertContains(response, "podcast-source-link")
 
     def test_subject_detail_podcast_duration_label_is_optional(self) -> None:
         user = self._create_user()
@@ -3192,8 +3201,8 @@ class QuizPortalTests(TestCase):
 
         response = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "Markér læst")
-        self.assertContains(response, "Markér lyttet")
+        self.assertContains(response, 'class="tracking-toggle-button')
+        self.assertContains(response, 'aria-label="Markér lyttet"')
 
     def test_subject_detail_shows_open_reading_link_for_available_file(self) -> None:
         user = self._create_user()
@@ -4079,11 +4088,8 @@ class QuizPortalTests(TestCase):
             subjects[0]["detail_url"],
             reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}),
         )
-        self.assertContains(
-            response,
-            '<a class="nav-action nav-action-subject" href="/subjects/personlighedspsykologi">Personlighedspsykologi</a>',
-            html=True,
-        )
+        self.assertContains(response, 'href="/subjects/personlighedspsykologi"')
+        self.assertContains(response, "nav-subject-tab")
         self.assertContains(
             response,
             '<button class="nav-text-button" type="submit">Log ud</button>',

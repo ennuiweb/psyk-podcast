@@ -24,6 +24,11 @@ python3 podcast-tools/gdrive_podcast_feed.py --config shows/bioneuro/config.loca
 python3 podcast-tools/gdrive_podcast_feed.py --config shows/bioneuro/config.local.json
 ```
 
+Inventory-first note:
+- Feed generation now writes both `feeds/rss.xml` and `episode_inventory.json`.
+- Freudd manifest rebuilds consume `episode_inventory.json` as the primary podcast source and only fall back to RSS if the inventory file is unavailable.
+- This keeps manifest generation aligned with Drive files even when Spotify mappings are incomplete.
+
 Quiz mapping from local NotebookLM output:
 
 ```bash
@@ -59,6 +64,13 @@ Setup notes:
 - `drive_folder_id` is intentionally left as `__DRIVE_FOLDER_ID__` in all config variants.
 - Current matching expectation is plain `W#` tokens in Drive folder/file names (for example `W1`, `W2`, ...).
 - Feed generation uses `feed.semester_week_number_source = "lecture_key"` plus `title_blocks = ["course_week_lecture", "subject_or_type"]` with `audio_category_prefix_position = "after_first_block"` so Freudd-facing RSS titles start with parseable `U#F#` lecture keys.
+
+Spotify map sync note:
+- `scripts/sync_spotify_map.py` syncs `shows/bioneuro/spotify_map.json` from `episode_inventory.json`.
+- The file format is version `2` with `by_episode_key` as the primary map and `by_rss_title` retained as a compatibility fallback.
+- Existing valid Spotify episode mappings are preserved.
+- If Spotify show lookup succeeds (`--spotify-show-url` + `SPOTIFY_CLIENT_ID`/`SPOTIFY_CLIENT_SECRET`), matching inventory episodes are mapped to direct episode URLs.
+- Unresolved inventory episodes fail sync by default; `--allow-unresolved` writes resolved entries and records the unresolved remainder.
 
 Slides mapping note (manual only):
 - Slide mapping til `W##L#` + underkategori skal udføres manuelt.

@@ -185,6 +185,11 @@ def save_feed(root, destination: Path) -> None:
     tree.write(destination, encoding="utf-8", xml_declaration=True)
 
 
+def save_json(payload: Dict[str, Any], destination: Path) -> None:
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    destination.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+
 def build_drive_service(credentials_path: Path):
     if service_account is None or build is None:
         raise SystemExit(
@@ -195,6 +200,96 @@ def build_drive_service(credentials_path: Path):
         str(credentials_path), scopes=SCOPES
     )
     return build("drive", "v3", credentials=credentials, cache_discovery=False)
+
+
+def _podcast_kind_from_audio_category(value: Any) -> str:
+    token = str(value or "").strip().lower()
+    if token == "kort_podcast":
+        return "short_podcast"
+    if token == "lydbog":
+        return "lydbog"
+    return "podcast"
+
+
+def _default_inventory_path(output_feed: Path) -> Path:
+    if output_feed.parent.name == "feeds":
+        return output_feed.parent.parent / "episode_inventory.json"
+    return output_feed.with_name("episode_inventory.json")
+
+
+def _output_inventory_path(config: Dict[str, Any]) -> Optional[Path]:
+    raw_path = str(config.get("output_inventory") or "").strip()
+    if raw_path:
+        return Path(raw_path)
+    return None
+
+
+def _inventory_show_slug(config: Dict[str, Any]) -> Optional[str]:
+    output_feed = Path(str(config.get("output_feed") or "")).expanduser()
+    if output_feed.parent.name == "feeds":
+        show_slug = output_feed.parent.parent.name.strip()
+        if show_slug:
+            return show_slug
+    return None
+
+
+def build_episode_inventory_payload(
+    *,
+    episodes: Sequence[Dict[str, Any]],
+    config: Dict[str, Any],
+    last_build: dt.datetime,
+) -> Dict[str, Any]:
+    quiz_cfg = config.get("quiz") if isinstance(config.get("quiz"), dict) else {}
+    subject_slug = str(
+        config.get("subject_slug")
+        or quiz_cfg.get("subject_slug")
+        or ""
+    ).strip().lower() or None
+    show_slug = _inventory_show_slug(config)
+    output_feed = Path(str(config.get("output_feed") or "")).expanduser()
+
+    serialized_episodes: List[Dict[str, Any]] = []
+    for episode in episodes:
+        if not isinstance(episode, dict):
+            continue
+        serialized_episodes.append(
+            {
+                "episode_key": str(episode.get("episode_key") or episode.get("guid") or "").strip(),
+                "guid": str(episode.get("guid") or "").strip(),
+                "title": str(episode.get("title") or "").strip(),
+                "description": str(episode.get("description") or "").strip(),
+                "link": str(episode.get("link") or "").strip(),
+                "pub_date": str(episode.get("pubDate") or "").strip(),
+                "published_at": (
+                    episode["published_at"].isoformat()
+                    if isinstance(episode.get("published_at"), dt.datetime)
+                    else str(episode.get("published_at") or "").strip()
+                ),
+                "mime_type": str(episode.get("mimeType") or "").strip(),
+                "size": episode.get("size"),
+                "duration": str(episode.get("duration") or "").strip(),
+                "image": str(episode.get("image") or "").strip(),
+                "audio_url": str(episode.get("audio_url") or "").strip(),
+                "lecture_key": str(episode.get("lecture_key") or "").strip(),
+                "episode_kind": str(episode.get("episode_kind") or "").strip(),
+                "podcast_kind": str(episode.get("podcast_kind") or "").strip(),
+                "source_name": str(episode.get("source_name") or "").strip(),
+                "source_drive_file_id": str(episode.get("source_drive_file_id") or "").strip(),
+                "sort_week": episode.get("sort_week"),
+                "sort_lecture": episode.get("sort_lecture"),
+                "sort_tail": bool(episode.get("sort_tail")),
+                "sort_tail_index": episode.get("sort_tail_index"),
+            }
+        )
+
+    return {
+        "version": 1,
+        "show_slug": show_slug,
+        "subject_slug": subject_slug,
+        "generated_at": last_build.isoformat(),
+        "feed_path": str(output_feed),
+        "episodes": serialized_episodes,
+    }
 
 
 def _is_retryable_http_error(exc: BaseException) -> bool:
@@ -1914,7 +2009,11 @@ DESCRIPTION_BLOCKS_ALLOWED = {
 }
 DEFAULT_TITLE_BLOCKS = ["semester_week_lecture", "subject_or_type", "week_range"]
 DEFAULT_DESCRIPTION_BLOCKS = ["descriptor_subject", "topic", "lecture", "semester_week", "quiz"]
-FEED_SORT_MODES = {"published_at_desc", "wxlx_kind_priority"}
+FEED_SORT_MODES = {
+    "published_at_desc",
+    "wxlx_kind_priority",
+    "wxlx_source_pair_priority",
+}
 DEFAULT_FEED_SORT_MODE = "published_at_desc"
 SEMESTER_WEEK_NUMBER_SOURCES = {"published_at", "lecture_key", "course_week", "auto"}
 DEFAULT_SEMESTER_WEEK_NUMBER_SOURCE = "published_at"
@@ -2492,12 +2591,85 @@ def _wxlx_oldest_sort_priority(item: Dict[str, Any]) -> int:
     return 3
 
 
+def _normalize_sort_subject_key(value: Any) -> str:
+    return re.sub(r"\s+", " ", str(value or "")).strip().casefold()
+
+
+def _wxlx_source_pair_category_rank(item: Dict[str, Any]) -> int:
+    source_kind = str(item.get("sort_source_kind") or "").strip().lower()
+    if source_kind == "weekly_overview":
+        return 0
+    if source_kind == "reading":
+        return 1
+    if source_kind == "slide":
+        return 2
+    if bool(item.get("is_tts")):
+        return 3
+    return 4
+
+
+def _wxlx_source_pair_variant_rank(item: Dict[str, Any]) -> int:
+    podcast_kind = str(item.get("podcast_kind") or "").strip().lower()
+    if podcast_kind == "kort_podcast":
+        return 0
+    if podcast_kind == "podcast":
+        return 1
+    if podcast_kind == "lydbog":
+        return 2
+    return 3
+
+
+def _order_wxlx_block_pairs(
+    values: List[Tuple[int, Dict[str, Any]]],
+    *,
+    sort_mode: str,
+) -> List[Tuple[int, Dict[str, Any]]]:
+    if sort_mode != "wxlx_source_pair_priority":
+        return sorted(
+            values,
+            key=lambda pair: (
+                _wxlx_kind_priority(pair[1]),
+                -_published_sort_value(pair[1]),
+                pair[0],
+            ),
+        )
+
+    grouped_pairs: Dict[Tuple[int, str], List[Tuple[int, Dict[str, Any]]]] = {}
+    for index, item in values:
+        group_key = (
+            _wxlx_source_pair_category_rank(item),
+            _normalize_sort_subject_key(item.get("sort_subject_key") or item.get("title")),
+        )
+        grouped_pairs.setdefault(group_key, []).append((index, item))
+
+    ordered_groups: List[Tuple[int, float, int, Tuple[int, str], List[Tuple[int, Dict[str, Any]]]]] = []
+    for group_key, grouped_values in grouped_pairs.items():
+        anchor = max(_published_sort_value(item) for _, item in grouped_values)
+        first_seen_index = min(index for index, _ in grouped_values)
+        ordered_groups.append((group_key[0], -anchor, first_seen_index, group_key, grouped_values))
+    ordered_groups.sort()
+
+    ordered_values: List[Tuple[int, Dict[str, Any]]] = []
+    for _, _, _, _, grouped_values in ordered_groups:
+        grouped_values.sort(
+            key=lambda pair: (
+                _wxlx_source_pair_variant_rank(pair[1]),
+                -_published_sort_value(pair[1]),
+                pair[0],
+            )
+        )
+        ordered_values.extend(grouped_values)
+    return ordered_values
+
+
 def _resequence_wxlx_block_pubdates_for_oldest_clients(
     values: List[Tuple[int, Dict[str, Any]]],
     feed_config: Dict[str, Any],
-) -> None:
+    *,
+    sort_mode: str,
+) -> Optional[List[Tuple[int, Dict[str, Any]]]]:
     if len(values) <= 1:
-        return
+        return None
 
     published_values: List[dt.datetime] = []
     for _, item in values:
@@ -2507,18 +2679,21 @@ def _resequence_wxlx_block_pubdates_for_oldest_clients(
                 published = published.replace(tzinfo=dt.timezone.utc)
             published_values.append(published)
             continue
-        return
+        return None
 
     published_values.sort()
     rewrite_config = _resolve_pubdate_year_rewrite(feed_config)
-    oldest_order = sorted(
-        values,
-        key=lambda pair: (
-            _wxlx_oldest_sort_priority(pair[1]),
-            _published_sort_value(pair[1]),
-            pair[0],
-        ),
-    )
+    if sort_mode == "wxlx_source_pair_priority":
+        oldest_order = _order_wxlx_block_pairs(values, sort_mode=sort_mode)
+    else:
+        oldest_order = sorted(
+            values,
+            key=lambda pair: (
+                _wxlx_oldest_sort_priority(pair[1]),
+                _published_sort_value(pair[1]),
+                pair[0],
+            ),
+        )
     for position, (_, item) in enumerate(oldest_order):
         reassigned = published_values[position]
         item["published_at"] = reassigned
@@ -2526,6 +2701,7 @@ def _resequence_wxlx_block_pubdates_for_oldest_clients(
             format_rfc2822(reassigned),
             rewrite_config,
         )
+    return oldest_order if sort_mode == "wxlx_source_pair_priority" else None
 
 
 def _extract_grundbog_subject_from_text(value: Any) -> Optional[str]:
@@ -2635,7 +2811,9 @@ def _build_tail_grundbog_episode(
     generated["sort_tail_index"] = tail_index
     generated["sort_week"] = None
     generated["sort_lecture"] = None
+    generated["lecture_key"] = None
     generated["is_tts"] = True
+    generated["podcast_kind"] = "lydbog"
     return generated
 
 
@@ -2768,14 +2946,15 @@ def _sort_feed_episodes(
     ordered: List[Dict[str, Any]] = []
     for _, _, _, group_key, values in grouped_entries:
         if group_key[0] == "block":
-            _resequence_wxlx_block_pubdates_for_oldest_clients(values, feed_config)
-            values.sort(
-                key=lambda pair: (
-                    _wxlx_kind_priority(pair[1]),
-                    -_published_sort_value(pair[1]),
-                    pair[0],
-                )
+            resequenced_order = _resequence_wxlx_block_pubdates_for_oldest_clients(
+                values,
+                feed_config,
+                sort_mode=sort_mode,
             )
+            if resequenced_order is not None:
+                values[:] = resequenced_order
+            else:
+                values[:] = _order_wxlx_block_pairs(values, sort_mode=sort_mode)
         elif group_key[0] == "tail":
             values.sort(
                 key=lambda pair: (
@@ -3426,6 +3605,7 @@ def build_episode_entry(
     )
 
     return {
+        "episode_key": meta.get("guid") or file_entry["id"],
         "guid": meta.get("guid") or file_entry["id"],
         "title": meta.get("title") or base_title,
         "description": meta.get("description") or meta.get("summary") or base_title,
@@ -3438,7 +3618,19 @@ def build_episode_entry(
         "explicit": str(meta.get("explicit", explicit_default)).lower(),
         "image": meta.get("image") or feed_config.get("image"),
         "episode_kind": episode_kind,
+        "podcast_kind": _podcast_kind_from_audio_category(audio_category),
         "is_tts": audio_category == "lydbog",
+        "lecture_key": (
+            f"W{int(sort_week_number):02d}L{int(lecture_number)}"
+            if sort_week_number and lecture_number
+            else None
+        ),
+        "source_name": str(file_entry.get("name") or "").strip(),
+        "source_drive_file_id": str(file_entry.get("id") or "").strip(),
+        "sort_source_kind": (
+            "weekly_overview" if is_weekly_overview else ("slide" if is_slide else "reading")
+        ),
+        "sort_subject_key": cleaned_subject or cleaned_title or raw_title,
         "sort_week": sort_week_number,
         "sort_lecture": lecture_number,
         "sort_tail": is_unassigned_tail,
@@ -3991,6 +4183,15 @@ def main() -> None:
     output_path = Path(config["output_feed"])
     save_feed(feed_document, output_path)
     print(f"Feed written to {output_path}")
+    inventory_output_path = _output_inventory_path(config)
+    if inventory_output_path is not None:
+        inventory_payload = build_episode_inventory_payload(
+            episodes=episodes,
+            config=config,
+            last_build=last_build,
+        )
+        save_json(inventory_payload, inventory_output_path)
+        print(f"Episode inventory written to {inventory_output_path}")
 
 
 if __name__ == "__main__":

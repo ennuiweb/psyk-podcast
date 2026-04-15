@@ -27,6 +27,7 @@ class SubjectContentManifestTests(TestCase):
         self.fallback_reading_file = root / "reading-fallback.md"
         self.quiz_links_file = root / "quiz_links.json"
         self.rss_file = root / "rss.xml"
+        self.inventory_file = root / "episode_inventory.json"
         self.spotify_map_file = root / "spotify_map.json"
         self.reading_summaries_file = root / "reading_summaries.json"
         self.weekly_overview_summaries_file = root / "weekly_overview_summaries.json"
@@ -163,6 +164,7 @@ class SubjectContentManifestTests(TestCase):
             FREUDD_READING_MASTER_KEY_FALLBACK_PATH=self.fallback_reading_file,
             QUIZ_LINKS_JSON_PATH=self.quiz_links_file,
             FREUDD_SUBJECT_FEED_RSS_PATH=self.rss_file,
+            FREUDD_SUBJECT_EPISODE_INVENTORY_PATH=self.inventory_file,
             FREUDD_SUBJECT_SPOTIFY_MAP_PATH=self.spotify_map_file,
             FREUDD_SUBJECT_CONTENT_MANIFEST_PATH=self.manifest_file,
             FREUDD_SUBJECT_SLIDES_CATALOG_PATH=self.slides_catalog_file,
@@ -405,6 +407,7 @@ class SubjectContentManifestTests(TestCase):
             str(self.weekly_overview_summaries_file),
         )
         self.assertEqual(source_meta["quiz_links_path"], str(self.quiz_links_file))
+        self.assertEqual(source_meta["episode_inventory_path"], str(self.inventory_file))
         self.assertEqual(source_meta["rss_path"], str(self.rss_file))
         self.assertEqual(source_meta["spotify_map_path"], str(self.spotify_map_file))
         self.assertEqual(source_meta["slides_catalog_path"], str(self.slides_catalog_file))
@@ -508,9 +511,9 @@ class SubjectContentManifestTests(TestCase):
         clear_content_service_caches()
 
         refreshed = load_subject_content_manifest("personlighedspsykologi")
-        self.assertEqual(refreshed["version"], 2)
+        self.assertEqual(refreshed["version"], 3)
         persisted = json.loads(self.manifest_file.read_text(encoding="utf-8"))
-        self.assertEqual(persisted["version"], 2)
+        self.assertEqual(persisted["version"], 3)
 
     def test_build_manifest_sets_source_filename_none_for_missing_readings(self) -> None:
         self.primary_reading_file.write_text(
@@ -744,13 +747,14 @@ class SubjectContentManifestTests(TestCase):
 
         manifest = build_subject_content_manifest("personlighedspsykologi")
         lecture = manifest["lectures"][0]
-        self.assertEqual(len(lecture["lecture_assets"]["podcasts"]), 0)
+        self.assertEqual(len(lecture["lecture_assets"]["podcasts"]), 1)
+        self.assertEqual(lecture["lecture_assets"]["podcasts"][0]["platform"], "direct_audio")
+        self.assertEqual(
+            lecture["lecture_assets"]["podcasts"][0]["source_audio_url"],
+            "https://example.test/audio/all-sources.mp3",
+        )
         self.assertEqual(len(lecture["readings"][0]["assets"]["podcasts"]), 1)
         self.assertEqual(lecture["readings"][0]["assets"]["podcasts"][0]["platform"], "spotify")
-        warnings = lecture.get("warnings") or []
-        self.assertTrue(
-            any("Spotify episode mapping missing for RSS item; skipping podcast asset" in warning for warning in warnings)
-        )
 
     def test_build_manifest_rejects_non_episode_urls_in_spotify_map(self) -> None:
         self.spotify_map_file.write_text(
@@ -774,12 +778,10 @@ class SubjectContentManifestTests(TestCase):
 
         manifest = build_subject_content_manifest("personlighedspsykologi")
         lecture = manifest["lectures"][0]
-        self.assertEqual(len(lecture["lecture_assets"]["podcasts"]), 0)
-        self.assertEqual(len(lecture["readings"][0]["assets"]["podcasts"]), 0)
-        warnings = lecture.get("warnings") or []
-        self.assertTrue(
-            any("Spotify episode mapping missing for RSS item; skipping podcast asset" in warning for warning in warnings)
-        )
+        self.assertEqual(len(lecture["lecture_assets"]["podcasts"]), 1)
+        self.assertEqual(len(lecture["readings"][0]["assets"]["podcasts"]), 1)
+        self.assertEqual(lecture["lecture_assets"]["podcasts"][0]["platform"], "direct_audio")
+        self.assertEqual(lecture["readings"][0]["assets"]["podcasts"][0]["platform"], "direct_audio")
         self.assertTrue(
             any("Spotify map URL must be an episode URL for title" in warning for warning in manifest["warnings"])
         )
@@ -792,8 +794,10 @@ class SubjectContentManifestTests(TestCase):
         self.assertEqual(len(manifest["lectures"]), 2)
         self.assertTrue(any("Spotify map source could not be parsed" in warning for warning in manifest["warnings"]))
         lecture = manifest["lectures"][0]
-        self.assertEqual(len(lecture["lecture_assets"]["podcasts"]), 0)
-        self.assertEqual(len(lecture["readings"][0]["assets"]["podcasts"]), 0)
+        self.assertEqual(len(lecture["lecture_assets"]["podcasts"]), 1)
+        self.assertEqual(len(lecture["readings"][0]["assets"]["podcasts"]), 1)
+        self.assertEqual(lecture["lecture_assets"]["podcasts"][0]["platform"], "direct_audio")
+        self.assertEqual(lecture["readings"][0]["assets"]["podcasts"][0]["platform"], "direct_audio")
 
     def test_build_manifest_parses_danish_lecture_hints_in_rss_titles(self) -> None:
         self.rss_file.write_text(
@@ -1344,6 +1348,116 @@ class SubjectContentManifestTests(TestCase):
         with patch("quizzes.content_services.build_subject_content_manifest", side_effect=RuntimeError("boom")):
             loaded = load_subject_content_manifest("personlighedspsykologi")
         self.assertEqual(self._podcast_count(loaded), expected_count)
+
+    def test_build_manifest_prefers_episode_inventory_when_present(self) -> None:
+        self.inventory_file.write_text(
+            json.dumps(
+                {
+                    "version": 1,
+                    "subject_slug": "personlighedspsykologi",
+                    "episodes": [
+                        {
+                            "episode_key": "ep-lewis",
+                            "title": "U1F1 · [Podcast] · Lewis (1999) · 02/02 - 08/02",
+                            "lecture_key": "W01L1",
+                            "episode_kind": "reading",
+                            "podcast_kind": "podcast",
+                            "source_name": "W01L1 - Lewis (1999) [EN].mp3",
+                            "pub_date": "Mon, 02 Feb 2026 10:00:00 +0100",
+                            "audio_url": "https://example.test/audio/lewis.mp3",
+                        },
+                        {
+                            "episode_key": "ep-all",
+                            "title": "U1F1 · [Podcast] · Alle kilder · 02/02 - 08/02",
+                            "lecture_key": "W01L1",
+                            "episode_kind": "weekly_overview",
+                            "podcast_kind": "podcast",
+                            "source_name": "W01L1 - Alle kilder [EN].mp3",
+                            "pub_date": "Mon, 02 Feb 2026 08:00:00 +0100",
+                            "audio_url": "https://example.test/audio/all-sources.mp3",
+                        },
+                    ],
+                }
+            ),
+            encoding="utf-8",
+        )
+        self.rss_file.write_text(
+            "\n".join(
+                [
+                    '<?xml version="1.0" encoding="UTF-8"?>',
+                    "<rss version=\"2.0\">",
+                    "<channel>",
+                    "</channel>",
+                    "</rss>",
+                ]
+            ),
+            encoding="utf-8",
+        )
+        self.spotify_map_file.write_text(
+            json.dumps(
+                {
+                    "version": 2,
+                    "subject_slug": "personlighedspsykologi",
+                    "by_episode_key": {
+                        "ep-lewis": "https://open.spotify.com/episode/4w4gHCXnQK5fjQdsxQO0XG",
+                        "ep-all": "https://open.spotify.com/episode/5m0hYfDU9ThM5qR2xMugr8",
+                    },
+                    "by_rss_title": {},
+                }
+            ),
+            encoding="utf-8",
+        )
+        clear_content_service_caches()
+
+        manifest = build_subject_content_manifest("personlighedspsykologi")
+        lecture = manifest["lectures"][0]
+        self.assertEqual(lecture["lecture_assets"]["podcasts"][0]["episode_key"], "ep-all")
+        self.assertEqual(lecture["readings"][0]["assets"]["podcasts"][0]["episode_key"], "ep-lewis")
+        self.assertEqual(lecture["lecture_assets"]["podcasts"][0]["platform"], "spotify")
+        self.assertFalse(any("RSS source missing" in warning for warning in manifest["warnings"]))
+
+    def test_load_manifest_rebuilds_when_inventory_is_newer_than_manifest(self) -> None:
+        self.inventory_file.write_text(
+            json.dumps(
+                {
+                    "version": 1,
+                    "subject_slug": "personlighedspsykologi",
+                    "episodes": [],
+                }
+            ),
+            encoding="utf-8",
+        )
+        clear_content_service_caches()
+        stale_manifest = build_subject_content_manifest("personlighedspsykologi")
+        self.assertEqual(self._podcast_count(stale_manifest), 0)
+        write_subject_content_manifest(stale_manifest, path=self.manifest_file)
+
+        clear_content_service_caches()
+        time.sleep(0.02)
+        self.inventory_file.write_text(
+            json.dumps(
+                {
+                    "version": 1,
+                    "subject_slug": "personlighedspsykologi",
+                    "episodes": [
+                        {
+                            "episode_key": "ep-all",
+                            "title": "U1F1 · [Podcast] · Alle kilder · 02/02 - 08/02",
+                            "lecture_key": "W01L1",
+                            "episode_kind": "weekly_overview",
+                            "podcast_kind": "podcast",
+                            "source_name": "W01L1 - Alle kilder [EN].mp3",
+                            "pub_date": "Mon, 02 Feb 2026 08:00:00 +0100",
+                            "audio_url": "https://example.test/audio/all-sources.mp3",
+                        }
+                    ],
+                }
+            ),
+            encoding="utf-8",
+        )
+
+        refreshed = load_subject_content_manifest("personlighedspsykologi")
+        self.assertEqual(self._podcast_count(refreshed), 1)
 
     @staticmethod
     def _podcast_count(manifest: dict[str, object]) -> int:

@@ -4773,7 +4773,7 @@
                 "url": "https://open.spotify.com/episode/2koT7vhq4BZXI9NOozJsIY",
                 "platform": "spotify",
                 "spotify_url": "https://open.spotify.com/episode/2koT7vhq4BZXI9NOozJsIY",
-                "pub_date": "Tue, 21 Apr 2025 16:00:00 +0200",
+                "pub_date": "Tue, 21 Apr 2025 18:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=166tosLmcP5APDj6mqpON2tb5PACz8FsG",
                 "duration_seconds": null,
                 "duration_label": "",
@@ -4829,7 +4829,7 @@
                 "url": "https://open.spotify.com/episode/3ZI6jN4YzC4xbs2C4YoqNd",
                 "platform": "spotify",
                 "spotify_url": "https://open.spotify.com/episode/3ZI6jN4YzC4xbs2C4YoqNd",
-                "pub_date": "Tue, 21 Apr 2025 12:00:00 +0200",
+                "pub_date": "Tue, 21 Apr 2025 14:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1ojBt0-ooiWqwpREPu5EHlf6bqaPwMbox",
                 "duration_seconds": null,
                 "duration_label": "",
@@ -4885,7 +4885,7 @@
                 "url": "https://open.spotify.com/episode/7HHpaUPSEIBLXHrhzvRLgn",
                 "platform": "spotify",
                 "spotify_url": "https://open.spotify.com/episode/7HHpaUPSEIBLXHrhzvRLgn",
-                "pub_date": "Tue, 21 Apr 2025 14:00:00 +0200",
+                "pub_date": "Tue, 21 Apr 2025 16:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1YARg7OJD9jkxCTQPwwPdt9yN3_icA7pM",
                 "duration_seconds": null,
                 "duration_label": "",
@@ -4941,7 +4941,7 @@
                 "url": "https://open.spotify.com/episode/1GGyQsSWkTdiWFCfYdgRY3",
                 "platform": "spotify",
                 "spotify_url": "https://open.spotify.com/episode/1GGyQsSWkTdiWFCfYdgRY3",
-                "pub_date": "Tue, 21 Apr 2025 20:00:00 +0200",
+                "pub_date": "Tue, 21 Apr 2025 22:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1XM8t0OiWsqDXi62IuH_jy_1jPFiDGmEp",
                 "duration_seconds": null,
                 "duration_label": "",
@@ -4953,7 +4953,7 @@
                 "url": "https://open.spotify.com/episode/0rwskKRjYOP6KOxCMbGTrO",
                 "platform": "spotify",
                 "spotify_url": "https://open.spotify.com/episode/0rwskKRjYOP6KOxCMbGTrO",
-                "pub_date": "Tue, 21 Apr 2025 18:00:00 +0200",
+                "pub_date": "Tue, 21 Apr 2025 20:00:00 +0200",
                 "source_audio_url": "https://drive.google.com/uc?export=download&id=1-TPQAjGmKnEedRtQyT_XM0sblN1sER23",
                 "duration_seconds": null,
                 "duration_label": "",
@@ -4967,6 +4967,12 @@
       "lecture_assets": {
         "quizzes": [
           {
+            "quiz_id": "70129442",
+            "difficulty": "easy",
+            "quiz_url": "/q/70129442.html",
+            "episode_title": "W11L2 - Bank, M. (2014). Narrative psykologier. I Køppe, S. & Dammeyer, J. (Red.) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+          },
+          {
             "quiz_id": "d1fec226",
             "difficulty": "easy",
             "quiz_url": "/q/d1fec226.html",
@@ -4979,10 +4985,22 @@
             "episode_title": "W11L2 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=5 hash=08b08aa7}.mp3"
           },
           {
+            "quiz_id": "bfd24968",
+            "difficulty": "hard",
+            "quiz_url": "/q/bfd24968.html",
+            "episode_title": "W11L2 - Bank, M. (2014). Narrative psykologier. I Køppe, S. & Dammeyer, J. (Red.) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+          },
+          {
             "quiz_id": "2776e7cd",
             "difficulty": "medium",
             "quiz_url": "/q/2776e7cd.html",
             "episode_title": "W11L2 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=5 hash=08b08aa7}.mp3"
+          },
+          {
+            "quiz_id": "a3b2075d",
+            "difficulty": "medium",
+            "quiz_url": "/q/a3b2075d.html",
+            "episode_title": "W11L2 - Bank, M. (2014). Narrative psykologier. I Køppe, S. & Dammeyer, J. (Red.) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
           }
         ],
         "podcasts": [
@@ -4997,10 +5015,25 @@
             "duration_seconds": null,
             "duration_label": "",
             "episode_key": "1LbMNOprOH8c37ZPHSEs6rXdr8XonJ-Us"
+          },
+          {
+            "kind": "podcast",
+            "title": "U11F2 · Bank, M. (2014). Narrative psykologier. I Køppe, S. & Dammeyer, J. (Red.)",
+            "url": "https://drive.google.com/uc?export=download&id=170e9ZfLXB-9Y4iz1axy2lPM7g3aSeQ2x",
+            "platform": "direct_audio",
+            "spotify_url": null,
+            "pub_date": "Tue, 21 Apr 2025 12:00:00 +0200",
+            "source_audio_url": "https://drive.google.com/uc?export=download&id=170e9ZfLXB-9Y4iz1axy2lPM7g3aSeQ2x",
+            "duration_seconds": null,
+            "duration_label": "",
+            "episode_key": "170e9ZfLXB-9Y4iz1axy2lPM7g3aSeQ2x"
           }
         ]
       },
-      "warnings": []
+      "warnings": [
+        "Quiz entry could not map to reading; attached to lecture assets: W11L2 - Bank, M. (2014). Narrative psykologier. I Køppe, S. & Dammeyer, J. (Red.) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
+        "RSS item could not map to reading; attached to lecture assets: U11F2 · Bank, M. (2014). Narrative psykologier. I Køppe, S. & Dammeyer, J. (Red.)"
+      ]
     },
     {
       "lecture_key": "W12L1",

@@ -5,7 +5,7 @@
 - Socialpsykologi feed review confirms a mixed output pattern:
   - Lecture-overview episodes (kind: `weekly_overview`, e.g., "Alle kilder")
   - Per-reading episodes
-  - Short "[Brief]" variants for some readings
+  - Short `[Short]` variants for some readings
 - Local feed build requires `shows/personlighedspsykologi-en/service-account.json` plus Google dependencies (`google-auth`, `google-api-python-client`); run with `python3 podcast-tools/gdrive_podcast_feed.py --config shows/personlighedspsykologi-en/config.local.json`.
 
 ## Output policy (decisions)
@@ -19,13 +19,13 @@
   - Length: `default`
   - Prompt: from `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json`
   - Language: from `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json`
-- Brief variants: all readings and lecture slides get an extra brief version.
-  - Format: `brief`
-  - Length: not set (UI does not expose length for brief; config value is ignored)
+- Short variants: all readings and lecture slides get an extra short version.
+  - Format: `deep-dive`
+  - Length: `long`
   - Prompt: from `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json`
   - Language: from `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json`
-  - Source filename marker: `[Brief]`
-  - Feed-visible slide briefs follow the current public policy: lecture slides only.
+  - Source filename marker: `[Short]`
+  - Feed-visible slide shorts follow the current public policy: lecture slides only.
   - Exercise slides may still exist as local generation inputs, but they must not surface as `Kort podcast · Forelæsningsslides` items in RSS.
   - The RSS audit validates built feed output against the Drive-backed source, so backfill is not complete until the MP3 artifacts have been generated, downloaded, and mirrored/uploaded.
 - Language variants: generate **Danish + English** for all episodes.
@@ -33,7 +33,7 @@
    - English naming: adds suffix ` [EN]` to file names and notebook titles.
 - Feed output (audio only): `gdrive_podcast_feed.py` strips `[EN]`; for `shows/personlighedspsykologi-en` it inserts `[Lydbog]`/`[Kort podcast]`/`[Podcast]` after the first title block (for other shows, default remains leading prefix), and falls back to `[Podcast]` for any other audio episode.
 - Feed copy cleanup removes `Reading:` and `Forelæsning x · Semesteruge x` patterns from episode titles/descriptions.
-- Feed ordering uses `feed.sort_mode: "wxlx_kind_priority"` and applies per-`W#L#` priority: `Brief -> Alle kilder -> Oplæst/TTS readings -> other readings` (block order remains recency-based).
+- Feed ordering uses `feed.sort_mode: "wxlx_kind_priority"` and applies per-`W#L#` priority: `Short -> Alle kilder -> Oplæst/TTS readings -> other readings` (block order remains recency-based).
 - Semester week labels now follow lecture-key weeks via `feed.semester_week_number_source: "lecture_key"` to keep `Uge X` and prepended `Semesteruge X` aligned for each `W##L#` episode.
 - Filename hygiene: always keep week tokens zero-padded (`W##L#`). If outputs contain unpadded tokens (e.g. `W6L1`), normalize via:
   - `python3 scripts/rename_personlighedspsykologi_outputs.py --root notebooklm-podcast-auto/personlighedspsykologi/output --apply --rewrite-request-json`
@@ -45,7 +45,7 @@
 ## Reading summaries (decisions)
 - Source of truth is manual `shows/personlighedspsykologi-en/reading_summaries.json` (`by_name` map keyed by filename).
 - Summary maintenance is local-only via `notebooklm-podcast-auto/personlighedspsykologi/scripts/sync_reading_summaries.py` (no request-log/NotebookLM summary generation path).
-- Local inventory includes non-weekly reading/slide/brief/TTS audio files (`.mp3` + `.wav`) and excludes weekly overview files matching `Alle kilder` / `All sources`.
+- Local inventory includes non-weekly reading/slide/short/TTS audio files (`.mp3` + `.wav`) and excludes weekly overview files matching `Alle kilder` / `All sources`.
 - Workflow order is scaffold/update first, then `--validate-only`; coverage validation is warn-only for missing/incomplete entries.
 - Target fill levels are 2-4 `summary_lines` and 3-5 `key_points` per episode.
 - Language rule: if a source text is Danish, keep both `summary_lines` and `key_points` in Danish (otherwise keep English).
@@ -86,11 +86,11 @@ Lecture-level "Alle kilder" skips:
 
 ## Socialpsykologi reference used
 - Drive structure: week folders containing `kilder/` + MP3s at week root.
-- Feed file: `shows/social-psychology/feeds/rss.xml` (shows mixed per-week + per-reading + brief pattern).
+- Feed file: `shows/social-psychology/feeds/rss.xml` (shows mixed per-week + per-reading + short pattern).
 
 ## Next execution steps (pending)
 1. Sync OneDrive readings into `/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W## …`.
-2. Apply filename renames for `W##L# X` highlights and `[Brief]` variants.
+2. Apply filename renames for `W##L# X` highlights and `[Short]` variants.
 3. Generate audio via NotebookLM (non-blocking) and record `artifact_id`s.
 4. Download completed MP3s.
 5. Upload MP3s to Drive week folders.
@@ -165,7 +165,7 @@ Optional flags:
 ## Output placement
 - Weekly overview kind (lecture-level): `notebooklm-podcast-auto/personlighedspsykologi/output/W##L#/W##L# - Alle kilder.mp3`
 - Per-reading: `notebooklm-podcast-auto/personlighedspsykologi/output/W##L#/W##L# - <reading>.mp3`
-- Brief (reading or lecture slide): `notebooklm-podcast-auto/personlighedspsykologi/output/W##L#/[Brief] W##L# - <reading-or-slide>.mp3`
+- Short (reading or lecture slide): `notebooklm-podcast-auto/personlighedspsykologi/output/W##L#/[Short] W##L# - <reading-or-slide>.mp3`
 - English variants add ` [EN]` before `.mp3`.
 - Non-blocking request log: `notebooklm-podcast-auto/personlighedspsykologi/output/W##L#/*.mp3.request.json`
 - Failed generation error log: `notebooklm-podcast-auto/personlighedspsykologi/output/W##L#/*.mp3.request.error.json`
@@ -205,7 +205,7 @@ Optional flags:
 
 ## Test log
 - 2026-02-04: Ran `generate_week.py` with a temporary test week (W99) and three PDFs.
-  - Lecture-level Alle kilder + per-reading + brief generation requests were successfully created (non-blocking).
+  - Lecture-level Alle kilder + per-reading + short generation requests were successfully created (non-blocking).
   - One run timed out at 120s; rerun with 300s completed.
   - Output folder created at `tmp/personlighedspsykologi-test/output/W99/` with `sources_week.txt`.
 - 2026-02-04: Downloaded W99 test audio artifacts into `tmp/personlighedspsykologi-test/output/W99/`.

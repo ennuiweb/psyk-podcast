@@ -16,7 +16,7 @@ logger = logging.getLogger(__name__)
 SUBJECT_SLUG_RE = re.compile(r"^[a-z0-9-]+$")
 LECTURE_HEADING_RE = re.compile(r"^\*\*(?P<key>W\d{2}L\d+)\s+(?P<title>.+?)\*\*$")
 MISSING_READING_RE = re.compile(r"^MISSING:\s*(?P<title>.+)$", re.IGNORECASE)
-BRIEF_SUFFIX_RE = re.compile(r"\s*\([^)]*\bbrief\b[^)]*\)\s*$", re.IGNORECASE)
+BRIEF_SUFFIX_RE = re.compile(r"\s*\([^)]*\b(?:short|brief)\b[^)]*\)\s*$", re.IGNORECASE)
 PATH_SEPARATORS_RE = re.compile(r"[\\/]+")
 SUBJECT_PATH_KEYS = {
     "reading_master_path",

@@ -16,9 +16,10 @@ CFG_TAG_PATTERN = re.compile(
     re.IGNORECASE,
 )
 WEEKLY_OVERVIEW_PATTERN = re.compile(r"\b(alle kilder|all sources)\b", re.IGNORECASE)
-BRIEF_PATTERN = re.compile(r"^\[\s*brief\s*\]\s*", re.IGNORECASE)
+SHORT_PATTERN = re.compile(r"^\[\s*(?:short|brief)\s*\]\s*", re.IGNORECASE)
+BRIEF_PATTERN = SHORT_PATTERN
 TTS_PATTERN = re.compile(r"^\[\s*tts\s*\]\s*|\boplæst\b", re.IGNORECASE)
-LANGUAGE_TAG_PATTERN = re.compile(r"\s+\[(?:EN|DA|DK|TTS|BRIEF)\]\s*$", re.IGNORECASE)
+LANGUAGE_TAG_PATTERN = re.compile(r"\s+\[(?:EN|DA|DK|TTS|SHORT|BRIEF)\]\s*$", re.IGNORECASE)
 PAGENUM_PATTERN = re.compile(r"\b(?:s\.|pp?\.)\s*[\d, \-–]+", re.IGNORECASE)
 AUDIO_EXTENSIONS = {".mp3", ".wav"}
 DEFAULT_SOURCES_ROOT = (
@@ -816,7 +817,7 @@ def main() -> int:
         print("Warning: duplicate weekly overview keys found across local outputs; keeping first occurrence.")
         _print_issue_block("weekly_duplicate_keys", weekly_duplicate_keys)
     if not episode_keys:
-        print("No local reading/brief/tts episode files found for the selected scope.")
+        print("No local reading/short/tts episode files found for the selected scope.")
     if (args.sync_weekly_overview or args.validate_weekly) and not weekly_keys:
         print("No local Alle kilder / All sources audio files found for the selected scope.")
     if not episode_keys and not weekly_keys:

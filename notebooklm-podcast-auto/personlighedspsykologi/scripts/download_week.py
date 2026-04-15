@@ -59,7 +59,8 @@ def normalize_quiz_format(value: str | None) -> str | None:
 def is_disallowed_brief_quiz_request_log(output_path: str | None, artifact_type: str | None) -> bool:
     if artifact_type != "quiz" or not output_path:
         return False
-    return Path(output_path).name.lower().startswith("[brief]")
+    name = Path(output_path).name.lower()
+    return name.startswith("[short]") or name.startswith("[brief]")
 
 
 WEEK_SELECTOR_PATTERN = re.compile(r"^(?:W)?0*(\d{1,2})(?:L0*(\d{1,2}))?$", re.IGNORECASE)
@@ -634,7 +635,7 @@ def main() -> int:
                 print(f"Skipping malformed log: {log_path}")
                 continue
             if is_disallowed_brief_quiz_request_log(output_path, artifact_type):
-                print(f"Skipping disallowed brief quiz request log: {log_path}")
+                print(f"Skipping disallowed short quiz request log: {log_path}")
                 continue
             if artifact_type not in content_types:
                 continue

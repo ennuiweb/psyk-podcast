@@ -18,7 +18,7 @@ GRUNDBOG_CHAPTER_BULLET_RE = re.compile(
     r"(?P<suffix>\s*\([^)]*\))?\s*$",
     re.IGNORECASE,
 )
-BRIEF_AND_FULL_NOTE = "(brief + full)"
+SHORT_AND_FULL_NOTE = "(short + full)"
 
 
 def _sha256_bytes(payload: bytes) -> str:
@@ -51,11 +51,11 @@ def _normalize_grundbog_bullets(markdown_text: str) -> tuple[str, int]:
         chapter_title = source_filename[:-4].strip()
         suffix_text = str(match.group("suffix") or "").strip()
         if not suffix_text:
-            normalized_suffix = BRIEF_AND_FULL_NOTE
-        elif "brief + full" in suffix_text.lower():
-            normalized_suffix = suffix_text
+            normalized_suffix = SHORT_AND_FULL_NOTE
+        elif "short + full" in suffix_text.lower() or "brief + full" in suffix_text.lower():
+            normalized_suffix = SHORT_AND_FULL_NOTE
         else:
-            normalized_suffix = f"{suffix_text} {BRIEF_AND_FULL_NOTE}"
+            normalized_suffix = f"{suffix_text} {SHORT_AND_FULL_NOTE}"
 
         rewritten = f"{match.group('prefix')}{chapter_title} → {source_filename}"
         if normalized_suffix:

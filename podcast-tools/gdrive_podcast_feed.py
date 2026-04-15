@@ -34,14 +34,16 @@ LANGUAGE_TAG_PATTERN = re.compile(
     re.IGNORECASE,
 )
 TTS_TAG_PATTERN = re.compile(r"(?:\[\s*tts\s*\]|\(\s*tts\s*\))", re.IGNORECASE)
-BRIEF_TAG_PATTERN = re.compile(r"\[\s*brief\s*\]", re.IGNORECASE)
+SHORT_TAG_PATTERN = re.compile(r"\[\s*(?:short|brief)\s*\]", re.IGNORECASE)
+BRIEF_TAG_PATTERN = SHORT_TAG_PATTERN
 DEEP_DIVE_TAG_PATTERN = re.compile(r"\[\s*deep-dive\s*\]", re.IGNORECASE)
 CFG_TTS_TYPE_PATTERN = re.compile(r"\{[^{}]*\btype=tts\b[^{}]*\}", re.IGNORECASE)
 CFG_AUDIO_TYPE_PATTERN = re.compile(r"\{[^{}]*\btype=audio\b[^{}]*\}", re.IGNORECASE)
-CFG_AUDIO_BRIEF_PATTERN = re.compile(
-    r"\{[^{}]*\btype=audio\b[^{}]*\bformat=brief\b[^{}]*\}",
+CFG_AUDIO_SHORT_PATTERN = re.compile(
+    r"\{[^{}]*\btype=audio\b[^{}]*\bformat=(?:short|brief)\b[^{}]*\}",
     re.IGNORECASE,
 )
+CFG_AUDIO_BRIEF_PATTERN = CFG_AUDIO_SHORT_PATTERN
 CFG_AUDIO_DEEP_DIVE_PATTERN = re.compile(
     r"\{[^{}]*\btype=audio\b[^{}]*\bformat=deep-dive\b[^{}]*\}",
     re.IGNORECASE,
@@ -58,7 +60,7 @@ AUDIO_CATEGORY_PREFIX_POSITIONS = {"leading", "after_first_block"}
 DEFAULT_AUDIO_CATEGORY_PREFIX_POSITION = "leading"
 TITLE_BLOCK_SEPARATOR = " · "
 CATEGORY_PREFIX_HEAD_PATTERN = re.compile(
-    r"^\s*(?:Oplæst\b|\[\s*brief\s*\]|\[\s*deep-dive\s*\]|\[\s*podcast\s*\]|\[\s*lydbog\s*\]|\[\s*kort(?:\s+podcast)?\s*\])\s*(?:[·:\-]\s*)?",
+    r"^\s*(?:Oplæst\b|\[\s*(?:short|brief)\s*\]|\[\s*deep-dive\s*\]|\[\s*podcast\s*\]|\[\s*lydbog\s*\]|\[\s*kort(?:\s+podcast)?\s*\])\s*(?:[·:\-]\s*)?",
     re.IGNORECASE,
 )
 READING_PREFIX_PATTERN = re.compile(r"(^|[·\n]\s*)reading:\s*", re.IGNORECASE)
@@ -492,7 +494,7 @@ def _normalize_name_for_lookup(name: str) -> str:
     lecture_key = (
         f"W{int(lecture_match.group(1))}L{int(lecture_match.group(2))}" if lecture_match else ""
     )
-    stem = re.sub(r"\s+\[(?:en|da|dk|tts|brief)\]\s*$", "", stem, flags=re.IGNORECASE)
+    stem = re.sub(r"\s+\[(?:en|da|dk|tts|short|brief)\]\s*$", "", stem, flags=re.IGNORECASE)
     stem = LANGUAGE_TAG_PATTERN.sub("", stem)
     stem = BRIEF_TAG_PATTERN.sub("", stem)
     if WEEKLY_OVERVIEW_SUBJECT_PATTERN.search(stem):
@@ -1960,7 +1962,8 @@ def _replace_text_prefix(value: str, *, require_start: bool) -> Tuple[str, bool]
 
 
 WEEK_LECTURE_PATTERN = re.compile(r"\bw\s*(\d{1,2})\s*l\s*(\d+)\b", re.IGNORECASE)
-BRIEF_PREFIX_PATTERN = re.compile(r"^\[\s*brief\s*\]\s*", re.IGNORECASE)
+SHORT_PREFIX_PATTERN = re.compile(r"^\[\s*(?:short|brief)\s*\]\s*", re.IGNORECASE)
+BRIEF_PREFIX_PATTERN = SHORT_PREFIX_PATTERN
 WEEK_PREFIX_TOKEN_PATTERN = re.compile(r"^w\s*\d{1,2}(?:\s*l\s*\d+)?\b", re.IGNORECASE)
 WEEK_PREFIX_SEPARATOR_PATTERN = re.compile(r"^[\s._\-–:]+")
 SLIDE_DESCRIPTOR_PATTERN = re.compile(
@@ -1973,7 +1976,7 @@ SLIDE_LEADING_LABEL_PATTERN = re.compile(
     re.IGNORECASE,
 )
 SLIDE_DISPLAY_LABEL = "Forelæsningsslides"
-EPISODE_KINDS = {"reading", "brief", "weekly_overview", "slide"}
+EPISODE_KINDS = {"reading", "short", "brief", "weekly_overview", "slide"}
 WEEKLY_OVERVIEW_LABEL = "Alle kilder (undtagen slides)"
 DEFAULT_SLIDE_SUBJECT_SEPARATOR = " - "
 WEEKLY_OVERVIEW_SUBJECT_PATTERN = re.compile(
@@ -2094,7 +2097,7 @@ def strip_week_prefix(value: str) -> str:
 def strip_brief_prefix(value: str) -> str:
     if not value:
         return value
-    return BRIEF_PREFIX_PATTERN.sub("", value).strip()
+    return SHORT_PREFIX_PATTERN.sub("", value).strip()
 
 
 def _classify_audio_category(file_entry: Dict[str, Any], source_title: str) -> Optional[str]:
@@ -2106,8 +2109,8 @@ def _classify_audio_category(file_entry: Dict[str, Any], source_title: str) -> O
     has_tts_cfg = bool(CFG_TTS_TYPE_PATTERN.search(source_value))
     has_audio_cfg = bool(CFG_AUDIO_TYPE_PATTERN.search(source_value))
     has_tts_marker = bool(TTS_TAG_PATTERN.search(source_value))
-    has_brief_cfg = bool(CFG_AUDIO_BRIEF_PATTERN.search(source_value))
-    has_brief_marker = bool(BRIEF_TAG_PATTERN.search(source_value))
+    has_short_cfg = bool(CFG_AUDIO_SHORT_PATTERN.search(source_value))
+    has_short_marker = bool(SHORT_TAG_PATTERN.search(source_value))
     has_deep_dive_cfg = bool(CFG_AUDIO_DEEP_DIVE_PATTERN.search(source_value))
     has_deep_dive_marker = bool(DEEP_DIVE_TAG_PATTERN.search(source_value))
 
@@ -2123,7 +2126,7 @@ def _classify_audio_category(file_entry: Dict[str, Any], source_title: str) -> O
 
     if has_tts_cfg or has_tts_marker:
         return "lydbog"
-    if has_brief_cfg or has_brief_marker:
+    if has_short_cfg or has_short_marker:
         return "kort_podcast"
     if has_deep_dive_cfg or has_deep_dive_marker:
         return "podcast"
@@ -2469,10 +2472,13 @@ def _resolve_blocks_for_kind(
         raise ValueError(f"Unknown episode kind '{kind}'. Allowed kinds: {allowed_kinds}")
 
     by_kind = feed_config.get(by_kind_key)
-    if isinstance(by_kind, dict) and kind in by_kind:
+    lookup_kind = kind
+    if isinstance(by_kind, dict) and lookup_kind not in by_kind and kind == "short":
+        lookup_kind = "brief"
+    if isinstance(by_kind, dict) and lookup_kind in by_kind:
         return _validate_block_list(
-            by_kind.get(kind),
-            path=f"feed.{by_kind_key}.{kind}",
+            by_kind.get(lookup_kind),
+            path=f"feed.{by_kind_key}.{lookup_kind}",
             allowed_blocks=allowed_blocks,
         )
 
@@ -2574,7 +2580,7 @@ def _published_sort_value(item: Dict[str, Any]) -> float:
 def _wxlx_kind_priority(item: Dict[str, Any]) -> int:
     kind = str(item.get("episode_kind") or "").strip()
     is_tts = bool(item.get("is_tts"))
-    if kind == "brief":
+    if kind in {"short", "brief"}:
         return 0
     if kind == "weekly_overview":
         return 1
@@ -2588,7 +2594,7 @@ def _wxlx_oldest_sort_priority(item: Dict[str, Any]) -> int:
     is_tts = bool(item.get("is_tts"))
     if kind == "weekly_overview":
         return 0
-    if kind == "brief":
+    if kind in {"short", "brief"}:
         return 1
     if kind == "reading" and is_tts:
         return 2
@@ -2615,7 +2621,7 @@ def _wxlx_source_pair_category_rank(item: Dict[str, Any]) -> int:
 def _wxlx_source_pair_variant_rank(item: Dict[str, Any]) -> int:
     episode_kind = str(item.get("episode_kind") or "").strip().lower()
     podcast_kind = str(item.get("podcast_kind") or "").strip().lower()
-    if episode_kind == "brief" or podcast_kind in {"kort_podcast", "short_podcast"}:
+    if episode_kind in {"short", "brief"} or podcast_kind in {"kort_podcast", "short_podcast"}:
         return 0
     if bool(item.get("is_tts")) or podcast_kind == "lydbog":
         return 2
@@ -3289,11 +3295,11 @@ def build_episode_entry(
     raw_title_with_tags = _strip_cfg_tags(base_title)
     raw_title = re.sub(r"\s+", " ", LANGUAGE_TAG_PATTERN.sub("", raw_title_with_tags)).strip()
     raw_lower = raw_title.casefold()
-    is_brief = bool(BRIEF_TAG_PATTERN.search(raw_title) or CFG_AUDIO_BRIEF_PATTERN.search(source_title))
+    is_short = bool(SHORT_TAG_PATTERN.search(raw_title) or CFG_AUDIO_SHORT_PATTERN.search(source_title))
     is_weekly_overview = "alle kilder" in raw_lower or "all sources" in raw_lower
     cleaned_title = _strip_text_prefix(raw_title)
     cleaned_title = strip_brief_prefix(cleaned_title)
-    cleaned_title = BRIEF_TAG_PATTERN.sub("", cleaned_title).strip()
+    cleaned_title = SHORT_TAG_PATTERN.sub("", cleaned_title).strip()
     cleaned_title = DEEP_DIVE_TAG_PATTERN.sub("", cleaned_title).strip()
     cleaned_title = strip_week_prefix(cleaned_title)
     cleaned_title = LEADING_EXERCISE_X_PATTERN.sub("", cleaned_title).strip()
@@ -3325,8 +3331,8 @@ def build_episode_entry(
     else:
         display_subject = cleaned_subject or cleaned_title or raw_title
 
-    if is_brief:
-        type_label = "Brief"
+    if is_short:
+        type_label = "Short"
     elif is_weekly_overview:
         type_label = weekly_overview_label
     elif is_slide:
@@ -3334,8 +3340,8 @@ def build_episode_entry(
     else:
         type_label = "Reading"
     episode_kind = (
-        "brief"
-        if is_brief
+        "short"
+        if is_short
         else ("weekly_overview" if is_weekly_overview else ("slide" if is_slide else "reading"))
     )
     skip_audio_category_prefix = False
@@ -3415,7 +3421,7 @@ def build_episode_entry(
         prefix = narrator.upper()
         if not title_value.upper().startswith(f"{prefix} "):
             title_value = f"{prefix} {title_value}"
-    title_value = _strip_language_tags(title_value, strip_brief=not is_brief)
+    title_value = _strip_language_tags(title_value, strip_brief=not is_short)
     audio_category_prefix_position = _resolve_audio_category_prefix_position(feed_config)
     if audio_category and not skip_audio_category_prefix:
         title_prefix = audio_category_prefixes.get(audio_category)
@@ -3438,7 +3444,7 @@ def build_episode_entry(
             text_label = cleaned_subject or cleaned_title or raw_title
         else:
             text_label = display_subject or cleaned_title or raw_title
-        if is_brief:
+        if is_short:
             descriptor = "Kort podcast"
         elif is_weekly_overview:
             descriptor = weekly_overview_label
@@ -3455,9 +3461,11 @@ def build_episode_entry(
         enabled_kinds = (
             enabled_kinds_raw
             if isinstance(enabled_kinds_raw, set)
-            else {"reading", "brief"}
+            else {"reading", "short", "brief"}
         )
-        summaries_enabled_for_kind = episode_kind in enabled_kinds
+        summaries_enabled_for_kind = episode_kind in enabled_kinds or (
+            episode_kind == "short" and "brief" in enabled_kinds
+        )
         reading_summary_value: Optional[str] = None
         reading_key_points_value: Optional[str] = None
         weekly_overview_summary_value: Optional[str] = None
@@ -3792,7 +3800,7 @@ def main() -> None:
             key_points_label = "Key points"
 
         enabled_kinds_raw = reading_summaries_cfg_raw.get("enabled_kinds")
-        enabled_kinds: Set[str] = {"reading", "brief"}
+        enabled_kinds: Set[str] = {"reading", "short", "brief"}
         if isinstance(enabled_kinds_raw, list):
             parsed_enabled = {
                 str(kind).strip()
@@ -3804,13 +3812,13 @@ def main() -> None:
             else:
                 print(
                     "Warning: reading_summaries.enabled_kinds had no valid kinds; "
-                    "defaulting to reading+brief.",
+                    "defaulting to reading+short.",
                     file=sys.stderr,
                 )
         elif enabled_kinds_raw is not None:
             print(
                 "Warning: reading_summaries.enabled_kinds must be a list; "
-                "defaulting to reading+brief.",
+                "defaulting to reading+short.",
                 file=sys.stderr,
             )
 

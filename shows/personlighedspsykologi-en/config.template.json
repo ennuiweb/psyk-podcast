@@ -110,7 +110,7 @@
         "reading_key_points",
         "quiz"
       ],
-      "brief": [
+      "short": [
         "text_link",
         "reading_summary",
         "reading_key_points",
@@ -128,7 +128,7 @@
     "include": [
       {
         "name_regex": [
-          "\\[(?:EN|TTS|BRIEF)\\]"
+          "\\[(?:EN|TTS|SHORT|BRIEF)\\]"
         ]
       }
     ]
@@ -138,7 +138,7 @@
     "key_points_label": "Key points",
     "enabled_kinds": [
       "reading",
-      "brief"
+      "short"
     ]
   },
   "weekly_overview_summaries": {

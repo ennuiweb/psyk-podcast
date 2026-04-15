@@ -5,7 +5,7 @@
 - Socialpsykologi feed review confirms a mixed output pattern:
   - Weekly overview episodes (e.g., "Alle kilder")
   - Per-reading episodes
-  - Short "[Brief]" variants for some readings
+  - Short `[Short]` variants for some readings
 
 ## Output policy (decisions)
 - Weekly overview: **"Alle kilder"** episode per week.
@@ -18,14 +18,14 @@
   - Length: `default`
   - Prompt: from `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json`
   - Language: from `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json`
-- Brief variants: all readings and lecture slides get an extra brief version.
-  - Format: `brief`
-  - Length: not set (UI does not expose length for brief; config value is ignored)
+- Short variants: all readings and lecture slides get an extra short version.
+  - Format: `deep-dive`
+  - Length: `long`
   - Prompt: from `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json`
   - Language: from `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json`
-  - Source filename marker: `[Brief]`
+  - Source filename marker: `[Short]`
 - Infographics: generated when `--content-types` includes `infographic`.
-  - Orientation/detail/prompt: from `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json` (`infographic`, `weekly_infographic`, `per_reading_infographic`, `brief_infographic`).
+  - Orientation/detail/prompt: from `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json` (`infographic`, `weekly_infographic`, `per_reading_infographic`, `short_infographic`).
 - Quizzes: generated when `--content-types` includes `quiz`.
   - Difficulty/quantity/format/prompt: from `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json` (`quiz`).
   - `quiz.difficulty` supports `easy|medium|hard|all`; `all` fans out to all three difficulties per episode in a single `generate_week.py` run.
@@ -33,9 +33,9 @@
 - Language variants: generate **Danish + English** for all episodes.
   - Config: `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json` → `languages`
   - English naming: adds suffix ` [EN]` to file names and notebook titles.
-- Feed output (audio only): `gdrive_podcast_feed.py` strips `[EN]`, prepends `[Lydbog]` for TTS, prepends `[Kort podcast]` for brief, prepends `[Podcast]` for deep-dive, and falls back to `[Podcast]` for any other audio episode.
+- Feed output (audio only): `gdrive_podcast_feed.py` strips `[EN]`, prepends `[Lydbog]` for TTS, prepends `[Kort podcast]` for short variants, prepends `[Podcast]` for deep-dive, and falls back to `[Podcast]` for any other audio episode.
 - Feed copy cleanup removes `Reading:` and `Forelæsning x · Semesteruge x` patterns from episode titles/descriptions.
-- Feed ordering is show-configured with `feed.sort_mode: "wxlx_kind_priority"` and per-`W#L#` priority: `Brief -> Alle kilder -> Oplæst/TTS readings -> other readings` (block order remains recency-based).
+- Feed ordering is show-configured with `feed.sort_mode: "wxlx_kind_priority"` and per-`W#L#` priority: `Short -> Alle kilder -> Oplæst/TTS readings -> other readings` (block order remains recency-based).
 
 ## Automation scope (decisions)
 - **Per-episode notebooks only.** We are **not** using single-notebook + source-ID selection for now.
@@ -69,11 +69,11 @@ Weekly overview skips:
 
 ## Socialpsykologi reference used
 - Drive structure: week folders containing `kilder/` + MP3s at week root.
-- Feed file: `shows/social-psychology/feeds/rss.xml` (shows mixed per-week + per-reading + brief pattern).
+- Feed file: `shows/social-psychology/feeds/rss.xml` (shows mixed per-week + per-reading + short pattern).
 
 ## Next execution steps (pending)
 1. Sync OneDrive readings into `/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W## …`.
-2. Apply filename renames for `W##L# X` highlights and `[Brief]` variants.
+2. Apply filename renames for `W##L# X` highlights and `[Short]` variants.
 3. Generate artifacts (audio/infographic) via NotebookLM (non-blocking) and record `artifact_id`s.
 4. Download completed artifacts (MP3/PNG).
 5. Upload MP3s/PNGs to Drive week folders.
@@ -139,7 +139,7 @@ Optional flags:
 ## Output placement
 - Weekly overview: `notebooklm-podcast-auto/personlighedspsykologi/output/W##/W## - Alle kilder {type=audio lang=en format=deep-dive length=long sources=NN hash=xxxxxxxx}.mp3`
 - Per-reading: `notebooklm-podcast-auto/personlighedspsykologi/output/W##/W## - <reading> {type=audio lang=en format=deep-dive length=default hash=xxxxxxxx}.mp3`
-- Brief (reading or lecture slide): `notebooklm-podcast-auto/personlighedspsykologi/output/W##/[Brief] W## - <reading-or-slide> {type=audio lang=en format=deep-dive length=long hash=xxxxxxxx}.mp3`
+- Short (reading or lecture slide): `notebooklm-podcast-auto/personlighedspsykologi/output/W##/[Short] W## - <reading-or-slide> {type=audio lang=en format=deep-dive length=long hash=xxxxxxxx}.mp3`
 - Infographics use the same base names with `.png`.
 - Quizzes use the same base names with `.json` (or `.md` / `.html` based on `quiz.format`).
 - English variants add ` [EN]` before the extension.
@@ -185,7 +185,7 @@ Optional flags:
 
 ## Test log
 - 2026-02-04: Ran `generate_week.py` with a temporary test week (W99) and three PDFs.
-  - Weekly overview + per-reading + brief generation requests were successfully created (non-blocking).
+  - Weekly overview + per-reading + short generation requests were successfully created (non-blocking).
   - One run timed out at 120s; rerun with 300s completed.
   - Output folder created at `tmp/personlighedspsykologi-test/output/W99/` with generated request logs and artifacts.
 - 2026-02-04: Downloaded W99 test audio artifacts into `tmp/personlighedspsykologi-test/output/W99/`.

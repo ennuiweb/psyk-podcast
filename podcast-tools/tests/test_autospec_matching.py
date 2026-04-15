@@ -81,14 +81,19 @@ class AutoSpecMatchingTests(unittest.TestCase):
             self.assertEqual(mod.strip_week_prefix(value), expected)
         self.assertEqual(mod.strip_week_prefix("Reading W3L1 methods"), "Reading W3L1 methods")
 
-    def test_strip_language_tags_removes_en_tts_and_optionally_brief(self):
+    def test_strip_language_tags_removes_en_tts_and_optionally_short(self):
         mod = _load_feed_module()
         self.assertEqual(mod._strip_language_tags("W01L1 Foo [EN]"), "W01L1 Foo")
         self.assertEqual(mod._strip_language_tags("W01L1 Foo (EN)"), "W01L1 Foo")
         self.assertEqual(mod._strip_language_tags("W01L1 Foo [TTS]"), "W01L1 Foo")
         self.assertEqual(mod._strip_language_tags("W01L1 Foo (tts)"), "W01L1 Foo")
+        self.assertEqual(mod._strip_language_tags("W01L1 Foo [Short]"), "W01L1 Foo")
         self.assertEqual(mod._strip_language_tags("W01L1 Foo [Brief]"), "W01L1 Foo")
         self.assertEqual(mod._strip_language_tags("W01L1 Foo [ brief ]"), "W01L1 Foo")
+        self.assertEqual(
+            mod._strip_language_tags("W01L1 Foo [Short]", strip_brief=False),
+            "W01L1 Foo [Short]",
+        )
         self.assertEqual(
             mod._strip_language_tags("W01L1 Foo [Brief]", strip_brief=False),
             "W01L1 Foo [Brief]",
@@ -1338,11 +1343,11 @@ class AutoSpecMatchingTests(unittest.TestCase):
         self.assertGreater(derived, autospec._earliest_rule_datetime)
         self.assertIn(derived.month, {7, 8})
 
-    def test_generated_entry_maps_brief_to_kort_podcast_prefix(self):
+    def test_generated_entry_maps_short_to_kort_podcast_prefix(self):
         mod = _load_feed_module()
         file_entry = {
             "id": "file1",
-            "name": "[ brief ] W1L1 - Grundbog kapitel 01 [EN].mp3",
+            "name": "[ short ] W1L1 - Grundbog kapitel 01 [EN].mp3",
             "createdTime": "2026-02-02T08:00:00+00:00",
         }
         feed_config = {
@@ -1364,6 +1369,7 @@ class AutoSpecMatchingTests(unittest.TestCase):
         )
         self.assertIn("[Kort podcast]", episode["title"])
         self.assertIn("Grundbog kapitel 01", episode["title"])
+        self.assertNotIn("[Short]", episode["title"])
         self.assertNotIn("[Brief]", episode["title"])
         self.assertNotIn("[ brief ]", episode["title"])
         self.assertNotRegex(episode["title"], re.compile(r"\bW\d{1,2}L\d+\b"))
@@ -2539,11 +2545,11 @@ class AutoSpecMatchingTests(unittest.TestCase):
         self.assertIn("Forelæsningsslides", episode["description"])
         self.assertIn("Forelæsning intro slides", episode["description"])
 
-    def test_build_episode_entry_maps_slide_brief_to_kort_podcast_forelaesningsslides(self):
+    def test_build_episode_entry_maps_slide_short_to_kort_podcast_forelaesningsslides(self):
         mod = _load_feed_module()
         file_entry = {
             "id": "file1",
-            "name": "[Brief] W01L1 - Slide lecture: Forelæsning intro slides [EN].mp3",
+            "name": "[Short] W01L1 - Slide lecture: Forelæsning intro slides [EN].mp3",
             "createdTime": "2026-02-02T08:00:00+00:00",
         }
         episode = mod.build_episode_entry(
@@ -2558,7 +2564,7 @@ class AutoSpecMatchingTests(unittest.TestCase):
             overrides={},
             public_link_template="https://example.com/{file_id}",
         )
-        self.assertEqual(episode["episode_kind"], "brief")
+        self.assertEqual(episode["episode_kind"], "short")
         self.assertEqual(
             episode["title"],
             "[Kort podcast] Forelæsningsslides - Forelæsning intro slides",
@@ -2752,11 +2758,11 @@ class AutoSpecMatchingTests(unittest.TestCase):
         self.assertIn("Summary line 1\nSummary line 2", episode["description"])
         self.assertIn("\n\nKey points:\n- Point A\n- Point B\n- Point C", episode["description"])
 
-    def test_reading_summary_and_key_points_render_for_brief(self):
+    def test_reading_summary_and_key_points_render_for_short(self):
         mod = _load_feed_module()
         file_entry = {
             "id": "file1",
-            "name": "[Brief] W01L1 - Foo [EN].mp3",
+            "name": "[Short] W01L1 - Foo [EN].mp3",
             "createdTime": "2026-02-02T08:00:00+00:00",
         }
         episode = mod.build_episode_entry(
@@ -2767,23 +2773,23 @@ class AutoSpecMatchingTests(unittest.TestCase):
                 "description": "Test feed",
                 "language": "en",
                 "description_blocks_by_kind": {
-                    "brief": ["reading_summary", "reading_key_points"],
+                    "short": ["reading_summary", "reading_key_points"],
                 },
             },
             overrides={},
             public_link_template="https://example.com/{file_id}",
-            reading_summaries_cfg={"enabled_kinds": {"reading", "brief"}, "key_points_label": "Key points"},
+            reading_summaries_cfg={"enabled_kinds": {"reading", "short"}, "key_points_label": "Key points"},
             reading_summaries={
                 "by_name": {
-                    "[Brief] W01L1 - Foo [EN].mp3": {
-                        "summary_lines": ["Brief summary 1", "Brief summary 2"],
-                        "key_points": ["Brief A", "Brief B", "Brief C"],
+                    "[Short] W01L1 - Foo [EN].mp3": {
+                        "summary_lines": ["Short summary 1", "Short summary 2"],
+                        "key_points": ["Short A", "Short B", "Short C"],
                     }
                 }
             },
         )
-        self.assertIn("Brief summary 1\nBrief summary 2", episode["description"])
-        self.assertIn("\n\nKey points:\n- Brief A\n- Brief B\n- Brief C", episode["description"])
+        self.assertIn("Short summary 1\nShort summary 2", episode["description"])
+        self.assertIn("\n\nKey points:\n- Short A\n- Short B\n- Short C", episode["description"])
 
     def test_tts_reading_uses_lydbog_title_prefix_with_summary_blocks(self):
         mod = _load_feed_module()

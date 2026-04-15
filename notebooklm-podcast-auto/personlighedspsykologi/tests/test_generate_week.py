@@ -282,17 +282,17 @@ class GenerateWeekTests(unittest.TestCase):
             self.assertFalse(seminar_request.exists())
             self.assertTrue(lecture_audio.exists())
 
-    def test_cleanup_disallowed_slide_brief_outputs_respects_brief_scope(self):
+    def test_cleanup_disallowed_slide_brief_outputs_respects_short_scope(self):
         mod = _load_module()
         with tempfile.TemporaryDirectory() as tmpdir:
             week_dir = Path(tmpdir) / "W1L1"
             lecture_brief = (
                 week_dir
-                / "[Brief] W1L1 - Slide lecture: 1. gang [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+                / "[Short] W1L1 - Slide lecture: 1. gang [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
             )
             exercise_brief = (
                 week_dir
-                / "[Brief] W1L1 - Slide exercise: 1. Intro [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+                / "[Short] W1L1 - Slide exercise: 1. Intro [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
             )
             seminar_brief = (
                 week_dir
@@ -326,18 +326,18 @@ class GenerateWeekTests(unittest.TestCase):
             ["audio", "infographic"],
         )
 
-    def test_cleanup_disallowed_brief_quiz_outputs_removes_brief_quiz_artifacts(self):
+    def test_cleanup_disallowed_brief_quiz_outputs_removes_short_quiz_artifacts(self):
         mod = _load_module()
         with tempfile.TemporaryDirectory() as tmpdir:
             week_dir = Path(tmpdir) / "W1L1"
             brief_quiz = (
                 week_dir
-                / "[Brief] W1L1 - Foo [EN] {type=quiz lang=en quantity=standard difficulty=easy hash=beef1234}.json"
+                / "[Short] W1L1 - Foo [EN] {type=quiz lang=en quantity=standard difficulty=easy hash=beef1234}.json"
             )
             brief_request = brief_quiz.with_suffix(".json.request.json")
             brief_audio = (
                 week_dir
-                / "[Brief] W1L1 - Foo [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+                / "[Short] W1L1 - Foo [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
             )
             _touch(brief_quiz, b"{}")
             _touch(brief_request, b"{}")

@@ -31,13 +31,13 @@ def _touch(path: Path) -> None:
 
 
 class SyncReadingSummariesTests(unittest.TestCase):
-    def test_discover_episode_keys_includes_reading_brief_tts_and_excludes_weekly(self):
+    def test_discover_episode_keys_includes_reading_short_tts_and_excludes_weekly(self):
         mod = _load_module()
         with tempfile.TemporaryDirectory() as tmpdir:
             output_root = Path(tmpdir) / "output"
             week_dir = output_root / "W01L1"
             _touch(week_dir / "W01L1 - Core Reading [EN] {type=audio hash=1234}.mp3")
-            _touch(week_dir / "[Brief] W01L1 - Core Reading [EN].mp3")
+            _touch(week_dir / "[Short] W01L1 - Core Reading [EN].mp3")
             _touch(week_dir / "W01L1 - Oplæst Core Reading [EN].mp3")
             _touch(week_dir / "W01L1 - All sources [EN].mp3")
             _touch(week_dir / "W01L1 - Alle kilder [EN].wav")
@@ -49,7 +49,7 @@ class SyncReadingSummariesTests(unittest.TestCase):
                 set(keys),
                 {
                     "W01L1 - Core Reading [EN].mp3",
-                    "[Brief] W01L1 - Core Reading [EN].mp3",
+                    "[Short] W01L1 - Core Reading [EN].mp3",
                     "W01L1 - Oplæst Core Reading [EN].mp3",
                 },
             )
@@ -271,7 +271,7 @@ class SyncReadingSummariesTests(unittest.TestCase):
                     rc = mod.main()
 
             self.assertEqual(rc, 0)
-            self.assertIn("No local reading/brief/tts episode files found", buffer.getvalue())
+            self.assertIn("No local reading/short/tts episode files found", buffer.getvalue())
 
     def test_discover_weekly_overview_keys_includes_only_alle_kilder_audio(self):
         mod = _load_module()
@@ -308,9 +308,9 @@ class SyncReadingSummariesTests(unittest.TestCase):
                     "key_points": ["Reading point A"],
                     "meta": {"source_file": str(source_dir / "A.pdf")},
                 },
-                "[Brief] W01L1 - Reading A [EN].mp3": {
-                    "summary_lines": ["Brief summary A should lose"],
-                    "key_points": ["Brief point A should lose"],
+                "[Short] W01L1 - Reading A [EN].mp3": {
+                    "summary_lines": ["Short summary A should lose"],
+                    "key_points": ["Short point A should lose"],
                     "meta": {"source_file": str(source_dir / "A.pdf")},
                 },
                 "[TTS] W01L1 - Reading B.wav": {

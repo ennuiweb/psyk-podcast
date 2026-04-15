@@ -154,8 +154,8 @@ def main() -> int:
         titles = rss_titles(rss_path)
 
     missing_full: list[str] = []
-    missing_brief: list[str] = []
-    unexpected_nonlecture_brief: list[str] = []
+    missing_short: list[str] = []
+    unexpected_nonlecture_short: list[str] = []
     unexpected_seminar_full: list[str] = []
 
     for lecture_key, subcategory, subject in iter_slide_expectations(
@@ -163,31 +163,31 @@ def main() -> int:
         feed_module=feed_module,
     ):
         full_title = build_expected_title(lecture_key, "Podcast", subject)
-        brief_title = build_expected_title(lecture_key, "Kort podcast", subject)
+        short_title = build_expected_title(lecture_key, "Kort podcast", subject)
         if subcategory == "lecture":
             if full_title not in titles:
                 missing_full.append(full_title)
-            if brief_title not in titles:
-                missing_brief.append(brief_title)
+            if short_title not in titles:
+                missing_short.append(short_title)
             continue
         if subcategory == "seminar":
             if full_title in titles:
                 unexpected_seminar_full.append(full_title)
-            if brief_title in titles:
-                unexpected_nonlecture_brief.append(brief_title)
+            if short_title in titles:
+                unexpected_nonlecture_short.append(short_title)
             continue
-        if brief_title in titles:
-            unexpected_nonlecture_brief.append(brief_title)
+        if short_title in titles:
+            unexpected_nonlecture_short.append(short_title)
 
     problems: list[str] = []
     if missing_full:
         problems.append("Missing lecture slide full podcasts:\n- " + "\n- ".join(missing_full))
-    if missing_brief:
-        problems.append("Missing lecture slide brief podcasts:\n- " + "\n- ".join(missing_brief))
-    if unexpected_nonlecture_brief:
+    if missing_short:
+        problems.append("Missing lecture slide short podcasts:\n- " + "\n- ".join(missing_short))
+    if unexpected_nonlecture_short:
         problems.append(
-            "Unexpected non-lecture slide brief podcasts:\n- "
-            + "\n- ".join(unexpected_nonlecture_brief)
+            "Unexpected non-lecture slide short podcasts:\n- "
+            + "\n- ".join(unexpected_nonlecture_short)
         )
     if unexpected_seminar_full:
         problems.append(
@@ -202,7 +202,7 @@ def main() -> int:
             return 0
         raise SystemExit(message)
 
-    print("Validated Personlighedspsykologi slide brief coverage.")
+    print("Validated Personlighedspsykologi slide short coverage.")
     return 0
 
 

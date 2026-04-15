@@ -21,11 +21,11 @@
     "length": "default",
     "prompt": ""
   },
-  "brief": {
+  "short": {
     "format": "deep-dive",
     "length": "long",
     "prompt": "",
-    "title_prefix": "[Brief]",
+    "title_prefix": "[Short]",
     "apply_to": "readings_and_lecture_slides"
   },
   "quiz": {
@@ -49,7 +49,7 @@
     "detail": "concise",
     "prompt": ""
   },
-  "brief_infographic": {
+  "short_infographic": {
     "orientation": "square",
     "detail": "concise",
     "prompt": ""

@@ -713,6 +713,214 @@ class CfgTagFilenameHelpersTests(unittest.TestCase):
         )
         self.assertNotEqual(token_a, token_b)
 
+    def test_generate_week_per_slide_override_changes_only_matching_slide(self):
+        mod = self.generate_week
+        matching = mod.SourceItem(
+            Path("slide-a.pdf"),
+            "Slide lecture: A",
+            "slide",
+            "w01l1-lecture-a",
+            "lecture",
+        )
+        other = mod.SourceItem(
+            Path("slide-b.pdf"),
+            "Slide lecture: B",
+            "slide",
+            "w01l1-lecture-b",
+            "lecture",
+        )
+        per_slide_cfg = {
+            "format": "deep-dive",
+            "length": "default",
+            "prompt": "base prompt",
+            "overrides": {
+                "w01l1-lecture-a": {
+                    "length": "long",
+                    "prompt": "expanded prompt",
+                }
+            },
+        }
+        overrides = mod.validate_per_slide_audio_config(per_slide_cfg)
+
+        self.assertEqual(
+            mod.per_source_audio_settings(
+                matching,
+                per_reading_cfg={},
+                per_slide_cfg=per_slide_cfg,
+                per_slide_overrides=overrides,
+            ),
+            ("per_slide", "expanded prompt", "deep-dive", "long"),
+        )
+        self.assertEqual(
+            mod.per_source_audio_settings(
+                other,
+                per_reading_cfg={},
+                per_slide_cfg=per_slide_cfg,
+                per_slide_overrides=overrides,
+            ),
+            ("per_slide", "base prompt", "deep-dive", "default"),
+        )
+
+    def test_generate_week_per_slide_override_rejects_unknown_fields(self):
+        mod = self.generate_week
+        with self.assertRaises(SystemExit) as exc:
+            mod.validate_per_slide_audio_config(
+                {
+                    "overrides": {
+                        "w01l1-lecture-a": {
+                            "duration": "long",
+                        }
+                    }
+                }
+            )
+        self.assertIn("Unknown per_slide override field", str(exc.exception))
+
+    def test_generate_week_per_slide_override_rejects_invalid_length(self):
+        mod = self.generate_week
+        with self.assertRaises(SystemExit) as exc:
+            mod.validate_per_slide_audio_config(
+                {
+                    "overrides": {
+                        "w01l1-lecture-a": {
+                            "length": "very-long",
+                        }
+                    }
+                }
+            )
+        self.assertIn("Unknown per_slide.overrides.w01l1-lecture-a.length", str(exc.exception))
+
+    def test_generate_week_only_slide_dry_run_plans_selected_slide_audio(self):
+        root = _repo_root()
+        script = (
+            root
+            / "notebooklm-podcast-auto"
+            / "personlighedspsykologi"
+            / "scripts"
+            / "generate_week.py"
+        )
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            tmp_path = Path(tmp_dir)
+            sources_root = tmp_path / "sources"
+            week_dir = sources_root / "W01L1"
+            week_dir.mkdir(parents=True)
+            (week_dir / "Reading.pdf").write_bytes(b"%PDF-1.4\n%reading\n")
+
+            slides_root = tmp_path / "slides"
+            slides_root.mkdir()
+            (slides_root / "Slide A.pdf").write_bytes(b"%PDF-1.4\n%slide\n")
+            slides_catalog = tmp_path / "slides_catalog.json"
+            slide_key = "w01l1-lecture-slide-a"
+            slides_catalog.write_text(
+                json.dumps(
+                    {
+                        "slides": [
+                            {
+                                "slide_key": slide_key,
+                                "lecture_key": "W01L1",
+                                "subcategory": "lecture",
+                                "title": "Slide A",
+                                "source_filename": "Slide A.pdf",
+                                "local_relative_path": "Slide A.pdf",
+                            }
+                        ]
+                    }
+                ),
+                encoding="utf-8",
+            )
+            prompt_config = tmp_path / "prompt_config.json"
+            prompt_config.write_text(
+                json.dumps(
+                    {
+                        "language": "en",
+                        "languages": [{"code": "en", "suffix": "[EN]"}],
+                        "per_reading": {"format": "deep-dive", "length": "long", "prompt": ""},
+                        "per_slide": {
+                            "format": "deep-dive",
+                            "length": "default",
+                            "prompt": "",
+                            "overrides": {slide_key: {"length": "long"}},
+                        },
+                        "course_title": "Test Course",
+                        "slides_catalog": str(slides_catalog),
+                        "slides_source_root": str(slides_root),
+                    }
+                ),
+                encoding="utf-8",
+            )
+
+            result = subprocess.run(
+                [
+                    sys.executable,
+                    str(script),
+                    "--week",
+                    "W01L1",
+                    "--sources-root",
+                    str(sources_root),
+                    "--prompt-config",
+                    str(prompt_config),
+                    "--output-root",
+                    str(tmp_path / "output"),
+                    "--content-types",
+                    "audio",
+                    "--only-slide",
+                    slide_key,
+                    "--dry-run",
+                    "--no-print-downloads",
+                ],
+                cwd=root,
+                check=False,
+                capture_output=True,
+                text=True,
+            )
+
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertIn("SLIDE AUDIO (en):", result.stdout)
+        self.assertIn("length=long", result.stdout)
+        self.assertNotIn("READING AUDIO", result.stdout)
+        self.assertNotIn("WEEKLY AUDIO", result.stdout)
+
+    def test_generate_week_quarantines_stale_slide_audio_outputs(self):
+        mod = self.generate_week
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            week_output_dir = root / "output" / "W01L1"
+            week_output_dir.mkdir(parents=True)
+            stale = week_output_dir / (
+                "W01L1 - Slide lecture: Slide A [EN] "
+                "{type=audio lang=en format=deep-dive length=default hash=old11111}.mp3"
+            )
+            stale.write_bytes(b"old")
+            sidecar = stale.with_suffix(stale.suffix + ".request.json")
+            sidecar.write_text("{}", encoding="utf-8")
+            canonical = week_output_dir / (
+                "W01L1 - Slide lecture: Slide A [EN] "
+                "{type=audio lang=en format=deep-dive length=long hash=new22222}.mp3"
+            )
+            canonical.write_bytes(b"new")
+            unrelated = week_output_dir / (
+                "W01L1 - Reading [EN] "
+                "{type=audio lang=en format=deep-dive length=default hash=old11111}.mp3"
+            )
+            unrelated.write_bytes(b"reading")
+
+            moved = mod.quarantine_stale_slide_audio_outputs(
+                repo_root=root,
+                week_output_dir=week_output_dir,
+                canonical_output_path=canonical,
+                timestamp="20260415-120000",
+            )
+
+            quarantine_dir = (
+                root / ".ai/quarantine/slide-audio-overrides/20260415-120000/W01L1"
+            )
+            self.assertEqual(len(moved), 2)
+            self.assertFalse(stale.exists())
+            self.assertFalse(sidecar.exists())
+            self.assertTrue((quarantine_dir / stale.name).exists())
+            self.assertTrue((quarantine_dir / sidecar.name).exists())
+            self.assertTrue(canonical.exists())
+            self.assertTrue(unrelated.exists())
+
     def test_generate_week_normalize_quiz_difficulty_accepts_all(self):
         mod = self.generate_week
         self.assertEqual(mod.normalize_quiz_difficulty("all"), "all")
@@ -782,8 +990,8 @@ class CfgTagFilenameHelpersTests(unittest.TestCase):
             (week_dir / "Lewis (1999).pdf").write_bytes(b"%PDF-1.4\n%reading\n")
 
             slides_root = root / "slides-root"
-            (slides_root / "Seminarhold" / "Slides").mkdir(parents=True, exist_ok=True)
-            (slides_root / "Seminarhold" / "Slides" / "1. Introduktion.pdf").write_bytes(
+            (slides_root / "Oevelseshold" / "Slides").mkdir(parents=True, exist_ok=True)
+            (slides_root / "Oevelseshold" / "Slides" / "1. Introduktion.pdf").write_bytes(
                 b"%PDF-1.4\n%slide\n"
             )
             slides_catalog = root / "slides_catalog.json"
@@ -794,13 +1002,13 @@ class CfgTagFilenameHelpersTests(unittest.TestCase):
                         "subject_slug": "personlighedspsykologi",
                         "slides": [
                             {
-                                "slide_key": "w01l1-seminar-intro",
+                                "slide_key": "w01l1-exercise-intro",
                                 "lecture_key": "W01L1",
-                                "subcategory": "seminar",
+                                "subcategory": "exercise",
                                 "title": "Introduktion",
                                 "source_filename": "1. Introduktion.pdf",
-                                "local_relative_path": "Seminarhold/Slides/1. Introduktion.pdf",
-                                "relative_path": "W01L1/seminar/1. Introduktion.pdf",
+                                "local_relative_path": "Oevelseshold/Slides/1. Introduktion.pdf",
+                                "relative_path": "W01L1/exercise/1. Introduktion.pdf",
                             }
                         ],
                         "unresolved": [],
@@ -818,8 +1026,8 @@ class CfgTagFilenameHelpersTests(unittest.TestCase):
             )
 
         self.assertEqual([item.source_type for item in generation_sources], ["reading", "slide"])
-        self.assertEqual(generation_sources[1].slide_key, "w01l1-seminar-intro")
-        self.assertEqual(generation_sources[1].slide_subcategory, "seminar")
+        self.assertEqual(generation_sources[1].slide_key, "w01l1-exercise-intro")
+        self.assertEqual(generation_sources[1].slide_subcategory, "exercise")
 
     def test_generate_week_canonical_week_label_from_dir_pads_week_numbers(self):
         mod = self.generate_week
@@ -847,8 +1055,8 @@ class CfgTagFilenameHelpersTests(unittest.TestCase):
             (week_dir / "Mayer & Bryan (2024).pdf").write_bytes(b"%PDF-1.4\n%reading\n")
 
             slides_root = root / "slides-root"
-            (slides_root / "Seminarhold" / "Slides").mkdir(parents=True, exist_ok=True)
-            (slides_root / "Seminarhold" / "Slides" / "4. Psykoanalyse I.pdf").write_bytes(
+            (slides_root / "Oevelseshold" / "Slides").mkdir(parents=True, exist_ok=True)
+            (slides_root / "Oevelseshold" / "Slides" / "4. Psykoanalyse I.pdf").write_bytes(
                 b"%PDF-1.4\n%slide\n"
             )
             slides_catalog = root / "slides_catalog.json"
@@ -859,14 +1067,14 @@ class CfgTagFilenameHelpersTests(unittest.TestCase):
                         "subject_slug": "personlighedspsykologi",
                         "slides": [
                             {
-                                "slide_key": "w04l1-seminar-psykoanalyse-i",
+                                "slide_key": "w04l1-exercise-psykoanalyse-i",
                                 "lecture_key": "W04L1",
                                 "lecture_keys": ["W04L1", "W01L2"],
-                                "subcategory": "seminar",
+                                "subcategory": "exercise",
                                 "title": "Psykoanalyse I",
                                 "source_filename": "4. Psykoanalyse I.pdf",
-                                "local_relative_path": "Seminarhold/Slides/4. Psykoanalyse I.pdf",
-                                "relative_path": "W04L1/seminar/4. Psykoanalyse I.pdf",
+                                "local_relative_path": "Oevelseshold/Slides/4. Psykoanalyse I.pdf",
+                                "relative_path": "W04L1/exercise/4. Psykoanalyse I.pdf",
                             }
                         ],
                         "unresolved": [],
@@ -884,8 +1092,8 @@ class CfgTagFilenameHelpersTests(unittest.TestCase):
             )
 
         self.assertEqual([item.source_type for item in generation_sources], ["reading", "slide"])
-        self.assertEqual(generation_sources[1].slide_key, "w04l1-seminar-psykoanalyse-i")
-        self.assertEqual(generation_sources[1].base_name, "Slide seminar: Psykoanalyse I")
+        self.assertEqual(generation_sources[1].slide_key, "w04l1-exercise-psykoanalyse-i")
+        self.assertEqual(generation_sources[1].base_name, "Slide exercise: Psykoanalyse I")
 
     def test_generate_week_weekly_overview_count_excludes_slides(self):
         mod = self.generate_week

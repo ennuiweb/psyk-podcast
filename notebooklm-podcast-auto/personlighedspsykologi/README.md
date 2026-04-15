@@ -4,7 +4,7 @@ This folder contains the generation pipeline assets for Personlighedspsykologi a
 It is **not** a podcast feed. Feed config now lives in:
 
 - `shows/personlighedspsykologi-en`
-- Feed ordering preference is configured there via `feed.sort_mode: "wxlx_kind_priority"` (`Brief -> Alle kilder -> Oplæst/TTS readings -> other readings` within each `W#L#` block).
+- Feed ordering preference is configured there via `feed.sort_mode: "wxlx_kind_priority"` (`Short -> Alle kilder -> Oplæst/TTS readings -> other readings` within each `W#L#` block).
 - In this mode, `pubDate` values inside each `W#L#` block are also re-sequenced so clients that sort by `Oldest` show `Alle kilder` first in the block.
 
 ## Key paths
@@ -45,10 +45,34 @@ python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_week.py 
 - This guarantees the run re-uploads the full lecture source list instead of relying on existing notebook sources.
 - `Alle kilder` is skipped automatically for lecture folders that contain only one source file.
 - Manual slide entries from `shows/personlighedspsykologi-en/slides_catalog.json` are included as per-slide sources for reading-level generation when they are lecture or exercise slides and have a valid `local_relative_path`.
-- Slide sources generate their own per-source podcasts/quizzes. Briefs are currently configured for all readings plus lecture slides only via `brief.apply_to: "readings_and_lecture_slides"`, with descriptor titles like `Slide lecture: <title>`.
+- Slide sources generate their own per-source podcasts/quizzes. Short episodes are currently configured for all readings plus lecture slides only via `short.apply_to: "readings_and_lecture_slides"` (the older config key is still accepted), with descriptor titles like `Slide lecture: <title>`.
 - Slide audio settings come from `per_slide` in `prompt_config.json`; reading audio settings stay under `per_reading`.
+- Individual slide podcasts can override `per_slide` by `slide_key`:
+
+```json
+"per_slide": {
+  "format": "deep-dive",
+  "length": "default",
+  "prompt": "",
+  "overrides": {
+    "w09l1-lecture-17-kritisk-psykologi-30798115": {
+      "length": "long"
+    }
+  }
+}
+```
+
+- Override fields are optional and inherit from the base `per_slide` block. Supported fields are `format`, `length`, and `prompt`.
+- Find stable slide keys in `shows/personlighedspsykologi-en/slides_catalog.json`.
+- To regenerate only one slide podcast, use `--only-slide <slide_key>`. This skips `Alle kilder`, readings, and short-form outputs for that run:
+
+```bash
+./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_week.py --week W09L1 --content-types audio --only-slide w09l1-lecture-17-kritisk-psykologi-30798115 --wait
+```
+
+- Non-dry `--only-slide` audio runs quarantine stale full-slide MP3s with the same visible slide basename but a different audio config tag under `.ai/quarantine/slide-audio-overrides/`, including request sidecars. This prevents old `length=default` and new `length=long` slide files from both being published.
 - Seminar slides are excluded from generation, and non-dry runs auto-delete any stale `Slide seminar: ...` outputs in the target week folder before planning new artifacts.
-- Non-dry runs also delete stale slide brief outputs that fall outside the configured brief scope (for example old `Slide exercise: ...` briefs when `brief.apply_to` is lecture-only for slides).
+- Non-dry runs also delete stale slide short outputs that fall outside the configured short scope (for example old `Slide exercise: ...` short files when `short.apply_to` is lecture-only for slides).
 - Slides are excluded from the notebook source set for `Alle kilder (undtagen slides)` and therefore also excluded from its `sources=<n>` tag.
 
 ## Output filename config tags
@@ -140,7 +164,7 @@ python3 podcast-tools/gdrive_podcast_feed.py --config shows/personlighedspsykolo
 ```
 
 - Sync behavior:
-  - Uses local audio files under `output/` as inventory for all non-weekly episode variants, including reading, slide, brief, and `TTS`.
+  - Uses local audio files under `output/` as inventory for all non-weekly episode variants, including reading, slide, short, and `TTS`.
   - Excludes `Alle kilder` / `All sources` files from the reading summary inventory.
   - Adds missing `by_name` placeholders with empty `summary_lines` + `key_points`.
   - `--validate-only` reports missing/incomplete entries and always exits non-blocking for coverage gaps.

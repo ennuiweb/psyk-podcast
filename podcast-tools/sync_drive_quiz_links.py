@@ -43,6 +43,7 @@ SUBJECT_SLUG_RE = re.compile(r"^[a-z0-9-]+$")
 QUIZ_DIFFICULTY_SORT_ORDER = {"easy": 0, "medium": 1, "hard": 2}
 QUIZ_PRIMARY_DIFFICULTY_SORT_ORDER = {"medium": 0, "easy": 1, "hard": 2}
 WEEK_X_PREFIX_RE = re.compile(r"^(W\d{2}L\d+)\s*(?:-\s*)?X\s+", re.IGNORECASE)
+SHORT_PREFIX_RE = re.compile(r"^\[\s*(?:short|brief)\s*\]\s*", re.IGNORECASE)
 
 
 def load_json(path: Path) -> Dict[str, Any]:
@@ -303,7 +304,7 @@ def is_excluded_quiz_json_name(name: str) -> bool:
         return True
     if normalized == "quiz_json_manifest.json":
         return True
-    if normalized.startswith("[brief]") and "type=quiz" in normalized:
+    if SHORT_PREFIX_RE.match(normalized) and "type=quiz" in normalized:
         return True
     return normalized.endswith(("-manifest.json", "_manifest.json"))
 
@@ -323,9 +324,10 @@ def canonical_key(stem: str) -> str:
     name = re.sub(r"\s+", " ", name).strip()
     name = re.sub(r"\.{2,}", ".", name)
     prefix = ""
-    if name.lower().startswith("[brief]"):
-        prefix = "[Brief] "
-        name = name[len("[brief]") :].lstrip()
+    short_match = SHORT_PREFIX_RE.match(name)
+    if short_match:
+        prefix = "[Short] "
+        name = name[short_match.end() :].lstrip()
     match = re.match(r"^(W\d{2}L\d+)\b(?:\s*-\s*)?(.*)$", name, re.IGNORECASE)
     if not match:
         return f"{prefix}{name}".strip()
@@ -351,8 +353,9 @@ def audio_candidate_rank(stem: str) -> tuple[int, int, int, str]:
     name = normalize_week_tokens(name)
     name = re.sub(r"\s+", " ", name).strip()
     name = re.sub(r"\.{2,}", ".", name)
-    if name.lower().startswith("[brief]"):
-        name = name[len("[brief]") :].lstrip()
+    short_match = SHORT_PREFIX_RE.match(name)
+    if short_match:
+        name = name[short_match.end() :].lstrip()
     duplicate_week_prefix = 1 if DUPLICATE_WEEK_PREFIX_RE.match(name) else 0
     has_missing_token = 1 if MISSING_TOKEN_RE.search(name) else 0
     return (duplicate_week_prefix, has_missing_token, len(name), name.casefold())
@@ -482,9 +485,10 @@ def derive_mp3_name_from_html(stem: str) -> str:
     name = re.sub(r"\s+", " ", name).strip()
     name = re.sub(r"\.{2,}", ".", name)
     prefix = ""
-    if name.lower().startswith("[brief]"):
-        prefix = "[Brief] "
-        name = name[len("[brief]") :].lstrip()
+    short_match = SHORT_PREFIX_RE.match(name)
+    if short_match:
+        prefix = "[Short] "
+        name = name[short_match.end() :].lstrip()
     match = re.match(r"^(W\d{2}L\d+)\s*-\s*(.*)$", name, re.IGNORECASE)
     if not match:
         return f"{prefix}{name}.mp3".strip()

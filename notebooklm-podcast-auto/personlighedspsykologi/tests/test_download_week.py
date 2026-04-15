@@ -21,9 +21,15 @@ def _load_module():
 
 
 class DownloadWeekTests(unittest.TestCase):
-    def test_disallowed_brief_quiz_request_log_is_skipped(self):
+    def test_disallowed_short_quiz_request_log_is_skipped(self):
         mod = _load_module()
 
+        self.assertTrue(
+            mod.is_disallowed_brief_quiz_request_log(
+                "/tmp/[Short] W01L1 - Foo [EN] {type=quiz lang=en quantity=standard difficulty=easy hash=beef1234}.json",
+                "quiz",
+            )
+        )
         self.assertTrue(
             mod.is_disallowed_brief_quiz_request_log(
                 "/tmp/[Brief] W01L1 - Foo [EN] {type=quiz lang=en quantity=standard difficulty=easy hash=beef1234}.json",

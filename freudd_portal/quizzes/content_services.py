@@ -737,7 +737,7 @@ def _summary_payload_from_entry(entry_name: str, raw_entry: Any) -> dict[str, An
 def _summary_candidate_score(entry_name: str, payload: dict[str, Any]) -> tuple[int, int, int]:
     cleaned_name = str(entry_name or "").strip()
     upper_name = cleaned_name.upper()
-    standard_variant = 0 if upper_name.startswith("[BRIEF]") or upper_name.startswith("[TTS]") else 1
+    standard_variant = 0 if upper_name.startswith(("[SHORT]", "[BRIEF]", "[TTS]")) else 1
     richness = len(payload.get("summary_lines") or []) + len(payload.get("key_points") or [])
     text_weight = sum(len(str(value)) for value in (payload.get("summary_lines") or [])) + sum(
         len(str(value)) for value in (payload.get("key_points") or [])

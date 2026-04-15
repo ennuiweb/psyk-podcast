@@ -131,7 +131,7 @@ QUIZ_CFG_PAIR_RE = re.compile(r"(?P<key>[a-z0-9._:+-]+)=(?P<value>[^{}\s]+)", re
 QUIZ_FILE_SUFFIX_RE = re.compile(r"\.(?:mp3|m4a|wav|aac|flac|ogg|json|html)$", re.IGNORECASE)
 QUIZ_LANGUAGE_TAG_RE = re.compile(r"\[(?P<lang>[A-Za-z]{2,5})\]")
 SOURCE_FILENAME_SEPARATORS_RE = re.compile(r"[\\/]+")
-QUIZ_BRIEF_PREFIX_RE = re.compile(r"^\s*\[brief\]\s*", re.IGNORECASE)
+QUIZ_BRIEF_PREFIX_RE = re.compile(r"^\s*\[(?:short|brief)\]\s*", re.IGNORECASE)
 QUIZ_LECTURE_KEY_RE = re.compile(r"\bW(?P<week>\d{1,2})L(?P<lecture>\d+)\b", re.IGNORECASE)
 MULTISPACE_RE = re.compile(r"\s+")
 SLIDE_HINT_RE = re.compile(

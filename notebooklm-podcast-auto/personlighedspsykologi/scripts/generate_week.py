@@ -21,7 +21,10 @@ def read_json(path: Path) -> dict:
 
 WEEK_SELECTOR_PATTERN = re.compile(r"^(?:W)?0*(\d{1,2})(?:L0*(\d{1,2}))?$", re.IGNORECASE)
 WEEK_DIR_PATTERN = re.compile(r"^W0*(\d{1,2})(?:L0*(\d{1,2}))?\b", re.IGNORECASE)
-OUTPUT_TITLE_PREFIX_PATTERN = re.compile(r"^((?:\[Brief\]\s+)?W\d+L\d+\s+-\s+)(.+)$", re.IGNORECASE)
+OUTPUT_TITLE_PREFIX_PATTERN = re.compile(
+    r"^((?:\[(?:Short|Brief)\]\s+)?W\d+L\d+\s+-\s+)(.+)$",
+    re.IGNORECASE,
+)
 CFG_TAG_PATTERN = re.compile(
     r"(?:\s+\{[a-z0-9._:+-]+=[^{}\s]+(?:\s+[a-z0-9._:+-]+=[^{}\s]+)*\})+"
     r"(?:\s+\[[^\[\]]+\])?$",
@@ -51,6 +54,11 @@ BRIEF_APPLY_TO_VALUES = {
     "readings_and_lecture_slides",
 }
 BRIEF_SUPPORTED_CONTENT_TYPES = {"audio", "infographic"}
+SHORT_PREFIX_GLOBS = ("[[]Short[]]*", "[[]Brief[]]*")
+AUDIO_FORMAT_VALUES = {"deep-dive", "brief", "critique", "debate"}
+AUDIO_LENGTH_VALUES = {"short", "default", "long"}
+PER_SLIDE_OVERRIDE_KEYS = {"format", "length", "prompt"}
+SLIDE_AUDIO_QUARANTINE_ROOT = Path(".ai/quarantine/slide-audio-overrides")
 
 
 class SourceItem(NamedTuple):
@@ -303,11 +311,15 @@ def cleanup_disallowed_slide_brief_outputs(week_output_dir: Path, *, brief_cfg: 
     for subcategory, label in SLIDE_SUBCATEGORY_LABELS.items():
         if slide_brief_subcategory_allowed(subcategory, brief_cfg=brief_cfg):
             continue
-        for entry in sorted(week_output_dir.glob(f"[[]Brief[]]* - {label}: *"), key=lambda path: path.name):
-            if not entry.is_file():
-                continue
-            entry.unlink()
-            removed.append(entry)
+        for prefix_glob in SHORT_PREFIX_GLOBS:
+            for entry in sorted(
+                week_output_dir.glob(f"{prefix_glob} - {label}: *"),
+                key=lambda path: path.name,
+            ):
+                if not entry.is_file():
+                    continue
+                entry.unlink()
+                removed.append(entry)
     return removed
 
 
@@ -316,13 +328,14 @@ def cleanup_disallowed_brief_quiz_outputs(week_output_dir: Path) -> list[Path]:
         return []
 
     removed: list[Path] = []
-    for entry in sorted(week_output_dir.glob("[[]Brief[]]*"), key=lambda path: path.name):
-        if not entry.is_file():
-            continue
-        if "type=quiz" not in entry.name.lower():
-            continue
-        entry.unlink()
-        removed.append(entry)
+    for prefix_glob in SHORT_PREFIX_GLOBS:
+        for entry in sorted(week_output_dir.glob(prefix_glob), key=lambda path: path.name):
+            if not entry.is_file():
+                continue
+            if "type=quiz" not in entry.name.lower():
+                continue
+            entry.unlink()
+            removed.append(entry)
     return removed
 
 
@@ -355,13 +368,27 @@ def per_source_audio_settings(
     *,
     per_reading_cfg: dict,
     per_slide_cfg: dict,
+    per_slide_overrides: dict[str, dict] | None = None,
 ) -> tuple[str, str, str, str]:
     if source_item.source_type == "slide":
+        slide_cfg = {
+            "format": str(per_slide_cfg.get("format", "deep-dive")).strip().lower(),
+            "length": str(per_slide_cfg.get("length", "default")).strip().lower(),
+            "prompt": per_slide_cfg.get("prompt", ""),
+        }
+        override = None
+        if source_item.slide_key:
+            overrides = per_slide_overrides
+            if overrides is None:
+                overrides = parse_per_slide_overrides(per_slide_cfg)
+            override = overrides.get(normalize_slide_key(source_item.slide_key))
+        if override:
+            slide_cfg.update(override)
         return (
             "per_slide",
-            ensure_prompt("per_slide", per_slide_cfg.get("prompt", "")),
-            per_slide_cfg.get("format", "deep-dive"),
-            per_slide_cfg.get("length", "default"),
+            ensure_prompt("per_slide", slide_cfg.get("prompt", "")),
+            slide_cfg.get("format", "deep-dive"),
+            slide_cfg.get("length", "default"),
         )
     return (
         "per_reading",
@@ -377,7 +404,7 @@ def resolve_brief_apply_to(brief_cfg: dict) -> str:
         return raw_value
     allowed = ", ".join(sorted(BRIEF_APPLY_TO_VALUES))
     raise SystemExit(
-        f"Unknown brief.apply_to '{raw_value}'. Allowed values: {allowed}."
+        f"Unknown short.apply_to '{raw_value}'. Allowed values: {allowed}."
     )
 
 
@@ -446,6 +473,91 @@ def normalize_episode_title(title: str, week_label: str) -> str:
 
 def ensure_prompt(_: str, value: str) -> str:
     return value.strip()
+
+
+def normalize_slide_key(value: object) -> str:
+    return str(value or "").strip().lower()
+
+
+def parse_slide_key_filter(value: str | None) -> set[str]:
+    if not value:
+        return set()
+    keys = {normalize_slide_key(part) for part in value.split(",")}
+    keys.discard("")
+    if not keys:
+        raise SystemExit("--only-slide did not contain any valid slide keys.")
+    return keys
+
+
+def validate_audio_choice(
+    section: str,
+    field: str,
+    value: object,
+    allowed: set[str],
+) -> str:
+    normalized = str(value or "").strip().lower()
+    if normalized not in allowed:
+        allowed_values = ", ".join(sorted(allowed))
+        raise SystemExit(
+            f"Unknown {section}.{field} '{value}'. Allowed values: {allowed_values}."
+        )
+    return normalized
+
+
+def parse_per_slide_overrides(per_slide_cfg: dict) -> dict[str, dict]:
+    raw_overrides = per_slide_cfg.get("overrides")
+    if raw_overrides in (None, ""):
+        return {}
+    if not isinstance(raw_overrides, dict):
+        raise SystemExit("per_slide.overrides must be an object keyed by slide_key.")
+
+    overrides: dict[str, dict] = {}
+    for raw_key, raw_override in raw_overrides.items():
+        slide_key = normalize_slide_key(raw_key)
+        if not slide_key:
+            raise SystemExit("per_slide.overrides contains an empty slide key.")
+        if slide_key in overrides:
+            raise SystemExit(f"Duplicate per_slide override key after normalization: {slide_key}")
+        if not isinstance(raw_override, dict):
+            raise SystemExit(f"per_slide.overrides.{slide_key} must be an object.")
+
+        unknown_keys = sorted(set(raw_override) - PER_SLIDE_OVERRIDE_KEYS)
+        if unknown_keys:
+            allowed = ", ".join(sorted(PER_SLIDE_OVERRIDE_KEYS))
+            raise SystemExit(
+                f"Unknown per_slide override field(s) for {slide_key}: "
+                f"{', '.join(unknown_keys)}. Allowed fields: {allowed}."
+            )
+
+        override = dict(raw_override)
+        if "format" in override:
+            override["format"] = validate_audio_choice(
+                f"per_slide.overrides.{slide_key}",
+                "format",
+                override["format"],
+                AUDIO_FORMAT_VALUES,
+            )
+        if "length" in override:
+            override["length"] = validate_audio_choice(
+                f"per_slide.overrides.{slide_key}",
+                "length",
+                override["length"],
+                AUDIO_LENGTH_VALUES,
+            )
+        if "prompt" in override and not isinstance(override["prompt"], str):
+            raise SystemExit(f"per_slide.overrides.{slide_key}.prompt must be a string.")
+        overrides[slide_key] = override
+    return overrides
+
+
+def validate_per_slide_audio_config(per_slide_cfg: dict) -> dict[str, dict]:
+    if "format" in per_slide_cfg:
+        validate_audio_choice("per_slide", "format", per_slide_cfg["format"], AUDIO_FORMAT_VALUES)
+    if "length" in per_slide_cfg:
+        validate_audio_choice("per_slide", "length", per_slide_cfg["length"], AUDIO_LENGTH_VALUES)
+    if "prompt" in per_slide_cfg and not isinstance(per_slide_cfg["prompt"], str):
+        raise SystemExit("per_slide.prompt must be a string.")
+    return parse_per_slide_overrides(per_slide_cfg)
 
 
 def build_language_variants(config: dict) -> list[dict]:
@@ -627,6 +739,67 @@ def apply_config_tag(path: Path, cfg_tag_token: str | None) -> Path:
         f"{path.name} -> {tagged_name}"
     )
     return path.with_name(tagged_name)
+
+
+def _unique_quarantine_path(target: Path) -> Path:
+    if not target.exists():
+        return target
+    for index in range(2, 1000):
+        candidate = target.with_name(f"{target.stem} [{index}]{target.suffix}")
+        if not candidate.exists():
+            return candidate
+    raise SystemExit(f"Unable to find unique quarantine path for {target}")
+
+
+def _slide_audio_sidecar_paths(output_path: Path) -> list[Path]:
+    return [
+        output_path.with_suffix(output_path.suffix + ".request.json"),
+        output_path.with_suffix(output_path.suffix + ".request.error.json"),
+    ]
+
+
+def quarantine_stale_slide_audio_outputs(
+    *,
+    repo_root: Path,
+    week_output_dir: Path,
+    canonical_output_path: Path,
+    timestamp: str,
+) -> list[tuple[Path, Path]]:
+    if not week_output_dir.exists():
+        return []
+
+    base_stem = strip_cfg_tag_stem(canonical_output_path.stem)
+    moved: list[tuple[Path, Path]] = []
+    candidates: list[Path] = []
+    for entry in sorted(week_output_dir.iterdir(), key=lambda path: path.name):
+        if not entry.is_file():
+            continue
+        if entry == canonical_output_path:
+            continue
+        if entry.suffix.casefold() != canonical_output_path.suffix.casefold():
+            continue
+        if "{type=audio" not in entry.name.casefold():
+            continue
+        if strip_cfg_tag_stem(entry.stem) != base_stem:
+            continue
+        candidates.append(entry)
+
+    if not candidates:
+        return []
+
+    quarantine_dir = repo_root / SLIDE_AUDIO_QUARANTINE_ROOT / timestamp / week_output_dir.name
+    quarantine_dir.mkdir(parents=True, exist_ok=True)
+    for entry in candidates:
+        target = _unique_quarantine_path(quarantine_dir / entry.name)
+        entry.rename(target)
+        moved.append((entry, target))
+        for sidecar in _slide_audio_sidecar_paths(entry):
+            if not sidecar.exists() or not sidecar.is_file():
+                continue
+            sidecar_target = _unique_quarantine_path(quarantine_dir / sidecar.name)
+            sidecar.rename(sidecar_target)
+            moved.append((sidecar, sidecar_target))
+    return moved
 
 
 def resolve_profile_slug(profile: str | None, storage: str | None) -> str | None:
@@ -1235,6 +1408,13 @@ def main() -> int:
         help="Comma-separated content types to generate (audio, infographic, quiz). Default: audio.",
     )
     parser.add_argument(
+        "--only-slide",
+        help=(
+            "Comma-separated slide_key values to generate. "
+            "Filters per-source generation to those slides and skips weekly/short outputs."
+        ),
+    )
+    parser.add_argument(
         "--output-root",
         default="notebooklm-podcast-auto/personlighedspsykologi/output",
         help="Where to place generated artifacts.",
@@ -1414,15 +1594,19 @@ def main() -> int:
         slides_source_root = slide_root_candidate.resolve()
     content_types = parse_content_types(args.content_types)
     brief_types = brief_content_types(content_types)
+    only_slide_keys = parse_slide_key_filter(args.only_slide)
     language_variants = build_language_variants(config)
     weekly_cfg = config.get("weekly_overview", {})
     per_cfg = config.get("per_reading", {})
     per_slide_cfg = ensure_dict(config.get("per_slide", per_cfg))
-    brief_cfg = config.get("brief", {})
+    per_slide_overrides = validate_per_slide_audio_config(per_slide_cfg)
+    brief_cfg = ensure_dict(config.get("short", config.get("brief", {})))
     infographic_defaults = ensure_dict(config.get("infographic"))
     weekly_infographic_cfg = ensure_dict(config.get("weekly_infographic", infographic_defaults))
     per_infographic_cfg = ensure_dict(config.get("per_reading_infographic", infographic_defaults))
-    brief_infographic_cfg = ensure_dict(config.get("brief_infographic", infographic_defaults))
+    brief_infographic_cfg = ensure_dict(
+        config.get("short_infographic", config.get("brief_infographic", infographic_defaults))
+    )
     quiz_cfg = ensure_dict(config.get("quiz"))
     quiz_quantity = normalize_quiz_quantity(quiz_cfg.get("quantity"))
     quiz_difficulty = normalize_quiz_difficulty(quiz_cfg.get("difficulty"))
@@ -1441,6 +1625,8 @@ def main() -> int:
     profile_priority = args.profile_priority
     total_sources_read = 0
     total_missing_outputs = 0
+    matched_only_slide_keys: set[str] = set()
+    quarantine_timestamp = time.strftime("%Y%m%d-%H%M%S")
 
     processed_dirs: set[Path] = set()
     for week_input in week_inputs:
@@ -1473,7 +1659,7 @@ def main() -> int:
                 if removed_disallowed_slide_briefs:
                     print(
                         f"{week_label}: deleted {len(removed_disallowed_slide_briefs)} stale "
-                        "slide brief outputs"
+                        "slide short outputs"
                     )
                 removed_disallowed_brief_quiz_outputs = cleanup_disallowed_brief_quiz_outputs(
                     week_output_dir
@@ -1481,7 +1667,7 @@ def main() -> int:
                 if removed_disallowed_brief_quiz_outputs:
                     print(
                         f"{week_label}: deleted {len(removed_disallowed_brief_quiz_outputs)} stale "
-                        "brief quiz outputs"
+                        "short quiz outputs"
                     )
                 migrated_outputs = migrate_legacy_weekly_overview_outputs(week_output_dir)
                 if migrated_outputs:
@@ -1502,17 +1688,42 @@ def main() -> int:
                 slides_catalog_path=slides_catalog_path,
                 slides_source_root=slides_source_root,
             )
+            if only_slide_keys:
+                generation_sources = [
+                    item
+                    for item in generation_sources
+                    if item.source_type == "slide"
+                    and normalize_slide_key(item.slide_key) in only_slide_keys
+                ]
+                matched_only_slide_keys.update(
+                    normalize_slide_key(item.slide_key)
+                    for item in generation_sources
+                    if item.slide_key
+                )
             if not generation_sources:
+                if only_slide_keys:
+                    continue
                 raise SystemExit(f"No source files found in {week_dir}")
             reading_source_count = len(reading_sources)
             generation_source_count = len(generation_sources)
+            generation_reading_count = sum(
+                1 for item in generation_sources if item.source_type == "reading"
+            )
+            generation_slide_count = sum(
+                1 for item in generation_sources if item.source_type == "slide"
+            )
             total_sources_read += generation_source_count
-            generate_weekly_overview = should_generate_weekly_overview(reading_source_count)
+            generate_weekly_overview = (
+                False if only_slide_keys else should_generate_weekly_overview(reading_source_count)
+            )
             if not generate_weekly_overview:
-                print(
-                    f"{week_label}: skipping Alle kilder generation "
-                    f"(only {reading_source_count} reading source file)"
-                )
+                if only_slide_keys:
+                    print(f"{week_label}: skipping Alle kilder generation (--only-slide)")
+                else:
+                    print(
+                        f"{week_label}: skipping Alle kilder generation "
+                        f"(only {reading_source_count} reading source file)"
+                    )
 
             planned_lines: list[str] = []
             missing_outputs = 0
@@ -1602,6 +1813,7 @@ def main() -> int:
                                     source_item,
                                     per_reading_cfg=per_cfg,
                                     per_slide_cfg=per_slide_cfg,
+                                    per_slide_overrides=per_slide_overrides,
                                 )
                                 planned_tag = build_output_cfg_tag_token(
                                     content_type=content_type,
@@ -1659,21 +1871,24 @@ def main() -> int:
                                 per_candidate,
                                 auth_label,
                             )
+                            planned_source_kind = (
+                                "SLIDE" if source_item.source_type == "slide" else "READING"
+                            )
                             planned_lines.append(
-                                f"READING {content_type.upper()} ({variant['code'] or 'default'}): {planned_path}"
+                                f"{planned_source_kind} {content_type.upper()} ({variant['code'] or 'default'}): {planned_path}"
                             )
                             should_skip, _ = should_skip_generation(planned_path, args.skip_existing)
                             if not should_skip:
                                 missing_outputs += 1
-                if should_generate_brief_for_source(source_item, brief_cfg=brief_cfg):
-                    title_prefix = brief_cfg.get("title_prefix", "[Brief]")
+                if not only_slide_keys and should_generate_brief_for_source(source_item, brief_cfg=brief_cfg):
+                    title_prefix = brief_cfg.get("title_prefix", "[Short]")
                     brief_base = f"{title_prefix} {week_label} - {base_name}"
                     for content_type in brief_types:
                         brief_output = week_output_dir / f"{brief_base}{output_extension(content_type, quiz_format=quiz_format)}"
                         for variant in language_variants:
                             for quiz_difficulty_value in quiz_difficulty_values(content_type, quiz_difficulty):
                                 if content_type == "audio":
-                                    planned_instructions = ensure_prompt("brief", brief_cfg.get("prompt", ""))
+                                    planned_instructions = ensure_prompt("short", brief_cfg.get("prompt", ""))
                                     planned_tag = build_output_cfg_tag_token(
                                         content_type=content_type,
                                         language=variant["code"],
@@ -1690,7 +1905,7 @@ def main() -> int:
                                     )
                                 elif content_type == "infographic":
                                     planned_instructions = ensure_prompt(
-                                        "brief_infographic", brief_infographic_cfg.get("prompt", "")
+                                        "short_infographic", brief_infographic_cfg.get("prompt", "")
                                     )
                                     planned_tag = build_output_cfg_tag_token(
                                         content_type=content_type,
@@ -1731,7 +1946,7 @@ def main() -> int:
                                     auth_label,
                                 )
                                 planned_lines.append(
-                                    f"BRIEF {content_type.upper()} ({variant['code'] or 'default'}): {planned_path}"
+                                    f"SHORT {content_type.upper()} ({variant['code'] or 'default'}): {planned_path}"
                                 )
                                 should_skip, _ = should_skip_generation(planned_path, args.skip_existing)
                                 if not should_skip:
@@ -1739,7 +1954,9 @@ def main() -> int:
 
             total_missing_outputs += missing_outputs
             print(
-                f"{week_label}: read {generation_source_count} sources ({reading_source_count} readings, {generation_source_count - reading_source_count} slides), found {missing_outputs} missing outputs"
+                f"{week_label}: read {generation_source_count} sources "
+                f"({generation_reading_count} readings, {generation_slide_count} slides), "
+                f"found {missing_outputs} missing outputs"
             )
 
             if args.dry_run:
@@ -1896,6 +2113,7 @@ def main() -> int:
                                     source_item,
                                     per_reading_cfg=per_cfg,
                                     per_slide_cfg=per_slide_cfg,
+                                    per_slide_overrides=per_slide_overrides,
                                 )
                                 infographic_orientation = None
                                 infographic_detail = None
@@ -1948,6 +2166,22 @@ def main() -> int:
                                 per_candidate,
                                 auth_label,
                             )
+                            if (
+                                only_slide_keys
+                                and content_type == "audio"
+                                and source_item.source_type == "slide"
+                            ):
+                                quarantined = quarantine_stale_slide_audio_outputs(
+                                    repo_root=repo_root,
+                                    week_output_dir=week_output_dir,
+                                    canonical_output_path=output_path,
+                                    timestamp=quarantine_timestamp,
+                                )
+                                if quarantined:
+                                    print(
+                                        f"{week_label}: quarantined {len(quarantined)} stale "
+                                        f"slide audio file(s)/sidecar(s) for {base_name}"
+                                    )
                             skip, reason = should_skip_generation(output_path, args.skip_existing)
                             if skip:
                                 if args.print_skips:
@@ -2018,15 +2252,15 @@ def main() -> int:
                                 maybe_sleep(args.sleep_between)
                             request_logs.append(output_path.with_suffix(output_path.suffix + ".request.json"))
 
-                if should_generate_brief_for_source(source_item, brief_cfg=brief_cfg):
-                    title_prefix = brief_cfg.get("title_prefix", "[Brief]")
+                if not only_slide_keys and should_generate_brief_for_source(source_item, brief_cfg=brief_cfg):
+                    title_prefix = brief_cfg.get("title_prefix", "[Short]")
                     brief_base = f"{title_prefix} {week_label} - {base_name}"
                     for content_type in brief_types:
                         brief_output = week_output_dir / f"{brief_base}{output_extension(content_type, quiz_format=quiz_format)}"
                         for variant in language_variants:
                             for quiz_difficulty_value in quiz_difficulty_values(content_type, quiz_difficulty):
                                 if content_type == "audio":
-                                    instructions = ensure_prompt("brief", brief_cfg.get("prompt", ""))
+                                    instructions = ensure_prompt("short", brief_cfg.get("prompt", ""))
                                     audio_format = brief_cfg.get("format", "deep-dive")
                                     audio_length = brief_cfg.get("length", "long")
                                     infographic_orientation = None
@@ -2036,7 +2270,7 @@ def main() -> int:
                                     quiz_format_arg = None
                                 elif content_type == "infographic":
                                     instructions = ensure_prompt(
-                                        "brief_infographic", brief_infographic_cfg.get("prompt", "")
+                                        "short_infographic", brief_infographic_cfg.get("prompt", "")
                                     )
                                     audio_format = None
                                     audio_length = None
@@ -2100,7 +2334,7 @@ def main() -> int:
                                         sources_file=None,
                                         source_path=source,
                                         notebook_title=apply_suffix(
-                                            f"{course_title} {week_label} [Brief] {base_name}",
+                                            f"{course_title} {week_label} [Short] {base_name}",
                                             variant["title_suffix"],
                                         ),
                                         instructions=instructions,
@@ -2151,6 +2385,14 @@ def main() -> int:
                                 request_logs.append(
                                     output_path.with_suffix(output_path.suffix + ".request.json")
                                 )
+
+    if only_slide_keys:
+        missing_slide_keys = sorted(only_slide_keys - matched_only_slide_keys)
+        if missing_slide_keys:
+            raise SystemExit(
+                "No generated slide source matched --only-slide key(s): "
+                + ", ".join(missing_slide_keys)
+            )
 
     if args.print_downloads:
         commands: list[str] = []

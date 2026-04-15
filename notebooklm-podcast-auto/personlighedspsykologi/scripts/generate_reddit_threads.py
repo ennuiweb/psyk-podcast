@@ -185,7 +185,7 @@ def _find_reading_summary(
         s = s.lower()
         s = re.sub(r"\(øvelseshold\)", "", s)
         s = re.sub(r"\(tekst for øvelseshold\)", "", s)
-        s = re.sub(r"^\[brief\]\s*", "", s)
+        s = re.sub(r"^\[(?:short|brief)\]\s*", "", s)
         s = re.sub(r"\s*\[en\].*$", "", s)
         s = re.sub(r"\s*\.mp3$", "", s)
         # Strip leading W#L# -
@@ -216,8 +216,8 @@ def _find_reading_summary(
 
     best: dict | None = None
     for ep_key, ep_data in by_name.items():
-        # Skip [Brief] variants — prefer the full version
-        if ep_key.lower().startswith("[brief]"):
+        # Skip short variants - prefer the full version.
+        if re.match(r"^\[(?:short|brief)\]", ep_key, re.IGNORECASE):
             continue
         # Check lecture_key match first (W11L2 in key)
         ep_lk_match = re.match(r"^(w\d+l\d+)", ep_key.lower())

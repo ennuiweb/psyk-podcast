@@ -1,4 +1,5 @@
 import importlib.util
+import os
 import tempfile
 import unittest
 from pathlib import Path
@@ -21,6 +22,15 @@ def _load_module():
 
 
 class DownloadWeekTests(unittest.TestCase):
+    def test_default_output_root_prefers_environment_override(self):
+        mod = _load_module()
+        with unittest.mock.patch.dict(
+            os.environ,
+            {mod.OUTPUT_ROOT_ENV_VAR: "/tmp/personlighedspsykologi-output"},
+            clear=False,
+        ):
+            self.assertEqual(mod.default_output_root(), "/tmp/personlighedspsykologi-output")
+
     def test_disallowed_short_quiz_request_log_is_skipped(self):
         mod = _load_module()
 

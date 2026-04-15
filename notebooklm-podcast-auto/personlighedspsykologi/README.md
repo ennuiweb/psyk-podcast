@@ -15,6 +15,15 @@ It is **not** a podcast feed. Feed config now lives in:
 - `output/` - generated MP3s/PNGs/quiz exports + request logs
 - `docs/` - planning notes
 
+## Output root default
+- `generate_week.py`, `download_week.py`, and `sync_reading_summaries.py` accept `--output-root`.
+- If `PERSONLIGHEDSPSYKOLOGI_OUTPUT_ROOT` is set, those scripts use it as the default output root.
+- Otherwise they fall back to `notebooklm-podcast-auto/personlighedspsykologi/output`.
+
+```bash
+export PERSONLIGHEDSPSYKOLOGI_OUTPUT_ROOT="/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive upload/podcast output personlighedsspyk/output"
+```
+
 Archived show configs are stored in `archive-show-config/` for reference.
 
 Current generation is configured for English-only outputs (see `prompt_config.json`).

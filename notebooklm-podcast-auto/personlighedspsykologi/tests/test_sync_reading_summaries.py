@@ -1,6 +1,7 @@
 import importlib.util
 import io
 import json
+import os
 import sys
 import tempfile
 import unittest
@@ -31,6 +32,15 @@ def _touch(path: Path) -> None:
 
 
 class SyncReadingSummariesTests(unittest.TestCase):
+    def test_default_output_root_prefers_environment_override(self):
+        mod = _load_module()
+        with unittest.mock.patch.dict(
+            os.environ,
+            {mod.OUTPUT_ROOT_ENV_VAR: "/tmp/personlighedspsykologi-output"},
+            clear=False,
+        ):
+            self.assertEqual(mod.default_output_root(), "/tmp/personlighedspsykologi-output")
+
     def test_discover_episode_keys_includes_reading_short_tts_and_excludes_weekly(self):
         mod = _load_module()
         with tempfile.TemporaryDirectory() as tmpdir:

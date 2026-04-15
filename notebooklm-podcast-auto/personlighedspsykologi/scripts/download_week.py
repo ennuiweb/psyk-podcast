@@ -8,6 +8,14 @@ import re
 import subprocess
 from pathlib import Path
 
+DEFAULT_OUTPUT_ROOT = "notebooklm-podcast-auto/personlighedspsykologi/output"
+OUTPUT_ROOT_ENV_VAR = "PERSONLIGHEDSPSYKOLOGI_OUTPUT_ROOT"
+
+
+def default_output_root() -> str:
+    override = str(os.getenv(OUTPUT_ROOT_ENV_VAR) or "").strip()
+    return override or DEFAULT_OUTPUT_ROOT
+
 
 def parse_weeks(week: str | None, weeks: str | None) -> list[str]:
     if not week and not weeks:
@@ -495,8 +503,11 @@ def main() -> int:
     )
     parser.add_argument(
         "--output-root",
-        default="notebooklm-podcast-auto/personlighedspsykologi/output",
-        help="Root folder containing W## output folders.",
+        default=default_output_root(),
+        help=(
+            "Root folder containing W## output folders. "
+            f"Default: ${OUTPUT_ROOT_ENV_VAR} or {DEFAULT_OUTPUT_ROOT}."
+        ),
     )
     parser.add_argument(
         "--output-profile-subdir",

@@ -35,6 +35,8 @@ DEFAULT_SOURCES_ROOT = (
     "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/"
     "Mine dokumenter \U0001F4BE/psykologi/Personlighedspsykologi/Readings"
 )
+DEFAULT_OUTPUT_ROOT = "notebooklm-podcast-auto/personlighedspsykologi/output"
+OUTPUT_ROOT_ENV_VAR = "PERSONLIGHEDSPSYKOLOGI_OUTPUT_ROOT"
 WEEKLY_OVERVIEW_TITLE = "Alle kilder (undtagen slides)"
 LEGACY_WEEKLY_OVERVIEW_TITLES = ("Alle kilder",)
 SLIDE_SUBCATEGORY_ORDER = {"lecture": 0, "seminar": 1, "exercise": 2}
@@ -67,6 +69,11 @@ class SourceItem(NamedTuple):
     source_type: str
     slide_key: str | None = None
     slide_subcategory: str | None = None
+
+
+def default_output_root() -> str:
+    override = str(os.getenv(OUTPUT_ROOT_ENV_VAR) or "").strip()
+    return override or DEFAULT_OUTPUT_ROOT
 
 
 def canonicalize_lecture_key(value: str) -> str:
@@ -1416,8 +1423,11 @@ def main() -> int:
     )
     parser.add_argument(
         "--output-root",
-        default="notebooklm-podcast-auto/personlighedspsykologi/output",
-        help="Where to place generated artifacts.",
+        default=default_output_root(),
+        help=(
+            "Where to place generated artifacts. "
+            f"Default: ${OUTPUT_ROOT_ENV_VAR} or {DEFAULT_OUTPUT_ROOT}."
+        ),
     )
     parser.add_argument(
         "--output-profile-subdir",

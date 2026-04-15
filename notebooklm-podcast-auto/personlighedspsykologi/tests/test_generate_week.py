@@ -1,5 +1,6 @@
 import importlib.util
 import json
+import os
 import tempfile
 import unittest
 from pathlib import Path
@@ -27,6 +28,15 @@ def _touch(path: Path, payload: bytes = b"data") -> None:
 
 
 class GenerateWeekTests(unittest.TestCase):
+    def test_default_output_root_prefers_environment_override(self):
+        mod = _load_module()
+        with unittest.mock.patch.dict(
+            os.environ,
+            {mod.OUTPUT_ROOT_ENV_VAR: "/tmp/personlighedspsykologi-output"},
+            clear=False,
+        ):
+            self.assertEqual(mod.default_output_root(), "/tmp/personlighedspsykologi-output")
+
     def test_should_generate_brief_for_source_respects_apply_to_modes(self):
         mod = _load_module()
         lecture_slide_item = mod.SourceItem(

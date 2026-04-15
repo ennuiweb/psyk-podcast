@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 from pathlib import Path
 from typing import Any
@@ -26,6 +27,13 @@ DEFAULT_SOURCES_ROOT = (
     "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/"
     "Mine dokumenter \U0001F4BE/psykologi/Personlighedspsykologi/Readings"
 )
+DEFAULT_OUTPUT_ROOT = "notebooklm-podcast-auto/personlighedspsykologi/output"
+OUTPUT_ROOT_ENV_VAR = "PERSONLIGHEDSPSYKOLOGI_OUTPUT_ROOT"
+
+
+def default_output_root() -> str:
+    override = str(os.getenv(OUTPUT_ROOT_ENV_VAR) or "").strip()
+    return override or DEFAULT_OUTPUT_ROOT
 
 
 def parse_weeks(week: str | None, weeks: str | None) -> list[str]:
@@ -759,8 +767,11 @@ def main() -> int:
     parser.add_argument("--weeks", help="Optional comma-separated week labels, e.g. W01,W02L1.")
     parser.add_argument(
         "--output-root",
-        default="notebooklm-podcast-auto/personlighedspsykologi/output",
-        help="Root folder containing local episode outputs.",
+        default=default_output_root(),
+        help=(
+            "Root folder containing local episode outputs. "
+            f"Default: ${OUTPUT_ROOT_ENV_VAR} or {DEFAULT_OUTPUT_ROOT}."
+        ),
     )
     parser.add_argument(
         "--summaries-file",

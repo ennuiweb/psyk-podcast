@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import os
 import re
 import sys
 from pathlib import Path
@@ -11,15 +12,25 @@ from typing import List
 
 
 DEFAULT_SOURCE = "notebooklm-podcast-auto/personlighedspsykologi/output"
+OUTPUT_ROOT_ENV_VAR = "PERSONLIGHEDSPSYKOLOGI_OUTPUT_ROOT"
 DEFAULT_DEST = (
     "/Users/oskar/Library/CloudStorage/GoogleDrive-psykku2025@gmail.com/"
     "My Drive/Personlighedspsykologi-en"
 )
 
 
+def default_source() -> str:
+    override = str(os.getenv(OUTPUT_ROOT_ENV_VAR) or "").strip()
+    return override or DEFAULT_SOURCE
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--source", default=DEFAULT_SOURCE, help="Output source root.")
+    parser.add_argument(
+        "--source",
+        default=default_source(),
+        help=f"Output source root. Default: ${OUTPUT_ROOT_ENV_VAR} or {DEFAULT_SOURCE}.",
+    )
     parser.add_argument("--dest", default=DEFAULT_DEST, help="Mirror destination root.")
     parser.add_argument("--dry-run", action="store_true", help="Show actions without creating directories.")
     return parser.parse_args()

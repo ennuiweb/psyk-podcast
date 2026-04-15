@@ -394,8 +394,9 @@ To push the Apps Script file whenever you run `git push`, install the repository
 10. Optional Bioneuro mirror overrides: `BIONEURO_MIRROR_SRC`, `BIONEURO_MIRROR_DST`.
 11. Set `PERSONLIGHEDSPSYKOLOGI_MIRROR_ON_PUSH=0` to disable the Personlighedspsykologi output directory mirror step on demand.
 12. Optional Personlighedspsykologi mirror overrides: `PERSONLIGHEDSPSYKOLOGI_MIRROR_SRC`, `PERSONLIGHEDSPSYKOLOGI_MIRROR_DST`, `PERSONLIGHEDSPSYKOLOGI_MIRROR_DELETE_ON_PUSH=0|1` (default: `0`).
-13. Set `APPS_SCRIPT_PUSH_ON_PUSH=0` in your environment to skip the Apps Script push step on demand.
-14. (Optional) Set `PRE_PUSH_LOG_FILE=/path/to/pre-push.log` to enable logging; by default no log file is written.
+13. `PERSONLIGHEDSPSYKOLOGI_OUTPUT_ROOT` is also respected as the default source for Personlighedspsykologi generation/readback scripts and the shared output-directory mirror.
+14. Set `APPS_SCRIPT_PUSH_ON_PUSH=0` in your environment to skip the Apps Script push step on demand.
+15. (Optional) Set `PRE_PUSH_LOG_FILE=/path/to/pre-push.log` to enable logging; by default no log file is written.
 
 ### Subject output directory mirror on push
 The same `pre-push` hook now uses one shared script for both subjects:
@@ -417,6 +418,7 @@ Default destination (`bioneuro`):
 
 Default source (`personlighedspsykologi`):
 - `notebooklm-podcast-auto/personlighedspsykologi/output`
+- or `PERSONLIGHEDSPSYKOLOGI_OUTPUT_ROOT` when that environment variable is set
 
 Default destination (`personlighedspsykologi`):
 - `/Users/oskar/Library/CloudStorage/GoogleDrive-psykku2025@gmail.com/My Drive/Personlighedspsykologi-en`

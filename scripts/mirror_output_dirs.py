@@ -5,12 +5,14 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import os
 import re
 import shutil
 import sys
 from pathlib import Path
 from typing import Dict, Iterable, List, TextIO
 
+PERSONLIGHEDSPSYKOLOGI_OUTPUT_ROOT_ENV_VAR = "PERSONLIGHEDSPSYKOLOGI_OUTPUT_ROOT"
 
 SUBJECT_DEFAULTS: Dict[str, Dict[str, str]] = {
     "bioneuro": {
@@ -80,6 +82,15 @@ def resolve_path(raw: str, repo_root: Path) -> Path:
     if candidate.is_absolute():
         return candidate
     return (repo_root / candidate).resolve()
+
+
+def subject_defaults(subject: str) -> Dict[str, str]:
+    defaults = dict(SUBJECT_DEFAULTS[subject])
+    if subject == "personlighedspsykologi":
+        output_root = str(os.getenv(PERSONLIGHEDSPSYKOLOGI_OUTPUT_ROOT_ENV_VAR) or "").strip()
+        if output_root:
+            defaults["source"] = output_root
+    return defaults
 
 
 def is_request_json(rel_path: Path) -> bool:
@@ -339,7 +350,7 @@ def print_subject_summary(summary: SyncSummary, stream: TextIO = sys.stdout) -> 
 def run_all_subjects(args: argparse.Namespace, repo_root: Path) -> int:
     exit_code = 0
     for subject in sorted(SUBJECT_DEFAULTS.keys()):
-        defaults = SUBJECT_DEFAULTS[subject]
+        defaults = subject_defaults(subject)
         source_root = resolve_path(defaults["source"], repo_root)
         dest_root = resolve_path(defaults["dest"], repo_root)
         subject_exit = run_subject(
@@ -365,7 +376,7 @@ def main() -> int:
             return 1
         return run_all_subjects(args, repo_root)
 
-    defaults = SUBJECT_DEFAULTS[args.subject]
+    defaults = subject_defaults(args.subject)
     source_raw = args.source or defaults["source"]
     dest_raw = args.dest or defaults["dest"]
     source_root = resolve_path(source_raw, repo_root)

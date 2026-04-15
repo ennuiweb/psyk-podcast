@@ -345,6 +345,15 @@ class AutoSpecMatchingTests(unittest.TestCase):
                 sort_subject_key="Grundbog 8: Historicitet",
             ),
             make_episode(
+                guid="grund14-full",
+                title="U12F1 · Grundbog 14: Perspektiver",
+                published_at="2026-04-15T14:00:00+00:00",
+                episode_kind="reading",
+                podcast_kind="podcast",
+                sort_source_kind="reading",
+                sort_subject_key="Grundbog 14: Perspektiver",
+            ),
+            make_episode(
                 guid="slides-full",
                 title="U12F1 · Forelæsningsslides · Personlighed og historicitet",
                 published_at="2026-04-15T08:00:00+00:00",
@@ -383,6 +392,17 @@ class AutoSpecMatchingTests(unittest.TestCase):
                 sort_tail_index=8,
             ),
             make_episode(
+                guid="tail-grund14",
+                title="U12F1 · [Lydbog] · Grundbog 14: Perspektiver",
+                published_at="2026-04-16T09:00:00+00:00",
+                episode_kind="reading",
+                podcast_kind="lydbog",
+                sort_source_kind="reading",
+                sort_subject_key="Grundbog 14: Perspektiver",
+                sort_tail=True,
+                sort_tail_index=14,
+            ),
+            make_episode(
                 guid="slides-brief",
                 title="U12F1 · [Kort] · Forelæsningsslides · Personlighed og historicitet",
                 published_at="2026-04-15T09:00:00+00:00",
@@ -399,6 +419,15 @@ class AutoSpecMatchingTests(unittest.TestCase):
                 podcast_kind="podcast",
                 sort_source_kind="reading",
                 sort_subject_key="Elias (2000)",
+            ),
+            make_episode(
+                guid="grund14-brief",
+                title="U12F1 · [Kort] · Grundbog 14: Perspektiver",
+                published_at="2026-04-15T14:30:00+00:00",
+                episode_kind="brief",
+                podcast_kind="kort_podcast",
+                sort_source_kind="reading",
+                sort_subject_key="Grundbog 14: Perspektiver",
             ),
             make_episode(
                 guid="grund-brief",
@@ -433,9 +462,12 @@ class AutoSpecMatchingTests(unittest.TestCase):
                 "U12F1 · Elias (2000)",
                 "U12F1 · [Kort] · Grundbog 8: Historicitet",
                 "U12F1 · Grundbog 8: Historicitet",
+                "U12F1 · [Kort] · Grundbog 14: Perspektiver",
+                "U12F1 · Grundbog 14: Perspektiver",
                 "U12F1 · [Kort] · Forelæsningsslides · Personlighed og historicitet",
                 "U12F1 · Forelæsningsslides · Personlighed og historicitet",
                 "U12F1 · [Lydbog] · Grundbog 8: Historicitet",
+                "U12F1 · [Lydbog] · Grundbog 14: Perspektiver",
             ],
         )
 

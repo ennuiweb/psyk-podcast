@@ -2021,6 +2021,10 @@ TAIL_GRUNDBOG_GUID_PREFIX = "#tail-grundbog-"
 GRUNDBOG_PATTERN = re.compile(r"\bgrundbog\b", re.IGNORECASE)
 GRUNDBOG_FORORD_PATTERN = re.compile(r"\bforord\b", re.IGNORECASE)
 GRUNDBOG_CHAPTER_PATTERN = re.compile(r"\b(?:kapitel|chapter)\s*0*(\d{1,3})\b", re.IGNORECASE)
+GRUNDBOG_SORT_CHAPTER_PATTERN = re.compile(
+    r"\bgrundbog\s*(?:kapitel\s*)?0*(\d{1,3})\b",
+    re.IGNORECASE,
+)
 GRUNDBOG_SUBJECT_PATTERN = re.compile(r"\bgrundbog\b.*", re.IGNORECASE)
 GRUNDBOG_TITLE_PATTERN = re.compile(
     r"^grundbog\s+kapitel\s*0*(\d{1,3})\s*[-–:]\s*(.+)$",
@@ -2599,12 +2603,12 @@ def _wxlx_source_pair_category_rank(item: Dict[str, Any]) -> int:
     source_kind = str(item.get("sort_source_kind") or "").strip().lower()
     if source_kind == "weekly_overview":
         return 0
+    if bool(item.get("is_tts")):
+        return 3
     if source_kind == "reading":
         return 1
     if source_kind == "slide":
         return 2
-    if bool(item.get("is_tts")):
-        return 3
     return 4
 
 
@@ -2616,6 +2620,20 @@ def _wxlx_source_pair_variant_rank(item: Dict[str, Any]) -> int:
     if bool(item.get("is_tts")) or podcast_kind == "lydbog":
         return 2
     return 1
+
+
+def _wxlx_source_pair_subject_sort_key(item: Dict[str, Any]) -> Tuple[int, int, str]:
+    subject_key = _normalize_sort_subject_key(item.get("sort_subject_key") or item.get("title"))
+    if not subject_key:
+        return (2, sys.maxsize, "")
+    match = GRUNDBOG_SORT_CHAPTER_PATTERN.search(subject_key)
+    if match:
+        try:
+            chapter_number = int(match.group(1))
+        except ValueError:  # pragma: no cover - defensive
+            chapter_number = sys.maxsize
+        return (1, chapter_number, subject_key)
+    return (0, sys.maxsize, subject_key)
 
 
 def _order_wxlx_block_pairs(
@@ -2642,16 +2660,17 @@ def _order_wxlx_block_pairs(
         grouped_pairs.setdefault(group_key, []).append((index, item))
 
     ordered_groups: List[
-        Tuple[int, float, int, Tuple[int, str], List[Tuple[int, Dict[str, Any]]]]
+        Tuple[int, Tuple[int, int, str], float, int, Tuple[int, str], List[Tuple[int, Dict[str, Any]]]]
     ] = []
     for group_key, grouped_values in grouped_pairs.items():
         anchor = max(_published_sort_value(item) for _, item in grouped_values)
+        subject_sort_key = min(_wxlx_source_pair_subject_sort_key(item) for _, item in grouped_values)
         first_seen_index = min(index for index, _ in grouped_values)
-        ordered_groups.append((group_key[0], -anchor, first_seen_index, group_key, grouped_values))
+        ordered_groups.append((group_key[0], subject_sort_key, -anchor, first_seen_index, group_key, grouped_values))
     ordered_groups.sort()
 
     ordered_values: List[Tuple[int, Dict[str, Any]]] = []
-    for _, _, _, _, grouped_values in ordered_groups:
+    for _, _, _, _, _, grouped_values in ordered_groups:
         grouped_values.sort(
             key=lambda pair: (
                 _wxlx_source_pair_variant_rank(pair[1]),

@@ -1188,7 +1188,7 @@ class AutoSpecMatchingTests(unittest.TestCase):
         self.assertNotIn("[Brief]", episode["title"])
         self.assertNotIn("[ brief ]", episode["title"])
         self.assertNotRegex(episode["title"], re.compile(r"\bW\d{1,2}L\d+\b"))
-        self.assertIn("Kapitel i grundbogen", episode["description"])
+        self.assertEqual(episode["description"], "Kort podcast: Grundbog kapitel 01")
 
     def test_generated_entry_maps_deep_dive_to_podcast_prefix(self):
         mod = _load_feed_module()
@@ -1375,6 +1375,46 @@ class AutoSpecMatchingTests(unittest.TestCase):
             "Uge 12, Forelæsning 1 · Kort podcast · Grundbog kapitel 14 - Perspektiver på personlighedspsykologi",
         )
         self.assertTrue(episode["description"].startswith("Semesteruge 13, Forelæsning 1\n\n"))
+
+    def test_custom_title_blocks_render_compact_bracketed_short_variant_with_subject_alias(self):
+        mod = _load_feed_module()
+        file_entry = {
+            "id": "file1",
+            "name": (
+                "[Brief] W12L1 - Grundbog kapitel 8 - Personlighed, subjektivitet og historicitet "
+                "[EN].mp3"
+            ),
+            "createdTime": "2026-04-27T08:00:00+00:00",
+        }
+        episode = mod.build_episode_entry(
+            file_entry=file_entry,
+            feed_config={
+                "title": "Personlighedspsykologi (EN)",
+                "link": "https://example.com",
+                "description": "Test feed",
+                "language": "en",
+                "semester_week_start_date": "2026-02-02",
+                "semester_week_label": "Semesteruge",
+                "semester_week_title_label": "Uge",
+                "semester_week_description_label": "Semesteruge",
+                "title_blocks": ["course_week_lecture", "subject"],
+                "audio_category_prefix_position": "after_first_block",
+                "audio_category_prefixes": {
+                    "lydbog": "[Lydbog]",
+                    "kort_podcast": "[Kort]",
+                    "podcast": "",
+                },
+                "compact_grundbog_subjects": True,
+                "title_subject_aliases": {
+                    "Grundbog 8: Personlighed, subjektivitet og historicitet": "Grundbog 8: Historicitet",
+                },
+            },
+            overrides={},
+            public_link_template="https://example.com/{file_id}",
+            auto_meta={"week_reference_year": 2026},
+            folder_names=["W12L1"],
+        )
+        self.assertEqual(episode["title"], "U12F1 · [Kort] · Grundbog 8: Historicitet")
 
     def test_custom_title_blocks_use_lecture_key_for_semester_week_when_configured(self):
         mod = _load_feed_module()
@@ -2381,6 +2421,77 @@ class AutoSpecMatchingTests(unittest.TestCase):
             "Uge 10, Forelæsning 2 · Podcast · Forelæsningsslides - Sociokulturelle teorier",
         )
 
+    def test_build_episode_entry_renders_weekly_overview_with_custom_label_and_no_podcast_prefix(self):
+        mod = _load_feed_module()
+        file_entry = {
+            "id": "file1",
+            "name": "W12L1 - Alle kilder (undtagen slides) [EN].mp3",
+            "createdTime": "2026-04-27T08:00:00+00:00",
+        }
+        episode = mod.build_episode_entry(
+            file_entry=file_entry,
+            feed_config={
+                "title": "Personlighedspsykologi (EN)",
+                "link": "https://example.com",
+                "description": "Test feed",
+                "language": "en",
+                "semester_week_start_date": "2026-02-02",
+                "semester_week_title_label": "Uge",
+                "semester_week_description_label": "Semesteruge",
+                "title_blocks": ["course_week_lecture", "subject"],
+                "title_blocks_by_kind": {"weekly_overview": ["course_week_lecture", "type_label"]},
+                "weekly_overview_label": "Alle kilder",
+                "audio_category_prefix_position": "after_first_block",
+                "audio_category_prefixes": {
+                    "lydbog": "[Lydbog]",
+                    "kort_podcast": "[Kort]",
+                    "podcast": "",
+                },
+            },
+            overrides={},
+            public_link_template="https://example.com/{file_id}",
+            auto_meta={"week_reference_year": 2026},
+            folder_names=["W12L1"],
+        )
+        self.assertEqual(episode["title"], "U12F1 · Alle kilder")
+
+    def test_build_episode_entry_renders_slide_title_with_custom_separator_and_no_podcast_prefix(self):
+        mod = _load_feed_module()
+        file_entry = {
+            "id": "file1",
+            "name": "W10L2 - Slide lecture: 19. gang Sociokulturelle teorier [EN].mp3",
+            "createdTime": "2026-04-07T08:00:00+00:00",
+        }
+        episode = mod.build_episode_entry(
+            file_entry=file_entry,
+            feed_config={
+                "title": "Personlighedspsykologi (EN)",
+                "link": "https://example.com",
+                "description": "Test feed",
+                "language": "en",
+                "semester_week_start_date": "2026-02-02",
+                "semester_week_title_label": "Uge",
+                "semester_week_description_label": "Semesteruge",
+                "title_blocks": ["course_week_lecture", "subject"],
+                "audio_category_prefix_position": "after_first_block",
+                "audio_category_prefixes": {
+                    "lydbog": "[Lydbog]",
+                    "kort_podcast": "[Kort]",
+                    "podcast": "",
+                },
+                "slide_display_label": "Forelæsningsslides",
+                "slide_subject_separator": " · ",
+            },
+            overrides={},
+            public_link_template="https://example.com/{file_id}",
+            auto_meta={"week_reference_year": 2026},
+            folder_names=["W10L2"],
+        )
+        self.assertEqual(
+            episode["title"],
+            "U10F2 · Forelæsningsslides · Sociokulturelle teorier",
+        )
+
     def test_missing_topic_with_topic_only_block_falls_back_to_descriptor_subject(self):
         mod = _load_feed_module()
         file_entry = {
@@ -2918,6 +3029,10 @@ class AutoSpecMatchingTests(unittest.TestCase):
             mod.validate_feed_block_config(
                 {"audio_category_prefixes": {"unknown": "Custom"}}
             )
+
+    def test_validate_feed_block_config_accepts_empty_podcast_audio_category_prefix(self):
+        mod = _load_feed_module()
+        mod.validate_feed_block_config({"audio_category_prefixes": {"podcast": ""}})
 
     def test_validate_feed_block_config_rejects_unknown_kind(self):
         mod = _load_feed_module()

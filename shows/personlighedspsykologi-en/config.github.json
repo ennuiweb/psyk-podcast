@@ -81,21 +81,33 @@
     "ttl": 60,
     "sort_mode": "wxlx_kind_priority",
     "title_blocks": [
-      "course_week_lecture_long",
+      "course_week_lecture",
       "subject"
     ],
     "title_blocks_by_kind": {
       "weekly_overview": [
-        "course_week_lecture_long",
+        "course_week_lecture",
         "type_label"
       ]
     },
     "audio_category_prefixes": {
-      "lydbog": "Lydbog",
-      "kort_podcast": "Kort podcast",
-      "podcast": "Podcast"
+      "lydbog": "[Lydbog]",
+      "kort_podcast": "[Kort]",
+      "podcast": ""
     },
     "audio_category_prefix_position": "after_first_block",
+    "weekly_overview_label": "Alle kilder",
+    "slide_display_label": "Forelæsningsslides",
+    "slide_subject_separator": " · ",
+    "compact_grundbog_subjects": true,
+    "title_subject_aliases": {
+      "Grundbog 1: Introduktion til personlighedspsykologi": "Grundbog 1: Introduktion",
+      "Grundbog 8: Personlighed, subjektivitet og historicitet": "Grundbog 8: Historicitet",
+      "Grundbog 14: Perspektiver på personlighedspsykologi": "Grundbog 14: Perspektiver",
+      "Introduktin PP 2026": "Introduktion",
+      "Fænomenologisk personlighedspsykologi2026": "Fænomenologisk personlighedspsykologi",
+      "Humanistisk psykologi20": "Humanistisk psykologi"
+    },
     "description_prepend_semester_week_lecture": true,
     "description_blank_line_marker": "·",
     "description_footer": "\n·\n·\n·\nPersonlighedspsykologi: https://open.spotify.com/show/0jAvkPCcZ1x98lIMno1oqv\nBioneuro: https://open.spotify.com/show/5QIHRkc1N6xuCqtnfmsPfN\nSocialpsykologi: https://open.spotify.com/show/08cv2AZyBv2W9S8GiAysVP",

@@ -58,7 +58,7 @@ AUDIO_CATEGORY_PREFIX_POSITIONS = {"leading", "after_first_block"}
 DEFAULT_AUDIO_CATEGORY_PREFIX_POSITION = "leading"
 TITLE_BLOCK_SEPARATOR = " · "
 CATEGORY_PREFIX_HEAD_PATTERN = re.compile(
-    r"^\s*(?:Oplæst\b|\[\s*brief\s*\]|\[\s*deep-dive\s*\]|\[\s*podcast\s*\]|\[\s*lydbog\s*\]|\[\s*kort\s+podcast\s*\])\s*(?:[·:\-]\s*)?",
+    r"^\s*(?:Oplæst\b|\[\s*brief\s*\]|\[\s*deep-dive\s*\]|\[\s*podcast\s*\]|\[\s*lydbog\s*\]|\[\s*kort(?:\s+podcast)?\s*\])\s*(?:[·:\-]\s*)?",
     re.IGNORECASE,
 )
 READING_PREFIX_PATTERN = re.compile(r"(^|[·\n]\s*)reading:\s*", re.IGNORECASE)
@@ -420,6 +420,13 @@ def _normalize_name_for_lookup(name: str) -> str:
     return f"{normalized}{suffix}".casefold()
 
 
+def _normalize_name_for_lookup_without_lecture(name: str) -> str:
+    normalized = _normalize_name_for_lookup(name)
+    if "|" not in normalized:
+        return normalized
+    return normalized.split("|", 1)[1]
+
+
 def _lookup_by_name_with_cfg_fallback(mapping: Dict[str, Any], name: str) -> Any:
     if name in mapping:
         return mapping[name]
@@ -429,6 +436,13 @@ def _lookup_by_name_with_cfg_fallback(mapping: Dict[str, Any], name: str) -> Any
     normalized = _normalize_name_for_lookup(name)
     for key, value in mapping.items():
         if isinstance(key, str) and _normalize_name_for_lookup(key) == normalized:
+            return value
+    relaxed_normalized = _normalize_name_for_lookup_without_lecture(name)
+    for key, value in mapping.items():
+        if (
+            isinstance(key, str)
+            and _normalize_name_for_lookup_without_lecture(key) == relaxed_normalized
+        ):
             return value
     for key, value in mapping.items():
         if isinstance(key, str) and _strip_cfg_tag_from_filename(key) == stripped:
@@ -445,6 +459,13 @@ def _lookup_key_with_cfg_fallback(mapping: Dict[str, Any], name: str) -> Optiona
     normalized = _normalize_name_for_lookup(name)
     for key in mapping:
         if isinstance(key, str) and _normalize_name_for_lookup(key) == normalized:
+            return key
+    relaxed_normalized = _normalize_name_for_lookup_without_lecture(name)
+    for key in mapping:
+        if (
+            isinstance(key, str)
+            and _normalize_name_for_lookup_without_lecture(key) == relaxed_normalized
+        ):
             return key
     for key in mapping:
         if isinstance(key, str) and _strip_cfg_tag_from_filename(key) == stripped:
@@ -1859,6 +1880,7 @@ SLIDE_LEADING_LABEL_PATTERN = re.compile(
 SLIDE_DISPLAY_LABEL = "Forelæsningsslides"
 EPISODE_KINDS = {"reading", "brief", "weekly_overview", "slide"}
 WEEKLY_OVERVIEW_LABEL = "Alle kilder (undtagen slides)"
+DEFAULT_SLIDE_SUBJECT_SEPARATOR = " - "
 WEEKLY_OVERVIEW_SUBJECT_PATTERN = re.compile(
     r"\b(?:alle kilder|all sources)\b(?:\s*\((?:undtagen slides|excluding slides)\))?",
     re.IGNORECASE,
@@ -1901,6 +1923,10 @@ GRUNDBOG_PATTERN = re.compile(r"\bgrundbog\b", re.IGNORECASE)
 GRUNDBOG_FORORD_PATTERN = re.compile(r"\bforord\b", re.IGNORECASE)
 GRUNDBOG_CHAPTER_PATTERN = re.compile(r"\b(?:kapitel|chapter)\s*0*(\d{1,3})\b", re.IGNORECASE)
 GRUNDBOG_SUBJECT_PATTERN = re.compile(r"\bgrundbog\b.*", re.IGNORECASE)
+GRUNDBOG_TITLE_PATTERN = re.compile(
+    r"^grundbog\s+kapitel\s*0*(\d{1,3})\s*[-–:]\s*(.+)$",
+    re.IGNORECASE,
+)
 TRAILING_WEEK_RANGE_PATTERN = re.compile(
     r"(?:\s*·\s*)?\((?:uge|week)\s+[^)]*\)\s*$",
     re.IGNORECASE,
@@ -2045,10 +2071,64 @@ def _resolve_audio_category_prefixes(feed_config: Dict[str, Any]) -> Dict[str, s
             raise ValueError(
                 f"feed.audio_category_prefixes has unknown key '{key}'. Allowed keys: {allowed}"
             )
-        if not isinstance(value, str) or not value.strip():
-            raise ValueError(f"feed.audio_category_prefixes.{key} must be a non-empty string.")
+        if not isinstance(value, str):
+            raise ValueError(f"feed.audio_category_prefixes.{key} must be a string.")
         resolved[key] = value.strip()
     return resolved
+
+
+def _resolve_weekly_overview_label(feed_config: Dict[str, Any]) -> str:
+    raw_value = feed_config.get("weekly_overview_label")
+    if raw_value is None:
+        return WEEKLY_OVERVIEW_LABEL
+    if not isinstance(raw_value, str) or not raw_value.strip():
+        raise ValueError("feed.weekly_overview_label must be a non-empty string.")
+    return raw_value.strip()
+
+
+def _resolve_slide_display_label(feed_config: Dict[str, Any]) -> str:
+    raw_value = feed_config.get("slide_display_label")
+    if raw_value is None:
+        return SLIDE_DISPLAY_LABEL
+    if not isinstance(raw_value, str) or not raw_value.strip():
+        raise ValueError("feed.slide_display_label must be a non-empty string.")
+    return raw_value.strip()
+
+
+def _resolve_slide_subject_separator(feed_config: Dict[str, Any]) -> str:
+    raw_value = feed_config.get("slide_subject_separator")
+    if raw_value is None:
+        return DEFAULT_SLIDE_SUBJECT_SEPARATOR
+    if not isinstance(raw_value, str) or not raw_value.strip():
+        raise ValueError("feed.slide_subject_separator must be a non-empty string.")
+    if "\n" in raw_value or "\r" in raw_value:
+        raise ValueError("feed.slide_subject_separator must be a single-line string.")
+    return raw_value.strip()
+
+
+def _resolve_title_subject_aliases(feed_config: Dict[str, Any]) -> Dict[str, str]:
+    raw_value = feed_config.get("title_subject_aliases")
+    if raw_value is None:
+        return {}
+    if not isinstance(raw_value, dict):
+        raise ValueError("feed.title_subject_aliases must be an object.")
+    resolved: Dict[str, str] = {}
+    for key, value in raw_value.items():
+        if not isinstance(key, str) or not key.strip():
+            raise ValueError("feed.title_subject_aliases keys must be non-empty strings.")
+        if not isinstance(value, str) or not value.strip():
+            raise ValueError("feed.title_subject_aliases values must be non-empty strings.")
+        resolved[re.sub(r"\s+", " ", key).strip()] = re.sub(r"\s+", " ", value).strip()
+    return resolved
+
+
+def _resolve_compact_grundbog_subjects(feed_config: Dict[str, Any]) -> bool:
+    raw_value = feed_config.get("compact_grundbog_subjects")
+    if raw_value is None:
+        return False
+    if not isinstance(raw_value, bool):
+        raise ValueError("feed.compact_grundbog_subjects must be a boolean.")
+    return raw_value
 
 
 def _apply_audio_category_prefix(
@@ -2191,6 +2271,11 @@ def validate_feed_block_config(feed_config: Dict[str, Any]) -> None:
         raise ValueError("feed must be a JSON object.")
     _resolve_audio_category_prefix_position(feed_config)
     _resolve_audio_category_prefixes(feed_config)
+    _resolve_weekly_overview_label(feed_config)
+    _resolve_slide_display_label(feed_config)
+    _resolve_slide_subject_separator(feed_config)
+    _resolve_title_subject_aliases(feed_config)
+    _resolve_compact_grundbog_subjects(feed_config)
     _resolve_semester_week_number_source(feed_config)
     _resolve_pubdate_year_rewrite(feed_config)
     _resolve_tail_grundbog_lydbog_config(feed_config)
@@ -2460,6 +2545,33 @@ def _extract_grundbog_subject_from_text(value: Any) -> Optional[str]:
         return None
     subject = re.sub(r"\s+", " ", subject).strip()
     return re.sub(r"(?i)^grundbog\b", "Grundbog", subject)
+
+
+def _compact_grundbog_subject(value: str) -> str:
+    subject = re.sub(r"\s+", " ", str(value or "")).strip()
+    match = GRUNDBOG_TITLE_PATTERN.match(subject)
+    if not match:
+        return subject
+    chapter_number = int(match.group(1))
+    chapter_subject = re.sub(r"\s+", " ", match.group(2)).strip(" -–:")
+    if not chapter_subject:
+        return f"Grundbog {chapter_number}"
+    return f"Grundbog {chapter_number}: {chapter_subject}"
+
+
+def _apply_title_subject_alias(
+    value: str,
+    aliases: Dict[str, str],
+    *,
+    compact_grundbog_subjects: bool = False,
+) -> str:
+    normalized = re.sub(r"\s+", " ", str(value or "")).strip()
+    if not normalized:
+        return normalized
+    compacted = (
+        _compact_grundbog_subject(normalized) if compact_grundbog_subjects else normalized
+    )
+    return aliases.get(normalized, aliases.get(compacted, compacted))
 
 
 def _extract_tail_grundbog_lydbog_key(item: Dict[str, Any]) -> Optional[str]:
@@ -2934,6 +3046,11 @@ def build_episode_entry(
         else None
     )
     audio_category_prefixes = _resolve_audio_category_prefixes(feed_config)
+    weekly_overview_label = _resolve_weekly_overview_label(feed_config)
+    slide_display_label = _resolve_slide_display_label(feed_config)
+    slide_subject_separator = _resolve_slide_subject_separator(feed_config)
+    title_subject_aliases = _resolve_title_subject_aliases(feed_config)
+    compact_grundbog_subjects = _resolve_compact_grundbog_subjects(feed_config)
 
     semester_week_lecture_title = None
     if week_number and lecture_number:
@@ -2992,24 +3109,29 @@ def build_episode_entry(
         cleaned_subject = slide_subject or cleaned_title
     else:
         cleaned_subject = cleaned_title
+    cleaned_subject = _apply_title_subject_alias(
+        cleaned_subject,
+        title_subject_aliases,
+        compact_grundbog_subjects=compact_grundbog_subjects,
+    )
 
     topic = extract_topic(meta)
     if is_weekly_overview:
         display_subject = topic or cleaned_subject or cleaned_title or raw_title
     elif is_slide:
         if cleaned_subject:
-            display_subject = f"{SLIDE_DISPLAY_LABEL} - {cleaned_subject}"
+            display_subject = f"{slide_display_label}{slide_subject_separator}{cleaned_subject}"
         else:
-            display_subject = SLIDE_DISPLAY_LABEL
+            display_subject = slide_display_label
     else:
         display_subject = cleaned_subject or cleaned_title or raw_title
 
     if is_brief:
         type_label = "Brief"
     elif is_weekly_overview:
-        type_label = WEEKLY_OVERVIEW_LABEL
+        type_label = weekly_overview_label
     elif is_slide:
-        type_label = SLIDE_DISPLAY_LABEL
+        type_label = slide_display_label
     else:
         type_label = "Reading"
     episode_kind = (
@@ -3120,9 +3242,9 @@ def build_episode_entry(
         if is_brief:
             descriptor = "Kort podcast"
         elif is_weekly_overview:
-            descriptor = WEEKLY_OVERVIEW_LABEL
+            descriptor = weekly_overview_label
         elif is_slide:
-            descriptor = SLIDE_DISPLAY_LABEL
+            descriptor = slide_display_label
         else:
             descriptor = "Reading"
         descriptor_subject = f"{descriptor}: {text_label}" if text_label else descriptor

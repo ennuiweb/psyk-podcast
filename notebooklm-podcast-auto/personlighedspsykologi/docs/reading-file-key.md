@@ -107,7 +107,6 @@ Sources used for this mapping:
 
 **W11L2 Narrativitet, kultur og mening (Forelæsning 21, 2026-04-21)**
 - Raggatt (2002) → W11L2 Raggatt (2002).pdf
-- Bank (2014) → W11L2 Bank, M. (2014). Narrative psykologier. I Køppe, S. & Dammeyer, J. (Red.).pdf
 - Bruner (1999) → W11L2 Bruner (1999).pdf
 - McAdams & Pals (2006) → W11L2 McAdams & Pals (2006).pdf
 - Grundbog kapitel 09 - Narrative teorier → W11L2 Grundbog kapitel 9 - Narrative teorier.pdf (brief + full)

@@ -373,12 +373,12 @@ class AutoSpecMatchingTests(unittest.TestCase):
             ),
             make_episode(
                 guid="weekly",
-                title="U12F1 · Alle kilder",
+                title="U12F1 · ALLE KILDER",
                 published_at="2026-04-15T07:00:00+00:00",
                 episode_kind="weekly_overview",
                 podcast_kind="podcast",
                 sort_source_kind="weekly_overview",
-                sort_subject_key="Alle kilder",
+                sort_subject_key="ALLE KILDER",
             ),
             make_episode(
                 guid="tail-grund",
@@ -457,7 +457,7 @@ class AutoSpecMatchingTests(unittest.TestCase):
         self.assertEqual(
             titles,
             [
-                "U12F1 · Alle kilder",
+                "U12F1 · ALLE KILDER",
                 "U12F1 · [Kort] · Elias (2000)",
                 "U12F1 · Elias (2000)",
                 "U12F1 · [Kort] · Grundbog 8: Historicitet",

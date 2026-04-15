@@ -6,7 +6,7 @@
 ## Episode output policy
 - Weekly overview kind (`W#L#` lecture-level): `Alle kilder` (deep-dive, long).
 - Per-reading episodes: deep-dive, default length.
-- Brief versions: `[Brief]` variants are generated as deep-dive, long audio and still appear as `[Kort]` in the feed.
+- Short versions: `[Short]` variants are generated as deep-dive, long audio and still appear as `[Kort]` in the feed.
 - Prompts are configured in `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json`.
 
 Sources used for this mapping:
@@ -16,7 +16,7 @@ Sources used for this mapping:
 - OneDrive readings folder (current file inventory)
 
 **W01L1 Introforelæsning og nøglebegreber i personlighedspsykologien (Forelæsning 1, 2026-02-02)**
-- Grundbog kapitel 01 - Introduktion til personlighedspsykologi → W1L1 Grundbog kapitel 1 - Introduktion til personlighedspsykologi.pdf (brief + full)
+- Grundbog kapitel 01 - Introduktion til personlighedspsykologi → W1L1 Grundbog kapitel 1 - Introduktion til personlighedspsykologi.pdf (short + full)
 - Lewis (1999) → W1L1 Lewis (1999).pdf
 
 **W01L2 Personality assessment (Forelæsning 2, 2026-02-03)**
@@ -58,12 +58,12 @@ Sources used for this mapping:
 **W05L2 Psykoanalysens konstituering (Forelæsning 10, 2026-03-03)**
 - Andkjær Olsen & Køppe (1991a + 1991b) → W5L2 Andkjær Olsen & Køppe (1991a og b).pdf
 - Køppe (1992) → W5L2 Køppe (1992).pdf
-- Grundbog kapitel 07 - Nyere psykoanalytiske teorier → Grundbog kapitel 07 - Nyere psykoanalytiske teorier.pdf (brief + full)
+- Grundbog kapitel 07 - Nyere psykoanalytiske teorier → Grundbog kapitel 07 - Nyere psykoanalytiske teorier.pdf (short + full)
 
 **W06L1 Fænomenologi (Forelæsning 11, 2026-03-09)**
 - Spinelli (2005) → W6L1 Spinelli (2005).pdf
 - Moeskær Hansen & Roald (2022) → W6L1 Moeskær Hansen & Roald (2022).pdf
-- Grundbog kapitel 04 - Fænomenologisk personlighedspsykologi → W6L1 Grundbog kapitel 4 - Fænomenologisk personlighedspsykologi.pdf (brief + full)
+- Grundbog kapitel 04 - Fænomenologisk personlighedspsykologi → W6L1 Grundbog kapitel 4 - Fænomenologisk personlighedspsykologi.pdf (short + full)
 
 **W06L2 Eksistentiel personlighedspsykologi I (Funch) (Forelæsning 12, 2026-03-10)**
 - Boss (1963) → W6L2 Boss (1963).pdf
@@ -90,7 +90,7 @@ Sources used for this mapping:
 - Mørch & Hansen (2015) → W9L1 Mørch & Hansen (2015).pdf
 - Dreier (1999) → W9L1 Dreier (1999).pdf
 - Holzkamp (2013) → W9L1 Holzkamp (2013).pdf
-- Grundbog kapitel 10 - Kritisk psykologi → W9L1 Grundbog kapitel 10 - Kritisk psykologi.pdf (brief + full)
+- Grundbog kapitel 10 - Kritisk psykologi → W9L1 Grundbog kapitel 10 - Kritisk psykologi.pdf (short + full)
 
 **W10L1 Køn (Forelæsning 18, 2026-04-13)**
 - Bjerrum Nielsen & Rudberg (2006) → W10L1 Bjerrum Nielsen & Rudberg (2006).pdf
@@ -103,15 +103,15 @@ Sources used for this mapping:
 **W11L1 Poststrukturalisme, diskursiv psykologi og feministisk teori (Forelæsning 20, 2026-04-20)**
 - Gergen (1999) → W11L1 Gergen (1999).pdf
 - Hacking (2007) → W11L1 Hacking (2007).pdf
-- Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori → W11L1 Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori.pdf (brief + full)
+- Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori → W11L1 Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori.pdf (short + full)
 
 **W11L2 Narrativitet, kultur og mening (Forelæsning 21, 2026-04-21)**
 - Raggatt (2002) → W11L2 Raggatt (2002).pdf
 - Bruner (1999) → W11L2 Bruner (1999).pdf
 - McAdams & Pals (2006) → W11L2 McAdams & Pals (2006).pdf
-- Grundbog kapitel 09 - Narrative teorier → W11L2 Grundbog kapitel 9 - Narrative teorier.pdf (brief + full)
+- Grundbog kapitel 09 - Narrative teorier → W11L2 Grundbog kapitel 9 - Narrative teorier.pdf (short + full)
 
 **W12L1 Sammenligning af teorier og subjektets historie og eksamen (Forelæsning 22, 2026-04-27)**
 - Elias (2000) → W12L1 Elias (2000).pdf
-- Grundbog kapitel 08 - Personlighed, subjektivitet og historicitet → W12L1 Grundbog kapitel 8 - Personlighed, subjektivitet og historicitet.pdf (brief + full)
-- Grundbog kapitel 14 - Perspektiver på personlighedspsykologi → W12L1 Grundbog kapitel 14 - Perspektiver på personlighedspsykologi.pdf (brief + full)
+- Grundbog kapitel 08 - Personlighed, subjektivitet og historicitet → W12L1 Grundbog kapitel 8 - Personlighed, subjektivitet og historicitet.pdf (short + full)
+- Grundbog kapitel 14 - Perspektiver på personlighedspsykologi → W12L1 Grundbog kapitel 14 - Perspektiver på personlighedspsykologi.pdf (short + full)

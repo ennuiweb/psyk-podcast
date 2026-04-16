@@ -4,6 +4,7 @@ import os
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 
 def _load_module():
@@ -28,9 +29,16 @@ def _touch(path: Path, payload: bytes = b"data") -> None:
 
 
 class GenerateWeekTests(unittest.TestCase):
+    def _default_prompt_context(self, mod):
+        return {
+            "prompt_strategy": mod.normalize_audio_prompt_strategy({}),
+            "exam_focus": mod.normalize_exam_focus({}),
+            "meta_prompting": mod.normalize_meta_prompting({}),
+        }
+
     def test_default_output_root_prefers_environment_override(self):
         mod = _load_module()
-        with unittest.mock.patch.dict(
+        with mock.patch.dict(
             os.environ,
             {mod.OUTPUT_ROOT_ENV_VAR: "/tmp/personlighedspsykologi-output"},
             clear=False,
@@ -182,22 +190,146 @@ class GenerateWeekTests(unittest.TestCase):
             source_type="reading",
         )
 
-        self.assertEqual(
-            mod.per_source_audio_settings(
-                slide_item,
-                per_reading_cfg={"format": "deep-dive", "length": "long", "prompt": ""},
-                per_slide_cfg={"format": "deep-dive", "length": "default", "prompt": ""},
-            ),
-            ("per_slide", "", "deep-dive", "default"),
+        slide_settings = mod.per_source_audio_settings(
+            slide_item,
+            per_reading_cfg={"format": "deep-dive", "length": "long", "prompt": ""},
+            per_slide_cfg={"format": "deep-dive", "length": "default", "prompt": ""},
+            **self._default_prompt_context(mod),
         )
-        self.assertEqual(
-            mod.per_source_audio_settings(
-                reading_item,
-                per_reading_cfg={"format": "deep-dive", "length": "long", "prompt": ""},
-                per_slide_cfg={"format": "deep-dive", "length": "default", "prompt": ""},
-            ),
-            ("per_reading", "", "deep-dive", "long"),
+        self.assertEqual(slide_settings[0], "per_slide")
+        self.assertIn("The source is a slide deck.", slide_settings[1])
+        self.assertEqual(slide_settings[2:], ("deep-dive", "default"))
+
+        reading_settings = mod.per_source_audio_settings(
+            reading_item,
+            per_reading_cfg={"format": "deep-dive", "length": "long", "prompt": ""},
+            per_slide_cfg={"format": "deep-dive", "length": "default", "prompt": ""},
+            **self._default_prompt_context(mod),
         )
+        self.assertEqual(reading_settings[0], "per_reading")
+        self.assertIn("central claims and argument structure", reading_settings[1])
+        self.assertEqual(reading_settings[2:], ("deep-dive", "long"))
+
+    def test_build_audio_prompt_for_reading_uses_distinction_focused_defaults(self):
+        mod = _load_module()
+        reading_item = mod.SourceItem(
+            path=Path("/tmp/Foucault.pdf"),
+            base_name="Foucault",
+            source_type="reading",
+        )
+
+        prompt = mod.build_audio_prompt(
+            prompt_type="single_reading",
+            custom_prompt="",
+            source_item=reading_item,
+            **self._default_prompt_context(mod),
+        )
+
+        self.assertIn("central claims and argument structure", prompt)
+        self.assertIn("conceptual distinctions and delimitations", prompt)
+        self.assertIn("Exam lens:", prompt)
+        self.assertIn("historical tradition and core assumptions", prompt)
+        self.assertIn("Tone: calm, precise, teaching-oriented.", prompt)
+
+    def test_build_audio_prompt_for_mixed_sources_assigns_source_roles(self):
+        mod = _load_module()
+        reading_item = mod.SourceItem(
+            path=Path("/tmp/text.pdf"),
+            base_name="Text",
+            source_type="reading",
+        )
+        slide_item = mod.SourceItem(
+            path=Path("/tmp/slides.pdf"),
+            base_name="Slide lecture: Intro",
+            source_type="slide",
+            slide_subcategory="lecture",
+        )
+
+        prompt = mod.build_audio_prompt(
+            prompt_type="mixed_sources",
+            custom_prompt="",
+            source_items=[reading_item, slide_item],
+            week_dir=Path("/tmp/W01L1"),
+            week_label="W01L1",
+            **self._default_prompt_context(mod),
+        )
+
+        self.assertIn("You are working with both slides and readings.", prompt)
+        self.assertIn("Source roles:", prompt)
+        self.assertIn("Use the slides as the structural map", prompt)
+        self.assertIn("Use the readings for conceptual distinctions", prompt)
+
+    def test_build_audio_prompt_includes_source_sidecar_notes(self):
+        mod = _load_module()
+        with tempfile.TemporaryDirectory() as tmpdir:
+            tmp_path = Path(tmpdir)
+            source_path = tmp_path / "Foucault.pdf"
+            source_path.write_bytes(b"data")
+            (tmp_path / "Foucault.prompt.md").write_text(
+                "Focus on liberation versus practices of freedom.",
+                encoding="utf-8",
+            )
+            reading_item = mod.SourceItem(
+                path=source_path,
+                base_name="Foucault",
+                source_type="reading",
+            )
+
+            prompt = mod.build_audio_prompt(
+                prompt_type="single_reading",
+                custom_prompt="",
+                source_item=reading_item,
+                **self._default_prompt_context(mod),
+            )
+
+            self.assertIn("External pre-analysis to integrate if useful:", prompt)
+            self.assertIn("liberation versus practices of freedom", prompt)
+
+    def test_build_audio_prompt_for_short_uses_short_prompt_type(self):
+        mod = _load_module()
+        reading_item = mod.SourceItem(
+            path=Path("/tmp/short.pdf"),
+            base_name="Short text",
+            source_type="reading",
+        )
+
+        prompt = mod.build_audio_prompt(
+            prompt_type="short",
+            custom_prompt="",
+            source_item=reading_item,
+            **self._default_prompt_context(mod),
+        )
+
+        self.assertIn("Keep the explanation compact, memorable, and exam-oriented", prompt)
+        self.assertIn("what matters most for exam preparation", prompt)
+
+    def test_build_audio_prompt_includes_weekly_sidecar_notes(self):
+        mod = _load_module()
+        with tempfile.TemporaryDirectory() as tmpdir:
+            week_dir = Path(tmpdir) / "W01L1"
+            week_dir.mkdir(parents=True, exist_ok=True)
+            (week_dir / "week.analysis.md").write_text(
+                "Prioritize distinctions between normalization and subject formation.",
+                encoding="utf-8",
+            )
+
+            reading_item = mod.SourceItem(
+                path=week_dir / "text.pdf",
+                base_name="Text",
+                source_type="reading",
+            )
+
+            prompt = mod.build_audio_prompt(
+                prompt_type="weekly_readings_only",
+                custom_prompt="",
+                source_items=[reading_item],
+                week_dir=week_dir,
+                week_label="W01L1",
+                **self._default_prompt_context(mod),
+            )
+
+            self.assertIn("weekly_readings_only", mod.normalize_exam_focus({})["prompt_types"])
+            self.assertIn("normalization and subject formation", prompt)
 
     def test_build_source_items_excludes_seminar_slides(self):
         mod = _load_module()
@@ -264,6 +396,26 @@ class GenerateWeekTests(unittest.TestCase):
                 [item.slide_subcategory for item in generation_sources if item.source_type == "slide"],
                 ["lecture", "exercise"],
             )
+
+    def test_build_source_items_excludes_meta_prompt_sidecars(self):
+        mod = _load_module()
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            week_dir = root / "W1L1"
+            week_dir.mkdir(parents=True, exist_ok=True)
+            _touch(week_dir / "Foucault.pdf")
+            (week_dir / "week.analysis.md").write_text("meta", encoding="utf-8")
+
+            reading_sources, generation_sources = mod.build_source_items(
+                week_dir=week_dir,
+                week_label="W01L1",
+                slides_catalog_path=None,
+                slides_source_root=None,
+                meta_prompting=mod.normalize_meta_prompting({}),
+            )
+
+            self.assertEqual([item.base_name for item in reading_sources], ["Foucault"])
+            self.assertEqual([item.base_name for item in generation_sources], ["Foucault"])
 
     def test_cleanup_disallowed_slide_outputs_removes_seminar_artifacts(self):
         mod = _load_module()

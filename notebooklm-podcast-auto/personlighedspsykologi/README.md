@@ -9,7 +9,7 @@ It is **not** a podcast feed. Feed config now lives in:
 
 ## Key paths
 - `scripts/` - generation helpers (`generate_week.py`, `download_week.py`, `sync_reading_summaries.py`)
-- `prompt_config.json` - prompts + language variants for NotebookLM (audio + infographic + quiz defaults)
+- `prompt_config.json` - prompts + language variants for NotebookLM (audio + infographic + quiz defaults, including `audio_prompt_strategy`, `exam_focus`, and `meta_prompting`)
 - OneDrive Readings root (authoritative source dirs):
   - `/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings`
 - `output/` - generated MP3s/PNGs/quiz exports + request logs
@@ -56,6 +56,18 @@ python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_week.py 
 - Manual slide entries from `shows/personlighedspsykologi-en/slides_catalog.json` are included as per-slide sources for reading-level generation when they are lecture or exercise slides and have a valid `local_relative_path`.
 - Slide sources generate their own per-source podcasts/quizzes. Short episodes are currently configured for all readings plus lecture slides only via `short.apply_to: "readings_and_lecture_slides"` (the older config key is still accepted), with descriptor titles like `Slide lecture: <title>`.
 - Slide audio settings come from `per_slide` in `prompt_config.json`; reading audio settings stay under `per_reading`.
+- Audio prompts are source-aware by default through `audio_prompt_strategy.prompt_types` in `prompt_config.json`.
+  - Implemented prompt types are `single_reading`, `single_slide`, `weekly_readings_only`, `short`, and `mixed_sources`.
+  - `Alle kilder (undtagen slides)` currently uses `weekly_readings_only`, so weekly overviews remain readings-only.
+  - `single_reading` asks for argument structure, conceptual distinctions, corrections/rejections, likely misunderstandings, and implications for personality/subject thinking.
+  - `single_slide` treats slides as fragmentary lecture scaffolding and asks NotebookLM to reconstruct the argumentative sequence rather than summarize slide bullets.
+  - `mixed_sources` is implemented in the builder for future mixed notebooks and assigns explicit source roles: slides provide structure and lecture framing; readings provide nuance and argumentative depth.
+  - `short` uses a compact, exam-oriented focus rather than the full deep-dive checklist.
+  - The default tone is calm, precise, and teaching-oriented, with explicit anti-dramatization guidance.
+- `exam_focus` is a separate additive block in `prompt_config.json`.
+  - It injects short exam-facing evaluation criteria after the scenario focus block.
+  - The defaults emphasize historical tradition/core assumptions, possibilities and limitations, theory-method relation, and what should be evaluated critically rather than merely repeated.
+- The raw `prompt` fields under `weekly_overview`, `per_reading`, `per_slide`, and `short` are additive for audio: they append extra instructions on top of the built-in prompt structure rather than replacing it.
 - Individual slide podcasts can override `per_slide` by `slide_key`:
 
 ```json
@@ -72,6 +84,12 @@ python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_week.py 
 ```
 
 - Override fields are optional and inherit from the base `per_slide` block. Supported fields are `format`, `length`, and `prompt`.
+- You can attach external pre-analysis from another LLM and have it folded into audio prompts automatically through `meta_prompting`.
+  - Per-source sidecars: `<source>.prompt.md`, `<source>.prompt.txt`, `<source>.analysis.md`, `<source>.analysis.txt` (both `Foo.pdf.prompt.md` and `Foo.prompt.md` are accepted).
+  - Weekly sidecars: `week.prompt.md`, `week.prompt.txt`, `week.analysis.md`, `week.analysis.txt`, plus `W01L1.prompt.md` / `.txt` / `.analysis.md` / `.analysis.txt`.
+  - Sidecars are appended under the configured `meta_prompting.heading`.
+  - Sidecars are excluded from the source inventory, so they are never uploaded to NotebookLM as course materials.
+- Use `--print-resolved-prompts` together with `--dry-run` when you want to inspect the fully assembled audio prompt before generation.
 - Find stable slide keys in `shows/personlighedspsykologi-en/slides_catalog.json`.
 - To regenerate only one slide podcast, use `--only-slide <slide_key>`. This skips `Alle kilder`, readings, and short-form outputs for that run:
 

@@ -6,6 +6,115 @@
       "suffix": "[EN]"
     }
   ],
+  "audio_prompt_strategy": {
+    "enabled": true,
+    "audience": "a bachelor's-level psychology student",
+    "tone": "calm, precise, teaching-oriented. Avoid dramatization.",
+    "source_roles": {
+      "slides": "Use the slides as the structural map and the lecturer's interpretive frame.",
+      "readings": "Use the readings for conceptual distinctions, qualifications, and argumentative depth."
+    },
+    "prompt_types": {
+      "single_reading": {
+        "focus": [
+          "the source's central claims and argument structure",
+          "the most important conceptual distinctions and delimitations",
+          "what the source explicitly rejects, corrects, or qualifies",
+          "where a student is most likely to misunderstand the source",
+          "what the source changes for psychological thinking about personality and the subject"
+        ]
+      },
+      "single_slide": {
+        "lead": "The source is a slide deck. Slides are fragmentary and assume spoken elaboration.",
+        "focus": [
+          "the overarching problem the lecture is trying to address",
+          "the sequence logic that organizes the lecture",
+          "the concepts and distinctions that are most exam-relevant",
+          "where the slides most likely simplify something important",
+          "what the material challenges in psychology's self-understanding"
+        ]
+      },
+      "weekly_readings_only": {
+        "lead": "You are working with multiple readings on the same lecture block.",
+        "focus": [
+          "the shared problem or question that organizes the material",
+          "the key conceptual distinctions, tensions, and disagreements across the readings",
+          "where the readings qualify, deepen, or correct one another",
+          "what a student is most likely to misunderstand",
+          "what matters most for psychological thinking about personality and the subject"
+        ]
+      },
+      "short": {
+        "lead": "Keep the explanation compact, memorable, and exam-oriented without becoming vague.",
+        "focus": [
+          "the single most important claim, problem, or insight",
+          "the key distinction or clarification to remember",
+          "the misunderstanding or oversimplification to avoid",
+          "what is most important to take into exam preparation"
+        ]
+      },
+      "mixed_sources": {
+        "lead": "You are working with both slides and readings.",
+        "focus": [
+          "the overarching problem and argumentative sequence of the lecture block",
+          "the key distinctions, tensions, and corrections across slides and readings",
+          "where the readings nuance, complicate, or correct the lecture framing",
+          "what is most exam-relevant and easiest to misunderstand",
+          "what the material changes in psychology's self-understanding"
+        ]
+      }
+    }
+  },
+  "exam_focus": {
+    "enabled": true,
+    "heading": "Exam lens:",
+    "prompt_types": {
+      "single_reading": [
+        "clarify the theory's historical tradition and core assumptions",
+        "analyze the theory's possibilities and limitations for the problem at hand",
+        "explain what kind of method relation or methodological stance is implied",
+        "make clear what should be evaluated critically, not just summarized"
+      ],
+      "single_slide": [
+        "clarify the lecture's theoretical placement where the slides make it possible",
+        "state the most important possibilities and limitations implied by the material",
+        "note what kind of theory-method relation is implied",
+        "flag what should be evaluated critically rather than repeated"
+      ],
+      "weekly_readings_only": [
+        "clarify the historical tradition and core assumptions in play across the readings",
+        "analyze the theories' possibilities and limitations for the shared problem",
+        "make the relation between theory and method explicit where it matters",
+        "show what should be evaluated critically, not just summarized"
+      ],
+      "short": [
+        "make clear what matters most for exam preparation",
+        "include at least one limitation, tension, or critical point rather than only summarizing"
+      ],
+      "mixed_sources": [
+        "clarify the historical tradition and core assumptions in play",
+        "analyze the theories' possibilities and limitations for the problem at hand",
+        "make the relation between theory and method explicit where it matters",
+        "show what should be evaluated critically, not just summarized"
+      ]
+    }
+  },
+  "meta_prompting": {
+    "enabled": true,
+    "heading": "External pre-analysis to integrate if useful:",
+    "per_source_suffixes": [
+      ".prompt.md",
+      ".prompt.txt",
+      ".analysis.md",
+      ".analysis.txt"
+    ],
+    "weekly_sidecars": [
+      "week.prompt.md",
+      "week.prompt.txt",
+      "week.analysis.md",
+      "week.analysis.txt"
+    ]
+  },
   "weekly_overview": {
     "format": "deep-dive",
     "length": "long",

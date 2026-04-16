@@ -61,6 +61,124 @@ AUDIO_FORMAT_VALUES = {"deep-dive", "brief", "critique", "debate"}
 AUDIO_LENGTH_VALUES = {"short", "default", "long"}
 PER_SLIDE_OVERRIDE_KEYS = {"format", "length", "prompt"}
 SLIDE_AUDIO_QUARANTINE_ROOT = Path(".ai/quarantine/slide-audio-overrides")
+PROMPT_SIDECAR_SUFFIXES = (
+    ".prompt.md",
+    ".prompt.txt",
+    ".analysis.md",
+    ".analysis.txt",
+)
+WEEK_PROMPT_SIDECAR_NAMES = (
+    "week.prompt.md",
+    "week.prompt.txt",
+    "week.analysis.md",
+    "week.analysis.txt",
+)
+AUDIO_PROMPT_TYPES = (
+    "single_reading",
+    "single_slide",
+    "weekly_readings_only",
+    "short",
+    "mixed_sources",
+)
+DEFAULT_AUDIO_PROMPT_STRATEGY = {
+    "enabled": True,
+    "audience": "a bachelor's-level psychology student",
+    "tone": "calm, precise, teaching-oriented. Avoid dramatization.",
+    "source_roles": {
+        "slides": "Use the slides as the structural map and the lecturer's interpretive frame.",
+        "readings": "Use the readings for conceptual distinctions, qualifications, and argumentative depth.",
+    },
+    "prompt_types": {
+        "single_reading": {
+            "focus": [
+                "the source's central claims and argument structure",
+                "the most important conceptual distinctions and delimitations",
+                "what the source explicitly rejects, corrects, or qualifies",
+                "where a student is most likely to misunderstand the source",
+                "what the source changes for psychological thinking about personality and the subject",
+            ]
+        },
+        "single_slide": {
+            "lead": "The source is a slide deck. Slides are fragmentary and assume spoken elaboration.",
+            "focus": [
+                "the overarching problem the lecture is trying to address",
+                "the sequence logic that organizes the lecture",
+                "the concepts and distinctions that are most exam-relevant",
+                "where the slides most likely simplify something important",
+                "what the material challenges in psychology's self-understanding",
+            ]
+        },
+        "weekly_readings_only": {
+            "lead": "You are working with multiple readings on the same lecture block.",
+            "focus": [
+                "the shared problem or question that organizes the material",
+                "the key conceptual distinctions, tensions, and disagreements across the readings",
+                "where the readings qualify, deepen, or correct one another",
+                "what a student is most likely to misunderstand",
+                "what matters most for psychological thinking about personality and the subject",
+            ]
+        },
+        "short": {
+            "lead": "Keep the explanation compact, memorable, and exam-oriented without becoming vague.",
+            "focus": [
+                "the single most important claim, problem, or insight",
+                "the key distinction or clarification to remember",
+                "the misunderstanding or oversimplification to avoid",
+                "what is most important to take into exam preparation",
+            ]
+        },
+        "mixed_sources": {
+            "lead": "You are working with both slides and readings.",
+            "focus": [
+                "the overarching problem and argumentative sequence of the lecture block",
+                "the key distinctions, tensions, and corrections across slides and readings",
+                "where the readings nuance, complicate, or correct the lecture framing",
+                "what is most exam-relevant and easiest to misunderstand",
+                "what the material changes in psychology's self-understanding",
+            ]
+        },
+    },
+}
+DEFAULT_EXAM_FOCUS = {
+    "enabled": True,
+    "heading": "Exam lens:",
+    "prompt_types": {
+        "single_reading": [
+            "clarify the theory's historical tradition and core assumptions",
+            "analyze the theory's possibilities and limitations for the problem at hand",
+            "explain what kind of method relation or methodological stance is implied",
+            "make clear what should be evaluated critically, not just summarized",
+        ],
+        "single_slide": [
+            "clarify the lecture's theoretical placement where the slides make it possible",
+            "state the most important possibilities and limitations implied by the material",
+            "note what kind of theory-method relation is implied",
+            "flag what should be evaluated critically rather than repeated",
+        ],
+        "weekly_readings_only": [
+            "clarify the historical tradition and core assumptions in play across the readings",
+            "analyze the theories' possibilities and limitations for the shared problem",
+            "make the relation between theory and method explicit where it matters",
+            "show what should be evaluated critically, not just summarized",
+        ],
+        "short": [
+            "make clear what matters most for exam preparation",
+            "include at least one limitation, tension, or critical point rather than only summarizing",
+        ],
+        "mixed_sources": [
+            "clarify the historical tradition and core assumptions in play",
+            "analyze the theories' possibilities and limitations for the problem at hand",
+            "make the relation between theory and method explicit where it matters",
+            "show what should be evaluated critically, not just summarized",
+        ],
+    },
+}
+DEFAULT_META_PROMPTING = {
+    "enabled": True,
+    "heading": "External pre-analysis to integrate if useful:",
+    "per_source_suffixes": list(PROMPT_SIDECAR_SUFFIXES),
+    "weekly_sidecars": list(WEEK_PROMPT_SIDECAR_NAMES),
+}
 
 
 class SourceItem(NamedTuple):
@@ -200,6 +318,13 @@ def list_source_files(week_dir: Path) -> list[Path]:
         if entry.is_file():
             files.append(entry)
     return files
+
+
+def is_prompt_sidecar_file(path: Path, meta_prompting: dict | None = None) -> bool:
+    config = meta_prompting or DEFAULT_META_PROMPTING
+    if path.name in set(config["weekly_sidecars"]):
+        return True
+    return any(path.name.endswith(suffix) for suffix in config["per_source_suffixes"])
 
 
 def _slides_catalog_entries_for_lecture(
@@ -352,6 +477,7 @@ def build_source_items(
     week_label: str,
     slides_catalog_path: Path | None,
     slides_source_root: Path | None,
+    meta_prompting: dict | None = None,
 ) -> tuple[list[SourceItem], list[SourceItem]]:
     canonical_week_label = canonicalize_lecture_key(week_label)
     reading_sources = [
@@ -361,6 +487,7 @@ def build_source_items(
             source_type="reading",
         )
         for path in list_source_files(week_dir)
+        if not is_prompt_sidecar_file(path, meta_prompting)
     ]
     slide_sources = _slides_catalog_entries_for_lecture(
         slides_catalog_path=slides_catalog_path,
@@ -376,6 +503,9 @@ def per_source_audio_settings(
     per_reading_cfg: dict,
     per_slide_cfg: dict,
     per_slide_overrides: dict[str, dict] | None = None,
+    prompt_strategy: dict | None = None,
+    exam_focus: dict | None = None,
+    meta_prompting: dict | None = None,
 ) -> tuple[str, str, str, str]:
     if source_item.source_type == "slide":
         slide_cfg = {
@@ -393,13 +523,27 @@ def per_source_audio_settings(
             slide_cfg.update(override)
         return (
             "per_slide",
-            ensure_prompt("per_slide", slide_cfg.get("prompt", "")),
+            build_audio_prompt(
+                prompt_type="single_slide",
+                prompt_strategy=prompt_strategy,
+                exam_focus=exam_focus,
+                meta_prompting=meta_prompting,
+                custom_prompt=slide_cfg.get("prompt", ""),
+                source_item=source_item,
+            ),
             slide_cfg.get("format", "deep-dive"),
             slide_cfg.get("length", "default"),
         )
     return (
         "per_reading",
-        ensure_prompt("per_reading", per_reading_cfg.get("prompt", "")),
+        build_audio_prompt(
+            prompt_type="single_reading",
+            prompt_strategy=prompt_strategy,
+            exam_focus=exam_focus,
+            meta_prompting=meta_prompting,
+            custom_prompt=per_reading_cfg.get("prompt", ""),
+            source_item=source_item,
+        ),
         per_reading_cfg.get("format", "deep-dive"),
         per_reading_cfg.get("length", "default"),
     )
@@ -478,8 +622,295 @@ def normalize_episode_title(title: str, week_label: str) -> str:
     return normalized or title
 
 
+def _deep_copy_prompt_defaults(value: object) -> object:
+    if isinstance(value, dict):
+        return {key: _deep_copy_prompt_defaults(item) for key, item in value.items()}
+    if isinstance(value, list):
+        return [_deep_copy_prompt_defaults(item) for item in value]
+    return value
+
+
+def _normalize_string_list(section: str, field: str, value: object) -> list[str]:
+    if not isinstance(value, list) or any(not isinstance(item, str) for item in value):
+        raise SystemExit(f"{section}.{field} must be a list of strings.")
+    cleaned = [item.strip() for item in value if item.strip()]
+    if not cleaned:
+        raise SystemExit(f"{section}.{field} must contain at least one non-empty string.")
+    return cleaned
+
+
+def normalize_audio_prompt_strategy(raw: object) -> dict:
+    defaults = _deep_copy_prompt_defaults(DEFAULT_AUDIO_PROMPT_STRATEGY)
+    if raw in (None, ""):
+        return defaults
+    if not isinstance(raw, dict):
+        raise SystemExit("audio_prompt_strategy must be an object.")
+
+    normalized = defaults
+    for field in ("audience", "tone"):
+        if field not in raw:
+            continue
+        value = raw[field]
+        if not isinstance(value, str):
+            raise SystemExit(f"audio_prompt_strategy.{field} must be a string.")
+        stripped = value.strip()
+        if stripped:
+            normalized[field] = stripped
+
+    if "enabled" in raw:
+        if not isinstance(raw["enabled"], bool):
+            raise SystemExit("audio_prompt_strategy.enabled must be true or false.")
+        normalized["enabled"] = raw["enabled"]
+
+    if "source_roles" in raw:
+        source_roles = raw["source_roles"]
+        if not isinstance(source_roles, dict):
+            raise SystemExit("audio_prompt_strategy.source_roles must be an object.")
+        for role in ("slides", "readings"):
+            if role not in source_roles:
+                continue
+            value = source_roles[role]
+            if not isinstance(value, str):
+                raise SystemExit(f"audio_prompt_strategy.source_roles.{role} must be a string.")
+            stripped = value.strip()
+            if stripped:
+                normalized["source_roles"][role] = stripped
+
+    if "prompt_types" in raw:
+        prompt_types = raw["prompt_types"]
+        if not isinstance(prompt_types, dict):
+            raise SystemExit("audio_prompt_strategy.prompt_types must be an object.")
+        unknown = sorted(set(prompt_types) - set(AUDIO_PROMPT_TYPES))
+        if unknown:
+            raise SystemExit(
+                "Unknown audio prompt type(s): "
+                + ", ".join(unknown)
+                + ". Allowed: "
+                + ", ".join(AUDIO_PROMPT_TYPES)
+            )
+        for prompt_type, prompt_cfg in prompt_types.items():
+            if not isinstance(prompt_cfg, dict):
+                raise SystemExit(f"audio_prompt_strategy.prompt_types.{prompt_type} must be an object.")
+            if "lead" in prompt_cfg:
+                value = prompt_cfg["lead"]
+                if not isinstance(value, str):
+                    raise SystemExit(
+                        f"audio_prompt_strategy.prompt_types.{prompt_type}.lead must be a string."
+                    )
+                normalized["prompt_types"][prompt_type]["lead"] = value.strip()
+            if "focus" in prompt_cfg:
+                normalized["prompt_types"][prompt_type]["focus"] = _normalize_string_list(
+                    f"audio_prompt_strategy.prompt_types.{prompt_type}",
+                    "focus",
+                    prompt_cfg["focus"],
+                )
+    return normalized
+
+
+def normalize_exam_focus(raw: object) -> dict:
+    defaults = _deep_copy_prompt_defaults(DEFAULT_EXAM_FOCUS)
+    if raw in (None, ""):
+        return defaults
+    if not isinstance(raw, dict):
+        raise SystemExit("exam_focus must be an object.")
+
+    normalized = defaults
+    if "enabled" in raw:
+        if not isinstance(raw["enabled"], bool):
+            raise SystemExit("exam_focus.enabled must be true or false.")
+        normalized["enabled"] = raw["enabled"]
+    if "heading" in raw:
+        if not isinstance(raw["heading"], str):
+            raise SystemExit("exam_focus.heading must be a string.")
+        stripped = raw["heading"].strip()
+        if stripped:
+            normalized["heading"] = stripped
+    if "prompt_types" in raw:
+        prompt_types = raw["prompt_types"]
+        if not isinstance(prompt_types, dict):
+            raise SystemExit("exam_focus.prompt_types must be an object.")
+        unknown = sorted(set(prompt_types) - set(AUDIO_PROMPT_TYPES))
+        if unknown:
+            raise SystemExit(
+                "Unknown exam focus prompt type(s): "
+                + ", ".join(unknown)
+                + ". Allowed: "
+                + ", ".join(AUDIO_PROMPT_TYPES)
+            )
+        for prompt_type, items in prompt_types.items():
+            normalized["prompt_types"][prompt_type] = _normalize_string_list(
+                f"exam_focus.prompt_types.{prompt_type}",
+                "items",
+                items,
+            )
+    return normalized
+
+
+def normalize_meta_prompting(raw: object) -> dict:
+    defaults = _deep_copy_prompt_defaults(DEFAULT_META_PROMPTING)
+    if raw in (None, ""):
+        return defaults
+    if not isinstance(raw, dict):
+        raise SystemExit("meta_prompting must be an object.")
+
+    normalized = defaults
+    if "enabled" in raw:
+        if not isinstance(raw["enabled"], bool):
+            raise SystemExit("meta_prompting.enabled must be true or false.")
+        normalized["enabled"] = raw["enabled"]
+    if "heading" in raw:
+        if not isinstance(raw["heading"], str):
+            raise SystemExit("meta_prompting.heading must be a string.")
+        stripped = raw["heading"].strip()
+        if stripped:
+            normalized["heading"] = stripped
+    if "per_source_suffixes" in raw:
+        normalized["per_source_suffixes"] = _normalize_string_list(
+            "meta_prompting",
+            "per_source_suffixes",
+            raw["per_source_suffixes"],
+        )
+    if "weekly_sidecars" in raw:
+        normalized["weekly_sidecars"] = _normalize_string_list(
+            "meta_prompting",
+            "weekly_sidecars",
+            raw["weekly_sidecars"],
+        )
+    return normalized
+
+
 def ensure_prompt(_: str, value: str) -> str:
     return value.strip()
+
+
+def _format_bullets(items: list[str]) -> str:
+    return "\n".join(f"- {item}" for item in items if item)
+
+
+def _source_prompt_sidecar_candidates(source_path: Path, meta_prompting: dict) -> list[Path]:
+    candidates: list[Path] = []
+    stem_base = source_path.with_suffix("")
+    seen: set[Path] = set()
+    for suffix in meta_prompting["per_source_suffixes"]:
+        for candidate in (
+            source_path.parent / f"{source_path.name}{suffix}",
+            stem_base.parent / f"{stem_base.name}{suffix}",
+        ):
+            if candidate in seen:
+                continue
+            seen.add(candidate)
+            candidates.append(candidate)
+    return candidates
+
+
+def _week_prompt_sidecar_candidates(week_dir: Path, week_label: str | None, meta_prompting: dict) -> list[Path]:
+    candidates: list[Path] = []
+    seen: set[Path] = set()
+    label = canonicalize_lecture_key(week_label or "")
+    names = list(meta_prompting["weekly_sidecars"])
+    if label:
+        for suffix in meta_prompting["per_source_suffixes"]:
+            names.append(f"{label}{suffix}")
+    for name in names:
+        candidate = week_dir / name
+        if candidate in seen:
+            continue
+        seen.add(candidate)
+        candidates.append(candidate)
+    return candidates
+
+
+def _read_prompt_sidecars(candidates: list[Path]) -> str:
+    sections: list[str] = []
+    for path in candidates:
+        if not path.exists() or not path.is_file():
+            continue
+        try:
+            content = path.read_text(encoding="utf-8").strip()
+        except OSError:
+            continue
+        if not content:
+            continue
+        sections.append(f"[{path.name}]\n{content}")
+    return "\n\n".join(sections)
+
+
+def build_prompt_debug_lines(label: str, prompt: str) -> list[str]:
+    lines = [f"PROMPT {label}:"]
+    for line in prompt.splitlines():
+        lines.append(f"    {line}" if line else "    ")
+    return lines
+
+
+def build_audio_prompt(
+    *,
+    prompt_type: str,
+    prompt_strategy: dict | None,
+    exam_focus: dict | None,
+    meta_prompting: dict | None,
+    custom_prompt: str,
+    source_item: SourceItem | None = None,
+    source_items: list[SourceItem] | None = None,
+    week_dir: Path | None = None,
+    week_label: str | None = None,
+) -> str:
+    if prompt_type not in AUDIO_PROMPT_TYPES:
+        raise ValueError(
+            f"Unknown audio prompt type '{prompt_type}'. Allowed: {', '.join(AUDIO_PROMPT_TYPES)}."
+        )
+    custom_prompt = ensure_prompt("audio", custom_prompt)
+    notes = ""
+    if meta_prompting and meta_prompting.get("enabled", False):
+        if source_item is not None:
+            notes = _read_prompt_sidecars(
+                _source_prompt_sidecar_candidates(source_item.path, meta_prompting)
+            )
+        elif source_items is not None and week_dir is not None:
+            notes = _read_prompt_sidecars(
+                _week_prompt_sidecar_candidates(week_dir, week_label, meta_prompting)
+            )
+
+    sections: list[str] = []
+    if prompt_strategy and prompt_strategy.get("enabled", False):
+        prompt_type_cfg = prompt_strategy["prompt_types"][prompt_type]
+        sections.append(
+            f"Create a deep-dive audio overview for {prompt_strategy['audience']}."
+        )
+        lead = str(prompt_type_cfg.get("lead") or "").strip()
+        if lead:
+            sections.append(lead)
+        if prompt_type == "mixed_sources":
+            sections.append(
+                "Source roles:\n"
+                f"- Slides: {prompt_strategy['source_roles']['slides']}\n"
+                f"- Readings: {prompt_strategy['source_roles']['readings']}"
+            )
+        elif prompt_type == "short" and source_item is not None and source_item.source_type == "slide":
+            sections.append(
+                "Because the source is a slide deck, reconstruct the argumentative line instead of paraphrasing bullet fragments."
+            )
+        sections.append(
+            f"Focus on:\n{_format_bullets(prompt_type_cfg['focus'])}"
+        )
+
+    if exam_focus and exam_focus.get("enabled", False):
+        exam_items = exam_focus["prompt_types"].get(prompt_type) or []
+        if exam_items:
+            sections.append(f"{exam_focus['heading']}\n{_format_bullets(exam_items)}")
+
+    if prompt_strategy and prompt_strategy.get("enabled", False):
+        sections.append(f"Tone: {prompt_strategy['tone']}")
+
+    if custom_prompt:
+        sections.append(f"Additional instructions:\n{custom_prompt}")
+    if notes:
+        heading = (
+            meta_prompting["heading"]
+            if meta_prompting and meta_prompting.get("enabled", False)
+            else "External pre-analysis:"
+        )
+        sections.append(f"{heading}\n{notes}")
+    return "\n\n".join(section for section in sections if section.strip())
 
 
 def normalize_slide_key(value: object) -> str:
@@ -1531,6 +1962,11 @@ def main() -> int:
         help="Print planned outputs and exit without generating artifacts.",
     )
     parser.add_argument(
+        "--print-resolved-prompts",
+        action="store_true",
+        help="Print the fully resolved audio prompts during dry-run and generation.",
+    )
+    parser.add_argument(
         "--print-downloads",
         dest="print_downloads",
         action="store_true",
@@ -1610,6 +2046,9 @@ def main() -> int:
     per_cfg = config.get("per_reading", {})
     per_slide_cfg = ensure_dict(config.get("per_slide", per_cfg))
     per_slide_overrides = validate_per_slide_audio_config(per_slide_cfg)
+    audio_prompt_strategy = normalize_audio_prompt_strategy(config.get("audio_prompt_strategy"))
+    exam_focus = normalize_exam_focus(config.get("exam_focus"))
+    meta_prompting = normalize_meta_prompting(config.get("meta_prompting"))
     brief_cfg = ensure_dict(config.get("short", config.get("brief", {})))
     infographic_defaults = ensure_dict(config.get("infographic"))
     weekly_infographic_cfg = ensure_dict(config.get("weekly_infographic", infographic_defaults))
@@ -1697,6 +2136,7 @@ def main() -> int:
                 week_label=week_label,
                 slides_catalog_path=slides_catalog_path,
                 slides_source_root=slides_source_root,
+                meta_prompting=meta_prompting,
             )
             if only_slide_keys:
                 generation_sources = [
@@ -1744,8 +2184,15 @@ def main() -> int:
                     for variant in language_variants:
                         for quiz_difficulty_value in quiz_difficulty_values(content_type, quiz_difficulty):
                             if content_type == "audio":
-                                planned_instructions = ensure_prompt(
-                                    "weekly_overview", weekly_cfg.get("prompt", "")
+                                planned_instructions = build_audio_prompt(
+                                    prompt_type="weekly_readings_only",
+                                    prompt_strategy=audio_prompt_strategy,
+                                    exam_focus=exam_focus,
+                                    meta_prompting=meta_prompting,
+                                    custom_prompt=weekly_cfg.get("prompt", ""),
+                                    source_items=reading_sources,
+                                    week_dir=week_dir,
+                                    week_label=week_label,
                                 )
                                 planned_tag = build_output_cfg_tag_token(
                                     content_type=content_type,
@@ -1806,6 +2253,10 @@ def main() -> int:
                             planned_lines.append(
                                 f"WEEKLY {content_type.upper()} ({variant['code'] or 'default'}): {planned_path}"
                             )
+                            if args.print_resolved_prompts and content_type == "audio":
+                                planned_lines.extend(
+                                    build_prompt_debug_lines(planned_path.name, planned_instructions)
+                                )
                             should_skip, _ = should_skip_generation(planned_path, args.skip_existing)
                             if not should_skip:
                                 missing_outputs += 1
@@ -1824,6 +2275,9 @@ def main() -> int:
                                     per_reading_cfg=per_cfg,
                                     per_slide_cfg=per_slide_cfg,
                                     per_slide_overrides=per_slide_overrides,
+                                    prompt_strategy=audio_prompt_strategy,
+                                    exam_focus=exam_focus,
+                                    meta_prompting=meta_prompting,
                                 )
                                 planned_tag = build_output_cfg_tag_token(
                                     content_type=content_type,
@@ -1887,6 +2341,10 @@ def main() -> int:
                             planned_lines.append(
                                 f"{planned_source_kind} {content_type.upper()} ({variant['code'] or 'default'}): {planned_path}"
                             )
+                            if args.print_resolved_prompts and content_type == "audio":
+                                planned_lines.extend(
+                                    build_prompt_debug_lines(planned_path.name, planned_instructions)
+                                )
                             should_skip, _ = should_skip_generation(planned_path, args.skip_existing)
                             if not should_skip:
                                 missing_outputs += 1
@@ -1898,7 +2356,14 @@ def main() -> int:
                         for variant in language_variants:
                             for quiz_difficulty_value in quiz_difficulty_values(content_type, quiz_difficulty):
                                 if content_type == "audio":
-                                    planned_instructions = ensure_prompt("short", brief_cfg.get("prompt", ""))
+                                    planned_instructions = build_audio_prompt(
+                                        prompt_type="short",
+                                        prompt_strategy=audio_prompt_strategy,
+                                        exam_focus=exam_focus,
+                                        meta_prompting=meta_prompting,
+                                        custom_prompt=brief_cfg.get("prompt", ""),
+                                        source_item=source_item,
+                                    )
                                     planned_tag = build_output_cfg_tag_token(
                                         content_type=content_type,
                                         language=variant["code"],
@@ -1958,6 +2423,10 @@ def main() -> int:
                                 planned_lines.append(
                                     f"SHORT {content_type.upper()} ({variant['code'] or 'default'}): {planned_path}"
                                 )
+                                if args.print_resolved_prompts and content_type == "audio":
+                                    planned_lines.extend(
+                                        build_prompt_debug_lines(planned_path.name, planned_instructions)
+                                    )
                                 should_skip, _ = should_skip_generation(planned_path, args.skip_existing)
                                 if not should_skip:
                                     missing_outputs += 1
@@ -1981,8 +2450,15 @@ def main() -> int:
                     for variant in language_variants:
                         for quiz_difficulty_value in quiz_difficulty_values(content_type, quiz_difficulty):
                             if content_type == "audio":
-                                instructions = ensure_prompt(
-                                    "weekly_overview", weekly_cfg.get("prompt", "")
+                                instructions = build_audio_prompt(
+                                    prompt_type="weekly_readings_only",
+                                    prompt_strategy=audio_prompt_strategy,
+                                    exam_focus=exam_focus,
+                                    meta_prompting=meta_prompting,
+                                    custom_prompt=weekly_cfg.get("prompt", ""),
+                                    source_items=reading_sources,
+                                    week_dir=week_dir,
+                                    week_label=week_label,
                                 )
                                 audio_format = weekly_cfg.get("format", "deep-dive")
                                 audio_length = weekly_cfg.get("length", "long")
@@ -2042,6 +2518,9 @@ def main() -> int:
                                 if args.print_skips:
                                     print(f"Skipping generation ({reason}): {output_path}")
                                 continue
+                            if args.print_resolved_prompts and content_type == "audio":
+                                for line in build_prompt_debug_lines(output_path.name, instructions):
+                                    print(line)
                             exclude_profiles = (
                                 active_cooldowns(profile_cooldowns)
                                 if rotation_enabled and args.profile_cooldown > 0
@@ -2124,6 +2603,9 @@ def main() -> int:
                                     per_reading_cfg=per_cfg,
                                     per_slide_cfg=per_slide_cfg,
                                     per_slide_overrides=per_slide_overrides,
+                                    prompt_strategy=audio_prompt_strategy,
+                                    exam_focus=exam_focus,
+                                    meta_prompting=meta_prompting,
                                 )
                                 infographic_orientation = None
                                 infographic_detail = None
@@ -2197,6 +2679,9 @@ def main() -> int:
                                 if args.print_skips:
                                     print(f"Skipping generation ({reason}): {output_path}")
                                 continue
+                            if args.print_resolved_prompts and content_type == "audio":
+                                for line in build_prompt_debug_lines(output_path.name, instructions):
+                                    print(line)
                             exclude_profiles = (
                                 active_cooldowns(profile_cooldowns)
                                 if rotation_enabled and args.profile_cooldown > 0
@@ -2270,7 +2755,14 @@ def main() -> int:
                         for variant in language_variants:
                             for quiz_difficulty_value in quiz_difficulty_values(content_type, quiz_difficulty):
                                 if content_type == "audio":
-                                    instructions = ensure_prompt("short", brief_cfg.get("prompt", ""))
+                                    instructions = build_audio_prompt(
+                                        prompt_type="short",
+                                        prompt_strategy=audio_prompt_strategy,
+                                        exam_focus=exam_focus,
+                                        meta_prompting=meta_prompting,
+                                        custom_prompt=brief_cfg.get("prompt", ""),
+                                        source_item=source_item,
+                                    )
                                     audio_format = brief_cfg.get("format", "deep-dive")
                                     audio_length = brief_cfg.get("length", "long")
                                     infographic_orientation = None
@@ -2329,6 +2821,9 @@ def main() -> int:
                                     if args.print_skips:
                                         print(f"Skipping generation ({reason}): {output_path}")
                                     continue
+                                if args.print_resolved_prompts and content_type == "audio":
+                                    for line in build_prompt_debug_lines(output_path.name, instructions):
+                                        print(line)
                                 exclude_profiles = (
                                     active_cooldowns(profile_cooldowns)
                                     if rotation_enabled and args.profile_cooldown > 0

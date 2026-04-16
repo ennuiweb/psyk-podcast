@@ -11,17 +11,17 @@
 - Weekly overview: **"Alle kilder"** episode per week.
   - Format: `deep-dive`
   - Length: `long`
-  - Prompt: from `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json`
+  - Prompt: built from `audio_prompt_strategy.prompt_types.weekly_readings_only` + `exam_focus.prompt_types.weekly_readings_only` + `meta_prompting` + `weekly_overview.prompt` in `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json`
   - Language: from `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json`
 - Per-reading episode: one per reading in each week folder.
   - Format: `deep-dive`
   - Length: `default`
-  - Prompt: from `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json`
+  - Prompt: built from `audio_prompt_strategy.prompt_types.single_reading` + `exam_focus.prompt_types.single_reading` + `meta_prompting` + `per_reading.prompt` in `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json`
   - Language: from `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json`
 - Short variants: all readings and lecture slides get an extra short version.
   - Format: `deep-dive`
   - Length: `short`
-  - Prompt: from `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json`
+  - Prompt: built from `audio_prompt_strategy.prompt_types.short` + `exam_focus.prompt_types.short` + `meta_prompting` + `short.prompt` in `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json`
   - Language: from `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json`
   - Source filename marker: `[Short]`
 - Infographics: generated when `--content-types` includes `infographic`.

@@ -7,12 +7,26 @@ from django.contrib.auth.models import User
 from django.core import mail
 from django.test import TestCase, override_settings
 
+from quizzes.activity_notifications import notify_new_user_created
+from quizzes.models import UserNotificationPreference
+
 
 @override_settings(
     EMAIL_BACKEND="django.core.mail.backends.locmem.EmailBackend",
     DEFAULT_FROM_EMAIL="noreply@test.freudd.dk",
 )
 class NewUserNotificationTests(TestCase):
+    @override_settings(FREUDD_NEW_USER_NOTIFY_EMAIL="admin@tjekdepot.dk")
+    def test_new_users_start_with_activity_notifications_enabled(self) -> None:
+        user = User.objects.create_user(
+            username="new-user",
+            email="new-user@example.com",
+            password="Secret123!!",
+        )
+
+        preference = UserNotificationPreference.objects.get(user=user)
+        self.assertTrue(preference.activity_notifications_enabled)
+
     @override_settings(
         FREUDD_ACTIVITY_NOTIFY_EMAILS=["legacy-alerts@tjekdepot.dk"],
         FREUDD_NEW_USER_NOTIFY_EMAIL="admin@tjekdepot.dk",
@@ -82,6 +96,21 @@ class NewUserNotificationTests(TestCase):
         user.save(update_fields=["email"])
 
         self.assertEqual(len(mail.outbox), 1)
+
+    @override_settings(FREUDD_NEW_USER_NOTIFY_EMAIL="admin@tjekdepot.dk")
+    def test_disabled_user_preference_blocks_notification_email(self) -> None:
+        user = User.objects.create_user(
+            username="new-user",
+            email="new-user@example.com",
+            password="Secret123!!",
+        )
+        UserNotificationPreference.objects.filter(user=user).update(activity_notifications_enabled=False)
+        mail.outbox.clear()
+
+        sent = notify_new_user_created(user=user)
+
+        self.assertFalse(sent)
+        self.assertEqual(len(mail.outbox), 0)
 
     @override_settings(FREUDD_NEW_USER_NOTIFY_EMAIL="admin@tjekdepot.dk")
     @patch.dict(

@@ -35,6 +35,7 @@ from quizzes.models import (
     UserGamificationProfile,
     UserLectureProgress,
     UserLeaderboardProfile,
+    UserNotificationPreference,
     UserPodcastMark,
     UserReadingMark,
     UserReadingProgress,
@@ -4652,6 +4653,26 @@ class QuizPortalTests(TestCase):
         message = mail.outbox[0]
         self.assertEqual(message.subject, "Freudd activity: Subject enrolled")
         self.assertIn("subject_slug: personlighedspsykologi", message.body)
+
+    @override_settings(
+        EMAIL_BACKEND="django.core.mail.backends.locmem.EmailBackend",
+        DEFAULT_FROM_EMAIL="noreply@test.freudd.dk",
+        FREUDD_NEW_USER_NOTIFY_EMAIL="alerts@test.freudd.dk",
+        FREUDD_ACTIVITY_NOTIFY_EVENTS=["subject_enrolled"],
+    )
+    def test_subject_enroll_notification_skips_existing_users(self) -> None:
+        user = self._create_user()
+        UserNotificationPreference.objects.filter(user=user).update(activity_notifications_enabled=False)
+        self.client.force_login(user)
+        mail.outbox.clear()
+
+        enroll_url = reverse("subject-enroll", kwargs={"subject_slug": "personlighedspsykologi"})
+
+        with self.captureOnCommitCallbacks(execute=True):
+            response = self.client.post(enroll_url, {"next": reverse("progress")})
+
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(len(mail.outbox), 0)
 
     @override_settings(
         EMAIL_BACKEND="django.core.mail.backends.locmem.EmailBackend",

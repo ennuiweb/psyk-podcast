@@ -4,6 +4,7 @@ from .models import (
     QuizProgress,
     SubjectEnrollment,
     UserInterfacePreference,
+    UserNotificationPreference,
     UserLeaderboardProfile,
     UserPodcastMark,
     UserReadingMark,
@@ -38,6 +39,13 @@ class UserInterfacePreferenceAdmin(admin.ModelAdmin):
     list_display = ("id", "user", "design_system", "updated_at")
     search_fields = ("user__username", "user__email", "design_system")
     list_filter = ("design_system", "updated_at")
+
+
+@admin.register(UserNotificationPreference)
+class UserNotificationPreferenceAdmin(admin.ModelAdmin):
+    list_display = ("id", "user", "activity_notifications_enabled", "updated_at")
+    search_fields = ("user__username", "user__email")
+    list_filter = ("activity_notifications_enabled", "updated_at")
 
 
 @admin.register(UserReadingMark)

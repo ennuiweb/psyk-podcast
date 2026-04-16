@@ -100,6 +100,16 @@ class UserInterfacePreference(models.Model):
         return f"{self.user_id}:{self.design_system}"
 
 
+class UserNotificationPreference(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    activity_notifications_enabled = models.BooleanField(default=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self) -> str:
+        state = "on" if self.activity_notifications_enabled else "off"
+        return f"{self.user_id}:activity:{state}"
+
+
 class UserGamificationProfile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     xp_total = models.PositiveIntegerField(default=0)

@@ -11,6 +11,7 @@ from django.core.mail import send_mail
 from django.http import HttpRequest
 from django.utils import timezone
 
+from .models import UserNotificationPreference
 from .rate_limit import get_client_ip
 
 logger = logging.getLogger(__name__)
@@ -89,6 +90,28 @@ def _activity_event_keys() -> set[str]:
 
 def _activity_enabled(event_key: str) -> bool:
     return event_key in _activity_event_keys()
+
+
+def _authenticated_actor(*, request: HttpRequest | None, user: object | None) -> object | None:
+    for candidate in (user, getattr(request, "user", None)):
+        if candidate is None:
+            continue
+        if not bool(getattr(candidate, "is_authenticated", False)):
+            continue
+        if getattr(candidate, "id", None) is None:
+            continue
+        return candidate
+    return None
+
+
+def _activity_notifications_enabled_for_actor(*, request: HttpRequest | None, user: object | None) -> bool:
+    actor = _authenticated_actor(request=request, user=user)
+    if actor is None:
+        return True
+    return UserNotificationPreference.objects.filter(
+        user_id=actor.id,
+        activity_notifications_enabled=True,
+    ).exists()
 
 
 def send_notification_email(*, recipient_list: Sequence[str], subject: str, body: str) -> bool:
@@ -204,6 +227,8 @@ def notify_activity(
     if event_key not in EVENT_LABELS:
         raise ValueError(f"Unsupported activity event: {event_key}")
     if not _activity_enabled(event_key):
+        return False
+    if not _activity_notifications_enabled_for_actor(request=request, user=user):
         return False
 
     recipients = _activity_recipient_list()

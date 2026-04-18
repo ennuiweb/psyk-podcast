@@ -1122,6 +1122,7 @@ def generate_meta_prompt_markdown(
         course_title=course_title,
         meta_prompting=meta_prompting,
     )
+    rate_limit_error = getattr(anthropic_module, "RateLimitError", None)
     for attempt in range(2):
         try:
             message = client.messages.create(
@@ -1139,12 +1140,14 @@ def generate_meta_prompt_markdown(
             if not content:
                 raise RuntimeError(f"empty response while generating meta prompt for {job.label}")
             return content
-        except getattr(anthropic_module, "RateLimitError") as exc:
-            if attempt == 0:
-                print("Meta prompt generation hit an Anthropic rate limit; waiting 60s before retrying.")
-                time.sleep(60)
-                continue
-            raise RuntimeError(f"rate-limited while generating meta prompt for {job.label}") from exc
+        except Exception as exc:
+            if rate_limit_error and isinstance(exc, rate_limit_error):
+                if attempt == 0:
+                    print("Meta prompt generation hit an Anthropic rate limit; waiting 60s before retrying.")
+                    time.sleep(60)
+                    continue
+                raise RuntimeError(f"rate-limited while generating meta prompt for {job.label}") from exc
+            raise RuntimeError(f"meta prompt generation failed for {job.label}: {exc}") from exc
 
 
 def build_auto_meta_prompt_jobs(
@@ -1240,8 +1243,9 @@ def prepare_auto_meta_prompt_overrides(
                 continue
             raise SystemExit(f"automatic meta-prompting failed for {job.label}: {exc}") from exc
 
-        overrides[job.output_path] = content
-        if not dry_run:
+        if dry_run:
+            overrides[job.output_path] = content
+        else:
             try:
                 job.output_path.write_text(content.rstrip() + "\n", encoding="utf-8")
             except OSError as exc:
@@ -1253,6 +1257,7 @@ def prepare_auto_meta_prompt_overrides(
                 raise SystemExit(
                     f"automatic meta-prompting could not write {job.output_path}: {exc}"
                 ) from exc
+            overrides[job.output_path] = content
         status = "META WOULD GENERATE" if dry_run else "META GENERATED"
         messages.append(f"{status}: {job.output_path}")
     return overrides, messages

@@ -91,7 +91,7 @@ python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_week.py 
   - Sidecars are excluded from the source inventory, so they are never uploaded to NotebookLM as course materials.
   - `meta_prompting.automatic` can fill in missing sidecars automatically with Anthropic before audio generation. Existing sidecars still win; automation only fills gaps.
   - Automatic mode needs `ANTHROPIC_API_KEY` plus the `anthropic` and `pypdf` packages from `requirements.txt`.
-  - Dry runs still resolve automatic meta notes in memory so prompt hashes and `--print-resolved-prompts` match the real run, but they do not write sidecar files.
+  - Dry runs can resolve automatic meta notes in memory so you can inspect likely resolved prompts with `--print-resolved-prompts`, but they do not write sidecar files and a later real run may still differ unless you materialize a sidecar first.
   - Standalone helper: `python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_meta_prompts.py --prompt-type single_reading --reading-source /path/to/Foucault.pdf --output /tmp/Foucault.analysis.md --dry-run`
 - Use `--print-resolved-prompts` together with `--dry-run` when you want to inspect the fully assembled audio prompt before generation.
 - Find stable slide keys in `shows/personlighedspsykologi-en/slides_catalog.json`.

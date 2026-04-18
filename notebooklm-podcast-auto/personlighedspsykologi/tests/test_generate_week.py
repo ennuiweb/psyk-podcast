@@ -529,6 +529,116 @@ class GenerateWeekTests(unittest.TestCase):
             self.assertFalse((week_dir / "Foucault.analysis.md").exists())
             self.assertTrue(any(line.startswith("META WOULD GENERATE:") for line in lines))
 
+    def test_generate_meta_prompt_markdown_wraps_non_rate_limit_errors(self):
+        mod = _load_module()
+        job = mod.MetaPromptJob(
+            prompt_type="single_reading",
+            output_path=Path("/tmp/Foucault.analysis.md"),
+            label="Foucault",
+            source_items=(
+                mod.SourceItem(
+                    path=Path("/tmp/Foucault.pdf"),
+                    base_name="Foucault",
+                    source_type="reading",
+                ),
+            ),
+        )
+
+        fake_client = mock.Mock()
+        fake_client.messages.create.side_effect = ValueError("boom")
+        with mock.patch.object(
+            mod,
+            "_build_meta_prompt_request",
+            return_value=("system", "user"),
+        ):
+            with self.assertRaises(RuntimeError) as ctx:
+                mod.generate_meta_prompt_markdown(
+                    job=job,
+                    course_title="Personlighedspsykologi",
+                    meta_prompting=mod.normalize_meta_prompting({"automatic": {"enabled": True}}),
+                    client=fake_client,
+                    anthropic_module=object(),
+                )
+
+        self.assertIn("meta prompt generation failed for Foucault", str(ctx.exception))
+
+    def test_prepare_auto_meta_prompt_overrides_fail_open_on_generic_generation_error(self):
+        mod = _load_module()
+        with tempfile.TemporaryDirectory() as tmpdir:
+            week_dir = Path(tmpdir) / "W01L1"
+            week_dir.mkdir(parents=True, exist_ok=True)
+            reading_path = week_dir / "Foucault.pdf"
+            _touch(reading_path)
+            reading_item = mod.SourceItem(
+                path=reading_path,
+                base_name="Foucault",
+                source_type="reading",
+            )
+
+            with mock.patch.object(
+                mod,
+                "_anthropic_client_for_meta_prompting",
+                return_value=(object(), object()),
+            ), mock.patch.object(
+                mod,
+                "generate_meta_prompt_markdown",
+                side_effect=RuntimeError("network exploded"),
+            ):
+                overrides, lines = mod.prepare_auto_meta_prompt_overrides(
+                    course_title="Personlighedspsykologi",
+                    week_dir=week_dir,
+                    week_label="W01L1",
+                    reading_sources=[reading_item],
+                    generation_sources=[reading_item],
+                    generate_weekly_overview=False,
+                    meta_prompting=mod.normalize_meta_prompting({"automatic": {"enabled": True, "fail_open": True}}),
+                    dry_run=False,
+                )
+
+            self.assertEqual(overrides, {})
+            self.assertEqual(lines, [])
+
+    def test_prepare_auto_meta_prompt_overrides_drops_override_when_write_fails(self):
+        mod = _load_module()
+        with tempfile.TemporaryDirectory() as tmpdir:
+            week_dir = Path(tmpdir) / "W01L1"
+            week_dir.mkdir(parents=True, exist_ok=True)
+            reading_path = week_dir / "Foucault.pdf"
+            _touch(reading_path)
+            reading_item = mod.SourceItem(
+                path=reading_path,
+                base_name="Foucault",
+                source_type="reading",
+            )
+
+            with mock.patch.object(
+                mod,
+                "_anthropic_client_for_meta_prompting",
+                return_value=(object(), object()),
+            ), mock.patch.object(
+                mod,
+                "generate_meta_prompt_markdown",
+                return_value="## Core distinctions\n- Focus on subject formation.",
+            ), mock.patch.object(
+                Path,
+                "write_text",
+                side_effect=OSError("disk full"),
+            ):
+                overrides, lines = mod.prepare_auto_meta_prompt_overrides(
+                    course_title="Personlighedspsykologi",
+                    week_dir=week_dir,
+                    week_label="W01L1",
+                    reading_sources=[reading_item],
+                    generation_sources=[reading_item],
+                    generate_weekly_overview=False,
+                    meta_prompting=mod.normalize_meta_prompting({"automatic": {"enabled": True, "fail_open": True}}),
+                    dry_run=False,
+                )
+
+            self.assertEqual(overrides, {})
+            self.assertEqual(lines, [])
+            self.assertFalse((week_dir / "Foucault.analysis.md").exists())
+
     def test_cleanup_disallowed_slide_outputs_removes_seminar_artifacts(self):
         mod = _load_module()
         with tempfile.TemporaryDirectory() as tmpdir:

@@ -61,6 +61,7 @@ AUDIO_FORMAT_VALUES = {"deep-dive", "brief", "critique", "debate"}
 AUDIO_LENGTH_VALUES = {"short", "default", "long"}
 PER_SLIDE_OVERRIDE_KEYS = {"format", "length", "prompt"}
 SLIDE_AUDIO_QUARANTINE_ROOT = Path(".ai/quarantine/slide-audio-overrides")
+TEXT_SOURCE_EXTENSIONS = {".txt", ".md", ".markdown", ".html", ".htm", ".json", ".csv"}
 PROMPT_SIDECAR_SUFFIXES = (
     ".prompt.md",
     ".prompt.txt",
@@ -178,7 +179,18 @@ DEFAULT_META_PROMPTING = {
     "heading": "External pre-analysis to integrate if useful:",
     "per_source_suffixes": list(PROMPT_SIDECAR_SUFFIXES),
     "weekly_sidecars": list(WEEK_PROMPT_SIDECAR_NAMES),
+    "automatic": {
+        "enabled": False,
+        "model": "claude-sonnet-4-6",
+        "fail_open": True,
+        "default_per_source_output_suffix": ".analysis.md",
+        "default_weekly_output_name": "week.analysis.md",
+        "max_chars_per_source": 12000,
+        "max_total_chars": 24000,
+    },
 }
+META_PROMPT_MAX_RESPONSE_TOKENS = 1400
+META_PROMPT_WARNING_MESSAGES: set[str] = set()
 
 
 class SourceItem(NamedTuple):
@@ -187,6 +199,14 @@ class SourceItem(NamedTuple):
     source_type: str
     slide_key: str | None = None
     slide_subcategory: str | None = None
+
+
+class MetaPromptJob(NamedTuple):
+    prompt_type: str
+    output_path: Path
+    label: str
+    source_items: tuple[SourceItem, ...]
+    week_label: str | None = None
 
 
 def default_output_root() -> str:
@@ -506,6 +526,7 @@ def per_source_audio_settings(
     prompt_strategy: dict | None = None,
     exam_focus: dict | None = None,
     meta_prompting: dict | None = None,
+    meta_note_overrides: dict[Path, str] | None = None,
 ) -> tuple[str, str, str, str]:
     if source_item.source_type == "slide":
         slide_cfg = {
@@ -528,6 +549,7 @@ def per_source_audio_settings(
                 prompt_strategy=prompt_strategy,
                 exam_focus=exam_focus,
                 meta_prompting=meta_prompting,
+                meta_note_overrides=meta_note_overrides,
                 custom_prompt=slide_cfg.get("prompt", ""),
                 source_item=source_item,
             ),
@@ -541,6 +563,7 @@ def per_source_audio_settings(
             prompt_strategy=prompt_strategy,
             exam_focus=exam_focus,
             meta_prompting=meta_prompting,
+            meta_note_overrides=meta_note_overrides,
             custom_prompt=per_reading_cfg.get("prompt", ""),
             source_item=source_item,
         ),
@@ -776,6 +799,53 @@ def normalize_meta_prompting(raw: object) -> dict:
             "weekly_sidecars",
             raw["weekly_sidecars"],
         )
+    if "automatic" in raw:
+        automatic = raw["automatic"]
+        if not isinstance(automatic, dict):
+            raise SystemExit("meta_prompting.automatic must be an object.")
+        for field in ("enabled", "fail_open"):
+            if field not in automatic:
+                continue
+            if not isinstance(automatic[field], bool):
+                raise SystemExit(f"meta_prompting.automatic.{field} must be true or false.")
+            normalized["automatic"][field] = automatic[field]
+        for field in ("model", "default_per_source_output_suffix", "default_weekly_output_name"):
+            if field not in automatic:
+                continue
+            value = automatic[field]
+            if not isinstance(value, str):
+                raise SystemExit(f"meta_prompting.automatic.{field} must be a string.")
+            stripped = value.strip()
+            if stripped:
+                normalized["automatic"][field] = stripped
+        for field in ("max_chars_per_source", "max_total_chars"):
+            if field not in automatic:
+                continue
+            value = automatic[field]
+            if not isinstance(value, int) or value < 1:
+                raise SystemExit(f"meta_prompting.automatic.{field} must be an integer >= 1.")
+            normalized["automatic"][field] = value
+
+    auto = normalized["automatic"]
+    source_suffix = str(auto["default_per_source_output_suffix"]).strip()
+    if not source_suffix.startswith("."):
+        raise SystemExit(
+            "meta_prompting.automatic.default_per_source_output_suffix must start with '.'."
+        )
+    weekly_name = str(auto["default_weekly_output_name"]).strip()
+    if "/" in weekly_name or "\\" in weekly_name:
+        raise SystemExit(
+            "meta_prompting.automatic.default_weekly_output_name must be a plain filename."
+        )
+
+    per_source_suffixes = list(dict.fromkeys(normalized["per_source_suffixes"]))
+    weekly_sidecars = list(dict.fromkeys(normalized["weekly_sidecars"]))
+    if source_suffix not in per_source_suffixes:
+        per_source_suffixes.append(source_suffix)
+    if weekly_name not in weekly_sidecars:
+        weekly_sidecars.append(weekly_name)
+    normalized["per_source_suffixes"] = per_source_suffixes
+    normalized["weekly_sidecars"] = weekly_sidecars
     return normalized
 
 
@@ -820,19 +890,372 @@ def _week_prompt_sidecar_candidates(week_dir: Path, week_label: str | None, meta
     return candidates
 
 
-def _read_prompt_sidecars(candidates: list[Path]) -> str:
+def _warn_meta_prompt_once(message: str) -> None:
+    if message in META_PROMPT_WARNING_MESSAGES:
+        return
+    META_PROMPT_WARNING_MESSAGES.add(message)
+    print(f"Warning: {message}")
+
+
+def _canonical_source_sidecar_path(source_path: Path, meta_prompting: dict) -> Path:
+    suffix = str(meta_prompting["automatic"]["default_per_source_output_suffix"]).strip()
+    stem_base = source_path.with_suffix("")
+    return stem_base.parent / f"{stem_base.name}{suffix}"
+
+
+def _canonical_week_sidecar_path(week_dir: Path, meta_prompting: dict) -> Path:
+    filename = str(meta_prompting["automatic"]["default_weekly_output_name"]).strip()
+    return week_dir / filename
+
+
+def _read_prompt_sidecars(
+    candidates: list[Path],
+    meta_note_overrides: dict[Path, str] | None = None,
+) -> str:
     sections: list[str] = []
     for path in candidates:
-        if not path.exists() or not path.is_file():
-            continue
-        try:
-            content = path.read_text(encoding="utf-8").strip()
-        except OSError:
-            continue
+        if meta_note_overrides and path in meta_note_overrides:
+            content = str(meta_note_overrides[path]).strip()
+        else:
+            if not path.exists() or not path.is_file():
+                continue
+            try:
+                content = path.read_text(encoding="utf-8").strip()
+            except OSError:
+                continue
         if not content:
             continue
         sections.append(f"[{path.name}]\n{content}")
     return "\n\n".join(sections)
+
+
+def _strip_markdown_fence(text: str) -> str:
+    stripped = text.strip()
+    if stripped.startswith("```"):
+        parts = stripped.split("\n", 1)
+        if len(parts) == 2:
+            stripped = parts[1]
+        stripped = stripped.rsplit("```", 1)[0].strip()
+    return stripped
+
+
+def _extract_pdf_text_for_meta_prompt(path: Path, max_chars: int) -> str | None:
+    try:
+        from pypdf import PdfReader
+    except ImportError as exc:
+        raise RuntimeError("pypdf package not installed — pip install pypdf") from exc
+
+    try:
+        reader = PdfReader(str(path))
+        pages: list[str] = []
+        total_chars = 0
+        for page in reader.pages:
+            page_text = (page.extract_text() or "").strip()
+            if not page_text:
+                continue
+            pages.append(page_text)
+            total_chars += len(page_text)
+            if total_chars >= max_chars:
+                break
+    except Exception as exc:
+        raise RuntimeError(f"failed to extract PDF text from {path.name}: {exc}") from exc
+
+    if not pages:
+        return None
+    text = "\n\n".join(pages).strip()
+    if len(text) > max_chars:
+        text = text[:max_chars].rstrip() + "\n[...truncated...]"
+    return text
+
+
+def _extract_text_file_for_meta_prompt(path: Path, max_chars: int) -> str | None:
+    try:
+        text = path.read_text(encoding="utf-8").strip()
+    except (OSError, UnicodeDecodeError) as exc:
+        raise RuntimeError(f"failed to read text from {path.name}: {exc}") from exc
+    if not text:
+        return None
+    if len(text) > max_chars:
+        text = text[:max_chars].rstrip() + "\n[...truncated...]"
+    return text
+
+
+def _extract_source_excerpt_for_meta_prompt(path: Path, max_chars: int) -> str | None:
+    suffix = path.suffix.lower()
+    if suffix == ".pdf":
+        return _extract_pdf_text_for_meta_prompt(path, max_chars)
+    if suffix in TEXT_SOURCE_EXTENSIONS:
+        return _extract_text_file_for_meta_prompt(path, max_chars)
+    return _extract_text_file_for_meta_prompt(path, max_chars)
+
+
+def _meta_prompt_sections(prompt_type: str) -> tuple[str, list[str]]:
+    if prompt_type == "single_slide":
+        return (
+            "The source is a slide deck. Reconstruct the lecture logic rather than paraphrasing bullet points.",
+            [
+                "## Lecture logic",
+                "## Exam-relevant distinctions",
+                "## Likely simplifications or gaps",
+                "## What should be evaluated critically",
+            ],
+        )
+    if prompt_type == "weekly_readings_only":
+        return (
+            "The sources belong to one lecture block and should be read together.",
+            [
+                "## Shared problem",
+                "## Cross-reading distinctions and tensions",
+                "## Likely misunderstandings",
+                "## Exam-relevant evaluation points",
+            ],
+        )
+    if prompt_type == "mixed_sources":
+        return (
+            "The sources mix slides and readings. Use slides for structure and readings for nuance and argument depth.",
+            [
+                "## Lecture frame",
+                "## Distinctions and tensions across source types",
+                "## Likely misunderstandings",
+                "## Exam-relevant evaluation points",
+            ],
+        )
+    return (
+        "The source is a reading. Prioritize distinctions, argument structure, and what a student is likely to get wrong.",
+        [
+            "## Core distinctions",
+            "## Tensions, corrections, or qualifications",
+            "## Likely misunderstandings",
+            "## Exam-relevant analytical moves",
+        ],
+    )
+
+
+def _build_meta_prompt_source_payload(job: MetaPromptJob, meta_prompting: dict) -> str:
+    automatic = meta_prompting["automatic"]
+    max_chars_per_source = int(automatic["max_chars_per_source"])
+    max_total_chars = int(automatic["max_total_chars"])
+    sections: list[str] = []
+    total_chars = 0
+
+    for source_item in job.source_items:
+        excerpt = _extract_source_excerpt_for_meta_prompt(source_item.path, max_chars_per_source)
+        if not excerpt:
+            continue
+        remaining = max_total_chars - total_chars
+        if remaining <= 0:
+            break
+        if len(excerpt) > remaining:
+            excerpt = excerpt[:remaining].rstrip() + "\n[...truncated...]"
+        total_chars += len(excerpt)
+        sections.append(
+            "\n".join(
+                [
+                    f"### Source: {source_item.base_name}",
+                    f"- type: {source_item.source_type}",
+                    f"- filename: {source_item.path.name}",
+                    "",
+                    excerpt,
+                ]
+            )
+        )
+
+    if not sections:
+        raise RuntimeError(f"no extractable text found for {job.label}")
+    return "\n\n".join(sections)
+
+
+def _build_meta_prompt_request(
+    *,
+    job: MetaPromptJob,
+    course_title: str,
+    meta_prompting: dict,
+) -> tuple[str, str]:
+    scenario_instruction, section_headings = _meta_prompt_sections(job.prompt_type)
+    source_payload = _build_meta_prompt_source_payload(job, meta_prompting)
+    system_prompt = (
+        "You write concise Markdown pre-analysis notes for a NotebookLM deep-dive audio prompt. "
+        "Do not summarize mechanically. Surface distinctions, tensions, corrections, misunderstandings, "
+        "and exam-relevant analytical moves. Return Markdown only, with the requested headings and short bullets."
+    )
+    user_prompt = "\n".join(
+        [
+            f"Course: {course_title}",
+            f"Scenario: {job.prompt_type}",
+            f"Label: {job.label}",
+            scenario_instruction,
+            "",
+            "Write a short analysis note that will steer NotebookLM away from generic summarization.",
+            "Under each heading, use 2-4 concrete bullets grounded in the supplied material.",
+            "Do not add any preamble or conclusion outside the headings.",
+            "",
+            "Use exactly these headings:",
+            "\n".join(section_headings),
+            "",
+            "Source material excerpt(s):",
+            source_payload,
+        ]
+    )
+    return system_prompt, user_prompt
+
+
+def _anthropic_client_for_meta_prompting() -> tuple[object, object]:
+    if not os.environ.get("ANTHROPIC_API_KEY"):
+        raise RuntimeError("ANTHROPIC_API_KEY is not set")
+    try:
+        import anthropic
+    except ImportError as exc:
+        raise RuntimeError("anthropic package not installed — pip install anthropic") from exc
+    return anthropic.Anthropic(), anthropic
+
+
+def generate_meta_prompt_markdown(
+    *,
+    job: MetaPromptJob,
+    course_title: str,
+    meta_prompting: dict,
+    client: object,
+    anthropic_module: object,
+) -> str:
+    system_prompt, user_prompt = _build_meta_prompt_request(
+        job=job,
+        course_title=course_title,
+        meta_prompting=meta_prompting,
+    )
+    for attempt in range(2):
+        try:
+            message = client.messages.create(
+                model=str(meta_prompting["automatic"]["model"]).strip(),
+                max_tokens=META_PROMPT_MAX_RESPONSE_TOKENS,
+                system=system_prompt,
+                messages=[{"role": "user", "content": user_prompt}],
+            )
+            parts = [
+                getattr(part, "text", "")
+                for part in getattr(message, "content", [])
+                if getattr(part, "type", "") == "text"
+            ]
+            content = _strip_markdown_fence("\n".join(parts).strip())
+            if not content:
+                raise RuntimeError(f"empty response while generating meta prompt for {job.label}")
+            return content
+        except getattr(anthropic_module, "RateLimitError") as exc:
+            if attempt == 0:
+                print("Meta prompt generation hit an Anthropic rate limit; waiting 60s before retrying.")
+                time.sleep(60)
+                continue
+            raise RuntimeError(f"rate-limited while generating meta prompt for {job.label}") from exc
+
+
+def build_auto_meta_prompt_jobs(
+    *,
+    week_dir: Path,
+    week_label: str,
+    reading_sources: list[SourceItem],
+    generation_sources: list[SourceItem],
+    generate_weekly_overview: bool,
+    meta_prompting: dict,
+) -> list[MetaPromptJob]:
+    if not meta_prompting.get("enabled", False):
+        return []
+    automatic = meta_prompting.get("automatic") or {}
+    if not automatic.get("enabled", False):
+        return []
+
+    jobs: list[MetaPromptJob] = []
+    if generate_weekly_overview and reading_sources:
+        candidates = _week_prompt_sidecar_candidates(week_dir, week_label, meta_prompting)
+        if not any(path.exists() and path.is_file() for path in candidates):
+            jobs.append(
+                MetaPromptJob(
+                    prompt_type="weekly_readings_only",
+                    output_path=_canonical_week_sidecar_path(week_dir, meta_prompting),
+                    label=f"{week_label} weekly overview",
+                    source_items=tuple(reading_sources),
+                    week_label=week_label,
+                )
+            )
+
+    for source_item in generation_sources:
+        candidates = _source_prompt_sidecar_candidates(source_item.path, meta_prompting)
+        if any(path.exists() and path.is_file() for path in candidates):
+            continue
+        jobs.append(
+            MetaPromptJob(
+                prompt_type="single_slide" if source_item.source_type == "slide" else "single_reading",
+                output_path=_canonical_source_sidecar_path(source_item.path, meta_prompting),
+                label=source_item.base_name,
+                source_items=(source_item,),
+                week_label=week_label,
+            )
+        )
+    return jobs
+
+
+def prepare_auto_meta_prompt_overrides(
+    *,
+    course_title: str,
+    week_dir: Path,
+    week_label: str,
+    reading_sources: list[SourceItem],
+    generation_sources: list[SourceItem],
+    generate_weekly_overview: bool,
+    meta_prompting: dict,
+    dry_run: bool,
+) -> tuple[dict[Path, str], list[str]]:
+    jobs = build_auto_meta_prompt_jobs(
+        week_dir=week_dir,
+        week_label=week_label,
+        reading_sources=reading_sources,
+        generation_sources=generation_sources,
+        generate_weekly_overview=generate_weekly_overview,
+        meta_prompting=meta_prompting,
+    )
+    if not jobs:
+        return {}, []
+
+    automatic = meta_prompting["automatic"]
+    try:
+        client, anthropic_module = _anthropic_client_for_meta_prompting()
+    except RuntimeError as exc:
+        if automatic.get("fail_open", True):
+            _warn_meta_prompt_once(f"automatic meta-prompting is disabled for this run: {exc}")
+            return {}, []
+        raise SystemExit(f"automatic meta-prompting failed before generation: {exc}") from exc
+
+    overrides: dict[Path, str] = {}
+    messages: list[str] = []
+    for job in jobs:
+        try:
+            content = generate_meta_prompt_markdown(
+                job=job,
+                course_title=course_title,
+                meta_prompting=meta_prompting,
+                client=client,
+                anthropic_module=anthropic_module,
+            )
+        except RuntimeError as exc:
+            if automatic.get("fail_open", True):
+                _warn_meta_prompt_once(f"automatic meta-prompting skipped {job.label}: {exc}")
+                continue
+            raise SystemExit(f"automatic meta-prompting failed for {job.label}: {exc}") from exc
+
+        overrides[job.output_path] = content
+        if not dry_run:
+            try:
+                job.output_path.write_text(content.rstrip() + "\n", encoding="utf-8")
+            except OSError as exc:
+                if automatic.get("fail_open", True):
+                    _warn_meta_prompt_once(
+                        f"automatic meta-prompting could not write {job.output_path.name}: {exc}"
+                    )
+                    continue
+                raise SystemExit(
+                    f"automatic meta-prompting could not write {job.output_path}: {exc}"
+                ) from exc
+        status = "META WOULD GENERATE" if dry_run else "META GENERATED"
+        messages.append(f"{status}: {job.output_path}")
+    return overrides, messages
 
 
 def build_prompt_debug_lines(label: str, prompt: str) -> list[str]:
@@ -848,6 +1271,7 @@ def build_audio_prompt(
     prompt_strategy: dict | None,
     exam_focus: dict | None,
     meta_prompting: dict | None,
+    meta_note_overrides: dict[Path, str] | None = None,
     custom_prompt: str,
     source_item: SourceItem | None = None,
     source_items: list[SourceItem] | None = None,
@@ -863,11 +1287,13 @@ def build_audio_prompt(
     if meta_prompting and meta_prompting.get("enabled", False):
         if source_item is not None:
             notes = _read_prompt_sidecars(
-                _source_prompt_sidecar_candidates(source_item.path, meta_prompting)
+                _source_prompt_sidecar_candidates(source_item.path, meta_prompting),
+                meta_note_overrides=meta_note_overrides,
             )
         elif source_items is not None and week_dir is not None:
             notes = _read_prompt_sidecars(
-                _week_prompt_sidecar_candidates(week_dir, week_label, meta_prompting)
+                _week_prompt_sidecar_candidates(week_dir, week_label, meta_prompting),
+                meta_note_overrides=meta_note_overrides,
             )
 
     sections: list[str] = []
@@ -2175,7 +2601,22 @@ def main() -> int:
                         f"(only {reading_source_count} reading source file)"
                     )
 
+            auto_meta_note_overrides, auto_meta_lines = prepare_auto_meta_prompt_overrides(
+                course_title=course_title,
+                week_dir=week_dir,
+                week_label=week_label,
+                reading_sources=reading_sources,
+                generation_sources=generation_sources if "audio" in content_types else [],
+                generate_weekly_overview=generate_weekly_overview and "audio" in content_types,
+                meta_prompting=meta_prompting,
+                dry_run=args.dry_run,
+            )
+            if not args.dry_run:
+                for line in auto_meta_lines:
+                    print(line)
+
             planned_lines: list[str] = []
+            planned_lines.extend(auto_meta_lines)
             missing_outputs = 0
             weekly_base = f"{week_label} - {WEEKLY_OVERVIEW_TITLE}"
             if generate_weekly_overview:
@@ -2189,6 +2630,7 @@ def main() -> int:
                                     prompt_strategy=audio_prompt_strategy,
                                     exam_focus=exam_focus,
                                     meta_prompting=meta_prompting,
+                                    meta_note_overrides=auto_meta_note_overrides,
                                     custom_prompt=weekly_cfg.get("prompt", ""),
                                     source_items=reading_sources,
                                     week_dir=week_dir,
@@ -2278,6 +2720,7 @@ def main() -> int:
                                     prompt_strategy=audio_prompt_strategy,
                                     exam_focus=exam_focus,
                                     meta_prompting=meta_prompting,
+                                    meta_note_overrides=auto_meta_note_overrides,
                                 )
                                 planned_tag = build_output_cfg_tag_token(
                                     content_type=content_type,
@@ -2361,6 +2804,7 @@ def main() -> int:
                                         prompt_strategy=audio_prompt_strategy,
                                         exam_focus=exam_focus,
                                         meta_prompting=meta_prompting,
+                                        meta_note_overrides=auto_meta_note_overrides,
                                         custom_prompt=brief_cfg.get("prompt", ""),
                                         source_item=source_item,
                                     )
@@ -2455,6 +2899,7 @@ def main() -> int:
                                     prompt_strategy=audio_prompt_strategy,
                                     exam_focus=exam_focus,
                                     meta_prompting=meta_prompting,
+                                    meta_note_overrides=auto_meta_note_overrides,
                                     custom_prompt=weekly_cfg.get("prompt", ""),
                                     source_items=reading_sources,
                                     week_dir=week_dir,
@@ -2606,6 +3051,7 @@ def main() -> int:
                                     prompt_strategy=audio_prompt_strategy,
                                     exam_focus=exam_focus,
                                     meta_prompting=meta_prompting,
+                                    meta_note_overrides=auto_meta_note_overrides,
                                 )
                                 infographic_orientation = None
                                 infographic_detail = None
@@ -2760,6 +3206,7 @@ def main() -> int:
                                         prompt_strategy=audio_prompt_strategy,
                                         exam_focus=exam_focus,
                                         meta_prompting=meta_prompting,
+                                        meta_note_overrides=auto_meta_note_overrides,
                                         custom_prompt=brief_cfg.get("prompt", ""),
                                         source_item=source_item,
                                     )

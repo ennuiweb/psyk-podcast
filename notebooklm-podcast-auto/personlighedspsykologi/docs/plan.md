@@ -12,11 +12,13 @@
   - Format: `deep-dive`
   - Length: `long`
   - Prompt: built from `audio_prompt_strategy.prompt_types.weekly_readings_only` + `exam_focus.prompt_types.weekly_readings_only` + `meta_prompting` + `weekly_overview.prompt` in `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json`
+  - Meta prompting: existing week sidecars are used as-is; otherwise `meta_prompting.automatic` can generate `week.analysis.md` before the NotebookLM call.
   - Language: from `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json`
 - Per-reading episode: one per reading in each week folder.
   - Format: `deep-dive`
   - Length: `default`
   - Prompt: built from `audio_prompt_strategy.prompt_types.single_reading` + `exam_focus.prompt_types.single_reading` + `meta_prompting` + `per_reading.prompt` in `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json`
+  - Meta prompting: existing per-source sidecars are used as-is; otherwise `meta_prompting.automatic` can generate `<source>.analysis.md`.
   - Language: from `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json`
 - Short variants: all readings and lecture slides get an extra short version.
   - Format: `deep-dive`
@@ -100,6 +102,7 @@ Generate audio + infographics:
 
 This command:
 - Uses `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json` for prompts/lengths.
+- When `meta_prompting.automatic.enabled=true`, missing sidecars are auto-generated with Anthropic before audio planning/generation.
 - Skips weekly “Alle kilder” when missing readings are listed for that week.
 - Emits MP3s/PNGs to `notebooklm-podcast-auto/personlighedspsykologi/output/W##L#/`.
 - Appends human-readable config tags to artifact filenames: ` {...}` before extension.

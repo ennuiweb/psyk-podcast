@@ -285,6 +285,25 @@ class GenerateWeekTests(unittest.TestCase):
             self.assertIn("External pre-analysis to integrate if useful:", prompt)
             self.assertIn("liberation versus practices of freedom", prompt)
 
+    def test_build_audio_prompt_uses_in_memory_meta_note_overrides(self):
+        mod = _load_module()
+        reading_item = mod.SourceItem(
+            path=Path("/tmp/Foucault.pdf"),
+            base_name="Foucault",
+            source_type="reading",
+        )
+
+        prompt = mod.build_audio_prompt(
+            prompt_type="single_reading",
+            custom_prompt="",
+            source_item=reading_item,
+            meta_note_overrides={Path("/tmp/Foucault.analysis.md"): "Focus on power relations vs domination."},
+            **self._default_prompt_context(mod),
+        )
+
+        self.assertIn("External pre-analysis to integrate if useful:", prompt)
+        self.assertIn("power relations vs domination", prompt)
+
     def test_build_audio_prompt_for_short_uses_short_prompt_type(self):
         mod = _load_module()
         reading_item = mod.SourceItem(
@@ -416,6 +435,99 @@ class GenerateWeekTests(unittest.TestCase):
 
             self.assertEqual([item.base_name for item in reading_sources], ["Foucault"])
             self.assertEqual([item.base_name for item in generation_sources], ["Foucault"])
+
+    def test_normalize_meta_prompting_keeps_automatic_output_names_addressable(self):
+        mod = _load_module()
+
+        normalized = mod.normalize_meta_prompting(
+            {
+                "per_source_suffixes": [".prompt.md"],
+                "weekly_sidecars": ["week.prompt.md"],
+                "automatic": {
+                    "default_per_source_output_suffix": ".analysis.md",
+                    "default_weekly_output_name": "week.analysis.md",
+                },
+            }
+        )
+
+        self.assertIn(".analysis.md", normalized["per_source_suffixes"])
+        self.assertIn("week.analysis.md", normalized["weekly_sidecars"])
+
+    def test_build_auto_meta_prompt_jobs_skips_existing_sidecars(self):
+        mod = _load_module()
+        with tempfile.TemporaryDirectory() as tmpdir:
+            week_dir = Path(tmpdir) / "W01L1"
+            week_dir.mkdir(parents=True, exist_ok=True)
+            reading_path = week_dir / "Foucault.pdf"
+            slide_path = week_dir / "slides.pdf"
+            _touch(reading_path)
+            _touch(slide_path)
+            (week_dir / "Foucault.analysis.md").write_text("manual note", encoding="utf-8")
+
+            reading_item = mod.SourceItem(
+                path=reading_path,
+                base_name="Foucault",
+                source_type="reading",
+            )
+            slide_item = mod.SourceItem(
+                path=slide_path,
+                base_name="Slide lecture: Intro",
+                source_type="slide",
+                slide_subcategory="lecture",
+            )
+
+            jobs = mod.build_auto_meta_prompt_jobs(
+                week_dir=week_dir,
+                week_label="W01L1",
+                reading_sources=[reading_item],
+                generation_sources=[reading_item, slide_item],
+                generate_weekly_overview=True,
+                meta_prompting=mod.normalize_meta_prompting(
+                    {"automatic": {"enabled": True, "default_per_source_output_suffix": ".analysis.md"}}
+                ),
+            )
+
+            self.assertEqual([job.prompt_type for job in jobs], ["weekly_readings_only", "single_slide"])
+            self.assertEqual(jobs[0].output_path, week_dir / "week.analysis.md")
+            self.assertEqual(jobs[1].output_path, week_dir / "slides.analysis.md")
+
+    def test_prepare_auto_meta_prompt_overrides_dry_run_keeps_notes_in_memory(self):
+        mod = _load_module()
+        with tempfile.TemporaryDirectory() as tmpdir:
+            week_dir = Path(tmpdir) / "W01L1"
+            week_dir.mkdir(parents=True, exist_ok=True)
+            reading_path = week_dir / "Foucault.pdf"
+            _touch(reading_path)
+            reading_item = mod.SourceItem(
+                path=reading_path,
+                base_name="Foucault",
+                source_type="reading",
+            )
+
+            with mock.patch.object(
+                mod,
+                "_anthropic_client_for_meta_prompting",
+                return_value=(object(), object()),
+            ), mock.patch.object(
+                mod,
+                "generate_meta_prompt_markdown",
+                return_value="## Core distinctions\n- Focus on subject formation.",
+            ):
+                overrides, lines = mod.prepare_auto_meta_prompt_overrides(
+                    course_title="Personlighedspsykologi",
+                    week_dir=week_dir,
+                    week_label="W01L1",
+                    reading_sources=[reading_item],
+                    generation_sources=[reading_item],
+                    generate_weekly_overview=True,
+                    meta_prompting=mod.normalize_meta_prompting({"automatic": {"enabled": True}}),
+                    dry_run=True,
+                )
+
+            self.assertIn(week_dir / "Foucault.analysis.md", overrides)
+            self.assertIn(week_dir / "week.analysis.md", overrides)
+            self.assertFalse((week_dir / "Foucault.analysis.md").exists())
+            self.assertTrue(any(line.startswith("META WOULD GENERATE:") for line in lines))
 
     def test_cleanup_disallowed_slide_outputs_removes_seminar_artifacts(self):
         mod = _load_module()

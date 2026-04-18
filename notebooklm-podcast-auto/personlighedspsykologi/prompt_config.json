@@ -113,7 +113,16 @@
       "week.prompt.txt",
       "week.analysis.md",
       "week.analysis.txt"
-    ]
+    ],
+    "automatic": {
+      "enabled": true,
+      "model": "claude-sonnet-4-6",
+      "fail_open": true,
+      "default_per_source_output_suffix": ".analysis.md",
+      "default_weekly_output_name": "week.analysis.md",
+      "max_chars_per_source": 12000,
+      "max_total_chars": 24000
+    }
   },
   "weekly_overview": {
     "format": "deep-dive",

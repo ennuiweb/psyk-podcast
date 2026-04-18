@@ -210,7 +210,7 @@ python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/transcribe_episod
 - Rebuild the feed after syncing summaries:
 
 ```bash
-python3 podcast-tools/gdrive_podcast_feed.py --config shows/personlighedspsykologi-en/config.local.json
+python3 podcast-tools/gdrive_podcast_feed.py --config shows/personlighedspsykologi-en/config.github.json
 ```
 
 - Sync behavior:

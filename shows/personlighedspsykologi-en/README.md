@@ -2,8 +2,8 @@
 
 Scaffolding for the "Personlighedspsykologi" feed.
 
-- `config.local.json` - local test run against a Drive folder.
-- `config.github.json` - committed config for CI once secrets exist.
+- `config.github.json` - canonical config for both CI and local runs.
+- `config.local.json` - compatibility copy kept identical to `config.github.json`.
 - `auto_spec.json` - W01-W22 schedule derived from the 2026 forelaesningsplan.
 - `episode_metadata.json` - optional per-file overrides.
 - `reading_summaries.json` - cached per-reading summary + key-points blocks for episode descriptions.
@@ -38,7 +38,7 @@ Reading-summary workflow:
   - `./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/sync_reading_summaries.py --validate-only`
   - `./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/sync_reading_summaries.py --validate-only --validate-weekly`
 - Build feed after sync:
-  - `./notebooklm-podcast-auto/.venv/bin/python podcast-tools/gdrive_podcast_feed.py --config shows/personlighedspsykologi-en/config.local.json`
+  - `./notebooklm-podcast-auto/.venv/bin/python podcast-tools/gdrive_podcast_feed.py --config shows/personlighedspsykologi-en/config.github.json`
 - Sync behavior:
   - uses local audio files (`.mp3`/`.wav`) to discover non-weekly episode keys, including reading, slide, short, and `TTS` variants.
   - excludes `Alle kilder` / `All sources` files from the reading summary inventory.
@@ -84,13 +84,14 @@ Spotify map sync note:
 Reading key sync note:
 - Source of truth file: `/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/.ai/reading-file-key.md`
 - Primary repo mirror used by feed config: `shows/personlighedspsykologi-en/docs/reading-file-key.md`
-- Secondary repo mirror (NotebookLM docs): `notebooklm-podcast-auto/personlighedspsykologi/docs/reading-file-key.md`
 - Sync commands:
   - Dry-run: `python3 scripts/sync_personlighedspsykologi_reading_file_key.py`
   - Apply: `python3 scripts/sync_personlighedspsykologi_reading_file_key.py --apply`
+  - Optional compatibility target: `python3 scripts/sync_personlighedspsykologi_reading_file_key.py --secondary-target <path> --apply`
   - Stable fallback mode is default: if OneDrive source is unavailable, primary repo mirror is used as source.
   - Strict mode (fail when source missing): `python3 scripts/sync_personlighedspsykologi_reading_file_key.py --strict-source --apply`
   - One-time bootstrap source from current repo file: `python3 scripts/sync_personlighedspsykologi_reading_file_key.py --bootstrap-source-from-repo --apply`
+  - Invariant check: `python3 scripts/check_personlighedspsykologi_artifact_invariants.py`
 
 Slides mapping note (manual only):
 - Slide mapping til `W##L#` + underkategori skal udføres manuelt.

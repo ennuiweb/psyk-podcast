@@ -30,7 +30,7 @@ Rules:
 
 ## Files Updated
 - `shows/personlighedspsykologi-en/docs/reading-file-key.md`
-- `notebooklm-podcast-auto/personlighedspsykologi/docs/reading-file-key.md`
+- historical secondary mirror path removed; canonical repo mirror is `shows/personlighedspsykologi-en/docs/reading-file-key.md`
 
 ## Compatibility Verification
 Checked after update:
@@ -53,4 +53,3 @@ Result:
   - Run: `22725417219`
   - URL: `https://github.com/ennuiweb/psyk-podcast/actions/runs/22725417219`
   - Commit: `0dcd02a256ce3d17451c27ec21fe98351f9ecce4`
-

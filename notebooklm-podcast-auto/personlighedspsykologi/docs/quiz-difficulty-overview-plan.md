@@ -81,4 +81,4 @@ PY
 - Coverage check reports equal counts per difficulty.
 - `shows/personlighedspsykologi-en/quiz_links.json` contains multi-difficulty mappings where available.
 - Existing feed generation command still works unchanged:
-  - `python3 podcast-tools/gdrive_podcast_feed.py --config shows/personlighedspsykologi-en/config.local.json`
+  - `python3 podcast-tools/gdrive_podcast_feed.py --config shows/personlighedspsykologi-en/config.github.json`

@@ -13,6 +13,8 @@ readings_sync_on_push="${FREUDD_READINGS_SYNC_ON_PUSH:-1}"
 readings_sync_script="${repo_root}/scripts/sync_personlighedspsykologi_readings_to_droplet.py"
 readings_sync_python="python3"
 output_dir_mirror_script="${repo_root}/scripts/mirror_output_dirs.py"
+artifact_invariants_on_push="${PERSONLIGHEDSPSYKOLOGI_ARTIFACT_INVARIANTS_ON_PUSH:-1}"
+artifact_invariants_script="${repo_root}/scripts/check_personlighedspsykologi_artifact_invariants.py"
 apps_script_push_mode="${APPS_SCRIPT_PUSH_MODE:-}"
 
 if [[ -x "${repo_root}/.venv/bin/python" ]]; then
@@ -107,9 +109,7 @@ if [[ "${reading_key_sync_on_push}" != "0" ]]; then
   if [[ -n "${FREUDD_READING_KEY_SYNC_TARGET:-}" ]]; then
     reading_key_sync_cmd+=(--target "${FREUDD_READING_KEY_SYNC_TARGET}")
   fi
-  if [[ "${FREUDD_READING_KEY_SYNC_NO_SECONDARY_TARGET:-0}" != "0" ]]; then
-    reading_key_sync_cmd+=(--no-secondary-target)
-  elif [[ -n "${FREUDD_READING_KEY_SYNC_SECONDARY_TARGET:-}" ]]; then
+  if [[ -n "${FREUDD_READING_KEY_SYNC_SECONDARY_TARGET:-}" ]]; then
     reading_key_sync_cmd+=(--secondary-target "${FREUDD_READING_KEY_SYNC_SECONDARY_TARGET}")
   fi
 
@@ -119,9 +119,9 @@ if [[ "${reading_key_sync_on_push}" != "0" ]]; then
   fi
 
   reading_key_primary_target="${FREUDD_READING_KEY_SYNC_TARGET:-shows/personlighedspsykologi-en/docs/reading-file-key.md}"
-  reading_key_secondary_target="${FREUDD_READING_KEY_SYNC_SECONDARY_TARGET:-notebooklm-podcast-auto/personlighedspsykologi/docs/reading-file-key.md}"
   reading_key_changed_paths=("${reading_key_primary_target}")
-  if [[ "${FREUDD_READING_KEY_SYNC_NO_SECONDARY_TARGET:-0}" == "0" && "${reading_key_secondary_target}" != "${reading_key_primary_target}" ]]; then
+  reading_key_secondary_target="${FREUDD_READING_KEY_SYNC_SECONDARY_TARGET:-}"
+  if [[ -n "${reading_key_secondary_target}" && "${reading_key_secondary_target}" != "${reading_key_primary_target}" ]]; then
     reading_key_changed_paths+=("${reading_key_secondary_target}")
   fi
   if [[ -n "$(git status --porcelain -- "${reading_key_changed_paths[@]}")" ]]; then
@@ -132,6 +132,29 @@ if [[ "${reading_key_sync_on_push}" != "0" ]]; then
   if [[ -n "${log_file}" ]]; then
     printf '%s %s\n' "$(date +'%Y-%m-%d %H:%M:%S')" \
       "pre-push: OneDrive reading-file-key sync completed" >> "${log_file}"
+  fi
+fi
+
+if [[ "${artifact_invariants_on_push}" != "0" ]]; then
+  echo "pre-push: checking Personlighedspsykologi artifact invariants"
+  if [[ -n "${log_file}" ]]; then
+    printf '%s %s\n' "$(date +'%Y-%m-%d %H:%M:%S')" \
+      "pre-push: checking Personlighedspsykologi artifact invariants" >> "${log_file}"
+  fi
+
+  if [[ ! -f "${artifact_invariants_script}" ]]; then
+    echo "pre-push: artifact invariant check script not found: ${artifact_invariants_script}" >&2
+    exit 1
+  fi
+
+  if ! "${reading_key_sync_python}" "${artifact_invariants_script}"; then
+    echo "pre-push: artifact invariant check failed; aborting push" >&2
+    exit 1
+  fi
+
+  if [[ -n "${log_file}" ]]; then
+    printf '%s %s\n' "$(date +'%Y-%m-%d %H:%M:%S')" \
+      "pre-push: Personlighedspsykologi artifact invariants passed" >> "${log_file}"
   fi
 fi
 

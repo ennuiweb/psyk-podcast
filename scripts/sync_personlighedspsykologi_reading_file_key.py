@@ -11,7 +11,7 @@ DEFAULT_ONEDRIVE_SOURCE = (
     "Mine dokumenter \U0001F4BE/psykologi/Personlighedspsykologi/.ai/reading-file-key.md"
 )
 DEFAULT_PRIMARY_TARGET = "shows/personlighedspsykologi-en/docs/reading-file-key.md"
-DEFAULT_SECONDARY_TARGET = "notebooklm-podcast-auto/personlighedspsykologi/docs/reading-file-key.md"
+DEFAULT_SECONDARY_TARGET = ""
 GRUNDBOG_CHAPTER_BULLET_RE = re.compile(
     r"^(?P<prefix>\s*-\s*)(?P<title>.+?)\s*→\s*"
     r"(?P<source>Grundbog\s+kapitel\s+\d+\s*-\s*[^.]+\.pdf)"
@@ -144,7 +144,10 @@ def main() -> int:
     parser.add_argument(
         "--secondary-target",
         default=DEFAULT_SECONDARY_TARGET,
-        help="Secondary repo mirror target markdown path (relative to repo root unless absolute).",
+        help=(
+            "Optional compatibility mirror target markdown path "
+            "(relative to repo root unless absolute). Disabled by default."
+        ),
     )
     parser.add_argument(
         "--no-secondary-target",

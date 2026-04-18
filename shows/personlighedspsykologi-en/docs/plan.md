@@ -6,7 +6,7 @@
   - Lecture-overview episodes (kind: `weekly_overview`, e.g., "Alle kilder")
   - Per-reading episodes
   - Short `[Short]` variants for some readings
-- Local feed build requires `shows/personlighedspsykologi-en/service-account.json` plus Google dependencies (`google-auth`, `google-api-python-client`); run with `python3 podcast-tools/gdrive_podcast_feed.py --config shows/personlighedspsykologi-en/config.local.json`.
+- Local feed build requires `shows/personlighedspsykologi-en/service-account.json` plus Google dependencies (`google-auth`, `google-api-python-client`); run with `python3 podcast-tools/gdrive_podcast_feed.py --config shows/personlighedspsykologi-en/config.github.json`.
 
 ## Output policy (decisions)
 - Weekly overview kind: **"Alle kilder"** episode per lecture (`W#L#`; two lectures per week).
@@ -80,7 +80,6 @@ Lecture-level "Alle kilder" skips:
 - The authoritative per-week reading list is in:
   - OneDrive source: `/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/.ai/reading-file-key.md`
   - Repo mirror for feed automation: `shows/personlighedspsykologi-en/docs/reading-file-key.md`
-  - Repo mirror for NotebookLM docs: `notebooklm-podcast-auto/personlighedspsykologi/docs/reading-file-key.md`
 - Source inventory currently lives in:
   - OneDrive: `/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings`
 

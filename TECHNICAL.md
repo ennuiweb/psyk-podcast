@@ -386,17 +386,18 @@ To push the Apps Script file whenever you run `git push`, install the repository
    - `FREUDD_READING_KEY_SYNC_SOURCE`
    - `FREUDD_READING_KEY_SYNC_TARGET`
    - `FREUDD_READING_KEY_SYNC_SECONDARY_TARGET`
-   - `FREUDD_READING_KEY_SYNC_NO_SECONDARY_TARGET=1`
    - `FREUDD_READING_KEY_SYNC_NO_BACKUP=1`
-7. Set `FREUDD_READINGS_SYNC_ON_PUSH=0` to disable reading-file sync to droplet on push.
-8. Optional reading-file sync overrides: `FREUDD_READINGS_SOURCE_ROOT`, `FREUDD_READINGS_REMOTE_ROOT`, `FREUDD_READINGS_HOST`, `FREUDD_READINGS_USER`, `FREUDD_READINGS_SSH_KEY`, `FREUDD_READINGS_EXCLUSIONS_PATH`, `FREUDD_READINGS_SUBJECT_SLUG`.
-9. Set `BIONEURO_MIRROR_ON_PUSH=0` to disable the Bioneuro output-directory mirror step on demand.
-10. Optional Bioneuro mirror overrides: `BIONEURO_MIRROR_SRC`, `BIONEURO_MIRROR_DST`.
-11. Set `PERSONLIGHEDSPSYKOLOGI_MIRROR_ON_PUSH=0` to disable the Personlighedspsykologi output directory mirror step on demand.
-12. Optional Personlighedspsykologi mirror overrides: `PERSONLIGHEDSPSYKOLOGI_MIRROR_SRC`, `PERSONLIGHEDSPSYKOLOGI_MIRROR_DST`, `PERSONLIGHEDSPSYKOLOGI_MIRROR_DELETE_ON_PUSH=0|1` (default: `0`).
-13. `PERSONLIGHEDSPSYKOLOGI_OUTPUT_ROOT` is also respected as the default source for Personlighedspsykologi generation/readback scripts and the shared output-directory mirror.
-14. Set `APPS_SCRIPT_PUSH_ON_PUSH=0` in your environment to skip the Apps Script push step on demand.
-15. (Optional) Set `PRE_PUSH_LOG_FILE=/path/to/pre-push.log` to enable logging; by default no log file is written.
+   - Secondary target sync is disabled by default; set `FREUDD_READING_KEY_SYNC_SECONDARY_TARGET` only when you explicitly need a compatibility mirror.
+7. Set `PERSONLIGHEDSPSYKOLOGI_ARTIFACT_INVARIANTS_ON_PUSH=0` to skip the artifact invariant check on demand.
+8. Set `FREUDD_READINGS_SYNC_ON_PUSH=0` to disable reading-file sync to droplet on push.
+9. Optional reading-file sync overrides: `FREUDD_READINGS_SOURCE_ROOT`, `FREUDD_READINGS_REMOTE_ROOT`, `FREUDD_READINGS_HOST`, `FREUDD_READINGS_USER`, `FREUDD_READINGS_SSH_KEY`, `FREUDD_READINGS_EXCLUSIONS_PATH`, `FREUDD_READINGS_SUBJECT_SLUG`.
+10. Set `BIONEURO_MIRROR_ON_PUSH=0` to disable the Bioneuro output-directory mirror step on demand.
+11. Optional Bioneuro mirror overrides: `BIONEURO_MIRROR_SRC`, `BIONEURO_MIRROR_DST`.
+12. Set `PERSONLIGHEDSPSYKOLOGI_MIRROR_ON_PUSH=0` to disable the Personlighedspsykologi output directory mirror step on demand.
+13. Optional Personlighedspsykologi mirror overrides: `PERSONLIGHEDSPSYKOLOGI_MIRROR_SRC`, `PERSONLIGHEDSPSYKOLOGI_MIRROR_DST`, `PERSONLIGHEDSPSYKOLOGI_MIRROR_DELETE_ON_PUSH=0|1` (default: `0`).
+14. `PERSONLIGHEDSPSYKOLOGI_OUTPUT_ROOT` is also respected as the default source for Personlighedspsykologi generation/readback scripts and the shared output-directory mirror.
+15. Set `APPS_SCRIPT_PUSH_ON_PUSH=0` in your environment to skip the Apps Script push step on demand.
+16. (Optional) Set `PRE_PUSH_LOG_FILE=/path/to/pre-push.log` to enable logging; by default no log file is written.
 
 ### Subject output directory mirror on push
 The same `pre-push` hook now uses one shared script for both subjects:
@@ -524,7 +525,7 @@ python3 scripts/sync_personlighedspsykologi_reading_file_key.py --bootstrap-sour
 
 Default sync targets:
 - `shows/personlighedspsykologi-en/docs/reading-file-key.md` (feed config target)
-- `notebooklm-podcast-auto/personlighedspsykologi/docs/reading-file-key.md` (NotebookLM docs mirror)
+- no secondary target by default; use `--secondary-target <path>` only for explicit compatibility mirroring
 
 ### Apps Script helper
 The canonical automation script lives in `apps-script/drive_change_trigger.gs`. Copy it directly from the repository so you always grab the latest multi-folder logic (`CONFIG.drive.folderIds`, `configuredRootFolderIds()`, etc.). Key bits to double-check before deploying:

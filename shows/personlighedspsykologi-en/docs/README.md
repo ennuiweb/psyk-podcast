@@ -2,4 +2,6 @@ Use this directory to store the syllabus, curriculum PDFs, or other planning mat
 
 Slides mapping runbook (manual-only policy): `slides-sync.md`.
 
-Full podcast flow artifact map: `podcast-flow-artifacts.md`.
+Artifact map and ownership model: `podcast-flow-artifacts.md`.
+
+Operational runbook and troubleshooting: `podcast-flow-operations.md`.

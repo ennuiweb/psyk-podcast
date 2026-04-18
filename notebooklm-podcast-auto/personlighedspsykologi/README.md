@@ -105,6 +105,14 @@ python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/bootstrap_episode
   --episode-output-root '/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive upload/podcast output personlighedsspyk'
 ```
 
+- To transcribe the baseline side of one review run with OpenAI `gpt-4o-transcribe`:
+
+```bash
+python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/transcribe_episode_ab_review.py \
+  --manifest notebooklm-podcast-auto/personlighedspsykologi/evaluation/episode_ab_review/runs/2026-04-before-baseline/manifest.json \
+  --side baseline
+```
+
 - Find stable slide keys in `shows/personlighedspsykologi-en/slides_catalog.json`.
 - To regenerate only one slide podcast, use `--only-slide <slide_key>`. This skips `Alle kilder`, readings, and short-form outputs for that run:
 

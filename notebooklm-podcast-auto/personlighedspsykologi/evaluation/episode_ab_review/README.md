@@ -20,6 +20,10 @@ The intended evaluation flow is:
   Baseline STT transcripts.
 - `runs/<run-name>/transcripts/after/`
   Candidate STT transcripts after the new prompts are generated.
+- `runs/<run-name>/stt_prompts/before/`
+  Captured STT prompts used for baseline transcription.
+- `runs/<run-name>/stt_prompts/after/`
+  Captured STT prompts used for candidate transcription.
 - `runs/<run-name>/prompts/before/`
   Optional resolved prompt captures for the baseline episodes.
 - `runs/<run-name>/prompts/after/`
@@ -52,6 +56,34 @@ source context from:
 When `--episode-output-root` is provided, the manifest also records the local
 baseline MP3 path for each selected sample when it can be resolved under
 `<episode-output-root>/output/W##L#/`.
+
+## Transcribe the baseline set
+
+The recommended first-pass STT backend is OpenAI `gpt-4o-transcribe`.
+
+Requirements:
+
+- `OPENAI_API_KEY`
+- `ffmpeg` and `ffprobe` on `PATH`
+- `openai` installed in the active environment
+
+Command:
+
+```bash
+python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/transcribe_episode_ab_review.py \
+  --manifest notebooklm-podcast-auto/personlighedspsykologi/evaluation/episode_ab_review/runs/2026-04-before-baseline/manifest.json \
+  --side baseline
+```
+
+Behavior:
+
+- audio is normalized locally to mono MP3 for consistent uploads
+- if the normalized file is still too large, it is split into multiple chunks
+- the script writes:
+  - transcript text to `transcripts/<side>/<sample>.txt`
+  - transcript metadata to `transcripts/<side>/<sample>.json`
+  - the exact STT prompt to `stt_prompts/<side>/<sample>.txt`
+- the manifest is updated with transcription status and provenance fields
 
 ## Working rule
 

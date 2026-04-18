@@ -17,7 +17,10 @@
         "audio_url": "https://...",
         "local_audio_path": "/absolute/path/to/output/W11L1/W11L1 - Hacking (2007) [EN] {type=audio ...}.mp3",
         "transcript_path": "transcripts/before/single_reading__w11l1__hacking_2007.txt",
-        "prompt_capture_path": "prompts/before/single_reading__w11l1__hacking_2007.txt"
+        "transcript_json_path": "transcripts/before/single_reading__w11l1__hacking_2007.json",
+        "stt_prompt_path": "stt_prompts/before/single_reading__w11l1__hacking_2007.txt",
+        "prompt_capture_path": "prompts/before/single_reading__w11l1__hacking_2007.txt",
+        "transcription_status": "pending"
       },
       "candidate": {
         "episode_key": null,
@@ -27,7 +30,10 @@
         "audio_url": null,
         "local_audio_path": null,
         "transcript_path": "transcripts/after/single_reading__w11l1__hacking_2007.txt",
-        "prompt_capture_path": "prompts/after/single_reading__w11l1__hacking_2007.txt"
+        "transcript_json_path": "transcripts/after/single_reading__w11l1__hacking_2007.json",
+        "stt_prompt_path": "stt_prompts/after/single_reading__w11l1__hacking_2007.txt",
+        "prompt_capture_path": "prompts/after/single_reading__w11l1__hacking_2007.txt",
+        "transcription_status": "pending"
       },
       "source_context": {
         "source_files": [

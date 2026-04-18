@@ -102,7 +102,8 @@ Generate audio + infographics:
 
 This command:
 - Uses `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json` for prompts/lengths.
-- When `meta_prompting.automatic.enabled=true`, missing sidecars are auto-generated with Anthropic before audio planning/generation.
+- When `meta_prompting.automatic.enabled=true`, missing sidecars are auto-generated before audio planning/generation.
+- Default provider is Gemini Developer API (`provider=gemini`, `model=gemini-2.5-pro`); Anthropic remains an optional fallback provider.
 - Skips weekly “Alle kilder” when missing readings are listed for that week.
 - Emits MP3s/PNGs to `notebooklm-podcast-auto/personlighedspsykologi/output/W##L#/`.
 - Appends human-readable config tags to artifact filenames: ` {...}` before extension.

@@ -181,7 +181,8 @@ DEFAULT_META_PROMPTING = {
     "weekly_sidecars": list(WEEK_PROMPT_SIDECAR_NAMES),
     "automatic": {
         "enabled": False,
-        "model": "claude-sonnet-4-6",
+        "provider": "gemini",
+        "model": "gemini-2.5-pro",
         "fail_open": True,
         "default_per_source_output_suffix": ".analysis.md",
         "default_weekly_output_name": "week.analysis.md",
@@ -207,6 +208,12 @@ class MetaPromptJob(NamedTuple):
     label: str
     source_items: tuple[SourceItem, ...]
     week_label: str | None = None
+
+
+class MetaPromptBackend(NamedTuple):
+    provider: str
+    client: object
+    support: object | None = None
 
 
 def default_output_root() -> str:
@@ -809,7 +816,12 @@ def normalize_meta_prompting(raw: object) -> dict:
             if not isinstance(automatic[field], bool):
                 raise SystemExit(f"meta_prompting.automatic.{field} must be true or false.")
             normalized["automatic"][field] = automatic[field]
-        for field in ("model", "default_per_source_output_suffix", "default_weekly_output_name"):
+        for field in (
+            "provider",
+            "model",
+            "default_per_source_output_suffix",
+            "default_weekly_output_name",
+        ):
             if field not in automatic:
                 continue
             value = automatic[field]
@@ -827,6 +839,10 @@ def normalize_meta_prompting(raw: object) -> dict:
             normalized["automatic"][field] = value
 
     auto = normalized["automatic"]
+    provider = str(auto["provider"]).strip().lower()
+    if provider not in {"gemini", "anthropic"}:
+        raise SystemExit("meta_prompting.automatic.provider must be 'gemini' or 'anthropic'.")
+    auto["provider"] = provider
     source_suffix = str(auto["default_per_source_output_suffix"]).strip()
     if not source_suffix.startswith("."):
         raise SystemExit(
@@ -1099,14 +1115,70 @@ def _build_meta_prompt_request(
     return system_prompt, user_prompt
 
 
-def _anthropic_client_for_meta_prompting() -> tuple[object, object]:
-    if not os.environ.get("ANTHROPIC_API_KEY"):
-        raise RuntimeError("ANTHROPIC_API_KEY is not set")
-    try:
-        import anthropic
-    except ImportError as exc:
-        raise RuntimeError("anthropic package not installed — pip install anthropic") from exc
-    return anthropic.Anthropic(), anthropic
+def _gemini_api_key() -> str:
+    return str(os.environ.get("GOOGLE_API_KEY") or os.environ.get("GEMINI_API_KEY") or "").strip()
+
+
+def _meta_prompt_backend_for_automatic(meta_prompting: dict) -> MetaPromptBackend:
+    provider = str(meta_prompting["automatic"]["provider"]).strip().lower()
+    if provider == "gemini":
+        api_key = _gemini_api_key()
+        if not api_key:
+            raise RuntimeError("GEMINI_API_KEY or GOOGLE_API_KEY is not set")
+        try:
+            from google import genai
+            from google.genai import types as genai_types
+        except ImportError as exc:
+            raise RuntimeError("google-genai package not installed — pip install google-genai") from exc
+        return MetaPromptBackend(
+            provider="gemini",
+            client=genai.Client(api_key=api_key),
+            support=genai_types,
+        )
+
+    if provider == "anthropic":
+        if not os.environ.get("ANTHROPIC_API_KEY"):
+            raise RuntimeError("ANTHROPIC_API_KEY is not set")
+        try:
+            import anthropic
+        except ImportError as exc:
+            raise RuntimeError("anthropic package not installed — pip install anthropic") from exc
+        return MetaPromptBackend(
+            provider="anthropic",
+            client=anthropic.Anthropic(),
+            support=anthropic,
+        )
+
+    raise RuntimeError(f"Unsupported meta-prompting provider: {provider}")
+
+
+def _is_meta_prompt_rate_limit_error(exc: Exception) -> bool:
+    text = str(exc).strip().lower()
+    return any(
+        token in text
+        for token in (
+            "rate limit",
+            "resource_exhausted",
+            "resource exhausted",
+            "quota",
+            "too many requests",
+            "429",
+        )
+    )
+
+
+def _extract_gemini_text(response: object) -> str:
+    text = str(getattr(response, "text", "") or "").strip()
+    if text:
+        return text
+    parts: list[str] = []
+    for candidate in getattr(response, "candidates", []) or []:
+        content = getattr(candidate, "content", None)
+        for part in getattr(content, "parts", []) or []:
+            value = getattr(part, "text", "")
+            if value:
+                parts.append(str(value))
+    return "\n".join(parts).strip()
 
 
 def generate_meta_prompt_markdown(
@@ -1114,36 +1186,50 @@ def generate_meta_prompt_markdown(
     job: MetaPromptJob,
     course_title: str,
     meta_prompting: dict,
-    client: object,
-    anthropic_module: object,
+    backend: MetaPromptBackend,
 ) -> str:
     system_prompt, user_prompt = _build_meta_prompt_request(
         job=job,
         course_title=course_title,
         meta_prompting=meta_prompting,
     )
-    rate_limit_error = getattr(anthropic_module, "RateLimitError", None)
     for attempt in range(2):
         try:
-            message = client.messages.create(
-                model=str(meta_prompting["automatic"]["model"]).strip(),
-                max_tokens=META_PROMPT_MAX_RESPONSE_TOKENS,
-                system=system_prompt,
-                messages=[{"role": "user", "content": user_prompt}],
-            )
-            parts = [
-                getattr(part, "text", "")
-                for part in getattr(message, "content", [])
-                if getattr(part, "type", "") == "text"
-            ]
-            content = _strip_markdown_fence("\n".join(parts).strip())
+            if backend.provider == "gemini":
+                response = backend.client.models.generate_content(
+                    model=str(meta_prompting["automatic"]["model"]).strip(),
+                    contents=user_prompt,
+                    config=backend.support.GenerateContentConfig(
+                        system_instruction=system_prompt,
+                        max_output_tokens=META_PROMPT_MAX_RESPONSE_TOKENS,
+                    ),
+                )
+                content = _strip_markdown_fence(_extract_gemini_text(response))
+            elif backend.provider == "anthropic":
+                message = backend.client.messages.create(
+                    model=str(meta_prompting["automatic"]["model"]).strip(),
+                    max_tokens=META_PROMPT_MAX_RESPONSE_TOKENS,
+                    system=system_prompt,
+                    messages=[{"role": "user", "content": user_prompt}],
+                )
+                parts = [
+                    getattr(part, "text", "")
+                    for part in getattr(message, "content", [])
+                    if getattr(part, "type", "") == "text"
+                ]
+                content = _strip_markdown_fence("\n".join(parts).strip())
+            else:
+                raise RuntimeError(f"Unsupported meta-prompting provider: {backend.provider}")
             if not content:
                 raise RuntimeError(f"empty response while generating meta prompt for {job.label}")
             return content
         except Exception as exc:
-            if rate_limit_error and isinstance(exc, rate_limit_error):
+            if _is_meta_prompt_rate_limit_error(exc):
                 if attempt == 0:
-                    print("Meta prompt generation hit an Anthropic rate limit; waiting 60s before retrying.")
+                    print(
+                        f"Meta prompt generation hit a {backend.provider} rate limit; "
+                        "waiting 60s before retrying."
+                    )
                     time.sleep(60)
                     continue
                 raise RuntimeError(f"rate-limited while generating meta prompt for {job.label}") from exc
@@ -1219,7 +1305,7 @@ def prepare_auto_meta_prompt_overrides(
 
     automatic = meta_prompting["automatic"]
     try:
-        client, anthropic_module = _anthropic_client_for_meta_prompting()
+        backend = _meta_prompt_backend_for_automatic(meta_prompting)
     except RuntimeError as exc:
         if automatic.get("fail_open", True):
             _warn_meta_prompt_once(f"automatic meta-prompting is disabled for this run: {exc}")
@@ -1234,8 +1320,7 @@ def prepare_auto_meta_prompt_overrides(
                 job=job,
                 course_title=course_title,
                 meta_prompting=meta_prompting,
-                client=client,
-                anthropic_module=anthropic_module,
+                backend=backend,
             )
         except RuntimeError as exc:
             if automatic.get("fail_open", True):

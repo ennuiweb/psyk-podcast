@@ -116,7 +116,8 @@
     ],
     "automatic": {
       "enabled": true,
-      "model": "claude-sonnet-4-6",
+      "provider": "gemini",
+      "model": "gemini-2.5-pro",
       "fail_open": true,
       "default_per_source_output_suffix": ".analysis.md",
       "default_weekly_output_name": "week.analysis.md",

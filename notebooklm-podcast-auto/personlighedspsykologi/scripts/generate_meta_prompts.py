@@ -87,7 +87,7 @@ def main() -> int:
         for path in slide_paths
     )
 
-    client, anthropic_module = mod._anthropic_client_for_meta_prompting()
+    backend = mod._meta_prompt_backend_for_automatic(meta_prompting)
     output_path = Path(args.output).expanduser().resolve()
     label = args.label or output_path.stem
     job = mod.MetaPromptJob(
@@ -101,8 +101,7 @@ def main() -> int:
         job=job,
         course_title=args.course_title,
         meta_prompting=meta_prompting,
-        client=client,
-        anthropic_module=anthropic_module,
+        backend=backend,
     )
 
     if args.dry_run:

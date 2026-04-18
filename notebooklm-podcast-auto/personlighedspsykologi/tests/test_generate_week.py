@@ -453,6 +453,12 @@ class GenerateWeekTests(unittest.TestCase):
         self.assertIn(".analysis.md", normalized["per_source_suffixes"])
         self.assertIn("week.analysis.md", normalized["weekly_sidecars"])
 
+    def test_normalize_meta_prompting_rejects_unknown_provider(self):
+        mod = _load_module()
+
+        with self.assertRaises(SystemExit):
+            mod.normalize_meta_prompting({"automatic": {"provider": "openrouter"}})
+
     def test_build_auto_meta_prompt_jobs_skips_existing_sidecars(self):
         mod = _load_module()
         with tempfile.TemporaryDirectory() as tmpdir:
@@ -506,8 +512,8 @@ class GenerateWeekTests(unittest.TestCase):
 
             with mock.patch.object(
                 mod,
-                "_anthropic_client_for_meta_prompting",
-                return_value=(object(), object()),
+                "_meta_prompt_backend_for_automatic",
+                return_value=mod.MetaPromptBackend(provider="gemini", client=object(), support=object()),
             ), mock.patch.object(
                 mod,
                 "generate_meta_prompt_markdown",
@@ -545,6 +551,7 @@ class GenerateWeekTests(unittest.TestCase):
         )
 
         fake_client = mock.Mock()
+        fake_backend = mod.MetaPromptBackend(provider="anthropic", client=fake_client, support=object())
         fake_client.messages.create.side_effect = ValueError("boom")
         with mock.patch.object(
             mod,
@@ -556,11 +563,50 @@ class GenerateWeekTests(unittest.TestCase):
                     job=job,
                     course_title="Personlighedspsykologi",
                     meta_prompting=mod.normalize_meta_prompting({"automatic": {"enabled": True}}),
-                    client=fake_client,
-                    anthropic_module=object(),
+                    backend=fake_backend,
                 )
 
         self.assertIn("meta prompt generation failed for Foucault", str(ctx.exception))
+
+    def test_generate_meta_prompt_markdown_supports_gemini_backend(self):
+        mod = _load_module()
+        job = mod.MetaPromptJob(
+            prompt_type="single_reading",
+            output_path=Path("/tmp/Foucault.analysis.md"),
+            label="Foucault",
+            source_items=(
+                mod.SourceItem(
+                    path=Path("/tmp/Foucault.pdf"),
+                    base_name="Foucault",
+                    source_type="reading",
+                ),
+            ),
+        )
+
+        fake_response = mock.Mock(text="## Core distinctions\n- Focus on power relations.")
+        fake_client = mock.Mock()
+        fake_client.models.generate_content.return_value = fake_response
+        fake_support = mock.Mock()
+        fake_support.GenerateContentConfig.return_value = {"system_instruction": "system"}
+
+        with mock.patch.object(
+            mod,
+            "_build_meta_prompt_request",
+            return_value=("system", "user"),
+        ):
+            content = mod.generate_meta_prompt_markdown(
+                job=job,
+                course_title="Personlighedspsykologi",
+                meta_prompting=mod.normalize_meta_prompting({"automatic": {"enabled": True}}),
+                backend=mod.MetaPromptBackend(
+                    provider="gemini",
+                    client=fake_client,
+                    support=fake_support,
+                ),
+            )
+
+        self.assertIn("power relations", content)
+        fake_client.models.generate_content.assert_called_once()
 
     def test_prepare_auto_meta_prompt_overrides_fail_open_on_generic_generation_error(self):
         mod = _load_module()
@@ -577,8 +623,8 @@ class GenerateWeekTests(unittest.TestCase):
 
             with mock.patch.object(
                 mod,
-                "_anthropic_client_for_meta_prompting",
-                return_value=(object(), object()),
+                "_meta_prompt_backend_for_automatic",
+                return_value=mod.MetaPromptBackend(provider="gemini", client=object(), support=object()),
             ), mock.patch.object(
                 mod,
                 "generate_meta_prompt_markdown",
@@ -613,8 +659,8 @@ class GenerateWeekTests(unittest.TestCase):
 
             with mock.patch.object(
                 mod,
-                "_anthropic_client_for_meta_prompting",
-                return_value=(object(), object()),
+                "_meta_prompt_backend_for_automatic",
+                return_value=mod.MetaPromptBackend(provider="gemini", client=object(), support=object()),
             ), mock.patch.object(
                 mod,
                 "generate_meta_prompt_markdown",

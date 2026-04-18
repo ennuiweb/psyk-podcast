@@ -6,6 +6,7 @@ import hashlib
 import json
 import math
 import os
+import re
 import shlex
 import subprocess
 import sys
@@ -46,6 +47,21 @@ def ensure_openai_client():
     except ImportError as exc:
         raise SystemExit("openai package not installed — pip install openai") from exc
     return OpenAI()
+
+
+def ensure_elevenlabs_api_key() -> str:
+    key = str(os.environ.get("ELEVENLABS_API_KEY") or "").strip()
+    if not key:
+        raise SystemExit("ELEVENLABS_API_KEY is not set.")
+    return key
+
+
+def ensure_backend_client(backend: str) -> object:
+    if backend == "openai":
+        return ensure_openai_client()
+    if backend == "elevenlabs":
+        return ensure_elevenlabs_api_key()
+    raise SystemExit(f"Unsupported STT backend: {backend}")
 
 
 def run_command(args: list[str]) -> subprocess.CompletedProcess[str]:
@@ -180,6 +196,135 @@ def build_stt_prompt(entry: dict) -> str:
     return "\n".join(lines)
 
 
+def build_elevenlabs_keyterms(entry: dict, limit: int) -> list[str]:
+    fixed_terms = [
+        "personality psychology",
+        "subjectivity",
+        "subject formation",
+        "subjectivation",
+        "power relations",
+        "domination",
+        "freedom practices",
+        "social constructionism",
+        "poststructuralism",
+        "narrative identity",
+        "historicity",
+        "theory method",
+    ]
+    source_context = entry.get("source_context", {})
+    candidates: list[str] = list(fixed_terms)
+    for value in source_context.get("source_files") or []:
+        stem = Path(str(value)).stem
+        stem = re.sub(r"^W\d+L\d+\s+", "", stem, flags=re.IGNORECASE)
+        candidates.extend(part.strip(" -_") for part in re.split(r"[.;:]", stem))
+    for field in ("key_points", "summary_lines"):
+        for value in source_context.get(field) or []:
+            text = str(value)
+            candidates.extend(part.strip(" -_") for part in re.split(r"[.;:]", text))
+
+    normalized: list[str] = []
+    seen: set[str] = set()
+    for candidate in candidates:
+        value = re.sub(r"\s+", " ", str(candidate).strip())
+        if not value:
+            continue
+        words = value.split()
+        if len(words) > 5 or len(value) >= 50:
+            continue
+        key = value.lower()
+        if key in seen:
+            continue
+        seen.add(key)
+        normalized.append(value)
+        if len(normalized) >= limit:
+            break
+    return normalized
+
+
+def append_transcript_token(current: str, token: str) -> str:
+    if not current:
+        return token
+    if re.match(r"^[.,!?;:%)]", token):
+        return current + token
+    if current.endswith("("):
+        return current + token
+    return current + " " + token
+
+
+def speaker_labeled_text_from_words(words: list[dict]) -> str:
+    turns: list[tuple[str, str]] = []
+    current_speaker = ""
+    current_text = ""
+    for word in words:
+        token = str(word.get("text") or "").strip()
+        if not token:
+            continue
+        speaker = str(word.get("speaker_id") or "speaker_unknown").strip() or "speaker_unknown"
+        if current_speaker and speaker != current_speaker and current_text:
+            turns.append((current_speaker, current_text.strip()))
+            current_text = ""
+        current_speaker = speaker
+        current_text = append_transcript_token(current_text, token)
+    if current_speaker and current_text:
+        turns.append((current_speaker, current_text.strip()))
+    return "\n\n".join(f"{speaker}: {text}" for speaker, text in turns).strip()
+
+
+def transcribe_elevenlabs_scribe(
+    *,
+    api_key: str,
+    audio_path: Path,
+    model: str,
+    entry: dict,
+    num_speakers: int,
+    keyterms_limit: int,
+    language_code: str | None,
+    tag_audio_events: bool,
+    timeout_seconds: int,
+) -> tuple[str, str, dict, list[str]]:
+    try:
+        import requests
+    except ImportError as exc:
+        raise RuntimeError("requests package not installed — pip install requests") from exc
+
+    keyterms = build_elevenlabs_keyterms(entry, limit=keyterms_limit)
+    data: list[tuple[str, str]] = [
+        ("model_id", model),
+        ("diarize", "true"),
+        ("num_speakers", str(num_speakers)),
+        ("timestamps_granularity", "word"),
+        ("tag_audio_events", "true" if tag_audio_events else "false"),
+        ("no_verbatim", "false"),
+        ("file_format", "other"),
+    ]
+    if language_code:
+        data.append(("language_code", language_code))
+    for term in keyterms:
+        data.append(("keyterms", term))
+
+    with audio_path.open("rb") as handle:
+        response = requests.post(
+            "https://api.elevenlabs.io/v1/speech-to-text",
+            headers={"xi-api-key": api_key},
+            data=data,
+            files={"file": (audio_path.name, handle, "audio/mpeg")},
+            timeout=timeout_seconds,
+        )
+    if response.status_code >= 400:
+        raise RuntimeError(
+            f"ElevenLabs STT failed with HTTP {response.status_code}: {response.text[:1000]}"
+        )
+    payload = response.json()
+    plain_text = str(payload.get("text") or "").strip()
+    words = payload.get("words") or []
+    speaker_text = speaker_labeled_text_from_words(words) if isinstance(words, list) else ""
+    if not speaker_text:
+        speaker_text = plain_text
+    if not plain_text and not speaker_text:
+        raise RuntimeError(f"Empty ElevenLabs transcription response for {audio_path.name}")
+    return speaker_text.strip(), plain_text.strip(), payload, keyterms
+
+
 def response_to_dict(response: object) -> dict:
     if hasattr(response, "model_dump"):
         return response.model_dump()
@@ -220,6 +365,7 @@ def resolve_paths(manifest_path: Path, entry: dict, side: str) -> dict[str, Path
     side_label = "before" if side == "baseline" else "after"
     transcript_txt = run_dir / side_obj["transcript_path"]
     transcript_json = transcript_txt.with_suffix(".json")
+    plain_transcript = transcript_txt.with_suffix(".plain.txt")
     stt_prompt = run_dir / "stt_prompts" / side_label / f"{entry['sample_id']}.txt"
     normalized_audio = run_dir / ".cache" / side_label / f"{entry['sample_id']}{NORMALIZED_AUDIO_SUFFIX}"
     segment_dir = run_dir / ".cache" / side_label / f"{entry['sample_id']}_segments"
@@ -227,6 +373,7 @@ def resolve_paths(manifest_path: Path, entry: dict, side: str) -> dict[str, Path
         "run_dir": run_dir,
         "transcript_txt": transcript_txt,
         "transcript_json": transcript_json,
+        "plain_transcript": plain_transcript,
         "stt_prompt": stt_prompt,
         "normalized_audio": normalized_audio,
         "segment_dir": segment_dir,
@@ -239,10 +386,16 @@ def transcribe_entry(
     manifest_path: Path,
     entry: dict,
     side: str,
+    backend: str,
     model: str,
     bitrate_kbps: int,
     sample_rate_hz: int,
     max_upload_bytes: int,
+    num_speakers: int,
+    keyterms_limit: int,
+    language_code: str | None,
+    tag_audio_events: bool,
+    request_timeout_seconds: int,
     force: bool,
     dry_run: bool,
 ) -> tuple[str, str]:
@@ -258,6 +411,7 @@ def transcribe_entry(
     paths = resolve_paths(manifest_path, entry, side)
     transcript_txt = paths["transcript_txt"]
     transcript_json = paths["transcript_json"]
+    plain_transcript = paths["plain_transcript"]
     stt_prompt = paths["stt_prompt"]
     normalized_audio = paths["normalized_audio"]
     segment_dir = paths["segment_dir"]
@@ -271,11 +425,59 @@ def transcribe_entry(
 
     prompt = build_stt_prompt(entry)
     if dry_run:
-        return "planned", f"{entry['sample_id']}: would transcribe {source_audio.name}"
+        return "planned", f"{entry['sample_id']}: would transcribe {source_audio.name} with {backend}/{model}"
 
     stt_prompt.parent.mkdir(parents=True, exist_ok=True)
     transcript_txt.parent.mkdir(parents=True, exist_ok=True)
     stt_prompt.write_text(prompt + "\n", encoding="utf-8")
+
+    if backend == "elevenlabs":
+        speaker_text, plain_text, payload, keyterms = transcribe_elevenlabs_scribe(
+            api_key=str(client),
+            audio_path=source_audio,
+            model=model,
+            entry=entry,
+            num_speakers=num_speakers,
+            keyterms_limit=keyterms_limit,
+            language_code=language_code,
+            tag_audio_events=tag_audio_events,
+            timeout_seconds=request_timeout_seconds,
+        )
+        transcript_txt.write_text(speaker_text.rstrip() + "\n", encoding="utf-8")
+        plain_transcript.write_text((plain_text or speaker_text).rstrip() + "\n", encoding="utf-8")
+        transcript_payload = {
+            "schema_version": 1,
+            "sample_id": entry["sample_id"],
+            "side": side,
+            "created_at": utc_now(),
+            "backend": "elevenlabs",
+            "model": model,
+            "source_audio_path": str(source_audio),
+            "source_audio_sha256": sha256_for_path(source_audio),
+            "stt_prompt_path": relpath_or_absolute(stt_prompt, run_dir),
+            "speaker_transcript_path": relpath_or_absolute(transcript_txt, run_dir),
+            "plain_transcript_path": relpath_or_absolute(plain_transcript, run_dir),
+            "num_speakers": num_speakers,
+            "diarize": True,
+            "language_code": language_code,
+            "tag_audio_events": tag_audio_events,
+            "keyterms": keyterms,
+            "text": speaker_text,
+            "plain_text": plain_text,
+            "response": payload,
+        }
+        write_json(transcript_json, transcript_payload)
+        side_obj["transcription_status"] = "completed"
+        side_obj["transcription_backend"] = "elevenlabs"
+        side_obj["transcription_model"] = model
+        side_obj["transcribed_at"] = transcript_payload["created_at"]
+        side_obj["transcript_json_path"] = relpath_or_absolute(transcript_json, run_dir)
+        side_obj["stt_prompt_path"] = relpath_or_absolute(stt_prompt, run_dir)
+        side_obj["speaker_transcript_path"] = relpath_or_absolute(transcript_txt, run_dir)
+        side_obj["plain_transcript_path"] = relpath_or_absolute(plain_transcript, run_dir)
+        side_obj["source_audio_sha256"] = transcript_payload["source_audio_sha256"]
+        side_obj["num_speakers"] = num_speakers
+        return "completed", f"{entry['sample_id']}: transcribed with ElevenLabs Scribe ({num_speakers} speakers)"
 
     normalize_audio(source_audio, normalized_audio, bitrate_kbps=bitrate_kbps, sample_rate_hz=sample_rate_hz)
     segment_seconds = segment_time_for_size(normalized_audio, max_upload_bytes)
@@ -341,7 +543,7 @@ def transcribe_entry(
 
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description="Transcribe before/after episode review audio with OpenAI STT.")
+    parser = argparse.ArgumentParser(description="Transcribe before/after episode review audio.")
     parser.add_argument(
         "--manifest",
         required=True,
@@ -360,9 +562,14 @@ def build_parser() -> argparse.ArgumentParser:
         help="Optional sample id to limit transcription. Repeat as needed.",
     )
     parser.add_argument(
+        "--backend",
+        choices=("elevenlabs", "openai"),
+        default="elevenlabs",
+        help="STT backend. ElevenLabs is the default because it supports speaker diarization.",
+    )
+    parser.add_argument(
         "--model",
-        default="gpt-4o-transcribe",
-        help="OpenAI transcription model.",
+        help="Transcription model. Defaults to scribe_v2 for ElevenLabs and gpt-4o-transcribe for OpenAI.",
     )
     parser.add_argument(
         "--bitrate-kbps",
@@ -382,6 +589,34 @@ def build_parser() -> argparse.ArgumentParser:
         default=24,
         help="Safety ceiling per upload chunk in MiB.",
     )
+    parser.add_argument(
+        "--num-speakers",
+        type=int,
+        default=2,
+        help="Expected speaker count for ElevenLabs diarization.",
+    )
+    parser.add_argument(
+        "--keyterms-limit",
+        type=int,
+        default=100,
+        help="Maximum keyterms sent to ElevenLabs Scribe v2.",
+    )
+    parser.add_argument(
+        "--language-code",
+        default="eng",
+        help="Optional ElevenLabs language code. Use '' to let ElevenLabs auto-detect.",
+    )
+    parser.add_argument(
+        "--tag-audio-events",
+        action="store_true",
+        help="Include non-speech event tags in ElevenLabs transcripts.",
+    )
+    parser.add_argument(
+        "--request-timeout-seconds",
+        type=int,
+        default=1800,
+        help="HTTP request timeout for ElevenLabs transcription.",
+    )
     parser.add_argument("--force", action="store_true", help="Re-transcribe even when outputs already exist.")
     parser.add_argument("--dry-run", action="store_true", help="Plan the transcription run without API calls or writes.")
     return parser
@@ -393,8 +628,10 @@ def main() -> int:
 
     manifest_path = Path(args.manifest).expanduser().resolve()
     manifest = read_json(manifest_path)
-    ensure_ffmpeg()
-    client = None if args.dry_run else ensure_openai_client()
+    model = args.model or ("scribe_v2" if args.backend == "elevenlabs" else "gpt-4o-transcribe")
+    if args.backend == "openai":
+        ensure_ffmpeg()
+    client = None if args.dry_run else ensure_backend_client(args.backend)
     side = "baseline" if args.side == "baseline" else "candidate"
     sample_filter = set(args.sample_id)
     max_upload_bytes = args.max_upload_mib * 1024 * 1024
@@ -410,10 +647,16 @@ def main() -> int:
                 manifest_path=manifest_path,
                 entry=entry,
                 side=side,
-                model=args.model,
+                backend=args.backend,
+                model=model,
                 bitrate_kbps=args.bitrate_kbps,
                 sample_rate_hz=args.sample_rate_hz,
                 max_upload_bytes=max_upload_bytes,
+                num_speakers=args.num_speakers,
+                keyterms_limit=args.keyterms_limit,
+                language_code=args.language_code.strip() or None,
+                tag_audio_events=args.tag_audio_events,
+                request_timeout_seconds=args.request_timeout_seconds,
                 force=args.force,
                 dry_run=args.dry_run,
             )

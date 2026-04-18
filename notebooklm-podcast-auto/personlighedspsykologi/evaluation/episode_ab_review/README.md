@@ -59,13 +59,13 @@ baseline MP3 path for each selected sample when it can be resolved under
 
 ## Transcribe the baseline set
 
-The recommended first-pass STT backend is OpenAI `gpt-4o-transcribe`.
+The recommended first-pass STT backend is ElevenLabs Scribe v2 because the
+podcasts have two hosts and Scribe v2 supports speaker diarization.
 
 Requirements:
 
-- `OPENAI_API_KEY`
-- `ffmpeg` and `ffprobe` on `PATH`
-- `openai` installed in the active environment
+- `ELEVENLABS_API_KEY`
+- `requests` installed in the active environment
 
 Command:
 
@@ -77,13 +77,26 @@ python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/transcribe_episod
 
 Behavior:
 
-- audio is normalized locally to mono MP3 for consistent uploads
-- if the normalized file is still too large, it is split into multiple chunks
+- ElevenLabs runs on the original local MP3 to preserve audio quality
+- `scribe_v2` is called with `diarize=true` and `num_speakers=2`
+- keyterms are derived from source filenames, summaries, and key points
 - the script writes:
-  - transcript text to `transcripts/<side>/<sample>.txt`
+  - speaker-labeled transcript text to `transcripts/<side>/<sample>.txt`
+  - plain transcript text to `transcripts/<side>/<sample>.plain.txt`
   - transcript metadata to `transcripts/<side>/<sample>.json`
   - the exact STT prompt to `stt_prompts/<side>/<sample>.txt`
 - the manifest is updated with transcription status and provenance fields
+
+OpenAI remains available as a fallback:
+
+```bash
+python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/transcribe_episode_ab_review.py \
+  --manifest notebooklm-podcast-auto/personlighedspsykologi/evaluation/episode_ab_review/runs/2026-04-before-baseline/manifest.json \
+  --side baseline \
+  --backend openai
+```
+
+OpenAI mode requires `OPENAI_API_KEY`, `ffmpeg`, and `ffprobe`.
 
 ## Working rule
 

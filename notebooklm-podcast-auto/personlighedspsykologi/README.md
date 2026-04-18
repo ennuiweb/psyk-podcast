@@ -105,7 +105,7 @@ python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/bootstrap_episode
   --episode-output-root '/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive upload/podcast output personlighedsspyk'
 ```
 
-- To transcribe the baseline side of one review run with OpenAI `gpt-4o-transcribe`:
+- To transcribe the baseline side of one review run with ElevenLabs Scribe v2 speaker diarization:
 
 ```bash
 python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/transcribe_episode_ab_review.py \

@@ -14,6 +14,7 @@ It is **not** a podcast feed. Feed config now lives in:
   - `/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings`
 - `output/` - generated MP3s/PNGs/quiz exports + request logs
 - `docs/` - planning notes
+- `evaluation/episode_ab_review/` - before/after quality-review workspace for matched transcript comparisons
 
 ## Output root default
 - `generate_week.py`, `download_week.py`, and `sync_reading_summaries.py` accept `--output-root`.
@@ -94,8 +95,16 @@ python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_week.py 
   - Gemini mode needs `GEMINI_API_KEY` or `GOOGLE_API_KEY` plus the `google-genai` and `pypdf` packages from `requirements.txt`.
   - Anthropic is still supported as `provider=anthropic` if you explicitly want that path, and then it needs `ANTHROPIC_API_KEY` plus the `anthropic` package.
   - Dry runs can resolve automatic meta notes in memory so you can inspect likely resolved prompts with `--print-resolved-prompts`, but they do not write sidecar files and a later real run may still differ unless you materialize a sidecar first.
-  - Standalone helper: `python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_meta_prompts.py --prompt-type single_reading --reading-source /path/to/Foucault.pdf --output /tmp/Foucault.analysis.md --dry-run`
+- Standalone helper: `python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_meta_prompts.py --prompt-type single_reading --reading-source /path/to/Foucault.pdf --output /tmp/Foucault.analysis.md --dry-run`
 - Use `--print-resolved-prompts` together with `--dry-run` when you want to inspect the fully assembled audio prompt before generation.
+- To bootstrap a balanced before-only review sample for prompt QA:
+
+```bash
+python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/bootstrap_episode_ab_review.py \
+  --run-name 2026-04-before-baseline \
+  --episode-output-root '/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive upload/podcast output personlighedsspyk'
+```
+
 - Find stable slide keys in `shows/personlighedspsykologi-en/slides_catalog.json`.
 - To regenerate only one slide podcast, use `--only-slide <slide_key>`. This skips `Alle kilder`, readings, and short-form outputs for that run:
 

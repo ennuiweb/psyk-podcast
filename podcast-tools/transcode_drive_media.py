@@ -14,10 +14,23 @@ import time
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Sequence, Tuple
 
-from google.oauth2 import service_account
-from googleapiclient.discovery import build
-from googleapiclient.errors import HttpError
-from googleapiclient.http import MediaFileUpload, MediaIoBaseDownload
+SCRIPT_DIR = Path(__file__).resolve().parent
+if str(SCRIPT_DIR) not in sys.path:
+    sys.path.insert(0, str(SCRIPT_DIR))
+
+from storage_backends import resolve_storage_provider
+
+try:
+    from google.oauth2 import service_account
+    from googleapiclient.discovery import build
+    from googleapiclient.errors import HttpError
+    from googleapiclient.http import MediaFileUpload, MediaIoBaseDownload
+except ModuleNotFoundError:  # pragma: no cover - optional for non-Drive/unit-test contexts
+    service_account = None  # type: ignore[assignment]
+    build = None  # type: ignore[assignment]
+    HttpError = None  # type: ignore[assignment]
+    MediaFileUpload = None  # type: ignore[assignment]
+    MediaIoBaseDownload = None  # type: ignore[assignment]
 
 SCOPES = ["https://www.googleapis.com/auth/drive"]
 SOURCE_MARKER = "psyk_video_transcoded"
@@ -116,6 +129,11 @@ def filter_source_files_for_transcode(
 
 
 def build_drive_service(credentials_path: Path):
+    if service_account is None or build is None:
+        raise SystemExit(
+            "Missing Google API dependencies. Install requirements (google-auth, google-api-python-client) "
+            "or run in an environment that has them available."
+        )
     credentials = service_account.Credentials.from_service_account_file(
         str(credentials_path), scopes=SCOPES
     )
@@ -342,6 +360,7 @@ def main() -> None:
     args = parser.parse_args()
 
     config = load_json(args.config)
+    provider = resolve_storage_provider(config)
     try:
         transcode_cfg = parse_transcode_config(config)
     except SystemExit:
@@ -350,6 +369,14 @@ def main() -> None:
             print("Transcode settings disabled; skipping Drive scan.")
             return
         raise
+
+    if provider != "drive":
+        write_github_output(args.github_output, False)
+        print(
+            f"Transcode is skipped for storage provider '{provider}'. "
+            "Upload publishable audio to object storage directly.",
+        )
+        return
 
     service_account_path = Path(config["service_account_file"])
     drive_service = build_drive_service(service_account_path)

@@ -9,3 +9,4 @@ Jinja2
 pypdf
 anthropic>=0.52,<1
 PyJWT>=2.10,<3
+boto3>=1.36,<2

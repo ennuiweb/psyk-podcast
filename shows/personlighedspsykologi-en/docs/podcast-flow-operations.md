@@ -9,7 +9,7 @@ og afledningskæden.
 1. Opdatér autoritative inputs i OneDrive, `slides_catalog.json`, canonical config eller manuelle summary-filer.
 2. Sync `reading-file-key.md` til det primære repo-spejl, hvis OneDrive-kilden har ændret sig.
 3. Generér eller download NotebookLM outputs efter behov.
-4. Upload audio til Drive og quiz/slides til droplet efter de respektive flows.
+4. Upload audio til den konfigurerede storage-backend og quiz/slides til droplet efter de respektive flows.
 5. Sync `regeneration_registry.json`, så A/B rollout-status følger den aktuelle inventory.
 6. Kør feed-build eller `generate-feed.yml`, så `rss.xml` og `episode_inventory.json` bliver genopbygget.
 7. Sync `spotify_map.json`.
@@ -83,8 +83,8 @@ Tjek normalt i denne rækkefølge:
 1. Findes kilden i OneDrive `Readings/` eller slides-mappen?
 2. Findes korrekt mapping i det primære `reading-file-key.md`-spejl eller `slides_catalog.json`?
 3. Er NotebookLM-output genereret og downloadet lokalt?
-4. Er audio/quiz uploadet eller spejlet til Drive/droplet?
-5. Finder `generate-feed.yml` filen i Drive?
+4. Er audio/quiz uploadet eller spejlet til den valgte storage-backend/droplet?
+5. Finder `generate-feed.yml` filen i den valgte storage-backend?
 6. Er `feeds/rss.xml` og `episode_inventory.json` opdateret?
 7. Er `quiz_links.json`, `spotify_map.json` og `content_manifest.json` opdateret?
 8. Er nødvendigt downstream deploy kørt, og har Spotify nået at ingest'e RSS?
@@ -97,7 +97,7 @@ Use local dry-run validation before publishing:
 ./.venv/bin/python podcast-tools/gdrive_podcast_feed.py --config shows/personlighedspsykologi-en/config.github.json --dry-run
 ```
 
-Known non-blocking warnings can include duplicate Drive audio sources collapsed
+Known non-blocking warnings can include duplicate audio sources collapsed
 by the feed builder or missing content that is already tracked as a backlog.
 Structural errors, invariant failures, or unexpected item-count regressions are
 blockers.

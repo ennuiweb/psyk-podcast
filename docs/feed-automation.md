@@ -6,8 +6,9 @@ This document covers the shared feed pipeline for shows under `shows/<show-slug>
 
 ## Repo layout
 
-- `podcast-tools/gdrive_podcast_feed.py` - shared feed generator.
-- `podcast-tools/transcode_drive_media.py` - optional in-place Drive transcoding before feed generation.
+- `podcast-tools/gdrive_podcast_feed.py` - shared feed generator for both Drive and R2-backed shows.
+- `podcast-tools/storage_backends.py` - shared storage abstraction used by feed generation and migration paths.
+- `podcast-tools/transcode_drive_media.py` - optional in-place Drive transcoding before feed generation; skipped for object storage.
 - `shows/<show-slug>/` - one directory per show with config, metadata, docs, and generated feed artifacts.
 - `.github/workflows/generate-feed.yml` - matrix workflow that builds all configured shows.
 
@@ -42,6 +43,27 @@ Per-show metadata files:
 - `shows/<show-slug>/episode_metadata.json`
 - `shows/<show-slug>/episode_metadata.template.json`
 
+## Storage providers
+
+Shows now select a provider via `storage.provider`:
+
+- `drive` - legacy Google Drive flow with service account credentials and optional permission updates.
+- `r2` - Cloudflare R2 object storage with either:
+  - direct bucket listing via `storage.bucket`, `storage.endpoint`, and `R2_ACCESS_KEY_ID` / `R2_SECRET_ACCESS_KEY`
+  - or a checked-in manifest via `storage.manifest_file`
+
+Recommended R2 config fields:
+
+- `storage.provider`
+- `storage.bucket`
+- `storage.endpoint`
+- `storage.region`
+- `storage.prefix`
+- `storage.public_base_url`
+- `storage.manifest_file`
+
+The feed generator preserves `guid` / `episode_key` continuity by reusing values from the existing `episode_inventory.json` and by honoring `stable_guid` in manifest entries when present.
+
 ## Google setup
 
 One-time setup:
@@ -55,6 +77,8 @@ GitHub Actions secrets:
 
 - `GOOGLE_SERVICE_ACCOUNT_JSON`
 - `DRIVE_FOLDER_ID`
+- `R2_ACCESS_KEY_ID`
+- `R2_SECRET_ACCESS_KEY`
 
 The workflow writes:
 
@@ -68,10 +92,10 @@ The workflow writes:
 For each show it:
 
 1. checks secrets
-2. writes runtime credentials/config
-3. optionally transcodes matching Drive media
+2. resolves `storage.provider` and writes runtime config
+3. for Drive shows, writes runtime service account credentials and optionally transcodes matching media
 4. runs `gdrive_podcast_feed.py`
-5. for quiz-enabled subjects, syncs quiz links and rebuilds the subject content manifest
+5. for quiz-enabled subjects, syncs quiz links from either Drive or local NotebookLM output depending on provider, then rebuilds the subject content manifest
 6. commits generated artifacts back to `main` when needed
 
 Tracked feed artifacts live under:
@@ -113,6 +137,13 @@ In Apps Script:
 
 - set `CONFIG.drive.sharedDriveId` to the same shared drive
 
+## R2 notes
+
+- Prefer a custom domain or `storage.public_base_url` that points at the bucket’s public hostname.
+- Keep the bucket key structure stable across rewrites so object URLs remain deterministic.
+- If the bucket is listed directly, the workflow requires `R2_ACCESS_KEY_ID` and `R2_SECRET_ACCESS_KEY`.
+- If you want stricter migration control, use `storage.manifest_file` and store `stable_guid` per object.
+
 ## Metadata and images
 
 Per-episode overrides belong in:
@@ -128,6 +159,8 @@ Optional image automation:
 - JSON key parse failures usually mean `GOOGLE_SERVICE_ACCOUNT_JSON` was stored with extra quoting or base64.
 - Missing config errors should reference `shows/<show-slug>/config.github.json`; create it from `config.template.json`.
 - Anonymous download throttling is a Drive constraint, not a feed-generator bug.
+- R2 feeds without `storage.public_base_url` or a matching `public_link_template` will generate invalid enclosure URLs.
+- If an R2 migration changes object keys without preserving `stable_guid`, downstream clients may treat old episodes as new ones.
 
 ## Related docs
 

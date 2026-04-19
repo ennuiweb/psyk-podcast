@@ -15,6 +15,12 @@ from typing import Any, Dict, Iterable, List, Optional, Sequence, Set, Tuple
 from urllib.parse import quote, urlencode
 from zoneinfo import ZoneInfo
 
+SCRIPT_DIR = Path(__file__).resolve().parent
+if str(SCRIPT_DIR) not in sys.path:
+    sys.path.insert(0, str(SCRIPT_DIR))
+
+from storage_backends import build_storage_backend, resolve_storage_provider
+
 try:
     from google.oauth2 import service_account
     from googleapiclient.discovery import build
@@ -277,6 +283,9 @@ def build_episode_inventory_payload(
                 "podcast_kind": str(episode.get("podcast_kind") or "").strip(),
                 "source_name": str(episode.get("source_name") or "").strip(),
                 "source_drive_file_id": str(episode.get("source_drive_file_id") or "").strip(),
+                "source_storage_provider": str(episode.get("source_storage_provider") or "").strip(),
+                "source_storage_key": str(episode.get("source_storage_key") or "").strip(),
+                "source_path": str(episode.get("source_path") or "").strip(),
                 "sort_week": episode.get("sort_week"),
                 "sort_lecture": episode.get("sort_lecture"),
                 "sort_tail": bool(episode.get("sort_tail")),
@@ -285,13 +294,90 @@ def build_episode_inventory_payload(
         )
 
     return {
-        "version": 1,
+        "version": 2,
+        "storage_provider": resolve_storage_provider(config),
         "show_slug": show_slug,
         "subject_slug": subject_slug,
         "generated_at": last_build.isoformat(),
         "feed_path": str(output_feed),
         "episodes": serialized_episodes,
     }
+
+
+def _load_existing_inventory_identity_map(config: Dict[str, Any]) -> Dict[str, str]:
+    inventory_path = _output_inventory_path(config) or _default_inventory_path(
+        Path(str(config.get("output_feed") or "")).expanduser()
+    )
+    if not inventory_path.exists():
+        return {}
+    try:
+        payload = load_json(inventory_path)
+    except Exception as exc:  # noqa: BLE001
+        print(
+            f"Warning: failed to load existing inventory identity map from {inventory_path}: {exc}",
+            file=sys.stderr,
+        )
+        return {}
+
+    raw_episodes = payload.get("episodes")
+    if not isinstance(raw_episodes, list):
+        return {}
+
+    identity_map: Dict[str, str] = {}
+    for raw_episode in raw_episodes:
+        if not isinstance(raw_episode, dict):
+            continue
+        guid = str(raw_episode.get("guid") or raw_episode.get("episode_key") or "").strip()
+        if not guid:
+            continue
+        for key_name in (
+            "source_storage_key",
+            "source_path",
+            "source_drive_file_id",
+            "source_name",
+            "title",
+        ):
+            raw_key = str(raw_episode.get(key_name) or "").strip()
+            if raw_key and raw_key not in identity_map:
+                identity_map[raw_key] = guid
+    return identity_map
+
+
+def _apply_existing_identity(file_entry: Dict[str, Any], identity_map: Dict[str, str]) -> None:
+    if str(file_entry.get("stable_guid") or "").strip():
+        return
+    for candidate in (
+        file_entry.get("source_storage_key"),
+        file_entry.get("source_path"),
+        file_entry.get("id"),
+        file_entry.get("name"),
+    ):
+        key = str(candidate or "").strip()
+        if not key:
+            continue
+        existing_guid = identity_map.get(key)
+        if existing_guid:
+            file_entry["stable_guid"] = existing_guid
+            return
+
+
+def _render_public_media_url(file_entry: Dict[str, Any], public_link_template: str) -> str:
+    storage_key = str(
+        file_entry.get("source_storage_key")
+        or file_entry.get("id")
+        or file_entry.get("source_path")
+        or ""
+    ).strip()
+    source_path = str(file_entry.get("source_path") or storage_key).strip()
+    return public_link_template.format(
+        file_id=str(file_entry.get("id") or "").strip(),
+        file_name=str(file_entry.get("name") or "").strip(),
+        file_path=quote(storage_key, safe="/:@"),
+        source_path=quote(source_path, safe="/:@"),
+        raw_file_path=source_path,
+        raw_storage_key=storage_key,
+        storage_key=storage_key,
+    )
 
 
 def _is_retryable_http_error(exc: BaseException) -> bool:
@@ -3168,7 +3254,7 @@ def build_episode_entry(
     )
     if not pubdate_source:
         raise ValueError(
-            f"Missing publish timestamp for Drive file '{file_entry.get('id')}'"
+            f"Missing publish timestamp for media item '{file_entry.get('id')}'"
         )
     published_at = parse_datetime(pubdate_source)
 
@@ -3632,9 +3718,15 @@ def build_episode_entry(
         _resolve_pubdate_year_rewrite(feed_config),
     )
 
+    stable_guid = (
+        str(meta.get("guid") or "").strip()
+        or str(file_entry.get("stable_guid") or "").strip()
+        or str(file_entry.get("id") or "").strip()
+    )
+
     return {
-        "episode_key": meta.get("guid") or file_entry["id"],
-        "guid": meta.get("guid") or file_entry["id"],
+        "episode_key": stable_guid,
+        "guid": stable_guid,
         "title": meta.get("title") or base_title,
         "description": meta.get("description") or meta.get("summary") or base_title,
         "link": meta.get("link") or feed_config.get("link"),
@@ -3654,7 +3746,14 @@ def build_episode_entry(
             else None
         ),
         "source_name": str(file_entry.get("name") or "").strip(),
-        "source_drive_file_id": str(file_entry.get("id") or "").strip(),
+        "source_drive_file_id": str(file_entry.get("source_drive_file_id") or file_entry.get("id") or "").strip(),
+        "source_storage_provider": str(file_entry.get("source_storage_provider") or "drive").strip(),
+        "source_storage_key": str(
+            file_entry.get("source_storage_key")
+            or file_entry.get("id")
+            or ""
+        ).strip(),
+        "source_path": str(file_entry.get("source_path") or file_entry.get("name") or "").strip(),
         "sort_source_kind": (
             "weekly_overview" if is_weekly_overview else ("slide" if is_slide else "reading")
         ),
@@ -3662,7 +3761,7 @@ def build_episode_entry(
         "sort_week": sort_week_number,
         "sort_lecture": lecture_number,
         "sort_tail": is_unassigned_tail,
-        "audio_url": public_link_template.format(file_id=file_entry["id"], file_name=file_entry["name"]),
+        "audio_url": _render_public_media_url(file_entry, public_link_template),
     }
 
 
@@ -3782,6 +3881,7 @@ def main() -> None:
     args = parser.parse_args()
 
     config = load_json(args.config)
+    config["__config_path__"] = str(args.config.resolve())
     feed_cfg = config.get("feed", {})
     try:
         validate_feed_block_config(feed_cfg)
@@ -3945,19 +4045,19 @@ def main() -> None:
                     file=sys.stderr,
                 )
 
-    service_account_path = Path(config["service_account_file"])
-    drive_service = build_drive_service(service_account_path)
-    folder_id = config["drive_folder_id"]
-    public_template = config.get(
-        "public_link_template", "https://drive.google.com/uc?export=download&id={file_id}"
-    )
-    shared_drive_id = config.get("shared_drive_id") or None
-    supports_all_drives = bool(config.get("include_items_from_all_drives", shared_drive_id is not None))
-    skip_permission_updates = bool(config.get("skip_permission_updates", False))
+    storage = build_storage_backend(config)
+    provider = resolve_storage_provider(config)
+    storage_cfg = config.get("storage") if isinstance(config.get("storage"), dict) else {}
+    public_base_url = str(storage_cfg.get("public_base_url") or "").strip().rstrip("/")
+    default_public_template = "https://drive.google.com/uc?export=download&id={file_id}"
+    if provider != "drive" and public_base_url:
+        default_public_template = f"{public_base_url}/{{file_path}}"
+    public_template = str(config.get("public_link_template") or default_public_template)
     allowed_mime_types = config.get("allowed_mime_types")
     if isinstance(allowed_mime_types, str):
         allowed_mime_types = [allowed_mime_types]
     filters = parse_filters(config.get("filters"))
+    existing_identity_map = _load_existing_inventory_identity_map(config)
 
     auto_spec: Optional[AutoSpec] = None
     auto_spec_path_value = config.get("auto_spec")
@@ -4001,9 +4101,6 @@ def main() -> None:
                 resolved_docs, mode=doc_marked_titles_mode
             )
 
-    folder_metadata_cache: Dict[str, Dict[str, Any]] = {}
-    folder_path_cache: Dict[str, List[str]] = {}
-
     artwork_enabled = bool(config.get("episode_image_from_infographics", False))
     image_lookup: Dict[Tuple[Tuple[str, ...], str], Dict[str, Any]] = {}
     image_lookup_canonical: Dict[Tuple[Tuple[str, ...], str], Dict[str, Any]] = {}
@@ -4020,25 +4117,9 @@ def main() -> None:
             ext if ext.startswith(".") else f".{ext}"
             for ext in (str(ext).lower() for ext in preferred_exts)
         ]
-        image_files = list_drive_files(
-            drive_service,
-            folder_id,
-            drive_id=shared_drive_id,
-            supports_all_drives=supports_all_drives,
-            mime_type_filters=image_mime_types,
-        )
+        image_files = storage.list_media_files(mime_type_filters=image_mime_types)
         for image_file in image_files:
-            parents = image_file.get("parents") or []
-            folder_names: List[str] = []
-            if parents:
-                folder_names = build_folder_path(
-                    drive_service,
-                    parents[0],
-                    folder_metadata_cache,
-                    folder_path_cache,
-                    root_folder_id=folder_id,
-                    supports_all_drives=supports_all_drives,
-                )
+            folder_names = storage.build_folder_path(image_file)
             raw_stem = _normalize_stem(image_file.get("name", ""))
             canonical_stem = _canonicalize_episode_stem(image_file.get("name", ""))
             if not raw_stem and not canonical_stem:
@@ -4061,50 +4142,33 @@ def main() -> None:
                     {"file": image_file, "folder_key": folder_key}
                 )
 
-    drive_files = list_audio_files(
-        drive_service,
-        folder_id,
-        drive_id=shared_drive_id,
-        supports_all_drives=supports_all_drives,
-        mime_type_filters=allowed_mime_types,
-    )
-    drive_files = _collapse_duplicate_drive_files(drive_files)
+    media_files = storage.list_media_files(mime_type_filters=allowed_mime_types)
+    if provider == "drive":
+        media_files = _collapse_duplicate_drive_files(media_files)
 
     artwork_stats = {"matched": 0, "missing": 0, "ambiguous": 0}
     artwork_unmatched: List[str] = []
     artwork_ambiguous: List[str] = []
 
     episodes: List[Dict[str, Any]] = []
-    for drive_file in drive_files:
-        parents = drive_file.get("parents") or []
-        folder_names: List[str] = []
-        if parents:
-            folder_names = build_folder_path(
-                drive_service,
-                parents[0],
-                folder_metadata_cache,
-                folder_path_cache,
-                root_folder_id=folder_id,
-                supports_all_drives=supports_all_drives,
-            )
-        if not matches_filters(drive_file, folder_names, filters):
+    for media_file in media_files:
+        _apply_existing_identity(media_file, existing_identity_map)
+        folder_names = storage.build_folder_path(media_file)
+        if not matches_filters(media_file, folder_names, filters):
             continue
 
-        permission_added = ensure_public_permission(
-            drive_service,
-            drive_file["id"],
+        permission_added = storage.ensure_public_access(
+            media_file,
             dry_run=args.dry_run,
-            supports_all_drives=supports_all_drives,
-            skip_permission_updates=skip_permission_updates,
         )
         if permission_added:
-            print(f"Enabled link sharing for {drive_file['name']} ({drive_file['id']})")
+            print(f"Enabled link sharing for {media_file['name']} ({media_file['id']})")
 
         episode_image_url: Optional[str] = None
         if artwork_enabled:
             folder_key = _folder_key(folder_names)
-            raw_stem = _normalize_stem(drive_file.get("name", ""))
-            canonical_stem = _canonicalize_episode_stem(drive_file.get("name", ""))
+            raw_stem = _normalize_stem(media_file.get("name", ""))
+            canonical_stem = _canonicalize_episode_stem(media_file.get("name", ""))
             image_file: Optional[Dict[str, Any]] = None
             status = "missing"
             if image_lookup or image_candidates_by_stem:
@@ -4124,20 +4188,18 @@ def main() -> None:
                     preferred_exts=preferred_exts,
                 )
             if image_file:
-                artwork_permission_added = ensure_public_permission(
-                    drive_service,
-                    image_file["id"],
+                artwork_permission_added = storage.ensure_public_access(
+                    image_file,
                     dry_run=args.dry_run,
-                    supports_all_drives=supports_all_drives,
-                    skip_permission_updates=skip_permission_updates,
                 )
                 if artwork_permission_added:
                     print(
                         "Enabled link sharing for artwork "
                         f"{image_file['name']} ({image_file['id']})"
                     )
-                episode_image_url = public_template.format(
-                    file_id=image_file["id"], file_name=image_file["name"]
+                episode_image_url = storage.build_public_url(
+                    image_file,
+                    public_link_template=public_template,
                 )
                 artwork_stats["matched"] += 1
             else:
@@ -4145,18 +4207,18 @@ def main() -> None:
                 if status == "ambiguous":
                     artwork_stats["ambiguous"] += 1
                     artwork_ambiguous.append(
-                        f"{drive_file.get('name', '')} (folder: {folder_path})"
+                        f"{media_file.get('name', '')} (folder: {folder_path})"
                     )
                 else:
                     artwork_stats["missing"] += 1
                     artwork_unmatched.append(
-                        f"{drive_file.get('name', '')} (folder: {folder_path})"
+                        f"{media_file.get('name', '')} (folder: {folder_path})"
                     )
 
-        auto_meta = auto_spec.metadata_for(drive_file, folder_names) if auto_spec else None
+        auto_meta = auto_spec.metadata_for(media_file, folder_names) if auto_spec else None
         episodes.append(
             build_episode_entry(
-                drive_file,
+                media_file,
                 feed_cfg,
                 overrides,
                 public_link_template=public_template,

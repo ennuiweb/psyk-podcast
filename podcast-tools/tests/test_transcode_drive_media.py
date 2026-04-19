@@ -1,5 +1,10 @@
 import importlib.util
+import io
+import json
+import sys
+import tempfile
 import unittest
+from contextlib import redirect_stdout
 from pathlib import Path
 
 
@@ -96,6 +101,40 @@ class TranscodeDriveMediaTests(unittest.TestCase):
         )
 
         self.assertEqual(filtered, source_files)
+
+    def test_main_skips_non_drive_storage_provider(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            config_path = Path(tmpdir) / "config.json"
+            config_path.write_text(
+                json.dumps(
+                    {
+                        "storage": {
+                            "provider": "r2",
+                            "bucket": "freudd",
+                            "endpoint": "https://example.r2.cloudflarestorage.com",
+                        },
+                        "transcode": {
+                            "enabled": True,
+                        },
+                    }
+                ),
+                encoding="utf-8",
+            )
+
+            stdout = io.StringIO()
+            original_argv = sys.argv
+            sys.argv = [
+                "transcode_drive_media.py",
+                "--config",
+                str(config_path),
+            ]
+            try:
+                with redirect_stdout(stdout):
+                    self.mod.main()
+            finally:
+                sys.argv = original_argv
+
+            self.assertIn("Transcode is skipped for storage provider 'r2'", stdout.getvalue())
 
 
 if __name__ == "__main__":

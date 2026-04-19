@@ -20,6 +20,8 @@ jobs:
       SERVICE_ACCOUNT_JSON_SOCIAL_PSYCHOLOGY: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON_SOCIAL_PSYCHOLOGY }}
       SERVICE_ACCOUNT_JSON_INTRO_VT: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON_INTRO_VT }}
       SERVICE_ACCOUNT_JSON_BERLINGSKE: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON_BERLINGSKE }}
+      R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+      R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
       # TTS feeds temporarily disabled
       DRIVE_FOLDER_ID: ${{ secrets.DRIVE_FOLDER_ID }}
       DRIVE_FOLDER_ID_SOCIAL_PSYCHOLOGY: ${{ secrets.DRIVE_FOLDER_ID_SOCIAL_PSYCHOLOGY }}
@@ -27,24 +29,55 @@ jobs:
       DRIVE_FOLDER_ID_BERLINGSKE: ${{ secrets.DRIVE_FOLDER_ID_BERLINGSKE }}
       # DRIVE_FOLDER_ID_INTRO_VT_TSS / DRIVE_FOLDER_ID_SOCIAL_PSYCHOLOGY_TTS not required while TTS feeds paused
     steps:
-      - name: Check required secrets
-        env:
-          SHOW: ${{ matrix.show }}
-        run: |
-          show_upper=${SHOW^^}
-          show_upper=${show_upper//-/_}
-          show_key="SERVICE_ACCOUNT_JSON_${show_upper}"
-          show_secret=${!show_key}
-
-          if [[ -z "${show_secret}" && -z "${SERVICE_ACCOUNT_JSON_DEFAULT}" ]]; then
-            echo "Missing service account secret: set ${show_key} or GOOGLE_SERVICE_ACCOUNT_JSON." >&2
-            exit 1
-          fi
-
       - name: Check out repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
+      - name: Resolve storage provider
+        id: storage
+        env:
+          SHOW: ${{ matrix.show }}
+        run: |
+          provider="$(python3 - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          show = os.environ["SHOW"]
+          config_path = Path(f"shows/{show}/config.github.json")
+          data = json.loads(config_path.read_text(encoding="utf-8"))
+          storage = data.get("storage") if isinstance(data.get("storage"), dict) else {}
+          provider = str(storage.get("provider") or "drive").strip().lower() or "drive"
+          print(provider)
+          PY
+          )"
+          echo "provider=${provider}" >> "$GITHUB_OUTPUT"
+
+      - name: Check required secrets
+        env:
+          SHOW: ${{ matrix.show }}
+          STORAGE_PROVIDER: ${{ steps.storage.outputs.provider }}
+        run: |
+          if [[ "${STORAGE_PROVIDER}" == "drive" ]]; then
+            show_upper=${SHOW^^}
+            show_upper=${show_upper//-/_}
+            show_key="SERVICE_ACCOUNT_JSON_${show_upper}"
+            show_secret=${!show_key}
+
+            if [[ -z "${show_secret}" && -z "${SERVICE_ACCOUNT_JSON_DEFAULT}" ]]; then
+              echo "Missing service account secret: set ${show_key} or GOOGLE_SERVICE_ACCOUNT_JSON." >&2
+              exit 1
+            fi
+          elif [[ "${STORAGE_PROVIDER}" == "r2" ]]; then
+            if [[ -z "${R2_ACCESS_KEY_ID}" || -z "${R2_SECRET_ACCESS_KEY}" ]]; then
+              echo "Missing R2 credentials: set R2_ACCESS_KEY_ID and R2_SECRET_ACCESS_KEY." >&2
+              exit 1
+            fi
+          else
+            echo "Unsupported storage provider: ${STORAGE_PROVIDER}" >&2
+            exit 1
+          fi
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -55,6 +88,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Write service account credentials
+        if: steps.storage.outputs.provider == 'drive'
         env:
           SHOW: ${{ matrix.show }}
         run: |
@@ -78,13 +112,15 @@ jobs:
       - name: Prepare runtime config
         env:
           SHOW: ${{ matrix.show }}
+          STORAGE_PROVIDER: ${{ steps.storage.outputs.provider }}
         run: |
-          python <<'PY'
+          python3 <<'PY'
           import json
           import os
           from pathlib import Path
 
           show = os.environ["SHOW"]
+          provider = os.environ["STORAGE_PROVIDER"]
           show_upper = show.upper().replace('-', '_')
           source_path = Path(f"shows/{show}/config.github.json")
           output_path = Path(f"shows/{show}/config.runtime.json")
@@ -92,32 +128,33 @@ jobs:
           with source_path.open("r", encoding="utf-8") as fh:
               data = json.load(fh)
 
-          secret_key = f"DRIVE_FOLDER_ID_{show_upper}"
-          drive_id = os.environ.get(secret_key)
-          fallback_drive_id = os.environ.get("DRIVE_FOLDER_ID")
+          if provider == "drive":
+              secret_key = f"DRIVE_FOLDER_ID_{show_upper}"
+              drive_id = os.environ.get(secret_key)
+              fallback_drive_id = os.environ.get("DRIVE_FOLDER_ID")
 
-          placeholder = "__DRIVE_FOLDER_ID__"
-          existing_id = str(data.get("drive_folder_id", ""))
+              placeholder = "__DRIVE_FOLDER_ID__"
+              existing_id = str(data.get("drive_folder_id", ""))
 
-          if drive_id:
-              data["drive_folder_id"] = drive_id
-          elif placeholder in existing_id:
-              if fallback_drive_id:
+              if drive_id:
+                  data["drive_folder_id"] = drive_id
+              elif placeholder in existing_id:
+                  if fallback_drive_id:
+                      data["drive_folder_id"] = fallback_drive_id
+                  else:
+                      raise RuntimeError(
+                          f"Drive folder ID placeholder found in {source_path}; set secret '{secret_key}' or 'DRIVE_FOLDER_ID'."
+                      )
+              elif fallback_drive_id and existing_id == "":
                   data["drive_folder_id"] = fallback_drive_id
-              else:
-                  raise RuntimeError(
-                      f"Drive folder ID placeholder found in {source_path}; set secret '{secret_key}' or 'DRIVE_FOLDER_ID'."
-                  )
-          elif fallback_drive_id and existing_id == "":
-              # Allow defining baseline IDs for new shows via shared secret when none is set.
-              data["drive_folder_id"] = fallback_drive_id
 
-          data["service_account_file"] = f"shows/{show}/service-account.json"
+              data["service_account_file"] = f"shows/{show}/service-account.json"
 
           output_path.write_text(json.dumps(data, indent=2))
           PY
 
       - name: Check Drive for videos needing transcode
+        if: steps.storage.outputs.provider == 'drive'
         id: probe_transcode
         env:
           SHOW: ${{ matrix.show }}
@@ -128,11 +165,11 @@ jobs:
             --github-output "$GITHUB_OUTPUT"
 
       - name: Install ffmpeg
-        if: steps.probe_transcode.outputs.needs_transcode == 'true'
+        if: steps.storage.outputs.provider == 'drive' && steps.probe_transcode.outputs.needs_transcode == 'true'
         run: sudo apt-get update && sudo apt-get install -y ffmpeg
 
       - name: Transcode Drive media
-        if: steps.probe_transcode.outputs.needs_transcode == 'true'
+        if: steps.storage.outputs.provider == 'drive' && steps.probe_transcode.outputs.needs_transcode == 'true'
         env:
           SHOW: ${{ matrix.show }}
         run: python podcast-tools/transcode_drive_media.py --config shows/${SHOW}/config.runtime.json
@@ -148,6 +185,7 @@ jobs:
         if: contains(fromJSON('["personlighedspsykologi-en","bioneuro"]'), matrix.show)
         env:
           SHOW: ${{ matrix.show }}
+          STORAGE_PROVIDER: ${{ steps.storage.outputs.provider }}
           DROPLET_SSH_KEY: ${{ secrets.DIGITALOCEAN_SSH_KEY }}
         run: |
           case "${SHOW}" in
@@ -155,35 +193,19 @@ jobs:
               subject_slug="personlighedspsykologi"
               flat_id_include_subject=""
               remote_root="/var/www/quizzes/personlighedspsykologi"
+              output_root="notebooklm-podcast-auto/personlighedspsykologi/output"
               ;;
             bioneuro)
               subject_slug="bioneuro"
               flat_id_include_subject="--flat-id-include-subject"
               remote_root="/var/www/quizzes/bioneuro"
+              output_root="notebooklm-podcast-auto/bioneuro/output"
               ;;
             *)
               echo "::error::Unexpected show for quiz sync: ${SHOW}"
               exit 1
               ;;
           esac
-          download_root="${RUNNER_TEMP}/drive-quizzes/${subject_slug}"
-
-          cmd=(
-            python podcast-tools/sync_drive_quiz_links.py
-            --config "shows/${SHOW}/config.runtime.json"
-            --download-root "${download_root}"
-            --subject-slug "${subject_slug}"
-            --language-tag "[EN]"
-            --quiz-path-mode flat-id
-            --flat-id-len 8
-            --quiz-difficulty any
-            --fallback-derive-mp3-names
-            --remote-root "${remote_root}"
-          )
-          if [[ -n "${flat_id_include_subject}" ]]; then
-            cmd+=("${flat_id_include_subject}")
-          fi
-
           if [[ -z "${DROPLET_SSH_KEY}" ]]; then
             echo "::error::DIGITALOCEAN_SSH_KEY not set; cannot sync quizzes for ${SHOW}."
             exit 1
@@ -192,14 +214,53 @@ jobs:
           key_path="${RUNNER_TEMP}/droplet_key"
           echo "${DROPLET_SSH_KEY}" > "${key_path}"
           chmod 600 "${key_path}"
-          "${cmd[@]}" --upload --ssh-key "${key_path}"
 
-          local_json_count="$(find "${download_root}" -type f -name '*.json' | wc -l | tr -d '[:space:]')"
+          if [[ "${STORAGE_PROVIDER}" == "drive" ]]; then
+            download_root="${RUNNER_TEMP}/drive-quizzes/${subject_slug}"
+            cmd=(
+              python podcast-tools/sync_drive_quiz_links.py
+              --config "shows/${SHOW}/config.runtime.json"
+              --download-root "${download_root}"
+              --subject-slug "${subject_slug}"
+              --language-tag "[EN]"
+              --quiz-path-mode flat-id
+              --flat-id-len 8
+              --quiz-difficulty any
+              --fallback-derive-mp3-names
+              --remote-root "${remote_root}"
+            )
+            if [[ -n "${flat_id_include_subject}" ]]; then
+              cmd+=("${flat_id_include_subject}")
+            fi
+            "${cmd[@]}" --upload --ssh-key "${key_path}"
+            local_probe_root="${download_root}"
+          else
+            cmd=(
+              python scripts/sync_quiz_links.py
+              --output-root "${output_root}"
+              --links-file "shows/${SHOW}/quiz_links.json"
+              --subject-slug "${subject_slug}"
+              --language-tag "[EN]"
+              --quiz-path-mode flat-id
+              --flat-id-len 8
+              --quiz-difficulty any
+              --fallback-derive-mp3-names
+              --remote-root "${remote_root}"
+              --ssh-key "${key_path}"
+            )
+            if [[ -n "${flat_id_include_subject}" ]]; then
+              cmd+=("${flat_id_include_subject}")
+            fi
+            "${cmd[@]}"
+            local_probe_root="${output_root}"
+          fi
+
+          local_json_count="$(find "${local_probe_root}" -type f -name '*.json' | wc -l | tr -d '[:space:]')"
           if [[ "${local_json_count}" -le 0 ]]; then
             echo "::error::No quiz JSON files downloaded for ${SHOW}; aborting."
             exit 1
           fi
-          sample_json="$(find "${download_root}" -type f -name '*.json' -print -quit)"
+          sample_json="$(find "${local_probe_root}" -type f -name '*.json' -print -quit)"
           if [[ -z "${sample_json}" ]]; then
             echo "::error::Unable to select sample quiz file for ${SHOW}; aborting."
             exit 1

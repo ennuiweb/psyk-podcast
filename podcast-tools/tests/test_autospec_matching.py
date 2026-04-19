@@ -140,6 +140,39 @@ class AutoSpecMatchingTests(unittest.TestCase):
         self.assertNotIn("(EN)", xml)
         self.assertNotIn("[EN]", xml)
 
+    def test_build_episode_entry_prefers_stable_guid_and_storage_key_url(self):
+        mod = _load_feed_module()
+        episode = mod.build_episode_entry(
+            {
+                "id": "r2-key",
+                "name": "W01L1 - Intro [EN].mp3",
+                "mimeType": "audio/mpeg",
+                "size": 123,
+                "createdTime": "2026-02-02T10:00:00+00:00",
+                "source_storage_provider": "r2",
+                "source_storage_key": "shows/personal/W01L1 - Intro [EN].mp3",
+                "source_path": "W01L1 - Intro [EN].mp3",
+                "stable_guid": "legacy-drive-guid",
+            },
+            {
+                "title": "Test feed",
+                "link": "https://example.com",
+                "description": "Test feed",
+                "language": "en",
+            },
+            overrides={},
+            public_link_template="https://audio.example.com/{file_path}",
+        )
+
+        self.assertEqual(episode["guid"], "legacy-drive-guid")
+        self.assertEqual(episode["episode_key"], "legacy-drive-guid")
+        self.assertEqual(
+            episode["audio_url"],
+            "https://audio.example.com/shows/personal/W01L1%20-%20Intro%20%5BEN%5D.mp3",
+        )
+        self.assertEqual(episode["source_storage_provider"], "r2")
+        self.assertEqual(episode["source_storage_key"], "shows/personal/W01L1 - Intro [EN].mp3")
+
     def test_build_feed_document_defaults_to_published_at_desc_sort(self):
         mod = _load_feed_module()
 

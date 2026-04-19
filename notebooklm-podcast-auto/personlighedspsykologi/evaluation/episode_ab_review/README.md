@@ -109,6 +109,9 @@ Required before a real candidate run:
 - NotebookLM auth/profile must work as usual.
 - `GEMINI_API_KEY` or `GOOGLE_API_KEY` should be set so automatic meta-prompting
   can materialize the missing `*.analysis.md` sidecars.
+- Automatic meta-prompting now fails hard if a source PDF cannot yield readable
+  text for Gemini pre-analysis. There is intentionally no summary-cache fallback
+  for unreadable PDFs.
 - Do not paste API keys into committed files. Prefer exporting the key in the
   shell for the current session or loading it from a local secret manager.
 

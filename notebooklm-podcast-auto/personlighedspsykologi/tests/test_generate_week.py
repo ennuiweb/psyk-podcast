@@ -568,6 +568,15 @@ class GenerateWeekTests(unittest.TestCase):
         self.assertIn(".analysis.md", normalized["per_source_suffixes"])
         self.assertIn("week.analysis.md", normalized["weekly_sidecars"])
 
+    def test_extract_pdf_text_for_meta_prompt_fails_when_pdf_has_no_text(self):
+        mod = _load_module()
+        fake_reader = mock.Mock()
+        fake_reader.pages = [mock.Mock(extract_text=mock.Mock(return_value=""))]
+
+        with mock.patch.dict("sys.modules", {"pypdf": mock.Mock(PdfReader=mock.Mock(return_value=fake_reader))}):
+            with self.assertRaises(mod.MetaPromptInputError):
+                mod._extract_pdf_text_for_meta_prompt(Path("/tmp/scan.pdf"), 1000)
+
     def test_normalize_meta_prompting_rejects_unknown_provider(self):
         mod = _load_module()
 
@@ -649,6 +658,42 @@ class GenerateWeekTests(unittest.TestCase):
             self.assertIn(week_dir / "week.analysis.md", overrides)
             self.assertFalse((week_dir / "Foucault.analysis.md").exists())
             self.assertTrue(any(line.startswith("META WOULD GENERATE:") for line in lines))
+
+    def test_prepare_auto_meta_prompt_overrides_fails_hard_on_unreadable_pdf(self):
+        mod = _load_module()
+        with tempfile.TemporaryDirectory() as tmpdir:
+            week_dir = Path(tmpdir) / "W01L1"
+            week_dir.mkdir(parents=True, exist_ok=True)
+            reading_path = week_dir / "Foucault.pdf"
+            _touch(reading_path)
+            reading_item = mod.SourceItem(
+                path=reading_path,
+                base_name="Foucault",
+                source_type="reading",
+            )
+
+            with mock.patch.object(
+                mod,
+                "_meta_prompt_backend_for_automatic",
+                return_value=mod.MetaPromptBackend(provider="gemini", client=object(), support=object()),
+            ), mock.patch.object(
+                mod,
+                "generate_meta_prompt_markdown",
+                side_effect=mod.MetaPromptInputError("no extractable text found in PDF Foucault.pdf"),
+            ):
+                with self.assertRaises(SystemExit):
+                    mod.prepare_auto_meta_prompt_overrides(
+                        course_title="Personlighedspsykologi",
+                        week_dir=week_dir,
+                        week_label="W01L1",
+                        reading_sources=[reading_item],
+                        generation_sources=[reading_item],
+                        generate_weekly_overview=False,
+                        meta_prompting=mod.normalize_meta_prompting(
+                            {"automatic": {"enabled": True, "fail_open": True}}
+                        ),
+                        dry_run=False,
+                    )
 
     def test_generate_meta_prompt_markdown_wraps_non_rate_limit_errors(self):
         mod = _load_module()

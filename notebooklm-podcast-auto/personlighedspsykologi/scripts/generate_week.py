@@ -216,6 +216,10 @@ class MetaPromptBackend(NamedTuple):
     support: object | None = None
 
 
+class MetaPromptInputError(RuntimeError):
+    pass
+
+
 class ReviewManifestFilter(NamedTuple):
     weekly_lectures: set[str]
     per_reading_paths: set[str]
@@ -1149,10 +1153,10 @@ def _extract_pdf_text_for_meta_prompt(path: Path, max_chars: int) -> str | None:
             if total_chars >= max_chars:
                 break
     except Exception as exc:
-        raise RuntimeError(f"failed to extract PDF text from {path.name}: {exc}") from exc
+        raise MetaPromptInputError(f"failed to extract PDF text from {path.name}: {exc}") from exc
 
     if not pages:
-        return None
+        raise MetaPromptInputError(f"no extractable text found in PDF {path.name}")
     text = "\n\n".join(pages).strip()
     if len(text) > max_chars:
         text = text[:max_chars].rstrip() + "\n[...truncated...]"
@@ -1497,6 +1501,10 @@ def prepare_auto_meta_prompt_overrides(
                 meta_prompting=meta_prompting,
                 backend=backend,
             )
+        except MetaPromptInputError as exc:
+            raise SystemExit(
+                f"automatic meta-prompting failed for {job.label}: {exc}"
+            ) from exc
         except RuntimeError as exc:
             if automatic.get("fail_open", True):
                 _warn_meta_prompt_once(f"automatic meta-prompting skipped {job.label}: {exc}")

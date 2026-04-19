@@ -117,7 +117,7 @@
     "automatic": {
       "enabled": true,
       "provider": "gemini",
-      "model": "gemini-2.5-pro",
+      "model": "gemini-3.1-pro-preview",
       "fail_open": true,
       "default_per_source_output_suffix": ".analysis.md",
       "default_weekly_output_name": "week.analysis.md",

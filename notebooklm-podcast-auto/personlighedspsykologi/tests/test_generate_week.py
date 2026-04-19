@@ -559,6 +559,8 @@ class GenerateWeekTests(unittest.TestCase):
                 "per_source_suffixes": [".prompt.md"],
                 "weekly_sidecars": ["week.prompt.md"],
                 "automatic": {
+                    "provider": "gemini",
+                    "model": "gemini-2.5-pro",
                     "default_per_source_output_suffix": ".analysis.md",
                     "default_weekly_output_name": "week.analysis.md",
                 },
@@ -567,15 +569,13 @@ class GenerateWeekTests(unittest.TestCase):
 
         self.assertIn(".analysis.md", normalized["per_source_suffixes"])
         self.assertIn("week.analysis.md", normalized["weekly_sidecars"])
+        self.assertEqual(normalized["automatic"]["model"], mod.GEMINI_META_PROMPT_MODEL)
 
-    def test_extract_pdf_text_for_meta_prompt_fails_when_pdf_has_no_text(self):
+    def test_extract_source_excerpt_for_meta_prompt_rejects_local_pdf_extraction(self):
         mod = _load_module()
-        fake_reader = mock.Mock()
-        fake_reader.pages = [mock.Mock(extract_text=mock.Mock(return_value=""))]
 
-        with mock.patch.dict("sys.modules", {"pypdf": mock.Mock(PdfReader=mock.Mock(return_value=fake_reader))}):
-            with self.assertRaises(mod.MetaPromptInputError):
-                mod._extract_pdf_text_for_meta_prompt(Path("/tmp/scan.pdf"), 1000)
+        with self.assertRaises(mod.MetaPromptInputError):
+            mod._extract_source_excerpt_for_meta_prompt(Path("/tmp/scan.pdf"), 1000)
 
     def test_normalize_meta_prompting_rejects_unknown_provider(self):
         mod = _load_module()
@@ -679,7 +679,7 @@ class GenerateWeekTests(unittest.TestCase):
             ), mock.patch.object(
                 mod,
                 "generate_meta_prompt_markdown",
-                side_effect=mod.MetaPromptInputError("no extractable text found in PDF Foucault.pdf"),
+                side_effect=mod.MetaPromptInputError("failed to upload PDF Foucault.pdf to Gemini"),
             ):
                 with self.assertRaises(SystemExit):
                     mod.prepare_auto_meta_prompt_overrides(
@@ -715,7 +715,7 @@ class GenerateWeekTests(unittest.TestCase):
         fake_client.messages.create.side_effect = ValueError("boom")
         with mock.patch.object(
             mod,
-            "_build_meta_prompt_request",
+            "_build_text_meta_prompt_request",
             return_value=("system", "user"),
         ):
             with self.assertRaises(RuntimeError) as ctx:
@@ -728,32 +728,41 @@ class GenerateWeekTests(unittest.TestCase):
 
         self.assertIn("meta prompt generation failed for Foucault", str(ctx.exception))
 
-    def test_generate_meta_prompt_markdown_supports_gemini_backend(self):
+    def test_generate_meta_prompt_markdown_supports_gemini_backend_with_pdf_uploads(self):
         mod = _load_module()
-        job = mod.MetaPromptJob(
-            prompt_type="single_reading",
-            output_path=Path("/tmp/Foucault.analysis.md"),
-            label="Foucault",
-            source_items=(
-                mod.SourceItem(
-                    path=Path("/tmp/Foucault.pdf"),
-                    base_name="Foucault",
-                    source_type="reading",
+        with tempfile.TemporaryDirectory() as tmpdir:
+            pdf_path = Path(tmpdir) / "Foucault.pdf"
+            _touch(pdf_path, b"%PDF-1.4")
+            job = mod.MetaPromptJob(
+                prompt_type="single_reading",
+                output_path=Path(tmpdir) / "Foucault.analysis.md",
+                label="Foucault",
+                source_items=(
+                    mod.SourceItem(
+                        path=pdf_path,
+                        base_name="Foucault",
+                        source_type="reading",
+                    ),
                 ),
-            ),
-        )
+            )
 
-        fake_response = mock.Mock(text="## Core distinctions\n- Focus on power relations.")
-        fake_client = mock.Mock()
-        fake_client.models.generate_content.return_value = fake_response
-        fake_support = mock.Mock()
-        fake_support.GenerateContentConfig.return_value = {"system_instruction": "system"}
+            fake_response = mock.Mock(text="## Core distinctions\n- Focus on power relations.")
+            fake_client = mock.Mock()
+            uploaded = mock.Mock()
+            uploaded.name = "files/foucault"
+            uploaded.uri = "gs://gemini/foucault.pdf"
+            uploaded.mime_type = "application/pdf"
+            uploaded.state = None
+            fake_client.files.upload.return_value = uploaded
+            fake_client.models.generate_content.return_value = fake_response
 
-        with mock.patch.object(
-            mod,
-            "_build_meta_prompt_request",
-            return_value=("system", "user"),
-        ):
+            fake_support = mock.Mock()
+            fake_support.GenerateContentConfig.return_value = {"system_instruction": "system"}
+            fake_support.Part.from_text.side_effect = lambda *, text: {"type": "text", "text": text}
+            fake_support.Part.from_uri.side_effect = (
+                lambda *, file_uri, mime_type: {"type": "file", "file_uri": file_uri, "mime_type": mime_type}
+            )
+
             content = mod.generate_meta_prompt_markdown(
                 job=job,
                 course_title="Personlighedspsykologi",
@@ -766,7 +775,12 @@ class GenerateWeekTests(unittest.TestCase):
             )
 
         self.assertIn("power relations", content)
+        fake_client.files.upload.assert_called_once()
         fake_client.models.generate_content.assert_called_once()
+        fake_client.files.delete.assert_called_once_with(name="files/foucault")
+        model_call = fake_client.models.generate_content.call_args.kwargs
+        self.assertEqual(model_call["model"], mod.GEMINI_META_PROMPT_MODEL)
+        self.assertTrue(any(part.get("type") == "file" for part in model_call["contents"]))
 
     def test_prepare_auto_meta_prompt_overrides_fail_open_on_generic_generation_error(self):
         mod = _load_module()

@@ -91,9 +91,10 @@ python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_week.py 
   - Sidecars are appended under the configured `meta_prompting.heading`.
   - Sidecars are excluded from the source inventory, so they are never uploaded to NotebookLM as course materials.
   - `meta_prompting.automatic` can fill in missing sidecars automatically before audio generation. Existing sidecars still win; automation only fills gaps.
-  - Automatic mode defaults to Gemini Developer API with `provider=gemini` and `model=gemini-2.5-pro`.
-  - Gemini mode needs `GEMINI_API_KEY` or `GOOGLE_API_KEY` plus the `google-genai` and `pypdf` packages from `requirements.txt`.
-  - Anthropic is still supported as `provider=anthropic` if you explicitly want that path, and then it needs `ANTHROPIC_API_KEY` plus the `anthropic` package.
+  - Automatic mode now always pins Gemini to `provider=gemini` with `model=gemini-3.1-pro-preview`.
+  - Gemini mode sends PDF sources directly through the Gemini Files API instead of extracting local PDF text first.
+  - Gemini mode needs `GEMINI_API_KEY` or `GOOGLE_API_KEY` plus the `google-genai` package from `requirements.txt`.
+  - Anthropic is still supported as `provider=anthropic` for non-PDF text sources only; PDFs are not extracted locally anymore.
   - Dry runs can resolve automatic meta notes in memory so you can inspect likely resolved prompts with `--print-resolved-prompts`, but they do not write sidecar files and a later real run may still differ unless you materialize a sidecar first.
 - Standalone helper: `python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_meta_prompts.py --prompt-type single_reading --reading-source /path/to/Foucault.pdf --output /tmp/Foucault.analysis.md --dry-run`
 - Use `--print-resolved-prompts` together with `--dry-run` when you want to inspect the fully assembled audio prompt before generation.

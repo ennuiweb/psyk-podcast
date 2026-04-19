@@ -6,8 +6,10 @@ import hashlib
 import json
 import os
 import re
+import shutil
 import subprocess
 import sys
+import tempfile
 import time
 from pathlib import Path
 import shlex
@@ -81,6 +83,9 @@ AUDIO_PROMPT_TYPES = (
     "short",
     "mixed_sources",
 )
+GEMINI_META_PROMPT_MODEL = "gemini-3.1-pro-preview"
+GEMINI_FILE_POLL_INTERVAL_SECONDS = 2
+GEMINI_FILE_POLL_TIMEOUT_SECONDS = 60
 DEFAULT_AUDIO_PROMPT_STRATEGY = {
     "enabled": True,
     "audience": "a bachelor's-level psychology student",
@@ -182,7 +187,7 @@ DEFAULT_META_PROMPTING = {
     "automatic": {
         "enabled": False,
         "provider": "gemini",
-        "model": "gemini-2.5-pro",
+        "model": GEMINI_META_PROMPT_MODEL,
         "fail_open": True,
         "default_per_source_output_suffix": ".analysis.md",
         "default_weekly_output_name": "week.analysis.md",
@@ -218,6 +223,12 @@ class MetaPromptBackend(NamedTuple):
 
 class MetaPromptInputError(RuntimeError):
     pass
+
+
+class GeminiUploadedFile(NamedTuple):
+    name: str
+    uri: str
+    mime_type: str
 
 
 class ReviewManifestFilter(NamedTuple):
@@ -1022,6 +1033,8 @@ def normalize_meta_prompting(raw: object) -> dict:
     if provider not in {"gemini", "anthropic"}:
         raise SystemExit("meta_prompting.automatic.provider must be 'gemini' or 'anthropic'.")
     auto["provider"] = provider
+    if provider == "gemini":
+        auto["model"] = GEMINI_META_PROMPT_MODEL
     source_suffix = str(auto["default_per_source_output_suffix"]).strip()
     if not source_suffix.startswith("."):
         raise SystemExit(
@@ -1134,35 +1147,6 @@ def _strip_markdown_fence(text: str) -> str:
     return stripped
 
 
-def _extract_pdf_text_for_meta_prompt(path: Path, max_chars: int) -> str | None:
-    try:
-        from pypdf import PdfReader
-    except ImportError as exc:
-        raise RuntimeError("pypdf package not installed — pip install pypdf") from exc
-
-    try:
-        reader = PdfReader(str(path))
-        pages: list[str] = []
-        total_chars = 0
-        for page in reader.pages:
-            page_text = (page.extract_text() or "").strip()
-            if not page_text:
-                continue
-            pages.append(page_text)
-            total_chars += len(page_text)
-            if total_chars >= max_chars:
-                break
-    except Exception as exc:
-        raise MetaPromptInputError(f"failed to extract PDF text from {path.name}: {exc}") from exc
-
-    if not pages:
-        raise MetaPromptInputError(f"no extractable text found in PDF {path.name}")
-    text = "\n\n".join(pages).strip()
-    if len(text) > max_chars:
-        text = text[:max_chars].rstrip() + "\n[...truncated...]"
-    return text
-
-
 def _extract_text_file_for_meta_prompt(path: Path, max_chars: int) -> str | None:
     try:
         text = path.read_text(encoding="utf-8").strip()
@@ -1178,7 +1162,9 @@ def _extract_text_file_for_meta_prompt(path: Path, max_chars: int) -> str | None
 def _extract_source_excerpt_for_meta_prompt(path: Path, max_chars: int) -> str | None:
     suffix = path.suffix.lower()
     if suffix == ".pdf":
-        return _extract_pdf_text_for_meta_prompt(path, max_chars)
+        raise MetaPromptInputError(
+            f"local PDF extraction is disabled for meta prompting ({path.name}); send PDFs directly to Gemini"
+        )
     if suffix in TEXT_SOURCE_EXTENSIONS:
         return _extract_text_file_for_meta_prompt(path, max_chars)
     return _extract_text_file_for_meta_prompt(path, max_chars)
@@ -1256,7 +1242,7 @@ def _build_meta_prompt_source_payload(job: MetaPromptJob, meta_prompting: dict) 
         )
 
     if not sections:
-        raise RuntimeError(f"no extractable text found for {job.label}")
+        raise RuntimeError(f"no usable inline text source found for {job.label}")
     return "\n\n".join(sections)
 
 
@@ -1264,10 +1250,9 @@ def _build_meta_prompt_request(
     *,
     job: MetaPromptJob,
     course_title: str,
-    meta_prompting: dict,
+    source_payload: str,
 ) -> tuple[str, str]:
     scenario_instruction, section_headings = _meta_prompt_sections(job.prompt_type)
-    source_payload = _build_meta_prompt_source_payload(job, meta_prompting)
     system_prompt = (
         "You write concise Markdown pre-analysis notes for a NotebookLM deep-dive audio prompt. "
         "Do not summarize mechanically. Surface distinctions, tensions, corrections, misunderstandings, "
@@ -1292,6 +1277,201 @@ def _build_meta_prompt_request(
         ]
     )
     return system_prompt, user_prompt
+
+
+def _build_text_meta_prompt_request(
+    *,
+    job: MetaPromptJob,
+    course_title: str,
+    meta_prompting: dict,
+) -> tuple[str, str]:
+    return _build_meta_prompt_request(
+        job=job,
+        course_title=course_title,
+        source_payload=_build_meta_prompt_source_payload(job, meta_prompting),
+    )
+
+
+def _infer_meta_prompt_mime_type(path: Path) -> str:
+    suffix = path.suffix.lower()
+    if suffix == ".pdf":
+        return "application/pdf"
+    if suffix in {".md", ".markdown", ".txt"}:
+        return "text/plain"
+    if suffix in {".html", ".htm"}:
+        return "text/html"
+    if suffix == ".json":
+        return "application/json"
+    if suffix == ".csv":
+        return "text/csv"
+    return "application/octet-stream"
+
+
+def _stage_gemini_upload_path(path: Path) -> tuple[Path, Path]:
+    safe_stem = re.sub(r"[^A-Za-z0-9._-]+", "_", path.stem).strip("._") or "source"
+    staged_dir = Path(tempfile.mkdtemp(prefix="gemini-upload-"))
+    staged_path = staged_dir / f"{safe_stem}{path.suffix.lower() or '.bin'}"
+    shutil.copy2(path, staged_path)
+    return staged_path, staged_dir
+
+
+def _wait_for_gemini_file_ready(client: object, uploaded: object, path: Path) -> GeminiUploadedFile:
+    file_name = str(getattr(uploaded, "name", "") or "").strip()
+    if not file_name:
+        raise MetaPromptInputError(f"Gemini upload returned no file name for PDF {path.name}")
+
+    def ready_file(file_obj: object) -> GeminiUploadedFile:
+        file_uri = str(getattr(file_obj, "uri", "") or "").strip()
+        mime_type = str(getattr(file_obj, "mime_type", "") or "").strip() or _infer_meta_prompt_mime_type(path)
+        if not file_uri:
+            raise MetaPromptInputError(f"Gemini upload returned no URI for PDF {path.name}")
+        return GeminiUploadedFile(name=file_name, uri=file_uri, mime_type=mime_type)
+
+    state = getattr(uploaded, "state", None)
+    if state is None:
+        return ready_file(uploaded)
+
+    deadline = time.time() + GEMINI_FILE_POLL_TIMEOUT_SECONDS
+    latest = uploaded
+    while True:
+        state = getattr(latest, "state", None)
+        if state is None:
+            return ready_file(latest)
+        if str(state).endswith("ACTIVE"):
+            return ready_file(latest)
+        if str(state).endswith("FAILED"):
+            error = getattr(latest, "error", None)
+            detail = f": {error}" if error else ""
+            raise MetaPromptInputError(f"Gemini could not process PDF {path.name}{detail}")
+        if time.time() >= deadline:
+            raise MetaPromptInputError(
+                f"Gemini timed out while preparing PDF {path.name} for meta prompting"
+            )
+        time.sleep(GEMINI_FILE_POLL_INTERVAL_SECONDS)
+        try:
+            latest = client.files.get(name=file_name)
+        except Exception as exc:
+            raise MetaPromptInputError(
+                f"failed to poll Gemini file state for PDF {path.name}: {exc}"
+            ) from exc
+
+
+def _delete_gemini_uploaded_files(client: object, uploaded_files: list[GeminiUploadedFile]) -> None:
+    for uploaded in uploaded_files:
+        try:
+            client.files.delete(name=uploaded.name)
+        except Exception as exc:
+            _warn_meta_prompt_once(
+                f"automatic meta-prompting could not delete Gemini upload {uploaded.name}: {exc}"
+            )
+
+
+def _build_gemini_meta_prompt_inputs(
+    *,
+    job: MetaPromptJob,
+    course_title: str,
+    meta_prompting: dict,
+    backend: MetaPromptBackend,
+) -> tuple[str, list[object], list[GeminiUploadedFile]]:
+    automatic = meta_prompting["automatic"]
+    max_chars_per_source = int(automatic["max_chars_per_source"])
+    max_total_chars = int(automatic["max_total_chars"])
+    total_chars = 0
+    inline_sections: list[str] = []
+    uploaded_files: list[GeminiUploadedFile] = []
+    uploaded_files_by_path: dict[Path, GeminiUploadedFile] = {}
+    try:
+        for source_item in job.source_items:
+            if source_item.path.suffix.lower() == ".pdf":
+                if not source_item.path.exists():
+                    raise MetaPromptInputError(f"source PDF does not exist: {source_item.path}")
+                try:
+                    staged_path, staged_dir = _stage_gemini_upload_path(source_item.path)
+                except OSError as exc:
+                    raise MetaPromptInputError(
+                        f"failed to stage PDF {source_item.path.name} for Gemini upload: {exc}"
+                    ) from exc
+                try:
+                    uploaded = backend.client.files.upload(
+                        file=str(staged_path),
+                        config={"mime_type": "application/pdf"},
+                    )
+                except Exception as exc:
+                    raise MetaPromptInputError(
+                        f"failed to upload PDF {source_item.path.name} to Gemini: {exc}"
+                    ) from exc
+                finally:
+                    shutil.rmtree(staged_dir, ignore_errors=True)
+                ready_file = _wait_for_gemini_file_ready(backend.client, uploaded, source_item.path)
+                uploaded_files.append(ready_file)
+                uploaded_files_by_path[source_item.path] = ready_file
+                continue
+
+            excerpt = _extract_source_excerpt_for_meta_prompt(source_item.path, max_chars_per_source)
+            if not excerpt:
+                continue
+            remaining = max_total_chars - total_chars
+            if remaining <= 0:
+                break
+            if len(excerpt) > remaining:
+                excerpt = excerpt[:remaining].rstrip() + "\n[...truncated...]"
+            total_chars += len(excerpt)
+            inline_sections.append(
+                "\n".join(
+                    [
+                        f"### Source: {source_item.base_name}",
+                        f"- type: {source_item.source_type}",
+                        f"- filename: {source_item.path.name}",
+                        "",
+                        excerpt,
+                    ]
+                )
+            )
+
+        source_payload_sections: list[str] = []
+        if uploaded_files:
+            source_payload_sections.append(
+                "Attached source file(s) to inspect directly in Gemini:\n"
+                + "\n".join(
+                    f"- {source_item.base_name} ({source_item.path.name})"
+                    for source_item in job.source_items
+                    if source_item.path.suffix.lower() == ".pdf"
+                )
+            )
+        if inline_sections:
+            source_payload_sections.append(
+                "Inline source material excerpt(s):\n" + "\n\n".join(inline_sections)
+            )
+        if not source_payload_sections:
+            raise RuntimeError(f"no usable source material found for {job.label}")
+
+        system_prompt, user_prompt = _build_meta_prompt_request(
+            job=job,
+            course_title=course_title,
+            source_payload="\n\n".join(source_payload_sections),
+        )
+        contents: list[object] = [backend.support.Part.from_text(text=user_prompt)]
+        for source_item in job.source_items:
+            if source_item.path.suffix.lower() != ".pdf":
+                continue
+            uploaded = uploaded_files_by_path[source_item.path]
+            contents.append(
+                backend.support.Part.from_text(
+                    text=(
+                        f"Source file: {source_item.base_name}\n"
+                        f"Type: {source_item.source_type}\n"
+                        f"Filename: {source_item.path.name}"
+                    )
+                )
+            )
+            contents.append(
+                backend.support.Part.from_uri(file_uri=uploaded.uri, mime_type=uploaded.mime_type)
+            )
+        return system_prompt, contents, uploaded_files
+    except Exception:
+        if uploaded_files:
+            _delete_gemini_uploaded_files(backend.client, uploaded_files)
+        raise
 
 
 def _gemini_api_key() -> str:
@@ -1367,52 +1547,67 @@ def generate_meta_prompt_markdown(
     meta_prompting: dict,
     backend: MetaPromptBackend,
 ) -> str:
-    system_prompt, user_prompt = _build_meta_prompt_request(
-        job=job,
-        course_title=course_title,
-        meta_prompting=meta_prompting,
-    )
-    for attempt in range(2):
-        try:
-            if backend.provider == "gemini":
-                response = backend.client.models.generate_content(
-                    model=str(meta_prompting["automatic"]["model"]).strip(),
-                    contents=user_prompt,
-                    config=backend.support.GenerateContentConfig(
-                        system_instruction=system_prompt,
-                        max_output_tokens=META_PROMPT_MAX_RESPONSE_TOKENS,
-                    ),
-                )
-                content = _strip_markdown_fence(_extract_gemini_text(response))
-            elif backend.provider == "anthropic":
-                message = backend.client.messages.create(
-                    model=str(meta_prompting["automatic"]["model"]).strip(),
-                    max_tokens=META_PROMPT_MAX_RESPONSE_TOKENS,
-                    system=system_prompt,
-                    messages=[{"role": "user", "content": user_prompt}],
-                )
-                parts = [
-                    getattr(part, "text", "")
-                    for part in getattr(message, "content", [])
-                    if getattr(part, "type", "") == "text"
-                ]
-                content = _strip_markdown_fence("\n".join(parts).strip())
-            else:
-                raise RuntimeError(f"Unsupported meta-prompting provider: {backend.provider}")
-            if not content:
-                raise RuntimeError(f"empty response while generating meta prompt for {job.label}")
-            return content
-        except Exception as exc:
-            if _is_meta_prompt_rate_limit_error(exc):
-                if attempt == 0:
-                    print(
-                        f"Meta prompt generation hit a {backend.provider} rate limit; "
-                        "waiting 60s before retrying."
+    uploaded_files: list[GeminiUploadedFile] = []
+    try:
+        if backend.provider == "gemini":
+            system_prompt, gemini_contents, uploaded_files = _build_gemini_meta_prompt_inputs(
+                job=job,
+                course_title=course_title,
+                meta_prompting=meta_prompting,
+                backend=backend,
+            )
+            anthropic_user_prompt = ""
+        else:
+            system_prompt, anthropic_user_prompt = _build_text_meta_prompt_request(
+                job=job,
+                course_title=course_title,
+                meta_prompting=meta_prompting,
+            )
+            gemini_contents = []
+        for attempt in range(2):
+            try:
+                if backend.provider == "gemini":
+                    response = backend.client.models.generate_content(
+                        model=str(meta_prompting["automatic"]["model"]).strip(),
+                        contents=gemini_contents,
+                        config=backend.support.GenerateContentConfig(
+                            system_instruction=system_prompt,
+                            max_output_tokens=META_PROMPT_MAX_RESPONSE_TOKENS,
+                        ),
                     )
-                    time.sleep(60)
-                    continue
-                raise RuntimeError(f"rate-limited while generating meta prompt for {job.label}") from exc
-            raise RuntimeError(f"meta prompt generation failed for {job.label}: {exc}") from exc
+                    content = _strip_markdown_fence(_extract_gemini_text(response))
+                elif backend.provider == "anthropic":
+                    message = backend.client.messages.create(
+                        model=str(meta_prompting["automatic"]["model"]).strip(),
+                        max_tokens=META_PROMPT_MAX_RESPONSE_TOKENS,
+                        system=system_prompt,
+                        messages=[{"role": "user", "content": anthropic_user_prompt}],
+                    )
+                    parts = [
+                        getattr(part, "text", "")
+                        for part in getattr(message, "content", [])
+                        if getattr(part, "type", "") == "text"
+                    ]
+                    content = _strip_markdown_fence("\n".join(parts).strip())
+                else:
+                    raise RuntimeError(f"Unsupported meta-prompting provider: {backend.provider}")
+                if not content:
+                    raise RuntimeError(f"empty response while generating meta prompt for {job.label}")
+                return content
+            except Exception as exc:
+                if _is_meta_prompt_rate_limit_error(exc):
+                    if attempt == 0:
+                        print(
+                            f"Meta prompt generation hit a {backend.provider} rate limit; "
+                            "waiting 60s before retrying."
+                        )
+                        time.sleep(60)
+                        continue
+                    raise RuntimeError(f"rate-limited while generating meta prompt for {job.label}") from exc
+                raise RuntimeError(f"meta prompt generation failed for {job.label}: {exc}") from exc
+    finally:
+        if uploaded_files:
+            _delete_gemini_uploaded_files(backend.client, uploaded_files)
 
 
 def build_auto_meta_prompt_jobs(

@@ -1,14 +1,17 @@
 ## Repo Identity
 
-- Repo: `/Users/oskar/repo/podcasts`
-- Role: podcast feed automation, NotebookLM subject automation, and the Freudd learning portal.
+- Name: `podcasts`
+- Type: `repo`
+- Absolute path: `/Users/oskar/repo/podcasts`
+- Role: `Podcast feed automation, NotebookLM subject automation, and Freudd learning portal`
+- Global reference: `/Users/oskar/.agents/AGENTS.md`
 
-## Inheritance
+## Inheritance From Global AGENTS
 
-- Inherits global agent rules from `~/.agents/AGENTS.md`.
-- This file contains only repo-local deltas and routing.
+- Global rules in `/Users/oskar/.agents/AGENTS.md` apply by default in this repo.
+- This file adds only repo-local deltas and routing for `podcasts`.
 
-## Core Policies
+## Repo-local Rules
 
 - Always deploy after implementing changes; implementation is not complete until the required deploy step has succeeded.
 - `freudd_portal` changes: deploy to `freudd-portal` as the final step.
@@ -26,7 +29,13 @@
 - Freudd deploy/smoke runbook: this file and `freudd_portal/docs/deploy-and-smoke.md`
 - Apps Script trigger docs: `apps-script/README.md` and `apps-script/drive_change_trigger.gs`
 
-## Freudd Remote Deploy Runbook (verified 2026-02-25)
+## Self-maintenance Rules
+
+- When Freudd deploy/smoke behavior changes, update this file and `freudd_portal/docs/deploy-and-smoke.md` together.
+- When top-level repo structure changes, update `TECHNICAL.md`, `docs/README.md`, and this context map if routing changes.
+- If this repo identity, role, absolute path, or global registry mapping changes, update `~/.agents/AGENTS.md` and this file in the same task.
+
+Freudd remote deploy runbook, verified 2026-02-25:
 
 - Deploy must run over SSH from local machine (local has no `systemctl` and no `/opt/podcasts`).
 - SSH target: `digitalocean-ennui-droplet-01` (`root@64.226.79.109`, key `~/.ssh/digitalocean_ed25519`).

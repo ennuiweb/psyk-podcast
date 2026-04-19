@@ -6,6 +6,7 @@ import json
 import os
 import re
 import subprocess
+import sys
 from pathlib import Path
 
 DEFAULT_OUTPUT_ROOT = "notebooklm-podcast-auto/personlighedspsykologi/output"
@@ -15,6 +16,47 @@ OUTPUT_ROOT_ENV_VAR = "PERSONLIGHEDSPSYKOLOGI_OUTPUT_ROOT"
 def default_output_root() -> str:
     override = str(os.getenv(OUTPUT_ROOT_ENV_VAR) or "").strip()
     return override or DEFAULT_OUTPUT_ROOT
+
+
+def resolve_output_root(path: Path) -> Path:
+    candidate = path.expanduser()
+    if candidate.exists() and candidate.is_dir():
+        return candidate.resolve()
+    if sys.platform == "darwin" and candidate.exists() and candidate.is_file():
+        resolved = resolve_macos_alias(candidate)
+        if resolved is not None and resolved.is_dir():
+            return resolved.resolve()
+    return candidate.resolve()
+
+
+def resolve_macos_alias(path: Path) -> Path | None:
+    if sys.platform != "darwin":
+        return None
+    try:
+        result = subprocess.run(
+            [
+                "osascript",
+                "-e",
+                'tell application "Finder"',
+                "-e",
+                f'set f to (POSIX file "{path.resolve()}") as alias',
+                "-e",
+                "set targetItem to original item of f",
+                "-e",
+                "return POSIX path of (targetItem as text)",
+                "-e",
+                "end tell",
+            ],
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+    except (FileNotFoundError, subprocess.CalledProcessError):
+        return None
+    resolved = result.stdout.strip()
+    if not resolved:
+        return None
+    return Path(resolved).expanduser()
 
 
 def parse_weeks(week: str | None, weeks: str | None) -> list[str]:
@@ -573,18 +615,20 @@ def main() -> int:
     content_types = parse_content_types(args.content_types)
 
     repo_root = find_repo_root(Path(__file__).resolve())
-    output_root = repo_root / args.output_root
+    output_root = resolve_output_root(repo_root / args.output_root)
     if args.output_profile_subdir:
         profile_slug = resolve_profile_slug(args.profile, args.storage)
         if not profile_slug:
             raise SystemExit("--output-profile-subdir requires --profile or --storage.")
         output_root = apply_profile_subdir(output_root, profile_slug, True)
+    if output_root.exists() and not output_root.is_dir():
+        raise SystemExit(f"Output root exists but is not a directory: {output_root}")
     notebooklm = repo_root / args.notebooklm
 
     week_inputs = parse_weeks(args.week, args.weeks)
     extra_roots = [
-        repo_root / "notebooklm-podcast-auto" / "personlighedspsykologi" / "output",
-        repo_root / "shows" / "personlighedspsykologi" / "output",
+        resolve_output_root(repo_root / "notebooklm-podcast-auto" / "personlighedspsykologi" / "output"),
+        resolve_output_root(repo_root / "shows" / "personlighedspsykologi" / "output"),
     ]
     roots = []
     seen_roots: set[Path] = set()

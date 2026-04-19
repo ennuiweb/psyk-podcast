@@ -5,6 +5,8 @@ import argparse
 import json
 import os
 import re
+import subprocess
+import sys
 from pathlib import Path
 from typing import Any
 
@@ -254,6 +256,47 @@ def _coerce_path(repo_root: Path, raw_path: str) -> Path:
     if path.is_absolute():
         return path
     return (repo_root / path).resolve()
+
+
+def _resolve_output_root(repo_root: Path, raw_path: str) -> Path:
+    path = _coerce_path(repo_root, raw_path)
+    if path.exists() and path.is_dir():
+        return path
+    if sys.platform == "darwin" and path.exists() and path.is_file():
+        resolved = _resolve_macos_alias(path)
+        if resolved is not None and resolved.is_dir():
+            return resolved.resolve()
+    return path
+
+
+def _resolve_macos_alias(path: Path) -> Path | None:
+    if sys.platform != "darwin":
+        return None
+    try:
+        result = subprocess.run(
+            [
+                "osascript",
+                "-e",
+                'tell application "Finder"',
+                "-e",
+                f'set f to (POSIX file "{path.resolve()}") as alias',
+                "-e",
+                "set targetItem to original item of f",
+                "-e",
+                "return POSIX path of (targetItem as text)",
+                "-e",
+                "end tell",
+            ],
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+    except (FileNotFoundError, subprocess.CalledProcessError):
+        return None
+    resolved = result.stdout.strip()
+    if not resolved:
+        return None
+    return Path(resolved).expanduser()
 
 
 def _is_audio_file(path: Path) -> bool:
@@ -815,10 +858,12 @@ def main() -> int:
 
     week_inputs = parse_weeks(args.week, args.weeks)
     repo_root = _resolve_repo_root(Path(__file__).resolve())
-    output_root = _coerce_path(repo_root, args.output_root)
+    output_root = _resolve_output_root(repo_root, args.output_root)
     summaries_path = _coerce_path(repo_root, args.summaries_file)
     weekly_summaries_path = _coerce_path(repo_root, args.weekly_summaries_file)
     sources_root = _coerce_path(repo_root, args.sources_root)
+    if output_root.exists() and not output_root.is_dir():
+        raise SystemExit(f"Output root exists but is not a directory: {output_root}")
     episode_keys, duplicate_keys = discover_episode_keys(output_root, week_inputs)
     weekly_keys, weekly_duplicate_keys = discover_weekly_overview_keys(output_root, week_inputs)
     if duplicate_keys:

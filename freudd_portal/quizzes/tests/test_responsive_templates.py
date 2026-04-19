@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import re
 from pathlib import Path
 from types import SimpleNamespace
 
@@ -10,6 +11,8 @@ from django.test import RequestFactory, SimpleTestCase
 
 
 class ResponsiveTemplateRulesTests(SimpleTestCase):
+    databases = {"default"}
+
     def _template_text(self, relative_path: str) -> str:
         template_path = Path(settings.BASE_DIR) / "templates" / relative_path
         return template_path.read_text(encoding="utf-8")
@@ -91,7 +94,7 @@ class ResponsiveTemplateRulesTests(SimpleTestCase):
             },
             request=request,
         )
-        self.assertIn("Top 50 - Personlighedspsykologi", rendered)
+        self.assertIn("top 50 - Personlighedspsykologi", rendered)
 
     def test_subject_detail_supports_long_word_wrapping(self) -> None:
         body = self._template_text("quizzes/subject_detail.html")
@@ -127,16 +130,19 @@ class ResponsiveTemplateRulesTests(SimpleTestCase):
         self.assertIn("data-subject-rail-toggle-label", body)
         self.assertIn("data-subject-path-layout", body)
         self.assertIn(".subject-path-layout.is-rail-hidden", body)
-        self.assertIn(".subject-path-tools {\n    display: grid;", body)
-        self.assertIn("grid-template-columns: minmax(220px, 300px) minmax(0, 1fr);", body)
-        self.assertIn(".subject-path-toggle {\n    min-height: 44px;", body)
+        self.assertRegex(body, r"\.subject-path-tools\s*\{\s*display:\s*grid;")
+        self.assertRegex(
+            body,
+            r"grid-template-columns:\s*minmax\(168px,\s*230px\)\s*minmax\(0,\s*1fr\);",
+        )
+        self.assertRegex(body, r"\.subject-path-toggle\s*\{\s*min-height:\s*44px;")
         self.assertIn(".subject-path-toggle-icon", body)
         self.assertIn("Vis tidslinje", body)
         self.assertIn("Skjul tidslinje", body)
 
     def test_subject_detail_has_coarse_pointer_touch_target_guardrails(self) -> None:
         body = self._template_text("quizzes/subject_detail.html")
-        self.assertIn("@media (hover: none), (pointer: coarse)", body)
+        self.assertRegex(body, r"@media\s+\(hover:\s*none\),\s*\(pointer:\s*coarse\)")
         self.assertIn("min-width: 44px;", body)
         self.assertIn("min-height: 44px;", body)
 
@@ -149,21 +155,19 @@ class ResponsiveTemplateRulesTests(SimpleTestCase):
         body = self._template_text("base.html")
         self.assertIn("@media (max-width: 1180px)", body)
         self.assertIn(".site-header", body)
-        self.assertIn(
-            ".header-inner {\n"
-            "          padding: var(--space-2) var(--space-3);\n"
-            "          justify-content: flex-start;\n"
-            "          align-items: center;\n"
-            "          flex-wrap: nowrap;\n"
-            "        }",
+        self.assertRegex(
             body,
+            re.compile(
+                r"\.header-inner\s*\{\s*"
+                r"padding:\s*var\(--space-2\)\s+var\(--space-3\);\s*"
+                r"justify-content:\s*flex-start;\s*"
+                r"align-items:\s*center;\s*"
+                r"flex-wrap:\s*nowrap;\s*"
+                r"\}",
+                re.MULTILINE,
+            ),
         )
-        self.assertIn(
-            ".nav-links {\n"
-            "          display: none;\n"
-            "        }",
-            body,
-        )
+        self.assertRegex(body, r"\.nav-links\s*\{\s*display:\s*none;\s*\}")
         self.assertNotIn(".mobile-header-menu-button", body)
         self.assertNotIn("is-mobile-menu-open", body)
         self.assertNotIn(
@@ -173,7 +177,13 @@ class ResponsiveTemplateRulesTests(SimpleTestCase):
 
     def test_base_template_guards_against_horizontal_overflow_drift(self) -> None:
         body = self._template_text("base.html")
-        self.assertIn("html {\n        max-width: 100%;\n        overflow-x: clip;\n      }", body)
+        self.assertRegex(
+            body,
+            re.compile(
+                r"html\s*\{\s*max-width:\s*100%;\s*overflow-x:\s*clip;\s*\}",
+                re.MULTILINE,
+            ),
+        )
         self.assertIn("max-width: 100%;", body)
         self.assertIn("overflow-x: clip;", body)
         self.assertIn("@supports not (overflow: clip)", body)

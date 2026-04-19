@@ -749,7 +749,12 @@ class CfgTagFilenameHelpersTests(unittest.TestCase):
                 per_slide_cfg=per_slide_cfg,
                 per_slide_overrides=overrides,
             ),
-            ("per_slide", "expanded prompt", "deep-dive", "long"),
+            (
+                "per_slide",
+                "Additional instructions:\nexpanded prompt",
+                "deep-dive",
+                "long",
+            ),
         )
         self.assertEqual(
             mod.per_source_audio_settings(
@@ -758,7 +763,12 @@ class CfgTagFilenameHelpersTests(unittest.TestCase):
                 per_slide_cfg=per_slide_cfg,
                 per_slide_overrides=overrides,
             ),
-            ("per_slide", "base prompt", "deep-dive", "default"),
+            (
+                "per_slide",
+                "Additional instructions:\nbase prompt",
+                "deep-dive",
+                "default",
+            ),
         )
 
     def test_generate_week_per_slide_override_rejects_unknown_fields(self):

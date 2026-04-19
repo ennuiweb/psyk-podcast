@@ -18,11 +18,11 @@ Disse artefakter er de eneste, der bør redigeres direkte som canonical inputs:
 
 | Artefakt | Rolle |
 |---|---|
-| `/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/personlighedspsykologi/Readings/` | Autoritative læsetekster organiseret efter `W##L#`. |
-| `/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/personlighedspsykologi/Grundbog/Kapitler/` | Grundbogskapitler og kildemateriale til læsninger/lydbog. |
-| `/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/personlighedspsykologi/Forelæsningsrækken/0_Pensum og forelæsningsplan/` | Forelæsningsplan og pensumgrundlag. |
-| `/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/personlighedspsykologi/Seminarhold/Slides/` | Lokale slide-kilder. |
-| `/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/personlighedspsykologi/.ai/reading-file-key.md` | Master for læsenøgle: lecture -> reading title -> præcist filnavn. |
+| `/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/` | Autoritative læsetekster organiseret efter `W##L#`. |
+| `/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Grundbog/Kapitler/` | Grundbogskapitler og kildemateriale til læsninger/lydbog. |
+| `/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Forelæsningsrækken/0_Pensum og forelæsningsplan/` | Forelæsningsplan og pensumgrundlag. |
+| `/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Seminarhold/Slides/` | Lokale slide-kilder. |
+| `/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/.ai/reading-file-key.md` | Master for læsenøgle: lecture -> reading title -> præcist filnavn. |
 | `shows/personlighedspsykologi-en/config.github.json` | Canonical show-config. |
 | `shows/personlighedspsykologi-en/auto_spec.json` | Forelæsningsstruktur og auto-matching for episoder. |
 | `shows/personlighedspsykologi-en/episode_metadata.json` | Manuelle episode-overrides. |
@@ -66,8 +66,8 @@ førsteklasses kilder:
 
 | Artefakt | Rolle |
 |---|---|
-| `notebooklm-podcast-auto/personlighedspsykologi/output/W##L#/` | Lokale outputmapper for MP3, quiz, infographics og request logs. Git-ignored. |
-| `*.request.json`, `*.request.error.json` | NotebookLM job-state. |
+| `notebooklm-podcast-auto/personlighedspsykologi/output/W##L#/` | Lokale outputmapper for MP3, quiz, infographics og request logs. Git-ignored. Kan være en macOS Alias-fil lokalt; generation/download scripts resolver aliaset til mål-mappen. |
+| `*.request.json`, `*.request.error.json` | NotebookLM job-state. Ryddes som standard af `download_week.py` efter successful download eller når target-output allerede findes. |
 | `shows/personlighedspsykologi-en/service-account.json` | Lokal/CI credential file. Git-ignored og runtime-only. |
 | `shows/personlighedspsykologi-en/config.runtime.json` | CI runtime config efter secret injection. Git-ignored og slettes af workflow. |
 | `$RUNNER_TEMP/...` | Midlertidige CI-downloads og credentials. |
@@ -102,3 +102,6 @@ repoet/Freudd som opslag fra intern episode-identitet til Spotify URL.
 - Redigér canonical config i `config.github.json`, ikke i `config.local.json`.
 - Redigér kun det primære reading-key-spejl i `shows/personlighedspsykologi-en/docs/reading-file-key.md`.
 - Kør `python3 scripts/check_personlighedspsykologi_artifact_invariants.py`, når du ændrer config-, mirror- eller docs-strukturen.
+- Hvis en lokal output path er en macOS Alias-fil, skal den ikke committes eller
+  slettes som del af repo-oprydning. Brug `PERSONLIGHEDSPSYKOLOGI_OUTPUT_ROOT`
+  eller `--output-root` hvis scripts skal pege på en anden fysisk mappe.

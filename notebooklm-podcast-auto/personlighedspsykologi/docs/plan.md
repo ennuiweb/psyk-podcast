@@ -1,212 +1,103 @@
-# Implementation Plan (Personlighedspsykologi F26)
+# Personlighedspsykologi Automation Plan
 
-## Status summary
-- Show scaffolding already exists (`config.*`, `auto_spec.json`, `episode_metadata.json`).
-- Socialpsykologi feed review confirms a mixed output pattern:
-  - Weekly overview episodes (e.g., "Alle kilder")
-  - Per-reading episodes
-  - Short `[Short]` variants for some readings
+This document is the compact operational plan for the NotebookLM generation
+pipeline. Feed ownership, RSS derivation, Spotify/Freudd sidecars, and public
+artifact contracts live in `shows/personlighedspsykologi-en/docs/`.
 
-## Output policy (decisions)
-- Weekly overview: **"Alle kilder"** episode per week.
-  - Format: `deep-dive`
-  - Length: `long`
-  - Prompt: built from `audio_prompt_strategy.prompt_types.weekly_readings_only` + `exam_focus.prompt_types.weekly_readings_only` + `meta_prompting` + `weekly_overview.prompt` in `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json`
-  - Meta prompting: existing week sidecars are used as-is; otherwise `meta_prompting.automatic` can generate `week.analysis.md` before the NotebookLM call.
-  - Language: from `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json`
-- Per-reading episode: one per reading in each week folder.
-  - Format: `deep-dive`
-  - Length: `default`
-  - Prompt: built from `audio_prompt_strategy.prompt_types.single_reading` + `exam_focus.prompt_types.single_reading` + `meta_prompting` + `per_reading.prompt` in `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json`
-  - Meta prompting: existing per-source sidecars are used as-is; otherwise `meta_prompting.automatic` can generate `<source>.analysis.md`.
-  - Language: from `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json`
-- Short variants: all readings and lecture slides get an extra short version.
-  - Format: `deep-dive`
-  - Length: `short`
-  - Prompt: built from `audio_prompt_strategy.prompt_types.short` + `exam_focus.prompt_types.short` + `meta_prompting` + `short.prompt` in `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json`
-  - Language: from `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json`
-  - Source filename marker: `[Short]`
-- Infographics: generated when `--content-types` includes `infographic`.
-  - Orientation/detail/prompt: from `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json` (`infographic`, `weekly_infographic`, `per_reading_infographic`, `short_infographic`).
-- Quizzes: generated when `--content-types` includes `quiz`.
-  - Difficulty/quantity/format/prompt: from `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json` (`quiz`).
-  - `quiz.difficulty` supports `easy|medium|hard|all`; `all` fans out to all three difficulties per episode in a single `generate_week.py` run.
-  - Multi-difficulty generation requires config-tagged filenames (`--config-tagging`, default on) to avoid filename collisions.
-- Language variants: generate **Danish + English** for all episodes.
-  - Config: `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json` → `languages`
-  - English naming: adds suffix ` [EN]` to file names and notebook titles.
-- Feed output (audio only): `gdrive_podcast_feed.py` strips `[EN]`, prepends `[Lydbog]` for TTS, prepends `[Kort podcast]` for short variants, prepends `[Podcast]` for deep-dive, and falls back to `[Podcast]` for any other audio episode.
-- Feed copy cleanup removes `Reading:` and `Forelæsning x · Semesteruge x` patterns from episode titles/descriptions.
-- Feed ordering is show-configured with `feed.sort_mode: "wxlx_kind_priority"` and per-`W#L#` priority: `Short -> Alle kilder -> Oplæst/TTS readings -> other readings` (block order remains recency-based).
+## Current Baseline
 
-## Automation scope (decisions)
-- **Per-episode notebooks only.** We are **not** using single-notebook + source-ID selection for now.
-- **Source de-duplication on reuse.** When reusing a notebook, already-uploaded sources are skipped to avoid duplicates.
+- The pipeline is lecture-key based (`W##L#`), not week-folder based.
+- Output generation is configured through
+  `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json`.
+- The default output root is `notebooklm-podcast-auto/personlighedspsykologi/output`
+  unless `PERSONLIGHEDSPSYKOLOGI_OUTPUT_ROOT` or `--output-root` is set.
+- `generate_week.py`, `download_week.py`, and `sync_reading_summaries.py`
+  resolve a macOS Alias output-root file to its target directory when possible.
+- Config-tagged filenames are the default and should stay enabled for all
+  multi-format, multi-language, or multi-difficulty runs.
 
-## Highlighting / important readings
-- `important_text_mode` is `week_x_only`.
-- Only file names starting with `W##L# X` will be highlighted as `[Gul tekst]`.
-- Reading map uses `W##L# X` prefixes; rename files to match when ready.
+## Generation Policy
 
-## Missing-file skip policy
-- Skip audio generation for any episode whose source file is missing.
-- Skip the **weekly "Alle kilder"** episode if any reading in that week is missing.
+| Artifact | Policy |
+|---|---|
+| `Alle kilder (undtagen slides)` audio | One lecture-level overview per `W##L#`, generated from readings only. |
+| Per-reading audio | One default-length deep-dive per reading source. |
+| Short audio | Reading shorts plus lecture-slide shorts according to `short.apply_to`. Exercise slide shorts must not surface in the public RSS policy. |
+| Slide audio | Generated per manually mapped lecture/exercise slide from `shows/personlighedspsykologi-en/slides_catalog.json`; seminar slides are excluded. |
+| Infographics | Generated only when `--content-types` includes `infographic`. |
+| Quizzes | Generated only when `--content-types` includes `quiz`; `quiz.difficulty: "all"` fans out to easy, medium, and hard. |
+| Languages | Driven by `prompt_config.json`. Public English output keeps the ` [EN]` filename marker before feed cleanup. |
 
-Single-file skips:
-- W11: Funch & Roald (2014)
-- W17: Jensen (2014)
-- W20: Staunæs & Juelskjær (2014)
-- W22: Køppe (2014)
-- W22: Køppe & Dammeyer (2014b)
+## Standard Commands
 
-Weekly overview skips:
-- W11
-- W17
-- W20
-- W22
-
-## Reading map
-- Source inventory currently lives in:
-  - OneDrive: `/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings`
-
-## Socialpsykologi reference used
-- Drive structure: week folders containing `kilder/` + MP3s at week root.
-- Feed file: `shows/social-psychology/feeds/rss.xml` (shows mixed per-week + per-reading + short pattern).
-
-## Next execution steps (pending)
-1. Sync OneDrive readings into `/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W## …`.
-2. Apply filename renames for `W##L# X` highlights and `[Short]` variants.
-3. Generate artifacts (audio/infographic) via NotebookLM (non-blocking) and record `artifact_id`s.
-4. Download completed artifacts (MP3/PNG).
-5. Upload MP3s/PNGs to Drive week folders.
-6. Run local feed build for validation.
-
-## Week generation command
-Command (non-blocking by default, add `--wait` to block):
+Dry-run one lecture:
 
 ```bash
-./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_week.py --week W02L2 --profile default
+./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_week.py --week W01L1 --dry-run
 ```
 
-Multiple weeks in one command:
+Generate selected content for multiple lecture selectors:
 
 ```bash
-./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_week.py --weeks W01,W02 --profile default
+./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_week.py \
+  --weeks W01,W02L1 \
+  --content-types audio,infographic \
+  --profile default
 ```
 
-Generate audio + infographics:
+Download from request logs:
 
 ```bash
-./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_week.py --weeks W01,W02 --profile default --content-types audio,infographic
+./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/download_week.py --weeks W01,W02 --content-types audio,infographic,quiz
 ```
 
-This command:
-- Uses `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json` for prompts/lengths.
-- When `meta_prompting.automatic.enabled=true`, missing sidecars are auto-generated before audio planning/generation.
-- Default provider is Gemini Developer API (`provider=gemini`, `model=gemini-2.5-pro`); Anthropic remains an optional fallback provider.
-- Skips weekly “Alle kilder” when missing readings are listed for that week.
-- Emits MP3s/PNGs to `notebooklm-podcast-auto/personlighedspsykologi/output/W##L#/`.
-- Appends human-readable config tags to artifact filenames: ` {...}` before extension.
-- Writes a request log per non-blocking artifact: `*.mp3.request.json` / `*.png.request.json`.
-- Empty prompts are allowed (no validation).
-- Continues on per-episode failures and prints a failure summary at the end (non-zero exit).
- 
-Note: passing `--week W01` (or `--weeks W01,W02`) expands to all matching `W01L#` folders.
-
-Optional flags:
-- `--skip-existing` (default) to skip outputs that already exist.
-- `--no-skip-existing` to force re-generation.
-- `--content-types audio,infographic` to control which artifacts are generated (default: audio).
-- `--review-manifest PATH` to restrict generation to the matched samples in an episode A/B review manifest. This is intended for controlled candidate runs and can be combined with a run-local `--output-root`.
-- `--print-downloads` (default) to print wait/download commands.
-- `--no-print-downloads` to disable printing.
-- `--source-timeout SECONDS` / `--generation-timeout SECONDS` to override timeouts.
-- `--artifact-retries N` / `--artifact-retry-backoff SECONDS` to retry artifact creation (default retries: 2).
-- `--sleep-between SECONDS` to pause between generation requests (default: 2).
-- `--dry-run` to print planned outputs and exit without generating artifacts.
-- `--print-downloads` to print `artifact wait` + `download <type>` commands for this run (requires non-blocking mode).
-- `--config-tagging` (default) / `--no-config-tagging` to enable or disable config tags in output filenames.
-- `--config-tag-len N` to control effective-config hash length inside output tags (default: 8).
-- `--output-profile-subdir` to nest outputs under a profile-based subdirectory (profile name or storage file stem).
-- Auth failures are quarantined for 60 minutes within a run; rate-limit cooldown uses `--profile-cooldown`.
-- Auth pass-through:
-  - `--profile NAME` (uses `profiles.json` from `notebooklm-podcast-auto/` or `--profiles-file`)
-  - `--profiles-file PATH` (custom profile map)
-  - `--storage PATH` (explicit storage file; cannot be combined with `--profile`)
-- `--profile-priority a,b,c` to control rotation order before LRU fallback.
-- Auto-selection: if no profile is provided, `default` (or the only profile) from `profiles.json` is used automatically. If multiple profiles exist and no default is set, the first profile (or one matching the default storage path) is selected with a warning.
-- Rate-limit/auth rotation: by default, generation retries with the next available profile on rate-limit/auth errors (auto-profile only). Disable with `--no-rotate-on-rate-limit`.
-- Profile usage state is persisted to `~/.notebooklm/profile_state.json` (LRU ordering + cooldowns).
-- Source readiness: generation waits for sources to appear and become ready before creating artifacts. Disable with `--no-ensure-sources-ready`.
-- Notebook titles: when rotating, profile labels are appended to notebook titles. Disable with `--no-append-profile-to-notebook-title`.
-- Request logs: when `--skip-existing` is enabled (default), generation also skips outputs that already have a `.request.json` with an `artifact_id` and no error log.
-
-## Output placement
-- Weekly overview: `notebooklm-podcast-auto/personlighedspsykologi/output/W##/W## - Alle kilder {type=audio lang=en format=deep-dive length=long sources=NN hash=xxxxxxxx}.mp3`
-- Per-reading: `notebooklm-podcast-auto/personlighedspsykologi/output/W##/W## - <reading> {type=audio lang=en format=deep-dive length=default hash=xxxxxxxx}.mp3`
-- Short (reading or lecture slide): `notebooklm-podcast-auto/personlighedspsykologi/output/W##/[Short] W## - <reading-or-slide> {type=audio lang=en format=deep-dive length=short hash=xxxxxxxx}.mp3`
-- Infographics use the same base names with `.png`.
-- Quizzes use the same base names with `.json` (or `.md` / `.html` based on `quiz.format`).
-- English variants add ` [EN]` before the extension.
-- Config tag regex contract (parsers strip as non-semantic metadata): `\s\{[a-z0-9._:+-]+=[^{}\s]+(?:\s+[a-z0-9._:+-]+=[^{}\s]+)*\}` (case-insensitive accepted).
-- Non-blocking request log: `notebooklm-podcast-auto/personlighedspsykologi/output/W##/*.mp3.request.json` / `*.png.request.json`
-- Failed generation error log: `notebooklm-podcast-auto/personlighedspsykologi/output/W##/*.mp3.request.error.json` / `*.png.request.error.json`
-- With `--output-profile-subdir`, outputs are nested under `.../output/<profile>/W##/`.
-- Collision handling: profile suffixes are never appended; the canonical output path is always used.
-
-## Await + download (per week)
-Use request logs to wait for completion and download artifacts, skipping already-downloaded files:
+Validate reading and weekly summary coverage:
 
 ```bash
-./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/download_week.py --week W01L1
+./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/sync_reading_summaries.py --validate-only --validate-weekly
 ```
 
-Multiple weeks:
+## Request Logs
 
-```bash
-./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/download_week.py --weeks W01,W02
-```
+- Non-blocking generation writes `*.request.json` for queued jobs.
+- Failed generation writes `*.request.error.json`.
+- `generate_week.py --skip-existing` treats a valid `*.request.json` with an
+  `artifact_id` as existing output unless a newer error log exists.
+- `download_week.py` removes matching request and error logs after successful
+  download or when the target artifact already exists.
+- Use `--no-cleanup-requests` when request logs need to be retained for
+  debugging. The older `--archive-requests` / `--no-archive-requests` aliases
+  still exist for compatibility, but the behavior is cleanup, not archive.
 
-Optional flags:
-- `--timeout SECONDS` / `--interval SECONDS` for wait polling (defaults: 1800 / 15).
-- The downloader now checks artifact status before waiting, and will skip artifacts already marked failed.
-- `--dry-run` to print what would run.
-- `--content-types audio,infographic` to control which artifacts are downloaded (default: audio).
-- Request logs are cleaned up after a successful download (or when the target file already exists): `*.request.json` and `*.request.error.json` are removed for that output.
-- Use `--no-cleanup-requests` to keep request logs in place.
-- `--output-profile-subdir` to read outputs from a profile-based subdirectory (requires `--profile` or `--storage`).
-- Auth resolution:
-  - Uses per-log `auth.storage_path` when present.
-  - Overrides: `--storage PATH` or `--profile NAME` (with `--profiles-file`).
-  - If auth is missing or fails, automatically tries all profiles in `profiles.json`, then falls back to default `~/.notebooklm/storage_state.json`.
-  - If no request logs are found under the chosen output root, automatically searches legacy output roots.
+## Output Contracts
 
-## Validation checklist
-- Generate a single week with `--profile` and confirm `*.request.json` includes `auth.storage_path`.
-- Confirm generated filenames include ` {...}` and that re-running with unchanged options keeps the same tag.
-- Modify `prompt_config.json`, run again, and confirm the tag changes.
-- Run `download_week.py --dry-run` and verify the `AUTH:` line points at the expected storage file.
-- If using `--output-profile-subdir`, confirm outputs land under `.../output/<profile>/W##/`.
-- For prompt-quality A/B review, run `generate_week.py --review-manifest ... --dry-run --print-resolved-prompts` and verify it plans only the manifest samples before starting a real candidate generation.
+- Output directories are `output/W##L#/` unless `--output-profile-subdir` is
+  explicitly used.
+- Output names keep one normalized leading lecture token (`W##L# - ...`).
+- Config tags are non-semantic metadata and match:
+  `\s\{[a-z0-9._:+-]+=[^{}\s]+(?:\s+[a-z0-9._:+-]+=[^{}\s]+)*\}`.
+- Profile suffixes such as `[default]` are not appended to canonical output
+  filenames.
+- Legacy weekly `Alle kilder` names and legacy leading `X ` reading names are
+  handled by backward-compatibility skip/rename logic.
 
-## Prompt-quality A/B review flow
-- Baseline run: `notebooklm-podcast-auto/personlighedspsykologi/evaluation/episode_ab_review/runs/2026-04-before-baseline`.
-- Baseline status as of 2026-04-19: 8/8 samples transcribed with ElevenLabs Scribe v2 diarization.
-- Candidate output root: `notebooklm-podcast-auto/personlighedspsykologi/evaluation/episode_ab_review/runs/2026-04-before-baseline/candidate_output`.
-- Candidate generation must use `--review-manifest` so only the matched samples are generated.
-- Set `GEMINI_API_KEY` or `GOOGLE_API_KEY` before candidate generation if automatic Gemini meta-prompting should run. Without it, auto-meta fails open and NotebookLM generation continues without new generated sidecars.
-- After candidate MP3s are downloaded, run `sync_episode_ab_review_candidates.py` to fill candidate `local_audio_path` fields in the manifest, then run `transcribe_episode_ab_review.py --side candidate`.
-- The W10L2 lecture-slide catalog entry points at the local file `Forelæsningsrækken/19. Sociokulturelle teorier.pdf` while retaining the displayed title `19. gang Sociokulturelle teorier`.
+## Prompt Quality Review
 
-## Test log
-- 2026-02-04: Ran `generate_week.py` with a temporary test week (W99) and three PDFs.
-  - Weekly overview + per-reading + short generation requests were successfully created (non-blocking).
-  - One run timed out at 120s; rerun with 300s completed.
-  - Output folder created at `tmp/personlighedspsykologi-test/output/W99/` with generated request logs and artifacts.
-- 2026-02-04: Downloaded W99 test audio artifacts into `tmp/personlighedspsykologi-test/output/W99/`.
-  - First `download audio` for `W99 - Alle kilder.mp3` reported a temp rename error, but the file was created successfully.
-- 2026-02-09: Re-ran `generate_week.py` + `download_week.py` for `W03L1` after missing sources were added.
-  - NotebookLM CLI emitted repeated warnings: `Sources data ... is not a list` (API structure may have changed).
-  - EN outputs confirmed present in `notebooklm-podcast-auto/personlighedspsykologi/output/W03L1/`.
-- 2026-02-14: Updated `generate_week.py` to stop writing `sources_week.txt` in `output/WxxLx/` directories.
-- 2026-02-14: Removed 15 existing `sources_week.txt` files from `notebooklm-podcast-auto/personlighedspsykologi/output/WxxLx/`.
+- Baseline run:
+  `notebooklm-podcast-auto/personlighedspsykologi/evaluation/episode_ab_review/runs/2026-04-before-baseline`.
+- Candidate runs must use `--review-manifest` and a run-local `--output-root`.
+- If automatic Gemini meta-prompting should run, set `GEMINI_API_KEY` or
+  `GOOGLE_API_KEY`. Without a key, auto-meta fails open and NotebookLM
+  generation continues without generated sidecars.
+- After candidate MP3s are downloaded, run
+  `sync_episode_ab_review_candidates.py`, then transcribe the candidate side.
+
+## Validation Checklist
+
+1. Run `generate_week.py --dry-run` for the changed lecture selector.
+2. Confirm planned paths use the resolved output root and zero-padded `W##L#`.
+3. Confirm generated filenames include stable config tags.
+4. Run `download_week.py --dry-run` and verify the selected auth profile.
+5. Run `sync_reading_summaries.py --validate-only --validate-weekly`.
+6. Run `python3 scripts/check_personlighedspsykologi_artifact_invariants.py`
+   before committing changes that affect config, mirror paths, or docs contracts.

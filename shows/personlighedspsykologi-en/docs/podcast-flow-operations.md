@@ -15,6 +15,35 @@ og afledningskæden.
 7. Rebuild `content_manifest.json`.
 8. Deploy kun de downstream systemer, som faktisk er berørt.
 
+## NotebookLM Generation And Download
+
+Standard lecture dry-run:
+
+```bash
+./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_week.py --week W01L1 --dry-run
+```
+
+Standard download from request logs:
+
+```bash
+./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/download_week.py --week W01L1
+```
+
+Operational notes:
+
+- Week selectors such as `W01` expand to matching lecture folders (`W01L#`).
+- `generate_week.py`, `download_week.py`, and `sync_reading_summaries.py`
+  honor `PERSONLIGHEDSPSYKOLOGI_OUTPUT_ROOT` and `--output-root`.
+- If the configured output root is a macOS Alias file, the scripts resolve it to
+  the target directory before reading or writing artifacts.
+- `download_week.py` cleans up matching `*.request.json` and
+  `*.request.error.json` after successful download or when the target output
+  already exists. Use `--no-cleanup-requests` only for debugging.
+- NotebookLM can return an empty generation response for account-gated or
+  temporarily unavailable artifact types. The client classifies this as
+  `EMPTY_GENERATION_RESPONSE`; retry later or use another account/profile before
+  treating it as a local parser bug.
+
 ## Ved Titel- Eller Order-Ændringer
 
 Når navigationstitler eller rækkefølge ændres, er disse artefakter normalt relevante:
@@ -44,6 +73,19 @@ Tjek normalt i denne rækkefølge:
 6. Er `feeds/rss.xml` og `episode_inventory.json` opdateret?
 7. Er `quiz_links.json`, `spotify_map.json` og `content_manifest.json` opdateret?
 8. Er nødvendigt downstream deploy kørt, og har Spotify nået at ingest'e RSS?
+
+## Feed Validation
+
+Use local dry-run validation before publishing:
+
+```bash
+./.venv/bin/python podcast-tools/gdrive_podcast_feed.py --config shows/personlighedspsykologi-en/config.github.json --dry-run
+```
+
+Known non-blocking warnings can include duplicate Drive audio sources collapsed
+by the feed builder or missing content that is already tracked as a backlog.
+Structural errors, invariant failures, or unexpected item-count regressions are
+blockers.
 
 ## Safe Change Rules
 

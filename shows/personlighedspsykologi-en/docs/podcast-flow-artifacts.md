@@ -26,6 +26,7 @@ Disse artefakter er de eneste, der bør redigeres direkte som canonical inputs:
 | `shows/personlighedspsykologi-en/config.github.json` | Canonical show-config. |
 | `shows/personlighedspsykologi-en/auto_spec.json` | Forelæsningsstruktur og auto-matching for episoder. |
 | `shows/personlighedspsykologi-en/episode_metadata.json` | Manuelle episode-overrides. |
+| `shows/personlighedspsykologi-en/regeneration_registry.json` | Canonical A/B rollout-registry for public baseline (`A`) vs. regenerated candidate (`B`) per logisk episode. |
 | `shows/personlighedspsykologi-en/reading_summaries.json` | Manuel cache med summary/key points for reading-, slide-, brief- og lydbogsepisoder. |
 | `shows/personlighedspsykologi-en/weekly_overview_summaries.json` | Manuel cache for `ALLE KILDER`/lecture-level episoder. |
 | `shows/personlighedspsykologi-en/reading_download_exclusions.json` | Udelukkelser for tekst-/downloadadgang. |
@@ -55,6 +56,7 @@ Disse filer er afledte outputs, som må regenereres:
 |---|---|
 | `shows/personlighedspsykologi-en/feeds/rss.xml` | Public RSS-feed. Spotify og podcast apps læser denne. |
 | `shows/personlighedspsykologi-en/episode_inventory.json` | Strukturret inventory fra feed build. Freudd bruger denne før RSS fallback. |
+| `shows/personlighedspsykologi-en/regeneration_registry.json` | Syncet statusoversigt over hvilke episoder der stadig er `A`, hvilke der har en `B`, og hvilken variant der aktuelt er aktiv. |
 | `shows/personlighedspsykologi-en/quiz_links.json` | Repo mapping fra audio/episode names til quiz URLs og difficulty metadata. |
 | `shows/personlighedspsykologi-en/spotify_map.json` | Repo sidecar mapping fra episode key/RSS-title til Spotify episode URL. |
 | `shows/personlighedspsykologi-en/content_manifest.json` | Freudd content manifest med lectures, readings, podcast assets, quizzes, slides og Spotify links. |

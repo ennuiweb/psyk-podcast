@@ -10,10 +10,11 @@ og afledningskæden.
 2. Sync `reading-file-key.md` til det primære repo-spejl, hvis OneDrive-kilden har ændret sig.
 3. Generér eller download NotebookLM outputs efter behov.
 4. Upload audio til Drive og quiz/slides til droplet efter de respektive flows.
-5. Kør feed-build eller `generate-feed.yml`, så `rss.xml` og `episode_inventory.json` bliver genopbygget.
-6. Sync `spotify_map.json`.
-7. Rebuild `content_manifest.json`.
-8. Deploy kun de downstream systemer, som faktisk er berørt.
+5. Sync `regeneration_registry.json`, så A/B rollout-status følger den aktuelle inventory.
+6. Kør feed-build eller `generate-feed.yml`, så `rss.xml` og `episode_inventory.json` bliver genopbygget.
+7. Sync `spotify_map.json`.
+8. Rebuild `content_manifest.json`.
+9. Deploy kun de downstream systemer, som faktisk er berørt.
 
 ## NotebookLM Generation And Download
 
@@ -43,6 +44,20 @@ Operational notes:
   temporarily unavailable artifact types. The client classifies this as
   `EMPTY_GENERATION_RESPONSE`; retry later or use another account/profile before
   treating it as a local parser bug.
+
+Sync the rollout registry after inventory-affecting changes:
+
+```bash
+./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/sync_regeneration_registry.py
+```
+
+Registry policy:
+
+- `hash=` is treated as a variant fingerprint, not as the canonical episode identity.
+- The stable key is `logical_episode_id`.
+- `active_variant` records which public version is active now.
+- `variants.A` mirrors the currently published baseline from `episode_inventory.json`.
+- `variants.B` is preserved across syncs and should hold rollout/staging/review metadata for regenerated candidates.
 
 ## Ved Titel- Eller Order-Ændringer
 

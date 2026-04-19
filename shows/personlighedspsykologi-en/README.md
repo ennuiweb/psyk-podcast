@@ -6,6 +6,7 @@ Scaffolding for the "Personlighedspsykologi" feed.
 - `config.local.json` - compatibility copy kept identical to `config.github.json`.
 - `auto_spec.json` - W01-W22 schedule derived from the 2026 forelaesningsplan.
 - `episode_metadata.json` - optional per-file overrides.
+- `regeneration_registry.json` - tracked A/B rollout state for original (`A`) vs regenerated (`B`) variants per logical episode.
 - `reading_summaries.json` - cached per-reading summary + key-points blocks for episode descriptions.
 - `assets/cover-new.png` - square artwork (min. 1400x1400) referenced by the feed.
 - `docs/` - planning material and any "important text" docs.

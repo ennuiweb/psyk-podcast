@@ -117,6 +117,7 @@ Optional flags:
 - `--skip-existing` (default) to skip outputs that already exist.
 - `--no-skip-existing` to force re-generation.
 - `--content-types audio,infographic` to control which artifacts are generated (default: audio).
+- `--review-manifest PATH` to restrict generation to the matched samples in an episode A/B review manifest. This is intended for controlled candidate runs and can be combined with a run-local `--output-root`.
 - `--print-downloads` (default) to print wait/download commands.
 - `--no-print-downloads` to disable printing.
 - `--source-timeout SECONDS` / `--generation-timeout SECONDS` to override timeouts.
@@ -186,6 +187,16 @@ Optional flags:
 - Modify `prompt_config.json`, run again, and confirm the tag changes.
 - Run `download_week.py --dry-run` and verify the `AUTH:` line points at the expected storage file.
 - If using `--output-profile-subdir`, confirm outputs land under `.../output/<profile>/W##/`.
+- For prompt-quality A/B review, run `generate_week.py --review-manifest ... --dry-run --print-resolved-prompts` and verify it plans only the manifest samples before starting a real candidate generation.
+
+## Prompt-quality A/B review flow
+- Baseline run: `notebooklm-podcast-auto/personlighedspsykologi/evaluation/episode_ab_review/runs/2026-04-before-baseline`.
+- Baseline status as of 2026-04-19: 8/8 samples transcribed with ElevenLabs Scribe v2 diarization.
+- Candidate output root: `notebooklm-podcast-auto/personlighedspsykologi/evaluation/episode_ab_review/runs/2026-04-before-baseline/candidate_output`.
+- Candidate generation must use `--review-manifest` so only the matched samples are generated.
+- Set `GEMINI_API_KEY` or `GOOGLE_API_KEY` before candidate generation if automatic Gemini meta-prompting should run. Without it, auto-meta fails open and NotebookLM generation continues without new generated sidecars.
+- After candidate MP3s are downloaded, run `sync_episode_ab_review_candidates.py` to fill candidate `local_audio_path` fields in the manifest, then run `transcribe_episode_ab_review.py --side candidate`.
+- The W10L2 lecture-slide catalog entry points at the local file `Forelæsningsrækken/19. Sociokulturelle teorier.pdf` while retaining the displayed title `19. gang Sociokulturelle teorier`.
 
 ## Test log
 - 2026-02-04: Ran `generate_week.py` with a temporary test week (W99) and three PDFs.

@@ -10,6 +10,7 @@ import re
 import shlex
 import subprocess
 import sys
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -281,6 +282,8 @@ def transcribe_elevenlabs_scribe(
     language_code: str | None,
     tag_audio_events: bool,
     timeout_seconds: int,
+    request_retries: int,
+    request_backoff_seconds: float,
 ) -> tuple[str, str, dict, list[str]]:
     try:
         import requests
@@ -302,19 +305,40 @@ def transcribe_elevenlabs_scribe(
     for term in keyterms:
         data.append(("keyterms", term))
 
-    with audio_path.open("rb") as handle:
-        response = requests.post(
-            "https://api.elevenlabs.io/v1/speech-to-text",
-            headers={"xi-api-key": api_key},
-            data=data,
-            files={"file": (audio_path.name, handle, "audio/mpeg")},
-            timeout=timeout_seconds,
-        )
-    if response.status_code >= 400:
+    last_exc: Exception | None = None
+    for attempt in range(request_retries + 1):
+        try:
+            with audio_path.open("rb") as handle:
+                response = requests.post(
+                    "https://api.elevenlabs.io/v1/speech-to-text",
+                    headers={"xi-api-key": api_key},
+                    data=data,
+                    files={"file": (audio_path.name, handle, "audio/mpeg")},
+                    timeout=timeout_seconds,
+                )
+            if response.status_code >= 400:
+                raise RuntimeError(
+                    f"ElevenLabs STT failed with HTTP {response.status_code}: {response.text[:1000]}"
+                )
+            payload = response.json()
+            break
+        except Exception as exc:
+            last_exc = exc
+            if attempt >= request_retries:
+                raise RuntimeError(
+                    f"ElevenLabs STT request failed for {audio_path.name}: {exc}"
+                ) from exc
+            delay = request_backoff_seconds * (2**attempt)
+            print(
+                f"Retrying ElevenLabs STT for {audio_path.name} "
+                f"(attempt {attempt + 2}/{request_retries + 1}) in {delay:.1f}s: {exc}"
+            )
+            time.sleep(delay)
+    else:
         raise RuntimeError(
-            f"ElevenLabs STT failed with HTTP {response.status_code}: {response.text[:1000]}"
+            f"ElevenLabs STT request failed for {audio_path.name}: {last_exc or 'unknown error'}"
         )
-    payload = response.json()
+
     plain_text = str(payload.get("text") or "").strip()
     words = payload.get("words") or []
     speaker_text = speaker_labeled_text_from_words(words) if isinstance(words, list) else ""
@@ -396,6 +420,8 @@ def transcribe_entry(
     language_code: str | None,
     tag_audio_events: bool,
     request_timeout_seconds: int,
+    request_retries: int,
+    request_backoff_seconds: float,
     force: bool,
     dry_run: bool,
 ) -> tuple[str, str]:
@@ -442,6 +468,8 @@ def transcribe_entry(
             language_code=language_code,
             tag_audio_events=tag_audio_events,
             timeout_seconds=request_timeout_seconds,
+            request_retries=request_retries,
+            request_backoff_seconds=request_backoff_seconds,
         )
         transcript_txt.write_text(speaker_text.rstrip() + "\n", encoding="utf-8")
         plain_transcript.write_text((plain_text or speaker_text).rstrip() + "\n", encoding="utf-8")
@@ -617,6 +645,18 @@ def build_parser() -> argparse.ArgumentParser:
         default=1800,
         help="HTTP request timeout for ElevenLabs transcription.",
     )
+    parser.add_argument(
+        "--request-retries",
+        type=int,
+        default=3,
+        help="Retries for ElevenLabs request failures such as connection resets.",
+    )
+    parser.add_argument(
+        "--request-backoff-seconds",
+        type=float,
+        default=5.0,
+        help="Base backoff in seconds for ElevenLabs retries.",
+    )
     parser.add_argument("--force", action="store_true", help="Re-transcribe even when outputs already exist.")
     parser.add_argument("--dry-run", action="store_true", help="Plan the transcription run without API calls or writes.")
     return parser
@@ -657,6 +697,8 @@ def main() -> int:
                 language_code=args.language_code.strip() or None,
                 tag_audio_events=args.tag_audio_events,
                 request_timeout_seconds=args.request_timeout_seconds,
+                request_retries=args.request_retries,
+                request_backoff_seconds=args.request_backoff_seconds,
                 force=args.force,
                 dry_run=args.dry_run,
             )

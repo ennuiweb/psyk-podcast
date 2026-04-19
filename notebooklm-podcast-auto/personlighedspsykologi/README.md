@@ -113,6 +113,25 @@ python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/transcribe_episod
   --side baseline
 ```
 
+- To generate only the matched candidate episodes for the same review run, use the manifest as a generation filter and write to the run-local candidate output root:
+
+```bash
+python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_week.py \
+  --weeks W12L1,W11L2,W10L2,W09L1 \
+  --content-types audio \
+  --review-manifest notebooklm-podcast-auto/personlighedspsykologi/evaluation/episode_ab_review/runs/2026-04-before-baseline/manifest.json \
+  --output-root notebooklm-podcast-auto/personlighedspsykologi/evaluation/episode_ab_review/runs/2026-04-before-baseline/candidate_output
+```
+
+- Candidate generation should use `GEMINI_API_KEY` or `GOOGLE_API_KEY` when `meta_prompting.automatic.enabled=true`; otherwise auto-meta fails open and the run continues without generated meta sidecars.
+- After candidate MP3s are downloaded, sync their local paths into the manifest:
+
+```bash
+python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/sync_episode_ab_review_candidates.py \
+  --manifest notebooklm-podcast-auto/personlighedspsykologi/evaluation/episode_ab_review/runs/2026-04-before-baseline/manifest.json \
+  --candidate-output-root notebooklm-podcast-auto/personlighedspsykologi/evaluation/episode_ab_review/runs/2026-04-before-baseline/candidate_output
+```
+
 - Find stable slide keys in `shows/personlighedspsykologi-en/slides_catalog.json`.
 - To regenerate only one slide podcast, use `--only-slide <slide_key>`. This skips `Alle kilder`, readings, and short-form outputs for that run:
 

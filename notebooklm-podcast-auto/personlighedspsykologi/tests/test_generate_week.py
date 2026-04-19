@@ -45,6 +45,23 @@ class GenerateWeekTests(unittest.TestCase):
         ):
             self.assertEqual(mod.default_output_root(), "/tmp/personlighedspsykologi-output")
 
+    def test_resolve_output_root_uses_existing_directory(self):
+        mod = _load_module()
+        with tempfile.TemporaryDirectory() as tmpdir:
+            output_root = Path(tmpdir)
+            self.assertEqual(mod.resolve_output_root(output_root), output_root.resolve())
+
+    def test_resolve_output_root_resolves_macos_alias_files(self):
+        mod = _load_module()
+        with tempfile.TemporaryDirectory() as tmpdir:
+            alias_file = Path(tmpdir) / "output"
+            alias_file.write_text("alias placeholder", encoding="utf-8")
+            resolved_dir = Path(tmpdir) / "resolved-output"
+            resolved_dir.mkdir()
+            with mock.patch.object(mod.sys, "platform", "darwin"):
+                with mock.patch.object(mod, "resolve_macos_alias", return_value=resolved_dir):
+                    self.assertEqual(mod.resolve_output_root(alias_file), resolved_dir.resolve())
+
     def test_should_generate_brief_for_source_respects_apply_to_modes(self):
         mod = _load_module()
         lecture_slide_item = mod.SourceItem(
@@ -435,6 +452,104 @@ class GenerateWeekTests(unittest.TestCase):
 
             self.assertEqual([item.base_name for item in reading_sources], ["Foucault"])
             self.assertEqual([item.base_name for item in generation_sources], ["Foucault"])
+
+    def test_review_manifest_filter_selects_only_sample_outputs(self):
+        mod = _load_module()
+        with tempfile.TemporaryDirectory() as tmpdir:
+            tmp_path = Path(tmpdir)
+            reading_path = tmp_path / "W11L1 Hacking.pdf"
+            _touch(reading_path)
+            manifest_path = tmp_path / "manifest.json"
+            manifest_path.write_text(
+                json.dumps(
+                    {
+                        "entries": [
+                            {
+                                "prompt_type": "weekly_readings_only",
+                                "lecture_key": "W11L1",
+                                "baseline": {
+                                    "source_name": (
+                                        "W11L1 - Alle kilder (undtagen slides) [EN] "
+                                        "{type=audio hash=aaaa}.mp3"
+                                    )
+                                },
+                                "source_context": {"source_files": [str(reading_path)]},
+                            },
+                            {
+                                "prompt_type": "single_reading",
+                                "lecture_key": "W11L1",
+                                "baseline": {
+                                    "source_name": "W11L1 - Hacking [EN] {type=audio hash=bbbb}.mp3"
+                                },
+                                "source_context": {"source_files": [str(reading_path)]},
+                            },
+                            {
+                                "prompt_type": "short",
+                                "lecture_key": "W11L1",
+                                "baseline": {
+                                    "source_name": "[Short] W11L1 - Hacking [EN] {type=audio hash=cccc}.mp3"
+                                },
+                                "source_context": {"source_files": [str(reading_path)]},
+                            },
+                            {
+                                "prompt_type": "single_slide",
+                                "lecture_key": "W09L1",
+                                "baseline": {
+                                    "source_name": (
+                                        "W09L1 - Slide lecture: 17. Kritisk psykologi [EN] "
+                                        "{type=audio hash=dddd}.mp3"
+                                    )
+                                },
+                                "source_context": {
+                                    "catalog_match": {
+                                        "slide_key": "w09l1-lecture-17-kritisk-psykologi-30798115"
+                                    }
+                                },
+                            },
+                        ]
+                    }
+                ),
+                encoding="utf-8",
+            )
+
+            review_filter = mod.load_review_manifest_filter(manifest_path)
+            reading_item = mod.SourceItem(
+                path=reading_path,
+                base_name="Hacking",
+                source_type="reading",
+            )
+            other_item = mod.SourceItem(
+                path=tmp_path / "Other.pdf",
+                base_name="Other",
+                source_type="reading",
+            )
+            slide_item = mod.SourceItem(
+                path=tmp_path / "slide.pdf",
+                base_name="Slide lecture: 17. Kritisk psykologi",
+                source_type="slide",
+                slide_key="w09l1-lecture-17-kritisk-psykologi-30798115",
+            )
+
+            self.assertTrue(mod.review_filter_includes_weekly(review_filter, "W11L1"))
+            self.assertFalse(mod.review_filter_includes_weekly(review_filter, "W10L2"))
+            self.assertTrue(mod.review_filter_includes_source(review_filter, reading_item))
+            self.assertFalse(mod.review_filter_includes_source(review_filter, other_item))
+            self.assertTrue(mod.review_filter_includes_source(review_filter, slide_item))
+            self.assertTrue(mod.review_filter_includes_short_source(review_filter, reading_item))
+            self.assertTrue(
+                mod.review_filter_includes_output(
+                    review_filter,
+                    "single_reading",
+                    Path("W11L1 - Hacking [EN] {type=audio hash=newhash}.mp3"),
+                )
+            )
+            self.assertFalse(
+                mod.review_filter_includes_output(
+                    review_filter,
+                    "single_reading",
+                    Path("W11L1 - Other [EN] {type=audio hash=newhash}.mp3"),
+                )
+            )
 
     def test_normalize_meta_prompting_keeps_automatic_output_names_addressable(self):
         mod = _load_module()

@@ -162,6 +162,8 @@ class TranscribeEpisodeABReviewTests(unittest.TestCase):
                     language_code="eng",
                     tag_audio_events=False,
                     timeout_seconds=120,
+                    request_retries=2,
+                    request_backoff_seconds=0.1,
                 )
 
         self.assertEqual(speaker_text, "speaker_0: Hello there.\n\nspeaker_1: Conceptually yes.")
@@ -175,6 +177,51 @@ class TranscribeEpisodeABReviewTests(unittest.TestCase):
         self.assertIn(("diarize", "true"), kwargs["data"])
         self.assertIn(("num_speakers", "2"), kwargs["data"])
         self.assertIn(("keyterms", "power relations"), kwargs["data"])
+
+    def test_transcribe_elevenlabs_scribe_retries_then_succeeds(self):
+        mod = _load_module()
+        with tempfile.TemporaryDirectory() as tmpdir:
+            audio_path = Path(tmpdir) / "audio.mp3"
+            audio_path.write_bytes(b"audio")
+
+            success = mock.Mock()
+            success.status_code = 200
+            success.json.return_value = {
+                "text": "Hello there.",
+                "words": [
+                    {"text": "Hello", "speaker_id": "speaker_0"},
+                    {"text": "there", "speaker_id": "speaker_0"},
+                    {"text": ".", "speaker_id": "speaker_0"},
+                ],
+            }
+            fake_requests = types.SimpleNamespace(
+                post=mock.Mock(side_effect=[ConnectionResetError("boom"), success])
+            )
+
+            with mock.patch.dict(sys.modules, {"requests": fake_requests}), mock.patch.object(
+                mod.time,
+                "sleep",
+            ) as sleep_mock:
+                speaker_text, plain_text, payload, keyterms = mod.transcribe_elevenlabs_scribe(
+                    api_key="secret",
+                    audio_path=audio_path,
+                    model="scribe_v2",
+                    entry={"source_context": {"key_points": ["power relations"]}},
+                    num_speakers=2,
+                    keyterms_limit=10,
+                    language_code="eng",
+                    tag_audio_events=False,
+                    timeout_seconds=120,
+                    request_retries=2,
+                    request_backoff_seconds=0.1,
+                )
+
+        self.assertEqual(speaker_text, "speaker_0: Hello there.")
+        self.assertEqual(plain_text, "Hello there.")
+        self.assertEqual(payload["text"], "Hello there.")
+        self.assertIn("power relations", keyterms)
+        self.assertEqual(fake_requests.post.call_count, 2)
+        sleep_mock.assert_called_once_with(0.1)
 
 
 if __name__ == "__main__":

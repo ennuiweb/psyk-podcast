@@ -98,6 +98,75 @@ python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/transcribe_episod
 
 OpenAI mode requires `OPENAI_API_KEY`, `ffmpeg`, and `ffprobe`.
 
+## Generate the candidate set
+
+Candidate episodes should be generated into the review run, not into the normal
+published output root. Use `--review-manifest` to filter generation to the same
+matched samples as the baseline set.
+
+Required before a real candidate run:
+
+- NotebookLM auth/profile must work as usual.
+- `GEMINI_API_KEY` or `GOOGLE_API_KEY` should be set so automatic meta-prompting
+  can materialize the missing `*.analysis.md` sidecars.
+- Do not paste API keys into committed files. Prefer exporting the key in the
+  shell for the current session or loading it from a local secret manager.
+
+Dry-run first:
+
+```bash
+python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_week.py \
+  --weeks W12L1,W11L2,W10L2,W09L1 \
+  --content-types audio \
+  --review-manifest notebooklm-podcast-auto/personlighedspsykologi/evaluation/episode_ab_review/runs/2026-04-before-baseline/manifest.json \
+  --output-root notebooklm-podcast-auto/personlighedspsykologi/evaluation/episode_ab_review/runs/2026-04-before-baseline/candidate_output \
+  --dry-run \
+  --print-resolved-prompts \
+  --no-print-downloads
+```
+
+Expected plan for the current baseline run is eight candidate audio episodes:
+
+- 2 `weekly_readings_only`
+- 2 `single_reading`
+- 2 `single_slide`
+- 2 `short`
+
+Real generation:
+
+```bash
+python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_week.py \
+  --weeks W12L1,W11L2,W10L2,W09L1 \
+  --content-types audio \
+  --review-manifest notebooklm-podcast-auto/personlighedspsykologi/evaluation/episode_ab_review/runs/2026-04-before-baseline/manifest.json \
+  --output-root notebooklm-podcast-auto/personlighedspsykologi/evaluation/episode_ab_review/runs/2026-04-before-baseline/candidate_output
+```
+
+Then wait/download from the request logs in the candidate output root:
+
+```bash
+python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/download_week.py \
+  --weeks W12L1,W11L2,W10L2,W09L1 \
+  --content-types audio \
+  --output-root notebooklm-podcast-auto/personlighedspsykologi/evaluation/episode_ab_review/runs/2026-04-before-baseline/candidate_output
+```
+
+After the MP3 files exist, sync their local paths into the manifest:
+
+```bash
+python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/sync_episode_ab_review_candidates.py \
+  --manifest notebooklm-podcast-auto/personlighedspsykologi/evaluation/episode_ab_review/runs/2026-04-before-baseline/manifest.json \
+  --candidate-output-root notebooklm-podcast-auto/personlighedspsykologi/evaluation/episode_ab_review/runs/2026-04-before-baseline/candidate_output
+```
+
+Then transcribe the candidate side with the same STT backend:
+
+```bash
+python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/transcribe_episode_ab_review.py \
+  --manifest notebooklm-podcast-auto/personlighedspsykologi/evaluation/episode_ab_review/runs/2026-04-before-baseline/manifest.json \
+  --side candidate
+```
+
 ## Working rule
 
 Do not judge transcript A against transcript B in isolation.
@@ -110,8 +179,10 @@ Always compare both against the relevant source files and the episode type:
 
 ## Current status
 
-This workspace is intentionally before-first:
+Current local run:
 
-- the manifest supports baseline-only episodes now
-- candidate fields stay empty until the new episodes exist
-- the same manifest can then be completed rather than rebuilt
+- `runs/2026-04-before-baseline/` is local and ignored by git.
+- Baseline side has 8/8 ElevenLabs Scribe v2 transcripts completed.
+- Candidate side is not generated yet.
+- A dry-run with `--review-manifest` currently plans exactly eight candidate
+  audio outputs in `candidate_output/`.

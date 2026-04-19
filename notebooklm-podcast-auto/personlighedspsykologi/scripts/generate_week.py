@@ -216,9 +216,59 @@ class MetaPromptBackend(NamedTuple):
     support: object | None = None
 
 
+class ReviewManifestFilter(NamedTuple):
+    weekly_lectures: set[str]
+    per_reading_paths: set[str]
+    per_slide_keys: set[str]
+    short_reading_paths: set[str]
+    short_slide_keys: set[str]
+    output_keys_by_type: dict[str, set[str]]
+
+
 def default_output_root() -> str:
     override = str(os.getenv(OUTPUT_ROOT_ENV_VAR) or "").strip()
     return override or DEFAULT_OUTPUT_ROOT
+
+
+def resolve_output_root(path: Path) -> Path:
+    candidate = path.expanduser()
+    if candidate.exists() and candidate.is_dir():
+        return candidate.resolve()
+    if sys.platform == "darwin" and candidate.exists() and candidate.is_file():
+        resolved = resolve_macos_alias(candidate)
+        if resolved is not None and resolved.is_dir():
+            return resolved.resolve()
+    return candidate.resolve()
+
+
+def resolve_macos_alias(path: Path) -> Path | None:
+    if sys.platform != "darwin":
+        return None
+    try:
+        result = subprocess.run(
+            [
+                "osascript",
+                "-e",
+                'tell application "Finder"',
+                "-e",
+                f'set f to (POSIX file "{path.resolve()}") as alias',
+                "-e",
+                "set targetItem to original item of f",
+                "-e",
+                "return POSIX path of (targetItem as text)",
+                "-e",
+                "end tell",
+            ],
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+    except (FileNotFoundError, subprocess.CalledProcessError):
+        return None
+    resolved = result.stdout.strip()
+    if not resolved:
+        return None
+    return Path(resolved).expanduser()
 
 
 def canonicalize_lecture_key(value: str) -> str:
@@ -614,6 +664,131 @@ def should_generate_weekly_overview(source_count: int) -> bool:
     if source_count < 0:
         raise ValueError("source_count must be >= 0")
     return source_count > 1
+
+
+def normalize_review_output_key(value: str) -> str:
+    name = Path(str(value)).name.strip()
+    stem = Path(name).stem if name.lower().endswith(".mp3") else name
+    stem = CFG_TAG_PATTERN.sub("", stem).strip()
+    stem = re.sub(r"\s+", " ", stem)
+    return stem.casefold()
+
+
+def _review_source_paths(entry: dict) -> list[str]:
+    paths: list[str] = []
+    source_context = entry.get("source_context") or {}
+    for value in source_context.get("source_files") or []:
+        raw = str(value).strip()
+        if not raw:
+            continue
+        path = Path(raw).expanduser()
+        paths.append(str(path.resolve()) if path.is_absolute() else raw)
+    return paths
+
+
+def load_review_manifest_filter(path: Path) -> ReviewManifestFilter:
+    payload = read_json(path)
+    weekly_lectures: set[str] = set()
+    per_reading_paths: set[str] = set()
+    per_slide_keys: set[str] = set()
+    short_reading_paths: set[str] = set()
+    short_slide_keys: set[str] = set()
+    output_keys_by_type: dict[str, set[str]] = {
+        "weekly_readings_only": set(),
+        "single_reading": set(),
+        "single_slide": set(),
+        "short": set(),
+    }
+
+    for entry in payload.get("entries") or []:
+        if not isinstance(entry, dict):
+            continue
+        prompt_type = str(entry.get("prompt_type") or "").strip()
+        if prompt_type not in output_keys_by_type:
+            continue
+        lecture_key = str(entry.get("lecture_key") or "").strip()
+        if lecture_key:
+            lecture_key = canonicalize_lecture_key(lecture_key)
+        baseline = entry.get("baseline") or {}
+        source_name = str(baseline.get("source_name") or "").strip()
+        if source_name:
+            output_keys_by_type[prompt_type].add(normalize_review_output_key(source_name))
+
+        if prompt_type == "weekly_readings_only":
+            if lecture_key:
+                weekly_lectures.add(lecture_key)
+            continue
+
+        source_context = entry.get("source_context") or {}
+        catalog_match = source_context.get("catalog_match") or {}
+        slide_key = normalize_slide_key(str(catalog_match.get("slide_key") or ""))
+        source_paths = _review_source_paths(entry)
+        if prompt_type == "single_reading":
+            per_reading_paths.update(source_paths)
+        elif prompt_type == "single_slide":
+            if slide_key:
+                per_slide_keys.add(slide_key)
+        elif prompt_type == "short":
+            if slide_key:
+                short_slide_keys.add(slide_key)
+            else:
+                short_reading_paths.update(source_paths)
+
+    return ReviewManifestFilter(
+        weekly_lectures=weekly_lectures,
+        per_reading_paths=per_reading_paths,
+        per_slide_keys=per_slide_keys,
+        short_reading_paths=short_reading_paths,
+        short_slide_keys=short_slide_keys,
+        output_keys_by_type=output_keys_by_type,
+    )
+
+
+def review_source_path_key(path: Path) -> str:
+    return str(path.expanduser().resolve())
+
+
+def review_filter_includes_weekly(
+    review_filter: ReviewManifestFilter | None,
+    week_label: str,
+) -> bool:
+    if review_filter is None:
+        return True
+    return canonicalize_lecture_key(week_label) in review_filter.weekly_lectures
+
+
+def review_filter_includes_source(
+    review_filter: ReviewManifestFilter | None,
+    source_item: SourceItem,
+) -> bool:
+    if review_filter is None:
+        return True
+    if source_item.source_type == "slide":
+        slide_key = normalize_slide_key(source_item.slide_key or "")
+        return slide_key in review_filter.per_slide_keys or slide_key in review_filter.short_slide_keys
+    source_key = review_source_path_key(source_item.path)
+    return source_key in review_filter.per_reading_paths or source_key in review_filter.short_reading_paths
+
+
+def review_filter_includes_short_source(
+    review_filter: ReviewManifestFilter | None,
+    source_item: SourceItem,
+) -> bool:
+    if review_filter is None:
+        return True
+    if source_item.source_type == "slide":
+        return normalize_slide_key(source_item.slide_key or "") in review_filter.short_slide_keys
+    return review_source_path_key(source_item.path) in review_filter.short_reading_paths
+
+
+def review_filter_includes_output(
+    review_filter: ReviewManifestFilter | None,
+    prompt_type: str,
+    output_path: Path,
+) -> bool:
+    if review_filter is None:
+        return True
+    return normalize_review_output_key(output_path.name) in review_filter.output_keys_by_type.get(prompt_type, set())
 
 
 # Keep this as a raw regex with single escapes (\b, \s) so week-prefix stripping works.
@@ -2369,6 +2544,13 @@ def main() -> int:
         ),
     )
     parser.add_argument(
+        "--review-manifest",
+        help=(
+            "Optional episode A/B review manifest. When set, generation is filtered to "
+            "the baseline sample entries in that manifest."
+        ),
+    )
+    parser.add_argument(
         "--output-root",
         default=default_output_root(),
         help=(
@@ -2530,13 +2712,15 @@ def main() -> int:
     repo_root = find_repo_root(Path(__file__).resolve())
     sources_root = repo_root / args.sources_root
     prompt_config = repo_root / args.prompt_config
-    output_root = repo_root / args.output_root
+    output_root = resolve_output_root(repo_root / args.output_root)
     rotation_enabled = args.rotate_on_rate_limit and not args.profile and not args.storage
     auto_profile, auto_profiles_path = auto_profile_from_profiles(repo_root, args)
     profile_for_run = None if rotation_enabled else (args.profile or auto_profile)
     profiles_file_for_run = args.profiles_file or (str(auto_profiles_path) if auto_profiles_path else None)
     profile_slug = resolve_profile_slug(profile_for_run, args.storage)
     output_root = apply_profile_subdir(output_root, profile_slug, args.output_profile_subdir)
+    if output_root.exists() and not output_root.is_dir():
+        raise SystemExit(f"Output root exists but is not a directory: {output_root}")
     auth_label = profile_slug if not rotation_enabled else None
     generator_script = repo_root / "notebooklm-podcast-auto" / "generate_podcast.py"
     notebooklm_cli = repo_root / "notebooklm-podcast-auto" / ".venv" / "bin" / "notebooklm"
@@ -2581,6 +2765,11 @@ def main() -> int:
             "quiz.difficulty=all requires config-tagged filenames. "
             "Enable --config-tagging (default) or remove --no-config-tagging."
         )
+    review_filter = (
+        load_review_manifest_filter(Path(args.review_manifest).expanduser().resolve())
+        if args.review_manifest
+        else None
+    )
 
     request_logs: list[Path] = []
     failures: list[str] = []
@@ -2666,10 +2855,19 @@ def main() -> int:
                     for item in generation_sources
                     if item.slide_key
                 )
+            if review_filter is not None:
+                generation_sources = [
+                    item
+                    for item in generation_sources
+                    if review_filter_includes_source(review_filter, item)
+                ]
             if not generation_sources:
                 if only_slide_keys:
                     continue
-                raise SystemExit(f"No source files found in {week_dir}")
+                if not review_filter_includes_weekly(review_filter, week_label):
+                    continue
+                if not reading_sources:
+                    raise SystemExit(f"No source files found in {week_dir}")
             reading_source_count = len(reading_sources)
             generation_source_count = len(generation_sources)
             generation_reading_count = sum(
@@ -2680,11 +2878,18 @@ def main() -> int:
             )
             total_sources_read += generation_source_count
             generate_weekly_overview = (
-                False if only_slide_keys else should_generate_weekly_overview(reading_source_count)
+                False
+                if only_slide_keys
+                else (
+                    should_generate_weekly_overview(reading_source_count)
+                    and review_filter_includes_weekly(review_filter, week_label)
+                )
             )
             if not generate_weekly_overview:
                 if only_slide_keys:
                     print(f"{week_label}: skipping Alle kilder generation (--only-slide)")
+                elif review_filter is not None:
+                    print(f"{week_label}: skipping Alle kilder generation (--review-manifest)")
                 else:
                     print(
                         f"{week_label}: skipping Alle kilder generation "
@@ -2782,6 +2987,12 @@ def main() -> int:
                                 weekly_candidate,
                                 auth_label,
                             )
+                            if not review_filter_includes_output(
+                                review_filter,
+                                "weekly_readings_only",
+                                planned_path,
+                            ):
+                                continue
                             planned_lines.append(
                                 f"WEEKLY {content_type.upper()} ({variant['code'] or 'default'}): {planned_path}"
                             )
@@ -2868,6 +3079,17 @@ def main() -> int:
                                 per_candidate,
                                 auth_label,
                             )
+                            per_prompt_type = (
+                                "single_slide"
+                                if source_item.source_type == "slide"
+                                else "single_reading"
+                            )
+                            if not review_filter_includes_output(
+                                review_filter,
+                                per_prompt_type,
+                                planned_path,
+                            ):
+                                continue
                             planned_source_kind = (
                                 "SLIDE" if source_item.source_type == "slide" else "READING"
                             )
@@ -2881,7 +3103,11 @@ def main() -> int:
                             should_skip, _ = should_skip_generation(planned_path, args.skip_existing)
                             if not should_skip:
                                 missing_outputs += 1
-                if not only_slide_keys and should_generate_brief_for_source(source_item, brief_cfg=brief_cfg):
+                if (
+                    not only_slide_keys
+                    and review_filter_includes_short_source(review_filter, source_item)
+                    and should_generate_brief_for_source(source_item, brief_cfg=brief_cfg)
+                ):
                     title_prefix = brief_cfg.get("title_prefix", "[Short]")
                     brief_base = f"{title_prefix} {week_label} - {base_name}"
                     for content_type in brief_types:
@@ -2954,6 +3180,12 @@ def main() -> int:
                                     brief_candidate,
                                     auth_label,
                                 )
+                                if not review_filter_includes_output(
+                                    review_filter,
+                                    "short",
+                                    planned_path,
+                                ):
+                                    continue
                                 planned_lines.append(
                                     f"SHORT {content_type.upper()} ({variant['code'] or 'default'}): {planned_path}"
                                 )
@@ -3048,6 +3280,12 @@ def main() -> int:
                                 weekly_candidate,
                                 auth_label,
                             )
+                            if not review_filter_includes_output(
+                                review_filter,
+                                "weekly_readings_only",
+                                output_path,
+                            ):
+                                continue
                             skip, reason = should_skip_generation(output_path, args.skip_existing)
                             if skip:
                                 if args.print_skips:
@@ -3194,6 +3432,17 @@ def main() -> int:
                                 per_candidate,
                                 auth_label,
                             )
+                            per_prompt_type = (
+                                "single_slide"
+                                if source_item.source_type == "slide"
+                                else "single_reading"
+                            )
+                            if not review_filter_includes_output(
+                                review_filter,
+                                per_prompt_type,
+                                output_path,
+                            ):
+                                continue
                             if (
                                 only_slide_keys
                                 and content_type == "audio"
@@ -3283,7 +3532,11 @@ def main() -> int:
                                 maybe_sleep(args.sleep_between)
                             request_logs.append(output_path.with_suffix(output_path.suffix + ".request.json"))
 
-                if not only_slide_keys and should_generate_brief_for_source(source_item, brief_cfg=brief_cfg):
+                if (
+                    not only_slide_keys
+                    and review_filter_includes_short_source(review_filter, source_item)
+                    and should_generate_brief_for_source(source_item, brief_cfg=brief_cfg)
+                ):
                     title_prefix = brief_cfg.get("title_prefix", "[Short]")
                     brief_base = f"{title_prefix} {week_label} - {base_name}"
                     for content_type in brief_types:
@@ -3353,6 +3606,12 @@ def main() -> int:
                                     brief_candidate,
                                     auth_label,
                                 )
+                                if not review_filter_includes_output(
+                                    review_filter,
+                                    "short",
+                                    output_path,
+                                ):
+                                    continue
                                 skip, reason = should_skip_generation(output_path, args.skip_existing)
                                 if skip:
                                     if args.print_skips:

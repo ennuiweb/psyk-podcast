@@ -1,14 +1,12 @@
-# psyk-podcast · [RSS feed](https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/social-psychology/feeds/rss.xml)
+# psyk-podcast
 
-Automation to build podcast RSS feeds from audio files stored in Google Drive. The current show (`shows/social-psychology`) regenerates `shows/social-psychology/feeds/rss.xml` automatically via GitHub Actions, and the structure is ready for additional shows later on.
+Automation to build podcast RSS feeds from audio files stored in Google Drive, plus subject automation and the `freudd` Django portal. Each show lives under `shows/<show-slug>/` and publishes its own `shows/<show-slug>/feeds/rss.xml` via GitHub Actions.
 
 ## Repository layout
 - `podcast-tools/gdrive_podcast_feed.py` – shared generator script used by every show.
-- `shows/` – one directory per podcast. Each show keeps its own config, metadata, docs, and generated feeds (for example `shows/social-psychology/`).
-  - `shows/intro-vt/` ships as scaffolding for the "Intro + VT Deep Dives - Hold 1 - 2024" series—copy the templates inside when you are ready to wire the feed up. GitHub Actions now runs each show via a build matrix, so once a new show directory follows the same structure and is referenced in the workflow matrix, it will publish automatically.
-  - `shows/intro-vt-tss/` and `shows/social-psychology-tts/` provide text-to-speech variants that reuse the deep-dive auto spec and share the same automation flow.
-- `notebooklm_app/` – standalone CLI + helpers that talk to the NotebookLM Enterprise API to generate and download AI narrated podcasts locally (no coupling to the RSS tooling).
-- `notebooklm-podcast-auto/` – automation tooling for NotebookLM, with `notebooklm-py` tracked as a git submodule.
+- `shows/` – one directory per podcast. Each show keeps its own config, metadata, docs, and generated feeds (for example `shows/personlighedspsykologi-en/`, `shows/bioneuro/`, `shows/social-psychology/`, `shows/berlingske/`, `shows/personal/`, and `shows/intro-vt/`).
+- `notebooklm-podcast-auto/` – subject-oriented NotebookLM automation, with dedicated wrappers under `notebooklm-podcast-auto/personlighedspsykologi/` and `notebooklm-podcast-auto/bioneuro/`, plus the tracked `notebooklm-py` submodule for the underlying API/client tooling.
+- `freudd_portal/` – Django portal for auth, quiz play, subject access, readings, slides, and gamification.
 - `requirements.txt` – Python dependencies needed locally and in CI.
 
 ### MIME type filtering
@@ -116,13 +114,13 @@ and records metadata keyed by Drive file ID (or file name with
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
-cp podcast/config.sample.json podcast/config.local.json
-# edit podcast/config.local.json and (optionally) podcast/episode_metadata.sample.json
-python podcast/gdrive_podcast_feed.py --config podcast/config.local.json
+cp shows/<show-slug>/config.template.json shows/<show-slug>/config.local.json
+# edit shows/<show-slug>/config.local.json and (optionally) shows/<show-slug>/episode_metadata.template.json
+python podcast-tools/gdrive_podcast_feed.py --config shows/<show-slug>/config.local.json
 ```
-`podcast/rss.xml` is overwritten on each run.
+`shows/<show-slug>/feeds/rss.xml` is overwritten on each run.
 
-The repository ships with `podcast/config.json` and `podcast/episode_metadata.json` pre-populated for Socialpsykologi Deep Dives - Hold 1 - 2024—update the titles, artwork, contact email, and descriptions to match your own show before publishing.
+Each show directory ships with its own `config.github.json`, `config.local.json`, `config.template.json`, `episode_metadata.json`, and `episode_metadata.template.json`. Update the titles, artwork, contact email, and descriptions to match your show before publishing.
 
 ## freudd (login + learning dashboard)
 The repository includes a Django portal in `freudd_portal/` for hybrid auth (username/password + optional Google OAuth), quiz state persistence, quiz-driven gamification, subject enrollment, and subject reading overviews without changing NotebookLM-generated quiz HTML internals.
@@ -140,7 +138,8 @@ The repository includes a Django portal in `freudd_portal/` for hybrid auth (use
 - `GET/POST /api/quiz-state/<quiz_id>` (login-required structured quiz state; POST can return `429` on active retry cooldown)
 - `GET/POST /api/quiz-state/<quiz_id>/raw` (login-required legacy raw state payload)
 - `GET /api/gamification/me` (login-required gamification snapshot)
-- `GET /progress` (login-required dashboard with `Mine fag`, personal tracking, quizliga, and optional `Quizhistorik` section controlled by `FREUDD_PROGRESS_QUIZ_HISTORY_ENABLED`)
+- `GET /settings` (login-required dashboard with `Mine fag`, personal tracking, leaderboard settings, and optional `Quizhistorik` section controlled by `FREUDD_PROGRESS_QUIZ_HISTORY_ENABLED`)
+- `GET /progress` (legacy permanent redirect to `/settings`)
 - `GET /subjects/<subject_slug>` (subject detail with lecture-first path + nested readings/assets; supports anonymous access)
 - `GET /subjects/<subject_slug>/readings/open/<reading_key>` (public reading file access; blocked if excluded in config)
 - `GET /subjects/<subject_slug>/readings/open/<reading_key>/text` (public reading text extraction for ChatGPT; blocked if excluded in config)
@@ -164,7 +163,7 @@ The repository includes a Django portal in `freudd_portal/` for hybrid auth (use
 - UI: portal now uses a light-first palette with blue-accent cards and shared primitives across dashboard, course view, auth, and quiz wrapper.
 - UI: shared primitives enforce tokenized spacing/radius (`10/12/14/18/22/999`), subtle depth, and `44px` controls for primary/secondary/neutral actions.
 - UI: subject detail page is mobile-first and renders a left lecture rail with a single active lecture card (no multi-panel `<details>` accordion).
-- UI: subject detail page shows enrollment status only; enroll/unenroll actions live on `/progress` under `Mine fag`.
+- UI: subject detail page shows enrollment status only; enroll/unenroll actions live on `/settings` under `Mine fag`.
 - UI layout contract: lecture rail links use `GET /subjects/<subject_slug>?lecture=<lecture_key>` to switch active lecture on full-page reload.
 - UI preview contract: anonymous requests with `?preview=true&lecture=<lecture_key>` lock the active lecture; rail attempts to open other lectures trigger a login-required popup and route to login when confirmed.
 - UI section contract: active lecture card renders `Readings`, `Slides` (with only non-empty underkategorier among `slides fra forelæsning`, `slides fra seminarhold`, `slides fra øvelseshold`), optional `Podcasts` (only when podcast rows exist), and `Quiz for alle kilder`; podcasts are flattened into one list and reading cards always show L/M/S difficulty indicators.
@@ -217,7 +216,7 @@ python3 manage.py test
 - `FREUDD_AUTH_GOOGLE_ENABLED` (default: `0`)
 - `FREUDD_GOOGLE_CLIENT_ID` (required when `FREUDD_AUTH_GOOGLE_ENABLED=1`)
 - `FREUDD_GOOGLE_CLIENT_SECRET` (required when `FREUDD_AUTH_GOOGLE_ENABLED=1`)
-- `FREUDD_PROGRESS_QUIZ_HISTORY_ENABLED` (default: `1`; set `0` to hide Quizhistorik on `/progress`)
+- `FREUDD_PROGRESS_QUIZ_HISTORY_ENABLED` (default: `1`; set `0` to hide Quizhistorik on `/settings`)
 - `FREUDD_PORTAL_TRUST_X_FORWARDED_PROTO` (default: `0`; set `1` behind TLS-terminating proxy)
 - `FREUDD_PORTAL_CSRF_TRUSTED_ORIGINS` (comma-separated origins)
 - `FREUDD_PORTAL_SESSION_COOKIE_SECURE` (default: `0`; set `1` in production HTTPS)
@@ -266,7 +265,8 @@ Proxy these routes to the Django service (Gunicorn/Uvicorn):
 - `/accounts/*`
 - `/q/*`
 - `/api/*`
-- `/progress`
+- `/settings*`
+- `/progress*` (legacy redirect)
 - `/subjects/*`
 - `/preferences/*`
 
@@ -295,7 +295,7 @@ Quiz sync behavior (current):
 - Google account linking is explicit (`/accounts/3rdparty/`); implicit email-based social account takeover is disabled
 - Wrapper/raw quiz endpoints are public (`/q/*`, `/q/raw/*`) for anonymous play
 - Public quiz content API (`/api/quiz-content/<id>`) serves normalized quiz JSON to the portal UI
-- Login required on dashboard + state persistence + subject preference APIs (`/progress`, `/api/quiz-state/*`, `/subjects/*`, `/preferences/*`), except public reading/slide endpoints (`/subjects/<subject_slug>/readings/open/<reading_key>`, `/subjects/<subject_slug>/readings/open/<reading_key>/text`, `/subjects/<subject_slug>/slides/open/<slide_key>`, and equivalent `/tekster/open/*` routes). Note: `slides/open` stays public for `lecture` slides only; `seminar`/`exercise` still require elevated authenticated access.
+- Login required on dashboard + state persistence + subject preference APIs (`/settings`, `/api/quiz-state/*`, `/subjects/*`, `/preferences/*`), except public reading/slide endpoints (`/subjects/<subject_slug>/readings/open/<reading_key>`, `/subjects/<subject_slug>/readings/open/<reading_key>/text`, `/subjects/<subject_slug>/slides/open/<slide_key>`, and equivalent `/tekster/open/*` routes). Note: `slides/open` stays public for `lecture` slides only; `seminar`/`exercise` still require elevated authenticated access.
 - Login required on `/api/gamification/me`
 - Anonymous users are prompted to log in when they reach quiz summary/completion
 - Strict quiz ID regex (`^[0-9a-f]{8}$`) plus existence checks
@@ -316,7 +316,7 @@ Google OAuth callback allowlist (Google Cloud OAuth client):
 - GitHub Actions workflow `.github/workflows/monitor-production-drift.yml` runs hourly (`23 * * * *`) to compare deployed `/opt/podcasts` commit with `main` and auto-remediate drift by running the same deploy routine.
 
 ### freudd.dk domain cutover (2026-02-26)
-- Server is prepared for domain traffic in Caddy: `freudd.dk, www.freudd.dk` now route with the same path split as IP (`/accounts/*`, `/api/*`, `/progress*`, `/subjects/*`, `/preferences/*`, `/q/*` to `127.0.0.1:8001`, fallback to `127.0.0.1:3000`).
+- Server is prepared for domain traffic in Caddy: `freudd.dk, www.freudd.dk` now route with the same path split as IP (`/accounts/*`, `/api/*`, `/settings*`, `/progress*`, `/subjects/*`, `/preferences/*`, `/q/*` to `127.0.0.1:8001`, fallback to `127.0.0.1:3000`).
 - Django host allowlist on production was updated to include domain names: `FREUDD_PORTAL_ALLOWED_HOSTS=freudd.dk,www.freudd.dk,64.226.79.109,127.0.0.1,localhost`.
 - TLS issuance is configured in Caddy but will fail until DNS points to the droplet.
 
@@ -333,20 +333,25 @@ Verification commands after DNS change:
 1. Create two repository secrets:
    - `GOOGLE_SERVICE_ACCOUNT_JSON` – paste the entire JSON key exactly as downloaded (no extra quoting or base64).
    - `DRIVE_FOLDER_ID` – the folder ID from the Google Drive URL.
-2. Edit `podcast/config.github.json` with your show metadata. Leave `service_account_file` untouched; the workflow writes the key to that path at runtime. Add a real `podcast/episode_metadata.json` if you want to control titles, descriptions, publish dates, durations, and artwork per episode.
-3. (Optional) Commit your custom `podcast/episode_metadata.json`.
+2. Edit `shows/<show-slug>/config.github.json` with your show metadata. Leave `service_account_file` untouched; the workflow writes the key to that path at runtime. Add or update `shows/<show-slug>/episode_metadata.json` if you want to control titles, descriptions, publish dates, durations, and artwork per episode.
+3. (Optional) Commit your custom `shows/<show-slug>/episode_metadata.json`.
 
 To kick off a build manually, go to **Actions → Generate Podcast Feed → Run workflow**. The job also runs every day at 06:00 UTC via cron.
 
 ## NotebookLM automation
-`notebooklm_app/` now ships an nlm-based workflow (`notebooklm_app/scripts/notebooklm_batch.sh`) that shells out to the [tmc/nlm](https://github.com/tmc/nlm) CLI for everything:
+NotebookLM automation lives under `notebooklm-podcast-auto/`:
 
-1. Install `nlm` (`go install github.com/tmc/nlm/cmd/nlm@latest`) and authenticate once by piping a DevTools cURL command into `nlm auth` (`pbpaste | nlm auth`).
-2. Copy `notebooklm_app/nlm.env.example` to `notebooklm_app/nlm.env` and adjust episode focus, language, directories, poll intervals, and concurrency as needed.
-3. Drop the documents you want narrated into `notebooklm_app/sources/`.
-4. Run `notebooklm_app/scripts/notebooklm_batch.sh`. For each file the script uses `nlm create`, `nlm add`, `nlm audio-create`, and repeated `nlm --direct-rpc audio-download` calls to produce the `.wav`, converts it to MP3 via `ffmpeg` (unless `OUTPUT_AUDIO_FORMAT=wav`), then tears everything down via `nlm rm-source`, `nlm audio-rm`, and `nlm rm`.
+1. The subject wrappers live under `notebooklm-podcast-auto/personlighedspsykologi/` and `notebooklm-podcast-auto/bioneuro/`.
+2. The underlying client/test surface lives in the tracked submodule `notebooklm-podcast-auto/notebooklm-py/`.
+3. Use the subject scripts for week generation, downloads, and validation, for example:
 
-The legacy Python CLI and Discovery Engine REST calls were removed; nlm is now the single integration point.
+```bash
+./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_week.py --week W01L1 --dry-run
+./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/sync_reading_summaries.py --validate-only --validate-weekly
+./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/bioneuro/scripts/generate_week.py --week W1L1 --dry-run
+```
+
+Subject-specific operational details live under the matching `docs/` folders in `notebooklm-podcast-auto/` and the generated show docs under `shows/<show-slug>/docs/`.
 
 ## Drive-triggered rebuilds (Google Apps Script)
 If you want the GitHub workflow to fire whenever fresh audio appears in Drive, add a lightweight Apps Script that polls the folder and calls the `Generate Podcast Feed` workflow via `workflow_dispatch`. The helper now supports multiple Drive roots via `CONFIG.drive.folderIds`, so list every show folder there (and re-run `initializeDriveChangeState()` whenever you add one) to keep all series in sync.
@@ -557,15 +562,15 @@ You can either bake Drive folder IDs directly into each `config.github.json` or 
 Ensure the default branch has permissions for GitHub Actions to push (`Repository Settings → Actions → General → Workflow permissions → Read and write`).
 
 ## Deploying the feed
-Wherever you host the feed (GitHub Pages, S3, Netlify, etc.), publish `podcast/rss.xml`.
+Wherever you host the feed (GitHub Pages, S3, Netlify, etc.), publish `shows/<show-slug>/feeds/rss.xml`.
 
 ### Hosting on GitHub Pages
 1. In repository settings, enable **Pages** for the `main` branch.
-2. The file will then be reachable at `https://<username>.github.io/psyk-podcast/podcast/rss.xml` with the correct `application/rss+xml` MIME type.
+2. A feed will then be reachable at `https://<username>.github.io/psyk-podcast/shows/<show-slug>/feeds/rss.xml` with the correct `application/rss+xml` MIME type.
 3. Update podcast directories to point at that URL. (The raw GitHub URL works for quick testing but may be throttled and is served as `text/plain`.)
 
 ## Customising metadata
-- Put per-episode overrides in `podcast/episode_metadata.json` (copy the sample and extend it). Keys can be the file name, or nest under `"by_name"` / `"by_id"` to mix strategies.
+- Put per-episode overrides in `shows/<show-slug>/episode_metadata.json` (copy the sample and extend it). Keys can be the file name, or nest under `"by_name"` / `"by_id"` to mix strategies.
 - Add `duration` (seconds or `HH:MM:SS`) so players show runtime.
 - Supply episode-specific `image` URLs for chapters/artwork if desired.
 - To auto-apply infographics as episode artwork, set `episode_image_from_infographics: true` in the show config. The feed builder looks for image files (default: `image/png`) with the same base name in the same Drive folder and uses them when no per-episode `image` is set. It canonicalizes stems (collapsing repeated dots and duplicate week tokens like `W01L2 - W1L2 ...`) to improve matching. If no exact folder match exists, it will also consider files with the same base name in ancestor/descendant folders and fall back to a unique match; ambiguous matches are skipped. Optional: `episode_image_mime_types`, `episode_image_prefer_exts`.
@@ -573,5 +578,5 @@ Wherever you host the feed (GitHub Pages, S3, Netlify, etc.), publish `podcast/r
 ## Troubleshooting
 - The script prints whenever it enables public sharing on a file. Run with `--dry-run` to preview without modifying permissions.
 - If the workflow fails with JSON parsing errors, ensure `GOOGLE_SERVICE_ACCOUNT_JSON` is stored as plain JSON (no quotes or base64) so the inline writer can emit a valid key file.
-- If the workflow fails with `File not found: podcast/config.github.json`, copy the template to that path and commit it.
+- If the workflow fails with `File not found: shows/<show-slug>/config.github.json`, copy `shows/<show-slug>/config.template.json` into place, update it, and commit it.
 - Rate limiting: Google Drive may throttle anonymous downloads. Consider moving media to static hosting (S3, Cloudflare R2, etc.) if directories or listeners report access issues.

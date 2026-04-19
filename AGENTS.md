@@ -1,9 +1,30 @@
+## Repo Identity
+
+- Repo: `/Users/oskar/repo/podcasts`
+- Role: podcast feed automation, NotebookLM subject automation, and the Freudd learning portal.
+
+## Inheritance
+
+- Inherits global agent rules from `~/.agents/AGENTS.md`.
+- This file contains only repo-local deltas and routing.
+
 ## Core Policies
 
 - Always deploy after implementing changes; implementation is not complete until the required deploy step has succeeded.
 - `freudd_portal` changes: deploy to `freudd-portal` as the final step.
 - Podcast repo changes: commit + push, then run `gh workflow run generate-feed.yml --ref main`.
 - `freudd_portal` model/schema changes: always run `makemigrations` + `migrate`.
+
+## Local Context Map
+
+- Repo-local durable memory: `.aimemory/memory.md`
+- Root technical index: `TECHNICAL.md`
+- Top-level operational docs: `docs/`
+- Feed automation docs: `docs/feed-automation.md`, `podcast-tools/`, `shows/README.md`, and `shows/<show>/docs/`
+- NotebookLM automation docs: `docs/notebooklm-automation.md`, `notebooklm-podcast-auto/README.md`, `notebooklm-podcast-auto/personlighedspsykologi/docs/`, and `notebooklm-podcast-auto/notebooklm-py/docs/`
+- Freudd portal docs: `docs/freudd-portal.md`, `freudd_portal/README.md`, and `freudd_portal/docs/`
+- Freudd deploy/smoke runbook: this file and `freudd_portal/docs/deploy-and-smoke.md`
+- Apps Script trigger docs: `apps-script/README.md` and `apps-script/drive_change_trigger.gs`
 
 ## Freudd Remote Deploy Runbook (verified 2026-02-25)
 

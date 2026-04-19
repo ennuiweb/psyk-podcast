@@ -2439,6 +2439,13 @@ def load_request_payload(output_path: Path) -> dict | None:
     return None
 
 
+def request_log_has_artifact(output_path: Path) -> bool:
+    payload = load_request_payload(output_path)
+    if not payload:
+        return False
+    return bool(str(payload.get("artifact_id") or "").strip())
+
+
 def legacy_weekly_overview_aliases(output_path: Path) -> list[Path]:
     new_marker = f" - {WEEKLY_OVERVIEW_TITLE}"
     if new_marker not in output_path.name:
@@ -2621,6 +2628,7 @@ def run_generate(
     generation_timeout: float | None,
     artifact_retries: int | None,
     artifact_retry_backoff: float | None,
+    generator_timeout: float | None,
     storage: str | None,
     profile: str | None,
     preferred_profile: str | None,
@@ -2703,7 +2711,20 @@ def run_generate(
         cmd.append("--no-ensure-sources-ready")
     if not append_profile_to_notebook_title:
         cmd.append("--no-append-profile-to-notebook-title")
-    result = subprocess.run(cmd, check=False)
+    try:
+        result = subprocess.run(cmd, check=False, timeout=generator_timeout)
+    except subprocess.TimeoutExpired as exc:
+        if request_log_has_artifact(output_path):
+            print(
+                "Generator subprocess timed out after "
+                f"{generator_timeout:g}s, but request log exists with artifact_id; "
+                f"continuing: {output_path}"
+            )
+            return
+        raise RuntimeError(
+            "Generator timed out before writing a usable request log "
+            f"for {output_path}"
+        ) from exc
     if result.returncode != 0:
         raise RuntimeError(f"Generator failed with exit code {result.returncode}")
 
@@ -2802,6 +2823,16 @@ def main() -> int:
         "--generation-timeout",
         type=float,
         help="Seconds to wait for generation (passed through).",
+    )
+    parser.add_argument(
+        "--generator-timeout",
+        type=float,
+        default=420.0,
+        help=(
+            "Seconds to wait for each generate_podcast.py subprocess. "
+            "If a request log with artifact_id exists after timeout, continue as queued "
+            "(default: 420)."
+        ),
     )
     parser.add_argument(
         "--storage",
@@ -3531,6 +3562,7 @@ def main() -> int:
                                     skip_existing=args.skip_existing,
                                     source_timeout=args.source_timeout,
                                     generation_timeout=args.generation_timeout,
+                                    generator_timeout=args.generator_timeout,
                                     artifact_retries=args.artifact_retries,
                                     artifact_retry_backoff=args.artifact_retry_backoff,
                                     storage=args.storage,
@@ -3703,6 +3735,7 @@ def main() -> int:
                                     skip_existing=args.skip_existing,
                                     source_timeout=args.source_timeout,
                                     generation_timeout=args.generation_timeout,
+                                    generator_timeout=args.generator_timeout,
                                     artifact_retries=args.artifact_retries,
                                     artifact_retry_backoff=args.artifact_retry_backoff,
                                     storage=args.storage,
@@ -3856,6 +3889,7 @@ def main() -> int:
                                         skip_existing=args.skip_existing,
                                         source_timeout=args.source_timeout,
                                         generation_timeout=args.generation_timeout,
+                                        generator_timeout=args.generator_timeout,
                                         artifact_retries=args.artifact_retries,
                                         artifact_retry_backoff=args.artifact_retry_backoff,
                                         storage=args.storage,

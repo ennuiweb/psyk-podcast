@@ -125,6 +125,7 @@ python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_week.py 
 ```
 
 - Candidate generation should use `GEMINI_API_KEY` or `GOOGLE_API_KEY` when `meta_prompting.automatic.enabled=true`; otherwise auto-meta fails open and the run continues without generated meta sidecars.
+- `generate_week.py` also has a wrapper-level `--generator-timeout` (default `420` seconds). If `generate_podcast.py` times out after writing a request log with `artifact_id`, the wrapper treats the artifact as queued and continues to the next sample.
 - After candidate MP3s are downloaded, sync their local paths into the manifest:
 
 ```bash

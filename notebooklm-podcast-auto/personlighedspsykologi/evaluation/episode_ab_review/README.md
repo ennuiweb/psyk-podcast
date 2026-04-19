@@ -135,6 +135,11 @@ Expected plan for the current baseline run is eight candidate audio episodes:
 - 2 `single_slide`
 - 2 `short`
 
+Candidate generation is resumable. Existing outputs and request logs are
+skipped by default. The wrapper-level `--generator-timeout` defaults to `420`
+seconds; if `generate_podcast.py` times out after writing a request log with an
+`artifact_id`, `generate_week.py` treats that artifact as queued and continues.
+
 Real generation:
 
 ```bash

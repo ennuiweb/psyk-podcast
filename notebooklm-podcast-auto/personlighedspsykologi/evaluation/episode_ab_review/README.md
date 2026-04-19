@@ -175,6 +175,37 @@ python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/transcribe_episod
   --side candidate
 ```
 
+## Judge the matched pairs
+
+Use Gemini to compare each baseline/candidate transcript pair against the
+actual source files and the rubric in `judge_prompt.md`.
+
+Requirements:
+
+- `GEMINI_API_KEY` or `GOOGLE_API_KEY`
+- `google-genai` installed in the active environment
+- all source files referenced by the manifest must resolve locally
+
+Command:
+
+```bash
+python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/judge_episode_ab_review.py \
+  --manifest notebooklm-podcast-auto/personlighedspsykologi/evaluation/episode_ab_review/runs/2026-04-before-baseline/manifest.json
+```
+
+Behavior:
+
+- uploads the relevant source PDFs/slides directly to Gemini
+- uses `gemini-3.1-pro-preview` by default
+- writes exact judge prompts to `judge_prompts/<sample>.txt`
+- writes per-sample reports to `judgments/<sample>.md`
+- writes aggregate results to `judgments/SUMMARY.md` and
+  `judgments/summary.json`
+- updates the manifest with judgment status, model, winner, confidence, and
+  report path
+- retries transient Gemini failures such as 500/503/429 before marking a sample
+  as failed
+
 ## Working rule
 
 Do not judge transcript A against transcript B in isolation.
@@ -191,6 +222,7 @@ Current local run:
 
 - `runs/2026-04-before-baseline/` is local and ignored by git.
 - Baseline side has 8/8 ElevenLabs Scribe v2 transcripts completed.
-- Candidate side is not generated yet.
-- A dry-run with `--review-manifest` currently plans exactly eight candidate
-  audio outputs in `candidate_output/`.
+- Candidate side has 8/8 generated MP3s and 8/8 ElevenLabs Scribe v2
+  transcripts completed.
+- Gemini judgment has 8/8 reports completed. All eight samples favored the
+  candidate with high confidence in the current run.

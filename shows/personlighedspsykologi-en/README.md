@@ -18,6 +18,7 @@ Spotify note: `feed.description_blank_line_marker: "·"` converts blank lines in
 Description order note: for `reading`, `short`, and `weekly_overview`, `feed.description_blocks_by_kind` is set to `quiz -> summary -> key points`; when no quiz link exists, the summary/key-points blocks render without the quiz block.
 Quiz localization note: `quiz.labels` controls heading and difficulty labels in descriptions (currently `Quizzer` with `Let/Mellem/Svær`).
 Feed ordering note: `feed.sort_mode: "wxlx_source_pair_priority"` groups by `W#L#` and orders each lecture block as `ALLE KILDER -> [Kort] + full reading pairs -> [Kort] + full Forelæsningsslides pair -> [Lydbog] tail`; source pairs use natural reading order with Grundbog chapters sorted by chapter number.
+Regeneration note: feed generation now selects the public A/B variant directly from `regeneration_registry.json` per `logical_episode_id`. Regex excludes are no longer the rollout mechanism.
 Slide short note: short generation is intentionally limited to all readings plus lecture slides (`short.apply_to: "readings_and_lecture_slides"`; the older config key is still accepted). Exercise slides keep their full podcast variants but do not get `Kort podcast` entries under the shared `Forelæsningsslides` label.
 Slide short audit note: the CI audit checks the built RSS against the Drive-backed show source, so code changes alone do not make the feed compliant. Missing lecture-slide short MP3s must still be generated, downloaded, and mirrored/uploaded before `generate-feed.yml` can pass the audit and publish the expected `Kort podcast · Forelæsningsslides` entries.
 Unassigned TTS note: audio files without week tokens (for example in Drive folder `grundbog-tts/`) are auto-scheduled before week 1 and therefore render at the end of the feed.
@@ -40,6 +41,8 @@ Reading-summary workflow:
   - `./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/sync_reading_summaries.py --validate-only --validate-weekly`
 - Build feed after sync:
   - `./notebooklm-podcast-auto/.venv/bin/python podcast-tools/gdrive_podcast_feed.py --config shows/personlighedspsykologi-en/config.github.json`
+- Validate registry vs. generated inventory:
+  - `./notebooklm-podcast-auto/.venv/bin/python scripts/validate_regeneration_inventory.py --show-slug personlighedspsykologi-en`
 - Sync behavior:
   - uses local audio files (`.mp3`/`.wav`) to discover non-weekly episode keys, including reading, slide, short, and `TTS` variants.
   - excludes `Alle kilder` / `All sources` files from the reading summary inventory.

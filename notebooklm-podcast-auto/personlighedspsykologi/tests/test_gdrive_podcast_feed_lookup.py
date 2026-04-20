@@ -47,6 +47,66 @@ class GDrivePodcastFeedLookupTests(unittest.TestCase):
         self.assertIsNotNone(match)
         self.assertEqual(match["summary_lines"], ["L1", "L2"])
 
+    def test_registry_selection_prefers_active_b_variant(self):
+        mod = _load_module()
+        entry = {
+            "logical_episode_id": "short__w11l1__gergen_1999_en",
+            "active_variant": "B",
+            "variants": {
+                "A": {
+                    "episode_key": "old-short-id",
+                    "source_name": "[Short] W11L1 - Gergen (1999) [EN] {type=audio hash=old}.mp3",
+                },
+                "B": {
+                    "episode_key": "new-short-id",
+                    "source_name": "[Short] W11L1 - Gergen (1999) [EN] {type=audio hash=new}.mp3",
+                },
+            },
+        }
+        registry = {entry["logical_episode_id"]: entry}
+
+        include, logical_id, matched_slot = mod._registry_selection_for_file(
+            {
+                "id": "new-short-id",
+                "name": "[Short] W11L1 - Gergen (1999) [EN] {type=audio hash=new}.mp3",
+            },
+            registry,
+        )
+
+        self.assertTrue(include)
+        self.assertEqual(logical_id, entry["logical_episode_id"])
+        self.assertEqual(matched_slot, "B")
+
+    def test_registry_selection_skips_old_a_when_b_is_active(self):
+        mod = _load_module()
+        entry = {
+            "logical_episode_id": "short__w11l1__gergen_1999_en",
+            "active_variant": "B",
+            "variants": {
+                "A": {
+                    "episode_key": "old-short-id",
+                    "source_name": "[Short] W11L1 - Gergen (1999) [EN] {type=audio hash=old}.mp3",
+                },
+                "B": {
+                    "episode_key": "new-short-id",
+                    "source_name": "[Short] W11L1 - Gergen (1999) [EN] {type=audio hash=new}.mp3",
+                },
+            },
+        }
+        registry = {entry["logical_episode_id"]: entry}
+
+        include, logical_id, matched_slot = mod._registry_selection_for_file(
+            {
+                "id": "old-short-id",
+                "name": "[Short] W11L1 - Gergen (1999) [EN] {type=audio hash=old}.mp3",
+            },
+            registry,
+        )
+
+        self.assertFalse(include)
+        self.assertEqual(logical_id, entry["logical_episode_id"])
+        self.assertEqual(matched_slot, "A")
+
 
 if __name__ == "__main__":
     unittest.main()

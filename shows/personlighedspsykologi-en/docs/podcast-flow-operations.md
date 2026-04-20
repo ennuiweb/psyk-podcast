@@ -58,6 +58,7 @@ Registry policy:
 - `active_variant` records which public version is active now.
 - `variants.A` mirrors the currently published baseline from `episode_inventory.json`.
 - `variants.B` is preserved across syncs and should hold rollout/staging/review metadata for regenerated candidates.
+- Feed generation reads `regeneration_registry.json` directly and includes the active variant per logical episode. Do not rely on regex excludes for rollout control.
 
 ## Ved Titel- Eller Order-Ændringer
 
@@ -95,6 +96,12 @@ Use local dry-run validation before publishing:
 
 ```bash
 ./.venv/bin/python podcast-tools/gdrive_podcast_feed.py --config shows/personlighedspsykologi-en/config.github.json --dry-run
+```
+
+Validate the generated inventory against `regeneration_registry.json` before or after publish:
+
+```bash
+./notebooklm-podcast-auto/.venv/bin/python scripts/validate_regeneration_inventory.py --show-slug personlighedspsykologi-en
 ```
 
 Known non-blocking warnings can include duplicate audio sources collapsed

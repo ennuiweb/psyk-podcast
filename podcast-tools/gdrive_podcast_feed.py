@@ -18,7 +18,11 @@ from zoneinfo import ZoneInfo
 SCRIPT_DIR = Path(__file__).resolve().parent
 if str(SCRIPT_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPT_DIR))
+REPO_ROOT = SCRIPT_DIR.parent
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
 
+from regeneration_identity import logical_episode_id  # noqa: E402
 from storage_backends import build_storage_backend, resolve_storage_provider
 
 try:
@@ -359,6 +363,73 @@ def _apply_existing_identity(file_entry: Dict[str, Any], identity_map: Dict[str,
         if existing_guid:
             file_entry["stable_guid"] = existing_guid
             return
+
+
+def _load_regeneration_registry(path: Path) -> Dict[str, Any]:
+    try:
+        payload = load_json(path)
+    except Exception as exc:  # noqa: BLE001
+        raise ValueError(f"failed to load regeneration registry from {path}: {exc}") from exc
+    if not isinstance(payload, dict):
+        raise ValueError(f"regeneration registry at {path} must be a JSON object")
+    return payload
+
+
+def _normalize_registry_entry_map(payload: Dict[str, Any]) -> Dict[str, Dict[str, Any]]:
+    entries = payload.get("entries")
+    if not isinstance(entries, list):
+        return {}
+    mapped: Dict[str, Dict[str, Any]] = {}
+    for entry in entries:
+        if not isinstance(entry, dict):
+            continue
+        logical_id = str(entry.get("logical_episode_id") or "").strip()
+        if logical_id and logical_id not in mapped:
+            mapped[logical_id] = entry
+    return mapped
+
+
+def _variant_matches_file_entry(variant: Dict[str, Any], file_entry: Dict[str, Any]) -> bool:
+    file_id = str(file_entry.get("id") or "").strip()
+    file_name = str(file_entry.get("name") or "").strip()
+    source_path = str(file_entry.get("source_path") or "").strip()
+    source_storage_key = str(file_entry.get("source_storage_key") or "").strip()
+    candidates = {
+        str(variant.get("episode_key") or "").strip(),
+        str(variant.get("source_name") or "").strip(),
+        str(variant.get("canonical_source_name") or "").strip(),
+    }
+    values = {file_id, file_name, source_path, source_storage_key}
+    values.discard("")
+    candidates.discard("")
+    return bool(candidates & values)
+
+
+def _registry_selection_for_file(
+    file_entry: Dict[str, Any],
+    registry_entries_by_lid: Dict[str, Dict[str, Any]],
+) -> Optional[Tuple[bool, Optional[str], Optional[str]]]:
+    source_name = str(file_entry.get("name") or file_entry.get("source_name") or "").strip()
+    if not source_name:
+        return None
+    logical_id = logical_episode_id(source_name)
+    entry = registry_entries_by_lid.get(logical_id)
+    if entry is None:
+        return None
+
+    variants = entry.get("variants") if isinstance(entry.get("variants"), dict) else {}
+    active_slot = str(entry.get("active_variant") or "A").strip().upper()
+    if active_slot not in {"A", "B"}:
+        active_slot = "A"
+    matched_slot: Optional[str] = None
+    for slot in ("A", "B"):
+        variant = variants.get(slot) if isinstance(variants.get(slot), dict) else {}
+        if variant and _variant_matches_file_entry(variant, file_entry):
+            matched_slot = slot
+            break
+    if matched_slot is None:
+        return (False, logical_id, active_slot)
+    return (matched_slot == active_slot, logical_id, matched_slot)
 
 
 def _render_public_media_url(file_entry: Dict[str, Any], public_link_template: str) -> str:
@@ -3212,7 +3283,7 @@ def build_episode_entry(
     reading_summaries: Optional[Dict[str, Any]] = None,
     weekly_overview_summaries_cfg: Optional[Dict[str, Any]] = None,
     weekly_overview_summaries: Optional[Dict[str, Any]] = None,
-    b_variant_file_ids: Optional[Set[str]] = None,
+    active_b_variant_file_ids: Optional[Set[str]] = None,
     regen_marker: Optional[str] = None,
 ) -> Dict[str, Any]:
     meta: Dict[str, Any] = {}
@@ -3523,8 +3594,8 @@ def build_episode_entry(
             title_value = _normalize_category_prefix(title_value)
     if (
         regen_marker
-        and b_variant_file_ids
-        and str(file_entry.get("id") or "") in b_variant_file_ids
+        and active_b_variant_file_ids
+        and str(file_entry.get("id") or "").strip() in active_b_variant_file_ids
     ):
         title_value = f"{title_value} {regen_marker}"
     meta["title"] = title_value
@@ -3884,7 +3955,7 @@ def main() -> None:
     parser.add_argument(
         "--dry-run",
         action="store_true",
-        help="Validate permissions without modifying Google Drive permissions",
+        help="Build feed/inventory in memory without writing files or modifying Google Drive permissions",
     )
     args = parser.parse_args()
 
@@ -4053,9 +4124,11 @@ def main() -> None:
                     file=sys.stderr,
                 )
 
-    # Regeneration marker — subtly marks B-variant (regenerated) episodes in the title.
-    b_variant_file_ids: Optional[Set[str]] = None
+    # Regeneration registry — selects the active A/B variant per logical episode
+    # and optionally marks active B variants in the title.
+    active_b_variant_file_ids: Optional[Set[str]] = None
     regen_marker: Optional[str] = None
+    registry_entries_by_lid: Dict[str, Dict[str, Any]] = {}
     regen_marker_cfg = config.get("regeneration_marker")
     if isinstance(regen_marker_cfg, dict) and regen_marker_cfg.get("enabled", True):
         regen_marker = str(regen_marker_cfg.get("marker") or "✦").strip() or "✦"
@@ -4067,17 +4140,14 @@ def main() -> None:
                 regen_path = next((p for p in candidates if p.exists()), args.config.parent / regen_path)
             if regen_path.exists():
                 try:
-                    regen_registry = load_json(regen_path)
-                    b_variant_file_ids = {
-                        str(e["variants"]["B"]["episode_key"])
-                        for e in regen_registry.get("entries", [])
-                        if isinstance(e, dict)
-                        and e.get("active_variant") == "B"
-                        and (e.get("rollout") or {}).get("state") == "b_active"
-                        and isinstance(e.get("variants"), dict)
-                        and isinstance((e["variants"] or {}).get("B"), dict)
-                        and (e["variants"]["B"] or {}).get("episode_key")
+                    regen_registry = _load_regeneration_registry(regen_path)
+                    registry_entries_by_lid = _normalize_registry_entry_map(regen_registry)
+                    active_b_variant_file_ids = {
+                        str((e.get("variants") or {}).get("B", {}).get("episode_key") or "").strip()
+                        for e in registry_entries_by_lid.values()
+                        if str(e.get("active_variant") or "").strip().upper() == "B"
                     }
+                    active_b_variant_file_ids.discard("")
                 except Exception as exc:
                     print(f"Warning: failed to load regeneration registry from {regen_path}: {exc}", file=sys.stderr)
             else:
@@ -4187,13 +4257,27 @@ def main() -> None:
     artwork_stats = {"matched": 0, "missing": 0, "ambiguous": 0}
     artwork_unmatched: List[str] = []
     artwork_ambiguous: List[str] = []
+    registry_skipped: List[str] = []
+    registry_unmatched_active: List[str] = []
 
     episodes: List[Dict[str, Any]] = []
     for media_file in media_files:
         _apply_existing_identity(media_file, existing_identity_map)
         folder_names = storage.build_folder_path(media_file)
-        if not matches_filters(media_file, folder_names, filters):
-            continue
+        registry_decision = _registry_selection_for_file(media_file, registry_entries_by_lid)
+        if registry_decision is None:
+            if not matches_filters(media_file, folder_names, filters):
+                continue
+        else:
+            include_by_registry, logical_id, matched_slot = registry_decision
+            if not include_by_registry:
+                if matched_slot is None:
+                    registry_unmatched_active.append(f"{logical_id}: {media_file.get('name', '')}")
+                else:
+                    registry_skipped.append(
+                        f"{logical_id}: slot {matched_slot} skipped for {media_file.get('name', '')}"
+                    )
+                continue
 
         permission_added = storage.ensure_public_access(
             media_file,
@@ -4270,10 +4354,25 @@ def main() -> None:
                 reading_summaries=reading_summaries,
                 weekly_overview_summaries_cfg=weekly_overview_summaries_cfg,
                 weekly_overview_summaries=weekly_overview_summaries,
-                b_variant_file_ids=b_variant_file_ids,
+                active_b_variant_file_ids=active_b_variant_file_ids,
                 regen_marker=regen_marker,
             )
         )
+
+    if registry_skipped:
+        print(
+            f"Registry selection skipped {len(registry_skipped)} non-active variant file(s).",
+            file=sys.stderr,
+        )
+    if registry_unmatched_active:
+        print(
+            "Warning: tracked registry episode(s) had media files that did not match a declared A/B variant:",
+            file=sys.stderr,
+        )
+        for item in registry_unmatched_active[:20]:
+            print(f"  - {item}", file=sys.stderr)
+        if len(registry_unmatched_active) > 20:
+            print(f"  ... and {len(registry_unmatched_active) - 20} more", file=sys.stderr)
 
     if artwork_enabled:
         if not (image_lookup or image_lookup_canonical):
@@ -4311,15 +4410,22 @@ def main() -> None:
     last_build = max(item["published_at"] for item in episodes)
     feed_document = build_feed_document(episodes, feed_cfg, last_build)
     output_path = Path(config["output_feed"])
-    save_feed(feed_document, output_path)
-    print(f"Feed written to {output_path}")
     inventory_output_path = _output_inventory_path(config)
+    inventory_payload = None
     if inventory_output_path is not None:
         inventory_payload = build_episode_inventory_payload(
             episodes=episodes,
             config=config,
             last_build=last_build,
         )
+    if args.dry_run:
+        print(f"Dry run: would write feed to {output_path}")
+        if inventory_output_path is not None:
+            print(f"Dry run: would write episode inventory to {inventory_output_path}")
+        return
+    save_feed(feed_document, output_path)
+    print(f"Feed written to {output_path}")
+    if inventory_output_path is not None and inventory_payload is not None:
         save_json(inventory_payload, inventory_output_path)
         print(f"Episode inventory written to {inventory_output_path}")
 

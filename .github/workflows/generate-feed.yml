@@ -278,6 +278,10 @@ jobs:
           SHOW: ${{ matrix.show }}
         run: python podcast-tools/gdrive_podcast_feed.py --config shows/${SHOW}/config.runtime.json
 
+      - name: Validate regeneration inventory
+        if: matrix.show == 'personlighedspsykologi-en'
+        run: python scripts/validate_regeneration_inventory.py --show-slug personlighedspsykologi-en
+
       - name: Audit lecture slide brief coverage
         if: matrix.show == 'personlighedspsykologi-en'
         run: python scripts/audit_personlighedspsykologi_slide_briefs.py --warn-only

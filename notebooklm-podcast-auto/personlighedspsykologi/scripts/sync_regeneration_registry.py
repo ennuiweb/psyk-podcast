@@ -3,15 +3,21 @@ from __future__ import annotations
 
 import argparse
 import json
-import re
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
-CONFIG_TAG_RE = re.compile(r"\s+\{[^{}]+\}(?=\.[^.]+$)")
-SHORT_PREFIX_RE = re.compile(r"^\[(?:Short|Brief)\]\s+", re.IGNORECASE)
-TTS_PREFIX_RE = re.compile(r"^\[TTS\]\s+", re.IGNORECASE)
-WEEK_KEY_RE = re.compile(r"\bW\d+L\d+\b", re.IGNORECASE)
-TAG_TOKEN_RE = re.compile(r"([a-z0-9_]+)=([^}\s]+)", re.IGNORECASE)
+REPO_ROOT = Path(__file__).resolve().parents[3]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
+from regeneration_identity import (  # noqa: E402
+    canonical_source_name,
+    classify_episode,
+    extract_lecture_key,
+    logical_episode_id,
+    parse_config_tags,
+)
 
 PROMPT_TYPE_ORDER = {
     "weekly_readings_only": 0,
@@ -35,70 +41,6 @@ def write_json(path: Path, payload: dict) -> None:
 
 def utc_now() -> str:
     return datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
-
-
-def strip_cfg_tag_from_filename(name: str) -> str:
-    value = CONFIG_TAG_RE.sub("", name)
-    return Path(value).name
-
-
-def strip_leading_variant_prefix(name: str) -> str:
-    value = SHORT_PREFIX_RE.sub("", name.strip())
-    value = TTS_PREFIX_RE.sub("", value)
-    return value.strip()
-
-
-def parse_config_tags(name: str) -> dict[str, str]:
-    match = re.search(r"\{([^{}]+)\}(?=\.[^.]+$)", name)
-    if not match:
-        return {}
-    parsed: dict[str, str] = {}
-    for key, value in TAG_TOKEN_RE.findall(match.group(1)):
-        parsed[key] = value
-    return parsed
-
-
-def classify_episode(source_name: str) -> str:
-    value = source_name.strip()
-    if not value:
-        return "unknown"
-    if TTS_PREFIX_RE.match(value):
-        return "tts"
-    if SHORT_PREFIX_RE.match(value):
-        return "short"
-    if "Alle kilder (undtagen slides)" in value:
-        return "weekly_readings_only"
-    if "Slide lecture:" in value or "Slide exercise:" in value:
-        return "single_slide"
-    return "single_reading"
-
-
-def extract_lecture_key(text: str) -> str | None:
-    match = WEEK_KEY_RE.search(text)
-    return match.group(0).upper() if match else None
-
-
-def slugify(text: str) -> str:
-    value = re.sub(r"[^a-z0-9]+", "_", text.lower())
-    return value.strip("_") or "sample"
-
-
-def canonical_source_name(source_name: str) -> str:
-    return strip_cfg_tag_from_filename(source_name).strip()
-
-
-def logical_episode_id(source_name: str) -> str:
-    prompt_type = classify_episode(source_name)
-    lecture_key = (extract_lecture_key(source_name) or "unknown").lower()
-    canonical = canonical_source_name(source_name)
-    trimmed = strip_leading_variant_prefix(canonical)
-    trimmed = trimmed.replace(".mp3", "")
-    trimmed = re.sub(r"^w\d+l\d+\s*-\s*", "", trimmed, flags=re.IGNORECASE)
-    trimmed = re.sub(r"^slide\s+(lecture|exercise):\s*", "", trimmed, flags=re.IGNORECASE)
-    trimmed = re.sub(r"^alle kilder \(undtagen slides\)$", "alle_kilder_undtagen_slides", trimmed, flags=re.IGNORECASE)
-    return f"{prompt_type}__{lecture_key}__{slugify(trimmed)}"
-
-
 def default_rollout(prompt_type: str, campaign: str) -> dict:
     in_scope = prompt_type != "tts"
     return {
@@ -106,6 +48,7 @@ def default_rollout(prompt_type: str, campaign: str) -> dict:
         "in_scope": in_scope,
         "state": "original_only" if in_scope else "out_of_scope",
         "notes": [],
+        "activated_at": None,
     }
 
 
@@ -138,9 +81,13 @@ def default_variant(slot: str) -> dict:
         "audio_sha256": None,
         "generated_at": None,
         "uploaded_at": None,
+        "registered_at": None,
         "transcribed_at": None,
         "judged_at": None,
         "review_outcome": None,
+        "size_bytes": None,
+        "drive_md5": None,
+        "history": [],
     }
 
 
@@ -262,7 +209,21 @@ def should_preserve_stale_entry(entry: dict) -> bool:
     status = str(variant_b.get("status") or "")
     if status not in {"", "not_generated"}:
         return True
-    for key in ("source_name", "local_audio_path", "staging_drive_id", "audio_sha256", "generated_at", "uploaded_at", "transcribed_at", "judged_at", "review_outcome"):
+    for key in (
+        "source_name",
+        "local_audio_path",
+        "staging_drive_id",
+        "audio_sha256",
+        "generated_at",
+        "uploaded_at",
+        "registered_at",
+        "transcribed_at",
+        "judged_at",
+        "review_outcome",
+        "size_bytes",
+        "drive_md5",
+        "history",
+    ):
         if variant_b.get(key):
             return True
     return False
@@ -340,9 +301,8 @@ def build_parser() -> argparse.ArgumentParser:
 
 def main() -> int:
     args = build_parser().parse_args()
-    root = Path(__file__).resolve().parents[3]
-    inventory_path = (root / args.inventory).resolve()
-    registry_path = (root / args.registry).resolve()
+    inventory_path = (REPO_ROOT / args.inventory).resolve()
+    registry_path = (REPO_ROOT / args.registry).resolve()
     payload = sync_registry(inventory_path, registry_path, args.campaign)
     write_json(registry_path, payload)
     summary = payload["summary"]

@@ -3212,6 +3212,8 @@ def build_episode_entry(
     reading_summaries: Optional[Dict[str, Any]] = None,
     weekly_overview_summaries_cfg: Optional[Dict[str, Any]] = None,
     weekly_overview_summaries: Optional[Dict[str, Any]] = None,
+    b_variant_file_ids: Optional[Set[str]] = None,
+    regen_marker: Optional[str] = None,
 ) -> Dict[str, Any]:
     meta: Dict[str, Any] = {}
     if auto_meta:
@@ -3519,6 +3521,12 @@ def build_episode_entry(
             )
         else:
             title_value = _normalize_category_prefix(title_value)
+    if (
+        regen_marker
+        and b_variant_file_ids
+        and str(file_entry.get("id") or "") in b_variant_file_ids
+    ):
+        title_value = f"{title_value} {regen_marker}"
     meta["title"] = title_value
     if suppress_week_prefix:
         meta.pop("suppress_week_prefix", None)
@@ -4045,6 +4053,36 @@ def main() -> None:
                     file=sys.stderr,
                 )
 
+    # Regeneration marker — subtly marks B-variant (regenerated) episodes in the title.
+    b_variant_file_ids: Optional[Set[str]] = None
+    regen_marker: Optional[str] = None
+    regen_marker_cfg = config.get("regeneration_marker")
+    if isinstance(regen_marker_cfg, dict) and regen_marker_cfg.get("enabled", True):
+        regen_marker = str(regen_marker_cfg.get("marker") or "✦").strip() or "✦"
+        regen_file = regen_marker_cfg.get("file")
+        if regen_file:
+            regen_path = Path(str(regen_file)).expanduser()
+            if not regen_path.is_absolute():
+                candidates = [regen_path, args.config.parent / regen_path]
+                regen_path = next((p for p in candidates if p.exists()), args.config.parent / regen_path)
+            if regen_path.exists():
+                try:
+                    regen_registry = load_json(regen_path)
+                    b_variant_file_ids = {
+                        str(e["variants"]["B"]["episode_key"])
+                        for e in regen_registry.get("entries", [])
+                        if isinstance(e, dict)
+                        and e.get("active_variant") == "B"
+                        and (e.get("rollout") or {}).get("state") == "b_active"
+                        and isinstance(e.get("variants"), dict)
+                        and isinstance((e["variants"] or {}).get("B"), dict)
+                        and (e["variants"]["B"] or {}).get("episode_key")
+                    }
+                except Exception as exc:
+                    print(f"Warning: failed to load regeneration registry from {regen_path}: {exc}", file=sys.stderr)
+            else:
+                print(f"Warning: regeneration_marker.file not found: {regen_path}", file=sys.stderr)
+
     storage = build_storage_backend(config)
     provider = resolve_storage_provider(config)
     storage_cfg = config.get("storage") if isinstance(config.get("storage"), dict) else {}
@@ -4232,6 +4270,8 @@ def main() -> None:
                 reading_summaries=reading_summaries,
                 weekly_overview_summaries_cfg=weekly_overview_summaries_cfg,
                 weekly_overview_summaries=weekly_overview_summaries,
+                b_variant_file_ids=b_variant_file_ids,
+                regen_marker=regen_marker,
             )
         )
 

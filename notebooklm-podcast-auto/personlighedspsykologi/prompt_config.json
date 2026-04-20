@@ -118,7 +118,7 @@
       "enabled": true,
       "provider": "gemini",
       "model": "gemini-3.1-pro-preview",
-      "fail_open": true,
+      "fail_open": false,
       "default_per_source_output_suffix": ".analysis.md",
       "default_weekly_output_name": "week.analysis.md",
       "max_chars_per_source": 12000,

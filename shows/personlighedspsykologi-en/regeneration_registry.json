@@ -2,7 +2,7 @@
   "schema_version": 1,
   "subject_slug": "personlighedspsykologi-en",
   "source_inventory_path": "/Users/oskar/repo/podcasts/shows/personlighedspsykologi-en/episode_inventory.json",
-  "generated_at": "2026-04-19T20:38:16Z",
+  "generated_at": "2026-04-19T22:25:24Z",
   "campaign": "prompt-rollout-2026-04",
   "summary": {
     "total_entries": 128,
@@ -16,11 +16,13 @@
       "weekly_readings_only": 21
     },
     "rollout_state_counts": {
-      "original_only": 120,
+      "original_only": 112,
+      "b_active": 8,
       "out_of_scope": 8
     },
     "active_variant_counts": {
-      "A": 128
+      "A": 120,
+      "B": 8
     }
   },
   "entries": [
@@ -1076,11 +1078,11 @@
       "title": "U11F2 · ALLE KILDER",
       "canonical_source_name": "W11L2 - Alle kilder (undtagen slides) [EN].mp3",
       "inventory_present": true,
-      "active_variant": "A",
+      "active_variant": "B",
       "rollout": {
         "campaign": "prompt-rollout-2026-04",
         "in_scope": true,
-        "state": "original_only",
+        "state": "b_active",
         "notes": []
       },
       "variants": {
@@ -1104,23 +1106,15 @@
           "audio_sha256": null
         },
         "B": {
-          "status": "not_generated",
-          "source_name": null,
-          "canonical_source_name": null,
-          "config_tags": {},
-          "config_hash": null,
-          "episode_key": null,
-          "audio_url": null,
-          "published_at": null,
-          "title": null,
-          "local_audio_path": null,
-          "staging_drive_id": null,
-          "audio_sha256": null,
-          "generated_at": null,
-          "uploaded_at": null,
-          "transcribed_at": null,
-          "judged_at": null,
-          "review_outcome": null
+          "status": "published",
+          "source_name": "W11L2 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=4 hash=92f3a0d2}.mp3",
+          "config_hash": "92f3a0d2",
+          "episode_key": "1-tofzRiDfZn4gEu7N1N6u_Gala3-gsMl",
+          "audio_url": "https://drive.google.com/uc?export=download&id=1-tofzRiDfZn4gEu7N1N6u_Gala3-gsMl",
+          "published_at": "2026-04-19T22:25:24Z",
+          "title": "U11F2 · ALLE KILDER",
+          "promoted_at": "2026-04-19T22:25:24Z",
+          "promoted_from": "evaluation/episode_ab_review/runs/2026-04-before-baseline"
         }
       }
     },
@@ -1131,11 +1125,11 @@
       "title": "U12F1 · ALLE KILDER",
       "canonical_source_name": "W12L1 - Alle kilder (undtagen slides) [EN].mp3",
       "inventory_present": true,
-      "active_variant": "A",
+      "active_variant": "B",
       "rollout": {
         "campaign": "prompt-rollout-2026-04",
         "in_scope": true,
-        "state": "original_only",
+        "state": "b_active",
         "notes": []
       },
       "variants": {
@@ -1159,23 +1153,15 @@
           "audio_sha256": null
         },
         "B": {
-          "status": "not_generated",
-          "source_name": null,
-          "canonical_source_name": null,
-          "config_tags": {},
-          "config_hash": null,
-          "episode_key": null,
-          "audio_url": null,
-          "published_at": null,
-          "title": null,
-          "local_audio_path": null,
-          "staging_drive_id": null,
-          "audio_sha256": null,
-          "generated_at": null,
-          "uploaded_at": null,
-          "transcribed_at": null,
-          "judged_at": null,
-          "review_outcome": null
+          "status": "published",
+          "source_name": "W12L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=e593d2e1}.mp3",
+          "config_hash": "e593d2e1",
+          "episode_key": "1rLBUbdnufsZPQ34YDdfFqFCa1zO0hi9t",
+          "audio_url": "https://drive.google.com/uc?export=download&id=1rLBUbdnufsZPQ34YDdfFqFCa1zO0hi9t",
+          "published_at": "2026-04-19T22:25:24Z",
+          "title": "U12F1 · ALLE KILDER",
+          "promoted_at": "2026-04-19T22:25:24Z",
+          "promoted_from": "evaluation/episode_ab_review/runs/2026-04-before-baseline"
         }
       }
     },
@@ -3940,11 +3926,11 @@
       "title": "U11F2 · Grundbog 9: Narrative teorier",
       "canonical_source_name": "W11L2 - Grundbog kapitel 9 - Narrative teorier [EN].mp3",
       "inventory_present": true,
-      "active_variant": "A",
+      "active_variant": "B",
       "rollout": {
         "campaign": "prompt-rollout-2026-04",
         "in_scope": true,
-        "state": "original_only",
+        "state": "b_active",
         "notes": []
       },
       "variants": {
@@ -3967,23 +3953,15 @@
           "audio_sha256": null
         },
         "B": {
-          "status": "not_generated",
-          "source_name": null,
-          "canonical_source_name": null,
-          "config_tags": {},
-          "config_hash": null,
-          "episode_key": null,
-          "audio_url": null,
-          "published_at": null,
-          "title": null,
-          "local_audio_path": null,
-          "staging_drive_id": null,
-          "audio_sha256": null,
-          "generated_at": null,
-          "uploaded_at": null,
-          "transcribed_at": null,
-          "judged_at": null,
-          "review_outcome": null
+          "status": "published",
+          "source_name": "W11L2 - Grundbog kapitel 9 - Narrative teorier [EN] {type=audio lang=en format=deep-dive length=long hash=c07197ec}.mp3",
+          "config_hash": "c07197ec",
+          "episode_key": "1v1_-5UZB-TC8I4wD9mgwlvoe981B-yTs",
+          "audio_url": "https://drive.google.com/uc?export=download&id=1v1_-5UZB-TC8I4wD9mgwlvoe981B-yTs",
+          "published_at": "2026-04-19T22:25:24Z",
+          "title": "U11F2 · Grundbog 9: Narrative teorier",
+          "promoted_at": "2026-04-19T22:25:24Z",
+          "promoted_from": "evaluation/episode_ab_review/runs/2026-04-before-baseline"
         }
       }
     },
@@ -4156,11 +4134,11 @@
       "title": "U12F1 · Grundbog 14: Perspektiver",
       "canonical_source_name": "W12L1 - Grundbog kapitel 14 - Perspektiver på personlighedspsykologi [EN].mp3",
       "inventory_present": true,
-      "active_variant": "A",
+      "active_variant": "B",
       "rollout": {
         "campaign": "prompt-rollout-2026-04",
         "in_scope": true,
-        "state": "original_only",
+        "state": "b_active",
         "notes": []
       },
       "variants": {
@@ -4183,23 +4161,15 @@
           "audio_sha256": null
         },
         "B": {
-          "status": "not_generated",
-          "source_name": null,
-          "canonical_source_name": null,
-          "config_tags": {},
-          "config_hash": null,
-          "episode_key": null,
-          "audio_url": null,
-          "published_at": null,
-          "title": null,
-          "local_audio_path": null,
-          "staging_drive_id": null,
-          "audio_sha256": null,
-          "generated_at": null,
-          "uploaded_at": null,
-          "transcribed_at": null,
-          "judged_at": null,
-          "review_outcome": null
+          "status": "published",
+          "source_name": "W12L1 - Grundbog kapitel 14 - Perspektiver på personlighedspsykologi [EN] {type=audio lang=en format=deep-dive length=long hash=a199951d}.mp3",
+          "config_hash": "a199951d",
+          "episode_key": "1gw_wrONE08c83Co1zjaKaDZtmMgd9um7",
+          "audio_url": "https://drive.google.com/uc?export=download&id=1gw_wrONE08c83Co1zjaKaDZtmMgd9um7",
+          "published_at": "2026-04-19T22:25:24Z",
+          "title": "U12F1 · Grundbog 14: Perspektiver",
+          "promoted_at": "2026-04-19T22:25:24Z",
+          "promoted_from": "evaluation/episode_ab_review/runs/2026-04-before-baseline"
         }
       }
     },
@@ -5182,11 +5152,11 @@
       "title": "U9F1 · Forelæsningsslides · Kritisk psykologi",
       "canonical_source_name": "W09L1 - Slide lecture: 17. Kritisk psykologi [EN].mp3",
       "inventory_present": true,
-      "active_variant": "A",
+      "active_variant": "B",
       "rollout": {
         "campaign": "prompt-rollout-2026-04",
         "in_scope": true,
-        "state": "original_only",
+        "state": "b_active",
         "notes": []
       },
       "variants": {
@@ -5209,23 +5179,15 @@
           "audio_sha256": null
         },
         "B": {
-          "status": "not_generated",
-          "source_name": null,
-          "canonical_source_name": null,
-          "config_tags": {},
-          "config_hash": null,
-          "episode_key": null,
-          "audio_url": null,
-          "published_at": null,
-          "title": null,
-          "local_audio_path": null,
-          "staging_drive_id": null,
-          "audio_sha256": null,
-          "generated_at": null,
-          "uploaded_at": null,
-          "transcribed_at": null,
-          "judged_at": null,
-          "review_outcome": null
+          "status": "published",
+          "source_name": "W09L1 - Slide lecture: 17. Kritisk psykologi [EN] {type=audio lang=en format=deep-dive length=default hash=33c53eb1}.mp3",
+          "config_hash": "33c53eb1",
+          "episode_key": "1SIBD-7ufNrD47A2OQiIBgiJV3rQXXx1J",
+          "audio_url": "https://drive.google.com/uc?export=download&id=1SIBD-7ufNrD47A2OQiIBgiJV3rQXXx1J",
+          "published_at": "2026-04-19T22:25:24Z",
+          "title": "U9F1 · Forelæsningsslides · Kritisk psykologi",
+          "promoted_at": "2026-04-19T22:25:24Z",
+          "promoted_from": "evaluation/episode_ab_review/runs/2026-04-before-baseline"
         }
       }
     },
@@ -5236,11 +5198,11 @@
       "title": "U10F2 · Forelæsningsslides · Sociokulturelle teorier",
       "canonical_source_name": "W10L2 - Slide lecture: 19. gang Sociokulturelle teorier [EN].mp3",
       "inventory_present": true,
-      "active_variant": "A",
+      "active_variant": "B",
       "rollout": {
         "campaign": "prompt-rollout-2026-04",
         "in_scope": true,
-        "state": "original_only",
+        "state": "b_active",
         "notes": []
       },
       "variants": {
@@ -5263,23 +5225,15 @@
           "audio_sha256": null
         },
         "B": {
-          "status": "not_generated",
-          "source_name": null,
-          "canonical_source_name": null,
-          "config_tags": {},
-          "config_hash": null,
-          "episode_key": null,
-          "audio_url": null,
-          "published_at": null,
-          "title": null,
-          "local_audio_path": null,
-          "staging_drive_id": null,
-          "audio_sha256": null,
-          "generated_at": null,
-          "uploaded_at": null,
-          "transcribed_at": null,
-          "judged_at": null,
-          "review_outcome": null
+          "status": "published",
+          "source_name": "W10L2 - Slide lecture: 19. gang Sociokulturelle teorier [EN] {type=audio lang=en format=deep-dive length=default hash=7acd082f}.mp3",
+          "config_hash": "7acd082f",
+          "episode_key": "1QRyNylP6Dbz5GRQEjnk4GV00WLAlqHwZ",
+          "audio_url": "https://drive.google.com/uc?export=download&id=1QRyNylP6Dbz5GRQEjnk4GV00WLAlqHwZ",
+          "published_at": "2026-04-19T22:25:24Z",
+          "title": "U10F2 · Forelæsningsslides · Sociokulturelle teorier",
+          "promoted_at": "2026-04-19T22:25:24Z",
+          "promoted_from": "evaluation/episode_ab_review/runs/2026-04-before-baseline"
         }
       }
     },
@@ -6208,11 +6162,11 @@
       "title": "U11F2 · [Kort] · Grundbog 9: Narrative teorier",
       "canonical_source_name": "[Short] W11L2 - Grundbog kapitel 9 - Narrative teorier [EN].mp3",
       "inventory_present": true,
-      "active_variant": "A",
+      "active_variant": "B",
       "rollout": {
         "campaign": "prompt-rollout-2026-04",
         "in_scope": true,
-        "state": "original_only",
+        "state": "b_active",
         "notes": []
       },
       "variants": {
@@ -6235,23 +6189,15 @@
           "audio_sha256": null
         },
         "B": {
-          "status": "not_generated",
-          "source_name": null,
-          "canonical_source_name": null,
-          "config_tags": {},
-          "config_hash": null,
-          "episode_key": null,
-          "audio_url": null,
-          "published_at": null,
-          "title": null,
-          "local_audio_path": null,
-          "staging_drive_id": null,
-          "audio_sha256": null,
-          "generated_at": null,
-          "uploaded_at": null,
-          "transcribed_at": null,
-          "judged_at": null,
-          "review_outcome": null
+          "status": "published",
+          "source_name": "[Short] W11L2 - Grundbog kapitel 9 - Narrative teorier [EN] {type=audio lang=en format=deep-dive length=short hash=285f9a5f}.mp3",
+          "config_hash": "285f9a5f",
+          "episode_key": "1y7D1O2ns5hLz3AziTg2_uDNf8Jcdb9rj",
+          "audio_url": "https://drive.google.com/uc?export=download&id=1y7D1O2ns5hLz3AziTg2_uDNf8Jcdb9rj",
+          "published_at": "2026-04-19T22:25:24Z",
+          "title": "U11F2 · [Kort] · Grundbog 9: Narrative teorier",
+          "promoted_at": "2026-04-19T22:25:24Z",
+          "promoted_from": "evaluation/episode_ab_review/runs/2026-04-before-baseline"
         }
       }
     },
@@ -6424,11 +6370,11 @@
       "title": "U12F1 · [Kort] · Grundbog 14: Perspektiver",
       "canonical_source_name": "[Short] W12L1 - Grundbog kapitel 14 - Perspektiver på personlighedspsykologi [EN].mp3",
       "inventory_present": true,
-      "active_variant": "A",
+      "active_variant": "B",
       "rollout": {
         "campaign": "prompt-rollout-2026-04",
         "in_scope": true,
-        "state": "original_only",
+        "state": "b_active",
         "notes": []
       },
       "variants": {
@@ -6451,23 +6397,15 @@
           "audio_sha256": null
         },
         "B": {
-          "status": "not_generated",
-          "source_name": null,
-          "canonical_source_name": null,
-          "config_tags": {},
-          "config_hash": null,
-          "episode_key": null,
-          "audio_url": null,
-          "published_at": null,
-          "title": null,
-          "local_audio_path": null,
-          "staging_drive_id": null,
-          "audio_sha256": null,
-          "generated_at": null,
-          "uploaded_at": null,
-          "transcribed_at": null,
-          "judged_at": null,
-          "review_outcome": null
+          "status": "published",
+          "source_name": "[Short] W12L1 - Grundbog kapitel 14 - Perspektiver på personlighedspsykologi [EN] {type=audio lang=en format=deep-dive length=short hash=5ede45ff}.mp3",
+          "config_hash": "5ede45ff",
+          "episode_key": "1i4_BM63u6mad0a0-mPp2CDK-trDTsWf7",
+          "audio_url": "https://drive.google.com/uc?export=download&id=1i4_BM63u6mad0a0-mPp2CDK-trDTsWf7",
+          "published_at": "2026-04-19T22:25:24Z",
+          "title": "U12F1 · [Kort] · Grundbog 14: Perspektiver",
+          "promoted_at": "2026-04-19T22:25:24Z",
+          "promoted_from": "evaluation/episode_ab_review/runs/2026-04-before-baseline"
         }
       }
     },

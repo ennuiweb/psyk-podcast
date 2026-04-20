@@ -153,6 +153,48 @@
           "\\[(?:EN|TTS|SHORT|BRIEF)\\]"
         ]
       }
+    ],
+    "exclude": [
+      {
+        "name_regex": [
+          "W12L1.*Alle kilder.*sources=3 hash=1b3d31bc"
+        ]
+      },
+      {
+        "name_regex": [
+          "W11L2.*Alle kilder.*sources=4 hash=a7e138f5"
+        ]
+      },
+      {
+        "name_regex": [
+          "W12L1.*Grundbog kapitel 14.*length=long hash=fa9adbcf"
+        ]
+      },
+      {
+        "name_regex": [
+          "W11L2.*Grundbog kapitel 9.*length=long hash=fa9adbcf"
+        ]
+      },
+      {
+        "name_regex": [
+          "W10L2.*Sociokulturelle.*hash=973c491c"
+        ]
+      },
+      {
+        "name_regex": [
+          "W09L1.*Kritisk psykologi.*hash=973c491c"
+        ]
+      },
+      {
+        "name_regex": [
+          "\\[Short\\].*W12L1.*Grundbog.*14.*hash=c3f67e82"
+        ]
+      },
+      {
+        "name_regex": [
+          "\\[Short\\].*W11L2.*Grundbog.*9.*hash=c3f67e82"
+        ]
+      }
     ]
   },
   "reading_summaries": {

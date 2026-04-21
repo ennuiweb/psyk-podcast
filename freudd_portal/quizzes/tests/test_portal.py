@@ -4748,9 +4748,35 @@ class QuizPortalTests(TestCase):
         EMAIL_BACKEND="django.core.mail.backends.locmem.EmailBackend",
         DEFAULT_FROM_EMAIL="noreply@test.freudd.dk",
         FREUDD_NEW_USER_NOTIFY_EMAIL="alerts@test.freudd.dk",
+    )
+    def test_subject_open_reading_does_not_notify_by_default(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+        detail_response = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
+        reading_key = detail_response.context["active_lecture"]["readings"][0]["reading_key"]
+        open_url = reverse(
+            "subject-open-reading-pdf",
+            kwargs={"subject_slug": "personlighedspsykologi", "reading_key": reading_key},
+        )
+        mail.outbox.clear()
+
+        head_response = self.client.head(open_url)
+        self.assertEqual(head_response.status_code, 200)
+        self.assertEqual(len(mail.outbox), 0)
+
+        self.client.logout()
+        first_response = self.client.get(open_url)
+        self.assertEqual(first_response.status_code, 200)
+
+        self.assertEqual(len(mail.outbox), 0)
+
+    @override_settings(
+        EMAIL_BACKEND="django.core.mail.backends.locmem.EmailBackend",
+        DEFAULT_FROM_EMAIL="noreply@test.freudd.dk",
+        FREUDD_NEW_USER_NOTIFY_EMAIL="alerts@test.freudd.dk",
         FREUDD_ACTIVITY_NOTIFY_EVENTS=["reading_opened"],
     )
-    def test_subject_open_reading_notifies_once_for_get_and_skips_head(self) -> None:
+    def test_subject_open_reading_notifies_once_for_get_and_skips_head_when_enabled(self) -> None:
         user = self._create_user()
         self.client.force_login(user)
         detail_response = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))

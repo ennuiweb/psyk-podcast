@@ -142,7 +142,7 @@ DEFAULT_FROM_EMAIL = os.environ.get("FREUDD_DEFAULT_FROM_EMAIL", "noreply@freudd
 FREUDD_ACTIVITY_NOTIFY_EMAILS = _as_csv_env("FREUDD_ACTIVITY_NOTIFY_EMAILS")
 FREUDD_ACTIVITY_NOTIFY_EVENTS = _as_csv_env(
     "FREUDD_ACTIVITY_NOTIFY_EVENTS",
-    default="signup,quiz_completed,subject_enrolled,reading_marked,podcast_marked,reading_opened,reading_sent_to_chatgpt",
+    default="signup,quiz_completed,subject_enrolled,reading_marked,podcast_marked,reading_sent_to_chatgpt",
 )
 FREUDD_NEW_USER_NOTIFY_EMAIL = os.environ.get("FREUDD_NEW_USER_NOTIFY_EMAIL", "").strip()
 

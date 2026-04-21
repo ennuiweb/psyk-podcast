@@ -22,7 +22,6 @@ DEFAULT_ACTIVITY_EVENT_KEYS = (
     "subject_enrolled",
     "reading_marked",
     "podcast_marked",
-    "reading_opened",
     "reading_sent_to_chatgpt",
 )
 

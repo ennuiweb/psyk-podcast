@@ -12,7 +12,7 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Runtime naming: service/env/config namespace is `freudd` (`freudd-portal.service`, `/etc/freudd-portal.env`, `FREUDD_PORTAL_*`).
 - Rollout compatibility: old `QUIZ_PORTAL_*` env names are still accepted temporarily.
 - Freudd notifications use one recipient channel via `FREUDD_NEW_USER_NOTIFY_EMAIL`; when set, signup and activity alerts share the same destination and transport path.
-- Activity notifications: optional server-side email alerts can be enabled for signup, quiz completion, subject enrollment, reading/podcast marks, reading opens, and `Send til ChatGPT` launches.
+- Activity notifications: optional server-side email alerts can be enabled for signup, quiz completion, subject enrollment, reading/podcast marks, and `Send til ChatGPT` launches; reading-open notifications are intentionally disabled by default.
 - Locale stack is active (`LocaleMiddleware` + `LOCALE_PATHS`) but currently constrained to Danish in `LANGUAGES`.
 - Quiz access: `/q/<id>.html` is public and renders a JSON-driven quiz UI (NotebookLM-like flow).
 - Raw quiz HTML: served publicly via `/q/raw/<id>.html`.
@@ -252,7 +252,7 @@ Operational behavior:
 - `FREUDD_RESEND_TIMEOUT_SECONDS` (default: `10`)
 - `FREUDD_DEFAULT_FROM_EMAIL` (default: `noreply@freudd.dk`)
 - `FREUDD_ACTIVITY_NOTIFY_EMAILS` (default: empty; deprecated compatibility fallback when `FREUDD_NEW_USER_NOTIFY_EMAIL` is unset)
-- `FREUDD_ACTIVITY_NOTIFY_EVENTS` (default: `signup,quiz_completed,subject_enrolled,reading_marked,podcast_marked,reading_opened,reading_sent_to_chatgpt`)
+- `FREUDD_ACTIVITY_NOTIFY_EVENTS` (default: `signup,quiz_completed,subject_enrolled,reading_marked,podcast_marked,reading_sent_to_chatgpt`; add `reading_opened` only for explicit opt-in)
 - `FREUDD_NEW_USER_NOTIFY_EMAIL` (default: empty; primary recipient for signup and activity notification emails)
 - `FREUDD_AUTH_GOOGLE_ENABLED` (default: `0`)
 - `FREUDD_GOOGLE_CLIENT_ID` (required when `FREUDD_AUTH_GOOGLE_ENABLED=1`)

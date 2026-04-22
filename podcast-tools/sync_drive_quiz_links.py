@@ -361,9 +361,15 @@ def audio_candidate_rank(stem: str) -> tuple[int, int, int, str]:
     return (duplicate_week_prefix, has_missing_token, len(name), name.casefold())
 
 
-def select_audio_candidate(candidates: List[str]) -> str | None:
+def select_audio_candidate(candidates: List[str], preferred_audio_names: set[str] | None = None) -> str | None:
     if not candidates:
         return None
+    if preferred_audio_names:
+        preferred = [candidate for candidate in candidates if candidate in preferred_audio_names]
+        if len(preferred) == 1:
+            return preferred[0]
+        if len(preferred) > 1:
+            candidates = preferred
     if len(candidates) == 1:
         return candidates[0]
     ranked = [
@@ -542,6 +548,55 @@ def write_mapping(path: Path, mapping: Dict[str, Dict[str, Any]]) -> None:
     tmp_path.replace(path)
 
 
+def load_preferred_audio_names(path: Optional[Path]) -> set[str]:
+    if path is None:
+        return set()
+    if not path.exists():
+        raise SystemExit(f"Preferred audio inventory not found: {path}")
+    payload = load_json(path)
+    episodes = payload.get("episodes") if isinstance(payload, dict) else []
+    preferred: set[str] = set()
+    if not isinstance(episodes, list):
+        return preferred
+    for episode in episodes:
+        if not isinstance(episode, dict):
+            continue
+        for key in ("source_name", "source_path"):
+            value = str(episode.get(key) or "").strip()
+            if value:
+                preferred.add(Path(value).name)
+    return preferred
+
+
+def build_preferred_audio_index(preferred_audio_names: set[str]) -> Dict[str, List[str]]:
+    index: Dict[str, List[str]] = {}
+    for name in sorted(preferred_audio_names):
+        key = canonical_key(Path(name).stem)
+        index.setdefault(key, []).append(name)
+    return index
+
+
+def select_preferred_audio_name(
+    stem: str,
+    preferred_audio_index: Dict[str, List[str]],
+) -> str | None:
+    candidates = preferred_audio_index.get(canonical_key(stem), [])
+    if not candidates:
+        return None
+    if len(candidates) == 1:
+        return candidates[0]
+    ranked = [
+        (audio_candidate_rank(Path(candidate_name).stem), candidate_name)
+        for candidate_name in candidates
+    ]
+    ranked.sort(key=lambda item: (item[0], item[1].casefold()))
+    best_rank = ranked[0][0]
+    best = [candidate_name for rank, candidate_name in ranked if rank == best_rank]
+    if len(best) == 1:
+        return best[0]
+    return None
+
+
 def run_rsync(
     source_root: Path,
     remote_root: str,
@@ -672,6 +727,14 @@ def main() -> int:
         ),
     )
     parser.add_argument(
+        "--preferred-audio-inventory",
+        type=Path,
+        help=(
+            "Optional episode_inventory.json path. Prefer its source_name/source_path "
+            "for matching canonical quiz keys."
+        ),
+    )
+    parser.add_argument(
         "--upload",
         action="store_true",
         help="Upload downloaded quizzes to the droplet.",
@@ -723,6 +786,13 @@ def main() -> int:
         raise SystemExit("--flat-id-len must be >= 1.")
     service_account_path = Path(config["service_account_file"])
     drive_service = build_drive_service(service_account_path)
+    preferred_inventory_path = None
+    if args.preferred_audio_inventory:
+        preferred_inventory_path = args.preferred_audio_inventory.expanduser()
+        if not preferred_inventory_path.is_absolute():
+            preferred_inventory_path = (Path.cwd() / preferred_inventory_path).resolve()
+    preferred_audio_names = load_preferred_audio_names(preferred_inventory_path)
+    preferred_audio_index = build_preferred_audio_index(preferred_audio_names)
     folder_id = config["drive_folder_id"]
     drive_id = config.get("shared_drive_id") or None
     supports_all_drives = bool(config.get("include_items_from_all_drives", drive_id is not None))
@@ -776,16 +846,22 @@ def main() -> int:
     for item in json_files:
         name = str(item["name"])
         difficulty = normalize_quiz_difficulty(extract_quiz_difficulty(name))
+        preferred_audio_name = select_preferred_audio_name(
+            Path(name).stem,
+            preferred_audio_index,
+        )
         key = canonical_key(Path(name).stem)
         candidates = audio_index.get(key, [])
-        if len(candidates) == 0:
+        if preferred_audio_name:
+            audio_name = preferred_audio_name
+        elif len(candidates) == 0:
             if args.fallback_derive_mp3_names:
                 audio_name = derive_mp3_name_from_html(Path(name).stem)
             else:
                 unmatched.append(name)
                 continue
         else:
-            selected_candidate = select_audio_candidate(candidates)
+            selected_candidate = select_audio_candidate(candidates, preferred_audio_names)
             if selected_candidate is None:
                 ambiguous.append(name)
                 continue

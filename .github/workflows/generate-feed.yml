@@ -227,6 +227,7 @@ jobs:
               --flat-id-len 8
               --quiz-difficulty any
               --fallback-derive-mp3-names
+              --preferred-audio-inventory "shows/${SHOW}/episode_inventory.json"
               --remote-root "${remote_root}"
             )
             if [[ -n "${flat_id_include_subject}" ]]; then
@@ -245,6 +246,7 @@ jobs:
               --flat-id-len 8
               --quiz-difficulty any
               --fallback-derive-mp3-names
+              --preferred-audio-inventory "shows/${SHOW}/episode_inventory.json"
               --remote-root "${remote_root}"
               --ssh-key "${key_path}"
             )

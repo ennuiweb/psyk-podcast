@@ -357,6 +357,50 @@ class CfgTagFilenameHelpersTests(unittest.TestCase):
             "W8L1 - Foo [EN] {type=audio lang=en format=deep-dive length=long hash=bbbb2222}.mp3",
         )
 
+    def test_drive_select_audio_candidate_prefers_inventory_active_variant(self):
+        if self.drive_sync is None:
+            self.skipTest("google-api dependencies unavailable for sync_drive_quiz_links import")
+        mod = self.drive_sync
+        old_name = "W11L1 - Gergen (1999) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+        active_name = "W11L1 - Gergen (1999) [EN] {type=audio lang=en format=deep-dive length=long hash=514662ea}.mp3"
+        selected = mod.select_audio_candidate([old_name, active_name], {active_name})
+        self.assertEqual(selected, active_name)
+
+    def test_drive_preferred_audio_name_supports_fallback_mapping(self):
+        if self.drive_sync is None:
+            self.skipTest("google-api dependencies unavailable for sync_drive_quiz_links import")
+        mod = self.drive_sync
+        active_name = "W11L1 - Gergen (1999) [EN] {type=audio lang=en format=deep-dive length=long hash=514662ea}.mp3"
+        quiz_stem = "W11L1 - Gergen (1999) [EN] {type=quiz lang=en quantity=standard difficulty=hard hash=f06c6752}"
+        selected = mod.select_preferred_audio_name(
+            quiz_stem,
+            mod.build_preferred_audio_index({active_name}),
+        )
+        self.assertEqual(selected, active_name)
+
+    def test_local_select_audio_candidate_prefers_inventory_active_variant(self):
+        mod = self.local_sync
+        old_path = Path(
+            "W11L1 - Gergen (1999) [EN] "
+            "{type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3"
+        )
+        active_path = Path(
+            "W11L1 - Gergen (1999) [EN] "
+            "{type=audio lang=en format=deep-dive length=long hash=514662ea}.mp3"
+        )
+        selected = mod.select_audio_candidate([old_path, active_path], {active_path.name})
+        self.assertEqual(selected, active_path)
+
+    def test_local_preferred_audio_name_supports_fallback_mapping(self):
+        mod = self.local_sync
+        active_name = "W11L1 - Gergen (1999) [EN] {type=audio lang=en format=deep-dive length=long hash=514662ea}.mp3"
+        quiz_stem = "W11L1 - Gergen (1999) [EN] {type=quiz lang=en quantity=standard difficulty=hard hash=f06c6752}"
+        selected = mod.select_preferred_audio_name(
+            quiz_stem,
+            mod.build_preferred_audio_index({active_name}),
+        )
+        self.assertEqual(selected, active_name)
+
     def test_drive_build_mapping_entry_prefers_medium_primary_and_keeps_all_links(self):
         if self.drive_sync is None:
             self.skipTest("google-api dependencies unavailable for sync_drive_quiz_links import")

@@ -101,7 +101,14 @@ def _wait_for_result(page: Any, result_box: dict[str, AcquisitionResult], timeou
         result = result_box.get("result")
         if result is not None:
             return result
-        page.wait_for_timeout(250)
+        try:
+            page.wait_for_timeout(250)
+        except Exception as exc:
+            return AcquisitionResult(
+                status=STATUS_UNKNOWN_FAILURE,
+                payload=None,
+                error=f"Playwright page closed before transcript capture completed: {exc}",
+            )
     return None
 
 
@@ -271,6 +278,25 @@ def download_episode_transcript(
             _click_first(
                 page,
                 (
+                    "[data-testid='transcript-tab']",
+                    "a[data-testid='transcript-tab']",
+                    "a:has-text('Transcript')",
+                    "a:has-text('Transkript')",
+                    "[role='tab']:has-text('Transcript')",
+                    "[role='tab']:has-text('Transkript')",
+                    "button:has-text('Transcript')",
+                    "button:has-text('Transkript')",
+                    "[data-testid='transcript-button']",
+                    "[aria-label*='Transcript']",
+                    "[aria-label*='Transkript']",
+                ),
+            )
+            result = _wait_for_result(page, result_box, min(timeout_ms, 6_000))
+
+        if result is None:
+            _click_first(
+                page,
+                (
                     "button[data-testid='control-button-playpause']",
                     "button[aria-label*='Play']",
                     "button[aria-label*='Afspil']",
@@ -285,6 +311,12 @@ def download_episode_transcript(
             _click_first(
                 page,
                 (
+                    "[data-testid='transcript-tab']",
+                    "a[data-testid='transcript-tab']",
+                    "a:has-text('Transcript')",
+                    "a:has-text('Transkript')",
+                    "[role='tab']:has-text('Transcript')",
+                    "[role='tab']:has-text('Transkript')",
                     "button:has-text('Transcript')",
                     "button:has-text('Transkript')",
                     "[data-testid='transcript-button']",

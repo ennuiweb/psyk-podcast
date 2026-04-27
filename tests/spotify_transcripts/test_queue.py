@@ -5,7 +5,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from spotify_transcripts.constants import STATUS_DOWNLOADED, STATUS_NO_TRANSCRIPT
+from spotify_transcripts.constants import STATUS_DOWNLOADED, STATUS_NO_TRANSCRIPT, STATUS_UNKNOWN_FAILURE
 from spotify_transcripts.discovery import load_show_sources
 from spotify_transcripts.models import AcquisitionResult
 from spotify_transcripts.service import build_show_queue, run_show_queue
@@ -100,3 +100,21 @@ class QueueTests(unittest.TestCase):
         queue = self.store.load_queue()
         entries = {entry["episode_key"]: entry for entry in queue["entries"]}
         self.assertEqual(entries["ep-a"]["queue_status"], "failed")
+
+    def test_run_show_queue_catches_downloader_exceptions(self) -> None:
+        def crashing_downloader(**_: object) -> AcquisitionResult:
+            raise RuntimeError("browser vanished")
+
+        payload = run_show_queue(
+            sources=self.sources,
+            store=self.store,
+            downloader=crashing_downloader,
+            limit=1,
+        )
+        self.assertEqual(payload["attempted"], 1)
+        self.assertEqual(payload["failed"], 1)
+        manifest = self.store.load_manifest()
+        entries = {entry["episode_key"]: entry for entry in manifest["episodes"]}
+        self.assertEqual(entries["ep-a"]["status"], STATUS_UNKNOWN_FAILURE)
+        self.assertEqual(entries["ep-a"]["last_attempt_status"], STATUS_UNKNOWN_FAILURE)
+        self.assertIn("browser vanished", entries["ep-a"]["last_error"])

@@ -10,6 +10,7 @@ from .constants import (
     STATUS_DOWNLOADED,
     STATUS_MISSING_MAPPING,
     STATUS_SCHEMA_CHANGED,
+    STATUS_UNKNOWN_FAILURE,
 )
 from .models import AcquisitionResult, EpisodeSource, ShowSources, SyncSummary
 from .normalizer import TranscriptSchemaError, normalize_transcript_payload
@@ -42,12 +43,19 @@ def process_episode_source(
     if entry.get("status") == STATUS_DOWNLOADED and not force:
         return entry, "skipped_downloaded"
 
-    result = downloader(
-        episode_url=source.spotify_url,
-        episode_id=source.spotify_episode_id,
-        headless=headless,
-        timeout_ms=timeout_ms,
-    )
+    try:
+        result = downloader(
+            episode_url=source.spotify_url,
+            episode_id=source.spotify_episode_id,
+            headless=headless,
+            timeout_ms=timeout_ms,
+        )
+    except Exception as exc:
+        result = AcquisitionResult(
+            status=STATUS_UNKNOWN_FAILURE,
+            payload=None,
+            error=f"Downloader crashed before returning a result: {exc}",
+        )
     entry["last_attempt_status"] = result.status
     entry["last_attempted_at"] = now
     entry["http_status"] = result.http_status

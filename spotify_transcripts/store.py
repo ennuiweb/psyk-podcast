@@ -46,6 +46,7 @@ class TranscriptStore:
         self.raw_dir = self.base_dir / "raw"
         self.normalized_dir = self.base_dir / "normalized"
         self.vtt_dir = self.base_dir / "vtt"
+        self.export_dir = self.base_dir / "exports"
         self.manifest_path = self.base_dir / "manifest.json"
         self.queue_path = self.base_dir / "queue.json"
 
@@ -84,6 +85,11 @@ class TranscriptStore:
     def write_vtt(self, *, episode_key: str, content: str) -> str:
         path = self.vtt_dir / f"{episode_key}.vtt"
         _write_text_atomic(path, content)
+        return self._relpath(path)
+
+    def write_export_payload(self, *, file_name: str, payload: dict[str, Any]) -> str:
+        path = self.export_dir / file_name
+        _write_json_atomic(path, payload)
         return self._relpath(path)
 
     def save_manifest(

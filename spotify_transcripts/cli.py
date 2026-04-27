@@ -10,6 +10,7 @@ from typing import Any
 
 from .constants import DEFAULT_TIMEOUT_MS
 from .discovery import load_show_sources
+from .exporter import export_show_transcripts
 from .paths import get_path_info
 from .playwright_client import download_episode_transcript, get_auth_status, login_via_browser
 from .service import build_show_queue, run_show_queue, sync_show_transcripts
@@ -89,6 +90,15 @@ def build_parser() -> argparse.ArgumentParser:
     queue_run_parser.add_argument("--headless", action="store_true", help="Run Playwright headless. Default is headed for reliability.")
     queue_run_parser.add_argument("--timeout-seconds", type=int, default=DEFAULT_TIMEOUT_MS // 1000)
 
+    export_parser = subparsers.add_parser("export-show", help="Combine normalized transcripts into one show-level JSON deliverable.")
+    export_parser.add_argument("--show-slug", required=True)
+    export_parser.add_argument("--repo-root", type=Path, default=_repo_root())
+    export_parser.add_argument(
+        "--output-name",
+        default=None,
+        help="Optional export file name written under spotify_transcripts/exports/.",
+    )
+
     sync_parser = subparsers.add_parser("sync", help="Download Spotify transcripts for a mapped show.")
     sync_parser.add_argument("--show-slug", required=True)
     sync_parser.add_argument("--repo-root", type=Path, default=_repo_root())
@@ -152,6 +162,19 @@ def main(argv: list[str] | None = None) -> int:
                 "report": _report_manifest(args.show_slug, repo_root),
                 "queue_report": _report_queue(args.show_slug, repo_root),
             }
+        )
+        return 0
+
+    if args.command == "export-show":
+        repo_root = Path(args.repo_root).resolve()
+        sources = load_show_sources(repo_root=repo_root, show_slug=args.show_slug)
+        store = TranscriptStore(sources.show_root)
+        _print_json(
+            export_show_transcripts(
+                sources=sources,
+                store=store,
+                output_name=args.output_name,
+            )
         )
         return 0
 

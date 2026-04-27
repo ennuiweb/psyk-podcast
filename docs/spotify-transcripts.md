@@ -30,6 +30,7 @@ Artifacts are written per show under:
 - `shows/<show-slug>/spotify_transcripts/raw/<episode_key>.json`
 - `shows/<show-slug>/spotify_transcripts/normalized/<episode_key>.json`
 - `shows/<show-slug>/spotify_transcripts/vtt/<episode_key>.vtt`
+- `shows/<show-slug>/spotify_transcripts/exports/<show-slug>.combined.json`
 
 `manifest.json` is the status ledger. Raw payloads are stored unchanged, while
 normalized payloads and VTT exports are repo-owned formats that shield future
@@ -140,6 +141,23 @@ python3 scripts/spotify_transcripts.py report --show-slug personlighedspsykologi
 ```
 
 This summarizes the per-show manifest without touching Spotify.
+
+## Export
+
+```bash
+python3 scripts/spotify_transcripts.py export-show --show-slug personlighedspsykologi-en
+python3 scripts/spotify_transcripts.py export-show --show-slug personlighedspsykologi-en --output-name personality.json
+```
+
+This combines the normalized per-episode transcript artifacts into one show-level
+JSON file under `spotify_transcripts/exports/`.
+
+Export behavior:
+
+- preserves inventory order from `episode_inventory.json`
+- includes full segment arrays plus a flattened `transcript_text` field per episode
+- includes `omitted_episodes` with explicit reasons when some inventory episodes
+  are not exportable, such as missing Spotify mappings or missing manifest entries
 
 ## Operational boundaries
 

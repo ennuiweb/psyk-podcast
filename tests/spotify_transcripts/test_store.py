@@ -49,8 +49,13 @@ class StoreTests(unittest.TestCase):
                 payload={"segments": []},
             )
             vtt_path = store.write_vtt(episode_key="ep-a", content="WEBVTT\n")
+            export_path = store.write_export_payload(
+                file_name="demo-show.combined.json",
+                payload={"episodes": []},
+            )
 
             self.assertEqual(raw_path, "spotify_transcripts/raw/ep-a.json")
             self.assertTrue(digest)
             self.assertEqual(normalized_path, "spotify_transcripts/normalized/ep-a.json")
             self.assertEqual(vtt_path, "spotify_transcripts/vtt/ep-a.vtt")
+            self.assertEqual(export_path, "spotify_transcripts/exports/demo-show.combined.json")

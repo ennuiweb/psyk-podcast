@@ -26,6 +26,7 @@ Freudd rendering or the feed workflow.
 Artifacts are written per show under:
 
 - `shows/<show-slug>/spotify_transcripts/manifest.json`
+- `shows/<show-slug>/spotify_transcripts/queue.json`
 - `shows/<show-slug>/spotify_transcripts/raw/<episode_key>.json`
 - `shows/<show-slug>/spotify_transcripts/normalized/<episode_key>.json`
 - `shows/<show-slug>/spotify_transcripts/vtt/<episode_key>.vtt`
@@ -33,6 +34,10 @@ Artifacts are written per show under:
 `manifest.json` is the status ledger. Raw payloads are stored unchanged, while
 normalized payloads and VTT exports are repo-owned formats that shield future
 consumers from Spotify schema churn.
+
+The entire `shows/**/spotify_transcripts/` tree is ignored by git. Queue state
+and downloaded transcript payloads are local operational artifacts, not tracked
+repo source files.
 
 ## Local auth state
 
@@ -80,6 +85,33 @@ Behavior:
 - Marks unmapped inventory episodes as `missing_mapping`
 - Skips already downloaded episodes unless `--force` is used
 - Captures the live transcript response from Spotify rather than scraping DOM text
+
+## Queue workflow
+
+Build or refresh the queue from the current inventory + Spotify map:
+
+```bash
+python3 scripts/spotify_transcripts.py queue-build --show-slug personlighedspsykologi-en
+python3 scripts/spotify_transcripts.py queue-report --show-slug personlighedspsykologi-en
+```
+
+Drain pending queue entries:
+
+```bash
+python3 scripts/spotify_transcripts.py queue-run --show-slug personlighedspsykologi-en
+python3 scripts/spotify_transcripts.py queue-run --show-slug personlighedspsykologi-en --limit 10
+```
+
+Queue behavior:
+
+- `pending` means mapped and not yet downloaded
+- `done_downloaded` means a normalized transcript artifact already exists
+- `blocked_missing_mapping` means the episode has no direct Spotify episode URL
+- `failed` means the last queue attempt failed and should be retried explicitly by running `queue-run` again
+
+The queue runner is intentionally single-worker by default. Parallel workers are
+not enabled yet because Spotify Web session state and transcript loading are
+still browser/session-sensitive, and a single-worker queue is the safer baseline.
 
 ## Status model
 

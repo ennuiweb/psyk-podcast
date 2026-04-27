@@ -24,6 +24,7 @@ freudd_portal/.env
 # podcast artifacts
 rss.xml
 !shows/**/feeds/rss.xml
+shows/**/spotify_transcripts/
 
 # Apps Script local config
 apps-script/.clasp.json

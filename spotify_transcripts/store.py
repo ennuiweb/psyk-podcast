@@ -47,9 +47,13 @@ class TranscriptStore:
         self.normalized_dir = self.base_dir / "normalized"
         self.vtt_dir = self.base_dir / "vtt"
         self.manifest_path = self.base_dir / "manifest.json"
+        self.queue_path = self.base_dir / "queue.json"
 
     def load_manifest(self) -> dict[str, Any]:
         return _load_manifest(self.manifest_path)
+
+    def load_queue(self) -> dict[str, Any]:
+        return _load_manifest(self.queue_path)
 
     def load_entries_by_episode_key(self) -> dict[str, dict[str, Any]]:
         manifest = self.load_manifest()
@@ -102,6 +106,9 @@ class TranscriptStore:
             "episodes": ordered_entries,
         }
         _write_json_atomic(self.manifest_path, payload)
+
+    def save_queue(self, payload: dict[str, Any]) -> None:
+        _write_json_atomic(self.queue_path, payload)
 
     def build_base_entry(self, source: EpisodeSource, existing: dict[str, Any] | None = None) -> dict[str, Any]:
         previous = dict(existing or {})

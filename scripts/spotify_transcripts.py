@@ -10,9 +10,10 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 VENV_PYTHON = ROOT / ".venv" / "bin" / "python"
+VENV_ROOT = ROOT / ".venv"
 if (
     VENV_PYTHON.exists()
-    and Path(sys.executable).resolve() != VENV_PYTHON.resolve()
+    and Path(sys.prefix).resolve() != VENV_ROOT.resolve()
     and not os.environ.get("PODCASTS_SPOTIFY_TRANSCRIPTS_NO_REEXEC")
 ):
     os.execv(

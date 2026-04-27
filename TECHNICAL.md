@@ -8,12 +8,14 @@ This file is the compact technical index for the repo. Detailed operational docs
 - `podcast-tools/` - shared feed-generation and Drive helper scripts.
 - `notebooklm-podcast-auto/` - subject-oriented NotebookLM automation and the tracked `notebooklm-py` submodule.
 - `freudd_portal/` - Django portal for auth, quizzes, subject content, and gamification.
+- `spotify_transcripts/` - local-first Spotify transcript downloader and normalizer for mapped show episodes.
 
 ## Start here
 
 - [docs/feed-automation.md](docs/feed-automation.md) - feed pipeline, GitHub Actions, Apps Script triggers, and feed hosting.
 - [docs/notebooklm-automation.md](docs/notebooklm-automation.md) - NotebookLM subject wrappers, mirrors, and output conventions.
 - [docs/freudd-portal.md](docs/freudd-portal.md) - repo-level Freudd integration notes and canonical portal docs.
+- [docs/spotify-transcripts.md](docs/spotify-transcripts.md) - Spotify transcript auth, artifact model, and sync flow.
 - [freudd_portal/README.md](freudd_portal/README.md) - full Freudd product and runtime contract.
 - [AGENTS.md](AGENTS.md) - repo-local execution and deploy policy.
 

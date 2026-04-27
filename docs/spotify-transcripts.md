@@ -54,8 +54,8 @@ The tool uses `0700` permissions for directories and `0600` for saved state.
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
-pip install -r requirements-spotify-transcripts.txt
-playwright install chromium
+.venv/bin/python -m pip install -r requirements-spotify-transcripts.txt
+.venv/bin/playwright install chromium
 ```
 
 ## Login
@@ -67,6 +67,9 @@ python3 scripts/spotify_transcripts.py auth-status
 
 `login` opens Spotify Web in a persistent Playwright profile. Complete login in
 the browser window, then press Enter in the terminal to save session state.
+
+The wrapper script auto-reexecs into `./.venv/bin/python` when that venv exists,
+so `python3 scripts/spotify_transcripts.py ...` will use the repo venv by default.
 
 ## Sync
 

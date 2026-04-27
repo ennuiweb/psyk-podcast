@@ -29,8 +29,8 @@ def _ensure_playwright():
     except ImportError as exc:
         raise SystemExit(
             "Playwright is not installed. Install transcript dependencies with:\n"
-            "  pip install -r requirements-spotify-transcripts.txt\n"
-            "  playwright install chromium"
+            "  .venv/bin/python -m pip install -r requirements-spotify-transcripts.txt\n"
+            "  .venv/bin/playwright install chromium"
         ) from exc
     return sync_playwright
 

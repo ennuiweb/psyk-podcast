@@ -6,6 +6,7 @@ import html
 import json
 import logging
 import re
+import unicodedata
 from datetime import datetime, timedelta, timezone as dt_timezone
 from dataclasses import dataclass
 from pathlib import Path
@@ -23,6 +24,67 @@ QUIZ_ID_RE = re.compile(r"^[0-9a-f]{8}$")
 APP_DATA_RE = re.compile(r"<app-root[^>]*data-app-data=\"(?P<data>.*?)\"", re.IGNORECASE | re.DOTALL)
 QUIZ_PATH_RE = re.compile(r"(?P<id>[0-9a-f]{8})\.html$", re.IGNORECASE)
 SUBJECT_SLUG_RE = re.compile(r"^[a-z0-9-]+$")
+UNICODE_ESCAPE_RE = re.compile(r"\\u([0-9a-fA-F]{4})")
+INLINE_PAREN_MATH_RE = re.compile(r"\\\((.+?)\\\)")
+INLINE_DOLLAR_MATH_RE = re.compile(r"\$([^$\n]+)\$")
+TEX_COMMAND_RE = re.compile(r"\\(?P<command>[A-Za-z]+)(?:\{(?P<braced>[^{}]*)\})?")
+
+TEX_GREEK_COMMANDS = {
+    "alpha": "α",
+    "beta": "β",
+    "gamma": "γ",
+    "delta": "δ",
+    "epsilon": "ε",
+    "zeta": "ζ",
+    "eta": "η",
+    "theta": "θ",
+    "vartheta": "ϑ",
+    "iota": "ι",
+    "kappa": "κ",
+    "lambda": "λ",
+    "mu": "μ",
+    "nu": "ν",
+    "xi": "ξ",
+    "omicron": "ο",
+    "pi": "π",
+    "rho": "ρ",
+    "sigma": "σ",
+    "varsigma": "ς",
+    "tau": "τ",
+    "upsilon": "υ",
+    "phi": "φ",
+    "varphi": "ϕ",
+    "chi": "χ",
+    "psi": "ψ",
+    "omega": "ω",
+    "Gamma": "Γ",
+    "Delta": "Δ",
+    "Theta": "Θ",
+    "Lambda": "Λ",
+    "Xi": "Ξ",
+    "Pi": "Π",
+    "Sigma": "Σ",
+    "Upsilon": "Υ",
+    "Phi": "Φ",
+    "Psi": "Ψ",
+    "Omega": "Ω",
+}
+TEX_ACCENT_MARKS = {
+    "acute": "\u0301",
+    "grave": "\u0300",
+    "ddot": "\u0308",
+    "tilde": "\u0303",
+    "bar": "\u0304",
+    "breve": "\u0306",
+    "check": "\u030c",
+    "hat": "\u0302",
+    "dot": "\u0307",
+    "mathring": "\u030a",
+}
+TEX_GREEK_ACCENTED_BASES = {
+    ("acute", "o"): "ό",
+    ("acute", "O"): "Ό",
+}
 
 
 class StatePayloadError(ValueError):
@@ -194,6 +256,57 @@ def parse_question_count_from_quiz_json(payload: Any) -> int:
     return len(_extract_question_entries(payload))
 
 
+def _normalize_tex_command(match: re.Match[str]) -> str:
+    command = match.group("command")
+    braced = match.group("braced")
+    if command in TEX_GREEK_COMMANDS and braced is None:
+        return TEX_GREEK_COMMANDS[command]
+    if command in TEX_ACCENT_MARKS and braced is not None:
+        base = normalize_quiz_copy(braced)
+        if (command, base) in TEX_GREEK_ACCENTED_BASES:
+            return TEX_GREEK_ACCENTED_BASES[(command, base)]
+        if len(base) == 1:
+            return unicodedata.normalize("NFC", f"{base}{TEX_ACCENT_MARKS[command]}")
+    return match.group(0)
+
+
+def normalize_quiz_copy(raw_value: Any) -> str:
+    text = str(raw_value or "")
+    text = UNICODE_ESCAPE_RE.sub(lambda match: chr(int(match.group(1), 16)), text)
+    text = INLINE_PAREN_MATH_RE.sub(r"\1", text)
+    text = INLINE_DOLLAR_MATH_RE.sub(r"\1", text)
+    text = TEX_COMMAND_RE.sub(_normalize_tex_command, text)
+    text = text.replace("\\n", " ")
+    return re.sub(r"\s+", " ", text).strip()
+
+
+def _normalize_answer_option(option: Any) -> Any:
+    if not isinstance(option, dict):
+        return option
+    normalized = dict(option)
+    for key in ("text", "rationale"):
+        if key in normalized:
+            normalized[key] = normalize_quiz_copy(normalized[key])
+    return normalized
+
+
+def _normalize_question_entry(question: Any) -> Any:
+    if not isinstance(question, dict):
+        return question
+    normalized = dict(question)
+    for key in ("question", "hint"):
+        if key in normalized:
+            normalized[key] = normalize_quiz_copy(normalized[key])
+    options = normalized.get("answerOptions")
+    if isinstance(options, list):
+        normalized["answerOptions"] = [_normalize_answer_option(option) for option in options]
+    return normalized
+
+
+def normalize_quiz_questions(questions: list[Any]) -> list[Any]:
+    return [_normalize_question_entry(question) for question in questions]
+
+
 def load_quiz_content(quiz_id: str) -> dict[str, Any] | None:
     json_path = quiz_json_file_path(quiz_id)
     if _path_is_file(json_path):
@@ -209,7 +322,7 @@ def load_quiz_content(quiz_id: str) -> dict[str, Any] | None:
                     raw_title = payload.get("title")
                     if isinstance(raw_title, str) and raw_title.strip():
                         title = raw_title.strip()
-                return {"title": title, "questions": questions}
+                return {"title": title, "questions": normalize_quiz_questions(questions)}
 
     html_path = quiz_html_file_path(quiz_id)
     if not _path_is_file(html_path):
@@ -235,7 +348,7 @@ def load_quiz_content(quiz_id: str) -> dict[str, Any] | None:
     questions = _extract_question_entries(decoded_payload)
     if not questions:
         return None
-    return {"title": "Quiz", "questions": questions}
+    return {"title": "Quiz", "questions": normalize_quiz_questions(questions)}
 
 
 def quiz_question_count(quiz_id: str) -> int:

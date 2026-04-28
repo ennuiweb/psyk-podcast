@@ -590,10 +590,83 @@
 
   function normalizeQuestionCopy(rawValue) {
     const text = String(rawValue ?? "");
+    const greekCommands = {
+      alpha: "α",
+      beta: "β",
+      gamma: "γ",
+      delta: "δ",
+      epsilon: "ε",
+      zeta: "ζ",
+      eta: "η",
+      theta: "θ",
+      vartheta: "ϑ",
+      iota: "ι",
+      kappa: "κ",
+      lambda: "λ",
+      mu: "μ",
+      nu: "ν",
+      xi: "ξ",
+      omicron: "ο",
+      pi: "π",
+      rho: "ρ",
+      sigma: "σ",
+      varsigma: "ς",
+      tau: "τ",
+      upsilon: "υ",
+      phi: "φ",
+      varphi: "ϕ",
+      chi: "χ",
+      psi: "ψ",
+      omega: "ω",
+      Gamma: "Γ",
+      Delta: "Δ",
+      Theta: "Θ",
+      Lambda: "Λ",
+      Xi: "Ξ",
+      Pi: "Π",
+      Sigma: "Σ",
+      Upsilon: "Υ",
+      Phi: "Φ",
+      Psi: "Ψ",
+      Omega: "Ω",
+    };
+    const accentMarks = {
+      acute: "\u0301",
+      grave: "\u0300",
+      ddot: "\u0308",
+      tilde: "\u0303",
+      bar: "\u0304",
+      breve: "\u0306",
+      check: "\u030c",
+      hat: "\u0302",
+      dot: "\u0307",
+      mathring: "\u030a",
+    };
+    const accentedGreekBases = {
+      "acute:o": "ό",
+      "acute:O": "Ό",
+    };
     return text
       .replace(/\\u([0-9a-fA-F]{4})/g, (match, p1) => String.fromCharCode(parseInt(p1, 16)))
       .replace(/\\\((.+?)\\\)/g, "$1")
       .replace(/\$([^$\n]+)\$/g, "$1")
+      .replace(/\\([A-Za-z]+)(?:\{([^{}]*)\})?/g, (match, command, braced) => {
+        if (braced === undefined && Object.prototype.hasOwnProperty.call(greekCommands, command)) {
+          return greekCommands[command];
+        }
+        if (braced !== undefined && Object.prototype.hasOwnProperty.call(accentMarks, command)) {
+          const normalizedBase = normalizeQuestionCopy(braced);
+          const accentedGreekKey = `${command}:${normalizedBase}`;
+          if (Object.prototype.hasOwnProperty.call(accentedGreekBases, accentedGreekKey)) {
+            return accentedGreekBases[accentedGreekKey];
+          }
+          if (normalizedBase.length === 1) {
+            return `${normalizedBase}${accentMarks[command]}`.normalize("NFC");
+          }
+        }
+        return match;
+      })
+      .replace(/\\n/g, " ")
       .replace(/\s+/g, " ")
       .trim();
   }

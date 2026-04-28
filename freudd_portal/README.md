@@ -23,7 +23,7 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Quiz flow locks each question on first submission (`first answer counts`) so answers cannot be changed later in the same attempt.
 - Quiz wrapper renders answer options in a deterministic per-question display order to reduce positional-answer bias; selected answers still persist as raw option indices for stable scoring/state compatibility.
 - Quiz question header shows live potential score while unanswered (`Tid: <sek>s · <point>/120 point`) and updates continuously as time passes.
-- Quiz question/hint/option copy normalizes inline math delimiters (`$...$`, `\\(...\\)`) for cleaner learner-facing text.
+- Quiz question/hint/option copy normalizes inline math delimiters (`$...$`, `\\(...\\)`) plus common TeX Greek/accent commands for cleaner learner-facing text.
 - Quiz retry cooldown is per `(user, quiz_id)` with tiering: `1m x2`, `5m x3`, then `10m`; streak resets after `1h` inactivity (`FREUDD_QUIZ_RETRY_COOLDOWN_RESET_SECONDS`).
 - Quiz files directory must be readable by `www-data`; sync uploads now avoid owner/group preservation and enforce root dir mode `755`.
 - Public static quiz files still exist at `/quizzes/personlighedspsykologi/<id>.html` (Caddy static route).

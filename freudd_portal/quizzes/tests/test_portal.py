@@ -611,6 +611,39 @@ class QuizPortalTests(TestCase):
         self.assertEqual(payload["title"], "Personality Quiz")
         self.assertEqual(len(payload["questions"]), 2)
 
+    def test_quiz_content_api_normalizes_tex_escaped_copy(self) -> None:
+        payload = {
+            "title": "Personality Quiz",
+            "questions": [
+                {
+                    "question": (
+                        "The term 'phenomenology' is derived from the Greek word "
+                        "\\phi\\alpha\\iota\\nu\\acute{o}\\mu\\epsilon\\nu\\omicron\\nu "
+                        "(phainomenon), which literally translates to what?"
+                    ),
+                    "answerOptions": [
+                        {"text": "Appearance", "isCorrect": True, "rationale": "\\alpha"},
+                        {"text": "The mind's eye", "isCorrect": False},
+                    ],
+                    "hint": "Think $\\phi\\alpha\\iota\\nu\\acute{o}\\mu\\epsilon\\nu\\omicron\\nu$.",
+                }
+            ],
+        }
+        (self.quiz_root / f"{self.quiz_id}.json").write_text(
+            json.dumps(payload, ensure_ascii=False),
+            encoding="utf-8",
+        )
+
+        response = self.client.get(reverse("quiz-content", kwargs={"quiz_id": self.quiz_id}))
+
+        self.assertEqual(response.status_code, 200)
+        body = response.json()
+        question = body["questions"][0]
+        self.assertIn("φαινόμενον", question["question"])
+        self.assertNotIn("\\phi", question["question"])
+        self.assertEqual(question["hint"], "Think φαινόμενον.")
+        self.assertEqual(question["answerOptions"][0]["rationale"], "α")
+
     def test_quiz_content_api_falls_back_to_html_when_json_missing(self) -> None:
         (self.quiz_root / f"{self.quiz_id}.json").unlink()
         response = self.client.get(reverse("quiz-content", kwargs={"quiz_id": self.quiz_id}))

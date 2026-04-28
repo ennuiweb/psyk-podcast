@@ -365,6 +365,228 @@
     min-height: 1.2rem;
   }
 
+  /*
+    Reviewable quiz-taking treatment.
+    Rollback: remove the quiz-shell--take-focus class from the wrapper below,
+    or delete this scoped block. The baseline quiz styles above stay intact.
+  */
+  .quiz-shell--take-focus {
+    --quiz-reading-measure: 68ch;
+    --quiz-answer-min-height: 58px;
+    max-width: 920px;
+    margin: 0 auto;
+    padding: clamp(var(--space-4), 2.4vw, var(--space-6));
+    gap: clamp(var(--space-4), 2vw, var(--space-5));
+  }
+
+  .quiz-shell--take-focus .quiz-head {
+    padding: 0 0 var(--space-3);
+    border: 0;
+    border-bottom: 1px solid color-mix(in srgb, var(--border) 78%, transparent);
+    border-radius: 0;
+    background: transparent;
+  }
+
+  .quiz-shell--take-focus .quiz-headline {
+    max-width: var(--quiz-reading-measure);
+  }
+
+  .quiz-shell--take-focus .quiz-module {
+    min-height: 24px;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .quiz-shell--take-focus .quiz-title {
+    max-width: var(--quiz-reading-measure);
+    color: var(--muted);
+    font-size: clamp(0.92rem, 1vw, 1.02rem);
+    line-height: 1.45;
+  }
+
+  .quiz-shell--take-focus .quiz-stage {
+    border-color: color-mix(in srgb, var(--border) 86%, transparent);
+    background:
+      linear-gradient(180deg, color-mix(in srgb, var(--surface) 94%, var(--surface-elevated)), var(--surface)),
+      var(--surface);
+    padding: clamp(var(--space-4), 3vw, var(--space-6));
+  }
+
+  .quiz-shell--take-focus .quiz-flow-head {
+    gap: var(--space-2);
+    margin-bottom: clamp(var(--space-4), 3vw, var(--space-6));
+  }
+
+  .quiz-shell--take-focus .quiz-flow-row {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .quiz-shell--take-focus .quiz-counter,
+  .quiz-shell--take-focus .quiz-score-progress,
+  .quiz-shell--take-focus .quiz-timer {
+    min-height: 32px;
+    display: inline-flex;
+    align-items: center;
+    margin: 0;
+    line-height: 1;
+  }
+
+  .quiz-shell--take-focus .quiz-counter {
+    font-family: var(--font-mono);
+    color: var(--text-subtle-2);
+    font-size: 0.78rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  .quiz-shell--take-focus .quiz-score-progress,
+  .quiz-shell--take-focus .quiz-timer {
+    border: 1px solid color-mix(in srgb, var(--border) 72%, transparent);
+    border-radius: var(--radius-pill);
+    padding: 0 var(--space-3);
+    background: color-mix(in srgb, var(--surface-soft) 74%, var(--surface));
+    white-space: nowrap;
+  }
+
+  .quiz-shell--take-focus .quiz-timer {
+    border-color: color-mix(in srgb, var(--warn-border) 74%, var(--border));
+    background: color-mix(in srgb, var(--warn-bg) 72%, var(--surface));
+  }
+
+  .quiz-shell--take-focus .quiz-progress-track {
+    height: 7px;
+    border: 0;
+    background: var(--progress-track-bg);
+  }
+
+  .quiz-shell--take-focus .quiz-question {
+    max-width: var(--quiz-reading-measure);
+    margin-bottom: clamp(var(--space-4), 2.4vw, var(--space-5));
+    font-family: var(--font-body);
+    font-size: clamp(1.42rem, 2vw, 1.82rem);
+    line-height: 1.28;
+    letter-spacing: 0;
+  }
+
+  .quiz-shell--take-focus .quiz-options {
+    max-width: var(--quiz-reading-measure);
+    gap: var(--space-2);
+  }
+
+  .quiz-shell--take-focus .quiz-option {
+    min-height: var(--quiz-answer-min-height);
+    border-color: color-mix(in srgb, var(--border-strong) 80%, transparent);
+    border-radius: var(--radius-md);
+    background: color-mix(in srgb, var(--surface) 88%, var(--surface-soft));
+    padding: var(--space-3) var(--space-4);
+    box-shadow: none;
+  }
+
+  .quiz-shell--take-focus .quiz-option:not(:disabled):hover {
+    transform: translateY(-1px);
+  }
+
+  .quiz-shell--take-focus .quiz-option:disabled {
+    cursor: default;
+    opacity: 1;
+  }
+
+  .quiz-shell--take-focus .quiz-option:focus-visible {
+    outline: 2px solid color-mix(in srgb, var(--accent) 70%, var(--accent-strong));
+    outline-offset: 3px;
+    box-shadow: none;
+  }
+
+  .quiz-shell--take-focus .quiz-option-index {
+    width: 34px;
+    height: 34px;
+    margin-top: 0;
+    border-color: color-mix(in srgb, var(--border-strong) 74%, transparent);
+    background: var(--surface);
+    color: var(--text-subtle-2);
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+  }
+
+  .quiz-shell--take-focus .quiz-option-text {
+    max-width: 62ch;
+    color: var(--ink);
+    font-size: clamp(1rem, 1.1vw, 1.12rem);
+    line-height: 1.46;
+    font-weight: 600;
+  }
+
+  .quiz-shell--take-focus .quiz-option.is-selected {
+    border-color: color-mix(in srgb, var(--accent) 70%, transparent);
+    background: color-mix(in srgb, var(--info-bg-strong) 72%, var(--surface));
+  }
+
+  .quiz-shell--take-focus .quiz-option.is-selected .quiz-option-index {
+    border-color: color-mix(in srgb, var(--accent) 72%, transparent);
+    background: var(--accent);
+    color: var(--accent-ink);
+  }
+
+  .quiz-shell--take-focus .quiz-option.is-correct {
+    border-color: color-mix(in srgb, var(--success) 58%, transparent);
+    background: color-mix(in srgb, var(--success-bg-strong) 82%, var(--surface));
+  }
+
+  .quiz-shell--take-focus .quiz-option.is-correct .quiz-option-index {
+    border-color: color-mix(in srgb, var(--success) 70%, transparent);
+    background: var(--success);
+    color: #ffffff;
+  }
+
+  .quiz-shell--take-focus .quiz-option.is-wrong {
+    border-color: color-mix(in srgb, var(--danger) 60%, transparent);
+    background: color-mix(in srgb, var(--danger-bg-soft) 86%, var(--surface));
+  }
+
+  .quiz-shell--take-focus .quiz-option.is-wrong .quiz-option-index {
+    border-color: color-mix(in srgb, var(--danger) 74%, transparent);
+    background: var(--danger);
+    color: #ffffff;
+  }
+
+  .quiz-shell--take-focus .quiz-hint,
+  .quiz-shell--take-focus .quiz-rationale,
+  .quiz-shell--take-focus .quiz-points-feedback {
+    max-width: var(--quiz-reading-measure);
+    border-radius: var(--radius-md);
+    line-height: 1.5;
+  }
+
+  .quiz-shell--take-focus .quiz-actions {
+    max-width: var(--quiz-reading-measure);
+    align-items: stretch;
+    padding-top: var(--space-3);
+    border-top: 1px solid color-mix(in srgb, var(--border) 68%, transparent);
+  }
+
+  .quiz-shell--take-focus .ghost-button,
+  .quiz-shell--take-focus .btn-primary {
+    min-height: 48px;
+    padding-inline: var(--space-4);
+  }
+
+  .quiz-shell--take-focus #quiz-next {
+    min-width: 152px;
+  }
+
+  .quiz-shell--take-focus .summary-grid,
+  .quiz-shell--take-focus .quiz-cup-summary,
+  .quiz-shell--take-focus #quiz-summary-line,
+  .quiz-shell--take-focus .quiz-cooldown-note {
+    max-width: var(--quiz-reading-measure);
+  }
+
   @media (max-width: 640px) {
     .summary-grid {
       grid-template-columns: 1fr;
@@ -392,9 +614,51 @@
       font-size: 1rem;
       line-height: 1.32;
     }
+
+    .quiz-shell--take-focus {
+      padding: var(--space-3);
+      gap: var(--space-4);
+    }
+
+    .quiz-shell--take-focus .quiz-flow-row {
+      grid-template-columns: 1fr;
+      align-items: stretch;
+      gap: var(--space-2);
+    }
+
+    .quiz-shell--take-focus .quiz-score-progress,
+    .quiz-shell--take-focus .quiz-timer {
+      justify-content: center;
+      width: 100%;
+    }
+
+    .quiz-shell--take-focus .quiz-question {
+      font-size: clamp(1.26rem, 6vw, 1.54rem);
+      line-height: 1.32;
+    }
+
+    .quiz-shell--take-focus .quiz-option {
+      min-height: 60px;
+      padding: var(--space-3);
+    }
+
+    .quiz-shell--take-focus .quiz-option-text {
+      font-size: 1rem;
+      line-height: 1.42;
+    }
+
+    .quiz-shell--take-focus .quiz-actions {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+
+    .quiz-shell--take-focus #quiz-next {
+      min-width: 0;
+      order: -1;
+    }
   }
 </style>
-<div class="card quiz-shell">
+<div class="card quiz-shell quiz-shell--take-focus">
   <form class="inline-form is-hidden">{% csrf_token %}</form>
   <div class="quiz-head">
     <div class="quiz-headline">

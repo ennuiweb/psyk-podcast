@@ -2,11 +2,13 @@
 
 from __future__ import annotations
 
+import time
 from collections.abc import Iterable
 from typing import Callable
 
 from .constants import (
     DEFAULT_TIMEOUT_MS,
+    RETRYABLE_STATUSES,
     STATUS_DOWNLOADED,
     STATUS_MISSING_MAPPING,
     STATUS_SCHEMA_CHANGED,
@@ -28,6 +30,8 @@ def process_episode_source(
     force: bool = False,
     headless: bool = False,
     timeout_ms: int = DEFAULT_TIMEOUT_MS,
+    max_attempts: int = 2,
+    retry_delay_seconds: float = 2.0,
 ) -> tuple[dict[str, object], str]:
     entry = store.build_base_entry(source, existing_entry)
     now = utc_now_iso()
@@ -43,22 +47,43 @@ def process_episode_source(
     if entry.get("status") == STATUS_DOWNLOADED and not force:
         return entry, "skipped_downloaded"
 
-    try:
-        result = downloader(
-            episode_url=source.spotify_url,
-            episode_id=source.spotify_episode_id,
-            headless=headless,
-            timeout_ms=timeout_ms,
-        )
-    except Exception as exc:
+    result: AcquisitionResult | None = None
+    total_attempts = max(int(entry.get("attempt_count") or 0), 0)
+    for attempt_number in range(1, max(int(max_attempts), 1) + 1):
+        try:
+            result = downloader(
+                episode_url=source.spotify_url,
+                episode_id=source.spotify_episode_id,
+                headless=headless,
+                timeout_ms=timeout_ms,
+            )
+        except Exception as exc:
+            result = AcquisitionResult(
+                status=STATUS_UNKNOWN_FAILURE,
+                payload=None,
+                error=f"Downloader crashed before returning a result: {exc}",
+            )
+        total_attempts += 1
+        if (
+            result.status == STATUS_DOWNLOADED
+            or result.status not in RETRYABLE_STATUSES
+            or attempt_number >= max(int(max_attempts), 1)
+        ):
+            break
+        if retry_delay_seconds > 0:
+            time.sleep(retry_delay_seconds)
+
+    if result is None:
         result = AcquisitionResult(
             status=STATUS_UNKNOWN_FAILURE,
             payload=None,
-            error=f"Downloader crashed before returning a result: {exc}",
+            error="Downloader returned no result.",
         )
+    entry["attempt_count"] = total_attempts
     entry["last_attempt_status"] = result.status
     entry["last_attempted_at"] = now
     entry["http_status"] = result.http_status
+    entry["transcript_url"] = result.transcript_url
 
     if result.status == STATUS_DOWNLOADED and result.payload is not None:
         raw_path, digest = store.write_raw_payload(episode_key=source.episode_key, payload=result.payload)
@@ -87,6 +112,7 @@ def process_episode_source(
             content=normalized.vtt,
         )
         entry["status"] = STATUS_DOWNLOADED
+        entry["consecutive_failure_count"] = 0
         entry["downloaded_at"] = now
         entry["last_error"] = None
         entry["segment_count"] = normalized.payload.get("segment_count")
@@ -96,6 +122,7 @@ def process_episode_source(
 
     if entry.get("status") != STATUS_DOWNLOADED:
         entry["status"] = result.status
+    entry["consecutive_failure_count"] = max(int(entry.get("consecutive_failure_count") or 0), 0) + 1
     entry["last_error"] = result.error
     return entry, "failed"
 
@@ -110,6 +137,8 @@ def sync_show_transcripts(
     force: bool = False,
     headless: bool = False,
     timeout_ms: int = DEFAULT_TIMEOUT_MS,
+    max_attempts: int = 2,
+    retry_delay_seconds: float = 2.0,
 ) -> SyncSummary:
     requested_keys = {str(key).strip() for key in (episode_keys or []) if str(key).strip()}
     existing_entries = store.load_entries_by_episode_key()
@@ -139,6 +168,8 @@ def sync_show_transcripts(
             force=force,
             headless=headless,
             timeout_ms=timeout_ms,
+            max_attempts=max_attempts,
+            retry_delay_seconds=retry_delay_seconds,
         )
         if action_attempted:
             attempted += 1
@@ -151,14 +182,13 @@ def sync_show_transcripts(
         elif outcome == "failed":
             failed += 1
         existing_entries[source.episode_key] = entry
-
-    store.save_manifest(
-        show_slug=sources.show_slug,
-        subject_slug=sources.subject_slug,
-        inventory_path=sources.inventory_path,
-        spotify_map_path=sources.spotify_map_path,
-        entries=existing_entries,
-    )
+        store.save_manifest(
+            show_slug=sources.show_slug,
+            subject_slug=sources.subject_slug,
+            inventory_path=sources.inventory_path,
+            spotify_map_path=sources.spotify_map_path,
+            entries=existing_entries,
+        )
 
     return SyncSummary(
         show_slug=sources.show_slug,
@@ -249,6 +279,8 @@ def run_show_queue(
     force: bool = False,
     headless: bool = False,
     timeout_ms: int = DEFAULT_TIMEOUT_MS,
+    max_attempts: int = 2,
+    retry_delay_seconds: float = 2.0,
 ) -> dict[str, object]:
     queue_payload = build_show_queue(sources=sources, store=store)
     queue_entries = queue_payload.get("entries")
@@ -289,6 +321,8 @@ def run_show_queue(
             force=force,
             headless=headless,
             timeout_ms=timeout_ms,
+            max_attempts=max_attempts,
+            retry_delay_seconds=retry_delay_seconds,
         )
         manifest_entries[episode_key] = entry
         queue_entry["transcript_status"] = entry.get("status")
@@ -305,15 +339,23 @@ def run_show_queue(
         else:
             queue_entry["queue_status"] = "failed"
             failed += 1
-
-    store.save_manifest(
-        show_slug=sources.show_slug,
-        subject_slug=sources.subject_slug,
-        inventory_path=sources.inventory_path,
-        spotify_map_path=sources.spotify_map_path,
-        entries=manifest_entries,
-    )
+        store.save_manifest(
+            show_slug=sources.show_slug,
+            subject_slug=sources.subject_slug,
+            inventory_path=sources.inventory_path,
+            spotify_map_path=sources.spotify_map_path,
+            entries=manifest_entries,
+        )
+        queue_payload["entries"] = queue_entries
+        queue_payload["last_updated_at"] = utc_now_iso()
+        store.save_queue(queue_payload)
     queue_payload["entries"] = queue_entries
+    queue_payload["last_updated_at"] = utc_now_iso()
+    queue_payload["last_run_summary"] = {
+        "attempted": attempted,
+        "downloaded": downloaded,
+        "failed": failed,
+    }
     store.save_queue(queue_payload)
     return build_show_queue(sources=sources, store=store) | {
         "attempted": attempted,

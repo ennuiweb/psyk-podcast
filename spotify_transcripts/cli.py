@@ -15,6 +15,7 @@ from .paths import get_path_info
 from .playwright_client import download_episode_transcript, get_auth_status, login_via_browser
 from .service import build_show_queue, run_show_queue, sync_show_transcripts
 from .store import TranscriptStore
+from .verifier import verify_show_transcripts
 
 
 def _repo_root() -> Path:
@@ -89,6 +90,8 @@ def build_parser() -> argparse.ArgumentParser:
     queue_run_parser.add_argument("--force", action="store_true", help="Re-attempt episodes that already have downloaded artifacts.")
     queue_run_parser.add_argument("--headless", action="store_true", help="Run Playwright headless. Default is headed for reliability.")
     queue_run_parser.add_argument("--timeout-seconds", type=int, default=DEFAULT_TIMEOUT_MS // 1000)
+    queue_run_parser.add_argument("--max-attempts", type=int, default=2, help="Maximum attempts per episode for retryable failures.")
+    queue_run_parser.add_argument("--retry-delay-seconds", type=float, default=2.0, help="Delay between retry attempts for retryable failures.")
 
     export_parser = subparsers.add_parser("export-show", help="Combine normalized transcripts into one show-level JSON deliverable.")
     export_parser.add_argument("--show-slug", required=True)
@@ -99,6 +102,15 @@ def build_parser() -> argparse.ArgumentParser:
         help="Optional export file name written under spotify_transcripts/exports/.",
     )
 
+    verify_parser = subparsers.add_parser("verify-show", help="Verify transcript artifact completeness and integrity for one show.")
+    verify_parser.add_argument("--show-slug", required=True)
+    verify_parser.add_argument("--repo-root", type=Path, default=_repo_root())
+    verify_parser.add_argument(
+        "--fail-on-issues",
+        action="store_true",
+        help="Exit with code 1 when any integrity issues are detected.",
+    )
+
     sync_parser = subparsers.add_parser("sync", help="Download Spotify transcripts for a mapped show.")
     sync_parser.add_argument("--show-slug", required=True)
     sync_parser.add_argument("--repo-root", type=Path, default=_repo_root())
@@ -107,6 +119,8 @@ def build_parser() -> argparse.ArgumentParser:
     sync_parser.add_argument("--force", action="store_true", help="Re-attempt episodes that already have downloaded artifacts.")
     sync_parser.add_argument("--headless", action="store_true", help="Run Playwright headless. Default is headed for reliability.")
     sync_parser.add_argument("--timeout-seconds", type=int, default=DEFAULT_TIMEOUT_MS // 1000)
+    sync_parser.add_argument("--max-attempts", type=int, default=2, help="Maximum attempts per episode for retryable failures.")
+    sync_parser.add_argument("--retry-delay-seconds", type=float, default=2.0, help="Delay between retry attempts for retryable failures.")
     return parser
 
 
@@ -155,6 +169,8 @@ def main(argv: list[str] | None = None) -> int:
             force=bool(args.force),
             headless=bool(args.headless),
             timeout_ms=max(int(args.timeout_seconds), 1) * 1000,
+            max_attempts=max(int(args.max_attempts), 1),
+            retry_delay_seconds=max(float(args.retry_delay_seconds), 0.0),
         )
         _print_json(
             {
@@ -178,6 +194,14 @@ def main(argv: list[str] | None = None) -> int:
         )
         return 0
 
+    if args.command == "verify-show":
+        repo_root = Path(args.repo_root).resolve()
+        sources = load_show_sources(repo_root=repo_root, show_slug=args.show_slug)
+        store = TranscriptStore(sources.show_root)
+        payload = verify_show_transcripts(sources=sources, store=store)
+        _print_json(payload)
+        return 1 if args.fail_on_issues and int(payload.get("issue_count") or 0) > 0 else 0
+
     if args.command == "sync":
         repo_root = Path(args.repo_root).resolve()
         sources = load_show_sources(repo_root=repo_root, show_slug=args.show_slug)
@@ -191,6 +215,8 @@ def main(argv: list[str] | None = None) -> int:
             force=bool(args.force),
             headless=bool(args.headless),
             timeout_ms=max(int(args.timeout_seconds), 1) * 1000,
+            max_attempts=max(int(args.max_attempts), 1),
+            retry_delay_seconds=max(float(args.retry_delay_seconds), 0.0),
         )
         _print_json(
             {

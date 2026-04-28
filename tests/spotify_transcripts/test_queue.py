@@ -118,3 +118,38 @@ class QueueTests(unittest.TestCase):
         self.assertEqual(entries["ep-a"]["status"], STATUS_UNKNOWN_FAILURE)
         self.assertEqual(entries["ep-a"]["last_attempt_status"], STATUS_UNKNOWN_FAILURE)
         self.assertIn("browser vanished", entries["ep-a"]["last_error"])
+
+    def test_run_show_queue_retries_retryable_failures(self) -> None:
+        calls = {"count": 0}
+
+        def flaky_downloader(**_: object) -> AcquisitionResult:
+            calls["count"] += 1
+            if calls["count"] == 1:
+                return AcquisitionResult(status=STATUS_UNKNOWN_FAILURE, payload=None, error="transient")
+            return AcquisitionResult(
+                status=STATUS_DOWNLOADED,
+                payload={
+                    "episodeName": "Episode A",
+                    "section": [
+                        {
+                            "startMs": 0,
+                            "text": {"sentence": {"text": "Hello"}},
+                        }
+                    ],
+                },
+            )
+
+        payload = run_show_queue(
+            sources=self.sources,
+            store=self.store,
+            downloader=flaky_downloader,
+            limit=1,
+            max_attempts=2,
+            retry_delay_seconds=0,
+        )
+        self.assertEqual(payload["downloaded"], 1)
+        self.assertEqual(calls["count"], 2)
+        manifest = self.store.load_manifest()
+        entries = {entry["episode_key"]: entry for entry in manifest["episodes"]}
+        self.assertEqual(entries["ep-a"]["attempt_count"], 2)
+        self.assertEqual(entries["ep-a"]["consecutive_failure_count"], 0)

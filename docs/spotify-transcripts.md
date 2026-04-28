@@ -104,6 +104,7 @@ Drain pending queue entries:
 ```bash
 python3 scripts/spotify_transcripts.py queue-run --show-slug personlighedspsykologi-en
 python3 scripts/spotify_transcripts.py queue-run --show-slug personlighedspsykologi-en --limit 10
+python3 scripts/spotify_transcripts.py queue-run --show-slug personlighedspsykologi-en --max-attempts 3 --retry-delay-seconds 5
 ```
 
 Queue behavior:
@@ -116,6 +117,16 @@ Queue behavior:
 The queue runner is intentionally single-worker by default. Parallel workers are
 not enabled yet because Spotify Web session state and transcript loading are
 still browser/session-sensitive, and a single-worker queue is the safer baseline.
+
+Runs are checkpointed after each processed episode. Manifest and queue state are
+saved incrementally, so a long run can be resumed after an interrupted browser
+session without losing already completed work.
+
+Retry behavior:
+
+- retryable statuses are retried automatically within one `sync` or `queue-run`
+- current retryable statuses are `network_error`, `playback_required`, and `unknown_failure`
+- retries are bounded by `--max-attempts` and `--retry-delay-seconds`
 
 ## Status model
 
@@ -141,6 +152,23 @@ python3 scripts/spotify_transcripts.py report --show-slug personlighedspsykologi
 ```
 
 This summarizes the per-show manifest without touching Spotify.
+
+## Verification
+
+```bash
+python3 scripts/spotify_transcripts.py verify-show --show-slug personlighedspsykologi-en
+python3 scripts/spotify_transcripts.py verify-show --show-slug personlighedspsykologi-en --fail-on-issues
+```
+
+This validates the downloaded artifact set against the inventory and manifest.
+
+Verification checks:
+
+- mapped inventory episodes missing from the manifest
+- missing, empty, or malformed raw / normalized / VTT files
+- normalized payloads with missing segments or segment-count mismatches
+- VTT files missing the `WEBVTT` header
+- orphaned local artifacts no longer referenced by the manifest
 
 ## Export
 

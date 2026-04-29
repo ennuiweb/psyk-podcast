@@ -1,0 +1,32 @@
+#!/usr/bin/env python3
+"""CLI wrapper for notebooklm_queue."""
+
+import os
+from pathlib import Path
+import sys
+
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+VENV_PYTHON = ROOT / ".venv" / "bin" / "python"
+VENV_ROOT = ROOT / ".venv"
+if (
+    VENV_PYTHON.exists()
+    and Path(sys.prefix).resolve() != VENV_ROOT.resolve()
+    and not os.environ.get("PODCASTS_NOTEBOOKLM_QUEUE_NO_REEXEC")
+):
+    os.execv(
+        str(VENV_PYTHON),
+        [
+            str(VENV_PYTHON),
+            str(Path(__file__).resolve()),
+            *sys.argv[1:],
+        ],
+    )
+
+from notebooklm_queue.cli import main
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

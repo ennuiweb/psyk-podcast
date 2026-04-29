@@ -1,0 +1,168 @@
+"""CLI entrypoint for NotebookLM queue management."""
+
+from __future__ import annotations
+
+import argparse
+import json
+from pathlib import Path
+from typing import Any
+
+from .constants import DEFAULT_STORAGE_ROOT, STATE_GENERATING, STATE_QUEUED
+from .models import JobIdentity
+from .store import QueueLockError, QueueStore
+
+
+def _print_json(payload: Any) -> None:
+    print(json.dumps(payload, indent=2, ensure_ascii=False))
+
+
+def _load_json_arg(raw: str | None) -> dict[str, Any]:
+    if not raw:
+        return {}
+    payload = json.loads(raw)
+    return payload if isinstance(payload, dict) else {}
+
+
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--storage-root", type=Path, default=DEFAULT_STORAGE_ROOT)
+    subparsers = parser.add_subparsers(dest="command", required=True)
+
+    enqueue = subparsers.add_parser("enqueue", help="Create or refresh one queue job.")
+    enqueue.add_argument("--show-slug", required=True)
+    enqueue.add_argument("--subject-slug", required=True)
+    enqueue.add_argument("--lecture-key", required=True)
+    enqueue.add_argument("--content-type", action="append", dest="content_types", required=True)
+    enqueue.add_argument("--config-hash", required=True)
+    enqueue.add_argument("--campaign")
+    enqueue.add_argument("--initial-state", default=STATE_QUEUED)
+    enqueue.add_argument("--priority", type=int, default=100)
+    enqueue.add_argument("--blocked-reason")
+    enqueue.add_argument("--note")
+    enqueue.add_argument("--metadata-json")
+
+    list_parser = subparsers.add_parser("list", help="List queue jobs.")
+    list_parser.add_argument("--show-slug")
+    list_parser.add_argument("--state")
+
+    inspect_parser = subparsers.add_parser("inspect", help="Show one queue job.")
+    inspect_parser.add_argument("--job-id", required=True)
+    inspect_parser.add_argument("--show-slug")
+
+    report = subparsers.add_parser("report", help="Summarize queue state.")
+    report.add_argument("--show-slug")
+
+    transition = subparsers.add_parser("transition", help="Transition one queue job to a new state.")
+    transition.add_argument("--job-id", required=True)
+    transition.add_argument("--show-slug", required=True)
+    transition.add_argument("--state", required=True)
+    transition.add_argument("--note")
+    transition.add_argument("--error")
+    transition.add_argument("--retry-at")
+    transition.add_argument("--details-json")
+    transition.add_argument("--expected-state", action="append", dest="expected_states", default=[])
+    transition.add_argument("--increment-attempt", action="store_true")
+
+    claim = subparsers.add_parser("claim-next", help="Claim the next ready job for one show.")
+    claim.add_argument("--show-slug", required=True)
+    claim.add_argument("--ready-state", action="append", dest="ready_states", default=[])
+    claim.add_argument("--target-state", default=STATE_GENERATING)
+
+    retry = subparsers.add_parser("retry-ready", help="Re-queue retry-scheduled jobs whose retry window has arrived.")
+    retry.add_argument("--show-slug")
+    retry.add_argument("--limit", type=int)
+
+    reconcile = subparsers.add_parser("reconcile", help="Rebuild queue indexes from job files.")
+    reconcile.add_argument("--show-slug")
+
+    lock = subparsers.add_parser("lock-check", help="Acquire and release a show lock.")
+    lock.add_argument("--show-slug", required=True)
+    return parser
+
+
+def main(argv: list[str] | None = None) -> int:
+    parser = build_parser()
+    args = parser.parse_args(argv)
+    store = QueueStore(Path(args.storage_root).resolve())
+
+    if args.command == "enqueue":
+        identity = JobIdentity(
+            show_slug=args.show_slug,
+            subject_slug=args.subject_slug,
+            lecture_key=args.lecture_key,
+            content_types=tuple(args.content_types),
+            config_hash=args.config_hash,
+            campaign=args.campaign,
+        )
+        payload = store.upsert_job(
+            identity,
+            initial_state=args.initial_state,
+            priority=int(args.priority),
+            blocked_reason=args.blocked_reason,
+            note=args.note,
+            metadata=_load_json_arg(args.metadata_json),
+        )
+        _print_json(payload)
+        return 0
+
+    if args.command == "list":
+        _print_json(store.list_jobs(show_slug=args.show_slug, state=args.state))
+        return 0
+
+    if args.command == "inspect":
+        if args.show_slug:
+            payload = store.load_job(show_slug=args.show_slug, job_id=args.job_id)
+        else:
+            payload = store.load_job_by_id(args.job_id)
+        _print_json(payload)
+        return 0 if payload else 1
+
+    if args.command == "report":
+        _print_json(store.summarize_jobs(show_slug=args.show_slug))
+        return 0
+
+    if args.command == "transition":
+        payload = store.transition_job(
+            show_slug=args.show_slug,
+            job_id=args.job_id,
+            state=args.state,
+            note=args.note,
+            error=args.error,
+            retry_at=args.retry_at,
+            details=_load_json_arg(args.details_json),
+            expected_states=set(args.expected_states),
+            increment_attempt=bool(args.increment_attempt),
+        )
+        _print_json(payload)
+        return 0
+
+    if args.command == "claim-next":
+        payload = store.claim_next_job(
+            show_slug=args.show_slug,
+            ready_states=set(args.ready_states),
+            target_state=args.target_state,
+        )
+        _print_json(payload or {})
+        return 0 if payload else 1
+
+    if args.command == "retry-ready":
+        _print_json(store.retry_ready_jobs(show_slug=args.show_slug, limit=args.limit))
+        return 0
+
+    if args.command == "reconcile":
+        _print_json(store.reconcile_indexes(show_slug=args.show_slug))
+        return 0
+
+    if args.command == "lock-check":
+        try:
+            with store.acquire_show_lock(args.show_slug):
+                payload = {"show_slug": args.show_slug, "lock_acquired": True}
+        except QueueLockError as exc:
+            payload = {"show_slug": args.show_slug, "lock_acquired": False, "error": str(exc)}
+            _print_json(payload)
+            return 1
+        _print_json(payload)
+        return 0
+
+    parser.error(f"Unhandled command: {args.command}")
+    return 2

@@ -7,6 +7,7 @@ This file is the compact technical index for the repo. Detailed operational docs
 - `shows/<show-slug>/` - feed configs, metadata, docs, and generated RSS for each show.
 - `podcast-tools/` - shared feed-generation and Drive helper scripts.
 - `notebooklm-podcast-auto/` - subject-oriented NotebookLM automation and the tracked `notebooklm-py` submodule.
+- `notebooklm_queue/` - durable queue/store primitives and CLI for the Hetzner-owned NotebookLM migration path.
 - `freudd_portal/` - Django portal for auth, quizzes, subject content, and gamification.
 - `spotify_transcripts/` - local-first Spotify transcript downloader and normalizer for mapped show episodes.
 

@@ -13,6 +13,8 @@ Current migration program:
 - `notebooklm-podcast-auto/personlighedspsykologi/` - Personlighedspsykologi wrapper scripts, docs, tests, and evaluation assets.
 - `notebooklm-podcast-auto/bioneuro/` - Bioneuro wrapper scripts and output flow.
 - `notebooklm-podcast-auto/notebooklm-py/` - tracked submodule with the underlying client, docs, and test surface.
+- `notebooklm_queue/` - queue-core package for the Hetzner migration path: durable job store, state machine, lock handling, and CLI.
+- `scripts/notebooklm_queue.py` - local wrapper that re-execs into `.venv` and exposes the queue CLI.
 
 ## Primary commands
 
@@ -39,6 +41,7 @@ Default output roots:
 Mirror helper:
 
 - `scripts/mirror_output_dirs.py`
+- `scripts/notebooklm_queue.py`
 
 Examples:
 
@@ -49,6 +52,13 @@ python3 scripts/mirror_output_dirs.py --subject all
 ```
 
 Pre-push currently mirrors both subjects, but mirror failures are warning-only.
+
+Queue-core note:
+
+- the first queue-core implementation now exists, but it is intentionally only the control-plane foundation
+- current scope is durable job persistence, idempotent enqueue, state transitions, show locks, indexes, and a management CLI
+- storage root defaults to `/var/lib/podcasts/notebooklm-queue` and can be overridden with `NOTEBOOKLM_QUEUE_STORAGE_ROOT` or `--storage-root`
+- generation, publication, and per-subject discovery adapters still belong to later migration phases
 
 Important operational note:
 

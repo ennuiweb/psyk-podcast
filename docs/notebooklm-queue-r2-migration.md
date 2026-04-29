@@ -537,6 +537,12 @@ Exit criteria:
 - queue transitions are tested
 - SSH-friendly reporting exists
 
+Current implementation status, 2026-04-29:
+
+- queue-core foundation has been implemented in `notebooklm_queue/` and `scripts/notebooklm_queue.py`
+- current coverage includes deterministic job identity, atomic JSON storage, show/global indexes, lock handling, state transitions, claim/retry/reconcile operations, and focused unit tests
+- generation adapters, publish orchestration, and subject discovery remain pending
+
 ### Phase 2 - Publication Subsystem
 
 Deliverables:
@@ -621,12 +627,12 @@ Status legend:
 
 | ID | Status | Item | Notes |
 |---|---|---|---|
-| A1 | planned | Create `notebooklm_queue` module skeleton | Separate orchestration from subject wrappers. |
-| A2 | planned | Implement queue store with atomic JSON writes | Reuse the `spotify_transcripts` store pattern. |
-| A3 | planned | Add per-show lock handling | Prevent overlapping writes. |
-| A4 | planned | Define lecture-scoped job identity | Include `config_hash`. |
-| A5 | planned | Implement explicit job state machine | Include blocked, retry, and dead-letter states. |
-| A6 | planned | Add queue report and inspect CLI | Must work over SSH and logs. |
+| A1 | done | Create `notebooklm_queue` module skeleton | Implemented as the queue-core foundation package. |
+| A2 | done | Implement queue store with atomic JSON writes | Built with show/global indexes and durable job payloads. |
+| A3 | done | Add per-show lock handling | Implemented via advisory file locks. |
+| A4 | done | Define lecture-scoped job identity | Implemented with deterministic `show + subject + lecture + content_types + config_hash + campaign` hashing. |
+| A5 | done | Implement explicit job state machine | State vocabulary and transition history are in the queue core. |
+| A6 | done | Add queue report and inspect CLI | `enqueue`, `list`, `inspect`, `report`, `transition`, `claim-next`, `retry-ready`, and `reconcile` are implemented. |
 
 ### Workstream B - NotebookLM Execution
 
@@ -678,7 +684,7 @@ Status legend:
 
 | ID | Status | Item | Notes |
 |---|---|---|---|
-| G1 | planned | Add queue tests for state transitions | Retry, lock, dead-letter, and resume behavior. |
+| G1 | active | Add queue tests for state transitions | Core store/state tests are in place; runner/publish cases still remain. |
 | G2 | planned | Add R2 GUID continuity tests | Existing inventory and manifest fixtures. |
 | G3 | planned | Add publish transaction tests | Upload-before-push and push-failure recovery cases. |
 | G4 | planned | Add show cutover smoke scripts | Run on server and in CI where appropriate. |

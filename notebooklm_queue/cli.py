@@ -8,7 +8,9 @@ from pathlib import Path
 from typing import Any
 
 from .constants import DEFAULT_STORAGE_ROOT, STATE_GENERATING, STATE_QUEUED
+from .discovery import discover_show_jobs, enqueue_discovered_jobs
 from .models import JobIdentity
+from .runner import build_dry_run_plan
 from .store import QueueLockError, QueueStore
 
 
@@ -77,6 +79,18 @@ def build_parser() -> argparse.ArgumentParser:
 
     lock = subparsers.add_parser("lock-check", help="Acquire and release a show lock.")
     lock.add_argument("--show-slug", required=True)
+
+    discover = subparsers.add_parser("discover", help="Discover lecture-scoped jobs for one supported show.")
+    discover.add_argument("--repo-root", type=Path, default=Path(__file__).resolve().parents[1])
+    discover.add_argument("--show-slug", required=True)
+    discover.add_argument("--content-type", action="append", dest="content_types", default=[])
+    discover.add_argument("--enqueue", action="store_true")
+    discover.add_argument("--priority", type=int, default=100)
+
+    dry_run = subparsers.add_parser("run-dry", help="Resolve the exact dry-run generate/download plan for a queued job.")
+    dry_run.add_argument("--repo-root", type=Path, default=Path(__file__).resolve().parents[1])
+    dry_run.add_argument("--show-slug", required=True)
+    dry_run.add_argument("--job-id")
     return parser
 
 
@@ -161,6 +175,42 @@ def main(argv: list[str] | None = None) -> int:
             payload = {"show_slug": args.show_slug, "lock_acquired": False, "error": str(exc)}
             _print_json(payload)
             return 1
+        _print_json(payload)
+        return 0
+
+    if args.command == "discover":
+        repo_root = Path(args.repo_root).resolve()
+        content_types = tuple(args.content_types) if args.content_types else None
+        if args.enqueue:
+            payload = enqueue_discovered_jobs(
+                repo_root=repo_root,
+                store=store,
+                show_slug=args.show_slug,
+                content_types=content_types,
+                priority=int(args.priority),
+            )
+        else:
+            payload = [
+                {
+                    **{key: value for key, value in item.items() if key != "identity"},
+                    "identity": item["identity"].to_payload(),
+                }
+                for item in discover_show_jobs(
+                    repo_root=repo_root,
+                    show_slug=args.show_slug,
+                    content_types=content_types,
+                )
+            ]
+        _print_json(payload)
+        return 0
+
+    if args.command == "run-dry":
+        payload = build_dry_run_plan(
+            repo_root=Path(args.repo_root).resolve(),
+            store=store,
+            show_slug=args.show_slug,
+            job_id=args.job_id,
+        )
         _print_json(payload)
         return 0
 

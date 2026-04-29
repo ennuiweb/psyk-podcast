@@ -540,8 +540,9 @@ Exit criteria:
 Current implementation status, 2026-04-29:
 
 - queue-core foundation has been implemented in `notebooklm_queue/` and `scripts/notebooklm_queue.py`
-- current coverage includes deterministic job identity, atomic JSON storage, show/global indexes, lock handling, state transitions, claim/retry/reconcile operations, and focused unit tests
-- generation adapters, publish orchestration, and subject discovery remain pending
+- current coverage includes deterministic job identity, atomic JSON storage, show/global indexes, lock handling, state transitions, claim/retry/reconcile operations, adapter-based discovery, dry-run execution planning, and focused unit tests
+- current discovery adapters cover `bioneuro` and `personlighedspsykologi-en`
+- generation execution, publish orchestration, and Hetzner service deployment still remain pending
 
 ### Phase 2 - Publication Subsystem
 
@@ -633,6 +634,7 @@ Status legend:
 | A4 | done | Define lecture-scoped job identity | Implemented with deterministic `show + subject + lecture + content_types + config_hash + campaign` hashing. |
 | A5 | done | Implement explicit job state machine | State vocabulary and transition history are in the queue core. |
 | A6 | done | Add queue report and inspect CLI | `enqueue`, `list`, `inspect`, `report`, `transition`, `claim-next`, `retry-ready`, and `reconcile` are implemented. |
+| A7 | done | Add adapter-based discovery and dry-run plan commands | `discover` and `run-dry` are implemented for supported NotebookLM subjects. |
 
 ### Workstream B - NotebookLM Execution
 

@@ -4,6 +4,10 @@
 
 This document covers the shared feed pipeline for shows under `shows/<show-slug>/`.
 
+Current migration program:
+
+- The canonical queue + object-storage migration plan lives in [notebooklm-queue-r2-migration.md](notebooklm-queue-r2-migration.md).
+
 ## Repo layout
 
 - `podcast-tools/gdrive_podcast_feed.py` - shared feed generator for both Drive and R2-backed shows.
@@ -63,6 +67,12 @@ Recommended R2 config fields:
 - `storage.manifest_file`
 
 The feed generator preserves `guid` / `episode_key` continuity by reusing values from the existing `episode_inventory.json` and by honoring `stable_guid` in manifest entries when present.
+
+Current operational reality:
+
+- the feed stack supports both Drive and R2
+- all active show configs are still Drive-backed at the time this plan was introduced
+- the intended migration path is Hetzner-owned generation plus object-storage-backed publication for migrated shows
 
 ## Google setup
 

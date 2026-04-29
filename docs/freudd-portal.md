@@ -49,6 +49,10 @@ Repo policy for portal changes:
 
 Those generated files are refreshed by the feed and subject automation workflows, not manually inside the Django app.
 
+Migration note:
+
+- The queue + object-storage migration program is tracked in [notebooklm-queue-r2-migration.md](notebooklm-queue-r2-migration.md). Freudd remains downstream of those generated artifacts; this program does not change Freudd hosting or move production deploy off DigitalOcean.
+
 ## Related docs
 
 - [../AGENTS.md](../AGENTS.md)

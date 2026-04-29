@@ -4,6 +4,10 @@
 
 This document covers the repo-level NotebookLM automation layout and the subject wrappers that depend on it.
 
+Current migration program:
+
+- The cross-cutting implementation plan for moving NotebookLM orchestration to a Hetzner-owned queue and moving published audio off Google Drive lives in [notebooklm-queue-r2-migration.md](notebooklm-queue-r2-migration.md).
+
 ## Layout
 
 - `notebooklm-podcast-auto/personlighedspsykologi/` - Personlighedspsykologi wrapper scripts, docs, tests, and evaluation assets.
@@ -49,6 +53,7 @@ Pre-push currently mirrors both subjects, but mirror failures are warning-only.
 Important operational note:
 
 - `notebooklm-podcast-auto/personlighedspsykologi/output` must be a real directory, not a macOS Alias file. Alias files break the shared mirror step and create noisy pre-push warnings.
+- `scripts/mirror_output_dirs.py` reflects the current local Drive-mount era. It should be treated as transitional infrastructure for subjects that have not yet migrated to object storage.
 
 ## Personlighedspsykologi source rules
 

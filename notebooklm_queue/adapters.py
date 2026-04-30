@@ -59,6 +59,7 @@ class ShowAdapter:
         payload = json.loads(path.read_text(encoding="utf-8"))
         if not isinstance(payload, dict):
             raise ValueError(f"Expected object config in {path}")
+        payload["__config_path__"] = str(path.resolve())
         return payload
 
     def output_root_path(self, repo_root: Path) -> Path:

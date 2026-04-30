@@ -11,6 +11,7 @@ from .constants import DEFAULT_STORAGE_ROOT, STATE_GENERATING, STATE_QUEUED
 from .discovery import discover_show_jobs, enqueue_discovered_jobs
 from .execution import ExecutionOptions, execute_job
 from .models import JobIdentity
+from .publish import PublishOptions, prepare_publish_bundle
 from .runner import build_dry_run_plan
 from .store import QueueLockError, QueueStore
 
@@ -102,6 +103,14 @@ def build_parser() -> argparse.ArgumentParser:
     run_once.add_argument("--job-id")
     run_once.add_argument("--retry-at")
     run_once.add_argument("--skip-download", action="store_true")
+
+    prepare_publish = subparsers.add_parser(
+        "prepare-publish",
+        help="Validate local generated artifacts and persist a publish bundle manifest.",
+    )
+    prepare_publish.add_argument("--repo-root", type=Path, default=Path(__file__).resolve().parents[1])
+    prepare_publish.add_argument("--show-slug", required=True)
+    prepare_publish.add_argument("--job-id")
     return parser
 
 
@@ -235,6 +244,16 @@ def main(argv: list[str] | None = None) -> int:
                 retry_at=args.retry_at,
                 run_download=not bool(args.skip_download),
             ),
+        )
+        _print_json(payload)
+        return 0
+
+    if args.command == "prepare-publish":
+        payload = prepare_publish_bundle(
+            store=store,
+            show_slug=args.show_slug,
+            job_id=args.job_id,
+            options=PublishOptions(repo_root=Path(args.repo_root).resolve()),
         )
         _print_json(payload)
         return 0

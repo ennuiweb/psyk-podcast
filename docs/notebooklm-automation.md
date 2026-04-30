@@ -58,11 +58,13 @@ Queue-core note:
 - the first queue-core implementation now exists, but it is intentionally only the control-plane foundation
 - current scope is durable job persistence, idempotent enqueue, state transitions, show locks, indexes, adapter-based discovery, and a management CLI
 - current scope now also includes real queue-owned generate/download execution for supported shows, with per-run manifests and state transitions up to `awaiting_publish`
+- current scope now also includes publish-bundle preparation: `prepare-publish` validates the local week output, blocks on leftover request logs or missing required artifacts, persists a publish manifest, and advances successful jobs to `approved_for_publish`
 - storage root defaults to `/var/lib/podcasts/notebooklm-queue` and can be overridden with `NOTEBOOKLM_QUEUE_STORAGE_ROOT` or `--storage-root`
 - supported discovery adapters currently cover `bioneuro` and `personlighedspsykologi-en`
 - `run-dry` resolves the exact generate/download commands for the next queued lecture without touching NotebookLM or publication state
 - `run-once` claims or resumes a job, executes the real generate/download wrappers, persists a run manifest under the queue storage root, and moves successful jobs to `awaiting_publish`
-- publication orchestration and Hetzner service deployment still belong to later migration phases
+- `prepare-publish` claims or resumes a job in `awaiting_publish`, scans the canonical output directory for that lecture, writes a durable publish manifest under the queue storage root, and moves successful jobs to `approved_for_publish`
+- object upload, repo metadata rebuild, and Hetzner service deployment still belong to later migration phases
 
 Queue CLI examples:
 
@@ -71,6 +73,7 @@ Queue CLI examples:
 ./.venv/bin/python scripts/notebooklm_queue.py --storage-root /tmp/notebooklm-queue discover --repo-root . --show-slug bioneuro --enqueue
 ./.venv/bin/python scripts/notebooklm_queue.py --storage-root /tmp/notebooklm-queue run-dry --repo-root . --show-slug bioneuro
 ./.venv/bin/python scripts/notebooklm_queue.py --storage-root /tmp/notebooklm-queue run-once --repo-root . --show-slug bioneuro
+./.venv/bin/python scripts/notebooklm_queue.py --storage-root /tmp/notebooklm-queue prepare-publish --repo-root . --show-slug bioneuro
 ```
 
 Important operational note:

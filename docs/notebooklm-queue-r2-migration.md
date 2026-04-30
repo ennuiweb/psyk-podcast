@@ -540,9 +540,9 @@ Exit criteria:
 Current implementation status, 2026-04-29:
 
 - queue-core foundation has been implemented in `notebooklm_queue/` and `scripts/notebooklm_queue.py`
-- current coverage includes deterministic job identity, atomic JSON storage, show/global indexes, lock handling, state transitions, claim/retry/reconcile operations, adapter-based discovery, dry-run execution planning, real generate/download execution, per-run manifests, and focused unit tests
+- current coverage includes deterministic job identity, atomic JSON storage, show/global indexes, lock handling, state transitions, claim/retry/reconcile operations, adapter-based discovery, dry-run execution planning, real generate/download execution, publish-bundle preparation, durable run/publish manifests, and focused unit tests
 - current discovery adapters cover `bioneuro` and `personlighedspsykologi-en`
-- successful execution currently stops at `awaiting_publish`; publish orchestration and Hetzner service deployment still remain pending
+- successful execution now advances to `awaiting_publish`, and `prepare-publish` can validate local generated artifacts and move a job to `approved_for_publish`; object upload, metadata rebuild, downstream sync, and Hetzner service deployment still remain pending
 
 ### Phase 2 - Publication Subsystem
 
@@ -652,7 +652,7 @@ Status legend:
 |---|---|---|---|
 | C1 | planned | Define stable object-key layout | Stable public identity is mandatory. |
 | C2 | planned | Implement upload verification | Validate size, existence, and checksum where possible. |
-| C3 | planned | Add publish-bundle validation | Block feed updates on mismatch. |
+| C3 | active | Add publish-bundle validation | Local generated-artifact validation and durable publish manifests now exist via `prepare-publish`; upload-backed bundle validation still remains. |
 | C4 | planned | Add orphaned-object reconciliation tooling | Needed for upload-before-push failure cases. |
 
 ### Workstream D - Metadata And Downstream Sync
@@ -686,7 +686,7 @@ Status legend:
 
 | ID | Status | Item | Notes |
 |---|---|---|---|
-| G1 | active | Add queue tests for state transitions | Store, discovery, and execution tests are in place; publish cases still remain. |
+| G1 | active | Add queue tests for state transitions | Store, discovery, execution, and publish-bundle tests are in place; upload/push recovery cases still remain. |
 | G2 | planned | Add R2 GUID continuity tests | Existing inventory and manifest fixtures. |
 | G3 | planned | Add publish transaction tests | Upload-before-push and push-failure recovery cases. |
 | G4 | planned | Add show cutover smoke scripts | Run on server and in CI where appropriate. |

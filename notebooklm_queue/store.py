@@ -62,6 +62,7 @@ class QueueStore:
         self.show_indexes_root = self.indexes_root / "shows"
         self.locks_root = self.root / "locks"
         self.runs_root = self.root / "runs"
+        self.publish_root = self.root / "publish"
         self.dead_letter_root = self.root / "dead-letter"
         self.global_jobs_index_path = self.indexes_root / "jobs.json"
 
@@ -71,6 +72,7 @@ class QueueStore:
             self.show_indexes_root,
             self.locks_root,
             self.runs_root,
+            self.publish_root,
             self.dead_letter_root,
         ):
             path.mkdir(parents=True, exist_ok=True)
@@ -83,6 +85,9 @@ class QueueStore:
 
     def runs_show_root(self, show_slug: str) -> Path:
         return self.runs_root / str(show_slug).strip()
+
+    def publish_show_root(self, show_slug: str) -> Path:
+        return self.publish_root / str(show_slug).strip()
 
     def load_job(self, *, show_slug: str, job_id: str) -> dict[str, Any]:
         return _load_json(self.job_path(show_slug, job_id))
@@ -389,6 +394,19 @@ class QueueStore:
     ) -> str:
         self.ensure_layout()
         path = self.runs_show_root(show_slug) / f"{run_id}-{job_id}.json"
+        _write_json_atomic(path, payload)
+        return str(path.relative_to(self.root))
+
+    def save_publish_manifest(
+        self,
+        *,
+        show_slug: str,
+        job_id: str,
+        payload: dict[str, Any],
+        bundle_id: str,
+    ) -> str:
+        self.ensure_layout()
+        path = self.publish_show_root(show_slug) / f"{bundle_id}-{job_id}.json"
         _write_json_atomic(path, payload)
         return str(path.relative_to(self.root))
 

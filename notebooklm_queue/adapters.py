@@ -31,6 +31,8 @@ class ShowAdapter:
     discovery_source: str
     generator_script: str
     downloader_script: str
+    show_config_path: str
+    output_root: str
     config_paths: tuple[str, ...]
     default_content_types: tuple[str, ...] = ("audio", "infographic", "quiz")
 
@@ -51,6 +53,16 @@ class ShowAdapter:
                 digest.update(path.read_bytes())
             digest.update(b"\0")
         return digest.hexdigest()[:16]
+
+    def load_show_config(self, repo_root: Path) -> dict[str, object]:
+        path = repo_root / self.show_config_path
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        if not isinstance(payload, dict):
+            raise ValueError(f"Expected object config in {path}")
+        return payload
+
+    def output_root_path(self, repo_root: Path) -> Path:
+        return repo_root / self.output_root
 
     def build_generate_command(
         self,
@@ -94,6 +106,8 @@ SHOW_ADAPTERS: dict[str, ShowAdapter] = {
         discovery_source="auto_spec_rules",
         generator_script="notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_week.py",
         downloader_script="notebooklm-podcast-auto/personlighedspsykologi/scripts/download_week.py",
+        show_config_path="shows/personlighedspsykologi-en/config.github.json",
+        output_root="notebooklm-podcast-auto/personlighedspsykologi/output",
         config_paths=(
             "shows/personlighedspsykologi-en/auto_spec.json",
             "shows/personlighedspsykologi-en/config.github.json",
@@ -106,6 +120,8 @@ SHOW_ADAPTERS: dict[str, ShowAdapter] = {
         discovery_source="episode_metadata_source_folder",
         generator_script="notebooklm-podcast-auto/bioneuro/scripts/generate_week.py",
         downloader_script="notebooklm-podcast-auto/bioneuro/scripts/download_week.py",
+        show_config_path="shows/bioneuro/config.github.json",
+        output_root="notebooklm-podcast-auto/bioneuro/output",
         config_paths=(
             "shows/bioneuro/auto_spec.json",
             "shows/bioneuro/config.github.json",

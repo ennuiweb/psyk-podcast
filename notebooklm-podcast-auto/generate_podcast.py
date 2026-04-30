@@ -42,6 +42,13 @@ AUTH_TOKENS = (
 RATE_LIMIT_COOLDOWN_SECONDS = 300
 AUTH_COOLDOWN_SECONDS = 3600
 PROFILE_ERROR_COOLDOWN_SECONDS = 3600
+NOTEBOOK_CAPACITY_TOKENS = (
+    "maximum number of notebooks",
+    "max number of notebooks",
+    "notebook limit",
+    "too many notebooks",
+    "notebook quota",
+)
 QUIZ_DIFFICULTIES = ("easy", "medium", "hard")
 QUIZ_CFG_DIFFICULTY_PATTERN = re.compile(
     r"(\{[^{}]*\btype=quiz\b[^{}]*\bdifficulty=)([a-z0-9._:+-]+)",
@@ -263,6 +270,19 @@ def _is_profile_rotation_error(exc: Exception) -> bool:
         "null result data" in message
         or "no result found for rpc id" in message
     )
+
+
+def _is_notebook_capacity_error(exc: Exception) -> bool:
+    if not isinstance(exc, RPCError):
+        return False
+    if exc.method_id != RPCMethod.CREATE_NOTEBOOK.value:
+        return False
+    message = str(exc).lower()
+    return any(token in message for token in NOTEBOOK_CAPACITY_TOKENS)
+
+
+def _should_reclaim_oldest_notebook(exc: Exception) -> bool:
+    return _is_notebook_capacity_error(exc) or _is_profile_rotation_error(exc)
 
 
 def _should_rotate_profile(exc: Exception) -> bool:
@@ -700,9 +720,38 @@ async def _resolve_notebook(client: NotebookLMClient, title: str, reuse: bool):
             if nb.title == title:
                 print(f"Reusing notebook: {nb.title} ({nb.id})")
                 return nb
-    nb = await client.notebooks.create(title)
+
+    try:
+        nb = await client.notebooks.create(title)
+    except Exception as exc:
+        if not _should_reclaim_oldest_notebook(exc):
+            raise
+        reclaimed = await _delete_oldest_owned_notebook(client)
+        if reclaimed is None:
+            raise
+        print(
+            f"Create notebook failed ({exc}); deleted oldest notebook "
+            f"{reclaimed.title} ({reclaimed.id}) and retrying once."
+        )
+        nb = await client.notebooks.create(title)
     print(f"Created notebook: {nb.title} ({nb.id})")
     return nb
+
+
+async def _delete_oldest_owned_notebook(client: NotebookLMClient):
+    notebooks = await client.notebooks.list()
+    owned = [nb for nb in notebooks if getattr(nb, "is_owner", True)]
+    if not owned:
+        return None
+
+    def sort_key(nb):
+        created_at = getattr(nb, "created_at", None)
+        normalized = created_at if isinstance(created_at, datetime) else datetime.max
+        return (normalized, nb.title or "", nb.id or "")
+
+    oldest = sorted(owned, key=sort_key)[0]
+    await client.notebooks.delete(oldest.id)
+    return oldest
 
 
 def _source_key(source: dict) -> tuple[str, str] | None:

@@ -540,9 +540,9 @@ Exit criteria:
 Current implementation status, 2026-04-29:
 
 - queue-core foundation has been implemented in `notebooklm_queue/` and `scripts/notebooklm_queue.py`
-- current coverage includes deterministic job identity, atomic JSON storage, show/global indexes, lock handling, state transitions, claim/retry/reconcile operations, adapter-based discovery, dry-run execution planning, and focused unit tests
+- current coverage includes deterministic job identity, atomic JSON storage, show/global indexes, lock handling, state transitions, claim/retry/reconcile operations, adapter-based discovery, dry-run execution planning, real generate/download execution, per-run manifests, and focused unit tests
 - current discovery adapters cover `bioneuro` and `personlighedspsykologi-en`
-- generation execution, publish orchestration, and Hetzner service deployment still remain pending
+- successful execution currently stops at `awaiting_publish`; publish orchestration and Hetzner service deployment still remain pending
 
 ### Phase 2 - Publication Subsystem
 
@@ -640,8 +640,8 @@ Status legend:
 
 | ID | Status | Item | Notes |
 |---|---|---|---|
-| B1 | planned | Wrap `generate_week.py` from the queue | Do not fork generation logic. |
-| B2 | planned | Wrap `download_week.py` from the queue | Preserve request-log resume behavior. |
+| B1 | done | Wrap `generate_week.py` from the queue | Implemented through adapter-driven execution service and `run-once`. |
+| B2 | done | Wrap `download_week.py` from the queue | Implemented through adapter-driven execution service and `run-once`. |
 | B3 | planned | Move auth to server-managed env/state | Prefer `NOTEBOOKLM_AUTH_JSON` or `NOTEBOOKLM_HOME`. |
 | B4 | planned | Define profile-rotation policy for server runs | Reuse existing rotation support. |
 | B5 | planned | Add auth/quota health checks | Surface as explicit queue states. |
@@ -686,7 +686,7 @@ Status legend:
 
 | ID | Status | Item | Notes |
 |---|---|---|---|
-| G1 | active | Add queue tests for state transitions | Core store/state tests are in place; runner/publish cases still remain. |
+| G1 | active | Add queue tests for state transitions | Store, discovery, and execution tests are in place; publish cases still remain. |
 | G2 | planned | Add R2 GUID continuity tests | Existing inventory and manifest fixtures. |
 | G3 | planned | Add publish transaction tests | Upload-before-push and push-failure recovery cases. |
 | G4 | planned | Add show cutover smoke scripts | Run on server and in CI where appropriate. |

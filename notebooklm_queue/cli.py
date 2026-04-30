@@ -9,6 +9,7 @@ from typing import Any
 
 from .constants import DEFAULT_STORAGE_ROOT, STATE_GENERATING, STATE_QUEUED
 from .discovery import discover_show_jobs, enqueue_discovered_jobs
+from .execution import ExecutionOptions, execute_job
 from .models import JobIdentity
 from .runner import build_dry_run_plan
 from .store import QueueLockError, QueueStore
@@ -91,6 +92,16 @@ def build_parser() -> argparse.ArgumentParser:
     dry_run.add_argument("--repo-root", type=Path, default=Path(__file__).resolve().parents[1])
     dry_run.add_argument("--show-slug", required=True)
     dry_run.add_argument("--job-id")
+
+    run_once = subparsers.add_parser(
+        "run-once",
+        help="Execute generate/download for one queued or explicit job and persist a run manifest.",
+    )
+    run_once.add_argument("--repo-root", type=Path, default=Path(__file__).resolve().parents[1])
+    run_once.add_argument("--show-slug", required=True)
+    run_once.add_argument("--job-id")
+    run_once.add_argument("--retry-at")
+    run_once.add_argument("--skip-download", action="store_true")
     return parser
 
 
@@ -210,6 +221,20 @@ def main(argv: list[str] | None = None) -> int:
             store=store,
             show_slug=args.show_slug,
             job_id=args.job_id,
+        )
+        _print_json(payload)
+        return 0
+
+    if args.command == "run-once":
+        payload = execute_job(
+            store=store,
+            show_slug=args.show_slug,
+            job_id=args.job_id,
+            options=ExecutionOptions(
+                repo_root=Path(args.repo_root).resolve(),
+                retry_at=args.retry_at,
+                run_download=not bool(args.skip_download),
+            ),
         )
         _print_json(payload)
         return 0

@@ -59,6 +59,7 @@ class ShowAdapter:
         lecture_key: str,
         content_types: tuple[str, ...],
         dry_run: bool,
+        wait: bool = False,
     ) -> list[str]:
         command = [
             str(repo_root / ".venv" / "bin" / "python"),
@@ -68,6 +69,8 @@ class ShowAdapter:
             "--content-types",
             ",".join(content_types),
         ]
+        if wait:
+            command.append("--wait")
         if dry_run:
             command.append("--dry-run")
         return command

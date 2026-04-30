@@ -81,6 +81,9 @@ class QueueStore:
     def show_index_path(self, show_slug: str) -> Path:
         return self.show_indexes_root / f"{str(show_slug).strip()}.json"
 
+    def runs_show_root(self, show_slug: str) -> Path:
+        return self.runs_root / str(show_slug).strip()
+
     def load_job(self, *, show_slug: str, job_id: str) -> dict[str, Any]:
         return _load_json(self.job_path(show_slug, job_id))
 
@@ -375,6 +378,19 @@ class QueueStore:
             "job_count": int(global_payload.get("job_count") or 0),
             "show_slug": show_slug,
         }
+
+    def save_run_manifest(
+        self,
+        *,
+        show_slug: str,
+        job_id: str,
+        payload: dict[str, Any],
+        run_id: str,
+    ) -> str:
+        self.ensure_layout()
+        path = self.runs_show_root(show_slug) / f"{run_id}-{job_id}.json"
+        _write_json_atomic(path, payload)
+        return str(path.relative_to(self.root))
 
     @contextmanager
     def acquire_show_lock(self, show_slug: str, *, blocking: bool = False):

@@ -6,6 +6,7 @@ from pathlib import Path
 from typing import Any
 
 from .adapters import get_show_adapter
+from .constants import STATE_QUEUED, STATE_RETRY_SCHEDULED
 from .store import QueueStore
 
 
@@ -21,7 +22,7 @@ def build_dry_run_plan(
         job = store.load_job(show_slug=show_slug, job_id=job_id)
     else:
         jobs = store.list_jobs(show_slug=show_slug)
-        queued = [entry for entry in jobs if str(entry.get("state") or "") in {"queued", "retry_scheduled"}]
+        queued = [entry for entry in jobs if str(entry.get("state") or "") in {STATE_QUEUED, STATE_RETRY_SCHEDULED}]
         queued.sort(
             key=lambda entry: (
                 int(entry.get("priority") or 100),
@@ -47,6 +48,7 @@ def build_dry_run_plan(
             lecture_key=lecture_key,
             content_types=content_types,
             dry_run=True,
+            wait=True,
         ),
         "download_command": adapter.build_download_command(
             repo_root,

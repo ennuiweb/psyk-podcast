@@ -1,0 +1,129 @@
+from __future__ import annotations
+
+import json
+from pathlib import Path
+
+from notebooklm_queue.constants import STATE_COMPLETED, STATE_FAILED_RETRYABLE, STATE_REPO_PUSHED
+from notebooklm_queue.downstream import DownstreamOptions, DownstreamSyncError, sync_downstream_publication
+from notebooklm_queue.models import JobIdentity
+from notebooklm_queue.store import QueueStore
+
+
+def _identity(show_slug: str = "bioneuro") -> JobIdentity:
+    return JobIdentity(
+        show_slug=show_slug,
+        subject_slug="bioneuro" if show_slug == "bioneuro" else show_slug,
+        lecture_key="W1L1",
+        content_types=("audio", "quiz"),
+        config_hash="cfg-1",
+    )
+
+
+def _seed_job(tmp_path: Path, *, show_slug: str = "bioneuro", changed_paths: list[str] | None = None) -> tuple[QueueStore, dict[str, object]]:
+    store = QueueStore(tmp_path / "queue-root")
+    job = store.upsert_job(_identity(show_slug), initial_state=STATE_REPO_PUSHED)
+    manifest = {
+        "version": 1,
+        "bundle_id": "bundle-1",
+        "job_id": str(job["job_id"]),
+        "show_slug": show_slug,
+        "lecture_key": "W1L1",
+        "repo_publish": {
+            "head_sha": "abc123",
+            "changed_allowlist_paths": changed_paths or [],
+        },
+    }
+    manifest_path = store.save_publish_manifest(
+        show_slug=show_slug,
+        job_id=str(job["job_id"]),
+        payload=manifest,
+        bundle_id="bundle-1",
+    )
+    job["artifacts"] = {
+        "publish": {
+            "latest_bundle_manifest": manifest_path,
+            "latest_bundle_id": "bundle-1",
+            "last_repo_commit_sha": "abc123",
+        }
+    }
+    store.save_job(job)
+    return store, job
+
+
+def test_sync_downstream_marks_completed_when_no_targets_expected(tmp_path: Path) -> None:
+    store, job = _seed_job(tmp_path, changed_paths=["shows/bioneuro/feeds/rss.xml"])
+
+    result = sync_downstream_publication(
+        store=store,
+        show_slug="bioneuro",
+        job_id=str(job["job_id"]),
+        options=DownstreamOptions(repo_root=tmp_path, timeout_seconds=1, poll_interval_seconds=1),
+    )
+
+    assert result["final_state"] == STATE_COMPLETED
+    updated = store.load_job(show_slug="bioneuro", job_id=str(job["job_id"]))
+    assert updated["state"] == STATE_COMPLETED
+    manifest_path = store.root / updated["artifacts"]["publish"]["latest_bundle_manifest"]
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    assert manifest["status"] == "completed"
+    assert manifest["downstream"]["targets"] == []
+
+
+def test_sync_downstream_waits_for_freudd_deploy_success(tmp_path: Path, monkeypatch) -> None:
+    store, job = _seed_job(
+        tmp_path,
+        changed_paths=[
+            "shows/bioneuro/content_manifest.json",
+            "shows/bioneuro/quiz_links.json",
+        ],
+    )
+
+    def fake_wait_for_workflow_target(**kwargs):
+        return {
+            "name": kwargs["target"].name,
+            "workflow_file": kwargs["target"].workflow_file,
+            "status": "completed",
+            "conclusion": "success",
+            "run_id": 12345,
+            "url": "https://github.com/example/run/12345",
+            "changed_paths": list(kwargs["target"].changed_paths),
+        }
+
+    monkeypatch.setattr("notebooklm_queue.downstream._wait_for_workflow_target", fake_wait_for_workflow_target)
+
+    result = sync_downstream_publication(
+        store=store,
+        show_slug="bioneuro",
+        job_id=str(job["job_id"]),
+        options=DownstreamOptions(repo_root=tmp_path, timeout_seconds=1, poll_interval_seconds=1),
+    )
+
+    assert result["final_state"] == STATE_COMPLETED
+    assert result["targets"][0]["conclusion"] == "success"
+    updated = store.load_job(show_slug="bioneuro", job_id=str(job["job_id"]))
+    assert updated["state"] == STATE_COMPLETED
+    assert updated["artifacts"]["publish"]["last_downstream_targets"][0]["run_id"] == 12345
+
+
+def test_sync_downstream_marks_retryable_failure_on_failed_workflow(tmp_path: Path, monkeypatch) -> None:
+    store, job = _seed_job(
+        tmp_path,
+        changed_paths=["shows/bioneuro/content_manifest.json"],
+    )
+
+    def fake_wait_for_workflow_target(**kwargs):
+        raise DownstreamSyncError("workflow failed")
+
+    monkeypatch.setattr("notebooklm_queue.downstream._wait_for_workflow_target", fake_wait_for_workflow_target)
+
+    result = sync_downstream_publication(
+        store=store,
+        show_slug="bioneuro",
+        job_id=str(job["job_id"]),
+        options=DownstreamOptions(repo_root=tmp_path, timeout_seconds=1, poll_interval_seconds=1),
+    )
+
+    assert result["final_state"] == STATE_FAILED_RETRYABLE
+    updated = store.load_job(show_slug="bioneuro", job_id=str(job["job_id"]))
+    assert updated["state"] == STATE_FAILED_RETRYABLE
+    assert updated["last_error"] == "workflow failed"

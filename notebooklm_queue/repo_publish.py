@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import os
 import subprocess
 from dataclasses import dataclass
 from pathlib import Path
@@ -21,6 +22,7 @@ class RepoPublishOptions:
     branch: str = "main"
     git_user_name: str = "NotebookLM Queue"
     git_user_email: str = "queue@localhost"
+    max_push_attempts: int = 3
 
 
 def publish_repo_artifacts(
@@ -98,6 +100,8 @@ def publish_repo_artifacts(
             "manifest_path": manifest_path_rel,
             "commit_sha": publish_result["head_sha"],
             "pushed": publish_result["pushed"],
+            "push_attempts": publish_result["push_attempts"],
+            "resolved_rebase_conflicts": publish_result["resolved_rebase_conflicts"],
         }
 
 
@@ -180,22 +184,40 @@ def _commit_and_push_show_artifacts(
             ],
         )
 
-    _run_git(repo_root, ["git", "fetch", options.remote, options.branch])
     branch = options.branch
-    _run_git(
-        repo_root,
-        ["git", "pull", "--rebase", options.remote, branch],
-    )
-    local_head = _run_git(repo_root, ["git", "rev-parse", "HEAD"]).stdout.strip()
-    remote_head = _run_git(
-        repo_root,
-        ["git", "rev-parse", f"{options.remote}/{branch}"],
-    ).stdout.strip()
+    max_attempts = max(int(options.max_push_attempts), 1)
     pushed = False
-    if local_head != remote_head:
-        _run_git(repo_root, ["git", "push", options.remote, f"HEAD:{branch}"])
-        pushed = True
+    resolved_conflicts: list[str] = []
+    local_head = _run_git(repo_root, ["git", "rev-parse", "HEAD"]).stdout.strip()
+    attempts_used = 0
+    for attempt in range(1, max_attempts + 1):
+        attempts_used = attempt
+        _run_git(repo_root, ["git", "fetch", options.remote, branch])
+        resolved_conflicts.extend(
+            _pull_rebase_with_conflict_resolution(
+                repo_root=repo_root,
+                remote=options.remote,
+                branch=branch,
+                allowlist=allowlist,
+            )
+        )
         local_head = _run_git(repo_root, ["git", "rev-parse", "HEAD"]).stdout.strip()
+        remote_head = _run_git(
+            repo_root,
+            ["git", "rev-parse", f"{options.remote}/{branch}"],
+        ).stdout.strip()
+        if local_head == remote_head:
+            break
+        push_completed = _run_git_raw(repo_root, ["git", "push", options.remote, f"HEAD:{branch}"])
+        if push_completed.returncode == 0:
+            pushed = True
+            local_head = _run_git(repo_root, ["git", "rev-parse", "HEAD"]).stdout.strip()
+            break
+        if attempt >= max_attempts:
+            raise RepoPublishError(
+                f"Failed to push allowlisted repo artifacts after {max_attempts} attempts: "
+                f"{push_completed.stderr.strip() or push_completed.stdout.strip()}"
+            )
 
     return {
         "status": "completed",
@@ -203,8 +225,10 @@ def _commit_and_push_show_artifacts(
         "branch": branch,
         "remote": options.remote,
         "pushed": pushed,
+        "push_attempts": attempts_used,
         "allowlist_paths": sorted(allowlist),
         "changed_allowlist_paths": sorted(changed_allowed),
+        "resolved_rebase_conflicts": sorted(set(resolved_conflicts)),
     }
 
 
@@ -242,18 +266,75 @@ def _git_status(repo_root: Path) -> list[dict[str, Any]]:
 
 
 def _run_git(repo_root: Path, command: list[str]) -> subprocess.CompletedProcess[str]:
-    completed = subprocess.run(
-        command,
-        cwd=repo_root,
-        text=True,
-        capture_output=True,
-        check=False,
-    )
+    completed = _run_git_raw(repo_root, command)
     if completed.returncode != 0:
         raise RepoPublishError(
             f"Git command failed ({' '.join(command)}): {completed.stderr.strip() or completed.stdout.strip()}"
         )
     return completed
+
+
+def _run_git_raw(
+    repo_root: Path,
+    command: list[str],
+    *,
+    env: dict[str, str] | None = None,
+) -> subprocess.CompletedProcess[str]:
+    git_env = dict(os.environ)
+    if env:
+        git_env.update(env)
+    return subprocess.run(
+        command,
+        cwd=repo_root,
+        text=True,
+        capture_output=True,
+        check=False,
+        env=git_env,
+    )
+
+
+def _pull_rebase_with_conflict_resolution(
+    *,
+    repo_root: Path,
+    remote: str,
+    branch: str,
+    allowlist: set[str],
+) -> list[str]:
+    completed = _run_git_raw(repo_root, ["git", "pull", "--rebase", remote, branch])
+    if completed.returncode == 0:
+        return []
+    return _resolve_rebase_conflicts(repo_root=repo_root, allowlist=allowlist)
+
+
+def _resolve_rebase_conflicts(*, repo_root: Path, allowlist: set[str]) -> list[str]:
+    completed = _run_git_raw(repo_root, ["git", "diff", "--name-only", "--diff-filter=U"])
+    conflicted_files = [line.strip() for line in completed.stdout.splitlines() if line.strip()]
+    if not conflicted_files:
+        _run_git_raw(repo_root, ["git", "rebase", "--abort"])
+        raise RepoPublishError("Rebase failed without conflicted files.")
+
+    resolved: list[str] = []
+    for conflicted in conflicted_files:
+        if conflicted not in allowlist:
+            _run_git_raw(repo_root, ["git", "rebase", "--abort"])
+            raise RepoPublishError(f"Unexpected rebase conflict outside the queue allowlist: {conflicted}")
+        # During rebase, "theirs" is the queue-generated commit being replayed.
+        _run_git(repo_root, ["git", "checkout", "--theirs", "--", conflicted])
+        _run_git(repo_root, ["git", "add", "--", conflicted])
+        resolved.append(conflicted)
+
+    continued = _run_git_raw(
+        repo_root,
+        ["git", "rebase", "--continue"],
+        env={"GIT_EDITOR": "true"},
+    )
+    if continued.returncode != 0:
+        _run_git_raw(repo_root, ["git", "rebase", "--abort"])
+        raise RepoPublishError(
+            f"Failed to continue rebase after resolving generated-file conflicts: "
+            f"{continued.stderr.strip() or continued.stdout.strip()}"
+        )
+    return resolved
 
 
 def _latest_publish_manifest_path(*, store: QueueStore, job: dict[str, Any]) -> Path:

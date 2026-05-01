@@ -66,14 +66,15 @@ Queue-core note:
 - current scope now also includes publish-bundle preparation: `prepare-publish` validates the local week output, blocks on leftover request logs or missing required artifacts, persists a publish manifest, and advances successful jobs to `approved_for_publish`
 - current scope now also includes the first real publication stage: `upload-r2` claims jobs in `approved_for_publish`, uploads media artifacts to deterministic R2 object keys, verifies each uploaded object with `head_object`, refreshes the repo-side R2 media manifest, and advances successful jobs to `objects_uploaded`
 - current scope now also includes repo metadata rebuild: `rebuild-metadata` claims jobs in `objects_uploaded`, refreshes queue-owned quiz links for supported shows, regenerates RSS and episode inventory from the R2 manifest, runs show-specific sidecars such as Spotify sync and Freudd content-manifest rebuild, validates the resulting repo artifacts, and advances successful jobs to `committing_repo_artifacts`
-- current scope now also includes allowlisted repo publication: `push-repo` claims jobs in `committing_repo_artifacts`, fails closed on tracked repo dirtiness outside the generated-file allowlist, commits only the active show's generated artifacts, rebases against `origin/main`, pushes when needed, and advances successful jobs to `repo_pushed`
+- current scope now also includes allowlisted repo publication: `push-repo` claims jobs in `committing_repo_artifacts`, fails closed on tracked repo dirtiness outside the generated-file allowlist, keeps queue-generated artifacts on allowlisted rebase conflicts, pushes with bounded retries, and advances successful jobs to `repo_pushed`
+- current scope now also includes downstream completion: `sync-downstream` claims jobs in `repo_pushed`, waits for expected push-triggered downstream workflows such as `deploy-freudd-portal.yml`, and advances successful jobs to `completed`
 - storage root defaults to `/var/lib/podcasts/notebooklm-queue` and can be overridden with `NOTEBOOKLM_QUEUE_STORAGE_ROOT` or `--storage-root`
 - supported discovery adapters currently cover `bioneuro` and `personlighedspsykologi-en`
 - `run-dry` resolves the exact generate/download commands for the next queued lecture without touching NotebookLM or publication state
 - `run-once` claims or resumes a job, executes the real generate/download wrappers, persists a run manifest under the queue storage root, and moves successful jobs to `awaiting_publish`
 - `prepare-publish` claims or resumes a job in `awaiting_publish`, scans the canonical output directory for that lecture, writes a durable publish manifest under the queue storage root, and moves successful jobs to `approved_for_publish`
 - `upload-r2` is intentionally R2-only for now; Drive-backed shows are blocked explicitly until their show config is migrated to `storage.provider = "r2"`
-- `push-repo` currently relies on a normal `git pull --rebase` safety model and fails closed on git conflicts; more targeted allowlisted conflict recovery and downstream sync still belong to later migration phases
+- `sync-downstream` currently validates the existing Freudd deploy workflow for `bioneuro` and `personlighedspsykologi-en` when queue-owned pushes touch `content_manifest.json`, `quiz_links.json`, or `spotify_map.json`; explicit show-ownership gating in `generate-feed.yml` still belongs to a later migration phase
 
 Queue CLI examples:
 
@@ -86,6 +87,7 @@ Queue CLI examples:
 ./.venv/bin/python scripts/notebooklm_queue.py --storage-root /tmp/notebooklm-queue upload-r2 --repo-root . --show-slug bioneuro
 ./.venv/bin/python scripts/notebooklm_queue.py --storage-root /tmp/notebooklm-queue rebuild-metadata --repo-root . --show-slug bioneuro
 ./.venv/bin/python scripts/notebooklm_queue.py --storage-root /tmp/notebooklm-queue push-repo --repo-root . --show-slug bioneuro
+./.venv/bin/python scripts/notebooklm_queue.py --storage-root /tmp/notebooklm-queue sync-downstream --repo-root . --show-slug bioneuro
 ```
 
 Important operational note:

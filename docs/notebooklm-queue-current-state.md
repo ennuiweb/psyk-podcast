@@ -23,7 +23,8 @@ The following queue milestones are implemented on `main`:
 - `2092b46` - NotebookLM notebook-capacity recovery by deleting the oldest owned notebook and retrying once
 - `a5b2748` - R2 object upload for approved queue bundles
 - `ad01a4f` - repo metadata rebuild from uploaded objects
-- current working tree after `ad01a4f` - queue-owned quiz sync is wired into metadata rebuild before RSS regeneration, and `push-repo` now commits and pushes allowlisted generated artifacts
+- `532ac58` - queue-owned quiz sync plus allowlisted repo publication
+- current working tree after `532ac58` - `push-repo` now resolves allowlisted rebase conflicts in favor of queue-generated artifacts, and `sync-downstream` now observes expected post-push workflows and marks jobs `completed`
 
 ## Current queue capabilities
 
@@ -50,9 +51,13 @@ The following queue milestones are implemented on `main`:
 - allowlisted repo publication for supported shows:
   - tracked-dirtiness guard outside the generated-file allowlist
   - show-scoped generated-file commit
-  - rebase against `origin/main`
+  - rebase against `origin/main` with allowlisted conflict recovery
   - push to `main`
   - persisted repo commit SHA in queue job artifacts
+- downstream completion for supported shows:
+  - waits for expected push-triggered workflows such as `deploy-freudd-portal.yml`
+  - records downstream run ids and URLs in queue job artifacts
+  - marks jobs `completed` only after downstream success or no-op completion
 
 ## Current state-machine boundary
 
@@ -63,6 +68,7 @@ Successful jobs can now advance through:
 - `objects_uploaded`
 - `committing_repo_artifacts`
 - `repo_pushed`
+- `completed`
 
 That means the queue currently owns:
 
@@ -73,10 +79,11 @@ That means the queue currently owns:
 - quiz-link refresh
 - repo metadata regeneration
 - allowlisted repo commit/push
+- downstream synchronization for existing push-triggered Freudd deploys
 
 The queue does not yet own:
 
-- downstream sync / final publish orchestration
+- explicit single-writer show ownership gating in `generate-feed.yml`
 - Hetzner `systemd` deployment and timer ownership
 
 ## Verified in this session
@@ -86,12 +93,13 @@ Local verification completed:
 - Notebook-capacity tests passed after the reclaim-on-create-notebook fix
 - queue publish tests passed after R2 upload implementation
 - queue metadata tests passed after repo rebuild implementation
-- full `tests/notebooklm_queue` suite passed after the latest quiz-sync and repo-publish work
+- full `tests/notebooklm_queue` suite passed after the latest repo-publish hardening and downstream sync work
 
 Required repo workflows completed successfully for the latest queue commits:
 
 - `a5b2748` -> Actions run `25183786210`
 - `ad01a4f` -> Actions run `25212535606`
+- `532ac58` -> Actions run `25213172226`
 
 ## Still true about live production
 
@@ -114,10 +122,9 @@ So current production ownership is still:
 ## Immediate missing steps before a real cutover
 
 1. Decide and validate the production public audio URL/domain for R2-backed enclosures.
-2. Add downstream completion orchestration after `repo_pushed`.
-3. Migrate one low-risk show first, still planned as `personal`.
-4. Remove dual-writer risk for any migrated show by ensuring GitHub Actions no longer independently regenerates that show’s artifacts.
-5. Add Hetzner runtime ownership:
+2. Remove dual-writer risk for migrated shows by ensuring GitHub Actions no longer independently regenerates queue-owned artifacts.
+3. Migrate the first real queue-owned show to R2.
+4. Add Hetzner runtime ownership:
    - `systemd` service
    - timer
    - env/secrets contract

@@ -8,6 +8,7 @@ from pathlib import Path
 from typing import Any
 
 from .constants import DEFAULT_STORAGE_ROOT, STATE_GENERATING, STATE_QUEUED
+from .downstream import DownstreamOptions, sync_downstream_publication
 from .discovery import discover_show_jobs, enqueue_discovered_jobs
 from .execution import ExecutionOptions, execute_job
 from .metadata import MetadataOptions, rebuild_repo_metadata
@@ -139,6 +140,16 @@ def build_parser() -> argparse.ArgumentParser:
     push_repo.add_argument("--job-id")
     push_repo.add_argument("--remote", default="origin")
     push_repo.add_argument("--branch", default="main")
+
+    sync_downstream = subparsers.add_parser(
+        "sync-downstream",
+        help="Wait for expected post-push downstream workflows and mark publication complete.",
+    )
+    sync_downstream.add_argument("--repo-root", type=Path, default=Path(__file__).resolve().parents[1])
+    sync_downstream.add_argument("--show-slug", required=True)
+    sync_downstream.add_argument("--job-id")
+    sync_downstream.add_argument("--timeout-seconds", type=int, default=900)
+    sync_downstream.add_argument("--poll-interval-seconds", type=int, default=10)
     return parser
 
 
@@ -315,6 +326,20 @@ def main(argv: list[str] | None = None) -> int:
                 repo_root=Path(args.repo_root).resolve(),
                 remote=args.remote,
                 branch=args.branch,
+            ),
+        )
+        _print_json(payload)
+        return 0
+
+    if args.command == "sync-downstream":
+        payload = sync_downstream_publication(
+            store=store,
+            show_slug=args.show_slug,
+            job_id=args.job_id,
+            options=DownstreamOptions(
+                repo_root=Path(args.repo_root).resolve(),
+                timeout_seconds=int(args.timeout_seconds),
+                poll_interval_seconds=int(args.poll_interval_seconds),
             ),
         )
         _print_json(payload)

@@ -542,7 +542,7 @@ Current implementation status, 2026-04-29:
 - queue-core foundation has been implemented in `notebooklm_queue/` and `scripts/notebooklm_queue.py`
 - current coverage includes deterministic job identity, atomic JSON storage, show/global indexes, lock handling, state transitions, claim/retry/reconcile operations, adapter-based discovery, dry-run execution planning, real generate/download execution, publish-bundle preparation, durable run/publish manifests, and focused unit tests
 - current discovery adapters cover `bioneuro` and `personlighedspsykologi-en`
-- successful execution now advances to `awaiting_publish`, `prepare-publish` can validate local generated artifacts and move a job to `approved_for_publish`, and `upload-r2` can now upload approved media artifacts to deterministic R2 object keys, verify them, and refresh the repo-side media manifest while moving the job to `objects_uploaded`; metadata rebuild, downstream sync, and Hetzner service deployment still remain pending
+- successful execution now advances to `awaiting_publish`, `prepare-publish` can validate local generated artifacts and move a job to `approved_for_publish`, `upload-r2` can upload approved media artifacts to deterministic R2 object keys and move a job to `objects_uploaded`, and `rebuild-metadata` can now regenerate repo-side RSS/inventory plus show-specific sidecars before moving the job to `committing_repo_artifacts`; commit/push, downstream sync, and Hetzner service deployment still remain pending
 
 ### Phase 2 - Publication Subsystem
 
@@ -652,7 +652,7 @@ Status legend:
 |---|---|---|---|
 | C1 | planned | Define stable object-key layout | Stable public identity is mandatory. |
 | C2 | planned | Implement upload verification | Validate size, existence, and checksum where possible. |
-| C3 | active | Add publish-bundle validation | Local generated-artifact validation and durable publish manifests now exist via `prepare-publish`; `upload-r2` now covers deterministic object upload plus repo-side media manifest refresh, while metadata rebuild and downstream sync still remain. |
+| C3 | active | Add publish-bundle validation | Local generated-artifact validation and durable publish manifests now exist via `prepare-publish`; `upload-r2` now covers deterministic object upload plus repo-side media manifest refresh, and `rebuild-metadata` now regenerates repo-side feed/inventory sidecars plus show-specific metadata. Commit/push and downstream sync still remain. |
 | C4 | planned | Add orphaned-object reconciliation tooling | Needed for upload-before-push failure cases. |
 
 ### Workstream D - Metadata And Downstream Sync

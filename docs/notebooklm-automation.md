@@ -64,13 +64,14 @@ Queue-core note:
 - current scope now also includes real queue-owned generate/download execution for supported shows, with per-run manifests and state transitions up to `awaiting_publish`
 - current scope now also includes publish-bundle preparation: `prepare-publish` validates the local week output, blocks on leftover request logs or missing required artifacts, persists a publish manifest, and advances successful jobs to `approved_for_publish`
 - current scope now also includes the first real publication stage: `upload-r2` claims jobs in `approved_for_publish`, uploads media artifacts to deterministic R2 object keys, verifies each uploaded object with `head_object`, refreshes the repo-side R2 media manifest, and advances successful jobs to `objects_uploaded`
+- current scope now also includes repo metadata rebuild: `rebuild-metadata` claims jobs in `objects_uploaded`, regenerates RSS and episode inventory from the R2 manifest, runs show-specific sidecars such as Spotify sync and Freudd content-manifest rebuild, validates the resulting repo artifacts, and advances successful jobs to `committing_repo_artifacts`
 - storage root defaults to `/var/lib/podcasts/notebooklm-queue` and can be overridden with `NOTEBOOKLM_QUEUE_STORAGE_ROOT` or `--storage-root`
 - supported discovery adapters currently cover `bioneuro` and `personlighedspsykologi-en`
 - `run-dry` resolves the exact generate/download commands for the next queued lecture without touching NotebookLM or publication state
 - `run-once` claims or resumes a job, executes the real generate/download wrappers, persists a run manifest under the queue storage root, and moves successful jobs to `awaiting_publish`
 - `prepare-publish` claims or resumes a job in `awaiting_publish`, scans the canonical output directory for that lecture, writes a durable publish manifest under the queue storage root, and moves successful jobs to `approved_for_publish`
 - `upload-r2` is intentionally R2-only for now; Drive-backed shows are blocked explicitly until their show config is migrated to `storage.provider = "r2"`
-- repo metadata rebuild, downstream sync, and Hetzner service deployment still belong to later migration phases
+- `rebuild-metadata` currently stops before git commit/push; downstream sync and Hetzner service deployment still belong to later migration phases
 
 Queue CLI examples:
 
@@ -81,6 +82,7 @@ Queue CLI examples:
 ./.venv/bin/python scripts/notebooklm_queue.py --storage-root /tmp/notebooklm-queue run-once --repo-root . --show-slug bioneuro
 ./.venv/bin/python scripts/notebooklm_queue.py --storage-root /tmp/notebooklm-queue prepare-publish --repo-root . --show-slug bioneuro
 ./.venv/bin/python scripts/notebooklm_queue.py --storage-root /tmp/notebooklm-queue upload-r2 --repo-root . --show-slug bioneuro
+./.venv/bin/python scripts/notebooklm_queue.py --storage-root /tmp/notebooklm-queue rebuild-metadata --repo-root . --show-slug bioneuro
 ```
 
 Important operational note:

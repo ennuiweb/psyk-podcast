@@ -16,6 +16,7 @@ This file is the compact technical index for the repo. Detailed operational docs
 - [docs/feed-automation.md](docs/feed-automation.md) - feed pipeline, GitHub Actions, Apps Script triggers, and feed hosting.
 - [docs/notebooklm-automation.md](docs/notebooklm-automation.md) - NotebookLM subject wrappers, mirrors, and output conventions.
 - [docs/notebooklm-queue-r2-migration.md](docs/notebooklm-queue-r2-migration.md) - cross-cutting implementation plan for the Hetzner queue and R2/object-storage migration.
+- [docs/notebooklm-queue-current-state.md](docs/notebooklm-queue-current-state.md) - current shipped state of the queue + R2 migration work.
 - [docs/freudd-portal.md](docs/freudd-portal.md) - repo-level Freudd integration notes and canonical portal docs.
 - [docs/spotify-transcripts.md](docs/spotify-transcripts.md) - Spotify transcript auth, artifact model, and sync flow.
 - [freudd_portal/README.md](freudd_portal/README.md) - full Freudd product and runtime contract.

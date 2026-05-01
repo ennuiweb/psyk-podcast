@@ -7,6 +7,7 @@ Use these files:
 - [feed-automation.md](feed-automation.md) - podcast feed generation, show layout, GitHub Actions, Apps Script triggers, and feed hosting.
 - [notebooklm-automation.md](notebooklm-automation.md) - subject-oriented NotebookLM workflows, mirrors, and output conventions.
 - [notebooklm-queue-r2-migration.md](notebooklm-queue-r2-migration.md) - canonical implementation plan and backlog for the Hetzner queue + object-storage migration program.
+- [notebooklm-queue-current-state.md](notebooklm-queue-current-state.md) - current implementation checkpoint for the queue + R2 migration, separate from the longer-term plan.
 - [freudd-portal.md](freudd-portal.md) - repo-level Freudd integration notes and the canonical links for deploy, smoke, and portal contracts.
 - [spotify-transcripts.md](spotify-transcripts.md) - local-first Spotify transcript capture, auth state, artifact layout, and sync commands.
 

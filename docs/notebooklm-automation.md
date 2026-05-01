@@ -7,6 +7,7 @@ This document covers the repo-level NotebookLM automation layout and the subject
 Current migration program:
 
 - The cross-cutting implementation plan for moving NotebookLM orchestration to a Hetzner-owned queue and moving published audio off Google Drive lives in [notebooklm-queue-r2-migration.md](notebooklm-queue-r2-migration.md).
+- The current shipped checkpoint for that migration lives in [notebooklm-queue-current-state.md](notebooklm-queue-current-state.md).
 
 Current operational note:
 

@@ -1,0 +1,350 @@
+"""Commit and push queue-owned generated repo artifacts."""
+
+from __future__ import annotations
+
+import json
+import subprocess
+from dataclasses import dataclass
+from pathlib import Path
+from typing import Any
+
+from .adapters import get_show_adapter
+from .constants import STATE_COMMITTING_REPO_ARTIFACTS, STATE_FAILED_RETRYABLE, STATE_REPO_PUSHED
+from .store import QueueStore, utc_now_iso
+
+
+@dataclass(frozen=True, slots=True)
+class RepoPublishOptions:
+    repo_root: Path
+    actor: str = "system"
+    remote: str = "origin"
+    branch: str = "main"
+    git_user_name: str = "NotebookLM Queue"
+    git_user_email: str = "queue@localhost"
+
+
+def publish_repo_artifacts(
+    *,
+    store: QueueStore,
+    show_slug: str,
+    options: RepoPublishOptions,
+    job_id: str | None = None,
+) -> dict[str, Any]:
+    adapter = get_show_adapter(show_slug)
+    with store.acquire_show_lock(show_slug):
+        job = _claim_or_resume_job(store=store, show_slug=show_slug, job_id=job_id, actor=options.actor)
+        manifest_path = _latest_publish_manifest_path(store=store, job=job)
+        manifest = _load_publish_manifest(manifest_path)
+        bundle_id = str(manifest.get("bundle_id") or job.get("artifacts", {}).get("publish", {}).get("latest_bundle_id") or "")
+        if not bundle_id:
+            raise RuntimeError(f"Missing bundle_id for repo publish job {job['job_id']}")
+
+        try:
+            publish_result = _commit_and_push_show_artifacts(
+                repo_root=options.repo_root,
+                show_slug=show_slug,
+                options=options,
+                adapter=adapter,
+                job=job,
+            )
+        except RepoPublishError as exc:
+            return _finalize_failure(
+                store=store,
+                job=job,
+                manifest=manifest,
+                bundle_id=bundle_id,
+                actor=options.actor,
+                error_message=str(exc),
+            )
+
+        publish_payload = dict(manifest.get("repo_publish") or {})
+        publish_payload.update(publish_result)
+        publish_payload["status"] = "completed"
+        publish_payload["completed_at"] = utc_now_iso()
+        manifest["repo_publish"] = publish_payload
+        manifest["status"] = "repo_pushed"
+        manifest["completed_at"] = utc_now_iso()
+        manifest_path_rel = store.save_publish_manifest(
+            show_slug=show_slug,
+            job_id=str(job["job_id"]),
+            payload=manifest,
+            bundle_id=bundle_id,
+        )
+        updated = store.transition_job(
+            show_slug=show_slug,
+            job_id=str(job["job_id"]),
+            state=STATE_REPO_PUSHED,
+            actor=options.actor,
+            note="Committed and pushed queue-owned repo artifacts.",
+            details={
+                "bundle_id": bundle_id,
+                "manifest_path": manifest_path_rel,
+                "commit_sha": publish_result["head_sha"],
+                "pushed": publish_result["pushed"],
+            },
+        )
+        updated = _persist_repo_publish_artifacts(
+            store=store,
+            job=updated,
+            manifest_path=manifest_path_rel,
+            commit_sha=str(publish_result["head_sha"]),
+            pushed=bool(publish_result["pushed"]),
+        )
+        return {
+            "job_id": str(updated["job_id"]),
+            "show_slug": show_slug,
+            "bundle_id": bundle_id,
+            "final_state": str(updated.get("state") or ""),
+            "manifest_path": manifest_path_rel,
+            "commit_sha": publish_result["head_sha"],
+            "pushed": publish_result["pushed"],
+        }
+
+
+class RepoPublishError(RuntimeError):
+    """Raised when queue-owned repo publication cannot proceed safely."""
+
+
+def _claim_or_resume_job(
+    *,
+    store: QueueStore,
+    show_slug: str,
+    job_id: str | None,
+    actor: str,
+) -> dict[str, Any]:
+    if job_id:
+        job = store.load_job(show_slug=show_slug, job_id=job_id)
+        if not job:
+            raise FileNotFoundError(f"Unknown job: {show_slug}/{job_id}")
+        state = str(job.get("state") or "")
+        if state != STATE_COMMITTING_REPO_ARTIFACTS:
+            raise ValueError(
+                f"Job {job_id} is in state {state}, expected {STATE_COMMITTING_REPO_ARTIFACTS}."
+            )
+        return job
+
+    candidates = [
+        entry
+        for entry in store.list_jobs(show_slug=show_slug)
+        if str(entry.get("state") or "") == STATE_COMMITTING_REPO_ARTIFACTS
+    ]
+    if not candidates:
+        raise FileNotFoundError(f"No committing_repo_artifacts job found for show: {show_slug}")
+    candidates.sort(
+        key=lambda item: (
+            int(item.get("priority") or 100),
+            str(item.get("created_at") or ""),
+            str(item.get("job_id") or ""),
+        )
+    )
+    return store.load_job(show_slug=show_slug, job_id=str(candidates[0]["job_id"]))
+
+
+def _commit_and_push_show_artifacts(
+    *,
+    repo_root: Path,
+    show_slug: str,
+    options: RepoPublishOptions,
+    adapter,
+    job: dict[str, Any],
+) -> dict[str, Any]:
+    allowlist = _allowed_paths(repo_root=repo_root, show_slug=show_slug, adapter=adapter)
+    status_entries = _git_status(repo_root)
+    unexpected_tracked = [
+        entry["path"]
+        for entry in status_entries
+        if entry["tracked"] and entry["path"] not in allowlist
+    ]
+    if unexpected_tracked:
+        raise RepoPublishError(
+            f"Unexpected tracked repo changes outside the queue allowlist: {', '.join(sorted(unexpected_tracked))}"
+        )
+
+    changed_allowed = [entry["path"] for entry in status_entries if entry["path"] in allowlist]
+    if changed_allowed:
+        _run_git(
+            repo_root,
+            ["git", "add", "--", *sorted(changed_allowed)],
+        )
+        _run_git(
+            repo_root,
+            [
+                "git",
+                "-c",
+                f"user.name={options.git_user_name}",
+                "-c",
+                f"user.email={options.git_user_email}",
+                "commit",
+                "-m",
+                f"queue: publish {show_slug} {job['lecture_key']}",
+            ],
+        )
+
+    _run_git(repo_root, ["git", "fetch", options.remote, options.branch])
+    branch = options.branch
+    _run_git(
+        repo_root,
+        ["git", "pull", "--rebase", options.remote, branch],
+    )
+    local_head = _run_git(repo_root, ["git", "rev-parse", "HEAD"]).stdout.strip()
+    remote_head = _run_git(
+        repo_root,
+        ["git", "rev-parse", f"{options.remote}/{branch}"],
+    ).stdout.strip()
+    pushed = False
+    if local_head != remote_head:
+        _run_git(repo_root, ["git", "push", options.remote, f"HEAD:{branch}"])
+        pushed = True
+        local_head = _run_git(repo_root, ["git", "rev-parse", "HEAD"]).stdout.strip()
+
+    return {
+        "status": "completed",
+        "head_sha": local_head,
+        "branch": branch,
+        "remote": options.remote,
+        "pushed": pushed,
+        "allowlist_paths": sorted(allowlist),
+        "changed_allowlist_paths": sorted(changed_allowed),
+    }
+
+
+def _allowed_paths(*, repo_root: Path, show_slug: str, adapter) -> set[str]:
+    config = adapter.load_show_config(repo_root)
+    show_root = repo_root / "shows" / show_slug
+    allowlist = {
+        str((show_root / "feeds" / "rss.xml").relative_to(repo_root)),
+        str((show_root / "episode_inventory.json").relative_to(repo_root)),
+        str((show_root / "quiz_links.json").relative_to(repo_root)),
+        str((show_root / "spotify_map.json").relative_to(repo_root)),
+        str((show_root / "content_manifest.json").relative_to(repo_root)),
+    }
+    storage = config.get("storage")
+    if isinstance(storage, dict):
+        manifest_file = str(storage.get("manifest_file") or "").strip()
+        if manifest_file:
+            allowlist.add(str(Path(manifest_file)))
+    return allowlist
+
+
+def _git_status(repo_root: Path) -> list[dict[str, Any]]:
+    result = _run_git(repo_root, ["git", "status", "--porcelain"])
+    entries: list[dict[str, Any]] = []
+    for raw_line in result.stdout.splitlines():
+        if not raw_line:
+            continue
+        status = raw_line[:2]
+        path = raw_line[3:]
+        if " -> " in path:
+            path = path.split(" -> ", 1)[1]
+        tracked = status != "??"
+        entries.append({"status": status, "path": path, "tracked": tracked})
+    return entries
+
+
+def _run_git(repo_root: Path, command: list[str]) -> subprocess.CompletedProcess[str]:
+    completed = subprocess.run(
+        command,
+        cwd=repo_root,
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    if completed.returncode != 0:
+        raise RepoPublishError(
+            f"Git command failed ({' '.join(command)}): {completed.stderr.strip() or completed.stdout.strip()}"
+        )
+    return completed
+
+
+def _latest_publish_manifest_path(*, store: QueueStore, job: dict[str, Any]) -> Path:
+    publish = dict((job.get("artifacts") or {}).get("publish") or {})
+    relative = str(publish.get("latest_bundle_manifest") or "").strip()
+    if not relative:
+        raise RuntimeError(f"No publish manifest recorded for job {job['job_id']}")
+    path = store.root / relative
+    if not path.exists():
+        raise RuntimeError(f"Publish manifest missing for job {job['job_id']}: {path}")
+    return path
+
+
+def _load_publish_manifest(path: Path) -> dict[str, Any]:
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError) as exc:
+        raise RuntimeError(f"Failed to load publish manifest {path}: {exc}") from exc
+    if not isinstance(payload, dict):
+        raise RuntimeError(f"Publish manifest must be a JSON object: {path}")
+    return payload
+
+
+def _persist_repo_publish_artifacts(
+    *,
+    store: QueueStore,
+    job: dict[str, Any],
+    manifest_path: str,
+    commit_sha: str,
+    pushed: bool,
+) -> dict[str, Any]:
+    artifacts = dict(job.get("artifacts") or {})
+    publish = dict(artifacts.get("publish") or {})
+    publish.update(
+        {
+            "latest_bundle_manifest": manifest_path,
+            "last_repo_publish_at": utc_now_iso(),
+            "last_repo_commit_sha": commit_sha,
+            "last_repo_push_performed": bool(pushed),
+        }
+    )
+    artifacts["publish"] = publish
+    job["artifacts"] = artifacts
+    store.save_job(job)
+    return job
+
+
+def _finalize_failure(
+    *,
+    store: QueueStore,
+    job: dict[str, Any],
+    manifest: dict[str, Any],
+    bundle_id: str,
+    actor: str,
+    error_message: str,
+) -> dict[str, Any]:
+    payload = dict(manifest.get("repo_publish") or {})
+    payload["status"] = "failed"
+    payload["completed_at"] = utc_now_iso()
+    payload["last_error"] = error_message
+    manifest["repo_publish"] = payload
+    manifest["status"] = "repo_publish_failed"
+    manifest["completed_at"] = utc_now_iso()
+    manifest["last_error"] = error_message
+    manifest_path = store.save_publish_manifest(
+        show_slug=str(job["show_slug"]),
+        job_id=str(job["job_id"]),
+        payload=manifest,
+        bundle_id=bundle_id,
+    )
+    updated = store.transition_job(
+        show_slug=str(job["show_slug"]),
+        job_id=str(job["job_id"]),
+        state=STATE_FAILED_RETRYABLE,
+        actor=actor,
+        note="Repo publish failed.",
+        error=error_message,
+        details={"bundle_id": bundle_id, "manifest_path": manifest_path},
+    )
+    _persist_repo_publish_artifacts(
+        store=store,
+        job=updated,
+        manifest_path=manifest_path,
+        commit_sha="",
+        pushed=False,
+    )
+    return {
+        "bundle_id": bundle_id,
+        "job_id": str(updated["job_id"]),
+        "show_slug": str(updated["show_slug"]),
+        "final_state": str(updated.get("state") or ""),
+        "manifest_path": manifest_path,
+        "error": error_message,
+    }

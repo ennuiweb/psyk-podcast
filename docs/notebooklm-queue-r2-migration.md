@@ -652,7 +652,7 @@ Status legend:
 |---|---|---|---|
 | C1 | planned | Define stable object-key layout | Stable public identity is mandatory. |
 | C2 | planned | Implement upload verification | Validate size, existence, and checksum where possible. |
-| C3 | active | Add publish-bundle validation | Local generated-artifact validation and durable publish manifests now exist via `prepare-publish`; `upload-r2` now covers deterministic object upload plus repo-side media manifest refresh, and `rebuild-metadata` now regenerates repo-side feed/inventory sidecars plus show-specific metadata. Commit/push and downstream sync still remain. |
+| C3 | active | Add publish-bundle validation | Local generated-artifact validation and durable publish manifests now exist via `prepare-publish`; `upload-r2` now covers deterministic object upload plus repo-side media manifest refresh, `rebuild-metadata` now regenerates queue-owned quiz links plus repo-side feed/inventory sidecars and show-specific metadata, and `push-repo` now commits and pushes allowlisted generated artifacts. Downstream sync and conflict-recovery hardening still remain. |
 | C4 | planned | Add orphaned-object reconciliation tooling | Needed for upload-before-push failure cases. |
 
 ### Workstream D - Metadata And Downstream Sync
@@ -660,10 +660,10 @@ Status legend:
 | ID | Status | Item | Notes |
 |---|---|---|---|
 | D1 | planned | Rebuild inventory and feed from uploaded objects | Queue publish owns this for migrated shows. |
-| D2 | planned | Integrate `sync_quiz_links.py` in publish flow | Keep quiz files coherent with current inventory. |
+| D2 | done | Integrate `sync_quiz_links.py` in publish flow | Queue metadata rebuild now refreshes `quiz_links.json` before RSS/inventory sidecars for supported shows. |
 | D3 | planned | Integrate Spotify map sync | Preserve mapping continuity. |
 | D4 | planned | Integrate content manifest rebuild | Required for Freudd. |
-| D5 | planned | Define generated-file commit allowlist | Fail closed on unexpected repo dirtiness. |
+| D5 | done | Define generated-file commit allowlist | `push-repo` now stages and commits only the active show's generated artifacts and fails closed on unexpected tracked repo dirtiness. |
 
 ### Workstream E - Cutover And Ownership
 

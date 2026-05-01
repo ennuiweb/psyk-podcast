@@ -13,6 +13,7 @@ from .execution import ExecutionOptions, execute_job
 from .metadata import MetadataOptions, rebuild_repo_metadata
 from .models import JobIdentity
 from .publish import PublishOptions, UploadOptions, prepare_publish_bundle, upload_publish_bundle
+from .repo_publish import RepoPublishOptions, publish_repo_artifacts
 from .runner import build_dry_run_plan
 from .store import QueueLockError, QueueStore
 
@@ -128,6 +129,16 @@ def build_parser() -> argparse.ArgumentParser:
     rebuild_metadata.add_argument("--repo-root", type=Path, default=Path(__file__).resolve().parents[1])
     rebuild_metadata.add_argument("--show-slug", required=True)
     rebuild_metadata.add_argument("--job-id")
+
+    push_repo = subparsers.add_parser(
+        "push-repo",
+        help="Commit and push allowlisted queue-owned generated repo artifacts.",
+    )
+    push_repo.add_argument("--repo-root", type=Path, default=Path(__file__).resolve().parents[1])
+    push_repo.add_argument("--show-slug", required=True)
+    push_repo.add_argument("--job-id")
+    push_repo.add_argument("--remote", default="origin")
+    push_repo.add_argument("--branch", default="main")
     return parser
 
 
@@ -291,6 +302,20 @@ def main(argv: list[str] | None = None) -> int:
             show_slug=args.show_slug,
             job_id=args.job_id,
             options=MetadataOptions(repo_root=Path(args.repo_root).resolve()),
+        )
+        _print_json(payload)
+        return 0
+
+    if args.command == "push-repo":
+        payload = publish_repo_artifacts(
+            store=store,
+            show_slug=args.show_slug,
+            job_id=args.job_id,
+            options=RepoPublishOptions(
+                repo_root=Path(args.repo_root).resolve(),
+                remote=args.remote,
+                branch=args.branch,
+            ),
         )
         _print_json(payload)
         return 0

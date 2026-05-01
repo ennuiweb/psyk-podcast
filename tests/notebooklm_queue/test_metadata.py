@@ -94,15 +94,16 @@ def test_rebuild_repo_metadata_runs_expected_bioneuro_phases(tmp_path: Path, mon
     def fake_run_phase(*, name: str, command: list[str], repo_root: Path) -> dict[str, object]:
         commands.append(command)
         show_root = repo_root / "shows" / "bioneuro"
-        if name == "generate_feed":
+        if name == "sync_quiz_links":
+            (show_root / "quiz_links.json").write_text(
+                json.dumps({"by_name": {"Title 1": [{"url": "https://freudd.dk/q/abc.html"}]}}),
+                encoding="utf-8",
+            )
+        elif name == "generate_feed":
             (show_root / "feeds").mkdir(parents=True, exist_ok=True)
             (show_root / "feeds" / "rss.xml").write_text("<rss />\n", encoding="utf-8")
             (show_root / "episode_inventory.json").write_text(
                 json.dumps({"episodes": [{"episode_key": "ep-1", "title": "Title 1"}]}),
-                encoding="utf-8",
-            )
-            (show_root / "quiz_links.json").write_text(
-                json.dumps({"by_name": {"Title 1": [{"url": "https://freudd.dk/q/abc.html"}]}}),
                 encoding="utf-8",
             )
         elif name == "sync_spotify_map":
@@ -147,11 +148,14 @@ def test_rebuild_repo_metadata_runs_expected_bioneuro_phases(tmp_path: Path, mon
     assert result["final_state"] == STATE_COMMITTING_REPO_ARTIFACTS
     updated = store.load_job(show_slug="bioneuro", job_id=str(job["job_id"]))
     assert updated["state"] == STATE_COMMITTING_REPO_ARTIFACTS
-    assert updated["artifacts"]["publish"]["last_metadata_phase_count"] == 3
-    assert len(commands) == 3
-    assert commands[0][1].endswith("podcast-tools/gdrive_podcast_feed.py")
-    assert commands[1][1].endswith("scripts/sync_spotify_map.py")
-    assert commands[2][1].endswith("freudd_portal/manage.py")
+    assert updated["artifacts"]["publish"]["last_metadata_phase_count"] == 4
+    assert len(commands) == 4
+    assert commands[0][1].endswith("scripts/sync_quiz_links.py")
+    assert commands[0][commands[0].index("--remote-root") + 1] == "/var/www/quizzes/bioneuro"
+    assert "--flat-id-include-subject" in commands[0]
+    assert commands[1][1].endswith("podcast-tools/gdrive_podcast_feed.py")
+    assert commands[2][1].endswith("scripts/sync_spotify_map.py")
+    assert commands[3][1].endswith("freudd_portal/manage.py")
 
 
 def test_rebuild_repo_metadata_marks_retryable_failure_on_phase_error(tmp_path: Path, monkeypatch) -> None:

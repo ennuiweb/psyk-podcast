@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import os
 import shlex
 import subprocess
 from dataclasses import dataclass
@@ -30,6 +31,33 @@ SPOTIFY_SHOW_URLS = {
 class MetadataOptions:
     repo_root: Path
     actor: str = "system"
+
+
+@dataclass(frozen=True, slots=True)
+class QuizSyncSettings:
+    output_root: str
+    links_file: str
+    subject_slug: str
+    remote_root: str
+    include_subject_in_flat_id: bool = False
+    language_tag: str = "[EN]"
+
+
+QUIZ_SYNC_SETTINGS = {
+    "bioneuro": QuizSyncSettings(
+        output_root="notebooklm-podcast-auto/bioneuro/output",
+        links_file="shows/bioneuro/quiz_links.json",
+        subject_slug="bioneuro",
+        remote_root="/var/www/quizzes/bioneuro",
+        include_subject_in_flat_id=True,
+    ),
+    "personlighedspsykologi-en": QuizSyncSettings(
+        output_root="notebooklm-podcast-auto/personlighedspsykologi/output",
+        links_file="shows/personlighedspsykologi-en/quiz_links.json",
+        subject_slug="personlighedspsykologi",
+        remote_root="/var/www/quizzes/personlighedspsykologi",
+    ),
+}
 
 
 def rebuild_repo_metadata(
@@ -185,7 +213,43 @@ def _claim_or_resume_job(
 
 def _phase_definitions(*, repo_root: Path, show_slug: str, subject_slug: str) -> list[dict[str, object]]:
     python = str(repo_root / ".venv" / "bin" / "python")
-    phases: list[dict[str, object]] = [
+    phases: list[dict[str, object]] = []
+    quiz_sync = QUIZ_SYNC_SETTINGS.get(show_slug)
+    if quiz_sync is not None:
+        command = [
+            python,
+            str(repo_root / "scripts" / "sync_quiz_links.py"),
+            "--output-root",
+            quiz_sync.output_root,
+            "--links-file",
+            quiz_sync.links_file,
+            "--subject-slug",
+            quiz_sync.subject_slug,
+            "--language-tag",
+            quiz_sync.language_tag,
+            "--quiz-path-mode",
+            "flat-id",
+            "--flat-id-len",
+            "8",
+            "--quiz-difficulty",
+            "any",
+            "--fallback-derive-mp3-names",
+            "--preferred-audio-inventory",
+            f"shows/{show_slug}/episode_inventory.json",
+            "--remote-root",
+            quiz_sync.remote_root,
+            "--ssh-key",
+            _resolve_droplet_ssh_key(),
+        ]
+        if quiz_sync.include_subject_in_flat_id:
+            command.append("--flat-id-include-subject")
+        phases.append(
+            {
+                "name": "sync_quiz_links",
+                "command": command,
+            }
+        )
+    phases.append(
         {
             "name": "generate_feed",
             "command": [
@@ -195,7 +259,7 @@ def _phase_definitions(*, repo_root: Path, show_slug: str, subject_slug: str) ->
                 str(repo_root / "shows" / show_slug / "config.github.json"),
             ],
         }
-    ]
+    )
     if show_slug == "personlighedspsykologi-en":
         phases.append(
             {
@@ -254,6 +318,13 @@ def _phase_definitions(*, repo_root: Path, show_slug: str, subject_slug: str) ->
             }
         )
     return phases
+
+
+def _resolve_droplet_ssh_key() -> str:
+    configured = str(os.environ.get("NOTEBOOKLM_QUEUE_DROPLET_SSH_KEY") or "").strip()
+    if configured:
+        return configured
+    return "~/.ssh/digitalocean_ed25519"
 
 
 def _run_phase(*, name: str, command: list[str], repo_root: Path) -> dict[str, Any]:

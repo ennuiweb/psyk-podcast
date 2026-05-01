@@ -23,6 +23,7 @@ The following queue milestones are implemented on `main`:
 - `2092b46` - NotebookLM notebook-capacity recovery by deleting the oldest owned notebook and retrying once
 - `a5b2748` - R2 object upload for approved queue bundles
 - `ad01a4f` - repo metadata rebuild from uploaded objects
+- current working tree after `ad01a4f` - queue-owned quiz sync is wired into metadata rebuild before RSS regeneration, and `push-repo` now commits and pushes allowlisted generated artifacts
 
 ## Current queue capabilities
 
@@ -40,11 +41,18 @@ The following queue milestones are implemented on `main`:
 - deterministic R2 object upload for media artifacts
 - post-upload verification via `head_object`
 - repo-side R2 media manifest refresh
+- queue-owned `quiz_links.json` refresh for supported Freudd-backed shows
 - repo metadata rebuild from uploaded objects:
   - RSS
   - `episode_inventory.json`
   - `spotify_map.json` for supported shows
   - `content_manifest.json` for Freudd-backed shows
+- allowlisted repo publication for supported shows:
+  - tracked-dirtiness guard outside the generated-file allowlist
+  - show-scoped generated-file commit
+  - rebase against `origin/main`
+  - push to `main`
+  - persisted repo commit SHA in queue job artifacts
 
 ## Current state-machine boundary
 
@@ -54,6 +62,7 @@ Successful jobs can now advance through:
 - `approved_for_publish`
 - `objects_uploaded`
 - `committing_repo_artifacts`
+- `repo_pushed`
 
 That means the queue currently owns:
 
@@ -61,11 +70,12 @@ That means the queue currently owns:
 - download
 - local artifact validation
 - object upload
+- quiz-link refresh
 - repo metadata regeneration
+- allowlisted repo commit/push
 
 The queue does not yet own:
 
-- the final allowlisted git commit/push step
 - downstream sync / final publish orchestration
 - Hetzner `systemd` deployment and timer ownership
 
@@ -76,7 +86,7 @@ Local verification completed:
 - Notebook-capacity tests passed after the reclaim-on-create-notebook fix
 - queue publish tests passed after R2 upload implementation
 - queue metadata tests passed after repo rebuild implementation
-- full `tests/notebooklm_queue` suite passed after the latest metadata work
+- full `tests/notebooklm_queue` suite passed after the latest quiz-sync and repo-publish work
 
 Required repo workflows completed successfully for the latest queue commits:
 
@@ -103,8 +113,8 @@ So current production ownership is still:
 
 ## Immediate missing steps before a real cutover
 
-1. Implement the queue-owned allowlisted commit/push stage from `committing_repo_artifacts`.
-2. Decide and validate the production public audio URL/domain for R2-backed enclosures.
+1. Decide and validate the production public audio URL/domain for R2-backed enclosures.
+2. Add downstream completion orchestration after `repo_pushed`.
 3. Migrate one low-risk show first, still planned as `personal`.
 4. Remove dual-writer risk for any migrated show by ensuring GitHub Actions no longer independently regenerates that show’s artifacts.
 5. Add Hetzner runtime ownership:

@@ -8,7 +8,7 @@ Use this file for:
 
 - what has actually shipped
 - what is verified
-- what is still missing before production cutover
+- what is still missing before full autonomous Hetzner ownership
 - the current boundary between queue-owned publication and legacy Drive-owned publication
 
 ## Implemented
@@ -108,33 +108,42 @@ Required repo workflows completed successfully for the latest queue commits:
 - `532ac58` -> Actions run `25213172226`
 - `9ef94cf` -> Actions run `25214094593`
 
-## Still true about live production
+## Live production state
 
-No active show has been cut over to R2 yet.
+`bioneuro` is now the first live cut-over show.
 
-As of 2026-05-01, all active `shows/*/config.github.json` files still resolve to `storage.provider = "drive"`:
+As of 2026-05-03:
 
-- `berlingske`
-- `bioneuro`
-- `intro-vt`
-- `personal`
-- `personlighedspsykologi-en`
-- `social-psychology`
+- `shows/bioneuro/config.github.json` resolves to:
+  - `storage.provider = "r2"`
+  - `publication.owner = "queue"`
+- the full `29`-episode `bioneuro` back-catalog has been uploaded to Cloudflare R2 and recorded in `shows/bioneuro/media_manifest.r2.json`
+- a live queue-owned publication completed end to end for `W13L1`
+- the queue pushed live `bioneuro` feed-side artifacts in commit `7318b443888d509ea6b891e3c6a7d44e96f7f525`
+- downstream Freudd deploy completed successfully in Actions run `25289331905`
+- the current live public enclosure base is the temporary bucket hostname:
+  - `https://pub-fe942499398a478c8a8f432207051244.r2.dev`
 
-So current production ownership is still:
+Current active show ownership is now mixed:
 
-- live feeds: Drive-backed
-- migration path: queue + R2 capable, but not yet cut over
+- `bioneuro`: live, R2-backed, queue-owned
+- `berlingske`: legacy workflow
+- `intro-vt`: legacy workflow
+- `personal`: legacy workflow
+- `personlighedspsykologi-en`: legacy workflow
+- `social-psychology`: legacy workflow
 
-## Immediate missing steps before a real cutover
+## Immediate missing steps before full autonomous ownership
 
-1. Decide and validate the production public audio URL/domain for R2-backed enclosures.
-2. Migrate the first real queue-owned show to R2 and set `publication.owner=queue`.
-3. Add Hetzner runtime ownership:
+1. Replace the temporary `r2.dev` public base URL with the intended production audio domain.
+2. Add Hetzner runtime ownership:
    - `systemd` service
    - timer
    - env/secrets contract
    - failure reporting
+3. Decide the next migration target after `bioneuro`:
+   - `personal` for lower-risk storage migration
+   - `personlighedspsykologi-en` for the next full queue-owned show
 
 ## Recommended reading order
 

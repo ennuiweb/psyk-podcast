@@ -88,8 +88,9 @@ This is intentionally separate from `storage.provider`:
 Current operational reality:
 
 - the feed stack supports both Drive and R2
-- all active show configs are still Drive-backed at the time this plan was introduced
-- the intended migration path is Hetzner-owned generation plus object-storage-backed publication for migrated shows
+- `bioneuro` is now live on `storage.provider = "r2"` with `publication.owner = "queue"`
+- the current `bioneuro` public enclosure base is the temporary Cloudflare hostname `https://pub-fe942499398a478c8a8f432207051244.r2.dev`
+- the remaining active shows are still on the legacy workflow until they are cut over explicitly
 
 ## Google setup
 
@@ -168,6 +169,7 @@ In Apps Script:
 ## R2 notes
 
 - Prefer a custom domain or `storage.public_base_url` that points at the bucket’s public hostname.
+- Temporary `r2.dev` hostnames are acceptable for cutover validation, but they should be treated as transitional and replaced with the intended production audio domain.
 - Keep the bucket key structure stable across rewrites so object URLs remain deterministic.
 - If the bucket is listed directly, the workflow requires `R2_ACCESS_KEY_ID` and `R2_SECRET_ACCESS_KEY`.
 - If you want stricter migration control, use `storage.manifest_file` and store `stable_guid` per object.

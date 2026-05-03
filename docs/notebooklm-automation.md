@@ -11,7 +11,7 @@ Current migration program:
 
 Current operational note:
 
-- Shared NotebookLM generation now tries to reclaim per-account notebook capacity on `CREATE_NOTEBOOK` failures by deleting the oldest owned notebook on that account and retrying once before profile rotation takes over.
+- Shared NotebookLM generation now tries to reclaim per-account notebook capacity on `CREATE_NOTEBOOK` failures by deleting the oldest safe owned notebook on that account and retrying once before profile rotation takes over; reclaim skips notebooks with pending artifacts or local request logs whose target output is still missing.
 
 ## Layout
 

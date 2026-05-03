@@ -1,5 +1,8 @@
 import importlib.util
 import asyncio
+import json
+import os
+import tempfile
 import unittest
 from datetime import datetime
 from pathlib import Path
@@ -105,6 +108,151 @@ class GeneratePodcastTests(unittest.TestCase):
         self.assertEqual(notebook.id, "nb-created")
         self.assertEqual(client.notebooks.deleted_ids, ["nb-oldest"])
         self.assertEqual(client.notebooks.create_calls, 2)
+
+    def test_resolve_notebook_skips_oldest_when_pending_artifacts_exist(self):
+        mod = _load_module()
+
+        class FakeArtifacts:
+            async def list(self, notebook_id):
+                if notebook_id == "nb-oldest":
+                    return [
+                        SimpleNamespace(
+                            id="art-pending",
+                            title="Queued audio",
+                            is_processing=False,
+                            is_pending=True,
+                            status_str="pending",
+                        )
+                    ]
+                return []
+
+        class FakeNotebooks:
+            def __init__(self):
+                self.create_calls = 0
+                self.deleted_ids = []
+
+            async def list(self):
+                return [
+                    SimpleNamespace(
+                        id="nb-oldest",
+                        title="Oldest",
+                        created_at=datetime(2026, 1, 1),
+                        is_owner=True,
+                    ),
+                    SimpleNamespace(
+                        id="nb-next",
+                        title="Next",
+                        created_at=datetime(2026, 1, 2),
+                        is_owner=True,
+                    ),
+                ]
+
+            async def create(self, title):
+                self.create_calls += 1
+                if self.create_calls == 1:
+                    raise RPCError(
+                        "No result found for RPC ID: CCqFvf",
+                        method_id=RPCMethod.CREATE_NOTEBOOK.value,
+                    )
+                return SimpleNamespace(id="nb-created", title=title)
+
+            async def delete(self, notebook_id):
+                self.deleted_ids.append(notebook_id)
+                return True
+
+        client = SimpleNamespace(notebooks=FakeNotebooks(), artifacts=FakeArtifacts())
+        notebook = asyncio.run(mod._resolve_notebook(client, "Target", reuse=False))
+
+        self.assertEqual(notebook.id, "nb-created")
+        self.assertEqual(client.notebooks.deleted_ids, ["nb-next"])
+
+    def test_resolve_notebook_skips_oldest_when_request_log_output_is_missing(self):
+        mod = _load_module()
+
+        class FakeArtifacts:
+            async def list(self, notebook_id):
+                return []
+
+        class FakeNotebooks:
+            def __init__(self):
+                self.create_calls = 0
+                self.deleted_ids = []
+
+            async def list(self):
+                return [
+                    SimpleNamespace(
+                        id="nb-oldest",
+                        title="Oldest",
+                        created_at=datetime(2026, 1, 1),
+                        is_owner=True,
+                    ),
+                    SimpleNamespace(
+                        id="nb-next",
+                        title="Next",
+                        created_at=datetime(2026, 1, 2),
+                        is_owner=True,
+                    ),
+                ]
+
+            async def create(self, title):
+                self.create_calls += 1
+                if self.create_calls == 1:
+                    raise RPCError(
+                        "No result found for RPC ID: CCqFvf",
+                        method_id=RPCMethod.CREATE_NOTEBOOK.value,
+                    )
+                return SimpleNamespace(id="nb-created", title=title)
+
+            async def delete(self, notebook_id):
+                self.deleted_ids.append(notebook_id)
+                return True
+
+        client = SimpleNamespace(notebooks=FakeNotebooks(), artifacts=FakeArtifacts())
+
+        with self.subTest("request log blocks deletion when output missing"):
+            original_cwd = Path.cwd()
+            with tempfile.TemporaryDirectory() as tmpdir:
+                tmp_root = Path(tmpdir)
+                request_log = tmp_root / "pending.mp3.request.json"
+                request_log.write_text(
+                    json.dumps(
+                        {
+                            "notebook_id": "nb-oldest",
+                            "artifact_id": "art-123",
+                            "output_path": str(tmp_root / "pending.mp3"),
+                        }
+                    ),
+                    encoding="utf-8",
+                )
+                os.chdir(tmp_root)
+                try:
+                    notebook = asyncio.run(mod._resolve_notebook(client, "Target", reuse=False))
+                finally:
+                    os.chdir(original_cwd)
+
+        self.assertEqual(notebook.id, "nb-created")
+        self.assertEqual(client.notebooks.deleted_ids, ["nb-next"])
+
+    def test_request_log_guard_allows_deletion_when_output_exists(self):
+        mod = _load_module()
+        with tempfile.TemporaryDirectory() as tmpdir:
+            tmp_root = Path(tmpdir)
+            output_path = tmp_root / "done.mp3"
+            output_path.write_bytes(b"audio")
+            request_log = tmp_root / "done.mp3.request.json"
+            request_log.write_text(
+                json.dumps(
+                    {
+                        "notebook_id": "nb-safe",
+                        "artifact_id": "art-123",
+                        "output_path": str(output_path),
+                    }
+                ),
+                encoding="utf-8",
+            )
+            matches = mod._find_undownloaded_request_logs(tmp_root, "nb-safe")
+
+        self.assertEqual(matches, [])
 
     def test_resolve_notebook_keeps_original_error_when_no_owned_notebooks_exist(self):
         mod = _load_module()

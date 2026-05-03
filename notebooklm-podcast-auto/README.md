@@ -84,7 +84,8 @@ python3 generate_podcast.py \
 
 - Auth data is stored under `~/.notebooklm/` unless you pass `--storage`.
 - By default, generation rotates across profiles on rate-limit/auth errors and profile-scoped `CREATE_NOTEBOOK` failures when no explicit `--profile`/`--storage` is provided. Disable with `--no-rotate-on-rate-limit`.
-- Before rotating away from an account after a `CREATE_NOTEBOOK` failure, the generator now tries to reclaim capacity by deleting the oldest owned notebook on that account and retrying notebook creation once.
+- Before rotating away from an account after a `CREATE_NOTEBOOK` failure, the generator now tries to reclaim capacity by deleting the oldest safe owned notebook on that account and retrying notebook creation once.
+- Reclaim now skips notebooks that still have pending/in-progress artifacts or local `*.request.json` logs whose target output file is still missing.
 - Use `--preferred-profile NAME` to try a specific profile first while still allowing rotation.
 - Rate-limit errors are not retried; rotation (if enabled) happens immediately.
 - If all profiles are rate-limited, wait a few minutes and re-run.

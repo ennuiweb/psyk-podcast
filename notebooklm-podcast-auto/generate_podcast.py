@@ -749,9 +749,81 @@ async def _delete_oldest_owned_notebook(client: NotebookLMClient):
         normalized = created_at if isinstance(created_at, datetime) else datetime.max
         return (normalized, nb.title or "", nb.id or "")
 
-    oldest = sorted(owned, key=sort_key)[0]
-    await client.notebooks.delete(oldest.id)
-    return oldest
+    for candidate in sorted(owned, key=sort_key):
+        reclaim_blocker = await _reclaim_blocker_for_notebook(client, candidate.id)
+        if reclaim_blocker:
+            print(
+                f"Skipping notebook reclaim for {candidate.title} ({candidate.id}): "
+                f"{reclaim_blocker}"
+            )
+            continue
+        await client.notebooks.delete(candidate.id)
+        return candidate
+    return None
+
+
+async def _reclaim_blocker_for_notebook(client: NotebookLMClient, notebook_id: str) -> str | None:
+    artifacts_api = getattr(client, "artifacts", None)
+    if artifacts_api is None:
+        undownloaded_logs = _find_undownloaded_request_logs(Path.cwd(), notebook_id)
+        if undownloaded_logs:
+            sample = ", ".join(str(path) for path in undownloaded_logs[:3])
+            return f"local request logs still point to missing outputs: {sample}"
+        return None
+
+    try:
+        artifacts = await artifacts_api.list(notebook_id)
+    except Exception as exc:
+        return f"could not inspect artifacts safely ({exc})"
+
+    pending_artifacts = [
+        artifact
+        for artifact in artifacts
+        if getattr(artifact, "is_processing", False) or getattr(artifact, "is_pending", False)
+    ]
+    if pending_artifacts:
+        labels = ", ".join(
+            f"{artifact.title or artifact.id} [{artifact.status_str}]"
+            for artifact in pending_artifacts[:3]
+        )
+        return f"pending artifacts still exist: {labels}"
+
+    undownloaded_logs = _find_undownloaded_request_logs(Path.cwd(), notebook_id)
+    if undownloaded_logs:
+        sample = ", ".join(str(path) for path in undownloaded_logs[:3])
+        return f"local request logs still point to missing outputs: {sample}"
+
+    return None
+
+
+def _find_undownloaded_request_logs(search_root: Path, notebook_id: str) -> list[str]:
+    matches: list[str] = []
+    for log_path in search_root.rglob("*.request.json"):
+        try:
+            payload = json.loads(log_path.read_text(encoding="utf-8"))
+        except (OSError, UnicodeDecodeError, json.JSONDecodeError):
+            continue
+        if not isinstance(payload, dict):
+            continue
+        if str(payload.get("notebook_id") or "").strip() != notebook_id:
+            continue
+        output_value = str(payload.get("output_path") or "").strip()
+        if not output_value:
+            matches.append(str(log_path))
+            continue
+        output_path = Path(output_value).expanduser()
+        if not output_path.is_absolute():
+            output_path = (search_root / output_path).resolve()
+        if not output_path.exists():
+            matches.append(str(log_path))
+            continue
+        try:
+            if output_path.is_file() and output_path.stat().st_size > 0:
+                continue
+        except OSError:
+            pass
+        matches.append(str(log_path))
+    return matches
 
 
 def _source_key(source: dict) -> tuple[str, str] | None:

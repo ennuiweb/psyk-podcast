@@ -253,14 +253,16 @@ class GenerateWeekTests(unittest.TestCase):
         prompt = mod.build_audio_prompt(
             prompt_type="single_reading",
             custom_prompt="",
+            course_title="Personlighedspsykologi",
             source_item=reading_item,
             **self._default_prompt_context(mod),
         )
 
+        self.assertIn("Course: Personlighedspsykologi", prompt)
         self.assertIn("central claims and argument structure", prompt)
         self.assertIn("conceptual distinctions and delimitations", prompt)
-        self.assertIn("Exam lens:", prompt)
-        self.assertIn("historical tradition and core assumptions", prompt)
+        self.assertIn("Academic orientation:", prompt)
+        self.assertIn("historical tradition and core assumptions where they matter", prompt)
         self.assertIn("Generation rules:", prompt)
         self.assertIn("Do not invent studies, examples, citations", prompt)
         self.assertIn("Tone: calm, precise, teaching-oriented.", prompt)
@@ -276,14 +278,19 @@ class GenerateWeekTests(unittest.TestCase):
         prompt = mod.build_audio_prompt(
             prompt_type="single_reading",
             custom_prompt="",
+            course_title="Personlighedspsykologi",
             source_item=reading_item,
-            course_context_note="## Lecture position\n- This lecture comes after the introductory block.",
+            course_context_note="## Course and lecture frame\n- This lecture comes after the introductory block.",
             course_context_heading="Course-aware lecture context:",
             **self._default_prompt_context(mod),
         )
 
         self.assertIn("Course-aware lecture context:", prompt)
         self.assertIn("This lecture comes after the introductory block.", prompt)
+        self.assertLess(
+            prompt.index("Course-aware lecture context:"),
+            prompt.index("Focus on:"),
+        )
 
     def test_build_report_prompt_includes_course_context_section(self):
         mod = _load_module()
@@ -415,8 +422,8 @@ class GenerateWeekTests(unittest.TestCase):
             **self._default_prompt_context(mod),
         )
 
-        self.assertIn("Keep the explanation compact, memorable, and exam-oriented", prompt)
-        self.assertIn("what matters most for exam preparation", prompt)
+        self.assertIn("Keep the explanation compact, concrete, and easy to carry forward", prompt)
+        self.assertIn("what is most important to carry forward from the source", prompt)
 
     def test_build_audio_prompt_includes_weekly_sidecar_notes(self):
         mod = _load_module()

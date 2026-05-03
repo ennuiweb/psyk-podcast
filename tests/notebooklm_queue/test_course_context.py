@@ -137,7 +137,11 @@ class CourseContextTests(unittest.TestCase):
             )
 
             self.assertIn("Course position: lecture 1 of 2", reading_note)
+            self.assertIn("Current lecture theme: Introduktion.", reading_note)
+            self.assertIn("Broader course themes in play across the semester: Introduktion; Fortsat.", reading_note)
             self.assertIn("Course overview excerpt:", reading_note)
+            self.assertIn("## Source character", reading_note)
+            self.assertIn("This is a textbook chapter", reading_note)
             self.assertIn("Forelaesning slides frame the lecture through: Hvad er personlighed?", reading_note)
             self.assertIn("Seminar slides operationalize or test the material through: Diskussionsspoergsmaal.", reading_note)
             self.assertIn("Grundbog kapitel 1", reading_note)
@@ -158,6 +162,7 @@ class CourseContextTests(unittest.TestCase):
             )
 
             self.assertIn("seminar slide deck 'Diskussionsspoergsmaal'", slide_note)
+            self.assertIn("This is a seminar slide deck", slide_note)
 
 
 if __name__ == "__main__":

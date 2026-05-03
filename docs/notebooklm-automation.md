@@ -142,6 +142,8 @@ Prompt-system ambitions that should not drift:
 - The system should synthesize each lecture block from all relevant readings plus both forelaesning and seminar slide context before producing downstream prompts.
 - It should situate every lecture in the full course progression, not treat lecture prompts as isolated one-off jobs.
 - It should keep source roles explicit so course framing does not overwrite source-grounded claims.
+- It should not lean on explicit exam talk in the podcast prompts; importance and prioritization should come from course framing, source structure, and teaching emphasis instead.
+- It should avoid explicit "be engaging" prompt text for NotebookLM audio; quality should improve through better context compilation and focus selection, not by telling NotebookLM to perform enthusiasm.
 - It should remain reusable across multiple output families, with report/study-guide artifacts already live and future preparatory study artifacts building on the same compiled lecture context instead of inventing a separate prompt path.
 
 ## Related docs

@@ -52,7 +52,7 @@ DEFAULT_AUDIO_PROMPT_STRATEGY = {
             "focus": [
                 "the overarching problem the lecture is trying to address",
                 "the sequence logic that organizes the lecture",
-                "the concepts and distinctions that are most exam-relevant",
+                "the concepts and distinctions the lecture treats as most central",
                 "where the slides most likely simplify something important",
                 "what the material challenges in psychology's self-understanding",
             ]
@@ -68,12 +68,12 @@ DEFAULT_AUDIO_PROMPT_STRATEGY = {
             ]
         },
         "short": {
-            "lead": "Keep the explanation compact, memorable, and exam-oriented without becoming vague.",
+            "lead": "Keep the explanation compact, concrete, and easy to carry forward without becoming vague.",
             "focus": [
                 "the single most important claim, problem, or insight",
                 "the key distinction or clarification to remember",
                 "the misunderstanding or oversimplification to avoid",
-                "what is most important to take into exam preparation",
+                "what is most important to carry forward from the source",
             ]
         },
         "mixed_sources": {
@@ -81,8 +81,9 @@ DEFAULT_AUDIO_PROMPT_STRATEGY = {
             "focus": [
                 "the overarching problem and argumentative sequence of the lecture block",
                 "the key distinctions, tensions, and corrections across slides and readings",
+                "how the lecture and seminar framing help prioritize what matters most to understand",
                 "where the readings nuance, complicate, or correct the lecture framing",
-                "what is most exam-relevant and easiest to misunderstand",
+                "what is easiest to misunderstand if the slides are read too quickly or too literally",
                 "what the material changes in psychology's self-understanding",
             ]
         },
@@ -90,35 +91,35 @@ DEFAULT_AUDIO_PROMPT_STRATEGY = {
 }
 DEFAULT_EXAM_FOCUS = {
     "enabled": True,
-    "heading": "Exam lens:",
+    "heading": "Academic orientation:",
     "prompt_types": {
         "single_reading": [
-            "clarify the theory's historical tradition and core assumptions",
-            "analyze the theory's possibilities and limitations for the problem at hand",
+            "clarify the theory's historical tradition and core assumptions where they matter",
+            "analyze what the theory helps explain and what it leaves unresolved",
             "explain what kind of method relation or methodological stance is implied",
-            "make clear what should be evaluated critically, not just summarized",
+            "make clear what should be examined critically, not just summarized",
         ],
         "single_slide": [
             "clarify the lecture's theoretical placement where the slides make it possible",
             "state the most important possibilities and limitations implied by the material",
             "note what kind of theory-method relation is implied",
-            "flag what should be evaluated critically rather than repeated",
+            "flag what should be examined critically rather than repeated",
         ],
         "weekly_readings_only": [
             "clarify the historical tradition and core assumptions in play across the readings",
-            "analyze the theories' possibilities and limitations for the shared problem",
+            "analyze what the theories illuminate well and where they stay partial or in tension",
             "make the relation between theory and method explicit where it matters",
-            "show what should be evaluated critically, not just summarized",
+            "show what should be examined critically, not just summarized",
         ],
         "short": [
-            "make clear what matters most for exam preparation",
+            "make clear the one or two ideas a student should carry forward",
             "include at least one limitation, tension, or critical point rather than only summarizing",
         ],
         "mixed_sources": [
             "clarify the historical tradition and core assumptions in play",
-            "analyze the theories' possibilities and limitations for the problem at hand",
+            "analyze what the theories illuminate well and where the teaching framing leaves open questions",
             "make the relation between theory and method explicit where it matters",
-            "show what should be evaluated critically, not just summarized",
+            "show what should be examined critically, not just summarized",
         ],
     },
 }
@@ -631,6 +632,7 @@ def build_audio_prompt(
     exam_focus: dict | None,
     prompt_framework: dict | None,
     meta_prompting: dict | None,
+    course_title: str | None = None,
     course_context_note: str | None = None,
     course_context_heading: str | None = None,
     meta_note_overrides: dict[Path, str] | None = None,
@@ -665,12 +667,15 @@ def build_audio_prompt(
     sections: list[str] = []
     if prompt_strategy and prompt_strategy.get("enabled", False):
         prompt_type_cfg = prompt_strategy["prompt_types"][prompt_type]
-        sections.append(
-            f"Create a deep-dive audio overview for {prompt_strategy['audience']}."
-        )
+        sections.append(f"Create an audio overview for {prompt_strategy['audience']}.")
+        if course_title:
+            sections.append(f"Course: {course_title.strip()}")
         lead = str(prompt_type_cfg.get("lead") or "").strip()
         if lead:
             sections.append(lead)
+        if course_context_note:
+            heading = str(course_context_heading or "Course-aware lecture context:").strip()
+            sections.append(f"{heading}\n{course_context_note.strip()}")
         if prompt_type == "mixed_sources":
             sections.append(
                 "Source roles:\n"
@@ -707,8 +712,7 @@ def build_audio_prompt(
 
     if prompt_strategy and prompt_strategy.get("enabled", False):
         sections.append(f"Tone: {prompt_strategy['tone']}")
-
-    if course_context_note:
+    elif course_context_note:
         heading = str(course_context_heading or "Course-aware lecture context:").strip()
         sections.append(f"{heading}\n{course_context_note.strip()}")
 

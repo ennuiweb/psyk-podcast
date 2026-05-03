@@ -477,6 +477,7 @@ def build_source_items(
 def per_source_audio_settings(
     source_item: SourceItem,
     *,
+    course_title: str | None = None,
     per_reading_cfg: dict,
     per_slide_cfg: dict,
     per_slide_overrides: dict[str, dict] | None = None,
@@ -518,6 +519,7 @@ def per_source_audio_settings(
                 exam_focus=exam_focus,
                 prompt_framework=prompt_framework,
                 meta_prompting=meta_prompting,
+                course_title=course_title,
                 course_context_note=course_context_note,
                 course_context_heading=course_context_cfg.get("heading") if course_context_cfg else None,
                 meta_note_overrides=meta_note_overrides,
@@ -544,6 +546,7 @@ def per_source_audio_settings(
             exam_focus=exam_focus,
             prompt_framework=prompt_framework,
             meta_prompting=meta_prompting,
+            course_title=course_title,
             course_context_note=course_context_note,
             course_context_heading=course_context_cfg.get("heading") if course_context_cfg else None,
             meta_note_overrides=meta_note_overrides,
@@ -904,32 +907,32 @@ def _extract_source_excerpt_for_meta_prompt(path: Path, max_chars: int) -> str |
 def _meta_prompt_sections(prompt_type: str) -> tuple[str, list[str]]:
     if prompt_type == "single_slide":
         return (
-            "The source is a slide deck. Reconstruct the lecture logic rather than paraphrasing bullet points.",
+            "The source is a slide deck. Reconstruct the lecture logic and use the teaching framing to identify what matters most to understand.",
             [
                 "## Lecture logic",
-                "## Exam-relevant distinctions",
+                "## High-priority distinctions",
                 "## Likely simplifications or gaps",
-                "## What should be evaluated critically",
+                "## Productive tensions or limitations",
             ],
         )
     if prompt_type == "weekly_readings_only":
         return (
-            "The sources belong to one lecture block and should be read together.",
+            "The sources belong to one lecture block and should be read together, with slide-informed teaching framing helping prioritize the explanation.",
             [
                 "## Shared problem",
                 "## Cross-reading distinctions and tensions",
                 "## Likely misunderstandings",
-                "## Exam-relevant evaluation points",
+                "## What to prioritize",
             ],
         )
     if prompt_type == "mixed_sources":
         return (
-            "The sources mix slides and readings. Use slides for structure and readings for nuance and argument depth.",
+            "The sources mix slides and readings. Use slides for structure and prioritization, and readings for nuance and argument depth.",
             [
                 "## Lecture frame",
                 "## Distinctions and tensions across source types",
                 "## Likely misunderstandings",
-                "## Exam-relevant evaluation points",
+                "## What to prioritize",
             ],
         )
     return (
@@ -938,7 +941,7 @@ def _meta_prompt_sections(prompt_type: str) -> tuple[str, list[str]]:
             "## Core distinctions",
             "## Tensions, corrections, or qualifications",
             "## Likely misunderstandings",
-            "## Exam-relevant analytical moves",
+            "## What to carry forward",
         ],
     )
 
@@ -987,7 +990,7 @@ def _build_meta_prompt_request(
     system_prompt = (
         "You write concise Markdown pre-analysis notes for a NotebookLM deep-dive audio prompt. "
         "Do not summarize mechanically. Surface distinctions, tensions, corrections, misunderstandings, "
-        "and exam-relevant analytical moves. Return Markdown only, with the requested headings and short bullets."
+        "and the material that matters most to understand. Return Markdown only, with the requested headings and short bullets."
     )
     user_prompt = "\n".join(
         [
@@ -1471,6 +1474,7 @@ def build_audio_prompt(
     exam_focus: dict | None,
     prompt_framework: dict | None,
     meta_prompting: dict | None,
+    course_title: str | None = None,
     course_context_note: str | None = None,
     course_context_heading: str | None = None,
     meta_note_overrides: dict[Path, str] | None = None,
@@ -1488,6 +1492,7 @@ def build_audio_prompt(
         exam_focus=exam_focus,
         prompt_framework=prompt_framework,
         meta_prompting=meta_prompting,
+        course_title=course_title,
         course_context_note=course_context_note,
         course_context_heading=course_context_heading,
         meta_note_overrides=meta_note_overrides,
@@ -2946,6 +2951,7 @@ def main() -> int:
                                     exam_focus=exam_focus,
                                     prompt_framework=audio_prompt_framework,
                                     meta_prompting=meta_prompting,
+                                    course_title=course_title,
                                     course_context_note=weekly_course_context_note,
                                     course_context_heading=course_context_cfg.get("heading"),
                                     meta_note_overrides=auto_meta_note_overrides,
@@ -3077,6 +3083,7 @@ def main() -> int:
                             if content_type == "audio":
                                 _, planned_instructions, per_audio_format, per_audio_length = per_source_audio_settings(
                                     source_item,
+                                    course_title=course_title,
                                     per_reading_cfg=per_cfg,
                                     per_slide_cfg=per_slide_cfg,
                                     per_slide_overrides=per_slide_overrides,
@@ -3226,6 +3233,7 @@ def main() -> int:
                                         exam_focus=exam_focus,
                                         prompt_framework=audio_prompt_framework,
                                         meta_prompting=meta_prompting,
+                                        course_title=course_title,
                                         course_context_note=brief_course_context_note,
                                         course_context_heading=course_context_cfg.get("heading"),
                                         meta_note_overrides=auto_meta_note_overrides,
@@ -3376,6 +3384,7 @@ def main() -> int:
                                     exam_focus=exam_focus,
                                     prompt_framework=audio_prompt_framework,
                                     meta_prompting=meta_prompting,
+                                    course_title=course_title,
                                     course_context_note=weekly_course_context_note,
                                     course_context_heading=course_context_cfg.get("heading"),
                                     meta_note_overrides=auto_meta_note_overrides,
@@ -3567,6 +3576,7 @@ def main() -> int:
                             if content_type == "audio":
                                 _, instructions, audio_format, audio_length = per_source_audio_settings(
                                     source_item,
+                                    course_title=course_title,
                                     per_reading_cfg=per_cfg,
                                     per_slide_cfg=per_slide_cfg,
                                     per_slide_overrides=per_slide_overrides,
@@ -3780,6 +3790,7 @@ def main() -> int:
                                         exam_focus=exam_focus,
                                         prompt_framework=audio_prompt_framework,
                                         meta_prompting=meta_prompting,
+                                        course_title=course_title,
                                         course_context_note=brief_course_context_note,
                                         course_context_heading=course_context_cfg.get("heading"),
                                         meta_note_overrides=auto_meta_note_overrides,

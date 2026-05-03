@@ -17,6 +17,7 @@ DEFAULT_COURSE_CONTEXT = {
     "max_readings": 3,
     "max_points_per_reading": 2,
     "max_slide_titles": 4,
+    "max_course_themes": 22,
 }
 
 
@@ -27,6 +28,7 @@ class CoursePromptContextBundle:
     lectures: list[dict[str, Any]]
     lecture_index: dict[str, int]
     course_overview_lines: list[str]
+    course_theme_titles: list[str]
 
 
 def _deep_copy_defaults(value: object) -> object:
@@ -56,7 +58,13 @@ def normalize_course_context(raw: object) -> dict[str, Any]:
         if not isinstance(value, str):
             raise SystemExit(f"course_context.{field} must be a string.")
         normalized[field] = value.strip()
-    for field in ("neighbor_window", "max_readings", "max_points_per_reading", "max_slide_titles"):
+    for field in (
+        "neighbor_window",
+        "max_readings",
+        "max_points_per_reading",
+        "max_slide_titles",
+        "max_course_themes",
+    ):
         if field not in raw:
             continue
         value = raw[field]
@@ -151,12 +159,16 @@ def load_course_prompt_context_bundle(
         lecture_index[lecture_key] = len(lectures) - 1
 
     course_overview_lines: list[str] = []
+    course_theme_titles: list[str] = []
     if course_overview_path is not None and course_overview_path.exists() and course_overview_path.is_file():
         try:
             text = course_overview_path.read_text(encoding="utf-8")
         except (OSError, UnicodeDecodeError) as exc:
             raise RuntimeError(f"unable to read course overview: {course_overview_path}") from exc
         course_overview_lines = _course_overview_lines(text)
+        course_theme_titles = _course_theme_titles_from_overview(text)
+    if not course_theme_titles:
+        course_theme_titles = _fallback_course_theme_titles(lectures)
 
     return CoursePromptContextBundle(
         content_manifest_path=content_manifest_path,
@@ -164,6 +176,7 @@ def load_course_prompt_context_bundle(
         lectures=lectures,
         lecture_index=lecture_index,
         course_overview_lines=course_overview_lines,
+        course_theme_titles=course_theme_titles,
     )
 
 
@@ -180,6 +193,51 @@ def _course_overview_lines(text: str) -> list[str]:
         if cleaned:
             lines.append(cleaned)
     return lines
+
+
+def _clean_lecture_theme(value: str) -> str:
+    cleaned = str(value or "").strip()
+    cleaned = re.sub(r"\s*\([^)]*\)\s*$", "", cleaned)
+    cleaned = re.sub(r"\s+", " ", cleaned).strip(" .")
+    return cleaned
+
+
+def _course_theme_titles_from_overview(text: str) -> list[str]:
+    themes: list[str] = []
+    seen: set[str] = set()
+    for raw_line in text.splitlines():
+        line = raw_line.strip()
+        if not line.startswith("|"):
+            continue
+        cells = [cell.strip() for cell in line.strip("|").split("|")]
+        if len(cells) < 3:
+            continue
+        if not re.fullmatch(r"W0*\d{1,2}", cells[0], re.IGNORECASE):
+            continue
+        theme = _clean_lecture_theme(cells[2])
+        if not theme:
+            continue
+        match_key = theme.casefold()
+        if match_key in seen:
+            continue
+        seen.add(match_key)
+        themes.append(theme)
+    return themes
+
+
+def _fallback_course_theme_titles(lectures: list[dict[str, Any]]) -> list[str]:
+    themes: list[str] = []
+    seen: set[str] = set()
+    for lecture in lectures:
+        theme = _clean_lecture_theme(str(lecture.get("lecture_title") or ""))
+        if not theme:
+            continue
+        match_key = theme.casefold()
+        if match_key in seen:
+            continue
+        seen.add(match_key)
+        themes.append(theme)
+    return themes
 
 
 def _normalize_match_key(value: str) -> str:
@@ -319,6 +377,50 @@ def _overview_excerpt(bundle: CoursePromptContextBundle, lecture_key: str) -> st
     return None
 
 
+def _source_character_lines(lecture: dict[str, Any], source_item: object | None) -> list[str]:
+    if source_item is None:
+        return [
+            "- Treat this as a lecture-block synthesis across multiple readings, informed by teaching framing rather than as one uniform text."
+        ]
+
+    source_type = str(getattr(source_item, "source_type", "") or "").strip().lower()
+    if source_type == "slide":
+        slide = _find_matching_slide(lecture, source_item)
+        title = str((slide or {}).get("title") or getattr(source_item, "base_name", "")).strip()
+        subcategory = str((slide or {}).get("subcategory") or "").strip().lower() or "slide"
+        if subcategory == "lecture":
+            return [
+                f"- This is a lecture slide deck: fragmentary teaching scaffolding for the theme '{title}'.",
+                "- Treat the deck as a guide to sequence, emphasis, and framing rather than as a complete prose source.",
+            ]
+        if subcategory == "seminar":
+            return [
+                f"- This is a seminar slide deck: application- and discussion-oriented teaching material for '{title}'.",
+                "- Expect prompts, exercises, and simplifications that presuppose the lecture and readings.",
+            ]
+        if subcategory == "exercise":
+            return [
+                f"- This is an exercise slide deck: practice-oriented material for '{title}'.",
+                "- Use it to reconstruct what is being trained or clarified, not as a standalone theory text.",
+            ]
+        return [
+            "- This is a slide deck rather than a full prose source.",
+            "- Reconstruct structure and emphasis without overstating what the slides explicitly say.",
+        ]
+
+    reading = _find_matching_reading(lecture, source_item)
+    title = str((reading or {}).get("reading_title") or getattr(source_item, "base_name", "")).strip()
+    if "grundbog kapitel" in title.casefold():
+        return [
+            f"- This is a textbook chapter: an orienting or field-mapping text for '{title}'.",
+            "- Use it to frame the lecture theme, key concepts, and major distinctions rather than expecting one narrow empirical claim.",
+        ]
+    return [
+        f"- This is an assigned article or chapter centered on the specific contribution '{title}'.",
+        "- Treat it as one perspective on the lecture theme, with its own argument, emphasis, and delimitations.",
+    ]
+
+
 def build_course_prompt_context_note(
     *,
     bundle: CoursePromptContextBundle | None,
@@ -343,14 +445,18 @@ def build_course_prompt_context_note(
     reading_limit = max(1, int(config.get("max_readings", 3)))
     point_limit = max(1, int(config.get("max_points_per_reading", 2)))
     slide_limit = max(1, int(config.get("max_slide_titles", 4)))
+    course_theme_limit = max(0, int(config.get("max_course_themes", 22)))
     if prompt_type == "short":
         reading_limit = min(reading_limit, 2)
         point_limit = 1
+        course_theme_limit = min(course_theme_limit, 8)
 
     sections: list[str] = []
+    lecture_theme = _clean_lecture_theme(lecture_title) or lecture_title
 
-    position_lines = [
+    frame_lines = [
         f"- Current lecture: {canonical_key} - {lecture_title}.",
+        f"- Current lecture theme: {lecture_theme}.",
         (
             f"- Course position: lecture {sequence_index} of {total_lectures}; "
             f"this sits in the {stage} portion of the course."
@@ -372,13 +478,26 @@ def build_course_prompt_context_note(
                 f"{next_lecture.get('lecture_key')} - {str(next_lecture.get('lecture_title') or '').strip()}"
             )
     if previous_lectures:
-        position_lines.append(f"- It builds on: {', '.join(previous_lectures)}.")
+        frame_lines.append(f"- It builds on: {', '.join(previous_lectures)}.")
     if next_lectures:
-        position_lines.append(f"- It leads into: {', '.join(next_lectures)}.")
+        frame_lines.append(f"- It leads into: {', '.join(next_lectures)}.")
+    if bundle.course_theme_titles and course_theme_limit > 0:
+        theme_heading = "- Broader course themes in play across the semester: "
+        if len(bundle.course_theme_titles) > course_theme_limit:
+            theme_heading = "- Selected broader course themes in play across the semester: "
+        frame_lines.append(
+            theme_heading
+            + "; ".join(bundle.course_theme_titles[:course_theme_limit])
+            + "."
+        )
     overview_excerpt = _overview_excerpt(bundle, canonical_key)
     if overview_excerpt:
-        position_lines.append(f"- Course overview excerpt: {overview_excerpt}.")
-    sections.append("## Lecture position\n" + "\n".join(position_lines))
+        frame_lines.append(f"- Course overview excerpt: {overview_excerpt}.")
+    sections.append("## Course and lecture frame\n" + "\n".join(frame_lines))
+
+    source_character_lines = _source_character_lines(lecture, source_item)
+    if source_character_lines:
+        sections.append("## Source character\n" + "\n".join(source_character_lines))
 
     lecture_summary = lecture.get("summary") if isinstance(lecture.get("summary"), dict) else None
     summary_lines = _summary_lines(lecture_summary)

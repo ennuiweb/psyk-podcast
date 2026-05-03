@@ -29,7 +29,7 @@
         "focus": [
           "the overarching problem the lecture is trying to address",
           "the sequence logic that organizes the lecture",
-          "the concepts and distinctions that are most exam-relevant",
+          "the concepts and distinctions the lecture treats as most central",
           "where the slides most likely simplify something important",
           "what the material challenges in psychology's self-understanding"
         ]
@@ -45,12 +45,12 @@
         ]
       },
       "short": {
-        "lead": "Keep the explanation compact, memorable, and exam-oriented without becoming vague.",
+        "lead": "Keep the explanation compact, concrete, and easy to carry forward without becoming vague.",
         "focus": [
           "the single most important claim, problem, or insight",
           "the key distinction or clarification to remember",
           "the misunderstanding or oversimplification to avoid",
-          "what is most important to take into exam preparation"
+          "what is most important to carry forward from the source"
         ]
       },
       "mixed_sources": {
@@ -58,8 +58,9 @@
         "focus": [
           "the overarching problem and argumentative sequence of the lecture block",
           "the key distinctions, tensions, and corrections across slides and readings",
+          "how the lecture and seminar framing help prioritize what matters most to understand",
           "where the readings nuance, complicate, or correct the lecture framing",
-          "what is most exam-relevant and easiest to misunderstand",
+          "what is easiest to misunderstand if the slides are read too quickly or too literally",
           "what the material changes in psychology's self-understanding"
         ]
       }
@@ -149,35 +150,35 @@
   },
   "exam_focus": {
     "enabled": true,
-    "heading": "Exam lens:",
+    "heading": "Academic orientation:",
     "prompt_types": {
       "single_reading": [
-        "clarify the theory's historical tradition and core assumptions",
-        "analyze the theory's possibilities and limitations for the problem at hand",
+        "clarify the theory's historical tradition and core assumptions where they matter",
+        "analyze what the theory helps explain and what it leaves unresolved",
         "explain what kind of method relation or methodological stance is implied",
-        "make clear what should be evaluated critically, not just summarized"
+        "make clear what should be examined critically, not just summarized"
       ],
       "single_slide": [
         "clarify the lecture's theoretical placement where the slides make it possible",
         "state the most important possibilities and limitations implied by the material",
         "note what kind of theory-method relation is implied",
-        "flag what should be evaluated critically rather than repeated"
+        "flag what should be examined critically rather than repeated"
       ],
       "weekly_readings_only": [
         "clarify the historical tradition and core assumptions in play across the readings",
-        "analyze the theories' possibilities and limitations for the shared problem",
+        "analyze what the theories illuminate well and where they stay partial or in tension",
         "make the relation between theory and method explicit where it matters",
-        "show what should be evaluated critically, not just summarized"
+        "show what should be examined critically, not just summarized"
       ],
       "short": [
-        "make clear what matters most for exam preparation",
+        "make clear the one or two ideas a student should carry forward",
         "include at least one limitation, tension, or critical point rather than only summarizing"
       ],
       "mixed_sources": [
         "clarify the historical tradition and core assumptions in play",
-        "analyze the theories' possibilities and limitations for the problem at hand",
+        "analyze what the theories illuminate well and where the teaching framing leaves open questions",
         "make the relation between theory and method explicit where it matters",
-        "show what should be evaluated critically, not just summarized"
+        "show what should be examined critically, not just summarized"
       ]
     }
   },
@@ -215,7 +216,8 @@
     "neighbor_window": 1,
     "max_readings": 3,
     "max_points_per_reading": 2,
-    "max_slide_titles": 4
+    "max_slide_titles": 4,
+    "max_course_themes": 10
   },
   "weekly_overview": {
     "format": "deep-dive",

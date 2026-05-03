@@ -63,11 +63,11 @@ python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_week.py 
   - `single_reading` asks for argument structure, conceptual distinctions, corrections/rejections, likely misunderstandings, and implications for personality/subject thinking.
   - `single_slide` treats slides as fragmentary lecture scaffolding and asks NotebookLM to reconstruct the argumentative sequence rather than summarize slide bullets.
   - `mixed_sources` is implemented in the builder for future mixed notebooks and assigns explicit source roles: slides provide structure and lecture framing; readings provide nuance and argumentative depth.
-  - `short` uses a compact, exam-oriented focus rather than the full deep-dive checklist.
+  - `short` uses a compact, carry-forward focus rather than the full deep-dive checklist.
   - The default tone is calm, precise, and teaching-oriented, with explicit anti-dramatization guidance.
 - `exam_focus` is a separate additive block in `prompt_config.json`.
-  - It injects short exam-facing evaluation criteria after the scenario focus block.
-  - The defaults emphasize historical tradition/core assumptions, possibilities and limitations, theory-method relation, and what should be evaluated critically rather than merely repeated.
+  - It now functions as a lighter academic/critical orientation block rather than an explicit exam block, while keeping the legacy config key for compatibility.
+  - The defaults emphasize theoretical placement, possibilities and limitations, theory-method relation, and what should be examined critically rather than merely repeated.
 - `audio_prompt_framework` is the shared prompt-assembly layer in `prompt_config.json`.
   - It adds cross-cutting generation rules plus format-aware and length-aware guidance.
   - `format` and `length` now affect the resolved audio prompt itself, not only NotebookLM request params and config-tag hashes.
@@ -127,6 +127,9 @@ python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/bootstrap_episode
   - readings anchor claims, distinctions, and argument structure
   - forelaesning slides provide sequencing, framing, and emphasis
   - seminar slides provide application, clarification, discussion points, and likely misunderstandings
+- Audio prompts should not talk explicitly about the upcoming exam unless a specific downstream artifact genuinely requires it.
+- Audio prompts should still steer toward what is most important to understand and carry forward, using lecture framing and slide context for prioritization rather than exam branding.
+- Do not add explicit "be engaging" instructions to NotebookLM prompts. Improve focus, structure, and prioritization instead.
 - Prompt generation should preserve grounding:
   - what the source explicitly says
   - how the lecture frames it

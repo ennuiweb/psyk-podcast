@@ -18,7 +18,7 @@ Current operational note:
 - `notebooklm-podcast-auto/personlighedspsykologi/` - Personlighedspsykologi wrapper scripts, docs, tests, and evaluation assets.
 - `notebooklm-podcast-auto/bioneuro/` - Bioneuro wrapper scripts and output flow.
 - `notebooklm-podcast-auto/notebooklm-py/` - tracked submodule with the underlying client, docs, and test surface.
-- `notebooklm_queue/` - queue-core package for the Hetzner migration path: durable job store, state machine, lock handling, and CLI.
+- `notebooklm_queue/` - queue-core package for the Hetzner migration path: durable job store, state machine, lock handling, CLI, and the shared prompt-assembly module used by generation wrappers.
 - `scripts/notebooklm_queue.py` - local wrapper that re-execs into `.venv` and exposes the queue CLI.
 
 ## Primary commands

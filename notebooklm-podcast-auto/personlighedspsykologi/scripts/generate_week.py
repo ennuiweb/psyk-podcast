@@ -15,6 +15,12 @@ from pathlib import Path
 import shlex
 from typing import NamedTuple
 
+REPO_ROOT_FOR_IMPORTS = Path(__file__).resolve().parents[3]
+if str(REPO_ROOT_FOR_IMPORTS) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT_FOR_IMPORTS))
+
+from notebooklm_queue import prompting
+
 
 def read_json(path: Path) -> dict:
     with path.open("r", encoding="utf-8") as handle:
@@ -59,142 +65,21 @@ BRIEF_APPLY_TO_VALUES = {
 }
 BRIEF_SUPPORTED_CONTENT_TYPES = {"audio", "infographic"}
 SHORT_PREFIX_GLOBS = ("[[]Short[]]*", "[[]Brief[]]*")
-AUDIO_FORMAT_VALUES = {"deep-dive", "brief", "critique", "debate"}
-AUDIO_LENGTH_VALUES = {"short", "default", "long"}
+AUDIO_FORMAT_VALUES = prompting.AUDIO_FORMAT_VALUES
+AUDIO_LENGTH_VALUES = prompting.AUDIO_LENGTH_VALUES
 PER_SLIDE_OVERRIDE_KEYS = {"format", "length", "prompt"}
 SLIDE_AUDIO_QUARANTINE_ROOT = Path(".ai/quarantine/slide-audio-overrides")
 TEXT_SOURCE_EXTENSIONS = {".txt", ".md", ".markdown", ".html", ".htm", ".json", ".csv"}
-PROMPT_SIDECAR_SUFFIXES = (
-    ".prompt.md",
-    ".prompt.txt",
-    ".analysis.md",
-    ".analysis.txt",
-)
-WEEK_PROMPT_SIDECAR_NAMES = (
-    "week.prompt.md",
-    "week.prompt.txt",
-    "week.analysis.md",
-    "week.analysis.txt",
-)
-AUDIO_PROMPT_TYPES = (
-    "single_reading",
-    "single_slide",
-    "weekly_readings_only",
-    "short",
-    "mixed_sources",
-)
-GEMINI_META_PROMPT_MODEL = "gemini-3.1-pro-preview"
+PROMPT_SIDECAR_SUFFIXES = prompting.PROMPT_SIDECAR_SUFFIXES
+WEEK_PROMPT_SIDECAR_NAMES = prompting.WEEK_PROMPT_SIDECAR_NAMES
+AUDIO_PROMPT_TYPES = prompting.AUDIO_PROMPT_TYPES
+GEMINI_META_PROMPT_MODEL = prompting.GEMINI_META_PROMPT_MODEL
 GEMINI_FILE_POLL_INTERVAL_SECONDS = 2
 GEMINI_FILE_POLL_TIMEOUT_SECONDS = 60
-DEFAULT_AUDIO_PROMPT_STRATEGY = {
-    "enabled": True,
-    "audience": "a bachelor's-level psychology student",
-    "tone": "calm, precise, teaching-oriented. Avoid dramatization.",
-    "source_roles": {
-        "slides": "Use the slides as the structural map and the lecturer's interpretive frame.",
-        "readings": "Use the readings for conceptual distinctions, qualifications, and argumentative depth.",
-    },
-    "prompt_types": {
-        "single_reading": {
-            "focus": [
-                "the source's central claims and argument structure",
-                "the most important conceptual distinctions and delimitations",
-                "what the source explicitly rejects, corrects, or qualifies",
-                "where a student is most likely to misunderstand the source",
-                "what the source changes for psychological thinking about personality and the subject",
-            ]
-        },
-        "single_slide": {
-            "lead": "The source is a slide deck. Slides are fragmentary and assume spoken elaboration.",
-            "focus": [
-                "the overarching problem the lecture is trying to address",
-                "the sequence logic that organizes the lecture",
-                "the concepts and distinctions that are most exam-relevant",
-                "where the slides most likely simplify something important",
-                "what the material challenges in psychology's self-understanding",
-            ]
-        },
-        "weekly_readings_only": {
-            "lead": "You are working with multiple readings on the same lecture block.",
-            "focus": [
-                "the shared problem or question that organizes the material",
-                "the key conceptual distinctions, tensions, and disagreements across the readings",
-                "where the readings qualify, deepen, or correct one another",
-                "what a student is most likely to misunderstand",
-                "what matters most for psychological thinking about personality and the subject",
-            ]
-        },
-        "short": {
-            "lead": "Keep the explanation compact, memorable, and exam-oriented without becoming vague.",
-            "focus": [
-                "the single most important claim, problem, or insight",
-                "the key distinction or clarification to remember",
-                "the misunderstanding or oversimplification to avoid",
-                "what is most important to take into exam preparation",
-            ]
-        },
-        "mixed_sources": {
-            "lead": "You are working with both slides and readings.",
-            "focus": [
-                "the overarching problem and argumentative sequence of the lecture block",
-                "the key distinctions, tensions, and corrections across slides and readings",
-                "where the readings nuance, complicate, or correct the lecture framing",
-                "what is most exam-relevant and easiest to misunderstand",
-                "what the material changes in psychology's self-understanding",
-            ]
-        },
-    },
-}
-DEFAULT_EXAM_FOCUS = {
-    "enabled": True,
-    "heading": "Exam lens:",
-    "prompt_types": {
-        "single_reading": [
-            "clarify the theory's historical tradition and core assumptions",
-            "analyze the theory's possibilities and limitations for the problem at hand",
-            "explain what kind of method relation or methodological stance is implied",
-            "make clear what should be evaluated critically, not just summarized",
-        ],
-        "single_slide": [
-            "clarify the lecture's theoretical placement where the slides make it possible",
-            "state the most important possibilities and limitations implied by the material",
-            "note what kind of theory-method relation is implied",
-            "flag what should be evaluated critically rather than repeated",
-        ],
-        "weekly_readings_only": [
-            "clarify the historical tradition and core assumptions in play across the readings",
-            "analyze the theories' possibilities and limitations for the shared problem",
-            "make the relation between theory and method explicit where it matters",
-            "show what should be evaluated critically, not just summarized",
-        ],
-        "short": [
-            "make clear what matters most for exam preparation",
-            "include at least one limitation, tension, or critical point rather than only summarizing",
-        ],
-        "mixed_sources": [
-            "clarify the historical tradition and core assumptions in play",
-            "analyze the theories' possibilities and limitations for the problem at hand",
-            "make the relation between theory and method explicit where it matters",
-            "show what should be evaluated critically, not just summarized",
-        ],
-    },
-}
-DEFAULT_META_PROMPTING = {
-    "enabled": True,
-    "heading": "External pre-analysis to integrate if useful:",
-    "per_source_suffixes": list(PROMPT_SIDECAR_SUFFIXES),
-    "weekly_sidecars": list(WEEK_PROMPT_SIDECAR_NAMES),
-    "automatic": {
-        "enabled": False,
-        "provider": "gemini",
-        "model": GEMINI_META_PROMPT_MODEL,
-        "fail_open": True,
-        "default_per_source_output_suffix": ".analysis.md",
-        "default_weekly_output_name": "week.analysis.md",
-        "max_chars_per_source": 12000,
-        "max_total_chars": 24000,
-    },
-}
+DEFAULT_AUDIO_PROMPT_STRATEGY = prompting.DEFAULT_AUDIO_PROMPT_STRATEGY
+DEFAULT_EXAM_FOCUS = prompting.DEFAULT_EXAM_FOCUS
+DEFAULT_META_PROMPTING = prompting.DEFAULT_META_PROMPTING
+DEFAULT_AUDIO_PROMPT_FRAMEWORK = prompting.DEFAULT_AUDIO_PROMPT_FRAMEWORK
 META_PROMPT_MAX_RESPONSE_TOKENS = 1400
 META_PROMPT_WARNING_MESSAGES: set[str] = set()
 
@@ -413,10 +298,7 @@ def list_source_files(week_dir: Path) -> list[Path]:
 
 
 def is_prompt_sidecar_file(path: Path, meta_prompting: dict | None = None) -> bool:
-    config = meta_prompting or DEFAULT_META_PROMPTING
-    if path.name in set(config["weekly_sidecars"]):
-        return True
-    return any(path.name.endswith(suffix) for suffix in config["per_source_suffixes"])
+    return prompting.is_prompt_sidecar_file(path, meta_prompting)
 
 
 def _slides_catalog_entries_for_lecture(
@@ -597,6 +479,7 @@ def per_source_audio_settings(
     per_slide_overrides: dict[str, dict] | None = None,
     prompt_strategy: dict | None = None,
     exam_focus: dict | None = None,
+    prompt_framework: dict | None = None,
     meta_prompting: dict | None = None,
     meta_note_overrides: dict[Path, str] | None = None,
 ) -> tuple[str, str, str, str]:
@@ -620,9 +503,12 @@ def per_source_audio_settings(
                 prompt_type="single_slide",
                 prompt_strategy=prompt_strategy,
                 exam_focus=exam_focus,
+                prompt_framework=prompt_framework,
                 meta_prompting=meta_prompting,
                 meta_note_overrides=meta_note_overrides,
                 custom_prompt=slide_cfg.get("prompt", ""),
+                audio_format=slide_cfg.get("format", "deep-dive"),
+                audio_length=slide_cfg.get("length", "default"),
                 source_item=source_item,
             ),
             slide_cfg.get("format", "deep-dive"),
@@ -634,9 +520,12 @@ def per_source_audio_settings(
             prompt_type="single_reading",
             prompt_strategy=prompt_strategy,
             exam_focus=exam_focus,
+            prompt_framework=prompt_framework,
             meta_prompting=meta_prompting,
             meta_note_overrides=meta_note_overrides,
             custom_prompt=per_reading_cfg.get("prompt", ""),
+            audio_format=per_reading_cfg.get("format", "deep-dive"),
+            audio_length=per_reading_cfg.get("length", "default"),
             source_item=source_item,
         ),
         per_reading_cfg.get("format", "deep-dive"),
@@ -843,259 +732,43 @@ def normalize_episode_title(title: str, week_label: str) -> str:
 
 
 def _deep_copy_prompt_defaults(value: object) -> object:
-    if isinstance(value, dict):
-        return {key: _deep_copy_prompt_defaults(item) for key, item in value.items()}
-    if isinstance(value, list):
-        return [_deep_copy_prompt_defaults(item) for item in value]
-    return value
+    return prompting._deep_copy_prompt_defaults(value)
 
 
 def _normalize_string_list(section: str, field: str, value: object) -> list[str]:
-    if not isinstance(value, list) or any(not isinstance(item, str) for item in value):
-        raise SystemExit(f"{section}.{field} must be a list of strings.")
-    cleaned = [item.strip() for item in value if item.strip()]
-    if not cleaned:
-        raise SystemExit(f"{section}.{field} must contain at least one non-empty string.")
-    return cleaned
+    return prompting._normalize_string_list(section, field, value)
 
 
 def normalize_audio_prompt_strategy(raw: object) -> dict:
-    defaults = _deep_copy_prompt_defaults(DEFAULT_AUDIO_PROMPT_STRATEGY)
-    if raw in (None, ""):
-        return defaults
-    if not isinstance(raw, dict):
-        raise SystemExit("audio_prompt_strategy must be an object.")
-
-    normalized = defaults
-    for field in ("audience", "tone"):
-        if field not in raw:
-            continue
-        value = raw[field]
-        if not isinstance(value, str):
-            raise SystemExit(f"audio_prompt_strategy.{field} must be a string.")
-        stripped = value.strip()
-        if stripped:
-            normalized[field] = stripped
-
-    if "enabled" in raw:
-        if not isinstance(raw["enabled"], bool):
-            raise SystemExit("audio_prompt_strategy.enabled must be true or false.")
-        normalized["enabled"] = raw["enabled"]
-
-    if "source_roles" in raw:
-        source_roles = raw["source_roles"]
-        if not isinstance(source_roles, dict):
-            raise SystemExit("audio_prompt_strategy.source_roles must be an object.")
-        for role in ("slides", "readings"):
-            if role not in source_roles:
-                continue
-            value = source_roles[role]
-            if not isinstance(value, str):
-                raise SystemExit(f"audio_prompt_strategy.source_roles.{role} must be a string.")
-            stripped = value.strip()
-            if stripped:
-                normalized["source_roles"][role] = stripped
-
-    if "prompt_types" in raw:
-        prompt_types = raw["prompt_types"]
-        if not isinstance(prompt_types, dict):
-            raise SystemExit("audio_prompt_strategy.prompt_types must be an object.")
-        unknown = sorted(set(prompt_types) - set(AUDIO_PROMPT_TYPES))
-        if unknown:
-            raise SystemExit(
-                "Unknown audio prompt type(s): "
-                + ", ".join(unknown)
-                + ". Allowed: "
-                + ", ".join(AUDIO_PROMPT_TYPES)
-            )
-        for prompt_type, prompt_cfg in prompt_types.items():
-            if not isinstance(prompt_cfg, dict):
-                raise SystemExit(f"audio_prompt_strategy.prompt_types.{prompt_type} must be an object.")
-            if "lead" in prompt_cfg:
-                value = prompt_cfg["lead"]
-                if not isinstance(value, str):
-                    raise SystemExit(
-                        f"audio_prompt_strategy.prompt_types.{prompt_type}.lead must be a string."
-                    )
-                normalized["prompt_types"][prompt_type]["lead"] = value.strip()
-            if "focus" in prompt_cfg:
-                normalized["prompt_types"][prompt_type]["focus"] = _normalize_string_list(
-                    f"audio_prompt_strategy.prompt_types.{prompt_type}",
-                    "focus",
-                    prompt_cfg["focus"],
-                )
-    return normalized
+    return prompting.normalize_audio_prompt_strategy(raw)
 
 
 def normalize_exam_focus(raw: object) -> dict:
-    defaults = _deep_copy_prompt_defaults(DEFAULT_EXAM_FOCUS)
-    if raw in (None, ""):
-        return defaults
-    if not isinstance(raw, dict):
-        raise SystemExit("exam_focus must be an object.")
-
-    normalized = defaults
-    if "enabled" in raw:
-        if not isinstance(raw["enabled"], bool):
-            raise SystemExit("exam_focus.enabled must be true or false.")
-        normalized["enabled"] = raw["enabled"]
-    if "heading" in raw:
-        if not isinstance(raw["heading"], str):
-            raise SystemExit("exam_focus.heading must be a string.")
-        stripped = raw["heading"].strip()
-        if stripped:
-            normalized["heading"] = stripped
-    if "prompt_types" in raw:
-        prompt_types = raw["prompt_types"]
-        if not isinstance(prompt_types, dict):
-            raise SystemExit("exam_focus.prompt_types must be an object.")
-        unknown = sorted(set(prompt_types) - set(AUDIO_PROMPT_TYPES))
-        if unknown:
-            raise SystemExit(
-                "Unknown exam focus prompt type(s): "
-                + ", ".join(unknown)
-                + ". Allowed: "
-                + ", ".join(AUDIO_PROMPT_TYPES)
-            )
-        for prompt_type, items in prompt_types.items():
-            normalized["prompt_types"][prompt_type] = _normalize_string_list(
-                f"exam_focus.prompt_types.{prompt_type}",
-                "items",
-                items,
-            )
-    return normalized
+    return prompting.normalize_exam_focus(raw)
 
 
 def normalize_meta_prompting(raw: object) -> dict:
-    defaults = _deep_copy_prompt_defaults(DEFAULT_META_PROMPTING)
-    if raw in (None, ""):
-        return defaults
-    if not isinstance(raw, dict):
-        raise SystemExit("meta_prompting must be an object.")
+    return prompting.normalize_meta_prompting(raw)
 
-    normalized = defaults
-    if "enabled" in raw:
-        if not isinstance(raw["enabled"], bool):
-            raise SystemExit("meta_prompting.enabled must be true or false.")
-        normalized["enabled"] = raw["enabled"]
-    if "heading" in raw:
-        if not isinstance(raw["heading"], str):
-            raise SystemExit("meta_prompting.heading must be a string.")
-        stripped = raw["heading"].strip()
-        if stripped:
-            normalized["heading"] = stripped
-    if "per_source_suffixes" in raw:
-        normalized["per_source_suffixes"] = _normalize_string_list(
-            "meta_prompting",
-            "per_source_suffixes",
-            raw["per_source_suffixes"],
-        )
-    if "weekly_sidecars" in raw:
-        normalized["weekly_sidecars"] = _normalize_string_list(
-            "meta_prompting",
-            "weekly_sidecars",
-            raw["weekly_sidecars"],
-        )
-    if "automatic" in raw:
-        automatic = raw["automatic"]
-        if not isinstance(automatic, dict):
-            raise SystemExit("meta_prompting.automatic must be an object.")
-        for field in ("enabled", "fail_open"):
-            if field not in automatic:
-                continue
-            if not isinstance(automatic[field], bool):
-                raise SystemExit(f"meta_prompting.automatic.{field} must be true or false.")
-            normalized["automatic"][field] = automatic[field]
-        for field in (
-            "provider",
-            "model",
-            "default_per_source_output_suffix",
-            "default_weekly_output_name",
-        ):
-            if field not in automatic:
-                continue
-            value = automatic[field]
-            if not isinstance(value, str):
-                raise SystemExit(f"meta_prompting.automatic.{field} must be a string.")
-            stripped = value.strip()
-            if stripped:
-                normalized["automatic"][field] = stripped
-        for field in ("max_chars_per_source", "max_total_chars"):
-            if field not in automatic:
-                continue
-            value = automatic[field]
-            if not isinstance(value, int) or value < 1:
-                raise SystemExit(f"meta_prompting.automatic.{field} must be an integer >= 1.")
-            normalized["automatic"][field] = value
 
-    auto = normalized["automatic"]
-    provider = str(auto["provider"]).strip().lower()
-    if provider not in {"gemini", "anthropic"}:
-        raise SystemExit("meta_prompting.automatic.provider must be 'gemini' or 'anthropic'.")
-    auto["provider"] = provider
-    if provider == "gemini":
-        auto["model"] = GEMINI_META_PROMPT_MODEL
-    source_suffix = str(auto["default_per_source_output_suffix"]).strip()
-    if not source_suffix.startswith("."):
-        raise SystemExit(
-            "meta_prompting.automatic.default_per_source_output_suffix must start with '.'."
-        )
-    weekly_name = str(auto["default_weekly_output_name"]).strip()
-    if "/" in weekly_name or "\\" in weekly_name:
-        raise SystemExit(
-            "meta_prompting.automatic.default_weekly_output_name must be a plain filename."
-        )
-
-    per_source_suffixes = list(dict.fromkeys(normalized["per_source_suffixes"]))
-    weekly_sidecars = list(dict.fromkeys(normalized["weekly_sidecars"]))
-    if source_suffix not in per_source_suffixes:
-        per_source_suffixes.append(source_suffix)
-    if weekly_name not in weekly_sidecars:
-        weekly_sidecars.append(weekly_name)
-    normalized["per_source_suffixes"] = per_source_suffixes
-    normalized["weekly_sidecars"] = weekly_sidecars
-    return normalized
+def normalize_audio_prompt_framework(raw: object) -> dict:
+    return prompting.normalize_audio_prompt_framework(raw)
 
 
 def ensure_prompt(_: str, value: str) -> str:
-    return value.strip()
+    return prompting.ensure_prompt(_, value)
 
 
 def _format_bullets(items: list[str]) -> str:
-    return "\n".join(f"- {item}" for item in items if item)
+    return prompting._format_bullets(items)
 
 
 def _source_prompt_sidecar_candidates(source_path: Path, meta_prompting: dict) -> list[Path]:
-    candidates: list[Path] = []
-    stem_base = source_path.with_suffix("")
-    seen: set[Path] = set()
-    for suffix in meta_prompting["per_source_suffixes"]:
-        for candidate in (
-            source_path.parent / f"{source_path.name}{suffix}",
-            stem_base.parent / f"{stem_base.name}{suffix}",
-        ):
-            if candidate in seen:
-                continue
-            seen.add(candidate)
-            candidates.append(candidate)
-    return candidates
+    return prompting._source_prompt_sidecar_candidates(source_path, meta_prompting)
 
 
 def _week_prompt_sidecar_candidates(week_dir: Path, week_label: str | None, meta_prompting: dict) -> list[Path]:
-    candidates: list[Path] = []
-    seen: set[Path] = set()
-    label = canonicalize_lecture_key(week_label or "")
-    names = list(meta_prompting["weekly_sidecars"])
-    if label:
-        for suffix in meta_prompting["per_source_suffixes"]:
-            names.append(f"{label}{suffix}")
-    for name in names:
-        candidate = week_dir / name
-        if candidate in seen:
-            continue
-        seen.add(candidate)
-        candidates.append(candidate)
-    return candidates
+    return prompting._week_prompt_sidecar_candidates(week_dir, week_label, meta_prompting)
 
 
 def _warn_meta_prompt_once(message: str) -> None:
@@ -1120,21 +793,10 @@ def _read_prompt_sidecars(
     candidates: list[Path],
     meta_note_overrides: dict[Path, str] | None = None,
 ) -> str:
-    sections: list[str] = []
-    for path in candidates:
-        if meta_note_overrides and path in meta_note_overrides:
-            content = str(meta_note_overrides[path]).strip()
-        else:
-            if not path.exists() or not path.is_file():
-                continue
-            try:
-                content = path.read_text(encoding="utf-8").strip()
-            except OSError:
-                continue
-        if not content:
-            continue
-        sections.append(f"[{path.name}]\n{content}")
-    return "\n\n".join(sections)
+    return prompting._read_prompt_sidecars(
+        candidates,
+        meta_note_overrides=meta_note_overrides,
+    )
 
 
 def _strip_markdown_fence(text: str) -> str:
@@ -1738,73 +1400,32 @@ def build_audio_prompt(
     prompt_type: str,
     prompt_strategy: dict | None,
     exam_focus: dict | None,
+    prompt_framework: dict | None,
     meta_prompting: dict | None,
     meta_note_overrides: dict[Path, str] | None = None,
     custom_prompt: str,
+    audio_format: str | None = None,
+    audio_length: str | None = None,
     source_item: SourceItem | None = None,
     source_items: list[SourceItem] | None = None,
     week_dir: Path | None = None,
     week_label: str | None = None,
 ) -> str:
-    if prompt_type not in AUDIO_PROMPT_TYPES:
-        raise ValueError(
-            f"Unknown audio prompt type '{prompt_type}'. Allowed: {', '.join(AUDIO_PROMPT_TYPES)}."
-        )
-    custom_prompt = ensure_prompt("audio", custom_prompt)
-    notes = ""
-    if meta_prompting and meta_prompting.get("enabled", False):
-        if source_item is not None:
-            notes = _read_prompt_sidecars(
-                _source_prompt_sidecar_candidates(source_item.path, meta_prompting),
-                meta_note_overrides=meta_note_overrides,
-            )
-        elif source_items is not None and week_dir is not None:
-            notes = _read_prompt_sidecars(
-                _week_prompt_sidecar_candidates(week_dir, week_label, meta_prompting),
-                meta_note_overrides=meta_note_overrides,
-            )
-
-    sections: list[str] = []
-    if prompt_strategy and prompt_strategy.get("enabled", False):
-        prompt_type_cfg = prompt_strategy["prompt_types"][prompt_type]
-        sections.append(
-            f"Create a deep-dive audio overview for {prompt_strategy['audience']}."
-        )
-        lead = str(prompt_type_cfg.get("lead") or "").strip()
-        if lead:
-            sections.append(lead)
-        if prompt_type == "mixed_sources":
-            sections.append(
-                "Source roles:\n"
-                f"- Slides: {prompt_strategy['source_roles']['slides']}\n"
-                f"- Readings: {prompt_strategy['source_roles']['readings']}"
-            )
-        elif prompt_type == "short" and source_item is not None and source_item.source_type == "slide":
-            sections.append(
-                "Because the source is a slide deck, reconstruct the argumentative line instead of paraphrasing bullet fragments."
-            )
-        sections.append(
-            f"Focus on:\n{_format_bullets(prompt_type_cfg['focus'])}"
-        )
-
-    if exam_focus and exam_focus.get("enabled", False):
-        exam_items = exam_focus["prompt_types"].get(prompt_type) or []
-        if exam_items:
-            sections.append(f"{exam_focus['heading']}\n{_format_bullets(exam_items)}")
-
-    if prompt_strategy and prompt_strategy.get("enabled", False):
-        sections.append(f"Tone: {prompt_strategy['tone']}")
-
-    if custom_prompt:
-        sections.append(f"Additional instructions:\n{custom_prompt}")
-    if notes:
-        heading = (
-            meta_prompting["heading"]
-            if meta_prompting and meta_prompting.get("enabled", False)
-            else "External pre-analysis:"
-        )
-        sections.append(f"{heading}\n{notes}")
-    return "\n\n".join(section for section in sections if section.strip())
+    return prompting.build_audio_prompt(
+        prompt_type=prompt_type,
+        prompt_strategy=prompt_strategy,
+        exam_focus=exam_focus,
+        prompt_framework=prompt_framework,
+        meta_prompting=meta_prompting,
+        meta_note_overrides=meta_note_overrides,
+        custom_prompt=custom_prompt,
+        audio_format=audio_format,
+        audio_length=audio_length,
+        source_item=source_item,
+        source_items=source_items,
+        week_dir=week_dir,
+        week_label=week_label,
+    )
 
 
 def normalize_slide_key(value: object) -> str:
@@ -2982,6 +2603,7 @@ def main() -> int:
     per_slide_overrides = validate_per_slide_audio_config(per_slide_cfg)
     audio_prompt_strategy = normalize_audio_prompt_strategy(config.get("audio_prompt_strategy"))
     exam_focus = normalize_exam_focus(config.get("exam_focus"))
+    audio_prompt_framework = normalize_audio_prompt_framework(config.get("audio_prompt_framework"))
     meta_prompting = normalize_meta_prompting(config.get("meta_prompting"))
     brief_cfg = ensure_dict(config.get("short", config.get("brief", {})))
     infographic_defaults = ensure_dict(config.get("infographic"))
@@ -3158,9 +2780,12 @@ def main() -> int:
                                     prompt_type="weekly_readings_only",
                                     prompt_strategy=audio_prompt_strategy,
                                     exam_focus=exam_focus,
+                                    prompt_framework=audio_prompt_framework,
                                     meta_prompting=meta_prompting,
                                     meta_note_overrides=auto_meta_note_overrides,
                                     custom_prompt=weekly_cfg.get("prompt", ""),
+                                    audio_format=weekly_cfg.get("format", "deep-dive"),
+                                    audio_length=weekly_cfg.get("length", "long"),
                                     source_items=reading_sources,
                                     week_dir=week_dir,
                                     week_label=week_label,
@@ -3254,6 +2879,7 @@ def main() -> int:
                                     per_slide_overrides=per_slide_overrides,
                                     prompt_strategy=audio_prompt_strategy,
                                     exam_focus=exam_focus,
+                                    prompt_framework=audio_prompt_framework,
                                     meta_prompting=meta_prompting,
                                     meta_note_overrides=auto_meta_note_overrides,
                                 )
@@ -3353,9 +2979,12 @@ def main() -> int:
                                         prompt_type="short",
                                         prompt_strategy=audio_prompt_strategy,
                                         exam_focus=exam_focus,
+                                        prompt_framework=audio_prompt_framework,
                                         meta_prompting=meta_prompting,
                                         meta_note_overrides=auto_meta_note_overrides,
                                         custom_prompt=brief_cfg.get("prompt", ""),
+                                        audio_format=brief_cfg.get("format", "deep-dive"),
+                                        audio_length=brief_cfg.get("length", "long"),
                                         source_item=source_item,
                                     )
                                     planned_tag = build_output_cfg_tag_token(
@@ -3454,9 +3083,12 @@ def main() -> int:
                                     prompt_type="weekly_readings_only",
                                     prompt_strategy=audio_prompt_strategy,
                                     exam_focus=exam_focus,
+                                    prompt_framework=audio_prompt_framework,
                                     meta_prompting=meta_prompting,
                                     meta_note_overrides=auto_meta_note_overrides,
                                     custom_prompt=weekly_cfg.get("prompt", ""),
+                                    audio_format=weekly_cfg.get("format", "deep-dive"),
+                                    audio_length=weekly_cfg.get("length", "long"),
                                     source_items=reading_sources,
                                     week_dir=week_dir,
                                     week_label=week_label,
@@ -3613,6 +3245,7 @@ def main() -> int:
                                     per_slide_overrides=per_slide_overrides,
                                     prompt_strategy=audio_prompt_strategy,
                                     exam_focus=exam_focus,
+                                    prompt_framework=audio_prompt_framework,
                                     meta_prompting=meta_prompting,
                                     meta_note_overrides=auto_meta_note_overrides,
                                 )
@@ -3784,9 +3417,12 @@ def main() -> int:
                                         prompt_type="short",
                                         prompt_strategy=audio_prompt_strategy,
                                         exam_focus=exam_focus,
+                                        prompt_framework=audio_prompt_framework,
                                         meta_prompting=meta_prompting,
                                         meta_note_overrides=auto_meta_note_overrides,
                                         custom_prompt=brief_cfg.get("prompt", ""),
+                                        audio_format=brief_cfg.get("format", "deep-dive"),
+                                        audio_length=brief_cfg.get("length", "long"),
                                         source_item=source_item,
                                     )
                                     audio_format = brief_cfg.get("format", "deep-dive")

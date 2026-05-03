@@ -9,7 +9,7 @@ It is **not** a podcast feed. Feed config now lives in:
 
 ## Key paths
 - `scripts/` - generation helpers (`generate_week.py`, `download_week.py`, `sync_reading_summaries.py`)
-- `prompt_config.json` - prompts + language variants for NotebookLM (audio + infographic + quiz defaults, including `audio_prompt_strategy`, `exam_focus`, and `meta_prompting`)
+- `prompt_config.json` - prompts + language variants for NotebookLM (audio + infographic + quiz defaults, including `audio_prompt_strategy`, `audio_prompt_framework`, `exam_focus`, and `meta_prompting`)
 - OneDrive Readings root (authoritative source dirs):
   - `/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings`
 - `output/` - generated MP3s/PNGs/quiz exports + request logs
@@ -68,6 +68,10 @@ python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_week.py 
 - `exam_focus` is a separate additive block in `prompt_config.json`.
   - It injects short exam-facing evaluation criteria after the scenario focus block.
   - The defaults emphasize historical tradition/core assumptions, possibilities and limitations, theory-method relation, and what should be evaluated critically rather than merely repeated.
+- `audio_prompt_framework` is the shared prompt-assembly layer in `prompt_config.json`.
+  - It adds cross-cutting generation rules plus format-aware and length-aware guidance.
+  - `format` and `length` now affect the resolved audio prompt itself, not only NotebookLM request params and config-tag hashes.
+  - This is the place to grow show-specific prompt logic without pushing more prompt text into `generate_week.py`.
 - The raw `prompt` fields under `weekly_overview`, `per_reading`, `per_slide`, and `short` are additive for audio: they append extra instructions on top of the built-in prompt structure rather than replacing it.
 - Individual slide podcasts can override `per_slide` by `slide_key`:
 

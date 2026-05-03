@@ -33,6 +33,7 @@ class GenerateWeekTests(unittest.TestCase):
         return {
             "prompt_strategy": mod.normalize_audio_prompt_strategy({}),
             "exam_focus": mod.normalize_exam_focus({}),
+            "prompt_framework": mod.normalize_audio_prompt_framework({}),
             "meta_prompting": mod.normalize_meta_prompting({}),
         }
 
@@ -246,7 +247,29 @@ class GenerateWeekTests(unittest.TestCase):
         self.assertIn("conceptual distinctions and delimitations", prompt)
         self.assertIn("Exam lens:", prompt)
         self.assertIn("historical tradition and core assumptions", prompt)
+        self.assertIn("Generation rules:", prompt)
+        self.assertIn("Do not invent studies, examples, citations", prompt)
         self.assertIn("Tone: calm, precise, teaching-oriented.", prompt)
+
+    def test_build_audio_prompt_includes_format_and_length_guidance(self):
+        mod = _load_module()
+        reading_item = mod.SourceItem(
+            path=Path("/tmp/Foucault.pdf"),
+            base_name="Foucault",
+            source_type="reading",
+        )
+
+        prompt = mod.build_audio_prompt(
+            prompt_type="single_reading",
+            custom_prompt="",
+            source_item=reading_item,
+            audio_format="critique",
+            audio_length="short",
+            **self._default_prompt_context(mod),
+        )
+
+        self.assertIn("Surface internal tensions, blind spots, and limitations explicitly", prompt)
+        self.assertIn("Aim for a dense explanation with very little repetition.", prompt)
 
     def test_build_audio_prompt_for_mixed_sources_assigns_source_roles(self):
         mod = _load_module()

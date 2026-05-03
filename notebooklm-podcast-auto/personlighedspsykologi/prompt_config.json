@@ -65,6 +65,47 @@
       }
     }
   },
+  "audio_prompt_framework": {
+    "enabled": true,
+    "heading": "Generation rules:",
+    "shared_rules": [
+      "Explain the material as a line of thought, not as a disconnected recap.",
+      "Distinguish clearly between what the source explicitly argues and what you are inferring from context.",
+      "Do not invent studies, examples, citations, or author positions that are not grounded in the supplied material.",
+      "Prioritize conceptual tensions, assumptions, and stakes over exhaustive detail lists."
+    ],
+    "format_guidance": {
+      "deep-dive": [
+        "Build a cumulative explanation with a clear argumentative arc rather than a list of points.",
+        "Spend time on why the distinctions matter, not only on naming them."
+      ],
+      "brief": [
+        "Compress aggressively around the central claim and one or two decisive distinctions.",
+        "Omit secondary branches unless they change the main interpretation."
+      ],
+      "critique": [
+        "Surface internal tensions, blind spots, and limitations explicitly, but do not caricature the source.",
+        "Anchor critique in the source's own claims and assumptions."
+      ],
+      "debate": [
+        "Stage the strongest competing interpretations fairly before taking a side.",
+        "Make disagreements explicit and explain what turns on them."
+      ]
+    },
+    "length_guidance": {
+      "short": [
+        "Aim for a dense explanation with very little repetition.",
+        "Prioritize the one or two takeaways a student must remember."
+      ],
+      "default": [
+        "Use enough space to explain the main distinctions and their stakes without drifting."
+      ],
+      "long": [
+        "Take time to unfold the argument step by step and connect it to broader theoretical stakes.",
+        "Use repetition only when it clarifies a difficult distinction."
+      ]
+    }
+  },
   "exam_focus": {
     "enabled": true,
     "heading": "Exam lens:",

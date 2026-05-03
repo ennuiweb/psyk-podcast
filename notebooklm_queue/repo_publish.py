@@ -289,7 +289,7 @@ def _allowed_paths(
 
 
 def _git_status(repo_root: Path) -> list[dict[str, Any]]:
-    result = _run_git(repo_root, ["git", "status", "--porcelain"])
+    result = _run_git(repo_root, ["git", "status", "--porcelain", "--untracked-files=all"])
     entries: list[dict[str, Any]] = []
     for raw_line in result.stdout.splitlines():
         if not raw_line:

@@ -19,6 +19,7 @@ from notebooklm.rpc.types import (
     InfographicOrientation,
     QuizDifficulty,
     QuizQuantity,
+    ReportFormat,
     RPCMethod,
 )
 
@@ -639,6 +640,8 @@ def _build_request_payload(
         payload["quiz_quantity"] = args.quiz_quantity
         payload["quiz_difficulty"] = args.quiz_difficulty
         payload["quiz_format"] = args.quiz_format
+    if args.artifact_type == "report":
+        payload["report_format"] = args.report_format
     return payload
 
 
@@ -711,6 +714,16 @@ def _quiz_difficulty(value: str | None) -> QuizDifficulty | None:
         "hard": QuizDifficulty.HARD,
     }
     return mapping[value]
+
+
+def _report_format(value: str | None) -> ReportFormat:
+    mapping = {
+        "briefing-doc": ReportFormat.BRIEFING_DOC,
+        "study-guide": ReportFormat.STUDY_GUIDE,
+        "blog-post": ReportFormat.BLOG_POST,
+        "custom": ReportFormat.CUSTOM,
+    }
+    return mapping[value or "study-guide"]
 
 
 async def _resolve_notebook(client: NotebookLMClient, title: str, reuse: bool):
@@ -1118,6 +1131,46 @@ async def _generate_quiz_with_retry(
     raise last_exc or RuntimeError("generate_quiz failed")
 
 
+async def _generate_report_with_retry(
+    client: NotebookLMClient,
+    notebook_id: str,
+    *,
+    instructions: str,
+    report_format: ReportFormat,
+    language: str,
+    retries: int,
+    backoff: float,
+):
+    last_exc: Exception | None = None
+    for attempt in range(retries + 1):
+        try:
+            status = await client.artifacts.generate_report(
+                notebook_id,
+                report_format=report_format,
+                language=language,
+                extra_instructions=instructions or None,
+            )
+            if not status.task_id:
+                if getattr(status, "error", None):
+                    raise RuntimeError(status.error)
+                raise RuntimeError("No artifact id returned from generate_report")
+            return status
+        except Exception as exc:
+            last_exc = exc
+            if _is_rate_limit_error(exc):
+                break
+            if attempt >= retries:
+                break
+            delay = backoff * (2**attempt)
+            print(
+                f"Generate report failed (attempt {attempt + 1}/{retries + 1}): {exc}. "
+                f"Retrying in {delay:.1f}s"
+            )
+            await asyncio.sleep(delay)
+
+    raise last_exc or RuntimeError("generate_report failed")
+
+
 async def _generate_podcast(args: argparse.Namespace) -> int:
     base_output_path = Path(args.output).expanduser()
     sources = _load_sources(args.source, args.sources_file)
@@ -1208,6 +1261,16 @@ async def _generate_podcast(args: argparse.Namespace) -> int:
                         instructions=args.instructions,
                         quantity=_quiz_quantity(args.quiz_quantity),
                         difficulty=_quiz_difficulty(args.quiz_difficulty),
+                        retries=args.artifact_retries,
+                        backoff=args.artifact_retry_backoff,
+                    )
+                elif args.artifact_type == "report":
+                    status = await _generate_report_with_retry(
+                        client,
+                        nb.id,
+                        instructions=args.instructions,
+                        report_format=_report_format(args.report_format),
+                        language=args.language,
                         retries=args.artifact_retries,
                         backoff=args.artifact_retry_backoff,
                     )
@@ -1361,6 +1424,12 @@ async def _generate_podcast(args: argparse.Namespace) -> int:
                     artifact_id=final.task_id,
                     output_format=args.quiz_format,
                 )
+            elif args.artifact_type == "report":
+                await wait_client.artifacts.download_report(
+                    nb.id,
+                    str(output_path),
+                    artifact_id=final.task_id,
+                )
             else:
                 raise RuntimeError(f"Unsupported artifact type: {args.artifact_type}")
 
@@ -1483,7 +1552,7 @@ def main() -> int:
     )
     parser.add_argument(
         "--artifact-type",
-        choices=["audio", "infographic", "quiz"],
+        choices=["audio", "infographic", "quiz", "report"],
         default="audio",
         help="Artifact type to generate.",
     )
@@ -1524,6 +1593,12 @@ def main() -> int:
         choices=["json", "markdown", "html"],
         default="json",
         help="Quiz download format (json, markdown, html).",
+    )
+    parser.add_argument(
+        "--report-format",
+        choices=["briefing-doc", "study-guide", "blog-post", "custom"],
+        default="study-guide",
+        help="Report format for report artifacts.",
     )
     parser.add_argument(
         "--language",

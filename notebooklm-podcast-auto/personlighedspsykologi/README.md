@@ -1,6 +1,6 @@
 # Personlighedspsykologi (NotebookLM Generation)
 
-This folder contains the generation pipeline assets for Personlighedspsykologi audio + infographic + quiz production.
+This folder contains the generation pipeline assets for Personlighedspsykologi audio + infographic + quiz + report production.
 It is **not** a podcast feed. Feed config now lives in:
 
 - `shows/personlighedspsykologi-en`
@@ -9,10 +9,10 @@ It is **not** a podcast feed. Feed config now lives in:
 
 ## Key paths
 - `scripts/` - generation helpers (`generate_week.py`, `download_week.py`, `sync_reading_summaries.py`)
-- `prompt_config.json` - prompts + language variants for NotebookLM (audio + infographic + quiz defaults, including `audio_prompt_strategy`, `audio_prompt_framework`, `exam_focus`, and `meta_prompting`)
+- `prompt_config.json` - prompts + language variants for NotebookLM (audio + infographic + quiz + report defaults, including `audio_prompt_strategy`, `report_prompt_strategy`, `audio_prompt_framework`, `exam_focus`, and `meta_prompting`)
 - OneDrive Readings root (authoritative source dirs):
   - `/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings`
-- `output/` - generated MP3s/PNGs/quiz exports + request logs
+- `output/` - generated MP3s/PNGs/quiz exports/report markdown + request logs
 - `docs/` - planning notes
 - `evaluation/episode_ab_review/` - before/after quality-review workspace for matched transcript comparisons
 
@@ -76,8 +76,13 @@ python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_week.py 
   - It compiles prompt context from `shows/<show>/content_manifest.json` plus `shows/<show>/docs/overblik.md`.
   - The compiled context situates the lecture in the wider course arc, pulls in neighboring lectures, lecture-level summaries, reading summaries, and slide framing from forelaesning/seminar/exercise catalogs.
   - Weekly prompts therefore stay readings-only in NotebookLM uploads while still being informed by the whole lecture block and the broader course context.
-  - The same compiled lecture context is designed to be reusable for later output families such as abridged reading guides, quizzes, and similar study artifacts.
+  - The same compiled lecture context now also feeds report/study-guide outputs and is designed to stay reusable for later output families such as additional abridged reading guides, quizzes, and similar study artifacts.
+- `report_prompt_strategy` is the report/study-guide equivalent of the audio prompt strategy.
+  - It builds abridged preparatory guides that help a student orient themselves before reading the original material.
+  - The default report path targets one-page study-guide style outputs with 3-4 short quote targets for readings and lecture-level reading sets.
+  - `report`, `weekly_report`, `per_reading_report`, `per_slide_report`, and `short_report` add show-level instructions without hardcoding those rules in `generate_week.py`.
 - The raw `prompt` fields under `weekly_overview`, `per_reading`, `per_slide`, and `short` are additive for audio: they append extra instructions on top of the built-in prompt structure rather than replacing it.
+- The raw `prompt` fields under `report`, `weekly_report`, `per_reading_report`, `per_slide_report`, and `short_report` are additive for report generation in the same way.
 - Individual slide podcasts can override `per_slide` by `slide_key`:
 
 ```json
@@ -128,7 +133,7 @@ python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/bootstrap_episode
   - how it fits in the wider course
   - where those layers do not fully align
 - The lecture-context layer should stay reusable across output families. Audio podcast prompts are only the first consumer.
-- Planned future consumers include abridged reading guides that help prepare for the original reading, for example short one-page structures with 3-4 key quotes to look for in the text.
+- Current and future consumers include abridged reading guides that help prepare for the original reading, for example short one-page structures with 3-4 key quotes to look for in the text.
 - Growth should happen by improving the compiled lecture context and artifact-specific prompt assembly, not by letting prompt text sprawl ad hoc inside `generate_week.py`.
 
 - To transcribe the baseline side of one review run with ElevenLabs Scribe v2 speaker diarization:
@@ -226,6 +231,18 @@ python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/sync_episode_ab_r
 
 ```bash
 ./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/download_week.py --week W01 --content-types quiz --format html
+```
+
+- Generate abridged study-guide reports for a lecture block:
+
+```bash
+./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_week.py --week W1L1 --content-types report --profile default
+```
+
+- Generate both podcasts and abridged study-guide reports in one run:
+
+```bash
+./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_week.py --week W1L1 --content-types audio,report --profile default
 ```
 
 - Legacy quiz HTML->JSON extraction is no longer part of the default local flow in this branch.

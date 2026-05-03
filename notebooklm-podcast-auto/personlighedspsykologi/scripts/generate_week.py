@@ -63,10 +63,11 @@ BRIEF_APPLY_TO_VALUES = {
     "lecture_slides_only",
     "readings_and_lecture_slides",
 }
-BRIEF_SUPPORTED_CONTENT_TYPES = {"audio", "infographic"}
+BRIEF_SUPPORTED_CONTENT_TYPES = {"audio", "infographic", "report"}
 SHORT_PREFIX_GLOBS = ("[[]Short[]]*", "[[]Brief[]]*")
 AUDIO_FORMAT_VALUES = prompting.AUDIO_FORMAT_VALUES
 AUDIO_LENGTH_VALUES = prompting.AUDIO_LENGTH_VALUES
+REPORT_FORMAT_VALUES = prompting.REPORT_FORMAT_VALUES
 PER_SLIDE_OVERRIDE_KEYS = {"format", "length", "prompt"}
 SLIDE_AUDIO_QUARANTINE_ROOT = Path(".ai/quarantine/slide-audio-overrides")
 TEXT_SOURCE_EXTENSIONS = {".txt", ".md", ".markdown", ".html", ".htm", ".json", ".csv"}
@@ -80,6 +81,7 @@ DEFAULT_AUDIO_PROMPT_STRATEGY = prompting.DEFAULT_AUDIO_PROMPT_STRATEGY
 DEFAULT_EXAM_FOCUS = prompting.DEFAULT_EXAM_FOCUS
 DEFAULT_META_PROMPTING = prompting.DEFAULT_META_PROMPTING
 DEFAULT_AUDIO_PROMPT_FRAMEWORK = prompting.DEFAULT_AUDIO_PROMPT_FRAMEWORK
+DEFAULT_REPORT_PROMPT_STRATEGY = prompting.DEFAULT_REPORT_PROMPT_STRATEGY
 DEFAULT_COURSE_CONTEXT = course_context_helpers.DEFAULT_COURSE_CONTEXT
 META_PROMPT_MAX_RESPONSE_TOKENS = 1400
 META_PROMPT_WARNING_MESSAGES: set[str] = set()
@@ -555,6 +557,43 @@ def per_source_audio_settings(
     )
 
 
+def per_source_report_settings(
+    source_item: SourceItem,
+    *,
+    per_reading_cfg: dict,
+    per_slide_cfg: dict,
+    prompt_strategy: dict | None = None,
+    meta_prompting: dict | None = None,
+    meta_note_overrides: dict[Path, str] | None = None,
+    course_context_bundle: course_context_helpers.CoursePromptContextBundle | None = None,
+    course_context_cfg: dict | None = None,
+    lecture_key: str | None = None,
+) -> tuple[str, str, str]:
+    prompt_type = "single_slide" if source_item.source_type == "slide" else "single_reading"
+    cfg = per_slide_cfg if source_item.source_type == "slide" else per_reading_cfg
+    course_context_note = build_course_context_note(
+        course_context_bundle=course_context_bundle,
+        course_context_cfg=course_context_cfg,
+        lecture_key=lecture_key,
+        prompt_type=prompt_type,
+        source_item=source_item,
+    )
+    return (
+        "per_slide" if source_item.source_type == "slide" else "per_reading",
+        build_report_prompt(
+            prompt_type=prompt_type,
+            prompt_strategy=prompt_strategy,
+            course_context_note=course_context_note,
+            course_context_heading=course_context_cfg.get("heading") if course_context_cfg else None,
+            meta_prompting=meta_prompting,
+            meta_note_overrides=meta_note_overrides,
+            custom_prompt=cfg.get("prompt", ""),
+            source_item=source_item,
+        ),
+        normalize_report_format(cfg.get("format")),
+    )
+
+
 def resolve_brief_apply_to(brief_cfg: dict) -> str:
     raw_value = str(brief_cfg.get("apply_to") or "grundbog_only").strip().lower()
     if raw_value in BRIEF_APPLY_TO_VALUES:
@@ -779,6 +818,10 @@ def normalize_audio_prompt_framework(raw: object) -> dict:
 
 def normalize_course_context(raw: object) -> dict:
     return course_context_helpers.normalize_course_context(raw)
+
+
+def normalize_report_prompt_strategy(raw: object) -> dict:
+    return prompting.normalize_report_prompt_strategy(raw)
 
 
 def ensure_prompt(_: str, value: str) -> str:
@@ -1458,6 +1501,35 @@ def build_audio_prompt(
     )
 
 
+def build_report_prompt(
+    *,
+    prompt_type: str,
+    prompt_strategy: dict | None,
+    course_context_note: str | None,
+    course_context_heading: str | None,
+    meta_prompting: dict | None,
+    meta_note_overrides: dict[Path, str] | None = None,
+    custom_prompt: str,
+    source_item: SourceItem | None = None,
+    source_items: list[SourceItem] | None = None,
+    week_dir: Path | None = None,
+    week_label: str | None = None,
+) -> str:
+    return prompting.build_report_prompt(
+        prompt_type=prompt_type,
+        prompt_strategy=prompt_strategy,
+        course_context_note=course_context_note,
+        course_context_heading=course_context_heading,
+        meta_prompting=meta_prompting,
+        meta_note_overrides=meta_note_overrides,
+        custom_prompt=custom_prompt,
+        source_item=source_item,
+        source_items=source_items,
+        week_dir=week_dir,
+        week_label=week_label,
+    )
+
+
 def build_course_context_note(
     *,
     course_context_bundle: course_context_helpers.CoursePromptContextBundle | None,
@@ -1640,6 +1712,7 @@ def build_output_cfg_tag_token(
     quiz_quantity: str | None,
     quiz_difficulty: str | None,
     quiz_format: str | None,
+    report_format: str | None = None,
     source_count: int | None,
     hash_len: int,
 ) -> str:
@@ -1654,6 +1727,7 @@ def build_output_cfg_tag_token(
     normalized_quiz_quantity = _normalize_tag_value(quiz_quantity, default="default")
     normalized_quiz_difficulty = _normalize_tag_value(quiz_difficulty, default="default")
     normalized_quiz_format = _normalize_tag_value(quiz_format, default="json")
+    normalized_report_format = _normalize_tag_value(report_format, default="study-guide")
 
     parts = [
         f"type={normalized_content_type}",
@@ -1688,6 +1762,9 @@ def build_output_cfg_tag_token(
         hash_payload["quiz_quantity"] = normalized_quiz_quantity
         hash_payload["quiz_difficulty"] = normalized_quiz_difficulty
         hash_payload["quiz_download_format"] = normalized_quiz_format
+    elif content_type == "report":
+        parts.append(f"format={normalized_report_format}")
+        hash_payload["report_format"] = normalized_report_format
 
     effective_hash = compute_config_tag(hash_payload, hash_len)
     parts.append(f"hash={effective_hash}")
@@ -1927,7 +2004,7 @@ def ensure_dict(value: object | None) -> dict:
 def parse_content_types(value: str | None) -> list[str]:
     if not value:
         return ["audio"]
-    allowed = {"audio", "infographic", "quiz"}
+    allowed = {"audio", "infographic", "quiz", "report"}
     items: list[str] = []
     for raw in value.split(","):
         item = raw.strip().lower()
@@ -1988,6 +2065,17 @@ def normalize_quiz_format(value: str | None) -> str:
     return normalized
 
 
+def normalize_report_format(value: str | None) -> str:
+    if not value:
+        return "study-guide"
+    normalized = str(value).strip().lower()
+    if normalized not in REPORT_FORMAT_VALUES:
+        raise SystemExit(
+            f"Unknown report format '{value}'. Allowed: {', '.join(sorted(REPORT_FORMAT_VALUES))}."
+        )
+    return normalized
+
+
 def output_extension(content_type: str, *, quiz_format: str | None = None) -> str:
     if content_type == "quiz":
         mapping = {
@@ -1999,6 +2087,7 @@ def output_extension(content_type: str, *, quiz_format: str | None = None) -> st
     mapping = {
         "audio": ".mp3",
         "infographic": ".png",
+        "report": ".md",
     }
     return mapping[content_type]
 
@@ -2291,6 +2380,7 @@ def run_generate(
     quiz_quantity: str | None,
     quiz_difficulty: str | None,
     quiz_format: str | None,
+    report_format: str | None = None,
     output_path: Path,
     wait: bool,
     skip_existing: bool,
@@ -2342,6 +2432,9 @@ def run_generate(
             cmd.extend(["--quiz-difficulty", quiz_difficulty])
         if quiz_format:
             cmd.extend(["--quiz-format", quiz_format])
+    elif artifact_type == "report":
+        if report_format:
+            cmd.extend(["--report-format", report_format])
     if language:
         cmd.extend(["--language", language])
     if sources_file:
@@ -2653,9 +2746,15 @@ def main() -> int:
     audio_prompt_strategy = normalize_audio_prompt_strategy(config.get("audio_prompt_strategy"))
     exam_focus = normalize_exam_focus(config.get("exam_focus"))
     audio_prompt_framework = normalize_audio_prompt_framework(config.get("audio_prompt_framework"))
+    report_prompt_strategy = normalize_report_prompt_strategy(config.get("report_prompt_strategy"))
     meta_prompting = normalize_meta_prompting(config.get("meta_prompting"))
     course_context_cfg = normalize_course_context(config.get("course_context"))
     brief_cfg = ensure_dict(config.get("short", config.get("brief", {})))
+    report_defaults = ensure_dict(config.get("report"))
+    weekly_report_cfg = ensure_dict(config.get("weekly_report", report_defaults))
+    per_report_cfg = ensure_dict(config.get("per_reading_report", report_defaults))
+    per_slide_report_cfg = ensure_dict(config.get("per_slide_report", per_report_cfg))
+    short_report_cfg = ensure_dict(config.get("short_report", report_defaults))
     infographic_defaults = ensure_dict(config.get("infographic"))
     weekly_infographic_cfg = ensure_dict(config.get("weekly_infographic", infographic_defaults))
     per_infographic_cfg = ensure_dict(config.get("per_reading_infographic", infographic_defaults))
@@ -2868,6 +2967,7 @@ def main() -> int:
                                     quiz_quantity=None,
                                     quiz_difficulty=None,
                                     quiz_format=None,
+                                    report_format=None,
                                     source_count=reading_source_count,
                                     hash_len=args.config_tag_len,
                                 )
@@ -2886,6 +2986,41 @@ def main() -> int:
                                     quiz_quantity=None,
                                     quiz_difficulty=None,
                                     quiz_format=None,
+                                    report_format=None,
+                                    source_count=None,
+                                    hash_len=args.config_tag_len,
+                                )
+                            elif content_type == "report":
+                                weekly_course_context_note = build_course_context_note(
+                                    course_context_bundle=course_context_bundle,
+                                    course_context_cfg=course_context_cfg,
+                                    lecture_key=week_label,
+                                    prompt_type="weekly_readings_only",
+                                )
+                                planned_instructions = build_report_prompt(
+                                    prompt_type="weekly_readings_only",
+                                    prompt_strategy=report_prompt_strategy,
+                                    course_context_note=weekly_course_context_note,
+                                    course_context_heading=course_context_cfg.get("heading"),
+                                    meta_prompting=meta_prompting,
+                                    meta_note_overrides=auto_meta_note_overrides,
+                                    custom_prompt=weekly_report_cfg.get("prompt", ""),
+                                    source_items=reading_sources,
+                                    week_dir=week_dir,
+                                    week_label=week_label,
+                                )
+                                planned_tag = build_output_cfg_tag_token(
+                                    content_type=content_type,
+                                    language=variant["code"],
+                                    instructions=planned_instructions,
+                                    audio_format=None,
+                                    audio_length=None,
+                                    infographic_orientation=None,
+                                    infographic_detail=None,
+                                    quiz_quantity=None,
+                                    quiz_difficulty=None,
+                                    quiz_format=None,
+                                    report_format=normalize_report_format(weekly_report_cfg.get("format")),
                                     source_count=None,
                                     hash_len=args.config_tag_len,
                                 )
@@ -2902,6 +3037,7 @@ def main() -> int:
                                     quiz_quantity=quiz_quantity,
                                     quiz_difficulty=quiz_difficulty_value,
                                     quiz_format=quiz_format,
+                                    report_format=None,
                                     source_count=None,
                                     hash_len=args.config_tag_len,
                                 )
@@ -2964,6 +3100,7 @@ def main() -> int:
                                     quiz_quantity=None,
                                     quiz_difficulty=None,
                                     quiz_format=None,
+                                    report_format=None,
                                     source_count=None,
                                     hash_len=args.config_tag_len,
                                 )
@@ -2982,6 +3119,36 @@ def main() -> int:
                                     quiz_quantity=None,
                                     quiz_difficulty=None,
                                     quiz_format=None,
+                                    report_format=None,
+                                    source_count=None,
+                                    hash_len=args.config_tag_len,
+                                )
+                            elif content_type == "report":
+                                _, planned_instructions, planned_report_format = (
+                                    per_source_report_settings(
+                                        source_item,
+                                        per_reading_cfg=per_report_cfg,
+                                        per_slide_cfg=per_slide_report_cfg,
+                                        prompt_strategy=report_prompt_strategy,
+                                        meta_prompting=meta_prompting,
+                                        meta_note_overrides=auto_meta_note_overrides,
+                                        course_context_bundle=course_context_bundle,
+                                        course_context_cfg=course_context_cfg,
+                                        lecture_key=week_label,
+                                    )
+                                )
+                                planned_tag = build_output_cfg_tag_token(
+                                    content_type=content_type,
+                                    language=variant["code"],
+                                    instructions=planned_instructions,
+                                    audio_format=None,
+                                    audio_length=None,
+                                    infographic_orientation=None,
+                                    infographic_detail=None,
+                                    quiz_quantity=None,
+                                    quiz_difficulty=None,
+                                    quiz_format=None,
+                                    report_format=planned_report_format,
                                     source_count=None,
                                     hash_len=args.config_tag_len,
                                 )
@@ -2998,6 +3165,7 @@ def main() -> int:
                                     quiz_quantity=quiz_quantity,
                                     quiz_difficulty=quiz_difficulty_value,
                                     quiz_format=quiz_format,
+                                    report_format=None,
                                     source_count=None,
                                     hash_len=args.config_tag_len,
                                 )
@@ -3077,6 +3245,7 @@ def main() -> int:
                                         quiz_quantity=None,
                                         quiz_difficulty=None,
                                         quiz_format=None,
+                                        report_format=None,
                                         source_count=None,
                                         hash_len=args.config_tag_len,
                                     )
@@ -3095,6 +3264,42 @@ def main() -> int:
                                         quiz_quantity=None,
                                         quiz_difficulty=None,
                                         quiz_format=None,
+                                        report_format=None,
+                                        source_count=None,
+                                        hash_len=args.config_tag_len,
+                                    )
+                                elif content_type == "report":
+                                    brief_course_context_note = build_course_context_note(
+                                        course_context_bundle=course_context_bundle,
+                                        course_context_cfg=course_context_cfg,
+                                        lecture_key=week_label,
+                                        prompt_type="short",
+                                        source_item=source_item,
+                                    )
+                                    planned_instructions = build_report_prompt(
+                                        prompt_type="short",
+                                        prompt_strategy=report_prompt_strategy,
+                                        course_context_note=brief_course_context_note,
+                                        course_context_heading=course_context_cfg.get("heading"),
+                                        meta_prompting=meta_prompting,
+                                        meta_note_overrides=auto_meta_note_overrides,
+                                        custom_prompt=short_report_cfg.get("prompt", ""),
+                                        source_item=source_item,
+                                    )
+                                    planned_tag = build_output_cfg_tag_token(
+                                        content_type=content_type,
+                                        language=variant["code"],
+                                        instructions=planned_instructions,
+                                        audio_format=None,
+                                        audio_length=None,
+                                        infographic_orientation=None,
+                                        infographic_detail=None,
+                                        quiz_quantity=None,
+                                        quiz_difficulty=None,
+                                        quiz_format=None,
+                                        report_format=normalize_report_format(
+                                            short_report_cfg.get("format")
+                                        ),
                                         source_count=None,
                                         hash_len=args.config_tag_len,
                                     )
@@ -3111,6 +3316,7 @@ def main() -> int:
                                         quiz_quantity=quiz_quantity,
                                         quiz_difficulty=quiz_difficulty_value,
                                         quiz_format=quiz_format,
+                                        report_format=None,
                                         source_count=None,
                                         hash_len=args.config_tag_len,
                                     )
@@ -3187,6 +3393,7 @@ def main() -> int:
                                 quiz_quantity_arg = None
                                 quiz_difficulty_arg = None
                                 quiz_format_arg = None
+                                report_format_arg = None
                             elif content_type == "infographic":
                                 instructions = ensure_prompt(
                                     "weekly_infographic", weekly_infographic_cfg.get("prompt", "")
@@ -3198,6 +3405,36 @@ def main() -> int:
                                 quiz_quantity_arg = None
                                 quiz_difficulty_arg = None
                                 quiz_format_arg = None
+                                report_format_arg = None
+                            elif content_type == "report":
+                                weekly_course_context_note = build_course_context_note(
+                                    course_context_bundle=course_context_bundle,
+                                    course_context_cfg=course_context_cfg,
+                                    lecture_key=week_label,
+                                    prompt_type="weekly_readings_only",
+                                )
+                                instructions = build_report_prompt(
+                                    prompt_type="weekly_readings_only",
+                                    prompt_strategy=report_prompt_strategy,
+                                    course_context_note=weekly_course_context_note,
+                                    course_context_heading=course_context_cfg.get("heading"),
+                                    meta_prompting=meta_prompting,
+                                    meta_note_overrides=auto_meta_note_overrides,
+                                    custom_prompt=weekly_report_cfg.get("prompt", ""),
+                                    source_items=reading_sources,
+                                    week_dir=week_dir,
+                                    week_label=week_label,
+                                )
+                                audio_format = None
+                                audio_length = None
+                                infographic_orientation = None
+                                infographic_detail = None
+                                quiz_quantity_arg = None
+                                quiz_difficulty_arg = None
+                                quiz_format_arg = None
+                                report_format_arg = normalize_report_format(
+                                    weekly_report_cfg.get("format")
+                                )
                             else:
                                 instructions = ensure_prompt("quiz", quiz_cfg.get("prompt", ""))
                                 audio_format = None
@@ -3207,6 +3444,7 @@ def main() -> int:
                                 quiz_quantity_arg = quiz_quantity
                                 quiz_difficulty_arg = quiz_difficulty_value
                                 quiz_format_arg = quiz_format
+                                report_format_arg = None
                             weekly_tag = (
                                 build_output_cfg_tag_token(
                                     content_type=content_type,
@@ -3219,6 +3457,7 @@ def main() -> int:
                                     quiz_quantity=quiz_quantity_arg,
                                     quiz_difficulty=quiz_difficulty_arg,
                                     quiz_format=quiz_format_arg,
+                                    report_format=report_format_arg,
                                     source_count=reading_source_count,
                                     hash_len=args.config_tag_len,
                                 )
@@ -3275,6 +3514,7 @@ def main() -> int:
                                     quiz_quantity=quiz_quantity_arg,
                                     quiz_difficulty=quiz_difficulty_arg,
                                     quiz_format=quiz_format_arg,
+                                    report_format=report_format_arg,
                                     language=variant["code"],
                                     output_path=output_path,
                                     wait=args.wait,
@@ -3344,6 +3584,7 @@ def main() -> int:
                                 quiz_quantity_arg = None
                                 quiz_difficulty_arg = None
                                 quiz_format_arg = None
+                                report_format_arg = None
                             elif content_type == "infographic":
                                 instructions = ensure_prompt(
                                     "per_reading_infographic", per_infographic_cfg.get("prompt", "")
@@ -3352,6 +3593,26 @@ def main() -> int:
                                 audio_length = None
                                 infographic_orientation = per_infographic_cfg.get("orientation")
                                 infographic_detail = per_infographic_cfg.get("detail")
+                                quiz_quantity_arg = None
+                                quiz_difficulty_arg = None
+                                quiz_format_arg = None
+                                report_format_arg = None
+                            elif content_type == "report":
+                                _, instructions, report_format_arg = per_source_report_settings(
+                                    source_item,
+                                    per_reading_cfg=per_report_cfg,
+                                    per_slide_cfg=per_slide_report_cfg,
+                                    prompt_strategy=report_prompt_strategy,
+                                    meta_prompting=meta_prompting,
+                                    meta_note_overrides=auto_meta_note_overrides,
+                                    course_context_bundle=course_context_bundle,
+                                    course_context_cfg=course_context_cfg,
+                                    lecture_key=week_label,
+                                )
+                                audio_format = None
+                                audio_length = None
+                                infographic_orientation = None
+                                infographic_detail = None
                                 quiz_quantity_arg = None
                                 quiz_difficulty_arg = None
                                 quiz_format_arg = None
@@ -3364,6 +3625,7 @@ def main() -> int:
                                 quiz_quantity_arg = quiz_quantity
                                 quiz_difficulty_arg = quiz_difficulty_value
                                 quiz_format_arg = quiz_format
+                                report_format_arg = None
                             per_tag = (
                                 build_output_cfg_tag_token(
                                     content_type=content_type,
@@ -3376,6 +3638,7 @@ def main() -> int:
                                     quiz_quantity=quiz_quantity_arg,
                                     quiz_difficulty=quiz_difficulty_arg,
                                     quiz_format=quiz_format_arg,
+                                    report_format=report_format_arg,
                                     source_count=None,
                                     hash_len=args.config_tag_len,
                                 )
@@ -3452,6 +3715,7 @@ def main() -> int:
                                     quiz_quantity=quiz_quantity_arg,
                                     quiz_difficulty=quiz_difficulty_arg,
                                     quiz_format=quiz_format_arg,
+                                    report_format=report_format_arg,
                                     language=variant["code"],
                                     output_path=output_path,
                                     wait=args.wait,
@@ -3531,6 +3795,7 @@ def main() -> int:
                                     quiz_quantity_arg = None
                                     quiz_difficulty_arg = None
                                     quiz_format_arg = None
+                                    report_format_arg = None
                                 elif content_type == "infographic":
                                     instructions = ensure_prompt(
                                         "short_infographic", brief_infographic_cfg.get("prompt", "")
@@ -3542,6 +3807,35 @@ def main() -> int:
                                     quiz_quantity_arg = None
                                     quiz_difficulty_arg = None
                                     quiz_format_arg = None
+                                    report_format_arg = None
+                                elif content_type == "report":
+                                    brief_course_context_note = build_course_context_note(
+                                        course_context_bundle=course_context_bundle,
+                                        course_context_cfg=course_context_cfg,
+                                        lecture_key=week_label,
+                                        prompt_type="short",
+                                        source_item=source_item,
+                                    )
+                                    instructions = build_report_prompt(
+                                        prompt_type="short",
+                                        prompt_strategy=report_prompt_strategy,
+                                        course_context_note=brief_course_context_note,
+                                        course_context_heading=course_context_cfg.get("heading"),
+                                        meta_prompting=meta_prompting,
+                                        meta_note_overrides=auto_meta_note_overrides,
+                                        custom_prompt=short_report_cfg.get("prompt", ""),
+                                        source_item=source_item,
+                                    )
+                                    audio_format = None
+                                    audio_length = None
+                                    infographic_orientation = None
+                                    infographic_detail = None
+                                    quiz_quantity_arg = None
+                                    quiz_difficulty_arg = None
+                                    quiz_format_arg = None
+                                    report_format_arg = normalize_report_format(
+                                        short_report_cfg.get("format")
+                                    )
                                 else:
                                     instructions = ensure_prompt("quiz", quiz_cfg.get("prompt", ""))
                                     audio_format = None
@@ -3551,6 +3845,7 @@ def main() -> int:
                                     quiz_quantity_arg = quiz_quantity
                                     quiz_difficulty_arg = quiz_difficulty_value
                                     quiz_format_arg = quiz_format
+                                    report_format_arg = None
                                 brief_tag = (
                                     build_output_cfg_tag_token(
                                         content_type=content_type,
@@ -3563,6 +3858,7 @@ def main() -> int:
                                         quiz_quantity=quiz_quantity_arg,
                                         quiz_difficulty=quiz_difficulty_arg,
                                         quiz_format=quiz_format_arg,
+                                        report_format=report_format_arg,
                                         source_count=None,
                                         hash_len=args.config_tag_len,
                                     )
@@ -3618,6 +3914,7 @@ def main() -> int:
                                         quiz_quantity=quiz_quantity_arg,
                                         quiz_difficulty=quiz_difficulty_arg,
                                         quiz_format=quiz_format_arg,
+                                        report_format=report_format_arg,
                                         language=variant["code"],
                                         output_path=output_path,
                                         wait=args.wait,

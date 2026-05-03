@@ -37,6 +37,12 @@ class GenerateWeekTests(unittest.TestCase):
             "meta_prompting": mod.normalize_meta_prompting({}),
         }
 
+    def _default_report_prompt_context(self, mod):
+        return {
+            "prompt_strategy": mod.normalize_report_prompt_strategy({}),
+            "meta_prompting": mod.normalize_meta_prompting({}),
+        }
+
     def test_default_output_root_prefers_environment_override(self):
         mod = _load_module()
         with mock.patch.dict(
@@ -51,6 +57,14 @@ class GenerateWeekTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmpdir:
             output_root = Path(tmpdir)
             self.assertEqual(mod.resolve_output_root(output_root), output_root.resolve())
+
+    def test_parse_content_types_accepts_report(self):
+        mod = _load_module()
+        self.assertEqual(mod.parse_content_types("audio,report,audio"), ["audio", "report"])
+
+    def test_output_extension_uses_markdown_for_report(self):
+        mod = _load_module()
+        self.assertEqual(mod.output_extension("report"), ".md")
 
     def test_resolve_output_root_resolves_macos_alias_files(self):
         mod = _load_module()
@@ -271,6 +285,28 @@ class GenerateWeekTests(unittest.TestCase):
         self.assertIn("Course-aware lecture context:", prompt)
         self.assertIn("This lecture comes after the introductory block.", prompt)
 
+    def test_build_report_prompt_includes_course_context_section(self):
+        mod = _load_module()
+        reading_item = mod.SourceItem(
+            path=Path("/tmp/Foucault.pdf"),
+            base_name="Foucault",
+            source_type="reading",
+        )
+
+        prompt = mod.build_report_prompt(
+            prompt_type="single_reading",
+            custom_prompt="",
+            source_item=reading_item,
+            course_context_note="## Lecture position\n- This lecture revises the earlier trait framework.",
+            course_context_heading="Course-aware lecture context:",
+            **self._default_report_prompt_context(mod),
+        )
+
+        self.assertIn("Course-aware lecture context:", prompt)
+        self.assertIn("This lecture revises the earlier trait framework.", prompt)
+        self.assertIn("roughly one page", prompt)
+        self.assertIn("3-4 short, relevant quotes", prompt)
+
     def test_build_audio_prompt_includes_format_and_length_guidance(self):
         mod = _load_module()
         reading_item = mod.SourceItem(
@@ -409,6 +445,40 @@ class GenerateWeekTests(unittest.TestCase):
 
             self.assertIn("weekly_readings_only", mod.normalize_exam_focus({})["prompt_types"])
             self.assertIn("normalization and subject formation", prompt)
+
+    def test_per_source_report_settings_use_report_defaults(self):
+        mod = _load_module()
+        reading_item = mod.SourceItem(
+            path=Path("/tmp/reading.pdf"),
+            base_name="Grundbog kapitel 1",
+            source_type="reading",
+        )
+        slide_item = mod.SourceItem(
+            path=Path("/tmp/lecture.pdf"),
+            base_name="Slide lecture: Example",
+            source_type="slide",
+            slide_subcategory="lecture",
+        )
+
+        reading_settings = mod.per_source_report_settings(
+            reading_item,
+            per_reading_cfg={"format": "study-guide", "prompt": ""},
+            per_slide_cfg={"format": "briefing-doc", "prompt": ""},
+            **self._default_report_prompt_context(mod),
+        )
+        self.assertEqual(reading_settings[0], "per_reading")
+        self.assertEqual(reading_settings[2], "study-guide")
+        self.assertIn("abridged preparatory guide for the reading", reading_settings[1])
+
+        slide_settings = mod.per_source_report_settings(
+            slide_item,
+            per_reading_cfg={"format": "study-guide", "prompt": ""},
+            per_slide_cfg={"format": "briefing-doc", "prompt": ""},
+            **self._default_report_prompt_context(mod),
+        )
+        self.assertEqual(slide_settings[0], "per_slide")
+        self.assertEqual(slide_settings[2], "briefing-doc")
+        self.assertIn("abridged preparatory guide for the slide deck", slide_settings[1])
 
     def test_build_source_items_excludes_seminar_slides(self):
         mod = _load_module()

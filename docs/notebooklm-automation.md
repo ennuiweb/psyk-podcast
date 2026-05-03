@@ -133,15 +133,16 @@ Hand-authored summary sources:
 
 Prompt assembly note:
 
-- `generate_week.py` now compiles a course-aware lecture context from `shows/<show>/content_manifest.json` and `shows/<show>/docs/overblik.md` before building audio prompts.
-- That context layer is deterministic and artifact-neutral, so the same lecture context can later drive non-audio outputs such as abridged reading guides in addition to the current podcast prompts.
+- `generate_week.py` now compiles a course-aware lecture context from `shows/<show>/content_manifest.json` and `shows/<show>/docs/overblik.md` before building prompts.
+- That context layer is deterministic and artifact-neutral, and it now feeds both audio prompts and NotebookLM `report` artifacts surfaced as study-guide style Markdown outputs.
+- Current report usage is the first concrete non-audio consumer: abridged preparatory guides for readings, slide decks, lecture-level reading sets, and short variants.
 
 Prompt-system ambitions that should not drift:
 
 - The system should synthesize each lecture block from all relevant readings plus both forelaesning and seminar slide context before producing downstream prompts.
 - It should situate every lecture in the full course progression, not treat lecture prompts as isolated one-off jobs.
 - It should keep source roles explicit so course framing does not overwrite source-grounded claims.
-- It should remain reusable across multiple output families, including future abridged reading guides and similar preparatory study artifacts.
+- It should remain reusable across multiple output families, with report/study-guide artifacts already live and future preparatory study artifacts building on the same compiled lecture context instead of inventing a separate prompt path.
 
 ## Related docs
 

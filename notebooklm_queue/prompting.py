@@ -26,6 +26,7 @@ AUDIO_PROMPT_TYPES = (
 )
 AUDIO_FORMAT_VALUES = {"deep-dive", "brief", "critique", "debate"}
 AUDIO_LENGTH_VALUES = {"short", "default", "long"}
+REPORT_FORMAT_VALUES = {"briefing-doc", "study-guide", "blog-post", "custom"}
 GEMINI_META_PROMPT_MODEL = "gemini-3.1-pro-preview"
 
 DEFAULT_AUDIO_PROMPT_STRATEGY = {
@@ -176,6 +177,60 @@ DEFAULT_AUDIO_PROMPT_FRAMEWORK = {
             "Take time to unfold the argument step by step and connect it to broader theoretical stakes.",
             "Use repetition only when it clarifies a difficult distinction.",
         ],
+    },
+}
+
+DEFAULT_REPORT_PROMPT_STRATEGY = {
+    "enabled": True,
+    "heading": "Report brief:",
+    "prompt_types": {
+        "single_reading": {
+            "lead": (
+                "Create an abridged preparatory guide for the reading so the student is "
+                "better prepared before reading the original text."
+            ),
+            "focus": [
+                "explain the text's structure and main arguments in a compact, readable way",
+                "surface the distinctions or tensions that matter most before first reading",
+                "include 3-4 short, relevant quotes the student should look for in the original text",
+                "treat the guide as preparation for the source, not a replacement for the source",
+            ],
+        },
+        "single_slide": {
+            "lead": (
+                "Create an abridged preparatory guide for the slide deck that reconstructs the "
+                "lecture logic and helps the student know what to listen for in class."
+            ),
+            "focus": [
+                "reconstruct the slide deck's structure and main argumentative line",
+                "clarify what the slides assume rather than state explicitly",
+                "point out which concepts or distinctions the student should track carefully",
+                "do not pretend the slides are a full standalone text",
+            ],
+        },
+        "weekly_readings_only": {
+            "lead": (
+                "Create an abridged preparatory guide for the lecture's reading set so the "
+                "student can enter the original texts with a strong overview."
+            ),
+            "focus": [
+                "explain the shared problem, sequence, and major arguments across the readings",
+                "show how the readings differ, qualify one another, or pull in different directions",
+                "include 3-4 short, relevant quotes to look for across the reading set",
+                "keep the guide preparatory and source-respecting rather than exhaustive",
+            ],
+        },
+        "short": {
+            "lead": (
+                "Create a very compact abridged preparatory guide that helps the student orient "
+                "themselves before reading the original source."
+            ),
+            "focus": [
+                "compress hard around the structure, main claim, and one or two key distinctions",
+                "include only the most useful 2-3 quote targets if they materially aid reading",
+                "preserve enough specificity that the student knows what to look for in the source",
+            ],
+        },
     },
 }
 
@@ -445,6 +500,54 @@ def normalize_audio_prompt_framework(raw: object) -> dict:
     return normalized
 
 
+def normalize_report_prompt_strategy(raw: object) -> dict:
+    defaults = _deep_copy_prompt_defaults(DEFAULT_REPORT_PROMPT_STRATEGY)
+    if raw in (None, ""):
+        return defaults
+    if not isinstance(raw, dict):
+        raise SystemExit("report_prompt_strategy must be an object.")
+
+    normalized = defaults
+    if "enabled" in raw:
+        if not isinstance(raw["enabled"], bool):
+            raise SystemExit("report_prompt_strategy.enabled must be true or false.")
+        normalized["enabled"] = raw["enabled"]
+    if "heading" in raw:
+        if not isinstance(raw["heading"], str):
+            raise SystemExit("report_prompt_strategy.heading must be a string.")
+        stripped = raw["heading"].strip()
+        if stripped:
+            normalized["heading"] = stripped
+    if "prompt_types" in raw:
+        prompt_types = raw["prompt_types"]
+        if not isinstance(prompt_types, dict):
+            raise SystemExit("report_prompt_strategy.prompt_types must be an object.")
+        unknown = sorted(set(prompt_types) - {"single_reading", "single_slide", "weekly_readings_only", "short"})
+        if unknown:
+            raise SystemExit(
+                "Unknown report prompt type(s): "
+                + ", ".join(unknown)
+                + ". Allowed: single_reading, single_slide, weekly_readings_only, short"
+            )
+        for prompt_type, prompt_cfg in prompt_types.items():
+            if not isinstance(prompt_cfg, dict):
+                raise SystemExit(f"report_prompt_strategy.prompt_types.{prompt_type} must be an object.")
+            if "lead" in prompt_cfg:
+                value = prompt_cfg["lead"]
+                if not isinstance(value, str):
+                    raise SystemExit(
+                        f"report_prompt_strategy.prompt_types.{prompt_type}.lead must be a string."
+                    )
+                normalized["prompt_types"][prompt_type]["lead"] = value.strip()
+            if "focus" in prompt_cfg:
+                normalized["prompt_types"][prompt_type]["focus"] = _normalize_string_list(
+                    f"report_prompt_strategy.prompt_types.{prompt_type}",
+                    "focus",
+                    prompt_cfg["focus"],
+                )
+    return normalized
+
+
 def ensure_prompt(_: str, value: str) -> str:
     return value.strip()
 
@@ -611,6 +714,71 @@ def build_audio_prompt(
 
     if custom_prompt:
         sections.append(f"Additional instructions:\n{custom_prompt}")
+    if notes:
+        heading = (
+            meta_prompting["heading"]
+            if meta_prompting and meta_prompting.get("enabled", False)
+            else "External pre-analysis:"
+        )
+        sections.append(f"{heading}\n{notes}")
+    return "\n\n".join(section for section in sections if section.strip())
+
+
+def build_report_prompt(
+    *,
+    prompt_type: str,
+    prompt_strategy: dict | None,
+    course_context_note: str | None,
+    course_context_heading: str | None,
+    meta_prompting: dict | None,
+    meta_note_overrides: dict[Path, str] | None = None,
+    custom_prompt: str,
+    source_item: object | None = None,
+    source_items: list[object] | None = None,
+    week_dir: Path | None = None,
+    week_label: str | None = None,
+) -> str:
+    if prompt_type not in {"single_reading", "single_slide", "weekly_readings_only", "short"}:
+        raise ValueError(
+            "Unknown report prompt type "
+            f"'{prompt_type}'. Allowed: single_reading, single_slide, weekly_readings_only, short."
+        )
+    notes = ""
+    if meta_prompting and meta_prompting.get("enabled", False):
+        if source_item is not None:
+            source_path = getattr(source_item, "path", None)
+            if isinstance(source_path, Path):
+                notes = _read_prompt_sidecars(
+                    _source_prompt_sidecar_candidates(source_path, meta_prompting),
+                    meta_note_overrides=meta_note_overrides,
+                )
+        elif source_items is not None and week_dir is not None:
+            notes = _read_prompt_sidecars(
+                _week_prompt_sidecar_candidates(week_dir, week_label, meta_prompting),
+                meta_note_overrides=meta_note_overrides,
+            )
+
+    sections: list[str] = []
+    if prompt_strategy and prompt_strategy.get("enabled", False):
+        prompt_type_cfg = prompt_strategy["prompt_types"][prompt_type]
+        lead = str(prompt_type_cfg.get("lead") or "").strip()
+        if lead:
+            sections.append(lead)
+        sections.append(
+            "Output requirements:\n"
+            "- Keep the main explanatory body to roughly one page.\n"
+            "- Explain structure before detail so the student can orient themselves quickly.\n"
+            "- Use short quotes sparingly and only when they genuinely help the student locate key moments in the original.\n"
+            "- Do not fabricate quotations or page references."
+        )
+        sections.append(f"{prompt_strategy['heading']}\n{_format_bullets(prompt_type_cfg['focus'])}")
+
+    if course_context_note:
+        heading = str(course_context_heading or "Course-aware lecture context:").strip()
+        sections.append(f"{heading}\n{course_context_note.strip()}")
+
+    if custom_prompt:
+        sections.append(f"Additional instructions:\n{custom_prompt.strip()}")
     if notes:
         heading = (
             meta_prompting["heading"]

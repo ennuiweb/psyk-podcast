@@ -9,7 +9,7 @@ from pathlib import Path
 from types import SimpleNamespace
 
 from notebooklm import RPCError
-from notebooklm.rpc.types import RPCMethod
+from notebooklm.rpc.types import RPCMethod, ReportFormat
 
 
 def _load_module():
@@ -23,6 +23,35 @@ def _load_module():
 
 
 class GeneratePodcastTests(unittest.TestCase):
+    def test_report_request_payload_includes_report_format(self):
+        mod = _load_module()
+        args = SimpleNamespace(
+            artifact_type="report",
+            instructions="Study guide instructions",
+            language="en",
+            sources_file=None,
+            report_format="study-guide",
+        )
+
+        payload = mod._build_request_payload(
+            created_at="2026-05-03T10:00:00Z",
+            notebook_id="nb-1",
+            notebook_title="Notebook",
+            artifact_id="art-1",
+            output_path=Path("/tmp/output.md"),
+            args=args,
+            sources=[{"kind": "file", "value": "/tmp/source.pdf"}],
+            auth_meta={"source": "profile"},
+        )
+
+        self.assertEqual(payload["artifact_type"], "report")
+        self.assertEqual(payload["report_format"], "study-guide")
+
+    def test_report_format_defaults_to_study_guide(self):
+        mod = _load_module()
+        self.assertEqual(mod._report_format(None), ReportFormat.STUDY_GUIDE)
+        self.assertEqual(mod._report_format("briefing-doc"), ReportFormat.BRIEFING_DOC)
+
     def test_classifies_create_notebook_missing_result_as_profile_error(self):
         mod = _load_module()
         exc = RPCError(

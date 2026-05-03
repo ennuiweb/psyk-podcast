@@ -106,6 +106,47 @@
       ]
     }
   },
+  "report_prompt_strategy": {
+    "enabled": true,
+    "heading": "Report brief:",
+    "prompt_types": {
+      "single_reading": {
+        "lead": "Create an abridged preparatory guide for the reading so the student is better prepared before reading the original text.",
+        "focus": [
+          "explain the text's structure and main arguments in a compact, readable way",
+          "surface the distinctions or tensions that matter most before first reading",
+          "include 3-4 short, relevant quotes the student should look for in the original text",
+          "treat the guide as preparation for the source, not a replacement for the source"
+        ]
+      },
+      "single_slide": {
+        "lead": "Create an abridged preparatory guide for the slide deck that reconstructs the lecture logic and helps the student know what to listen for in class.",
+        "focus": [
+          "reconstruct the slide deck's structure and main argumentative line",
+          "clarify what the slides assume rather than state explicitly",
+          "point out which concepts or distinctions the student should track carefully",
+          "do not pretend the slides are a full standalone text"
+        ]
+      },
+      "weekly_readings_only": {
+        "lead": "Create an abridged preparatory guide for the lecture's reading set so the student can enter the original texts with a strong overview.",
+        "focus": [
+          "explain the shared problem, sequence, and major arguments across the readings",
+          "show how the readings differ, qualify one another, or pull in different directions",
+          "include 3-4 short, relevant quotes to look for across the reading set",
+          "keep the guide preparatory and source-respecting rather than exhaustive"
+        ]
+      },
+      "short": {
+        "lead": "Create a very compact abridged preparatory guide that helps the student orient themselves before reading the original source.",
+        "focus": [
+          "compress hard around the structure, main claim, and one or two key distinctions",
+          "include only the most useful 2-3 quote targets if they materially aid reading",
+          "preserve enough specificity that the student knows what to look for in the source"
+        ]
+      }
+    }
+  },
   "exam_focus": {
     "enabled": true,
     "heading": "Exam lens:",
@@ -181,15 +222,31 @@
     "length": "long",
     "prompt": ""
   },
+  "report": {
+    "format": "study-guide",
+    "prompt": "Help the student understand the source through an abridged preparatory guide. Explain structure and main arguments before detail, and include only short relevant quotes that point back to the original source."
+  },
+  "weekly_report": {
+    "format": "study-guide",
+    "prompt": "Synthesize the week's readings and slide-informed lecture framing into a preparatory overview that situates this lecture block in the wider course."
+  },
   "per_reading": {
     "format": "deep-dive",
     "length": "long",
     "prompt": ""
   },
+  "per_reading_report": {
+    "format": "study-guide",
+    "prompt": "Keep the guide preparatory rather than substitutive: the goal is to make the original reading easier to enter later."
+  },
   "per_slide": {
     "format": "deep-dive",
     "length": "default",
     "prompt": ""
+  },
+  "per_slide_report": {
+    "format": "briefing-doc",
+    "prompt": "Reconstruct the lecture logic carefully and do not treat fragmentary slide bullets as if they were a full prose source."
   },
   "short": {
     "format": "deep-dive",
@@ -197,6 +254,10 @@
     "prompt": "",
     "title_prefix": "[Short]",
     "apply_to": "readings_and_lecture_slides"
+  },
+  "short_report": {
+    "format": "study-guide",
+    "prompt": "Produce a very compact abridged guide with only the most useful structure and quote targets."
   },
   "quiz": {
     "difficulty": "all",

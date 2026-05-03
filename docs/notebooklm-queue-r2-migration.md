@@ -446,19 +446,19 @@ Rollback must be defined before the first cutover.
 
 Role:
 
-- pilot show
+- low-risk storage migration
 
-Why first:
+Current status:
 
-- lowest coupling
-- no Freudd-critical subject complexity
-- best place to validate queue store, R2 publication, and git push mechanics
+- live on `storage.provider = "r2"`
+- remains `publication.owner = "legacy_workflow"`
+- uses a resumable Drive-to-R2 importer for legacy backfills
 
 Success criteria:
 
-- one successful end-to-end queue-owned publish
-- no Drive dependency in the pilot path
+- feed identity preserved after storage cutover
 - deterministic object keys and stable feed identity
+- legacy Drive watcher removed from live publication path
 
 ### `bioneuro`
 
@@ -560,19 +560,19 @@ Exit criteria:
 - GUID continuity tests pass
 - publish failure leaves recoverable state
 
-### Phase 3 - Pilot Cutover For `personal`
+### Phase 3 - Storage Cutover For `personal`
 
 Deliverables:
 
 - `personal` moved to `storage.provider = "r2"`
-- show ownership set to queue-owned after cutover
-- successful queue-owned publish runbook
+- resumable Drive-to-R2 import helper
+- successful legacy-workflow feed rebuild from the R2 manifest
 
 Exit criteria:
 
 - feed and inventory are correct
-- no Drive dependency remains in the pilot path
-- rollback has been rehearsed once
+- GUID continuity is preserved
+- live publication no longer depends on the Drive watcher
 
 ### Phase 4 - Production Cutover For `bioneuro`
 
@@ -679,7 +679,7 @@ Status legend:
 
 | ID | Status | Item | Notes |
 |---|---|---|---|
-| F1 | planned | Pilot `personal` on queue + R2 | Lowest-risk validation target. |
+| F1 | done | Migrate `personal` storage to R2 | `personal` is now live on `storage.provider = "r2"` and remains `publication.owner = "legacy_workflow"`. |
 | F2 | done | Migrate `bioneuro` | `bioneuro` is now live, `storage.provider = "r2"`, and `publication.owner = "queue"`. |
 | F3 | planned | Migrate `personlighedspsykologi-en` | Final subject due to rollout complexity. |
 
@@ -721,7 +721,7 @@ Before any show is declared migrated, all of the following must be true:
 
 ## Decisions To Preserve
 
-- `personal` is the pilot migration target.
+- `personal` is now the low-risk R2 storage migration example, not the first queue-owned cutover.
 - `bioneuro` migrates before `personlighedspsykologi-en`.
 - queue rollout and storage migration are one integrated program.
 - Freudd production deploy remains on DigitalOcean for this program.

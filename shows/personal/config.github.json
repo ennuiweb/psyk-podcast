@@ -2,28 +2,22 @@
   "publication": {
     "owner": "legacy_workflow"
   },
-  "service_account_file": "shows/personal/service-account.json",
-  "drive_folder_id": "1GrwLcua1UN_tCX0ec9NmDU6ynLkuM_0G",
-  "shared_drive_id": null,
-  "include_items_from_all_drives": true,
+  "output_inventory": "shows/personal/episode_inventory.json",
   "allowed_mime_types": [
     "audio/"
   ],
-  "transcode": {
-    "enabled": true,
-    "source_mime_types": [
-      "video/mp4",
-      "audio/mp4",
-      "audio/x-m4a"
-    ],
-    "target_extension": "mp3",
-    "target_mime_type": "audio/mpeg",
-    "codec": "libmp3lame",
-    "bitrate": "160k"
+  "storage": {
+    "provider": "r2",
+    "bucket": "freudd",
+    "endpoint": "https://abf1940818ee3c8a0fa4bc84c7b1bba9.r2.cloudflarestorage.com",
+    "region": "auto",
+    "prefix": "shows/personal",
+    "public_base_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev",
+    "manifest_file": "shows/personal/media_manifest.r2.json",
+    "access_key_id_env": "R2_ACCESS_KEY_ID",
+    "secret_access_key_env": "R2_SECRET_ACCESS_KEY"
   },
-  "skip_permission_updates": false,
   "output_feed": "shows/personal/feeds/rss.xml",
-  "public_link_template": "https://drive.google.com/uc?export=download&id={file_id}",
   "episode_metadata": "shows/personal/episode_metadata.json",
   "feed": {
     "title": "Personal Listening Feed",

@@ -135,21 +135,16 @@ Current active show ownership is now mixed:
 - `bioneuro`: live, R2-backed, queue-owned
 - `berlingske`: legacy workflow
 - `intro-vt`: legacy workflow
-- `personal`: legacy workflow
+- `personal`: live, R2-backed, legacy workflow
 - `personlighedspsykologi-en`: legacy workflow
 - `social-psychology`: legacy workflow
 
 ## Immediate missing steps before full autonomous ownership
 
 1. Replace the temporary `r2.dev` public base URL with the intended production audio domain.
-2. Install and verify the Hetzner runtime for live `bioneuro`:
-   - copy the `systemd` artifacts to the server
-   - write `/etc/podcasts/notebooklm-queue/bioneuro.env`
-   - enable `podcasts-notebooklm-queue@bioneuro.timer`
-   - verify journal output and a successful timer-driven cycle
-3. Decide the next migration target after `bioneuro`:
-   - `personal` for lower-risk storage migration
-   - `personlighedspsykologi-en` for the next full queue-owned show
+2. Migrate the next queue-owned show after `bioneuro`:
+   - `personlighedspsykologi-en` is now the next full queue target
+3. Decide whether `personal` needs a dedicated direct-to-R2 ingest path or whether the resumable Drive-to-R2 importer remains sufficient as a maintenance tool.
 
 ## Recommended reading order
 

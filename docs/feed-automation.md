@@ -89,7 +89,9 @@ Current operational reality:
 
 - the feed stack supports both Drive and R2
 - `bioneuro` is now live on `storage.provider = "r2"` with `publication.owner = "queue"`
+- `personal` is now live on `storage.provider = "r2"` with `publication.owner = "legacy_workflow"`
 - the current `bioneuro` public enclosure base is the temporary Cloudflare hostname `https://pub-fe942499398a478c8a8f432207051244.r2.dev`
+- `personal` currently uses the same temporary Cloudflare hostname for enclosures
 - the remaining active shows are still on the legacy workflow until they are cut over explicitly
 
 ## Google setup
@@ -148,6 +150,7 @@ The Drive trigger helper lives in:
 - `apps-script/drive_change_trigger.gs`
 
 Use it when a Drive upload should trigger `generate-feed.yml` via `workflow_dispatch`.
+Do not keep R2-backed shows in that watcher list once they no longer publish from Drive.
 
 If using `clasp`, the repo helpers are:
 

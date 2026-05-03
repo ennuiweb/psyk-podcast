@@ -133,3 +133,37 @@ def test_discover_jobs_hashes_override_show_config_and_persists_metadata(tmp_pat
 
     assert default_jobs[0]["identity"].config_hash != override_jobs[0]["identity"].config_hash
     assert override_jobs[0]["metadata"]["show_config_path"] == "shows/bioneuro/config.r2-pilot.json"
+
+
+def test_discover_jobs_skips_published_lecture_keys_by_default(tmp_path: Path) -> None:
+    (tmp_path / "shows" / "bioneuro").mkdir(parents=True, exist_ok=True)
+    (tmp_path / "notebooklm-podcast-auto" / "bioneuro").mkdir(parents=True, exist_ok=True)
+    for relative, content in (
+        ("shows/bioneuro/config.github.json", '{"output_inventory":"shows/bioneuro/episode_inventory.json"}'),
+        ("shows/bioneuro/auto_spec.json", "{}"),
+        ("notebooklm-podcast-auto/bioneuro/prompt_config.json", "{}"),
+    ):
+        path = tmp_path / relative
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(content, encoding="utf-8")
+    (tmp_path / "shows" / "bioneuro" / "episode_metadata.json").write_text(
+        json.dumps(
+            {
+                "by_id": {
+                    "a": {"meta": {"source_folder": "W1L1 Intro (2026-02-06)"}},
+                    "b": {"meta": {"source_folder": "W2L1 Function (2026-02-13)"}},
+                }
+            }
+        ),
+        encoding="utf-8",
+    )
+    (tmp_path / "shows" / "bioneuro" / "episode_inventory.json").write_text(
+        json.dumps({"episodes": [{"lecture_key": "W1L1", "episode_key": "ep-1"}]}),
+        encoding="utf-8",
+    )
+
+    default_jobs = discover_show_jobs(repo_root=tmp_path, show_slug="bioneuro")
+    all_jobs = discover_show_jobs(repo_root=tmp_path, show_slug="bioneuro", include_published=True)
+
+    assert [item["identity"].lecture_key for item in default_jobs] == ["W2L1"]
+    assert [item["identity"].lecture_key for item in all_jobs] == ["W1L1", "W2L1"]

@@ -673,14 +673,14 @@ Status legend:
 | E1 | done | Add explicit show ownership state | `publication.owner` now exists in show configs with `legacy_workflow` as the default writer. |
 | E2 | done | Update `generate-feed.yml` for queue-owned shows | The workflow now resolves `publication.owner` and skips the legacy writer path for queue-owned shows. |
 | E3 | planned | Add cutover checklist and rollback checklist | Must be run per show. |
-| E4 | planned | Add `systemd` units and runbook | Match existing ops style. |
+| E4 | done | Add `systemd` units and runbook | `drain-show`, checked-in `systemd` artifacts, and `docs/notebooklm-queue-operations.md` now define the Hetzner runtime shape; server install remains an operational rollout step. |
 
 ### Workstream F - Subject Migration
 
 | ID | Status | Item | Notes |
 |---|---|---|---|
 | F1 | planned | Pilot `personal` on queue + R2 | Lowest-risk validation target. |
-| F2 | planned | Migrate `bioneuro` | First production subject cutover. |
+| F2 | done | Migrate `bioneuro` | `bioneuro` is now live, `storage.provider = "r2"`, and `publication.owner = "queue"`. |
 | F3 | planned | Migrate `personlighedspsykologi-en` | Final subject due to rollout complexity. |
 
 ### Workstream G - Validation And Tests

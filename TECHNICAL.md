@@ -15,6 +15,7 @@ This file is the compact technical index for the repo. Detailed operational docs
 
 - [docs/feed-automation.md](docs/feed-automation.md) - feed pipeline, GitHub Actions, Apps Script triggers, and feed hosting.
 - [docs/notebooklm-automation.md](docs/notebooklm-automation.md) - NotebookLM subject wrappers, mirrors, and output conventions.
+- [docs/notebooklm-queue-operations.md](docs/notebooklm-queue-operations.md) - Hetzner queue runtime install and operations runbook.
 - [docs/notebooklm-queue-r2-migration.md](docs/notebooklm-queue-r2-migration.md) - cross-cutting implementation plan for the Hetzner queue and R2/object-storage migration.
 - [docs/notebooklm-queue-current-state.md](docs/notebooklm-queue-current-state.md) - current shipped state of the queue + R2 migration work.
 - [docs/freudd-portal.md](docs/freudd-portal.md) - repo-level Freudd integration notes and canonical portal docs.

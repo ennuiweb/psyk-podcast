@@ -13,6 +13,7 @@ from .discovery import discover_show_jobs, enqueue_discovered_jobs
 from .execution import ExecutionOptions, execute_job
 from .metadata import MetadataOptions, rebuild_repo_metadata
 from .models import JobIdentity
+from .orchestrator import DrainShowOptions, drain_show_queue
 from .publish import PublishOptions, UploadOptions, prepare_publish_bundle, upload_publish_bundle
 from .repo_publish import RepoPublishOptions, publish_repo_artifacts
 from .runner import build_dry_run_plan
@@ -90,6 +91,7 @@ def build_parser() -> argparse.ArgumentParser:
     discover.add_argument("--show-slug", required=True)
     discover.add_argument("--show-config", type=Path)
     discover.add_argument("--content-type", action="append", dest="content_types", default=[])
+    discover.add_argument("--include-published", action="store_true")
     discover.add_argument("--enqueue", action="store_true")
     discover.add_argument("--priority", type=int, default=100)
 
@@ -155,6 +157,21 @@ def build_parser() -> argparse.ArgumentParser:
     sync_downstream.add_argument("--job-id")
     sync_downstream.add_argument("--timeout-seconds", type=int, default=900)
     sync_downstream.add_argument("--poll-interval-seconds", type=int, default=10)
+
+    drain_show = subparsers.add_parser(
+        "drain-show",
+        help="Discover, resume, and advance one show through all ready queue stages.",
+    )
+    drain_show.add_argument("--repo-root", type=Path, default=Path(__file__).resolve().parents[1])
+    drain_show.add_argument("--show-slug", required=True)
+    drain_show.add_argument("--show-config", type=Path)
+    drain_show.add_argument("--content-type", action="append", dest="content_types", default=[])
+    drain_show.add_argument("--priority", type=int, default=100)
+    drain_show.add_argument("--max-stage-runs", type=int, default=50)
+    drain_show.add_argument("--timeout-seconds", type=int, default=900)
+    drain_show.add_argument("--poll-interval-seconds", type=int, default=10)
+    drain_show.add_argument("--remote", default="origin")
+    drain_show.add_argument("--branch", default="main")
     return parser
 
 
@@ -252,6 +269,7 @@ def main(argv: list[str] | None = None) -> int:
                 show_slug=args.show_slug,
                 content_types=content_types,
                 show_config_path=Path(args.show_config).resolve() if args.show_config else None,
+                include_published=bool(args.include_published),
                 priority=int(args.priority),
             )
         else:
@@ -265,6 +283,7 @@ def main(argv: list[str] | None = None) -> int:
                     show_slug=args.show_slug,
                     content_types=content_types,
                     show_config_path=Path(args.show_config).resolve() if args.show_config else None,
+                    include_published=bool(args.include_published),
                 )
             ]
         _print_json(payload)
@@ -357,6 +376,25 @@ def main(argv: list[str] | None = None) -> int:
                 repo_root=Path(args.repo_root).resolve(),
                 timeout_seconds=int(args.timeout_seconds),
                 poll_interval_seconds=int(args.poll_interval_seconds),
+            ),
+        )
+        _print_json(payload)
+        return 0
+
+    if args.command == "drain-show":
+        payload = drain_show_queue(
+            store=store,
+            show_slug=args.show_slug,
+            options=DrainShowOptions(
+                repo_root=Path(args.repo_root).resolve(),
+                show_config_path=Path(args.show_config).resolve() if args.show_config else None,
+                content_types=tuple(args.content_types) if args.content_types else None,
+                discovery_priority=int(args.priority),
+                max_stage_runs=int(args.max_stage_runs),
+                downstream_timeout_seconds=int(args.timeout_seconds),
+                downstream_poll_interval_seconds=int(args.poll_interval_seconds),
+                remote=args.remote,
+                branch=args.branch,
             ),
         )
         _print_json(payload)

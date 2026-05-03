@@ -59,6 +59,10 @@ The following queue milestones are implemented on `main`:
   - waits for expected push-triggered workflows such as `deploy-freudd-portal.yml`
   - records downstream run ids and URLs in queue job artifacts
   - marks jobs `completed` only after downstream success or no-op completion
+- safe fresh-store discovery:
+  - discovery now skips lecture keys that already exist in the configured `episode_inventory.json` by default
+  - this prevents a new Hetzner queue store from automatically re-enqueueing the full historical `bioneuro` catalog
+  - manual backfill still remains available via the explicit discovery override
 - pilot-safe config binding:
   - discovery can hash against an alternate show config with `--show-config`
   - publish manifests pin the selected show-config path
@@ -88,9 +92,11 @@ That means the queue currently owns:
 - allowlisted repo commit/push
 - downstream synchronization for existing push-triggered Freudd deploys
 
-The queue does not yet own:
+The queue runtime now also has a concrete Hetzner packaging layer:
 
-- Hetzner `systemd` deployment and timer ownership
+- `drain-show` provides a single service-oriented queue cycle entrypoint
+- templated `systemd` service and timer artifacts now exist under `notebooklm_queue/deploy/systemd/`
+- the Hetzner runtime/env/install runbook now exists in [notebooklm-queue-operations.md](notebooklm-queue-operations.md)
 
 ## Verified in this session
 
@@ -136,11 +142,11 @@ Current active show ownership is now mixed:
 ## Immediate missing steps before full autonomous ownership
 
 1. Replace the temporary `r2.dev` public base URL with the intended production audio domain.
-2. Add Hetzner runtime ownership:
-   - `systemd` service
-   - timer
-   - env/secrets contract
-   - failure reporting
+2. Install and verify the Hetzner runtime for live `bioneuro`:
+   - copy the `systemd` artifacts to the server
+   - write `/etc/podcasts/notebooklm-queue/bioneuro.env`
+   - enable `podcasts-notebooklm-queue@bioneuro.timer`
+   - verify journal output and a successful timer-driven cycle
 3. Decide the next migration target after `bioneuro`:
    - `personal` for lower-risk storage migration
    - `personlighedspsykologi-en` for the next full queue-owned show

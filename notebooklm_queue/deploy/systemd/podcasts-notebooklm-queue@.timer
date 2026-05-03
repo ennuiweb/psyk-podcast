@@ -1,0 +1,11 @@
+[Unit]
+Description=Periodic NotebookLM queue drain for %i
+
+[Timer]
+OnCalendar=*:0/30
+Persistent=true
+RandomizedDelaySec=300
+Unit=podcasts-notebooklm-queue@%i.service
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,317 @@
+{
+  "title": "Neuropharmacology Quiz",
+  "questions": [
+    {
+      "question": "During synaptic transmission, which protein complex is specifically responsible for the fusion of synaptic vesicles to the presynaptic membrane following an influx of $Ca^{2+}$ ions?",
+      "answerOptions": [
+        {
+          "text": "Voltage-gated $Ca^{2+}$ channels",
+          "isCorrect": false,
+          "rationale": "While these channels allow the ion influx that triggers the process, they do not directly mediate the physical fusion of the membranes."
+        },
+        {
+          "text": "SNARE proteins",
+          "isCorrect": true,
+          "rationale": "SNAREs are large proteins on the presynaptic membrane and vesicles that mediate exocytosis by causing the vesicle to rupture and release its cargo."
+        },
+        {
+          "text": "Transporters",
+          "isCorrect": false,
+          "rationale": "Transporters are involved in the reuptake of neurotransmitters from the synaptic cleft back into the presynaptic terminal."
+        },
+        {
+          "text": "Autoreceptors",
+          "isCorrect": false,
+          "rationale": "Autoreceptors serve as a feedback mechanism to monitor transmitter levels rather than physically docking vesicles."
+        }
+      ],
+      "hint": "Consider the specific molecular 'hooks' that facilitate the process of exocytosis."
+    },
+    {
+      "question": "Which of the following best describes the difference between binding affinity and efficacy in neuropharmacology?",
+      "answerOptions": [
+        {
+          "text": "Affinity refers to the speed of drug metabolism, while efficacy refers to the drug's ability to cross the blood-brain barrier.",
+          "isCorrect": false,
+          "rationale": "These terms describe pharmacokinetics rather than the interaction between a ligand and its specific receptor."
+        },
+        {
+          "text": "Affinity is the chemical attraction to a receptor, whereas efficacy is the propensity of a ligand to activate that receptor.",
+          "isCorrect": true,
+          "rationale": "Affinity determines how long and how strongly a drug stays bound, while efficacy determines the magnitude of the resulting cellular response."
+        },
+        {
+          "text": "Affinity describes the dose needed for $50\\%$ effect, while efficacy describes the dose needed for lethality.",
+          "isCorrect": false,
+          "rationale": "These concepts relate to the potency and safety of a drug as shown on a dose-response curve, not binding characteristics."
+        },
+        {
+          "text": "Affinity is only applicable to endogenous ligands, while efficacy is only used to describe exogenous drugs.",
+          "isCorrect": false,
+          "rationale": "Both terms are fundamental properties used to characterise both naturally occurring substances and synthetic compounds."
+        }
+      ],
+      "hint": "Distinguish between the 'handshake' of the molecule and the 'action' it performs once bound."
+    },
+    {
+      "question": "A researcher discovers a new drug that binds to $GABA_{A}$ receptors and initiates an effect that increases the excitability of the neuron, which is the exact opposite of $GABA$'s normal inhibitory function. How would this drug be classified?",
+      "answerOptions": [
+        {
+          "text": "Competitive antagonist",
+          "isCorrect": false,
+          "rationale": "An antagonist would simply block the receptor from being activated, rather than inducing an active opposite response."
+        },
+        {
+          "text": "Noncompetitive agonist",
+          "isCorrect": false,
+          "rationale": "An agonist would mimic the normal inhibitory effect of $GABA$ rather than reversing it."
+        },
+        {
+          "text": "Inverse agonist",
+          "isCorrect": true,
+          "rationale": "An inverse agonist binds to a receptor and initiates an effect that is the reverse of the normal function of the naturally occurring transmitter."
+        },
+        {
+          "text": "Partial agonist",
+          "isCorrect": false,
+          "rationale": "A partial agonist would produce the same type of response as the endogenous ligand but with less than maximal efficacy."
+        }
+      ],
+      "hint": "Think of a ligand that doesn't just block a keyhole, but turns the lock in the wrong direction."
+    },
+    {
+      "question": "The mesostriatal pathway is a major dopaminergic system in the brain. Where do the cell bodies of these neurons originate, and what is their primary target?",
+      "answerOptions": [
+        {
+          "text": "They originate in the ventral tegmental area (VTA) and project to the nucleus accumbens.",
+          "isCorrect": false,
+          "rationale": "This describes the mesolimbocortical pathway, which is primarily associated with reward and reinforcement."
+        },
+        {
+          "text": "They originate in the substantia nigra and project to the striatum.",
+          "isCorrect": true,
+          "rationale": "The mesostriatal pathway arises from the midbrain's substantia nigra and innervates the caudate nucleus and putamen to control motor function."
+        },
+        {
+          "text": "They originate in the raphe nuclei and project to the cerebral cortex.",
+          "isCorrect": false,
+          "rationale": "The raphe nuclei are the primary source of serotonergic, not dopaminergic, projections."
+        },
+        {
+          "text": "They originate in the locus coeruleus and project to the basal ganglia.",
+          "isCorrect": false,
+          "rationale": "The locus coeruleus contains noradrenergic neurons that project broadly but do not define the mesostriatal system."
+        }
+      ],
+      "hint": "Identify the pathway whose degradation is the primary cause of Parkinson's disease."
+    },
+    {
+      "question": "How do gas neurotransmitters like nitric oxide ($NO$) differ from 'classic' neurotransmitters like acetylcholine?",
+      "answerOptions": [
+        {
+          "text": "Gas transmitters are stored in large dense-core vesicles until an action potential arrives.",
+          "isCorrect": false,
+          "rationale": "Unlike classic transmitters, gas molecules are not held in vesicles; they diffuse out of the neuron as soon as they are produced."
+        },
+        {
+          "text": "Gas transmitters only interact with ionotropic receptors on the postsynaptic membrane surface.",
+          "isCorrect": false,
+          "rationale": "Gas transmitters diffuse into the target cell to stimulate second messengers rather than binding to surface-bound receptors."
+        },
+        {
+          "text": "Gas transmitters can act as retrograde messengers, moving from the postsynaptic to the presynaptic neuron.",
+          "isCorrect": true,
+          "rationale": "This allows for feedback to the presynaptic cell, a mechanism often implicated in synaptic plasticity and memory."
+        },
+        {
+          "text": "Gas transmitters are produced exclusively in the axon terminals of the presynaptic neuron.",
+          "isCorrect": false,
+          "rationale": "These transmitters are often produced in other locations, such as the dendrites, rather than being restricted to terminals."
+        }
+      ],
+      "hint": "Consider the physical properties of a soluble gas compared to a packaged chemical."
+    },
+    {
+      "question": "If a patient is chronically treated with a potent receptor antagonist, what compensatory change is most likely to occur in the postsynaptic neurons?",
+      "answerOptions": [
+        {
+          "text": "Down-regulation of receptors",
+          "isCorrect": false,
+          "rationale": "Down-regulation typically occurs in response to an agonist drug that overstimulates the cell."
+        },
+        {
+          "text": "Up-regulation of receptors",
+          "isCorrect": true,
+          "rationale": "To compensate for the lack of stimulation caused by the antagonist, the cell may increase the number of receptors to become more sensitive."
+        },
+        {
+          "text": "Metabolic tolerance in the liver",
+          "isCorrect": false,
+          "rationale": "While metabolic tolerance can occur, it is a peripheral change rather than a direct cellular adjustment within the postsynaptic membrane."
+        },
+        {
+          "text": "Increased enzymatic degradation of the transmitter",
+          "isCorrect": false,
+          "rationale": "Increasing degradation would further reduce signaling, which contradicts the cell's tendency to maintain homeostasis when signals are blocked."
+        }
+      ],
+      "hint": "Reflect on how a cell might try to 'listen' harder if it feels it is being 'silenced'."
+    },
+    {
+      "question": "Which of the following statements regarding the therapeutic index of a drug is correct?",
+      "answerOptions": [
+        {
+          "text": "A narrow therapeutic index indicates a safer drug because the effective dose is very close to the lethal dose.",
+          "isCorrect": false,
+          "rationale": "A narrow index is dangerous because small dosing errors can lead to toxicity or death."
+        },
+        {
+          "text": "It is calculated by comparing the $ED_{50}$ with the $LD_{50}$ to determine the safety margin.",
+          "isCorrect": true,
+          "rationale": "The wider the separation between the dose that is effective and the dose that is lethal, the safer the drug is to administer."
+        },
+        {
+          "text": "The therapeutic index measures the speed at which a drug is metabolised and excreted.",
+          "isCorrect": false,
+          "rationale": "Metabolism and excretion are aspects of pharmacokinetics, whereas the therapeutic index is a measure of pharmacodynamics."
+        },
+        {
+          "text": "A drug with a high binding affinity will always have a high therapeutic index.",
+          "isCorrect": false,
+          "rationale": "Affinity relates to how a drug binds, not necessarily its safety profile; a high-affinity toxin can have a very low therapeutic index."
+        }
+      ],
+      "hint": "Examine the relationship between the doses that help and the doses that harm."
+    },
+    {
+      "question": "What is the primary pharmacological mechanism by which caffeine produces its arousing effects?",
+      "answerOptions": [
+        {
+          "text": "It acts as a direct agonist at dopaminergic $D_{2}$ receptors in the cortex.",
+          "isCorrect": false,
+          "rationale": "Caffeine does not bind directly to dopamine receptors; its effects on catecholamines are indirect."
+        },
+        {
+          "text": "It blocks the reuptake of serotonin in the raphe nuclei.",
+          "isCorrect": false,
+          "rationale": "Serotonin reuptake inhibition is the primary mechanism of certain antidepressants, not caffeine."
+        },
+        {
+          "text": "It blocks adenosine autoreceptors, preventing the inhibition of catecholamine release.",
+          "isCorrect": true,
+          "rationale": "By blocking the inhibitory effect of adenosine, caffeine allows for an increase in the release of transmitters like norepinephrine."
+        },
+        {
+          "text": "It inhibits the enzyme monoamine oxidase (MAO) in the axon terminal.",
+          "isCorrect": false,
+          "rationale": "MAO inhibition is a mechanism used by the first generation of antidepressants to accumulate transmitters."
+        }
+      ],
+      "hint": "This substance interferes with a neuromodulator that normally signals the brain to slow down."
+    },
+    {
+      "question": "First-generation antipsychotics (neuroleptics) primarily alleviate the 'positive' symptoms of schizophrenia through which specific action?",
+      "answerOptions": [
+        {
+          "text": "Agonism of serotonergic $5-HT_{2A}$ receptors",
+          "isCorrect": false,
+          "rationale": "LSD acts as an agonist here; second-generation antipsychotics often block these receptors rather than activating them."
+        },
+        {
+          "text": "Antagonism of dopaminergic $D_{2}$ receptors",
+          "isCorrect": true,
+          "rationale": "The clinical effectiveness of early antipsychotics like chlorpromazine is directly related to their ability to block these specific dopamine receptors."
+        },
+        {
+          "text": "Facilitation of glutamate release in the hippocampus",
+          "isCorrect": false,
+          "rationale": "While glutamate is implicated in schizophrenia, classic neuroleptics do not primarily target its release."
+        },
+        {
+          "text": "Blockade of voltage-gated sodium channels in the midbrain",
+          "isCorrect": false,
+          "rationale": "Blocking sodium channels is the mechanism of local anaesthetics and would shut down all neural firing rather than treating specific symptoms."
+        }
+      ],
+      "hint": "Identify the specific receptor subtype whose blockade became the basis for the dopamine hypothesis of schizophrenia."
+    },
+    {
+      "question": "Which enzyme is responsible for the synthesis of acetylcholine ($ACh$) from choline and acetyl CoA, and where is it primarily located in the context of the brain?",
+      "answerOptions": [
+        {
+          "text": "Acetylcholinesterase (AChE); located in the synaptic cleft.",
+          "isCorrect": false,
+          "rationale": "AChE is the enzyme that breaks down $ACh$ rather than synthesising it."
+        },
+        {
+          "text": "Choline acetyltransferase (ChAT); located in cholinergic nuclei like the nucleus basalis.",
+          "isCorrect": true,
+          "rationale": "ChAT is the synthesising enzyme, and its presence defines the cholinergic neurons of the basal forebrain and other clusters."
+        },
+        {
+          "text": "Tyrosine hydroxylase; located in the substantia nigra.",
+          "isCorrect": false,
+          "rationale": "This enzyme is the rate-limiting step in catecholamine synthesis, not acetylcholine synthesis."
+        },
+        {
+          "text": "Monoamine oxidase (MAO); located in the mitochondrial membrane.",
+          "isCorrect": false,
+          "rationale": "MAO is involved in the degradation of amines like dopamine and serotonin, not the synthesis of acetylcholine."
+        }
+      ],
+      "hint": "Distinguish between the enzyme that builds the messenger and the one that destroys it."
+    },
+    {
+      "question": "In the study of anxiety, researchers have identified a neurosteroid derived from progesterone that acts on the $GABA_{A}$ receptor to produce a calming effect. What is this substance?",
+      "answerOptions": [
+        {
+          "text": "Buspirone",
+          "isCorrect": false,
+          "rationale": "Buspirone is a synthetic serotonergic agonist used as an anxiolytic, not a naturally occurring neurosteroid."
+        },
+        {
+          "text": "Allopregnanolone",
+          "isCorrect": true,
+          "rationale": "Allopregnanolone is a metabolite of progesterone that acts on a specific modulatory site on the $GABA_{A}$ receptor to reduce anxiety."
+        },
+        {
+          "text": "Lorazepam",
+          "isCorrect": false,
+          "rationale": "Lorazepam is a benzodiazepine drug, which is an exogenous ligand rather than an endogenous steroid."
+        },
+        {
+          "text": "Glutamate",
+          "isCorrect": false,
+          "rationale": "Glutamate is the brain's primary excitatory neurotransmitter and would typically increase rather than decrease neural excitability."
+        }
+      ],
+      "hint": "This endogenous ligand is elevated during stress and binds to a modulatory site on the brain's primary inhibitory receptor."
+    },
+    {
+      "question": "Which of the following is a criterion required for a substance to be considered a 'classic' neurotransmitter?",
+      "answerOptions": [
+        {
+          "text": "It must be able to cross the blood-brain barrier via passive diffusion.",
+          "isCorrect": false,
+          "rationale": "Many neurotransmitters are produced inside the brain because they cannot cross the blood-brain barrier from the periphery."
+        },
+        {
+          "text": "It must be found in the postsynaptic dendrites before an action potential occurs.",
+          "isCorrect": false,
+          "rationale": "Neurotransmitters are synthesised and stored in the presynaptic axon terminals, not the postsynaptic side."
+        },
+        {
+          "text": "The presynaptic cell must contain the appropriate enzymes for its synthesis.",
+          "isCorrect": true,
+          "rationale": "A cell must have the metabolic machinery to produce the substance locally to be considered its primary transmitter."
+        },
+        {
+          "text": "Experimental application of the substance must inhibit the target cell.",
+          "isCorrect": false,
+          "rationale": "Neurotransmitters can be either excitatory or inhibitory; the direction of the effect is not a defining criterion for the substance itself."
+        }
+      ],
+      "hint": "Consider the requirements for internal manufacturing and storage within the 'sending' neuron."
+    }
+  ]
+}

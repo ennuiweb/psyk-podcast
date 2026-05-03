@@ -1,0 +1,317 @@
+{
+  "title": "Neuropharmacology Quiz",
+  "questions": [
+    {
+      "question": "Which substance did Albert Hofmann accidentally ingest in 1943, leading to the discovery of its powerful hallucinogenic effects?",
+      "answerOptions": [
+        {
+          "text": "Psilocybin",
+          "isCorrect": false,
+          "rationale": "While psilocybin is a hallucinogen found in mushrooms, Hofmann was specifically researching ergot derivatives at the time of his discovery."
+        },
+        {
+          "text": "LSD (Lysergic acid diethylamide)",
+          "isCorrect": true,
+          "rationale": "Hofmann synthesized this compound from ergot fungus and discovered its potency after an accidental exposure at Sandoz Pharmaceuticals."
+        },
+        {
+          "text": "Mescaline",
+          "isCorrect": false,
+          "rationale": "Mescaline is derived from the peyote cactus and was not the focus of Hofmann's pharmaceutical research into grain fungi."
+        },
+        {
+          "text": "Scopolamine",
+          "isCorrect": false,
+          "rationale": "Scopolamine is an anticholinergic drug mentioned in the text for its effects on memory, rather than the visual phenomena reported by Hofmann."
+        }
+      ],
+      "hint": "Consider the drug described as a 'pharmaceutical problem child' derived from the ergot fungus."
+    },
+    {
+      "question": "During synaptic transmission, the influx of which ion into the axon terminal is directly responsible for triggering the release of neurotransmitters?",
+      "answerOptions": [
+        {
+          "text": "$Na^{+}$",
+          "isCorrect": false,
+          "rationale": "Sodium ions are essential for the propagation of the action potential down the axon but do not trigger vesicle fusion themselves."
+        },
+        {
+          "text": "$Cl^{-}$",
+          "isCorrect": false,
+          "rationale": "Chloride ions are typically involved in inhibitory postsynaptic potentials rather than the release mechanism in the presynaptic terminal."
+        },
+        {
+          "text": "$K^{+}$",
+          "isCorrect": false,
+          "rationale": "Potassium ion flow is primary for repolarising the neuron after an action potential, not for triggering exocytosis."
+        },
+        {
+          "text": "$Ca^{2+}$",
+          "isCorrect": true,
+          "rationale": "The arrival of an action potential opens voltage-gated calcium channels, and the resulting influx of $Ca^{2+}$ causes synaptic vesicles to fuse with the membrane."
+        }
+      ],
+      "hint": "Think about the specific voltage-gated channel that opens only once the action potential reaches the very end of the neuron."
+    },
+    {
+      "question": "What is the primary characteristic that distinguishes metabotropic receptors from ionotropic receptors?",
+      "answerOptions": [
+        {
+          "text": "Metabotropic receptors act much faster than ionotropic receptors.",
+          "isCorrect": false,
+          "rationale": "Ionotropic receptors are faster because they contain an integrated ion channel, whereas metabotropic receptors rely on slower metabolic cascades."
+        },
+        {
+          "text": "Metabotropic receptors use second messenger systems to alter the cell.",
+          "isCorrect": true,
+          "rationale": "Unlike ionotropic receptors which open channels directly, metabotropic receptors activate G proteins that trigger internal chemical reactions."
+        },
+        {
+          "text": "Only ionotropic receptors can have an inhibitory effect on the neuron.",
+          "isCorrect": false,
+          "rationale": "Both receptor families can be either excitatory or inhibitory depending on the specific subtype and the ions or pathways they affect."
+        },
+        {
+          "text": "Ionotropic receptors are located only in the peripheral nervous system.",
+          "isCorrect": false,
+          "rationale": "Both types of receptors are widely distributed throughout both the central and peripheral nervous systems."
+        }
+      ],
+      "hint": "Consider which type of receptor involves a 'slow' process through internal G proteins."
+    },
+    {
+      "question": "Which neurotransmitter is considered the most abundant excitatory transmitter in the mammalian brain?",
+      "answerOptions": [
+        {
+          "text": "GABA",
+          "isCorrect": false,
+          "rationale": "GABA is actually the most plentiful inhibitory neurotransmitter, acting as a counterweight to excitatory signals."
+        },
+        {
+          "text": "Dopamine",
+          "isCorrect": false,
+          "rationale": "Dopamine is a monoamine with critical functions in reward and motor control, but it is not as ubiquitous as the primary excitatory amino acid."
+        },
+        {
+          "text": "Glutamate",
+          "isCorrect": true,
+          "rationale": "Glutamate is the main excitatory neurotransmitter, used by $AMPA$ and $NMDA$ receptors to facilitate neural communication."
+        },
+        {
+          "text": "Acetylcholine",
+          "isCorrect": false,
+          "rationale": "Acetylcholine is vital for muscle contraction and memory, but it serves more specific cholinergic pathways rather than being the general excitatory workhorse."
+        }
+      ],
+      "hint": "This amino acid is associated with $NMDA$ receptors and the phenomenon of excitotoxicity."
+    },
+    {
+      "question": "The loss of cholinergic neurons in the basal forebrain is a primary hallmark of which condition?",
+      "answerOptions": [
+        {
+          "text": "Parkinson's disease",
+          "isCorrect": false,
+          "rationale": "Parkinson's disease is primarily associated with the loss of dopaminergic neurons in the substantia nigra, not cholinergic cells."
+        },
+        {
+          "text": "Alzheimer's disease",
+          "isCorrect": true,
+          "rationale": "Widespread loss of acetylcholine-producing neurons is linked to the cognitive and memory deficits characteristic of Alzheimer's."
+        },
+        {
+          "text": "Schizophrenia",
+          "isCorrect": false,
+          "rationale": "Schizophrenia is more closely linked to abnormalities in dopamine and serotonin systems than to a primary loss of cholinergic cells."
+        },
+        {
+          "text": "Panic disorder",
+          "isCorrect": false,
+          "rationale": "Panic disorder involves complex interactions in the GABA and norepinephrine systems rather than a degeneration of cholinergic nuclei."
+        }
+      ],
+      "hint": "Consider the disease most famously associated with profound memory loss and cognitive decline."
+    },
+    {
+      "question": "Which dopaminergic pathway originates in the substantia nigra and is essential for the coordination of motor control?",
+      "answerOptions": [
+        {
+          "text": "Mesolimbocortical pathway",
+          "isCorrect": false,
+          "rationale": "This pathway originates in the ventral tegmental area and is more involved in reward, reinforcement, and addiction."
+        },
+        {
+          "text": "Serotonergic pathway",
+          "isCorrect": false,
+          "rationale": "Serotonergic pathways originate in the raphe nuclei and use serotonin as their primary transmitter, not dopamine."
+        },
+        {
+          "text": "Mesostriatal pathway",
+          "isCorrect": true,
+          "rationale": "The mesostriatal pathway projects from the substantia nigra to the striatum and is the system that fails in Parkinson's disease."
+        },
+        {
+          "text": "Noradrenergic pathway",
+          "isCorrect": false,
+          "rationale": "Noradrenergic pathways primarily use norepinephrine and originate in the locus coeruleus to manage arousal."
+        }
+      ],
+      "hint": "The name of this pathway combines the 'mesencephalon' origin with its target in the 'striatum'."
+    },
+    {
+      "question": "A drug that binds to a receptor and initiates the normal effects of the endogenous transmitter is classified as a(n):",
+      "answerOptions": [
+        {
+          "text": "Antagonist",
+          "isCorrect": false,
+          "rationale": "Antagonists bind to receptors to block or prevent the action of the transmitter, rather than initiating its effects."
+        },
+        {
+          "text": "Inverse agonist",
+          "isCorrect": false,
+          "rationale": "An inverse agonist initiates an effect that is the opposite of the normal function of the receptor."
+        },
+        {
+          "text": "Neuromodulator",
+          "isCorrect": false,
+          "rationale": "Neuromodulators (noncompetitive ligands) bind to a different site than the neurotransmitter to alter its response indirectly."
+        },
+        {
+          "text": "Agonist",
+          "isCorrect": true,
+          "rationale": "An agonist mimics the native neurotransmitter by binding to its receptor and activating the usual cellular response."
+        }
+      ],
+      "hint": "Think of the term for a drug that acts as a 'mimic' or 'helper' for the body's natural chemicals."
+    },
+    {
+      "question": "What does the term 'binding affinity' refer to in neuropharmacology?",
+      "answerOptions": [
+        {
+          "text": "The speed at which a drug is excreted from the body.",
+          "isCorrect": false,
+          "rationale": "Excretion speed is a component of pharmacokinetics, whereas affinity is about the initial interaction with the target."
+        },
+        {
+          "text": "The degree of chemical attraction between a ligand and a receptor.",
+          "isCorrect": true,
+          "rationale": "Affinity measures how strongly or easily a drug molecule binds to its specific receptor site."
+        },
+        {
+          "text": "The ability of a drug to cross the blood-brain barrier.",
+          "isCorrect": false,
+          "rationale": "Crossing the blood-brain barrier depends on molecular size and transport systems, which is distinct from the attraction to a receptor."
+        },
+        {
+          "text": "The maximum effect a drug can have regardless of the dose.",
+          "isCorrect": false,
+          "rationale": "The maximum effect refers to 'efficacy' or 'intrinsic activity', not the strength of the initial binding."
+        }
+      ],
+      "hint": "This term describes how 'sticky' a drug is for a specific molecular lock."
+    },
+    {
+      "question": "In the context of a dose-response curve, what is the $ED_{50}$?",
+      "answerOptions": [
+        {
+          "text": "The dose at which a drug becomes lethal for 50% of subjects.",
+          "isCorrect": false,
+          "rationale": "The lethal dose is referred to as the $LD_{50}$, which is a measure of a drug's danger rather than its effectiveness."
+        },
+        {
+          "text": "The maximum possible response that any dose of the drug can produce.",
+          "isCorrect": false,
+          "rationale": "The maximum response describes the efficacy of the drug, whereas $ED_{50}$ is a specific point on the dose axis."
+        },
+        {
+          "text": "The dose at which the drug shows half of its maximal effect.",
+          "isCorrect": true,
+          "rationale": "The $ED_{50}$ (effective dose 50%) allows researchers to compare the potency of different drugs by seeing how much is needed for a half-maximal response."
+        },
+        {
+          "text": "The time it takes for 50% of the drug to be cleared from the bloodstream.",
+          "isCorrect": false,
+          "rationale": "This describes the 'half-life' of a drug, which is a pharmacokinetic property related to metabolism."
+        }
+      ],
+      "hint": "Focus on the definition related to a 'half-maximal' response."
+    },
+    {
+      "question": "If a neuron repeatedly exposed to an antagonist drug increases the number of available receptors, this process is known as:",
+      "answerOptions": [
+        {
+          "text": "Down-regulation",
+          "isCorrect": false,
+          "rationale": "Down-regulation is the decrease in receptors, usually in response to constant over-stimulation by an agonist."
+        },
+        {
+          "text": "Up-regulation",
+          "isCorrect": true,
+          "rationale": "Target neurons may up-regulate (increase) receptors to become more sensitive when their normal signals are being blocked by an antagonist."
+        },
+        {
+          "text": "Metabolic tolerance",
+          "isCorrect": false,
+          "rationale": "Metabolic tolerance involves the liver or other organs becoming more efficient at clearing the drug, not a change in receptor count."
+        },
+        {
+          "text": "Sensitization",
+          "isCorrect": false,
+          "rationale": "Sensitization is an enhanced overall response to a drug over time, whereas up-regulation is the specific cellular mechanism of adding receptors."
+        }
+      ],
+      "hint": "Consider the direction of change (increase) used by the cell to compensate for blocked signals."
+    },
+    {
+      "question": "Caffeine acts as a stimulant primarily by blocking the receptors of which endogenous neuromodulator?",
+      "answerOptions": [
+        {
+          "text": "Serotonin",
+          "isCorrect": false,
+          "rationale": "While caffeine may indirectly affect mood, its primary mechanism for arousal is not the serotonin system."
+        },
+        {
+          "text": "Adenosine",
+          "isCorrect": true,
+          "rationale": "Adenosine normally inhibits catecholamine release; by blocking adenosine's autoreceptor effect, caffeine increases arousal and neurotransmitter release."
+        },
+        {
+          "text": "GABA",
+          "isCorrect": false,
+          "rationale": "GABA is an inhibitory neurotransmitter targeted by anxiolytics; caffeine does not primarily work by blocking GABA."
+        },
+        {
+          "text": "Glutamate",
+          "isCorrect": false,
+          "rationale": "Caffeine increases arousal, but it does so by removing an inhibitory 'brake' (adenosine) rather than by directly blocking excitatory glutamate."
+        }
+      ],
+      "hint": "This substance usually works to inhibit transmitter release and make you feel sleepy; caffeine prevents this inhibition."
+    },
+    {
+      "question": "First-generation antipsychotic medications, such as chlorpromazine and haloperidol, act primarily as antagonists for which receptor?",
+      "answerOptions": [
+        {
+          "text": "$5-HT_{2A}$ receptors",
+          "isCorrect": false,
+          "rationale": "Second-generation antipsychotics often target serotonin receptors, but the first-generation drugs were more specific to the dopamine system."
+        },
+        {
+          "text": "$GABA_{A}$ receptors",
+          "isCorrect": false,
+          "rationale": "Antipsychotics do not primarily target GABA receptors, which are the main site of action for anti-anxiety medications like benzodiazepines."
+        },
+        {
+          "text": "Nicotinic $ACh$ receptors",
+          "isCorrect": false,
+          "rationale": "Blocking these receptors would cause muscle paralysis (like curare) rather than relieving psychiatric symptoms like hallucinations."
+        },
+        {
+          "text": "Dopamine $D_{2}$ receptors",
+          "isCorrect": true,
+          "rationale": "The effectiveness of these drugs in blocking $D_{2}$ receptors led to the dominant dopaminergic model of schizophrenia."
+        }
+      ],
+      "hint": "The 'positive' symptoms of schizophrenia are thought to be linked to an overactivity of this specific dopamine receptor subtype."
+    }
+  ]
+}

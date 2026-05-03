@@ -1,0 +1,265 @@
+{
+  "title": "Neurotransmission Quiz",
+  "questions": [
+    {
+      "question": "During neurotransmission, which ion influx into the presynaptic terminal directly triggers the migration and release of synaptic vesicles?",
+      "answerOptions": [
+        {
+          "text": "$Ca^{2+}$",
+          "isCorrect": true,
+          "rationale": "Voltage-gated calcium channels open in response to an action potential, allowing an influx of ions that signals vesicles to fuse with the membrane."
+        },
+        {
+          "text": "$Na^{+}$",
+          "isCorrect": false,
+          "rationale": "While sodium influx is critical for the propagation of the action potential along the axon, it is not the specific trigger for vesicle release at the terminal."
+        },
+        {
+          "text": "$K^{+}$",
+          "isCorrect": false,
+          "rationale": "Potassium efflux typically assists in the repolarization of the neuron rather than triggering the release of neurotransmitters."
+        },
+        {
+          "text": "$Cl^{-}$",
+          "isCorrect": false,
+          "rationale": "Chloride ions are generally associated with inhibitory postsynaptic potentials and hyperpolarization, not the excitatory process of transmitter release."
+        }
+      ],
+      "hint": "Consider the specific cation that enters through voltage-gated channels only once the action potential reaches the axon terminal."
+    },
+    {
+      "question": "Which of the following is a recognized criterion for a substance to be classified as a neurotransmitter?",
+      "answerOptions": [
+        {
+          "text": "The substance must be present in the postsynaptic dendrites.",
+          "isCorrect": false,
+          "rationale": "To be a neurotransmitter, the substance must primarily exist within the presynaptic axon terminals before release."
+        },
+        {
+          "text": "The presynaptic cell contains appropriate enzymes for synthesizing the substance.",
+          "isCorrect": true,
+          "rationale": "A cell must have the internal machinery to produce the chemical it uses to communicate with other neurons."
+        },
+        {
+          "text": "The substance must always produce an excitatory effect on the next cell.",
+          "isCorrect": false,
+          "rationale": "Neurotransmitters can be either excitatory or inhibitory depending on the receptors they bind to."
+        },
+        {
+          "text": "The substance is released only when the cell is at its resting potential.",
+          "isCorrect": false,
+          "rationale": "Release is specifically triggered by action potentials reaching the terminals, not by the resting state."
+        }
+      ],
+      "hint": "Think about the internal metabolic capabilities a presynaptic neuron must have to provide a steady supply of the signaling chemical."
+    },
+    {
+      "question": "How do metabotropic receptors differ from ionotropic receptors in their mechanism of action?",
+      "answerOptions": [
+        {
+          "text": "Metabotropic receptors act as fast-acting ion channels.",
+          "isCorrect": false,
+          "rationale": "This description fits ionotropic receptors, which open immediately upon ligand binding."
+        },
+        {
+          "text": "Metabotropic receptors use G-proteins to trigger slower, internal changes in the cell.",
+          "isCorrect": true,
+          "rationale": "These receptors do not contain an integral ion channel and instead rely on second messenger systems for transmission."
+        },
+        {
+          "text": "Metabotropic receptors are located only on the presynaptic membrane.",
+          "isCorrect": false,
+          "rationale": "While some presynaptic receptors exist, metabotropic receptors are a major class of postsynaptic receptors."
+        },
+        {
+          "text": "Metabotropic receptors only respond to electrical signals, not chemicals.",
+          "isCorrect": false,
+          "rationale": "Both types are ligand-gated, meaning they respond to the chemical binding of neurotransmitters."
+        }
+      ],
+      "hint": "Focus on the complexity of the signaling pathway and the relative speed of the response."
+    },
+    {
+      "question": "Which major neurotransmitter system's degeneration is closely linked to the cognitive symptoms of Alzheimer's disease?",
+      "answerOptions": [
+        {
+          "text": "Dopaminergic system",
+          "isCorrect": false,
+          "rationale": "Dopaminergic degeneration is primarily associated with Parkinson's disease rather than Alzheimer's."
+        },
+        {
+          "text": "Serotonergic system",
+          "isCorrect": false,
+          "rationale": "While involved in mood, serotonin is not the primary system whose loss characterizes the memory deficits in Alzheimer's."
+        },
+        {
+          "text": "Cholinergic system",
+          "isCorrect": true,
+          "rationale": "The death of acetylcholine-producing neurons and a decrease in ACh in the neocortex are hallmarks of Alzheimer's pathology."
+        },
+        {
+          "text": "Noradrenergic system",
+          "isCorrect": false,
+          "rationale": "Noradrenaline is more closely tied to arousal and mood disorders like depression and mania."
+        }
+      ],
+      "hint": "Identify the system that was the first to have its neurotransmitter discovered and is vital for memory and attention."
+    },
+    {
+      "question": "What is the primary role of the Locus Coeruleus in the brain's neurochemistry?",
+      "answerOptions": [
+        {
+          "text": "Production of Acetylcholine for memory storage.",
+          "isCorrect": false,
+          "rationale": "Acetylcholine is primarily generated in the basal forebrain and brainstem, but not predominantly the Locus Coeruleus."
+        },
+        {
+          "text": "Production of Noradrenaline for arousal and alertness.",
+          "isCorrect": true,
+          "rationale": "The Locus Coeruleus is the principal site for the synthesis of Noradrenaline, which modulates attention and fight-flight responses."
+        },
+        {
+          "text": "Regulation of Dopamine for motor control.",
+          "isCorrect": false,
+          "rationale": "Dopamine for movement is produced in the substantia nigra, not the Locus Coeruleus."
+        },
+        {
+          "text": "Synthesis of GABA to promote relaxation and sleep.",
+          "isCorrect": false,
+          "rationale": "GABA is widespread throughout the brain and not centralized in this specific nucleus."
+        }
+      ],
+      "hint": "This nucleus is often described as the brain's 'blue spot' and is the source of a catecholamine involved in the fight-flight response."
+    },
+    {
+      "question": "A neurotransmitter that causes hyperpolarization in a neuron is leading to which type of effect?",
+      "answerOptions": [
+        {
+          "text": "Excitatory ($+$) effect",
+          "isCorrect": false,
+          "rationale": "Excitatory effects involve depolarization, making the inside of the neuron more positive and likely to fire."
+        },
+        {
+          "text": "Inhibitory ($-$) effect",
+          "isCorrect": true,
+          "rationale": "Hyperpolarization makes the neuron's membrane potential more negative, decreasing the likelihood of an action potential."
+        },
+        {
+          "text": "Metabolic effect only",
+          "isCorrect": false,
+          "rationale": "Hyperpolarization is a specific electrical change in membrane potential, not just a metabolic one."
+        },
+        {
+          "text": "Retrograde effect",
+          "isCorrect": false,
+          "rationale": "Retrograde effects involve signaling from the postsynaptic to the presynaptic cell, which is not defined by hyperpolarization."
+        }
+      ],
+      "hint": "Think about whether making a cell's interior more negative increases or decreases its chance of reaching the firing threshold."
+    },
+    {
+      "question": "Which dopamine pathway projects from the substantia nigra to the basal ganglia and is primarily involved in movement control?",
+      "answerOptions": [
+        {
+          "text": "Mesolimbic pathway",
+          "isCorrect": false,
+          "rationale": "The mesolimbic pathway projects to the nucleus accumbens and is more involved in reward and addiction."
+        },
+        {
+          "text": "Meso-Nigrostriatal pathway",
+          "isCorrect": true,
+          "rationale": "This pathway is essential for normal motor behavior; its loss leads to the muscle rigidity seen in Parkinson's disease."
+        },
+        {
+          "text": "Mesocortical pathway",
+          "isCorrect": false,
+          "rationale": "The mesocortical pathway projects to the frontal cortex and is associated with cognitive functions rather than primary motor control."
+        },
+        {
+          "text": "Cholinergic pathway",
+          "isCorrect": false,
+          "rationale": "This describes a completely different neurotransmitter system (Acetylcholine)."
+        }
+      ],
+      "hint": "The name of this pathway combines the terms for the origin (black substance) and the destination (striatum)."
+    },
+    {
+      "question": "In the context of neurotransmission, what is the function of a 'transporter' molecule?",
+      "answerOptions": [
+        {
+          "text": "To move vesicles from the soma to the axon terminal.",
+          "isCorrect": false,
+          "rationale": "This describes axonal transport via motor proteins, not the synaptic transporters."
+        },
+        {
+          "text": "To facilitate the reuptake of neurotransmitters from the synaptic cleft.",
+          "isCorrect": true,
+          "rationale": "Transporters actively pump neurotransmitter molecules back into the presynaptic neuron to terminate signaling."
+        },
+        {
+          "text": "To carry ions across the postsynaptic membrane to create an EPSP.",
+          "isCorrect": false,
+          "rationale": "Ions move through specialized ion channels, which are different from neurotransmitter transporters."
+        },
+        {
+          "text": "To transport enzymes into the synaptic gap for chemical breakdown.",
+          "isCorrect": false,
+          "rationale": "Enzymes are generally secreted or already present in the gap; they are not moved by synaptic transporters."
+        }
+      ],
+      "hint": "Think about the mechanism used to recycle neurotransmitter molecules and clear them from the space between neurons."
+    },
+    {
+      "question": "Which of the following describes a 'neuromodulator'?",
+      "answerOptions": [
+        {
+          "text": "A chemical that only acts on a single, local synapse.",
+          "isCorrect": false,
+          "rationale": "This describes classic point-to-point neurotransmission, whereas neuromodulators have broader effects."
+        },
+        {
+          "text": "Neurotransmitters that regulate the activity of neuron populations across multiple brain areas.",
+          "isCorrect": true,
+          "rationale": "Neuromodulators are released from diffuse hubs to affect large-scale neural networks and brain states."
+        },
+        {
+          "text": "An enzyme that breaks down neurotransmitters like COMT.",
+          "isCorrect": false,
+          "rationale": "Enzymes are catalysts for chemical changes, not the signaling molecules that modulate populations themselves."
+        },
+        {
+          "text": "A synthetic drug used to block all neural transmission.",
+          "isCorrect": false,
+          "rationale": "While drugs can modulate systems, 'neuromodulator' refers to endogenous chemicals with specific regulatory roles."
+        }
+      ],
+      "hint": "Consider how certain chemicals are distributed widely from centralized brainstem nuclei to influence general states like mood or arousal."
+    },
+    {
+      "question": "Dysfunctional activity in which neurotransmitter system is most commonly linked to symptoms of Depression, OCD, and anxiety?",
+      "answerOptions": [
+        {
+          "text": "Glutamatergic system",
+          "isCorrect": false,
+          "rationale": "Glutamate is the main excitatory transmitter, but these specific mood disorders are most classically linked to serotonin."
+        },
+        {
+          "text": "Serotonergic system",
+          "isCorrect": true,
+          "rationale": "Low levels or dysregulation of serotonin are significantly associated with mood instability, anxiety, and obsessive-compulsive behaviors."
+        },
+        {
+          "text": "GABAergic system",
+          "isCorrect": false,
+          "rationale": "GABA is involved in anxiety, but the broad clinical profile including depression and OCD points more specifically toward serotonin."
+        },
+        {
+          "text": "Dopaminergic system",
+          "isCorrect": false,
+          "rationale": "Dopamine is primarily linked to reward, movement, and psychosis, though it can play a secondary role in mood."
+        }
+      ],
+      "hint": "This system regulates appetite, sleep, and social behavior, and is the target of many common antidepressant medications."
+    }
+  ]
+}

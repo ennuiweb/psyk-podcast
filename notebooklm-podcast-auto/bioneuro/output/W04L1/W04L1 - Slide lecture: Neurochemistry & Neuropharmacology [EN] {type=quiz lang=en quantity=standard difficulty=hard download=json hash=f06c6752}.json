@@ -1,0 +1,265 @@
+{
+  "title": "Neurotransmission Quiz",
+  "questions": [
+    {
+      "question": "During the chemical neurotransmission process, which specific event is directly triggered by the arrival of an action potential at the presynaptic terminal to facilitate vesicle migration?",
+      "answerOptions": [
+        {
+          "text": "The opening of voltage-gated $Ca^{2+}$ channels.",
+          "isCorrect": true,
+          "rationale": "The influx of calcium ions is the critical signal that causes synaptic vesicles to fuse with the presynaptic membrane and release neurotransmitters."
+        },
+        {
+          "text": "The activation of postsynaptic ionotropic receptors.",
+          "isCorrect": false,
+          "rationale": "Receptor activation is a later step that occurs only after the neurotransmitter has crossed the synaptic cleft."
+        },
+        {
+          "text": "The immediate reuptake of transmitter molecules by transporters.",
+          "isCorrect": false,
+          "rationale": "Transporters function to clear the synapse after release has occurred, rather than initiating the release itself."
+        },
+        {
+          "text": "The hyper-polarization of the presynaptic membrane.",
+          "isCorrect": false,
+          "rationale": "An action potential involves depolarization; hyper-polarization would typically inhibit the release of neurotransmitters."
+        }
+      ],
+      "hint": "Consider the specific ion whose influx is necessary for vesicles to dock and rupture."
+    },
+    {
+      "question": "According to the formal criteria for a substance to be classified as a neurotransmitter, which of the following must be present within the presynaptic cell?",
+      "answerOptions": [
+        {
+          "text": "Appropriate enzymes for synthesizing the substance.",
+          "isCorrect": true,
+          "rationale": "A cell must have the biological machinery required to produce the chemical locally for it to be considered a neurotransmitter."
+        },
+        {
+          "text": "A direct connection to the $COMT$ gene.",
+          "isCorrect": false,
+          "rationale": "While genetics influence neurochemistry, the specific presence of a single gene like $COMT$ is not a universal requirement for all transmitter types."
+        },
+        {
+          "text": "The ability to produce only excitatory potentials.",
+          "isCorrect": false,
+          "rationale": "Neurotransmitters can be excitatory or inhibitory; the direction of the potential does not dictate their classification as a transmitter."
+        },
+        {
+          "text": "Myelin sheathing along the entire axonal branch.",
+          "isCorrect": false,
+          "rationale": "Myelination affects signal speed but is not a criterion for the chemical identification of a neurotransmitter."
+        }
+      ],
+      "hint": "Think about the internal manufacturing process required for a cell to release a specific chemical."
+    },
+    {
+      "question": "How do metabotropic receptors differ fundamentally from ionotropic receptors in their mechanism of action?",
+      "answerOptions": [
+        {
+          "text": "They use G-proteins to trigger slower, intracellular changes.",
+          "isCorrect": true,
+          "rationale": "Metabotropic receptors are not ion channels themselves but activate secondary messengers that can eventually open channels or alter cell metabolism."
+        },
+        {
+          "text": "They act as fast-acting ligand-gated ion channels.",
+          "isCorrect": false,
+          "rationale": "This description refers to ionotropic receptors, which provide rapid transmission by directly opening a pore."
+        },
+        {
+          "text": "They are located exclusively on the presynaptic membrane as autoreceptors.",
+          "isCorrect": false,
+          "rationale": "While some autoreceptors are metabotropic, these receptors are widely distributed on postsynaptic membranes as well."
+        },
+        {
+          "text": "They only respond to amino acid neurotransmitters like $GABA$.",
+          "isCorrect": false,
+          "rationale": "Many different types of neurotransmitters, including biogenic amines, can activate metabotropic receptors."
+        }
+      ],
+      "hint": "Focus on the speed of transmission and the involvement of secondary signaling molecules."
+    },
+    {
+      "question": "Which physiological state is most likely to occur if a neurotransmitter causes hyper-polarization of the postsynaptic neurons?",
+      "answerOptions": [
+        {
+          "text": "A decrease in neural transmission leading to relaxation or sleep.",
+          "isCorrect": true,
+          "rationale": "Hyper-polarization moves the membrane potential further from the threshold, making it less likely for an action potential to fire."
+        },
+        {
+          "text": "An increase in alertness and focused attention.",
+          "isCorrect": false,
+          "rationale": "Alertness is typically associated with de-polarization and increased neural firing."
+        },
+        {
+          "text": "The immediate initiation of a fight-or-flight response.",
+          "isCorrect": false,
+          "rationale": "The fight-or-flight response is driven by excitatory signals from the noradrenergic system, not inhibitory ones."
+        },
+        {
+          "text": "The activation of the Nigrostriatal motor pathway.",
+          "isCorrect": false,
+          "rationale": "Motor pathway activation generally requires excitatory signaling to initiate movement."
+        }
+      ],
+      "hint": "Consider how making a neuron's internal charge more negative affects its likelihood of firing."
+    },
+    {
+      "question": "The cholinergic system is primarily generated in which areas of the brain?",
+      "answerOptions": [
+        {
+          "text": "The brain stem and the basal forebrain.",
+          "isCorrect": true,
+          "rationale": "Acetylcholine is produced in these 'hubs' and then projected to diversos areas of the cortex to modulate memory and attention."
+        },
+        {
+          "text": "The locus coeruleus and raphe nuclei.",
+          "isCorrect": false,
+          "rationale": "These areas are the primary sites for the production of noradrenaline rather than acetylcholine."
+        },
+        {
+          "text": "The substantia nigra and ventral tegmentum.",
+          "isCorrect": false,
+          "rationale": "These hubs are characteristic of the dopaminergic system, involved in movement and reward."
+        },
+        {
+          "text": "The thalamus and the pulvinar nucleus.",
+          "isCorrect": false,
+          "rationale": "While these areas receive cholinergic projections, they are not the primary sites of generation."
+        }
+      ],
+      "hint": "Look for the specific nuclei responsible for 'cholinergic' hubs mentioned in the anatomy slides."
+    },
+    {
+      "question": "Despite having a relatively small number of neurons (approximately 3,000), why does the Noradrenaline ($NA$) system have a profound effect on cognitive functions like attention?",
+      "answerOptions": [
+        {
+          "text": "Its axonal branches project diffusely to major attention areas like the parietal and frontal lobes.",
+          "isCorrect": true,
+          "rationale": "The widespread distribution of $NA$ axons allows a small number of neurons in the locus coeruleus to modulate activity across vast cortical regions."
+        },
+        {
+          "text": "It is the only neurotransmitter that utilizes ionotropic receptors for fast signaling.",
+          "isCorrect": false,
+          "rationale": "Many neurotransmitters use ionotropic receptors; this is not the reason for the $NA$ system's specific influence."
+        },
+        {
+          "text": "It bypasses the thalamus to send signals directly to the primary sensory cortex.",
+          "isCorrect": false,
+          "rationale": "The influence of $NA$ is due to its modulatory projections rather than a unique anatomical bypass of the thalamus."
+        },
+        {
+          "text": "It is produced in the neocortex and projects downward to the brainstem.",
+          "isCorrect": false,
+          "rationale": "The $NA$ system projects 'upward' from the brainstem to the cortex, acting as a neuromodulator."
+        }
+      ],
+      "hint": "Think about the structural organization of 'neuromodulators' and how they reach different parts of the brain."
+    },
+    {
+      "question": "High levels of Serotonin activity are associated with which of the following conditions?",
+      "answerOptions": [
+        {
+          "text": "Serotonin Syndrome and hot flushes.",
+          "isCorrect": true,
+          "rationale": "Excessive serotonin can lead to toxicity, resulting in autonomic symptoms and potential irritability."
+        },
+        {
+          "text": "Uncontrolled appetite and insomnia.",
+          "isCorrect": false,
+          "rationale": "Low levels of serotonin, rather than high levels, are linked to appetite dysregulation and sleep disturbances."
+        },
+        {
+          "text": "Anhedonia and movement disorders like Parkinson's.",
+          "isCorrect": false,
+          "rationale": "These symptoms are characteristic of low dopamine levels rather than serotonin imbalances."
+        },
+        {
+          "text": "Enhanced memory and prevention of Alzheimer's.",
+          "isCorrect": false,
+          "rationale": "While serotonin is involved in learning, memory and Alzheimer's are more classically linked to the cholinergic system."
+        }
+      ],
+      "hint": "Consider the adverse effects of an overabundance of this specific monoamine."
+    },
+    {
+      "question": "Which dopaminergic pathway is specifically associated with reward prediction, salience, and the development of addiction?",
+      "answerOptions": [
+        {
+          "text": "The Mesolimbocortical pathway.",
+          "isCorrect": true,
+          "rationale": "This pathway involves projections to the limbic system and cortex, mediating the 'reward' signals critical for motivated behavior."
+        },
+        {
+          "text": "The Meso-Nigrostriatal pathway.",
+          "isCorrect": false,
+          "rationale": "This pathway is primarily focused on motor control; its degeneration is a hallmark of Parkinson's disease."
+        },
+        {
+          "text": "The Cholinergic pathway from the nucleus basalis.",
+          "isCorrect": false,
+          "rationale": "This is a different neurotransmitter system entirely, focusing on memory and alertness."
+        },
+        {
+          "text": "The Locus Coeruleus projection system.",
+          "isCorrect": false,
+          "rationale": "This system is part of the noradrenergic family, regulating arousal and fight-or-flight responses."
+        }
+      ],
+      "hint": "Differentiate between the pathway for 'movement' and the pathway for 'pleasure/motivation'."
+    },
+    {
+      "question": "What is the primary role of the enzyme Catechol-O-methyl transferase ($COMT$) in the dopaminergic synapse?",
+      "answerOptions": [
+        {
+          "text": "The removal or degradation of dopamine within the synaptic cleft.",
+          "isCorrect": true,
+          "rationale": "$COMT$ breaks down catecholamines like dopamine, helping to terminate the signal in the synapse."
+        },
+        {
+          "text": "The synthesis of dopamine from precursor amino acids.",
+          "isCorrect": false,
+          "rationale": "$COMT$ is involved in the breakdown (catabolism) of neurotransmitters, not their initial production."
+        },
+        {
+          "text": "Transporting dopamine back into the presynaptic vesicles.",
+          "isCorrect": false,
+          "rationale": "This function is performed by transporters ($DAT$) rather than degradation enzymes like $COMT$."
+        },
+        {
+          "text": "Opening voltage-gated $Na^{+}$ channels to trigger an $EPSP$.",
+          "isCorrect": false,
+          "rationale": "Enzymes do not directly open ion channels; that is the role of neurotransmitters binding to receptors."
+        }
+      ],
+      "hint": "Think about how a chemical signal is 'turned off' once it has been released."
+    },
+    {
+      "question": "In the context of the dopaminergic system and learning, what happens to dopamine activity when a previously learned 'cue' is presented?",
+      "answerOptions": [
+        {
+          "text": "Dopamine activity shifts from the reward itself to the cue that predicts it.",
+          "isCorrect": true,
+          "rationale": "Dopamine neurons signal 'prediction error'; once a reward is expected, the spike occurs at the earliest predictive stimulus."
+        },
+        {
+          "text": "Dopamine levels drop significantly because the reward is no longer surprising.",
+          "isCorrect": false,
+          "rationale": "While activity drops if an expected reward is missing, it spikes at the cue once learning has occurred."
+        },
+        {
+          "text": "Dopamine activity remains stationary and only responds to the physical reward.",
+          "isCorrect": false,
+          "rationale": "Dopaminergic signaling is dynamic and shifts to help the brain predict future beneficial events."
+        },
+        {
+          "text": "The $COMT$ enzyme is inhibited to allow for prolonged reward sensations.",
+          "isCorrect": false,
+          "rationale": "The shift in firing patterns is a neuronal signaling property, not an enzymatic regulation change during cue presentation."
+        }
+      ],
+      "hint": "Recall the graph showing dopamine spikes over time as an animal learns to associate a light with food."
+    }
+  ]
+}

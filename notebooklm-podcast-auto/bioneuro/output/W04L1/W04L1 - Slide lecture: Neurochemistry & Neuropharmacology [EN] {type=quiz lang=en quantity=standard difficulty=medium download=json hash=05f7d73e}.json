@@ -1,0 +1,265 @@
+{
+  "title": "Neurotransmission Quiz",
+  "questions": [
+    {
+      "question": "Which of the following is a mandatory criterion that a substance must meet to be classified as a neurotransmitter?",
+      "answerOptions": [
+        {
+          "text": "The presynaptic cell contains appropriate enzymes for synthesizing the substance.",
+          "isCorrect": true,
+          "rationale": "A cell must have the biological machinery necessary to produce the chemical it uses for signaling."
+        },
+        {
+          "text": "The substance must be able to cross the blood-brain barrier without a transporter.",
+          "isCorrect": false,
+          "rationale": "While many drugs must cross this barrier, neurotransmitters are synthesized within the brain cells themselves."
+        },
+        {
+          "text": "The substance is released continuously regardless of the presence of an action potential.",
+          "isCorrect": false,
+          "rationale": "Neurotransmitters are specifically released in response to the electrical signal of an action potential reaching the terminal."
+        },
+        {
+          "text": "The substance must always produce an excitatory effect on the postsynaptic membrane.",
+          "isCorrect": false,
+          "rationale": "Neurotransmitters can be either excitatory or inhibitory depending on the receptor and the substance itself."
+        }
+      ],
+      "hint": "Consider the necessity of specialized cellular machinery required for creating the signaling molecule."
+    },
+    {
+      "question": "During the process of neurotransmission, what is the specific role of $Ca^{2+}$ ions?",
+      "answerOptions": [
+        {
+          "text": "They cause synaptic vesicles to migrate to the presynaptic membrane and fuse with it.",
+          "isCorrect": true,
+          "rationale": "The influx of calcium ions is the critical signal that triggers the physical release of neurotransmitters into the synaptic cleft."
+        },
+        {
+          "text": "They act as the primary neurotransmitter for the cholinergic system.",
+          "isCorrect": false,
+          "rationale": "Calcium is an ion that triggers release, whereas acetylcholine is the actual neurotransmitter molecule in that system."
+        },
+        {
+          "text": "They bind to postsynaptic receptors to initiate an inhibitory potential.",
+          "isCorrect": false,
+          "rationale": "Calcium acts in the presynaptic terminal, while neurotransmitters bind to postsynaptic receptors."
+        },
+        {
+          "text": "They are responsible for the hyper-polarization of the axon during the refractory period.",
+          "isCorrect": false,
+          "rationale": "Hyper-polarization is typically associated with the movement of potassium or chloride ions, not calcium influx at the terminal."
+        }
+      ],
+      "hint": "Think about the specific ion that enters the presynaptic terminal only after the action potential arrives."
+    },
+    {
+      "question": "How do metabotropic receptors differ from ionotropic receptors in their mechanism of action?",
+      "answerOptions": [
+        {
+          "text": "Metabotropic receptors activate G proteins to trigger internal cellular changes, resulting in slower transmission.",
+          "isCorrect": true,
+          "rationale": "Unlike direct ion channels, metabotropic receptors initiate a metabolic cascade that takes more time to affect the cell."
+        },
+        {
+          "text": "Metabotropic receptors act as fast-acting ligand-gated ion channels.",
+          "isCorrect": false,
+          "rationale": "This description refers to ionotropic receptors, which open immediately upon neurotransmitter binding."
+        },
+        {
+          "text": "Metabotropic receptors are only found on the presynaptic membrane to act as autoreceptors.",
+          "isCorrect": false,
+          "rationale": "Both receptor types can be found on either side of the synapse, though they serve different functional speeds."
+        },
+        {
+          "text": "Metabotropic receptors are only activated by inhibitory amino acids like $GABA$.",
+          "isCorrect": false,
+          "rationale": "Many neurotransmitters, including excitatory ones like dopamine, can activate metabotropic receptors."
+        }
+      ],
+      "hint": "One receptor type involves a multi-step chemical signaling process rather than a direct gate."
+    },
+    {
+      "question": "Which major neurotransmitter system is primarily associated with the maintenance of the waking state and is linked to Alzheimer's disease when it degenerates?",
+      "answerOptions": [
+        {
+          "text": "Cholinergic system",
+          "isCorrect": true,
+          "rationale": "The loss of acetylcholine-producing neurons in the basal forebrain is a hallmark of Alzheimer's pathology."
+        },
+        {
+          "text": "Dopaminergic system",
+          "isCorrect": false,
+          "rationale": "Dopamine is more closely linked to movement and reward rather than the primary memory deficits seen in Alzheimer's."
+        },
+        {
+          "text": "Serotonergic system",
+          "isCorrect": false,
+          "rationale": "Serotonin primarily regulates mood and sleep cycles rather than being the primary system implicated in Alzheimer's."
+        },
+        {
+          "text": "Noradrenergic system",
+          "isCorrect": false,
+          "rationale": "While involved in arousal, the noradrenergic system is more specifically linked to mood disorders and ADHD."
+        }
+      ],
+      "hint": "This system utilizes nicotinic and muscarinic receptors."
+    },
+    {
+      "question": "The locus coeruleus is the primary site for the production of which neurotransmitter?",
+      "answerOptions": [
+        {
+          "text": "Noradrenaline ($NA$)",
+          "isCorrect": true,
+          "rationale": "The locus coeruleus contains a small but highly influential population of neurons that modulate attention via noradrenaline."
+        },
+        {
+          "text": "Serotonin ($5-HT$)",
+          "isCorrect": false,
+          "rationale": "Serotonin is primarily produced in the raphe nuclei of the brainstem."
+        },
+        {
+          "text": "Dopamine ($DA$)",
+          "isCorrect": false,
+          "rationale": "Dopamine is produced in areas like the substantia nigra and the ventral tegmental area."
+        },
+        {
+          "text": "Glutamate",
+          "isCorrect": false,
+          "rationale": "Glutamate is a ubiquitous amino acid transmitter found throughout the brain, not restricted to a specific small nucleus."
+        }
+      ],
+      "hint": "This chemical is central to the fight-or-flight response and alertness."
+    },
+    {
+      "question": "Which dopaminergic pathway is most specifically involved in reward prediction, salience, and the development of addiction?",
+      "answerOptions": [
+        {
+          "text": "Mesolimbocortical pathway",
+          "isCorrect": true,
+          "rationale": "This pathway projects to the limbic system and cortex, mediating the reinforcing effects of rewards."
+        },
+        {
+          "text": "Meso-Nigrostriatal pathway",
+          "isCorrect": false,
+          "rationale": "This pathway is primarily responsible for motor control and is the system that degenerates in Parkinson's disease."
+        },
+        {
+          "text": "Cholinergic projection system",
+          "isCorrect": false,
+          "rationale": "This system uses acetylcholine, not dopamine, and focuses on memory and attention."
+        },
+        {
+          "text": "Tuberoinfundibular pathway",
+          "isCorrect": false,
+          "rationale": "This is a dopamine pathway but it primarily regulates hormone secretion from the pituitary gland."
+        }
+      ],
+      "hint": "Distinguish between the pathway for 'movement' and the pathway for 'pleasure/motivation'."
+    },
+    {
+      "question": "What is the characteristic effect of inhibitory neurotransmitters like $GABA$ or Serotonin on a neuron?",
+      "answerOptions": [
+        {
+          "text": "They cause hyper-polarization, leading to a $\\downarrow$ in neural transmission.",
+          "isCorrect": true,
+          "rationale": "By making the cell's interior more negative, these transmitters move the membrane potential further away from the firing threshold."
+        },
+        {
+          "text": "They cause de-polarization, leading to an $\\uparrow$ in neural transmission.",
+          "isCorrect": false,
+          "rationale": "De-polarization is the mechanism used by excitatory transmitters to stimulate action potentials."
+        },
+        {
+          "text": "They trigger the immediate release of calcium from the postsynaptic mitochondria.",
+          "isCorrect": false,
+          "rationale": "Neurotransmitters primarily affect membrane potential via ion channels rather than targeting internal organelles directly."
+        },
+        {
+          "text": "They irreversibly block all receptors on the postsynaptic membrane.",
+          "isCorrect": false,
+          "rationale": "Inhibitory neurotransmission is a reversible regulatory process, not a permanent blockage."
+        }
+      ],
+      "hint": "Think about how these chemicals affect the electrical charge relative to the threshold for firing."
+    },
+    {
+      "question": "In the study of cognitive psychopharmacology, what does a 'pharmacological challenge' typically entail?",
+      "answerOptions": [
+        {
+          "text": "Modulating specific neurotransmitter systems using pharmaceuticals to observe changes in cognitive testing performance.",
+          "isCorrect": true,
+          "rationale": "Researchers use drugs to temporarily alter neurochemistry to establish causal links between chemical systems and behavior."
+        },
+        {
+          "text": "Performing permanent surgical lesions to remove the neurotransmitter 'hubs' in animal models.",
+          "isCorrect": false,
+          "rationale": "Pharmacological challenges are generally reversible and use chemical agents rather than permanent surgery."
+        },
+        {
+          "text": "Mapping the entire genome of a patient to identify the presence of the $COMT$ gene.",
+          "isCorrect": false,
+          "rationale": "While genetics are mentioned, a 'challenge' specifically refers to the administration of a substance to provoke a response."
+        },
+        {
+          "text": "Testing the electrical conductivity of neurons in a petri dish without using any chemicals.",
+          "isCorrect": false,
+          "rationale": "Cognitive psychopharmacology focuses on the interaction between chemicals and complex behavioral functions."
+        }
+      ],
+      "hint": "It involves the active modulation of a system to see how it affects 'real-time' cognition."
+    },
+    {
+      "question": "Which of the following is an example of a mechanism used to remove Dopamine from the synapse after it has been released?",
+      "answerOptions": [
+        {
+          "text": "$COMT$ (Catechol-O-methyl transferase)",
+          "isCorrect": true,
+          "rationale": "COMT is an enzyme that breaks down catecholamines like dopamine in the synaptic cleft."
+        },
+        {
+          "text": "Acetylcholinesterase",
+          "isCorrect": false,
+          "rationale": "This enzyme is specific to the breakdown of acetylcholine, not dopamine."
+        },
+        {
+          "text": "Tyrosine hydroxylase",
+          "isCorrect": false,
+          "rationale": "This is an enzyme involved in the synthesis of dopamine, not its removal or breakdown."
+        },
+        {
+          "text": "Vesicular monoamine transporter ($VMAT$)",
+          "isCorrect": false,
+          "rationale": "VMAT packages dopamine into vesicles inside the cell; it does not remove it from the synapse."
+        }
+      ],
+      "hint": "Look for an enzyme or transporter specifically mentioned in the dopamine synapse diagram."
+    },
+    {
+      "question": "Which of these pairs correctly matches a neurotransmitter dysregulation with its potential psychological outcome?",
+      "answerOptions": [
+        {
+          "text": "Low Noradrenaline $\\rightarrow$ Impaired mood and depression",
+          "isCorrect": true,
+          "rationale": "Inadequate noradrenergic activity is linked to symptoms like low energy, poor focus, and depressive states."
+        },
+        {
+          "text": "High Serotonin $\\rightarrow$ Uncontrolled appetite and insomnia",
+          "isCorrect": false,
+          "rationale": "Uncontrolled appetite and insomnia are actually associated with *low* levels of serotonin."
+        },
+        {
+          "text": "High Dopamine $\\rightarrow$ Parkinson's disease",
+          "isCorrect": false,
+          "rationale": "Parkinson's disease is caused by the *loss* or low levels of dopamine in the nigrostriatal pathway."
+        },
+        {
+          "text": "Low Acetylcholine $\\rightarrow$ Enhanced reward prediction",
+          "isCorrect": false,
+          "rationale": "Low acetylcholine is linked to memory deficits, whereas reward prediction is a dopaminergic function."
+        }
+      ],
+      "hint": "Think about the system responsible for arousal, alertness, and mood modulation."
+    }
+  ]
+}

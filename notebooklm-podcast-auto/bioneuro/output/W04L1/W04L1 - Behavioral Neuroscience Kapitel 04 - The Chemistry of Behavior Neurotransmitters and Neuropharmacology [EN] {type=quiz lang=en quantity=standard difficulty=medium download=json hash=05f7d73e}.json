@@ -1,0 +1,317 @@
+{
+  "title": "Neuropharmacology Quiz",
+  "questions": [
+    {
+      "question": "According to the criteria established for classic neurotransmitters, where must the substance be found in significant quantities to be considered as such?",
+      "answerOptions": [
+        {
+          "text": "The postsynaptic dendrites",
+          "isCorrect": false,
+          "rationale": "While the postsynaptic side contains the receptors, the transmitter itself is stored on the sending side of the synapse."
+        },
+        {
+          "text": "The presynaptic axon terminals",
+          "isCorrect": true,
+          "rationale": "Neurotransmitters are localised within the axon terminals to be ready for release into the synaptic cleft upon the arrival of an action potential."
+        },
+        {
+          "text": "The myelin sheath",
+          "isCorrect": false,
+          "rationale": "The myelin sheath serves as an insulator for the axon and does not participate in the synthesis or storage of chemical messengers."
+        },
+        {
+          "text": "The mitochondrial matrix of the stroma",
+          "isCorrect": false,
+          "rationale": "Mitochondria provide energy for cellular processes, but neurotransmitters are specifically packaged into synaptic vesicles in the terminal."
+        }
+      ],
+      "hint": "Consider the structural component of the neuron responsible for initiating the chemical signal to the next cell."
+    },
+    {
+      "question": "A drug that binds to a receptor but fails to activate it, thereby preventing the endogenous ligand from binding, is classified as which of the following?",
+      "answerOptions": [
+        {
+          "text": "A partial agonist",
+          "isCorrect": false,
+          "rationale": "A partial agonist still activates the receptor to some degree, whereas this drug has zero intrinsic activity."
+        },
+        {
+          "text": "An inverse agonist",
+          "isCorrect": false,
+          "rationale": "An inverse agonist does more than block; it initiates an effect that is the opposite of the transmitter's normal function."
+        },
+        {
+          "text": "A competitive antagonist",
+          "isCorrect": true,
+          "rationale": "By binding to the same recognition site as the transmitter without activating it, the drug 'competes' for the space and blocks the transmitter's action."
+        },
+        {
+          "text": "A non-competitive modulator",
+          "isCorrect": false,
+          "rationale": "Non-competitive ligands bind to a different part of the receptor complex rather than directly competing for the transmitter's binding site."
+        }
+      ],
+      "hint": "Think about the term for a substance that 'opposes' or 'fights' the normal action by occupying the same space."
+    },
+    {
+      "question": "In the study of pharmacodynamics, how is the 'efficacy' of a drug distinguished from its 'affinity'?",
+      "answerOptions": [
+        {
+          "text": "Affinity refers to the speed of the drug's metabolism, while efficacy refers to its absorption rate.",
+          "isCorrect": false,
+          "rationale": "These terms describe pharmacokinetics (how the body moves the drug) rather than how the drug interacts with its target."
+        },
+        {
+          "text": "Affinity is the chemical attraction to the receptor, whereas efficacy is the propensity to activate that receptor.",
+          "isCorrect": true,
+          "rationale": "A drug may have a high affinity (staying bound for a long time) but low efficacy (failing to trigger a cellular response)."
+        },
+        {
+          "text": "Efficacy is the dosage required for 50% effectiveness, while affinity is the maximum possible effect.",
+          "isCorrect": false,
+          "rationale": "The dose for 50% effectiveness is known as the $ED_{50}$, which is a measure of potency, not affinity."
+        },
+        {
+          "text": "Affinity describes only exogenous ligands, while efficacy describes only endogenous ligands.",
+          "isCorrect": false,
+          "rationale": "Both properties apply to any substance, whether internal or external, that interacts with a receptor."
+        }
+      ],
+      "hint": "One term relates to the 'stickiness' of the drug to its target, while the other relates to the 'power' it has to cause a change."
+    },
+    {
+      "question": "The widespread loss of cholinergic neurons in the basal forebrain is a characteristic feature associated with which condition?",
+      "answerOptions": [
+        {
+          "text": "Schizophrenia",
+          "isCorrect": false,
+          "rationale": "Schizophrenia is more typically linked to abnormalities in dopaminergic and serotonergic pathways rather than a primary loss of acetylcholine cells."
+        },
+        {
+          "text": "Parkinson's disease",
+          "isCorrect": false,
+          "rationale": "Parkinson's is caused by the degeneration of dopaminergic neurons in the substantia nigra, affecting motor control."
+        },
+        {
+          "text": "Alzheimer's disease",
+          "isCorrect": true,
+          "rationale": "Cholinergic systems are crucial for learning and memory, and their decline is a major factor in the cognitive deficits seen in Alzheimer's."
+        },
+        {
+          "text": "Generalized anxiety disorder",
+          "isCorrect": false,
+          "rationale": "Anxiety disorders are usually managed by targeting the GABAergic or serotonergic systems rather than addressing a loss of cholinergic neurons."
+        }
+      ],
+      "hint": "This condition involves profound memory loss and cognitive decline, reflecting the function of the affected neurotransmitter."
+    },
+    {
+      "question": "Which dopaminergic pathway originates in the substantia nigra and is primarily responsible for motor control?",
+      "answerOptions": [
+        {
+          "text": "The mesolimbocortical pathway",
+          "isCorrect": false,
+          "rationale": "This pathway originates in the ventral tegmental area (VTA) and is associated with reward and reinforcement."
+        },
+        {
+          "text": "The mesostriatal pathway",
+          "isCorrect": true,
+          "rationale": "This pathway projects from the midbrain to the striatum (caudate and putamen) and is central to the motor symptoms of Parkinson's disease."
+        },
+        {
+          "text": "The raphe nuclei projection",
+          "isCorrect": false,
+          "rationale": "The raphe nuclei are the primary source of serotonin, not dopamine, in the brain."
+        },
+        {
+          "text": "The locus coeruleus pathway",
+          "isCorrect": false,
+          "rationale": "The locus coeruleus is the main site for the production of norepinephrine, which regulates arousal."
+        }
+      ],
+      "hint": "The name of this pathway combines 'meso' for midbrain and 'striatal' for its target in the basal ganglia."
+    },
+    {
+      "question": "If a patient is repeatedly treated with an agonist drug, how might the postsynaptic neuron adapt to maintain homeostasis?",
+      "answerOptions": [
+        {
+          "text": "By up-regulating the number of available receptors",
+          "isCorrect": false,
+          "rationale": "Up-regulation occurs in response to an antagonist to increase sensitivity to the weakened signal."
+        },
+        {
+          "text": "By down-regulating the number of available receptors",
+          "isCorrect": true,
+          "rationale": "To counter the excessive stimulation from the agonist, the cell decreases its receptor density to become less sensitive."
+        },
+        {
+          "text": "By increasing the production of the endogenous neurotransmitter",
+          "isCorrect": false,
+          "rationale": "Increasing the neurotransmitter would further exacerbate the overstimulation rather than compensating for it."
+        },
+        {
+          "text": "By decreasing the effectiveness of metabolic enzymes in the liver",
+          "isCorrect": false,
+          "rationale": "While metabolic tolerance can occur, it is a whole-body process rather than a specific adaptation of the postsynaptic neuron's membrane."
+        }
+      ],
+      "hint": "Think about how a system might 'mute' a signal that has become too loud or persistent."
+    },
+    {
+      "question": "Which of the following describes a unique property of gas neurotransmitters like nitric oxide ($NO$)?",
+      "answerOptions": [
+        {
+          "text": "They are stored in large dense-core vesicles until release.",
+          "isCorrect": false,
+          "rationale": "Gases cannot be contained in vesicles; they diffuse out of the cell as soon as they are produced."
+        },
+        {
+          "text": "They act as retrograde transmitters, communicating from the postsynaptic to the presynaptic neuron.",
+          "isCorrect": true,
+          "rationale": "Nitric oxide diffuses backwards to the sending neuron, often to signal changes in synaptic strength for memory."
+        },
+        {
+          "text": "They bind to ionotropic receptors on the cell surface to open chloride channels.",
+          "isCorrect": false,
+          "rationale": "Gas transmitters diffuse directly into the target cell to activate second messengers rather than binding to surface receptors."
+        },
+        {
+          "text": "They are exclusively found in the peripheral nervous system and the gut.",
+          "isCorrect": false,
+          "rationale": "Gas transmitters are found widely throughout the central nervous system as well as the body."
+        }
+      ],
+      "hint": "Consider the direction of the signal and the fact that these molecules can pass through cell membranes easily."
+    },
+    {
+      "question": "Benzodiazepines like Xanax or Ativan exert their anxiolytic effects by modulating which receptor complex?",
+      "answerOptions": [
+        {
+          "text": "The $NMDA$ glutamate receptor",
+          "isCorrect": false,
+          "rationale": "NMDA receptors are excitatory and primarily involved in learning, whereas benzodiazepines target inhibitory systems."
+        },
+        {
+          "text": "The $5-HT_{2A}$ serotonin receptor",
+          "isCorrect": false,
+          "rationale": "This receptor subtype is associated with the effects of hallucinogens like LSD rather than the sedative effects of anxiolytics."
+        },
+        {
+          "text": "The $GABA_{A}$ receptor",
+          "isCorrect": true,
+          "rationale": "Benzodiazepines bind to a modulatory site on the $GABA_{A}$ receptor, enhancing the inhibitory effect of $GABA$ and reducing neuronal excitability."
+        },
+        {
+          "text": "The $D_{2}$ dopamine receptor",
+          "isCorrect": false,
+          "rationale": "Antipsychotics, not anxiolytics, typically act as antagonists at the $D_{2}$ receptor to treat schizophrenia."
+        }
+      ],
+      "hint": "This receptor controls a chloride channel and is the primary mediator of fast inhibitory signals in the brain."
+    },
+    {
+      "question": "What is the primary pharmacological action of first-generation antipsychotics, such as haloperidol?",
+      "answerOptions": [
+        {
+          "text": "Selective inhibition of serotonin reuptake",
+          "isCorrect": false,
+          "rationale": "This is the mechanism of SSRI antidepressants, which are used for mood disorders rather than psychosis."
+        },
+        {
+          "text": "Antagonism of dopamine $D_{2}$ receptors",
+          "isCorrect": true,
+          "rationale": "By blocking $D_{2}$ receptors, these drugs reduce the overactive dopaminergic signalling associated with the positive symptoms of schizophrenia."
+        },
+        {
+          "text": "Activation of $GABA_{B}$ metabotropic receptors",
+          "isCorrect": false,
+          "rationale": "Activating $GABA_{B}$ receptors typically produces slow inhibition and is more relevant to pain or mood than antipsychotic action."
+        },
+        {
+          "text": "Inhibition of monoamine oxidase enzymes",
+          "isCorrect": false,
+          "rationale": "MAO inhibitors are a class of antidepressants that prevent the breakdown of monoamines like norepinephrine and serotonin."
+        }
+      ],
+      "hint": "These drugs are designed to lower the activity of a specific 'reward' and 'movement' chemical that is found in excess in certain pathways during psychosis."
+    },
+    {
+      "question": "How does caffeine contribute to increased arousal and alertness in the nervous system?",
+      "answerOptions": [
+        {
+          "text": "By acting as a potent agonist at nicotinic acetylcholine receptors",
+          "isCorrect": false,
+          "rationale": "Nicotine, not caffeine, is the primary ligand that activates these ionotropic receptors."
+        },
+        {
+          "text": "By blocking the autoreceptor effect of adenosine",
+          "isCorrect": true,
+          "rationale": "Adenosine normally inhibits the release of catecholamines; by blocking its receptors, caffeine prevents this inhibition, leading to increased transmitter release."
+        },
+        {
+          "text": "By stimulating the reuptake of serotonin into the raphe nuclei",
+          "isCorrect": false,
+          "rationale": "Caffeine's primary effects are linked to the catecholamine and adenosine systems, not the clearance of serotonin."
+        },
+        {
+          "text": "By opening voltage-gated calcium channels in the absence of an action potential",
+          "isCorrect": false,
+          "rationale": "Opening calcium channels directly would cause uncontrolled neurotransmitter release, which is not caffeine's specific mechanism."
+        }
+      ],
+      "hint": "It works by 'blocking the blocker' of catecholamine release, involving a molecule called adenosine."
+    },
+    {
+      "question": "Which term describes the margin of safety for a drug, calculated by comparing the dose that is effective for 50% of the population with the dose that is lethal for 50%?",
+      "answerOptions": [
+        {
+          "text": "The Dose-Response Curve ($DRC$)",
+          "isCorrect": false,
+          "rationale": "The $DRC$ is the entire graph showing the relationship between dose and effect, not the specific ratio of safety."
+        },
+        {
+          "text": "The Therapeutic Index",
+          "isCorrect": true,
+          "rationale": "A wider therapeutic index indicates a safer drug because there is a large gap between the dose needed for therapy and the dose that causes death."
+        },
+        {
+          "text": "Binding Affinity",
+          "isCorrect": false,
+          "rationale": "Affinity measures the strength of the bond between a drug and its receptor, which is independent of the overall safety profile."
+        },
+        {
+          "text": "Metabolic Tolerance",
+          "isCorrect": false,
+          "rationale": "Metabolic tolerance refers to the body's increasing ability to clear a drug, which may change the effective dose but doesn't define the initial safety margin."
+        }
+      ],
+      "hint": "This 'index' compares the $ED_{50}$ with the $LD_{50}$ to determine how likely an accidental overdose might be."
+    },
+    {
+      "question": "The DREADDs technique is primarily used by researchers to accomplish which of the following?",
+      "answerOptions": [
+        {
+          "text": "To visualised the synthesis of neurotransmitters using radioactive tracers",
+          "isCorrect": false,
+          "rationale": "Visualization is typically done via staining or PET scans, whereas DREADDs are a functional manipulation tool."
+        },
+        {
+          "text": "To selectively activate or inhibit specific neurons using designer drugs",
+          "isCorrect": true,
+          "rationale": "Designer receptors exclusively activated by designer drugs (DREADDs) allow for the precise control of targeted cells that have been engineered to express them."
+        },
+        {
+          "text": "To bypass the blood-brain barrier for the delivery of large peptide molecules",
+          "isCorrect": false,
+          "rationale": "While delivery is a challenge, DREADDs are about receptor specificity rather than a method of physical transport across the barrier."
+        },
+        {
+          "text": "To identify orphan receptors for which no endogenous ligand exists",
+          "isCorrect": false,
+          "rationale": "Orphan receptors are identified through genomic or proteomic screening; DREADDs are artificially created receptors."
+        }
+      ],
+      "hint": "The name of this method involves 'designer receptors' that respond only to 'designer drugs'."
+    }
+  ]
+}

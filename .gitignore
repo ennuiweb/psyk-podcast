@@ -33,9 +33,18 @@ apps-script/.clasp.json
 **/outputs/**/*.mp3
 **/output/**/*.wav
 **/outputs/**/*.wav
+**/output/**/*.png
+**/outputs/**/*.png
+**/output/**/*.jpg
+**/outputs/**/*.jpg
+**/output/**/*.jpeg
+**/outputs/**/*.jpeg
+**/output/**/*.webp
+**/outputs/**/*.webp
 sources
 
 githooks/*.log
+*.request.json
 *.request.json.json
 *.request.done.json
 *.request.error.json

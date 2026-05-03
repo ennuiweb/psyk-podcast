@@ -528,6 +528,8 @@ def build_audio_prompt(
     exam_focus: dict | None,
     prompt_framework: dict | None,
     meta_prompting: dict | None,
+    course_context_note: str | None = None,
+    course_context_heading: str | None = None,
     meta_note_overrides: dict[Path, str] | None = None,
     custom_prompt: str,
     audio_format: str | None = None,
@@ -602,6 +604,10 @@ def build_audio_prompt(
 
     if prompt_strategy and prompt_strategy.get("enabled", False):
         sections.append(f"Tone: {prompt_strategy['tone']}")
+
+    if course_context_note:
+        heading = str(course_context_heading or "Course-aware lecture context:").strip()
+        sections.append(f"{heading}\n{course_context_note.strip()}")
 
     if custom_prompt:
         sections.append(f"Additional instructions:\n{custom_prompt}")

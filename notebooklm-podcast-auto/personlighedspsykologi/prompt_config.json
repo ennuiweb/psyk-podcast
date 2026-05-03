@@ -166,6 +166,16 @@
       "max_total_chars": 24000
     }
   },
+  "course_context": {
+    "enabled": true,
+    "heading": "Course-aware lecture context:",
+    "content_manifest": "shows/personlighedspsykologi-en/content_manifest.json",
+    "course_overview": "shows/personlighedspsykologi-en/docs/overblik.md",
+    "neighbor_window": 1,
+    "max_readings": 3,
+    "max_points_per_reading": 2,
+    "max_slide_titles": 4
+  },
   "weekly_overview": {
     "format": "deep-dive",
     "length": "long",

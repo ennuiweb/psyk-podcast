@@ -251,6 +251,26 @@ class GenerateWeekTests(unittest.TestCase):
         self.assertIn("Do not invent studies, examples, citations", prompt)
         self.assertIn("Tone: calm, precise, teaching-oriented.", prompt)
 
+    def test_build_audio_prompt_includes_course_context_section(self):
+        mod = _load_module()
+        reading_item = mod.SourceItem(
+            path=Path("/tmp/Foucault.pdf"),
+            base_name="Foucault",
+            source_type="reading",
+        )
+
+        prompt = mod.build_audio_prompt(
+            prompt_type="single_reading",
+            custom_prompt="",
+            source_item=reading_item,
+            course_context_note="## Lecture position\n- This lecture comes after the introductory block.",
+            course_context_heading="Course-aware lecture context:",
+            **self._default_prompt_context(mod),
+        )
+
+        self.assertIn("Course-aware lecture context:", prompt)
+        self.assertIn("This lecture comes after the introductory block.", prompt)
+
     def test_build_audio_prompt_includes_format_and_length_guidance(self):
         mod = _load_module()
         reading_item = mod.SourceItem(

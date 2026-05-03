@@ -19,7 +19,7 @@ REPO_ROOT_FOR_IMPORTS = Path(__file__).resolve().parents[3]
 if str(REPO_ROOT_FOR_IMPORTS) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT_FOR_IMPORTS))
 
-from notebooklm_queue import prompting
+from notebooklm_queue import course_context as course_context_helpers, prompting
 
 
 def read_json(path: Path) -> dict:
@@ -80,6 +80,7 @@ DEFAULT_AUDIO_PROMPT_STRATEGY = prompting.DEFAULT_AUDIO_PROMPT_STRATEGY
 DEFAULT_EXAM_FOCUS = prompting.DEFAULT_EXAM_FOCUS
 DEFAULT_META_PROMPTING = prompting.DEFAULT_META_PROMPTING
 DEFAULT_AUDIO_PROMPT_FRAMEWORK = prompting.DEFAULT_AUDIO_PROMPT_FRAMEWORK
+DEFAULT_COURSE_CONTEXT = course_context_helpers.DEFAULT_COURSE_CONTEXT
 META_PROMPT_MAX_RESPONSE_TOKENS = 1400
 META_PROMPT_WARNING_MESSAGES: set[str] = set()
 
@@ -482,6 +483,9 @@ def per_source_audio_settings(
     prompt_framework: dict | None = None,
     meta_prompting: dict | None = None,
     meta_note_overrides: dict[Path, str] | None = None,
+    course_context_bundle: course_context_helpers.CoursePromptContextBundle | None = None,
+    course_context_cfg: dict | None = None,
+    lecture_key: str | None = None,
 ) -> tuple[str, str, str, str]:
     if source_item.source_type == "slide":
         slide_cfg = {
@@ -497,6 +501,13 @@ def per_source_audio_settings(
             override = overrides.get(normalize_slide_key(source_item.slide_key))
         if override:
             slide_cfg.update(override)
+        course_context_note = build_course_context_note(
+            course_context_bundle=course_context_bundle,
+            course_context_cfg=course_context_cfg,
+            lecture_key=lecture_key,
+            prompt_type="single_slide",
+            source_item=source_item,
+        )
         return (
             "per_slide",
             build_audio_prompt(
@@ -505,6 +516,8 @@ def per_source_audio_settings(
                 exam_focus=exam_focus,
                 prompt_framework=prompt_framework,
                 meta_prompting=meta_prompting,
+                course_context_note=course_context_note,
+                course_context_heading=course_context_cfg.get("heading") if course_context_cfg else None,
                 meta_note_overrides=meta_note_overrides,
                 custom_prompt=slide_cfg.get("prompt", ""),
                 audio_format=slide_cfg.get("format", "deep-dive"),
@@ -514,6 +527,13 @@ def per_source_audio_settings(
             slide_cfg.get("format", "deep-dive"),
             slide_cfg.get("length", "default"),
         )
+    course_context_note = build_course_context_note(
+        course_context_bundle=course_context_bundle,
+        course_context_cfg=course_context_cfg,
+        lecture_key=lecture_key,
+        prompt_type="single_reading",
+        source_item=source_item,
+    )
     return (
         "per_reading",
         build_audio_prompt(
@@ -522,6 +542,8 @@ def per_source_audio_settings(
             exam_focus=exam_focus,
             prompt_framework=prompt_framework,
             meta_prompting=meta_prompting,
+            course_context_note=course_context_note,
+            course_context_heading=course_context_cfg.get("heading") if course_context_cfg else None,
             meta_note_overrides=meta_note_overrides,
             custom_prompt=per_reading_cfg.get("prompt", ""),
             audio_format=per_reading_cfg.get("format", "deep-dive"),
@@ -753,6 +775,10 @@ def normalize_meta_prompting(raw: object) -> dict:
 
 def normalize_audio_prompt_framework(raw: object) -> dict:
     return prompting.normalize_audio_prompt_framework(raw)
+
+
+def normalize_course_context(raw: object) -> dict:
+    return course_context_helpers.normalize_course_context(raw)
 
 
 def ensure_prompt(_: str, value: str) -> str:
@@ -1402,6 +1428,8 @@ def build_audio_prompt(
     exam_focus: dict | None,
     prompt_framework: dict | None,
     meta_prompting: dict | None,
+    course_context_note: str | None = None,
+    course_context_heading: str | None = None,
     meta_note_overrides: dict[Path, str] | None = None,
     custom_prompt: str,
     audio_format: str | None = None,
@@ -1417,6 +1445,8 @@ def build_audio_prompt(
         exam_focus=exam_focus,
         prompt_framework=prompt_framework,
         meta_prompting=meta_prompting,
+        course_context_note=course_context_note,
+        course_context_heading=course_context_heading,
         meta_note_overrides=meta_note_overrides,
         custom_prompt=custom_prompt,
         audio_format=audio_format,
@@ -1425,6 +1455,25 @@ def build_audio_prompt(
         source_items=source_items,
         week_dir=week_dir,
         week_label=week_label,
+    )
+
+
+def build_course_context_note(
+    *,
+    course_context_bundle: course_context_helpers.CoursePromptContextBundle | None,
+    course_context_cfg: dict | None,
+    lecture_key: str | None,
+    prompt_type: str,
+    source_item: SourceItem | None = None,
+) -> str:
+    if course_context_bundle is None or not course_context_cfg or not lecture_key:
+        return ""
+    return course_context_helpers.build_course_prompt_context_note(
+        bundle=course_context_bundle,
+        config=course_context_cfg,
+        lecture_key=lecture_key,
+        prompt_type=prompt_type,
+        source_item=source_item,
     )
 
 
@@ -2605,6 +2654,7 @@ def main() -> int:
     exam_focus = normalize_exam_focus(config.get("exam_focus"))
     audio_prompt_framework = normalize_audio_prompt_framework(config.get("audio_prompt_framework"))
     meta_prompting = normalize_meta_prompting(config.get("meta_prompting"))
+    course_context_cfg = normalize_course_context(config.get("course_context"))
     brief_cfg = ensure_dict(config.get("short", config.get("brief", {})))
     infographic_defaults = ensure_dict(config.get("infographic"))
     weekly_infographic_cfg = ensure_dict(config.get("weekly_infographic", infographic_defaults))
@@ -2626,6 +2676,15 @@ def main() -> int:
         if args.review_manifest
         else None
     )
+    try:
+        course_context_bundle = course_context_helpers.load_course_prompt_context_bundle(
+            repo_root=repo_root,
+            config=course_context_cfg,
+            slides_catalog_path=slides_catalog_path,
+        )
+    except RuntimeError as exc:
+        print(f"Warning: course-aware lecture context disabled for this run: {exc}")
+        course_context_bundle = None
 
     request_logs: list[Path] = []
     failures: list[str] = []
@@ -2776,12 +2835,20 @@ def main() -> int:
                     for variant in language_variants:
                         for quiz_difficulty_value in quiz_difficulty_values(content_type, quiz_difficulty):
                             if content_type == "audio":
+                                weekly_course_context_note = build_course_context_note(
+                                    course_context_bundle=course_context_bundle,
+                                    course_context_cfg=course_context_cfg,
+                                    lecture_key=week_label,
+                                    prompt_type="weekly_readings_only",
+                                )
                                 planned_instructions = build_audio_prompt(
                                     prompt_type="weekly_readings_only",
                                     prompt_strategy=audio_prompt_strategy,
                                     exam_focus=exam_focus,
                                     prompt_framework=audio_prompt_framework,
                                     meta_prompting=meta_prompting,
+                                    course_context_note=weekly_course_context_note,
+                                    course_context_heading=course_context_cfg.get("heading"),
                                     meta_note_overrides=auto_meta_note_overrides,
                                     custom_prompt=weekly_cfg.get("prompt", ""),
                                     audio_format=weekly_cfg.get("format", "deep-dive"),
@@ -2882,6 +2949,9 @@ def main() -> int:
                                     prompt_framework=audio_prompt_framework,
                                     meta_prompting=meta_prompting,
                                     meta_note_overrides=auto_meta_note_overrides,
+                                    course_context_bundle=course_context_bundle,
+                                    course_context_cfg=course_context_cfg,
+                                    lecture_key=week_label,
                                 )
                                 planned_tag = build_output_cfg_tag_token(
                                     content_type=content_type,
@@ -2975,12 +3045,21 @@ def main() -> int:
                         for variant in language_variants:
                             for quiz_difficulty_value in quiz_difficulty_values(content_type, quiz_difficulty):
                                 if content_type == "audio":
+                                    brief_course_context_note = build_course_context_note(
+                                        course_context_bundle=course_context_bundle,
+                                        course_context_cfg=course_context_cfg,
+                                        lecture_key=week_label,
+                                        prompt_type="short",
+                                        source_item=source_item,
+                                    )
                                     planned_instructions = build_audio_prompt(
                                         prompt_type="short",
                                         prompt_strategy=audio_prompt_strategy,
                                         exam_focus=exam_focus,
                                         prompt_framework=audio_prompt_framework,
                                         meta_prompting=meta_prompting,
+                                        course_context_note=brief_course_context_note,
+                                        course_context_heading=course_context_cfg.get("heading"),
                                         meta_note_overrides=auto_meta_note_overrides,
                                         custom_prompt=brief_cfg.get("prompt", ""),
                                         audio_format=brief_cfg.get("format", "deep-dive"),
@@ -3079,12 +3158,20 @@ def main() -> int:
                     for variant in language_variants:
                         for quiz_difficulty_value in quiz_difficulty_values(content_type, quiz_difficulty):
                             if content_type == "audio":
+                                weekly_course_context_note = build_course_context_note(
+                                    course_context_bundle=course_context_bundle,
+                                    course_context_cfg=course_context_cfg,
+                                    lecture_key=week_label,
+                                    prompt_type="weekly_readings_only",
+                                )
                                 instructions = build_audio_prompt(
                                     prompt_type="weekly_readings_only",
                                     prompt_strategy=audio_prompt_strategy,
                                     exam_focus=exam_focus,
                                     prompt_framework=audio_prompt_framework,
                                     meta_prompting=meta_prompting,
+                                    course_context_note=weekly_course_context_note,
+                                    course_context_heading=course_context_cfg.get("heading"),
                                     meta_note_overrides=auto_meta_note_overrides,
                                     custom_prompt=weekly_cfg.get("prompt", ""),
                                     audio_format=weekly_cfg.get("format", "deep-dive"),
@@ -3248,6 +3335,9 @@ def main() -> int:
                                     prompt_framework=audio_prompt_framework,
                                     meta_prompting=meta_prompting,
                                     meta_note_overrides=auto_meta_note_overrides,
+                                    course_context_bundle=course_context_bundle,
+                                    course_context_cfg=course_context_cfg,
+                                    lecture_key=week_label,
                                 )
                                 infographic_orientation = None
                                 infographic_detail = None
@@ -3413,12 +3503,21 @@ def main() -> int:
                         for variant in language_variants:
                             for quiz_difficulty_value in quiz_difficulty_values(content_type, quiz_difficulty):
                                 if content_type == "audio":
+                                    brief_course_context_note = build_course_context_note(
+                                        course_context_bundle=course_context_bundle,
+                                        course_context_cfg=course_context_cfg,
+                                        lecture_key=week_label,
+                                        prompt_type="short",
+                                        source_item=source_item,
+                                    )
                                     instructions = build_audio_prompt(
                                         prompt_type="short",
                                         prompt_strategy=audio_prompt_strategy,
                                         exam_focus=exam_focus,
                                         prompt_framework=audio_prompt_framework,
                                         meta_prompting=meta_prompting,
+                                        course_context_note=brief_course_context_note,
+                                        course_context_heading=course_context_cfg.get("heading"),
                                         meta_note_overrides=auto_meta_note_overrides,
                                         custom_prompt=brief_cfg.get("prompt", ""),
                                         audio_format=brief_cfg.get("format", "deep-dive"),

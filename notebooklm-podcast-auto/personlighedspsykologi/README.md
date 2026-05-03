@@ -59,7 +59,7 @@ python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_week.py 
 - Slide audio settings come from `per_slide` in `prompt_config.json`; reading audio settings stay under `per_reading`.
 - Audio prompts are source-aware by default through `audio_prompt_strategy.prompt_types` in `prompt_config.json`.
   - Implemented prompt types are `single_reading`, `single_slide`, `weekly_readings_only`, `short`, and `mixed_sources`.
-  - `Alle kilder (undtagen slides)` currently uses `weekly_readings_only`, so weekly overviews remain readings-only.
+  - `Alle kilder (undtagen slides)` still uses `weekly_readings_only` for NotebookLM source upload, so the weekly notebook remains readings-only at the file level.
   - `single_reading` asks for argument structure, conceptual distinctions, corrections/rejections, likely misunderstandings, and implications for personality/subject thinking.
   - `single_slide` treats slides as fragmentary lecture scaffolding and asks NotebookLM to reconstruct the argumentative sequence rather than summarize slide bullets.
   - `mixed_sources` is implemented in the builder for future mixed notebooks and assigns explicit source roles: slides provide structure and lecture framing; readings provide nuance and argumentative depth.
@@ -72,6 +72,11 @@ python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_week.py 
   - It adds cross-cutting generation rules plus format-aware and length-aware guidance.
   - `format` and `length` now affect the resolved audio prompt itself, not only NotebookLM request params and config-tag hashes.
   - This is the place to grow show-specific prompt logic without pushing more prompt text into `generate_week.py`.
+- `course_context` is the deterministic lecture-context compiler in `prompt_config.json`.
+  - It compiles prompt context from `shows/<show>/content_manifest.json` plus `shows/<show>/docs/overblik.md`.
+  - The compiled context situates the lecture in the wider course arc, pulls in neighboring lectures, lecture-level summaries, reading summaries, and slide framing from forelaesning/seminar/exercise catalogs.
+  - Weekly prompts therefore stay readings-only in NotebookLM uploads while still being informed by the whole lecture block and the broader course context.
+  - The same compiled lecture context is designed to be reusable for later output families such as abridged reading guides, quizzes, and similar study artifacts.
 - The raw `prompt` fields under `weekly_overview`, `per_reading`, `per_slide`, and `short` are additive for audio: they append extra instructions on top of the built-in prompt structure rather than replacing it.
 - Individual slide podcasts can override `per_slide` by `slide_key`:
 
@@ -109,6 +114,22 @@ python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/bootstrap_episode
   --run-name 2026-04-before-baseline \
   --episode-output-root '/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive upload/podcast output personlighedsspyk'
 ```
+
+## Prompt-System Ambitions
+- The prompt system should be course-aware, not only source-aware.
+- The weekly lecture synthesis should be informed by all lecture readings plus both forelaesning and seminar slides, then situated in the broader arc of the whole course.
+- Different source types should keep different roles:
+  - readings anchor claims, distinctions, and argument structure
+  - forelaesning slides provide sequencing, framing, and emphasis
+  - seminar slides provide application, clarification, discussion points, and likely misunderstandings
+- Prompt generation should preserve grounding:
+  - what the source explicitly says
+  - how the lecture frames it
+  - how it fits in the wider course
+  - where those layers do not fully align
+- The lecture-context layer should stay reusable across output families. Audio podcast prompts are only the first consumer.
+- Planned future consumers include abridged reading guides that help prepare for the original reading, for example short one-page structures with 3-4 key quotes to look for in the text.
+- Growth should happen by improving the compiled lecture context and artifact-specific prompt assembly, not by letting prompt text sprawl ad hoc inside `generate_week.py`.
 
 - To transcribe the baseline side of one review run with ElevenLabs Scribe v2 speaker diarization:
 
@@ -148,7 +169,7 @@ python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/sync_episode_ab_r
 - Non-dry `--only-slide` audio runs quarantine stale full-slide MP3s with the same visible slide basename but a different audio config tag under `.ai/quarantine/slide-audio-overrides/`, including request sidecars. This prevents old `length=default` and new `length=long` slide files from both being published.
 - Seminar slides are excluded from generation, and non-dry runs auto-delete any stale `Slide seminar: ...` outputs in the target week folder before planning new artifacts.
 - Non-dry runs also delete stale slide short outputs that fall outside the configured short scope (for example old `Slide exercise: ...` short files when `short.apply_to` is lecture-only for slides).
-- Slides are excluded from the notebook source set for `Alle kilder (undtagen slides)` and therefore also excluded from its `sources=<n>` tag.
+- Slides are excluded from the notebook source set for `Alle kilder (undtagen slides)` and therefore also excluded from its `sources=<n>` tag, but the resolved weekly prompt can still reference slide framing through the compiled `course_context` section.
 
 ## Output filename config tags
 - `generate_week.py` appends a human-readable config tag before the extension: ` {...}`.

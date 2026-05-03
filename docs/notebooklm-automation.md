@@ -68,6 +68,7 @@ Queue-core note:
 - current scope now also includes repo metadata rebuild: `rebuild-metadata` claims jobs in `objects_uploaded`, refreshes queue-owned quiz links for supported shows, regenerates RSS and episode inventory from the R2 manifest, runs show-specific sidecars such as Spotify sync and Freudd content-manifest rebuild, validates the resulting repo artifacts, and advances successful jobs to `committing_repo_artifacts`
 - current scope now also includes allowlisted repo publication: `push-repo` claims jobs in `committing_repo_artifacts`, fails closed on tracked repo dirtiness outside the generated-file allowlist, keeps queue-generated artifacts on allowlisted rebase conflicts, pushes with bounded retries, and advances successful jobs to `repo_pushed`
 - current scope now also includes downstream completion: `sync-downstream` claims jobs in `repo_pushed`, waits for expected push-triggered downstream workflows such as `deploy-freudd-portal.yml`, and advances successful jobs to `completed`
+- current scope now also includes service-oriented draining: `drain-show` requeues due retry jobs, refreshes discovery, then advances one show through any ready publication stages until idle, which is the intended `systemd` entrypoint on Hetzner
 - current scope now also includes pilot-safe config binding: `discover`, `prepare-publish`, `upload-r2`, `rebuild-metadata`, and `push-repo` accept `--show-config`, and publish manifests now pin the selected config path so later stages cannot silently drift back to the live `config.github.json`
 - pilot-safe artifact routing now also covers Freudd sidecars: queue metadata rebuild and repo publication derive `quiz_links.json`, `spotify_map.json`, `content_manifest.json`, RSS, inventory, and R2 media-manifest paths from the selected show config instead of hardcoded live show paths
 - storage root defaults to `/var/lib/podcasts/notebooklm-queue` and can be overridden with `NOTEBOOKLM_QUEUE_STORAGE_ROOT` or `--storage-root`
@@ -90,6 +91,7 @@ Queue CLI examples:
 ./.venv/bin/python scripts/notebooklm_queue.py --storage-root /tmp/notebooklm-queue rebuild-metadata --repo-root . --show-slug bioneuro
 ./.venv/bin/python scripts/notebooklm_queue.py --storage-root /tmp/notebooklm-queue push-repo --repo-root . --show-slug bioneuro
 ./.venv/bin/python scripts/notebooklm_queue.py --storage-root /tmp/notebooklm-queue sync-downstream --repo-root . --show-slug bioneuro
+./.venv/bin/python scripts/notebooklm_queue.py --storage-root /tmp/notebooklm-queue drain-show --repo-root . --show-slug bioneuro
 ```
 
 Pilot-safe example:
@@ -105,6 +107,7 @@ Important operational note:
 
 - `notebooklm-podcast-auto/personlighedspsykologi/output` must be a real directory, not a macOS Alias file. Alias files break the shared mirror step and create noisy pre-push warnings.
 - `scripts/mirror_output_dirs.py` reflects the current local Drive-mount era. It should be treated as transitional infrastructure for subjects that have not yet migrated to object storage.
+- The Hetzner runtime contract for the queue now lives in [notebooklm-queue-operations.md](notebooklm-queue-operations.md).
 
 ## Personlighedspsykologi source rules
 
@@ -126,6 +129,18 @@ Hand-authored summary sources:
 - `shows/personlighedspsykologi-en/weekly_overview_summaries.json`
 
 `sync_reading_summaries.py` validates and scaffolds, but it is not the source of final summary prose.
+
+Prompt assembly note:
+
+- `generate_week.py` now compiles a course-aware lecture context from `shows/<show>/content_manifest.json` and `shows/<show>/docs/overblik.md` before building audio prompts.
+- That context layer is deterministic and artifact-neutral, so the same lecture context can later drive non-audio outputs such as abridged reading guides in addition to the current podcast prompts.
+
+Prompt-system ambitions that should not drift:
+
+- The system should synthesize each lecture block from all relevant readings plus both forelaesning and seminar slide context before producing downstream prompts.
+- It should situate every lecture in the full course progression, not treat lecture prompts as isolated one-off jobs.
+- It should keep source roles explicit so course framing does not overwrite source-grounded claims.
+- It should remain reusable across multiple output families, including future abridged reading guides and similar preparatory study artifacts.
 
 ## Related docs
 

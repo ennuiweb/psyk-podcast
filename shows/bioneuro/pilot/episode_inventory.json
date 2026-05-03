@@ -1,0 +1,36 @@
+{
+  "version": 2,
+  "storage_provider": "r2",
+  "show_slug": "pilot",
+  "subject_slug": "bioneuro",
+  "generated_at": "2026-07-27T08:00:00+02:00",
+  "feed_path": "shows/bioneuro/pilot/feeds/rss.xml",
+  "episodes": [
+    {
+      "episode_key": "shows/bioneuro/W13L1/W13L1 - Behavioral Neuroscience Kapitel 16 - Psychopathology Biological Basis of Behavioral Disorders [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
+      "guid": "shows/bioneuro/W13L1/W13L1 - Behavioral Neuroscience Kapitel 16 - Psychopathology Biological Basis of Behavioral Disorders [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
+      "title": "[Podcast] · Behavioral Neuroscience Kapitel 16 - Psychopathology Biological Basis of Behavioral Disorders",
+      "description": "Behavioral Neuroscience Kapitel 16 - Psychopathology Biological Basis of Behavioral Disorders · Forelæsning 1\n\nQuizzer:\n- Let: https://freudd.dk/q/2f9be666.html\n- Mellem: https://freudd.dk/q/a6d4887a.html\n- Svær: https://freudd.dk/q/f2d6389a.html\nPilot feed only. Do not publish live until the queue-owned cutover is complete.",
+      "link": "https://freudd.dk/q/a6d4887a.html",
+      "pub_date": "Mon, 27 Jul 2026 08:00:00 +0200",
+      "published_at": "2026-07-27T08:00:00+02:00",
+      "mime_type": "audio/mpeg",
+      "size": 130584004,
+      "duration": "",
+      "image": "https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/bioneuro/assets/cover.png",
+      "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/bioneuro/W13L1/W13L1%20-%20Behavioral%20Neuroscience%20Kapitel%2016%20-%20Psychopathology%20Biological%20Basis%20of%20Behavioral%20Disorders%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
+      "lecture_key": "W13L1",
+      "episode_kind": "reading",
+      "podcast_kind": "podcast",
+      "source_name": "W13L1 - Behavioral Neuroscience Kapitel 16 - Psychopathology Biological Basis of Behavioral Disorders [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
+      "source_drive_file_id": "shows/bioneuro/W13L1/W13L1 - Behavioral Neuroscience Kapitel 16 - Psychopathology Biological Basis of Behavioral Disorders [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
+      "source_storage_provider": "r2",
+      "source_storage_key": "shows/bioneuro/W13L1/W13L1 - Behavioral Neuroscience Kapitel 16 - Psychopathology Biological Basis of Behavioral Disorders [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
+      "source_path": "W13L1/W13L1 - Behavioral Neuroscience Kapitel 16 - Psychopathology Biological Basis of Behavioral Disorders [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
+      "sort_week": 13,
+      "sort_lecture": 1,
+      "sort_tail": true,
+      "sort_tail_index": null
+    }
+  ]
+}

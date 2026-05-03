@@ -34,30 +34,29 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Resolve storage provider
-        id: storage
+      - name: Resolve show config policy
+        id: show_policy
         env:
           SHOW: ${{ matrix.show }}
         run: |
-          provider="$(python3 - <<'PY'
-          import json
-          import os
-          from pathlib import Path
+          python3 podcast-tools/show_config_policy.py \
+            resolve \
+            --config "shows/${SHOW}/config.github.json" \
+            --github-output "$GITHUB_OUTPUT"
 
-          show = os.environ["SHOW"]
-          config_path = Path(f"shows/{show}/config.github.json")
-          data = json.loads(config_path.read_text(encoding="utf-8"))
-          storage = data.get("storage") if isinstance(data.get("storage"), dict) else {}
-          provider = str(storage.get("provider") or "drive").strip().lower() or "drive"
-          print(provider)
-          PY
-          )"
-          echo "provider=${provider}" >> "$GITHUB_OUTPUT"
-
-      - name: Check required secrets
+      - name: Skip queue-owned writer path
+        if: steps.show_policy.outputs.workflow_writer_enabled != 'true'
         env:
           SHOW: ${{ matrix.show }}
-          STORAGE_PROVIDER: ${{ steps.storage.outputs.provider }}
+          PUBLICATION_OWNER: ${{ steps.show_policy.outputs.publication_owner }}
+        run: |
+          echo "Show ${SHOW} is publication.owner=${PUBLICATION_OWNER}; skipping legacy workflow writer path."
+
+      - name: Check required secrets
+        if: steps.show_policy.outputs.workflow_writer_enabled == 'true'
+        env:
+          SHOW: ${{ matrix.show }}
+          STORAGE_PROVIDER: ${{ steps.show_policy.outputs.storage_provider }}
         run: |
           if [[ "${STORAGE_PROVIDER}" == "drive" ]]; then
             show_upper=${SHOW^^}
@@ -80,15 +79,17 @@ jobs:
           fi
 
       - name: Set up Python
+        if: steps.show_policy.outputs.workflow_writer_enabled == 'true'
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
       - name: Install dependencies
+        if: steps.show_policy.outputs.workflow_writer_enabled == 'true'
         run: pip install -r requirements.txt
 
       - name: Write service account credentials
-        if: steps.storage.outputs.provider == 'drive'
+        if: steps.show_policy.outputs.workflow_writer_enabled == 'true' && steps.show_policy.outputs.storage_provider == 'drive'
         env:
           SHOW: ${{ matrix.show }}
         run: |
@@ -110,9 +111,10 @@ jobs:
           PY
 
       - name: Prepare runtime config
+        if: steps.show_policy.outputs.workflow_writer_enabled == 'true'
         env:
           SHOW: ${{ matrix.show }}
-          STORAGE_PROVIDER: ${{ steps.storage.outputs.provider }}
+          STORAGE_PROVIDER: ${{ steps.show_policy.outputs.storage_provider }}
         run: |
           python3 <<'PY'
           import json
@@ -154,7 +156,7 @@ jobs:
           PY
 
       - name: Check Drive for videos needing transcode
-        if: steps.storage.outputs.provider == 'drive'
+        if: steps.show_policy.outputs.workflow_writer_enabled == 'true' && steps.show_policy.outputs.storage_provider == 'drive'
         id: probe_transcode
         env:
           SHOW: ${{ matrix.show }}
@@ -165,27 +167,27 @@ jobs:
             --github-output "$GITHUB_OUTPUT"
 
       - name: Install ffmpeg
-        if: steps.storage.outputs.provider == 'drive' && steps.probe_transcode.outputs.needs_transcode == 'true'
+        if: steps.show_policy.outputs.workflow_writer_enabled == 'true' && steps.show_policy.outputs.storage_provider == 'drive' && steps.probe_transcode.outputs.needs_transcode == 'true'
         run: sudo apt-get update && sudo apt-get install -y ffmpeg
 
       - name: Transcode Drive media
-        if: steps.storage.outputs.provider == 'drive' && steps.probe_transcode.outputs.needs_transcode == 'true'
+        if: steps.show_policy.outputs.workflow_writer_enabled == 'true' && steps.show_policy.outputs.storage_provider == 'drive' && steps.probe_transcode.outputs.needs_transcode == 'true'
         env:
           SHOW: ${{ matrix.show }}
         run: python podcast-tools/transcode_drive_media.py --config shows/${SHOW}/config.runtime.json
 
       - name: Trust droplet host key
-        if: contains(fromJSON('["personlighedspsykologi-en","bioneuro"]'), matrix.show)
+        if: steps.show_policy.outputs.workflow_writer_enabled == 'true' && contains(fromJSON('["personlighedspsykologi-en","bioneuro"]'), matrix.show)
         run: |
           mkdir -p ~/.ssh
           ssh-keyscan -H 64.226.79.109 >> ~/.ssh/known_hosts
           chmod 600 ~/.ssh/known_hosts
 
       - name: Sync quiz links
-        if: contains(fromJSON('["personlighedspsykologi-en","bioneuro"]'), matrix.show)
+        if: steps.show_policy.outputs.workflow_writer_enabled == 'true' && contains(fromJSON('["personlighedspsykologi-en","bioneuro"]'), matrix.show)
         env:
           SHOW: ${{ matrix.show }}
-          STORAGE_PROVIDER: ${{ steps.storage.outputs.provider }}
+          STORAGE_PROVIDER: ${{ steps.show_policy.outputs.storage_provider }}
           DROPLET_SSH_KEY: ${{ secrets.DIGITALOCEAN_SSH_KEY }}
         run: |
           case "${SHOW}" in
@@ -276,20 +278,21 @@ jobs:
           ssh -i "${key_path}" "root@64.226.79.109" "test -f '${remote_root}/${sample_base}'"
 
       - name: Generate feed
+        if: steps.show_policy.outputs.workflow_writer_enabled == 'true'
         env:
           SHOW: ${{ matrix.show }}
         run: python podcast-tools/gdrive_podcast_feed.py --config shows/${SHOW}/config.runtime.json
 
       - name: Validate regeneration inventory
-        if: matrix.show == 'personlighedspsykologi-en'
+        if: steps.show_policy.outputs.workflow_writer_enabled == 'true' && matrix.show == 'personlighedspsykologi-en'
         run: python scripts/validate_regeneration_inventory.py --show-slug personlighedspsykologi-en
 
       - name: Audit lecture slide brief coverage
-        if: matrix.show == 'personlighedspsykologi-en'
+        if: steps.show_policy.outputs.workflow_writer_enabled == 'true' && matrix.show == 'personlighedspsykologi-en'
         run: python scripts/audit_personlighedspsykologi_slide_briefs.py --warn-only
 
       - name: Sync Spotify map
-        if: contains(fromJSON('["personlighedspsykologi-en","bioneuro"]'), matrix.show)
+        if: steps.show_policy.outputs.workflow_writer_enabled == 'true' && contains(fromJSON('["personlighedspsykologi-en","bioneuro"]'), matrix.show)
         env:
           SHOW: ${{ matrix.show }}
           SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
@@ -323,7 +326,7 @@ jobs:
             --allow-unresolved
 
       - name: Rebuild subject content manifest
-        if: contains(fromJSON('["personlighedspsykologi-en","bioneuro"]'), matrix.show)
+        if: steps.show_policy.outputs.workflow_writer_enabled == 'true' && contains(fromJSON('["personlighedspsykologi-en","bioneuro"]'), matrix.show)
         env:
           SHOW: ${{ matrix.show }}
         run: |
@@ -338,7 +341,7 @@ jobs:
           python freudd_portal/manage.py rebuild_content_manifest --subject "${subject_slug}"
 
       - name: Validate quiz coverage
-        if: contains(fromJSON('["personlighedspsykologi-en","bioneuro"]'), matrix.show)
+        if: steps.show_policy.outputs.workflow_writer_enabled == 'true' && contains(fromJSON('["personlighedspsykologi-en","bioneuro"]'), matrix.show)
         env:
           SHOW: ${{ matrix.show }}
         run: |
@@ -384,6 +387,7 @@ jobs:
           PY
 
       - name: Commit updated feed
+        if: steps.show_policy.outputs.workflow_writer_enabled == 'true'
         env:
           SHOW: ${{ matrix.show }}
         run: |
@@ -473,7 +477,7 @@ jobs:
           fi
 
       - name: Cleanup secrets
-        if: always()
+        if: always() && steps.show_policy.outputs.workflow_writer_enabled == 'true'
         env:
           SHOW: ${{ matrix.show }}
         run: rm -f shows/${SHOW}/service-account.json shows/${SHOW}/config.runtime.json

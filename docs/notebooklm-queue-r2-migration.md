@@ -670,8 +670,8 @@ Status legend:
 
 | ID | Status | Item | Notes |
 |---|---|---|---|
-| E1 | planned | Add explicit show ownership state | `legacy_drive`, `pilot_migrating`, `queue_owned`. |
-| E2 | planned | Update `generate-feed.yml` for queue-owned shows | Validate or deploy only, do not regenerate. |
+| E1 | done | Add explicit show ownership state | `publication.owner` now exists in show configs with `legacy_workflow` as the default writer. |
+| E2 | done | Update `generate-feed.yml` for queue-owned shows | The workflow now resolves `publication.owner` and skips the legacy writer path for queue-owned shows. |
 | E3 | planned | Add cutover checklist and rollback checklist | Must be run per show. |
 | E4 | planned | Add `systemd` units and runbook | Match existing ops style. |
 

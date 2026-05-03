@@ -68,6 +68,23 @@ Recommended R2 config fields:
 
 The feed generator preserves `guid` / `episode_key` continuity by reusing values from the existing `episode_inventory.json` and by honoring `stable_guid` in manifest entries when present.
 
+## Publication ownership
+
+Shows now also support `publication.owner` in `shows/<show-slug>/config.github.json`:
+
+- `legacy_workflow` - `.github/workflows/generate-feed.yml` remains the canonical writer for generated repo artifacts.
+- `queue` - the NotebookLM queue is the canonical writer; the GitHub workflow must skip regeneration and commit steps for that show.
+
+Current default and fallback behavior:
+
+- if `publication.owner` is missing, it resolves to `legacy_workflow`
+- invalid `publication.owner` values fail closed in CI
+
+This is intentionally separate from `storage.provider`:
+
+- `storage.provider` decides where audio/media comes from
+- `publication.owner` decides which system is allowed to regenerate and commit feed-side artifacts
+
 Current operational reality:
 
 - the feed stack supports both Drive and R2
@@ -101,12 +118,13 @@ The workflow writes:
 
 For each show it:
 
-1. checks secrets
-2. resolves `storage.provider` and writes runtime config
-3. for Drive shows, writes runtime service account credentials and optionally transcodes matching media
-4. runs `gdrive_podcast_feed.py`
-5. for quiz-enabled subjects, syncs quiz links from either Drive or local NotebookLM output depending on provider, then rebuilds the subject content manifest
-6. commits generated artifacts back to `main` when needed
+1. resolves show policy from `config.github.json`
+2. if `publication.owner=queue`, exits the legacy writer path for that show without regenerating artifacts
+3. otherwise checks secrets and writes runtime config
+4. for Drive shows, writes runtime service account credentials and optionally transcodes matching media
+5. runs `gdrive_podcast_feed.py`
+6. for quiz-enabled subjects, syncs quiz links from either Drive or local NotebookLM output depending on provider, then rebuilds the subject content manifest
+7. commits generated artifacts back to `main` when needed
 
 Tracked feed artifacts live under:
 

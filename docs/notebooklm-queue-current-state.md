@@ -1,6 +1,6 @@
 # NotebookLM Queue Current State
 
-Last updated: 2026-05-01
+Last updated: 2026-05-03
 
 This document is the current-state checkpoint for the Hetzner-owned NotebookLM queue + R2 migration program. It is intentionally separate from the canonical migration plan in [notebooklm-queue-r2-migration.md](notebooklm-queue-r2-migration.md).
 
@@ -24,7 +24,8 @@ The following queue milestones are implemented on `main`:
 - `a5b2748` - R2 object upload for approved queue bundles
 - `ad01a4f` - repo metadata rebuild from uploaded objects
 - `532ac58` - queue-owned quiz sync plus allowlisted repo publication
-- current working tree after `532ac58` - `push-repo` now resolves allowlisted rebase conflicts in favor of queue-generated artifacts, and `sync-downstream` now observes expected post-push workflows and marks jobs `completed`
+- `9ef94cf` - queue-owned downstream completion and workflow-grade repo publish hardening
+- current working tree after `9ef94cf` - `generate-feed.yml` now respects `publication.owner`, so queue-owned shows can skip the legacy writer path entirely
 
 ## Current queue capabilities
 
@@ -83,7 +84,6 @@ That means the queue currently owns:
 
 The queue does not yet own:
 
-- explicit single-writer show ownership gating in `generate-feed.yml`
 - Hetzner `systemd` deployment and timer ownership
 
 ## Verified in this session
@@ -100,6 +100,7 @@ Required repo workflows completed successfully for the latest queue commits:
 - `a5b2748` -> Actions run `25183786210`
 - `ad01a4f` -> Actions run `25212535606`
 - `532ac58` -> Actions run `25213172226`
+- `9ef94cf` -> Actions run `25214094593`
 
 ## Still true about live production
 
@@ -122,9 +123,8 @@ So current production ownership is still:
 ## Immediate missing steps before a real cutover
 
 1. Decide and validate the production public audio URL/domain for R2-backed enclosures.
-2. Remove dual-writer risk for migrated shows by ensuring GitHub Actions no longer independently regenerates queue-owned artifacts.
-3. Migrate the first real queue-owned show to R2.
-4. Add Hetzner runtime ownership:
+2. Migrate the first real queue-owned show to R2 and set `publication.owner=queue`.
+3. Add Hetzner runtime ownership:
    - `systemd` service
    - timer
    - env/secrets contract

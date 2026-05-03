@@ -55,26 +55,14 @@
               {
                 "kind": "podcast",
                 "title": "[Podcast] · Behavioral Neuroscience Kapitel 01 - Introduction Scope and Outlook",
-                "url": "https://drive.google.com/uc?export=download&id=132uHT9MKi_3LuCi9UyUrntNyWBzZEYae",
+                "url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/bioneuro/W1L1/W1L1%20-%20Behavioral%20Neuroscience%20Kapitel%2001%20-%20Introduction%20Scope%20and%20Outlook%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
                 "platform": "direct_audio",
                 "spotify_url": null,
                 "pub_date": "Sat, 01 Aug 2026 08:00:00 +0200",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=132uHT9MKi_3LuCi9UyUrntNyWBzZEYae",
+                "source_audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/bioneuro/W1L1/W1L1%20-%20Behavioral%20Neuroscience%20Kapitel%2001%20-%20Introduction%20Scope%20and%20Outlook%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
                 "duration_seconds": null,
                 "duration_label": "",
                 "episode_key": "132uHT9MKi_3LuCi9UyUrntNyWBzZEYae"
-              },
-              {
-                "kind": "podcast",
-                "title": "[Podcast] · Grundbog Kapitel 1",
-                "url": "https://open.spotify.com/episode/6aJ5Sj1KhvZRFWONrefr1o",
-                "platform": "spotify",
-                "spotify_url": "https://open.spotify.com/episode/6aJ5Sj1KhvZRFWONrefr1o",
-                "pub_date": "Sat, 01 Aug 2026 08:00:00 +0200",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1OiRyFslV6hlC39P-rvcSmJzAKmhzkKre",
-                "duration_seconds": null,
-                "duration_label": "",
-                "episode_key": "1OiRyFslV6hlC39P-rvcSmJzAKmhzkKre"
               }
             ]
           }
@@ -106,9 +94,24 @@
       ],
       "lecture_assets": {
         "quizzes": [],
-        "podcasts": []
+        "podcasts": [
+          {
+            "kind": "podcast",
+            "title": "[Podcast] · Grundbog Kapitel 1",
+            "url": "https://open.spotify.com/episode/6aJ5Sj1KhvZRFWONrefr1o",
+            "platform": "spotify",
+            "spotify_url": "https://open.spotify.com/episode/6aJ5Sj1KhvZRFWONrefr1o",
+            "pub_date": "Sat, 01 Aug 2026 08:00:00 +0200",
+            "source_audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/bioneuro/W1L1/Grundbog%20Kapitel%201.mp3",
+            "duration_seconds": null,
+            "duration_label": "",
+            "episode_key": "1OiRyFslV6hlC39P-rvcSmJzAKmhzkKre"
+          }
+        ]
       },
-      "warnings": []
+      "warnings": [
+        "RSS item could not map to reading; attached to lecture assets: [Podcast] · Grundbog Kapitel 1"
+      ]
     },
     {
       "lecture_key": "W02L1",
@@ -148,26 +151,14 @@
               {
                 "kind": "podcast",
                 "title": "[Podcast] · Behavioral Neuroscience Kapitel 02 - Functional Neuroanatomy The Cells and Structures of the Nervous System",
-                "url": "https://drive.google.com/uc?export=download&id=1BARiDlUKkOGYvJ8tkyLbqOAgJnftwy6v",
+                "url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/bioneuro/W2L1/W2L1%20-%20Behavioral%20Neuroscience%20Kapitel%2002%20-%20Functional%20Neuroanatomy%20The%20Cells%20and%20Structures%20of%20the%20Nervous%20System%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
                 "platform": "direct_audio",
                 "spotify_url": null,
                 "pub_date": "Sat, 01 Aug 2026 00:00:00 +0200",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1BARiDlUKkOGYvJ8tkyLbqOAgJnftwy6v",
+                "source_audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/bioneuro/W2L1/W2L1%20-%20Behavioral%20Neuroscience%20Kapitel%2002%20-%20Functional%20Neuroanatomy%20The%20Cells%20and%20Structures%20of%20the%20Nervous%20System%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
                 "duration_seconds": null,
                 "duration_label": "",
                 "episode_key": "1BARiDlUKkOGYvJ8tkyLbqOAgJnftwy6v"
-              },
-              {
-                "kind": "podcast",
-                "title": "[Podcast] · Grundbog Kapitel 2",
-                "url": "https://open.spotify.com/episode/3oGYYaDwlpjPS96bJadU7D",
-                "platform": "spotify",
-                "spotify_url": "https://open.spotify.com/episode/3oGYYaDwlpjPS96bJadU7D",
-                "pub_date": "Sat, 01 Aug 2026 00:00:00 +0200",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1E8DfrAJOlk2cWkd50pSuWXqMNSOWCv9T",
-                "duration_seconds": null,
-                "duration_label": "",
-                "episode_key": "1E8DfrAJOlk2cWkd50pSuWXqMNSOWCv9T"
               }
             ]
           }
@@ -199,9 +190,24 @@
       ],
       "lecture_assets": {
         "quizzes": [],
-        "podcasts": []
+        "podcasts": [
+          {
+            "kind": "podcast",
+            "title": "[Podcast] · Grundbog Kapitel 2",
+            "url": "https://open.spotify.com/episode/3oGYYaDwlpjPS96bJadU7D",
+            "platform": "spotify",
+            "spotify_url": "https://open.spotify.com/episode/3oGYYaDwlpjPS96bJadU7D",
+            "pub_date": "Sat, 01 Aug 2026 00:00:00 +0200",
+            "source_audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/bioneuro/W2L1/Grundbog%20Kapitel%202.mp3",
+            "duration_seconds": null,
+            "duration_label": "",
+            "episode_key": "1E8DfrAJOlk2cWkd50pSuWXqMNSOWCv9T"
+          }
+        ]
       },
-      "warnings": []
+      "warnings": [
+        "RSS item could not map to reading; attached to lecture assets: [Podcast] · Grundbog Kapitel 2"
+      ]
     },
     {
       "lecture_key": "W03L1",
@@ -245,22 +251,10 @@
                 "platform": "spotify",
                 "spotify_url": "https://open.spotify.com/episode/4W7O8lW6ONJQDQl6NcIAzc",
                 "pub_date": "Fri, 31 Jul 2026 16:00:00 +0200",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1aLWiLTK9kNEEwE5VNfL-YFi6NMHfCk2P",
+                "source_audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/bioneuro/W3L1/W3L1%20-%20Behavioral%20Neuroscience%20Kapitel%2003%20-%20Neurophysiology%20The%20Generation%20Transmission%20and%20Integration%20of%20Neural%20Signals%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
                 "duration_seconds": null,
                 "duration_label": "",
                 "episode_key": "1aLWiLTK9kNEEwE5VNfL-YFi6NMHfCk2P"
-              },
-              {
-                "kind": "podcast",
-                "title": "[Podcast] · Grundbog Kapitel 3",
-                "url": "https://open.spotify.com/episode/6RzgePgLQgayBC3G62JDQU",
-                "platform": "spotify",
-                "spotify_url": "https://open.spotify.com/episode/6RzgePgLQgayBC3G62JDQU",
-                "pub_date": "Fri, 31 Jul 2026 16:00:00 +0200",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1YflTtWf5zF7M-6RoodT3PE0dED2mEz8d",
-                "duration_seconds": null,
-                "duration_label": "",
-                "episode_key": "1YflTtWf5zF7M-6RoodT3PE0dED2mEz8d"
               }
             ]
           }
@@ -281,9 +275,24 @@
       ],
       "lecture_assets": {
         "quizzes": [],
-        "podcasts": []
+        "podcasts": [
+          {
+            "kind": "podcast",
+            "title": "[Podcast] · Grundbog Kapitel 3",
+            "url": "https://open.spotify.com/episode/6RzgePgLQgayBC3G62JDQU",
+            "platform": "spotify",
+            "spotify_url": "https://open.spotify.com/episode/6RzgePgLQgayBC3G62JDQU",
+            "pub_date": "Fri, 31 Jul 2026 16:00:00 +0200",
+            "source_audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/bioneuro/W3L1/Grundbog%20Kapitel%203.mp3",
+            "duration_seconds": null,
+            "duration_label": "",
+            "episode_key": "1YflTtWf5zF7M-6RoodT3PE0dED2mEz8d"
+          }
+        ]
       },
-      "warnings": []
+      "warnings": [
+        "RSS item could not map to reading; attached to lecture assets: [Podcast] · Grundbog Kapitel 3"
+      ]
     },
     {
       "lecture_key": "W04L1",
@@ -323,26 +332,14 @@
               {
                 "kind": "podcast",
                 "title": "[Podcast] · Behavioral Neuroscience Kapitel 04 - The Chemistry of Behavior Neurotransmitters and Neuropharmacology",
-                "url": "https://drive.google.com/uc?export=download&id=1NRVQBQOEWIlbEcTvzMGU_MC-TNNwhyfR",
+                "url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/bioneuro/W4L1/W4L1%20-%20Behavioral%20Neuroscience%20Kapitel%2004%20-%20The%20Chemistry%20of%20Behavior%20Neurotransmitters%20and%20Neuropharmacology%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
                 "platform": "direct_audio",
                 "spotify_url": null,
                 "pub_date": "Fri, 31 Jul 2026 08:00:00 +0200",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1NRVQBQOEWIlbEcTvzMGU_MC-TNNwhyfR",
+                "source_audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/bioneuro/W4L1/W4L1%20-%20Behavioral%20Neuroscience%20Kapitel%2004%20-%20The%20Chemistry%20of%20Behavior%20Neurotransmitters%20and%20Neuropharmacology%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
                 "duration_seconds": null,
                 "duration_label": "",
                 "episode_key": "1NRVQBQOEWIlbEcTvzMGU_MC-TNNwhyfR"
-              },
-              {
-                "kind": "podcast",
-                "title": "[Podcast] · Grundbog Kapitel 4",
-                "url": "https://open.spotify.com/episode/7HWW4s54nOkczSdXD1Na3Y",
-                "platform": "spotify",
-                "spotify_url": "https://open.spotify.com/episode/7HWW4s54nOkczSdXD1Na3Y",
-                "pub_date": "Fri, 31 Jul 2026 08:00:00 +0200",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1G17GkgOCYxsc7Dg5Rpch9PSJimqcxu5q",
-                "duration_seconds": null,
-                "duration_label": "",
-                "episode_key": "1G17GkgOCYxsc7Dg5Rpch9PSJimqcxu5q"
               }
             ]
           }
@@ -356,16 +353,50 @@
           "source_filename": "BioNeuroLecture4_2026_SV.pdf",
           "relative_path": "W04L1/lecture/BioNeuroLecture4_2026_SV.pdf",
           "assets": {
-            "quizzes": [],
+            "quizzes": [
+              {
+                "quiz_id": "f5abf31d",
+                "difficulty": "easy",
+                "quiz_url": "/q/f5abf31d.html",
+                "episode_title": "W04L1 - Slide lecture: Neurochemistry & Neuropharmacology [EN].mp3"
+              },
+              {
+                "quiz_id": "e9f9bf18",
+                "difficulty": "hard",
+                "quiz_url": "/q/e9f9bf18.html",
+                "episode_title": "W04L1 - Slide lecture: Neurochemistry & Neuropharmacology [EN].mp3"
+              },
+              {
+                "quiz_id": "6b3e14d2",
+                "difficulty": "medium",
+                "quiz_url": "/q/6b3e14d2.html",
+                "episode_title": "W04L1 - Slide lecture: Neurochemistry & Neuropharmacology [EN].mp3"
+              }
+            ],
             "podcasts": []
           }
         }
       ],
       "lecture_assets": {
         "quizzes": [],
-        "podcasts": []
+        "podcasts": [
+          {
+            "kind": "podcast",
+            "title": "[Podcast] · Grundbog Kapitel 4",
+            "url": "https://open.spotify.com/episode/7HWW4s54nOkczSdXD1Na3Y",
+            "platform": "spotify",
+            "spotify_url": "https://open.spotify.com/episode/7HWW4s54nOkczSdXD1Na3Y",
+            "pub_date": "Fri, 31 Jul 2026 08:00:00 +0200",
+            "source_audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/bioneuro/W4L1/Grundbog%20Kapitel%204.mp3",
+            "duration_seconds": null,
+            "duration_label": "",
+            "episode_key": "1G17GkgOCYxsc7Dg5Rpch9PSJimqcxu5q"
+          }
+        ]
       },
-      "warnings": []
+      "warnings": [
+        "RSS item could not map to reading; attached to lecture assets: [Podcast] · Grundbog Kapitel 4"
+      ]
     },
     {
       "lecture_key": "W05L1",
@@ -405,26 +436,14 @@
               {
                 "kind": "podcast",
                 "title": "[Podcast] · Behavioral Neuroscience Kapitel 05 - Hormones and the Brain",
-                "url": "https://drive.google.com/uc?export=download&id=1RJXhAl1AC5voi_3e3N48_kdq_zxDbVV9",
+                "url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/bioneuro/W5L1/W5L1%20-%20Behavioral%20Neuroscience%20Kapitel%2005%20-%20Hormones%20and%20the%20Brain%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
                 "platform": "direct_audio",
                 "spotify_url": null,
                 "pub_date": "Fri, 31 Jul 2026 00:00:00 +0200",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1RJXhAl1AC5voi_3e3N48_kdq_zxDbVV9",
+                "source_audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/bioneuro/W5L1/W5L1%20-%20Behavioral%20Neuroscience%20Kapitel%2005%20-%20Hormones%20and%20the%20Brain%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
                 "duration_seconds": null,
                 "duration_label": "",
                 "episode_key": "1RJXhAl1AC5voi_3e3N48_kdq_zxDbVV9"
-              },
-              {
-                "kind": "podcast",
-                "title": "[Podcast] · Grundbog Kapitel 5",
-                "url": "https://open.spotify.com/episode/3qbWYE02v4N0rgZIAJepVU",
-                "platform": "spotify",
-                "spotify_url": "https://open.spotify.com/episode/3qbWYE02v4N0rgZIAJepVU",
-                "pub_date": "Fri, 31 Jul 2026 00:00:00 +0200",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=189B7vQVxERWewc34U-QkTNGAG1Kl9yXy",
-                "duration_seconds": null,
-                "duration_label": "",
-                "episode_key": "189B7vQVxERWewc34U-QkTNGAG1Kl9yXy"
               }
             ]
           }
@@ -445,9 +464,24 @@
       ],
       "lecture_assets": {
         "quizzes": [],
-        "podcasts": []
+        "podcasts": [
+          {
+            "kind": "podcast",
+            "title": "[Podcast] · Grundbog Kapitel 5",
+            "url": "https://open.spotify.com/episode/3qbWYE02v4N0rgZIAJepVU",
+            "platform": "spotify",
+            "spotify_url": "https://open.spotify.com/episode/3qbWYE02v4N0rgZIAJepVU",
+            "pub_date": "Fri, 31 Jul 2026 00:00:00 +0200",
+            "source_audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/bioneuro/W5L1/Grundbog%20Kapitel%205.mp3",
+            "duration_seconds": null,
+            "duration_label": "",
+            "episode_key": "189B7vQVxERWewc34U-QkTNGAG1Kl9yXy"
+          }
+        ]
       },
-      "warnings": []
+      "warnings": [
+        "RSS item could not map to reading; attached to lecture assets: [Podcast] · Grundbog Kapitel 5"
+      ]
     },
     {
       "lecture_key": "W06L1",
@@ -487,11 +521,11 @@
               {
                 "kind": "podcast",
                 "title": "[Podcast] · Behavioral Neuroscience Kapitel 01 - Introduction Scope and Outlook",
-                "url": "https://drive.google.com/uc?export=download&id=1h6U3bG9jZJwHWaSDVj00Sbk4_PVBWFAA",
+                "url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/bioneuro/W6L1/W6L1%20-%20Behavioral%20Neuroscience%20Kapitel%2001%20-%20Introduction%20Scope%20and%20Outlook%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
                 "platform": "direct_audio",
                 "spotify_url": null,
                 "pub_date": "Sat, 01 Aug 2026 08:00:00 +0200",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1h6U3bG9jZJwHWaSDVj00Sbk4_PVBWFAA",
+                "source_audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/bioneuro/W6L1/W6L1%20-%20Behavioral%20Neuroscience%20Kapitel%2001%20-%20Introduction%20Scope%20and%20Outlook%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
                 "duration_seconds": null,
                 "duration_label": "",
                 "episode_key": "1h6U3bG9jZJwHWaSDVj00Sbk4_PVBWFAA"
@@ -531,11 +565,11 @@
               {
                 "kind": "podcast",
                 "title": "[Podcast] · Behavioral Neuroscience Kapitel 02 - Functional Neuroanatomy The Cells and Structures of the Nervous System",
-                "url": "https://drive.google.com/uc?export=download&id=1R3Je9LANSTg6g6oR5TboWlvjl0wzuund",
+                "url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/bioneuro/W6L1/W6L1%20-%20Behavioral%20Neuroscience%20Kapitel%2002%20-%20Functional%20Neuroanatomy%20The%20Cells%20and%20Structures%20of%20the%20Nervous%20System%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
                 "platform": "direct_audio",
                 "spotify_url": null,
                 "pub_date": "Sat, 01 Aug 2026 00:00:00 +0200",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1R3Je9LANSTg6g6oR5TboWlvjl0wzuund",
+                "source_audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/bioneuro/W6L1/W6L1%20-%20Behavioral%20Neuroscience%20Kapitel%2002%20-%20Functional%20Neuroanatomy%20The%20Cells%20and%20Structures%20of%20the%20Nervous%20System%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
                 "duration_seconds": null,
                 "duration_label": "",
                 "episode_key": "1R3Je9LANSTg6g6oR5TboWlvjl0wzuund"
@@ -579,7 +613,7 @@
                 "platform": "spotify",
                 "spotify_url": "https://open.spotify.com/episode/4W7O8lW6ONJQDQl6NcIAzc",
                 "pub_date": "Fri, 31 Jul 2026 16:00:00 +0200",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=14oZHixkuQwzmZyfs6ZQh2eX2uVujxbc3",
+                "source_audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/bioneuro/W6L1/W6L1%20-%20Behavioral%20Neuroscience%20Kapitel%2003%20-%20Neurophysiology%20The%20Generation%20Transmission%20and%20Integration%20of%20Neural%20Signals%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
                 "duration_seconds": null,
                 "duration_label": "",
                 "episode_key": "14oZHixkuQwzmZyfs6ZQh2eX2uVujxbc3"
@@ -619,11 +653,11 @@
               {
                 "kind": "podcast",
                 "title": "[Podcast] · Behavioral Neuroscience Kapitel 04 - The Chemistry of Behavior Neurotransmitters and Neuropharmacology",
-                "url": "https://drive.google.com/uc?export=download&id=1lw8JCrM-FGGGOjYHR7T4eExU71ex5fh1",
+                "url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/bioneuro/W6L1/W6L1%20-%20Behavioral%20Neuroscience%20Kapitel%2004%20-%20The%20Chemistry%20of%20Behavior%20Neurotransmitters%20and%20Neuropharmacology%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
                 "platform": "direct_audio",
                 "spotify_url": null,
                 "pub_date": "Fri, 31 Jul 2026 08:00:00 +0200",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1lw8JCrM-FGGGOjYHR7T4eExU71ex5fh1",
+                "source_audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/bioneuro/W6L1/W6L1%20-%20Behavioral%20Neuroscience%20Kapitel%2004%20-%20The%20Chemistry%20of%20Behavior%20Neurotransmitters%20and%20Neuropharmacology%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
                 "duration_seconds": null,
                 "duration_label": "",
                 "episode_key": "1lw8JCrM-FGGGOjYHR7T4eExU71ex5fh1"
@@ -661,8 +695,8 @@
             "url": "https://open.spotify.com/episode/2Pef4sUHPSNIF7gAR8akSW",
             "platform": "spotify",
             "spotify_url": "https://open.spotify.com/episode/2Pef4sUHPSNIF7gAR8akSW",
-            "pub_date": "Sat, 01 Aug 2026 16:00:00 +0200",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1gD22PxEoXeQKjBEeZ95AIzD7MpTeBjWe",
+            "pub_date": "Sat, 01 Aug 2026 12:00:00 +0200",
+            "source_audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/bioneuro/W6L1/W6L1%20-%20Alle%20kilder%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20sources%3D4%20hash%3Da7e138f5%7D.mp3",
             "duration_seconds": null,
             "duration_label": "",
             "episode_key": "1gD22PxEoXeQKjBEeZ95AIzD7MpTeBjWe"
@@ -713,7 +747,7 @@
                 "platform": "spotify",
                 "spotify_url": "https://open.spotify.com/episode/0wLRq4pxwprNCnRRRGrb6r",
                 "pub_date": "Thu, 30 Jul 2026 08:00:00 +0200",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1m2pnGMr6HHg4hYqo6T257f2882RsVGlg",
+                "source_audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/bioneuro/W7L1/W7L1%20-%20Behavioral%20Neuroscience%20Kapitel%2007%20-%20Life%20Span%20Development%20of%20the%20Brain%20and%20Behavior%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
                 "duration_seconds": null,
                 "duration_label": "",
                 "episode_key": "1m2pnGMr6HHg4hYqo6T257f2882RsVGlg"
@@ -767,11 +801,11 @@
               {
                 "kind": "podcast",
                 "title": "[Podcast] · Behavioral Neuroscience Kapitel 11 - Motor Control and Plasticity",
-                "url": "https://drive.google.com/uc?export=download&id=1GzaaPe0lN6eIpMxOVt9EsOcdYzd537KH",
+                "url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/bioneuro/W8L1/W8L1%20-%20Behavioral%20Neuroscience%20Kapitel%2011%20-%20Motor%20Control%20and%20Plasticity%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
                 "platform": "direct_audio",
                 "spotify_url": null,
                 "pub_date": "Wed, 29 Jul 2026 00:00:00 +0200",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1GzaaPe0lN6eIpMxOVt9EsOcdYzd537KH",
+                "source_audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/bioneuro/W8L1/W8L1%20-%20Behavioral%20Neuroscience%20Kapitel%2011%20-%20Motor%20Control%20and%20Plasticity%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
                 "duration_seconds": null,
                 "duration_label": "",
                 "episode_key": "1GzaaPe0lN6eIpMxOVt9EsOcdYzd537KH"
@@ -814,8 +848,8 @@
                 "url": "https://open.spotify.com/episode/1l6YDuv0OM9MwWJn5ILLhF",
                 "platform": "spotify",
                 "spotify_url": "https://open.spotify.com/episode/1l6YDuv0OM9MwWJn5ILLhF",
-                "pub_date": "Sat, 01 Aug 2026 12:00:00 +0200",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1BEtrKnhtGmeb3dx6qdgvysX-5AufPrPA",
+                "pub_date": "Sat, 01 Aug 2026 16:00:00 +0200",
+                "source_audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/bioneuro/W8L1/W8L1%20-%20KolbWishawTeskey2023Chapter16%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
                 "duration_seconds": null,
                 "duration_label": "",
                 "episode_key": "1BEtrKnhtGmeb3dx6qdgvysX-5AufPrPA"
@@ -854,7 +888,7 @@
             "platform": "spotify",
             "spotify_url": "https://open.spotify.com/episode/2Pef4sUHPSNIF7gAR8akSW",
             "pub_date": "Sat, 01 Aug 2026 14:00:00 +0200",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1PzS_rLOCNn6l0Sv73KixqKGAJHenthUK",
+            "source_audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/bioneuro/W8L1/W8L1%20-%20Alle%20kilder%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20sources%3D2%20hash%3Df104a13e%7D.mp3",
             "duration_seconds": null,
             "duration_label": "",
             "episode_key": "1PzS_rLOCNn6l0Sv73KixqKGAJHenthUK"
@@ -901,11 +935,11 @@
               {
                 "kind": "podcast",
                 "title": "[Podcast] · Behavioral Neuroscience Kapitel 15 - Emotions Aggression and Stress",
-                "url": "https://drive.google.com/uc?export=download&id=1Z9KZxjXfD1c7UddS3OZPnfzsoyA24q7K",
+                "url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/bioneuro/W9L1/W9L1%20-%20Behavioral%20Neuroscience%20Kapitel%2015%20-%20Emotions%20Aggression%20and%20Stress%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
                 "platform": "direct_audio",
                 "spotify_url": null,
                 "pub_date": "Mon, 27 Jul 2026 16:00:00 +0200",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1Z9KZxjXfD1c7UddS3OZPnfzsoyA24q7K",
+                "source_audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/bioneuro/W9L1/W9L1%20-%20Behavioral%20Neuroscience%20Kapitel%2015%20-%20Emotions%20Aggression%20and%20Stress%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
                 "duration_seconds": null,
                 "duration_label": "",
                 "episode_key": "1Z9KZxjXfD1c7UddS3OZPnfzsoyA24q7K"
@@ -959,11 +993,11 @@
               {
                 "kind": "podcast",
                 "title": "[Podcast] · Behavioral Neuroscience Kapitel 08 - General Principles of Sensory Processing Touch and Pain",
-                "url": "https://drive.google.com/uc?export=download&id=1vw4Vbw3sKp0TnQTgspE1eiFuqv6xecXJ",
+                "url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/bioneuro/W10L1/W10L1%20-%20Behavioral%20Neuroscience%20Kapitel%2008%20-%20General%20Principles%20of%20Sensory%20Processing%20Touch%20and%20Pain%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
                 "platform": "direct_audio",
                 "spotify_url": null,
                 "pub_date": "Thu, 30 Jul 2026 00:00:00 +0200",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1vw4Vbw3sKp0TnQTgspE1eiFuqv6xecXJ",
+                "source_audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/bioneuro/W10L1/W10L1%20-%20Behavioral%20Neuroscience%20Kapitel%2008%20-%20General%20Principles%20of%20Sensory%20Processing%20Touch%20and%20Pain%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
                 "duration_seconds": null,
                 "duration_label": "",
                 "episode_key": "1vw4Vbw3sKp0TnQTgspE1eiFuqv6xecXJ"
@@ -1007,7 +1041,7 @@
                 "platform": "spotify",
                 "spotify_url": "https://open.spotify.com/episode/1OR40JwFhkBYFqa72loG6V",
                 "pub_date": "Wed, 29 Jul 2026 16:00:00 +0200",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1MI1EFRcdU_3e4RpvjqazHLBMXMAPltVd",
+                "source_audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/bioneuro/W10L1/W10L1%20-%20Behavioral%20Neuroscience%20Kapitel%2009%20-%20Hearing%20Balance%20Taste%20and%20Smell%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
                 "duration_seconds": null,
                 "duration_label": "",
                 "episode_key": "1MI1EFRcdU_3e4RpvjqazHLBMXMAPltVd"
@@ -1051,7 +1085,7 @@
                 "platform": "spotify",
                 "spotify_url": "https://open.spotify.com/episode/24Zy0uClWmScI2jE9190Ox",
                 "pub_date": "Wed, 29 Jul 2026 08:00:00 +0200",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1zqU4qUFqHUKbL-2wF4KHBd4Hs_B7gW3D",
+                "source_audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/bioneuro/W10L1/W10L1%20-%20Behavioral%20Neuroscience%20Kapitel%2010%20-%20Vision%20From%20Eye%20to%20Brain%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
                 "duration_seconds": null,
                 "duration_label": "",
                 "episode_key": "1zqU4qUFqHUKbL-2wF4KHBd4Hs_B7gW3D"
@@ -1089,8 +1123,8 @@
             "url": "https://open.spotify.com/episode/2Pef4sUHPSNIF7gAR8akSW",
             "platform": "spotify",
             "spotify_url": "https://open.spotify.com/episode/2Pef4sUHPSNIF7gAR8akSW",
-            "pub_date": "Sat, 01 Aug 2026 10:00:00 +0200",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=12ulD_6vvP6hQy--iq-pXsAaJHTlIAUim",
+            "pub_date": "Sat, 01 Aug 2026 08:00:00 +0200",
+            "source_audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/bioneuro/W10L1/W10L1%20-%20Alle%20kilder%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20sources%3D3%20hash%3D1b3d31bc%7D.mp3",
             "duration_seconds": null,
             "duration_label": "",
             "episode_key": "12ulD_6vvP6hQy--iq-pXsAaJHTlIAUim"
@@ -1141,7 +1175,7 @@
                 "platform": "spotify",
                 "spotify_url": "https://open.spotify.com/episode/68hp8aekjlQLIrUY4Vip25",
                 "pub_date": "Tue, 28 Jul 2026 08:00:00 +0200",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=19jT8ZmMETg7DcdOIfEC55rdsvHTJ7hrx",
+                "source_audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/bioneuro/W11L1/W11L1%20-%20Behavioral%20Neuroscience%20Kapitel%2013%20-%20Homeostasis%20Active%20Regulation%20of%20the%20Internal%20Environment%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
                 "duration_seconds": null,
                 "duration_label": "",
                 "episode_key": "19jT8ZmMETg7DcdOIfEC55rdsvHTJ7hrx"
@@ -1185,7 +1219,7 @@
                 "platform": "spotify",
                 "spotify_url": "https://open.spotify.com/episode/4bPaXyq5A3JuZbvEW71UkF",
                 "pub_date": "Tue, 28 Jul 2026 00:00:00 +0200",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1YPgrdWoQt3GF-awHI5cCaE2Donet8DFK",
+                "source_audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/bioneuro/W11L1/W11L1%20-%20Behavioral%20Neuroscience%20Kapitel%2014%20-%20Biological%20Rhythms%20Sleep%20and%20Dreaming%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
                 "duration_seconds": null,
                 "duration_label": "",
                 "episode_key": "1YPgrdWoQt3GF-awHI5cCaE2Donet8DFK"
@@ -1223,8 +1257,8 @@
             "url": "https://open.spotify.com/episode/2Pef4sUHPSNIF7gAR8akSW",
             "platform": "spotify",
             "spotify_url": "https://open.spotify.com/episode/2Pef4sUHPSNIF7gAR8akSW",
-            "pub_date": "Sat, 01 Aug 2026 08:00:00 +0200",
-            "source_audio_url": "https://drive.google.com/uc?export=download&id=1M-oxT4nviH8Dkbj9cT5-DH9eFBcAa6V9",
+            "pub_date": "Sat, 01 Aug 2026 10:00:00 +0200",
+            "source_audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/bioneuro/W11L1/W11L1%20-%20Alle%20kilder%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20sources%3D2%20hash%3Df104a13e%7D.mp3",
             "duration_seconds": null,
             "duration_label": "",
             "episode_key": "1M-oxT4nviH8Dkbj9cT5-DH9eFBcAa6V9"
@@ -1271,11 +1305,11 @@
               {
                 "kind": "podcast",
                 "title": "[Podcast] · Behavioral Neuroscience Kapitel 12 - Sex Evolutionary Hormonal and Neural Bases",
-                "url": "https://drive.google.com/uc?export=download&id=1b-AxrVdsapj3OhuEnVY0WZbnrDWI0ZQ8",
+                "url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/bioneuro/W12L1/W12L1%20-%20Behavioral%20Neuroscience%20Kapitel%2012%20-%20Sex%20Evolutionary%20Hormonal%20and%20Neural%20Bases%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
                 "platform": "direct_audio",
                 "spotify_url": null,
                 "pub_date": "Tue, 28 Jul 2026 16:00:00 +0200",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1b-AxrVdsapj3OhuEnVY0WZbnrDWI0ZQ8",
+                "source_audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/bioneuro/W12L1/W12L1%20-%20Behavioral%20Neuroscience%20Kapitel%2012%20-%20Sex%20Evolutionary%20Hormonal%20and%20Neural%20Bases%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
                 "duration_seconds": null,
                 "duration_label": "",
                 "episode_key": "1b-AxrVdsapj3OhuEnVY0WZbnrDWI0ZQ8"
@@ -1329,11 +1363,11 @@
               {
                 "kind": "podcast",
                 "title": "[Podcast] · Behavioral Neuroscience Kapitel 16 - Psychopathology Biological Basis of Behavioral Disorders",
-                "url": "https://drive.google.com/uc?export=download&id=1xKAn4iOoExtYgxC7fWZZnqpEZOPebPn-",
+                "url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/bioneuro/W13L1/W13L1%20-%20Behavioral%20Neuroscience%20Kapitel%2016%20-%20Psychopathology%20Biological%20Basis%20of%20Behavioral%20Disorders%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
                 "platform": "direct_audio",
                 "spotify_url": null,
                 "pub_date": "Mon, 27 Jul 2026 08:00:00 +0200",
-                "source_audio_url": "https://drive.google.com/uc?export=download&id=1xKAn4iOoExtYgxC7fWZZnqpEZOPebPn-",
+                "source_audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/bioneuro/W13L1/W13L1%20-%20Behavioral%20Neuroscience%20Kapitel%2016%20-%20Psychopathology%20Biological%20Basis%20of%20Behavioral%20Disorders%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
                 "duration_seconds": null,
                 "duration_label": "",
                 "episode_key": "1xKAn4iOoExtYgxC7fWZZnqpEZOPebPn-"

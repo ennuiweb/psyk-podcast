@@ -14,6 +14,7 @@ keys once episodes are in podcast apps.
 - `config.local.json` – local R2-backed feed config.
 - `config.github.json` – checked-in config used by GitHub Actions.
 - `config.template.json` – copy when provisioning new environments.
+- `config.drive-source.template.json` – legacy Drive source config for future import sweeps.
 - `episode_metadata.json` – optional overrides (leave `{}` to mirror Drive).
 - `episode_inventory.json` – generated inventory used to preserve feed identity.
 - `media_manifest.r2.json` – generated R2 object manifest with `stable_guid`.
@@ -35,7 +36,7 @@ R2 and refresh the manifest with:
 ```bash
 python scripts/migrate_drive_show_to_r2.py \
   --config shows/personal/config.local.json \
-  --source-config /tmp/personal-drive-source.json \
+  --source-config shows/personal/config.drive-source.template.json \
   --bucket freudd \
   --endpoint https://abf1940818ee3c8a0fa4bc84c7b1bba9.r2.cloudflarestorage.com \
   --prefix shows/personal \

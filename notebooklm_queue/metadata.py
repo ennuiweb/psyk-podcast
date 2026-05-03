@@ -282,13 +282,18 @@ def _phase_definitions(
             "--quiz-difficulty",
             "any",
             "--fallback-derive-mp3-names",
-            "--preferred-audio-inventory",
-            str(artifact_paths.inventory_path.relative_to(repo_root)),
             "--remote-root",
             quiz_sync.remote_root,
             "--ssh-key",
             _resolve_droplet_ssh_key(),
         ]
+        if artifact_paths.inventory_path.exists():
+            command.extend(
+                [
+                    "--preferred-audio-inventory",
+                    str(artifact_paths.inventory_path.relative_to(repo_root)),
+                ]
+            )
         if quiz_sync.include_subject_in_flat_id:
             command.append("--flat-id-include-subject")
         phases.append(
@@ -331,25 +336,35 @@ def _phase_definitions(
             }
         )
     if show_slug in SHOWS_WITH_SPOTIFY_SYNC:
+        spotify_credentials_available = bool(
+            str(os.environ.get("SPOTIFY_CLIENT_ID") or "").strip()
+            and str(os.environ.get("SPOTIFY_CLIENT_SECRET") or "").strip()
+        )
+        command = [
+            python,
+            str(repo_root / "scripts" / "sync_spotify_map.py"),
+            "--inventory",
+            str(artifact_paths.inventory_path),
+            "--spotify-map",
+            str(artifact_paths.spotify_map_path),
+            "--subject-slug",
+            subject_slug,
+            "--spotify-market",
+            "DK",
+            "--prune-stale",
+            "--allow-unresolved",
+        ]
+        if spotify_credentials_available:
+            command.extend(
+                [
+                    "--spotify-show-url",
+                    SPOTIFY_SHOW_URLS[show_slug],
+                ]
+            )
         phases.append(
             {
                 "name": "sync_spotify_map",
-                "command": [
-                    python,
-                    str(repo_root / "scripts" / "sync_spotify_map.py"),
-                    "--inventory",
-                    str(artifact_paths.inventory_path),
-                    "--spotify-map",
-                    str(artifact_paths.spotify_map_path),
-                    "--subject-slug",
-                    subject_slug,
-                    "--spotify-show-url",
-                    SPOTIFY_SHOW_URLS[show_slug],
-                    "--spotify-market",
-                    "DK",
-                    "--prune-stale",
-                    "--allow-unresolved",
-                ],
+                "command": command,
             }
         )
     if show_slug in SHOWS_WITH_CONTENT_MANIFEST:

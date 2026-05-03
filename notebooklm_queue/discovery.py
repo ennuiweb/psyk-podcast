@@ -4,11 +4,14 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+import re
 
 from .adapters import get_show_adapter
 from .models import JobIdentity
 from .show_config import load_show_config, resolve_show_config_path, serialize_show_config_path
 from .store import QueueStore
+
+LECTURE_KEY_PATTERN = re.compile(r"^W(\d+)L(\d+)$", re.IGNORECASE)
 
 
 def discover_show_jobs(
@@ -44,7 +47,7 @@ def discover_show_jobs(
         published_lecture_keys = _published_lecture_keys(repo_root=repo_root, config=config)
     jobs: list[dict[str, object]] = []
     for lecture in adapter.discover_lectures(repo_root):
-        if lecture.lecture_key in published_lecture_keys:
+        if _normalized_lecture_key(lecture.lecture_key) in published_lecture_keys:
             continue
         metadata = dict(lecture.metadata)
         if serialized_show_config_path is not None:
@@ -114,5 +117,13 @@ def _published_lecture_keys(*, repo_root: Path, config: dict[str, object]) -> se
             continue
         lecture_key = str(episode.get("lecture_key") or "").strip()
         if lecture_key:
-            lecture_keys.add(lecture_key)
+            lecture_keys.add(_normalized_lecture_key(lecture_key))
     return lecture_keys
+
+
+def _normalized_lecture_key(value: str) -> str:
+    raw = str(value or "").strip().upper()
+    match = LECTURE_KEY_PATTERN.match(raw)
+    if not match:
+        return raw
+    return f"W{int(match.group(1))}L{int(match.group(2))}"

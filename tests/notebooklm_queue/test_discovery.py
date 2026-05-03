@@ -167,3 +167,28 @@ def test_discover_jobs_skips_published_lecture_keys_by_default(tmp_path: Path) -
 
     assert [item["identity"].lecture_key for item in default_jobs] == ["W2L1"]
     assert [item["identity"].lecture_key for item in all_jobs] == ["W1L1", "W2L1"]
+
+
+def test_discover_jobs_skip_published_even_when_inventory_uses_zero_padded_keys(tmp_path: Path) -> None:
+    (tmp_path / "shows" / "bioneuro").mkdir(parents=True, exist_ok=True)
+    (tmp_path / "notebooklm-podcast-auto" / "bioneuro").mkdir(parents=True, exist_ok=True)
+    for relative, content in (
+        ("shows/bioneuro/config.github.json", '{"output_inventory":"shows/bioneuro/episode_inventory.json"}'),
+        ("shows/bioneuro/auto_spec.json", "{}"),
+        ("notebooklm-podcast-auto/bioneuro/prompt_config.json", "{}"),
+    ):
+        path = tmp_path / relative
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(content, encoding="utf-8")
+    (tmp_path / "shows" / "bioneuro" / "episode_metadata.json").write_text(
+        json.dumps({"by_id": {"a": {"meta": {"source_folder": "W1L1 Intro (2026-02-06)"}}}}),
+        encoding="utf-8",
+    )
+    (tmp_path / "shows" / "bioneuro" / "episode_inventory.json").write_text(
+        json.dumps({"episodes": [{"lecture_key": "W01L1", "episode_key": "ep-1"}]}),
+        encoding="utf-8",
+    )
+
+    jobs = discover_show_jobs(repo_root=tmp_path, show_slug="bioneuro")
+
+    assert jobs == []

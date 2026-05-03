@@ -17,7 +17,8 @@ from .constants import (
     STATE_OBJECTS_UPLOADED,
     STATE_REBUILDING_METADATA,
 )
-from .show_config import ShowConfigSelectionError, resolve_manifest_bound_show_config_path
+from .show_artifacts import ShowArtifactPaths, resolve_show_artifact_paths
+from .show_config import ShowConfigSelectionError, load_show_config, resolve_manifest_bound_show_config_path
 from .store import QueueStore, utc_now_iso
 
 SHOWS_WITH_SPOTIFY_SYNC = {"bioneuro", "personlighedspsykologi-en"}
@@ -94,6 +95,16 @@ def rebuild_repo_metadata(
                 manifest=manifest,
                 override_path=options.show_config_path,
             )
+            config = load_show_config(
+                repo_root=options.repo_root,
+                default_path=adapter.show_config_path,
+                override_path=resolved_show_config_path,
+            )
+            artifact_paths = resolve_show_artifact_paths(
+                repo_root=options.repo_root,
+                show_slug=show_slug,
+                config=config,
+            )
         except ShowConfigSelectionError as exc:
             return _finalize_failure(
                 store=store,
@@ -110,6 +121,7 @@ def rebuild_repo_metadata(
             show_slug=show_slug,
             subject_slug=adapter.subject_slug,
             show_config_path=resolved_show_config_path,
+            artifact_paths=artifact_paths,
         ):
             result = _run_phase(name=phase["name"], command=phase["command"], repo_root=options.repo_root)
             metadata_payload["phases"].append(result)
@@ -125,7 +137,11 @@ def rebuild_repo_metadata(
                 )
 
         try:
-            validation = _validate_repo_metadata(repo_root=options.repo_root, show_slug=show_slug)
+            validation = _validate_repo_metadata(
+                repo_root=options.repo_root,
+                show_slug=show_slug,
+                artifact_paths=artifact_paths,
+            )
         except MetadataValidationError as exc:
             return _finalize_failure(
                 store=store,
@@ -242,6 +258,7 @@ def _phase_definitions(
     show_slug: str,
     subject_slug: str,
     show_config_path: Path,
+    artifact_paths: ShowArtifactPaths,
 ) -> list[dict[str, object]]:
     python = str(repo_root / ".venv" / "bin" / "python")
     phases: list[dict[str, object]] = []
@@ -253,7 +270,7 @@ def _phase_definitions(
             "--output-root",
             quiz_sync.output_root,
             "--links-file",
-            quiz_sync.links_file,
+            str(artifact_paths.quiz_links_path.relative_to(repo_root)),
             "--subject-slug",
             quiz_sync.subject_slug,
             "--language-tag",
@@ -266,7 +283,7 @@ def _phase_definitions(
             "any",
             "--fallback-derive-mp3-names",
             "--preferred-audio-inventory",
-            f"shows/{show_slug}/episode_inventory.json",
+            str(artifact_paths.inventory_path.relative_to(repo_root)),
             "--remote-root",
             quiz_sync.remote_root,
             "--ssh-key",
@@ -321,9 +338,9 @@ def _phase_definitions(
                     python,
                     str(repo_root / "scripts" / "sync_spotify_map.py"),
                     "--inventory",
-                    str(repo_root / "shows" / show_slug / "episode_inventory.json"),
+                    str(artifact_paths.inventory_path),
                     "--spotify-map",
-                    str(repo_root / "shows" / show_slug / "spotify_map.json"),
+                    str(artifact_paths.spotify_map_path),
                     "--subject-slug",
                     subject_slug,
                     "--spotify-show-url",
@@ -345,6 +362,16 @@ def _phase_definitions(
                     "rebuild_content_manifest",
                     "--subject",
                     subject_slug,
+                    "--quiz-links-path",
+                    str(artifact_paths.quiz_links_path),
+                    "--feed-rss-path",
+                    str(artifact_paths.feed_path),
+                    "--episode-inventory-path",
+                    str(artifact_paths.inventory_path),
+                    "--spotify-map-path",
+                    str(artifact_paths.spotify_map_path),
+                    "--output-path",
+                    str(artifact_paths.content_manifest_path),
                 ],
             }
         )
@@ -380,10 +407,14 @@ def _run_phase(*, name: str, command: list[str], repo_root: Path) -> dict[str, A
     }
 
 
-def _validate_repo_metadata(*, repo_root: Path, show_slug: str) -> dict[str, Any]:
-    show_root = repo_root / "shows" / show_slug
-    feed_path = show_root / "feeds" / "rss.xml"
-    inventory_path = show_root / "episode_inventory.json"
+def _validate_repo_metadata(
+    *,
+    repo_root: Path,
+    show_slug: str,
+    artifact_paths: ShowArtifactPaths,
+) -> dict[str, Any]:
+    feed_path = artifact_paths.feed_path
+    inventory_path = artifact_paths.inventory_path
     if not feed_path.exists():
         raise MetadataValidationError(f"Missing rebuilt RSS feed: {feed_path}")
     if not inventory_path.exists():
@@ -395,14 +426,14 @@ def _validate_repo_metadata(*, repo_root: Path, show_slug: str) -> dict[str, Any
     }
 
     if show_slug in SHOWS_WITH_SPOTIFY_SYNC:
-        spotify_map_path = show_root / "spotify_map.json"
+        spotify_map_path = artifact_paths.spotify_map_path
         if not spotify_map_path.exists():
             raise MetadataValidationError(f"Missing spotify_map.json for {show_slug}: {spotify_map_path}")
         summary["spotify_map_path"] = str(spotify_map_path.relative_to(repo_root))
 
     if show_slug in SHOWS_WITH_CONTENT_MANIFEST:
-        quiz_path = show_root / "quiz_links.json"
-        manifest_path = show_root / "content_manifest.json"
+        quiz_path = artifact_paths.quiz_links_path
+        manifest_path = artifact_paths.content_manifest_path
         if not quiz_path.exists():
             raise MetadataValidationError(f"Missing quiz_links.json for {show_slug}: {quiz_path}")
         if not manifest_path.exists():

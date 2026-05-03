@@ -236,3 +236,76 @@ def test_rebuild_repo_metadata_uses_manifest_bound_override_config(tmp_path: Pat
     )
 
     assert commands[1][commands[1].index("--config") + 1].endswith("shows/bioneuro/config.r2-pilot.json")
+
+
+def test_rebuild_repo_metadata_uses_pilot_artifact_paths_from_config(tmp_path: Path, monkeypatch) -> None:
+    repo_root = _make_repo_root(tmp_path)
+    store, job = _seed_objects_uploaded_job(tmp_path, repo_root)
+    manifest_path = store.root / str(job["artifacts"]["publish"]["latest_bundle_manifest"])
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    manifest["show_config"] = {"path": "shows/bioneuro/config.r2-pilot.json"}
+    manifest_path.write_text(json.dumps(manifest, indent=2), encoding="utf-8")
+    (repo_root / "shows/bioneuro/config.r2-pilot.json").write_text(
+        json.dumps(
+            {
+                "subject_slug": "bioneuro",
+                "output_feed": "shows/bioneuro/pilot/feeds/rss.xml",
+                "output_inventory": "shows/bioneuro/pilot/episode_inventory.json",
+                "quiz": {"links_file": "shows/bioneuro/pilot/quiz_links.json"},
+                "spotify_map_file": "shows/bioneuro/pilot/spotify_map.json",
+                "content_manifest_file": "shows/bioneuro/pilot/content_manifest.json",
+                "storage": {"provider": "r2", "manifest_file": "shows/bioneuro/pilot/media_manifest.json"},
+            }
+        ),
+        encoding="utf-8",
+    )
+    commands: list[list[str]] = []
+
+    def fake_run_phase(*, name: str, command: list[str], repo_root: Path) -> dict[str, object]:
+        commands.append(command)
+        pilot_root = repo_root / "shows" / "bioneuro" / "pilot"
+        if name == "sync_quiz_links":
+            (pilot_root / "quiz_links.json").parent.mkdir(parents=True, exist_ok=True)
+            (pilot_root / "quiz_links.json").write_text(json.dumps({"by_name": {"Title 1": [{}]}}), encoding="utf-8")
+        elif name == "generate_feed":
+            (pilot_root / "feeds").mkdir(parents=True, exist_ok=True)
+            (pilot_root / "feeds" / "rss.xml").write_text("<rss />\n", encoding="utf-8")
+            (pilot_root / "episode_inventory.json").write_text(
+                json.dumps({"episodes": [{"episode_key": "ep-1", "title": "Title 1"}]}),
+                encoding="utf-8",
+            )
+        elif name == "sync_spotify_map":
+            (pilot_root / "spotify_map.json").write_text(
+                json.dumps({"by_episode_key": {"ep-1": "https://open.spotify.com/episode/abc"}}),
+                encoding="utf-8",
+            )
+        elif name == "rebuild_content_manifest":
+            (pilot_root / "content_manifest.json").write_text(
+                json.dumps({"lectures": [{"lecture_assets": {"quizzes": [{}]}, "readings": []}]}),
+                encoding="utf-8",
+            )
+        return {
+            "name": name,
+            "command": command,
+            "command_shell": " ".join(command),
+            "started_at": "2026-05-01T00:00:00+00:00",
+            "completed_at": "2026-05-01T00:00:01+00:00",
+            "returncode": 0,
+            "stdout": "",
+            "stderr": "",
+        }
+
+    monkeypatch.setattr("notebooklm_queue.metadata._run_phase", fake_run_phase)
+
+    rebuild_repo_metadata(
+        store=store,
+        show_slug="bioneuro",
+        job_id=str(job["job_id"]),
+        options=MetadataOptions(repo_root=repo_root),
+    )
+
+    assert commands[0][commands[0].index("--links-file") + 1] == "shows/bioneuro/pilot/quiz_links.json"
+    assert commands[0][commands[0].index("--preferred-audio-inventory") + 1] == "shows/bioneuro/pilot/episode_inventory.json"
+    assert commands[2][commands[2].index("--inventory") + 1].endswith("shows/bioneuro/pilot/episode_inventory.json")
+    assert commands[2][commands[2].index("--spotify-map") + 1].endswith("shows/bioneuro/pilot/spotify_map.json")
+    assert commands[3][commands[3].index("--output-path") + 1].endswith("shows/bioneuro/pilot/content_manifest.json")

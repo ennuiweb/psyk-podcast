@@ -204,3 +204,49 @@ def test_publish_repo_artifacts_uses_manifest_bound_override_allowlist(tmp_path:
     publish_manifest_path = store.root / str(updated["artifacts"]["publish"]["latest_bundle_manifest"])
     publish_manifest = json.loads(publish_manifest_path.read_text(encoding="utf-8"))
     assert "shows/bioneuro/media_manifest.r2-pilot.json" in publish_manifest["repo_publish"]["changed_allowlist_paths"]
+
+
+def test_publish_repo_artifacts_uses_override_sidecar_paths(tmp_path: Path) -> None:
+    repo_root, _remote_root = _seed_repo(tmp_path)
+    store, job = _seed_job(tmp_path, repo_root)
+    manifest_path = store.root / str(job["artifacts"]["publish"]["latest_bundle_manifest"])
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    manifest["show_config"] = {"path": "shows/bioneuro/config.r2-pilot.json"}
+    manifest_path.write_text(json.dumps(manifest, indent=2), encoding="utf-8")
+    (repo_root / "shows/bioneuro/config.r2-pilot.json").write_text(
+        json.dumps(
+            {
+                "subject_slug": "bioneuro",
+                "output_feed": "shows/bioneuro/pilot/feeds/rss.xml",
+                "output_inventory": "shows/bioneuro/pilot/episode_inventory.json",
+                "quiz": {"links_file": "shows/bioneuro/pilot/quiz_links.json"},
+                "spotify_map_file": "shows/bioneuro/pilot/spotify_map.json",
+                "content_manifest_file": "shows/bioneuro/pilot/content_manifest.json",
+                "storage": {"provider": "r2", "manifest_file": "shows/bioneuro/pilot/media_manifest.r2-pilot.json"},
+            }
+        ),
+        encoding="utf-8",
+    )
+    pilot_root = repo_root / "shows/bioneuro/pilot"
+    (pilot_root / "feeds").mkdir(parents=True, exist_ok=True)
+    (pilot_root / "feeds" / "rss.xml").write_text("<rss>pilot</rss>\n", encoding="utf-8")
+    (pilot_root / "episode_inventory.json").write_text(json.dumps({"episodes": []}) + "\n", encoding="utf-8")
+    (pilot_root / "quiz_links.json").write_text(json.dumps({"by_name": {}}) + "\n", encoding="utf-8")
+    (pilot_root / "spotify_map.json").write_text(json.dumps({"by_episode_key": {}}) + "\n", encoding="utf-8")
+    (pilot_root / "content_manifest.json").write_text(json.dumps({"lectures": []}) + "\n", encoding="utf-8")
+    (pilot_root / "media_manifest.r2-pilot.json").write_text(json.dumps({"items": []}) + "\n", encoding="utf-8")
+
+    result = publish_repo_artifacts(
+        store=store,
+        show_slug="bioneuro",
+        job_id=str(job["job_id"]),
+        options=RepoPublishOptions(repo_root=repo_root),
+    )
+
+    assert result["final_state"] == STATE_REPO_PUSHED
+    updated = store.load_job(show_slug="bioneuro", job_id=str(job["job_id"]))
+    publish_manifest_path = store.root / str(updated["artifacts"]["publish"]["latest_bundle_manifest"])
+    publish_manifest = json.loads(publish_manifest_path.read_text(encoding="utf-8"))
+    allowlist_paths = publish_manifest["repo_publish"]["allowlist_paths"]
+    assert "shows/bioneuro/pilot/feeds/rss.xml" in allowlist_paths
+    assert "shows/bioneuro/pilot/content_manifest.json" in allowlist_paths

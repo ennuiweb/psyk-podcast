@@ -4646,6 +4646,44 @@ class QuizPortalTests(TestCase):
         self.assertEqual(summary["lectures"], 2)
         self.assertGreaterEqual(summary["quiz_assets"], 1)
 
+    def test_rebuild_content_manifest_command_supports_path_overrides(self) -> None:
+        alt_root = Path(self.temp_dir.name) / "pilot"
+        alt_root.mkdir(parents=True, exist_ok=True)
+        alt_quiz = alt_root / "quiz_links.json"
+        alt_rss = alt_root / "rss.xml"
+        alt_inventory = alt_root / "episode_inventory.json"
+        alt_spotify = alt_root / "spotify_map.json"
+        alt_manifest = alt_root / "content_manifest.json"
+        alt_quiz.write_text(self.links_file.read_text(encoding="utf-8"), encoding="utf-8")
+        alt_rss.write_text(self.rss_file.read_text(encoding="utf-8"), encoding="utf-8")
+        alt_inventory.write_text(json.dumps({"episodes": []}), encoding="utf-8")
+        alt_spotify.write_text(self.spotify_map_file.read_text(encoding="utf-8"), encoding="utf-8")
+
+        call_command(
+            "rebuild_content_manifest",
+            "--subject",
+            "personlighedspsykologi",
+            "--quiz-links-path",
+            str(alt_quiz),
+            "--feed-rss-path",
+            str(alt_rss),
+            "--episode-inventory-path",
+            str(alt_inventory),
+            "--spotify-map-path",
+            str(alt_spotify),
+            "--output-path",
+            str(alt_manifest),
+            stdout=io.StringIO(),
+        )
+
+        self.assertTrue(alt_manifest.exists())
+        payload = json.loads(alt_manifest.read_text(encoding="utf-8"))
+        source_meta = payload["source_meta"]
+        self.assertEqual(Path(source_meta["quiz_links_path"]).resolve(), alt_quiz.resolve())
+        self.assertEqual(Path(source_meta["rss_path"]).resolve(), alt_rss.resolve())
+        self.assertEqual(Path(source_meta["episode_inventory_path"]).resolve(), alt_inventory.resolve())
+        self.assertEqual(Path(source_meta["spotify_map_path"]).resolve(), alt_spotify.resolve())
+
     def test_rebuild_content_manifest_strict_fails_on_warnings(self) -> None:
         self.rss_file.unlink()
         with self.assertRaises(CommandError):

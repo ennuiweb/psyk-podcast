@@ -11,6 +11,7 @@ from typing import Any
 
 from .adapters import get_show_adapter
 from .constants import STATE_COMMITTING_REPO_ARTIFACTS, STATE_FAILED_RETRYABLE, STATE_REPO_PUSHED
+from .show_artifacts import resolve_show_artifact_paths
 from .show_config import ShowConfigSelectionError, load_show_config, resolve_manifest_bound_show_config_path
 from .store import QueueStore, utc_now_iso
 
@@ -270,19 +271,20 @@ def _allowed_paths(
         default_path=adapter.show_config_path,
         override_path=resolved_show_config_path,
     )
-    show_root = repo_root / "shows" / show_slug
+    artifact_paths = resolve_show_artifact_paths(
+        repo_root=repo_root,
+        show_slug=show_slug,
+        config=config,
+    )
     allowlist = {
-        str((show_root / "feeds" / "rss.xml").relative_to(repo_root)),
-        str((show_root / "episode_inventory.json").relative_to(repo_root)),
-        str((show_root / "quiz_links.json").relative_to(repo_root)),
-        str((show_root / "spotify_map.json").relative_to(repo_root)),
-        str((show_root / "content_manifest.json").relative_to(repo_root)),
+        str(artifact_paths.feed_path.relative_to(repo_root)),
+        str(artifact_paths.inventory_path.relative_to(repo_root)),
+        str(artifact_paths.quiz_links_path.relative_to(repo_root)),
+        str(artifact_paths.spotify_map_path.relative_to(repo_root)),
+        str(artifact_paths.content_manifest_path.relative_to(repo_root)),
     }
-    storage = config.get("storage")
-    if isinstance(storage, dict):
-        manifest_file = str(storage.get("manifest_file") or "").strip()
-        if manifest_file:
-            allowlist.add(str(Path(manifest_file)))
+    if artifact_paths.media_manifest_path is not None:
+        allowlist.add(str(artifact_paths.media_manifest_path.relative_to(repo_root)))
     return allowlist
 
 

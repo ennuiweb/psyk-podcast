@@ -12,6 +12,11 @@ class Command(BaseCommand):
 
     def add_arguments(self, parser) -> None:
         parser.add_argument("--subject", required=True, help="Subject slug to build manifest for.")
+        parser.add_argument("--quiz-links-path", help="Override quiz_links.json path for this run.")
+        parser.add_argument("--feed-rss-path", help="Override RSS feed path for this run.")
+        parser.add_argument("--episode-inventory-path", help="Override episode_inventory.json path for this run.")
+        parser.add_argument("--spotify-map-path", help="Override spotify_map.json path for this run.")
+        parser.add_argument("--output-path", help="Override content_manifest.json output path for this run.")
         parser.add_argument(
             "--strict",
             action="store_true",
@@ -28,13 +33,20 @@ class Command(BaseCommand):
         if not subject_slug:
             raise CommandError("--subject is required")
 
-        manifest = build_subject_content_manifest(subject_slug)
+        overrides = {
+            "quiz_links_path": options.get("quiz_links_path"),
+            "feed_rss_path": options.get("feed_rss_path"),
+            "episode_inventory_path": options.get("episode_inventory_path"),
+            "spotify_map_path": options.get("spotify_map_path"),
+            "content_manifest_path": options.get("output_path"),
+        }
+        manifest = build_subject_content_manifest(subject_slug, subject_paths_override=overrides)
         warnings = manifest.get("warnings") or []
         if options.get("strict") and warnings:
             raise CommandError(f"Manifest has warnings ({len(warnings)}).")
 
         if not options.get("dry_run"):
-            write_subject_content_manifest(manifest)
+            write_subject_content_manifest(manifest, path=options.get("output_path"))
 
         lecture_count = len(manifest.get("lectures") or [])
         reading_count = 0

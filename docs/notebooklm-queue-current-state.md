@@ -63,6 +63,8 @@ The following queue milestones are implemented on `main`:
   - discovery can hash against an alternate show config with `--show-config`
   - publish manifests pin the selected show-config path
   - upload, metadata rebuild, and repo push reuse the manifest-bound config instead of silently falling back to the live `config.github.json`
+  - Freudd sidecars and feed artifacts now also follow that selected config, so a non-live `bioneuro` pilot can publish into `shows/bioneuro/pilot/**` without overwriting the live Drive-backed artifacts
+  - `shows/bioneuro/config.r2-pilot.template.json` now provides the safe non-live pilot shape; it still requires a real `storage.public_base_url` before use
 
 ## Current state-machine boundary
 

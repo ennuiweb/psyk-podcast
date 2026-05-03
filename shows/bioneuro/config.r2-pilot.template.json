@@ -1,0 +1,71 @@
+{
+  "publication": {
+    "owner": "legacy_workflow"
+  },
+  "subject_slug": "bioneuro",
+  "output_feed": "shows/bioneuro/pilot/feeds/rss.xml",
+  "output_inventory": "shows/bioneuro/pilot/episode_inventory.json",
+  "episode_metadata": "shows/bioneuro/episode_metadata.json",
+  "auto_spec": "shows/bioneuro/auto_spec.json",
+  "spotify_map_file": "shows/bioneuro/pilot/spotify_map.json",
+  "content_manifest_file": "shows/bioneuro/pilot/content_manifest.json",
+  "quiz": {
+    "links_file": "shows/bioneuro/pilot/quiz_links.json",
+    "base_url": "https://freudd.dk/q/",
+    "subject_slug": "bioneuro",
+    "labels": {
+      "single": "Quiz",
+      "multiple": "Quizzer",
+      "difficulty": {
+        "easy": "Let",
+        "medium": "Mellem",
+        "hard": "Svær"
+      }
+    }
+  },
+  "storage": {
+    "provider": "r2",
+    "bucket": "freudd",
+    "endpoint": "https://abf1940818ee3c8a0fa4bc84c7b1bba9.r2.cloudflarestorage.com",
+    "region": "auto",
+    "prefix": "shows/bioneuro",
+    "public_base_url": "https://<public-audio-domain>",
+    "manifest_file": "shows/bioneuro/pilot/media_manifest.r2.json",
+    "access_key_id_env": "R2_ACCESS_KEY_ID",
+    "secret_access_key_env": "R2_SECRET_ACCESS_KEY"
+  },
+  "feed": {
+    "title": "Bio / Neuropsychology",
+    "link": "https://github.com/ennuiweb/psyk-podcast",
+    "self_link": "https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/bioneuro/pilot/feeds/rss.xml",
+    "audio_category_prefix_position": "after_first_block",
+    "semester_week_number_source": "lecture_key",
+    "title_blocks": [
+      "course_week_lecture",
+      "subject_or_type"
+    ],
+    "description": "Pilot-only R2 feed for Bio / Neuropsychology.",
+    "description_footer": "\nPilot feed only. Do not publish live until public_base_url is real and the live config is cut over.",
+    "language": "en",
+    "author": "Bio / Neuropsychology",
+    "default_explicit": false,
+    "image": "https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/bioneuro/assets/cover.png",
+    "category": {
+      "name": "Education",
+      "sub": "Social Sciences"
+    },
+    "owner": {
+      "name": "Bio / Neuropsychology",
+      "email": "psykku2025@gmail.com"
+    },
+    "ttl": 60
+  },
+  "reading_summaries": {
+    "file": "shows/bioneuro/reading_summaries.json",
+    "key_points_label": "Nøglepointer",
+    "enabled_kinds": [
+      "reading",
+      "brief"
+    ]
+  }
+}

@@ -1335,12 +1335,18 @@ def _attach_podcasts(
     )
 
 
-def build_subject_content_manifest(subject_slug: str) -> SubjectContentManifest:
+def build_subject_content_manifest(
+    subject_slug: str,
+    *,
+    subject_paths_override: dict[str, str | Path] | None = None,
+) -> SubjectContentManifest:
     slug = str(subject_slug or "").strip().lower()
     if not slug:
         raise ValueError("subject_slug is required")
 
     subject_paths = resolve_subject_paths(slug)
+    if subject_paths_override:
+        subject_paths = _apply_subject_path_overrides(subject_paths=subject_paths, overrides=subject_paths_override)
     parse_result, reading_source_path, used_fallback = _reading_source_with_fallback(slug)
     manifest_warnings: list[str] = []
     slide_catalog_entries = _load_slide_catalog_entries(slug)
@@ -1527,6 +1533,30 @@ def build_subject_content_manifest(subject_slug: str) -> SubjectContentManifest:
         "lectures": lectures,
         "warnings": manifest_warnings,
     }
+
+
+def _apply_subject_path_overrides(
+    *,
+    subject_paths,
+    overrides: dict[str, str | Path],
+):
+    allowed_keys = {
+        "quiz_links_path",
+        "feed_rss_path",
+        "episode_inventory_path",
+        "spotify_map_path",
+        "content_manifest_path",
+    }
+    values = subject_paths.__dict__.copy()
+    changed = False
+    for key, value in overrides.items():
+        if key not in allowed_keys or value in (None, ""):
+            continue
+        values[key] = Path(value).expanduser().resolve()
+        changed = True
+    if not changed:
+        return subject_paths
+    return subject_paths.__class__(**values)
 
 
 def write_subject_content_manifest(

@@ -68,6 +68,7 @@ Queue-core note:
 - current scope now also includes repo metadata rebuild: `rebuild-metadata` claims jobs in `objects_uploaded`, refreshes queue-owned quiz links for supported shows, regenerates RSS and episode inventory from the R2 manifest, runs show-specific sidecars such as Spotify sync and Freudd content-manifest rebuild, validates the resulting repo artifacts, and advances successful jobs to `committing_repo_artifacts`
 - current scope now also includes allowlisted repo publication: `push-repo` claims jobs in `committing_repo_artifacts`, fails closed on tracked repo dirtiness outside the generated-file allowlist, keeps queue-generated artifacts on allowlisted rebase conflicts, pushes with bounded retries, and advances successful jobs to `repo_pushed`
 - current scope now also includes downstream completion: `sync-downstream` claims jobs in `repo_pushed`, waits for expected push-triggered downstream workflows such as `deploy-freudd-portal.yml`, and advances successful jobs to `completed`
+- current scope now also includes pilot-safe config binding: `discover`, `prepare-publish`, `upload-r2`, `rebuild-metadata`, and `push-repo` accept `--show-config`, and publish manifests now pin the selected config path so later stages cannot silently drift back to the live `config.github.json`
 - storage root defaults to `/var/lib/podcasts/notebooklm-queue` and can be overridden with `NOTEBOOKLM_QUEUE_STORAGE_ROOT` or `--storage-root`
 - supported discovery adapters currently cover `bioneuro` and `personlighedspsykologi-en`
 - `run-dry` resolves the exact generate/download commands for the next queued lecture without touching NotebookLM or publication state
@@ -88,6 +89,13 @@ Queue CLI examples:
 ./.venv/bin/python scripts/notebooklm_queue.py --storage-root /tmp/notebooklm-queue rebuild-metadata --repo-root . --show-slug bioneuro
 ./.venv/bin/python scripts/notebooklm_queue.py --storage-root /tmp/notebooklm-queue push-repo --repo-root . --show-slug bioneuro
 ./.venv/bin/python scripts/notebooklm_queue.py --storage-root /tmp/notebooklm-queue sync-downstream --repo-root . --show-slug bioneuro
+```
+
+Pilot-safe example:
+
+```bash
+./.venv/bin/python scripts/notebooklm_queue.py --storage-root /tmp/notebooklm-queue discover --repo-root . --show-slug bioneuro --show-config /absolute/path/to/bioneuro-r2-pilot.json --enqueue
+./.venv/bin/python scripts/notebooklm_queue.py --storage-root /tmp/notebooklm-queue prepare-publish --repo-root . --show-slug bioneuro --show-config /absolute/path/to/bioneuro-r2-pilot.json
 ```
 
 Important operational note:

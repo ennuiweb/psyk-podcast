@@ -17,6 +17,7 @@ from .constants import (
     STATE_OBJECTS_UPLOADED,
     STATE_REBUILDING_METADATA,
 )
+from .show_config import ShowConfigSelectionError, resolve_manifest_bound_show_config_path
 from .store import QueueStore, utc_now_iso
 
 SHOWS_WITH_SPOTIFY_SYNC = {"bioneuro", "personlighedspsykologi-en"}
@@ -31,6 +32,7 @@ SPOTIFY_SHOW_URLS = {
 class MetadataOptions:
     repo_root: Path
     actor: str = "system"
+    show_config_path: Path | None = None
 
 
 @dataclass(frozen=True, slots=True)
@@ -85,7 +87,30 @@ def rebuild_repo_metadata(
         }
         manifest["metadata"] = metadata_payload
 
-        for phase in _phase_definitions(repo_root=options.repo_root, show_slug=show_slug, subject_slug=adapter.subject_slug):
+        try:
+            resolved_show_config_path = resolve_manifest_bound_show_config_path(
+                repo_root=options.repo_root,
+                default_path=adapter.show_config_path,
+                manifest=manifest,
+                override_path=options.show_config_path,
+            )
+        except ShowConfigSelectionError as exc:
+            return _finalize_failure(
+                store=store,
+                job=job,
+                manifest=manifest,
+                bundle_id=bundle_id,
+                actor=options.actor,
+                error_message=str(exc),
+                note="Metadata rebuild config selection failed.",
+            )
+
+        for phase in _phase_definitions(
+            repo_root=options.repo_root,
+            show_slug=show_slug,
+            subject_slug=adapter.subject_slug,
+            show_config_path=resolved_show_config_path,
+        ):
             result = _run_phase(name=phase["name"], command=phase["command"], repo_root=options.repo_root)
             metadata_payload["phases"].append(result)
             if result["returncode"] != 0:
@@ -211,7 +236,13 @@ def _claim_or_resume_job(
     )
 
 
-def _phase_definitions(*, repo_root: Path, show_slug: str, subject_slug: str) -> list[dict[str, object]]:
+def _phase_definitions(
+    *,
+    repo_root: Path,
+    show_slug: str,
+    subject_slug: str,
+    show_config_path: Path,
+) -> list[dict[str, object]]:
     python = str(repo_root / ".venv" / "bin" / "python")
     phases: list[dict[str, object]] = []
     quiz_sync = QUIZ_SYNC_SETTINGS.get(show_slug)
@@ -256,7 +287,7 @@ def _phase_definitions(*, repo_root: Path, show_slug: str, subject_slug: str) ->
                 python,
                 str(repo_root / "podcast-tools" / "gdrive_podcast_feed.py"),
                 "--config",
-                str(repo_root / "shows" / show_slug / "config.github.json"),
+                str(show_config_path),
             ],
         }
     )

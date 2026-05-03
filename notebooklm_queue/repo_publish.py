@@ -11,6 +11,7 @@ from typing import Any
 
 from .adapters import get_show_adapter
 from .constants import STATE_COMMITTING_REPO_ARTIFACTS, STATE_FAILED_RETRYABLE, STATE_REPO_PUSHED
+from .show_config import ShowConfigSelectionError, load_show_config, resolve_manifest_bound_show_config_path
 from .store import QueueStore, utc_now_iso
 
 
@@ -23,6 +24,7 @@ class RepoPublishOptions:
     git_user_name: str = "NotebookLM Queue"
     git_user_email: str = "queue@localhost"
     max_push_attempts: int = 3
+    show_config_path: Path | None = None
 
 
 def publish_repo_artifacts(
@@ -48,6 +50,16 @@ def publish_repo_artifacts(
                 options=options,
                 adapter=adapter,
                 job=job,
+                manifest=manifest,
+            )
+        except ShowConfigSelectionError as exc:
+            return _finalize_failure(
+                store=store,
+                job=job,
+                manifest=manifest,
+                bundle_id=bundle_id,
+                actor=options.actor,
+                error_message=str(exc),
             )
         except RepoPublishError as exc:
             return _finalize_failure(
@@ -151,8 +163,15 @@ def _commit_and_push_show_artifacts(
     options: RepoPublishOptions,
     adapter,
     job: dict[str, Any],
+    manifest: dict[str, Any],
 ) -> dict[str, Any]:
-    allowlist = _allowed_paths(repo_root=repo_root, show_slug=show_slug, adapter=adapter)
+    allowlist = _allowed_paths(
+        repo_root=repo_root,
+        show_slug=show_slug,
+        adapter=adapter,
+        manifest=manifest,
+        requested_show_config_path=options.show_config_path,
+    )
     status_entries = _git_status(repo_root)
     unexpected_tracked = [
         entry["path"]
@@ -232,8 +251,25 @@ def _commit_and_push_show_artifacts(
     }
 
 
-def _allowed_paths(*, repo_root: Path, show_slug: str, adapter) -> set[str]:
-    config = adapter.load_show_config(repo_root)
+def _allowed_paths(
+    *,
+    repo_root: Path,
+    show_slug: str,
+    adapter,
+    manifest: dict[str, Any],
+    requested_show_config_path: Path | None,
+) -> set[str]:
+    resolved_show_config_path = resolve_manifest_bound_show_config_path(
+        repo_root=repo_root,
+        default_path=adapter.show_config_path,
+        manifest=manifest,
+        override_path=requested_show_config_path,
+    )
+    config = load_show_config(
+        repo_root=repo_root,
+        default_path=adapter.show_config_path,
+        override_path=resolved_show_config_path,
+    )
     show_root = repo_root / "shows" / show_slug
     allowlist = {
         str((show_root / "feeds" / "rss.xml").relative_to(repo_root)),

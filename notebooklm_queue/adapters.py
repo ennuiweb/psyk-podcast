@@ -8,6 +8,8 @@ import re
 from dataclasses import dataclass
 from pathlib import Path
 
+from .show_config import load_show_config, resolve_show_config_path, serialize_show_config_path
+
 WEEK_LECTURE_PATTERN = re.compile(r"^(W\d+L\d+)\b", re.IGNORECASE)
 
 
@@ -43,24 +45,42 @@ class ShowAdapter:
             return _discover_from_episode_metadata(repo_root / "shows" / self.show_slug / "episode_metadata.json")
         raise ValueError(f"Unsupported discovery source: {self.discovery_source}")
 
-    def config_hash(self, repo_root: Path) -> str:
+    def config_hash(self, repo_root: Path, *, show_config_path: str | Path | None = None) -> str:
         digest = hashlib.sha256()
+        resolved_override = None
+        override_label = None
+        if show_config_path is not None:
+            resolved_override = resolve_show_config_path(
+                repo_root=repo_root,
+                default_path=self.show_config_path,
+                override_path=show_config_path,
+            )
+            override_label = serialize_show_config_path(repo_root=repo_root, path=resolved_override)
         for relative in self.config_paths:
-            path = repo_root / relative
-            digest.update(relative.encode("utf-8"))
+            if relative == self.show_config_path and resolved_override is not None:
+                path = resolved_override
+                label = override_label or relative
+            else:
+                path = repo_root / relative
+                label = relative
+            digest.update(label.encode("utf-8"))
             digest.update(b"\0")
             if path.exists():
                 digest.update(path.read_bytes())
             digest.update(b"\0")
         return digest.hexdigest()[:16]
 
-    def load_show_config(self, repo_root: Path) -> dict[str, object]:
-        path = repo_root / self.show_config_path
-        payload = json.loads(path.read_text(encoding="utf-8"))
-        if not isinstance(payload, dict):
-            raise ValueError(f"Expected object config in {path}")
-        payload["__config_path__"] = str(path.resolve())
-        return payload
+    def load_show_config(
+        self,
+        repo_root: Path,
+        *,
+        show_config_path: str | Path | None = None,
+    ) -> dict[str, object]:
+        return load_show_config(
+            repo_root=repo_root,
+            default_path=self.show_config_path,
+            override_path=show_config_path,
+        )
 
     def output_root_path(self, repo_root: Path) -> Path:
         return repo_root / self.output_root

@@ -88,6 +88,7 @@ def build_parser() -> argparse.ArgumentParser:
     discover = subparsers.add_parser("discover", help="Discover lecture-scoped jobs for one supported show.")
     discover.add_argument("--repo-root", type=Path, default=Path(__file__).resolve().parents[1])
     discover.add_argument("--show-slug", required=True)
+    discover.add_argument("--show-config", type=Path)
     discover.add_argument("--content-type", action="append", dest="content_types", default=[])
     discover.add_argument("--enqueue", action="store_true")
     discover.add_argument("--priority", type=int, default=100)
@@ -114,6 +115,7 @@ def build_parser() -> argparse.ArgumentParser:
     prepare_publish.add_argument("--repo-root", type=Path, default=Path(__file__).resolve().parents[1])
     prepare_publish.add_argument("--show-slug", required=True)
     prepare_publish.add_argument("--job-id")
+    prepare_publish.add_argument("--show-config", type=Path)
 
     upload_r2 = subparsers.add_parser(
         "upload-r2",
@@ -122,6 +124,7 @@ def build_parser() -> argparse.ArgumentParser:
     upload_r2.add_argument("--repo-root", type=Path, default=Path(__file__).resolve().parents[1])
     upload_r2.add_argument("--show-slug", required=True)
     upload_r2.add_argument("--job-id")
+    upload_r2.add_argument("--show-config", type=Path)
 
     rebuild_metadata = subparsers.add_parser(
         "rebuild-metadata",
@@ -130,6 +133,7 @@ def build_parser() -> argparse.ArgumentParser:
     rebuild_metadata.add_argument("--repo-root", type=Path, default=Path(__file__).resolve().parents[1])
     rebuild_metadata.add_argument("--show-slug", required=True)
     rebuild_metadata.add_argument("--job-id")
+    rebuild_metadata.add_argument("--show-config", type=Path)
 
     push_repo = subparsers.add_parser(
         "push-repo",
@@ -138,6 +142,7 @@ def build_parser() -> argparse.ArgumentParser:
     push_repo.add_argument("--repo-root", type=Path, default=Path(__file__).resolve().parents[1])
     push_repo.add_argument("--show-slug", required=True)
     push_repo.add_argument("--job-id")
+    push_repo.add_argument("--show-config", type=Path)
     push_repo.add_argument("--remote", default="origin")
     push_repo.add_argument("--branch", default="main")
 
@@ -246,6 +251,7 @@ def main(argv: list[str] | None = None) -> int:
                 store=store,
                 show_slug=args.show_slug,
                 content_types=content_types,
+                show_config_path=Path(args.show_config).resolve() if args.show_config else None,
                 priority=int(args.priority),
             )
         else:
@@ -258,6 +264,7 @@ def main(argv: list[str] | None = None) -> int:
                     repo_root=repo_root,
                     show_slug=args.show_slug,
                     content_types=content_types,
+                    show_config_path=Path(args.show_config).resolve() if args.show_config else None,
                 )
             ]
         _print_json(payload)
@@ -292,7 +299,10 @@ def main(argv: list[str] | None = None) -> int:
             store=store,
             show_slug=args.show_slug,
             job_id=args.job_id,
-            options=PublishOptions(repo_root=Path(args.repo_root).resolve()),
+            options=PublishOptions(
+                repo_root=Path(args.repo_root).resolve(),
+                show_config_path=Path(args.show_config).resolve() if args.show_config else None,
+            ),
         )
         _print_json(payload)
         return 0
@@ -302,7 +312,10 @@ def main(argv: list[str] | None = None) -> int:
             store=store,
             show_slug=args.show_slug,
             job_id=args.job_id,
-            options=UploadOptions(repo_root=Path(args.repo_root).resolve()),
+            options=UploadOptions(
+                repo_root=Path(args.repo_root).resolve(),
+                show_config_path=Path(args.show_config).resolve() if args.show_config else None,
+            ),
         )
         _print_json(payload)
         return 0
@@ -312,7 +325,10 @@ def main(argv: list[str] | None = None) -> int:
             store=store,
             show_slug=args.show_slug,
             job_id=args.job_id,
-            options=MetadataOptions(repo_root=Path(args.repo_root).resolve()),
+            options=MetadataOptions(
+                repo_root=Path(args.repo_root).resolve(),
+                show_config_path=Path(args.show_config).resolve() if args.show_config else None,
+            ),
         )
         _print_json(payload)
         return 0
@@ -324,6 +340,7 @@ def main(argv: list[str] | None = None) -> int:
             job_id=args.job_id,
             options=RepoPublishOptions(
                 repo_root=Path(args.repo_root).resolve(),
+                show_config_path=Path(args.show_config).resolve() if args.show_config else None,
                 remote=args.remote,
                 branch=args.branch,
             ),

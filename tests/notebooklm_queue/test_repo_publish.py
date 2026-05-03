@@ -168,3 +168,39 @@ def test_publish_repo_artifacts_resolves_allowlisted_rebase_conflicts(tmp_path: 
     assert "shows/bioneuro/feeds/rss.xml" in result["resolved_rebase_conflicts"]
     remote_rss = _run(["git", "--git-dir", str(remote_root), "show", "main:shows/bioneuro/feeds/rss.xml"], repo_root)
     assert remote_rss == "<rss>local</rss>"
+
+
+def test_publish_repo_artifacts_uses_manifest_bound_override_allowlist(tmp_path: Path) -> None:
+    repo_root, _remote_root = _seed_repo(tmp_path)
+    store, job = _seed_job(tmp_path, repo_root)
+    manifest_path = store.root / str(job["artifacts"]["publish"]["latest_bundle_manifest"])
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    manifest["show_config"] = {"path": "shows/bioneuro/config.r2-pilot.json"}
+    manifest_path.write_text(json.dumps(manifest, indent=2), encoding="utf-8")
+    (repo_root / "shows/bioneuro/config.r2-pilot.json").write_text(
+        json.dumps(
+            {
+                "subject_slug": "bioneuro",
+                "storage": {"provider": "r2", "manifest_file": "shows/bioneuro/media_manifest.r2-pilot.json"},
+            }
+        ),
+        encoding="utf-8",
+    )
+    (repo_root / "shows/bioneuro/media_manifest.r2-pilot.json").write_text(json.dumps({"items": []}) + "\n", encoding="utf-8")
+    (repo_root / "shows/bioneuro/media_manifest.r2-pilot.json").write_text(
+        json.dumps({"items": [{"object_key": "shows/bioneuro/W1L1/example.mp3"}]}) + "\n",
+        encoding="utf-8",
+    )
+
+    result = publish_repo_artifacts(
+        store=store,
+        show_slug="bioneuro",
+        job_id=str(job["job_id"]),
+        options=RepoPublishOptions(repo_root=repo_root),
+    )
+
+    assert result["final_state"] == STATE_REPO_PUSHED
+    updated = store.load_job(show_slug="bioneuro", job_id=str(job["job_id"]))
+    publish_manifest_path = store.root / str(updated["artifacts"]["publish"]["latest_bundle_manifest"])
+    publish_manifest = json.loads(publish_manifest_path.read_text(encoding="utf-8"))
+    assert "shows/bioneuro/media_manifest.r2-pilot.json" in publish_manifest["repo_publish"]["changed_allowlist_paths"]

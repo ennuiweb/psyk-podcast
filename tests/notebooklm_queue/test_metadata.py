@@ -187,3 +187,52 @@ def test_rebuild_repo_metadata_marks_retryable_failure_on_phase_error(tmp_path: 
     updated = store.load_job(show_slug="bioneuro", job_id=str(job["job_id"]))
     assert updated["state"] == STATE_FAILED_RETRYABLE
     assert updated["last_error"] == "boom"
+
+
+def test_rebuild_repo_metadata_uses_manifest_bound_override_config(tmp_path: Path, monkeypatch) -> None:
+    repo_root = _make_repo_root(tmp_path)
+    store, job = _seed_objects_uploaded_job(tmp_path, repo_root)
+    manifest_path = store.root / str(job["artifacts"]["publish"]["latest_bundle_manifest"])
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    manifest["show_config"] = {"path": "shows/bioneuro/config.r2-pilot.json"}
+    manifest_path.write_text(json.dumps(manifest, indent=2), encoding="utf-8")
+    (repo_root / "shows/bioneuro/config.r2-pilot.json").write_text(
+        json.dumps({"storage": {"provider": "r2", "manifest_file": "shows/bioneuro/media_manifest.json"}}),
+        encoding="utf-8",
+    )
+    commands: list[list[str]] = []
+
+    def fake_run_phase(*, name: str, command: list[str], repo_root: Path) -> dict[str, object]:
+        commands.append(command)
+        show_root = repo_root / "shows" / "bioneuro"
+        if name == "sync_quiz_links":
+            (show_root / "quiz_links.json").write_text(json.dumps({"by_name": {}}), encoding="utf-8")
+        elif name == "generate_feed":
+            (show_root / "feeds").mkdir(parents=True, exist_ok=True)
+            (show_root / "feeds" / "rss.xml").write_text("<rss />\n", encoding="utf-8")
+            (show_root / "episode_inventory.json").write_text(json.dumps({"episodes": []}), encoding="utf-8")
+        elif name == "sync_spotify_map":
+            (show_root / "spotify_map.json").write_text(json.dumps({"by_episode_key": {}}), encoding="utf-8")
+        elif name == "rebuild_content_manifest":
+            (show_root / "content_manifest.json").write_text(json.dumps({"lectures": []}), encoding="utf-8")
+        return {
+            "name": name,
+            "command": command,
+            "command_shell": " ".join(command),
+            "started_at": "2026-05-01T00:00:00+00:00",
+            "completed_at": "2026-05-01T00:00:01+00:00",
+            "returncode": 0,
+            "stdout": "",
+            "stderr": "",
+        }
+
+    monkeypatch.setattr("notebooklm_queue.metadata._run_phase", fake_run_phase)
+
+    rebuild_repo_metadata(
+        store=store,
+        show_slug="bioneuro",
+        job_id=str(job["job_id"]),
+        options=MetadataOptions(repo_root=repo_root),
+    )
+
+    assert commands[1][commands[1].index("--config") + 1].endswith("shows/bioneuro/config.r2-pilot.json")

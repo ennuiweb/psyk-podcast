@@ -71,6 +71,7 @@ def test_prepare_publish_bundle_approves_valid_job_and_saves_manifest(tmp_path: 
     manifest_path = store.root / str(updated["artifacts"]["publish"]["latest_bundle_manifest"])
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     assert manifest["status"] == "completed"
+    assert manifest["show_config"]["path"] == "shows/bioneuro/config.github.json"
     assert manifest["bundle"]["artifact_count"] == 2
     assert manifest["bundle"]["artifact_counts"]["audio"] == 1
     assert manifest["bundle"]["artifact_counts"]["quiz"] == 1
@@ -247,3 +248,59 @@ def test_upload_publish_bundle_blocks_drive_backed_show(tmp_path: Path) -> None:
     updated = store.load_job(show_slug="bioneuro", job_id=str(job["job_id"]))
     assert updated["state"] == STATE_BLOCKED_CONFIG_ERROR
     assert "storage object" in str(updated["last_error"])
+
+
+def test_upload_publish_bundle_uses_manifest_bound_override_config(tmp_path: Path, monkeypatch) -> None:
+    repo_root = _make_repo_root(tmp_path)
+    pilot_config = repo_root / "shows/bioneuro/config.r2-pilot.json"
+    pilot_config.write_text(
+        json.dumps(
+            {
+                "subject_slug": "bioneuro",
+                "output_inventory": "shows/bioneuro/episode_inventory.json",
+                "storage": {
+                    "provider": "r2",
+                    "bucket": "freudd-audio",
+                    "endpoint": "https://example.r2.cloudflarestorage.com",
+                    "prefix": "shows/bioneuro",
+                    "public_base_url": "https://audio.example.com",
+                    "manifest_file": "shows/bioneuro/media_manifest.json",
+                    "access_key_id_env": "TEST_R2_ACCESS_KEY_ID",
+                    "secret_access_key_env": "TEST_R2_SECRET_ACCESS_KEY",
+                },
+            }
+        ),
+        encoding="utf-8",
+    )
+    week_dir = repo_root / "notebooklm-podcast-auto/bioneuro/output/W1L1"
+    week_dir.mkdir(parents=True, exist_ok=True)
+    (week_dir / "W1L1 - Reading [EN] {type=audio hash=abc}.mp3").write_bytes(b"audio-data")
+    (week_dir / "W1L1 - Reading [EN] {type=quiz difficulty=medium hash=def}.json").write_text(
+        json.dumps({"questions": [{"id": 1}]}),
+        encoding="utf-8",
+    )
+
+    monkeypatch.setenv("TEST_R2_ACCESS_KEY_ID", "key")
+    monkeypatch.setenv("TEST_R2_SECRET_ACCESS_KEY", "secret")
+    client = _FakeR2Client()
+    monkeypatch.setattr("notebooklm_queue.publish._build_r2_client", lambda target: client)
+
+    store = QueueStore(tmp_path / "queue-root")
+    job = store.upsert_job(_identity(), initial_state=STATE_AWAITING_PUBLISH)
+    prepare_publish_bundle(
+        store=store,
+        show_slug="bioneuro",
+        job_id=str(job["job_id"]),
+        options=PublishOptions(repo_root=repo_root, show_config_path=pilot_config),
+    )
+
+    result = upload_publish_bundle(
+        store=store,
+        show_slug="bioneuro",
+        job_id=str(job["job_id"]),
+        options=UploadOptions(repo_root=repo_root),
+    )
+
+    assert result["final_state"] == STATE_OBJECTS_UPLOADED
+    manifest = json.loads((repo_root / "shows/bioneuro/media_manifest.json").read_text(encoding="utf-8"))
+    assert manifest["provider"] == "r2"

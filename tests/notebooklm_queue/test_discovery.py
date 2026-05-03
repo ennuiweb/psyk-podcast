@@ -105,3 +105,31 @@ def test_enqueue_discovered_jobs_and_build_dry_run_plan(tmp_path: Path) -> None:
     assert plan["lecture_key"] == "W1L1"
     assert "--dry-run" in plan["generate_command"]
     assert "--week" in plan["download_command"]
+
+
+def test_discover_jobs_hashes_override_show_config_and_persists_metadata(tmp_path: Path) -> None:
+    (tmp_path / "shows" / "bioneuro").mkdir(parents=True, exist_ok=True)
+    (tmp_path / "notebooklm-podcast-auto" / "bioneuro").mkdir(parents=True, exist_ok=True)
+    for relative, content in (
+        ("shows/bioneuro/config.github.json", '{"publication":{"owner":"legacy_workflow"}}'),
+        ("shows/bioneuro/config.r2-pilot.json", '{"storage":{"provider":"r2"}}'),
+        ("shows/bioneuro/auto_spec.json", "{}"),
+        ("notebooklm-podcast-auto/bioneuro/prompt_config.json", "{}"),
+    ):
+        path = tmp_path / relative
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(content, encoding="utf-8")
+    (tmp_path / "shows" / "bioneuro" / "episode_metadata.json").write_text(
+        json.dumps({"by_id": {"a": {"meta": {"source_folder": "W1L1 Intro (2026-02-06)"}}}}),
+        encoding="utf-8",
+    )
+
+    default_jobs = discover_show_jobs(repo_root=tmp_path, show_slug="bioneuro")
+    override_jobs = discover_show_jobs(
+        repo_root=tmp_path,
+        show_slug="bioneuro",
+        show_config_path=tmp_path / "shows" / "bioneuro" / "config.r2-pilot.json",
+    )
+
+    assert default_jobs[0]["identity"].config_hash != override_jobs[0]["identity"].config_hash
+    assert override_jobs[0]["metadata"]["show_config_path"] == "shows/bioneuro/config.r2-pilot.json"

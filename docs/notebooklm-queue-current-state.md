@@ -59,6 +59,10 @@ The following queue milestones are implemented on `main`:
   - waits for expected push-triggered workflows such as `deploy-freudd-portal.yml`
   - records downstream run ids and URLs in queue job artifacts
   - marks jobs `completed` only after downstream success or no-op completion
+- pilot-safe config binding:
+  - discovery can hash against an alternate show config with `--show-config`
+  - publish manifests pin the selected show-config path
+  - upload, metadata rebuild, and repo push reuse the manifest-bound config instead of silently falling back to the live `config.github.json`
 
 ## Current state-machine boundary
 

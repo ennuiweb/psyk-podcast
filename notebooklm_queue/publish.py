@@ -28,6 +28,13 @@ from .constants import (
     STATE_UPLOADING_OBJECTS,
     STATE_VALIDATING_GENERATED_ARTIFACTS,
 )
+from .show_config import (
+    ShowConfigSelectionError,
+    load_show_config,
+    resolve_manifest_bound_show_config_path,
+    resolve_show_config_path,
+    serialize_show_config_path,
+)
 from .store import QueueStore, utc_now_iso
 
 AUDIO_SUFFIXES = {".mp3", ".m4a", ".wav"}
@@ -39,12 +46,14 @@ MEDIA_ARTIFACT_TYPES = {"audio", "infographic"}
 class PublishOptions:
     repo_root: Path
     actor: str = "system"
+    show_config_path: Path | None = None
 
 
 @dataclass(frozen=True, slots=True)
 class UploadOptions:
     repo_root: Path
     actor: str = "system"
+    show_config_path: Path | None = None
 
 
 @dataclass(frozen=True, slots=True)
@@ -82,11 +91,18 @@ def prepare_publish_bundle(
             "status": "running",
         }
         try:
+            resolved_show_config_path = _resolve_prepare_show_config_path(
+                repo_root=options.repo_root,
+                adapter=adapter,
+                job=job,
+                requested_show_config_path=options.show_config_path,
+            )
             bundle = _build_publish_bundle(
                 repo_root=options.repo_root,
                 show_slug=show_slug,
                 lecture_key=str(job.get("lecture_key") or ""),
                 requested_types=tuple(str(item) for item in (job.get("content_types") or []) if str(item).strip()),
+                show_config_path=resolved_show_config_path,
             )
         except PublishValidationError as exc:
             return _finalize_failure(
@@ -101,6 +117,9 @@ def prepare_publish_bundle(
         manifest["status"] = "completed"
         manifest["completed_at"] = utc_now_iso()
         manifest["storage_provider"] = bundle["storage_provider"]
+        manifest["show_config"] = {
+            "path": serialize_show_config_path(repo_root=options.repo_root, path=resolved_show_config_path),
+        }
         manifest["bundle"] = bundle
         manifest_path = store.save_publish_manifest(
             show_slug=show_slug,
@@ -172,6 +191,18 @@ def upload_publish_bundle(
                 adapter=adapter,
                 job=job,
                 manifest=manifest,
+                requested_show_config_path=options.show_config_path,
+            )
+        except ShowConfigSelectionError as exc:
+            return _finalize_upload_failure(
+                store=store,
+                job=job,
+                manifest=manifest,
+                bundle_id=bundle_id,
+                actor=options.actor,
+                error_message=str(exc),
+                failure_state=STATE_BLOCKED_CONFIG_ERROR,
+                status="upload_blocked",
             )
         except PublishConfigError as exc:
             return _finalize_upload_failure(
@@ -348,9 +379,10 @@ def _build_publish_bundle(
     show_slug: str,
     lecture_key: str,
     requested_types: tuple[str, ...],
+    show_config_path: Path | None = None,
 ) -> dict[str, Any]:
     adapter = get_show_adapter(show_slug)
-    config = adapter.load_show_config(repo_root)
+    config = adapter.load_show_config(repo_root, show_config_path=show_config_path)
     storage_provider = _resolve_storage_provider(config)
     week_dirs = _find_week_dirs(adapter.output_root_path(repo_root), lecture_key)
     if not week_dirs:
@@ -537,12 +569,23 @@ def _upload_media_objects(
     adapter,
     job: dict[str, Any],
     manifest: dict[str, Any],
+    requested_show_config_path: Path | None = None,
 ) -> dict[str, Any]:
     bundle = manifest.get("bundle")
     if not isinstance(bundle, dict):
         raise PublishExecutionError(f"Publish manifest is missing bundle payload for job {job['job_id']}")
 
-    config = adapter.load_show_config(repo_root)
+    resolved_show_config_path = resolve_manifest_bound_show_config_path(
+        repo_root=repo_root,
+        default_path=adapter.show_config_path,
+        manifest=manifest,
+        override_path=requested_show_config_path,
+    )
+    config = load_show_config(
+        repo_root=repo_root,
+        default_path=adapter.show_config_path,
+        override_path=resolved_show_config_path,
+    )
     target = _resolve_r2_publish_target(config=config, repo_root=repo_root)
     client = _build_r2_client(target)
     artifacts = bundle.get("artifacts")
@@ -615,6 +658,37 @@ def _upload_media_objects(
         "uploaded_object_count": len(uploaded_items),
         "uploaded_items": uploaded_items,
     }
+
+
+def _resolve_prepare_show_config_path(
+    *,
+    repo_root: Path,
+    adapter,
+    job: dict[str, Any],
+    requested_show_config_path: Path | None,
+) -> Path:
+    metadata = job.get("metadata") if isinstance(job.get("metadata"), dict) else {}
+    metadata_show_config = str(metadata.get("show_config_path") or "").strip() or None
+    if requested_show_config_path is not None and metadata_show_config:
+        explicit_path = resolve_show_config_path(
+            repo_root=repo_root,
+            default_path=adapter.show_config_path,
+            override_path=requested_show_config_path,
+        )
+        metadata_path = resolve_show_config_path(
+            repo_root=repo_root,
+            default_path=adapter.show_config_path,
+            override_path=metadata_show_config,
+        )
+        if explicit_path != metadata_path:
+            raise PublishValidationError(
+                f"Explicit show config {explicit_path} does not match the queued job show config {metadata_path}."
+            )
+    return resolve_show_config_path(
+        repo_root=repo_root,
+        default_path=adapter.show_config_path,
+        override_path=requested_show_config_path or metadata_show_config,
+    )
 
 
 def _resolve_r2_publish_target(*, config: dict[str, object], repo_root: Path) -> R2PublishTarget:

@@ -229,6 +229,10 @@ Preprocessing maturity note:
 - `personlighedspsykologi` now also has a first `course_concept_graph.json`
   artifact that makes sideways relations explicit through term/theory nodes,
   graph edges, and seeded course distinctions.
+- The canonical local rebuild entrypoint for that full stack is now
+  `./.venv/bin/python scripts/build_personlighedspsykologi_source_intelligence.py`,
+  which runs source catalog -> lecture bundles -> semantic artifacts ->
+  weighting -> concept graph -> invariants in order.
 - The next intended preprocessing layers above that are deeper distinction /
   concept-graph structure, stronger stale-enforcement, and richer prompt-side
   use of the weighting layer, not more prompt-only tweaks.

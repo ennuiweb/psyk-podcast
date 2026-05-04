@@ -108,12 +108,20 @@ Kataloget er lokalt bygget fra de raa source files og er derfor mere end en
 manifest-view. Det er den nye base for weighting, invalidation og
 lecture-bundle bygning.
 
-Build-kommando:
+Kanonisk rebuild-kommando:
+
+```bash
+./.venv/bin/python scripts/build_personlighedspsykologi_source_intelligence.py
+```
+
+Manuelle del-kommandoer, hvis et bestemt lag skal rebuildes isoleret:
 
 ```bash
 ./.venv/bin/python scripts/build_personlighedspsykologi_source_catalog.py
 ./.venv/bin/python scripts/build_personlighedspsykologi_lecture_bundles.py
 ./.venv/bin/python scripts/build_personlighedspsykologi_semantic_artifacts.py
+./.venv/bin/python scripts/build_personlighedspsykologi_source_weighting.py
+./.venv/bin/python scripts/build_personlighedspsykologi_concept_graph.py
 ```
 
 ## Lecture bundles

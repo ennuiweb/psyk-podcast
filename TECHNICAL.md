@@ -53,6 +53,12 @@ This is a deliberate design principle, not accidental complexity. The engine
 should approximate whole-course reasoning through explicit intermediate
 artifacts, not by collapsing everything into opaque prompt text.
 
+Operational note:
+
+- For `personlighedspsykologi`, the canonical local rebuild entrypoint for the
+  full `Source Intelligence Layer` is
+  `./.venv/bin/python scripts/build_personlighedspsykologi_source_intelligence.py`.
+
 ## Current operational truths
 
 - Feed output lives at `shows/<show-slug>/feeds/rss.xml`.

@@ -494,6 +494,8 @@ Current baseline delivered:
 2. lecture-bundle layer
 3. course glossary / theory map
 4. a first stale/invalidation index for derived artifacts
+5. a canonical one-command local rebuild path for the full
+   `Source Intelligence Layer`
 
 Remaining gap before this phase is truly complete:
 

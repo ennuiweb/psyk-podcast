@@ -259,6 +259,123 @@ def _normalize_match_key(value: str) -> str:
     return cleaned
 
 
+def _load_optional_json(path: Path) -> dict[str, Any] | None:
+    if not path.exists() or not path.is_file():
+        return None
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError):
+        return None
+    return payload if isinstance(payload, dict) else None
+
+
+def _semantic_artifact_paths(bundle: CoursePromptContextBundle) -> dict[str, Path]:
+    show_dir = bundle.content_manifest_path.parent
+    return {
+        "course_glossary": show_dir / "course_glossary.json",
+        "course_theory_map": show_dir / "course_theory_map.json",
+        "source_weighting": show_dir / "source_weighting.json",
+        "course_concept_graph": show_dir / "course_concept_graph.json",
+    }
+
+
+def _lecture_semantic_context_lines(
+    *,
+    bundle: CoursePromptContextBundle,
+    lecture_key: str,
+    max_items: int,
+) -> list[str]:
+    paths = _semantic_artifact_paths(bundle)
+    glossary_payload = _load_optional_json(paths["course_glossary"])
+    theory_map_payload = _load_optional_json(paths["course_theory_map"])
+    weighting_payload = _load_optional_json(paths["source_weighting"])
+    concept_graph_payload = _load_optional_json(paths["course_concept_graph"])
+
+    lines: list[str] = []
+    if isinstance(weighting_payload, dict):
+        weighting_lectures = weighting_payload.get("lectures")
+        if isinstance(weighting_lectures, list):
+            for lecture in weighting_lectures:
+                if not isinstance(lecture, dict):
+                    continue
+                if canonicalize_lecture_key(str(lecture.get("lecture_key") or "")) != lecture_key:
+                    continue
+                ranked = lecture.get("ranked_sources")
+                if not isinstance(ranked, list):
+                    break
+                ranked_lines = []
+                for item in ranked[:max_items]:
+                    if not isinstance(item, dict):
+                        continue
+                    title = str(item.get("title") or item.get("source_id") or "").strip()
+                    band = str(item.get("weight_band") or "").strip()
+                    if title:
+                        ranked_lines.append(f"{title} [{band}]")
+                if ranked_lines:
+                    lines.append("- Ranked source emphasis: " + "; ".join(ranked_lines) + ".")
+                break
+
+    if isinstance(glossary_payload, dict):
+        terms = glossary_payload.get("terms")
+        if isinstance(terms, list):
+            lecture_terms = [
+                term
+                for term in terms
+                if isinstance(term, dict)
+                and lecture_key in [canonicalize_lecture_key(item) for item in term.get("lecture_keys", [])]
+            ]
+            lecture_terms.sort(key=lambda item: -int(item.get("salience_score") or 0))
+            if lecture_terms:
+                selected = lecture_terms[:max_items]
+                lines.append(
+                    "- Course concepts in play: "
+                    + "; ".join(
+                        f"{str(term.get('label') or '').strip()} ({str(term.get('category') or '').strip()})"
+                        for term in selected
+                        if str(term.get("label") or "").strip()
+                    )
+                    + "."
+                )
+
+    if isinstance(theory_map_payload, dict):
+        theories = theory_map_payload.get("theories")
+        if isinstance(theories, list):
+            lecture_theories = [
+                theory
+                for theory in theories
+                if isinstance(theory, dict)
+                and lecture_key in [canonicalize_lecture_key(item) for item in theory.get("lecture_keys", [])]
+            ]
+            lecture_theories.sort(key=lambda item: -int(item.get("salience_score") or 0))
+            if lecture_theories:
+                selected = lecture_theories[:max_items]
+                lines.append(
+                    "- Theory frame: "
+                    + "; ".join(str(theory.get("label") or "").strip() for theory in selected if str(theory.get("label") or "").strip())
+                    + "."
+                )
+
+    if isinstance(concept_graph_payload, dict):
+        distinctions = concept_graph_payload.get("distinctions")
+        if isinstance(distinctions, list):
+            lecture_distinctions = [
+                distinction
+                for distinction in distinctions
+                if isinstance(distinction, dict)
+                and lecture_key in [canonicalize_lecture_key(item) for item in distinction.get("lecture_keys", [])]
+            ]
+            lecture_distinctions.sort(key=lambda item: -int(item.get("importance") or 0))
+            if lecture_distinctions:
+                selected = lecture_distinctions[: max(1, min(2, max_items))]
+                lines.append(
+                    "- Cross-lecture tensions to keep explicit: "
+                    + "; ".join(str(distinction.get("label") or "").strip() for distinction in selected if str(distinction.get("label") or "").strip())
+                    + "."
+                )
+
+    return lines
+
+
 def _summary_lines(entry: dict[str, Any] | None) -> list[str]:
     if not isinstance(entry, dict):
         return []
@@ -554,6 +671,14 @@ def build_course_prompt_context_note(
             break
     if reading_lines:
         sections.append("## Reading map\n" + "\n".join(reading_lines))
+
+    semantic_lines = _lecture_semantic_context_lines(
+        bundle=bundle,
+        lecture_key=canonical_key,
+        max_items=3 if prompt_type != "short" else 2,
+    )
+    if semantic_lines:
+        sections.append("## Semantic guidance\n" + "\n".join(semantic_lines))
 
     target_lines: list[str] = []
     if source_item is not None:

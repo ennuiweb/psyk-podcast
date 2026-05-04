@@ -1,0 +1,656 @@
+{
+  "version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "terms": [
+    {
+      "term_id": "personality_assessment",
+      "label": "personality assessment",
+      "category": "method",
+      "importance": 3,
+      "aliases": ["personality assessment", "assessment", "measurement", "måling"],
+      "lecture_keys": ["W01L2"],
+      "definition": "The course treats personality assessment as the problem of how personality is operationalised, measured, and interpreted across methods and contexts.",
+      "course_role": "Frames the early methodological discussion about what counts as evidence for personality.",
+      "linked_terms": ["personality_traits", "personality_dimensions", "person_situation_interplay"],
+      "linked_theories": ["trait_and_assessment_psychology"]
+    },
+    {
+      "term_id": "personality_traits",
+      "label": "personality traits",
+      "category": "construct",
+      "importance": 3,
+      "aliases": ["personality traits", "traits", "individual differences"],
+      "lecture_keys": ["W02L1", "W02L2", "W11L2"],
+      "definition": "Traits are treated as relatively stable patterns of individual difference that can organise comparison across persons without exhausting the person.",
+      "course_role": "Serves as a central reference point that later traditions refine, criticise, or contrast.",
+      "linked_terms": ["personality_states", "personality_dimensions", "stability_and_change", "narrativity"],
+      "linked_theories": ["trait_and_assessment_psychology", "dynamic_personality_development", "narrative_psychology"]
+    },
+    {
+      "term_id": "personality_states",
+      "label": "personality states",
+      "category": "construct",
+      "importance": 2,
+      "aliases": ["personality states", "states"],
+      "lecture_keys": ["W02L1"],
+      "definition": "States mark the situational and time-sensitive side of personality that complicates purely trait-based explanations.",
+      "course_role": "Keeps the early-course trait discussion connected to variability, context, and process.",
+      "linked_terms": ["personality_traits", "person_situation_interplay", "stability_and_change"],
+      "linked_theories": ["trait_and_assessment_psychology", "dynamic_personality_development"]
+    },
+    {
+      "term_id": "personality_dimensions",
+      "label": "personality dimensions",
+      "category": "construct",
+      "importance": 2,
+      "aliases": ["personality dimensions", "dimensions", "dimensional"],
+      "lecture_keys": ["W02L1", "W03L2"],
+      "definition": "Dimensions express personality as patterned continua rather than isolated categories, while still raising questions about interpretation at person level.",
+      "course_role": "Connects psychometric modelling to later debates about functioning, structure, and categorisation.",
+      "linked_terms": ["personality_assessment", "personality_traits", "personality_functioning"],
+      "linked_theories": ["trait_and_assessment_psychology", "personality_functioning_and_pathology"]
+    },
+    {
+      "term_id": "person_situation_interplay",
+      "label": "person-situation interplay",
+      "category": "process",
+      "importance": 3,
+      "aliases": ["person-situation interplay", "person situation", "situation", "context"],
+      "lecture_keys": ["W02L2", "W09L1"],
+      "definition": "The course uses person-situation interplay to show that personality must be understood in the movement between patterned dispositions and concrete contexts.",
+      "course_role": "Acts as a bridge from early differential models toward more relational and practice-based approaches.",
+      "linked_terms": ["personality_states", "stability_and_change", "critical_psychology"],
+      "linked_theories": ["dynamic_personality_development", "critical_psychology"]
+    },
+    {
+      "term_id": "stability_and_change",
+      "label": "stability and change",
+      "category": "problem",
+      "importance": 3,
+      "aliases": ["stability and change", "stability", "change", "continuity", "forandring"],
+      "lecture_keys": ["W01L1", "W02L2", "W11L2", "W12L1"],
+      "definition": "Stability and change are treated as joint problems: personality must explain durable patterning without denying development, revision, and historical variation.",
+      "course_role": "Functions as one of the core comparison questions across the whole semester.",
+      "linked_terms": ["personality_traits", "personality_states", "narrativity", "subjectivation"],
+      "linked_theories": ["dynamic_personality_development", "narrative_psychology", "comparative_theory_analysis"]
+    },
+    {
+      "term_id": "culture_and_personality",
+      "label": "culture and personality",
+      "category": "theme",
+      "importance": 2,
+      "aliases": ["culture", "culture and personality", "cultural", "kultur"],
+      "lecture_keys": ["W03L1", "W11L2"],
+      "definition": "Culture enters the course as a constitutive context for personality development, norms, and the interpretation of selfhood.",
+      "course_role": "Links trait-oriented work to broader historical, relational, and narrative understandings of persons.",
+      "linked_terms": ["evolutionary_perspective", "genetic_perspective", "meaning_making"],
+      "linked_theories": ["biosocial_personality_perspectives", "narrative_psychology"]
+    },
+    {
+      "term_id": "evolutionary_perspective",
+      "label": "evolutionary perspective",
+      "category": "approach",
+      "importance": 2,
+      "aliases": ["evolution", "evolutionary", "evolutionary perspective"],
+      "lecture_keys": ["W03L1"],
+      "definition": "The evolutionary perspective frames some personality variation as adaptive patterning shaped by long-run selection pressures.",
+      "course_role": "Supplies one of the course's strongest non-hermeneutic explanatory models.",
+      "linked_terms": ["culture_and_personality", "genetic_perspective"],
+      "linked_theories": ["biosocial_personality_perspectives"]
+    },
+    {
+      "term_id": "genetic_perspective",
+      "label": "genetic perspective",
+      "category": "approach",
+      "importance": 2,
+      "aliases": ["genetics", "genetic", "heritability"],
+      "lecture_keys": ["W03L1"],
+      "definition": "Genetic perspectives in the course treat part of personality variation as biologically constrained while still raising interpretation problems around mechanism and context.",
+      "course_role": "Keeps the biosocial block tied to questions of evidence, causality, and limitation.",
+      "linked_terms": ["culture_and_personality", "evolutionary_perspective"],
+      "linked_theories": ["biosocial_personality_perspectives"]
+    },
+    {
+      "term_id": "personality_functioning",
+      "label": "personality functioning",
+      "category": "construct",
+      "importance": 3,
+      "aliases": ["personality functioning", "functioning", "forstyrrelse", "personlighedsfunktion"],
+      "lecture_keys": ["W03L2"],
+      "definition": "Personality functioning is used to shift attention from simple diagnostic labels toward the organisation, coherence, and impairment of personality processes.",
+      "course_role": "Introduces the pathology block and broadens dimensional thinking toward clinical structure.",
+      "linked_terms": ["personality_dimensions", "personality_structure", "psychoanalysis"],
+      "linked_theories": ["personality_functioning_and_pathology", "psychoanalytic_personality_theory"]
+    },
+    {
+      "term_id": "psychoanalysis",
+      "label": "psychoanalysis",
+      "category": "tradition",
+      "importance": 3,
+      "aliases": ["psychoanalysis", "psykoanalyse", "psykoanalysen", "psykoanalytisk"],
+      "lecture_keys": ["W04L1", "W04L2", "W05L1", "W05L2"],
+      "definition": "Psychoanalysis is presented as a personality tradition centred on conflict, development, unconscious meaning, and layered organisation of the person.",
+      "course_role": "Marks the first major theoretical bloc that departs sharply from trait and assessment models.",
+      "linked_terms": ["personality_structure", "meaning_making", "subjectivation"],
+      "linked_theories": ["psychoanalytic_personality_theory"]
+    },
+    {
+      "term_id": "personality_structure",
+      "label": "personality structure",
+      "category": "construct",
+      "importance": 3,
+      "aliases": ["personality structure", "struktur", "structure"],
+      "lecture_keys": ["W04L2", "W03L2"],
+      "definition": "Structure names the organisation of psychic life that shapes how conflict, relation, and regulation are sustained over time.",
+      "course_role": "Connects psychoanalytic organisation to broader questions of functioning and pathology.",
+      "linked_terms": ["personality_functioning", "psychoanalysis"],
+      "linked_theories": ["personality_functioning_and_pathology", "psychoanalytic_personality_theory"]
+    },
+    {
+      "term_id": "phenomenology",
+      "label": "phenomenology",
+      "category": "tradition",
+      "importance": 3,
+      "aliases": ["phenomenology", "fænomenologi", "phenomenological"],
+      "lecture_keys": ["W06L1"],
+      "definition": "Phenomenology reorients personality toward lived experience, embodiment, and the person's concrete relation to world and meaning.",
+      "course_role": "Begins the semester's move toward first-person, experiential, and interpretive approaches.",
+      "linked_terms": ["first_person_perspective", "existential_personality_psychology", "meaning_making"],
+      "linked_theories": ["phenomenological_psychology", "existential_psychology"]
+    },
+    {
+      "term_id": "first_person_perspective",
+      "label": "first-person perspective",
+      "category": "method",
+      "importance": 2,
+      "aliases": ["first-person perspective", "førstepersonsperspektivet", "lived experience", "levet erfaring"],
+      "lecture_keys": ["W06L1", "W07L2"],
+      "definition": "The first-person perspective is treated as a legitimate source of psychological knowledge rather than a residual supplement to external measurement.",
+      "course_role": "Supplies a methodological pivot away from objectifying models of the person.",
+      "linked_terms": ["phenomenology", "humanistic_psychology", "meaning_making"],
+      "linked_theories": ["phenomenological_psychology", "humanistic_psychology"]
+    },
+    {
+      "term_id": "existential_personality_psychology",
+      "label": "existential personality psychology",
+      "category": "tradition",
+      "importance": 3,
+      "aliases": ["existential", "eksistentiel", "existential personality psychology"],
+      "lecture_keys": ["W06L2", "W07L1"],
+      "definition": "Existential personality psychology frames personality through freedom, finitude, relation, anxiety, and the person's stance toward existence.",
+      "course_role": "Deepens the experiential turn by foregrounding existential conditions rather than trait profiles.",
+      "linked_terms": ["phenomenology", "humanistic_psychology", "meaning_making"],
+      "linked_theories": ["existential_psychology", "phenomenological_psychology", "humanistic_psychology"]
+    },
+    {
+      "term_id": "humanistic_psychology",
+      "label": "humanistic psychology",
+      "category": "tradition",
+      "importance": 3,
+      "aliases": ["humanistic psychology", "humanistisk psykologi", "humanistic"],
+      "lecture_keys": ["W07L2"],
+      "definition": "Humanistic psychology treats persons as oriented toward growth, authenticity, relation, and context-sensitive development rather than deficit alone.",
+      "course_role": "Provides a positive, experience-near alternative to reductionist or control-oriented models.",
+      "linked_terms": ["first_person_perspective", "existential_personality_psychology", "meaning_making"],
+      "linked_theories": ["humanistic_psychology", "existential_psychology"]
+    },
+    {
+      "term_id": "critical_personalism",
+      "label": "critical personalism",
+      "category": "tradition",
+      "importance": 3,
+      "aliases": ["critical personalism", "personalism"],
+      "lecture_keys": ["W08L1"],
+      "definition": "Critical personalism resists reducing persons to abstract variable profiles and insists on person-level interpretation, action, and conceptual caution.",
+      "course_role": "Acts as a direct internal critique of reified trait language without abandoning systematic psychology.",
+      "linked_terms": ["personality_traits", "critical_psychology", "person_situation_interplay"],
+      "linked_theories": ["critical_personalism", "trait_and_assessment_psychology", "critical_psychology"]
+    },
+    {
+      "term_id": "critical_psychology",
+      "label": "critical psychology",
+      "category": "tradition",
+      "importance": 3,
+      "aliases": ["critical psychology", "kritisk psykologi", "critical"],
+      "lecture_keys": ["W08L2", "W09L1"],
+      "definition": "Critical psychology situates subjectivity, action, and difficulty within historical practices and structural conditions rather than inside isolated individuals.",
+      "course_role": "Expands the critique of individualisation into a broader sociohistorical theory of subjectivity and participation.",
+      "linked_terms": ["critical_personalism", "subjectivation", "meaning_making"],
+      "linked_theories": ["critical_psychology", "sociocultural_poststructural_approaches"]
+    },
+    {
+      "term_id": "gender",
+      "label": "køn",
+      "category": "theme",
+      "importance": 2,
+      "aliases": ["køn", "gender", "femininitet", "maskulinitet"],
+      "lecture_keys": ["W10L1", "W11L1"],
+      "definition": "Gender is approached as a psychosocial and historical process rather than a fixed person-variable, linking identity, norm, and institution.",
+      "course_role": "Brings embodiment, normativity, and social organisation into the course's personality debates.",
+      "linked_terms": ["feminist_theory", "subjectivation", "social_constructionism"],
+      "linked_theories": ["sociocultural_poststructural_approaches"]
+    },
+    {
+      "term_id": "social_constructionism",
+      "label": "social constructionism",
+      "category": "tradition",
+      "importance": 3,
+      "aliases": ["social constructionism", "socialkonstruktionisme", "constructionism"],
+      "lecture_keys": ["W10L2", "W11L1"],
+      "definition": "Social constructionism shifts the analysis of personality toward shared practices, language, and historically situated forms of reality-making.",
+      "course_role": "Marks the move from person-centred explanation toward socially constituted subjectivity.",
+      "linked_terms": ["poststructuralism", "discursive_psychology", "feminist_theory"],
+      "linked_theories": ["sociocultural_poststructural_approaches"]
+    },
+    {
+      "term_id": "poststructuralism",
+      "label": "poststructuralism",
+      "category": "tradition",
+      "importance": 3,
+      "aliases": ["poststructuralism", "poststrukturalisme", "foucault"],
+      "lecture_keys": ["W10L2", "W11L1"],
+      "definition": "Poststructuralism treats subjects as historically produced through discourse, power, ethics, and positioning rather than as pre-given inner essences.",
+      "course_role": "Provides the course's strongest language-and-power account of subject formation.",
+      "linked_terms": ["social_constructionism", "discursive_psychology", "subjectivation"],
+      "linked_theories": ["sociocultural_poststructural_approaches"]
+    },
+    {
+      "term_id": "discursive_psychology",
+      "label": "discursive psychology",
+      "category": "approach",
+      "importance": 2,
+      "aliases": ["discursive psychology", "diskursiv psykologi", "discursive"],
+      "lecture_keys": ["W11L1"],
+      "definition": "Discursive psychology treats psychological realities as enacted in language, interaction, and shared discursive practice.",
+      "course_role": "Operationalises the sociocultural turn at the level of method and analysis.",
+      "linked_terms": ["social_constructionism", "poststructuralism", "feminist_theory"],
+      "linked_theories": ["sociocultural_poststructural_approaches"]
+    },
+    {
+      "term_id": "feminist_theory",
+      "label": "feminist theory",
+      "category": "tradition",
+      "importance": 2,
+      "aliases": ["feminist theory", "feministisk teori", "feminist"],
+      "lecture_keys": ["W10L1", "W11L1"],
+      "definition": "Feminist theory brings gendered power, embodiment, and historically unequal positioning into the interpretation of personality and subjectivity.",
+      "course_role": "Extends the course's social critique by showing how personhood is organised through gendered relations.",
+      "linked_terms": ["gender", "social_constructionism", "subjectivation"],
+      "linked_theories": ["sociocultural_poststructural_approaches"]
+    },
+    {
+      "term_id": "narrativity",
+      "label": "narrativity",
+      "category": "tradition",
+      "importance": 3,
+      "aliases": ["narrativity", "narrative", "narrativitet", "livsfortællinger"],
+      "lecture_keys": ["W11L2", "W12L1"],
+      "definition": "Narrativity treats personality and identity as organised through stories, temporal ordering, and culturally shared meaning structures.",
+      "course_role": "Offers a late-course alternative to trait and mechanism models by making interpretation and life history central.",
+      "linked_terms": ["meaning_making", "stability_and_change", "subjectivation"],
+      "linked_theories": ["narrative_psychology", "comparative_theory_analysis"]
+    },
+    {
+      "term_id": "subjectivation",
+      "label": "subjectivation",
+      "category": "process",
+      "importance": 2,
+      "aliases": ["subjectivation", "subjektivering", "subject formation", "positionering"],
+      "lecture_keys": ["W10L2", "W11L1"],
+      "definition": "Subjectivation names the process by which persons become particular kinds of subjects through discourse, power, relation, and practice.",
+      "course_role": "Connects poststructural, feminist, and critical approaches around a shared process view of subject formation.",
+      "linked_terms": ["poststructuralism", "critical_psychology", "gender"],
+      "linked_theories": ["sociocultural_poststructural_approaches", "critical_psychology"]
+    },
+    {
+      "term_id": "meaning_making",
+      "label": "meaning-making",
+      "category": "process",
+      "importance": 2,
+      "aliases": ["meaning", "mening", "meaning-making", "meaning making"],
+      "lecture_keys": ["W06L1", "W07L2", "W11L2"],
+      "definition": "Meaning-making is treated as a practical, relational, and interpretive process through which personality becomes coherent across experience and time.",
+      "course_role": "Links phenomenological, humanistic, and narrative traditions around lived interpretation.",
+      "linked_terms": ["first_person_perspective", "narrativity", "existential_personality_psychology"],
+      "linked_theories": ["phenomenological_psychology", "humanistic_psychology", "narrative_psychology"]
+    }
+  ],
+  "theories": [
+    {
+      "theory_id": "trait_and_assessment_psychology",
+      "label": "trait and assessment psychology",
+      "importance": 3,
+      "aliases": ["trait psychology", "assessment psychology", "personality assessment"],
+      "lecture_keys": ["W01L2", "W02L1"],
+      "summary": "This cluster treats personality as patterned individual differences that can be assessed, compared, and modelled across persons.",
+      "course_role": "Provides the early-course baseline that many later traditions criticise, qualify, or reinterpret.",
+      "core_term_ids": ["personality_assessment", "personality_traits", "personality_states", "personality_dimensions"],
+      "related_theories": [
+        {
+          "theory_id": "dynamic_personality_development",
+          "relation_type": "extended_by",
+          "rationale": "State and situation perspectives complicate purely static trait thinking."
+        },
+        {
+          "theory_id": "critical_personalism",
+          "relation_type": "criticised_by",
+          "rationale": "Critical personalism resists reducing the person to scale profiles."
+        },
+        {
+          "theory_id": "narrative_psychology",
+          "relation_type": "contrasted_with",
+          "rationale": "Narrative approaches replace variable profiles with temporal self-interpretation."
+        }
+      ]
+    },
+    {
+      "theory_id": "dynamic_personality_development",
+      "label": "dynamic personality development",
+      "importance": 2,
+      "aliases": ["person-situation interplay", "stability and change"],
+      "lecture_keys": ["W02L2"],
+      "summary": "This cluster examines how personality patterns persist and shift through repeated interaction between persons, situations, and time.",
+      "course_role": "Keeps the differential block open to context, development, and process.",
+      "core_term_ids": ["person_situation_interplay", "stability_and_change", "personality_states"],
+      "related_theories": [
+        {
+          "theory_id": "trait_and_assessment_psychology",
+          "relation_type": "revises",
+          "rationale": "Dynamic perspectives keep trait concepts but make them more process-sensitive."
+        },
+        {
+          "theory_id": "critical_psychology",
+          "relation_type": "partially_converges_with",
+          "rationale": "Both stress context, though they frame it at different levels."
+        }
+      ]
+    },
+    {
+      "theory_id": "biosocial_personality_perspectives",
+      "label": "biosocial personality perspectives",
+      "importance": 2,
+      "aliases": ["culture and personality", "evolutionary", "genetic"],
+      "lecture_keys": ["W03L1"],
+      "summary": "This cluster explains personality through culture, evolution, and genetics while preserving questions about interpretation, environment, and scope.",
+      "course_role": "Supplies a strongly explanatory block before the course turns toward more interpretive and critical traditions.",
+      "core_term_ids": ["culture_and_personality", "evolutionary_perspective", "genetic_perspective"],
+      "related_theories": [
+        {
+          "theory_id": "trait_and_assessment_psychology",
+          "relation_type": "complements",
+          "rationale": "Biosocial approaches add explanatory depth to individual-difference description."
+        },
+        {
+          "theory_id": "sociocultural_poststructural_approaches",
+          "relation_type": "contrasted_with",
+          "rationale": "Later sociocultural approaches relocate explanation from biology to practice, discourse, and power."
+        }
+      ]
+    },
+    {
+      "theory_id": "personality_functioning_and_pathology",
+      "label": "personality functioning and pathology",
+      "importance": 2,
+      "aliases": ["personality functioning", "pathology"],
+      "lecture_keys": ["W03L2"],
+      "summary": "This cluster frames pathology in terms of organisation, coherence, and impairment rather than only discrete categories.",
+      "course_role": "Bridges dimensional and clinical language before the psychoanalytic block.",
+      "core_term_ids": ["personality_functioning", "personality_dimensions", "personality_structure"],
+      "related_theories": [
+        {
+          "theory_id": "psychoanalytic_personality_theory",
+          "relation_type": "feeds_into",
+          "rationale": "Questions of structure and organisation carry directly into the psychoanalytic sequence."
+        }
+      ]
+    },
+    {
+      "theory_id": "psychoanalytic_personality_theory",
+      "label": "psychoanalytic personality theory",
+      "importance": 3,
+      "aliases": ["psychoanalysis", "psychoanalytic"],
+      "lecture_keys": ["W04L1", "W04L2", "W05L1", "W05L2"],
+      "summary": "This cluster explains personality through conflict, development, unconscious meaning, and layered psychic organisation.",
+      "course_role": "Forms the course's first large interpretive theory bloc and a major alternative to trait and biosocial models.",
+      "core_term_ids": ["psychoanalysis", "personality_structure", "personality_functioning"],
+      "related_theories": [
+        {
+          "theory_id": "phenomenological_psychology",
+          "relation_type": "contrasted_with",
+          "rationale": "Phenomenology shifts attention from hidden psychic depth to lived experience."
+        },
+        {
+          "theory_id": "humanistic_psychology",
+          "relation_type": "criticised_by",
+          "rationale": "Humanistic psychology resists deficit-heavy and control-oriented images of the person."
+        }
+      ]
+    },
+    {
+      "theory_id": "phenomenological_psychology",
+      "label": "phenomenological psychology",
+      "importance": 2,
+      "aliases": ["phenomenology", "phenomenological"],
+      "lecture_keys": ["W06L1"],
+      "summary": "This cluster treats personality through lived experience, embodiment, and the person's situated relation to world and meaning.",
+      "course_role": "Starts the course's turn toward first-person and experience-near approaches.",
+      "core_term_ids": ["phenomenology", "first_person_perspective", "meaning_making"],
+      "related_theories": [
+        {
+          "theory_id": "existential_psychology",
+          "relation_type": "developed_into",
+          "rationale": "Existential psychology radicalises the experiential turn around freedom and finitude."
+        },
+        {
+          "theory_id": "humanistic_psychology",
+          "relation_type": "overlaps_with",
+          "rationale": "Both privilege experience, meaning, and personhood over reductionism."
+        }
+      ]
+    },
+    {
+      "theory_id": "existential_psychology",
+      "label": "existential psychology",
+      "importance": 2,
+      "aliases": ["existential", "eksistentiel"],
+      "lecture_keys": ["W06L2", "W07L1"],
+      "summary": "This cluster frames personality through freedom, relation, anxiety, finitude, and the person's stance toward existence.",
+      "course_role": "Deepens the post-phenomenological block by foregrounding existential conditions of personhood.",
+      "core_term_ids": ["existential_personality_psychology", "meaning_making", "first_person_perspective"],
+      "related_theories": [
+        {
+          "theory_id": "phenomenological_psychology",
+          "relation_type": "extends",
+          "rationale": "Existential psychology builds on phenomenology's experiential method."
+        },
+        {
+          "theory_id": "humanistic_psychology",
+          "relation_type": "adjacent_to",
+          "rationale": "Both emphasise personhood, but existential psychology centres conflict, finitude, and freedom more strongly."
+        }
+      ]
+    },
+    {
+      "theory_id": "humanistic_psychology",
+      "label": "humanistic psychology",
+      "importance": 2,
+      "aliases": ["humanistic psychology", "humanistisk psykologi"],
+      "lecture_keys": ["W07L2"],
+      "summary": "This cluster treats persons as oriented toward growth, authenticity, relation, and context-sensitive unfolding rather than deficit alone.",
+      "course_role": "Provides the course's clearest growth-oriented alternative to reductive person models.",
+      "core_term_ids": ["humanistic_psychology", "first_person_perspective", "meaning_making"],
+      "related_theories": [
+        {
+          "theory_id": "psychoanalytic_personality_theory",
+          "relation_type": "contrasted_with",
+          "rationale": "Humanistic psychology rejects more deficit-focused and control-oriented framings of the person."
+        }
+      ]
+    },
+    {
+      "theory_id": "critical_personalism",
+      "label": "critical personalism",
+      "importance": 2,
+      "aliases": ["critical personalism"],
+      "lecture_keys": ["W08L1"],
+      "summary": "This cluster insists on person-level interpretation and conceptual caution against reified variable-based accounts of personality.",
+      "course_role": "Acts as an internal critique of mainstream individual-difference psychology.",
+      "core_term_ids": ["critical_personalism", "personality_traits", "person_situation_interplay"],
+      "related_theories": [
+        {
+          "theory_id": "trait_and_assessment_psychology",
+          "relation_type": "criticises",
+          "rationale": "Critical personalism argues that measurement cannot substitute for understanding the person."
+        },
+        {
+          "theory_id": "critical_psychology",
+          "relation_type": "partially_aligns_with",
+          "rationale": "Both oppose reductionism, though critical psychology is more sociohistorical."
+        }
+      ]
+    },
+    {
+      "theory_id": "critical_psychology",
+      "label": "critical psychology",
+      "importance": 3,
+      "aliases": ["critical psychology", "kritisk psykologi"],
+      "lecture_keys": ["W08L2", "W09L1"],
+      "summary": "This cluster explains subjectivity, action, and difficulty through social practice, historical conditions, and collective possibilities for change.",
+      "course_role": "Forms the course's most explicit critique of individualising psychology.",
+      "core_term_ids": ["critical_psychology", "subjectivation", "person_situation_interplay"],
+      "related_theories": [
+        {
+          "theory_id": "critical_personalism",
+          "relation_type": "extends_beyond",
+          "rationale": "Critical psychology moves from person-level caution to a broader critique of social conditions."
+        },
+        {
+          "theory_id": "sociocultural_poststructural_approaches",
+          "relation_type": "partially_converges_with",
+          "rationale": "Both theorise subjectivity socially, but via different vocabularies of practice, discourse, and power."
+        }
+      ]
+    },
+    {
+      "theory_id": "sociocultural_poststructural_approaches",
+      "label": "sociocultural and poststructural approaches",
+      "importance": 3,
+      "aliases": ["social constructionism", "poststructuralism", "discursive psychology", "feminist theory"],
+      "lecture_keys": ["W10L1", "W10L2", "W11L1"],
+      "summary": "This cluster treats personality and subjectivity as historically and relationally produced through discourse, power, norm, and social practice.",
+      "course_role": "Carries the strongest late-course challenge to inner-essence models of personality.",
+      "core_term_ids": ["gender", "social_constructionism", "poststructuralism", "discursive_psychology", "feminist_theory", "subjectivation"],
+      "related_theories": [
+        {
+          "theory_id": "critical_psychology",
+          "relation_type": "overlaps_with",
+          "rationale": "Both explain subjectivity socially, though they emphasise different mechanisms."
+        },
+        {
+          "theory_id": "narrative_psychology",
+          "relation_type": "prepares_for",
+          "rationale": "The discursive and cultural turn opens into narrative accounts of identity and meaning."
+        }
+      ]
+    },
+    {
+      "theory_id": "narrative_psychology",
+      "label": "narrative psychology",
+      "importance": 2,
+      "aliases": ["narrative psychology", "narrativity"],
+      "lecture_keys": ["W11L2"],
+      "summary": "This cluster explains personality through story, temporality, cultural meaning, and the ongoing revision of identity.",
+      "course_role": "Provides the clearest late-course alternative to trait and mechanism-oriented models.",
+      "core_term_ids": ["narrativity", "meaning_making", "stability_and_change"],
+      "related_theories": [
+        {
+          "theory_id": "trait_and_assessment_psychology",
+          "relation_type": "contrasts_with",
+          "rationale": "Narrative psychology foregrounds story and interpretation rather than dimensional scoring."
+        },
+        {
+          "theory_id": "sociocultural_poststructural_approaches",
+          "relation_type": "builds_on",
+          "rationale": "Narrative work inherits the course's cultural and discursive sensitivity to identity formation."
+        }
+      ]
+    },
+    {
+      "theory_id": "comparative_theory_analysis",
+      "label": "comparative theory analysis",
+      "importance": 2,
+      "aliases": ["theory comparison", "sammenligning af teorier"],
+      "lecture_keys": ["W12L1"],
+      "summary": "This cluster uses historical and comparative reflection to judge what each theory can and cannot explain about persons, selves, and subjectivity.",
+      "course_role": "Makes theory choice itself into an explicit object of learning at the end of the course.",
+      "core_term_ids": ["stability_and_change", "narrativity", "subjectivation"],
+      "related_theories": [
+        {
+          "theory_id": "trait_and_assessment_psychology",
+          "relation_type": "compares",
+          "rationale": "The final lecture evaluates the scope and limitations of the early differential frameworks."
+        },
+        {
+          "theory_id": "psychoanalytic_personality_theory",
+          "relation_type": "compares",
+          "rationale": "The final lecture treats psychoanalysis as one major explanatory option among several."
+        },
+        {
+          "theory_id": "sociocultural_poststructural_approaches",
+          "relation_type": "compares",
+          "rationale": "Late-course sociocultural traditions become part of the final contrastive synthesis."
+        }
+      ]
+    }
+  ],
+  "distinctions": [
+    {
+      "distinction_id": "trait_vs_state",
+      "label": "trait vs state",
+      "importance": 3,
+      "lecture_keys": ["W02L1", "W02L2", "W11L2"],
+      "term_ids": ["personality_traits", "personality_states", "stability_and_change"],
+      "summary": "The course repeatedly contrasts relatively stable trait language with more situated and time-sensitive state language."
+    },
+    {
+      "distinction_id": "person_vs_variable_profile",
+      "label": "person vs variable profile",
+      "importance": 3,
+      "lecture_keys": ["W01L2", "W08L1", "W09L1"],
+      "term_ids": ["personality_assessment", "critical_personalism", "critical_psychology"],
+      "summary": "A recurring tension in the course is whether personality is best understood as a measurable profile or as a concrete person embedded in action and history."
+    },
+    {
+      "distinction_id": "inner_depth_vs_lived_experience",
+      "label": "inner depth vs lived experience",
+      "importance": 2,
+      "lecture_keys": ["W04L1", "W06L1", "W06L2"],
+      "term_ids": ["psychoanalysis", "phenomenology", "existential_personality_psychology"],
+      "summary": "The course contrasts depth-oriented models of hidden psychic structure with approaches that prioritise lived experience and explicit existence."
+    },
+    {
+      "distinction_id": "growth_vs_deficit",
+      "label": "growth vs deficit",
+      "importance": 2,
+      "lecture_keys": ["W07L2", "W04L1", "W03L2"],
+      "term_ids": ["humanistic_psychology", "psychoanalysis", "personality_functioning"],
+      "summary": "Several lectures contrast growth-oriented images of development with deficit, pathology, or conflict-centred models."
+    },
+    {
+      "distinction_id": "essence_vs_subjectivation",
+      "label": "inner essence vs subjectivation",
+      "importance": 3,
+      "lecture_keys": ["W10L2", "W11L1", "W11L2"],
+      "term_ids": ["poststructuralism", "subjectivation", "narrativity"],
+      "summary": "Late-course traditions contrast personality as an inner essence with personality as something produced through discourse, practice, and narrative revision."
+    },
+    {
+      "distinction_id": "individual_problem_vs_structural_condition",
+      "label": "individual problem vs structural condition",
+      "importance": 3,
+      "lecture_keys": ["W08L2", "W09L1", "W10L1"],
+      "term_ids": ["critical_psychology", "gender", "subjectivation"],
+      "summary": "Critical and feminist blocks repeatedly oppose private-deficit explanations to analyses of social, historical, and institutional conditions."
+    }
+  ]
+}

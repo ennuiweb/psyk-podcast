@@ -16,6 +16,14 @@ Naming note:
   Layer` are the canonical names for the main subsystems inside the content
   engine.
 
+Design principle:
+
+- The content engine should be treated as a decomposed substitute for a
+  hypothetical full-course reasoning pass. That means `Source Intelligence
+  Layer`, `Course Context Layer`, and `Prompt Assembly Layer` should support
+  bottom-up grounding, top-down framing, and sideways comparison rather than
+  only local prompt assembly.
+
 Current migration program:
 
 - The cross-cutting implementation plan for moving NotebookLM orchestration to a Hetzner-owned queue and moving published audio off Google Drive lives in [notebooklm-queue-r2-migration.md](notebooklm-queue-r2-migration.md).
@@ -187,6 +195,7 @@ Queue hardening note:
 Prompt assembly note:
 
 - `generate_week.py` now compiles a course-aware lecture context from `shows/<show>/content_manifest.json` and `shows/<show>/docs/overblik.md` before building prompts.
+- For `personlighedspsykologi`, that deterministic context layer now also pulls in compact semantic guidance from `course_glossary.json`, `course_theory_map.json`, `source_weighting.json`, and `course_concept_graph.json` when those artifacts exist.
 - That context layer is deterministic and artifact-neutral, and it now feeds both audio prompts and NotebookLM `report` artifacts surfaced as study-guide style Markdown outputs.
 - Current report usage is the first concrete non-audio consumer: abridged preparatory guides for readings, slide decks, lecture-level reading sets, and short variants.
 - Prompt assembly now also injects explicit source-role guidance for normal prompt types so readings, lecture slides, and seminar slides contribute different kinds of signal instead of being blended implicitly.
@@ -209,9 +218,20 @@ Preprocessing maturity note:
 - `personlighedspsykologi` now also has a deterministic `lecture_bundles/`
   layer built from `source_catalog.json`, `content_manifest.json`, and any
   local analysis sidecars.
-- The next intended preprocessing layers above that are course-level
-  glossary/theory artifacts plus stale-invalidation and weighting, not more
-  prompt-only tweaks.
+- `personlighedspsykologi` now also has course-level semantic artifacts:
+  `course_glossary.json`, `course_theory_map.json`, and a first
+  `source_intelligence_staleness.json` index built from the lecture-bundle
+  layer plus a committed semantic seed file.
+- `personlighedspsykologi` now also has a first deterministic
+  `source_weighting.json` layer that ranks lecture sources using source family,
+  bundle priority, summary/analysis coverage, term coverage, and theory
+  coverage.
+- `personlighedspsykologi` now also has a first `course_concept_graph.json`
+  artifact that makes sideways relations explicit through term/theory nodes,
+  graph edges, and seeded course distinctions.
+- The next intended preprocessing layers above that are deeper distinction /
+  concept-graph structure, stronger stale-enforcement, and richer prompt-side
+  use of the weighting layer, not more prompt-only tweaks.
 
 ## Related docs
 

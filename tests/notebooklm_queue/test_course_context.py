@@ -111,6 +111,70 @@ class CourseContextTests(unittest.TestCase):
                 ),
                 encoding="utf-8",
             )
+            (show_dir / "course_glossary.json").write_text(
+                json.dumps(
+                    {
+                        "terms": [
+                            {
+                                "term_id": "personality",
+                                "label": "personality",
+                                "category": "construct",
+                                "salience_score": 80,
+                                "lecture_keys": ["W01L1"],
+                            }
+                        ]
+                    }
+                ),
+                encoding="utf-8",
+            )
+            (show_dir / "course_theory_map.json").write_text(
+                json.dumps(
+                    {
+                        "theories": [
+                            {
+                                "theory_id": "trait_theory",
+                                "label": "trait theory",
+                                "salience_score": 70,
+                                "lecture_keys": ["W01L1"],
+                            }
+                        ]
+                    }
+                ),
+                encoding="utf-8",
+            )
+            (show_dir / "source_weighting.json").write_text(
+                json.dumps(
+                    {
+                        "lectures": [
+                            {
+                                "lecture_key": "W01L1",
+                                "ranked_sources": [
+                                    {
+                                        "title": "Grundbog kapitel 1",
+                                        "weight_band": "anchor",
+                                    }
+                                ],
+                            }
+                        ]
+                    }
+                ),
+                encoding="utf-8",
+            )
+            (show_dir / "course_concept_graph.json").write_text(
+                json.dumps(
+                    {
+                        "distinctions": [
+                            {
+                                "distinction_id": "trait-vs-state",
+                                "label": "trait vs state",
+                                "importance": 3,
+                                "lecture_keys": ["W01L1"],
+                            }
+                        ]
+                    }
+                ),
+                encoding="utf-8",
+            )
             (docs_dir / "overblik.md").write_text(
                 "- W1L1 Introduktion\n- W1L2 Fortsat",
                 encoding="utf-8",
@@ -145,6 +209,11 @@ class CourseContextTests(unittest.TestCase):
             self.assertIn("Forelaesning slides frame the lecture through: Hvad er personlighed?", reading_note)
             self.assertIn("Seminar slides operationalize or test the material through: Diskussionsspoergsmaal.", reading_note)
             self.assertIn("Grundbog kapitel 1", reading_note)
+            self.assertIn("## Semantic guidance", reading_note)
+            self.assertIn("Ranked source emphasis: Grundbog kapitel 1 [anchor].", reading_note)
+            self.assertIn("Course concepts in play: personality (construct).", reading_note)
+            self.assertIn("Theory frame: trait theory.", reading_note)
+            self.assertIn("Cross-lecture tensions to keep explicit: trait vs state.", reading_note)
             self.assertIn("Target source: Grundbog kapitel 1.", reading_note)
             self.assertIn("Grounding rules", reading_note)
 

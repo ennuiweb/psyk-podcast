@@ -62,6 +62,30 @@ In practical terms:
 - `Freudd Podcast Network` is the public podcast surface consumed outside the
   portal
 
+## Intelligence Design Principle
+
+The `Freudd Content Engine` should be designed as a decomposed alternative to a
+hypothetical model that could ingest and reason over an entire course in one
+pass.
+
+That implies three necessary information flows:
+
+- bottom-up: source files -> lecture artifacts -> course artifacts
+- top-down: course arc / theory structure -> local importance and selection
+- sideways: lecture-to-lecture, concept-to-concept, and theory-to-theory
+  relations
+
+All three are necessary:
+
+- without bottom-up flow, the system loses grounding
+- without top-down flow, the system loses prioritization
+- without sideways flow, the system loses comparison and synthesis
+
+This should not be implemented as unrestricted recursive coupling between
+layers. The mature shape is explicit artifacts with inspectable contracts and
+mostly one-way derivation, plus deliberate cross-links where comparison is part
+of the artifact itself.
+
 ## Overall Verdict
 
 The system is real, useful, and operationally advanced. It is not a prototype.
@@ -97,8 +121,8 @@ Scores use a `1-5` scale:
 | Subsystem | Purpose fit | Operational maturity | Architectural clarity | Current score | Notes |
 |---|---:|---:|---:|---:|---|
 | `Freudd Portal` | 4 | 4 | 3 | 3.8 | Product-rich and strongly aligned to learning flow, but too much logic is concentrated in very large files. |
-| `Freudd Content Engine` | 3 | 3 | 3 | 3.0 | Good prompt/context infrastructure, but the upstream course-understanding layer is still too shallow. |
-| `Source Intelligence Layer` | 2 | 2 | 3 | 2.3 | A real baseline now exists, but it is still mostly file-level preprocessing rather than structured semantic course modeling. |
+| `Freudd Content Engine` | 3 | 3 | 3 | 3.2 | Good prompt/context infrastructure, and the upstream engine now has file-, lecture-, and course-level semantic artifacts, but weighting is not yet fully driving downstream selection and hosted rebuildability still lags. |
+| `Source Intelligence Layer` | 3 | 3 | 3 | 3.1 | It now has source catalog, lecture bundles, course glossary, theory map, a first staleness index, deterministic source weighting, and a first concept graph, but it still lacks deeper graph richness and automatic rebuild enforcement. |
 | `Course Context Layer` | 4 | 4 | 4 | 4.0 | Deterministic, reusable, and conceptually clean. One of the better-designed parts of the system. |
 | `Prompt Assembly Layer` | 4 | 4 | 3 | 3.7 | Much better than ad hoc prompt strings, but growing dense and still dependent on relatively weak upstream semantic artifacts. |
 | `Freudd Generation Queue` | 5 | 4 | 4 | 4.3 | The most mature backend subsystem. It owns a serious end-to-end state machine and real publication logic. |
@@ -136,6 +160,8 @@ It is strong because it:
 - is reusable across output types
 - clearly separates course framing from source preprocessing
 - improves prompts without relying on vague style instructions
+- can now consume compact semantic guidance from the `Source Intelligence Layer`
+  without collapsing that layer back into opaque prompt prose
 
 This is exactly the kind of layer that is hard to replace with “just better
 prompting”.
@@ -167,16 +193,20 @@ Right now the `Source Intelligence Layer` mainly consists of:
 - manual summaries
 - optional per-source or weekly sidecars
 - a deterministic `source_catalog.json`
+- deterministic `lecture_bundles`
+- a committed course semantic seed
+- `course_glossary.json`
+- `course_theory_map.json`
+- a first hash-based staleness index
+- a first `course_concept_graph.json`
 
 What is still missing:
 
-- lecture bundles
-- course glossary
-- theory map
 - explicit distinction map
-- cross-lecture concept graph
-- source weighting
-- robust stale invalidation
+- richer cross-lecture concept graph depth
+- prompt-integrated source weighting
+- automatic stale invalidation enforcement
+- hosted rebuildability for the new local-only artifacts
 
 Without those, the engine still lacks a rich intermediate understanding of the
 course.
@@ -246,12 +276,12 @@ cost will keep rising if the system continues to grow inside these files.
 
 The biggest underbuilt area is course-level semantic structure.
 
-The system still lacks first-class artifacts for:
+The system still lacks enough first-class artifacts for:
 
-- “what are the core concepts of this course?”
-- “which distinctions recur across lectures?”
-- “which theories agree, disagree, or reinterpret one another?”
-- “which sources are central vs peripheral?”
+- deeper recurring distinctions across lectures
+- richer cross-lecture concept graph structure
+- stronger source weighting and selection logic
+- lecture-level slide-informed synthesis beyond current bundle summaries
 
 That is exactly the kind of intelligence required to claim the engine creates
 the best possible conditions for learning material.
@@ -270,11 +300,11 @@ Without that, prompt context remains flatter than it should be.
 
 ### 3. Invalidating stale understanding
 
-The system has source metadata, but not yet a full stale/invalidation model for
-derived understanding layers.
+The system now has a first hash-based stale/index model for course semantic
+artifacts, but it does not yet enforce automatic rebuilds or publication blocks
+when those dependencies drift.
 
-That means it is still too easy for semantic artifacts to drift behind source
-changes.
+That means semantic artifacts are now traceable, but not yet self-policing.
 
 ## Architectural Soundness
 
@@ -334,16 +364,17 @@ the `Freudd Content Engine`, especially upstream of prompt assembly.
 
 These are the highest-leverage maturity moves from here.
 
-### Priority 1: Complete the `Source Intelligence Layer`
+### Priority 1: Operationalize the `Source Intelligence Layer`
 
-Build the next artifacts:
+The main baseline artifacts now exist. The next high-leverage work is:
 
-1. `lecture_bundle.json`
-2. `course_glossary.json`
-3. `course_theory_map.json`
-4. stale/invalidation model
+1. prompt-integrated weighting
+2. distinction / concept-graph artifacts
+3. automatic stale enforcement
+4. stronger slide-informed weekly synthesis
+5. clearer top-down/sideways selection contracts into prompt assembly
 
-This is the single best way to improve learning-material quality.
+This is still the single best way to improve learning-material quality.
 
 ### Priority 2: Reduce migration-era duality
 
@@ -387,12 +418,12 @@ conditions for learning material.
 
 Concretely:
 
-- no course glossary
-- no course theory map
-- no strong source weighting
-- no stale invalidation for derived understanding
-- weekly preprocessing is still readings-first rather than a true lecture
-  bundle
+- no strong prompt-integrated source weighting
+- no automatic stale invalidation enforcement for derived understanding
+- weekly preprocessing is still readings-first rather than a slide-informed
+  lecture synthesis layer
+- sideways comparison across lectures and theories is still weaker than bottom-up
+  grounding
 
 ### Pain 2: The live architecture is still partially transitional
 
@@ -417,15 +448,21 @@ The current largest maintenance hotspots are:
 The issue is not immediate correctness. It is rising future change-cost and
 reasoning-cost.
 
-### Pain 4: The `Source Intelligence Layer` is still only a baseline
+### Pain 4: The `Source Intelligence Layer` is still not complete enough
 
-`source_catalog.json` is a strong starting point, but it is still only a
-file-level inventory. The next missing artifacts are:
+The current baseline is now materially better than a file inventory. It has:
 
+- `source_catalog.json`
 - `lecture_bundle.json`
 - `course_glossary.json`
 - `course_theory_map.json`
-- hash-based stale/invalidation rules
+- a first hash-based stale/invalidation index
+
+The next missing layers are:
+
+- prompt-integrated weighting
+- deeper distinction / concept-graph artifacts
+- automatic stale enforcement
 
 ### Pain 5: Reproducibility is still incomplete
 
@@ -451,17 +488,20 @@ Goal:
 - make the upstream course-understanding layer materially richer before making
   more prompt changes
 
-Recommended outputs:
+Current baseline delivered:
 
-1. `source_catalog.json` baseline
+1. `source_catalog.json`
 2. lecture-bundle layer
 3. course glossary / theory map
-4. stale/invalidation rules for derived artifacts
+4. a first stale/invalidation index for derived artifacts
 
-Exit condition:
+Remaining gap before this phase is truly complete:
 
-- the engine has a richer deterministic intermediate representation than
-  summaries plus raw prompt sidecars
+- prompt-integrated weighting
+- concept graph depth
+- automatic stale enforcement
+- stronger slide-informed lecture synthesis
+- more explicit sideways comparison artifacts
 
 ### Phase 2: Tighten pedagogical selection
 

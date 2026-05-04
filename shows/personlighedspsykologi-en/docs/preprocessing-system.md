@@ -13,6 +13,18 @@ skabe de bedst mulige betingelser for laeringsmateriale ved at bygge et rigere
 preprocesseret source-lag foer course context, prompt assembly og egentlig
 generation.
 
+Designprincip:
+
+- systemet skal fungere som et dekomponeret alternativ til en hypotetisk model,
+  der kunne laese og forstaa hele kurset i ett pass
+- derfor skal `Source Intelligence Layer` understoette:
+  - bottom-up flow fra kilder til lecture/course artifacts
+  - top-down flow fra course arc og theory structure tilbage til lokal
+    prioritering
+  - sideways flow mellem lectures, begreber og teorier
+- det maa ikke blive til fri rekursiv prompt-suppe; flowet skal ske gennem
+  eksplicitte og auditerbare artifacts
+
 ## Nuvaerende lag
 
 Preprocessing bestaar i dag af tre forskellige lag:
@@ -44,19 +56,23 @@ kontekstnote, ikke et rigt preprocesseret knowledge layer.
   outputs
 - bruge manuelle summaries som stabil kursusforstaaelse
 - bruge per-source og weekly Gemini-sidecars som ekstra fortolkningslag
+- bygge et course-level glossary- og theory-lag oven paa lecture bundles
+- spore hash-baserede dependencies for de vigtigste `Source Intelligence`
+  artifacts
 
 ## Hvad der stadig mangler
 
-Systemet er endnu ikke et modent preprocesseringssystem. De vigtigste huller er:
+Systemet er endnu ikke et fuldt modent preprocesseringssystem. De vigtigste
+huller er:
 
 - kursusoverblikket er kun indirekte kildeinformeret; det er ikke bygget fra
   alle source files som et samlet semestermateriale
-- der findes endnu ikke et kanonisk begrebs-/teorilag som f.eks.
-  `course_glossary.json` eller `course_theory_map.json`
-- source weighting findes ikke endnu; laengde, centralitet og type bruges kun
-  svagt eller slet ikke som signaler
-- staleness er ikke hash-baseret; summaries og sidecars invalideres ikke
-  automatisk, hvis en PDF aendres
+- source weighting findes nu som artifact, men endnu ikke som et egentligt
+  downstream styringslag i prompt selection
+- staleness findes nu som et hash-baseret index, men endnu ikke som et
+  automatisk rebuild-/blokkeringslag
+- der findes endnu ikke et eksplicit distinction graph eller et egentligt
+  cross-lecture concept graph
 - weekly auto-meta er stadig readings-first; lecture/seminar slide-indhold er
   ikke preprocesseret ind i en egentlig lecture bundle
 
@@ -64,13 +80,19 @@ Vigtig nuancering: `course_context.py` er deterministisk og model-fri. Det
 goer promptlaget mere robust, men betyder ogsaa, at kvaliteten stadig er
 begracnset af de metadata og summaries, der allerede findes.
 
-## Ny baseline: source catalog + lecture bundles
+## Ny baseline: file, lecture og course-level artifacts
 
 De foerste nye artifacts i den modne preprocessing-arkitektur er:
 
 - `shows/personlighedspsykologi-en/source_catalog.json`
 - `shows/personlighedspsykologi-en/lecture_bundles/index.json`
 - `shows/personlighedspsykologi-en/lecture_bundles/W##L#.json`
+- `shows/personlighedspsykologi-en/source_intelligence_seed.json`
+- `shows/personlighedspsykologi-en/course_glossary.json`
+- `shows/personlighedspsykologi-en/course_theory_map.json`
+- `shows/personlighedspsykologi-en/source_intelligence_staleness.json`
+- `shows/personlighedspsykologi-en/source_weighting.json`
+- `shows/personlighedspsykologi-en/course_concept_graph.json`
 
 Formaalet er at faa et stabilt, deterministisk file-level lag med:
 
@@ -91,6 +113,7 @@ Build-kommando:
 ```bash
 ./.venv/bin/python scripts/build_personlighedspsykologi_source_catalog.py
 ./.venv/bin/python scripts/build_personlighedspsykologi_lecture_bundles.py
+./.venv/bin/python scripts/build_personlighedspsykologi_semantic_artifacts.py
 ```
 
 ## Lecture bundles
@@ -117,12 +140,63 @@ Formaalet er at give `Prompt Assembly Layer` og senere course-level artifacts et
 rigere, stabilt lecture-level knowledge object end blot summary-prosa og flade
 context-noter.
 
+## Course-level semantics
+
+Det nye course-level semantic lag bestaar af:
+
+- `source_intelligence_seed.json` som auditerbar ontologi/seed-fil
+- `course_glossary.json` som term-lag med lecture/source grounding
+- `course_theory_map.json` som theory cluster-lag med relationer
+- `source_intelligence_staleness.json` som hash-baseret dependency-index
+- `source_weighting.json` som deterministisk source-rangeringslag
+- `course_concept_graph.json` som foerste sideways artifact
+
+Glossary-laget giver:
+
+- kanoniske begreber med aliases
+- lecture-tilknytning og evidence
+- linked terms og linked theories
+- simple salience-signaler
+
+Theory-map-laget giver:
+
+- theory clusters paa tvacrs af forelaesninger
+- core terms pr. teori
+- representative source ids
+- relationer mellem teorier
+
+Concept-graph-laget giver:
+
+- term- og theory-nodes i samme artifact
+- tvacrgaaende edges mellem begreber, teorier og shared lectures
+- eksplicitte distinctions som kursusspacndinger
+- et foerste sideways lag paa tvacrs af semesteret
+
+Staleness-laget giver:
+
+- sha256 for inputs og outputs
+- explicit dependency-lister for glossary og theory map
+- et foerste fundament for senere automatisk invalidation
+
+Weighting-laget giver:
+
+- en eksplicit scoreramme for lecture sources
+- kombination af bottom-up og top-down signaler
+- et bedre grundlag for senere prompt selection
+
+Det er ogsaa begyndt at blive brugt downstream:
+
+- `course_context.py` kan nu injecte kompakt semantic guidance fra glossary,
+  theory map, weighting og concept graph ind i den deterministiske lecture
+  context note
+
 ## Kendte graenser
 
 - GitHub Actions kan ikke i dag rebuild’e `source_catalog.json`, fordi workflowet
   ikke har adgang til de raa lokale kursusfiler i OneDrive/source tree.
-- Kataloget og lecture bundles er derfor i foerste version deterministiske
-  lokale build-artifacts, som committes til repoet.
+- Katalog, lecture bundles og de nye course-level semantic artifacts er derfor i
+  foerste version deterministiske lokale build-artifacts, som committes til
+  repoet.
 - `W03L2` har fortsat en manifest-markeret missing reading (`Bach & Simonsen
   (2023)`), og baade katalog og lecture bundle skal bevare den som missing i
   stedet for at opfinde en filmapping.
@@ -138,8 +212,11 @@ Den planlagte raekkefoelge er:
 3. `course_glossary.json`
 4. `course_theory_map.json`
 5. hash-baseret stale/invalidation-model
-6. slide-informed weekly preprocessing og bedre source weighting
+6. source weighting som egentligt styringslag
+7. dybere distinction graph / cross-lecture concept graph
+8. slide-informed weekly preprocessing
+9. automatic stale enforcement
 
 Det betyder, at outputs godt kan bygges nu, men at den mest modne version af
-systemet foerst opnaar sit egentlige loft, naar lecture bundles og et
-course-level concept layer er pa plads.
+systemet foerst opnaar sit egentlige loft, naar weighting, concept graph og
+automatisk staleness enforcement er pa plads.

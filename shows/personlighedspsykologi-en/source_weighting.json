@@ -1,0 +1,5025 @@
+{
+  "version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-04T20:59:10Z",
+  "build_inputs": {
+    "lecture_bundle_index": "shows/personlighedspsykologi-en/lecture_bundles/index.json",
+    "course_glossary": "shows/personlighedspsykologi-en/course_glossary.json",
+    "course_theory_map": "shows/personlighedspsykologi-en/course_theory_map.json"
+  },
+  "weighting_policy": {
+    "family_weights": {
+      "reading": 40,
+      "lecture_slide": 18,
+      "seminar_slide": 14,
+      "exercise_slide": 10
+    },
+    "priority_band_weights": {
+      "core": 18,
+      "primary": 14,
+      "supporting": 10,
+      "contextual": 6,
+      "missing": 0
+    },
+    "length_band_weights": {
+      "long": 6,
+      "medium": 3
+    },
+    "bonus_weights": {
+      "manual_summary": 6,
+      "analysis_sidecar": 4,
+      "week_analysis_context": 3,
+      "likely_core_source": 10,
+      "very_substantial_tokens": 6,
+      "substantial_tokens": 3
+    }
+  },
+  "stats": {
+    "lecture_count": 22,
+    "source_count": 81,
+    "anchor_source_count": 34,
+    "major_source_count": 22,
+    "supporting_source_count": 3,
+    "contextual_source_count": 21,
+    "missing_source_count": 1
+  },
+  "lectures": [
+    {
+      "lecture_key": "W01L1",
+      "lecture_title": "Introforelæsning og nøglebegreber i personlighedspsykologien (Forelæsning 1, 2026-02-02)",
+      "ranked_sources": [
+        {
+          "source_id": "w01l1-grundbog-kapitel-1-introduktion-til-personlighed-1e727647",
+          "lecture_key": "W01L1",
+          "lecture_title": "Introforelæsning og nøglebegreber i personlighedspsykologien (Forelæsning 1, 2026-02-02)",
+          "title": "Grundbog kapitel 01 - Introduktion til personlighedspsykologi",
+          "source_family": "reading",
+          "priority_band": "core",
+          "length_band": "medium",
+          "weight_score": 92,
+          "weight_band": "anchor",
+          "term_ids": [
+            "stability_and_change"
+          ],
+          "theory_ids": [
+            "comparative_theory_analysis",
+            "dynamic_personality_development",
+            "narrative_psychology"
+          ],
+          "breakdown": {
+            "family_base": 40,
+            "priority_band": 18,
+            "length_band": 3,
+            "manual_summary": 6,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 10,
+            "token_volume": 0,
+            "term_coverage": 3,
+            "theory_coverage": 12
+          }
+        },
+        {
+          "source_id": "w01l1-lewis-1999-295c67e3",
+          "lecture_key": "W01L1",
+          "lecture_title": "Introforelæsning og nøglebegreber i personlighedspsykologien (Forelæsning 1, 2026-02-02)",
+          "title": "Lewis (1999)",
+          "source_family": "reading",
+          "priority_band": "core",
+          "length_band": "medium",
+          "weight_score": 83,
+          "weight_band": "major",
+          "term_ids": [],
+          "theory_ids": [],
+          "breakdown": {
+            "family_base": 40,
+            "priority_band": 18,
+            "length_band": 3,
+            "manual_summary": 6,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 10,
+            "token_volume": 6,
+            "term_coverage": 0,
+            "theory_coverage": 0
+          }
+        },
+        {
+          "source_id": "w01l1-lecture-1-gang-introduktin-pp-2026-e5a501d8",
+          "lecture_key": "W01L1",
+          "lecture_title": "Introforelæsning og nøglebegreber i personlighedspsykologien (Forelæsning 1, 2026-02-02)",
+          "title": "1. gang . Introduktin PP 2026",
+          "source_family": "lecture_slide",
+          "priority_band": "supporting",
+          "length_band": "medium",
+          "weight_score": 31,
+          "weight_band": "contextual",
+          "term_ids": [],
+          "theory_ids": [],
+          "breakdown": {
+            "family_base": 18,
+            "priority_band": 10,
+            "length_band": 3,
+            "manual_summary": 0,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 0,
+            "token_volume": 0,
+            "term_coverage": 0,
+            "theory_coverage": 0
+          }
+        },
+        {
+          "source_id": "w01l1-seminar-1-introduktion-9fe382c8",
+          "lecture_key": "W01L1",
+          "lecture_title": "Introforelæsning og nøglebegreber i personlighedspsykologien (Forelæsning 1, 2026-02-02)",
+          "title": "1. Introduktion",
+          "source_family": "seminar_slide",
+          "priority_band": "contextual",
+          "length_band": "medium",
+          "weight_score": 23,
+          "weight_band": "contextual",
+          "term_ids": [],
+          "theory_ids": [],
+          "breakdown": {
+            "family_base": 14,
+            "priority_band": 6,
+            "length_band": 3,
+            "manual_summary": 0,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 0,
+            "token_volume": 0,
+            "term_coverage": 0,
+            "theory_coverage": 0
+          }
+        }
+      ],
+      "anchor_source_ids": [
+        "w01l1-grundbog-kapitel-1-introduktion-til-personlighed-1e727647"
+      ],
+      "major_source_ids": [
+        "w01l1-lewis-1999-295c67e3"
+      ]
+    },
+    {
+      "lecture_key": "W01L2",
+      "lecture_title": "Personality assessment (Forelæsning 2, 2026-02-03)",
+      "ranked_sources": [
+        {
+          "source_id": "w01l2-mayer-and-bryan-2024-07faf915",
+          "lecture_key": "W01L2",
+          "lecture_title": "Personality assessment (Forelæsning 2, 2026-02-03)",
+          "title": "Mayer & Bryan (2024)",
+          "source_family": "reading",
+          "priority_band": "core",
+          "length_band": "medium",
+          "weight_score": 90,
+          "weight_band": "anchor",
+          "term_ids": [
+            "personality_assessment"
+          ],
+          "theory_ids": [
+            "trait_and_assessment_psychology"
+          ],
+          "breakdown": {
+            "family_base": 40,
+            "priority_band": 18,
+            "length_band": 3,
+            "manual_summary": 6,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 10,
+            "token_volume": 6,
+            "term_coverage": 3,
+            "theory_coverage": 4
+          }
+        },
+        {
+          "source_id": "w01l2-phan-et-al-2024-bf3395d7",
+          "lecture_key": "W01L2",
+          "lecture_title": "Personality assessment (Forelæsning 2, 2026-02-03)",
+          "title": "Phan et al. (2024)",
+          "source_family": "reading",
+          "priority_band": "core",
+          "length_band": "medium",
+          "weight_score": 83,
+          "weight_band": "major",
+          "term_ids": [],
+          "theory_ids": [],
+          "breakdown": {
+            "family_base": 40,
+            "priority_band": 18,
+            "length_band": 3,
+            "manual_summary": 6,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 10,
+            "token_volume": 6,
+            "term_coverage": 0,
+            "theory_coverage": 0
+          }
+        },
+        {
+          "source_id": "w01l2-koutsoumpis-2025-96f4dcf7",
+          "lecture_key": "W01L2",
+          "lecture_title": "Personality assessment (Forelæsning 2, 2026-02-03)",
+          "title": "Koutsoumpis (2025)",
+          "source_family": "reading",
+          "priority_band": "primary",
+          "length_band": "short",
+          "weight_score": 80,
+          "weight_band": "major",
+          "term_ids": [
+            "personality_assessment"
+          ],
+          "theory_ids": [
+            "trait_and_assessment_psychology"
+          ],
+          "breakdown": {
+            "family_base": 40,
+            "priority_band": 14,
+            "length_band": 0,
+            "manual_summary": 6,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 10,
+            "token_volume": 3,
+            "term_coverage": 3,
+            "theory_coverage": 4
+          }
+        },
+        {
+          "source_id": "w01l2-lecture-2-gang-perspsy-2-260203-edbe52ab",
+          "lecture_key": "W01L2",
+          "lecture_title": "Personality assessment (Forelæsning 2, 2026-02-03)",
+          "title": "2. gang PersPsy 2 260203",
+          "source_family": "lecture_slide",
+          "priority_band": "supporting",
+          "length_band": "long",
+          "weight_score": 34,
+          "weight_band": "contextual",
+          "term_ids": [],
+          "theory_ids": [],
+          "breakdown": {
+            "family_base": 18,
+            "priority_band": 10,
+            "length_band": 6,
+            "manual_summary": 0,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 0,
+            "token_volume": 0,
+            "term_coverage": 0,
+            "theory_coverage": 0
+          }
+        }
+      ],
+      "anchor_source_ids": [
+        "w01l2-mayer-and-bryan-2024-07faf915"
+      ],
+      "major_source_ids": [
+        "w01l2-phan-et-al-2024-bf3395d7",
+        "w01l2-koutsoumpis-2025-96f4dcf7"
+      ]
+    },
+    {
+      "lecture_key": "W02L1",
+      "lecture_title": "Personality traits, personality states, and personality dimensions (Forelæsning 3, 2026-02-09)",
+      "ranked_sources": [
+        {
+          "source_id": "w02l1-zettler-et-al-2020-0c54e6e4",
+          "lecture_key": "W02L1",
+          "lecture_title": "Personality traits, personality states, and personality dimensions (Forelæsning 3, 2026-02-09)",
+          "title": "Zettler et al. (2020)",
+          "source_family": "reading",
+          "priority_band": "core",
+          "length_band": "long",
+          "weight_score": 97,
+          "weight_band": "anchor",
+          "term_ids": [
+            "personality_dimensions"
+          ],
+          "theory_ids": [
+            "personality_functioning_and_pathology",
+            "trait_and_assessment_psychology"
+          ],
+          "breakdown": {
+            "family_base": 40,
+            "priority_band": 18,
+            "length_band": 6,
+            "manual_summary": 6,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 10,
+            "token_volume": 6,
+            "term_coverage": 3,
+            "theory_coverage": 8
+          }
+        },
+        {
+          "source_id": "w02l1-columbus-and-strandsbjerg-2025-2962b765",
+          "lecture_key": "W02L1",
+          "lecture_title": "Personality traits, personality states, and personality dimensions (Forelæsning 3, 2026-02-09)",
+          "title": "Columbus & Strandsbjerg (2025)",
+          "source_family": "reading",
+          "priority_band": "primary",
+          "length_band": "short",
+          "weight_score": 94,
+          "weight_band": "anchor",
+          "term_ids": [
+            "personality_dimensions",
+            "personality_states",
+            "personality_traits"
+          ],
+          "theory_ids": [
+            "dynamic_personality_development",
+            "narrative_psychology",
+            "personality_functioning_and_pathology",
+            "trait_and_assessment_psychology"
+          ],
+          "breakdown": {
+            "family_base": 40,
+            "priority_band": 14,
+            "length_band": 0,
+            "manual_summary": 6,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 10,
+            "token_volume": 3,
+            "term_coverage": 9,
+            "theory_coverage": 12
+          }
+        },
+        {
+          "source_id": "w02l1-lecture-3-gang-perspsy-3-260209-08cbaee1",
+          "lecture_key": "W02L1",
+          "lecture_title": "Personality traits, personality states, and personality dimensions (Forelæsning 3, 2026-02-09)",
+          "title": "3. gang PersPsy 3 260209",
+          "source_family": "lecture_slide",
+          "priority_band": "supporting",
+          "length_band": "long",
+          "weight_score": 37,
+          "weight_band": "contextual",
+          "term_ids": [],
+          "theory_ids": [],
+          "breakdown": {
+            "family_base": 18,
+            "priority_band": 10,
+            "length_band": 6,
+            "manual_summary": 0,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 0,
+            "token_volume": 3,
+            "term_coverage": 0,
+            "theory_coverage": 0
+          }
+        },
+        {
+          "source_id": "w02l1-seminar-3-tr-kpsykologi-ii-d7ebc130",
+          "lecture_key": "W02L1",
+          "lecture_title": "Personality traits, personality states, and personality dimensions (Forelæsning 3, 2026-02-09)",
+          "title": "3. Trækpsykologi II",
+          "source_family": "seminar_slide",
+          "priority_band": "contextual",
+          "length_band": "medium",
+          "weight_score": 23,
+          "weight_band": "contextual",
+          "term_ids": [],
+          "theory_ids": [],
+          "breakdown": {
+            "family_base": 14,
+            "priority_band": 6,
+            "length_band": 3,
+            "manual_summary": 0,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 0,
+            "token_volume": 0,
+            "term_coverage": 0,
+            "theory_coverage": 0
+          }
+        },
+        {
+          "source_id": "w02l1-exercise-1-intro-og-tr-k-93aadd03",
+          "lecture_key": "W02L1",
+          "lecture_title": "Personality traits, personality states, and personality dimensions (Forelæsning 3, 2026-02-09)",
+          "title": "1. Trækteori",
+          "source_family": "exercise_slide",
+          "priority_band": "contextual",
+          "length_band": "long",
+          "weight_score": 22,
+          "weight_band": "contextual",
+          "term_ids": [],
+          "theory_ids": [],
+          "breakdown": {
+            "family_base": 10,
+            "priority_band": 6,
+            "length_band": 6,
+            "manual_summary": 0,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 0,
+            "token_volume": 0,
+            "term_coverage": 0,
+            "theory_coverage": 0
+          }
+        }
+      ],
+      "anchor_source_ids": [
+        "w02l1-zettler-et-al-2020-0c54e6e4",
+        "w02l1-columbus-and-strandsbjerg-2025-2962b765"
+      ],
+      "major_source_ids": []
+    },
+    {
+      "lecture_key": "W02L2",
+      "lecture_title": "Person-situation interplay - stability and change of individual differences (Forelæsning 4, 2026-02-10)",
+      "ranked_sources": [
+        {
+          "source_id": "w02l2-bleidorn-et-al-2022-25c2d2de",
+          "lecture_key": "W02L2",
+          "lecture_title": "Person-situation interplay - stability and change of individual differences (Forelæsning 4, 2026-02-10)",
+          "title": "Bleidorn et al. (2022)",
+          "source_family": "reading",
+          "priority_band": "core",
+          "length_band": "long",
+          "weight_score": 104,
+          "weight_band": "anchor",
+          "term_ids": [
+            "personality_traits",
+            "stability_and_change"
+          ],
+          "theory_ids": [
+            "comparative_theory_analysis",
+            "dynamic_personality_development",
+            "narrative_psychology",
+            "trait_and_assessment_psychology"
+          ],
+          "breakdown": {
+            "family_base": 40,
+            "priority_band": 18,
+            "length_band": 6,
+            "manual_summary": 6,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 10,
+            "token_volume": 6,
+            "term_coverage": 6,
+            "theory_coverage": 12
+          }
+        },
+        {
+          "source_id": "w02l2-li-and-wilt-2025-92f596ad",
+          "lecture_key": "W02L2",
+          "lecture_title": "Person-situation interplay - stability and change of individual differences (Forelæsning 4, 2026-02-10)",
+          "title": "Li & Wilt (2025)",
+          "source_family": "reading",
+          "priority_band": "primary",
+          "length_band": "short",
+          "weight_score": 91,
+          "weight_band": "anchor",
+          "term_ids": [
+            "person_situation_interplay",
+            "personality_traits"
+          ],
+          "theory_ids": [
+            "critical_psychology",
+            "dynamic_personality_development",
+            "narrative_psychology",
+            "trait_and_assessment_psychology"
+          ],
+          "breakdown": {
+            "family_base": 40,
+            "priority_band": 14,
+            "length_band": 0,
+            "manual_summary": 6,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 10,
+            "token_volume": 3,
+            "term_coverage": 6,
+            "theory_coverage": 12
+          }
+        },
+        {
+          "source_id": "w02l2-lecture-4-gang-perspsy-4-260210-ce33366f",
+          "lecture_key": "W02L2",
+          "lecture_title": "Person-situation interplay - stability and change of individual differences (Forelæsning 4, 2026-02-10)",
+          "title": "4. gang PersPsy 4 260210",
+          "source_family": "lecture_slide",
+          "priority_band": "supporting",
+          "length_band": "long",
+          "weight_score": 34,
+          "weight_band": "contextual",
+          "term_ids": [],
+          "theory_ids": [],
+          "breakdown": {
+            "family_base": 18,
+            "priority_band": 10,
+            "length_band": 6,
+            "manual_summary": 0,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 0,
+            "token_volume": 0,
+            "term_coverage": 0,
+            "theory_coverage": 0
+          }
+        }
+      ],
+      "anchor_source_ids": [
+        "w02l2-bleidorn-et-al-2022-25c2d2de",
+        "w02l2-li-and-wilt-2025-92f596ad"
+      ],
+      "major_source_ids": []
+    },
+    {
+      "lecture_key": "W03L1",
+      "lecture_title": "Culture, evolution, genetics, and personality (Forelæsning 5, 2026-02-16)",
+      "ranked_sources": [
+        {
+          "source_id": "w03l1-lu-benet-martinez-and-wang-2023-38a36550",
+          "lecture_key": "W03L1",
+          "lecture_title": "Culture, evolution, genetics, and personality (Forelæsning 5, 2026-02-16)",
+          "title": "Lu, Benet-Martínez & Wang (2023)",
+          "source_family": "reading",
+          "priority_band": "core",
+          "length_band": "long",
+          "weight_score": 97,
+          "weight_band": "anchor",
+          "term_ids": [
+            "culture_and_personality"
+          ],
+          "theory_ids": [
+            "biosocial_personality_perspectives",
+            "narrative_psychology"
+          ],
+          "breakdown": {
+            "family_base": 40,
+            "priority_band": 18,
+            "length_band": 6,
+            "manual_summary": 6,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 10,
+            "token_volume": 6,
+            "term_coverage": 3,
+            "theory_coverage": 8
+          }
+        },
+        {
+          "source_id": "w03l1-volk-and-puchalski-2025-60aaf5d0",
+          "lecture_key": "W03L1",
+          "lecture_title": "Culture, evolution, genetics, and personality (Forelæsning 5, 2026-02-16)",
+          "title": "Volk & Puchalski (2025)",
+          "source_family": "reading",
+          "priority_band": "primary",
+          "length_band": "short",
+          "weight_score": 87,
+          "weight_band": "major",
+          "term_ids": [
+            "culture_and_personality",
+            "evolutionary_perspective"
+          ],
+          "theory_ids": [
+            "biosocial_personality_perspectives",
+            "narrative_psychology"
+          ],
+          "breakdown": {
+            "family_base": 40,
+            "priority_band": 14,
+            "length_band": 0,
+            "manual_summary": 6,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 10,
+            "token_volume": 3,
+            "term_coverage": 6,
+            "theory_coverage": 8
+          }
+        },
+        {
+          "source_id": "w03l1-kandler-and-instinske-2025-01535a8e",
+          "lecture_key": "W03L1",
+          "lecture_title": "Culture, evolution, genetics, and personality (Forelæsning 5, 2026-02-16)",
+          "title": "Kandler & Instinske (2025)",
+          "source_family": "reading",
+          "priority_band": "primary",
+          "length_band": "short",
+          "weight_score": 80,
+          "weight_band": "major",
+          "term_ids": [
+            "genetic_perspective"
+          ],
+          "theory_ids": [
+            "biosocial_personality_perspectives"
+          ],
+          "breakdown": {
+            "family_base": 40,
+            "priority_band": 14,
+            "length_band": 0,
+            "manual_summary": 6,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 10,
+            "token_volume": 3,
+            "term_coverage": 3,
+            "theory_coverage": 4
+          }
+        },
+        {
+          "source_id": "w03l1-zettler-et-al-2025-6ce9bdc0",
+          "lecture_key": "W03L1",
+          "lecture_title": "Culture, evolution, genetics, and personality (Forelæsning 5, 2026-02-16)",
+          "title": "Zettler et al. (2025)",
+          "source_family": "reading",
+          "priority_band": "primary",
+          "length_band": "short",
+          "weight_score": 70,
+          "weight_band": "major",
+          "term_ids": [],
+          "theory_ids": [],
+          "breakdown": {
+            "family_base": 40,
+            "priority_band": 14,
+            "length_band": 0,
+            "manual_summary": 6,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 10,
+            "token_volume": 0,
+            "term_coverage": 0,
+            "theory_coverage": 0
+          }
+        },
+        {
+          "source_id": "w03l1-lecture-5-gang-perspsy-5-260216-c7e4dd91",
+          "lecture_key": "W03L1",
+          "lecture_title": "Culture, evolution, genetics, and personality (Forelæsning 5, 2026-02-16)",
+          "title": "5. gang PersPsy 5 260216",
+          "source_family": "lecture_slide",
+          "priority_band": "supporting",
+          "length_band": "long",
+          "weight_score": 34,
+          "weight_band": "contextual",
+          "term_ids": [],
+          "theory_ids": [],
+          "breakdown": {
+            "family_base": 18,
+            "priority_band": 10,
+            "length_band": 6,
+            "manual_summary": 0,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 0,
+            "token_volume": 0,
+            "term_coverage": 0,
+            "theory_coverage": 0
+          }
+        },
+        {
+          "source_id": "w03l1-seminar-5-psykoanalyse-ii-4354fbb7",
+          "lecture_key": "W03L1",
+          "lecture_title": "Culture, evolution, genetics, and personality (Forelæsning 5, 2026-02-16)",
+          "title": "5. Psykoanalyse II",
+          "source_family": "seminar_slide",
+          "priority_band": "contextual",
+          "length_band": "medium",
+          "weight_score": 23,
+          "weight_band": "contextual",
+          "term_ids": [],
+          "theory_ids": [],
+          "breakdown": {
+            "family_base": 14,
+            "priority_band": 6,
+            "length_band": 3,
+            "manual_summary": 0,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 0,
+            "token_volume": 0,
+            "term_coverage": 0,
+            "theory_coverage": 0
+          }
+        }
+      ],
+      "anchor_source_ids": [
+        "w03l1-lu-benet-martinez-and-wang-2023-38a36550"
+      ],
+      "major_source_ids": [
+        "w03l1-volk-and-puchalski-2025-60aaf5d0",
+        "w03l1-kandler-and-instinske-2025-01535a8e",
+        "w03l1-zettler-et-al-2025-6ce9bdc0"
+      ]
+    },
+    {
+      "lecture_key": "W03L2",
+      "lecture_title": "Personlighedsfunktion og forstyrrelse (Forelæsning 6, 2026-02-17)",
+      "ranked_sources": [
+        {
+          "source_id": "w03l2-sharp-and-wall-2021-cb92ecf4",
+          "lecture_key": "W03L2",
+          "lecture_title": "Personlighedsfunktion og forstyrrelse (Forelæsning 6, 2026-02-17)",
+          "title": "Sharp & Wall (2021)",
+          "source_family": "reading",
+          "priority_band": "core",
+          "length_band": "medium",
+          "weight_score": 101,
+          "weight_band": "anchor",
+          "term_ids": [
+            "personality_dimensions",
+            "personality_functioning"
+          ],
+          "theory_ids": [
+            "personality_functioning_and_pathology",
+            "psychoanalytic_personality_theory",
+            "trait_and_assessment_psychology"
+          ],
+          "breakdown": {
+            "family_base": 40,
+            "priority_band": 18,
+            "length_band": 3,
+            "manual_summary": 6,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 10,
+            "token_volume": 6,
+            "term_coverage": 6,
+            "theory_coverage": 12
+          }
+        },
+        {
+          "source_id": "w03l2-lecture-6-gang-personality-functioning-2026-bo-bach-542bbd7e",
+          "lecture_key": "W03L2",
+          "lecture_title": "Personlighedsfunktion og forstyrrelse (Forelæsning 6, 2026-02-17)",
+          "title": "6. gang Personality Functioning 2026 (Bo Bach)",
+          "source_family": "lecture_slide",
+          "priority_band": "supporting",
+          "length_band": "medium",
+          "weight_score": 42,
+          "weight_band": "contextual",
+          "term_ids": [
+            "personality_functioning"
+          ],
+          "theory_ids": [
+            "personality_functioning_and_pathology",
+            "psychoanalytic_personality_theory"
+          ],
+          "breakdown": {
+            "family_base": 18,
+            "priority_band": 10,
+            "length_band": 3,
+            "manual_summary": 0,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 0,
+            "token_volume": 0,
+            "term_coverage": 3,
+            "theory_coverage": 8
+          }
+        },
+        {
+          "source_id": "w03l2-bach-and-simonsen-2023-d58362ff",
+          "lecture_key": "W03L2",
+          "lecture_title": "Personlighedsfunktion og forstyrrelse (Forelæsning 6, 2026-02-17)",
+          "title": "Bach & Simonsen (2023)",
+          "source_family": "reading",
+          "priority_band": "missing",
+          "length_band": "short",
+          "weight_score": 0,
+          "weight_band": "missing",
+          "term_ids": [],
+          "theory_ids": [],
+          "breakdown": {
+            "family_base": 0,
+            "priority_band": 0,
+            "length_band": 0,
+            "manual_summary": 0,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 0,
+            "token_volume": 0,
+            "term_coverage": 0,
+            "theory_coverage": 0
+          }
+        }
+      ],
+      "anchor_source_ids": [
+        "w03l2-sharp-and-wall-2021-cb92ecf4"
+      ],
+      "major_source_ids": []
+    },
+    {
+      "lecture_key": "W04L1",
+      "lecture_title": "Psykoanalysens personlighedsbegreb (Forelæsning 7, 2026-02-23)",
+      "ranked_sources": [
+        {
+          "source_id": "w04l1-gammelgaard-2007-bcbdbec2",
+          "lecture_key": "W04L1",
+          "lecture_title": "Psykoanalysens personlighedsbegreb (Forelæsning 7, 2026-02-23)",
+          "title": "Gammelgaard (2007)",
+          "source_family": "reading",
+          "priority_band": "core",
+          "length_band": "long",
+          "weight_score": 87,
+          "weight_band": "major",
+          "term_ids": [
+            "psychoanalysis"
+          ],
+          "theory_ids": [
+            "psychoanalytic_personality_theory"
+          ],
+          "breakdown": {
+            "family_base": 40,
+            "priority_band": 18,
+            "length_band": 6,
+            "manual_summary": 6,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 10,
+            "token_volume": 0,
+            "term_coverage": 3,
+            "theory_coverage": 4
+          }
+        },
+        {
+          "source_id": "w04l1-freud-1973-1933-98cd9920",
+          "lecture_key": "W04L1",
+          "lecture_title": "Psykoanalysens personlighedsbegreb (Forelæsning 7, 2026-02-23)",
+          "title": "Freud (1973/1933)",
+          "source_family": "reading",
+          "priority_band": "primary",
+          "length_band": "medium",
+          "weight_score": 73,
+          "weight_band": "major",
+          "term_ids": [],
+          "theory_ids": [],
+          "breakdown": {
+            "family_base": 40,
+            "priority_band": 14,
+            "length_band": 3,
+            "manual_summary": 6,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 10,
+            "token_volume": 0,
+            "term_coverage": 0,
+            "theory_coverage": 0
+          }
+        },
+        {
+          "source_id": "w04l1-lecture-7-psykoanalysens-personbegreb-1e91ce22",
+          "lecture_key": "W04L1",
+          "lecture_title": "Psykoanalysens personlighedsbegreb (Forelæsning 7, 2026-02-23)",
+          "title": "7. Psykoanalysens personbegreb",
+          "source_family": "lecture_slide",
+          "priority_band": "supporting",
+          "length_band": "long",
+          "weight_score": 44,
+          "weight_band": "contextual",
+          "term_ids": [
+            "psychoanalysis"
+          ],
+          "theory_ids": [
+            "psychoanalytic_personality_theory"
+          ],
+          "breakdown": {
+            "family_base": 18,
+            "priority_band": 10,
+            "length_band": 6,
+            "manual_summary": 0,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 0,
+            "token_volume": 3,
+            "term_coverage": 3,
+            "theory_coverage": 4
+          }
+        },
+        {
+          "source_id": "w04l1-seminar-4-psykoanalyse-i-94151a16",
+          "lecture_key": "W04L1",
+          "lecture_title": "Psykoanalysens personlighedsbegreb (Forelæsning 7, 2026-02-23)",
+          "title": "4. Psykoanalyse I",
+          "source_family": "seminar_slide",
+          "priority_band": "contextual",
+          "length_band": "medium",
+          "weight_score": 30,
+          "weight_band": "contextual",
+          "term_ids": [
+            "psychoanalysis"
+          ],
+          "theory_ids": [
+            "psychoanalytic_personality_theory"
+          ],
+          "breakdown": {
+            "family_base": 14,
+            "priority_band": 6,
+            "length_band": 3,
+            "manual_summary": 0,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 0,
+            "token_volume": 0,
+            "term_coverage": 3,
+            "theory_coverage": 4
+          }
+        }
+      ],
+      "anchor_source_ids": [],
+      "major_source_ids": [
+        "w04l1-gammelgaard-2007-bcbdbec2",
+        "w04l1-freud-1973-1933-98cd9920"
+      ]
+    },
+    {
+      "lecture_key": "W04L2",
+      "lecture_title": "Psykoanalytisk personlighedsstruktur (Forelæsning 8, 2026-02-24)",
+      "ranked_sources": [
+        {
+          "source_id": "w04l2-laplanche-1970-968862d5",
+          "lecture_key": "W04L2",
+          "lecture_title": "Psykoanalytisk personlighedsstruktur (Forelæsning 8, 2026-02-24)",
+          "title": "Laplanche (1970)",
+          "source_family": "reading",
+          "priority_band": "core",
+          "length_band": "long",
+          "weight_score": 93,
+          "weight_band": "anchor",
+          "term_ids": [
+            "psychoanalysis"
+          ],
+          "theory_ids": [
+            "psychoanalytic_personality_theory"
+          ],
+          "breakdown": {
+            "family_base": 40,
+            "priority_band": 18,
+            "length_band": 6,
+            "manual_summary": 6,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 10,
+            "token_volume": 6,
+            "term_coverage": 3,
+            "theory_coverage": 4
+          }
+        },
+        {
+          "source_id": "w04l2-lacan-1966-2d720f56",
+          "lecture_key": "W04L2",
+          "lecture_title": "Psykoanalytisk personlighedsstruktur (Forelæsning 8, 2026-02-24)",
+          "title": "Lacan (1966)",
+          "source_family": "reading",
+          "priority_band": "primary",
+          "length_band": "short",
+          "weight_score": 81,
+          "weight_band": "major",
+          "term_ids": [
+            "personality_structure"
+          ],
+          "theory_ids": [
+            "personality_functioning_and_pathology",
+            "psychoanalytic_personality_theory"
+          ],
+          "breakdown": {
+            "family_base": 40,
+            "priority_band": 14,
+            "length_band": 0,
+            "manual_summary": 6,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 10,
+            "token_volume": 0,
+            "term_coverage": 3,
+            "theory_coverage": 8
+          }
+        },
+        {
+          "source_id": "w04l2-lecture-8-psykoanalytisk-personlighedsstruktur-1e653ba9",
+          "lecture_key": "W04L2",
+          "lecture_title": "Psykoanalytisk personlighedsstruktur (Forelæsning 8, 2026-02-24)",
+          "title": "8. Psykoanalytisk personlighedsstruktur",
+          "source_family": "lecture_slide",
+          "priority_band": "supporting",
+          "length_band": "long",
+          "weight_score": 51,
+          "weight_band": "supporting",
+          "term_ids": [
+            "personality_structure",
+            "psychoanalysis"
+          ],
+          "theory_ids": [
+            "personality_functioning_and_pathology",
+            "psychoanalytic_personality_theory"
+          ],
+          "breakdown": {
+            "family_base": 18,
+            "priority_band": 10,
+            "length_band": 6,
+            "manual_summary": 0,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 0,
+            "token_volume": 3,
+            "term_coverage": 6,
+            "theory_coverage": 8
+          }
+        },
+        {
+          "source_id": "w04l1-seminar-4-psykoanalyse-i-94151a16",
+          "lecture_key": "W04L2",
+          "lecture_title": "Psykoanalytisk personlighedsstruktur (Forelæsning 8, 2026-02-24)",
+          "title": "4. Psykoanalyse I",
+          "source_family": "seminar_slide",
+          "priority_band": "contextual",
+          "length_band": "medium",
+          "weight_score": 30,
+          "weight_band": "contextual",
+          "term_ids": [
+            "psychoanalysis"
+          ],
+          "theory_ids": [
+            "psychoanalytic_personality_theory"
+          ],
+          "breakdown": {
+            "family_base": 14,
+            "priority_band": 6,
+            "length_band": 3,
+            "manual_summary": 0,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 0,
+            "token_volume": 0,
+            "term_coverage": 3,
+            "theory_coverage": 4
+          }
+        }
+      ],
+      "anchor_source_ids": [
+        "w04l2-laplanche-1970-968862d5"
+      ],
+      "major_source_ids": [
+        "w04l2-lacan-1966-2d720f56"
+      ]
+    },
+    {
+      "lecture_key": "W05L1",
+      "lecture_title": "Empiri og metode i psykoanalysen (Forelæsning 9, 2026-03-02)",
+      "ranked_sources": [
+        {
+          "source_id": "w05l1-ricoeur-1981-19a5343f",
+          "lecture_key": "W05L1",
+          "lecture_title": "Empiri og metode i psykoanalysen (Forelæsning 9, 2026-03-02)",
+          "title": "Ricoeur (1981)",
+          "source_family": "reading",
+          "priority_band": "core",
+          "length_band": "long",
+          "weight_score": 93,
+          "weight_band": "anchor",
+          "term_ids": [
+            "psychoanalysis"
+          ],
+          "theory_ids": [
+            "psychoanalytic_personality_theory"
+          ],
+          "breakdown": {
+            "family_base": 40,
+            "priority_band": 18,
+            "length_band": 6,
+            "manual_summary": 6,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 10,
+            "token_volume": 6,
+            "term_coverage": 3,
+            "theory_coverage": 4
+          }
+        },
+        {
+          "source_id": "w05l1-freud-s-1984-1905-brudstykke-af-en-hysteri-analy-df466bb5",
+          "lecture_key": "W05L1",
+          "lecture_title": "Empiri og metode i psykoanalysen (Forelæsning 9, 2026-03-02)",
+          "title": "Freud, S. (1984/1905). Brudstykke af en hysteri-analyse",
+          "source_family": "reading",
+          "priority_band": "core",
+          "length_band": "long",
+          "weight_score": 86,
+          "weight_band": "major",
+          "term_ids": [],
+          "theory_ids": [],
+          "breakdown": {
+            "family_base": 40,
+            "priority_band": 18,
+            "length_band": 6,
+            "manual_summary": 6,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 10,
+            "token_volume": 6,
+            "term_coverage": 0,
+            "theory_coverage": 0
+          }
+        },
+        {
+          "source_id": "w05l1-gammelgaard-2010-e6baff8b",
+          "lecture_key": "W05L1",
+          "lecture_title": "Empiri og metode i psykoanalysen (Forelæsning 9, 2026-03-02)",
+          "title": "Gammelgaard (2010)",
+          "source_family": "reading",
+          "priority_band": "primary",
+          "length_band": "medium",
+          "weight_score": 80,
+          "weight_band": "major",
+          "term_ids": [
+            "psychoanalysis"
+          ],
+          "theory_ids": [
+            "psychoanalytic_personality_theory"
+          ],
+          "breakdown": {
+            "family_base": 40,
+            "priority_band": 14,
+            "length_band": 3,
+            "manual_summary": 6,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 10,
+            "token_volume": 0,
+            "term_coverage": 3,
+            "theory_coverage": 4
+          }
+        },
+        {
+          "source_id": "w05l1-lecture-9-psykoanalysens-empiri-og-metode-f8e26ec5",
+          "lecture_key": "W05L1",
+          "lecture_title": "Empiri og metode i psykoanalysen (Forelæsning 9, 2026-03-02)",
+          "title": "9. Psykoanalysens empiri og metode",
+          "source_family": "lecture_slide",
+          "priority_band": "supporting",
+          "length_band": "long",
+          "weight_score": 44,
+          "weight_band": "contextual",
+          "term_ids": [
+            "psychoanalysis"
+          ],
+          "theory_ids": [
+            "psychoanalytic_personality_theory"
+          ],
+          "breakdown": {
+            "family_base": 18,
+            "priority_band": 10,
+            "length_band": 6,
+            "manual_summary": 0,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 0,
+            "token_volume": 3,
+            "term_coverage": 3,
+            "theory_coverage": 4
+          }
+        },
+        {
+          "source_id": "w05l1-exercise-2-psykoanalyse-1-og-intro-1-d9bc77f5",
+          "lecture_key": "W05L1",
+          "lecture_title": "Empiri og metode i psykoanalysen (Forelæsning 9, 2026-03-02)",
+          "title": "1. Psykoanalyse",
+          "source_family": "exercise_slide",
+          "priority_band": "contextual",
+          "length_band": "medium",
+          "weight_score": 26,
+          "weight_band": "contextual",
+          "term_ids": [
+            "psychoanalysis"
+          ],
+          "theory_ids": [
+            "psychoanalytic_personality_theory"
+          ],
+          "breakdown": {
+            "family_base": 10,
+            "priority_band": 6,
+            "length_band": 3,
+            "manual_summary": 0,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 0,
+            "token_volume": 0,
+            "term_coverage": 3,
+            "theory_coverage": 4
+          }
+        }
+      ],
+      "anchor_source_ids": [
+        "w05l1-ricoeur-1981-19a5343f"
+      ],
+      "major_source_ids": [
+        "w05l1-freud-s-1984-1905-brudstykke-af-en-hysteri-analy-df466bb5",
+        "w05l1-gammelgaard-2010-e6baff8b"
+      ]
+    },
+    {
+      "lecture_key": "W05L2",
+      "lecture_title": "Psykoanalysens konstituering (Forelæsning 10, 2026-03-03)",
+      "ranked_sources": [
+        {
+          "source_id": "w05l2-k-ppe-1992-9a474402",
+          "lecture_key": "W05L2",
+          "lecture_title": "Psykoanalysens konstituering (Forelæsning 10, 2026-03-03)",
+          "title": "Køppe (1992)",
+          "source_family": "reading",
+          "priority_band": "core",
+          "length_band": "medium",
+          "weight_score": 90,
+          "weight_band": "anchor",
+          "term_ids": [
+            "psychoanalysis"
+          ],
+          "theory_ids": [
+            "psychoanalytic_personality_theory"
+          ],
+          "breakdown": {
+            "family_base": 40,
+            "priority_band": 18,
+            "length_band": 3,
+            "manual_summary": 6,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 10,
+            "token_volume": 6,
+            "term_coverage": 3,
+            "theory_coverage": 4
+          }
+        },
+        {
+          "source_id": "w05l2-grundbog-kapitel-7-nyere-psykoanalytiske-teorier-fda84b6a",
+          "lecture_key": "W05L2",
+          "lecture_title": "Psykoanalysens konstituering (Forelæsning 10, 2026-03-03)",
+          "title": "Grundbog kapitel 07 - Nyere psykoanalytiske teorier",
+          "source_family": "reading",
+          "priority_band": "core",
+          "length_band": "long",
+          "weight_score": 87,
+          "weight_band": "major",
+          "term_ids": [
+            "psychoanalysis"
+          ],
+          "theory_ids": [
+            "psychoanalytic_personality_theory"
+          ],
+          "breakdown": {
+            "family_base": 40,
+            "priority_band": 18,
+            "length_band": 6,
+            "manual_summary": 6,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 10,
+            "token_volume": 0,
+            "term_coverage": 3,
+            "theory_coverage": 4
+          }
+        },
+        {
+          "source_id": "w05l2-andkj-r-olsen-and-k-ppe-1991a-1991b-720b5d8e",
+          "lecture_key": "W05L2",
+          "lecture_title": "Psykoanalysens konstituering (Forelæsning 10, 2026-03-03)",
+          "title": "Andkjær Olsen & Køppe (1991a + 1991b)",
+          "source_family": "reading",
+          "priority_band": "core",
+          "length_band": "medium",
+          "weight_score": 83,
+          "weight_band": "major",
+          "term_ids": [],
+          "theory_ids": [],
+          "breakdown": {
+            "family_base": 40,
+            "priority_band": 18,
+            "length_band": 3,
+            "manual_summary": 6,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 10,
+            "token_volume": 6,
+            "term_coverage": 0,
+            "theory_coverage": 0
+          }
+        },
+        {
+          "source_id": "w05l2-lecture-10-psykoanalysens-konstituering-513290eb",
+          "lecture_key": "W05L2",
+          "lecture_title": "Psykoanalysens konstituering (Forelæsning 10, 2026-03-03)",
+          "title": "10. Psykoanalysens konstituering",
+          "source_family": "lecture_slide",
+          "priority_band": "supporting",
+          "length_band": "short",
+          "weight_score": 35,
+          "weight_band": "contextual",
+          "term_ids": [
+            "psychoanalysis"
+          ],
+          "theory_ids": [
+            "psychoanalytic_personality_theory"
+          ],
+          "breakdown": {
+            "family_base": 18,
+            "priority_band": 10,
+            "length_band": 0,
+            "manual_summary": 0,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 0,
+            "token_volume": 0,
+            "term_coverage": 3,
+            "theory_coverage": 4
+          }
+        }
+      ],
+      "anchor_source_ids": [
+        "w05l2-k-ppe-1992-9a474402"
+      ],
+      "major_source_ids": [
+        "w05l2-grundbog-kapitel-7-nyere-psykoanalytiske-teorier-fda84b6a",
+        "w05l2-andkj-r-olsen-and-k-ppe-1991a-1991b-720b5d8e"
+      ]
+    },
+    {
+      "lecture_key": "W06L1",
+      "lecture_title": "Fænomenologi (Forelæsning 11, 2026-03-09)",
+      "ranked_sources": [
+        {
+          "source_id": "w06l1-moesk-r-hansen-and-roald-2022-b7aec462",
+          "lecture_key": "W06L1",
+          "lecture_title": "Fænomenologi (Forelæsning 11, 2026-03-09)",
+          "title": "Moeskær Hansen & Roald (2022)",
+          "source_family": "reading",
+          "priority_band": "core",
+          "length_band": "long",
+          "weight_score": 104,
+          "weight_band": "anchor",
+          "term_ids": [
+            "meaning_making",
+            "phenomenology"
+          ],
+          "theory_ids": [
+            "existential_psychology",
+            "humanistic_psychology",
+            "narrative_psychology",
+            "phenomenological_psychology"
+          ],
+          "breakdown": {
+            "family_base": 40,
+            "priority_band": 18,
+            "length_band": 6,
+            "manual_summary": 6,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 10,
+            "token_volume": 6,
+            "term_coverage": 6,
+            "theory_coverage": 12
+          }
+        },
+        {
+          "source_id": "w06l1-spinelli-2005-b2f76e93",
+          "lecture_key": "W06L1",
+          "lecture_title": "Fænomenologi (Forelæsning 11, 2026-03-09)",
+          "title": "Spinelli (2005)",
+          "source_family": "reading",
+          "priority_band": "core",
+          "length_band": "long",
+          "weight_score": 104,
+          "weight_band": "anchor",
+          "term_ids": [
+            "meaning_making",
+            "phenomenology"
+          ],
+          "theory_ids": [
+            "existential_psychology",
+            "humanistic_psychology",
+            "narrative_psychology",
+            "phenomenological_psychology"
+          ],
+          "breakdown": {
+            "family_base": 40,
+            "priority_band": 18,
+            "length_band": 6,
+            "manual_summary": 6,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 10,
+            "token_volume": 6,
+            "term_coverage": 6,
+            "theory_coverage": 12
+          }
+        },
+        {
+          "source_id": "w06l1-grundbog-kapitel-4-f-nomenologisk-personlighedsp-1afa74d2",
+          "lecture_key": "W06L1",
+          "lecture_title": "Fænomenologi (Forelæsning 11, 2026-03-09)",
+          "title": "Grundbog kapitel 04 - Fænomenologisk personlighedspsykologi",
+          "source_family": "reading",
+          "priority_band": "core",
+          "length_band": "long",
+          "weight_score": 101,
+          "weight_band": "anchor",
+          "term_ids": [
+            "first_person_perspective",
+            "meaning_making",
+            "phenomenology"
+          ],
+          "theory_ids": [
+            "existential_psychology",
+            "humanistic_psychology",
+            "narrative_psychology",
+            "phenomenological_psychology"
+          ],
+          "breakdown": {
+            "family_base": 40,
+            "priority_band": 18,
+            "length_band": 6,
+            "manual_summary": 6,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 10,
+            "token_volume": 0,
+            "term_coverage": 9,
+            "theory_coverage": 12
+          }
+        },
+        {
+          "source_id": "w06l1-lecture-11-f-nomenologisk-personlighedspsykologi2026-6303af4b",
+          "lecture_key": "W06L1",
+          "lecture_title": "Fænomenologi (Forelæsning 11, 2026-03-09)",
+          "title": "11. Fænomenologisk personlighedspsykologi2026",
+          "source_family": "lecture_slide",
+          "priority_band": "supporting",
+          "length_band": "long",
+          "weight_score": 45,
+          "weight_band": "contextual",
+          "term_ids": [
+            "phenomenology"
+          ],
+          "theory_ids": [
+            "existential_psychology",
+            "phenomenological_psychology"
+          ],
+          "breakdown": {
+            "family_base": 18,
+            "priority_band": 10,
+            "length_band": 6,
+            "manual_summary": 0,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 0,
+            "token_volume": 0,
+            "term_coverage": 3,
+            "theory_coverage": 8
+          }
+        }
+      ],
+      "anchor_source_ids": [
+        "w06l1-moesk-r-hansen-and-roald-2022-b7aec462",
+        "w06l1-spinelli-2005-b2f76e93",
+        "w06l1-grundbog-kapitel-4-f-nomenologisk-personlighedsp-1afa74d2"
+      ],
+      "major_source_ids": []
+    },
+    {
+      "lecture_key": "W06L2",
+      "lecture_title": "Eksistentiel personlighedspsykologi I (Funch) (Forelæsning 12, 2026-03-10)",
+      "ranked_sources": [
+        {
+          "source_id": "w06l2-may-1966-d8406a09",
+          "lecture_key": "W06L2",
+          "lecture_title": "Eksistentiel personlighedspsykologi I (Funch) (Forelæsning 12, 2026-03-10)",
+          "title": "May (1966)",
+          "source_family": "reading",
+          "priority_band": "core",
+          "length_band": "long",
+          "weight_score": 95,
+          "weight_band": "anchor",
+          "term_ids": [
+            "existential_personality_psychology"
+          ],
+          "theory_ids": [
+            "existential_psychology",
+            "humanistic_psychology",
+            "phenomenological_psychology"
+          ],
+          "breakdown": {
+            "family_base": 40,
+            "priority_band": 18,
+            "length_band": 6,
+            "manual_summary": 6,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 10,
+            "token_volume": 0,
+            "term_coverage": 3,
+            "theory_coverage": 12
+          }
+        },
+        {
+          "source_id": "w06l2-boss-1963-1feb5a5f",
+          "lecture_key": "W06L2",
+          "lecture_title": "Eksistentiel personlighedspsykologi I (Funch) (Forelæsning 12, 2026-03-10)",
+          "title": "Boss (1963)",
+          "source_family": "reading",
+          "priority_band": "primary",
+          "length_band": "medium",
+          "weight_score": 88,
+          "weight_band": "major",
+          "term_ids": [
+            "existential_personality_psychology"
+          ],
+          "theory_ids": [
+            "existential_psychology",
+            "humanistic_psychology",
+            "phenomenological_psychology"
+          ],
+          "breakdown": {
+            "family_base": 40,
+            "priority_band": 14,
+            "length_band": 3,
+            "manual_summary": 6,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 10,
+            "token_volume": 0,
+            "term_coverage": 3,
+            "theory_coverage": 12
+          }
+        }
+      ],
+      "anchor_source_ids": [
+        "w06l2-may-1966-d8406a09"
+      ],
+      "major_source_ids": [
+        "w06l2-boss-1963-1feb5a5f"
+      ]
+    },
+    {
+      "lecture_key": "W07L1",
+      "lecture_title": "Eksistentiel personlighedspsykologi II (Bjerregaard-Nielsen) (Forelæsning 13, 2026-03-16)",
+      "ranked_sources": [
+        {
+          "source_id": "w07l1-cooper-2003-ee3c34b7",
+          "lecture_key": "W07L1",
+          "lecture_title": "Eksistentiel personlighedspsykologi II (Bjerregaard-Nielsen) (Forelæsning 13, 2026-03-16)",
+          "title": "Cooper (2003)",
+          "source_family": "reading",
+          "priority_band": "core",
+          "length_band": "long",
+          "weight_score": 101,
+          "weight_band": "anchor",
+          "term_ids": [
+            "existential_personality_psychology"
+          ],
+          "theory_ids": [
+            "existential_psychology",
+            "humanistic_psychology",
+            "phenomenological_psychology"
+          ],
+          "breakdown": {
+            "family_base": 40,
+            "priority_band": 18,
+            "length_band": 6,
+            "manual_summary": 6,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 10,
+            "token_volume": 6,
+            "term_coverage": 3,
+            "theory_coverage": 12
+          }
+        },
+        {
+          "source_id": "w07l1-jacobsen-2021-26129bff",
+          "lecture_key": "W07L1",
+          "lecture_title": "Eksistentiel personlighedspsykologi II (Bjerregaard-Nielsen) (Forelæsning 13, 2026-03-16)",
+          "title": "Jacobsen (2021)",
+          "source_family": "reading",
+          "priority_band": "primary",
+          "length_band": "medium",
+          "weight_score": 88,
+          "weight_band": "major",
+          "term_ids": [
+            "existential_personality_psychology"
+          ],
+          "theory_ids": [
+            "existential_psychology",
+            "humanistic_psychology",
+            "phenomenological_psychology"
+          ],
+          "breakdown": {
+            "family_base": 40,
+            "priority_band": 14,
+            "length_band": 3,
+            "manual_summary": 6,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 10,
+            "token_volume": 0,
+            "term_coverage": 3,
+            "theory_coverage": 12
+          }
+        },
+        {
+          "source_id": "w07l1-lecture-13-eksistens-ii-2026-fb33e095",
+          "lecture_key": "W07L1",
+          "lecture_title": "Eksistentiel personlighedspsykologi II (Bjerregaard-Nielsen) (Forelæsning 13, 2026-03-16)",
+          "title": "13. Eksistens II. 2026",
+          "source_family": "lecture_slide",
+          "priority_band": "supporting",
+          "length_band": "long",
+          "weight_score": 34,
+          "weight_band": "contextual",
+          "term_ids": [],
+          "theory_ids": [],
+          "breakdown": {
+            "family_base": 18,
+            "priority_band": 10,
+            "length_band": 6,
+            "manual_summary": 0,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 0,
+            "token_volume": 0,
+            "term_coverage": 0,
+            "theory_coverage": 0
+          }
+        }
+      ],
+      "anchor_source_ids": [
+        "w07l1-cooper-2003-ee3c34b7"
+      ],
+      "major_source_ids": [
+        "w07l1-jacobsen-2021-26129bff"
+      ]
+    },
+    {
+      "lecture_key": "W07L2",
+      "lecture_title": "Humanistisk psykologi (Forelæsning 14, 2026-03-17)",
+      "ranked_sources": [
+        {
+          "source_id": "w07l2-giorgi-2005-55ca98f7",
+          "lecture_key": "W07L2",
+          "lecture_title": "Humanistisk psykologi (Forelæsning 14, 2026-03-17)",
+          "title": "Giorgi (2005)",
+          "source_family": "reading",
+          "priority_band": "core",
+          "length_band": "medium",
+          "weight_score": 98,
+          "weight_band": "anchor",
+          "term_ids": [
+            "humanistic_psychology",
+            "meaning_making"
+          ],
+          "theory_ids": [
+            "existential_psychology",
+            "humanistic_psychology",
+            "narrative_psychology",
+            "phenomenological_psychology"
+          ],
+          "breakdown": {
+            "family_base": 40,
+            "priority_band": 18,
+            "length_band": 3,
+            "manual_summary": 6,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 10,
+            "token_volume": 3,
+            "term_coverage": 6,
+            "theory_coverage": 12
+          }
+        },
+        {
+          "source_id": "w07l2-maslow-1968-7ea53e34",
+          "lecture_key": "W07L2",
+          "lecture_title": "Humanistisk psykologi (Forelæsning 14, 2026-03-17)",
+          "title": "Maslow (1968)",
+          "source_family": "reading",
+          "priority_band": "core",
+          "length_band": "long",
+          "weight_score": 97,
+          "weight_band": "anchor",
+          "term_ids": [
+            "humanistic_psychology"
+          ],
+          "theory_ids": [
+            "existential_psychology",
+            "humanistic_psychology"
+          ],
+          "breakdown": {
+            "family_base": 40,
+            "priority_band": 18,
+            "length_band": 6,
+            "manual_summary": 6,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 10,
+            "token_volume": 6,
+            "term_coverage": 3,
+            "theory_coverage": 8
+          }
+        },
+        {
+          "source_id": "w07l2-evans-1975-8e8a9d79",
+          "lecture_key": "W07L2",
+          "lecture_title": "Humanistisk psykologi (Forelæsning 14, 2026-03-17)",
+          "title": "Evans (1975)",
+          "source_family": "reading",
+          "priority_band": "primary",
+          "length_band": "medium",
+          "weight_score": 91,
+          "weight_band": "anchor",
+          "term_ids": [
+            "first_person_perspective",
+            "humanistic_psychology"
+          ],
+          "theory_ids": [
+            "existential_psychology",
+            "humanistic_psychology",
+            "phenomenological_psychology"
+          ],
+          "breakdown": {
+            "family_base": 40,
+            "priority_band": 14,
+            "length_band": 3,
+            "manual_summary": 6,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 10,
+            "token_volume": 0,
+            "term_coverage": 6,
+            "theory_coverage": 12
+          }
+        },
+        {
+          "source_id": "w07l2-lecture-14-humanistisk-psykologi20-d271355d",
+          "lecture_key": "W07L2",
+          "lecture_title": "Humanistisk psykologi (Forelæsning 14, 2026-03-17)",
+          "title": "14. Humanistisk psykologi20",
+          "source_family": "lecture_slide",
+          "priority_band": "supporting",
+          "length_band": "long",
+          "weight_score": 45,
+          "weight_band": "contextual",
+          "term_ids": [
+            "humanistic_psychology"
+          ],
+          "theory_ids": [
+            "existential_psychology",
+            "humanistic_psychology"
+          ],
+          "breakdown": {
+            "family_base": 18,
+            "priority_band": 10,
+            "length_band": 6,
+            "manual_summary": 0,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 0,
+            "token_volume": 0,
+            "term_coverage": 3,
+            "theory_coverage": 8
+          }
+        }
+      ],
+      "anchor_source_ids": [
+        "w07l2-giorgi-2005-55ca98f7",
+        "w07l2-maslow-1968-7ea53e34",
+        "w07l2-evans-1975-8e8a9d79"
+      ],
+      "major_source_ids": []
+    },
+    {
+      "lecture_key": "W08L1",
+      "lecture_title": "Critical personalism (Forelæsning 15, 2026-03-23)",
+      "ranked_sources": [
+        {
+          "source_id": "w08l1-lamiell-2021-be79d36e",
+          "lecture_key": "W08L1",
+          "lecture_title": "Critical personalism (Forelæsning 15, 2026-03-23)",
+          "title": "Lamiell (2021)",
+          "source_family": "reading",
+          "priority_band": "core",
+          "length_band": "medium",
+          "weight_score": 98,
+          "weight_band": "anchor",
+          "term_ids": [
+            "critical_personalism"
+          ],
+          "theory_ids": [
+            "critical_personalism",
+            "critical_psychology",
+            "trait_and_assessment_psychology"
+          ],
+          "breakdown": {
+            "family_base": 40,
+            "priority_band": 18,
+            "length_band": 3,
+            "manual_summary": 6,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 10,
+            "token_volume": 6,
+            "term_coverage": 3,
+            "theory_coverage": 12
+          }
+        },
+        {
+          "source_id": "w08l1-laux-et-al-2010-cfff840c",
+          "lecture_key": "W08L1",
+          "lecture_title": "Critical personalism (Forelæsning 15, 2026-03-23)",
+          "title": "Laux et al (2010)",
+          "source_family": "reading",
+          "priority_band": "primary",
+          "length_band": "short",
+          "weight_score": 88,
+          "weight_band": "major",
+          "term_ids": [
+            "critical_personalism"
+          ],
+          "theory_ids": [
+            "critical_personalism",
+            "critical_psychology",
+            "trait_and_assessment_psychology"
+          ],
+          "breakdown": {
+            "family_base": 40,
+            "priority_band": 14,
+            "length_band": 0,
+            "manual_summary": 6,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 10,
+            "token_volume": 3,
+            "term_coverage": 3,
+            "theory_coverage": 12
+          }
+        },
+        {
+          "source_id": "w08l1-lecture-15-gang-critical-personalism-2026-8648744f",
+          "lecture_key": "W08L1",
+          "lecture_title": "Critical personalism (Forelæsning 15, 2026-03-23)",
+          "title": "15. gang Critical personalism 2026",
+          "source_family": "lecture_slide",
+          "priority_band": "supporting",
+          "length_band": "medium",
+          "weight_score": 46,
+          "weight_band": "contextual",
+          "term_ids": [
+            "critical_personalism"
+          ],
+          "theory_ids": [
+            "critical_personalism",
+            "critical_psychology",
+            "trait_and_assessment_psychology"
+          ],
+          "breakdown": {
+            "family_base": 18,
+            "priority_band": 10,
+            "length_band": 3,
+            "manual_summary": 0,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 0,
+            "token_volume": 0,
+            "term_coverage": 3,
+            "theory_coverage": 12
+          }
+        }
+      ],
+      "anchor_source_ids": [
+        "w08l1-lamiell-2021-be79d36e"
+      ],
+      "major_source_ids": [
+        "w08l1-laux-et-al-2010-cfff840c"
+      ]
+    },
+    {
+      "lecture_key": "W08L2",
+      "lecture_title": "Critical psychology (Forelæsning 16, 2026-03-24)",
+      "ranked_sources": [
+        {
+          "source_id": "w08l2-holzkamp-1982-845aafd2",
+          "lecture_key": "W08L2",
+          "lecture_title": "Critical psychology (Forelæsning 16, 2026-03-24)",
+          "title": "Holzkamp (1982)",
+          "source_family": "reading",
+          "priority_band": "core",
+          "length_band": "long",
+          "weight_score": 91,
+          "weight_band": "anchor",
+          "term_ids": [
+            "critical_psychology"
+          ],
+          "theory_ids": [
+            "critical_psychology",
+            "sociocultural_poststructural_approaches"
+          ],
+          "breakdown": {
+            "family_base": 40,
+            "priority_band": 18,
+            "length_band": 6,
+            "manual_summary": 6,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 10,
+            "token_volume": 0,
+            "term_coverage": 3,
+            "theory_coverage": 8
+          }
+        },
+        {
+          "source_id": "w08l2-tolman-2009-455915e0",
+          "lecture_key": "W08L2",
+          "lecture_title": "Critical psychology (Forelæsning 16, 2026-03-24)",
+          "title": "Tolman (2009)",
+          "source_family": "reading",
+          "priority_band": "core",
+          "length_band": "medium",
+          "weight_score": 91,
+          "weight_band": "anchor",
+          "term_ids": [
+            "critical_psychology"
+          ],
+          "theory_ids": [
+            "critical_psychology",
+            "sociocultural_poststructural_approaches"
+          ],
+          "breakdown": {
+            "family_base": 40,
+            "priority_band": 18,
+            "length_band": 3,
+            "manual_summary": 6,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 10,
+            "token_volume": 3,
+            "term_coverage": 3,
+            "theory_coverage": 8
+          }
+        },
+        {
+          "source_id": "w08l2-lecture-16-gang-critical-psych-2026-1b13783c",
+          "lecture_key": "W08L2",
+          "lecture_title": "Critical psychology (Forelæsning 16, 2026-03-24)",
+          "title": "16. gang Critical psych 2026",
+          "source_family": "lecture_slide",
+          "priority_band": "supporting",
+          "length_band": "medium",
+          "weight_score": 42,
+          "weight_band": "contextual",
+          "term_ids": [
+            "critical_psychology"
+          ],
+          "theory_ids": [
+            "critical_psychology",
+            "sociocultural_poststructural_approaches"
+          ],
+          "breakdown": {
+            "family_base": 18,
+            "priority_band": 10,
+            "length_band": 3,
+            "manual_summary": 0,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 0,
+            "token_volume": 0,
+            "term_coverage": 3,
+            "theory_coverage": 8
+          }
+        }
+      ],
+      "anchor_source_ids": [
+        "w08l2-holzkamp-1982-845aafd2",
+        "w08l2-tolman-2009-455915e0"
+      ],
+      "major_source_ids": []
+    },
+    {
+      "lecture_key": "W09L1",
+      "lecture_title": "Kritisk psykologi (Forelæsning 17, 2026-04-07)",
+      "ranked_sources": [
+        {
+          "source_id": "w09l1-grundbog-kapitel-10-kritisk-psykologi-b3286662",
+          "lecture_key": "W09L1",
+          "lecture_title": "Kritisk psykologi (Forelæsning 17, 2026-04-07)",
+          "title": "Grundbog kapitel 10 - Kritisk psykologi",
+          "source_family": "reading",
+          "priority_band": "core",
+          "length_band": "long",
+          "weight_score": 91,
+          "weight_band": "anchor",
+          "term_ids": [
+            "critical_psychology"
+          ],
+          "theory_ids": [
+            "critical_psychology",
+            "sociocultural_poststructural_approaches"
+          ],
+          "breakdown": {
+            "family_base": 40,
+            "priority_band": 18,
+            "length_band": 6,
+            "manual_summary": 6,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 10,
+            "token_volume": 0,
+            "term_coverage": 3,
+            "theory_coverage": 8
+          }
+        },
+        {
+          "source_id": "w09l1-m-rch-and-hansen-2015-b1dbfc5f",
+          "lecture_key": "W09L1",
+          "lecture_title": "Kritisk psykologi (Forelæsning 17, 2026-04-07)",
+          "title": "Mørch & Hansen (2015)",
+          "source_family": "reading",
+          "priority_band": "core",
+          "length_band": "long",
+          "weight_score": 86,
+          "weight_band": "major",
+          "term_ids": [],
+          "theory_ids": [],
+          "breakdown": {
+            "family_base": 40,
+            "priority_band": 18,
+            "length_band": 6,
+            "manual_summary": 6,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 10,
+            "token_volume": 6,
+            "term_coverage": 0,
+            "theory_coverage": 0
+          }
+        },
+        {
+          "source_id": "w09l1-holzkamp-2013-c3068d8a",
+          "lecture_key": "W09L1",
+          "lecture_title": "Kritisk psykologi (Forelæsning 17, 2026-04-07)",
+          "title": "Holzkamp (2013)",
+          "source_family": "reading",
+          "priority_band": "primary",
+          "length_band": "medium",
+          "weight_score": 84,
+          "weight_band": "major",
+          "term_ids": [
+            "critical_psychology"
+          ],
+          "theory_ids": [
+            "critical_psychology",
+            "sociocultural_poststructural_approaches"
+          ],
+          "breakdown": {
+            "family_base": 40,
+            "priority_band": 14,
+            "length_band": 3,
+            "manual_summary": 6,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 10,
+            "token_volume": 0,
+            "term_coverage": 3,
+            "theory_coverage": 8
+          }
+        },
+        {
+          "source_id": "w09l1-dreier-1999-35da58b5",
+          "lecture_key": "W09L1",
+          "lecture_title": "Kritisk psykologi (Forelæsning 17, 2026-04-07)",
+          "title": "Dreier (1999)",
+          "source_family": "reading",
+          "priority_band": "primary",
+          "length_band": "short",
+          "weight_score": 81,
+          "weight_band": "major",
+          "term_ids": [
+            "person_situation_interplay"
+          ],
+          "theory_ids": [
+            "critical_psychology",
+            "dynamic_personality_development"
+          ],
+          "breakdown": {
+            "family_base": 40,
+            "priority_band": 14,
+            "length_band": 0,
+            "manual_summary": 6,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 10,
+            "token_volume": 0,
+            "term_coverage": 3,
+            "theory_coverage": 8
+          }
+        },
+        {
+          "source_id": "w09l1-lecture-17-kritisk-psykologi-30798115",
+          "lecture_key": "W09L1",
+          "lecture_title": "Kritisk psykologi (Forelæsning 17, 2026-04-07)",
+          "title": "17. Kritisk psykologi",
+          "source_family": "lecture_slide",
+          "priority_band": "primary",
+          "length_band": "long",
+          "weight_score": 56,
+          "weight_band": "supporting",
+          "term_ids": [
+            "critical_psychology"
+          ],
+          "theory_ids": [
+            "critical_psychology",
+            "sociocultural_poststructural_approaches"
+          ],
+          "breakdown": {
+            "family_base": 18,
+            "priority_band": 14,
+            "length_band": 6,
+            "manual_summary": 0,
+            "analysis_sidecar": 4,
+            "week_analysis_context": 0,
+            "likely_core_source": 0,
+            "token_volume": 3,
+            "term_coverage": 3,
+            "theory_coverage": 8
+          }
+        }
+      ],
+      "anchor_source_ids": [
+        "w09l1-grundbog-kapitel-10-kritisk-psykologi-b3286662"
+      ],
+      "major_source_ids": [
+        "w09l1-m-rch-and-hansen-2015-b1dbfc5f",
+        "w09l1-holzkamp-2013-c3068d8a",
+        "w09l1-dreier-1999-35da58b5"
+      ]
+    },
+    {
+      "lecture_key": "W10L1",
+      "lecture_title": "Køn (Forelæsning 18, 2026-04-13)",
+      "ranked_sources": [
+        {
+          "source_id": "w10l1-mitchell-2015-bc690b36",
+          "lecture_key": "W10L1",
+          "lecture_title": "Køn (Forelæsning 18, 2026-04-13)",
+          "title": "Mitchell (2015)",
+          "source_family": "reading",
+          "priority_band": "core",
+          "length_band": "long",
+          "weight_score": 96,
+          "weight_band": "anchor",
+          "term_ids": [
+            "feminist_theory",
+            "gender"
+          ],
+          "theory_ids": [
+            "sociocultural_poststructural_approaches"
+          ],
+          "breakdown": {
+            "family_base": 40,
+            "priority_band": 18,
+            "length_band": 6,
+            "manual_summary": 6,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 10,
+            "token_volume": 6,
+            "term_coverage": 6,
+            "theory_coverage": 4
+          }
+        },
+        {
+          "source_id": "w10l1-bjerrum-nielsen-and-rudberg-2006-39335ee6",
+          "lecture_key": "W10L1",
+          "lecture_title": "Køn (Forelæsning 18, 2026-04-13)",
+          "title": "Bjerrum Nielsen & Rudberg (2006)",
+          "source_family": "reading",
+          "priority_band": "core",
+          "length_band": "long",
+          "weight_score": 87,
+          "weight_band": "major",
+          "term_ids": [
+            "gender"
+          ],
+          "theory_ids": [
+            "sociocultural_poststructural_approaches"
+          ],
+          "breakdown": {
+            "family_base": 40,
+            "priority_band": 18,
+            "length_band": 6,
+            "manual_summary": 6,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 0,
+            "likely_core_source": 10,
+            "token_volume": 0,
+            "term_coverage": 3,
+            "theory_coverage": 4
+          }
+        }
+      ],
+      "anchor_source_ids": [
+        "w10l1-mitchell-2015-bc690b36"
+      ],
+      "major_source_ids": [
+        "w10l1-bjerrum-nielsen-and-rudberg-2006-39335ee6"
+      ]
+    },
+    {
+      "lecture_key": "W10L2",
+      "lecture_title": "Sociokulturelle teorier - socialkonstruktionisme og poststrukturalisme (Forelæsning 19, 2026-04-14)",
+      "ranked_sources": [
+        {
+          "source_id": "w10l2-foucault-1997-92cd121d",
+          "lecture_key": "W10L2",
+          "lecture_title": "Sociokulturelle teorier - socialkonstruktionisme og poststrukturalisme (Forelæsning 19, 2026-04-14)",
+          "title": "Foucault (1997)",
+          "source_family": "reading",
+          "priority_band": "core",
+          "length_band": "medium",
+          "weight_score": 98,
+          "weight_band": "anchor",
+          "term_ids": [
+            "poststructuralism",
+            "subjectivation"
+          ],
+          "theory_ids": [
+            "critical_psychology",
+            "sociocultural_poststructural_approaches"
+          ],
+          "breakdown": {
+            "family_base": 40,
+            "priority_band": 18,
+            "length_band": 3,
+            "manual_summary": 6,
+            "analysis_sidecar": 4,
+            "week_analysis_context": 3,
+            "likely_core_source": 10,
+            "token_volume": 0,
+            "term_coverage": 6,
+            "theory_coverage": 8
+          }
+        },
+        {
+          "source_id": "w10l2-davies-1990-65185910",
+          "lecture_key": "W10L2",
+          "lecture_title": "Sociokulturelle teorier - socialkonstruktionisme og poststrukturalisme (Forelæsning 19, 2026-04-14)",
+          "title": "Davies (1990)",
+          "source_family": "reading",
+          "priority_band": "core",
+          "length_band": "medium",
+          "weight_score": 84,
+          "weight_band": "major",
+          "term_ids": [],
+          "theory_ids": [],
+          "breakdown": {
+            "family_base": 40,
+            "priority_band": 18,
+            "length_band": 3,
+            "manual_summary": 6,
+            "analysis_sidecar": 4,
+            "week_analysis_context": 3,
+            "likely_core_source": 10,
+            "token_volume": 0,
+            "term_coverage": 0,
+            "theory_coverage": 0
+          }
+        },
+        {
+          "source_id": "w10l2-lecture-19-gang-sociokulturelle-teorier-ca9255c8",
+          "lecture_key": "W10L2",
+          "lecture_title": "Sociokulturelle teorier - socialkonstruktionisme og poststrukturalisme (Forelæsning 19, 2026-04-14)",
+          "title": "19. gang Sociokulturelle teorier",
+          "source_family": "lecture_slide",
+          "priority_band": "primary",
+          "length_band": "long",
+          "weight_score": 52,
+          "weight_band": "supporting",
+          "term_ids": [],
+          "theory_ids": [],
+          "breakdown": {
+            "family_base": 18,
+            "priority_band": 14,
+            "length_band": 6,
+            "manual_summary": 0,
+            "analysis_sidecar": 4,
+            "week_analysis_context": 0,
+            "likely_core_source": 10,
+            "token_volume": 0,
+            "term_coverage": 0,
+            "theory_coverage": 0
+          }
+        }
+      ],
+      "anchor_source_ids": [
+        "w10l2-foucault-1997-92cd121d"
+      ],
+      "major_source_ids": [
+        "w10l2-davies-1990-65185910"
+      ]
+    },
+    {
+      "lecture_key": "W11L1",
+      "lecture_title": "Poststrukturalisme, diskursiv psykologi og feministisk teori (Forelæsning 20, 2026-04-20)",
+      "ranked_sources": [
+        {
+          "source_id": "w11l1-grundbog-kapitel-11-postpsykologisk-subjektiveri-3557aeb2",
+          "lecture_key": "W11L1",
+          "lecture_title": "Poststrukturalisme, diskursiv psykologi og feministisk teori (Forelæsning 20, 2026-04-20)",
+          "title": "Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori",
+          "source_family": "reading",
+          "priority_band": "core",
+          "length_band": "long",
+          "weight_score": 98,
+          "weight_band": "anchor",
+          "term_ids": [
+            "subjectivation"
+          ],
+          "theory_ids": [
+            "critical_psychology",
+            "sociocultural_poststructural_approaches"
+          ],
+          "breakdown": {
+            "family_base": 40,
+            "priority_band": 18,
+            "length_band": 6,
+            "manual_summary": 6,
+            "analysis_sidecar": 4,
+            "week_analysis_context": 3,
+            "likely_core_source": 10,
+            "token_volume": 0,
+            "term_coverage": 3,
+            "theory_coverage": 8
+          }
+        },
+        {
+          "source_id": "w11l1-gergen-1999-73c2217e",
+          "lecture_key": "W11L1",
+          "lecture_title": "Poststrukturalisme, diskursiv psykologi og feministisk teori (Forelæsning 20, 2026-04-20)",
+          "title": "Gergen (1999)",
+          "source_family": "reading",
+          "priority_band": "core",
+          "length_band": "long",
+          "weight_score": 93,
+          "weight_band": "anchor",
+          "term_ids": [],
+          "theory_ids": [],
+          "breakdown": {
+            "family_base": 40,
+            "priority_band": 18,
+            "length_band": 6,
+            "manual_summary": 6,
+            "analysis_sidecar": 4,
+            "week_analysis_context": 3,
+            "likely_core_source": 10,
+            "token_volume": 6,
+            "term_coverage": 0,
+            "theory_coverage": 0
+          }
+        },
+        {
+          "source_id": "w11l1-hacking-2007-10236bf4",
+          "lecture_key": "W11L1",
+          "lecture_title": "Poststrukturalisme, diskursiv psykologi og feministisk teori (Forelæsning 20, 2026-04-20)",
+          "title": "Hacking (2007)",
+          "source_family": "reading",
+          "priority_band": "core",
+          "length_band": "long",
+          "weight_score": 93,
+          "weight_band": "anchor",
+          "term_ids": [],
+          "theory_ids": [],
+          "breakdown": {
+            "family_base": 40,
+            "priority_band": 18,
+            "length_band": 6,
+            "manual_summary": 6,
+            "analysis_sidecar": 4,
+            "week_analysis_context": 3,
+            "likely_core_source": 10,
+            "token_volume": 6,
+            "term_coverage": 0,
+            "theory_coverage": 0
+          }
+        }
+      ],
+      "anchor_source_ids": [
+        "w11l1-grundbog-kapitel-11-postpsykologisk-subjektiveri-3557aeb2",
+        "w11l1-gergen-1999-73c2217e",
+        "w11l1-hacking-2007-10236bf4"
+      ],
+      "major_source_ids": []
+    },
+    {
+      "lecture_key": "W11L2",
+      "lecture_title": "Narrativitet, kultur og mening (Forelæsning 21, 2026-04-21)",
+      "ranked_sources": [
+        {
+          "source_id": "w11l2-grundbog-kapitel-9-narrative-teorier-cd12008a",
+          "lecture_key": "W11L2",
+          "lecture_title": "Narrativitet, kultur og mening (Forelæsning 21, 2026-04-21)",
+          "title": "Grundbog kapitel 09 - Narrative teorier",
+          "source_family": "reading",
+          "priority_band": "core",
+          "length_band": "long",
+          "weight_score": 108,
+          "weight_band": "anchor",
+          "term_ids": [
+            "culture_and_personality",
+            "narrativity",
+            "stability_and_change"
+          ],
+          "theory_ids": [
+            "biosocial_personality_perspectives",
+            "comparative_theory_analysis",
+            "dynamic_personality_development",
+            "narrative_psychology"
+          ],
+          "breakdown": {
+            "family_base": 40,
+            "priority_band": 18,
+            "length_band": 6,
+            "manual_summary": 6,
+            "analysis_sidecar": 4,
+            "week_analysis_context": 3,
+            "likely_core_source": 10,
+            "token_volume": 0,
+            "term_coverage": 9,
+            "theory_coverage": 12
+          }
+        },
+        {
+          "source_id": "w11l2-mcadams-and-pals-2006-b9675688",
+          "lecture_key": "W11L2",
+          "lecture_title": "Narrativitet, kultur og mening (Forelæsning 21, 2026-04-21)",
+          "title": "McAdams & Pals (2006)",
+          "source_family": "reading",
+          "priority_band": "core",
+          "length_band": "medium",
+          "weight_score": 107,
+          "weight_band": "anchor",
+          "term_ids": [
+            "culture_and_personality",
+            "narrativity",
+            "personality_traits"
+          ],
+          "theory_ids": [
+            "biosocial_personality_perspectives",
+            "comparative_theory_analysis",
+            "dynamic_personality_development",
+            "narrative_psychology",
+            "trait_and_assessment_psychology"
+          ],
+          "breakdown": {
+            "family_base": 40,
+            "priority_band": 18,
+            "length_band": 3,
+            "manual_summary": 6,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 3,
+            "likely_core_source": 10,
+            "token_volume": 6,
+            "term_coverage": 9,
+            "theory_coverage": 12
+          }
+        },
+        {
+          "source_id": "w11l2-bruner-1999-7930abd8",
+          "lecture_key": "W11L2",
+          "lecture_title": "Narrativitet, kultur og mening (Forelæsning 21, 2026-04-21)",
+          "title": "Bruner (1999)",
+          "source_family": "reading",
+          "priority_band": "core",
+          "length_band": "long",
+          "weight_score": 104,
+          "weight_band": "anchor",
+          "term_ids": [
+            "culture_and_personality",
+            "meaning_making",
+            "narrativity"
+          ],
+          "theory_ids": [
+            "biosocial_personality_perspectives",
+            "comparative_theory_analysis",
+            "humanistic_psychology",
+            "narrative_psychology",
+            "phenomenological_psychology"
+          ],
+          "breakdown": {
+            "family_base": 40,
+            "priority_band": 18,
+            "length_band": 6,
+            "manual_summary": 6,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 3,
+            "likely_core_source": 10,
+            "token_volume": 0,
+            "term_coverage": 9,
+            "theory_coverage": 12
+          }
+        },
+        {
+          "source_id": "w11l2-raggatt-2002-d15129af",
+          "lecture_key": "W11L2",
+          "lecture_title": "Narrativitet, kultur og mening (Forelæsning 21, 2026-04-21)",
+          "title": "Raggatt (2002)",
+          "source_family": "reading",
+          "priority_band": "core",
+          "length_band": "medium",
+          "weight_score": 101,
+          "weight_band": "anchor",
+          "term_ids": [
+            "stability_and_change"
+          ],
+          "theory_ids": [
+            "comparative_theory_analysis",
+            "dynamic_personality_development",
+            "narrative_psychology"
+          ],
+          "breakdown": {
+            "family_base": 40,
+            "priority_band": 18,
+            "length_band": 3,
+            "manual_summary": 6,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 3,
+            "likely_core_source": 10,
+            "token_volume": 6,
+            "term_coverage": 3,
+            "theory_coverage": 12
+          }
+        }
+      ],
+      "anchor_source_ids": [
+        "w11l2-grundbog-kapitel-9-narrative-teorier-cd12008a",
+        "w11l2-mcadams-and-pals-2006-b9675688",
+        "w11l2-bruner-1999-7930abd8",
+        "w11l2-raggatt-2002-d15129af"
+      ],
+      "major_source_ids": []
+    },
+    {
+      "lecture_key": "W12L1",
+      "lecture_title": "Sammenligning af teorier og subjektets historie og eksamen (Forelæsning 22, 2026-04-27)",
+      "ranked_sources": [
+        {
+          "source_id": "w12l1-grundbog-kapitel-8-personlighed-subjektivitet-og-b0095bfb",
+          "lecture_key": "W12L1",
+          "lecture_title": "Sammenligning af teorier og subjektets historie og eksamen (Forelæsning 22, 2026-04-27)",
+          "title": "Grundbog kapitel 08 - Personlighed, subjektivitet og historicitet",
+          "source_family": "reading",
+          "priority_band": "core",
+          "length_band": "long",
+          "weight_score": 98,
+          "weight_band": "anchor",
+          "term_ids": [
+            "stability_and_change"
+          ],
+          "theory_ids": [
+            "comparative_theory_analysis",
+            "dynamic_personality_development",
+            "narrative_psychology"
+          ],
+          "breakdown": {
+            "family_base": 40,
+            "priority_band": 18,
+            "length_band": 6,
+            "manual_summary": 6,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 3,
+            "likely_core_source": 10,
+            "token_volume": 0,
+            "term_coverage": 3,
+            "theory_coverage": 12
+          }
+        },
+        {
+          "source_id": "w12l1-elias-2000-f9176ae8",
+          "lecture_key": "W12L1",
+          "lecture_title": "Sammenligning af teorier og subjektets historie og eksamen (Forelæsning 22, 2026-04-27)",
+          "title": "Elias (2000)",
+          "source_family": "reading",
+          "priority_band": "core",
+          "length_band": "medium",
+          "weight_score": 95,
+          "weight_band": "anchor",
+          "term_ids": [
+            "stability_and_change"
+          ],
+          "theory_ids": [
+            "comparative_theory_analysis",
+            "dynamic_personality_development",
+            "narrative_psychology"
+          ],
+          "breakdown": {
+            "family_base": 40,
+            "priority_band": 18,
+            "length_band": 3,
+            "manual_summary": 6,
+            "analysis_sidecar": 0,
+            "week_analysis_context": 3,
+            "likely_core_source": 10,
+            "token_volume": 0,
+            "term_coverage": 3,
+            "theory_coverage": 12
+          }
+        },
+        {
+          "source_id": "w12l1-grundbog-kapitel-14-perspektiver-pa-personlighed-95ca3a38",
+          "lecture_key": "W12L1",
+          "lecture_title": "Sammenligning af teorier og subjektets historie og eksamen (Forelæsning 22, 2026-04-27)",
+          "title": "Grundbog kapitel 14 - Perspektiver på personlighedspsykologi",
+          "source_family": "reading",
+          "priority_band": "core",
+          "length_band": "long",
+          "weight_score": 87,
+          "weight_band": "major",
+          "term_ids": [],
+          "theory_ids": [],
+          "breakdown": {
+            "family_base": 40,
+            "priority_band": 18,
+            "length_band": 6,
+            "manual_summary": 6,
+            "analysis_sidecar": 4,
+            "week_analysis_context": 3,
+            "likely_core_source": 10,
+            "token_volume": 0,
+            "term_coverage": 0,
+            "theory_coverage": 0
+          }
+        }
+      ],
+      "anchor_source_ids": [
+        "w12l1-grundbog-kapitel-8-personlighed-subjektivitet-og-b0095bfb",
+        "w12l1-elias-2000-f9176ae8"
+      ],
+      "major_source_ids": [
+        "w12l1-grundbog-kapitel-14-perspektiver-pa-personlighed-95ca3a38"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "source_id": "w11l2-grundbog-kapitel-9-narrative-teorier-cd12008a",
+      "lecture_key": "W11L2",
+      "lecture_title": "Narrativitet, kultur og mening (Forelæsning 21, 2026-04-21)",
+      "title": "Grundbog kapitel 09 - Narrative teorier",
+      "source_family": "reading",
+      "priority_band": "core",
+      "length_band": "long",
+      "weight_score": 108,
+      "weight_band": "anchor",
+      "term_ids": [
+        "culture_and_personality",
+        "narrativity",
+        "stability_and_change"
+      ],
+      "theory_ids": [
+        "biosocial_personality_perspectives",
+        "comparative_theory_analysis",
+        "dynamic_personality_development",
+        "narrative_psychology"
+      ],
+      "breakdown": {
+        "family_base": 40,
+        "priority_band": 18,
+        "length_band": 6,
+        "manual_summary": 6,
+        "analysis_sidecar": 4,
+        "week_analysis_context": 3,
+        "likely_core_source": 10,
+        "token_volume": 0,
+        "term_coverage": 9,
+        "theory_coverage": 12
+      }
+    },
+    {
+      "source_id": "w11l2-mcadams-and-pals-2006-b9675688",
+      "lecture_key": "W11L2",
+      "lecture_title": "Narrativitet, kultur og mening (Forelæsning 21, 2026-04-21)",
+      "title": "McAdams & Pals (2006)",
+      "source_family": "reading",
+      "priority_band": "core",
+      "length_band": "medium",
+      "weight_score": 107,
+      "weight_band": "anchor",
+      "term_ids": [
+        "culture_and_personality",
+        "narrativity",
+        "personality_traits"
+      ],
+      "theory_ids": [
+        "biosocial_personality_perspectives",
+        "comparative_theory_analysis",
+        "dynamic_personality_development",
+        "narrative_psychology",
+        "trait_and_assessment_psychology"
+      ],
+      "breakdown": {
+        "family_base": 40,
+        "priority_band": 18,
+        "length_band": 3,
+        "manual_summary": 6,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 3,
+        "likely_core_source": 10,
+        "token_volume": 6,
+        "term_coverage": 9,
+        "theory_coverage": 12
+      }
+    },
+    {
+      "source_id": "w02l2-bleidorn-et-al-2022-25c2d2de",
+      "lecture_key": "W02L2",
+      "lecture_title": "Person-situation interplay - stability and change of individual differences (Forelæsning 4, 2026-02-10)",
+      "title": "Bleidorn et al. (2022)",
+      "source_family": "reading",
+      "priority_band": "core",
+      "length_band": "long",
+      "weight_score": 104,
+      "weight_band": "anchor",
+      "term_ids": [
+        "personality_traits",
+        "stability_and_change"
+      ],
+      "theory_ids": [
+        "comparative_theory_analysis",
+        "dynamic_personality_development",
+        "narrative_psychology",
+        "trait_and_assessment_psychology"
+      ],
+      "breakdown": {
+        "family_base": 40,
+        "priority_band": 18,
+        "length_band": 6,
+        "manual_summary": 6,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 10,
+        "token_volume": 6,
+        "term_coverage": 6,
+        "theory_coverage": 12
+      }
+    },
+    {
+      "source_id": "w06l1-moesk-r-hansen-and-roald-2022-b7aec462",
+      "lecture_key": "W06L1",
+      "lecture_title": "Fænomenologi (Forelæsning 11, 2026-03-09)",
+      "title": "Moeskær Hansen & Roald (2022)",
+      "source_family": "reading",
+      "priority_band": "core",
+      "length_band": "long",
+      "weight_score": 104,
+      "weight_band": "anchor",
+      "term_ids": [
+        "meaning_making",
+        "phenomenology"
+      ],
+      "theory_ids": [
+        "existential_psychology",
+        "humanistic_psychology",
+        "narrative_psychology",
+        "phenomenological_psychology"
+      ],
+      "breakdown": {
+        "family_base": 40,
+        "priority_band": 18,
+        "length_band": 6,
+        "manual_summary": 6,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 10,
+        "token_volume": 6,
+        "term_coverage": 6,
+        "theory_coverage": 12
+      }
+    },
+    {
+      "source_id": "w06l1-spinelli-2005-b2f76e93",
+      "lecture_key": "W06L1",
+      "lecture_title": "Fænomenologi (Forelæsning 11, 2026-03-09)",
+      "title": "Spinelli (2005)",
+      "source_family": "reading",
+      "priority_band": "core",
+      "length_band": "long",
+      "weight_score": 104,
+      "weight_band": "anchor",
+      "term_ids": [
+        "meaning_making",
+        "phenomenology"
+      ],
+      "theory_ids": [
+        "existential_psychology",
+        "humanistic_psychology",
+        "narrative_psychology",
+        "phenomenological_psychology"
+      ],
+      "breakdown": {
+        "family_base": 40,
+        "priority_band": 18,
+        "length_band": 6,
+        "manual_summary": 6,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 10,
+        "token_volume": 6,
+        "term_coverage": 6,
+        "theory_coverage": 12
+      }
+    },
+    {
+      "source_id": "w11l2-bruner-1999-7930abd8",
+      "lecture_key": "W11L2",
+      "lecture_title": "Narrativitet, kultur og mening (Forelæsning 21, 2026-04-21)",
+      "title": "Bruner (1999)",
+      "source_family": "reading",
+      "priority_band": "core",
+      "length_band": "long",
+      "weight_score": 104,
+      "weight_band": "anchor",
+      "term_ids": [
+        "culture_and_personality",
+        "meaning_making",
+        "narrativity"
+      ],
+      "theory_ids": [
+        "biosocial_personality_perspectives",
+        "comparative_theory_analysis",
+        "humanistic_psychology",
+        "narrative_psychology",
+        "phenomenological_psychology"
+      ],
+      "breakdown": {
+        "family_base": 40,
+        "priority_band": 18,
+        "length_band": 6,
+        "manual_summary": 6,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 3,
+        "likely_core_source": 10,
+        "token_volume": 0,
+        "term_coverage": 9,
+        "theory_coverage": 12
+      }
+    },
+    {
+      "source_id": "w03l2-sharp-and-wall-2021-cb92ecf4",
+      "lecture_key": "W03L2",
+      "lecture_title": "Personlighedsfunktion og forstyrrelse (Forelæsning 6, 2026-02-17)",
+      "title": "Sharp & Wall (2021)",
+      "source_family": "reading",
+      "priority_band": "core",
+      "length_band": "medium",
+      "weight_score": 101,
+      "weight_band": "anchor",
+      "term_ids": [
+        "personality_dimensions",
+        "personality_functioning"
+      ],
+      "theory_ids": [
+        "personality_functioning_and_pathology",
+        "psychoanalytic_personality_theory",
+        "trait_and_assessment_psychology"
+      ],
+      "breakdown": {
+        "family_base": 40,
+        "priority_band": 18,
+        "length_band": 3,
+        "manual_summary": 6,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 10,
+        "token_volume": 6,
+        "term_coverage": 6,
+        "theory_coverage": 12
+      }
+    },
+    {
+      "source_id": "w06l1-grundbog-kapitel-4-f-nomenologisk-personlighedsp-1afa74d2",
+      "lecture_key": "W06L1",
+      "lecture_title": "Fænomenologi (Forelæsning 11, 2026-03-09)",
+      "title": "Grundbog kapitel 04 - Fænomenologisk personlighedspsykologi",
+      "source_family": "reading",
+      "priority_band": "core",
+      "length_band": "long",
+      "weight_score": 101,
+      "weight_band": "anchor",
+      "term_ids": [
+        "first_person_perspective",
+        "meaning_making",
+        "phenomenology"
+      ],
+      "theory_ids": [
+        "existential_psychology",
+        "humanistic_psychology",
+        "narrative_psychology",
+        "phenomenological_psychology"
+      ],
+      "breakdown": {
+        "family_base": 40,
+        "priority_band": 18,
+        "length_band": 6,
+        "manual_summary": 6,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 10,
+        "token_volume": 0,
+        "term_coverage": 9,
+        "theory_coverage": 12
+      }
+    },
+    {
+      "source_id": "w07l1-cooper-2003-ee3c34b7",
+      "lecture_key": "W07L1",
+      "lecture_title": "Eksistentiel personlighedspsykologi II (Bjerregaard-Nielsen) (Forelæsning 13, 2026-03-16)",
+      "title": "Cooper (2003)",
+      "source_family": "reading",
+      "priority_band": "core",
+      "length_band": "long",
+      "weight_score": 101,
+      "weight_band": "anchor",
+      "term_ids": [
+        "existential_personality_psychology"
+      ],
+      "theory_ids": [
+        "existential_psychology",
+        "humanistic_psychology",
+        "phenomenological_psychology"
+      ],
+      "breakdown": {
+        "family_base": 40,
+        "priority_band": 18,
+        "length_band": 6,
+        "manual_summary": 6,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 10,
+        "token_volume": 6,
+        "term_coverage": 3,
+        "theory_coverage": 12
+      }
+    },
+    {
+      "source_id": "w11l2-raggatt-2002-d15129af",
+      "lecture_key": "W11L2",
+      "lecture_title": "Narrativitet, kultur og mening (Forelæsning 21, 2026-04-21)",
+      "title": "Raggatt (2002)",
+      "source_family": "reading",
+      "priority_band": "core",
+      "length_band": "medium",
+      "weight_score": 101,
+      "weight_band": "anchor",
+      "term_ids": [
+        "stability_and_change"
+      ],
+      "theory_ids": [
+        "comparative_theory_analysis",
+        "dynamic_personality_development",
+        "narrative_psychology"
+      ],
+      "breakdown": {
+        "family_base": 40,
+        "priority_band": 18,
+        "length_band": 3,
+        "manual_summary": 6,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 3,
+        "likely_core_source": 10,
+        "token_volume": 6,
+        "term_coverage": 3,
+        "theory_coverage": 12
+      }
+    },
+    {
+      "source_id": "w07l2-giorgi-2005-55ca98f7",
+      "lecture_key": "W07L2",
+      "lecture_title": "Humanistisk psykologi (Forelæsning 14, 2026-03-17)",
+      "title": "Giorgi (2005)",
+      "source_family": "reading",
+      "priority_band": "core",
+      "length_band": "medium",
+      "weight_score": 98,
+      "weight_band": "anchor",
+      "term_ids": [
+        "humanistic_psychology",
+        "meaning_making"
+      ],
+      "theory_ids": [
+        "existential_psychology",
+        "humanistic_psychology",
+        "narrative_psychology",
+        "phenomenological_psychology"
+      ],
+      "breakdown": {
+        "family_base": 40,
+        "priority_band": 18,
+        "length_band": 3,
+        "manual_summary": 6,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 10,
+        "token_volume": 3,
+        "term_coverage": 6,
+        "theory_coverage": 12
+      }
+    },
+    {
+      "source_id": "w08l1-lamiell-2021-be79d36e",
+      "lecture_key": "W08L1",
+      "lecture_title": "Critical personalism (Forelæsning 15, 2026-03-23)",
+      "title": "Lamiell (2021)",
+      "source_family": "reading",
+      "priority_band": "core",
+      "length_band": "medium",
+      "weight_score": 98,
+      "weight_band": "anchor",
+      "term_ids": [
+        "critical_personalism"
+      ],
+      "theory_ids": [
+        "critical_personalism",
+        "critical_psychology",
+        "trait_and_assessment_psychology"
+      ],
+      "breakdown": {
+        "family_base": 40,
+        "priority_band": 18,
+        "length_band": 3,
+        "manual_summary": 6,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 10,
+        "token_volume": 6,
+        "term_coverage": 3,
+        "theory_coverage": 12
+      }
+    },
+    {
+      "source_id": "w10l2-foucault-1997-92cd121d",
+      "lecture_key": "W10L2",
+      "lecture_title": "Sociokulturelle teorier - socialkonstruktionisme og poststrukturalisme (Forelæsning 19, 2026-04-14)",
+      "title": "Foucault (1997)",
+      "source_family": "reading",
+      "priority_band": "core",
+      "length_band": "medium",
+      "weight_score": 98,
+      "weight_band": "anchor",
+      "term_ids": [
+        "poststructuralism",
+        "subjectivation"
+      ],
+      "theory_ids": [
+        "critical_psychology",
+        "sociocultural_poststructural_approaches"
+      ],
+      "breakdown": {
+        "family_base": 40,
+        "priority_band": 18,
+        "length_band": 3,
+        "manual_summary": 6,
+        "analysis_sidecar": 4,
+        "week_analysis_context": 3,
+        "likely_core_source": 10,
+        "token_volume": 0,
+        "term_coverage": 6,
+        "theory_coverage": 8
+      }
+    },
+    {
+      "source_id": "w11l1-grundbog-kapitel-11-postpsykologisk-subjektiveri-3557aeb2",
+      "lecture_key": "W11L1",
+      "lecture_title": "Poststrukturalisme, diskursiv psykologi og feministisk teori (Forelæsning 20, 2026-04-20)",
+      "title": "Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori",
+      "source_family": "reading",
+      "priority_band": "core",
+      "length_band": "long",
+      "weight_score": 98,
+      "weight_band": "anchor",
+      "term_ids": [
+        "subjectivation"
+      ],
+      "theory_ids": [
+        "critical_psychology",
+        "sociocultural_poststructural_approaches"
+      ],
+      "breakdown": {
+        "family_base": 40,
+        "priority_band": 18,
+        "length_band": 6,
+        "manual_summary": 6,
+        "analysis_sidecar": 4,
+        "week_analysis_context": 3,
+        "likely_core_source": 10,
+        "token_volume": 0,
+        "term_coverage": 3,
+        "theory_coverage": 8
+      }
+    },
+    {
+      "source_id": "w12l1-grundbog-kapitel-8-personlighed-subjektivitet-og-b0095bfb",
+      "lecture_key": "W12L1",
+      "lecture_title": "Sammenligning af teorier og subjektets historie og eksamen (Forelæsning 22, 2026-04-27)",
+      "title": "Grundbog kapitel 08 - Personlighed, subjektivitet og historicitet",
+      "source_family": "reading",
+      "priority_band": "core",
+      "length_band": "long",
+      "weight_score": 98,
+      "weight_band": "anchor",
+      "term_ids": [
+        "stability_and_change"
+      ],
+      "theory_ids": [
+        "comparative_theory_analysis",
+        "dynamic_personality_development",
+        "narrative_psychology"
+      ],
+      "breakdown": {
+        "family_base": 40,
+        "priority_band": 18,
+        "length_band": 6,
+        "manual_summary": 6,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 3,
+        "likely_core_source": 10,
+        "token_volume": 0,
+        "term_coverage": 3,
+        "theory_coverage": 12
+      }
+    },
+    {
+      "source_id": "w02l1-zettler-et-al-2020-0c54e6e4",
+      "lecture_key": "W02L1",
+      "lecture_title": "Personality traits, personality states, and personality dimensions (Forelæsning 3, 2026-02-09)",
+      "title": "Zettler et al. (2020)",
+      "source_family": "reading",
+      "priority_band": "core",
+      "length_band": "long",
+      "weight_score": 97,
+      "weight_band": "anchor",
+      "term_ids": [
+        "personality_dimensions"
+      ],
+      "theory_ids": [
+        "personality_functioning_and_pathology",
+        "trait_and_assessment_psychology"
+      ],
+      "breakdown": {
+        "family_base": 40,
+        "priority_band": 18,
+        "length_band": 6,
+        "manual_summary": 6,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 10,
+        "token_volume": 6,
+        "term_coverage": 3,
+        "theory_coverage": 8
+      }
+    },
+    {
+      "source_id": "w03l1-lu-benet-martinez-and-wang-2023-38a36550",
+      "lecture_key": "W03L1",
+      "lecture_title": "Culture, evolution, genetics, and personality (Forelæsning 5, 2026-02-16)",
+      "title": "Lu, Benet-Martínez & Wang (2023)",
+      "source_family": "reading",
+      "priority_band": "core",
+      "length_band": "long",
+      "weight_score": 97,
+      "weight_band": "anchor",
+      "term_ids": [
+        "culture_and_personality"
+      ],
+      "theory_ids": [
+        "biosocial_personality_perspectives",
+        "narrative_psychology"
+      ],
+      "breakdown": {
+        "family_base": 40,
+        "priority_band": 18,
+        "length_band": 6,
+        "manual_summary": 6,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 10,
+        "token_volume": 6,
+        "term_coverage": 3,
+        "theory_coverage": 8
+      }
+    },
+    {
+      "source_id": "w07l2-maslow-1968-7ea53e34",
+      "lecture_key": "W07L2",
+      "lecture_title": "Humanistisk psykologi (Forelæsning 14, 2026-03-17)",
+      "title": "Maslow (1968)",
+      "source_family": "reading",
+      "priority_band": "core",
+      "length_band": "long",
+      "weight_score": 97,
+      "weight_band": "anchor",
+      "term_ids": [
+        "humanistic_psychology"
+      ],
+      "theory_ids": [
+        "existential_psychology",
+        "humanistic_psychology"
+      ],
+      "breakdown": {
+        "family_base": 40,
+        "priority_band": 18,
+        "length_band": 6,
+        "manual_summary": 6,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 10,
+        "token_volume": 6,
+        "term_coverage": 3,
+        "theory_coverage": 8
+      }
+    },
+    {
+      "source_id": "w10l1-mitchell-2015-bc690b36",
+      "lecture_key": "W10L1",
+      "lecture_title": "Køn (Forelæsning 18, 2026-04-13)",
+      "title": "Mitchell (2015)",
+      "source_family": "reading",
+      "priority_band": "core",
+      "length_band": "long",
+      "weight_score": 96,
+      "weight_band": "anchor",
+      "term_ids": [
+        "feminist_theory",
+        "gender"
+      ],
+      "theory_ids": [
+        "sociocultural_poststructural_approaches"
+      ],
+      "breakdown": {
+        "family_base": 40,
+        "priority_band": 18,
+        "length_band": 6,
+        "manual_summary": 6,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 10,
+        "token_volume": 6,
+        "term_coverage": 6,
+        "theory_coverage": 4
+      }
+    },
+    {
+      "source_id": "w06l2-may-1966-d8406a09",
+      "lecture_key": "W06L2",
+      "lecture_title": "Eksistentiel personlighedspsykologi I (Funch) (Forelæsning 12, 2026-03-10)",
+      "title": "May (1966)",
+      "source_family": "reading",
+      "priority_band": "core",
+      "length_band": "long",
+      "weight_score": 95,
+      "weight_band": "anchor",
+      "term_ids": [
+        "existential_personality_psychology"
+      ],
+      "theory_ids": [
+        "existential_psychology",
+        "humanistic_psychology",
+        "phenomenological_psychology"
+      ],
+      "breakdown": {
+        "family_base": 40,
+        "priority_band": 18,
+        "length_band": 6,
+        "manual_summary": 6,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 10,
+        "token_volume": 0,
+        "term_coverage": 3,
+        "theory_coverage": 12
+      }
+    },
+    {
+      "source_id": "w12l1-elias-2000-f9176ae8",
+      "lecture_key": "W12L1",
+      "lecture_title": "Sammenligning af teorier og subjektets historie og eksamen (Forelæsning 22, 2026-04-27)",
+      "title": "Elias (2000)",
+      "source_family": "reading",
+      "priority_band": "core",
+      "length_band": "medium",
+      "weight_score": 95,
+      "weight_band": "anchor",
+      "term_ids": [
+        "stability_and_change"
+      ],
+      "theory_ids": [
+        "comparative_theory_analysis",
+        "dynamic_personality_development",
+        "narrative_psychology"
+      ],
+      "breakdown": {
+        "family_base": 40,
+        "priority_band": 18,
+        "length_band": 3,
+        "manual_summary": 6,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 3,
+        "likely_core_source": 10,
+        "token_volume": 0,
+        "term_coverage": 3,
+        "theory_coverage": 12
+      }
+    },
+    {
+      "source_id": "w02l1-columbus-and-strandsbjerg-2025-2962b765",
+      "lecture_key": "W02L1",
+      "lecture_title": "Personality traits, personality states, and personality dimensions (Forelæsning 3, 2026-02-09)",
+      "title": "Columbus & Strandsbjerg (2025)",
+      "source_family": "reading",
+      "priority_band": "primary",
+      "length_band": "short",
+      "weight_score": 94,
+      "weight_band": "anchor",
+      "term_ids": [
+        "personality_dimensions",
+        "personality_states",
+        "personality_traits"
+      ],
+      "theory_ids": [
+        "dynamic_personality_development",
+        "narrative_psychology",
+        "personality_functioning_and_pathology",
+        "trait_and_assessment_psychology"
+      ],
+      "breakdown": {
+        "family_base": 40,
+        "priority_band": 14,
+        "length_band": 0,
+        "manual_summary": 6,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 10,
+        "token_volume": 3,
+        "term_coverage": 9,
+        "theory_coverage": 12
+      }
+    },
+    {
+      "source_id": "w04l2-laplanche-1970-968862d5",
+      "lecture_key": "W04L2",
+      "lecture_title": "Psykoanalytisk personlighedsstruktur (Forelæsning 8, 2026-02-24)",
+      "title": "Laplanche (1970)",
+      "source_family": "reading",
+      "priority_band": "core",
+      "length_band": "long",
+      "weight_score": 93,
+      "weight_band": "anchor",
+      "term_ids": [
+        "psychoanalysis"
+      ],
+      "theory_ids": [
+        "psychoanalytic_personality_theory"
+      ],
+      "breakdown": {
+        "family_base": 40,
+        "priority_band": 18,
+        "length_band": 6,
+        "manual_summary": 6,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 10,
+        "token_volume": 6,
+        "term_coverage": 3,
+        "theory_coverage": 4
+      }
+    },
+    {
+      "source_id": "w05l1-ricoeur-1981-19a5343f",
+      "lecture_key": "W05L1",
+      "lecture_title": "Empiri og metode i psykoanalysen (Forelæsning 9, 2026-03-02)",
+      "title": "Ricoeur (1981)",
+      "source_family": "reading",
+      "priority_band": "core",
+      "length_band": "long",
+      "weight_score": 93,
+      "weight_band": "anchor",
+      "term_ids": [
+        "psychoanalysis"
+      ],
+      "theory_ids": [
+        "psychoanalytic_personality_theory"
+      ],
+      "breakdown": {
+        "family_base": 40,
+        "priority_band": 18,
+        "length_band": 6,
+        "manual_summary": 6,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 10,
+        "token_volume": 6,
+        "term_coverage": 3,
+        "theory_coverage": 4
+      }
+    },
+    {
+      "source_id": "w11l1-gergen-1999-73c2217e",
+      "lecture_key": "W11L1",
+      "lecture_title": "Poststrukturalisme, diskursiv psykologi og feministisk teori (Forelæsning 20, 2026-04-20)",
+      "title": "Gergen (1999)",
+      "source_family": "reading",
+      "priority_band": "core",
+      "length_band": "long",
+      "weight_score": 93,
+      "weight_band": "anchor",
+      "term_ids": [],
+      "theory_ids": [],
+      "breakdown": {
+        "family_base": 40,
+        "priority_band": 18,
+        "length_band": 6,
+        "manual_summary": 6,
+        "analysis_sidecar": 4,
+        "week_analysis_context": 3,
+        "likely_core_source": 10,
+        "token_volume": 6,
+        "term_coverage": 0,
+        "theory_coverage": 0
+      }
+    },
+    {
+      "source_id": "w11l1-hacking-2007-10236bf4",
+      "lecture_key": "W11L1",
+      "lecture_title": "Poststrukturalisme, diskursiv psykologi og feministisk teori (Forelæsning 20, 2026-04-20)",
+      "title": "Hacking (2007)",
+      "source_family": "reading",
+      "priority_band": "core",
+      "length_band": "long",
+      "weight_score": 93,
+      "weight_band": "anchor",
+      "term_ids": [],
+      "theory_ids": [],
+      "breakdown": {
+        "family_base": 40,
+        "priority_band": 18,
+        "length_band": 6,
+        "manual_summary": 6,
+        "analysis_sidecar": 4,
+        "week_analysis_context": 3,
+        "likely_core_source": 10,
+        "token_volume": 6,
+        "term_coverage": 0,
+        "theory_coverage": 0
+      }
+    },
+    {
+      "source_id": "w01l1-grundbog-kapitel-1-introduktion-til-personlighed-1e727647",
+      "lecture_key": "W01L1",
+      "lecture_title": "Introforelæsning og nøglebegreber i personlighedspsykologien (Forelæsning 1, 2026-02-02)",
+      "title": "Grundbog kapitel 01 - Introduktion til personlighedspsykologi",
+      "source_family": "reading",
+      "priority_band": "core",
+      "length_band": "medium",
+      "weight_score": 92,
+      "weight_band": "anchor",
+      "term_ids": [
+        "stability_and_change"
+      ],
+      "theory_ids": [
+        "comparative_theory_analysis",
+        "dynamic_personality_development",
+        "narrative_psychology"
+      ],
+      "breakdown": {
+        "family_base": 40,
+        "priority_band": 18,
+        "length_band": 3,
+        "manual_summary": 6,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 10,
+        "token_volume": 0,
+        "term_coverage": 3,
+        "theory_coverage": 12
+      }
+    },
+    {
+      "source_id": "w02l2-li-and-wilt-2025-92f596ad",
+      "lecture_key": "W02L2",
+      "lecture_title": "Person-situation interplay - stability and change of individual differences (Forelæsning 4, 2026-02-10)",
+      "title": "Li & Wilt (2025)",
+      "source_family": "reading",
+      "priority_band": "primary",
+      "length_band": "short",
+      "weight_score": 91,
+      "weight_band": "anchor",
+      "term_ids": [
+        "person_situation_interplay",
+        "personality_traits"
+      ],
+      "theory_ids": [
+        "critical_psychology",
+        "dynamic_personality_development",
+        "narrative_psychology",
+        "trait_and_assessment_psychology"
+      ],
+      "breakdown": {
+        "family_base": 40,
+        "priority_band": 14,
+        "length_band": 0,
+        "manual_summary": 6,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 10,
+        "token_volume": 3,
+        "term_coverage": 6,
+        "theory_coverage": 12
+      }
+    },
+    {
+      "source_id": "w07l2-evans-1975-8e8a9d79",
+      "lecture_key": "W07L2",
+      "lecture_title": "Humanistisk psykologi (Forelæsning 14, 2026-03-17)",
+      "title": "Evans (1975)",
+      "source_family": "reading",
+      "priority_band": "primary",
+      "length_band": "medium",
+      "weight_score": 91,
+      "weight_band": "anchor",
+      "term_ids": [
+        "first_person_perspective",
+        "humanistic_psychology"
+      ],
+      "theory_ids": [
+        "existential_psychology",
+        "humanistic_psychology",
+        "phenomenological_psychology"
+      ],
+      "breakdown": {
+        "family_base": 40,
+        "priority_band": 14,
+        "length_band": 3,
+        "manual_summary": 6,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 10,
+        "token_volume": 0,
+        "term_coverage": 6,
+        "theory_coverage": 12
+      }
+    },
+    {
+      "source_id": "w08l2-holzkamp-1982-845aafd2",
+      "lecture_key": "W08L2",
+      "lecture_title": "Critical psychology (Forelæsning 16, 2026-03-24)",
+      "title": "Holzkamp (1982)",
+      "source_family": "reading",
+      "priority_band": "core",
+      "length_band": "long",
+      "weight_score": 91,
+      "weight_band": "anchor",
+      "term_ids": [
+        "critical_psychology"
+      ],
+      "theory_ids": [
+        "critical_psychology",
+        "sociocultural_poststructural_approaches"
+      ],
+      "breakdown": {
+        "family_base": 40,
+        "priority_band": 18,
+        "length_band": 6,
+        "manual_summary": 6,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 10,
+        "token_volume": 0,
+        "term_coverage": 3,
+        "theory_coverage": 8
+      }
+    },
+    {
+      "source_id": "w08l2-tolman-2009-455915e0",
+      "lecture_key": "W08L2",
+      "lecture_title": "Critical psychology (Forelæsning 16, 2026-03-24)",
+      "title": "Tolman (2009)",
+      "source_family": "reading",
+      "priority_band": "core",
+      "length_band": "medium",
+      "weight_score": 91,
+      "weight_band": "anchor",
+      "term_ids": [
+        "critical_psychology"
+      ],
+      "theory_ids": [
+        "critical_psychology",
+        "sociocultural_poststructural_approaches"
+      ],
+      "breakdown": {
+        "family_base": 40,
+        "priority_band": 18,
+        "length_band": 3,
+        "manual_summary": 6,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 10,
+        "token_volume": 3,
+        "term_coverage": 3,
+        "theory_coverage": 8
+      }
+    },
+    {
+      "source_id": "w09l1-grundbog-kapitel-10-kritisk-psykologi-b3286662",
+      "lecture_key": "W09L1",
+      "lecture_title": "Kritisk psykologi (Forelæsning 17, 2026-04-07)",
+      "title": "Grundbog kapitel 10 - Kritisk psykologi",
+      "source_family": "reading",
+      "priority_band": "core",
+      "length_band": "long",
+      "weight_score": 91,
+      "weight_band": "anchor",
+      "term_ids": [
+        "critical_psychology"
+      ],
+      "theory_ids": [
+        "critical_psychology",
+        "sociocultural_poststructural_approaches"
+      ],
+      "breakdown": {
+        "family_base": 40,
+        "priority_band": 18,
+        "length_band": 6,
+        "manual_summary": 6,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 10,
+        "token_volume": 0,
+        "term_coverage": 3,
+        "theory_coverage": 8
+      }
+    },
+    {
+      "source_id": "w01l2-mayer-and-bryan-2024-07faf915",
+      "lecture_key": "W01L2",
+      "lecture_title": "Personality assessment (Forelæsning 2, 2026-02-03)",
+      "title": "Mayer & Bryan (2024)",
+      "source_family": "reading",
+      "priority_band": "core",
+      "length_band": "medium",
+      "weight_score": 90,
+      "weight_band": "anchor",
+      "term_ids": [
+        "personality_assessment"
+      ],
+      "theory_ids": [
+        "trait_and_assessment_psychology"
+      ],
+      "breakdown": {
+        "family_base": 40,
+        "priority_band": 18,
+        "length_band": 3,
+        "manual_summary": 6,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 10,
+        "token_volume": 6,
+        "term_coverage": 3,
+        "theory_coverage": 4
+      }
+    },
+    {
+      "source_id": "w05l2-k-ppe-1992-9a474402",
+      "lecture_key": "W05L2",
+      "lecture_title": "Psykoanalysens konstituering (Forelæsning 10, 2026-03-03)",
+      "title": "Køppe (1992)",
+      "source_family": "reading",
+      "priority_band": "core",
+      "length_band": "medium",
+      "weight_score": 90,
+      "weight_band": "anchor",
+      "term_ids": [
+        "psychoanalysis"
+      ],
+      "theory_ids": [
+        "psychoanalytic_personality_theory"
+      ],
+      "breakdown": {
+        "family_base": 40,
+        "priority_band": 18,
+        "length_band": 3,
+        "manual_summary": 6,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 10,
+        "token_volume": 6,
+        "term_coverage": 3,
+        "theory_coverage": 4
+      }
+    },
+    {
+      "source_id": "w06l2-boss-1963-1feb5a5f",
+      "lecture_key": "W06L2",
+      "lecture_title": "Eksistentiel personlighedspsykologi I (Funch) (Forelæsning 12, 2026-03-10)",
+      "title": "Boss (1963)",
+      "source_family": "reading",
+      "priority_band": "primary",
+      "length_band": "medium",
+      "weight_score": 88,
+      "weight_band": "major",
+      "term_ids": [
+        "existential_personality_psychology"
+      ],
+      "theory_ids": [
+        "existential_psychology",
+        "humanistic_psychology",
+        "phenomenological_psychology"
+      ],
+      "breakdown": {
+        "family_base": 40,
+        "priority_band": 14,
+        "length_band": 3,
+        "manual_summary": 6,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 10,
+        "token_volume": 0,
+        "term_coverage": 3,
+        "theory_coverage": 12
+      }
+    },
+    {
+      "source_id": "w07l1-jacobsen-2021-26129bff",
+      "lecture_key": "W07L1",
+      "lecture_title": "Eksistentiel personlighedspsykologi II (Bjerregaard-Nielsen) (Forelæsning 13, 2026-03-16)",
+      "title": "Jacobsen (2021)",
+      "source_family": "reading",
+      "priority_band": "primary",
+      "length_band": "medium",
+      "weight_score": 88,
+      "weight_band": "major",
+      "term_ids": [
+        "existential_personality_psychology"
+      ],
+      "theory_ids": [
+        "existential_psychology",
+        "humanistic_psychology",
+        "phenomenological_psychology"
+      ],
+      "breakdown": {
+        "family_base": 40,
+        "priority_band": 14,
+        "length_band": 3,
+        "manual_summary": 6,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 10,
+        "token_volume": 0,
+        "term_coverage": 3,
+        "theory_coverage": 12
+      }
+    },
+    {
+      "source_id": "w08l1-laux-et-al-2010-cfff840c",
+      "lecture_key": "W08L1",
+      "lecture_title": "Critical personalism (Forelæsning 15, 2026-03-23)",
+      "title": "Laux et al (2010)",
+      "source_family": "reading",
+      "priority_band": "primary",
+      "length_band": "short",
+      "weight_score": 88,
+      "weight_band": "major",
+      "term_ids": [
+        "critical_personalism"
+      ],
+      "theory_ids": [
+        "critical_personalism",
+        "critical_psychology",
+        "trait_and_assessment_psychology"
+      ],
+      "breakdown": {
+        "family_base": 40,
+        "priority_band": 14,
+        "length_band": 0,
+        "manual_summary": 6,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 10,
+        "token_volume": 3,
+        "term_coverage": 3,
+        "theory_coverage": 12
+      }
+    },
+    {
+      "source_id": "w03l1-volk-and-puchalski-2025-60aaf5d0",
+      "lecture_key": "W03L1",
+      "lecture_title": "Culture, evolution, genetics, and personality (Forelæsning 5, 2026-02-16)",
+      "title": "Volk & Puchalski (2025)",
+      "source_family": "reading",
+      "priority_band": "primary",
+      "length_band": "short",
+      "weight_score": 87,
+      "weight_band": "major",
+      "term_ids": [
+        "culture_and_personality",
+        "evolutionary_perspective"
+      ],
+      "theory_ids": [
+        "biosocial_personality_perspectives",
+        "narrative_psychology"
+      ],
+      "breakdown": {
+        "family_base": 40,
+        "priority_band": 14,
+        "length_band": 0,
+        "manual_summary": 6,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 10,
+        "token_volume": 3,
+        "term_coverage": 6,
+        "theory_coverage": 8
+      }
+    },
+    {
+      "source_id": "w04l1-gammelgaard-2007-bcbdbec2",
+      "lecture_key": "W04L1",
+      "lecture_title": "Psykoanalysens personlighedsbegreb (Forelæsning 7, 2026-02-23)",
+      "title": "Gammelgaard (2007)",
+      "source_family": "reading",
+      "priority_band": "core",
+      "length_band": "long",
+      "weight_score": 87,
+      "weight_band": "major",
+      "term_ids": [
+        "psychoanalysis"
+      ],
+      "theory_ids": [
+        "psychoanalytic_personality_theory"
+      ],
+      "breakdown": {
+        "family_base": 40,
+        "priority_band": 18,
+        "length_band": 6,
+        "manual_summary": 6,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 10,
+        "token_volume": 0,
+        "term_coverage": 3,
+        "theory_coverage": 4
+      }
+    },
+    {
+      "source_id": "w05l2-grundbog-kapitel-7-nyere-psykoanalytiske-teorier-fda84b6a",
+      "lecture_key": "W05L2",
+      "lecture_title": "Psykoanalysens konstituering (Forelæsning 10, 2026-03-03)",
+      "title": "Grundbog kapitel 07 - Nyere psykoanalytiske teorier",
+      "source_family": "reading",
+      "priority_band": "core",
+      "length_band": "long",
+      "weight_score": 87,
+      "weight_band": "major",
+      "term_ids": [
+        "psychoanalysis"
+      ],
+      "theory_ids": [
+        "psychoanalytic_personality_theory"
+      ],
+      "breakdown": {
+        "family_base": 40,
+        "priority_band": 18,
+        "length_band": 6,
+        "manual_summary": 6,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 10,
+        "token_volume": 0,
+        "term_coverage": 3,
+        "theory_coverage": 4
+      }
+    },
+    {
+      "source_id": "w10l1-bjerrum-nielsen-and-rudberg-2006-39335ee6",
+      "lecture_key": "W10L1",
+      "lecture_title": "Køn (Forelæsning 18, 2026-04-13)",
+      "title": "Bjerrum Nielsen & Rudberg (2006)",
+      "source_family": "reading",
+      "priority_band": "core",
+      "length_band": "long",
+      "weight_score": 87,
+      "weight_band": "major",
+      "term_ids": [
+        "gender"
+      ],
+      "theory_ids": [
+        "sociocultural_poststructural_approaches"
+      ],
+      "breakdown": {
+        "family_base": 40,
+        "priority_band": 18,
+        "length_band": 6,
+        "manual_summary": 6,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 10,
+        "token_volume": 0,
+        "term_coverage": 3,
+        "theory_coverage": 4
+      }
+    },
+    {
+      "source_id": "w12l1-grundbog-kapitel-14-perspektiver-pa-personlighed-95ca3a38",
+      "lecture_key": "W12L1",
+      "lecture_title": "Sammenligning af teorier og subjektets historie og eksamen (Forelæsning 22, 2026-04-27)",
+      "title": "Grundbog kapitel 14 - Perspektiver på personlighedspsykologi",
+      "source_family": "reading",
+      "priority_band": "core",
+      "length_band": "long",
+      "weight_score": 87,
+      "weight_band": "major",
+      "term_ids": [],
+      "theory_ids": [],
+      "breakdown": {
+        "family_base": 40,
+        "priority_band": 18,
+        "length_band": 6,
+        "manual_summary": 6,
+        "analysis_sidecar": 4,
+        "week_analysis_context": 3,
+        "likely_core_source": 10,
+        "token_volume": 0,
+        "term_coverage": 0,
+        "theory_coverage": 0
+      }
+    },
+    {
+      "source_id": "w05l1-freud-s-1984-1905-brudstykke-af-en-hysteri-analy-df466bb5",
+      "lecture_key": "W05L1",
+      "lecture_title": "Empiri og metode i psykoanalysen (Forelæsning 9, 2026-03-02)",
+      "title": "Freud, S. (1984/1905). Brudstykke af en hysteri-analyse",
+      "source_family": "reading",
+      "priority_band": "core",
+      "length_band": "long",
+      "weight_score": 86,
+      "weight_band": "major",
+      "term_ids": [],
+      "theory_ids": [],
+      "breakdown": {
+        "family_base": 40,
+        "priority_band": 18,
+        "length_band": 6,
+        "manual_summary": 6,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 10,
+        "token_volume": 6,
+        "term_coverage": 0,
+        "theory_coverage": 0
+      }
+    },
+    {
+      "source_id": "w09l1-m-rch-and-hansen-2015-b1dbfc5f",
+      "lecture_key": "W09L1",
+      "lecture_title": "Kritisk psykologi (Forelæsning 17, 2026-04-07)",
+      "title": "Mørch & Hansen (2015)",
+      "source_family": "reading",
+      "priority_band": "core",
+      "length_band": "long",
+      "weight_score": 86,
+      "weight_band": "major",
+      "term_ids": [],
+      "theory_ids": [],
+      "breakdown": {
+        "family_base": 40,
+        "priority_band": 18,
+        "length_band": 6,
+        "manual_summary": 6,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 10,
+        "token_volume": 6,
+        "term_coverage": 0,
+        "theory_coverage": 0
+      }
+    },
+    {
+      "source_id": "w09l1-holzkamp-2013-c3068d8a",
+      "lecture_key": "W09L1",
+      "lecture_title": "Kritisk psykologi (Forelæsning 17, 2026-04-07)",
+      "title": "Holzkamp (2013)",
+      "source_family": "reading",
+      "priority_band": "primary",
+      "length_band": "medium",
+      "weight_score": 84,
+      "weight_band": "major",
+      "term_ids": [
+        "critical_psychology"
+      ],
+      "theory_ids": [
+        "critical_psychology",
+        "sociocultural_poststructural_approaches"
+      ],
+      "breakdown": {
+        "family_base": 40,
+        "priority_band": 14,
+        "length_band": 3,
+        "manual_summary": 6,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 10,
+        "token_volume": 0,
+        "term_coverage": 3,
+        "theory_coverage": 8
+      }
+    },
+    {
+      "source_id": "w10l2-davies-1990-65185910",
+      "lecture_key": "W10L2",
+      "lecture_title": "Sociokulturelle teorier - socialkonstruktionisme og poststrukturalisme (Forelæsning 19, 2026-04-14)",
+      "title": "Davies (1990)",
+      "source_family": "reading",
+      "priority_band": "core",
+      "length_band": "medium",
+      "weight_score": 84,
+      "weight_band": "major",
+      "term_ids": [],
+      "theory_ids": [],
+      "breakdown": {
+        "family_base": 40,
+        "priority_band": 18,
+        "length_band": 3,
+        "manual_summary": 6,
+        "analysis_sidecar": 4,
+        "week_analysis_context": 3,
+        "likely_core_source": 10,
+        "token_volume": 0,
+        "term_coverage": 0,
+        "theory_coverage": 0
+      }
+    },
+    {
+      "source_id": "w01l1-lewis-1999-295c67e3",
+      "lecture_key": "W01L1",
+      "lecture_title": "Introforelæsning og nøglebegreber i personlighedspsykologien (Forelæsning 1, 2026-02-02)",
+      "title": "Lewis (1999)",
+      "source_family": "reading",
+      "priority_band": "core",
+      "length_band": "medium",
+      "weight_score": 83,
+      "weight_band": "major",
+      "term_ids": [],
+      "theory_ids": [],
+      "breakdown": {
+        "family_base": 40,
+        "priority_band": 18,
+        "length_band": 3,
+        "manual_summary": 6,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 10,
+        "token_volume": 6,
+        "term_coverage": 0,
+        "theory_coverage": 0
+      }
+    },
+    {
+      "source_id": "w01l2-phan-et-al-2024-bf3395d7",
+      "lecture_key": "W01L2",
+      "lecture_title": "Personality assessment (Forelæsning 2, 2026-02-03)",
+      "title": "Phan et al. (2024)",
+      "source_family": "reading",
+      "priority_band": "core",
+      "length_band": "medium",
+      "weight_score": 83,
+      "weight_band": "major",
+      "term_ids": [],
+      "theory_ids": [],
+      "breakdown": {
+        "family_base": 40,
+        "priority_band": 18,
+        "length_band": 3,
+        "manual_summary": 6,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 10,
+        "token_volume": 6,
+        "term_coverage": 0,
+        "theory_coverage": 0
+      }
+    },
+    {
+      "source_id": "w05l2-andkj-r-olsen-and-k-ppe-1991a-1991b-720b5d8e",
+      "lecture_key": "W05L2",
+      "lecture_title": "Psykoanalysens konstituering (Forelæsning 10, 2026-03-03)",
+      "title": "Andkjær Olsen & Køppe (1991a + 1991b)",
+      "source_family": "reading",
+      "priority_band": "core",
+      "length_band": "medium",
+      "weight_score": 83,
+      "weight_band": "major",
+      "term_ids": [],
+      "theory_ids": [],
+      "breakdown": {
+        "family_base": 40,
+        "priority_band": 18,
+        "length_band": 3,
+        "manual_summary": 6,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 10,
+        "token_volume": 6,
+        "term_coverage": 0,
+        "theory_coverage": 0
+      }
+    },
+    {
+      "source_id": "w04l2-lacan-1966-2d720f56",
+      "lecture_key": "W04L2",
+      "lecture_title": "Psykoanalytisk personlighedsstruktur (Forelæsning 8, 2026-02-24)",
+      "title": "Lacan (1966)",
+      "source_family": "reading",
+      "priority_band": "primary",
+      "length_band": "short",
+      "weight_score": 81,
+      "weight_band": "major",
+      "term_ids": [
+        "personality_structure"
+      ],
+      "theory_ids": [
+        "personality_functioning_and_pathology",
+        "psychoanalytic_personality_theory"
+      ],
+      "breakdown": {
+        "family_base": 40,
+        "priority_band": 14,
+        "length_band": 0,
+        "manual_summary": 6,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 10,
+        "token_volume": 0,
+        "term_coverage": 3,
+        "theory_coverage": 8
+      }
+    },
+    {
+      "source_id": "w09l1-dreier-1999-35da58b5",
+      "lecture_key": "W09L1",
+      "lecture_title": "Kritisk psykologi (Forelæsning 17, 2026-04-07)",
+      "title": "Dreier (1999)",
+      "source_family": "reading",
+      "priority_band": "primary",
+      "length_band": "short",
+      "weight_score": 81,
+      "weight_band": "major",
+      "term_ids": [
+        "person_situation_interplay"
+      ],
+      "theory_ids": [
+        "critical_psychology",
+        "dynamic_personality_development"
+      ],
+      "breakdown": {
+        "family_base": 40,
+        "priority_band": 14,
+        "length_band": 0,
+        "manual_summary": 6,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 10,
+        "token_volume": 0,
+        "term_coverage": 3,
+        "theory_coverage": 8
+      }
+    },
+    {
+      "source_id": "w01l2-koutsoumpis-2025-96f4dcf7",
+      "lecture_key": "W01L2",
+      "lecture_title": "Personality assessment (Forelæsning 2, 2026-02-03)",
+      "title": "Koutsoumpis (2025)",
+      "source_family": "reading",
+      "priority_band": "primary",
+      "length_band": "short",
+      "weight_score": 80,
+      "weight_band": "major",
+      "term_ids": [
+        "personality_assessment"
+      ],
+      "theory_ids": [
+        "trait_and_assessment_psychology"
+      ],
+      "breakdown": {
+        "family_base": 40,
+        "priority_band": 14,
+        "length_band": 0,
+        "manual_summary": 6,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 10,
+        "token_volume": 3,
+        "term_coverage": 3,
+        "theory_coverage": 4
+      }
+    },
+    {
+      "source_id": "w03l1-kandler-and-instinske-2025-01535a8e",
+      "lecture_key": "W03L1",
+      "lecture_title": "Culture, evolution, genetics, and personality (Forelæsning 5, 2026-02-16)",
+      "title": "Kandler & Instinske (2025)",
+      "source_family": "reading",
+      "priority_band": "primary",
+      "length_band": "short",
+      "weight_score": 80,
+      "weight_band": "major",
+      "term_ids": [
+        "genetic_perspective"
+      ],
+      "theory_ids": [
+        "biosocial_personality_perspectives"
+      ],
+      "breakdown": {
+        "family_base": 40,
+        "priority_band": 14,
+        "length_band": 0,
+        "manual_summary": 6,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 10,
+        "token_volume": 3,
+        "term_coverage": 3,
+        "theory_coverage": 4
+      }
+    },
+    {
+      "source_id": "w05l1-gammelgaard-2010-e6baff8b",
+      "lecture_key": "W05L1",
+      "lecture_title": "Empiri og metode i psykoanalysen (Forelæsning 9, 2026-03-02)",
+      "title": "Gammelgaard (2010)",
+      "source_family": "reading",
+      "priority_band": "primary",
+      "length_band": "medium",
+      "weight_score": 80,
+      "weight_band": "major",
+      "term_ids": [
+        "psychoanalysis"
+      ],
+      "theory_ids": [
+        "psychoanalytic_personality_theory"
+      ],
+      "breakdown": {
+        "family_base": 40,
+        "priority_band": 14,
+        "length_band": 3,
+        "manual_summary": 6,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 10,
+        "token_volume": 0,
+        "term_coverage": 3,
+        "theory_coverage": 4
+      }
+    },
+    {
+      "source_id": "w04l1-freud-1973-1933-98cd9920",
+      "lecture_key": "W04L1",
+      "lecture_title": "Psykoanalysens personlighedsbegreb (Forelæsning 7, 2026-02-23)",
+      "title": "Freud (1973/1933)",
+      "source_family": "reading",
+      "priority_band": "primary",
+      "length_band": "medium",
+      "weight_score": 73,
+      "weight_band": "major",
+      "term_ids": [],
+      "theory_ids": [],
+      "breakdown": {
+        "family_base": 40,
+        "priority_band": 14,
+        "length_band": 3,
+        "manual_summary": 6,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 10,
+        "token_volume": 0,
+        "term_coverage": 0,
+        "theory_coverage": 0
+      }
+    },
+    {
+      "source_id": "w03l1-zettler-et-al-2025-6ce9bdc0",
+      "lecture_key": "W03L1",
+      "lecture_title": "Culture, evolution, genetics, and personality (Forelæsning 5, 2026-02-16)",
+      "title": "Zettler et al. (2025)",
+      "source_family": "reading",
+      "priority_band": "primary",
+      "length_band": "short",
+      "weight_score": 70,
+      "weight_band": "major",
+      "term_ids": [],
+      "theory_ids": [],
+      "breakdown": {
+        "family_base": 40,
+        "priority_band": 14,
+        "length_band": 0,
+        "manual_summary": 6,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 10,
+        "token_volume": 0,
+        "term_coverage": 0,
+        "theory_coverage": 0
+      }
+    },
+    {
+      "source_id": "w09l1-lecture-17-kritisk-psykologi-30798115",
+      "lecture_key": "W09L1",
+      "lecture_title": "Kritisk psykologi (Forelæsning 17, 2026-04-07)",
+      "title": "17. Kritisk psykologi",
+      "source_family": "lecture_slide",
+      "priority_band": "primary",
+      "length_band": "long",
+      "weight_score": 56,
+      "weight_band": "supporting",
+      "term_ids": [
+        "critical_psychology"
+      ],
+      "theory_ids": [
+        "critical_psychology",
+        "sociocultural_poststructural_approaches"
+      ],
+      "breakdown": {
+        "family_base": 18,
+        "priority_band": 14,
+        "length_band": 6,
+        "manual_summary": 0,
+        "analysis_sidecar": 4,
+        "week_analysis_context": 0,
+        "likely_core_source": 0,
+        "token_volume": 3,
+        "term_coverage": 3,
+        "theory_coverage": 8
+      }
+    },
+    {
+      "source_id": "w10l2-lecture-19-gang-sociokulturelle-teorier-ca9255c8",
+      "lecture_key": "W10L2",
+      "lecture_title": "Sociokulturelle teorier - socialkonstruktionisme og poststrukturalisme (Forelæsning 19, 2026-04-14)",
+      "title": "19. gang Sociokulturelle teorier",
+      "source_family": "lecture_slide",
+      "priority_band": "primary",
+      "length_band": "long",
+      "weight_score": 52,
+      "weight_band": "supporting",
+      "term_ids": [],
+      "theory_ids": [],
+      "breakdown": {
+        "family_base": 18,
+        "priority_band": 14,
+        "length_band": 6,
+        "manual_summary": 0,
+        "analysis_sidecar": 4,
+        "week_analysis_context": 0,
+        "likely_core_source": 10,
+        "token_volume": 0,
+        "term_coverage": 0,
+        "theory_coverage": 0
+      }
+    },
+    {
+      "source_id": "w04l2-lecture-8-psykoanalytisk-personlighedsstruktur-1e653ba9",
+      "lecture_key": "W04L2",
+      "lecture_title": "Psykoanalytisk personlighedsstruktur (Forelæsning 8, 2026-02-24)",
+      "title": "8. Psykoanalytisk personlighedsstruktur",
+      "source_family": "lecture_slide",
+      "priority_band": "supporting",
+      "length_band": "long",
+      "weight_score": 51,
+      "weight_band": "supporting",
+      "term_ids": [
+        "personality_structure",
+        "psychoanalysis"
+      ],
+      "theory_ids": [
+        "personality_functioning_and_pathology",
+        "psychoanalytic_personality_theory"
+      ],
+      "breakdown": {
+        "family_base": 18,
+        "priority_band": 10,
+        "length_band": 6,
+        "manual_summary": 0,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 0,
+        "token_volume": 3,
+        "term_coverage": 6,
+        "theory_coverage": 8
+      }
+    },
+    {
+      "source_id": "w08l1-lecture-15-gang-critical-personalism-2026-8648744f",
+      "lecture_key": "W08L1",
+      "lecture_title": "Critical personalism (Forelæsning 15, 2026-03-23)",
+      "title": "15. gang Critical personalism 2026",
+      "source_family": "lecture_slide",
+      "priority_band": "supporting",
+      "length_band": "medium",
+      "weight_score": 46,
+      "weight_band": "contextual",
+      "term_ids": [
+        "critical_personalism"
+      ],
+      "theory_ids": [
+        "critical_personalism",
+        "critical_psychology",
+        "trait_and_assessment_psychology"
+      ],
+      "breakdown": {
+        "family_base": 18,
+        "priority_band": 10,
+        "length_band": 3,
+        "manual_summary": 0,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 0,
+        "token_volume": 0,
+        "term_coverage": 3,
+        "theory_coverage": 12
+      }
+    },
+    {
+      "source_id": "w06l1-lecture-11-f-nomenologisk-personlighedspsykologi2026-6303af4b",
+      "lecture_key": "W06L1",
+      "lecture_title": "Fænomenologi (Forelæsning 11, 2026-03-09)",
+      "title": "11. Fænomenologisk personlighedspsykologi2026",
+      "source_family": "lecture_slide",
+      "priority_band": "supporting",
+      "length_band": "long",
+      "weight_score": 45,
+      "weight_band": "contextual",
+      "term_ids": [
+        "phenomenology"
+      ],
+      "theory_ids": [
+        "existential_psychology",
+        "phenomenological_psychology"
+      ],
+      "breakdown": {
+        "family_base": 18,
+        "priority_band": 10,
+        "length_band": 6,
+        "manual_summary": 0,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 0,
+        "token_volume": 0,
+        "term_coverage": 3,
+        "theory_coverage": 8
+      }
+    },
+    {
+      "source_id": "w07l2-lecture-14-humanistisk-psykologi20-d271355d",
+      "lecture_key": "W07L2",
+      "lecture_title": "Humanistisk psykologi (Forelæsning 14, 2026-03-17)",
+      "title": "14. Humanistisk psykologi20",
+      "source_family": "lecture_slide",
+      "priority_band": "supporting",
+      "length_band": "long",
+      "weight_score": 45,
+      "weight_band": "contextual",
+      "term_ids": [
+        "humanistic_psychology"
+      ],
+      "theory_ids": [
+        "existential_psychology",
+        "humanistic_psychology"
+      ],
+      "breakdown": {
+        "family_base": 18,
+        "priority_band": 10,
+        "length_band": 6,
+        "manual_summary": 0,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 0,
+        "token_volume": 0,
+        "term_coverage": 3,
+        "theory_coverage": 8
+      }
+    },
+    {
+      "source_id": "w04l1-lecture-7-psykoanalysens-personbegreb-1e91ce22",
+      "lecture_key": "W04L1",
+      "lecture_title": "Psykoanalysens personlighedsbegreb (Forelæsning 7, 2026-02-23)",
+      "title": "7. Psykoanalysens personbegreb",
+      "source_family": "lecture_slide",
+      "priority_band": "supporting",
+      "length_band": "long",
+      "weight_score": 44,
+      "weight_band": "contextual",
+      "term_ids": [
+        "psychoanalysis"
+      ],
+      "theory_ids": [
+        "psychoanalytic_personality_theory"
+      ],
+      "breakdown": {
+        "family_base": 18,
+        "priority_band": 10,
+        "length_band": 6,
+        "manual_summary": 0,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 0,
+        "token_volume": 3,
+        "term_coverage": 3,
+        "theory_coverage": 4
+      }
+    },
+    {
+      "source_id": "w05l1-lecture-9-psykoanalysens-empiri-og-metode-f8e26ec5",
+      "lecture_key": "W05L1",
+      "lecture_title": "Empiri og metode i psykoanalysen (Forelæsning 9, 2026-03-02)",
+      "title": "9. Psykoanalysens empiri og metode",
+      "source_family": "lecture_slide",
+      "priority_band": "supporting",
+      "length_band": "long",
+      "weight_score": 44,
+      "weight_band": "contextual",
+      "term_ids": [
+        "psychoanalysis"
+      ],
+      "theory_ids": [
+        "psychoanalytic_personality_theory"
+      ],
+      "breakdown": {
+        "family_base": 18,
+        "priority_band": 10,
+        "length_band": 6,
+        "manual_summary": 0,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 0,
+        "token_volume": 3,
+        "term_coverage": 3,
+        "theory_coverage": 4
+      }
+    },
+    {
+      "source_id": "w03l2-lecture-6-gang-personality-functioning-2026-bo-bach-542bbd7e",
+      "lecture_key": "W03L2",
+      "lecture_title": "Personlighedsfunktion og forstyrrelse (Forelæsning 6, 2026-02-17)",
+      "title": "6. gang Personality Functioning 2026 (Bo Bach)",
+      "source_family": "lecture_slide",
+      "priority_band": "supporting",
+      "length_band": "medium",
+      "weight_score": 42,
+      "weight_band": "contextual",
+      "term_ids": [
+        "personality_functioning"
+      ],
+      "theory_ids": [
+        "personality_functioning_and_pathology",
+        "psychoanalytic_personality_theory"
+      ],
+      "breakdown": {
+        "family_base": 18,
+        "priority_band": 10,
+        "length_band": 3,
+        "manual_summary": 0,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 0,
+        "token_volume": 0,
+        "term_coverage": 3,
+        "theory_coverage": 8
+      }
+    },
+    {
+      "source_id": "w08l2-lecture-16-gang-critical-psych-2026-1b13783c",
+      "lecture_key": "W08L2",
+      "lecture_title": "Critical psychology (Forelæsning 16, 2026-03-24)",
+      "title": "16. gang Critical psych 2026",
+      "source_family": "lecture_slide",
+      "priority_band": "supporting",
+      "length_band": "medium",
+      "weight_score": 42,
+      "weight_band": "contextual",
+      "term_ids": [
+        "critical_psychology"
+      ],
+      "theory_ids": [
+        "critical_psychology",
+        "sociocultural_poststructural_approaches"
+      ],
+      "breakdown": {
+        "family_base": 18,
+        "priority_band": 10,
+        "length_band": 3,
+        "manual_summary": 0,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 0,
+        "token_volume": 0,
+        "term_coverage": 3,
+        "theory_coverage": 8
+      }
+    },
+    {
+      "source_id": "w02l1-lecture-3-gang-perspsy-3-260209-08cbaee1",
+      "lecture_key": "W02L1",
+      "lecture_title": "Personality traits, personality states, and personality dimensions (Forelæsning 3, 2026-02-09)",
+      "title": "3. gang PersPsy 3 260209",
+      "source_family": "lecture_slide",
+      "priority_band": "supporting",
+      "length_band": "long",
+      "weight_score": 37,
+      "weight_band": "contextual",
+      "term_ids": [],
+      "theory_ids": [],
+      "breakdown": {
+        "family_base": 18,
+        "priority_band": 10,
+        "length_band": 6,
+        "manual_summary": 0,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 0,
+        "token_volume": 3,
+        "term_coverage": 0,
+        "theory_coverage": 0
+      }
+    },
+    {
+      "source_id": "w05l2-lecture-10-psykoanalysens-konstituering-513290eb",
+      "lecture_key": "W05L2",
+      "lecture_title": "Psykoanalysens konstituering (Forelæsning 10, 2026-03-03)",
+      "title": "10. Psykoanalysens konstituering",
+      "source_family": "lecture_slide",
+      "priority_band": "supporting",
+      "length_band": "short",
+      "weight_score": 35,
+      "weight_band": "contextual",
+      "term_ids": [
+        "psychoanalysis"
+      ],
+      "theory_ids": [
+        "psychoanalytic_personality_theory"
+      ],
+      "breakdown": {
+        "family_base": 18,
+        "priority_band": 10,
+        "length_band": 0,
+        "manual_summary": 0,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 0,
+        "token_volume": 0,
+        "term_coverage": 3,
+        "theory_coverage": 4
+      }
+    },
+    {
+      "source_id": "w01l2-lecture-2-gang-perspsy-2-260203-edbe52ab",
+      "lecture_key": "W01L2",
+      "lecture_title": "Personality assessment (Forelæsning 2, 2026-02-03)",
+      "title": "2. gang PersPsy 2 260203",
+      "source_family": "lecture_slide",
+      "priority_band": "supporting",
+      "length_band": "long",
+      "weight_score": 34,
+      "weight_band": "contextual",
+      "term_ids": [],
+      "theory_ids": [],
+      "breakdown": {
+        "family_base": 18,
+        "priority_band": 10,
+        "length_band": 6,
+        "manual_summary": 0,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 0,
+        "token_volume": 0,
+        "term_coverage": 0,
+        "theory_coverage": 0
+      }
+    },
+    {
+      "source_id": "w02l2-lecture-4-gang-perspsy-4-260210-ce33366f",
+      "lecture_key": "W02L2",
+      "lecture_title": "Person-situation interplay - stability and change of individual differences (Forelæsning 4, 2026-02-10)",
+      "title": "4. gang PersPsy 4 260210",
+      "source_family": "lecture_slide",
+      "priority_band": "supporting",
+      "length_band": "long",
+      "weight_score": 34,
+      "weight_band": "contextual",
+      "term_ids": [],
+      "theory_ids": [],
+      "breakdown": {
+        "family_base": 18,
+        "priority_band": 10,
+        "length_band": 6,
+        "manual_summary": 0,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 0,
+        "token_volume": 0,
+        "term_coverage": 0,
+        "theory_coverage": 0
+      }
+    },
+    {
+      "source_id": "w03l1-lecture-5-gang-perspsy-5-260216-c7e4dd91",
+      "lecture_key": "W03L1",
+      "lecture_title": "Culture, evolution, genetics, and personality (Forelæsning 5, 2026-02-16)",
+      "title": "5. gang PersPsy 5 260216",
+      "source_family": "lecture_slide",
+      "priority_band": "supporting",
+      "length_band": "long",
+      "weight_score": 34,
+      "weight_band": "contextual",
+      "term_ids": [],
+      "theory_ids": [],
+      "breakdown": {
+        "family_base": 18,
+        "priority_band": 10,
+        "length_band": 6,
+        "manual_summary": 0,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 0,
+        "token_volume": 0,
+        "term_coverage": 0,
+        "theory_coverage": 0
+      }
+    },
+    {
+      "source_id": "w07l1-lecture-13-eksistens-ii-2026-fb33e095",
+      "lecture_key": "W07L1",
+      "lecture_title": "Eksistentiel personlighedspsykologi II (Bjerregaard-Nielsen) (Forelæsning 13, 2026-03-16)",
+      "title": "13. Eksistens II. 2026",
+      "source_family": "lecture_slide",
+      "priority_band": "supporting",
+      "length_band": "long",
+      "weight_score": 34,
+      "weight_band": "contextual",
+      "term_ids": [],
+      "theory_ids": [],
+      "breakdown": {
+        "family_base": 18,
+        "priority_band": 10,
+        "length_band": 6,
+        "manual_summary": 0,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 0,
+        "token_volume": 0,
+        "term_coverage": 0,
+        "theory_coverage": 0
+      }
+    },
+    {
+      "source_id": "w01l1-lecture-1-gang-introduktin-pp-2026-e5a501d8",
+      "lecture_key": "W01L1",
+      "lecture_title": "Introforelæsning og nøglebegreber i personlighedspsykologien (Forelæsning 1, 2026-02-02)",
+      "title": "1. gang . Introduktin PP 2026",
+      "source_family": "lecture_slide",
+      "priority_band": "supporting",
+      "length_band": "medium",
+      "weight_score": 31,
+      "weight_band": "contextual",
+      "term_ids": [],
+      "theory_ids": [],
+      "breakdown": {
+        "family_base": 18,
+        "priority_band": 10,
+        "length_band": 3,
+        "manual_summary": 0,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 0,
+        "token_volume": 0,
+        "term_coverage": 0,
+        "theory_coverage": 0
+      }
+    },
+    {
+      "source_id": "w04l1-seminar-4-psykoanalyse-i-94151a16",
+      "lecture_key": "W04L1",
+      "lecture_title": "Psykoanalysens personlighedsbegreb (Forelæsning 7, 2026-02-23)",
+      "title": "4. Psykoanalyse I",
+      "source_family": "seminar_slide",
+      "priority_band": "contextual",
+      "length_band": "medium",
+      "weight_score": 30,
+      "weight_band": "contextual",
+      "term_ids": [
+        "psychoanalysis"
+      ],
+      "theory_ids": [
+        "psychoanalytic_personality_theory"
+      ],
+      "breakdown": {
+        "family_base": 14,
+        "priority_band": 6,
+        "length_band": 3,
+        "manual_summary": 0,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 0,
+        "token_volume": 0,
+        "term_coverage": 3,
+        "theory_coverage": 4
+      }
+    },
+    {
+      "source_id": "w04l1-seminar-4-psykoanalyse-i-94151a16",
+      "lecture_key": "W04L2",
+      "lecture_title": "Psykoanalytisk personlighedsstruktur (Forelæsning 8, 2026-02-24)",
+      "title": "4. Psykoanalyse I",
+      "source_family": "seminar_slide",
+      "priority_band": "contextual",
+      "length_band": "medium",
+      "weight_score": 30,
+      "weight_band": "contextual",
+      "term_ids": [
+        "psychoanalysis"
+      ],
+      "theory_ids": [
+        "psychoanalytic_personality_theory"
+      ],
+      "breakdown": {
+        "family_base": 14,
+        "priority_band": 6,
+        "length_band": 3,
+        "manual_summary": 0,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 0,
+        "token_volume": 0,
+        "term_coverage": 3,
+        "theory_coverage": 4
+      }
+    },
+    {
+      "source_id": "w05l1-exercise-2-psykoanalyse-1-og-intro-1-d9bc77f5",
+      "lecture_key": "W05L1",
+      "lecture_title": "Empiri og metode i psykoanalysen (Forelæsning 9, 2026-03-02)",
+      "title": "1. Psykoanalyse",
+      "source_family": "exercise_slide",
+      "priority_band": "contextual",
+      "length_band": "medium",
+      "weight_score": 26,
+      "weight_band": "contextual",
+      "term_ids": [
+        "psychoanalysis"
+      ],
+      "theory_ids": [
+        "psychoanalytic_personality_theory"
+      ],
+      "breakdown": {
+        "family_base": 10,
+        "priority_band": 6,
+        "length_band": 3,
+        "manual_summary": 0,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 0,
+        "token_volume": 0,
+        "term_coverage": 3,
+        "theory_coverage": 4
+      }
+    },
+    {
+      "source_id": "w01l1-seminar-1-introduktion-9fe382c8",
+      "lecture_key": "W01L1",
+      "lecture_title": "Introforelæsning og nøglebegreber i personlighedspsykologien (Forelæsning 1, 2026-02-02)",
+      "title": "1. Introduktion",
+      "source_family": "seminar_slide",
+      "priority_band": "contextual",
+      "length_band": "medium",
+      "weight_score": 23,
+      "weight_band": "contextual",
+      "term_ids": [],
+      "theory_ids": [],
+      "breakdown": {
+        "family_base": 14,
+        "priority_band": 6,
+        "length_band": 3,
+        "manual_summary": 0,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 0,
+        "token_volume": 0,
+        "term_coverage": 0,
+        "theory_coverage": 0
+      }
+    },
+    {
+      "source_id": "w02l1-seminar-3-tr-kpsykologi-ii-d7ebc130",
+      "lecture_key": "W02L1",
+      "lecture_title": "Personality traits, personality states, and personality dimensions (Forelæsning 3, 2026-02-09)",
+      "title": "3. Trækpsykologi II",
+      "source_family": "seminar_slide",
+      "priority_band": "contextual",
+      "length_band": "medium",
+      "weight_score": 23,
+      "weight_band": "contextual",
+      "term_ids": [],
+      "theory_ids": [],
+      "breakdown": {
+        "family_base": 14,
+        "priority_band": 6,
+        "length_band": 3,
+        "manual_summary": 0,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 0,
+        "token_volume": 0,
+        "term_coverage": 0,
+        "theory_coverage": 0
+      }
+    },
+    {
+      "source_id": "w03l1-seminar-5-psykoanalyse-ii-4354fbb7",
+      "lecture_key": "W03L1",
+      "lecture_title": "Culture, evolution, genetics, and personality (Forelæsning 5, 2026-02-16)",
+      "title": "5. Psykoanalyse II",
+      "source_family": "seminar_slide",
+      "priority_band": "contextual",
+      "length_band": "medium",
+      "weight_score": 23,
+      "weight_band": "contextual",
+      "term_ids": [],
+      "theory_ids": [],
+      "breakdown": {
+        "family_base": 14,
+        "priority_band": 6,
+        "length_band": 3,
+        "manual_summary": 0,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 0,
+        "token_volume": 0,
+        "term_coverage": 0,
+        "theory_coverage": 0
+      }
+    },
+    {
+      "source_id": "w02l1-exercise-1-intro-og-tr-k-93aadd03",
+      "lecture_key": "W02L1",
+      "lecture_title": "Personality traits, personality states, and personality dimensions (Forelæsning 3, 2026-02-09)",
+      "title": "1. Trækteori",
+      "source_family": "exercise_slide",
+      "priority_band": "contextual",
+      "length_band": "long",
+      "weight_score": 22,
+      "weight_band": "contextual",
+      "term_ids": [],
+      "theory_ids": [],
+      "breakdown": {
+        "family_base": 10,
+        "priority_band": 6,
+        "length_band": 6,
+        "manual_summary": 0,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 0,
+        "token_volume": 0,
+        "term_coverage": 0,
+        "theory_coverage": 0
+      }
+    },
+    {
+      "source_id": "w03l2-bach-and-simonsen-2023-d58362ff",
+      "lecture_key": "W03L2",
+      "lecture_title": "Personlighedsfunktion og forstyrrelse (Forelæsning 6, 2026-02-17)",
+      "title": "Bach & Simonsen (2023)",
+      "source_family": "reading",
+      "priority_band": "missing",
+      "length_band": "short",
+      "weight_score": 0,
+      "weight_band": "missing",
+      "term_ids": [],
+      "theory_ids": [],
+      "breakdown": {
+        "family_base": 0,
+        "priority_band": 0,
+        "length_band": 0,
+        "manual_summary": 0,
+        "analysis_sidecar": 0,
+        "week_analysis_context": 0,
+        "likely_core_source": 0,
+        "token_volume": 0,
+        "term_coverage": 0,
+        "theory_coverage": 0
+      }
+    }
+  ]
+}

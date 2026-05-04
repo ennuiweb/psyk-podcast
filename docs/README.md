@@ -23,3 +23,11 @@ Canonical repo entrypoints outside this folder:
 - [AGENTS.md](../AGENTS.md) - repo-local operating rules.
 - [freudd_portal/README.md](../freudd_portal/README.md) - full Freudd product and runtime contract.
 - [freudd_portal/docs/deploy-and-smoke.md](../freudd_portal/docs/deploy-and-smoke.md) - canonical Freudd deploy and smoke runbook.
+
+Cross-doc principle:
+
+- The `Freudd Content Engine` is intentionally designed as a decomposed
+  alternative to a single giant full-course reasoning pass. Relevant docs should
+  preserve the distinction between bottom-up, top-down, and sideways
+  information flow when describing the `Source Intelligence Layer`, `Course
+  Context Layer`, and `Prompt Assembly Layer`.

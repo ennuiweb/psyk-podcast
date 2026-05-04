@@ -1,0 +1,2820 @@
+{
+  "version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-04T20:58:22Z",
+  "build_inputs": {
+    "source_catalog": "shows/personlighedspsykologi-en/source_catalog.json",
+    "lecture_bundle_index": "shows/personlighedspsykologi-en/lecture_bundles/index.json",
+    "seed_path": "shows/personlighedspsykologi-en/source_intelligence_seed.json"
+  },
+  "stats": {
+    "term_count": 26,
+    "grounded_term_count": 22,
+    "partially_grounded_term_count": 4,
+    "seed_only_term_count": 0
+  },
+  "terms": [
+    {
+      "term_id": "psychoanalysis",
+      "label": "psychoanalysis",
+      "category": "tradition",
+      "importance": 3,
+      "aliases": [
+        "psychoanalysis",
+        "psykoanalyse",
+        "psykoanalysen",
+        "psykoanalytisk"
+      ],
+      "definition": "Psychoanalysis is presented as a personality tradition centred on conflict, development, unconscious meaning, and layered organisation of the person.",
+      "course_role": "Marks the first major theoretical bloc that departs sharply from trait and assessment models.",
+      "lecture_keys": [
+        "W04L1",
+        "W04L2",
+        "W05L1",
+        "W05L2"
+      ],
+      "lecture_titles": [
+        "Psykoanalysens personlighedsbegreb (Forelæsning 7, 2026-02-23)",
+        "Psykoanalytisk personlighedsstruktur (Forelæsning 8, 2026-02-24)",
+        "Empiri og metode i psykoanalysen (Forelæsning 9, 2026-03-02)",
+        "Psykoanalysens konstituering (Forelæsning 10, 2026-03-03)"
+      ],
+      "matched_lecture_keys": [
+        "W04L1",
+        "W04L2",
+        "W05L1",
+        "W05L2"
+      ],
+      "grounding_status": "grounded",
+      "match_stats": {
+        "scoped_lecture_count": 4,
+        "matched_lecture_count": 4,
+        "evidence_fragment_count": 33
+      },
+      "linked_terms": [
+        "personality_structure",
+        "meaning_making",
+        "subjectivation"
+      ],
+      "linked_theories": [
+        "psychoanalytic_personality_theory"
+      ],
+      "source_ids": [
+        "w04l1-gammelgaard-2007-bcbdbec2",
+        "w04l1-lecture-7-psykoanalysens-personbegreb-1e91ce22",
+        "w04l1-seminar-4-psykoanalyse-i-94151a16",
+        "w04l2-laplanche-1970-968862d5",
+        "w04l2-lecture-8-psykoanalytisk-personlighedsstruktur-1e653ba9",
+        "w05l1-ricoeur-1981-19a5343f",
+        "w05l1-gammelgaard-2010-e6baff8b",
+        "w05l1-lecture-9-psykoanalysens-empiri-og-metode-f8e26ec5",
+        "w05l1-exercise-2-psykoanalyse-1-og-intro-1-d9bc77f5",
+        "w05l2-grundbog-kapitel-7-nyere-psykoanalytiske-teorier-fda84b6a",
+        "w05l2-k-ppe-1992-9a474402",
+        "w05l2-lecture-10-psykoanalysens-konstituering-513290eb"
+      ],
+      "core_source_ids": [
+        "w04l1-gammelgaard-2007-bcbdbec2",
+        "w04l2-laplanche-1970-968862d5",
+        "w05l1-ricoeur-1981-19a5343f",
+        "w05l1-gammelgaard-2010-e6baff8b",
+        "w05l2-grundbog-kapitel-7-nyere-psykoanalytiske-teorier-fda84b6a",
+        "w05l2-k-ppe-1992-9a474402"
+      ],
+      "supporting_source_ids": [
+        "w04l1-lecture-7-psykoanalysens-personbegreb-1e91ce22",
+        "w04l1-seminar-4-psykoanalyse-i-94151a16",
+        "w04l2-lecture-8-psykoanalytisk-personlighedsstruktur-1e653ba9",
+        "w05l1-lecture-9-psykoanalysens-empiri-og-metode-f8e26ec5",
+        "w05l1-exercise-2-psykoanalyse-1-og-intro-1-d9bc77f5",
+        "w05l2-lecture-10-psykoanalysens-konstituering-513290eb"
+      ],
+      "salience_score": 110,
+      "evidence_by_lecture": [
+        {
+          "lecture_key": "W04L1",
+          "lecture_title": "Psykoanalysens personlighedsbegreb (Forelæsning 7, 2026-02-23)",
+          "matched_aliases": [
+            "psykoanalyse",
+            "psykoanalysen",
+            "psykoanalytisk"
+          ],
+          "match_locations": [
+            "lecture_title",
+            "lecture_summary",
+            "source_summary",
+            "source_title"
+          ],
+          "representative_excerpts": [
+            "Psykoanalysens personlighedsbegreb (Forelæsning 7, 2026-02-23)",
+            "Kilderne samler klassiske psykoanalytiske formuleringer om drift, konflikt og personlighedsstruktur.",
+            "Gammelgaard diskuterer psykoanalytiske forståelser af personlighed med vægt på subjektivitet og relationel dynamik."
+          ],
+          "source_ids": [
+            "w04l1-gammelgaard-2007-bcbdbec2",
+            "w04l1-lecture-7-psykoanalysens-personbegreb-1e91ce22",
+            "w04l1-seminar-4-psykoanalyse-i-94151a16"
+          ],
+          "core_source_ids": [
+            "w04l1-gammelgaard-2007-bcbdbec2"
+          ],
+          "supporting_source_ids": [
+            "w04l1-lecture-7-psykoanalysens-personbegreb-1e91ce22",
+            "w04l1-seminar-4-psykoanalyse-i-94151a16"
+          ]
+        },
+        {
+          "lecture_key": "W04L2",
+          "lecture_title": "Psykoanalytisk personlighedsstruktur (Forelæsning 8, 2026-02-24)",
+          "matched_aliases": [
+            "psykoanalytisk",
+            "psychoanalysis",
+            "psykoanalyse"
+          ],
+          "match_locations": [
+            "lecture_title",
+            "source_summary",
+            "source_title"
+          ],
+          "representative_excerpts": [
+            "Psykoanalytisk personlighedsstruktur (Forelæsning 8, 2026-02-24)",
+            "He argues that tensions in concepts like drive, ego, and object should be interpreted dialectically as clues to the object of psychoanalysis.",
+            "8. Psykoanalytisk personlighedsstruktur"
+          ],
+          "source_ids": [
+            "w04l2-laplanche-1970-968862d5",
+            "w04l2-lecture-8-psykoanalytisk-personlighedsstruktur-1e653ba9",
+            "w04l1-seminar-4-psykoanalyse-i-94151a16"
+          ],
+          "core_source_ids": [
+            "w04l2-laplanche-1970-968862d5"
+          ],
+          "supporting_source_ids": [
+            "w04l2-lecture-8-psykoanalytisk-personlighedsstruktur-1e653ba9",
+            "w04l1-seminar-4-psykoanalyse-i-94151a16"
+          ]
+        },
+        {
+          "lecture_key": "W05L1",
+          "lecture_title": "Empiri og metode i psykoanalysen (Forelæsning 9, 2026-03-02)",
+          "matched_aliases": [
+            "psykoanalyse",
+            "psykoanalysen",
+            "psykoanalytisk",
+            "psychoanalysis"
+          ],
+          "match_locations": [
+            "lecture_title",
+            "lecture_summary",
+            "lecture_key_point",
+            "source_summary",
+            "source_key_point",
+            "source_title"
+          ],
+          "representative_excerpts": [
+            "Empiri og metode i psykoanalysen (Forelæsning 9, 2026-03-02)",
+            "Forelæsningen samler klassiske og nyere diskussioner af, hvad der kan tælle som empiri i psykoanalysen.",
+            "Psykoanalysens metode fremstilles derfor som en fortolkende praksis, der må begrunde sine sandhedskrav uden at reducere subjektet til målbare størrelser."
+          ],
+          "source_ids": [
+            "w05l1-ricoeur-1981-19a5343f",
+            "w05l1-gammelgaard-2010-e6baff8b",
+            "w05l1-lecture-9-psykoanalysens-empiri-og-metode-f8e26ec5",
+            "w05l1-exercise-2-psykoanalyse-1-og-intro-1-d9bc77f5"
+          ],
+          "core_source_ids": [
+            "w05l1-ricoeur-1981-19a5343f",
+            "w05l1-gammelgaard-2010-e6baff8b"
+          ],
+          "supporting_source_ids": [
+            "w05l1-lecture-9-psykoanalysens-empiri-og-metode-f8e26ec5",
+            "w05l1-exercise-2-psykoanalyse-1-og-intro-1-d9bc77f5"
+          ]
+        },
+        {
+          "lecture_key": "W05L2",
+          "lecture_title": "Psykoanalysens konstituering (Forelæsning 10, 2026-03-03)",
+          "matched_aliases": [
+            "psykoanalyse",
+            "psykoanalysen",
+            "psykoanalytisk"
+          ],
+          "match_locations": [
+            "lecture_title",
+            "lecture_summary",
+            "lecture_key_point",
+            "source_title",
+            "source_summary",
+            "source_key_point"
+          ],
+          "representative_excerpts": [
+            "Psykoanalysens konstituering (Forelæsning 10, 2026-03-03)",
+            "Forelæsningen samler nyere psykoanalytiske teorier om, hvordan subjektet konstitueres gennem drifter, objektrelationer og det ubevidste.",
+            "På tværs af teksterne fremstilles psykoanalysen som et felt, hvor konstitutionen af personlighed må tænkes relationelt, strukturelt og historisk."
+          ],
+          "source_ids": [
+            "w05l2-grundbog-kapitel-7-nyere-psykoanalytiske-teorier-fda84b6a",
+            "w05l2-k-ppe-1992-9a474402",
+            "w05l2-lecture-10-psykoanalysens-konstituering-513290eb"
+          ],
+          "core_source_ids": [
+            "w05l2-grundbog-kapitel-7-nyere-psykoanalytiske-teorier-fda84b6a",
+            "w05l2-k-ppe-1992-9a474402"
+          ],
+          "supporting_source_ids": [
+            "w05l2-lecture-10-psykoanalysens-konstituering-513290eb"
+          ]
+        }
+      ],
+      "provenance": {
+        "seed_path": "shows/personlighedspsykologi-en/source_intelligence_seed.json",
+        "lecture_bundle_paths": [
+          "shows/personlighedspsykologi-en/lecture_bundles/W04L1.json",
+          "shows/personlighedspsykologi-en/lecture_bundles/W04L2.json",
+          "shows/personlighedspsykologi-en/lecture_bundles/W05L1.json",
+          "shows/personlighedspsykologi-en/lecture_bundles/W05L2.json"
+        ]
+      }
+    },
+    {
+      "term_id": "stability_and_change",
+      "label": "stability and change",
+      "category": "problem",
+      "importance": 3,
+      "aliases": [
+        "stability and change",
+        "stability",
+        "change",
+        "continuity",
+        "forandring"
+      ],
+      "definition": "Stability and change are treated as joint problems: personality must explain durable patterning without denying development, revision, and historical variation.",
+      "course_role": "Functions as one of the core comparison questions across the whole semester.",
+      "lecture_keys": [
+        "W01L1",
+        "W02L2",
+        "W11L2",
+        "W12L1"
+      ],
+      "lecture_titles": [
+        "Introforelæsning og nøglebegreber i personlighedspsykologien (Forelæsning 1, 2026-02-02)",
+        "Person-situation interplay - stability and change of individual differences (Forelæsning 4, 2026-02-10)",
+        "Narrativitet, kultur og mening (Forelæsning 21, 2026-04-21)",
+        "Sammenligning af teorier og subjektets historie og eksamen (Forelæsning 22, 2026-04-27)"
+      ],
+      "matched_lecture_keys": [
+        "W01L1",
+        "W02L2",
+        "W11L2",
+        "W12L1"
+      ],
+      "grounding_status": "grounded",
+      "match_stats": {
+        "scoped_lecture_count": 4,
+        "matched_lecture_count": 4,
+        "evidence_fragment_count": 15
+      },
+      "linked_terms": [
+        "personality_traits",
+        "personality_states",
+        "narrativity",
+        "subjectivation"
+      ],
+      "linked_theories": [
+        "dynamic_personality_development",
+        "narrative_psychology",
+        "comparative_theory_analysis"
+      ],
+      "source_ids": [
+        "w01l1-grundbog-kapitel-1-introduktion-til-personlighed-1e727647",
+        "w02l2-bleidorn-et-al-2022-25c2d2de",
+        "w11l2-grundbog-kapitel-9-narrative-teorier-cd12008a",
+        "w11l2-raggatt-2002-d15129af",
+        "w12l1-grundbog-kapitel-8-personlighed-subjektivitet-og-b0095bfb",
+        "w12l1-elias-2000-f9176ae8"
+      ],
+      "core_source_ids": [
+        "w01l1-grundbog-kapitel-1-introduktion-til-personlighed-1e727647",
+        "w02l2-bleidorn-et-al-2022-25c2d2de",
+        "w11l2-grundbog-kapitel-9-narrative-teorier-cd12008a",
+        "w11l2-raggatt-2002-d15129af",
+        "w12l1-grundbog-kapitel-8-personlighed-subjektivitet-og-b0095bfb",
+        "w12l1-elias-2000-f9176ae8"
+      ],
+      "supporting_source_ids": [],
+      "salience_score": 110,
+      "evidence_by_lecture": [
+        {
+          "lecture_key": "W01L1",
+          "lecture_title": "Introforelæsning og nøglebegreber i personlighedspsykologien (Forelæsning 1, 2026-02-02)",
+          "matched_aliases": [
+            "forandring"
+          ],
+          "match_locations": [
+            "lecture_summary",
+            "lecture_key_point",
+            "source_summary",
+            "source_key_point"
+          ],
+          "representative_excerpts": [
+            "Grundbogsteksten samler de centrale faglige stridspunkter om stabilitet, forandring og forklaringsniveau.",
+            "Kontinuitet og forandring bør forstås som samtidige processer.",
+            "Personlighed fremstilles både som mønstret kontinuitet og kontekstfølsom forandring."
+          ],
+          "source_ids": [
+            "w01l1-grundbog-kapitel-1-introduktion-til-personlighed-1e727647"
+          ],
+          "core_source_ids": [
+            "w01l1-grundbog-kapitel-1-introduktion-til-personlighed-1e727647"
+          ],
+          "supporting_source_ids": []
+        },
+        {
+          "lecture_key": "W02L2",
+          "lecture_title": "Person-situation interplay - stability and change of individual differences (Forelæsning 4, 2026-02-10)",
+          "matched_aliases": [
+            "stability and change",
+            "stability",
+            "change"
+          ],
+          "match_locations": [
+            "lecture_title",
+            "source_summary",
+            "source_key_point"
+          ],
+          "representative_excerpts": [
+            "Person-situation interplay - stability and change of individual differences (Forelæsning 4, 2026-02-10)",
+            "This meta-analysis synthesizes longitudinal evidence on personality stability and mean-level change across the lifespan.",
+            "It confirms substantial rank-order stability while documenting systematic maturation-linked change patterns."
+          ],
+          "source_ids": [
+            "w02l2-bleidorn-et-al-2022-25c2d2de"
+          ],
+          "core_source_ids": [
+            "w02l2-bleidorn-et-al-2022-25c2d2de"
+          ],
+          "supporting_source_ids": []
+        },
+        {
+          "lecture_key": "W11L2",
+          "lecture_title": "Narrativitet, kultur og mening (Forelæsning 21, 2026-04-21)",
+          "matched_aliases": [
+            "forandring",
+            "stability"
+          ],
+          "match_locations": [
+            "lecture_key_point",
+            "source_key_point"
+          ],
+          "representative_excerpts": [
+            "Forandring kan beskrives som narrativ revision over tid.",
+            "Forandring kan forstås som omorganisering af livsfortællingen.",
+            "Identity stability is achieved through ongoing coordination work."
+          ],
+          "source_ids": [
+            "w11l2-grundbog-kapitel-9-narrative-teorier-cd12008a",
+            "w11l2-raggatt-2002-d15129af"
+          ],
+          "core_source_ids": [
+            "w11l2-grundbog-kapitel-9-narrative-teorier-cd12008a",
+            "w11l2-raggatt-2002-d15129af"
+          ],
+          "supporting_source_ids": []
+        },
+        {
+          "lecture_key": "W12L1",
+          "lecture_title": "Sammenligning af teorier og subjektets historie og eksamen (Forelæsning 22, 2026-04-27)",
+          "matched_aliases": [
+            "forandring",
+            "change"
+          ],
+          "match_locations": [
+            "source_key_point",
+            "source_summary"
+          ],
+          "representative_excerpts": [
+            "Analyse bør forbinde biografi med historisk forandring.",
+            "The text situates psychological development within macro-sociological change."
+          ],
+          "source_ids": [
+            "w12l1-grundbog-kapitel-8-personlighed-subjektivitet-og-b0095bfb",
+            "w12l1-elias-2000-f9176ae8"
+          ],
+          "core_source_ids": [
+            "w12l1-grundbog-kapitel-8-personlighed-subjektivitet-og-b0095bfb",
+            "w12l1-elias-2000-f9176ae8"
+          ],
+          "supporting_source_ids": []
+        }
+      ],
+      "provenance": {
+        "seed_path": "shows/personlighedspsykologi-en/source_intelligence_seed.json",
+        "lecture_bundle_paths": [
+          "shows/personlighedspsykologi-en/lecture_bundles/W01L1.json",
+          "shows/personlighedspsykologi-en/lecture_bundles/W02L2.json",
+          "shows/personlighedspsykologi-en/lecture_bundles/W11L2.json",
+          "shows/personlighedspsykologi-en/lecture_bundles/W12L1.json"
+        ]
+      }
+    },
+    {
+      "term_id": "critical_psychology",
+      "label": "critical psychology",
+      "category": "tradition",
+      "importance": 3,
+      "aliases": [
+        "critical psychology",
+        "kritisk psykologi",
+        "critical"
+      ],
+      "definition": "Critical psychology situates subjectivity, action, and difficulty within historical practices and structural conditions rather than inside isolated individuals.",
+      "course_role": "Expands the critique of individualisation into a broader sociohistorical theory of subjectivity and participation.",
+      "lecture_keys": [
+        "W08L2",
+        "W09L1"
+      ],
+      "lecture_titles": [
+        "Critical psychology (Forelæsning 16, 2026-03-24)",
+        "Kritisk psykologi (Forelæsning 17, 2026-04-07)"
+      ],
+      "matched_lecture_keys": [
+        "W08L2",
+        "W09L1"
+      ],
+      "grounding_status": "grounded",
+      "match_stats": {
+        "scoped_lecture_count": 2,
+        "matched_lecture_count": 2,
+        "evidence_fragment_count": 12
+      },
+      "linked_terms": [
+        "critical_personalism",
+        "subjectivation",
+        "meaning_making"
+      ],
+      "linked_theories": [
+        "critical_psychology",
+        "sociocultural_poststructural_approaches"
+      ],
+      "source_ids": [
+        "w08l2-tolman-2009-455915e0",
+        "w08l2-holzkamp-1982-845aafd2",
+        "w08l2-lecture-16-gang-critical-psych-2026-1b13783c",
+        "w09l1-grundbog-kapitel-10-kritisk-psykologi-b3286662",
+        "w09l1-holzkamp-2013-c3068d8a",
+        "w09l1-lecture-17-kritisk-psykologi-30798115"
+      ],
+      "core_source_ids": [
+        "w08l2-tolman-2009-455915e0",
+        "w08l2-holzkamp-1982-845aafd2",
+        "w09l1-grundbog-kapitel-10-kritisk-psykologi-b3286662",
+        "w09l1-holzkamp-2013-c3068d8a",
+        "w09l1-lecture-17-kritisk-psykologi-30798115"
+      ],
+      "supporting_source_ids": [
+        "w08l2-lecture-16-gang-critical-psych-2026-1b13783c"
+      ],
+      "salience_score": 89,
+      "evidence_by_lecture": [
+        {
+          "lecture_key": "W08L2",
+          "lecture_title": "Critical psychology (Forelæsning 16, 2026-03-24)",
+          "matched_aliases": [
+            "critical psychology",
+            "critical",
+            "kritisk psykologi"
+          ],
+          "match_locations": [
+            "lecture_title",
+            "lecture_summary",
+            "source_summary",
+            "source_key_point",
+            "source_title"
+          ],
+          "representative_excerpts": [
+            "Critical psychology (Forelæsning 16, 2026-03-24)",
+            "Forelæsningen samler kritisk psykologi med fokus på subjektivitet, samfundsforhold og handlemuligheder.",
+            "Tolman reviews key commitments of critical psychology and its implications for theory and method."
+          ],
+          "source_ids": [
+            "w08l2-tolman-2009-455915e0",
+            "w08l2-holzkamp-1982-845aafd2",
+            "w08l2-lecture-16-gang-critical-psych-2026-1b13783c"
+          ],
+          "core_source_ids": [
+            "w08l2-tolman-2009-455915e0",
+            "w08l2-holzkamp-1982-845aafd2"
+          ],
+          "supporting_source_ids": [
+            "w08l2-lecture-16-gang-critical-psych-2026-1b13783c"
+          ]
+        },
+        {
+          "lecture_key": "W09L1",
+          "lecture_title": "Kritisk psykologi (Forelæsning 17, 2026-04-07)",
+          "matched_aliases": [
+            "kritisk psykologi",
+            "critical"
+          ],
+          "match_locations": [
+            "lecture_title",
+            "lecture_summary",
+            "source_title",
+            "source_summary",
+            "source_key_point"
+          ],
+          "representative_excerpts": [
+            "Kritisk psykologi (Forelæsning 17, 2026-04-07)",
+            "Forelæsningen kobler praksisteori med kritisk psykologi i en relationel forståelse af subjektivitet og forandring.",
+            "Grundbog kapitel 10 - Kritisk psykologi"
+          ],
+          "source_ids": [
+            "w09l1-grundbog-kapitel-10-kritisk-psykologi-b3286662",
+            "w09l1-holzkamp-2013-c3068d8a",
+            "w09l1-lecture-17-kritisk-psykologi-30798115"
+          ],
+          "core_source_ids": [
+            "w09l1-grundbog-kapitel-10-kritisk-psykologi-b3286662",
+            "w09l1-holzkamp-2013-c3068d8a",
+            "w09l1-lecture-17-kritisk-psykologi-30798115"
+          ],
+          "supporting_source_ids": []
+        }
+      ],
+      "provenance": {
+        "seed_path": "shows/personlighedspsykologi-en/source_intelligence_seed.json",
+        "lecture_bundle_paths": [
+          "shows/personlighedspsykologi-en/lecture_bundles/W08L2.json",
+          "shows/personlighedspsykologi-en/lecture_bundles/W09L1.json"
+        ]
+      }
+    },
+    {
+      "term_id": "personality_traits",
+      "label": "personality traits",
+      "category": "construct",
+      "importance": 3,
+      "aliases": [
+        "personality traits",
+        "traits",
+        "individual differences"
+      ],
+      "definition": "Traits are treated as relatively stable patterns of individual difference that can organise comparison across persons without exhausting the person.",
+      "course_role": "Serves as a central reference point that later traditions refine, criticise, or contrast.",
+      "lecture_keys": [
+        "W02L1",
+        "W02L2",
+        "W11L2"
+      ],
+      "lecture_titles": [
+        "Personality traits, personality states, and personality dimensions (Forelæsning 3, 2026-02-09)",
+        "Person-situation interplay - stability and change of individual differences (Forelæsning 4, 2026-02-10)",
+        "Narrativitet, kultur og mening (Forelæsning 21, 2026-04-21)"
+      ],
+      "matched_lecture_keys": [
+        "W02L1",
+        "W02L2",
+        "W11L2"
+      ],
+      "grounding_status": "grounded",
+      "match_stats": {
+        "scoped_lecture_count": 3,
+        "matched_lecture_count": 3,
+        "evidence_fragment_count": 8
+      },
+      "linked_terms": [
+        "personality_states",
+        "personality_dimensions",
+        "stability_and_change",
+        "narrativity"
+      ],
+      "linked_theories": [
+        "trait_and_assessment_psychology",
+        "dynamic_personality_development",
+        "narrative_psychology"
+      ],
+      "source_ids": [
+        "w02l1-columbus-and-strandsbjerg-2025-2962b765",
+        "w02l2-bleidorn-et-al-2022-25c2d2de",
+        "w02l2-li-and-wilt-2025-92f596ad",
+        "w11l2-mcadams-and-pals-2006-b9675688"
+      ],
+      "core_source_ids": [
+        "w02l1-columbus-and-strandsbjerg-2025-2962b765",
+        "w02l2-bleidorn-et-al-2022-25c2d2de",
+        "w02l2-li-and-wilt-2025-92f596ad",
+        "w11l2-mcadams-and-pals-2006-b9675688"
+      ],
+      "supporting_source_ids": [],
+      "salience_score": 88,
+      "evidence_by_lecture": [
+        {
+          "lecture_key": "W02L1",
+          "lecture_title": "Personality traits, personality states, and personality dimensions (Forelæsning 3, 2026-02-09)",
+          "matched_aliases": [
+            "personality traits",
+            "traits"
+          ],
+          "match_locations": [
+            "lecture_title",
+            "source_summary",
+            "source_key_point"
+          ],
+          "representative_excerpts": [
+            "Personality traits, personality states, and personality dimensions (Forelæsning 3, 2026-02-09)",
+            "This text examines distinctions and relations between personality traits, states, and broader dimensions.",
+            "Traits and states should be modeled as connected, not opposed."
+          ],
+          "source_ids": [
+            "w02l1-columbus-and-strandsbjerg-2025-2962b765"
+          ],
+          "core_source_ids": [
+            "w02l1-columbus-and-strandsbjerg-2025-2962b765"
+          ],
+          "supporting_source_ids": []
+        },
+        {
+          "lecture_key": "W02L2",
+          "lecture_title": "Person-situation interplay - stability and change of individual differences (Forelæsning 4, 2026-02-10)",
+          "matched_aliases": [
+            "individual differences",
+            "traits"
+          ],
+          "match_locations": [
+            "lecture_title",
+            "source_key_point",
+            "source_summary"
+          ],
+          "representative_excerpts": [
+            "Person-situation interplay - stability and change of individual differences (Forelæsning 4, 2026-02-10)",
+            "Mean-level change tends toward greater maturity on several traits.",
+            "Li and Wilt analyze person-situation interplay in the expression and development of individual differences."
+          ],
+          "source_ids": [
+            "w02l2-bleidorn-et-al-2022-25c2d2de",
+            "w02l2-li-and-wilt-2025-92f596ad"
+          ],
+          "core_source_ids": [
+            "w02l2-bleidorn-et-al-2022-25c2d2de",
+            "w02l2-li-and-wilt-2025-92f596ad"
+          ],
+          "supporting_source_ids": []
+        },
+        {
+          "lecture_key": "W11L2",
+          "lecture_title": "Narrativitet, kultur og mening (Forelæsning 21, 2026-04-21)",
+          "matched_aliases": [
+            "traits"
+          ],
+          "match_locations": [
+            "source_summary",
+            "source_key_point"
+          ],
+          "representative_excerpts": [
+            "McAdams and Pals propose an integrative model that combines dispositional traits, characteristic adaptations, and life narratives.",
+            "Traits, adaptations, and narratives represent distinct but connected levels."
+          ],
+          "source_ids": [
+            "w11l2-mcadams-and-pals-2006-b9675688"
+          ],
+          "core_source_ids": [
+            "w11l2-mcadams-and-pals-2006-b9675688"
+          ],
+          "supporting_source_ids": []
+        }
+      ],
+      "provenance": {
+        "seed_path": "shows/personlighedspsykologi-en/source_intelligence_seed.json",
+        "lecture_bundle_paths": [
+          "shows/personlighedspsykologi-en/lecture_bundles/W02L1.json",
+          "shows/personlighedspsykologi-en/lecture_bundles/W02L2.json",
+          "shows/personlighedspsykologi-en/lecture_bundles/W11L2.json"
+        ]
+      }
+    },
+    {
+      "term_id": "meaning_making",
+      "label": "meaning-making",
+      "category": "process",
+      "importance": 2,
+      "aliases": [
+        "meaning-making",
+        "meaning",
+        "mening",
+        "meaning making"
+      ],
+      "definition": "Meaning-making is treated as a practical, relational, and interpretive process through which personality becomes coherent across experience and time.",
+      "course_role": "Links phenomenological, humanistic, and narrative traditions around lived interpretation.",
+      "lecture_keys": [
+        "W06L1",
+        "W07L2",
+        "W11L2"
+      ],
+      "lecture_titles": [
+        "Fænomenologi (Forelæsning 11, 2026-03-09)",
+        "Humanistisk psykologi (Forelæsning 14, 2026-03-17)",
+        "Narrativitet, kultur og mening (Forelæsning 21, 2026-04-21)"
+      ],
+      "matched_lecture_keys": [
+        "W06L1",
+        "W07L2",
+        "W11L2"
+      ],
+      "grounding_status": "grounded",
+      "match_stats": {
+        "scoped_lecture_count": 3,
+        "matched_lecture_count": 3,
+        "evidence_fragment_count": 14
+      },
+      "linked_terms": [
+        "first_person_perspective",
+        "narrativity",
+        "existential_personality_psychology"
+      ],
+      "linked_theories": [
+        "phenomenological_psychology",
+        "humanistic_psychology",
+        "narrative_psychology"
+      ],
+      "source_ids": [
+        "w06l1-grundbog-kapitel-4-f-nomenologisk-personlighedsp-1afa74d2",
+        "w06l1-moesk-r-hansen-and-roald-2022-b7aec462",
+        "w06l1-spinelli-2005-b2f76e93",
+        "w07l2-giorgi-2005-55ca98f7",
+        "w11l2-bruner-1999-7930abd8"
+      ],
+      "core_source_ids": [
+        "w06l1-grundbog-kapitel-4-f-nomenologisk-personlighedsp-1afa74d2",
+        "w06l1-moesk-r-hansen-and-roald-2022-b7aec462",
+        "w06l1-spinelli-2005-b2f76e93",
+        "w07l2-giorgi-2005-55ca98f7",
+        "w11l2-bruner-1999-7930abd8"
+      ],
+      "supporting_source_ids": [],
+      "salience_score": 85,
+      "evidence_by_lecture": [
+        {
+          "lecture_key": "W06L1",
+          "lecture_title": "Fænomenologi (Forelæsning 11, 2026-03-09)",
+          "matched_aliases": [
+            "mening",
+            "meaning-making",
+            "meaning"
+          ],
+          "match_locations": [
+            "lecture_summary",
+            "lecture_key_point",
+            "source_summary",
+            "source_key_point"
+          ],
+          "representative_excerpts": [
+            "Analysen flyttes fra abstrakte variabler til personens konkrete relation til verden, krop og mening.",
+            "Mening opstår i personens praktiske engagement i verden.",
+            "Kapitlet udvikler en fænomenologisk tilgang til personlighed med udgangspunkt i levet erfaring og mening."
+          ],
+          "source_ids": [
+            "w06l1-grundbog-kapitel-4-f-nomenologisk-personlighedsp-1afa74d2",
+            "w06l1-moesk-r-hansen-and-roald-2022-b7aec462",
+            "w06l1-spinelli-2005-b2f76e93"
+          ],
+          "core_source_ids": [
+            "w06l1-grundbog-kapitel-4-f-nomenologisk-personlighedsp-1afa74d2",
+            "w06l1-moesk-r-hansen-and-roald-2022-b7aec462",
+            "w06l1-spinelli-2005-b2f76e93"
+          ],
+          "supporting_source_ids": []
+        },
+        {
+          "lecture_key": "W07L2",
+          "lecture_title": "Humanistisk psykologi (Forelæsning 14, 2026-03-17)",
+          "matched_aliases": [
+            "mening",
+            "meaning"
+          ],
+          "match_locations": [
+            "lecture_key_point",
+            "source_summary",
+            "source_key_point"
+          ],
+          "representative_excerpts": [
+            "Personcentrerede perspektiver prioriterer erfaring, mening og valg.",
+            "He claims the field still relies too heavily on natural-science assumptions and needs methods that fit lived human meaning.",
+            "Mainstream psychological methods can miss specifically human meanings and contexts."
+          ],
+          "source_ids": [
+            "w07l2-giorgi-2005-55ca98f7"
+          ],
+          "core_source_ids": [
+            "w07l2-giorgi-2005-55ca98f7"
+          ],
+          "supporting_source_ids": []
+        },
+        {
+          "lecture_key": "W11L2",
+          "lecture_title": "Narrativitet, kultur og mening (Forelæsning 21, 2026-04-21)",
+          "matched_aliases": [
+            "mening",
+            "meaning",
+            "meaning-making"
+          ],
+          "match_locations": [
+            "lecture_title",
+            "lecture_summary",
+            "source_summary",
+            "source_key_point"
+          ],
+          "representative_excerpts": [
+            "Narrativitet, kultur og mening (Forelæsning 21, 2026-04-21)",
+            "Kilderne introducerer narrativ psykologi, hvor personlighed forstås gennem fortælling, tid og kulturel meningsdannelse.",
+            "Bruner argues that human meaning is fundamentally narrative and culturally organized."
+          ],
+          "source_ids": [
+            "w11l2-bruner-1999-7930abd8"
+          ],
+          "core_source_ids": [
+            "w11l2-bruner-1999-7930abd8"
+          ],
+          "supporting_source_ids": []
+        }
+      ],
+      "provenance": {
+        "seed_path": "shows/personlighedspsykologi-en/source_intelligence_seed.json",
+        "lecture_bundle_paths": [
+          "shows/personlighedspsykologi-en/lecture_bundles/W06L1.json",
+          "shows/personlighedspsykologi-en/lecture_bundles/W07L2.json",
+          "shows/personlighedspsykologi-en/lecture_bundles/W11L2.json"
+        ]
+      }
+    },
+    {
+      "term_id": "existential_personality_psychology",
+      "label": "existential personality psychology",
+      "category": "tradition",
+      "importance": 3,
+      "aliases": [
+        "existential personality psychology",
+        "existential",
+        "eksistentiel"
+      ],
+      "definition": "Existential personality psychology frames personality through freedom, finitude, relation, anxiety, and the person's stance toward existence.",
+      "course_role": "Deepens the experiential turn by foregrounding existential conditions rather than trait profiles.",
+      "lecture_keys": [
+        "W06L2",
+        "W07L1"
+      ],
+      "lecture_titles": [
+        "Eksistentiel personlighedspsykologi I (Funch) (Forelæsning 12, 2026-03-10)",
+        "Eksistentiel personlighedspsykologi II (Bjerregaard-Nielsen) (Forelæsning 13, 2026-03-16)"
+      ],
+      "matched_lecture_keys": [
+        "W06L2",
+        "W07L1"
+      ],
+      "grounding_status": "grounded",
+      "match_stats": {
+        "scoped_lecture_count": 2,
+        "matched_lecture_count": 2,
+        "evidence_fragment_count": 15
+      },
+      "linked_terms": [
+        "phenomenology",
+        "humanistic_psychology",
+        "meaning_making"
+      ],
+      "linked_theories": [
+        "existential_psychology",
+        "phenomenological_psychology",
+        "humanistic_psychology"
+      ],
+      "source_ids": [
+        "w06l2-may-1966-d8406a09",
+        "w06l2-boss-1963-1feb5a5f",
+        "w07l1-cooper-2003-ee3c34b7",
+        "w07l1-jacobsen-2021-26129bff"
+      ],
+      "core_source_ids": [
+        "w06l2-may-1966-d8406a09",
+        "w06l2-boss-1963-1feb5a5f",
+        "w07l1-cooper-2003-ee3c34b7",
+        "w07l1-jacobsen-2021-26129bff"
+      ],
+      "supporting_source_ids": [],
+      "salience_score": 84,
+      "evidence_by_lecture": [
+        {
+          "lecture_key": "W06L2",
+          "lecture_title": "Eksistentiel personlighedspsykologi I (Funch) (Forelæsning 12, 2026-03-10)",
+          "matched_aliases": [
+            "eksistentiel",
+            "existential"
+          ],
+          "match_locations": [
+            "lecture_title",
+            "lecture_summary",
+            "lecture_key_point",
+            "source_summary",
+            "source_key_point"
+          ],
+          "representative_excerpts": [
+            "Eksistentiel personlighedspsykologi I (Funch) (Forelæsning 12, 2026-03-10)",
+            "Forelæsningen samler eksistentielle perspektiver på personlighed, angst og frihed.",
+            "Lidelse kan beskrives som begrænsede eksistentielle muligheder."
+          ],
+          "source_ids": [
+            "w06l2-may-1966-d8406a09",
+            "w06l2-boss-1963-1feb5a5f"
+          ],
+          "core_source_ids": [
+            "w06l2-may-1966-d8406a09",
+            "w06l2-boss-1963-1feb5a5f"
+          ],
+          "supporting_source_ids": []
+        },
+        {
+          "lecture_key": "W07L1",
+          "lecture_title": "Eksistentiel personlighedspsykologi II (Bjerregaard-Nielsen) (Forelæsning 13, 2026-03-16)",
+          "matched_aliases": [
+            "eksistentiel",
+            "existential"
+          ],
+          "match_locations": [
+            "lecture_title",
+            "lecture_summary",
+            "lecture_key_point",
+            "source_summary",
+            "source_key_point"
+          ],
+          "representative_excerpts": [
+            "Eksistentiel personlighedspsykologi II (Bjerregaard-Nielsen) (Forelæsning 13, 2026-03-16)",
+            "Kilderne samler eksistentielle og fænomenologiske bidrag til moderne personlighedsforståelse.",
+            "Eksistentielle temaer organiserer mange kliniske problemstillinger."
+          ],
+          "source_ids": [
+            "w07l1-cooper-2003-ee3c34b7",
+            "w07l1-jacobsen-2021-26129bff"
+          ],
+          "core_source_ids": [
+            "w07l1-cooper-2003-ee3c34b7",
+            "w07l1-jacobsen-2021-26129bff"
+          ],
+          "supporting_source_ids": []
+        }
+      ],
+      "provenance": {
+        "seed_path": "shows/personlighedspsykologi-en/source_intelligence_seed.json",
+        "lecture_bundle_paths": [
+          "shows/personlighedspsykologi-en/lecture_bundles/W06L2.json",
+          "shows/personlighedspsykologi-en/lecture_bundles/W07L1.json"
+        ]
+      }
+    },
+    {
+      "term_id": "narrativity",
+      "label": "narrativity",
+      "category": "tradition",
+      "importance": 3,
+      "aliases": [
+        "narrativity",
+        "narrative",
+        "narrativitet",
+        "livsfortællinger"
+      ],
+      "definition": "Narrativity treats personality and identity as organised through stories, temporal ordering, and culturally shared meaning structures.",
+      "course_role": "Offers a late-course alternative to trait and mechanism models by making interpretation and life history central.",
+      "lecture_keys": [
+        "W11L2",
+        "W12L1"
+      ],
+      "lecture_titles": [
+        "Narrativitet, kultur og mening (Forelæsning 21, 2026-04-21)",
+        "Sammenligning af teorier og subjektets historie og eksamen (Forelæsning 22, 2026-04-27)"
+      ],
+      "matched_lecture_keys": [
+        "W11L2"
+      ],
+      "grounding_status": "partially_grounded",
+      "match_stats": {
+        "scoped_lecture_count": 2,
+        "matched_lecture_count": 1,
+        "evidence_fragment_count": 11
+      },
+      "linked_terms": [
+        "meaning_making",
+        "stability_and_change",
+        "subjectivation"
+      ],
+      "linked_theories": [
+        "narrative_psychology",
+        "comparative_theory_analysis"
+      ],
+      "source_ids": [
+        "w11l2-grundbog-kapitel-9-narrative-teorier-cd12008a",
+        "w11l2-mcadams-and-pals-2006-b9675688",
+        "w11l2-bruner-1999-7930abd8"
+      ],
+      "core_source_ids": [
+        "w11l2-grundbog-kapitel-9-narrative-teorier-cd12008a",
+        "w11l2-mcadams-and-pals-2006-b9675688",
+        "w11l2-bruner-1999-7930abd8"
+      ],
+      "supporting_source_ids": [],
+      "salience_score": 78,
+      "evidence_by_lecture": [
+        {
+          "lecture_key": "W11L2",
+          "lecture_title": "Narrativitet, kultur og mening (Forelæsning 21, 2026-04-21)",
+          "matched_aliases": [
+            "narrativitet",
+            "narrative",
+            "livsfortællinger"
+          ],
+          "match_locations": [
+            "lecture_title",
+            "lecture_summary",
+            "lecture_key_point",
+            "source_title",
+            "source_summary",
+            "source_key_point"
+          ],
+          "representative_excerpts": [
+            "Narrativitet, kultur og mening (Forelæsning 21, 2026-04-21)",
+            "Forelæsningen kontrasterer narrative perspektiver med træk- og mekanismeorienterede modeller.",
+            "Narrativer organiserer hukommelse, motivforståelse og oplevet kontinuitet."
+          ],
+          "source_ids": [
+            "w11l2-grundbog-kapitel-9-narrative-teorier-cd12008a",
+            "w11l2-mcadams-and-pals-2006-b9675688",
+            "w11l2-bruner-1999-7930abd8"
+          ],
+          "core_source_ids": [
+            "w11l2-grundbog-kapitel-9-narrative-teorier-cd12008a",
+            "w11l2-mcadams-and-pals-2006-b9675688",
+            "w11l2-bruner-1999-7930abd8"
+          ],
+          "supporting_source_ids": []
+        }
+      ],
+      "provenance": {
+        "seed_path": "shows/personlighedspsykologi-en/source_intelligence_seed.json",
+        "lecture_bundle_paths": [
+          "shows/personlighedspsykologi-en/lecture_bundles/W11L2.json",
+          "shows/personlighedspsykologi-en/lecture_bundles/W12L1.json"
+        ]
+      }
+    },
+    {
+      "term_id": "culture_and_personality",
+      "label": "culture and personality",
+      "category": "theme",
+      "importance": 2,
+      "aliases": [
+        "culture and personality",
+        "culture",
+        "cultural",
+        "kultur"
+      ],
+      "definition": "Culture enters the course as a constitutive context for personality development, norms, and the interpretation of selfhood.",
+      "course_role": "Links trait-oriented work to broader historical, relational, and narrative understandings of persons.",
+      "lecture_keys": [
+        "W03L1",
+        "W11L2"
+      ],
+      "lecture_titles": [
+        "Culture, evolution, genetics, and personality (Forelæsning 5, 2026-02-16)",
+        "Narrativitet, kultur og mening (Forelæsning 21, 2026-04-21)"
+      ],
+      "matched_lecture_keys": [
+        "W03L1",
+        "W11L2"
+      ],
+      "grounding_status": "grounded",
+      "match_stats": {
+        "scoped_lecture_count": 2,
+        "matched_lecture_count": 2,
+        "evidence_fragment_count": 19
+      },
+      "linked_terms": [
+        "evolutionary_perspective",
+        "genetic_perspective",
+        "meaning_making"
+      ],
+      "linked_theories": [
+        "biosocial_personality_perspectives",
+        "narrative_psychology"
+      ],
+      "source_ids": [
+        "w03l1-lu-benet-martinez-and-wang-2023-38a36550",
+        "w03l1-volk-and-puchalski-2025-60aaf5d0",
+        "w11l2-grundbog-kapitel-9-narrative-teorier-cd12008a",
+        "w11l2-mcadams-and-pals-2006-b9675688",
+        "w11l2-bruner-1999-7930abd8"
+      ],
+      "core_source_ids": [
+        "w03l1-lu-benet-martinez-and-wang-2023-38a36550",
+        "w03l1-volk-and-puchalski-2025-60aaf5d0",
+        "w11l2-grundbog-kapitel-9-narrative-teorier-cd12008a",
+        "w11l2-mcadams-and-pals-2006-b9675688",
+        "w11l2-bruner-1999-7930abd8"
+      ],
+      "supporting_source_ids": [],
+      "salience_score": 77,
+      "evidence_by_lecture": [
+        {
+          "lecture_key": "W03L1",
+          "lecture_title": "Culture, evolution, genetics, and personality (Forelæsning 5, 2026-02-16)",
+          "matched_aliases": [
+            "culture",
+            "kultur",
+            "cultural"
+          ],
+          "match_locations": [
+            "lecture_title",
+            "lecture_summary",
+            "lecture_key_point",
+            "source_summary",
+            "source_key_point"
+          ],
+          "representative_excerpts": [
+            "Culture, evolution, genetics, and personality (Forelæsning 5, 2026-02-16)",
+            "Forelæsningen forbinder kultur, evolution og genetik i en flerfaktoriel forståelse af personlighed.",
+            "Der argumenteres for multimodale designs, som bedre kan fange gen-miljø-samspil og kulturel variation."
+          ],
+          "source_ids": [
+            "w03l1-lu-benet-martinez-and-wang-2023-38a36550",
+            "w03l1-volk-and-puchalski-2025-60aaf5d0"
+          ],
+          "core_source_ids": [
+            "w03l1-lu-benet-martinez-and-wang-2023-38a36550",
+            "w03l1-volk-and-puchalski-2025-60aaf5d0"
+          ],
+          "supporting_source_ids": []
+        },
+        {
+          "lecture_key": "W11L2",
+          "lecture_title": "Narrativitet, kultur og mening (Forelæsning 21, 2026-04-21)",
+          "matched_aliases": [
+            "kultur",
+            "cultural",
+            "culture"
+          ],
+          "match_locations": [
+            "lecture_title",
+            "lecture_summary",
+            "lecture_key_point",
+            "source_summary",
+            "source_key_point"
+          ],
+          "representative_excerpts": [
+            "Narrativitet, kultur og mening (Forelæsning 21, 2026-04-21)",
+            "Kilderne introducerer narrativ psykologi, hvor personlighed forstås gennem fortælling, tid og kulturel meningsdannelse.",
+            "Livsfortællinger samskabes i kulturelle og relationelle sammenhænge."
+          ],
+          "source_ids": [
+            "w11l2-grundbog-kapitel-9-narrative-teorier-cd12008a",
+            "w11l2-mcadams-and-pals-2006-b9675688",
+            "w11l2-bruner-1999-7930abd8"
+          ],
+          "core_source_ids": [
+            "w11l2-grundbog-kapitel-9-narrative-teorier-cd12008a",
+            "w11l2-mcadams-and-pals-2006-b9675688",
+            "w11l2-bruner-1999-7930abd8"
+          ],
+          "supporting_source_ids": []
+        }
+      ],
+      "provenance": {
+        "seed_path": "shows/personlighedspsykologi-en/source_intelligence_seed.json",
+        "lecture_bundle_paths": [
+          "shows/personlighedspsykologi-en/lecture_bundles/W03L1.json",
+          "shows/personlighedspsykologi-en/lecture_bundles/W11L2.json"
+        ]
+      }
+    },
+    {
+      "term_id": "person_situation_interplay",
+      "label": "person-situation interplay",
+      "category": "process",
+      "importance": 3,
+      "aliases": [
+        "person-situation interplay",
+        "person situation",
+        "situation",
+        "context"
+      ],
+      "definition": "The course uses person-situation interplay to show that personality must be understood in the movement between patterned dispositions and concrete contexts.",
+      "course_role": "Acts as a bridge from early differential models toward more relational and practice-based approaches.",
+      "lecture_keys": [
+        "W02L2",
+        "W09L1"
+      ],
+      "lecture_titles": [
+        "Person-situation interplay - stability and change of individual differences (Forelæsning 4, 2026-02-10)",
+        "Kritisk psykologi (Forelæsning 17, 2026-04-07)"
+      ],
+      "matched_lecture_keys": [
+        "W02L2",
+        "W09L1"
+      ],
+      "grounding_status": "grounded",
+      "match_stats": {
+        "scoped_lecture_count": 2,
+        "matched_lecture_count": 2,
+        "evidence_fragment_count": 11
+      },
+      "linked_terms": [
+        "personality_states",
+        "stability_and_change",
+        "critical_psychology"
+      ],
+      "linked_theories": [
+        "dynamic_personality_development",
+        "critical_psychology"
+      ],
+      "source_ids": [
+        "w02l2-li-and-wilt-2025-92f596ad",
+        "w09l1-dreier-1999-35da58b5"
+      ],
+      "core_source_ids": [
+        "w02l2-li-and-wilt-2025-92f596ad",
+        "w09l1-dreier-1999-35da58b5"
+      ],
+      "supporting_source_ids": [],
+      "salience_score": 73,
+      "evidence_by_lecture": [
+        {
+          "lecture_key": "W02L2",
+          "lecture_title": "Person-situation interplay - stability and change of individual differences (Forelæsning 4, 2026-02-10)",
+          "matched_aliases": [
+            "person-situation interplay",
+            "situation",
+            "context"
+          ],
+          "match_locations": [
+            "lecture_title",
+            "lecture_summary",
+            "lecture_key_point",
+            "source_summary",
+            "source_key_point"
+          ],
+          "representative_excerpts": [
+            "Person-situation interplay - stability and change of individual differences (Forelæsning 4, 2026-02-10)",
+            "Person-situation-perspektivet viser, at adfærd opstår i koblingen mellem disposition og kontekst.",
+            "Udvikling forstås bedst som et samspil mellem person og situation."
+          ],
+          "source_ids": [
+            "w02l2-li-and-wilt-2025-92f596ad"
+          ],
+          "core_source_ids": [
+            "w02l2-li-and-wilt-2025-92f596ad"
+          ],
+          "supporting_source_ids": []
+        },
+        {
+          "lecture_key": "W09L1",
+          "lecture_title": "Kritisk psykologi (Forelæsning 17, 2026-04-07)",
+          "matched_aliases": [
+            "context"
+          ],
+          "match_locations": [
+            "source_summary",
+            "source_key_point"
+          ],
+          "representative_excerpts": [
+            "He argues that psychological phenomena are distributed across contexts rather than localized inside individuals.",
+            "Persons move through multiple practice contexts with shifting positions.",
+            "Analysis must follow cross-context movement over time."
+          ],
+          "source_ids": [
+            "w09l1-dreier-1999-35da58b5"
+          ],
+          "core_source_ids": [
+            "w09l1-dreier-1999-35da58b5"
+          ],
+          "supporting_source_ids": []
+        }
+      ],
+      "provenance": {
+        "seed_path": "shows/personlighedspsykologi-en/source_intelligence_seed.json",
+        "lecture_bundle_paths": [
+          "shows/personlighedspsykologi-en/lecture_bundles/W02L2.json",
+          "shows/personlighedspsykologi-en/lecture_bundles/W09L1.json"
+        ]
+      }
+    },
+    {
+      "term_id": "humanistic_psychology",
+      "label": "humanistic psychology",
+      "category": "tradition",
+      "importance": 3,
+      "aliases": [
+        "humanistic psychology",
+        "humanistisk psykologi",
+        "humanistic"
+      ],
+      "definition": "Humanistic psychology treats persons as oriented toward growth, authenticity, relation, and context-sensitive development rather than deficit alone.",
+      "course_role": "Provides a positive, experience-near alternative to reductionist or control-oriented models.",
+      "lecture_keys": [
+        "W07L2"
+      ],
+      "lecture_titles": [
+        "Humanistisk psykologi (Forelæsning 14, 2026-03-17)"
+      ],
+      "matched_lecture_keys": [
+        "W07L2"
+      ],
+      "grounding_status": "grounded",
+      "match_stats": {
+        "scoped_lecture_count": 1,
+        "matched_lecture_count": 1,
+        "evidence_fragment_count": 10
+      },
+      "linked_terms": [
+        "first_person_perspective",
+        "existential_personality_psychology",
+        "meaning_making"
+      ],
+      "linked_theories": [
+        "humanistic_psychology",
+        "existential_psychology"
+      ],
+      "source_ids": [
+        "w07l2-maslow-1968-7ea53e34",
+        "w07l2-giorgi-2005-55ca98f7",
+        "w07l2-evans-1975-8e8a9d79",
+        "w07l2-lecture-14-humanistisk-psykologi20-d271355d"
+      ],
+      "core_source_ids": [
+        "w07l2-maslow-1968-7ea53e34",
+        "w07l2-giorgi-2005-55ca98f7",
+        "w07l2-evans-1975-8e8a9d79"
+      ],
+      "supporting_source_ids": [
+        "w07l2-lecture-14-humanistisk-psykologi20-d271355d"
+      ],
+      "salience_score": 69,
+      "evidence_by_lecture": [
+        {
+          "lecture_key": "W07L2",
+          "lecture_title": "Humanistisk psykologi (Forelæsning 14, 2026-03-17)",
+          "matched_aliases": [
+            "humanistisk psykologi",
+            "humanistic",
+            "humanistic psychology"
+          ],
+          "match_locations": [
+            "lecture_title",
+            "lecture_summary",
+            "lecture_key_point",
+            "source_summary",
+            "source_key_point",
+            "source_title"
+          ],
+          "representative_excerpts": [
+            "Humanistisk psykologi (Forelæsning 14, 2026-03-17)",
+            "Forelæsningen behandler humanistisk psykologi som et alternativ til reduktionistiske personmodeller.",
+            "Humanistisk psykologi udfordrer underskuds- og kontrolmodeller."
+          ],
+          "source_ids": [
+            "w07l2-maslow-1968-7ea53e34",
+            "w07l2-giorgi-2005-55ca98f7",
+            "w07l2-evans-1975-8e8a9d79",
+            "w07l2-lecture-14-humanistisk-psykologi20-d271355d"
+          ],
+          "core_source_ids": [
+            "w07l2-maslow-1968-7ea53e34",
+            "w07l2-giorgi-2005-55ca98f7",
+            "w07l2-evans-1975-8e8a9d79"
+          ],
+          "supporting_source_ids": [
+            "w07l2-lecture-14-humanistisk-psykologi20-d271355d"
+          ]
+        }
+      ],
+      "provenance": {
+        "seed_path": "shows/personlighedspsykologi-en/source_intelligence_seed.json",
+        "lecture_bundle_paths": [
+          "shows/personlighedspsykologi-en/lecture_bundles/W07L2.json"
+        ]
+      }
+    },
+    {
+      "term_id": "phenomenology",
+      "label": "phenomenology",
+      "category": "tradition",
+      "importance": 3,
+      "aliases": [
+        "phenomenology",
+        "fænomenologi",
+        "phenomenological"
+      ],
+      "definition": "Phenomenology reorients personality toward lived experience, embodiment, and the person's concrete relation to world and meaning.",
+      "course_role": "Begins the semester's move toward first-person, experiential, and interpretive approaches.",
+      "lecture_keys": [
+        "W06L1"
+      ],
+      "lecture_titles": [
+        "Fænomenologi (Forelæsning 11, 2026-03-09)"
+      ],
+      "matched_lecture_keys": [
+        "W06L1"
+      ],
+      "grounding_status": "grounded",
+      "match_stats": {
+        "scoped_lecture_count": 1,
+        "matched_lecture_count": 1,
+        "evidence_fragment_count": 8
+      },
+      "linked_terms": [
+        "first_person_perspective",
+        "existential_personality_psychology",
+        "meaning_making"
+      ],
+      "linked_theories": [
+        "phenomenological_psychology",
+        "existential_psychology"
+      ],
+      "source_ids": [
+        "w06l1-grundbog-kapitel-4-f-nomenologisk-personlighedsp-1afa74d2",
+        "w06l1-moesk-r-hansen-and-roald-2022-b7aec462",
+        "w06l1-spinelli-2005-b2f76e93",
+        "w06l1-lecture-11-f-nomenologisk-personlighedspsykologi2026-6303af4b"
+      ],
+      "core_source_ids": [
+        "w06l1-grundbog-kapitel-4-f-nomenologisk-personlighedsp-1afa74d2",
+        "w06l1-moesk-r-hansen-and-roald-2022-b7aec462",
+        "w06l1-spinelli-2005-b2f76e93"
+      ],
+      "supporting_source_ids": [
+        "w06l1-lecture-11-f-nomenologisk-personlighedspsykologi2026-6303af4b"
+      ],
+      "salience_score": 67,
+      "evidence_by_lecture": [
+        {
+          "lecture_key": "W06L1",
+          "lecture_title": "Fænomenologi (Forelæsning 11, 2026-03-09)",
+          "matched_aliases": [
+            "fænomenologi",
+            "phenomenological"
+          ],
+          "match_locations": [
+            "lecture_title",
+            "lecture_summary",
+            "source_title",
+            "source_summary",
+            "source_key_point"
+          ],
+          "representative_excerpts": [
+            "Fænomenologi (Forelæsning 11, 2026-03-09)",
+            "Kilderne udvikler en fænomenologisk tilgang til personlighed med udgangspunkt i levet erfaring.",
+            "Grundbog kapitel 04 - Fænomenologisk personlighedspsykologi"
+          ],
+          "source_ids": [
+            "w06l1-grundbog-kapitel-4-f-nomenologisk-personlighedsp-1afa74d2",
+            "w06l1-moesk-r-hansen-and-roald-2022-b7aec462",
+            "w06l1-spinelli-2005-b2f76e93",
+            "w06l1-lecture-11-f-nomenologisk-personlighedspsykologi2026-6303af4b"
+          ],
+          "core_source_ids": [
+            "w06l1-grundbog-kapitel-4-f-nomenologisk-personlighedsp-1afa74d2",
+            "w06l1-moesk-r-hansen-and-roald-2022-b7aec462",
+            "w06l1-spinelli-2005-b2f76e93"
+          ],
+          "supporting_source_ids": [
+            "w06l1-lecture-11-f-nomenologisk-personlighedspsykologi2026-6303af4b"
+          ]
+        }
+      ],
+      "provenance": {
+        "seed_path": "shows/personlighedspsykologi-en/source_intelligence_seed.json",
+        "lecture_bundle_paths": [
+          "shows/personlighedspsykologi-en/lecture_bundles/W06L1.json"
+        ]
+      }
+    },
+    {
+      "term_id": "personality_assessment",
+      "label": "personality assessment",
+      "category": "method",
+      "importance": 3,
+      "aliases": [
+        "personality assessment",
+        "assessment",
+        "measurement",
+        "måling"
+      ],
+      "definition": "The course treats personality assessment as the problem of how personality is operationalised, measured, and interpreted across methods and contexts.",
+      "course_role": "Frames the early methodological discussion about what counts as evidence for personality.",
+      "lecture_keys": [
+        "W01L2"
+      ],
+      "lecture_titles": [
+        "Personality assessment (Forelæsning 2, 2026-02-03)"
+      ],
+      "matched_lecture_keys": [
+        "W01L2"
+      ],
+      "grounding_status": "grounded",
+      "match_stats": {
+        "scoped_lecture_count": 1,
+        "matched_lecture_count": 1,
+        "evidence_fragment_count": 10
+      },
+      "linked_terms": [
+        "personality_traits",
+        "personality_dimensions",
+        "person_situation_interplay"
+      ],
+      "linked_theories": [
+        "trait_and_assessment_psychology"
+      ],
+      "source_ids": [
+        "w01l2-mayer-and-bryan-2024-07faf915",
+        "w01l2-koutsoumpis-2025-96f4dcf7"
+      ],
+      "core_source_ids": [
+        "w01l2-mayer-and-bryan-2024-07faf915",
+        "w01l2-koutsoumpis-2025-96f4dcf7"
+      ],
+      "supporting_source_ids": [],
+      "salience_score": 64,
+      "evidence_by_lecture": [
+        {
+          "lecture_key": "W01L2",
+          "lecture_title": "Personality assessment (Forelæsning 2, 2026-02-03)",
+          "matched_aliases": [
+            "personality assessment",
+            "assessment",
+            "måling",
+            "measurement"
+          ],
+          "match_locations": [
+            "lecture_title",
+            "lecture_summary",
+            "lecture_key_point",
+            "source_summary",
+            "source_key_point"
+          ],
+          "representative_excerpts": [
+            "Personality assessment (Forelæsning 2, 2026-02-03)",
+            "Samlet peger teksterne på, at vurderingskvalitet kræver tydelig kobling mellem måling, teori og inferens.",
+            "Personlighedsmåling er teori-afhængig fra start til slut."
+          ],
+          "source_ids": [
+            "w01l2-mayer-and-bryan-2024-07faf915",
+            "w01l2-koutsoumpis-2025-96f4dcf7"
+          ],
+          "core_source_ids": [
+            "w01l2-mayer-and-bryan-2024-07faf915",
+            "w01l2-koutsoumpis-2025-96f4dcf7"
+          ],
+          "supporting_source_ids": []
+        }
+      ],
+      "provenance": {
+        "seed_path": "shows/personlighedspsykologi-en/source_intelligence_seed.json",
+        "lecture_bundle_paths": [
+          "shows/personlighedspsykologi-en/lecture_bundles/W01L2.json"
+        ]
+      }
+    },
+    {
+      "term_id": "personality_dimensions",
+      "label": "personality dimensions",
+      "category": "construct",
+      "importance": 2,
+      "aliases": [
+        "personality dimensions",
+        "dimensions",
+        "dimensional"
+      ],
+      "definition": "Dimensions express personality as patterned continua rather than isolated categories, while still raising questions about interpretation at person level.",
+      "course_role": "Connects psychometric modelling to later debates about functioning, structure, and categorisation.",
+      "lecture_keys": [
+        "W02L1",
+        "W03L2"
+      ],
+      "lecture_titles": [
+        "Personality traits, personality states, and personality dimensions (Forelæsning 3, 2026-02-09)",
+        "Personlighedsfunktion og forstyrrelse (Forelæsning 6, 2026-02-17)"
+      ],
+      "matched_lecture_keys": [
+        "W02L1",
+        "W03L2"
+      ],
+      "grounding_status": "grounded",
+      "match_stats": {
+        "scoped_lecture_count": 2,
+        "matched_lecture_count": 2,
+        "evidence_fragment_count": 7
+      },
+      "linked_terms": [
+        "personality_assessment",
+        "personality_traits",
+        "personality_functioning"
+      ],
+      "linked_theories": [
+        "trait_and_assessment_psychology",
+        "personality_functioning_and_pathology"
+      ],
+      "source_ids": [
+        "w02l1-zettler-et-al-2020-0c54e6e4",
+        "w02l1-columbus-and-strandsbjerg-2025-2962b765",
+        "w03l2-sharp-and-wall-2021-cb92ecf4"
+      ],
+      "core_source_ids": [
+        "w02l1-zettler-et-al-2020-0c54e6e4",
+        "w02l1-columbus-and-strandsbjerg-2025-2962b765",
+        "w03l2-sharp-and-wall-2021-cb92ecf4"
+      ],
+      "supporting_source_ids": [],
+      "salience_score": 62,
+      "evidence_by_lecture": [
+        {
+          "lecture_key": "W02L1",
+          "lecture_title": "Personality traits, personality states, and personality dimensions (Forelæsning 3, 2026-02-09)",
+          "matched_aliases": [
+            "personality dimensions",
+            "dimensions",
+            "dimensional"
+          ],
+          "match_locations": [
+            "lecture_title",
+            "source_summary",
+            "source_key_point"
+          ],
+          "representative_excerpts": [
+            "Personality traits, personality states, and personality dimensions (Forelæsning 3, 2026-02-09)",
+            "It discusses how latent dimensions are inferred and what kinds of behavioral regularities they capture.",
+            "Measurement decisions influence apparent dimensionality."
+          ],
+          "source_ids": [
+            "w02l1-zettler-et-al-2020-0c54e6e4",
+            "w02l1-columbus-and-strandsbjerg-2025-2962b765"
+          ],
+          "core_source_ids": [
+            "w02l1-zettler-et-al-2020-0c54e6e4",
+            "w02l1-columbus-and-strandsbjerg-2025-2962b765"
+          ],
+          "supporting_source_ids": []
+        },
+        {
+          "lecture_key": "W03L2",
+          "lecture_title": "Personlighedsfunktion og forstyrrelse (Forelæsning 6, 2026-02-17)",
+          "matched_aliases": [
+            "dimensional"
+          ],
+          "match_locations": [
+            "source_summary",
+            "source_key_point"
+          ],
+          "representative_excerpts": [
+            "Sharp and Wall examine personality functioning and disturbance through dimensional, developmental lenses.",
+            "Personality pathology is better treated dimensionally than categorically."
+          ],
+          "source_ids": [
+            "w03l2-sharp-and-wall-2021-cb92ecf4"
+          ],
+          "core_source_ids": [
+            "w03l2-sharp-and-wall-2021-cb92ecf4"
+          ],
+          "supporting_source_ids": []
+        }
+      ],
+      "provenance": {
+        "seed_path": "shows/personlighedspsykologi-en/source_intelligence_seed.json",
+        "lecture_bundle_paths": [
+          "shows/personlighedspsykologi-en/lecture_bundles/W02L1.json",
+          "shows/personlighedspsykologi-en/lecture_bundles/W03L2.json"
+        ]
+      }
+    },
+    {
+      "term_id": "poststructuralism",
+      "label": "poststructuralism",
+      "category": "tradition",
+      "importance": 3,
+      "aliases": [
+        "poststructuralism",
+        "poststrukturalisme",
+        "foucault"
+      ],
+      "definition": "Poststructuralism treats subjects as historically produced through discourse, power, ethics, and positioning rather than as pre-given inner essences.",
+      "course_role": "Provides the course's strongest language-and-power account of subject formation.",
+      "lecture_keys": [
+        "W10L2",
+        "W11L1"
+      ],
+      "lecture_titles": [
+        "Sociokulturelle teorier - socialkonstruktionisme og poststrukturalisme (Forelæsning 19, 2026-04-14)",
+        "Poststrukturalisme, diskursiv psykologi og feministisk teori (Forelæsning 20, 2026-04-20)"
+      ],
+      "matched_lecture_keys": [
+        "W10L2",
+        "W11L1"
+      ],
+      "grounding_status": "grounded",
+      "match_stats": {
+        "scoped_lecture_count": 2,
+        "matched_lecture_count": 2,
+        "evidence_fragment_count": 5
+      },
+      "linked_terms": [
+        "social_constructionism",
+        "discursive_psychology",
+        "subjectivation"
+      ],
+      "linked_theories": [
+        "sociocultural_poststructural_approaches"
+      ],
+      "source_ids": [
+        "w10l2-foucault-1997-92cd121d"
+      ],
+      "core_source_ids": [
+        "w10l2-foucault-1997-92cd121d"
+      ],
+      "supporting_source_ids": [],
+      "salience_score": 62,
+      "evidence_by_lecture": [
+        {
+          "lecture_key": "W10L2",
+          "lecture_title": "Sociokulturelle teorier - socialkonstruktionisme og poststrukturalisme (Forelæsning 19, 2026-04-14)",
+          "matched_aliases": [
+            "poststrukturalisme",
+            "foucault"
+          ],
+          "match_locations": [
+            "lecture_title",
+            "lecture_summary",
+            "source_title",
+            "source_summary"
+          ],
+          "representative_excerpts": [
+            "Sociokulturelle teorier - socialkonstruktionisme og poststrukturalisme (Forelæsning 19, 2026-04-14)",
+            "Foucault omformulerer etik som praksisser for selvforhold i historiske magtrelationer.",
+            "Foucault (1997)"
+          ],
+          "source_ids": [
+            "w10l2-foucault-1997-92cd121d"
+          ],
+          "core_source_ids": [
+            "w10l2-foucault-1997-92cd121d"
+          ],
+          "supporting_source_ids": []
+        },
+        {
+          "lecture_key": "W11L1",
+          "lecture_title": "Poststrukturalisme, diskursiv psykologi og feministisk teori (Forelæsning 20, 2026-04-20)",
+          "matched_aliases": [
+            "poststrukturalisme"
+          ],
+          "match_locations": [
+            "lecture_title"
+          ],
+          "representative_excerpts": [
+            "Poststrukturalisme, diskursiv psykologi og feministisk teori (Forelæsning 20, 2026-04-20)"
+          ],
+          "source_ids": [],
+          "core_source_ids": [],
+          "supporting_source_ids": []
+        }
+      ],
+      "provenance": {
+        "seed_path": "shows/personlighedspsykologi-en/source_intelligence_seed.json",
+        "lecture_bundle_paths": [
+          "shows/personlighedspsykologi-en/lecture_bundles/W10L2.json",
+          "shows/personlighedspsykologi-en/lecture_bundles/W11L1.json"
+        ]
+      }
+    },
+    {
+      "term_id": "gender",
+      "label": "køn",
+      "category": "theme",
+      "importance": 2,
+      "aliases": [
+        "køn",
+        "gender",
+        "femininitet",
+        "maskulinitet"
+      ],
+      "definition": "Gender is approached as a psychosocial and historical process rather than a fixed person-variable, linking identity, norm, and institution.",
+      "course_role": "Brings embodiment, normativity, and social organisation into the course's personality debates.",
+      "lecture_keys": [
+        "W10L1",
+        "W11L1"
+      ],
+      "lecture_titles": [
+        "Køn (Forelæsning 18, 2026-04-13)",
+        "Poststrukturalisme, diskursiv psykologi og feministisk teori (Forelæsning 20, 2026-04-20)"
+      ],
+      "matched_lecture_keys": [
+        "W10L1"
+      ],
+      "grounding_status": "partially_grounded",
+      "match_stats": {
+        "scoped_lecture_count": 2,
+        "matched_lecture_count": 1,
+        "evidence_fragment_count": 11
+      },
+      "linked_terms": [
+        "feminist_theory",
+        "subjectivation",
+        "social_constructionism"
+      ],
+      "linked_theories": [
+        "sociocultural_poststructural_approaches"
+      ],
+      "source_ids": [
+        "w10l1-mitchell-2015-bc690b36",
+        "w10l1-bjerrum-nielsen-and-rudberg-2006-39335ee6"
+      ],
+      "core_source_ids": [
+        "w10l1-mitchell-2015-bc690b36",
+        "w10l1-bjerrum-nielsen-and-rudberg-2006-39335ee6"
+      ],
+      "supporting_source_ids": [],
+      "salience_score": 61,
+      "evidence_by_lecture": [
+        {
+          "lecture_key": "W10L1",
+          "lecture_title": "Køn (Forelæsning 18, 2026-04-13)",
+          "matched_aliases": [
+            "køn",
+            "femininitet",
+            "maskulinitet",
+            "gender"
+          ],
+          "match_locations": [
+            "lecture_title",
+            "lecture_summary",
+            "lecture_key_point",
+            "source_summary",
+            "source_key_point"
+          ],
+          "representative_excerpts": [
+            "Køn (Forelæsning 18, 2026-04-13)",
+            "Forelæsningen behandler køn som en psykosocial proces frem for et fast persontræk.",
+            "Kilderne viser, hvordan femininitet og maskulinitet formes i samspillet mellem intime erfaringer og institutionelle rammer."
+          ],
+          "source_ids": [
+            "w10l1-mitchell-2015-bc690b36",
+            "w10l1-bjerrum-nielsen-and-rudberg-2006-39335ee6"
+          ],
+          "core_source_ids": [
+            "w10l1-mitchell-2015-bc690b36",
+            "w10l1-bjerrum-nielsen-and-rudberg-2006-39335ee6"
+          ],
+          "supporting_source_ids": []
+        }
+      ],
+      "provenance": {
+        "seed_path": "shows/personlighedspsykologi-en/source_intelligence_seed.json",
+        "lecture_bundle_paths": [
+          "shows/personlighedspsykologi-en/lecture_bundles/W10L1.json",
+          "shows/personlighedspsykologi-en/lecture_bundles/W11L1.json"
+        ]
+      }
+    },
+    {
+      "term_id": "personality_structure",
+      "label": "personality structure",
+      "category": "construct",
+      "importance": 3,
+      "aliases": [
+        "personality structure",
+        "struktur",
+        "structure"
+      ],
+      "definition": "Structure names the organisation of psychic life that shapes how conflict, relation, and regulation are sustained over time.",
+      "course_role": "Connects psychoanalytic organisation to broader questions of functioning and pathology.",
+      "lecture_keys": [
+        "W04L2",
+        "W03L2"
+      ],
+      "lecture_titles": [
+        "Psykoanalytisk personlighedsstruktur (Forelæsning 8, 2026-02-24)",
+        "Personlighedsfunktion og forstyrrelse (Forelæsning 6, 2026-02-17)"
+      ],
+      "matched_lecture_keys": [
+        "W04L2"
+      ],
+      "grounding_status": "partially_grounded",
+      "match_stats": {
+        "scoped_lecture_count": 2,
+        "matched_lecture_count": 1,
+        "evidence_fragment_count": 4
+      },
+      "linked_terms": [
+        "personality_functioning",
+        "psychoanalysis"
+      ],
+      "linked_theories": [
+        "personality_functioning_and_pathology",
+        "psychoanalytic_personality_theory"
+      ],
+      "source_ids": [
+        "w04l2-lacan-1966-2d720f56",
+        "w04l2-lecture-8-psykoanalytisk-personlighedsstruktur-1e653ba9"
+      ],
+      "core_source_ids": [
+        "w04l2-lacan-1966-2d720f56"
+      ],
+      "supporting_source_ids": [
+        "w04l2-lecture-8-psykoanalytisk-personlighedsstruktur-1e653ba9"
+      ],
+      "salience_score": 61,
+      "evidence_by_lecture": [
+        {
+          "lecture_key": "W04L2",
+          "lecture_title": "Psykoanalytisk personlighedsstruktur (Forelæsning 8, 2026-02-24)",
+          "matched_aliases": [
+            "struktur",
+            "structure"
+          ],
+          "match_locations": [
+            "lecture_title",
+            "lecture_summary",
+            "source_summary",
+            "source_title"
+          ],
+          "representative_excerpts": [
+            "Psykoanalytisk personlighedsstruktur (Forelæsning 8, 2026-02-24)",
+            "Forelæsningen flytter fokus fra ego-centrerede modeller til et strukturelt syn på subjektivitet.",
+            "Lacan analyzes subjectivity through language, symbolic structure, and desire."
+          ],
+          "source_ids": [
+            "w04l2-lacan-1966-2d720f56",
+            "w04l2-lecture-8-psykoanalytisk-personlighedsstruktur-1e653ba9"
+          ],
+          "core_source_ids": [
+            "w04l2-lacan-1966-2d720f56"
+          ],
+          "supporting_source_ids": [
+            "w04l2-lecture-8-psykoanalytisk-personlighedsstruktur-1e653ba9"
+          ]
+        }
+      ],
+      "provenance": {
+        "seed_path": "shows/personlighedspsykologi-en/source_intelligence_seed.json",
+        "lecture_bundle_paths": [
+          "shows/personlighedspsykologi-en/lecture_bundles/W04L2.json",
+          "shows/personlighedspsykologi-en/lecture_bundles/W03L2.json"
+        ]
+      }
+    },
+    {
+      "term_id": "critical_personalism",
+      "label": "critical personalism",
+      "category": "tradition",
+      "importance": 3,
+      "aliases": [
+        "critical personalism",
+        "personalism"
+      ],
+      "definition": "Critical personalism resists reducing persons to abstract variable profiles and insists on person-level interpretation, action, and conceptual caution.",
+      "course_role": "Acts as a direct internal critique of reified trait language without abandoning systematic psychology.",
+      "lecture_keys": [
+        "W08L1"
+      ],
+      "lecture_titles": [
+        "Critical personalism (Forelæsning 15, 2026-03-23)"
+      ],
+      "matched_lecture_keys": [
+        "W08L1"
+      ],
+      "grounding_status": "grounded",
+      "match_stats": {
+        "scoped_lecture_count": 1,
+        "matched_lecture_count": 1,
+        "evidence_fragment_count": 6
+      },
+      "linked_terms": [
+        "personality_traits",
+        "critical_psychology",
+        "person_situation_interplay"
+      ],
+      "linked_theories": [
+        "critical_personalism",
+        "trait_and_assessment_psychology",
+        "critical_psychology"
+      ],
+      "source_ids": [
+        "w08l1-lamiell-2021-be79d36e",
+        "w08l1-laux-et-al-2010-cfff840c",
+        "w08l1-lecture-15-gang-critical-personalism-2026-8648744f"
+      ],
+      "core_source_ids": [
+        "w08l1-lamiell-2021-be79d36e",
+        "w08l1-laux-et-al-2010-cfff840c"
+      ],
+      "supporting_source_ids": [
+        "w08l1-lecture-15-gang-critical-personalism-2026-8648744f"
+      ],
+      "salience_score": 60,
+      "evidence_by_lecture": [
+        {
+          "lecture_key": "W08L1",
+          "lecture_title": "Critical personalism (Forelæsning 15, 2026-03-23)",
+          "matched_aliases": [
+            "critical personalism",
+            "personalism"
+          ],
+          "match_locations": [
+            "lecture_title",
+            "lecture_summary",
+            "source_key_point",
+            "source_summary",
+            "source_title"
+          ],
+          "representative_excerpts": [
+            "Critical personalism (Forelæsning 15, 2026-03-23)",
+            "Kilderne introducerer kritisk personalisme som opgør med reificerede trækbegreber.",
+            "Critical personalism re-centers agency and context in personality theory."
+          ],
+          "source_ids": [
+            "w08l1-lamiell-2021-be79d36e",
+            "w08l1-laux-et-al-2010-cfff840c",
+            "w08l1-lecture-15-gang-critical-personalism-2026-8648744f"
+          ],
+          "core_source_ids": [
+            "w08l1-lamiell-2021-be79d36e",
+            "w08l1-laux-et-al-2010-cfff840c"
+          ],
+          "supporting_source_ids": [
+            "w08l1-lecture-15-gang-critical-personalism-2026-8648744f"
+          ]
+        }
+      ],
+      "provenance": {
+        "seed_path": "shows/personlighedspsykologi-en/source_intelligence_seed.json",
+        "lecture_bundle_paths": [
+          "shows/personlighedspsykologi-en/lecture_bundles/W08L1.json"
+        ]
+      }
+    },
+    {
+      "term_id": "subjectivation",
+      "label": "subjectivation",
+      "category": "process",
+      "importance": 2,
+      "aliases": [
+        "subjectivation",
+        "subjektivering",
+        "subject formation",
+        "positionering"
+      ],
+      "definition": "Subjectivation names the process by which persons become particular kinds of subjects through discourse, power, relation, and practice.",
+      "course_role": "Connects poststructural, feminist, and critical approaches around a shared process view of subject formation.",
+      "lecture_keys": [
+        "W10L2",
+        "W11L1"
+      ],
+      "lecture_titles": [
+        "Sociokulturelle teorier - socialkonstruktionisme og poststrukturalisme (Forelæsning 19, 2026-04-14)",
+        "Poststrukturalisme, diskursiv psykologi og feministisk teori (Forelæsning 20, 2026-04-20)"
+      ],
+      "matched_lecture_keys": [
+        "W10L2",
+        "W11L1"
+      ],
+      "grounding_status": "grounded",
+      "match_stats": {
+        "scoped_lecture_count": 2,
+        "matched_lecture_count": 2,
+        "evidence_fragment_count": 7
+      },
+      "linked_terms": [
+        "poststructuralism",
+        "critical_psychology",
+        "gender"
+      ],
+      "linked_theories": [
+        "sociocultural_poststructural_approaches",
+        "critical_psychology"
+      ],
+      "source_ids": [
+        "w10l2-foucault-1997-92cd121d",
+        "w11l1-grundbog-kapitel-11-postpsykologisk-subjektiveri-3557aeb2"
+      ],
+      "core_source_ids": [
+        "w10l2-foucault-1997-92cd121d",
+        "w11l1-grundbog-kapitel-11-postpsykologisk-subjektiveri-3557aeb2"
+      ],
+      "supporting_source_ids": [],
+      "salience_score": 57,
+      "evidence_by_lecture": [
+        {
+          "lecture_key": "W10L2",
+          "lecture_title": "Sociokulturelle teorier - socialkonstruktionisme og poststrukturalisme (Forelæsning 19, 2026-04-14)",
+          "matched_aliases": [
+            "subjektivering",
+            "positionering",
+            "subjectivation"
+          ],
+          "match_locations": [
+            "lecture_summary",
+            "source_summary"
+          ],
+          "representative_excerpts": [
+            "Kilderne samler poststrukturalistiske perspektiver på etik, subjektivering og magt.",
+            "Davies viser, hvordan subjektet bliver til gennem diskurser og positionering i sociale praksisser.",
+            "The interview links truth, power, and subjectivation to everyday ethical work on conduct."
+          ],
+          "source_ids": [
+            "w10l2-foucault-1997-92cd121d"
+          ],
+          "core_source_ids": [
+            "w10l2-foucault-1997-92cd121d"
+          ],
+          "supporting_source_ids": []
+        },
+        {
+          "lecture_key": "W11L1",
+          "lecture_title": "Poststrukturalisme, diskursiv psykologi og feministisk teori (Forelæsning 20, 2026-04-20)",
+          "matched_aliases": [
+            "subjektivering",
+            "positionering"
+          ],
+          "match_locations": [
+            "lecture_summary",
+            "source_title",
+            "source_summary",
+            "source_key_point"
+          ],
+          "representative_excerpts": [
+            "Personlighed beskrives som løbende subjektivering, historisk organiseret gennem sociale og politiske ordener.",
+            "Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori",
+            "Kapitlet omformulerer personlighed som løbende subjektivering frem for en fast indre kerne."
+          ],
+          "source_ids": [
+            "w11l1-grundbog-kapitel-11-postpsykologisk-subjektiveri-3557aeb2"
+          ],
+          "core_source_ids": [
+            "w11l1-grundbog-kapitel-11-postpsykologisk-subjektiveri-3557aeb2"
+          ],
+          "supporting_source_ids": []
+        }
+      ],
+      "provenance": {
+        "seed_path": "shows/personlighedspsykologi-en/source_intelligence_seed.json",
+        "lecture_bundle_paths": [
+          "shows/personlighedspsykologi-en/lecture_bundles/W10L2.json",
+          "shows/personlighedspsykologi-en/lecture_bundles/W11L1.json"
+        ]
+      }
+    },
+    {
+      "term_id": "first_person_perspective",
+      "label": "first-person perspective",
+      "category": "method",
+      "importance": 2,
+      "aliases": [
+        "first-person perspective",
+        "førstepersonsperspektivet",
+        "lived experience",
+        "levet erfaring"
+      ],
+      "definition": "The first-person perspective is treated as a legitimate source of psychological knowledge rather than a residual supplement to external measurement.",
+      "course_role": "Supplies a methodological pivot away from objectifying models of the person.",
+      "lecture_keys": [
+        "W06L1",
+        "W07L2"
+      ],
+      "lecture_titles": [
+        "Fænomenologi (Forelæsning 11, 2026-03-09)",
+        "Humanistisk psykologi (Forelæsning 14, 2026-03-17)"
+      ],
+      "matched_lecture_keys": [
+        "W06L1",
+        "W07L2"
+      ],
+      "grounding_status": "grounded",
+      "match_stats": {
+        "scoped_lecture_count": 2,
+        "matched_lecture_count": 2,
+        "evidence_fragment_count": 6
+      },
+      "linked_terms": [
+        "phenomenology",
+        "humanistic_psychology",
+        "meaning_making"
+      ],
+      "linked_theories": [
+        "phenomenological_psychology",
+        "humanistic_psychology"
+      ],
+      "source_ids": [
+        "w06l1-grundbog-kapitel-4-f-nomenologisk-personlighedsp-1afa74d2",
+        "w07l2-evans-1975-8e8a9d79"
+      ],
+      "core_source_ids": [
+        "w06l1-grundbog-kapitel-4-f-nomenologisk-personlighedsp-1afa74d2",
+        "w07l2-evans-1975-8e8a9d79"
+      ],
+      "supporting_source_ids": [],
+      "salience_score": 56,
+      "evidence_by_lecture": [
+        {
+          "lecture_key": "W06L1",
+          "lecture_title": "Fænomenologi (Forelæsning 11, 2026-03-09)",
+          "matched_aliases": [
+            "levet erfaring",
+            "førstepersonsperspektivet"
+          ],
+          "match_locations": [
+            "lecture_summary",
+            "lecture_key_point",
+            "source_summary",
+            "source_key_point"
+          ],
+          "representative_excerpts": [
+            "Kilderne udvikler en fænomenologisk tilgang til personlighed med udgangspunkt i levet erfaring.",
+            "Førstepersonsperspektivet er en legitim og nødvendig videnskilde.",
+            "Kapitlet udvikler en fænomenologisk tilgang til personlighed med udgangspunkt i levet erfaring og mening."
+          ],
+          "source_ids": [
+            "w06l1-grundbog-kapitel-4-f-nomenologisk-personlighedsp-1afa74d2"
+          ],
+          "core_source_ids": [
+            "w06l1-grundbog-kapitel-4-f-nomenologisk-personlighedsp-1afa74d2"
+          ],
+          "supporting_source_ids": []
+        },
+        {
+          "lecture_key": "W07L2",
+          "lecture_title": "Humanistisk psykologi (Forelæsning 14, 2026-03-17)",
+          "matched_aliases": [
+            "levet erfaring",
+            "lived experience"
+          ],
+          "match_locations": [
+            "lecture_summary",
+            "source_key_point"
+          ],
+          "representative_excerpts": [
+            "Det humanistiske perspektiv placerer levet erfaring og agenthed centralt i personlighedsteori.",
+            "Person-centered perspectives prioritize lived experience and agency."
+          ],
+          "source_ids": [
+            "w07l2-evans-1975-8e8a9d79"
+          ],
+          "core_source_ids": [
+            "w07l2-evans-1975-8e8a9d79"
+          ],
+          "supporting_source_ids": []
+        }
+      ],
+      "provenance": {
+        "seed_path": "shows/personlighedspsykologi-en/source_intelligence_seed.json",
+        "lecture_bundle_paths": [
+          "shows/personlighedspsykologi-en/lecture_bundles/W06L1.json",
+          "shows/personlighedspsykologi-en/lecture_bundles/W07L2.json"
+        ]
+      }
+    },
+    {
+      "term_id": "personality_functioning",
+      "label": "personality functioning",
+      "category": "construct",
+      "importance": 3,
+      "aliases": [
+        "personality functioning",
+        "functioning",
+        "forstyrrelse",
+        "personlighedsfunktion"
+      ],
+      "definition": "Personality functioning is used to shift attention from simple diagnostic labels toward the organisation, coherence, and impairment of personality processes.",
+      "course_role": "Introduces the pathology block and broadens dimensional thinking toward clinical structure.",
+      "lecture_keys": [
+        "W03L2"
+      ],
+      "lecture_titles": [
+        "Personlighedsfunktion og forstyrrelse (Forelæsning 6, 2026-02-17)"
+      ],
+      "matched_lecture_keys": [
+        "W03L2"
+      ],
+      "grounding_status": "grounded",
+      "match_stats": {
+        "scoped_lecture_count": 1,
+        "matched_lecture_count": 1,
+        "evidence_fragment_count": 5
+      },
+      "linked_terms": [
+        "personality_dimensions",
+        "personality_structure",
+        "psychoanalysis"
+      ],
+      "linked_theories": [
+        "personality_functioning_and_pathology",
+        "psychoanalytic_personality_theory"
+      ],
+      "source_ids": [
+        "w03l2-sharp-and-wall-2021-cb92ecf4",
+        "w03l2-lecture-6-gang-personality-functioning-2026-bo-bach-542bbd7e"
+      ],
+      "core_source_ids": [
+        "w03l2-sharp-and-wall-2021-cb92ecf4"
+      ],
+      "supporting_source_ids": [
+        "w03l2-lecture-6-gang-personality-functioning-2026-bo-bach-542bbd7e"
+      ],
+      "salience_score": 54,
+      "evidence_by_lecture": [
+        {
+          "lecture_key": "W03L2",
+          "lecture_title": "Personlighedsfunktion og forstyrrelse (Forelæsning 6, 2026-02-17)",
+          "matched_aliases": [
+            "forstyrrelse",
+            "personlighedsfunktion",
+            "personality functioning",
+            "functioning"
+          ],
+          "match_locations": [
+            "lecture_title",
+            "source_summary",
+            "source_key_point",
+            "source_title"
+          ],
+          "representative_excerpts": [
+            "Personlighedsfunktion og forstyrrelse (Forelæsning 6, 2026-02-17)",
+            "Sharp and Wall examine personality functioning and disturbance through dimensional, developmental lenses.",
+            "They discuss how impairments in self and interpersonal functioning relate to personality pathology."
+          ],
+          "source_ids": [
+            "w03l2-sharp-and-wall-2021-cb92ecf4",
+            "w03l2-lecture-6-gang-personality-functioning-2026-bo-bach-542bbd7e"
+          ],
+          "core_source_ids": [
+            "w03l2-sharp-and-wall-2021-cb92ecf4"
+          ],
+          "supporting_source_ids": [
+            "w03l2-lecture-6-gang-personality-functioning-2026-bo-bach-542bbd7e"
+          ]
+        }
+      ],
+      "provenance": {
+        "seed_path": "shows/personlighedspsykologi-en/source_intelligence_seed.json",
+        "lecture_bundle_paths": [
+          "shows/personlighedspsykologi-en/lecture_bundles/W03L2.json"
+        ]
+      }
+    },
+    {
+      "term_id": "social_constructionism",
+      "label": "social constructionism",
+      "category": "tradition",
+      "importance": 3,
+      "aliases": [
+        "social constructionism",
+        "socialkonstruktionisme",
+        "constructionism"
+      ],
+      "definition": "Social constructionism shifts the analysis of personality toward shared practices, language, and historically situated forms of reality-making.",
+      "course_role": "Marks the move from person-centred explanation toward socially constituted subjectivity.",
+      "lecture_keys": [
+        "W10L2",
+        "W11L1"
+      ],
+      "lecture_titles": [
+        "Sociokulturelle teorier - socialkonstruktionisme og poststrukturalisme (Forelæsning 19, 2026-04-14)",
+        "Poststrukturalisme, diskursiv psykologi og feministisk teori (Forelæsning 20, 2026-04-20)"
+      ],
+      "matched_lecture_keys": [
+        "W10L2"
+      ],
+      "grounding_status": "partially_grounded",
+      "match_stats": {
+        "scoped_lecture_count": 2,
+        "matched_lecture_count": 1,
+        "evidence_fragment_count": 1
+      },
+      "linked_terms": [
+        "poststructuralism",
+        "discursive_psychology",
+        "feminist_theory"
+      ],
+      "linked_theories": [
+        "sociocultural_poststructural_approaches"
+      ],
+      "source_ids": [],
+      "core_source_ids": [],
+      "supporting_source_ids": [],
+      "salience_score": 53,
+      "evidence_by_lecture": [
+        {
+          "lecture_key": "W10L2",
+          "lecture_title": "Sociokulturelle teorier - socialkonstruktionisme og poststrukturalisme (Forelæsning 19, 2026-04-14)",
+          "matched_aliases": [
+            "socialkonstruktionisme"
+          ],
+          "match_locations": [
+            "lecture_title"
+          ],
+          "representative_excerpts": [
+            "Sociokulturelle teorier - socialkonstruktionisme og poststrukturalisme (Forelæsning 19, 2026-04-14)"
+          ],
+          "source_ids": [],
+          "core_source_ids": [],
+          "supporting_source_ids": []
+        }
+      ],
+      "provenance": {
+        "seed_path": "shows/personlighedspsykologi-en/source_intelligence_seed.json",
+        "lecture_bundle_paths": [
+          "shows/personlighedspsykologi-en/lecture_bundles/W10L2.json",
+          "shows/personlighedspsykologi-en/lecture_bundles/W11L1.json"
+        ]
+      }
+    },
+    {
+      "term_id": "feminist_theory",
+      "label": "feminist theory",
+      "category": "tradition",
+      "importance": 2,
+      "aliases": [
+        "feminist theory",
+        "feministisk teori",
+        "feminist"
+      ],
+      "definition": "Feminist theory brings gendered power, embodiment, and historically unequal positioning into the interpretation of personality and subjectivity.",
+      "course_role": "Extends the course's social critique by showing how personhood is organised through gendered relations.",
+      "lecture_keys": [
+        "W10L1",
+        "W11L1"
+      ],
+      "lecture_titles": [
+        "Køn (Forelæsning 18, 2026-04-13)",
+        "Poststrukturalisme, diskursiv psykologi og feministisk teori (Forelæsning 20, 2026-04-20)"
+      ],
+      "matched_lecture_keys": [
+        "W10L1",
+        "W11L1"
+      ],
+      "grounding_status": "grounded",
+      "match_stats": {
+        "scoped_lecture_count": 2,
+        "matched_lecture_count": 2,
+        "evidence_fragment_count": 2
+      },
+      "linked_terms": [
+        "gender",
+        "social_constructionism",
+        "subjectivation"
+      ],
+      "linked_theories": [
+        "sociocultural_poststructural_approaches"
+      ],
+      "source_ids": [
+        "w10l1-mitchell-2015-bc690b36"
+      ],
+      "core_source_ids": [
+        "w10l1-mitchell-2015-bc690b36"
+      ],
+      "supporting_source_ids": [],
+      "salience_score": 47,
+      "evidence_by_lecture": [
+        {
+          "lecture_key": "W10L1",
+          "lecture_title": "Køn (Forelæsning 18, 2026-04-13)",
+          "matched_aliases": [
+            "feminist"
+          ],
+          "match_locations": [
+            "source_key_point"
+          ],
+          "representative_excerpts": [
+            "Feminist critique and psychoanalytic theory can be combined rather than opposed."
+          ],
+          "source_ids": [
+            "w10l1-mitchell-2015-bc690b36"
+          ],
+          "core_source_ids": [
+            "w10l1-mitchell-2015-bc690b36"
+          ],
+          "supporting_source_ids": []
+        },
+        {
+          "lecture_key": "W11L1",
+          "lecture_title": "Poststrukturalisme, diskursiv psykologi og feministisk teori (Forelæsning 20, 2026-04-20)",
+          "matched_aliases": [
+            "feministisk teori",
+            "feminist"
+          ],
+          "match_locations": [
+            "lecture_title"
+          ],
+          "representative_excerpts": [
+            "Poststrukturalisme, diskursiv psykologi og feministisk teori (Forelæsning 20, 2026-04-20)"
+          ],
+          "source_ids": [],
+          "core_source_ids": [],
+          "supporting_source_ids": []
+        }
+      ],
+      "provenance": {
+        "seed_path": "shows/personlighedspsykologi-en/source_intelligence_seed.json",
+        "lecture_bundle_paths": [
+          "shows/personlighedspsykologi-en/lecture_bundles/W10L1.json",
+          "shows/personlighedspsykologi-en/lecture_bundles/W11L1.json"
+        ]
+      }
+    },
+    {
+      "term_id": "evolutionary_perspective",
+      "label": "evolutionary perspective",
+      "category": "approach",
+      "importance": 2,
+      "aliases": [
+        "evolutionary perspective",
+        "evolution",
+        "evolutionary"
+      ],
+      "definition": "The evolutionary perspective frames some personality variation as adaptive patterning shaped by long-run selection pressures.",
+      "course_role": "Supplies one of the course's strongest non-hermeneutic explanatory models.",
+      "lecture_keys": [
+        "W03L1"
+      ],
+      "lecture_titles": [
+        "Culture, evolution, genetics, and personality (Forelæsning 5, 2026-02-16)"
+      ],
+      "matched_lecture_keys": [
+        "W03L1"
+      ],
+      "grounding_status": "grounded",
+      "match_stats": {
+        "scoped_lecture_count": 1,
+        "matched_lecture_count": 1,
+        "evidence_fragment_count": 5
+      },
+      "linked_terms": [
+        "culture_and_personality",
+        "genetic_perspective"
+      ],
+      "linked_theories": [
+        "biosocial_personality_perspectives"
+      ],
+      "source_ids": [
+        "w03l1-volk-and-puchalski-2025-60aaf5d0"
+      ],
+      "core_source_ids": [
+        "w03l1-volk-and-puchalski-2025-60aaf5d0"
+      ],
+      "supporting_source_ids": [],
+      "salience_score": 42,
+      "evidence_by_lecture": [
+        {
+          "lecture_key": "W03L1",
+          "lecture_title": "Culture, evolution, genetics, and personality (Forelæsning 5, 2026-02-16)",
+          "matched_aliases": [
+            "evolution",
+            "evolutionary perspective",
+            "evolutionary"
+          ],
+          "match_locations": [
+            "lecture_title",
+            "lecture_summary",
+            "source_summary",
+            "source_key_point"
+          ],
+          "representative_excerpts": [
+            "Culture, evolution, genetics, and personality (Forelæsning 5, 2026-02-16)",
+            "Forelæsningen forbinder kultur, evolution og genetik i en flerfaktoriel forståelse af personlighed.",
+            "Volk and Puchalski discuss evolutionary perspectives on personality variation and adaptive trade-offs."
+          ],
+          "source_ids": [
+            "w03l1-volk-and-puchalski-2025-60aaf5d0"
+          ],
+          "core_source_ids": [
+            "w03l1-volk-and-puchalski-2025-60aaf5d0"
+          ],
+          "supporting_source_ids": []
+        }
+      ],
+      "provenance": {
+        "seed_path": "shows/personlighedspsykologi-en/source_intelligence_seed.json",
+        "lecture_bundle_paths": [
+          "shows/personlighedspsykologi-en/lecture_bundles/W03L1.json"
+        ]
+      }
+    },
+    {
+      "term_id": "genetic_perspective",
+      "label": "genetic perspective",
+      "category": "approach",
+      "importance": 2,
+      "aliases": [
+        "genetic perspective",
+        "genetics",
+        "genetic",
+        "heritability"
+      ],
+      "definition": "Genetic perspectives in the course treat part of personality variation as biologically constrained while still raising interpretation problems around mechanism and context.",
+      "course_role": "Keeps the biosocial block tied to questions of evidence, causality, and limitation.",
+      "lecture_keys": [
+        "W03L1"
+      ],
+      "lecture_titles": [
+        "Culture, evolution, genetics, and personality (Forelæsning 5, 2026-02-16)"
+      ],
+      "matched_lecture_keys": [
+        "W03L1"
+      ],
+      "grounding_status": "grounded",
+      "match_stats": {
+        "scoped_lecture_count": 1,
+        "matched_lecture_count": 1,
+        "evidence_fragment_count": 3
+      },
+      "linked_terms": [
+        "culture_and_personality",
+        "evolutionary_perspective"
+      ],
+      "linked_theories": [
+        "biosocial_personality_perspectives"
+      ],
+      "source_ids": [
+        "w03l1-kandler-and-instinske-2025-01535a8e"
+      ],
+      "core_source_ids": [
+        "w03l1-kandler-and-instinske-2025-01535a8e"
+      ],
+      "supporting_source_ids": [],
+      "salience_score": 40,
+      "evidence_by_lecture": [
+        {
+          "lecture_key": "W03L1",
+          "lecture_title": "Culture, evolution, genetics, and personality (Forelæsning 5, 2026-02-16)",
+          "matched_aliases": [
+            "genetics",
+            "genetic"
+          ],
+          "match_locations": [
+            "lecture_title",
+            "source_summary",
+            "source_key_point"
+          ],
+          "representative_excerpts": [
+            "Culture, evolution, genetics, and personality (Forelæsning 5, 2026-02-16)",
+            "This review synthesizes evidence that personality differences are shaped by many small genetic and environmental influences rather than single dominant causes.",
+            "Operationalization choices influence observed genetic and environmental effects."
+          ],
+          "source_ids": [
+            "w03l1-kandler-and-instinske-2025-01535a8e"
+          ],
+          "core_source_ids": [
+            "w03l1-kandler-and-instinske-2025-01535a8e"
+          ],
+          "supporting_source_ids": []
+        }
+      ],
+      "provenance": {
+        "seed_path": "shows/personlighedspsykologi-en/source_intelligence_seed.json",
+        "lecture_bundle_paths": [
+          "shows/personlighedspsykologi-en/lecture_bundles/W03L1.json"
+        ]
+      }
+    },
+    {
+      "term_id": "personality_states",
+      "label": "personality states",
+      "category": "construct",
+      "importance": 2,
+      "aliases": [
+        "personality states",
+        "states"
+      ],
+      "definition": "States mark the situational and time-sensitive side of personality that complicates purely trait-based explanations.",
+      "course_role": "Keeps the early-course trait discussion connected to variability, context, and process.",
+      "lecture_keys": [
+        "W02L1"
+      ],
+      "lecture_titles": [
+        "Personality traits, personality states, and personality dimensions (Forelæsning 3, 2026-02-09)"
+      ],
+      "matched_lecture_keys": [
+        "W02L1"
+      ],
+      "grounding_status": "grounded",
+      "match_stats": {
+        "scoped_lecture_count": 1,
+        "matched_lecture_count": 1,
+        "evidence_fragment_count": 3
+      },
+      "linked_terms": [
+        "personality_traits",
+        "person_situation_interplay",
+        "stability_and_change"
+      ],
+      "linked_theories": [
+        "trait_and_assessment_psychology",
+        "dynamic_personality_development"
+      ],
+      "source_ids": [
+        "w02l1-columbus-and-strandsbjerg-2025-2962b765"
+      ],
+      "core_source_ids": [
+        "w02l1-columbus-and-strandsbjerg-2025-2962b765"
+      ],
+      "supporting_source_ids": [],
+      "salience_score": 40,
+      "evidence_by_lecture": [
+        {
+          "lecture_key": "W02L1",
+          "lecture_title": "Personality traits, personality states, and personality dimensions (Forelæsning 3, 2026-02-09)",
+          "matched_aliases": [
+            "personality states",
+            "states"
+          ],
+          "match_locations": [
+            "lecture_title",
+            "source_summary",
+            "source_key_point"
+          ],
+          "representative_excerpts": [
+            "Personality traits, personality states, and personality dimensions (Forelæsning 3, 2026-02-09)",
+            "This text examines distinctions and relations between personality traits, states, and broader dimensions.",
+            "Traits and states should be modeled as connected, not opposed."
+          ],
+          "source_ids": [
+            "w02l1-columbus-and-strandsbjerg-2025-2962b765"
+          ],
+          "core_source_ids": [
+            "w02l1-columbus-and-strandsbjerg-2025-2962b765"
+          ],
+          "supporting_source_ids": []
+        }
+      ],
+      "provenance": {
+        "seed_path": "shows/personlighedspsykologi-en/source_intelligence_seed.json",
+        "lecture_bundle_paths": [
+          "shows/personlighedspsykologi-en/lecture_bundles/W02L1.json"
+        ]
+      }
+    },
+    {
+      "term_id": "discursive_psychology",
+      "label": "discursive psychology",
+      "category": "approach",
+      "importance": 2,
+      "aliases": [
+        "discursive psychology",
+        "diskursiv psykologi",
+        "discursive"
+      ],
+      "definition": "Discursive psychology treats psychological realities as enacted in language, interaction, and shared discursive practice.",
+      "course_role": "Operationalises the sociocultural turn at the level of method and analysis.",
+      "lecture_keys": [
+        "W11L1"
+      ],
+      "lecture_titles": [
+        "Poststrukturalisme, diskursiv psykologi og feministisk teori (Forelæsning 20, 2026-04-20)"
+      ],
+      "matched_lecture_keys": [
+        "W11L1"
+      ],
+      "grounding_status": "grounded",
+      "match_stats": {
+        "scoped_lecture_count": 1,
+        "matched_lecture_count": 1,
+        "evidence_fragment_count": 1
+      },
+      "linked_terms": [
+        "social_constructionism",
+        "poststructuralism",
+        "feminist_theory"
+      ],
+      "linked_theories": [
+        "sociocultural_poststructural_approaches"
+      ],
+      "source_ids": [],
+      "core_source_ids": [],
+      "supporting_source_ids": [],
+      "salience_score": 33,
+      "evidence_by_lecture": [
+        {
+          "lecture_key": "W11L1",
+          "lecture_title": "Poststrukturalisme, diskursiv psykologi og feministisk teori (Forelæsning 20, 2026-04-20)",
+          "matched_aliases": [
+            "diskursiv psykologi"
+          ],
+          "match_locations": [
+            "lecture_title"
+          ],
+          "representative_excerpts": [
+            "Poststrukturalisme, diskursiv psykologi og feministisk teori (Forelæsning 20, 2026-04-20)"
+          ],
+          "source_ids": [],
+          "core_source_ids": [],
+          "supporting_source_ids": []
+        }
+      ],
+      "provenance": {
+        "seed_path": "shows/personlighedspsykologi-en/source_intelligence_seed.json",
+        "lecture_bundle_paths": [
+          "shows/personlighedspsykologi-en/lecture_bundles/W11L1.json"
+        ]
+      }
+    }
+  ]
+}

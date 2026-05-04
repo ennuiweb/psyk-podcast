@@ -19,7 +19,7 @@ Use this vocabulary when referring to the system:
 - `Freudd Portal` - the student-facing `freudd.dk` web layer in `freudd_portal/`.
 - `Freudd Content Engine` - the course-material engine whose purpose is to create the best possible conditions for high-quality learning material, across source preprocessing, course framing, prompt construction, generation workflows, and show metadata/artifacts.
 - `Freudd Generation Queue` - the Hetzner-owned queue/orchestration runtime in `notebooklm_queue/`.
-- `Source Intelligence Layer` - the raw-source preprocessing subsystem, currently centered on `source_catalog.json` and future lecture/course semantic artifacts.
+- `Source Intelligence Layer` - the raw-source preprocessing subsystem, now centered on `source_catalog.json`, `lecture_bundles/`, `course_glossary.json`, `course_theory_map.json`, and related weighting/staleness artifacts.
 - `Course Context Layer` - the deterministic course/lecture framing compiler in `notebooklm_queue/course_context.py`.
 - `Prompt Assembly Layer` - the shared prompt construction layer in `notebooklm_queue/prompting.py`.
 - `Distribution Layer` - feed, manifest, Spotify, and publication outputs.
@@ -37,6 +37,21 @@ Use this vocabulary when referring to the system:
 - [docs/spotify-transcripts.md](docs/spotify-transcripts.md) - Spotify transcript auth, artifact model, and sync flow.
 - [freudd_portal/README.md](freudd_portal/README.md) - full Freudd product and runtime contract.
 - [AGENTS.md](AGENTS.md) - repo-local execution and deploy policy.
+
+## Intelligence Principle
+
+The `Freudd Content Engine` should be understood as a decomposed substitute for
+a hypothetical model that could reason over an entire course in one pass.
+
+That means the system needs:
+
+- bottom-up flow from source files into lecture and course artifacts
+- top-down flow from course arc and theory structure back into local selection
+- sideways flow across lectures, concepts, and theories
+
+This is a deliberate design principle, not accidental complexity. The engine
+should approximate whole-course reasoning through explicit intermediate
+artifacts, not by collapsing everything into opaque prompt text.
 
 ## Current operational truths
 

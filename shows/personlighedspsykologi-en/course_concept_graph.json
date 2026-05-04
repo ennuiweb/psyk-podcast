@@ -1,0 +1,2133 @@
+{
+  "version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-04T20:59:10Z",
+  "build_inputs": {
+    "course_glossary": "shows/personlighedspsykologi-en/course_glossary.json",
+    "course_theory_map": "shows/personlighedspsykologi-en/course_theory_map.json",
+    "source_weighting": "shows/personlighedspsykologi-en/source_weighting.json",
+    "semantic_seed": "shows/personlighedspsykologi-en/source_intelligence_seed.json"
+  },
+  "stats": {
+    "node_count": 39,
+    "term_node_count": 26,
+    "theory_node_count": 13,
+    "edge_count": 194,
+    "distinction_count": 6
+  },
+  "nodes": [
+    {
+      "node_id": "critical_personalism",
+      "node_type": "term",
+      "label": "critical personalism",
+      "importance": 3,
+      "salience_score": 60,
+      "lecture_keys": [
+        "W08L1"
+      ],
+      "theory_ids": [
+        "critical_personalism",
+        "trait_and_assessment_psychology",
+        "critical_psychology"
+      ]
+    },
+    {
+      "node_id": "critical_psychology",
+      "node_type": "term",
+      "label": "critical psychology",
+      "importance": 3,
+      "salience_score": 89,
+      "lecture_keys": [
+        "W08L2",
+        "W09L1"
+      ],
+      "theory_ids": [
+        "critical_psychology",
+        "sociocultural_poststructural_approaches"
+      ]
+    },
+    {
+      "node_id": "culture_and_personality",
+      "node_type": "term",
+      "label": "culture and personality",
+      "importance": 2,
+      "salience_score": 77,
+      "lecture_keys": [
+        "W03L1",
+        "W11L2"
+      ],
+      "theory_ids": [
+        "biosocial_personality_perspectives",
+        "narrative_psychology"
+      ]
+    },
+    {
+      "node_id": "discursive_psychology",
+      "node_type": "term",
+      "label": "discursive psychology",
+      "importance": 2,
+      "salience_score": 33,
+      "lecture_keys": [
+        "W11L1"
+      ],
+      "theory_ids": [
+        "sociocultural_poststructural_approaches"
+      ]
+    },
+    {
+      "node_id": "evolutionary_perspective",
+      "node_type": "term",
+      "label": "evolutionary perspective",
+      "importance": 2,
+      "salience_score": 42,
+      "lecture_keys": [
+        "W03L1"
+      ],
+      "theory_ids": [
+        "biosocial_personality_perspectives"
+      ]
+    },
+    {
+      "node_id": "existential_personality_psychology",
+      "node_type": "term",
+      "label": "existential personality psychology",
+      "importance": 3,
+      "salience_score": 84,
+      "lecture_keys": [
+        "W06L2",
+        "W07L1"
+      ],
+      "theory_ids": [
+        "existential_psychology",
+        "phenomenological_psychology",
+        "humanistic_psychology"
+      ]
+    },
+    {
+      "node_id": "feminist_theory",
+      "node_type": "term",
+      "label": "feminist theory",
+      "importance": 2,
+      "salience_score": 47,
+      "lecture_keys": [
+        "W10L1",
+        "W11L1"
+      ],
+      "theory_ids": [
+        "sociocultural_poststructural_approaches"
+      ]
+    },
+    {
+      "node_id": "first_person_perspective",
+      "node_type": "term",
+      "label": "first-person perspective",
+      "importance": 2,
+      "salience_score": 56,
+      "lecture_keys": [
+        "W06L1",
+        "W07L2"
+      ],
+      "theory_ids": [
+        "phenomenological_psychology",
+        "humanistic_psychology"
+      ]
+    },
+    {
+      "node_id": "gender",
+      "node_type": "term",
+      "label": "køn",
+      "importance": 2,
+      "salience_score": 61,
+      "lecture_keys": [
+        "W10L1",
+        "W11L1"
+      ],
+      "theory_ids": [
+        "sociocultural_poststructural_approaches"
+      ]
+    },
+    {
+      "node_id": "genetic_perspective",
+      "node_type": "term",
+      "label": "genetic perspective",
+      "importance": 2,
+      "salience_score": 40,
+      "lecture_keys": [
+        "W03L1"
+      ],
+      "theory_ids": [
+        "biosocial_personality_perspectives"
+      ]
+    },
+    {
+      "node_id": "humanistic_psychology",
+      "node_type": "term",
+      "label": "humanistic psychology",
+      "importance": 3,
+      "salience_score": 69,
+      "lecture_keys": [
+        "W07L2"
+      ],
+      "theory_ids": [
+        "humanistic_psychology",
+        "existential_psychology"
+      ]
+    },
+    {
+      "node_id": "meaning_making",
+      "node_type": "term",
+      "label": "meaning-making",
+      "importance": 2,
+      "salience_score": 85,
+      "lecture_keys": [
+        "W06L1",
+        "W07L2",
+        "W11L2"
+      ],
+      "theory_ids": [
+        "phenomenological_psychology",
+        "humanistic_psychology",
+        "narrative_psychology"
+      ]
+    },
+    {
+      "node_id": "narrativity",
+      "node_type": "term",
+      "label": "narrativity",
+      "importance": 3,
+      "salience_score": 78,
+      "lecture_keys": [
+        "W11L2",
+        "W12L1"
+      ],
+      "theory_ids": [
+        "narrative_psychology",
+        "comparative_theory_analysis"
+      ]
+    },
+    {
+      "node_id": "person_situation_interplay",
+      "node_type": "term",
+      "label": "person-situation interplay",
+      "importance": 3,
+      "salience_score": 73,
+      "lecture_keys": [
+        "W02L2",
+        "W09L1"
+      ],
+      "theory_ids": [
+        "dynamic_personality_development",
+        "critical_psychology"
+      ]
+    },
+    {
+      "node_id": "personality_assessment",
+      "node_type": "term",
+      "label": "personality assessment",
+      "importance": 3,
+      "salience_score": 64,
+      "lecture_keys": [
+        "W01L2"
+      ],
+      "theory_ids": [
+        "trait_and_assessment_psychology"
+      ]
+    },
+    {
+      "node_id": "personality_dimensions",
+      "node_type": "term",
+      "label": "personality dimensions",
+      "importance": 2,
+      "salience_score": 62,
+      "lecture_keys": [
+        "W02L1",
+        "W03L2"
+      ],
+      "theory_ids": [
+        "trait_and_assessment_psychology",
+        "personality_functioning_and_pathology"
+      ]
+    },
+    {
+      "node_id": "personality_functioning",
+      "node_type": "term",
+      "label": "personality functioning",
+      "importance": 3,
+      "salience_score": 54,
+      "lecture_keys": [
+        "W03L2"
+      ],
+      "theory_ids": [
+        "personality_functioning_and_pathology",
+        "psychoanalytic_personality_theory"
+      ]
+    },
+    {
+      "node_id": "personality_states",
+      "node_type": "term",
+      "label": "personality states",
+      "importance": 2,
+      "salience_score": 40,
+      "lecture_keys": [
+        "W02L1"
+      ],
+      "theory_ids": [
+        "trait_and_assessment_psychology",
+        "dynamic_personality_development"
+      ]
+    },
+    {
+      "node_id": "personality_structure",
+      "node_type": "term",
+      "label": "personality structure",
+      "importance": 3,
+      "salience_score": 61,
+      "lecture_keys": [
+        "W04L2",
+        "W03L2"
+      ],
+      "theory_ids": [
+        "personality_functioning_and_pathology",
+        "psychoanalytic_personality_theory"
+      ]
+    },
+    {
+      "node_id": "personality_traits",
+      "node_type": "term",
+      "label": "personality traits",
+      "importance": 3,
+      "salience_score": 88,
+      "lecture_keys": [
+        "W02L1",
+        "W02L2",
+        "W11L2"
+      ],
+      "theory_ids": [
+        "trait_and_assessment_psychology",
+        "dynamic_personality_development",
+        "narrative_psychology"
+      ]
+    },
+    {
+      "node_id": "phenomenology",
+      "node_type": "term",
+      "label": "phenomenology",
+      "importance": 3,
+      "salience_score": 67,
+      "lecture_keys": [
+        "W06L1"
+      ],
+      "theory_ids": [
+        "phenomenological_psychology",
+        "existential_psychology"
+      ]
+    },
+    {
+      "node_id": "poststructuralism",
+      "node_type": "term",
+      "label": "poststructuralism",
+      "importance": 3,
+      "salience_score": 62,
+      "lecture_keys": [
+        "W10L2",
+        "W11L1"
+      ],
+      "theory_ids": [
+        "sociocultural_poststructural_approaches"
+      ]
+    },
+    {
+      "node_id": "psychoanalysis",
+      "node_type": "term",
+      "label": "psychoanalysis",
+      "importance": 3,
+      "salience_score": 110,
+      "lecture_keys": [
+        "W04L1",
+        "W04L2",
+        "W05L1",
+        "W05L2"
+      ],
+      "theory_ids": [
+        "psychoanalytic_personality_theory"
+      ]
+    },
+    {
+      "node_id": "social_constructionism",
+      "node_type": "term",
+      "label": "social constructionism",
+      "importance": 3,
+      "salience_score": 53,
+      "lecture_keys": [
+        "W10L2",
+        "W11L1"
+      ],
+      "theory_ids": [
+        "sociocultural_poststructural_approaches"
+      ]
+    },
+    {
+      "node_id": "stability_and_change",
+      "node_type": "term",
+      "label": "stability and change",
+      "importance": 3,
+      "salience_score": 110,
+      "lecture_keys": [
+        "W01L1",
+        "W02L2",
+        "W11L2",
+        "W12L1"
+      ],
+      "theory_ids": [
+        "dynamic_personality_development",
+        "narrative_psychology",
+        "comparative_theory_analysis"
+      ]
+    },
+    {
+      "node_id": "subjectivation",
+      "node_type": "term",
+      "label": "subjectivation",
+      "importance": 2,
+      "salience_score": 57,
+      "lecture_keys": [
+        "W10L2",
+        "W11L1"
+      ],
+      "theory_ids": [
+        "sociocultural_poststructural_approaches",
+        "critical_psychology"
+      ]
+    },
+    {
+      "node_id": "biosocial_personality_perspectives",
+      "node_type": "theory",
+      "label": "biosocial personality perspectives",
+      "importance": 2,
+      "salience_score": 58,
+      "lecture_keys": [
+        "W03L1"
+      ],
+      "term_ids": [
+        "culture_and_personality",
+        "evolutionary_perspective",
+        "genetic_perspective"
+      ]
+    },
+    {
+      "node_id": "comparative_theory_analysis",
+      "node_type": "theory",
+      "label": "comparative theory analysis",
+      "importance": 2,
+      "salience_score": 57,
+      "lecture_keys": [
+        "W12L1"
+      ],
+      "term_ids": [
+        "stability_and_change",
+        "narrativity",
+        "subjectivation"
+      ]
+    },
+    {
+      "node_id": "critical_personalism",
+      "node_type": "theory",
+      "label": "critical personalism",
+      "importance": 2,
+      "salience_score": 56,
+      "lecture_keys": [
+        "W08L1"
+      ],
+      "term_ids": [
+        "critical_personalism",
+        "personality_traits",
+        "person_situation_interplay"
+      ]
+    },
+    {
+      "node_id": "critical_psychology",
+      "node_type": "theory",
+      "label": "critical psychology",
+      "importance": 3,
+      "salience_score": 82,
+      "lecture_keys": [
+        "W08L2",
+        "W09L1"
+      ],
+      "term_ids": [
+        "critical_psychology",
+        "subjectivation",
+        "person_situation_interplay"
+      ]
+    },
+    {
+      "node_id": "dynamic_personality_development",
+      "node_type": "theory",
+      "label": "dynamic personality development",
+      "importance": 2,
+      "salience_score": 56,
+      "lecture_keys": [
+        "W02L2"
+      ],
+      "term_ids": [
+        "person_situation_interplay",
+        "stability_and_change",
+        "personality_states"
+      ]
+    },
+    {
+      "node_id": "existential_psychology",
+      "node_type": "theory",
+      "label": "existential psychology",
+      "importance": 2,
+      "salience_score": 66,
+      "lecture_keys": [
+        "W06L2",
+        "W07L1"
+      ],
+      "term_ids": [
+        "existential_personality_psychology",
+        "meaning_making",
+        "first_person_perspective"
+      ]
+    },
+    {
+      "node_id": "humanistic_psychology",
+      "node_type": "theory",
+      "label": "humanistic psychology",
+      "importance": 2,
+      "salience_score": 57,
+      "lecture_keys": [
+        "W07L2"
+      ],
+      "term_ids": [
+        "humanistic_psychology",
+        "first_person_perspective",
+        "meaning_making"
+      ]
+    },
+    {
+      "node_id": "narrative_psychology",
+      "node_type": "theory",
+      "label": "narrative psychology",
+      "importance": 2,
+      "salience_score": 58,
+      "lecture_keys": [
+        "W11L2"
+      ],
+      "term_ids": [
+        "narrativity",
+        "meaning_making",
+        "stability_and_change"
+      ]
+    },
+    {
+      "node_id": "personality_functioning_and_pathology",
+      "node_type": "theory",
+      "label": "personality functioning and pathology",
+      "importance": 2,
+      "salience_score": 55,
+      "lecture_keys": [
+        "W03L2"
+      ],
+      "term_ids": [
+        "personality_functioning",
+        "personality_dimensions",
+        "personality_structure"
+      ]
+    },
+    {
+      "node_id": "phenomenological_psychology",
+      "node_type": "theory",
+      "label": "phenomenological psychology",
+      "importance": 2,
+      "salience_score": 57,
+      "lecture_keys": [
+        "W06L1"
+      ],
+      "term_ids": [
+        "phenomenology",
+        "first_person_perspective",
+        "meaning_making"
+      ]
+    },
+    {
+      "node_id": "psychoanalytic_personality_theory",
+      "node_type": "theory",
+      "label": "psychoanalytic personality theory",
+      "importance": 3,
+      "salience_score": 102,
+      "lecture_keys": [
+        "W04L1",
+        "W04L2",
+        "W05L1",
+        "W05L2"
+      ],
+      "term_ids": [
+        "psychoanalysis",
+        "personality_structure",
+        "personality_functioning"
+      ]
+    },
+    {
+      "node_id": "sociocultural_poststructural_approaches",
+      "node_type": "theory",
+      "label": "sociocultural and poststructural approaches",
+      "importance": 3,
+      "salience_score": 110,
+      "lecture_keys": [
+        "W10L1",
+        "W10L2",
+        "W11L1"
+      ],
+      "term_ids": [
+        "gender",
+        "social_constructionism",
+        "poststructuralism",
+        "discursive_psychology",
+        "feminist_theory",
+        "subjectivation"
+      ]
+    },
+    {
+      "node_id": "trait_and_assessment_psychology",
+      "node_type": "theory",
+      "label": "trait and assessment psychology",
+      "importance": 3,
+      "salience_score": 87,
+      "lecture_keys": [
+        "W01L2",
+        "W02L1"
+      ],
+      "term_ids": [
+        "personality_assessment",
+        "personality_traits",
+        "personality_states",
+        "personality_dimensions"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "psychoanalysis",
+      "target_id": "personality_structure",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "psychoanalysis",
+      "target_id": "meaning_making",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "psychoanalysis",
+      "target_id": "subjectivation",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "psychoanalysis",
+      "target_id": "psychoanalytic_personality_theory",
+      "edge_type": "term_to_theory",
+      "relation": "linked_theory"
+    },
+    {
+      "source_id": "stability_and_change",
+      "target_id": "personality_traits",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "stability_and_change",
+      "target_id": "personality_states",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "stability_and_change",
+      "target_id": "narrativity",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "stability_and_change",
+      "target_id": "subjectivation",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "stability_and_change",
+      "target_id": "dynamic_personality_development",
+      "edge_type": "term_to_theory",
+      "relation": "linked_theory"
+    },
+    {
+      "source_id": "stability_and_change",
+      "target_id": "narrative_psychology",
+      "edge_type": "term_to_theory",
+      "relation": "linked_theory"
+    },
+    {
+      "source_id": "stability_and_change",
+      "target_id": "comparative_theory_analysis",
+      "edge_type": "term_to_theory",
+      "relation": "linked_theory"
+    },
+    {
+      "source_id": "critical_psychology",
+      "target_id": "critical_personalism",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "critical_psychology",
+      "target_id": "subjectivation",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "critical_psychology",
+      "target_id": "meaning_making",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "critical_psychology",
+      "target_id": "critical_psychology",
+      "edge_type": "term_to_theory",
+      "relation": "linked_theory"
+    },
+    {
+      "source_id": "critical_psychology",
+      "target_id": "sociocultural_poststructural_approaches",
+      "edge_type": "term_to_theory",
+      "relation": "linked_theory"
+    },
+    {
+      "source_id": "personality_traits",
+      "target_id": "personality_states",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "personality_traits",
+      "target_id": "personality_dimensions",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "personality_traits",
+      "target_id": "stability_and_change",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "personality_traits",
+      "target_id": "narrativity",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "personality_traits",
+      "target_id": "trait_and_assessment_psychology",
+      "edge_type": "term_to_theory",
+      "relation": "linked_theory"
+    },
+    {
+      "source_id": "personality_traits",
+      "target_id": "dynamic_personality_development",
+      "edge_type": "term_to_theory",
+      "relation": "linked_theory"
+    },
+    {
+      "source_id": "personality_traits",
+      "target_id": "narrative_psychology",
+      "edge_type": "term_to_theory",
+      "relation": "linked_theory"
+    },
+    {
+      "source_id": "meaning_making",
+      "target_id": "first_person_perspective",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "meaning_making",
+      "target_id": "narrativity",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "meaning_making",
+      "target_id": "existential_personality_psychology",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "meaning_making",
+      "target_id": "phenomenological_psychology",
+      "edge_type": "term_to_theory",
+      "relation": "linked_theory"
+    },
+    {
+      "source_id": "meaning_making",
+      "target_id": "humanistic_psychology",
+      "edge_type": "term_to_theory",
+      "relation": "linked_theory"
+    },
+    {
+      "source_id": "meaning_making",
+      "target_id": "narrative_psychology",
+      "edge_type": "term_to_theory",
+      "relation": "linked_theory"
+    },
+    {
+      "source_id": "existential_personality_psychology",
+      "target_id": "phenomenology",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "existential_personality_psychology",
+      "target_id": "humanistic_psychology",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "existential_personality_psychology",
+      "target_id": "meaning_making",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "existential_personality_psychology",
+      "target_id": "existential_psychology",
+      "edge_type": "term_to_theory",
+      "relation": "linked_theory"
+    },
+    {
+      "source_id": "existential_personality_psychology",
+      "target_id": "phenomenological_psychology",
+      "edge_type": "term_to_theory",
+      "relation": "linked_theory"
+    },
+    {
+      "source_id": "existential_personality_psychology",
+      "target_id": "humanistic_psychology",
+      "edge_type": "term_to_theory",
+      "relation": "linked_theory"
+    },
+    {
+      "source_id": "narrativity",
+      "target_id": "meaning_making",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "narrativity",
+      "target_id": "stability_and_change",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "narrativity",
+      "target_id": "subjectivation",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "narrativity",
+      "target_id": "narrative_psychology",
+      "edge_type": "term_to_theory",
+      "relation": "linked_theory"
+    },
+    {
+      "source_id": "narrativity",
+      "target_id": "comparative_theory_analysis",
+      "edge_type": "term_to_theory",
+      "relation": "linked_theory"
+    },
+    {
+      "source_id": "culture_and_personality",
+      "target_id": "evolutionary_perspective",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "culture_and_personality",
+      "target_id": "genetic_perspective",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "culture_and_personality",
+      "target_id": "meaning_making",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "culture_and_personality",
+      "target_id": "biosocial_personality_perspectives",
+      "edge_type": "term_to_theory",
+      "relation": "linked_theory"
+    },
+    {
+      "source_id": "culture_and_personality",
+      "target_id": "narrative_psychology",
+      "edge_type": "term_to_theory",
+      "relation": "linked_theory"
+    },
+    {
+      "source_id": "person_situation_interplay",
+      "target_id": "personality_states",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "person_situation_interplay",
+      "target_id": "stability_and_change",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "person_situation_interplay",
+      "target_id": "critical_psychology",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "person_situation_interplay",
+      "target_id": "dynamic_personality_development",
+      "edge_type": "term_to_theory",
+      "relation": "linked_theory"
+    },
+    {
+      "source_id": "person_situation_interplay",
+      "target_id": "critical_psychology",
+      "edge_type": "term_to_theory",
+      "relation": "linked_theory"
+    },
+    {
+      "source_id": "humanistic_psychology",
+      "target_id": "first_person_perspective",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "humanistic_psychology",
+      "target_id": "existential_personality_psychology",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "humanistic_psychology",
+      "target_id": "meaning_making",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "humanistic_psychology",
+      "target_id": "humanistic_psychology",
+      "edge_type": "term_to_theory",
+      "relation": "linked_theory"
+    },
+    {
+      "source_id": "humanistic_psychology",
+      "target_id": "existential_psychology",
+      "edge_type": "term_to_theory",
+      "relation": "linked_theory"
+    },
+    {
+      "source_id": "phenomenology",
+      "target_id": "first_person_perspective",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "phenomenology",
+      "target_id": "existential_personality_psychology",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "phenomenology",
+      "target_id": "meaning_making",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "phenomenology",
+      "target_id": "phenomenological_psychology",
+      "edge_type": "term_to_theory",
+      "relation": "linked_theory"
+    },
+    {
+      "source_id": "phenomenology",
+      "target_id": "existential_psychology",
+      "edge_type": "term_to_theory",
+      "relation": "linked_theory"
+    },
+    {
+      "source_id": "personality_assessment",
+      "target_id": "personality_traits",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "personality_assessment",
+      "target_id": "personality_dimensions",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "personality_assessment",
+      "target_id": "person_situation_interplay",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "personality_assessment",
+      "target_id": "trait_and_assessment_psychology",
+      "edge_type": "term_to_theory",
+      "relation": "linked_theory"
+    },
+    {
+      "source_id": "personality_dimensions",
+      "target_id": "personality_assessment",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "personality_dimensions",
+      "target_id": "personality_traits",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "personality_dimensions",
+      "target_id": "personality_functioning",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "personality_dimensions",
+      "target_id": "trait_and_assessment_psychology",
+      "edge_type": "term_to_theory",
+      "relation": "linked_theory"
+    },
+    {
+      "source_id": "personality_dimensions",
+      "target_id": "personality_functioning_and_pathology",
+      "edge_type": "term_to_theory",
+      "relation": "linked_theory"
+    },
+    {
+      "source_id": "poststructuralism",
+      "target_id": "social_constructionism",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "poststructuralism",
+      "target_id": "discursive_psychology",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "poststructuralism",
+      "target_id": "subjectivation",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "poststructuralism",
+      "target_id": "sociocultural_poststructural_approaches",
+      "edge_type": "term_to_theory",
+      "relation": "linked_theory"
+    },
+    {
+      "source_id": "gender",
+      "target_id": "feminist_theory",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "gender",
+      "target_id": "subjectivation",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "gender",
+      "target_id": "social_constructionism",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "gender",
+      "target_id": "sociocultural_poststructural_approaches",
+      "edge_type": "term_to_theory",
+      "relation": "linked_theory"
+    },
+    {
+      "source_id": "personality_structure",
+      "target_id": "personality_functioning",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "personality_structure",
+      "target_id": "psychoanalysis",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "personality_structure",
+      "target_id": "personality_functioning_and_pathology",
+      "edge_type": "term_to_theory",
+      "relation": "linked_theory"
+    },
+    {
+      "source_id": "personality_structure",
+      "target_id": "psychoanalytic_personality_theory",
+      "edge_type": "term_to_theory",
+      "relation": "linked_theory"
+    },
+    {
+      "source_id": "critical_personalism",
+      "target_id": "personality_traits",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "critical_personalism",
+      "target_id": "critical_psychology",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "critical_personalism",
+      "target_id": "person_situation_interplay",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "critical_personalism",
+      "target_id": "critical_personalism",
+      "edge_type": "term_to_theory",
+      "relation": "linked_theory"
+    },
+    {
+      "source_id": "critical_personalism",
+      "target_id": "trait_and_assessment_psychology",
+      "edge_type": "term_to_theory",
+      "relation": "linked_theory"
+    },
+    {
+      "source_id": "critical_personalism",
+      "target_id": "critical_psychology",
+      "edge_type": "term_to_theory",
+      "relation": "linked_theory"
+    },
+    {
+      "source_id": "subjectivation",
+      "target_id": "poststructuralism",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "subjectivation",
+      "target_id": "critical_psychology",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "subjectivation",
+      "target_id": "gender",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "subjectivation",
+      "target_id": "sociocultural_poststructural_approaches",
+      "edge_type": "term_to_theory",
+      "relation": "linked_theory"
+    },
+    {
+      "source_id": "subjectivation",
+      "target_id": "critical_psychology",
+      "edge_type": "term_to_theory",
+      "relation": "linked_theory"
+    },
+    {
+      "source_id": "first_person_perspective",
+      "target_id": "phenomenology",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "first_person_perspective",
+      "target_id": "humanistic_psychology",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "first_person_perspective",
+      "target_id": "meaning_making",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "first_person_perspective",
+      "target_id": "phenomenological_psychology",
+      "edge_type": "term_to_theory",
+      "relation": "linked_theory"
+    },
+    {
+      "source_id": "first_person_perspective",
+      "target_id": "humanistic_psychology",
+      "edge_type": "term_to_theory",
+      "relation": "linked_theory"
+    },
+    {
+      "source_id": "personality_functioning",
+      "target_id": "personality_dimensions",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "personality_functioning",
+      "target_id": "personality_structure",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "personality_functioning",
+      "target_id": "psychoanalysis",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "personality_functioning",
+      "target_id": "personality_functioning_and_pathology",
+      "edge_type": "term_to_theory",
+      "relation": "linked_theory"
+    },
+    {
+      "source_id": "personality_functioning",
+      "target_id": "psychoanalytic_personality_theory",
+      "edge_type": "term_to_theory",
+      "relation": "linked_theory"
+    },
+    {
+      "source_id": "social_constructionism",
+      "target_id": "poststructuralism",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "social_constructionism",
+      "target_id": "discursive_psychology",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "social_constructionism",
+      "target_id": "feminist_theory",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "social_constructionism",
+      "target_id": "sociocultural_poststructural_approaches",
+      "edge_type": "term_to_theory",
+      "relation": "linked_theory"
+    },
+    {
+      "source_id": "feminist_theory",
+      "target_id": "gender",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "feminist_theory",
+      "target_id": "social_constructionism",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "feminist_theory",
+      "target_id": "subjectivation",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "feminist_theory",
+      "target_id": "sociocultural_poststructural_approaches",
+      "edge_type": "term_to_theory",
+      "relation": "linked_theory"
+    },
+    {
+      "source_id": "evolutionary_perspective",
+      "target_id": "culture_and_personality",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "evolutionary_perspective",
+      "target_id": "genetic_perspective",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "evolutionary_perspective",
+      "target_id": "biosocial_personality_perspectives",
+      "edge_type": "term_to_theory",
+      "relation": "linked_theory"
+    },
+    {
+      "source_id": "genetic_perspective",
+      "target_id": "culture_and_personality",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "genetic_perspective",
+      "target_id": "evolutionary_perspective",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "genetic_perspective",
+      "target_id": "biosocial_personality_perspectives",
+      "edge_type": "term_to_theory",
+      "relation": "linked_theory"
+    },
+    {
+      "source_id": "personality_states",
+      "target_id": "personality_traits",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "personality_states",
+      "target_id": "person_situation_interplay",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "personality_states",
+      "target_id": "stability_and_change",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "personality_states",
+      "target_id": "trait_and_assessment_psychology",
+      "edge_type": "term_to_theory",
+      "relation": "linked_theory"
+    },
+    {
+      "source_id": "personality_states",
+      "target_id": "dynamic_personality_development",
+      "edge_type": "term_to_theory",
+      "relation": "linked_theory"
+    },
+    {
+      "source_id": "discursive_psychology",
+      "target_id": "social_constructionism",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "discursive_psychology",
+      "target_id": "poststructuralism",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "discursive_psychology",
+      "target_id": "feminist_theory",
+      "edge_type": "term_link",
+      "relation": "linked_term"
+    },
+    {
+      "source_id": "discursive_psychology",
+      "target_id": "sociocultural_poststructural_approaches",
+      "edge_type": "term_to_theory",
+      "relation": "linked_theory"
+    },
+    {
+      "source_id": "trait_and_assessment_psychology",
+      "target_id": "dynamic_personality_development",
+      "edge_type": "theory_relation",
+      "relation": "extended_by",
+      "supporting_term_ids": [
+        "personality_assessment",
+        "personality_traits",
+        "personality_states",
+        "personality_dimensions"
+      ]
+    },
+    {
+      "source_id": "trait_and_assessment_psychology",
+      "target_id": "critical_personalism",
+      "edge_type": "theory_relation",
+      "relation": "criticised_by",
+      "supporting_term_ids": [
+        "personality_assessment",
+        "personality_traits",
+        "personality_states",
+        "personality_dimensions"
+      ]
+    },
+    {
+      "source_id": "trait_and_assessment_psychology",
+      "target_id": "narrative_psychology",
+      "edge_type": "theory_relation",
+      "relation": "contrasted_with",
+      "supporting_term_ids": [
+        "personality_assessment",
+        "personality_traits",
+        "personality_states",
+        "personality_dimensions"
+      ]
+    },
+    {
+      "source_id": "dynamic_personality_development",
+      "target_id": "trait_and_assessment_psychology",
+      "edge_type": "theory_relation",
+      "relation": "revises",
+      "supporting_term_ids": [
+        "person_situation_interplay",
+        "stability_and_change",
+        "personality_states"
+      ]
+    },
+    {
+      "source_id": "dynamic_personality_development",
+      "target_id": "critical_psychology",
+      "edge_type": "theory_relation",
+      "relation": "partially_converges_with",
+      "supporting_term_ids": [
+        "person_situation_interplay",
+        "stability_and_change",
+        "personality_states"
+      ]
+    },
+    {
+      "source_id": "biosocial_personality_perspectives",
+      "target_id": "trait_and_assessment_psychology",
+      "edge_type": "theory_relation",
+      "relation": "complements",
+      "supporting_term_ids": [
+        "culture_and_personality",
+        "evolutionary_perspective",
+        "genetic_perspective"
+      ]
+    },
+    {
+      "source_id": "biosocial_personality_perspectives",
+      "target_id": "sociocultural_poststructural_approaches",
+      "edge_type": "theory_relation",
+      "relation": "contrasted_with",
+      "supporting_term_ids": [
+        "culture_and_personality",
+        "evolutionary_perspective",
+        "genetic_perspective"
+      ]
+    },
+    {
+      "source_id": "personality_functioning_and_pathology",
+      "target_id": "psychoanalytic_personality_theory",
+      "edge_type": "theory_relation",
+      "relation": "feeds_into",
+      "supporting_term_ids": [
+        "personality_functioning",
+        "personality_dimensions",
+        "personality_structure"
+      ]
+    },
+    {
+      "source_id": "psychoanalytic_personality_theory",
+      "target_id": "phenomenological_psychology",
+      "edge_type": "theory_relation",
+      "relation": "contrasted_with",
+      "supporting_term_ids": [
+        "psychoanalysis",
+        "personality_structure",
+        "personality_functioning"
+      ]
+    },
+    {
+      "source_id": "psychoanalytic_personality_theory",
+      "target_id": "humanistic_psychology",
+      "edge_type": "theory_relation",
+      "relation": "criticised_by",
+      "supporting_term_ids": [
+        "psychoanalysis",
+        "personality_structure",
+        "personality_functioning"
+      ]
+    },
+    {
+      "source_id": "phenomenological_psychology",
+      "target_id": "existential_psychology",
+      "edge_type": "theory_relation",
+      "relation": "developed_into",
+      "supporting_term_ids": [
+        "phenomenology",
+        "first_person_perspective",
+        "meaning_making"
+      ]
+    },
+    {
+      "source_id": "phenomenological_psychology",
+      "target_id": "humanistic_psychology",
+      "edge_type": "theory_relation",
+      "relation": "overlaps_with",
+      "supporting_term_ids": [
+        "phenomenology",
+        "first_person_perspective",
+        "meaning_making"
+      ]
+    },
+    {
+      "source_id": "existential_psychology",
+      "target_id": "phenomenological_psychology",
+      "edge_type": "theory_relation",
+      "relation": "extends",
+      "supporting_term_ids": [
+        "existential_personality_psychology",
+        "meaning_making",
+        "first_person_perspective"
+      ]
+    },
+    {
+      "source_id": "existential_psychology",
+      "target_id": "humanistic_psychology",
+      "edge_type": "theory_relation",
+      "relation": "adjacent_to",
+      "supporting_term_ids": [
+        "existential_personality_psychology",
+        "meaning_making",
+        "first_person_perspective"
+      ]
+    },
+    {
+      "source_id": "humanistic_psychology",
+      "target_id": "psychoanalytic_personality_theory",
+      "edge_type": "theory_relation",
+      "relation": "contrasted_with",
+      "supporting_term_ids": [
+        "humanistic_psychology",
+        "first_person_perspective",
+        "meaning_making"
+      ]
+    },
+    {
+      "source_id": "critical_personalism",
+      "target_id": "trait_and_assessment_psychology",
+      "edge_type": "theory_relation",
+      "relation": "criticises",
+      "supporting_term_ids": [
+        "critical_personalism",
+        "personality_traits",
+        "person_situation_interplay"
+      ]
+    },
+    {
+      "source_id": "critical_personalism",
+      "target_id": "critical_psychology",
+      "edge_type": "theory_relation",
+      "relation": "partially_aligns_with",
+      "supporting_term_ids": [
+        "critical_personalism",
+        "personality_traits",
+        "person_situation_interplay"
+      ]
+    },
+    {
+      "source_id": "critical_psychology",
+      "target_id": "critical_personalism",
+      "edge_type": "theory_relation",
+      "relation": "extends_beyond",
+      "supporting_term_ids": [
+        "critical_psychology",
+        "subjectivation",
+        "person_situation_interplay"
+      ]
+    },
+    {
+      "source_id": "critical_psychology",
+      "target_id": "sociocultural_poststructural_approaches",
+      "edge_type": "theory_relation",
+      "relation": "partially_converges_with",
+      "supporting_term_ids": [
+        "critical_psychology",
+        "subjectivation",
+        "person_situation_interplay"
+      ]
+    },
+    {
+      "source_id": "sociocultural_poststructural_approaches",
+      "target_id": "critical_psychology",
+      "edge_type": "theory_relation",
+      "relation": "overlaps_with",
+      "supporting_term_ids": [
+        "gender",
+        "social_constructionism",
+        "poststructuralism",
+        "discursive_psychology",
+        "feminist_theory",
+        "subjectivation"
+      ]
+    },
+    {
+      "source_id": "sociocultural_poststructural_approaches",
+      "target_id": "narrative_psychology",
+      "edge_type": "theory_relation",
+      "relation": "prepares_for",
+      "supporting_term_ids": [
+        "gender",
+        "social_constructionism",
+        "poststructuralism",
+        "discursive_psychology",
+        "feminist_theory",
+        "subjectivation"
+      ]
+    },
+    {
+      "source_id": "narrative_psychology",
+      "target_id": "trait_and_assessment_psychology",
+      "edge_type": "theory_relation",
+      "relation": "contrasts_with",
+      "supporting_term_ids": [
+        "narrativity",
+        "meaning_making",
+        "stability_and_change"
+      ]
+    },
+    {
+      "source_id": "narrative_psychology",
+      "target_id": "sociocultural_poststructural_approaches",
+      "edge_type": "theory_relation",
+      "relation": "builds_on",
+      "supporting_term_ids": [
+        "narrativity",
+        "meaning_making",
+        "stability_and_change"
+      ]
+    },
+    {
+      "source_id": "comparative_theory_analysis",
+      "target_id": "trait_and_assessment_psychology",
+      "edge_type": "theory_relation",
+      "relation": "compares",
+      "supporting_term_ids": [
+        "stability_and_change",
+        "narrativity",
+        "subjectivation"
+      ]
+    },
+    {
+      "source_id": "comparative_theory_analysis",
+      "target_id": "psychoanalytic_personality_theory",
+      "edge_type": "theory_relation",
+      "relation": "compares",
+      "supporting_term_ids": [
+        "stability_and_change",
+        "narrativity",
+        "subjectivation"
+      ]
+    },
+    {
+      "source_id": "comparative_theory_analysis",
+      "target_id": "sociocultural_poststructural_approaches",
+      "edge_type": "theory_relation",
+      "relation": "compares",
+      "supporting_term_ids": [
+        "stability_and_change",
+        "narrativity",
+        "subjectivation"
+      ]
+    },
+    {
+      "source_id": "personality_structure",
+      "target_id": "psychoanalysis",
+      "edge_type": "lecture_co_occurrence",
+      "relation": "shared_lecture",
+      "lecture_key": "W04L2"
+    },
+    {
+      "source_id": "person_situation_interplay",
+      "target_id": "personality_traits",
+      "edge_type": "lecture_co_occurrence",
+      "relation": "shared_lecture",
+      "lecture_key": "W02L2"
+    },
+    {
+      "source_id": "person_situation_interplay",
+      "target_id": "stability_and_change",
+      "edge_type": "lecture_co_occurrence",
+      "relation": "shared_lecture",
+      "lecture_key": "W02L2"
+    },
+    {
+      "source_id": "personality_traits",
+      "target_id": "stability_and_change",
+      "edge_type": "lecture_co_occurrence",
+      "relation": "shared_lecture",
+      "lecture_key": "W02L2"
+    },
+    {
+      "source_id": "culture_and_personality",
+      "target_id": "meaning_making",
+      "edge_type": "lecture_co_occurrence",
+      "relation": "shared_lecture",
+      "lecture_key": "W11L2"
+    },
+    {
+      "source_id": "culture_and_personality",
+      "target_id": "narrativity",
+      "edge_type": "lecture_co_occurrence",
+      "relation": "shared_lecture",
+      "lecture_key": "W11L2"
+    },
+    {
+      "source_id": "culture_and_personality",
+      "target_id": "personality_traits",
+      "edge_type": "lecture_co_occurrence",
+      "relation": "shared_lecture",
+      "lecture_key": "W11L2"
+    },
+    {
+      "source_id": "culture_and_personality",
+      "target_id": "stability_and_change",
+      "edge_type": "lecture_co_occurrence",
+      "relation": "shared_lecture",
+      "lecture_key": "W11L2"
+    },
+    {
+      "source_id": "meaning_making",
+      "target_id": "narrativity",
+      "edge_type": "lecture_co_occurrence",
+      "relation": "shared_lecture",
+      "lecture_key": "W11L2"
+    },
+    {
+      "source_id": "meaning_making",
+      "target_id": "personality_traits",
+      "edge_type": "lecture_co_occurrence",
+      "relation": "shared_lecture",
+      "lecture_key": "W11L2"
+    },
+    {
+      "source_id": "meaning_making",
+      "target_id": "stability_and_change",
+      "edge_type": "lecture_co_occurrence",
+      "relation": "shared_lecture",
+      "lecture_key": "W11L2"
+    },
+    {
+      "source_id": "narrativity",
+      "target_id": "personality_traits",
+      "edge_type": "lecture_co_occurrence",
+      "relation": "shared_lecture",
+      "lecture_key": "W11L2"
+    },
+    {
+      "source_id": "narrativity",
+      "target_id": "stability_and_change",
+      "edge_type": "lecture_co_occurrence",
+      "relation": "shared_lecture",
+      "lecture_key": "W11L2"
+    },
+    {
+      "source_id": "critical_psychology",
+      "target_id": "person_situation_interplay",
+      "edge_type": "lecture_co_occurrence",
+      "relation": "shared_lecture",
+      "lecture_key": "W09L1"
+    },
+    {
+      "source_id": "personality_dimensions",
+      "target_id": "personality_states",
+      "edge_type": "lecture_co_occurrence",
+      "relation": "shared_lecture",
+      "lecture_key": "W02L1"
+    },
+    {
+      "source_id": "personality_dimensions",
+      "target_id": "personality_traits",
+      "edge_type": "lecture_co_occurrence",
+      "relation": "shared_lecture",
+      "lecture_key": "W02L1"
+    },
+    {
+      "source_id": "personality_states",
+      "target_id": "personality_traits",
+      "edge_type": "lecture_co_occurrence",
+      "relation": "shared_lecture",
+      "lecture_key": "W02L1"
+    },
+    {
+      "source_id": "first_person_perspective",
+      "target_id": "meaning_making",
+      "edge_type": "lecture_co_occurrence",
+      "relation": "shared_lecture",
+      "lecture_key": "W06L1"
+    },
+    {
+      "source_id": "first_person_perspective",
+      "target_id": "phenomenology",
+      "edge_type": "lecture_co_occurrence",
+      "relation": "shared_lecture",
+      "lecture_key": "W06L1"
+    },
+    {
+      "source_id": "meaning_making",
+      "target_id": "phenomenology",
+      "edge_type": "lecture_co_occurrence",
+      "relation": "shared_lecture",
+      "lecture_key": "W06L1"
+    },
+    {
+      "source_id": "first_person_perspective",
+      "target_id": "humanistic_psychology",
+      "edge_type": "lecture_co_occurrence",
+      "relation": "shared_lecture",
+      "lecture_key": "W07L2"
+    },
+    {
+      "source_id": "humanistic_psychology",
+      "target_id": "meaning_making",
+      "edge_type": "lecture_co_occurrence",
+      "relation": "shared_lecture",
+      "lecture_key": "W07L2"
+    },
+    {
+      "source_id": "culture_and_personality",
+      "target_id": "evolutionary_perspective",
+      "edge_type": "lecture_co_occurrence",
+      "relation": "shared_lecture",
+      "lecture_key": "W03L1"
+    },
+    {
+      "source_id": "culture_and_personality",
+      "target_id": "genetic_perspective",
+      "edge_type": "lecture_co_occurrence",
+      "relation": "shared_lecture",
+      "lecture_key": "W03L1"
+    },
+    {
+      "source_id": "evolutionary_perspective",
+      "target_id": "genetic_perspective",
+      "edge_type": "lecture_co_occurrence",
+      "relation": "shared_lecture",
+      "lecture_key": "W03L1"
+    },
+    {
+      "source_id": "personality_dimensions",
+      "target_id": "personality_functioning",
+      "edge_type": "lecture_co_occurrence",
+      "relation": "shared_lecture",
+      "lecture_key": "W03L2"
+    },
+    {
+      "source_id": "personality_dimensions",
+      "target_id": "personality_structure",
+      "edge_type": "lecture_co_occurrence",
+      "relation": "shared_lecture",
+      "lecture_key": "W03L2"
+    },
+    {
+      "source_id": "personality_functioning",
+      "target_id": "personality_structure",
+      "edge_type": "lecture_co_occurrence",
+      "relation": "shared_lecture",
+      "lecture_key": "W03L2"
+    },
+    {
+      "source_id": "poststructuralism",
+      "target_id": "social_constructionism",
+      "edge_type": "lecture_co_occurrence",
+      "relation": "shared_lecture",
+      "lecture_key": "W10L2"
+    },
+    {
+      "source_id": "poststructuralism",
+      "target_id": "subjectivation",
+      "edge_type": "lecture_co_occurrence",
+      "relation": "shared_lecture",
+      "lecture_key": "W10L2"
+    },
+    {
+      "source_id": "social_constructionism",
+      "target_id": "subjectivation",
+      "edge_type": "lecture_co_occurrence",
+      "relation": "shared_lecture",
+      "lecture_key": "W10L2"
+    },
+    {
+      "source_id": "discursive_psychology",
+      "target_id": "feminist_theory",
+      "edge_type": "lecture_co_occurrence",
+      "relation": "shared_lecture",
+      "lecture_key": "W11L1"
+    },
+    {
+      "source_id": "discursive_psychology",
+      "target_id": "gender",
+      "edge_type": "lecture_co_occurrence",
+      "relation": "shared_lecture",
+      "lecture_key": "W11L1"
+    },
+    {
+      "source_id": "discursive_psychology",
+      "target_id": "poststructuralism",
+      "edge_type": "lecture_co_occurrence",
+      "relation": "shared_lecture",
+      "lecture_key": "W11L1"
+    },
+    {
+      "source_id": "discursive_psychology",
+      "target_id": "social_constructionism",
+      "edge_type": "lecture_co_occurrence",
+      "relation": "shared_lecture",
+      "lecture_key": "W11L1"
+    },
+    {
+      "source_id": "discursive_psychology",
+      "target_id": "subjectivation",
+      "edge_type": "lecture_co_occurrence",
+      "relation": "shared_lecture",
+      "lecture_key": "W11L1"
+    },
+    {
+      "source_id": "feminist_theory",
+      "target_id": "gender",
+      "edge_type": "lecture_co_occurrence",
+      "relation": "shared_lecture",
+      "lecture_key": "W11L1"
+    },
+    {
+      "source_id": "feminist_theory",
+      "target_id": "poststructuralism",
+      "edge_type": "lecture_co_occurrence",
+      "relation": "shared_lecture",
+      "lecture_key": "W11L1"
+    },
+    {
+      "source_id": "feminist_theory",
+      "target_id": "social_constructionism",
+      "edge_type": "lecture_co_occurrence",
+      "relation": "shared_lecture",
+      "lecture_key": "W11L1"
+    },
+    {
+      "source_id": "feminist_theory",
+      "target_id": "subjectivation",
+      "edge_type": "lecture_co_occurrence",
+      "relation": "shared_lecture",
+      "lecture_key": "W11L1"
+    },
+    {
+      "source_id": "gender",
+      "target_id": "poststructuralism",
+      "edge_type": "lecture_co_occurrence",
+      "relation": "shared_lecture",
+      "lecture_key": "W11L1"
+    },
+    {
+      "source_id": "gender",
+      "target_id": "social_constructionism",
+      "edge_type": "lecture_co_occurrence",
+      "relation": "shared_lecture",
+      "lecture_key": "W11L1"
+    },
+    {
+      "source_id": "gender",
+      "target_id": "subjectivation",
+      "edge_type": "lecture_co_occurrence",
+      "relation": "shared_lecture",
+      "lecture_key": "W11L1"
+    }
+  ],
+  "distinctions": [
+    {
+      "distinction_id": "trait_vs_state",
+      "label": "trait vs state",
+      "importance": 3,
+      "summary": "The course repeatedly contrasts relatively stable trait language with more situated and time-sensitive state language.",
+      "lecture_keys": [
+        "W02L1",
+        "W02L2",
+        "W11L2"
+      ],
+      "term_ids": [
+        "personality_traits",
+        "personality_states",
+        "stability_and_change"
+      ],
+      "term_labels": [
+        "personality traits",
+        "personality states",
+        "stability and change"
+      ],
+      "supporting_source_ids": [
+        "w11l2-grundbog-kapitel-9-narrative-teorier-cd12008a",
+        "w11l2-mcadams-and-pals-2006-b9675688",
+        "w02l2-bleidorn-et-al-2022-25c2d2de",
+        "w11l2-raggatt-2002-d15129af",
+        "w12l1-grundbog-kapitel-8-personlighed-subjektivitet-og-b0095bfb",
+        "w12l1-elias-2000-f9176ae8"
+      ]
+    },
+    {
+      "distinction_id": "person_vs_variable_profile",
+      "label": "person vs variable profile",
+      "importance": 3,
+      "summary": "A recurring tension in the course is whether personality is best understood as a measurable profile or as a concrete person embedded in action and history.",
+      "lecture_keys": [
+        "W01L2",
+        "W08L1",
+        "W09L1"
+      ],
+      "term_ids": [
+        "personality_assessment",
+        "critical_personalism",
+        "critical_psychology"
+      ],
+      "term_labels": [
+        "personality assessment",
+        "critical personalism",
+        "critical psychology"
+      ],
+      "supporting_source_ids": [
+        "w08l1-lamiell-2021-be79d36e",
+        "w08l2-tolman-2009-455915e0",
+        "w08l2-holzkamp-1982-845aafd2",
+        "w09l1-grundbog-kapitel-10-kritisk-psykologi-b3286662",
+        "w01l2-mayer-and-bryan-2024-07faf915",
+        "w08l1-laux-et-al-2010-cfff840c"
+      ]
+    },
+    {
+      "distinction_id": "inner_depth_vs_lived_experience",
+      "label": "inner depth vs lived experience",
+      "importance": 2,
+      "summary": "The course contrasts depth-oriented models of hidden psychic structure with approaches that prioritise lived experience and explicit existence.",
+      "lecture_keys": [
+        "W04L1",
+        "W06L1",
+        "W06L2"
+      ],
+      "term_ids": [
+        "psychoanalysis",
+        "phenomenology",
+        "existential_personality_psychology"
+      ],
+      "term_labels": [
+        "psychoanalysis",
+        "phenomenology",
+        "existential personality psychology"
+      ],
+      "supporting_source_ids": [
+        "w06l1-moesk-r-hansen-and-roald-2022-b7aec462",
+        "w06l1-spinelli-2005-b2f76e93",
+        "w06l1-grundbog-kapitel-4-f-nomenologisk-personlighedsp-1afa74d2",
+        "w07l1-cooper-2003-ee3c34b7",
+        "w06l2-may-1966-d8406a09",
+        "w04l2-laplanche-1970-968862d5"
+      ]
+    },
+    {
+      "distinction_id": "growth_vs_deficit",
+      "label": "growth vs deficit",
+      "importance": 2,
+      "summary": "Several lectures contrast growth-oriented images of development with deficit, pathology, or conflict-centred models.",
+      "lecture_keys": [
+        "W07L2",
+        "W04L1",
+        "W03L2"
+      ],
+      "term_ids": [
+        "humanistic_psychology",
+        "psychoanalysis",
+        "personality_functioning"
+      ],
+      "term_labels": [
+        "humanistic psychology",
+        "psychoanalysis",
+        "personality functioning"
+      ],
+      "supporting_source_ids": [
+        "w03l2-sharp-and-wall-2021-cb92ecf4",
+        "w07l2-giorgi-2005-55ca98f7",
+        "w07l2-maslow-1968-7ea53e34",
+        "w04l2-laplanche-1970-968862d5",
+        "w05l1-ricoeur-1981-19a5343f",
+        "w07l2-evans-1975-8e8a9d79"
+      ]
+    },
+    {
+      "distinction_id": "essence_vs_subjectivation",
+      "label": "inner essence vs subjectivation",
+      "importance": 3,
+      "summary": "Late-course traditions contrast personality as an inner essence with personality as something produced through discourse, practice, and narrative revision.",
+      "lecture_keys": [
+        "W10L2",
+        "W11L1",
+        "W11L2"
+      ],
+      "term_ids": [
+        "poststructuralism",
+        "subjectivation",
+        "narrativity"
+      ],
+      "term_labels": [
+        "poststructuralism",
+        "subjectivation",
+        "narrativity"
+      ],
+      "supporting_source_ids": [
+        "w11l2-grundbog-kapitel-9-narrative-teorier-cd12008a",
+        "w11l2-mcadams-and-pals-2006-b9675688",
+        "w11l2-bruner-1999-7930abd8",
+        "w10l2-foucault-1997-92cd121d",
+        "w11l1-grundbog-kapitel-11-postpsykologisk-subjektiveri-3557aeb2"
+      ]
+    },
+    {
+      "distinction_id": "individual_problem_vs_structural_condition",
+      "label": "individual problem vs structural condition",
+      "importance": 3,
+      "summary": "Critical and feminist blocks repeatedly oppose private-deficit explanations to analyses of social, historical, and institutional conditions.",
+      "lecture_keys": [
+        "W08L2",
+        "W09L1",
+        "W10L1"
+      ],
+      "term_ids": [
+        "critical_psychology",
+        "gender",
+        "subjectivation"
+      ],
+      "term_labels": [
+        "critical psychology",
+        "køn",
+        "subjectivation"
+      ],
+      "supporting_source_ids": [
+        "w10l2-foucault-1997-92cd121d",
+        "w11l1-grundbog-kapitel-11-postpsykologisk-subjektiveri-3557aeb2",
+        "w10l1-mitchell-2015-bc690b36",
+        "w08l2-tolman-2009-455915e0",
+        "w08l2-holzkamp-1982-845aafd2",
+        "w09l1-grundbog-kapitel-10-kritisk-psykologi-b3286662"
+      ]
+    }
+  ]
+}

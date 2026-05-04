@@ -64,6 +64,7 @@ class MigrateDriveShowToR2Tests(unittest.TestCase):
         item = self.mod.build_manifest_item(
             bucket="freudd",
             object_key="shows/personal/example.mp3",
+            source_drive_file_id="drive-id-123",
             source_name="example.mp3",
             source_path="folder/example.mp3",
             path_parts=["folder"],
@@ -77,6 +78,7 @@ class MigrateDriveShowToR2Tests(unittest.TestCase):
 
         self.assertEqual(item["stable_guid"], "legacy-guid")
         self.assertEqual(item["object_key"], "shows/personal/example.mp3")
+        self.assertEqual(item["source_drive_file_id"], "drive-id-123")
         self.assertEqual(item["artifact_type"], "audio")
 
     def test_load_existing_manifest_index_reads_object_keys(self):

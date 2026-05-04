@@ -377,6 +377,7 @@ def build_manifest_item(
     *,
     bucket: str,
     object_key: str,
+    source_drive_file_id: str,
     source_name: str,
     source_path: str,
     path_parts: Iterable[str],
@@ -389,6 +390,7 @@ def build_manifest_item(
 ) -> Dict[str, Any]:
     return {
         "object_key": object_key,
+        "source_drive_file_id": source_drive_file_id,
         "source_name": source_name,
         "source_path": source_path,
         "path_parts": list(path_parts),
@@ -603,6 +605,7 @@ def main(argv: Optional[List[str]] = None) -> int:
                     build_manifest_item(
                         bucket=args.bucket,
                         object_key=object_key,
+                        source_drive_file_id=file_id,
                         source_name=str(media_plan["published_name"]),
                         source_path=source_path,
                         path_parts=relative_parts,
@@ -689,6 +692,7 @@ def main(argv: Optional[List[str]] = None) -> int:
                 build_manifest_item(
                     bucket=args.bucket,
                     object_key=object_key,
+                    source_drive_file_id=file_id,
                     source_name=str(media_plan["published_name"]),
                     source_path=source_path,
                     path_parts=relative_parts,

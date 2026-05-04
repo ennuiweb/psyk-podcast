@@ -366,6 +366,7 @@ class R2StorageBackend:
             "modifiedTime": str(raw_entry.get("modified_at") or raw_entry.get("modifiedTime") or published_at).strip(),
             "folder_parts": list(path_parts),
             "source_path": source_path,
+            "source_drive_file_id": str(raw_entry.get("source_drive_file_id") or "").strip(),
             "source_storage_key": str(raw_entry.get("source_storage_key") or key).strip(),
             "source_storage_provider": self.provider,
             "stable_guid": str(raw_entry.get("stable_guid") or "").strip() or None,

@@ -10,7 +10,12 @@ import os
 import re
 from datetime import datetime, timezone
 from pathlib import Path
+import sys
 from typing import Iterable
+
+NOTEBOOKLM_SRC = Path(__file__).resolve().parent / "notebooklm-py" / "src"
+if NOTEBOOKLM_SRC.is_dir() and str(NOTEBOOKLM_SRC) not in sys.path:
+    sys.path.insert(0, str(NOTEBOOKLM_SRC))
 
 from notebooklm import NotebookLMClient, RPCError
 from notebooklm.paths import get_storage_path

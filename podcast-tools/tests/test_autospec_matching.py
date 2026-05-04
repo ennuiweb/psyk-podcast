@@ -1,6 +1,8 @@
 import importlib.util
 import io
+import json
 import re
+import tempfile
 import unittest
 from contextlib import redirect_stderr
 from email.utils import parsedate_to_datetime
@@ -199,6 +201,41 @@ class AutoSpecMatchingTests(unittest.TestCase):
             }
         )
         self.assertEqual(template, "https://cdn.example.com/media/{file_path}?dl=1")
+
+    def test_load_existing_inventory_identity_map_falls_back_to_existing_feed(self):
+        mod = _load_feed_module()
+        with tempfile.TemporaryDirectory() as tmpdir:
+            tmp = Path(tmpdir)
+            feed_path = tmp / "feeds" / "rss.xml"
+            feed_path.parent.mkdir(parents=True, exist_ok=True)
+            feed_path.write_text(
+                """<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+  <channel>
+    <item>
+      <title>W01L1 - Intro [EN].mp3</title>
+      <guid>legacy-guid-1</guid>
+      <enclosure url="https://drive.google.com/uc?export=download&amp;id=drive-file-1" />
+    </item>
+  </channel>
+</rss>
+""",
+                encoding="utf-8",
+            )
+            config = {"output_feed": str(feed_path)}
+            identity_map = mod._load_existing_inventory_identity_map(config)
+            self.assertEqual(identity_map["drive-file-1"], "legacy-guid-1")
+            self.assertEqual(identity_map["W01L1 - Intro [EN].mp3"], "legacy-guid-1")
+
+    def test_apply_existing_identity_uses_source_drive_file_id(self):
+        mod = _load_feed_module()
+        file_entry = {
+            "id": "shows/example/intro.mp3",
+            "name": "W01L1 - Intro [EN].mp3",
+            "source_drive_file_id": "drive-file-1",
+        }
+        mod._apply_existing_identity(file_entry, {"drive-file-1": "legacy-guid-1"})
+        self.assertEqual(file_entry["stable_guid"], "legacy-guid-1")
 
     def test_build_feed_document_defaults_to_published_at_desc_sort(self):
         mod = _load_feed_module()

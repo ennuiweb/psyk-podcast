@@ -12,7 +12,7 @@ import sys
 import time
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Sequence, Set, Tuple
-from urllib.parse import quote, urlencode
+from urllib.parse import parse_qs, quote, urlencode, urlparse
 from zoneinfo import ZoneInfo
 
 SCRIPT_DIR = Path(__file__).resolve().parent
@@ -312,8 +312,9 @@ def _load_existing_inventory_identity_map(config: Dict[str, Any]) -> Dict[str, s
     inventory_path = _output_inventory_path(config) or _default_inventory_path(
         Path(str(config.get("output_feed") or "")).expanduser()
     )
+    identity_map: Dict[str, str] = {}
     if not inventory_path.exists():
-        return {}
+        return _load_existing_feed_identity_map(config)
     try:
         payload = load_json(inventory_path)
     except Exception as exc:  # noqa: BLE001
@@ -321,13 +322,12 @@ def _load_existing_inventory_identity_map(config: Dict[str, Any]) -> Dict[str, s
             f"Warning: failed to load existing inventory identity map from {inventory_path}: {exc}",
             file=sys.stderr,
         )
-        return {}
+        return _load_existing_feed_identity_map(config)
 
     raw_episodes = payload.get("episodes")
     if not isinstance(raw_episodes, list):
-        return {}
+        return _load_existing_feed_identity_map(config)
 
-    identity_map: Dict[str, str] = {}
     for raw_episode in raw_episodes:
         if not isinstance(raw_episode, dict):
             continue
@@ -344,7 +344,59 @@ def _load_existing_inventory_identity_map(config: Dict[str, Any]) -> Dict[str, s
             raw_key = str(raw_episode.get(key_name) or "").strip()
             if raw_key and raw_key not in identity_map:
                 identity_map[raw_key] = guid
+    feed_identity_map = _load_existing_feed_identity_map(config)
+    for raw_key, guid in feed_identity_map.items():
+        if raw_key and raw_key not in identity_map:
+            identity_map[raw_key] = guid
     return identity_map
+
+
+def _load_existing_feed_identity_map(config: Dict[str, Any]) -> Dict[str, str]:
+    output_feed = Path(str(config.get("output_feed") or "")).expanduser()
+    if not output_feed.exists():
+        return {}
+
+    try:
+        from xml.etree import ElementTree as ET
+
+        root = ET.fromstring(output_feed.read_text(encoding="utf-8"))
+    except Exception as exc:  # noqa: BLE001
+        print(
+            f"Warning: failed to load existing feed identity map from {output_feed}: {exc}",
+            file=sys.stderr,
+        )
+        return {}
+
+    identity_map: Dict[str, str] = {}
+    channel = root.find("channel")
+    if channel is None:
+        return identity_map
+
+    for item in channel.findall("item"):
+        guid = str(item.findtext("guid") or "").strip()
+        if not guid:
+            continue
+        title = str(item.findtext("title") or "").strip()
+        if title and title not in identity_map:
+            identity_map[title] = guid
+        enclosure = item.find("enclosure")
+        if enclosure is None:
+            continue
+        enclosure_url = str(enclosure.get("url") or "").strip()
+        if not enclosure_url:
+            continue
+        file_id = _extract_public_file_id(enclosure_url)
+        if file_id and file_id not in identity_map:
+            identity_map[file_id] = guid
+    return identity_map
+
+
+def _extract_public_file_id(url: str) -> str:
+    parsed = urlparse(url)
+    query_id = parse_qs(parsed.query).get("id", [])
+    if query_id:
+        return str(query_id[0] or "").strip()
+    return ""
 
 
 def _apply_existing_identity(file_entry: Dict[str, Any], identity_map: Dict[str, str]) -> None:
@@ -353,6 +405,7 @@ def _apply_existing_identity(file_entry: Dict[str, Any], identity_map: Dict[str,
     for candidate in (
         file_entry.get("source_storage_key"),
         file_entry.get("source_path"),
+        file_entry.get("source_drive_file_id"),
         file_entry.get("id"),
         file_entry.get("name"),
     ):

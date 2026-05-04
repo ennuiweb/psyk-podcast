@@ -1,4 +1,11 @@
 {
+  "publication": {
+    "owner": "legacy_workflow"
+  },
+  "source_import": {
+    "enabled": true,
+    "provider": "drive"
+  },
   "service_account_file": "shows/intro-vt/service-account.json",
   "drive_folder_id": "1Vq_ptrkc9FQXOahsFh4T1xHut-BWxiIX",
   "shared_drive_id": null,
@@ -23,22 +30,33 @@
   "public_link_template": "https://drive.google.com/uc?export=download&id={file_id}",
   "episode_metadata": "shows/intro-vt/episode_metadata.json",
   "auto_spec": "shows/intro-vt/auto_spec.json",
+  "storage": {
+    "provider": "r2",
+    "bucket": "freudd",
+    "endpoint": "https://abf1940818ee3c8a0fa4bc84c7b1bba9.r2.cloudflarestorage.com",
+    "region": "auto",
+    "prefix": "shows/intro-vt",
+    "public_base_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev",
+    "manifest_file": "shows/intro-vt/media_manifest.r2.json",
+    "access_key_id_env": "R2_ACCESS_KEY_ID",
+    "secret_access_key_env": "R2_SECRET_ACCESS_KEY"
+  },
   "feed": {
     "title": "Intro + VT Deep Dives, Hold 1",
     "link": "https://github.com/ennuiweb/psyk-podcast",
     "self_link": "https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/intro-vt/feeds/rss.xml",
-    "description": "Deep dives and briefs from Intro + VT Deep Dives, Hold 1.",
+    "description": "Intro til psykologi og videnskabsteori podcast feed.",
     "language": "da",
     "author": "Hold 1",
     "default_explicit": false,
-    "image": "https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/intro-vt/assets/cover.png",
+    "image": "https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/intro-vt/assets/cover.png?v=20241020",
     "category": {
       "name": "Education",
       "sub": "Courses"
     },
     "owner": {
-      "name": "Hold 1",
-      "email": "oskar@ennui.dk"
+      "name": "Pysk ku",
+      "email": "psykku2025@gmail.com"
     },
     "ttl": 60
   }

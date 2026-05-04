@@ -2,6 +2,10 @@
   "publication": {
     "owner": "legacy_workflow"
   },
+  "source_import": {
+    "enabled": true,
+    "provider": "drive"
+  },
   "service_account_file": "shows/social-psychology/service-account.json",
   "drive_folder_id": "1uPt6bHjivcD9z-Tw6Q2xbIld3bmH_WyI",
   "shared_drive_id": null,
@@ -26,6 +30,17 @@
   "public_link_template": "https://drive.google.com/uc?export=download&id={file_id}",
   "episode_metadata": "shows/social-psychology/episode_metadata.json",
   "auto_spec": "shows/social-psychology/auto_spec.json",
+  "storage": {
+    "provider": "r2",
+    "bucket": "freudd",
+    "endpoint": "https://abf1940818ee3c8a0fa4bc84c7b1bba9.r2.cloudflarestorage.com",
+    "region": "auto",
+    "prefix": "shows/social-psychology",
+    "public_base_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev",
+    "manifest_file": "shows/social-psychology/media_manifest.r2.json",
+    "access_key_id_env": "R2_ACCESS_KEY_ID",
+    "secret_access_key_env": "R2_SECRET_ACCESS_KEY"
+  },
   "important_text_docs": [
     "shows/social-psychology/docs/overblik.md",
     "shows/social-psychology/docs/reading-file-key.md"

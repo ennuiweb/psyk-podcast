@@ -8,6 +8,7 @@ system and its subsystems.
 
 Use these files:
 
+- [freudd-learning-system-architecture.md](freudd-learning-system-architecture.md) - canonical system-wide architecture and maturity assessment for the full Freudd Learning System.
 - [feed-automation.md](feed-automation.md) - podcast feed generation, show layout, GitHub Actions, Apps Script triggers, and feed hosting.
 - [notebooklm-automation.md](notebooklm-automation.md) - subject-oriented NotebookLM workflows, mirrors, and output conventions.
 - [notebooklm-queue-operations.md](notebooklm-queue-operations.md) - Hetzner runtime contract, systemd install, env requirements, and failure playbook for the queue-owned NotebookLM publisher.

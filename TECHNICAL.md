@@ -28,6 +28,7 @@ Use this vocabulary when referring to the system:
 ## Start here
 
 - [docs/feed-automation.md](docs/feed-automation.md) - feed pipeline, GitHub Actions, Apps Script triggers, and feed hosting.
+- [docs/freudd-learning-system-architecture.md](docs/freudd-learning-system-architecture.md) - system-wide architecture map, maturity assessment, and recommended next moves.
 - [docs/notebooklm-automation.md](docs/notebooklm-automation.md) - NotebookLM subject wrappers, mirrors, and output conventions.
 - [docs/notebooklm-queue-operations.md](docs/notebooklm-queue-operations.md) - Hetzner queue runtime install and operations runbook.
 - [docs/notebooklm-queue-r2-migration.md](docs/notebooklm-queue-r2-migration.md) - cross-cutting implementation plan for the Hetzner queue and R2/object-storage migration.

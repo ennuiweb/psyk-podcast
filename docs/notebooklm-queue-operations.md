@@ -5,6 +5,7 @@ This runbook documents the Hetzner runtime for the queue-owned NotebookLM public
 Current live scope:
 
 - `bioneuro` is the first queue-owned, R2-backed live show.
+- `personlighedspsykologi-en` is now also queue-owned and R2-backed on the Hetzner runtime.
 - The queue runtime is designed as a server-managed `systemd` timer that repeatedly drains one show through discovery, generation, publish, repo push, and downstream validation.
 
 Repository deploy artifacts:
@@ -29,9 +30,9 @@ Default paths:
 - queue storage root: `/var/lib/podcasts/notebooklm-queue`
 - env file per show: `/etc/podcasts/notebooklm-queue/<show>.env`
 
-## Required env for `bioneuro`
+## Required env for queue-owned shows
 
-Minimum required env file: `/etc/podcasts/notebooklm-queue/bioneuro.env`
+Minimum required env file: `/etc/podcasts/notebooklm-queue/<show>.env`
 
 ```bash
 R2_ACCESS_KEY_ID=...
@@ -123,16 +124,21 @@ sudo install -m 0644 /opt/podcasts/notebooklm_queue/deploy/systemd/podcasts-note
 
 ```bash
 sudo install -d -m 0755 /etc/podcasts/notebooklm-queue
-sudoedit /etc/podcasts/notebooklm-queue/bioneuro.env
+sudoedit /etc/podcasts/notebooklm-queue/<show>.env
 ```
 
 4. Enable the timer:
 
 ```bash
 sudo systemctl daemon-reload
-sudo systemctl enable --now podcasts-notebooklm-queue@bioneuro.timer
-sudo systemctl list-timers | rg 'podcasts-notebooklm-queue@bioneuro'
+sudo systemctl enable --now podcasts-notebooklm-queue@<show>.timer
+sudo systemctl list-timers | rg 'podcasts-notebooklm-queue@<show>'
 ```
+
+Current deployed examples:
+
+- `/etc/podcasts/notebooklm-queue/bioneuro.env`
+- `/etc/podcasts/notebooklm-queue/personlighedspsykologi-en.env`
 
 ## Sync NotebookLM profiles from the workstation
 

@@ -143,6 +143,7 @@ Current active show ownership is now mixed:
 - `personal`: live, R2-backed, legacy workflow; ingest now runs through the resumable local-to-R2 publisher, which backfills missing manifest checksums and transcodes configured `.m4a` / `.wav` sources to MP3 before upload
 - `personlighedspsykologi-en`: live, R2-backed, queue-owned
   - queue metadata hardening is in place for manual summaries, regeneration registry sync, and slide-brief blocking
+  - the Hetzner queue runtime is now installed and verified; the first `systemd` drain completed successfully as a no-op because discovery correctly skipped already-published lecture keys
 - `social-psychology`: live, R2-backed, legacy workflow; feed regeneration now reads the checked-in R2 manifest directly
 
 Operational boundary:
@@ -154,9 +155,8 @@ Operational boundary:
 ## Immediate missing steps before full autonomous ownership
 
 1. Replace the temporary `r2.dev` public base URL with the intended production audio domain.
-2. Install and verify the Hetzner queue runtime for `personlighedspsykologi-en`.
-3. Observe one or more normal `personlighedspsykologi-en` queue-owned publish cycles on the live R2-backed config.
-4. Decide whether paused legacy shows should keep any remaining Drive-only tooling or whether those code paths can be archived.
+2. Observe one or more normal `personlighedspsykologi-en` queue-owned publish cycles on the live R2-backed config.
+3. Decide whether paused legacy shows should keep any remaining Drive-only tooling or whether those code paths can be archived.
 
 ## Recommended reading order
 

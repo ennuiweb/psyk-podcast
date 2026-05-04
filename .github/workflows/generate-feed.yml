@@ -44,6 +44,46 @@ jobs:
             --config "shows/${SHOW}/config.github.json" \
             --github-output "$GITHUB_OUTPUT"
 
+      - name: Resolve show source import
+        id: source_import
+        if: steps.show_policy.outputs.workflow_writer_enabled == 'true'
+        env:
+          SHOW: ${{ matrix.show }}
+        run: |
+          python3 <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          show = os.environ["SHOW"]
+          config_path = Path(f"shows/{show}/config.github.json")
+          data = json.loads(config_path.read_text(encoding="utf-8"))
+          source_import = data.get("source_import") if isinstance(data.get("source_import"), dict) else {}
+          storage = data.get("storage") if isinstance(data.get("storage"), dict) else {}
+
+          enabled = bool(source_import.get("enabled"))
+          provider = str(source_import.get("provider") or "").strip() if enabled else ""
+          restrict_to_inventory = bool(source_import.get("restrict_to_current_inventory")) if enabled else False
+          if enabled and provider not in {"drive"}:
+              raise SystemExit(f"Unsupported source_import.provider for {show}: {provider}")
+
+          values = {
+              "enabled": "true" if enabled else "false",
+              "provider": provider,
+              "restrict_to_current_inventory": "true" if restrict_to_inventory else "false",
+              "storage_bucket": str(storage.get("bucket") or "").strip(),
+              "storage_endpoint": str(storage.get("endpoint") or "").strip(),
+              "storage_region": str(storage.get("region") or "").strip(),
+              "storage_prefix": str(storage.get("prefix") or "").strip(),
+              "storage_public_base_url": str(storage.get("public_base_url") or "").strip(),
+              "storage_manifest_file": str(storage.get("manifest_file") or "").strip(),
+          }
+
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as handle:
+              for key, value in values.items():
+                  handle.write(f"{key}={value}\n")
+          PY
+
       - name: Skip queue-owned writer path
         if: steps.show_policy.outputs.workflow_writer_enabled != 'true'
         env:
@@ -57,8 +97,9 @@ jobs:
         env:
           SHOW: ${{ matrix.show }}
           STORAGE_PROVIDER: ${{ steps.show_policy.outputs.storage_provider }}
+          SOURCE_IMPORT_PROVIDER: ${{ steps.source_import.outputs.provider }}
         run: |
-          if [[ "${STORAGE_PROVIDER}" == "drive" ]]; then
+          if [[ "${STORAGE_PROVIDER}" == "drive" || "${SOURCE_IMPORT_PROVIDER}" == "drive" ]]; then
             show_upper=${SHOW^^}
             show_upper=${show_upper//-/_}
             show_key="SERVICE_ACCOUNT_JSON_${show_upper}"
@@ -89,7 +130,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Write service account credentials
-        if: steps.show_policy.outputs.workflow_writer_enabled == 'true' && steps.show_policy.outputs.storage_provider == 'drive'
+        if: steps.show_policy.outputs.workflow_writer_enabled == 'true' && (steps.show_policy.outputs.storage_provider == 'drive' || steps.source_import.outputs.provider == 'drive')
         env:
           SHOW: ${{ matrix.show }}
         run: |
@@ -115,6 +156,7 @@ jobs:
         env:
           SHOW: ${{ matrix.show }}
           STORAGE_PROVIDER: ${{ steps.show_policy.outputs.storage_provider }}
+          SOURCE_IMPORT_PROVIDER: ${{ steps.source_import.outputs.provider }}
         run: |
           python3 <<'PY'
           import json
@@ -123,6 +165,7 @@ jobs:
 
           show = os.environ["SHOW"]
           provider = os.environ["STORAGE_PROVIDER"]
+          source_import_provider = os.environ.get("SOURCE_IMPORT_PROVIDER") or ""
           show_upper = show.upper().replace('-', '_')
           source_path = Path(f"shows/{show}/config.github.json")
           output_path = Path(f"shows/{show}/config.runtime.json")
@@ -130,7 +173,7 @@ jobs:
           with source_path.open("r", encoding="utf-8") as fh:
               data = json.load(fh)
 
-          if provider == "drive":
+          if provider == "drive" or source_import_provider == "drive":
               secret_key = f"DRIVE_FOLDER_ID_{show_upper}"
               drive_id = os.environ.get(secret_key)
               fallback_drive_id = os.environ.get("DRIVE_FOLDER_ID")
@@ -154,6 +197,38 @@ jobs:
 
           output_path.write_text(json.dumps(data, indent=2))
           PY
+
+      - name: Import Drive media to R2
+        if: steps.show_policy.outputs.workflow_writer_enabled == 'true' && steps.show_policy.outputs.storage_provider == 'r2' && steps.source_import.outputs.enabled == 'true' && steps.source_import.outputs.provider == 'drive'
+        env:
+          SHOW: ${{ matrix.show }}
+          STORAGE_BUCKET: ${{ steps.source_import.outputs.storage_bucket }}
+          STORAGE_ENDPOINT: ${{ steps.source_import.outputs.storage_endpoint }}
+          STORAGE_REGION: ${{ steps.source_import.outputs.storage_region }}
+          STORAGE_PREFIX: ${{ steps.source_import.outputs.storage_prefix }}
+          STORAGE_PUBLIC_BASE_URL: ${{ steps.source_import.outputs.storage_public_base_url }}
+          STORAGE_MANIFEST_FILE: ${{ steps.source_import.outputs.storage_manifest_file }}
+          RESTRICT_TO_CURRENT_INVENTORY: ${{ steps.source_import.outputs.restrict_to_current_inventory }}
+        run: |
+          if [[ -z "${STORAGE_BUCKET}" || -z "${STORAGE_ENDPOINT}" || -z "${STORAGE_PREFIX}" || -z "${STORAGE_PUBLIC_BASE_URL}" || -z "${STORAGE_MANIFEST_FILE}" ]]; then
+            echo "::error::Incomplete R2 storage config for Drive source import on ${SHOW}."
+            exit 1
+          fi
+          cmd=(
+            python scripts/migrate_drive_show_to_r2.py
+            --config "shows/${SHOW}/config.runtime.json"
+            --source-config "shows/${SHOW}/config.runtime.json"
+            --bucket "${STORAGE_BUCKET}"
+            --endpoint "${STORAGE_ENDPOINT}"
+            --region "${STORAGE_REGION}"
+            --prefix "${STORAGE_PREFIX}"
+            --public-base-url "${STORAGE_PUBLIC_BASE_URL}"
+            --manifest-path "${STORAGE_MANIFEST_FILE}"
+          )
+          if [[ "${RESTRICT_TO_CURRENT_INVENTORY}" == "true" ]]; then
+            cmd+=(--restrict-to-current-inventory)
+          fi
+          "${cmd[@]}"
 
       - name: Check Drive for videos needing transcode
         if: steps.show_policy.outputs.workflow_writer_enabled == 'true' && steps.show_policy.outputs.storage_provider == 'drive'
@@ -390,6 +465,7 @@ jobs:
         if: steps.show_policy.outputs.workflow_writer_enabled == 'true'
         env:
           SHOW: ${{ matrix.show }}
+          MANIFEST_PATH: ${{ steps.source_import.outputs.storage_manifest_file }}
         run: |
           set -euo pipefail
           feed_path="shows/${SHOW}/feeds/rss.xml"
@@ -397,7 +473,11 @@ jobs:
           quiz_path="shows/${SHOW}/quiz_links.json"
           spotify_map_path="shows/${SHOW}/spotify_map.json"
           manifest_path="shows/${SHOW}/content_manifest.json"
+          media_manifest_path="${MANIFEST_PATH}"
           safe_rebase_paths=("$feed_path" "$inventory_path" "$quiz_path" "$spotify_map_path" "$manifest_path")
+          if [[ -n "${media_manifest_path}" ]]; then
+            safe_rebase_paths+=("${media_manifest_path}")
+          fi
 
           resolve_rebase_conflicts() {
             mapfile -t conflicted_files < <(git diff --name-only --diff-filter=U)
@@ -443,6 +523,9 @@ jobs:
           fi
           if [[ -f "$manifest_path" && -n "$(git status --porcelain "$manifest_path")" ]]; then
             files+=("$manifest_path")
+          fi
+          if [[ -n "$media_manifest_path" && -f "$media_manifest_path" && -n "$(git status --porcelain "$media_manifest_path")" ]]; then
+            files+=("$media_manifest_path")
           fi
           if [[ ${#files[@]} -gt 0 ]]; then
             git config user.name "github-actions[bot]"

@@ -19,6 +19,18 @@ NotebookLM generation mechanics live in
 | Artifact ownership | `shows/personlighedspsykologi-en/docs/podcast-flow-artifacts.md` |
 | Operational runbook | `shows/personlighedspsykologi-en/docs/podcast-flow-operations.md` |
 
+## Storage And Publication
+
+- `storage.provider` is now `r2`, but `publication.owner` remains
+  `legacy_workflow`.
+- The legacy workflow imports the currently published Drive-backed inventory
+  into R2 before feed generation and refreshes
+  `shows/personlighedspsykologi-en/media_manifest.r2.json`.
+- `drive_folder_id` and the service-account path remain in the show config
+  because they are still the canonical source for that import step.
+- `source_import.restrict_to_current_inventory` must stay enabled so inactive or
+  superseded Drive variants do not leak into the public R2 catalog.
+
 ## Public Output Policy
 
 - Feed-visible episodes are lecture-key based (`W##L#`).
@@ -46,8 +58,9 @@ NotebookLM generation mechanics live in
   `shows/personlighedspsykologi-en/reading_summaries.json`.
 - Weekly overview summaries are manual Danish summaries in
   `shows/personlighedspsykologi-en/weekly_overview_summaries.json`.
-- Coverage validation is warn-only; missing summaries should not block feed
-  generation by themselves.
+- Legacy workflow coverage validation is still warn-only for day-to-day feed
+  generation. The queue-owned publication path is stricter and may block on
+  missing manual summary content before any future ownership cutover.
 
 ## Quiz Links
 
@@ -74,8 +87,8 @@ python3 scripts/check_personlighedspsykologi_artifact_invariants.py
 ```
 
 Expected non-blocking warnings may include missing reading summaries, existing
-content gaps, or duplicate Drive audio sources. Treat new structural or invariant
-errors as blockers.
+content gaps, or duplicate Drive audio sources. Treat new structural, import, or
+inventory-mismatch errors as blockers.
 
 ## Publishing
 

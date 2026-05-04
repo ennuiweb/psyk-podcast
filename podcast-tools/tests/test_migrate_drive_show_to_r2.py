@@ -133,6 +133,53 @@ class MigrateDriveShowToR2Tests(unittest.TestCase):
 
         self.assertIn("blank sha256", str(exc.exception))
 
+    def test_load_inventory_allowlist_prefers_drive_ids(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            inventory = Path(tmpdir) / "episode_inventory.json"
+            inventory.write_text(
+                json.dumps(
+                    {
+                        "episodes": [
+                            {
+                                "source_drive_file_id": "drive-a",
+                                "source_name": "Episode A.mp3",
+                            },
+                            {
+                                "source_storage_key": "drive-b",
+                                "source_path": "folder/Episode B.mp3",
+                            },
+                            {
+                                "source_name": "Episode C.mp3",
+                            },
+                        ]
+                    }
+                ),
+                encoding="utf-8",
+            )
+
+            allowlist = self.mod.load_inventory_allowlist(inventory)
+
+            self.assertEqual(allowlist["episode_count"], 3)
+            self.assertEqual(allowlist["drive_ids"], {"drive-a", "drive-b"})
+            self.assertEqual(allowlist["fallback_names"], {"Episode C.mp3"})
+
+    def test_filter_files_to_inventory_restricts_to_current_inventory(self):
+        allowlist = {
+            "drive_ids": {"drive-a", "drive-b"},
+            "fallback_names": {"Episode C.mp3"},
+        }
+        files = [
+            {"id": "drive-a", "name": "Episode A.mp3"},
+            {"id": "drive-b", "name": "Episode B.mp3"},
+            {"id": "other", "name": "Episode C.mp3"},
+            {"id": "extra", "name": "Episode D.mp3"},
+        ]
+
+        filtered, missing = self.mod.filter_files_to_inventory(files, allowlist)
+
+        self.assertEqual([item["id"] for item in filtered], ["drive-a", "drive-b"])
+        self.assertEqual(missing, ["Episode C.mp3"])
+
     def test_is_retryable_exception_handles_transient_network_errors(self):
         self.assertTrue(self.mod.is_retryable_exception(OSError(65, "No route to host")))
         self.assertTrue(self.mod.is_retryable_exception(TimeoutError("timed out")))

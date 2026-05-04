@@ -3,7 +3,7 @@
 Each subdirectory contains config and assets for a single podcast feed. The CI workflow iterates over the list of shows in its matrix (paused feeds are noted below) and regenerates each feed from the configured storage backend (`storage.provider`).
 
 - `social-psychology` – live show currently wired to Google Drive and GitHub Actions.
-- `personlighedspsykologi-en` - Personlighedspsykologi (F26) feed; quiz links use deterministic short IDs under `/q/`.
+- `personlighedspsykologi-en` - Personlighedspsykologi (F26) feed; now R2-backed under the legacy workflow, with workflow-managed Drive-to-R2 import constrained to the currently published inventory; quiz links use deterministic short IDs under `/q/`.
 - `bioneuro` - Bio / Neuropsychology feed.
 - `intro-vt` – Intro + VT Deep Dives - Hold 1 - 2024 series; keep the configured storage source current and the workflow will publish automatically.
 - `intro-vt-tss` – Intro + VT Tekst til tale - 1. sem 2024 TTS feed scaffolding (CI currently paused).

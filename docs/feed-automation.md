@@ -91,8 +91,10 @@ Current operational reality:
 - `bioneuro` is now live on `storage.provider = "r2"` with `publication.owner = "queue"`
 - `personal` is now live on `storage.provider = "r2"` with `publication.owner = "legacy_workflow"`
 - `personal` uses the resumable Drive-to-R2 importer as its canonical ingest path; that importer now backfills manifest checksums on resumed catalogs and transcodes configured source formats such as `.m4a` and `.wav` to MP3 before upload
+- `personlighedspsykologi-en` is now configured for `storage.provider = "r2"` while staying on `publication.owner = "legacy_workflow"`; the legacy workflow first imports the currently published Drive-backed inventory into R2 and refreshes `media_manifest.r2.json` before regenerating feed-side artifacts
 - the current `bioneuro` public enclosure base is the temporary Cloudflare hostname `https://pub-fe942499398a478c8a8f432207051244.r2.dev`
 - `personal` currently uses the same temporary Cloudflare hostname for enclosures
+- `personlighedspsykologi-en` currently uses the same temporary Cloudflare hostname for enclosures
 - the remaining active shows are still on the legacy workflow until they are cut over explicitly
 
 ## Google setup

@@ -2,6 +2,22 @@
   "publication": {
     "owner": "legacy_workflow"
   },
+  "source_import": {
+    "enabled": true,
+    "provider": "drive",
+    "restrict_to_current_inventory": true
+  },
+  "storage": {
+    "provider": "r2",
+    "bucket": "freudd",
+    "endpoint": "https://abf1940818ee3c8a0fa4bc84c7b1bba9.r2.cloudflarestorage.com",
+    "region": "auto",
+    "prefix": "shows/personlighedspsykologi-en",
+    "public_base_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev",
+    "manifest_file": "shows/personlighedspsykologi-en/media_manifest.r2.json",
+    "access_key_id_env": "R2_ACCESS_KEY_ID",
+    "secret_access_key_env": "R2_SECRET_ACCESS_KEY"
+  },
   "regeneration_marker": {
     "enabled": true,
     "file": "shows/personlighedspsykologi-en/regeneration_registry.json",

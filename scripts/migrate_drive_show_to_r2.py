@@ -96,6 +96,11 @@ def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--limit", type=int)
     parser.add_argument("--force-upload", action="store_true")
+    parser.add_argument(
+        "--restrict-to-current-inventory",
+        action="store_true",
+        help="Only import Drive files that are referenced by the current episode inventory.",
+    )
     parser.add_argument("--max-attempts", type=int, default=5)
     parser.add_argument("--retry-delay-seconds", type=float, default=2.0)
     return parser.parse_args(argv)
@@ -257,6 +262,70 @@ def load_guid_maps(*, inventory_path: Path, feed_path: Path) -> Dict[str, str]:
                 if guid and title and title not in mapping:
                     mapping[title] = guid
     return mapping
+
+
+def load_inventory_allowlist(inventory_path: Path) -> Dict[str, Any]:
+    payload = load_json(inventory_path)
+    episodes = payload.get("episodes") if isinstance(payload, dict) else None
+    if not isinstance(episodes, list):
+        raise SystemExit(f"Inventory file does not contain an episodes list: {inventory_path}")
+
+    drive_ids: set[str] = set()
+    fallback_names: set[str] = set()
+    for episode in episodes:
+        if not isinstance(episode, dict):
+            continue
+        drive_id = str(
+            episode.get("source_drive_file_id")
+            or episode.get("source_storage_key")
+            or ""
+        ).strip()
+        if drive_id:
+            drive_ids.add(drive_id)
+            continue
+        for key_name in ("source_name", "source_path"):
+            raw = str(episode.get(key_name) or "").strip()
+            if raw:
+                fallback_names.add(raw)
+                break
+
+    return {
+        "episode_count": len(episodes),
+        "drive_ids": drive_ids,
+        "fallback_names": fallback_names,
+    }
+
+
+def filter_files_to_inventory(
+    files: Iterable[Dict[str, Any]],
+    inventory_allowlist: Dict[str, Any],
+) -> tuple[List[Dict[str, Any]], List[str]]:
+    drive_ids = set(str(item).strip() for item in inventory_allowlist.get("drive_ids") or set() if str(item).strip())
+    fallback_names = set(
+        str(item).strip() for item in inventory_allowlist.get("fallback_names") or set() if str(item).strip()
+    )
+    matched_ids: set[str] = set()
+    matched_names: set[str] = set()
+    filtered: List[Dict[str, Any]] = []
+
+    for file_entry in files:
+        file_id = str(file_entry.get("id") or "").strip()
+        file_name = str(file_entry.get("name") or "").strip()
+        if file_id and file_id in drive_ids:
+            filtered.append(file_entry)
+            matched_ids.add(file_id)
+            continue
+        if not file_id and file_name and file_name in fallback_names:
+            filtered.append(file_entry)
+            matched_names.add(file_name)
+            continue
+        if file_id and not drive_ids and file_name and file_name in fallback_names:
+            filtered.append(file_entry)
+            matched_names.add(file_name)
+
+    missing = sorted(drive_ids - matched_ids)
+    missing.extend(sorted(fallback_names - matched_names))
+    return filtered, missing
 
 
 def download_drive_file(service, file_id: str, destination: Path, *, supports_all_drives: bool) -> None:
@@ -484,6 +553,17 @@ def main(argv: Optional[List[str]] = None) -> int:
         initial_delay_seconds=args.retry_delay_seconds,
     )
     files.sort(key=lambda item: (str(item.get("createdTime") or ""), str(item.get("name") or "")))
+    if args.restrict_to_current_inventory:
+        inventory_allowlist = load_inventory_allowlist(inventory_path)
+        files, missing_inventory_refs = filter_files_to_inventory(files, inventory_allowlist)
+        if missing_inventory_refs:
+            preview = ", ".join(missing_inventory_refs[:5])
+            if len(missing_inventory_refs) > 5:
+                preview = f"{preview}, ..."
+            raise SystemExit(
+                "Current inventory references Drive items that were not found during import; "
+                f"aborting. Missing references: {preview}"
+            )
     if args.limit:
         files = files[: max(int(args.limit), 0)]
     guid_map = load_guid_maps(inventory_path=inventory_path, feed_path=feed_path)

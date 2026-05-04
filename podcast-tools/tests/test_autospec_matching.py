@@ -173,6 +173,33 @@ class AutoSpecMatchingTests(unittest.TestCase):
         self.assertEqual(episode["source_storage_provider"], "r2")
         self.assertEqual(episode["source_storage_key"], "shows/personal/W01L1 - Intro [EN].mp3")
 
+    def test_resolve_public_link_template_prefers_storage_base_for_r2(self):
+        mod = _load_feed_module()
+        template = mod.resolve_public_link_template(
+            {
+                "public_link_template": "https://drive.google.com/uc?export=download&id={file_id}",
+                "storage": {
+                    "provider": "r2",
+                    "public_base_url": "https://audio.example.com",
+                },
+            }
+        )
+        self.assertEqual(template, "https://audio.example.com/{file_path}")
+
+    def test_resolve_public_link_template_prefers_storage_template_for_r2(self):
+        mod = _load_feed_module()
+        template = mod.resolve_public_link_template(
+            {
+                "public_link_template": "https://drive.google.com/uc?export=download&id={file_id}",
+                "storage": {
+                    "provider": "r2",
+                    "public_base_url": "https://audio.example.com",
+                    "public_link_template": "https://cdn.example.com/media/{file_path}?dl=1",
+                },
+            }
+        )
+        self.assertEqual(template, "https://cdn.example.com/media/{file_path}?dl=1")
+
     def test_build_feed_document_defaults_to_published_at_desc_sort(self):
         mod = _load_feed_module()
 

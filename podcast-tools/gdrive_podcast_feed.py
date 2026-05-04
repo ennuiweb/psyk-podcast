@@ -451,6 +451,23 @@ def _render_public_media_url(file_entry: Dict[str, Any], public_link_template: s
     )
 
 
+def resolve_public_link_template(config: Dict[str, Any]) -> str:
+    provider = resolve_storage_provider(config)
+    storage_cfg = config.get("storage") if isinstance(config.get("storage"), dict) else {}
+    default_drive_template = "https://drive.google.com/uc?export=download&id={file_id}"
+
+    if provider != "drive":
+        storage_public_template = str(storage_cfg.get("public_link_template") or "").strip()
+        if storage_public_template:
+            return storage_public_template
+
+        public_base_url = str(storage_cfg.get("public_base_url") or "").strip().rstrip("/")
+        if public_base_url:
+            return f"{public_base_url}/{{file_path}}"
+
+    return str(config.get("public_link_template") or default_drive_template)
+
+
 def _is_retryable_http_error(exc: BaseException) -> bool:
     if HttpError is None or not isinstance(exc, HttpError):
         return False
@@ -4155,12 +4172,7 @@ def main() -> None:
 
     storage = build_storage_backend(config)
     provider = resolve_storage_provider(config)
-    storage_cfg = config.get("storage") if isinstance(config.get("storage"), dict) else {}
-    public_base_url = str(storage_cfg.get("public_base_url") or "").strip().rstrip("/")
-    default_public_template = "https://drive.google.com/uc?export=download&id={file_id}"
-    if provider != "drive" and public_base_url:
-        default_public_template = f"{public_base_url}/{{file_path}}"
-    public_template = str(config.get("public_link_template") or default_public_template)
+    public_template = resolve_public_link_template(config)
     allowed_mime_types = config.get("allowed_mime_types")
     if isinstance(allowed_mime_types, str):
         allowed_mime_types = [allowed_mime_types]

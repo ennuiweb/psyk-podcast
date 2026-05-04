@@ -1,6 +1,6 @@
 # NotebookLM Queue Current State
 
-Last updated: 2026-05-03
+Last updated: 2026-05-04
 
 This document is the current-state checkpoint for the Hetzner-owned NotebookLM queue + R2 migration program. It is intentionally separate from the canonical migration plan in [notebooklm-queue-r2-migration.md](notebooklm-queue-r2-migration.md).
 
@@ -135,7 +135,7 @@ Current active show ownership is now mixed:
 - `bioneuro`: live, R2-backed, queue-owned
 - `berlingske`: legacy workflow
 - `intro-vt`: legacy workflow
-- `personal`: live, R2-backed, legacy workflow
+- `personal`: live, R2-backed, legacy workflow; ingest now runs through the resumable Drive-to-R2 importer, which backfills missing manifest checksums and transcodes configured `.m4a` / `.wav` sources to MP3 before upload
 - `personlighedspsykologi-en`: legacy workflow
 - `social-psychology`: legacy workflow
 
@@ -144,7 +144,7 @@ Current active show ownership is now mixed:
 1. Replace the temporary `r2.dev` public base URL with the intended production audio domain.
 2. Migrate the next queue-owned show after `bioneuro`:
    - `personlighedspsykologi-en` is now the next full queue target
-3. Decide whether `personal` needs a dedicated direct-to-R2 ingest path or whether the resumable Drive-to-R2 importer remains sufficient as a maintenance tool.
+3. Decide whether `personal` needs a dedicated direct-to-R2 ingest path or whether the hardened Drive-to-R2 importer remains sufficient as the long-term maintenance path.
 
 ## Recommended reading order
 

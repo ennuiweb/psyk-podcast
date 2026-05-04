@@ -30,6 +30,7 @@ if str(PODCAST_TOOLS_DIR) not in sys.path:
     sys.path.insert(0, str(PODCAST_TOOLS_DIR))
 
 from storage_backends import DriveStorageBackend, build_drive_service  # noqa: E402
+from transcode_drive_media import format_target_name, parse_transcode_config, run_ffmpeg  # noqa: E402
 
 try:
     from googleapiclient.http import MediaIoBaseDownload
@@ -68,6 +69,13 @@ def load_existing_manifest_index(path: Path) -> Dict[str, Dict[str, Any]]:
         if object_key:
             manifest_index[object_key] = item
     return manifest_index
+
+
+def load_optional_transcode_config(config: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+    settings = config.get("transcode") or {}
+    if not isinstance(settings, dict) or not settings or not settings.get("enabled", True):
+        return None
+    return parse_transcode_config(config)
 
 
 def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
@@ -132,6 +140,56 @@ def resolve_repo_path(path: Path, config_path: Path) -> Path:
 
 def normalize_prefix(value: str) -> str:
     return "/".join(part for part in PurePosixPath(str(value).strip().strip("/")).parts if part and part != "/")
+
+
+def mime_type_matches_filters(mime_type: str, filters: Optional[Iterable[str]]) -> bool:
+    normalized = str(mime_type or "").strip().casefold()
+    if not normalized:
+        return False
+    rules = [str(rule).strip().casefold() for rule in (filters or []) if str(rule).strip()]
+    if not rules:
+        return False
+    for rule in rules:
+        if rule.endswith("/"):
+            if normalized.startswith(rule):
+                return True
+        elif normalized == rule:
+            return True
+    return False
+
+
+def build_output_media_plan(
+    *,
+    source_name: str,
+    source_mime_type: str,
+    folder_parts: Iterable[str],
+    prefix: str,
+    transcode_cfg: Optional[Dict[str, Any]],
+) -> Dict[str, Any]:
+    transcode_applied = bool(transcode_cfg) and mime_type_matches_filters(
+        source_mime_type,
+        transcode_cfg.get("source_mime_types"),
+    )
+    published_name = (
+        format_target_name(source_name, str(transcode_cfg["target_extension"]))
+        if transcode_applied and transcode_cfg is not None
+        else source_name
+    )
+    path_parts = [part for part in folder_parts if part]
+    published_path = "/".join([*path_parts, published_name]) if path_parts else published_name
+    object_key = "/".join([part for part in (prefix, published_path) if part])
+    return {
+        "transcode_applied": transcode_applied,
+        "published_name": published_name,
+        "published_path": published_path,
+        "path_parts": path_parts,
+        "object_key": object_key,
+        "published_mime_type": (
+            str(transcode_cfg["target_mime_type"]).strip()
+            if transcode_applied and transcode_cfg is not None
+            else source_mime_type
+        ),
+    }
 
 
 def build_r2_client(*, endpoint: str, region: str, access_key_env: str, secret_key_env: str):
@@ -220,16 +278,16 @@ def sha256_file(path: Path) -> str:
     return digest.hexdigest()
 
 
-def object_exists_with_size(client, *, bucket: str, object_key: str, size: int) -> bool:
+def head_object_size(client, *, bucket: str, object_key: str) -> Optional[int]:
     try:
         response = client.head_object(Bucket=bucket, Key=object_key)
     except ClientError as exc:
         status = int(exc.response.get("ResponseMetadata", {}).get("HTTPStatusCode") or 0)
         error_code = str(exc.response.get("Error", {}).get("Code") or "").strip()
         if status == 404 or error_code in {"404", "NoSuchKey", "NotFound"}:
-            return False
+            return None
         raise
-    return int(response.get("ContentLength") or -1) == int(size)
+    return int(response.get("ContentLength") or 0)
 
 
 def upload_file(client, *, bucket: str, object_key: str, source: Path, mime_type: str) -> None:
@@ -274,6 +332,56 @@ def build_manifest_item(
         "public_url": public_url,
         "stable_guid": stable_guid,
     }
+
+
+def prepare_artifact_file(
+    *,
+    backend: DriveStorageBackend,
+    file_id: str,
+    source_name: str,
+    source_mime_type: str,
+    tmp_root: Path,
+    max_attempts: int,
+    initial_delay_seconds: float,
+    transcode_cfg: Optional[Dict[str, Any]],
+) -> Path:
+    source_suffix = Path(source_name).suffix or ".bin"
+    source_file = tmp_root / f"{file_id}-source{source_suffix}"
+    run_with_retries(
+        lambda: download_drive_file(
+            backend._service,  # noqa: SLF001 - service is already constructed and scoped to this script
+            file_id,
+            source_file,
+            supports_all_drives=backend._supports_all_drives,  # noqa: SLF001
+        ),
+        label=f"download {file_id}",
+        max_attempts=max_attempts,
+        initial_delay_seconds=initial_delay_seconds,
+    )
+    if not transcode_cfg or not mime_type_matches_filters(source_mime_type, transcode_cfg.get("source_mime_types")):
+        return source_file
+
+    artifact_file = tmp_root / format_target_name(file_id, str(transcode_cfg["target_extension"]))
+    run_ffmpeg(
+        source_file,
+        artifact_file,
+        codec=str(transcode_cfg["codec"]),
+        bitrate=str(transcode_cfg["bitrate"]),
+        extra_args=list(transcode_cfg.get("extra_args") or []),
+    )
+    return artifact_file
+
+
+def validate_manifest_items(items: Iterable[Dict[str, Any]]) -> None:
+    missing_sha = [str(item.get("object_key") or "").strip() for item in items if not str(item.get("sha256") or "").strip()]
+    if missing_sha:
+        preview = ", ".join(missing_sha[:5])
+        if len(missing_sha) > 5:
+            preview = f"{preview}, ..."
+        raise SystemExit(
+            f"Generated manifest contains {len(missing_sha)} item(s) with blank sha256; aborting. "
+            f"Examples: {preview}"
+        )
 
 
 def sort_manifest_items(items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
@@ -380,6 +488,7 @@ def main(argv: Optional[List[str]] = None) -> int:
         files = files[: max(int(args.limit), 0)]
     guid_map = load_guid_maps(inventory_path=inventory_path, feed_path=feed_path)
     existing_manifest_index = load_existing_manifest_index(manifest_path)
+    transcode_cfg = load_optional_transcode_config(source_config)
 
     manifest_items: List[Dict[str, Any]] = []
     uploaded_count = 0
@@ -390,11 +499,19 @@ def main(argv: Optional[List[str]] = None) -> int:
             file_id = str(file_entry.get("id") or "").strip()
             name = str(file_entry.get("name") or "").strip()
             mime_type = str(file_entry.get("mimeType") or "audio/mpeg").strip()
-            size = int(file_entry.get("size") or 0)
             folder_parts = backend.build_folder_path(file_entry)
-            relative_parts = [part for part in folder_parts if part]
-            source_path = "/".join([*relative_parts, name]) if relative_parts else name
-            object_key = "/".join([part for part in (prefix, source_path) if part])
+            media_plan = build_output_media_plan(
+                source_name=name,
+                source_mime_type=mime_type,
+                folder_parts=folder_parts,
+                prefix=prefix,
+                transcode_cfg=transcode_cfg,
+            )
+            relative_parts = list(media_plan["path_parts"])
+            source_path = str(media_plan["published_path"])
+            object_key = str(media_plan["object_key"])
+            published_mime_type = str(media_plan["published_mime_type"])
+            source_size = int(file_entry.get("size") or 0)
             published_at = str(file_entry.get("createdTime") or file_entry.get("modifiedTime") or "").strip()
             stable_guid = resolve_stable_guid(file_entry, guid_map)
             public_url = build_public_url(args.public_base_url, object_key)
@@ -406,11 +523,11 @@ def main(argv: Optional[List[str]] = None) -> int:
                     build_manifest_item(
                         bucket=args.bucket,
                         object_key=object_key,
-                        source_name=name,
+                        source_name=str(media_plan["published_name"]),
                         source_path=source_path,
                         path_parts=relative_parts,
-                        mime_type=mime_type,
-                        size=size,
+                        mime_type=published_mime_type,
+                        size=source_size,
                         sha256="",
                         published_at=published_at,
                         public_url=public_url,
@@ -420,43 +537,67 @@ def main(argv: Optional[List[str]] = None) -> int:
                 continue
 
             already_uploaded = False
+            remote_size: Optional[int] = None
             if not args.force_upload:
-                already_uploaded = run_with_retries(
-                    lambda: object_exists_with_size(
+                remote_size = run_with_retries(
+                    lambda: head_object_size(
                         client,
                         bucket=args.bucket,
                         object_key=object_key,
-                        size=size,
                     ),
                     label=f"head-object {object_key}",
                     max_attempts=args.max_attempts,
                     initial_delay_seconds=args.retry_delay_seconds,
                 )
+                expected_size_raw = existing_manifest_item.get("size")
+                expected_size: Optional[int]
+                if isinstance(expected_size_raw, bool):
+                    expected_size = None
+                elif expected_size_raw is None or expected_size_raw == "":
+                    expected_size = source_size if not bool(media_plan["transcode_applied"]) else None
+                else:
+                    expected_size = int(expected_size_raw)
+                already_uploaded = remote_size is not None and (
+                    expected_size is None or int(remote_size) == int(expected_size)
+                )
 
             if already_uploaded:
                 skipped_count += 1
                 sha256 = str(existing_manifest_item.get("sha256") or "").strip()
+                size = int(existing_manifest_item.get("size") or remote_size or 0)
+                if not sha256:
+                    artifact_file = prepare_artifact_file(
+                        backend=backend,
+                        file_id=file_id,
+                        source_name=name,
+                        source_mime_type=mime_type,
+                        tmp_root=tmp_root,
+                        max_attempts=args.max_attempts,
+                        initial_delay_seconds=args.retry_delay_seconds,
+                        transcode_cfg=transcode_cfg,
+                    )
+                    sha256 = sha256_file(artifact_file)
+                    size = int(artifact_file.stat().st_size)
             else:
-                tmp_file = tmp_root / file_id
-                run_with_retries(
-                    lambda: download_drive_file(
-                        backend._service,  # noqa: SLF001 - service is already constructed and scoped to this script
-                        file_id,
-                        tmp_file,
-                        supports_all_drives=backend._supports_all_drives,  # noqa: SLF001
-                    ),
-                    label=f"download {file_id}",
+                artifact_file = prepare_artifact_file(
+                    backend=backend,
+                    file_id=file_id,
+                    source_name=name,
+                    source_mime_type=mime_type,
+                    tmp_root=tmp_root,
                     max_attempts=args.max_attempts,
                     initial_delay_seconds=args.retry_delay_seconds,
+                    transcode_cfg=transcode_cfg,
                 )
-                sha256 = sha256_file(tmp_file)
+                size = int(artifact_file.stat().st_size)
+                sha256 = sha256_file(artifact_file)
                 run_with_retries(
                     lambda: upload_file(
                         client,
                         bucket=args.bucket,
                         object_key=object_key,
-                        source=tmp_file,
-                        mime_type=mime_type,
+                        source=artifact_file,
+                        mime_type=published_mime_type,
                     ),
                     label=f"upload {object_key}",
                     max_attempts=args.max_attempts,
@@ -468,10 +609,10 @@ def main(argv: Optional[List[str]] = None) -> int:
                 build_manifest_item(
                     bucket=args.bucket,
                     object_key=object_key,
-                    source_name=name,
+                    source_name=str(media_plan["published_name"]),
                     source_path=source_path,
                     path_parts=relative_parts,
-                    mime_type=mime_type,
+                    mime_type=published_mime_type,
                     size=size,
                     sha256=sha256,
                     published_at=published_at,
@@ -489,6 +630,7 @@ def main(argv: Optional[List[str]] = None) -> int:
         "items": sort_manifest_items(manifest_items),
     }
     if not args.dry_run:
+        validate_manifest_items(manifest_items)
         save_json(manifest_path, manifest_payload)
 
     print(

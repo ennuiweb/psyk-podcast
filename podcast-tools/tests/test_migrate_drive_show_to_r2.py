@@ -99,6 +99,40 @@ class MigrateDriveShowToR2Tests(unittest.TestCase):
             self.assertEqual(result["shows/personal/a.mp3"]["sha256"], "aaa")
             self.assertEqual(result["shows/personal/b.mp3"]["sha256"], "bbb")
 
+    def test_load_optional_transcode_config_returns_none_when_disabled(self):
+        self.assertIsNone(self.mod.load_optional_transcode_config({}))
+        self.assertIsNone(self.mod.load_optional_transcode_config({"transcode": {"enabled": False}}))
+
+    def test_build_output_media_plan_transcodes_matching_mime_types(self):
+        plan = self.mod.build_output_media_plan(
+            source_name="folder-audio.wav",
+            source_mime_type="audio/x-wav",
+            folder_parts=[],
+            prefix="shows/personal",
+            transcode_cfg={
+                "source_mime_types": ["audio/wav", "audio/x-wav"],
+                "target_extension": "mp3",
+                "target_mime_type": "audio/mpeg",
+            },
+        )
+
+        self.assertTrue(plan["transcode_applied"])
+        self.assertEqual(plan["published_name"], "folder-audio.mp3")
+        self.assertEqual(plan["published_path"], "folder-audio.mp3")
+        self.assertEqual(plan["object_key"], "shows/personal/folder-audio.mp3")
+        self.assertEqual(plan["published_mime_type"], "audio/mpeg")
+
+    def test_validate_manifest_items_rejects_blank_sha256(self):
+        with self.assertRaises(SystemExit) as exc:
+            self.mod.validate_manifest_items(
+                [
+                    {"object_key": "shows/personal/a.mp3", "sha256": "abc"},
+                    {"object_key": "shows/personal/b.mp3", "sha256": ""},
+                ]
+            )
+
+        self.assertIn("blank sha256", str(exc.exception))
+
     def test_is_retryable_exception_handles_transient_network_errors(self):
         self.assertTrue(self.mod.is_retryable_exception(OSError(65, "No route to host")))
         self.assertTrue(self.mod.is_retryable_exception(TimeoutError("timed out")))

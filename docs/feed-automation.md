@@ -12,7 +12,7 @@ Current migration program:
 
 - `podcast-tools/gdrive_podcast_feed.py` - shared feed generator for both Drive and R2-backed shows.
 - `podcast-tools/storage_backends.py` - shared storage abstraction used by feed generation and migration paths.
-- `podcast-tools/transcode_drive_media.py` - optional in-place Drive transcoding before feed generation; skipped for object storage.
+- `podcast-tools/transcode_drive_media.py` - optional in-place Drive transcoding before feed generation; skipped for object storage-backed feed reads.
 - `shows/<show-slug>/` - one directory per show with config, metadata, docs, and generated feed artifacts.
 - `.github/workflows/generate-feed.yml` - matrix workflow that builds all configured shows.
 
@@ -90,6 +90,7 @@ Current operational reality:
 - the feed stack supports both Drive and R2
 - `bioneuro` is now live on `storage.provider = "r2"` with `publication.owner = "queue"`
 - `personal` is now live on `storage.provider = "r2"` with `publication.owner = "legacy_workflow"`
+- `personal` uses the resumable Drive-to-R2 importer as its canonical ingest path; that importer now backfills manifest checksums on resumed catalogs and transcodes configured source formats such as `.m4a` and `.wav` to MP3 before upload
 - the current `bioneuro` public enclosure base is the temporary Cloudflare hostname `https://pub-fe942499398a478c8a8f432207051244.r2.dev`
 - `personal` currently uses the same temporary Cloudflare hostname for enclosures
 - the remaining active shows are still on the legacy workflow until they are cut over explicitly

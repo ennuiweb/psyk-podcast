@@ -10,6 +10,7 @@ from notebooklm_queue.constants import (
     STATE_FAILED_RETRYABLE,
     STATE_GENERATED,
     STATE_GENERATING,
+    STATE_RETRY_SCHEDULED,
 )
 from notebooklm_queue.execution import ExecutionOptions, execute_job
 from notebooklm_queue.models import JobIdentity
@@ -109,14 +110,40 @@ def test_execute_job_marks_failure_and_saves_run_manifest(tmp_path: Path) -> Non
         options=ExecutionOptions(repo_root=repo_root, retry_at="2099-01-01T00:00:00+00:00"),
     )
 
-    assert result["final_state"] == STATE_FAILED_RETRYABLE
+    assert result["final_state"] == STATE_RETRY_SCHEDULED
     updated = store.load_job(show_slug="bioneuro", job_id=str(job["job_id"]))
-    assert updated["state"] == STATE_FAILED_RETRYABLE
+    assert updated["state"] == STATE_RETRY_SCHEDULED
     assert updated["next_retry_at"] == "2099-01-01T00:00:00+00:00"
     manifest_path = store.root / str(updated["artifacts"]["execution"]["latest_run_manifest"])
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     assert manifest["status"] == "failed"
     assert manifest["phases"][0]["returncode"] == 7
+
+
+def test_execute_job_auto_schedules_retry_for_rate_limit_failures(tmp_path: Path) -> None:
+    repo_root = _make_repo_root(tmp_path)
+    _write_phase_script(
+        repo_root / "notebooklm-podcast-auto/bioneuro/scripts/generate_week.py",
+        "import sys\nprint('API rate limit or quota exceeded. Please wait before retrying.', file=sys.stderr)\nraise SystemExit(2)\n",
+    )
+    _write_phase_script(
+        repo_root / "notebooklm-podcast-auto/bioneuro/scripts/download_week.py",
+        "print('should not run')\n",
+    )
+    store = QueueStore(tmp_path / "queue-root")
+    job = store.upsert_job(_identity())
+
+    result = execute_job(
+        store=store,
+        show_slug="bioneuro",
+        job_id=str(job["job_id"]),
+        options=ExecutionOptions(repo_root=repo_root),
+    )
+
+    assert result["final_state"] == STATE_RETRY_SCHEDULED
+    updated = store.load_job(show_slug="bioneuro", job_id=str(job["job_id"]))
+    assert updated["state"] == STATE_RETRY_SCHEDULED
+    assert updated["next_retry_at"]
 
 
 def test_execute_job_resumes_from_generated_state_and_skips_generate(tmp_path: Path) -> None:

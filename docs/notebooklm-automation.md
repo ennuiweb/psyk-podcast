@@ -76,6 +76,8 @@ Queue-core note:
 - supported discovery adapters currently cover `bioneuro` and `personlighedspsykologi-en`
 - `run-dry` resolves the exact generate/download commands for the next queued lecture without touching NotebookLM or publication state
 - `run-once` claims or resumes a job, executes the real generate/download wrappers, persists a run manifest under the queue storage root, and moves successful jobs to `awaiting_publish`
+- hosted generation wrappers now honor `NOTEBOOKLM_PROFILES_FILE` and `NOTEBOOKLM_PROFILE_PRIORITY`, so Hetzner can rotate across a host-local bundle of NotebookLM storage states instead of depending on workstation profile paths committed in the repo
+- queue execution now upgrades rate-limit failures with a retry window into `retry_scheduled`, so `drain-show` can automatically requeue partial lecture runs after cooldown instead of leaving them stranded as generic retryable failures
 - `prepare-publish` claims or resumes a job in `awaiting_publish`, scans the canonical output directory for that lecture, writes a durable publish manifest under the queue storage root, and moves successful jobs to `approved_for_publish`
 - `upload-r2` is intentionally R2-only for now; Drive-backed shows are blocked explicitly until their show config is migrated to `storage.provider = "r2"`
 - `sync-downstream` currently validates the existing Freudd deploy workflow for `bioneuro` and `personlighedspsykologi-en` when queue-owned pushes touch `content_manifest.json`, `quiz_links.json`, or `spotify_map.json`; explicit show-ownership gating in `generate-feed.yml` still belongs to a later migration phase

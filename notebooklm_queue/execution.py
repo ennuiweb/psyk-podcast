@@ -2,8 +2,10 @@
 
 from __future__ import annotations
 
+import os
 import shlex
 import subprocess
+from datetime import UTC, datetime, timedelta
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
@@ -21,6 +23,17 @@ from .constants import (
 )
 from .store import QueueStore, utc_now_iso
 
+RATE_LIMIT_ERROR_TOKENS = (
+    "rate limit",
+    "quota exceeded",
+    "resource_exhausted",
+    "429",
+    "too many requests",
+)
+DEFAULT_RATE_LIMIT_RETRY_SECONDS = int(
+    os.environ.get("NOTEBOOKLM_QUEUE_RATE_LIMIT_RETRY_SECONDS") or "900"
+)
+
 
 @dataclass(frozen=True, slots=True)
 class ExecutionOptions:
@@ -28,6 +41,20 @@ class ExecutionOptions:
     retry_at: str | None = None
     actor: str = "system"
     run_download: bool = True
+
+
+def _looks_like_rate_limit(message: str | None) -> bool:
+    text = str(message or "").lower()
+    return any(token in text for token in RATE_LIMIT_ERROR_TOKENS)
+
+
+def _derived_retry_at(*, explicit_retry_at: str | None, error_text: str | None) -> str | None:
+    if explicit_retry_at:
+        return explicit_retry_at
+    if not _looks_like_rate_limit(error_text):
+        return None
+    retry_at = datetime.now(tz=UTC) + timedelta(seconds=max(DEFAULT_RATE_LIMIT_RETRY_SECONDS, 1))
+    return retry_at.replace(microsecond=0).isoformat()
 
 
 def execute_job(
@@ -236,10 +263,18 @@ def _finalize_failure(
     note: str,
 ) -> dict[str, Any]:
     failed_phase = manifest["phases"][-1]
+    error_text = failed_phase.get("stderr") or failed_phase.get("stdout") or note
+    retry_at = _derived_retry_at(
+        explicit_retry_at=options.retry_at,
+        error_text=error_text,
+    )
+    effective_failed_state = failed_state
+    if retry_at and failed_state == STATE_FAILED_RETRYABLE:
+        effective_failed_state = STATE_RETRY_SCHEDULED
     manifest["status"] = "failed"
     manifest["completed_at"] = utc_now_iso()
-    manifest["final_state"] = failed_state
-    manifest["last_error"] = failed_phase.get("stderr") or failed_phase.get("stdout") or note
+    manifest["final_state"] = effective_failed_state
+    manifest["last_error"] = error_text
     manifest_path = store.save_run_manifest(
         show_slug=show_slug,
         job_id=str(job["job_id"]),
@@ -249,11 +284,11 @@ def _finalize_failure(
     updated = store.transition_job(
         show_slug=show_slug,
         job_id=str(job["job_id"]),
-        state=failed_state,
+        state=effective_failed_state,
         actor=options.actor,
         note=note,
         error=str(manifest["last_error"]),
-        retry_at=options.retry_at,
+        retry_at=retry_at,
         details={"run_id": run_id, "manifest_path": manifest_path},
     )
     artifacts = dict(updated.get("artifacts") or {})
@@ -272,7 +307,7 @@ def _finalize_failure(
         "run_id": run_id,
         "job_id": str(updated["job_id"]),
         "show_slug": show_slug,
-        "final_state": failed_state,
+        "final_state": effective_failed_state,
         "manifest_path": manifest_path,
         "phases": manifest["phases"],
         "error": manifest["last_error"],

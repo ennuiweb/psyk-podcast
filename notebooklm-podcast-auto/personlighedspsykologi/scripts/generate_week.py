@@ -45,6 +45,8 @@ DEFAULT_SOURCES_ROOT = (
 )
 DEFAULT_OUTPUT_ROOT = "notebooklm-podcast-auto/personlighedspsykologi/output"
 OUTPUT_ROOT_ENV_VAR = "PERSONLIGHEDSPSYKOLOGI_OUTPUT_ROOT"
+PROFILES_FILE_ENV_VAR = "NOTEBOOKLM_PROFILES_FILE"
+PROFILE_PRIORITY_ENV_VAR = "NOTEBOOKLM_PROFILE_PRIORITY"
 WEEKLY_OVERVIEW_TITLE = "Alle kilder (undtagen slides)"
 LEGACY_WEEKLY_OVERVIEW_TITLES = ("Alle kilder",)
 SLIDE_SUBCATEGORY_ORDER = {"lecture": 0, "seminar": 1, "exercise": 2}
@@ -2098,8 +2100,9 @@ def output_extension(content_type: str, *, quiz_format: str | None = None) -> st
 
 
 def find_profiles_path(repo_root: Path, profiles_file: str | None) -> Path | None:
-    if profiles_file:
-        path = Path(profiles_file).expanduser()
+    effective_profiles_file = profiles_file or str(os.environ.get(PROFILES_FILE_ENV_VAR) or "").strip() or None
+    if effective_profiles_file:
+        path = Path(effective_profiles_file).expanduser()
         return path if path.exists() else None
     candidates = [
         Path.cwd() / "profiles.json",
@@ -2719,6 +2722,8 @@ def main() -> int:
     auto_profile, auto_profiles_path = auto_profile_from_profiles(repo_root, args)
     profile_for_run = None if rotation_enabled else (args.profile or auto_profile)
     profiles_file_for_run = args.profiles_file or (str(auto_profiles_path) if auto_profiles_path else None)
+    if not profiles_file_for_run:
+        profiles_file_for_run = str(os.environ.get(PROFILES_FILE_ENV_VAR) or "").strip() or None
     profile_slug = resolve_profile_slug(profile_for_run, args.storage)
     output_root = apply_profile_subdir(output_root, profile_slug, args.output_profile_subdir)
     if output_root.exists() and not output_root.is_dir():
@@ -2795,7 +2800,7 @@ def main() -> int:
     profile_cooldowns: dict[str, float] = {}
     last_excluded: list[str] = []
     preferred_profile: str | None = None
-    profile_priority = args.profile_priority
+    profile_priority = args.profile_priority or str(os.environ.get(PROFILE_PRIORITY_ENV_VAR) or "").strip() or None
     total_sources_read = 0
     total_missing_outputs = 0
     matched_only_slide_keys: set[str] = set()

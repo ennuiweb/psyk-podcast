@@ -17,6 +17,9 @@ NOTEBOOKLM_SRC = Path(__file__).resolve().parent / "notebooklm-py" / "src"
 if NOTEBOOKLM_SRC.is_dir() and str(NOTEBOOKLM_SRC) not in sys.path:
     sys.path.insert(0, str(NOTEBOOKLM_SRC))
 
+PROFILES_FILE_ENV_VAR = "NOTEBOOKLM_PROFILES_FILE"
+PROFILE_PRIORITY_ENV_VAR = "NOTEBOOKLM_PROFILE_PRIORITY"
+
 from notebooklm import NotebookLMClient, RPCError
 from notebooklm.paths import get_storage_path
 from notebooklm.rpc.types import (
@@ -111,6 +114,14 @@ def _default_profiles_paths() -> list[Path]:
     ]
 
 
+def _effective_profiles_file_arg(args: argparse.Namespace) -> str | None:
+    return args.profiles_file or str(os.environ.get(PROFILES_FILE_ENV_VAR) or "").strip() or None
+
+
+def _effective_profile_priority_arg(args: argparse.Namespace) -> str | None:
+    return args.profile_priority or str(os.environ.get(PROFILE_PRIORITY_ENV_VAR) or "").strip() or None
+
+
 def _find_profiles_path() -> Path | None:
     for candidate in _default_profiles_paths():
         if candidate.exists():
@@ -119,8 +130,9 @@ def _find_profiles_path() -> Path | None:
 
 
 def _resolve_profiles_path(args: argparse.Namespace) -> Path:
-    if args.profiles_file:
-        profiles_path = Path(args.profiles_file).expanduser()
+    effective_profiles_file = _effective_profiles_file_arg(args)
+    if effective_profiles_file:
+        profiles_path = Path(effective_profiles_file).expanduser()
         if not profiles_path.exists():
             raise ValueError(f"Profiles file not found: {profiles_path}")
         return profiles_path
@@ -170,7 +182,7 @@ def _load_profiles(path: Path) -> dict[str, str]:
 def _select_auto_profile(args: argparse.Namespace) -> tuple[str | None, Path | None, dict[str, str] | None]:
     if args.storage or args.profile:
         return None, None, None
-    if args.profiles_file:
+    if _effective_profiles_file_arg(args):
         profiles_path = _resolve_profiles_path(args)
     else:
         profiles_path = _find_profiles_path()
@@ -472,7 +484,7 @@ def _build_auth_candidates(args: argparse.Namespace) -> list[tuple[str | None, d
     profiles_path: Path | None = None
     profiles: dict[str, str] | None = None
     preferred: str | None = None
-    priority_list = _parse_priority_list(getattr(args, "profile_priority", None))
+    priority_list = _parse_priority_list(_effective_profile_priority_arg(args))
     state_path = _profile_state_path()
     profile_state = _load_profile_state(state_path)
 

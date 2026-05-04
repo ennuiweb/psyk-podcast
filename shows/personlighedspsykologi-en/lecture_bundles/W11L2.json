@@ -1,0 +1,342 @@
+{
+  "version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-04T19:35:41Z",
+  "lecture_key": "W11L2",
+  "lecture_title": "Narrativitet, kultur og mening (Forelæsning 21, 2026-04-21)",
+  "sequence_index": 21,
+  "course_position": {
+    "index": 21,
+    "total_lectures": 22,
+    "stage": "closing",
+    "previous_lecture_key": "W11L1",
+    "previous_lecture_title": "Poststrukturalisme, diskursiv psykologi og feministisk teori (Forelæsning 20, 2026-04-20)",
+    "next_lecture_key": "W12L1",
+    "next_lecture_title": "Sammenligning af teorier og subjektets historie og eksamen (Forelæsning 22, 2026-04-27)"
+  },
+  "bundle_status": "ready",
+  "readiness_issues": [],
+  "lecture_summary": {
+    "present": true,
+    "summary_lines": [
+      "Kilderne introducerer narrativ psykologi, hvor personlighed forstås gennem fortælling, tid og kulturel meningsdannelse.",
+      "Forelæsningen kontrasterer narrative perspektiver med træk- og mekanismeorienterede modeller.",
+      "Identitet fremstilles som noget, der løbende skabes og omskrives i sociale fortællepraksisser."
+    ],
+    "key_points": [
+      "Narrativer organiserer hukommelse, motivforståelse og oplevet kontinuitet.",
+      "Livsfortællinger samskabes i kulturelle og relationelle sammenhænge.",
+      "Analyse af plot, stemme og positionering er central i narrativ metode.",
+      "Forandring kan beskrives som narrativ revision over tid."
+    ]
+  },
+  "teaching_context": {
+    "lecture_slide_titles": [],
+    "seminar_slide_titles": [],
+    "exercise_slide_titles": []
+  },
+  "source_counts": {
+    "total_sources": 4,
+    "readings": 4,
+    "lecture_slides": 0,
+    "seminar_slides": 0,
+    "exercise_slides": 0,
+    "missing_sources": 0,
+    "manual_reading_summaries_present": 4,
+    "source_analyses_present": 1,
+    "total_pages": 110,
+    "total_estimated_tokens": 32936,
+    "source_family_counts": {
+      "reading": 4
+    }
+  },
+  "source_intelligence": {
+    "dominant_language": "en",
+    "week_analysis": {
+      "present": true,
+      "sidecars": [
+        {
+          "relative_path": "Readings/W11L2 Narrativitet, kultur og mening/week.analysis.md",
+          "content": "## Shared problem\n*   **Moving beyond static models of personality:** All texts grapple with how to conceptualize human identity as dynamic, contextual, and meaning-driven, challenging the sufficiency of traditional, decontextualized trait psychology (e.g., the Big Five) to capture the \"whole person.\"\n*   **The mechanism of meaning-making:** The authors collectively explore how individuals synthesize chaotic life events, cultural norms, and biological predispositions into coherent (or deliberately plural) frameworks, specifically through the psychological tool of *narrative*.\n\n## Cross-reading distinctions and tensions\n*   **Integrative vs. Plural/Decentered Self:** McAdams views the \"integrative life story\" as the pinnacle of healthy modern identity, functioning to unify the self. Conversely, Ragg",
+          "char_count": 809
+        }
+      ]
+    },
+    "missing_sources": [],
+    "likely_core_sources": [
+      "w11l2-grundbog-kapitel-9-narrative-teorier-cd12008a",
+      "w11l2-mcadams-and-pals-2006-b9675688",
+      "w11l2-raggatt-2002-d15129af",
+      "w11l2-bruner-1999-7930abd8"
+    ],
+    "likely_supporting_sources": []
+  },
+  "source_priority_order": [
+    {
+      "source_id": "w11l2-grundbog-kapitel-9-narrative-teorier-cd12008a",
+      "title": "Grundbog kapitel 09 - Narrative teorier",
+      "source_family": "reading",
+      "priority_score": 146,
+      "priority_band": "core"
+    },
+    {
+      "source_id": "w11l2-mcadams-and-pals-2006-b9675688",
+      "title": "McAdams & Pals (2006)",
+      "source_family": "reading",
+      "priority_score": 128,
+      "priority_band": "core"
+    },
+    {
+      "source_id": "w11l2-raggatt-2002-d15129af",
+      "title": "Raggatt (2002)",
+      "source_family": "reading",
+      "priority_score": 128,
+      "priority_band": "core"
+    },
+    {
+      "source_id": "w11l2-bruner-1999-7930abd8",
+      "title": "Bruner (1999)",
+      "source_family": "reading",
+      "priority_score": 126,
+      "priority_band": "core"
+    }
+  ],
+  "sources": {
+    "readings": [
+      {
+        "source_id": "w11l2-grundbog-kapitel-9-narrative-teorier-cd12008a",
+        "title": "Grundbog kapitel 09 - Narrative teorier",
+        "source_kind": "reading",
+        "source_family": "reading",
+        "source_filename": "W11L2 Grundbog kapitel 9 - Narrative teorier.pdf",
+        "subject_relative_path": "Readings/W11L2 Narrativitet, kultur og mening/W11L2 Grundbog kapitel 9 - Narrative teorier.pdf",
+        "source_exists": true,
+        "missing_reason": null,
+        "sequence_index": 4,
+        "language_guess": "unknown",
+        "length_band": "long",
+        "slide_subcategory": null,
+        "priority_score": 146,
+        "priority_band": "core",
+        "priority_reasons": [
+          "reading",
+          "grundbog",
+          "manual summary",
+          "analysis sidecar",
+          "week analysis",
+          "long source"
+        ],
+        "priority_signals": {
+          "is_grundbog": true,
+          "has_manual_summary": true,
+          "has_prompt_analysis_sidecar": true,
+          "lecture_has_week_analysis_sidecar": true
+        },
+        "file": {
+          "page_count": 43,
+          "estimated_token_count": 0,
+          "estimated_word_count": 0,
+          "text_char_count": 0,
+          "text_extraction_status": "no_text",
+          "sha256": "bde7f9df941d3a709ada61b3931d806e0c003d2bc1f94ff0a042893789375da4",
+          "size_bytes": 6544243
+        },
+        "summary": {
+          "present": true,
+          "summary_lines": [
+            "Kapitlet forklarer personlighed via narrativ identitet på tværs af fortid, nutid og forventet fremtid.",
+            "Fortællinger skaber sammenhæng, men synliggør også brud, konflikter og vendepunkter.",
+            "Kulturelle fortælleskabeloner både åbner og begrænser mulige selvforståelser."
+          ],
+          "key_points": [
+            "Selvet opretholdes gennem kontinuerligt narrativt arbejde.",
+            "Narrativ analyse fokuserer på genre, plot og positionering.",
+            "Kollektive fortællinger former individuelle identitetsmuligheder.",
+            "Forandring kan forstås som omorganisering af livsfortællingen."
+          ]
+        },
+        "analysis": {
+          "present": true,
+          "sidecars": [
+            {
+              "relative_path": "Readings/W11L2 Narrativitet, kultur og mening/W11L2 Grundbog kapitel 9 - Narrative teorier.analysis.md",
+              "content": "## Core distinctions\n*   **Information Processing vs. Meaning-Making:** Bruner distinguishes traditional cognitive psychology (which treats the mind as a passive computer processing information) from cultural-narrative psychology (which treats humans as active creators of meaning using culturally available narrative tools).\n*",
+              "char_count": 327
+            }
+          ]
+        }
+      },
+      {
+        "source_id": "w11l2-mcadams-and-pals-2006-b9675688",
+        "title": "McAdams & Pals (2006)",
+        "source_kind": "reading",
+        "source_family": "reading",
+        "source_filename": "W11L2 McAdams & Pals (2006).pdf",
+        "subject_relative_path": "Readings/W11L2 Narrativitet, kultur og mening/W11L2 McAdams & Pals (2006).pdf",
+        "source_exists": true,
+        "missing_reason": null,
+        "sequence_index": 3,
+        "language_guess": "en",
+        "length_band": "medium",
+        "slide_subcategory": null,
+        "priority_score": 128,
+        "priority_band": "core",
+        "priority_reasons": [
+          "reading",
+          "manual summary",
+          "week analysis",
+          "medium source",
+          "very substantial"
+        ],
+        "priority_signals": {
+          "is_grundbog": false,
+          "has_manual_summary": true,
+          "has_prompt_analysis_sidecar": false,
+          "lecture_has_week_analysis_sidecar": true
+        },
+        "file": {
+          "page_count": 14,
+          "estimated_token_count": 20600,
+          "estimated_word_count": 12281,
+          "text_char_count": 82398,
+          "text_extraction_status": "ok",
+          "sha256": "c523e0c40d0be6b77095bb3d83f351e4cab8ee51e420ac2279ea7713373ba361",
+          "size_bytes": 589778
+        },
+        "summary": {
+          "present": true,
+          "summary_lines": [
+            "McAdams and Pals propose an integrative model that combines dispositional traits, characteristic adaptations, and life narratives.",
+            "They argue that personality science advances by linking universal tendencies to contextualized individual lives.",
+            "The article offers a synthesis across biological, developmental, and cultural levels of analysis."
+          ],
+          "key_points": [
+            "Traits, adaptations, and narratives represent distinct but connected levels.",
+            "Personality explanation requires both structure and process.",
+            "Culture and development shape how dispositional potentials are expressed.",
+            "Integration across levels is a core theoretical task."
+          ]
+        },
+        "analysis": {
+          "present": false,
+          "sidecars": []
+        }
+      },
+      {
+        "source_id": "w11l2-raggatt-2002-d15129af",
+        "title": "Raggatt (2002)",
+        "source_kind": "reading",
+        "source_family": "reading",
+        "source_filename": "W11L2 Raggatt (2002).pdf",
+        "subject_relative_path": "Readings/W11L2 Narrativitet, kultur og mening/W11L2 Raggatt (2002).pdf",
+        "source_exists": true,
+        "missing_reason": null,
+        "sequence_index": 1,
+        "language_guess": "en",
+        "length_band": "medium",
+        "slide_subcategory": null,
+        "priority_score": 128,
+        "priority_band": "core",
+        "priority_reasons": [
+          "reading",
+          "manual summary",
+          "week analysis",
+          "medium source",
+          "very substantial"
+        ],
+        "priority_signals": {
+          "is_grundbog": false,
+          "has_manual_summary": true,
+          "has_prompt_analysis_sidecar": false,
+          "lecture_has_week_analysis_sidecar": true
+        },
+        "file": {
+          "page_count": 22,
+          "estimated_token_count": 12336,
+          "estimated_word_count": 8044,
+          "text_char_count": 49342,
+          "text_extraction_status": "ok",
+          "sha256": "87db9d1e8455123c4a4dcf4540d2ddb0e2ec16d4d9fa765eb66885b88d20d8df",
+          "size_bytes": 620722
+        },
+        "summary": {
+          "present": true,
+          "summary_lines": [
+            "Raggatt develops a dialogical approach in which personality is organized through multiple internal and social voices.",
+            "The perspective treats identity as polyphonic, contested, and situated in communicative relations.",
+            "Personality is therefore understood as dynamic positioning rather than singular essence."
+          ],
+          "key_points": [
+            "Selfhood contains multiple positionings that may conflict or cooperate.",
+            "Dialogue is both intrapsychic and interpersonal.",
+            "Identity stability is achieved through ongoing coordination work.",
+            "Methodologically, analysis tracks voice, position, and relation."
+          ]
+        },
+        "analysis": {
+          "present": false,
+          "sidecars": []
+        }
+      },
+      {
+        "source_id": "w11l2-bruner-1999-7930abd8",
+        "title": "Bruner (1999)",
+        "source_kind": "reading",
+        "source_family": "reading",
+        "source_filename": "W11L2 Bruner (1999).pdf",
+        "subject_relative_path": "Readings/W11L2 Narrativitet, kultur og mening/W11L2 Bruner (1999).pdf",
+        "source_exists": true,
+        "missing_reason": null,
+        "sequence_index": 2,
+        "language_guess": "unknown",
+        "length_band": "long",
+        "slide_subcategory": null,
+        "priority_score": 126,
+        "priority_band": "core",
+        "priority_reasons": [
+          "reading",
+          "manual summary",
+          "week analysis",
+          "long source"
+        ],
+        "priority_signals": {
+          "is_grundbog": false,
+          "has_manual_summary": true,
+          "has_prompt_analysis_sidecar": false,
+          "lecture_has_week_analysis_sidecar": true
+        },
+        "file": {
+          "page_count": 31,
+          "estimated_token_count": 0,
+          "estimated_word_count": 0,
+          "text_char_count": 0,
+          "text_extraction_status": "no_text",
+          "sha256": "83c3d957bef12459b7dac83bcd286e784722fd4133bd399b166745615dc10bc6",
+          "size_bytes": 2270304
+        },
+        "summary": {
+          "present": true,
+          "summary_lines": [
+            "Bruner argues that human meaning is fundamentally narrative and culturally organized.",
+            "He links everyday folk psychology to how people interpret action, intention, and disruption.",
+            "Narrative framing is presented as central for making persons intelligible in social life."
+          ],
+          "key_points": [
+            "Meaning-making depends on culturally shared narrative forms.",
+            "Folk psychology provides interpretive background for agency and motive.",
+            "Narratives normalize and problematize conduct through plot structures.",
+            "Identity emerges through storied interpretation of experience."
+          ]
+        },
+        "analysis": {
+          "present": false,
+          "sidecars": []
+        }
+      }
+    ],
+    "lecture_slides": [],
+    "seminar_slides": [],
+    "exercise_slides": []
+  },
+  "manifest_warnings": []
+}

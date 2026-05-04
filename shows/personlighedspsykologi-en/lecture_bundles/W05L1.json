@@ -1,0 +1,376 @@
+{
+  "version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-04T19:35:41Z",
+  "lecture_key": "W05L1",
+  "lecture_title": "Empiri og metode i psykoanalysen (Forelæsning 9, 2026-03-02)",
+  "sequence_index": 9,
+  "course_position": {
+    "index": 9,
+    "total_lectures": 22,
+    "stage": "early-middle",
+    "previous_lecture_key": "W04L2",
+    "previous_lecture_title": "Psykoanalytisk personlighedsstruktur (Forelæsning 8, 2026-02-24)",
+    "next_lecture_key": "W05L2",
+    "next_lecture_title": "Psykoanalysens konstituering (Forelæsning 10, 2026-03-03)"
+  },
+  "bundle_status": "ready",
+  "readiness_issues": [],
+  "lecture_summary": {
+    "present": true,
+    "summary_lines": [
+      "Forelæsningen samler klassiske og nyere diskussioner af, hvad der kan tælle som empiri i psykoanalysen.",
+      "Kilderne viser, at kliniske fortællinger, overføring, fortolkning og psykisk realitet ikke kan adskilles skarpt fra teoridannelse.",
+      "Psykoanalysens metode fremstilles derfor som en fortolkende praksis, der må begrunde sine sandhedskrav uden at reducere subjektet til målbare størrelser."
+    ],
+    "key_points": [
+      "Det kliniske materiale er meningsfuldt og relationelt, ikke blot observationsdata.",
+      "Psykisk realitet og fortælling er centrale elementer i psykoanalytisk evidens.",
+      "Metodekritik handler om, hvordan fortolkning kan gøres fagligt ansvarlig.",
+      "Spændingen mellem videnskabelighed og klinisk singularitet er konstitutiv for feltet."
+    ]
+  },
+  "teaching_context": {
+    "lecture_slide_titles": [
+      "9. Psykoanalysens empiri og metode"
+    ],
+    "seminar_slide_titles": [],
+    "exercise_slide_titles": [
+      "1. Psykoanalyse"
+    ]
+  },
+  "source_counts": {
+    "total_sources": 5,
+    "readings": 3,
+    "lecture_slides": 1,
+    "seminar_slides": 0,
+    "exercise_slides": 1,
+    "missing_sources": 0,
+    "manual_reading_summaries_present": 3,
+    "source_analyses_present": 0,
+    "total_pages": 241,
+    "total_estimated_tokens": 110664,
+    "source_family_counts": {
+      "exercise_slide": 1,
+      "lecture_slide": 1,
+      "reading": 3
+    }
+  },
+  "source_intelligence": {
+    "dominant_language": "en",
+    "week_analysis": {
+      "present": false,
+      "sidecars": []
+    },
+    "missing_sources": [],
+    "likely_core_sources": [
+      "w05l1-freud-s-1984-1905-brudstykke-af-en-hysteri-analy-df466bb5",
+      "w05l1-ricoeur-1981-19a5343f",
+      "w05l1-gammelgaard-2010-e6baff8b"
+    ],
+    "likely_supporting_sources": [
+      "w05l1-lecture-9-psykoanalysens-empiri-og-metode-f8e26ec5"
+    ]
+  },
+  "source_priority_order": [
+    {
+      "source_id": "w05l1-freud-s-1984-1905-brudstykke-af-en-hysteri-analy-df466bb5",
+      "title": "Freud, S. (1984/1905). Brudstykke af en hysteri-analyse",
+      "source_family": "reading",
+      "priority_score": 130,
+      "priority_band": "core"
+    },
+    {
+      "source_id": "w05l1-ricoeur-1981-19a5343f",
+      "title": "Ricoeur (1981)",
+      "source_family": "reading",
+      "priority_score": 130,
+      "priority_band": "core"
+    },
+    {
+      "source_id": "w05l1-gammelgaard-2010-e6baff8b",
+      "title": "Gammelgaard (2010)",
+      "source_family": "reading",
+      "priority_score": 116,
+      "priority_band": "primary"
+    },
+    {
+      "source_id": "w05l1-lecture-9-psykoanalysens-empiri-og-metode-f8e26ec5",
+      "title": "9. Psykoanalysens empiri og metode",
+      "source_family": "lecture_slide",
+      "priority_score": 92,
+      "priority_band": "supporting"
+    },
+    {
+      "source_id": "w05l1-exercise-2-psykoanalyse-1-og-intro-1-d9bc77f5",
+      "title": "1. Psykoanalyse",
+      "source_family": "exercise_slide",
+      "priority_score": 58,
+      "priority_band": "contextual"
+    }
+  ],
+  "sources": {
+    "readings": [
+      {
+        "source_id": "w05l1-freud-s-1984-1905-brudstykke-af-en-hysteri-analy-df466bb5",
+        "title": "Freud, S. (1984/1905). Brudstykke af en hysteri-analyse",
+        "source_kind": "reading",
+        "source_family": "reading",
+        "source_filename": "W5L1 Freud, S. (1984-1905). Brudstykke af en hysteri-analyse (pp. 9-62, pp. 96-.pdf",
+        "subject_relative_path": "Readings/W5L1 Empiri og metode i psykoanalysen/W5L1 Freud, S. (1984-1905). Brudstykke af en hysteri-analyse (pp. 9-62, pp. 96-.pdf",
+        "source_exists": true,
+        "missing_reason": null,
+        "sequence_index": 1,
+        "language_guess": "en",
+        "length_band": "long",
+        "slide_subcategory": null,
+        "priority_score": 130,
+        "priority_band": "core",
+        "priority_reasons": [
+          "reading",
+          "manual summary",
+          "long source",
+          "very substantial"
+        ],
+        "priority_signals": {
+          "is_grundbog": false,
+          "has_manual_summary": true,
+          "has_prompt_analysis_sidecar": false,
+          "lecture_has_week_analysis_sidecar": false
+        },
+        "file": {
+          "page_count": 123,
+          "estimated_token_count": 79475,
+          "estimated_word_count": 57468,
+          "text_char_count": 317900,
+          "text_extraction_status": "ok",
+          "sha256": "1db05ea8535b642191002e1d37b711474c585f441d0c846ae7b40b99ae816008",
+          "size_bytes": 996960
+        },
+        "summary": {
+          "present": true,
+          "summary_lines": [
+            "This case fragment illustrates Freud’s method of interpreting symptom meaning through transferential clinical material.",
+            "It presents hysterical formation as compromise between unconscious desire, defense, and relational conflict.",
+            "The text also exposes methodological and ethical tensions in early psychoanalytic case construction."
+          ],
+          "key_points": [
+            "Case interpretation links symptom form to conflict history.",
+            "Transference is central to both evidence and treatment process.",
+            "Narrative reconstruction is theory-guided and contestable.",
+            "The case highlights limits of early analytic authority and method."
+          ]
+        },
+        "analysis": {
+          "present": false,
+          "sidecars": []
+        }
+      },
+      {
+        "source_id": "w05l1-ricoeur-1981-19a5343f",
+        "title": "Ricoeur (1981)",
+        "source_kind": "reading",
+        "source_family": "reading",
+        "source_filename": "W5L1 Ricoeur (1981).pdf",
+        "subject_relative_path": "Readings/W5L1 Empiri og metode i psykoanalysen/W5L1 Ricoeur (1981).pdf",
+        "source_exists": true,
+        "missing_reason": null,
+        "sequence_index": 3,
+        "language_guess": "en",
+        "length_band": "long",
+        "slide_subcategory": null,
+        "priority_score": 130,
+        "priority_band": "core",
+        "priority_reasons": [
+          "reading",
+          "manual summary",
+          "long source",
+          "very substantial"
+        ],
+        "priority_signals": {
+          "is_grundbog": false,
+          "has_manual_summary": true,
+          "has_prompt_analysis_sidecar": false,
+          "lecture_has_week_analysis_sidecar": false
+        },
+        "file": {
+          "page_count": 27,
+          "estimated_token_count": 19569,
+          "estimated_word_count": 12780,
+          "text_char_count": 78273,
+          "text_extraction_status": "ok",
+          "sha256": "d2e833ee2c86908d204669247e30d866fc34b2b1437ceee6b77a119540e73127",
+          "size_bytes": 196193
+        },
+        "summary": {
+          "present": true,
+          "summary_lines": [
+            "Ricoeur examines how psychoanalysis can justify truth claims when its data are interpretive, transferential, and bound to the analytic situation.",
+            "He argues that standard natural-science verification models are insufficient for psychoanalytic theory and practice.",
+            "The chapter reframes proof through the relation between interpretation, treatment process, and the specific kinds of facts analytic work can produce."
+          ],
+          "key_points": [
+            "The central issue is what counts as a fact in psychoanalysis.",
+            "Theory, investigation, and treatment are epistemically intertwined.",
+            "Transference and interpretation are not noise but part of the evidential structure.",
+            "Psychoanalytic validation requires criteria beyond simple falsification models."
+          ]
+        },
+        "analysis": {
+          "present": false,
+          "sidecars": []
+        }
+      },
+      {
+        "source_id": "w05l1-gammelgaard-2010-e6baff8b",
+        "title": "Gammelgaard (2010)",
+        "source_kind": "reading",
+        "source_family": "reading",
+        "source_filename": "W5L1 Gammelgaard (2010).pdf",
+        "subject_relative_path": "Readings/W5L1 Empiri og metode i psykoanalysen/W5L1 Gammelgaard (2010).pdf",
+        "source_exists": true,
+        "missing_reason": null,
+        "sequence_index": 2,
+        "language_guess": "unknown",
+        "length_band": "medium",
+        "slide_subcategory": null,
+        "priority_score": 116,
+        "priority_band": "primary",
+        "priority_reasons": [
+          "reading",
+          "manual summary",
+          "medium source"
+        ],
+        "priority_signals": {
+          "is_grundbog": false,
+          "has_manual_summary": true,
+          "has_prompt_analysis_sidecar": false,
+          "lecture_has_week_analysis_sidecar": false
+        },
+        "file": {
+          "page_count": 12,
+          "estimated_token_count": 32,
+          "estimated_word_count": 24,
+          "text_char_count": 63,
+          "text_extraction_status": "ok",
+          "sha256": "1fd41e1c79c282e65ae808ab07a600bf192822285090c7a380c3db0d43ba6fca",
+          "size_bytes": 11533368
+        },
+        "summary": {
+          "present": true,
+          "summary_lines": [
+            "Teksten diskuterer psykoanalysens videnskabelighed ved at afgrænse dens empiri til tale, intentionalitet, psykisk realitet og den fortalte historie.",
+            "I stedet for at efterligne naturvidenskabelig måling argumenteres der for, at psykoanalytisk viden må udvikles gennem fortolkning af meningsfulde, relationelle og historisk situerede fænomener.",
+            "Psykoanalysens styrke ligger derfor i en metodisk kobling mellem klinisk materiale, teoridannelse og refleksion over subjektets særlige værensmåde."
+          ],
+          "key_points": [
+            "Psykoanalytisk empiri er ikke rå data, men fortolkbare ytringer og handlingsformer.",
+            "Psykisk realitet må behandles som et legitimt vidensobjekt.",
+            "Fortælling, overføring og kontekst er en del af evidensen, ikke støj omkring den.",
+            "Teoridannelse og empirisk analyse er gensidigt afhængige i psykoanalysen."
+          ]
+        },
+        "analysis": {
+          "present": false,
+          "sidecars": []
+        }
+      }
+    ],
+    "lecture_slides": [
+      {
+        "source_id": "w05l1-lecture-9-psykoanalysens-empiri-og-metode-f8e26ec5",
+        "title": "9. Psykoanalysens empiri og metode",
+        "source_kind": "slide",
+        "source_family": "lecture_slide",
+        "source_filename": "9. Psykoanalysens empiri og metode.pdf",
+        "subject_relative_path": "Forelæsningsrækken/9. Psykoanalysens empiri og metode.pdf",
+        "source_exists": true,
+        "missing_reason": null,
+        "sequence_index": null,
+        "language_guess": "da",
+        "length_band": "long",
+        "slide_subcategory": "lecture",
+        "priority_score": 92,
+        "priority_band": "supporting",
+        "priority_reasons": [
+          "lecture_slide",
+          "long source",
+          "very substantial"
+        ],
+        "priority_signals": {
+          "is_grundbog": false,
+          "has_manual_summary": false,
+          "has_prompt_analysis_sidecar": false,
+          "lecture_has_week_analysis_sidecar": false
+        },
+        "file": {
+          "page_count": 57,
+          "estimated_token_count": 7744,
+          "estimated_word_count": 4565,
+          "text_char_count": 30973,
+          "text_extraction_status": "ok",
+          "sha256": "0992baf412db38c5bc7f7b9efc9945ab79d14cc0fcfe62450dcb913336ef9264",
+          "size_bytes": 3084331
+        },
+        "summary": {
+          "present": false,
+          "summary_lines": [],
+          "key_points": []
+        },
+        "analysis": {
+          "present": false,
+          "sidecars": []
+        }
+      }
+    ],
+    "seminar_slides": [],
+    "exercise_slides": [
+      {
+        "source_id": "w05l1-exercise-2-psykoanalyse-1-og-intro-1-d9bc77f5",
+        "title": "1. Psykoanalyse",
+        "source_kind": "slide",
+        "source_family": "exercise_slide",
+        "source_filename": "2. Psykoanalyse 1 og intro (1).pdf",
+        "subject_relative_path": "Øvelseshold/2. Psykoanalyse 1 og intro (1).pdf",
+        "source_exists": true,
+        "missing_reason": null,
+        "sequence_index": null,
+        "language_guess": "da",
+        "length_band": "medium",
+        "slide_subcategory": "exercise",
+        "priority_score": 58,
+        "priority_band": "contextual",
+        "priority_reasons": [
+          "exercise_slide",
+          "medium source",
+          "substantial"
+        ],
+        "priority_signals": {
+          "is_grundbog": false,
+          "has_manual_summary": false,
+          "has_prompt_analysis_sidecar": false,
+          "lecture_has_week_analysis_sidecar": false
+        },
+        "file": {
+          "page_count": 22,
+          "estimated_token_count": 3844,
+          "estimated_word_count": 2277,
+          "text_char_count": 15376,
+          "text_extraction_status": "ok",
+          "sha256": "980134279d9418ec358ba9ba3fecceb9f9acac9b2fced06066c50013f0f80fba",
+          "size_bytes": 1666788
+        },
+        "summary": {
+          "present": false,
+          "summary_lines": [],
+          "key_points": []
+        },
+        "analysis": {
+          "present": false,
+          "sidecars": []
+        }
+      }
+    ]
+  },
+  "manifest_warnings": []
+}

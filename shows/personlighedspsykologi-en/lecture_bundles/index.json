@@ -1,0 +1,632 @@
+{
+  "version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-04T19:35:41Z",
+  "build_inputs": {
+    "source_catalog": "shows/personlighedspsykologi-en/source_catalog.json",
+    "content_manifest": "shows/personlighedspsykologi-en/content_manifest.json",
+    "subject_root_name": "Personlighedspsykologi"
+  },
+  "stats": {
+    "lecture_count": 22,
+    "ready_bundle_count": 21,
+    "partial_bundle_count": 1,
+    "bundle_with_week_analysis_count": 4,
+    "bundle_with_missing_sources_count": 1
+  },
+  "bundles": [
+    {
+      "lecture_key": "W01L1",
+      "lecture_title": "Introforelæsning og nøglebegreber i personlighedspsykologien (Forelæsning 1, 2026-02-02)",
+      "relative_path": "W01L1.json",
+      "bundle_status": "ready",
+      "readiness_issues": [],
+      "source_counts": {
+        "total_sources": 4,
+        "readings": 2,
+        "lecture_slides": 1,
+        "seminar_slides": 1,
+        "exercise_slides": 0,
+        "missing_sources": 0,
+        "manual_reading_summaries_present": 2,
+        "source_analyses_present": 0,
+        "total_pages": 77,
+        "total_estimated_tokens": 27602,
+        "source_family_counts": {
+          "lecture_slide": 1,
+          "reading": 2,
+          "seminar_slide": 1
+        }
+      },
+      "likely_core_sources": [
+        "w01l1-grundbog-kapitel-1-introduktion-til-personlighed-1e727647",
+        "w01l1-lewis-1999-295c67e3"
+      ]
+    },
+    {
+      "lecture_key": "W01L2",
+      "lecture_title": "Personality assessment (Forelæsning 2, 2026-02-03)",
+      "relative_path": "W01L2.json",
+      "bundle_status": "ready",
+      "readiness_issues": [],
+      "source_counts": {
+        "total_sources": 4,
+        "readings": 3,
+        "lecture_slides": 1,
+        "seminar_slides": 0,
+        "exercise_slides": 0,
+        "missing_sources": 0,
+        "manual_reading_summaries_present": 3,
+        "source_analyses_present": 0,
+        "total_pages": 122,
+        "total_estimated_tokens": 70695,
+        "source_family_counts": {
+          "lecture_slide": 1,
+          "reading": 3
+        }
+      },
+      "likely_core_sources": [
+        "w01l2-mayer-and-bryan-2024-07faf915",
+        "w01l2-phan-et-al-2024-bf3395d7",
+        "w01l2-koutsoumpis-2025-96f4dcf7"
+      ]
+    },
+    {
+      "lecture_key": "W02L1",
+      "lecture_title": "Personality traits, personality states, and personality dimensions (Forelæsning 3, 2026-02-09)",
+      "relative_path": "W02L1.json",
+      "bundle_status": "ready",
+      "readiness_issues": [],
+      "source_counts": {
+        "total_sources": 5,
+        "readings": 2,
+        "lecture_slides": 1,
+        "seminar_slides": 1,
+        "exercise_slides": 1,
+        "missing_sources": 0,
+        "manual_reading_summaries_present": 2,
+        "source_analyses_present": 0,
+        "total_pages": 161,
+        "total_estimated_tokens": 61091,
+        "source_family_counts": {
+          "exercise_slide": 1,
+          "lecture_slide": 1,
+          "reading": 2,
+          "seminar_slide": 1
+        }
+      },
+      "likely_core_sources": [
+        "w02l1-zettler-et-al-2020-0c54e6e4",
+        "w02l1-columbus-and-strandsbjerg-2025-2962b765"
+      ]
+    },
+    {
+      "lecture_key": "W02L2",
+      "lecture_title": "Person-situation interplay - stability and change of individual differences (Forelæsning 4, 2026-02-10)",
+      "relative_path": "W02L2.json",
+      "bundle_status": "ready",
+      "readiness_issues": [],
+      "source_counts": {
+        "total_sources": 3,
+        "readings": 2,
+        "lecture_slides": 1,
+        "seminar_slides": 0,
+        "exercise_slides": 0,
+        "missing_sources": 0,
+        "manual_reading_summaries_present": 2,
+        "source_analyses_present": 0,
+        "total_pages": 111,
+        "total_estimated_tokens": 65160,
+        "source_family_counts": {
+          "lecture_slide": 1,
+          "reading": 2
+        }
+      },
+      "likely_core_sources": [
+        "w02l2-bleidorn-et-al-2022-25c2d2de",
+        "w02l2-li-and-wilt-2025-92f596ad"
+      ]
+    },
+    {
+      "lecture_key": "W03L1",
+      "lecture_title": "Culture, evolution, genetics, and personality (Forelæsning 5, 2026-02-16)",
+      "relative_path": "W03L1.json",
+      "bundle_status": "ready",
+      "readiness_issues": [],
+      "source_counts": {
+        "total_sources": 6,
+        "readings": 4,
+        "lecture_slides": 1,
+        "seminar_slides": 1,
+        "exercise_slides": 0,
+        "missing_sources": 0,
+        "manual_reading_summaries_present": 4,
+        "source_analyses_present": 0,
+        "total_pages": 135,
+        "total_estimated_tokens": 53614,
+        "source_family_counts": {
+          "lecture_slide": 1,
+          "reading": 4,
+          "seminar_slide": 1
+        }
+      },
+      "likely_core_sources": [
+        "w03l1-lu-benet-martinez-and-wang-2023-38a36550",
+        "w03l1-kandler-and-instinske-2025-01535a8e",
+        "w03l1-volk-and-puchalski-2025-60aaf5d0",
+        "w03l1-zettler-et-al-2025-6ce9bdc0"
+      ]
+    },
+    {
+      "lecture_key": "W03L2",
+      "lecture_title": "Personlighedsfunktion og forstyrrelse (Forelæsning 6, 2026-02-17)",
+      "relative_path": "W03L2.json",
+      "bundle_status": "partial",
+      "readiness_issues": [
+        "missing_sources",
+        "missing_lecture_summary",
+        "incomplete_reading_summary_coverage"
+      ],
+      "source_counts": {
+        "total_sources": 3,
+        "readings": 2,
+        "lecture_slides": 1,
+        "seminar_slides": 0,
+        "exercise_slides": 0,
+        "missing_sources": 1,
+        "manual_reading_summaries_present": 1,
+        "source_analyses_present": 0,
+        "total_pages": 47,
+        "total_estimated_tokens": 28739,
+        "source_family_counts": {
+          "lecture_slide": 1,
+          "reading": 2
+        }
+      },
+      "likely_core_sources": [
+        "w03l2-sharp-and-wall-2021-cb92ecf4"
+      ]
+    },
+    {
+      "lecture_key": "W04L1",
+      "lecture_title": "Psykoanalysens personlighedsbegreb (Forelæsning 7, 2026-02-23)",
+      "relative_path": "W04L1.json",
+      "bundle_status": "ready",
+      "readiness_issues": [],
+      "source_counts": {
+        "total_sources": 4,
+        "readings": 2,
+        "lecture_slides": 1,
+        "seminar_slides": 1,
+        "exercise_slides": 0,
+        "missing_sources": 0,
+        "manual_reading_summaries_present": 2,
+        "source_analyses_present": 0,
+        "total_pages": 104,
+        "total_estimated_tokens": 6939,
+        "source_family_counts": {
+          "lecture_slide": 1,
+          "reading": 2,
+          "seminar_slide": 1
+        }
+      },
+      "likely_core_sources": [
+        "w04l1-gammelgaard-2007-bcbdbec2",
+        "w04l1-freud-1973-1933-98cd9920"
+      ]
+    },
+    {
+      "lecture_key": "W04L2",
+      "lecture_title": "Psykoanalytisk personlighedsstruktur (Forelæsning 8, 2026-02-24)",
+      "relative_path": "W04L2.json",
+      "bundle_status": "ready",
+      "readiness_issues": [],
+      "source_counts": {
+        "total_sources": 4,
+        "readings": 2,
+        "lecture_slides": 1,
+        "seminar_slides": 1,
+        "exercise_slides": 0,
+        "missing_sources": 0,
+        "manual_reading_summaries_present": 2,
+        "source_analyses_present": 0,
+        "total_pages": 106,
+        "total_estimated_tokens": 25775,
+        "source_family_counts": {
+          "lecture_slide": 1,
+          "reading": 2,
+          "seminar_slide": 1
+        }
+      },
+      "likely_core_sources": [
+        "w04l2-laplanche-1970-968862d5",
+        "w04l2-lacan-1966-2d720f56"
+      ]
+    },
+    {
+      "lecture_key": "W05L1",
+      "lecture_title": "Empiri og metode i psykoanalysen (Forelæsning 9, 2026-03-02)",
+      "relative_path": "W05L1.json",
+      "bundle_status": "ready",
+      "readiness_issues": [],
+      "source_counts": {
+        "total_sources": 5,
+        "readings": 3,
+        "lecture_slides": 1,
+        "seminar_slides": 0,
+        "exercise_slides": 1,
+        "missing_sources": 0,
+        "manual_reading_summaries_present": 3,
+        "source_analyses_present": 0,
+        "total_pages": 241,
+        "total_estimated_tokens": 110664,
+        "source_family_counts": {
+          "exercise_slide": 1,
+          "lecture_slide": 1,
+          "reading": 3
+        }
+      },
+      "likely_core_sources": [
+        "w05l1-freud-s-1984-1905-brudstykke-af-en-hysteri-analy-df466bb5",
+        "w05l1-ricoeur-1981-19a5343f",
+        "w05l1-gammelgaard-2010-e6baff8b"
+      ]
+    },
+    {
+      "lecture_key": "W05L2",
+      "lecture_title": "Psykoanalysens konstituering (Forelæsning 10, 2026-03-03)",
+      "relative_path": "W05L2.json",
+      "bundle_status": "ready",
+      "readiness_issues": [],
+      "source_counts": {
+        "total_sources": 4,
+        "readings": 3,
+        "lecture_slides": 1,
+        "seminar_slides": 0,
+        "exercise_slides": 0,
+        "missing_sources": 0,
+        "manual_reading_summaries_present": 3,
+        "source_analyses_present": 0,
+        "total_pages": 97,
+        "total_estimated_tokens": 40216,
+        "source_family_counts": {
+          "lecture_slide": 1,
+          "reading": 3
+        }
+      },
+      "likely_core_sources": [
+        "w05l2-grundbog-kapitel-7-nyere-psykoanalytiske-teorier-fda84b6a",
+        "w05l2-andkj-r-olsen-and-k-ppe-1991a-1991b-720b5d8e",
+        "w05l2-k-ppe-1992-9a474402"
+      ]
+    },
+    {
+      "lecture_key": "W06L1",
+      "lecture_title": "Fænomenologi (Forelæsning 11, 2026-03-09)",
+      "relative_path": "W06L1.json",
+      "bundle_status": "ready",
+      "readiness_issues": [],
+      "source_counts": {
+        "total_sources": 4,
+        "readings": 3,
+        "lecture_slides": 1,
+        "seminar_slides": 0,
+        "exercise_slides": 0,
+        "missing_sources": 0,
+        "manual_reading_summaries_present": 3,
+        "source_analyses_present": 0,
+        "total_pages": 127,
+        "total_estimated_tokens": 41896,
+        "source_family_counts": {
+          "lecture_slide": 1,
+          "reading": 3
+        }
+      },
+      "likely_core_sources": [
+        "w06l1-grundbog-kapitel-4-f-nomenologisk-personlighedsp-1afa74d2",
+        "w06l1-moesk-r-hansen-and-roald-2022-b7aec462",
+        "w06l1-spinelli-2005-b2f76e93"
+      ]
+    },
+    {
+      "lecture_key": "W06L2",
+      "lecture_title": "Eksistentiel personlighedspsykologi I (Funch) (Forelæsning 12, 2026-03-10)",
+      "relative_path": "W06L2.json",
+      "bundle_status": "ready",
+      "readiness_issues": [],
+      "source_counts": {
+        "total_sources": 2,
+        "readings": 2,
+        "lecture_slides": 0,
+        "seminar_slides": 0,
+        "exercise_slides": 0,
+        "missing_sources": 0,
+        "manual_reading_summaries_present": 2,
+        "source_analyses_present": 0,
+        "total_pages": 45,
+        "total_estimated_tokens": 0,
+        "source_family_counts": {
+          "reading": 2
+        }
+      },
+      "likely_core_sources": [
+        "w06l2-may-1966-d8406a09",
+        "w06l2-boss-1963-1feb5a5f"
+      ]
+    },
+    {
+      "lecture_key": "W07L1",
+      "lecture_title": "Eksistentiel personlighedspsykologi II (Bjerregaard-Nielsen) (Forelæsning 13, 2026-03-16)",
+      "relative_path": "W07L1.json",
+      "bundle_status": "ready",
+      "readiness_issues": [],
+      "source_counts": {
+        "total_sources": 3,
+        "readings": 2,
+        "lecture_slides": 1,
+        "seminar_slides": 0,
+        "exercise_slides": 0,
+        "missing_sources": 0,
+        "manual_reading_summaries_present": 2,
+        "source_analyses_present": 0,
+        "total_pages": 103,
+        "total_estimated_tokens": 30366,
+        "source_family_counts": {
+          "lecture_slide": 1,
+          "reading": 2
+        }
+      },
+      "likely_core_sources": [
+        "w07l1-cooper-2003-ee3c34b7",
+        "w07l1-jacobsen-2021-26129bff"
+      ]
+    },
+    {
+      "lecture_key": "W07L2",
+      "lecture_title": "Humanistisk psykologi (Forelæsning 14, 2026-03-17)",
+      "relative_path": "W07L2.json",
+      "bundle_status": "ready",
+      "readiness_issues": [],
+      "source_counts": {
+        "total_sources": 4,
+        "readings": 3,
+        "lecture_slides": 1,
+        "seminar_slides": 0,
+        "exercise_slides": 0,
+        "missing_sources": 0,
+        "manual_reading_summaries_present": 3,
+        "source_analyses_present": 0,
+        "total_pages": 135,
+        "total_estimated_tokens": 39620,
+        "source_family_counts": {
+          "lecture_slide": 1,
+          "reading": 3
+        }
+      },
+      "likely_core_sources": [
+        "w07l2-maslow-1968-7ea53e34",
+        "w07l2-giorgi-2005-55ca98f7",
+        "w07l2-evans-1975-8e8a9d79"
+      ]
+    },
+    {
+      "lecture_key": "W08L1",
+      "lecture_title": "Critical personalism (Forelæsning 15, 2026-03-23)",
+      "relative_path": "W08L1.json",
+      "bundle_status": "ready",
+      "readiness_issues": [],
+      "source_counts": {
+        "total_sources": 3,
+        "readings": 2,
+        "lecture_slides": 1,
+        "seminar_slides": 0,
+        "exercise_slides": 0,
+        "missing_sources": 0,
+        "manual_reading_summaries_present": 2,
+        "source_analyses_present": 0,
+        "total_pages": 52,
+        "total_estimated_tokens": 23081,
+        "source_family_counts": {
+          "lecture_slide": 1,
+          "reading": 2
+        }
+      },
+      "likely_core_sources": [
+        "w08l1-lamiell-2021-be79d36e",
+        "w08l1-laux-et-al-2010-cfff840c"
+      ]
+    },
+    {
+      "lecture_key": "W08L2",
+      "lecture_title": "Critical psychology (Forelæsning 16, 2026-03-24)",
+      "relative_path": "W08L2.json",
+      "bundle_status": "ready",
+      "readiness_issues": [],
+      "source_counts": {
+        "total_sources": 3,
+        "readings": 2,
+        "lecture_slides": 1,
+        "seminar_slides": 0,
+        "exercise_slides": 0,
+        "missing_sources": 0,
+        "manual_reading_summaries_present": 2,
+        "source_analyses_present": 0,
+        "total_pages": 64,
+        "total_estimated_tokens": 12076,
+        "source_family_counts": {
+          "lecture_slide": 1,
+          "reading": 2
+        }
+      },
+      "likely_core_sources": [
+        "w08l2-tolman-2009-455915e0",
+        "w08l2-holzkamp-1982-845aafd2"
+      ]
+    },
+    {
+      "lecture_key": "W09L1",
+      "lecture_title": "Kritisk psykologi (Forelæsning 17, 2026-04-07)",
+      "relative_path": "W09L1.json",
+      "bundle_status": "ready",
+      "readiness_issues": [],
+      "source_counts": {
+        "total_sources": 5,
+        "readings": 4,
+        "lecture_slides": 1,
+        "seminar_slides": 0,
+        "exercise_slides": 0,
+        "missing_sources": 0,
+        "manual_reading_summaries_present": 4,
+        "source_analyses_present": 1,
+        "total_pages": 134,
+        "total_estimated_tokens": 29580,
+        "source_family_counts": {
+          "lecture_slide": 1,
+          "reading": 4
+        }
+      },
+      "likely_core_sources": [
+        "w09l1-grundbog-kapitel-10-kritisk-psykologi-b3286662",
+        "w09l1-m-rch-and-hansen-2015-b1dbfc5f",
+        "w09l1-holzkamp-2013-c3068d8a",
+        "w09l1-dreier-1999-35da58b5"
+      ]
+    },
+    {
+      "lecture_key": "W10L1",
+      "lecture_title": "Køn (Forelæsning 18, 2026-04-13)",
+      "relative_path": "W10L1.json",
+      "bundle_status": "ready",
+      "readiness_issues": [],
+      "source_counts": {
+        "total_sources": 2,
+        "readings": 2,
+        "lecture_slides": 0,
+        "seminar_slides": 0,
+        "exercise_slides": 0,
+        "missing_sources": 0,
+        "manual_reading_summaries_present": 2,
+        "source_analyses_present": 0,
+        "total_pages": 76,
+        "total_estimated_tokens": 22857,
+        "source_family_counts": {
+          "reading": 2
+        }
+      },
+      "likely_core_sources": [
+        "w10l1-mitchell-2015-bc690b36",
+        "w10l1-bjerrum-nielsen-and-rudberg-2006-39335ee6"
+      ]
+    },
+    {
+      "lecture_key": "W10L2",
+      "lecture_title": "Sociokulturelle teorier - socialkonstruktionisme og poststrukturalisme (Forelæsning 19, 2026-04-14)",
+      "relative_path": "W10L2.json",
+      "bundle_status": "ready",
+      "readiness_issues": [],
+      "source_counts": {
+        "total_sources": 3,
+        "readings": 2,
+        "lecture_slides": 1,
+        "seminar_slides": 0,
+        "exercise_slides": 0,
+        "missing_sources": 0,
+        "manual_reading_summaries_present": 2,
+        "source_analyses_present": 3,
+        "total_pages": 77,
+        "total_estimated_tokens": 4523,
+        "source_family_counts": {
+          "lecture_slide": 1,
+          "reading": 2
+        }
+      },
+      "likely_core_sources": [
+        "w10l2-davies-1990-65185910",
+        "w10l2-foucault-1997-92cd121d",
+        "w10l2-lecture-19-gang-sociokulturelle-teorier-ca9255c8"
+      ]
+    },
+    {
+      "lecture_key": "W11L1",
+      "lecture_title": "Poststrukturalisme, diskursiv psykologi og feministisk teori (Forelæsning 20, 2026-04-20)",
+      "relative_path": "W11L1.json",
+      "bundle_status": "ready",
+      "readiness_issues": [],
+      "source_counts": {
+        "total_sources": 3,
+        "readings": 3,
+        "lecture_slides": 0,
+        "seminar_slides": 0,
+        "exercise_slides": 0,
+        "missing_sources": 0,
+        "manual_reading_summaries_present": 3,
+        "source_analyses_present": 3,
+        "total_pages": 107,
+        "total_estimated_tokens": 41499,
+        "source_family_counts": {
+          "reading": 3
+        }
+      },
+      "likely_core_sources": [
+        "w11l1-grundbog-kapitel-11-postpsykologisk-subjektiveri-3557aeb2",
+        "w11l1-gergen-1999-73c2217e",
+        "w11l1-hacking-2007-10236bf4"
+      ]
+    },
+    {
+      "lecture_key": "W11L2",
+      "lecture_title": "Narrativitet, kultur og mening (Forelæsning 21, 2026-04-21)",
+      "relative_path": "W11L2.json",
+      "bundle_status": "ready",
+      "readiness_issues": [],
+      "source_counts": {
+        "total_sources": 4,
+        "readings": 4,
+        "lecture_slides": 0,
+        "seminar_slides": 0,
+        "exercise_slides": 0,
+        "missing_sources": 0,
+        "manual_reading_summaries_present": 4,
+        "source_analyses_present": 1,
+        "total_pages": 110,
+        "total_estimated_tokens": 32936,
+        "source_family_counts": {
+          "reading": 4
+        }
+      },
+      "likely_core_sources": [
+        "w11l2-grundbog-kapitel-9-narrative-teorier-cd12008a",
+        "w11l2-mcadams-and-pals-2006-b9675688",
+        "w11l2-raggatt-2002-d15129af",
+        "w11l2-bruner-1999-7930abd8"
+      ]
+    },
+    {
+      "lecture_key": "W12L1",
+      "lecture_title": "Sammenligning af teorier og subjektets historie og eksamen (Forelæsning 22, 2026-04-27)",
+      "relative_path": "W12L1.json",
+      "bundle_status": "ready",
+      "readiness_issues": [],
+      "source_counts": {
+        "total_sources": 3,
+        "readings": 3,
+        "lecture_slides": 0,
+        "seminar_slides": 0,
+        "exercise_slides": 0,
+        "missing_sources": 0,
+        "manual_reading_summaries_present": 3,
+        "source_analyses_present": 1,
+        "total_pages": 135,
+        "total_estimated_tokens": 0,
+        "source_family_counts": {
+          "reading": 3
+        }
+      },
+      "likely_core_sources": [
+        "w12l1-grundbog-kapitel-14-perspektiver-pa-personlighed-95ca3a38",
+        "w12l1-grundbog-kapitel-8-personlighed-subjektivitet-og-b0095bfb",
+        "w12l1-elias-2000-f9176ae8"
+      ]
+    }
+  ]
+}

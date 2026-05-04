@@ -1,0 +1,436 @@
+{
+  "version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-04T19:35:41Z",
+  "lecture_key": "W03L1",
+  "lecture_title": "Culture, evolution, genetics, and personality (Forelæsning 5, 2026-02-16)",
+  "sequence_index": 5,
+  "course_position": {
+    "index": 5,
+    "total_lectures": 22,
+    "stage": "early-middle",
+    "previous_lecture_key": "W02L2",
+    "previous_lecture_title": "Person-situation interplay - stability and change of individual differences (Forelæsning 4, 2026-02-10)",
+    "next_lecture_key": "W03L2",
+    "next_lecture_title": "Personlighedsfunktion og forstyrrelse (Forelæsning 6, 2026-02-17)"
+  },
+  "bundle_status": "ready",
+  "readiness_issues": [],
+  "lecture_summary": {
+    "present": true,
+    "summary_lines": [
+      "Forelæsningen forbinder kultur, evolution og genetik i en flerfaktoriel forståelse af personlighed.",
+      "Kilderne peger på, at personlighedsforskelle typisk skyldes mange små påvirkninger frem for enkelte hovedårsager.",
+      "Der argumenteres for multimodale designs, som bedre kan fange gen-miljø-samspil og kulturel variation."
+    ],
+    "key_points": [
+      "Personlighedens arkitektur fremstår polygen og poly-miljømæssig.",
+      "Enkeltfaktor-forklaringer har begrænset forklaringskraft.",
+      "Målestrategi påvirker, hvilke genetiske og miljømæssige effekter der kan ses.",
+      "Kulturel kontekst former både udtryk, fortolkning og værdi af træk."
+    ]
+  },
+  "teaching_context": {
+    "lecture_slide_titles": [
+      "5. gang PersPsy 5 260216"
+    ],
+    "seminar_slide_titles": [
+      "5. Psykoanalyse II"
+    ],
+    "exercise_slide_titles": []
+  },
+  "source_counts": {
+    "total_sources": 6,
+    "readings": 4,
+    "lecture_slides": 1,
+    "seminar_slides": 1,
+    "exercise_slides": 0,
+    "missing_sources": 0,
+    "manual_reading_summaries_present": 4,
+    "source_analyses_present": 0,
+    "total_pages": 135,
+    "total_estimated_tokens": 53614,
+    "source_family_counts": {
+      "lecture_slide": 1,
+      "reading": 4,
+      "seminar_slide": 1
+    }
+  },
+  "source_intelligence": {
+    "dominant_language": "en",
+    "week_analysis": {
+      "present": false,
+      "sidecars": []
+    },
+    "missing_sources": [],
+    "likely_core_sources": [
+      "w03l1-lu-benet-martinez-and-wang-2023-38a36550",
+      "w03l1-kandler-and-instinske-2025-01535a8e",
+      "w03l1-volk-and-puchalski-2025-60aaf5d0",
+      "w03l1-zettler-et-al-2025-6ce9bdc0"
+    ],
+    "likely_supporting_sources": [
+      "w03l1-lecture-5-gang-perspsy-5-260216-c7e4dd91"
+    ]
+  },
+  "source_priority_order": [
+    {
+      "source_id": "w03l1-lu-benet-martinez-and-wang-2023-38a36550",
+      "title": "Lu, Benet-Martínez & Wang (2023)",
+      "source_family": "reading",
+      "priority_score": 130,
+      "priority_band": "core"
+    },
+    {
+      "source_id": "w03l1-kandler-and-instinske-2025-01535a8e",
+      "title": "Kandler & Instinske (2025)",
+      "source_family": "reading",
+      "priority_score": 118,
+      "priority_band": "primary"
+    },
+    {
+      "source_id": "w03l1-volk-and-puchalski-2025-60aaf5d0",
+      "title": "Volk & Puchalski (2025)",
+      "source_family": "reading",
+      "priority_score": 118,
+      "priority_band": "primary"
+    },
+    {
+      "source_id": "w03l1-zettler-et-al-2025-6ce9bdc0",
+      "title": "Zettler et al. (2025)",
+      "source_family": "reading",
+      "priority_score": 114,
+      "priority_band": "primary"
+    },
+    {
+      "source_id": "w03l1-lecture-5-gang-perspsy-5-260216-c7e4dd91",
+      "title": "5. gang PersPsy 5 260216",
+      "source_family": "lecture_slide",
+      "priority_score": 88,
+      "priority_band": "supporting"
+    },
+    {
+      "source_id": "w03l1-seminar-5-psykoanalyse-ii-4354fbb7",
+      "title": "5. Psykoanalyse II",
+      "source_family": "seminar_slide",
+      "priority_score": 64,
+      "priority_band": "contextual"
+    }
+  ],
+  "sources": {
+    "readings": [
+      {
+        "source_id": "w03l1-lu-benet-martinez-and-wang-2023-38a36550",
+        "title": "Lu, Benet-Martínez & Wang (2023)",
+        "source_kind": "reading",
+        "source_family": "reading",
+        "source_filename": "W3L1 Lu, Benet-Martínez & Wang (2023).pdf",
+        "subject_relative_path": "Readings/W3L1 Culture, evolution, genetics, and personality/W3L1 Lu, Benet-Martínez & Wang (2023).pdf",
+        "source_exists": true,
+        "missing_reason": null,
+        "sequence_index": 2,
+        "language_guess": "en",
+        "length_band": "long",
+        "slide_subcategory": null,
+        "priority_score": 130,
+        "priority_band": "core",
+        "priority_reasons": [
+          "reading",
+          "manual summary",
+          "long source",
+          "very substantial"
+        ],
+        "priority_signals": {
+          "is_grundbog": false,
+          "has_manual_summary": true,
+          "has_prompt_analysis_sidecar": false,
+          "lecture_has_week_analysis_sidecar": false
+        },
+        "file": {
+          "page_count": 28,
+          "estimated_token_count": 27057,
+          "estimated_word_count": 15907,
+          "text_char_count": 108228,
+          "text_extraction_status": "ok",
+          "sha256": "83c1d6fd3ff8c20fe0c1aef984f5ae166ecd877b5169f44a7341f5a945163080",
+          "size_bytes": 446063
+        },
+        "summary": {
+          "present": true,
+          "summary_lines": [
+            "This article investigates how culture shapes personality structure, expression, and adaptation.",
+            "It highlights that trait manifestations depend on cultural meaning systems and social ecologies.",
+            "Cross-cultural comparison is used to separate universal from context-specific processes."
+          ],
+          "key_points": [
+            "Cultural context conditions trait expression and interpretation.",
+            "Equivalent labels may map onto different lived practices across settings.",
+            "Cross-cultural methods require careful construct comparability checks.",
+            "Personality theory benefits from culturally plural evidence bases."
+          ]
+        },
+        "analysis": {
+          "present": false,
+          "sidecars": []
+        }
+      },
+      {
+        "source_id": "w03l1-kandler-and-instinske-2025-01535a8e",
+        "title": "Kandler & Instinske (2025)",
+        "source_kind": "reading",
+        "source_family": "reading",
+        "source_filename": "W3L1 Kandler & Instinske (2025).pdf",
+        "subject_relative_path": "Readings/W3L1 Culture, evolution, genetics, and personality/W3L1 Kandler & Instinske (2025).pdf",
+        "source_exists": true,
+        "missing_reason": null,
+        "sequence_index": 1,
+        "language_guess": "en",
+        "length_band": "short",
+        "slide_subcategory": null,
+        "priority_score": 118,
+        "priority_band": "primary",
+        "priority_reasons": [
+          "reading",
+          "manual summary",
+          "very substantial"
+        ],
+        "priority_signals": {
+          "is_grundbog": false,
+          "has_manual_summary": true,
+          "has_prompt_analysis_sidecar": false,
+          "lecture_has_week_analysis_sidecar": false
+        },
+        "file": {
+          "page_count": 8,
+          "estimated_token_count": 9881,
+          "estimated_word_count": 6223,
+          "text_char_count": 39522,
+          "text_extraction_status": "ok",
+          "sha256": "66373d65083f4ce92e94de0b297360e17c35232151d8b4cf676457ed7ecdab5b",
+          "size_bytes": 414240
+        },
+        "summary": {
+          "present": true,
+          "summary_lines": [
+            "This review synthesizes evidence that personality differences are shaped by many small genetic and environmental influences rather than single dominant causes.",
+            "It emphasizes that broad trait scores can hide specific mechanisms and that measurement strategy strongly affects what effects are detected.",
+            "The authors call for multimodal, multi-perspective designs that model gene-environment interplay more directly."
+          ],
+          "key_points": [
+            "Personality architecture appears polygenic and poly-environmental.",
+            "Single-factor explanations have weak explanatory power for trait variance.",
+            "Operationalization choices influence observed genetic and environmental effects.",
+            "Future research should target interaction effects and person-specific pathways."
+          ]
+        },
+        "analysis": {
+          "present": false,
+          "sidecars": []
+        }
+      },
+      {
+        "source_id": "w03l1-volk-and-puchalski-2025-60aaf5d0",
+        "title": "Volk & Puchalski (2025)",
+        "source_kind": "reading",
+        "source_family": "reading",
+        "source_filename": "W3L1 Volk & Puchalski (2025).pdf",
+        "subject_relative_path": "Readings/W3L1 Culture, evolution, genetics, and personality/W3L1 Volk & Puchalski (2025).pdf",
+        "source_exists": true,
+        "missing_reason": null,
+        "sequence_index": 3,
+        "language_guess": "en",
+        "length_band": "short",
+        "slide_subcategory": null,
+        "priority_score": 118,
+        "priority_band": "primary",
+        "priority_reasons": [
+          "reading",
+          "manual summary",
+          "very substantial"
+        ],
+        "priority_signals": {
+          "is_grundbog": false,
+          "has_manual_summary": true,
+          "has_prompt_analysis_sidecar": false,
+          "lecture_has_week_analysis_sidecar": false
+        },
+        "file": {
+          "page_count": 5,
+          "estimated_token_count": 7078,
+          "estimated_word_count": 4300,
+          "text_char_count": 28310,
+          "text_extraction_status": "ok",
+          "sha256": "00ae60aa4aeed898cda4274d9c04e29f82c866f1cc6e8e551a1b9181d7dd257a",
+          "size_bytes": 215027
+        },
+        "summary": {
+          "present": true,
+          "summary_lines": [
+            "Volk and Puchalski discuss evolutionary perspectives on personality variation and adaptive trade-offs.",
+            "They frame individual differences as potentially functional responses to recurrent ecological and social demands.",
+            "The argument integrates evolutionary logic with contemporary personality measurement."
+          ],
+          "key_points": [
+            "Variation can be maintained through context-dependent fitness trade-offs.",
+            "Adaptive value is conditional rather than universally optimal.",
+            "Evolutionary accounts should be tested against developmental and cultural evidence.",
+            "Trait interpretation gains depth when linked to ecological function."
+          ]
+        },
+        "analysis": {
+          "present": false,
+          "sidecars": []
+        }
+      },
+      {
+        "source_id": "w03l1-zettler-et-al-2025-6ce9bdc0",
+        "title": "Zettler et al. (2025)",
+        "source_kind": "reading",
+        "source_family": "reading",
+        "source_filename": "W3L1 Zettler et al. (2025).pdf",
+        "subject_relative_path": "Readings/W3L1 Culture, evolution, genetics, and personality/W3L1 Zettler et al. (2025).pdf",
+        "source_exists": true,
+        "missing_reason": null,
+        "sequence_index": 4,
+        "language_guess": "en",
+        "length_band": "short",
+        "slide_subcategory": null,
+        "priority_score": 114,
+        "priority_band": "primary",
+        "priority_reasons": [
+          "reading",
+          "manual summary",
+          "substantial"
+        ],
+        "priority_signals": {
+          "is_grundbog": false,
+          "has_manual_summary": true,
+          "has_prompt_analysis_sidecar": false,
+          "lecture_has_week_analysis_sidecar": false
+        },
+        "file": {
+          "page_count": 3,
+          "estimated_token_count": 4369,
+          "estimated_word_count": 2781,
+          "text_char_count": 17476,
+          "text_extraction_status": "ok",
+          "sha256": "7dd0526402f14a45f59b7238929c89aa2cda3c44be56cee77118979a18b9d51e",
+          "size_bytes": 6347058
+        },
+        "summary": {
+          "present": true,
+          "summary_lines": [
+            "This paper revisits trait dimensions and their explanatory role using contemporary integrative evidence.",
+            "It evaluates links between structure, prediction, and underlying mechanisms in personality research.",
+            "The authors call for clearer theory-to-measurement alignment in trait science."
+          ],
+          "key_points": [
+            "Trait dimensions need both statistical and substantive justification.",
+            "Predictive success does not automatically identify mechanisms.",
+            "Model comparisons should include interpretability criteria.",
+            "Cumulative progress depends on explicit conceptual commitments."
+          ]
+        },
+        "analysis": {
+          "present": false,
+          "sidecars": []
+        }
+      }
+    ],
+    "lecture_slides": [
+      {
+        "source_id": "w03l1-lecture-5-gang-perspsy-5-260216-c7e4dd91",
+        "title": "5. gang PersPsy 5 260216",
+        "source_kind": "slide",
+        "source_family": "lecture_slide",
+        "source_filename": "5. gang PersPsy_5_260216.pdf",
+        "subject_relative_path": "Forelæsningsrækken/5. gang PersPsy_5_260216.pdf",
+        "source_exists": true,
+        "missing_reason": null,
+        "sequence_index": null,
+        "language_guess": "en",
+        "length_band": "long",
+        "slide_subcategory": "lecture",
+        "priority_score": 88,
+        "priority_band": "supporting",
+        "priority_reasons": [
+          "lecture_slide",
+          "long source",
+          "substantial"
+        ],
+        "priority_signals": {
+          "is_grundbog": false,
+          "has_manual_summary": false,
+          "has_prompt_analysis_sidecar": false,
+          "lecture_has_week_analysis_sidecar": false
+        },
+        "file": {
+          "page_count": 76,
+          "estimated_token_count": 4163,
+          "estimated_word_count": 2292,
+          "text_char_count": 16650,
+          "text_extraction_status": "ok",
+          "sha256": "35e386410db88acc6d8eaad71f12c4a62cf4869026faf777ccc5188d5a56c6db",
+          "size_bytes": 1218194
+        },
+        "summary": {
+          "present": false,
+          "summary_lines": [],
+          "key_points": []
+        },
+        "analysis": {
+          "present": false,
+          "sidecars": []
+        }
+      }
+    ],
+    "seminar_slides": [
+      {
+        "source_id": "w03l1-seminar-5-psykoanalyse-ii-4354fbb7",
+        "title": "5. Psykoanalyse II",
+        "source_kind": "slide",
+        "source_family": "seminar_slide",
+        "source_filename": "5. Psykoanalyse II.pdf",
+        "subject_relative_path": "Seminarhold/Slides/5. Psykoanalyse II.pdf",
+        "source_exists": true,
+        "missing_reason": null,
+        "sequence_index": null,
+        "language_guess": "da",
+        "length_band": "medium",
+        "slide_subcategory": "seminar",
+        "priority_score": 64,
+        "priority_band": "contextual",
+        "priority_reasons": [
+          "seminar_slide",
+          "medium source"
+        ],
+        "priority_signals": {
+          "is_grundbog": false,
+          "has_manual_summary": false,
+          "has_prompt_analysis_sidecar": false,
+          "lecture_has_week_analysis_sidecar": false
+        },
+        "file": {
+          "page_count": 15,
+          "estimated_token_count": 1066,
+          "estimated_word_count": 672,
+          "text_char_count": 4263,
+          "text_extraction_status": "ok",
+          "sha256": "551fbde6f6ea6879032ebd75da3fe4f6ca71f12808f78a59e47028c7610c83f7",
+          "size_bytes": 1668068
+        },
+        "summary": {
+          "present": false,
+          "summary_lines": [],
+          "key_points": []
+        },
+        "analysis": {
+          "present": false,
+          "sidecars": []
+        }
+      }
+    ],
+    "exercise_slides": []
+  },
+  "manifest_warnings": []
+}

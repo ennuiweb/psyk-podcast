@@ -1,0 +1,256 @@
+{
+  "version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-04T19:35:41Z",
+  "lecture_key": "W08L1",
+  "lecture_title": "Critical personalism (Forelæsning 15, 2026-03-23)",
+  "sequence_index": 15,
+  "course_position": {
+    "index": 15,
+    "total_lectures": 22,
+    "stage": "late-middle",
+    "previous_lecture_key": "W07L2",
+    "previous_lecture_title": "Humanistisk psykologi (Forelæsning 14, 2026-03-17)",
+    "next_lecture_key": "W08L2",
+    "next_lecture_title": "Critical psychology (Forelæsning 16, 2026-03-24)"
+  },
+  "bundle_status": "ready",
+  "readiness_issues": [],
+  "lecture_summary": {
+    "present": true,
+    "summary_lines": [
+      "Kilderne introducerer kritisk personalisme som opgør med reificerede trækbegreber.",
+      "Personen forstås som historisk situeret aktør frem for en stabil variabelprofil.",
+      "Forelæsningen argumenterer for større epistemisk forsigtighed i fortolkning af personlighedsmålinger."
+    ],
+    "key_points": [
+      "Personniveau kan ikke reduceres til abstrakte skalaresultater.",
+      "Metodisk individualisme kræver også begrebslig præcision.",
+      "Populationsmønstre forklarer ikke automatisk den enkelte person.",
+      "Handling er en nøgleenhed til at forbinde person og kontekst."
+    ]
+  },
+  "teaching_context": {
+    "lecture_slide_titles": [
+      "15. gang Critical personalism 2026"
+    ],
+    "seminar_slide_titles": [],
+    "exercise_slide_titles": []
+  },
+  "source_counts": {
+    "total_sources": 3,
+    "readings": 2,
+    "lecture_slides": 1,
+    "seminar_slides": 0,
+    "exercise_slides": 0,
+    "missing_sources": 0,
+    "manual_reading_summaries_present": 2,
+    "source_analyses_present": 0,
+    "total_pages": 52,
+    "total_estimated_tokens": 23081,
+    "source_family_counts": {
+      "lecture_slide": 1,
+      "reading": 2
+    }
+  },
+  "source_intelligence": {
+    "dominant_language": "en",
+    "week_analysis": {
+      "present": false,
+      "sidecars": []
+    },
+    "missing_sources": [],
+    "likely_core_sources": [
+      "w08l1-lamiell-2021-be79d36e",
+      "w08l1-laux-et-al-2010-cfff840c"
+    ],
+    "likely_supporting_sources": [
+      "w08l1-lecture-15-gang-critical-personalism-2026-8648744f"
+    ]
+  },
+  "source_priority_order": [
+    {
+      "source_id": "w08l1-lamiell-2021-be79d36e",
+      "title": "Lamiell (2021)",
+      "source_family": "reading",
+      "priority_score": 124,
+      "priority_band": "core"
+    },
+    {
+      "source_id": "w08l1-laux-et-al-2010-cfff840c",
+      "title": "Laux et al (2010)",
+      "source_family": "reading",
+      "priority_score": 118,
+      "priority_band": "primary"
+    },
+    {
+      "source_id": "w08l1-lecture-15-gang-critical-personalism-2026-8648744f",
+      "title": "15. gang Critical personalism 2026",
+      "source_family": "lecture_slide",
+      "priority_score": 78,
+      "priority_band": "supporting"
+    }
+  ],
+  "sources": {
+    "readings": [
+      {
+        "source_id": "w08l1-lamiell-2021-be79d36e",
+        "title": "Lamiell (2021)",
+        "source_kind": "reading",
+        "source_family": "reading",
+        "source_filename": "Lamiell, J.T. (2021).pdf",
+        "subject_relative_path": "Readings/W8L1 Critical personalism/Lamiell, J.T. (2021).pdf",
+        "source_exists": true,
+        "missing_reason": null,
+        "sequence_index": 1,
+        "language_guess": "en",
+        "length_band": "medium",
+        "slide_subcategory": null,
+        "priority_score": 124,
+        "priority_band": "core",
+        "priority_reasons": [
+          "reading",
+          "manual summary",
+          "medium source",
+          "very substantial"
+        ],
+        "priority_signals": {
+          "is_grundbog": false,
+          "has_manual_summary": true,
+          "has_prompt_analysis_sidecar": false,
+          "lecture_has_week_analysis_sidecar": false
+        },
+        "file": {
+          "page_count": 22,
+          "estimated_token_count": 12337,
+          "estimated_word_count": 7909,
+          "text_char_count": 49346,
+          "text_extraction_status": "ok",
+          "sha256": "d527e8c6aaea162903596836abe9c1c93419976840a3aa849c1b3bd4cca1c20c",
+          "size_bytes": 135233
+        },
+        "summary": {
+          "present": true,
+          "summary_lines": [
+            "Lamiell advances a critical personalist perspective that questions reified trait entities and abstracted population claims.",
+            "He emphasizes persons as concrete, historically situated agents rather than variable bundles.",
+            "The argument calls for epistemic caution about what personality measures can legitimately represent."
+          ],
+          "key_points": [
+            "Person-level reality cannot be reduced to abstract trait scores.",
+            "Methodological individualism requires conceptual, not only statistical, rigor.",
+            "Population regularities do not automatically explain singular persons.",
+            "Critical personalism re-centers agency and context in personality theory."
+          ]
+        },
+        "analysis": {
+          "present": false,
+          "sidecars": []
+        }
+      },
+      {
+        "source_id": "w08l1-laux-et-al-2010-cfff840c",
+        "title": "Laux et al (2010)",
+        "source_kind": "reading",
+        "source_family": "reading",
+        "source_filename": "W8L1 Laux et al. (2010).pdf",
+        "subject_relative_path": "Readings/W8L1 Critical personalism/W8L1 Laux et al. (2010).pdf",
+        "source_exists": true,
+        "missing_reason": null,
+        "sequence_index": 2,
+        "language_guess": "en",
+        "length_band": "short",
+        "slide_subcategory": null,
+        "priority_score": 118,
+        "priority_band": "primary",
+        "priority_reasons": [
+          "reading",
+          "manual summary",
+          "very substantial"
+        ],
+        "priority_signals": {
+          "is_grundbog": false,
+          "has_manual_summary": true,
+          "has_prompt_analysis_sidecar": false,
+          "lecture_has_week_analysis_sidecar": false
+        },
+        "file": {
+          "page_count": 8,
+          "estimated_token_count": 8357,
+          "estimated_word_count": 5460,
+          "text_char_count": 33426,
+          "text_extraction_status": "ok",
+          "sha256": "d631cc4d392e93fa4a25d9f68c050aae76ac28d4376e3386d4fd281b97cd328e",
+          "size_bytes": 146911
+        },
+        "summary": {
+          "present": true,
+          "summary_lines": [
+            "Laux and colleagues discuss critical personalism as a framework for integrating person, action, and context.",
+            "The text critiques over-abstract trait approaches and emphasizes situated intentional conduct.",
+            "It proposes conceptual bridges between differential psychology and interpretive person science."
+          ],
+          "key_points": [
+            "Action is a key unit for linking person and environment.",
+            "Conceptual clarity is needed beyond measurement convenience.",
+            "Personality explanation should include meaning and purpose.",
+            "Critical personalism supports multi-level theoretical integration."
+          ]
+        },
+        "analysis": {
+          "present": false,
+          "sidecars": []
+        }
+      }
+    ],
+    "lecture_slides": [
+      {
+        "source_id": "w08l1-lecture-15-gang-critical-personalism-2026-8648744f",
+        "title": "15. gang Critical personalism 2026",
+        "source_kind": "slide",
+        "source_family": "lecture_slide",
+        "source_filename": "15. gang Critical personalism 2026.pdf",
+        "subject_relative_path": "Forelæsningsrækken/15. Critical personalism 2026.pdf",
+        "source_exists": true,
+        "missing_reason": null,
+        "sequence_index": null,
+        "language_guess": "en",
+        "length_band": "medium",
+        "slide_subcategory": "lecture",
+        "priority_score": 78,
+        "priority_band": "supporting",
+        "priority_reasons": [
+          "lecture_slide",
+          "medium source"
+        ],
+        "priority_signals": {
+          "is_grundbog": false,
+          "has_manual_summary": false,
+          "has_prompt_analysis_sidecar": false,
+          "lecture_has_week_analysis_sidecar": false
+        },
+        "file": {
+          "page_count": 22,
+          "estimated_token_count": 2387,
+          "estimated_word_count": 1424,
+          "text_char_count": 9548,
+          "text_extraction_status": "ok",
+          "sha256": "9ccdb8ceed5ed97dcd8049980c951ab25939e0ade50fb6383bcf774daa8328a9",
+          "size_bytes": 1776794
+        },
+        "summary": {
+          "present": false,
+          "summary_lines": [],
+          "key_points": []
+        },
+        "analysis": {
+          "present": false,
+          "sidecars": []
+        }
+      }
+    ],
+    "seminar_slides": [],
+    "exercise_slides": []
+  },
+  "manifest_warnings": []
+}

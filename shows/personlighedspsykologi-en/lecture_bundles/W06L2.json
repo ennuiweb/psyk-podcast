@@ -1,0 +1,198 @@
+{
+  "version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-04T19:35:41Z",
+  "lecture_key": "W06L2",
+  "lecture_title": "Eksistentiel personlighedspsykologi I (Funch) (Forelæsning 12, 2026-03-10)",
+  "sequence_index": 12,
+  "course_position": {
+    "index": 12,
+    "total_lectures": 22,
+    "stage": "late-middle",
+    "previous_lecture_key": "W06L1",
+    "previous_lecture_title": "Fænomenologi (Forelæsning 11, 2026-03-09)",
+    "next_lecture_key": "W07L1",
+    "next_lecture_title": "Eksistentiel personlighedspsykologi II (Bjerregaard-Nielsen) (Forelæsning 13, 2026-03-16)"
+  },
+  "bundle_status": "ready",
+  "readiness_issues": [],
+  "lecture_summary": {
+    "present": true,
+    "summary_lines": [
+      "Forelæsningen samler eksistentielle perspektiver på personlighed, angst og frihed.",
+      "Boss og May forstår psykiske vanskeligheder som indskrænkninger i måder at være-i-verden på.",
+      "Kilderne forbinder ontologiske antagelser direkte med klinisk praksis og fortolkning."
+    ],
+    "key_points": [
+      "Lidelse kan beskrives som begrænsede eksistentielle muligheder.",
+      "Analyse af verdensforhold prioriteres over rene intrapsykiske mekanismer.",
+      "Klinisk arbejde følger levet struktur frem for symptomoptælling alene.",
+      "Angst forstås som et grundvilkår ved frihed og ansvar."
+    ]
+  },
+  "teaching_context": {
+    "lecture_slide_titles": [],
+    "seminar_slide_titles": [],
+    "exercise_slide_titles": []
+  },
+  "source_counts": {
+    "total_sources": 2,
+    "readings": 2,
+    "lecture_slides": 0,
+    "seminar_slides": 0,
+    "exercise_slides": 0,
+    "missing_sources": 0,
+    "manual_reading_summaries_present": 2,
+    "source_analyses_present": 0,
+    "total_pages": 45,
+    "total_estimated_tokens": 0,
+    "source_family_counts": {
+      "reading": 2
+    }
+  },
+  "source_intelligence": {
+    "dominant_language": "unknown",
+    "week_analysis": {
+      "present": false,
+      "sidecars": []
+    },
+    "missing_sources": [],
+    "likely_core_sources": [
+      "w06l2-may-1966-d8406a09",
+      "w06l2-boss-1963-1feb5a5f"
+    ],
+    "likely_supporting_sources": []
+  },
+  "source_priority_order": [
+    {
+      "source_id": "w06l2-may-1966-d8406a09",
+      "title": "May (1966)",
+      "source_family": "reading",
+      "priority_score": 122,
+      "priority_band": "core"
+    },
+    {
+      "source_id": "w06l2-boss-1963-1feb5a5f",
+      "title": "Boss (1963)",
+      "source_family": "reading",
+      "priority_score": 116,
+      "priority_band": "primary"
+    }
+  ],
+  "sources": {
+    "readings": [
+      {
+        "source_id": "w06l2-may-1966-d8406a09",
+        "title": "May (1966)",
+        "source_kind": "reading",
+        "source_family": "reading",
+        "source_filename": "W6L2 May (1966).pdf",
+        "subject_relative_path": "Readings/W6L2 Eksistentiel personlighedspsykologi I (Funch)/W6L2 May (1966).pdf",
+        "source_exists": true,
+        "missing_reason": null,
+        "sequence_index": 2,
+        "language_guess": "unknown",
+        "length_band": "long",
+        "slide_subcategory": null,
+        "priority_score": 122,
+        "priority_band": "core",
+        "priority_reasons": [
+          "reading",
+          "manual summary",
+          "long source"
+        ],
+        "priority_signals": {
+          "is_grundbog": false,
+          "has_manual_summary": true,
+          "has_prompt_analysis_sidecar": false,
+          "lecture_has_week_analysis_sidecar": false
+        },
+        "file": {
+          "page_count": 34,
+          "estimated_token_count": 0,
+          "estimated_word_count": 0,
+          "text_char_count": 0,
+          "text_extraction_status": "no_text",
+          "sha256": "77449515bd1e5c736b97a6b1eb54486db787664decf2d3e5307add092f84d085",
+          "size_bytes": 7251021
+        },
+        "summary": {
+          "present": true,
+          "summary_lines": [
+            "May articulates existential psychology around anxiety, freedom, responsibility, and meaning.",
+            "He treats personality development as confrontation with existential givens rather than linear adjustment alone.",
+            "The text links psychological vitality to courage in the face of uncertainty and conflict."
+          ],
+          "key_points": [
+            "Anxiety is a structural feature of freedom, not merely pathology.",
+            "Responsibility and choice are central developmental tasks.",
+            "Meaning crises can be sources of transformation.",
+            "Existential analysis reframes symptoms within broader life projects."
+          ]
+        },
+        "analysis": {
+          "present": false,
+          "sidecars": []
+        }
+      },
+      {
+        "source_id": "w06l2-boss-1963-1feb5a5f",
+        "title": "Boss (1963)",
+        "source_kind": "reading",
+        "source_family": "reading",
+        "source_filename": "W6L2 Boss (1963).pdf",
+        "subject_relative_path": "Readings/W6L2 Eksistentiel personlighedspsykologi I (Funch)/W6L2 Boss (1963).pdf",
+        "source_exists": true,
+        "missing_reason": null,
+        "sequence_index": 1,
+        "language_guess": "unknown",
+        "length_band": "medium",
+        "slide_subcategory": null,
+        "priority_score": 116,
+        "priority_band": "primary",
+        "priority_reasons": [
+          "reading",
+          "manual summary",
+          "medium source"
+        ],
+        "priority_signals": {
+          "is_grundbog": false,
+          "has_manual_summary": true,
+          "has_prompt_analysis_sidecar": false,
+          "lecture_has_week_analysis_sidecar": false
+        },
+        "file": {
+          "page_count": 11,
+          "estimated_token_count": 0,
+          "estimated_word_count": 0,
+          "text_char_count": 0,
+          "text_extraction_status": "no_text",
+          "sha256": "f2273465cc0bc5961d4612c7dada5a4233fe8bcac3b436bacb67ad5cb3d80481",
+          "size_bytes": 1837265
+        },
+        "summary": {
+          "present": true,
+          "summary_lines": [
+            "Boss develops Daseinsanalytic perspectives that reinterpret psychopathology through modes of being-in-the-world.",
+            "He critiques mechanistic explanatory models and emphasizes existential openness and restriction.",
+            "Personality understanding is grounded in how existence is disclosed in concrete situations."
+          ],
+          "key_points": [
+            "Psychological suffering can be read as constricted possibilities of being.",
+            "Existential analysis prioritizes world-relation over intrapsychic mechanics alone.",
+            "Clinical interpretation tracks lived structure rather than symptom counting.",
+            "Ontology and therapy are methodologically connected."
+          ]
+        },
+        "analysis": {
+          "present": false,
+          "sidecars": []
+        }
+      }
+    ],
+    "lecture_slides": [],
+    "seminar_slides": [],
+    "exercise_slides": []
+  },
+  "manifest_warnings": []
+}

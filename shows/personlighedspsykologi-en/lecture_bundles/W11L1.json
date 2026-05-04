@@ -1,0 +1,293 @@
+{
+  "version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-04T19:35:41Z",
+  "lecture_key": "W11L1",
+  "lecture_title": "Poststrukturalisme, diskursiv psykologi og feministisk teori (Forelæsning 20, 2026-04-20)",
+  "sequence_index": 20,
+  "course_position": {
+    "index": 20,
+    "total_lectures": 22,
+    "stage": "closing",
+    "previous_lecture_key": "W10L2",
+    "previous_lecture_title": "Sociokulturelle teorier - socialkonstruktionisme og poststrukturalisme (Forelæsning 19, 2026-04-14)",
+    "next_lecture_key": "W11L2",
+    "next_lecture_title": "Narrativitet, kultur og mening (Forelæsning 21, 2026-04-21)"
+  },
+  "bundle_status": "ready",
+  "readiness_issues": [],
+  "lecture_summary": {
+    "present": true,
+    "summary_lines": [
+      "Forelæsningen samler socialkonstruktionistiske bidrag til personlighedsforståelse.",
+      "Kilderne kritiserer individualistiske modeller og fremhæver, at psykologiske realiteter skabes relationelt i sprog og praksis.",
+      "Personlighed beskrives som løbende subjektivering, historisk organiseret gennem sociale og politiske ordener."
+    ],
+    "key_points": [
+      "Psykologisk viden formes i fælles diskursive praksisser.",
+      "Selvet er relationelt konstitueret frem for selvindesluttet.",
+      "Psykologiske kategorier er kulturelt og historisk betingede.",
+      "Analyse bør følge de praksisser, der producerer delte virkeligheder."
+    ]
+  },
+  "teaching_context": {
+    "lecture_slide_titles": [],
+    "seminar_slide_titles": [],
+    "exercise_slide_titles": []
+  },
+  "source_counts": {
+    "total_sources": 3,
+    "readings": 3,
+    "lecture_slides": 0,
+    "seminar_slides": 0,
+    "exercise_slides": 0,
+    "missing_sources": 0,
+    "manual_reading_summaries_present": 3,
+    "source_analyses_present": 3,
+    "total_pages": 107,
+    "total_estimated_tokens": 41499,
+    "source_family_counts": {
+      "reading": 3
+    }
+  },
+  "source_intelligence": {
+    "dominant_language": "en",
+    "week_analysis": {
+      "present": true,
+      "sidecars": [
+        {
+          "relative_path": "Readings/W11L1 Poststrukturalisme, diskursiv psykologi og feministisk teori/week.analysis.md",
+          "content": "## Shared problem\n* All three texts fundamentally challenge the traditional ontology of the \"self-contained individual\" or essentialist \"personality.\" They reject the causal model where an inner, stable trait (e.g., \"Personality A\") dictates behavior, instead reframing the person",
+          "char_count": 280
+        }
+      ]
+    },
+    "missing_sources": [],
+    "likely_core_sources": [
+      "w11l1-grundbog-kapitel-11-postpsykologisk-subjektiveri-3557aeb2",
+      "w11l1-gergen-1999-73c2217e",
+      "w11l1-hacking-2007-10236bf4"
+    ],
+    "likely_supporting_sources": []
+  },
+  "source_priority_order": [
+    {
+      "source_id": "w11l1-grundbog-kapitel-11-postpsykologisk-subjektiveri-3557aeb2",
+      "title": "Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori",
+      "source_family": "reading",
+      "priority_score": 146,
+      "priority_band": "core"
+    },
+    {
+      "source_id": "w11l1-gergen-1999-73c2217e",
+      "title": "Gergen (1999)",
+      "source_family": "reading",
+      "priority_score": 142,
+      "priority_band": "core"
+    },
+    {
+      "source_id": "w11l1-hacking-2007-10236bf4",
+      "title": "Hacking (2007)",
+      "source_family": "reading",
+      "priority_score": 142,
+      "priority_band": "core"
+    }
+  ],
+  "sources": {
+    "readings": [
+      {
+        "source_id": "w11l1-grundbog-kapitel-11-postpsykologisk-subjektiveri-3557aeb2",
+        "title": "Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori",
+        "source_kind": "reading",
+        "source_family": "reading",
+        "source_filename": "W11L1 Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori.pdf",
+        "subject_relative_path": "Readings/W11L1 Poststrukturalisme, diskursiv psykologi og feministisk teori/W11L1 Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori.pdf",
+        "source_exists": true,
+        "missing_reason": null,
+        "sequence_index": 3,
+        "language_guess": "unknown",
+        "length_band": "long",
+        "slide_subcategory": null,
+        "priority_score": 146,
+        "priority_band": "core",
+        "priority_reasons": [
+          "reading",
+          "grundbog",
+          "manual summary",
+          "analysis sidecar",
+          "week analysis",
+          "long source"
+        ],
+        "priority_signals": {
+          "is_grundbog": true,
+          "has_manual_summary": true,
+          "has_prompt_analysis_sidecar": true,
+          "lecture_has_week_analysis_sidecar": true
+        },
+        "file": {
+          "page_count": 45,
+          "estimated_token_count": 0,
+          "estimated_word_count": 0,
+          "text_char_count": 0,
+          "text_extraction_status": "no_text",
+          "sha256": "10d935e615f3907f87768d59dd501416dd7bfeb97f4f24b3561f6bec8fee4eb1",
+          "size_bytes": 7251858
+        },
+        "summary": {
+          "present": true,
+          "summary_lines": [
+            "Kapitlet omformulerer personlighed som løbende subjektivering frem for en fast indre kerne.",
+            "Det analyserer, hvordan institutioner, normer og diskurser producerer bestemte subjektpositioner.",
+            "Handlekraft forstås som situeret forhandling af positioner med mulighed for modstand og forskydning."
+          ],
+          "key_points": [
+            "Subjektpositioner er historisk og politisk organiserede.",
+            "Identitet er processuel og skabes i praksis.",
+            "Normalisering regulerer adfærd gennem personkategorier.",
+            "Forandring sker ved ompositionering i magtrelationer."
+          ]
+        },
+        "analysis": {
+          "present": true,
+          "sidecars": [
+            {
+              "relative_path": "Readings/W11L1 Poststrukturalisme, diskursiv psykologi og feministisk teori/W11L1 Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori.analysis.md",
+              "content": "## Core distinctions\n*   **\"Personality\" vs. \"Subjectivity\":** Traditional humanistic psychology treats \"personality\" as a fixed, internal, and bounded core that causes behavior. Post-psychology replaces this with \"subjectivity\"—a fluid, decentered, and",
+              "char_count": 253
+            }
+          ]
+        }
+      },
+      {
+        "source_id": "w11l1-gergen-1999-73c2217e",
+        "title": "Gergen (1999)",
+        "source_kind": "reading",
+        "source_family": "reading",
+        "source_filename": "W11L1 Gergen (1999).pdf",
+        "subject_relative_path": "Readings/W11L1 Poststrukturalisme, diskursiv psykologi og feministisk teori/W11L1 Gergen (1999).pdf",
+        "source_exists": true,
+        "missing_reason": null,
+        "sequence_index": 1,
+        "language_guess": "en",
+        "length_band": "long",
+        "slide_subcategory": null,
+        "priority_score": 142,
+        "priority_band": "core",
+        "priority_reasons": [
+          "reading",
+          "manual summary",
+          "analysis sidecar",
+          "week analysis",
+          "long source",
+          "very substantial"
+        ],
+        "priority_signals": {
+          "is_grundbog": false,
+          "has_manual_summary": true,
+          "has_prompt_analysis_sidecar": true,
+          "lecture_has_week_analysis_sidecar": true
+        },
+        "file": {
+          "page_count": 28,
+          "estimated_token_count": 20277,
+          "estimated_word_count": 13021,
+          "text_char_count": 81107,
+          "text_extraction_status": "ok",
+          "sha256": "f5f054e8b91c83a02ce65b72d9bfd7bc5e0e435993a635791f5ff41b040d3684",
+          "size_bytes": 216630
+        },
+        "summary": {
+          "present": true,
+          "summary_lines": [
+            "Gergen presents a social constructionist view in which psychological realities are generated in relational processes.",
+            "He challenges individualist models by emphasizing language, culture, and coordinated action.",
+            "The text argues that personhood is historically variable and pragmatically sustained in social life."
+          ],
+          "key_points": [
+            "Knowledge claims are shaped by communal practices and discourse.",
+            "The self is relationally constituted rather than self-contained.",
+            "Psychological categories are culturally contingent and revisable.",
+            "Theory should track practices that create shared realities."
+          ]
+        },
+        "analysis": {
+          "present": true,
+          "sidecars": [
+            {
+              "relative_path": "Readings/W11L1 Poststrukturalisme, diskursiv psykologi og feministisk teori/W11L1 Gergen (1999).analysis.md",
+              "content": "## Core distinctions\n*   **Reflexive inquiry vs. Generative theory:** Reflexive inquiry merely critiques and reflects on traditional realities; generative theory actively invents new vocabularies, metaphors, and paradigms to transcend old binaries.\n*   **Individualist \"",
+              "char_count": 270
+            }
+          ]
+        }
+      },
+      {
+        "source_id": "w11l1-hacking-2007-10236bf4",
+        "title": "Hacking (2007)",
+        "source_kind": "reading",
+        "source_family": "reading",
+        "source_filename": "W11L1 Hacking (2007).pdf",
+        "subject_relative_path": "Readings/W11L1 Poststrukturalisme, diskursiv psykologi og feministisk teori/W11L1 Hacking (2007).pdf",
+        "source_exists": true,
+        "missing_reason": null,
+        "sequence_index": 2,
+        "language_guess": "en",
+        "length_band": "long",
+        "slide_subcategory": null,
+        "priority_score": 142,
+        "priority_band": "core",
+        "priority_reasons": [
+          "reading",
+          "manual summary",
+          "analysis sidecar",
+          "week analysis",
+          "long source",
+          "very substantial"
+        ],
+        "priority_signals": {
+          "is_grundbog": false,
+          "has_manual_summary": true,
+          "has_prompt_analysis_sidecar": true,
+          "lecture_has_week_analysis_sidecar": true
+        },
+        "file": {
+          "page_count": 34,
+          "estimated_token_count": 21222,
+          "estimated_word_count": 14408,
+          "text_char_count": 84887,
+          "text_extraction_status": "ok",
+          "sha256": "972bdd056c227738af1268d1112b2d4da825a5aeb757b9740aeab62becb48751",
+          "size_bytes": 211529
+        },
+        "summary": {
+          "present": true,
+          "summary_lines": [
+            "Hacking analyzes how human classifications interact with the people classified, producing looping effects.",
+            "Categories in the human sciences can change behavior, self-understanding, and institutional responses.",
+            "The text highlights the dynamic co-production of kinds, knowledge, and persons."
+          ],
+          "key_points": [
+            "Human kinds are interactive rather than merely natural descriptors.",
+            "Classification practices can reshape the classified population.",
+            "Institutional uptake stabilizes some categories and destabilizes others.",
+            "Ontology and politics of categories are tightly connected."
+          ]
+        },
+        "analysis": {
+          "present": true,
+          "sidecars": [
+            {
+              "relative_path": "Readings/W11L1 Poststrukturalisme, diskursiv psykologi og feministisk teori/W11L1 Hacking (2007).analysis.md",
+              "content": "only? Yes. 2-4 bullets per heading? Yes (3 for distinctions, 3 for tensions, 3 for misunderstandings, 3 for analytical moves). Grounded in material? Yes (specifically refers to MPD, Autism, BMI,",
+              "char_count": 194
+            }
+          ]
+        }
+      }
+    ],
+    "lecture_slides": [],
+    "seminar_slides": [],
+    "exercise_slides": []
+  },
+  "manifest_warnings": []
+}

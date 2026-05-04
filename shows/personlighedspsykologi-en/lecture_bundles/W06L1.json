@@ -1,0 +1,320 @@
+{
+  "version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-04T19:35:41Z",
+  "lecture_key": "W06L1",
+  "lecture_title": "Fænomenologi (Forelæsning 11, 2026-03-09)",
+  "sequence_index": 11,
+  "course_position": {
+    "index": 11,
+    "total_lectures": 22,
+    "stage": "early-middle",
+    "previous_lecture_key": "W05L2",
+    "previous_lecture_title": "Psykoanalysens konstituering (Forelæsning 10, 2026-03-03)",
+    "next_lecture_key": "W06L2",
+    "next_lecture_title": "Eksistentiel personlighedspsykologi I (Funch) (Forelæsning 12, 2026-03-10)"
+  },
+  "bundle_status": "ready",
+  "readiness_issues": [],
+  "lecture_summary": {
+    "present": true,
+    "summary_lines": [
+      "Kilderne udvikler en fænomenologisk tilgang til personlighed med udgangspunkt i levet erfaring.",
+      "Analysen flyttes fra abstrakte variabler til personens konkrete relation til verden, krop og mening.",
+      "Forelæsningen fremhæver personlighed som situeret organisering af erfaring på tværs af sammenhænge."
+    ],
+    "key_points": [
+      "Førstepersonsperspektivet er en legitim og nødvendig videnskilde.",
+      "Mening opstår i personens praktiske engagement i verden.",
+      "Metoden prioriterer deskriptiv og fortolkende stringens.",
+      "Handlekraft og sårbarhed analyseres som samtidige vilkår."
+    ]
+  },
+  "teaching_context": {
+    "lecture_slide_titles": [
+      "11. Fænomenologisk personlighedspsykologi2026"
+    ],
+    "seminar_slide_titles": [],
+    "exercise_slide_titles": []
+  },
+  "source_counts": {
+    "total_sources": 4,
+    "readings": 3,
+    "lecture_slides": 1,
+    "seminar_slides": 0,
+    "exercise_slides": 0,
+    "missing_sources": 0,
+    "manual_reading_summaries_present": 3,
+    "source_analyses_present": 0,
+    "total_pages": 127,
+    "total_estimated_tokens": 41896,
+    "source_family_counts": {
+      "lecture_slide": 1,
+      "reading": 3
+    }
+  },
+  "source_intelligence": {
+    "dominant_language": "en",
+    "week_analysis": {
+      "present": false,
+      "sidecars": []
+    },
+    "missing_sources": [],
+    "likely_core_sources": [
+      "w06l1-grundbog-kapitel-4-f-nomenologisk-personlighedsp-1afa74d2",
+      "w06l1-moesk-r-hansen-and-roald-2022-b7aec462",
+      "w06l1-spinelli-2005-b2f76e93"
+    ],
+    "likely_supporting_sources": [
+      "w06l1-lecture-11-f-nomenologisk-personlighedspsykologi2026-6303af4b"
+    ]
+  },
+  "source_priority_order": [
+    {
+      "source_id": "w06l1-grundbog-kapitel-4-f-nomenologisk-personlighedsp-1afa74d2",
+      "title": "Grundbog kapitel 04 - Fænomenologisk personlighedspsykologi",
+      "source_family": "reading",
+      "priority_score": 134,
+      "priority_band": "core"
+    },
+    {
+      "source_id": "w06l1-moesk-r-hansen-and-roald-2022-b7aec462",
+      "title": "Moeskær Hansen & Roald (2022)",
+      "source_family": "reading",
+      "priority_score": 130,
+      "priority_band": "core"
+    },
+    {
+      "source_id": "w06l1-spinelli-2005-b2f76e93",
+      "title": "Spinelli (2005)",
+      "source_family": "reading",
+      "priority_score": 130,
+      "priority_band": "core"
+    },
+    {
+      "source_id": "w06l1-lecture-11-f-nomenologisk-personlighedspsykologi2026-6303af4b",
+      "title": "11. Fænomenologisk personlighedspsykologi2026",
+      "source_family": "lecture_slide",
+      "priority_score": 84,
+      "priority_band": "supporting"
+    }
+  ],
+  "sources": {
+    "readings": [
+      {
+        "source_id": "w06l1-grundbog-kapitel-4-f-nomenologisk-personlighedsp-1afa74d2",
+        "title": "Grundbog kapitel 04 - Fænomenologisk personlighedspsykologi",
+        "source_kind": "reading",
+        "source_family": "reading",
+        "source_filename": "W6L1 Grundbog kapitel 4 - Fænomenologisk personlighedspsykologi.pdf",
+        "subject_relative_path": "Readings/W6L1 Fænomenologi/W6L1 Grundbog kapitel 4 - Fænomenologisk personlighedspsykologi.pdf",
+        "source_exists": true,
+        "missing_reason": null,
+        "sequence_index": 3,
+        "language_guess": "da",
+        "length_band": "long",
+        "slide_subcategory": null,
+        "priority_score": 134,
+        "priority_band": "core",
+        "priority_reasons": [
+          "reading",
+          "grundbog",
+          "manual summary",
+          "long source"
+        ],
+        "priority_signals": {
+          "is_grundbog": true,
+          "has_manual_summary": true,
+          "has_prompt_analysis_sidecar": false,
+          "lecture_has_week_analysis_sidecar": false
+        },
+        "file": {
+          "page_count": 42,
+          "estimated_token_count": 0,
+          "estimated_word_count": 0,
+          "text_char_count": 0,
+          "text_extraction_status": "no_text",
+          "sha256": "9fb14a0d901571850fcd7780042ce56bddd350cd3d5e74155fa707b067d2eee2",
+          "size_bytes": 6926924
+        },
+        "summary": {
+          "present": true,
+          "summary_lines": [
+            "Kapitlet udvikler en fænomenologisk tilgang til personlighed med udgangspunkt i levet erfaring og mening.",
+            "Analysen flyttes fra abstrakte træk til person-verdensrelationer, krop og intentionalitet.",
+            "Personlighed forstås som en situeret organisering af erfaring på tværs af konkrete livssammenhænge."
+          ],
+          "key_points": [
+            "Førstepersonsperspektivet er en central kilde til psykologisk viden.",
+            "Mening dannes relationelt i personens engagement i verden.",
+            "Metoden prioriterer deskriptiv og fortolkende stringens frem for reduktionisme.",
+            "Handlekraft og sårbarhed analyseres som samtidige vilkår."
+          ]
+        },
+        "analysis": {
+          "present": false,
+          "sidecars": []
+        }
+      },
+      {
+        "source_id": "w06l1-moesk-r-hansen-and-roald-2022-b7aec462",
+        "title": "Moeskær Hansen & Roald (2022)",
+        "source_kind": "reading",
+        "source_family": "reading",
+        "source_filename": "W6L1 Moeskær Hansen & Roald (2022).pdf",
+        "subject_relative_path": "Readings/W6L1 Fænomenologi/W6L1 Moeskær Hansen & Roald (2022).pdf",
+        "source_exists": true,
+        "missing_reason": null,
+        "sequence_index": 2,
+        "language_guess": "en",
+        "length_band": "long",
+        "slide_subcategory": null,
+        "priority_score": 130,
+        "priority_band": "core",
+        "priority_reasons": [
+          "reading",
+          "manual summary",
+          "long source",
+          "very substantial"
+        ],
+        "priority_signals": {
+          "is_grundbog": false,
+          "has_manual_summary": true,
+          "has_prompt_analysis_sidecar": false,
+          "lecture_has_week_analysis_sidecar": false
+        },
+        "file": {
+          "page_count": 26,
+          "estimated_token_count": 17946,
+          "estimated_word_count": 11088,
+          "text_char_count": 71784,
+          "text_extraction_status": "ok",
+          "sha256": "c490397f81c6a46a1ffc55e5df3169304e72babd96e6b9b4504492cb897034e9",
+          "size_bytes": 1868381
+        },
+        "summary": {
+          "present": true,
+          "summary_lines": [
+            "This text applies phenomenological analysis to contemporary questions of selfhood and psychological understanding.",
+            "It emphasizes experiential structure, embodied perspective, and contextual meaning-making.",
+            "The argument supports non-reductionist methods for studying persons in lived situations."
+          ],
+          "key_points": [
+            "Experience is structured and analyzable without reducing it to variables alone.",
+            "Embodiment is central for understanding affect and orientation.",
+            "Interpretation must remain close to concrete life-world contexts.",
+            "Phenomenological method complements but does not mirror natural-science designs."
+          ]
+        },
+        "analysis": {
+          "present": false,
+          "sidecars": []
+        }
+      },
+      {
+        "source_id": "w06l1-spinelli-2005-b2f76e93",
+        "title": "Spinelli (2005)",
+        "source_kind": "reading",
+        "source_family": "reading",
+        "source_filename": "W6L1 Spinelli (2005).pdf",
+        "subject_relative_path": "Readings/W6L1 Fænomenologi/W6L1 Spinelli (2005).pdf",
+        "source_exists": true,
+        "missing_reason": null,
+        "sequence_index": 1,
+        "language_guess": "en",
+        "length_band": "long",
+        "slide_subcategory": null,
+        "priority_score": 130,
+        "priority_band": "core",
+        "priority_reasons": [
+          "reading",
+          "manual summary",
+          "long source",
+          "very substantial"
+        ],
+        "priority_signals": {
+          "is_grundbog": false,
+          "has_manual_summary": true,
+          "has_prompt_analysis_sidecar": false,
+          "lecture_has_week_analysis_sidecar": false
+        },
+        "file": {
+          "page_count": 30,
+          "estimated_token_count": 21887,
+          "estimated_word_count": 14202,
+          "text_char_count": 87545,
+          "text_extraction_status": "ok",
+          "sha256": "e23116af10e9d41eba0997b54e170dad68f1153977135159d8180f79ccbeb77c",
+          "size_bytes": 140449
+        },
+        "summary": {
+          "present": true,
+          "summary_lines": [
+            "Spinelli presents an existential-phenomenological framework for understanding personhood and therapeutic encounter.",
+            "The text examines anxiety, meaning, and freedom as basic dimensions of lived existence.",
+            "It argues for dialogical, descriptive engagement rather than pathologizing reduction."
+          ],
+          "key_points": [
+            "Existential themes organize many forms of distress and growth.",
+            "Therapeutic understanding requires bracketed attention to lived world.",
+            "Meaning is co-constructed in relational dialogue.",
+            "Methodological stance shapes what can become psychologically visible."
+          ]
+        },
+        "analysis": {
+          "present": false,
+          "sidecars": []
+        }
+      }
+    ],
+    "lecture_slides": [
+      {
+        "source_id": "w06l1-lecture-11-f-nomenologisk-personlighedspsykologi2026-6303af4b",
+        "title": "11. Fænomenologisk personlighedspsykologi2026",
+        "source_kind": "slide",
+        "source_family": "lecture_slide",
+        "source_filename": "11. Fænomenologisk personlighedspsykologi2026.pdf",
+        "subject_relative_path": "Forelæsningsrækken/11. Fænomenologisk personlighedspsykologi2026.pdf",
+        "source_exists": true,
+        "missing_reason": null,
+        "sequence_index": null,
+        "language_guess": "da",
+        "length_band": "long",
+        "slide_subcategory": "lecture",
+        "priority_score": 84,
+        "priority_band": "supporting",
+        "priority_reasons": [
+          "lecture_slide",
+          "long source"
+        ],
+        "priority_signals": {
+          "is_grundbog": false,
+          "has_manual_summary": false,
+          "has_prompt_analysis_sidecar": false,
+          "lecture_has_week_analysis_sidecar": false
+        },
+        "file": {
+          "page_count": 29,
+          "estimated_token_count": 2063,
+          "estimated_word_count": 1061,
+          "text_char_count": 8252,
+          "text_extraction_status": "ok",
+          "sha256": "828a1236769402847c2110564b96afa78c38bd82c64e7ea6f529888487c926a8",
+          "size_bytes": 471274
+        },
+        "summary": {
+          "present": false,
+          "summary_lines": [],
+          "key_points": []
+        },
+        "analysis": {
+          "present": false,
+          "sidecars": []
+        }
+      }
+    ],
+    "seminar_slides": [],
+    "exercise_slides": []
+  },
+  "manifest_warnings": []
+}

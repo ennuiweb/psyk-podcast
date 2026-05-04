@@ -1,0 +1,312 @@
+{
+  "version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-04T19:35:41Z",
+  "lecture_key": "W01L1",
+  "lecture_title": "Introforelæsning og nøglebegreber i personlighedspsykologien (Forelæsning 1, 2026-02-02)",
+  "sequence_index": 1,
+  "course_position": {
+    "index": 1,
+    "total_lectures": 22,
+    "stage": "opening",
+    "previous_lecture_key": null,
+    "previous_lecture_title": null,
+    "next_lecture_key": "W01L2",
+    "next_lecture_title": "Personality assessment (Forelæsning 2, 2026-02-03)"
+  },
+  "bundle_status": "ready",
+  "readiness_issues": [],
+  "lecture_summary": {
+    "present": true,
+    "summary_lines": [
+      "Forelæsningen introducerer personlighedspsykologiens kernebegreber og viser, hvordan forskellige teorier afgrænser personlighed forskelligt.",
+      "Grundbogsteksten samler de centrale faglige stridspunkter om stabilitet, forandring og forklaringsniveau.",
+      "Lewis supplerer med et udviklingsperspektiv, hvor selvbevidste følelser kobles til selvet og personlighedsorganisering."
+    ],
+    "key_points": [
+      "Valg af personlighedsdefinition styrer både metodevalg og tolkning af data.",
+      "Kontinuitet og forandring bør forstås som samtidige processer.",
+      "Teorier prioriterer biologiske, sociale og erfaringsnære forklaringer forskelligt.",
+      "Selvbevidste følelser er centrale for udviklingen af et reflekteret selv."
+    ]
+  },
+  "teaching_context": {
+    "lecture_slide_titles": [
+      "1. gang . Introduktin PP 2026"
+    ],
+    "seminar_slide_titles": [
+      "1. Introduktion"
+    ],
+    "exercise_slide_titles": []
+  },
+  "source_counts": {
+    "total_sources": 4,
+    "readings": 2,
+    "lecture_slides": 1,
+    "seminar_slides": 1,
+    "exercise_slides": 0,
+    "missing_sources": 0,
+    "manual_reading_summaries_present": 2,
+    "source_analyses_present": 0,
+    "total_pages": 77,
+    "total_estimated_tokens": 27602,
+    "source_family_counts": {
+      "lecture_slide": 1,
+      "reading": 2,
+      "seminar_slide": 1
+    }
+  },
+  "source_intelligence": {
+    "dominant_language": "en",
+    "week_analysis": {
+      "present": false,
+      "sidecars": []
+    },
+    "missing_sources": [],
+    "likely_core_sources": [
+      "w01l1-grundbog-kapitel-1-introduktion-til-personlighed-1e727647",
+      "w01l1-lewis-1999-295c67e3"
+    ],
+    "likely_supporting_sources": [
+      "w01l1-lecture-1-gang-introduktin-pp-2026-e5a501d8"
+    ]
+  },
+  "source_priority_order": [
+    {
+      "source_id": "w01l1-grundbog-kapitel-1-introduktion-til-personlighed-1e727647",
+      "title": "Grundbog kapitel 01 - Introduktion til personlighedspsykologi",
+      "source_family": "reading",
+      "priority_score": 128,
+      "priority_band": "core"
+    },
+    {
+      "source_id": "w01l1-lewis-1999-295c67e3",
+      "title": "Lewis (1999)",
+      "source_family": "reading",
+      "priority_score": 124,
+      "priority_band": "core"
+    },
+    {
+      "source_id": "w01l1-lecture-1-gang-introduktin-pp-2026-e5a501d8",
+      "title": "1. gang . Introduktin PP 2026",
+      "source_family": "lecture_slide",
+      "priority_score": 78,
+      "priority_band": "supporting"
+    },
+    {
+      "source_id": "w01l1-seminar-1-introduktion-9fe382c8",
+      "title": "1. Introduktion",
+      "source_family": "seminar_slide",
+      "priority_score": 64,
+      "priority_band": "contextual"
+    }
+  ],
+  "sources": {
+    "readings": [
+      {
+        "source_id": "w01l1-grundbog-kapitel-1-introduktion-til-personlighed-1e727647",
+        "title": "Grundbog kapitel 01 - Introduktion til personlighedspsykologi",
+        "source_kind": "reading",
+        "source_family": "reading",
+        "source_filename": "W1L1 Grundbog kapitel 1 - Introduktion til personlighedspsykologi.pdf",
+        "subject_relative_path": "Readings/W1L1 Introforelæsning og nøglebegreber i personlighedspsykologien/W1L1 Grundbog kapitel 1 - Introduktion til personlighedspsykologi.pdf",
+        "source_exists": true,
+        "missing_reason": null,
+        "sequence_index": 1,
+        "language_guess": "da",
+        "length_band": "medium",
+        "slide_subcategory": null,
+        "priority_score": 128,
+        "priority_band": "core",
+        "priority_reasons": [
+          "reading",
+          "grundbog",
+          "manual summary",
+          "medium source"
+        ],
+        "priority_signals": {
+          "is_grundbog": true,
+          "has_manual_summary": true,
+          "has_prompt_analysis_sidecar": false,
+          "lecture_has_week_analysis_sidecar": false
+        },
+        "file": {
+          "page_count": 22,
+          "estimated_token_count": 0,
+          "estimated_word_count": 0,
+          "text_char_count": 0,
+          "text_extraction_status": "no_text",
+          "sha256": "9b9e05f4eda46470c9aaad64b608b201e9664cf668d83a9f2f0fef35b98b8539",
+          "size_bytes": 3073301
+        },
+        "summary": {
+          "present": true,
+          "summary_lines": [
+            "Introduktionskapitlet kortlægger centrale spørgsmål, begreber og stridspunkter i personlighedspsykologi.",
+            "Det sammenholder hovedtraditioner og viser, hvordan antagelser former metoder og resultater.",
+            "Personlighed fremstilles både som mønstret kontinuitet og kontekstfølsom forandring."
+          ],
+          "key_points": [
+            "Definitioner af personlighed bestemmer, hvad der tæller som evidens.",
+            "Forskellige paradigmer prioriterer forskellige forklaringsniveauer.",
+            "Kontinuitet og forandring er begge grundproblemer i forskningen.",
+            "Teorivalg har både praktiske og etiske konsekvenser."
+          ]
+        },
+        "analysis": {
+          "present": false,
+          "sidecars": []
+        }
+      },
+      {
+        "source_id": "w01l1-lewis-1999-295c67e3",
+        "title": "Lewis (1999)",
+        "source_kind": "reading",
+        "source_family": "reading",
+        "source_filename": "W1L1 Lewis (1999).pdf",
+        "subject_relative_path": "Readings/W1L1 Introforelæsning og nøglebegreber i personlighedspsykologien/W1L1 Lewis (1999).pdf",
+        "source_exists": true,
+        "missing_reason": null,
+        "sequence_index": 2,
+        "language_guess": "en",
+        "length_band": "medium",
+        "slide_subcategory": null,
+        "priority_score": 124,
+        "priority_band": "core",
+        "priority_reasons": [
+          "reading",
+          "manual summary",
+          "medium source",
+          "very substantial"
+        ],
+        "priority_signals": {
+          "is_grundbog": false,
+          "has_manual_summary": true,
+          "has_prompt_analysis_sidecar": false,
+          "lecture_has_week_analysis_sidecar": false
+        },
+        "file": {
+          "page_count": 18,
+          "estimated_token_count": 23080,
+          "estimated_word_count": 14887,
+          "text_char_count": 92320,
+          "text_extraction_status": "ok",
+          "sha256": "bb02585a1ceda5c22c905f7f025a60e44fd5f9153712492625bc681624646ef9",
+          "size_bytes": 261872
+        },
+        "summary": {
+          "present": true,
+          "summary_lines": [
+            "Lewis examines the development of self-conscious emotions and their role in personality organization.",
+            "The text connects emotion, self-evaluation, and socialization processes in early development.",
+            "It argues that emotions like shame, guilt, and pride depend on emerging self-representational capacities."
+          ],
+          "key_points": [
+            "Self-conscious emotions require reflexive awareness of self.",
+            "Social norms and feedback shape emotional differentiation.",
+            "Emotion development contributes to self-regulation and identity.",
+            "Early relational contexts influence later personality pathways."
+          ]
+        },
+        "analysis": {
+          "present": false,
+          "sidecars": []
+        }
+      }
+    ],
+    "lecture_slides": [
+      {
+        "source_id": "w01l1-lecture-1-gang-introduktin-pp-2026-e5a501d8",
+        "title": "1. gang . Introduktin PP 2026",
+        "source_kind": "slide",
+        "source_family": "lecture_slide",
+        "source_filename": "1. gang . Introduktin PP 2026.pdf",
+        "subject_relative_path": "Forelæsningsrækken/1. gang . Introduktin PP 2026.pdf",
+        "source_exists": true,
+        "missing_reason": null,
+        "sequence_index": null,
+        "language_guess": "da",
+        "length_band": "medium",
+        "slide_subcategory": "lecture",
+        "priority_score": 78,
+        "priority_band": "supporting",
+        "priority_reasons": [
+          "lecture_slide",
+          "medium source"
+        ],
+        "priority_signals": {
+          "is_grundbog": false,
+          "has_manual_summary": false,
+          "has_prompt_analysis_sidecar": false,
+          "lecture_has_week_analysis_sidecar": false
+        },
+        "file": {
+          "page_count": 14,
+          "estimated_token_count": 2558,
+          "estimated_word_count": 1472,
+          "text_char_count": 10232,
+          "text_extraction_status": "ok",
+          "sha256": "5c77a440f078a2b8939265b0b29df632f3a3aa065c28fce37ac09d9ae8730cd5",
+          "size_bytes": 371038
+        },
+        "summary": {
+          "present": false,
+          "summary_lines": [],
+          "key_points": []
+        },
+        "analysis": {
+          "present": false,
+          "sidecars": []
+        }
+      }
+    ],
+    "seminar_slides": [
+      {
+        "source_id": "w01l1-seminar-1-introduktion-9fe382c8",
+        "title": "1. Introduktion",
+        "source_kind": "slide",
+        "source_family": "seminar_slide",
+        "source_filename": "1. Introduktion.pdf",
+        "subject_relative_path": "Seminarhold/Slides/1. Introduktion.pdf",
+        "source_exists": true,
+        "missing_reason": null,
+        "sequence_index": null,
+        "language_guess": "da",
+        "length_band": "medium",
+        "slide_subcategory": "seminar",
+        "priority_score": 64,
+        "priority_band": "contextual",
+        "priority_reasons": [
+          "seminar_slide",
+          "medium source"
+        ],
+        "priority_signals": {
+          "is_grundbog": false,
+          "has_manual_summary": false,
+          "has_prompt_analysis_sidecar": false,
+          "lecture_has_week_analysis_sidecar": false
+        },
+        "file": {
+          "page_count": 23,
+          "estimated_token_count": 1964,
+          "estimated_word_count": 1185,
+          "text_char_count": 7853,
+          "text_extraction_status": "ok",
+          "sha256": "a48f03f18a694a676b7b4ad401eeec54f1c1c925b74c69e5a2082925b9c06507",
+          "size_bytes": 1710684
+        },
+        "summary": {
+          "present": false,
+          "summary_lines": [],
+          "key_points": []
+        },
+        "analysis": {
+          "present": false,
+          "sidecars": []
+        }
+      }
+    ],
+    "exercise_slides": []
+  },
+  "manifest_warnings": []
+}

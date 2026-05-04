@@ -374,6 +374,149 @@ quality. It should eventually have:
 - quality review bundles
 - lecture-level acceptance criteria for generated material
 
+## Roadmap Pain Register
+
+The roadmap is driven by a small set of concrete system pains, not by a vague
+wish to “improve architecture”.
+
+### Pain 1: The `Freudd Content Engine` is still too shallow pedagogically
+
+The system can generate useful material, but it still lacks enough structured
+semantic preprocessing upstream to claim it creates the best possible
+conditions for learning material.
+
+Concretely:
+
+- no course glossary
+- no course theory map
+- no strong source weighting
+- no stale invalidation for derived understanding
+- weekly preprocessing is still readings-first rather than a true lecture
+  bundle
+
+### Pain 2: The live architecture is still partially transitional
+
+The system still carries migration-era mixed ownership:
+
+- queue-owned shows
+- legacy-workflow-owned shows
+
+This is pragmatic, but it means some complexity is transitional rather than
+intrinsic.
+
+### Pain 3: Important modules are becoming too concentrated
+
+The current largest maintenance hotspots are:
+
+- `freudd_portal/quizzes/views.py`
+- `freudd_portal/quizzes/content_services.py`
+- `notebooklm_queue/publish.py`
+- `notebooklm_queue/prompting.py`
+- `notebooklm_queue/metadata.py`
+
+The issue is not immediate correctness. It is rising future change-cost and
+reasoning-cost.
+
+### Pain 4: The `Source Intelligence Layer` is still only a baseline
+
+`source_catalog.json` is a strong starting point, but it is still only a
+file-level inventory. The next missing artifacts are:
+
+- `lecture_bundle.json`
+- `course_glossary.json`
+- `course_theory_map.json`
+- hash-based stale/invalidation rules
+
+### Pain 5: Reproducibility is still incomplete
+
+Some important intelligence artifacts still depend on local-only source access.
+That weakens hosted rebuildability and makes the content engine less first-class
+in automated infrastructure than it should be.
+
+### Pain 6: Manual summaries are both a strength and a scaling constraint
+
+Manual summaries improve quality, but they also make the system harder to scale
+cleanly across more courses unless richer deterministic and structured semantic
+layers sit beneath prompt assembly.
+
+## Execution Roadmap
+
+This is the recommended execution order if the goal is to mature the system
+without destabilizing what already works.
+
+### Phase 1: Strengthen the `Source Intelligence Layer`
+
+Goal:
+
+- make the upstream course-understanding layer materially richer before making
+  more prompt changes
+
+Recommended outputs:
+
+1. `source_catalog.json` baseline
+2. lecture-bundle layer
+3. course glossary / theory map
+4. stale/invalidation rules for derived artifacts
+
+Exit condition:
+
+- the engine has a richer deterministic intermediate representation than
+  summaries plus raw prompt sidecars
+
+### Phase 2: Tighten pedagogical selection
+
+Goal:
+
+- improve how the engine decides what matters, not only how it phrases prompts
+
+Recommended outputs:
+
+1. source weighting rules
+2. lecture-level centrality and relevance ranking
+3. stronger slide-informed lecture synthesis
+4. explicit cross-lecture concept reuse
+
+Exit condition:
+
+- prompts are built from ranked and structured course understanding instead of
+  relatively flat context blocks
+
+### Phase 3: Add explicit quality loops
+
+Goal:
+
+- make learning-material quality review a first-class part of the system
+
+Recommended outputs:
+
+1. comparison run bundles
+2. artifact review manifests
+3. lecture-level acceptance criteria
+4. quality scoring or rubric-backed evaluation runs
+
+Exit condition:
+
+- the system can compare generations and judge quality more explicitly than by
+  manual listening alone
+
+### Phase 4: Reduce architectural drag
+
+Goal:
+
+- simplify the system where complexity is transitional rather than essential
+
+Recommended outputs:
+
+1. retire more migration-era dual paths
+2. consolidate publication ownership
+3. split the largest queue and portal hotspots
+4. improve hosted reproducibility for important engine artifacts
+
+Exit condition:
+
+- the steady-state architecture is easier to reason about than the migration
+  architecture
+
 ## Final Assessment
 
 The `Freudd Learning System` is already a strong and unusually capable system.

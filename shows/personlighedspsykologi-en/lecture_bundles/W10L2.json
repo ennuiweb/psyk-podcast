@@ -1,0 +1,285 @@
+{
+  "version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-04T19:35:41Z",
+  "lecture_key": "W10L2",
+  "lecture_title": "Sociokulturelle teorier - socialkonstruktionisme og poststrukturalisme (Forelæsning 19, 2026-04-14)",
+  "sequence_index": 19,
+  "course_position": {
+    "index": 19,
+    "total_lectures": 22,
+    "stage": "closing",
+    "previous_lecture_key": "W10L1",
+    "previous_lecture_title": "Køn (Forelæsning 18, 2026-04-13)",
+    "next_lecture_key": "W11L1",
+    "next_lecture_title": "Poststrukturalisme, diskursiv psykologi og feministisk teori (Forelæsning 20, 2026-04-20)"
+  },
+  "bundle_status": "ready",
+  "readiness_issues": [],
+  "lecture_summary": {
+    "present": true,
+    "summary_lines": [
+      "Kilderne samler poststrukturalistiske perspektiver på etik, subjektivering og magt.",
+      "Foucault omformulerer etik som praksisser for selvforhold i historiske magtrelationer.",
+      "Davies viser, hvordan subjektet bliver til gennem diskurser og positionering i sociale praksisser."
+    ],
+    "key_points": [
+      "Subjektivitet skabes gennem praksis og diskurs, ikke som en fast indre essens.",
+      "Selvomsorg er en relationel og politisk praksis, ikke privat selvoptimering.",
+      "Frihed udøves inden for magtrelationer gennem refleksiv transformation.",
+      "Etik handler om livsform og selvstyring i konkrete historiske kontekster."
+    ]
+  },
+  "teaching_context": {
+    "lecture_slide_titles": [
+      "19. gang Sociokulturelle teorier"
+    ],
+    "seminar_slide_titles": [],
+    "exercise_slide_titles": []
+  },
+  "source_counts": {
+    "total_sources": 3,
+    "readings": 2,
+    "lecture_slides": 1,
+    "seminar_slides": 0,
+    "exercise_slides": 0,
+    "missing_sources": 0,
+    "manual_reading_summaries_present": 2,
+    "source_analyses_present": 3,
+    "total_pages": 77,
+    "total_estimated_tokens": 4523,
+    "source_family_counts": {
+      "lecture_slide": 1,
+      "reading": 2
+    }
+  },
+  "source_intelligence": {
+    "dominant_language": "da",
+    "week_analysis": {
+      "present": true,
+      "sidecars": [
+        {
+          "relative_path": "Readings/W10L2 Sociokulturelle teorier - socialkonstruktionisme og poststrukturalisme/week.analysis.md",
+          "content": "## Lecture frame\n- Treat this lecture as a move away from personality as a stable inner essence and toward subjectivity as something formed in discourse, practice, and power relations.\n- Keep the main lecture problem clear: how can psychology think about persons when selves are historically produced rather than simply discovered?\n- Use the week to connect ethics, subject formation, and social construction rather than treating Foucault and Davies as unrelated authors.\n\n## What to prioritize\n- Make the poststructural shift explicit: the subject is produced through historically situated practices, norms, and available positions.\n- Emphasize that both texts are about how persons become thinkable and governable, not only about \"identity\" in a loose everyday sense.\n- Use the lecture theme to focus on what changes in psychology's understanding of freedom, agency, and selfhood when discourse and power become central.\n\n## Relation between the readings\n- Foucault gives the broader account of ethics, care of the self, and freedom within power relations.\n- Davies makes the subjectivation point more concrete by showing how positioning in discourse shapes who one can be and how one can speak or act.\n- The pair should sound cumulative: Foucault gives the conceptual horizon, Davies shows how this horizon works in lived social practice.\n\n## Likely misunderstandings to avoid\n- Do not reduce the week to \"everything is language.\" The point is not linguistic idealism but historically organized practices of subject formation.\n- Do not present Foucault's care of the self as private self-help. It is an ethical and political practice within relations of power.\n- Do not treat agency as simple autonomy. Agency here is constrained, situated, and often takes the form of repositioning rather than sovereign choice.",
+          "char_count": 1815
+        }
+      ]
+    },
+    "missing_sources": [],
+    "likely_core_sources": [
+      "w10l2-davies-1990-65185910",
+      "w10l2-foucault-1997-92cd121d",
+      "w10l2-lecture-19-gang-sociokulturelle-teorier-ca9255c8"
+    ],
+    "likely_supporting_sources": []
+  },
+  "source_priority_order": [
+    {
+      "source_id": "w10l2-davies-1990-65185910",
+      "title": "Davies (1990)",
+      "source_family": "reading",
+      "priority_score": 128,
+      "priority_band": "core"
+    },
+    {
+      "source_id": "w10l2-foucault-1997-92cd121d",
+      "title": "Foucault (1997)",
+      "source_family": "reading",
+      "priority_score": 128,
+      "priority_band": "core"
+    },
+    {
+      "source_id": "w10l2-lecture-19-gang-sociokulturelle-teorier-ca9255c8",
+      "title": "19. gang Sociokulturelle teorier",
+      "source_family": "lecture_slide",
+      "priority_score": 100,
+      "priority_band": "primary"
+    }
+  ],
+  "sources": {
+    "readings": [
+      {
+        "source_id": "w10l2-davies-1990-65185910",
+        "title": "Davies (1990)",
+        "source_kind": "reading",
+        "source_family": "reading",
+        "source_filename": "W10L2 Davies (1990).pdf",
+        "subject_relative_path": "Readings/W10L2 Sociokulturelle teorier - socialkonstruktionisme og poststrukturalisme/W10L2 Davies (1990).pdf",
+        "source_exists": true,
+        "missing_reason": null,
+        "sequence_index": 1,
+        "language_guess": "unknown",
+        "length_band": "medium",
+        "slide_subcategory": null,
+        "priority_score": 128,
+        "priority_band": "core",
+        "priority_reasons": [
+          "reading",
+          "manual summary",
+          "analysis sidecar",
+          "week analysis",
+          "medium source"
+        ],
+        "priority_signals": {
+          "is_grundbog": false,
+          "has_manual_summary": true,
+          "has_prompt_analysis_sidecar": true,
+          "lecture_has_week_analysis_sidecar": true
+        },
+        "file": {
+          "page_count": 21,
+          "estimated_token_count": 0,
+          "estimated_word_count": 0,
+          "text_char_count": 0,
+          "text_extraction_status": "no_text",
+          "sha256": "4e8cdde021c8ce20b80f6a2069e4bc0e5ef900d74f71674cf564afe6ba69429a",
+          "size_bytes": 2348174
+        },
+        "summary": {
+          "present": true,
+          "summary_lines": [
+            "Davies develops a feminist poststructural account of the subject as discursively produced and positioned.",
+            "She shows how language and social practices open and constrain available identity positions.",
+            "Agency is treated as situated repositioning within, and sometimes against, normative discourse."
+          ],
+          "key_points": [
+            "Subjects are constituted through discourse rather than pre-social interiors.",
+            "Power operates through ordinary meaning practices and category systems.",
+            "Positioning can be resisted, revised, or strategically inhabited.",
+            "Gendered subjectivity is continuously negotiated in interaction."
+          ]
+        },
+        "analysis": {
+          "present": true,
+          "sidecars": [
+            {
+              "relative_path": "Readings/W10L2 Sociokulturelle teorier - socialkonstruktionisme og poststrukturalisme/W10L2 Davies (1990).analysis.md",
+              "content": "## Text character\n- This is a theoretical feminist poststructural text, not an empirical results paper.\n- Read it as an argument about how subjects are constituted through discourse and positioning in social practice.\n\n## What matters most\n- Explain positioning carefully: the subject is made available through social categories, meanings, and interactional roles.\n- Keep the relation between constraint and agency central. Davies is not denying agency; she is relocating it inside discursive and normative conditions.\n- Show how ordinary language practices participate in making gendered subjectivity seem natural.\n\n## Helpful framing\n- The text is most useful when it clarifies how identity positions are socially offered, inhabited, resisted, and revised.\n- Connect the argument to the broader lecture theme: personality and subjectivity are not pre-social interiors but historically and socially organized forms.\n\n## Misreadings to avoid\n- Do not flatten the text into a generic \"social influence\" claim. The stronger point is constitutive: discourse helps make the subject.\n- Do not present discourse as merely words. It includes categories, norms, and socially available ways of being intelligible.\n- Do not turn the text into pure determinism. Davies leaves room for repositioning and contestation.",
+              "char_count": 1305
+            }
+          ]
+        }
+      },
+      {
+        "source_id": "w10l2-foucault-1997-92cd121d",
+        "title": "Foucault (1997)",
+        "source_kind": "reading",
+        "source_family": "reading",
+        "source_filename": "W10L2 Foucault, M. (1997). s. 281-301 .pdf",
+        "subject_relative_path": "Readings/W10L2 Sociokulturelle teorier - socialkonstruktionisme og poststrukturalisme/W10L2 Foucault, M. (1997). s. 281-301 .pdf",
+        "source_exists": true,
+        "missing_reason": null,
+        "sequence_index": 2,
+        "language_guess": "unknown",
+        "length_band": "medium",
+        "slide_subcategory": null,
+        "priority_score": 128,
+        "priority_band": "core",
+        "priority_reasons": [
+          "reading",
+          "manual summary",
+          "analysis sidecar",
+          "week analysis",
+          "medium source"
+        ],
+        "priority_signals": {
+          "is_grundbog": false,
+          "has_manual_summary": true,
+          "has_prompt_analysis_sidecar": true,
+          "lecture_has_week_analysis_sidecar": true
+        },
+        "file": {
+          "page_count": 21,
+          "estimated_token_count": 0,
+          "estimated_word_count": 0,
+          "text_char_count": 0,
+          "text_extraction_status": "no_text",
+          "sha256": "830827494bb6a8771ba7ae9ed676351acf7753099d3e461c7a12824094b02c25",
+          "size_bytes": 2938717
+        },
+        "summary": {
+          "present": true,
+          "summary_lines": [
+            "Foucault reframes ethics as a practice of freedom rooted in the active care of the self.",
+            "Rather than universal moral law, he emphasizes historically situated practices through which subjects constitute themselves.",
+            "The interview links truth, power, and subjectivation to everyday ethical work on conduct."
+          ],
+          "key_points": [
+            "Subjectivity is formed through practices, not simply discovered as an inner essence.",
+            "Care of the self is relational and political, not merely individual self-help.",
+            "Freedom is exercised within power relations through reflective transformation.",
+            "Ethics concerns style of life and practices of self-government."
+          ]
+        },
+        "analysis": {
+          "present": true,
+          "sidecars": [
+            {
+              "relative_path": "Readings/W10L2 Sociokulturelle teorier - socialkonstruktionisme og poststrukturalisme/W10L2 Foucault, M. (1997). s. 281-301 .pdf.analysis.md",
+              "content": "## Text character\n- This is a conceptual interview text on ethics, freedom, and care of the self.\n- Treat it as a clarification of Foucault's vocabulary and orientation, not as a conventional linear research article.\n\n## What matters most\n- Center the claim that ethics is a practice of self-formation within historically specific power relations.\n- Explain care of the self as an active relation to oneself that is inseparable from broader truth practices and forms of conduct.\n- Keep freedom and power together: freedom is exercised within power relations, not outside them.\n\n## Helpful framing\n- Use the text to show how subjectivity is something one does and is formed through, not something one simply uncovers as an inner core.\n- Connect the text to the course theme that theories of personality also imply theories of normativity, governance, and possible transformation.\n\n## Misreadings to avoid\n- Do not describe the text as motivational self-improvement or private authenticity.\n- Do not make ethics sound like obedience to universal rules; the emphasis is on practice, style of life, and self-relation.\n- Do not present power as only external domination. The point is that subject formation happens within power-laden practices.",
+              "char_count": 1239
+            }
+          ]
+        }
+      }
+    ],
+    "lecture_slides": [
+      {
+        "source_id": "w10l2-lecture-19-gang-sociokulturelle-teorier-ca9255c8",
+        "title": "19. gang Sociokulturelle teorier",
+        "source_kind": "slide",
+        "source_family": "lecture_slide",
+        "source_filename": "19. gang Sociokulturelle teorier.pdf",
+        "subject_relative_path": "Forelæsningsrækken/19. Sociokulturelle teorier.pdf",
+        "source_exists": true,
+        "missing_reason": null,
+        "sequence_index": null,
+        "language_guess": "da",
+        "length_band": "long",
+        "slide_subcategory": "lecture",
+        "priority_score": 100,
+        "priority_band": "primary",
+        "priority_reasons": [
+          "lecture_slide",
+          "analysis sidecar",
+          "week analysis",
+          "long source",
+          "substantial"
+        ],
+        "priority_signals": {
+          "is_grundbog": false,
+          "has_manual_summary": false,
+          "has_prompt_analysis_sidecar": true,
+          "lecture_has_week_analysis_sidecar": true
+        },
+        "file": {
+          "page_count": 35,
+          "estimated_token_count": 4523,
+          "estimated_word_count": 2769,
+          "text_char_count": 18090,
+          "text_extraction_status": "ok",
+          "sha256": "bccc87ea43e45cb288f4e64dc5b43e405ced665992be14541026cbb2a6dfcdab",
+          "size_bytes": 780527
+        },
+        "summary": {
+          "present": false,
+          "summary_lines": [],
+          "key_points": []
+        },
+        "analysis": {
+          "present": true,
+          "sidecars": [
+            {
+              "relative_path": "Forelæsningsrækken/19. Sociokulturelle teorier.analysis.md",
+              "content": "## Slide role\n- Use the slides as a lecture map, not as a standalone source of claims.\n- Let the slide sequence determine what the lecturer seems to treat as the main conceptual progression.\n\n## What to prioritize from the deck\n- Reconstruct the move from individualist or essentialist understandings of personality toward sociocultural and poststructural accounts of subject formation.\n- Use the deck to foreground which distinctions the lecture itself prioritizes: discourse, positioning, ethics, freedom, power, and subjectivation.\n- Where the slides compress too hard, expand only enough to recover the argumentative line rather than paraphrasing slide bullets one by one.\n\n## Relation to the readings\n- Let the slides help prioritize what is most important in Davies and Foucault, especially where the lecture is making a synthetic point across them.\n- If the slide framing simplifies the texts, keep that visible rather than pretending the lecture and readings are identical.\n\n## Misreadings to avoid\n- Do not over-trust isolated slide slogans; reconstruct the implied lecture logic.\n- Do not turn the lecture into a generic overview of social constructionism. Keep the emphasis on what this material changes in how psychology thinks about persons and selfhood.",
+              "char_count": 1267
+            }
+          ]
+        }
+      }
+    ],
+    "seminar_slides": [],
+    "exercise_slides": []
+  },
+  "manifest_warnings": []
+}

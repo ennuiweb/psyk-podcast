@@ -64,11 +64,13 @@ Vigtig nuancering: `course_context.py` er deterministisk og model-fri. Det
 goer promptlaget mere robust, men betyder ogsaa, at kvaliteten stadig er
 begracnset af de metadata og summaries, der allerede findes.
 
-## Ny baseline: source catalog
+## Ny baseline: source catalog + lecture bundles
 
-Foerste nye artifact i den modne preprocessing-arkitektur er:
+De foerste nye artifacts i den modne preprocessing-arkitektur er:
 
 - `shows/personlighedspsykologi-en/source_catalog.json`
+- `shows/personlighedspsykologi-en/lecture_bundles/index.json`
+- `shows/personlighedspsykologi-en/lecture_bundles/W##L#.json`
 
 Formaalet er at faa et stabilt, deterministisk file-level lag med:
 
@@ -81,24 +83,49 @@ Formaalet er at faa et stabilt, deterministisk file-level lag med:
 - markering af manuel summary-dackning og eksisterende prompt-sidecars
 
 Kataloget er lokalt bygget fra de raa source files og er derfor mere end en
-manifest-view. Det er den nye base for senere weighting, invalidation og
+manifest-view. Det er den nye base for weighting, invalidation og
 lecture-bundle bygning.
 
 Build-kommando:
 
 ```bash
 ./.venv/bin/python scripts/build_personlighedspsykologi_source_catalog.py
+./.venv/bin/python scripts/build_personlighedspsykologi_lecture_bundles.py
 ```
+
+## Lecture bundles
+
+Det nye lecture-bundle-lag er et deterministisk mellemartifact bygget fra:
+
+- `source_catalog.json`
+- `content_manifest.json`
+- lokale `*.analysis.md` sidecars
+- lokale `week.analysis.md` sidecars
+
+Hver lecture bundle samler:
+
+- lecture-identitet og kursusposition
+- lecture-summary og manifest warnings
+- grouped sources for readings, lecture slides, seminar slides og exercise
+  slides
+- simple source-prioritetsvurderinger
+- summary coverage og analysis coverage
+- week-level analysis sidecars
+- likely core / supporting sources
+
+Formaalet er at give `Prompt Assembly Layer` og senere course-level artifacts et
+rigere, stabilt lecture-level knowledge object end blot summary-prosa og flade
+context-noter.
 
 ## Kendte graenser
 
 - GitHub Actions kan ikke i dag rebuild’e `source_catalog.json`, fordi workflowet
   ikke har adgang til de raa lokale kursusfiler i OneDrive/source tree.
-- Kataloget er derfor i foerste version et deterministisk lokalt build-artifact,
-  som committes til repoet.
+- Kataloget og lecture bundles er derfor i foerste version deterministiske
+  lokale build-artifacts, som committes til repoet.
 - `W03L2` har fortsat en manifest-markeret missing reading (`Bach & Simonsen
-  (2023)`), og kataloget skal bevare den som missing i stedet for at opfinde en
-  filmapping.
+  (2023)`), og baade katalog og lecture bundle skal bevare den som missing i
+  stedet for at opfinde en filmapping.
 - `overblik.md` bruges fortsat som theme/course-arc input, men er endnu ikke et
   egentligt source-derived semester-resume.
 

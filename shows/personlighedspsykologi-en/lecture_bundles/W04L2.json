@@ -1,0 +1,311 @@
+{
+  "version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-04T19:35:41Z",
+  "lecture_key": "W04L2",
+  "lecture_title": "Psykoanalytisk personlighedsstruktur (Forelæsning 8, 2026-02-24)",
+  "sequence_index": 8,
+  "course_position": {
+    "index": 8,
+    "total_lectures": 22,
+    "stage": "early-middle",
+    "previous_lecture_key": "W04L1",
+    "previous_lecture_title": "Psykoanalysens personlighedsbegreb (Forelæsning 7, 2026-02-23)",
+    "next_lecture_key": "W05L1",
+    "next_lecture_title": "Empiri og metode i psykoanalysen (Forelæsning 9, 2026-03-02)"
+  },
+  "bundle_status": "ready",
+  "readiness_issues": [],
+  "lecture_summary": {
+    "present": true,
+    "summary_lines": [
+      "Forelæsningen flytter fokus fra ego-centrerede modeller til et strukturelt syn på subjektivitet.",
+      "Lacan læser personlighed gennem sprog, begær og den symbolske orden.",
+      "Laplanche viser, hvordan teoretiske spændinger hos Freud kan bruges produktivt i analysen."
+    ],
+    "key_points": [
+      "Subjektet konstitueres i sproglige og symbolske relationer.",
+      "Ego-sammenhæng kan dække over dybere splittelser i subjektet.",
+      "Begær forstås som medieret af den Anden og betydningsdannelse.",
+      "Begrebslige modsætninger kan være analytiske resurser frem for fejl."
+    ]
+  },
+  "teaching_context": {
+    "lecture_slide_titles": [
+      "8. Psykoanalytisk personlighedsstruktur"
+    ],
+    "seminar_slide_titles": [
+      "4. Psykoanalyse I"
+    ],
+    "exercise_slide_titles": []
+  },
+  "source_counts": {
+    "total_sources": 4,
+    "readings": 2,
+    "lecture_slides": 1,
+    "seminar_slides": 1,
+    "exercise_slides": 0,
+    "missing_sources": 0,
+    "manual_reading_summaries_present": 2,
+    "source_analyses_present": 0,
+    "total_pages": 106,
+    "total_estimated_tokens": 25775,
+    "source_family_counts": {
+      "lecture_slide": 1,
+      "reading": 2,
+      "seminar_slide": 1
+    }
+  },
+  "source_intelligence": {
+    "dominant_language": "en",
+    "week_analysis": {
+      "present": false,
+      "sidecars": []
+    },
+    "missing_sources": [],
+    "likely_core_sources": [
+      "w04l2-laplanche-1970-968862d5",
+      "w04l2-lacan-1966-2d720f56"
+    ],
+    "likely_supporting_sources": [
+      "w04l2-lecture-8-psykoanalytisk-personlighedsstruktur-1e653ba9"
+    ]
+  },
+  "source_priority_order": [
+    {
+      "source_id": "w04l2-laplanche-1970-968862d5",
+      "title": "Laplanche (1970)",
+      "source_family": "reading",
+      "priority_score": 130,
+      "priority_band": "core"
+    },
+    {
+      "source_id": "w04l2-lacan-1966-2d720f56",
+      "title": "Lacan (1966)",
+      "source_family": "reading",
+      "priority_score": 110,
+      "priority_band": "primary"
+    },
+    {
+      "source_id": "w04l2-lecture-8-psykoanalytisk-personlighedsstruktur-1e653ba9",
+      "title": "8. Psykoanalytisk personlighedsstruktur",
+      "source_family": "lecture_slide",
+      "priority_score": 92,
+      "priority_band": "supporting"
+    },
+    {
+      "source_id": "w04l1-seminar-4-psykoanalyse-i-94151a16",
+      "title": "4. Psykoanalyse I",
+      "source_family": "seminar_slide",
+      "priority_score": 64,
+      "priority_band": "contextual"
+    }
+  ],
+  "sources": {
+    "readings": [
+      {
+        "source_id": "w04l2-laplanche-1970-968862d5",
+        "title": "Laplanche (1970)",
+        "source_kind": "reading",
+        "source_family": "reading",
+        "source_filename": "W4L2 Laplanche, J. (1970). Liv og død i psykoanalysen (pp. 18‐38).pdf",
+        "subject_relative_path": "Readings/W4L2 Psykoanalytisk personlighedsstruktur/W4L2 Laplanche, J. (1970). Liv og død i psykoanalysen (pp. 18‐38).pdf",
+        "source_exists": true,
+        "missing_reason": null,
+        "sequence_index": 2,
+        "language_guess": "en",
+        "length_band": "long",
+        "slide_subcategory": null,
+        "priority_score": 130,
+        "priority_band": "core",
+        "priority_reasons": [
+          "reading",
+          "manual summary",
+          "long source",
+          "very substantial"
+        ],
+        "priority_signals": {
+          "is_grundbog": false,
+          "has_manual_summary": true,
+          "has_prompt_analysis_sidecar": false,
+          "lecture_has_week_analysis_sidecar": false
+        },
+        "file": {
+          "page_count": 26,
+          "estimated_token_count": 17278,
+          "estimated_word_count": 11353,
+          "text_char_count": 69109,
+          "text_extraction_status": "ok",
+          "sha256": "8d003ed1c674ba7ecbe693d1b4263428a7598e2dd574bbb6ab1cecde88f57186",
+          "size_bytes": 4555675
+        },
+        "summary": {
+          "present": true,
+          "summary_lines": [
+            "Laplanche introduces a historical-structural reading of Freud that treats contradictions in psychoanalytic theory as theoretically productive rather than accidental.",
+            "He argues that tensions in concepts like drive, ego, and object should be interpreted dialectically as clues to the object of psychoanalysis.",
+            "The text positions psychoanalytic theory as evolving through conceptual crises tied to both clinical and metapsychological problems."
+          ],
+          "key_points": [
+            "Freud is read through latent structural contradictions, not only explicit doctrine.",
+            "Contradictions can signal deeper problems in the theory of the object.",
+            "Drive theory is examined through the relation between aim, object, and process.",
+            "Methodologically, interpretation requires sustained attention to conceptual reversals."
+          ]
+        },
+        "analysis": {
+          "present": false,
+          "sidecars": []
+        }
+      },
+      {
+        "source_id": "w04l2-lacan-1966-2d720f56",
+        "title": "Lacan (1966)",
+        "source_kind": "reading",
+        "source_family": "reading",
+        "source_filename": "W4L2 Lacan (1966).pdf",
+        "subject_relative_path": "Readings/W4L2 Psykoanalytisk personlighedsstruktur/W4L2 Lacan (1966).pdf",
+        "source_exists": true,
+        "missing_reason": null,
+        "sequence_index": 1,
+        "language_guess": "unknown",
+        "length_band": "short",
+        "slide_subcategory": null,
+        "priority_score": 110,
+        "priority_band": "primary",
+        "priority_reasons": [
+          "reading",
+          "manual summary"
+        ],
+        "priority_signals": {
+          "is_grundbog": false,
+          "has_manual_summary": true,
+          "has_prompt_analysis_sidecar": false,
+          "lecture_has_week_analysis_sidecar": false
+        },
+        "file": {
+          "page_count": 7,
+          "estimated_token_count": 31,
+          "estimated_word_count": 0,
+          "text_char_count": 121,
+          "text_extraction_status": "ok",
+          "sha256": "f7ef9366c8fc184b9e24b68537f6480484154db41812c99caf12094d78ddd3cc",
+          "size_bytes": 758427
+        },
+        "summary": {
+          "present": true,
+          "summary_lines": [
+            "Lacan analyzes subjectivity through language, symbolic structure, and desire.",
+            "The text challenges ego-centered models by emphasizing the split subject and structural determination.",
+            "Personality organization is treated as effects of symbolic positioning and identification."
+          ],
+          "key_points": [
+            "The subject is constituted in and by language.",
+            "Ego coherence can mask deeper symbolic divisions.",
+            "Desire is mediated through signification and the Other.",
+            "Structural reading reframes symptoms as signifying formations."
+          ]
+        },
+        "analysis": {
+          "present": false,
+          "sidecars": []
+        }
+      }
+    ],
+    "lecture_slides": [
+      {
+        "source_id": "w04l2-lecture-8-psykoanalytisk-personlighedsstruktur-1e653ba9",
+        "title": "8. Psykoanalytisk personlighedsstruktur",
+        "source_kind": "slide",
+        "source_family": "lecture_slide",
+        "source_filename": "8. Psykoanalytisk personlighedsstruktur.pdf",
+        "subject_relative_path": "Forelæsningsrækken/8. Psykoanalytisk personlighedsstruktur.pdf",
+        "source_exists": true,
+        "missing_reason": null,
+        "sequence_index": null,
+        "language_guess": "en",
+        "length_band": "long",
+        "slide_subcategory": "lecture",
+        "priority_score": 92,
+        "priority_band": "supporting",
+        "priority_reasons": [
+          "lecture_slide",
+          "long source",
+          "very substantial"
+        ],
+        "priority_signals": {
+          "is_grundbog": false,
+          "has_manual_summary": false,
+          "has_prompt_analysis_sidecar": false,
+          "lecture_has_week_analysis_sidecar": false
+        },
+        "file": {
+          "page_count": 56,
+          "estimated_token_count": 7063,
+          "estimated_word_count": 4113,
+          "text_char_count": 28252,
+          "text_extraction_status": "ok",
+          "sha256": "423b363fd7363b3592b46c46b3c6c8e5094c3b79cfdc137792007a5a4529eec8",
+          "size_bytes": 3483377
+        },
+        "summary": {
+          "present": false,
+          "summary_lines": [],
+          "key_points": []
+        },
+        "analysis": {
+          "present": false,
+          "sidecars": []
+        }
+      }
+    ],
+    "seminar_slides": [
+      {
+        "source_id": "w04l1-seminar-4-psykoanalyse-i-94151a16",
+        "title": "4. Psykoanalyse I",
+        "source_kind": "slide",
+        "source_family": "seminar_slide",
+        "source_filename": "4. Psykoanalyse I.pdf",
+        "subject_relative_path": "Seminarhold/Slides/4. Psykoanalyse I.pdf",
+        "source_exists": true,
+        "missing_reason": null,
+        "sequence_index": null,
+        "language_guess": "da",
+        "length_band": "medium",
+        "slide_subcategory": "seminar",
+        "priority_score": 64,
+        "priority_band": "contextual",
+        "priority_reasons": [
+          "seminar_slide",
+          "medium source"
+        ],
+        "priority_signals": {
+          "is_grundbog": false,
+          "has_manual_summary": false,
+          "has_prompt_analysis_sidecar": false,
+          "lecture_has_week_analysis_sidecar": false
+        },
+        "file": {
+          "page_count": 17,
+          "estimated_token_count": 1403,
+          "estimated_word_count": 885,
+          "text_char_count": 5610,
+          "text_extraction_status": "ok",
+          "sha256": "f205b7d5d0afe6d5f70b8b73c45c5757cbe6a0c365b3ccbc22b6f64a60b4d16c",
+          "size_bytes": 1627865
+        },
+        "summary": {
+          "present": false,
+          "summary_lines": [],
+          "key_points": []
+        },
+        "analysis": {
+          "present": false,
+          "sidecars": []
+        }
+      }
+    ],
+    "exercise_slides": []
+  },
+  "manifest_warnings": []
+}

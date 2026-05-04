@@ -1,0 +1,247 @@
+{
+  "version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-04T19:35:41Z",
+  "lecture_key": "W03L2",
+  "lecture_title": "Personlighedsfunktion og forstyrrelse (Forelæsning 6, 2026-02-17)",
+  "sequence_index": 6,
+  "course_position": {
+    "index": 6,
+    "total_lectures": 22,
+    "stage": "early-middle",
+    "previous_lecture_key": "W03L1",
+    "previous_lecture_title": "Culture, evolution, genetics, and personality (Forelæsning 5, 2026-02-16)",
+    "next_lecture_key": "W04L1",
+    "next_lecture_title": "Psykoanalysens personlighedsbegreb (Forelæsning 7, 2026-02-23)"
+  },
+  "bundle_status": "partial",
+  "readiness_issues": [
+    "missing_sources",
+    "missing_lecture_summary",
+    "incomplete_reading_summary_coverage"
+  ],
+  "lecture_summary": {
+    "present": false,
+    "summary_lines": [],
+    "key_points": []
+  },
+  "teaching_context": {
+    "lecture_slide_titles": [
+      "6. gang Personality Functioning 2026 (Bo Bach)"
+    ],
+    "seminar_slide_titles": [],
+    "exercise_slide_titles": []
+  },
+  "source_counts": {
+    "total_sources": 3,
+    "readings": 2,
+    "lecture_slides": 1,
+    "seminar_slides": 0,
+    "exercise_slides": 0,
+    "missing_sources": 1,
+    "manual_reading_summaries_present": 1,
+    "source_analyses_present": 0,
+    "total_pages": 47,
+    "total_estimated_tokens": 28739,
+    "source_family_counts": {
+      "lecture_slide": 1,
+      "reading": 2
+    }
+  },
+  "source_intelligence": {
+    "dominant_language": "en",
+    "week_analysis": {
+      "present": false,
+      "sidecars": []
+    },
+    "missing_sources": [
+      {
+        "source_id": "w03l2-bach-and-simonsen-2023-d58362ff",
+        "title": "Bach & Simonsen (2023)",
+        "source_kind": "reading",
+        "missing_reason": "manifest_marked_missing"
+      }
+    ],
+    "likely_core_sources": [
+      "w03l2-sharp-and-wall-2021-cb92ecf4"
+    ],
+    "likely_supporting_sources": [
+      "w03l2-lecture-6-gang-personality-functioning-2026-bo-bach-542bbd7e"
+    ]
+  },
+  "source_priority_order": [
+    {
+      "source_id": "w03l2-sharp-and-wall-2021-cb92ecf4",
+      "title": "Sharp & Wall (2021)",
+      "source_family": "reading",
+      "priority_score": 124,
+      "priority_band": "core"
+    },
+    {
+      "source_id": "w03l2-lecture-6-gang-personality-functioning-2026-bo-bach-542bbd7e",
+      "title": "6. gang Personality Functioning 2026 (Bo Bach)",
+      "source_family": "lecture_slide",
+      "priority_score": 82,
+      "priority_band": "supporting"
+    },
+    {
+      "source_id": "w03l2-bach-and-simonsen-2023-d58362ff",
+      "title": "Bach & Simonsen (2023)",
+      "source_family": "reading",
+      "priority_score": 0,
+      "priority_band": "missing"
+    }
+  ],
+  "sources": {
+    "readings": [
+      {
+        "source_id": "w03l2-sharp-and-wall-2021-cb92ecf4",
+        "title": "Sharp & Wall (2021)",
+        "source_kind": "reading",
+        "source_family": "reading",
+        "source_filename": "W3L2 Sharp & Wall (2021).pdf",
+        "subject_relative_path": "Readings/W3L2 Personlighedsfunktion og forstyrrelse/W3L2 Sharp & Wall (2021).pdf",
+        "source_exists": true,
+        "missing_reason": null,
+        "sequence_index": 2,
+        "language_guess": "en",
+        "length_band": "medium",
+        "slide_subcategory": null,
+        "priority_score": 124,
+        "priority_band": "core",
+        "priority_reasons": [
+          "reading",
+          "manual summary",
+          "medium source",
+          "very substantial"
+        ],
+        "priority_signals": {
+          "is_grundbog": false,
+          "has_manual_summary": true,
+          "has_prompt_analysis_sidecar": false,
+          "lecture_has_week_analysis_sidecar": false
+        },
+        "file": {
+          "page_count": 25,
+          "estimated_token_count": 25635,
+          "estimated_word_count": 13616,
+          "text_char_count": 102539,
+          "text_extraction_status": "ok",
+          "sha256": "56af604db91d2a31cc61e0116e26e6d341bbaf68cf46d2ab9bf5c95c4404a2f1",
+          "size_bytes": 368426
+        },
+        "summary": {
+          "present": true,
+          "summary_lines": [
+            "Sharp and Wall examine personality functioning and disturbance through dimensional, developmental lenses.",
+            "They discuss how impairments in self and interpersonal functioning relate to personality pathology.",
+            "The text emphasizes integrating clinical utility with theoretically coherent models of dysfunction."
+          ],
+          "key_points": [
+            "Personality pathology is better treated dimensionally than categorically.",
+            "Self-function and interpersonal function are core diagnostic anchors.",
+            "Developmental trajectories help explain heterogeneity in presentation.",
+            "Assessment should connect symptom profiles with underlying functioning."
+          ]
+        },
+        "analysis": {
+          "present": false,
+          "sidecars": []
+        }
+      },
+      {
+        "source_id": "w03l2-bach-and-simonsen-2023-d58362ff",
+        "title": "Bach & Simonsen (2023)",
+        "source_kind": "reading",
+        "source_family": "reading",
+        "source_filename": null,
+        "subject_relative_path": null,
+        "source_exists": false,
+        "missing_reason": "manifest_marked_missing",
+        "sequence_index": 1,
+        "language_guess": "unknown",
+        "length_band": "short",
+        "slide_subcategory": null,
+        "priority_score": 0,
+        "priority_band": "missing",
+        "priority_reasons": [
+          "missing source"
+        ],
+        "priority_signals": {
+          "is_grundbog": false,
+          "has_manual_summary": false,
+          "has_prompt_analysis_sidecar": false,
+          "lecture_has_week_analysis_sidecar": false
+        },
+        "file": {
+          "page_count": null,
+          "estimated_token_count": 0,
+          "estimated_word_count": 0,
+          "text_char_count": 0,
+          "text_extraction_status": "missing_source",
+          "sha256": null,
+          "size_bytes": null
+        },
+        "summary": {
+          "present": false,
+          "summary_lines": [],
+          "key_points": []
+        },
+        "analysis": {
+          "present": false,
+          "sidecars": []
+        }
+      }
+    ],
+    "lecture_slides": [
+      {
+        "source_id": "w03l2-lecture-6-gang-personality-functioning-2026-bo-bach-542bbd7e",
+        "title": "6. gang Personality Functioning 2026 (Bo Bach)",
+        "source_kind": "slide",
+        "source_family": "lecture_slide",
+        "source_filename": "6. gang Personality Functioning 2026 (Bo Bach).pdf",
+        "subject_relative_path": "Forelæsningsrækken/6. gang Personality Functioning 2026 (Bo Bach).pdf",
+        "source_exists": true,
+        "missing_reason": null,
+        "sequence_index": null,
+        "language_guess": "da",
+        "length_band": "medium",
+        "slide_subcategory": "lecture",
+        "priority_score": 82,
+        "priority_band": "supporting",
+        "priority_reasons": [
+          "lecture_slide",
+          "medium source",
+          "substantial"
+        ],
+        "priority_signals": {
+          "is_grundbog": false,
+          "has_manual_summary": false,
+          "has_prompt_analysis_sidecar": false,
+          "lecture_has_week_analysis_sidecar": false
+        },
+        "file": {
+          "page_count": 22,
+          "estimated_token_count": 3104,
+          "estimated_word_count": 1490,
+          "text_char_count": 12416,
+          "text_extraction_status": "ok",
+          "sha256": "1bd465ef68a66481a5270a383ea16623271e607f1a618f1fd966b6bb51d7786e",
+          "size_bytes": 5068012
+        },
+        "summary": {
+          "present": false,
+          "summary_lines": [],
+          "key_points": []
+        },
+        "analysis": {
+          "present": false,
+          "sidecars": []
+        }
+      }
+    ],
+    "seminar_slides": [],
+    "exercise_slides": []
+  },
+  "manifest_warnings": []
+}

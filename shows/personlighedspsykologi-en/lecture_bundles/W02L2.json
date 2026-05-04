@@ -1,0 +1,257 @@
+{
+  "version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-04T19:35:41Z",
+  "lecture_key": "W02L2",
+  "lecture_title": "Person-situation interplay - stability and change of individual differences (Forelæsning 4, 2026-02-10)",
+  "sequence_index": 4,
+  "course_position": {
+    "index": 4,
+    "total_lectures": 22,
+    "stage": "opening",
+    "previous_lecture_key": "W02L1",
+    "previous_lecture_title": "Personality traits, personality states, and personality dimensions (Forelæsning 3, 2026-02-09)",
+    "next_lecture_key": "W03L1",
+    "next_lecture_title": "Culture, evolution, genetics, and personality (Forelæsning 5, 2026-02-16)"
+  },
+  "bundle_status": "ready",
+  "readiness_issues": [],
+  "lecture_summary": {
+    "present": true,
+    "summary_lines": [
+      "Kilderne samler evidens for både høj rangordensstabilitet og systematiske gennemsnitsændringer gennem livet.",
+      "Meta-analytiske resultater nuancerer tidligere antagelser om, hvornår personlighed ændrer sig mest.",
+      "Person-situation-perspektivet viser, at adfærd opstår i koblingen mellem disposition og kontekst."
+    ],
+    "key_points": [
+      "Rangordensstabilitet stiger typisk ind i voksenlivet og flader derefter ud.",
+      "Flere træk bevæger sig i retning af modenhed på gennemsnitsniveau.",
+      "Effektstørrelser varierer med trækniveau og målemetode.",
+      "Udvikling forstås bedst som et samspil mellem person og situation."
+    ]
+  },
+  "teaching_context": {
+    "lecture_slide_titles": [
+      "4. gang PersPsy 4 260210"
+    ],
+    "seminar_slide_titles": [],
+    "exercise_slide_titles": []
+  },
+  "source_counts": {
+    "total_sources": 3,
+    "readings": 2,
+    "lecture_slides": 1,
+    "seminar_slides": 0,
+    "exercise_slides": 0,
+    "missing_sources": 0,
+    "manual_reading_summaries_present": 2,
+    "source_analyses_present": 0,
+    "total_pages": 111,
+    "total_estimated_tokens": 65160,
+    "source_family_counts": {
+      "lecture_slide": 1,
+      "reading": 2
+    }
+  },
+  "source_intelligence": {
+    "dominant_language": "en",
+    "week_analysis": {
+      "present": false,
+      "sidecars": []
+    },
+    "missing_sources": [],
+    "likely_core_sources": [
+      "w02l2-bleidorn-et-al-2022-25c2d2de",
+      "w02l2-li-and-wilt-2025-92f596ad"
+    ],
+    "likely_supporting_sources": [
+      "w02l2-lecture-4-gang-perspsy-4-260210-ce33366f"
+    ]
+  },
+  "source_priority_order": [
+    {
+      "source_id": "w02l2-bleidorn-et-al-2022-25c2d2de",
+      "title": "Bleidorn et al. (2022)",
+      "source_family": "reading",
+      "priority_score": 130,
+      "priority_band": "core"
+    },
+    {
+      "source_id": "w02l2-li-and-wilt-2025-92f596ad",
+      "title": "Li & Wilt (2025)",
+      "source_family": "reading",
+      "priority_score": 118,
+      "priority_band": "primary"
+    },
+    {
+      "source_id": "w02l2-lecture-4-gang-perspsy-4-260210-ce33366f",
+      "title": "4. gang PersPsy 4 260210",
+      "source_family": "lecture_slide",
+      "priority_score": 88,
+      "priority_band": "supporting"
+    }
+  ],
+  "sources": {
+    "readings": [
+      {
+        "source_id": "w02l2-bleidorn-et-al-2022-25c2d2de",
+        "title": "Bleidorn et al. (2022)",
+        "source_kind": "reading",
+        "source_family": "reading",
+        "source_filename": "W2L2 Bleidorn et al. (2022).pdf",
+        "subject_relative_path": "Readings/W2L2 Person-situation interplay - stability and change of individual differences/W2L2 Bleidorn et al. (2022).pdf",
+        "source_exists": true,
+        "missing_reason": null,
+        "sequence_index": 1,
+        "language_guess": "en",
+        "length_band": "long",
+        "slide_subcategory": null,
+        "priority_score": 130,
+        "priority_band": "core",
+        "priority_reasons": [
+          "reading",
+          "manual summary",
+          "long source",
+          "very substantial"
+        ],
+        "priority_signals": {
+          "is_grundbog": false,
+          "has_manual_summary": true,
+          "has_prompt_analysis_sidecar": false,
+          "lecture_has_week_analysis_sidecar": false
+        },
+        "file": {
+          "page_count": 32,
+          "estimated_token_count": 53031,
+          "estimated_word_count": 33527,
+          "text_char_count": 212124,
+          "text_extraction_status": "ok",
+          "sha256": "6ceb9df2a7b6cae0b4f249f62f89d8c5edd80f69b2ebbaa1353f97cf78c6ea1a",
+          "size_bytes": 2293136
+        },
+        "summary": {
+          "present": true,
+          "summary_lines": [
+            "This meta-analysis synthesizes longitudinal evidence on personality stability and mean-level change across the lifespan.",
+            "It confirms substantial rank-order stability while documenting systematic maturation-linked change patterns.",
+            "Findings refine earlier estimates and highlight developmental periods with stronger change dynamics."
+          ],
+          "key_points": [
+            "Rank-order stability increases into adulthood and then plateaus.",
+            "Mean-level change tends toward greater maturity on several traits.",
+            "Effect sizes vary by trait breadth and measurement level.",
+            "Large-scale longitudinal synthesis improves precision of lifespan claims."
+          ]
+        },
+        "analysis": {
+          "present": false,
+          "sidecars": []
+        }
+      },
+      {
+        "source_id": "w02l2-li-and-wilt-2025-92f596ad",
+        "title": "Li & Wilt (2025)",
+        "source_kind": "reading",
+        "source_family": "reading",
+        "source_filename": "W2L2 Li & Wilt (2025).pdf",
+        "subject_relative_path": "Readings/W2L2 Person-situation interplay - stability and change of individual differences/W2L2 Li & Wilt (2025).pdf",
+        "source_exists": true,
+        "missing_reason": null,
+        "sequence_index": 2,
+        "language_guess": "en",
+        "length_band": "short",
+        "slide_subcategory": null,
+        "priority_score": 118,
+        "priority_band": "primary",
+        "priority_reasons": [
+          "reading",
+          "manual summary",
+          "very substantial"
+        ],
+        "priority_signals": {
+          "is_grundbog": false,
+          "has_manual_summary": true,
+          "has_prompt_analysis_sidecar": false,
+          "lecture_has_week_analysis_sidecar": false
+        },
+        "file": {
+          "page_count": 7,
+          "estimated_token_count": 8414,
+          "estimated_word_count": 4922,
+          "text_char_count": 33654,
+          "text_extraction_status": "ok",
+          "sha256": "11a9443b0cf996e5bf44e274d04963a25a00a2750e5e4c169113b3f3d67bc750",
+          "size_bytes": 371844
+        },
+        "summary": {
+          "present": true,
+          "summary_lines": [
+            "Li and Wilt analyze person-situation interplay in the expression and development of individual differences.",
+            "They show how stable tendencies and situational affordances jointly produce behavior patterns.",
+            "The paper argues for models that explicitly capture reciprocal dynamics over time."
+          ],
+          "key_points": [
+            "Behavior emerges from trait-situation coupling rather than either alone.",
+            "Situational selection and evocation can reinforce personality patterns.",
+            "Development involves feedback loops between persons and contexts.",
+            "Process-oriented designs are needed for causal claims."
+          ]
+        },
+        "analysis": {
+          "present": false,
+          "sidecars": []
+        }
+      }
+    ],
+    "lecture_slides": [
+      {
+        "source_id": "w02l2-lecture-4-gang-perspsy-4-260210-ce33366f",
+        "title": "4. gang PersPsy 4 260210",
+        "source_kind": "slide",
+        "source_family": "lecture_slide",
+        "source_filename": "4. gang PersPsy_4_260210.pdf",
+        "subject_relative_path": "Forelæsningsrækken/4. gang PersPsy_4_260210.pdf",
+        "source_exists": true,
+        "missing_reason": null,
+        "sequence_index": null,
+        "language_guess": "en",
+        "length_band": "long",
+        "slide_subcategory": "lecture",
+        "priority_score": 88,
+        "priority_band": "supporting",
+        "priority_reasons": [
+          "lecture_slide",
+          "long source",
+          "substantial"
+        ],
+        "priority_signals": {
+          "is_grundbog": false,
+          "has_manual_summary": false,
+          "has_prompt_analysis_sidecar": false,
+          "lecture_has_week_analysis_sidecar": false
+        },
+        "file": {
+          "page_count": 72,
+          "estimated_token_count": 3715,
+          "estimated_word_count": 2119,
+          "text_char_count": 14857,
+          "text_extraction_status": "ok",
+          "sha256": "4c0cb57f98e4b30223a8a1b2e956814936bd3f8a0908c3695d24affe4d5694de",
+          "size_bytes": 1427635
+        },
+        "summary": {
+          "present": false,
+          "summary_lines": [],
+          "key_points": []
+        },
+        "analysis": {
+          "present": false,
+          "sidecars": []
+        }
+      }
+    ],
+    "seminar_slides": [],
+    "exercise_slides": []
+  },
+  "manifest_warnings": []
+}

@@ -1,0 +1,257 @@
+{
+  "version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-04T19:35:41Z",
+  "lecture_key": "W08L2",
+  "lecture_title": "Critical psychology (Forelæsning 16, 2026-03-24)",
+  "sequence_index": 16,
+  "course_position": {
+    "index": 16,
+    "total_lectures": 22,
+    "stage": "late-middle",
+    "previous_lecture_key": "W08L1",
+    "previous_lecture_title": "Critical personalism (Forelæsning 15, 2026-03-23)",
+    "next_lecture_key": "W09L1",
+    "next_lecture_title": "Kritisk psykologi (Forelæsning 17, 2026-04-07)"
+  },
+  "bundle_status": "ready",
+  "readiness_issues": [],
+  "lecture_summary": {
+    "present": true,
+    "summary_lines": [
+      "Forelæsningen samler kritisk psykologi med fokus på subjektivitet, samfundsforhold og handlemuligheder.",
+      "Kilderne kritiserer individualiserende forklaringer, der skjuler strukturelle betingelser for problemer.",
+      "Analysen orienteres mod, hvordan psykologi kan understøtte handlekraft og kollektiv forandring."
+    ],
+    "key_points": [
+      "Subjektivitet er socialt medieret og historisk formet.",
+      "Psykologisk analyse bør omfatte både handlebegrænsninger og handlemuligheder.",
+      "Strukturelle modsætninger må ikke reduceres til private mangler.",
+      "Kritisk teori og empirisk arbejde bør udvikles i gensidig dialog."
+    ]
+  },
+  "teaching_context": {
+    "lecture_slide_titles": [
+      "16. gang Critical psych 2026"
+    ],
+    "seminar_slide_titles": [],
+    "exercise_slide_titles": []
+  },
+  "source_counts": {
+    "total_sources": 3,
+    "readings": 2,
+    "lecture_slides": 1,
+    "seminar_slides": 0,
+    "exercise_slides": 0,
+    "missing_sources": 0,
+    "manual_reading_summaries_present": 2,
+    "source_analyses_present": 0,
+    "total_pages": 64,
+    "total_estimated_tokens": 12076,
+    "source_family_counts": {
+      "lecture_slide": 1,
+      "reading": 2
+    }
+  },
+  "source_intelligence": {
+    "dominant_language": "en",
+    "week_analysis": {
+      "present": false,
+      "sidecars": []
+    },
+    "missing_sources": [],
+    "likely_core_sources": [
+      "w08l2-tolman-2009-455915e0",
+      "w08l2-holzkamp-1982-845aafd2"
+    ],
+    "likely_supporting_sources": [
+      "w08l2-lecture-16-gang-critical-psych-2026-1b13783c"
+    ]
+  },
+  "source_priority_order": [
+    {
+      "source_id": "w08l2-tolman-2009-455915e0",
+      "title": "Tolman (2009)",
+      "source_family": "reading",
+      "priority_score": 124,
+      "priority_band": "core"
+    },
+    {
+      "source_id": "w08l2-holzkamp-1982-845aafd2",
+      "title": "Holzkamp (1982)",
+      "source_family": "reading",
+      "priority_score": 122,
+      "priority_band": "core"
+    },
+    {
+      "source_id": "w08l2-lecture-16-gang-critical-psych-2026-1b13783c",
+      "title": "16. gang Critical psych 2026",
+      "source_family": "lecture_slide",
+      "priority_score": 82,
+      "priority_band": "supporting"
+    }
+  ],
+  "sources": {
+    "readings": [
+      {
+        "source_id": "w08l2-tolman-2009-455915e0",
+        "title": "Tolman (2009)",
+        "source_kind": "reading",
+        "source_family": "reading",
+        "source_filename": "W8L2 Tolman (2009).pdf",
+        "subject_relative_path": "Readings/W8L2 Critical psychology/W8L2 Tolman (2009).pdf",
+        "source_exists": true,
+        "missing_reason": null,
+        "sequence_index": 2,
+        "language_guess": "en",
+        "length_band": "medium",
+        "slide_subcategory": null,
+        "priority_score": 124,
+        "priority_band": "core",
+        "priority_reasons": [
+          "reading",
+          "manual summary",
+          "medium source",
+          "very substantial"
+        ],
+        "priority_signals": {
+          "is_grundbog": false,
+          "has_manual_summary": true,
+          "has_prompt_analysis_sidecar": false,
+          "lecture_has_week_analysis_sidecar": false
+        },
+        "file": {
+          "page_count": 12,
+          "estimated_token_count": 8947,
+          "estimated_word_count": 5677,
+          "text_char_count": 35787,
+          "text_extraction_status": "ok",
+          "sha256": "7660ea501f5092ded3e2048a94886655e0a10aeaef8ea70404b08b359fd27b80",
+          "size_bytes": 86088
+        },
+        "summary": {
+          "present": true,
+          "summary_lines": [
+            "Tolman reviews key commitments of critical psychology and its implications for theory and method.",
+            "The text emphasizes praxis, social critique, and the standpoint of subjects in concrete life conditions.",
+            "It positions psychology as a discipline that should illuminate and transform restrictive social arrangements."
+          ],
+          "key_points": [
+            "Standpoint and context are constitutive for psychological explanation.",
+            "Method should track lived practice rather than decontextualized variables alone.",
+            "Critical psychology links diagnosis with transformative possibility.",
+            "Theory is evaluated by explanatory and practical relevance."
+          ]
+        },
+        "analysis": {
+          "present": false,
+          "sidecars": []
+        }
+      },
+      {
+        "source_id": "w08l2-holzkamp-1982-845aafd2",
+        "title": "Holzkamp (1982)",
+        "source_kind": "reading",
+        "source_family": "reading",
+        "source_filename": "W8L2 Holzkamp (1982).pdf",
+        "subject_relative_path": "Readings/W8L2 Critical psychology/W8L2 Holzkamp (1982).pdf",
+        "source_exists": true,
+        "missing_reason": null,
+        "sequence_index": 1,
+        "language_guess": "unknown",
+        "length_band": "long",
+        "slide_subcategory": null,
+        "priority_score": 122,
+        "priority_band": "core",
+        "priority_reasons": [
+          "reading",
+          "manual summary",
+          "long source"
+        ],
+        "priority_signals": {
+          "is_grundbog": false,
+          "has_manual_summary": true,
+          "has_prompt_analysis_sidecar": false,
+          "lecture_has_week_analysis_sidecar": false
+        },
+        "file": {
+          "page_count": 29,
+          "estimated_token_count": 0,
+          "estimated_word_count": 0,
+          "text_char_count": 0,
+          "text_extraction_status": "no_text",
+          "sha256": "a3d74bfeaf4b50033ee30f61ce07949ff2f6b1b432a8b2b0a0b69d8fc9be3c0d",
+          "size_bytes": 2387076
+        },
+        "summary": {
+          "present": true,
+          "summary_lines": [
+            "Holzkamp udvikler et grundlag for kritisk psykologi ved at sætte subjektivitet, samfundsmæssige vilkår og handlemuligheder i centrum.",
+            "Han kritiserer individualiserende forklaringer, som løsriver problemer fra menneskers levede sociale relationer.",
+            "Psykologisk analyse omorienteres mod betingelser for handlekraft og frigørelse."
+          ],
+          "key_points": [
+            "Subjektivitet er socialt medieret og historisk formet.",
+            "Analysen retter sig mod handlebegrænsninger og handlemuligheder i kontekst.",
+            "Psykologi bør undgå at reducere strukturelle modsætninger til private mangler.",
+            "Kritisk teori og empirisk arbejde skal informere hinanden gensidigt."
+          ]
+        },
+        "analysis": {
+          "present": false,
+          "sidecars": []
+        }
+      }
+    ],
+    "lecture_slides": [
+      {
+        "source_id": "w08l2-lecture-16-gang-critical-psych-2026-1b13783c",
+        "title": "16. gang Critical psych 2026",
+        "source_kind": "slide",
+        "source_family": "lecture_slide",
+        "source_filename": "16. gang Critical psych 2026.pdf",
+        "subject_relative_path": "Forelæsningsrækken/16. Critical psych 2026.pdf",
+        "source_exists": true,
+        "missing_reason": null,
+        "sequence_index": null,
+        "language_guess": "en",
+        "length_band": "medium",
+        "slide_subcategory": "lecture",
+        "priority_score": 82,
+        "priority_band": "supporting",
+        "priority_reasons": [
+          "lecture_slide",
+          "medium source",
+          "substantial"
+        ],
+        "priority_signals": {
+          "is_grundbog": false,
+          "has_manual_summary": false,
+          "has_prompt_analysis_sidecar": false,
+          "lecture_has_week_analysis_sidecar": false
+        },
+        "file": {
+          "page_count": 23,
+          "estimated_token_count": 3129,
+          "estimated_word_count": 1731,
+          "text_char_count": 12514,
+          "text_extraction_status": "ok",
+          "sha256": "a3f391e51d1f86dcb96472a62a56cb97b3b7b218804d0d7562262b9eb82a0509",
+          "size_bytes": 864674
+        },
+        "summary": {
+          "present": false,
+          "summary_lines": [],
+          "key_points": []
+        },
+        "analysis": {
+          "present": false,
+          "sidecars": []
+        }
+      }
+    ],
+    "seminar_slides": [],
+    "exercise_slides": []
+  },
+  "manifest_warnings": []
+}

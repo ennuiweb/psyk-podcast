@@ -206,7 +206,12 @@ Preprocessing maturity note:
 - `personlighedspsykologi` now also has a first deterministic file-level preprocessing artifact at `shows/personlighedspsykologi-en/source_catalog.json`.
 - This catalog is intentionally richer than `content_manifest.json`: it tracks source hashes, page counts, text-length estimates, language heuristics, simple source-priority signals, and prompt-sidecar presence for raw readings/slides.
 - The catalog is currently built locally from the raw source tree and committed to the repo; GitHub Actions cannot rebuild it yet because the workflow does not have the OneDrive-backed source files.
-- The next intended preprocessing layers above it are lecture bundles plus course-level glossary/theory artifacts, not more prompt-only tweaks.
+- `personlighedspsykologi` now also has a deterministic `lecture_bundles/`
+  layer built from `source_catalog.json`, `content_manifest.json`, and any
+  local analysis sidecars.
+- The next intended preprocessing layers above that are course-level
+  glossary/theory artifacts plus stale-invalidation and weighting, not more
+  prompt-only tweaks.
 
 ## Related docs
 

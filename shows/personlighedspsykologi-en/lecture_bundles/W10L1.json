@@ -1,0 +1,199 @@
+{
+  "version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-04T19:35:41Z",
+  "lecture_key": "W10L1",
+  "lecture_title": "Køn (Forelæsning 18, 2026-04-13)",
+  "sequence_index": 18,
+  "course_position": {
+    "index": 18,
+    "total_lectures": 22,
+    "stage": "closing",
+    "previous_lecture_key": "W09L1",
+    "previous_lecture_title": "Kritisk psykologi (Forelæsning 17, 2026-04-07)",
+    "next_lecture_key": "W10L2",
+    "next_lecture_title": "Sociokulturelle teorier - socialkonstruktionisme og poststrukturalisme (Forelæsning 19, 2026-04-14)"
+  },
+  "bundle_status": "ready",
+  "readiness_issues": [],
+  "lecture_summary": {
+    "present": true,
+    "summary_lines": [
+      "Forelæsningen behandler køn som en psykosocial proces frem for et fast persontræk.",
+      "Kilderne viser, hvordan femininitet og maskulinitet formes i samspillet mellem intime erfaringer og institutionelle rammer.",
+      "Identitet forstås som noget, der forhandles gennem livsforløb, generation og historiske forandringer."
+    ],
+    "key_points": [
+      "Kønnet subjektivitet udvikles i relation mellem indre erfaring og sociale forventninger.",
+      "Normer for køn er historisk foranderlige og kulturelt organiserede.",
+      "Udviklingsbaner varierer med generation, klasse og institutionskontekst.",
+      "Identitetsarbejde rummer konflikt, ambivalens og løbende omfortolkning."
+    ]
+  },
+  "teaching_context": {
+    "lecture_slide_titles": [],
+    "seminar_slide_titles": [],
+    "exercise_slide_titles": []
+  },
+  "source_counts": {
+    "total_sources": 2,
+    "readings": 2,
+    "lecture_slides": 0,
+    "seminar_slides": 0,
+    "exercise_slides": 0,
+    "missing_sources": 0,
+    "manual_reading_summaries_present": 2,
+    "source_analyses_present": 0,
+    "total_pages": 76,
+    "total_estimated_tokens": 22857,
+    "source_family_counts": {
+      "reading": 2
+    }
+  },
+  "source_intelligence": {
+    "dominant_language": "en",
+    "week_analysis": {
+      "present": false,
+      "sidecars": []
+    },
+    "missing_sources": [],
+    "likely_core_sources": [
+      "w10l1-mitchell-2015-bc690b36",
+      "w10l1-bjerrum-nielsen-and-rudberg-2006-39335ee6"
+    ],
+    "likely_supporting_sources": []
+  },
+  "source_priority_order": [
+    {
+      "source_id": "w10l1-mitchell-2015-bc690b36",
+      "title": "Mitchell (2015)",
+      "source_family": "reading",
+      "priority_score": 130,
+      "priority_band": "core"
+    },
+    {
+      "source_id": "w10l1-bjerrum-nielsen-and-rudberg-2006-39335ee6",
+      "title": "Bjerrum Nielsen & Rudberg (2006)",
+      "source_family": "reading",
+      "priority_score": 122,
+      "priority_band": "core"
+    }
+  ],
+  "sources": {
+    "readings": [
+      {
+        "source_id": "w10l1-mitchell-2015-bc690b36",
+        "title": "Mitchell (2015)",
+        "source_kind": "reading",
+        "source_family": "reading",
+        "source_filename": "W10L1 Mitchell (2015).pdf",
+        "subject_relative_path": "Readings/W10L1 Køn/W10L1 Mitchell (2015).pdf",
+        "source_exists": true,
+        "missing_reason": null,
+        "sequence_index": 2,
+        "language_guess": "en",
+        "length_band": "long",
+        "slide_subcategory": null,
+        "priority_score": 130,
+        "priority_band": "core",
+        "priority_reasons": [
+          "reading",
+          "manual summary",
+          "long source",
+          "very substantial"
+        ],
+        "priority_signals": {
+          "is_grundbog": false,
+          "has_manual_summary": true,
+          "has_prompt_analysis_sidecar": false,
+          "lecture_has_week_analysis_sidecar": false
+        },
+        "file": {
+          "page_count": 33,
+          "estimated_token_count": 22857,
+          "estimated_word_count": 14946,
+          "text_char_count": 91425,
+          "text_extraction_status": "ok",
+          "sha256": "acf5588bb7af5895484f214de36de8b3ff75ed57948ea71a24bb06f76195ce8b",
+          "size_bytes": 348938
+        },
+        "summary": {
+          "present": true,
+          "summary_lines": [
+            "Mitchell revisits psychoanalytic feminism by clarifying how symbolic, social, and psychic processes interact in gender formation.",
+            "She responds to poststructural critiques while defending the explanatory value of psychoanalytic concepts.",
+            "The text argues for a non-reductionist account where desire, power, and culture jointly shape subjectivity."
+          ],
+          "key_points": [
+            "Psychoanalysis is used as a theory of subject formation, not biological destiny.",
+            "Gendered positions are reproduced through symbolic structures and social practices.",
+            "Feminist critique and psychoanalytic theory can be combined rather than opposed.",
+            "Political analysis needs to include unconscious dynamics as well as discourse."
+          ]
+        },
+        "analysis": {
+          "present": false,
+          "sidecars": []
+        }
+      },
+      {
+        "source_id": "w10l1-bjerrum-nielsen-and-rudberg-2006-39335ee6",
+        "title": "Bjerrum Nielsen & Rudberg (2006)",
+        "source_kind": "reading",
+        "source_family": "reading",
+        "source_filename": "W10L1 Bjerrum Nielsen & Rudberg (2006).pdf",
+        "subject_relative_path": "Readings/W10L1 Køn/W10L1 Bjerrum Nielsen & Rudberg (2006).pdf",
+        "source_exists": true,
+        "missing_reason": null,
+        "sequence_index": 1,
+        "language_guess": "unknown",
+        "length_band": "long",
+        "slide_subcategory": null,
+        "priority_score": 122,
+        "priority_band": "core",
+        "priority_reasons": [
+          "reading",
+          "manual summary",
+          "long source"
+        ],
+        "priority_signals": {
+          "is_grundbog": false,
+          "has_manual_summary": true,
+          "has_prompt_analysis_sidecar": false,
+          "lecture_has_week_analysis_sidecar": false
+        },
+        "file": {
+          "page_count": 43,
+          "estimated_token_count": 0,
+          "estimated_word_count": 0,
+          "text_char_count": 0,
+          "text_extraction_status": "no_text",
+          "sha256": "d7cb28e4a7c241be9b0fb347ad5c61f42e8a302c7579aa73e6a41c5cad3d6d28",
+          "size_bytes": 3639718
+        },
+        "summary": {
+          "present": true,
+          "summary_lines": [
+            "Teksten analyserer køn som en psykosocial proces, der formes i samspillet mellem intime erfaringer og sociale institutioner.",
+            "Feminitet og maskulinitet fremstilles som noget, der forhandles gennem livsforløb og historiske skift, ikke som faste træk.",
+            "Analysen kobler identitetsudvikling til ændringer i familie, uddannelse og offentlig kultur."
+          ],
+          "key_points": [
+            "Kønnet subjektivitet dannes i mødet mellem indre liv og sociale forventninger.",
+            "Udviklingsbaner varierer på tværs af generation og klasse.",
+            "Normer for femininitet og maskulinitet er historisk foranderlige.",
+            "Identitetsarbejde rummer konflikt, ambivalens og løbende omfortolkning."
+          ]
+        },
+        "analysis": {
+          "present": false,
+          "sidecars": []
+        }
+      }
+    ],
+    "lecture_slides": [],
+    "seminar_slides": [],
+    "exercise_slides": []
+  },
+  "manifest_warnings": []
+}

@@ -1,0 +1,319 @@
+{
+  "version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-04T19:35:41Z",
+  "lecture_key": "W07L2",
+  "lecture_title": "Humanistisk psykologi (Forelæsning 14, 2026-03-17)",
+  "sequence_index": 14,
+  "course_position": {
+    "index": 14,
+    "total_lectures": 22,
+    "stage": "late-middle",
+    "previous_lecture_key": "W07L1",
+    "previous_lecture_title": "Eksistentiel personlighedspsykologi II (Bjerregaard-Nielsen) (Forelæsning 13, 2026-03-16)",
+    "next_lecture_key": "W08L1",
+    "next_lecture_title": "Critical personalism (Forelæsning 15, 2026-03-23)"
+  },
+  "bundle_status": "ready",
+  "readiness_issues": [],
+  "lecture_summary": {
+    "present": true,
+    "summary_lines": [
+      "Forelæsningen behandler humanistisk psykologi som et alternativ til reduktionistiske personmodeller.",
+      "Kilderne fremhæver vækst, autenticitet og relationelle betingelser for udvikling.",
+      "Det humanistiske perspektiv placerer levet erfaring og agenthed centralt i personlighedsteori."
+    ],
+    "key_points": [
+      "Personcentrerede perspektiver prioriterer erfaring, mening og valg.",
+      "Relationelt klima har stor betydning for udviklingsforløb.",
+      "Humanistisk psykologi udfordrer underskuds- og kontrolmodeller.",
+      "Udvikling ses som kontekstafhængig udfoldelse af potentiale."
+    ]
+  },
+  "teaching_context": {
+    "lecture_slide_titles": [
+      "14. Humanistisk psykologi20"
+    ],
+    "seminar_slide_titles": [],
+    "exercise_slide_titles": []
+  },
+  "source_counts": {
+    "total_sources": 4,
+    "readings": 3,
+    "lecture_slides": 1,
+    "seminar_slides": 0,
+    "exercise_slides": 0,
+    "missing_sources": 0,
+    "manual_reading_summaries_present": 3,
+    "source_analyses_present": 0,
+    "total_pages": 135,
+    "total_estimated_tokens": 39620,
+    "source_family_counts": {
+      "lecture_slide": 1,
+      "reading": 3
+    }
+  },
+  "source_intelligence": {
+    "dominant_language": "en",
+    "week_analysis": {
+      "present": false,
+      "sidecars": []
+    },
+    "missing_sources": [],
+    "likely_core_sources": [
+      "w07l2-maslow-1968-7ea53e34",
+      "w07l2-giorgi-2005-55ca98f7",
+      "w07l2-evans-1975-8e8a9d79"
+    ],
+    "likely_supporting_sources": [
+      "w07l2-lecture-14-humanistisk-psykologi20-d271355d"
+    ]
+  },
+  "source_priority_order": [
+    {
+      "source_id": "w07l2-maslow-1968-7ea53e34",
+      "title": "Maslow (1968)",
+      "source_family": "reading",
+      "priority_score": 130,
+      "priority_band": "core"
+    },
+    {
+      "source_id": "w07l2-giorgi-2005-55ca98f7",
+      "title": "Giorgi (2005)",
+      "source_family": "reading",
+      "priority_score": 124,
+      "priority_band": "core"
+    },
+    {
+      "source_id": "w07l2-evans-1975-8e8a9d79",
+      "title": "Evans (1975)",
+      "source_family": "reading",
+      "priority_score": 116,
+      "priority_band": "primary"
+    },
+    {
+      "source_id": "w07l2-lecture-14-humanistisk-psykologi20-d271355d",
+      "title": "14. Humanistisk psykologi20",
+      "source_family": "lecture_slide",
+      "priority_score": 84,
+      "priority_band": "supporting"
+    }
+  ],
+  "sources": {
+    "readings": [
+      {
+        "source_id": "w07l2-maslow-1968-7ea53e34",
+        "title": "Maslow (1968)",
+        "source_kind": "reading",
+        "source_family": "reading",
+        "source_filename": "W7L2 Maslow (1968).pdf",
+        "subject_relative_path": "Readings/W7L2 Humanistisk psykologi/W7L2 Maslow (1968).pdf",
+        "source_exists": true,
+        "missing_reason": null,
+        "sequence_index": 3,
+        "language_guess": "en",
+        "length_band": "long",
+        "slide_subcategory": null,
+        "priority_score": 130,
+        "priority_band": "core",
+        "priority_reasons": [
+          "reading",
+          "manual summary",
+          "long source",
+          "very substantial"
+        ],
+        "priority_signals": {
+          "is_grundbog": false,
+          "has_manual_summary": true,
+          "has_prompt_analysis_sidecar": false,
+          "lecture_has_week_analysis_sidecar": false
+        },
+        "file": {
+          "page_count": 71,
+          "estimated_token_count": 30173,
+          "estimated_word_count": 20307,
+          "text_char_count": 120690,
+          "text_extraction_status": "ok",
+          "sha256": "2ce19e19153fefe31e65eb71ebb91789f8b1651bc354619b4af3850cd2fa4fdf",
+          "size_bytes": 360245
+        },
+        "summary": {
+          "present": true,
+          "summary_lines": [
+            "Maslow outlines a humanistic theory of motivation and self-actualization.",
+            "He argues that higher-order growth tendencies emerge when basic needs are sufficiently secured.",
+            "The text frames personality development as an ongoing process of becoming rather than fixed structure."
+          ],
+          "key_points": [
+            "Need hierarchies organize motivational priorities.",
+            "Self-actualization involves integration, creativity, and realism.",
+            "Pathology can reflect blocked growth conditions.",
+            "Human nature includes developmental potentials, not only deficits."
+          ]
+        },
+        "analysis": {
+          "present": false,
+          "sidecars": []
+        }
+      },
+      {
+        "source_id": "w07l2-giorgi-2005-55ca98f7",
+        "title": "Giorgi (2005)",
+        "source_kind": "reading",
+        "source_family": "reading",
+        "source_filename": "W7L2 Giorgi (2005).pdf",
+        "subject_relative_path": "Readings/W7L2 Humanistisk psykologi/W7L2 Giorgi (2005).pdf",
+        "source_exists": true,
+        "missing_reason": null,
+        "sequence_index": 2,
+        "language_guess": "en",
+        "length_band": "medium",
+        "slide_subcategory": null,
+        "priority_score": 124,
+        "priority_band": "core",
+        "priority_reasons": [
+          "reading",
+          "manual summary",
+          "medium source",
+          "very substantial"
+        ],
+        "priority_signals": {
+          "is_grundbog": false,
+          "has_manual_summary": true,
+          "has_prompt_analysis_sidecar": false,
+          "lecture_has_week_analysis_sidecar": false
+        },
+        "file": {
+          "page_count": 13,
+          "estimated_token_count": 8010,
+          "estimated_word_count": 4984,
+          "text_char_count": 32037,
+          "text_extraction_status": "ok",
+          "sha256": "775505481caeacd3e24dc6f95317606c773327433010b60b5e56535a609059ce",
+          "size_bytes": 101767
+        },
+        "summary": {
+          "present": true,
+          "summary_lines": [
+            "Giorgi argues that humanistic psychology was a necessary correction to reductionist behaviorist and orthodox psychoanalytic models.",
+            "He claims the field still relies too heavily on natural-science assumptions and needs methods that fit lived human meaning.",
+            "The essay proposes a stronger alliance between humanistic psychology and phenomenology to study persons nonreductionistically."
+          ],
+          "key_points": [
+            "Humanistic psychology restored the person as a central unit of analysis.",
+            "Mainstream psychological methods can miss specifically human meanings and contexts.",
+            "Phenomenology offers methodical tools for rigorous, person-centered inquiry.",
+            "A core challenge is building human-science methods with epistemic credibility."
+          ]
+        },
+        "analysis": {
+          "present": false,
+          "sidecars": []
+        }
+      },
+      {
+        "source_id": "w07l2-evans-1975-8e8a9d79",
+        "title": "Evans (1975)",
+        "source_kind": "reading",
+        "source_family": "reading",
+        "source_filename": "W7L2 Evans (1975).pdf",
+        "subject_relative_path": "Readings/W7L2 Humanistisk psykologi/W7L2 Evans (1975).pdf",
+        "source_exists": true,
+        "missing_reason": null,
+        "sequence_index": 1,
+        "language_guess": "unknown",
+        "length_band": "medium",
+        "slide_subcategory": null,
+        "priority_score": 116,
+        "priority_band": "primary",
+        "priority_reasons": [
+          "reading",
+          "manual summary",
+          "medium source"
+        ],
+        "priority_signals": {
+          "is_grundbog": false,
+          "has_manual_summary": true,
+          "has_prompt_analysis_sidecar": false,
+          "lecture_has_week_analysis_sidecar": false
+        },
+        "file": {
+          "page_count": 18,
+          "estimated_token_count": 0,
+          "estimated_word_count": 0,
+          "text_char_count": 0,
+          "text_extraction_status": "no_text",
+          "sha256": "4da84f6b1eec6c3fb3fda27c712611223712eb796964d4e8bccb9b87cbeb1501",
+          "size_bytes": 2746087
+        },
+        "summary": {
+          "present": true,
+          "summary_lines": [
+            "This text engages humanistic psychology through person-centered themes such as growth, authenticity, and relationship.",
+            "It critiques restrictive models of the person and argues for experiential depth in psychological theory.",
+            "Human development is framed as unfolding potential under supportive relational conditions."
+          ],
+          "key_points": [
+            "Person-centered perspectives prioritize lived experience and agency.",
+            "Relational climate strongly influences development trajectories.",
+            "Humanistic models challenge deficit-focused frameworks.",
+            "Growth is understood as contextually enabled, not automatic."
+          ]
+        },
+        "analysis": {
+          "present": false,
+          "sidecars": []
+        }
+      }
+    ],
+    "lecture_slides": [
+      {
+        "source_id": "w07l2-lecture-14-humanistisk-psykologi20-d271355d",
+        "title": "14. Humanistisk psykologi20",
+        "source_kind": "slide",
+        "source_family": "lecture_slide",
+        "source_filename": "14. Humanistisk psykologi20.pdf",
+        "subject_relative_path": "Forelæsningsrækken/14. Humanistisk psykologi20.pdf",
+        "source_exists": true,
+        "missing_reason": null,
+        "sequence_index": null,
+        "language_guess": "da",
+        "length_band": "long",
+        "slide_subcategory": "lecture",
+        "priority_score": 84,
+        "priority_band": "supporting",
+        "priority_reasons": [
+          "lecture_slide",
+          "long source"
+        ],
+        "priority_signals": {
+          "is_grundbog": false,
+          "has_manual_summary": false,
+          "has_prompt_analysis_sidecar": false,
+          "lecture_has_week_analysis_sidecar": false
+        },
+        "file": {
+          "page_count": 33,
+          "estimated_token_count": 1437,
+          "estimated_word_count": 756,
+          "text_char_count": 5748,
+          "text_extraction_status": "ok",
+          "sha256": "7c826fb7b6ce5e3c235a0813d53d1517668eac7bf4aeb703c040e289d06879a4",
+          "size_bytes": 76472215
+        },
+        "summary": {
+          "present": false,
+          "summary_lines": [],
+          "key_points": []
+        },
+        "analysis": {
+          "present": false,
+          "sidecars": []
+        }
+      }
+    ],
+    "seminar_slides": [],
+    "exercise_slides": []
+  },
+  "manifest_warnings": []
+}

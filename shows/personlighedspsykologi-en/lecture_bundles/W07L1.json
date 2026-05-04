@@ -1,0 +1,257 @@
+{
+  "version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-04T19:35:41Z",
+  "lecture_key": "W07L1",
+  "lecture_title": "Eksistentiel personlighedspsykologi II (Bjerregaard-Nielsen) (Forelæsning 13, 2026-03-16)",
+  "sequence_index": 13,
+  "course_position": {
+    "index": 13,
+    "total_lectures": 22,
+    "stage": "late-middle",
+    "previous_lecture_key": "W06L2",
+    "previous_lecture_title": "Eksistentiel personlighedspsykologi I (Funch) (Forelæsning 12, 2026-03-10)",
+    "next_lecture_key": "W07L2",
+    "next_lecture_title": "Humanistisk psykologi (Forelæsning 14, 2026-03-17)"
+  },
+  "bundle_status": "ready",
+  "readiness_issues": [],
+  "lecture_summary": {
+    "present": true,
+    "summary_lines": [
+      "Kilderne samler eksistentielle og fænomenologiske bidrag til moderne personlighedsforståelse.",
+      "Fokus er på valg, mening, relationel tilstedeværelse og personens mulighedsrum.",
+      "Forelæsningen kobler disse perspektiver til konkret terapeutisk praksis og metode."
+    ],
+    "key_points": [
+      "Terapi forstås som et samarbejde om meningsafklaring.",
+      "Eksistentielle temaer organiserer mange kliniske problemstillinger.",
+      "Personens handlekraft fremhæves inden for reelle kontekstbegrænsninger.",
+      "Dialogisk undersøgelse prioriteres over standardiseret teknik."
+    ]
+  },
+  "teaching_context": {
+    "lecture_slide_titles": [
+      "13. Eksistens II. 2026"
+    ],
+    "seminar_slide_titles": [],
+    "exercise_slide_titles": []
+  },
+  "source_counts": {
+    "total_sources": 3,
+    "readings": 2,
+    "lecture_slides": 1,
+    "seminar_slides": 0,
+    "exercise_slides": 0,
+    "missing_sources": 0,
+    "manual_reading_summaries_present": 2,
+    "source_analyses_present": 0,
+    "total_pages": 103,
+    "total_estimated_tokens": 30366,
+    "source_family_counts": {
+      "lecture_slide": 1,
+      "reading": 2
+    }
+  },
+  "source_intelligence": {
+    "dominant_language": "en",
+    "week_analysis": {
+      "present": false,
+      "sidecars": []
+    },
+    "missing_sources": [],
+    "likely_core_sources": [
+      "w07l1-cooper-2003-ee3c34b7",
+      "w07l1-jacobsen-2021-26129bff"
+    ],
+    "likely_supporting_sources": [
+      "w07l1-lecture-13-eksistens-ii-2026-fb33e095"
+    ]
+  },
+  "source_priority_order": [
+    {
+      "source_id": "w07l1-cooper-2003-ee3c34b7",
+      "title": "Cooper (2003)",
+      "source_family": "reading",
+      "priority_score": 130,
+      "priority_band": "core"
+    },
+    {
+      "source_id": "w07l1-jacobsen-2021-26129bff",
+      "title": "Jacobsen (2021)",
+      "source_family": "reading",
+      "priority_score": 116,
+      "priority_band": "primary"
+    },
+    {
+      "source_id": "w07l1-lecture-13-eksistens-ii-2026-fb33e095",
+      "title": "13. Eksistens II. 2026",
+      "source_family": "lecture_slide",
+      "priority_score": 88,
+      "priority_band": "supporting"
+    }
+  ],
+  "sources": {
+    "readings": [
+      {
+        "source_id": "w07l1-cooper-2003-ee3c34b7",
+        "title": "Cooper (2003)",
+        "source_kind": "reading",
+        "source_family": "reading",
+        "source_filename": "W7L1 Cooper (2003).pdf",
+        "subject_relative_path": "Readings/W7L1 Eksistentiel personlighedspsykologi II (Bjerregaard-Nielsen)/W7L1 Cooper (2003).pdf",
+        "source_exists": true,
+        "missing_reason": null,
+        "sequence_index": 1,
+        "language_guess": "en",
+        "length_band": "long",
+        "slide_subcategory": null,
+        "priority_score": 130,
+        "priority_band": "core",
+        "priority_reasons": [
+          "reading",
+          "manual summary",
+          "long source",
+          "very substantial"
+        ],
+        "priority_signals": {
+          "is_grundbog": false,
+          "has_manual_summary": true,
+          "has_prompt_analysis_sidecar": false,
+          "lecture_has_week_analysis_sidecar": false
+        },
+        "file": {
+          "page_count": 45,
+          "estimated_token_count": 26324,
+          "estimated_word_count": 16864,
+          "text_char_count": 105295,
+          "text_extraction_status": "ok",
+          "sha256": "06900d71b6ec2558084d04983fa570243d0517a2849cdc5c154f9767177a1ff4",
+          "size_bytes": 1545677
+        },
+        "summary": {
+          "present": true,
+          "summary_lines": [
+            "Cooper presents existential therapeutic perspectives focused on lived choice, meaning, and relational presence.",
+            "The text integrates phenomenological description with clinical practice principles.",
+            "It emphasizes collaborative inquiry into how persons inhabit possibilities and constraints."
+          ],
+          "key_points": [
+            "Therapy is an encounter oriented to meaning clarification.",
+            "Existential concerns organize many presenting problems.",
+            "Client agency is foregrounded within contextual limits.",
+            "Method favors dialogical exploration over prescriptive technique."
+          ]
+        },
+        "analysis": {
+          "present": false,
+          "sidecars": []
+        }
+      },
+      {
+        "source_id": "w07l1-jacobsen-2021-26129bff",
+        "title": "Jacobsen (2021)",
+        "source_kind": "reading",
+        "source_family": "reading",
+        "source_filename": "W7L1 Jacobsen (2021).pdf",
+        "subject_relative_path": "Readings/W7L1 Eksistentiel personlighedspsykologi II (Bjerregaard-Nielsen)/W7L1 Jacobsen (2021).pdf",
+        "source_exists": true,
+        "missing_reason": null,
+        "sequence_index": 2,
+        "language_guess": "unknown",
+        "length_band": "medium",
+        "slide_subcategory": null,
+        "priority_score": 116,
+        "priority_band": "primary",
+        "priority_reasons": [
+          "reading",
+          "manual summary",
+          "medium source"
+        ],
+        "priority_signals": {
+          "is_grundbog": false,
+          "has_manual_summary": true,
+          "has_prompt_analysis_sidecar": false,
+          "lecture_has_week_analysis_sidecar": false
+        },
+        "file": {
+          "page_count": 25,
+          "estimated_token_count": 0,
+          "estimated_word_count": 0,
+          "text_char_count": 0,
+          "text_extraction_status": "no_text",
+          "sha256": "90a2b43b747d6e55fabef79920ae3b0b03591d5143315908c768e98a4e3aff0b",
+          "size_bytes": 2726840
+        },
+        "summary": {
+          "present": true,
+          "summary_lines": [
+            "Jacobsen diskuterer eksistentielle og fænomenologiske bidrag til moderne personligheds- og klinisk psykologi.",
+            "Teksten præciserer begreber til analyse af selvforhold, lidelse og forandring.",
+            "Der argumenteres for metodisk pluralisme med afsæt i menneskers levede erfaringer."
+          ],
+          "key_points": [
+            "Eksistentiel analyse supplerer træk- og symptomorienterede modeller.",
+            "Begrebslig klarhed styrker både klinisk og forskningsmæssig inferens.",
+            "Mening, relation og temporalitet er centrale analysekategorier.",
+            "Psykologisk metode bør svare til sit ontologiske genstandsfelt."
+          ]
+        },
+        "analysis": {
+          "present": false,
+          "sidecars": []
+        }
+      }
+    ],
+    "lecture_slides": [
+      {
+        "source_id": "w07l1-lecture-13-eksistens-ii-2026-fb33e095",
+        "title": "13. Eksistens II. 2026",
+        "source_kind": "slide",
+        "source_family": "lecture_slide",
+        "source_filename": "13. Eksistens II. 2026.pdf",
+        "subject_relative_path": "Forelæsningsrækken/13. Eksistens II. 2026.pdf",
+        "source_exists": true,
+        "missing_reason": null,
+        "sequence_index": null,
+        "language_guess": "da",
+        "length_band": "long",
+        "slide_subcategory": "lecture",
+        "priority_score": 88,
+        "priority_band": "supporting",
+        "priority_reasons": [
+          "lecture_slide",
+          "long source",
+          "substantial"
+        ],
+        "priority_signals": {
+          "is_grundbog": false,
+          "has_manual_summary": false,
+          "has_prompt_analysis_sidecar": false,
+          "lecture_has_week_analysis_sidecar": false
+        },
+        "file": {
+          "page_count": 33,
+          "estimated_token_count": 4042,
+          "estimated_word_count": 2441,
+          "text_char_count": 16168,
+          "text_extraction_status": "ok",
+          "sha256": "a013d6baec5dadb7e135d48417522d2aa8b82b28466f02c72363703464b5b892",
+          "size_bytes": 914720
+        },
+        "summary": {
+          "present": false,
+          "summary_lines": [],
+          "key_points": []
+        },
+        "analysis": {
+          "present": false,
+          "sidecars": []
+        }
+      }
+    ],
+    "seminar_slides": [],
+    "exercise_slides": []
+  },
+  "manifest_warnings": []
+}

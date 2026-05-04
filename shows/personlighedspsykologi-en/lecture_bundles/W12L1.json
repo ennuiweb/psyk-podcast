@@ -1,0 +1,278 @@
+{
+  "version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-04T19:35:41Z",
+  "lecture_key": "W12L1",
+  "lecture_title": "Sammenligning af teorier og subjektets historie og eksamen (Forelæsning 22, 2026-04-27)",
+  "sequence_index": 22,
+  "course_position": {
+    "index": 22,
+    "total_lectures": 22,
+    "stage": "closing",
+    "previous_lecture_key": "W11L2",
+    "previous_lecture_title": "Narrativitet, kultur og mening (Forelæsning 21, 2026-04-21)",
+    "next_lecture_key": null,
+    "next_lecture_title": null
+  },
+  "bundle_status": "ready",
+  "readiness_issues": [],
+  "lecture_summary": {
+    "present": true,
+    "summary_lines": [
+      "Forelæsningen forbinder Elias’ civilisationsperspektiv med en tværgående sammenligning af personlighedsteorier.",
+      "Kilderne viser, hvordan selvregulering og følelsesstandarder udvikles historisk gennem ændrede interdependensforhold.",
+      "Afslutningsvis vurderes teoriernes forklaringskraft og begrænsninger i relation til eksamensfagets kerneproblemer."
+    ],
+    "key_points": [
+      "Selvkontrol er historisk produceret og socialt indlejret.",
+      "Psykogenese og sociogenese bør analyseres i sammenhæng.",
+      "Ingen enkelt teori kan dække alle personlighedsfænomener.",
+      "Teorisammenligning styrker begrundet valg af begreber og metoder."
+    ]
+  },
+  "teaching_context": {
+    "lecture_slide_titles": [],
+    "seminar_slide_titles": [],
+    "exercise_slide_titles": []
+  },
+  "source_counts": {
+    "total_sources": 3,
+    "readings": 3,
+    "lecture_slides": 0,
+    "seminar_slides": 0,
+    "exercise_slides": 0,
+    "missing_sources": 0,
+    "manual_reading_summaries_present": 3,
+    "source_analyses_present": 1,
+    "total_pages": 135,
+    "total_estimated_tokens": 0,
+    "source_family_counts": {
+      "reading": 3
+    }
+  },
+  "source_intelligence": {
+    "dominant_language": "da",
+    "week_analysis": {
+      "present": true,
+      "sidecars": [
+        {
+          "relative_path": "Readings/W12L1 Sammenligning af teorier og subjektets historie og eksamen/week.analysis.md",
+          "content": "## Shared problem\n*   **The historical contingency of the psyche:** All three texts grapple with whether personality is a universal, biological constant or a historically situated construct. They investigate how psychological structures change over time in tandem with societal shifts.\n*   **The internalization of social",
+          "char_count": 321
+        }
+      ]
+    },
+    "missing_sources": [],
+    "likely_core_sources": [
+      "w12l1-grundbog-kapitel-14-perspektiver-pa-personlighed-95ca3a38",
+      "w12l1-grundbog-kapitel-8-personlighed-subjektivitet-og-b0095bfb",
+      "w12l1-elias-2000-f9176ae8"
+    ],
+    "likely_supporting_sources": []
+  },
+  "source_priority_order": [
+    {
+      "source_id": "w12l1-grundbog-kapitel-14-perspektiver-pa-personlighed-95ca3a38",
+      "title": "Grundbog kapitel 14 - Perspektiver på personlighedspsykologi",
+      "source_family": "reading",
+      "priority_score": 146,
+      "priority_band": "core"
+    },
+    {
+      "source_id": "w12l1-grundbog-kapitel-8-personlighed-subjektivitet-og-b0095bfb",
+      "title": "Grundbog kapitel 08 - Personlighed, subjektivitet og historicitet",
+      "source_family": "reading",
+      "priority_score": 138,
+      "priority_band": "core"
+    },
+    {
+      "source_id": "w12l1-elias-2000-f9176ae8",
+      "title": "Elias (2000)",
+      "source_family": "reading",
+      "priority_score": 120,
+      "priority_band": "core"
+    }
+  ],
+  "sources": {
+    "readings": [
+      {
+        "source_id": "w12l1-grundbog-kapitel-14-perspektiver-pa-personlighed-95ca3a38",
+        "title": "Grundbog kapitel 14 - Perspektiver på personlighedspsykologi",
+        "source_kind": "reading",
+        "source_family": "reading",
+        "source_filename": "W12L1 Grundbog kapitel 14 - Perspektiver på personlighedspsykologi.pdf",
+        "subject_relative_path": "Readings/W12L1 Sammenligning af teorier og subjektets historie og eksamen/W12L1 Grundbog kapitel 14 - Perspektiver på personlighedspsykologi.pdf",
+        "source_exists": true,
+        "missing_reason": null,
+        "sequence_index": 3,
+        "language_guess": "da",
+        "length_band": "long",
+        "slide_subcategory": null,
+        "priority_score": 146,
+        "priority_band": "core",
+        "priority_reasons": [
+          "reading",
+          "grundbog",
+          "manual summary",
+          "analysis sidecar",
+          "week analysis",
+          "long source"
+        ],
+        "priority_signals": {
+          "is_grundbog": true,
+          "has_manual_summary": true,
+          "has_prompt_analysis_sidecar": true,
+          "lecture_has_week_analysis_sidecar": true
+        },
+        "file": {
+          "page_count": 72,
+          "estimated_token_count": 0,
+          "estimated_word_count": 0,
+          "text_char_count": 0,
+          "text_extraction_status": "no_text",
+          "sha256": "582ad8ba215e2152aca2c9a1c5e870134a7e51cb7ead3651b1a2c71fc7ba43f5",
+          "size_bytes": 7873734
+        },
+        "summary": {
+          "present": true,
+          "summary_lines": [
+            "Kapitlet sammenligner centrale personlighedsteorier og vurderer deres styrker og begrænsninger.",
+            "Det argumenterer for en pluralistisk, problemstyret brug af begreber og metoder.",
+            "Hovedpointen er, at integration på tværs af forklaringsniveauer fortsat er fagets store udfordring."
+          ],
+          "key_points": [
+            "Intet enkelt paradigme kan forklare alle personlighedsfænomener.",
+            "Metodevalg bør følge problemstilling og analytisk niveau.",
+            "Dialog mellem teoriretninger øger begrebslig præcision.",
+            "Teoriers etiske og samfundsmæssige implikationer bør gøres eksplicitte."
+          ]
+        },
+        "analysis": {
+          "present": true,
+          "sidecars": [
+            {
+              "relative_path": "Readings/W12L1 Sammenligning af teorier og subjektets historie og eksamen/W12L1 Grundbog kapitel 14 - Perspektiver på personlighedspsykologi.analysis.md",
+              "content": "## Core distinctions\n*   **Anglo-Saxon vs. Continental traditions:** The Anglo-Saxon tradition is characterized by quantitative, evidence-based approaches (e.g., trait theory, cognitive psychology), whereas the Continental tradition leans on philosophical, qualitative, and meaning-focused approaches",
+              "char_count": 300
+            }
+          ]
+        }
+      },
+      {
+        "source_id": "w12l1-grundbog-kapitel-8-personlighed-subjektivitet-og-b0095bfb",
+        "title": "Grundbog kapitel 08 - Personlighed, subjektivitet og historicitet",
+        "source_kind": "reading",
+        "source_family": "reading",
+        "source_filename": "W12L1 Grundbog kapitel 8 - Personlighed, subjektivitet og historicitet.pdf",
+        "subject_relative_path": "Readings/W12L1 Sammenligning af teorier og subjektets historie og eksamen/W12L1 Grundbog kapitel 8 - Personlighed, subjektivitet og historicitet.pdf",
+        "source_exists": true,
+        "missing_reason": null,
+        "sequence_index": 2,
+        "language_guess": "da",
+        "length_band": "long",
+        "slide_subcategory": null,
+        "priority_score": 138,
+        "priority_band": "core",
+        "priority_reasons": [
+          "reading",
+          "grundbog",
+          "manual summary",
+          "week analysis",
+          "long source"
+        ],
+        "priority_signals": {
+          "is_grundbog": true,
+          "has_manual_summary": true,
+          "has_prompt_analysis_sidecar": false,
+          "lecture_has_week_analysis_sidecar": true
+        },
+        "file": {
+          "page_count": 44,
+          "estimated_token_count": 0,
+          "estimated_word_count": 0,
+          "text_char_count": 0,
+          "text_extraction_status": "no_text",
+          "sha256": "abceb24b3226692fed23a0ec95354007a9108a5bbffce53e98a0be9e57ef17bc",
+          "size_bytes": 7246738
+        },
+        "summary": {
+          "present": true,
+          "summary_lines": [
+            "Kapitlet viser, at personlighed og subjektivitet er historisk situerede dannelser.",
+            "Det kritiserer ahistorisk individualisme ved at forankre psykologisk liv i institutioner, sprog og praksis.",
+            "Udvikling beskrives som socialt medieret under skiftende kulturelle betingelser."
+          ],
+          "key_points": [
+            "Historicitet er konstituerende for subjektets dannelse.",
+            "Psykologiske kategorier ændrer sig med sociale og kulturelle regimer.",
+            "Personlighed medieres gennem diskurs og institutionel praksis.",
+            "Analyse bør forbinde biografi med historisk forandring."
+          ]
+        },
+        "analysis": {
+          "present": false,
+          "sidecars": []
+        }
+      },
+      {
+        "source_id": "w12l1-elias-2000-f9176ae8",
+        "title": "Elias (2000)",
+        "source_kind": "reading",
+        "source_family": "reading",
+        "source_filename": "W12L1 Elias (2000).pdf",
+        "subject_relative_path": "Readings/W12L1 Sammenligning af teorier og subjektets historie og eksamen/W12L1 Elias (2000).pdf",
+        "source_exists": true,
+        "missing_reason": null,
+        "sequence_index": 1,
+        "language_guess": "unknown",
+        "length_band": "medium",
+        "slide_subcategory": null,
+        "priority_score": 120,
+        "priority_band": "core",
+        "priority_reasons": [
+          "reading",
+          "manual summary",
+          "week analysis",
+          "medium source"
+        ],
+        "priority_signals": {
+          "is_grundbog": false,
+          "has_manual_summary": true,
+          "has_prompt_analysis_sidecar": false,
+          "lecture_has_week_analysis_sidecar": true
+        },
+        "file": {
+          "page_count": 19,
+          "estimated_token_count": 0,
+          "estimated_word_count": 0,
+          "text_char_count": 0,
+          "text_extraction_status": "no_text",
+          "sha256": "2916674e58257dd4ab74932ecb074aac36f67ce648b56432d31c6392fe64fc1d",
+          "size_bytes": 2282030
+        },
+        "summary": {
+          "present": true,
+          "summary_lines": [
+            "Elias links personality formation to long-term civilizing processes and changing social interdependencies.",
+            "He argues that self-regulation develops historically with transformations in power, institutions, and everyday manners.",
+            "The text situates psychological development within macro-sociological change."
+          ],
+          "key_points": [
+            "Subjective self-control is historically produced, not timeless.",
+            "Interdependence chains shape emotional standards and conduct.",
+            "Personality development is tied to social figurations.",
+            "Sociogenesis and psychogenesis must be analyzed together."
+          ]
+        },
+        "analysis": {
+          "present": false,
+          "sidecars": []
+        }
+      }
+    ],
+    "lecture_slides": [],
+    "seminar_slides": [],
+    "exercise_slides": []
+  },
+  "manifest_warnings": []
+}

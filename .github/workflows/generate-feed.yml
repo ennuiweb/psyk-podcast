@@ -263,6 +263,7 @@ jobs:
         env:
           SHOW: ${{ matrix.show }}
           STORAGE_PROVIDER: ${{ steps.show_policy.outputs.storage_provider }}
+          SOURCE_IMPORT_PROVIDER: ${{ steps.source_import.outputs.provider }}
           DROPLET_SSH_KEY: ${{ secrets.DIGITALOCEAN_SSH_KEY }}
         run: |
           case "${SHOW}" in
@@ -292,7 +293,7 @@ jobs:
           echo "${DROPLET_SSH_KEY}" > "${key_path}"
           chmod 600 "${key_path}"
 
-          if [[ "${STORAGE_PROVIDER}" == "drive" ]]; then
+          if [[ "${STORAGE_PROVIDER}" == "drive" || "${SOURCE_IMPORT_PROVIDER}" == "drive" ]]; then
             download_root="${RUNNER_TEMP}/drive-quizzes/${subject_slug}"
             cmd=(
               python podcast-tools/sync_drive_quiz_links.py

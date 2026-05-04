@@ -690,6 +690,8 @@ Status legend:
 | F1 | done | Migrate `personal` storage to R2 | `personal` is now live on `storage.provider = "r2"` and remains `publication.owner = "legacy_workflow"`. |
 | F2 | done | Migrate `bioneuro` | `bioneuro` is now live, `storage.provider = "r2"`, and `publication.owner = "queue"`. |
 | F3 | in_progress | Migrate `personlighedspsykologi-en` | Storage cutover to `storage.provider = "r2"` is now live under `publication.owner = "legacy_workflow"` with workflow-managed Drive-to-R2 import and preserved Drive identity for regeneration validation; queue ownership is still pending. |
+| F4 | done | Migrate `intro-vt` storage to R2 | `intro-vt` is now live on `storage.provider = "r2"` under `publication.owner = "legacy_workflow"`, with workflow-managed Drive-to-R2 import and RSS-based GUID fallback for continuity because the show does not keep a committed `episode_inventory.json`. |
+| F5 | done | Migrate `social-psychology` storage to R2 | `social-psychology` is now live on `storage.provider = "r2"` under `publication.owner = "legacy_workflow"`, with workflow-managed Drive-to-R2 import and RSS-based GUID fallback for continuity because the show does not keep a committed `episode_inventory.json`. |
 
 ### Workstream G - Validation And Tests
 
@@ -731,6 +733,7 @@ Before any show is declared migrated, all of the following must be true:
 
 - `personal` is now the low-risk R2 storage migration example, not the first queue-owned cutover.
 - `bioneuro` migrates before `personlighedspsykologi-en`.
+- active published audio is now off Drive across the non-paused show surface; remaining Drive dependence is source-side or paused-feed legacy only.
 - queue rollout and storage migration are one integrated program.
 - Freudd production deploy remains on DigitalOcean for this program.
 - upload-to-R2 precedes metadata commit because broken feed references are worse than temporary orphaned objects.

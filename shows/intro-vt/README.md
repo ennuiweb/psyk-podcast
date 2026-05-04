@@ -1,11 +1,20 @@
 # Intro + VT Deep Dives - Hold 1 - 2024
 
-Scaffolding for the "Intro + VT Deep Dives - Hold 1 - 2024" feed. Populate the config files below before wiring the show into production:
+This show is live. Published audio now comes from Cloudflare R2, while the legacy GitHub Actions workflow still imports source files from Drive before regenerating the feed.
 
-- `config.local.json` – local test run against a Drive folder.
-- `config.github.json` – checked in for CI once secrets exist.
-- `auto_spec.json` – optional mapping of Drive folders to canonical publish dates.
-- `episode_metadata.json` – optional per-file overrides.
-- `assets/cover.png` – square artwork (min. 1400×1400) referenced by the feed.
+Primary files:
 
-Copy the template files (they end in `.template.json`) when you are ready to supply real values.
+- `config.github.json` - live workflow config; `storage.provider = "r2"` with workflow-managed Drive source import.
+- `config.local.json` - local test config matching the live publication model.
+- `config.template.json` - template for rebuilding local or CI config variants.
+- `media_manifest.r2.json` - canonical published-object inventory for the R2-backed feed.
+- `auto_spec.json` - optional mapping of source folders to canonical publish dates.
+- `episode_metadata.json` - optional per-file overrides.
+- `feeds/rss.xml` - generated live RSS feed.
+- `assets/cover.png` - square artwork referenced by the feed.
+
+Operational note:
+
+- Drive is still the source-side ingest path for this show.
+- R2 is now the public audio hosting layer.
+- The show remains `publication.owner = "legacy_workflow"`.

@@ -66,7 +66,11 @@ Recommended R2 config fields:
 - `storage.public_base_url`
 - `storage.manifest_file`
 
-The feed generator preserves `guid` / `episode_key` continuity by reusing values from the existing `episode_inventory.json` and by honoring `stable_guid` in manifest entries when present.
+The feed generator preserves `guid` / `episode_key` continuity by:
+
+- reusing values from the existing `episode_inventory.json` when present
+- honoring `stable_guid` in manifest entries when present
+- falling back to the existing checked-in RSS feed identity map when a show does not yet keep a committed `episode_inventory.json`
 
 ## Publication ownership
 
@@ -89,13 +93,17 @@ Current operational reality:
 
 - the feed stack supports both Drive and R2
 - `bioneuro` is now live on `storage.provider = "r2"` with `publication.owner = "queue"`
+- `intro-vt` is now live on `storage.provider = "r2"` with `publication.owner = "legacy_workflow"`; the legacy workflow imports Drive source files into `shows/intro-vt/media_manifest.r2.json` before regenerating the feed
 - `personal` is now live on `storage.provider = "r2"` with `publication.owner = "legacy_workflow"`
 - `personal` uses the resumable Drive-to-R2 importer as its canonical ingest path; that importer now backfills manifest checksums on resumed catalogs and transcodes configured source formats such as `.m4a` and `.wav` to MP3 before upload
 - `personlighedspsykologi-en` is now live on `storage.provider = "r2"` while staying on `publication.owner = "legacy_workflow"`; the legacy workflow first imports the currently published Drive-backed inventory into R2, refreshes `media_manifest.r2.json`, preserves the original Drive file IDs in the regenerated inventory for rollout validation, and then regenerates feed-side artifacts
+- `social-psychology` is now live on `storage.provider = "r2"` with `publication.owner = "legacy_workflow"`; the legacy workflow imports Drive source files into `shows/social-psychology/media_manifest.r2.json` before regenerating the feed
 - the current `bioneuro` public enclosure base is the temporary Cloudflare hostname `https://pub-fe942499398a478c8a8f432207051244.r2.dev`
+- `intro-vt` currently uses the same temporary Cloudflare hostname for enclosures
 - `personal` currently uses the same temporary Cloudflare hostname for enclosures
 - `personlighedspsykologi-en` currently uses the same temporary Cloudflare hostname for enclosures
-- the remaining active shows are still on the legacy workflow until they are cut over explicitly
+- `social-psychology` currently uses the same temporary Cloudflare hostname for enclosures
+- all active audio-publishing shows are now R2-backed; remaining Drive dependence is limited to source import, ingest, or paused legacy feeds
 
 ## Google setup
 
@@ -153,7 +161,7 @@ The Drive trigger helper lives in:
 - `apps-script/drive_change_trigger.gs`
 
 Use it when a Drive upload should trigger `generate-feed.yml` via `workflow_dispatch`.
-Do not keep R2-backed shows in that watcher list once they no longer publish from Drive.
+Do not keep shows in that watcher list once they no longer depend on Drive-triggered publication.
 
 If using `clasp`, the repo helpers are:
 

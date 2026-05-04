@@ -314,38 +314,91 @@ jobs:
             "${cmd[@]}" --upload --ssh-key "${key_path}"
             local_probe_root="${download_root}"
           else
-            cmd=(
-              python scripts/sync_quiz_links.py
-              --output-root "${output_root}"
-              --links-file "shows/${SHOW}/quiz_links.json"
-              --subject-slug "${subject_slug}"
-              --language-tag "[EN]"
-              --quiz-path-mode flat-id
-              --flat-id-len 8
-              --quiz-difficulty any
-              --fallback-derive-mp3-names
-              --preferred-audio-inventory "shows/${SHOW}/episode_inventory.json"
-              --remote-root "${remote_root}"
-              --ssh-key "${key_path}"
-            )
-            if [[ -n "${flat_id_include_subject}" ]]; then
-              cmd+=("${flat_id_include_subject}")
+            if [[ -d "${output_root}" ]]; then
+              cmd=(
+                python scripts/sync_quiz_links.py
+                --output-root "${output_root}"
+                --links-file "shows/${SHOW}/quiz_links.json"
+                --subject-slug "${subject_slug}"
+                --language-tag "[EN]"
+                --quiz-path-mode flat-id
+                --flat-id-len 8
+                --quiz-difficulty any
+                --fallback-derive-mp3-names
+                --preferred-audio-inventory "shows/${SHOW}/episode_inventory.json"
+                --remote-root "${remote_root}"
+                --ssh-key "${key_path}"
+              )
+              if [[ -n "${flat_id_include_subject}" ]]; then
+                cmd+=("${flat_id_include_subject}")
+              fi
+              "${cmd[@]}"
+              local_probe_root="${output_root}"
+            else
+              echo "::notice::Output root ${output_root} is missing for ${SHOW}; reusing committed quiz_links.json for remote validation."
+              if [[ ! -f "shows/${SHOW}/quiz_links.json" ]]; then
+                echo "::error::Missing committed quiz_links.json for ${SHOW}; cannot validate remote quizzes without local output."
+                exit 1
+              fi
+              mapfile -t committed_probe < <(
+                python3 - "shows/${SHOW}/quiz_links.json" <<'PY'
+import json
+import sys
+from pathlib import Path
+
+links_path = Path(sys.argv[1])
+payload = json.loads(links_path.read_text())
+by_name = payload.get("by_name") if isinstance(payload, dict) and "by_name" in payload else payload
+if not isinstance(by_name, dict):
+    raise SystemExit(f"Unsupported quiz links structure in {links_path}")
+
+relative_paths = set()
+for record in by_name.values():
+    if not isinstance(record, dict):
+        continue
+    relative_path = record.get("relative_path")
+    if isinstance(relative_path, str) and relative_path:
+        relative_paths.add(Path(relative_path).name)
+    links = record.get("links")
+    if isinstance(links, list):
+        for item in links:
+            if not isinstance(item, dict):
+                continue
+            relative_path = item.get("relative_path")
+            if isinstance(relative_path, str) and relative_path:
+                relative_paths.add(Path(relative_path).name)
+
+if not relative_paths:
+    raise SystemExit(f"No quiz relative_path entries found in {links_path}")
+
+sample_name = min(relative_paths)
+print(len(relative_paths))
+print(sample_name)
+PY
+              )
+              if [[ "${#committed_probe[@]}" -lt 2 ]]; then
+                echo "::error::Unable to derive committed quiz link probe data for ${SHOW}."
+                exit 1
+              fi
+              local_json_count="${committed_probe[0]}"
+              sample_base="${committed_probe[1]}"
+              skip_local_probe="true"
             fi
-            "${cmd[@]}"
-            local_probe_root="${output_root}"
           fi
 
-          local_json_count="$(find "${local_probe_root}" -type f -name '*.json' | wc -l | tr -d '[:space:]')"
-          if [[ "${local_json_count}" -le 0 ]]; then
-            echo "::error::No quiz JSON files downloaded for ${SHOW}; aborting."
-            exit 1
+          if [[ "${skip_local_probe:-false}" != "true" ]]; then
+            local_json_count="$(find "${local_probe_root}" -type f -name '*.json' | wc -l | tr -d '[:space:]')"
+            if [[ "${local_json_count}" -le 0 ]]; then
+              echo "::error::No quiz JSON files downloaded for ${SHOW}; aborting."
+              exit 1
+            fi
+            sample_json="$(find "${local_probe_root}" -type f -name '*.json' -print -quit)"
+            if [[ -z "${sample_json}" ]]; then
+              echo "::error::Unable to select sample quiz file for ${SHOW}; aborting."
+              exit 1
+            fi
+            sample_base="$(basename "${sample_json}")"
           fi
-          sample_json="$(find "${local_probe_root}" -type f -name '*.json' -print -quit)"
-          if [[ -z "${sample_json}" ]]; then
-            echo "::error::Unable to select sample quiz file for ${SHOW}; aborting."
-            exit 1
-          fi
-          sample_base="$(basename "${sample_json}")"
           remote_json_count="$(ssh -i "${key_path}" "root@64.226.79.109" "find '${remote_root}' -type f -name '*.json' | wc -l" | tr -d '[:space:]')"
           if [[ "${remote_json_count}" -lt "${local_json_count}" ]]; then
             echo "::error::Remote quiz JSON count (${remote_json_count}) is lower than local count (${local_json_count}) for ${SHOW}."

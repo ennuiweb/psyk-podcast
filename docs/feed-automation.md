@@ -129,7 +129,7 @@ For each show it:
 3. otherwise checks secrets and writes runtime config
 4. for Drive shows, writes runtime service account credentials and optionally transcodes matching media
 5. runs `gdrive_podcast_feed.py`
-6. for quiz-enabled subjects, syncs quiz links from either Drive or local NotebookLM output depending on provider, then rebuilds the subject content manifest
+6. for quiz-enabled subjects, syncs quiz links from either Drive or local NotebookLM output depending on provider; on legacy R2 subjects where no local NotebookLM `output/` tree is present in CI, it reuses the committed `quiz_links.json` catalog for remote validation instead of failing on the missing directory, then rebuilds the subject content manifest
 7. commits generated artifacts back to `main` when needed
 
 Tracked feed artifacts live under:

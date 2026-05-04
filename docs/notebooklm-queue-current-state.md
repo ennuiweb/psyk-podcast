@@ -100,6 +100,7 @@ That means the queue currently owns:
 The queue runtime now also has a concrete Hetzner packaging layer:
 
 - `drain-show` provides the single-cycle primitive and `serve-show` now provides the quota-aware remote worker entrypoint
+- `serve-show` now waits only when `retry_scheduled` jobs are the sole remaining active backlog, stops for manual intervention on mixed blocked+retry backlog, and fails closed on invalid retry timestamps instead of hot-looping
 - templated `systemd` service and timer artifacts now exist under `notebooklm_queue/deploy/systemd/`
 - the Hetzner runtime/env/install runbook now exists in [notebooklm-queue-operations.md](notebooklm-queue-operations.md)
 
@@ -118,6 +119,8 @@ Required repo workflows completed successfully for the latest queue commits:
 - `ad01a4f` -> Actions run `25212535606`
 - `532ac58` -> Actions run `25213172226`
 - `9ef94cf` -> Actions run `25214094593`
+- `609539b` -> Actions run `25338719821`
+- `0e08d0d` -> Actions run `25339098796`
 - `0b0d41c` -> Actions run `25325562747`
 
 GitHub Actions baseline:

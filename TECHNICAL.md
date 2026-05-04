@@ -17,7 +17,7 @@ Use this vocabulary when referring to the system:
 
 - `Freudd Learning System` - the whole repo-level ecosystem: portal, content generation, queueing, publication, and public podcast surfaces.
 - `Freudd Portal` - the student-facing `freudd.dk` web layer in `freudd_portal/`.
-- `Freudd Content Engine` - the content-production backbone across source preprocessing, course framing, prompt construction, generation workflows, and show metadata/artifacts.
+- `Freudd Content Engine` - the course-material engine whose purpose is to create the best possible conditions for high-quality learning material, across source preprocessing, course framing, prompt construction, generation workflows, and show metadata/artifacts.
 - `Freudd Generation Queue` - the Hetzner-owned queue/orchestration runtime in `notebooklm_queue/`.
 - `Source Intelligence Layer` - the raw-source preprocessing subsystem, currently centered on `source_catalog.json` and future lecture/course semantic artifacts.
 - `Course Context Layer` - the deterministic course/lecture framing compiler in `notebooklm_queue/course_context.py`.

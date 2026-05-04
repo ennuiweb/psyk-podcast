@@ -6,8 +6,10 @@ This document covers the repo-level NotebookLM automation layout and the subject
 
 Naming note:
 
-- `Freudd Content Engine` is the canonical umbrella for the content-production
-  system described here.
+- `Freudd Content Engine` is the canonical umbrella for the course-material
+  system described here. Its point is not only to generate outputs, but to
+  create the best possible conditions for strong learning material before,
+  during, and after generation.
 - `Freudd Generation Queue` names the Hetzner-owned orchestration/runtime layer
   under `notebooklm_queue/`.
 - `Course Context Layer`, `Prompt Assembly Layer`, and `Source Intelligence

@@ -527,6 +527,10 @@ def run_validation(
     return report
 
 
+def validation_issue_count(report: dict[str, list[str]]) -> int:
+    return sum(len(items) for items in report.values())
+
+
 def _source_variant_priority(name: str) -> int:
     if BRIEF_PATTERN.search(name):
         return 1
@@ -843,6 +847,11 @@ def main() -> int:
         action="store_true",
         help="Include weekly overview summaries validation in output.",
     )
+    parser.add_argument(
+        "--fail-on-validation-issues",
+        action="store_true",
+        help="Exit non-zero when validation finds missing or incomplete manual summary coverage.",
+    )
     parser.add_argument("--summary-lines-min", type=int, default=2)
     parser.add_argument("--summary-lines-max", type=int, default=4)
     parser.add_argument("--key-points-min", type=int, default=3)
@@ -900,20 +909,32 @@ def main() -> int:
         migrated_weekly_aliases = _migrate_alias_keys(weekly_by_name, weekly_keys)
 
     if args.validate_only:
+        reading_report: dict[str, list[str]] | None = None
+        weekly_report: dict[str, list[str]] | None = None
         if episode_keys:
-            run_validation(
+            reading_report = run_validation(
                 by_name,
                 episode_keys,
                 summary_lines_min=args.summary_lines_min,
                 key_points_min=args.key_points_min,
             )
         if args.validate_weekly and weekly_keys:
-            run_weekly_validation(
+            weekly_report = run_weekly_validation(
                 weekly_by_name,
                 weekly_keys,
                 summary_lines_min=args.summary_lines_min,
                 key_points_min=args.key_points_min,
             )
+        if args.fail_on_validation_issues:
+            total_issues = 0
+            if reading_report is not None:
+                total_issues += validation_issue_count(reading_report)
+            if weekly_report is not None:
+                total_issues += validation_issue_count(weekly_report)
+            if total_issues > 0:
+                raise SystemExit(
+                    f"Validation failed with {total_issues} manual summary coverage issue(s)."
+                )
         return 0
 
     added_keys: list[str] = []

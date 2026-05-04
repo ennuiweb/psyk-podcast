@@ -12,6 +12,7 @@ from typing import Any
 
 from .adapters import get_show_adapter
 from .constants import (
+    STATE_BLOCKED_MANUAL_PREREQ,
     STATE_COMMITTING_REPO_ARTIFACTS,
     STATE_FAILED_RETRYABLE,
     STATE_OBJECTS_UPLOADED,
@@ -44,6 +45,12 @@ class QuizSyncSettings:
     remote_root: str
     include_subject_in_flat_id: bool = False
     language_tag: str = "[EN]"
+
+
+@dataclass(frozen=True, slots=True)
+class PhaseFailurePolicy:
+    state: str = STATE_FAILED_RETRYABLE
+    blocked_reason: str | None = None
 
 
 QUIZ_SYNC_SETTINGS = {
@@ -126,6 +133,7 @@ def rebuild_repo_metadata(
             result = _run_phase(name=phase["name"], command=phase["command"], repo_root=options.repo_root)
             metadata_payload["phases"].append(result)
             if result["returncode"] != 0:
+                failure_policy = phase.get("failure_policy") or PhaseFailurePolicy()
                 return _finalize_failure(
                     store=store,
                     job=job,
@@ -134,6 +142,8 @@ def rebuild_repo_metadata(
                     actor=options.actor,
                     error_message=result.get("stderr") or result.get("stdout") or f"{phase['name']} failed",
                     note=f"Metadata phase failed: {phase['name']}",
+                    failure_state=failure_policy.state,
+                    blocked_reason=failure_policy.blocked_reason,
                 )
 
         try:
@@ -302,6 +312,38 @@ def _phase_definitions(
                 "command": command,
             }
         )
+    if show_slug == "personlighedspsykologi-en":
+        phases.append(
+            {
+                "name": "validate_manual_summaries",
+                "command": [
+                    python,
+                    str(repo_root / "notebooklm-podcast-auto" / "personlighedspsykologi" / "scripts" / "sync_reading_summaries.py"),
+                    "--output-root",
+                    QUIZ_SYNC_SETTINGS[show_slug].output_root,
+                    "--validate-only",
+                    "--validate-weekly",
+                    "--fail-on-validation-issues",
+                ],
+                "failure_policy": PhaseFailurePolicy(
+                    state=STATE_BLOCKED_MANUAL_PREREQ,
+                    blocked_reason="missing_manual_summary_content",
+                ),
+            }
+        )
+        phases.append(
+            {
+                "name": "sync_regeneration_registry",
+                "command": [
+                    python,
+                    str(repo_root / "notebooklm-podcast-auto" / "personlighedspsykologi" / "scripts" / "sync_regeneration_registry.py"),
+                    "--inventory",
+                    str(artifact_paths.inventory_path.relative_to(repo_root)),
+                    "--registry",
+                    "shows/personlighedspsykologi-en/regeneration_registry.json",
+                ],
+            }
+        )
     phases.append(
         {
             "name": "generate_feed",
@@ -331,8 +373,11 @@ def _phase_definitions(
                 "command": [
                     python,
                     str(repo_root / "scripts" / "audit_personlighedspsykologi_slide_briefs.py"),
-                    "--warn-only",
                 ],
+                "failure_policy": PhaseFailurePolicy(
+                    state=STATE_BLOCKED_MANUAL_PREREQ,
+                    blocked_reason="missing_slide_mapping_or_briefs",
+                ),
             }
         )
     if show_slug in SHOWS_WITH_SPOTIFY_SYNC:
@@ -536,6 +581,8 @@ def _finalize_failure(
     actor: str,
     error_message: str,
     note: str,
+    failure_state: str = STATE_FAILED_RETRYABLE,
+    blocked_reason: str | None = None,
 ) -> dict[str, Any]:
     metadata = dict(manifest.get("metadata") or {})
     metadata["status"] = "failed"
@@ -554,12 +601,19 @@ def _finalize_failure(
     updated = store.transition_job(
         show_slug=str(job["show_slug"]),
         job_id=str(job["job_id"]),
-        state=STATE_FAILED_RETRYABLE,
+        state=failure_state,
         actor=actor,
         note=note,
         error=error_message,
-        details={"bundle_id": bundle_id, "manifest_path": manifest_path},
+        details={
+            "bundle_id": bundle_id,
+            "manifest_path": manifest_path,
+            "blocked_reason": blocked_reason,
+        },
     )
+    if blocked_reason and updated.get("blocked_reason") != blocked_reason:
+        updated["blocked_reason"] = blocked_reason
+        store.save_job(updated)
     _persist_metadata_artifacts(
         store=store,
         job=updated,

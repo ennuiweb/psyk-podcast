@@ -504,6 +504,14 @@ Recommended rollout model:
 - move activation and publication transitions into explicit queue steps
 - require validation that `active_variant`, inventory identity, and published object set agree before final commit
 
+Current shipped hardening:
+
+- queue metadata rebuild now runs strict manual-summary coverage validation before feed generation
+- queue metadata rebuild now runs `sync_regeneration_registry.py` before feed generation for this show
+- queue metadata rebuild now runs strict registry/inventory validation after feed generation
+- queue metadata rebuild now treats slide-brief coverage failures as blocked manual prerequisites instead of warn-only queue output
+- live `publication.owner` still remains `legacy_workflow`; storage cutover should happen before ownership cutover
+
 ## Implementation Phases
 
 ### Phase 0 - Architecture Freeze

@@ -66,6 +66,7 @@ Queue-core note:
 - current scope now also includes publish-bundle preparation: `prepare-publish` validates the local week output, blocks on leftover request logs or missing required artifacts, persists a publish manifest, and advances successful jobs to `approved_for_publish`
 - current scope now also includes the first real publication stage: `upload-r2` claims jobs in `approved_for_publish`, uploads media artifacts to deterministic R2 object keys, verifies each uploaded object with `head_object`, refreshes the repo-side R2 media manifest, and advances successful jobs to `objects_uploaded`
 - current scope now also includes repo metadata rebuild: `rebuild-metadata` claims jobs in `objects_uploaded`, refreshes queue-owned quiz links for supported shows, regenerates RSS and episode inventory from the R2 manifest, runs show-specific sidecars such as Spotify sync and Freudd content-manifest rebuild, validates the resulting repo artifacts, and advances successful jobs to `committing_repo_artifacts`
+- `personlighedspsykologi-en` queue metadata rebuild now also runs strict manual-summary coverage validation before feed generation, syncs `regeneration_registry.json` as part of the publish contract, validates registry/inventory alignment after feed generation, and fails closed on slide-brief coverage gaps instead of treating them as warn-only queue output
 - current scope now also includes allowlisted repo publication: `push-repo` claims jobs in `committing_repo_artifacts`, fails closed on tracked repo dirtiness outside the generated-file allowlist, keeps queue-generated artifacts on allowlisted rebase conflicts, pushes with bounded retries, and advances successful jobs to `repo_pushed`
 - current scope now also includes downstream completion: `sync-downstream` claims jobs in `repo_pushed`, waits for expected push-triggered downstream workflows such as `deploy-freudd-portal.yml`, and advances successful jobs to `completed`
 - current scope now also includes service-oriented draining: `drain-show` requeues due retry jobs, refreshes discovery, then advances one show through any ready publication stages until idle, which is the intended `systemd` entrypoint on Hetzner
@@ -147,6 +148,11 @@ Hand-authored summary sources:
 - `shows/personlighedspsykologi-en/weekly_overview_summaries.json`
 
 `sync_reading_summaries.py` validates and scaffolds, but it is not the source of final summary prose.
+
+Queue hardening note:
+
+- local/manual workflows can still use warn-only validation during drafting
+- the queue-owned metadata path for `personlighedspsykologi-en` now uses `--fail-on-validation-issues` so missing or incomplete manual summary content blocks publication instead of producing a retryable publish failure later
 
 Prompt assembly note:
 

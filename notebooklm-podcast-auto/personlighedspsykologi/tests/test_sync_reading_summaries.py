@@ -251,6 +251,37 @@ class SyncReadingSummariesTests(unittest.TestCase):
             self.assertIn("incomplete_summary: 1", output)
             self.assertIn("incomplete_key_points: 1", output)
 
+    def test_validate_only_can_fail_on_validation_issues(self):
+        mod = _load_module()
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            output_root = root / "output"
+            week_dir = output_root / "W05L2"
+            _touch(week_dir / "W05L2 - Missing [EN].mp3")
+
+            summaries_file = root / "reading_summaries.json"
+            summaries_file.write_text(json.dumps({"by_name": {}}), encoding="utf-8")
+
+            with self.assertRaises(SystemExit) as exc:
+                with mock.patch.object(
+                    sys,
+                    "argv",
+                    [
+                        "sync_reading_summaries.py",
+                        "--week",
+                        "W05L2",
+                        "--output-root",
+                        str(output_root),
+                        "--summaries-file",
+                        str(summaries_file),
+                        "--validate-only",
+                        "--fail-on-validation-issues",
+                    ],
+                ):
+                    mod.main()
+
+            self.assertIn("Validation failed", str(exc.exception))
+
     def test_no_request_log_dependency_when_only_request_files_exist(self):
         mod = _load_module()
         with tempfile.TemporaryDirectory() as tmpdir:

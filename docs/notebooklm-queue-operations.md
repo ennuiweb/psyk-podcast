@@ -52,6 +52,13 @@ NOTEBOOKLM_QUEUE_BRANCH=main
 GH_TOKEN=...
 ```
 
+NotebookLM profile rotation on Hetzner:
+
+```bash
+NOTEBOOKLM_PROFILES_FILE=/etc/podcasts/notebooklm-queue/profiles.host.json
+NOTEBOOKLM_PROFILE_PRIORITY=default,oskarvedel,tjekdepotadmin,nopeeeh,vedeloskar,stanhawkservices,baduljen,oskarhoegsgaard,djspindoctor,psykku,freudagsbaren
+```
+
 Notes:
 
 - `NOTEBOOKLM_AUTH_JSON` may be replaced with the wrapper's existing auth-home contract if that is what the server already uses.
@@ -93,6 +100,34 @@ sudo systemctl enable --now podcasts-notebooklm-queue@bioneuro.timer
 sudo systemctl list-timers | rg 'podcasts-notebooklm-queue@bioneuro'
 ```
 
+## Sync NotebookLM profiles from the workstation
+
+When the hosted queue should rotate across the same NotebookLM accounts as the local machine, use the repo helper instead of editing committed `profiles.json` paths for the host.
+
+From the workstation:
+
+```bash
+cd /Users/oskar/repo/podcasts
+./scripts/sync_notebooklm_profiles_to_hetzner.py
+```
+
+This uploads the selected storage-state files to:
+
+- `/etc/podcasts/notebooklm-queue/profiles/`
+- `/etc/podcasts/notebooklm-queue/profiles.host.json`
+
+Default behavior syncs every profile from `notebooklm-podcast-auto/profiles.json`. To limit the bundle:
+
+```bash
+./scripts/sync_notebooklm_profiles_to_hetzner.py --profile default --profile oskarvedel --profile tjekdepotadmin
+```
+
+Sanity-check the host bundle:
+
+```bash
+ssh hetzner-ennui-vps-01-root 'bash -lc '\''for f in /etc/podcasts/notebooklm-queue/profiles/*.json; do echo "== $(basename "$f" .json) =="; PYTHONPATH=/opt/podcasts/notebooklm-podcast-auto/notebooklm-py/src /opt/podcasts/.venv/bin/python -m notebooklm --storage "$f" status | sed -n "1,2p"; echo; done'\'''
+```
+
 ## Manual commands
 
 Run one immediate cycle:
@@ -115,6 +150,8 @@ cd /opt/podcasts
 /opt/podcasts/.venv/bin/python /opt/podcasts/scripts/notebooklm_queue.py report --show-slug bioneuro
 /opt/podcasts/.venv/bin/python /opt/podcasts/scripts/notebooklm_queue.py list --show-slug bioneuro
 ```
+
+For shadow evaluation under rate pressure, prefer a single lecture batch before widening the scope. That keeps failures attributable and lets the queue's retry scheduling work on a small surface area first.
 
 ## Logs and health checks
 

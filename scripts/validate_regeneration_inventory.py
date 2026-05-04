@@ -18,6 +18,50 @@ def read_json(path: Path) -> dict:
         return json.load(handle)
 
 
+def storage_key_candidates(episode: dict) -> list[str]:
+    candidates: list[str] = []
+    for value in (
+        episode.get("source_drive_file_id"),
+        episode.get("source_storage_key"),
+        episode.get("episode_key"),
+    ):
+        text = str(value or "").strip()
+        if text and text not in candidates:
+            candidates.append(text)
+    return candidates
+
+
+def _is_repo_relative_storage_key(value: str, show_slug: str) -> bool:
+    normalized_show_slug = show_slug.strip().strip("/")
+    prefix = f"shows/{normalized_show_slug}/"
+    return value.startswith(prefix) and value.endswith(".mp3")
+
+
+def episode_key_matches(
+    expected_episode_key: str,
+    episode: dict,
+    *,
+    inventory_storage_provider: str,
+    show_slug: str,
+) -> bool:
+    expected = str(expected_episode_key or "").strip()
+    if not expected:
+        return True
+
+    candidates = storage_key_candidates(episode)
+    if expected in candidates:
+        return True
+
+    provider = str(inventory_storage_provider or "").strip().lower()
+    if provider and provider != "drive":
+        # During R2-backed publication we still validate logical/source identity,
+        # but the concrete storage key may legitimately migrate from legacy Drive
+        # ids to repo-relative object keys.
+        return any(_is_repo_relative_storage_key(candidate, show_slug) for candidate in candidates)
+
+    return False
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Validate that episode_inventory matches regeneration_registry active variants."
@@ -55,6 +99,7 @@ def main() -> int:
 
     registry = read_json(registry_path)
     inventory = read_json(inventory_path)
+    inventory_storage_provider = str(inventory.get("storage_provider") or "").strip().lower()
 
     inventory_by_lid: dict[str, list[dict]] = {}
     for episode in inventory.get("episodes", []):
@@ -68,6 +113,7 @@ def main() -> int:
 
     errors: list[str] = []
     checked = 0
+    migrated_storage_keys = 0
     for entry in registry.get("entries", []):
         if not isinstance(entry, dict):
             continue
@@ -96,20 +142,27 @@ def main() -> int:
         checked += 1
         episode = matches[0]
         actual_source_name = str(episode.get("source_name") or "").strip()
-        actual_episode_key = str(
-            episode.get("source_drive_file_id")
-            or episode.get("source_storage_key")
-            or episode.get("episode_key")
-            or ""
-        ).strip()
         if expected_source_name and actual_source_name != expected_source_name:
             errors.append(
                 f"{logical_id}: expected source_name {expected_source_name!r}, got {actual_source_name!r}"
             )
-        if expected_episode_key and actual_episode_key != expected_episode_key:
+        if expected_episode_key and not episode_key_matches(
+            expected_episode_key,
+            episode,
+            inventory_storage_provider=inventory_storage_provider,
+            show_slug=args.show_slug,
+        ):
+            actual_episode_key = ", ".join(storage_key_candidates(episode)) or "<missing>"
             errors.append(
                 f"{logical_id}: expected episode_key {expected_episode_key!r}, got {actual_episode_key!r}"
             )
+        elif (
+            expected_episode_key
+            and inventory_storage_provider
+            and inventory_storage_provider != "drive"
+            and expected_episode_key not in storage_key_candidates(episode)
+        ):
+            migrated_storage_keys += 1
 
     if errors:
         print("Regeneration inventory validation failed:", file=sys.stderr)
@@ -118,7 +171,8 @@ def main() -> int:
         return 1
 
     scope = f" weeks={sorted(weeks)}" if weeks else ""
-    print(f"Validated regeneration inventory: entries={checked}{scope}")
+    migration_note = f" migrated_storage_keys={migrated_storage_keys}" if migrated_storage_keys else ""
+    print(f"Validated regeneration inventory: entries={checked}{scope}{migration_note}")
     return 0
 
 

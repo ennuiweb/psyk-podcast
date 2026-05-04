@@ -4,8 +4,6 @@ from __future__ import annotations
 
 import json
 import os
-import shlex
-import subprocess
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
@@ -18,6 +16,7 @@ from .constants import (
     STATE_OBJECTS_UPLOADED,
     STATE_REBUILDING_METADATA,
 )
+from .processes import run_phase_command
 from .show_artifacts import ShowArtifactPaths, resolve_show_artifact_paths
 from .show_config import ShowConfigSelectionError, load_show_config, resolve_manifest_bound_show_config_path
 from .store import QueueStore, utc_now_iso
@@ -28,6 +27,9 @@ SPOTIFY_SHOW_URLS = {
     "bioneuro": "https://open.spotify.com/show/5QIHRkc1N6xuCqtnfmsPfN",
     "personlighedspsykologi-en": "https://open.spotify.com/show/0jAvkPCcZ1x98lIMno1oqv",
 }
+DEFAULT_METADATA_PHASE_TIMEOUT_SECONDS = int(
+    os.environ.get("NOTEBOOKLM_QUEUE_METADATA_PHASE_TIMEOUT_SECONDS") or "1800"
+)
 
 
 @dataclass(frozen=True, slots=True)
@@ -35,6 +37,7 @@ class MetadataOptions:
     repo_root: Path
     actor: str = "system"
     show_config_path: Path | None = None
+    phase_timeout_seconds: int = DEFAULT_METADATA_PHASE_TIMEOUT_SECONDS
 
 
 @dataclass(frozen=True, slots=True)
@@ -130,7 +133,12 @@ def rebuild_repo_metadata(
             show_config_path=resolved_show_config_path,
             artifact_paths=artifact_paths,
         ):
-            result = _run_phase(name=phase["name"], command=phase["command"], repo_root=options.repo_root)
+            result = _run_phase(
+                name=phase["name"],
+                command=phase["command"],
+                repo_root=options.repo_root,
+                timeout_seconds=options.phase_timeout_seconds,
+            )
             metadata_payload["phases"].append(result)
             if result["returncode"] != 0:
                 failure_policy = phase.get("failure_policy") or PhaseFailurePolicy()
@@ -236,6 +244,21 @@ def _claim_or_resume_job(
                 f"or {STATE_REBUILDING_METADATA}."
             )
         return job
+
+    resumable = [
+        entry
+        for entry in store.list_jobs(show_slug=show_slug)
+        if str(entry.get("state") or "") == STATE_REBUILDING_METADATA
+    ]
+    if resumable:
+        resumable.sort(
+            key=lambda item: (
+                int(item.get("priority") or 100),
+                str(item.get("created_at") or ""),
+                str(item.get("job_id") or ""),
+            )
+        )
+        return store.load_job(show_slug=show_slug, job_id=str(resumable[0]["job_id"]))
 
     candidates = [
         entry
@@ -445,26 +468,13 @@ def _resolve_droplet_ssh_key() -> str:
     return "~/.ssh/digitalocean_ed25519"
 
 
-def _run_phase(*, name: str, command: list[str], repo_root: Path) -> dict[str, Any]:
-    started_at = utc_now_iso()
-    completed = subprocess.run(
-        command,
+def _run_phase(*, name: str, command: list[str], repo_root: Path, timeout_seconds: int) -> dict[str, Any]:
+    return run_phase_command(
+        name=name,
+        command=command,
         cwd=repo_root,
-        text=True,
-        capture_output=True,
-        check=False,
+        timeout_seconds=timeout_seconds,
     )
-    completed_at = utc_now_iso()
-    return {
-        "name": name,
-        "command": command,
-        "command_shell": shlex.join(command),
-        "started_at": started_at,
-        "completed_at": completed_at,
-        "returncode": int(completed.returncode),
-        "stdout": completed.stdout,
-        "stderr": completed.stderr,
-    }
 
 
 def _validate_repo_metadata(

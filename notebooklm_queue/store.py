@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import os
+import tempfile
 from collections import Counter
 from contextlib import contextmanager
 from datetime import UTC, datetime
@@ -29,9 +30,15 @@ def utc_now_iso() -> str:
 
 def _write_text_atomic(path: Path, content: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    temp_path = path.with_suffix(path.suffix + ".tmp")
-    temp_path.write_text(content, encoding="utf-8")
-    temp_path.replace(path)
+    fd, temp_name = tempfile.mkstemp(prefix=f".{path.name}.", suffix=".tmp", dir=path.parent)
+    temp_path = Path(temp_name)
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as handle:
+            handle.write(content)
+        temp_path.replace(path)
+    finally:
+        if temp_path.exists():
+            temp_path.unlink(missing_ok=True)
 
 
 def _write_json_atomic(path: Path, payload: dict[str, Any]) -> None:
@@ -82,6 +89,9 @@ class QueueStore:
 
     def show_index_path(self, show_slug: str) -> Path:
         return self.show_indexes_root / f"{str(show_slug).strip()}.json"
+
+    def named_lock_path(self, lock_name: str) -> Path:
+        return self.locks_root / f"{str(lock_name).strip()}.lock"
 
     def runs_show_root(self, show_slug: str) -> Path:
         return self.runs_root / str(show_slug).strip()
@@ -335,54 +345,55 @@ class QueueStore:
 
     def reconcile_indexes(self, *, show_slug: str | None = None) -> dict[str, Any]:
         self.ensure_layout()
-        shows = [show_slug] if show_slug else self._discover_show_slugs()
-        all_jobs: dict[str, dict[str, Any]] = {}
-        updated_show_count = 0
-        for current_show in shows:
-            if not current_show:
-                continue
-            jobs = []
-            for path in sorted((self.jobs_root / current_show).glob("*.json")):
-                payload = _load_json(path)
-                if not payload:
+        with self.acquire_global_lock("indexes", blocking=True):
+            shows = [show_slug] if show_slug else self._discover_show_slugs()
+            all_jobs: dict[str, dict[str, Any]] = {}
+            updated_show_count = 0
+            for current_show in shows:
+                if not current_show:
                     continue
-                jobs.append(self._job_index_entry(payload))
-                all_jobs[str(payload.get("job_id") or "")] = self._job_index_entry(payload)
-            index_payload = {
-                "version": QUEUE_VERSION,
-                "show_slug": current_show,
-                "generated_at": utc_now_iso(),
-                "job_count": len(jobs),
-                "jobs": jobs,
+                jobs = []
+                for path in sorted((self.jobs_root / current_show).glob("*.json")):
+                    payload = _load_json(path)
+                    if not payload:
+                        continue
+                    jobs.append(self._job_index_entry(payload))
+                    all_jobs[str(payload.get("job_id") or "")] = self._job_index_entry(payload)
+                index_payload = {
+                    "version": QUEUE_VERSION,
+                    "show_slug": current_show,
+                    "generated_at": utc_now_iso(),
+                    "job_count": len(jobs),
+                    "jobs": jobs,
+                }
+                _write_json_atomic(self.show_index_path(current_show), index_payload)
+                updated_show_count += 1
+            if show_slug:
+                registry = self._load_global_jobs_index()
+                merged = _coerce_mapping(registry.get("jobs", {}))
+                for job_id, entry in all_jobs.items():
+                    if job_id:
+                        merged[job_id] = entry
+                global_payload = {
+                    "version": QUEUE_VERSION,
+                    "generated_at": utc_now_iso(),
+                    "job_count": len(merged),
+                    "jobs": dict(sorted(merged.items())),
+                }
+            else:
+                global_payload = {
+                    "version": QUEUE_VERSION,
+                    "generated_at": utc_now_iso(),
+                    "job_count": len(all_jobs),
+                    "jobs": dict(sorted(all_jobs.items())),
+                }
+            _write_json_atomic(self.global_jobs_index_path, global_payload)
+            return {
+                "root": str(self.root),
+                "show_count": updated_show_count,
+                "job_count": int(global_payload.get("job_count") or 0),
+                "show_slug": show_slug,
             }
-            _write_json_atomic(self.show_index_path(current_show), index_payload)
-            updated_show_count += 1
-        if show_slug:
-            registry = self._load_global_jobs_index()
-            merged = _coerce_mapping(registry.get("jobs", {}))
-            for job_id, entry in all_jobs.items():
-                if job_id:
-                    merged[job_id] = entry
-            global_payload = {
-                "version": QUEUE_VERSION,
-                "generated_at": utc_now_iso(),
-                "job_count": len(merged),
-                "jobs": dict(sorted(merged.items())),
-            }
-        else:
-            global_payload = {
-                "version": QUEUE_VERSION,
-                "generated_at": utc_now_iso(),
-                "job_count": len(all_jobs),
-                "jobs": dict(sorted(all_jobs.items())),
-            }
-        _write_json_atomic(self.global_jobs_index_path, global_payload)
-        return {
-            "root": str(self.root),
-            "show_count": updated_show_count,
-            "job_count": int(global_payload.get("job_count") or 0),
-            "show_slug": show_slug,
-        }
 
     def save_run_manifest(
         self,
@@ -411,11 +422,11 @@ class QueueStore:
         return str(path.relative_to(self.root))
 
     @contextmanager
-    def acquire_show_lock(self, show_slug: str, *, blocking: bool = False):
+    def acquire_named_lock(self, lock_name: str, *, blocking: bool = False, details: dict[str, Any] | None = None):
         self.ensure_layout()
         if fcntl is None:  # pragma: no cover
             raise QueueLockError("fcntl is unavailable on this platform")
-        lock_path = self.locks_root / f"{str(show_slug).strip()}.lock"
+        lock_path = self.named_lock_path(lock_name)
         lock_path.parent.mkdir(parents=True, exist_ok=True)
         with lock_path.open("a+", encoding="utf-8") as handle:
             flags = fcntl.LOCK_EX
@@ -424,10 +435,12 @@ class QueueStore:
             try:
                 fcntl.flock(handle.fileno(), flags)
             except BlockingIOError as exc:
-                raise QueueLockError(f"Show lock is already held for {show_slug}") from exc
+                raise QueueLockError(f"Lock is already held for {lock_name}") from exc
             handle.seek(0)
             handle.truncate()
-            handle.write(json.dumps({"pid": os.getpid(), "show_slug": show_slug, "locked_at": utc_now_iso()}))
+            payload = {"pid": os.getpid(), "lock_name": lock_name, "locked_at": utc_now_iso()}
+            payload.update(dict(_coerce_mapping(details)))
+            handle.write(json.dumps(payload))
             handle.flush()
             try:
                 yield lock_path
@@ -437,42 +450,57 @@ class QueueStore:
                 handle.flush()
                 fcntl.flock(handle.fileno(), fcntl.LOCK_UN)
 
+    @contextmanager
+    def acquire_show_lock(self, show_slug: str, *, blocking: bool = False):
+        with self.acquire_named_lock(str(show_slug).strip(), blocking=blocking, details={"show_slug": show_slug}) as lock_path:
+            yield lock_path
+
+    @contextmanager
+    def acquire_global_lock(self, scope: str = "global", *, blocking: bool = False):
+        with self.acquire_named_lock(
+            f"__global__-{str(scope).strip()}",
+            blocking=blocking,
+            details={"scope": scope},
+        ) as lock_path:
+            yield lock_path
+
     def _update_indexes_for_job(self, payload: dict[str, Any]) -> None:
         show_slug = str(payload.get("show_slug") or "").strip()
         job_id = str(payload.get("job_id") or "").strip()
         if not show_slug or not job_id:
             return
-        show_index = _load_json(self.show_index_path(show_slug))
-        entries = show_index.get("jobs") if isinstance(show_index.get("jobs"), list) else []
-        by_id = {
-            str(entry.get("job_id") or ""): entry
-            for entry in entries
-            if isinstance(entry, dict) and entry.get("job_id")
-        }
-        by_id[job_id] = self._job_index_entry(payload)
-        ordered = [by_id[key] for key in sorted(by_id.keys())]
-        _write_json_atomic(
-            self.show_index_path(show_slug),
-            {
-                "version": QUEUE_VERSION,
-                "show_slug": show_slug,
-                "generated_at": utc_now_iso(),
-                "job_count": len(ordered),
-                "jobs": ordered,
-            },
-        )
-        registry = self._load_global_jobs_index()
-        jobs = _coerce_mapping(registry.get("jobs", {}))
-        jobs[job_id] = self._job_index_entry(payload)
-        _write_json_atomic(
-            self.global_jobs_index_path,
-            {
-                "version": QUEUE_VERSION,
-                "generated_at": utc_now_iso(),
-                "job_count": len(jobs),
-                "jobs": dict(sorted(jobs.items())),
-            },
-        )
+        with self.acquire_global_lock("indexes", blocking=True):
+            show_index = _load_json(self.show_index_path(show_slug))
+            entries = show_index.get("jobs") if isinstance(show_index.get("jobs"), list) else []
+            by_id = {
+                str(entry.get("job_id") or ""): entry
+                for entry in entries
+                if isinstance(entry, dict) and entry.get("job_id")
+            }
+            by_id[job_id] = self._job_index_entry(payload)
+            ordered = [by_id[key] for key in sorted(by_id.keys())]
+            _write_json_atomic(
+                self.show_index_path(show_slug),
+                {
+                    "version": QUEUE_VERSION,
+                    "show_slug": show_slug,
+                    "generated_at": utc_now_iso(),
+                    "job_count": len(ordered),
+                    "jobs": ordered,
+                },
+            )
+            registry = self._load_global_jobs_index()
+            jobs = _coerce_mapping(registry.get("jobs", {}))
+            jobs[job_id] = self._job_index_entry(payload)
+            _write_json_atomic(
+                self.global_jobs_index_path,
+                {
+                    "version": QUEUE_VERSION,
+                    "generated_at": utc_now_iso(),
+                    "job_count": len(jobs),
+                    "jobs": dict(sorted(jobs.items())),
+                },
+            )
 
     def _load_global_jobs_index(self) -> dict[str, Any]:
         return _load_json(self.global_jobs_index_path)

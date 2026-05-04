@@ -46,6 +46,11 @@ Optional but recommended:
 NOTEBOOKLM_QUEUE_STORAGE_ROOT=/var/lib/podcasts/notebooklm-queue
 NOTEBOOKLM_QUEUE_DOWNSTREAM_TIMEOUT_SECONDS=900
 NOTEBOOKLM_QUEUE_DOWNSTREAM_POLL_SECONDS=10
+NOTEBOOKLM_QUEUE_EXECUTION_PHASE_TIMEOUT_SECONDS=7200
+NOTEBOOKLM_QUEUE_METADATA_PHASE_TIMEOUT_SECONDS=1800
+NOTEBOOKLM_QUEUE_GIT_TIMEOUT_SECONDS=300
+NOTEBOOKLM_QUEUE_GH_TIMEOUT_SECONDS=60
+NOTEBOOKLM_QUEUE_ALERT_GITHUB_TIMEOUT_SECONDS=30
 NOTEBOOKLM_QUEUE_MAX_STAGE_RUNS=50
 NOTEBOOKLM_QUEUE_REMOTE=origin
 NOTEBOOKLM_QUEUE_BRANCH=main
@@ -91,6 +96,8 @@ Notes:
 - `GH_TOKEN` is only needed if the server-side `gh` CLI is not already authenticated in the service user's home.
 - The wrapper reads `NOTEBOOKLM_QUEUE_SHOW_CONFIG` only when you intentionally want a non-live config override.
 - Alert events are always persisted under `<storage-root>/alerts/` even when no external delivery path is configured.
+- `drain-show` now resumes interrupted in-progress jobs for execution, publish preparation, upload, metadata rebuild, and downstream sync before it starts new work for the show.
+- Queue-managed subprocesses now fail closed on timeout instead of waiting forever. Tune the timeout env vars above if a show has legitimately longer-running phases.
 
 ## Install on Hetzner
 
@@ -248,6 +255,8 @@ cd /opt/podcasts
 /opt/podcasts/.venv/bin/python /opt/podcasts/scripts/notebooklm_queue.py push-repo --repo-root /opt/podcasts --show-slug bioneuro --job-id <job_id>
 /opt/podcasts/.venv/bin/python /opt/podcasts/scripts/notebooklm_queue.py sync-downstream --repo-root /opt/podcasts --show-slug bioneuro --job-id <job_id>
 ```
+
+If the worker process died mid-stage, retrying `drain-show` is usually enough now because resumable in-progress states are claimed automatically.
 
 ## Operational notes
 

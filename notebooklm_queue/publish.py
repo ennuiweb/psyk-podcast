@@ -295,6 +295,21 @@ def _claim_or_resume_job(
             )
         return job
 
+    resumable = [
+        entry
+        for entry in store.list_jobs(show_slug=show_slug)
+        if str(entry.get("state") or "") == STATE_VALIDATING_GENERATED_ARTIFACTS
+    ]
+    if resumable:
+        resumable.sort(
+            key=lambda item: (
+                int(item.get("priority") or 100),
+                str(item.get("created_at") or ""),
+                str(item.get("job_id") or ""),
+            )
+        )
+        return store.load_job(show_slug=show_slug, job_id=str(resumable[0]["job_id"]))
+
     candidates = [
         entry
         for entry in store.list_jobs(show_slug=show_slug)
@@ -347,6 +362,21 @@ def _claim_or_resume_upload_job(
                 f"or {STATE_UPLOADING_OBJECTS}."
             )
         return job
+
+    resumable = [
+        entry
+        for entry in store.list_jobs(show_slug=show_slug)
+        if str(entry.get("state") or "") == STATE_UPLOADING_OBJECTS
+    ]
+    if resumable:
+        resumable.sort(
+            key=lambda item: (
+                int(item.get("priority") or 100),
+                str(item.get("created_at") or ""),
+                str(item.get("job_id") or ""),
+            )
+        )
+        return store.load_job(show_slug=show_slug, job_id=str(resumable[0]["job_id"]))
 
     candidates = [
         entry

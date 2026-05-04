@@ -81,6 +81,9 @@ Queue-core note:
 - `scripts/sync_notebooklm_profiles_to_hetzner.py` is the canonical helper for copying the local NotebookLM profile bundle to Hetzner and rebuilding `/etc/podcasts/notebooklm-queue/profiles.host.json`
 - queue execution now upgrades rate-limit failures with a retry window into `retry_scheduled`, so `drain-show` can automatically requeue partial lecture runs after cooldown instead of leaving them stranded as generic retryable failures
 - queue execution now emits durable alert events under the queue storage root for stale-auth failures and repeated rate-limit exhaustion, with optional webhook/email/command delivery configured by env
+- shared queue indexes and alert dedupe state are now protected by global queue locks rather than only per-show locks, so concurrent show drains do not clobber `indexes/jobs.json` or `alerts/state.json`
+- queue-owned stage services now auto-resume interrupted in-progress jobs for execution, bundle preparation, R2 upload, metadata rebuild, and downstream validation instead of requiring an explicit `--job-id` rescue path after a crash
+- queue subprocess boundaries are now bounded by env-configurable timeouts for execution, metadata rebuild, downstream `gh` polling, repo Git operations, and the GitHub alert handler, so a wedged external command fails closed instead of holding a show lock indefinitely
 - `prepare-publish` claims or resumes a job in `awaiting_publish`, scans the canonical output directory for that lecture, writes a durable publish manifest under the queue storage root, and moves successful jobs to `approved_for_publish`
 - `upload-r2` is intentionally R2-only for now; Drive-backed shows are blocked explicitly until their show config is migrated to `storage.provider = "r2"`
 - `sync-downstream` currently validates the existing Freudd deploy workflow for `bioneuro` and `personlighedspsykologi-en` when queue-owned pushes touch `content_manifest.json`, `quiz_links.json`, or `spotify_map.json`; explicit show-ownership gating in `generate-feed.yml` still belongs to a later migration phase
@@ -132,6 +135,12 @@ NOTEBOOKLM_PROFILE_PRIORITY=default,oskarvedel,tjekdepotadmin,nopeeeh,vedeloskar
   - `NOTEBOOKLM_QUEUE_ALERT_COMMAND`
 
 - Alerts are always written durably under `<queue-storage-root>/alerts/` even if no external delivery is configured yet.
+- Useful timeout env knobs on Hetzner:
+  - `NOTEBOOKLM_QUEUE_EXECUTION_PHASE_TIMEOUT_SECONDS`
+  - `NOTEBOOKLM_QUEUE_METADATA_PHASE_TIMEOUT_SECONDS`
+  - `NOTEBOOKLM_QUEUE_GIT_TIMEOUT_SECONDS`
+  - `NOTEBOOKLM_QUEUE_GH_TIMEOUT_SECONDS`
+  - `NOTEBOOKLM_QUEUE_ALERT_GITHUB_TIMEOUT_SECONDS`
 
 - For shadow evaluation runs under tight NotebookLM capacity, prefer one lecture and one content family at a time before scaling back up to full backlog draining. The queue now supports automatic retry scheduling for rate-limit failures, but smaller shadow batches still make debugging and quality comparison materially easier.
 - The Hetzner runtime contract for the queue now lives in [notebooklm-queue-operations.md](notebooklm-queue-operations.md).

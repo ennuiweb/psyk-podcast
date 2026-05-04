@@ -168,58 +168,59 @@ def emit_failure_alert(
     occurred_at = now.replace(microsecond=0).isoformat()
     dedup_seconds = max(_alert_dedup_seconds(), 0)
 
-    state = _load_json(_alerts_state_path(store))
-    seen = state.get("seen") if isinstance(state.get("seen"), dict) else {}
-    last_seen_raw = seen.get(decision.fingerprint) if isinstance(seen, dict) else None
-    last_seen_at = None
-    if isinstance(last_seen_raw, str):
-        try:
-            last_seen_at = datetime.fromisoformat(last_seen_raw)
-        except ValueError:
-            last_seen_at = None
-    suppressed = False
-    if dedup_seconds > 0 and last_seen_at is not None:
-        suppressed = (now - last_seen_at).total_seconds() < dedup_seconds
+    with store.acquire_global_lock("alerts", blocking=True):
+        state = _load_json(_alerts_state_path(store))
+        seen = state.get("seen") if isinstance(state.get("seen"), dict) else {}
+        last_seen_raw = seen.get(decision.fingerprint) if isinstance(seen, dict) else None
+        last_seen_at = None
+        if isinstance(last_seen_raw, str):
+            try:
+                last_seen_at = datetime.fromisoformat(last_seen_raw)
+            except ValueError:
+                last_seen_at = None
+        suppressed = False
+        if dedup_seconds > 0 and last_seen_at is not None:
+            suppressed = (now - last_seen_at).total_seconds() < dedup_seconds
 
-    alert_payload: dict[str, Any] = {
-        "version": 1,
-        "occurred_at": occurred_at,
-        "kind": decision.kind,
-        "summary": decision.summary,
-        "fingerprint": decision.fingerprint,
-        "suppressed": suppressed,
-        "show_slug": show_slug,
-        "subject_slug": str(job.get("subject_slug") or ""),
-        "job_id": str(job.get("job_id") or ""),
-        "lecture_key": str(job.get("lecture_key") or ""),
-        "content_types": list(job.get("content_types") or []),
-        "state": failed_state,
-        "attempt_count": int(job.get("attempt_count") or 0),
-        "note": note,
-        "error": str(error_text or ""),
-        "run_id": str(manifest.get("run_id") or ""),
-        "manifest_phase_names": [str(phase.get("name") or "") for phase in list(manifest.get("phases") or [])],
-        "manifest_path": str(
-            dict(job.get("artifacts") or {}).get("execution", {}).get("latest_run_manifest") or ""
-        ),
-        "host": socket.gethostname(),
-        "deliveries": [],
-    }
+        alert_payload: dict[str, Any] = {
+            "version": 1,
+            "occurred_at": occurred_at,
+            "kind": decision.kind,
+            "summary": decision.summary,
+            "fingerprint": decision.fingerprint,
+            "suppressed": suppressed,
+            "show_slug": show_slug,
+            "subject_slug": str(job.get("subject_slug") or ""),
+            "job_id": str(job.get("job_id") or ""),
+            "lecture_key": str(job.get("lecture_key") or ""),
+            "content_types": list(job.get("content_types") or []),
+            "state": failed_state,
+            "attempt_count": int(job.get("attempt_count") or 0),
+            "note": note,
+            "error": str(error_text or ""),
+            "run_id": str(manifest.get("run_id") or ""),
+            "manifest_phase_names": [str(phase.get("name") or "") for phase in list(manifest.get("phases") or [])],
+            "manifest_path": str(
+                dict(job.get("artifacts") or {}).get("execution", {}).get("latest_run_manifest") or ""
+            ),
+            "host": socket.gethostname(),
+            "deliveries": [],
+        }
 
-    if not suppressed:
-        alert_payload["deliveries"].extend(_deliver_alert(alert_payload))
-        if isinstance(seen, dict):
-            seen[decision.fingerprint] = occurred_at
-        state["seen"] = seen
-        _write_json_atomic(_alerts_state_path(store), state)
+        if not suppressed:
+            alert_payload["deliveries"].extend(_deliver_alert(alert_payload))
+            if isinstance(seen, dict):
+                seen[decision.fingerprint] = occurred_at
+            state["seen"] = seen
+            _write_json_atomic(_alerts_state_path(store), state)
 
-    alerts_root = _show_alerts_root(store, show_slug)
-    alerts_root.mkdir(parents=True, exist_ok=True)
-    filename = f"{occurred_at.replace(':', '').replace('-', '')}-{decision.kind}-{job.get('job_id')}.json"
-    alert_path = alerts_root / filename
-    _write_json_atomic(alert_path, alert_payload)
-    alert_payload["alert_path"] = str(alert_path)
-    return alert_payload
+        alerts_root = _show_alerts_root(store, show_slug)
+        alerts_root.mkdir(parents=True, exist_ok=True)
+        filename = f"{occurred_at.replace(':', '').replace('-', '')}-{decision.kind}-{job.get('job_id')}.json"
+        alert_path = alerts_root / filename
+        _write_json_atomic(alert_path, alert_payload)
+        alert_payload["alert_path"] = str(alert_path)
+        return alert_payload
 
 
 def _deliver_alert(payload: dict[str, Any]) -> list[dict[str, Any]]:

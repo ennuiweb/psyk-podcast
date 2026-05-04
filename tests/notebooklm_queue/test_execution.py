@@ -5,7 +5,10 @@ import stat
 import sys
 from pathlib import Path
 
+import pytest
+
 from notebooklm_queue.constants import (
+    STATE_APPROVED_FOR_PUBLISH,
     STATE_AWAITING_PUBLISH,
     STATE_FAILED_RETRYABLE,
     STATE_GENERATED,
@@ -279,6 +282,73 @@ def test_execute_job_claims_next_queued_job_when_job_id_is_omitted(tmp_path: Pat
     assert result["job_id"] == str(first["job_id"])
     untouched = store.load_job(show_slug="bioneuro", job_id=str(later["job_id"]))
     assert untouched["state"] != STATE_GENERATING
+
+
+def test_execute_job_resumes_in_progress_job_when_job_id_is_omitted(tmp_path: Path) -> None:
+    repo_root = _make_repo_root(tmp_path)
+    _write_phase_script(
+        repo_root / "notebooklm-podcast-auto/bioneuro/scripts/generate_week.py",
+        "raise SystemExit('generate should not run')\n",
+    )
+    _write_phase_script(
+        repo_root / "notebooklm-podcast-auto/bioneuro/scripts/download_week.py",
+        "print('download resumed ok')\n",
+    )
+    store = QueueStore(tmp_path / "queue-root")
+    resumed = store.upsert_job(_identity(), priority=50)
+    queued = store.upsert_job(
+        JobIdentity(
+            show_slug="bioneuro",
+            subject_slug="bioneuro",
+            lecture_key="W3L1",
+            content_types=("audio",),
+            config_hash="cfg-1",
+        ),
+        priority=10,
+    )
+    store.transition_job(
+        show_slug="bioneuro",
+        job_id=str(resumed["job_id"]),
+        state=STATE_GENERATED,
+        note="Prepared generated resume test",
+    )
+
+    result = execute_job(
+        store=store,
+        show_slug="bioneuro",
+        options=ExecutionOptions(repo_root=repo_root),
+    )
+
+    assert result["job_id"] == str(resumed["job_id"])
+    untouched = store.load_job(show_slug="bioneuro", job_id=str(queued["job_id"]))
+    assert untouched["state"] != STATE_GENERATING
+
+
+def test_execute_job_ignores_non_execution_ready_states_when_job_id_is_omitted(tmp_path: Path) -> None:
+    repo_root = _make_repo_root(tmp_path)
+    _write_phase_script(
+        repo_root / "notebooklm-podcast-auto/bioneuro/scripts/generate_week.py",
+        "print('generate ok')\n",
+    )
+    _write_phase_script(
+        repo_root / "notebooklm-podcast-auto/bioneuro/scripts/download_week.py",
+        "print('download ok')\n",
+    )
+    store = QueueStore(tmp_path / "queue-root")
+    job = store.upsert_job(_identity())
+    store.transition_job(
+        show_slug="bioneuro",
+        job_id=str(job["job_id"]),
+        state=STATE_APPROVED_FOR_PUBLISH,
+        note="Prepared non-execution-ready state",
+    )
+
+    with pytest.raises(FileNotFoundError):
+        execute_job(
+            store=store,
+            show_slug="bioneuro",
+            options=ExecutionOptions(repo_root=repo_root),
+        )
 
 
 def shlex_quote(text: str) -> str:

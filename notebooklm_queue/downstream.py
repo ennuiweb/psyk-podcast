@@ -4,13 +4,13 @@ from __future__ import annotations
 
 import json
 import os
-import subprocess
 import time
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
 from .constants import STATE_COMPLETED, STATE_FAILED_RETRYABLE, STATE_REPO_PUSHED, STATE_SYNCING_DOWNSTREAM
+from .processes import run_process
 from .store import QueueStore, utc_now_iso
 
 FREUDD_DEPLOY_SHOWS = {"bioneuro", "personlighedspsykologi-en"}
@@ -23,6 +23,7 @@ class DownstreamOptions:
     gh_bin: str = os.environ.get("NOTEBOOKLM_QUEUE_GH_BIN") or "gh"
     timeout_seconds: int = int(os.environ.get("NOTEBOOKLM_QUEUE_DOWNSTREAM_TIMEOUT_SECONDS") or "900")
     poll_interval_seconds: int = int(os.environ.get("NOTEBOOKLM_QUEUE_DOWNSTREAM_POLL_SECONDS") or "10")
+    gh_timeout_seconds: int = int(os.environ.get("NOTEBOOKLM_QUEUE_GH_TIMEOUT_SECONDS") or "60")
     freudd_workflow_file: str = (
         os.environ.get("NOTEBOOKLM_QUEUE_FREUDD_DEPLOY_WORKFLOW_FILE") or "deploy-freudd-portal.yml"
     )
@@ -147,6 +148,21 @@ def _claim_or_resume_job(
             )
         return job
 
+    resumable = [
+        entry
+        for entry in store.list_jobs(show_slug=show_slug)
+        if str(entry.get("state") or "") == STATE_SYNCING_DOWNSTREAM
+    ]
+    if resumable:
+        resumable.sort(
+            key=lambda item: (
+                int(item.get("priority") or 100),
+                str(item.get("created_at") or ""),
+                str(item.get("job_id") or ""),
+            )
+        )
+        return store.load_job(show_slug=show_slug, job_id=str(resumable[0]["job_id"]))
+
     candidates = [
         entry
         for entry in store.list_jobs(show_slug=show_slug)
@@ -212,6 +228,7 @@ def _wait_for_workflow_target(
             commit_sha=commit_sha,
             workflow_file=target.workflow_file,
             gh_bin=options.gh_bin,
+            timeout_seconds=options.gh_timeout_seconds,
         )
         if run is None:
             last_status = "not_found"
@@ -248,8 +265,9 @@ def _find_workflow_run(
     commit_sha: str,
     workflow_file: str,
     gh_bin: str,
+    timeout_seconds: int,
 ) -> dict[str, Any] | None:
-    completed = subprocess.run(
+    completed = run_process(
         [
             gh_bin,
             "run",
@@ -262,9 +280,7 @@ def _find_workflow_run(
             "databaseId,headSha,status,conclusion,url,workflowName,createdAt",
         ],
         cwd=repo_root,
-        text=True,
-        capture_output=True,
-        check=False,
+        timeout_seconds=timeout_seconds,
     )
     if completed.returncode != 0:
         raise DownstreamSyncError(

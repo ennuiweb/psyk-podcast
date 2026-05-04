@@ -3,8 +3,6 @@
 from __future__ import annotations
 
 import os
-import shlex
-import subprocess
 from datetime import UTC, datetime, timedelta
 from dataclasses import dataclass
 from pathlib import Path
@@ -22,6 +20,7 @@ from .constants import (
     STATE_QUEUED,
     STATE_RETRY_SCHEDULED,
 )
+from .processes import run_phase_command
 from .store import QueueStore, utc_now_iso
 
 RATE_LIMIT_ERROR_TOKENS = (
@@ -34,6 +33,9 @@ RATE_LIMIT_ERROR_TOKENS = (
 DEFAULT_RATE_LIMIT_RETRY_SECONDS = int(
     os.environ.get("NOTEBOOKLM_QUEUE_RATE_LIMIT_RETRY_SECONDS") or "900"
 )
+DEFAULT_EXECUTION_PHASE_TIMEOUT_SECONDS = int(
+    os.environ.get("NOTEBOOKLM_QUEUE_EXECUTION_PHASE_TIMEOUT_SECONDS") or "7200"
+)
 
 
 @dataclass(frozen=True, slots=True)
@@ -42,6 +44,7 @@ class ExecutionOptions:
     retry_at: str | None = None
     actor: str = "system"
     run_download: bool = True
+    phase_timeout_seconds: int = DEFAULT_EXECUTION_PHASE_TIMEOUT_SECONDS
 
 
 def _looks_like_rate_limit(message: str | None) -> bool:
@@ -98,6 +101,7 @@ def execute_job(
                 name="generate",
                 command=generate_command,
                 repo_root=options.repo_root,
+                timeout_seconds=options.phase_timeout_seconds,
             )
             manifest["phases"].append(phase)
             if phase["returncode"] != 0:
@@ -139,6 +143,7 @@ def execute_job(
                 name="download",
                 command=download_command,
                 repo_root=options.repo_root,
+                timeout_seconds=options.phase_timeout_seconds,
             )
             manifest["phases"].append(phase)
             if phase["returncode"] != 0:
@@ -224,32 +229,42 @@ def _claim_or_resume_job(
             )
         return job
 
-    claimed = store.claim_next_job(show_slug=show_slug, target_state=STATE_GENERATING, actor=actor)
+    resumable_states = {STATE_DOWNLOADING, STATE_GENERATED, STATE_GENERATING}
+    resumable = [entry for entry in store.list_jobs(show_slug=show_slug) if str(entry.get("state") or "") in resumable_states]
+    if resumable:
+        state_rank = {
+            STATE_DOWNLOADING: 0,
+            STATE_GENERATED: 1,
+            STATE_GENERATING: 2,
+        }
+        resumable.sort(
+            key=lambda entry: (
+                int(state_rank.get(str(entry.get("state") or ""), 99)),
+                int(entry.get("priority") or 100),
+                str(entry.get("created_at") or ""),
+                str(entry.get("job_id") or ""),
+            )
+        )
+        return store.load_job(show_slug=show_slug, job_id=str(resumable[0]["job_id"]))
+
+    claimed = store.claim_next_job(
+        show_slug=show_slug,
+        ready_states={STATE_QUEUED, STATE_RETRY_SCHEDULED},
+        target_state=STATE_GENERATING,
+        actor=actor,
+    )
     if claimed is None:
         raise FileNotFoundError(f"No runnable job found for show: {show_slug}")
     return claimed
 
 
-def _run_phase(*, name: str, command: list[str], repo_root: Path) -> dict[str, Any]:
-    started_at = utc_now_iso()
-    completed = subprocess.run(
-        command,
+def _run_phase(*, name: str, command: list[str], repo_root: Path, timeout_seconds: int) -> dict[str, Any]:
+    return run_phase_command(
+        name=name,
+        command=command,
         cwd=repo_root,
-        text=True,
-        capture_output=True,
-        check=False,
+        timeout_seconds=timeout_seconds,
     )
-    completed_at = utc_now_iso()
-    return {
-        "name": name,
-        "command": command,
-        "command_shell": shlex.join(command),
-        "started_at": started_at,
-        "completed_at": completed_at,
-        "returncode": int(completed.returncode),
-        "stdout": completed.stdout,
-        "stderr": completed.stderr,
-    }
 
 
 def _finalize_failure(

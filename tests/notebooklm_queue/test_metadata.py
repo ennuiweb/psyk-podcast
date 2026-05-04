@@ -8,6 +8,7 @@ from notebooklm_queue.constants import (
     STATE_COMMITTING_REPO_ARTIFACTS,
     STATE_FAILED_RETRYABLE,
     STATE_OBJECTS_UPLOADED,
+    STATE_REBUILDING_METADATA,
 )
 from notebooklm_queue.metadata import MetadataOptions, rebuild_repo_metadata
 from notebooklm_queue.models import JobIdentity
@@ -170,7 +171,7 @@ def test_rebuild_repo_metadata_runs_expected_bioneuro_phases(tmp_path: Path, mon
     (repo_root / "shows/bioneuro/episode_inventory.json").write_text(json.dumps({"episodes": []}), encoding="utf-8")
     commands: list[list[str]] = []
 
-    def fake_run_phase(*, name: str, command: list[str], repo_root: Path) -> dict[str, object]:
+    def fake_run_phase(*, name: str, command: list[str], repo_root: Path, timeout_seconds: int) -> dict[str, object]:
         commands.append(command)
         show_root = repo_root / "shows" / "bioneuro"
         if name == "sync_quiz_links":
@@ -243,7 +244,7 @@ def test_rebuild_repo_metadata_marks_retryable_failure_on_phase_error(tmp_path: 
     repo_root = _make_repo_root(tmp_path)
     store, job = _seed_objects_uploaded_job(tmp_path, repo_root)
 
-    def failing_run_phase(*, name: str, command: list[str], repo_root: Path) -> dict[str, object]:
+    def failing_run_phase(*, name: str, command: list[str], repo_root: Path, timeout_seconds: int) -> dict[str, object]:
         return {
             "name": name,
             "command": command,
@@ -275,7 +276,7 @@ def test_rebuild_repo_metadata_personligheds_runs_strict_manual_guard_phases(tmp
     store, job = _seed_personligheds_objects_uploaded_job(tmp_path, repo_root)
     commands: list[tuple[str, list[str]]] = []
 
-    def fake_run_phase(*, name: str, command: list[str], repo_root: Path) -> dict[str, object]:
+    def fake_run_phase(*, name: str, command: list[str], repo_root: Path, timeout_seconds: int) -> dict[str, object]:
         commands.append((name, command))
         show_root = repo_root / "shows" / "personlighedspsykologi-en"
         if name == "sync_quiz_links":
@@ -348,7 +349,7 @@ def test_rebuild_repo_metadata_personligheds_blocks_on_manual_summary_failure(tm
     repo_root = _make_personligheds_repo_root(tmp_path)
     store, job = _seed_personligheds_objects_uploaded_job(tmp_path, repo_root)
 
-    def fake_run_phase(*, name: str, command: list[str], repo_root: Path) -> dict[str, object]:
+    def fake_run_phase(*, name: str, command: list[str], repo_root: Path, timeout_seconds: int) -> dict[str, object]:
         return {
             "name": name,
             "command": command,
@@ -388,7 +389,7 @@ def test_rebuild_repo_metadata_uses_manifest_bound_override_config(tmp_path: Pat
     )
     commands: list[list[str]] = []
 
-    def fake_run_phase(*, name: str, command: list[str], repo_root: Path) -> dict[str, object]:
+    def fake_run_phase(*, name: str, command: list[str], repo_root: Path, timeout_seconds: int) -> dict[str, object]:
         commands.append(command)
         show_root = repo_root / "shows" / "bioneuro"
         if name == "sync_quiz_links":
@@ -473,7 +474,7 @@ def test_rebuild_repo_metadata_uses_pilot_artifact_paths_from_config(tmp_path: P
     )
     commands: list[list[str]] = []
 
-    def fake_run_phase(*, name: str, command: list[str], repo_root: Path) -> dict[str, object]:
+    def fake_run_phase(*, name: str, command: list[str], repo_root: Path, timeout_seconds: int) -> dict[str, object]:
         commands.append(command)
         pilot_root = repo_root / "shows" / "bioneuro" / "pilot"
         if name == "sync_quiz_links":
@@ -547,7 +548,7 @@ def test_rebuild_repo_metadata_omits_preferred_inventory_when_target_inventory_m
     )
     commands: list[list[str]] = []
 
-    def fake_run_phase(*, name: str, command: list[str], repo_root: Path) -> dict[str, object]:
+    def fake_run_phase(*, name: str, command: list[str], repo_root: Path, timeout_seconds: int) -> dict[str, object]:
         commands.append(command)
         pilot_root = repo_root / "shows" / "bioneuro" / "pilot"
         if name == "sync_quiz_links":
@@ -599,7 +600,7 @@ def test_rebuild_repo_metadata_includes_spotify_show_lookup_when_credentials_exi
     (repo_root / "shows/bioneuro/episode_inventory.json").write_text(json.dumps({"episodes": []}), encoding="utf-8")
     commands: list[list[str]] = []
 
-    def fake_run_phase(*, name: str, command: list[str], repo_root: Path) -> dict[str, object]:
+    def fake_run_phase(*, name: str, command: list[str], repo_root: Path, timeout_seconds: int) -> dict[str, object]:
         commands.append(command)
         show_root = repo_root / "shows" / "bioneuro"
         if name == "sync_quiz_links":
@@ -656,3 +657,63 @@ def test_rebuild_repo_metadata_includes_spotify_show_lookup_when_credentials_exi
     )
 
     assert commands[2][commands[2].index("--spotify-show-url") + 1] == "https://open.spotify.com/show/5QIHRkc1N6xuCqtnfmsPfN"
+
+
+def test_rebuild_repo_metadata_resumes_in_progress_job_when_job_id_is_omitted(tmp_path: Path, monkeypatch) -> None:
+    repo_root = _make_repo_root(tmp_path)
+    store, job = _seed_objects_uploaded_job(tmp_path, repo_root)
+    store.transition_job(
+        show_slug="bioneuro",
+        job_id=str(job["job_id"]),
+        state=STATE_REBUILDING_METADATA,
+        note="Prepared metadata resume test",
+    )
+    (repo_root / "shows/bioneuro/episode_inventory.json").write_text(json.dumps({"episodes": []}), encoding="utf-8")
+    commands: list[list[str]] = []
+
+    def fake_run_phase(*, name: str, command: list[str], repo_root: Path, timeout_seconds: int) -> dict[str, object]:
+        commands.append(command)
+        show_root = repo_root / "shows" / "bioneuro"
+        if name == "sync_quiz_links":
+            (show_root / "quiz_links.json").write_text(
+                json.dumps({"by_name": {"Title 1": [{"url": "https://freudd.dk/q/abc.html"}]}}),
+                encoding="utf-8",
+            )
+        elif name == "generate_feed":
+            (show_root / "feeds").mkdir(parents=True, exist_ok=True)
+            (show_root / "feeds" / "rss.xml").write_text("<rss />\n", encoding="utf-8")
+            (show_root / "episode_inventory.json").write_text(
+                json.dumps({"episodes": [{"episode_key": "ep-1", "title": "Title 1"}]}),
+                encoding="utf-8",
+            )
+        elif name == "sync_spotify_map":
+            (show_root / "spotify_map.json").write_text(
+                json.dumps({"by_episode_key": {"ep-1": "https://open.spotify.com/episode/abc"}}),
+                encoding="utf-8",
+            )
+        elif name == "rebuild_content_manifest":
+            (show_root / "content_manifest.json").write_text(
+                json.dumps({"lectures": [{"lecture_assets": {"quizzes": [{"url": "https://freudd.dk/q/abc.html"}]}, "readings": []}]}),
+                encoding="utf-8",
+            )
+        return {
+            "name": name,
+            "command": command,
+            "command_shell": " ".join(command),
+            "started_at": "2026-05-01T00:00:00+00:00",
+            "completed_at": "2026-05-01T00:00:01+00:00",
+            "returncode": 0,
+            "stdout": "",
+            "stderr": "",
+        }
+
+    monkeypatch.setattr("notebooklm_queue.metadata._run_phase", fake_run_phase)
+
+    result = rebuild_repo_metadata(
+        store=store,
+        show_slug="bioneuro",
+        options=MetadataOptions(repo_root=repo_root),
+    )
+
+    assert result["job_id"] == str(job["job_id"])
+    assert commands

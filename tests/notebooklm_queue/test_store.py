@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import threading
 from pathlib import Path
 
 import pytest
@@ -115,3 +116,37 @@ def test_transition_rejects_unexpected_source_state(tmp_path: Path) -> None:
             state=STATE_GENERATING,
             expected_states={"completed"},
         )
+
+
+def test_concurrent_cross_show_upserts_preserve_global_index(tmp_path: Path) -> None:
+    barrier = threading.Barrier(6)
+    errors: list[BaseException] = []
+
+    def worker(index: int) -> None:
+        try:
+            show_slug = "demo-show" if index % 2 == 0 else "other-show"
+            subject_slug = "demo-subject" if show_slug == "demo-show" else "other-subject"
+            store = QueueStore(tmp_path)
+            identity = JobIdentity(
+                show_slug=show_slug,
+                subject_slug=subject_slug,
+                lecture_key=f"W01L{index}",
+                content_types=("podcast",),
+                config_hash="cfg-123",
+            )
+            barrier.wait()
+            store.upsert_job(identity)
+        except BaseException as exc:  # pragma: no cover - test failure path
+            errors.append(exc)
+
+    threads = [threading.Thread(target=worker, args=(index,)) for index in range(1, 7)]
+    for thread in threads:
+        thread.start()
+    for thread in threads:
+        thread.join()
+
+    assert not errors
+    store = QueueStore(tmp_path)
+    jobs = store.list_jobs()
+    assert len(jobs) == 6
+    assert {job["show_slug"] for job in jobs} == {"demo-show", "other-show"}

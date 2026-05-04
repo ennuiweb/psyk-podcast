@@ -2,6 +2,10 @@
 
 This folder holds the top-level operational docs for the repository.
 
+Canonical architecture naming lives in [../TECHNICAL.md](../TECHNICAL.md) under
+`Naming`. Use those labels consistently when referring to the wider Freudd
+system and its subsystems.
+
 Use these files:
 
 - [feed-automation.md](feed-automation.md) - podcast feed generation, show layout, GitHub Actions, Apps Script triggers, and feed hosting.

@@ -11,6 +11,20 @@ This file is the compact technical index for the repo. Detailed operational docs
 - `freudd_portal/` - Django portal for auth, quizzes, subject content, and gamification.
 - `spotify_transcripts/` - local-first Spotify transcript downloader and normalizer for mapped show episodes.
 
+## Naming
+
+Use this vocabulary when referring to the system:
+
+- `Freudd Learning System` - the whole repo-level ecosystem: portal, content generation, queueing, publication, and public podcast surfaces.
+- `Freudd Portal` - the student-facing `freudd.dk` web layer in `freudd_portal/`.
+- `Freudd Content Engine` - the content-production backbone across `notebooklm-podcast-auto/`, `notebooklm_queue/`, `podcast-tools/`, and show metadata/artifacts.
+- `Freudd Generation Queue` - the Hetzner-owned queue/orchestration runtime in `notebooklm_queue/`.
+- `Source Intelligence Layer` - the raw-source preprocessing subsystem, currently centered on `source_catalog.json` and future lecture/course semantic artifacts.
+- `Course Context Layer` - the deterministic course/lecture framing compiler in `notebooklm_queue/course_context.py`.
+- `Prompt Assembly Layer` - the shared prompt construction layer in `notebooklm_queue/prompting.py`.
+- `Distribution Layer` - feed, manifest, Spotify, and publication outputs.
+- `Freudd Podcast Network` - the public podcast surfaces exposed through RSS, Spotify, and podcast apps.
+
 ## Start here
 
 - [docs/feed-automation.md](docs/feed-automation.md) - feed pipeline, GitHub Actions, Apps Script triggers, and feed hosting.

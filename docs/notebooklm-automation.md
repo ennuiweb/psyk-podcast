@@ -4,6 +4,16 @@
 
 This document covers the repo-level NotebookLM automation layout and the subject wrappers that depend on it.
 
+Naming note:
+
+- `Freudd Content Engine` is the canonical name for the content-production
+  backbone described in this document.
+- `Freudd Generation Queue` names the Hetzner-owned orchestration/runtime layer
+  under `notebooklm_queue/`.
+- `Course Context Layer`, `Prompt Assembly Layer`, and `Source Intelligence
+  Layer` are the canonical names for the major prompt/preprocessing subsystems
+  used by this engine.
+
 Current migration program:
 
 - The cross-cutting implementation plan for moving NotebookLM orchestration to a Hetzner-owned queue and moving published audio off Google Drive lives in [notebooklm-queue-r2-migration.md](notebooklm-queue-r2-migration.md).
@@ -187,6 +197,13 @@ Prompt-system ambitions that should not drift:
 - It should not lean on explicit exam talk in the podcast prompts; importance and prioritization should come from course framing, source structure, and teaching emphasis instead.
 - It should avoid explicit "be engaging" prompt text for NotebookLM audio; quality should improve through better context compilation and focus selection, not by telling NotebookLM to perform enthusiasm.
 - It should remain reusable across multiple output families, with report/study-guide artifacts already live and future preparatory study artifacts building on the same compiled lecture context instead of inventing a separate prompt path.
+
+Preprocessing maturity note:
+
+- `personlighedspsykologi` now also has a first deterministic file-level preprocessing artifact at `shows/personlighedspsykologi-en/source_catalog.json`.
+- This catalog is intentionally richer than `content_manifest.json`: it tracks source hashes, page counts, text-length estimates, language heuristics, simple source-priority signals, and prompt-sidecar presence for raw readings/slides.
+- The catalog is currently built locally from the raw source tree and committed to the repo; GitHub Actions cannot rebuild it yet because the workflow does not have the OneDrive-backed source files.
+- The next intended preprocessing layers above it are lecture bundles plus course-level glossary/theory artifacts, not more prompt-only tweaks.
 
 ## Related docs
 

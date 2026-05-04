@@ -4,6 +4,13 @@
 
 This file is the repo-level index for Freudd. It intentionally avoids duplicating the full portal contract that already lives under `freudd_portal/`.
 
+Naming note:
+
+- `Freudd Portal` is the canonical name for the student-facing web layer.
+- `Freudd Learning System` is the larger ecosystem that also includes the
+  content engine, generation queue, preprocessing, and public podcast
+  distribution surfaces downstream of the portal.
+
 ## Canonical docs
 
 Primary entrypoints:

@@ -8,9 +8,9 @@ Canonical navn:
 
 - `Source Intelligence Layer`
 
-Dette dokument beskriver altsaa den del af `Freudd Content Engine`, der bygger
-et rigere preprocesseret source-lag foer course context, prompt assembly og
-egentlig generation.
+Dette dokument beskriver altsaa den del af `Freudd Content Engine`, der
+bygger et rigere preprocesseret source-lag foer course context, prompt assembly
+og egentlig generation.
 
 ## Nuvaerende lag
 

@@ -422,6 +422,33 @@ def _parse_profile_list(value: str | None) -> set[str]:
     return {item.strip() for item in value.split(",") if item.strip()}
 
 
+def _default_auth_candidates() -> list[tuple[str | None, dict]]:
+    if os.environ.get("NOTEBOOKLM_AUTH_JSON"):
+        return [
+            (
+                None,
+                {
+                    "profile": None,
+                    "profiles_file": None,
+                    "storage_path": None,
+                    "source": "env",
+                },
+            )
+        ]
+    storage_path = str(get_storage_path())
+    return [
+        (
+            storage_path,
+            {
+                "profile": None,
+                "profiles_file": None,
+                "storage_path": storage_path,
+                "source": "default",
+            },
+        )
+    ]
+
+
 def _build_auth_candidates(args: argparse.Namespace) -> list[tuple[str | None, dict]]:
     if args.storage and args.profile:
         raise ValueError("Use either --storage or --profile, not both.")
@@ -466,30 +493,7 @@ def _build_auth_candidates(args: argparse.Namespace) -> list[tuple[str | None, d
             preferred = auto_profile
 
     if not profiles:
-        if os.environ.get("NOTEBOOKLM_AUTH_JSON"):
-            return [
-                (
-                    None,
-                    {
-                        "profile": None,
-                        "profiles_file": None,
-                        "storage_path": None,
-                        "source": "env",
-                    },
-                )
-            ]
-        storage_path = str(get_storage_path())
-        return [
-            (
-                storage_path,
-                {
-                    "profile": None,
-                    "profiles_file": None,
-                    "storage_path": storage_path,
-                    "source": "default",
-                },
-            )
-        ]
+        return _default_auth_candidates()
 
     if not args.profile:
         preferred_override = getattr(args, "preferred_profile", None)
@@ -509,6 +513,9 @@ def _build_auth_candidates(args: argparse.Namespace) -> list[tuple[str | None, d
         profiles = {name: path for name, path in profiles.items() if name not in missing_profiles}
         if args.profile and args.profile in missing_profiles:
             raise ValueError(f"Profile '{args.profile}' storage file is missing.")
+        if not profiles and not args.profile:
+            print("Warning: no existing profile storage files remain; falling back to default NotebookLM storage.")
+            return _default_auth_candidates()
 
     exclude_profiles = _parse_profile_list(getattr(args, "exclude_profiles", None))
     if exclude_profiles:

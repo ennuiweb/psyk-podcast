@@ -7,6 +7,7 @@ import unittest
 from datetime import datetime
 from pathlib import Path
 from types import SimpleNamespace
+from unittest.mock import patch
 
 from notebooklm import RPCError
 from notebooklm.rpc.types import RPCMethod, ReportFormat
@@ -282,6 +283,39 @@ class GeneratePodcastTests(unittest.TestCase):
             matches = mod._find_undownloaded_request_logs(tmp_root, "nb-safe")
 
         self.assertEqual(matches, [])
+
+    def test_build_auth_candidates_falls_back_when_auto_profiles_are_missing(self):
+        mod = _load_module()
+        with tempfile.TemporaryDirectory() as tmpdir:
+            tmp_root = Path(tmpdir)
+            profiles_path = tmp_root / "profiles.json"
+            profiles_path.write_text(
+                json.dumps({"default": str(tmp_root / "missing-storage.json")}),
+                encoding="utf-8",
+            )
+            notebooklm_home = tmp_root / "notebooklm-home"
+            notebooklm_home.mkdir()
+            expected_storage = (notebooklm_home / "storage_state.json").resolve()
+            expected_storage.write_text("{}", encoding="utf-8")
+
+            args = SimpleNamespace(
+                storage=None,
+                profile=None,
+                rotate_on_rate_limit=True,
+                profiles_file=str(profiles_path),
+                profile_priority=None,
+                preferred_profile=None,
+                exclude_profiles=None,
+            )
+
+            with patch.dict(os.environ, {"NOTEBOOKLM_HOME": str(notebooklm_home)}, clear=False):
+                candidates = mod._build_auth_candidates(args)
+
+        self.assertEqual(len(candidates), 1)
+        storage_path, auth_meta = candidates[0]
+        self.assertEqual(storage_path, str(expected_storage))
+        self.assertEqual(auth_meta["source"], "default")
+        self.assertIsNone(auth_meta["profile"])
 
     def test_resolve_notebook_keeps_original_error_when_no_owned_notebooks_exist(self):
         mod = _load_module()

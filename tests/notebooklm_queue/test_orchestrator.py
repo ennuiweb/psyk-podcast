@@ -1,8 +1,11 @@
 from __future__ import annotations
 
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 
-from notebooklm_queue.orchestrator import DrainShowOptions, drain_show_queue
+from notebooklm_queue.constants import STATE_COMPLETED, STATE_FAILED_RETRYABLE, STATE_RETRY_SCHEDULED
+from notebooklm_queue.models import JobIdentity
+from notebooklm_queue.orchestrator import DrainShowOptions, ServeShowOptions, drain_show_queue, serve_show_queue
 from notebooklm_queue.store import QueueStore
 
 
@@ -168,3 +171,110 @@ def test_drain_show_queue_stops_when_max_stage_runs_is_hit(tmp_path: Path, monke
 
     assert result["stage_run_count"] == 2
     assert result["stopped_due_to_max_stage_runs"] is True
+
+
+def test_serve_show_queue_waits_for_retry_scheduled_backlog(tmp_path: Path, monkeypatch) -> None:
+    repo_root = tmp_path / "repo"
+    repo_root.mkdir()
+    store = QueueStore(tmp_path / "queue-root")
+    job = store.upsert_job(
+        JobIdentity(
+            show_slug="bioneuro",
+            subject_slug="bioneuro",
+            lecture_key="W1L1",
+            content_types=("audio",),
+            config_hash="cfg-1",
+        )
+    )
+    retry_at = datetime(2026, 1, 1, 12, 5, tzinfo=UTC)
+    store.transition_job(
+        show_slug="bioneuro",
+        job_id=str(job["job_id"]),
+        state=STATE_RETRY_SCHEDULED,
+        retry_at=retry_at.isoformat(),
+        expected_states={"queued"},
+    )
+
+    current_time = datetime(2026, 1, 1, 12, 0, tzinfo=UTC)
+    drained = {"count": 0}
+    slept: list[int] = []
+
+    def fake_now():
+        return current_time
+
+    def fake_sleep(seconds: int) -> None:
+        nonlocal current_time
+        slept.append(seconds)
+        current_time = current_time + timedelta(seconds=seconds)
+
+    def fake_drain_show_queue(*, store: QueueStore, show_slug: str, options: DrainShowOptions):
+        drained["count"] += 1
+        if drained["count"] == 2:
+            store.retry_ready_jobs(show_slug=show_slug)
+            store.transition_job(
+                show_slug=show_slug,
+                job_id=str(job["job_id"]),
+                state=STATE_COMPLETED,
+                expected_states={"queued"},
+            )
+        return {
+            "show_slug": show_slug,
+            "stopped_due_to_max_stage_runs": False,
+            "stage_run_count": 0,
+            "queue_summary": store.summarize_jobs(show_slug=show_slug),
+        }
+
+    monkeypatch.setattr("notebooklm_queue.orchestrator._utc_now", fake_now)
+    monkeypatch.setattr("notebooklm_queue.orchestrator.time.sleep", fake_sleep)
+    monkeypatch.setattr("notebooklm_queue.orchestrator.drain_show_queue", fake_drain_show_queue)
+
+    result = serve_show_queue(
+        store=store,
+        show_slug="bioneuro",
+        options=ServeShowOptions(drain=DrainShowOptions(repo_root=repo_root)),
+    )
+
+    assert drained["count"] == 2
+    assert slept == [300]
+    assert result["stop_reason"] == "idle"
+    assert result["total_sleep_seconds"] == 300
+
+
+def test_serve_show_queue_stops_for_manual_intervention(tmp_path: Path, monkeypatch) -> None:
+    repo_root = tmp_path / "repo"
+    repo_root.mkdir()
+    store = QueueStore(tmp_path / "queue-root")
+    job = store.upsert_job(
+        JobIdentity(
+            show_slug="bioneuro",
+            subject_slug="bioneuro",
+            lecture_key="W1L1",
+            content_types=("audio",),
+            config_hash="cfg-1",
+        )
+    )
+    store.transition_job(
+        show_slug="bioneuro",
+        job_id=str(job["job_id"]),
+        state=STATE_FAILED_RETRYABLE,
+        expected_states={"queued"},
+    )
+
+    monkeypatch.setattr(
+        "notebooklm_queue.orchestrator.drain_show_queue",
+        lambda **kwargs: {
+            "show_slug": "bioneuro",
+            "stopped_due_to_max_stage_runs": False,
+            "stage_run_count": 0,
+            "queue_summary": store.summarize_jobs(show_slug="bioneuro"),
+        },
+    )
+
+    result = serve_show_queue(
+        store=store,
+        show_slug="bioneuro",
+        options=ServeShowOptions(drain=DrainShowOptions(repo_root=repo_root)),
+    )
+
+    assert result["stop_reason"] == "manual_intervention_required"
+    assert result["wait_plan"]["state_counts"] == {STATE_FAILED_RETRYABLE: 1}

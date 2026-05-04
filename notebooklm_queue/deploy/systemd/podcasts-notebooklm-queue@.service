@@ -12,6 +12,5 @@ Environment=PYTHONUNBUFFERED=1
 EnvironmentFile=-/etc/podcasts/notebooklm-queue/%i.env
 ExecStartPre=/usr/bin/install -d -m 0755 -o root -g root /var/lib/podcasts/notebooklm-queue
 ExecStart=/opt/podcasts/notebooklm_queue/deploy/bin/notebooklm-queue-drain-show.sh %i
-TimeoutStartSec=6h
+TimeoutStartSec=0
 Nice=10
-

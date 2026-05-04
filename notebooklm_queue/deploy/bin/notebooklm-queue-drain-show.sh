@@ -19,7 +19,7 @@ branch_name="${NOTEBOOKLM_QUEUE_BRANCH:-main}"
 cmd=(
   "$python_bin"
   "$cli_script"
-  drain-show
+  serve-show
   --repo-root "$repo_root"
   --show-slug "$show_slug"
   --max-stage-runs "$max_stage_runs"

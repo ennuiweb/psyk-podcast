@@ -99,7 +99,7 @@ That means the queue currently owns:
 
 The queue runtime now also has a concrete Hetzner packaging layer:
 
-- `drain-show` provides a single service-oriented queue cycle entrypoint
+- `drain-show` provides the single-cycle primitive and `serve-show` now provides the quota-aware remote worker entrypoint
 - templated `systemd` service and timer artifacts now exist under `notebooklm_queue/deploy/systemd/`
 - the Hetzner runtime/env/install runbook now exists in [notebooklm-queue-operations.md](notebooklm-queue-operations.md)
 

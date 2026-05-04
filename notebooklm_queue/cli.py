@@ -13,7 +13,7 @@ from .discovery import discover_show_jobs, enqueue_discovered_jobs
 from .execution import ExecutionOptions, execute_job
 from .metadata import MetadataOptions, rebuild_repo_metadata
 from .models import JobIdentity
-from .orchestrator import DrainShowOptions, drain_show_queue
+from .orchestrator import DrainShowOptions, ServeShowOptions, drain_show_queue, serve_show_queue
 from .publish import PublishOptions, UploadOptions, prepare_publish_bundle, upload_publish_bundle
 from .repo_publish import RepoPublishOptions, publish_repo_artifacts
 from .runner import build_dry_run_plan
@@ -172,6 +172,21 @@ def build_parser() -> argparse.ArgumentParser:
     drain_show.add_argument("--poll-interval-seconds", type=int, default=10)
     drain_show.add_argument("--remote", default="origin")
     drain_show.add_argument("--branch", default="main")
+
+    serve_show = subparsers.add_parser(
+        "serve-show",
+        help="Keep draining one show, waiting through retry windows until the backlog is idle or needs intervention.",
+    )
+    serve_show.add_argument("--repo-root", type=Path, default=Path(__file__).resolve().parents[1])
+    serve_show.add_argument("--show-slug", required=True)
+    serve_show.add_argument("--show-config", type=Path)
+    serve_show.add_argument("--content-type", action="append", dest="content_types", default=[])
+    serve_show.add_argument("--priority", type=int, default=100)
+    serve_show.add_argument("--max-stage-runs", type=int, default=50)
+    serve_show.add_argument("--timeout-seconds", type=int, default=900)
+    serve_show.add_argument("--poll-interval-seconds", type=int, default=10)
+    serve_show.add_argument("--remote", default="origin")
+    serve_show.add_argument("--branch", default="main")
     return parser
 
 
@@ -399,6 +414,27 @@ def main(argv: list[str] | None = None) -> int:
         )
         _print_json(payload)
         return 0
+
+    if args.command == "serve-show":
+        payload = serve_show_queue(
+            store=store,
+            show_slug=args.show_slug,
+            options=ServeShowOptions(
+                drain=DrainShowOptions(
+                    repo_root=Path(args.repo_root).resolve(),
+                    show_config_path=Path(args.show_config).resolve() if args.show_config else None,
+                    content_types=tuple(args.content_types) if args.content_types else None,
+                    discovery_priority=int(args.priority),
+                    max_stage_runs=int(args.max_stage_runs),
+                    downstream_timeout_seconds=int(args.timeout_seconds),
+                    downstream_poll_interval_seconds=int(args.poll_interval_seconds),
+                    remote=args.remote,
+                    branch=args.branch,
+                )
+            ),
+        )
+        _print_json(payload)
+        return 0 if payload.get("stop_reason") == "idle" else 1
 
     parser.error(f"Unhandled command: {args.command}")
     return 2

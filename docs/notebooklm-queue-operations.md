@@ -6,7 +6,7 @@ Current live scope:
 
 - `bioneuro` is the first queue-owned, R2-backed live show.
 - `personlighedspsykologi-en` is now also queue-owned and R2-backed on the Hetzner runtime.
-- The queue runtime is designed as a server-managed `systemd` timer that repeatedly drains one show through discovery, generation, publish, repo push, and downstream validation.
+- The queue runtime is designed as a server-managed `systemd` timer whose service now stays alive through quota cooldowns, waits for the next retry window, and keeps draining one show until the active backlog is cleared or manual intervention is required.
 
 Repository deploy artifacts:
 
@@ -97,8 +97,9 @@ Notes:
 - `GH_TOKEN` is only needed if the server-side `gh` CLI is not already authenticated in the service user's home.
 - The wrapper reads `NOTEBOOKLM_QUEUE_SHOW_CONFIG` only when you intentionally want a non-live config override.
 - Alert events are always persisted under `<storage-root>/alerts/` even when no external delivery path is configured.
-- `drain-show` now resumes interrupted in-progress jobs for execution, publish preparation, upload, metadata rebuild, and downstream sync before it starts new work for the show.
+- `drain-show` remains the single-cycle primitive. The hosted wrapper now runs `serve-show`, which repeatedly calls `drain-show`, waits through `retry_scheduled` cooldowns, and continues automatically when NotebookLM profile quota becomes available again.
 - Queue-managed subprocesses now fail closed on timeout instead of waiting forever. Tune the timeout env vars above if a show has legitimately longer-running phases.
+- The templated `systemd` service now disables `TimeoutStartSec` so long queue backlogs are not cut off mid-run while waiting through retry windows.
 
 ## Install on Hetzner
 
@@ -268,5 +269,5 @@ If the worker process died mid-stage, retrying `drain-show` is usually enough no
 
 - The timer is intentionally conservative: every 30 minutes with persistence and jitter.
 - `drain-show` prioritizes later publication stages before starting new generation work, so unfinished publish backlog is cleared before the queue creates more output.
-- The service is designed to be rerun safely. It performs discovery on each cycle, requeues due retry jobs, and then advances any ready stage until the show is idle or the configured stage-run cap is hit.
+- The service is designed to be rerun safely. Within one service invocation it now performs repeated drain cycles, sleeps until the earliest `retry_scheduled` window when quota is the only blocker, and exits only when the active backlog is cleared or the remaining jobs need manual intervention.
 - Discovery skips lecture keys that already exist in the configured `episode_inventory.json` by default, so installing the service on a fresh queue store does not automatically regenerate the entire historical live catalog.

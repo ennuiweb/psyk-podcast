@@ -689,7 +689,7 @@ Status legend:
 |---|---|---|---|
 | F1 | done | Migrate `personal` storage to R2 | `personal` is now live on `storage.provider = "r2"` and remains `publication.owner = "legacy_workflow"`. |
 | F2 | done | Migrate `bioneuro` | `bioneuro` is now live, `storage.provider = "r2"`, and `publication.owner = "queue"`. |
-| F3 | planned | Migrate `personlighedspsykologi-en` | Final subject due to rollout complexity. |
+| F3 | in_progress | Migrate `personlighedspsykologi-en` | Storage cutover to `storage.provider = "r2"` is now live under `publication.owner = "legacy_workflow"` with workflow-managed Drive-to-R2 import and preserved Drive identity for regeneration validation; queue ownership is still pending. |
 
 ### Workstream G - Validation And Tests
 

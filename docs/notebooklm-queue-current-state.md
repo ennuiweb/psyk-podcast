@@ -141,15 +141,15 @@ Current active show ownership is now mixed:
 - `berlingske`: legacy workflow
 - `intro-vt`: legacy workflow
 - `personal`: live, R2-backed, legacy workflow; ingest now runs through the resumable Drive-to-R2 importer, which backfills missing manifest checksums and transcodes configured `.m4a` / `.wav` sources to MP3 before upload
-- `personlighedspsykologi-en`: legacy workflow
-  - queue metadata hardening is now in place, but live publication ownership has not moved yet
+- `personlighedspsykologi-en`: live, R2-backed, legacy workflow
+  - queue metadata hardening is now in place, storage cutover succeeded with preserved Drive identity for regeneration validation, but live publication ownership has not moved yet
 - `social-psychology`: legacy workflow
 
 ## Immediate missing steps before full autonomous ownership
 
 1. Replace the temporary `r2.dev` public base URL with the intended production audio domain.
-2. Migrate `personlighedspsykologi-en` storage to R2 while keeping `publication.owner = "legacy_workflow"`.
-3. After that storage cutover proves stable, flip `personlighedspsykologi-en` to queue ownership.
+2. Observe one or more normal `personlighedspsykologi-en` legacy-workflow publish cycles on the live R2-backed config.
+3. After that stability window, flip `personlighedspsykologi-en` to queue ownership.
 4. Decide whether `personal` needs a dedicated direct-to-R2 ingest path or whether the hardened Drive-to-R2 importer remains sufficient as the long-term maintenance path.
 
 ## Recommended reading order

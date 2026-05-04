@@ -91,7 +91,7 @@ Current operational reality:
 - `bioneuro` is now live on `storage.provider = "r2"` with `publication.owner = "queue"`
 - `personal` is now live on `storage.provider = "r2"` with `publication.owner = "legacy_workflow"`
 - `personal` uses the resumable Drive-to-R2 importer as its canonical ingest path; that importer now backfills manifest checksums on resumed catalogs and transcodes configured source formats such as `.m4a` and `.wav` to MP3 before upload
-- `personlighedspsykologi-en` is now configured for `storage.provider = "r2"` while staying on `publication.owner = "legacy_workflow"`; the legacy workflow first imports the currently published Drive-backed inventory into R2 and refreshes `media_manifest.r2.json` before regenerating feed-side artifacts
+- `personlighedspsykologi-en` is now live on `storage.provider = "r2"` while staying on `publication.owner = "legacy_workflow"`; the legacy workflow first imports the currently published Drive-backed inventory into R2, refreshes `media_manifest.r2.json`, preserves the original Drive file IDs in the regenerated inventory for rollout validation, and then regenerates feed-side artifacts
 - the current `bioneuro` public enclosure base is the temporary Cloudflare hostname `https://pub-fe942499398a478c8a8f432207051244.r2.dev`
 - `personal` currently uses the same temporary Cloudflare hostname for enclosures
 - `personlighedspsykologi-en` currently uses the same temporary Cloudflare hostname for enclosures
@@ -179,6 +179,7 @@ In Apps Script:
 - Keep the bucket key structure stable across rewrites so object URLs remain deterministic.
 - If the bucket is listed directly, the workflow requires `R2_ACCESS_KEY_ID` and `R2_SECRET_ACCESS_KEY`.
 - If you want stricter migration control, use `storage.manifest_file` and store `stable_guid` per object.
+- For R2-backed shows, feed generation should prefer storage-level public URL settings over legacy top-level `public_link_template` values. This matters for mixed configs where Drive remains the import source but R2 is the published storage target.
 
 ## Metadata and images
 

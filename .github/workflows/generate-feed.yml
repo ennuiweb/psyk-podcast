@@ -330,16 +330,7 @@ jobs:
           spotify_map_path="shows/${SHOW}/spotify_map.json"
           manifest_path="shows/${SHOW}/content_manifest.json"
           media_manifest_path="$(
-            python3 - <<'PY'
-            import json
-            import os
-            from pathlib import Path
-
-            show = os.environ["SHOW"]
-            data = json.loads(Path(f"shows/{show}/config.runtime.json").read_text(encoding="utf-8"))
-            storage = data.get("storage") if isinstance(data.get("storage"), dict) else {}
-            print(str(storage.get("manifest_file") or "").strip())
-            PY
+            python3 -c 'import json, os; from pathlib import Path; show=os.environ["SHOW"]; data=json.loads(Path(f"shows/{show}/config.runtime.json").read_text(encoding="utf-8")); storage=data.get("storage") if isinstance(data.get("storage"), dict) else {}; print(str(storage.get("manifest_file") or "").strip())'
           )"
           safe_rebase_paths=("$feed_path" "$inventory_path" "$quiz_path" "$spotify_map_path" "$manifest_path")
           if [[ -n "${media_manifest_path}" ]]; then

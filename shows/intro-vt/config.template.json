@@ -2,32 +2,10 @@
   "publication": {
     "owner": "legacy_workflow"
   },
-  "source_import": {
-    "enabled": true,
-    "provider": "drive"
-  },
-  "service_account_file": "shows/intro-vt/service-account.json",
-  "drive_folder_id": "1Vq_ptrkc9FQXOahsFh4T1xHut-BWxiIX",
-  "shared_drive_id": null,
-  "include_items_from_all_drives": true,
   "allowed_mime_types": [
     "audio/"
   ],
-  "transcode": {
-    "enabled": true,
-    "source_mime_types": [
-      "video/mp4",
-      "audio/mp4",
-      "audio/x-m4a"
-    ],
-    "target_extension": "mp3",
-    "target_mime_type": "audio/mpeg",
-    "codec": "libmp3lame",
-    "bitrate": "160k"
-  },
-  "skip_permission_updates": false,
   "output_feed": "shows/intro-vt/feeds/rss.xml",
-  "public_link_template": "https://drive.google.com/uc?export=download&id={file_id}",
   "episode_metadata": "shows/intro-vt/episode_metadata.json",
   "auto_spec": "shows/intro-vt/auto_spec.json",
   "storage": {

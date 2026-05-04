@@ -452,13 +452,13 @@ Current status:
 
 - live on `storage.provider = "r2"`
 - remains `publication.owner = "legacy_workflow"`
-- uses a resumable Drive-to-R2 importer for legacy backfills
+- uses a resumable local-to-R2 publisher for ongoing ingest
 
 Success criteria:
 
 - feed identity preserved after storage cutover
 - deterministic object keys and stable feed identity
-- legacy Drive watcher removed from live publication path
+- no Drive watcher or Drive source ingest remains in the live publication path
 
 ### `bioneuro`
 
@@ -510,7 +510,7 @@ Current shipped hardening:
 - queue metadata rebuild now runs `sync_regeneration_registry.py` before feed generation for this show
 - queue metadata rebuild now runs strict registry/inventory validation after feed generation
 - queue metadata rebuild now treats slide-brief coverage failures as blocked manual prerequisites instead of warn-only queue output
-- live `publication.owner` still remains `legacy_workflow`; storage cutover should happen before ownership cutover
+- live `publication.owner` is now `queue`
 
 ## Implementation Phases
 
@@ -573,7 +573,7 @@ Exit criteria:
 Deliverables:
 
 - `personal` moved to `storage.provider = "r2"`
-- resumable Drive-to-R2 import helper
+- resumable local-to-R2 publish helper
 - successful legacy-workflow feed rebuild from the R2 manifest
 
 Exit criteria:
@@ -687,11 +687,11 @@ Status legend:
 
 | ID | Status | Item | Notes |
 |---|---|---|---|
-| F1 | done | Migrate `personal` storage to R2 | `personal` is now live on `storage.provider = "r2"` and remains `publication.owner = "legacy_workflow"`. |
+| F1 | done | Migrate `personal` storage to R2 | `personal` is now live on `storage.provider = "r2"`, remains `publication.owner = "legacy_workflow"`, and now uses a resumable local-to-R2 publisher instead of Drive ingest. |
 | F2 | done | Migrate `bioneuro` | `bioneuro` is now live, `storage.provider = "r2"`, and `publication.owner = "queue"`. |
-| F3 | in_progress | Migrate `personlighedspsykologi-en` | Storage cutover to `storage.provider = "r2"` is now live under `publication.owner = "legacy_workflow"` with workflow-managed Drive-to-R2 import and preserved Drive identity for regeneration validation; queue ownership is still pending. |
-| F4 | done | Migrate `intro-vt` storage to R2 | `intro-vt` is now live on `storage.provider = "r2"` under `publication.owner = "legacy_workflow"`, with workflow-managed Drive-to-R2 import and RSS-based GUID fallback for continuity because the show does not keep a committed `episode_inventory.json`. |
-| F5 | done | Migrate `social-psychology` storage to R2 | `social-psychology` is now live on `storage.provider = "r2"` under `publication.owner = "legacy_workflow"`, with workflow-managed Drive-to-R2 import and RSS-based GUID fallback for continuity because the show does not keep a committed `episode_inventory.json`. |
+| F3 | done | Migrate `personlighedspsykologi-en` | `personlighedspsykologi-en` is now live on `storage.provider = "r2"` and `publication.owner = "queue"`. The checked-in R2 manifest is the canonical published-audio inventory, and preserved Drive IDs remain compatibility metadata only for regeneration validation. |
+| F4 | done | Migrate `intro-vt` storage to R2 | `intro-vt` is now live on `storage.provider = "r2"` under `publication.owner = "legacy_workflow"`, with the checked-in R2 manifest as the canonical feed source and RSS-based GUID fallback for continuity because the show does not keep a committed `episode_inventory.json`. |
+| F5 | done | Migrate `social-psychology` storage to R2 | `social-psychology` is now live on `storage.provider = "r2"` under `publication.owner = "legacy_workflow"`, with the checked-in R2 manifest as the canonical feed source and RSS-based GUID fallback for continuity because the show does not keep a committed `episode_inventory.json`. |
 
 ### Workstream G - Validation And Tests
 

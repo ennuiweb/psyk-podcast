@@ -69,7 +69,7 @@ python3 scripts/mirror_bioneuro_audio.py
 ```
 
 Setup notes:
-- `drive_folder_id` is intentionally left as `__DRIVE_FOLDER_ID__` in all config variants.
+- Active config variants are now R2-backed and no longer carry live Drive-ingest fields.
 - Current matching expectation is plain `W#` tokens in Drive folder/file names (for example `W1`, `W2`, ...).
 - Feed generation uses `feed.semester_week_number_source = "lecture_key"` plus `title_blocks = ["course_week_lecture", "subject_or_type"]` with `audio_category_prefix_position = "after_first_block"` so Freudd-facing RSS titles start with parseable `U#F#` lecture keys.
 

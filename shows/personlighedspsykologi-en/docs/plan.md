@@ -21,15 +21,14 @@ NotebookLM generation mechanics live in
 
 ## Storage And Publication
 
-- `storage.provider` is now `r2`, but `publication.owner` remains
-  `legacy_workflow`.
-- The legacy workflow imports the currently published Drive-backed inventory
-  into R2 before feed generation and refreshes
-  `shows/personlighedspsykologi-en/media_manifest.r2.json`.
-- `drive_folder_id` and the service-account path remain in the show config
-  because they are still the canonical source for that import step.
-- `source_import.restrict_to_current_inventory` must stay enabled so inactive or
-  superseded Drive variants do not leak into the public R2 catalog.
+- `storage.provider` is now `r2`, and `publication.owner` is now `queue`.
+- `shows/personlighedspsykologi-en/media_manifest.r2.json` is the canonical
+  published-audio inventory.
+- Preserved `source_drive_file_id` fields in the manifest and generated
+  inventory are now historical compatibility metadata for regeneration
+  validation, not an active ingest contract.
+- Live publication no longer depends on Drive source import or service-account
+  credentials.
 
 ## Public Output Policy
 
@@ -86,8 +85,8 @@ python3 scripts/check_personlighedspsykologi_artifact_invariants.py
 ./.venv/bin/python podcast-tools/gdrive_podcast_feed.py --config shows/personlighedspsykologi-en/config.github.json --dry-run
 ```
 
-Expected non-blocking warnings may include missing reading summaries, existing
-content gaps, or duplicate Drive audio sources. Treat new structural, import, or
+Expected non-blocking warnings may include missing reading summaries or existing
+content gaps. Treat new structural, import, or
 inventory-mismatch errors as blockers.
 
 ## Publishing
@@ -96,6 +95,6 @@ After show-level docs/config/feed changes:
 
 1. Commit and push to `origin/main`.
 2. Run `gh workflow run generate-feed.yml --ref main`.
-3. Confirm the workflow succeeds for `personlighedspsykologi-en`.
+3. Confirm queue publication or queue downstream validation succeeds for `personlighedspsykologi-en`.
 4. Deploy Freudd only when the portal, manifest, quiz hosting, or served assets
    changed.

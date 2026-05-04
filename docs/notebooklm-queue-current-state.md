@@ -9,7 +9,7 @@ Use this file for:
 - what has actually shipped
 - what is verified
 - what is still missing before full autonomous Hetzner ownership
-- the current boundary between queue-owned publication and legacy Drive-owned publication
+- the current boundary between queue-owned publication and legacy workflow publication
 
 ## Implemented
 
@@ -139,24 +139,24 @@ Current active show ownership is now mixed:
 
 - `bioneuro`: live, R2-backed, queue-owned
 - `berlingske`: legacy workflow
-- `intro-vt`: live, R2-backed, legacy workflow with Drive-to-R2 source import
-- `personal`: live, R2-backed, legacy workflow; ingest now runs through the resumable Drive-to-R2 importer, which backfills missing manifest checksums and transcodes configured `.m4a` / `.wav` sources to MP3 before upload
-- `personlighedspsykologi-en`: live, R2-backed, legacy workflow
-  - queue metadata hardening is now in place, storage cutover succeeded with preserved Drive identity for regeneration validation, but live publication ownership has not moved yet
-- `social-psychology`: live, R2-backed, legacy workflow with Drive-to-R2 source import
+- `intro-vt`: live, R2-backed, legacy workflow; feed regeneration now reads the checked-in R2 manifest directly
+- `personal`: live, R2-backed, legacy workflow; ingest now runs through the resumable local-to-R2 publisher, which backfills missing manifest checksums and transcodes configured `.m4a` / `.wav` sources to MP3 before upload
+- `personlighedspsykologi-en`: live, R2-backed, queue-owned
+  - queue metadata hardening is in place for manual summaries, regeneration registry sync, and slide-brief blocking
+- `social-psychology`: live, R2-backed, legacy workflow; feed regeneration now reads the checked-in R2 manifest directly
 
 Operational boundary:
 
 - all active audio-publishing shows are now live on `storage.provider = "r2"`
-- remaining Drive dependence is now source-side only for selected legacy-workflow shows
+- Drive source ingest is now retired for the active publication surface
 - `berlingske` remains outside that statement because it is paused and not part of the active publication surface
 
 ## Immediate missing steps before full autonomous ownership
 
 1. Replace the temporary `r2.dev` public base URL with the intended production audio domain.
-2. Observe one or more normal `personlighedspsykologi-en` legacy-workflow publish cycles on the live R2-backed config.
-3. After that stability window, flip `personlighedspsykologi-en` to queue ownership.
-4. Decide whether `intro-vt`, `social-psychology`, and `personal` should keep their current Drive-source ingest paths or move to direct object-storage-native ingest over time.
+2. Install and verify the Hetzner queue runtime for `personlighedspsykologi-en`.
+3. Observe one or more normal `personlighedspsykologi-en` queue-owned publish cycles on the live R2-backed config.
+4. Decide whether paused legacy shows should keep any remaining Drive-only tooling or whether those code paths can be archived.
 
 ## Recommended reading order
 

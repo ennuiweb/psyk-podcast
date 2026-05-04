@@ -2,16 +2,16 @@
 
 Each subdirectory contains config and assets for a single podcast feed. The CI workflow iterates over the list of shows in its matrix (paused feeds are noted below) and regenerates each feed from the configured storage backend (`storage.provider`).
 
-- `social-psychology` – live show now publishes audio from R2 under the legacy workflow, with workflow-managed Drive-to-R2 source import.
-- `personlighedspsykologi-en` - Personlighedspsykologi (F26) feed; now R2-backed under the legacy workflow, with workflow-managed Drive-to-R2 import constrained to the currently published inventory; quiz links use deterministic short IDs under `/q/`.
+- `social-psychology` – live show now publishes audio from R2 under the legacy workflow; the checked-in R2 manifest is the feed source of truth.
+- `personlighedspsykologi-en` - Personlighedspsykologi (F26) feed; now R2-backed and queue-owned, with quiz links using deterministic short IDs under `/q/`.
 - `bioneuro` - Bio / Neuropsychology feed.
-- `intro-vt` – Intro + VT Deep Dives - Hold 1 - 2024 series; now publishes audio from R2 under the legacy workflow, with workflow-managed Drive-to-R2 source import.
+- `intro-vt` – Intro + VT Deep Dives - Hold 1 - 2024 series; now publishes audio from R2 under the legacy workflow; the checked-in R2 manifest is the feed source of truth.
 - `intro-vt-tss` – Intro + VT Tekst til tale - 1. sem 2024 TTS feed scaffolding (CI currently paused).
 - `social-psychology-tts` – Socialpsykologi Oplæst - 1. sem 2024 TTS feed scaffolding (CI currently paused).
-- `personal` – Private archive feed; now R2-backed under the legacy workflow, with the resumable Drive-to-R2 importer as the canonical ingest path.
+- `personal` – Private archive feed; now R2-backed under the legacy workflow, with the resumable local-to-R2 publisher as the canonical ingest path.
 - `berlingske` – Berlingske narrated articles feed sourced from the downloader manifest (CI paused).
 
-Add new shows by creating a sibling directory that mirrors this structure, then add the folder name to the matrix in `.github/workflows/generate-feed.yml`. Only shows that still use Drive as a live source path need an Apps Script `CONFIG.drive.folderIds` entry.
+Add new shows by creating a sibling directory that mirrors this structure, then add the folder name to the matrix in `.github/workflows/generate-feed.yml`. Active shows no longer use Drive-triggered publication.
 
 ## Cover artwork style
 

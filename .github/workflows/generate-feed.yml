@@ -16,18 +16,8 @@ jobs:
       matrix:
         show: [social-psychology, intro-vt, personal, personlighedspsykologi-en, bioneuro]
     env:
-      SERVICE_ACCOUNT_JSON_DEFAULT: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
-      SERVICE_ACCOUNT_JSON_SOCIAL_PSYCHOLOGY: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON_SOCIAL_PSYCHOLOGY }}
-      SERVICE_ACCOUNT_JSON_INTRO_VT: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON_INTRO_VT }}
-      SERVICE_ACCOUNT_JSON_BERLINGSKE: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON_BERLINGSKE }}
       R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
       R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
-      # TTS feeds temporarily disabled
-      DRIVE_FOLDER_ID: ${{ secrets.DRIVE_FOLDER_ID }}
-      DRIVE_FOLDER_ID_SOCIAL_PSYCHOLOGY: ${{ secrets.DRIVE_FOLDER_ID_SOCIAL_PSYCHOLOGY }}
-      DRIVE_FOLDER_ID_INTRO_VT: ${{ secrets.DRIVE_FOLDER_ID_INTRO_VT }}
-      DRIVE_FOLDER_ID_BERLINGSKE: ${{ secrets.DRIVE_FOLDER_ID_BERLINGSKE }}
-      # DRIVE_FOLDER_ID_INTRO_VT_TSS / DRIVE_FOLDER_ID_SOCIAL_PSYCHOLOGY_TTS not required while TTS feeds paused
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -44,46 +34,6 @@ jobs:
             --config "shows/${SHOW}/config.github.json" \
             --github-output "$GITHUB_OUTPUT"
 
-      - name: Resolve show source import
-        id: source_import
-        if: steps.show_policy.outputs.workflow_writer_enabled == 'true'
-        env:
-          SHOW: ${{ matrix.show }}
-        run: |
-          python3 <<'PY'
-          import json
-          import os
-          from pathlib import Path
-
-          show = os.environ["SHOW"]
-          config_path = Path(f"shows/{show}/config.github.json")
-          data = json.loads(config_path.read_text(encoding="utf-8"))
-          source_import = data.get("source_import") if isinstance(data.get("source_import"), dict) else {}
-          storage = data.get("storage") if isinstance(data.get("storage"), dict) else {}
-
-          enabled = bool(source_import.get("enabled"))
-          provider = str(source_import.get("provider") or "").strip() if enabled else ""
-          restrict_to_inventory = bool(source_import.get("restrict_to_current_inventory")) if enabled else False
-          if enabled and provider not in {"drive"}:
-              raise SystemExit(f"Unsupported source_import.provider for {show}: {provider}")
-
-          values = {
-              "enabled": "true" if enabled else "false",
-              "provider": provider,
-              "restrict_to_current_inventory": "true" if restrict_to_inventory else "false",
-              "storage_bucket": str(storage.get("bucket") or "").strip(),
-              "storage_endpoint": str(storage.get("endpoint") or "").strip(),
-              "storage_region": str(storage.get("region") or "").strip(),
-              "storage_prefix": str(storage.get("prefix") or "").strip(),
-              "storage_public_base_url": str(storage.get("public_base_url") or "").strip(),
-              "storage_manifest_file": str(storage.get("manifest_file") or "").strip(),
-          }
-
-          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as handle:
-              for key, value in values.items():
-                  handle.write(f"{key}={value}\n")
-          PY
-
       - name: Skip queue-owned writer path
         if: steps.show_policy.outputs.workflow_writer_enabled != 'true'
         env:
@@ -95,21 +45,9 @@ jobs:
       - name: Check required secrets
         if: steps.show_policy.outputs.workflow_writer_enabled == 'true'
         env:
-          SHOW: ${{ matrix.show }}
           STORAGE_PROVIDER: ${{ steps.show_policy.outputs.storage_provider }}
-          SOURCE_IMPORT_PROVIDER: ${{ steps.source_import.outputs.provider }}
         run: |
-          if [[ "${STORAGE_PROVIDER}" == "drive" || "${SOURCE_IMPORT_PROVIDER}" == "drive" ]]; then
-            show_upper=${SHOW^^}
-            show_upper=${show_upper//-/_}
-            show_key="SERVICE_ACCOUNT_JSON_${show_upper}"
-            show_secret=${!show_key}
-
-            if [[ -z "${show_secret}" && -z "${SERVICE_ACCOUNT_JSON_DEFAULT}" ]]; then
-              echo "Missing service account secret: set ${show_key} or GOOGLE_SERVICE_ACCOUNT_JSON." >&2
-              exit 1
-            fi
-          elif [[ "${STORAGE_PROVIDER}" == "r2" ]]; then
+          if [[ "${STORAGE_PROVIDER}" == "r2" ]]; then
             if [[ -z "${R2_ACCESS_KEY_ID}" || -z "${R2_SECRET_ACCESS_KEY}" ]]; then
               echo "Missing R2 credentials: set R2_ACCESS_KEY_ID and R2_SECRET_ACCESS_KEY." >&2
               exit 1
@@ -129,34 +67,10 @@ jobs:
         if: steps.show_policy.outputs.workflow_writer_enabled == 'true'
         run: pip install -r requirements.txt
 
-      - name: Write service account credentials
-        if: steps.show_policy.outputs.workflow_writer_enabled == 'true' && (steps.show_policy.outputs.storage_provider == 'drive' || steps.source_import.outputs.provider == 'drive')
-        env:
-          SHOW: ${{ matrix.show }}
-        run: |
-          python - <<'PY'
-          import os
-          from pathlib import Path
-
-          show = os.environ["SHOW"]
-          show_upper = show.upper().replace('-', '_')
-          secret_key = f"SERVICE_ACCOUNT_JSON_{show_upper}"
-          creds = os.environ.get(secret_key) or os.environ.get("SERVICE_ACCOUNT_JSON_DEFAULT")
-          if not creds:
-              raise SystemExit(
-                  f"Missing service account credentials: define secret '{secret_key}' or 'GOOGLE_SERVICE_ACCOUNT_JSON'."
-              )
-          dest = Path(f"shows/{show}/service-account.json")
-          dest.parent.mkdir(parents=True, exist_ok=True)
-          dest.write_text(creds)
-          PY
-
       - name: Prepare runtime config
         if: steps.show_policy.outputs.workflow_writer_enabled == 'true'
         env:
           SHOW: ${{ matrix.show }}
-          STORAGE_PROVIDER: ${{ steps.show_policy.outputs.storage_provider }}
-          SOURCE_IMPORT_PROVIDER: ${{ steps.source_import.outputs.provider }}
         run: |
           python3 <<'PY'
           import json
@@ -164,92 +78,14 @@ jobs:
           from pathlib import Path
 
           show = os.environ["SHOW"]
-          provider = os.environ["STORAGE_PROVIDER"]
-          source_import_provider = os.environ.get("SOURCE_IMPORT_PROVIDER") or ""
-          show_upper = show.upper().replace('-', '_')
           source_path = Path(f"shows/{show}/config.github.json")
           output_path = Path(f"shows/{show}/config.runtime.json")
 
           with source_path.open("r", encoding="utf-8") as fh:
               data = json.load(fh)
 
-          if provider == "drive" or source_import_provider == "drive":
-              secret_key = f"DRIVE_FOLDER_ID_{show_upper}"
-              drive_id = os.environ.get(secret_key)
-              fallback_drive_id = os.environ.get("DRIVE_FOLDER_ID")
-
-              placeholder = "__DRIVE_FOLDER_ID__"
-              existing_id = str(data.get("drive_folder_id", ""))
-
-              if drive_id:
-                  data["drive_folder_id"] = drive_id
-              elif placeholder in existing_id:
-                  if fallback_drive_id:
-                      data["drive_folder_id"] = fallback_drive_id
-                  else:
-                      raise RuntimeError(
-                          f"Drive folder ID placeholder found in {source_path}; set secret '{secret_key}' or 'DRIVE_FOLDER_ID'."
-                      )
-              elif fallback_drive_id and existing_id == "":
-                  data["drive_folder_id"] = fallback_drive_id
-
-              data["service_account_file"] = f"shows/{show}/service-account.json"
-
           output_path.write_text(json.dumps(data, indent=2))
           PY
-
-      - name: Import Drive media to R2
-        if: steps.show_policy.outputs.workflow_writer_enabled == 'true' && steps.show_policy.outputs.storage_provider == 'r2' && steps.source_import.outputs.enabled == 'true' && steps.source_import.outputs.provider == 'drive'
-        env:
-          SHOW: ${{ matrix.show }}
-          STORAGE_BUCKET: ${{ steps.source_import.outputs.storage_bucket }}
-          STORAGE_ENDPOINT: ${{ steps.source_import.outputs.storage_endpoint }}
-          STORAGE_REGION: ${{ steps.source_import.outputs.storage_region }}
-          STORAGE_PREFIX: ${{ steps.source_import.outputs.storage_prefix }}
-          STORAGE_PUBLIC_BASE_URL: ${{ steps.source_import.outputs.storage_public_base_url }}
-          STORAGE_MANIFEST_FILE: ${{ steps.source_import.outputs.storage_manifest_file }}
-          RESTRICT_TO_CURRENT_INVENTORY: ${{ steps.source_import.outputs.restrict_to_current_inventory }}
-        run: |
-          if [[ -z "${STORAGE_BUCKET}" || -z "${STORAGE_ENDPOINT}" || -z "${STORAGE_PREFIX}" || -z "${STORAGE_PUBLIC_BASE_URL}" || -z "${STORAGE_MANIFEST_FILE}" ]]; then
-            echo "::error::Incomplete R2 storage config for Drive source import on ${SHOW}."
-            exit 1
-          fi
-          cmd=(
-            python scripts/migrate_drive_show_to_r2.py
-            --config "shows/${SHOW}/config.runtime.json"
-            --source-config "shows/${SHOW}/config.runtime.json"
-            --bucket "${STORAGE_BUCKET}"
-            --endpoint "${STORAGE_ENDPOINT}"
-            --region "${STORAGE_REGION}"
-            --prefix "${STORAGE_PREFIX}"
-            --public-base-url "${STORAGE_PUBLIC_BASE_URL}"
-            --manifest-path "${STORAGE_MANIFEST_FILE}"
-          )
-          if [[ "${RESTRICT_TO_CURRENT_INVENTORY}" == "true" ]]; then
-            cmd+=(--restrict-to-current-inventory)
-          fi
-          "${cmd[@]}"
-
-      - name: Check Drive for videos needing transcode
-        if: steps.show_policy.outputs.workflow_writer_enabled == 'true' && steps.show_policy.outputs.storage_provider == 'drive'
-        id: probe_transcode
-        env:
-          SHOW: ${{ matrix.show }}
-        run: |
-          python podcast-tools/transcode_drive_media.py \
-            --config shows/${SHOW}/config.runtime.json \
-            --check-only \
-            --github-output "$GITHUB_OUTPUT"
-
-      - name: Install ffmpeg
-        if: steps.show_policy.outputs.workflow_writer_enabled == 'true' && steps.show_policy.outputs.storage_provider == 'drive' && steps.probe_transcode.outputs.needs_transcode == 'true'
-        run: sudo apt-get update && sudo apt-get install -y ffmpeg
-
-      - name: Transcode Drive media
-        if: steps.show_policy.outputs.workflow_writer_enabled == 'true' && steps.show_policy.outputs.storage_provider == 'drive' && steps.probe_transcode.outputs.needs_transcode == 'true'
-        env:
-          SHOW: ${{ matrix.show }}
-        run: python podcast-tools/transcode_drive_media.py --config shows/${SHOW}/config.runtime.json
 
       - name: Trust droplet host key
         if: steps.show_policy.outputs.workflow_writer_enabled == 'true' && contains(fromJSON('["personlighedspsykologi-en","bioneuro"]'), matrix.show)
@@ -263,7 +99,6 @@ jobs:
         env:
           SHOW: ${{ matrix.show }}
           STORAGE_PROVIDER: ${{ steps.show_policy.outputs.storage_provider }}
-          SOURCE_IMPORT_PROVIDER: ${{ steps.source_import.outputs.provider }}
           DROPLET_SSH_KEY: ${{ secrets.DIGITALOCEAN_SSH_KEY }}
         run: |
           case "${SHOW}" in
@@ -293,7 +128,7 @@ jobs:
           echo "${DROPLET_SSH_KEY}" > "${key_path}"
           chmod 600 "${key_path}"
 
-          if [[ "${STORAGE_PROVIDER}" == "drive" || "${SOURCE_IMPORT_PROVIDER}" == "drive" ]]; then
+          if [[ "${STORAGE_PROVIDER}" == "drive" ]]; then
             download_root="${RUNNER_TEMP}/drive-quizzes/${subject_slug}"
             cmd=(
               python podcast-tools/sync_drive_quiz_links.py
@@ -487,7 +322,6 @@ jobs:
         if: steps.show_policy.outputs.workflow_writer_enabled == 'true'
         env:
           SHOW: ${{ matrix.show }}
-          MANIFEST_PATH: ${{ steps.source_import.outputs.storage_manifest_file }}
         run: |
           set -euo pipefail
           feed_path="shows/${SHOW}/feeds/rss.xml"
@@ -495,7 +329,18 @@ jobs:
           quiz_path="shows/${SHOW}/quiz_links.json"
           spotify_map_path="shows/${SHOW}/spotify_map.json"
           manifest_path="shows/${SHOW}/content_manifest.json"
-          media_manifest_path="${MANIFEST_PATH}"
+          media_manifest_path="$(
+            python3 - <<'PY'
+            import json
+            import os
+            from pathlib import Path
+
+            show = os.environ["SHOW"]
+            data = json.loads(Path(f"shows/{show}/config.runtime.json").read_text(encoding="utf-8"))
+            storage = data.get("storage") if isinstance(data.get("storage"), dict) else {}
+            print(str(storage.get("manifest_file") or "").strip())
+            PY
+          )"
           safe_rebase_paths=("$feed_path" "$inventory_path" "$quiz_path" "$spotify_map_path" "$manifest_path")
           if [[ -n "${media_manifest_path}" ]]; then
             safe_rebase_paths+=("${media_manifest_path}")
@@ -585,4 +430,4 @@ jobs:
         if: always() && steps.show_policy.outputs.workflow_writer_enabled == 'true'
         env:
           SHOW: ${{ matrix.show }}
-        run: rm -f shows/${SHOW}/service-account.json shows/${SHOW}/config.runtime.json
+        run: rm -f shows/${SHOW}/config.runtime.json

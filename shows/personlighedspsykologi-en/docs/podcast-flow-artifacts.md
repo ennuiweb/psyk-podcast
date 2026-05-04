@@ -70,16 +70,15 @@ førsteklasses kilder:
 |---|---|
 | `notebooklm-podcast-auto/personlighedspsykologi/output/W##L#/` | Lokale outputmapper for MP3, quiz, infographics og request logs. Git-ignored. Kan være en macOS Alias-fil lokalt; generation/download scripts resolver aliaset til mål-mappen. |
 | `*.request.json`, `*.request.error.json` | NotebookLM job-state. Ryddes som standard af `download_week.py` efter successful download eller når target-output allerede findes. |
-| `shows/personlighedspsykologi-en/service-account.json` | Lokal/CI credential file. Git-ignored og runtime-only. |
 | `shows/personlighedspsykologi-en/config.runtime.json` | CI runtime config efter secret injection. Git-ignored og slettes af workflow. |
-| `$RUNNER_TEMP/...` | Midlertidige CI-downloads og credentials. |
+| `$RUNNER_TEMP/...` | Midlertidige CI-filer og SSH key material. |
 | `~/.notebooklm/storage_state.json` og `notebooklm-podcast-auto/profiles.json` | Lokal auth-state til NotebookLM. |
 
 ## Derivation Chain
 
 De vigtigste afledninger går i denne retning:
 
-1. `config.github.json` + `reading-file-key.md` + summaries + Drive-filer
+1. `config.github.json` + `reading-file-key.md` + summaries + NotebookLM/local output artifacts
 2. `feeds/rss.xml` + `episode_inventory.json`
 3. `spotify_map.json`
 4. `content_manifest.json`
@@ -93,7 +92,7 @@ repoet/Freudd som opslag fra intern episode-identitet til Spotify URL.
 |---|---|
 | RSS item title | Lyttervendt titel. Styres af feed config og `gdrive_podcast_feed.py`. |
 | RSS item GUID | Stabil podcast-client identitet. Tail/Grundbog synthetic entries kan bruge suffix som `#tail-grundbog-*`. |
-| RSS enclosure URL | Public Drive download URL til audio. |
+| RSS enclosure URL | Public R2/object-storage URL til audio. |
 | `episode_inventory.json` episode key | Intern stabil episode-identitet for Freudd og Spotify map. |
 | `quiz_links.json` by-name entries | Mapping fra episode/audio navn til quiz assets. |
 | `content_manifest.json` reading/lecture keys | Freudd navigation, progress og subject pages. |

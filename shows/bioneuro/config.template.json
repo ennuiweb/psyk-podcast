@@ -1,8 +1,39 @@
 {
-  "service_account_file": "shows/bioneuro/service-account.json",
-  "drive_folder_id": "1hZDV24e4V4ygo_Ye30zzRwInkgIyfgzi",
-  "shared_drive_id": null,
-  "include_items_from_all_drives": true,
+  "publication": {
+    "owner": "queue"
+  },
+  "subject_slug": "bioneuro",
+  "output_feed": "shows/bioneuro/feeds/rss.xml",
+  "output_inventory": "shows/bioneuro/episode_inventory.json",
+  "episode_metadata": "shows/bioneuro/episode_metadata.json",
+  "auto_spec": "shows/bioneuro/auto_spec.json",
+  "spotify_map_file": "shows/bioneuro/spotify_map.json",
+  "content_manifest_file": "shows/bioneuro/content_manifest.json",
+  "quiz": {
+    "links_file": "shows/bioneuro/quiz_links.json",
+    "base_url": "https://freudd.dk/q/",
+    "subject_slug": "bioneuro",
+    "labels": {
+      "single": "Quiz",
+      "multiple": "Quizzer",
+      "difficulty": {
+        "easy": "Let",
+        "medium": "Mellem",
+        "hard": "Svær"
+      }
+    }
+  },
+  "storage": {
+    "provider": "r2",
+    "bucket": "freudd",
+    "endpoint": "https://abf1940818ee3c8a0fa4bc84c7b1bba9.r2.cloudflarestorage.com",
+    "region": "auto",
+    "prefix": "shows/bioneuro",
+    "public_base_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev",
+    "manifest_file": "shows/bioneuro/media_manifest.r2.json",
+    "access_key_id_env": "R2_ACCESS_KEY_ID",
+    "secret_access_key_env": "R2_SECRET_ACCESS_KEY"
+  },
   "allowed_mime_types": [
     "audio/"
   ],
@@ -19,26 +50,6 @@
     "bitrate": "160k"
   },
   "skip_permission_updates": false,
-  "subject_slug": "bioneuro",
-  "output_feed": "shows/bioneuro/feeds/rss.xml",
-  "output_inventory": "shows/bioneuro/episode_inventory.json",
-  "public_link_template": "https://drive.google.com/uc?export=download&id={file_id}",
-  "episode_metadata": "shows/bioneuro/episode_metadata.json",
-  "auto_spec": "shows/bioneuro/auto_spec.json",
-  "quiz": {
-    "links_file": "shows/bioneuro/quiz_links.json",
-    "base_url": "https://freudd.dk/q/",
-    "subject_slug": "bioneuro",
-    "labels": {
-      "single": "Quiz",
-      "multiple": "Quizzer",
-      "difficulty": {
-        "easy": "Let",
-        "medium": "Mellem",
-        "hard": "Svær"
-      }
-    }
-  },
   "feed": {
     "title": "Bio / Neuropsychology",
     "link": "https://github.com/ennuiweb/psyk-podcast",

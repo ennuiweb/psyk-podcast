@@ -93,17 +93,17 @@ Current operational reality:
 
 - the feed stack supports both Drive and R2
 - `bioneuro` is now live on `storage.provider = "r2"` with `publication.owner = "queue"`
-- `intro-vt` is now live on `storage.provider = "r2"` with `publication.owner = "legacy_workflow"`; the legacy workflow imports Drive source files into `shows/intro-vt/media_manifest.r2.json` before regenerating the feed
+- `intro-vt` is now live on `storage.provider = "r2"` with `publication.owner = "legacy_workflow"`; the checked-in `shows/intro-vt/media_manifest.r2.json` is now the canonical feed source
 - `personal` is now live on `storage.provider = "r2"` with `publication.owner = "legacy_workflow"`
-- `personal` uses the resumable Drive-to-R2 importer as its canonical ingest path; that importer now backfills manifest checksums on resumed catalogs and transcodes configured source formats such as `.m4a` and `.wav` to MP3 before upload
-- `personlighedspsykologi-en` is now live on `storage.provider = "r2"` while staying on `publication.owner = "legacy_workflow"`; the legacy workflow first imports the currently published Drive-backed inventory into R2, refreshes `media_manifest.r2.json`, preserves the original Drive file IDs in the regenerated inventory for rollout validation, and then regenerates feed-side artifacts
-- `social-psychology` is now live on `storage.provider = "r2"` with `publication.owner = "legacy_workflow"`; the legacy workflow imports Drive source files into `shows/social-psychology/media_manifest.r2.json` before regenerating the feed
+- `personal` uses the resumable local-to-R2 publisher as its canonical ingest path; that publisher backfills manifest checksums on resumed catalogs and transcodes configured source formats such as `.m4a` and `.wav` to MP3 before upload
+- `personlighedspsykologi-en` is now live on `storage.provider = "r2"` with `publication.owner = "queue"`; the checked-in `media_manifest.r2.json` is the canonical published-audio inventory, while preserved Drive IDs remain historical rollout metadata only
+- `social-psychology` is now live on `storage.provider = "r2"` with `publication.owner = "legacy_workflow"`; the checked-in `shows/social-psychology/media_manifest.r2.json` is now the canonical feed source
 - the current `bioneuro` public enclosure base is the temporary Cloudflare hostname `https://pub-fe942499398a478c8a8f432207051244.r2.dev`
 - `intro-vt` currently uses the same temporary Cloudflare hostname for enclosures
 - `personal` currently uses the same temporary Cloudflare hostname for enclosures
 - `personlighedspsykologi-en` currently uses the same temporary Cloudflare hostname for enclosures
 - `social-psychology` currently uses the same temporary Cloudflare hostname for enclosures
-- all active audio-publishing shows are now R2-backed; remaining Drive dependence is limited to source import, ingest, or paused legacy feeds
+- all active audio-publishing shows are now R2-backed and no longer depend on Drive source ingest
 
 ## Google setup
 
@@ -116,14 +116,11 @@ One-time setup:
 
 GitHub Actions secrets:
 
-- `GOOGLE_SERVICE_ACCOUNT_JSON`
-- `DRIVE_FOLDER_ID`
 - `R2_ACCESS_KEY_ID`
 - `R2_SECRET_ACCESS_KEY`
 
 The workflow writes:
 
-- `shows/<show-slug>/service-account.json`
 - `shows/<show-slug>/config.runtime.json`
 
 ## Workflow behavior
@@ -134,11 +131,10 @@ For each show it:
 
 1. resolves show policy from `config.github.json`
 2. if `publication.owner=queue`, exits the legacy writer path for that show without regenerating artifacts
-3. otherwise checks secrets and writes runtime config
-4. for Drive shows, writes runtime service account credentials and optionally transcodes matching media
-5. runs `gdrive_podcast_feed.py`
-6. for quiz-enabled subjects, syncs quiz links from either Drive or local NotebookLM output depending on provider; on legacy R2 subjects where no local NotebookLM `output/` tree is present in CI, it reuses the committed `quiz_links.json` catalog for remote validation instead of failing on the missing directory, then rebuilds the subject content manifest
-7. commits generated artifacts back to `main` when needed
+3. otherwise checks R2 secrets and writes runtime config
+4. runs `gdrive_podcast_feed.py`
+5. for quiz-enabled subjects, syncs quiz links from local NotebookLM output when present; on legacy non-queue subjects where no local `output/` tree is present in CI, it reuses the committed `quiz_links.json` catalog for remote validation instead of failing on the missing directory, then rebuilds the subject content manifest
+6. commits generated artifacts back to `main` when needed
 
 Tracked feed artifacts live under:
 
@@ -160,8 +156,8 @@ The Drive trigger helper lives in:
 
 - `apps-script/drive_change_trigger.gs`
 
-Use it when a Drive upload should trigger `generate-feed.yml` via `workflow_dispatch`.
-Do not keep shows in that watcher list once they no longer depend on Drive-triggered publication.
+Drive-triggered publication for the active show surface is retired. Keep the
+script only as a dormant legacy helper for paused feeds or historical recovery.
 
 If using `clasp`, the repo helpers are:
 

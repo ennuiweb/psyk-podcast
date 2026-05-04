@@ -16,10 +16,8 @@
 const CONFIG = {
   drive: {
     folderIds: [
-      '1uPt6bHjivcD9z-Tw6Q2xbIld3bmH_WyI', // Socialpsykologi
-      '1Vq_ptrkc9FQXOahsFh4T1xHut-BWxiIX',   // Intro + VT Deep Dives - Hold 1 - 2024
-      '1lJD1TPU_Re7feq99Wj98RnWKbDjsi3qm',   // Personlighedspsykologi
-      '1hZDV24e4V4ygo_Ye30zzRwInkgIyfgzi',   // Bio / Neuropsychology
+      // Drive-triggered publication is retired for the active show surface.
+      // Leave this empty unless a legacy Drive-backed show is explicitly re-enabled.
     ],
     folderId: null,             // Backwards compatibility; leave null when using folderIds.
     includeSubfolders: true,
@@ -53,13 +51,14 @@ function configuredRootFolderIds() {
   const single = CONFIG.drive.folderId;
   if (single && typeof single === 'string') list.push(single.trim());
   const unique = Array.from(new Set(list.filter(Boolean)));
-  if (!unique.length) {
-    throw new Error('Set CONFIG.drive.folderIds (or legacy folderId) with at least one Drive folder ID.');
-  }
   return unique;
 }
 
 function checkDriveAndTrigger() {
+  if (!configuredRootFolderIds().length) {
+    console.log('Drive trigger is retired for active shows; skipping poll.');
+    return;
+  }
   const props = PropertiesService.getScriptProperties();
   const rawSnapshot = props.getProperty(CONFIG.state.snapshotKey);
   if (!rawSnapshot) {
@@ -86,6 +85,13 @@ function checkDriveAndTrigger() {
 }
 
 function initializeDriveChangeState() {
+  if (!configuredRootFolderIds().length) {
+    PropertiesService.getScriptProperties().setProperty(
+      CONFIG.state.snapshotKey,
+      JSON.stringify({ folders: {}, files: {}, unavailableRootIds: [] }),
+    );
+    return;
+  }
   const snapshot = snapshotCurrentTree();
   PropertiesService.getScriptProperties().setProperty(
     CONFIG.state.snapshotKey,

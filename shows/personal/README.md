@@ -2,9 +2,9 @@
 
 This show is a private catch-all feed backed by Cloudflare R2. The feed itself
 is now generated from `media_manifest.r2.json` and `episode_inventory.json`,
-while the importer in `scripts/migrate_drive_show_to_r2.py` remains the
-pragmatic way to sweep a legacy Drive folder into R2 without changing episode
-GUIDs.
+while `scripts/publish_local_show_to_r2.py` is now the canonical ingest path
+for publishing new local audio into the R2-backed catalog without changing
+episode GUIDs.
 
 There is no auto-spec. Publish dates and ordering are derived from the stored
 media metadata, so avoid rewriting existing objects or changing stable object
@@ -14,7 +14,6 @@ keys once episodes are in podcast apps.
 - `config.local.json` – local R2-backed feed config.
 - `config.github.json` – checked-in config used by GitHub Actions.
 - `config.template.json` – copy when provisioning new environments.
-- `config.drive-source.template.json` – legacy Drive source config for future import sweeps.
 - `episode_metadata.json` – optional overrides (leave `{}` to mirror Drive).
 - `episode_inventory.json` – generated inventory used to preserve feed identity.
 - `media_manifest.r2.json` – generated R2 object manifest with `stable_guid`.
@@ -28,15 +27,14 @@ python podcast-tools/gdrive_podcast_feed.py --config shows/personal/config.local
 This rebuilds `feeds/rss.xml` and `episode_inventory.json` from the checked-in
 R2 manifest.
 
-## Import from legacy Drive
+## Publish local audio to R2
 
-If you still have new audio accumulating in the old Drive folder, sweep it into
-R2 and refresh the manifest with:
+Publish new local source audio and refresh the manifest with:
 
 ```bash
-python scripts/migrate_drive_show_to_r2.py \
+python scripts/publish_local_show_to_r2.py \
   --config shows/personal/config.local.json \
-  --source-config shows/personal/config.drive-source.template.json \
+  --source-dir /path/to/personal-audio \
   --bucket freudd \
   --endpoint https://abf1940818ee3c8a0fa4bc84c7b1bba9.r2.cloudflarestorage.com \
   --prefix shows/personal \
@@ -44,11 +42,11 @@ python scripts/migrate_drive_show_to_r2.py \
 python podcast-tools/gdrive_podcast_feed.py --config shows/personal/config.local.json
 ```
 
-The importer is resumable and is now the canonical ingest path for this show:
+The publisher is resumable and is now the canonical ingest path for this show:
 
 - it skips already-uploaded objects by key and size
-- it preserves old Drive-based GUIDs in `stable_guid`
-- it retries transient Drive and R2 transfer failures instead of failing cold
+- it preserves existing feed GUIDs in `stable_guid`
+- it retries transient local I/O and R2 transfer failures instead of failing cold
 - it backfills missing manifest checksums on resumed catalogs
 - it transcodes configured source formats such as `.m4a` and `.wav` to MP3 before upload
 
@@ -56,5 +54,5 @@ The importer is resumable and is now the canonical ingest path for this show:
 - The show remains `publication.owner = "legacy_workflow"`.
 - GitHub Actions reads `media_manifest.r2.json` and requires R2 secrets.
 - Workflow matrix entry: `.github/workflows/generate-feed.yml` lists `personal`.
-- `apps-script/drive_change_trigger.gs` no longer watches the old personal Drive folder.
-- New `personal` source audio is imported by explicitly running the Drive-to-R2 sweep, not by the Drive watcher.
+- `apps-script/drive_change_trigger.gs` no longer watches any active show source folders.
+- New `personal` source audio is published by explicitly running the local-to-R2 publisher.

@@ -1,9 +1,8 @@
 # Social Psychology Docs
 
 This directory contains the retained planning material for the Social Psychology
-show. Published audio now comes from Cloudflare R2, while the legacy GitHub
-Actions workflow still imports source files from Drive before regenerating the
-feed.
+show. Published audio now comes from Cloudflare R2, and the checked-in R2
+manifest is the canonical source for feed regeneration.
 
 | File | Purpose |
 |---|---|
@@ -18,7 +17,7 @@ Operational note:
 
 - `storage.provider = "r2"` is now live for the show.
 - `publication.owner = "legacy_workflow"` remains unchanged.
-- Drive is still the source-side ingest path for the workflow-managed import.
+- The show is now manifest-backed and does not depend on live Drive source ingest.
 - Do not treat `regeneration-plan.md` as implemented until a canonical
   inventory has been frozen and the historical source folders have been
   cleaned.

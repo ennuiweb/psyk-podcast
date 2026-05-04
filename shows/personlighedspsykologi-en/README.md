@@ -20,9 +20,13 @@ Quiz localization note: `quiz.labels` controls heading and difficulty labels in 
 Feed ordering note: `feed.sort_mode: "wxlx_source_pair_priority"` groups by `W#L#` and orders each lecture block as `ALLE KILDER -> [Kort] + full reading pairs -> [Kort] + full Forelæsningsslides pair -> [Lydbog] tail`; source pairs use natural reading order with Grundbog chapters sorted by chapter number.
 Regeneration note: feed generation now selects the public A/B variant directly from `regeneration_registry.json` per `logical_episode_id`. Regex excludes are no longer the rollout mechanism.
 Slide short note: short generation is intentionally limited to all readings plus lecture slides (`short.apply_to: "readings_and_lecture_slides"`; the older config key is still accepted). Exercise slides keep their full podcast variants but do not get `Kort podcast` entries under the shared `Forelæsningsslides` label.
-Slide short audit note: the CI audit checks the built RSS against the Drive-backed show source, so code changes alone do not make the feed compliant. Missing lecture-slide short MP3s must still be generated, downloaded, and mirrored/uploaded before `generate-feed.yml` can pass the audit and publish the expected `Kort podcast · Forelæsningsslides` entries.
+Slide short audit note: the queue-owned publish path still fails closed on
+slide-brief coverage gaps. Code changes alone do not make the feed compliant;
+missing lecture-slide short MP3s must still be generated, downloaded, and
+published before the queue can complete the expected `Kort podcast ·
+Forelæsningsslides` entries.
 Unassigned TTS note: audio files without week tokens (for example in Drive folder `grundbog-tts/`) are auto-scheduled before week 1 and therefore render at the end of the feed.
-Grundbog tail note: `feed.tail_grundbog_lydbog` is enabled for this show and synthesizes a canonical tail block of `[Lydbog]` entries for `forord` plus configured Grundbog chapters. `drop_source_lydbog_items: true` keeps the canonical `[Lydbog]` RSS items and suppresses the redundant lecture-context `Lydbog` items for the same Grundbog sources. These tail items are feed-level constructs, not extra Drive uploads: each item reuses the underlying Drive enclosure URL but gets a synthetic GUID suffix like `<drive-id>#tail-grundbog-chapter-8` so podcast clients treat the tail entry as a distinct feed item.
+Grundbog tail note: `feed.tail_grundbog_lydbog` is enabled for this show and synthesizes a canonical tail block of `[Lydbog]` entries for `forord` plus configured Grundbog chapters. `drop_source_lydbog_items: true` keeps the canonical `[Lydbog]` RSS items and suppresses the redundant lecture-context `Lydbog` items for the same Grundbog sources. These tail items are feed-level constructs, not extra uploads: each item reuses the underlying published enclosure URL but gets a synthetic GUID suffix like `<base-guid>#tail-grundbog-chapter-8` so podcast clients treat the tail entry as a distinct feed item.
 Feed pubDate note: `feed.pubdate_year_rewrite` rewrites only item `<pubDate>` year tokens during generation (for this show: `2026 -> 2025`) and does not change channel `<lastBuildDate>`.
 
 Reading-summary workflow:
@@ -56,16 +60,22 @@ Reading-summary workflow:
   - `Alle kilder` cache is `shows/personlighedspsykologi-en/weekly_overview_summaries.json`; entries are lecture-level (`W#L#`) and scaffolded from all source summaries for that lecture, then manually finalized in Danish.
   - weekly validation is warn-only for missing entries, incomplete fields, non-Danish content, and source coverage gaps.
 
-Feed build prerequisites: install `google-auth` + `google-api-python-client`, then provide `shows/personlighedspsykologi-en/service-account.json`.
-Troubleshooting: if system Python shows `Missing Google API dependencies`, run with `./notebooklm-podcast-auto/.venv/bin/python` or install deps via `pip install -r requirements.txt`.
-Troubleshooting: warning `missing Grundbog lydbog tail source(s)` means one or more expected tail chapters are absent in Drive; feed generation still completes, but those tail entries are skipped.
-Troubleshooting: when comparing RSS items to Drive files, expect the synthetic Grundbog tail items to look like feed-only entries because their GUIDs append `#tail-grundbog-*` to the base Drive file ID by design.
-Update the Drive folder ID, owner email, and upload service account credentials before enabling automation.
+Feed build prerequisites: install the repo requirements, then run the feed
+generator or queue commands against the R2-backed show config.
+Troubleshooting: if system Python shows `Missing Google API dependencies`, run
+with `./notebooklm-podcast-auto/.venv/bin/python` or install deps via `pip
+install -r requirements.txt`.
+Troubleshooting: warning `missing Grundbog lydbog tail source(s)` means one or
+more expected tail chapters are absent in the published inventory; feed
+generation still completes, but those tail entries are skipped.
+Troubleshooting: when comparing RSS items to storage inventory, expect the
+synthetic Grundbog tail items to look like feed-only entries because their GUIDs
+append `#tail-grundbog-*` to the base item identity by design.
 
 Inventory-first note:
 - Feed generation now writes both `feeds/rss.xml` and `episode_inventory.json`.
 - Freudd manifest rebuilds consume `episode_inventory.json` as the primary podcast source and only fall back to RSS if the inventory file is unavailable.
-- This keeps manifest generation aligned with Drive files even when Spotify mappings are incomplete.
+- This keeps manifest generation aligned with the published storage inventory even when Spotify mappings are incomplete.
 
 Quiz link sync note:
 - `scripts/sync_quiz_links.py` and `podcast-tools/sync_drive_quiz_links.py` use quiz JSON exports as the source of truth.

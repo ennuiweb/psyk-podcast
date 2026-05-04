@@ -1,8 +1,7 @@
 {
-  "service_account_file": "shows/personlighedspsykologi-en/service-account.json",
-  "drive_folder_id": "1lJD1TPU_Re7feq99Wj98RnWKbDjsi3qm",
-  "shared_drive_id": null,
-  "include_items_from_all_drives": true,
+  "publication": {
+    "owner": "queue"
+  },
   "allowed_mime_types": [
     "audio/"
   ],
@@ -31,7 +30,6 @@
   "subject_slug": "personlighedspsykologi",
   "output_feed": "shows/personlighedspsykologi-en/feeds/rss.xml",
   "output_inventory": "shows/personlighedspsykologi-en/episode_inventory.json",
-  "public_link_template": "https://drive.google.com/uc?export=download&id={file_id}",
   "episode_metadata": "shows/personlighedspsykologi-en/episode_metadata.json",
   "auto_spec": "shows/personlighedspsykologi-en/auto_spec.json",
   "important_text_docs": [

@@ -1,10 +1,11 @@
 # Intro + VT Deep Dives - Hold 1 - 2024
 
-This show is live. Published audio now comes from Cloudflare R2, while the legacy GitHub Actions workflow still imports source files from Drive before regenerating the feed.
+This show is live. Published audio comes from Cloudflare R2, and the checked-in
+R2 manifest is now the canonical source for feed regeneration.
 
 Primary files:
 
-- `config.github.json` - live workflow config; `storage.provider = "r2"` with workflow-managed Drive source import.
+- `config.github.json` - live workflow config; `storage.provider = "r2"` under the legacy workflow.
 - `config.local.json` - local test config matching the live publication model.
 - `config.template.json` - template for rebuilding local or CI config variants.
 - `media_manifest.r2.json` - canonical published-object inventory for the R2-backed feed.
@@ -15,6 +16,6 @@ Primary files:
 
 Operational note:
 
-- Drive is still the source-side ingest path for this show.
-- R2 is now the public audio hosting layer.
+- This show is manifest-backed and does not rely on live Drive source ingest.
+- R2 is the public audio hosting layer.
 - The show remains `publication.owner = "legacy_workflow"`.

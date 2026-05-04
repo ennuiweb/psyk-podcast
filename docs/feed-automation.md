@@ -127,6 +127,11 @@ The workflow writes:
 
 `.github/workflows/generate-feed.yml` runs daily and on `workflow_dispatch`.
 
+The repo's active GitHub workflows now use Node 24-ready action majors:
+
+- `actions/checkout@v6`
+- `actions/setup-python@v6`
+
 For each show it:
 
 1. resolves show policy from `config.github.json`

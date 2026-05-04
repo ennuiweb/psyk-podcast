@@ -118,6 +118,12 @@ Required repo workflows completed successfully for the latest queue commits:
 - `ad01a4f` -> Actions run `25212535606`
 - `532ac58` -> Actions run `25213172226`
 - `9ef94cf` -> Actions run `25214094593`
+- `0b0d41c` -> Actions run `25325562747`
+
+GitHub Actions baseline:
+
+- the repo workflows that still use shared GitHub JavaScript actions are now upgraded to `actions/checkout@v6` and `actions/setup-python@v6`
+- this removes the previous Node 20 deprecation warning from the active `generate-feed.yml` path
 
 ## Live production state
 

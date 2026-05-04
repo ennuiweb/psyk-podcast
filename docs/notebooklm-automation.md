@@ -80,6 +80,7 @@ Queue-core note:
 - hosted generation wrappers now honor `NOTEBOOKLM_PROFILES_FILE` and `NOTEBOOKLM_PROFILE_PRIORITY`, so Hetzner can rotate across a host-local bundle of NotebookLM storage states instead of depending on workstation profile paths committed in the repo
 - `scripts/sync_notebooklm_profiles_to_hetzner.py` is the canonical helper for copying the local NotebookLM profile bundle to Hetzner and rebuilding `/etc/podcasts/notebooklm-queue/profiles.host.json`
 - queue execution now upgrades rate-limit failures with a retry window into `retry_scheduled`, so `drain-show` can automatically requeue partial lecture runs after cooldown instead of leaving them stranded as generic retryable failures
+- queue execution now emits durable alert events under the queue storage root for stale-auth failures and repeated rate-limit exhaustion, with optional webhook/email/command delivery configured by env
 - `prepare-publish` claims or resumes a job in `awaiting_publish`, scans the canonical output directory for that lecture, writes a durable publish manifest under the queue storage root, and moves successful jobs to `approved_for_publish`
 - `upload-r2` is intentionally R2-only for now; Drive-backed shows are blocked explicitly until their show config is migrated to `storage.provider = "r2"`
 - `sync-downstream` currently validates the existing Freudd deploy workflow for `bioneuro` and `personlighedspsykologi-en` when queue-owned pushes touch `content_manifest.json`, `quiz_links.json`, or `spotify_map.json`; explicit show-ownership gating in `generate-feed.yml` still belongs to a later migration phase
@@ -124,6 +125,13 @@ Important operational note:
 NOTEBOOKLM_PROFILES_FILE=/etc/podcasts/notebooklm-queue/profiles.host.json
 NOTEBOOKLM_PROFILE_PRIORITY=default,oskarvedel,tjekdepotadmin,nopeeeh,vedeloskar,stanhawkservices,baduljen,oskarhoegsgaard,djspindoctor,psykku,freudagsbaren
 ```
+
+- To be notified when NotebookLM auth goes stale, configure at least one queue alert delivery path in the same env file. Supported paths are:
+  - `NOTEBOOKLM_QUEUE_ALERT_WEBHOOK_URL`
+  - `NOTEBOOKLM_QUEUE_ALERT_EMAIL_TO` plus either `NOTEBOOKLM_QUEUE_RESEND_API_KEY` or SMTP env
+  - `NOTEBOOKLM_QUEUE_ALERT_COMMAND`
+
+- Alerts are always written durably under `<queue-storage-root>/alerts/` even if no external delivery is configured yet.
 
 - For shadow evaluation runs under tight NotebookLM capacity, prefer one lecture and one content family at a time before scaling back up to full backlog draining. The queue now supports automatic retry scheduling for rate-limit failures, but smaller shadow batches still make debugging and quality comparison materially easier.
 - The Hetzner runtime contract for the queue now lives in [notebooklm-queue-operations.md](notebooklm-queue-operations.md).

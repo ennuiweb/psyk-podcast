@@ -146,6 +146,73 @@ def test_execute_job_auto_schedules_retry_for_rate_limit_failures(tmp_path: Path
     assert updated["next_retry_at"]
 
 
+def test_execute_job_emits_auth_alert_via_command(tmp_path: Path, monkeypatch) -> None:
+    repo_root = _make_repo_root(tmp_path)
+    _write_phase_script(
+        repo_root / "notebooklm-podcast-auto/bioneuro/scripts/generate_week.py",
+        "import sys\nprint('authentication expired', file=sys.stderr)\nraise SystemExit(2)\n",
+    )
+    _write_phase_script(
+        repo_root / "notebooklm-podcast-auto/bioneuro/scripts/download_week.py",
+        "print('should not run')\n",
+    )
+    alert_capture = tmp_path / "alert-command.json"
+    monkeypatch.setenv(
+        "NOTEBOOKLM_QUEUE_ALERT_COMMAND",
+        f"{shlex_quote(sys.executable)} -c "
+        f"{shlex_quote('import pathlib, sys; pathlib.Path(sys.argv[1]).write_text(sys.stdin.read(), encoding=\"utf-8\")')} "
+        f"{shlex_quote(str(alert_capture))}",
+    )
+    monkeypatch.setenv("NOTEBOOKLM_QUEUE_ALERT_DEDUP_SECONDS", "0")
+
+    store = QueueStore(tmp_path / "queue-root")
+    job = store.upsert_job(_identity())
+
+    result = execute_job(
+        store=store,
+        show_slug="bioneuro",
+        job_id=str(job["job_id"]),
+        options=ExecutionOptions(repo_root=repo_root),
+    )
+
+    assert result["final_state"] == STATE_FAILED_RETRYABLE
+    updated = store.load_job(show_slug="bioneuro", job_id=str(job["job_id"]))
+    execution = updated["artifacts"]["execution"]
+    assert execution["latest_alert_kind"] == "auth_stale"
+    alert_path = Path(execution["latest_alert_path"])
+    alert_payload = json.loads(alert_path.read_text(encoding="utf-8"))
+    assert alert_payload["kind"] == "auth_stale"
+    assert alert_capture.exists()
+    delivered = json.loads(alert_capture.read_text(encoding="utf-8"))
+    assert delivered["kind"] == "auth_stale"
+
+
+def test_execute_job_does_not_alert_rate_limit_before_threshold(tmp_path: Path, monkeypatch) -> None:
+    repo_root = _make_repo_root(tmp_path)
+    _write_phase_script(
+        repo_root / "notebooklm-podcast-auto/bioneuro/scripts/generate_week.py",
+        "import sys\nprint('API rate limit or quota exceeded. Please wait before retrying.', file=sys.stderr)\nraise SystemExit(2)\n",
+    )
+    _write_phase_script(
+        repo_root / "notebooklm-podcast-auto/bioneuro/scripts/download_week.py",
+        "print('should not run')\n",
+    )
+    monkeypatch.setenv("NOTEBOOKLM_QUEUE_RATE_LIMIT_ALERT_ATTEMPTS", "3")
+    store = QueueStore(tmp_path / "queue-root")
+    job = store.upsert_job(_identity())
+
+    result = execute_job(
+        store=store,
+        show_slug="bioneuro",
+        job_id=str(job["job_id"]),
+        options=ExecutionOptions(repo_root=repo_root),
+    )
+
+    assert result["final_state"] == STATE_RETRY_SCHEDULED
+    updated = store.load_job(show_slug="bioneuro", job_id=str(job["job_id"]))
+    assert "latest_alert_kind" not in updated["artifacts"]["execution"]
+
+
 def test_execute_job_resumes_from_generated_state_and_skips_generate(tmp_path: Path) -> None:
     repo_root = _make_repo_root(tmp_path)
     _write_phase_script(
@@ -212,3 +279,9 @@ def test_execute_job_claims_next_queued_job_when_job_id_is_omitted(tmp_path: Pat
     assert result["job_id"] == str(first["job_id"])
     untouched = store.load_job(show_slug="bioneuro", job_id=str(later["job_id"]))
     assert untouched["state"] != STATE_GENERATING
+
+
+def shlex_quote(text: str) -> str:
+    import shlex
+
+    return shlex.quote(text)

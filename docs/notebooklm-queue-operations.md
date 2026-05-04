@@ -59,11 +59,38 @@ NOTEBOOKLM_PROFILES_FILE=/etc/podcasts/notebooklm-queue/profiles.host.json
 NOTEBOOKLM_PROFILE_PRIORITY=default,oskarvedel,tjekdepotadmin,nopeeeh,vedeloskar,stanhawkservices,baduljen,oskarhoegsgaard,djspindoctor,psykku,freudagsbaren
 ```
 
+Queue alerting for stale auth and repeated rate-limit exhaustion:
+
+```bash
+NOTEBOOKLM_QUEUE_ALERT_DEDUP_SECONDS=21600
+NOTEBOOKLM_QUEUE_RATE_LIMIT_ALERT_ATTEMPTS=3
+```
+
+Choose at least one delivery path:
+
+```bash
+# JSON POST
+NOTEBOOKLM_QUEUE_ALERT_WEBHOOK_URL=https://example.com/notebooklm-alerts
+
+# Email via Resend
+NOTEBOOKLM_QUEUE_ALERT_EMAIL_TO=oskar@ennui.dk
+NOTEBOOKLM_QUEUE_ALERT_EMAIL_FROM=noreply@freudd.dk
+NOTEBOOKLM_QUEUE_RESEND_API_KEY=...
+
+# Or a custom shell hook that receives alert JSON on stdin
+NOTEBOOKLM_QUEUE_ALERT_COMMAND=/opt/podcasts/scripts/handle_queue_alert.sh
+
+# Or use the built-in GitHub issue handler on hosts where `gh` is authenticated
+NOTEBOOKLM_QUEUE_ALERT_COMMAND=/opt/podcasts/scripts/handle_queue_alert_github.py
+NOTEBOOKLM_QUEUE_ALERT_GITHUB_REPO=ennuiweb/psyk-podcast
+```
+
 Notes:
 
 - `NOTEBOOKLM_AUTH_JSON` may be replaced with the wrapper's existing auth-home contract if that is what the server already uses.
 - `GH_TOKEN` is only needed if the server-side `gh` CLI is not already authenticated in the service user's home.
 - The wrapper reads `NOTEBOOKLM_QUEUE_SHOW_CONFIG` only when you intentionally want a non-live config override.
+- Alert events are always persisted under `<storage-root>/alerts/` even when no external delivery path is configured.
 
 ## Install on Hetzner
 
@@ -172,6 +199,12 @@ Sanity-check the queue lock path and storage root:
 
 ```bash
 sudo ls -la /var/lib/podcasts/notebooklm-queue
+```
+
+Inspect persisted alerts:
+
+```bash
+sudo find /var/lib/podcasts/notebooklm-queue/alerts -maxdepth 2 -type f | sort | tail
 ```
 
 ## Failure playbook

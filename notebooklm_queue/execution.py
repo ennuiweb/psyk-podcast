@@ -11,6 +11,7 @@ from pathlib import Path
 from typing import Any
 
 from .adapters import get_show_adapter
+from .alerts import emit_failure_alert
 from .constants import (
     STATE_AWAITING_PUBLISH,
     STATE_DOWNLOADED,
@@ -300,6 +301,19 @@ def _finalize_failure(
             "last_failure_at": manifest["completed_at"],
         }
     )
+    alert_payload = emit_failure_alert(
+        store=store,
+        show_slug=show_slug,
+        job=updated,
+        manifest=manifest,
+        failed_state=effective_failed_state,
+        error_text=manifest["last_error"],
+        note=note,
+    )
+    if alert_payload:
+        execution["latest_alert_path"] = str(alert_payload.get("alert_path") or "")
+        execution["latest_alert_kind"] = str(alert_payload.get("kind") or "")
+        execution["latest_alert_at"] = str(alert_payload.get("occurred_at") or "")
     artifacts["execution"] = execution
     updated["artifacts"] = artifacts
     store.save_job(updated)

@@ -11,7 +11,14 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
-from .constants import DEFAULT_STORAGE_ROOT, QUEUE_VERSION, READY_STATES, STATE_QUEUED, TERMINAL_STATES
+from .constants import (
+    DEFAULT_STORAGE_ROOT,
+    QUEUE_VERSION,
+    READY_STATES,
+    STATE_QUEUED,
+    STATE_RETRY_SCHEDULED,
+    TERMINAL_STATES,
+)
 from .models import JobIdentity
 
 try:
@@ -26,6 +33,19 @@ class QueueLockError(RuntimeError):
 
 def utc_now_iso() -> str:
     return datetime.now(tz=UTC).replace(microsecond=0).isoformat()
+
+
+def parse_utcish_iso(raw: str | None) -> datetime | None:
+    text = str(raw or "").strip()
+    if not text:
+        return None
+    try:
+        parsed = datetime.fromisoformat(text)
+    except ValueError:
+        return None
+    if parsed.tzinfo is None:
+        return parsed.replace(tzinfo=UTC)
+    return parsed.astimezone(UTC)
 
 
 def _write_text_atomic(path: Path, content: str) -> None:
@@ -209,6 +229,8 @@ class QueueStore:
         current_state = str(payload.get("state") or "").strip()
         if expected_states and current_state not in expected_states:
             raise ValueError(f"Job {job_id} is in state {current_state}, expected one of {sorted(expected_states)}")
+        if state == STATE_RETRY_SCHEDULED and parse_utcish_iso(retry_at) is None:
+            raise ValueError("retry_scheduled transitions require a valid retry_at timestamp")
 
         now = utc_now_iso()
         payload["state"] = state

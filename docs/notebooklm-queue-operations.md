@@ -98,6 +98,7 @@ Notes:
 - The wrapper reads `NOTEBOOKLM_QUEUE_SHOW_CONFIG` only when you intentionally want a non-live config override.
 - Alert events are always persisted under `<storage-root>/alerts/` even when no external delivery path is configured.
 - `drain-show` remains the single-cycle primitive. The hosted wrapper now runs `serve-show`, which repeatedly calls `drain-show`, waits through `retry_scheduled` cooldowns, and continues automatically when NotebookLM profile quota becomes available again.
+- `serve-show` now waits only when `retry_scheduled` jobs are the sole remaining active backlog. Mixed blocked+retry backlog or invalid retry timestamps stop the worker for manual intervention instead of hiding the problem behind more sleeping.
 - Queue-managed subprocesses now fail closed on timeout instead of waiting forever. Tune the timeout env vars above if a show has legitimately longer-running phases.
 - The templated `systemd` service now disables `TimeoutStartSec` so long queue backlogs are not cut off mid-run while waiting through retry windows.
 
@@ -116,7 +117,6 @@ git pull --ff-only origin main
 
 ```bash
 sudo install -d -m 0755 /etc/podcasts/notebooklm-queue
-sudo install -m 0755 /opt/podcasts/notebooklm_queue/deploy/bin/notebooklm-queue-drain-show.sh /opt/podcasts/notebooklm_queue/deploy/bin/notebooklm-queue-drain-show.sh
 sudo install -m 0644 /opt/podcasts/notebooklm_queue/deploy/systemd/podcasts-notebooklm-queue@.service /etc/systemd/system/podcasts-notebooklm-queue@.service
 sudo install -m 0644 /opt/podcasts/notebooklm_queue/deploy/systemd/podcasts-notebooklm-queue@.timer /etc/systemd/system/podcasts-notebooklm-queue@.timer
 ```

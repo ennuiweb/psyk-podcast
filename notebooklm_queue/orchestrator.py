@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from datetime import UTC, datetime
+from datetime import datetime
 from pathlib import Path
 import time
 from typing import Any, Callable
@@ -16,7 +16,9 @@ from .metadata import MetadataOptions, rebuild_repo_metadata
 from .publish import PublishOptions, UploadOptions, prepare_publish_bundle, upload_publish_bundle
 from .repo_publish import RepoPublishOptions, publish_repo_artifacts
 from .show_config import serialize_show_config_path
-from .store import QueueStore
+from .store import QueueStore, parse_utcish_iso
+
+RECENT_CYCLE_HISTORY_LIMIT = 10
 
 
 @dataclass(frozen=True, slots=True)
@@ -184,11 +186,15 @@ def serve_show_queue(
     options: ServeShowOptions,
 ) -> dict[str, Any]:
     cycle_results: list[dict[str, Any]] = []
+    cycle_count = 0
     total_sleep_seconds = 0
 
     while True:
         cycle = drain_show_queue(store=store, show_slug=show_slug, options=options.drain)
+        cycle_count += 1
         cycle_results.append(cycle)
+        if len(cycle_results) > RECENT_CYCLE_HISTORY_LIMIT:
+            cycle_results = cycle_results[-RECENT_CYCLE_HISTORY_LIMIT:]
         if cycle.get("stopped_due_to_max_stage_runs"):
             continue
 
@@ -197,12 +203,13 @@ def serve_show_queue(
         if action != "wait_for_retry":
             return {
                 "show_slug": show_slug,
-                "cycle_count": len(cycle_results),
+                "cycle_count": cycle_count,
                 "total_sleep_seconds": total_sleep_seconds,
                 "stop_reason": action,
                 "wait_plan": wait_plan,
                 "last_cycle": cycle_results[-1],
-                "cycle_results": cycle_results,
+                "recent_cycles": cycle_results,
+                "recent_cycle_limit": RECENT_CYCLE_HISTORY_LIMIT,
                 "queue_summary": store.summarize_jobs(show_slug=show_slug),
             }
 
@@ -216,12 +223,15 @@ def _plan_next_action(*, store: QueueStore, show_slug: str) -> dict[str, Any]:
     retry_jobs: list[dict[str, Any]] = []
     blocking_jobs: list[dict[str, Any]] = []
     other_active_jobs: list[dict[str, Any]] = []
+    invalid_retry_jobs: list[dict[str, Any]] = []
 
     for job in jobs:
         state = str(job.get("state") or "").strip()
         if state in TERMINAL_STATES:
             continue
         if state == STATE_RETRY_SCHEDULED:
+            if parse_utcish_iso(str(job.get("next_retry_at") or "").strip()) is None:
+                invalid_retry_jobs.append(job)
             retry_jobs.append(job)
             continue
         if state in BLOCKED_STATES or state == STATE_FAILED_RETRYABLE:
@@ -229,14 +239,30 @@ def _plan_next_action(*, store: QueueStore, show_slug: str) -> dict[str, Any]:
             continue
         other_active_jobs.append(job)
 
+    if invalid_retry_jobs:
+        return {
+            "action": "manual_intervention_required",
+            "reason": "invalid_retry_schedule",
+            "state_counts": _state_counts(invalid_retry_jobs),
+            "job_ids": [str(job.get("job_id") or "") for job in invalid_retry_jobs],
+        }
+
+    if blocking_jobs and retry_jobs:
+        return {
+            "action": "manual_intervention_required",
+            "reason": "mixed_retry_and_blocked_backlog",
+            "state_counts": _state_counts(blocking_jobs + retry_jobs),
+        }
+
+    if other_active_jobs and retry_jobs:
+        return {
+            "action": "active_backlog_without_progress",
+            "reason": "mixed_retry_and_active_backlog",
+            "state_counts": _state_counts(other_active_jobs + retry_jobs),
+        }
+
     if retry_jobs:
         earliest_retry = _earliest_retry_at(retry_jobs)
-        if earliest_retry is None:
-            return {
-                "action": "wait_for_retry",
-                "sleep_seconds": 1,
-                "retry_job_count": len(retry_jobs),
-            }
         now = _utc_now()
         sleep_seconds = max(int((earliest_retry - now).total_seconds()), 1)
         return {
@@ -264,24 +290,12 @@ def _plan_next_action(*, store: QueueStore, show_slug: str) -> dict[str, Any]:
 def _earliest_retry_at(jobs: list[dict[str, Any]]) -> datetime | None:
     earliest: datetime | None = None
     for job in jobs:
-        retry_at = _parse_iso_datetime(str(job.get("next_retry_at") or "").strip())
+        retry_at = parse_utcish_iso(str(job.get("next_retry_at") or "").strip())
         if retry_at is None:
             continue
         if earliest is None or retry_at < earliest:
             earliest = retry_at
     return earliest
-
-
-def _parse_iso_datetime(raw: str) -> datetime | None:
-    if not raw:
-        return None
-    try:
-        parsed = datetime.fromisoformat(raw)
-    except ValueError:
-        return None
-    if parsed.tzinfo is None:
-        return parsed.replace(tzinfo=UTC)
-    return parsed.astimezone(UTC)
 
 
 def _state_counts(jobs: list[dict[str, Any]]) -> dict[str, int]:

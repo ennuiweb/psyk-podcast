@@ -51,6 +51,19 @@ def test_transition_job_tracks_history_and_retry_window(tmp_path: Path) -> None:
     assert updated["history"][-1]["details"]["profile"] == "acct-2"
 
 
+def test_transition_job_rejects_retry_scheduled_without_valid_retry_at(tmp_path: Path) -> None:
+    store = QueueStore(tmp_path)
+    job = store.upsert_job(_identity(lecture_key="W01L1"))
+
+    with pytest.raises(ValueError, match="valid retry_at"):
+        store.transition_job(
+            show_slug="demo-show",
+            job_id=job["job_id"],
+            state=STATE_RETRY_SCHEDULED,
+            retry_at="not-a-timestamp",
+        )
+
+
 def test_claim_next_job_respects_priority_and_state(tmp_path: Path) -> None:
     store = QueueStore(tmp_path)
     store.upsert_job(_identity(lecture_key="W01L2"), priority=50)

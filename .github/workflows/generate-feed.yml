@@ -341,40 +341,8 @@ jobs:
                 exit 1
               fi
               mapfile -t committed_probe < <(
-                python3 - "shows/${SHOW}/quiz_links.json" <<'PY'
-                import json
-                import sys
-                from pathlib import Path
-
-                links_path = Path(sys.argv[1])
-                payload = json.loads(links_path.read_text())
-                by_name = payload.get("by_name") if isinstance(payload, dict) and "by_name" in payload else payload
-                if not isinstance(by_name, dict):
-                    raise SystemExit(f"Unsupported quiz links structure in {links_path}")
-
-                relative_paths = set()
-                for record in by_name.values():
-                    if not isinstance(record, dict):
-                        continue
-                    relative_path = record.get("relative_path")
-                    if isinstance(relative_path, str) and relative_path:
-                        relative_paths.add(Path(relative_path).name)
-                    links = record.get("links")
-                    if isinstance(links, list):
-                        for item in links:
-                            if not isinstance(item, dict):
-                                continue
-                            relative_path = item.get("relative_path")
-                            if isinstance(relative_path, str) and relative_path:
-                                relative_paths.add(Path(relative_path).name)
-
-                if not relative_paths:
-                    raise SystemExit(f"No quiz relative_path entries found in {links_path}")
-
-                sample_name = min(relative_paths)
-                print(len(relative_paths))
-                print(sample_name)
-                PY
+                python3 scripts/probe_quiz_link_catalog.py \
+                  --links-file "shows/${SHOW}/quiz_links.json"
               )
               if [[ "${#committed_probe[@]}" -lt 2 ]]; then
                 echo "::error::Unable to derive committed quiz link probe data for ${SHOW}."

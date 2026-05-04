@@ -1,7 +1,7 @@
 # Reading File Key (Personlighedspsykologi F26)
 
 **Important:** `important_text_mode` is set to `week_x_only`. Priority items must have filenames that start with `W##L# X` to be highlighted in the feed. The list below uses the intended `W##L# X` prefixes; rename the files to match when you want the highlights to appear.
-- Filnavnet efter `→` skal matche den eksakte fil i den relevante `Readings/W#L# .../` mappe. Manifestet og portal-downloads bruger denne værdi direkte.
+- Filnavnet efter `→` skal matche den eksakte fil i den relevante `Readings/W#L# .../` mappe. En trailing note som `(short + full)` regnes som metadata og ignoreres af sync-/audit-tooling.
 
 ## Episode output policy
 - Weekly overview kind (`W#L#` lecture-level): `Alle kilder` (deep-dive, long).

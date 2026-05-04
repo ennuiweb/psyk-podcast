@@ -31,7 +31,10 @@ DEFAULT_EXCLUSIONS_CONFIG = "shows/personlighedspsykologi-en/reading_download_ex
 LECTURE_HEADING_RE = re.compile(r"^\*\*(?P<key>W\d{2}L\d+)\b")
 READING_BULLET_RE = re.compile(r"^-\s+(?P<title>.+?)(?:\s*→\s*(?P<source>.+))?$")
 MISSING_RE = re.compile(r"^MISSING:\s*", re.IGNORECASE)
-BRIEF_SUFFIX_RE = re.compile(r"\s*\([^)]*\bbrief\b[^)]*\)\s*$", re.IGNORECASE)
+SOURCE_NOTE_SUFFIX_RE = re.compile(
+    r"\s*\((?=[^)]*\b(?:brief|short|full)\b)[^)]*\)\s*$",
+    re.IGNORECASE,
+)
 PATH_SEPARATORS_RE = re.compile(r"[\\/]+")
 LECTURE_DIR_RE = re.compile(r"^W0*(?P<week>\d{1,2})L0*(?P<lecture>\d+)\b", re.IGNORECASE)
 SUBJECT_SLUG_RE = re.compile(r"^[a-z0-9-]+$")
@@ -86,7 +89,7 @@ def _reading_key(lecture_key: str, reading_title: str) -> str:
 
 
 def _clean_source_filename(value: str) -> str:
-    cleaned = BRIEF_SUFFIX_RE.sub("", str(value or "").strip()).strip()
+    cleaned = SOURCE_NOTE_SUFFIX_RE.sub("", str(value or "").strip()).strip()
     cleaned = PATH_SEPARATORS_RE.sub("-", cleaned).strip()
     return cleaned
 

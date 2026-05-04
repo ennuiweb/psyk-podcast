@@ -261,8 +261,10 @@ class GenerateWeekTests(unittest.TestCase):
         self.assertIn("Course: Personlighedspsykologi", prompt)
         self.assertIn("central claims and argument structure", prompt)
         self.assertIn("conceptual distinctions and delimitations", prompt)
-        self.assertIn("Academic orientation:", prompt)
-        self.assertIn("historical tradition and core assumptions where they matter", prompt)
+        self.assertIn("Interpretive roles:", prompt)
+        self.assertIn("Reading: Use this reading for the actual claims", prompt)
+        self.assertIn("Priority lens:", prompt)
+        self.assertIn("clarify why this reading matters for the lecture block", prompt)
         self.assertIn("Generation rules:", prompt)
         self.assertIn("Do not invent studies, examples, citations", prompt)
         self.assertIn("Tone: calm, precise, teaching-oriented.", prompt)
@@ -358,9 +360,10 @@ class GenerateWeekTests(unittest.TestCase):
         )
 
         self.assertIn("You are working with both slides and readings.", prompt)
-        self.assertIn("Source roles:", prompt)
-        self.assertIn("Use the slides as the structural map", prompt)
-        self.assertIn("Use the readings for conceptual distinctions", prompt)
+        self.assertIn("Interpretive roles:", prompt)
+        self.assertIn("Use lecture slides for sequence, framing", prompt)
+        self.assertIn("Use seminar slides for application, clarification", prompt)
+        self.assertIn("Use the readings for claims, conceptual distinctions", prompt)
 
     def test_build_audio_prompt_includes_source_sidecar_notes(self):
         mod = _load_module()

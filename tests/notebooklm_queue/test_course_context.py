@@ -138,7 +138,7 @@ class CourseContextTests(unittest.TestCase):
 
             self.assertIn("Course position: lecture 1 of 2", reading_note)
             self.assertIn("Current lecture theme: Introduktion.", reading_note)
-            self.assertIn("Broader course themes in play across the semester: Introduktion; Fortsat.", reading_note)
+            self.assertIn("Broader course arc in play: Introduktion; Fortsat.", reading_note)
             self.assertIn("Course overview excerpt:", reading_note)
             self.assertIn("## Source character", reading_note)
             self.assertIn("This is a textbook chapter", reading_note)

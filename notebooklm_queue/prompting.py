@@ -34,8 +34,11 @@ DEFAULT_AUDIO_PROMPT_STRATEGY = {
     "audience": "a bachelor's-level psychology student",
     "tone": "calm, precise, teaching-oriented. Avoid dramatization.",
     "source_roles": {
-        "slides": "Use the slides as the structural map and the lecturer's interpretive frame.",
-        "readings": "Use the readings for conceptual distinctions, qualifications, and argumentative depth.",
+        "lecture_slides": "Use lecture slides for sequence, framing, and what the lecturer seems to prioritize.",
+        "seminar_slides": (
+            "Use seminar slides for application, clarification, discussion points, and likely misunderstandings."
+        ),
+        "readings": "Use the readings for claims, conceptual distinctions, qualifications, and argumentative depth.",
     },
     "prompt_types": {
         "single_reading": {
@@ -91,35 +94,35 @@ DEFAULT_AUDIO_PROMPT_STRATEGY = {
 }
 DEFAULT_EXAM_FOCUS = {
     "enabled": True,
-    "heading": "Academic orientation:",
+    "heading": "Priority lens:",
     "prompt_types": {
         "single_reading": [
-            "clarify the theory's historical tradition and core assumptions where they matter",
-            "analyze what the theory helps explain and what it leaves unresolved",
-            "explain what kind of method relation or methodological stance is implied",
-            "make clear what should be examined critically, not just summarized",
+            "clarify why this reading matters for the lecture block and wider course arc",
+            "surface the assumptions, distinctions, or stakes the teaching framing likely treats as decisive",
+            "show what this reading helps explain especially well and where it remains partial or limited",
+            "include at least one real tension, limitation, or unresolved issue rather than only summarizing",
         ],
         "single_slide": [
-            "clarify the lecture's theoretical placement where the slides make it possible",
-            "state the most important possibilities and limitations implied by the material",
-            "note what kind of theory-method relation is implied",
-            "flag what should be examined critically rather than repeated",
+            "use the slide sequence to infer what the lecture is prioritizing",
+            "note what the slides foreground, background, or leave underspecified",
+            "show how the teaching framing positions the topic in the wider course",
+            "mark where the lecture framing should be checked against the readings rather than simply repeated",
         ],
         "weekly_readings_only": [
-            "clarify the historical tradition and core assumptions in play across the readings",
-            "analyze what the theories illuminate well and where they stay partial or in tension",
-            "make the relation between theory and method explicit where it matters",
-            "show what should be examined critically, not just summarized",
+            "state the lecture-block question that makes these readings belong together",
+            "clarify which distinctions, disagreements, or tensions deserve the most attention",
+            "show what the lecture and seminar framing likely treat as most important to carry forward",
+            "include unresolved questions, limitations, or tensions instead of only summarizing consensus",
         ],
         "short": [
-            "make clear the one or two ideas a student should carry forward",
-            "include at least one limitation, tension, or critical point rather than only summarizing",
+            "make clear the one or two ideas that matter most to carry forward into later lectures",
+            "include at least one limitation, tension, or qualification rather than only summarizing",
         ],
         "mixed_sources": [
-            "clarify the historical tradition and core assumptions in play",
-            "analyze what the theories illuminate well and where the teaching framing leaves open questions",
-            "make the relation between theory and method explicit where it matters",
-            "show what should be examined critically, not just summarized",
+            "state the lecture-block question that organizes both the readings and the teaching framing",
+            "clarify which distinctions or disagreements the lecture seems to prioritize",
+            "show what the combined material explains well and where it still leaves open questions",
+            "include tensions, limitations, or unresolved issues rather than only summarizing",
         ],
     },
 }
@@ -280,7 +283,11 @@ def normalize_audio_prompt_strategy(raw: object) -> dict:
         source_roles = raw["source_roles"]
         if not isinstance(source_roles, dict):
             raise SystemExit("audio_prompt_strategy.source_roles must be an object.")
-        for role in ("slides", "readings"):
+        legacy_slides = source_roles.get("slides")
+        if "lecture_slides" not in source_roles and isinstance(legacy_slides, str):
+            source_roles = dict(source_roles)
+            source_roles["lecture_slides"] = legacy_slides
+        for role in ("lecture_slides", "seminar_slides", "readings"):
             if role not in source_roles:
                 continue
             value = source_roles[role]
@@ -571,6 +578,56 @@ def _format_bullets(items: list[str]) -> str:
     return "\n".join(f"- {item}" for item in items if item)
 
 
+def _source_roles_section(
+    *,
+    prompt_type: str,
+    prompt_strategy: dict,
+    source_item: object | None,
+) -> str:
+    roles = prompt_strategy["source_roles"]
+    lecture_role = roles["lecture_slides"]
+    seminar_role = roles["seminar_slides"]
+    reading_role = roles["readings"]
+
+    if prompt_type == "single_reading":
+        items = [
+            "Reading: Use this reading for the actual claims, distinctions, evidence, and qualifications.",
+            f"Lecture slides: {lecture_role}",
+            f"Seminar slides: {seminar_role}",
+        ]
+    elif prompt_type == "single_slide":
+        subcategory = str(getattr(source_item, "slide_subcategory", "") or "").strip().lower()
+        if subcategory == "seminar":
+            deck_role = "Target slide deck: Use it to reconstruct application, clarification, and discussion priorities."
+        elif subcategory == "exercise":
+            deck_role = "Target slide deck: Use it to reconstruct what is being practiced, clarified, or stress-tested."
+        else:
+            deck_role = "Target slide deck: Use it to reconstruct sequence, framing, and what the lecture is emphasizing."
+        items = [
+            deck_role,
+            f"Readings: {reading_role}",
+            f"Seminar slides: {seminar_role}",
+        ]
+    elif prompt_type == "short":
+        if str(getattr(source_item, "source_type", "") or "").strip().lower() == "slide":
+            items = [
+                "Target source: Compress around the one or two ideas the slide framing makes most important.",
+                f"Readings: {reading_role}",
+            ]
+        else:
+            items = [
+                "Target source: Compress around the one or two ideas this source contributes most decisively.",
+                f"Lecture slides: {lecture_role}",
+            ]
+    else:
+        items = [
+            f"Readings: {reading_role}",
+            f"Lecture slides: {lecture_role}",
+            f"Seminar slides: {seminar_role}",
+        ]
+    return "Interpretive roles:\n" + _format_bullets(items)
+
+
 def _source_prompt_sidecar_candidates(source_path: Path, meta_prompting: dict) -> list[Path]:
     candidates: list[Path] = []
     stem_base = source_path.with_suffix("")
@@ -676,13 +733,14 @@ def build_audio_prompt(
         if course_context_note:
             heading = str(course_context_heading or "Course-aware lecture context:").strip()
             sections.append(f"{heading}\n{course_context_note.strip()}")
-        if prompt_type == "mixed_sources":
-            sections.append(
-                "Source roles:\n"
-                f"- Slides: {prompt_strategy['source_roles']['slides']}\n"
-                f"- Readings: {prompt_strategy['source_roles']['readings']}"
+        sections.append(
+            _source_roles_section(
+                prompt_type=prompt_type,
+                prompt_strategy=prompt_strategy,
+                source_item=source_item,
             )
-        elif prompt_type == "short" and getattr(source_item, "source_type", None) == "slide":
+        )
+        if prompt_type == "short" and getattr(source_item, "source_type", None) == "slide":
             sections.append(
                 "Because the source is a slide deck, reconstruct the argumentative line instead of paraphrasing bullet fragments."
             )

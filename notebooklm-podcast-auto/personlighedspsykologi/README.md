@@ -60,14 +60,18 @@ python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_week.py 
 - Audio prompts are source-aware by default through `audio_prompt_strategy.prompt_types` in `prompt_config.json`.
   - Implemented prompt types are `single_reading`, `single_slide`, `weekly_readings_only`, `short`, and `mixed_sources`.
   - `Alle kilder (undtagen slides)` still uses `weekly_readings_only` for NotebookLM source upload, so the weekly notebook remains readings-only at the file level.
+  - Normal prompt assembly now injects explicit interpretive roles, not only mixed-source prompts:
+    - readings ground claims, distinctions, and qualifications
+    - lecture slides set sequence, framing, and what seems most important
+    - seminar slides highlight application, clarification, and likely misunderstandings
   - `single_reading` asks for argument structure, conceptual distinctions, corrections/rejections, likely misunderstandings, and implications for personality/subject thinking.
   - `single_slide` treats slides as fragmentary lecture scaffolding and asks NotebookLM to reconstruct the argumentative sequence rather than summarize slide bullets.
-  - `mixed_sources` is implemented in the builder for future mixed notebooks and assigns explicit source roles: slides provide structure and lecture framing; readings provide nuance and argumentative depth.
+  - `mixed_sources` is implemented in the builder for future mixed notebooks and uses the same role split explicitly.
   - `short` uses a compact, carry-forward focus rather than the full deep-dive checklist.
   - The default tone is calm, precise, and teaching-oriented, with explicit anti-dramatization guidance.
 - `exam_focus` is a separate additive block in `prompt_config.json`.
-  - It now functions as a lighter academic/critical orientation block rather than an explicit exam block, while keeping the legacy config key for compatibility.
-  - The defaults emphasize theoretical placement, possibilities and limitations, theory-method relation, and what should be examined critically rather than merely repeated.
+  - It now functions as a priority lens rather than an exam block, while keeping the legacy config key for compatibility.
+  - The defaults emphasize why the source matters in the lecture block, what the teaching framing is prioritizing, and which tensions or limitations deserve attention.
 - `audio_prompt_framework` is the shared prompt-assembly layer in `prompt_config.json`.
   - It adds cross-cutting generation rules plus format-aware and length-aware guidance.
   - `format` and `length` now affect the resolved audio prompt itself, not only NotebookLM request params and config-tag hashes.
@@ -75,6 +79,7 @@ python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_week.py 
 - `course_context` is the deterministic lecture-context compiler in `prompt_config.json`.
   - It compiles prompt context from `shows/<show>/content_manifest.json` plus `shows/<show>/docs/overblik.md`.
   - The compiled context situates the lecture in the wider course arc, pulls in neighboring lectures, lecture-level summaries, reading summaries, and slide framing from forelaesning/seminar/exercise catalogs.
+  - The broader course arc is now compressed before insertion into prompts so the model sees semester-wide direction without being flooded by a long title dump.
   - Weekly prompts therefore stay readings-only in NotebookLM uploads while still being informed by the whole lecture block and the broader course context.
   - The same compiled lecture context now also feeds report/study-guide outputs and is designed to stay reusable for later output families such as additional abridged reading guides, quizzes, and similar study artifacts.
 - `report_prompt_strategy` is the report/study-guide equivalent of the audio prompt strategy.

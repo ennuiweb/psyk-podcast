@@ -176,6 +176,8 @@ Prompt assembly note:
 - `generate_week.py` now compiles a course-aware lecture context from `shows/<show>/content_manifest.json` and `shows/<show>/docs/overblik.md` before building prompts.
 - That context layer is deterministic and artifact-neutral, and it now feeds both audio prompts and NotebookLM `report` artifacts surfaced as study-guide style Markdown outputs.
 - Current report usage is the first concrete non-audio consumer: abridged preparatory guides for readings, slide decks, lecture-level reading sets, and short variants.
+- Prompt assembly now also injects explicit source-role guidance for normal prompt types so readings, lecture slides, and seminar slides contribute different kinds of signal instead of being blended implicitly.
+- The legacy `exam_focus` config key now acts as a priority lens: it should steer importance and tensions without branding the audio prompts around the exam.
 
 Prompt-system ambitions that should not drift:
 

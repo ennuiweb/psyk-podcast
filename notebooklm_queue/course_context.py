@@ -240,6 +240,15 @@ def _fallback_course_theme_titles(lectures: list[dict[str, Any]]) -> list[str]:
     return themes
 
 
+def _format_course_arc_titles(titles: list[str], *, max_items: int) -> str:
+    if max_items <= 0 or not titles:
+        return ""
+    selected = titles[:max_items]
+    if len(selected) <= 5:
+        return "; ".join(selected)
+    return "; ".join([*selected[:3], "...", *selected[-2:]])
+
+
 def _normalize_match_key(value: str) -> str:
     cleaned = str(value or "").strip().casefold()
     cleaned = re.sub(r"^w\d+l\d+\s*[-–:._ ]*\s*", "", cleaned)
@@ -482,14 +491,12 @@ def build_course_prompt_context_note(
     if next_lectures:
         frame_lines.append(f"- It leads into: {', '.join(next_lectures)}.")
     if bundle.course_theme_titles and course_theme_limit > 0:
-        theme_heading = "- Broader course themes in play across the semester: "
-        if len(bundle.course_theme_titles) > course_theme_limit:
-            theme_heading = "- Selected broader course themes in play across the semester: "
-        frame_lines.append(
-            theme_heading
-            + "; ".join(bundle.course_theme_titles[:course_theme_limit])
-            + "."
+        course_arc = _format_course_arc_titles(
+            bundle.course_theme_titles,
+            max_items=course_theme_limit,
         )
+        if course_arc:
+            frame_lines.append(f"- Broader course arc in play: {course_arc}.")
     overview_excerpt = _overview_excerpt(bundle, canonical_key)
     if overview_excerpt:
         frame_lines.append(f"- Course overview excerpt: {overview_excerpt}.")
@@ -578,7 +585,8 @@ def build_course_prompt_context_note(
 
     sections.append(
         "## Grounding rules\n"
-        "- Treat lecture-level and course-level framing as interpretation aids rather than replacement for what the source explicitly says.\n"
+        "- Treat lecture-level and course-level framing as prioritization aids rather than replacement for what the source explicitly says.\n"
+        "- Let slide framing help decide emphasis and likely misunderstandings, but keep claims anchored in the supplied source material.\n"
         "- Use slide titles and neighboring lectures to orient the explanation, but do not attribute unsupported claims to authors or lecturers."
     )
     return "\n\n".join(section for section in sections if section.strip())

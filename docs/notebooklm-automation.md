@@ -12,6 +12,10 @@ Naming note:
   during, and after generation.
 - `Freudd Generation Queue` names the Hetzner-owned orchestration/runtime layer
   under `notebooklm_queue/`.
+- `Course Understanding Pipeline` names the pre-output subset of the content
+  engine that processes source files and builds source-, lecture-, and
+  course-level understanding before prompt assembly or output-specific artifact
+  generation.
 - `Course Context Layer`, `Prompt Assembly Layer`, and `Source Intelligence
   Layer` are the canonical names for the main subsystems inside the content
   engine.
@@ -19,10 +23,10 @@ Naming note:
 Design principle:
 
 - The content engine should be treated as a decomposed substitute for a
-  hypothetical full-course reasoning pass. That means `Source Intelligence
-  Layer`, `Course Context Layer`, and `Prompt Assembly Layer` should support
-  bottom-up grounding, top-down framing, and sideways comparison rather than
-  only local prompt assembly.
+  hypothetical full-course reasoning pass. That means the `Course Understanding
+  Pipeline` should produce explicit bottom-up grounding, top-down framing, and
+  sideways comparison artifacts before later layers assemble local prompts or
+  output-specific files.
 
 Current migration program:
 

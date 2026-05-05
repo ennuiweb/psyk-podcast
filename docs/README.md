@@ -29,5 +29,10 @@ Cross-doc principle:
 - The `Freudd Content Engine` is intentionally designed as a decomposed
   alternative to a single giant full-course reasoning pass. Relevant docs should
   preserve the distinction between bottom-up, top-down, and sideways
-  information flow when describing the `Source Intelligence Layer`, `Course
-  Context Layer`, and `Prompt Assembly Layer`.
+  information flow when describing the `Course Understanding Pipeline`,
+  `Source Intelligence Layer`, `Course Context Layer`, and `Prompt Assembly
+  Layer`.
+- Use `Course Understanding Pipeline` for the pre-output source/course
+  understanding work. Do not use that name for output-specific prompt assembly,
+  NotebookLM runs, scaffold PDF rendering, queue publication, or portal
+  presentation.

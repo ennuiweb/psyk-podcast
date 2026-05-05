@@ -48,14 +48,18 @@ The current canonical subsystem map is:
 
 Inside `Freudd Content Engine`:
 
-1. `Source Intelligence Layer`
-2. `Course Context Layer`
-3. `Prompt Assembly Layer`
+1. `Course Understanding Pipeline`
+2. `Source Intelligence Layer`
+3. `Course Context Layer`
+4. `Prompt Assembly Layer`
 
 In practical terms:
 
 - `Freudd Portal` is the learner-facing web application
 - `Freudd Content Engine` prepares learning material and generation inputs
+- `Course Understanding Pipeline` is the pre-output part of the content engine
+  that processes sources and builds source-, lecture-, and course-level
+  understanding before output-specific prompt or artifact layers run
 - `Freudd Generation Queue` runs and publishes queue-owned generation work
 - `Distribution Layer` turns validated outputs into RSS, manifests, Spotify
   mappings, and downstream deploy inputs

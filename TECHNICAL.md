@@ -18,8 +18,9 @@ Use this vocabulary when referring to the system:
 - `Freudd Learning System` - the whole repo-level ecosystem: portal, content generation, queueing, publication, and public podcast surfaces.
 - `Freudd Portal` - the student-facing `freudd.dk` web layer in `freudd_portal/`.
 - `Freudd Content Engine` - the course-material engine whose purpose is to create the best possible conditions for high-quality learning material, across source preprocessing, course framing, prompt construction, generation workflows, and show metadata/artifacts.
+- `Course Understanding Pipeline` - the pre-output subset of the `Freudd Content Engine` that processes source files and builds source-, lecture-, and course-level understanding before output-specific prompts or artifact generators run.
 - `Freudd Generation Queue` - the Hetzner-owned queue/orchestration runtime in `notebooklm_queue/`.
-- `Source Intelligence Layer` - the raw-source preprocessing subsystem, now centered on `source_catalog.json`, `lecture_bundles/`, `course_glossary.json`, `course_theory_map.json`, and related weighting/staleness artifacts.
+- `Source Intelligence Layer` - the core raw-source intelligence subsystem inside the `Course Understanding Pipeline`, now centered on `source_catalog.json`, `lecture_bundles/`, `source_intelligence/`, `course_glossary.json`, `course_theory_map.json`, and related weighting/staleness artifacts.
 - `Course Context Layer` - the deterministic course/lecture framing compiler in `notebooklm_queue/course_context.py`.
 - `Prompt Assembly Layer` - the shared prompt construction layer in `notebooklm_queue/prompting.py`.
 - `Distribution Layer` - feed, manifest, Spotify, and publication outputs.
@@ -55,6 +56,14 @@ artifacts, not by collapsing everything into opaque prompt text.
 
 Current direction:
 
+- Use `Course Understanding Pipeline` when referring to the pre-output parts
+  that process sources and build course understanding. For
+  `personlighedspsykologi`, that includes deterministic source catalog/bundle
+  artifacts, Gemini source cards, lecture substrates, course synthesis,
+  downward lecture revisions, source weighting, glossary, theory map, concept
+  graph, and progress/staleness indexes. It excludes prompt assembly,
+  NotebookLM generation, scaffold PDF rendering, queue publication, and portal
+  presentation.
 - The main `personlighedspsykologi` maturity task is course preprocessing, not
   more prompt tuning.
 - The recursive substrate layer is now implemented as code: source

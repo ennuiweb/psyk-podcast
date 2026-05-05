@@ -368,3 +368,18 @@ def generate_json(
                 delete_gemini_uploaded_files(backend.client, uploaded_files)
 
     raise GeminiPreprocessingGenerationError("Gemini preprocessing failed after retries")
+
+
+def preflight_gemini_json_generation(
+    *,
+    model: str = DEFAULT_GEMINI_PREPROCESSING_MODEL,
+    backend: GeminiPreprocessingBackend | None = None,
+) -> dict[str, Any]:
+    active_backend = backend or make_gemini_backend(model=model)
+    return generate_json(
+        backend=active_backend,
+        system_instruction="Return only valid JSON.",
+        user_prompt='Return exactly this JSON object: {"ok": true}',
+        max_output_tokens=64,
+        retry_count=0,
+    )

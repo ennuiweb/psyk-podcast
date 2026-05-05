@@ -271,6 +271,8 @@ Recursive preprocessing implementation:
   `scripts/build_personlighedspsykologi_recursive_source_intelligence.py`,
   with `--lectures`, `--all`, `--dry-run`, `--skip-existing`, `--force`, and
   `--fail-on-missing-key`.
+- The wrapper runs a tiny Gemini JSON preflight before live source uploads; use
+  `--preflight-only` to test model/quota access without uploading course files.
 - LLM-derived artifacts live under
   `shows/personlighedspsykologi-en/source_intelligence/` so they remain
   visually distinct from deterministic artifacts.

@@ -46,6 +46,28 @@ def test_non_retryable_zero_quota_error_is_summarized(tmp_path):
     fake_client.models.generate_content.assert_called_once()
 
 
+def test_preflight_gemini_json_generation_uses_tiny_json_request():
+    fake_client = mock.Mock()
+    fake_client.models.generate_content.return_value = mock.Mock(text='{"ok": true}')
+    fake_support = mock.Mock()
+    fake_support.GenerateContentConfig.side_effect = lambda **kwargs: kwargs
+    fake_support.Part.from_text.side_effect = lambda *, text: {"type": "text", "text": text}
+
+    payload = gemini.preflight_gemini_json_generation(
+        backend=gemini.GeminiPreprocessingBackend(
+            provider="gemini",
+            client=fake_client,
+            support=fake_support,
+            model="gemini-test",
+        )
+    )
+
+    assert payload == {"ok": True}
+    call = fake_client.models.generate_content.call_args.kwargs
+    assert call["config"]["max_output_tokens"] == 64
+    assert call["contents"] == [{"type": "text", "text": 'Return exactly this JSON object: {"ok": true}'}]
+
+
 def test_generate_json_uploads_pdf_and_deletes_upload(tmp_path):
     pdf_path = tmp_path / "Source File.pdf"
     pdf_path.write_bytes(b"%PDF-1.4")

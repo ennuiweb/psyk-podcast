@@ -14,7 +14,11 @@ if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
 from notebooklm_queue import personlighedspsykologi_recursive as recursive
-from notebooklm_queue.gemini_preprocessing import has_gemini_api_key
+from notebooklm_queue.gemini_preprocessing import (
+    GeminiPreprocessingError,
+    has_gemini_api_key,
+    preflight_gemini_json_generation,
+)
 
 
 def _resolve(path_value: str | Path) -> Path:
@@ -51,6 +55,16 @@ def _parse_args() -> argparse.Namespace:
     parser.add_argument("--skip-existing", dest="skip_existing", action="store_true", default=True)
     parser.add_argument("--no-skip-existing", dest="skip_existing", action="store_false")
     parser.add_argument("--dry-run", action="store_true", help="Plan work without calling Gemini or writing artifacts.")
+    parser.add_argument(
+        "--preflight-only",
+        action="store_true",
+        help="Only check that Gemini JSON generation works for the selected model.",
+    )
+    parser.add_argument(
+        "--skip-preflight",
+        action="store_true",
+        help="Skip the small Gemini JSON preflight before a live run.",
+    )
     parser.add_argument("--fail-on-missing-key", action="store_true", help="Fail even in dry-run if Gemini key is absent.")
     return parser.parse_args()
 
@@ -70,6 +84,18 @@ def main() -> int:
             pass
         else:
             raise SystemExit("GEMINI_API_KEY or GOOGLE_API_KEY is not set")
+    if args.preflight_only:
+        try:
+            preflight_gemini_json_generation(model=str(args.model))
+        except GeminiPreprocessingError as exc:
+            raise SystemExit(str(exc)) from exc
+        _print_result({"status": "ok", "model": str(args.model)})
+        return 0
+    if not args.dry_run and not args.skip_preflight:
+        try:
+            preflight_gemini_json_generation(model=str(args.model))
+        except GeminiPreprocessingError as exc:
+            raise SystemExit(str(exc)) from exc
 
     recursive_dir = _resolve(args.recursive_dir)
     source_card_dir = recursive_dir / "source_cards"

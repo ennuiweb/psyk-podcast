@@ -596,11 +596,19 @@ Required flags:
 - `--dry-run`
 - `--fail-on-missing-key`
 - `--no-raw-lecture-source-uploads`
+- `--preflight-only`
+- `--skip-preflight`
 
 Current dry-run smoke command:
 
 ```bash
 ./.venv/bin/python scripts/build_personlighedspsykologi_recursive_source_intelligence.py --lectures W05L1,W06L1 --dry-run
+```
+
+Preflight command before uploading source PDFs:
+
+```bash
+./.venv/bin/python scripts/build_personlighedspsykologi_recursive_source_intelligence.py --lectures W05L1,W06L1 --preflight-only
 ```
 
 Observed 2026-05-05 dry-run plan:

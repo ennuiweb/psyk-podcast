@@ -334,6 +334,39 @@ def _format_course_arc_titles(titles: list[str], *, max_items: int) -> str:
     return "; ".join([*selected[:3], "...", *selected[-2:]])
 
 
+def _local_course_arc_titles(
+    bundle: CoursePromptContextBundle,
+    *,
+    lecture_position: int,
+    max_items: int,
+) -> str:
+    if max_items <= 0 or not bundle.lectures:
+        return ""
+    if max_items == 1:
+        local_indices = [lecture_position]
+    else:
+        side = max(1, (max_items - 1) // 2)
+        start = max(0, lecture_position - side)
+        end = min(len(bundle.lectures), lecture_position + side + 1)
+        while (end - start) < max_items and start > 0:
+            start -= 1
+        while (end - start) < max_items and end < len(bundle.lectures):
+            end += 1
+        local_indices = list(range(start, end))
+    titles: list[str] = []
+    seen: set[str] = set()
+    for index in local_indices:
+        title = _clean_lecture_theme(str(bundle.lectures[index].get("lecture_title") or ""))
+        if not title:
+            continue
+        key = title.casefold()
+        if key in seen:
+            continue
+        seen.add(key)
+        titles.append(title)
+    return "; ".join(titles[:max_items])
+
+
 def _normalize_match_key(value: str) -> str:
     cleaned = str(value or "").strip().casefold()
     cleaned = re.sub(r"^w\d+l\d+\s*[-–:._ ]*\s*", "", cleaned)
@@ -524,6 +557,8 @@ def _lecture_semantic_context_lines(
                     lines.append("- Ranked source emphasis: " + "; ".join(ranked_lines) + ".")
                 break
 
+    selected_term_ids: set[str] = set()
+    selected_term_linked_theories: set[str] = set()
     if isinstance(glossary_payload, dict):
         terms = glossary_payload.get("terms")
         if isinstance(terms, list):
@@ -544,6 +579,18 @@ def _lecture_semantic_context_lines(
             )
             if lecture_terms:
                 selected = lecture_terms[: max(0, int(limits["terms"]))]
+                selected_term_ids = {
+                    str(term.get("term_id") or "").strip()
+                    for term in selected
+                    if str(term.get("term_id") or "").strip()
+                }
+                selected_term_linked_theories = {
+                    str(theory_id or "").strip()
+                    for term in selected
+                    if isinstance(term.get("linked_theories"), list)
+                    for theory_id in term.get("linked_theories", [])
+                    if str(theory_id or "").strip()
+                }
                 selected_labels = [
                     f"{str(term.get('label') or '').strip()} ({str(term.get('category') or '').strip()})"
                     for term in selected
@@ -576,9 +623,24 @@ def _lecture_semantic_context_lines(
             )
             if lecture_theories:
                 selected = lecture_theories[: max(0, int(limits["theories"]))]
+                filtered_selected: list[dict[str, Any]] = []
+                for theory in selected:
+                    theory_id = str(theory.get("theory_id") or "").strip()
+                    core_term_ids = {
+                        str(term_id or "").strip()
+                        for term_id in theory.get("core_term_ids", [])
+                        if str(term_id or "").strip()
+                    } if isinstance(theory.get("core_term_ids"), list) else set()
+                    if (
+                        theory_id
+                        and theory_id in selected_term_linked_theories
+                        and core_term_ids & selected_term_ids
+                    ):
+                        continue
+                    filtered_selected.append(theory)
                 selected_labels = [
                     str(theory.get("label") or "").strip()
-                    for theory in selected
+                    for theory in filtered_selected
                     if str(theory.get("label") or "").strip()
                 ]
                 if selected_labels:
@@ -816,9 +878,10 @@ def build_course_prompt_context_note(
     slide_limit = max(1, int(config.get("max_slide_titles", 4)))
     course_theme_limit = max(0, int(config.get("max_course_themes", 22)))
     if prompt_type == "short":
-        reading_limit = min(reading_limit, 2)
+        neighbor_window = 0
+        reading_limit = 1
         point_limit = 1
-        course_theme_limit = min(course_theme_limit, 8)
+        course_theme_limit = min(course_theme_limit, 5)
 
     sections: list[str] = []
     lecture_theme = _clean_lecture_theme(lecture_title) or lecture_title
@@ -851,10 +914,17 @@ def build_course_prompt_context_note(
     if next_lectures:
         frame_lines.append(f"- It leads into: {', '.join(next_lectures)}.")
     if bundle.course_theme_titles and course_theme_limit > 0:
-        course_arc = _format_course_arc_titles(
-            bundle.course_theme_titles,
-            max_items=course_theme_limit,
-        )
+        if prompt_type == "short":
+            course_arc = _local_course_arc_titles(
+                bundle,
+                lecture_position=lecture_position,
+                max_items=course_theme_limit,
+            )
+        else:
+            course_arc = _format_course_arc_titles(
+                bundle.course_theme_titles,
+                max_items=course_theme_limit,
+            )
         if course_arc:
             frame_lines.append(f"- Broader course arc in play: {course_arc}.")
     overview_excerpt = _overview_excerpt(bundle, canonical_key)
@@ -869,9 +939,10 @@ def build_course_prompt_context_note(
     lecture_summary = lecture.get("summary") if isinstance(lecture.get("summary"), dict) else None
     summary_lines = _summary_lines(lecture_summary)
     if summary_lines:
+        summary_cap = 2 if prompt_type == "short" else max(4, point_limit + 1)
         sections.append(
             "## Lecture synthesis\n"
-            + "\n".join(f"- {line}" for line in summary_lines[: max(4, point_limit + 1)])
+            + "\n".join(f"- {line}" for line in summary_lines[:summary_cap])
         )
 
     slide_titles = _slide_titles_by_subcategory(lecture, max_slide_titles=slide_limit)
@@ -899,8 +970,13 @@ def build_course_prompt_context_note(
             sections.append("## Teaching context\n" + "\n".join(slide_lines))
 
     reading_lines: list[str] = []
+    target_reading = None
+    if prompt_type == "short" and str(getattr(source_item, "source_type", "") or "").strip().lower() == "reading":
+        target_reading = _find_matching_reading(lecture, source_item)
     for reading in lecture.get("readings") or []:
         if not isinstance(reading, dict):
+            continue
+        if target_reading is not None and reading is not target_reading:
             continue
         title = str(reading.get("reading_title") or "").strip()
         if not title:
@@ -953,10 +1029,11 @@ def build_course_prompt_context_note(
     if target_lines:
         sections.append("## Target source fit\n" + "\n".join(target_lines))
 
-    sections.append(
-        "## Grounding rules\n"
-        "- Treat lecture-level and course-level framing as prioritization aids rather than replacement for what the source explicitly says.\n"
-        "- Let slide framing help decide emphasis and likely misunderstandings, but keep claims anchored in the supplied source material.\n"
-        "- Use slide titles and neighboring lectures to orient the explanation, but do not attribute unsupported claims to authors or lecturers."
-    )
+    if prompt_type != "short":
+        sections.append(
+            "## Grounding rules\n"
+            "- Treat lecture-level and course-level framing as prioritization aids rather than replacement for what the source explicitly says.\n"
+            "- Let slide framing help decide emphasis and likely misunderstandings, but keep claims anchored in the supplied source material.\n"
+            "- Use slide titles and neighboring lectures to orient the explanation, but do not attribute unsupported claims to authors or lecturers."
+        )
     return "\n\n".join(section for section in sections if section.strip())

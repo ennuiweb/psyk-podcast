@@ -422,11 +422,21 @@ class GenerateWeekTests(unittest.TestCase):
             prompt_type="short",
             custom_prompt="",
             source_item=reading_item,
+            audio_format="deep-dive",
+            audio_length="short",
             **self._default_prompt_context(mod),
         )
 
         self.assertIn("Keep the explanation compact, concrete, and easy to carry forward", prompt)
-        self.assertIn("what is most important to carry forward from the source", prompt)
+        self.assertIn("the misunderstanding or oversimplification to avoid", prompt)
+        self.assertNotIn("what is most important to carry forward from the source", prompt)
+        self.assertIn("make clear the one or two ideas that matter most to carry forward into later lectures", prompt)
+        self.assertNotIn("include at least one limitation, tension, or qualification rather than only summarizing", prompt)
+        self.assertIn("Explain the material as a line of thought, not as a disconnected recap.", prompt)
+        self.assertIn("Distinguish clearly between what the source explicitly argues", prompt)
+        self.assertIn("Build a cumulative explanation with a clear argumentative arc", prompt)
+        self.assertIn("Aim for a dense explanation with very little repetition.", prompt)
+        self.assertNotIn("Do not invent studies, examples, citations", prompt)
 
     def test_build_audio_prompt_includes_weekly_sidecar_notes(self):
         mod = _load_module()

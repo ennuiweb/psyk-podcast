@@ -259,6 +259,13 @@ class CourseContextTests(unittest.TestCase):
                                         "summary": {
                                             "summary_lines": ["Field-framing overview."],
                                         },
+                                    },
+                                    {
+                                        "reading_title": "Other reading",
+                                        "source_filename": "W1L1 Other reading.pdf",
+                                        "summary": {
+                                            "summary_lines": ["Secondary reading summary."],
+                                        },
                                     }
                                 ],
                                 "slides": [],
@@ -389,9 +396,12 @@ class CourseContextTests(unittest.TestCase):
 
             self.assertIn("Ranked source emphasis: Grundbog kapitel 1 [anchor].", note)
             self.assertNotIn("Other reading [major]", note)
+            self.assertIn("Grundbog kapitel 1: Field-framing overview.", note)
+            self.assertNotIn("Other reading: Secondary reading summary.", note)
             self.assertIn("Course concepts in play: personality (construct).", note)
             self.assertNotIn("assessment (practice)", note)
             self.assertNotIn("Theory frame:", note)
+            self.assertNotIn("## Grounding rules", note)
             self.assertIn("Cross-lecture tensions to keep explicit: trait vs state.", note)
             self.assertNotIn("person vs variable profile", note)
 
@@ -488,6 +498,166 @@ class CourseContextTests(unittest.TestCase):
                 semantic_line.index("Freud, S. (1984/1905). Brudstykke af en hysteri-analyse [major]"),
                 semantic_line.index("Ricoeur (1981) [anchor]"),
             )
+
+    def test_redundant_theory_frame_is_suppressed(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            repo_root = Path(tmpdir)
+            show_dir = repo_root / "shows" / "demo-show"
+            docs_dir = show_dir / "docs"
+            docs_dir.mkdir(parents=True, exist_ok=True)
+
+            (show_dir / "slides_catalog.json").write_text(json.dumps({"slides": []}), encoding="utf-8")
+            (show_dir / "content_manifest.json").write_text(
+                json.dumps(
+                    {
+                        "lectures": [
+                            {
+                                "lecture_key": "W1L1",
+                                "lecture_title": "Introduktion",
+                                "sequence_index": 1,
+                                "readings": [],
+                                "slides": [],
+                            }
+                        ]
+                    }
+                ),
+                encoding="utf-8",
+            )
+            (show_dir / "course_glossary.json").write_text(
+                json.dumps(
+                    {
+                        "terms": [
+                            {
+                                "term_id": "psychoanalysis",
+                                "label": "psychoanalysis",
+                                "category": "tradition",
+                                "salience_score": 90,
+                                "lecture_keys": ["W01L1"],
+                                "linked_theories": ["psychoanalytic_personality_theory"],
+                                "source_evidence_origins": ["reading_grounded"],
+                            }
+                        ]
+                    }
+                ),
+                encoding="utf-8",
+            )
+            (show_dir / "course_theory_map.json").write_text(
+                json.dumps(
+                    {
+                        "theories": [
+                            {
+                                "theory_id": "psychoanalytic_personality_theory",
+                                "label": "psychoanalytic personality theory",
+                                "salience_score": 80,
+                                "lecture_keys": ["W01L1"],
+                                "core_term_ids": ["psychoanalysis"],
+                                "representative_evidence_origins": ["reading_grounded"],
+                            }
+                        ]
+                    }
+                ),
+                encoding="utf-8",
+            )
+            (docs_dir / "overblik.md").write_text("- W1L1 Introduktion", encoding="utf-8")
+
+            config = course_context.normalize_course_context({})
+            bundle = course_context.load_course_prompt_context_bundle(
+                repo_root=repo_root,
+                config=config,
+                slides_catalog_path=show_dir / "slides_catalog.json",
+            )
+            assert bundle is not None
+
+            note = course_context.build_course_prompt_context_note(
+                bundle=bundle,
+                config=config,
+                lecture_key="W1L1",
+                prompt_type="weekly_readings_only",
+                source_item=None,
+            )
+
+            self.assertIn("Course concepts in play: psychoanalysis (tradition).", note)
+            self.assertNotIn("Theory frame: psychoanalytic personality theory.", note)
+
+    def test_short_prompt_uses_local_course_arc(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            repo_root = Path(tmpdir)
+            show_dir = repo_root / "shows" / "demo-show"
+            docs_dir = show_dir / "docs"
+            docs_dir.mkdir(parents=True, exist_ok=True)
+
+            lectures = []
+            for index, title in enumerate(
+                [
+                    "Intro",
+                    "Assessment",
+                    "Traits",
+                    "Psychoanalysis I",
+                    "Psychoanalysis II",
+                    "Phenomenology",
+                ],
+                start=1,
+            ):
+                lectures.append(
+                    {
+                        "lecture_key": f"W1L{index}",
+                        "lecture_title": title,
+                        "sequence_index": index,
+                        "readings": [
+                            {
+                                "reading_title": "Target reading" if index == 4 else f"Reading {index}",
+                                "source_filename": "target.pdf" if index == 4 else f"reading-{index}.pdf",
+                                "summary": {"summary_lines": [f"Summary {index}."]},
+                            }
+                        ],
+                        "slides": [],
+                    }
+                )
+
+            (show_dir / "slides_catalog.json").write_text(json.dumps({"slides": []}), encoding="utf-8")
+            (show_dir / "content_manifest.json").write_text(
+                json.dumps({"lectures": lectures}),
+                encoding="utf-8",
+            )
+            (docs_dir / "overblik.md").write_text(
+                "\n".join(
+                    [
+                        "| W01 | x | Intro |",
+                        "| W02 | x | Assessment |",
+                        "| W03 | x | Traits |",
+                        "| W04 | x | Psychoanalysis I |",
+                        "| W05 | x | Psychoanalysis II |",
+                        "| W06 | x | Phenomenology |",
+                    ]
+                ),
+                encoding="utf-8",
+            )
+
+            config = course_context.normalize_course_context({})
+            bundle = course_context.load_course_prompt_context_bundle(
+                repo_root=repo_root,
+                config=config,
+                slides_catalog_path=show_dir / "slides_catalog.json",
+            )
+            assert bundle is not None
+
+            note = course_context.build_course_prompt_context_note(
+                bundle=bundle,
+                config=config,
+                lecture_key="W1L4",
+                prompt_type="short",
+                source_item=SimpleNamespace(
+                    source_type="reading",
+                    base_name="Target reading",
+                    path=Path("/tmp/target.pdf"),
+                ),
+            )
+
+            self.assertIn(
+                "Broader course arc in play: Assessment; Traits; Psychoanalysis I; Psychoanalysis II; Phenomenology.",
+                note,
+            )
+            self.assertNotIn("Broader course arc in play: Intro;", note)
 
 
 if __name__ == "__main__":

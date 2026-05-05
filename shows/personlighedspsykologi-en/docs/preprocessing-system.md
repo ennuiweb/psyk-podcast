@@ -235,6 +235,14 @@ Det betyder konkret, at semantic guidance i `course_context.py` nu skal vaelge
 selektivt i stedet for bare at dumpe de hoejest rangerede artifacts. Maalet er
 et tyndt prompt-surface med bedre selection, ikke et tykkere prompt-surface.
 
+For `short` betyder det nu ogsaa:
+
+- local course arc i stedet for generisk semester-arc
+- kun target reading i reading map for reading-baserede short prompts
+- ingen redundant theory-frame, hvis det blot gentager et valgt tradition-term
+- ingen ekstra grounding-regler inde i course-context-noten, hvis de allerede
+  gentages downstream i prompt-frameworket
+
 ## Kendte graenser
 
 - GitHub Actions kan ikke i dag rebuild’e `source_catalog.json`, fordi workflowet

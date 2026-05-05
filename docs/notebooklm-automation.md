@@ -199,6 +199,11 @@ Prompt assembly note:
 - That semantic guidance is now intentionally conservative: the goal is to use
   those artifacts to improve selection while keeping the final NotebookLM
   prompt surface relatively thin.
+- In `short` mode, the course-context note is now also trimmed more
+  aggressively: local course arc, narrower reading map, and less duplicated
+  grounding prose.
+- The final `short` audio wrapper is also thinner now: fewer focus bullets,
+  fewer priority-lens bullets, and a smaller generation-rules block.
 - That context layer is deterministic and artifact-neutral, and it now feeds both audio prompts and NotebookLM `report` artifacts surfaced as study-guide style Markdown outputs.
 - Current report usage is the first concrete non-audio consumer: abridged preparatory guides for readings, slide decks, lecture-level reading sets, and short variants.
 - Prompt assembly now also injects explicit source-role guidance for normal prompt types so readings, lecture slides, and seminar slides contribute different kinds of signal instead of being blended implicitly.

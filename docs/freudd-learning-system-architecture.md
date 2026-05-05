@@ -545,6 +545,8 @@ Current default decisions for this phase:
   misunderstandings, applications, and clarifications
 - keep the final prompt surface conservative: usually 1-2 ranked sources, 1-2
   terms, 1 theory frame, and 1 cross-lecture tension at most
+- make `short` prompts stricter still: local arc, target-centered context, and
+  fewer duplicated instructions
 
 Exit condition:
 

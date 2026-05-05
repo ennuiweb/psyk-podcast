@@ -578,6 +578,45 @@ def _format_bullets(items: list[str]) -> str:
     return "\n".join(f"- {item}" for item in items if item)
 
 
+def _short_prompt_focus_items(items: list[str]) -> list[str]:
+    return items[:3]
+
+
+def _short_prompt_exam_items(items: list[str]) -> list[str]:
+    return items[:1]
+
+
+def _framework_rules_for_prompt(
+    *,
+    prompt_framework: dict,
+    prompt_type: str,
+    audio_format: str | None,
+    audio_length: str | None,
+) -> list[str]:
+    normalized_audio_format = str(audio_format or "").strip().lower()
+    normalized_audio_length = str(audio_length or "").strip().lower()
+    shared_rules = list(prompt_framework.get("shared_rules") or [])
+    format_rules = list(prompt_framework.get("format_guidance", {}).get(normalized_audio_format, []))
+    length_rules = list(prompt_framework.get("length_guidance", {}).get(normalized_audio_length, []))
+
+    if prompt_type == "short":
+        rules: list[str] = []
+        rules.extend(shared_rules[:2])
+        rules.extend(format_rules[:1])
+        rules.extend(length_rules[:1])
+        seen: set[str] = set()
+        deduped: list[str] = []
+        for rule in rules:
+            cleaned = str(rule or "").strip()
+            if not cleaned or cleaned in seen:
+                continue
+            seen.add(cleaned)
+            deduped.append(cleaned)
+        return deduped
+
+    return [*shared_rules, *format_rules, *length_rules]
+
+
 def _source_roles_section(
     *,
     prompt_type: str,
@@ -744,25 +783,25 @@ def build_audio_prompt(
             sections.append(
                 "Because the source is a slide deck, reconstruct the argumentative line instead of paraphrasing bullet fragments."
             )
-        sections.append(f"Focus on:\n{_format_bullets(prompt_type_cfg['focus'])}")
+        focus_items = list(prompt_type_cfg["focus"])
+        if prompt_type == "short":
+            focus_items = _short_prompt_focus_items(focus_items)
+        sections.append(f"Focus on:\n{_format_bullets(focus_items)}")
 
     if exam_focus and exam_focus.get("enabled", False):
         exam_items = exam_focus["prompt_types"].get(prompt_type) or []
+        if prompt_type == "short":
+            exam_items = _short_prompt_exam_items(list(exam_items))
         if exam_items:
             sections.append(f"{exam_focus['heading']}\n{_format_bullets(exam_items)}")
 
     if prompt_framework and prompt_framework.get("enabled", False):
-        framework_rules = list(prompt_framework.get("shared_rules") or [])
-        normalized_audio_format = str(audio_format or "").strip().lower()
-        normalized_audio_length = str(audio_length or "").strip().lower()
-        if normalized_audio_format:
-            framework_rules.extend(
-                prompt_framework.get("format_guidance", {}).get(normalized_audio_format, [])
-            )
-        if normalized_audio_length:
-            framework_rules.extend(
-                prompt_framework.get("length_guidance", {}).get(normalized_audio_length, [])
-            )
+        framework_rules = _framework_rules_for_prompt(
+            prompt_framework=prompt_framework,
+            prompt_type=prompt_type,
+            audio_format=audio_format,
+            audio_length=audio_length,
+        )
         if framework_rules:
             sections.append(
                 f"{prompt_framework['heading']}\n{_format_bullets(framework_rules)}"
